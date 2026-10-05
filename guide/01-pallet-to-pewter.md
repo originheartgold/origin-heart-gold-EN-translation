@@ -102,9 +102,9 @@ With any other starter, the Meowth resident only says a general line about livin
 
 **Reward:** 1 **Lure Ball**, which is what the Super Fang tutor on the west side of Viridian charges.
 
-**Notes:** Answering No does nothing, so you can try again. If you black out, Pikachu stays where it was. If you talk to it from the wrong side at a spot, it just runs back to the northwest spot. Its chase positions aren't saved: if you leave Viridian, it is probably back at its first spot (not confirmed in game).
+**Notes:** Answering No does nothing, so you can try again. If you black out, Pikachu stays where it was. If you talk to it from the wrong side at a spot, it just runs back to the northwest spot. Its chase positions aren't saved: if you leave Viridian and come back, it is back at its first spot (tested in an emulator).
 
-*Source:* script file 739 (scripts 3 and 23, flags 1334/1335/1336). Route 1 file 168 sets the quest flags. Positions: clerk ≈1046,253; Pikachu ≈1033,247, then ≈1008,235, then ≈1053,269.
+*Source:* script file 739 (scripts 3 and 23, flags 1334/1335/1336; the chase moves object 5 with `MovePersonFacing`, which a map reload undoes). Route 1 file 168 sets the quest flags. Positions: clerk ≈1046,253; Pikachu ≈1033,247, then ≈1008,235, then ≈1053,269. Emulator: `emu_harness.py guide0107 --case pikachu` (after the first chase and a trip to Route 1, object 5 is at 1033,247 again).
 
 ## Viridian City: the Mankey thief (Pikachu starters only)
 
@@ -275,9 +275,9 @@ The Team Rocket set ("You ignored the empty slogans and told the truth... worthy
 
 **Getting it back:** only after you've entered the Hall of Fame. Talk to her with a free party slot.
 
-**Watch out:** she doesn't return *your* Pidgeot. She hands you a fixed loan Pokémon: a **Lv. 20 Pidgeot** with all IVs 31 and your name as OT. Whatever level, moves, EVs or item your own Pidgeot had are gone (not confirmed in game).
+**Watch out:** she doesn't return *your* Pidgeot. She hands you a fixed loan Pokémon: a **Lv. 20 Pidgeot** with all IVs 31, no held item and the moves Sand Attack, Gust, Quick Attack and Whirlwind. Its OT is blank and its ID No. is 04336, so it isn't yours either. Whatever level, moves, EVs or item your own Pidgeot had are gone (tested in an emulator).
 
-*Source:* script file 115 (L2225, L4827, L5794: `ReturnLoanMon` takes your Pidgeot, `GiveLoanMon [6, 20, 75]` gives the replacement from trade record 6; return needs game-clear flag 2404).
+*Source:* script file 115 (L2225, L4827, L5794: `ReturnLoanMon` takes your Pidgeot, `GiveLoanMon [6, 20, 75]` gives the replacement from trade record 6; return needs game-clear flag 2404). Emulator (`emu_harness.py guide0107 --case pidgeot`, both ROMs): a generator Pidgeot Lv60 with Leftovers lent through the party menu is removed from the party; after 2404 the returned Pidgeot has trade record 6's PID, Lv20, IVs 6×31, moves 28/16/98/18, no item, OT ID 0x761510F0 (ID No. 04336), an empty OT name (summary: OT blank, ID No. 04336). D-1392, D-1552.
 
 ## Viridian Forest: the Honey tree (weekday Bug Pokémon)
 
@@ -339,9 +339,9 @@ The Team Rocket set ("You ignored the empty slogans and told the truth... worthy
 
 **Where:** an item ball on the west side of Victory Road 1F, level with the spot where Blue stands (about 20 steps west of him).
 
-**How it works:** checking it starts a wild battle against an **Electrode, Lv. 70**. Winning, catching or (probably) fleeing removes it. Losing means a white-out and it stays.
+**How it works:** checking it starts a wild battle against an **Electrode, Lv. 70**. Winning, catching or fleeing removes it. Losing means a white-out and it stays (fleeing and losing tested in an emulator).
 
-*Source:* script file 109 (script 9, flag 1241; ball at 21,40).
+*Source:* script file 109 (script 9, flag 1241; ball at 21,40; `CheckBattleWon` counts a flee as a win). Emulator: `emu_harness.py guide0107 --case electrode`.
 
 ## Romance route: Victory Road confessions, Yellow's dates and your house
 
@@ -364,15 +364,15 @@ Misty ([Cerulean Gym](02-pewter-to-vermilion.md#cerulean-gym--cerulean-cape-mist
 - **Let's have a battle:** Singles or Doubles against Yellow (Pikachu Lv. 92, Omastar Lv. 91, …). Repeatable.
 - **Let's go for a walk** (date 1): a trip to the Mt. Silver summit and the hot-spring lodge. Heals your party.
 - **Let's go for a walk** (date 2, after date 1): a trip to the Resort Zone with **four Multi Battles in a row** at Yellow's side. Your party is healed before the first and after the last, **not between them**. Losing means a white-out and you replay the date.
-- **I want you to meet my mom** (after date 2): she comes to Pallet Town, meets Mom, and leaves Viridian for good. Because of a hack bug, this visit plays Cynthia's version of the scene whoever your partner is (see [Known issues](known-issues.md#pallet-town-to-pewter-city); not confirmed in game).
+- **I want you to meet my mom** (after date 2): she comes to Pallet Town, meets Mom, and leaves Viridian for good. Because of a hack bug, this visit plays Cynthia's version of the scene whoever your partner is: tested in an emulator with Yellow as the partner, Cynthia walks in (see [Known issues](known-issues.md#pallet-town-to-pewter-city)).
 
 Cynthia's dates run the same way at the Pokémon Academy in Viridian City. Other partners have theirs in their own towns (see the central entry). Date progress is shared by all partners, so only your chosen partner's dates count.
 
-**3. Living together (your house):** after the Mom visit, your partner is meant to move into your house, with a "Rest in my room" option that costs a Mail. This step appears to be blocked for every player in the original hack (see [Known issues](known-issues.md#pallet-town-to-pewter-city)). Not confirmed in game.
+**3. Living together (your house):** after the Mom visit, your partner is meant to move into your house, with a "Rest in my room" option that costs a Mail. This step is blocked for every player in the original hack: checking the PC upstairs at that stage does nothing (tested in an emulator; see [Known issues](known-issues.md#pallet-town-to-pewter-city)).
 
 **Notes:** the dates only check that you haven't locked your partner out and that you have confessed to *someone*. They don't check that you confessed to that partner (see [Known issues](known-issues.md#pallet-town-to-pewter-city)).
 
-*Source:* script files 109 (scripts 14, 18, 21, 24; confession spots 1F 20,17 and 43,40, 2F 16,32 and 57,37), 739 (script 40, L4140/L5395/L5333; Yellow ≈1041,261; checks flag 2261 = final Hall of Fame, set in file 822; flag 1645 = confessed; flag 2143 = Yellow excluded; date 2: HealParty @10519, MultiBattle @11662, @11800, @11963, @12101 with no heal between (each loss → L4959), next HealParty @12969), 859 (script 18, Cynthia's dates), 736 (script 4: @165 `CheckFlag 106` → L559, Cynthia's version, before the 2143 Yellow check), 843 (script 1 L363 `CheckFlag 106` → L4292 End before any partner branch; 106 is set with the starter, 738 @3946/@4080, and never cleared; hack finding D-1391; script 4, house 2F scene), 842 (scripts 12–15, "Rest in my room": L6462 Heart Mail 143, L6707 Grass Mail 137, L6887 Bubble Mail 139, L7063 checks Snow Mail 144 but L8417 takes Bubble Mail 139). Flag 1645 is also set by files 758 (Cerulean Gym, Misty), 923 (zone 85: the Indigo Plateau slope in this hack, Steven/Cynthia) and 110 (Victory Road 3F). Date progress is var 0x40b5: date 1 sets it to 3, date 2 (at 3) to 4, the Mom visit runs at 4 (stage 5→6).
+*Source:* script files 109 (scripts 14, 18, 21, 24; confession spots 1F 20,17 and 43,40, 2F 16,32 and 57,37), 739 (script 40, L4140/L5395/L5333; Yellow ≈1041,261; checks flag 2261 = final Hall of Fame, set in file 822; flag 1645 = confessed; flag 2143 = Yellow excluded; date 2: HealParty @10519, MultiBattle @11662, @11800, @11963, @12101 with no heal between (each loss → L4959), next HealParty @12969), 859 (script 18, Cynthia's dates), 736 (script 4: @165 `CheckFlag 106` → L559, Cynthia's version, before the 2143 Yellow check), 843 (script 1 L363 `CheckFlag 106` → L4292 End before any partner branch; 106 is set with the starter, 738 @3946/@4080, and never cleared; hack finding D-1391; script 4, house 2F scene), 842 (scripts 12–15, "Rest in my room": L6462 Heart Mail 143, L6707 Grass Mail 137, L6887 Bubble Mail 139, L7063 checks Snow Mail 144 but L8417 takes Bubble Mail 139). Flag 1645 is also set by files 758 (Cerulean Gym, Misty), 923 (zone 85: the Indigo Plateau slope in this hack, Steven/Cynthia) and 110 (Victory Road 3F). Date progress is var 0x40b5: date 1 sets it to 3, date 2 (at 3) to 4, the Mom visit runs at 4 (stage 5→6). Emulator (`emu_harness.py guide0107 --case mom_visit,living`): with Yellow as the partner and flag 106 set as every save has it, 739 L10063 → zone 504 scene shows lines 442#58–62 and object 7 (Cynthia); with 106 cleared the same run shows Yellow (object 4, lines 25–31). At var 0x40b5 = 6 the 2F PC (with the Cascade Badge) shows nothing and the player can walk on; with 106 cleared it starts the love-letter scene (537#22–24).
 
 ## Pallet Town: Lance's visit home (after the final Hall of Fame)
 
