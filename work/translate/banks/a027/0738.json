@@ -3670,10 +3670,10 @@
   {
    "id": 458,
    "zh": "进行２次连续攻击。",
-   "en": "The user strikes the{NEWLINE}foe 2 times in a row.",
+   "en": "The user strikes the{NEWLINE}foe twice in a row.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0749/458; retranslated from the hack zh (R002/R003)"
+   "notes": "US 0749/458; retranslated from the hack zh (R002/R003); D-1517: “2 times in a row” → “twice in a row”"
   },
   {
    "id": 459,
@@ -7150,10 +7150,10 @@
   {
    "id": 893,
    "zh": "连同身体转起巨大的{NEWLINE}锤子进行攻击。这个{NEWLINE}招式无法连续使出２{NEWLINE}次。",
-   "en": "The user spins its{NEWLINE}body with a huge{NEWLINE}hammer to attack. It{NEWLINE}can’t be used 2 times{NEWLINE}in a row.",
+   "en": "The user spins its{NEWLINE}body with a huge{NEWLINE}hammer to attack. It{NEWLINE}can’t be used twice{NEWLINE}in a row.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1517: “2 times in a row” → “twice in a row”"
   },
   {
    "id": 894,

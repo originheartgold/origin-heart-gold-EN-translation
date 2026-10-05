@@ -166,10 +166,10 @@
   {
    "id": 20,
    "zh": "请决定下一个操作",
-   "en": "Please select the next search.",
+   "en": "Choose what to do next.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0271/20"
+   "origin": "agent",
+   "notes": "US 0271/20; D-1526: retranslated from the zh 请决定下一个操作 (US line said “Please select the next search.”)"
   },
   {
    "id": 21,

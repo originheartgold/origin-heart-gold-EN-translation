@@ -1425,10 +1425,10 @@
   {
    "id": 149,
    "zh": "松饼的材料。{NEWLINE}让精灵使用或携带可以解除麻痹。",
-   "en": "It may be used or held by a Pokémon to{NEWLINE}recover from paralysis.",
+   "en": "A Poffin ingredient. It may be used{NEWLINE}or held by a Pokémon to recover from{NEWLINE}paralysis.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/149",
+   "origin": "agent",
+   "notes": "US 0221/149; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1436,10 +1436,10 @@
   {
    "id": 150,
    "zh": "松饼的材料。{NEWLINE}让精灵使用或携带可以解除睡眠。",
-   "en": "It may be used or held by a Pokémon to{NEWLINE}recover from sleep.",
+   "en": "A Poffin ingredient. It may be used{NEWLINE}or held by a Pokémon to recover from{NEWLINE}sleep.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/150",
+   "origin": "agent",
+   "notes": "US 0221/150; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1447,10 +1447,10 @@
   {
    "id": 151,
    "zh": "松饼的材料。{NEWLINE}让精灵使用或携带可以解除中毒。",
-   "en": "It may be used or held by a Pokémon to{NEWLINE}recover from poison.",
+   "en": "A Poffin ingredient. It may be used{NEWLINE}or held by a Pokémon to recover from{NEWLINE}poison.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/151",
+   "origin": "agent",
+   "notes": "US 0221/151; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1458,10 +1458,10 @@
   {
    "id": 152,
    "zh": "松饼的材料。{NEWLINE}让精灵使用或携带可以解除烧伤。",
-   "en": "It may be used or held by a Pokémon to{NEWLINE}recover from a burn.",
+   "en": "A Poffin ingredient. It may be used{NEWLINE}or held by a Pokémon to recover from{NEWLINE}a burn.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/152",
+   "origin": "agent",
+   "notes": "US 0221/152; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1469,10 +1469,10 @@
   {
    "id": 153,
    "zh": "松饼的材料。{NEWLINE}让精灵使用或携带可以解除冰冻。",
-   "en": "It may be used or held by a Pokémon to{NEWLINE}defrost it.",
+   "en": "A Poffin ingredient. It may be used{NEWLINE}or held by a Pokémon to defrost it.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/153",
+   "origin": "agent",
+   "notes": "US 0221/153; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:冰冻",
     "glossary:携带"
@@ -1481,10 +1481,10 @@
   {
    "id": 154,
    "zh": "松饼的材料。{NEWLINE}精灵使用或携带可回复１０ＰＰ。",
-   "en": "It may be used or held by a Pokémon to{NEWLINE}restore a move’s PP by 10.",
+   "en": "A Poffin ingredient. It may be used{NEWLINE}or held by a Pokémon to restore a{NEWLINE}move’s PP by 10.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/154",
+   "origin": "agent",
+   "notes": "US 0221/154; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1492,10 +1492,10 @@
   {
    "id": 155,
    "zh": "松饼的材料。{NEWLINE}精灵使用或携带可回复１０ＨＰ。",
-   "en": "It may be used or held by a Pokémon to{NEWLINE}heal the user by just 10 HP.",
+   "en": "A Poffin ingredient. It may be used{NEWLINE}or held by a Pokémon to heal the{NEWLINE}user by just 10 HP.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/155",
+   "origin": "agent",
+   "notes": "US 0221/155; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1503,10 +1503,10 @@
   {
    "id": 156,
    "zh": "松饼的材料。{NEWLINE}让精灵使用或携带可解除混乱。",
-   "en": "It may be used or held by a Pokémon to{NEWLINE}recover from confusion.",
+   "en": "A Poffin ingredient. It may be used{NEWLINE}or held by a Pokémon to recover from{NEWLINE}confusion.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/156",
+   "origin": "agent",
+   "notes": "US 0221/156; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1514,10 +1514,10 @@
   {
    "id": 157,
    "zh": "松饼的材料。{NEWLINE}让精灵使用或携带可解除异常状态",
-   "en": "It may be used or held by a Pokémon to{NEWLINE}recover from any status problem.",
+   "en": "A Poffin ingredient. It may be used{NEWLINE}or held by a Pokémon to recover from{NEWLINE}any status problem.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/157",
+   "origin": "agent",
+   "notes": "US 0221/157; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:异常状态",
     "glossary:携带"
@@ -1526,10 +1526,10 @@
   {
    "id": 158,
    "zh": "松饼的材料。{NEWLINE}让精灵使用或携带可回复少量ＨＰ",
-   "en": "It may be used or held by a Pokémon to{NEWLINE}heal the user’s HP a little.",
+   "en": "A Poffin ingredient. It may be used{NEWLINE}or held by a Pokémon to heal the{NEWLINE}user’s HP a little.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/158",
+   "origin": "agent",
+   "notes": "US 0221/158; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1632,10 +1632,10 @@
   {
    "id": 169,
    "zh": "松饼的材料。精灵使用后,{NEWLINE}亲密度上升但ＨＰ努力值下降。",
-   "en": "Using it on a Pokémon makes it more{NEWLINE}friendly, but it also lowers its HP EVs.",
+   "en": "A Poffin ingredient. Using it on a{NEWLINE}Pokémon makes it more friendly, but{NEWLINE}it also lowers its HP EVs.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/169",
+   "notes": "US 0221/169; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:亲密度"
    ]
@@ -1643,10 +1643,10 @@
   {
    "id": 170,
    "zh": "松饼的材料。精灵使用后,{NEWLINE}亲密度上升但物攻努力值下降。",
-   "en": "Using it on a Pokémon makes it more{NEWLINE}friendly, but it also lowers its Attack{NEWLINE}EVs.",
+   "en": "A Poffin ingredient. Using it on a{NEWLINE}Pokémon makes it more friendly, but{NEWLINE}it also lowers its Attack EVs.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/170",
+   "notes": "US 0221/170; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:亲密度"
    ]
@@ -1654,10 +1654,10 @@
   {
    "id": 171,
    "zh": "松饼的材料。精灵使用后,{NEWLINE}亲密度上升但物防努力值下降。",
-   "en": "Using it on a Pokémon makes it more{NEWLINE}friendly, but it also lowers its Defense{NEWLINE}EVs.",
+   "en": "A Poffin ingredient. Using it on a{NEWLINE}Pokémon makes it more friendly, but{NEWLINE}it also lowers its Defense EVs.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/171",
+   "notes": "US 0221/171; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:亲密度"
    ]
@@ -1665,10 +1665,10 @@
   {
    "id": 172,
    "zh": "松饼的材料。精灵使用后,{NEWLINE}亲密度上升但特攻努力值下降。",
-   "en": "Using it on a Pokémon makes it more{NEWLINE}friendly, but it also lowers its Sp. Atk{NEWLINE}EVs.",
+   "en": "A Poffin ingredient. Using it on a{NEWLINE}Pokémon makes it more friendly, but{NEWLINE}it also lowers its Sp. Atk EVs.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/172",
+   "notes": "US 0221/172; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:亲密度"
    ]
@@ -1676,10 +1676,10 @@
   {
    "id": 173,
    "zh": "松饼的材料。精灵使用后,{NEWLINE}亲密度上升但特防努力值下降。",
-   "en": "Using it on a Pokémon makes it more{NEWLINE}friendly, but it also lowers its Sp. Def{NEWLINE}EVs.",
+   "en": "A Poffin ingredient. Using it on a{NEWLINE}Pokémon makes it more friendly, but{NEWLINE}it also lowers its Sp. Def EVs.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/173",
+   "notes": "US 0221/173; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:亲密度"
    ]
@@ -1687,10 +1687,10 @@
   {
    "id": 174,
    "zh": "松饼的材料。精灵使用后,{NEWLINE}亲密度上升但速度努力值下降。",
-   "en": "Using it on a Pokémon makes it more{NEWLINE}friendly, but it also lowers its Speed{NEWLINE}EVs.",
+   "en": "A Poffin ingredient. Using it on a{NEWLINE}Pokémon makes it more friendly, but{NEWLINE}it also lowers its Speed EVs.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/174",
+   "notes": "US 0221/174; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:亲密度"
    ]
@@ -1958,10 +1958,10 @@
   {
    "id": 201,
    "zh": "松饼的材料。{NEWLINE}携带后ＨＰ１/４以下时,{NEWLINE}物攻上升１级。",
-   "en": "If held by a Pokémon, it raises its{NEWLINE}Attack by 1 stage when its HP drops to{NEWLINE}1/4 or less.",
+   "en": "A Poffin ingredient. If held, it raises{NEWLINE}its Attack by 1 stage when its HP{NEWLINE}drops to 1/4 or less.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/201",
+   "notes": "US 0221/201; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1969,10 +1969,10 @@
   {
    "id": 202,
    "zh": "松饼的材料。{NEWLINE}携带后ＨＰ１/４以下时,{NEWLINE}物防上升１级。",
-   "en": "If held by a Pokémon, it raises its{NEWLINE}Defense by 1 stage when its HP drops to{NEWLINE}1/4 or less.",
+   "en": "A Poffin ingredient. If held, it raises{NEWLINE}its Defense by 1 stage when its HP{NEWLINE}drops to 1/4 or less.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/202",
+   "notes": "US 0221/202; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1980,10 +1980,10 @@
   {
    "id": 203,
    "zh": "松饼的材料。{NEWLINE}携带后ＨＰ１/４以下时,{NEWLINE}速度上升１级。",
-   "en": "If held by a Pokémon, it raises its{NEWLINE}Speed by 1 stage when its HP drops to{NEWLINE}1/4 or less.",
+   "en": "A Poffin ingredient. If held, it raises{NEWLINE}its Speed by 1 stage when its HP{NEWLINE}drops to 1/4 or less.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/203",
+   "notes": "US 0221/203; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1991,10 +1991,10 @@
   {
    "id": 204,
    "zh": "松饼的材料。{NEWLINE}携带后ＨＰ１/４以下时,{NEWLINE}特攻上升１级。",
-   "en": "If held by a Pokémon, it raises its{NEWLINE}Sp. Atk by 1 stage when its HP drops to{NEWLINE}1/4 or less.",
+   "en": "A Poffin ingredient. If held, it raises{NEWLINE}its Sp. Atk by 1 stage when its HP{NEWLINE}drops to 1/4 or less.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/204",
+   "notes": "US 0221/204; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2002,10 +2002,10 @@
   {
    "id": 205,
    "zh": "松饼的材料。{NEWLINE}携带后ＨＰ１/４以下时,{NEWLINE}特防上升１级。",
-   "en": "If held by a Pokémon, it raises its{NEWLINE}Sp. Def by 1 stage when its HP drops to{NEWLINE}1/4 or less.",
+   "en": "A Poffin ingredient. If held, it raises{NEWLINE}its Sp. Def by 1 stage when its HP{NEWLINE}drops to 1/4 or less.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/205",
+   "notes": "US 0221/205; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2013,10 +2013,10 @@
   {
    "id": 206,
    "zh": "松饼的材料。{NEWLINE}携带后ＨＰ１/４以下时,{NEWLINE}会心率上升１级。",
-   "en": "If held by a Pokémon, it raises its{NEWLINE}critical-hit ratio by 1 stage when its HP{NEWLINE}drops to 1/4 or less.",
+   "en": "A Poffin ingredient. If held, it raises{NEWLINE}its critical-hit ratio by 1 stage when{NEWLINE}its HP drops to 1/4 or less.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/206",
+   "notes": "US 0221/206; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2024,10 +2024,10 @@
   {
    "id": 207,
    "zh": "松饼的材料。{NEWLINE}携带后ＨＰ１/４以下时,{NEWLINE}随机一项能力上升２级。",
-   "en": "If held by a Pokémon, it raises a random{NEWLINE}stat by 2 stages when its HP drops to{NEWLINE}1/4 or less.",
+   "en": "A Poffin ingredient. If held, it raises{NEWLINE}a random stat by 2 stages when its{NEWLINE}HP drops to 1/4 or less.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/207",
+   "notes": "US 0221/207; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2035,10 +2035,10 @@
   {
    "id": 208,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的技能攻击时,{NEWLINE}回复１/４ＨＰ。",
-   "en": "If held by a Pokémon, it restores 1/4{NEWLINE}of its HP when it is hit by a{NEWLINE}supereffective move.",
+   "en": "A Poffin ingredient. If held, it{NEWLINE}restores 1/4 of its HP when it is hit{NEWLINE}by a supereffective move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/208",
+   "notes": "US 0221/208; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2046,10 +2046,10 @@
   {
    "id": 209,
    "zh": "松饼的材料。{NEWLINE}携带后ＨＰ１/４以下时,{NEWLINE}下一次技能必中。",
-   "en": "If held by a Pokémon, its next move is{NEWLINE}sure to hit when its HP drops to 1/4 or{NEWLINE}less.",
+   "en": "A Poffin ingredient. If held by a{NEWLINE}Pokémon, its next move is sure to hit{NEWLINE}when its HP drops to 1/4 or less.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/209",
+   "notes": "US 0221/209; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2057,10 +2057,10 @@
   {
    "id": 210,
    "zh": "松饼的材料。{NEWLINE}携带后ＨＰ１/４以下时,{NEWLINE}下一次行动先制。",
-   "en": "If held by a Pokémon, it gets to move{NEWLINE}first on its next turn when its HP drops{NEWLINE}to 1/4 or less.",
+   "en": "A Poffin ingredient. If held, it gets{NEWLINE}to move first on its next turn when{NEWLINE}its HP drops to 1/4 or less.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/210",
+   "notes": "US 0221/210; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:先制",
     "glossary:携带"
@@ -2069,10 +2069,10 @@
   {
    "id": 211,
    "zh": "松饼的材料。{NEWLINE}携带后受到物理技能攻击时,{NEWLINE}对手也会受到伤害。",
-   "en": "If held by a Pokémon and a foe’s{NEWLINE}physical attack lands, the foe also{NEWLINE}takes damage.",
+   "en": "A Poffin ingredient. If held by a{NEWLINE}Pokémon and a foe’s physical attack{NEWLINE}lands, the foe also takes damage.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/211",
+   "origin": "agent",
+   "notes": "US 0221/211; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2080,10 +2080,10 @@
   {
    "id": 212,
    "zh": "松饼的材料。{NEWLINE}携带后受到特殊技能攻击时,{NEWLINE}对手也会受到伤害。",
-   "en": "If held by a Pokémon and a foe’s{NEWLINE}special attack lands, the foe also{NEWLINE}takes damage.",
+   "en": "A Poffin ingredient. If held by a{NEWLINE}Pokémon and a foe’s special attack{NEWLINE}lands, the foe also takes damage.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/212",
+   "origin": "agent",
+   "notes": "US 0221/212; D-1519: restored the zh’s 松饼的材料 as “A Poffin ingredient.” (fits 3 lines at ≤200 px, ≤113 chars)",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -5414,10 +5414,10 @@
   {
    "id": 573,
    "zh": "将翅膀撞向对手进行攻击。{NEWLINE}连续２次给予伤害。",
-   "en": "The user slams the foe with its wings,{NEWLINE}hitting 2 times in a row.",
+   "en": "The user slams the foe with its wings,{NEWLINE}hitting twice in a row.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #814"
+   "notes": "= 0738 #814; D-1517: “2 times in a row” → “twice in a row”"
   },
   {
    "id": 574,

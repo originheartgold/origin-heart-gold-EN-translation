@@ -370,10 +370,10 @@
   {
    "id": 38,
    "zh": "拥有金光灿灿的体毛{NEWLINE}以及9条长长的尾巴。{NEWLINE}据说它可以活上1000年。",
-   "en": "It has shining golden fur and nine{NEWLINE}long tails. It is said to live for 1,000{NEWLINE}years.",
+   "en": "It has shining golden fur and nine{NEWLINE}long tails. It is said to live for{NEWLINE}1,000 years.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1522: line breaks rebalanced to keep the number with its unit/noun (wording unchanged).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -419,10 +419,10 @@
   {
    "id": 43,
    "zh": "别名谜行草。{NEWLINE}据说到了晚上，会用2条根走上{NEWLINE}长达300米的距离。",
-   "en": "Also called the Walking Weed. At{NEWLINE}night, it is said to walk as far as 300{NEWLINE}m on its two roots.",
+   "en": "Also called the Walking Weed.{NEWLINE}At night, it is said to walk as{NEWLINE}far as 300 m on its two roots.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1522: line breaks rebalanced to keep the number with its unit/noun (wording unchanged).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -719,10 +719,10 @@
   {
    "id": 73,
    "zh": "战斗时会将80根触手全部伸出，{NEWLINE}制成有毒的包围网。",
-   "en": "In battle, it stretches out all 80{NEWLINE}tentacles to form a poisonous net{NEWLINE}around its foe.",
+   "en": "In battle, it stretches out all{NEWLINE}80 tentacles to form a poisonous{NEWLINE}net around its foe.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1522: line breaks rebalanced to keep the number with its unit/noun (wording unchanged).",
    "qa_ignore": [
     "more_lines_than_zh"
    ]
@@ -935,10 +935,10 @@
   {
    "id": 95,
    "zh": "弯曲扭动巨大结实的身体，{NEWLINE}以时速80公里的猛烈劲头向前挖进。",
-   "en": "It twists and bends its huge, sturdy{NEWLINE}body to dig through the ground at 80{NEWLINE}km/h.",
+   "en": "It twists and bends its huge, sturdy{NEWLINE}body to dig through the ground{NEWLINE}at 80 km/h.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1522: line breaks rebalanced to keep the number with its unit/noun (wording unchanged).",
    "qa_ignore": [
     "more_lines_than_zh"
    ]
@@ -954,10 +954,10 @@
   {
    "id": 97,
    "zh": "如果被它拿着钟摆在眼前晃悠，{NEWLINE}就算是刚睡醒的人，{NEWLINE}也会在3秒后睡着。",
-   "en": "If it swings its pendulum in front of{NEWLINE}your eyes, you will fall asleep in 3{NEWLINE}seconds, even if you just woke up.",
+   "en": "If it swings its pendulum in front{NEWLINE}of your eyes, you will fall asleep in{NEWLINE}3 seconds, even if you just woke up.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1522: line breaks rebalanced to keep the number with its unit/noun (wording unchanged)."
   },
   {
    "id": 98,
@@ -970,10 +970,10 @@
   {
    "id": 99,
    "zh": "大的钳子拥有1万马力的力量。{NEWLINE}但由于太重了，{NEWLINE}导致很难瞄准目标。",
-   "en": "Its large pincer has 10,000{NEWLINE}horsepower of strength. But it is so{NEWLINE}heavy that it is hard to aim.",
+   "en": "Its large pincer has 10,000 horsepower{NEWLINE}of strength. But it is so{NEWLINE}heavy that it is hard to aim.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1522: line breaks rebalanced to keep the number with its unit/noun (wording unchanged).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -2140,10 +2140,10 @@
   {
    "id": 219,
    "zh": "体温约有1万度。{NEWLINE}火焰会从岩浆凝固后{NEWLINE}形成的壳的缝隙处喷出。",
-   "en": "Its body temperature is about 10,000{NEWLINE}degrees. Flames shoot out from{NEWLINE}cracks in its shell of hardened magma.",
+   "en": "Its body temperature is about{NEWLINE}10,000 degrees. Flames shoot out from{NEWLINE}cracks in its shell of hardened magma.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1522: line breaks rebalanced to keep the number with its unit/noun (wording unchanged).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -3249,10 +3249,10 @@
   {
    "id": 331,
    "zh": "栖息在沙漠之中。{NEWLINE}将水分储存在体内，{NEWLINE}即使滴水不喝也可以生存30天。",
-   "en": "It lives in deserts. It stores water{NEWLINE}in its body and can survive for 30{NEWLINE}days without a drop to drink.",
+   "en": "It lives in deserts. It stores water{NEWLINE}in its body and can survive for{NEWLINE}30 days without a drop to drink.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1522: line breaks rebalanced to keep the number with its unit/noun (wording unchanged)."
   },
   {
    "id": 332,
@@ -4567,10 +4567,10 @@
   {
    "id": 466,
    "zh": "用2根尾巴的尖端按住对手，{NEWLINE}并放出超过2万伏特的电来进行攻击。",
-   "en": "It pins foes with the tips of its two{NEWLINE}tails, then attacks with over 20,000{NEWLINE}volts of electricity.",
+   "en": "It pins foes with the tips of{NEWLINE}its two tails, then attacks with{NEWLINE}over 20,000 volts of electricity.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1522: line breaks rebalanced to keep the number with its unit/noun (wording unchanged).",
    "qa_ignore": [
     "number_missing",
     "more_lines_than_zh"
@@ -5017,10 +5017,10 @@
   {
    "id": 513,
    "zh": "生活在火山的洞穴里。{NEWLINE}头上的那丛毛发熊熊燃烧着，{NEWLINE}温度高达300度。",
-   "en": "It lives in volcanic caves. The tuft{NEWLINE}on its head blazes fiercely at 300{NEWLINE}degrees.",
+   "en": "It lives in volcanic caves.{NEWLINE}The tuft on its head blazes{NEWLINE}fiercely at 300 degrees.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1522: line breaks rebalanced to keep the number with its unit/noun (wording unchanged)."
   },
   {
    "id": 514,
@@ -5486,10 +5486,10 @@
   {
    "id": 564,
    "zh": "由古代的化石复活而来。{NEWLINE}能潜水到1000米的深度。",
-   "en": "It was restored from an ancient{NEWLINE}fossil. It can dive as deep as 1,000{NEWLINE}m.",
+   "en": "It was restored from an ancient{NEWLINE}fossil. It can dive as deep as{NEWLINE}1,000 m.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1522: line breaks rebalanced to keep the number with its unit/noun (wording unchanged).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -5858,10 +5858,10 @@
   {
    "id": 605,
    "zh": "据说它是来自于传闻50年前{NEWLINE}有UFO坠落的沙漠里。",
-   "en": "It is said to come from a desert{NEWLINE}where, rumor has it, a UFO crashed 50{NEWLINE}years ago.",
+   "en": "It is said to come from a desert{NEWLINE}where, rumor has it, a UFO crashed{NEWLINE}50 years ago.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1522: line breaks rebalanced to keep the number with its unit/noun (wording unchanged)."
   },
   {
    "id": 606,
@@ -5951,10 +5951,10 @@
   {
    "id": 615,
    "zh": "使用冰的结晶所形成的锁绑住猎物，{NEWLINE}使其冻结到零下100度。",
-   "en": "It binds prey with chains made of ice{NEWLINE}crystals and freezes them to -100{NEWLINE}degrees.",
+   "en": "It binds prey with chains made of{NEWLINE}ice crystals and freezes them to{NEWLINE}-100 degrees.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1522: line breaks rebalanced to keep the number with its unit/noun (wording unchanged)."
   },
   {
    "id": 616,
@@ -6805,10 +6805,10 @@
   {
    "id": 706,
    "zh": "用伸缩的角进行攻击。{NEWLINE}威力相当于100名职业{NEWLINE}拳击手出拳的力量。",
-   "en": "It attacks with its extendable horns.{NEWLINE}Their power equals the punches of 100{NEWLINE}pro boxers.",
+   "en": "It attacks with its extendable horns.{NEWLINE}Their power equals the punches{NEWLINE}of 100 pro boxers.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1522: line breaks rebalanced to keep the number with its unit/noun (wording unchanged)."
   },
   {
    "id": 707,
@@ -9099,10 +9099,10 @@
   {
    "id": 959,
    "zh": "会轻松地挥舞超过100公斤的{NEWLINE}锤子来夺取想要的东西，{NEWLINE}然后带回自己的住处。",
-   "en": "It easily swings its hammer, over 100{NEWLINE}kg, to seize what it wants, then{NEWLINE}carries its loot home.",
+   "en": "It easily swings its hammer, over{NEWLINE}100 kg, to seize what it wants,{NEWLINE}then carries its loot home.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1522: line breaks rebalanced to keep the number with its unit/noun (wording unchanged)."
   },
   {
    "id": 960,
@@ -13506,10 +13506,10 @@
   {
    "id": 1439,
    "zh": "弯曲扭动巨大结实的身体，{NEWLINE}以时速80公里的猛烈劲头向前挖进。",
-   "en": "It twists and bends its huge, sturdy{NEWLINE}body to dig through the ground at 80{NEWLINE}km/h.",
+   "en": "It twists and bends its huge, sturdy{NEWLINE}body to dig through the ground{NEWLINE}at 80 km/h.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Same zh as #95; English copied (D-0795)."
+   "notes": "Same zh as #95; English copied (D-0795). D-1522: line breaks rebalanced to keep the number with its unit/noun (wording unchanged)."
   },
   {
    "id": 1440,

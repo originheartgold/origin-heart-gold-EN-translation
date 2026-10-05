@@ -1492,10 +1492,10 @@
   {
    "id": 179,
    "zh": "技能",
-   "en": "TM",
+   "en": "MOVE",
    "status": "draft",
    "origin": "agent",
-   "notes": "技能 in the hack’s detail page, after Lv/遗传/教学 tabs; read as the TM move list. Check in game."
+   "notes": "技能 in the hack’s detail page, after Lv/遗传/教学 tabs; read as the TM move list. Check in game. D-1510: emulator shows this header over the level-up move list on the DETAILS page; 技能 = move → “MOVE”. Conflicts with term decision D-0284 (技能 → TM, provisional); a scoped ui-term for banks:a027/0790 overrides it here."
   },
   {
    "id": 180,

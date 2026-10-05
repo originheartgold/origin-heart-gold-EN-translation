@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "{VAR:0108:0}怎么处理？",
-   "en": "The {VAR:0108:0} item is selected.",
+   "en": "{VAR:0108:0} is selected.",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s); D-1518: dropped the redundant “The … item” (zh {VAR}怎么处理？ = what to do with the item; bag submenu prompt)"
   },
   {
    "id": 26,
