@@ -352,6 +352,40 @@ from ordinary message commands in their scripts). The WIP build predates later b
 `run_script(file=F, index=N, msg_bank=M)` also runs real scripts: index is the scriptdump number − 1
 (checked: file 12 index 3 shows Pal Park's "Would you like to retire?" with its YES/NO menu).
 
+### 5b. Screen recognition, the shared battery file, Pokédex tools, `suite` (round 3, item 5)
+
+- **Root cause of the "wrong save (map 500)" runs** (found here, fixed): DeSmuME keeps the battery in
+  `$XDG_CONFIG_HOME/desmume/<rom name>.dsv` and reads the emulated flash from that file. Every harness
+  process opened its ROM as `game.nds`, so all of them shared `~/.config/desmume/game.dsv`; parallel runs
+  read each other's saves (both Unown suite runs booted the unedited Poké Mart save). Each Harness now sets
+  a private `XDG_CONFIG_HOME` in its temporary directory (as memcheck.py already did). The stale
+  `~/.config/desmume/game.dsv` (a battery copy written by earlier harness runs) was left in place.
+- **Screen recognition**: `SCREENS_KNOWN` + `on_screen(name)` / `wait_screen` compare a few pixels
+  (battle command menu: red FIGHT, blue INFO). Fixed waits replaced where it mattered: battle turns end on
+  the command menu or the field, `flee` and `continue_game` poll for the field (overlay 2 loaded; Continue
+  no longer fails under load), `show_message` ends on a sentinel var, `walk_to`/`step_dir` check the live
+  position, `emu_dex` checks the dex number by OCR.
+- **Pokédex tools** (from the Pokédex hunt agent, `work/tools/emu_dex.py`): `fill_dex_ram`, `open_dex_list`,
+  `goto(n)`, `detail_page(tab)`, `back_to_list`, `capture_entries`, digit OCR. The digit templates are
+  game font pixels, so they are not in git: `open_dex_list` learns them from entries 0001–0010 and caches
+  them in `work/build/harness/dex_digit_templates.json`. `EMU_HARNESS_DATA=<checkout>/work` points copies
+  outside the repo at the ROMs and saves.
+- **`emu_harness.py suite [--only ...] [--jobs 10]`**: runs each check on the Chinese ROM and the English
+  build in parallel child processes and writes `work/build/harness/suite/suite_report.json`; exit 1 on any
+  failure. Checks and expectations:
+
+| check | what | expected | time (parallel) |
+|---|---|---|---|
+| unown | 6 wild Unown in the hall | final form A for all, decoder check | 35–70 s |
+| palpark | encounter record per weekday | 141 … 147 | 2 min |
+| arceus | 16 Plates through Bag → Give | the 16 forms | 1.7 min |
+| evolve | Petilil day + Sun Stone, Petilil night, Rockruff 12/18/22 h | 548/1 → 549/1; no evolution; 0/2/1 | 2.2 min |
+| dex | Pokédex entry panels 1–30, number read back | pixel-identical to the approved baseline (`baselines/dex_<rom>/`; created on the first run) | 20 s |
+
+  Result (observed): all 10 (5 checks × 2 ROMs) pass, 2 min 13 s wall time with `--jobs 10`. A first run
+  before the battery fix failed unown (both ROMs) and palpark (English) on the shared battery file, and one
+  rockruff_12 run did not evolve.
+
 ### 5. Screen checks on the English WIP build (Tier 3)
 
 `emu_harness.py screens [--only options,ev,dex,battle]` runs each screen recipe on the Chinese ROM and on
@@ -404,7 +438,7 @@ bugs. Both are visible in `work/build/harness/screens/`.
 - Not built: trainer battles (Thief test), talking to NPCs with scripted state (Pal Park prize), winning a
   battle, contests.
 
-## Proposal: an automated regression suite
+## Proposal: an automated regression suite (first version built: `suite`, see 5b)
 
 Run per English build (a release candidate or a nightly), headless, on the Mac that builds it:
 

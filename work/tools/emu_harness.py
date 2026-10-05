@@ -35,6 +35,8 @@ WORK = Path(__file__).resolve().parent.parent
 # (<main>/.claude/worktrees/<name>/work) fall back to the main checkout's work/.
 _parts = WORK.parts
 DATA = Path(*_parts[:_parts.index(".claude")], "work") if ".claude" in _parts and not (WORK / "rom").exists() else WORK
+if os.environ.get("EMU_HARNESS_DATA"):     # copies outside the repo: point at a checkout's work/ folder
+    DATA = Path(os.environ["EMU_HARNESS_DATA"])
 DEF_ROM_CN = DATA / "rom" / "origin_v4.0.3_cn.nds"
 DEF_ROM_EN = DATA / "build" / "origin_hg_v4.0.3_en_wip.nds"
 DEF_SAVES = DATA / "build" / "memcheck"
@@ -410,7 +412,13 @@ class Harness:
         self._tmp = Path(tempfile.mkdtemp(prefix="emu_harness_"))
         os.symlink(self.rom, self._tmp / "game.nds")
         self._cwd = os.getcwd()
-        os.chdir(self._tmp)            # DeSmuME writes its own battery file next to the ROM: keep it in tmp
+        os.chdir(self._tmp)
+        # DeSmuME keeps the battery file in $XDG_CONFIG_HOME/desmume/<rom name>.dsv and reads the emulated
+        # flash from that file. Without a private config dir every harness process shared
+        # ~/.config/desmume/game.dsv, so parallel runs read each other's saves (the 'wrong save, map 500'
+        # failures). One private config dir per instance (GLib reads the variable once per process).
+        (self._tmp / "config").mkdir()
+        os.environ["XDG_CONFIG_HOME"] = str(self._tmp / "config")
         self.emu = DeSmuME()
         self.emu.open(str(self._tmp / "game.nds"))
         if sav:
@@ -624,7 +632,8 @@ class Harness:
         the menu are lost: edit the battery save (SaveFile) before booting, or edit RAM once in the field."""
         self.press("A", after=200)
         self.press("A", after=settle)
-        self.check_code(OV2_SIG)
+        if not self.run_until(lambda h: h.in_field(), 1200, every=20):   # slow under parallel load
+            self.check_code(OV2_SIG)        # raises with the differing bytes
 
     # ------------------------------------------------------------------ field helpers
     def in_field(self):
@@ -1596,6 +1605,136 @@ def cmd_messages(a):
     return 0
 
 
+# ----------------------------------------------------------------------------- regression suite
+
+def _child_json(args, path, timeout=3600):
+    """Run a harness command in a child process and load the JSON report it writes."""
+    import subprocess
+    proc = subprocess.run([sys.executable, str(Path(__file__).resolve())] + [str(x) for x in args],
+                          capture_output=True, text=True, timeout=timeout)
+    if not Path(path).exists():
+        raise RuntimeError(f"{args[0]} failed (rc {proc.returncode}): {proc.stderr[-1500:]}")
+    return json.loads(Path(path).read_text())
+
+
+def _check_unown(rom, out):
+    rep = _child_json(["unown", "--rom", rom, "--count", "6", "--shots", "1", "--out", out,
+                       "--clock", "2026-10-09T12:00:00", "--json", out / "unown.json"], out / "unown.json")
+    u = rep["summary"].get("unown", {})
+    return (u.get("count", 0) >= 6 and u.get("all_final_A") and u.get("decoder_check")), u
+
+
+def _check_palpark(rom, out):
+    rep = _child_json(["palpark", "--rom", rom, "--out", out], out / "palpark_weekdays.json")
+    got = [d["records"] for d in rep["days"]]
+    return got == [[141 + k] for k in range(7)], {"records": got}
+
+
+ARCEUS_EXPECTED = {"Flame": 10, "Splash": 11, "Zap": 13, "Meadow": 12, "Icicle": 15, "Fist": 1, "Toxic": 3,
+                   "Earth": 4, "Sky": 2, "Mind": 14, "Insect": 6, "Stone": 5, "Spooky": 7, "Draco": 16,
+                   "Dread": 17, "Iron": 8}
+
+
+def _check_arceus(rom, out):
+    rep = _child_json(["arceus", "--rom", rom, "--out", out], out / "arceus" / "arceus_report.json")
+    got = {r["plate"]: r["form"] for r in rep["plates"]}
+    return got == ARCEUS_EXPECTED, {"forms": got}
+
+
+EVOLVE_CASES = [  # (tag, args, check(result))
+    ("petilil_day", ["--species", 548, "--level", 10, "--item", 241, "--stone", 80, "--clock", "2026-10-09T12:00:00"],
+     lambda r: (r["after_candy"]["species"], r["after_candy"]["form"], r["after_stone"]["species"],
+                r["after_stone"]["form"]) == (548, 1, 549, 1)),
+    ("petilil_night", ["--species", 548, "--level", 10, "--item", 241, "--clock", "2026-10-09T22:00:00"],
+     lambda r: (r["after_candy"]["form"], r["after_candy"]["item"]) == (0, 241)),
+    ("rockruff_12", ["--species", 744, "--level", 24, "--clock", "2026-10-09T12:00:00"],
+     lambda r: (r["after_candy"]["species"], r["after_candy"]["form"]) == (745, 0)),
+    ("rockruff_18", ["--species", 744, "--level", 24, "--clock", "2026-10-09T18:00:00"],
+     lambda r: (r["after_candy"]["species"], r["after_candy"]["form"]) == (745, 2)),
+    ("rockruff_22", ["--species", 744, "--level", 24, "--clock", "2026-10-09T22:00:00"],
+     lambda r: (r["after_candy"]["species"], r["after_candy"]["form"]) == (745, 1)),
+]
+
+
+def _check_evolve(rom, out):
+    details, ok = {}, True
+    for tag, args, test in EVOLVE_CASES:
+        r = run_child(["evolve", "--rom", rom, "--out", out, "--tag", tag] + args)
+        passed = bool(test(r))
+        ok &= passed
+        details[tag] = {"pass": passed, "after_candy": {k: r["after_candy"][k] for k in ("species", "form", "item")},
+                        **({"after_stone": {k: r["after_stone"][k] for k in ("species", "form")}}
+                           if "after_stone" in r else {})}
+    return ok, details
+
+
+def _check_dex(rom, out, last=30):
+    """Capture Pokedex entry panels 1..last (number verified by OCR) and diff them against the approved
+    baseline for this ROM (work/build/harness/baselines/dex_<rom name>/). A missing baseline is created."""
+    r = run_child(["dexcapture", "--rom", rom, "--out", out, "--last", last])
+    base = DEF_OUT / "baselines" / f"dex_{Path(rom).stem}"
+    shots = Path(r["dir"])
+    from PIL import Image
+    if not base.exists():
+        shutil.copytree(shots, base)
+        return not r["errors"], {"captured": len(r["captured"]), "baseline": f"created {base}", "errors": r["errors"]}
+    changed = []
+    for img in sorted(shots.glob("*.png")):
+        ref = base / img.name
+        if not ref.exists() or screen_diff(Image.open(img), Image.open(ref))[0] > 0:
+            changed.append(img.name)
+    return not r["errors"] and not changed, {"captured": len(r["captured"]), "changed_vs_baseline": changed,
+                                              "errors": r["errors"], "baseline": str(base)}
+
+
+SUITE_CHECKS = {"unown": _check_unown, "palpark": _check_palpark, "arceus": _check_arceus,
+                "evolve": _check_evolve, "dex": _check_dex}
+
+
+def cmd_suite(a):
+    """Behaviour + screen checks on both ROMs, run in parallel child processes; one JSON report, pass/fail."""
+    from concurrent.futures import ThreadPoolExecutor
+    out = Path(a.out) / "suite"
+    checks = list(SUITE_CHECKS) if a.only == "all" else a.only.split(",")
+    roms = {"cn": a.rom_cn, "en": a.rom_en}
+    jobs = [(c, lang) for c in checks for lang in roms]
+    t0 = time.time()
+
+    def run(job):
+        c, lang = job
+        d = out / lang / c
+        d.mkdir(parents=True, exist_ok=True)
+        t = time.time()
+        try:
+            ok, details = SUITE_CHECKS[c](roms[lang], d)
+            row = {"check": c, "rom": lang, "pass": bool(ok), "details": details}
+        except Exception as e:     # a crash is a failure with its message
+            row = {"check": c, "rom": lang, "pass": False, "error": f"{type(e).__name__}: {str(e)[-800:]}"}
+        row["seconds"] = round(time.time() - t, 1)
+        print(json.dumps({k: row[k] for k in ("check", "rom", "pass", "seconds")}), flush=True)
+        return row
+
+    with ThreadPoolExecutor(a.jobs) as ex:
+        rows = list(ex.map(run, jobs))
+    report = {"roms": roms, "seconds": round(time.time() - t0, 1), "pass": all(r["pass"] for r in rows),
+              "results": rows}
+    (out / "suite_report.json").write_text(json.dumps(report, indent=1))
+    print(json.dumps({"pass": report["pass"], "seconds": report["seconds"],
+                      "report": str(out / "suite_report.json")}))
+    return 0 if report["pass"] else 1
+
+
+def cmd_dexcapture(a):
+    """Child for the dex check: capture entry panels 1..--last on one ROM."""
+    import emu_dex
+    shots = Path(a.out) / "dex"
+    with start_at(None, rom=a.rom, out=a.out, verbose=False, clock=datetime.datetime(2026, 10, 9, 12)) as h:
+        emu_dex.open_dex_list(h)
+        done, errors = emu_dex.capture_entries(h, 1, a.last, shots)
+    print("RESULT " + json.dumps({"dir": str(shots), "captured": done, "errors": errors}))
+    return 0
+
+
 def cmd_info(a):
     with Harness(a.rom, a.sav, out=a.out) as h:
         if a.clock:
@@ -1667,6 +1806,16 @@ def main(argv=None):
     ms.add_argument("--sav", default=str(DEF_SAVES / "full_bag_6mons.sav"))
     ms.add_argument("--out", default=str(DEF_OUT))
     ms.add_argument("--lang", choices=("cn", "en"), help=argparse.SUPPRESS)
+    su = sub.add_parser("suite", help="regression suite: behaviour and screen checks on both ROMs, pass/fail")
+    su.add_argument("--only", default="all", help="comma list of: " + ", ".join(SUITE_CHECKS))
+    su.add_argument("--rom-cn", default=str(DEF_ROM_CN))
+    su.add_argument("--rom-en", default=str(DEF_ROM_EN))
+    su.add_argument("--out", default=str(DEF_OUT))
+    su.add_argument("--jobs", type=int, default=6, help="checks run in parallel (each starts its own emulators)")
+    dc = sub.add_parser("dexcapture", help=argparse.SUPPRESS)
+    dc.add_argument("--rom", default=str(DEF_ROM_CN))
+    dc.add_argument("--out", default=str(DEF_OUT))
+    dc.add_argument("--last", type=int, default=30)
     for name in ("info", "wild", "unown"):
         p = sub.add_parser(name)
         p.add_argument("--rom", default=str(DEF_ROM_CN))
@@ -1689,7 +1838,8 @@ def main(argv=None):
             p.add_argument("--state", help="also write a DeSmuME savestate taken right after the teleport")
             p.add_argument("--json")
     a = ap.parse_args(argv)
-    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages}[a.cmd](a)
+    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages, "suite": cmd_suite,
+            "dexcapture": cmd_dexcapture}[a.cmd](a)
 
 
 if __name__ == "__main__":
