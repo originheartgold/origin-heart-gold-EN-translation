@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "任何精灵都能一球抓住,{NEWLINE}最高级的球。",
-   "en": "The best Ball with the ultimate level of{NEWLINE}performance. It will catch any wild{NEWLINE}Pokémon without fail.",
+   "en": "The best Ball with the ultimate level{NEWLINE}of performance. It will catch any{NEWLINE}wild Pokémon without fail.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/1"
+   "notes": "US 0221/1 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 2,
@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "只能在大湿原使用的特制球,{NEWLINE}上面有迷彩纹。",
-   "en": "A special Poké Ball that is used only in{NEWLINE}the Great Marsh. It is decorated in a{NEWLINE}camouflage pattern.",
+   "en": "A special Poké Ball that is used only{NEWLINE}in the Great Marsh. It is decorated{NEWLINE}in a camouflage pattern.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/5"
+   "notes": "US 0221/5 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 6,
@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "能提高水中精灵捕获率,{NEWLINE}有点与众不同的球。",
-   "en": "A somewhat different Poké Ball that{NEWLINE}works especially well on Pokémon that{NEWLINE}live in the sea.",
+   "en": "A somewhat different Poké Ball that{NEWLINE}works especially well on Pokémon{NEWLINE}that live in the sea.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/7"
+   "notes": "US 0221/7 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 8,
@@ -122,10 +122,10 @@
   {
    "id": 14,
    "zh": "能回复被捕精灵的{NEWLINE}ＨＰ和异常状态,{NEWLINE}有点温柔的球。",
-   "en": "A remedial Poké Ball that restores the{NEWLINE}caught Pokémon’s HP and eliminates{NEWLINE}any status problem.",
+   "en": "A remedial Poké Ball that restores{NEWLINE}the caught Pokémon’s HP and{NEWLINE}eliminates any status problem.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/14",
+   "notes": "US 0221/14 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:异常状态"
    ]
@@ -149,10 +149,10 @@
   {
    "id": 17,
    "zh": "喷雾式疗伤药。{NEWLINE}回复１只精灵２０ＨＰ。",
-   "en": "A spray-type medicine for wounds.{NEWLINE}It restores the HP of one Pokémon by{NEWLINE}just 20 points.",
+   "en": "A spray-type medicine for wounds.{NEWLINE}It restores the HP of one Pokémon{NEWLINE}by just 20 points.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/17",
+   "notes": "US 0221/17 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:伤药",
     "number_missing"
@@ -161,10 +161,10 @@
   {
    "id": 18,
    "zh": "喷雾药剂。{NEWLINE}解除１只精灵的中毒状态。",
-   "en": "A spray-type medicine.{NEWLINE}It lifts the effect of poison from one{NEWLINE}Pokémon.",
+   "en": "A spray-type medicine. It lifts the{NEWLINE}effect of poison from one Pokémon.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/18",
+   "notes": "US 0221/18 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -241,10 +241,10 @@
   {
    "id": 25,
    "zh": "喷雾式疗伤药。{NEWLINE}回复１只精灵２００ＨＰ。",
-   "en": "A spray-type medicine for wounds.{NEWLINE}It restores the HP of one Pokémon by{NEWLINE}200 points.",
+   "en": "A spray-type medicine for wounds.{NEWLINE}It restores the HP of one Pokémon{NEWLINE}by 200 points.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/25",
+   "notes": "US 0221/25 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:伤药",
     "number_missing"
@@ -253,10 +253,10 @@
   {
    "id": 26,
    "zh": "喷雾式疗伤药。{NEWLINE}回复１只精灵５０ＨＰ。",
-   "en": "A spray-type medicine for wounds.{NEWLINE}It restores the HP of one Pokémon by{NEWLINE}50 points.",
+   "en": "A spray-type medicine for wounds.{NEWLINE}It restores the HP of one Pokémon{NEWLINE}by 50 points.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/26",
+   "notes": "US 0221/26 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:伤药",
     "number_missing"
@@ -299,10 +299,10 @@
   {
    "id": 30,
    "zh": "富含矿物质的水。{NEWLINE}回复１只精灵５０ＨＰ。",
-   "en": "Water with a high mineral content.{NEWLINE}It restores the HP of one Pokémon by{NEWLINE}50 points.",
+   "en": "Water with a high mineral content.{NEWLINE}It restores the HP of one Pokémon{NEWLINE}by 50 points.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/30",
+   "notes": "US 0221/30 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -310,10 +310,10 @@
   {
    "id": 31,
    "zh": "冒泡泡的苏打水。{NEWLINE}回复１只精灵６０ＨＰ。",
-   "en": "A fizzy soda drink.{NEWLINE}It restores the HP of one Pokémon by{NEWLINE}60 points.",
+   "en": "A fizzy soda drink. It restores the{NEWLINE}HP of one Pokémon by 60 points.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/31",
+   "notes": "US 0221/31 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -321,10 +321,10 @@
   {
    "id": 32,
    "zh": "很甜的饮料。{NEWLINE}回复１只精灵８０ＨＰ。",
-   "en": "A very sweet drink.{NEWLINE}It restores the HP of one Pokémon by{NEWLINE}80 points.",
+   "en": "A very sweet drink. It restores the{NEWLINE}HP of one Pokémon by 80 points.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/32",
+   "notes": "US 0221/32 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -332,10 +332,10 @@
   {
    "id": 33,
    "zh": "营养丰富的牛奶。{NEWLINE}回复１只精灵１００ＨＰ。",
-   "en": "Milk with a very high nutrition content.{NEWLINE}It restores the HP of one Pokémon by{NEWLINE}100 points.",
+   "en": "Milk with a very high nutrition{NEWLINE}content. It restores the HP of one{NEWLINE}Pokémon by 100 points.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/33",
+   "notes": "US 0221/33 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -343,10 +343,10 @@
   {
    "id": 34,
    "zh": "很苦的药粉。{NEWLINE}回复１只精灵５０ＨＰ。",
-   "en": "A very bitter medicine powder.{NEWLINE}It restores the HP of one Pokémon by{NEWLINE}50 points.",
+   "en": "A very bitter medicine powder. It{NEWLINE}restores the HP of one Pokémon{NEWLINE}by 50 points.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/34",
+   "notes": "US 0221/34 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -354,10 +354,10 @@
   {
    "id": 35,
    "zh": "很苦的根。{NEWLINE}回复１只精灵２００ＨＰ。",
-   "en": "A very bitter root.{NEWLINE}It restores the HP of one Pokémon by{NEWLINE}200 points.",
+   "en": "A very bitter root. It restores the{NEWLINE}HP of one Pokémon by 200 points.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/35",
+   "notes": "US 0221/35 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -410,10 +410,10 @@
   {
    "id": 40,
    "zh": "回复４个技能的１０ＰＰ。",
-   "en": "It restores the PP of all the{NEWLINE}moves learned by the targeted Pokémon{NEWLINE}by 10 points each.",
+   "en": "It restores the PP of all the moves{NEWLINE}learned by the targeted Pokémon{NEWLINE}by 10 points each.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/40",
+   "notes": "US 0221/40 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -444,10 +444,10 @@
   {
    "id": 43,
    "zh": "１００％树果汁。{NEWLINE}回复１只精灵２０ＨＰ。",
-   "en": "A 100% pure juice made of Berries.{NEWLINE}It restores the HP of one Pokémon by{NEWLINE}just 20 points.",
+   "en": "A 100% pure juice made of Berries.{NEWLINE}It restores the HP of one Pokémon{NEWLINE}by just 20 points.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/43",
+   "notes": "US 0221/43 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:树果汁",
     "number_missing"
@@ -464,10 +464,10 @@
   {
    "id": 45,
    "zh": "精灵营养饮料。{NEWLINE}提升１只精灵的１０ＨＰ努力值。",
-   "en": "A nutritious drink for Pokémon. It{NEWLINE}raises the HP EVs of a single Pokémon by{NEWLINE}10.",
+   "en": "A nutritious drink for Pokémon.{NEWLINE}It raises the HP EVs of a single{NEWLINE}Pokémon by 10.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/45",
+   "notes": "US 0221/45 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -519,10 +519,10 @@
   {
    "id": 50,
    "zh": "富含能量的糖。{NEWLINE}使１只精灵的等级提升１。",
-   "en": "A candy that is packed with energy.{NEWLINE}It raises the level of a single Pokémon{NEWLINE}by one.",
+   "en": "A candy that is packed with energy.{NEWLINE}It raises the level of a single{NEWLINE}Pokémon by one.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/50",
+   "notes": "US 0221/50 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -530,10 +530,10 @@
   {
    "id": 51,
    "zh": "使１个技能的ＰＰ少量上升。",
-   "en": "It slightly raises the maximum PP of{NEWLINE}a selected move that has been learned{NEWLINE}by the target Pokémon.",
+   "en": "It slightly raises the maximum PP{NEWLINE}of a selected move that has been{NEWLINE}learned by the target Pokémon.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/51",
+   "notes": "US 0221/51 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -575,18 +575,18 @@
   {
    "id": 55,
    "zh": "战斗５回合内,{NEWLINE}全员能力不会下降。",
-   "en": "An item that prevents stat reduction{NEWLINE}among the Trainer’s party Pokémon for{NEWLINE}5 turns after use.",
+   "en": "An item that prevents stat reduction{NEWLINE}among the Trainer’s party Pokémon{NEWLINE}for 5 turns after use.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/55 | digit for 5 (zh ５)"
+   "notes": "US 0221/55 | digit for 5 (zh ５) | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 56,
    "zh": "在战斗中{NEWLINE}提升１级会心率。{NEWLINE}交换后还原。",
-   "en": "Raises a Pokémon’s critical-hit ratio by{NEWLINE}1 stage in battle. It wears off if the{NEWLINE}Pokémon is withdrawn.",
+   "en": "Raises a Pokémon’s critical-hit ratio{NEWLINE}by 1 stage in battle. It wears off{NEWLINE}if the Pokémon is withdrawn.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/56"
+   "notes": "US 0221/56 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 57,
@@ -672,10 +672,10 @@
   {
    "id": 66,
    "zh": "黄色玻璃笛子。{NEWLINE}解除１只精灵的混乱状态。",
-   "en": "A yellow flute made from blown glass.{NEWLINE}Its melody snaps a single Pokémon out{NEWLINE}of confusion.",
+   "en": "A yellow flute made from blown glass.{NEWLINE}Its melody snaps a single Pokémon{NEWLINE}out of confusion.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/66",
+   "notes": "US 0221/66 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -683,10 +683,10 @@
   {
    "id": 67,
    "zh": "红色玻璃笛子。{NEWLINE}解除１只精灵的着迷状态。",
-   "en": "A red flute made from blown glass.{NEWLINE}Its melody snaps a single Pokémon out{NEWLINE}of infatuation.",
+   "en": "A red flute made from blown glass.{NEWLINE}Its melody snaps a single Pokémon{NEWLINE}out of infatuation.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/67",
+   "notes": "US 0221/67 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -718,10 +718,10 @@
   {
    "id": 71,
    "zh": "在浅滩洞窟内发现的漂亮贝壳。{NEWLINE}有蓝白相间的条纹。",
-   "en": "A pretty seashell that was found deep{NEWLINE}inside the Shoal Cave.{NEWLINE}It is striped in blue and white.",
+   "en": "A pretty seashell that was found{NEWLINE}deep inside the Shoal Cave. It is{NEWLINE}striped in blue and white.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/71"
+   "notes": "US 0221/71 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 72,
@@ -758,26 +758,26 @@
   {
    "id": 76,
    "zh": "２００步内{NEWLINE}不会遇到弱小的野生精灵。",
-   "en": "An item that prevents weak wild{NEWLINE}Pokémon from appearing for 200 steps{NEWLINE}after its use.",
+   "en": "An item that prevents weak{NEWLINE}wild Pokémon from appearing for{NEWLINE}200 steps after its use.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/76"
+   "notes": "US 0221/76 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 77,
    "zh": "２５０步内{NEWLINE}不会遇到弱小的野生精灵。",
-   "en": "An item that prevents weak wild{NEWLINE}Pokémon from appearing for 250 steps{NEWLINE}after its use.",
+   "en": "An item that prevents weak{NEWLINE}wild Pokémon from appearing for{NEWLINE}250 steps after its use.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/77"
+   "notes": "US 0221/77 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 78,
    "zh": "又长又结实的绳子。{NEWLINE}能够从洞窟和迷宫中脱出。",
-   "en": "A long, durable rope.{NEWLINE}Use it to escape instantly from a cave{NEWLINE}or a dungeon.",
+   "en": "A long, durable rope. Use it to{NEWLINE}escape instantly from a cave or{NEWLINE}a dungeon.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/78",
+   "notes": "US 0221/78 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:结实"
    ]
@@ -785,10 +785,10 @@
   {
    "id": 79,
    "zh": "１００步内{NEWLINE}不会遇到弱小的野生精灵。",
-   "en": "An item that prevents weak wild{NEWLINE}Pokémon from appearing for 100 steps{NEWLINE}after its use.",
+   "en": "An item that prevents weak{NEWLINE}wild Pokémon from appearing for{NEWLINE}100 steps after its use.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/79"
+   "notes": "US 0221/79 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 80,
@@ -892,10 +892,10 @@
   {
    "id": 89,
    "zh": "发出银色光辉的大珍珠。{NEWLINE}可在商店内高价售出。",
-   "en": "A quite-large pearl that sparkles in a{NEWLINE}pretty silver color. It can be sold at{NEWLINE}a high price to shops.",
+   "en": "A quite-large pearl that sparkles{NEWLINE}in a pretty silver color. It can be{NEWLINE}sold at a high price to shops.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/89",
+   "notes": "US 0221/89 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:商店",
     "glossary:大珍珠"
@@ -904,10 +904,10 @@
   {
    "id": 90,
    "zh": "好看的红色幼滑细沙。{NEWLINE}可在商店内高价售出。",
-   "en": "Lovely, red-colored sand with a loose,{NEWLINE}silky feel. It can be sold at a high{NEWLINE}price to shops.",
+   "en": "Lovely, red-colored sand with a{NEWLINE}loose, silky feel. It can be sold at{NEWLINE}a high price to shops.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/90",
+   "notes": "US 0221/90 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:商店"
    ]
@@ -915,10 +915,10 @@
   {
    "id": 91,
    "zh": "闪着美丽红光的宝石碎片。{NEWLINE}可在商店内高价售出。",
-   "en": "A shard of a pretty gem that sparkles{NEWLINE}in a red color. It can be sold at a{NEWLINE}high price to shops.",
+   "en": "A shard of a pretty gem that{NEWLINE}sparkles in a red color. It can be{NEWLINE}sold at a high price to shops.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/91",
+   "notes": "US 0221/91 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:商店"
    ]
@@ -926,10 +926,10 @@
   {
    "id": 92,
    "zh": "闪着金色光芒的金珠。{NEWLINE}可在商店内高价售出。",
-   "en": "A nugget of pure gold that gives off a{NEWLINE}lustrous gleam. It can be sold at a{NEWLINE}high price to shops.",
+   "en": "A nugget of pure gold that gives{NEWLINE}off a lustrous gleam. It can be sold{NEWLINE}at a high price to shops.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/92",
+   "notes": "US 0221/92 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:商店"
    ]
@@ -937,10 +937,10 @@
   {
    "id": 93,
    "zh": "非常珍贵的心形鳞片。{NEWLINE}闪着淡淡的虹光。",
-   "en": "A pretty, heart-shaped scale that is{NEWLINE}extremely rare. It glows faintly in the{NEWLINE}colors of the rainbow.",
+   "en": "A pretty, heart-shaped scale that{NEWLINE}is extremely rare. It glows faintly{NEWLINE}in the colors of the rainbow.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/93"
+   "notes": "US 0221/93 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 94,
@@ -965,10 +965,10 @@
   {
    "id": 96,
    "zh": "对着松软的土地使用。{NEWLINE}虽然土地的干燥变慢{NEWLINE}但树果的成长也会变慢。",
-   "en": "A fertilizer to be spread on soft soil.{NEWLINE}It slows the growth of Berries and{NEWLINE}causes the soil to dry slower.",
+   "en": "A fertilizer to be spread on soft{NEWLINE}soil. It slows the growth of Berries{NEWLINE}and causes the soil to dry slower.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/96",
+   "notes": "US 0221/96 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:树果"
    ]
@@ -1109,18 +1109,18 @@
   {
    "id": 111,
    "zh": "被针对弱点时,{NEWLINE}攻击和特攻就会大幅提高。",
-   "en": "An item held by a Pokémon. If the{NEWLINE}holder is hit by a move it is weak to, its{NEWLINE}Attack and Sp. Atk sharply rise.",
+   "en": "An item held by a Pokémon. If the{NEWLINE}holder is hit by a move it is weak to,{NEWLINE}its Attack and Sp. Atk sharply rise.",
    "status": "reviewed",
    "origin": "agent",
-   "notes": "US 0221/111"
+   "notes": "US 0221/111 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 112,
    "zh": "让骑拉帝纳携带的话,{NEWLINE}龙系与鬼系技能威力１.２倍。{NEWLINE}散发着光芒的球。",
-   "en": "A glowing orb to be held by Giratina. It{NEWLINE}boosts the power of Dragon- and{NEWLINE}Ghost-type moves 1.2 times.",
+   "en": "A glowing orb to be held by Giratina.{NEWLINE}It boosts the power of Dragon- and{NEWLINE}Ghost-type moves 1.2 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/112; modernised from US 0221#112",
+   "notes": "US 0221/112; modernised from US 0221#112 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1136,10 +1136,10 @@
   {
    "id": 114,
    "zh": "让超梦携带的话,{NEWLINE}会变成铠甲形态。",
-   "en": "If Mewtwo holds it, Mewtwo changes into{NEWLINE}its Armored Form.",
+   "en": "If Mewtwo holds it, Mewtwo changes{NEWLINE}into its Armored Form.",
    "status": "draft",
    "origin": "agent",
-   "notes": "hack item Steel Armor (D: 钢铁铠甲)"
+   "notes": "hack item Steel Armor (D: 钢铁铠甲) | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 115,
@@ -1334,26 +1334,26 @@
   {
    "id": 138,
    "zh": "印着鲜红烈火的信纸。{NEWLINE}可让精灵携带。",
-   "en": "Stationery featuring a print of flames{NEWLINE}in blazing red.{NEWLINE}Let a Pokémon hold it for delivery.",
+   "en": "Stationery featuring a print of{NEWLINE}flames in blazing red. Let a Pokémon{NEWLINE}hold it for delivery.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/138"
+   "notes": "US 0221/138 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 139,
    "zh": "印着蓝色水世界的信纸。{NEWLINE}可让精灵携带。",
-   "en": "Stationery featuring a print of a blue{NEWLINE}world underwater.{NEWLINE}Let a Pokémon hold it for delivery.",
+   "en": "Stationery featuring a print of{NEWLINE}a blue world underwater. Let a{NEWLINE}Pokémon hold it for delivery.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/139"
+   "notes": "US 0221/139 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 140,
    "zh": "印着美丽花瓣图案的信纸。{NEWLINE}可让精灵携带。",
-   "en": "Stationery featuring a print of pretty{NEWLINE}floral patterns.{NEWLINE}Let a Pokémon hold it for delivery.",
+   "en": "Stationery featuring a print of{NEWLINE}pretty floral patterns. Let a{NEWLINE}Pokémon hold it for delivery.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/140",
+   "notes": "US 0221/140 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:美丽花"
    ]
@@ -1361,10 +1361,10 @@
   {
    "id": 141,
    "zh": "印着昏暗矿坑的信纸。{NEWLINE}可让精灵携带。",
-   "en": "Stationery featuring a print of a dimly{NEWLINE}lit coal mine.{NEWLINE}Let a Pokémon hold it for delivery.",
+   "en": "Stationery featuring a print of a{NEWLINE}dimly lit coal mine. Let a Pokémon{NEWLINE}hold it for delivery.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/141"
+   "notes": "US 0221/141 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 142,
@@ -1393,10 +1393,10 @@
   {
    "id": 145,
    "zh": "印着广袤宇宙空间的信纸。{NEWLINE}可让精灵携带。",
-   "en": "Stationery featuring a print depicting{NEWLINE}the huge expanse of space.{NEWLINE}Let a Pokémon hold it for delivery.",
+   "en": "Stationery featuring a print{NEWLINE}depicting the huge expanse of space.{NEWLINE}Let a Pokémon hold it for delivery.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/145"
+   "notes": "US 0221/145 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 146,
@@ -1409,10 +1409,10 @@
   {
    "id": 147,
    "zh": "印着鲜艳虹色图案的信纸。{NEWLINE}可让精灵携带。",
-   "en": "Stationery featuring a print of a vivid{NEWLINE}rainbow pattern.{NEWLINE}Let a Pokémon hold it for delivery.",
+   "en": "Stationery featuring a print of a{NEWLINE}vivid rainbow pattern. Let a Pokémon{NEWLINE}hold it for delivery.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/147"
+   "notes": "US 0221/147 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 148,
@@ -1537,10 +1537,10 @@
   {
    "id": 159,
    "zh": "松饼的材料。携带后{NEWLINE}体力低下时回复ＨＰ,{NEWLINE}可能会陷入混乱状态。",
-   "en": "A Poffin ingredient. If held, it restores{NEWLINE}HP when HP is low. It may cause{NEWLINE}confusion.",
+   "en": "A Poffin ingredient. If held, it{NEWLINE}restores HP when HP is low. It may{NEWLINE}cause confusion.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/159; ext-review RB-D06",
+   "notes": "US 0221/159; ext-review RB-D06 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1548,10 +1548,10 @@
   {
    "id": 160,
    "zh": "松饼的材料。携带后{NEWLINE}体力低下时回复ＨＰ,{NEWLINE}可能会陷入混乱状态。",
-   "en": "A Poffin ingredient. If held, it restores{NEWLINE}HP when HP is low. It may cause{NEWLINE}confusion.",
+   "en": "A Poffin ingredient. If held, it{NEWLINE}restores HP when HP is low. It may{NEWLINE}cause confusion.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/160; ext-review RB-D06",
+   "notes": "US 0221/160; ext-review RB-D06 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1559,10 +1559,10 @@
   {
    "id": 161,
    "zh": "松饼的材料。携带后{NEWLINE}体力低下时回复ＨＰ,{NEWLINE}可能会陷入混乱状态。",
-   "en": "A Poffin ingredient. If held, it restores{NEWLINE}HP when HP is low. It may cause{NEWLINE}confusion.",
+   "en": "A Poffin ingredient. If held, it{NEWLINE}restores HP when HP is low. It may{NEWLINE}cause confusion.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/161; ext-review RB-D06",
+   "notes": "US 0221/161; ext-review RB-D06 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1570,10 +1570,10 @@
   {
    "id": 162,
    "zh": "松饼的材料。携带后{NEWLINE}体力低下时回复ＨＰ,{NEWLINE}可能会陷入混乱状态。",
-   "en": "A Poffin ingredient. If held, it restores{NEWLINE}HP when HP is low. It may cause{NEWLINE}confusion.",
+   "en": "A Poffin ingredient. If held, it{NEWLINE}restores HP when HP is low. It may{NEWLINE}cause confusion.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/162; ext-review RB-D06",
+   "notes": "US 0221/162; ext-review RB-D06 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1581,10 +1581,10 @@
   {
    "id": 163,
    "zh": "松饼的材料。携带后{NEWLINE}体力低下时回复ＨＰ,{NEWLINE}可能会陷入混乱状态。",
-   "en": "A Poffin ingredient. If held, it restores{NEWLINE}HP when HP is low. It may cause{NEWLINE}confusion.",
+   "en": "A Poffin ingredient. If held, it{NEWLINE}restores HP when HP is low. It may{NEWLINE}cause confusion.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/163; ext-review RB-D06",
+   "notes": "US 0221/163; ext-review RB-D06 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1608,18 +1608,18 @@
   {
    "id": 166,
    "zh": "松饼的材料。{NEWLINE}埋在松软的土地里{NEWLINE}能种出纳纳树。",
-   "en": "An ingredient for Poffins. Plant it in{NEWLINE}soft soil to grow a Nanab Berry tree.",
+   "en": "An ingredient for Poffins. Plant{NEWLINE}it in soft soil to grow a Nanab{NEWLINE}Berry tree.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/166"
+   "notes": "US 0221/166 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 167,
    "zh": "松饼的材料。{NEWLINE}埋在松软的土地里{NEWLINE}能种出塞西纳树。",
-   "en": "An ingredient for Poffins. Plant it in{NEWLINE}soft soil to grow a Wepear Berry tree.",
+   "en": "An ingredient for Poffins. Plant{NEWLINE}it in soft soil to grow a Wepear{NEWLINE}Berry tree.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/167"
+   "notes": "US 0221/167 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 168,
@@ -1698,26 +1698,26 @@
   {
    "id": 175,
    "zh": "松饼的材料。{NEWLINE}埋在松软的土地里{NEWLINE}能种出莫克西树。",
-   "en": "An ingredient for Poffins. Plant it in{NEWLINE}soft soil to grow a Cornn Berry tree.",
+   "en": "An ingredient for Poffins. Plant{NEWLINE}it in soft soil to grow a Cornn{NEWLINE}Berry tree.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/175"
+   "notes": "US 0221/175 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 176,
    "zh": "松饼的材料。{NEWLINE}埋在松软的土地里{NEWLINE}能种出枸斯树。",
-   "en": "An ingredient for Poffins. Plant it in{NEWLINE}soft soil to grow a Magost Berry tree.",
+   "en": "An ingredient for Poffins. Plant{NEWLINE}it in soft soil to grow a Magost{NEWLINE}Berry tree.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/176"
+   "notes": "US 0221/176 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 177,
    "zh": "松饼的材料。{NEWLINE}埋在松软的土地里{NEWLINE}能种出拉布塔树。",
-   "en": "An ingredient for Poffins. Plant it in{NEWLINE}soft soil to grow a Rabuta Berry tree.",
+   "en": "An ingredient for Poffins. Plant{NEWLINE}it in soft soil to grow a Rabuta{NEWLINE}Berry tree.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/177"
+   "notes": "US 0221/177 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 178,
@@ -1730,26 +1730,26 @@
   {
    "id": 179,
    "zh": "松饼的材料。{NEWLINE}埋在松软的土地里{NEWLINE}能种出诺瓦基树。",
-   "en": "An ingredient for Poffins. Plant it in{NEWLINE}soft soil to grow a Spelon Berry tree.",
+   "en": "An ingredient for Poffins. Plant{NEWLINE}it in soft soil to grow a Spelon{NEWLINE}Berry tree.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/179"
+   "notes": "US 0221/179 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 180,
    "zh": "松饼的材料。{NEWLINE}埋在松软的土地里{NEWLINE}能种出西亚树。",
-   "en": "An ingredient for Poffins. Plant it in{NEWLINE}soft soil to grow a Pamtre Berry tree.",
+   "en": "An ingredient for Poffins. Plant{NEWLINE}it in soft soil to grow a Pamtre{NEWLINE}Berry tree.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/180"
+   "notes": "US 0221/180 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 181,
    "zh": "松饼的材料。{NEWLINE}埋在松软的土地里{NEWLINE}能种出凯斯树。",
-   "en": "An ingredient for Poffins. Plant it in{NEWLINE}soft soil to grow a Watmel Berry tree.",
+   "en": "An ingredient for Poffins. Plant{NEWLINE}it in soft soil to grow a Watmel{NEWLINE}Berry tree.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/181"
+   "notes": "US 0221/181 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 182,
@@ -1770,10 +1770,10 @@
   {
    "id": 184,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的{NEWLINE}火系技能攻击时伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a supereffective{NEWLINE}Fire-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}supereffective Fire-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/184; ext-review ROOT-021",
+   "notes": "US 0221/184; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1781,10 +1781,10 @@
   {
    "id": 185,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的{NEWLINE}水系技能攻击时伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a supereffective{NEWLINE}Water-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}supereffective Water-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/185; ext-review ROOT-021",
+   "notes": "US 0221/185; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1792,10 +1792,10 @@
   {
    "id": 186,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的{NEWLINE}电系技能攻击时伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a supereffective{NEWLINE}Electric-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}supereffective Electric-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/186; ext-review ROOT-021",
+   "notes": "US 0221/186; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1803,10 +1803,10 @@
   {
    "id": 187,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的{NEWLINE}草系技能攻击时伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a supereffective{NEWLINE}Grass-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}supereffective Grass-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/187; ext-review ROOT-021",
+   "notes": "US 0221/187; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1814,10 +1814,10 @@
   {
    "id": 188,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的{NEWLINE}冰系技能攻击时伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a supereffective{NEWLINE}Ice-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}supereffective Ice-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/188; ext-review ROOT-021",
+   "notes": "US 0221/188; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1825,10 +1825,10 @@
   {
    "id": 189,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的{NEWLINE}格斗系技能攻击时伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a supereffective{NEWLINE}Fighting-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}supereffective Fighting-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/189; ext-review ROOT-021",
+   "notes": "US 0221/189; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1836,10 +1836,10 @@
   {
    "id": 190,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的{NEWLINE}毒系技能攻击时伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a supereffective{NEWLINE}Poison-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}supereffective Poison-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/190; ext-review ROOT-021",
+   "notes": "US 0221/190; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1847,10 +1847,10 @@
   {
    "id": 191,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的{NEWLINE}地面系技能攻击时伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a supereffective{NEWLINE}Ground-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}supereffective Ground-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/191; ext-review ROOT-021",
+   "notes": "US 0221/191; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:地面",
     "glossary:携带"
@@ -1859,10 +1859,10 @@
   {
    "id": 192,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的{NEWLINE}飞行系技能攻击时伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a supereffective{NEWLINE}Flying-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}supereffective Flying-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/192; ext-review ROOT-021",
+   "notes": "US 0221/192; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1870,10 +1870,10 @@
   {
    "id": 193,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的{NEWLINE}超能系技能攻击时伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a supereffective{NEWLINE}Psychic-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}supereffective Psychic-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/193; ext-review ROOT-021",
+   "notes": "US 0221/193; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1881,10 +1881,10 @@
   {
    "id": 194,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的{NEWLINE}虫系技能攻击时伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a supereffective{NEWLINE}Bug-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}supereffective Bug-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/194; ext-review ROOT-021",
+   "notes": "US 0221/194; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1892,10 +1892,10 @@
   {
    "id": 195,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的{NEWLINE}岩石系技能攻击时伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a supereffective{NEWLINE}Rock-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}supereffective Rock-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/195; ext-review ROOT-021",
+   "notes": "US 0221/195; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1903,10 +1903,10 @@
   {
    "id": 196,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的{NEWLINE}鬼系技能攻击时伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a supereffective{NEWLINE}Ghost-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}supereffective Ghost-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/196; ext-review ROOT-021",
+   "notes": "US 0221/196; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1914,10 +1914,10 @@
   {
    "id": 197,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的{NEWLINE}龙系技能攻击时伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a supereffective{NEWLINE}Dragon-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}supereffective Dragon-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/197; ext-review ROOT-021",
+   "notes": "US 0221/197; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1925,10 +1925,10 @@
   {
    "id": 198,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的{NEWLINE}恶系技能攻击时伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a supereffective{NEWLINE}Dark-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}supereffective Dark-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/198; ext-review ROOT-021",
+   "notes": "US 0221/198; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1936,10 +1936,10 @@
   {
    "id": 199,
    "zh": "松饼的材料。{NEWLINE}携带后受到克制的{NEWLINE}钢系技能攻击时伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a supereffective{NEWLINE}Steel-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}supereffective Steel-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/199; ext-review ROOT-021",
+   "notes": "US 0221/199; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -1947,10 +1947,10 @@
   {
    "id": 200,
    "zh": "松饼的材料。{NEWLINE}携带后受到普通技能攻击时,{NEWLINE}伤害减半。",
-   "en": "A Poffin ingredient. If held, it halves{NEWLINE}the damage from a Normal-type move.",
+   "en": "A Poffin ingredient. If held,{NEWLINE}it halves the damage from a{NEWLINE}Normal-type move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/200; ext-review ROOT-021",
+   "notes": "US 0221/200; ext-review ROOT-021 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2132,10 +2132,10 @@
   {
    "id": 217,
    "zh": "锐利的轻型爪。{NEWLINE}携带后２３.４％先制行动。",
-   "en": "An item to be held by a Pokémon. A{NEWLINE}light, sharp claw that gives the holder{NEWLINE}a 23.4% chance to move first.",
+   "en": "An item to be held by a Pokémon.{NEWLINE}A light, sharp claw that gives the{NEWLINE}holder a 23.4% chance to move first.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/217",
+   "notes": "US 0221/217 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:先制"
    ]
@@ -2174,10 +2174,10 @@
   {
    "id": 221,
    "zh": "携带后攻击,{NEWLINE}对手１０％几率害怕。",
-   "en": "An item to be held by a Pokémon. When{NEWLINE}the holder attacks, it has a 10% chance{NEWLINE}of making the foe flinch.",
+   "en": "An item to be held by a Pokémon.{NEWLINE}When the holder attacks, it has a{NEWLINE}10% chance of making the foe flinch.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/221"
+   "notes": "US 0221/221 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 222,
@@ -2204,18 +2204,18 @@
   {
    "id": 224,
    "zh": "让最前面的精灵携带,{NEWLINE}不容易遇到野生精灵。",
-   "en": "An item to be held by a Pokémon.{NEWLINE}It helps keep wild Pokémon away if the{NEWLINE}holder is the first one in the party.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}helps keep wild Pokémon away if the{NEWLINE}holder is the first one in the party.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/224"
+   "notes": "US 0221/224 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 225,
    "zh": "拉帝欧斯或让拉帝亚斯携带,{NEWLINE}特攻和特防１.５倍。{NEWLINE}不可思议的球。",
-   "en": "A wondrous orb to be held by Latios or{NEWLINE}Latias. It boosts both Sp. Atk and{NEWLINE}Sp. Def 1.5 times.",
+   "en": "A wondrous orb to be held by Latios{NEWLINE}or Latias. It boosts both Sp. Atk{NEWLINE}and Sp. Def 1.5 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/225; modernised from US 0221#225",
+   "notes": "US 0221/225; modernised from US 0221#225 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2223,10 +2223,10 @@
   {
    "id": 226,
    "zh": "让珍珠贝携带后特攻２倍的牙。{NEWLINE}散发着银光。",
-   "en": "A fang that gleams a sharp silver. If{NEWLINE}Clamperl holds it, its Sp. Atk doubles.",
+   "en": "A fang that gleams a sharp{NEWLINE}silver. If Clamperl holds it, its{NEWLINE}Sp. Atk doubles.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/226; modernised from US 0221#226",
+   "notes": "US 0221/226; modernised from US 0221#226 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -2234,10 +2234,10 @@
   {
    "id": 227,
    "zh": "让珍珠贝携带后特防２倍的鳞片。{NEWLINE}散发着淡淡的粉红色光。",
-   "en": "A scale that shines a faint pink. If{NEWLINE}Clamperl holds it, its Sp. Def doubles.",
+   "en": "A scale that shines a faint{NEWLINE}pink. If Clamperl holds it, its{NEWLINE}Sp. Def doubles.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/227; modernised from US 0221#227",
+   "notes": "US 0221/227; modernised from US 0221#227 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -2245,18 +2245,18 @@
   {
    "id": 228,
    "zh": "让携带的精灵{NEWLINE}一定能成功脱离{NEWLINE}与野生精灵的战斗。",
-   "en": "An item to be held by a Pokémon.{NEWLINE}It enables the holder to flee from any{NEWLINE}wild Pokémon without fail.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}enables the holder to flee from any{NEWLINE}wild Pokémon without fail.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/228"
+   "notes": "US 0221/228 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 229,
    "zh": "精灵携带后无法进化。{NEWLINE}不可思议的石头。",
-   "en": "An item to be held by a Pokémon.{NEWLINE}The Pokémon holding this peculiar stone{NEWLINE}is prevented from evolving.",
+   "en": "An item to be held by a Pokémon. The{NEWLINE}Pokémon holding this peculiar stone{NEWLINE}is prevented from evolving.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/229",
+   "notes": "US 0221/229 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:进化"
    ]
@@ -2315,10 +2315,10 @@
   {
    "id": 236,
    "zh": "皮卡丘携带后{NEWLINE}物攻与特攻２倍,{NEWLINE}不可思议的珠。",
-   "en": "A puzzling orb. If Pikachu holds it, its{NEWLINE}Attack and Sp. Atk double.",
+   "en": "A puzzling orb. If Pikachu holds it,{NEWLINE}its Attack and Sp. Atk double.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/236; modernised from US 0221#236",
+   "notes": "US 0221/236; modernised from US 0221#236 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -2349,10 +2349,10 @@
   {
    "id": 239,
    "zh": "有生命的种子。{NEWLINE}携带后草系技能{NEWLINE}威力１.２倍。",
-   "en": "An item to be held by a Pokémon. It is a{NEWLINE}seed full of life that boosts the{NEWLINE}power of Grass-type moves 1.2 times.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}is a seed full of life that boosts the{NEWLINE}power of Grass-type moves 1.2 times.",
    "status": "reviewed",
    "origin": "agent",
-   "notes": "US 0221/239",
+   "notes": "US 0221/239 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2462,10 +2462,10 @@
   {
    "id": 249,
    "zh": "烧东西的燃料。{NEWLINE}携带后火系技能{NEWLINE}威力１.２倍。",
-   "en": "An item to be held by a Pokémon. It is a{NEWLINE}combustible fuel that boosts the power{NEWLINE}of Fire-type moves 1.2 times.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}is a combustible fuel that boosts the{NEWLINE}power of Fire-type moves 1.2 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/249",
+   "notes": "US 0221/249 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2533,18 +2533,18 @@
   {
    "id": 256,
    "zh": "招来幸运的手套。{NEWLINE}让吉利蛋装备后会心率上升２级。",
-   "en": "Gloves that bring good luck. If Chansey{NEWLINE}holds them, its critical-hit ratio rises{NEWLINE}by 2 stages.",
+   "en": "Gloves that bring good luck. If{NEWLINE}Chansey holds them, its critical-hit{NEWLINE}ratio rises by 2 stages.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/256; modernised from US 0221#256"
+   "notes": "US 0221/256; modernised from US 0221#256 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 257,
    "zh": "让百变怪携带后{NEWLINE}防御和特防１.５倍,{NEWLINE}不可思议的粉末,又细又硬。",
-   "en": "An odd powder, extremely fine yet hard.{NEWLINE}If Ditto holds it, its Defense and{NEWLINE}Sp. Def rise 1.5 times.",
+   "en": "An odd powder, extremely fine yet{NEWLINE}hard. If Ditto holds it, its Defense{NEWLINE}and Sp. Def rise 1.5 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/257; modernised from US 0221#257"
+   "notes": "US 0221/257; modernised from US 0221#257 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 258,
@@ -2560,10 +2560,10 @@
   {
    "id": 259,
    "zh": "又长又硬的梗。{NEWLINE}大葱鸭携带后会心率上升２级。",
-   "en": "A very long and stiff stalk of leek. If{NEWLINE}Farfetch’d holds it, its critical-hit{NEWLINE}ratio rises by 2 stages.",
+   "en": "A very long and stiff stalk of{NEWLINE}leek. If Farfetch’d holds it, its{NEWLINE}critical-hit ratio rises by 2 stages.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/259; modernised from US 0221#259"
+   "notes": "US 0221/259; modernised from US 0221#259 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 260,
@@ -2576,10 +2576,10 @@
   {
    "id": 261,
    "zh": "携带后参加竞技赛,{NEWLINE}该精灵会比平常更美丽。",
-   "en": "An item to be held by a Pokémon.{NEWLINE}It boosts the “Beauty” aspect of the{NEWLINE}holder in a Contest in Sinnoh.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}boosts the “Beauty” aspect of the{NEWLINE}holder in a Contest in Sinnoh.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/261"
+   "notes": "US 0221/261 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 262,
@@ -2608,10 +2608,10 @@
   {
    "id": 265,
    "zh": "能放大物象的透镜。{NEWLINE}携带后技能命中率１.１倍。",
-   "en": "An item to be held by a Pokémon. It is a{NEWLINE}magnifying lens that boosts the{NEWLINE}accuracy of moves 1.1 times.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}is a magnifying lens that boosts the{NEWLINE}accuracy of moves 1.1 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/265",
+   "notes": "US 0221/265 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2653,10 +2653,10 @@
   {
    "id": 269,
    "zh": "携带后{NEWLINE}当精灵使用光壁和反射镜时{NEWLINE}效果时间延长至８回合。",
-   "en": "An item to be held by a Pokémon. Light{NEWLINE}Screen and Reflect used by the holder{NEWLINE}last 8 turns.",
+   "en": "An item to be held by a Pokémon.{NEWLINE}Light Screen and Reflect used by{NEWLINE}the holder last 8 turns.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/269"
+   "notes": "US 0221/269 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 270,
@@ -2681,10 +2681,10 @@
   {
    "id": 272,
    "zh": "触碰分泌毒液的珠。{NEWLINE}携带后在战斗中变为剧毒状态。",
-   "en": "An item to be held by a Pokémon.{NEWLINE}It is a bizarre orb that badly poisons{NEWLINE}the holder in battle.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}is a bizarre orb that badly poisons{NEWLINE}the holder in battle.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/272",
+   "notes": "US 0221/272 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:剧毒"
    ]
@@ -2700,10 +2700,10 @@
   {
    "id": 274,
    "zh": "让百变怪携带后速度２倍。{NEWLINE}又小又硬。",
-   "en": "An odd powder, extremely fine yet hard.{NEWLINE}If Ditto holds it, its Speed doubles.",
+   "en": "An odd powder, extremely fine{NEWLINE}yet hard. If Ditto holds it, its{NEWLINE}Speed doubles.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/274; modernised from US 0221#274",
+   "notes": "US 0221/274; modernised from US 0221#274 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -2751,10 +2751,10 @@
   {
    "id": 279,
    "zh": "很重的尾巴。{NEWLINE}携带后比对手后行动。",
-   "en": "A very heavy tail. When held, it makes{NEWLINE}the holder move after the foe.",
+   "en": "A very heavy tail. When held, it{NEWLINE}makes the holder move after the foe.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/279; ext-review ROOT-023"
+   "notes": "US 0221/279; ext-review ROOT-023 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 280,
@@ -2786,18 +2786,18 @@
   {
    "id": 283,
    "zh": "携带的精灵发动沙暴时,{NEWLINE}持续时间延长至８回合。",
-   "en": "An item to be held by a Pokémon. It{NEWLINE}extends the duration of Sandstorm used{NEWLINE}by the holder to 8 turns.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}extends the duration of Sandstorm{NEWLINE}used by the holder to 8 turns.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/283"
+   "notes": "US 0221/283 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 284,
    "zh": "携带的精灵发动晴天时,{NEWLINE}持续时间延长至８回合。",
-   "en": "An item to be held by a Pokémon. It{NEWLINE}extends the duration of Sunny Day used{NEWLINE}by the holder to 8 turns.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}extends the duration of Sunny Day{NEWLINE}used by the holder to 8 turns.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/284",
+   "notes": "US 0221/284 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:晴天"
    ]
@@ -2805,10 +2805,10 @@
   {
    "id": 285,
    "zh": "携带的精灵发动求雨时,{NEWLINE}持续时间延长至８回合。",
-   "en": "An item to be held by a Pokémon. It{NEWLINE}extends the duration of Rain Dance used{NEWLINE}by the holder to 8 turns.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}extends the duration of Rain Dance{NEWLINE}used by the holder to 8 turns.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/285"
+   "notes": "US 0221/285 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 286,
@@ -2825,10 +2825,10 @@
   {
    "id": 287,
    "zh": "有点断掉的围巾。{NEWLINE}携带后速度１.５倍,{NEWLINE}只能持续使用一招。",
-   "en": "An item to be held by a Pokémon. This{NEWLINE}slightly frayed scarf boosts Speed 1.5{NEWLINE}times, but allows only one move.",
+   "en": "An item to be held by a Pokémon. This{NEWLINE}slightly frayed scarf boosts Speed{NEWLINE}1.5 times, but allows only one move.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/287",
+   "notes": "US 0221/287 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2900,10 +2900,10 @@
   {
    "id": 296,
    "zh": "携带后发动ＨＰ吸收技能时,{NEWLINE}ＨＰ回复量增加。",
-   "en": "A Pokémon held item that makes{NEWLINE}HP-stealing moves restore more HP to{NEWLINE}the holder.",
+   "en": "A Pokémon held item that makes{NEWLINE}HP-stealing moves restore more{NEWLINE}HP to the holder.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/296; ext-review ROOT-022",
+   "notes": "US 0221/296; ext-review ROOT-022 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:增加"
    ]
@@ -2922,10 +2922,10 @@
   {
    "id": 298,
    "zh": "火系石板。{NEWLINE}携带后火系技能威力１.２倍。",
-   "en": "An item to be held by a Pokémon. It is a{NEWLINE}stone tablet that boosts the power of{NEWLINE}Fire-type moves 1.2 times.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}is a stone tablet that boosts the{NEWLINE}power of Fire-type moves 1.2 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/298",
+   "notes": "US 0221/298 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2933,10 +2933,10 @@
   {
    "id": 299,
    "zh": "水系石板。{NEWLINE}携带后水系技能威力１.２倍。",
-   "en": "An item to be held by a Pokémon. It is a{NEWLINE}stone tablet that boosts the power of{NEWLINE}Water-type moves 1.2 times.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}is a stone tablet that boosts the{NEWLINE}power of Water-type moves 1.2 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/299",
+   "notes": "US 0221/299 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2955,10 +2955,10 @@
   {
    "id": 301,
    "zh": "草系石板。{NEWLINE}携带后草系技能威力１.２倍。",
-   "en": "An item to be held by a Pokémon. It is a{NEWLINE}stone tablet that boosts the power of{NEWLINE}Grass-type moves 1.2 times.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}is a stone tablet that boosts the{NEWLINE}power of Grass-type moves 1.2 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/301",
+   "notes": "US 0221/301 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2966,10 +2966,10 @@
   {
    "id": 302,
    "zh": "冰系石板。{NEWLINE}携带后冰系技能威力１.２倍。",
-   "en": "An item to be held by a Pokémon. It is a{NEWLINE}stone tablet that boosts the power of{NEWLINE}Ice-type moves 1.2 times.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}is a stone tablet that boosts the{NEWLINE}power of Ice-type moves 1.2 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/302",
+   "notes": "US 0221/302 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -3033,10 +3033,10 @@
   {
    "id": 308,
    "zh": "虫系石板。{NEWLINE}携带后虫系技能威力１.２倍。",
-   "en": "An item to be held by a Pokémon. It is a{NEWLINE}stone tablet that boosts the power of{NEWLINE}Bug-type moves 1.2 times.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}is a stone tablet that boosts the{NEWLINE}power of Bug-type moves 1.2 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/308",
+   "notes": "US 0221/308 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -3044,10 +3044,10 @@
   {
    "id": 309,
    "zh": "岩石系石板。{NEWLINE}携带后岩系技能威力１.２倍。",
-   "en": "An item to be held by a Pokémon. It is a{NEWLINE}stone tablet that boosts the power of{NEWLINE}Rock-type moves 1.2 times.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}is a stone tablet that boosts the{NEWLINE}power of Rock-type moves 1.2 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/309",
+   "notes": "US 0221/309 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -3055,10 +3055,10 @@
   {
    "id": 310,
    "zh": "鬼系石板。{NEWLINE}携带后鬼系技能威力１.２倍。",
-   "en": "An item to be held by a Pokémon. It is a{NEWLINE}stone tablet that boosts the power of{NEWLINE}Ghost-type moves 1.2 times.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}is a stone tablet that boosts the{NEWLINE}power of Ghost-type moves 1.2 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/310",
+   "notes": "US 0221/310 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -3077,10 +3077,10 @@
   {
    "id": 312,
    "zh": "恶系石板。{NEWLINE}携带后恶系技能威力１.２倍。",
-   "en": "An item to be held by a Pokémon. It is a{NEWLINE}stone tablet that boosts the power of{NEWLINE}Dark-type moves 1.2 times.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}is a stone tablet that boosts the{NEWLINE}power of Dark-type moves 1.2 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/312",
+   "notes": "US 0221/312 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -3088,10 +3088,10 @@
   {
    "id": 313,
    "zh": "钢系石板。{NEWLINE}携带后钢系技能威力１.２倍。",
-   "en": "An item to be held by a Pokémon. It is a{NEWLINE}stone tablet that boosts the power of{NEWLINE}Steel-type moves 1.2 times.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}is a stone tablet that boosts the{NEWLINE}power of Steel-type moves 1.2 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/313",
+   "notes": "US 0221/313 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -3165,10 +3165,10 @@
   {
    "id": 320,
    "zh": "让最前面的精灵携带后,{NEWLINE}不容易遇到野生精灵。",
-   "en": "An item to be held by a Pokémon.{NEWLINE}It helps keep wild Pokémon away if the{NEWLINE}holder is the first one in the party.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}helps keep wild Pokémon away if the{NEWLINE}holder is the first one in the party.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/320"
+   "notes": "US 0221/320 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 321,
@@ -3197,18 +3197,18 @@
   {
    "id": 324,
    "zh": "让精灵携带后,{NEWLINE}受到打击招式攻击时{NEWLINE}能给予对手伤害。",
-   "en": "An item to be held by a Pokémon. If the{NEWLINE}holder is hit by a direct attack, the{NEWLINE}attacker also takes damage.",
+   "en": "An item to be held by a Pokémon. If{NEWLINE}the holder is hit by a direct attack,{NEWLINE}the attacker also takes damage.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/324"
+   "notes": "US 0221/324 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 325,
    "zh": "这块石头与喷火龙产生了共鸣,{NEWLINE}让喷火龙携带的话,{NEWLINE}可能会发生什么。",
-   "en": "This stone resonates with Charizard. If{NEWLINE}Charizard holds it, something might{NEWLINE}happen...",
+   "en": "This stone resonates with Charizard.{NEWLINE}If Charizard holds it, something{NEWLINE}might happen...",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/325 | hack Mega Stone template"
+   "notes": "US 0221/325 | hack Mega Stone template | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 326,
@@ -3245,10 +3245,10 @@
   {
    "id": 330,
    "zh": "用水的振动攻击。{NEWLINE}２０％令对手陷入混乱状态。",
-   "en": "The foe is hit with a pulsing blast of{NEWLINE}water. It has a 20% chance to confuse{NEWLINE}the target.",
+   "en": "The foe is hit with a pulsing blast{NEWLINE}of water. It has a 20% chance to{NEWLINE}confuse the target.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/330",
+   "notes": "US 0221/330 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:混乱"
    ]
@@ -3256,10 +3256,10 @@
   {
    "id": 331,
    "zh": "集中精神让心平静,{NEWLINE}特攻和特防上升１级。",
-   "en": "The user quietly focuses its mind and{NEWLINE}calms its spirit to raise its Sp. Atk and{NEWLINE}Sp. Def by 1 stage each.",
+   "en": "The user quietly focuses its mind and{NEWLINE}calms its spirit to raise its Sp. Atk{NEWLINE}and Sp. Def by 1 stage each.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/331"
+   "notes": "US 0221/331 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 332,
@@ -3284,10 +3284,10 @@
   {
    "id": 334,
    "zh": "５回合内持续下冰雹,{NEWLINE}冰系以外的精灵受到伤害。",
-   "en": "Summons a hailstorm that lasts for 5{NEWLINE}turns. The hailstorm damages all types{NEWLINE}except Ice.",
+   "en": "Summons a hailstorm that lasts for{NEWLINE}5 turns. The hailstorm damages all{NEWLINE}types except Ice.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/334 | digit for 5",
+   "notes": "US 0221/334 | digit for 5 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:精灵"
    ]
@@ -3295,10 +3295,10 @@
   {
    "id": 335,
    "zh": "集中力量让肌肉收缩,{NEWLINE}物攻和物防上升１级。",
-   "en": "The user tenses its muscles to bulk up{NEWLINE}its body, raising its Attack and Defense{NEWLINE}by 1 stage each.",
+   "en": "The user tenses its muscles to bulk{NEWLINE}up its body, raising its Attack and{NEWLINE}Defense by 1 stage each.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/335",
+   "notes": "US 0221/335 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:集中力"
    ]
@@ -3306,10 +3306,10 @@
   {
    "id": 336,
    "zh": "发射２ー５次连续种子攻击。{NEWLINE}",
-   "en": "The user forcefully shoots seeds at{NEWLINE}the foe. 2 to 5 seeds are shot in rapid{NEWLINE}succession.{NEWLINE}",
+   "en": "The user forcefully shoots seeds{NEWLINE}at the foe. 2 to 5 seeds are shot{NEWLINE}in rapid succession.{NEWLINE}",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/336 | digits"
+   "notes": "US 0221/336 | digits | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 337,
@@ -3326,42 +3326,42 @@
   {
    "id": 338,
    "zh": "５回合内阳光增强,{NEWLINE}火系技能威力１.５倍。{NEWLINE}",
-   "en": "The user intensifies the sun for 5{NEWLINE}turns, boosting the power of Fire-type{NEWLINE}moves 1.5 times.{NEWLINE}",
+   "en": "The user intensifies the sun for{NEWLINE}5 turns, boosting the power of{NEWLINE}Fire-type moves 1.5 times.{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/338"
+   "notes": "US 0221/338 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 339,
    "zh": "让对手发怒,{NEWLINE}２ー４回合只能使用{NEWLINE}直接伤害技能。",
-   "en": "The foe is taunted into a rage that{NEWLINE}allows it to use only attack moves for 2{NEWLINE}to 4 turns.",
+   "en": "The foe is taunted into a rage that{NEWLINE}allows it to use only attack moves{NEWLINE}for 2 to 4 turns.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/339 | digits"
+   "notes": "US 0221/339 | digits | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 340,
    "zh": "发射冷气光线。{NEWLINE}１０％让对手陷入冰冻状态。",
-   "en": "The foe is struck with an icy-cold beam{NEWLINE}of energy. It has a 10% chance to{NEWLINE}freeze the target solid.",
+   "en": "The foe is struck with an icy-cold{NEWLINE}beam of energy. It has a 10% chance{NEWLINE}to freeze the target solid.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/340"
+   "notes": "US 0221/340 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 341,
    "zh": "挂起猛烈的暴风雪。{NEWLINE}１０％让对手陷入冰冻状态。",
-   "en": "A howling blizzard is summoned to strike{NEWLINE}the foe. It has a 10% chance to freeze{NEWLINE}the target solid.",
+   "en": "A howling blizzard is summoned to{NEWLINE}strike the foe. It has a 10% chance{NEWLINE}to freeze the target solid.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/341"
+   "notes": "US 0221/341 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 342,
    "zh": "发射强力光线。{NEWLINE}使用后的下个回合{NEWLINE}因后座力而无法行动。",
-   "en": "The foe is attacked with a powerful{NEWLINE}beam. The user must rest on the next{NEWLINE}turn to regain its energy.",
+   "en": "The foe is attacked with a powerful{NEWLINE}beam. The user must rest on the{NEWLINE}next turn to regain its energy.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/342"
+   "notes": "US 0221/342 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 343,
@@ -3382,18 +3382,18 @@
   {
    "id": 345,
    "zh": "５回合内持续下雨,{NEWLINE}水系技能威力１.５倍。",
-   "en": "The user summons a heavy rain that{NEWLINE}falls for 5 turns, boosting the power of{NEWLINE}Water-type moves 1.5 times.",
+   "en": "The user summons a heavy rain that{NEWLINE}falls for 5 turns, boosting the power{NEWLINE}of Water-type moves 1.5 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/345"
+   "notes": "US 0221/345 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 346,
    "zh": "吸收养分的攻击。{NEWLINE}伤害的一半转为ＨＰ。",
-   "en": "A nutrient-draining attack. The user’s{NEWLINE}HP is restored by half the damage{NEWLINE}taken by the target.",
+   "en": "A nutrient-draining attack. The{NEWLINE}user’s HP is restored by half the{NEWLINE}damage taken by the target.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/346"
+   "notes": "US 0221/346 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 347,
@@ -3439,10 +3439,10 @@
   {
    "id": 351,
    "zh": "发出强力电击。{NEWLINE}１０％陷入麻痹状态。",
-   "en": "A strong electric blast is loosed at the{NEWLINE}foe. It has a 10% chance to leave the{NEWLINE}target paralyzed.",
+   "en": "A strong electric blast is loosed{NEWLINE}at the foe. It has a 10% chance to{NEWLINE}leave the target paralyzed.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/351",
+   "notes": "US 0221/351 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:电击",
     "glossary:麻痹"
@@ -3463,10 +3463,10 @@
   {
    "id": 353,
    "zh": "制造山摇地动的地震。{NEWLINE}能打中挖洞的敌人并且伤害２倍。",
-   "en": "The user sets off an earthquake. It{NEWLINE}can hit a foe that is underground using{NEWLINE}Dig, dealing double damage.",
+   "en": "The user sets off an earthquake.{NEWLINE}It can hit a foe that is underground{NEWLINE}using Dig, dealing double damage.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/353",
+   "notes": "US 0221/353 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -3485,10 +3485,10 @@
   {
    "id": 355,
    "zh": "第１回合潜入地底,{NEWLINE}第２回合攻击。{NEWLINE}能用来脱出洞穴。",
-   "en": "The user burrows, then attacks on the{NEWLINE}second turn. It can also be used to{NEWLINE}exit dungeons.",
+   "en": "The user burrows, then attacks{NEWLINE}on the second turn. It can also be{NEWLINE}used to exit dungeons.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/355",
+   "notes": "US 0221/355 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -3496,10 +3496,10 @@
   {
    "id": 356,
    "zh": "用强力的念力攻击。{NEWLINE}１０％降低１级特防。",
-   "en": "The foe is hit by a strong telekinetic{NEWLINE}force. It has a 10% chance to lower the{NEWLINE}target’s Sp. Def by 1 stage.",
+   "en": "The foe is hit by a strong telekinetic{NEWLINE}force. It has a 10% chance to lower{NEWLINE}the target’s Sp. Def by 1 stage.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/356",
+   "notes": "US 0221/356 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:念力"
    ]
@@ -3507,10 +3507,10 @@
   {
    "id": 357,
    "zh": "扔出一团黑影攻击。{NEWLINE}２０％降低１级特防。",
-   "en": "The user hurls a shadowy blob at the{NEWLINE}foe. It has a 20% chance to lower the{NEWLINE}target’s Sp. Def by 1 stage.",
+   "en": "The user hurls a shadowy blob at the{NEWLINE}foe. It has a 20% chance to lower{NEWLINE}the target’s Sp. Def by 1 stage.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/357"
+   "notes": "US 0221/357 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 358,
@@ -3542,10 +3542,10 @@
   {
    "id": 361,
    "zh": "快速的放电攻击。{NEWLINE}攻击一定命中。",
-   "en": "The user strikes the foe with a quick{NEWLINE}jolt of electricity. This attack cannot{NEWLINE}be evaded.",
+   "en": "The user strikes the foe with a quick{NEWLINE}jolt of electricity. This attack{NEWLINE}cannot be evaded.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/361",
+   "notes": "US 0221/361 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:命中",
     "glossary:放电"
@@ -3562,18 +3562,18 @@
   {
    "id": 363,
    "zh": "投出肮脏的淤泥。{NEWLINE}３０％陷入中毒状态。",
-   "en": "Unsanitary sludge is hurled at the foe.{NEWLINE}It has a 30% chance to poison the{NEWLINE}target.",
+   "en": "Unsanitary sludge is hurled at{NEWLINE}the foe. It has a 30% chance to{NEWLINE}poison the target.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/363"
+   "notes": "US 0221/363 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 364,
    "zh": "持续５回合的沙暴。{NEWLINE}地面、岩石和钢系{NEWLINE}以外的精灵受到伤害。",
-   "en": "A 5-turn sandstorm is summoned to hurt{NEWLINE}all combatants except the Rock,{NEWLINE}Ground, and Steel types.",
+   "en": "A 5-turn sandstorm is summoned{NEWLINE}to hurt all combatants except the{NEWLINE}Rock, Ground, and Steel types.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/364 | digit for 5",
+   "notes": "US 0221/364 | digit for 5 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:地面",
     "glossary:精灵"
@@ -3590,10 +3590,10 @@
   {
    "id": 366,
    "zh": "投掷岩石攻击。{NEWLINE}落下的岩石可封住行动,{NEWLINE}速度下降１级。",
-   "en": "Large boulders are hurled at the foe.{NEWLINE}The falling rocks hem it in, lowering its{NEWLINE}Speed by 1 stage.",
+   "en": "Large boulders are hurled at the{NEWLINE}foe. The falling rocks hem it in,{NEWLINE}lowering its Speed by 1 stage.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/366",
+   "notes": "US 0221/366 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:投掷"
    ]
@@ -3601,10 +3601,10 @@
   {
    "id": 367,
    "zh": "以高速行动玩弄对手。{NEWLINE}攻击一定能命中对手。",
-   "en": "The user confounds the foe with speed,{NEWLINE}then strikes. The attack lands without{NEWLINE}fail.",
+   "en": "The user confounds the foe with{NEWLINE}speed, then strikes. The attack{NEWLINE}lands without fail.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/367",
+   "notes": "US 0221/367 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:命中"
    ]
@@ -3620,10 +3620,10 @@
   {
    "id": 369,
    "zh": "在中毒、麻痹和烧伤{NEWLINE}状态下技能威力２倍。",
-   "en": "An attack move that doubles its power{NEWLINE}if the user is poisoned, paralyzed, or{NEWLINE}has a burn.",
+   "en": "An attack move that doubles its{NEWLINE}power if the user is poisoned,{NEWLINE}paralyzed, or has a burn.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/369",
+   "notes": "US 0221/369 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:麻痹",
     "number_missing"
@@ -3640,10 +3640,10 @@
   {
    "id": 371,
    "zh": "睡眠２回合。{NEWLINE}回复所有ＨＰ和异常状态。",
-   "en": "The user goes to sleep for 2 turns. It{NEWLINE}fully restores the user’s HP and heals{NEWLINE}any status problem.",
+   "en": "The user goes to sleep for 2 turns.{NEWLINE}It fully restores the user’s HP and{NEWLINE}heals any status problem.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/371 | digit for 2",
+   "notes": "US 0221/371 | digit for 2 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:异常状态"
    ]
@@ -3681,10 +3681,10 @@
   {
    "id": 375,
    "zh": "用超能力交换自己与对手的特性。",
-   "en": "The user employs its psychic power to{NEWLINE}exchange abilities with the foe.",
+   "en": "The user employs its psychic power{NEWLINE}to exchange abilities with the foe.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/375"
+   "notes": "US 0221/375 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 376,
@@ -3713,34 +3713,34 @@
   {
    "id": 379,
    "zh": "使尽全力的攻击。{NEWLINE}１０％特防下降１级。",
-   "en": "The user attacks at full power. It has{NEWLINE}a 10% chance to lower the foe’s Sp. Def{NEWLINE}by 1 stage.",
+   "en": "The user attacks at full power.{NEWLINE}It has a 10% chance to lower the{NEWLINE}foe’s Sp. Def by 1 stage.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/379"
+   "notes": "US 0221/379 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 380,
    "zh": "拼上性命的攻击。{NEWLINE}１０％特防下降１级。",
-   "en": "The user attacks as if staking its life{NEWLINE}on it. It has a 10% chance to lower the{NEWLINE}foe’s Sp. Def by 1 stage.",
+   "en": "The user attacks as if staking its{NEWLINE}life on it. It has a 10% chance to{NEWLINE}lower the foe’s Sp. Def by 1 stage.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/380 | zh 拼上性命的攻击 (TM53 slot; US Energy Ball text differs)"
+   "notes": "US 0221/380 | zh 拼上性命的攻击 (TM53 slot; US Energy Ball text differs) | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 381,
    "zh": "手下留情的攻击。{NEWLINE}被击中的对手ＨＰ最低剩下１。",
-   "en": "A restrained attack that prevents the{NEWLINE}foe from fainting. The target is left{NEWLINE}with at least 1 HP.",
+   "en": "A restrained attack that prevents{NEWLINE}the foe from fainting. The target{NEWLINE}is left with at least 1 HP.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/381"
+   "notes": "US 0221/381 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 382,
    "zh": "对手ＨＰ不足一半时,{NEWLINE}技能威力２倍。",
-   "en": "If the foe’s HP is down to under half,{NEWLINE}this attack will hit with double the{NEWLINE}power.",
+   "en": "If the foe’s HP is down to under{NEWLINE}half, this attack will hit with{NEWLINE}double the power.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/382",
+   "notes": "US 0221/382 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -3825,10 +3825,10 @@
   {
    "id": 391,
    "zh": "释放全部能量大爆炸。{NEWLINE}使用后濒死。",
-   "en": "The user explodes to inflict damage on{NEWLINE}all Pokémon in battle. The user faints{NEWLINE}upon using this move.",
+   "en": "The user explodes to inflict damage{NEWLINE}on all Pokémon in battle. The user{NEWLINE}faints upon using this move.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/391",
+   "notes": "US 0221/391 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:大爆炸"
    ]
@@ -3855,10 +3855,10 @@
   {
    "id": 394,
    "zh": "回收在战斗中失去的道具。",
-   "en": "The user recycles a single-use item{NEWLINE}that has been used in battle so it can{NEWLINE}be used again.",
+   "en": "The user recycles a single-use item{NEWLINE}that has been used in battle so it{NEWLINE}can be used again.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/394"
+   "notes": "US 0221/394 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 395,
@@ -3871,10 +3871,10 @@
   {
    "id": 396,
    "zh": "打磨身体减少空气阻力{NEWLINE}速度上升２级。",
-   "en": "The user polishes its body to reduce{NEWLINE}drag. It raises its Speed by 2 stages.",
+   "en": "The user polishes its body to{NEWLINE}reduce drag. It raises its Speed{NEWLINE}by 2 stages.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/396"
+   "notes": "US 0221/396 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 397,
@@ -3895,10 +3895,10 @@
   {
    "id": 399,
    "zh": "用冰雹砸向对手。{NEWLINE}对手３０％概率害怕。",
-   "en": "The user hurls hailstones at the foe.{NEWLINE}It has a 30% chance to make the target{NEWLINE}flinch.",
+   "en": "The user hurls hailstones at the{NEWLINE}foe. It has a 30% chance to make{NEWLINE}the target flinch.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #419 (identical zh)"
+   "notes": "= 0738 #419 (identical zh) | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 400,
@@ -3911,10 +3911,10 @@
   {
    "id": 401,
    "zh": "高速身体旋转攻击。{NEWLINE}速度比对方越慢威力越大。",
-   "en": "The user tackles the foe from a{NEWLINE}high-speed spin. The slower the user,{NEWLINE}the greater the damage.",
+   "en": "The user tackles the foe from a{NEWLINE}high-speed spin. The slower the{NEWLINE}user, the greater the damage.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/401",
+   "notes": "US 0221/401 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:威力"
    ]
@@ -3922,18 +3922,18 @@
   {
    "id": 402,
    "zh": "跳着激烈的战斗之舞增强气势。{NEWLINE}自身的物攻上升２级。",
-   "en": "A frenetic dance to uplift the fighting{NEWLINE}spirit. It raises the user’s Attack by 2{NEWLINE}stages.",
+   "en": "A frenetic dance to uplift the{NEWLINE}fighting spirit. It raises the user’s{NEWLINE}Attack by 2 stages.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/402"
+   "notes": "US 0221/402 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 403,
    "zh": "在对手的周围设置尖锐的岩石。{NEWLINE}换上场的精灵会受伤。",
-   "en": "The user lays a trap of levitating{NEWLINE}stones around the foe. The trap hurts{NEWLINE}foes that switch into battle.",
+   "en": "The user lays a trap of levitating{NEWLINE}stones around the foe. The trap{NEWLINE}hurts foes that switch into battle.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/403",
+   "notes": "US 0221/403 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:精灵"
    ]
@@ -3954,10 +3954,10 @@
   {
    "id": 405,
    "zh": "㊚对㊛或㊛对㊚实行诱惑。{NEWLINE}特攻下降２级。{NEWLINE}",
-   "en": "If the foe is the opposite gender of the{NEWLINE}user, it is charmed into lowering its{NEWLINE}Sp. Atk by 2 stages.{NEWLINE}",
+   "en": "If the foe is the opposite gender of{NEWLINE}the user, it is charmed into lowering{NEWLINE}its Sp. Atk by 2 stages.{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/405",
+   "notes": "US 0221/405 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:诱惑"
    ]
@@ -3965,18 +3965,18 @@
   {
    "id": 406,
    "zh": "释放强烈的恶意攻击。{NEWLINE}２０％让对方害怕。",
-   "en": "The user releases a horrible aura{NEWLINE}imbued with dark thoughts. It has a 20%{NEWLINE}chance to make the foe flinch.",
+   "en": "The user releases a horrible aura{NEWLINE}imbued with dark thoughts. It has a{NEWLINE}20% chance to make the foe flinch.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/406"
+   "notes": "US 0221/406 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 407,
    "zh": "投掷巨大的岩石攻击。{NEWLINE}３０％让对方害怕。",
-   "en": "Large boulders are hurled at the foe to{NEWLINE}inflict damage. It has a 30% chance to{NEWLINE}make the foe flinch.",
+   "en": "Large boulders are hurled at the{NEWLINE}foe to inflict damage. It has a{NEWLINE}30% chance to make the foe flinch.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/407",
+   "notes": "US 0221/407 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:投掷"
    ]
@@ -4024,10 +4024,10 @@
   {
    "id": 413,
    "zh": "用草缠绕对手使其摔倒。{NEWLINE}对手越重威力越大。",
-   "en": "The user snares the foe with grass{NEWLINE}and trips it. The heavier the foe, the{NEWLINE}greater the damage.",
+   "en": "The user snares the foe with grass{NEWLINE}and trips it. The heavier the foe,{NEWLINE}the greater the damage.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/413",
+   "notes": "US 0221/413 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:威力",
     "glossary:缠绕"
@@ -4036,18 +4036,18 @@
   {
    "id": 414,
    "zh": "激怒对手使其混乱。{NEWLINE}但物攻上升２级。",
-   "en": "The user enrages the foe into{NEWLINE}confusion. However, it also raises the{NEWLINE}foe’s Attack by 2 stages.",
+   "en": "The user enrages the foe into{NEWLINE}confusion. However, it also raises{NEWLINE}the foe’s Attack by 2 stages.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/414"
+   "notes": "US 0221/414 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 415,
    "zh": "用喙攻击。{NEWLINE}可以夺取对方携带{NEWLINE}的树果并立刻使用。",
-   "en": "The user pecks the foe. If the foe is{NEWLINE}holding a Berry, the user plucks it and{NEWLINE}gains its effect.",
+   "en": "The user pecks the foe. If the foe{NEWLINE}is holding a Berry, the user plucks{NEWLINE}it and gains its effect.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/415"
+   "notes": "US 0221/415 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 416,
@@ -4060,10 +4060,10 @@
   {
    "id": 417,
    "zh": "消耗１/４ＨＰ制造{NEWLINE}替身抵挡攻击。",
-   "en": "The user makes a copy of itself using{NEWLINE}1/4 of its HP. The copy serves as the{NEWLINE}user’s decoy.",
+   "en": "The user makes a copy of itself{NEWLINE}using 1/4 of its HP. The copy serves{NEWLINE}as the user’s decoy.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/417",
+   "notes": "US 0221/417 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:替身"
    ]
@@ -4071,26 +4071,26 @@
   {
    "id": 418,
    "zh": "将自身的光线{NEWLINE}汇聚于一点后释放。{NEWLINE}１０％特防下降１级。",
-   "en": "The user fires all its light energy in{NEWLINE}one shot. It has a 10% chance to lower{NEWLINE}the foe’s Sp. Def by 1 stage.",
+   "en": "The user fires all its light energy{NEWLINE}in one shot. It has a 10% chance to{NEWLINE}lower the foe’s Sp. Def by 1 stage.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/418"
+   "notes": "US 0221/418 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 419,
    "zh": "制造次元空间。{NEWLINE}５回合内速度慢{NEWLINE}的精灵先行动。",
-   "en": "The user creates a bizarre space in{NEWLINE}which slower Pokémon get to move first{NEWLINE}for 5 turns.",
+   "en": "The user creates a bizarre space{NEWLINE}in which slower Pokémon get to move{NEWLINE}first for 5 turns.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/419"
+   "notes": "US 0221/419 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 420,
    "zh": "用锐爪攻击。{NEWLINE}可斩断小树。",
-   "en": "The foe is cut with a scythe or a claw.{NEWLINE}It can also be used to cut down thin{NEWLINE}trees.",
+   "en": "The foe is cut with a scythe or a{NEWLINE}claw. It can also be used to cut{NEWLINE}down thin trees.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/420"
+   "notes": "US 0221/420 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 421,
@@ -4114,18 +4114,18 @@
   {
    "id": 423,
    "zh": "使出浑身力量攻击。{NEWLINE}可推动沉重的岩石。{NEWLINE}",
-   "en": "The foe is slugged with a punch thrown{NEWLINE}at maximum power. It can also be used{NEWLINE}to move boulders.{NEWLINE}",
+   "en": "The foe is slugged with a punch{NEWLINE}thrown at maximum power. It can also{NEWLINE}be used to move boulders.{NEWLINE}",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/423"
+   "notes": "US 0221/423 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 424,
    "zh": "制造水的漩涡攻击,{NEWLINE}对手２ー５回合持续受到伤害。{NEWLINE}可跨过海中的漩涡。",
-   "en": "Traps the foe in a violent whirlpool{NEWLINE}that hurts it for 2 to 5 turns. It can{NEWLINE}also be used to cross whirlpools.",
+   "en": "Traps the foe in a violent whirlpool{NEWLINE}that hurts it for 2 to 5 turns. It{NEWLINE}can also be used to cross whirlpools.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/424"
+   "notes": "US 0221/424 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 425,
@@ -4138,34 +4138,34 @@
   {
    "id": 426,
    "zh": "让瀑布逆流攻击,{NEWLINE}使对手２０％几率害怕。{NEWLINE}可翻越瀑布。",
-   "en": "The user rushes up a waterfall. It has{NEWLINE}a 20% chance to make the foe flinch. It{NEWLINE}can also climb waterfalls.",
+   "en": "The user rushes up a waterfall. It{NEWLINE}has a 20% chance to make the foe{NEWLINE}flinch. It can also climb waterfalls.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/426"
+   "notes": "US 0221/426 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 427,
    "zh": "以突进攻击,{NEWLINE}使对手２０％几率害怕。{NEWLINE}可攀登凹凸的岩石。",
-   "en": "A charging attack with a 20% chance to{NEWLINE}make the foe flinch. It can also be used{NEWLINE}to scale rocky walls.",
+   "en": "A charging attack with a 20% chance{NEWLINE}to make the foe flinch. It can also{NEWLINE}be used to scale rocky walls.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/427 | Hack: flinch 20% (vanilla Rock Climb confuses)."
+   "notes": "US 0221/427 | Hack: flinch 20% (vanilla Rock Climb confuses). | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 428,
    "zh": "存放旅行中道具的便利的袋子。{NEWLINE}在地下通道获得。",
-   "en": "A handy bag for storing items on your{NEWLINE}travels. Obtained in the Underground.",
+   "en": "A handy bag for storing items{NEWLINE}on your travels. Obtained in{NEWLINE}the Underground.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 429,
    "zh": "喷在身上就能抵抗{NEWLINE}老化诅咒的神奇喷雾。",
-   "en": "A mysterious spray that wards off the{NEWLINE}curse of aging when you spray it on{NEWLINE}yourself.",
+   "en": "A mysterious spray that wards off{NEWLINE}the curse of aging when you spray{NEWLINE}it on yourself.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/429 | MISMATCH: describes Anti-Age Spray (抗老喷雾); name slot is ？？？ / 0219 en ‘Explorer Kit’."
+   "notes": "US 0221/429 | MISMATCH: describes Anti-Age Spray (抗老喷雾); name slot is ？？？ / 0219 en ‘Explorer Kit’. | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 430,
@@ -4178,10 +4178,10 @@
   {
    "id": 431,
    "zh": "可将藏在草丛里的精灵{NEWLINE}找出来的道具。{NEWLINE}需要给电池充电。",
-   "en": "A tool that can search out Pokémon{NEWLINE}that are hiding in grass. Its battery is{NEWLINE}recharged as you walk.",
+   "en": "A tool that can search out Pokémon{NEWLINE}that are hiding in grass. Its battery{NEWLINE}is recharged as you walk.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/431"
+   "notes": "US 0221/431 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 432,
@@ -4210,10 +4210,10 @@
   {
    "id": 435,
    "zh": "可将各种饰品的精美盒子。{NEWLINE}",
-   "en": "A fancy case for the tidy arrangement{NEWLINE}and storage of whimsical Pokémon{NEWLINE}Accessories.{NEWLINE}",
+   "en": "A fancy case for the tidy{NEWLINE}arrangement and storage of whimsical{NEWLINE}Pokémon Accessories.{NEWLINE}",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/435",
+   "notes": "US 0221/435 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:盒子"
    ]
@@ -4237,18 +4237,18 @@
   {
    "id": 438,
    "zh": "带有供氧装置的防水服,{NEWLINE}具有很好的防水效果。",
-   "en": "A waterproof suit fitted with an oxygen{NEWLINE}supply. It keeps out water very well.",
+   "en": "A waterproof suit fitted with{NEWLINE}an oxygen supply. It keeps out{NEWLINE}water very well.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/438"
+   "notes": "US 0221/438 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 439,
    "zh": "红色暴鲤龙身上{NEWLINE}掉落的鳞片。",
-   "en": "A scale that fell off the red Gyarados.",
+   "en": "A scale that fell off the{NEWLINE}red Gyarados.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/439"
+   "notes": "US 0221/439 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 440,
@@ -4261,10 +4261,10 @@
   {
    "id": 441,
    "zh": "存放着许多技能机碟片的盒子。{NEWLINE}西鲁夫公司制造。",
-   "en": "A case that holds many TM discs. Made{NEWLINE}by Silph Co.",
+   "en": "A case that holds many TM discs.{NEWLINE}Made by Silph Co.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/441",
+   "notes": "US 0221/441 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:盒子"
    ]
@@ -4272,10 +4272,10 @@
   {
    "id": 442,
    "zh": "标注着研钵山地形的地图。{NEWLINE}",
-   "en": "A map showing the layout of Mt. Mortar.{NEWLINE}",
+   "en": "A map showing the layout of{NEWLINE}Mt. Mortar.{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/442 | MISMATCH-ish: slot name 地图 (0219 ‘Town Map’), zh says a map of Mt. Mortar (研钵山)."
+   "notes": "US 0221/442 | MISMATCH-ish: slot name 地图 (0219 ‘Town Map’), zh says a map of Mt. Mortar (研钵山). | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 443,
@@ -4300,26 +4300,26 @@
   {
    "id": 445,
    "zh": "破旧的钓竿。{NEWLINE}在水边使用后可钓精灵。",
-   "en": "An old and beat-up fishing rod.{NEWLINE}Use it by any body of water to fish for{NEWLINE}wild aquatic Pokémon.",
+   "en": "An old and beat-up fishing rod. Use{NEWLINE}it by any body of water to fish for{NEWLINE}wild aquatic Pokémon.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/445"
+   "notes": "US 0221/445 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 446,
    "zh": "崭新的钓竿。{NEWLINE}在水边使用后可钓精灵。",
-   "en": "A new, good-quality fishing rod.{NEWLINE}Use it by any body of water to fish for{NEWLINE}wild aquatic Pokémon.",
+   "en": "A new, good-quality fishing rod. Use{NEWLINE}it by any body of water to fish for{NEWLINE}wild aquatic Pokémon.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/446"
+   "notes": "US 0221/446 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 447,
    "zh": "最新的强力钓竿。{NEWLINE}在水边使用后可钓精灵。",
-   "en": "An awesome, high-tech fishing rod.{NEWLINE}Use it by any body of water to fish for{NEWLINE}wild aquatic Pokémon.",
+   "en": "An awesome, high-tech fishing rod.{NEWLINE}Use it by any body of water to fish{NEWLINE}for wild aquatic Pokémon.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/447"
+   "notes": "US 0221/447 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 448,
@@ -4348,10 +4348,10 @@
   {
    "id": 451,
    "zh": "一个恐龙样子的可爱玩偶,{NEWLINE}隐约能感觉到上面{NEWLINE}散发着不可思议的力量。",
-   "en": "A cute dinosaur-shaped doll. It seems{NEWLINE}to give off a faint, mysterious power.",
+   "en": "A cute dinosaur-shaped doll.{NEWLINE}It seems to give off a faint,{NEWLINE}mysterious power.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/451"
+   "notes": "US 0221/451 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 452,
@@ -4392,10 +4392,10 @@
   {
    "id": 456,
    "zh": "乘坐圣德尔・安妮号时必要的船票{NEWLINE}画着船的样子。",
-   "en": "The ticket required for sailing on the{NEWLINE}S.S. Anne. It has a drawing of a ship on{NEWLINE}it.",
+   "en": "The ticket required for sailing on{NEWLINE}the S.S. Anne. It has a drawing{NEWLINE}of a ship on it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/456 | zh 圣德尔・安妮号 read as S.S. Anne.",
+   "notes": "US 0221/456 | zh 圣德尔・安妮号 read as S.S. Anne. | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:船票"
    ]
@@ -4403,10 +4403,10 @@
   {
    "id": 457,
    "zh": "携带的话可参加精灵竞技场。{NEWLINE}上面有纪念缎带。",
-   "en": "The pass required for entering Pokémon{NEWLINE}Contests. It has a drawing of an award{NEWLINE}ribbon on it.",
+   "en": "The pass required for entering{NEWLINE}Pokémon Contests. It has a drawing{NEWLINE}of an award ribbon on it.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/457",
+   "notes": "US 0221/457 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -4422,10 +4422,10 @@
   {
    "id": 459,
    "zh": "里面是受大木博士委托{NEWLINE}要送到若叶镇去的精灵图鉴。",
-   "en": "It holds the Pokédex that Prof. Oak{NEWLINE}asked you to deliver to New Bark Town.",
+   "en": "It holds the Pokédex that{NEWLINE}Prof. Oak asked you to deliver to{NEWLINE}New Bark Town.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/459",
+   "notes": "US 0221/459 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:精灵"
    ]
@@ -4433,26 +4433,26 @@
   {
    "id": 460,
    "zh": "用来兑换精灵手机的兑换券。{NEWLINE}需要３枚。",
-   "en": "A coupon to be exchanged for a Pokémon{NEWLINE}Watch (Pokétch for short). 3 coupons{NEWLINE}are needed.",
+   "en": "A coupon to be exchanged for a{NEWLINE}Pokémon Watch (Pokétch for short).{NEWLINE}3 coupons are needed.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/460"
+   "notes": "US 0221/460 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 461,
    "zh": "用来兑换精灵手机的兑换券。{NEWLINE}需要３枚。",
-   "en": "A coupon to be exchanged for a Pokémon{NEWLINE}Watch (Pokétch for short). 3 coupons{NEWLINE}are needed.",
+   "en": "A coupon to be exchanged for a{NEWLINE}Pokémon Watch (Pokétch for short).{NEWLINE}3 coupons are needed.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/461"
+   "notes": "US 0221/461 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 462,
    "zh": "用来兑换精灵手机的兑换券。{NEWLINE}需要３枚。",
-   "en": "A coupon to be exchanged for a Pokémon{NEWLINE}Watch (Pokétch for short). 3 coupons{NEWLINE}are needed.",
+   "en": "A coupon to be exchanged for a{NEWLINE}Pokémon Watch (Pokétch for short).{NEWLINE}3 coupons are needed.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/462"
+   "notes": "US 0221/462 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 463,
@@ -4465,26 +4465,26 @@
   {
    "id": 464,
    "zh": "使用古法制作的药,{NEWLINE}能使任何精灵瞬间恢复健康。",
-   "en": "A medicine made with an ancient recipe.{NEWLINE}It instantly restores any Pokémon to{NEWLINE}full health.",
+   "en": "A medicine made with an ancient{NEWLINE}recipe. It instantly restores any{NEWLINE}Pokémon to full health.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/464"
+   "notes": "US 0221/464 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 465,
    "zh": "能记录与朋友对战和{NEWLINE}特殊设施对战的强大的装置。",
-   "en": "An amazing device that can record a{NEWLINE}battle either between friends or at a{NEWLINE}special battle facility.",
+   "en": "An amazing device that can record{NEWLINE}a battle either between friends or{NEWLINE}at a special battle facility.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/465"
+   "notes": "US 0221/465 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 466,
    "zh": "可以作为在生日和纪念日,{NEWLINE}以表达感谢之情的花束送给别人。",
-   "en": "A flower sometimes bundled in bouquets{NEWLINE}to convey gratitude on special{NEWLINE}occasions like birthdays.",
+   "en": "A flower sometimes bundled in{NEWLINE}bouquets to convey gratitude on{NEWLINE}special occasions like birthdays.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/466"
+   "notes": "US 0221/466 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 467,
@@ -4497,10 +4497,10 @@
   {
    "id": 468,
    "zh": "可以将每种柑果都保存{NEWLINE}９９个的便利的盒子。",
-   "en": "A handy box where you can store up to{NEWLINE}99 Apricorns of each kind.",
+   "en": "A handy box where you can store up{NEWLINE}to 99 Apricorns of each kind.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/468"
+   "notes": "US 0221/468 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 469,
@@ -4527,10 +4527,10 @@
   {
    "id": 471,
    "zh": "探测到看不见的道具就会{NEWLINE}发出声音和光的最新型的机器。",
-   "en": "It checks for unseen items in the area{NEWLINE}and makes noise and lights when it{NEWLINE}finds something.",
+   "en": "It checks for unseen items in the{NEWLINE}area and makes noise and lights{NEWLINE}when it finds something.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/471"
+   "notes": "US 0221/471 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 472,
@@ -4543,10 +4543,10 @@
   {
    "id": 473,
    "zh": "华蓝商店自行车的兑换券,{NEWLINE}可以免费换取自行车。{NEWLINE}",
-   "en": "A voucher for a Bicycle from the{NEWLINE}Cerulean Mart. It can be exchanged for{NEWLINE}a free Bicycle.{NEWLINE}",
+   "en": "A voucher for a Bicycle from the{NEWLINE}Cerulean Mart. It can be exchanged{NEWLINE}for a free Bicycle.{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/473",
+   "notes": "US 0221/473 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:商店"
    ]
@@ -4554,18 +4554,18 @@
   {
    "id": 474,
    "zh": "有着治愈心灵的音色,{NEWLINE}非常古老的铃铛。{NEWLINE}",
-   "en": "A very old-fashioned bell with a gentle{NEWLINE}ring that soothes the heart.{NEWLINE}",
+   "en": "A very old-fashioned bell with a{NEWLINE}gentle ring that soothes the heart.{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/474"
+   "notes": "US 0221/474 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 475,
    "zh": "可以打开广播塔卷闸的{NEWLINE}卡片式钥匙。{NEWLINE}",
-   "en": "A card key that opens a shutter in the{NEWLINE}Radio Tower.{NEWLINE}",
+   "en": "A card key that opens a shutter{NEWLINE}in the Radio Tower.{NEWLINE}",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/475"
+   "notes": "US 0221/475 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 476,
@@ -4581,18 +4581,18 @@
   {
    "id": 477,
    "zh": "用来装水的道具。{NEWLINE}可以给培养皿的树果{NEWLINE}浇水使其茁壮成长。",
-   "en": "A bottle for holding water. Use it to{NEWLINE}water Berries in the Berry Pots so they{NEWLINE}grow strong.",
+   "en": "A bottle for holding water. Use it{NEWLINE}to water Berries in the Berry Pots{NEWLINE}so they grow strong.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/477"
+   "notes": "US 0221/477 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 478,
    "zh": "凭借这张票据{NEWLINE}就可以登上圣安努号客船,{NEWLINE}享受美好的海上假日。",
-   "en": "With this ticket, you can board the{NEWLINE}S.S. Anne and enjoy a wonderful holiday{NEWLINE}at sea.",
+   "en": "With this ticket, you can board the{NEWLINE}S.S. Anne and enjoy a wonderful{NEWLINE}holiday at sea.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/478; modernised from US 0221#478"
+   "notes": "US 0221/478; modernised from US 0221#478 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 479,
@@ -4613,10 +4613,10 @@
   {
    "id": 481,
    "zh": "很多机械装置上都能用到的{NEWLINE}高精度铸铁零件。{NEWLINE}",
-   "en": "A high-precision cast-iron part used in{NEWLINE}many kinds of machinery.{NEWLINE}",
+   "en": "A high-precision cast-iron part used{NEWLINE}in many kinds of machinery.{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/481"
+   "notes": "US 0221/481 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 482,
@@ -4712,18 +4712,18 @@
   {
    "id": 493,
    "zh": "我方精灵比对手高级就容易捕捉的{NEWLINE}与众不同的精灵球。 ",
-   "en": "A Poké Ball for catching Pokémon that{NEWLINE}are a lower level than your own.",
+   "en": "A Poké Ball for catching Pokémon{NEWLINE}that are a lower level than{NEWLINE}your own.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/493"
+   "notes": "US 0221/493 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 494,
    "zh": "对钓到的精灵有特效的{NEWLINE}与众不同的精灵球。 ",
-   "en": "A Poké Ball for catching Pokémon hooked{NEWLINE}by a Rod when fishing.",
+   "en": "A Poké Ball for catching Pokémon{NEWLINE}hooked by a Rod when fishing.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/494"
+   "notes": "US 0221/494 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 495,
@@ -4736,18 +4736,18 @@
   {
    "id": 496,
    "zh": "容易捕捉异性精灵的{NEWLINE}与众不同的精灵球。 ",
-   "en": "A Poké Ball for catching Pokémon that{NEWLINE}are the opposite gender of your{NEWLINE}Pokémon.",
+   "en": "A Poké Ball for catching Pokémon{NEWLINE}that are the opposite gender of{NEWLINE}your Pokémon.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/496 | US 0221/496 rewrapped (added missing “A”)."
+   "notes": "US 0221/496 | US 0221/496 rewrapped (added missing “A”). | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 497,
    "zh": "捉到的野生精灵会马上变得亲密的{NEWLINE}与众不同的精灵球。 ",
-   "en": "A Poké Ball that makes caught Pokémon{NEWLINE}more friendly.",
+   "en": "A Poké Ball that makes caught{NEWLINE}Pokémon more friendly.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/497",
+   "notes": "US 0221/497 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:野生"
    ]
@@ -4755,10 +4755,10 @@
   {
    "id": 498,
    "zh": "对需要使用月之石的精灵有特效的{NEWLINE}与众不同的精灵球。 ",
-   "en": "A Poké Ball for catching Pokémon that{NEWLINE}evolve using the Moon Stone.",
+   "en": "A Poké Ball for catching Pokémon{NEWLINE}that evolve using the Moon Stone.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/498"
+   "notes": "US 0221/498 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 499,
@@ -4779,26 +4779,26 @@
   {
    "id": 501,
    "zh": "装载着冒险回忆的纪念相册。{NEWLINE}",
-   "en": "A nice photo album for storing all the{NEWLINE}photos taken along your adventure.{NEWLINE}",
+   "en": "A nice photo album for storing{NEWLINE}all the photos taken along{NEWLINE}your adventure.{NEWLINE}",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/501"
+   "notes": "US 0221/501 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 502,
    "zh": "可以播放让人怀念的音乐。{NEWLINE}打开开关就能进行音乐切换。",
-   "en": "A music player that allows you to listen{NEWLINE}to nostalgic songs. It’s operated with{NEWLINE}a single switch.",
+   "en": "A music player that allows you to{NEWLINE}listen to nostalgic songs. It’s{NEWLINE}operated with a single switch.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/502"
+   "notes": "US 0221/502 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 503,
    "zh": "有着治愈心灵的音色,{NEWLINE}非常古老的铃铛。{NEWLINE}",
-   "en": "A very old-fashioned bell with a gentle{NEWLINE}ring that soothes the heart.{NEWLINE}",
+   "en": "A very old-fashioned bell with a{NEWLINE}gentle ring that soothes the heart.{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/503"
+   "notes": "US 0221/503 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 504,
@@ -4843,50 +4843,50 @@
   {
    "id": 509,
    "zh": "口袋竞技的资料卡。{NEWLINE}记录着跨栏获得第一的次数。",
-   "en": "It holds Pokéathlon records. It’s a{NEWLINE}card that shows how many times you’ve{NEWLINE}won the Hurdle Dash.",
+   "en": "It holds Pokéathlon records. It’s{NEWLINE}a card that shows how many times{NEWLINE}you’ve won the Hurdle Dash.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/509"
+   "notes": "US 0221/509 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 510,
    "zh": "口袋竞技的资料卡。{NEWLINE}记录着赛跑获得第一的次数。",
-   "en": "It holds Pokéathlon records. It’s a{NEWLINE}card that shows how many times you’ve{NEWLINE}won the Relay Run.",
+   "en": "It holds Pokéathlon records. It’s{NEWLINE}a card that shows how many times{NEWLINE}you’ve won the Relay Run.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/510"
+   "notes": "US 0221/510 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 511,
    "zh": "口袋竞技的资料卡。{NEWLINE}记录着抢旗获得第一的次数。",
-   "en": "It holds Pokéathlon records. It’s a{NEWLINE}card that shows how many times you’ve{NEWLINE}won Pennant Capture.",
+   "en": "It holds Pokéathlon records. It’s{NEWLINE}a card that shows how many times{NEWLINE}you’ve won Pennant Capture.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/511"
+   "notes": "US 0221/511 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 512,
    "zh": "口袋竞技的资料卡。{NEWLINE}记录着劈石板获得第一的次数。",
-   "en": "It holds Pokéathlon records. It’s a{NEWLINE}card that shows how many times you’ve{NEWLINE}won Block Smash.",
+   "en": "It holds Pokéathlon records. It’s{NEWLINE}a card that shows how many times{NEWLINE}you’ve won Block Smash.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/512"
+   "notes": "US 0221/512 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 513,
    "zh": "口袋竞技的资料卡。{NEWLINE}记录着抢飞碟获得第一的次数。",
-   "en": "It holds Pokéathlon records. It’s a{NEWLINE}card that shows how many times you’ve{NEWLINE}won Disc Catch.",
+   "en": "It holds Pokéathlon records. It’s{NEWLINE}a card that shows how many times{NEWLINE}you’ve won Disc Catch.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/513"
+   "notes": "US 0221/513 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 514,
    "zh": "口袋竞技的资料卡。{NEWLINE}记录着打雪仗获得第一的次数。",
-   "en": "It holds Pokéathlon records. It’s a{NEWLINE}card that shows how many times you’ve{NEWLINE}won Snow Throw.",
+   "en": "It holds Pokéathlon records. It’s{NEWLINE}a card that shows how many times{NEWLINE}you’ve won Snow Throw.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/514"
+   "notes": "US 0221/514 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 515,
@@ -4931,26 +4931,26 @@
   {
    "id": 520,
    "zh": "口袋竞技的资料卡{NEWLINE}记录着撞人获得第一的次数。",
-   "en": "It holds Pokéathlon records. It’s a{NEWLINE}card that shows how many times you’ve{NEWLINE}won Ring Drop.",
+   "en": "It holds Pokéathlon records. It’s{NEWLINE}a card that shows how many times{NEWLINE}you’ve won Ring Drop.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/520"
+   "notes": "US 0221/520 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 521,
    "zh": "口袋竞技的资料卡{NEWLINE}记录着蹦床获得第一的次数。",
-   "en": "It holds Pokéathlon records. It’s a{NEWLINE}card that shows how many times you’ve{NEWLINE}won Lamp Jump.",
+   "en": "It holds Pokéathlon records. It’s{NEWLINE}a card that shows how many times{NEWLINE}you’ve won Lamp Jump.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/521"
+   "notes": "US 0221/521 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 522,
    "zh": "口袋竞技的资料卡{NEWLINE}记录着抢位置获得第一的次数。",
-   "en": "It holds Pokéathlon records. It’s a{NEWLINE}card that shows how many times you’ve{NEWLINE}won Circle Push.",
+   "en": "It holds Pokéathlon records. It’s{NEWLINE}a card that shows how many times{NEWLINE}you’ve won Circle Push.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/522",
+   "notes": "US 0221/522 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:位置"
    ]
@@ -4990,18 +4990,18 @@
   {
    "id": 527,
    "zh": "口袋竞技的资料卡。{NEWLINE}记录着精灵的交换次数。",
-   "en": "It holds Pokéathlon records. It’s a{NEWLINE}card that shows how many times you’ve{NEWLINE}switched Pokémon.",
+   "en": "It holds Pokéathlon records. It’s{NEWLINE}a card that shows how many times{NEWLINE}you’ve switched Pokémon.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/527"
+   "notes": "US 0221/527 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 528,
    "zh": "口袋竞技的资料卡。{NEWLINE}记录着足球获得第一的次数。",
-   "en": "It holds Pokéathlon records. It’s a{NEWLINE}card that shows how many times you’ve{NEWLINE}won Goal Roll.",
+   "en": "It holds Pokéathlon records. It’s{NEWLINE}a card that shows how many times{NEWLINE}you’ve won Goal Roll.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/528"
+   "notes": "US 0221/528 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 529,
@@ -5014,10 +5014,10 @@
   {
    "id": 530,
    "zh": "口袋竞技的资料卡。{NEWLINE}记录着精灵的接触次数。",
-   "en": "It holds Pokéathlon records. It’s a{NEWLINE}card that shows how many times you’ve{NEWLINE}instructed your Pokémon.",
+   "en": "It holds Pokéathlon records. It’s{NEWLINE}a card that shows how many times{NEWLINE}you’ve instructed your Pokémon.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0221/530"
+   "notes": "US 0221/530 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 531,
@@ -5030,10 +5030,10 @@
   {
    "id": 532,
    "zh": "据说与传说中的天空之神有着{NEWLINE}很深的关系的闪耀着{NEWLINE}绿色光辉的宝玉。",
-   "en": "A jewel shining with a green light. It is{NEWLINE}said to be deeply connected to the{NEWLINE}legendary god of the sky.",
+   "en": "A jewel shining with a green light.{NEWLINE}It is said to be deeply connected to{NEWLINE}the legendary god of the sky.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/532"
+   "notes": "US 0221/532 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 533,
@@ -5054,10 +5054,10 @@
   {
    "id": 535,
    "zh": "据说与传说中的海洋之神有着{NEWLINE}很深的关系的闪耀着{NEWLINE}蓝色光辉的宝玉。",
-   "en": "A jewel shining with a blue light. It is{NEWLINE}said to be deeply connected to the{NEWLINE}legendary god of the sea.",
+   "en": "A jewel shining with a blue light. It{NEWLINE}is said to be deeply connected to{NEWLINE}the legendary god of the sea.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/535"
+   "notes": "US 0221/535 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 536,
@@ -5078,18 +5078,18 @@
   {
    "id": 538,
    "zh": "将特殊的毒液{NEWLINE}泼向对手。对处于{NEWLINE}中毒状态的对手，{NEWLINE}威力会变成２倍。",
-   "en": "The user drenches the foe in a special{NEWLINE}poison. Its power is 2 times higher if{NEWLINE}the foe is poisoned.",
+   "en": "The user drenches the foe in a{NEWLINE}special poison. Its power is 2 times{NEWLINE}higher if the foe is poisoned.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #474"
+   "notes": "= 0738 #474 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 539,
    "zh": "用沉重的身体撞向{NEWLINE}对手进行攻击。{NEWLINE}自己比对手越重，{NEWLINE}威力越大。",
-   "en": "The user slams its heavy body into the{NEWLINE}foe. The heavier the user is than the{NEWLINE}foe, the stronger it is.",
+   "en": "The user slams its heavy body into{NEWLINE}the foe. The heavier the user is than{NEWLINE}the foe, the stronger it is.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #484",
+   "notes": "= 0738 #484 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:威力"
    ]
@@ -5097,18 +5097,18 @@
   {
    "id": 540,
    "zh": "让火焰覆盖全身，{NEWLINE}攻击对手。积蓄力量{NEWLINE}来提高自己的速度。",
-   "en": "The user cloaks itself in flames and{NEWLINE}attacks, building momentum to raise its{NEWLINE}Speed.",
+   "en": "The user cloaks itself in flames{NEWLINE}and attacks, building momentum to{NEWLINE}raise its Speed.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #488"
+   "notes": "= 0738 #488 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 541,
    "zh": "以敏捷的动作瞄准{NEWLINE}对手的脚进行攻击。{NEWLINE}会降低对手的速度。",
-   "en": "The user nimbly attacks the foe’s legs.{NEWLINE}It lowers the foe’s Speed.",
+   "en": "The user nimbly attacks the foe’s{NEWLINE}legs. It lowers the foe’s Speed.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #490"
+   "notes": "= 0738 #490 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 542,
@@ -5124,18 +5124,18 @@
   {
    "id": 543,
    "zh": "利用对手的力量进行攻击。{NEWLINE}正和自己战斗的对手，{NEWLINE}其攻击越高，伤害越大。",
-   "en": "The user turns the foe’s strength{NEWLINE}against it. The higher the foe’s Attack,{NEWLINE}the more damage it deals.",
+   "en": "The user turns the foe’s strength{NEWLINE}against it. The higher the foe’s{NEWLINE}Attack, the more damage it deals.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #492"
+   "notes": "= 0738 #492 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 544,
    "zh": "向对手投掷特殊的{NEWLINE}泥块进行攻击。{NEWLINE}使其能力变回原点。",
-   "en": "The user throws a special clump of mud{NEWLINE}at the foe, resetting its stat changes.",
+   "en": "The user throws a special clump{NEWLINE}of mud at the foe, resetting its{NEWLINE}stat changes.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #499",
+   "notes": "= 0738 #499 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:投掷"
    ]
@@ -5143,26 +5143,26 @@
   {
    "id": 545,
    "zh": "向对手喷射煮得{NEWLINE}翻滚的开水进行攻击。{NEWLINE}有时会让对手{NEWLINE}陷入灼伤状态。",
-   "en": "The user shoots boiling water at the{NEWLINE}foe. It may leave the foe with a burn.",
+   "en": "The user shoots boiling water{NEWLINE}at the foe. It may leave the foe{NEWLINE}with a burn.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #503"
+   "notes": "= 0738 #503 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 546,
    "zh": "抵抗并攻击对手。{NEWLINE}会降低对手的特攻。",
-   "en": "The user resists and attacks the foe.{NEWLINE}It lowers the foe’s Sp. Atk.",
+   "en": "The user resists and attacks the{NEWLINE}foe. It lowers the foe’s Sp. Atk.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #522"
+   "notes": "= 0738 #522 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 547,
    "zh": "用力踩踏地面并攻击{NEWLINE}自己周围所有的宝可梦。{NEWLINE}会降低对方的速度。",
-   "en": "The user stomps the ground, hitting all{NEWLINE}Pokémon around it. It lowers their{NEWLINE}Speed.",
+   "en": "The user stomps the ground,{NEWLINE}hitting all Pokémon around it. It{NEWLINE}lowers their Speed.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #523",
+   "notes": "= 0738 #523 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:地面"
    ]
@@ -5181,10 +5181,10 @@
   {
    "id": 549,
    "zh": "在对手周围围上黏黏的网，{NEWLINE}降低替换出场的对手的{NEWLINE}速度。",
-   "en": "The user spreads a sticky net around{NEWLINE}the foes. It lowers the Speed of foes{NEWLINE}that switch in.",
+   "en": "The user spreads a sticky net{NEWLINE}around the foes. It lowers the Speed{NEWLINE}of foes that switch in.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #564"
+   "notes": "= 0738 #564 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 550,
@@ -5200,10 +5200,10 @@
   {
    "id": 551,
    "zh": "在５回合内变成青草场地。{NEWLINE}地面上的宝可梦{NEWLINE}每回合都能回复。{NEWLINE}草属性的招式{NEWLINE}威力还会提高。",
-   "en": "Makes Grassy Terrain for 5 turns.{NEWLINE}Grounded Pokémon heal each turn, and{NEWLINE}Grass moves get stronger.",
+   "en": "Makes Grassy Terrain for 5 turns.{NEWLINE}Grounded Pokémon heal each turn,{NEWLINE}and Grass moves get stronger.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #580",
+   "notes": "= 0738 #580 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:地面",
     "glossary:威力"
@@ -5212,10 +5212,10 @@
   {
    "id": 552,
    "zh": "在５回合内，地面上的{NEWLINE}宝可梦不会陷入异常状态。{NEWLINE}龙属性招式的伤害也会减半。",
-   "en": "For 5 turns, grounded Pokémon can’t{NEWLINE}get status problems, and Dragon moves{NEWLINE}deal half damage.",
+   "en": "For 5 turns, grounded Pokémon can’t{NEWLINE}get status problems, and Dragon{NEWLINE}moves deal half damage.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #581",
+   "notes": "= 0738 #581 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:地面",
     "glossary:异常状态"
@@ -5224,10 +5224,10 @@
   {
    "id": 553,
    "zh": "与对手嬉闹并攻击。{NEWLINE}有时会降低对手的攻击。",
-   "en": "The user plays rough with the foe. It{NEWLINE}may lower the foe’s Attack.",
+   "en": "The user plays rough with the foe.{NEWLINE}It may lower the foe’s Attack.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #583",
+   "notes": "= 0738 #583 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:嬉闹"
    ]
@@ -5289,18 +5289,18 @@
   {
    "id": 559,
    "zh": "使出全身力量，猛攻对手。{NEWLINE}",
-   "en": "The user fiercely attacks the foe using{NEWLINE}its entire body.{NEWLINE}",
+   "en": "The user fiercely attacks the foe{NEWLINE}using its entire body.{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #667"
+   "notes": "= 0738 #667 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 560,
    "zh": "在５回合内，地面上的宝可梦{NEWLINE}不会受到先制招式的攻击。{NEWLINE}超能力属性的招式{NEWLINE}威力会提高。",
-   "en": "For 5 turns, grounded Pokémon are safe{NEWLINE}from priority moves, and Psychic moves{NEWLINE}get stronger.",
+   "en": "For 5 turns, grounded Pokémon are{NEWLINE}safe from priority moves, and Psychic{NEWLINE}moves get stronger.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #678",
+   "notes": "= 0738 #678 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:地面",
     "glossary:威力"
@@ -5339,10 +5339,10 @@
   {
    "id": 564,
    "zh": "在５回合内减弱物理{NEWLINE}和特殊的伤害。{NEWLINE}只有下雪时才能使出。",
-   "en": "Weakens physical and special damage for{NEWLINE}5 turns. It can only be used in snow.",
+   "en": "Weakens physical and special{NEWLINE}damage for 5 turns. It can only{NEWLINE}be used in snow.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #694"
+   "notes": "= 0738 #694 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 565,
@@ -5358,82 +5358,82 @@
   {
    "id": 566,
    "zh": "用水之力量撞向{NEWLINE}对手进行攻击。{NEWLINE}有时会降低对手的防御。",
-   "en": "The user slams into the foe with the{NEWLINE}power of water. It may lower the foe’s{NEWLINE}Defense.",
+   "en": "The user slams into the foe with{NEWLINE}the power of water. It may lower{NEWLINE}the foe’s Defense.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #710"
+   "notes": "= 0738 #710 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 567,
    "zh": "用身体撞向对手进行攻击。{NEWLINE}防御越高，{NEWLINE}给予的伤害就越高。",
-   "en": "The user slams its body into the foe.{NEWLINE}The higher its Defense, the more damage{NEWLINE}it deals.",
+   "en": "The user slams its body into the{NEWLINE}foe. The higher its Defense, the{NEWLINE}more damage it deals.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #776"
+   "notes": "= 0738 #776 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 568,
    "zh": "用足以让对手一蹶不振{NEWLINE}的气势进行攻击。{NEWLINE}会降低对手的特攻。",
-   "en": "The user attacks with crushing force.{NEWLINE}It lowers the foe’s Sp. Atk.",
+   "en": "The user attacks with crushing{NEWLINE}force. It lowers the foe’s Sp. Atk.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #789"
+   "notes": "= 0738 #789 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 569,
    "zh": "在破坏场地的同时攻击对手。{NEWLINE}如果脚下没有任何场地状态{NEWLINE}存在，使出此招式时{NEWLINE}便会失败。",
-   "en": "The user destroys the terrain as it{NEWLINE}attacks. It fails if there is no terrain.",
+   "en": "The user destroys the terrain{NEWLINE}as it attacks. It fails if there{NEWLINE}is no terrain.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #798"
+   "notes": "= 0738 #798 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 570,
    "zh": "通过进行正确合理的指导，{NEWLINE}提高我方全员的攻击和防御。",
-   "en": "The user gives sound coaching, raising{NEWLINE}the Attack and Defense of its whole{NEWLINE}team.",
+   "en": "The user gives sound coaching,{NEWLINE}raising the Attack and Defense{NEWLINE}of its whole team.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #811"
+   "notes": "= 0738 #811 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 571,
    "zh": "在攻击之后急速返回，{NEWLINE}和后备宝可梦进行替换。",
-   "en": "After attacking, the user rushes back{NEWLINE}to switch places with a party Pokémon in{NEWLINE}waiting.",
+   "en": "After attacking, the user rushes{NEWLINE}back to switch places with a party{NEWLINE}Pokémon in waiting.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #521"
+   "notes": "= 0738 #521 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 572,
    "zh": "连续３次踢对手进行攻击。{NEWLINE}每踢中一次，威力就会提高。",
-   "en": "The user kicks the foe 3 times in a row.{NEWLINE}Each kick is more powerful than the{NEWLINE}last.",
+   "en": "The user kicks the foe 3 times in{NEWLINE}a row. Each kick is more powerful{NEWLINE}than the last.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #813"
+   "notes": "= 0738 #813 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 573,
    "zh": "将翅膀撞向对手进行攻击。{NEWLINE}连续２次给予伤害。",
-   "en": "The user slams the foe with its wings,{NEWLINE}hitting twice in a row.",
+   "en": "The user slams the foe with its{NEWLINE}wings, hitting twice in a row.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #814; D-1517: “2 times in a row” → “twice in a row”"
+   "notes": "= 0738 #814; D-1517: “2 times in a row” → “twice in a row” | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 574,
    "zh": "将滚烫的沙子砸{NEWLINE}向对手进行攻击。{NEWLINE}有时会让对手陷入灼伤状态。",
-   "en": "The user throws scorching sand at the{NEWLINE}foe. It may leave the foe with a burn.",
+   "en": "The user throws scorching sand{NEWLINE}at the foe. It may leave the foe{NEWLINE}with a burn.",
    "status": "draft",
    "origin": "agent",
-   "notes": "= 0738 #815"
+   "notes": "= 0738 #815 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 575,
    "zh": "一次性球根。携带{NEWLINE}宝可梦受到水招式{NEWLINE}，特攻就会提高。",
-   "en": "A single-use bulb. If the holder is hit{NEWLINE}by a Water-type move, its Sp. Atk will{NEWLINE}rise.",
+   "en": "A single-use bulb. If the holder{NEWLINE}is hit by a Water-type move, its{NEWLINE}Sp. Atk will rise.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:宝可梦"
    ]
@@ -5441,10 +5441,10 @@
   {
    "id": 576,
    "zh": "携带后，宝可梦会{NEWLINE}浮在空中。受到攻击{NEWLINE}就会破裂。",
-   "en": "An item to be held by a Pokémon. The{NEWLINE}holder floats in the air. It bursts when{NEWLINE}the holder is hit by an attack.",
+   "en": "An item to be held by a Pokémon. The{NEWLINE}holder floats in the air. It bursts{NEWLINE}when the holder is hit by an attack.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 577,
@@ -5460,10 +5460,10 @@
   {
    "id": 578,
    "zh": "以纯金制成闪着金{NEWLINE}光的大珠子。可以{NEWLINE}在商店高价出售。",
-   "en": "A big nugget of pure gold that gives off{NEWLINE}a lustrous gleam. It can be sold at a{NEWLINE}high price to shops.",
+   "en": "A big nugget of pure gold that gives{NEWLINE}off a lustrous gleam. It can be sold{NEWLINE}at a high price to shops.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:商店"
    ]
@@ -5471,10 +5471,10 @@
   {
    "id": 579,
    "zh": "携带后，绑紧招式{NEWLINE}的威力会变强的束{NEWLINE}带。",
-   "en": "An item to be held by a Pokémon. It is a{NEWLINE}band that increases the power of{NEWLINE}binding moves.",
+   "en": "An item to be held by a Pokémon.{NEWLINE}It is a band that increases the{NEWLINE}power of binding moves.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -5482,18 +5482,18 @@
   {
    "id": 580,
    "zh": "能回复宝可梦的{NEWLINE}所有HP并治愈{NEWLINE}所有异常状态。",
-   "en": "It restores all of a Pokémon’s HP and{NEWLINE}heals all of its status conditions.",
+   "en": "It restores all of a Pokémon’s{NEWLINE}HP and heals all of its{NEWLINE}status conditions.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 581,
    "zh": "一次性电池。携带{NEWLINE}宝可梦受到电招式{NEWLINE}，攻击就会提高。",
-   "en": "A single-use battery. If the holder is{NEWLINE}hit by an Electric-type move, its{NEWLINE}Attack will rise.",
+   "en": "A single-use battery. If the holder{NEWLINE}is hit by an Electric-type move,{NEWLINE}its Attack will rise.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:宝可梦"
    ]
@@ -5501,10 +5501,10 @@
   {
    "id": 582,
    "zh": "彗星临近时掉落到{NEWLINE}地表的碎片。可以{NEWLINE}在商店高价出售。",
-   "en": "A shard that fell to the ground when a{NEWLINE}comet approached. It can be sold at a{NEWLINE}high price to shops.",
+   "en": "A shard that fell to the ground when{NEWLINE}a comet approached. It can be sold{NEWLINE}at a high price to shops.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:商店"
    ]
@@ -5512,10 +5512,10 @@
   {
    "id": 583,
    "zh": "携带宝可梦如果受{NEWLINE}到招式攻击，就能{NEWLINE}换下脱战。",
-   "en": "If the Pokémon holding it is hit by a{NEWLINE}move, it will be switched out of battle.",
+   "en": "If the Pokémon holding it is hit{NEWLINE}by a move, it will be switched out{NEWLINE}of battle.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 584,
@@ -5540,10 +5540,10 @@
   {
    "id": 586,
    "zh": "散发着光泽且非常{NEWLINE}大颗的珍珠。可以{NEWLINE}在商店高价出售。",
-   "en": "A very large pearl with a lustrous{NEWLINE}sheen. It can be sold at a high price to{NEWLINE}shops.",
+   "en": "A very large pearl with a lustrous{NEWLINE}sheen. It can be sold at a high{NEWLINE}price to shops.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:商店"
    ]
@@ -5551,10 +5551,10 @@
   {
    "id": 587,
    "zh": "能让某些宝可梦进{NEWLINE}化的神奇鳞片。散{NEWLINE}发着虹色光辉。",
-   "en": "A mysterious scale that makes certain{NEWLINE}Pokémon evolve. It shines in rainbow{NEWLINE}colors.",
+   "en": "A mysterious scale that makes{NEWLINE}certain Pokémon evolve. It shines{NEWLINE}in rainbow colors.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:神奇鳞片",
     "glossary:进化"
@@ -5563,10 +5563,10 @@
   {
    "id": 588,
    "zh": "携带后，能让用了{NEWLINE}招式的对手退场的{NEWLINE}卡片。",
-   "en": "An item to be held by a Pokémon. It is a{NEWLINE}card that forces out a foe that hits{NEWLINE}the holder with a move.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}is a card that forces out a foe that{NEWLINE}hits the holder with a move.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 589,
@@ -5582,26 +5582,26 @@
   {
    "id": 590,
    "zh": "携带后，在受到打{NEWLINE}击招式攻击时，能{NEWLINE}给予对手伤害。",
-   "en": "An item to be held by a Pokémon. If the{NEWLINE}holder is hit by a contact move, the{NEWLINE}attacker is damaged too.",
+   "en": "An item to be held by a Pokémon. If{NEWLINE}the holder is hit by a contact move,{NEWLINE}the attacker is damaged too.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 591,
    "zh": "非常甜腻的巧克力{NEWLINE}。能让宝可梦回复{NEWLINE}20HP。",
-   "en": "Very sweet chocolate. It restores 20{NEWLINE}HP to a Pokémon.",
+   "en": "Very sweet chocolate. It restores{NEWLINE}20 HP to a Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 592,
    "zh": "能让有着2种特性{NEWLINE}的宝可梦特性变为{NEWLINE}另一种的胶囊。",
-   "en": "A capsule that switches the Ability of a{NEWLINE}Pokémon that has 2 Abilities to its{NEWLINE}other one.",
+   "en": "A capsule that switches the Ability{NEWLINE}of a Pokémon that has 2 Abilities{NEWLINE}to its other one.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 593,
@@ -5614,10 +5614,10 @@
   {
    "id": 594,
    "zh": "一次性光苔。携带{NEWLINE}宝可梦受到水招式{NEWLINE}，特防就会提高。",
-   "en": "Single-use moss. If the holder is hit by{NEWLINE}a Water-type move, its Sp. Def will rise.",
+   "en": "Single-use moss. If the holder{NEWLINE}is hit by a Water-type move, its{NEWLINE}Sp. Def will rise.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:宝可梦"
    ]
@@ -5625,42 +5625,42 @@
   {
    "id": 595,
    "zh": "能回复宝可梦的{NEWLINE}所有HP并治愈{NEWLINE}所有异常状态。",
-   "en": "It restores all of a Pokémon’s HP and{NEWLINE}heals all of its status conditions.",
+   "en": "It restores all of a Pokémon’s{NEWLINE}HP and heals all of its{NEWLINE}status conditions.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 596,
    "zh": "装着散发香气的香{NEWLINE}料的袋子。某种宝{NEWLINE}可梦很喜欢它。",
-   "en": "A pouch filled with fragrant perfume. A{NEWLINE}certain Pokémon is very fond of it.",
+   "en": "A pouch filled with fragrant perfume.{NEWLINE}A certain Pokémon is very fond of it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 597,
    "zh": "能防御天气伤害和{NEWLINE}粉末招式效果的护{NEWLINE}目镜。",
-   "en": "Goggles that protect the wearer from{NEWLINE}weather damage and the effects of{NEWLINE}powder moves.",
+   "en": "Goggles that protect the wearer{NEWLINE}from weather damage and the effects{NEWLINE}of powder moves.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 598,
    "zh": "能回复宝可梦的{NEWLINE}所有HP并治愈{NEWLINE}所有异常状态。",
-   "en": "It restores all of a Pokémon’s HP and{NEWLINE}heals all of its status conditions.",
+   "en": "It restores all of a Pokémon’s{NEWLINE}HP and heals all of its{NEWLINE}status conditions.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 599,
    "zh": "一次性雪球。携带{NEWLINE}宝可梦受到冰属性{NEWLINE}，攻击就会提高。",
-   "en": "A single-use snowball. If the holder is{NEWLINE}hit by an Ice-type move, its Attack will{NEWLINE}rise.",
+   "en": "A single-use snowball. If the{NEWLINE}holder is hit by an Ice-type move,{NEWLINE}its Attack will rise.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:宝可梦"
    ]
@@ -5668,18 +5668,18 @@
   {
    "id": 600,
    "zh": "被针对弱点时，攻击{NEWLINE}和特攻就会大幅{NEWLINE}提高。",
-   "en": "If the holder is hit by a supereffective{NEWLINE}move, its Attack and Sp. Atk will{NEWLINE}sharply rise.",
+   "en": "If the holder is hit by a{NEWLINE}supereffective move, its Attack and{NEWLINE}Sp. Atk will sharply rise.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s)"
+   "notes": "v3 TM: 1 source(s) | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 601,
    "zh": "松软起着泡的有点{NEWLINE}甜的奶油。某种宝{NEWLINE}可梦很喜欢它。",
-   "en": "A soft, fluffy, slightly sweet cream. A{NEWLINE}certain Pokémon is very fond of it.",
+   "en": "A soft, fluffy, slightly sweet cream.{NEWLINE}A certain Pokémon is very fond of it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 602,
@@ -5692,34 +5692,34 @@
   {
    "id": 603,
    "zh": "能回复宝可梦的{NEWLINE}所有HP并治愈{NEWLINE}所有异常状态。",
-   "en": "It restores all of a Pokémon’s HP and{NEWLINE}heals all of its status conditions.",
+   "en": "It restores all of a Pokémon’s{NEWLINE}HP and heals all of its{NEWLINE}status conditions.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 604,
    "zh": "银色的美丽王冠。{NEWLINE}有些人收到它会很{NEWLINE}高兴。",
-   "en": "A beautiful silver bottle cap. Some{NEWLINE}people are very happy to receive one.",
+   "en": "A beautiful silver bottle cap.{NEWLINE}Some people are very happy to{NEWLINE}receive one.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 605,
    "zh": "金色的美丽王冠。{NEWLINE}有些人收到它会很{NEWLINE}高兴。",
-   "en": "A beautiful gold bottle cap. Some people{NEWLINE}are very happy to receive one.",
+   "en": "A beautiful gold bottle cap.{NEWLINE}Some people are very happy to{NEWLINE}receive one.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 606,
    "zh": "能让某些特定宝{NEWLINE}可梦进化的{NEWLINE}神奇石头。",
-   "en": "A peculiar stone that can make certain{NEWLINE}species of Pokémon evolve.",
+   "en": "A peculiar stone that can make{NEWLINE}certain species of Pokémon evolve.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:进化"
    ]
@@ -5735,42 +5735,42 @@
   {
    "id": 608,
    "zh": "当携带后展开场地{NEWLINE}时，持续时间会比{NEWLINE}平时更长。",
-   "en": "An item to be held by a Pokémon. Terrain{NEWLINE}created by the holder lasts longer{NEWLINE}than usual.",
+   "en": "An item to be held by a Pokémon.{NEWLINE}Terrain created by the holder lasts{NEWLINE}longer than usual.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 609,
    "zh": "颜色鲜艳的花蜜。{NEWLINE}可以改变特定{NEWLINE}宝可梦的样子。",
-   "en": "A brightly colored nectar. It can{NEWLINE}change the form of a certain Pokémon.",
+   "en": "A brightly colored nectar.{NEWLINE}It can change the form of a{NEWLINE}certain Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 610,
    "zh": "颜色鲜艳的花蜜。{NEWLINE}可以改变特定{NEWLINE}宝可梦的样子。",
-   "en": "A brightly colored nectar. It can{NEWLINE}change the form of a certain Pokémon.",
+   "en": "A brightly colored nectar.{NEWLINE}It can change the form of a{NEWLINE}certain Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 611,
    "zh": "颜色鲜艳的花蜜。{NEWLINE}可以改变特定{NEWLINE}宝可梦的样子。",
-   "en": "A brightly colored nectar. It can{NEWLINE}change the form of a certain Pokémon.",
+   "en": "A brightly colored nectar.{NEWLINE}It can change the form of a{NEWLINE}certain Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 612,
    "zh": "颜色鲜艳的花蜜。{NEWLINE}可以改变特定{NEWLINE}宝可梦的样子。",
-   "en": "A brightly colored nectar. It can{NEWLINE}change the form of a certain Pokémon.",
+   "en": "A brightly colored nectar.{NEWLINE}It can change the form of a{NEWLINE}certain Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 613,
@@ -5783,10 +5783,10 @@
   {
    "id": 614,
    "zh": "碎后会变得锋利似{NEWLINE}玻璃的黑石。某种{NEWLINE}宝可梦很喜欢它。",
-   "en": "A black stone that becomes as sharp as{NEWLINE}glass when broken. A certain Pokémon is{NEWLINE}very fond of it.",
+   "en": "A black stone that becomes as sharp{NEWLINE}as glass when broken. A certain{NEWLINE}Pokémon is very fond of it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 615,
@@ -5831,10 +5831,10 @@
   {
    "id": 620,
    "zh": "星星形状的工艺糖{NEWLINE}果。小仙奶非常喜{NEWLINE}欢。",
-   "en": "A candy crafted in the shape of a star.{NEWLINE}Milcery loves it.",
+   "en": "A candy crafted in the shape of a{NEWLINE}star. Milcery loves it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 621,
@@ -5847,18 +5847,18 @@
   {
    "id": 622,
    "zh": "招式因命中率影响{NEWLINE}而落空时，速度会{NEWLINE}大幅提高。",
-   "en": "If the holder’s move misses because of{NEWLINE}accuracy, its Speed will sharply rise.",
+   "en": "If the holder’s move misses{NEWLINE}because of accuracy, its Speed{NEWLINE}will sharply rise.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 623,
    "zh": "这个神奇的茶壶虽{NEWLINE}有缺陷，可以使特{NEWLINE}定的宝可梦进化。",
-   "en": "A peculiar teapot. Though it is chipped,{NEWLINE}it can make certain Pokémon evolve.",
+   "en": "A peculiar teapot. Though it{NEWLINE}is chipped, it can make certain{NEWLINE}Pokémon evolve.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:进化"
    ]
@@ -5866,10 +5866,10 @@
   {
    "id": 624,
    "zh": "这个神奇的茶壶虽{NEWLINE}有破裂，可以使特{NEWLINE}定的宝可梦进化。",
-   "en": "A peculiar teapot. Though it is cracked,{NEWLINE}it can make certain Pokémon evolve.",
+   "en": "A peculiar teapot. Though it is{NEWLINE}cracked, it can make certain{NEWLINE}Pokémon evolve.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:进化"
    ]
@@ -5877,18 +5877,18 @@
   {
    "id": 625,
    "zh": "当携带后能力下降{NEWLINE}时，同行宝可梦就{NEWLINE}会自动替换上场。",
-   "en": "An item to be held by a Pokémon. If the{NEWLINE}holder’s stats are lowered, it switches{NEWLINE}out with a party Pokémon.",
+   "en": "An item to be held by a Pokémon. If{NEWLINE}the holder’s stats are lowered, it{NEWLINE}switches out with a party Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 626,
    "zh": "充满能量的糖果。{NEWLINE}给宝可梦后，可增{NEWLINE}加少许经验值。",
-   "en": "A candy packed with energy. Giving it to{NEWLINE}a Pokémon gives it a small amount of{NEWLINE}Exp. Points.",
+   "en": "A candy packed with energy. Giving{NEWLINE}it to a Pokémon gives it a small{NEWLINE}amount of Exp. Points.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:增加"
    ]
@@ -5896,10 +5896,10 @@
   {
    "id": 627,
    "zh": "充满能量的糖果。{NEWLINE}给宝可梦后，可增{NEWLINE}加经验值。",
-   "en": "A candy packed with energy. Giving it to{NEWLINE}a Pokémon gives it some Exp. Points.",
+   "en": "A candy packed with energy. Giving{NEWLINE}it to a Pokémon gives it some{NEWLINE}Exp. Points.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:增加"
    ]
@@ -5907,10 +5907,10 @@
   {
    "id": 628,
    "zh": "充满能量的糖果。{NEWLINE}给宝可梦后，可增{NEWLINE}加许多经验值。",
-   "en": "A candy packed with energy. Giving it to{NEWLINE}a Pokémon gives it a lot of Exp. Points.",
+   "en": "A candy packed with energy. Giving{NEWLINE}it to a Pokémon gives it a lot of{NEWLINE}Exp. Points.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:增加"
    ]
@@ -5918,10 +5918,10 @@
   {
    "id": 629,
    "zh": "充满能量的糖果。{NEWLINE}给宝可梦后，可增{NEWLINE}加一点点经验值。",
-   "en": "A candy packed with energy. Giving it to{NEWLINE}a Pokémon gives it a tiny amount of Exp.{NEWLINE}Points.",
+   "en": "A candy packed with energy. Giving{NEWLINE}it to a Pokémon gives it a tiny{NEWLINE}amount of Exp. Points.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:增加"
    ]
@@ -5929,10 +5929,10 @@
   {
    "id": 630,
    "zh": "充满能量的糖果。{NEWLINE}给宝可梦后，可增{NEWLINE}加大量经验值。",
-   "en": "A candy packed with energy. Giving it to{NEWLINE}a Pokémon gives it a huge amount of{NEWLINE}Exp. Points.",
+   "en": "A candy packed with energy. Giving{NEWLINE}it to a Pokémon gives it a huge{NEWLINE}amount of Exp. Points.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:增加"
    ]
@@ -5940,42 +5940,42 @@
   {
    "id": 631,
    "zh": "用伽勒豆蔻枝编的{NEWLINE}手环。伽勒尔呆呆{NEWLINE}兽戴上会很开心。",
-   "en": "A bracelet woven from Galarica Twigs.{NEWLINE}Galarian Slowpoke are happy to wear it.",
+   "en": "A bracelet woven from Galarica{NEWLINE}Twigs. Galarian Slowpoke are happy{NEWLINE}to wear it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 632,
    "zh": "伽勒豆蔻的枝条。{NEWLINE}可以用来制作某种{NEWLINE}宝可梦的饰品。",
-   "en": "A twig from a Galarica tree. It can be{NEWLINE}used to make an accessory for a{NEWLINE}certain Pokémon.",
+   "en": "A twig from a Galarica tree. It can{NEWLINE}be used to make an accessory for{NEWLINE}a certain Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 633,
    "zh": "用伽勒豆蔻枝编的{NEWLINE}花冠。伽勒尔呆呆{NEWLINE}兽戴上会很开心。",
-   "en": "A wreath woven from Galarica Twigs.{NEWLINE}Galarian Slowpoke are happy to wear it.",
+   "en": "A wreath woven from Galarica{NEWLINE}Twigs. Galarian Slowpoke are happy{NEWLINE}to wear it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 634,
    "zh": "不受脚下陷阱等的{NEWLINE}影响。",
-   "en": "The holder is unaffected by traps set{NEWLINE}on the ground and the like.",
+   "en": "The holder is unaffected by traps{NEWLINE}set on the ground and the like.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 635,
    "zh": "蕴藏着不可思议能{NEWLINE}量的绳子。某种宝{NEWLINE}可梦们很喜欢它。",
-   "en": "A cord filled with a mysterious energy.{NEWLINE}Certain Pokémon are very fond of it.",
+   "en": "A cord filled with a mysterious{NEWLINE}energy. Certain Pokémon are very{NEWLINE}fond of it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 636,
@@ -5988,10 +5988,10 @@
   {
    "id": 637,
    "zh": "质地像是泥土的煤{NEWLINE}炭块。某种宝可梦{NEWLINE}很喜欢它。",
-   "en": "A block of peat with an earthy texture.{NEWLINE}A certain Pokémon is very fond of it.",
+   "en": "A block of peat with an earthy{NEWLINE}texture. A certain Pokémon is{NEWLINE}very fond of it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 638,
@@ -6004,18 +6004,18 @@
   {
    "id": 639,
    "zh": "据说很久以前英雄{NEWLINE}的盾。而现在早已{NEWLINE}变得锈迹斑斑。",
-   "en": "A shield said to have belonged to a hero{NEWLINE}long ago. It is now covered in rust.",
+   "en": "A shield said to have belonged{NEWLINE}to a hero long ago. It is now{NEWLINE}covered in rust.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 640,
    "zh": "据说很久以前英雄{NEWLINE}的剑。而现在早已{NEWLINE}变得锈迹斑斑。",
-   "en": "A sword said to have belonged to a hero{NEWLINE}long ago. It is now covered in rust.",
+   "en": "A sword said to have belonged{NEWLINE}to a hero long ago. It is now{NEWLINE}covered in rust.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 641,
@@ -6050,18 +6050,18 @@
   {
    "id": 644,
    "zh": "携带它的宝可梦将{NEWLINE}不受各种天气的影{NEWLINE}响。",
-   "en": "The Pokémon holding it is unaffected by{NEWLINE}the weather.",
+   "en": "The Pokémon holding it is unaffected{NEWLINE}by the weather.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 645,
    "zh": "可爱而有个性的盾{NEWLINE}。携带后，特性不{NEWLINE}会被对手改变。",
-   "en": "A cute shield with lots of character.{NEWLINE}When held, the holder’s Ability can’t be{NEWLINE}changed by the foe.",
+   "en": "A cute shield with lots of character.{NEWLINE}When held, the holder’s Ability can’t{NEWLINE}be changed by the foe.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 646,
@@ -6088,18 +6088,18 @@
   {
    "id": 648,
    "zh": "光芒晶莹剔透的坠{NEWLINE}饰。携带后不会因{NEWLINE}为对手降低能力。",
-   "en": "A crystal-clear amulet. When held, the{NEWLINE}holder’s stats can’t be lowered by the{NEWLINE}foe.",
+   "en": "A crystal-clear amulet. When{NEWLINE}held, the holder’s stats can’t be{NEWLINE}lowered by the foe.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 649,
    "zh": "携带后，变得不会{NEWLINE}受到招式的追加效{NEWLINE}果影响。",
-   "en": "When held, the holder is unaffected by{NEWLINE}the added effects of moves.",
+   "en": "When held, the holder is unaffected{NEWLINE}by the added effects of moves.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 650,
@@ -6142,10 +6142,10 @@
   {
    "id": 654,
    "zh": "仅有1次可在对手{NEWLINE}提高能力时，模仿{NEWLINE}提高同样的能力。",
-   "en": "Just once, when the foe’s stats rise,{NEWLINE}the holder copies the same stat{NEWLINE}increases.",
+   "en": "Just once, when the foe’s stats{NEWLINE}rise, the holder copies the same{NEWLINE}stat increases.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:模仿",
     "number_missing"
@@ -6154,10 +6154,10 @@
   {
    "id": 655,
    "zh": "携带后，拳击招式{NEWLINE}威力提高，且不会{NEWLINE}接触到对手。",
-   "en": "When held, the holder’s punching moves{NEWLINE}get stronger and don’t make contact{NEWLINE}with the foe.",
+   "en": "When held, the holder’s punching{NEWLINE}moves get stronger and don’t make{NEWLINE}contact with the foe.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:威力"
    ]
@@ -6165,10 +6165,10 @@
   {
    "id": 656,
    "zh": "遇光后微微发光的{NEWLINE}羽毛。携带后妖精{NEWLINE}招式威力提高。",
-   "en": "A feather that glows faintly in the{NEWLINE}light. When held, it boosts Fairy-type{NEWLINE}moves.",
+   "en": "A feather that glows faintly in{NEWLINE}the light. When held, it boosts{NEWLINE}Fairy-type moves.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:发光",
     "glossary:威力",
@@ -6178,10 +6178,10 @@
   {
    "id": 657,
    "zh": "这种神奇的苹果可{NEWLINE}以使特定的宝可梦{NEWLINE}进化。富含蜜汁。",
-   "en": "This mysterious apple can make certain{NEWLINE}Pokémon evolve. It is full of syrup.",
+   "en": "This mysterious apple can make{NEWLINE}certain Pokémon evolve. It is{NEWLINE}full of syrup.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:进化"
    ]
@@ -6189,10 +6189,10 @@
   {
    "id": 658,
    "zh": "这个神奇的茶碗虽{NEWLINE}然破裂，可以使特{NEWLINE}定的宝可梦进化。",
-   "en": "A peculiar teacup. Though it is cracked,{NEWLINE}it can make certain Pokémon evolve.",
+   "en": "A peculiar teacup. Though it is{NEWLINE}cracked, it can make certain{NEWLINE}Pokémon evolve.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:进化"
    ]
@@ -6200,10 +6200,10 @@
   {
    "id": 659,
    "zh": "这个神奇的茶碗虽{NEWLINE}然破缺，可以使特{NEWLINE}定的宝可梦进化。",
-   "en": "A peculiar teacup. Though it is chipped,{NEWLINE}it can make certain Pokémon evolve.",
+   "en": "A peculiar teacup. Though it{NEWLINE}is chipped, it can make certain{NEWLINE}Pokémon evolve.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:进化"
    ]
@@ -6255,66 +6255,66 @@
   {
    "id": 664,
    "zh": "受效果绝佳的妖精{NEWLINE}属性招式攻击时，{NEWLINE}能令其威力减弱。",
-   "en": "If the holder is hit by a supereffective{NEWLINE}Fairy-type move, it weakens the move’s{NEWLINE}power.",
+   "en": "If the holder is hit by a{NEWLINE}supereffective Fairy-type move, it{NEWLINE}weakens the move’s power.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 665,
    "zh": "携带后，在受到物{NEWLINE}理招式攻击时，防御{NEWLINE}就会提高。",
-   "en": "An item to be held by a Pokémon. If the{NEWLINE}holder is hit by a physical move, its{NEWLINE}Defense will rise.",
+   "en": "An item to be held by a Pokémon.{NEWLINE}If the holder is hit by a physical{NEWLINE}move, its Defense will rise.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 666,
    "zh": "携带后，在受到特{NEWLINE}殊招式攻击时，特防{NEWLINE}就会提高。",
-   "en": "An item to be held by a Pokémon. If the{NEWLINE}holder is hit by a special move, its{NEWLINE}Sp. Def will rise.",
+   "en": "An item to be held by a Pokémon. If{NEWLINE}the holder is hit by a special move,{NEWLINE}its Sp. Def will rise.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 667,
    "zh": "很久以前的古代宝{NEWLINE}可梦的化石。好像{NEWLINE}是巨颚的一部分。",
-   "en": "A fossil of an ancient Pokémon from long{NEWLINE}ago. It seems to be part of a big jaw.",
+   "en": "A fossil of an ancient Pokémon{NEWLINE}from long ago. It seems to be{NEWLINE}part of a big jaw.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 668,
    "zh": "很久以前古代宝可{NEWLINE}梦的化石。好像是{NEWLINE}头鳍的一部分。",
-   "en": "A fossil of an ancient Pokémon from long{NEWLINE}ago. It seems to be part of a head fin.",
+   "en": "A fossil of an ancient Pokémon{NEWLINE}from long ago. It seems to be{NEWLINE}part of a head fin.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 669,
    "zh": "很久以前的古代宝{NEWLINE}可梦的化石。好像{NEWLINE}是后背的一部分。",
-   "en": "A fossil of an ancient Pokémon from long{NEWLINE}ago. It seems to be part of its back.",
+   "en": "A fossil of an ancient Pokémon{NEWLINE}from long ago. It seems to be{NEWLINE}part of its back.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 670,
    "zh": "据说是鸟宝可梦祖{NEWLINE}先的化石。好像是{NEWLINE}翅膀的一部分。",
-   "en": "A fossil said to be of an ancestor of{NEWLINE}bird Pokémon. It seems to be part of a{NEWLINE}wing.",
+   "en": "A fossil said to be of an ancestor{NEWLINE}of bird Pokémon. It seems to be{NEWLINE}part of a wing.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 671,
    "zh": "远古时代宝可梦化{NEWLINE}石残片。本来面目{NEWLINE}至今是未解之谜。",
-   "en": "A fragment of an ancient Pokémon{NEWLINE}fossil. What it originally looked like is{NEWLINE}still a mystery.",
+   "en": "A fragment of an ancient Pokémon{NEWLINE}fossil. What it originally looked{NEWLINE}like is still a mystery.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 672,
@@ -6327,10 +6327,10 @@
   {
    "id": 673,
    "zh": "远古时代宝可梦化{NEWLINE}石残片。本来面目{NEWLINE}至今是未解之谜。",
-   "en": "A fragment of an ancient Pokémon{NEWLINE}fossil. What it originally looked like is{NEWLINE}still a mystery.",
+   "en": "A fragment of an ancient Pokémon{NEWLINE}fossil. What it originally looked{NEWLINE}like is still a mystery.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 674,
@@ -6343,10 +6343,10 @@
   {
    "id": 675,
    "zh": "携带后，盖诺赛克{NEWLINE}特的某招式就会变{NEWLINE}为火属性。",
-   "en": "When held by Genesect, one of its moves{NEWLINE}becomes Fire type.",
+   "en": "When held by Genesect, one of its{NEWLINE}moves becomes Fire type.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -6354,10 +6354,10 @@
   {
    "id": 676,
    "zh": "携带后，盖诺赛克{NEWLINE}特的某招式就会变{NEWLINE}为冰属性。",
-   "en": "When held by Genesect, one of its moves{NEWLINE}becomes Ice type.",
+   "en": "When held by Genesect, one of its{NEWLINE}moves becomes Ice type.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -6365,10 +6365,10 @@
   {
    "id": 677,
    "zh": "携带后，盖诺赛克{NEWLINE}特的某招式就会变{NEWLINE}为水属性。",
-   "en": "When held by Genesect, one of its moves{NEWLINE}becomes Water type.",
+   "en": "When held by Genesect, one of its{NEWLINE}moves becomes Water type.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -6376,10 +6376,10 @@
   {
    "id": 678,
    "zh": "携带后，盖诺赛克{NEWLINE}特的某招式就会变{NEWLINE}为电属性。",
-   "en": "When held by Genesect, one of its moves{NEWLINE}becomes Electric type.",
+   "en": "When held by Genesect, one of its{NEWLINE}moves becomes Electric type.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -6387,34 +6387,34 @@
   {
    "id": 679,
    "zh": "携带后，在电气场{NEWLINE}地上使用，防御就{NEWLINE}会提高。",
-   "en": "An item to be held by a Pokémon. It{NEWLINE}raises the holder’s Defense when used{NEWLINE}on Electric Terrain.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}raises the holder’s Defense when{NEWLINE}used on Electric Terrain.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 680,
    "zh": "携带后，在青草场{NEWLINE}地上使用，防御就{NEWLINE}会提高。",
-   "en": "An item to be held by a Pokémon. It{NEWLINE}raises the holder’s Defense when used{NEWLINE}on Grassy Terrain.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}raises the holder’s Defense when{NEWLINE}used on Grassy Terrain.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 681,
    "zh": "携带后，在薄雾场{NEWLINE}地上使用，特防就{NEWLINE}会提高。",
-   "en": "An item to be held by a Pokémon. It{NEWLINE}raises the holder’s Sp. Def when used{NEWLINE}on Misty Terrain.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}raises the holder’s Sp. Def when{NEWLINE}used on Misty Terrain.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 682,
    "zh": "携带后，在精神场{NEWLINE}地上使用，特防就{NEWLINE}会提高。",
-   "en": "An item to be held by a Pokémon. It{NEWLINE}raises the holder’s Sp. Def when used{NEWLINE}on Psychic Terrain.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}raises the holder’s Sp. Def when{NEWLINE}used on Psychic Terrain.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 683,
@@ -6435,10 +6435,10 @@
   {
    "id": 685,
    "zh": "一般属性的宝石。{NEWLINE}携带后，一般招式{NEWLINE}威力会增强1次。",
-   "en": "A Normal-type gem. When held, it boosts{NEWLINE}the power of a Normal-type move once.",
+   "en": "A Normal-type gem. When held, it{NEWLINE}boosts the power of a Normal-type{NEWLINE}move once.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带",
     "number_missing"
@@ -6459,10 +6459,10 @@
   {
    "id": 687,
    "zh": "飞行属性的宝石。{NEWLINE}携带后，飞行招式{NEWLINE}威力会增强1次。",
-   "en": "A Flying-type gem. When held, it boosts{NEWLINE}the power of a Flying-type move once.",
+   "en": "A Flying-type gem. When held, it{NEWLINE}boosts the power of a Flying-type{NEWLINE}move once.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带",
     "number_missing"
@@ -6471,10 +6471,10 @@
   {
    "id": 688,
    "zh": "毒属性的宝石。携{NEWLINE}带后，毒招式威力{NEWLINE}会增强1次。",
-   "en": "A Poison-type gem. When held, it boosts{NEWLINE}the power of a Poison-type move once.",
+   "en": "A Poison-type gem. When held, it{NEWLINE}boosts the power of a Poison-type{NEWLINE}move once.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带",
     "number_missing"
@@ -6483,10 +6483,10 @@
   {
    "id": 689,
    "zh": "地面属性的宝石。{NEWLINE}携带后，地面招式{NEWLINE}威力会增强1次。",
-   "en": "A Ground-type gem. When held, it boosts{NEWLINE}the power of a Ground-type move once.",
+   "en": "A Ground-type gem. When held, it{NEWLINE}boosts the power of a Ground-type{NEWLINE}move once.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:地面",
     "glossary:携带",
@@ -6496,10 +6496,10 @@
   {
    "id": 690,
    "zh": "岩石属性的宝石。{NEWLINE}携带后，岩石招式{NEWLINE}威力会增强1次。",
-   "en": "A Rock-type gem. When held, it boosts{NEWLINE}the power of a Rock-type move once.",
+   "en": "A Rock-type gem. When held, it{NEWLINE}boosts the power of a Rock-type{NEWLINE}move once.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带",
     "number_missing"
@@ -6520,10 +6520,10 @@
   {
    "id": 692,
    "zh": "幽灵属性的宝石。{NEWLINE}携带后，幽灵招式{NEWLINE}威力会增强1次。",
-   "en": "A Ghost-type gem. When held, it boosts{NEWLINE}the power of a Ghost-type move once.",
+   "en": "A Ghost-type gem. When held, it{NEWLINE}boosts the power of a Ghost-type{NEWLINE}move once.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带",
     "number_missing"
@@ -6532,10 +6532,10 @@
   {
    "id": 693,
    "zh": "钢属性的宝石。携{NEWLINE}带后，钢招式威力{NEWLINE}会增强1次。",
-   "en": "A Steel-type gem. When held, it boosts{NEWLINE}the power of a Steel-type move once.",
+   "en": "A Steel-type gem. When held, it{NEWLINE}boosts the power of a Steel-type{NEWLINE}move once.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带",
     "number_missing"
@@ -6556,10 +6556,10 @@
   {
    "id": 695,
    "zh": "水属性的宝石。携{NEWLINE}带后，水招式威力{NEWLINE}会增强1次。",
-   "en": "A Water-type gem. When held, it boosts{NEWLINE}the power of a Water-type move once.",
+   "en": "A Water-type gem. When held, it{NEWLINE}boosts the power of a Water-type{NEWLINE}move once.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带",
     "number_missing"
@@ -6568,10 +6568,10 @@
   {
    "id": 696,
    "zh": "草属性的宝石。携{NEWLINE}带后，草招式威力{NEWLINE}会增强1次。",
-   "en": "A Grass-type gem. When held, it boosts{NEWLINE}the power of a Grass-type move once.",
+   "en": "A Grass-type gem. When held, it{NEWLINE}boosts the power of a Grass-type{NEWLINE}move once.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带",
     "number_missing"
@@ -6604,10 +6604,10 @@
   {
    "id": 699,
    "zh": "冰属性的宝石。携{NEWLINE}带后，冰招式威力{NEWLINE}会增强1次。",
-   "en": "An Ice-type gem. When held, it boosts{NEWLINE}the power of an Ice-type move once.",
+   "en": "An Ice-type gem. When held, it{NEWLINE}boosts the power of an Ice-type{NEWLINE}move once.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带",
     "number_missing"
@@ -6616,10 +6616,10 @@
   {
    "id": 700,
    "zh": "龙属性的宝石。携{NEWLINE}带后，龙招式威力{NEWLINE}会增强1次。",
-   "en": "A Dragon-type gem. When held, it boosts{NEWLINE}the power of a Dragon-type move once.",
+   "en": "A Dragon-type gem. When held, it{NEWLINE}boosts the power of a Dragon-type{NEWLINE}move once.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带",
     "number_missing"
@@ -6628,10 +6628,10 @@
   {
    "id": 701,
    "zh": "恶属性的宝石。携{NEWLINE}带后，恶招式威力{NEWLINE}会增强1次。",
-   "en": "A Dark-type gem. When held, it boosts{NEWLINE}the power of a Dark-type move once.",
+   "en": "A Dark-type gem. When held, it{NEWLINE}boosts the power of a Dark-type{NEWLINE}move once.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带",
     "number_missing"
@@ -6640,10 +6640,10 @@
   {
    "id": 702,
    "zh": "妖精属性的宝石。{NEWLINE}携带后，妖精招式{NEWLINE}威力会增强1次。",
-   "en": "A Fairy-type gem. When held, it boosts{NEWLINE}the power of a Fairy-type move once.",
+   "en": "A Fairy-type gem. When held, it{NEWLINE}boosts the power of a Fairy-type{NEWLINE}move once.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带",
     "number_missing"
@@ -6652,10 +6652,10 @@
   {
    "id": 703,
    "zh": "装有格斗数据的存{NEWLINE}储碟。某宝可梦携{NEWLINE}带后属性会变化。",
-   "en": "A memory disc holding Fighting-type{NEWLINE}data. It changes the type of a certain{NEWLINE}Pokémon that holds it.",
+   "en": "A memory disc holding Fighting-type{NEWLINE}data. It changes the type of a{NEWLINE}certain Pokémon that holds it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -6663,10 +6663,10 @@
   {
    "id": 704,
    "zh": "装有飞行数据的存{NEWLINE}储碟。某宝可梦携{NEWLINE}带后属性会变化。",
-   "en": "A memory disc holding Flying-type data.{NEWLINE}It changes the type of a certain{NEWLINE}Pokémon that holds it.",
+   "en": "A memory disc holding Flying-type{NEWLINE}data. It changes the type of a{NEWLINE}certain Pokémon that holds it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -6674,10 +6674,10 @@
   {
    "id": 705,
    "zh": "装有毒数据的存储{NEWLINE}碟。某宝可梦携带{NEWLINE}后属性会变化。",
-   "en": "A memory disc holding Poison-type data.{NEWLINE}It changes the type of a certain{NEWLINE}Pokémon that holds it.",
+   "en": "A memory disc holding Poison-type{NEWLINE}data. It changes the type of a{NEWLINE}certain Pokémon that holds it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -6685,10 +6685,10 @@
   {
    "id": 706,
    "zh": "装有地面数据的存{NEWLINE}储碟。某宝可梦携{NEWLINE}带后属性会变化。",
-   "en": "A memory disc holding Ground-type data.{NEWLINE}It changes the type of a certain{NEWLINE}Pokémon that holds it.",
+   "en": "A memory disc holding Ground-type{NEWLINE}data. It changes the type of a{NEWLINE}certain Pokémon that holds it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化",
     "glossary:地面"
@@ -6697,10 +6697,10 @@
   {
    "id": 707,
    "zh": "装有岩石数据的存{NEWLINE}储碟。某宝可梦携{NEWLINE}带后属性会变化。",
-   "en": "A memory disc holding Rock-type data.{NEWLINE}It changes the type of a certain{NEWLINE}Pokémon that holds it.",
+   "en": "A memory disc holding Rock-type{NEWLINE}data. It changes the type of a{NEWLINE}certain Pokémon that holds it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -6708,10 +6708,10 @@
   {
    "id": 708,
    "zh": "装有虫数据的存储{NEWLINE}碟。某宝可梦携带{NEWLINE}后属性会变化。",
-   "en": "A memory disc holding Bug-type data. It{NEWLINE}changes the type of a certain Pokémon{NEWLINE}that holds it.",
+   "en": "A memory disc holding Bug-type data.{NEWLINE}It changes the type of a certain{NEWLINE}Pokémon that holds it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -6719,10 +6719,10 @@
   {
    "id": 709,
    "zh": "装有幽灵数据的存{NEWLINE}储碟。某宝可梦携{NEWLINE}带后属性会变化。",
-   "en": "A memory disc holding Ghost-type data.{NEWLINE}It changes the type of a certain{NEWLINE}Pokémon that holds it.",
+   "en": "A memory disc holding Ghost-type{NEWLINE}data. It changes the type of a{NEWLINE}certain Pokémon that holds it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -6730,10 +6730,10 @@
   {
    "id": 710,
    "zh": "装有钢数据的存储{NEWLINE}碟。某宝可梦携带{NEWLINE}后属性会变化。",
-   "en": "A memory disc holding Steel-type data.{NEWLINE}It changes the type of a certain{NEWLINE}Pokémon that holds it.",
+   "en": "A memory disc holding Steel-type{NEWLINE}data. It changes the type of a{NEWLINE}certain Pokémon that holds it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -6752,10 +6752,10 @@
   {
    "id": 712,
    "zh": "装有水数据的存储{NEWLINE}碟。某宝可梦携带{NEWLINE}后属性会变化。",
-   "en": "A memory disc holding Water-type data.{NEWLINE}It changes the type of a certain{NEWLINE}Pokémon that holds it.",
+   "en": "A memory disc holding Water-type{NEWLINE}data. It changes the type of a{NEWLINE}certain Pokémon that holds it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -6763,10 +6763,10 @@
   {
    "id": 713,
    "zh": "装有草数据的存储{NEWLINE}碟。某宝可梦携带{NEWLINE}后属性会变化。",
-   "en": "A memory disc holding Grass-type data.{NEWLINE}It changes the type of a certain{NEWLINE}Pokémon that holds it.",
+   "en": "A memory disc holding Grass-type{NEWLINE}data. It changes the type of a{NEWLINE}certain Pokémon that holds it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -6774,10 +6774,10 @@
   {
    "id": 714,
    "zh": "装有电数据的存储{NEWLINE}碟。某宝可梦携带{NEWLINE}后属性会变化。",
-   "en": "A memory disc holding Electric-type{NEWLINE}data. It changes the type of a certain{NEWLINE}Pokémon that holds it.",
+   "en": "A memory disc holding Electric-type{NEWLINE}data. It changes the type of a{NEWLINE}certain Pokémon that holds it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -6785,10 +6785,10 @@
   {
    "id": 715,
    "zh": "装有超能数据的存{NEWLINE}储碟。某宝可梦携{NEWLINE}带后属性会变化。",
-   "en": "A memory disc holding Psychic-type{NEWLINE}data. It changes the type of a certain{NEWLINE}Pokémon that holds it.",
+   "en": "A memory disc holding Psychic-type{NEWLINE}data. It changes the type of a{NEWLINE}certain Pokémon that holds it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -6796,10 +6796,10 @@
   {
    "id": 716,
    "zh": "装有冰数据的存储{NEWLINE}碟。某宝可梦携带{NEWLINE}后属性会变化。",
-   "en": "A memory disc holding Ice-type data. It{NEWLINE}changes the type of a certain Pokémon{NEWLINE}that holds it.",
+   "en": "A memory disc holding Ice-type data.{NEWLINE}It changes the type of a certain{NEWLINE}Pokémon that holds it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -6807,10 +6807,10 @@
   {
    "id": 717,
    "zh": "装有龙数据的存储{NEWLINE}碟。某宝可梦携带{NEWLINE}后属性会变化。",
-   "en": "A memory disc holding Dragon-type data.{NEWLINE}It changes the type of a certain{NEWLINE}Pokémon that holds it.",
+   "en": "A memory disc holding Dragon-type{NEWLINE}data. It changes the type of a{NEWLINE}certain Pokémon that holds it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -6818,10 +6818,10 @@
   {
    "id": 718,
    "zh": "装有恶数据的存储{NEWLINE}碟。某宝可梦携带{NEWLINE}后属性会变化。",
-   "en": "A memory disc holding Dark-type data.{NEWLINE}It changes the type of a certain{NEWLINE}Pokémon that holds it.",
+   "en": "A memory disc holding Dark-type{NEWLINE}data. It changes the type of a{NEWLINE}certain Pokémon that holds it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -6829,10 +6829,10 @@
   {
    "id": 719,
    "zh": "装有妖精数据的存{NEWLINE}储碟。某宝可梦携{NEWLINE}带后属性会变化。",
-   "en": "A memory disc holding Fairy-type data.{NEWLINE}It changes the type of a certain{NEWLINE}Pokémon that holds it.",
+   "en": "A memory disc holding Fairy-type{NEWLINE}data. It changes the type of a{NEWLINE}certain Pokémon that holds it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -6840,10 +6840,10 @@
   {
    "id": 720,
    "zh": "妖精属性的石板。{NEWLINE}携带后，妖精招式{NEWLINE}威力会增强。",
-   "en": "A Fairy-type stone tablet. When held,{NEWLINE}it boosts the power of Fairy-type{NEWLINE}moves.",
+   "en": "A Fairy-type stone tablet. When{NEWLINE}held, it boosts the power of{NEWLINE}Fairy-type moves.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -6889,10 +6889,10 @@
   {
    "id": 725,
    "zh": "约3000年前的{NEWLINE}文明使用的金币。",
-   "en": "A gold coin used by a civilization about{NEWLINE}3,000 years ago.",
+   "en": "A gold coin used by a civilization{NEWLINE}about 3,000 years ago.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -6911,10 +6911,10 @@
   {
    "id": 727,
    "zh": "约3000年前的{NEWLINE}文明制造的手镯。",
-   "en": "A bracelet made by a civilization about{NEWLINE}3,000 years ago.",
+   "en": "A bracelet made by a civilization{NEWLINE}about 3,000 years ago.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "number_missing"
    ]
@@ -6952,34 +6952,34 @@
   {
    "id": 731,
    "zh": "能稍微提高1只{NEWLINE}宝可梦的攻击{NEWLINE}的基础点数。",
-   "en": "It slightly raises the Attack EVs of 1{NEWLINE}Pokémon.",
+   "en": "It slightly raises the Attack EVs{NEWLINE}of 1 Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 732,
    "zh": "能稍微提高1只{NEWLINE}宝可梦的防御{NEWLINE}的基础点数。",
-   "en": "It slightly raises the Defense EVs of 1{NEWLINE}Pokémon.",
+   "en": "It slightly raises the Defense{NEWLINE}EVs of 1 Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 733,
    "zh": "能稍微提高1只{NEWLINE}宝可梦的特攻{NEWLINE}的基础点数。",
-   "en": "It slightly raises the Sp. Atk EVs of 1{NEWLINE}Pokémon.",
+   "en": "It slightly raises the Sp. Atk EVs{NEWLINE}of 1 Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 734,
    "zh": "能稍微提高1只{NEWLINE}宝可梦的特防{NEWLINE}的基础点数。",
-   "en": "It slightly raises the Sp. Def EVs of 1{NEWLINE}Pokémon.",
+   "en": "It slightly raises the Sp. Def EVs{NEWLINE}of 1 Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 735,
@@ -6992,10 +6992,10 @@
   {
    "id": 736,
    "zh": "仅仅只是漂亮，没{NEWLINE}有任何效果，极其{NEWLINE}普通的羽毛。",
-   "en": "It is merely pretty and has no effect{NEWLINE}at all. An utterly ordinary feather.",
+   "en": "It is merely pretty and has{NEWLINE}no effect at all. An utterly{NEWLINE}ordinary feather.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 737,
@@ -7008,18 +7008,18 @@
   {
    "id": 738,
    "zh": "能够通过照出真实{NEWLINE}，让宝可梦变回原{NEWLINE}样的神奇镜子。",
-   "en": "A mysterious mirror that reflects a{NEWLINE}Pokémon’s true self and returns it to{NEWLINE}its original form.",
+   "en": "A mysterious mirror that reflects{NEWLINE}a Pokémon’s true self and returns{NEWLINE}it to its original form.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 739,
    "zh": "据说在很久以前封{NEWLINE}印着某只宝可梦力{NEWLINE}量的壶。",
-   "en": "A bottle said to have sealed away the{NEWLINE}power of a certain Pokémon long ago.",
+   "en": "A bottle said to have sealed away{NEWLINE}the power of a certain Pokémon{NEWLINE}long ago.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:封印"
    ]
@@ -7035,10 +7035,10 @@
   {
    "id": 741,
    "zh": "拥有后，宝可梦获{NEWLINE}得的经验值就会增{NEWLINE}加。",
-   "en": "Having it increases the Exp. Points your{NEWLINE}Pokémon earn.",
+   "en": "Having it increases the Exp. Points{NEWLINE}your Pokémon earn.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:增加"
    ]
@@ -7046,18 +7046,18 @@
   {
    "id": 742,
    "zh": "在野餐时会更容易{NEWLINE}找到蛋的神奇浑圆{NEWLINE}护符。",
-   "en": "A mysterious round charm that makes it{NEWLINE}easier to find Eggs during picnics.",
+   "en": "A mysterious round charm that makes{NEWLINE}it easier to find Eggs during picnics.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 743,
    "zh": "据说会更容易遇见{NEWLINE}发光宝可梦的神奇{NEWLINE}闪光护符。",
-   "en": "A mysterious shiny charm said to make it{NEWLINE}easier to encounter shiny Pokémon.",
+   "en": "A mysterious shiny charm said{NEWLINE}to make it easier to encounter{NEWLINE}shiny Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:发光"
    ]
@@ -7065,18 +7065,18 @@
   {
    "id": 744,
    "zh": "记录当前区域{NEWLINE}可遭遇的宝可梦及{NEWLINE}连锁状态的设备。",
-   "en": "A device that records which Pokémon{NEWLINE}can be encountered in the current area{NEWLINE}and your chain status.",
+   "en": "A device that records which Pokémon{NEWLINE}can be encountered in the current{NEWLINE}area and your chain status.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 745,
    "zh": "可自由调整队伍中{NEWLINE}宝可梦努力值的装置。",
-   "en": "A device that lets you freely adjust{NEWLINE}the EVs of the Pokémon in your party.",
+   "en": "A device that lets you freely{NEWLINE}adjust the EVs of the Pokémon{NEWLINE}in your party.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 746,
@@ -7145,10 +7145,10 @@
   {
    "id": 754,
    "zh": "拿到光下即可生辉{NEWLINE}的布。",
-   "en": "A cloth that shines when held up to the{NEWLINE}light.",
+   "en": "A cloth that shines when held up{NEWLINE}to the light.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 755,
@@ -7161,10 +7161,10 @@
   {
    "id": 756,
    "zh": "通过使用这本指南{NEWLINE}，可以让洛托姆潜{NEWLINE}入或脱离家电。",
-   "en": "Use this catalog to have Rotom enter or{NEWLINE}leave household appliances.",
+   "en": "Use this catalog to have Rotom enter{NEWLINE}or leave household appliances.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 757,
@@ -7185,18 +7185,18 @@
   {
    "id": 759,
    "zh": "对骑拉帝纳使用后{NEWLINE}，能使之力量高涨{NEWLINE}并改变形态。",
-   "en": "When used on Giratina, it heightens its{NEWLINE}power and changes its form.",
+   "en": "When used on Giratina, it heightens{NEWLINE}its power and changes its form.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 760,
    "zh": "能让某些宝可梦进{NEWLINE}化的神奇挂轴。上{NEWLINE}面写着恶之奥秘。",
-   "en": "A mysterious scroll that makes certain{NEWLINE}Pokémon evolve. It holds the secrets{NEWLINE}of darkness.",
+   "en": "A mysterious scroll that makes{NEWLINE}certain Pokémon evolve. It holds{NEWLINE}the secrets of darkness.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:进化"
    ]
@@ -7204,10 +7204,10 @@
   {
    "id": 761,
    "zh": "能让甲贺忍蛙{NEWLINE}变化形态的神奇挂轴。{NEWLINE}上面写着忍者奥秘。",
-   "en": "A mysterious scroll that changes{NEWLINE}Greninja’s form. It holds the secrets{NEWLINE}of the ninja.",
+   "en": "A mysterious scroll that changes{NEWLINE}Greninja’s form. It holds the{NEWLINE}secrets of the ninja.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -7215,10 +7215,10 @@
   {
    "id": 762,
    "zh": "能让携带着超级石{NEWLINE}战斗的宝可梦超级{NEWLINE}进化的圆环。",
-   "en": "A ring that lets a Pokémon battling with{NEWLINE}a Mega Stone Mega Evolve.",
+   "en": "A ring that lets a Pokémon battling{NEWLINE}with a Mega Stone Mega Evolve.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240).",
    "qa_ignore": [
     "glossary:携带",
     "glossary:进化"
@@ -7235,10 +7235,10 @@
   {
    "id": 764,
    "zh": "狩猎地带的园长遗{NEWLINE}失的金假牙。",
-   "en": "The gold dentures that the Safari Zone{NEWLINE}Warden lost.",
+   "en": "The gold dentures that the Safari{NEWLINE}Zone Warden lost.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 765,
@@ -7259,10 +7259,10 @@
   {
    "id": 767,
    "zh": "能回复宝可梦的{NEWLINE}所有HP并治愈{NEWLINE}所有异常状态。",
-   "en": "It restores all of a Pokémon’s HP and{NEWLINE}heals all of its status conditions.",
+   "en": "It restores all of a Pokémon’s{NEWLINE}HP and heals all of its{NEWLINE}status conditions.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 768,
@@ -7443,10 +7443,10 @@
   {
    "id": 790,
    "zh": "宝可梦闻了后，能{NEWLINE}力全方位提高。",
-   "en": "When a Pokémon smells this mint, all of{NEWLINE}its stats will grow evenly.",
+   "en": "When a Pokémon smells this mint, all{NEWLINE}of its stats will grow evenly.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   }
  ]
 }

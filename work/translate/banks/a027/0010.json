@@ -972,10 +972,10 @@
   {
    "id": 120,
    "zh": "道具口袋{NEWLINE}装有对冒险帮助很大{NEWLINE}的方便道具。",
-   "en": "Item Pocket{NEWLINE}For items that will be useful during your{NEWLINE}adventure.",
+   "en": "Item Pocket{NEWLINE}For items that will be useful during{NEWLINE}your adventure.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0010/120"
+   "notes": "US 0010/120 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 121,
@@ -988,18 +988,18 @@
   {
    "id": 122,
    "zh": "精灵球口袋{NEWLINE}装着各种各样的精灵球。",
-   "en": "Poké Ball Pocket{NEWLINE}For all different types of Poké Balls.",
+   "en": "Poké Ball Pocket{NEWLINE}For all different types of{NEWLINE}Poké Balls.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0010/122"
+   "notes": "US 0010/122 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 123,
    "zh": "技能机口袋{NEWLINE}装着各种各样的技能机。",
-   "en": "TMs & HMs Pocket{NEWLINE}For all different types of TMs and HMs.",
+   "en": "TMs & HMs Pocket{NEWLINE}For all different types of{NEWLINE}TMs and HMs.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0010/123"
+   "notes": "US 0010/123 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 124,
@@ -1020,10 +1020,10 @@
   {
    "id": 126,
    "zh": "战斗用品口袋{NEWLINE}装有精灵对战用的道具。",
-   "en": "Battle Items Pocket{NEWLINE}For items that are useful during battle.",
+   "en": "Battle Items Pocket{NEWLINE}For items that are useful during{NEWLINE}battle.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0010/126"
+   "notes": "US 0010/126 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
   },
   {
    "id": 127,

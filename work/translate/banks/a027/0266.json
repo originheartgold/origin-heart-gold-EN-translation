@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "永远被绿色包围的{NEWLINE}美丽城镇。",
-   "en": "A beautiful city that is enveloped{NEWLINE}in green year-round.",
+   "en": "A beautiful city that is{NEWLINE}enveloped in green year-round.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0273/11"
+   "notes": "US 0273/11 | D-1524: rewrapped to 168 px (town picture at x=193 on the Pokégear map)."
   },
   {
    "id": 12,
@@ -134,10 +134,10 @@
   {
    "id": 16,
    "zh": "人和精灵们悠闲{NEWLINE}生活的虹色城镇。",
-   "en": "A rich, rainbow-colored city where{NEWLINE}people and Pokémon gather.",
+   "en": "A rainbow-colored city where{NEWLINE}people and Pokémon relax.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/16"
+   "origin": "agent",
+   "notes": "US 0273/16 | D-1524: reworded to fit 168 px in two lines (US: 'A rich, rainbow-colored city where people and Pokémon gather.')."
   },
   {
    "id": 17,
@@ -158,66 +158,66 @@
   {
    "id": 19,
    "zh": "以第一为目标的训练师{NEWLINE}接受命运考验的地方。",
-   "en": "The fate of many Trainers aiming for{NEWLINE}the top rests here.",
+   "en": "The fate of many Trainers{NEWLINE}aiming for the top rests here.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0273/19"
+   "notes": "US 0273/19 | D-1524: rewrapped to 168 px (town picture at x=193 on the Pokégear map)."
   },
   {
    "id": 20,
    "zh": "闪着金黄色的{NEWLINE}关东最大的大城市。",
-   "en": "The biggest city in Kanto, shining{NEWLINE}with a golden light.",
+   "en": "The biggest city in Kanto,{NEWLINE}shining with a golden light.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0273/20"
+   "notes": "US 0273/20 | D-1524: rewrapped to 168 px (town picture at x=193 on the Pokégear map)."
   },
   {
    "id": 21,
    "zh": "吹起连接{NEWLINE}起点之风的城镇。",
-   "en": "A town where the wind blows and{NEWLINE}tells of impending change.",
+   "en": "A town where the wind blows{NEWLINE}and tells of impending change.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0273/21"
+   "notes": "US 0273/21 | D-1524: rewrapped to 168 px (town picture at x=193 on the Pokégear map)."
   },
   {
    "id": 22,
    "zh": "散发着小花与{NEWLINE}海风气味的城镇。",
-   "en": "A city where you can smell small{NEWLINE}flowers and a sea breeze.",
+   "en": "A city where you can smell{NEWLINE}small flowers and a sea breeze.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0273/22"
+   "notes": "US 0273/22 | D-1524: rewrapped to 168 px (town picture at x=193 on the Pokégear map)."
   },
   {
    "id": 23,
    "zh": "保留着古乡气息的小镇。",
-   "en": "This old village is still surrounded{NEWLINE}by trees and other scenery.",
+   "en": "An old village still surrounded{NEWLINE}by trees and other scenery.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/23"
+   "origin": "agent",
+   "notes": "US 0273/23 | D-1524: reworded to fit 168 px in two lines (US: 'This old village is still surrounded by trees and other scenery.')."
   },
   {
    "id": 24,
    "zh": "人们与精灵{NEWLINE}朴素地生活在一起的镇子。",
-   "en": "A town where people and Pokémon{NEWLINE}live together in simple harmony.",
+   "en": "A town where people and{NEWLINE}Pokémon live in simple harmony.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0273/24"
+   "notes": "US 0273/24 | D-1524: reworded to fit 168 px in two lines (US: 'A town where people and Pokémon live together in simple harmony.')."
   },
   {
    "id": 25,
    "zh": "孕育着大海恩惠的{NEWLINE}海滨城镇。",
-   "en": "A beachside city that has{NEWLINE}benefitted greatly from the sea.",
+   "en": "A beachside city that thrives{NEWLINE}on the bounty of the sea.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/25"
+   "origin": "agent",
+   "notes": "US 0273/25 | D-1524: reworded to fit 168 px in two lines (US: 'A beachside city that has benefitted greatly from the sea.')."
   },
   {
    "id": 26,
    "zh": "人与精灵{NEWLINE}交互发展的大都市。",
-   "en": "A developing city where people and{NEWLINE}Pokémon come and go as they like.",
+   "en": "A developing city where people{NEWLINE}and Pokémon come and go.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/26"
+   "origin": "agent",
+   "notes": "US 0273/26 | D-1524: reworded to fit 168 px in two lines (US: 'A developing city where people and Pokémon come and go as they like.')."
   },
   {
    "id": 27,
@@ -238,10 +238,10 @@
   {
    "id": 29,
    "zh": "弥漫着神秘气息的{NEWLINE}隔世村庄。",
-   "en": "A town with a suspicious air to it.{NEWLINE}It’s a hiding place for ninjas.",
+   "en": "A town with a suspicious air.{NEWLINE}It’s a hiding place for ninjas.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/29"
+   "origin": "agent",
+   "notes": "US 0273/29 | D-1524: reworded to fit 168 px in two lines (US: 'A town with a suspicious air to it. It’s a hiding place for ninjas.')."
   },
   {
    "id": 30,
@@ -254,10 +254,10 @@
   {
    "id": 31,
    "zh": "开山劈石而成的{NEWLINE}神秘山村。",
-   "en": "A mysterious mountain village cut{NEWLINE}into a rock face.",
+   "en": "A mysterious mountain village{NEWLINE}cut into a rock face.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0273/31"
+   "notes": "US 0273/31 | D-1524: rewrapped to 168 px (town picture at x=193 on the Pokégear map)."
   },
   {
    "id": 32,
@@ -942,10 +942,10 @@
   {
    "id": 117,
    "zh": "越过高山前往度假区,{NEWLINE}空气清晰的登山道。",
-   "en": "A mountain trail with crisp air that{NEWLINE}crosses the heights to the Resort Zone.",
+   "en": "A mountain trail with crisp air that{NEWLINE}crosses over to the Resort Zone.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0273/117 | Hack rewrote the US Safari Zone description to mention the Resort Zone (度假区)."
+   "notes": "US 0273/117 | Hack rewrote the US Safari Zone description to mention the Resort Zone (度假区). | D-1524: reworded to fit 208 px in two lines (US: 'A mountain trail with crisp air that crosses the heights to the Resort Zone.')."
   }
  ]
 }

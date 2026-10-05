@@ -492,10 +492,10 @@
   {
    "id": 49,
    "zh": "毒蛾精灵",
-   "en": "Poison Moth Pokémon",
+   "en": "PoisonMoth Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/49",
+   "origin": "agent",
+   "notes": "US 0816/49 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Poison Moth Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -519,10 +519,10 @@
   {
    "id": 52,
    "zh": "妖怪猫精灵",
-   "en": "Scratch Cat Pokémon",
+   "en": "ScratchCat Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/52",
+   "origin": "agent",
+   "notes": "US 0816/52 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Scratch Cat Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -818,10 +818,10 @@
   {
    "id": 80,
    "zh": "寄居蟹精灵",
-   "en": "Hermit Crab Pokémon",
+   "en": "HermitCrab Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/80",
+   "origin": "agent",
+   "notes": "US 0816/80 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Hermit Crab Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -1078,10 +1078,10 @@
   {
    "id": 105,
    "zh": "爱骨精灵",
-   "en": "Bone Keeper Pokémon",
+   "en": "BoneKeeper Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/105",
+   "origin": "agent",
+   "notes": "US 0816/105 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Bone Keeper Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -1278,10 +1278,10 @@
   {
    "id": 124,
    "zh": "人形精灵",
-   "en": "Human Shape Pokémon",
+   "en": "HumanShape Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/124",
+   "origin": "agent",
+   "notes": "US 0816/124 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Human Shape Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -1313,10 +1313,10 @@
   {
    "id": 127,
    "zh": "锹形虫精灵",
-   "en": "Stag Beetle Pokémon",
+   "en": "StagBeetle Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/127",
+   "origin": "agent",
+   "notes": "US 0816/127 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Stag Beetle Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -1575,10 +1575,10 @@
   {
    "id": 151,
    "zh": "新种精灵",
-   "en": "New Species Pokémon",
+   "en": "NewSpecies Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/151",
+   "origin": "agent",
+   "notes": "US 0816/151 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'New Species Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -1909,10 +1909,10 @@
   {
    "id": 184,
    "zh": "水兔精灵",
-   "en": "Aqua Rabbit Pokémon",
+   "en": "AquaRabbit Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/184",
+   "origin": "agent",
+   "notes": "US 0816/184 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Aqua Rabbit Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -2155,10 +2155,10 @@
   {
    "id": 207,
    "zh": "飞蝎精灵",
-   "en": "FlyScorpion Pokémon",
+   "en": "FlyScorpn Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/207",
+   "origin": "agent",
+   "notes": "US 0816/207 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'FlyScorpion Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -2719,10 +2719,10 @@
   {
    "id": 263,
    "zh": "豆狸精灵",
-   "en": "TinyRaccoon Pokémon",
+   "en": "TinyRaccn Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/263",
+   "origin": "agent",
+   "notes": "US 0816/263 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'TinyRaccoon Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -2782,10 +2782,10 @@
   {
    "id": 269,
    "zh": "毒蛾精灵",
-   "en": "Poison Moth Pokémon",
+   "en": "PoisonMoth Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/269",
+   "origin": "agent",
+   "notes": "US 0816/269 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Poison Moth Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -2930,10 +2930,10 @@
   {
    "id": 283,
    "zh": "水黾精灵",
-   "en": "Pond Skater Pokémon",
+   "en": "PondSkater Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/283",
+   "origin": "agent",
+   "notes": "US 0816/283 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Pond Skater Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -3467,10 +3467,10 @@
   {
    "id": 333,
    "zh": "绵鸟精灵",
-   "en": "Cotton Bird Pokémon",
+   "en": "CottonBird Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/333",
+   "origin": "agent",
+   "notes": "US 0816/333 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Cotton Bird Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -4160,10 +4160,10 @@
   {
    "id": 399,
    "zh": "圆鼠精灵",
-   "en": "Plump Mouse Pokémon",
+   "en": "PlumpMouse Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/399",
+   "origin": "agent",
+   "notes": "US 0816/399 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Plump Mouse Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -4694,10 +4694,10 @@
   {
    "id": 450,
    "zh": "重量精灵",
-   "en": "Heavyweight Pokémon",
+   "en": "Heavywght Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/450",
+   "origin": "agent",
+   "notes": "US 0816/450 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Heavyweight Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -4727,10 +4727,10 @@
   {
    "id": 453,
    "zh": "毒击精灵",
-   "en": "Toxic Mouth Pokémon",
+   "en": "ToxicMouth Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/453",
+   "origin": "agent",
+   "notes": "US 0816/453 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Toxic Mouth Pokémon'.",
    "qa_ignore": [
     "glossary",
     "wider_than_zh"
@@ -4739,10 +4739,10 @@
   {
    "id": 454,
    "zh": "毒击精灵",
-   "en": "Toxic Mouth Pokémon",
+   "en": "ToxicMouth Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/454",
+   "origin": "agent",
+   "notes": "US 0816/454 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Toxic Mouth Pokémon'.",
    "qa_ignore": [
     "glossary",
     "wider_than_zh"
@@ -4751,10 +4751,10 @@
   {
    "id": 455,
    "zh": "捕虫精灵",
-   "en": "Bug Catcher Pokémon",
+   "en": "BugCatcher Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/455",
+   "origin": "agent",
+   "notes": "US 0816/455 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Bug Catcher Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -4824,10 +4824,10 @@
   {
    "id": 462,
    "zh": "磁场精灵",
-   "en": "Magnet Area Pokémon",
+   "en": "MagnetArea Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/462",
+   "origin": "agent",
+   "notes": "US 0816/462 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Magnet Area Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -4862,10 +4862,10 @@
   {
    "id": 466,
    "zh": "雷电精灵",
-   "en": "Thunderbolt Pokémon",
+   "en": "Thundrbolt Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/466",
+   "origin": "agent",
+   "notes": "US 0816/466 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Thunderbolt Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -4892,10 +4892,10 @@
   {
    "id": 469,
    "zh": "勾蜓精灵",
-   "en": "Ogre Darner Pokémon",
+   "en": "OgreDarner Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/469",
+   "origin": "agent",
+   "notes": "US 0816/469 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Ogre Darner Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -5131,10 +5131,10 @@
   {
    "id": 491,
    "zh": "暗黑精灵",
-   "en": "Pitch-Black Pokémon",
+   "en": "PitchBlack Pokémon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0816/491",
+   "origin": "agent",
+   "notes": "US 0816/491 | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Pitch-Black Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -5172,10 +5172,10 @@
   {
    "id": 495,
    "zh": "草蛇精灵",
-   "en": "Grass Snake Pokémon",
+   "en": "GrassSnake Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Grass Snake Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -5183,10 +5183,10 @@
   {
    "id": 496,
    "zh": "草蛇精灵",
-   "en": "Grass Snake Pokémon",
+   "en": "GrassSnake Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Grass Snake Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -5312,10 +5312,10 @@
   {
    "id": 508,
    "zh": "宽大精灵",
-   "en": "Big-Hearted Pokémon",
+   "en": "BigHearted Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Big-Hearted Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -5411,10 +5411,10 @@
   {
    "id": 517,
    "zh": "食梦精灵",
-   "en": "Dream Eater Pokémon",
+   "en": "DreamEater Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Dream Eater Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -5477,10 +5477,10 @@
   {
    "id": 523,
    "zh": "雷电精灵",
-   "en": "Thunderbolt Pokémon",
+   "en": "Thundrbolt Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)",
+   "notes": "v3 TM: 1 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Thunderbolt Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -5719,10 +5719,10 @@
   {
    "id": 546,
    "zh": "棉球精灵",
-   "en": "Cotton Puff Pokémon",
+   "en": "CottonPuff Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Cotton Puff Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -5771,10 +5771,10 @@
   {
    "id": 551,
    "zh": "沙漠鳄鱼精灵",
-   "en": "Desert Croc Pokémon",
+   "en": "DesertCroc Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Desert Croc Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -5782,10 +5782,10 @@
   {
    "id": 552,
    "zh": "沙漠鳄鱼精灵",
-   "en": "Desert Croc Pokémon",
+   "en": "DesertCroc Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Desert Croc Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -5793,10 +5793,10 @@
   {
    "id": 553,
    "zh": "威吓精灵",
-   "en": "Intimidation Pokémon",
+   "en": "Intimidatn Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Intimidation Pokémon'.",
    "qa_ignore": [
     "glossary",
     "wider_than_zh"
@@ -5916,10 +5916,10 @@
   {
    "id": 564,
    "zh": "古代龟精灵",
-   "en": "Prototurtle Pokémon",
+   "en": "Prototurtl Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Prototurtle Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -5927,10 +5927,10 @@
   {
    "id": 565,
    "zh": "古代龟精灵",
-   "en": "Prototurtle Pokémon",
+   "en": "Prototurtl Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Prototurtle Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -5993,10 +5993,10 @@
   {
    "id": 571,
    "zh": "妖狐精灵",
-   "en": "Illusion Fox Pokémon",
+   "en": "IllusionFox Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Illusion Fox Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -6048,10 +6048,10 @@
   {
    "id": 576,
    "zh": "天体精灵",
-   "en": "Astral Body Pokémon",
+   "en": "AstralBody Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Astral Body Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -6167,10 +6167,10 @@
   {
    "id": 587,
    "zh": "飞鼠精灵",
-   "en": "SkySquirrel Pokémon",
+   "en": "SkySquirrl Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'SkySquirrel Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -6502,10 +6502,10 @@
   {
    "id": 619,
    "zh": "武术精灵",
-   "en": "MartialArts Pokémon",
+   "en": "MartialArt Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'MartialArts Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -6513,10 +6513,10 @@
   {
    "id": 620,
    "zh": "武术精灵",
-   "en": "MartialArts Pokémon",
+   "en": "MartialArt Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'MartialArts Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -6554,10 +6554,10 @@
   {
    "id": 624,
    "zh": "利器精灵",
-   "en": "Sharp Blade Pokémon",
+   "en": "SharpBlade Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Sharp Blade Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -6565,10 +6565,10 @@
   {
    "id": 625,
    "zh": "刀刃精灵",
-   "en": "Sword Blade Pokémon",
+   "en": "SwordBlade Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s)",
+   "notes": "v3 TM: 1 source(s) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Sword Blade Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -6576,10 +6576,10 @@
   {
    "id": 626,
    "zh": "头锤牛精灵",
-   "en": "BashBuffalo Pokémon",
+   "en": "BashBufflo Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'BashBuffalo Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -6620,10 +6620,10 @@
   {
    "id": 630,
    "zh": "骨鹰精灵",
-   "en": "BoneVulture Pokémon",
+   "en": "BoneVultur Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'BoneVulture Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -6849,10 +6849,10 @@
   {
    "id": 651,
    "zh": "刺铠精灵",
-   "en": "Spiny Armor Pokémon",
+   "en": "SpinyArmor Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Spiny Armor Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -6860,10 +6860,10 @@
   {
    "id": 652,
    "zh": "刺铠精灵",
-   "en": "Spiny Armor Pokémon",
+   "en": "SpinyArmor Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Spiny Armor Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -6895,10 +6895,10 @@
   {
    "id": 656,
    "zh": "泡蛙精灵",
-   "en": "Bubble Frog Pokémon",
+   "en": "BubbleFrog Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Bubble Frog Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -6906,10 +6906,10 @@
   {
    "id": 657,
    "zh": "泡蛙精灵",
-   "en": "Bubble Frog Pokémon",
+   "en": "BubbleFrog Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Bubble Frog Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -7033,10 +7033,10 @@
   {
    "id": 669,
    "zh": "单朵精灵",
-   "en": "Single Bloom Pokémon",
+   "en": "SingleBloom Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Single Bloom Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -7044,10 +7044,10 @@
   {
    "id": 670,
    "zh": "单朵精灵",
-   "en": "Single Bloom Pokémon",
+   "en": "SingleBloom Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Single Bloom Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -7165,10 +7165,10 @@
   {
    "id": 681,
    "zh": "王剑精灵",
-   "en": "Royal Sword Pokémon",
+   "en": "RoyalSword Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Royal Sword Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -7233,10 +7233,10 @@
   {
    "id": 687,
    "zh": "倒转精灵",
-   "en": "Overturning Pokémon",
+   "en": "Ovrturning Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Overturning Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -7557,10 +7557,10 @@
   {
    "id": 717,
    "zh": "破坏精灵",
-   "en": "Destruction Pokémon",
+   "en": "Destructn Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Destruction Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -7782,10 +7782,10 @@
   {
    "id": 738,
    "zh": "锹形虫精灵",
-   "en": "Stag Beetle Pokémon",
+   "en": "StagBeetle Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Stag Beetle Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -7878,10 +7878,10 @@
   {
    "id": 747,
    "zh": "非星精灵",
-   "en": "Brutal Star Pokémon",
+   "en": "BrutalStar Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Brutal Star Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -7889,10 +7889,10 @@
   {
    "id": 748,
    "zh": "非星精灵",
-   "en": "Brutal Star Pokémon",
+   "en": "BrutalStar Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Brutal Star Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -7911,10 +7911,10 @@
   {
    "id": 750,
    "zh": "挽马精灵",
-   "en": "Draft Horse Pokémon",
+   "en": "DraftHorse Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Draft Horse Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -7922,32 +7922,34 @@
   {
    "id": 751,
    "zh": "水泡精灵",
-   "en": "WaterBubble Pokémon",
+   "en": "WaterBubbl Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'WaterBubble Pokémon'.",
    "qa_ignore": [
-    "wider_than_zh"
+    "wider_than_zh",
+    "glossary:水泡"
    ]
   },
   {
    "id": 752,
    "zh": "水泡精灵",
-   "en": "WaterBubble Pokémon",
+   "en": "WaterBubbl Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'WaterBubble Pokémon'.",
    "qa_ignore": [
-    "wider_than_zh"
+    "wider_than_zh",
+    "glossary:水泡"
    ]
   },
   {
    "id": 753,
    "zh": "镰草精灵",
-   "en": "SickleGrass Pokémon",
+   "en": "SicklGrass Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'SickleGrass Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -7955,10 +7957,10 @@
   {
    "id": 754,
    "zh": "花镰精灵",
-   "en": "Bloom Sickle Pokémon",
+   "en": "BloomSickle Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Bloom Sickle Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -7966,10 +7968,10 @@
   {
    "id": 755,
    "zh": "发光精灵",
-   "en": "Illuminating Pokémon",
+   "en": "Illuminatng Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Illuminating Pokémon'.",
    "qa_ignore": [
     "glossary",
     "wider_than_zh"
@@ -7978,10 +7980,10 @@
   {
    "id": 756,
    "zh": "发光精灵",
-   "en": "Illuminating Pokémon",
+   "en": "Illuminatng Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Illuminating Pokémon'.",
    "qa_ignore": [
     "glossary",
     "wider_than_zh"
@@ -7990,10 +7992,10 @@
   {
    "id": 757,
    "zh": "毒蜥精灵",
-   "en": "Toxic Lizard Pokémon",
+   "en": "ToxicLizard Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Toxic Lizard Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -8001,10 +8003,10 @@
   {
    "id": 758,
    "zh": "毒蜥精灵",
-   "en": "Toxic Lizard Pokémon",
+   "en": "ToxicLizard Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Toxic Lizard Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -8058,10 +8060,10 @@
   {
    "id": 764,
    "zh": "摘花精灵",
-   "en": "Posy Picker Pokémon",
+   "en": "PosyPicker Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Posy Picker Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -8121,10 +8123,10 @@
   {
    "id": 770,
    "zh": "沙堡精灵",
-   "en": "Sand Castle Pokémon",
+   "en": "SandCastle Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Sand Castle Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -8187,10 +8189,10 @@
   {
    "id": 776,
    "zh": "爆炸龟精灵",
-   "en": "BlastTurtle Pokémon",
+   "en": "BlastTurtl Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'BlastTurtle Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -8220,10 +8222,10 @@
   {
    "id": 779,
    "zh": "磨牙精灵",
-   "en": "Gnash Teeth Pokémon",
+   "en": "GnashTeeth Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Gnash Teeth Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -8242,10 +8244,10 @@
   {
    "id": 781,
    "zh": "碎藻精灵",
-   "en": "Sea Creeper Pokémon",
+   "en": "SeaCreeper Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Sea Creeper Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -8420,10 +8422,10 @@
   {
    "id": 798,
    "zh": "拔刀精灵",
-   "en": "Drawn Sword Pokémon",
+   "en": "DrawnSword Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Drawn Sword Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -8519,10 +8521,10 @@
   {
    "id": 807,
    "zh": "奔雷精灵",
-   "en": "Thunderclap Pokémon",
+   "en": "Thundrclap Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Thunderclap Pokémon'.",
    "qa_ignore": [
     "glossary",
     "wider_than_zh"
@@ -8613,10 +8615,10 @@
   {
    "id": 816,
    "zh": "水蜥精灵",
-   "en": "WaterLizard Pokémon",
+   "en": "WaterLizrd Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'WaterLizard Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -8624,10 +8626,10 @@
   {
    "id": 817,
    "zh": "水蜥精灵",
-   "en": "WaterLizard Pokémon",
+   "en": "WaterLizrd Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'WaterLizard Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -8761,10 +8763,10 @@
   {
    "id": 830,
    "zh": "棉饰精灵",
-   "en": "CottonBloom Pokémon",
+   "en": "CottnBloom Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'CottonBloom Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -8878,10 +8880,10 @@
   {
    "id": 842,
    "zh": "苹果汁精灵",
-   "en": "AppleNectar Pokémon",
+   "en": "AppleNectr Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'AppleNectar Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -9857,10 +9859,10 @@
   {
    "id": 936,
    "zh": "火战士精灵",
-   "en": "Fire Warrior Pokémon",
+   "en": "FireWarrior Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Fire Warrior Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -9901,10 +9903,10 @@
   {
    "id": 940,
    "zh": "海燕精灵",
-   "en": "StormPetrel Pokémon",
+   "en": "StormPetrl Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'StormPetrel Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -9942,10 +9944,10 @@
   {
    "id": 944,
    "zh": "毒鼠精灵",
-   "en": "Toxic Mouse Pokémon",
+   "en": "ToxicMouse Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Toxic Mouse Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -9953,10 +9955,10 @@
   {
    "id": 945,
    "zh": "毒猴精灵",
-   "en": "ToxicMonkey Pokémon",
+   "en": "ToxicMonky Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'ToxicMonkey Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -10019,10 +10021,10 @@
   {
    "id": 951,
    "zh": "热辣精灵",
-   "en": "SpicyPepper Pokémon",
+   "en": "SpicyPeppr Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'SpicyPepper Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -10030,10 +10032,10 @@
   {
    "id": 952,
    "zh": "热辣精灵",
-   "en": "SpicyPepper Pokémon",
+   "en": "SpicyPeppr Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'SpicyPepper Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -10254,21 +10256,22 @@
   {
    "id": 973,
    "zh": "S同步精灵",
-   "en": "Synchronize Pokémon",
+   "en": "Synchrnize Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Synchronize Pokémon'.",
    "qa_ignore": [
-    "wider_than_zh"
+    "wider_than_zh",
+    "glossary:同步"
    ]
   },
   {
    "id": 974,
    "zh": "陆鲸精灵",
-   "en": "Terra Whale Pokémon",
+   "en": "TerraWhale Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Terra Whale Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -10276,10 +10279,10 @@
   {
    "id": 975,
    "zh": "陆鲸精灵",
-   "en": "Terra Whale Pokémon",
+   "en": "TerraWhale Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Terra Whale Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -10320,10 +10323,10 @@
   {
    "id": 979,
    "zh": "愤怒猴精灵",
-   "en": "Rage Monkey Pokémon",
+   "en": "RageMonkey Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Rage Monkey Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -10672,10 +10675,10 @@
   {
    "id": 1011,
    "zh": "糖苹果精灵",
-   "en": "Candy Apple Pokémon",
+   "en": "CandyApple Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Candy Apple Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -10754,10 +10757,10 @@
   {
    "id": 1019,
    "zh": "苹果大蛇精灵",
-   "en": "Apple Hydra Pokémon",
+   "en": "AppleHydra Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Apple Hydra Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -10817,10 +10820,10 @@
   {
    "id": 1025,
    "zh": "支配精灵",
-   "en": "Subjugation Pokémon",
+   "en": "Subjugatn Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Subjugation Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -10969,10 +10972,10 @@
   {
    "id": 1041,
    "zh": "妖怪猫精灵",
-   "en": "Scratch Cat Pokémon",
+   "en": "ScratchCat Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Scratch Cat Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -10980,10 +10983,10 @@
   {
    "id": 1042,
    "zh": "妖怪猫精灵",
-   "en": "Scratch Cat Pokémon",
+   "en": "ScratchCat Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Scratch Cat Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -11040,10 +11043,10 @@
   {
    "id": 1048,
    "zh": "一角精灵",
-   "en": "Unique Horn Pokémon",
+   "en": "UniqueHorn Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Unique Horn Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -11051,10 +11054,10 @@
   {
    "id": 1049,
    "zh": "一角精灵",
-   "en": "Unique Horn Pokémon",
+   "en": "UniqueHorn Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Unique Horn Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -11073,10 +11076,10 @@
   {
    "id": 1051,
    "zh": "寄居蟹精灵",
-   "en": "Hermit Crab Pokémon",
+   "en": "HermitCrab Pokémon",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Hermit Crab Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -11084,10 +11087,10 @@
   {
    "id": 1052,
    "zh": "寄居蟹精灵",
-   "en": "Hermit Crab Pokémon",
+   "en": "HermitCrab Pokémon",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Hermit Crab Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -11150,10 +11153,10 @@
   {
    "id": 1058,
    "zh": "爱骨精灵",
-   "en": "Bone Keeper Pokémon",
+   "en": "BoneKeeper Pokémon",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Bone Keeper Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -11194,10 +11197,10 @@
   {
    "id": 1062,
    "zh": "锹形虫精灵",
-   "en": "Stag Beetle Pokémon",
+   "en": "StagBeetle Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Stag Beetle Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -11235,10 +11238,10 @@
   {
    "id": 1066,
    "zh": "健脚精灵",
-   "en": "Strong Legs Pokémon",
+   "en": "StrongLegs Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Strong Legs Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -11686,10 +11689,10 @@
   {
    "id": 1108,
    "zh": "豆狸精灵",
-   "en": "TinyRaccoon Pokémon",
+   "en": "TinyRaccn Pokémon",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'TinyRaccoon Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -12767,10 +12770,10 @@
   {
    "id": 1214,
    "zh": "单朵精灵",
-   "en": "Single Bloom Pokémon",
+   "en": "SingleBloom Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Single Bloom Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -12778,10 +12781,10 @@
   {
    "id": 1215,
    "zh": "单朵精灵",
-   "en": "Single Bloom Pokémon",
+   "en": "SingleBloom Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Single Bloom Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -12789,10 +12792,10 @@
   {
    "id": 1216,
    "zh": "单朵精灵",
-   "en": "Single Bloom Pokémon",
+   "en": "SingleBloom Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Single Bloom Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -12800,10 +12803,10 @@
   {
    "id": 1217,
    "zh": "单朵精灵",
-   "en": "Single Bloom Pokémon",
+   "en": "SingleBloom Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Single Bloom Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -12811,10 +12814,10 @@
   {
    "id": 1218,
    "zh": "单朵精灵",
-   "en": "Single Bloom Pokémon",
+   "en": "SingleBloom Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Single Bloom Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -12822,10 +12825,10 @@
   {
    "id": 1219,
    "zh": "单朵精灵",
-   "en": "Single Bloom Pokémon",
+   "en": "SingleBloom Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Single Bloom Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -12833,10 +12836,10 @@
   {
    "id": 1220,
    "zh": "单朵精灵",
-   "en": "Single Bloom Pokémon",
+   "en": "SingleBloom Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Single Bloom Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -12844,10 +12847,10 @@
   {
    "id": 1221,
    "zh": "单朵精灵",
-   "en": "Single Bloom Pokémon",
+   "en": "SingleBloom Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Single Bloom Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -12855,10 +12858,10 @@
   {
    "id": 1222,
    "zh": "单朵精灵",
-   "en": "Single Bloom Pokémon",
+   "en": "SingleBloom Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Single Bloom Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -13020,10 +13023,10 @@
   {
    "id": 1237,
    "zh": "王剑精灵",
-   "en": "Royal Sword Pokémon",
+   "en": "RoyalSword Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Royal Sword Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -14274,10 +14277,10 @@
   {
    "id": 1354,
    "zh": "磷火精灵",
-   "en": "Ghost Flame Pokémon",
+   "en": "GhostFlame Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Ghost Flame Pokémon'.",
    "qa_ignore": [
     "glossary",
     "wider_than_zh"
@@ -14374,10 +14377,10 @@
   {
    "id": 1363,
    "zh": "怨狐精灵",
-   "en": "Spiteful Fox Pokémon",
+   "en": "SpitefulFox Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Spiteful Fox Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -14385,10 +14388,10 @@
   {
    "id": 1364,
    "zh": "咒狐精灵",
-   "en": "Baneful Fox Pokémon",
+   "en": "BanefulFox Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Baneful Fox Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -14415,10 +14418,10 @@
   {
    "id": 1367,
    "zh": "窝壳精灵",
-   "en": "ShellBunker Pokémon",
+   "en": "ShellBunkr Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'ShellBunker Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -14571,10 +14574,10 @@
   {
    "id": 1382,
    "zh": "寻宝精灵",
-   "en": "Coin Hunter Pokémon",
+   "en": "CoinHunter Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Coin Hunter Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -14823,10 +14826,10 @@
   {
    "id": 1409,
    "zh": "妖怪猫精灵",
-   "en": "Scratch Cat Pokémon",
+   "en": "ScratchCat Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'Scratch Cat Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
@@ -15005,10 +15008,10 @@
   {
    "id": 1426,
    "zh": "苹果汁精灵",
-   "en": "AppleNectar Pokémon",
+   "en": "AppleNectr Pokémon",
    "status": "draft",
    "origin": "agent",
-   "notes": "spaces dropped to fit 110 px (Gen 4 style)",
+   "notes": "spaces dropped to fit 110 px (Gen 4 style) | D-1520: shortened Gen 4-style to fit the Pokédex category width (font px + characters <= 125); full form 'AppleNectar Pokémon'.",
    "qa_ignore": [
     "wider_than_zh"
    ]
