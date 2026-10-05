@@ -251,6 +251,37 @@ class TestQA(unittest.TestCase):
                 self.assertIn("currency", codes(self.run_one(zh, "Money.")))
                 self.assertNotIn("currency", codes(self.run_one(zh, "$100")))
 
+    def test_dex_category_char_spacing(self):
+        # Pokédex category (D-1520): font px + 1 px per character <= 125
+        ok = qa.check_bank(bank([("毒蛾精灵", "PoisonMoth Pokémon")], "dex_category"), fset_name="vanilla_us")
+        self.assertEqual(codes(ok, "error"), [])
+        bad = qa.check_bank(bank([("毒蛾精灵", "Poison Moth Pokémon")], "dex_category"), fset_name="vanilla_us")
+        self.assertIn("line_too_wide", codes(bad, "error"))          # 107 px + 19 chars = 126
+
+    def test_item_desc_frame_and_buffer(self):
+        # 34 x 6 = 204 px: fits the window (215) but runs into the bag frame (200) -> warning only
+        iss = qa.check_bank(bank([("甲", "a" * 34)], "item_desc"), fset_name="vanilla_us")
+        self.assertEqual(codes(iss, "error"), [])
+        self.assertIn("line_past_frame", codes(iss, "warning"))
+        self.assertNotIn("line_past_frame", codes(qa.check_bank(bank([("甲", "a" * 33)], "item_desc"),
+                                                                fset_name="vanilla_us")))
+        # 114 stored units incl. terminator fit (D-1507); 115 show a blank panel
+        fits = "{NEWLINE}".join(["iiii " * 7 + "iii"] * 3)                   # 3 x 38 chars, 2 breaks, end
+        self.assertEqual(len(tm.visible_text(fits)) + 3, 117)
+        fits = fits[:-3]                                                     # 111 + 2 + 1 = 114 units
+        self.assertNotIn("too_many_units", codes(qa.check_bank(bank([("甲", fits)], "item_desc"))))
+        over = fits + "x"
+        self.assertIn("too_many_units", codes(qa.check_bank(bank([("甲", over)], "item_desc")), "error"))
+
+    def test_string_categories(self):
+        cfg = tm.load_config()
+        cfg = dict(cfg, string_categories={"a027/0999": {"0-1": "gear_map", "1": "gear_map_town"}})
+        line = "A beautiful city that is enveloped"                   # 180 px
+        b = bank([("甲", line), ("乙", line)])
+        self.assertEqual(qa.string_categories(b, cfg), {0: "gear_map", 1: "gear_map_town"})
+        iss = qa.check_bank(b, cfg, fset_name="vanilla_us")
+        self.assertEqual([(i["id"], i["code"]) for i in iss if i["level"] == "error"], [(1, "line_too_wide")])
+
     def test_ui_relative(self):
         b = bank([("背包", "Bag"), ("宝可梦", "Pokémon Party Menu Screen")], "ui")
         iss = qa.check_bank(b, fset_name="vanilla_us")
@@ -292,6 +323,16 @@ class TestWrap(unittest.TestCase):
                      "battle")
         iss = qa.check_bank(bank([(zh, en)], "battle"), fset_name="vanilla_us")
         self.assertEqual(codes(iss, "error"), [])
+
+    def test_soft_limit_preferred(self):
+        # item_desc wraps at the 200 px soft limit when three lines still suffice, else at 215 px
+        en = "A device for catching wild Pokémon. It is thrown like a ball at the target. Okay."
+        out = qa.wrap(en, "甲{NEWLINE}乙", "item_desc")
+        self.assertTrue(all(ln["px"] <= 200 for ln in tm.measure_lines(out, 0)))
+        en = "A device for catching wild Pokémon. It is thrown like a ball at the target. It is designed as a capsule system."
+        out = qa.wrap(en, "甲{NEWLINE}乙", "item_desc")
+        self.assertEqual(tm.page_lines(out), 3)
+        self.assertTrue(max(ln["px"] for ln in tm.measure_lines(out, 0)) > 200)
 
     def test_reflow(self):
         zh = "甲{SCROLL}乙"

@@ -16,7 +16,7 @@ Files:
 - `work/tools/qa.py`: `check` (the QA gate) and `wrap` (automatic line breaking).
 - `work/tools/ws.py`: the workspace (`init` / `export` / `stats` / `import` / `set`).
 - `work/tools/fill_names.py`: pilot that fills the name banks from the glossary.
-- `work/tools/test_qa.py`: 30 tests (28 when this note was written). Run them with `python3 -m unittest -v work/tools/test_qa.py`.
+- `work/tools/test_qa.py`: 47 tests (28 when this note was written). Run them with `python3 -m unittest -v work/tools/test_qa.py`.
 
 ## 1. Font (`a/0/1/6`)
 
@@ -85,6 +85,22 @@ Consequences:
 - **Page model** (`textmetrics.page_lines`): `y` starts at 0. `NEWLINE` adds 1 to `y`. `SCROLL` sets `y` to 0. `CLEAR` keeps `y`. A trailing `NEWLINE` with nothing printed after it does not count. Checked against the data:
   - **US:** 8,146 of 8,147 US dialogue strings stay within 2 lines. The one exception is the 3-line Aprijuice sign, bank 0021.
   - **Chinese:** 17,702 of 17,754 v4 Chinese dialogue strings stay within 2 lines. The 52 exceptions are source bugs or bigger boxes; QA then only warns.
+
+### Measured screen limits (emulator, 2026-10-05)
+
+These come from the emulator harness on the English build, not from the US text, and live in
+`qa_config.json`. QA reports them with the codes in brackets.
+
+| screen | category | limit | how it was measured |
+|---|---|---|---|
+| Bag / Poké Mart item description (a027/0218, pocket descriptions 0010 #120–127) | `item_desc` | 3 lines; **215 px** error (window edge), **200 px** warning [`line_past_frame`]; **114 stored units** incl. the terminator [`too_many_units`] | The window is 27×6 tiles at x=40 (template `02 05 12 1B 06` in overlay 3, identical in the US ROM). The grey panel ends at x=239, then the frame starts. A line of *w* px covers x=40…39+*w*, so 200 px is the widest line that clears the frame (D-1512). Vanilla US uses the same window and panel graphics (`a/0/1/5` files 7–9 identical), and its own lines reach 215 px, so wider lines are a warning, not an error. The bag, the shop and an overlay-9 consumer allocate `String_New(114)` (`item_description_fix_proposal.md`): a longer description shows a blank panel (D-1507: 113 units plus the terminator show, longer ones are blank). `qa.py wrap` wraps at 200 px when three lines still suffice, else at 215 px. |
+| Pokédex entry page, category (a027/0803) | `dex_category` | font px + characters ≤ **125** | The category (with " Pokémon") is drawn at x=120 with 1 px between characters; the last visible column is x=246 (127 px). On all 709 entries the rendered width was font px + characters + 2 (D-1520). New key `char_spacing` adds 1 px per character to the measured width. |
+| Pokégear map card, place description (a027/0266 #9–117) | `gear_map` | 2 lines, **208 px** | Window 26×4 tiles at x=24 (hack overlay 92 template `05 03 0E 1A 04`). The hack is built on the Japanese ROM; US widened this window to 28 tiles at x=8 (`05 01 0E 1C 04`), so US lines up to 218 px no longer fit (D-1524). |
+| Pokégear map card, towns and cities (0266 #10–29, #31) | `gear_map_town` | **168 px** | The town picture starts at x=193; text starts at x=24. Picture seen on 14 towns in a cursor sweep over the map (the rest of #10–31 are assumed to have one too); routes, caves and Lake of Rage have none. |
+
+Per-string categories for banks that mix screens are in `qa_config.json` → `string_categories`
+(`{"a027/0266": {"9-117": "gear_map", "10-29,31": "gear_map_town"}}`; later keys win, a string's own
+`category` field wins over both).
 
 ## 3. Calibration against the official US text (`work/extract/us/a027`)
 

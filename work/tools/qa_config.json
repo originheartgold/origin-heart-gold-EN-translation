@@ -69,6 +69,13 @@
       "lines": 3,
       "desc": "Pokédex entry text box (bank 0791); US HG entries are 3 lines, max 204 px; other US entry banks reach 222 px. No {SCROLL}."
     },
+    "dex_category": {
+      "font": 0,
+      "line_px": 125,
+      "lines": 1,
+      "char_spacing": 1,
+      "desc": "Pokédex entry page, species category incl. ' Pokémon' (bank 0803; D-1520): drawn at x=120 with 1 px between characters, the last visible column is x=246 (127 px). Measured on all 709 entries: rendered width = font px + characters + 2, so font px + characters <= 125."
+    },
     "move_desc": {
       "font": 0,
       "line_px": 120,
@@ -79,7 +86,10 @@
       "font": 0,
       "line_px": 215,
       "lines": 3,
-      "desc": "item description panel (Bag / Poké Mart): measured on the official US bank 0221 = 514 entries, max 3 lines, max 215 px per line (52 lines at 215, none wider; font 0 and 1 identical), {NEWLINE} only. Hack zh 0218 uses 3 lines (4-5 only on hack TM items)."
+      "desc": "item description panel (Bag / Poké Mart): measured on the official US bank 0221 = 514 entries, max 3 lines, max 215 px per line (52 lines at 215, none wider; font 0 and 1 identical), {NEWLINE} only. Hack zh 0218 uses 3 lines (4-5 only on hack TM items). Bag panel (emulator, D-1512): window 27x6 tiles at x=40 (overlay 3 template 02 05 12 1B 06, same in US), the grey panel ends at x=239, so lines over 200 px run into the frame (warning line_past_frame; vanilla US does the same with its 201-215 px lines); 215 px stays the error limit (window edge). Buffer (D-1507): the bag, shop and overlay-9 consumers allocate String_New(114): more than 114 stored units incl. terminator shows a blank panel (error too_many_units).",
+      "soft_line_px": 200,
+      "soft_desc": "runs into the bag panel's right frame",
+      "max_units": 114
     },
     "ability_desc": {
       "font": 0,
@@ -92,6 +102,18 @@
       "line_px": 180,
       "lines": 3,
       "desc": "berry tag description (bank 0243): the US counterpart (0250) is blanked (spaces only), so the box is taken from the hack's zh: 64 entries, max 3 lines, max 180 px (15 hanzi) per line. {NEWLINE} only. Probably a DP leftover screen; verify in game."
+    },
+    "gear_map": {
+      "font": 0,
+      "line_px": 208,
+      "lines": 2,
+      "desc": "Pokégear map card, place description (0266 #9-117; D-1524): window 26x4 tiles at x=24 (hack overlay 92 template 05 03 0E 1A 04; the JP layout the hack is built on; US widened it to 28 tiles at x=8). Two lines, 208 px."
+    },
+    "gear_map_town": {
+      "font": 0,
+      "line_px": 168,
+      "lines": 2,
+      "desc": "Pokégear map card, towns and cities (0266 #10-29, #31): the town picture starts at x=193, so text from x=24 must stay within 168 px (one column of gap). Seen in the emulator on 14 towns; the rest of #10-31 are towns assumed to have the picture too."
     },
     "menu_touch_1line": {
       "font": 4,
@@ -162,7 +184,18 @@
     "a027/0712": "ability_desc",
     "a027/0243": "berry_desc",
     "a027/0719": "trainer_names",
-    "a027/0026": "frontier_names"
+    "a027/0026": "frontier_names",
+    "a027/0803": "dex_category"
+  },
+  "string_categories": {
+    "_doc": "Per-string categories for banks that mix screens: {\"<narc>/<NNNN>\": {\"<ids>\": category}} (ids like 10-29,31; later keys win). A string's own \"category\" field still wins.",
+    "a027/0010": {
+      "120-127": "item_desc"
+    },
+    "a027/0266": {
+      "9-117": "gear_map",
+      "10-29,31": "gear_map_town"
+    }
   },
   "var_widths": {
     "_doc": "Estimated expansion width (px) of {VAR:01KK:..} placeholders, keyed by command id. typ = used for the error threshold, max = worst case (warning). Latin glyphs are 6 px. Kinds from pret gmm usage: 00 species, 01 nickname, 03 player/trainer name, 04 location, 05 ability, 06 move, 08 item, 0D stat, 0E trainer class, 0F type, 1C easy-chat word, 32-3B numbers (digits = kind-49).",
@@ -352,8 +385,13 @@
       "Splish": "onomatopoeia 扑腾扑腾 'Splish, splash!' (0713), not the move Splash",
       "Smoke Screen Trap": "DP Underground trap 烟幕装置 (0726, debug/unused), not the move Smokescreen",
       "Head Butt Pokémon": "official species category of Cranidos/Rampardos (头锤精灵), spelled with a space",
-      "WaterBubble Pokémon": "species category 水泡精灵 with the space dropped to fit 110 px (0803 note, Gen 4 style)",
-      "SickleGrass Pokémon": "species category 镰草精灵 with the space dropped to fit 110 px (0803 note, Gen 4 style)",
+      "WaterBubbl Pokémon": "species category 水泡精灵, shortened Gen 4-style to fit the Pokédex category width (D-1520)",
+      "SicklGrass Pokémon": "species category 镰草精灵, shortened Gen 4-style to fit the Pokédex category width (D-1520)",
+      "Thundrbolt Pokémon": "species category 雷电精灵 (Thunderbolt), shortened Gen 4-style to fit the Pokédex category width (D-1520)",
+      "Thundrclap Pokémon": "species category 奔雷精灵 (Thunderclap), shortened Gen 4-style to fit the Pokédex category width (D-1520)",
+      "DreamEater Pokémon": "species category 食梦精灵 (Dream Eater), space dropped to fit the Pokédex category width (D-1520)",
+      "Intimidatn Pokémon": "species category 威吓精灵 (Intimidation), shortened Gen 4-style to fit the Pokédex category width (D-1520)",
+      "Synchrnize Pokémon": "species category S同步精灵 (Synchronize), shortened Gen 4-style to fit the Pokédex category width (D-1520)",
       "Dragon Gym": "Blackthorn Gym described by its type (龙之道馆), not the item Dragon Gem",
       "Color Changer": "device 颜色变换器 (0297/0300), not the ability Color Change",
       "Rage Candy Bar": "Mahogany Town souvenir (愤怒馒头) in the US radio commercial, not an item bank name",

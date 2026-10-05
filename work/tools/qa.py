@@ -17,6 +17,8 @@ check validates every string that has an English text (en != null):
            missing_glyph character has no glyph (width 0) in the box's font
            line_too_wide a line exceeds the box width (placeholders at typical width)
            too_many_lines more lines on one box view than the box holds (2 for dialogue)
+           too_many_units more stored code units (incl. terminator) than the screen's buffer holds
+                         (category max_units; item descriptions: 114, D-1507)
            name_too_long name exceeds its character limit (species 10, moves/items/abilities 12, ...)
            layout_in_name a line break inside a single-line name
            empty         en is empty but zh is not
@@ -25,6 +27,8 @@ check validates every string that has an English text (en != null):
            glossary_name (species/moves) an old name (Faint Attack), a spelling variant or a misspelling of
                          a species or move name in prose (see glossary_name below)
   warnings line_may_overflow  fits with typical placeholders, not with worst-case ones
+           line_past_frame a line is wider than the category's soft_line_px (fits the window, but runs into
+                         the panel frame or a picture; item descriptions 200 px, D-1512)
            needs_vanilla_glyphs fits only with the vanilla US …/“/” widths (hack font has 12 px ones)
            wider_than_zh / more_lines_than_zh   ('ui' banks with unknown box size)
            fullwidth     full-width / CJK punctuation or digits (，。！１　 etc.)
@@ -81,6 +85,18 @@ def bank_category(bank: dict, cfg: dict) -> str:
     if any("{SCROLL}" in e["zh"] or "{CLEAR}" in e["zh"] for e in bank["strings"]):
         return "dialogue"
     return "ui"
+
+
+def string_categories(bank: dict, cfg: dict) -> dict:
+    """qa_config.json "string_categories": {"<narc>/<NNNN>": {"<ids>": category}} -> {id: category}.
+    ids use the --ids syntax ("10-29,31"); later keys override earlier ones. A string's own "category"
+    field still wins (see check_bank)."""
+    spec = cfg.get("string_categories", {}).get("%s/%04d" % (bank["narc"], bank["bank"]), {})
+    out = {}
+    for ids, cat in spec.items():
+        for i in _parse_ids(ids):
+            out[i] = cat
+    return out
 
 
 # --------------------------------------------------------------------------------------
@@ -219,13 +235,23 @@ def check_layout(zh, en, cat: dict, catname: str, narc: str, cfg: dict, fset: di
     font = cat.get("font", 1)
     sev = cat.get("severity", "error")
     soft = "warning"
-    lines = tm.measure_lines(en, font, cfg, narc, "typ", fset)
+    spacing = cat.get("char_spacing", 0)
+
+    def measure(text, which, widths):
+        """measure_lines plus the screen's extra pixels per character (char_spacing, e.g. Pokédex category)."""
+        out = tm.measure_lines(text, font, cfg, narc, which, widths)
+        if spacing:
+            for ln in out:
+                ln["px"] += spacing * len(tm.visible_text(ln["text"]))
+        return out
+
+    lines = measure(en, "typ", fset)
     if "line_px" in cat:
         lim = cat["line_px"]
-        lines_max = tm.measure_lines(en, font, cfg, narc, "max", fset)
-        lines_hack = tm.measure_lines(en, font, cfg, narc, "typ", fset_hack) if fset_hack else None
+        lines_max = measure(en, "max", fset)
+        lines_hack = measure(en, "typ", fset_hack) if fset_hack else None
         # the source proves the real box: if a zh line is wider than the nominal box, the box is wider
-        zlim = max(ln["px"] for ln in tm.measure_lines(zh, font, cfg, narc, "typ", fset_hack or fset))
+        zlim = max(ln["px"] for ln in measure(zh, "typ", fset_hack or fset))
         for i, ln in enumerate(lines):
             if ln["px"] > lim and ln["px"] <= zlim:
                 add(soft, "line_too_wide", "line %d is %d px > %d, but zh has a %d px line (larger box?): %s"
@@ -238,6 +264,9 @@ def check_layout(zh, en, cat: dict, catname: str, narc: str, cfg: dict, fset: di
             elif lines_hack and lines_hack[i]["px"] > lim:
                 add(soft, "needs_vanilla_glyphs", "line %d is %d px with the hack's 12 px …/“/” glyphs: %s"
                     % (i + 1, lines_hack[i]["px"], ln["text"]))
+            if ln["px"] <= lim and ln["px"] > cat.get("soft_line_px", lim):
+                add(soft, "line_past_frame", "line %d is %d px > %d (%s): %s"
+                    % (i + 1, ln["px"], cat["soft_line_px"], cat.get("soft_desc", "soft limit"), ln["text"]))
     if cat.get("relative_to_zh"):
         zmax = bank_ctx.get("zh_max_px")
         zlines = tm.measure_lines(zh, font, cfg, narc, "typ", fset)
@@ -264,6 +293,15 @@ def check_layout(zh, en, cat: dict, catname: str, narc: str, cfg: dict, fset: di
         vis = tm.visible_text(en)
         if len(vis) > cat["max_chars"]:
             add(sev, "name_too_long", "%d chars > %d: %s" % (len(vis), cat["max_chars"], vis))
+    if "max_units" in cat:
+        import msgtool as m
+        try:
+            n = len(m.encode_text(en, _cm_en()))
+        except ValueError:
+            n = None                                 # check_chars already reports it
+        if n is not None and n > cat["max_units"]:
+            add(sev, "too_many_units", "%d stored code units (incl. terminator) > %d: the screen shows nothing"
+                % (n, cat["max_units"]))
 
 
 def _spacing_text(text: str) -> str:
@@ -747,6 +785,7 @@ def check_bank(bank: dict, cfg: dict | None = None, fset_name: str | None = None
     cat_default = cfg["categories"][catname]
     ctx = bank_context(bank, cat_default, cfg, fset)
     cspec = tm.compressed_spec(bank["narc"], bank["bank"], cfg)
+    scat = string_categories(bank, cfg)
     issues = []
     for e in bank["strings"]:
         en = e.get("en")
@@ -755,7 +794,7 @@ def check_bank(bank: dict, cfg: dict | None = None, fset_name: str | None = None
         if statuses and e.get("status") not in statuses:
             continue
         zh = e["zh"]
-        cname = e.get("category") or catname
+        cname = e.get("category") or scat.get(e["id"]) or catname
         cat = cfg["categories"][cname]
         ignore = set(e.get("qa_ignore", []))
 
@@ -1052,6 +1091,15 @@ def wrap(en: str, zh: str, category: str = "dialogue", mode: str = "auto", reflo
     if "line_px" not in cat:
         return en
     lim, maxl, font = cat["line_px"], cat.get("lines", 2), cat.get("font", 1)
+    if "soft_line_px" in cat and lim > cat["soft_line_px"]:
+        # prefer the soft limit (clear of the frame); keep the window width if the soft one needs more breaks
+        plain = {k: v for k, v in cat.items() if k != "soft_line_px"}
+        cats = dict(cfg["categories"], _hard=plain, _soft=dict(plain, line_px=cat["soft_line_px"]))
+        c2 = dict(cfg, categories=cats)
+        hard, soft = (wrap(en, zh, k, mode, reflow, narc, c2, fset, which, normalize=False)
+                      for k in ("_hard", "_soft"))
+        n_breaks = lambda t: len(re.findall(r"\{(?:SCROLL|CLEAR)\}", t))
+        return soft if n_breaks(soft) == n_breaks(hard) and tm.page_lines(soft) <= maxl else hard
     zb, ztail = _zh_breaks(zh)
     if mode == "auto":
         cont = "CLEAR" if ("CLEAR" in zb and "SCROLL" not in zb) else "SCROLL"
@@ -1106,6 +1154,7 @@ def cmd_wrap(a):
         hyd, _ = zh_redact.hydrate(b, EXTRACT_DIR)          # real zh for layout; never written back
         src_zh = {e["id"]: e["zh"] for e in hyd["strings"]}
         catname = bank_category(hyd, cfg)
+        scat = string_categories(hyd, cfg)
         ids = _parse_ids(a.ids) if a.ids else None
         n = 0
         for e in b["strings"]:
@@ -1113,7 +1162,7 @@ def cmd_wrap(a):
                 continue
             if re.search(r"\{(?:NEWLINE|SCROLL|CLEAR)\}", e["en"]) and not a.reflow:
                 continue            # already laid out; use --reflow to redo it
-            c = a.category or e.get("category") or catname
+            c = a.category or e.get("category") or scat.get(e["id"]) or catname
             new = wrap(e["en"], src_zh[e["id"]], c, a.mode, a.reflow, b["narc"], cfg, fset, a.which)
             if new != e["en"]:
                 n += 1
