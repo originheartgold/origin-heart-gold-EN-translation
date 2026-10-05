@@ -21,6 +21,12 @@ import romdata as R       # noqa: E402
 import landmarks as LM    # noqa: E402
 
 OUT = os.path.join(R.REPO, 'site', 'src', 'data')
+# reviewed lists, shared with the docs (see gen_docs.reviewed and each file's _about): species, forms and items a
+# player can never get are left out; verified sources, battle-only forms and notes the scan misses are added
+NOT_IN_GAME = set(G.reviewed('not_in_game'))
+EXTRA = G.reviewed('extra_sources')
+ITEMS_NOT_IN_GAME = set(G.reviewed('items_not_in_game'))
+ITEMS_EXTRA = G.reviewed('items_extra_sources')
 
 
 def slugify(s):
@@ -208,11 +214,21 @@ def player_place(place):
     return dict(place=place)
 
 
-def evo_entry(ctx, sp, m, p, original=None):
+def evo_entry(ctx, sp, m, p, original=None, link=None):
+    """One evolution as shown on the Pokémon pages; link = (from, to) for the extra_sources.json evoBlocked overrides."""
     e = dict(id=sp, how=G.evo_text(ctx, m, p), conds=G.evo_conds(ctx, m, p))
+    blocked = EXTRA.get(link[0], {}).get('evoBlocked', {}).get(str(link[1])) if link else None
     if not G.evo_possible(m):
         e['never'] = True
         e['official'] = G.evo_official(m, p)
+    elif not G.evo_works(m, p):
+        e['never'] = True
+        e['blocked'] = 'the item it needs, %s, can\'t be obtained' % ctx.it(p)
+    elif blocked:
+        e['never'] = True
+        e['blocked'] = blocked
+    if sp in NOT_IN_GAME:
+        e['name'] = ctx.sp(sp)          # no page to link to
     if original is not None:
         e['original'] = original[0]
     return e
@@ -245,7 +261,7 @@ def export_evolutions(ctx, sp_slug):
                 continue
             seen.add((t, m, p))
             row = dict(id=sp, to=t, how=G.evo_text(ctx, m, p))
-            if not G.evo_possible(m):
+            if not G.evo_works(m, p):
                 row['never'] = True
             if sp in van:
                 old = sorted(van_text(vm, vp) for vm, vp, vt in van[sp] if vt == t)
@@ -282,7 +298,7 @@ def export(ctx):
     avail = ctx._avail
     tutors = ctx._tutors
     species = []
-    sp_ids = ctx.species_ids()
+    sp_ids = [sp for sp in ctx.species_ids() if sp not in NOT_IN_GAME]
     sp_slug = {}
     for sp in sp_ids:
         sp_slug[sp] = slugs.make('pokemon', ctx.sp(sp), sp)
@@ -305,14 +321,18 @@ def export(ctx):
             eggGroups=list(dict.fromkeys(R.EGG_GROUPS.get(g, str(g)) for g in p['egg_groups'])),
             growth=R.GROWTH[p['growth']] if p['growth'] < 6 else '?', ev=ev,
             held=[ctx.it(i) for i in p['items'] if i],
-            evoFrom=list({(s, G.evo_text(ctx, m, q)): evo_entry(ctx, s, m, q, orig.get((s, sp, G.evo_text(ctx, m, q))))
+            evoFrom=list({(s, G.evo_text(ctx, m, q)): evo_entry(ctx, s, m, q, orig.get((s, sp, G.evo_text(ctx, m, q))), (s, sp))
                           for s, m, q in par.get(sp, []) if s in sp_slug}.values()),
-            evoTo=list({(t, G.evo_text(ctx, m, q)): evo_entry(ctx, t, m, q, orig.get((sp, t, G.evo_text(ctx, m, q)))) for m, q, t in
-                        ((m, q, G.evo_target(ctx, sp, t)) for m, q, t in ctx.evos[sp]) if t in sp_slug}.values()),
-            evoNotes=G.evo_notes(ctx, sp),
+            # removed targets stay listed (as plain text) when an unobtainable item is what blocks them
+            evoTo=list({(t, G.evo_text(ctx, m, q)): evo_entry(ctx, t, m, q, orig.get((sp, t, G.evo_text(ctx, m, q))), (sp, t)) for m, q, t in
+                        ((m, q, G.evo_target(ctx, sp, t)) for m, q, t in ctx.evos[sp])
+                        if t in sp_slug or (t in NOT_IN_GAME and G.evo_possible(m) and not G.evo_works(m, q))}.values()),
+            evoNotes=G.evo_notes(ctx, sp) + ([EXTRA[sp]['evoNote']] if 'evoNote' in EXTRA.get(sp, {}) else []),
             game=game_alias(ctx, ctx.SP.get(sp)),
             tmNote='The game\'s TM check rejects this species slot, the one it also uses for Eggs.' if sp == G.EGG_SPECIES else None,
             how=avail.get(sp, ''),
+            battleOnly=EXTRA.get(sp, {}).get('battle'),
+            note=EXTRA.get(sp, {}).get('note'),
             levelup=[[lv, m] for lv, m in ctx.learn[sp] if m in move_ids],
             tms='all' if sp == G.MEW else [[R.tm_label(i), ctx.tm[i]] for i in tms],
             tutors=[m for m in G.tutor_compat_for(ctx, tutors, sp) if m in move_ids],
@@ -322,6 +342,7 @@ def export(ctx):
     # ---- encounters per area
     enc, by_file = ctx.enc_by_file
     found_in = collections.defaultdict(list)         # species -> [(area slug, method)]
+    weekday_block = {}                               # id(encounter block) -> (map title, weekday)
     with MarkedNames(ctx):
         for b in sorted(by_file, key=lambda b: min(ctx.zrank(z) for z in by_file[b])):
             secs = G.encounter_sections(ctx, enc[b])
@@ -344,6 +365,22 @@ def export(ctx):
                 label = ' / '.join(dict.fromkeys(ctx.zname(z) for z in zs if zone_area.get(z) is a))
                 a['encounters'].append(dict(label=label, rates={k: v for k, v in enc[b]['rates'].items() if v},
                                             sections=[dict(title=t, rows=rr) for t, rr in out_secs]))
+        # maps whose table changes with the weekday (Pal Park): one block per day
+        for zid, days in ctx.enc_weekday.items():
+            a = zone_area.get(zid)
+            if not a:
+                continue
+            if G.ENC_WEEKDAY_NOTE not in a['encNotes']:
+                a['encNotes'].append(G.ENC_WEEKDAY_NOTE)
+            for day, b in days:
+                rec = G.map_record(enc[b], zid)        # methods the park has no terrain for are off
+                secs = G.encounter_sections(ctx, rec)
+                if secs:
+                    e = dict(label='%s: %s' % (G.ENC_WEEKDAY[zid], day),
+                             rates={k: v for k, v in rec['rates'].items() if v},
+                             sections=[dict(title=t, rows=list(rows)) for t, rows in secs])
+                    a['encounters'].append(e)
+                    weekday_block[id(e)] = (G.ENC_WEEKDAY[zid], day)
     # unmark after leaving the context (ctx.sp restored)
     for a in areas.values():
         for e in a['encounters']:
@@ -353,7 +390,7 @@ def export(ctx):
                     idx, name = unmark(ctx, n)
                     rows.append(dict(id=idx, name=name, level=lv, pct=pct))
                     if idx:
-                        found_in[idx].append((a['slug'], short_method(s['title'])))
+                        found_in[idx].append((a['slug'], short_method(s['title'])) + weekday_block.get(id(e), ()))
                 s['rows'] = rows
     # maps whose wild Pokémon come from another system (Safari Zone areas, the Bug-Catching Contest)
     for zid, (_b, note) in sorted(ctx.enc_placeholders.items()):
@@ -415,11 +452,7 @@ def export(ctx):
     # ---- trainers
     tds, parties = G.load_trainers(ctx)
     loc = ctx.trainer_loc
-    story = {}
-    for title, classes in G.STORY_CLASSES:
-        for t in range(1, len(tds)):
-            if tds[t]['cls'] in classes:
-                story[t] = title
+    story = {t: G.story_group(t, td['cls'], ctx.TRN.get(t, '')) for t, td in enumerate(tds)}
     trainers = []
     for tid in range(1, len(tds)):
         mons = parties[tid]
@@ -439,12 +472,12 @@ def export(ctx):
                              ability=ctx.ab(m['ability']) if m['ability'] else None,
                              item=ctx.it(m['item']) if m['item'] else None,
                              nature=R.NATURES[m['nature']] if m['nature'] is not None and m['nature'] < 25 else None,
-                             ivs=m['ivs'], evs=m['evs'] if any(m['evs']) else None,
+                             ivs=m['ivs'], hpIvs=m['hp_ivs'], evs=m['evs'] if any(m['evs']) else None,
                              moves=[ctx.mv(x) for x in m['moves']]))
         cls_name = ctx.TRC.get(td['cls'], '').strip()
         tr = dict(id=tid, cls=cls_name, name=ctx.TRN.get(tid, '').strip() or ('' if cls_name else 'Unnamed trainer'),
                   double=bool(td['double']), items=[ctx.it(i) for i in td['items']], team=team, places=uniq,
-                  group=story.get(tid))
+                  group=story.get(tid), note=G.TRAINER_NOTES.get(tid))
         trainers.append(tr)
         for a_slug in dict.fromkeys(p['area'] for p in uniq if p['area']):
             next(a for a in areas.values() if a['slug'] == a_slug)['trainers'].append(tid)
@@ -502,9 +535,10 @@ def export(ctx):
     items = []
     for i in range(1, len(ctx.items)):
         name = ctx.it(i)
-        if name.startswith('item #') or name in ('???', '—', ''):
+        if name.startswith('item #') or name in ('???', '—', '') or i in ITEMS_NOT_IN_GAME:
             continue
         srcs = list({json.dumps(s, sort_keys=True): s for s in item_src.get(i, [])}.values())
+        srcs += ITEMS_EXTRA.get(i, {}).get('sources', [])
         d = ctx.items[i]
         needed = {}
         for f in need.get(i, ()):
@@ -514,7 +548,8 @@ def export(ctx):
         items.append(dict(id=i, name=name, slug=slugs.make('item', name, i),
                           pocket=R.POCKETS[d['pocket']] if d['pocket'] < 8 else '?', price=d['price'],
                           sources=srcs, game=game_alias(ctx, ctx.IT.get(i)),
-                          neededBy=[dict(place=k, area=needed[k]) for k in sorted(needed)]))
+                          neededBy=[dict(place=k, area=needed[k]) for k in sorted(needed)],
+                          note=ITEMS_EXTRA.get(i, {}).get('note')))
 
     # ---- tutors and trades (global)
     tut = []
@@ -528,17 +563,20 @@ def export(ctx):
         tut.append(dict(move=t['move'], moveName=ctx.mv(t['move']), game=game_alias(ctx, ctx.MV.get(t['move'])),
                         places=list({json.dumps(x, sort_keys=True): x for x in places}.values()),
                         cost=t.get('cost'), species='all' if t['species'] is None else (
-                            'restricted' if t['species'] == 'restricted' else sorted(t['species'])),
+                            'restricted' if t['species'] == 'restricted' else sorted(set(t['species']) - NOT_IN_GAME)),
                         quests=quests_for(gq, t.get('file'), ctx.mv(t['move'])), note=TUTOR_NOTES.get((t['move'], t.get('file')))))
 
     # species "found in" summary for the Pokémon pages
     for s in species:
-        seen = collections.OrderedDict()
-        for slug, method in found_in.get(s['id'], []):
-            seen.setdefault(slug, [])
-            if method not in seen[slug]:
-                seen[slug].append(method)
-        s['foundIn'] = [dict(area=k, methods=v) for k, v in seen.items()]
+        seen = collections.OrderedDict()             # area -> method -> weekdays (empty: any day)
+        for slug, method, *day in found_in.get(s['id'], []):
+            if day:                                  # a weekday table: one method per map, listing its days
+                method = '%s: %s' % (day[0], method)
+            days = seen.setdefault(slug, collections.OrderedDict()).setdefault(method, [])
+            if day and day[1] + 's' not in days:
+                days.append(day[1] + 's')
+        s['foundIn'] = [dict(area=k, methods=[m + (' (%s)' % ('every day' if len(ds) == 7 else ', '.join(ds)) if ds else '')
+                                              for m, ds in v.items()]) for k, v in seen.items()]
         s['quests'] = static_q.get(s['id'], [])
 
     area_list = list(areas.values())
@@ -549,7 +587,8 @@ def export(ctx):
                 encExplainer=G.ENC_EXPLAINER, rateNames=G.RATE_NAMES,
                 counts=dict(species=len(species), moves=len(moves), items=len(items), areas=len(area_list),
                             trainers=len(trainers)))
-    return dict(species=species, moves=moves, items=items, areas=area_list, trainers=trainers, tutors=tut, meta=meta)
+    return dict(species=species, moves=moves, items=items, areas=area_list, trainers=trainers, tutors=tut, meta=meta,
+                trainer_guide=G.trainer_page_sections(ctx, tds, parties, loc))
 
 
 def dump(obj):

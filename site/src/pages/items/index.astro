@@ -5,14 +5,15 @@ const pockets = [...new Set(items.map((i) => i.pocket))];
 const kinds = (i: typeof items[number]) => [...new Set(i.sources.map((s) => s.kind))].join(', ');
 ---
 <StarlightPage frontmatter={{ title: 'Items', description: 'Every item in Origin HeartGold and where to get it: item balls, hidden items, gifts and shops.', tableOfContents: false }}>
-	<p>Item sources found in the game's maps, scripts and verified automatic rewards. Items with no source found are hidden by default. "Shop price" is only shown for items a shop sells.</p>
+	<p>Every item you can get in the game, with its sources from the game's maps, scripts and verified rewards. Items that are only in the game's data files and can't be obtained in normal play are left out.
+	A few items with no confirmed source (only on trainers' Pokémon, or only through wireless play) are hidden by default. "Shop price" is only shown for items a shop sells.</p>
 	<div class="table-filter" data-table="item-table">
 		<input type="search" placeholder="Search items…" aria-label="Search items" />
 		<select data-key="pocket" aria-label="Pocket">
 			<option value="">All pockets</option>
 			{pockets.map((p) => <option value={p}>{p}</option>)}
 		</select>
-		<label><input type="checkbox" data-key="found" data-show-value="no" /> Show items with no source</label>
+		<label><input type="checkbox" data-key="found" data-show-value="no" /> Show items with no confirmed source</label>
 		<span class="filter-count" aria-live="polite"></span>
 	</div>
 	<table id="item-table" class="sortable compact">

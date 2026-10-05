@@ -21,7 +21,7 @@ const tmLink = (label: string, name: string) => itemUrl(itemByName.get(`${label}
 	headings={[{ depth: 2, slug: 'all-moves', text: 'All moves' }, { depth: 2, slug: 'tm-list', text: 'TM and HM list' }]}>
 	<p>Move data as the game reads it. "var." power is calculated in battle; "—" accuracy never misses.
 	"Learned by" counts the Pokémon with a source we found in the game data that can learn the move in any way
-	(level-up, TM or HM, tutor or Egg move). TM numbers link to where you find the TM.</p>
+	(level-up, TM or HM, tutor or Egg move). TM numbers link to where you find the TM; TM46 (Thief) can't be obtained in this game.</p>
 	<h2 id="all-moves">All moves</h2>
 	<div class="table-filter" data-table="move-table">
 		<input type="search" placeholder="Search moves or types…" aria-label="Search moves" />
@@ -33,7 +33,7 @@ const tmLink = (label: string, name: string) => itemUrl(itemByName.get(`${label}
 			{moves.map((m) => (
 				<tr id={`move-${m.id}`}>
 					<td>{m.name}{m.game && <span class="sr-only"> {m.game}</span>}</td><td><Type type={m.type} /></td><td>{m.cat}</td><td>{m.power}</td><td>{m.acc}</td><td>{m.pp}</td>
-					<td>{m.tm.map((t, i) => <>{i > 0 && ', '}{tmLink(t, m.name) ? <a href={tmLink(t, m.name)}>{t}</a> : t}</>)}</td><td>{learners.get(m.id)?.size ?? 0}</td>
+					<td>{m.tm.map((t, i) => <>{i > 0 && ', '}{tmLink(t, m.name) ? <a href={tmLink(t, m.name)}>{t}</a> : <>{t} <span class="small muted">(can't be obtained)</span></>}</>)}</td><td>{learners.get(m.id)?.size ?? 0}</td>
 				</tr>
 			))}
 		</tbody>
@@ -43,7 +43,7 @@ const tmLink = (label: string, name: string) => itemUrl(itemByName.get(`${label}
 		<thead><tr><th>TM</th><th>Move</th><th>Type</th><th>Cat.</th><th>Power</th><th>Acc.</th><th>PP</th></tr></thead>
 		<tbody>
 			{tms.flatMap((m) => m.tm.map((t) => (
-				<tr><td>{tmLink(t, m.name) ? <a href={tmLink(t, m.name)}>{t}</a> : t}</td><td><a href={`#move-${m.id}`}>{m.name}</a></td><td><Type type={m.type} /></td><td>{m.cat}</td><td>{m.power}</td><td>{m.acc}</td><td>{m.pp}</td></tr>
+				<tr><td>{tmLink(t, m.name) ? <a href={tmLink(t, m.name)}>{t}</a> : <>{t} <span class="small muted">(can't be obtained)</span></>}</td><td><a href={`#move-${m.id}`}>{m.name}</a></td><td><Type type={m.type} /></td><td>{m.cat}</td><td>{m.power}</td><td>{m.acc}</td><td>{m.pp}</td></tr>
 			)))}
 		</tbody>
 	</table>

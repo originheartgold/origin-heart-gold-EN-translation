@@ -29,6 +29,12 @@ export const formChanges: FormChange[] = [
 	{ base: 6, result: 1028, item: 325, condition: 'Timid or Modest nature.' },
 	{ base: 150, result: 1440, item: 114, condition: 'No nature requirement.' },
 	{ base: 658, result: 1194, item: 761, condition: 'No nature requirement.' },
+	{ base: 487, result: 1152, item: 112, condition: 'No nature requirement.' },
+	// Plates 298–313 (Flame … Iron) → the Arceus form players see, in item order. The stored form number follows the
+	// Gen 4 type order (D-1501), but the summary shows the Plate's type and colours (tested in an emulator, all 16).
+	...[1162, 1163, 1165, 1164, 1167, 1154, 1156, 1157, 1155, 1166, 1159, 1158, 1160, 1168, 1169, 1161].map((result, i) => ({
+		base: 493, result, item: 298 + i, condition: 'Its Multitype Ability changes its type to match the Plate. Tested in an emulator.',
+	})),
 ];
 
 export interface CalendarEncounter {
@@ -38,12 +44,11 @@ export interface CalendarEncounter {
 }
 // Native table 0x020F6A64. It replaces the final land slot, not water/fishing slots.
 export const calendarEncounters: CalendarEncounter[] = [
-	{ key: 'volcanion', month: 4, day: 16, date: 'April 16', zone: 88, area: 'lake-of-rage', place: 'Lake of Rage', species: 721, pokemon: 721, form: 0, name: 'Volcanion', period: 'All day', level: null, status: 'unavailable', note: 'No usable land encounter from this entry: the location has a zero land encounter rate. It does not add a Surf encounter.' },
 	{ key: 'keldeo', month: 6, day: 23, date: 'June 23', zone: 181, area: 'fuchsia-city', place: "Fuchsia City — Koga's forest preserve", species: 647, pokemon: 647, form: 0, name: 'Keldeo', period: 'All day', level: 5, status: 'configured', note: 'The forest preserve only; not every part of Fuchsia City.' },
 	{ key: 'meloetta', month: 7, day: 14, date: 'July 14', zone: 117, area: 'ilex-forest', place: 'Ilex Forest', species: 648, pokemon: 648, form: 0, name: 'Meloetta', period: 'All day', level: 6, status: 'configured', note: 'Replaces the final land encounter slot.' },
 	{ key: 'hoopa', month: 7, day: 18, date: 'July 18', zone: 90, area: 'mt-silver', place: 'Mt. Silver — exterior', species: 720, pokemon: 720, form: 0, name: 'Hoopa', period: 'Morning only', level: 50, status: 'configured', note: '04:00–09:59. Neither Hoopa entry applies during the daytime period.' },
 	{ key: 'hoopa-unbound', month: 7, day: 18, date: 'July 18', zone: 90, area: 'mt-silver', place: 'Mt. Silver — exterior', species: 720, pokemon: 1243, form: 1, name: 'Hoopa Unbound', period: 'Night only', level: 50, status: 'configured', note: '20:00–03:59, while the calendar date is July 18.' },
-	{ key: 'diancie', month: 7, day: 19, date: 'July 19', zone: 492, area: 'island-forest', place: 'Island Forest', species: 719, pokemon: 719, form: 4, name: 'Diancie', period: 'All day', level: 17, status: 'unresolved', note: 'The configured form is unresolved. This is not a confirmed capture route or a verified Mega Diancie encounter.' },
+	{ key: 'diancie', month: 7, day: 19, date: 'July 19', zone: 492, area: 'island-forest', place: 'Island Forest', species: 719, pokemon: 719, form: 4, name: 'Diancie', period: 'All day', level: 17, status: 'configured', note: 'The entry uses a form number the game does not define, so it appears as a normal Diancie (not Mega Diancie).' },
 	{ key: 'genesect', month: 8, day: 11, date: 'August 11', zone: 113, area: 'ruins-of-alph', place: 'Ruins of Alph — exterior', species: 649, pokemon: 649, form: 0, name: 'Genesect', period: 'All day', level: 5, status: 'configured', note: 'The exterior only; not the puzzle chambers.' },
 	{ key: 'floette-eternal-flower', month: 10, day: 16, date: 'October 16', zone: 96, area: 'national-park', place: 'National Park', species: 670, pokemon: 1222, form: 5, name: 'Floette (Eternal Flower)', period: 'All day', level: 14, status: 'configured', note: 'The normal park encounter table; not a verified Bug-Catching Contest encounter.' },
 ];

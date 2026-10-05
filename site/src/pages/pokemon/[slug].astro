@@ -58,7 +58,8 @@ const headings = [
 	{s.foundIn.length > 0 && (
 		<ul>{s.foundIn.map((f) => (<li><a href={areaUrl(f.area)}>{areaBySlug.get(f.area)?.name ?? f.area}</a>: {f.methods.join(', ')}</li>))}</ul>
 	)}
-	{s.how ? <p>How to get it: {s.how}</p> : s.formChanges.some((f) => f.result === s.id) ? <p>Available through a held-item transformation; see below.</p> : s.calendar.length ? <p>A date-specific entry is documented below. Check its status before treating it as a catch location.</p> : <p><strong>No source found in the reviewed game data.</strong> The search is incomplete, including Safari Zone area conditions, roaming Pokémon and some special encounter systems.</p>}
+	{s.how ? <p>How to get it: {s.how}</p> : s.formChanges.some((f) => f.result === s.id) ? <p>Available through a held-item transformation; see below.</p> : s.calendar.length ? <p>A date-specific entry is documented below. Check its status before treating it as a catch location.</p> : s.battleOnly ? null : <p><strong>No confirmed way to get it.</strong> {s.note ?? 'No source was found in the game data.'}</p>}
+	{s.battleOnly && <p><strong>{s.how ? 'Also in battle.' : 'Seen only in battle.'}</strong> {s.battleOnly}{s.how ? '' : " It can't be kept in this form."}</p>}
 	{s.formChanges.length > 0 && <>
 		<h2 id="forms">Held-item forms</h2>
 		<FormChanges entries={s.formChanges} />
