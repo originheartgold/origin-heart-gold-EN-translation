@@ -146,14 +146,27 @@ battles:
 So the hack picks a letter, writes it, then overwrites it with the saved slot form 0. Letters B–Z, !, ?
 can't be caught in the wild. D-1487 can be marked as tested in game.
 
-## Pal Park weekday table (D-1484): first try, not conclusive
+## Results, round 2
 
-`wild --map 109 --x 16 --y 14 --clock 2026-10-09T12:00:00` (a Friday) produced only 2 encounters in 3000
-steps: Makuhita (296) and Numel (322). Of records 141–148 only 146 (= 142 + 5 − 1, the D-1484 formula for
-Friday) contains both, which fits the finding, but two samples are not enough and the start tile was not
-checked (grass tiles from the land data: x 11–29, y 13–15 in the first chunk; the field screenshot did not
-show the player clearly). Next: confirm the position from the screenshot, pick a tile in the middle of the
-grass, run 20+ encounters on a Friday and on a Sunday (expect record 141, Cerulean Cave's table).
+### 1. Pal Park weekday table (D-1484): observed
+
+`emu_harness.py palpark` teleports to map 109 once per weekday (clock pinned to 12:00 on 2026-10-04 Sun …
+2026-10-10 Sat, one child process per day) and hooks the map-109 return of the encounter-bank getter
+(arm9 0x0203A7D6, `pop {r4, pc}` with r0 = record). The getter runs once when the map loads.
+
+| pinned day | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
+|---|---|---|---|---|---|---|---|
+| record loaded | 141 | 142 | 143 | 144 | 145 | 146 | 147 |
+
+Observed in the Chinese ROM (7 runs, `work/build/harness/palpark_weekdays.json`): record = 142 + weekday − 1,
+so Sunday loads 141 (Cerulean Cave's table) and record 148 is never used. D-1484 holds. Friday = 146
+(Stunfisk's table).
+
+Encounters per day were not confirmed. The earlier Friday run got 2 encounters in 3000 steps (Makuhita and
+Numel, both only in record 146 among 141–148). A second try at (20, 14) got none in 600 steps: the teleport
+target is not a grass tile the player can pace on (the screenshot shows the camera over trees). The
+player's live position is not read by the harness yet (see limits), so the start tile can't be checked
+automatically.
 
 ## Extending it to the other open points
 

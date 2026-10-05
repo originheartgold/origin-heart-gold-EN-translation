@@ -598,6 +598,49 @@ class WildLog:
 
 # ----------------------------------------------------------------------------- Unown POC
 
+class start_at:
+    """Context manager: copy the save, teleport (map, x, y), set flags/vars, pin the clock, boot, Continue.
+    Yields a Harness standing on the map. Example:
+        with start_at(109, 16, 14, clock=datetime.datetime(2026, 10, 9, 12)) as h: ..."""
+
+    def __init__(self, map_id, x, y, rom=DEF_ROM_CN, sav=None, flags=(), vars=None, clock=None,
+                 out=DEF_OUT, verbose=True, hooks=None):
+        self.args = (map_id, x, y, rom, sav or DEF_SAVES / "full_bag_6mons.sav", flags, vars or {}, clock,
+                     out, verbose, hooks)
+
+    def __enter__(self):
+        map_id, x, y, rom, sav, flags, vars_, clock, out, verbose, hooks = self.args
+        sf = SaveFile(sav)
+        sf.place_player(map_id, x, y, "DOWN")
+        for f in flags:
+            sf.set_flag(f)
+        for v, val in vars_.items():
+            sf.set_var(v, val)
+        self._dir = Path(tempfile.mkdtemp(prefix="emu_harness_sav_"))
+        sf.write(self._dir / "edited.sav")
+        self.h = Harness(rom, self._dir / "edited.sav", out=out, verbose=verbose)
+        try:
+            if clock:
+                self.h.set_clock(clock)
+            if hooks:
+                hooks(self.h)          # installed before boot: sees calls made while the map loads
+            self.h.boot_to_menu()
+            self.h.continue_game()
+            self.h.press("B", after=30)
+            if self.h.location()["map"] != map_id:
+                raise RuntimeError(f"teleport failed: {self.h.location()}")
+        except BaseException:
+            self.__exit__()
+            raise
+        return self.h
+
+    def __exit__(self, *exc):
+        try:
+            self.h.close()
+        finally:
+            shutil.rmtree(self._dir, ignore_errors=True)
+
+
 def cmd_wild(a):
     """Teleport through the battery save, walk back and forth until --count wild Pokemon were built, log
     each one (species, form; for Unown the letter the game picked), flee every battle. 'unown' is this
@@ -684,6 +727,71 @@ def cmd_wild(a):
     return 0
 
 
+def run_child(args, timeout=900):
+    """Run 'emu_harness.py <args>' in a fresh process and return the JSON of its 'RESULT ' line.
+    One emulator per process: a second DeSmuME instance in the same process crashes (SIGSEGV)."""
+    import subprocess
+    proc = subprocess.run([sys.executable, str(Path(__file__).resolve())] + [str(x) for x in args],
+                          capture_output=True, text=True, timeout=timeout)
+    for line in proc.stdout.splitlines():
+        if line.startswith("RESULT "):
+            return json.loads(line[7:])
+    raise RuntimeError(f"child {args} failed (rc {proc.returncode}): {proc.stderr[-2000:]}")
+
+
+PAL_PARK_MAP = 109
+ENC_BANK_GETTER_109 = 0x0203A7D6   # 'pop {r4, pc}' of the map-109 branch of the encounter-bank getter 0x0203A7B0
+CODE_SIG[ENC_BANK_GETTER_109] = "10bd"
+
+
+def cmd_palpark(a):
+    """D-1484: for each pinned weekday, log the encounter record the bank getter returns on map 109
+    (hook on its map-109 return), plus optional encounters."""
+    out = Path(a.out)
+    out.mkdir(parents=True, exist_ok=True)
+    base = datetime.date(2026, 10, 4)           # a Sunday
+    names = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    if a.day is None:                  # parent: one child process per day (DeSmuME can't be reopened)
+        report = {"rom": str(a.rom), "days": [run_child(["palpark", "--rom", a.rom, "--sav", a.sav,
+                  "--out", a.out, "--x", str(a.x), "--y", str(a.y), "--count", str(a.count),
+                  "--max-steps", str(a.max_steps), "--day", str(wd)]) for wd in range(7)]}
+        for d in report["days"]:
+            print(json.dumps(d))
+        js = out / ("palpark_weekdays.json" if a.count == 0 else "palpark_weekdays_encounters.json")
+        js.write_text(json.dumps(report, indent=1))
+        print("report:", js)
+        return 0
+    for wd in [a.day]:
+        when = datetime.datetime.combine(base + datetime.timedelta(days=wd), datetime.time(12, 0))
+        seen = []
+
+        def hooks(h):
+            h.on_exec(ENC_BANK_GETTER_109, lambda h: seen.append(h.reg.r0))
+        with start_at(PAL_PARK_MAP, a.x, a.y, rom=a.rom, sav=a.sav, clock=when, out=out, verbose=False,
+                      hooks=hooks) as h:
+            log = WildLog(h)
+            steps = 0
+            while len(log.rows) < a.count and steps < a.max_steps:
+                for d in ("LEFT", "RIGHT"):
+                    for _ in range(3):
+                        h.walk(d, 1)
+                        steps += 1
+                if log.rows and not log.rows[-1].get("fled"):
+                    if len(log.rows) == 1:
+                        h.step(300)
+                        h.screenshot(f"palpark_{names[wd]}_encounter")
+                    for r in log.rows:
+                        r.setdefault("fled", True)
+                    if not h.flee():
+                        raise RuntimeError("could not flee")
+            h.walk("LEFT", 2)
+            day = {"weekday": wd, "name": names[wd], "clock": h.clock(), "records": sorted(set(seen)),
+                   "getter_calls": len(seen), "steps": steps,
+                   "species": [r["species"] for r in log.rows]}
+        print("RESULT " + json.dumps(day), flush=True)
+    return 0
+
+
 def cmd_info(a):
     with Harness(a.rom, a.sav, out=a.out) as h:
         if a.clock:
@@ -699,6 +807,15 @@ def cmd_info(a):
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
+    pp = sub.add_parser("palpark", help="D-1484: encounter record of map 109 per pinned weekday")
+    pp.add_argument("--rom", default=str(DEF_ROM_CN))
+    pp.add_argument("--sav", default=str(DEF_SAVES / "full_bag_6mons.sav"))
+    pp.add_argument("--out", default=str(DEF_OUT))
+    pp.add_argument("--x", type=int, default=20)
+    pp.add_argument("--y", type=int, default=14)
+    pp.add_argument("--count", type=int, default=0, help="wild Pokemon to log per day (0: only the getter)")
+    pp.add_argument("--max-steps", type=int, default=600)
+    pp.add_argument("--day", type=int, help=argparse.SUPPRESS)
     for name in ("info", "wild", "unown"):
         p = sub.add_parser(name)
         p.add_argument("--rom", default=str(DEF_ROM_CN))
@@ -721,7 +838,7 @@ def main(argv=None):
             p.add_argument("--state", help="also write a DeSmuME savestate taken right after the teleport")
             p.add_argument("--json")
     a = ap.parse_args(argv)
-    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild}[a.cmd](a)
+    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark}[a.cmd](a)
 
 
 if __name__ == "__main__":
