@@ -40,10 +40,13 @@
    6,
    9,
    10,
-   11
+   11,
+   69,
+   70,
+   71
   ],
   "loaded_bytes": 0,
-  "note": "Pokédex buttons: all nine audited ov5 member-4 load sites request the whole NCGR.",
+  "note": "Pokédex buttons: all nine audited ov5 member-4 load sites request the whole NCGR. Screens 69/70 (search bars) and 71 (list bar) come through the ov5 screen loader 0x021F8338 (members 11..92).",
   "load_sites": [
    {
     "file": "overlay5",

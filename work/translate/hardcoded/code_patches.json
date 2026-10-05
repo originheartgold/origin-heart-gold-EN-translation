@@ -225,6 +225,24 @@
       "value": "0x2501",
       "enabled": true,
       "notes": "All screens: NewMsgDataFromNarc at 0x0200BA98 stores type 1 whatever the caller asked: 'adds r5, r0, #0' -> 'movs r5, #1' at 0x0200BA9A. Every text bank is read line by line; none is loaded whole into a screen heap any more (149 call sites in rc3). Every MsgData function handles both types, and nothing outside them reads a loaded bank. The msgload-summary/bag patches are kept as a second layer."
+    },
+    {
+      "id": "pcbox-header-name-width",
+      "file": "overlay16",
+      "offset": "0x12E9E",
+      "expect": "0705 0F02 0069 0104 0807 0F02 0077 0404 0609 0F02 0087 0104 1E00 0F03 000F 1004 0205 0F02 0093 0104 0605 0F02 0097 0104 080D 0F02 00A3 0104 0B11 0F02 00B3 0104 0C15 0F02 00C9",
+      "value": "0805 0F02 0069 0104 0807 0F02 0079 0404 0609 0F02 0089 0104 1E00 0F03 000F 1004 0205 0F02 0095 0104 0605 0F02 0099 0104 080D 0F02 00A5 0104 0B11 0F02 00B5 0104 0C15 0F02 00CB",
+      "enabled": true,
+      "notes": "PC box top screen (D-1511): window templates at 0x12E9C (8 bytes each: bg, x, y, w, h, pal, base). The species-name window 04 08 05 07 (56 px, Japanese base) -> 04 08 05 08 (64 px, ends at the gender icon at x 128) so 10-character names fit; the bg-4 base tiles of the next windows move up by 2 (0x77->0x79 ... 0xC9->0xCB). The whole run equals the USA table (US ov14 0x12BB4)."
+    },
+    {
+      "id": "pcbox-header-name-width-2",
+      "file": "overlay16",
+      "offset": "0x12F2A",
+      "expect": "00E1 0104 0B0F 0F02 00F1 0104 0C13 0F02 0107",
+      "value": "00E3 0104 0B0F 0F02 00F3 0104 0C13 0F02 0109",
+      "enabled": true,
+      "notes": "PC box (D-1511), same table: the second bg-4 window group (x 1, y 11/15/19) base tiles +2 (0xE1->0xE3, 0xF1->0xF3, 0x107->0x109) after the wider name window, as in the USA table (US ov14 0x12C42); bg-4 tiles now run to 288 as in the USA ROM."
     }
   ]
 }

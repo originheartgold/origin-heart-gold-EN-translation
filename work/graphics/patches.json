@@ -152,9 +152,13 @@
    "11": {
     "src": "generated/a068_0011.bin",
     "expect_sha1": "2c0d63f77f94"
+   },
+   "71": {
+    "src": "generated/a068_0071.bin",
+    "expect_sha1": "00d2b4de080d"
    }
   },
-  "note": "Pokedex header (JOHTO/NATIONAL POKeDEX) and bottom buttons; gfx.py make-dex-labels",
+  "note": "Pokedex header (JOHTO/NATIONAL POKeDEX) and bottom buttons (list page #5/#6/#71, area page #11); gfx.py make-dex-labels",
   "also": [
    "data/clothes1/a068.narc",
    "data/clothes2/a068.narc"

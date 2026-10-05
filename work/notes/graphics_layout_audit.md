@@ -45,7 +45,7 @@ allocation rules in `work/graphics/layout_checks.json`:
 | Sheet | Runtime allocation | Check |
 | --- | --- | --- |
 | Pokédex header, a/0/6/8 #1 | Whole 280-tile sheet | Screens 0, 7, 8; three costume variants |
-| Pokédex buttons, a/0/6/8 #4 | Whole 192-tile sheet | Screens 5, 6, 9, 10, 11; three costume variants |
+| Pokédex buttons, a/0/6/8 #4 | Whole 192-tile sheet | Screens 5, 6, 9, 10, 11, 69, 70, 71; three costume variants. Tiles no screen shows stay untouched: the search page copies tiles 98/101 into its label windows (D-1505, D-1536) |
 | Trainer card units, a/0/4/9 #41 | Whole 416-tile 8bpp sheet | Screens 47, 48; three costume variants |
 | Title logo/subtitle, a/2/6/4 #8 | Whole 768-tile 8bpp sheet | Screen 3 |
 | Chain Logger, data/linkcapture.narc #26 | First 48 of 96 4bpp tiles | Screen 25 |

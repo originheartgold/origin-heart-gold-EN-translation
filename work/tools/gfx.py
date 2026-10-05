@@ -1023,7 +1023,12 @@ def make_naming_labels(us_path, cn_path, out_png):
 
 DEX = "a/0/6/8"
 DEX_HDR_NCGR, DEX_HDR_SCREENS = 1, (0, 7, 8)          # pret: #1 on MAIN_0 with screens 0, 7 and 8
-DEX_BTN_NCGR, DEX_BTN_SCREENS = 4, (5, 6, 9, 10, 11)   # pret: #4 with the button screens 5-11
+DEX_HDR_COLUMN_EDGE = 7   # overlay 7/8 column: the banner's dark column outline (screen 0 x 63) in overlay coordinates
+# pret: #4 with the button screens 5-11; 69/70 (search page RESET START CANCEL / letter page OK CANCEL, labels are
+# text) and 71 (list page, CRY/DETAILS greyed) are drawn with #4 too (ov5 loader 0x21F8338, members 11..92).
+# Every screen that shows #4 must be listed, or retile() hands its tiles out as free (D-1505).
+DEX_BTN_NCGR, DEX_BTN_SCREENS = 4, (5, 6, 9, 10, 11, 69, 70, 71)
+DEX_BTN_US_SCREENS = (5, 6, 71)   # same geometry and palette rows as the USA screens: show the USA buttons
 DEX_BTN_WORDS = ["AREA", "INFO", "SIZE", "FORMS", "BACK"]  # hack's 5-button area page 分布 详细 大小 样子 返回
 
 
@@ -1048,9 +1053,10 @@ def make_dex_labels(us_path, cn_path, out_dir):
       - screen 0: the Chinese letters are removed and the USA "POKéDEX" plate part (USA screen 0,
         x 128..219) is placed right after the overlay (7 px further right than in the USA layout);
         the "NATIONAL ◀ ▶ JOHTO" switch row (y 120..135) is the USA one.
-    Buttons (NCGR #4): screens 5/6 (list page) become the USA SEARCH/OPEN/QUIT and
+    Buttons (NCGR #4): screens 5/6/71 (list page) become the USA SEARCH/OPEN/QUIT and
       SEARCH/CRY/DETAILS/QUIT screens (same geometry); the hack's 5-button area page (screen 11)
-      keeps its geometry with USA-style letters AREA INFO SIZE FORMS BACK.
+      keeps its geometry with USA-style letters AREA INFO SIZE FORMS BACK; the search-page bars 69/70
+      (labels are text) stay as they are, but their tiles must not be reused.
     Only tiles not referenced by the NCGR's own screens are overwritten (retile()).
     Writes <out_dir>/a068_<member>.bin for the changed members; returns {member: path}."""
     cnf = m.Narc.parse(m.get_file(m.load_rom(cn_path), DEX)).files
@@ -1062,15 +1068,18 @@ def make_dex_labels(us_path, cn_path, out_dir):
     def img(files, s, gi):
         return screen_to_image(NSCR(files[s]), NCGR(files[gi]))
 
-    def pool(g, screens):
+    def pool(g, screens, unreferenced=True):
         # `screens` are all the screens pret draws with this NCGR, so any tile they stop using is free
-        # (retile() never overwrites a tile an unchanged cell still shows); unreferenced tiles first
+        # (retile() never overwrites a tile an unchanged cell still shows); unreferenced tiles first.
+        # unreferenced=False: tiles no screen shows are not free either - the code may copy them
+        # directly (the search page's label windows copy #4 tiles 98/101 as their background, D-1505)
         used = set()
         for s in screens:
             sc = NSCR(cnf[s])
             for k in screen_cells(sc, g):
                 used.add(sc.ents[k] & 0x3FF)
-        return [t for t in range(1, len(g.tiles)) if t not in used] + sorted(used - {0})
+        free = [t for t in range(1, len(g.tiles)) if t not in used] if unreferenced else []
+        return free + sorted(used - {0})
 
     def save(member, data):
         p = out_dir / f"a068_{member:04d}.bin"
@@ -1096,10 +1105,14 @@ def make_dex_labels(us_path, cn_path, out_dir):
         t = img(cnf, s, DEX_HDR_NCGR)
         u = img(usf, s, DEX_HDR_NCGR)
         pl = t[1][10][0]
-        for y in range(0, 21):                      # clean box: straight left edge, empty interior
-            t[y][:5] = [(pl, 7)] * 4 + [(pl, 8)]
-            t[y][5:] = [(pl, 1)] * (len(t[y]) - 5)
-        for y in range(21, 24):
+        # clean box: the overlay sits at (56, 24) over screen 0 (measured in the emulator), where the dark
+        # column's outline is at overlay x 7 on every row but the last; red left of it, dark interior.
+        # (Until 2026-10-05 the edge was at x 4, a 3-px dark block left of the column, D-1514.)
+        ex = DEX_HDR_COLUMN_EDGE
+        for y in range(0, 23):
+            t[y][:ex + 1] = [(pl, 7)] * ex + [(pl, 8)]
+            t[y][ex + 1:] = [(pl, 1)] * (len(t[y]) - ex - 1)
+        for y in range(23, 24):
             for x in range(5, 80):
                 if t[y][x][1] in (3, 4, 5):
                     t[y][x] = (pl, 1)
@@ -1143,7 +1156,7 @@ def make_dex_labels(us_path, cn_path, out_dir):
                 letters.setdefault(ch, [[1 if u[y][x][1] == 3 else 0 for x in range(la, lb)] for y in range(12, 20)])
     targets = []
     for s in DEX_BTN_SCREENS:
-        if s in (5, 6):
+        if s in DEX_BTN_US_SCREENS:
             targets.append((NSCR(cnf[s]), img(usf, s, DEX_BTN_NCGR)))
             continue
         t = img(cnf, s, DEX_BTN_NCGR)
@@ -1164,7 +1177,7 @@ def make_dex_labels(us_path, cn_path, out_dir):
                                 t[12 + yy][x + xx] = (t[12 + yy][x + xx][0], 3)
                     x += len(gl[0]) + 1
         targets.append((NSCR(cnf[s]), t))
-    tiles, ents = retile(g, targets, pool(g, DEX_BTN_SCREENS))
+    tiles, ents = retile(g, targets, pool(g, DEX_BTN_SCREENS, unreferenced=False))
     save(DEX_BTN_NCGR, g.with_tiles(tiles))
     for (sc, _), e, s in zip(targets, ents, DEX_BTN_SCREENS):
         if e != sc.ents:
