@@ -56,6 +56,7 @@ All tools are Python scripts in the session scratchpad (`phaseA2/`). The scratch
 | 8 | Cosmetic | Dead flag checks: Route 36 gatehouse NPCs always say the odd tree still blocks the road (0x1C2); the Elite Four door operators never say "the door is already open" (0x211–0x214; the door still opens through `HidePerson`); a Route 4 line is gated on flag 2007, which is never set | Files 862 @33/@61, 817–820 @1623…, 178 @121 | D-1336 |
 | 9 | Latent, unreachable | The Route 39 barn (zone 214, script file 250 with 2 scripts) has objects 1 and 3–6 on scripts 3 and 4, which don't exist. No map warps into zone 214. | `bad_local_ref` | – |
 | 10 | Latent, unreachable | Dark Cave Route 31 side (zone 176, file 964): 34 `NPCMsg` ids past bank 0338 (49 strings). No map warps into zone 176. | – | – |
+| 14 | **Freeze** | Rock Tunnel hide-and-seek: losing to the corner kid (`TrainerBattle 606 0 0 0`, a loss not allowed) doesn't white out; the script goes on to the "Pikachu" kid's NPCMsg 46 (L3782) without the field being restored, the screen stays black and the CPU runs into heap memory. **Observed in the emulator** (both ROMs; controls: `606 0 1 0` returns to the field, `WhiteOut` after it to the Pokémon Center). The audit's lock detector couldn't see it: it is the battle's no-loss setting, not a lock. | File 129 @2879, @2897 → L3782; `emu_harness.py guide0107 --case corner_kid` | D-1548 (D-1395) |
 
 ### Checked and found OK
 

@@ -86,7 +86,9 @@ FIELD_MENU = {"pokedex": (43, 33), "pokemon": (43, 73), "bag": (43, 113), "pokeg
 MOVE_BUTTONS = [(64, 40), (192, 40), (64, 104), (192, 104)]   # battle move menu (bottom screen)
 # Screen recognition: a few pixels (screenshot coordinates, bottom screen y + 192) and their RGB.
 SCREENS_KNOWN = {
-    "battle_menu": [((60, 252), (232, 56, 56)), ((225, 207), (48, 120, 168))],   # red FIGHT, blue INFO
+    # red FIGHT, blue INFO; the INFO sample sits right of the label (the English build's INFO text covers
+    # the old sample 225,207 since the label fix of 2026-10-05)
+    "battle_menu": [((60, 252), (232, 56, 56)), ((244, 203), (40, 144, 200))],
 }
 POKEGEAR_TABS = {"settings": (32, 175), "map": (127, 175)}
 BATTLE_BUTTONS = {"fight": (128, 88), "bag": (36, 165), "run": (128, 178), "pokemon": (200, 165), "info": (225, 15)}
@@ -1693,8 +1695,14 @@ def _check_skitty(rom, out):
     return emu_skitty.suite_check(rom, out)
 
 
+def _check_guide0107(rom, out):
+    """Guide chapters 01-07: the cheap deterministic emu_guide0107 cases keep their observed verdicts."""
+    import emu_guide0107
+    return emu_guide0107.suite_check(rom, out)
+
+
 SUITE_CHECKS = {"unown": _check_unown, "palpark": _check_palpark, "arceus": _check_arceus,
-                "evolve": _check_evolve, "dex": _check_dex, "skitty": _check_skitty}
+                "evolve": _check_evolve, "dex": _check_dex, "skitty": _check_skitty, "guide0107": _check_guide0107}
 
 
 def cmd_suite(a):
@@ -1733,6 +1741,11 @@ def cmd_suite(a):
 def _cmd_skitty(a):
     import emu_skitty
     return emu_skitty.cmd_skitty(a)
+
+
+def _cmd_guide0107(a):
+    import emu_guide0107
+    return emu_guide0107.cmd(a)
 
 
 def cmd_dexcapture(a):
@@ -1829,6 +1842,15 @@ def main(argv=None):
     sk.add_argument("--out", default=str(DEF_OUT))
     sk.add_argument("--rom", help=argparse.SUPPRESS)
     sk.add_argument("--part", choices=("a", "b"), help=argparse.SUPPRESS)
+    g7 = sub.add_parser("guide0107", help="checks for the hedged claims in guide chapters 01-07 (emu_guide0107.py)")
+    g7.add_argument("--case", default="all", help="comma list of case names (see emu_guide0107.py)")
+    g7.add_argument("--lang", choices=("cn", "en", "both"), default="cn")
+    g7.add_argument("--rom-cn", default=str(DEF_ROM_CN))
+    g7.add_argument("--rom-en", default=str(DEF_ROM_EN))
+    g7.add_argument("--out", default=str(DEF_OUT))
+    g7.add_argument("--jobs", type=int, default=6)
+    g7.add_argument("--rom", help=argparse.SUPPRESS)
+    g7.add_argument("--child", help=argparse.SUPPRESS)
     dc = sub.add_parser("dexcapture", help=argparse.SUPPRESS)
     dc.add_argument("--rom", default=str(DEF_ROM_CN))
     dc.add_argument("--out", default=str(DEF_OUT))
@@ -1856,7 +1878,7 @@ def main(argv=None):
             p.add_argument("--json")
     a = ap.parse_args(argv)
     return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages, "suite": cmd_suite,
-            "dexcapture": cmd_dexcapture, "skitty": _cmd_skitty}[a.cmd](a)
+            "dexcapture": cmd_dexcapture, "skitty": _cmd_skitty, "guide0107": _cmd_guide0107}[a.cmd](a)
 
 
 if __name__ == "__main__":

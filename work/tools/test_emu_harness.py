@@ -198,3 +198,40 @@ class SkittyScene(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Guide0107(unittest.TestCase):
+    """emu_guide0107: the pure parts (registry, judges, Pokemon field decoder)."""
+
+    def setUp(self):
+        import emu_guide0107
+        self.G = emu_guide0107
+
+    def test_registry(self):
+        for name, (fn, variants, judge) in self.G.CASES.items():
+            self.assertTrue(callable(fn), name)
+            self.assertEqual(variants is None, judge is None, name)
+        self.assertTrue(set(self.G.SUITE_EXPECT) <= set(self.G.CASES))
+
+    def test_judges(self):
+        G = self.G
+        monday = {h: {"groups": "AD" if 7 <= int(h) <= 18 else "EH", "scrcmd_522": int(h)} for h in G.MONDAY_HOURS}
+        self.assertEqual(G.judge_monday(monday), "confirmed")
+        monday["6"]["groups"] = "AD"
+        self.assertEqual(G.judge_monday(monday), "contradicted")
+        corner = {"real": {"field_back": False, "map_after": 342},
+                  "canlose": {"field_back": True, "map_after": 342},
+                  "whiteout": {"field_back": True, "map_after": 501}}
+        self.assertEqual(G.judge_corner_kid(corner), "contradicted")
+        corner["whiteout"]["map_after"] = 342          # a broken control makes the run inconclusive
+        self.assertEqual(G.judge_corner_kid(corner), "blocked")
+        koga = {"17": {"koga_visible": False}, "18": {"koga_visible": True, "koga_pos": [17, 10], "talk_msg": 12},
+                "20": {"koga_visible": True}, "21": {"koga_visible": False}}
+        self.assertEqual(G.judge_koga(koga), "confirmed")
+
+    def test_mon_details(self):
+        raw = bytearray(E.encode_pokemon(_encrypted_mon(7, species=18), moves=[28, 16, 98, 18]))
+        raw += bytes(236 - len(raw))
+        m = self.G.mon_details(bytes(raw))
+        self.assertEqual((m["species"], m["moves"]), (18, [28, 16, 98, 18]))
+        self.assertEqual(len(m["ivs"]), 6)

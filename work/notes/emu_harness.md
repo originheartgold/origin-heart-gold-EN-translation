@@ -25,7 +25,8 @@ of the main checkout (also when run from an agent worktree).
     .venv/bin/python work/tools/emu_harness.py messages [--refs "457#123 48#20"]         # lines in the window, CN|EN
     .venv/bin/python work/tools/emu_harness.py drive --lang en gen:25,30 t43,73/120 s:party   # op language
     .venv/bin/python work/tools/emu_harness.py skitty                                    # D-0582: Route 8 scene, CN|EN
-    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty] [--jobs 10]
+    .venv/bin/python work/tools/emu_harness.py guide0107 [--case pikachu,corner_kid,...] [--lang cn|en|both]  # guide 01-07
+    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty,guide0107] [--jobs 10]
     python3 -m unittest discover -s work/tools -p test_emu_harness.py      # pure parts, no ROM needed
 
 A boot plus teleport takes about 15 s; 20 Unown encounters take about 2–3 minutes (headless, ~300 fps).
@@ -388,11 +389,13 @@ from ordinary message commands in their scripts). The WIP build predates later b
 | evolve | Petilil day + Sun Stone, Petilil night, Rockruff 12/18/22 h | 548/1 → 549/1; no evolution; 0/2/1 | 2.2 min |
 | dex | Pokédex entry panels 1–30, number read back | pixel-identical to the approved baseline (`baselines/dex_<rom>/`; created on the first run) | 20 s |
 | skitty | Route 8 Skitty scene (D-0582, `emu_skitty.py`), see below | cries, sprite 761 = Skitty, trainer 277 leads Skitty form 0, all 18 lines shown, EN text says Skitty | 1.1 min |
+| guide0107 | 9 guide-claim cases (`emu_guide0107.py`: pikachu, electrode, misty_date, azure_flute, koga, giovanni, sabrina, kecleon, promo_flag), see 7 | each keeps its observed verdict (`SUITE_EXPECT`); promo_flag writes the Pokédex seen bit of No. 1335 and doesn't repeat | about 4 min |
 
   Result (observed): all 10 (5 checks × 2 ROMs) pass, 2 min 13 s wall time with `--jobs 10`. A first run
   before the battery fix failed unown (both ROMs) and palpark (English) on the shared battery file, and one
   rockruff_12 run did not evolve.
   With `skitty` added (2026-10-05): all 12 pass, 2 min 10 s with `--jobs 10`.
+  With `guide0107` added (2026-10-06): all 14 pass, 3 min 7 s with `--jobs 14`.
 
 ### 6. Route 8 Skitty scene (D-0582): observed, the fix holds
 
@@ -423,6 +426,57 @@ trainer 277's party in battle Skitty (form 0, Lv28), Chansey, Wormadam; trainer 
 Girafarig. The battle shows 向尾喵 / "Skitty". All 18 lines that name the Skitty or write its cry (#3–#6,
 #8, #17, #18, #19, #21, #24, #26, #31, #33–#35, #37, #38, #48) were printed by the scene and fit;
 the English says Skitty with Skitty-style cries. CN|EN pairs: `work/build/harness/skitty/`.
+
+### 7. Guide chapters 01–07: the hedged claims (`emu_guide0107.py`, 2026-10-06)
+
+`emu_harness.py guide0107` runs one recipe per claim that guide chapters 01–07 marked "not confirmed in game"
+(or "probably" about behaviour). Each recipe sets the state the guide's *Source:* line names (flags, vars,
+badges, clock, party), runs the hack's own script (talking to the object, stepping on the trigger, or a GoTo
+into the script's own bytes at the named label with `run_from`) and reads back flags, vars, party, bag, live
+map objects, the message ids printed, battles and memory writes. Variants (controls) run in separate child
+processes; a judge per case gives `confirmed` / `contradicted` / `observed` / `blocked`. Screenshots:
+`work/build/harness/guide01_07/<cn|en>/`; reports `report_*.json` there. Every case was run on the Chinese
+ROM and on the English WIP build (Oct 5): same results on both.
+
+| guide claim | recipe (case) | result |
+|---|---|---|
+| 01 Viridian Pikachu thief: back at its first spot after you leave | pikachu: Yes at the first spot → object 5 at 1008,235; warp to Route 1 and back → 1033,247 | **confirmed** |
+| 01 Pidgeot loan: "Lv. 20, IVs 31, your name as OT" | pidgeot: lend a Lv60 Pidgeot with Leftovers through the party menu (it leaves the party), set 2404, take it back | **contradicted** in part: Lv20, IVs 6×31, moves 28/16/98/18, no item, trade record 6's PID, but OT ID 0x761510F0 (ID No. 04336) and an empty OT name (D-1552) |
+| 01 Victory Road Electrode: fleeing (probably) removes it; losing keeps it | electrode: Ninjask Lv100 flees → flag 1241 set, ball gone; doomed party loses → Pokémon Center, ball still there | **confirmed** (an Electrode that explodes counts as a win too) |
+| 01 "Meet my mom" plays Cynthia's version | mom_visit: Yellow partner, 739 L10063 → zone 504 scene; control with flag 106 clear | **confirmed** (D-1553) |
+| 01 Living together blocked for everyone | living: 2F PC at 0x40B5 = 6 with the Cascade Badge prints nothing, player walks on; control (106 clear) starts the love letter | **confirmed** (D-1553) |
+| 02/04 Misty missing after a won Resort date | misty_date: 809 script 15 from L4312 → Gym with var 4; object 6 absent, also after re-entering; Cape object 35 absent | **confirmed** (D-1554) |
+| 03 Losing the clash resets the side choice; switching locks both | clash: trigger → flags at the first battle; re-choice with Green from that state | **confirmed up to the battle** (the Multi Battle loss with an AI partner not played; D-1555) |
+| 03 Blue's free Shoal Salt uses the Captain's HM01 check | ssanne: real boarding at Vermilion Harbor, arrival scene, Captain's speech; control with flag 1440 set | same gate **confirmed**; new: a real boarding leaves 1440 clear, so neither gives anything (D-1549, open) |
+| 03 Corner kid loss jumps into the "Pikachu" kid's dialogue | corner_kid: loss with a Splash-only party; controls `TrainerBattle 606 0 1 0` and `… ; WhiteOut` | **contradicted**: the game freezes (black screen, CPU in heap memory); controls behave (D-1548) |
+| 03 Sabrina only "in training" while the story value is 0 | sabrina: var 0x40AF = 0 → 53#210, = 5 → 53#149 (script 23 started directly: another object stands in front) | **confirmed** |
+| 03 Celadon Dept. Store 3F S.S. Anne passengers: gone after a Rock Tunnel rescue "if Rock Tunnel can be reached in that window" | – | **blocked**: a story-order question (can Rock Tunnel be reached between arriving in Vermilion and saving the ship), not a game state the harness can build or observe |
+| 04 Tony's roof scene before the Route 7 scene; Suzie's prices | tony: Suzie's paid offer, roof trigger, Beedrill won, var 2 when Jessie & James start; from that state Suzie is free | **confirmed**; whether the roof is reachable that early is not checked |
+| 04 Pal Park Monday: which time check | monday: seven pinned hours | **resolved**: `ScrCmd_522` = hour; 7–18 → A+D, else E+H (D-1551) |
+| 04 Saffron takeover step 5: Blue's scene | blue_saffron: coord script 5 of file 827 with a Lv100 lead, three battles won | **confirmed**: lines 20–44 (32/34 female versions; 24 unused) |
+| 06 Kecleon needs Alomomola, not Noctowl | kecleon: Alomomola lead → Noctowl cry, Kecleon battle; Noctowl lead → only line 33 | **confirmed** (D-1556) |
+| 06 Azure Flute unobtainable after the HQ report | azure_flute: var 0x40B7 = 4 → "keep it safe"; = 3 → flute lent | gate **confirmed**; "the report always comes first" read from the scripts (D-1557) |
+| 07 Giovanni's rematch opens with Mewtwo and Tyranitar | giovanni: `TrainerBattle 402 402 0 0` | **confirmed**: double battle, cries 150 then 248, one team in RAM |
+| 07 Koga in the League gate 18:00–20:59, east side | koga: 17, 18, 20, 21 h | **confirmed**: present at 17,10 (by the Route 22 door) at 18 and 20, absent at 17 and 21; photo offer 354#12 |
+| known issues, D-1333 out-of-range flags | promo_flag, mortar_flag: write and read hooks on the byte | **observed**: both land in the Pokédex block (array 6): 7286 = seen bit of No. 1335 (never read by the Pokédex or Trainer Card), 4461 = caught bit of No. 110 Weezing (D-1550) |
+
+New harness pieces (in `emu_guide0107.py`, reusable):
+
+- `run_from(h, file, script, label)`: start a map script and jump to a label of its own bytes.
+- Losing and winning: `weak_party` (every party Pokémon knows only Splash; HP and count stay real),
+  `doomed_party` (plus 1 HP lead / 0 HP others, only for a wild battle the foe could otherwise end by
+  exploding), `lose_battle` (forced-switch party list and its submenu handled, "no will to fight" skipped),
+  `turn` / `win_battle` (double-battle target screens: first foe, then own side panels).
+- `safe_warp` (retries after white-outs and long scenes), `finish_scene`, `set_badge` (badges 0–7 at
+  PlayerProfile +0x20, 8–15 at +0x23, found with CheckBadge), `player_ot` (name +4, ID +0x14), `money`
+  (+0x18), `mon_details` (OT ID, IVs, moves, OT name).
+- The save array table at save+0x2E01C has 16-byte rows {offset, crc, next id, size of the next array}:
+  array 6 (Pokédex) is 0x13A8 + 0x374, right after array 5 (0x1324 + 0x84).
+- `CheckBattleWon` treats a flee as a win (Electrode). A scripted `TrainerBattle a b 0 0` that is lost does
+  not restore the field; the next command runs without it (corner kid freeze). With the third argument 1
+  (`TrainerBattle a b 1 0`) the field comes back.
+- `SCREENS_KNOWN["battle_menu"]` now samples INFO at (244, 203): the English build's INFO label covers the old
+  sample since the 2026-10-05 label fix, so English battle recipes never saw the command menu.
 
 ### 5. Screen checks on the English WIP build (Tier 3)
 
@@ -464,6 +518,9 @@ bugs. Both are visible in `work/build/harness/screens/`.
 
 ## Limits
 
+- `position()` also lags after `ScrCmd_723` (the ferry boarding); the S.S. Anne recipe uses timed walks.
+- A Multi Battle with an AI partner can't simply be lost with a weak party (the partner fights on); the
+  clash recipe stops at the first battle.
 - Menu navigation is timing-based (fixed waits and touch coordinates). It worked in every run here, but a
   new screen or a different save can need different waits; each new recipe needs one look at its
   screenshots. There is no screen recognition yet, only the overlay-2 check for "in the field".
