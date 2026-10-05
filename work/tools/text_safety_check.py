@@ -2,6 +2,12 @@
 
 Unknown consumers remain gaps. This ledger deliberately does not equate a
 structurally valid message, or a known consumer passing, with universal safety.
+
+Approved exceptions live in text_static_exceptions.json beside this file. An
+entry waives one control finding on one string only when ref, code and the
+source/candidate command lists match exactly, and must cite decisions. Waived
+findings stay in the ledger under 'waived'; an entry that matches nothing is an
+error, so stale exceptions cannot hide later changes.
 """
 from collections import Counter
 import json
@@ -13,6 +19,46 @@ from text_expansion_check import measure_expansion, inspect_formatter_engine, me
 from text_reference_check import inspect_references
 
 NARCS = {'a027': 'a/0/2/7', 'battle_string': 'battle/string/battle_string.narc'}
+EXCEPTIONS = Path(__file__).with_name('text_static_exceptions.json')
+
+
+def _norm(value):
+    return json.loads(json.dumps(value))
+
+
+def load_exceptions(path=EXCEPTIONS):
+    """Return {ref: [entry, ...]}; reject malformed entries rather than ignore them."""
+    document = json.loads(Path(path).read_text())
+    if document.get('schema') != 1 or not isinstance(document.get('exceptions'), list):
+        raise ValueError('text_static exceptions: unsupported schema')
+    result = {}
+    for entry in document['exceptions']:
+        if (not isinstance(entry, dict) or entry.get('check') != 'controls' or not isinstance(entry.get('ref'), str)
+                or not entry.get('code') or 'source' not in entry or 'candidate' not in entry
+                or not isinstance(entry.get('decisions'), list) or not entry['decisions'] or not entry.get('reason')):
+            raise ValueError(f'text_static exceptions: invalid entry {entry!r}')
+        result.setdefault(entry['ref'], []).append(entry)
+    return result
+
+
+def waive_controls(controls, entries):
+    """Move exactly matching findings to 'waived' and recompute the control status."""
+    if not entries or not controls.get('findings'):
+        return controls
+    kept, waived = [], []
+    for finding in controls['findings']:
+        normal = _norm(finding)
+        match = next((e for e in entries if e['code'] == normal.get('code') and e['source'] == normal.get('source')
+                      and e['candidate'] == normal.get('candidate')), None)
+        if match is None:
+            kept.append(finding)
+        else:
+            match['_used'] = True
+            waived.append({'finding': finding, 'decisions': match['decisions'], 'reason': match['reason']})
+    if waived:
+        controls = dict(controls, findings=kept, waived=waived)
+        controls['status'] = 'failed' if kept else 'incomplete' if controls['gaps'] or controls['baseline_findings'] else 'passed'
+    return controls
 
 
 def status_of(errors, gaps):
@@ -46,9 +92,9 @@ def apply_capacities(units, expansion, contracts, bank, sid):
     return results
 
 
-def assess_record(original, units, ref, contracts, bounds=None):
+def assess_record(original, units, ref, contracts, bounds=None, exceptions=None):
     bank, sid = ref.split('#')
-    controls = check_controls(original, units, ref)
+    controls = waive_controls(check_controls(original, units, ref), (exceptions or {}).get(ref))
     expansion = measure_expansion(units, bounds)
     capacity = apply_capacities(units, expansion, contracts, bank, int(sid))
     baseline = {c['contract']: c for c in apply_capacities(original, measure_expansion(original, bounds), contracts, bank, int(sid))}
@@ -71,8 +117,8 @@ def assess_record(original, units, ref, contracts, bounds=None):
     return {'status': status_of(errors, gaps), 'controls': controls['status'],
             'stored_units': len(units), 'decoded_units': expansion.get('decoded_units'),
             'expanded_units': expansion.get('expanded_units'), 'capacity': capacity,
-            'errors': errors, 'gaps': gaps,
-            'control_details': controls if controls['status'] != 'passed' else None,
+            'errors': errors, 'gaps': gaps, 'waived': controls.get('waived', []),
+            'control_details': controls if controls['status'] != 'passed' or controls.get('waived') else None,
             'expansion_details': expansion if expansion['status'] != 'passed' else None}
 
 
@@ -125,6 +171,12 @@ def inspect_safety(source_path, candidate_path, export_dir, output_dir):
     contracts = consumers['candidate'].get('contracts', [])
     hardcoded_workspace = inspect_hardcoded_workspace(cm, contracts)
     ledger, errors, counts, banks = [], [], Counter(), {}
+    exception_errors = []
+    try:
+        exceptions = load_exceptions()
+    except (OSError, ValueError) as exc:
+        exceptions = {}
+        exception_errors.append({'ref': str(EXCEPTIONS.name), 'code': 'exceptions_unreadable', 'reason': str(exc)})
     source_counts, candidate_counts = [], []
     for archive, path in NARCS.items():
         originals = m.Narc.parse(m.get_file(source, path)).files
@@ -157,7 +209,9 @@ def inspect_safety(source_path, candidate_path, export_dir, output_dir):
                     continue
                 row = {'ref': ref}
                 for label, units in (('candidate', after[sid]), ('workspace', pending[sid])):
-                    result = assess_record(before[sid], units, ref, contracts)
+                    result = assess_record(before[sid], units, ref, contracts, exceptions=exceptions)
+                    if result['waived']:
+                        counts[f'{label}_waived'] += 1
                     row[label] = result
                     summary[f'{label}_{result["status"]}'] += 1
                     counts[f'{label}_{result["status"]}'] += 1
@@ -170,12 +224,20 @@ def inspect_safety(source_path, candidate_path, export_dir, output_dir):
                         counts[f'{label}_capacity_failures'] += 1
                 ledger.append(row)
             banks[bank] = dict(summary)
+    applied = []
+    for ref, entries in sorted(exceptions.items()):
+        for entry in entries:
+            if entry.pop('_used', False):
+                applied.append({'ref': ref, 'code': entry['code'], 'decisions': entry['decisions']})
+            else:
+                exception_errors.append({'ref': ref, 'code': 'unused_exception', 'reason': 'exception matches no finding; remove or update it'})
     try:
         if errors:
             raise ValueError('Message inventory incomplete; bank indices cannot be trusted for reference analysis')
         references = inspect_references(source, candidate, source_counts, candidate_counts)
     except (Exception, SystemExit) as exc:
         references = {'status': 'incomplete', 'gaps': [{'code': 'reference_scan_unavailable', 'reason': str(exc)}]}
+    errors.extend(exception_errors)
     path = Path(output_dir)/'text-safety-ledger.json'
     path.write_text(json.dumps({'records': ledger, 'banks': banks}, separators=(',', ':'))+'\n')
     failed = bool(errors or counts['candidate_failed'] or counts['workspace_failed'] or references['status'] == 'failed'
@@ -183,5 +245,5 @@ def inspect_safety(source_path, candidate_path, export_dir, output_dir):
     return {'status': 'failed' if failed else 'incomplete', 'counts': dict(counts), 'errors': errors,
             'gaps': [{'code': 'consumer_discovery_incomplete', 'reason': 'Every message is inventoried; complete consumer and dynamic target coverage is not yet established.'},
                      {'code': 'graphics_text_outside_message_pipeline', 'reason': 'Baked-in text requires existing graphics artifact/layout checks.'}],
-            'formatter_engines': engines, 'consumers': consumers, 'hardcoded_workspace': hardcoded_workspace, 'references': references, 'ledger': str(path),
+            'exceptions': applied, 'formatter_engines': engines, 'consumers': consumers, 'hardcoded_workspace': hardcoded_workspace, 'references': references, 'ledger': str(path),
             'scope': 'All source/candidate message records and fresh workspace export; known hardcoded strings in consumer report; static safety is not universal gameplay certification.'}
