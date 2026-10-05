@@ -16,6 +16,10 @@ of the main checkout (also when run from an agent worktree).
     .venv/bin/python work/tools/emu_harness.py unown [--count 20] [--clock 2026-10-09T12:00:00]
     .venv/bin/python work/tools/emu_harness.py wild --map 109 --x 16 --y 14 --clock 2026-10-09T12:00:00
     .venv/bin/python work/tools/emu_harness.py info [--sav S] [--clock ISO]
+    .venv/bin/python work/tools/emu_harness.py palpark            # D-1484: record per weekday
+    .venv/bin/python work/tools/emu_harness.py arceus             # D-1501: 16 Plates through the bag
+    .venv/bin/python work/tools/emu_harness.py evolve --species 548 --level 10 --item 241 --stone 80 --clock 2026-10-09T12:00:00
+    .venv/bin/python work/tools/emu_harness.py screens [--only options,ev,dex,battle]   # CN|EN pairs
     python3 -m unittest discover -s work/tools -p test_emu_harness.py      # pure parts, no ROM needed
 
 A boot plus teleport takes about 15 s; 20 Unown encounters take about 2–3 minutes (headless, ~300 fps).
@@ -228,24 +232,75 @@ shows Midday, Dusk, Midnight). **Observed.** The stack byte is not written by th
 still true), but on the Rare Candy path it was always 0. Not tested: evolution after a battle (a different
 caller, so a different stack history), which is where a non-zero byte could still appear.
 
-## Extending it to the other open points
+### 5. Screen checks on the English WIP build (Tier 3)
 
-- **Petilil + Black Belt by day, then Sun Stone (D-1485).** `generate_pokemon(548, level=N, item=241)`
-  with `set_clock(...12:00)`. Level-up trigger still needed: either give a Rare Candy (bag via
-  `SaveFile`/RAM, then drive the bag menu with `press`/`touch`) or win a battle. Expected (static): a
-  Petilil with form 1 (`party()[5]["form"] == 1`), and a Sun Stone then gives species 549 form 1. Hook the
-  evolution setup 0x02074048/0x02074148 and completion 0x02074AD2 to log the target species/form directly.
-- **Rockruff daytime form (D-1486).** `generate_pokemon(744, level=24)`, clock 12:00, level up; read
-  `party()[5]["form"]`. The form comes from an unwritten stack byte (0x02074AE4, sp+0xC), so repeat from a
-  savestate with different preceding actions; an exec hook at 0x02074AE4 can log the byte each time.
-- **Pal Park Friday table (D-1484).** See above; also hook the bank getter 0x0203A7B0 (return value) to log
-  the record number directly. Fixed Catch mode (script file 809) may set state the plain walk doesn't.
-- **Thief keeps the item (Air Balloon / Eviolite / Weakness Policy / Salac).** Needs a trainer battle whose
-  Pokémon holds one: teleport next to such a trainer (trainer data a/0/5/5 + events), give the lead Thief
-  via the generator's move rows (7–10, untested), fight, then check `party()` items after the battle.
-- **Pal Park Fixed Catch prize (Nanab).** Script-driven: teleport to the Pal Park counter, set the vars the
-  prize script checks (`set_var`), talk (`press("A")`), and compare the bag before and after.
+`emu_harness.py screens [--only options,ev,dex,battle]` runs each screen recipe on the Chinese ROM and on
+`work/build/origin_hg_v4.0.3_en_wip.nds` (one child process per recipe and ROM, about 2 minutes for all) and
+writes CN|EN pairs to `work/build/harness/screens/*_pair.png` (overview: `all_pairs.png`). Recipes are a few
+lines each (`h.field_menu("options")`, `h.open_bag()`, `h.mark("name")` …). Whether text fits is judged by
+looking at the pairs; the pixel-difference figure in `screens_report.json` is only useful against a
+baseline of the same ROM (see the proposal below). All observations below are from these screenshots.
 
-Limits: teleporting skips on-entry map scripts; the clock doesn't advance while pinned; RUN touch and menu
-key sequences are timing-based (they worked in every run here, but a new screen needs a screenshot check);
-the generator overwrites party slot 6 when the party is full.
+| screen | decision | English result |
+|---|---|---|
+| Options (X → OPTIONS) | D-0506 | Fits, one tight cell: MUSIC SPEED / BATTLE SCENE / BATTLE STYLE / TITLE SCREEN / BATTLE BG / FRAME and their values all fit. **NORMAL** fills its value cell completely (last letter touches the cell's right edge). What the options do was not tested. |
+| EV Allocator (key item 745, Bag → Key Items → Use) | D-0503 | Fits with room: Atk/Def/SpA/SpD/Spe, "EVs left to allocate", the X/Y and SELECT/START help lines. The label column is about 50 px wide, so full names such as "Attack" or "Sp. Atk" would probably fit too (not tried). |
+| Pokédex search (Pokédex → Y) | – | Labels fit (ORDER, Numerical, NAME, TYPE, HT, WT, AREA, FORM). **Bug: the button bar at the bottom (RESET / START / CANCEL) is garbled in English**: stray tiles over and around the buttons. Clean in Chinese. |
+| Search by letter (search → NAME) | D-0520 | The screen shows A–Z in the hack's kana grid (columns of five: A–E, F–J, …, Z at the top of column 6); the remaining 18 buttons are blank, as decided. Selecting a letter was not tried. **The same garbled bottom bar (OK / CANCEL).** |
+| Battle command menu (in sun) | – | BAG, RUN, POKéMON, INFO and the weather badge SUN fit. **FIGHT is partly covered by the lead Pokémon's icon** (the F sits under it); in Chinese the icon sits left of 战斗. |
+| Battle info panel (INFO, Groudon with Drought) | D-0518 | Ability: Drought fits. **"Harsh Sunlight 5 turns" overflows**: the line ends at the panel edge as "5 turn". The Chinese puts the label left and 5回合 right-aligned. |
+
+Not reached: the contest/APPEAL and NEXT labels (D-0522); contests need a contest entry and NEXT's screen
+is unknown. The Pokédex bar and the info-panel overflow are new findings for the translation, not hack
+bugs. Both are visible in `work/build/harness/screens/`.
+
+## What the harness can do now
+
+- **State**: `SaveFile` (teleport, flags, vars, bag pockets, map objects, CRC), `start_at(map, x, y, flags=,
+  vars=, clock=, edit=, hooks=)` → a `Harness` standing in the field; savestates for fast reruns.
+- **Clock**: `set_clock(datetime)` pins date, weekday and time; `clock()`.
+- **Pokémon**: `generate_pokemon(species, level, item, form)` via the hack's generator, `party()` (decrypted,
+  with level), `edit_party_mon`, `swap_party`.
+- **Menus** (touch/key sequences): `field_menu(entry)`, `open_bag`, `bag_pocket`, `bag_put_first`,
+  `give_from_bag`, `use_from_bag`, `level_up_with_candy`, `open_summary_from_bag`.
+- **Battles**: `walk_until_battle`, `WildLog`, `flee`, `in_field`.
+- **Observation**: `on_exec(addr, fn)` hooks (e.g. the encounter-bank getter, the Lycanroc form write),
+  `screenshot`, `mark` (screen-check points), `screen_diff`.
+- **Commands**: `unown`, `wild`, `palpark`, `arceus`, `evolve`, `screens`, `info`.
+- **Isolation**: `run_child`: one emulator per process (a second DeSmuME instance in the same process
+  crashes with SIGSEGV).
+
+## Limits
+
+- Menu navigation is timing-based (fixed waits and touch coordinates). It worked in every run here, but a
+  new screen or a different save can need different waits; each new recipe needs one look at its
+  screenshots. There is no screen recognition yet, only the overlay-2 check for "in the field".
+- Teleporting through Continue skips on-entry map scripts, and the new map's NPCs are whatever the map
+  spawns by itself. The live player position is not read (the Pal Park start tile could not be checked).
+- The pinned clock does not advance.
+- `generate_pokemon` overwrites party slot 6 when the party is full; the generator reuses one PID.
+- Wild-battle recipes depend on random encounters (single or double battle, CN vs EN differ), so screen
+  pairs of battles are not pixel-identical between runs.
+- Not built: trainer battles (Thief test), talking to NPCs with scripted state (Pal Park prize), winning a
+  battle, contests.
+
+## Proposal: an automated regression suite
+
+Run per English build (a release candidate or a nightly), headless, on the Mac that builds it:
+
+1. **Screens (about 2 min for 6 screens, ~20 s per screen and ROM):** the `screens` recipes plus the memcheck
+   menu scenarios, English only, compared with `screen_diff` against **approved English baselines** from the
+   previous build. 0 % difference passes; anything else produces a diff mask and a CN|EN pair for review.
+   Approving a change copies the new screenshot to the baseline folder (outside git, or as hashes in git).
+   Add a recipe whenever a translated graphic or a long text box is changed (Pokédex search bar, info panel).
+2. **Behaviour checks (about 5 min):** `unown` (20 encounters, ~2.5 min), `palpark` (7 days, ~1.5 min),
+   `arceus` (16 Plates, ~1.5 min), `evolve` Petilil day/night and Rockruff at 4 hours (~25 s each). Each
+   has an expected result (all A; records 141–147; the 16 forms; 548/1 then 549/1; 0/2/1). They prove the
+   English build did not change behaviour (D-1002). Run them on both ROMs and compare.
+3. **Memcheck** (existing `memcheck.py run`) for heap headroom.
+
+Make it one command (`emu_harness.py suite`) that runs the children in parallel (each is a separate
+process, the Mac has the cores), writes one JSON report and exits non-zero on a failed expectation. A full
+run would take about 5 minutes in parallel, about 10 minutes sequentially. Saves stay in
+`work/build/memcheck/`; outputs in `work/build/harness/`; nothing goes into git except the recipes and
+expected values.

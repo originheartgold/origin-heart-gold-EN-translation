@@ -73,5 +73,25 @@ class SaveFileEdits(unittest.TestCase):
         self.assertEqual((objs[E.PLAYER_OBJ_ID]["x"], objs[E.PLAYER_OBJ_ID]["z"]), (17, 24))
 
 
+class ScreenDiffAndBag(unittest.TestCase):
+    def test_screen_diff(self):
+        from PIL import Image
+        a = Image.new("RGB", (10, 10), "white")
+        b = a.copy()
+        self.assertEqual(E.screen_diff(a, b)[0], 0)
+        b.putpixel((0, 0), (0, 0, 0))
+        self.assertAlmostEqual(E.screen_diff(a, b)[0], 0.01)
+        self.assertEqual(E.screen_diff(a, b, box=(5, 5, 10, 10))[0], 0)
+
+    def test_set_pocket(self):
+        path = SaveFileEdits()._save()
+        sf = E.SaveFile(path)
+        sf.set_pocket("medicine", [(50, 99)])
+        sf.set_pocket("key", [(745, 1)])
+        self.assertEqual(sf.pocket("medicine"), [(50, 99)])
+        self.assertEqual(sf.pocket("key"), [(745, 1)])
+        self.assertEqual(sf.pocket("items"), [])
+
+
 if __name__ == "__main__":
     unittest.main()

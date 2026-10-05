@@ -585,6 +585,44 @@ class Harness:
         self.touch(*PARTY_SLOTS[party_slot], frames=12, after=120)
         self.press("A", after=100)
 
+    def field_menu(self, entry):
+        """Open the X menu and pick an entry. Cursor starts on POKeDEX; left column POKeDEX, POKeMON, BAG,
+        POKeGEAR; right column trainer card, SAVE, OPTIONS (memcheck_scenarios.json)."""
+        col, row = {"pokedex": (0, 0), "pokemon": (0, 1), "bag": (0, 2), "pokegear": (0, 3),
+                    "card": (1, 0), "save": (1, 1), "options": (1, 2)}[entry]
+        self.press("X", after=90)
+        for _ in range(col):
+            self.press("RIGHT", after=30)
+        for _ in range(row):
+            self.press("DOWN", after=30)
+        self.press("A", after=300)
+
+    def swap_party(self, i, j):
+        """Swap two party slots in RAM (field only), e.g. to make a generated Pokemon the lead."""
+        a = self.array(ARR_PARTY) + 8
+        x, y = self.read(a + 236 * i, 236), self.read(a + 236 * j, 236)
+        self.write(a + 236 * i, y)
+        self.write(a + 236 * j, x)
+
+    def walk_until_battle(self, max_steps=600):
+        """Pace LEFT/RIGHT until a wild Pokemon is built; returns the WildLog (battle intro still running)."""
+        log = WildLog(self)
+        steps = 0
+        while not log.rows and steps < max_steps:
+            for d in ("LEFT", "RIGHT"):
+                for _ in range(3):
+                    self.walk(d, 1)
+                    steps += 1
+        if not log.rows:
+            raise RuntimeError("no wild battle")
+        return log
+
+    def mark(self, name):
+        """Screen-check point: screenshot as <name>_<tag>.png and remember it (see cmd_screens)."""
+        self.marks = getattr(self, "marks", [])
+        self.marks.append(name)
+        return self.screenshot(f"{name}_{getattr(self, 'tag', 'x')}")
+
     def bag_pocket(self, pocket):
         """In the bag: switch to a pocket by its tab."""
         self.touch(*POCKET_TABS[pocket], frames=12, after=60)
@@ -956,6 +994,94 @@ def cmd_evolve(a):
     return 0
 
 
+def screen_diff(img_a, img_b, box=None):
+    """Fraction of pixels that differ between two screenshots (optionally inside box), plus a diff mask.
+    For regression use, diff against an approved baseline of the same ROM: any change gets a human look."""
+    from PIL import ImageChops
+    a, b = img_a.convert("RGB"), img_b.convert("RGB")
+    if box:
+        a, b = a.crop(box), b.crop(box)
+    d = ImageChops.difference(a, b).convert("L").point(lambda v: 255 if v > 24 else 0)
+    return d.histogram()[255] / (d.size[0] * d.size[1]), d
+
+
+def _screen_options(h):
+    h.field_menu("options")
+    h.mark("options")
+
+
+def _screen_ev(h):
+    h.open_bag()
+    h.bag_pocket("key")
+    h.touch(*BAG_SLOTS[0], frames=12, after=30)
+    h.touch(*BAG_USE, frames=12, after=180)
+    h.mark("ev_allocator")
+
+
+def _screen_dex(h):
+    h.field_menu("pokedex")
+    h.press("Y", after=260)
+    h.mark("dex_search")
+    h.touch(75, 40, frames=12, after=120)       # NAME field -> search by letter
+    h.mark("dex_letters")
+
+
+def _screen_battle(h):
+    h.generate_pokemon(383, level=70)           # Groudon: Drought -> sun shows in the battle info panel
+    h.swap_party(0, h.generated_slot)
+    h.walk_until_battle()
+    h.step(900)
+    h.mark("battle_menu")
+    h.touch(225, 15, frames=12, after=150)      # INFO
+    h.mark("battle_info")
+
+
+EV_ALLOCATOR = 745
+SCREENS = {  # name: (map or None to stay, x, y, flags, recipe)
+    "options": (None, 0, 0, (), _screen_options),
+    "ev": (None, 0, 0, (), _screen_ev),
+    "dex": (None, 0, 0, (), _screen_dex),
+    "battle": (315, 17, 24, (2423,), _screen_battle),
+}
+
+
+def cmd_screens(a):
+    """Run screen recipes on the Chinese and the English ROM (one child per recipe and ROM) and save
+    CN|EN pairs plus a pixel-difference figure. A human (or a baseline diff) decides whether text fits."""
+    from PIL import Image
+    out = Path(a.out) / "screens"
+    out.mkdir(parents=True, exist_ok=True)
+    names = list(SCREENS) if a.only == "all" else a.only.split(",")
+    if a.lang is None:
+        rows = []
+        for name in names:
+            res = {lang: run_child(["screens", "--only", name, "--lang", lang, "--out", a.out, "--sav", a.sav,
+                                    "--rom-cn", a.rom_cn, "--rom-en", a.rom_en]) for lang in ("cn", "en")}
+            for shot in res["en"]["marks"]:
+                cn, en = Image.open(out / f"{shot}_cn.png"), Image.open(out / f"{shot}_en.png")
+                pair = Image.new("RGB", (2 * 256 + 8, 384), "white")
+                pair.paste(cn, (0, 0))
+                pair.paste(en, (264, 0))
+                pair.save(out / f"{shot}_pair.png")
+                rows.append({"screen": shot, "pair": str(out / f"{shot}_pair.png"),
+                             "cn_en_diff": round(screen_diff(cn, en)[0], 3)})
+                print(json.dumps(rows[-1]), flush=True)
+        (out / "screens_report.json").write_text(json.dumps(rows, indent=1))
+        return 0
+    rom = a.rom_en if a.lang == "en" else a.rom_cn
+    map_id, x, y, flags, recipe = SCREENS[names[0]]
+
+    def edit(sf):
+        sf.set_pocket("key", [(EV_ALLOCATOR, 1)] + sf.pocket("key")[:40])
+    with start_at(map_id, x, y, rom=rom, sav=a.sav, flags=flags, edit=edit, out=out, verbose=False,
+                  clock=datetime.datetime(2026, 10, 9, 12)) as h:
+        h.tag = a.lang
+        recipe(h)
+        marks = h.marks
+    print("RESULT " + json.dumps({"lang": a.lang, "marks": marks}))
+    return 0
+
+
 def cmd_info(a):
     with Harness(a.rom, a.sav, out=a.out) as h:
         if a.clock:
@@ -995,6 +1121,13 @@ def main(argv=None):
     ev.add_argument("--stone", type=int, default=0, help="also use this item from the Items pocket")
     ev.add_argument("--clock", required=True)
     ev.add_argument("--tag", default="evolve")
+    sc = sub.add_parser("screens", help="screen recipes on CN and EN, saved as side-by-side pairs")
+    sc.add_argument("--only", default="all", help="comma list of: " + ", ".join(SCREENS))
+    sc.add_argument("--rom-cn", default=str(DEF_ROM_CN))
+    sc.add_argument("--rom-en", default=str(DEF_ROM_EN))
+    sc.add_argument("--sav", default=str(DEF_SAVES / "full_bag_6mons.sav"))
+    sc.add_argument("--out", default=str(DEF_OUT))
+    sc.add_argument("--lang", choices=("cn", "en"), help=argparse.SUPPRESS)
     for name in ("info", "wild", "unown"):
         p = sub.add_parser(name)
         p.add_argument("--rom", default=str(DEF_ROM_CN))
@@ -1017,7 +1150,7 @@ def main(argv=None):
             p.add_argument("--state", help="also write a DeSmuME savestate taken right after the teleport")
             p.add_argument("--json")
     a = ap.parse_args(argv)
-    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve}[a.cmd](a)
+    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens}[a.cmd](a)
 
 
 if __name__ == "__main__":
