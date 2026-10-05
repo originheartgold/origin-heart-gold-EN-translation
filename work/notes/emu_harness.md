@@ -209,6 +209,25 @@ Black Belt evolution gives a form-1 Petilil (looks and types like a normal Petil
 then makes the Grass/Fighting Lilligant (Hisuian). The summary sprite of species 549 form 1 was not compared
 with the official Hisuian artwork.
 
+### 4. Rockruff's evolution form by time (D-1486): observed, daytime gave Midday every time
+
+`emu_harness.py evolve --species 744 --level 24 --clock <time>`: generator Rockruff, Rare Candy through the
+bag. A hook on the form write in the evolution code (0x02074B0E, `SetMonData(mon, FORM, sp+0xC)`) logs the
+byte the game writes. The hack's time periods (table 0x020F2A94): 4–9 morning, 10–16 day, 17–19 evening,
+20–23 night, 0–3 late night; evening writes 2, night and late night write 1, other periods write the
+untouched stack byte.
+
+| pinned time | 06:00 | 12:00 | 15:00 | 18:00 | 22:00 | 02:00 |
+|---|---|---|---|---|---|---|
+| form written / stored | 0 | 0 | 0 | 2 (Dusk) | 1 (Midnight) | 1 (Midnight) |
+
+Six more daytime runs with other inputs (12:00 Lv30, 15:00 Lv50, 13:30 Lv40, 16:59 Lv24; saves
+`full_bag_6mons`, `trainer`, `market`, `protographer`; party slot 2 or 6): form 0 every time. So 9 of 9
+morning/day evolutions gave Midday Form (summary sprites: `work/build/harness/evolve/rockruff_sheet.png`
+shows Midday, Dusk, Midnight). **Observed.** The stack byte is not written by the evolution code (static,
+still true), but on the Rare Candy path it was always 0. Not tested: evolution after a battle (a different
+caller, so a different stack history), which is where a non-zero byte could still appear.
+
 ## Extending it to the other open points
 
 - **Petilil + Black Belt by day, then Sun Stone (D-1485).** `generate_pokemon(548, level=N, item=241)`

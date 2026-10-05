@@ -561,7 +561,10 @@ class Harness:
         self.press("B", after=60)                 # close the menu
         if self.u32(party + 4) != count + 1:
             raise RuntimeError("generator did not add the Pokemon to the party (party full?)")
-        return decode_party_pokemon(self.read(party + 8 + 236 * count, 236))
+        self.generated_slot = count
+        mon = decode_party_pokemon(self.read(party + 8 + 236 * count, 236))
+        mon["slot"] = count
+        return mon
 
     # ------------------------------------------------------------------ menus (timing-based; see notes)
     def bag_put_first(self, item, qty=1, pocket="items"):
@@ -883,6 +886,8 @@ PLATES = {298: "Flame", 299: "Splash", 300: "Zap", 301: "Meadow", 302: "Icicle",
           312: "Dread", 313: "Iron"}
 ARCEUS = 493
 RARE_CANDY, SUN_STONE, BLACK_BELT = 50, 80, 241
+LYCANROC_SETFORM = 0x02074B0E    # evolution completion: bl SetMonData(mon, 0x70 FORM, sp+0xC) for species 745
+CODE_SIG[LYCANROC_SETFORM] = "f9f72ffa"
 
 
 def cmd_arceus(a):
@@ -930,16 +935,22 @@ def cmd_evolve(a):
         sf.set_pocket("items", [(a.stone, 5)] if a.stone else [])
 
     rows = {"rom": str(a.rom), "species": a.species, "level": a.level, "item": a.item, "clock": a.clock}
-    with start_at(None, rom=a.rom, sav=a.sav, edit=edit, clock=clock, out=out, verbose=False) as h:
+    form_writes = rows["lycanroc_form_written"] = []
+
+    def hooks(h):
+        h.on_exec(LYCANROC_SETFORM, lambda h: form_writes.append(h.u8(h.reg.r2)))
+    with start_at(None, rom=a.rom, sav=a.sav, edit=edit, clock=clock, out=out, verbose=False,
+                  hooks=hooks) as h:
         rows["created"] = h.generate_pokemon(a.species, level=a.level, item=a.item)
         rows["clock_seen"] = h.clock()
-        rows["after_candy"] = h.level_up_with_candy(5)
+        slot = h.generated_slot
+        rows["after_candy"] = h.level_up_with_candy(slot)
         h.screenshot(f"{a.tag}_after_candy")
         if a.stone:
             h.bag_pocket("items")
-            rows["after_stone"] = h.use_from_bag(0, 5)
+            rows["after_stone"] = h.use_from_bag(0, slot)
             h.screenshot(f"{a.tag}_after_stone")
-        h.open_summary_from_bag(5)
+        h.open_summary_from_bag(slot)
         rows["summary"] = str(h.screenshot(f"{a.tag}_summary"))
     print("RESULT " + json.dumps(rows))
     return 0
