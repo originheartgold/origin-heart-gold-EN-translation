@@ -232,6 +232,34 @@ shows Midday, Dusk, Midnight). **Observed.** The stack byte is not written by th
 still true), but on the Rare Candy path it was always 0. Not tested: evolution after a battle (a different
 caller, so a different stack history), which is where a non-zero byte could still appear.
 
+### 1b. Live position, targeted walking, scripted warps, Pal Park encounters (round 3)
+
+- **Live position** (observed): LocalFieldData's current Location (save array 5, +0 map, +8 x, +0xC y) is
+  updated on every step, so `h.position()` reads it. Found by diffing RAM while walking (x 17 → 15 → 12).
+  The live player object also holds init/prev/current tile coordinates and FX32 positions (0x22A2D40 in one
+  session; not used). The Location's direction field is not updated while walking (facing is not read).
+- **Map data** (`MapGrid`): map header table 0x020F37C4 (0x18 bytes, +4 matrix id) → matrix a/0/4/1 →
+  land data a/0/6/5 (32×32 u16 per chunk after a 0x14 header; low byte behaviour, bit 15 blocked).
+  `walk_to(x, y)` walks a BFS path and checks each step against the live position.
+- **Why the save teleport failed in Pal Park**: the map is only playable in the hack's Fixed Catch mode.
+  With the save teleport the player was frozen and invisible (and without a pinned clock Continue even
+  came back in the Poké Mart). The script runner (item 2) now enters the park the way the gate script
+  (file 809) does: `SetVar 16565 3`, the day's standing-Pokémon flags (2126/2130 cleared, the other six of
+  2124–2131 set; with all eight set the player stays locked), fade, `Warp 109 (24, 46)`, fade in.
+  Outdoor saves also store a height (curY 2 on Route 1), which `place_player(height=)` now accepts.
+- **Pal Park encounters (observed, Chinese ROM)**: `palpark --days Fri,Sun,Mon --count 8`: clock pinned,
+  Ninjask Lv100 from the generator as lead (so RUN always works; with the Lv9 party fleeing failed and the
+  lead fainted), scripted entry, pacing on two tall-grass tiles (16, 40)/(17, 40):
+
+| day | record loaded | wild Pokémon seen (species ids) | all in that record? |
+|---|---|---|---|
+| Fri | 146 | Corphish 341, Meditite 307, Baltoy 343 (and Numel 322 + Torchic 255 in a test run) | yes |
+| Sun | 141 | Machoke 67, Kadabra 64 ×3, Golbat 42, Electrode 101, Parasect 47, Alakazam 65 | yes (Cerulean Cave's table) |
+| Mon | 142 | Sableye 302, Snivy 495 ×2, Tropius 357 | yes |
+
+  Encounters are slow in the park (3–8 per ~900 steps); battles include double battles. D-1484 is now
+  confirmed by real encounters too: Sunday's park really uses Cerulean Cave's table.
+
 ### 5. Screen checks on the English WIP build (Tier 3)
 
 `emu_harness.py screens [--only options,ev,dex,battle]` runs each screen recipe on the Chinese ROM and on

@@ -85,6 +85,46 @@ PARTY_SUMMARY = (190, 40)
 BAG_USE = (47, 142)              # item submenu: use
 POCKET_TABS = {"items": (15, 15), "medicine": (46, 15), "balls": (80, 15), "tm": (113, 15),
                "berries": (146, 15), "mail": (176, 15), "battle": (206, 15), "key": (239, 15)}        # party submenu: summary (first entry)        # bottom-screen RUN button of the battle command menu
+# Event scripts (arm9 + field overlay 1). Talking (A) runs StartMapSceneScript(fsys, id, obj) from the field
+# input handler ov1 0x021E5CE4: object in front -> bl at 0x021E5D2C (r1 = id), else the bg-event lookup
+# 0x0203D320 returns the id in r0 at 0x021E5D5E (0xFFFF = nothing). Overriding that id on one A press runs
+# any script. Script id -> file: 0x0203F81C (table 0x020F70E0; 2000-2499 = file 3, index id-2000), the
+# loader 0x0203F870(r2 = file, r3 = message bank) can be redirected to any file; after the jump to the
+# script's start (0x0203F812, r4 = context) context+0x08 is the script PC (bytes may be replaced there).
+TALK_OBJ_START = 0x021E5D2C
+TALK_BG_RESULT = 0x021E5D5E
+SCRIPT_LOAD_FILE = 0x0203F870
+SCRIPT_STARTED = 0x0203F812
+START_MAP_SCENE_SCRIPT = 0x0203F57C
+STD_SCRIPT_BASE = 2000
+OV1_SIG = {TALK_OBJ_START: "59f626fc", TALK_BG_RESULT: "011c"}
+SCRIPT_CMDS = Path(__file__).resolve().parent / "docs" / "script_cmds.json"
+_SCRIPT_CMD_CACHE = {}
+
+
+def WARP_CMDS(map_id, x, y, direction=0, before=()):
+    """Script commands for a scripted warp, as the hack's own scripts do it: fade out, Warp, fade in."""
+    return [("LockAll",), *before, ("FadeScreen", 6, 1, 0, 0), ("WaitFade",), ("Warp", map_id, 0, x, y, direction),
+            ("FadeScreen", 6, 1, 1, 0), ("WaitFade",), ("ReleaseAll",), ("End",)]
+
+
+def script_bytes(*cmds):
+    """Encode event-script commands: script_bytes(("LockAll",), ("TrainerBattle", 5, 0, 0, 0), ("End",)).
+    Argument sizes come from work/tools/docs/script_cmds.json (pret-style names, hack opcodes)."""
+    if not _SCRIPT_CMD_CACHE:
+        for op, (name, sizes) in json.loads(SCRIPT_CMDS.read_text()).items():
+            _SCRIPT_CMD_CACHE.setdefault(name, (int(op), sizes))
+    out = bytearray()
+    for name, *args in cmds:
+        op, sizes = _SCRIPT_CMD_CACHE[name]
+        if len(args) != len(sizes):
+            raise ValueError(f"{name} takes {len(sizes)} arguments")
+        out += struct.pack("<H", op)
+        for size, v in zip(sizes, args):
+            out += int(v).to_bytes(size, "little", signed=v < 0)
+    return bytes(out)
+
+
 KEYS = ("A", "B", "SELECT", "START", "RIGHT", "LEFT", "UP", "DOWN", "R", "L", "X", "Y")
 DIRS = {"UP": 0, "DOWN": 1, "LEFT": 2, "RIGHT": 3}
 UNOWN = 201
@@ -211,7 +251,7 @@ class SaveFile:
                 out.append({"slot": i, "id": obj_id, "map": m, "sprite": sprite, "x": pos[3], "z": pos[5]})
         return out
 
-    def place_player(self, map_id, x, z, direction="DOWN"):
+    def place_player(self, map_id, x, z, direction="DOWN", height=0):
         """Teleport for Continue: current Location plus the saved player/follower objects; the saved objects
         of the old map (NPCs) are removed, otherwise Continue would restore them on the new map."""
         self.set_location(map_id, x, z, direction)
@@ -222,7 +262,7 @@ class SaveFile:
                 continue
             if obj_id in (PLAYER_OBJ_ID, FOLLOWER_OBJ_ID):
                 oz = z if obj_id == PLAYER_OBJ_ID else z - 1
-                struct.pack_into("<6h", self.data, a + 0x20, x, 0, oz, x, 0, oz)
+                struct.pack_into("<6h", self.data, a + 0x20, x, height, oz, x, height, oz)
             else:
                 self.data[a:a + MAP_OBJECT_SIZE] = bytes(MAP_OBJECT_SIZE)
 
@@ -265,6 +305,79 @@ def encode_pokemon(raw, species=None, item=None, form=None):
     struct.pack_into("<H", raw, 6, checksum)
     struct.pack_into("<64H", raw, 8, *[w ^ k for w, k in zip(words, key)])
     return bytes(raw)
+
+
+MAP_HEADERS = 0x020F37C4       # 0x18-byte map headers: +0 wild bank, +4 u16 matrix id, +0x12 events bank
+TILE_GRASS = 0x02              # tile behaviour byte of tall grass (land data permissions, low byte)
+_ROM_CACHE = {}
+
+
+class MapGrid:
+    """Collision and tile behaviour of a map, read from the ROM (map header -> matrix a/0/4/1 -> land data
+    a/0/6/5, 32x32 u16 permissions per chunk after a 0x14-byte header: low byte behaviour, bit 15 blocked).
+    Coordinates are the map's tile coordinates, the same as Location / the live player position."""
+
+    def __init__(self, rom_path, map_id):
+        import ndspy.narc
+        import ndspy.rom
+        rom = _ROM_CACHE.get(str(rom_path))
+        if rom is None:
+            rom = _ROM_CACHE[str(rom_path)] = ndspy.rom.NintendoDSRom.fromFile(str(rom_path))
+        arm9 = rom.loadArm9().sections[0]
+        hdr = arm9.data[MAP_HEADERS - arm9.ramAddress + 0x18 * map_id:][:0x18]
+        self.map_id, self.wild_bank = map_id, hdr[0]
+        matrix_id = struct.unpack_from("<H", hdr, 4)[0]
+        mx = ndspy.narc.NARC(rom.getFileByName("a/0/4/1")).files[matrix_id]
+        self.width, self.height, has_headers, has_alt, name_len = mx[0], mx[1], mx[2], mx[3], mx[4]
+        p = 5 + name_len + (2 * self.width * self.height if has_headers else 0) + (
+            self.width * self.height if has_alt else 0)
+        ids = struct.unpack_from("<%dH" % (self.width * self.height), mx, p)
+        land = ndspy.narc.NARC(rom.getFileByName("a/0/6/5"))
+        self.perms = {}
+        for k, lid in enumerate(ids):
+            if lid != 0xFFFF:
+                self.perms[(k % self.width, k // self.width)] = bytes(land.files[lid][0x14:0x14 + 0x800])
+
+    def tile(self, x, y):
+        """(behaviour, blocked) or None outside the map."""
+        perm = self.perms.get((x // 32, y // 32))
+        if perm is None or x < 0 or y < 0:
+            return None
+        i = 2 * ((y % 32) * 32 + x % 32)
+        return perm[i], bool(perm[i + 1] & 0x80)
+
+    def walkable(self, x, y):
+        t = self.tile(x, y)
+        return t is not None and not t[1]
+
+    def find(self, behaviour, near=None):
+        """All walkable tiles with a behaviour, nearest to `near` first."""
+        out = [(x, y) for (cx, cy), perm in self.perms.items() for y in range(cy * 32, cy * 32 + 32)
+               for x in range(cx * 32, cx * 32 + 32) if self.tile(x, y) == (behaviour, False)]
+        if near:
+            out.sort(key=lambda t: abs(t[0] - near[0]) + abs(t[1] - near[1]))
+        return out
+
+    def path(self, start, goal):
+        """Shortest list of directions over walkable tiles (BFS), or None."""
+        from collections import deque
+        steps = {"UP": (0, -1), "DOWN": (0, 1), "LEFT": (-1, 0), "RIGHT": (1, 0)}
+        prev = {start: None}
+        q = deque([start])
+        while q:
+            cur = q.popleft()
+            if cur == goal:
+                out = []
+                while prev[cur]:
+                    cur, d = prev[cur]
+                    out.append(d)
+                return out[::-1]
+            for d, (dx, dy) in steps.items():
+                nxt = (cur[0] + dx, cur[1] + dy)
+                if nxt not in prev and self.walkable(*nxt):
+                    prev[nxt] = (cur, d)
+                    q.append(nxt)
+        return None
 
 
 class Harness:
@@ -507,16 +620,62 @@ class Harness:
                 return False
         return True
 
-    def flee(self, max_tries=12, battle_menu_wait=320):
-        """From the start of a wild battle: wait for the command menu, touch RUN until the field is back."""
+    def flee(self, max_tries=20, battle_menu_wait=320):
+        """From the start of a wild battle: wait for the command menu, touch RUN until the field is back.
+        After each touch it polls for the field for up to 240 frames, so it never touches the field menu."""
         self.step(battle_menu_wait)
         for _ in range(max_tries):
-            self.touch(*RUN_BUTTON, after=60)
             if self.in_field():
                 self.step(120)
                 return True
-            self.press("B", after=60)     # dismiss "can't escape!" text
+            self.touch(*RUN_BUTTON, after=10)
+            if self.run_until(lambda h: h.in_field(), 240, every=10):
+                self.step(120)
+                return True
+            self.press("B", after=40)     # dismiss "can't escape!" text
+        self.screenshot("flee_failed")
         return False
+
+    def position(self):
+        """Live player position: (map, x, y). LocalFieldData's current Location is updated on every step
+        (found by diffing RAM while walking: x 17 -> 15 -> 12 at save array 5 + 8)."""
+        loc = self.location()
+        return loc["map"], loc["x"], loc["y"]
+
+    def grid(self):
+        m = self.position()[0]
+        if getattr(self, "_grid", None) is None or self._grid.map_id != m:
+            self._grid = MapGrid(self.rom, m)
+        return self._grid
+
+    def step_dir(self, direction, max_frames=40):
+        """Move one tile; returns True when the position changed (a first press may only turn)."""
+        start = self.position()
+        self.hold(direction)
+        for _ in range(max_frames):
+            self.step(1)
+            if self.position() != start:
+                break
+        self.release(direction)
+        self.step(8)
+        return self.position() != start
+
+    def walk_to(self, x, y, on_step=None):
+        """Walk to (x, y) along a BFS path over the map's collision data. on_step(h) after each tile may
+        return True to stop (e.g. a battle started). Returns True on arrival."""
+        for _ in range(3):
+            m, cx, cy = self.position()
+            route = self.grid().path((cx, cy), (x, y))
+            if route is None:
+                raise RuntimeError(f"no path from {(cx, cy)} to {(x, y)} on map {m}")
+            for d in route:
+                if not self.step_dir(d) and not self.step_dir(d):
+                    break
+                if on_step and on_step(self):
+                    return False
+            if self.position()[1:] == (x, y):
+                return True
+        return self.position()[1:] == (x, y)
 
     def walk(self, direction, tiles=1, frames_per_tile=16):
         self.hold(direction)
@@ -623,6 +782,55 @@ class Harness:
         self.marks.append(name)
         return self.screenshot(f"{name}_{getattr(self, 'tag', 'x')}")
 
+    def run_script(self, script_id=None, file=None, index=None, msg_bank=None, program=None, settle=30):
+        """Start an event script from the field without walking anywhere: the next A press is redirected.
+        - script_id: any global id (map scripts 1.., std 2000.., ...), run in the current map's context;
+        - file/index/msg_bank: script <index> of script file <file> (a/0/1/2) with message bank <msg_bank>;
+        - program: raw bytes (script_bytes(...)) run instead of the loaded script.
+        The player must stand still in the field (no menu, no message)."""
+        if file is not None:
+            script_id = STD_SCRIPT_BASE + index
+        if program is not None and script_id is None:
+            script_id = STD_SCRIPT_BASE
+        state = {"id": True, "file": file is not None, "program": program is not None}
+
+        def talk_obj(h):
+            if state["id"] and h.read(TALK_OBJ_START, 4) == bytes.fromhex(OV1_SIG[TALK_OBJ_START]):
+                h.reg.r1, state["id"] = script_id, False
+
+        def talk_bg(h):
+            if state["id"] and h.read(TALK_BG_RESULT, 2) == bytes.fromhex(OV1_SIG[TALK_BG_RESULT]):
+                h.reg.r0, state["id"] = script_id, False
+
+        def load(h):
+            if state["file"] and not state["id"]:
+                h.reg.r2, h.reg.r3, state["file"] = file, msg_bank, False
+
+        def started(h):
+            if state["program"] and not state["id"] and not state["file"]:
+                h.write(h.u32(h.reg.r4 + 8), program)
+                state["program"] = False
+        self.on_exec(TALK_OBJ_START, talk_obj)
+        self.on_exec(TALK_BG_RESULT, talk_bg)
+        self.on_exec(SCRIPT_LOAD_FILE, load)
+        self.on_exec(SCRIPT_STARTED, started)
+        self.press("A", after=settle)
+        ok = not state["id"]
+        for addr in (TALK_OBJ_START, TALK_BG_RESULT, SCRIPT_LOAD_FILE, SCRIPT_STARTED):
+            self.on_exec(addr, None)
+        if not ok:
+            raise RuntimeError("A press did not reach the field talk handler (menu or message open?)")
+        return script_id
+
+    def trainer_battle(self, trainer_id):
+        """Start a battle against trainer_id (a/0/5/5) with the game's TrainerBattle command."""
+        return self.run_script(program=script_bytes(("LockAll",), ("TrainerBattle", trainer_id, 0, 0, 0),
+                                                    ("ReleaseAll",), ("End",)))
+
+    def warp(self, map_id, x, y, direction=0):
+        """Warp with the game's own Warp command (a normal map entry: map scripts and objects load)."""
+        return self.run_script(program=script_bytes(*WARP_CMDS(map_id, x, y, direction)), settle=300)
+
     def bag_pocket(self, pocket):
         """In the bag: switch to a pocket by its tab."""
         self.touch(*POCKET_TABS[pocket], frames=12, after=60)
@@ -727,16 +935,17 @@ class start_at:
         with start_at(109, 16, 14, clock=datetime.datetime(2026, 10, 9, 12)) as h: ..."""
 
     def __init__(self, map_id=None, x=None, y=None, rom=DEF_ROM_CN, sav=None, flags=(), vars=None,
-                 clock=None, out=DEF_OUT, verbose=True, hooks=None, edit=None):
+                 clock=None, out=DEF_OUT, verbose=True, hooks=None, edit=None, height=0):
         """map_id None: stay where the save is. edit: fn(SaveFile) for further save edits (bag, ...)."""
         self.args = (map_id, x, y, rom, sav or DEF_SAVES / "full_bag_6mons.sav", flags, vars or {}, clock,
                      out, verbose, hooks, edit)
+        self.height = height
 
     def __enter__(self):
         map_id, x, y, rom, sav, flags, vars_, clock, out, verbose, hooks, edit = self.args
         sf = SaveFile(sav)
         if map_id is not None:
-            sf.place_player(map_id, x, y, "DOWN")
+            sf.place_player(map_id, x, y, "DOWN", height=self.height)
         if edit:
             edit(sf)
         for f in flags:
@@ -871,51 +1080,76 @@ ENC_BANK_GETTER_109 = 0x0203A7D6   # 'pop {r4, pc}' of the map-109 branch of the
 CODE_SIG[ENC_BANK_GETTER_109] = "10bd"
 
 
+FAST_LEAD = 291                    # Ninjask: generated at Lv100 and made the lead so fleeing never fails
+PAL_PARK_ENTRY = (24, 46)          # where the gate script (file 809) warps the player
+PAL_PARK_STATE_VAR = 16565         # set to 3 by the gate script before the warp
+PAL_PARK_GRASS = ((16, 40), (17, 40))   # two tall-grass tiles of the big field (MapGrid)
+# Hide flags of the eight standing-Pokemon groups (2124-2131); the gate clears the day's two groups. With
+# all eight set the map's load script leaves the player locked.
+PAL_PARK_FLAGS = [("ClearFlag", 2126), ("ClearFlag", 2130)] + [("SetFlag", f) for f in (2124, 2125, 2127,
+                                                                                            2128, 2129, 2131)]
+
+
+def enter_pal_park(h):
+    """From the field: what the gate's Fixed Catch script does before its Warp (var, group flags), then the
+    same Warp. Leaves the player standing at the park entrance with control."""
+    h.run_script(program=script_bytes(*WARP_CMDS(PAL_PARK_MAP, *PAL_PARK_ENTRY, 0, before=[
+        ("SetVar", PAL_PARK_STATE_VAR, 3)] + PAL_PARK_FLAGS)), settle=300)
+    h.step(200)
+    if h.position() != (PAL_PARK_MAP, *PAL_PARK_ENTRY):
+        raise RuntimeError(f"Pal Park entry failed: {h.position()}")
+
+
 def cmd_palpark(a):
     """D-1484: for each pinned weekday, log the encounter record the bank getter returns on map 109
-    (hook on its map-109 return), plus optional encounters."""
+    (hook on its map-109 return) and, with --count, sample wild encounters in the park's tall grass."""
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     base = datetime.date(2026, 10, 4)           # a Sunday
     names = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    days = [names.index(d) for d in a.days.split(",")] if a.days else range(7)
     if a.day is None:                  # parent: one child process per day (DeSmuME can't be reopened)
         report = {"rom": str(a.rom), "days": [run_child(["palpark", "--rom", a.rom, "--sav", a.sav,
-                  "--out", a.out, "--x", str(a.x), "--y", str(a.y), "--count", str(a.count),
-                  "--max-steps", str(a.max_steps), "--day", str(wd)]) for wd in range(7)]}
+                  "--out", a.out, "--count", str(a.count), "--max-steps", str(a.max_steps),
+                  "--day", str(wd)]) for wd in days]}
         for d in report["days"]:
             print(json.dumps(d))
         js = out / ("palpark_weekdays.json" if a.count == 0 else "palpark_weekdays_encounters.json")
         js.write_text(json.dumps(report, indent=1))
         print("report:", js)
         return 0
-    for wd in [a.day]:
-        when = datetime.datetime.combine(base + datetime.timedelta(days=wd), datetime.time(12, 0))
-        seen = []
+    wd = a.day
+    when = datetime.datetime.combine(base + datetime.timedelta(days=wd), datetime.time(12, 0))
+    seen = []
 
-        def hooks(h):
-            h.on_exec(ENC_BANK_GETTER_109, lambda h: seen.append(h.reg.r0))
-        with start_at(PAL_PARK_MAP, a.x, a.y, rom=a.rom, sav=a.sav, clock=when, out=out, verbose=False,
-                      hooks=hooks) as h:
-            log = WildLog(h)
-            steps = 0
-            while len(log.rows) < a.count and steps < a.max_steps:
-                for d in ("LEFT", "RIGHT"):
-                    for _ in range(3):
-                        h.walk(d, 1)
-                        steps += 1
-                if log.rows and not log.rows[-1].get("fled"):
-                    if len(log.rows) == 1:
-                        h.step(300)
-                        h.screenshot(f"palpark_{names[wd]}_encounter")
-                    for r in log.rows:
-                        r.setdefault("fled", True)
-                    if not h.flee():
-                        raise RuntimeError("could not flee")
-            h.walk("LEFT", 2)
-            day = {"weekday": wd, "name": names[wd], "clock": h.clock(), "records": sorted(set(seen)),
-                   "getter_calls": len(seen), "steps": steps,
-                   "species": [r["species"] for r in log.rows]}
-        print("RESULT " + json.dumps(day), flush=True)
+    def hooks(h):
+        h.on_exec(ENC_BANK_GETTER_109, lambda h: seen.append(h.reg.r0))
+    with start_at(None, rom=a.rom, sav=a.sav, clock=when, out=out, verbose=False, hooks=hooks) as h:
+        if a.count:                    # a fast lead so RUN always works (Lv100 Ninjask)
+            h.generate_pokemon(FAST_LEAD, level=100)
+            h.swap_party(0, h.generated_slot)
+        enter_pal_park(h)
+        log = WildLog(h)
+        steps = 0
+        if a.count:
+            h.walk_to(*PAL_PARK_GRASS[0])
+        while len(log.rows) < a.count and steps < a.max_steps:
+            n = len(log.rows)
+            for tile in (PAL_PARK_GRASS[1], PAL_PARK_GRASS[0]):
+                h.walk_to(*tile)
+                steps += 1
+                if len(log.rows) > n:
+                    break
+            if len(log.rows) > n:
+                h.step(300)
+                if n == 0:
+                    h.screenshot(f"palpark_{names[wd]}_encounter")
+                if not h.flee(battle_menu_wait=20):
+                    raise RuntimeError("could not flee")
+        day = {"weekday": wd, "name": names[wd], "clock": h.clock(), "records": sorted(set(seen)),
+               "getter_calls": len(seen), "steps": steps,
+               "species": [r["species"] for r in log.rows]}
+    print("RESULT " + json.dumps(day), flush=True)
     return 0
 
 
@@ -1101,8 +1335,7 @@ def main(argv=None):
     pp.add_argument("--rom", default=str(DEF_ROM_CN))
     pp.add_argument("--sav", default=str(DEF_SAVES / "full_bag_6mons.sav"))
     pp.add_argument("--out", default=str(DEF_OUT))
-    pp.add_argument("--x", type=int, default=20)
-    pp.add_argument("--y", type=int, default=14)
+    pp.add_argument("--days", help="comma list of Sun,Mon,...; default all seven")
     pp.add_argument("--count", type=int, default=0, help="wild Pokemon to log per day (0: only the getter)")
     pp.add_argument("--max-steps", type=int, default=600)
     pp.add_argument("--day", type=int, help=argparse.SUPPRESS)
