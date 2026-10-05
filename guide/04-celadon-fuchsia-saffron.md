@@ -36,8 +36,10 @@
 - [Route 12: other optional battles](#route-12-other-optional-battles)
 - [Resort Zone (Johto): the broke backpacker](#resort-zone-johto-the-broke-backpacker)
 - [Resort Zone: Misty's date, the Pal Park and the Couples Double Battle](#resort-zone-mistys-date-the-pal-park-and-the-couples-double-battle)
+- [Resort Zone: the Pal Park's Fixed Catch mode (wild Pokémon by weekday)](#resort-zone-the-pal-parks-fixed-catch-mode-wild-pokémon-by-weekday)
 - [Silph Co. (Saffron takeover): the employee's Lapras (missable)](#silph-co-saffron-takeover-the-employees-lapras-missable)
 - [Saffron City: the Team Rocket takeover (what it closes)](#saffron-city-the-team-rocket-takeover-what-it-closes)
+- [Saffron City (takeover): getting past the barrier into the city](#saffron-city-takeover-getting-past-the-barrier-into-the-city)
 - [Silph Co. president's office: the Goodshow meeting and the Saffron takeover finale](#silph-co-presidents-office-the-goodshow-meeting-and-the-saffron-takeover-finale)
 
 ## Celadon Department Store roof: the prize quiz
@@ -538,6 +540,39 @@ Continues [Misty's romance](02-pewter-to-vermilion.md#cerulean-gym--cerulean-cap
 
 *Source:* file 758 (L7555–L7857; the date start sets Misty's hide flag 595 at @7636; the Gym's map script, script 8 → L3641, only clears 595 when flag 1645 is clear or flag 2142 is set), file 809 (script 15, L2897–L4348; trainer pairs 426+982, 565+10, 560+915, 674+1023). Next date: var 0x40b5 = 4 (809 @4348, after the warp to the Gym at L4324; 809 never clears 595). Retry after a loss: every loss goes to L4885 `WhiteOut` with var 0x40b5 = 3 (@592) and 595 still set; Route 25's map script (216 script 4 → L3164) then shows the Cape Misty (flag 598), and her Cape date (script 41) ends at L12196, which clears 595 (@12236). With var = 4 she stays hidden at the Cape too. The other scripts that clear 595 (files 34, 195, 217, 795, 821, 834, 853, 912) are one-time story scenes, all over before the final Hall of Fame (flag 2261) that the dates need.
 
+## Resort Zone: the Pal Park's Fixed Catch mode (wild Pokémon by weekday)
+
+**Where:** the Pal Park reception building in the Resort Zone (Route 48, open after the Cianwood Gym story).
+
+**How it works:** talk to the receptionist and ask to take part. You need room for six more Pokémon in your PC Boxes. If you haven't brought Pokémon over from a Game Boy Advance game, she offers **Fixed Catch mode**: pay **$10,000** and you're taken into the park, where you catch with your own Poké Balls. (She says each catch costs $10,000, but the game only charges once, when you go in.)
+
+**What you'll find:**
+- **Wild Pokémon:** a different table on each day of the week (by the DS clock). Each day's table is on the [Pal Park location page](/locations/safari-zone-gate/#wild) (listed as Safari Zone Gate, the map's name in the game). Friday's is the only place to find **Stunfisk** (1%). On Sundays you can also surf and fish in the park's pond and sea.
+- **Pokémon standing in the park** (Lv. 10, one battle each): two of the eight groups below appear, depending on the day.
+
+- **A:** Treecko, Ralts, Mawile, Carvanha, Seviper, Tropius
+- **B:** Torchic, Shroomish, Meditite, Numel, Corphish, Absol
+- **C:** Mudkip, Makuhita, Electrike, Spoink, Baltoy, Relicanth
+- **D:** Sableye, Gulpin, Swablu, Duskull, Bagon, Beldum
+- **E:** Turtwig, Bidoof, Buizel, Buneary, Spiritomb, Carnivine
+- **F:** Chimchar, Shinx, Cherubi, Stunky, Riolu, Finneon
+- **G:** Piplup, Budew, Shellos, Bronzor, Hippopotas, Snover
+- **H:** Pachirisu, Drifloon, Chatot, Gible, Croagunk, Rotom
+
+| Day | Groups |
+|---|---|
+| Sunday | C and D |
+| Monday | A and D, or E and H depending on the time of day |
+| Tuesday | E and F |
+| Wednesday | A and B |
+| Thursday | F and G |
+| Friday | B and C |
+| Saturday | G and H |
+
+**Notes:** Sunday's table is the same as Cerulean Cave's, probably by mistake in the hack. What Monday's time check uses exactly is not confirmed. The weekday tables were checked in an emulator (each day loads the table listed); the rest is read from the game's scripts.
+
+*Source:* file 809 (receptionist: L5439 room check, L5785 weekday branches clearing hide flags 2124–2131, L6431–L6528 $10,000 and warp to map 109); file 12 (48 one-time battles, scripts 7–54); wild table record = 142 + weekday − 1 (arm9 0x0203A7B0, D-1484).
+
 ## Silph Co. (Saffron takeover): the employee's Lapras (missable)
 
 **Where:** Silph Co. cafeteria floor, among the locked-up hostages (next to the hostage who heals your Pokémon), during the Team Rocket occupation of Saffron.
@@ -563,7 +598,35 @@ Continues [Misty's romance](02-pewter-to-vermilion.md#cerulean-gym--cerulean-cap
 - the Shota step at Silph Co. ([Grandma's treats](#celadon-condominiums--silph-co-5f-grandmas-treats-for-shota-master-ball-missable)); the grandma's errand is closed at the end of the takeover
 **Paused during it:** Koga is hidden from the Fuchsia Gym until Saffron is freed.
 
+**Can't get into Saffron?** An invisible barrier seals all four gates. The way in is [the next entry](#saffron-city-takeover-getting-past-the-barrier-into-the-city).
+
 *Source:* file 17 (L11987–L12610), file 834 (L5062–L5221, L5641, L5948–L5994).
+
+## Saffron City (takeover): getting past the barrier into the city
+
+**Where:** the four roads into Saffron City, just outside each gatehouse. Gym Leaders, Elite Four members and friends stand at every one, all stuck behind the same invisible barrier.
+
+**Who gets it / when:** everyone. This is the main story, right after Sabrina's call in Pokémon Tower. Players get stuck here because talking to the Leaders seems to do nothing. The step that's easy to miss is going back to Sabrina at the end.
+
+**How it works:**
+1. **East gate (Route 8, the Lavender side):** Sabrina waits here with Agatha and Green (boys) or Red (girls). She explains the barrier and asks you to check the other three entrances while she thinks of another way in.
+2. **Check the other three gates.** At each one, talk to at least one of the **people** (talking to their Pokémon doesn't count). The order doesn't matter.
+
+   | Gate | Talk to any of |
+   |---|---|
+   | North (Route 5, the Cerulean side) | Brock, Misty, Bruno, Bill or Blue |
+   | South (Route 6, the Vermilion side) | Lt. Surge, Blaine, Lorelei or Cynthia |
+   | West (Route 7, the Celadon side) | Koga, Erika, Lance or Steven |
+
+3. **Go back to Sabrina on Route 8.** She says "So you've checked all of Saffron City's other entrances..." and offers to send you in through her other dimension. Answer **Yes**. If you answer No, talk to her again and she asks again; nothing is lost. If she still repeats her first speech, a gate is missing.
+4. You land in the **pocket dimension**, the copy of Saffron from [Sabrina's willpower test](05-saffron-cinnabar.md#saffron-gym-sabrinas-willpower-test-and-the-pocket-dimension-before-the-takeover). Go to the house in the south-east, where Mr. Psychic's house stands in the real city, and talk to the caretaker at the back. She gives you the **Sub. Doll** and sends you into the occupied Saffron Gym.
+5. In Saffron, Blue turns up (Bill sent him in through the PC storage system) and the two of you fight off the Rockets together. Blue then suggests sneaking into **Silph Co.**, where their boss and the key to the barrier should be.
+
+**Next:** Silph Co. In Rotom's Room, a glowing floor panel leads on to the hostages' floor ([Rotom's Room](05-saffron-cinnabar.md#rotoms-room-silph-co-change-rotoms-form), [the employee's Lapras](#silph-co-saffron-takeover-the-employees-lapras-missable)). Then go up to Ariana and the [president's office](#silph-co-presidents-office-the-goodshow-meeting-and-the-saffron-takeover-finale). Optional on the way: [help Ma Baoguo](05-saffron-cinnabar.md#saffron-city-takeover-help-ma-baoguo-fight-off-team-rocket) outside the Hunyuan Dojo.
+
+**Notes:** Fly can't get you over the barrier either: Lance says it covers the sky. Read from the game's scripts; the Blue scene in step 5 is not confirmed in game.
+
+*Source:* file 188 (Route 8), script 16 (Sabrina, L618): message 62 while any of flags 1494–1496 is set; message 68 once all three are clear; Yes → L1965 → L2723 `Warp 405` 52,40. If you said No, L1957 clears flag 1504 and the next talk goes to L1792 (message 74). The gate flags are cleared by talking to the people at the gates: file 179 (Route 5, scripts 9/11/13/15/16), file 186 (Route 7, scripts 8/10/12/14), file 184 (Route 6, scripts 10/12/14/16). They're set earlier by the Pokémon Tower ghosts' ideas (file 17 @3333, @5653/@5719, @5852), so they are all set when the takeover starts. Blue's scene: message bank 524, lines 20–44.
 
 ## Silph Co. president's office: the Goodshow meeting and the Saffron takeover finale
 

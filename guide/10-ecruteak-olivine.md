@@ -235,7 +235,7 @@
 
 **How it works:** Morty only battles a **full party of six** from his accepted list (meant to be Psychic- and Ghost-types). The match is a **Double Battle** against Morty's six, sent out two at a time (see [Known issues](known-issues.md#mortys-lv-1-pokémon) for its Lv. 1 members).
 - Fewer than six Pokémon: "You're carrying fewer than six Pokémon…"
-- Any Pokémon he doesn't accept: "Some of the Pokémon you're carrying…". The game checks a fixed list of species, not types (Eggs are skipped by the species check). Psychic and Ghost lines from Gens 1–4 are accepted, plus **Golduck** and **Noctowl** (Psychic in this hack). **Exeggutor and Rotom are refused.** Yungoos, Gumshoos, Flapple and Appletun also slip through.
+- Any Pokémon he doesn't accept: "Some of the Pokémon you're carrying…". The game checks a fixed list of species, not types (Eggs are skipped by the species check). Psychic and Ghost lines from Gens 1–4 are accepted, plus **Golduck** and **Noctowl** (Psychic in this hack). **Exeggutor and Rotom are refused.** Stunfisk, Yungoos and Gumshoos also slip through.
 - Full list from Gens 1–4: Abra line, Slowpoke line (incl. Slowking), Gastly line, Drowzee, Hypno, Exeggcute, Starmie, Mr. Mime, Mime Jr., Jynx, Smoochum, Mewtwo, Mew, Natu, Xatu, Espeon, Misdreavus, Mismagius, Unown, Wobbuffet, Wynaut, Girafarig, Lugia, Celebi, Ralts line, Gallade, Shedinja, Sableye, Meditite, Medicham, Spoink, Grumpig, Lunatone, Solrock, Baltoy, Claydol, Shuppet, Banette, Duskull line, Chimecho, Chingling, Beldum line, Latias, Latios, Jirachi, Deoxys, Drifloon, Drifblim, Bronzor, Bronzong, Spiritomb, Froslass, Uxie, Mesprit, Azelf, Giratina, Cresselia, Golduck, Noctowl. Exeggutor and Rotom are refused, although they are Psychic/Ghost.
 - Losing whites you out; try again.
 
@@ -573,7 +573,7 @@ A chain across four places in Olivine. **HM05 Whirlpool** is the reward. Crossin
 
 **How it works:** Jasmine's rule is a **3-on-3 Single Battle using only Pokémon with a base Defense of 130 or higher.**
 - Carry **3 Pokémon or fewer**. With 4 or more she refuses.
-- **Every** Pokémon must be on her list. The game checks a fixed list of species meant to match base Defense 130+, for example Steelix, Skarmory, Forretress, Shuckle, Aggron, Metagross, Bastiodon and Probopass. **Aegislash is refused**, though Doublade is allowed, and a few weak species slip through (Yungoos, Gumshoos, Flapple and Appletun; see [Known issues](known-issues.md#radio-tower-ecruteak-city-and-olivine-city)). Eggs are skipped by the check.
+- **Every** Pokémon must be on her list. The game checks a fixed list of species meant to match base Defense 130+, for example Steelix, Skarmory, Forretress, Shuckle, Aggron, Metagross, Bastiodon and Probopass. **Aegislash is refused**, though Doublade is allowed, and a few weak species slip through (Stunfisk, Yungoos and Gumshoos; see [Known issues](known-issues.md#radio-tower-ecruteak-city-and-olivine-city)). Eggs are skipped by the check.
 - Full list of obtainable species that pass: Golem, Cloyster, Onix, Steelix, Forretress, Shuckle, Skarmory, Nosepass, Probopass, Lairon, Aggron, Torkoal, Dusclops, Dusknoir, Relicanth, Metagross, Regirock, Registeel, Bastiodon, Rhyperior, Leafeon, Uxie, Lugia, Groudon, Gigalith, Cofagrigus, Carracosta, Ferrothorn, Doublade, Carbink, Avalugg, Toxapex, Pyukumuku.
 - Jasmine: Steelix, Metagross, Skarmory, all Lv. 80. Losing whites you out, and you can retry.
 

@@ -716,7 +716,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Falkner's, Bugsy's and the fire-breather's type rules
 
-**Falkner's, Bugsy's and the Route 32 fire-breather's type rules let through Pokémon they shouldn't, and Falkner refuses some he should accept.** Their checks are lists of banned Pokémon that stop at the Sinnoh Pokédex, so many later Pokémon get in (for example Patrat or Yungoos with Falkner). Falkner refuses Rotom and Shaymin even in their Flying forms. Bugsy lets in Hippowdon. The fire-breather lets in Carnivine and Magnezone.
+**Falkner's, Bugsy's and the Route 32 fire-breather's type rules let through Pokémon they shouldn't, and Falkner refuses some he should accept.** Their checks are lists of banned Pokémon that stop at the Sinnoh Pokédex, so many later Pokémon get in (for example Yungoos or Gumshoos with Falkner). Falkner refuses Rotom even in its Flying form (Fan Rotom). Bugsy lets in Hippowdon. The fire-breather lets in Carnivine and Magnezone.
 
 *Source:* Falkner (file 856 L971–L14807, 692 species; 226 later non-Flying species pass); fire-breather (file 232 script 13, 457 species up to #493: every non-Fire species except Carnivine and Magnezone, nothing later); Bugsy (file 866, 203 species: Hippowdon and 55 later Fire/Flying/Rock species pass) (D-1426). Re-counted against site/src/data/species.json.
 
@@ -898,7 +898,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Morty's Ghost rule
 
-**Morty's "weak to Ghost" rule refuses some Pokémon it shouldn't and lets others in.** It refuses Exeggutor and Rotom, which are Psychic or Ghost in this hack. It lets in Yungoos, Gumshoos, Flapple and Appletun, which aren't. (Golduck and Noctowl are Psychic in this hack, so they're correct.)
+**Morty's "weak to Ghost" rule refuses some Pokémon it shouldn't and lets others in.** It refuses Exeggutor and Rotom, which are Psychic or Ghost in this hack. It lets in Stunfisk, Yungoos and Gumshoos, which aren't. (Golduck and Noctowl are Psychic in this hack, so they're correct.)
 
 *Source:* file 918 L1140–L13661 is a fixed list of 660 banned species, not a type check (all jump to L14645). Refused: Exeggutor (103), Rotom (479), also Meloetta (648, not obtainable). The list is incomplete past #493.
 
@@ -922,9 +922,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Jasmine's Defense rule
 
-**Jasmine's Defense rule refuses Aegislash and lets several weak Pokémon in.** Her rule is three Pokémon with a base Defense of 130 or higher. Aegislash is refused although Doublade is allowed; Yungoos, Gumshoos, Flapple and Appletun get in. Same gap as Morty's list.
+**Jasmine's Defense rule refuses Aegislash and lets several weak Pokémon in.** Her rule is three Pokémon with a base Defense of 130 or higher. Aegislash is refused although Doublade is allowed; Stunfisk, Yungoos and Gumshoos get in. Same gap as Morty's list.
 
-*Source:* file 909 L839–L14918 is a list of 742 banned species (→ L15137), correct for #1–#493 but patchy after: Aegislash (#681, base Def 140) refused; Yungoos, Gumshoos, Flapple and Appletun (Def 30–80) pass. Rule text 607#30.
+*Source:* file 909 L839–L14918 is a list of 742 banned species (→ L15137), correct for #1–#493 but patchy after: Aegislash (#681, base Def 140) refused; Stunfisk, Yungoos and Gumshoos (Def 30–84) pass among Pokémon you can get. Rule text 607#30.
 
 ### Jasmine's cut-off TM line
 
@@ -1046,9 +1046,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Chuck's Fighting rule
 
-**Chuck's Fighting-only rule refuses Staraptor and lets a few non-Fighting Pokémon in.** Staraptor is Fighting/Flying in this hack, yet it's refused. Braviary, Yungoos, Gumshoos, Flapple and Appletun get in.
+**Chuck's Fighting-only rule refuses Staraptor and lets a few non-Fighting Pokémon in.** Staraptor is Fighting/Flying in this hack, yet it's refused. Stunfisk, Braviary, Yungoos and Gumshoos get in.
 
-*Source:* file 874 L1213–L14950 is a list of 724 banned species (→ L15233) covering every non-Fighting Pokémon through Gen 4 but missing many later ones; it bans species 398 (D-1409). Most missing later species (Patrat, Woobat, Klink and others) can't be obtained in this hack; the obtainable ones that pass are 628, 734, 735, 841, 842.
+*Source:* file 874 L1213–L14950 is a list of 724 banned species (→ L15233) covering every non-Fighting Pokémon through Gen 4 but missing many later ones; it bans species 398 (D-1409). Most missing later species (Patrat, Woobat, Klink and others) can't be obtained in this hack; the obtainable ones that pass are 618, 628, 734, 735.
 
 ### Green and Silver by the Persian statue (not a bug)
 
@@ -1140,7 +1140,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Clair's Dragon rule
 
-**Clair's Dragon-only rule lets many non-Dragon Pokémon in.** Many Pokémon from after the Sinnoh Pokédex get in (for example Patrat, Woobat, Vanillite, Klink, Pumpkaboo, Oricorio, Type: Null, Grookey, Lechonk). Among older Pokémon, Seadra is allowed but Horsea isn't; Magmar, Porygon, Kecleon, Corphish, Shieldon and Drapion are allowed; Trapinch and Swablu aren't.
+**Clair's Dragon-only rule lets many non-Dragon Pokémon in.** Many Pokémon from after the Sinnoh Pokédex get in; of those you can get, Snivy, Excadrill, Stunfisk, Amaura, Yungoos and Gumshoos do. Among older Pokémon, Seadra is allowed but Horsea isn't; Magmar, Porygon, Kecleon, Corphish, Shieldon and Drapion are allowed; Trapinch and Swablu aren't.
 
 *Source:* file 939 L853–L14096 is a list of 698 banned species (`PlayerHasSpecies`), not a type check; checked against site/src/data/species.json types. Non-Dragon species up to #493 that pass: Charmander line, Rhydon, Kangaskhan, Seadra, Magmar, Gyarados, Lapras, Porygon line, Aerodactyl, Dunsparce, Corphish, Crawdaunt, Kecleon, Cranidos line, Shieldon line, Drapion. 225 non-Dragon species from #494–#1025 pass.
 
@@ -1264,9 +1264,19 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Evolutions that cannot happen
 
-**A few Pokémon have an evolution method that the game never checks, so they can't evolve that way.** Pancham never becomes Pangoro, and Gimmighoul, Kubfu, Galarian Yamask, White-Striped Basculin, Pawmo, Rellor and Finizen never evolve at all through the evolution their data gives them. Galarian Farfetch'd can't become Sirfetch'd by landing critical hits; a regular Farfetch'd still evolves into Sirfetch'd at Lv 40. Eevee can't become Leafeon at a Moss Rock and Nosepass can't become Probopass in a magnetic field, but a Leaf Stone and a Thunder Stone still work. Most of these Pokémon have no source in the game anyway. Each Pokémon's page (for example [Pancham](/pokemon/pancham/#evolution)) marks these as not possible and lists any method that still works. Verified in the game code; not tried in game.
+**A few Pokémon have an evolution method that the game never checks, so they can't evolve that way.** Pancham never becomes Pangoro, and Gimmighoul, Kubfu, Galarian Yamask, White-Striped Basculin, Pawmo, Rellor and Finizen never evolve at all through the evolution their data gives them. Galarian Farfetch'd can't become Sirfetch'd by landing critical hits; a regular Farfetch'd still evolves into Sirfetch'd at Lv 40. Eevee can't become Leafeon at a Moss Rock and Nosepass can't become Probopass in a magnetic field, but a Leaf Stone and a Thunder Stone still work. Most of these Pokémon can't be met in the game anyway. Each Pokémon's page (for example [Eevee](/pokemon/eevee/#evolution)) marks these as not possible and lists any method that still works. Verified in the game code; not tried in game.
 
 *Source:* D-1481. Evolution table `a/0/3/4` (10 slots × 6 bytes), evolution check arm9 0x020700FC: in the level-up switch methods 31–36 fall through to "no evolution" and methods 38+ fail the bound check (`cmp r0, #0x25`); methods 24–26 compare a map evolution code that is always 0 (stub 0x0203AAA0, copied into the battle setup at 0x020511B8). Trade context handles only methods 5–6, item use only 7, 16, 17.
+
+### Things you can't get, although the game has them
+
+**A few items and forms exist in the game's data but can't be obtained.** Read from the game code; not tried in game.
+- **TM46 (Thief):** its item ball is never placed on a map.
+- **Flapple, Appletun and Alcremie:** Applin needs a Tart Apple or Sweet Apple and Milcery a Sweet, and none of these items can be obtained.
+- **Shaymin's Sky Forme:** the Gracidea only works on an event Shaymin, and the Shaymin from the Forest of Time isn't one.
+- **Unown letters:** every wild Unown comes out as A (tested in an emulator: 65 wild Unown, all A).
+
+*Source:* D-1339 (TM46 item ball, std 7136 unused), D-1493 (Tart Apple, Sweet Apple, Sweets have no source), D-1490 (Gracidea check arm9 0x02071024 needs the fateful flag), D-1487 (wild Unown form written back at ov2 0x02248AD4).
 
 ### Out-of-range story records (save data)
 

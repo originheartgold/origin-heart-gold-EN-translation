@@ -254,7 +254,7 @@
 **How it works:**
 1. Talk to the Lopunny owner. Goh mocks Normal types, and his Blaziken knocks out the man's Lopunny with Close Combat. "Go teach Goh a lesson?"
 2. **No:** Goh mocks you as a coward and leaves. The event is over, with no reward.
-3. **Yes:** you confront him and he dares you: "beat me with Normal-type Pokémon!" The game checks your party against a long list of non-Normal species. Pure Normal types and Normal dual types such as Pidgeot or Fearow pass (Raticate is pure Normal in this hack). The list has quirks: it refuses Braviary but lets Staraptor, Flapple and Appletun through.
+3. **Yes:** you confront him and he dares you: "beat me with Normal-type Pokémon!" The game checks your party against a long list of non-Normal species. Pure Normal types and Normal dual types such as Pidgeot or Fearow pass (Raticate is pure Normal in this hack). The list has quirks: it refuses Braviary but lets Staraptor and Stunfisk through.
    - Any other Pokémon in the party: "go swap in Normal-type Pokémon". Goh stays next to the plaza. Talk to him again with an all-Normal party: "Beat Goh using Normal-type Pokémon?"
    - Battle **One-Ball Man Goh**: Machamp 84, Rhyperior 85, Magnezone 84, Hariyama 85, Blaziken 84, Bastiodon 85 (a Fighting/Rock/Steel team built to beat Normal types).
 4. Win: Goh storms off ("I need the power of legendary Pokémon"). Lose: you white out and can retry.

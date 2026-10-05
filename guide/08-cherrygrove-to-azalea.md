@@ -302,7 +302,7 @@ No answer gives a reward.
 
 **How it works:** Falkner only accepts the challenge if you carry **4 Pokémon or fewer** and every one is Flying-type. The species check skips Eggs, so an Egg never makes him refuse on species grounds. Otherwise he sends you away; nothing is lost.
 
-What the game actually checks is a fixed list of non-Flying species: if any of them is in your party, he refuses. The list covers every non-Flying species up to Sinnoh, but misses about 226 later ones (e.g. Patrat, Yungoos), which get through. Rotom and Shaymin are on the list, so Rotom's Fan form and Shaymin's Sky Forme are refused even though they're Flying.
+What the game actually checks is a fixed list of non-Flying species: if any of them is in your party, he refuses. The list covers every non-Flying species up to Sinnoh, but misses many later ones. Of the Pokémon you can get, Stunfisk, Yungoos and Gumshoos get through. Rotom is on the list, so Fan Rotom is refused even though it's Flying. Shaymin is on it too, but its Flying Sky Forme can't be obtained in this game.
 
 **Reward:** Zephyr Badge, **TM51 Roost**, Falkner's number. Afterwards the Gym's tutor teaches the Gym's improved **Sky Attack** (see the [tutor table](/tutors/)), and Falkner offers unrestricted rematches (Singles or Doubles).
 
@@ -665,7 +665,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 **Who gets it / when:** Bugsy is away in Ilex Forest until you finish the Ilex Forest bug-catching story. Until then the Gym guide says he's out, and Bugsy isn't in the Gym.
 
 **How it works:** Bugsy asks you to fight **without any Pokémon strong against Bug**. He calls it a 4-on-4 match, but the game never actually counts your party, so you can most likely bring six (see [Known issues](known-issues.md#cherrygrove-city-to-azalea-town)). He checks your **party** against a fixed list of 203 species (Eggs are skipped). If any of them is in your party he refuses ("None of your Pokémon can have a type that's strong against Bug").
-- The list is essentially every Fire-, Flying- and Rock-type (Charmander line, Pidgey line, Geodude line, Gyarados, Scyther, Pinsir, Skarmory, Volcarona, Talonflame…). It also bans a few you might not expect, because of this hack's type changes and forms: **Conkeldurr, Tangrowth, Grumpig and Cursola** are part Rock here; **Lumineon and Sirfetch'd** are part Flying; **Cherrim** (its Sunshine Form is Grass/Fire), **Rotom** (Heat and Fan forms) and **Shaymin** (Sky Forme) are banned as a whole species because one of their forms has a banned type.
+- The list is essentially every Fire-, Flying- and Rock-type (Charmander line, Pidgey line, Geodude line, Gyarados, Scyther, Pinsir, Skarmory, Volcarona, Talonflame…). It also bans a few you might not expect, because of this hack's type changes and forms: **Conkeldurr, Tangrowth, Grumpig and Cursola** are part Rock here; **Lumineon and Sirfetch'd** are part Flying; **Cherrim** (its Sunshine Form is Grass/Fire), **Rotom** (Heat and Fan forms) and **Shaymin** (Sky Forme, a form you can't get here) are banned as a whole species because one of their forms has a banned type.
 - Some Pokémon with those types are *not* on it: **Hippowdon** (Ground/Rock in this hack) and 55 Fire, Flying or Rock species from after Sinnoh. (Altaria and Tropius aren't Flying here: Altaria is Dragon/Fairy and Tropius is Grass/Dragon.) Check your party before you go in.
 - His team: Scyther Lv. 80, Escavalier 80, Heracross 80, Volcarona 80.
 
