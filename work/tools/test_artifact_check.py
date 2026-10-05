@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 import sys
 import tempfile
+import struct
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -35,12 +37,20 @@ class ArtifactTests(unittest.TestCase):
     def export(self, workspace, extract, out, **kwargs):
         self.assertFalse(kwargs["lenient"])
         for narc in A.build.NARCS:
-            (out / narc).mkdir(parents=True)
+            (out / narc).mkdir(parents=True, exist_ok=True)
             (out / narc / "0000.json").write_text("{}")
         return {"strings": 2, "en": 2}, []
 
-    def run_check(self, export=None, verifier=None):
-        with patch.object(A.msgtool, "load_rom", return_value=object()), \
+    @staticmethod
+    def rom(native=False):
+        main = bytearray(0x20a1c)
+        struct.pack_into("<I", main, 0x20a18, 0x01ff8621 if native else 0x02020a1d)
+        sections = [SimpleNamespace(ramAddress=0x02000000, data=main),
+                    SimpleNamespace(ramAddress=0x01ff8000, data=bytes(0x640 if native else 0x620))]
+        return SimpleNamespace(loadArm9=lambda: SimpleNamespace(sections=sections))
+
+    def run_check(self, export=None, verifier=None, native=False):
+        with patch.object(A.msgtool, "load_rom", return_value=self.rom(native)), \
              patch.object(A.msgtool, "get_file", return_value=b"font"):
             return A.check(self.a, export or self.export, verifier or (lambda *args: {"synthetic": "ok"}))
 
@@ -50,6 +60,107 @@ class ArtifactTests(unittest.TestCase):
         self.assertEqual(result["status"], "passed")
         self.assertEqual(self.a.rom.read_bytes(), before)
         self.assertEqual(len(result["inputs"]["ws"]["sha256"]), 64)
+
+    def test_feature_verifier_rejection_is_release_failure(self):
+        self.prior["text_speed"] = {"enabled": True, "source_code_sha256": "synthetic"}
+        self.save_report()
+        with patch.object(A.build.text_speed_patch, "verify", side_effect=ValueError("feature rejected")) as verify:
+            result = self.run_check(native=True)
+        verify.assert_called_once()
+        self.assertIn("feature rejected", result["reason"])
+        self.assertEqual(result["status"], "failed")
+
+    def test_native_missing_metadata_and_false_opt_out_fail(self):
+        for metadata in (None, {}, {"enabled": False, "reason": "--no-text-speed"}):
+            with self.subTest(metadata=metadata):
+                if metadata is None:
+                    self.prior.pop("text_speed", None)
+                else:
+                    self.prior["text_speed"] = metadata
+                self.save_report()
+                result = self.run_check(native=True)
+                self.assertEqual(result["status"], "failed")
+                self.assertIn("text", result["reason"])
+
+    def test_explicit_opt_out_and_legacy_do_not_require_compiler(self):
+        for metadata in (None, {"enabled": False, "reason": "--no-text-speed"},
+                         {"enabled": False, "reason": "--no-hardcoded"}):
+            with self.subTest(metadata=metadata):
+                if metadata is None:
+                    self.prior.pop("text_speed", None)
+                else:
+                    self.prior["text_speed"] = metadata
+                self.save_report()
+                with patch.object(A.build.text_speed_patch, "verify_reproducible_payload") as reproduce:
+                    result = self.run_check()
+                self.assertEqual(result["status"], "passed", result)
+                reproduce.assert_not_called()
+
+    def test_enabled_native_requires_reproduction(self):
+        self.prior["text_speed"] = {"enabled": True}
+        self.save_report()
+        with patch.object(A.build.text_speed_patch, "verify", return_value={"status": "passed"}), \
+             patch.object(A.build.text_speed_patch, "verify_reproducible_payload",
+                          side_effect=ValueError("cached payload does not reproduce")) as reproduce:
+            result = self.run_check(native=True)
+        reproduce.assert_called_once_with()
+        self.assertEqual(result["status"], "failed")
+        self.assertIn("does not reproduce", result["reason"])
+
+    def test_enabled_native_reproduction_pass_recorded(self):
+        self.prior["text_speed"] = {"enabled": True}
+        self.save_report()
+        reproduced = {"status": "passed", "payload_sha256": "reviewed"}
+        with patch.object(A.build.text_speed_patch, "verify", return_value={"status": "passed"}), \
+             patch.object(A.build.text_speed_patch, "verify_reproducible_payload", return_value=reproduced) as reproduce:
+            result = self.run_check(native=True)
+        self.assertEqual(result["status"], "passed", result)
+        self.assertEqual(result["checks"]["text_speed_reproduction"], reproduced)
+        reproduce.assert_called_once_with()
+
+    def test_missing_compiler_fails_enabled_release_gate(self):
+        self.prior["text_speed"] = {"enabled": True}
+        self.save_report()
+        with patch.object(A.build.text_speed_patch, "verify", return_value={"status": "passed"}), \
+             patch.object(A.build.text_speed_patch, "verify_reproducible_payload", side_effect=FileNotFoundError("clang")):
+            result = self.run_check(native=True)
+        self.assertEqual(result["status"], "failed")
+        self.assertIn("clang", result["reason"])
+
+    def test_enabled_metadata_cannot_certify_unpatched_rom(self):
+        self.prior["text_speed"] = {"enabled": True}
+        self.save_report()
+        result = self.run_check()
+        self.assertEqual(result["status"], "failed")
+        self.assertIn("no native ROM payload", result["reason"])
+
+    def test_stale_source_fails_native_gate(self):
+        self.prior["text_speed"] = {"enabled": True}
+        self.save_report()
+        with patch.object(A.build.text_speed_patch, "source_digest", return_value="0" * 64):
+            result = self.run_check(native=True)
+        self.assertEqual(result["status"], "failed")
+        self.assertIn("Stale native payload", result["reason"])
+
+    def test_feature_inputs_fingerprinted_and_mutations_rejected(self):
+        original = A.hashes
+        feature_inputs = ("tools/text_speed_patch.py", "patches/text_speed/native.c",
+                          "patches/text_speed/labels.h", "patches/text_speed/payload.json")
+        for name in feature_inputs:
+            with self.subTest(name=name):
+                calls = 0
+                def hashes(path):
+                    nonlocal calls
+                    result = original(path)
+                    if path == A.build.WORK / name:
+                        calls += 1
+                        if calls > 1:
+                            result["sha256"] = "changed while verifying"
+                    return result
+                with patch.object(A, "hashes", side_effect=hashes):
+                    result = self.run_check()
+                self.assertEqual(result["status"], "failed")
+                self.assertIn(name, result["reason"])
 
     def test_missing_asset_incomplete(self):
         self.a.rom.unlink()

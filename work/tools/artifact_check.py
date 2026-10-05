@@ -74,7 +74,10 @@ def check(a, export_fn=None, verify_fn=None):
                          build.TOOLS / "gfx.py", build.TOOLS / "hardcoded.py",
                          build.TOOLS / "qa_config.json", build.TOOLS / "charmap_en.tsv",
                          build.TOOLS / "charmaps" / "charmap_zh_xzonn_gen4.tsv",
-                         build.WORK / "graphics" / "layout_checks.json")}
+                         build.WORK / "graphics" / "layout_checks.json",
+                         build.TOOLS / "text_speed_patch.py",
+                         *(build.text_speed_patch.ASSETS / name for name in
+                           ("native.c", "labels.h", "payload.json")))}
         counts, problems = export_fn(a.ws, a.extract, a.output / "export",
                                      statuses=tuple(prior["statuses"]), lenient=False)
         report["export"] = {"counts": dict(counts), "problems": problems}
@@ -97,6 +100,12 @@ def check(a, export_fn=None, verify_fn=None):
             return report
         report["verification"] = verify_fn(a.rom, a.output / "export", font, fonts, cm,
                                             prior["graphics"], prior["hardcoded"])
+        # This is also required for legacy/missing metadata: inspect the ROM
+        # before accepting the absence of a feature report as an opt-out.
+        speed = build.verify_text_speed(msgtool.load_rom(a.rom), prior.get("text_speed"))
+        report["verification"]["text_speed"] = speed
+        if speed["status"] == "passed":
+            report["checks"]["text_speed_reproduction"] = build.text_speed_patch.verify_reproducible_payload()
         report["checks"]["artifact"] = "passed"
         # Detect edits while verification was running.
         for name in ("rom", "base", "build_report"):
@@ -105,6 +114,9 @@ def check(a, export_fn=None, verify_fn=None):
         for name in ("ws", "extract"):
             if tree_hash(getattr(a, name)) != report["inputs"][name]:
                 raise ValueError(f"{name} changed during verification")
+        for name, fingerprint in report["verification_inputs"].items():
+            if hashes(Path(fingerprint["path"])) != fingerprint:
+                raise ValueError(f"verification input changed during verification: {name}")
         report["status"] = "passed"
     except ModuleNotFoundError as error:
         report.update(status="incomplete", reason=f"missing dependency: {error}")

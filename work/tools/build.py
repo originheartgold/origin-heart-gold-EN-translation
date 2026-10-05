@@ -63,6 +63,7 @@ import gfx  # noqa: E402
 import hardcoded  # noqa: E402
 import msgtool as m  # noqa: E402
 import textmetrics as tm  # noqa: E402
+import text_speed_patch
 import ws  # noqa: E402
 
 ROM_CN = WORK / "rom" / "origin_v4.0.3_cn.nds"
@@ -144,6 +145,39 @@ def verify_name_bank(data: bytes, spec: dict) -> str:
         else:
             n_plain += 1
     return f"ok ({n_comp} compressed, {n_plain} plain, all fit u16[{spec['max_units']}])"
+
+
+def verify_text_speed(rom, speed_report=None):
+    """Verify enabled builds and reject native code without its build metadata.
+
+    Reports predating this feature remain valid only for ROMs without its
+    footprint. An explicit opt-out is recorded for new builds, never inferred
+    from a missing or empty enabled report.
+    """
+    sections = rom.loadArm9().sections
+    main = next((s for s in sections if s.ramAddress == 0x02000000), None)
+    if main is None or len(main.data) < 0x20a1c:
+        raise ValueError("Cannot establish text-speed status: ARM9 layout missing")
+    task = struct.unpack_from("<I", main.data, 0x20a18)[0]
+    native = any(s.ramAddress == 0x01ff8000 and len(s.data) > 0x620 for s in sections)
+    native = native or 0x01ff8620 <= (task & ~1) < 0x01ffa000
+    if speed_report is None:
+        if native:
+            raise ValueError("Native text-speed ROM missing text_speed verification metadata")
+        return {"status": "not-enabled", "metadata": "legacy"}
+    if not isinstance(speed_report, dict) or not speed_report:
+        raise ValueError("Invalid text_speed verification metadata")
+    if "enabled" in speed_report and not isinstance(speed_report["enabled"], bool):
+        raise ValueError("Invalid text_speed enabled flag")
+    if speed_report.get("enabled") is False:
+        if native:
+            raise ValueError("Native text-speed ROM conflicts with disabled metadata")
+        if speed_report.get("reason") not in ("--no-text-speed", "--no-hardcoded"):
+            raise ValueError("Missing explicit text-speed opt-out reason")
+        return {"status": "not-enabled", "metadata": "explicit-opt-out"}
+    if not native:
+        raise ValueError("Enabled text-speed metadata has no native ROM payload")
+    return text_speed_patch.verify(rom, speed_report)
 
 
 def verify_rom(out_rom: Path, export_dir: Path, us_font_narc: bytes, fonts, cm, gfx_report=(), hc_report=None):
@@ -230,6 +264,7 @@ def main(argv=None):
     ap.add_argument("--no-regen-graphics", action="store_true",
                     help="use the generated graphics already in work/graphics instead of rebuilding them")
     ap.add_argument("--no-hardcoded", action="store_true", help="skip the hardcoded-strings stage")
+    ap.add_argument("--no-text-speed", action="store_true", help="omit the native NORMAL/FAST/INSTANT setting")
     ap.add_argument("--no-patch", action="store_true")
     ap.add_argument("--no-verify", action="store_true")
     ap.add_argument("--lenient", action="store_true", help="unencodable en falls back to zh instead of failing")
@@ -312,6 +347,20 @@ def main(argv=None):
             f"({sum(r['mode'] == 'relocated' for r in hc_report['strings'])} relocated), "
             f"{hc_report['todo']} untranslated, {len(hc_report['code_patches'])} code patches")
 
+    # 3d. Text speed defaults to NORMAL and preserves demand loading.
+    speed_report = {"enabled": False, "reason": "--no-text-speed" if a.no_text_speed else "--no-hardcoded"}
+    report["text_speed"] = speed_report
+    if not a.no_text_speed and not a.no_hardcoded:
+        # Verify the earlier stage before composing a second ARM9 patch. Keep
+        # its original hashes for audit; final verification still checks every
+        # hardcoded string, pointer and instruction plus the final file hashes.
+        hardcoded.verify(rom, hc_report, cm)
+        speed_report = dict(text_speed_patch.apply(rom), enabled=True)
+        hc_report["files_before_text_speed"] = dict(hc_report["files"])
+        hc_report["files"]["arm9"] = hashlib.sha1(hardcoded.RomView(rom).get("arm9")).hexdigest()[:12]
+        report["text_speed"] = speed_report
+        log("text speed: native NORMAL / FAST / INSTANT and seven-row Options menu")
+
     # 4. write
     log(f"write {out_rom}")
     rom.saveToFile(str(out_rom))
@@ -323,6 +372,8 @@ def main(argv=None):
     if not a.no_verify:
         log("verify: ndspy parse, NARC round-trip, text == export, glyphs, graphics, hardcoded")
         report["verify"] = verify_rom(out_rom, export_dir, us_font, fonts, cm, gfx_report, hc_report)
+        checked = m.load_rom(out_rom)
+        report["verify"]["text_speed"] = verify_text_speed(checked, speed_report)
         log(f"verify ok: {report['verify']}")
 
     # 6. patch
