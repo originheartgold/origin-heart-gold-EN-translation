@@ -1508,58 +1508,58 @@
   {
    "id": 181,
    "zh": "威力",
-   "en": "POWER",
+   "en": "PWR",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 3 source(s)"
+   "origin": "agent",
+   "notes": "v3 TM: 3 source(s); D-1509: learnset header column 195-220 px."
   },
   {
    "id": 182,
    "zh": "命中",
-   "en": "ACCURACY",
+   "en": "ACC",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 3 source(s)"
+   "origin": "agent",
+   "notes": "v3 TM: 3 source(s); D-1509: learnset header column 222-247 px."
   },
   {
    "id": 183,
    "zh": "攻击",
-   "en": "ATTACK",
+   "en": "ATK",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "US 0802/146 | seed rejected us [ambiguous US match] (candidate US 0802#146; text not kept) | v3 TM: 2 source(s)"
+   "origin": "agent",
+   "notes": "US 0802/146; seed rejected us [ambiguous US match] (candidate US 0802#146; text not kept); v3 TM: 2 source(s); D-1509: stat label column is 28 px (bars start at x 40)."
   },
   {
    "id": 184,
    "zh": "防御",
-   "en": "DEFENSE",
+   "en": "DEF",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "US 0802/147 | seed rejected us [ambiguous US match] (candidate US 0802#147; text not kept) | v3 TM: 2 source(s)"
+   "origin": "agent",
+   "notes": "US 0802/147; seed rejected us [ambiguous US match] (candidate US 0802#147; text not kept); v3 TM: 2 source(s); D-1509: stat label column is 28 px."
   },
   {
    "id": 185,
    "zh": "特攻",
-   "en": "SP. ATK",
+   "en": "SPA",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 5 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
+   "origin": "agent",
+   "notes": "v3 TM: 5 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl); D-1509: stat label column is 28 px; matches the battle panel's SpA."
   },
   {
    "id": 186,
    "zh": "特防",
-   "en": "SP. DEF",
+   "en": "SPD",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 5 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
+   "origin": "agent",
+   "notes": "v3 TM: 5 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl); D-1509: stat label column is 28 px."
   },
   {
    "id": 187,
    "zh": "速度",
-   "en": "SPEED",
+   "en": "SPE",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "US 0802/148 | seed rejected us [ambiguous US match] (candidate US 0802#148; text not kept) | v3 TM: 7 source(s)"
+   "origin": "agent",
+   "notes": "US 0802/148; seed rejected us [ambiguous US match] (candidate US 0802#148; text not kept); v3 TM: 7 source(s); D-1509: stat label column is 28 px."
   },
   {
    "id": 188,
@@ -1580,34 +1580,34 @@
   {
    "id": 190,
    "zh": "类型",
-   "en": "CATEGORY",
+   "en": "CAT.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1509: learnset header column 160-193 px."
   },
   {
    "id": 191,
    "zh": "物理",
-   "en": "PHYSICAL",
+   "en": "PHYS",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s); D-1509: category text sits between its icon and the power column (<= 28 px)."
   },
   {
    "id": 192,
    "zh": "特殊",
-   "en": "SPECIAL",
+   "en": "SPEC",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s); D-1509: category text <= 28 px."
   },
   {
    "id": 193,
    "zh": "变化",
-   "en": "STATUS",
+   "en": "STAT",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s); D-1509: category text <= 28 px."
   },
   {
    "id": 194,

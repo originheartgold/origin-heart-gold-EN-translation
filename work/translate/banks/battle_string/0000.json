@@ -91,10 +91,10 @@
   {
    "id": 8,
    "zh": "电气场地",
-   "en": "Electric Terrain",
+   "en": "Elec. Terrain",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1504: battle INFO label column ends at the turn count (x 221); label <= 79 px."
   },
   {
    "id": 9,
@@ -1297,10 +1297,10 @@
   {
    "id": 142,
    "zh": "精神场地",
-   "en": "Psychic Terrain",
+   "en": "Psych. Terrain",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1504: battle INFO label column ends at the turn count (x 221); label <= 79 px."
   },
   {
    "id": 143,
@@ -1401,10 +1401,10 @@
   {
    "id": 154,
    "zh": "超极巨地狱灭焰",
-   "en": "G-Max Wildfire",
+   "en": "Wildfire",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1504: 'G-Max' dropped from all five G-Max field labels so they fit beside the turn count."
   },
   {
    "id": 155,
@@ -1417,10 +1417,10 @@
   {
    "id": 156,
    "zh": "超极巨炎石喷发",
-   "en": "G-Max Volcalith",
+   "en": "Volcalith",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1504: 'G-Max' dropped from all five G-Max field labels so they fit beside the turn count."
   },
   {
    "id": 157,
@@ -1433,10 +1433,10 @@
   {
    "id": 158,
    "zh": "超极巨钢铁阵法",
-   "en": "G-Max Steelsurge",
+   "en": "Steelsurge",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1504: 'G-Max' dropped from all five G-Max field labels so they fit beside the turn count."
   },
   {
    "id": 159,
@@ -1449,10 +1449,10 @@
   {
    "id": 160,
    "zh": "超极巨灰飞鞭灭",
-   "en": "G-Max Vine Lash",
+   "en": "Vine Lash",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1504: 'G-Max' dropped from all five G-Max field labels so they fit beside the turn count."
   },
   {
    "id": 161,
@@ -1465,10 +1465,10 @@
   {
    "id": 162,
    "zh": "超极巨水炮轰灭",
-   "en": "G-Max Cannonade",
+   "en": "Cannonade",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "D-1504: 'G-Max' dropped from all five G-Max field labels so they fit beside the turn count.",
    "qa_ignore": [
     "glossary:水炮"
    ]

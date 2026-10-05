@@ -1686,10 +1686,10 @@
   {
    "id": 210,
    "zh": "用利刃攻击。{NEWLINE}连续攻击对手２次。",
-   "en": "The foe is slashed{NEWLINE}with sharp blades 2{NEWLINE}times in a row.",
+   "en": "The foe is slashed{NEWLINE}with sharp blades{NEWLINE}twice in a row.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1517: “2 times in a row” → “twice in a row”"
   },
   {
    "id": 211,
@@ -4246,10 +4246,10 @@
   {
    "id": 530,
    "zh": "用身体坚硬的部分拍{NEWLINE}打对手进行攻击。连{NEWLINE}续２次给予伤害。",
-   "en": "The user hits the foe{NEWLINE}with hard parts of its{NEWLINE}body. It strikes 2{NEWLINE}times in a row.",
+   "en": "The user hits the foe{NEWLINE}with hard parts of its{NEWLINE}body. It strikes twice{NEWLINE}in a row.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1517: “2 times in a row” → “twice in a row”"
   },
   {
    "id": 531,
@@ -4358,10 +4358,10 @@
   {
    "id": 544,
    "zh": "向对手投掷钢铁齿轮{NEWLINE}进行攻击。连续２次{NEWLINE}给予伤害。",
-   "en": "The user throws steel{NEWLINE}gears at the foe. It{NEWLINE}strikes 2 times in a{NEWLINE}row.",
+   "en": "The user throws steel{NEWLINE}gears at the foe. It{NEWLINE}strikes twice in a row.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1517: “2 times in a row” → “twice in a row”"
   },
   {
    "id": 545,
@@ -6518,10 +6518,10 @@
   {
    "id": 814,
    "zh": "将翅膀撞向对手进行攻击。{NEWLINE}连续２次给予伤害。",
-   "en": "The user slams the{NEWLINE}foe with its wings,{NEWLINE}hitting 2 times in a{NEWLINE}row.",
+   "en": "The user slams the{NEWLINE}foe with its wings,{NEWLINE}hitting twice in a row.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1517: “2 times in a row” → “twice in a row”"
   },
   {
    "id": 815,
@@ -7110,10 +7110,10 @@
   {
    "id": 888,
    "zh": "从两眼发射出神奇的{NEWLINE}光线攻击。{NEWLINE}连续２次给予伤害。",
-   "en": "The user fires odd{NEWLINE}beams from both eyes,{NEWLINE}hitting 2 times in a{NEWLINE}row.",
+   "en": "The user fires odd{NEWLINE}beams from both eyes,{NEWLINE}hitting twice in a row.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1517: “2 times in a row” → “twice in a row”"
   },
   {
    "id": 889,
@@ -7214,10 +7214,10 @@
   {
    "id": 901,
    "zh": "从赤红如血的满月发{NEWLINE}射出全部的气势。这{NEWLINE}个招式无法连续使出{NEWLINE}２次。",
-   "en": "The user unleashes{NEWLINE}full force from a{NEWLINE}blood-red full moon.{NEWLINE}It can’t be used 2{NEWLINE}times in a row.",
+   "en": "The user unleashes{NEWLINE}full force from a{NEWLINE}blood-red full moon.{NEWLINE}It can’t be used twice{NEWLINE}in a row.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1517: “2 times in a row” → “twice in a row”"
   },
   {
    "id": 902,
@@ -7294,10 +7294,10 @@
   {
    "id": 911,
    "zh": "接连发射出粒子的利{NEWLINE}刃，连续２次给予伤{NEWLINE}害。攻击必定会命中{NEWLINE}。",
-   "en": "The user fires{NEWLINE}particle blades 2{NEWLINE}times in a row. It{NEWLINE}never misses.",
+   "en": "The user fires{NEWLINE}particle blades twice{NEWLINE}in a row. It never{NEWLINE}misses.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1517: “2 times in a row” → “twice in a row”"
   },
   {
    "id": 912,

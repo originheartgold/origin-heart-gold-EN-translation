@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "特性：{VAR:0100:0}",
-   "en": "Ability: {VAR:0100:0}",
+   "en": "Abil.: {VAR:0100:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1508: the battle INFO panel line holds at most 19 characters (measured: 'Ability: Soundproof' shows, 'Ability: Flower Veil' is blank); 'Abil.: ' + 12-char ability names = 19."
   },
   {
    "id": 12,
@@ -110,10 +110,10 @@
   {
    "id": 13,
    "zh": "{VAR:0100:0}回合",
-   "en": "{VAR:0100:0} turn(s)",
+   "en": "{VAR:0100:0} left",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1504: the turn count is drawn at a fixed x (221) with 35 px to the panel edge; '5 turn(s)' was cut. Counts are remaining turns (weather 5 -> 4 -> 3 observed)."
   },
   {
    "id": 14,
