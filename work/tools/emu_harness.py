@@ -81,7 +81,10 @@ FIELD_MENU = {"pokemon": (40, 100), "bag": (40, 128)}      # field touch menu (b
 BAG_SLOTS = [(64, 56), (192, 56), (64, 98), (192, 98), (64, 140), (192, 140)]   # 6 items per bag page
 BAG_GIVE = (47, 173)             # item submenu: give to a Pokemon
 PARTY_SLOTS = [(64, 28), (190, 28), (64, 76), (190, 76), (64, 124), (190, 124)]
-PARTY_SUMMARY = (190, 40)        # party submenu: summary (first entry)        # bottom-screen RUN button of the battle command menu
+PARTY_SUMMARY = (190, 40)
+BAG_USE = (47, 142)              # item submenu: use
+POCKET_TABS = {"items": (15, 15), "medicine": (46, 15), "balls": (80, 15), "tm": (113, 15),
+               "berries": (146, 15), "mail": (176, 15), "battle": (206, 15), "key": (239, 15)}        # party submenu: summary (first entry)        # bottom-screen RUN button of the battle command menu
 KEYS = ("A", "B", "SELECT", "START", "RIGHT", "LEFT", "UP", "DOWN", "R", "L", "X", "Y")
 DIRS = {"UP": 0, "DOWN": 1, "LEFT": 2, "RIGHT": 3}
 UNOWN = 201
@@ -579,6 +582,31 @@ class Harness:
         self.touch(*PARTY_SLOTS[party_slot], frames=12, after=120)
         self.press("A", after=100)
 
+    def bag_pocket(self, pocket):
+        """In the bag: switch to a pocket by its tab."""
+        self.touch(*POCKET_TABS[pocket], frames=12, after=60)
+
+    def use_from_bag(self, bag_slot, party_slot, evolves=None, level_up=False):
+        """In the bag: item at bag_slot -> Use -> party_slot, then step through the messages and, if the
+        Pokemon evolves, the evolution scene. Fixed timings (checked for Rare Candy and evolution stones);
+        ends back in the bag list. Returns the party Pokemon afterwards."""
+        self.touch(*BAG_SLOTS[bag_slot], frames=12, after=60)
+        self.touch(*BAG_USE, frames=12, after=60)
+        self.touch(*PARTY_SLOTS[party_slot], frames=12, after=120)
+        if level_up:                 # "grew to Lv N" -> stat gains -> new stats
+            for _ in range(3):
+                self.press("A", after=90)
+        self.step(800)               # evolution scene (or nothing)
+        self.press("A", after=300)   # "evolved into ..." -> back to the bag
+        return self.party()[party_slot]
+
+    def level_up_with_candy(self, party_slot, candy_slot=0):
+        """From the field: open the bag, Medicine pocket, use the Rare Candy at candy_slot on party_slot.
+        The Medicine pocket must hold the candy (SaveFile.set_pocket / bag_put_first)."""
+        self.open_bag()
+        self.bag_pocket("medicine")
+        return self.use_from_bag(candy_slot, party_slot, level_up=True)
+
     def open_summary_from_bag(self, party_slot):
         """Leave the bag, open the party from the field menu (cursor is on Bag, UP = Pokemon), open the
         summary of party_slot. Ends on the summary's first page."""
@@ -854,6 +882,7 @@ PLATES = {298: "Flame", 299: "Splash", 300: "Zap", 301: "Meadow", 302: "Icicle",
           305: "Earth", 306: "Sky", 307: "Mind", 308: "Insect", 309: "Stone", 310: "Spooky", 311: "Draco",
           312: "Dread", 313: "Iron"}
 ARCEUS = 493
+RARE_CANDY, SUN_STONE, BLACK_BELT = 50, 80, 241
 
 
 def cmd_arceus(a):
@@ -889,6 +918,33 @@ def cmd_arceus(a):
     return 0
 
 
+def cmd_evolve(a):
+    """D-1485 / D-1486: generate a Pokemon holding an item, pin the clock, level it up with a Rare Candy
+    through the bag (the game's own level-up path), optionally use a stone, log species/form after each."""
+    out = Path(a.out) / "evolve"
+    out.mkdir(parents=True, exist_ok=True)
+    clock = datetime.datetime.fromisoformat(a.clock)
+
+    def edit(sf):
+        sf.set_pocket("medicine", [(RARE_CANDY, 99)])
+        sf.set_pocket("items", [(a.stone, 5)] if a.stone else [])
+
+    rows = {"rom": str(a.rom), "species": a.species, "level": a.level, "item": a.item, "clock": a.clock}
+    with start_at(None, rom=a.rom, sav=a.sav, edit=edit, clock=clock, out=out, verbose=False) as h:
+        rows["created"] = h.generate_pokemon(a.species, level=a.level, item=a.item)
+        rows["clock_seen"] = h.clock()
+        rows["after_candy"] = h.level_up_with_candy(5)
+        h.screenshot(f"{a.tag}_after_candy")
+        if a.stone:
+            h.bag_pocket("items")
+            rows["after_stone"] = h.use_from_bag(0, 5)
+            h.screenshot(f"{a.tag}_after_stone")
+        h.open_summary_from_bag(5)
+        rows["summary"] = str(h.screenshot(f"{a.tag}_summary"))
+    print("RESULT " + json.dumps(rows))
+    return 0
+
+
 def cmd_info(a):
     with Harness(a.rom, a.sav, out=a.out) as h:
         if a.clock:
@@ -918,6 +974,16 @@ def main(argv=None):
     ar.add_argument("--sav", default=str(DEF_SAVES / "full_bag_6mons.sav"))
     ar.add_argument("--out", default=str(DEF_OUT))
     ar.add_argument("--plate", type=int, help=argparse.SUPPRESS)
+    ev = sub.add_parser("evolve", help="level up a generated Pokemon with a Rare Candy at a pinned time")
+    ev.add_argument("--rom", default=str(DEF_ROM_CN))
+    ev.add_argument("--sav", default=str(DEF_SAVES / "full_bag_6mons.sav"))
+    ev.add_argument("--out", default=str(DEF_OUT))
+    ev.add_argument("--species", type=int, required=True)
+    ev.add_argument("--level", type=int, required=True)
+    ev.add_argument("--item", type=int, default=0, help="held item")
+    ev.add_argument("--stone", type=int, default=0, help="also use this item from the Items pocket")
+    ev.add_argument("--clock", required=True)
+    ev.add_argument("--tag", default="evolve")
     for name in ("info", "wild", "unown"):
         p = sub.add_parser(name)
         p.add_argument("--rom", default=str(DEF_ROM_CN))
@@ -940,7 +1006,7 @@ def main(argv=None):
             p.add_argument("--state", help="also write a DeSmuME savestate taken right after the teleport")
             p.add_argument("--json")
     a = ap.parse_args(argv)
-    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus}[a.cmd](a)
+    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve}[a.cmd](a)
 
 
 if __name__ == "__main__":

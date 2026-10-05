@@ -192,6 +192,23 @@ reads the stored form, then opens the summary and takes a screenshot. 16 runs, a
   Arceus in the lead and a type-effectiveness check). D-1501 should be narrowed: the picture and summary
   are correct.
 
+### 3. Petilil + Black Belt by day, then Sun Stone (D-1485): observed
+
+`emu_harness.py evolve --species 548 --level 10 --item 241 --stone 80 --clock 2026-10-09T12:00:00`:
+generator Petilil Lv10 holding a Black Belt, clock pinned, Rare Candy used through Bag → Medicine → Use
+(the game's own level-up and evolution path), then a Sun Stone through Bag → Items → Use.
+
+| run | after Rare Candy | after Sun Stone |
+|---|---|---|
+| 12:00 (day) | species 548 form 1, Lv11, Black Belt consumed; the scene says "Petilil evolved into Petilil" | species 549 form 1: summary shows 裙儿小姐 (Lilligant), Grass/Fighting |
+| 12:00, no stone | 548 form 1; summary: Petilil, Grass, no item | – |
+| 22:00 (control) | 548 form 0, Lv11, still holding the Black Belt (no evolution) | – |
+
+All observed in the Chinese ROM (screenshots `work/build/harness/evolve/petilil_*`). D-1485 holds: by day the
+Black Belt evolution gives a form-1 Petilil (looks and types like a normal Petilil), and only the Sun Stone
+then makes the Grass/Fighting Lilligant (Hisuian). The summary sprite of species 549 form 1 was not compared
+with the official Hisuian artwork.
+
 ## Extending it to the other open points
 
 - **Petilil + Black Belt by day, then Sun Stone (D-1485).** `generate_pokemon(548, level=N, item=241)`
