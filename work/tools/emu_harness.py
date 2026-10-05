@@ -81,6 +81,11 @@ RUN_BUTTON = (128, 178)
 # POKeGEAR; right column trainer card, SAVE, OPTIONS.
 FIELD_MENU = {"pokedex": (43, 33), "pokemon": (43, 73), "bag": (43, 113), "pokegear": (43, 153),
               "card": (123, 33), "save": (123, 73), "options": (123, 113)}
+MOVE_BUTTONS = [(64, 40), (192, 40), (64, 104), (192, 104)]   # battle move menu (bottom screen)
+# Screen recognition: a few pixels (screenshot coordinates, bottom screen y + 192) and their RGB.
+SCREENS_KNOWN = {
+    "battle_menu": [((60, 252), (232, 56, 56)), ((225, 207), (48, 120, 168))],   # red FIGHT, blue INFO
+}
 POKEGEAR_TABS = {"settings": (32, 175), "map": (127, 175)}
 BATTLE_BUTTONS = {"fight": (128, 88), "bag": (36, 165), "run": (128, 178), "pokemon": (200, 165), "info": (225, 15)}
 BAG_SLOTS = [(64, 56), (192, 56), (64, 98), (192, 98), (64, 140), (192, 140)]   # 6 items per bag page
@@ -645,6 +650,51 @@ class Harness:
         self.screenshot("flee_failed")
         return False
 
+    def pixel(self, x, y):
+        """RGB at (x, y) of the 256x384 screenshot (bottom screen starts at y 192)."""
+        return self.emu.screenshot().convert("RGB").getpixel((x, y))
+
+    def on_screen(self, name, tolerance=24):
+        """True when every sample pixel of a known screen (SCREENS_KNOWN) matches."""
+        img = self.emu.screenshot().convert("RGB")
+        return all(max(abs(a - b) for a, b in zip(img.getpixel(xy), rgb)) <= tolerance
+                   for xy, rgb in SCREENS_KNOWN[name])
+
+    def wait_screen(self, name, max_frames=1200, every=10):
+        return self.run_until(lambda h: h.on_screen(name), max_frames, every)
+
+    def battle_turn(self, move_slot, max_frames=3000, shots=None):
+        """At the battle command menu: FIGHT -> move_slot, then step through the turn's messages with B
+        (B never selects anything) until the menu is back ('menu') or the battle is over ('field')."""
+        if not self.wait_screen("battle_menu", 1500):
+            raise RuntimeError("battle command menu not found")
+        self.touch(*BATTLE_BUTTONS["fight"], frames=10, after=40)
+        self.touch(*MOVE_BUTTONS[move_slot], frames=10, after=60)
+        last = None
+        for i in range(0, max_frames, 15):
+            self.step(15)
+            if self.in_field():
+                self.step(60)
+                return "field"
+            if self.on_screen("battle_menu"):
+                return "menu"
+            if shots is not None:          # keep a screenshot whenever the top-screen text box changes
+                box = self.emu.screenshot().crop((8, 146, 248, 186)).tobytes()
+                if box != last:
+                    last = box
+                    shots.append(self.screenshot(f"turn_{self.frame}"))
+            if i % 60 == 45:
+                self.press("B", after=0)
+        self.screenshot("turn_stuck")
+        raise RuntimeError("turn did not finish")
+
+    def fight(self, plan, max_turns=40):
+        """Fight until the battle ends: plan = move slots for the first turns, the last one repeats."""
+        for t in range(max_turns):
+            if self.battle_turn(plan[min(t, len(plan) - 1)]) == "field":
+                return t + 1
+        raise RuntimeError("battle did not end")
+
     def position(self):
         """Live player position: (map, x, y). LocalFieldData's current Location is updated on every step
         (found by diffing RAM while walking: x 17 -> 15 -> 12 at save array 5 + 8)."""
@@ -899,9 +949,11 @@ class WildLog:
     species, the letter the game picked (UnownLetter result, for Unown), the form it saved before, and the
     form stored in the finished Pokemon (decrypted from RAM at the end of the finalizer)."""
 
-    def __init__(self, h):
+    def __init__(self, h, on_mon=None):
+        """on_mon(h, mon_address) runs when a wild Pokemon is finished (e.g. to give it a held item)."""
         self.h = h
         self.rows = []
+        self.on_mon = on_mon
         self._cur = None
         h.on_exec(WILD_FINALIZE, self._enter)
         h.on_exec(WILD_FINALIZE_SETFORM, self._setform)
@@ -929,8 +981,10 @@ class WildLog:
         c, self._cur = self._cur, None
         if c is None:
             return
+        if self.on_mon:
+            self.on_mon(h, c["mon"])
         mon = decode_pokemon(h.read(c["mon"], 136))
-        c.update(species=mon["species"], form=mon["form"], pid=mon["pid"], checksum_ok=mon["checksum_ok"])
+        c.update(species=mon["species"], form=mon["form"], item=mon["item"], pid=mon["pid"], checksum_ok=mon["checksum_ok"])
         c["mon"] = hex(c["mon"])
         self.rows.append(c)
         h.log("wild:", c)
@@ -1396,6 +1450,89 @@ def cmd_drive(a):
     return 0
 
 
+THIEF, SEISMIC_TOSS, CHANSEY = 168, 69, 113
+SKARMORY = 227
+THIEF_CASES = {   # case: (item, trainer id or None for the wild control, attacker species); the holder leads
+    "air_balloon": (576, 252, CHANSEY), "eviolite": (584, 452, SKARMORY), "weakness_policy": (600, 207, CHANSEY),
+    "salac": (203, 605, CHANSEY), "petaya": (204, 595, SKARMORY), "wild_eviolite": (584, None, CHANSEY),
+}
+THIEF_TURNS = 2                   # Thief on the first two turns (the first can be lost to a flinch)
+
+
+def bag_items(h):
+    """{item: quantity} over the whole bag (RAM)."""
+    raw = h.read(h.array(ARR_BAG), 0x860)
+    out = {}
+    for i in range(0, 0x860, 4):
+        item, qty = struct.unpack_from("<HH", raw, i)
+        if item:
+            out[item] = out.get(item, 0) + qty
+    return out
+
+
+def cmd_thief(a):
+    """Tier 4: does a Pokemon keep an item it stole with Thief? A Lv100 Chansey (generator; Thief, Seismic
+    Toss; no held item) leads; the battle starts with the game's TrainerBattle command against a trainer
+    whose lead holds the item (or a scripted wild battle whose Pokemon is given the item: the control).
+    Turn 1 Thief (every message screenshotted), then Seismic Toss until the battle ends; then the lead's
+    held item and the bag are compared with before the battle."""
+    out = Path(a.out) / "thief"
+    out.mkdir(parents=True, exist_ok=True)
+    cases = list(THIEF_CASES) if a.case == "all" else a.case.split(",")
+    if a.child is None:
+        rows = []
+        for c in cases:
+            try:
+                rows.append(run_child(["thief", "--rom", a.rom, "--sav", a.sav, "--out", a.out, "--case", c,
+                                       "--child", c]))
+            except RuntimeError as e:
+                rows.append({"case": c, "error": str(e)[-300:]})
+        for r in rows:
+            print(json.dumps(r))
+        (out / "thief_report.json").write_text(json.dumps(rows, indent=1))
+        return 0
+    item, tid, attacker = THIEF_CASES[a.child]
+    with start_at(None, rom=a.rom, sav=a.sav, out=out, verbose=False,
+                  clock=datetime.datetime(2026, 10, 9, 12)) as h:
+        h.generate_pokemon(attacker, level=100)
+        h.edit_party_mon(h.generated_slot, moves=[THIEF, SEISMIC_TOSS], pp=[25, 20], item=0)
+        h.swap_party(0, h.generated_slot)
+        before = bag_items(h)
+        wild = None
+        if tid is None:
+            wild = WildLog(h, on_mon=lambda h, m: h.write(m, encode_pokemon(h.read(m, 136), item=item)))
+            h.run_script(program=script_bytes(("LockAll",), ("WildBattle", 19, 20, 0), ("ReleaseAll",),
+                                              ("End",)))
+        else:
+            h.trainer_battle(tid)
+        shots = []
+        turns, state = 0, "menu"
+        while turns < THIEF_TURNS and state == "menu":
+            state = h.battle_turn(0, shots=shots)
+            turns += 1
+        if state == "menu":
+            turns += h.fight([1])
+        h.step(120)
+        after = bag_items(h)
+        lead = h.party()[0]
+        from PIL import Image
+        cols = 6
+        sheet = Image.new("RGB", (256 * cols, 192 * max(1, (len(shots) + cols - 1) // cols)), "white")
+        for i, p in enumerate(shots):
+            sheet.paste(Image.open(p).crop((0, 0, 256, 192)), (256 * (i % cols), 192 * (i // cols)))
+        sheet_path = out / f"thief_{a.child}_turn1.png"
+        sheet.save(sheet_path)
+        for p in shots:
+            Path(p).unlink()
+        row = {"case": a.child, "item": item, "trainer": tid, "attacker": attacker, "turns": turns,
+               "lead_item_after": lead["item"], "lead_species": lead["species"],
+               "bag_change": {k: after.get(k, 0) - before.get(k, 0) for k in set(before) | set(after)
+                              if after.get(k, 0) != before.get(k, 0)},
+               "turn1_messages": str(sheet_path), "wild": wild.rows if wild else None}
+    print("RESULT " + json.dumps(row))
+    return 0
+
+
 def cmd_info(a):
     with Harness(a.rom, a.sav, out=a.out) as h:
         if a.clock:
@@ -1454,6 +1591,12 @@ def main(argv=None):
     dr.add_argument("--clock", default="2026-10-09T12:00:00")
     dr.add_argument("--out", default=str(DEF_OUT))
     dr.add_argument("ops", nargs="*")
+    th = sub.add_parser("thief", help="Tier 4: keep an item stolen with Thief?")
+    th.add_argument("--rom", default=str(DEF_ROM_CN))
+    th.add_argument("--sav", default=str(DEF_SAVES / "full_bag_6mons.sav"))
+    th.add_argument("--out", default=str(DEF_OUT))
+    th.add_argument("--case", default="all", help="comma list of: " + ", ".join(THIEF_CASES))
+    th.add_argument("--child", help=argparse.SUPPRESS)
     for name in ("info", "wild", "unown"):
         p = sub.add_parser(name)
         p.add_argument("--rom", default=str(DEF_ROM_CN))
@@ -1476,7 +1619,7 @@ def main(argv=None):
             p.add_argument("--state", help="also write a DeSmuME savestate taken right after the teleport")
             p.add_argument("--json")
     a = ap.parse_args(argv)
-    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive}[a.cmd](a)
+    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief}[a.cmd](a)
 
 
 if __name__ == "__main__":

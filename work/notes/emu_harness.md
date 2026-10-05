@@ -278,6 +278,48 @@ caller, so a different stack history), which is where a non-zero byte could stil
   save teleport into Pal Park (Continue came back in the Poké Mart), which is game logic for that map.
   `start_at` raises when a requested teleport did not land, so check the map when you rely on it.
 
+### 2b. Running any event script, trainer battles (round 3, item 2)
+
+Mechanism (observed): pressing A in the field goes through the field input handler in overlay 1. With a
+person in front it calls `StartMapSceneScript(fsys, id, obj)` (arm9 0x0203F57C) from ov1 0x021E5D2C
+(r1 = the person's script id); otherwise the bg-event lookup 0x0203D320 returns the id in r0 at ov1
+0x021E5D5E (0xFFFF = nothing to read). `run_script` arms exec hooks there and rewrites the id on the next A
+press, so any script starts in the current map's context, facing anything or nothing. Further hooks:
+
+- the script loader 0x0203F870 (r2 = script file, r3 = message bank) can be pointed at any file, so
+  `run_script(file=F, index=N, msg_bank=M)` runs script N of file F (id 2000 + N, whose default is file 3);
+- after the jump to the script's start (0x0203F812, r4 = script context), context+0x08 is the script PC;
+  `run_script(program=script_bytes(...))` writes our own commands there. `script_bytes` encodes commands
+  by name with argument sizes from `work/tools/docs/script_cmds.json`.
+
+Built on it: `warp(map, x, y)` (fade, `Warp`, fade: a normal map entry, people and map scripts load;
+checked on map 315: a scientist appears and the player walks), `trainer_battle(id)` (`LockAll;
+TrainerBattle id 0 0 0; ReleaseAll; End`, checked: Youngster 252 sends out his Magnemite with its Air
+Balloon), a scripted `WildBattle`. Trainer ids 3000+ map to file 949 but run that file's script
+<id − 3000>, not a battle, so the hack's own trainer scripts are not used for this.
+`battle_turn(slot)` (FIGHT → move, B through the messages until the command menu or the field is back,
+optional message screenshots) and `fight(plan)` drive battles using screen recognition (item 5).
+
+### 3. Thief: is the stolen item kept? (Tier 4, observed, Chinese ROM)
+
+`emu_harness.py thief`: a Lv100 Pokémon from the generator (Chansey, or Skarmory against the two hard
+hitters) with Thief and Seismic Toss and no held item leads; `trainer_battle` against a trainer whose lead
+holds the item; Thief on turns 1–2, then Seismic Toss until the battle is won; afterwards the lead's held
+item and the bag are compared. Messages of the Thief turns: `work/build/harness/thief/thief_<case>_turn1.png`.
+
+| item | trainer (holder) | what happened | after the battle |
+|---|---|---|---|
+| Air Balloon (576) | 252 (Magnemite Lv22) | Thief hits, "the foe's balloon popped!", nothing stolen (2 runs) | not obtained |
+| Eviolite (584) | 452 (Rhydon Lv45) | stolen | **kept** (held by the thief) |
+| Weakness Policy (600) | 207 (Mr. Mime Lv29) | stolen on turn 1 ("stole a Weakness Policy"); one earlier run flinched from Fake Out first | **kept** |
+| Salac Berry (203) | 605 (Pinsir Lv25) | stolen ("stole a Salac Berry"); run 1 kept it, run 2 the thief dropped to low HP and ate it | **kept unless eaten in battle** |
+| Petaya Berry (204) | 595 (Empoleon Lv58) | stolen | **kept** |
+
+The bag never changed: the item stays on the Pokémon that stole it. Wild control: a scripted wild
+Rattata given an Eviolite at the end of the wild finalizer (logged as holding 584) was hit by Thief twice
+without a steal message. **Inconclusive**: the scripted wild battle probably sets the held item after that
+point, so the control needs a different way to give a wild Pokémon an item.
+
 ### 5. Screen checks on the English WIP build (Tier 3)
 
 `emu_harness.py screens [--only options,ev,dex,battle]` runs each screen recipe on the Chinese ROM and on
