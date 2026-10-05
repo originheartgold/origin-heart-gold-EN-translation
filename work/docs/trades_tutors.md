@@ -142,6 +142,9 @@ Scripts that open the move-relearner screen (`MoveRelearnerInit`), with what the
 |---|---|---|---|
 | Pallet Town, north-west house | gift | Poliwag | 5 |
 | Pallet Town, north-west house | gift | Poliwhirl | 10 |
+| Pallet Oak's Lab | gift | Bulbasaur | 5 |
+| Pallet Oak's Lab | gift | Charmander | 5 |
+| Pallet Oak's Lab | gift | Pikachu | 5 |
 | Viridian City | battle | Mankey | 5 |
 | Viridian City | battle | Meowth | 5 |
 | Viridian City | battle | Pikachu | 5 |
@@ -180,6 +183,9 @@ Scripts that open the move-relearner screen (`MoveRelearnerInit`), with what the
 | Power Plant | battle | Zapdos | 90 |
 | Pokémon Tower, upper floors | battle | Magcargo | 40 |
 | Lavender Volunteer Pokémon house | gift | Cubone | 5 |
+| Celadon Prize Corner | gift | Eevee | 15 |
+| Celadon Prize Corner | gift | Mr. Mime | 15 |
+| Celadon Prize Corner | gift | Porygon | 15 |
 | Pal Park | battle | Absol | 10 |
 | Pal Park | battle | Bagon | 10 |
 | Pal Park | battle | Baltoy | 10 |
@@ -266,6 +272,10 @@ Scripts that open the move-relearner screen (`MoveRelearnerInit`), with what the
 | Forest of Time | gift | Shaymin | 90 |
 | Route 34 | battle | Salamence | 60 |
 | Route 34 | gift | Totodile | 5 |
+| Goldenrod Game Corner | gift | Abra | 15 |
+| Goldenrod Game Corner | gift | Dratini | 15 |
+| Goldenrod Game Corner | gift | Ekans | 15 |
+| Goldenrod Game Corner | gift | Sandshrew | 15 |
 | Goldenrod Magnet Train Station 1F | gift | Chimchar | 5 |
 | Dream World | battle | Cresselia | 90 |
 | Dream World | battle | Darkrai | 90 |

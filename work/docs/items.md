@@ -18,7 +18,7 @@ Every item in the Key Items pocket, plus other items a script checks for or take
 
 | Item | Pocket | Where to get it | Needed by |
 |---|---|---|---|
-| ??? | Key Items | bought/exchanged, Ice Path B2F | Ice Path B2F |
+| Anti-Age Spray | Key Items | bought/exchanged, Ice Path B2F | Ice Path B2F |
 | Seal Case | Key Items | gift, Route 39 | Olivine Northeast house, Route 39 MooMoo Farm Stable |
 | Fashion Case | Key Items | bought/exchanged, Goldenrod City | Goldenrod City, Goldenrod Tunnel B1F, Safari Zone Gate, Pal Park reception |
 | Pal Pad | Key Items | gift, script file 164 (no map) | — |
@@ -2400,7 +2400,7 @@ Items a script gives right after taking coins, money or another item (Game Corne
 | Mahogany Souvenir Shop | Lava Cookie | 1 | ₽800 |
 | Mahogany Souvenir Shop | Moomoo Milk | 1 | ₽2000 |
 | Mahogany Souvenir Shop | Old Gateau | 1 | ₽800 |
-| Ice Path B2F | ??? | 1 | Durin Berry ×10, Rare Candy ×5, Sacred Ash ×1, Fresh Water ×1, ₽10000 |
+| Ice Path B2F | Anti-Age Spray | 1 | Durin Berry ×10, Rare Candy ×5, Sacred Ash ×1, Fresh Water ×1, ₽10000 |
 | Ice Path B2F | Sacred Ash | 1 | Durin Berry ×10 |
 | Blackthorn City | Energy Powder | 3 | Badge Pouch ×1 |
 | Dragon’s Den | Dragon Scale | 1 | ₽2500 |

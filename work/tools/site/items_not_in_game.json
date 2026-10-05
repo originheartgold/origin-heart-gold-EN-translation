@@ -1,0 +1,940 @@
+{
+ "_about": "Items that exist in the item table but that a player can never get in normal play. The website leaves them out. Verified against the untouched Chinese v4.0.3 ROM on 2026-10-05 by two independent passes; evidence in work/notes/availability_audit.md.",
+ "entries": [
+  {
+   "id": 138,
+   "name": "Flame Mail",
+   "reason": "Only in shop lists that no clerk uses."
+  },
+  {
+   "id": 139,
+   "name": "Bubble Mail",
+   "reason": "Only in shop lists that no clerk uses."
+  },
+  {
+   "id": 142,
+   "name": "Steel Mail",
+   "reason": "Only in shop lists that no clerk uses."
+  },
+  {
+   "id": 144,
+   "name": "Snow Mail",
+   "reason": "Only in shop lists that no clerk uses."
+  },
+  {
+   "id": 145,
+   "name": "Space Mail",
+   "reason": "Only in shop lists that no clerk uses."
+  },
+  {
+   "id": 205,
+   "name": "Apicot Berry",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 206,
+   "name": "Lansat Berry",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 260,
+   "name": "Red Scarf",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 261,
+   "name": "Blue Scarf",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 262,
+   "name": "Pink Scarf",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 263,
+   "name": "Green Scarf",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 264,
+   "name": "Yellow Scarf",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 286,
+   "name": "Grip Claw",
+   "reason": "Its item ball is never placed on a map."
+  },
+  {
+   "id": 373,
+   "name": "TM46 Thief",
+   "reason": "Its item ball is never placed on a map."
+  },
+  {
+   "id": 428,
+   "name": "Explorer Kit",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 430,
+   "name": "Rule Book",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 431,
+   "name": "Poké Radar",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 432,
+   "name": "Point Card",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 433,
+   "name": "Journal",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 436,
+   "name": "Seal Bag",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 449,
+   "name": "Poffin Case",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 454,
+   "name": "Member Card",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 456,
+   "name": "S.S. Ticket",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 457,
+   "name": "Contest Pass",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 460,
+   "name": "Coupon 1",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 461,
+   "name": "Coupon 2",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 462,
+   "name": "Coupon 3",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 463,
+   "name": "Storage Key",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 501,
+   "name": "Photo Album",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 533,
+   "name": "Parcel Box",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 575,
+   "name": "Absorb Bulb",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 577,
+   "name": "Balm Mushroom",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 579,
+   "name": "Binding Band",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 580,
+   "name": "Casteliacone",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 581,
+   "name": "Cell Battery",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 585,
+   "name": "Float Stone",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 587,
+   "name": "Prism Scale",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 589,
+   "name": "Ring Target",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 590,
+   "name": "Rocky Helmet",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 591,
+   "name": "Sweet Heart",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 594,
+   "name": "Luminous Moss",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 595,
+   "name": "Lumiose Galette",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 596,
+   "name": "Sachet",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 598,
+   "name": "Shalour Sable",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 599,
+   "name": "Snowball",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 601,
+   "name": "Whipped Dream",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 603,
+   "name": "Big Malasada",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 609,
+   "name": "Red Nectar",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 610,
+   "name": "Yellow Nectar",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 611,
+   "name": "Pink Nectar",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 612,
+   "name": "Purple Nectar",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 614,
+   "name": "Black Augurite",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 615,
+   "name": "Berry Sweet",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 616,
+   "name": "Clover Sweet",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 617,
+   "name": "Flower Sweet",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 618,
+   "name": "Love Sweet",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 619,
+   "name": "Ribbon Sweet",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 620,
+   "name": "Star Sweet",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 621,
+   "name": "Strawberry Sweet",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 623,
+   "name": "Chipped Pot",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 624,
+   "name": "Cracked Pot",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 626,
+   "name": "Exp. Candy S",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 627,
+   "name": "Exp. Candy M",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 628,
+   "name": "Exp. Candy L",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 629,
+   "name": "Exp. Candy XS",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 630,
+   "name": "Exp. Candy XL",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 631,
+   "name": "Galarica Cuff",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 632,
+   "name": "Galarica Twig",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 633,
+   "name": "Galarica Wreath",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 634,
+   "name": "Heavy-Duty Boots",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 635,
+   "name": "Linking Cord",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 636,
+   "name": "Moomoo Cheese",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 637,
+   "name": "Peat Block",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 639,
+   "name": "Rusted Shield",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 640,
+   "name": "Rusted Sword",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 641,
+   "name": "Sweet Apple",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 642,
+   "name": "Tart Apple",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 646,
+   "name": "Auspicious Armor",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 647,
+   "name": "Booster Energy",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 650,
+   "name": "Gimmighoul Coin",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 651,
+   "name": "Leader’s Crest",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 653,
+   "name": "Malicious Armor",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 654,
+   "name": "Mirror Herb",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 655,
+   "name": "Punching Glove",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 657,
+   "name": "Syrupy Apple",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 658,
+   "name": "Unremarkable Teacup",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 659,
+   "name": "Masterpiece Teacup",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 660,
+   "name": "Cornerstone Mask",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 661,
+   "name": "Wellspring Mask",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 662,
+   "name": "Hearthflame Mask",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 663,
+   "name": "Metal Alloy",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 664,
+   "name": "Roseli Berry",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 665,
+   "name": "Kee Berry",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 666,
+   "name": "Maranga Berry",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 667,
+   "name": "Jaw Fossil",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 668,
+   "name": "Sail Fossil",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 669,
+   "name": "Cover Fossil",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 670,
+   "name": "Plume Fossil",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 671,
+   "name": "Fossilized Bird",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 672,
+   "name": "Fossilized Dino",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 673,
+   "name": "Fossilized Drake",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 674,
+   "name": "Fossilized Fish",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 675,
+   "name": "Burn Drive",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 676,
+   "name": "Chill Drive",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 677,
+   "name": "Douse Drive",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 678,
+   "name": "Shock Drive",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 683,
+   "name": "Dream Ball",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 684,
+   "name": "Beast Ball",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 685,
+   "name": "Normal Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 686,
+   "name": "Fighting Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 687,
+   "name": "Flying Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 688,
+   "name": "Poison Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 689,
+   "name": "Ground Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 690,
+   "name": "Rock Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 691,
+   "name": "Bug Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 692,
+   "name": "Ghost Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 693,
+   "name": "Steel Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 694,
+   "name": "Fire Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 695,
+   "name": "Water Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 696,
+   "name": "Grass Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 697,
+   "name": "Electric Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 698,
+   "name": "Psychic Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 699,
+   "name": "Ice Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 700,
+   "name": "Dragon Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 701,
+   "name": "Dark Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 702,
+   "name": "Fairy Gem",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 703,
+   "name": "Fighting Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 704,
+   "name": "Flying Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 705,
+   "name": "Poison Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 706,
+   "name": "Ground Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 707,
+   "name": "Rock Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 708,
+   "name": "Bug Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 709,
+   "name": "Ghost Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 710,
+   "name": "Steel Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 711,
+   "name": "Fire Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 712,
+   "name": "Water Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 713,
+   "name": "Grass Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 714,
+   "name": "Electric Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 715,
+   "name": "Psychic Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 716,
+   "name": "Ice Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 717,
+   "name": "Dragon Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 718,
+   "name": "Dark Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 719,
+   "name": "Fairy Memory",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 720,
+   "name": "Pixie Plate",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 721,
+   "name": "Blank Plate",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 722,
+   "name": "Legend Plate",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 723,
+   "name": "Relic Copper",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 724,
+   "name": "Relic Silver",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 725,
+   "name": "Relic Gold",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 726,
+   "name": "Relic Vase",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 727,
+   "name": "Relic Band",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 728,
+   "name": "Relic Statue",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 729,
+   "name": "Relic Crown",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 730,
+   "name": "Health Feather",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 731,
+   "name": "Muscle Feather",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 732,
+   "name": "Resist Feather",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 733,
+   "name": "Genius Feather",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 734,
+   "name": "Clever Feather",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 735,
+   "name": "Swift Feather",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 736,
+   "name": "Pretty Feather",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 737,
+   "name": "DNA Splicers",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 738,
+   "name": "Reveal Glass",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 739,
+   "name": "Prison Bottle",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 742,
+   "name": "Oval Charm",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 746,
+   "name": "Box Link",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 747,
+   "name": "Zygarde Cube",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 748,
+   "name": "Sun Flute",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 749,
+   "name": "Moon Flute",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 750,
+   "name": "Light Stone",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 751,
+   "name": "Dark Stone",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 752,
+   "name": "Iceroot Carrot",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 753,
+   "name": "Shaderoot Carrot",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 754,
+   "name": "Reins of Unity",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 755,
+   "name": "Wooden Crown",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 756,
+   "name": "Rotom Catalog",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 757,
+   "name": "Adamant Crystal",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 758,
+   "name": "Lustrous Globe",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 759,
+   "name": "Griseous Core",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 760,
+   "name": "Scroll of Darkness",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 762,
+   "name": "Mega Ring",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 763,
+   "name": "Autograph",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 764,
+   "name": "Gold Teeth",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 765,
+   "name": "Key Stone",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 766,
+   "name": "Lift Key",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 767,
+   "name": "Pewter Crunchies",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 768,
+   "name": "Silph Scope",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  },
+  {
+   "id": 769,
+   "name": "Tea",
+   "reason": "No way to get it was found: no gift, shop, item ball, hidden item, prize, Pickup, held item or engine reward gives it."
+  }
+ ]
+}

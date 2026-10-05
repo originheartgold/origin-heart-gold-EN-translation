@@ -45,7 +45,6 @@ Headbutt trees and the Bug-Catching Contest are listed at the end.
 - [Route 18](#route-18)
 - [Fuchsia City](#fuchsia-city)
 - [Fuchsia City, Koga's forest preserve](#fuchsia-city-kogas-forest-preserve)
-- [Pal Park](#pal-park)
 - [Route 12](#route-12)
 - [Route 13](#route-13)
 - [Route 14](#route-14)
@@ -144,6 +143,7 @@ Headbutt trees and the Bug-Catching Contest are listed at the end.
 - [Five Island](#five-island)
 - [Island Cave](#island-cave)
 - [Island Forest](#island-forest)
+- [Pal Park, Fixed Catch mode](#pal-park-fixed-catch-mode)
 - [Headbutt trees](#headbutt-trees)
 - [Bug-Catching Contest](#bug-catching-contest)
 
@@ -2167,27 +2167,6 @@ _Encounter rate: grass/cave 15, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Poliwrath | 40 | 15% |
 | Slowbro | 40 | 10% |
 | Golduck | 40 | 5% |
-
-## Pal Park
-
-_Encounter rate: grass/cave 10_
-
-**Grass/cave, any time**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Treecko | 20 | 20% |
-| Duskull | 20 | 20% |
-| Bagon | 20 | 10% |
-| Snivy | 20 | 10% |
-| Sableye | 20 | 10% |
-| Mawile | 20 | 10% |
-| Gulpin | 20 | 5% |
-| Tropius | 20 | 5% |
-| Swablu | 20 | 4% |
-| Seviper | 20 | 4% |
-| Carvanha | 20 | 1% |
-| Beldum | 20 | 1% |
 
 ## Route 12
 
@@ -8223,6 +8202,213 @@ _Encounter rate: grass/cave 15, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Poliwhirl | 40 | 15% |
 | Seaking | 40 | 10% |
 | Slowbro | 40 | 5% |
+
+## Pal Park, Fixed Catch mode
+
+The wild table changes with the day of the week (by the DS clock). You get in through the Catching Show's Fixed Catch mode at the Pal Park reception ($10,000; bring your own Poké Balls). Sunday's table is the same as Cerulean Cave's, probably by mistake in the hack, so it also has Surf and fishing slots: the park has a pond and a stretch of sea.
+
+### Sunday
+
+_Encounter rate: grass/cave 10, surfing 10, Old Rod 25, Good Rod 50, Super Rod 75_
+
+**Grass/cave, morning and day**
+
+| Pokémon | Level | Chance |
+|---|---|---|
+| Kadabra | 46 | 20% |
+| Parasect | 45–47 | 21% |
+| Golbat | 47 | 10% |
+| Machoke | 45 | 10% |
+| Magneton | 45–47 | 15% |
+| Ditto | 45 | 10% |
+| Electrode | 46 | 5% |
+| Machamp | 49 | 4% |
+| Alakazam | 49 | 4% |
+| Wobbuffet | 49 | 1% |
+
+**Grass/cave, night**
+
+| Pokémon | Level | Chance |
+|---|---|---|
+| Kadabra | 46 | 20% |
+| Parasect | 45–47 | 21% |
+| Golbat | 47 | 10% |
+| Machoke | 45 | 10% |
+| Magneton | 45–47 | 15% |
+| Ditto | 45 | 10% |
+| Electrode | 46 | 5% |
+| Machamp | 49 | 4% |
+| Crobat | 49 | 4% |
+| Wobbuffet | 49 | 1% |
+
+**Radio on Hoenn Sound (replaces the 10% grass slots)**
+
+| Pokémon | Level | Chance |
+|---|---|---|
+| Absol | 45–47 | 20% |
+| Makuhita | 45 | 20% |
+
+**Radio on Sinnoh Sound (replaces the 10% grass slots)**
+
+| Pokémon | Level | Chance |
+|---|---|---|
+| Bronzor | 45–47 | 20% |
+| Chingling | 45 | 20% |
+
+**Surfing**
+
+| Pokémon | Level | Chance |
+|---|---|---|
+| Psyduck | 35–40 | 90% |
+| Golduck | 40 | 10% |
+
+**Old Rod**
+
+| Pokémon | Level | Chance |
+|---|---|---|
+| Magikarp | 10 | 100% |
+
+**Good Rod**
+
+| Pokémon | Level | Chance |
+|---|---|---|
+| Poliwag | 20 | 45% |
+| Goldeen | 20 | 40% |
+| Magikarp | 20 | 15% |
+
+**Super Rod**
+
+| Pokémon | Level | Chance |
+|---|---|---|
+| Poliwag | 40 | 40% |
+| Poliwhirl | 40 | 30% |
+| Gyarados | 40 | 30% |
+
+### Monday
+
+_Encounter rate: grass/cave 10_
+
+**Grass/cave, any time**
+
+| Pokémon | Level | Chance |
+|---|---|---|
+| Treecko | 20 | 20% |
+| Duskull | 20 | 20% |
+| Bagon | 20 | 10% |
+| Snivy | 20 | 10% |
+| Sableye | 20 | 10% |
+| Mawile | 20 | 10% |
+| Gulpin | 20 | 5% |
+| Tropius | 20 | 5% |
+| Swablu | 20 | 4% |
+| Seviper | 20 | 4% |
+| Carvanha | 20 | 1% |
+| Beldum | 20 | 1% |
+
+### Tuesday
+
+_Encounter rate: grass/cave 10_
+
+**Grass/cave, any time**
+
+| Pokémon | Level | Chance |
+|---|---|---|
+| Cherubi | 20 | 20% |
+| Buneary | 20 | 20% |
+| Chimchar | 20 | 10% |
+| Spiritomb | 20 | 10% |
+| Carnivine | 20 | 10% |
+| Shinx | 20 | 10% |
+| Turtwig | 20 | 5% |
+| Buizel | 20 | 5% |
+| Stunky | 20 | 4% |
+| Riolu | 20 | 4% |
+| Gorebyss | 20 | 1% |
+| Tepig | 20 | 1% |
+
+### Wednesday
+
+_Encounter rate: grass/cave 10_
+
+**Grass/cave, any time**
+
+| Pokémon | Level | Chance |
+|---|---|---|
+| Torchic | 20 | 20% |
+| Treecko | 20 | 20% |
+| Absol | 20 | 10% |
+| Ralts | 20 | 10% |
+| Mawile | 20 | 10% |
+| Meditite | 20 | 10% |
+| Shroomish | 20 | 5% |
+| Seviper | 20 | 5% |
+| Tropius | 20 | 4% |
+| Numel | 20 | 4% |
+| Corphish | 20 | 1% |
+| Carvanha | 20 | 1% |
+
+### Thursday
+
+_Encounter rate: grass/cave 10_
+
+**Grass/cave, any time**
+
+| Pokémon | Level | Chance |
+|---|---|---|
+| Cherubi | 20 | 20% |
+| Chimchar | 20 | 20% |
+| Budew | 20 | 10% |
+| Piplup | 20 | 10% |
+| Bronzor | 20 | 10% |
+| Shinx | 20 | 10% |
+| Snover | 20 | 5% |
+| Stunky | 20 | 5% |
+| Riolu | 20 | 4% |
+| Finneon | 20 | 4% |
+| Hippopotas | 20 | 1% |
+| Popplio | 20 | 1% |
+
+### Friday
+
+_Encounter rate: grass/cave 10_
+
+**Grass/cave, any time**
+
+| Pokémon | Level | Chance |
+|---|---|---|
+| Torchic | 20 | 20% |
+| Makuhita | 20 | 20% |
+| Absol | 20 | 10% |
+| Shroomish | 20 | 10% |
+| Mudkip | 20 | 10% |
+| Meditite | 20 | 10% |
+| Baltoy | 20 | 5% |
+| Numel | 20 | 5% |
+| Electrike | 20 | 4% |
+| Corphish | 20 | 4% |
+| Stunfisk | 20 | 1% |
+| Rowlet | 20 | 1% |
+
+### Saturday
+
+_Encounter rate: grass/cave 10_
+
+**Grass/cave, any time**
+
+| Pokémon | Level | Chance |
+|---|---|---|
+| Rotom | 20 | 20% |
+| Budew | 20 | 20% |
+| Pachirisu | 20 | 10% |
+| Piplup | 20 | 10% |
+| Bronzor | 20 | 10% |
+| Croagunk | 20 | 10% |
+| Snover | 20 | 5% |
+| Shellos | 20 | 5% |
+| Chatot | 20 | 4% |
+| Oshawott | 20 | 4% |
+| Fennekin | 20 | 1% |
+| Litten | 20 | 1% |
 
 ## Headbutt trees
 

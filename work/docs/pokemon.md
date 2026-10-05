@@ -4,7 +4,7 @@
 
 Species data read from the ROM: base stats, types and abilities from `a/0/0/2` (hidden ability in the same record), level-up moves from `a/0/3/3`, evolutions from `a/0/3/4`, egg moves from `data/egg_moves.narc`. TM/HM compatibility follows the game's own check (arm9 `0x02071464`): a Pokémon can use a TM if the move is in its list in `data/tutor_moves.narc` **or** in its level-up learnset; every Pokémon can learn Return, and Mew can learn every TM. Tutor compatibility comes from the species lists inside each tutor's script (see [trades_tutors.md](trades_tutors.md)).
 
-Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get it" is derived from the wild encounter tables, gift/trade/static-battle scripts and evolutions (see [encounters.md](encounters.md)); species with no source are still listed because their data exists.
+Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get it" is derived from the wild encounter tables, gift/trade/static-battle scripts and evolutions (see [encounters.md](encounters.md)); species with no source are still listed because their data exists. Species marked "never met in play" are confirmed unreachable (work/tools/site/not_in_game.json); the website leaves them out.
 
 - [Kanto: #1–#151](pokemon_0001-0151.md)
 - [Johto: #152–#251](pokemon_0152-0251.md)
@@ -514,7 +514,7 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 491 | [Darkrai](pokemon_0387-0493.md#0491-darkrai) | Dark | Bad Dreams | — | 600 | yes |
 | 492 | [Shaymin](pokemon_0387-0493.md#0492-shaymin) | Grass | Natural Cure | Grass Skin | 600 | yes |
 | 493 | [Arceus](pokemon_0387-0493.md#0493-arceus) | Normal | Multitype | — | 720 | yes |
-| 494 | [Victini](pokemon_0494-0649.md#0494-victini) | Psychic / Fire | Victory Star | — | 600 | no |
+| 494 | [Victini](pokemon_0494-0649.md#0494-victini) | Psychic / Fire | Victory Star | — | 600 | never |
 | 495 | [Snivy](pokemon_0494-0649.md#0495-snivy) | Grass | Overgrow | Contrary | 308 | yes |
 | 496 | [Servine](pokemon_0494-0649.md#0496-servine) | Grass / Dragon | Overgrow | Contrary | 413 | yes |
 | 497 | [Serperior](pokemon_0494-0649.md#0497-serperior) | Grass / Dragon | Overgrow | Contrary | 535 | yes |
@@ -524,31 +524,31 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 501 | [Oshawott](pokemon_0494-0649.md#0501-oshawott) | Water | Torrent | Shell Armor | 308 | yes |
 | 502 | [Dewott](pokemon_0494-0649.md#0502-dewott) | Water | Torrent | Shell Armor | 413 | yes |
 | 503 | [Samurott](pokemon_0494-0649.md#0503-samurott) | Water / Dark | Torrent | Shell Armor | 535 | yes |
-| 504 | [Patrat](pokemon_0494-0649.md#0504-patrat) | Normal | Run Away / Keen Eye | Analytic | 255 | no |
-| 505 | [Watchog](pokemon_0494-0649.md#0505-watchog) | Normal | Illuminate / Keen Eye | Analytic | 420 | no |
+| 504 | [Patrat](pokemon_0494-0649.md#0504-patrat) | Normal | Run Away / Keen Eye | Analytic | 255 | never |
+| 505 | [Watchog](pokemon_0494-0649.md#0505-watchog) | Normal | Illuminate / Keen Eye | Analytic | 420 | never |
 | 506 | [Lillipup](pokemon_0494-0649.md#0506-lillipup) | Normal | Vital Spirit / Pickup | Run Away | 275 | yes |
 | 507 | [Herdier](pokemon_0494-0649.md#0507-herdier) | Normal | Intimidate / Sand Rush | Scrappy | 380 | yes |
 | 508 | [Stoutland](pokemon_0494-0649.md#0508-stoutland) | Normal | Intimidate / Sand Rush | Fluffy | 525 | yes |
 | 509 | [Purrloin](pokemon_0494-0649.md#0509-purrloin) | Dark | Limber / Unburden | Prankster | 281 | yes |
 | 510 | [Liepard](pokemon_0494-0649.md#0510-liepard) | Dark | Limber / Unburden | Prankster | 446 | yes |
-| 511 | [Pansage](pokemon_0494-0649.md#0511-pansage) | Grass | Gluttony | Overgrow | 316 | no |
-| 512 | [Simisage](pokemon_0494-0649.md#0512-simisage) | Grass | Gluttony | Overgrow | 498 | no |
-| 513 | [Pansear](pokemon_0494-0649.md#0513-pansear) | Fire | Gluttony | Blaze | 316 | no |
-| 514 | [Simisear](pokemon_0494-0649.md#0514-simisear) | Fire | Gluttony | Blaze | 498 | no |
-| 515 | [Panpour](pokemon_0494-0649.md#0515-panpour) | Water | Gluttony | Torrent | 316 | no |
-| 516 | [Simipour](pokemon_0494-0649.md#0516-simipour) | Water | Gluttony | Torrent | 498 | no |
+| 511 | [Pansage](pokemon_0494-0649.md#0511-pansage) | Grass | Gluttony | Overgrow | 316 | never |
+| 512 | [Simisage](pokemon_0494-0649.md#0512-simisage) | Grass | Gluttony | Overgrow | 498 | never |
+| 513 | [Pansear](pokemon_0494-0649.md#0513-pansear) | Fire | Gluttony | Blaze | 316 | never |
+| 514 | [Simisear](pokemon_0494-0649.md#0514-simisear) | Fire | Gluttony | Blaze | 498 | never |
+| 515 | [Panpour](pokemon_0494-0649.md#0515-panpour) | Water | Gluttony | Torrent | 316 | never |
+| 516 | [Simipour](pokemon_0494-0649.md#0516-simipour) | Water | Gluttony | Torrent | 498 | never |
 | 517 | [Munna](pokemon_0494-0649.md#0517-munna) | Psychic | Forewarn / Synchronize | Telepathy | 292 | yes |
 | 518 | [Musharna](pokemon_0494-0649.md#0518-musharna) | Psychic | Forewarn / Synchronize | Psychic Surge | 487 | yes |
 | 519 | [Pidove](pokemon_0494-0649.md#0519-pidove) | Normal / Flying | Big Pecks / Super Luck | Rivalry | 264 | yes |
 | 520 | [Tranquill](pokemon_0494-0649.md#0520-tranquill) | Normal / Flying | Big Pecks / Super Luck | Rivalry | 358 | yes |
 | 521 | [Unfezant](pokemon_0494-0649.md#0521-unfezant) | Normal / Flying | Big Pecks / Super Luck | Rivalry | 490 | yes |
-| 522 | [Blitzle](pokemon_0494-0649.md#0522-blitzle) | Electric | Lightning Rod / Motor Drive | Sap Sipper | 295 | no |
-| 523 | [Zebstrika](pokemon_0494-0649.md#0523-zebstrika) | Electric | Lightning Rod / Motor Drive | Sap Sipper | 497 | no |
+| 522 | [Blitzle](pokemon_0494-0649.md#0522-blitzle) | Electric | Lightning Rod / Motor Drive | Sap Sipper | 295 | never |
+| 523 | [Zebstrika](pokemon_0494-0649.md#0523-zebstrika) | Electric | Lightning Rod / Motor Drive | Sap Sipper | 497 | never |
 | 524 | [Roggenrola](pokemon_0494-0649.md#0524-roggenrola) | Rock | Sturdy / Weak Armor | Sand Force | 280 | yes |
 | 525 | [Boldore](pokemon_0494-0649.md#0525-boldore) | Rock | Sturdy / Weak Armor | Sand Force | 390 | yes |
 | 526 | [Gigalith](pokemon_0494-0649.md#0526-gigalith) | Rock | Sturdy / Sand Stream | Sand Force | 515 | yes |
-| 527 | [Woobat](pokemon_0494-0649.md#0527-woobat) | Psychic / Flying | Unaware / Klutz | Simple | 323 | no |
-| 528 | [Swoobat](pokemon_0494-0649.md#0528-swoobat) | Psychic / Flying | Unaware / Klutz | Simple | 425 | no |
+| 527 | [Woobat](pokemon_0494-0649.md#0527-woobat) | Psychic / Flying | Unaware / Klutz | Simple | 323 | never |
+| 528 | [Swoobat](pokemon_0494-0649.md#0528-swoobat) | Psychic / Flying | Unaware / Klutz | Simple | 425 | never |
 | 529 | [Drilbur](pokemon_0494-0649.md#0529-drilbur) | Ground | Sand Rush / Sand Force | Mold Breaker | 328 | yes |
 | 530 | [Excadrill](pokemon_0494-0649.md#0530-excadrill) | Ground / Steel | Sand Rush / Sand Force | Mold Breaker | 508 | yes |
 | 531 | [Audino](pokemon_0494-0649.md#0531-audino) | Normal / Fairy | Healer / Regenerator | Misty Surge | 505 | yes |
@@ -558,8 +558,8 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 535 | [Tympole](pokemon_0494-0649.md#0535-tympole) | Water | Swift Swim / Hydration | Water Absorb | 294 | yes |
 | 536 | [Palpitoad](pokemon_0494-0649.md#0536-palpitoad) | Water / Ground | Swift Swim / Hydration | Water Absorb | 384 | yes |
 | 537 | [Seismitoad](pokemon_0494-0649.md#0537-seismitoad) | Water / Ground | Swift Swim / Sap Sipper | Water Absorb | 524 | yes |
-| 538 | [Throh](pokemon_0494-0649.md#0538-throh) | Fighting | Guts / Inner Focus | Mold Breaker | 465 | no |
-| 539 | [Sawk](pokemon_0494-0649.md#0539-sawk) | Fighting | Sturdy / Inner Focus | Mold Breaker | 465 | no |
+| 538 | [Throh](pokemon_0494-0649.md#0538-throh) | Fighting | Guts / Inner Focus | Mold Breaker | 465 | never |
+| 539 | [Sawk](pokemon_0494-0649.md#0539-sawk) | Fighting | Sturdy / Inner Focus | Mold Breaker | 465 | never |
 | 540 | [Sewaddle](pokemon_0494-0649.md#0540-sewaddle) | Bug / Grass | Swarm / Chlorophyll | Overcoat | 310 | yes |
 | 541 | [Swadloon](pokemon_0494-0649.md#0541-swadloon) | Bug / Grass | Leaf Guard / Chlorophyll | Overcoat | 380 | yes |
 | 542 | [Leavanny](pokemon_0494-0649.md#0542-leavanny) | Bug / Grass | Sharpness / Chlorophyll | Overcoat | 500 | yes |
@@ -576,12 +576,12 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 553 | [Krookodile](pokemon_0494-0649.md#0553-krookodile) | Ground / Dark | Intimidate / Moxie | Anger Point | 529 | yes |
 | 554 | [Darumaka](pokemon_0494-0649.md#0554-darumaka) | Fire | Hustle | Inner Focus | 315 | yes |
 | 555 | [Darmanitan](pokemon_0494-0649.md#0555-darmanitan) | Fire | Sheer Force | Zen Mode | 480 | yes |
-| 556 | [Maractus](pokemon_0494-0649.md#0556-maractus) | Grass | Water Absorb / Chlorophyll | Storm Drain | 500 | no |
-| 557 | [Dwebble](pokemon_0494-0649.md#0557-dwebble) | Bug / Rock | Sturdy / Shell Armor | Weak Armor | 325 | no |
-| 558 | [Crustle](pokemon_0494-0649.md#0558-crustle) | Bug / Rock | Sturdy / Shell Armor | Weak Armor | 495 | no |
+| 556 | [Maractus](pokemon_0494-0649.md#0556-maractus) | Grass | Water Absorb / Chlorophyll | Storm Drain | 500 | never |
+| 557 | [Dwebble](pokemon_0494-0649.md#0557-dwebble) | Bug / Rock | Sturdy / Shell Armor | Weak Armor | 325 | never |
+| 558 | [Crustle](pokemon_0494-0649.md#0558-crustle) | Bug / Rock | Sturdy / Shell Armor | Weak Armor | 495 | never |
 | 559 | [Scraggy](pokemon_0494-0649.md#0559-scraggy) | Dark / Fighting | Shed Skin / Moxie | Intimidate | 348 | yes |
 | 560 | [Scrafty](pokemon_0494-0649.md#0560-scrafty) | Dark / Fighting | Shed Skin / Moxie | Intimidate | 540 | yes |
-| 561 | [Sigilyph](pokemon_0494-0649.md#0561-sigilyph) | Psychic / Flying | Wonder Skin / Magic Guard | Tinted Lens | 490 | no |
+| 561 | [Sigilyph](pokemon_0494-0649.md#0561-sigilyph) | Psychic / Flying | Wonder Skin / Magic Guard | Tinted Lens | 490 | never |
 | 562 | [Yamask](pokemon_0494-0649.md#0562-yamask) | Ghost | Mummy | — | 303 | yes |
 | 563 | [Cofagrigus](pokemon_0494-0649.md#0563-cofagrigus) | Ghost | Mummy | — | 493 | yes |
 | 564 | [Tirtouga](pokemon_0494-0649.md#0564-tirtouga) | Water / Rock | Solid Rock / Sturdy | Sap Sipper | 355 | yes |
@@ -597,14 +597,14 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 574 | [Gothita](pokemon_0494-0649.md#0574-gothita) | Psychic | Frisk / Competitive | Shadow Tag | 290 | yes |
 | 575 | [Gothorita](pokemon_0494-0649.md#0575-gothorita) | Psychic | Frisk / Competitive | Shadow Tag | 390 | yes |
 | 576 | [Gothitelle](pokemon_0494-0649.md#0576-gothitelle) | Psychic | Frisk / Competitive | Shadow Tag | 500 | yes |
-| 577 | [Solosis](pokemon_0494-0649.md#0577-solosis) | Psychic | Overcoat / Magic Guard | Regenerator | 290 | no |
-| 578 | [Duosion](pokemon_0494-0649.md#0578-duosion) | Psychic | Overcoat / Magic Guard | Regenerator | 370 | no |
-| 579 | [Reuniclus](pokemon_0494-0649.md#0579-reuniclus) | Psychic | Overcoat / Magic Guard | Regenerator | 490 | no |
+| 577 | [Solosis](pokemon_0494-0649.md#0577-solosis) | Psychic | Overcoat / Magic Guard | Regenerator | 290 | never |
+| 578 | [Duosion](pokemon_0494-0649.md#0578-duosion) | Psychic | Overcoat / Magic Guard | Regenerator | 370 | never |
+| 579 | [Reuniclus](pokemon_0494-0649.md#0579-reuniclus) | Psychic | Overcoat / Magic Guard | Regenerator | 490 | never |
 | 580 | [Ducklett](pokemon_0494-0649.md#0580-ducklett) | Water / Flying | Keen Eye / Big Pecks | Hydration | 305 | yes |
 | 581 | [Swanna](pokemon_0494-0649.md#0581-swanna) | Water / Flying | Keen Eye / Mystic Dance | Hydration | 493 | yes |
-| 582 | [Vanillite](pokemon_0494-0649.md#0582-vanillite) | Ice | Ice Body / Snow Cloak | Weak Armor | 305 | no |
-| 583 | [Vanillish](pokemon_0494-0649.md#0583-vanillish) | Ice | Ice Body / Snow Cloak | Weak Armor | 395 | no |
-| 584 | [Vanilluxe](pokemon_0494-0649.md#0584-vanilluxe) | Ice | Ice Body / Snow Warning | Weak Armor | 535 | no |
+| 582 | [Vanillite](pokemon_0494-0649.md#0582-vanillite) | Ice | Ice Body / Snow Cloak | Weak Armor | 305 | never |
+| 583 | [Vanillish](pokemon_0494-0649.md#0583-vanillish) | Ice | Ice Body / Snow Cloak | Weak Armor | 395 | never |
+| 584 | [Vanilluxe](pokemon_0494-0649.md#0584-vanilluxe) | Ice | Ice Body / Snow Warning | Weak Armor | 535 | never |
 | 585 | [Deerling](pokemon_0494-0649.md#0585-deerling) | Normal / Grass | Chlorophyll / Sap Sipper | Grassy Surge | 335 | yes |
 | 586 | [Sawsbuck](pokemon_0494-0649.md#0586-sawsbuck) | Normal / Grass | Chlorophyll / Sap Sipper | Grassy Surge | 475 | yes |
 | 587 | [Emolga](pokemon_0494-0649.md#0587-emolga) | Electric / Flying | Static | Motor Drive | 438 | yes |
@@ -619,14 +619,14 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 596 | [Galvantula](pokemon_0494-0649.md#0596-galvantula) | Bug / Electric | Compound Eyes / Unnerve | Swarm | 472 | yes |
 | 597 | [Ferroseed](pokemon_0494-0649.md#0597-ferroseed) | Grass / Steel | Iron Barbs | — | 305 | yes |
 | 598 | [Ferrothorn](pokemon_0494-0649.md#0598-ferrothorn) | Grass / Steel | Iron Barbs | Anticipation | 489 | yes |
-| 599 | [Klink](pokemon_0494-0649.md#0599-klink) | Steel | Plus / Minus | Clear Body | 300 | no |
-| 600 | [Klang](pokemon_0494-0649.md#0600-klang) | Steel | Plus / Minus | Clear Body | 440 | no |
-| 601 | [Klinklang](pokemon_0494-0649.md#0601-klinklang) | Steel | Plus / Minus | Clear Body | 540 | no |
+| 599 | [Klink](pokemon_0494-0649.md#0599-klink) | Steel | Plus / Minus | Clear Body | 300 | never |
+| 600 | [Klang](pokemon_0494-0649.md#0600-klang) | Steel | Plus / Minus | Clear Body | 440 | never |
+| 601 | [Klinklang](pokemon_0494-0649.md#0601-klinklang) | Steel | Plus / Minus | Clear Body | 540 | never |
 | 602 | [Tynamo](pokemon_0494-0649.md#0602-tynamo) | Electric | Levitate | — | 275 | yes |
 | 603 | [Eelektrik](pokemon_0494-0649.md#0603-eelektrik) | Electric | Levitate | — | 405 | yes |
 | 604 | [Eelektross](pokemon_0494-0649.md#0604-eelektross) | Electric | Levitate | — | 525 | yes |
-| 605 | [Elgyem](pokemon_0494-0649.md#0605-elgyem) | Psychic | Telepathy / Synchronize | Analytic | 335 | no |
-| 606 | [Beheeyem](pokemon_0494-0649.md#0606-beheeyem) | Psychic | Telepathy / Synchronize | Analytic | 485 | no |
+| 605 | [Elgyem](pokemon_0494-0649.md#0605-elgyem) | Psychic | Telepathy / Synchronize | Analytic | 335 | never |
+| 606 | [Beheeyem](pokemon_0494-0649.md#0606-beheeyem) | Psychic | Telepathy / Synchronize | Analytic | 485 | never |
 | 607 | [Litwick](pokemon_0494-0649.md#0607-litwick) | Ghost / Fire | Flash Fire / Flame Body | Infiltrator | 275 | yes |
 | 608 | [Lampent](pokemon_0494-0649.md#0608-lampent) | Ghost / Fire | Flash Fire / Flame Body | Infiltrator | 370 | yes |
 | 609 | [Chandelure](pokemon_0494-0649.md#0609-chandelure) | Ghost / Fire | Flash Fire / Flame Body | Infiltrator | 540 | yes |
@@ -635,18 +635,18 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 612 | [Haxorus](pokemon_0494-0649.md#0612-haxorus) | Dragon / Fighting | Hyper Cutter / Mold Breaker | Sharpness | 600 | yes |
 | 613 | [Cubchoo](pokemon_0494-0649.md#0613-cubchoo) | Ice | Snow Cloak / Slush Rush | Rattled | 305 | yes |
 | 614 | [Beartic](pokemon_0494-0649.md#0614-beartic) | Ice / Water | Snow Cloak / Slush Rush | Swift Swim | 525 | yes |
-| 615 | [Cryogonal](pokemon_0494-0649.md#0615-cryogonal) | Ice | Levitate | — | 515 | no |
+| 615 | [Cryogonal](pokemon_0494-0649.md#0615-cryogonal) | Ice | Levitate | — | 515 | never |
 | 616 | [Shelmet](pokemon_0494-0649.md#0616-shelmet) | Bug | Hydration / Shell Armor | Overcoat | 305 | yes |
 | 617 | [Accelgor](pokemon_0494-0649.md#0617-accelgor) | Bug | Hydration / Sticky Hold | Unburden | 510 | yes |
-| 618 | [Stunfisk](pokemon_0494-0649.md#0618-stunfisk) | Ground / Electric | Static / Limber | Sand Veil | 471 | no |
+| 618 | [Stunfisk](pokemon_0494-0649.md#0618-stunfisk) | Ground / Electric | Static / Limber | Sand Veil | 471 | yes |
 | 619 | [Mienfoo](pokemon_0494-0649.md#0619-mienfoo) | Fighting | Inner Focus / Regenerator | Reckless | 350 | yes |
 | 620 | [Mienshao](pokemon_0494-0649.md#0620-mienshao) | Fighting | Inner Focus / Regenerator | Reckless | 510 | yes |
-| 621 | [Druddigon](pokemon_0494-0649.md#0621-druddigon) | Dragon | Rough Skin / Sheer Force | Mold Breaker | 485 | no |
+| 621 | [Druddigon](pokemon_0494-0649.md#0621-druddigon) | Dragon | Rough Skin / Sheer Force | Mold Breaker | 485 | never |
 | 622 | [Golett](pokemon_0494-0649.md#0622-golett) | Ground / Ghost | Iron Fist / No Guard | Unseen Fist | 303 | yes |
 | 623 | [Golurk](pokemon_0494-0649.md#0623-golurk) | Ground / Ghost | Iron Fist / No Guard | Unseen Fist | 515 | yes |
 | 624 | [Pawniard](pokemon_0494-0649.md#0624-pawniard) | Dark / Steel | Defiant / Inner Focus | Pressure | 340 | yes |
 | 625 | [Bisharp](pokemon_0494-0649.md#0625-bisharp) | Dark / Steel | Defiant / Inner Focus | Pressure | 490 | yes |
-| 626 | [Bouffalant](pokemon_0494-0649.md#0626-bouffalant) | Normal | Reckless / Sap Sipper | Soundproof | 490 | no |
+| 626 | [Bouffalant](pokemon_0494-0649.md#0626-bouffalant) | Normal | Reckless / Sap Sipper | Soundproof | 490 | never |
 | 627 | [Rufflet](pokemon_0494-0649.md#0627-rufflet) | Normal / Flying | Keen Eye / Sheer Force | Hustle | 350 | yes |
 | 628 | [Braviary](pokemon_0494-0649.md#0628-braviary) | Normal / Flying | Inner Focus / Sheer Force | Defiant | 540 | yes |
 | 629 | [Vullaby](pokemon_0494-0649.md#0629-vullaby) | Dark / Flying | Dark Skin / Overcoat | Weak Armor | 370 | yes |
@@ -658,15 +658,15 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 635 | [Hydreigon](pokemon_0494-0649.md#0635-hydreigon) | Dark / Dragon | Levitate | Soundproof | 600 | yes |
 | 636 | [Larvesta](pokemon_0494-0649.md#0636-larvesta) | Bug / Fire | Flame Body | Swarm | 360 | yes |
 | 637 | [Volcarona](pokemon_0494-0649.md#0637-volcarona) | Bug / Fire | Flame Body | Swarm | 555 | yes |
-| 638 | [Cobalion](pokemon_0494-0649.md#0638-cobalion) | Steel / Fighting | Justified | — | 580 | no |
-| 639 | [Terrakion](pokemon_0494-0649.md#0639-terrakion) | Rock / Fighting | Justified | — | 580 | no |
-| 640 | [Virizion](pokemon_0494-0649.md#0640-virizion) | Grass / Fighting | Justified | — | 580 | no |
-| 641 | [Tornadus](pokemon_0494-0649.md#0641-tornadus) | Flying | Prankster | Defiant | 580 | no |
-| 642 | [Thundurus](pokemon_0494-0649.md#0642-thundurus) | Electric / Flying | Prankster | Defiant | 580 | no |
-| 643 | [Reshiram](pokemon_0494-0649.md#0643-reshiram) | Dragon / Fire | Turboblaze | — | 680 | no |
-| 644 | [Zekrom](pokemon_0494-0649.md#0644-zekrom) | Dragon / Electric | Teravolt | — | 680 | no |
-| 645 | [Landorus](pokemon_0494-0649.md#0645-landorus) | Ground / Flying | Sand Force | Sheer Force | 600 | no |
-| 646 | [Kyurem](pokemon_0494-0649.md#0646-kyurem) | Dragon / Ice | Pressure | — | 660 | no |
+| 638 | [Cobalion](pokemon_0494-0649.md#0638-cobalion) | Steel / Fighting | Justified | — | 580 | never |
+| 639 | [Terrakion](pokemon_0494-0649.md#0639-terrakion) | Rock / Fighting | Justified | — | 580 | never |
+| 640 | [Virizion](pokemon_0494-0649.md#0640-virizion) | Grass / Fighting | Justified | — | 580 | never |
+| 641 | [Tornadus](pokemon_0494-0649.md#0641-tornadus) | Flying | Prankster | Defiant | 580 | never |
+| 642 | [Thundurus](pokemon_0494-0649.md#0642-thundurus) | Electric / Flying | Prankster | Defiant | 580 | never |
+| 643 | [Reshiram](pokemon_0494-0649.md#0643-reshiram) | Dragon / Fire | Turboblaze | — | 680 | never |
+| 644 | [Zekrom](pokemon_0494-0649.md#0644-zekrom) | Dragon / Electric | Teravolt | — | 680 | never |
+| 645 | [Landorus](pokemon_0494-0649.md#0645-landorus) | Ground / Flying | Sand Force | Sheer Force | 600 | never |
+| 646 | [Kyurem](pokemon_0494-0649.md#0646-kyurem) | Dragon / Ice | Pressure | — | 660 | never |
 | 647 | [Keldeo](pokemon_0494-0649.md#0647-keldeo) | Water / Fighting | Justified | — | 580 | no |
 | 648 | [Meloetta](pokemon_0494-0649.md#0648-meloetta) | Normal / Psychic | Serene Grace | — | 600 | no |
 | 649 | [Genesect](pokemon_0494-0649.md#0649-genesect) | Bug / Steel | Download | — | 600 | no |
@@ -687,27 +687,27 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 664 | [Scatterbug](pokemon_0650-0721.md#0664-scatterbug) | Bug | Shield Dust / Compound Eyes | Friend Guard | 200 | yes |
 | 665 | [Spewpa](pokemon_0650-0721.md#0665-spewpa) | Bug | Shed Skin | Friend Guard | 213 | yes |
 | 666 | [Vivillon](pokemon_0650-0721.md#0666-vivillon) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 476 | yes |
-| 667 | [Litleo](pokemon_0650-0721.md#0667-litleo) | Fire / Normal | Rivalry / Unnerve | Moxie | 369 | no |
-| 668 | [Pyroar](pokemon_0650-0721.md#0668-pyroar) | Fire / Normal | Rivalry / Unnerve | Moxie | 507 | no |
+| 667 | [Litleo](pokemon_0650-0721.md#0667-litleo) | Fire / Normal | Rivalry / Unnerve | Moxie | 369 | never |
+| 668 | [Pyroar](pokemon_0650-0721.md#0668-pyroar) | Fire / Normal | Rivalry / Unnerve | Moxie | 507 | never |
 | 669 | [Flabébé](pokemon_0650-0721.md#0669-flabb) | Fairy / Grass | Flower Veil / Grassy Surge | Leaf Guard | 303 | yes |
 | 670 | [Floette](pokemon_0650-0721.md#0670-floette) | Fairy / Grass | Flower Veil / Grassy Surge | Leaf Guard | 411 | yes |
 | 671 | [Florges](pokemon_0650-0721.md#0671-florges) | Fairy / Grass | Flower Veil / Grassy Surge | Triage | 555 | yes |
-| 672 | [Skiddo](pokemon_0650-0721.md#0672-skiddo) | Grass | Sap Sipper | Grass Pelt | 350 | no |
-| 673 | [Gogoat](pokemon_0650-0721.md#0673-gogoat) | Grass | Sap Sipper | Grass Pelt | 531 | no |
-| 674 | [Pancham](pokemon_0650-0721.md#0674-pancham) | Fighting | Iron Fist / Mold Breaker | Scrappy | 348 | no |
-| 675 | [Pangoro](pokemon_0650-0721.md#0675-pangoro) | Fighting / Dark | Iron Fist / Mold Breaker | Scrappy | 495 | no |
+| 672 | [Skiddo](pokemon_0650-0721.md#0672-skiddo) | Grass | Sap Sipper | Grass Pelt | 350 | never |
+| 673 | [Gogoat](pokemon_0650-0721.md#0673-gogoat) | Grass | Sap Sipper | Grass Pelt | 531 | never |
+| 674 | [Pancham](pokemon_0650-0721.md#0674-pancham) | Fighting | Iron Fist / Mold Breaker | Scrappy | 348 | never |
+| 675 | [Pangoro](pokemon_0650-0721.md#0675-pangoro) | Fighting / Dark | Iron Fist / Mold Breaker | Scrappy | 495 | never |
 | 676 | [Furfrou](pokemon_0650-0721.md#0676-furfrou) | Normal | Fur Coat | — | 517 | yes |
-| 677 | [Espurr](pokemon_0650-0721.md#0677-espurr) | Psychic | Keen Eye / Infiltrator | Own Tempo | 355 | no |
-| 678 | [Meowstic](pokemon_0650-0721.md#0678-meowstic) | Psychic | Keen Eye / Infiltrator | Prankster | 466 | no |
+| 677 | [Espurr](pokemon_0650-0721.md#0677-espurr) | Psychic | Keen Eye / Infiltrator | Own Tempo | 355 | never |
+| 678 | [Meowstic](pokemon_0650-0721.md#0678-meowstic) | Psychic | Keen Eye / Infiltrator | Prankster | 466 | never |
 | 679 | [Honedge](pokemon_0650-0721.md#0679-honedge) | Steel / Ghost | No Guard | — | 325 | yes |
 | 680 | [Doublade](pokemon_0650-0721.md#0680-doublade) | Steel / Ghost | No Guard | — | 448 | yes |
 | 681 | [Aegislash](pokemon_0650-0721.md#0681-aegislash) | Steel / Ghost | Stance Change | — | 500 | yes |
-| 682 | [Spritzee](pokemon_0650-0721.md#0682-spritzee) | Fairy | Healer | Aroma Veil | 341 | no |
-| 683 | [Aromatisse](pokemon_0650-0721.md#0683-aromatisse) | Fairy | Healer | Aroma Veil | 462 | no |
-| 684 | [Swirlix](pokemon_0650-0721.md#0684-swirlix) | Fairy | Sweet Veil | Unburden | 341 | no |
-| 685 | [Slurpuff](pokemon_0650-0721.md#0685-slurpuff) | Fairy | Sweet Veil | Unburden | 480 | no |
-| 686 | [Inkay](pokemon_0650-0721.md#0686-inkay) | Dark / Psychic | Contrary / Suction Cups | Infiltrator | 288 | no |
-| 687 | [Malamar](pokemon_0650-0721.md#0687-malamar) | Dark / Psychic | Contrary / Suction Cups | Infiltrator | 482 | no |
+| 682 | [Spritzee](pokemon_0650-0721.md#0682-spritzee) | Fairy | Healer | Aroma Veil | 341 | never |
+| 683 | [Aromatisse](pokemon_0650-0721.md#0683-aromatisse) | Fairy | Healer | Aroma Veil | 462 | never |
+| 684 | [Swirlix](pokemon_0650-0721.md#0684-swirlix) | Fairy | Sweet Veil | Unburden | 341 | never |
+| 685 | [Slurpuff](pokemon_0650-0721.md#0685-slurpuff) | Fairy | Sweet Veil | Unburden | 480 | never |
+| 686 | [Inkay](pokemon_0650-0721.md#0686-inkay) | Dark / Psychic | Contrary / Suction Cups | Infiltrator | 288 | never |
+| 687 | [Malamar](pokemon_0650-0721.md#0687-malamar) | Dark / Psychic | Contrary / Suction Cups | Infiltrator | 482 | never |
 | 688 | [Binacle](pokemon_0650-0721.md#0688-binacle) | Rock / Water | Tough Claws / Sniper | Pickpocket | 306 | yes |
 | 689 | [Barbaracle](pokemon_0650-0721.md#0689-barbaracle) | Rock / Water | Tough Claws / Sniper | Pickpocket | 528 | yes |
 | 690 | [Skrelp](pokemon_0650-0721.md#0690-skrelp) | Poison / Water | Poison Point / Adaptability | Regenerator | 320 | yes |
@@ -716,32 +716,32 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 693 | [Clawitzer](pokemon_0650-0721.md#0693-clawitzer) | Water / Dark | Mega Launcher | — | 530 | yes |
 | 694 | [Helioptile](pokemon_0650-0721.md#0694-helioptile) | Electric / Normal | Dry Skin / Sand Veil | Surge Surfer | 289 | yes |
 | 695 | [Heliolisk](pokemon_0650-0721.md#0695-heliolisk) | Electric / Normal | Dry Skin / Sand Rush | Surge Surfer | 499 | yes |
-| 696 | [Tyrunt](pokemon_0650-0721.md#0696-tyrunt) | Rock / Dragon | Strong Jaw | Sturdy | 362 | no |
-| 697 | [Tyrantrum](pokemon_0650-0721.md#0697-tyrantrum) | Rock / Dragon | Strong Jaw | Rock Head | 521 | no |
+| 696 | [Tyrunt](pokemon_0650-0721.md#0696-tyrunt) | Rock / Dragon | Strong Jaw | Sturdy | 362 | never |
+| 697 | [Tyrantrum](pokemon_0650-0721.md#0697-tyrantrum) | Rock / Dragon | Strong Jaw | Rock Head | 521 | never |
 | 698 | [Amaura](pokemon_0650-0721.md#0698-amaura) | Rock / Ice | Refrigerate / Solid Rock | Snow Warning | 362 | yes |
 | 699 | [Aurorus](pokemon_0650-0721.md#0699-aurorus) | Dragon / Ice | Refrigerate / Solid Rock | Snow Warning | 600 | yes |
 | 700 | [Sylveon](pokemon_0650-0721.md#0700-sylveon) | Fairy | Cute Charm | Pixilate | 535 | yes |
-| 701 | [Hawlucha](pokemon_0650-0721.md#0701-hawlucha) | Fighting / Flying | Limber / Unburden | Mold Breaker | 500 | no |
+| 701 | [Hawlucha](pokemon_0650-0721.md#0701-hawlucha) | Fighting / Flying | Limber / Unburden | Mold Breaker | 500 | never |
 | 702 | [Dedenne](pokemon_0650-0721.md#0702-dedenne) | Electric / Fairy | Cheek Pouch / Pickup | Plus | 431 | yes |
 | 703 | [Carbink](pokemon_0650-0721.md#0703-carbink) | Rock / Fairy | Clear Body | Sturdy | 525 | yes |
 | 704 | [Goomy](pokemon_0650-0721.md#0704-goomy) | Dragon | Sap Sipper / Hydration | Gooey | 300 | yes |
 | 705 | [Sliggoo](pokemon_0650-0721.md#0705-sliggoo) | Dragon / Water | Sap Sipper / Hydration | Gooey | 444 | yes |
 | 706 | [Goodra](pokemon_0650-0721.md#0706-goodra) | Dragon / Water | Sap Sipper / Hydration | Thick Fat | 600 | yes |
-| 707 | [Klefki](pokemon_0650-0721.md#0707-klefki) | Steel / Fairy | Prankster | Magician | 470 | no |
+| 707 | [Klefki](pokemon_0650-0721.md#0707-klefki) | Steel / Fairy | Prankster | Magician | 470 | never |
 | 708 | [Phantump](pokemon_0650-0721.md#0708-phantump) | Ghost / Grass | Natural Cure / Frisk | Harvest | 309 | yes |
 | 709 | [Trevenant](pokemon_0650-0721.md#0709-trevenant) | Ghost / Grass | Natural Cure / Frisk | Harvest | 504 | yes |
-| 710 | [Pumpkaboo](pokemon_0650-0721.md#0710-pumpkaboo) | Ghost / Grass | Pickup / Frisk | — | 335 | no |
-| 711 | [Gourgeist](pokemon_0650-0721.md#0711-gourgeist) | Ghost / Grass | Pickup / Frisk | — | 494 | no |
+| 710 | [Pumpkaboo](pokemon_0650-0721.md#0710-pumpkaboo) | Ghost / Grass | Pickup / Frisk | — | 335 | never |
+| 711 | [Gourgeist](pokemon_0650-0721.md#0711-gourgeist) | Ghost / Grass | Pickup / Frisk | — | 494 | never |
 | 712 | [Bergmite](pokemon_0650-0721.md#0712-bergmite) | Ice | Own Tempo / Ice Body | Sturdy | 304 | yes |
 | 713 | [Avalugg](pokemon_0650-0721.md#0713-avalugg) | Ice / Rock | Own Tempo / Ice Body | Sturdy | 555 | yes |
 | 714 | [Noibat](pokemon_0650-0721.md#0714-noibat) | Flying / Dragon | Frisk / Infiltrator | Aerilate | 245 | yes |
 | 715 | [Noivern](pokemon_0650-0721.md#0715-noivern) | Flying / Dragon | Frisk / Infiltrator | Aerilate | 535 | yes |
-| 716 | [Xerneas](pokemon_0650-0721.md#0716-xerneas) | Fairy | Fairy Aura | — | 680 | no |
-| 717 | [Yveltal](pokemon_0650-0721.md#0717-yveltal) | Dark / Flying | Dark Aura | — | 680 | no |
-| 718 | [Zygarde](pokemon_0650-0721.md#0718-zygarde) | Dragon / Ground | Aura Break / Power Construct | — | 600 | no |
+| 716 | [Xerneas](pokemon_0650-0721.md#0716-xerneas) | Fairy | Fairy Aura | — | 680 | never |
+| 717 | [Yveltal](pokemon_0650-0721.md#0717-yveltal) | Dark / Flying | Dark Aura | — | 680 | never |
+| 718 | [Zygarde](pokemon_0650-0721.md#0718-zygarde) | Dragon / Ground | Aura Break / Power Construct | — | 600 | never |
 | 719 | [Diancie](pokemon_0650-0721.md#0719-diancie) | Rock / Fairy | Clear Body | — | 600 | no |
 | 720 | [Hoopa](pokemon_0650-0721.md#0720-hoopa) | Psychic / Ghost | Magician | — | 600 | no |
-| 721 | [Volcanion](pokemon_0650-0721.md#0721-volcanion) | Fire / Water | Water Absorb | — | 600 | no |
+| 721 | [Volcanion](pokemon_0650-0721.md#0721-volcanion) | Fire / Water | Water Absorb | — | 600 | never |
 | 722 | [Rowlet](pokemon_0722-0809.md#0722-rowlet) | Grass / Flying | Overgrow | Long Reach | 320 | yes |
 | 723 | [Dartrix](pokemon_0722-0809.md#0723-dartrix) | Grass / Flying | Overgrow | Long Reach | 420 | yes |
 | 724 | [Decidueye](pokemon_0722-0809.md#0724-decidueye) | Grass / Ghost | Overgrow | Long Reach | 535 | yes |
@@ -761,12 +761,12 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 738 | [Vikavolt](pokemon_0722-0809.md#0738-vikavolt) | Bug / Electric | Levitate / Mega Launcher | Surge Surfer | 500 | yes |
 | 739 | [Crabrawler](pokemon_0722-0809.md#0739-crabrawler) | Fighting | Hyper Cutter / Iron Fist | Anger Point | 338 | yes |
 | 740 | [Crabominable](pokemon_0722-0809.md#0740-crabominable) | Fighting / Ice | Hyper Cutter / Iron Fist | Anger Point | 518 | yes |
-| 741 | [Oricorio](pokemon_0722-0809.md#0741-oricorio) | Fire / Flying | Dancer | — | 476 | no |
+| 741 | [Oricorio](pokemon_0722-0809.md#0741-oricorio) | Fire / Flying | Dancer | — | 476 | never |
 | 742 | [Cutiefly](pokemon_0722-0809.md#0742-cutiefly) | Bug / Fairy | Honey Gather / Shield Dust | Sweet Veil | 304 | yes |
 | 743 | [Ribombee](pokemon_0722-0809.md#0743-ribombee) | Bug / Fairy | Honey Gather / Shield Dust | Sweet Veil | 464 | yes |
 | 744 | [Rockruff](pokemon_0722-0809.md#0744-rockruff) | Rock | Sand Veil | Own Tempo | 280 | yes |
 | 745 | [Lycanroc](pokemon_0722-0809.md#0745-lycanroc) | Rock | Keen Eye / Sand Rush | Steadfast | 487 | yes |
-| 746 | [Wishiwashi](pokemon_0722-0809.md#0746-wishiwashi) | Water | Schooling | — | 175 | no |
+| 746 | [Wishiwashi](pokemon_0722-0809.md#0746-wishiwashi) | Water | Schooling | — | 175 | never |
 | 747 | [Mareanie](pokemon_0722-0809.md#0747-mareanie) | Poison / Water | Merciless / Limber | Regenerator | 305 | yes |
 | 748 | [Toxapex](pokemon_0722-0809.md#0748-toxapex) | Poison / Water | Merciless / Limber | Regenerator | 500 | yes |
 | 749 | [Mudbray](pokemon_0722-0809.md#0749-mudbray) | Ground | Own Tempo / Stamina | Inner Focus | 385 | yes |
@@ -784,19 +784,19 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 761 | [Bounsweet](pokemon_0722-0809.md#0761-bounsweet) | Grass | Leaf Guard / Oblivious | Flower Veil | 210 | yes |
 | 762 | [Steenee](pokemon_0722-0809.md#0762-steenee) | Grass | Leaf Guard / Oblivious | Flower Veil | 290 | yes |
 | 763 | [Tsareena](pokemon_0722-0809.md#0763-tsareena) | Grass / Fighting | Leaf Guard / Queenly Majesty | Sweet Veil | 510 | yes |
-| 764 | [Comfey](pokemon_0722-0809.md#0764-comfey) | Fairy | Flower Veil / Triage | Natural Cure | 485 | no |
-| 765 | [Oranguru](pokemon_0722-0809.md#0765-oranguru) | Normal / Psychic | Inner Focus / Telepathy | Symbiosis | 490 | no |
-| 766 | [Passimian](pokemon_0722-0809.md#0766-passimian) | Fighting | Receiver | Defiant | 490 | no |
-| 767 | [Wimpod](pokemon_0722-0809.md#0767-wimpod) | Bug / Water | Wimp Out | — | 230 | no |
-| 768 | [Golisopod](pokemon_0722-0809.md#0768-golisopod) | Bug / Water | Emergency Exit | — | 530 | no |
+| 764 | [Comfey](pokemon_0722-0809.md#0764-comfey) | Fairy | Flower Veil / Triage | Natural Cure | 485 | never |
+| 765 | [Oranguru](pokemon_0722-0809.md#0765-oranguru) | Normal / Psychic | Inner Focus / Telepathy | Symbiosis | 490 | never |
+| 766 | [Passimian](pokemon_0722-0809.md#0766-passimian) | Fighting | Receiver | Defiant | 490 | never |
+| 767 | [Wimpod](pokemon_0722-0809.md#0767-wimpod) | Bug / Water | Wimp Out | — | 230 | never |
+| 768 | [Golisopod](pokemon_0722-0809.md#0768-golisopod) | Bug / Water | Emergency Exit | — | 530 | never |
 | 769 | [Sandygast](pokemon_0722-0809.md#0769-sandygast) | Ghost / Ground | Water Compaction | Sand Veil | 320 | yes |
 | 770 | [Palossand](pokemon_0722-0809.md#0770-palossand) | Ghost / Ground | Water Compaction | Sand Veil | 480 | yes |
 | 771 | [Pyukumuku](pokemon_0722-0809.md#0771-pyukumuku) | Water | Innards Out | Unaware | 410 | yes |
-| 772 | [Type: Null](pokemon_0722-0809.md#0772-type-null) | Normal | Battle Armor | — | 534 | no |
-| 773 | [Silvally](pokemon_0722-0809.md#0773-silvally) | Normal | RKS System | — | 570 | no |
-| 774 | [Minior](pokemon_0722-0809.md#0774-minior) | Rock / Flying | Shields Down | — | 440 | no |
+| 772 | [Type: Null](pokemon_0722-0809.md#0772-type-null) | Normal | Battle Armor | — | 534 | never |
+| 773 | [Silvally](pokemon_0722-0809.md#0773-silvally) | Normal | RKS System | — | 570 | never |
+| 774 | [Minior](pokemon_0722-0809.md#0774-minior) | Rock / Flying | Shields Down | — | 440 | never |
 | 775 | [Komala](pokemon_0722-0809.md#0775-komala) | Normal | Comatose | — | 510 | yes |
-| 776 | [Turtonator](pokemon_0722-0809.md#0776-turtonator) | Fire / Dragon | Shell Armor | — | 485 | no |
+| 776 | [Turtonator](pokemon_0722-0809.md#0776-turtonator) | Fire / Dragon | Shell Armor | — | 485 | never |
 | 777 | [Togedemaru](pokemon_0722-0809.md#0777-togedemaru) | Electric / Steel | Iron Barbs / Lightning Rod | Sturdy | 435 | yes |
 | 778 | [Mimikyu](pokemon_0722-0809.md#0778-mimikyu) | Ghost / Fairy | Disguise | — | 476 | yes |
 | 779 | [Bruxish](pokemon_0722-0809.md#0779-bruxish) | Water / Psychic | Dazzling / Strong Jaw | Wonder Skin | 475 | yes |
@@ -805,77 +805,77 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 782 | [Jangmo-o](pokemon_0722-0809.md#0782-jangmo-o) | Dragon | Bulletproof / Soundproof | Overcoat | 300 | yes |
 | 783 | [Hakamo-o](pokemon_0722-0809.md#0783-hakamo-o) | Dragon / Fighting | Bulletproof / Soundproof | Overcoat | 420 | yes |
 | 784 | [Kommo-o](pokemon_0722-0809.md#0784-kommo-o) | Dragon / Fighting | Bulletproof / Soundproof | Overcoat | 600 | yes |
-| 785 | [Tapu Koko](pokemon_0722-0809.md#0785-tapu-koko) | Electric / Fairy | Electric Surge | Telepathy | 570 | no |
-| 786 | [Tapu Lele](pokemon_0722-0809.md#0786-tapu-lele) | Psychic / Fairy | Psychic Surge | Telepathy | 570 | no |
-| 787 | [Tapu Bulu](pokemon_0722-0809.md#0787-tapu-bulu) | Grass / Fairy | Grassy Surge | Telepathy | 570 | no |
-| 788 | [Tapu Fini](pokemon_0722-0809.md#0788-tapu-fini) | Water / Fairy | Misty Surge | Telepathy | 570 | no |
-| 789 | [Cosmog](pokemon_0722-0809.md#0789-cosmog) | Psychic | Unaware | — | 200 | no |
-| 790 | [Cosmoem](pokemon_0722-0809.md#0790-cosmoem) | Psychic | Sturdy | — | 400 | no |
-| 791 | [Solgaleo](pokemon_0722-0809.md#0791-solgaleo) | Psychic / Steel | Full Metal Body | — | 680 | no |
-| 792 | [Lunala](pokemon_0722-0809.md#0792-lunala) | Psychic / Ghost | Shadow Shield | — | 680 | no |
-| 793 | [Nihilego](pokemon_0722-0809.md#0793-nihilego) | Rock / Poison | Beast Boost | — | 570 | no |
-| 794 | [Buzzwole](pokemon_0722-0809.md#0794-buzzwole) | Bug / Fighting | Beast Boost | — | 570 | no |
-| 795 | [Pheromosa](pokemon_0722-0809.md#0795-pheromosa) | Bug / Fighting | Beast Boost | — | 570 | no |
-| 796 | [Xurkitree](pokemon_0722-0809.md#0796-xurkitree) | Electric | Beast Boost | — | 570 | no |
-| 797 | [Celesteela](pokemon_0722-0809.md#0797-celesteela) | Steel / Flying | Beast Boost | — | 570 | no |
-| 798 | [Kartana](pokemon_0722-0809.md#0798-kartana) | Grass / Steel | Beast Boost | — | 570 | no |
-| 799 | [Guzzlord](pokemon_0722-0809.md#0799-guzzlord) | Dark / Dragon | Beast Boost | — | 570 | no |
-| 800 | [Necrozma](pokemon_0722-0809.md#0800-necrozma) | Psychic | Prism Armor | — | 600 | no |
-| 801 | [Magearna](pokemon_0722-0809.md#0801-magearna) | Steel / Fairy | Soul-Heart | — | 600 | no |
-| 802 | [Marshadow](pokemon_0722-0809.md#0802-marshadow) | Fighting / Ghost | Technician | — | 600 | no |
-| 803 | [Poipole](pokemon_0722-0809.md#0803-poipole) | Poison | Beast Boost | — | 420 | no |
-| 804 | [Naganadel](pokemon_0722-0809.md#0804-naganadel) | Poison / Dragon | Beast Boost | — | 540 | no |
-| 805 | [Stakataka](pokemon_0722-0809.md#0805-stakataka) | Rock / Steel | Beast Boost | — | 570 | no |
-| 806 | [Blacephalon](pokemon_0722-0809.md#0806-blacephalon) | Fire / Ghost | Beast Boost | — | 570 | no |
-| 807 | [Zeraora](pokemon_0722-0809.md#0807-zeraora) | Electric | Volt Absorb | — | 600 | no |
-| 808 | [Meltan](pokemon_0722-0809.md#0808-meltan) | Steel | Magnet Pull | — | 300 | no |
-| 809 | [Melmetal](pokemon_0722-0809.md#0809-melmetal) | Steel | Iron Fist | — | 600 | no |
-| 810 | [Grookey](pokemon_0810-0905.md#0810-grookey) | Grass | Overgrow | Grassy Surge | 310 | no |
-| 811 | [Thwackey](pokemon_0810-0905.md#0811-thwackey) | Grass | Overgrow | Grassy Surge | 420 | no |
-| 812 | [Rillaboom](pokemon_0810-0905.md#0812-rillaboom) | Grass | Overgrow | Grassy Surge | 530 | no |
-| 813 | [Scorbunny](pokemon_0810-0905.md#0813-scorbunny) | Fire | Blaze | Libero | 310 | no |
-| 814 | [Raboot](pokemon_0810-0905.md#0814-raboot) | Fire | Blaze | Libero | 420 | no |
-| 815 | [Cinderace](pokemon_0810-0905.md#0815-cinderace) | Fire | Blaze | Libero | 530 | no |
-| 816 | [Sobble](pokemon_0810-0905.md#0816-sobble) | Water | Torrent | Sniper | 310 | no |
-| 817 | [Drizzile](pokemon_0810-0905.md#0817-drizzile) | Water | Torrent | Sniper | 420 | no |
-| 818 | [Inteleon](pokemon_0810-0905.md#0818-inteleon) | Water | Torrent | Sniper | 530 | no |
+| 785 | [Tapu Koko](pokemon_0722-0809.md#0785-tapu-koko) | Electric / Fairy | Electric Surge | Telepathy | 570 | never |
+| 786 | [Tapu Lele](pokemon_0722-0809.md#0786-tapu-lele) | Psychic / Fairy | Psychic Surge | Telepathy | 570 | never |
+| 787 | [Tapu Bulu](pokemon_0722-0809.md#0787-tapu-bulu) | Grass / Fairy | Grassy Surge | Telepathy | 570 | never |
+| 788 | [Tapu Fini](pokemon_0722-0809.md#0788-tapu-fini) | Water / Fairy | Misty Surge | Telepathy | 570 | never |
+| 789 | [Cosmog](pokemon_0722-0809.md#0789-cosmog) | Psychic | Unaware | — | 200 | never |
+| 790 | [Cosmoem](pokemon_0722-0809.md#0790-cosmoem) | Psychic | Sturdy | — | 400 | never |
+| 791 | [Solgaleo](pokemon_0722-0809.md#0791-solgaleo) | Psychic / Steel | Full Metal Body | — | 680 | never |
+| 792 | [Lunala](pokemon_0722-0809.md#0792-lunala) | Psychic / Ghost | Shadow Shield | — | 680 | never |
+| 793 | [Nihilego](pokemon_0722-0809.md#0793-nihilego) | Rock / Poison | Beast Boost | — | 570 | never |
+| 794 | [Buzzwole](pokemon_0722-0809.md#0794-buzzwole) | Bug / Fighting | Beast Boost | — | 570 | never |
+| 795 | [Pheromosa](pokemon_0722-0809.md#0795-pheromosa) | Bug / Fighting | Beast Boost | — | 570 | never |
+| 796 | [Xurkitree](pokemon_0722-0809.md#0796-xurkitree) | Electric | Beast Boost | — | 570 | never |
+| 797 | [Celesteela](pokemon_0722-0809.md#0797-celesteela) | Steel / Flying | Beast Boost | — | 570 | never |
+| 798 | [Kartana](pokemon_0722-0809.md#0798-kartana) | Grass / Steel | Beast Boost | — | 570 | never |
+| 799 | [Guzzlord](pokemon_0722-0809.md#0799-guzzlord) | Dark / Dragon | Beast Boost | — | 570 | never |
+| 800 | [Necrozma](pokemon_0722-0809.md#0800-necrozma) | Psychic | Prism Armor | — | 600 | never |
+| 801 | [Magearna](pokemon_0722-0809.md#0801-magearna) | Steel / Fairy | Soul-Heart | — | 600 | never |
+| 802 | [Marshadow](pokemon_0722-0809.md#0802-marshadow) | Fighting / Ghost | Technician | — | 600 | never |
+| 803 | [Poipole](pokemon_0722-0809.md#0803-poipole) | Poison | Beast Boost | — | 420 | never |
+| 804 | [Naganadel](pokemon_0722-0809.md#0804-naganadel) | Poison / Dragon | Beast Boost | — | 540 | never |
+| 805 | [Stakataka](pokemon_0722-0809.md#0805-stakataka) | Rock / Steel | Beast Boost | — | 570 | never |
+| 806 | [Blacephalon](pokemon_0722-0809.md#0806-blacephalon) | Fire / Ghost | Beast Boost | — | 570 | never |
+| 807 | [Zeraora](pokemon_0722-0809.md#0807-zeraora) | Electric | Volt Absorb | — | 600 | never |
+| 808 | [Meltan](pokemon_0722-0809.md#0808-meltan) | Steel | Magnet Pull | — | 300 | never |
+| 809 | [Melmetal](pokemon_0722-0809.md#0809-melmetal) | Steel | Iron Fist | — | 600 | never |
+| 810 | [Grookey](pokemon_0810-0905.md#0810-grookey) | Grass | Overgrow | Grassy Surge | 310 | never |
+| 811 | [Thwackey](pokemon_0810-0905.md#0811-thwackey) | Grass | Overgrow | Grassy Surge | 420 | never |
+| 812 | [Rillaboom](pokemon_0810-0905.md#0812-rillaboom) | Grass | Overgrow | Grassy Surge | 530 | never |
+| 813 | [Scorbunny](pokemon_0810-0905.md#0813-scorbunny) | Fire | Blaze | Libero | 310 | never |
+| 814 | [Raboot](pokemon_0810-0905.md#0814-raboot) | Fire | Blaze | Libero | 420 | never |
+| 815 | [Cinderace](pokemon_0810-0905.md#0815-cinderace) | Fire | Blaze | Libero | 530 | never |
+| 816 | [Sobble](pokemon_0810-0905.md#0816-sobble) | Water | Torrent | Sniper | 310 | never |
+| 817 | [Drizzile](pokemon_0810-0905.md#0817-drizzile) | Water | Torrent | Sniper | 420 | never |
+| 818 | [Inteleon](pokemon_0810-0905.md#0818-inteleon) | Water | Torrent | Sniper | 530 | never |
 | 819 | [Skwovet](pokemon_0810-0905.md#0819-skwovet) | Normal | Cheek Pouch | Gluttony | 275 | yes |
 | 820 | [Greedent](pokemon_0810-0905.md#0820-greedent) | Normal | Cheek Pouch | Gluttony | 460 | yes |
-| 821 | [Rookidee](pokemon_0810-0905.md#0821-rookidee) | Flying | Keen Eye / Unnerve | Big Pecks | 245 | no |
-| 822 | [Corvisquire](pokemon_0810-0905.md#0822-corvisquire) | Flying | Keen Eye / Unnerve | Big Pecks | 365 | no |
-| 823 | [Corviknight](pokemon_0810-0905.md#0823-corviknight) | Flying / Steel | Pressure / Unnerve | Mirror Armor | 495 | no |
+| 821 | [Rookidee](pokemon_0810-0905.md#0821-rookidee) | Flying | Keen Eye / Unnerve | Big Pecks | 245 | never |
+| 822 | [Corvisquire](pokemon_0810-0905.md#0822-corvisquire) | Flying | Keen Eye / Unnerve | Big Pecks | 365 | never |
+| 823 | [Corviknight](pokemon_0810-0905.md#0823-corviknight) | Flying / Steel | Pressure / Unnerve | Mirror Armor | 495 | never |
 | 824 | [Blipbug](pokemon_0810-0905.md#0824-blipbug) | Bug | Swarm / Compound Eyes | Telepathy | 180 | yes |
 | 825 | [Dottler](pokemon_0810-0905.md#0825-dottler) | Bug / Psychic | Swarm / Compound Eyes | Telepathy | 335 | yes |
 | 826 | [Orbeetle](pokemon_0810-0905.md#0826-orbeetle) | Bug / Psychic | Swarm / Frisk | Telepathy | 525 | yes |
-| 827 | [Nickit](pokemon_0810-0905.md#0827-nickit) | Dark | Run Away / Unburden | Stakeout | 245 | no |
-| 828 | [Thievul](pokemon_0810-0905.md#0828-thievul) | Dark | Run Away / Unburden | Stakeout | 455 | no |
-| 829 | [Gossifleur](pokemon_0810-0905.md#0829-gossifleur) | Grass | Cotton Down / Regenerator | Effect Spore | 250 | no |
-| 830 | [Eldegoss](pokemon_0810-0905.md#0830-eldegoss) | Grass | Cotton Down / Regenerator | Effect Spore | 460 | no |
+| 827 | [Nickit](pokemon_0810-0905.md#0827-nickit) | Dark | Run Away / Unburden | Stakeout | 245 | never |
+| 828 | [Thievul](pokemon_0810-0905.md#0828-thievul) | Dark | Run Away / Unburden | Stakeout | 455 | never |
+| 829 | [Gossifleur](pokemon_0810-0905.md#0829-gossifleur) | Grass | Cotton Down / Regenerator | Effect Spore | 250 | never |
+| 830 | [Eldegoss](pokemon_0810-0905.md#0830-eldegoss) | Grass | Cotton Down / Regenerator | Effect Spore | 460 | never |
 | 831 | [Wooloo](pokemon_0810-0905.md#0831-wooloo) | Normal | Fluffy / Run Away | Bulletproof | 270 | yes |
 | 832 | [Dubwool](pokemon_0810-0905.md#0832-dubwool) | Normal | Fluffy / Steadfast | Bulletproof | 495 | yes |
 | 833 | [Chewtle](pokemon_0810-0905.md#0833-chewtle) | Water | Strong Jaw / Shell Armor | Swift Swim | 284 | yes |
 | 834 | [Drednaw](pokemon_0810-0905.md#0834-drednaw) | Water / Rock | Strong Jaw / Shell Armor | Swift Swim | 495 | yes |
-| 835 | [Yamper](pokemon_0810-0905.md#0835-yamper) | Electric | Ball Fetch | Rattled | 270 | no |
-| 836 | [Boltund](pokemon_0810-0905.md#0836-boltund) | Electric | Strong Jaw | Competitive | 490 | no |
+| 835 | [Yamper](pokemon_0810-0905.md#0835-yamper) | Electric | Ball Fetch | Rattled | 270 | never |
+| 836 | [Boltund](pokemon_0810-0905.md#0836-boltund) | Electric | Strong Jaw | Competitive | 490 | never |
 | 837 | [Rolycoly](pokemon_0810-0905.md#0837-rolycoly) | Rock | Steam Engine / Heatproof | Flash Fire | 240 | yes |
 | 838 | [Carkol](pokemon_0810-0905.md#0838-carkol) | Rock / Fire | Steam Engine / Flame Body | Flash Fire | 410 | yes |
 | 839 | [Coalossal](pokemon_0810-0905.md#0839-coalossal) | Rock / Fire | Steam Engine / Flame Body | Flash Fire | 540 | yes |
 | 840 | [Applin](pokemon_0810-0905.md#0840-applin) | Grass / Dragon | Hustle / Frisk | Gluttony | 260 | yes |
-| 841 | [Flapple](pokemon_0810-0905.md#0841-flapple) | Grass / Dragon | Ripen / Gluttony | Hustle | 485 | yes |
-| 842 | [Appletun](pokemon_0810-0905.md#0842-appletun) | Grass / Dragon | Ripen / Gluttony | Thick Fat | 485 | yes |
-| 843 | [Silicobra](pokemon_0810-0905.md#0843-silicobra) | Ground | Sand Spit / Shed Skin | Sand Veil | 315 | no |
-| 844 | [Sandaconda](pokemon_0810-0905.md#0844-sandaconda) | Ground | Sand Spit / Shed Skin | Sand Veil | 510 | no |
-| 845 | [Cramorant](pokemon_0810-0905.md#0845-cramorant) | Flying / Water | Gulp Missile | — | 475 | no |
+| 841 | [Flapple](pokemon_0810-0905.md#0841-flapple) | Grass / Dragon | Ripen / Gluttony | Hustle | 485 | never |
+| 842 | [Appletun](pokemon_0810-0905.md#0842-appletun) | Grass / Dragon | Ripen / Gluttony | Thick Fat | 485 | never |
+| 843 | [Silicobra](pokemon_0810-0905.md#0843-silicobra) | Ground | Sand Spit / Shed Skin | Sand Veil | 315 | never |
+| 844 | [Sandaconda](pokemon_0810-0905.md#0844-sandaconda) | Ground | Sand Spit / Shed Skin | Sand Veil | 510 | never |
+| 845 | [Cramorant](pokemon_0810-0905.md#0845-cramorant) | Flying / Water | Gulp Missile | — | 475 | never |
 | 846 | [Arrokuda](pokemon_0810-0905.md#0846-arrokuda) | Water | Swift Swim | Propeller Tail | 280 | yes |
 | 847 | [Barraskewda](pokemon_0810-0905.md#0847-barraskewda) | Water | Swift Swim | Propeller Tail | 490 | yes |
 | 848 | [Toxel](pokemon_0810-0905.md#0848-toxel) | Electric / Poison | Rattled / Static | Klutz | 242 | yes |
 | 849 | [Toxtricity](pokemon_0810-0905.md#0849-toxtricity) | Electric / Poison | Punk Rock / Plus | Technician | 502 | yes |
 | 850 | [Sizzlipede](pokemon_0810-0905.md#0850-sizzlipede) | Fire / Bug | Flash Fire / White Smoke | Flame Body | 305 | yes |
 | 851 | [Centiskorch](pokemon_0810-0905.md#0851-centiskorch) | Fire / Bug | Flash Fire / White Smoke | Flame Body | 525 | yes |
-| 852 | [Clobbopus](pokemon_0810-0905.md#0852-clobbopus) | Fighting | Limber | Technician | 310 | no |
-| 853 | [Grapploct](pokemon_0810-0905.md#0853-grapploct) | Fighting | Limber | Technician | 480 | no |
-| 854 | [Sinistea](pokemon_0810-0905.md#0854-sinistea) | Ghost | Weak Armor | Cursed Body | 308 | no |
-| 855 | [Polteageist](pokemon_0810-0905.md#0855-polteageist) | Ghost | Weak Armor | Cursed Body | 508 | no |
+| 852 | [Clobbopus](pokemon_0810-0905.md#0852-clobbopus) | Fighting | Limber | Technician | 310 | never |
+| 853 | [Grapploct](pokemon_0810-0905.md#0853-grapploct) | Fighting | Limber | Technician | 480 | never |
+| 854 | [Sinistea](pokemon_0810-0905.md#0854-sinistea) | Ghost | Weak Armor | Cursed Body | 308 | never |
+| 855 | [Polteageist](pokemon_0810-0905.md#0855-polteageist) | Ghost | Weak Armor | Cursed Body | 508 | never |
 | 856 | [Hatenna](pokemon_0810-0905.md#0856-hatenna) | Psychic | Healer / Psychic Surge | Magic Bounce | 265 | yes |
 | 857 | [Hattrem](pokemon_0810-0905.md#0857-hattrem) | Psychic | Healer / Psychic Surge | Magic Bounce | 370 | yes |
 | 858 | [Hatterene](pokemon_0810-0905.md#0858-hatterene) | Psychic / Fairy | Healer / Psychic Surge | Magic Bounce | 510 | yes |
@@ -887,211 +887,211 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 864 | [Cursola](pokemon_0810-0905.md#0864-cursola) | Ghost / Rock | Weak Armor / Regenerator | Natural Cure | 510 | yes |
 | 865 | [Sirfetch’d](pokemon_0810-0905.md#0865-sirfetchd) | Fighting / Flying | Steadfast / Scrappy | Defiant | 555 | yes |
 | 866 | [Mr. Rime](pokemon_0810-0905.md#0866-mr-rime) | Ice / Psychic | Filter / Refrigerate | Slush Rush | 545 | yes |
-| 867 | [Runerigus](pokemon_0810-0905.md#0867-runerigus) | Ground / Ghost | Wandering Spirit | — | 483 | no |
+| 867 | [Runerigus](pokemon_0810-0905.md#0867-runerigus) | Ground / Ghost | Wandering Spirit | — | 483 | never |
 | 868 | [Milcery](pokemon_0810-0905.md#0868-milcery) | Fairy | Sweet Veil | Aroma Veil | 270 | yes |
-| 869 | [Alcremie](pokemon_0810-0905.md#0869-alcremie) | Fairy | Sweet Veil | Aroma Veil | 525 | yes |
-| 870 | [Falinks](pokemon_0810-0905.md#0870-falinks) | Fighting | Battle Armor | Defiant | 470 | no |
-| 871 | [Pincurchin](pokemon_0810-0905.md#0871-pincurchin) | Electric | Lightning Rod | Electric Surge | 435 | no |
+| 869 | [Alcremie](pokemon_0810-0905.md#0869-alcremie) | Fairy | Sweet Veil | Aroma Veil | 525 | never |
+| 870 | [Falinks](pokemon_0810-0905.md#0870-falinks) | Fighting | Battle Armor | Defiant | 470 | never |
+| 871 | [Pincurchin](pokemon_0810-0905.md#0871-pincurchin) | Electric | Lightning Rod | Electric Surge | 435 | never |
 | 872 | [Snom](pokemon_0810-0905.md#0872-snom) | Ice / Bug | Shield Dust / Snow Cloak | Ice Scales | 185 | yes |
 | 873 | [Frosmoth](pokemon_0810-0905.md#0873-frosmoth) | Ice / Bug | Shield Dust / Snow Warning | Ice Scales | 540 | yes |
-| 874 | [Stonjourner](pokemon_0810-0905.md#0874-stonjourner) | Rock | Power Spot | — | 470 | no |
-| 875 | [Eiscue](pokemon_0810-0905.md#0875-eiscue) | Ice | Ice Face | — | 470 | no |
-| 876 | [Indeedee](pokemon_0810-0905.md#0876-indeedee) | Psychic / Normal | Inner Focus / Synchronize | Psychic Surge | 475 | no |
-| 877 | [Morpeko](pokemon_0810-0905.md#0877-morpeko) | Electric / Dark | Hunger Switch | — | 436 | no |
-| 878 | [Cufant](pokemon_0810-0905.md#0878-cufant) | Steel | Sheer Force | Heavy Metal | 330 | no |
-| 879 | [Copperajah](pokemon_0810-0905.md#0879-copperajah) | Steel | Sheer Force | Heavy Metal | 500 | no |
-| 880 | [Dracozolt](pokemon_0810-0905.md#0880-dracozolt) | Electric / Dragon | Volt Absorb / Hustle | Sand Rush | 505 | no |
-| 881 | [Arctozolt](pokemon_0810-0905.md#0881-arctozolt) | Electric / Ice | Volt Absorb / Static | Slush Rush | 505 | no |
-| 882 | [Dracovish](pokemon_0810-0905.md#0882-dracovish) | Water / Dragon | Water Absorb / Strong Jaw | Sand Rush | 505 | no |
-| 883 | [Arctovish](pokemon_0810-0905.md#0883-arctovish) | Water / Ice | Water Absorb / Ice Body | Slush Rush | 505 | no |
-| 884 | [Duraludon](pokemon_0810-0905.md#0884-duraludon) | Steel / Dragon | Light Metal / Heavy Metal | Stalwart | 535 | no |
+| 874 | [Stonjourner](pokemon_0810-0905.md#0874-stonjourner) | Rock | Power Spot | — | 470 | never |
+| 875 | [Eiscue](pokemon_0810-0905.md#0875-eiscue) | Ice | Ice Face | — | 470 | never |
+| 876 | [Indeedee](pokemon_0810-0905.md#0876-indeedee) | Psychic / Normal | Inner Focus / Synchronize | Psychic Surge | 475 | never |
+| 877 | [Morpeko](pokemon_0810-0905.md#0877-morpeko) | Electric / Dark | Hunger Switch | — | 436 | never |
+| 878 | [Cufant](pokemon_0810-0905.md#0878-cufant) | Steel | Sheer Force | Heavy Metal | 330 | never |
+| 879 | [Copperajah](pokemon_0810-0905.md#0879-copperajah) | Steel | Sheer Force | Heavy Metal | 500 | never |
+| 880 | [Dracozolt](pokemon_0810-0905.md#0880-dracozolt) | Electric / Dragon | Volt Absorb / Hustle | Sand Rush | 505 | never |
+| 881 | [Arctozolt](pokemon_0810-0905.md#0881-arctozolt) | Electric / Ice | Volt Absorb / Static | Slush Rush | 505 | never |
+| 882 | [Dracovish](pokemon_0810-0905.md#0882-dracovish) | Water / Dragon | Water Absorb / Strong Jaw | Sand Rush | 505 | never |
+| 883 | [Arctovish](pokemon_0810-0905.md#0883-arctovish) | Water / Ice | Water Absorb / Ice Body | Slush Rush | 505 | never |
+| 884 | [Duraludon](pokemon_0810-0905.md#0884-duraludon) | Steel / Dragon | Light Metal / Heavy Metal | Stalwart | 535 | never |
 | 885 | [Dreepy](pokemon_0810-0905.md#0885-dreepy) | Dragon / Ghost | Clear Body / Infiltrator | Cursed Body | 270 | yes |
 | 886 | [Drakloak](pokemon_0810-0905.md#0886-drakloak) | Dragon / Ghost | Clear Body / Infiltrator | Cursed Body | 410 | yes |
 | 887 | [Dragapult](pokemon_0810-0905.md#0887-dragapult) | Dragon / Ghost | Clear Body / Infiltrator | Cursed Body | 600 | yes |
-| 888 | [Zacian](pokemon_0810-0905.md#0888-zacian) | Fairy | Intrepid Sword | — | 670 | no |
-| 889 | [Zamazenta](pokemon_0810-0905.md#0889-zamazenta) | Fighting | Dauntless Shield | — | 670 | no |
-| 890 | [Eternatus](pokemon_0810-0905.md#0890-eternatus) | Poison / Dragon | Pressure | — | 690 | no |
-| 891 | [Kubfu](pokemon_0810-0905.md#0891-kubfu) | Fighting | Inner Focus | — | 385 | no |
-| 892 | [Urshifu](pokemon_0810-0905.md#0892-urshifu) | Fighting / Dark | Unseen Fist | — | 550 | no |
-| 893 | [Zarude](pokemon_0810-0905.md#0893-zarude) | Dark / Grass | Leaf Guard | — | 600 | no |
-| 894 | [Regieleki](pokemon_0810-0905.md#0894-regieleki) | Electric | Transistor | — | 580 | no |
-| 895 | [Regidrago](pokemon_0810-0905.md#0895-regidrago) | Dragon | Dragon’s Maw | — | 580 | no |
-| 896 | [Glastrier](pokemon_0810-0905.md#0896-glastrier) | Ice | Chilling Neigh | — | 580 | no |
-| 897 | [Spectrier](pokemon_0810-0905.md#0897-spectrier) | Ghost | Grim Neigh | — | 580 | no |
-| 898 | [Calyrex](pokemon_0810-0905.md#0898-calyrex) | Psychic / Grass | Unnerve | — | 500 | no |
+| 888 | [Zacian](pokemon_0810-0905.md#0888-zacian) | Fairy | Intrepid Sword | — | 670 | never |
+| 889 | [Zamazenta](pokemon_0810-0905.md#0889-zamazenta) | Fighting | Dauntless Shield | — | 670 | never |
+| 890 | [Eternatus](pokemon_0810-0905.md#0890-eternatus) | Poison / Dragon | Pressure | — | 690 | never |
+| 891 | [Kubfu](pokemon_0810-0905.md#0891-kubfu) | Fighting | Inner Focus | — | 385 | never |
+| 892 | [Urshifu](pokemon_0810-0905.md#0892-urshifu) | Fighting / Dark | Unseen Fist | — | 550 | never |
+| 893 | [Zarude](pokemon_0810-0905.md#0893-zarude) | Dark / Grass | Leaf Guard | — | 600 | never |
+| 894 | [Regieleki](pokemon_0810-0905.md#0894-regieleki) | Electric | Transistor | — | 580 | never |
+| 895 | [Regidrago](pokemon_0810-0905.md#0895-regidrago) | Dragon | Dragon’s Maw | — | 580 | never |
+| 896 | [Glastrier](pokemon_0810-0905.md#0896-glastrier) | Ice | Chilling Neigh | — | 580 | never |
+| 897 | [Spectrier](pokemon_0810-0905.md#0897-spectrier) | Ghost | Grim Neigh | — | 580 | never |
+| 898 | [Calyrex](pokemon_0810-0905.md#0898-calyrex) | Psychic / Grass | Unnerve | — | 500 | never |
 | 899 | [Wyrdeer](pokemon_0810-0905.md#0899-wyrdeer) | Normal / Psychic | Intimidate / Frisk | Psychic Surge | 525 | yes |
 | 900 | [Kleavor](pokemon_0810-0905.md#0900-kleavor) | Bug / Rock | Technician / Sheer Force | Sharpness | 500 | yes |
 | 901 | [Ursaluna](pokemon_0810-0905.md#0901-ursaluna) | Ground / Normal | Guts | Fur Coat | 555 | yes |
 | 902 | [Basculegion](pokemon_0810-0905.md#0902-basculegion) | Water / Ghost | Swift Swim / Adaptability | Mold Breaker | 530 | yes |
 | 903 | [Sneasler](pokemon_0810-0905.md#0903-sneasler) | Fighting / Poison | Pressure / Unburden | Poison Touch | 510 | yes |
 | 904 | [Overqwil](pokemon_0810-0905.md#0904-overqwil) | Dark / Poison | Poison Point / Swift Swim | Intimidate | 540 | yes |
-| 905 | [Enamorus](pokemon_0810-0905.md#0905-enamorus) | Fairy / Flying | Cute Charm | Contrary | 580 | no |
-| 906 | [Sprigatito](pokemon_0906-1025.md#0906-sprigatito) | Grass | Overgrow | Protean | 310 | no |
-| 907 | [Floragato](pokemon_0906-1025.md#0907-floragato) | Grass | Overgrow | Protean | 410 | no |
-| 908 | [Meowscarada](pokemon_0906-1025.md#0908-meowscarada) | Grass / Dark | Overgrow | Protean | 530 | no |
-| 909 | [Fuecoco](pokemon_0906-1025.md#0909-fuecoco) | Fire | Blaze | Unaware | 310 | no |
-| 910 | [Crocalor](pokemon_0906-1025.md#0910-crocalor) | Fire | Blaze | Unaware | 411 | no |
-| 911 | [Skeledirge](pokemon_0906-1025.md#0911-skeledirge) | Fire / Ghost | Blaze | Unaware | 530 | no |
-| 912 | [Quaxly](pokemon_0906-1025.md#0912-quaxly) | Water | Torrent | Moxie | 310 | no |
-| 913 | [Quaxwell](pokemon_0906-1025.md#0913-quaxwell) | Water | Torrent | Moxie | 410 | no |
-| 914 | [Quaquaval](pokemon_0906-1025.md#0914-quaquaval) | Water / Fighting | Torrent | Moxie | 530 | no |
-| 915 | [Lechonk](pokemon_0906-1025.md#0915-lechonk) | Normal | Aroma Veil / Gluttony | Thick Fat | 254 | no |
-| 916 | [Oinkologne](pokemon_0906-1025.md#0916-oinkologne) | Normal | Lingering Aroma / Gluttony | Thick Fat | 489 | no |
-| 917 | [Tarountula](pokemon_0906-1025.md#0917-tarountula) | Bug | Insomnia | Stakeout | 210 | no |
-| 918 | [Spidops](pokemon_0906-1025.md#0918-spidops) | Bug | Insomnia | Stakeout | 404 | no |
-| 919 | [Nymble](pokemon_0906-1025.md#0919-nymble) | Bug | Swarm | Tinted Lens | 210 | no |
-| 920 | [Lokix](pokemon_0906-1025.md#0920-lokix) | Bug / Dark | Swarm | Tinted Lens | 450 | no |
-| 921 | [Pawmi](pokemon_0906-1025.md#0921-pawmi) | Electric | Static / Natural Cure | Iron Fist | 240 | no |
-| 922 | [Pawmo](pokemon_0906-1025.md#0922-pawmo) | Electric / Fighting | Volt Absorb / Natural Cure | Iron Fist | 350 | no |
-| 923 | [Pawmot](pokemon_0906-1025.md#0923-pawmot) | Electric / Fighting | Volt Absorb / Natural Cure | Iron Fist | 490 | no |
+| 905 | [Enamorus](pokemon_0810-0905.md#0905-enamorus) | Fairy / Flying | Cute Charm | Contrary | 580 | never |
+| 906 | [Sprigatito](pokemon_0906-1025.md#0906-sprigatito) | Grass | Overgrow | Protean | 310 | never |
+| 907 | [Floragato](pokemon_0906-1025.md#0907-floragato) | Grass | Overgrow | Protean | 410 | never |
+| 908 | [Meowscarada](pokemon_0906-1025.md#0908-meowscarada) | Grass / Dark | Overgrow | Protean | 530 | never |
+| 909 | [Fuecoco](pokemon_0906-1025.md#0909-fuecoco) | Fire | Blaze | Unaware | 310 | never |
+| 910 | [Crocalor](pokemon_0906-1025.md#0910-crocalor) | Fire | Blaze | Unaware | 411 | never |
+| 911 | [Skeledirge](pokemon_0906-1025.md#0911-skeledirge) | Fire / Ghost | Blaze | Unaware | 530 | never |
+| 912 | [Quaxly](pokemon_0906-1025.md#0912-quaxly) | Water | Torrent | Moxie | 310 | never |
+| 913 | [Quaxwell](pokemon_0906-1025.md#0913-quaxwell) | Water | Torrent | Moxie | 410 | never |
+| 914 | [Quaquaval](pokemon_0906-1025.md#0914-quaquaval) | Water / Fighting | Torrent | Moxie | 530 | never |
+| 915 | [Lechonk](pokemon_0906-1025.md#0915-lechonk) | Normal | Aroma Veil / Gluttony | Thick Fat | 254 | never |
+| 916 | [Oinkologne](pokemon_0906-1025.md#0916-oinkologne) | Normal | Lingering Aroma / Gluttony | Thick Fat | 489 | never |
+| 917 | [Tarountula](pokemon_0906-1025.md#0917-tarountula) | Bug | Insomnia | Stakeout | 210 | never |
+| 918 | [Spidops](pokemon_0906-1025.md#0918-spidops) | Bug | Insomnia | Stakeout | 404 | never |
+| 919 | [Nymble](pokemon_0906-1025.md#0919-nymble) | Bug | Swarm | Tinted Lens | 210 | never |
+| 920 | [Lokix](pokemon_0906-1025.md#0920-lokix) | Bug / Dark | Swarm | Tinted Lens | 450 | never |
+| 921 | [Pawmi](pokemon_0906-1025.md#0921-pawmi) | Electric | Static / Natural Cure | Iron Fist | 240 | never |
+| 922 | [Pawmo](pokemon_0906-1025.md#0922-pawmo) | Electric / Fighting | Volt Absorb / Natural Cure | Iron Fist | 350 | never |
+| 923 | [Pawmot](pokemon_0906-1025.md#0923-pawmot) | Electric / Fighting | Volt Absorb / Natural Cure | Iron Fist | 490 | never |
 | 924 | [Tandemaus](pokemon_0906-1025.md#0924-tandemaus) | Normal | Run Away / Pickup | Own Tempo | 305 | yes |
 | 925 | [Maushold](pokemon_0906-1025.md#0925-maushold) | Normal | Friend Guard / Cheek Pouch | Technician | 470 | yes |
-| 926 | [Fidough](pokemon_0906-1025.md#0926-fidough) | Fairy | Own Tempo | Klutz | 312 | no |
-| 927 | [Dachsbun](pokemon_0906-1025.md#0927-dachsbun) | Fairy | Well-Baked Body | Aroma Veil | 500 | no |
+| 926 | [Fidough](pokemon_0906-1025.md#0926-fidough) | Fairy | Own Tempo | Klutz | 312 | never |
+| 927 | [Dachsbun](pokemon_0906-1025.md#0927-dachsbun) | Fairy | Well-Baked Body | Aroma Veil | 500 | never |
 | 928 | [Smoliv](pokemon_0906-1025.md#0928-smoliv) | Grass / Normal | Early Bird | Harvest | 260 | yes |
 | 929 | [Dolliv](pokemon_0906-1025.md#0929-dolliv) | Grass / Normal | Early Bird | Harvest | 354 | yes |
 | 930 | [Arboliva](pokemon_0906-1025.md#0930-arboliva) | Grass / Normal | Seed Sower | Harvest | 520 | yes |
-| 931 | [Squawkabilly](pokemon_0906-1025.md#0931-squawkabilly) | Normal / Flying | Intimidate / Hustle | Guts | 417 | no |
-| 932 | [Nacli](pokemon_0906-1025.md#0932-nacli) | Rock | Purifying Salt / Sturdy | Clear Body | 280 | no |
-| 933 | [Naclstack](pokemon_0906-1025.md#0933-naclstack) | Rock | Purifying Salt / Sturdy | Clear Body | 355 | no |
-| 934 | [Garganacl](pokemon_0906-1025.md#0934-garganacl) | Rock | Purifying Salt / Sturdy | Clear Body | 500 | no |
-| 935 | [Charcadet](pokemon_0906-1025.md#0935-charcadet) | Fire | Flash Fire | Flame Body | 255 | no |
-| 936 | [Armarouge](pokemon_0906-1025.md#0936-armarouge) | Fire / Psychic | Flash Fire | Weak Armor | 525 | no |
-| 937 | [Ceruledge](pokemon_0906-1025.md#0937-ceruledge) | Fire / Ghost | Flash Fire | Weak Armor | 525 | no |
-| 938 | [Tadbulb](pokemon_0906-1025.md#0938-tadbulb) | Electric | Own Tempo / Static | Damp | 272 | no |
-| 939 | [Bellibolt](pokemon_0906-1025.md#0939-bellibolt) | Electric | Electromorphosis / Static | Damp | 495 | no |
-| 940 | [Wattrel](pokemon_0906-1025.md#0940-wattrel) | Electric / Flying | Wind Power / Volt Absorb | Competitive | 280 | no |
-| 941 | [Kilowattrel](pokemon_0906-1025.md#0941-kilowattrel) | Electric / Flying | Wind Power / Volt Absorb | Competitive | 490 | no |
-| 942 | [Maschiff](pokemon_0906-1025.md#0942-maschiff) | Dark | Intimidate / Run Away | Stakeout | 340 | no |
-| 943 | [Mabosstiff](pokemon_0906-1025.md#0943-mabosstiff) | Dark | Intimidate / Guard Dog | Stakeout | 505 | no |
-| 944 | [Shroodle](pokemon_0906-1025.md#0944-shroodle) | Poison / Normal | Unburden / Pickpocket | Prankster | 290 | no |
-| 945 | [Grafaiai](pokemon_0906-1025.md#0945-grafaiai) | Poison / Normal | Unburden / Poison Touch | Prankster | 485 | no |
+| 931 | [Squawkabilly](pokemon_0906-1025.md#0931-squawkabilly) | Normal / Flying | Intimidate / Hustle | Guts | 417 | never |
+| 932 | [Nacli](pokemon_0906-1025.md#0932-nacli) | Rock | Purifying Salt / Sturdy | Clear Body | 280 | never |
+| 933 | [Naclstack](pokemon_0906-1025.md#0933-naclstack) | Rock | Purifying Salt / Sturdy | Clear Body | 355 | never |
+| 934 | [Garganacl](pokemon_0906-1025.md#0934-garganacl) | Rock | Purifying Salt / Sturdy | Clear Body | 500 | never |
+| 935 | [Charcadet](pokemon_0906-1025.md#0935-charcadet) | Fire | Flash Fire | Flame Body | 255 | never |
+| 936 | [Armarouge](pokemon_0906-1025.md#0936-armarouge) | Fire / Psychic | Flash Fire | Weak Armor | 525 | never |
+| 937 | [Ceruledge](pokemon_0906-1025.md#0937-ceruledge) | Fire / Ghost | Flash Fire | Weak Armor | 525 | never |
+| 938 | [Tadbulb](pokemon_0906-1025.md#0938-tadbulb) | Electric | Own Tempo / Static | Damp | 272 | never |
+| 939 | [Bellibolt](pokemon_0906-1025.md#0939-bellibolt) | Electric | Electromorphosis / Static | Damp | 495 | never |
+| 940 | [Wattrel](pokemon_0906-1025.md#0940-wattrel) | Electric / Flying | Wind Power / Volt Absorb | Competitive | 280 | never |
+| 941 | [Kilowattrel](pokemon_0906-1025.md#0941-kilowattrel) | Electric / Flying | Wind Power / Volt Absorb | Competitive | 490 | never |
+| 942 | [Maschiff](pokemon_0906-1025.md#0942-maschiff) | Dark | Intimidate / Run Away | Stakeout | 340 | never |
+| 943 | [Mabosstiff](pokemon_0906-1025.md#0943-mabosstiff) | Dark | Intimidate / Guard Dog | Stakeout | 505 | never |
+| 944 | [Shroodle](pokemon_0906-1025.md#0944-shroodle) | Poison / Normal | Unburden / Pickpocket | Prankster | 290 | never |
+| 945 | [Grafaiai](pokemon_0906-1025.md#0945-grafaiai) | Poison / Normal | Unburden / Poison Touch | Prankster | 485 | never |
 | 946 | [Bramblin](pokemon_0906-1025.md#0946-bramblin) | Grass / Ghost | Wind Rider | Infiltrator | 275 | yes |
 | 947 | [Brambleghast](pokemon_0906-1025.md#0947-brambleghast) | Grass / Ghost | Wind Rider | Infiltrator | 505 | yes |
-| 948 | [Toedscool](pokemon_0906-1025.md#0948-toedscool) | Ground / Grass | Mycelium Might | — | 335 | no |
-| 949 | [Toedscruel](pokemon_0906-1025.md#0949-toedscruel) | Ground / Grass | Mycelium Might | — | 515 | no |
-| 950 | [Klawf](pokemon_0906-1025.md#0950-klawf) | Rock | Anger Shell / Shell Armor | Regenerator | 450 | no |
+| 948 | [Toedscool](pokemon_0906-1025.md#0948-toedscool) | Ground / Grass | Mycelium Might | — | 335 | never |
+| 949 | [Toedscruel](pokemon_0906-1025.md#0949-toedscruel) | Ground / Grass | Mycelium Might | — | 515 | never |
+| 950 | [Klawf](pokemon_0906-1025.md#0950-klawf) | Rock | Anger Shell / Shell Armor | Regenerator | 450 | never |
 | 951 | [Capsakid](pokemon_0906-1025.md#0951-capsakid) | Grass | Chlorophyll / Insomnia | Klutz | 304 | yes |
 | 952 | [Scovillain](pokemon_0906-1025.md#0952-scovillain) | Grass / Fire | Chlorophyll / Insomnia | Moody | 496 | yes |
-| 953 | [Rellor](pokemon_0906-1025.md#0953-rellor) | Bug | Compound Eyes | Shed Skin | 270 | no |
-| 954 | [Rabsca](pokemon_0906-1025.md#0954-rabsca) | Bug / Psychic | Synchronize | Telepathy | 470 | no |
-| 955 | [Flittle](pokemon_0906-1025.md#0955-flittle) | Psychic | Anticipation / Frisk | Speed Boost | 255 | no |
-| 956 | [Espathra](pokemon_0906-1025.md#0956-espathra) | Psychic | Opportunist / Frisk | Speed Boost | 481 | no |
+| 953 | [Rellor](pokemon_0906-1025.md#0953-rellor) | Bug | Compound Eyes | Shed Skin | 270 | never |
+| 954 | [Rabsca](pokemon_0906-1025.md#0954-rabsca) | Bug / Psychic | Synchronize | Telepathy | 470 | never |
+| 955 | [Flittle](pokemon_0906-1025.md#0955-flittle) | Psychic | Anticipation / Frisk | Speed Boost | 255 | never |
+| 956 | [Espathra](pokemon_0906-1025.md#0956-espathra) | Psychic | Opportunist / Frisk | Speed Boost | 481 | never |
 | 957 | [Tinkatink](pokemon_0906-1025.md#0957-tinkatink) | Fairy / Steel | Mold Breaker / Own Tempo | Pickpocket | 297 | yes |
 | 958 | [Tinkatuff](pokemon_0906-1025.md#0958-tinkatuff) | Fairy / Steel | Mold Breaker / Own Tempo | Pickpocket | 380 | yes |
 | 959 | [Tinkaton](pokemon_0906-1025.md#0959-tinkaton) | Fairy / Steel | Mold Breaker / Own Tempo | Pickpocket | 516 | yes |
-| 960 | [Wiglett](pokemon_0906-1025.md#0960-wiglett) | Water | Gooey / Rattled | Sand Veil | 245 | no |
-| 961 | [Wugtrio](pokemon_0906-1025.md#0961-wugtrio) | Water | Gooey / Rattled | Sand Veil | 425 | no |
-| 962 | [Bombirdier](pokemon_0906-1025.md#0962-bombirdier) | Flying / Dark | Big Pecks / Keen Eye | Rocky Payload | 485 | no |
-| 963 | [Finizen](pokemon_0906-1025.md#0963-finizen) | Water | Water Veil | — | 315 | no |
-| 964 | [Palafin](pokemon_0906-1025.md#0964-palafin) | Water | Zero to Hero | — | 457 | no |
-| 965 | [Varoom](pokemon_0906-1025.md#0965-varoom) | Steel / Poison | Overcoat | Slow Start | 300 | no |
-| 966 | [Revavroom](pokemon_0906-1025.md#0966-revavroom) | Steel / Poison | Overcoat | Filter | 500 | no |
-| 967 | [Cyclizar](pokemon_0906-1025.md#0967-cyclizar) | Dragon / Normal | Shed Skin | Regenerator | 501 | no |
-| 968 | [Orthworm](pokemon_0906-1025.md#0968-orthworm) | Steel | Earth Eater | Sand Veil | 480 | no |
+| 960 | [Wiglett](pokemon_0906-1025.md#0960-wiglett) | Water | Gooey / Rattled | Sand Veil | 245 | never |
+| 961 | [Wugtrio](pokemon_0906-1025.md#0961-wugtrio) | Water | Gooey / Rattled | Sand Veil | 425 | never |
+| 962 | [Bombirdier](pokemon_0906-1025.md#0962-bombirdier) | Flying / Dark | Big Pecks / Keen Eye | Rocky Payload | 485 | never |
+| 963 | [Finizen](pokemon_0906-1025.md#0963-finizen) | Water | Water Veil | — | 315 | never |
+| 964 | [Palafin](pokemon_0906-1025.md#0964-palafin) | Water | Zero to Hero | — | 457 | never |
+| 965 | [Varoom](pokemon_0906-1025.md#0965-varoom) | Steel / Poison | Overcoat | Slow Start | 300 | never |
+| 966 | [Revavroom](pokemon_0906-1025.md#0966-revavroom) | Steel / Poison | Overcoat | Filter | 500 | never |
+| 967 | [Cyclizar](pokemon_0906-1025.md#0967-cyclizar) | Dragon / Normal | Shed Skin | Regenerator | 501 | never |
+| 968 | [Orthworm](pokemon_0906-1025.md#0968-orthworm) | Steel | Earth Eater | Sand Veil | 480 | never |
 | 969 | [Glimmet](pokemon_0906-1025.md#0969-glimmet) | Rock / Poison | Toxic Debris | Corrosion | 350 | yes |
 | 970 | [Glimmora](pokemon_0906-1025.md#0970-glimmora) | Rock / Poison | Toxic Debris | Corrosion | 525 | yes |
-| 971 | [Greavard](pokemon_0906-1025.md#0971-greavard) | Ghost | Pickup | Fluffy | 290 | no |
-| 972 | [Houndstone](pokemon_0906-1025.md#0972-houndstone) | Ghost | Sand Rush | Fluffy | 488 | no |
-| 973 | [Flamigo](pokemon_0906-1025.md#0973-flamigo) | Flying / Fighting | Scrappy / Tangled Feet | Costar | 500 | no |
-| 974 | [Cetoddle](pokemon_0906-1025.md#0974-cetoddle) | Ice | Thick Fat / Snow Cloak | Sheer Force | 334 | no |
-| 975 | [Cetitan](pokemon_0906-1025.md#0975-cetitan) | Ice | Thick Fat / Slush Rush | Sheer Force | 521 | no |
-| 976 | [Veluza](pokemon_0906-1025.md#0976-veluza) | Water / Psychic | Mold Breaker | Sharpness | 478 | no |
-| 977 | [Dondozo](pokemon_0906-1025.md#0977-dondozo) | Water | Unaware / Oblivious | Water Veil | 530 | no |
-| 978 | [Tatsugiri](pokemon_0906-1025.md#0978-tatsugiri) | Dragon / Water | Commander | Storm Drain | 475 | no |
+| 971 | [Greavard](pokemon_0906-1025.md#0971-greavard) | Ghost | Pickup | Fluffy | 290 | never |
+| 972 | [Houndstone](pokemon_0906-1025.md#0972-houndstone) | Ghost | Sand Rush | Fluffy | 488 | never |
+| 973 | [Flamigo](pokemon_0906-1025.md#0973-flamigo) | Flying / Fighting | Scrappy / Tangled Feet | Costar | 500 | never |
+| 974 | [Cetoddle](pokemon_0906-1025.md#0974-cetoddle) | Ice | Thick Fat / Snow Cloak | Sheer Force | 334 | never |
+| 975 | [Cetitan](pokemon_0906-1025.md#0975-cetitan) | Ice | Thick Fat / Slush Rush | Sheer Force | 521 | never |
+| 976 | [Veluza](pokemon_0906-1025.md#0976-veluza) | Water / Psychic | Mold Breaker | Sharpness | 478 | never |
+| 977 | [Dondozo](pokemon_0906-1025.md#0977-dondozo) | Water | Unaware / Oblivious | Water Veil | 530 | never |
+| 978 | [Tatsugiri](pokemon_0906-1025.md#0978-tatsugiri) | Dragon / Water | Commander | Storm Drain | 475 | never |
 | 979 | [Annihilape](pokemon_0906-1025.md#0979-annihilape) | Fighting / Ghost | Vital Spirit / Inner Focus | Defiant | 535 | yes |
-| 980 | [Clodsire](pokemon_0906-1025.md#0980-clodsire) | Poison / Ground | Poison Point / Water Absorb | Unaware | 430 | no |
+| 980 | [Clodsire](pokemon_0906-1025.md#0980-clodsire) | Poison / Ground | Poison Point / Water Absorb | Unaware | 430 | never |
 | 981 | [Farigiraf](pokemon_0906-1025.md#0981-farigiraf) | Normal / Psychic | Armor Tail / Early Bird | Sap Sipper | 520 | yes |
 | 982 | [Dudunsparce](pokemon_0906-1025.md#0982-dudunsparce) | Normal / Dragon | Run Away / Levitate | Serene Grace | 600 | yes |
 | 983 | [Kingambit](pokemon_0906-1025.md#0983-kingambit) | Dark / Steel | Defiant / Inner Focus | Pressure | 550 | yes |
-| 984 | [Great Tusk](pokemon_0906-1025.md#0984-great-tusk) | Ground / Fighting | Protosynthesis | — | 570 | no |
-| 985 | [Scream Tail](pokemon_0906-1025.md#0985-scream-tail) | Fairy / Psychic | Protosynthesis | — | 570 | no |
-| 986 | [Brute Bonnet](pokemon_0906-1025.md#0986-brute-bonnet) | Grass / Dark | Protosynthesis | — | 570 | no |
-| 987 | [Flutter Mane](pokemon_0906-1025.md#0987-flutter-mane) | Ghost / Fairy | Levitate | — | 555 | no |
-| 988 | [Slither Wing](pokemon_0906-1025.md#0988-slither-wing) | Bug / Fighting | Protosynthesis | — | 570 | no |
-| 989 | [Sandy Shocks](pokemon_0906-1025.md#0989-sandy-shocks) | Electric / Ground | Protosynthesis | — | 570 | no |
-| 990 | [Iron Treads](pokemon_0906-1025.md#0990-iron-treads) | Ground / Steel | Quark Drive | — | 570 | no |
-| 991 | [Iron Bundle](pokemon_0906-1025.md#0991-iron-bundle) | Ice / Water | Quark Drive | — | 570 | no |
-| 992 | [Iron Hands](pokemon_0906-1025.md#0992-iron-hands) | Fighting / Electric | Inner Focus / Guts | Iron Fist | 555 | no |
-| 993 | [Iron Jugulis](pokemon_0906-1025.md#0993-iron-jugulis) | Dark / Flying | Quark Drive | — | 570 | no |
-| 994 | [Iron Moth](pokemon_0906-1025.md#0994-iron-moth) | Fire / Poison | Quark Drive | — | 570 | no |
-| 995 | [Iron Thorns](pokemon_0906-1025.md#0995-iron-thorns) | Rock / Electric | Quark Drive | — | 570 | no |
+| 984 | [Great Tusk](pokemon_0906-1025.md#0984-great-tusk) | Ground / Fighting | Protosynthesis | — | 570 | never |
+| 985 | [Scream Tail](pokemon_0906-1025.md#0985-scream-tail) | Fairy / Psychic | Protosynthesis | — | 570 | never |
+| 986 | [Brute Bonnet](pokemon_0906-1025.md#0986-brute-bonnet) | Grass / Dark | Protosynthesis | — | 570 | never |
+| 987 | [Flutter Mane](pokemon_0906-1025.md#0987-flutter-mane) | Ghost / Fairy | Levitate | — | 555 | never |
+| 988 | [Slither Wing](pokemon_0906-1025.md#0988-slither-wing) | Bug / Fighting | Protosynthesis | — | 570 | never |
+| 989 | [Sandy Shocks](pokemon_0906-1025.md#0989-sandy-shocks) | Electric / Ground | Protosynthesis | — | 570 | never |
+| 990 | [Iron Treads](pokemon_0906-1025.md#0990-iron-treads) | Ground / Steel | Quark Drive | — | 570 | never |
+| 991 | [Iron Bundle](pokemon_0906-1025.md#0991-iron-bundle) | Ice / Water | Quark Drive | — | 570 | never |
+| 992 | [Iron Hands](pokemon_0906-1025.md#0992-iron-hands) | Fighting / Electric | Inner Focus / Guts | Iron Fist | 555 | never |
+| 993 | [Iron Jugulis](pokemon_0906-1025.md#0993-iron-jugulis) | Dark / Flying | Quark Drive | — | 570 | never |
+| 994 | [Iron Moth](pokemon_0906-1025.md#0994-iron-moth) | Fire / Poison | Quark Drive | — | 570 | never |
+| 995 | [Iron Thorns](pokemon_0906-1025.md#0995-iron-thorns) | Rock / Electric | Quark Drive | — | 570 | never |
 | 996 | [Frigibax](pokemon_0906-1025.md#0996-frigibax) | Dragon / Ice | Thermal Exchange | Ice Body | 320 | yes |
 | 997 | [Arctibax](pokemon_0906-1025.md#0997-arctibax) | Dragon / Ice | Thermal Exchange | Ice Body | 423 | yes |
 | 998 | [Baxcalibur](pokemon_0906-1025.md#0998-baxcalibur) | Dragon / Ice | Thermal Exchange | Ice Body | 600 | yes |
-| 999 | [Gimmighoul](pokemon_0906-1025.md#0999-gimmighoul) | Ghost | Rattled | — | 300 | no |
-| 1000 | [Gholdengo](pokemon_0906-1025.md#1000-gholdengo) | Steel / Ghost | Good as Gold | — | 550 | no |
-| 1001 | [Wo-Chien](pokemon_0906-1025.md#1001-wo-chien) | Dark / Grass | Tablets of Ruin | — | 570 | no |
-| 1002 | [Chien-Pao](pokemon_0906-1025.md#1002-chien-pao) | Dark / Ice | Sword of Ruin | — | 570 | no |
-| 1003 | [Ting-Lu](pokemon_0906-1025.md#1003-ting-lu) | Dark / Ground | Vessel of Ruin | — | 570 | no |
-| 1004 | [Chi-Yu](pokemon_0906-1025.md#1004-chi-yu) | Dark / Fire | Beads of Ruin | — | 570 | no |
-| 1005 | [Roaring Moon](pokemon_0906-1025.md#1005-roaring-moon) | Dragon / Dark | Protosynthesis | — | 590 | no |
-| 1006 | [Iron Valiant](pokemon_0906-1025.md#1006-iron-valiant) | Fairy / Fighting | Quark Drive | — | 590 | no |
-| 1007 | [Koraidon](pokemon_0906-1025.md#1007-koraidon) | Fighting / Dragon | Orichalcum Pulse | — | 670 | no |
-| 1008 | [Miraidon](pokemon_0906-1025.md#1008-miraidon) | Electric / Dragon | Hadron Engine | — | 670 | no |
-| 1009 | [Walking Wake](pokemon_0906-1025.md#1009-walking-wake) | Water / Dragon | Protosynthesis | — | 590 | no |
-| 1010 | [Iron Leaves](pokemon_0906-1025.md#1010-iron-leaves) | Grass / Psychic | Quark Drive | — | 590 | no |
+| 999 | [Gimmighoul](pokemon_0906-1025.md#0999-gimmighoul) | Ghost | Rattled | — | 300 | never |
+| 1000 | [Gholdengo](pokemon_0906-1025.md#1000-gholdengo) | Steel / Ghost | Good as Gold | — | 550 | never |
+| 1001 | [Wo-Chien](pokemon_0906-1025.md#1001-wo-chien) | Dark / Grass | Tablets of Ruin | — | 570 | never |
+| 1002 | [Chien-Pao](pokemon_0906-1025.md#1002-chien-pao) | Dark / Ice | Sword of Ruin | — | 570 | never |
+| 1003 | [Ting-Lu](pokemon_0906-1025.md#1003-ting-lu) | Dark / Ground | Vessel of Ruin | — | 570 | never |
+| 1004 | [Chi-Yu](pokemon_0906-1025.md#1004-chi-yu) | Dark / Fire | Beads of Ruin | — | 570 | never |
+| 1005 | [Roaring Moon](pokemon_0906-1025.md#1005-roaring-moon) | Dragon / Dark | Protosynthesis | — | 590 | never |
+| 1006 | [Iron Valiant](pokemon_0906-1025.md#1006-iron-valiant) | Fairy / Fighting | Quark Drive | — | 590 | never |
+| 1007 | [Koraidon](pokemon_0906-1025.md#1007-koraidon) | Fighting / Dragon | Orichalcum Pulse | — | 670 | never |
+| 1008 | [Miraidon](pokemon_0906-1025.md#1008-miraidon) | Electric / Dragon | Hadron Engine | — | 670 | never |
+| 1009 | [Walking Wake](pokemon_0906-1025.md#1009-walking-wake) | Water / Dragon | Protosynthesis | — | 590 | never |
+| 1010 | [Iron Leaves](pokemon_0906-1025.md#1010-iron-leaves) | Grass / Psychic | Quark Drive | — | 590 | never |
 | 1011 | [Dipplin](pokemon_0906-1025.md#1011-dipplin) | Grass / Dragon | Moody / Gluttony | Bulletproof | 485 | yes |
 | 1012 | [Poltchageist](pokemon_0906-1025.md#1012-poltchageist) | Grass / Ghost | Hospitality | Heatproof | 308 | yes |
 | 1013 | [Sinistcha](pokemon_0906-1025.md#1013-sinistcha) | Grass / Ghost | Hospitality | Heatproof | 508 | yes |
-| 1014 | [Okidogi](pokemon_0906-1025.md#1014-okidogi) | Poison / Fighting | Toxic Chain | Guard Dog | 555 | no |
-| 1015 | [Munkidori](pokemon_0906-1025.md#1015-munkidori) | Poison / Psychic | Toxic Chain | Frisk | 555 | no |
-| 1016 | [Fezandipiti](pokemon_0906-1025.md#1016-fezandipiti) | Poison / Fairy | Toxic Chain | Technician | 555 | no |
-| 1017 | [Ogerpon](pokemon_0906-1025.md#1017-ogerpon) | Grass | Defiant | — | 550 | no |
-| 1018 | [Archaludon](pokemon_0906-1025.md#1018-archaludon) | Steel / Dragon | Stamina / Sturdy | Stalwart | 600 | no |
+| 1014 | [Okidogi](pokemon_0906-1025.md#1014-okidogi) | Poison / Fighting | Toxic Chain | Guard Dog | 555 | never |
+| 1015 | [Munkidori](pokemon_0906-1025.md#1015-munkidori) | Poison / Psychic | Toxic Chain | Frisk | 555 | never |
+| 1016 | [Fezandipiti](pokemon_0906-1025.md#1016-fezandipiti) | Poison / Fairy | Toxic Chain | Technician | 555 | never |
+| 1017 | [Ogerpon](pokemon_0906-1025.md#1017-ogerpon) | Grass | Defiant | — | 550 | never |
+| 1018 | [Archaludon](pokemon_0906-1025.md#1018-archaludon) | Steel / Dragon | Stamina / Sturdy | Stalwart | 600 | never |
 | 1019 | [Hydrapple](pokemon_0906-1025.md#1019-hydrapple) | Grass / Dragon | Moody / Regenerator | Bulletproof | 600 | yes |
-| 1020 | [Gouging Fire](pokemon_0906-1025.md#1020-gouging-fire) | Fire / Dragon | Protosynthesis | — | 590 | no |
-| 1021 | [Raging Bolt](pokemon_0906-1025.md#1021-raging-bolt) | Electric / Dragon | Protosynthesis | — | 590 | no |
-| 1022 | [Iron Boulder](pokemon_0906-1025.md#1022-iron-boulder) | Rock / Psychic | Quark Drive | — | 590 | no |
-| 1023 | [Iron Crown](pokemon_0906-1025.md#1023-iron-crown) | Steel / Psychic | Quark Drive | — | 590 | no |
-| 1024 | [Terapagos](pokemon_0906-1025.md#1024-terapagos) | Normal | Tera Shift | — | 450 | no |
-| 1025 | [Pecharunt](pokemon_0906-1025.md#1025-pecharunt) | Poison / Ghost | Poison Puppeteer | — | 600 | no |
-| 1026 | [Mega Venusaur](pokemon_1026-1440.md#1026-mega-venusaur) | Grass / Poison | Thick Fat | Thick Fat | 625 | no |
+| 1020 | [Gouging Fire](pokemon_0906-1025.md#1020-gouging-fire) | Fire / Dragon | Protosynthesis | — | 590 | never |
+| 1021 | [Raging Bolt](pokemon_0906-1025.md#1021-raging-bolt) | Electric / Dragon | Protosynthesis | — | 590 | never |
+| 1022 | [Iron Boulder](pokemon_0906-1025.md#1022-iron-boulder) | Rock / Psychic | Quark Drive | — | 590 | never |
+| 1023 | [Iron Crown](pokemon_0906-1025.md#1023-iron-crown) | Steel / Psychic | Quark Drive | — | 590 | never |
+| 1024 | [Terapagos](pokemon_0906-1025.md#1024-terapagos) | Normal | Tera Shift | — | 450 | never |
+| 1025 | [Pecharunt](pokemon_0906-1025.md#1025-pecharunt) | Poison / Ghost | Poison Puppeteer | — | 600 | never |
+| 1026 | [Mega Venusaur](pokemon_1026-1440.md#1026-mega-venusaur) | Grass / Poison | Thick Fat | Thick Fat | 625 | never |
 | 1027 | [Mega Charizard X](pokemon_1026-1440.md#1027-mega-charizard-x) | Fire / Dragon | Mega Claws | Mega Claws | 634 | no |
 | 1028 | [Mega Charizard Y](pokemon_1026-1440.md#1028-mega-charizard-y) | Fire / Flying | Drought | Drought | 634 | no |
-| 1029 | [Mega Blastoise](pokemon_1026-1440.md#1029-mega-blastoise) | Water | Mega Launcher | Mega Launcher | 630 | no |
-| 1030 | [Mega Beedrill](pokemon_1026-1440.md#1030-mega-beedrill) | Bug / Poison | Adaptability | Adaptability | 495 | no |
-| 1031 | [Mega Pidgeot](pokemon_1026-1440.md#1031-mega-pidgeot) | Normal / Flying | No Guard | No Guard | 579 | no |
-| 1032 | [Alolan Rattata](pokemon_1026-1440.md#1032-alolan-rattata) | Dark / Normal | Gluttony / Hustle | Thick Fat | 253 | no |
-| 1033 | [Alolan Raticate](pokemon_1026-1440.md#1033-alolan-raticate) | Dark / Normal | Gluttony / Hustle | Thick Fat | 413 | no |
+| 1029 | [Mega Blastoise](pokemon_1026-1440.md#1029-mega-blastoise) | Water | Mega Launcher | Mega Launcher | 630 | never |
+| 1030 | [Mega Beedrill](pokemon_1026-1440.md#1030-mega-beedrill) | Bug / Poison | Adaptability | Adaptability | 495 | never |
+| 1031 | [Mega Pidgeot](pokemon_1026-1440.md#1031-mega-pidgeot) | Normal / Flying | No Guard | No Guard | 579 | never |
+| 1032 | [Alolan Rattata](pokemon_1026-1440.md#1032-alolan-rattata) | Dark / Normal | Gluttony / Hustle | Thick Fat | 253 | never |
+| 1033 | [Alolan Raticate](pokemon_1026-1440.md#1033-alolan-raticate) | Dark / Normal | Gluttony / Hustle | Thick Fat | 413 | never |
 | 1034 | [Alolan Raichu](pokemon_1026-1440.md#1034-alolan-raichu) | Electric / Psychic | Electric Surge | Surge Surfer | 500 | yes |
 | 1035 | [Alolan Sandshrew](pokemon_1026-1440.md#1035-alolan-sandshrew) | Ice / Steel | Slush Rush / Snow Cloak | Tough Claws | 320 | yes |
 | 1036 | [Alolan Sandslash](pokemon_1026-1440.md#1036-alolan-sandslash) | Ice / Steel | Slush Rush / Snow Cloak | Tough Claws | 520 | yes |
 | 1037 | [Alolan Vulpix](pokemon_1026-1440.md#1037-alolan-vulpix) | Ice | Snow Cloak | Snow Warning | 299 | yes |
 | 1038 | [Alolan Ninetales](pokemon_1026-1440.md#1038-alolan-ninetales) | Ice / Fairy | Snow Cloak | Snow Warning | 505 | yes |
-| 1039 | [Alolan Diglett](pokemon_1026-1440.md#1039-alolan-diglett) | Ground / Steel | Sand Veil / Tangling Hair | Sand Force | 265 | no |
-| 1040 | [Alolan Dugtrio](pokemon_1026-1440.md#1040-alolan-dugtrio) | Ground / Steel | Sand Veil / Tangling Hair | Sand Force | 425 | no |
-| 1041 | [Alolan Meowth](pokemon_1026-1440.md#1041-alolan-meowth) | Dark | Pickup / Technician | Rattled | 290 | no |
-| 1042 | [Galarian Meowth](pokemon_1026-1440.md#1042-galarian-meowth) | Steel | Pickup / Tough Claws | Unnerve | 290 | no |
-| 1043 | [Alolan Persian](pokemon_1026-1440.md#1043-alolan-persian) | Dark | Fur Coat / Technician | Rattled | 440 | no |
-| 1044 | [Mega Alakazam](pokemon_1026-1440.md#1044-mega-alakazam) | Psychic | Trace | Trace | 600 | no |
+| 1039 | [Alolan Diglett](pokemon_1026-1440.md#1039-alolan-diglett) | Ground / Steel | Sand Veil / Tangling Hair | Sand Force | 265 | never |
+| 1040 | [Alolan Dugtrio](pokemon_1026-1440.md#1040-alolan-dugtrio) | Ground / Steel | Sand Veil / Tangling Hair | Sand Force | 425 | never |
+| 1041 | [Alolan Meowth](pokemon_1026-1440.md#1041-alolan-meowth) | Dark | Pickup / Technician | Rattled | 290 | never |
+| 1042 | [Galarian Meowth](pokemon_1026-1440.md#1042-galarian-meowth) | Steel | Pickup / Tough Claws | Unnerve | 290 | yes |
+| 1043 | [Alolan Persian](pokemon_1026-1440.md#1043-alolan-persian) | Dark | Fur Coat / Technician | Rattled | 440 | never |
+| 1044 | [Mega Alakazam](pokemon_1026-1440.md#1044-mega-alakazam) | Psychic | Trace | Trace | 600 | never |
 | 1045 | [Alolan Geodude](pokemon_1026-1440.md#1045-alolan-geodude) | Rock / Electric | Magnet Pull / Sturdy | Galvanize | 300 | yes |
 | 1046 | [Alolan Graveler](pokemon_1026-1440.md#1046-alolan-graveler) | Rock / Electric | Magnet Pull / Sturdy | Galvanize | 390 | yes |
 | 1047 | [Alolan Golem](pokemon_1026-1440.md#1047-alolan-golem) | Rock / Electric | Magnet Pull / Sturdy | Galvanize | 505 | yes |
-| 1048 | [Galarian Ponyta](pokemon_1026-1440.md#1048-galarian-ponyta) | Psychic | Run Away / Pastel Veil | Anticipation | 410 | no |
-| 1049 | [Galarian Rapidash](pokemon_1026-1440.md#1049-galarian-rapidash) | Psychic / Fairy | Run Away / Pastel Veil | Anticipation | 500 | no |
-| 1050 | [Galarian Slowpoke](pokemon_1026-1440.md#1050-galarian-slowpoke) | Psychic | Gluttony / Own Tempo | Regenerator | 315 | no |
-| 1051 | [Galarian Slowbro](pokemon_1026-1440.md#1051-galarian-slowbro) | Poison / Psychic | Quick Draw / Own Tempo | Regenerator | 490 | no |
-| 1052 | [Mega Slowbro](pokemon_1026-1440.md#1052-mega-slowbro) | Water / Psychic | Shell Armor | Shell Armor | 590 | no |
-| 1053 | [Galarian Farfetch’d](pokemon_1026-1440.md#1053-galarian-farfetchd) | Fighting | Steadfast | Scrappy | 377 | no |
-| 1054 | [Alolan Grimer](pokemon_1026-1440.md#1054-alolan-grimer) | Poison / Dark | Poison Touch / Gluttony | Power of Alchemy | 325 | no |
-| 1055 | [Alolan Muk](pokemon_1026-1440.md#1055-alolan-muk) | Poison / Dark | Poison Touch / Gluttony | Power of Alchemy | 500 | no |
-| 1056 | [Mega Gengar](pokemon_1026-1440.md#1056-mega-gengar) | Ghost / Poison | Shadow Tag | Shadow Tag | 600 | no |
+| 1048 | [Galarian Ponyta](pokemon_1026-1440.md#1048-galarian-ponyta) | Psychic | Run Away / Pastel Veil | Anticipation | 410 | never |
+| 1049 | [Galarian Rapidash](pokemon_1026-1440.md#1049-galarian-rapidash) | Psychic / Fairy | Run Away / Pastel Veil | Anticipation | 500 | never |
+| 1050 | [Galarian Slowpoke](pokemon_1026-1440.md#1050-galarian-slowpoke) | Psychic | Gluttony / Own Tempo | Regenerator | 315 | never |
+| 1051 | [Galarian Slowbro](pokemon_1026-1440.md#1051-galarian-slowbro) | Poison / Psychic | Quick Draw / Own Tempo | Regenerator | 490 | never |
+| 1052 | [Mega Slowbro](pokemon_1026-1440.md#1052-mega-slowbro) | Water / Psychic | Shell Armor | Shell Armor | 590 | never |
+| 1053 | [Galarian Farfetch’d](pokemon_1026-1440.md#1053-galarian-farfetchd) | Fighting | Steadfast | Scrappy | 377 | never |
+| 1054 | [Alolan Grimer](pokemon_1026-1440.md#1054-alolan-grimer) | Poison / Dark | Poison Touch / Gluttony | Power of Alchemy | 325 | never |
+| 1055 | [Alolan Muk](pokemon_1026-1440.md#1055-alolan-muk) | Poison / Dark | Poison Touch / Gluttony | Power of Alchemy | 500 | never |
+| 1056 | [Mega Gengar](pokemon_1026-1440.md#1056-mega-gengar) | Ghost / Poison | Shadow Tag | Shadow Tag | 600 | never |
 | 1057 | [Alolan Exeggutor](pokemon_1026-1440.md#1057-alolan-exeggutor) | Grass / Dragon | Frisk / Harvest | Dragon’s Maw | 555 | yes |
 | 1058 | [Alolan Marowak](pokemon_1026-1440.md#1058-alolan-marowak) | Fire / Ghost | Cursed Body / Lightning Rod | Rock Head | 460 | yes |
 | 1059 | [Galarian Weezing](pokemon_1026-1440.md#1059-galarian-weezing) | Poison / Fairy | Levitate / Neutralizing Gas | Misty Surge | 545 | yes |
-| 1060 | [Mega Kangaskhan](pokemon_1026-1440.md#1060-mega-kangaskhan) | Normal | Parental Bond | Parental Bond | 590 | no |
-| 1061 | [Galarian Mr. Mime](pokemon_1026-1440.md#1061-galarian-mr-mime) | Ice / Psychic | Vital Spirit / Screen Cleaner | Ice Body | 460 | no |
-| 1062 | [Mega Pinsir](pokemon_1026-1440.md#1062-mega-pinsir) | Bug / Flying | Aerilate | Aerilate | 600 | no |
-| 1063 | [Mega Gyarados](pokemon_1026-1440.md#1063-mega-gyarados) | Water / Dark | Mold Breaker | Mold Breaker | 640 | no |
-| 1064 | [Mega Aerodactyl](pokemon_1026-1440.md#1064-mega-aerodactyl) | Rock / Flying | Tough Claws | Tough Claws | 615 | no |
-| 1065 | [Galarian Articuno](pokemon_1026-1440.md#1065-galarian-articuno) | Psychic / Flying | Competitive | Competitive | 580 | no |
-| 1066 | [Galarian Zapdos](pokemon_1026-1440.md#1066-galarian-zapdos) | Fighting / Flying | Defiant | Defiant | 580 | no |
-| 1067 | [Galarian Moltres](pokemon_1026-1440.md#1067-galarian-moltres) | Dark / Flying | Berserk | Berserk | 580 | no |
-| 1068 | [Mega Mewtwo X](pokemon_1026-1440.md#1068-mega-mewtwo-x) | Psychic / Fighting | Steadfast | Steadfast | 780 | no |
-| 1069 | [Mega Mewtwo Y](pokemon_1026-1440.md#1069-mega-mewtwo-y) | Psychic | Insomnia | Insomnia | 780 | no |
-| 1070 | [Mega Ampharos](pokemon_1026-1440.md#1070-mega-ampharos) | Electric / Dragon | Mold Breaker | Mold Breaker | 610 | no |
-| 1071 | [Galarian Slowking](pokemon_1026-1440.md#1071-galarian-slowking) | Poison / Psychic | Curious Medicine / Own Tempo | Regenerator | 490 | no |
+| 1060 | [Mega Kangaskhan](pokemon_1026-1440.md#1060-mega-kangaskhan) | Normal | Parental Bond | Parental Bond | 590 | never |
+| 1061 | [Galarian Mr. Mime](pokemon_1026-1440.md#1061-galarian-mr-mime) | Ice / Psychic | Vital Spirit / Screen Cleaner | Ice Body | 460 | never |
+| 1062 | [Mega Pinsir](pokemon_1026-1440.md#1062-mega-pinsir) | Bug / Flying | Aerilate | Aerilate | 600 | never |
+| 1063 | [Mega Gyarados](pokemon_1026-1440.md#1063-mega-gyarados) | Water / Dark | Mold Breaker | Mold Breaker | 640 | never |
+| 1064 | [Mega Aerodactyl](pokemon_1026-1440.md#1064-mega-aerodactyl) | Rock / Flying | Tough Claws | Tough Claws | 615 | never |
+| 1065 | [Galarian Articuno](pokemon_1026-1440.md#1065-galarian-articuno) | Psychic / Flying | Competitive | Competitive | 580 | never |
+| 1066 | [Galarian Zapdos](pokemon_1026-1440.md#1066-galarian-zapdos) | Fighting / Flying | Defiant | Defiant | 580 | never |
+| 1067 | [Galarian Moltres](pokemon_1026-1440.md#1067-galarian-moltres) | Dark / Flying | Berserk | Berserk | 580 | never |
+| 1068 | [Mega Mewtwo X](pokemon_1026-1440.md#1068-mega-mewtwo-x) | Psychic / Fighting | Steadfast | Steadfast | 780 | never |
+| 1069 | [Mega Mewtwo Y](pokemon_1026-1440.md#1069-mega-mewtwo-y) | Psychic | Insomnia | Insomnia | 780 | never |
+| 1070 | [Mega Ampharos](pokemon_1026-1440.md#1070-mega-ampharos) | Electric / Dragon | Mold Breaker | Mold Breaker | 610 | never |
+| 1071 | [Galarian Slowking](pokemon_1026-1440.md#1071-galarian-slowking) | Poison / Psychic | Curious Medicine / Own Tempo | Regenerator | 490 | never |
 | 1072 | [Unown (B)](pokemon_1026-1440.md#1072-unown-b) | Psychic | Levitate | — | 336 | no |
 | 1073 | [Unown (C)](pokemon_1026-1440.md#1073-unown-c) | Psychic | Levitate | — | 336 | no |
 | 1074 | [Unown (D)](pokemon_1026-1440.md#1074-unown-d) | Psychic | Levitate | — | 336 | no |
@@ -1119,61 +1119,61 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 1096 | [Unown (Z)](pokemon_1026-1440.md#1096-unown-z) | Psychic | Levitate | — | 336 | no |
 | 1097 | [Unown (!)](pokemon_1026-1440.md#1097-unown-) | Psychic | Levitate | — | 336 | no |
 | 1098 | [Unown (?)](pokemon_1026-1440.md#1098-unown-) | Psychic | Levitate | — | 336 | no |
-| 1099 | [Mega Steelix](pokemon_1026-1440.md#1099-mega-steelix) | Steel / Ground | Sand Force | Sand Force | 610 | no |
-| 1100 | [Mega Scizor](pokemon_1026-1440.md#1100-mega-scizor) | Bug / Steel | Technician | Technician | 600 | no |
-| 1101 | [Mega Heracross](pokemon_1026-1440.md#1101-mega-heracross) | Bug / Fighting | Skill Link | Skill Link | 600 | no |
-| 1102 | [Galarian Corsola](pokemon_1026-1440.md#1102-galarian-corsola) | Ghost | Weak Armor | Cursed Body | 410 | no |
-| 1103 | [Mega Houndoom](pokemon_1026-1440.md#1103-mega-houndoom) | Dark / Fire | Solar Power | Solar Power | 600 | no |
-| 1104 | [Mega Tyranitar](pokemon_1026-1440.md#1104-mega-tyranitar) | Rock / Dark | Sand Stream | Sand Stream | 700 | no |
-| 1105 | [Mega Sceptile](pokemon_1026-1440.md#1105-mega-sceptile) | Grass / Dragon | Lightning Rod | Lightning Rod | 630 | no |
-| 1106 | [Mega Blaziken](pokemon_1026-1440.md#1106-mega-blaziken) | Fire / Fighting | Speed Boost | Speed Boost | 630 | no |
-| 1107 | [Mega Swampert](pokemon_1026-1440.md#1107-mega-swampert) | Water / Ground | Swift Swim | Swift Swim | 635 | no |
+| 1099 | [Mega Steelix](pokemon_1026-1440.md#1099-mega-steelix) | Steel / Ground | Sand Force | Sand Force | 610 | never |
+| 1100 | [Mega Scizor](pokemon_1026-1440.md#1100-mega-scizor) | Bug / Steel | Technician | Technician | 600 | never |
+| 1101 | [Mega Heracross](pokemon_1026-1440.md#1101-mega-heracross) | Bug / Fighting | Skill Link | Skill Link | 600 | never |
+| 1102 | [Galarian Corsola](pokemon_1026-1440.md#1102-galarian-corsola) | Ghost | Weak Armor | Cursed Body | 410 | never |
+| 1103 | [Mega Houndoom](pokemon_1026-1440.md#1103-mega-houndoom) | Dark / Fire | Solar Power | Solar Power | 600 | never |
+| 1104 | [Mega Tyranitar](pokemon_1026-1440.md#1104-mega-tyranitar) | Rock / Dark | Sand Stream | Sand Stream | 700 | never |
+| 1105 | [Mega Sceptile](pokemon_1026-1440.md#1105-mega-sceptile) | Grass / Dragon | Lightning Rod | Lightning Rod | 630 | never |
+| 1106 | [Mega Blaziken](pokemon_1026-1440.md#1106-mega-blaziken) | Fire / Fighting | Speed Boost | Speed Boost | 630 | never |
+| 1107 | [Mega Swampert](pokemon_1026-1440.md#1107-mega-swampert) | Water / Ground | Swift Swim | Swift Swim | 635 | never |
 | 1108 | [Galarian Zigzagoon](pokemon_1026-1440.md#1108-galarian-zigzagoon) | Dark / Normal | Pickup / Gluttony | Quick Feet | 260 | yes |
 | 1109 | [Galarian Linoone](pokemon_1026-1440.md#1109-galarian-linoone) | Dark / Normal | Pickup / Gluttony | Quick Feet | 495 | yes |
-| 1110 | [Mega Gardevoir](pokemon_1026-1440.md#1110-mega-gardevoir) | Psychic / Fairy | Pixilate | Pixilate | 618 | no |
-| 1111 | [Mega Sableye](pokemon_1026-1440.md#1111-mega-sableye) | Dark / Ghost | Magic Bounce | Magic Bounce | 480 | no |
-| 1112 | [Mega Mawile](pokemon_1026-1440.md#1112-mega-mawile) | Steel / Fairy | Huge Power | Huge Power | 480 | no |
-| 1113 | [Mega Aggron](pokemon_1026-1440.md#1113-mega-aggron) | Steel | Filter | Filter | 630 | no |
-| 1114 | [Mega Medicham](pokemon_1026-1440.md#1114-mega-medicham) | Fighting / Psychic | Pure Power | Pure Power | 510 | no |
-| 1115 | [Mega Manectric](pokemon_1026-1440.md#1115-mega-manectric) | Electric | Intimidate | Intimidate | 575 | no |
-| 1116 | [Mega Sharpedo](pokemon_1026-1440.md#1116-mega-sharpedo) | Water / Dark | Strong Jaw | Strong Jaw | 560 | no |
-| 1117 | [Mega Camerupt](pokemon_1026-1440.md#1117-mega-camerupt) | Fire / Ground | Sheer Force | Sheer Force | 560 | no |
-| 1118 | [Mega Altaria](pokemon_1026-1440.md#1118-mega-altaria) | Dragon / Fairy | Pixilate | Pixilate | 590 | no |
+| 1110 | [Mega Gardevoir](pokemon_1026-1440.md#1110-mega-gardevoir) | Psychic / Fairy | Pixilate | Pixilate | 618 | never |
+| 1111 | [Mega Sableye](pokemon_1026-1440.md#1111-mega-sableye) | Dark / Ghost | Magic Bounce | Magic Bounce | 480 | never |
+| 1112 | [Mega Mawile](pokemon_1026-1440.md#1112-mega-mawile) | Steel / Fairy | Huge Power | Huge Power | 480 | never |
+| 1113 | [Mega Aggron](pokemon_1026-1440.md#1113-mega-aggron) | Steel | Filter | Filter | 630 | never |
+| 1114 | [Mega Medicham](pokemon_1026-1440.md#1114-mega-medicham) | Fighting / Psychic | Pure Power | Pure Power | 510 | never |
+| 1115 | [Mega Manectric](pokemon_1026-1440.md#1115-mega-manectric) | Electric | Intimidate | Intimidate | 575 | never |
+| 1116 | [Mega Sharpedo](pokemon_1026-1440.md#1116-mega-sharpedo) | Water / Dark | Strong Jaw | Strong Jaw | 560 | never |
+| 1117 | [Mega Camerupt](pokemon_1026-1440.md#1117-mega-camerupt) | Fire / Ground | Sheer Force | Sheer Force | 560 | never |
+| 1118 | [Mega Altaria](pokemon_1026-1440.md#1118-mega-altaria) | Dragon / Fairy | Pixilate | Pixilate | 590 | never |
 | 1119 | [Castform (Sunny Form)](pokemon_1026-1440.md#1119-castform-sunny-form) | Fire | Forecast | — | 420 | no |
 | 1120 | [Castform (Rainy Form)](pokemon_1026-1440.md#1120-castform-rainy-form) | Water | Forecast | — | 420 | no |
 | 1121 | [Castform (Snowy Form)](pokemon_1026-1440.md#1121-castform-snowy-form) | Ice | Forecast | — | 420 | no |
-| 1122 | [Mega Banette](pokemon_1026-1440.md#1122-mega-banette) | Ghost | Prankster | Prankster | 555 | no |
-| 1123 | [Mega Absol](pokemon_1026-1440.md#1123-mega-absol) | Dark | Magic Bounce | Magic Bounce | 565 | no |
-| 1124 | [Mega Glalie](pokemon_1026-1440.md#1124-mega-glalie) | Ice | Refrigerate | Refrigerate | 580 | no |
-| 1125 | [Mega Salamence](pokemon_1026-1440.md#1125-mega-salamence) | Dragon / Flying | Aerilate | Aerilate | 700 | no |
-| 1126 | [Mega Metagross](pokemon_1026-1440.md#1126-mega-metagross) | Steel / Psychic | Tough Claws | Tough Claws | 700 | no |
-| 1127 | [Mega Latias](pokemon_1026-1440.md#1127-mega-latias) | Dragon / Psychic | Levitate | — | 700 | no |
-| 1128 | [Mega Latios](pokemon_1026-1440.md#1128-mega-latios) | Dragon / Psychic | Levitate | — | 700 | no |
-| 1129 | [Primal Kyogre](pokemon_1026-1440.md#1129-primal-kyogre) | Water | Primordial Sea | — | 770 | no |
-| 1130 | [Primal Groudon](pokemon_1026-1440.md#1130-primal-groudon) | Ground / Fire | Desolate Land | — | 770 | no |
-| 1131 | [Mega Rayquaza](pokemon_1026-1440.md#1131-mega-rayquaza) | Dragon / Flying | Delta Stream | Delta Stream | 780 | no |
-| 1132 | [Deoxys (Attack Forme)](pokemon_1026-1440.md#1132-deoxys-attack-forme) | Psychic | Pressure | — | 600 | no |
-| 1133 | [Deoxys (Defense Forme)](pokemon_1026-1440.md#1133-deoxys-defense-forme) | Psychic | Pressure | — | 600 | no |
-| 1134 | [Deoxys (Speed Forme)](pokemon_1026-1440.md#1134-deoxys-speed-forme) | Psychic | Pressure | — | 600 | no |
-| 1135 | [Burmy (Sandy Cloak)](pokemon_1026-1440.md#1135-burmy-sandy-cloak) | Bug | Shed Skin | Overcoat | 224 | no |
-| 1136 | [Burmy (Trash Cloak)](pokemon_1026-1440.md#1136-burmy-trash-cloak) | Bug | Shed Skin | Overcoat | 224 | no |
-| 1137 | [Wormadam (Sandy Cloak)](pokemon_1026-1440.md#1137-wormadam-sandy-cloak) | Bug / Ground | Shed Skin / Battle Armor | Adaptability | 450 | no |
+| 1122 | [Mega Banette](pokemon_1026-1440.md#1122-mega-banette) | Ghost | Prankster | Prankster | 555 | never |
+| 1123 | [Mega Absol](pokemon_1026-1440.md#1123-mega-absol) | Dark | Magic Bounce | Magic Bounce | 565 | never |
+| 1124 | [Mega Glalie](pokemon_1026-1440.md#1124-mega-glalie) | Ice | Refrigerate | Refrigerate | 580 | never |
+| 1125 | [Mega Salamence](pokemon_1026-1440.md#1125-mega-salamence) | Dragon / Flying | Aerilate | Aerilate | 700 | never |
+| 1126 | [Mega Metagross](pokemon_1026-1440.md#1126-mega-metagross) | Steel / Psychic | Tough Claws | Tough Claws | 700 | never |
+| 1127 | [Mega Latias](pokemon_1026-1440.md#1127-mega-latias) | Dragon / Psychic | Levitate | — | 700 | never |
+| 1128 | [Mega Latios](pokemon_1026-1440.md#1128-mega-latios) | Dragon / Psychic | Levitate | — | 700 | never |
+| 1129 | [Primal Kyogre](pokemon_1026-1440.md#1129-primal-kyogre) | Water | Primordial Sea | — | 770 | never |
+| 1130 | [Primal Groudon](pokemon_1026-1440.md#1130-primal-groudon) | Ground / Fire | Desolate Land | — | 770 | never |
+| 1131 | [Mega Rayquaza](pokemon_1026-1440.md#1131-mega-rayquaza) | Dragon / Flying | Delta Stream | Delta Stream | 780 | never |
+| 1132 | [Deoxys (Attack Forme)](pokemon_1026-1440.md#1132-deoxys-attack-forme) | Psychic | Pressure | — | 600 | yes |
+| 1133 | [Deoxys (Defense Forme)](pokemon_1026-1440.md#1133-deoxys-defense-forme) | Psychic | Pressure | — | 600 | yes |
+| 1134 | [Deoxys (Speed Forme)](pokemon_1026-1440.md#1134-deoxys-speed-forme) | Psychic | Pressure | — | 600 | yes |
+| 1135 | [Burmy (Sandy Cloak)](pokemon_1026-1440.md#1135-burmy-sandy-cloak) | Bug | Shed Skin | Overcoat | 224 | never |
+| 1136 | [Burmy (Trash Cloak)](pokemon_1026-1440.md#1136-burmy-trash-cloak) | Bug | Shed Skin | Overcoat | 224 | never |
+| 1137 | [Wormadam (Sandy Cloak)](pokemon_1026-1440.md#1137-wormadam-sandy-cloak) | Bug / Ground | Shed Skin / Battle Armor | Adaptability | 450 | never |
 | 1138 | [Wormadam (Trash Cloak)](pokemon_1026-1440.md#1138-wormadam-trash-cloak) | Bug / Steel | Shed Skin / Battle Armor | Filter | 450 | no |
 | 1139 | [Cherrim (Sunshine Form)](pokemon_1026-1440.md#1139-cherrim-sunshine-form) | Grass / Fire | Flower Gift | — | 500 | no |
-| 1140 | [Shellos (East Sea)](pokemon_1026-1440.md#1140-shellos-east-sea) | Water | Sticky Hold / Storm Drain | Sand Force | 325 | no |
-| 1141 | [Gastrodon (East Sea)](pokemon_1026-1440.md#1141-gastrodon-east-sea) | Water / Ground | Sticky Hold / Storm Drain | Sand Force | 475 | no |
-| 1142 | [Mega Lopunny](pokemon_1026-1440.md#1142-mega-lopunny) | Normal / Fighting | Scrappy | Scrappy | 580 | no |
-| 1143 | [Mega Garchomp](pokemon_1026-1440.md#1143-mega-garchomp) | Dragon / Ground | Sand Force | Sand Force | 700 | no |
-| 1144 | [Mega Lucario](pokemon_1026-1440.md#1144-mega-lucario) | Fighting / Steel | Adaptability | Adaptability | 625 | no |
-| 1145 | [Mega Abomasnow](pokemon_1026-1440.md#1145-mega-abomasnow) | Grass / Ice | Snow Warning | Snow Warning | 594 | no |
-| 1146 | [Mega Gallade](pokemon_1026-1440.md#1146-mega-gallade) | Psychic / Fighting | Inner Focus | Inner Focus | 618 | no |
-| 1147 | [Heat Rotom](pokemon_1026-1440.md#1147-heat-rotom) | Electric / Fire | Levitate | — | 545 | no |
-| 1148 | [Wash Rotom](pokemon_1026-1440.md#1148-wash-rotom) | Electric / Water | Levitate | — | 545 | no |
-| 1149 | [Frost Rotom](pokemon_1026-1440.md#1149-frost-rotom) | Electric / Ice | Levitate | — | 545 | no |
-| 1150 | [Fan Rotom](pokemon_1026-1440.md#1150-fan-rotom) | Electric / Flying | Levitate | — | 545 | no |
-| 1151 | [Mow Rotom](pokemon_1026-1440.md#1151-mow-rotom) | Electric / Grass | Levitate | — | 545 | no |
+| 1140 | [Shellos (East Sea)](pokemon_1026-1440.md#1140-shellos-east-sea) | Water | Sticky Hold / Storm Drain | Sand Force | 325 | never |
+| 1141 | [Gastrodon (East Sea)](pokemon_1026-1440.md#1141-gastrodon-east-sea) | Water / Ground | Sticky Hold / Storm Drain | Sand Force | 475 | never |
+| 1142 | [Mega Lopunny](pokemon_1026-1440.md#1142-mega-lopunny) | Normal / Fighting | Scrappy | Scrappy | 580 | never |
+| 1143 | [Mega Garchomp](pokemon_1026-1440.md#1143-mega-garchomp) | Dragon / Ground | Sand Force | Sand Force | 700 | never |
+| 1144 | [Mega Lucario](pokemon_1026-1440.md#1144-mega-lucario) | Fighting / Steel | Adaptability | Adaptability | 625 | never |
+| 1145 | [Mega Abomasnow](pokemon_1026-1440.md#1145-mega-abomasnow) | Grass / Ice | Snow Warning | Snow Warning | 594 | never |
+| 1146 | [Mega Gallade](pokemon_1026-1440.md#1146-mega-gallade) | Psychic / Fighting | Inner Focus | Inner Focus | 618 | never |
+| 1147 | [Heat Rotom](pokemon_1026-1440.md#1147-heat-rotom) | Electric / Fire | Levitate | — | 545 | yes |
+| 1148 | [Wash Rotom](pokemon_1026-1440.md#1148-wash-rotom) | Electric / Water | Levitate | — | 545 | yes |
+| 1149 | [Frost Rotom](pokemon_1026-1440.md#1149-frost-rotom) | Electric / Ice | Levitate | — | 545 | yes |
+| 1150 | [Fan Rotom](pokemon_1026-1440.md#1150-fan-rotom) | Electric / Flying | Levitate | — | 545 | yes |
+| 1151 | [Mow Rotom](pokemon_1026-1440.md#1151-mow-rotom) | Electric / Grass | Levitate | — | 545 | yes |
 | 1152 | [Giratina (Origin Forme)](pokemon_1026-1440.md#1152-giratina-origin-forme) | Ghost / Dragon | Levitate | Levitate | 680 | no |
-| 1153 | [Shaymin (Sky Forme)](pokemon_1026-1440.md#1153-shaymin-sky-forme) | Grass / Flying | Serene Grace | Aerilate | 600 | no |
+| 1153 | [Shaymin (Sky Forme)](pokemon_1026-1440.md#1153-shaymin-sky-forme) | Grass / Flying | Serene Grace | Aerilate | 600 | never |
 | 1154 | [Arceus (Fighting type)](pokemon_1026-1440.md#1154-arceus-fighting-type) | Fighting | Multitype | — | 720 | no |
 | 1155 | [Arceus (Flying type)](pokemon_1026-1440.md#1155-arceus-flying-type) | Flying | Multitype | — | 720 | no |
 | 1156 | [Arceus (Poison type)](pokemon_1026-1440.md#1156-arceus-poison-type) | Poison | Multitype | — | 720 | no |
@@ -1190,274 +1190,274 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 1167 | [Arceus (Ice type)](pokemon_1026-1440.md#1167-arceus-ice-type) | Ice | Multitype | — | 720 | no |
 | 1168 | [Arceus (Dragon type)](pokemon_1026-1440.md#1168-arceus-dragon-type) | Dragon | Multitype | — | 720 | no |
 | 1169 | [Arceus (Dark type)](pokemon_1026-1440.md#1169-arceus-dark-type) | Dark | Multitype | — | 720 | no |
-| 1170 | [Arceus (Fairy type)](pokemon_1026-1440.md#1170-arceus-fairy-type) | Fairy | Multitype | — | 720 | no |
-| 1171 | [Mega Audino](pokemon_1026-1440.md#1171-mega-audino) | Normal / Fairy | Healer | Healer | 545 | no |
-| 1172 | [Basculin (Blue-Striped Form)](pokemon_1026-1440.md#1172-basculin-blue-striped-form) | Water | Rock Head / Adaptability | Mold Breaker | 460 | no |
-| 1173 | [Galarian Darumaka](pokemon_1026-1440.md#1173-galarian-darumaka) | Ice | Hustle | Inner Focus | 315 | no |
-| 1174 | [Darmanitan (Zen Mode)](pokemon_1026-1440.md#1174-darmanitan-zen-mode) | Fire / Psychic | Sheer Force | Zen Mode | 540 | no |
-| 1175 | [Galarian Darmanitan](pokemon_1026-1440.md#1175-galarian-darmanitan) | Ice | Gorilla Tactics | Zen Mode | 480 | no |
-| 1176 | [Galarian Darmanitan (Zen Mode)](pokemon_1026-1440.md#1176-galarian-darmanitan-zen-mode) | Ice / Fire | Gorilla Tactics | Zen Mode | 540 | no |
-| 1177 | [Galarian Yamask](pokemon_1026-1440.md#1177-galarian-yamask) | Ground / Ghost | Wandering Spirit | — | 303 | no |
-| 1178 | [Deerling (Summer Form)](pokemon_1026-1440.md#1178-deerling-summer-form) | Normal / Grass | Chlorophyll / Sap Sipper | Serene Grace | 335 | no |
-| 1179 | [Deerling (Autumn Form)](pokemon_1026-1440.md#1179-deerling-autumn-form) | Normal / Grass | Chlorophyll / Sap Sipper | Serene Grace | 335 | no |
-| 1180 | [Deerling (Winter Form)](pokemon_1026-1440.md#1180-deerling-winter-form) | Normal / Grass | Chlorophyll / Sap Sipper | Serene Grace | 335 | no |
-| 1181 | [Sawsbuck (Summer Form)](pokemon_1026-1440.md#1181-sawsbuck-summer-form) | Normal / Grass | Chlorophyll / Sap Sipper | Serene Grace | 475 | no |
-| 1182 | [Sawsbuck (Autumn Form)](pokemon_1026-1440.md#1182-sawsbuck-autumn-form) | Normal / Grass | Chlorophyll / Sap Sipper | Serene Grace | 475 | no |
-| 1183 | [Sawsbuck (Winter Form)](pokemon_1026-1440.md#1183-sawsbuck-winter-form) | Normal / Grass | Chlorophyll / Sap Sipper | Serene Grace | 475 | no |
-| 1184 | [Galarian Stunfisk](pokemon_1026-1440.md#1184-galarian-stunfisk) | Ground / Steel | Mimicry | Mimicry | 471 | no |
-| 1185 | [Tornadus (Therian Forme)](pokemon_1026-1440.md#1185-tornadus-therian-forme) | Flying | Regenerator | Regenerator | 580 | no |
-| 1186 | [Thundurus (Therian Forme)](pokemon_1026-1440.md#1186-thundurus-therian-forme) | Electric / Flying | Volt Absorb | Volt Absorb | 580 | no |
-| 1187 | [Landorus (Therian Forme)](pokemon_1026-1440.md#1187-landorus-therian-forme) | Ground / Flying | Intimidate | Intimidate | 600 | no |
-| 1188 | [White Kyurem](pokemon_1026-1440.md#1188-white-kyurem) | Dragon / Ice | Turboblaze | — | 700 | no |
-| 1189 | [Black Kyurem](pokemon_1026-1440.md#1189-black-kyurem) | Dragon / Ice | Teravolt | — | 700 | no |
-| 1190 | [Kyurem (form 3)](pokemon_1026-1440.md#1190-kyurem-form-3) | Dragon / Ice | Turboblaze | — | 700 | no |
-| 1191 | [Kyurem (form 4)](pokemon_1026-1440.md#1191-kyurem-form-4) | Dragon / Ice | Teravolt | — | 700 | no |
-| 1192 | [Keldeo (Resolute Form)](pokemon_1026-1440.md#1192-keldeo-resolute-form) | Water / Fighting | Justified | — | 580 | no |
-| 1193 | [Meloetta (Pirouette Forme)](pokemon_1026-1440.md#1193-meloetta-pirouette-forme) | Normal / Fighting | Serene Grace | — | 600 | no |
+| 1170 | [Arceus (Fairy type)](pokemon_1026-1440.md#1170-arceus-fairy-type) | Fairy | Multitype | — | 720 | never |
+| 1171 | [Mega Audino](pokemon_1026-1440.md#1171-mega-audino) | Normal / Fairy | Healer | Healer | 545 | never |
+| 1172 | [Basculin (Blue-Striped Form)](pokemon_1026-1440.md#1172-basculin-blue-striped-form) | Water | Rock Head / Adaptability | Mold Breaker | 460 | never |
+| 1173 | [Galarian Darumaka](pokemon_1026-1440.md#1173-galarian-darumaka) | Ice | Hustle | Inner Focus | 315 | never |
+| 1174 | [Darmanitan (Zen Mode)](pokemon_1026-1440.md#1174-darmanitan-zen-mode) | Fire / Psychic | Sheer Force | Zen Mode | 540 | yes |
+| 1175 | [Galarian Darmanitan](pokemon_1026-1440.md#1175-galarian-darmanitan) | Ice | Gorilla Tactics | Zen Mode | 480 | never |
+| 1176 | [Galarian Darmanitan (Zen Mode)](pokemon_1026-1440.md#1176-galarian-darmanitan-zen-mode) | Ice / Fire | Gorilla Tactics | Zen Mode | 540 | never |
+| 1177 | [Galarian Yamask](pokemon_1026-1440.md#1177-galarian-yamask) | Ground / Ghost | Wandering Spirit | — | 303 | never |
+| 1178 | [Deerling (Summer Form)](pokemon_1026-1440.md#1178-deerling-summer-form) | Normal / Grass | Chlorophyll / Sap Sipper | Serene Grace | 335 | never |
+| 1179 | [Deerling (Autumn Form)](pokemon_1026-1440.md#1179-deerling-autumn-form) | Normal / Grass | Chlorophyll / Sap Sipper | Serene Grace | 335 | never |
+| 1180 | [Deerling (Winter Form)](pokemon_1026-1440.md#1180-deerling-winter-form) | Normal / Grass | Chlorophyll / Sap Sipper | Serene Grace | 335 | never |
+| 1181 | [Sawsbuck (Summer Form)](pokemon_1026-1440.md#1181-sawsbuck-summer-form) | Normal / Grass | Chlorophyll / Sap Sipper | Serene Grace | 475 | never |
+| 1182 | [Sawsbuck (Autumn Form)](pokemon_1026-1440.md#1182-sawsbuck-autumn-form) | Normal / Grass | Chlorophyll / Sap Sipper | Serene Grace | 475 | never |
+| 1183 | [Sawsbuck (Winter Form)](pokemon_1026-1440.md#1183-sawsbuck-winter-form) | Normal / Grass | Chlorophyll / Sap Sipper | Serene Grace | 475 | never |
+| 1184 | [Galarian Stunfisk](pokemon_1026-1440.md#1184-galarian-stunfisk) | Ground / Steel | Mimicry | Mimicry | 471 | never |
+| 1185 | [Tornadus (Therian Forme)](pokemon_1026-1440.md#1185-tornadus-therian-forme) | Flying | Regenerator | Regenerator | 580 | never |
+| 1186 | [Thundurus (Therian Forme)](pokemon_1026-1440.md#1186-thundurus-therian-forme) | Electric / Flying | Volt Absorb | Volt Absorb | 580 | never |
+| 1187 | [Landorus (Therian Forme)](pokemon_1026-1440.md#1187-landorus-therian-forme) | Ground / Flying | Intimidate | Intimidate | 600 | never |
+| 1188 | [White Kyurem](pokemon_1026-1440.md#1188-white-kyurem) | Dragon / Ice | Turboblaze | — | 700 | never |
+| 1189 | [Black Kyurem](pokemon_1026-1440.md#1189-black-kyurem) | Dragon / Ice | Teravolt | — | 700 | never |
+| 1190 | [Kyurem (form 3)](pokemon_1026-1440.md#1190-kyurem-form-3) | Dragon / Ice | Turboblaze | — | 700 | never |
+| 1191 | [Kyurem (form 4)](pokemon_1026-1440.md#1191-kyurem-form-4) | Dragon / Ice | Teravolt | — | 700 | never |
+| 1192 | [Keldeo (Resolute Form)](pokemon_1026-1440.md#1192-keldeo-resolute-form) | Water / Fighting | Justified | — | 580 | never |
+| 1193 | [Meloetta (Pirouette Forme)](pokemon_1026-1440.md#1193-meloetta-pirouette-forme) | Normal / Fighting | Serene Grace | — | 600 | never |
 | 1194 | [Ash-Greninja](pokemon_1026-1440.md#1194-ash-greninja) | Water / Dark | Ninja Bond | Ninja Bond | 641 | no |
-| 1195 | [Vivillon (Polar Pattern)](pokemon_1026-1440.md#1195-vivillon-polar-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1196 | [Vivillon (Tundra Pattern)](pokemon_1026-1440.md#1196-vivillon-tundra-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1197 | [Vivillon (Continental Pattern)](pokemon_1026-1440.md#1197-vivillon-continental-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1198 | [Vivillon (Garden Pattern)](pokemon_1026-1440.md#1198-vivillon-garden-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1199 | [Vivillon (Elegant Pattern)](pokemon_1026-1440.md#1199-vivillon-elegant-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1200 | [Vivillon (Meadow Pattern)](pokemon_1026-1440.md#1200-vivillon-meadow-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1201 | [Vivillon (Modern Pattern)](pokemon_1026-1440.md#1201-vivillon-modern-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1202 | [Vivillon (Marine Pattern)](pokemon_1026-1440.md#1202-vivillon-marine-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1203 | [Vivillon (Archipelago Pattern)](pokemon_1026-1440.md#1203-vivillon-archipelago-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1204 | [Vivillon (High Plains Pattern)](pokemon_1026-1440.md#1204-vivillon-high-plains-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1205 | [Vivillon (Sandstorm Pattern)](pokemon_1026-1440.md#1205-vivillon-sandstorm-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1206 | [Vivillon (River Pattern)](pokemon_1026-1440.md#1206-vivillon-river-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1207 | [Vivillon (Monsoon Pattern)](pokemon_1026-1440.md#1207-vivillon-monsoon-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1208 | [Vivillon (Savanna Pattern)](pokemon_1026-1440.md#1208-vivillon-savanna-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1209 | [Vivillon (Sun Pattern)](pokemon_1026-1440.md#1209-vivillon-sun-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1210 | [Vivillon (Ocean Pattern)](pokemon_1026-1440.md#1210-vivillon-ocean-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1211 | [Vivillon (Jungle Pattern)](pokemon_1026-1440.md#1211-vivillon-jungle-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1212 | [Vivillon (Fancy Pattern)](pokemon_1026-1440.md#1212-vivillon-fancy-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1213 | [Vivillon (Poké Ball Pattern)](pokemon_1026-1440.md#1213-vivillon-pok-ball-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | no |
-| 1214 | [Flabébé (Yellow Flower)](pokemon_1026-1440.md#1214-flabb-yellow-flower) | Fairy | Flower Veil | Symbiosis | 303 | no |
-| 1215 | [Flabébé (Orange Flower)](pokemon_1026-1440.md#1215-flabb-orange-flower) | Fairy | Flower Veil | Symbiosis | 303 | no |
-| 1216 | [Flabébé (Blue Flower)](pokemon_1026-1440.md#1216-flabb-blue-flower) | Fairy | Flower Veil | Symbiosis | 303 | no |
-| 1217 | [Flabébé (White Flower)](pokemon_1026-1440.md#1217-flabb-white-flower) | Fairy | Flower Veil | Symbiosis | 303 | no |
-| 1218 | [Floette (Yellow Flower)](pokemon_1026-1440.md#1218-floette-yellow-flower) | Fairy | Flower Veil | Symbiosis | 371 | no |
-| 1219 | [Floette (Orange Flower)](pokemon_1026-1440.md#1219-floette-orange-flower) | Fairy | Flower Veil | Symbiosis | 371 | no |
-| 1220 | [Floette (Blue Flower)](pokemon_1026-1440.md#1220-floette-blue-flower) | Fairy | Flower Veil | Symbiosis | 371 | no |
-| 1221 | [Floette (White Flower)](pokemon_1026-1440.md#1221-floette-white-flower) | Fairy | Flower Veil | Symbiosis | 371 | no |
+| 1195 | [Vivillon (Polar Pattern)](pokemon_1026-1440.md#1195-vivillon-polar-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1196 | [Vivillon (Tundra Pattern)](pokemon_1026-1440.md#1196-vivillon-tundra-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1197 | [Vivillon (Continental Pattern)](pokemon_1026-1440.md#1197-vivillon-continental-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1198 | [Vivillon (Garden Pattern)](pokemon_1026-1440.md#1198-vivillon-garden-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1199 | [Vivillon (Elegant Pattern)](pokemon_1026-1440.md#1199-vivillon-elegant-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1200 | [Vivillon (Meadow Pattern)](pokemon_1026-1440.md#1200-vivillon-meadow-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1201 | [Vivillon (Modern Pattern)](pokemon_1026-1440.md#1201-vivillon-modern-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1202 | [Vivillon (Marine Pattern)](pokemon_1026-1440.md#1202-vivillon-marine-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1203 | [Vivillon (Archipelago Pattern)](pokemon_1026-1440.md#1203-vivillon-archipelago-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1204 | [Vivillon (High Plains Pattern)](pokemon_1026-1440.md#1204-vivillon-high-plains-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1205 | [Vivillon (Sandstorm Pattern)](pokemon_1026-1440.md#1205-vivillon-sandstorm-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1206 | [Vivillon (River Pattern)](pokemon_1026-1440.md#1206-vivillon-river-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1207 | [Vivillon (Monsoon Pattern)](pokemon_1026-1440.md#1207-vivillon-monsoon-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1208 | [Vivillon (Savanna Pattern)](pokemon_1026-1440.md#1208-vivillon-savanna-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1209 | [Vivillon (Sun Pattern)](pokemon_1026-1440.md#1209-vivillon-sun-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1210 | [Vivillon (Ocean Pattern)](pokemon_1026-1440.md#1210-vivillon-ocean-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1211 | [Vivillon (Jungle Pattern)](pokemon_1026-1440.md#1211-vivillon-jungle-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1212 | [Vivillon (Fancy Pattern)](pokemon_1026-1440.md#1212-vivillon-fancy-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1213 | [Vivillon (Poké Ball Pattern)](pokemon_1026-1440.md#1213-vivillon-pok-ball-pattern) | Bug / Flying | Shield Dust / Compound Eyes | Friend Guard | 411 | never |
+| 1214 | [Flabébé (Yellow Flower)](pokemon_1026-1440.md#1214-flabb-yellow-flower) | Fairy | Flower Veil | Symbiosis | 303 | never |
+| 1215 | [Flabébé (Orange Flower)](pokemon_1026-1440.md#1215-flabb-orange-flower) | Fairy | Flower Veil | Symbiosis | 303 | never |
+| 1216 | [Flabébé (Blue Flower)](pokemon_1026-1440.md#1216-flabb-blue-flower) | Fairy | Flower Veil | Symbiosis | 303 | never |
+| 1217 | [Flabébé (White Flower)](pokemon_1026-1440.md#1217-flabb-white-flower) | Fairy | Flower Veil | Symbiosis | 303 | never |
+| 1218 | [Floette (Yellow Flower)](pokemon_1026-1440.md#1218-floette-yellow-flower) | Fairy | Flower Veil | Symbiosis | 371 | never |
+| 1219 | [Floette (Orange Flower)](pokemon_1026-1440.md#1219-floette-orange-flower) | Fairy | Flower Veil | Symbiosis | 371 | never |
+| 1220 | [Floette (Blue Flower)](pokemon_1026-1440.md#1220-floette-blue-flower) | Fairy | Flower Veil | Symbiosis | 371 | never |
+| 1221 | [Floette (White Flower)](pokemon_1026-1440.md#1221-floette-white-flower) | Fairy | Flower Veil | Symbiosis | 371 | never |
 | 1222 | [Floette (Eternal Flower)](pokemon_1026-1440.md#1222-floette-eternal-flower) | Fairy | Fairy Aura | — | 551 | no |
-| 1223 | [Florges (Yellow Flower)](pokemon_1026-1440.md#1223-florges-yellow-flower) | Fairy | Flower Veil | Symbiosis | 552 | no |
-| 1224 | [Florges (Orange Flower)](pokemon_1026-1440.md#1224-florges-orange-flower) | Fairy | Flower Veil | Symbiosis | 552 | no |
-| 1225 | [Florges (Blue Flower)](pokemon_1026-1440.md#1225-florges-blue-flower) | Fairy | Flower Veil | Symbiosis | 552 | no |
-| 1226 | [Florges (White Flower)](pokemon_1026-1440.md#1226-florges-white-flower) | Fairy | Flower Veil | Symbiosis | 552 | no |
-| 1227 | [Furfrou (Heart Trim)](pokemon_1026-1440.md#1227-furfrou-heart-trim) | Normal | Fur Coat | — | 472 | no |
-| 1228 | [Furfrou (Star Trim)](pokemon_1026-1440.md#1228-furfrou-star-trim) | Normal | Fur Coat | — | 472 | no |
-| 1229 | [Furfrou (Diamond Trim)](pokemon_1026-1440.md#1229-furfrou-diamond-trim) | Normal | Fur Coat | — | 472 | no |
-| 1230 | [Furfrou (Debutante Trim)](pokemon_1026-1440.md#1230-furfrou-debutante-trim) | Normal | Fur Coat | — | 472 | no |
-| 1231 | [Furfrou (Matron Trim)](pokemon_1026-1440.md#1231-furfrou-matron-trim) | Normal | Fur Coat | — | 472 | no |
-| 1232 | [Furfrou (Dandy Trim)](pokemon_1026-1440.md#1232-furfrou-dandy-trim) | Normal | Fur Coat | — | 472 | no |
-| 1233 | [Furfrou (La Reine Trim)](pokemon_1026-1440.md#1233-furfrou-la-reine-trim) | Normal | Fur Coat | — | 472 | no |
-| 1234 | [Furfrou (Kabuki Trim)](pokemon_1026-1440.md#1234-furfrou-kabuki-trim) | Normal | Fur Coat | — | 472 | no |
-| 1235 | [Furfrou (Pharaoh Trim)](pokemon_1026-1440.md#1235-furfrou-pharaoh-trim) | Normal | Fur Coat | — | 472 | no |
-| 1236 | [Meowstic (female)](pokemon_1026-1440.md#1236-meowstic-female) | Psychic | Keen Eye / Infiltrator | Competitive | 466 | no |
+| 1223 | [Florges (Yellow Flower)](pokemon_1026-1440.md#1223-florges-yellow-flower) | Fairy | Flower Veil | Symbiosis | 552 | never |
+| 1224 | [Florges (Orange Flower)](pokemon_1026-1440.md#1224-florges-orange-flower) | Fairy | Flower Veil | Symbiosis | 552 | never |
+| 1225 | [Florges (Blue Flower)](pokemon_1026-1440.md#1225-florges-blue-flower) | Fairy | Flower Veil | Symbiosis | 552 | never |
+| 1226 | [Florges (White Flower)](pokemon_1026-1440.md#1226-florges-white-flower) | Fairy | Flower Veil | Symbiosis | 552 | never |
+| 1227 | [Furfrou (Heart Trim)](pokemon_1026-1440.md#1227-furfrou-heart-trim) | Normal | Fur Coat | — | 472 | never |
+| 1228 | [Furfrou (Star Trim)](pokemon_1026-1440.md#1228-furfrou-star-trim) | Normal | Fur Coat | — | 472 | never |
+| 1229 | [Furfrou (Diamond Trim)](pokemon_1026-1440.md#1229-furfrou-diamond-trim) | Normal | Fur Coat | — | 472 | never |
+| 1230 | [Furfrou (Debutante Trim)](pokemon_1026-1440.md#1230-furfrou-debutante-trim) | Normal | Fur Coat | — | 472 | never |
+| 1231 | [Furfrou (Matron Trim)](pokemon_1026-1440.md#1231-furfrou-matron-trim) | Normal | Fur Coat | — | 472 | never |
+| 1232 | [Furfrou (Dandy Trim)](pokemon_1026-1440.md#1232-furfrou-dandy-trim) | Normal | Fur Coat | — | 472 | never |
+| 1233 | [Furfrou (La Reine Trim)](pokemon_1026-1440.md#1233-furfrou-la-reine-trim) | Normal | Fur Coat | — | 472 | never |
+| 1234 | [Furfrou (Kabuki Trim)](pokemon_1026-1440.md#1234-furfrou-kabuki-trim) | Normal | Fur Coat | — | 472 | never |
+| 1235 | [Furfrou (Pharaoh Trim)](pokemon_1026-1440.md#1235-furfrou-pharaoh-trim) | Normal | Fur Coat | — | 472 | never |
+| 1236 | [Meowstic (female)](pokemon_1026-1440.md#1236-meowstic-female) | Psychic | Keen Eye / Infiltrator | Competitive | 466 | never |
 | 1237 | [Aegislash (Blade Forme)](pokemon_1026-1440.md#1237-aegislash-blade-forme) | Steel / Ghost | Stance Change | — | 500 | no |
-| 1238 | [Xerneas (Active Mode)](pokemon_1026-1440.md#1238-xerneas-active-mode) | Fairy | Fairy Aura | — | 680 | no |
-| 1239 | [Zygarde (10% Forme)](pokemon_1026-1440.md#1239-zygarde-10-forme) | Dragon / Ground | Aura Break / Power Construct | — | 486 | no |
-| 1240 | [Zygarde (Complete Forme)](pokemon_1026-1440.md#1240-zygarde-complete-forme) | Dragon / Ground | Power Construct | Power Construct | 708 | no |
-| 1241 | [Zygarde (Complete Forme)](pokemon_1026-1440.md#1241-zygarde-complete-forme) | Dragon / Ground | Power Construct | Power Construct | 708 | no |
-| 1242 | [Mega Diancie](pokemon_1026-1440.md#1242-mega-diancie) | Rock / Fairy | Magic Bounce | Magic Bounce | 700 | no |
+| 1238 | [Xerneas (Active Mode)](pokemon_1026-1440.md#1238-xerneas-active-mode) | Fairy | Fairy Aura | — | 680 | never |
+| 1239 | [Zygarde (10% Forme)](pokemon_1026-1440.md#1239-zygarde-10-forme) | Dragon / Ground | Aura Break / Power Construct | — | 486 | never |
+| 1240 | [Zygarde (Complete Forme)](pokemon_1026-1440.md#1240-zygarde-complete-forme) | Dragon / Ground | Power Construct | Power Construct | 708 | never |
+| 1241 | [Zygarde (Complete Forme)](pokemon_1026-1440.md#1241-zygarde-complete-forme) | Dragon / Ground | Power Construct | Power Construct | 708 | never |
+| 1242 | [Mega Diancie](pokemon_1026-1440.md#1242-mega-diancie) | Rock / Fairy | Magic Bounce | Magic Bounce | 700 | never |
 | 1243 | [Hoopa Unbound](pokemon_1026-1440.md#1243-hoopa-unbound) | Psychic / Dark | Magician | — | 680 | no |
-| 1244 | [Oricorio (Pom-Pom Style)](pokemon_1026-1440.md#1244-oricorio-pom-pom-style) | Electric / Flying | Dancer | — | 476 | no |
-| 1245 | [Oricorio (Pa’u Style)](pokemon_1026-1440.md#1245-oricorio-pau-style) | Psychic / Flying | Dancer | — | 476 | no |
-| 1246 | [Oricorio (Sensu Style)](pokemon_1026-1440.md#1246-oricorio-sensu-style) | Ghost / Flying | Dancer | — | 476 | no |
-| 1247 | [Lycanroc (Midnight Form)](pokemon_1026-1440.md#1247-lycanroc-midnight-form) | Rock | Keen Eye / Vital Spirit | No Guard | 487 | no |
-| 1248 | [Lycanroc (Dusk Form)](pokemon_1026-1440.md#1248-lycanroc-dusk-form) | Rock | Sand Rush | Desert Hawk | 510 | no |
-| 1249 | [Wishiwashi (School Form)](pokemon_1026-1440.md#1249-wishiwashi-school-form) | Water | Schooling | — | 620 | no |
-| 1250 | [Silvally (Fighting type)](pokemon_1026-1440.md#1250-silvally-fighting-type) | Fighting | RKS System | — | 570 | no |
-| 1251 | [Silvally (Flying type)](pokemon_1026-1440.md#1251-silvally-flying-type) | Flying | RKS System | — | 570 | no |
-| 1252 | [Silvally (Poison type)](pokemon_1026-1440.md#1252-silvally-poison-type) | Poison | RKS System | — | 570 | no |
-| 1253 | [Silvally (Ground type)](pokemon_1026-1440.md#1253-silvally-ground-type) | Ground | RKS System | — | 570 | no |
-| 1254 | [Silvally (Rock type)](pokemon_1026-1440.md#1254-silvally-rock-type) | Rock | RKS System | — | 570 | no |
-| 1255 | [Silvally (Bug type)](pokemon_1026-1440.md#1255-silvally-bug-type) | Bug | RKS System | — | 570 | no |
-| 1256 | [Silvally (Ghost type)](pokemon_1026-1440.md#1256-silvally-ghost-type) | Ghost | RKS System | — | 570 | no |
-| 1257 | [Silvally (Steel type)](pokemon_1026-1440.md#1257-silvally-steel-type) | Steel | RKS System | — | 570 | no |
-| 1258 | [Silvally (Fire type)](pokemon_1026-1440.md#1258-silvally-fire-type) | Fire | RKS System | — | 570 | no |
-| 1259 | [Silvally (Water type)](pokemon_1026-1440.md#1259-silvally-water-type) | Water | RKS System | — | 570 | no |
-| 1260 | [Silvally (Grass type)](pokemon_1026-1440.md#1260-silvally-grass-type) | Grass | RKS System | — | 570 | no |
-| 1261 | [Silvally (Electric type)](pokemon_1026-1440.md#1261-silvally-electric-type) | Electric | RKS System | — | 570 | no |
-| 1262 | [Silvally (Psychic type)](pokemon_1026-1440.md#1262-silvally-psychic-type) | Psychic | RKS System | — | 570 | no |
-| 1263 | [Silvally (Ice type)](pokemon_1026-1440.md#1263-silvally-ice-type) | Ice | RKS System | — | 570 | no |
-| 1264 | [Silvally (Dragon type)](pokemon_1026-1440.md#1264-silvally-dragon-type) | Dragon | RKS System | — | 570 | no |
-| 1265 | [Silvally (Dark type)](pokemon_1026-1440.md#1265-silvally-dark-type) | Dark | RKS System | — | 570 | no |
-| 1266 | [Silvally (Fairy type)](pokemon_1026-1440.md#1266-silvally-fairy-type) | Fairy | RKS System | — | 570 | no |
-| 1267 | [Minior (Red Core)](pokemon_1026-1440.md#1267-minior-red-core) | Rock / Flying | Shields Down | — | 500 | no |
-| 1268 | [Minior (Orange Core)](pokemon_1026-1440.md#1268-minior-orange-core) | Rock / Flying | Shields Down | — | 500 | no |
-| 1269 | [Minior (Yellow Core)](pokemon_1026-1440.md#1269-minior-yellow-core) | Rock / Flying | Shields Down | — | 500 | no |
-| 1270 | [Minior (Green Core)](pokemon_1026-1440.md#1270-minior-green-core) | Rock / Flying | Shields Down | — | 500 | no |
-| 1271 | [Minior (Blue Core)](pokemon_1026-1440.md#1271-minior-blue-core) | Rock / Flying | Shields Down | — | 500 | no |
-| 1272 | [Minior (Indigo Core)](pokemon_1026-1440.md#1272-minior-indigo-core) | Rock / Flying | Shields Down | — | 500 | no |
-| 1273 | [Minior (Violet Core)](pokemon_1026-1440.md#1273-minior-violet-core) | Rock / Flying | Shields Down | — | 500 | no |
+| 1244 | [Oricorio (Pom-Pom Style)](pokemon_1026-1440.md#1244-oricorio-pom-pom-style) | Electric / Flying | Dancer | — | 476 | never |
+| 1245 | [Oricorio (Pa’u Style)](pokemon_1026-1440.md#1245-oricorio-pau-style) | Psychic / Flying | Dancer | — | 476 | never |
+| 1246 | [Oricorio (Sensu Style)](pokemon_1026-1440.md#1246-oricorio-sensu-style) | Ghost / Flying | Dancer | — | 476 | never |
+| 1247 | [Lycanroc (Midnight Form)](pokemon_1026-1440.md#1247-lycanroc-midnight-form) | Rock | Keen Eye / Vital Spirit | No Guard | 487 | yes |
+| 1248 | [Lycanroc (Dusk Form)](pokemon_1026-1440.md#1248-lycanroc-dusk-form) | Rock | Sand Rush | Desert Hawk | 510 | yes |
+| 1249 | [Wishiwashi (School Form)](pokemon_1026-1440.md#1249-wishiwashi-school-form) | Water | Schooling | — | 620 | never |
+| 1250 | [Silvally (Fighting type)](pokemon_1026-1440.md#1250-silvally-fighting-type) | Fighting | RKS System | — | 570 | never |
+| 1251 | [Silvally (Flying type)](pokemon_1026-1440.md#1251-silvally-flying-type) | Flying | RKS System | — | 570 | never |
+| 1252 | [Silvally (Poison type)](pokemon_1026-1440.md#1252-silvally-poison-type) | Poison | RKS System | — | 570 | never |
+| 1253 | [Silvally (Ground type)](pokemon_1026-1440.md#1253-silvally-ground-type) | Ground | RKS System | — | 570 | never |
+| 1254 | [Silvally (Rock type)](pokemon_1026-1440.md#1254-silvally-rock-type) | Rock | RKS System | — | 570 | never |
+| 1255 | [Silvally (Bug type)](pokemon_1026-1440.md#1255-silvally-bug-type) | Bug | RKS System | — | 570 | never |
+| 1256 | [Silvally (Ghost type)](pokemon_1026-1440.md#1256-silvally-ghost-type) | Ghost | RKS System | — | 570 | never |
+| 1257 | [Silvally (Steel type)](pokemon_1026-1440.md#1257-silvally-steel-type) | Steel | RKS System | — | 570 | never |
+| 1258 | [Silvally (Fire type)](pokemon_1026-1440.md#1258-silvally-fire-type) | Fire | RKS System | — | 570 | never |
+| 1259 | [Silvally (Water type)](pokemon_1026-1440.md#1259-silvally-water-type) | Water | RKS System | — | 570 | never |
+| 1260 | [Silvally (Grass type)](pokemon_1026-1440.md#1260-silvally-grass-type) | Grass | RKS System | — | 570 | never |
+| 1261 | [Silvally (Electric type)](pokemon_1026-1440.md#1261-silvally-electric-type) | Electric | RKS System | — | 570 | never |
+| 1262 | [Silvally (Psychic type)](pokemon_1026-1440.md#1262-silvally-psychic-type) | Psychic | RKS System | — | 570 | never |
+| 1263 | [Silvally (Ice type)](pokemon_1026-1440.md#1263-silvally-ice-type) | Ice | RKS System | — | 570 | never |
+| 1264 | [Silvally (Dragon type)](pokemon_1026-1440.md#1264-silvally-dragon-type) | Dragon | RKS System | — | 570 | never |
+| 1265 | [Silvally (Dark type)](pokemon_1026-1440.md#1265-silvally-dark-type) | Dark | RKS System | — | 570 | never |
+| 1266 | [Silvally (Fairy type)](pokemon_1026-1440.md#1266-silvally-fairy-type) | Fairy | RKS System | — | 570 | never |
+| 1267 | [Minior (Red Core)](pokemon_1026-1440.md#1267-minior-red-core) | Rock / Flying | Shields Down | — | 500 | never |
+| 1268 | [Minior (Orange Core)](pokemon_1026-1440.md#1268-minior-orange-core) | Rock / Flying | Shields Down | — | 500 | never |
+| 1269 | [Minior (Yellow Core)](pokemon_1026-1440.md#1269-minior-yellow-core) | Rock / Flying | Shields Down | — | 500 | never |
+| 1270 | [Minior (Green Core)](pokemon_1026-1440.md#1270-minior-green-core) | Rock / Flying | Shields Down | — | 500 | never |
+| 1271 | [Minior (Blue Core)](pokemon_1026-1440.md#1271-minior-blue-core) | Rock / Flying | Shields Down | — | 500 | never |
+| 1272 | [Minior (Indigo Core)](pokemon_1026-1440.md#1272-minior-indigo-core) | Rock / Flying | Shields Down | — | 500 | never |
+| 1273 | [Minior (Violet Core)](pokemon_1026-1440.md#1273-minior-violet-core) | Rock / Flying | Shields Down | — | 500 | never |
 | 1274 | [Mimikyu (Busted Form)](pokemon_1026-1440.md#1274-mimikyu-busted-form) | Ghost / Fairy | Disguise | — | 476 | no |
-| 1275 | [Dusk Mane Necrozma](pokemon_1026-1440.md#1275-dusk-mane-necrozma) | Psychic / Steel | Prism Armor | — | 680 | no |
-| 1276 | [Dawn Wings Necrozma](pokemon_1026-1440.md#1276-dawn-wings-necrozma) | Psychic / Ghost | Prism Armor | — | 680 | no |
-| 1277 | [Ultra Necrozma](pokemon_1026-1440.md#1277-ultra-necrozma) | Psychic / Dragon | Neuroforce | — | 754 | no |
-| 1278 | [Ultra Necrozma](pokemon_1026-1440.md#1278-ultra-necrozma) | Psychic / Dragon | Neuroforce | — | 754 | no |
-| 1279 | [Magearna (Original Color)](pokemon_1026-1440.md#1279-magearna-original-color) | Steel / Fairy | Soul-Heart | — | 600 | no |
-| 1280 | [Cramorant (Gulping Form)](pokemon_1026-1440.md#1280-cramorant-gulping-form) | Flying / Water | Gulp Missile | — | 475 | no |
-| 1281 | [Cramorant (Gorging Form)](pokemon_1026-1440.md#1281-cramorant-gorging-form) | Flying / Water | Gulp Missile | — | 475 | no |
-| 1282 | [Toxtricity (Low Key Form)](pokemon_1026-1440.md#1282-toxtricity-low-key-form) | Electric / Poison | Punk Rock / Minus | Technician | 502 | no |
-| 1283 | [Alcremie (form 7)](pokemon_1026-1440.md#1283-alcremie-form-7) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1284 | [Alcremie (form 8)](pokemon_1026-1440.md#1284-alcremie-form-8) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1285 | [Alcremie (form 9)](pokemon_1026-1440.md#1285-alcremie-form-9) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1286 | [Alcremie (form 10)](pokemon_1026-1440.md#1286-alcremie-form-10) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1287 | [Alcremie (form 11)](pokemon_1026-1440.md#1287-alcremie-form-11) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1288 | [Alcremie (form 12)](pokemon_1026-1440.md#1288-alcremie-form-12) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1289 | [Alcremie (form 13)](pokemon_1026-1440.md#1289-alcremie-form-13) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1290 | [Alcremie (form 14)](pokemon_1026-1440.md#1290-alcremie-form-14) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1291 | [Alcremie (form 15)](pokemon_1026-1440.md#1291-alcremie-form-15) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1292 | [Alcremie (form 16)](pokemon_1026-1440.md#1292-alcremie-form-16) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1293 | [Alcremie (form 17)](pokemon_1026-1440.md#1293-alcremie-form-17) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1294 | [Alcremie (form 18)](pokemon_1026-1440.md#1294-alcremie-form-18) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1295 | [Alcremie (form 19)](pokemon_1026-1440.md#1295-alcremie-form-19) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1296 | [Alcremie (form 20)](pokemon_1026-1440.md#1296-alcremie-form-20) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1297 | [Alcremie (form 21)](pokemon_1026-1440.md#1297-alcremie-form-21) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1298 | [Alcremie (form 22)](pokemon_1026-1440.md#1298-alcremie-form-22) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1299 | [Alcremie (form 23)](pokemon_1026-1440.md#1299-alcremie-form-23) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1300 | [Alcremie (form 24)](pokemon_1026-1440.md#1300-alcremie-form-24) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1301 | [Alcremie (form 25)](pokemon_1026-1440.md#1301-alcremie-form-25) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1302 | [Alcremie (form 26)](pokemon_1026-1440.md#1302-alcremie-form-26) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1303 | [Alcremie (form 27)](pokemon_1026-1440.md#1303-alcremie-form-27) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1304 | [Alcremie (form 28)](pokemon_1026-1440.md#1304-alcremie-form-28) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1305 | [Alcremie (form 29)](pokemon_1026-1440.md#1305-alcremie-form-29) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1306 | [Alcremie (form 30)](pokemon_1026-1440.md#1306-alcremie-form-30) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1307 | [Alcremie (form 31)](pokemon_1026-1440.md#1307-alcremie-form-31) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1308 | [Alcremie (form 32)](pokemon_1026-1440.md#1308-alcremie-form-32) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1309 | [Alcremie (form 33)](pokemon_1026-1440.md#1309-alcremie-form-33) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1310 | [Alcremie (form 34)](pokemon_1026-1440.md#1310-alcremie-form-34) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1311 | [Alcremie (form 35)](pokemon_1026-1440.md#1311-alcremie-form-35) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1312 | [Alcremie (form 36)](pokemon_1026-1440.md#1312-alcremie-form-36) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1313 | [Alcremie (form 37)](pokemon_1026-1440.md#1313-alcremie-form-37) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1314 | [Alcremie (form 38)](pokemon_1026-1440.md#1314-alcremie-form-38) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1315 | [Alcremie (form 39)](pokemon_1026-1440.md#1315-alcremie-form-39) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1316 | [Alcremie (form 40)](pokemon_1026-1440.md#1316-alcremie-form-40) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1317 | [Alcremie (form 41)](pokemon_1026-1440.md#1317-alcremie-form-41) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1318 | [Alcremie (form 42)](pokemon_1026-1440.md#1318-alcremie-form-42) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1319 | [Alcremie (form 43)](pokemon_1026-1440.md#1319-alcremie-form-43) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1320 | [Alcremie (form 44)](pokemon_1026-1440.md#1320-alcremie-form-44) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1321 | [Alcremie (form 45)](pokemon_1026-1440.md#1321-alcremie-form-45) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1322 | [Alcremie (form 46)](pokemon_1026-1440.md#1322-alcremie-form-46) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1323 | [Alcremie (form 47)](pokemon_1026-1440.md#1323-alcremie-form-47) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1324 | [Alcremie (form 48)](pokemon_1026-1440.md#1324-alcremie-form-48) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1325 | [Alcremie (form 49)](pokemon_1026-1440.md#1325-alcremie-form-49) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1326 | [Alcremie (form 50)](pokemon_1026-1440.md#1326-alcremie-form-50) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1327 | [Alcremie (form 51)](pokemon_1026-1440.md#1327-alcremie-form-51) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1328 | [Alcremie (form 52)](pokemon_1026-1440.md#1328-alcremie-form-52) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1329 | [Alcremie (form 53)](pokemon_1026-1440.md#1329-alcremie-form-53) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1330 | [Alcremie (form 54)](pokemon_1026-1440.md#1330-alcremie-form-54) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1331 | [Alcremie (form 55)](pokemon_1026-1440.md#1331-alcremie-form-55) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1332 | [Alcremie (form 56)](pokemon_1026-1440.md#1332-alcremie-form-56) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1333 | [Alcremie (form 57)](pokemon_1026-1440.md#1333-alcremie-form-57) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1334 | [Alcremie (form 58)](pokemon_1026-1440.md#1334-alcremie-form-58) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1335 | [Alcremie (form 59)](pokemon_1026-1440.md#1335-alcremie-form-59) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1336 | [Alcremie (form 60)](pokemon_1026-1440.md#1336-alcremie-form-60) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1337 | [Alcremie (form 61)](pokemon_1026-1440.md#1337-alcremie-form-61) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1338 | [Alcremie (form 62)](pokemon_1026-1440.md#1338-alcremie-form-62) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1339 | [Eiscue (Noice Face)](pokemon_1026-1440.md#1339-eiscue-noice-face) | Ice | Ice Face | — | 470 | no |
-| 1340 | [Indeedee (female)](pokemon_1026-1440.md#1340-indeedee-female) | Psychic / Normal | Own Tempo / Synchronize | Psychic Surge | 475 | no |
-| 1341 | [Morpeko (Hangry Mode)](pokemon_1026-1440.md#1341-morpeko-hangry-mode) | Electric / Dark | Hunger Switch | — | 436 | no |
-| 1342 | [Zacian (Crowned Sword)](pokemon_1026-1440.md#1342-zacian-crowned-sword) | Fairy / Steel | Intrepid Sword | — | 720 | no |
-| 1343 | [Zamazenta (Crowned Shield)](pokemon_1026-1440.md#1343-zamazenta-crowned-shield) | Fighting / Steel | Dauntless Shield | — | 720 | no |
-| 1344 | [Urshifu (Rapid Strike Style)](pokemon_1026-1440.md#1344-urshifu-rapid-strike-style) | Fighting / Water | Unseen Fist | — | 550 | no |
-| 1345 | [Ice Rider Calyrex](pokemon_1026-1440.md#1345-ice-rider-calyrex) | Psychic / Ice | As One | — | 680 | no |
-| 1346 | [Shadow Rider Calyrex](pokemon_1026-1440.md#1346-shadow-rider-calyrex) | Psychic / Ghost | As One | — | 680 | no |
+| 1275 | [Dusk Mane Necrozma](pokemon_1026-1440.md#1275-dusk-mane-necrozma) | Psychic / Steel | Prism Armor | — | 680 | never |
+| 1276 | [Dawn Wings Necrozma](pokemon_1026-1440.md#1276-dawn-wings-necrozma) | Psychic / Ghost | Prism Armor | — | 680 | never |
+| 1277 | [Ultra Necrozma](pokemon_1026-1440.md#1277-ultra-necrozma) | Psychic / Dragon | Neuroforce | — | 754 | never |
+| 1278 | [Ultra Necrozma](pokemon_1026-1440.md#1278-ultra-necrozma) | Psychic / Dragon | Neuroforce | — | 754 | never |
+| 1279 | [Magearna (Original Color)](pokemon_1026-1440.md#1279-magearna-original-color) | Steel / Fairy | Soul-Heart | — | 600 | never |
+| 1280 | [Cramorant (Gulping Form)](pokemon_1026-1440.md#1280-cramorant-gulping-form) | Flying / Water | Gulp Missile | — | 475 | never |
+| 1281 | [Cramorant (Gorging Form)](pokemon_1026-1440.md#1281-cramorant-gorging-form) | Flying / Water | Gulp Missile | — | 475 | never |
+| 1282 | [Toxtricity (Low Key Form)](pokemon_1026-1440.md#1282-toxtricity-low-key-form) | Electric / Poison | Punk Rock / Minus | Technician | 502 | never |
+| 1283 | [Alcremie (form 7)](pokemon_1026-1440.md#1283-alcremie-form-7) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1284 | [Alcremie (form 8)](pokemon_1026-1440.md#1284-alcremie-form-8) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1285 | [Alcremie (form 9)](pokemon_1026-1440.md#1285-alcremie-form-9) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1286 | [Alcremie (form 10)](pokemon_1026-1440.md#1286-alcremie-form-10) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1287 | [Alcremie (form 11)](pokemon_1026-1440.md#1287-alcremie-form-11) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1288 | [Alcremie (form 12)](pokemon_1026-1440.md#1288-alcremie-form-12) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1289 | [Alcremie (form 13)](pokemon_1026-1440.md#1289-alcremie-form-13) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1290 | [Alcremie (form 14)](pokemon_1026-1440.md#1290-alcremie-form-14) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1291 | [Alcremie (form 15)](pokemon_1026-1440.md#1291-alcremie-form-15) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1292 | [Alcremie (form 16)](pokemon_1026-1440.md#1292-alcremie-form-16) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1293 | [Alcremie (form 17)](pokemon_1026-1440.md#1293-alcremie-form-17) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1294 | [Alcremie (form 18)](pokemon_1026-1440.md#1294-alcremie-form-18) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1295 | [Alcremie (form 19)](pokemon_1026-1440.md#1295-alcremie-form-19) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1296 | [Alcremie (form 20)](pokemon_1026-1440.md#1296-alcremie-form-20) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1297 | [Alcremie (form 21)](pokemon_1026-1440.md#1297-alcremie-form-21) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1298 | [Alcremie (form 22)](pokemon_1026-1440.md#1298-alcremie-form-22) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1299 | [Alcremie (form 23)](pokemon_1026-1440.md#1299-alcremie-form-23) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1300 | [Alcremie (form 24)](pokemon_1026-1440.md#1300-alcremie-form-24) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1301 | [Alcremie (form 25)](pokemon_1026-1440.md#1301-alcremie-form-25) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1302 | [Alcremie (form 26)](pokemon_1026-1440.md#1302-alcremie-form-26) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1303 | [Alcremie (form 27)](pokemon_1026-1440.md#1303-alcremie-form-27) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1304 | [Alcremie (form 28)](pokemon_1026-1440.md#1304-alcremie-form-28) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1305 | [Alcremie (form 29)](pokemon_1026-1440.md#1305-alcremie-form-29) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1306 | [Alcremie (form 30)](pokemon_1026-1440.md#1306-alcremie-form-30) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1307 | [Alcremie (form 31)](pokemon_1026-1440.md#1307-alcremie-form-31) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1308 | [Alcremie (form 32)](pokemon_1026-1440.md#1308-alcremie-form-32) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1309 | [Alcremie (form 33)](pokemon_1026-1440.md#1309-alcremie-form-33) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1310 | [Alcremie (form 34)](pokemon_1026-1440.md#1310-alcremie-form-34) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1311 | [Alcremie (form 35)](pokemon_1026-1440.md#1311-alcremie-form-35) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1312 | [Alcremie (form 36)](pokemon_1026-1440.md#1312-alcremie-form-36) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1313 | [Alcremie (form 37)](pokemon_1026-1440.md#1313-alcremie-form-37) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1314 | [Alcremie (form 38)](pokemon_1026-1440.md#1314-alcremie-form-38) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1315 | [Alcremie (form 39)](pokemon_1026-1440.md#1315-alcremie-form-39) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1316 | [Alcremie (form 40)](pokemon_1026-1440.md#1316-alcremie-form-40) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1317 | [Alcremie (form 41)](pokemon_1026-1440.md#1317-alcremie-form-41) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1318 | [Alcremie (form 42)](pokemon_1026-1440.md#1318-alcremie-form-42) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1319 | [Alcremie (form 43)](pokemon_1026-1440.md#1319-alcremie-form-43) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1320 | [Alcremie (form 44)](pokemon_1026-1440.md#1320-alcremie-form-44) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1321 | [Alcremie (form 45)](pokemon_1026-1440.md#1321-alcremie-form-45) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1322 | [Alcremie (form 46)](pokemon_1026-1440.md#1322-alcremie-form-46) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1323 | [Alcremie (form 47)](pokemon_1026-1440.md#1323-alcremie-form-47) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1324 | [Alcremie (form 48)](pokemon_1026-1440.md#1324-alcremie-form-48) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1325 | [Alcremie (form 49)](pokemon_1026-1440.md#1325-alcremie-form-49) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1326 | [Alcremie (form 50)](pokemon_1026-1440.md#1326-alcremie-form-50) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1327 | [Alcremie (form 51)](pokemon_1026-1440.md#1327-alcremie-form-51) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1328 | [Alcremie (form 52)](pokemon_1026-1440.md#1328-alcremie-form-52) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1329 | [Alcremie (form 53)](pokemon_1026-1440.md#1329-alcremie-form-53) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1330 | [Alcremie (form 54)](pokemon_1026-1440.md#1330-alcremie-form-54) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1331 | [Alcremie (form 55)](pokemon_1026-1440.md#1331-alcremie-form-55) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1332 | [Alcremie (form 56)](pokemon_1026-1440.md#1332-alcremie-form-56) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1333 | [Alcremie (form 57)](pokemon_1026-1440.md#1333-alcremie-form-57) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1334 | [Alcremie (form 58)](pokemon_1026-1440.md#1334-alcremie-form-58) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1335 | [Alcremie (form 59)](pokemon_1026-1440.md#1335-alcremie-form-59) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1336 | [Alcremie (form 60)](pokemon_1026-1440.md#1336-alcremie-form-60) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1337 | [Alcremie (form 61)](pokemon_1026-1440.md#1337-alcremie-form-61) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1338 | [Alcremie (form 62)](pokemon_1026-1440.md#1338-alcremie-form-62) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1339 | [Eiscue (Noice Face)](pokemon_1026-1440.md#1339-eiscue-noice-face) | Ice | Ice Face | — | 470 | never |
+| 1340 | [Indeedee (female)](pokemon_1026-1440.md#1340-indeedee-female) | Psychic / Normal | Own Tempo / Synchronize | Psychic Surge | 475 | never |
+| 1341 | [Morpeko (Hangry Mode)](pokemon_1026-1440.md#1341-morpeko-hangry-mode) | Electric / Dark | Hunger Switch | — | 436 | never |
+| 1342 | [Zacian (Crowned Sword)](pokemon_1026-1440.md#1342-zacian-crowned-sword) | Fairy / Steel | Intrepid Sword | — | 720 | never |
+| 1343 | [Zamazenta (Crowned Shield)](pokemon_1026-1440.md#1343-zamazenta-crowned-shield) | Fighting / Steel | Dauntless Shield | — | 720 | never |
+| 1344 | [Urshifu (Rapid Strike Style)](pokemon_1026-1440.md#1344-urshifu-rapid-strike-style) | Fighting / Water | Unseen Fist | — | 550 | never |
+| 1345 | [Ice Rider Calyrex](pokemon_1026-1440.md#1345-ice-rider-calyrex) | Psychic / Ice | As One | — | 680 | never |
+| 1346 | [Shadow Rider Calyrex](pokemon_1026-1440.md#1346-shadow-rider-calyrex) | Psychic / Ghost | As One | — | 680 | never |
 | 1347 | [Hisuian Growlithe](pokemon_1026-1440.md#1347-hisuian-growlithe) | Fire / Rock | Intimidate / Flash Fire | Rock Head | 350 | yes |
 | 1348 | [Hisuian Arcanine](pokemon_1026-1440.md#1348-hisuian-arcanine) | Fire / Rock | Intimidate / Flash Fire | Rock Head | 555 | yes |
-| 1349 | [Hisuian Voltorb](pokemon_1026-1440.md#1349-hisuian-voltorb) | Electric / Grass | Soundproof / Static | Aftermath | 330 | no |
-| 1350 | [Hisuian Electrode](pokemon_1026-1440.md#1350-hisuian-electrode) | Electric / Grass | Soundproof / Static | Aftermath | 490 | no |
-| 1351 | [Paldean Tauros (Combat Breed)](pokemon_1026-1440.md#1351-paldean-tauros-combat-breed) | Fighting | Intimidate / Anger Point | Cud Chew | 490 | no |
-| 1352 | [Paldean Tauros (Blaze Breed)](pokemon_1026-1440.md#1352-paldean-tauros-blaze-breed) | Fighting / Fire | Intimidate / Anger Point | Cud Chew | 490 | no |
-| 1353 | [Paldean Tauros (Aqua Breed)](pokemon_1026-1440.md#1353-paldean-tauros-aqua-breed) | Fighting / Water | Intimidate / Anger Point | Cud Chew | 490 | no |
-| 1354 | [Hisuian Typhlosion](pokemon_1026-1440.md#1354-hisuian-typhlosion) | Fire / Ghost | Blaze | Frisk | 534 | no |
-| 1355 | [Paldean Wooper](pokemon_1026-1440.md#1355-paldean-wooper) | Poison / Ground | Poison Point / Water Absorb | Unaware | 210 | no |
+| 1349 | [Hisuian Voltorb](pokemon_1026-1440.md#1349-hisuian-voltorb) | Electric / Grass | Soundproof / Static | Aftermath | 330 | never |
+| 1350 | [Hisuian Electrode](pokemon_1026-1440.md#1350-hisuian-electrode) | Electric / Grass | Soundproof / Static | Aftermath | 490 | never |
+| 1351 | [Paldean Tauros (Combat Breed)](pokemon_1026-1440.md#1351-paldean-tauros-combat-breed) | Fighting | Intimidate / Anger Point | Cud Chew | 490 | never |
+| 1352 | [Paldean Tauros (Blaze Breed)](pokemon_1026-1440.md#1352-paldean-tauros-blaze-breed) | Fighting / Fire | Intimidate / Anger Point | Cud Chew | 490 | never |
+| 1353 | [Paldean Tauros (Aqua Breed)](pokemon_1026-1440.md#1353-paldean-tauros-aqua-breed) | Fighting / Water | Intimidate / Anger Point | Cud Chew | 490 | never |
+| 1354 | [Hisuian Typhlosion](pokemon_1026-1440.md#1354-hisuian-typhlosion) | Fire / Ghost | Blaze | Frisk | 534 | never |
+| 1355 | [Paldean Wooper](pokemon_1026-1440.md#1355-paldean-wooper) | Poison / Ground | Poison Point / Water Absorb | Unaware | 210 | never |
 | 1356 | [Hisuian Qwilfish](pokemon_1026-1440.md#1356-hisuian-qwilfish) | Dark / Poison | Poison Point / Swift Swim | Intimidate | 490 | yes |
 | 1357 | [Hisuian Sneasel](pokemon_1026-1440.md#1357-hisuian-sneasel) | Fighting / Poison | Inner Focus / Keen Eye | Pickpocket | 430 | yes |
-| 1358 | [Dialga (Origin Forme)](pokemon_1026-1440.md#1358-dialga-origin-forme) | Steel / Dragon | Pressure | Telepathy | 680 | no |
-| 1359 | [Palkia (Origin Forme)](pokemon_1026-1440.md#1359-palkia-origin-forme) | Water / Dragon | Pressure | Telepathy | 680 | no |
-| 1360 | [Hisuian Samurott](pokemon_1026-1440.md#1360-hisuian-samurott) | Water / Dark | Torrent | Sharpness | 528 | no |
+| 1358 | [Dialga (Origin Forme)](pokemon_1026-1440.md#1358-dialga-origin-forme) | Steel / Dragon | Pressure | Telepathy | 680 | never |
+| 1359 | [Palkia (Origin Forme)](pokemon_1026-1440.md#1359-palkia-origin-forme) | Water / Dragon | Pressure | Telepathy | 680 | never |
+| 1360 | [Hisuian Samurott](pokemon_1026-1440.md#1360-hisuian-samurott) | Water / Dark | Torrent | Sharpness | 528 | never |
 | 1361 | [Hisuian Lilligant](pokemon_1026-1440.md#1361-hisuian-lilligant) | Grass / Fighting | Chlorophyll / Hustle | Leaf Guard | 480 | yes |
-| 1362 | [Basculin (White-Striped Form)](pokemon_1026-1440.md#1362-basculin-white-striped-form) | Water | Rattled / Adaptability | Mold Breaker | 460 | no |
-| 1363 | [Hisuian Zorua](pokemon_1026-1440.md#1363-hisuian-zorua) | Normal / Ghost | Illusion | — | 330 | no |
-| 1364 | [Hisuian Zoroark](pokemon_1026-1440.md#1364-hisuian-zoroark) | Normal / Ghost | Illusion | — | 510 | no |
-| 1365 | [Hisuian Braviary](pokemon_1026-1440.md#1365-hisuian-braviary) | Psychic / Flying | Keen Eye / Sheer Force | Tinted Lens | 510 | no |
-| 1366 | [Hisuian Sliggoo](pokemon_1026-1440.md#1366-hisuian-sliggoo) | Steel / Dragon | Sap Sipper / Shell Armor | Gooey | 452 | no |
-| 1367 | [Hisuian Goodra](pokemon_1026-1440.md#1367-hisuian-goodra) | Steel / Dragon | Sap Sipper / Shell Armor | Gooey | 600 | no |
-| 1368 | [Hisuian Avalugg](pokemon_1026-1440.md#1368-hisuian-avalugg) | Ice / Rock | Strong Jaw / Ice Body | Sturdy | 514 | no |
-| 1369 | [Hisuian Decidueye](pokemon_1026-1440.md#1369-hisuian-decidueye) | Grass / Fighting | Overgrow | Scrappy | 530 | no |
-| 1370 | [Ursaluna (Bloodmoon)](pokemon_1026-1440.md#1370-ursaluna-bloodmoon) | Ground / Normal | Mind’s Eye | Unnerve | 555 | no |
-| 1371 | [Basculegion (female)](pokemon_1026-1440.md#1371-basculegion-female) | Water / Ghost | Swift Swim / Adaptability | Mold Breaker | 530 | no |
-| 1372 | [Enamorus (Therian Forme)](pokemon_1026-1440.md#1372-enamorus-therian-forme) | Fairy / Flying | Overcoat | Contrary | 580 | no |
-| 1373 | [Oinkologne (female)](pokemon_1026-1440.md#1373-oinkologne-female) | Normal | Aroma Veil / Gluttony | Thick Fat | 489 | no |
-| 1374 | [Dudunsparce (Three-Segment Form)](pokemon_1026-1440.md#1374-dudunsparce-three-segment-form) | Normal | Serene Grace / Run Away | Rattled | 520 | no |
-| 1375 | [Palafin (Hero Form)](pokemon_1026-1440.md#1375-palafin-hero-form) | Water | Zero to Hero | — | 650 | no |
-| 1376 | [Maushold (Family of Three)](pokemon_1026-1440.md#1376-maushold-family-of-three) | Normal | Friend Guard / Cheek Pouch | Technician | 470 | no |
-| 1377 | [Tatsugiri (Droopy Form)](pokemon_1026-1440.md#1377-tatsugiri-droopy-form) | Dragon / Water | Commander | Storm Drain | 475 | no |
-| 1378 | [Tatsugiri (Stretchy Form)](pokemon_1026-1440.md#1378-tatsugiri-stretchy-form) | Dragon / Water | Commander | Storm Drain | 475 | no |
-| 1379 | [Squawkabilly (Blue Plumage)](pokemon_1026-1440.md#1379-squawkabilly-blue-plumage) | Normal / Flying | Intimidate / Hustle | Guts | 417 | no |
-| 1380 | [Squawkabilly (Yellow Plumage)](pokemon_1026-1440.md#1380-squawkabilly-yellow-plumage) | Normal / Flying | Intimidate / Hustle | Sheer Force | 417 | no |
-| 1381 | [Squawkabilly (White Plumage)](pokemon_1026-1440.md#1381-squawkabilly-white-plumage) | Normal / Flying | Intimidate / Hustle | Sheer Force | 417 | no |
-| 1382 | [Gimmighoul (Roaming Form)](pokemon_1026-1440.md#1382-gimmighoul-roaming-form) | Ghost | Run Away | — | 300 | no |
-| 1383 | [Ogerpon (Wellspring Mask)](pokemon_1026-1440.md#1383-ogerpon-wellspring-mask) | Grass / Water | Water Absorb | — | 550 | no |
-| 1384 | [Ogerpon (Hearthflame Mask)](pokemon_1026-1440.md#1384-ogerpon-hearthflame-mask) | Grass / Fire | Mold Breaker | — | 550 | no |
-| 1385 | [Ogerpon (Cornerstone Mask)](pokemon_1026-1440.md#1385-ogerpon-cornerstone-mask) | Grass / Rock | Sturdy | — | 550 | no |
-| 1386 | [Ogerpon (form 4)](pokemon_1026-1440.md#1386-ogerpon-form-4) | Grass | Defiant | — | 550 | no |
-| 1387 | [Ogerpon (form 5)](pokemon_1026-1440.md#1387-ogerpon-form-5) | Grass / Water | Water Absorb | — | 550 | no |
-| 1388 | [Ogerpon (form 6)](pokemon_1026-1440.md#1388-ogerpon-form-6) | Grass / Fire | Mold Breaker | — | 550 | no |
-| 1389 | [Ogerpon (form 7)](pokemon_1026-1440.md#1389-ogerpon-form-7) | Grass / Rock | Sturdy | — | 550 | no |
-| 1390 | [Ogerpon (form 8)](pokemon_1026-1440.md#1390-ogerpon-form-8) | Grass | Embody Aspect | — | 550 | no |
-| 1391 | [Ogerpon (form 9)](pokemon_1026-1440.md#1391-ogerpon-form-9) | Grass / Water | Embody Aspect | — | 550 | no |
-| 1392 | [Ogerpon (form 10)](pokemon_1026-1440.md#1392-ogerpon-form-10) | Grass / Fire | Embody Aspect | — | 550 | no |
-| 1393 | [Ogerpon (form 11)](pokemon_1026-1440.md#1393-ogerpon-form-11) | Grass / Rock | Embody Aspect | — | 550 | no |
-| 1394 | [Terapagos (Terastal Form)](pokemon_1026-1440.md#1394-terapagos-terastal-form) | Normal | Tera Shell | — | 600 | no |
-| 1395 | [Terapagos (Stellar Form)](pokemon_1026-1440.md#1395-terapagos-stellar-form) | Normal | Teraform Zero | — | 700 | no |
-| 1396 | [Pikachu (form 8)](pokemon_1026-1440.md#1396-pikachu-form-8) | Electric | Static | Lightning Rod | 320 | no |
-| 1397 | [Pikachu (form 9)](pokemon_1026-1440.md#1397-pikachu-form-9) | Electric | Static | Lightning Rod | 320 | no |
-| 1398 | [Pikachu (form 10)](pokemon_1026-1440.md#1398-pikachu-form-10) | Electric | Static | Lightning Rod | 320 | no |
-| 1399 | [Pikachu (form 11)](pokemon_1026-1440.md#1399-pikachu-form-11) | Electric | Static | Lightning Rod | 320 | no |
-| 1400 | [Pikachu (form 12)](pokemon_1026-1440.md#1400-pikachu-form-12) | Electric | Static | Lightning Rod | 320 | no |
-| 1401 | [Pikachu (form 13)](pokemon_1026-1440.md#1401-pikachu-form-13) | Electric | Static | Lightning Rod | 320 | no |
-| 1402 | [Pikachu (form 14)](pokemon_1026-1440.md#1402-pikachu-form-14) | Electric | Static | Lightning Rod | 320 | no |
-| 1403 | [Pikachu (form 15)](pokemon_1026-1440.md#1403-pikachu-form-15) | Electric | Static | Lightning Rod | 320 | no |
-| 1404 | [Gigantamax Venusaur](pokemon_1026-1440.md#1404-gigantamax-venusaur) | Grass / Poison | Overgrow | Chlorophyll | 525 | no |
-| 1405 | [Gigantamax Charizard](pokemon_1026-1440.md#1405-gigantamax-charizard) | Fire / Flying | Blaze | Solar Power | 534 | no |
-| 1406 | [Gigantamax Blastoise](pokemon_1026-1440.md#1406-gigantamax-blastoise) | Water | Torrent | Rain Dish | 530 | no |
-| 1407 | [Gigantamax Butterfree](pokemon_1026-1440.md#1407-gigantamax-butterfree) | Bug / Flying | Compound Eyes | Tinted Lens | 395 | no |
-| 1408 | [Gigantamax Pikachu](pokemon_1026-1440.md#1408-gigantamax-pikachu) | Electric | Static | Lightning Rod | 320 | no |
-| 1409 | [Gigantamax Meowth](pokemon_1026-1440.md#1409-gigantamax-meowth) | Normal | Pickup / Technician | Unnerve | 290 | no |
-| 1410 | [Gigantamax Machamp](pokemon_1026-1440.md#1410-gigantamax-machamp) | Fighting | Guts / No Guard | Steadfast | 505 | no |
-| 1411 | [Gigantamax Gengar](pokemon_1026-1440.md#1411-gigantamax-gengar) | Ghost / Poison | Cursed Body | — | 500 | no |
-| 1412 | [Gigantamax Kingler](pokemon_1026-1440.md#1412-gigantamax-kingler) | Water | Hyper Cutter / Shell Armor | Sheer Force | 475 | no |
-| 1413 | [Gigantamax Lapras](pokemon_1026-1440.md#1413-gigantamax-lapras) | Water / Ice | Water Absorb / Shell Armor | Hydration | 535 | no |
-| 1414 | [Gigantamax Eevee](pokemon_1026-1440.md#1414-gigantamax-eevee) | Normal | Run Away / Adaptability | Anticipation | 325 | no |
-| 1415 | [Gigantamax Snorlax](pokemon_1026-1440.md#1415-gigantamax-snorlax) | Normal | Immunity / Thick Fat | Gluttony | 540 | no |
-| 1416 | [Gigantamax Garbodor](pokemon_1026-1440.md#1416-gigantamax-garbodor) | Poison | Stench / Weak Armor | Aftermath | 474 | no |
-| 1417 | [Gigantamax Melmetal](pokemon_1026-1440.md#1417-gigantamax-melmetal) | Steel | Iron Fist | — | 600 | no |
-| 1418 | [Gigantamax Rillaboom](pokemon_1026-1440.md#1418-gigantamax-rillaboom) | Grass | Overgrow | Grassy Surge | 530 | no |
-| 1419 | [Gigantamax Cinderace](pokemon_1026-1440.md#1419-gigantamax-cinderace) | Fire | Blaze | Libero | 530 | no |
-| 1420 | [Gigantamax Inteleon](pokemon_1026-1440.md#1420-gigantamax-inteleon) | Water | Torrent | Sniper | 530 | no |
-| 1421 | [Gigantamax Corviknight](pokemon_1026-1440.md#1421-gigantamax-corviknight) | Flying / Steel | Pressure / Unnerve | Mirror Armor | 495 | no |
-| 1422 | [Gigantamax Orbeetle](pokemon_1026-1440.md#1422-gigantamax-orbeetle) | Bug / Psychic | Swarm / Frisk | Telepathy | 505 | no |
-| 1423 | [Gigantamax Drednaw](pokemon_1026-1440.md#1423-gigantamax-drednaw) | Water / Rock | Strong Jaw / Shell Armor | Swift Swim | 485 | no |
-| 1424 | [Gigantamax Coalossal](pokemon_1026-1440.md#1424-gigantamax-coalossal) | Rock / Fire | Steam Engine / Flame Body | Flash Fire | 510 | no |
-| 1425 | [Gigantamax Flapple](pokemon_1026-1440.md#1425-gigantamax-flapple) | Grass / Dragon | Ripen / Gluttony | Hustle | 485 | no |
-| 1426 | [Gigantamax Appletun](pokemon_1026-1440.md#1426-gigantamax-appletun) | Grass / Dragon | Ripen / Gluttony | Thick Fat | 485 | no |
-| 1427 | [Gigantamax Sandaconda](pokemon_1026-1440.md#1427-gigantamax-sandaconda) | Ground | Sand Spit / Shed Skin | Sand Veil | 510 | no |
-| 1428 | [Gigantamax Toxtricity](pokemon_1026-1440.md#1428-gigantamax-toxtricity) | Electric / Poison | Punk Rock / Plus | Technician | 502 | no |
-| 1429 | [Gigantamax Toxtricity (Low Key Form)](pokemon_1026-1440.md#1429-gigantamax-toxtricity-low-key-form) | Electric / Poison | Punk Rock / Minus | Technician | 502 | no |
-| 1430 | [Gigantamax Centiskorch](pokemon_1026-1440.md#1430-gigantamax-centiskorch) | Fire / Bug | Flash Fire / White Smoke | Flame Body | 525 | no |
-| 1431 | [Gigantamax Hatterene](pokemon_1026-1440.md#1431-gigantamax-hatterene) | Psychic / Fairy | Healer / Anticipation | Magic Bounce | 510 | no |
-| 1432 | [Gigantamax Grimmsnarl](pokemon_1026-1440.md#1432-gigantamax-grimmsnarl) | Dark / Fairy | Prankster / Frisk | Pickpocket | 510 | no |
-| 1433 | [Gigantamax Alcremie](pokemon_1026-1440.md#1433-gigantamax-alcremie) | Fairy | Sweet Veil | Aroma Veil | 495 | no |
-| 1434 | [Gigantamax Copperajah](pokemon_1026-1440.md#1434-gigantamax-copperajah) | Steel | Sheer Force | Heavy Metal | 500 | no |
-| 1435 | [Gigantamax Duraludon](pokemon_1026-1440.md#1435-gigantamax-duraludon) | Steel / Dragon | Light Metal / Heavy Metal | Stalwart | 535 | no |
-| 1436 | [Eternamax Eternatus](pokemon_1026-1440.md#1436-eternamax-eternatus) | Poison / Dragon | Pressure | — | 1125 | no |
-| 1437 | [Gigantamax Urshifu (Single Strike Style)](pokemon_1026-1440.md#1437-gigantamax-urshifu-single-strike-style) | Fighting / Dark | Unseen Fist | — | 550 | no |
-| 1438 | [Gigantamax Urshifu (Rapid Strike Style)](pokemon_1026-1440.md#1438-gigantamax-urshifu-rapid-strike-style) | Fighting / Water | Unseen Fist | — | 550 | no |
+| 1362 | [Basculin (White-Striped Form)](pokemon_1026-1440.md#1362-basculin-white-striped-form) | Water | Rattled / Adaptability | Mold Breaker | 460 | never |
+| 1363 | [Hisuian Zorua](pokemon_1026-1440.md#1363-hisuian-zorua) | Normal / Ghost | Illusion | — | 330 | never |
+| 1364 | [Hisuian Zoroark](pokemon_1026-1440.md#1364-hisuian-zoroark) | Normal / Ghost | Illusion | — | 510 | never |
+| 1365 | [Hisuian Braviary](pokemon_1026-1440.md#1365-hisuian-braviary) | Psychic / Flying | Keen Eye / Sheer Force | Tinted Lens | 510 | never |
+| 1366 | [Hisuian Sliggoo](pokemon_1026-1440.md#1366-hisuian-sliggoo) | Steel / Dragon | Sap Sipper / Shell Armor | Gooey | 452 | never |
+| 1367 | [Hisuian Goodra](pokemon_1026-1440.md#1367-hisuian-goodra) | Steel / Dragon | Sap Sipper / Shell Armor | Gooey | 600 | never |
+| 1368 | [Hisuian Avalugg](pokemon_1026-1440.md#1368-hisuian-avalugg) | Ice / Rock | Strong Jaw / Ice Body | Sturdy | 514 | never |
+| 1369 | [Hisuian Decidueye](pokemon_1026-1440.md#1369-hisuian-decidueye) | Grass / Fighting | Overgrow | Scrappy | 530 | never |
+| 1370 | [Ursaluna (Bloodmoon)](pokemon_1026-1440.md#1370-ursaluna-bloodmoon) | Ground / Normal | Mind’s Eye | Unnerve | 555 | never |
+| 1371 | [Basculegion (female)](pokemon_1026-1440.md#1371-basculegion-female) | Water / Ghost | Swift Swim / Adaptability | Mold Breaker | 530 | never |
+| 1372 | [Enamorus (Therian Forme)](pokemon_1026-1440.md#1372-enamorus-therian-forme) | Fairy / Flying | Overcoat | Contrary | 580 | never |
+| 1373 | [Oinkologne (female)](pokemon_1026-1440.md#1373-oinkologne-female) | Normal | Aroma Veil / Gluttony | Thick Fat | 489 | never |
+| 1374 | [Dudunsparce (Three-Segment Form)](pokemon_1026-1440.md#1374-dudunsparce-three-segment-form) | Normal | Serene Grace / Run Away | Rattled | 520 | never |
+| 1375 | [Palafin (Hero Form)](pokemon_1026-1440.md#1375-palafin-hero-form) | Water | Zero to Hero | — | 650 | never |
+| 1376 | [Maushold (Family of Three)](pokemon_1026-1440.md#1376-maushold-family-of-three) | Normal | Friend Guard / Cheek Pouch | Technician | 470 | never |
+| 1377 | [Tatsugiri (Droopy Form)](pokemon_1026-1440.md#1377-tatsugiri-droopy-form) | Dragon / Water | Commander | Storm Drain | 475 | never |
+| 1378 | [Tatsugiri (Stretchy Form)](pokemon_1026-1440.md#1378-tatsugiri-stretchy-form) | Dragon / Water | Commander | Storm Drain | 475 | never |
+| 1379 | [Squawkabilly (Blue Plumage)](pokemon_1026-1440.md#1379-squawkabilly-blue-plumage) | Normal / Flying | Intimidate / Hustle | Guts | 417 | never |
+| 1380 | [Squawkabilly (Yellow Plumage)](pokemon_1026-1440.md#1380-squawkabilly-yellow-plumage) | Normal / Flying | Intimidate / Hustle | Sheer Force | 417 | never |
+| 1381 | [Squawkabilly (White Plumage)](pokemon_1026-1440.md#1381-squawkabilly-white-plumage) | Normal / Flying | Intimidate / Hustle | Sheer Force | 417 | never |
+| 1382 | [Gimmighoul (Roaming Form)](pokemon_1026-1440.md#1382-gimmighoul-roaming-form) | Ghost | Run Away | — | 300 | never |
+| 1383 | [Ogerpon (Wellspring Mask)](pokemon_1026-1440.md#1383-ogerpon-wellspring-mask) | Grass / Water | Water Absorb | — | 550 | never |
+| 1384 | [Ogerpon (Hearthflame Mask)](pokemon_1026-1440.md#1384-ogerpon-hearthflame-mask) | Grass / Fire | Mold Breaker | — | 550 | never |
+| 1385 | [Ogerpon (Cornerstone Mask)](pokemon_1026-1440.md#1385-ogerpon-cornerstone-mask) | Grass / Rock | Sturdy | — | 550 | never |
+| 1386 | [Ogerpon (form 4)](pokemon_1026-1440.md#1386-ogerpon-form-4) | Grass | Defiant | — | 550 | never |
+| 1387 | [Ogerpon (form 5)](pokemon_1026-1440.md#1387-ogerpon-form-5) | Grass / Water | Water Absorb | — | 550 | never |
+| 1388 | [Ogerpon (form 6)](pokemon_1026-1440.md#1388-ogerpon-form-6) | Grass / Fire | Mold Breaker | — | 550 | never |
+| 1389 | [Ogerpon (form 7)](pokemon_1026-1440.md#1389-ogerpon-form-7) | Grass / Rock | Sturdy | — | 550 | never |
+| 1390 | [Ogerpon (form 8)](pokemon_1026-1440.md#1390-ogerpon-form-8) | Grass | Embody Aspect | — | 550 | never |
+| 1391 | [Ogerpon (form 9)](pokemon_1026-1440.md#1391-ogerpon-form-9) | Grass / Water | Embody Aspect | — | 550 | never |
+| 1392 | [Ogerpon (form 10)](pokemon_1026-1440.md#1392-ogerpon-form-10) | Grass / Fire | Embody Aspect | — | 550 | never |
+| 1393 | [Ogerpon (form 11)](pokemon_1026-1440.md#1393-ogerpon-form-11) | Grass / Rock | Embody Aspect | — | 550 | never |
+| 1394 | [Terapagos (Terastal Form)](pokemon_1026-1440.md#1394-terapagos-terastal-form) | Normal | Tera Shell | — | 600 | never |
+| 1395 | [Terapagos (Stellar Form)](pokemon_1026-1440.md#1395-terapagos-stellar-form) | Normal | Teraform Zero | — | 700 | never |
+| 1396 | [Pikachu (form 8)](pokemon_1026-1440.md#1396-pikachu-form-8) | Electric | Static | Lightning Rod | 320 | never |
+| 1397 | [Pikachu (form 9)](pokemon_1026-1440.md#1397-pikachu-form-9) | Electric | Static | Lightning Rod | 320 | never |
+| 1398 | [Pikachu (form 10)](pokemon_1026-1440.md#1398-pikachu-form-10) | Electric | Static | Lightning Rod | 320 | never |
+| 1399 | [Pikachu (form 11)](pokemon_1026-1440.md#1399-pikachu-form-11) | Electric | Static | Lightning Rod | 320 | never |
+| 1400 | [Pikachu (form 12)](pokemon_1026-1440.md#1400-pikachu-form-12) | Electric | Static | Lightning Rod | 320 | never |
+| 1401 | [Pikachu (form 13)](pokemon_1026-1440.md#1401-pikachu-form-13) | Electric | Static | Lightning Rod | 320 | never |
+| 1402 | [Pikachu (form 14)](pokemon_1026-1440.md#1402-pikachu-form-14) | Electric | Static | Lightning Rod | 320 | never |
+| 1403 | [Pikachu (form 15)](pokemon_1026-1440.md#1403-pikachu-form-15) | Electric | Static | Lightning Rod | 320 | never |
+| 1404 | [Gigantamax Venusaur](pokemon_1026-1440.md#1404-gigantamax-venusaur) | Grass / Poison | Overgrow | Chlorophyll | 525 | never |
+| 1405 | [Gigantamax Charizard](pokemon_1026-1440.md#1405-gigantamax-charizard) | Fire / Flying | Blaze | Solar Power | 534 | never |
+| 1406 | [Gigantamax Blastoise](pokemon_1026-1440.md#1406-gigantamax-blastoise) | Water | Torrent | Rain Dish | 530 | never |
+| 1407 | [Gigantamax Butterfree](pokemon_1026-1440.md#1407-gigantamax-butterfree) | Bug / Flying | Compound Eyes | Tinted Lens | 395 | never |
+| 1408 | [Gigantamax Pikachu](pokemon_1026-1440.md#1408-gigantamax-pikachu) | Electric | Static | Lightning Rod | 320 | never |
+| 1409 | [Gigantamax Meowth](pokemon_1026-1440.md#1409-gigantamax-meowth) | Normal | Pickup / Technician | Unnerve | 290 | never |
+| 1410 | [Gigantamax Machamp](pokemon_1026-1440.md#1410-gigantamax-machamp) | Fighting | Guts / No Guard | Steadfast | 505 | never |
+| 1411 | [Gigantamax Gengar](pokemon_1026-1440.md#1411-gigantamax-gengar) | Ghost / Poison | Cursed Body | — | 500 | never |
+| 1412 | [Gigantamax Kingler](pokemon_1026-1440.md#1412-gigantamax-kingler) | Water | Hyper Cutter / Shell Armor | Sheer Force | 475 | never |
+| 1413 | [Gigantamax Lapras](pokemon_1026-1440.md#1413-gigantamax-lapras) | Water / Ice | Water Absorb / Shell Armor | Hydration | 535 | never |
+| 1414 | [Gigantamax Eevee](pokemon_1026-1440.md#1414-gigantamax-eevee) | Normal | Run Away / Adaptability | Anticipation | 325 | never |
+| 1415 | [Gigantamax Snorlax](pokemon_1026-1440.md#1415-gigantamax-snorlax) | Normal | Immunity / Thick Fat | Gluttony | 540 | never |
+| 1416 | [Gigantamax Garbodor](pokemon_1026-1440.md#1416-gigantamax-garbodor) | Poison | Stench / Weak Armor | Aftermath | 474 | never |
+| 1417 | [Gigantamax Melmetal](pokemon_1026-1440.md#1417-gigantamax-melmetal) | Steel | Iron Fist | — | 600 | never |
+| 1418 | [Gigantamax Rillaboom](pokemon_1026-1440.md#1418-gigantamax-rillaboom) | Grass | Overgrow | Grassy Surge | 530 | never |
+| 1419 | [Gigantamax Cinderace](pokemon_1026-1440.md#1419-gigantamax-cinderace) | Fire | Blaze | Libero | 530 | never |
+| 1420 | [Gigantamax Inteleon](pokemon_1026-1440.md#1420-gigantamax-inteleon) | Water | Torrent | Sniper | 530 | never |
+| 1421 | [Gigantamax Corviknight](pokemon_1026-1440.md#1421-gigantamax-corviknight) | Flying / Steel | Pressure / Unnerve | Mirror Armor | 495 | never |
+| 1422 | [Gigantamax Orbeetle](pokemon_1026-1440.md#1422-gigantamax-orbeetle) | Bug / Psychic | Swarm / Frisk | Telepathy | 505 | never |
+| 1423 | [Gigantamax Drednaw](pokemon_1026-1440.md#1423-gigantamax-drednaw) | Water / Rock | Strong Jaw / Shell Armor | Swift Swim | 485 | never |
+| 1424 | [Gigantamax Coalossal](pokemon_1026-1440.md#1424-gigantamax-coalossal) | Rock / Fire | Steam Engine / Flame Body | Flash Fire | 510 | never |
+| 1425 | [Gigantamax Flapple](pokemon_1026-1440.md#1425-gigantamax-flapple) | Grass / Dragon | Ripen / Gluttony | Hustle | 485 | never |
+| 1426 | [Gigantamax Appletun](pokemon_1026-1440.md#1426-gigantamax-appletun) | Grass / Dragon | Ripen / Gluttony | Thick Fat | 485 | never |
+| 1427 | [Gigantamax Sandaconda](pokemon_1026-1440.md#1427-gigantamax-sandaconda) | Ground | Sand Spit / Shed Skin | Sand Veil | 510 | never |
+| 1428 | [Gigantamax Toxtricity](pokemon_1026-1440.md#1428-gigantamax-toxtricity) | Electric / Poison | Punk Rock / Plus | Technician | 502 | never |
+| 1429 | [Gigantamax Toxtricity (Low Key Form)](pokemon_1026-1440.md#1429-gigantamax-toxtricity-low-key-form) | Electric / Poison | Punk Rock / Minus | Technician | 502 | never |
+| 1430 | [Gigantamax Centiskorch](pokemon_1026-1440.md#1430-gigantamax-centiskorch) | Fire / Bug | Flash Fire / White Smoke | Flame Body | 525 | never |
+| 1431 | [Gigantamax Hatterene](pokemon_1026-1440.md#1431-gigantamax-hatterene) | Psychic / Fairy | Healer / Anticipation | Magic Bounce | 510 | never |
+| 1432 | [Gigantamax Grimmsnarl](pokemon_1026-1440.md#1432-gigantamax-grimmsnarl) | Dark / Fairy | Prankster / Frisk | Pickpocket | 510 | never |
+| 1433 | [Gigantamax Alcremie](pokemon_1026-1440.md#1433-gigantamax-alcremie) | Fairy | Sweet Veil | Aroma Veil | 495 | never |
+| 1434 | [Gigantamax Copperajah](pokemon_1026-1440.md#1434-gigantamax-copperajah) | Steel | Sheer Force | Heavy Metal | 500 | never |
+| 1435 | [Gigantamax Duraludon](pokemon_1026-1440.md#1435-gigantamax-duraludon) | Steel / Dragon | Light Metal / Heavy Metal | Stalwart | 535 | never |
+| 1436 | [Eternamax Eternatus](pokemon_1026-1440.md#1436-eternamax-eternatus) | Poison / Dragon | Pressure | — | 1125 | never |
+| 1437 | [Gigantamax Urshifu (Single Strike Style)](pokemon_1026-1440.md#1437-gigantamax-urshifu-single-strike-style) | Fighting / Dark | Unseen Fist | — | 550 | never |
+| 1438 | [Gigantamax Urshifu (Rapid Strike Style)](pokemon_1026-1440.md#1438-gigantamax-urshifu-rapid-strike-style) | Fighting / Water | Unseen Fist | — | 550 | never |
 | 1439 | [Crystal Onix](pokemon_1026-1440.md#1439-crystal-onix) | Rock / Ice | Sand Rush / Slush Rush | Weak Armor | 580 | yes |
 | 1440 | [Armored Mewtwo](pokemon_1026-1440.md#1440-armored-mewtwo) | Psychic / Steel | Battle Armor / Filter | Berserk | 720 | no |

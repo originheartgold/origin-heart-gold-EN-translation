@@ -1,0 +1,1028 @@
+{
+ "_about": "Item sources and notes the game data scan does not find on its own, each verified in the untouched Chinese v4.0.3 ROM (2026-10-05; evidence in work/notes/availability_audit.md). \"sources\" are added to the item page; \"note\" explains an item with no confirmed source.",
+ "entries": [
+  {
+   "id": 166,
+   "name": "Nanab Berry",
+   "note": "May be a Pal Park Catching Show prize (under 3,500 points); whether a Fixed Catch show reaches the prize has not been confirmed. Otherwise only from the Spin Trade game (wireless, with other players)."
+  },
+  {
+   "id": 171,
+   "name": "Qualot Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    }
+   ]
+  },
+  {
+   "id": 174,
+   "name": "Tamato Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    }
+   ]
+  },
+  {
+   "id": 176,
+   "name": "Magost Berry",
+   "note": "Only from the Spin Trade game in the Union Room, which needs a wireless link with other players."
+  },
+  {
+   "id": 177,
+   "name": "Rabuta Berry",
+   "note": "Only from the Spin Trade game in the Union Room, which needs a wireless link with other players."
+  },
+  {
+   "id": 179,
+   "name": "Spelon Berry",
+   "note": "Only from the Spin Trade game in the Union Room, which needs a wireless link with other players."
+  },
+  {
+   "id": 180,
+   "name": "Pamtre Berry",
+   "note": "Only from the Spin Trade game in the Union Room, which needs a wireless link with other players."
+  },
+  {
+   "id": 181,
+   "name": "Watmel Berry",
+   "note": "Only from the Spin Trade game in the Union Room, which needs a wireless link with other players."
+  },
+  {
+   "id": 183,
+   "name": "Belue Berry",
+   "note": "Only from the Spin Trade game in the Union Room, which needs a wireless link with other players."
+  },
+  {
+   "id": 184,
+   "name": "Occa Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    }
+   ]
+  },
+  {
+   "id": 185,
+   "name": "Passho Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    }
+   ]
+  },
+  {
+   "id": 186,
+   "name": "Wacan Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    }
+   ]
+  },
+  {
+   "id": 187,
+   "name": "Rindo Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    }
+   ]
+  },
+  {
+   "id": 188,
+   "name": "Yache Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    }
+   ]
+  },
+  {
+   "id": 189,
+   "name": "Chople Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    }
+   ]
+  },
+  {
+   "id": 190,
+   "name": "Kebia Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    }
+   ]
+  },
+  {
+   "id": 191,
+   "name": "Shuca Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    }
+   ]
+  },
+  {
+   "id": 192,
+   "name": "Coba Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    }
+   ]
+  },
+  {
+   "id": 193,
+   "name": "Payapa Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    }
+   ]
+  },
+  {
+   "id": 194,
+   "name": "Tanga Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    }
+   ]
+  },
+  {
+   "id": 195,
+   "name": "Charti Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    }
+   ]
+  },
+  {
+   "id": 196,
+   "name": "Kasib Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    }
+   ]
+  },
+  {
+   "id": 197,
+   "name": "Haban Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    }
+   ]
+  },
+  {
+   "id": 198,
+   "name": "Colbur Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    }
+   ]
+  },
+  {
+   "id": 199,
+   "name": "Babiri Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    }
+   ]
+  },
+  {
+   "id": 200,
+   "name": "Chilan Berry",
+   "sources": [
+    {
+     "area": "battle-frontier",
+     "qty": 1,
+     "kind": "minigame prize",
+     "place": "Battle Frontier, Scratch-Off Cards",
+     "note": "3 cards for 1 BP; a card showing the same picture three times pays its prize."
+    },
+    {
+     "area": null,
+     "qty": 5,
+     "kind": "savings reward",
+     "place": "Mom's savings purchases",
+     "note": "When your savings pass another $3,000 and no fixed purchase is due, Mom may buy 5 of one of these Berries."
+    },
+    {
+     "area": null,
+     "qty": 1,
+     "kind": "held by wild Pokémon",
+     "place": "Wild Rattata and Raticate",
+     "note": "5% chance; catch one or use Thief."
+    }
+   ]
+  },
+  {
+   "id": 203,
+   "name": "Salac Berry",
+   "note": "Only held by trainers' Pokémon. Whether you keep it after taking it with Thief, Covet, Trick or Switcheroo has not been confirmed."
+  },
+  {
+   "id": 204,
+   "name": "Petaya Berry",
+   "note": "Only held by trainers' Pokémon. Whether you keep it after taking it with Thief, Covet, Trick or Switcheroo has not been confirmed."
+  },
+  {
+   "id": 485,
+   "name": "Red Apricorn",
+   "sources": [
+    {
+     "area": null,
+     "qty": 1,
+     "kind": "tree",
+     "place": "Apricorn trees",
+     "note": "Goes to Kurt's Apricorn Box, not the Bag."
+    },
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome, Athlete Shop",
+     "pay": "200 Athlete Points",
+     "note": "Stock changes by day of the week. Goes to the Apricorn Box."
+    }
+   ]
+  },
+  {
+   "id": 486,
+   "name": "Yellow Apricorn",
+   "sources": [
+    {
+     "area": null,
+     "qty": 1,
+     "kind": "tree",
+     "place": "Apricorn trees",
+     "note": "Goes to Kurt's Apricorn Box, not the Bag."
+    },
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome, Athlete Shop",
+     "pay": "200 Athlete Points",
+     "note": "Stock changes by day of the week. Goes to the Apricorn Box."
+    }
+   ]
+  },
+  {
+   "id": 487,
+   "name": "Blue Apricorn",
+   "sources": [
+    {
+     "area": null,
+     "qty": 1,
+     "kind": "tree",
+     "place": "Apricorn trees",
+     "note": "Goes to Kurt's Apricorn Box, not the Bag."
+    },
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome, Athlete Shop",
+     "pay": "200 Athlete Points",
+     "note": "Stock changes by day of the week. Goes to the Apricorn Box."
+    }
+   ]
+  },
+  {
+   "id": 488,
+   "name": "Green Apricorn",
+   "sources": [
+    {
+     "area": null,
+     "qty": 1,
+     "kind": "tree",
+     "place": "Apricorn trees",
+     "note": "Goes to Kurt's Apricorn Box, not the Bag."
+    },
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome, Athlete Shop",
+     "pay": "200 Athlete Points",
+     "note": "Stock changes by day of the week. Goes to the Apricorn Box."
+    }
+   ]
+  },
+  {
+   "id": 489,
+   "name": "Pink Apricorn",
+   "sources": [
+    {
+     "area": null,
+     "qty": 1,
+     "kind": "tree",
+     "place": "Apricorn trees",
+     "note": "Goes to Kurt's Apricorn Box, not the Bag."
+    },
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome, Athlete Shop",
+     "pay": "200 Athlete Points",
+     "note": "Stock changes by day of the week. Goes to the Apricorn Box."
+    }
+   ]
+  },
+  {
+   "id": 490,
+   "name": "White Apricorn",
+   "sources": [
+    {
+     "area": null,
+     "qty": 1,
+     "kind": "tree",
+     "place": "Apricorn trees",
+     "note": "Goes to Kurt's Apricorn Box, not the Bag."
+    },
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome, Athlete Shop",
+     "pay": "200 Athlete Points",
+     "note": "Stock changes by day of the week. Goes to the Apricorn Box."
+    }
+   ]
+  },
+  {
+   "id": 491,
+   "name": "Black Apricorn",
+   "sources": [
+    {
+     "area": null,
+     "qty": 1,
+     "kind": "tree",
+     "place": "Apricorn trees",
+     "note": "Goes to Kurt's Apricorn Box, not the Bag."
+    },
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome, Athlete Shop",
+     "pay": "200 Athlete Points",
+     "note": "Stock changes by day of the week. Goes to the Apricorn Box."
+    }
+   ]
+  },
+  {
+   "id": 505,
+   "name": "Data Card 01",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 506,
+   "name": "Data Card 02",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 507,
+   "name": "Data Card 03",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 508,
+   "name": "Data Card 04",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 509,
+   "name": "Data Card 05",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 510,
+   "name": "Data Card 06",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 511,
+   "name": "Data Card 07",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 512,
+   "name": "Data Card 08",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 513,
+   "name": "Data Card 09",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 514,
+   "name": "Data Card 10",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 515,
+   "name": "Data Card 11",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 516,
+   "name": "Data Card 12",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 517,
+   "name": "Data Card 13",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 518,
+   "name": "Data Card 14",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 519,
+   "name": "Data Card 15",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 520,
+   "name": "Data Card 16",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 521,
+   "name": "Data Card 17",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 522,
+   "name": "Data Card 18",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 523,
+   "name": "Data Card 19",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 524,
+   "name": "Data Card 20",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 525,
+   "name": "Data Card 21",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 526,
+   "name": "Data Card 22",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 527,
+   "name": "Data Card 23",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 528,
+   "name": "Data Card 24",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 529,
+   "name": "Data Card 25",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 530,
+   "name": "Data Card 26",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 531,
+   "name": "Data Card 27",
+   "sources": [
+    {
+     "area": "pokeathlon-dome",
+     "qty": 1,
+     "kind": "bought/exchanged",
+     "place": "Pokéathlon Dome 1F, Data Card counter",
+     "pay": "Athlete Points",
+     "note": "Bought in order; kept in your Pokéathlon records, not the Bag."
+    }
+   ]
+  },
+  {
+   "id": 576,
+   "name": "Air Balloon",
+   "note": "This is the copy trainers' Pokémon hold. Another Air Balloon can be obtained; it is listed separately. Whether you keep this one after taking it with Thief, Covet, Trick or Switcheroo has not been confirmed."
+  },
+  {
+   "id": 578,
+   "name": "Big Nugget",
+   "sources": [
+    {
+     "area": null,
+     "qty": 1,
+     "kind": "Pickup",
+     "place": "Pickup Ability",
+     "note": "A Pokémon with Pickup sometimes finds it after a battle."
+    }
+   ]
+  },
+  {
+   "id": 582,
+   "name": "Comet Shard",
+   "sources": [
+    {
+     "area": null,
+     "qty": 1,
+     "kind": "Pickup",
+     "place": "Pickup Ability",
+     "note": "A Pokémon with Pickup sometimes finds it after a battle."
+    }
+   ]
+  },
+  {
+   "id": 584,
+   "name": "Eviolite",
+   "note": "This is the copy trainers' Pokémon hold. Another Eviolite can be obtained; it is listed separately. Whether you keep this one after taking it with Thief, Covet, Trick or Switcheroo has not been confirmed."
+  },
+  {
+   "id": 586,
+   "name": "Pearl String",
+   "sources": [
+    {
+     "area": null,
+     "qty": 1,
+     "kind": "Pickup",
+     "place": "Pickup Ability",
+     "note": "A Pokémon with Pickup sometimes finds it after a battle."
+    }
+   ]
+  },
+  {
+   "id": 600,
+   "name": "Weakness Policy",
+   "note": "This is the copy trainers' Pokémon hold. Another Weakness Policy can be obtained; it is listed separately. Whether you keep this one after taking it with Thief, Covet, Trick or Switcheroo has not been confirmed."
+  },
+  {
+   "id": 604,
+   "name": "Bottle Cap",
+   "sources": [
+    {
+     "area": null,
+     "qty": 1,
+     "kind": "Pickup",
+     "place": "Pickup Ability",
+     "note": "A Pokémon with Pickup sometimes finds it after a battle."
+    }
+   ]
+  },
+  {
+   "id": 605,
+   "name": "Gold Bottle Cap",
+   "sources": [
+    {
+     "area": null,
+     "qty": 1,
+     "kind": "Pickup",
+     "place": "Pickup Ability",
+     "note": "A Pokémon with Pickup sometimes finds it after a battle."
+    }
+   ]
+  }
+ ]
+}

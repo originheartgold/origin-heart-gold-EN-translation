@@ -261,18 +261,28 @@ def split_species(v):
 
 
 def parse_trpoke(b, count):
+    """CN v4.0.3 party-loader semantics, not the vanilla packed-form layout.
+
+    arm9 0x02072822 applies byte 2 as the form; 0x02072880 assigns EVs in
+    HP/Atk/Def/Spe/SpA/SpD order. Return EVs in the guide's display order.
+    At 0x020728E0 the loader overwrites HP IV with a level-based value. Its
+    six-iteration loop never increments the field id, so the other five IVs
+    retain the initial scaled value. Preserve this original-hack behaviour.
+    """
     mons = []
     for i in range(count):
         o = TRPOKE_SIZE * i
         if o + TRPOKE_SIZE > len(b):
             break
-        iv, abil_slot, _b2, nature = b[o], b[o + 1], b[o + 2], b[o + 3]
+        iv, abil_slot, form, nature = b[o], b[o + 1], b[o + 2], b[o + 3]
         ability, level, species, item = struct.unpack_from('<4H', b, o + 4)
         moves = [m for m in u16s(b, o + 12, 4) if m]
-        evs = list(b[o + 20:o + 26])
-        sp, form = split_species(species)
-        mons.append(dict(iv=iv, ivs=iv * 31 // 255, abil_slot=abil_slot, nature=None if nature == 0xFF else nature,
-                         ability=ability, level=level, species=sp, form=form, item=item,
+        raw_evs = list(b[o + 20:o + 26])
+        evs = [raw_evs[j] for j in (0, 1, 2, 4, 5, 3)]
+        hp_ivs = 10 if level <= 40 else 20 if level < 80 else 31
+        mons.append(dict(iv=iv, ivs=iv * 31 // 255, hp_ivs=hp_ivs, abil_slot=abil_slot,
+                         nature=None if nature == 0xFF else nature,
+                         ability=ability, level=level, species=species, form=form, item=item,
                          moves=moves, evs=evs))
     return mons
 
@@ -628,8 +638,10 @@ def index_scripts(files):
                 r['v8008'] = rv(0x8008)
                 if r['v8004'] is None:
                     r['alt8004'] = sorted(resolve_set(ins, prev, jumpers, pc, 0x8004)[0])
-            elif op == 125 and r['args'][0] is None and 0x4000 <= a[0] < 0x8010:
-                r['alt0'] = sorted(resolve_set(ins, prev, jumpers, pc, a[0])[0])
+            elif op in (125, 137, 138, 589) and r['args'][0] is None and 0x4000 <= a[0] < 0x8010:
+                vals, complete = resolve_set(ins, prev, jumpers, pc, a[0])
+                r['alt0'] = sorted(vals)
+                r['alt0_complete'] = complete     # False: some path sets the variable at run time
             recs.append(r)
         out[f] = dict(entries=entries, ins=ins, recs=recs)
     return out

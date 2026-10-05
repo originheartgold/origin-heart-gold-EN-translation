@@ -32,7 +32,7 @@ For every item a script checks (`HasItem`) or takes (`TakeItem`): is there a sou
 | King’s Rock | Items | gift, Vermilion City; gift, Cinnabar Island; gift, Azalea Town | Cerulean City | source later than first need |
 | TM75 Swords Dance | TMs & HMs | bought/exchanged, Goldenrod Game Corner | Cherrygrove Southwest house | source later than first need |
 | HM08 Rock Climb | TMs & HMs | bought/exchanged, Mt. Mortar | Mt. Mortar, Route 30 Mr. Pokémon house | source later than first need |
-| ??? | Key Items | bought/exchanged, Ice Path B2F | Ice Path B2F | ok |
+| Anti-Age Spray | Key Items | bought/exchanged, Ice Path B2F | Ice Path B2F | ok |
 | Seal Case | Key Items | gift, Route 39 | Olivine Northeast house, Route 39 MooMoo Farm Stable | ok |
 | Fashion Case | Key Items | bought/exchanged, Goldenrod City | Goldenrod City, Goldenrod Tunnel B1F, Safari Zone Gate, Pal Park reception | source later than first need |
 | Diving Suit | Key Items | gift, Lighthouse | Olivine Northeast house | source later than first need |
@@ -258,16 +258,16 @@ Strings that contain an "appears/lives/can be caught" keyword, a species name an
 
 ### Species with no source
 
-254 of 1025 national-dex species (#1–#1025) have no source found by this audit: no wild slot, gift, trade, static battle, evolution or breeding route in the data it scans. They exist in the species tables (stats, learnsets). Not scanned: the Safari Zone's object-based areas, roaming Pokémon, berry trees and held items, so a few may still be obtainable in game. Evolution methods the game's evolution code never checks (see Other) are not counted as routes.
+256 of 1025 national-dex species (#1–#1025) have no source found by this audit: no wild slot, gift, trade, static battle, evolution or breeding route in the data it scans. They exist in the species tables (stats, learnsets). Not scanned: the Safari Zone's object-based areas, roaming Pokémon, berry trees and held items, so a few may still be obtainable in game. Evolution methods the game's evolution code never checks (see Other) are not counted as routes.
 
 - #1–#151: 0 of 151
 - #152–#251: 0 of 100
 - #252–#386: 0 of 135
 - #387–#493: 0 of 107
-- #494–#649: 46 of 156: Victini, Patrat, Watchog, Pansage, Simisage, Pansear, Simisear, Panpour, Simipour, Blitzle, Zebstrika, Woobat, Swoobat, Throh, Sawk, Maractus, Dwebble, Crustle, Sigilyph, Solosis, Duosion, Reuniclus, Vanillite, Vanillish, Vanilluxe, Klink, Klang, Klinklang, Elgyem, Beheeyem, Cryogonal, Stunfisk, Druddigon, Bouffalant, Cobalion, Terrakion, Virizion, Tornadus, Thundurus, Reshiram, Zekrom, Landorus, Kyurem, Keldeo, Meloetta, Genesect
+- #494–#649: 45 of 156: Victini, Patrat, Watchog, Pansage, Simisage, Pansear, Simisear, Panpour, Simipour, Blitzle, Zebstrika, Woobat, Swoobat, Throh, Sawk, Maractus, Dwebble, Crustle, Sigilyph, Solosis, Duosion, Reuniclus, Vanillite, Vanillish, Vanilluxe, Klink, Klang, Klinklang, Elgyem, Beheeyem, Cryogonal, Druddigon, Bouffalant, Cobalion, Terrakion, Virizion, Tornadus, Thundurus, Reshiram, Zekrom, Landorus, Kyurem, Keldeo, Meloetta, Genesect
 - #650–#721: 26 of 72: Litleo, Pyroar, Skiddo, Gogoat, Pancham, Pangoro, Espurr, Meowstic, Spritzee, Aromatisse, Swirlix, Slurpuff, Inkay, Malamar, Tyrunt, Tyrantrum, Hawlucha, Klefki, Pumpkaboo, Gourgeist, Xerneas, Yveltal, Zygarde, Diancie, Hoopa, Volcanion
 - #722–#809: 36 of 88: Oricorio, Wishiwashi, Comfey, Oranguru, Passimian, Wimpod, Golisopod, Type: Null, Silvally, Minior, Turtonator, Tapu Koko, Tapu Lele, Tapu Bulu, Tapu Fini, Cosmog, Cosmoem, Solgaleo, Lunala, Nihilego, Buzzwole, Pheromosa, Xurkitree, Celesteela, Kartana, Guzzlord, Necrozma, Magearna, Marshadow, Poipole, Naganadel, Stakataka, Blacephalon, Zeraora, Meltan, Melmetal
-- #810–#905: 51 of 96: Grookey, Thwackey, Rillaboom, Scorbunny, Raboot, Cinderace, Sobble, Drizzile, Inteleon, Rookidee, Corvisquire, Corviknight, Nickit, Thievul, Gossifleur, Eldegoss, Yamper, Boltund, Silicobra, Sandaconda, Cramorant, Clobbopus, Grapploct, Sinistea, Polteageist, Runerigus, Falinks, Pincurchin, Stonjourner, Eiscue, Indeedee, Morpeko, Cufant, Copperajah, Dracozolt, Arctozolt, Dracovish, Arctovish, Duraludon, Zacian, Zamazenta, Eternatus, Kubfu, Urshifu, Zarude, Regieleki, Regidrago, Glastrier, Spectrier, Calyrex, Enamorus
+- #810–#905: 54 of 96: Grookey, Thwackey, Rillaboom, Scorbunny, Raboot, Cinderace, Sobble, Drizzile, Inteleon, Rookidee, Corvisquire, Corviknight, Nickit, Thievul, Gossifleur, Eldegoss, Yamper, Boltund, Flapple, Appletun, Silicobra, Sandaconda, Cramorant, Clobbopus, Grapploct, Sinistea, Polteageist, Runerigus, Alcremie, Falinks, Pincurchin, Stonjourner, Eiscue, Indeedee, Morpeko, Cufant, Copperajah, Dracozolt, Arctozolt, Dracovish, Arctovish, Duraludon, Zacian, Zamazenta, Eternatus, Kubfu, Urshifu, Zarude, Regieleki, Regidrago, Glastrier, Spectrier, Calyrex, Enamorus
 - #906–#1025: 95 of 120
 
 ### TMs and HMs with no source
@@ -276,7 +276,7 @@ TM46 Thief
 
 ### Trainer data
 
-- 165 trainer Pokémon have an ability that is not one of the species' three abilities in `a/0/0/2` (the trainer record stores the ability explicitly). Whether the battle engine uses the stored ability or the species' slot was not verified in code.
+- 163 trainer Pokémon have an ability that is not one of the species' three abilities in `a/0/0/2` (the trainer record stores the ability explicitly). Whether the battle engine uses the stored ability or the species' slot was not verified in code.
   - trainer #11 Shady Guy Bob: Sandslash: ability Sand Rush is not one of its abilities (Earth Eater / Battle Armor / Tough Claws)
   - trainer #18 Hiker Stan: Golem: ability Rock Head is not one of its abilities (Rocky Payload / Solid Rock / Sturdy)
   - trainer #22 Fisherman Wesley: Gyarados: ability Moxie is not one of its abilities (Mold Breaker / Strong Jaw / Intimidate)
@@ -302,7 +302,7 @@ TM46 Thief
   - trainer #152 Gentleman Vaughn: Electrike: ability Intimidate is not one of its abilities (Static / Minus / Lightning Rod)
   - trainer #154 Youngster Cole: Flygon: ability Steam Engine is not one of its abilities (Levitate / Speed Boost / Compound Eyes)
   - trainer #172 Team Rocket Grunt: Spinarak: ability Speed Boost is not one of its abilities (Sniper / Swarm / Simple)
-  - … and 140 more (see the trainer pages)
+  - … and 138 more (see the trainer pages)
 - Other problems (invalid ids, duplicate moves, odd levels): 7
   - trainer #80 Hiker Ken: Hippopotas: duplicate move in moveset: Sand Tomb, Sand Tomb, Bite, Sandstorm
   - trainer #253 Leader Brock: Kabuto: duplicate move in moveset: Harden, Rock Tomb, Icy Wind, Harden
@@ -311,13 +311,13 @@ TM46 Thief
   - trainer #760 PKMN Trainer Tan Hean: -------: invalid species 0
   - trainer #996 Leader Sabrina: Wobbuffet: duplicate move in moveset: Counter, Mirror Coat, Destiny Bond, Mirror Coat
   - trainer #997 Executive Lawrence: Zapdos: duplicate move in moveset: Thunderbolt, Thunder Wave, Hurricane, Hurricane
-- Trainers with a party that no map object or script uses: #86 Team Rocket Grunt, #89 Team Rocket Grunt, #260 PKMN Trainer Gold, #440 Team Rocket Grunt, #609 Psychic Zion, #760 PKMN Trainer Tan Hean, #947 Fisherman Barrett
+- Trainers with a party that no map object or script uses: #86 Team Rocket Grunt, #89 Team Rocket Grunt, #440 Team Rocket Grunt, #609 Psychic Zion, #947 Fisherman Barrett
 
 ### Other
 
 - In-game trade records not loaded by any script (LoadNPCTrade or GiveLoanMon): none.
 - Shop lists not opened by any script: 0, 1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29.
-- Encounter records in `a/0/3/7` that no map header uses: 24, 45, 47, 49, 50, 64, 90, 91, 138, 143, 144, 145, 146, 147, 148.
+- Encounter records in `a/0/3/7` that no map uses: 24, 45, 47, 49, 50, 64, 90, 91, 138, 148.
 - Evolution methods in `a/0/3/4` that the evolution code (arm9 0x020700FC) never checks: 24 (Nosepass), 25 (Eevee, Gigantamax Eevee), 31 (Pancham), 33 (Galarian Farfetch’d), 34 (Gimmighoul), 35 (Kubfu), 36 (Galarian Yamask), 38 (Basculin (White-Striped Form)), 40 (Pawmo, Rellor), 41 (Finizen).
 
 ## Findings logged
@@ -340,6 +340,6 @@ Recomputed on every run; compare with the list above when the data or the genera
 
 - **Items that scripts check or take but that no script, item ball, hidden item or shop gives.** Items with no source in the game data although a script checks (HasItem) or takes (TakeItem) them: Bubble Mail (#139; needed at Pallet Town, north-west house, Pallet Town, north-west house 2F), Snow Mail (#144; needed at Pallet Town, north-west house, Pallet Town, north-west house 2F), Yache Berry (#188; needed at Vermilion City), Haban Berry (#197; needed at Blackthorn City), Colbur Berry (#198; needed at Saffron City), S.S. Ticket (#456; needed at Pokémon League Hall of Fame). Berry trees and Pokémon held items are not scanned, so berries may still be obtainable.
 - **TMs/HMs that no item ball, hidden item, gift or shop gives.** No source in the data for: TM46 Thief. (Prize counters and quest rewards that give TMs through a variable item id may be missed.)
-- **Trainer Pokémon with abilities outside their species' ability list.** 165 trainer party records store an ability the species cannot have per a/0/0/2, e.g. trainer #11 Shady Guy Bob: Sandslash: ability Sand Rush; trainer #18 Hiker Stan: Golem: ability Rock Head; trainer #22 Fisherman Wesley: Gyarados: ability Moxie; trainer #38 Biker Woody: Golem: ability Rock Head; trainer #38 Biker Woody: Ariados: ability Speed Boost; trainer #45 Team Rocket Grunt: Steelix: ability Filter. The trainer record (28-byte hack format) stores the ability explicitly; engine behaviour not verified. Full list in work/notes/docs_crossref.md.
+- **Trainer Pokémon with abilities outside their species' ability list.** 163 trainer party records store an ability the species cannot have per a/0/0/2, e.g. trainer #11 Shady Guy Bob: Sandslash: ability Sand Rush; trainer #18 Hiker Stan: Golem: ability Rock Head; trainer #22 Fisherman Wesley: Gyarados: ability Moxie; trainer #38 Biker Woody: Golem: ability Rock Head; trainer #38 Biker Woody: Ariados: ability Speed Boost; trainer #45 Team Rocket Grunt: Steelix: ability Filter. The trainer record (28-byte hack format) stores the ability explicitly, and the original loader applies nonzero ability overrides (see work/notes/trainer_runtime_review.md). Full list in work/notes/docs_crossref.md.
 - **Trainer parties with duplicate or invalid moves.** trainer #80 Hiker Ken: Hippopotas: duplicate move in moveset: Sand Tomb, Sand Tomb, Bite, Sandstorm; trainer #253 Leader Brock: Kabuto: duplicate move in moveset: Harden, Rock Tomb, Icy Wind, Harden; trainer #439 Rival Blue: Pidgeot: duplicate move in moveset: Air Slash, Roost, Roost, Heat Wave; trainer #613 Team Rocket Grunt: Arbok: duplicate move in moveset: Stockpile, Stockpile, Swallow, Gastro Acid; trainer #760 PKMN Trainer Tan Hean: -------: invalid species 0; trainer #996 Leader Sabrina: Wobbuffet: duplicate move in moveset: Counter, Mirror Coat, Destiny Bond, Mirror Coat; trainer #997 Executive Lawrence: Zapdos: duplicate move in moveset: Thunderbolt, Thunder Wave, Hurricane, Hurricane
 
