@@ -320,6 +320,38 @@ Rattata given an Eviolite at the end of the wild finalizer (logged as holding 58
 without a steal message. **Inconclusive**: the scripted wild battle probably sets the held item after that
 point, so the control needs a different way to give a wild Pokémon an item.
 
+### 4. Cut-scene big text (Tier 5): rendered, all English lines fit
+
+Running the scenes themselves was skipped: each needs its story state (flags, people placed by earlier
+scripts, the right map) and most are long chains of movements. Instead `emu_harness.py messages` prints
+every referenced line with a one-off script in the field's normal message window, on the Chinese ROM and
+the English WIP build: `show_message(bank, id)` loads the message bank through the script-file override
+and runs `SetVar 0x8000 id; NonNPCMsgVar 0x8000; WaitButton; CloseMsg; SetVar 0x40FE 0x5A5A; …` (the
+sentinel var tells the harness the window has closed; it is restored afterwards). The text's own control
+codes (the 200 % size, colours, page breaks) render exactly as in a scene. What is not reproduced: the
+scene's buffers (speaker names stored in {VAR} buffers are empty, so lines that start with a buffered
+name show ": …" in English and "『…" in Chinese), the camera and any special window.
+46 lines, both ROMs, about 4 minutes; pairs in `work/build/harness/messages/` (`sheet_*.png` overview).
+
+| decision | lines | result (English WIP build of Sep 30) |
+|---|---|---|
+| D-0541 | 0313 #28, 0314 #14, #28 | fit; #28 "Whoooooa!!!" without label. The Chinese #28 itself runs to the box edge. |
+| D-0553 | 0457 #123, 0319 #26, 0048 #5/#6/#20, 0321 #27 | fit, every 2× line on one row; 0321 #27 "Did someone say Pokémon food?!" ends close to the edge but inside |
+| D-0571 | 0476 #14 #19 #69 #74 #85 #102, 0356 #4 #10 #70–81 #84 | fit. 0356 #70/#79/#81 page 2 is "!" alone because the winner's name is a buffer (Chinese "选手!" the same) |
+| D-0719 | 0511 #153 | fits ("Moltres!") |
+| D-0744 | 0124 #124/#125 | fit |
+| D-0853 | 0547 #7, 0053 #1/#39, 0546 #12/#48, 0090 #141 | fit |
+| D-0903 | 0599 #45/#56 | fit; the label is the player's name buffer (shown here as ": ") |
+| D-0983 | 0081 #25, 0377 #136 | fit ("Celebi, you say?" on one row in this build) |
+| D-0550 / D-0746 | 0457 #140, #172, 0126 #100 | the placeholders render as "---!", "---", "---" (Chinese 空!, 空, 空。); whether the scenes ever print them was not checked |
+
+Observed for the window rendering; whether the scenes use the same window is inferred (the lines come
+from ordinary message commands in their scripts). The WIP build predates later bank edits (e.g. D-0983's
+{NEWLINE} split is not in it), so rerun `messages` on a fresh build.
+
+`run_script(file=F, index=N, msg_bank=M)` also runs real scripts: index is the scriptdump number − 1
+(checked: file 12 index 3 shows Pal Park's "Would you like to retire?" with its YES/NO menu).
+
 ### 5. Screen checks on the English WIP build (Tier 3)
 
 `emu_harness.py screens [--only options,ev,dex,battle]` runs each screen recipe on the Chinese ROM and on

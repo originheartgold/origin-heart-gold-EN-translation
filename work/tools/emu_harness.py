@@ -107,6 +107,7 @@ SCRIPT_LOAD_FILE = 0x0203F870
 SCRIPT_STARTED = 0x0203F812
 START_MAP_SCENE_SCRIPT = 0x0203F57C
 STD_SCRIPT_BASE = 2000
+SENTINEL_VAR = 0x40FE          # save var used (and restored) to see when an injected script has finished
 OV1_SIG = {TALK_OBJ_START: "59f626fc", TALK_BG_RESULT: "011c"}
 SCRIPT_CMDS = Path(__file__).resolve().parent / "docs" / "script_cmds.json"
 _SCRIPT_CMD_CACHE = {}
@@ -844,7 +845,7 @@ class Harness:
     def run_script(self, script_id=None, file=None, index=None, msg_bank=None, program=None, settle=30):
         """Start an event script from the field without walking anywhere: the next A press is redirected.
         - script_id: any global id (map scripts 1.., std 2000.., ...), run in the current map's context;
-        - file/index/msg_bank: script <index> of script file <file> (a/0/1/2) with message bank <msg_bank>;
+        - file/index/msg_bank: script <index> (scriptdump number - 1) of script file <file> (a/0/1/2), bank <msg_bank>;
         - program: raw bytes (script_bytes(...)) run instead of the loaded script.
         The player must stand still in the field (no menu, no message)."""
         if file is not None:
@@ -880,6 +881,26 @@ class Harness:
         if not ok:
             raise RuntimeError("A press did not reach the field talk handler (menu or message open?)")
         return script_id
+
+    def show_message(self, bank, msg_id, name=None, max_pages=8, settle=150):
+        """Print message <msg_id> of a027 bank <bank> in the field's normal message window with a one-off
+        script (NonNPCMsgVar via var 0x8000; any id), screenshot every page (A between pages), close it.
+        The text and its control codes (sizes, colours, buffers) render as in a scene; the scene's own
+        context (camera, speaker objects, a special window) is not reproduced."""
+        saved = self.get_var(SENTINEL_VAR)
+        self.set_var(SENTINEL_VAR, 0)
+        prog = script_bytes(("LockAll",), ("SetVar", 0x8000, msg_id), ("NonNPCMsgVar", 0x8000),
+                            ("WaitButton",), ("CloseMsg",), ("SetVar", SENTINEL_VAR, 0x5A5A), ("ReleaseAll",),
+                            ("End",))
+        self.run_script(file=3, index=0, msg_bank=bank, program=prog, settle=settle)
+        shots = []
+        for page in range(max_pages):
+            if self.get_var(SENTINEL_VAR) == 0x5A5A:     # the script has closed the window
+                break
+            shots.append(self.screenshot(f"{name or f'msg_{bank:04d}_{msg_id}'}_p{page + 1}"))
+            self.press("A", after=settle)
+        self.set_var(SENTINEL_VAR, saved)
+        return shots
 
     def trainer_battle(self, trainer_id):
         """Start a battle against trainer_id (a/0/5/5) with the game's TrainerBattle command."""
@@ -1533,6 +1554,48 @@ def cmd_thief(a):
     return 0
 
 
+CUTSCENE_LINES = (   # SIZE-200% lines and placeholders from D-0541 D-0553 D-0571 D-0719 D-0744 D-0853 D-0903
+    "313#28 314#14 314#28 457#123 319#26 48#5 48#6 48#20 321#27 476#14 476#19 476#69 476#74 476#85 476#102 "
+    "356#4 356#10 356#70 356#71 356#72 356#73 356#74 356#75 356#76 356#77 356#78 356#79 356#80 356#81 356#84 "
+    "511#153 124#124 124#125 547#7 53#1 53#39 546#12 546#48 90#141 599#45 599#56 81#25 377#136 "   # D-0983
+    "457#140 457#172 126#100")                                                                    # D-0550/0746
+
+
+def cmd_messages(a):
+    """Print a027 lines in the normal field message window on both ROMs and save CN|EN page pairs."""
+    from PIL import Image
+    out = Path(a.out) / "messages"
+    out.mkdir(parents=True, exist_ok=True)
+    refs = [(int(b), int(i)) for b, i in (r.split("#") for r in (a.refs or CUTSCENE_LINES).split())]
+    if a.lang is None:
+        res = {lang: run_child(["messages", "--lang", lang, "--out", a.out, "--sav", a.sav, "--rom-cn", a.rom_cn,
+                                "--rom-en", a.rom_en, "--refs", " ".join(f"{b}#{i}" for b, i in refs)],
+                               timeout=3600) for lang in ("cn", "en")}
+        rows = []
+        for b, i in refs:
+            key = f"{b}#{i}"
+            cn, en = res["cn"]["pages"].get(key, []), res["en"]["pages"].get(key, [])
+            n = max(len(cn), len(en), 1)
+            pair = Image.new("RGB", (2 * 256 + 8, 192 * n), "white")
+            for k, pth in enumerate(cn):
+                pair.paste(Image.open(pth).crop((0, 0, 256, 192)), (0, 192 * k))
+            for k, pth in enumerate(en):
+                pair.paste(Image.open(pth).crop((0, 0, 256, 192)), (264, 192 * k))
+            path = out / f"msg_{b:04d}_{i}_pair.png"
+            pair.save(path)
+            rows.append({"ref": f"a027/{b:04d}#{i}", "pages_cn": len(cn), "pages_en": len(en), "pair": str(path)})
+            print(json.dumps(rows[-1]), flush=True)
+        (out / "messages_report.json").write_text(json.dumps(rows, indent=1))
+        return 0
+    rom = a.rom_en if a.lang == "en" else a.rom_cn
+    pages = {}
+    with start_at(None, rom=rom, sav=a.sav, out=out, verbose=False, clock=datetime.datetime(2026, 10, 9, 12)) as h:
+        for b, i in refs:
+            pages[f"{b}#{i}"] = [str(p) for p in h.show_message(b, i, name=f"msg_{b:04d}_{i}_{a.lang}")]
+    print("RESULT " + json.dumps({"lang": a.lang, "pages": pages}))
+    return 0
+
+
 def cmd_info(a):
     with Harness(a.rom, a.sav, out=a.out) as h:
         if a.clock:
@@ -1597,6 +1660,13 @@ def main(argv=None):
     th.add_argument("--out", default=str(DEF_OUT))
     th.add_argument("--case", default="all", help="comma list of: " + ", ".join(THIEF_CASES))
     th.add_argument("--child", help=argparse.SUPPRESS)
+    ms = sub.add_parser("messages", help="render a027 lines (bank#id) in the message window, CN|EN pairs")
+    ms.add_argument("--refs", help="space-separated bank#id list; default: the SIZE-200%% cut-scene lines")
+    ms.add_argument("--rom-cn", default=str(DEF_ROM_CN))
+    ms.add_argument("--rom-en", default=str(DEF_ROM_EN))
+    ms.add_argument("--sav", default=str(DEF_SAVES / "full_bag_6mons.sav"))
+    ms.add_argument("--out", default=str(DEF_OUT))
+    ms.add_argument("--lang", choices=("cn", "en"), help=argparse.SUPPRESS)
     for name in ("info", "wild", "unown"):
         p = sub.add_parser(name)
         p.add_argument("--rom", default=str(DEF_ROM_CN))
@@ -1619,7 +1689,7 @@ def main(argv=None):
             p.add_argument("--state", help="also write a DeSmuME savestate taken right after the teleport")
             p.add_argument("--json")
     a = ap.parse_args(argv)
-    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief}[a.cmd](a)
+    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages}[a.cmd](a)
 
 
 if __name__ == "__main__":
