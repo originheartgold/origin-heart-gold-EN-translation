@@ -20,6 +20,11 @@ of the main checkout (also when run from an agent worktree).
     .venv/bin/python work/tools/emu_harness.py arceus             # D-1501: 16 Plates through the bag
     .venv/bin/python work/tools/emu_harness.py evolve --species 548 --level 10 --item 241 --stone 80 --clock 2026-10-09T12:00:00
     .venv/bin/python work/tools/emu_harness.py screens [--only options,ev,dex,battle]   # CN|EN pairs
+    .venv/bin/python work/tools/emu_harness.py palpark --days Fri,Sun,Mon --count 8      # encounters in the park
+    .venv/bin/python work/tools/emu_harness.py thief [--case air_balloon,...]            # Tier 4
+    .venv/bin/python work/tools/emu_harness.py messages [--refs "457#123 48#20"]         # lines in the window, CN|EN
+    .venv/bin/python work/tools/emu_harness.py drive --lang en gen:25,30 t43,73/120 s:party   # op language
+    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex] [--jobs 10]
     python3 -m unittest discover -s work/tools -p test_emu_harness.py      # pure parts, no ROM needed
 
 A boot plus teleport takes about 15 s; 20 Unown encounters take about 2–3 minutes (headless, ~300 fps).
