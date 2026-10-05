@@ -424,10 +424,10 @@
   {
    "id": 48,
    "zh": "训练师／交换",
-   "en": "Trainer/Trade",
+   "en": "Rental/Trade",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 训练师／交换 (Trainer/Trade) read as the Factory Rental/Trade label (US 0019/48).; ext-review RCA-003"
+   "notes": "zh 训练师／交换 (Trainer/Trade) read as the Factory Rental/Trade label (US 0019/48).; ext-review RCA-003 | Hack text error fixed with user approval (D-1362, D-1496)."
   },
   {
    "id": 49,

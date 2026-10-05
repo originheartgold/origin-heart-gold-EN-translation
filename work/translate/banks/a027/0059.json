@@ -198,10 +198,10 @@
   {
    "id": 24,
    "zh": "小伙子,谢谢你守护了大岩蛇的秘密,{NEWLINE}你是个好心的人。{CLEAR}我可以放心将大岩蛇托付给你,{CLEAR}我年纪大了,没能力再继续守护他了,{CLEAR}希望你能保护好大岩蛇。{CLEAR}再见了小伙子。",
-   "en": "Young man, thank you for keeping Onix’s{NEWLINE}secret. You have a kind heart.{SCROLL}I can entrust Onix to you without{NEWLINE}worry. I’m getting old, and I can’t{CLEAR}protect it anymore. Please take good{CLEAR}care of Onix. Farewell, young man.",
+   "en": "Young one, thank you for keeping Onix’s{NEWLINE}secret. You have a kind heart.{SCROLL}I can entrust Onix to you without{NEWLINE}worry. I’m getting old, and I can’t{CLEAR}protect it anymore. Please take good{CLEAR}care of Onix. Farewell, young one.",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 小伙子 (young man) only; no female-player variant found in this bank."
+   "notes": "zh 小伙子 (young man) only; no female-player variant found in this bank. | Hack text error fixed with user approval (D-0879, D-1496)."
   },
   {
    "id": 25,

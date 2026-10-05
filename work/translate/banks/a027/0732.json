@@ -150,18 +150,18 @@
   {
    "id": 18,
    "zh": "可多拉,用铁头撞碎吸盘魔偶的屏障！",
-   "en": "Lairon, smash through Mr. Mime’s{NEWLINE}barrier with Iron Head!",
+   "en": "Onix, smash through Mr. Mime’s{NEWLINE}barrier with Iron Head!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Hack text error fixed with user approval (D-0691, D-1496)."
   },
   {
    "id": 19,
    "zh": "可多拉『Laaa——ro！",
-   "en": "Lairon: Laaa-ro!",
+   "en": "Onix: Oooo-ni!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Hack text error fixed with user approval (D-0691, D-1496)."
   },
   {
    "id": 20,

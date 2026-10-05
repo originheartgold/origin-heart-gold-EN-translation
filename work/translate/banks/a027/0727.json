@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "{VAR:0103:0}拿出了{NEWLINE}训练师盒子,{SCROLL}你也要拿出{NEWLINE}训练师卡给他看吗？{VAR:0200:0}",
-   "en": "{VAR:0103:0} took out{NEWLINE}a Trainer Box.{SCROLL}Will you show your Trainer Card, too? {VAR:0200:0}",
+   "en": "{VAR:0103:0} took out{NEWLINE}a Trainer Card.{SCROLL}Will you show your Trainer Card, too? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "ext-review RB-005: zh 训练师盒子 (Trainer Box) while #12/#13 say 训练师卡; kept as the zh says (D-1195)"
+   "notes": "ext-review RB-005: zh 训练师盒子 (Trainer Box) while #12/#13 say 训练师卡; kept as the zh says (D-1195) | Hack text error fixed with user approval (D-1371, D-1496)."
   },
   {
    "id": 12,
@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "看到了住在{VAR:0125:4}{NEWLINE}的{VAR:0103:0}的{CLEAR}训练师盒子！",
-   "en": "This is the Trainer Box of{NEWLINE}{VAR:0103:0}, who lives in{CLEAR}{VAR:0125:4}.{NEWLINE}",
+   "en": "This is the Trainer Card of{NEWLINE}{VAR:0103:0}, who lives in{CLEAR}{VAR:0125:4}.{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0738/14; ext-review RB-005: zh 训练师盒子 (Trainer Box); kept as the zh says (D-1195)"
+   "notes": "US 0738/14; ext-review RB-005: zh 训练师盒子 (Trainer Box); kept as the zh says (D-1195) | Hack text error fixed with user approval (D-1371, D-1496)."
   },
   {
    "id": 15,
@@ -350,10 +350,10 @@
   {
    "id": 43,
    "zh": "哎！？找不到{NEWLINE}训练师盒子,{SCROLL}对不起！下次吧。",
-   "en": "Huh? My Trainer Box...{NEWLINE}Where’d it go now?{SCROLL}Sorry! I’ll show you another time!",
+   "en": "Huh? My Trainer Card...{NEWLINE}Where’d it go now?{SCROLL}Sorry! I’ll show you another time!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0738/43; ext-review RB-005: zh 训练师盒子 (Trainer Box); kept as the zh says (D-1195)"
+   "notes": "US 0738/43; ext-review RB-005: zh 训练师盒子 (Trainer Box); kept as the zh says (D-1195) | Hack text error fixed with user approval (D-1371, D-1496)."
   },
   {
    "id": 44,

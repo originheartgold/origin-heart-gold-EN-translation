@@ -422,10 +422,10 @@
   {
    "id": 52,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的冰子弹拳……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习子弹拳{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Ice Bullet{NEWLINE}Punch...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Bullet{NEWLINE}Punch?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Bullet{NEWLINE}Punch...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Bullet{NEWLINE}Punch?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (First page names the move 冰子弹拳 (\"Ice Bullet Punch\"); the rest of the tutor teaches 子弹拳 Bullet Punch); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (First page names the move 冰子弹拳 (\"Ice Bullet Punch\"); the rest of the tutor teaches 子弹拳 Bullet Punch); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-0570, D-1496)."
   },
   {
    "id": 53,

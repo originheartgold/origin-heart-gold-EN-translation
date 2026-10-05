@@ -566,10 +566,10 @@
   {
    "id": 70,
    "zh": "抢位置的分数",
-   "en": "Circle Push Points",
+   "en": "Lamp Jump Points",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0314/70; zh repeats 抢位置的分数 (Circle Push) in the Lamp Jump slot; US Lamp Jump Points"
+   "notes": "US 0314/70; zh repeats 抢位置的分数 (Circle Push) in the Lamp Jump slot; US Lamp Jump Points | Hack text error fixed with user approval (D-1241, D-1496)."
   },
   {
    "id": 71,

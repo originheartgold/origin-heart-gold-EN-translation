@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "这个美丽花和这个铁壳昆{NEWLINE}最棒了吧？{SCROLL}",
-   "en": "This Bellossom and this Kakuna are the{NEWLINE}best, right?{SCROLL}",
+   "en": "This sharpness and this richness!{NEWLINE}The best, right?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Hack text error fixed with user approval (D-1267, D-1496)."
   },
   {
    "id": 5,
@@ -678,26 +678,26 @@
   {
    "id": 84,
    "zh": "马车！！沙沙沙。{NEWLINE}马车！沙沙沙。　",
-   "en": "Horse cart!! Swish, swish. Horse cart!{NEWLINE}Swish, swish.",
+   "en": "Splash!! Whoosh...{NEWLINE}Splash! Whooosh...",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 马车 (horse cart) looks garbled; US has a ship captain in a storm"
+   "notes": "zh 马车 (horse cart) looks garbled; US has a ship captain in a storm | Hack text error fixed with user approval (D-1258, D-1496)."
   },
   {
    "id": 85,
    "zh": "沙沙沙。{SCROLL}",
-   "en": "Swish, swish.{SCROLL}",
+   "en": "Whoosh...{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Hack text error fixed with user approval (D-1258, D-1496)."
   },
   {
    "id": 86,
    "zh": "沙沙沙⋯⋯{SCROLL}",
-   "en": "Swish, swish...{SCROLL}",
+   "en": "Blub, blub, blub...{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Hack text error fixed with user approval (D-1258, D-1496)."
   },
   {
    "id": 87,
@@ -1246,10 +1246,10 @@
   {
    "id": 155,
    "zh": "我已我所牵挂⋯⋯{SCROLL}",
-   "en": "I... what I care for...{SCROLL}",
+   "en": "Wh-what a disgrace...{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 我已我所牵挂 is garbled; kept vague"
+   "notes": "zh 我已我所牵挂 is garbled; kept vague | Hack text error fixed with user approval (D-1259, D-1496)."
   },
   {
    "id": 156,
@@ -1910,18 +1910,18 @@
   {
    "id": 238,
    "zh": "看吧,就是因为这样你才输了！{NEWLINE}我给你也装上锤子吧！{SCROLL}",
-   "en": "See, that’s why you lost! I’ll equip you{NEWLINE}with a hammer, too!{SCROLL}",
+   "en": "See, that’s why you lost! Time you ate{NEWLINE}some dirt, too!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 锤子 (hammer) kept; US has eating dirt"
+   "notes": "zh 锤子 (hammer) kept; US has eating dirt | Hack text error fixed with user approval (D-1265, D-1496)."
   },
   {
    "id": 239,
    "zh": "装着锤子的我竟然会输给{NEWLINE}连锤子都不知道什么味的你⋯⋯{SCROLL}",
-   "en": "Losing with my hammer to someone who{NEWLINE}doesn’t know a hammer’s smell...{SCROLL}",
+   "en": "Knocked into the dirt by someone who{NEWLINE}doesn’t even know the smell of soil...{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Hack text error fixed with user approval (D-1265, D-1496)."
   },
   {
    "id": 240,
@@ -6342,10 +6342,10 @@
   {
    "id": 792,
    "zh": "我只要桃子牛奶,{NEWLINE}其他的都不需要了。",
-   "en": "All I need is peach milk. Nothing else.",
+   "en": "All I need is Moomoo Milk. Nothing else.",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 桃子牛奶 (peach milk); US has Moomoo Milk"
+   "notes": "zh 桃子牛奶 (peach milk); US has Moomoo Milk | Hack text error fixed with user approval (D-1266, D-1496)."
   },
   {
    "id": 793,
@@ -6358,10 +6358,10 @@
   {
    "id": 794,
    "zh": "下面,我去喝{NEWLINE}桃子牛奶了。{SCROLL}",
-   "en": "Now, I’m off to drink some peach milk.{SCROLL}",
+   "en": "Now, I’m off to drink some Moomoo Milk.{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Hack text error fixed with user approval (D-1266, D-1496)."
   },
   {
    "id": 795,

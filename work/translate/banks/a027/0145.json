@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "茜罗娜的肉体据说是{NEWLINE}从蛋中诞生的。{SCROLL}在城都,{NEWLINE}精灵的蛋被认为是{CLEAR}孕育生命的容器,{CLEAR}是非常神圣的东西。{SCROLL}相距遥远的土地却有着{NEWLINE}相似的神话{CLEAR}与传说⋯⋯{CLEAR}真是有趣呢~",
-   "en": "Cynthia’s body is said to have come out{NEWLINE}of an Egg.{SCROLL}Johto people believe that Pokémon Eggs{NEWLINE}are the vessels of life, and thus{CLEAR}something astounding.{SCROLL}Places far from each other can share{NEWLINE}similar myths and legends...{SCROLL}That’s quite interesting, isn’t it?",
+   "en": "Arceus is said to have emerged from{NEWLINE}an Egg.{SCROLL}Johto people believe that Pokémon Eggs{NEWLINE}are the vessels of life, and thus{CLEAR}something astounding.{SCROLL}Places far from each other can share{NEWLINE}similar myths and legends...{SCROLL}That’s quite interesting, isn’t it?",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (Says Cynthia’s (茜罗娜) body was born from an Egg; vanilla says Arceus (likely a name-replace slip)); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (Says Cynthia’s (茜罗娜) body was born from an Egg; vanilla says Arceus (likely a name-replace slip)); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-1137, D-1496)."
   },
   {
    "id": 9,

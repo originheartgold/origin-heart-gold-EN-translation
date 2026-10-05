@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "不能是相同的精灵,{NEWLINE}无法挑战！{SCROLL}",
-   "en": "The Pokémon can’t be the same,{NEWLINE}so you can’t take the challenge!{SCROLL}",
+   "en": "The Pokémon aren’t the same,{NEWLINE}so you can’t take the challenge!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0018/11 | zh says the Pokémon can’t be the same (US said they must be the same kind); followed zh."
+   "notes": "US 0018/11 | zh says the Pokémon can’t be the same (US said they must be the same kind); followed zh. | Hack text error fixed with user approval (D-1222, D-1496)."
   },
   {
    "id": 12,

@@ -1678,10 +1678,10 @@
   {
    "id": 209,
    "zh": "呼哧、呼哧⋯⋯{NEWLINE}便秘⋯⋯{SCROLL}",
-   "en": "Sniff, sniff... Constipated...{SCROLL}",
+   "en": "Sniff, sniff... My nose is all stuffed{NEWLINE}up...{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 便秘 (constipation) kept literally; US has a blocked nose"
+   "notes": "zh 便秘 (constipation) kept literally; US has a blocked nose | Hack text error fixed with user approval (D-1264, D-1496)."
   },
   {
    "id": 210,

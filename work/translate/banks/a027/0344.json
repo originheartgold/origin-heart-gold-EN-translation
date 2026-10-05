@@ -502,10 +502,10 @@
   {
    "id": 62,
    "zh": "富子『{VAR:0103:0},{NEWLINE}能跟你一起完赛真是太好了。{CLEAR}这次的比赛对我来说{CLEAR}可是一份难得的经历。{SCROLL}富子『这几个漂亮鳞片送给你,{NEWLINE}就当是我对你的感谢吧！",
-   "en": "Lara: {VAR:0103:0}, I’m so glad we finished{NEWLINE}the race together. This was a really{CLEAR}special experience for me.{SCROLL}Lara: Here, take these Pretty Scales{NEWLINE}as my thanks!",
+   "en": "Lara: {VAR:0103:0}, I’m so glad we finished{NEWLINE}the race together. This was a really{CLEAR}special experience for me.{SCROLL}Lara: Here, take these Heart Scales as{NEWLINE}my thanks!",
    "status": "draft",
    "origin": "agent",
-   "notes": "漂亮鳞片 has no glossary entry; ‘Pretty Scales’ is literal (could be Prism Scale). Which item is given isn't visible. | [D-0633 rename 2026-09-29: Tomiko → Lara]; ext-review RV-002"
+   "notes": "漂亮鳞片 = Heart Scale: script 202 gives item 93 ×1 (D-0688). Plural kept from zh 这几个; qty 1 logged as hack-finding D-1502. | [D-0633 rename 2026-09-29: Tomiko → Lara]; ext-review RV-002"
   },
   {
    "id": 63,

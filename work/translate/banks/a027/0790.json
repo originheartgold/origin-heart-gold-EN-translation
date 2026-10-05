@@ -1028,10 +1028,10 @@
   {
    "id": 121,
    "zh": "有图鉴",
-   "en": "Has entry",
+   "en": "One form",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0802/121; ext-review RC-006"
+   "notes": "US 0802/121; ext-review RC-006 | Hack text error fixed with user approval (D-1375, D-1496)."
   },
   {
    "id": 122,

@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "喂喂⋯⋯{SCROLL}{VAR:0103:0}啊！{NEWLINE}你现在在哪努力呢？{SCROLL}在吉野市啊⋯⋯{SCROLL}我记得那边有座{NEWLINE}喇叭芽之塔,{CLEAR}你去那边{CLEAR}看过了吗？{SCROLL}",
-   "en": "Hello...?{SCROLL}Oh, {VAR:0103:0}! Where are{NEWLINE}you working hard today?{SCROLL}Oh, so you’re in Cherrygrove City...{SCROLL}Isn’t that where Sprout Tower{NEWLINE}is? Did you go take a look?{SCROLL}",
+   "en": "Hello...?{SCROLL}Oh, {VAR:0103:0}! Where are{NEWLINE}you working hard today?{SCROLL}Oh, so you’re in Violet City...{SCROLL}Isn’t that where Sprout Tower{NEWLINE}is? Did you go take a look?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (Mom says 吉野市 (Cherrygrove City) but names Sprout Tower (Violet City)); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (Mom says 吉野市 (Cherrygrove City) but names Sprout Tower (Violet City)); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-1194, D-1496)."
   },
   {
    "id": 10,

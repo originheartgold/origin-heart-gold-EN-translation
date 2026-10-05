@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "你并没有月亮球啊,{NEWLINE}等有果子了再来找我吧。",
-   "en": "You don’t have a Moon Ball. Come back{NEWLINE}when you’ve got a Berry.",
+   "en": "You don’t have a Moon Ball. Come back{NEWLINE}when you’ve got one.",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (Asks for a Moon Ball, then says come back when you have a Berry (果子), a copy slip); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (Asks for a Moon Ball, then says come back when you have a Berry (果子), a copy slip); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-1137, D-1496)."
   },
   {
    "id": 6,

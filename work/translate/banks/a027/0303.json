@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "阿金",
-   "en": "Gold",
+   "en": "Richard",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 9 source(s); other variants: 3 more v3 TM candidates (tm_v4_matches.jsonl); zh 阿金 = Gold (digest); US slot name Richard"
+   "notes": "v3 TM: 9 source(s); other variants: 3 more v3 TM candidates (tm_v4_matches.jsonl); zh 阿金 = Gold (digest); US slot name Richard | Hack text error fixed with user approval (D-1240, D-1496)."
   },
   {
    "id": 5,

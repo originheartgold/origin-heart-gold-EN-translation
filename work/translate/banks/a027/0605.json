@@ -353,10 +353,10 @@
   {
    "id": 43,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的灵骚……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习诅咒{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn{NEWLINE}Poltergeist...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Curse?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn{NEWLINE}Poltergeist...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn{NEWLINE}Poltergeist?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (The Poltergeist (灵骚) tutor’s last page says 诅咒 (Curse)); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (The Poltergeist (灵骚) tutor’s last page says 诅咒 (Curse)); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-1037, D-1496)."
   },
   {
    "id": 44,
@@ -521,10 +521,10 @@
   {
    "id": 64,
    "zh": "小松『如果去火箭队{NEWLINE}曾经活动的地方找找,{CLEAR}或许能发现关于彩虹羽毛的线索。{CLEAR}只是我身为缘朱道馆的馆主{CLEAR}在这个时候不太方便外出,{CLEAR}寻找彩虹羽毛的事{CLEAR}就拜托{VAR:0103:0}先生您了。",
-   "en": "Morty: If you search the places{NEWLINE}where Team Rocket has been active,{CLEAR}you may find a clue to the Rainbow Wing.{SCROLL}But as Ecruteak’s Gym Leader,{NEWLINE}I can’t easily leave at a time like this.{CLEAR}I’ll leave the search for the Rainbow{CLEAR}Wing to you, Mr. {VAR:0103:0}.",
+   "en": "Morty: If you search the places{NEWLINE}where Team Rocket has been active,{CLEAR}you may find a clue to the Rainbow Wing.{SCROLL}But as Ecruteak’s Gym Leader,{NEWLINE}I can’t easily leave at a time like this.{CLEAR}I’ll leave the search for the Rainbow{CLEAR}Wing to you, Ms. {VAR:0103:0}.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Hack text error fixed with user approval (D-1037, D-1496)."
   },
   {
    "id": 65,
@@ -553,10 +553,10 @@
   {
    "id": 68,
    "zh": "小松『彩虹羽毛……！{NEWLINE}{VAR:0103:0}先生您身上带着彩虹羽毛……{SCROLL}小松『这么说来您也想成为{NEWLINE}凤王的训练家是吗？",
-   "en": "Morty: The Rainbow Wing...!{NEWLINE}Mr. {VAR:0103:0}, you have the{CLEAR}Rainbow Wing...{SCROLL}Morty: Does that mean you want to{NEWLINE}become Ho-Oh’s Trainer too?",
+   "en": "Morty: The Rainbow Wing...!{NEWLINE}Ms. {VAR:0103:0}, you have the{CLEAR}Rainbow Wing...{SCROLL}Morty: Does that mean you want to{NEWLINE}become Ho-Oh’s Trainer too?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Hack text error fixed with user approval (D-1037, D-1496)."
   },
   {
    "id": 69,

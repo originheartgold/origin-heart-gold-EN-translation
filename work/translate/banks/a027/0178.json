@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "恭喜传输成功！",
-   "en": "Congrats! Transfer successful!",
+   "en": "The Hall of Fame!",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (The Hall of Fame header says 恭喜传输成功 (\"Congratulations, transfer successful\"), apparently a mistranslation of the JP); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (The Hall of Fame header says 恭喜传输成功 (\"Congratulations, transfer successful\"), apparently a mistranslation of the JP); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-0509, D-1496)."
   },
   {
    "id": 1,

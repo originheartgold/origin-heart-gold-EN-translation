@@ -342,10 +342,10 @@
   {
    "id": 42,
    "zh": "周五的奖品为……{SCROLL}１等奖　珍贵球{NEWLINE}２等奖　朋友球{CLEAR}３等奖　树果{CLEAR}欢迎参与。",
-   "en": "Friday’s prizes are...{SCROLL}1st prize: Cherish Ball{NEWLINE}2nd prize: Friend Ball{CLEAR}3rd prize: a Berry{CLEAR}Come try your luck!",
+   "en": "Friday’s prizes are...{SCROLL}1st prize: Old Gateau{NEWLINE}2nd prize: Friend Ball{CLEAR}3rd prize: a Berry{CLEAR}Come try your luck!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0597/23"
+   "notes": "US 0597/23 | Hack text error fixed with user approval (D-1414, D-1496)."
   },
   {
    "id": 43,

@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "烈空坐『咕啦咕啦！{SCROLL}",
-   "en": "Rayquaza: Gula-gula!{SCROLL}",
+   "en": "Rayquaza: Kiyuryursheeah!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0150/0; modernised from US 0150#0 | D-1195: reverted to match the zh (Rayquaza is given Kyogre’s cry 咕啦咕啦); logged in hack_findings_import.jsonl"
+   "notes": "US 0150/0; modernised from US 0150#0 | D-1195: reverted to match the zh (Rayquaza is given Kyogre’s cry 咕啦咕啦); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-1137, D-1496)."
   },
   {
    "id": 1,
@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "烈空坐『咕啦咕啦！{NEWLINE}",
-   "en": "Rayquaza: Gula-gula!",
+   "en": "Rayquaza: Kiyuryursheeah!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0150/2; modernised from US 0150#2 | D-1195: reverted to match the zh (Rayquaza is given Kyogre’s cry 咕啦咕啦); logged in hack_findings_import.jsonl"
+   "notes": "US 0150/2; modernised from US 0150#2 | D-1195: reverted to match the zh (Rayquaza is given Kyogre’s cry 咕啦咕啦); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-1137, D-1496)."
   },
   {
    "id": 3,

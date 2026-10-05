@@ -477,10 +477,10 @@
   {
    "id": 57,
    "zh": "秀力博士『三圣鸟是指{NEWLINE}被封印在城都地区烧焦塔的{CLEAR}炎帝、雷公、水君。{CLEAR}它们现在已经被火箭队{CLEAR}从封印之镜中放了出来。{CLEAR}如果您想再次见到三圣兽,{CLEAR}去它们曾经出现过的地方,{CLEAR}或者去找跟它们有缘分的人看看,{CLEAR}或许就能发现它们的踪迹。",
-   "en": "Prof. Hale: The three legendary birds{NEWLINE}are Entei, Raikou and Suicune, which{CLEAR}were sealed in the Burned Tower in{CLEAR}Johto. Team Rocket has since released{CLEAR}them from the Sealing Mirror.{SCROLL}Prof. Hale: If you want to see the{NEWLINE}legendary beasts again, go where they{CLEAR}once appeared, or seek out the people{CLEAR}they share a bond with. You may find{CLEAR}some trace of them.",
+   "en": "Prof. Hale: The three legendary beasts{NEWLINE}are Entei, Raikou and Suicune, which{CLEAR}were sealed in the Burned Tower in{CLEAR}Johto. Team Rocket has since released{CLEAR}them from the Sealing Mirror.{SCROLL}Prof. Hale: If you want to see the{NEWLINE}legendary beasts again, go where they{CLEAR}once appeared, or seek out the people{CLEAR}they share a bond with. You may find{CLEAR}some trace of them.",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (Calls Entei/Raikou/Suicune 三圣鸟 (legendary birds), then 三圣兽 (beasts) in the same line); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (Calls Entei/Raikou/Suicune 三圣鸟 (legendary birds), then 三圣兽 (beasts) in the same line); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-1323, D-1496)."
   },
   {
    "id": 58,

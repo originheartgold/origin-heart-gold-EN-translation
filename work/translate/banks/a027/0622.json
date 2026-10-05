@@ -265,10 +265,10 @@
   {
    "id": 32,
    "zh": "伊吹『单打要至少携带两只精灵,{NEWLINE}你身为联盟冠军{CLEAR}不要犯这种常识性的错误！",
-   "en": "Clair: A Single Battle needs at least{NEWLINE}two Pokémon. As League Champion, you{CLEAR}shouldn’t make such a basic mistake!",
+   "en": "Clair: A Double Battle needs at least{NEWLINE}two Pokémon. As League Champion, you{CLEAR}shouldn’t make such a basic mistake!",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (Says 单打 (a Single Battle) needs at least two Pokémon, in a Double Battle context); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (Says 单打 (a Single Battle) needs at least two Pokémon, in a Double Battle context); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-1137, D-1496)."
   },
   {
    "id": 33,

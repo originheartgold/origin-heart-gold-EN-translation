@@ -270,10 +270,10 @@
   {
    "id": 33,
    "zh": "回复的等级过低,{NEWLINE}无法购买ＣＰ。",
-   "en": "Your healing rank is too low{NEWLINE}to buy CP.",
+   "en": "Your healing rank is too low{NEWLINE}to use CP.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0031/33; ext-review RCA-004"
+   "notes": "US 0031/33; ext-review RCA-004 | Hack text error fixed with user approval (D-1363, D-1496)."
   },
   {
    "id": 34,

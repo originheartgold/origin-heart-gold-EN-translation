@@ -396,10 +396,10 @@
   {
    "id": 48,
    "zh": "外人都觉得阿四馆主是一个{NEWLINE}一身蛮力的大老粗。{CLEAR}但其实阿速馆主对训练方法{CLEAR}有着很细致的研究,{CLEAR}绝不是那种硬着头蛮干的莽夫。",
-   "en": "Outsiders think Gym Leader Chuck is{NEWLINE}just a big, brawny oaf.{SCROLL}But actually, Gym Leader Falkner has{NEWLINE}researched training methods in great{CLEAR}detail. He’s no reckless brute who just{CLEAR}charges in headfirst.",
+   "en": "Outsiders think Gym Leader Chuck is{NEWLINE}just a big, brawny oaf.{SCROLL}But actually, Gym Leader Chuck has{NEWLINE}researched training methods in great{CLEAR}detail. He’s no reckless brute who just{CLEAR}charges in headfirst.",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (A line about Chuck (阿四) says 阿速馆主 (Falkner) in its second half); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (A line about Chuck (阿四) says 阿速馆主 (Falkner) in its second half); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-1102, D-1496)."
   },
   {
    "id": 49,

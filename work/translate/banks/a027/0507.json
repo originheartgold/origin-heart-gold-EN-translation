@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "小绿『我去彩虹道馆挑战的时候{NEWLINE}居然遇到了好几个馆主！{CLEAR}简直就像是忍者用的分身之术。{CLEAR}我打到精疲力竭也没找出真正的馆主,{CLEAR}依我看这些分身里压根就没有馆主吧。",
-   "en": "Blue: When I went to challenge the{NEWLINE}Celadon Gym, I found a whole bunch of{CLEAR}Gym Leaders there! Like some ninja{CLEAR}clone trick.{SCROLL}I battled till I was worn out and never{NEWLINE}found the real one. If you ask me, the{CLEAR}real Leader wasn’t even among them.",
+   "en": "Blue: When I went to challenge the{NEWLINE}Fuchsia Gym, I found a whole bunch of{CLEAR}Gym Leaders there! Like some ninja{CLEAR}clone trick.{SCROLL}I battled till I was worn out and never{NEWLINE}found the real one. If you ask me, the{CLEAR}real Leader wasn’t even among them.",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (Blue names 彩虹道馆 (Celadon Gym) but describes the Fuchsia Gym’s Koga clones); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (Blue names 彩虹道馆 (Celadon Gym) but describes the Fuchsia Gym’s Koga clones); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-0659, D-1496)."
   },
   {
    "id": 5,

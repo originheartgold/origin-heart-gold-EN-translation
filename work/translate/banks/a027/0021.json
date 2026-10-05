@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "{VAR:0203:11}购买",
-   "en": "{VAR:0203:11}Buy",
+   "en": "{VAR:0203:11}Use",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0022/1 | zh 购买 (Buy) where US has Use; followed zh (hack-finding logged)."
+   "notes": "US 0022/1 | zh 购买 (Buy) where US has Use; followed zh (hack-finding logged). | Hack text error fixed with user approval (D-1212, D-1496)."
   },
   {
    "id": 2,
@@ -198,42 +198,42 @@
   {
    "id": 24,
    "zh": "力量运动能力提升！{SCROLL}",
-   "en": "Power Performance increased!{SCROLL}",
+   "en": "Power Performance decreased!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0022/24 | zh #24–28 say 提升 (increased) where US has decreased; followed zh (hack-finding logged)."
+   "notes": "US 0022/24 | zh #24–28 say 提升 (increased) where US has decreased; followed zh (hack-finding logged). | Hack text error fixed with user approval (D-1213, D-1496)."
   },
   {
    "id": 25,
    "zh": "耐力运动能力提升！{SCROLL}",
-   "en": "Stamina Performance increased!{SCROLL}",
+   "en": "Stamina Performance decreased!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0022/25"
+   "notes": "US 0022/25 | Hack text error fixed with user approval (D-1213, D-1496)."
   },
   {
    "id": 26,
    "zh": "技巧运动能力提升！{SCROLL}",
-   "en": "Skill Performance increased!{SCROLL}",
+   "en": "Skill Performance decreased!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0022/26"
+   "notes": "US 0022/26 | Hack text error fixed with user approval (D-1213, D-1496)."
   },
   {
    "id": 27,
    "zh": "跳跃运动能力提升！{SCROLL}",
-   "en": "Jump Performance increased!{SCROLL}",
+   "en": "Jump Performance decreased!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0022/27"
+   "notes": "US 0022/27 | Hack text error fixed with user approval (D-1213, D-1496)."
   },
   {
    "id": 28,
    "zh": "速度运动能力提升！{SCROLL}",
-   "en": "Speed Performance increased!{SCROLL}",
+   "en": "Speed Performance decreased!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0022/28"
+   "notes": "US 0022/28 | Hack text error fixed with user approval (D-1213, D-1496)."
   },
   {
    "id": 29,

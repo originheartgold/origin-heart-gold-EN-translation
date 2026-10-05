@@ -560,10 +560,10 @@
   {
    "id": 69,
    "zh": "阿金『原来如此,刚才一直没看到偶像,{NEWLINE}看来他是去底层确保铃铛的安全了。",
-   "en": "Gold: I see. I haven’t seen my idol this{NEWLINE}whole time. He must have gone to the{CLEAR}bottom to make sure the bell’s safe.",
+   "en": "Gold: I see. I haven’t seen my idol this{NEWLINE}whole time. They must have gone to the{CLEAR}bottom to make sure the bell’s safe.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Hack text error fixed with user approval (D-0984, D-1496)."
   },
   {
    "id": 70,

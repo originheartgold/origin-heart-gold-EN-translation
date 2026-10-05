@@ -3438,10 +3438,10 @@
   {
    "id": 429,
    "zh": "？？？",
-   "en": "???",
+   "en": "AntiAgeSpray",
    "status": "draft",
    "origin": "agent",
-   "notes": "coordinator: was \"Explorer Kit\" (slot-index guess); the zh name and description say ??? (D-0828)"
+   "notes": "coordinator: was \"Explorer Kit\" (slot-index guess); the zh name and description say ??? (D-0828) | Hack text error fixed with user approval (D-1346, D-1496); shortened from the dialogue name Anti-Age Spray to fit the 12-character item name (user choice)."
   },
   {
    "id": 430,

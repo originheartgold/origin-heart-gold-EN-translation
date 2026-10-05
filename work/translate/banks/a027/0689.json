@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "什么⋯⋯我有没有{NEWLINE}让精灵逃掉过？{SCROLL}当然了！{SCROLL}我怎么可能会让区区的{NEWLINE}{VAR:0100:11}逃掉！",
-   "en": "What... have I ever let{NEWLINE}a Pokémon get away?{SCROLL}Of course!{SCROLL}As if I’d ever let a mere{NEWLINE}{VAR:0100:11} get away from me!",
+   "en": "What... have I ever let{NEWLINE}a Pokémon get away?{SCROLL}Of course not!{SCROLL}As if I’d ever let a mere{NEWLINE}{VAR:0100:11} get away from me!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0698/9; ext-review RCA-028"
+   "notes": "US 0698/9; ext-review RCA-028 | Hack text error fixed with user approval (D-1369, D-1496)."
   },
   {
    "id": 10,

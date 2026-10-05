@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "这只{VAR:0100:0}{NEWLINE}已经会接力棒了！{SCROLL}",
-   "en": "This {VAR:0100:0} already{NEWLINE}knows Baton Pass!{SCROLL}",
+   "en": "This {VAR:0100:0} already{NEWLINE}knows Leech Seed!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "Hack slip: the Leech Seed tutor's ‘already knows’ line names Baton Pass (接力棒); translated as written."
+   "notes": "Hack slip: the Leech Seed tutor's ‘already knows’ line names Baton Pass (接力棒); translated as written. | Hack text error fixed with user approval (D-0933, D-1496)."
   },
   {
    "id": 12,

@@ -126,10 +126,10 @@
   {
    "id": 15,
    "zh": "今天的选美大赛{NEWLINE}已经结束了哦。{SCROLL}请下次再来吧！",
-   "en": "The beauty contest is over for today.{SCROLL}Please come again another time!",
+   "en": "Today’s contest is over.{SCROLL}Please come again another time!",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (The Bug-Catching Contest gatehouse says 选美大赛 (beauty contest)); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (The Bug-Catching Contest gatehouse says 选美大赛 (beauty contest)); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-1038, D-1496)."
   },
   {
    "id": 16,

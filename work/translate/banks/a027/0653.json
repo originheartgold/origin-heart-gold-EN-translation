@@ -62,26 +62,26 @@
   {
    "id": 7,
    "zh": "喂,我是阿响！{NEWLINE}早上好！{SCROLL}",
-   "en": "Hello? It’s Ethan!{NEWLINE}Good morning!{SCROLL}",
+   "en": "Hello? It’s Red!{NEWLINE}Good morning!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0662/7; zh still says 我是阿响 (Ethan) in #7–#9 although the contact is 小赤; written as Red | consistency fix (follow-up 4)"
+   "notes": "US 0662/7; zh still says 我是阿响 (Ethan) in #7–#9 although the contact is 小赤; written as Red | consistency fix (follow-up 4) | Hack text error fixed with user approval (D-1324, D-1496)."
   },
   {
    "id": 8,
    "zh": "喂,我是阿响！{NEWLINE}你身体还好吗？{SCROLL}",
-   "en": "Hello? It’s Ethan!{NEWLINE}How are you doing?{SCROLL}",
+   "en": "Hello? It’s Red!{NEWLINE}How are you doing?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0662/8; zh says 阿响 (Ethan); written as Red | consistency fix (follow-up 4)"
+   "notes": "US 0662/8; zh says 阿响 (Ethan); written as Red | consistency fix (follow-up 4) | Hack text error fixed with user approval (D-1324, D-1496)."
   },
   {
    "id": 9,
    "zh": "喂,我是阿响！{NEWLINE}晚上好！{SCROLL}",
-   "en": "Hello? It’s Ethan!{NEWLINE}Good evening!{SCROLL}",
+   "en": "Hello? It’s Red!{NEWLINE}Good evening!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0662/9; zh says 阿响 (Ethan); written as Red | consistency fix (follow-up 4)"
+   "notes": "US 0662/9; zh says 阿响 (Ethan); written as Red | consistency fix (follow-up 4) | Hack text error fixed with user approval (D-1324, D-1496)."
   },
   {
    "id": 10,

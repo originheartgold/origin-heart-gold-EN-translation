@@ -718,10 +718,10 @@
   {
    "id": 89,
    "zh": "小绿『这个小赤……{NEWLINE}你有没有觉得她好像是{CLEAR}我们很早以前就认识的人？",
-   "en": "Blue: That Red... Don’t you feel like{NEWLINE}we’ve known her since way back?",
+   "en": "Blue: That Red... Don’t you feel like{NEWLINE}we’ve known him since way back?",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (Blue calls Red 她 (she), copied from Green’s line #88; Red is male in this hack); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (Blue calls Red 她 (she), copied from Green’s line #88; Red is male in this hack); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-0564, D-1496)."
   },
   {
    "id": 90,

@@ -5651,10 +5651,10 @@
   {
    "id": 703,
    "zh": "阿桔",
-   "en": "Koga",
+   "en": "Agatha",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0729/703"
+   "notes": "US 0729/703 | Hack text error fixed with user approval (D-1442, D-1496)."
   },
   {
    "id": 704,
@@ -5667,10 +5667,10 @@
   {
    "id": 705,
    "zh": "梨琳",
-   "en": "Lorin",
+   "en": "Lance",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0729/705 | unknown E4 member; no dialogue found. Placeholder romanisation"
+   "notes": "US 0729/705 | unknown E4 member; no dialogue found. Placeholder romanisation | Hack text error fixed with user approval (D-1442, D-1496)."
   },
   {
    "id": 706,

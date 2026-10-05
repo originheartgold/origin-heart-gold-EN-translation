@@ -344,10 +344,10 @@
   {
    "id": 42,
    "zh": "多亏了你的树果,{NEWLINE}豪力才能吃得这么开心。{CLEAR}这个是我和豪力们翻修码头时{CLEAR}用剩下的机械零件,{CLEAR}是很难买到的高级货哦,{CLEAR}就送给你当谢礼吧！",
-   "en": "Thanks to your Berries, the{NEWLINE}Machoke got to eat so happily.{SCROLL}These are machine parts left over from{NEWLINE}when the Machoke and I renovated the{CLEAR}harbor. They’re high-quality and hard{CLEAR}to find. Please take them as thanks!",
+   "en": "Thanks to your Berries, the{NEWLINE}Machoke got to eat so happily.{SCROLL}This is a machine part left over from{NEWLINE}when the Machoke and I renovated the{CLEAR}harbor. It’s high-quality and hard to{CLEAR}find. Please take it as thanks!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Which item the machine parts are isn't visible."
+   "notes": "Script 915 gives Machine Part ×1 (item 481), the part the 0091 #31 engineer takes (D-1077); singular to match."
   },
   {
    "id": 43,

@@ -619,10 +619,10 @@
   {
    "id": 76,
    "zh": "菊草叶『Pooo——li！",
-   "en": "Chikorita: Pooo-li!",
+   "en": "Chikorita: Chiii-ko!",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh gives Chikorita a Poliwag cry (hack copy slip); kept as written."
+   "notes": "zh gives Chikorita a Poliwag cry (hack copy slip); kept as written. | Hack text error fixed with user approval (D-0934, D-1496)."
   },
   {
    "id": 77,
@@ -926,10 +926,10 @@
   {
    "id": 114,
    "zh": "唉,我的玛力露丽就这样走了……{NEWLINE}果然一旦感情有了裂痕,{CLEAR}就很难再弥补了……",
-   "en": "*sigh*... My Azumarill just left like{NEWLINE}that... Once a bond cracks, it’s so{CLEAR}hard to mend...",
+   "en": "*sigh*... My Marill just left like{NEWLINE}that... Once a bond cracks, it’s so{CLEAR}hard to mend...",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (The \"Marill gone\" ending says 玛力露丽 (Azumarill); #106 says 玛力露 (Marill)); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (The \"Marill gone\" ending says 玛力露丽 (Azumarill); #106 says 玛力露 (Marill)); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-0934, D-1496)."
   }
  ]
 }

@@ -166,10 +166,10 @@
   {
    "id": 20,
    "zh": "贝纳通",
-   "en": "Benetton",
+   "en": "Veneto",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0791/20 | zh differs from the US name for this slot; translated as written (see hack-finding)"
+   "notes": "US 0791/20 | zh differs from the US name for this slot; translated as written (see hack-finding) | Hack text error fixed with user approval (D-1293, D-1496)."
   }
  ]
 }

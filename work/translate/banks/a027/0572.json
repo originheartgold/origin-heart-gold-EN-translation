@@ -738,10 +738,10 @@
   {
    "id": 90,
    "zh": "小蓝赤『第一位是0,{NEWLINE}第二位是7,{CLEAR}第三位是3,{CLEAR}第四位是2,{CLEAR}第五位是2……",
-   "en": "Green/Red: The first digit is 0, the{NEWLINE}second is 7, the third is 3, the fourth{CLEAR}is 2, the fifth is 2...",
+   "en": "Green: The first digit is 0, the{NEWLINE}second is 7, the third is 3, the fourth{CLEAR}is 2, the fifth is 2...",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (Merged speaker label 小蓝赤 (Green + Red)); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (Merged speaker label 小蓝赤 (Green + Red)); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-1121, D-1496)."
   },
   {
    "id": 91,
@@ -794,10 +794,10 @@
   {
    "id": 97,
    "zh": "小银『小蓝姐,{NEWLINE}这里出现了一个向下的楼梯。{CLEAR}咱们下去看看吧。",
-   "en": "Silver: Sis, a staircase going down just{NEWLINE}appeared here. Let’s go down and look.",
+   "en": "Silver: Red, a staircase going down just{NEWLINE}appeared here. Let’s go down and look.",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (The Red-route copy of #96 still has Silver call the partner 小蓝姐 (\"Sis\", Green)); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (The Red-route copy of #96 still has Silver call the partner 小蓝姐 (\"Sis\", Green)); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-1124, D-1496)."
   },
   {
    "id": 98,

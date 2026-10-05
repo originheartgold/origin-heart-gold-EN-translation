@@ -398,10 +398,10 @@
   {
    "id": 49,
    "zh": "用吼声攻击对手,{NEWLINE}１００％概率降低{NEWLINE}对手１级特攻。",
-   "en": "The user attacks with{NEWLINE}a loud yell. It has a{NEWLINE}100% chance to lower{NEWLINE}the target’s Sp. Atk{NEWLINE}by 1 stage.",
+   "en": "The foe is hit with a{NEWLINE}destructive shock{NEWLINE}wave that always{NEWLINE}inflicts 20 HP damage.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0749/49; retranslated from the hack zh (R002/R003); Slot is Sonic Boom (0739) but the hack's zh describes a Snarl-like effect (yell, 100% Sp. Atk -1); translated the zh."
+   "notes": "US 0749/49; retranslated from the hack zh (R002/R003); Slot is Sonic Boom (0739) but the hack's zh describes a Snarl-like effect (yell, 100% Sp. Atk -1); translated the zh. | Hack text error fixed with user approval (D-0816, D-1496)."
   },
   {
    "id": 50,
@@ -446,10 +446,10 @@
   {
    "id": 55,
    "zh": "向对手喷射{NEWLINE}滚烫的开水,{NEWLINE}对手３０％概率烧伤。",
-   "en": "The foe is blasted{NEWLINE}with scalding water.{NEWLINE}It has a 30% chance{NEWLINE}to burn the target.",
+   "en": "The foe is blasted{NEWLINE}with a forceful shot{NEWLINE}of water.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0749/55; retranslated from the hack zh (R002/R003)"
+   "notes": "US 0749/55; retranslated from the hack zh (R002/R003) | Hack text error fixed with user approval (D-1306, D-1496)."
   },
   {
    "id": 56,
@@ -478,10 +478,10 @@
   {
    "id": 59,
    "zh": "用暴风雪攻击,{NEWLINE}对手２０％概率结冰。",
-   "en": "A howling blizzard is{NEWLINE}summoned to strike{NEWLINE}the foe. It has a 20%{NEWLINE}chance to freeze the{NEWLINE}target.",
+   "en": "A howling blizzard is{NEWLINE}summoned to strike{NEWLINE}the foe. It has a 10%{NEWLINE}chance to freeze the{NEWLINE}target.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0749/59; retranslated from the hack zh (R002/R003)"
+   "notes": "US 0749/59; retranslated from the hack zh (R002/R003) | Hack text error fixed with user approval (D-1313, D-1496)."
   },
   {
    "id": 60,
@@ -654,10 +654,10 @@
   {
    "id": 81,
    "zh": "从口中吐出丝{NEWLINE}导致对手{NEWLINE}速度下降１级。",
-   "en": "The foe is bound with{NEWLINE}silk blown from the{NEWLINE}user’s mouth. Lowers{NEWLINE}its Speed by 1 stage.",
+   "en": "The foe is bound with{NEWLINE}silk blown from the{NEWLINE}user’s mouth. Lowers{NEWLINE}its Speed by 2 stages.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0749/81; retranslated from the hack zh (R002/R003)"
+   "notes": "US 0749/81; retranslated from the hack zh (R002/R003) | Hack text error fixed with user approval (D-1316, D-1496)."
   },
   {
    "id": 82,
@@ -886,10 +886,10 @@
   {
    "id": 110,
    "zh": "缩进壳里强化身体。{NEWLINE}攻击速度上升１级。",
-   "en": "The user withdraws{NEWLINE}into its shell to{NEWLINE}toughen its body.{NEWLINE}Raises its Attack and{NEWLINE}Speed by 1 stage.",
+   "en": "The user withdraws{NEWLINE}into its shell to{NEWLINE}toughen its body.{NEWLINE}Raises its Defense by{NEWLINE}1 stage.",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh says 攻击速度上升１级 (Attack and Speed +1) for Withdraw; vanilla raises Defense. Translated literally; may be a hack typo."
+   "notes": "zh says 攻击速度上升１级 (Attack and Speed +1) for Withdraw; vanilla raises Defense. Translated literally; may be a hack typo. | Hack text error fixed with user approval (D-0817, D-1496)."
   },
   {
    "id": 111,
@@ -1270,10 +1270,10 @@
   {
    "id": 158,
    "zh": "用锐利的门牙攻击。{NEWLINE}对手２０％概率害怕",
-   "en": "The user bites hard{NEWLINE}with its sharp front{NEWLINE}fangs. It has a 20%{NEWLINE}chance to make the{NEWLINE}target flinch.",
+   "en": "The user bites hard{NEWLINE}with its sharp front{NEWLINE}fangs. It has a 10%{NEWLINE}chance to make the{NEWLINE}target flinch.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0749/158; retranslated from the hack zh (R002/R003)"
+   "notes": "US 0749/158; retranslated from the hack zh (R002/R003) | Hack text error fixed with user approval (D-1314, D-1496)."
   },
   {
    "id": 159,
@@ -1406,10 +1406,10 @@
   {
    "id": 175,
    "zh": "与对手玩闹并攻击,{NEWLINE}对手１０％概率{NEWLINE}攻击下降１级。",
-   "en": "The user plays rough{NEWLINE}with the foe. It has a{NEWLINE}10% chance to lower{NEWLINE}the target’s Attack{NEWLINE}by 1 stage.",
+   "en": "The user flails about{NEWLINE}aimlessly to attack.{NEWLINE}It becomes more{NEWLINE}powerful the less HP{NEWLINE}the user has.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0749/175; retranslated from the hack zh (R002/R003); Slot is Flail (0739) but the zh describes Play Rough (玩闹, 10% Attack -1); translated the zh."
+   "notes": "US 0749/175; retranslated from the hack zh (R002/R003); Slot is Flail (0739) but the zh describes Play Rough (玩闹, 10% Attack -1); translated the zh. | Hack text error fixed with user approval (D-0816, D-1496)."
   },
   {
    "id": 176,
@@ -1422,10 +1422,10 @@
   {
    "id": 177,
    "zh": "卷起暴风攻击对手。{NEWLINE}雨天命中上升。{NEWLINE}对手１０％概率麻痹。",
-   "en": "The user whips up a{NEWLINE}storm to strike the{NEWLINE}foe. More accurate in{NEWLINE}rain. 10% chance to{NEWLINE}paralyze the target.",
+   "en": "A vortex of air is{NEWLINE}shot at the foe to{NEWLINE}inflict damage.{NEWLINE}It has a high{NEWLINE}critical-hit ratio.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0749/177; retranslated from the hack zh (R002/R003); Aeroblast slot: zh is a storm move (more accurate in rain, 10% paralysis); translated the zh."
+   "notes": "US 0749/177; retranslated from the hack zh (R002/R003); Aeroblast slot: zh is a storm move (more accurate in rain, 10% paralysis); translated the zh. | Hack text error fixed with user approval (D-0816, D-1496)."
   },
   {
    "id": 178,
@@ -1542,10 +1542,10 @@
   {
    "id": 192,
    "zh": "释放出大炮一样{NEWLINE}的电流进行攻击。{NEWLINE}对手２０％麻痹。",
-   "en": "The user fires an{NEWLINE}electric blast like a{NEWLINE}cannon. It has a 20%{NEWLINE}chance to paralyze{NEWLINE}the target.",
+   "en": "The user fires an{NEWLINE}electric blast like a{NEWLINE}cannon. It always{NEWLINE}paralyzes the target.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0749/192; retranslated from the hack zh (R002/R003)"
+   "notes": "US 0749/192; retranslated from the hack zh (R002/R003) | Hack text error fixed with user approval (D-1312, D-1496)."
   },
   {
    "id": 193,
@@ -1598,10 +1598,10 @@
   {
    "id": 199,
    "zh": "发动心电感应{NEWLINE}锁定目标,{NEWLINE}特攻速度上升１级。",
-   "en": "The user locks on to{NEWLINE}the foe with{NEWLINE}telepathy. Raises its{NEWLINE}Sp. Atk and Speed by{NEWLINE}1 stage.",
+   "en": "The user takes sure{NEWLINE}aim at the foe.{NEWLINE}It ensures the next{NEWLINE}attack does not fail{NEWLINE}to hit the target.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Lock-On slot: zh is a Sp. Atk/Speed +1 status move; translated the zh."
+   "notes": "Lock-On slot: zh is a Sp. Atk/Speed +1 status move; translated the zh. | Hack text error fixed with user approval (D-0816, D-1496)."
   },
   {
    "id": 200,
@@ -1678,10 +1678,10 @@
   {
    "id": 209,
    "zh": "让电流覆盖全身{NEWLINE}撞向对手,{NEWLINE}自己也会受到伤害。",
-   "en": "The user cloaks itself{NEWLINE}in electricity and{NEWLINE}charges at the foe.{NEWLINE}It also damages the{NEWLINE}user.",
+   "en": "The user throws an{NEWLINE}electrically charged{NEWLINE}tackle at the foe. It{NEWLINE}has a 30% chance to{NEWLINE}paralyze the target.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0749/209; retranslated from the hack zh (R002/R003); Spark slot: zh describes a recoil move (Wild Charge-like), no paralysis; translated the zh."
+   "notes": "US 0749/209; retranslated from the hack zh (R002/R003); Spark slot: zh describes a recoil move (Wild Charge-like), no paralysis; translated the zh. | Hack text error fixed with user approval (D-0816, D-1496)."
   },
   {
    "id": 210,
@@ -1846,10 +1846,10 @@
   {
    "id": 230,
    "zh": "用香气使对手{NEWLINE}闪避下降１级。{NEWLINE}在草丛使用的话{NEWLINE}会出现精灵。",
-   "en": "A sweet scent lowers{NEWLINE}the foe’s evasiveness{NEWLINE}by 1 stage. It also{NEWLINE}lures wild Pokémon in{NEWLINE}grass.",
+   "en": "A sweet scent lowers{NEWLINE}the foe’s evasiveness{NEWLINE}by 2 stages. It also{NEWLINE}lures wild Pokémon in{NEWLINE}grass.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0749/230; retranslated from the hack zh (R002/R003)"
+   "notes": "US 0749/230; retranslated from the hack zh (R002/R003) | Hack text error fixed with user approval (D-1316, D-1496)."
   },
   {
    "id": 231,
@@ -2150,10 +2150,10 @@
   {
    "id": 268,
    "zh": "在攻击之后急速返回{NEWLINE}与后备精灵进行替换。",
-   "en": "After attacking, the{NEWLINE}user rushes back to{NEWLINE}switch places with a{NEWLINE}party Pokémon in{NEWLINE}waiting.",
+   "en": "The user boosts the{NEWLINE}power of the Electric{NEWLINE}move it uses next.{NEWLINE}It also raises the{NEWLINE}user’s Sp. Def stat.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0749/268; retranslated from the hack zh (R002/R003); Charge slot: zh describes a Volt Switch-like attack-then-switch move; translated the zh."
+   "notes": "US 0749/268; retranslated from the hack zh (R002/R003); Charge slot: zh describes a Volt Switch-like attack-then-switch move; translated the zh. | Hack text error fixed with user approval (D-0816, D-1496)."
   },
   {
    "id": 269,
@@ -2358,18 +2358,18 @@
   {
    "id": 294,
    "zh": "眺望萤火统一精神。{NEWLINE}特攻和速度上升1级。",
-   "en": "The user stares at{NEWLINE}flashing lights to{NEWLINE}focus its mind. Raises{NEWLINE}Sp. Atk and Speed by{NEWLINE}1 stage.",
+   "en": "The user stares at{NEWLINE}flashing lights to{NEWLINE}focus its mind. Raises{NEWLINE}its Sp. Atk by 3{NEWLINE}stages.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0749/294; retranslated from the hack zh (R002/R003)"
+   "notes": "US 0749/294; retranslated from the hack zh (R002/R003) | Hack text error fixed with user approval (D-1309, D-1496)."
   },
   {
    "id": 295,
    "zh": "借助月亮的光芒{NEWLINE}进行攻击。{NEWLINE}对手１０％概率{NEWLINE}特攻下降１级。",
-   "en": "The user attacks with{NEWLINE}the light of the moon.{NEWLINE}10% chance to lower{NEWLINE}the foe’s Sp. Atk by{NEWLINE}1 stage.",
+   "en": "The user looses a{NEWLINE}damaging burst of{NEWLINE}light. 30% chance to{NEWLINE}lower the target’s{NEWLINE}Sp. Def by 1 stage.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0749/295; retranslated from the hack zh (R002/R003)"
+   "notes": "US 0749/295; retranslated from the hack zh (R002/R003) | Hack text error fixed with user approval (D-1307, D-1496)."
   },
   {
    "id": 296,
@@ -2470,10 +2470,10 @@
   {
    "id": 308,
    "zh": "喷射水柱大炮,{NEWLINE}对手２０％概率{NEWLINE}速度下降１级。",
-   "en": "The foe is hit with a{NEWLINE}cannon-like blast of{NEWLINE}water. 20% chance to{NEWLINE}lower its Speed by 1{NEWLINE}stage.",
+   "en": "The foe is hit with a{NEWLINE}cannon-like blast of{NEWLINE}water. 10% chance to{NEWLINE}lower its Speed by 1{NEWLINE}stage.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0749/308; retranslated from the hack zh (R002/R003)"
+   "notes": "US 0749/308; retranslated from the hack zh (R002/R003) | Hack text error fixed with user approval (D-1315, D-1496)."
   },
   {
    "id": 309,
@@ -2838,10 +2838,10 @@
   {
    "id": 354,
    "zh": "用魔法之力攻击,{NEWLINE}对手１０％概率{NEWLINE}特攻下降１级。",
-   "en": "The user attacks with{NEWLINE}a magical power. 10%{NEWLINE}chance to lower the{NEWLINE}target’s Sp. Atk by 1{NEWLINE}stage.",
+   "en": "The user attacks at{NEWLINE}full power. The{NEWLINE}recoil lowers the{NEWLINE}user’s Sp. Atk by 2{NEWLINE}stages.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0749/354; retranslated from the hack zh (R002/R003)"
+   "notes": "US 0749/354; retranslated from the hack zh (R002/R003) | Hack text error fixed with user approval (D-1308, D-1496)."
   },
   {
    "id": 355,
@@ -3342,10 +3342,10 @@
   {
    "id": 417,
    "zh": "想出阴险的计谋。{NEWLINE}特攻速度上升１级。",
-   "en": "The user thinks up a{NEWLINE}sinister plan. Raises{NEWLINE}its Sp. Atk and Speed{NEWLINE}by 1 stage.",
+   "en": "The user thinks up a{NEWLINE}sinister plan. Raises{NEWLINE}its Sp. Atk by 2{NEWLINE}stages.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Hack text error fixed with user approval (D-1310, D-1496)."
   },
   {
    "id": 418,
@@ -5838,10 +5838,10 @@
   {
    "id": 729,
    "zh": "迅猛无比的电击。必{NEWLINE}定能够先制攻击，击{NEWLINE}中对方的要害。",
-   "en": "A lightning-fast{NEWLINE}electric strike. It{NEWLINE}always strikes first{NEWLINE}and lands a critical{NEWLINE}hit.",
+   "en": "A lightning-fast{NEWLINE}electric strike. It{NEWLINE}always goes first and{NEWLINE}raises the user’s{NEWLINE}evasiveness.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Hack text error fixed with user approval (D-1317, D-1496)."
   },
   {
    "id": 730,

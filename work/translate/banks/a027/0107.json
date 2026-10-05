@@ -286,10 +286,10 @@
   {
    "id": 35,
    "zh": "恭喜您了！{SCROLL}您将获得缎带作为{NEWLINE}这场胜利的奖赏！{SCROLL}",
-   "en": "Congratulations!{SCROLL}In recognition of your victory,{NEWLINE}we present you with a Ribbon!{SCROLL}",
+   "en": "Congratulations!{SCROLL}In recognition of your victory, we{NEWLINE}present you with a commemorative print!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US ‘commemorative print’ rewritten: hack zh says 缎带 (Ribbon). #36/#37 still add prints; check in game."
+   "notes": "US ‘commemorative print’ rewritten: hack zh says 缎带 (Ribbon). #36/#37 still add prints; check in game. | Hack text error fixed with user approval (D-1073, D-1496)."
   },
   {
    "id": 36,

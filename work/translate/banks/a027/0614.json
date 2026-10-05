@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "你已经从柳伯师傅那拿到",
-   "en": "You already got it from Master Pryce",
+   "en": "From Master Pryce, you already got",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh is cut off mid-sentence (你已经从柳伯师傅那拿到); unused truncated copy of 0613 #12? Translated as cut."
+   "notes": "zh is cut off mid-sentence (你已经从柳伯师傅那拿到) and IS shown: zone 397 trainee, script 930, once the player has the Glacier Badge (D-1122). Kept visibly cut like the zh; hack-finding D-1503."
   }
  ]
 }

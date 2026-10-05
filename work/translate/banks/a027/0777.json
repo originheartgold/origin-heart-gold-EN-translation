@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "北英格兰",
-   "en": "Northern England",
+   "en": "Northern Ireland",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0789/6 | zh differs from the US name for this slot; translated as written (see hack-finding)"
+   "notes": "US 0789/6 | zh differs from the US name for this slot; translated as written (see hack-finding) | Hack text error fixed with user approval (D-1293, D-1496)."
   },
   {
    "id": 7,

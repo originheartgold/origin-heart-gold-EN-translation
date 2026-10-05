@@ -274,10 +274,10 @@
   {
    "id": 33,
    "zh": "前段时间列车停运了,{NEWLINE}据说是32号的一场暴风造成的。{CLEAR}幸好有铁路工人们奋力抢修,{CLEAR}现在列车又恢复运行了。",
-   "en": "The trains stopped running for a while.{NEWLINE}They say it was because of a big storm,{CLEAR}Storm No. 32. Luckily, the railway{CLEAR}workers worked hard on repairs, and{CLEAR}now the trains are running again.",
+   "en": "The trains stopped running for a while.{NEWLINE}They say it was because of a big storm{CLEAR}on Route 32. Luckily, the railway{CLEAR}workers worked hard on repairs, and{CLEAR}now the trains are running again.",
    "status": "draft",
    "origin": "agent",
-   "notes": "32号的一场暴风 read as a numbered storm (like 32号台风); could be meant as Route 32."
+   "notes": "32号 = Route 32 (matches the Route 32 guard, 0373 #7; D-1000)."
   },
   {
    "id": 34,

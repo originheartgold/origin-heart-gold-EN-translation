@@ -1613,10 +1613,13 @@
   {
    "id": 199,
    "zh": "阿金『当我在空木博士研究所{NEWLINE}见到偶像的时候,{CLEAR}我感觉自己的心{CLEAR}都快从喉咙眼跳出来了。{CLEAR}一直以来朝思暮想的女神姐{CLEAR}姐就这样出现在眼前{CLEAR}真是太不可思议了。{CLEAR}后来咱们一起在城都地区旅行,{CLEAR}我对偶像的实力越来越钦佩,{CLEAR}对偶像的人格越来越欣赏……{CLEAR}后来咱们在烟墨市道别,{CLEAR}我独自一人回到若叶镇,{CLEAR}心中就像有一个巨大的空洞。{CLEAR}直到咱们在白银大会重逢,{CLEAR}我心中的空洞才突然被填满。{CLEAR}那时候我就明白,{CLEAR}我的心里已经不能没有偶像你了。{SCROLL}{VAR:0103:0}『我真的非常非常喜欢偶像,{NEWLINE}请你做我女朋友好吗！",
-   "en": "Gold: When I met you, my idol, at{NEWLINE}Professor Elm’s lab,{SCROLL}I felt like my heart was about to leap{NEWLINE}out of my throat.{SCROLL}The goddess I’d dreamed about day and{NEWLINE}night was suddenly right in front of me.{CLEAR}It was unbelievable.{SCROLL}Then we traveled across Johto{NEWLINE}together, and I admired your strength{CLEAR}and your character more and more...{SCROLL}When we said goodbye in Blackthorn City{NEWLINE}and I went home to New Bark Town alone,{SCROLL}it felt like there was a huge hole in my{NEWLINE}heart.{SCROLL}That hole only filled up when we met{NEWLINE}again at the Silver Conference.{SCROLL}That’s when I realized I can’t live{NEWLINE}without you anymore, Idol.{SCROLL}{VAR:0103:0}: I really, really love you, my{NEWLINE}idol! Will you be my girlfriend?!",
+   "en": "Gold: When I met you, my idol, at{NEWLINE}Professor Elm’s lab,{SCROLL}I felt like my heart was about to leap{NEWLINE}out of my throat.{SCROLL}The goddess I’d dreamed about day and{NEWLINE}night was suddenly right in front of me.{CLEAR}It was unbelievable.{SCROLL}Then we traveled across Johto{NEWLINE}together, and I admired your strength{CLEAR}and your character more and more...{SCROLL}When we said goodbye in Blackthorn City{NEWLINE}and I went home to New Bark Town alone,{SCROLL}it felt like there was a huge hole in my{NEWLINE}heart.{SCROLL}That hole only filled up when we met{NEWLINE}again at the Silver Conference.{SCROLL}That’s when I realized I can’t live{NEWLINE}without you anymore, Idol.{SCROLL}Gold: I really, really love you, my{NEWLINE}idol! Will you be my girlfriend?!",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (The last page of Gold’s confession is labelled with the player’s name); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (The last page of Gold’s confession is labelled with the player’s name); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-0558, D-1496).",
+   "qa_ignore": [
+    "tag_mismatch"
+   ]
   },
   {
    "id": 200,

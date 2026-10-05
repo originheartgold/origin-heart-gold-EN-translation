@@ -591,18 +591,18 @@
   {
    "id": 73,
    "zh": "咦？大哥哥要送给我气球？{SCROLL}谢谢大哥哥！",
-   "en": "Huh? Mister, you’re giving me a balloon?{SCROLL}Thank you, mister!",
+   "en": "Huh? You’re giving me a balloon?{SCROLL}Thank you!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Only a male-player version exists (大哥哥)."
+   "notes": "Only a male-player version exists (大哥哥). | Hack text error fixed with user approval (D-0984, D-1496)."
   },
   {
    "id": 74,
    "zh": "作为回礼,这个饰品盒送给大哥哥吧！",
-   "en": "Here’s a Fashion Case for{NEWLINE}you, mister, as thanks!",
+   "en": "Here’s a Fashion Case for{NEWLINE}you as thanks!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Hack text error fixed with user approval (D-0984, D-1496)."
   },
   {
    "id": 75,
@@ -825,10 +825,10 @@
   {
    "id": 102,
    "zh": "这个红衣服的训练家是谁啊,{NEWLINE}怎么这么厉害。{CLEAR}我的精灵全都被他打败了……",
-   "en": "Who is that Trainer in red?{NEWLINE}How is he so strong? He beat{CLEAR}every one of my Pokémon...",
+   "en": "Who is that Trainer in red?{NEWLINE}How are they so strong? They beat{CLEAR}every one of my Pokémon...",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 他 for the Trainer in red (the player); no female variant."
+   "notes": "zh 他 for the Trainer in red (the player); no female variant. | Hack text error fixed with user approval (D-0984, D-1496)."
   },
   {
    "id": 103,

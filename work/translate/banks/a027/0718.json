@@ -8395,10 +8395,10 @@
   {
    "id": 1026,
    "zh": "我不是新人训练家吧？{NEWLINE}那我就可以放开手脚与你对战了！{SCROLL}",
-   "en": "I’m not a Rookie Trainer, am I?{NEWLINE}Then I can battle you all-out!{SCROLL}",
+   "en": "You’re no Rookie Trainer, are you?{NEWLINE}Then I can battle you all-out!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (Trainer says 我不是新人训练家吧 (\"I’m not a rookie, am I?\"), probably meant 你不是 (\"you’re not\")); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (Trainer says 我不是新人训练家吧 (\"I’m not a rookie, am I?\"), probably meant 你不是 (\"you’re not\")); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-0915, D-1496)."
   },
   {
    "id": 1027,

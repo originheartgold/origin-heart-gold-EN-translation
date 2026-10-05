@@ -254,10 +254,10 @@
   {
    "id": 31,
    "zh": "黑鲁加『Bayyy——！",
-   "en": "Houndoom: Bayyy-!",
+   "en": "Houndoom: Houndoo-!",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh gives Houndoom Bayleef's cry (Bayyy——！), probably a copy slip; kept literal."
+   "notes": "zh gives Houndoom Bayleef's cry (Bayyy——！), probably a copy slip; kept literal. | Hack text error fixed with user approval (D-1074, D-1496)."
   },
   {
    "id": 32,

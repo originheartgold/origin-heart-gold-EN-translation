@@ -303,10 +303,10 @@
   {
    "id": 37,
    "zh": "恭喜诸位来到比赛的第三阶段,{NEWLINE}本阶段的比赛内容是将6位选手{CLEAR}按照到达这里的顺序分成三组对战。{SCROLL}这3组分别是：{NEWLINE}第1名{VAR:0103:0}对第6名加代,{CLEAR}第2名嘟利夫对第5名杰克,{CLEAR}第3名富子对第4名无桑。{CLEAR}每组对战的胜利者{CLEAR}将会进入14号路的第三阶段比赛。{SCROLL}现在请各位选手找准自己的对手……",
-   "en": "Congratulations on reaching Stage 3!{NEWLINE}In this stage, the six contestants{CLEAR}are split into three pairs, based on{CLEAR}the order you arrived, and battle{CLEAR}each other.{SCROLL}The three pairs are: 1st place {VAR:0103:0}{NEWLINE}vs. 6th place Kay, 2nd place Dudley vs.{CLEAR}5th place Jack, and 3rd place Lara vs.{CLEAR}4th place Jessa. The winner of each{CLEAR}battle goes on to Stage 3 on Route 14.{SCROLL}Now, everyone, find your opponent...",
+   "en": "Congratulations on reaching Stage 3!{NEWLINE}In this stage, the six contestants{CLEAR}are split into three pairs, based on{CLEAR}the order you arrived, and battle{CLEAR}each other.{SCROLL}The three pairs are: 1st place {VAR:0103:0}{NEWLINE}vs. 6th place Kay, 2nd place Dudley vs.{CLEAR}5th place Jack, and 3rd place Lara vs.{CLEAR}4th place Jessa.{SCROLL}The winner of each battle goes on to{NEWLINE}the final stage on Route 14.{SCROLL}Now, everyone, find your opponent...",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (We are already in Stage 3, yet the winners go on to \"Stage 3\" on Route 14 (#39 says the last stage)); logged in hack_findings_import.jsonl | [D-0633 rename 2026-09-29: Tomiko → Lara]; ext-review RV-002"
+   "notes": "D-1195: reverted to match the zh (We are already in Stage 3, yet the winners go on to \"Stage 3\" on Route 14 (#39 says the last stage)); logged in hack_findings_import.jsonl | [D-0633 rename 2026-09-29: Tomiko → Lara]; ext-review RV-002 | Hack text error fixed with user approval (D-0691, D-1496)."
   },
   {
    "id": 38,

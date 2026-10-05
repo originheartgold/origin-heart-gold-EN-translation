@@ -143,10 +143,10 @@
   {
    "id": 17,
    "zh": "前　２４号道路{NEWLINE}西　华蓝海角",
-   "en": "Rt. 24 Ahead{NEWLINE}West to Cerulean Cape",
+   "en": "Rt. 24 Ahead{NEWLINE}East to Cerulean Cape",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (Sign says 西 (west) to Cerulean Cape; the US sign says east); logged in hack_findings_import.jsonl",
+   "notes": "D-1195: reverted to match the zh (Sign says 西 (west) to Cerulean Cape; the US sign says east); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-0556, D-1496).",
    "category": "sign"
   },
   {
@@ -840,10 +840,10 @@
   {
    "id": 103,
    "zh": "好的,2个球换1个碎片。",
-   "en": "All right, two Balls for one Shard.",
+   "en": "All right, one Ball for one Shard.",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh says two Balls per Shard, but the menu (#97-100) says one Ball per Shard. Translated as written."
+   "notes": "zh says two Balls per Shard, but the menu (#97-100) says one Ball per Shard. Translated as written. | Hack text error fixed with user approval (D-0557, D-1496)."
   },
   {
    "id": 104,

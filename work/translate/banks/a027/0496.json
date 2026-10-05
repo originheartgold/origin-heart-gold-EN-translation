@@ -158,10 +158,10 @@
   {
    "id": 19,
    "zh": "桌子上有一只{NEWLINE}黏糊糊的盾牌精灵！",
-   "en": "There’s a sticky shield Pokémon on the{NEWLINE}desk!",
+   "en": "There are Pokémon stickers stuck all{NEWLINE}over the desk!",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (Says a sticky 盾牌精灵 (\"shield Pokémon\") is on the desk; vanilla has Pokémon stickers); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (Says a sticky 盾牌精灵 (\"shield Pokémon\") is on the desk; vanilla has Pokémon stickers); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-0621, D-1496)."
   },
   {
    "id": 20,

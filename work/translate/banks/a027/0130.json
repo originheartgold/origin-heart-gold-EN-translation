@@ -1198,10 +1198,13 @@
   {
    "id": 149,
    "zh": "最近常磐森林的烈雀{NEWLINE}又闹得越来越凶了,{CLEAR}我非常需要一只能压制烈雀的比比鸟{CLEAR}帮我保护一下这里的花朵。{CLEAR}如果你有比雕的话,{CLEAR}能把它借给我用一段时间吗？{SCROLL}",
-   "en": "Lately the Spearow in Viridian Forest{NEWLINE}have been acting up worse than ever.{SCROLL}I really need a Pidgeotto that can keep{NEWLINE}the Spearow in check and protect the{CLEAR}flowers here.{SCROLL}If you have a Pidgeot, could you lend it{NEWLINE}to me for a while?{SCROLL}",
+   "en": "Lately the Spearow in Viridian Forest{NEWLINE}have been acting up worse than ever.{SCROLL}I really need a Pidgeot that can keep{NEWLINE}the Spearow in check and protect the{CLEAR}flowers here.{SCROLL}If you have a Pidgeot, could you lend it{NEWLINE}to me for a while?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position | D-1195: reverted to match the zh (Asks for a 比比鸟 (Pidgeotto), then a 比雕 (Pidgeot); the check is for Pidgeot); logged in hack_findings_import.jsonl"
+   "notes": "v3 TM: 1 source(s), same position | zh asks for a 比比鸟 (Pidgeotto), then a 比雕 (Pidgeot); script 115 only accepts species 18 (Pidgeot) in both the CN and EN ROMs. Fixed with user approval (D-0540, D-1496).",
+   "qa_ignore": [
+    "glossary:比比鸟"
+   ]
   },
   {
    "id": 150,

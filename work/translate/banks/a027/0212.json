@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "看着下面的画面！{VAR:0200:3}",
-   "en": "Look at the bottom screen!{VAR:0200:3}",
+   "en": "Look at the top screen!{VAR:0200:3}",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh says bottom screen again (US: top screen); followed zh (hack-finding logged)."
+   "notes": "zh says bottom screen again (US: top screen); followed zh (hack-finding logged). | Hack text error fixed with user approval (D-1221, D-1496)."
   }
  ]
 }

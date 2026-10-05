@@ -933,10 +933,10 @@
   {
    "id": 111,
    "zh": "爪之化石可以复活成太古羽虫,{NEWLINE}太古羽虫是草+岩属性的精灵。{CLEAR}太古羽虫进化成太古盔甲后{CLEAR}攻击力和物防都很可观。",
-   "en": "The Claw Fossil can be restored into{NEWLINE}Anorith, a Grass/Rock-type Pokémon.{SCROLL}Once Anorith evolves into Armaldo, both{NEWLINE}its Attack and Defense are impressive.",
+   "en": "The Claw Fossil can be restored into{NEWLINE}Anorith, a Rock/Bug-type Pokémon.{SCROLL}Once Anorith evolves into Armaldo, both{NEWLINE}its Attack and Defense are impressive.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position | D-1195: reverted to match the zh (Says Anorith is 草+岩 (Grass/Rock); it is Bug/Rock); logged in hack_findings_import.jsonl"
+   "notes": "v3 TM: 1 source(s), same position | D-1195: reverted to match the zh (Says Anorith is 草+岩 (Grass/Rock); it is Bug/Rock); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-0548, D-1496)."
   },
   {
    "id": 112,

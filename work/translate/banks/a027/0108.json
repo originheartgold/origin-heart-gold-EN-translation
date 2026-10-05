@@ -286,10 +286,10 @@
   {
    "id": 35,
    "zh": "恭喜您了！{SCROLL}获赠纪念缎带{NEWLINE}作为这场胜利的奖励！{SCROLL}",
-   "en": "Congratulations!{SCROLL}In honor of your victory, we present{NEWLINE}you with this commemorative Ribbon!{SCROLL}",
+   "en": "Congratulations!{SCROLL}In honor of your victory, we present{NEWLINE}you with this commemorative print!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0110/35; ext-review RR-001"
+   "notes": "US 0110/35; ext-review RR-001 | Hack text error fixed with user approval (D-1073, D-1496)."
   },
   {
    "id": 36,
