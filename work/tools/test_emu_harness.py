@@ -108,5 +108,93 @@ class ScreenDiffAndBag(unittest.TestCase):
         self.assertEqual(sf.pocket("items"), [])
 
 
+class SkittyScene(unittest.TestCase):
+    """emu_skitty's pure parts (D-0582)."""
+
+    def setUp(self):
+        import emu_skitty
+        self.S = emu_skitty
+
+    def test_goto_and_after_battle_offset(self):
+        S = self.S
+        body = [E.script_bytes(("End",))] * 4
+        battle = E.script_bytes(("LockAll",), ("TrainerBattle", 276, 277, 0, 0), ("CheckBattleWon", 0x800C),
+                                ("CompareVarToValue", 0x800C, 0))
+        tail = E.script_bytes(("SetVar", 16576, 1), ("ReleaseAll",), ("End",))
+        lose = E.script_bytes(("End",))
+        script5 = battle + E.script_bytes(("GoToIf", 1, len(tail))) + tail + lose
+        header_len = 5 * 4 + 2
+        offs, pos = [], header_len
+        for chunk in body + [script5]:
+            offs.append(pos)
+            pos += len(chunk)
+        header = b"".join(struct.pack("<i", o - (4 * k + 4)) for k, o in enumerate(offs)) + b"\x13\xfd"
+        data = header + b"".join(body) + script5
+        start = offs[4]
+        target, s5 = S.after_battle_offset(data)
+        self.assertEqual(s5, start)
+        self.assertEqual(target, start + len(battle) + 7)
+        g = S.goto_bytes(start, target)
+        self.assertEqual(struct.unpack_from("<Hi", g), (22, target - start - 6))
+
+    def test_species_for_sprite_and_text(self):
+        import collections
+        S = self.S
+        table = {761: collections.Counter({300: 4}), 430: collections.Counter({3: 22, 9: 1})}
+        self.assertEqual(S.species_for_sprite(table, 761), 300)
+        self.assertEqual(S.species_for_sprite(table, 430), 3)
+        self.assertIsNone(S.species_for_sprite(table, 902))
+        lines = ["x"] * 49
+        for i in S.SKITTY_LINES:
+            lines[i] = "Go, Skitty!"
+        for i in S.CRY_LINES:
+            lines[i] = "Skitty: Skiiii-ty!"
+        self.assertEqual(S.check_text(lines, "en"), [])
+        lines[19], lines[5] = "Skitty: Gla... meo...", "What's wrong, Glameow?"
+        self.assertEqual([i for i, _ in S.check_text(lines, "en")], [5, 19])
+        zh = ["向尾喵"] * 49
+        zh[48] = "卷尾猫"
+        self.assertEqual(S.check_text(zh, "cn"), [])
+
+    def test_battle_cries(self):
+        ev = [{"t": "cry", "species": 300}, {"t": "trainer_battle"}, {"t": "cry", "species": 53},
+              {"t": "msg"}, {"t": "cry", "species": 300}]
+        self.assertEqual(self.S.battle_cries(ev), [53, 300])
+
+    def _fake(self, lo, mem):
+        class H:
+            def read(self, addr, n):
+                return bytes(mem[addr - lo:addr - lo + n])
+        return H()
+
+    def test_live_objects(self):
+        S, lo = self.S, 0x02200000
+        mem = bytearray(0x4000)
+        base = 0x1004
+        for k, (oid, spr, script) in enumerate([(1, 325, 3), (2, 761, 7), (3, 323, 4)]):
+            a = base + k * S.MAP_OBJECT_SIZE
+            struct.pack_into("<5I", mem, a, 0xC021, 0, oid, 16, spr)
+            struct.pack_into("<2I", mem, a + 0x1C, 1163, script)
+            struct.pack_into("<3i", mem, a + 0x64, 1396 + k, 4, 232)
+        struct.pack_into("<5I", mem, 0x3000, 0xC021, 0, 9, 16, 1)   # a lone record: not in an array
+        objs = S.live_objects(self._fake(lo, mem), 16, lo, lo + len(mem))
+        self.assertEqual(sorted(objs), [1, 2, 3])
+        self.assertEqual((objs[2]["sprite"], objs[2]["script"], objs[2]["x"]), (761, 7, 1397))
+        self.assertEqual(S.live_objects(self._fake(lo, mem), 17, lo, lo + len(mem)), {})
+
+    def test_find_parties(self):
+        S, lo = self.S, 0x02200000
+        mem = bytearray(0x4000)
+        a = 0x200
+        struct.pack_into("<2I", mem, a, 6, 3)
+        for k, sp in enumerate((300, 113, 414)):
+            mon = _encrypted_mon(10 + k, species=sp) + bytes(100)
+            mem[a + 8 + 236 * k:a + 8 + 236 * (k + 1)] = mon
+        struct.pack_into("<2I", mem, 0x2000, 6, 2)                    # count 2 but garbage: rejected
+        got = S.find_parties(self._fake(lo, mem), lo, lo + len(mem))
+        self.assertEqual([[m["species"] for m in p["mons"]] for p in got], [[300, 113, 414]])
+        self.assertEqual(got[0]["addr"], hex(lo + a))
+
+
 if __name__ == "__main__":
     unittest.main()

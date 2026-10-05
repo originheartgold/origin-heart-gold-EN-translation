@@ -24,7 +24,8 @@ of the main checkout (also when run from an agent worktree).
     .venv/bin/python work/tools/emu_harness.py thief [--case air_balloon,...]            # Tier 4
     .venv/bin/python work/tools/emu_harness.py messages [--refs "457#123 48#20"]         # lines in the window, CN|EN
     .venv/bin/python work/tools/emu_harness.py drive --lang en gen:25,30 t43,73/120 s:party   # op language
-    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex] [--jobs 10]
+    .venv/bin/python work/tools/emu_harness.py skitty                                    # D-0582: Route 8 scene, CN|EN
+    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty] [--jobs 10]
     python3 -m unittest discover -s work/tools -p test_emu_harness.py      # pure parts, no ROM needed
 
 A boot plus teleport takes about 15 s; 20 Unown encounters take about 2–3 minutes (headless, ~300 fps).
@@ -386,10 +387,42 @@ from ordinary message commands in their scripts). The WIP build predates later b
 | arceus | 16 Plates through Bag → Give | the 16 forms | 1.7 min |
 | evolve | Petilil day + Sun Stone, Petilil night, Rockruff 12/18/22 h | 548/1 → 549/1; no evolution; 0/2/1 | 2.2 min |
 | dex | Pokédex entry panels 1–30, number read back | pixel-identical to the approved baseline (`baselines/dex_<rom>/`; created on the first run) | 20 s |
+| skitty | Route 8 Skitty scene (D-0582, `emu_skitty.py`), see below | cries, sprite 761 = Skitty, trainer 277 leads Skitty form 0, all 18 lines shown, EN text says Skitty | 1.1 min |
 
   Result (observed): all 10 (5 checks × 2 ROMs) pass, 2 min 13 s wall time with `--jobs 10`. A first run
   before the battery fix failed unown (both ROMs) and palpark (English) on the shared battery file, and one
   rockruff_12 run did not evolve.
+  With `skitty` added (2026-10-05): all 12 pass, 2 min 10 s with `--jobs 10`.
+
+### 6. Route 8 Skitty scene (D-0582): observed, the fix holds
+
+`emu_harness.py skitty` (module `work/tools/emu_skitty.py`) runs the real scene of script file 188 (bank
+a027/0331) on both ROMs in two emulator runs each:
+
+- run a: flags 1636 set, 1163 clear, 1568 set, var 16576 = 1; `warp` to Route 8 (map 16) and talk to
+  object 3 (script 4, #3) and object 1 (script 3 → part 1, L980); then step onto the coord trigger
+  (1384, 242) (script 5, var 16576 = 0 after part 1) until the game's TrainerBattle 276 + 277 starts;
+- run b: flags 1163 and 1636 set, 1568 clear, var 16576 = 0 (the state after part 1): talk to the meadow
+  Skitty (object 14, script 7) and its trainer (object 15, script 12, #48), then part 3 (after the battle):
+  script 5 started with `run_script(script_id=5, program=GoTo)` jumping to the first command after the
+  battle check (offset 2300, found from the script data), so the scene's own bytes run from there.
+
+Hooks: the PlayCry handler's call of the cry routine (0x020487F0, r1 = species), the cry routine itself
+(0x0200629C, every cry incl. battle send-outs), NPCMsg / GenderMsgBox (overlay 1 0x021EE288 / 0x021EE388,
+message id at the script PC), CloseMsg 0x020408A4 and TrainerBattle 0x02048B64. Pages are screenshotted when
+the text area stops changing. Live map objects (`live_objects`: 0x12C-byte LocalMapObjects, +8 id, +0xC map,
++0x10 sprite, +0x1C flag, +0x20 script, +0x64 x, +0x6C z) give each object's sprite; the sprite → species map
+is the game's own pairing (`sprite_species_table`: objects whose talk script plays one literal cry; sprite
+761 appears with cry 300 in four objects across the game, nothing else). Opponent parties are found in RAM
+as Party structs and compared with the ROM's trainer data.
+
+Observed on the Chinese ROM and on the English build (CRC32 2A4FF4DB), identical: script cries part 1
+[53, 300, 300], part 2 [53, 53, 300], Skitty talk [300], part 3 [53, 300, 53, 300]; battle send-out cries 53
+and 300; no Glameow (431) cry anywhere; objects 2 and 14 sprite 761 = Skitty (Persian objects 4/13: 482 = 53);
+trainer 277's party in battle Skitty (form 0, Lv28), Chansey, Wormadam; trainer 276 Persian, Swellow,
+Girafarig. The battle shows 向尾喵 / "Skitty". All 18 lines that name the Skitty or write its cry (#3–#6,
+#8, #17, #18, #19, #21, #24, #26, #31, #33–#35, #37, #38, #48) were printed by the scene and fit;
+the English says Skitty with Skitty-style cries. CN|EN pairs: `work/build/harness/skitty/`.
 
 ### 5. Screen checks on the English WIP build (Tier 3)
 

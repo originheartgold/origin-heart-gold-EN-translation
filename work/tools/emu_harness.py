@@ -1687,8 +1687,14 @@ def _check_dex(rom, out, last=30):
                                               "errors": r["errors"], "baseline": str(base)}
 
 
+def _check_skitty(rom, out):
+    """D-0582: the Route 8 Skitty scene (cries, sprite, trainer 277's party, bank 0331 text); emu_skitty.py."""
+    import emu_skitty
+    return emu_skitty.suite_check(rom, out)
+
+
 SUITE_CHECKS = {"unown": _check_unown, "palpark": _check_palpark, "arceus": _check_arceus,
-                "evolve": _check_evolve, "dex": _check_dex}
+                "evolve": _check_evolve, "dex": _check_dex, "skitty": _check_skitty}
 
 
 def cmd_suite(a):
@@ -1722,6 +1728,11 @@ def cmd_suite(a):
     print(json.dumps({"pass": report["pass"], "seconds": report["seconds"],
                       "report": str(out / "suite_report.json")}))
     return 0 if report["pass"] else 1
+
+
+def _cmd_skitty(a):
+    import emu_skitty
+    return emu_skitty.cmd_skitty(a)
 
 
 def cmd_dexcapture(a):
@@ -1812,6 +1823,12 @@ def main(argv=None):
     su.add_argument("--rom-en", default=str(DEF_ROM_EN))
     su.add_argument("--out", default=str(DEF_OUT))
     su.add_argument("--jobs", type=int, default=6, help="checks run in parallel (each starts its own emulators)")
+    sk = sub.add_parser("skitty", help="D-0582: Route 8 Skitty scene on CN and EN (cries, sprite, trainer, text)")
+    sk.add_argument("--rom-cn", default=str(DEF_ROM_CN))
+    sk.add_argument("--rom-en", default=str(DEF_ROM_EN))
+    sk.add_argument("--out", default=str(DEF_OUT))
+    sk.add_argument("--rom", help=argparse.SUPPRESS)
+    sk.add_argument("--part", choices=("a", "b"), help=argparse.SUPPRESS)
     dc = sub.add_parser("dexcapture", help=argparse.SUPPRESS)
     dc.add_argument("--rom", default=str(DEF_ROM_CN))
     dc.add_argument("--out", default=str(DEF_OUT))
@@ -1839,7 +1856,7 @@ def main(argv=None):
             p.add_argument("--json")
     a = ap.parse_args(argv)
     return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages, "suite": cmd_suite,
-            "dexcapture": cmd_dexcapture}[a.cmd](a)
+            "dexcapture": cmd_dexcapture, "skitty": _cmd_skitty}[a.cmd](a)
 
 
 if __name__ == "__main__":
