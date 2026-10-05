@@ -260,6 +260,24 @@ caller, so a different stack history), which is where a non-zero byte could stil
   Encounters are slow in the park (3–8 per ~900 steps); battles include double battles. D-1484 is now
   confirmed by real encounters too: Sunday's park really uses Cerulean Cave's table.
 
+### Integrated from the UI hunt agent
+
+- `encode_pokemon(..., moves=, pp=)` / `edit_party_mon(slot, moves=[...])`: block B +0 four u16 move ids,
+  +8 four u8 PP (the hunt agent verified them in the summary and in battle; round-trip unit test here).
+  Not integrated: writing the ability byte (block A +0x0D) had no effect in battle; the hack computes the
+  ability elsewhere (still to find; needed for Zen Mode or hidden-ability tests). Writing moves into the
+  generator's rows 7–10 before START does nothing (the menu resets them): set moves after creation.
+- Touch coordinates: field touch menu POKéDEX (43, 33), POKéMON (43, 73), BAG (43, 113), POKéGEAR
+  (43, 153), trainer card (123, 33), SAVE (123, 73), OPTIONS (123, 113) (the old POKéMON (40, 100) missed);
+  Pokégear tabs; battle BAG (36, 165), POKéMON (200, 165), INFO (225, 15; LEFT/RIGHT cycle Pokémon).
+- `run_ops` / `emu_harness.py drive`: the hunt agent's op language (keys, waits, touches, screenshots,
+  savestates, generator) plus `moves:`, `script:`, `prog:`, `warp:` and `walk:`. Example:
+  `drive --lang en gen:25,30 moves:5,85,86,87,98 t43,73/120 s:party_menu`.
+- Gotcha reported by the hunt agent: one parallel run booted the unedited location (map 500). Each Harness
+  already uses its own temporary directory and battery copy. The same symptom appeared here only for the
+  save teleport into Pal Park (Continue came back in the Poké Mart), which is game logic for that map.
+  `start_at` raises when a requested teleport did not land, so check the map when you rely on it.
+
 ### 5. Screen checks on the English WIP build (Tier 3)
 
 `emu_harness.py screens [--only options,ev,dex,battle]` runs each screen recipe on the Chinese ROM and on

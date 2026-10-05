@@ -24,6 +24,21 @@ class PokemonCodec(unittest.TestCase):
             self.assertTrue(mon["checksum_ok"])
             self.assertEqual((mon["species"], mon["item"], mon["form"]), (200 + seed, seed, seed % 28))
 
+    def test_moves_roundtrip(self):
+        raw = E.encode_pokemon(_encrypted_mon(4), moves=[85, 86, 87, 98], pp=[15, 20, 10, 30])
+        self.assertTrue(E.decode_pokemon(raw)["checksum_ok"])
+        order = E.BLOCK_ORDERS[((struct.unpack_from("<I", raw)[0] & 0x3E000) >> 13) % 24]
+        checksum = struct.unpack_from("<H", raw, 6)[0]
+        plain = struct.pack("<64H", *[w ^ k for w, k in zip(struct.unpack_from("<64H", raw, 8),
+                                                              E._prng_stream(checksum, 64))])
+        b = 32 * order.index("B")
+        self.assertEqual(struct.unpack_from("<4H", plain, b), (85, 86, 87, 98))
+        self.assertEqual(tuple(plain[b + 8:b + 12]), (15, 20, 10, 30))
+
+    def test_script_bytes(self):
+        self.assertEqual(E.script_bytes(("TrainerBattle", 5, 0, 0, 0), ("End",)),
+                         bytes.fromhex("d500" "0500" "0000" "00" "00" "0200"))
+
     def test_form_keeps_gender_bits(self):
         raw = _encrypted_mon(3)
         before = E.decode_pokemon(raw)

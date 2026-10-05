@@ -77,7 +77,12 @@ OV2_SIG = {OV2_SIG_ADDR: "c92809d1301cfff747ff", WILD_FINALIZE_RESTORE: "281c702
 GEN_SPECIES, GEN_LEVEL, GEN_EXP, GEN_OTID, GEN_PID, GEN_MOVE1, GEN_ITEM, GEN_FORM = 0, 1, 2, 3, 4, 7, 11, 47
 RUN_BUTTON = (128, 178)
 # Bottom-screen touch targets (checked on the Chinese ROM; the English build keeps the layout).
-FIELD_MENU = {"pokemon": (40, 100), "bag": (40, 128)}      # field touch menu (bag works by touch from the field)
+# Field touch menu (from the UI hunt agent; BAG also checked here): left column POKeDEX, POKeMON, BAG,
+# POKeGEAR; right column trainer card, SAVE, OPTIONS.
+FIELD_MENU = {"pokedex": (43, 33), "pokemon": (43, 73), "bag": (43, 113), "pokegear": (43, 153),
+              "card": (123, 33), "save": (123, 73), "options": (123, 113)}
+POKEGEAR_TABS = {"settings": (32, 175), "map": (127, 175)}
+BATTLE_BUTTONS = {"fight": (128, 88), "bag": (36, 165), "run": (128, 178), "pokemon": (200, 165), "info": (225, 15)}
 BAG_SLOTS = [(64, 56), (192, 56), (64, 98), (192, 98), (64, 140), (192, 140)]   # 6 items per bag page
 BAG_GIVE = (47, 173)             # item submenu: give to a Pokemon
 PARTY_SLOTS = [(64, 28), (190, 28), (64, 76), (190, 76), (64, 124), (190, 124)]
@@ -282,7 +287,7 @@ def decode_party_pokemon(raw):
     return mon
 
 
-def encode_pokemon(raw, species=None, item=None, form=None):
+def encode_pokemon(raw, species=None, item=None, form=None, moves=None, pp=None):
     """Return raw (136+ bytes, encrypted) with boxed fields replaced; checksum recomputed."""
     raw = bytearray(raw)
     pid, flags, checksum = struct.unpack_from("<IHH", raw, 0)
@@ -299,6 +304,10 @@ def encode_pokemon(raw, species=None, item=None, form=None):
     if form is not None:
         b = pos["B"] + 0x18
         plain[b] = (plain[b] & 0x07) | (form << 3)
+    if moves is not None:          # block B +0: 4 x u16 move ids, +8: 4 x u8 current PP (verified by the
+        for i, mv in enumerate(list(moves)[:4]):   # UI hunt agent in the summary and in battle)
+            struct.pack_into("<H", plain, pos["B"] + 2 * i, mv)
+            plain[pos["B"] + 8 + i] = pp[i] if pp else 10
     words = struct.unpack("<64H", plain)
     checksum = sum(words) & 0xFFFF
     key = _prng_stream(checksum, 64)
@@ -1316,6 +1325,77 @@ def cmd_screens(a):
     return 0
 
 
+def run_ops(h, ops, tag="x", states=None):
+    """Tiny op language for recipes and exploration (from the UI hunt agent's drive.py):
+      A B X Y L R START SELECT UP DOWN LEFT RIGHT   press, 40 frames after; KEY*n repeats; KEY/after
+      wN            wait N frames            tX,Y[/after]   touch (60 frames after)
+      hKEY / uKEY   hold / release           s:name         screenshot <out>/name_<tag>.png
+      ss:name       savestate <states>/name_<tag>.dst
+      gen:species,level[,item[,form]]        the hack's generator (party slot 6, or the next free slot)
+      moves:slot,m1[,m2,m3,m4]               write moves (PP 10) into a party Pokemon
+      script:id | prog:Cmd,arg,...;Cmd,...   run a script id / an encoded script program
+      warp:map,x,y                           scripted warp (normal map entry)
+      walk:x,y                               walk_to on the current map
+    Returns the list of screenshots taken."""
+    shots = []
+    for op in ops:
+        if not op:
+            continue
+        head, _, arg = op.partition(":")
+        if op.startswith("s:"):
+            shots.append(str(h.screenshot(f"{arg}_{tag}")))
+        elif op.startswith("ss:"):
+            Path(states or h.out).mkdir(parents=True, exist_ok=True)
+            h.save_state(Path(states or h.out) / f"{arg}_{tag}.dst")
+        elif head == "gen" and arg:
+            v = [int(x) for x in arg.split(",")] + [0, 0]
+            print("GEN", h.generate_pokemon(v[0], level=v[1], item=v[2], form=v[3]), flush=True)
+        elif head == "moves" and arg:
+            v = [int(x) for x in arg.split(",")]
+            h.edit_party_mon(v[0], moves=v[1:5])
+        elif head == "script" and arg:
+            h.run_script(int(arg))
+        elif head == "prog" and arg:
+            cmds = [tuple([c.split(",")[0]] + [int(x) for x in c.split(",")[1:]]) for c in arg.split(";")]
+            h.run_script(program=script_bytes(*cmds))
+        elif head == "warp" and arg:
+            h.warp(*[int(x) for x in arg.split(",")])
+        elif head == "walk" and arg:
+            h.walk_to(*[int(x) for x in arg.split(",")])
+        elif op[0] == "w" and op[1:].isdigit():
+            h.step(int(op[1:]))
+        elif op[0] == "t" and op[1:2].isdigit():
+            xy, _, after = op[1:].partition("/")
+            x, y = map(int, xy.split(","))
+            h.touch(x, y, frames=10, after=int(after or 60))
+        elif op[0] in "hu" and op[1:] in KEYS:
+            (h.hold if op[0] == "h" else h.release)(op[1:])
+        else:
+            k, _, after = op.partition("/")
+            k, _, n = k.partition("*")
+            if k not in KEYS:
+                raise ValueError(f"unknown op {op!r}")
+            for _ in range(int(n or 1)):
+                h.press(k, after=int(after or 40))
+    return shots
+
+
+def cmd_drive(a):
+    """Run ops on one ROM from a savestate, or from a (teleported) battery save."""
+    rom = {"en": a.rom_en, "cn": a.rom_cn}[a.lang]
+    out = Path(a.out) / "drive"
+    clock = datetime.datetime.fromisoformat(a.clock)
+    if a.state:
+        with Harness(rom, savestate=a.state, out=out, verbose=False) as h:
+            h.set_clock(clock)
+            shots = run_ops(h, a.ops, a.lang, a.states)
+    else:
+        with start_at(a.map, a.x, a.y, rom=rom, sav=a.sav, out=out, verbose=False, clock=clock) as h:
+            shots = run_ops(h, a.ops, a.lang, a.states)
+    print("RESULT " + json.dumps({"lang": a.lang, "shots": shots}))
+    return 0
+
+
 def cmd_info(a):
     with Harness(a.rom, a.sav, out=a.out) as h:
         if a.clock:
@@ -1361,6 +1441,19 @@ def main(argv=None):
     sc.add_argument("--sav", default=str(DEF_SAVES / "full_bag_6mons.sav"))
     sc.add_argument("--out", default=str(DEF_OUT))
     sc.add_argument("--lang", choices=("cn", "en"), help=argparse.SUPPRESS)
+    dr = sub.add_parser("drive", help="run the op language (see run_ops) on one ROM")
+    dr.add_argument("--lang", choices=("cn", "en"), default="en")
+    dr.add_argument("--rom-cn", default=str(DEF_ROM_CN))
+    dr.add_argument("--rom-en", default=str(DEF_ROM_EN))
+    dr.add_argument("--sav", default=str(DEF_SAVES / "full_bag_6mons.sav"))
+    dr.add_argument("--state", help="start from this DeSmuME savestate instead of booting")
+    dr.add_argument("--states", help="folder for ss: savestates (default --out/drive)")
+    dr.add_argument("--map", type=int)
+    dr.add_argument("--x", type=int)
+    dr.add_argument("--y", type=int)
+    dr.add_argument("--clock", default="2026-10-09T12:00:00")
+    dr.add_argument("--out", default=str(DEF_OUT))
+    dr.add_argument("ops", nargs="*")
     for name in ("info", "wild", "unown"):
         p = sub.add_parser(name)
         p.add_argument("--rom", default=str(DEF_ROM_CN))
@@ -1383,7 +1476,7 @@ def main(argv=None):
             p.add_argument("--state", help="also write a DeSmuME savestate taken right after the teleport")
             p.add_argument("--json")
     a = ap.parse_args(argv)
-    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens}[a.cmd](a)
+    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive}[a.cmd](a)
 
 
 if __name__ == "__main__":
