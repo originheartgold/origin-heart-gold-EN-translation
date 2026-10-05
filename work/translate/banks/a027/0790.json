@@ -1436,18 +1436,18 @@
   {
    "id": 172,
    "zh": "返回",
-   "en": "CANCEL",
+   "en": "BACK",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0802/172"
+   "origin": "agent",
+   "notes": "US 0802/172; D-1525: 返回 tab page; the header matches the tab label BACK (graphic) instead of CANCEL."
   },
   {
    "id": 173,
    "zh": "返回",
-   "en": "CANCEL",
+   "en": "BACK",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0802/173"
+   "origin": "agent",
+   "notes": "US 0802/173; D-1525: 返回, same as #172."
   },
   {
    "id": 174,

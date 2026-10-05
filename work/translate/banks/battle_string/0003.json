@@ -6,10 +6,13 @@
   {
    "id": 0,
    "zh": "战斗",
-   "en": "FIGHT",
+   "en": " FIGHT",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s)"
+   "notes": "v3 TM: 1 source(s); D-1506: leading space on purpose. The label is a font OBJ, x = 131 - (tile-rounded width)/2, text left-aligned in it; FIGHT (35 px) started at x 111 under the hack's Pokémon icon (x 84-115). With the space (40 px, still 5 tiles) the F starts at x 116, like the zh 战斗 at 115.",
+   "qa_ignore": [
+    "whitespace"
+   ]
   },
   {
    "id": 1,
