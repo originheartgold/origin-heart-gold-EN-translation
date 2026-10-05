@@ -171,7 +171,7 @@ QA now enforces these widths. The menu items below are spot checks of that model
 - [ ] **Boot Camp Ruins PC:** the code 1-4-2-4-6 opens the passage, and Archer's diary hint reads ‘What it stands on’ (0572 #95, D-1114, D-1327).
 - [ ] **Buena's Password:** the radio word appears among the three booth options, and choosing it scores.
 - [ ] **Easy Chat (Primo, Violet Pokémon Center):**
-  - [ ] Does the word picker's alphabetical / initial mode still use the JP kana grouping or order?
+  - [x] Does the word picker's alphabetical / initial mode still use the JP kana grouping or order? **Yes, confirmed by a player report (2026-10-04 screenshot):** ABC MODE shows the JP hiragana grid (あいうえお … わ！). Not text: no a027 bank holds it (0276 has only the labels) and no kana char table was found in arm9/overlays, so it is drawn by code or a JP graphic. A fix needs the US A–Z grid, its cursor layout and an initial→word index rebuilt from the English words. Open.
   - [ ] Do the words read OK?
 - [ ] **Name Rater (Viridian):** a 10-character nickname; picking the same name gives the "same name" reply.
 - [ ] **Chinese saves:** Pokémon caught in a Chinese save keep Chinese nicknames and OTs (expected; not a bug).
