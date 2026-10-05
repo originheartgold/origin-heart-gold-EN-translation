@@ -2,7 +2,9 @@
 
 All three findings in [the independent review](text_speed_review.md) are fixed in the isolated `codex/text-speed-research` worktree. One subagent investigated and fixed each finding; the coordinator reviewed the combined changes, regenerated the native cache and built/validated a fresh candidate. No source ROM, original save, translation bank or main-checkout file was edited. Nothing was committed, merged or published.
 
-## Current candidate
+Subsequent integration and expanded harness validation: [text_speed_harness.md](text_speed_harness.md). That report supersedes the candidate below; this document records the earlier fix stage.
+
+## Earlier fixed candidate
 
 - ROM (local testing only): `work/build/text-speed/fixed-release/origin_hg_v4.0.3_en_wip.nds`
 - SHA-256: `14726d84eadf43856731480a79d4de0aa2155324514da77d6c0001244786f5de`

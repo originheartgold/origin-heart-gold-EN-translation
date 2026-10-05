@@ -145,6 +145,25 @@ def script_bytes(*cmds):
     return bytes(out)
 
 
+def message_script(bank, msg_id):
+    """Build a normal field-message script without truncating the record ID.
+
+    Its completion writes 0x5A5A to SENTINEL_VAR; callers must initialize and
+    restore that sentinel. The script also uses temporary variable 0x8000.
+    """
+    # NonNPCMsgVar truncates its resolved ID to u8 in the Chinese ROM
+    # (021EE2E4/021EE2EA). MsgBoxExtern preserves u16 IDs and calls the
+    # same field renderer. Pass the ID through a variable so IDs >= 0x4000
+    # cannot be interpreted as variable references by the native command.
+    if type(msg_id) is not int or not 0 <= msg_id <= 0xFFFF:
+        raise ValueError("message ID must be an unsigned 16-bit integer")
+    if type(bank) is not int or not 0 <= bank < 0x4000:
+        raise ValueError("message bank must be an immediate integer below 0x4000")
+    return script_bytes(("LockAll",), ("SetVar", 0x8000, msg_id), ("MsgBoxExtern", bank, 0x8000),
+                        ("WaitButton",), ("CloseMsg",), ("SetVar", SENTINEL_VAR, 0x5A5A), ("ReleaseAll",),
+                        ("End",))
+
+
 KEYS = ("A", "B", "SELECT", "START", "RIGHT", "LEFT", "UP", "DOWN", "R", "L", "X", "Y")
 DIRS = {"UP": 0, "DOWN": 1, "LEFT": 2, "RIGHT": 3}
 UNOWN = 201
@@ -911,23 +930,28 @@ class Harness:
 
     def show_message(self, bank, msg_id, name=None, max_pages=8, settle=150):
         """Print message <msg_id> of a027 bank <bank> in the field's normal message window with a one-off
-        script (NonNPCMsgVar via var 0x8000; any id), screenshot every page (A between pages), close it.
+        script (MsgBoxExtern via var 0x8000; unsigned 16-bit id), screenshot every page (A between pages), close it.
         The text and its control codes (sizes, colours, buffers) render as in a scene; the scene's own
         context (camera, speaker objects, a special window) is not reproduced."""
+        prog = message_script(bank, msg_id)
+        if type(max_pages) is not int or max_pages <= 0:
+            raise ValueError("max_pages must be a positive integer")
         saved = self.get_var(SENTINEL_VAR)
-        self.set_var(SENTINEL_VAR, 0)
-        prog = script_bytes(("LockAll",), ("SetVar", 0x8000, msg_id), ("NonNPCMsgVar", 0x8000),
-                            ("WaitButton",), ("CloseMsg",), ("SetVar", SENTINEL_VAR, 0x5A5A), ("ReleaseAll",),
-                            ("End",))
-        self.run_script(file=3, index=0, msg_bank=bank, program=prog, settle=settle)
-        shots = []
-        for page in range(max_pages):
-            if self.get_var(SENTINEL_VAR) == 0x5A5A:     # the script has closed the window
-                break
-            shots.append(self.screenshot(f"{name or f'msg_{bank:04d}_{msg_id}'}_p{page + 1}"))
-            self.press("A", after=settle)
-        self.set_var(SENTINEL_VAR, saved)
-        return shots
+        try:
+            self.set_var(SENTINEL_VAR, 0)
+            self.run_script(file=3, index=0, msg_bank=bank, program=prog, settle=settle)
+            shots = []
+            for page in range(max_pages):
+                if self.get_var(SENTINEL_VAR) == 0x5A5A:  # the script has closed the window
+                    return shots
+                shots.append(self.screenshot(f"{name or f'msg_{bank:04d}_{msg_id}'}_p{page + 1}"))
+                self.press("A", after=settle)
+            # The last allowed press may have completed the script.
+            if self.get_var(SENTINEL_VAR) != 0x5A5A:
+                raise RuntimeError(f"message {bank}#{msg_id} did not complete within {max_pages} pages")
+            return shots
+        finally:
+            self.set_var(SENTINEL_VAR, saved)
 
     def trainer_battle(self, trainer_id):
         """Start a battle against trainer_id (a/0/5/5) with the game's TrainerBattle command."""

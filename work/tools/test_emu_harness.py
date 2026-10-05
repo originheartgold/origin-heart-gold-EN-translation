@@ -48,6 +48,70 @@ class PokemonCodec(unittest.TestCase):
         self.assertEqual(after["fateful"], before["fateful"])
 
 
+class MessageScript(unittest.TestCase):
+    def test_wide_message_ids_use_native_external_command(self):
+        from unittest.mock import Mock
+        for msg_id in (0, 255, 256, 1093, 0x4000, 0xFFFF):
+            with self.subTest(msg_id=msg_id):
+                h = Mock()
+                h.get_var.side_effect = [123, 0x5A5A]
+                self.assertEqual(E.Harness.show_message(h, 718, msg_id), [])
+                program = h.run_script.call_args.kwargs['program']
+                expected = E.script_bytes(('LockAll',), ('SetVar', 0x8000, msg_id),
+                                          ('MsgBoxExtern', 718, 0x8000), ('WaitButton',),
+                                          ('CloseMsg',), ('SetVar', E.SENTINEL_VAR, 0x5A5A),
+                                          ('ReleaseAll',), ('End',))
+                self.assertEqual(program, expected)
+                # Check the opcode/operands independently of script_bytes's
+                # command-name mapping: 440, bank718, variable0x8000.
+                self.assertEqual(program[8:14], struct.pack('<HHH', 440, 718, 0x8000))
+                h.set_var.assert_called_with(E.SENTINEL_VAR, 123)
+
+    def test_invalid_message_arguments_fail_before_emulator_mutation(self):
+        from unittest.mock import Mock
+        for bank, msg_id in ((718, -1), (718, 65536), (718, True),
+                             (718, 1.5), (-1, 0), (0x4000, 0), (True, 0)):
+            with self.subTest(bank=bank, msg_id=msg_id):
+                h = Mock()
+                with self.assertRaises(ValueError):
+                    E.Harness.show_message(h, bank, msg_id)
+                self.assertEqual(h.mock_calls, [])
+
+    def test_completion_on_last_allowed_press_is_accepted(self):
+        from unittest.mock import Mock
+        h = Mock()
+        h.get_var.side_effect = [123, 0, 0x5A5A]
+        h.screenshot.return_value = 'page1.png'
+        self.assertEqual(E.Harness.show_message(h, 718, 1093, max_pages=1), ['page1.png'])
+        h.press.assert_called_once_with('A', after=150)
+        h.set_var.assert_called_with(E.SENTINEL_VAR, 123)
+
+    def test_exhaustion_and_script_failure_restore_sentinel(self):
+        from unittest.mock import Mock
+        h = Mock()
+        h.get_var.side_effect = [123, 0, 0]
+        with self.assertRaisesRegex(RuntimeError, 'did not complete'):
+            E.Harness.show_message(h, 718, 1093, max_pages=1)
+        h.screenshot.assert_called_once()
+        h.press.assert_called_once_with('A', after=150)
+        h.set_var.assert_called_with(E.SENTINEL_VAR, 123)
+        h = Mock()
+        h.get_var.return_value = 456
+        h.run_script.side_effect = RuntimeError('injection failed')
+        with self.assertRaisesRegex(RuntimeError, 'injection failed'):
+            E.Harness.show_message(h, 718, 1093)
+        h.screenshot.assert_not_called()
+        h.set_var.assert_called_with(E.SENTINEL_VAR, 456)
+
+    def test_invalid_page_budget_fails_before_mutation(self):
+        from unittest.mock import Mock
+        for pages in (0, -1, True, 1.5):
+            h = Mock()
+            with self.assertRaises(ValueError):
+                E.Harness.show_message(h, 718, 1093, max_pages=pages)
+            self.assertEqual(h.mock_calls, [])
+
+
 class SaveFileEdits(unittest.TestCase):
     def _save(self, newest=0x40000):
         data = bytearray(524288)

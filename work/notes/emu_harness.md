@@ -347,11 +347,24 @@ Running the scenes themselves was skipped: each needs its story state (flags, pe
 scripts, the right map) and most are long chains of movements. Instead `emu_harness.py messages` prints
 every referenced line with a one-off script in the field's normal message window, on the Chinese ROM and
 the English WIP build: `show_message(bank, id)` loads the message bank through the script-file override
-and runs `SetVar 0x8000 id; NonNPCMsgVar 0x8000; WaitButton; CloseMsg; SetVar 0x40FE 0x5A5A; …` (the
+and runs `SetVar 0x8000 id; MsgBoxExtern bank 0x8000; WaitButton; CloseMsg; SetVar 0x40FE 0x5A5A; …` (the
 sentinel var tells the harness the window has closed; it is restored afterwards). The text's own control
 codes (the 200 % size, colours, page breaks) render exactly as in a scene. What is not reproduced: the
 scene's buffers (speaker names stored in {VAR} buffers are empty, so lines that start with a buffered
 name show ": …" in English and "『…" in Chinese), the camera and any special window.
+`show_message` and the reusable `message_script(bank, msg_id)` builder support unsigned 16-bit message IDs. The older implementation used
+`NonNPCMsgVar`, whose Chinese-native handler truncates the resolved ID to eight bits
+(`021EE2E4` / `021EE2EA`); IDs above 255 silently rendered a different record. Its
+screenshots cannot establish coverage of the requested high IDs and must be rerun.
+`MsgBoxExtern` (opcode 440, handler `021EE05C`) preserves the resolved ID through
+`021EE09E` into the same field renderer `021EE448`, then the message reader at
+`021EE662`. The bank operand must be an immediate below `0x4000`; message IDs are
+passed via a variable to avoid native variable-reference interpretation. Neither
+numeric range check proves that a particular bank/record exists. `show_message`
+requires a positive `max_pages` and raises when the script has not reached its
+completion sentinel after the final allowed page press. It restores the sentinel
+even when injection or capture fails; a failed run must be reset before reuse.
+
 46 lines, both ROMs, about 4 minutes; pairs in `work/build/harness/messages/` (`sheet_*.png` overview).
 
 | decision | lines | result (English WIP build of Sep 30) |
@@ -954,3 +967,9 @@ process, the Mac has the cores), writes one JSON report and exits non-zero on a 
 run would take about 5 minutes in parallel, about 10 minutes sequentially. Saves stay in
 `work/build/memcheck/`; outputs in `work/build/harness/`; nothing goes into git except the recipes and
 expected values.
+
+## Text-speed release regression
+
+The native text-speed feature has a cold-boot corpus comparison, native Options
+input matrix, and controlled fallback suite using this harness. Commands, exact
+candidate identity, results and limits are in [text_speed_harness.md](text_speed_harness.md).
