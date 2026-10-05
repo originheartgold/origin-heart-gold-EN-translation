@@ -75,7 +75,13 @@ OV2_SIG = {OV2_SIG_ADDR: "c92809d1301cfff747ff", WILD_FINALIZE_RESTORE: "281c702
 # The hack's debug Pokemon generator (SELECT+X in the field): u32 per menu row. Verified: species, level
 # (exp recomputed only when the level is edited in the menu), exp, OT ID, PID, moves 1-2, item, form.
 GEN_SPECIES, GEN_LEVEL, GEN_EXP, GEN_OTID, GEN_PID, GEN_MOVE1, GEN_ITEM, GEN_FORM = 0, 1, 2, 3, 4, 7, 11, 47
-RUN_BUTTON = (128, 178)        # bottom-screen RUN button of the battle command menu
+RUN_BUTTON = (128, 178)
+# Bottom-screen touch targets (checked on the Chinese ROM; the English build keeps the layout).
+FIELD_MENU = {"pokemon": (40, 100), "bag": (40, 128)}      # field touch menu (bag works by touch from the field)
+BAG_SLOTS = [(64, 56), (192, 56), (64, 98), (192, 98), (64, 140), (192, 140)]   # 6 items per bag page
+BAG_GIVE = (47, 173)             # item submenu: give to a Pokemon
+PARTY_SLOTS = [(64, 28), (190, 28), (64, 76), (190, 76), (64, 124), (190, 124)]
+PARTY_SUMMARY = (190, 40)        # party submenu: summary (first entry)        # bottom-screen RUN button of the battle command menu
 KEYS = ("A", "B", "SELECT", "START", "RIGHT", "LEFT", "UP", "DOWN", "R", "L", "X", "Y")
 DIRS = {"UP": 0, "DOWN": 1, "LEFT": 2, "RIGHT": 3}
 UNOWN = 201
@@ -123,6 +129,10 @@ MIRRORS = (0, 0x40000)
 FOOTER_MAGIC = 0x20060623
 # Array offsets inside the general block (from the SaveData table at save + 0x2E01C; verified at boot).
 ARRAY_OFFSETS = {2: 0x90, 4: 0xEAC, 5: 0x1324, 10: 0x2480}
+ARR_BAG = 3                    # bag: pockets of {u16 item, u16 qty} (poke-save-editor research-inventory.md)
+ARRAY_OFFSETS[ARR_BAG] = 0x644
+POCKETS = {"items": (0x0, 165), "key": (0x294, 50), "tm": (0x35C, 151), "mail": (0x5B8, 12),
+           "medicine": (0x5E8, 40), "berries": (0x688, 64), "balls": (0x788, 24), "battle": (0x7E8, 30)}
 ARR_MAP_OBJECTS = 10           # saved map objects: 64 x 0x50 bytes (+0x08 u8 id, +0x10 u16 map, +0x12 u16 sprite,
 MAP_OBJECT_SIZE, MAP_OBJECT_COUNT = 0x50, 64   # +0x20 s16 initX, initY, initZ, curX, curY, curZ)
 PLAYER_OBJ_ID, FOLLOWER_OBJ_ID = 0xFF, 0xFD
@@ -169,6 +179,22 @@ class SaveFile:
 
     def set_var(self, var, value):
         struct.pack_into("<H", self.data, self._a(ARR_VARS_FLAGS, (var - VARS_BASE) * 2), value)
+
+    def pocket(self, name):
+        off, cap = POCKETS[name]
+        a = self.base + ARRAY_OFFSETS[ARR_BAG] + off
+        return [struct.unpack_from("<HH", self.data, a + 4 * i) for i in range(cap)
+                if struct.unpack_from("<H", self.data, a + 4 * i)[0]]
+
+    def set_pocket(self, name, items):
+        """Replace a bag pocket with [(item id, quantity), ...] (first entry shows at the top)."""
+        off, cap = POCKETS[name]
+        if len(items) > cap:
+            raise ValueError(f"pocket {name} holds {cap} items")
+        a = self.base + ARRAY_OFFSETS[ARR_BAG] + off
+        self.data[a:a + 4 * cap] = bytes(4 * cap)
+        for i, (item, qty) in enumerate(items):
+            struct.pack_into("<HH", self.data, a + 4 * i, item, qty)
 
     def map_objects(self):
         out = []
@@ -534,6 +560,34 @@ class Harness:
             raise RuntimeError("generator did not add the Pokemon to the party (party full?)")
         return decode_party_pokemon(self.read(party + 8 + 236 * count, 236))
 
+    # ------------------------------------------------------------------ menus (timing-based; see notes)
+    def bag_put_first(self, item, qty=1, pocket="items"):
+        """Live RAM edit: make item the first entry of a bag pocket (the rest of the pocket is cleared)."""
+        off, cap = POCKETS[pocket]
+        a = self.array(ARR_BAG) + off
+        self.write(a, struct.pack("<HH", item, qty) + bytes(4 * (cap - 1)))
+
+    def open_bag(self):
+        """From the field (touch menu visible): open the bag on its last pocket (the Items pocket after boot)."""
+        self.touch(*FIELD_MENU["bag"], frames=12, after=120)
+
+    def give_from_bag(self, bag_slot, party_slot):
+        """In the bag: item at bag_slot -> Give -> party_slot, then dismiss the message. The party slot must
+        hold no item (a swap asks two more questions). Uses the game's own give path (form routines run)."""
+        self.touch(*BAG_SLOTS[bag_slot], frames=12, after=60)
+        self.touch(*BAG_GIVE, frames=12, after=60)
+        self.touch(*PARTY_SLOTS[party_slot], frames=12, after=120)
+        self.press("A", after=100)
+
+    def open_summary_from_bag(self, party_slot):
+        """Leave the bag, open the party from the field menu (cursor is on Bag, UP = Pokemon), open the
+        summary of party_slot. Ends on the summary's first page."""
+        self.press("B", after=180)
+        self.press("UP", after=40)
+        self.press("A", after=120)
+        self.touch(*PARTY_SLOTS[party_slot], frames=12, after=60)
+        self.touch(*PARTY_SUMMARY, frames=12, after=150)
+
     def _find_generator(self):
         """The generator's row array starts as Bulbasaur: species 1, level 1, exp 0, ..., Tackle, Growl."""
         ram = self.read(0x02200000, 0x200000)
@@ -603,15 +657,19 @@ class start_at:
     Yields a Harness standing on the map. Example:
         with start_at(109, 16, 14, clock=datetime.datetime(2026, 10, 9, 12)) as h: ..."""
 
-    def __init__(self, map_id, x, y, rom=DEF_ROM_CN, sav=None, flags=(), vars=None, clock=None,
-                 out=DEF_OUT, verbose=True, hooks=None):
+    def __init__(self, map_id=None, x=None, y=None, rom=DEF_ROM_CN, sav=None, flags=(), vars=None,
+                 clock=None, out=DEF_OUT, verbose=True, hooks=None, edit=None):
+        """map_id None: stay where the save is. edit: fn(SaveFile) for further save edits (bag, ...)."""
         self.args = (map_id, x, y, rom, sav or DEF_SAVES / "full_bag_6mons.sav", flags, vars or {}, clock,
-                     out, verbose, hooks)
+                     out, verbose, hooks, edit)
 
     def __enter__(self):
-        map_id, x, y, rom, sav, flags, vars_, clock, out, verbose, hooks = self.args
+        map_id, x, y, rom, sav, flags, vars_, clock, out, verbose, hooks, edit = self.args
         sf = SaveFile(sav)
-        sf.place_player(map_id, x, y, "DOWN")
+        if map_id is not None:
+            sf.place_player(map_id, x, y, "DOWN")
+        if edit:
+            edit(sf)
         for f in flags:
             sf.set_flag(f)
         for v, val in vars_.items():
@@ -627,7 +685,7 @@ class start_at:
             self.h.boot_to_menu()
             self.h.continue_game()
             self.h.press("B", after=30)
-            if self.h.location()["map"] != map_id:
+            if map_id is not None and self.h.location()["map"] != map_id:
                 raise RuntimeError(f"teleport failed: {self.h.location()}")
         except BaseException:
             self.__exit__()
@@ -792,6 +850,45 @@ def cmd_palpark(a):
     return 0
 
 
+PLATES = {298: "Flame", 299: "Splash", 300: "Zap", 301: "Meadow", 302: "Icicle", 303: "Fist", 304: "Toxic",
+          305: "Earth", 306: "Sky", 307: "Mind", 308: "Insect", 309: "Stone", 310: "Spooky", 311: "Draco",
+          312: "Dread", 313: "Iron"}
+ARCEUS = 493
+
+
+def cmd_arceus(a):
+    """D-1501: give Arceus each Plate through Bag -> Give and record the stored form; screenshot the summary.
+    Parent: one child builds a savestate with a generated Arceus in party slot 6, one child per Plate."""
+    out = Path(a.out) / "arceus"
+    out.mkdir(parents=True, exist_ok=True)
+    state = out / "arceus_base.dst"
+    if a.plate is None:
+        run_child(["arceus", "--rom", a.rom, "--sav", a.sav, "--out", a.out, "--plate", "0"])
+        rows = [run_child(["arceus", "--rom", a.rom, "--sav", a.sav, "--out", a.out, "--plate", str(p)])
+                for p in PLATES]
+        for r in rows:
+            print(json.dumps(r))
+        (out / "arceus_report.json").write_text(json.dumps({"rom": str(a.rom), "plates": rows}, indent=1))
+        print("report:", out / "arceus_report.json")
+        return 0
+    if a.plate == 0:
+        with start_at(None, rom=a.rom, sav=a.sav, out=out, verbose=False) as h:
+            mon = h.generate_pokemon(ARCEUS, level=50)
+            h.save_state(state)
+        print("RESULT " + json.dumps({"base": str(state), "arceus": mon}))
+        return 0
+    with Harness(a.rom, None, savestate=state, out=out, verbose=False) as h:
+        h.bag_put_first(a.plate)
+        h.open_bag()
+        h.give_from_bag(0, 5)
+        mon = h.party()[5]
+        h.open_summary_from_bag(5)
+        shot = h.screenshot(f"arceus_{a.plate}_summary")
+    print("RESULT " + json.dumps({"plate": PLATES[a.plate], "item": mon["item"], "form": mon["form"],
+                                  "species": mon["species"], "screenshot": str(shot)}))
+    return 0
+
+
 def cmd_info(a):
     with Harness(a.rom, a.sav, out=a.out) as h:
         if a.clock:
@@ -816,6 +913,11 @@ def main(argv=None):
     pp.add_argument("--count", type=int, default=0, help="wild Pokemon to log per day (0: only the getter)")
     pp.add_argument("--max-steps", type=int, default=600)
     pp.add_argument("--day", type=int, help=argparse.SUPPRESS)
+    ar = sub.add_parser("arceus", help="D-1501: Arceus form for each Plate given through the bag")
+    ar.add_argument("--rom", default=str(DEF_ROM_CN))
+    ar.add_argument("--sav", default=str(DEF_SAVES / "full_bag_6mons.sav"))
+    ar.add_argument("--out", default=str(DEF_OUT))
+    ar.add_argument("--plate", type=int, help=argparse.SUPPRESS)
     for name in ("info", "wild", "unown"):
         p = sub.add_parser(name)
         p.add_argument("--rom", default=str(DEF_ROM_CN))
@@ -838,7 +940,7 @@ def main(argv=None):
             p.add_argument("--state", help="also write a DeSmuME savestate taken right after the teleport")
             p.add_argument("--json")
     a = ap.parse_args(argv)
-    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark}[a.cmd](a)
+    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus}[a.cmd](a)
 
 
 if __name__ == "__main__":

@@ -168,6 +168,30 @@ target is not a grass tile the player can pace on (the screenshot shows the came
 player's live position is not read by the harness yet (see limits), so the start tile can't be checked
 automatically.
 
+### 2. Arceus Plates (D-1501): observed, the picture and summary are right
+
+`emu_harness.py arceus`: one child builds a savestate with an Arceus Lv50 from the generator in party slot 6;
+then one child per Plate puts that Plate first in the Items pocket (RAM), opens the bag by touch, Plate →
+Give (带上) → Arceus (the game's own give path, so the party-menu form code at 0x0207ACB8/0x0207ACF0 runs),
+reads the stored form, then opens the summary and takes a screenshot. 16 runs, about 90 s in total.
+
+| Plate | Flame | Splash | Zap | Meadow | Icicle | Fist | Toxic | Earth | Sky | Mind | Insect | Stone | Spooky | Draco | Dread | Iron |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| stored form | 10 | 11 | 13 | 12 | 15 | 1 | 3 | 4 | 2 | 14 | 6 | 5 | 7 | 16 | 17 | 8 |
+| summary type | Fire | Water | Electric | Grass | Ice | Fighting | Poison | Ground | Flying | Psychic | Bug | Rock | Ghost | Dragon | Dark | Steel |
+
+- The stored forms are exactly the values D-1501 predicted (Gen 4 type numbers). **Observed.**
+- The summary page shows the Plate's type and a sprite in the Plate's colours for all 16
+  (`work/build/harness/arceus/arceus_summary_sheet.png`, `arceus_type_sheet.png`, one full screenshot per
+  Plate). **Observed.** So the picture is not wrong: the sprite archive uses the same order as the Plate code.
+- What is still mismatched (static, checked again here): the form table maps form *n* to personal entry
+  1153 + *n*, and those entries are in the newer order (form 9 Fire, 10 Water, …, 17 Fairy). With a Flame
+  Plate (form 10) the game would read the Water entry wherever it uses the form's personal data. All
+  Arceus personal entries are alike except their types, so this only matters where the type is read from
+  personal data rather than the Plate type getter. Not observed: the in-battle type (needs a battle with
+  Arceus in the lead and a type-effectiveness check). D-1501 should be narrowed: the picture and summary
+  are correct.
+
 ## Extending it to the other open points
 
 - **Petilil + Black Belt by day, then Sun Stone (D-1485).** `generate_pokemon(548, level=N, item=241)`
