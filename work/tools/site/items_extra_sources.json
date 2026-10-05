@@ -412,12 +412,28 @@
   {
    "id": 203,
    "name": "Salac Berry",
-   "note": "Only held by trainers' Pokémon. Whether you keep it after taking it with Thief, Covet, Trick or Switcheroo has not been confirmed."
+   "sources": [
+    {
+     "kind": "stolen",
+     "area": "s-s-anne",
+     "place": "Trainers' Pokémon (steal it with Thief or Covet), e.g. the Team Rocket Grunt's Pinsir on the S.S. Anne",
+     "qty": 1,
+     "note": "Your Pokémon keeps holding it after the battle; it does not go to the Bag. Tested in an emulator. If your Pokémon drops to low HP later in that battle, it eats the berry."
+    }
+   ]
   },
   {
    "id": 204,
    "name": "Petaya Berry",
-   "note": "Only held by trainers' Pokémon. Whether you keep it after taking it with Thief, Covet, Trick or Switcheroo has not been confirmed."
+   "sources": [
+    {
+     "kind": "stolen",
+     "area": "route-21",
+     "place": "Trainers' Pokémon (steal it with Thief or Covet), e.g. Swimmer♂ Ned's Empoleon on Route 21",
+     "qty": 1,
+     "note": "Your Pokémon keeps holding it after the battle; it does not go to the Bag. Tested in an emulator."
+    }
+   ]
   },
   {
    "id": 485,
@@ -947,7 +963,7 @@
   {
    "id": 576,
    "name": "Air Balloon",
-   "note": "This is the copy trainers' Pokémon hold. Another Air Balloon can be obtained; it is listed separately. Whether you keep this one after taking it with Thief, Covet, Trick or Switcheroo has not been confirmed."
+   "note": "Only held by trainers' Pokémon. It pops when the Pokémon holding it is hit, so it can't be stolen with Thief or Covet (tested in an emulator). Another Air Balloon can be obtained; it is listed separately."
   },
   {
    "id": 578,
@@ -978,7 +994,15 @@
   {
    "id": 584,
    "name": "Eviolite",
-   "note": "This is the copy trainers' Pokémon hold. Another Eviolite can be obtained; it is listed separately. Whether you keep this one after taking it with Thief, Covet, Trick or Switcheroo has not been confirmed."
+   "sources": [
+    {
+     "kind": "stolen",
+     "area": "route-40",
+     "place": "Trainers' Pokémon (steal it with Thief or Covet), e.g. the Rhydon battle on Route 40",
+     "qty": 1,
+     "note": "Your Pokémon keeps holding it after the battle; it does not go to the Bag. Tested in an emulator. This is the copy trainers' Pokémon hold; another Eviolite can be obtained and is listed separately."
+    }
+   ]
   },
   {
    "id": 586,
@@ -996,7 +1020,15 @@
   {
    "id": 600,
    "name": "Weakness Policy",
-   "note": "This is the copy trainers' Pokémon hold. Another Weakness Policy can be obtained; it is listed separately. Whether you keep this one after taking it with Thief, Covet, Trick or Switcheroo has not been confirmed."
+   "sources": [
+    {
+     "kind": "stolen",
+     "area": "lavender-town",
+     "place": "Trainers' Pokémon (steal it with Thief or Covet), e.g. Mom's Mr. Mime in the Pokémon Tower",
+     "qty": 1,
+     "note": "Your Pokémon keeps holding it after the battle; it does not go to the Bag. Tested in an emulator. This is the copy trainers' Pokémon hold; another Weakness Policy can be obtained and is listed separately."
+    }
+   ]
   },
   {
    "id": 604,

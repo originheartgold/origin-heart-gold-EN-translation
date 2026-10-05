@@ -569,7 +569,7 @@ Continues [Misty's romance](02-pewter-to-vermilion.md#cerulean-gym--cerulean-cap
 | Friday | B and C |
 | Saturday | G and H |
 
-**Notes:** Sunday's table is the same as Cerulean Cave's, probably by mistake in the hack. What Monday's time check uses exactly is not confirmed. The weekday tables were checked in an emulator (each day loads the table listed); the rest is read from the game's scripts.
+**Notes:** Sunday's table is the same as Cerulean Cave's, probably by mistake in the hack. What Monday's time check uses exactly is not confirmed. The weekday tables were checked in an emulator (each day loads the table listed), and wild Pokémon met in the park on a Friday, a Sunday and a Monday all came from that day's table; the rest is read from the game's scripts.
 
 *Source:* file 809 (receptionist: L5439 room check, L5785 weekday branches clearing hide flags 2124–2131, L6431–L6528 $10,000 and warp to map 109); file 12 (48 one-time battles, scripts 7–54); wild table record = 142 + weekday − 1 (arm9 0x0203A7B0, D-1484).
 
