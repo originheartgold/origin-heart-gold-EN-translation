@@ -434,6 +434,12 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 *Source:* D-1402. Misty's hide flag 595 is set when the Resort Zone date starts (file 758 @7636). The win ending (file 809 L4324–L4360) warps you to the Gym and sets var 0x40B5 = 4 but never clears 595; the Gym's var-4 step is her "meet my mom" talk (758 @3687 → L6462), and the Gym's on-load clear (758 @6412, after the final Hall of Fame) only runs when flag 1645 is clear or 2142 (Misty's lock) is set (at hours 14–15 it sets 595 instead, 758 L7038). The Cape needs var 0x40B5 = 3 and 595 set (216 @3197–@3221), so after a win she isn't there either. A loss in any of the date's four Multi Battles whites you out (809 L4885) with 0x40B5 still 3 (set when the date starts, 809 @592), and the Cape date's end clears 595 (216 @12236). The other clears of 595 are one-time story scenes before the final Hall of Fame: Radio Tower Observation Deck (file 34 @3795), Seafoam Islands Blue Orb scene (file 195 script 12 @1850, needs var 0x408C = 14 from Misty's Gym send-off, 758 @6372), Sea Cottage virus battle (file 217 @1398), Silph Co. aftermath (files 795 @2860, 834 @5956), Celadon Rocket base aftermath (file 853 @3778), Cerulean Cave / Prof. Oak (file 912 @3767) and Blue's Champion battle before the Hall of Fame (file 821 script 1, Blue's object, hidden by flag 1496 from the Hall of Fame on, file 822 @86; → @2513). The Seafoam scene can't be pending after the final Hall of Fame: the League HQ round-2 report needs var 0x408C = 15 (file 31 @2039), which only that scene sets (195 @1854).
 
+### Pal Park Fixed Catch show never ends
+
+**A Fixed Catch show at the Pal Park never ends with a score or a prize.** You pay $10,000, the countdown starts and you can catch the park's wild Pokémon, but the show only counts the six Pokémon stocked from a Game Boy Advance game, so "caught all six" never happens however many you catch. The score and the Berry prize (one of them the Nanab Berry, for 3,300–3,499 points) are only given in the normal show, which needs six Pokémon migrated from a GBA game. Keep what you catch and leave the park when you're done. Suspected hack bug. Tested in an emulator: six catches in Fixed Catch mode changed nothing; with six stocked Pokémon written into the save the normal show ended after the sixth catch, scored and gave a Berry.
+
+*Source:* D-1570. File 809 L6431–L6574 (Fixed Catch entry), file 12 script 2 (countdown, `PalParkAction 0`) and script 3 (the "caught the stocked Pokémon" scene), file 809 script 2 (score) and L4435 (prize tiers: under 3,000 / 3,300 / 3,500 / 10,000 points; Nanab Berry 166 in the 3,300–3,499 list, L5171). The caught flags (arm9 0x021D3214 +0x30) are set only by 0x02054C38 for the entry the show's step encounter picked (0x02054B8C), which needs stocked Pokémon (save array 28, loaded by 0x02054A70). `emu_harness.py open --case palpark`.
+
 ## Saffron City to Cinnabar Island
 
 [Quests on this page](05-saffron-cinnabar.md)
@@ -1310,6 +1316,12 @@ These entries can freeze the game, cost you something, or close a quest or battl
 - **Unown letters:** every wild Unown comes out as A (tested in an emulator: 65 wild Unown, all A).
 
 *Source:* D-1339 (TM46 item ball, std 7136 unused), D-1493 (Tart Apple, Sweet Apple, Sweets have no source), D-1490 (Gracidea check arm9 0x02071024 needs the fateful flag), D-1487 (wild Unown form written back at ov2 0x02248AD4).
+
+### Thief in wild battles copies the item
+
+**Stealing a wild Pokémon's held item with Thief gives you the item twice.** After the battle the Pokémon that used Thief holds the item, and another one is in your Bag. Against Trainers you only get the held one. In your favour. Suspected hack bug. Tested in an emulator (a wild Miltank's Moomoo Milk; an Eviolite).
+
+*Source:* D-1569. `emu_harness.py open --case thief`: battle message 1#1432; Bag +1 and the item held by the thief after a wild battle; no change without Thief; Trainer battles: Bag unchanged (work/notes/emu_harness.md, Thief section).
 
 ### Out-of-range story records (save data)
 

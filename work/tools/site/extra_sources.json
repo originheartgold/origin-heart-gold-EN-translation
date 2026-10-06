@@ -17,7 +17,7 @@
   {
    "id": 744,
    "name": "Rockruff",
-   "evoNote": "Lycanroc's form depends on the time it evolves: in the evening (17:00–19:59) Dusk Form, at night (20:00–03:59) Midnight Form, otherwise Midday Form. Tested in an emulator with Rare Candies; the game doesn't set the daytime form explicitly (a bug in the hack), so a daytime evolution after a battle wasn't checked."
+   "evoNote": "Lycanroc's form depends on the time it evolves: in the evening (17:00–19:59) Dusk Form, at night (20:00–03:59) Midnight Form, otherwise Midday Form. Tested in an emulator, with Rare Candies and by levelling up in battle: daytime evolutions gave Midday Form every time. The game doesn't set the daytime form explicitly (a bug in the hack), but no case gave another form."
   },
   {
    "id": 745,
