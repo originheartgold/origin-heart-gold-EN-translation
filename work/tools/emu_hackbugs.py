@@ -849,7 +849,9 @@ def judge_move(res):
     bb, hb, ft = res.get("blastburn"), res.get("hyperbeam"), res.get("flamethrower")
     if bb and hb and ft and all("turns" in x for x in (bb, hb, ft)):
         b, h_, f = (x["turns"][0]["frames"] for x in (bb, hb, ft))
-        if h_ < 1.25 * f:
+        if any(x["turns"][0]["result"] != "menu" for x in (bb, hb, ft)):
+            out["D-1318"] = "unclear"           # e.g. a critical hit KO'd the Blissey: no next turn to see
+        elif h_ < 1.25 * f:
             out["D-1318"] = "unclear"
         else:
             out["D-1318"] = "no recharge" if b < 1.15 * f else "recharge" if b > 1.25 * f else "unclear"
@@ -1170,8 +1172,9 @@ SUITE_EXPECT = {
     "cameron": "confirmed", "brock_cave": "confirmed", "gatehouse": "confirmed", "museum": "confirmed",
     "battle_type": "confirmed", "trainer": "confirmed", "crystal_onix": "contradicted", "darumaka": "confirmed",
     "pancham": "confirmed", "cut": "confirmed", "gatehouse_warp": "confirmed", "palkia_cabin": "confirmed",
-    "move": json.dumps({"D-1311": "user survives", "D-1318": "no recharge", "D-1319": "no recoil"}, sort_keys=True),
 }
+# Not in the suite: `move` (the battle RNG isn't reproducible run to run; a critical hit can KO the Blissey,
+# then D-1318 reads 'unclear') and the long scenes (friendball, graffiti, gracidea, rockyhelmet, shinystone).
 SUITE_VARIANTS = {"uxie": ("a1", "b"), "trainer": ("11", "31", "146"), "crystal_onix": ("tm13_crystal", "tm11_crystal")}
 
 

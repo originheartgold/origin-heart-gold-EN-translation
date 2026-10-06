@@ -360,11 +360,15 @@ class HackBugs(unittest.TestCase):
         self.assertEqual(json.loads(H.judge_tutor(tut))["hans"], "contradicted")
         mv = {"volttackle": {"hp_before": 190, "hp_after": 190}, "doubleedge": {"hp_before": 190, "hp_after": 186},
               "thunderbolt": {"hp_before": 190, "hp_after": 190},
-              "blastburn": {"turns": [{"frames": 510}]}, "hyperbeam": {"turns": [{"frames": 861}]},
-              "flamethrower": {"turns": [{"frames": 612}]}, "lunardance": {"hp_after": 319}}
+              "blastburn": {"turns": [{"frames": 510, "result": "menu"}]},
+              "hyperbeam": {"turns": [{"frames": 861, "result": "menu"}]},
+              "flamethrower": {"turns": [{"frames": 612, "result": "menu"}]}, "lunardance": {"hp_after": 319}}
         self.assertEqual(json.loads(H.judge_move(mv)),
                          {"D-1311": "user survives", "D-1318": "no recharge", "D-1319": "no recoil"})
-        self.assertEqual(H.judge_move(mv), H.SUITE_EXPECT["move"])
+        mv["blastburn"]["turns"][0]["result"] = "field"     # Blissey KO'd: inconclusive
+        for k in ("blastburn", "hyperbeam", "flamethrower"):
+            mv[k]["turns"][0].setdefault("result", "menu")
+        self.assertEqual(json.loads(H.judge_move(mv))["D-1318"], "unclear")
         gw = {"exit": {"samples": [{"pos": [96, 16384, 59693]}], "walks_after": False},
               "entrance": {"path_from_south_gate_to_33_16": None, "tile_33_16": [6, True], "pos": [96, 33, 17]}}
         self.assertEqual(H.judge_gatehouse_warp(gw), "confirmed")
