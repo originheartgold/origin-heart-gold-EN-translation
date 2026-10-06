@@ -286,3 +286,45 @@ class Guide0813(unittest.TestCase):
         self.assertEqual(G.judge_white_flute(wf), "contradicted")
         wf["full"]["turn"] = "stuck: y"                       # a broken control: inconclusive
         self.assertEqual(G.judge_white_flute(wf), "blocked")
+
+
+class Calendar(unittest.TestCase):
+    """emu_calendar: the pure parts (periods, buffer decoding, stats, registry)."""
+
+    def setUp(self):
+        import emu_calendar
+        self.C = emu_calendar
+
+    def test_periods(self):
+        C = self.C
+        self.assertEqual(C.periods_of(0), ("morning", "day", "night"))
+        self.assertEqual(C.periods_of(1), ("morning",))
+        self.assertEqual(C.periods_of(2), ("night",))
+        self.assertEqual([C.wild_period(h) for h in (3, 4, 9, 10, 19, 20, 23)],
+                         ["night", "morning", "morning", "day", "day", "night", "night"])
+        self.assertEqual(C.battle_time("night"), (22, 0))
+        self.assertEqual(C.battle_time("03:59"), (3, 59))
+
+    def test_decode_buffer(self):
+        buf = bytearray(0xC4)
+        buf[0], buf[19] = 25, 50
+        struct.pack_into("<H", buf, 0x2A, 720)
+        struct.pack_into("<H", buf, 0x5A, 720 | 1 << 11)
+        d = self.C.decode_buffer(bytes(buf))
+        self.assertEqual((d["walk_rate"], d["slot11_level"]), (25, 50))
+        self.assertEqual((d["slot11"]["morning"]["species"], d["slot11"]["night"]["form"]), (720, 1))
+        self.assertEqual(d["slot11"]["day"]["species"], 0)
+
+    def test_calc_stats(self):
+        # Diancie (50/100/150/50/100/150) Lv17, Brave (2: +Atk -Spe), as observed in the emulator
+        self.assertEqual(self.C.calc_stats([50, 100, 150, 50, 100, 150], 17, [13, 0, 18, 29, 8, 11],
+                                           [0] * 6, 2), [46, 42, 59, 23, 40, 57])
+
+    def test_registry(self):
+        C = self.C
+        for name, (fn, variants) in C.CASES.items():
+            self.assertTrue(callable(fn), name)
+        for v in C.BATTLES:
+            name, _, period = v.partition(":")
+            self.assertIn(name, C.ENTRIES)
+            C.battle_time(period)

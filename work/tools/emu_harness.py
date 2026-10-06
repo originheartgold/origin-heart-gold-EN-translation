@@ -333,7 +333,8 @@ _ROM_CACHE = {}
 
 class MapGrid:
     """Collision and tile behaviour of a map, read from the ROM (map header -> matrix a/0/4/1 -> land data
-    a/0/6/5, 32x32 u16 permissions per chunk after a 0x14-byte header: low byte behaviour, bit 15 blocked).
+    a/0/6/5, 32x32 u16 permissions per chunk after a 0x14-byte header and the header's extra section: low byte
+    behaviour, bit 15 blocked).
     Coordinates are the map's tile coordinates, the same as Location / the live player position."""
 
     def __init__(self, rom_path, map_id):
@@ -355,7 +356,11 @@ class MapGrid:
         self.perms = {}
         for k, lid in enumerate(ids):
             if lid != 0xFFFF:
-                self.perms[(k % self.width, k // self.width)] = bytes(land.files[lid][0x14:0x14 + 0x800])
+                # HGSS land data: 0x10-byte size header, u16 0x1234, u16 size of a background-sound section
+                # that comes before the permissions (0 for most indoor maps, e.g. 48 bytes on Mt. Silver).
+                f = land.files[lid]
+                o = 0x14 + struct.unpack_from("<H", f, 0x12)[0]
+                self.perms[(k % self.width, k // self.width)] = bytes(f[o:o + 0x800])
 
     def tile(self, x, y):
         """(behaviour, blocked) or None outside the map."""
@@ -1707,9 +1712,16 @@ def _check_guide0813(rom, out):
     return emu_guide0813.suite_check(rom, out)
 
 
+def _check_calendar(rom, out):
+    """Calendar hook (arm9 0x0203AD24, table 0x020F6A64): the buffer the loader builds on each entry's date and
+    on the day before (emu_calendar.py, `table` case)."""
+    import emu_calendar
+    return emu_calendar.suite_check(rom, out)
+
+
 SUITE_CHECKS = {"unown": _check_unown, "palpark": _check_palpark, "arceus": _check_arceus,
                 "evolve": _check_evolve, "dex": _check_dex, "skitty": _check_skitty, "guide0107": _check_guide0107,
-                "guide0813": _check_guide0813}
+                "guide0813": _check_guide0813, "calendar": _check_calendar}
 
 
 def cmd_suite(a):
@@ -1758,6 +1770,11 @@ def _cmd_guide0107(a):
 def _cmd_guide0813(a):
     import emu_guide0813
     return emu_guide0813.cmd(a)
+
+
+def _cmd_calendar(a):
+    import emu_calendar
+    return emu_calendar.cmd(a)
 
 
 def cmd_dexcapture(a):
@@ -1865,6 +1882,16 @@ def main(argv=None):
         g7.add_argument("--jobs", type=int, default=6)
         g7.add_argument("--rom", help=argparse.SUPPRESS)
         g7.add_argument("--child", help=argparse.SUPPRESS)
+    ca = sub.add_parser("calendar", help="calendar encounter hook: loaded table, forced-slot battles (emu_calendar.py)")
+    ca.add_argument("--case", default="all", help="comma list of: table, battle, volcanion, stale")
+    ca.add_argument("--battles", help="comma list of entry:period battle variants (default: emu_calendar.BATTLES)")
+    ca.add_argument("--lang", choices=("cn", "en", "both"), default="cn")
+    ca.add_argument("--rom-cn", default=str(DEF_ROM_CN))
+    ca.add_argument("--rom-en", default=str(DEF_ROM_EN))
+    ca.add_argument("--out", default=str(DEF_OUT))
+    ca.add_argument("--jobs", type=int, default=6)
+    ca.add_argument("--rom", help=argparse.SUPPRESS)
+    ca.add_argument("--child", help=argparse.SUPPRESS)
     dc = sub.add_parser("dexcapture", help=argparse.SUPPRESS)
     dc.add_argument("--rom", default=str(DEF_ROM_CN))
     dc.add_argument("--out", default=str(DEF_OUT))
@@ -1893,7 +1920,7 @@ def main(argv=None):
     a = ap.parse_args(argv)
     return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages, "suite": cmd_suite,
             "dexcapture": cmd_dexcapture, "skitty": _cmd_skitty, "guide0107": _cmd_guide0107,
-            "guide0813": _cmd_guide0813}[a.cmd](a)
+            "guide0813": _cmd_guide0813, "calendar": _cmd_calendar}[a.cmd](a)
 
 
 if __name__ == "__main__":
