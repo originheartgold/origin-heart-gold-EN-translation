@@ -11838,26 +11838,26 @@
   {
    "id": 1464,
    "zh": "{VAR:0102:0,0}{NEWLINE}受到了{VAR:0107:1,0}的攻击！",
-   "en": "{VAR:0102:0,0} took the {VAR:0107:1,0} attack!",
+   "en": "{VAR:0102:0,0} took the{NEWLINE}{VAR:0107:1,0} attack!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Rewrapped like #1467 (item5 emulator sweep): 'The wild Kangarooey took the Future Sight' ran past the battle window with a 10-character name and a 12-character move."
   },
   {
    "id": 1465,
    "zh": "野生的{VAR:0102:0,0}{NEWLINE}受到了{VAR:0107:1,0}的攻击！",
-   "en": "The wild {VAR:0102:0,0} took the {VAR:0107:1,0}{NEWLINE}attack!",
+   "en": "The wild {VAR:0102:0,0} took the{NEWLINE}{VAR:0107:1,0} attack!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Rewrapped like #1467 (item5 emulator sweep): 'The wild Kangarooey took the Future Sight' ran past the battle window with a 10-character name and a 12-character move."
   },
   {
    "id": 1466,
    "zh": "对手的{VAR:0102:0,0}{NEWLINE}受到了{VAR:0107:1,0}的攻击！",
-   "en": "The foe’s {VAR:0102:0,0} took the {VAR:0107:1,0}{NEWLINE}attack!",
+   "en": "The foe’s {VAR:0102:0,0} took the{NEWLINE}{VAR:0107:1,0} attack!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Rewrapped like #1467 (item5 emulator sweep): 'The wild Kangarooey took the Future Sight' ran past the battle window with a 10-character name and a 12-character move."
   },
   {
    "id": 1467,

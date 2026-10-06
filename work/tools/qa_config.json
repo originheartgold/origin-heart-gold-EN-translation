@@ -11,7 +11,11 @@
       "font": 1,
       "line_px": 216,
       "lines": 2,
-      "desc": "battle message box (ov12 AddWindow bg1 2,19,27x4), font 1"
+      "desc": "battle message box (ov12 AddWindow bg1 2,19,27x4), font 1. prompt_px: a string that waits with a prompt ({VAR:0200:..}) shows two icons at x 211-228 of the window (text origin x 16), so the lines of that view must end by 195 px (emulator sweep 2026-10-06, emu_sweeps battle)",
+      "prompt_px": 195,
+      "prompt_tags": [
+        "{VAR:0200:"
+      ]
     },
     "sign": {
       "font": 1,
@@ -198,7 +202,7 @@
     }
   },
   "var_widths": {
-    "_doc": "Estimated expansion width (px) of {VAR:01KK:..} placeholders, keyed by command id. typ = used for the error threshold, max = worst case (warning). Latin glyphs are 6 px. Kinds from pret gmm usage: 00 species, 01 nickname, 03 player/trainer name, 04 location, 05 ability, 06 move, 08 item, 0D stat, 0E trainer class, 0F type, 1C easy-chat word, 32-3B numbers (digits = kind-49).",
+    "_doc": "Estimated expansion width (px) of {VAR:01KK:..} placeholders, keyed by command id. typ = used for the error threshold, max = worst case (warning). Latin glyphs are 6 px. Kinds from pret gmm usage: 00 species, 01 nickname, 03 player/trainer name, 04 location, 05 ability, 06 move, 08 item, 0D stat, 0E trainer class, 0F type, 1C easy-chat word, 32-3B numbers (digits = kind-49). battle_string kinds (emulator, 2026-10-06): 0100 trainer name, 0102/010C Pokémon (nickname, 10 chars), 0103 type, 0106 ability, 0107 move, 0109 item, 010E trainer class, 010F number (printed with the full-width digit codes 0x00A2-0x00AB, 7-8 px wide in font 1).",
     "digit_px": 6,
     "default": {
       "typ": 48,
@@ -273,6 +277,18 @@
           "max": 78
         },
         "0102": {
+          "typ": 54,
+          "max": 60
+        },
+        "0107": {
+          "typ": 48,
+          "max": 72
+        },
+        "0106": {
+          "typ": 60,
+          "max": 72
+        },
+        "010C": {
           "typ": 54,
           "max": 60
         }

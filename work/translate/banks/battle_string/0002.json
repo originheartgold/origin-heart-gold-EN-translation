@@ -262,10 +262,10 @@
   {
    "id": 32,
    "zh": "{VAR:010C:0,0}想要学习{NEWLINE}{VAR:0107:1,0}……{SCROLL}为了学习{VAR:0107:1,0}，{NEWLINE}要忘记其他的招式吗？{VAR:0200:0}",
-   "en": "{VAR:010C:0,0} wants to learn {VAR:0107:1,0}...{SCROLL}Should another move be forgotten to{NEWLINE}make room for {VAR:0107:1,0}?{VAR:0200:0}",
+   "en": "{VAR:010C:0,0} wants to learn{NEWLINE}{VAR:0107:1,0}...{SCROLL}Should another move be forgotten{NEWLINE}to make room for {VAR:0107:1,0}?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Rewrapped (item5 emulator sweep): with a 10-character nickname and a 12-character move the first line was cut ('DragonBreath..'), and 'to' ran under the YES/NO prompt icons; breaks now follow the zh."
   },
   {
    "id": 33,
@@ -590,10 +590,10 @@
   {
    "id": 73,
    "zh": "要放弃对战，{NEWLINE}直接投降吗？{VAR:0200:0}",
-   "en": "Would you like to forfeit the match and{NEWLINE}quit now?{VAR:0200:0}",
+   "en": "Would you like to forfeit the{NEWLINE}match and quit now?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Rewrapped (item5 emulator sweep): line 1 ran under the prompt icons at the window's right edge."
   },
   {
    "id": 74,

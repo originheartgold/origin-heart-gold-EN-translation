@@ -273,6 +273,32 @@ class TestQA(unittest.TestCase):
         over = fits + "x"
         self.assertIn("too_many_units", codes(qa.check_bank(bank([("甲", over)], "item_desc")), "error"))
 
+    def test_battle_prompt_icons(self):
+        # the view that ends with {VAR:0200:0} keeps its lines left of the prompt icons (195 px); other battle
+        # lines may use the full 216 px; a moved break fixes it
+        long = "Would you like to forfeit the match and"                           # 208 px
+        iss = qa.check_bank(bank([("要放弃对战吗？{VAR:0200:0}", long + "{NEWLINE}quit now?{VAR:0200:0}")],
+                                 narc="battle_string", no=2), fset_name="vanilla_us")
+        self.assertIn("prompt_icon_overlap", codes(iss, "error"))
+        ok = "Would you like to forfeit the{NEWLINE}match and quit now?{VAR:0200:0}"
+        self.assertEqual(codes(qa.check_bank(bank([("要放弃对战吗？{VAR:0200:0}", ok)], narc="battle_string", no=2),
+                                             fset_name="vanilla_us"), "error"), [])
+        no_prompt = qa.check_bank(bank([("对战", long)], narc="battle_string", no=2), fset_name="vanilla_us")
+        self.assertNotIn("prompt_icon_overlap", codes(no_prompt))
+        # only the prompt's own view counts: an earlier page may be wider
+        paged = long + "{SCROLL}Quit now?{VAR:0200:0}"
+        self.assertNotIn("prompt_icon_overlap", codes(qa.check_bank(
+            bank([("对战{SCROLL}吗？{VAR:0200:0}", paged)], narc="battle_string", no=2), fset_name="vanilla_us")))
+
+    def test_battle_move_buffer_worst_case(self):
+        # battle_string {VAR:0107} is a move name (up to 12 characters, 72 px): a line that fits only with a
+        # short move name warns (seen in game: 'DragonBreath..' cut at the window edge)
+        iss = qa.check_bank(bank([("{VAR:010C:0,0}想要学习{NEWLINE}{VAR:0107:1,0}……",
+                                   "{VAR:010C:0,0} wants to learn {VAR:0107:1,0}...")], narc="battle_string", no=2),
+                            fset_name="vanilla_us")
+        self.assertIn("line_may_overflow", codes(iss, "warning"))
+        self.assertEqual(codes(iss, "error"), [])
+
     def test_string_categories(self):
         cfg = tm.load_config()
         cfg = dict(cfg, string_categories={"a027/0999": {"0-1": "gear_map", "1": "gear_map_town"}})

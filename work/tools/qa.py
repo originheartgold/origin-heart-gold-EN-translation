@@ -27,6 +27,9 @@ check validates every string that has an English text (en != null):
            glossary_name (species/moves) an old name (Faint Attack), a spelling variant or a misspelling of
                          a species or move name in prose (see glossary_name below)
   warnings line_may_overflow  fits with typical placeholders, not with worst-case ones
+           prompt_icon_overlap (battle) a line of the view that ends with a prompt ({VAR:0200:..}) is wider
+                         than prompt_px (195): it runs under the prompt icons at x 211; warning with
+                         worst-case placeholders
            line_past_frame a line is wider than the category's soft_line_px (fits the window, but runs into
                          the panel frame or a picture; item descriptions 200 px, D-1512)
            needs_vanilla_glyphs fits only with the vanilla US …/“/” widths (hack font has 12 px ones)
@@ -267,6 +270,7 @@ def check_layout(zh, en, cat: dict, catname: str, narc: str, cfg: dict, fset: di
             if ln["px"] <= lim and ln["px"] > cat.get("soft_line_px", lim):
                 add(soft, "line_past_frame", "line %d is %d px > %d (%s): %s"
                     % (i + 1, ln["px"], cat["soft_line_px"], cat.get("soft_desc", "soft limit"), ln["text"]))
+        check_prompt_icon(en, lines, lines_max, cat, sev, soft, add)
     if cat.get("relative_to_zh"):
         zmax = bank_ctx.get("zh_max_px")
         zlines = tm.measure_lines(zh, font, cfg, narc, "typ", fset)
@@ -302,6 +306,27 @@ def check_layout(zh, en, cat: dict, catname: str, narc: str, cfg: dict, fset: di
         if n is not None and n > cat["max_units"]:
             add(sev, "too_many_units", "%d stored code units (incl. terminator) > %d: the screen shows nothing"
                 % (n, cat["max_units"]))
+
+
+def check_prompt_icon(en, lines, lines_max, cat, sev, soft, add):
+    """Battle window: a string that waits with a prompt ({VAR:0200:..}, the command prompt and YES/NO) shows
+    two icons at the window's right edge (x 211-228, emulator 2026-10-06); text on the lines of that last
+    view must end before them (cat["prompt_px"] px from the text origin)."""
+    lim = cat.get("prompt_px")
+    if not lim or not any(t in en for t in cat.get("prompt_tags", ())):
+        return
+    start = 0                                   # the prompt's view: lines after the last {SCROLL}
+    for i, ln in enumerate(lines):
+        if ln.get("brk") == "SCROLL":
+            start = i + 1
+    view = list(range(start, len(lines)))[-cat.get("lines", 2):]
+    for i in view:
+        if lines[i]["px"] > lim:
+            add(sev, "prompt_icon_overlap", "line %d is %d px > %d: runs under the prompt icons: %s"
+                % (i + 1, lines[i]["px"], lim, lines[i]["text"]))
+        elif lines_max[i]["px"] > lim:
+            add(soft, "prompt_icon_overlap", "line %d is %d px with worst-case placeholders > %d (prompt icons): %s"
+                % (i + 1, lines_max[i]["px"], lim, lines[i]["text"]))
 
 
 def _spacing_text(text: str) -> str:
