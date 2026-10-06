@@ -4,13 +4,13 @@
 
 These are suspected bugs in the original Chinese hack, found by reading its game files. The translation keeps the hack's behaviour exactly as it is, so they are reported here, not fixed. Most haven't been confirmed in game yet; the entries that were tested in an emulator say so.
 
-Each entry says what you would do in game, what goes wrong, and how to avoid it or recover. Most entries are about a missed item, scene or battle. A few can freeze the game (the weekday siblings' ribbon gifts, a lost battle in Rock Tunnel), and two scenes write past the end of the game's story records into your Pokédex data (see [Out-of-range story records](#out-of-range-story-records-save-data)).
+Each entry says what you would do in game, what goes wrong, and how to avoid it or recover. Most entries are about a missed item, scene or battle. A few can freeze the game (a lost battle in Rock Tunnel or with the Pokémon Tower Magcargo, the Department Store's Double Battle with only one Pokémon), and two scenes write past the end of the game's story records into your Pokédex data (see [Out-of-range story records](#out-of-range-story-records-save-data)).
 
 ## Check these first
 
 These entries can freeze the game, cost you something, or close a quest or battle for good. Everything else on this page is cosmetic, in your favour, or can't happen in normal play.
 
-- **Can freeze the game:** [Rock Tunnel corner kid loss](#rock-tunnel-corner-kid-loss), [Arthur's ribbon freeze](#arthurs-ribbon-freeze), [Santos's and Wesley's ribbon freeze](#santoss-and-wesleys-ribbon-freeze).
+- **Can freeze the game:** [Rock Tunnel corner kid loss](#rock-tunnel-corner-kid-loss), [Pokémon Tower Magcargo loss](#pokémon-tower-magcargo-loss), [Department Store Double Battle with one Pokémon](#department-store-double-battle-with-one-pokémon).
 - **Writes to your Pokédex data:** [Out-of-range story records (save data)](#out-of-range-story-records-save-data).
 - **Can take more money or items than it should:** [S.S. Anne TM price](#ss-anne-tm-price), [Sprout Tower offerings](#sprout-tower-offerings), [Fortune-teller's price](#fortune-tellers-price), [Game Corner 500-coin option](#game-corner-500-coin-option), [Charcoal Kiln HM01](#charcoal-kiln-hm01), [Pidgeot loan returns a different Pidgeot](#pidgeot-loan-returns-a-different-pidgeot).
 - **Lost for good unless you act first:** [Bruno's Pewter City challenge](#brunos-pewter-city-challenge), [Pikachu starters' Charmander quest](#pikachu-starters-charmander-quest), [Virtue trial and the four-leaf clover](#virtue-trial-and-the-four-leaf-clover), [Cerulean burglary deadline](#cerulean-burglary-deadline), [Route 5 shelter raid](#route-5-shelter-raid), [Pokémon Tower Magcargo is missable](#pokémon-tower-magcargo-is-missable), [Misty's Gyarados and the Viridian Gym trials](#mistys-gyarados-and-the-viridian-gym-trials), [Switching sides at the construction clash](#switching-sides-at-the-construction-clash), [Swimmer Marina and the Dragonair delivery](#swimmer-marina-and-the-dragonair-delivery), [Losing on the Celadon roof](#losing-on-the-celadon-roof), [Sitrus Berries and the eating contest](#sitrus-berries-and-the-eating-contest), [Grandma's treats deadlines](#grandmas-treats-deadlines), [Cynthia and Steven in Fuchsia City](#cynthia-and-steven-in-fuchsia-city), [Misty missing from Cerulean Gym](#misty-missing-from-cerulean-gym), [TM14 Blizzard](#tm14-blizzard), [Crystal Onix](#crystal-onix), [Cinnabar graffiti couple](#cinnabar-graffiti-couple), [TM86 Grass Knot](#tm86-grass-knot), [Bikers' red envelope and Big Sis](#bikers-red-envelope-and-big-sis), [Cherrygrove Wooper boy and the clover hunter](#cherrygrove-wooper-boy-and-the-clover-hunter), [Pokémon Academy class and Youngster Ward](#pokémon-academy-class-and-youngster-ward), [Losing to Goh in Union Cave](#losing-to-goh-in-union-cave), [HM08 and Mr. Pokémon's quiz](#hm08-and-mr-pokémons-quiz), [Pewter Museum Brock and the Route 30 Chikorita](#pewter-museum-brock-and-the-route-30-chikorita), [Koume, Sakura and the bug hunt](#koume-sakura-and-the-bug-hunt), [Rocky Helmet and the bug hunt](#rocky-helmet-and-the-bug-hunt), [Purugly quest and the bug hunt](#purugly-quest-and-the-bug-hunt), [Forest of Time during the bug hunt](#forest-of-time-during-the-bug-hunt), [Dream World battles before the old man](#dream-world-battles-before-the-old-man), [Pokéathlon Dome and the Route 36 tree](#pokéathlon-dome-and-the-route-36-tree), [MooMoo Farm Miltank fall sick again](#moomoo-farm-miltank-fall-sick-again), [Burned Tower beasts scene and the expedition leader](#burned-tower-beasts-scene-and-the-expedition-leader), [Jirachi stone and the story counter](#jirachi-stone-and-the-story-counter), [Durin Berries for the Anti-Age Spray](#durin-berries-for-the-anti-age-spray), [Blackthorn Gym Trainers](#blackthorn-gym-trainers).
@@ -158,7 +158,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Misty's Cerulean Cape photo
 
-**Misty's Cerulean Cape photo can never appear for players who didn't confess to her.** After your final Hall of Fame entry, Misty is meant to stand at the tip of Cerulean Cape on Route 25 for a friendly photo if you never confessed to anyone or her romance is closed. The game seems to allow her only during one hour of the afternoon, but the check is written so that she is hidden at every hour. Nothing else brings her there. Players on Misty's romance route get her date photo as normal. Not confirmed in game.
+**Misty's Cerulean Cape photo can never appear for players who didn't confess to her.** After your final Hall of Fame entry, Misty is meant to stand at the tip of Cerulean Cape on Route 25 for a friendly photo if you never confessed to anyone or her romance is closed. The game seems to allow her only during one hour of the afternoon, but the check is written so that she is hidden at every hour. Nothing else brings her there. Players on Misty's romance route get her date photo as normal. Tested in an emulator: at 12:00, 14:00 and 15:00 she isn't there.
 
 *Source:* file 216 map script (header on-load scripts 4/9 → L3164): after flag 2261, if flag 1645 is clear or 2142 is set it goes to L8294: `ScrCmd_522` → `CompareVarToValue 0x4000, 14` → `GoToIf ≠` L8288 (`SetFlag 598`), then the same for 15, so 598 (hide flag of Route 25 object 35, Misty, script 41 → L7584 friendly photo, `CameronPhoto 84`) is always set. ScrCmd_522 is read as the hour: file 172 (script 13) compares it with every value 0–23. Only file 758 @6735 clears 598 (Misty's date start), and the map script sets it again on entry (D-1441).
 
@@ -174,7 +174,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### S.S. Anne TM price
 
-**The S.S. Anne ship shop's TM checks for $400 but takes $4,000.** With $400–$3,999 you can still buy it; what happens to your money then isn't known (probably $0). The menu says "TM63" (the Chinese too), but you get **TM21 Frustration**. Have at least $4,000 before buying.
+**The S.S. Anne ship shop's TM checks for $400 but takes $4,000.** With $400–$3,999 you can still buy it, and your money drops to $0 (tested in an emulator: $1,000 → $0, $5,000 → $1,000). The menu says "TM63" (the Chinese too), but you get **TM21 Frustration**. Have at least $4,000 before buying.
 
 *Source:* file 156 L4328 `HasEnoughMoneyImmediate 400`, L4349 `SubMoneyImmediate 4000`; bank 252#31 ("Frustration TM63, $4000"); item 348.
 
@@ -220,11 +220,11 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 *Source:* file 190 script 20 L1252 `CheckBadge 4` (badge 4 = Marsh Badge, file 826 `GiveBadge 4`) → L3929; refusal msg 137; battle `TrainerBattle 977` at L5932 (Doubles 977 ×2 at L5992). Object 33 has no hide flag (D-1444).
 
-### Pokémon Tower Magcargo battle loop
+### Pokémon Tower Magcargo loss
 
-**Losing to the Magcargo in Pokémon Tower may restart the battle straight away.** After a lost battle the fight starts again instead of sending you to a Pokémon Center, which could repeat with a fainted party. Heal and save before you challenge it. Not confirmed in game.
+**Losing to the Magcargo in Pokémon Tower freezes the game.** The battle doesn't send you to a Pokémon Center: the game tries to start the fight again without returning to the map, and the screen stays black. Heal and save before you challenge it, and make sure you can win. Tested in an emulator (Chinese ROM and English build).
 
-*Source:* file 17 L2529 `WildBattle 219`; on a loss L2546 jumps back to L2519.
+*Source:* file 17 L2529 `WildBattle 219`; on a loss L2546 jumps back to L2519. Observed (`emu_harness.py guide0813 --case magcargo`, Splash-only party): after the loss the script runs L2519 `TouchscreenMenuShow` again and never reaches the second `PlayCry`/`WildBattle`; the field doesn't come back, the screen stays black for 3,000 frames with A/B/START presses (CPU looping at 0x01FF8030). Same mechanism as the Rock Tunnel corner kid (D-1548): a lost scripted battle doesn't restore the field (D-1560).
 
 ### Pokémon Tower Magcargo is missable
 
@@ -586,7 +586,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Elite Four practice names
 
-**The Elite Four practice rematches probably show another Trainer's name.** In the post-game practice battles, Agatha or Lance does the talking, but the battle uses another Trainer's data, so the opponent is probably named Koga in Agatha's room and Lorin in Lance's room. The first-run battles use the right Trainers. Cosmetic. Not confirmed in game.
+**In the Chinese hack, the Elite Four practice rematches show another Trainer's name.** In the post-game practice battles, Agatha or Lance does the talking, but the battle uses another Trainer's data, so the battle opens with "Elite Four Koga" in Agatha's room and "Elite Four Lorin" in Lance's room, under Agatha's and Lance's pictures. This English translation names those two Trainers Agatha and Lance, so you see the right names. The first-run battles use the right Trainers. Cosmetic. Tested in an emulator on both versions.
 
 *Source:* Agatha's room (file 818 L1509) starts trainer 703, named Koga (阿桔); Lance's room (file 820 L1479, Doubles L1545) starts trainer 705, named Lorin (梨琳). Agatha's Doubles: L1575 (703 ×2). Agatha's intro line before the battle: 818 L1502. The first-run battles use 247 Agatha and 246 Lance (D-1442).
 
@@ -632,7 +632,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Sprout Tower offerings
 
-**The Sprout Tower monks take their offering even if you can't pay.** When a monk on the ground floor asks for an offering and you say Yes, you're let through with too little money; what happens to your money then isn't known (probably $0). Answering No means battling him instead. The Elder on 3F does check your money before selling his sutras. Not confirmed in game.
+**The Sprout Tower monks take their offering even if you can't pay.** When a monk on the ground floor asks for an offering and you say Yes, you're let through with too little money, and your money drops to $0. Answering No means battling him instead. The Elder on 3F does check your money before selling his sutras. Tested in an emulator with the first monk ($3,000): $1,000 → $0, $5,000 → $2,000.
 
 *Source:* file 16 L1022, L1110, L1216 use `SubMoneyImmediate` ($3,000 / $5,000 / $10,000) with no money check (Yes paths L973/L1053/L1167; No starts `TrainerBattle 747` etc.). 3F (file 18 L2384/L2480) uses `HasEnoughMoneyImmediate 5000`.
 
@@ -650,9 +650,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Bugsy's four-Pokémon rule
 
-**Bugsy's "no more than four Pokémon" rule probably never applies.** You can likely bring six. The check reads a number left over from whatever happened just before, so in rare cases he might refuse you anyway; if he does, talk to him again. Not confirmed in game.
+**Bugsy's "no more than four Pokémon" rule never applies.** You can bring six. The check reads a temporary number that the game resets to 0 before every conversation, so it never matches. Tested in an emulator: with six Pokémon he accepts, also right after another script had set that number to 5.
 
-*Source:* file 866 script 2 → L367 compares var 0x8005 with 5 and 6 (→ L4470, msg 12), but never loads the party count (no `GetPartyCount`, unlike the rematch at L4541). 0x8005 is a scratch variable.
+*Source:* file 866 script 2 → L367 compares var 0x8005 with 5 and 6 (→ L4470, msg 12), but never loads the party count (no `GetPartyCount`, unlike the rematch at L4541). 0x8005 is a scratch variable. Observed: it reads 0 at L367 both on a fresh talk and after a one-off script ran `SetVar 0x8005 5` (scratch vars don't survive between scripts), and the talk goes on to the type check (D-1432, D-1563).
 
 ### Bugsy's rematch line
 
@@ -662,7 +662,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Charcoal Kiln HM01
 
-**The Charcoal Kiln apprentice takes HM01 without checking you have it.** At "Give him the TM for Cut?" → Yes, players without HM01 still get the Leek, and players with it lose their HM01. If you still need HM01, answer No. Not confirmed in game.
+**The Charcoal Kiln apprentice takes HM01 without checking you have it.** At "Give him the TM for Cut?" → Yes, players without HM01 still get the Leek, and players with it lose their HM01. If you still need HM01, answer No. Tested in an emulator: with HM01 you get the Leek and lose the HM; without it you still get the Leek.
 
 *Source:* file 871 L602 (msg 51) → L1428–L1804: every path ends in L1773 (Leek, item 259) and L1796 `TakeItem 420` (HM01) with no `HasItem` check; sets flag 1984.
 
@@ -762,13 +762,13 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Radio quiz B button
 
-**In the Radio Tower 1F radio quiz, pressing B on a question counts as a right answer.** Each question only checks for the three wrong choices, so backing out of the menu moves on as if you had answered right. Pressing B on all five questions wins the radio upgrade. In your favour. Not confirmed in game.
+**Pressing B in the Radio Tower 1F radio quiz is not a shortcut (not a bug).** An earlier note said B counts as a right answer. Tested in an emulator: B picks the last choice of the question, as if you had touched it. That happens to be right for the first question (4 channels) but wrong for the second, so B on every question fails the quiz. Answer normally.
 
-*Source:* file 29 script 3: the five menus (L327, L419, L511, L603, L695) are `MenuInit [1, 1, 0, 1, 0x800C]` (cancellable, B result 0xFFFE); each tests only the three wrong indices (L375–L407, L467–L499, L559–L591, L651–L683, L743–L775) and falls through otherwise. D-1479.
+*Source:* file 29 script 3: the five menus (L327, L419, L511, L603, L695) are `MenuInit [1, 1, 0, 1, 0x800C]`; each tests only the three wrong indices (L375–L407, L467–L499, L559–L591, L651–L683, L743–L775) and falls through otherwise. Observed (`emu_harness.py guide0813 --case radio_quiz`): with B the value read at L375 and L467 is 3 (the last button), not 0xFFFE, so question 2 jumps to the wrong-answer copy (L2310) and the quiz ends with msg 125. D-1479, D-1561.
 
 ### Buena's lottery line
 
-**After a right password that doesn't bring a prize, Buena's scene ends with the lottery attendant's line.** You see "The winning number is [your name]! Does it match the ID No. of any of your Pokémon? Let's check!", then Buena walks back. In the US game she says "Tune in to my show again tomorrow!" here. Your point is still saved. Cosmetic. Not confirmed in game.
+**After a right password that doesn't bring a prize, Buena's scene ends with the lottery attendant's line.** You see "The winning number is [your name]! Does it match the ID No. of any of your Pokémon? Let's check!", then Buena walks back. In the US game she says "Tune in to my show again tomorrow!" here. Your point is still saved. Cosmetic. Tested in an emulator: the scene prints Buena's "You earned one point!" and then the lottery line.
 
 *Source:* file 29 L5656 (reached from L4574, L4890, L5204, L5396, L5506 when var 0x413A isn't a prize total) shows bank 0063#32, Felicity's lottery line; buffer 0 last holds the player's name (L3859). Vanilla Radio Tower 2F (file 30 L1384) shows msg 32 of its own bank, Buena's "Tune in to my show again tomorrow!"; the hack moved the script into the 1F file and changed only the prize path to msg 87 (L5675). D-1478.
 
@@ -778,9 +778,15 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 *Source:* file 887 script 1: L18 `HasItem 480` (Pass) is the only check; msgs 0 and 1 then give item 480.
 
+### Department Store Double Battle with one Pokémon
+
+**Speaking up for the blind man on Department Store 6F with only one Pokémon freezes the game.** The shoppers' Double Battle starts without checking your party size. With one Pokémon, a broken second Pokémon ("nnnnnnr", Lv. 2) stands next to yours, and the game hangs as soon as you choose FIGHT. Have at least two Pokémon before you answer Yes. Tested in an emulator (Chinese ROM and English build); with a full party the same battle plays normally.
+
+*Source:* file 901 script 11, L3087 `TrainerBattle 777, 778, 0, 0` (no `GetPartyCount` before it). Observed (`emu_harness.py guide0813 --case white_flute`): party reduced to one as the game leaves it after a deposit (count 1, the other slots cleared); both shoppers' teams are built, the battle menu shows, touching FIGHT leaves a blank bottom screen and the CPU looping at 0x01FF8030; the control with six Pokémon finishes the turn (D-1559).
+
 ### Fortune-teller's price
 
-**The fortune-teller's ideal-Pokémon reading checks for $300 but charges $10,000.** With $300–$9,999 you still get the item, and your money probably drops to $0. Have $10,000 before asking. Not confirmed in game.
+**The fortune-teller's ideal-Pokémon reading checks for $300 but charges $10,000.** With $300–$9,999 you still get the item, and your money drops to $0. Have $10,000 before asking. Tested in an emulator: $5,000 → $0 with the item; $20,000 → $10,000.
 
 *Source:* file 895 L228 `HasEnoughMoneyImmediate 300`; `SubMoneyImmediate 10000` at L313/L537/L589.
 
@@ -878,11 +884,11 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 *Source:* flag 1604 is set by file 25 L2668 (Will and Karen beaten), file 903 L3184 (Gold's Game Corner scene, which is itself skipped when 1604 is set, L2003) and file 737 L3404 (Islander's House, zone 507); read at file 25 L478/L796 (→ L2585, msg 123), file 737 L442 and file 58 L2051 (only a check, not a set). Cleared by the Plain Badge (file 883 L649) and the Route 37 scene (file 246 L331).
 
-### Arthur's ribbon freeze
+### Arthur's ribbon message
 
-**Arthur's ribbon gift on Route 36 can freeze the game.** This is the freeze shared by all seven weekday siblings. Arthur gives his ribbon on Thursdays once you've met all seven. Save before you talk to him then.
+**Arthur's ribbon gift on Route 36 leaves its message on screen.** This happens with all seven weekday siblings. Arthur gives his ribbon on Thursdays once you've met all seven. Your lead Pokémon gets the ribbon, but the scene stops right after the "put on the ribbon" message, which stays on screen. The game doesn't freeze: you can still walk, and pressing X opens the menu (which clears the message) and lets you save. Earlier versions of this page called it a freeze; tested in an emulator, it isn't one.
 
-*Source:* file 243 script 2 (weekday 4, var 0x4094 = 7) → L1617 → L2301–L2342: undecoded bytes after `PlayFanfare [20]` (D-1331; work/notes/softlock_audit.md).
+*Source:* file 243 script 2 (weekday 4, var 0x4094 = 7) → L1617 → L2301–L2334: `GiveRibbon` 62, `PlayFanfare [20]`, then opcode 2009 at @2334, which the interpreter (RunScriptContext 0x0203F474) rejects as ≥ 843 commands and stops the script (D-1331; work/notes/softlock_audit.md). Observed for all seven siblings on both ROMs (`emu_harness.py guide0813 --case ribbon`): the ribbon byte of the lead changes, the script dies at the bad opcode, the window stays open, the player walks, X opens the menu and SAVE asks to save; the normal daily gift (var 0x4094 = 6) ends cleanly. The rest of the vanilla tail (`WaitFanfare`, the day's `SetFlag`, `CloseMsg`, `ReleaseAll`) never runs (D-1558).
 
 ### Morty's post-game challenge size
 
@@ -892,7 +898,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Morty's Lv. 1 Pokémon
 
-**Morty's Gym team has three Lv. 1 Pokémon.** His team data has Gengar, Dusclops and Mismagius at Lv. 80, plus Mimikyu, Dhelmise and Sinistcha at Lv. 1, six Pokémon in all. If the battle really uses this team, half of his side faints almost at once. Not confirmed in game.
+**Morty's Gym team has three Lv. 1 Pokémon.** His team data has Gengar, Dusclops and Mismagius at Lv. 80, plus Mimikyu, Dhelmise and Sinistcha at Lv. 1, six Pokémon in all. The battle does use this team: tested in an emulator, his side has Gengar, Dusclops and Mismagius at Lv. 80 and Mimikyu, Dhelmise and Sinistcha at Lv. 1, so half of his side faints almost at once.
 
 *Source:* trainer 31 (Morty) party data, party count 6 (site/src/data/trainers.json, exported from the ROM); used by the Gym battle `TrainerBattle 31, 31` in file 918 (D-1440).
 
@@ -910,7 +916,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### MooMoo Farm Miltank fall sick again
 
-**If you finish the Dream World before the League HQ's third order, the MooMoo Farm Miltank fall sick again for good.** The third order at the League HQ makes them sick again, but the farmer only asks you to investigate once, and the Dream World is the only cure. Afterwards the milk stall, the farm's Seal girl and the Sunflora lady stay closed. If you can, do the MooMoo Farm investigation after that third order. Suspected hack bug. Not confirmed in game.
+**If you finish the Dream World before the League HQ's third order, the MooMoo Farm Miltank fall sick again for good.** The third order at the League HQ makes them sick again, but the farmer only asks you to investigate once, and the Dream World is the only cure. Afterwards the milk stall, the farm's Seal girl and the Sunflora lady stay closed. If you can, do the MooMoo Farm investigation after that third order. Suspected hack bug. The farmer's side was tested in an emulator: with the Miltank sick and the Dream World done he only greets you; before the Dream World he offers the investigation.
 
 *Source:* flag 744 (Miltank healthy) is set at new game (file 149 @492) and by the Dream World cure (file 898 @2329, with 2289 at @2321), cleared on arrival in Johto (file 840 @3194/@3324) and by the League HQ round-3 order (file 31 @4666) with no condition. The farmer skips the investigation once 2289 is set (file 251 @106 → L903); the stall, Seal girl and Sunflora lady check 744 (file 251 @117/@147/@214; file 249).
 
@@ -974,7 +980,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Whirl Islands Challenge payout
 
-**The Whirl Islands Challenge pays out after only one island, again and again.** After visiting just the northwest island you can claim a prize, accept the challenge again and report straight back for another prize. Not confirmed in game.
+**The Whirl Islands Challenge pays out after only one island, again and again.** After visiting just the northwest island you can claim a prize, accept the challenge again and report straight back for another prize. Tested in an emulator: report, accept again, report again: two prizes.
 
 *Source:* file 872 L2417–L2450 tests flag 2097 four times instead of 2097/2098/2099/2100, then clears 2094 and offers the challenge again.
 
@@ -1010,19 +1016,19 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Jirachi stone without Star Pieces
 
-**The Jirachi stone can be "repaired" without any Star Pieces.** Choose Yes repeatedly to repair the stone. Each repair takes a Star Piece if you have one, but still counts if you have none. In your favour. Not confirmed in game.
+**The Jirachi stone can be "repaired" without any Star Pieces.** Choose Yes repeatedly to repair the stone. Each repair takes a Star Piece if you have one, but still counts if you have none. In your favour. Tested in an emulator: with no Star Pieces the stone still wakes after seven repairs; with ten, seven are used.
 
 *Source:* file 81 script 10 → L1588 (menu) → L1801–L1861: `TakeItem 91` (Star Piece) runs with no `HasItem` check and its result is ignored; `AddVar 0x408C, 1` always follows.
 
 ### Jirachi stone and the story counter
 
-**The Jirachi stone counts its repairs on a story counter, and its scene overwrites that story's progress.** If you've finished the legendary story that ends with Crystal taking Suicune to the orphanage in Cherrygrove City, the stone needs exactly seven repairs. If you haven't, it needs more, and when the stone turns into Jirachi the scene overwrites that story's progress, so its remaining scenes may never play. Finish that story before you start repairing the stone. The seven-repair figure is not confirmed in game.
+**The Jirachi stone counts its repairs on a story counter, and its scene overwrites that story's progress.** If you've finished the legendary story that ends with Crystal taking Suicune to the orphanage in Cherrygrove City, the stone needs exactly seven repairs. If you haven't, it needs more, and when the stone turns into Jirachi the scene overwrites that story's progress, so its remaining scenes may never play. Finish that story before you start repairing the stone. Tested in an emulator with the story finished: the seventh repair wakes Jirachi.
 
 *Source:* file 81 L1849 `AddVar 0x408C, 1`, L1855 Jirachi appears at ≥ 24 (→ L1985). 0x408C is the legendary-investigation story var (values 0–17: files 739, 738, 212, 178, 853, 923, 900, 815, 899, 31, 129, 758, 195, 851); its highest value is 17, set in Cherrygrove when Crystal takes Suicune to the orphanage (file 847 L5336). Repairs needed: 24 − current value (7 at 17). The Jirachi scene sets 0x408C = 23 before the Team Rocket battle (L2637, trainers 629/630) and 25 after it (L2868); story checks still waiting for 3, 12 or 15 (files 178, 758, 129, 31, 133, 195) can then never pass. The stone needs flag 2261 (final Hall of Fame).
 
 ### Battle Frontier Cut man without HM01
 
-**Without HM01, the Battle Frontier Cut man starts the photographer's routine instead.** Almost every player has HM01 by then. Not confirmed in game.
+**Without HM01, the Battle Frontier Cut man starts the photographer's routine instead.** Almost every player has HM01 by then. Tested in an emulator: without HM01 talking to him takes a photo; with it he gives his Cut line.
 
 *Source:* file 81 script 6 L1043–L1057: without item 420 (HM01) it jumps to L1491, inside the Tuesday/Saturday photographer's photo routine (weekday check at L1377).
 
@@ -1058,7 +1064,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Petrel's Chatot
 
-**Petrel's Chatot can never be caught.** The Chatot, Lance, Pryce and the others nearby apparently stay on Team Rocket HQ B2F for good. Not confirmed in game.
+**Petrel's Chatot can never be caught.** The Chatot, Lance, Pryce and the others nearby stay on Team Rocket HQ B2F for good. Tested in an emulator: once they're there, talking to the Chatot never offers the catch.
 
 *Source:* file 90 script 6 (L888 / L2874–L3674) offers the catch (bank 111#99, wild Chatot Lv. 10) only if flag 500 is **set**, but the Chatot (B2F object 31) is hidden while 500 is set. 500 is set at new game (file 149 L320), cleared in Archer's room (file 933 L2062) and set again only after the catch (L3674); objects 29–41 share it.
 
@@ -1082,7 +1088,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Satsuki's Lugia option
 
-**Satsuki's "Lugia" option can lead to the Ho-Oh path and a second Ho-Oh.** If you've caught Ho-Oh but not Lugia, her first menu is "I want to see Lugia / Never mind", and choosing Lugia gives the Ho-Oh line ("the Clear Bell is still in Morty's hands"). Talk to her again and pick Lugia from the full menu instead. The wrong option also re-opens Morty's Clear Bell battle and the Bell Tower, so a second Ho-Oh can be caught, again and again while Lugia is uncaught. Not confirmed in game.
+**Satsuki's "Lugia" option can lead to the Ho-Oh path and a second Ho-Oh.** If you've caught Ho-Oh but not Lugia, her first menu is "I want to see Lugia / Never mind", and choosing Lugia gives the Ho-Oh line ("the Clear Bell is still in Morty's hands"). Talk to her again and pick Lugia from the full menu instead. The wrong option also re-opens Morty's Clear Bell battle and the Bell Tower, so a second Ho-Oh can be caught, again and again while Lugia is uncaught. The menu part was tested in an emulator: "I want to see Lugia" gives the Clear Bell line and resets the story step Morty checks; the second Ho-Oh wasn't played through.
 
 *Source:* file 924 L4299 (var 0x40A9 ≥ 11) → short menu at L4915; choice 0 jumps to L4968 (609#87) and sets var 0x40A9 = 7; Morty (file 918) checks 7; Ho-Oh `GiveMon 250, 95` at file 21 @6116 (D-1407).
 
@@ -1134,7 +1140,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Blackthorn Gym Trainers
 
-**The Blackthorn Gym Trainers may never battle you.** If you accept the MooMoo Farm farmer's request to look into his sick Miltank (the request that leads into the Dream World) before you reach Blackthorn City, the four Gym Trainers are skipped and the entrance Trainer just says "Welcome to the Blackthorn Gym, Champion." Clair can still be challenged. To get the Gym Trainer battles, do Blackthorn City before helping MooMoo Farm. Not confirmed in game.
+**The Blackthorn Gym Trainers may never battle you.** If you accept the MooMoo Farm farmer's request to look into his sick Miltank (the request that leads into the Dream World) before you reach Blackthorn City, the four Gym Trainers are skipped and the entrance Trainer just says "Welcome to the Blackthorn Gym, Champion." Clair can still be challenged. To get the Gym Trainer battles, do Blackthorn City before helping MooMoo Farm. The Gym side was tested in an emulator: after the farmer's Yes the entrance Trainer only says his line; before it he battles you.
 
 *Source:* file 939 coord triggers (scripts 7, 8, 10) need var 0x40A3 = 1, 2, 3 in turn (script 7 L346 falls back to msg 13 at L14262); trainers 932–935. The var is set to 1 only at the end of the Vermilion construction clash (file 774 L1161), to 5 when you answer Yes to the MooMoo farmer (file 251 L1423, offered whenever flag 744 is clear, i.e. from your arrival in Johto) and to 6 in the Dream World (file 898 L2307). Earlier text named only the Dream World.
 
@@ -1144,11 +1150,11 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 *Source:* file 939 L853–L14096 is a list of 698 banned species (`PlayerHasSpecies`), not a type check; checked against site/src/data/species.json types. Non-Dragon species up to #493 that pass: Charmander line, Rhydon, Kangaskhan, Seadra, Magmar, Gyarados, Lapras, Porygon line, Aerodactyl, Dunsparce, Corphish, Crawdaunt, Kecleon, Cranidos line, Shieldon line, Drapion. 225 non-Dragon species from #494–#1025 pass.
 
-### Santos's and Wesley's ribbon freeze
+### Santos's and Wesley's ribbon message
 
-**Santos's ribbon gift (and Wesley's at the Lake of Rage) can freeze the game.** It's the freeze shared by all seven weekday siblings. They only offer the ribbon once you've met all seven, on their own day. Save before you talk to them from then on.
+**Santos's ribbon gift (and Wesley's at the Lake of Rage) leaves its message on screen.** It's the same slip as with all seven weekday siblings. They only offer the ribbon once you've met all seven, on their own day. Your lead Pokémon gets the ribbon; walk away or press X to clear the message. The game doesn't freeze (tested in an emulator; see [Arthur's ribbon message](#arthurs-ribbon-message)).
 
-*Source:* file 937 script 7: ribbon branch when var 0x4094 = 7 and weekday 6 (L197 → L1611 → L2751); L2774 `GiveRibbon` 64, then undecoded bytes after `PlayFanfare [20]` at L2780. Wesley: file 934 L5643 `GiveRibbon` 61, same bytes (@5653). D-1331; work/notes/softlock_audit.md.
+*Source:* file 937 script 7: ribbon branch when var 0x4094 = 7 and weekday 6 (L197 → L1611 → L2751); L2774 `GiveRibbon` 64, `PlayFanfare [20]` at L2780, opcode 2009 at @2784. Wesley: file 934 L5643 `GiveRibbon` 61, same bytes (@5653). Both observed with `emu_harness.py guide0813 --case ribbon` (Wesley on a calm Wednesday, flag 202 and var 0x40B2 = 5). D-1331, D-1558; work/notes/softlock_audit.md.
 
 ### Play Rough tutor teaches Flail
 
@@ -1258,9 +1264,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Island Forest wild Pokémon
 
-**Island Forest on Six Island has no wild Pokémon in the grass or water until you've solved a Ruins of Alph panel.** Fishing works. Solve any one Ruins of Alph panel first. Not confirmed in game.
+**Island Forest on Six Island has wild Pokémon from the start (not a bug).** An earlier note said its grass and water stay empty until you've solved a Ruins of Alph panel. Tested in an emulator: with no panel solved, wild Pokémon appear in its tall grass as usual.
 
-*Source:* map 492 is still inside the original game's Ruins of Alph encounter check (ov2 0x02248420: maps 490–492 need one of flags 2423–2426) (D-1430). Not re-checked in this review (code analysis).
+*Source:* map 492 is inside the original game's Ruins of Alph encounter check range (ov2 0x02248420: maps 490–492, flags 2423–2426) (D-1430). Observed (`emu_harness.py guide0813 --case island_forest`, both ROMs): 400 steps on two tall-grass tiles at 46,33 with flags 2423–2426 clear gave 4–8 wild battles (Electrike, Seedot, Wurmple, Meditite, Carnivine, Lotad, Surskit, Cherubi), as many as with flag 2423 set. Water encounters weren't tried (D-1562).
 
 ### Evolutions that cannot happen
 
@@ -1280,6 +1286,6 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Out-of-range story records (save data)
 
-**Two scenes write past the end of the game's story records.** The Viridian Mart promoter on Route 1, who gives you a Berry Juice, and the end of the Mt. Mortar expedition each note that they've happened in a spot beyond the space the save keeps for story progress. Both scenes still play normally once. Measured in an emulator, both notes land in your save's Pokédex data. The promoter's sets a "seen" mark for entry No. 1335, past the end of the Pokédex; opening the Pokédex or the Trainer Card never reads it, so nothing visible changes. The expedition's sets the "caught" mark of Weezing (No. 110) without its "seen" mark; how the Pokédex shows that wasn't checked. There's no way to avoid it: the expedition is needed in the final chapter.
+**Two scenes write past the end of the game's story records.** The Viridian Mart promoter on Route 1, who gives you a Berry Juice, and the end of the Mt. Mortar expedition each note that they've happened in a spot beyond the space the save keeps for story progress. Both scenes still play normally once. Measured in an emulator, both notes land in your save's Pokédex data. The promoter's sets a "seen" mark for entry No. 1335, past the end of the Pokédex; opening the Pokédex or the Trainer Card never reads it, so nothing visible changes. The expedition's sets the "caught" mark of Weezing (No. 110) without its "seen" mark; the Pokédex ignores it (tested in an emulator: Weezing's slot stays empty until you've seen one). There's no way to avoid it: the expedition is needed in the final chapter.
 
 *Source:* D-1333; work/notes/softlock_audit.md. File 168 script 4 `CheckFlag 7286` (0x1C76) at @235, `SetFlag 7286` at @1954 (Route 1 Viridian Mart promo, Berry Juice item 43); file 962 @1819 `SetFlag 4461` (0x116D) at the end of the expedition, next to `SetFlag 675`. The hack has 3,232 flags: arm9 `GetFlagAddr` (0x0204F8E4) bounds the byte index at 0x194 and still forms base + 0x2E0 + index past the bound; block size 0x474 (0x0204F840). Vanilla layout: 0x116D → Pokédex caught bit for species 110, 0x1C76 → a Pokédex language byte. Probably typos for 0x0C76 / 0x016D. Observed in the hack (`emu_harness.py guide0107 --case promo_flag,mortar_flag`, both ROMs): the SetFlag handler (PC 0x0204F8B6) writes save offset 0x151A bit 6 (7286) and 0x13B9 bit 5 (4461); both are inside save array 6 (offset 0x13A8, 0x374 bytes, magic 0xBEEFCAFE, the Pokédex): +0x172 = seen bit of No. 1335 (seen bits +0xCC, 200 bytes), +0x11 = caught bit of No. 110 (caught bits +0x4). With the bit cleared first, the promoter's scene plays (lines 2–7, Berry Juice), sets it, and the next talk shows line 1 only. Read hooks while the Pokédex and Trainer Card were open: no read of the No. 1335 word (control: the caught word of No. 1 is read). D-1550.

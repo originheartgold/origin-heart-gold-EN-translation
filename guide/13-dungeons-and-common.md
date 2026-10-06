@@ -24,7 +24,7 @@
 
 **Reward:** Moon Stone.
 
-**Notes:** once you've seen the dance, the doorway leads to the normal Square again until the day changes. The dance and a new Moon Stone come back **every Monday night**. Because the day changes at midnight, the dance can also play once more between midnight and 3:59 a.m. on Tuesday, even if you saw it on Monday evening (from the game code; not confirmed in game). The rest of the time the Square is the normal map with Asher's gang ([Pewter City to Vermilion City](02-pewter-to-vermilion.md)). This is the original game's event, kept by the hack.
+**Notes:** once you've seen the dance, the doorway leads to the normal Square again until the day changes. The dance and a new Moon Stone come back **every Monday night**. Because the day changes at midnight, the dance can also play once more between midnight and 3:59 a.m. on Tuesday, even if you saw it on Monday evening (tested in an emulator: with the dance marked as seen at 10 p.m. on Monday the doorway leads to the normal Square, and once the clock passes midnight it leads to the dance again). The rest of the time the Square is the normal map with Asher's gang ([Pewter City to Vermilion City](02-pewter-to-vermilion.md)). This is the original game's event, kept by the hack.
 
 *Source:* script file 8 (map 448; `GetWeekday` = 1 with time period 3, or = 2 with period 4, moves the Square warps to map 513 unless flag 2741 is set), file 10 (map 513; script 1 sets flag 664 on every entry and hides the Clefairy outside those times, script 3 dance triggered at ≈8,16, L309 clears flag 664 to show the Moon Stone ball at ≈11,12, L775 sets 2741; script 4 gives item 81). Time periods: arm9 hour table 0x020F2A94 (period 3 = 20:00–23:59, 4 = 00:00–03:59). Flag 2741 is a daily flag: arm9 0x0203FBAC clears flags 2720–2911 on each new day.
 
@@ -47,7 +47,7 @@
 
 **Reward:** Unown in the ruins; access to the dream-world hall.
 
-**Notes:** at the end of the Molly chapter the Kabuto wall closes again, so you have to reopen it. In the original game, each wall led to a small room with Unown writing. Those rooms are still in the game data, but nothing leads to them now. Solving a panel also matters elsewhere: Island Forest on Six Island has no wild Pokémon in the grass or water until you've solved one (see [the known issue](known-issues.md#island-forest-wild-pokémon)).
+**Notes:** at the end of the Molly chapter the Kabuto wall closes again, so you have to reopen it. In the original game, each wall led to a small room with Unown writing. Those rooms are still in the game data, but nothing leads to them now. An earlier version of this guide said Island Forest on Six Island has no wild Pokémon until you've solved a panel; that's not so (see [the known issue](known-issues.md#island-forest-wild-pokémon)).
 
 *Source:* script files 39 (Kabuto: `AlphPuzzle 0`, flag 2423; wall script 3 sets 539; script 4 researcher), 41 (Aerodactyl: `AlphPuzzle 1`, flag 2424; script 3 field-move message bank 209#28, sets 541), 43 (Omanyte: `AlphPuzzle 2`, flag 2425; script 3 sets 543), 45 (Ho-Oh: `AlphPuzzle 3`, flag 2426; script 2 `PlayerHasSpecies 250`, sets 545), chamber events (panel at 6,6; wall warp (6,2) → map 324 warp 0 in all four; map 324 door (6,17) → map 312), file 38 (Research Center, L804–L2321: notes need var 0x40EC ≥ 1, which nothing reachable raises, D-1427), Island Forest encounter gate (ov2 0x02248420, D-1430), file 51 L4269 (clears 539), banks 72–76 (wall riddles).
 
