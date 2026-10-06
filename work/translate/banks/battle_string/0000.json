@@ -59,10 +59,10 @@
   {
    "id": 5,
    "zh": "天气为沙暴状态。{NEWLINE}岩石、地面和钢属性以外的宝可梦，{NEWLINE}每回合会受到伤害。{NEWLINE}岩石属性的特防会变强。",
-   "en": "A sandstorm is raging.{NEWLINE}Pokémon that aren’t Rock, Ground{NEWLINE}or Steel type take damage each turn.{NEWLINE}Rock types’ Sp. Def is boosted.",
+   "en": "A sandstorm is raging.{NEWLINE}Pokémon that aren’t Rock, Ground{NEWLINE}or Steel take damage each turn.{NEWLINE}Rock types’ Sp. Def is boosted.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "Battle INFO description popup: text width ≈198 px (a 201 px line lost its period in the emulator, D-0518); shortened 2026-10-06.",
    "qa_ignore": [
     "too_many_lines",
     "glossary:天气",
@@ -80,10 +80,10 @@
   {
    "id": 7,
    "zh": "天气为下雪状态。{NEWLINE}冰属性的宝可梦防御会有所提高。",
-   "en": "It is snowing.{NEWLINE}Ice-type Pokémon’s Defense is boosted.",
+   "en": "It is snowing.{NEWLINE}Ice-type Pokémon’s Defense rises.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "Battle INFO description popup: text width ≈198 px (a 201 px line lost its period in the emulator, D-0518); shortened 2026-10-06.",
    "qa_ignore": [
     "glossary:天气"
    ]
@@ -729,10 +729,10 @@
   {
    "id": 81,
    "zh": "在每回合结束时回复ＨＰ。{NEWLINE}扎根的宝可梦无法替换。",
-   "en": "Restores HP at the end of each turn.{NEWLINE}It can’t be switched out.",
+   "en": "Heals HP at the end of each turn.{NEWLINE}It can’t be switched out.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "Battle INFO description popup: text width ≈198 px (a 201 px line lost its period in the emulator, D-0518); shortened 2026-10-06.",
    "qa_ignore": [
     "glossary:扎根",
     "glossary:宝可梦"
@@ -1071,10 +1071,10 @@
   {
    "id": 117,
    "zh": "剧毒状态。{NEWLINE}随着回合的推进，中毒伤害会增加。",
-   "en": "Badly poisoned.{NEWLINE}The poison damage worsens each turn.",
+   "en": "Badly poisoned.{NEWLINE}Poison damage worsens each turn.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "Battle INFO description popup: text width ≈198 px (a 201 px line lost its period in the emulator, D-0518); shortened 2026-10-06.",
    "qa_ignore": [
     "glossary:剧毒",
     "glossary:增加"
