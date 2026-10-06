@@ -17,6 +17,16 @@ REQUIRED_SYMBOLS=frozenset(('print_task','load_rows','load_choice','load_label',
                             'commit_speed','exit_free','draw_label','setup_sprites','init_printer'))
 MAX_PAYLOAD_SIZE=0x01ffa000-BASE
 OVHASH='852d8fcd01bf09ba54bee1a24609e2a82e71d25b5d6dd84c5d919cc0b3418856'
+OVERLAY=50
+ARM9BASE=0x02000000
+# Main ARM9 section of the untouched Chinese hack (origin_v4.0.3_cn.nds). apply()
+# compares it after every enabled arm9 code patch from hardcoded/code_patches.json
+# is put back to its 'expect' bytes, so new reviewed code patches elsewhere in ARM9
+# do not invalidate this pin; patches touching text-speed bytes still fail closed.
+REVIEWED_BASE_ARM9_SHA256='b3249c2996c204695a2528e2e52bf0d9841ec05263a6bcecfc7db181204f96cf'
+REVIEWED_ITCM_SHA256='838df87fbcf4107eb85d4c97d9fab741fd0a99d24a4dc85577e3bc8c3eded3c1'
+# Text speed depends on this enabled code patch (msgload-all, demand-loading heap fix).
+HEAP_FIX=(0xba9a,0x2501)
 
 def digest(b):return hashlib.sha256(b).hexdigest()
 
@@ -113,16 +123,67 @@ def verify_reproducible_payload():
     if rebuilt!=payload:raise ValueError('Native payload does not reproduce from current source')
     return {'status':'passed','payload_sha256':payload_digest(payload),'native_bytes':len(bytes.fromhex(payload['code']))}
 
-def apply(rom,payload=None):
+def code_patch_ranges(code_patches=None):
+    """Enabled hardcoded code patches as (id,file,offset,expect bytes,value bytes).
+
+    Uses hardcoded.py's own loader and halfword parser, so sizes and formats match
+    what the build applied. A patch on the Options overlay fails closed: text speed
+    pins that overlay's hash and rewrites it.
+    """
+    import re,hardcoded
+    patches=hardcoded.load_code_patches() if code_patches is None else code_patches
+    out=[]
+    for cp in patches:
+        if not cp.get('enabled'):continue
+        name=cp.get('id')
+        try:
+            key=cp['file'];off=hardcoded._int(cp['offset'])
+            want=hardcoded.halfwords(cp['expect']);new=hardcoded.halfwords(cp['value'])
+        except (KeyError,TypeError,ValueError) as error:raise ValueError(f'Invalid code patch {name!r}') from error
+        if not want or len(want)!=len(new) or off<0 or any(not 0<=u<=0xffff for u in want+new):
+            raise ValueError(f'Invalid code patch {name!r}')
+        mo=re.fullmatch(r'overlay(\d+)',str(key))
+        if mo and int(mo.group(1))==OVERLAY:
+            raise ValueError(f'Code patch {name} targets overlay {OVERLAY}, which text speed rewrites; review both together')
+        out.append((name,key,off,struct.pack(f'<{len(want)}H',*want),struct.pack(f'<{len(new)}H',*new)))
+    return out
+
+def arm9_code_patches(rom_arm9,main,code_patches=None):
+    """Check every enabled arm9 code patch against the ROM; return them for normalising.
+
+    Offsets index the uncompressed ARM9 file, whose start is the main section. Each
+    patch must lie inside the main section (ITCM/DTCM are pinned and extended by
+    text speed) and currently hold exactly its 'value' or its 'expect' bytes.
+    """
+    patches=[cp for cp in code_patch_ranges(code_patches) if cp[1]=='arm9']
+    if patches and bytes(rom_arm9[:len(main)])!=bytes(main):
+        raise ValueError('ARM9 file does not start with its uncompressed main section')
+    for name,_,off,want,new in patches:
+        if off+len(want)>len(main):raise ValueError(f'Code patch {name} lies outside the ARM9 main section')
+        cur=bytes(main[off:off+len(want)])
+        if cur not in (want,new):raise ValueError(f'Code patch {name}: ARM9+{off:#x} is neither its expect nor its value bytes')
+    return patches
+
+def overlapping(patches,ranges):
+    """Code patches whose bytes overlap any [start,end) ARM9 offset range."""
+    return sorted({name for name,_,off,want,_ in patches for lo,hi in ranges if off<hi and lo<off+len(want)})
+
+def apply(rom,payload=None,code_patches=None):
     payload=load_payload() if payload is None else validate_payload(payload)
     import msgtool as m
     if payload['source_sha256']!=source_digest():raise ValueError('Stale native payload')
-    code=rom.loadArm9();a=bytearray(code.sections[0].data)
-    if digest(a) not in ('b3249c2996c204695a2528e2e52bf0d9841ec05263a6bcecfc7db181204f96cf','83c9bc2098825383107ad85a87f0a27320e3eb7625b07c36b84243d50cb943db'):
-        raise ValueError('Unreviewed ARM9 image')
-    if digest(code.sections[1].data)!='838df87fbcf4107eb85d4c97d9fab741fd0a99d24a4dc85577e3bc8c3eded3c1':
+    code=rom.loadArm9();current=bytes(code.sections[0].data)
+    # Verify the hack's reviewed base ARM9, independent of our reviewed code patches:
+    # put each enabled arm9 code patch back to its 'expect' bytes, then hash. The
+    # text-speed edits below are made on this base and checked against it.
+    cps=arm9_code_patches(rom.arm9,current,code_patches)
+    a=bytearray(current)
+    for _,_,off,want,_ in cps:a[off:off+len(want)]=want
+    if digest(a)!=REVIEWED_BASE_ARM9_SHA256:raise ValueError('Unreviewed ARM9 image')
+    if digest(code.sections[1].data)!=REVIEWED_ITCM_SHA256:
         raise ValueError('Unreviewed ITCM image')
-    if struct.unpack_from('<H',a,0xba9a)[0]!=0x2501:raise ValueError('Text speed requires the demand-loading heap fix')
+    if struct.unpack_from('<H',current,HEAP_FIX[0])[0]!=HEAP_FIX[1]:raise ValueError('Text speed requires the demand-loading heap fix')
+    arm9_ranges=[]
     ov=rom.loadArm9Overlays()[50];original=bytes(ov.data)
     if digest(original)!=OVHASH or ov.bssSize or ov.ramAddress!=OVBASE:raise ValueError('Options overlay changed')
     o=bytearray(original);edits=[]
@@ -131,6 +192,7 @@ def apply(rom,payload=None):
         if bytes(buf[off:off+len(old)])!=old:raise ValueError(f'Unexpected code at {addr:08x}')
         if len(old)!=len(new):raise ValueError('In-place size changed')
         buf[off:off+len(old)]=new;edits.append({'address':hex(addr),'before':old.hex(),'after':new.hex()})
+        if buf is a:arm9_ranges.append((off,off+len(old)))
     def hw(addr,old,new):patch(o,OVBASE,addr,struct.pack('<H',old),struct.pack('<H',new))
     def call(addr,old_target,name):patch(o,OVBASE,addr,bl(addr,old_target),bl(addr,payload['symbols'][name]))
     def append(blob):
@@ -226,6 +288,13 @@ def apply(rom,payload=None):
     if len(matches)!=1:raise ValueError('Row loader callers changed')
     call(OVBASE+matches[0],0x21e5334,'load_rows')
     call(0x21e4b5a,0x20071b0,'exit_free')
+    # Every ARM9 byte text speed reads and rewrites must be the hack's own code.
+    # The heap-fix halfword is the one intended dependency on a code patch; it is
+    # only read, and must already hold that patch's value (checked above).
+    clash=overlapping(cps,arm9_ranges)
+    if clash:raise ValueError('Code patches overlap text-speed ARM9 edits: '+', '.join(clash))
+    # Restore the code patches (none overlaps an edit) on top of the edited base.
+    for _,_,off,want,_ in cps:a[off:off+len(want)]=current[off:off+len(want)]
     # Commit only after all guards and preparation succeeded.
     code.sections[0].data=a;itcm.data=bytearray(itcm.data)+blob+bytes(end-BASE-len(blob))
     rom.arm9=code.save(compress=False)
@@ -235,7 +304,7 @@ def apply(rom,payload=None):
     rom.arm9OverlayTable=bytes(table);rom.files[ov.fileID]=bytes(o)
     return {'itcm_start':hex(BASE),'itcm_end':hex(end),'payload_sha256':digest(blob),'overlay_sha256':digest(o),'arm9_sha256':digest(rom.arm9),'source_code_sha256':source_digest(),'edits':edits,'labels':4}
 
-def verify(rom,report):
+def verify(rom,report,code_patches=None):
     payload=load_payload()
     if report['source_code_sha256']!=source_digest():raise ValueError('Patch source changed')
     if digest(rom.arm9)!=report['arm9_sha256']:raise ValueError('Patched ARM9 changed')
@@ -246,7 +315,7 @@ def verify(rom,report):
     sections=rom.loadArm9().sections
     blob=bytes.fromhex(payload['code'])
     if bytes(sections[1].data[0x620:0x620+len(blob)])!=blob:raise ValueError('Native payload changed')
-    if struct.unpack_from('<H',sections[0].data,0xba9a)[0]!=0x2501:raise ValueError('Heap fix missing')
+    if struct.unpack_from('<H',sections[0].data,HEAP_FIX[0])[0]!=HEAP_FIX[1]:raise ValueError('Heap fix missing')
     # Verify release-critical behaviour independently of the recorded output hashes.
     # This catches future build composition mistakes even if a fresh receipt was
     # recorded after a hook, allocation or default was accidentally overwritten.
@@ -264,6 +333,10 @@ def verify(rom,report):
         0x0202b1d2:struct.pack('<H',0x2203),
         0x0202b1da:struct.pack('<H',0x2103),
     }
+    # Same rule as apply(): no current code patch may own a critical byte.
+    clash=overlapping([cp for cp in code_patch_ranges(code_patches) if cp[1]=='arm9'],
+                      [(addr-ARM9BASE,addr-ARM9BASE+len(want)) for addr,want in critical.items()])
+    if clash:raise ValueError('Code patches overlap the native runtime contract: '+', '.join(clash))
     for addr,want in critical.items():
         off=addr-0x02000000
         if bytes(sections[0].data[off:off+len(want)])!=want:

@@ -145,7 +145,8 @@ class ArtifactTests(unittest.TestCase):
     def test_feature_inputs_fingerprinted_and_mutations_rejected(self):
         original = A.hashes
         feature_inputs = ("tools/text_speed_patch.py", "patches/text_speed/native.c",
-                          "patches/text_speed/labels.h", "patches/text_speed/payload.json")
+                          "patches/text_speed/labels.h", "patches/text_speed/payload.json",
+                          "translate/hardcoded/code_patches.json")
         for name in feature_inputs:
             with self.subTest(name=name):
                 calls = 0

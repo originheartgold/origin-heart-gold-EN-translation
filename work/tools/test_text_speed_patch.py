@@ -87,7 +87,71 @@ class PayloadTests(unittest.TestCase):
         for target in [0x02800000,0x01000000]:
             with self.assertRaises(ValueError):speed.bl(0x02000000,target)
 
+def cp(name,file,offset,expect,value,enabled=True):
+    return {'id':name,'file':file,'offset':hex(offset),'expect':expect,'value':value,'enabled':enabled}
+
+class CodePatchGuardTests(unittest.TestCase):
+    """ARM9 code patches from hardcoded/code_patches.json, without a ROM."""
+    main=bytes(range(256))*4
+
+    def with_bytes(self,off,data):
+        b=bytearray(self.main);b[off:off+len(data)]=data;return bytes(b)
+
+    def test_patch_holding_value_or_expect_is_accepted(self):
+        expect=struct.unpack_from('<H',self.main,0x10)[0]
+        patches=[cp('p','arm9',0x10,hex(expect),'0x2220')]
+        for main in (self.main,self.with_bytes(0x10,struct.pack('<H',0x2220))):
+            self.assertEqual([c[0] for c in speed.arm9_code_patches(main,main,patches)],['p'])
+
+    def test_halfword_runs_use_hardcoded_parser(self):
+        run=' '.join(f'{v:04X}' for v in struct.unpack_from('<3H',self.main,0x20))
+        got=speed.arm9_code_patches(self.main,self.main,[cp('run','arm9',0x20,run,'01DE 01DE 01DE')])
+        self.assertEqual(got[0][3],self.main[0x20:0x26]);self.assertEqual(got[0][4],struct.pack('<3H',0x1de,0x1de,0x1de))
+
+    def test_patch_byte_neither_expect_nor_value_fails(self):
+        expect=struct.unpack_from('<H',self.main,0x10)[0]
+        main=self.with_bytes(0x10,b'\xaa\xbb')
+        with self.assertRaisesRegex(ValueError,'neither its expect nor its value'):
+            speed.arm9_code_patches(main,main,[cp('p','arm9',0x10,hex(expect),'0x2220')])
+
+    def test_disabled_patches_are_ignored_and_bad_ones_fail(self):
+        self.assertEqual(speed.arm9_code_patches(self.main,self.main,[cp('off','arm9',0x10,'0x1','0x2',False)]),[])
+        for bad in (cp('size','arm9',0x10,'0x0100','0101 0202'),cp('wide','arm9',0x10,'0x10000','0x1'),
+                    {'id':'missing','file':'arm9','enabled':True}):
+            with self.subTest(case=bad['id']),self.assertRaisesRegex(ValueError,'Invalid code patch'):
+                speed.arm9_code_patches(self.main,self.main,[bad])
+
+    def test_patch_outside_main_section_or_compressed_arm9_fails(self):
+        with self.assertRaisesRegex(ValueError,'outside the ARM9 main section'):
+            speed.arm9_code_patches(self.main+b'itcm',self.main,[cp('itcm','arm9',len(self.main),'0x7469','0x0')])
+        with self.assertRaisesRegex(ValueError,'uncompressed main section'):
+            speed.arm9_code_patches(b'\xff'+self.main[1:],self.main,[cp('p','arm9',0x10,'0x1110','0x0')])
+
+    def test_overlay50_code_patch_fails(self):
+        for name in ('overlay50','overlay050'):
+            with self.subTest(file=name),self.assertRaisesRegex(ValueError,'targets overlay 50'):
+                speed.arm9_code_patches(self.main,self.main,[cp('opt',name,0x10,'0x1','0x2')])
+        # Other overlays are not text-speed inputs and are left to hardcoded.py.
+        self.assertEqual(speed.arm9_code_patches(self.main,self.main,[cp('o17','overlay17',0x10,'0x1','0x2')]),[])
+
+    def test_overlap_detection_is_byte_exact(self):
+        patches=[('a','arm9',0x10,b'\0\0',b'\1\1'),('b','arm9',0x20,b'\0'*4,b'\1'*4)]
+        self.assertEqual(speed.overlapping(patches,[(0x12,0x20)]),[])
+        self.assertEqual(speed.overlapping(patches,[(0x11,0x12)]),['a'])
+        self.assertEqual(speed.overlapping(patches,[(0x0e,0x24)]),['a','b'])
+        self.assertEqual(speed.overlapping(patches,[(0x23,0x30)]),['b'])
+
+    def test_real_code_patches_are_text_speed_compatible(self):
+        names=[c[0] for c in speed.code_patch_ranges()]
+        self.assertIn('msgload-all',names)
+        heap=[c for c in speed.code_patch_ranges() if c[0]=='msgload-all'][0]
+        self.assertEqual((heap[1],heap[2],heap[4]),('arm9',speed.HEAP_FIX[0],struct.pack('<H',speed.HEAP_FIX[1])))
+
 ROM=os.environ.get('TEXT_SPEED_TEST_ROM')
+def ndspy_reparse(rom):
+    import ndspy.rom
+    return ndspy.rom.NintendoDSRom(rom.save())
+
 @unittest.skipUnless(ROM and Path(ROM).is_file(),'Set TEXT_SPEED_TEST_ROM for local binary tests')
 class RomTests(unittest.TestCase):
     @classmethod
@@ -182,5 +246,67 @@ class RomTests(unittest.TestCase):
                 struct.pack_into('<I',table,off+8,4);break
         rom.arm9OverlayTable=bytes(table)
         with self.assertRaises(ValueError):speed.verify(rom,self.report)
+
+    def code_patches(self):
+        import hardcoded
+        return hardcoded.load_code_patches()
+
+    def arm9_with(self,rom,off,data):
+        a=bytearray(rom.arm9);a[off:off+len(data)]=data;rom.arm9=bytes(a)
+
+    def test_arm9_with_code_patches_applied_passes_and_keeps_them(self):
+        main=self.original.loadArm9().sections[0].data
+        cps=speed.arm9_code_patches(self.original.arm9,main)
+        self.assertTrue(any(bytes(main[off:off+len(new)])==new for _,_,off,_,new in cps))
+        after=self.patched.loadArm9().sections[0].data
+        for name,_,off,want,new in cps:
+            with self.subTest(patch=name):
+                self.assertEqual(bytes(after[off:off+len(new)]),bytes(main[off:off+len(new)]))
+
+    def test_unpatched_base_still_passes(self):
+        # Only the heap fix that text speed needs; every other arm9 code patch at 'expect'.
+        rom=copy.deepcopy(self.original);main=rom.loadArm9().sections[0].data
+        for name,_,off,want,_ in speed.arm9_code_patches(rom.arm9,main):
+            if name!='msgload-all':self.arm9_with(rom,off,want)
+        report=speed.apply(rom)
+        self.assertEqual(speed.verify(ndspy_reparse(rom),report)['status'],'passed')
+        after=rom.loadArm9().sections[0].data
+        self.assertEqual(bytes(after[0x8c262:0x8c264]),struct.pack('<H',0x221a))
+
+    def test_patch_byte_neither_expect_nor_value_fails_before_mutation(self):
+        rom=copy.deepcopy(self.original);self.arm9_with(rom,0x8c262,struct.pack('<H',0x2221))
+        before=rom.save()
+        with self.assertRaisesRegex(ValueError,'ivev-panel-iv-x.*neither'):speed.apply(rom)
+        self.assertEqual(before,rom.save())
+
+    def test_synthetic_code_patch_overlapping_text_speed_edit_fails(self):
+        main=self.original.loadArm9().sections[0].data
+        for off in (0x20a18,0x20a1a,0x2b1d2,0xd1a28):
+            old=struct.unpack_from('<H',main,off)[0]
+            for state in ('expect','value'):
+                with self.subTest(offset=hex(off),state=state):
+                    rom=copy.deepcopy(self.original)
+                    if state=='value':self.arm9_with(rom,off,struct.pack('<H',old^0x40))
+                    synthetic=dict(id='synthetic',file='arm9',offset=hex(off),expect=hex(old),value=hex(old^0x40),enabled=True)
+                    before=rom.save()
+                    with self.assertRaisesRegex(ValueError,'overlap text-speed ARM9 edits: synthetic'):
+                        speed.apply(rom,code_patches=self.code_patches()+[synthetic])
+                    self.assertEqual(before,rom.save())
+
+    def test_synthetic_code_patch_overlapping_runtime_contract_fails_verify(self):
+        data=self.patched.loadArm9().sections[0].data
+        old=struct.unpack_from('<H',data,0x2b1d2)[0]
+        synthetic=dict(id='synthetic',file='arm9',offset='0x2b1d2',expect=hex(old),value=hex(old),enabled=True)
+        with self.assertRaisesRegex(ValueError,'native runtime contract: synthetic'):
+            speed.verify(self.patched,self.report,code_patches=self.code_patches()+[synthetic])
+
+    def test_overlay50_code_patch_fails_before_mutation(self):
+        synthetic=dict(id='options',file='overlay50',offset='0x0',expect='0x0',value='0x1',enabled=True)
+        rom=copy.deepcopy(self.original);before=rom.save()
+        with self.assertRaisesRegex(ValueError,'targets overlay 50'):
+            speed.apply(rom,code_patches=self.code_patches()+[synthetic])
+        self.assertEqual(before,rom.save())
+        with self.assertRaisesRegex(ValueError,'targets overlay 50'):
+            speed.verify(self.patched,self.report,code_patches=self.code_patches()+[synthetic])
 
 if __name__=='__main__':unittest.main()

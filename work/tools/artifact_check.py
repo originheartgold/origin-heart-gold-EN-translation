@@ -76,6 +76,8 @@ def check(a, export_fn=None, verify_fn=None):
                          build.TOOLS / "charmaps" / "charmap_zh_xzonn_gen4.tsv",
                          build.WORK / "graphics" / "layout_checks.json",
                          build.TOOLS / "text_speed_patch.py",
+                         # text_speed_patch.verify() checks code patches against its contract.
+                         build.WORK / "translate" / "hardcoded" / "code_patches.json",
                          *(build.text_speed_patch.ASSETS / name for name in
                            ("native.c", "labels.h", "payload.json")))}
         counts, problems = export_fn(a.ws, a.extract, a.output / "export",

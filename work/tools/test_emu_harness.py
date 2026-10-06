@@ -323,10 +323,6 @@ class ExecutionHookFailures(unittest.TestCase):
         h.emu.memory.register_exec.assert_called_with(0x02020A1C, None)
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class Guide0107(unittest.TestCase):
     """emu_guide0107: the pure parts (registry, judges, Pokemon field decoder)."""
 
@@ -675,3 +671,7 @@ class OpenPoints(unittest.TestCase):
         self.assertEqual(O.judge_arceus(res), "plate_type")
         self.assertEqual(O.judge_rockruff({"after": {"species": 745, "form": 0}}), "midday")
         self.assertEqual(O.judge_rockruff({"after": {"species": 744, "form": 0}}), "no_evolution")
+
+
+if __name__ == "__main__":
+    unittest.main()
