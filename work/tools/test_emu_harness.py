@@ -323,6 +323,60 @@ class ExecutionHookFailures(unittest.TestCase):
         h.emu.memory.register_exec.assert_called_with(0x02020A1C, None)
 
 
+class HookOwnershipAndInput(unittest.TestCase):
+    """Measurement hooks cannot be replaced silently; every press() is a real press edge."""
+
+    def harness(self):
+        from unittest.mock import Mock
+        h = E.Harness.__new__(E.Harness)
+        h.emu = Mock()
+        h.frame = 0
+        h._per_frame = []
+        h._hook_error = None
+        h._held = set()
+        h._keys = {k: i for i, k in enumerate(E.KEYS)}
+        h._keymask = lambda k: 1 << k
+        h.emu.cycle.side_effect = lambda **kw: None
+        return h
+
+    def test_exclusive_hook_cannot_be_replaced_silently(self):
+        h = self.harness()
+        h.on_exec(0x02002680, lambda h: None, exclusive=True)
+        with self.assertRaisesRegex(ValueError, "0x02002680"):
+            h.on_exec(0x02002680, lambda h: None)
+        h.on_exec(0x02002680, lambda h: None, replace=True)
+        with self.assertRaises(ValueError):       # still exclusive after a deliberate replacement
+            h.on_exec(0x02002680, lambda h: None)
+        h.on_exec(0x02002680, None)                # unregistering releases the address
+        h.on_exec(0x02002680, lambda h: None)
+
+    def test_exclusive_registration_over_an_existing_hook_fails(self):
+        h = self.harness()
+        h.on_exec(0x0201B33C, lambda h: None)
+        with self.assertRaises(ValueError):
+            h.on_exec(0x0201B33C, lambda h: None, exclusive=True)
+        h.on_exec(0x0201B33C, lambda h: None)      # ordinary hooks keep the old replace behaviour
+
+    def test_press_after_release_in_the_same_frame_leaves_the_key_up_first(self):
+        h = self.harness()
+        h.hold("A")
+        h.step(5)
+        h.release()
+        events = []
+        h.emu.input.keypad_add_key.side_effect = lambda m: events.append(("down", h.frame))
+        h.emu.input.keypad_rm_key.side_effect = lambda m: events.append(("up", h.frame))
+        h.press("A", frames=2)
+        self.assertEqual(events, [("down", 6), ("up", 8)])
+
+    def test_pressing_a_held_key_is_an_error(self):
+        h = self.harness()
+        h.hold("A")
+        with self.assertRaisesRegex(ValueError, "held"):
+            h.press("A")
+        h.press("B", after=1)                      # other keys can still be pressed while A is held
+        self.assertEqual(h.frame, 7)
+
+
 class Guide0107(unittest.TestCase):
     """emu_guide0107: the pure parts (registry, judges, Pokemon field decoder)."""
 

@@ -435,7 +435,13 @@ class MapGrid:
 class Harness:
     """One emulator instance. Use as a context manager."""
 
-    def __init__(self, rom=DEF_ROM_CN, sav=None, savestate=None, out=DEF_OUT, verbose=True):
+    def __init__(self, rom=DEF_ROM_CN, sav=None, savestate=None, out=DEF_OUT, verbose=True, rtc=None):
+        """rtc: a datetime. DeSmuME's real-time clock otherwise follows the host clock, and the game
+        reads it at boot (and later), so two runs of the same inputs diverge with wall time. With rtc
+        the emulator records a throw-away movie that starts from the battery file (or a blank
+        battery) with its clock fixed at rtc and advanced by emulated frames: runs are repeatable.
+        Savestates still work; but emu.reset() during the movie restores the movie's starting
+        battery, so in-game saves do not survive a reset: leave rtc unset for save/reset tests."""
         from desmume.emulator import DeSmuME
         from desmume.controls import Keys, keymask
         self._keymask = keymask
@@ -461,6 +467,14 @@ class Harness:
             if not self.emu.backup.import_file(str(Path(sav).resolve()), 524288):
                 raise RuntimeError(f"could not import save {sav}")
             self.emu.reset()
+        if rtc is not None:
+            from desmume.emulator import DeSmuME_Date, StartFrom
+            date = DeSmuME_Date(rtc.year, rtc.month, rtc.day, rtc.hour, rtc.minute, rtc.second, 0)
+            self.emu.movie.record(str(self._tmp / "rtc.dsm"), "emu_harness",
+                                  StartFrom.START_SRAM if sav else StartFrom.START_BLANK,
+                                  str(Path(sav).resolve()) if sav else "", date)
+            if not self.emu.movie.is_recording():
+                raise RuntimeError("could not start the fixed-clock movie")
         if savestate:
             self.emu.savestate.load_file(str(Path(savestate).resolve()))
         self.mem = self.emu.memory.unsigned
@@ -536,8 +550,21 @@ class Harness:
     def w32(self, a, v):
         self.emu.memory.write_long(a, v & 0xFFFFFFFF)
 
-    def on_exec(self, addr, fn):
-        """Call fn(harness) whenever the ARM9 executes addr (Thumb: even address). fn reads self.reg."""
+    def on_exec(self, addr, fn, exclusive=False, replace=False):
+        """Call fn(harness) whenever the ARM9 executes addr (Thumb: even address). fn reads self.reg.
+
+        DeSmuME keeps one callback per address, so a second registration silently replaces
+        the first. exclusive=True marks a measurement hook: registering it over an existing
+        hook, or any later registration over it, raises unless replace=True. fn=None removes
+        the hook."""
+        hooks = self.__dict__.setdefault("_hooks", {})
+        if fn is None:
+            hooks.pop(addr, None)
+        else:
+            if addr in hooks and (exclusive or hooks[addr]) and not replace:
+                raise ValueError(f"ARM9 execution hook at {addr:#010x} is already registered "
+                                 "(DeSmuME would replace it silently)")
+            hooks[addr] = exclusive or (hooks.get(addr, False) and replace)
         # ctypes callbacks cannot propagate Python exceptions through the emulator.
         # Keep the first failure and raise it on the Python side of cycle(), so an
         # assertion in instrumentation can never silently produce a passing run.
@@ -575,11 +602,20 @@ class Harness:
             self._held.add(k)
 
     def release(self, *keys):
+        released = self.__dict__.setdefault("_released", {})
         for k in keys or list(self._held):
             self.emu.input.keypad_rm_key(self._keymask(self._keys[k]))
             self._held.discard(k)
+            released[k] = self.frame
 
     def press(self, key, frames=6, after=0):
+        """A new press of `key`: the game must see it up, then down. Pressing a key that is
+        held cannot create a press edge, so it is an error; a key released in this same frame
+        is first left up for one frame."""
+        if key in self._held:
+            raise ValueError(f"{key} is held; release it before pressing it again")
+        if self.__dict__.get("_released", {}).get(key) == self.frame:
+            self.step(1)
         self.hold(key)
         self.step(frames)
         self.release(key)

@@ -36,5 +36,7 @@ def main():
             finally:e.destroy()
         assert hashlib.sha256(a.rom.read_bytes()).hexdigest()==identity
         report['status']='passed'
-    finally:(a.out/'report.json').write_text(json.dumps(report,indent=2))
+    except BaseException as exc:
+        report.setdefault('errors',[]).append(f'{type(exc).__name__}: {exc}');raise
+    finally:(a.out/'report.json').write_text(json.dumps(report,indent=2,default=str))
 if __name__=='__main__':main()

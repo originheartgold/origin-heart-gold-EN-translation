@@ -104,3 +104,46 @@ out of scope; valid old battery saves require no preparation before upgrading.
 Exploratory `harness-validation*` and the initial `merged-validation/corpus/`
 runs are superseded; some were stopped after the ID-truncation discovery. Only
 `corpus-wide/report.json` is the completed, corrected corpus release evidence.
+
+## Harness audit and fail-closed gates — 2026-10-06
+
+The runtime gates were audited claim by claim against a fresh build of this
+branch (`e9aedbb1…2d13`, 760-byte payload). Gaps found and closed:
+
+- **No original-printer baseline for real messages.** The corpus only compared
+  the three speeds with each other. It now also runs mode 3 (reserved value →
+  original task) and requires identical page pixels, glyph count and layout.
+- **Cadence was asserted on one page only.** Every corpus, battle, callback/input
+  and natural-dialogue message is now judged per native task against the design
+  budget (`text_speed_checks.cadence`): never more than the budget, and at least
+  half of the tasks must use it (a ROM that prints one glyph per task fails).
+  The phase byte is read at task entry, so SLOW's 1/2 alternation is checked.
+- **Battle pauses were recorded, not asserted.** `battle_pacing.py` now replays
+  battle start and three turns from shared checkpoints for the original and all
+  three speeds, so the same messages print, and requires the pause after each
+  completed message and its on-screen dwell to equal the original within 2 frames.
+  Observed: every pause identical, and each segment is shorter by exactly the
+  printing frames saved.
+- **Held input never released.** Held A/B cases now release and press once; page 2
+  must start with the original's latency. A new tap case taps A throughout. This
+  check first caught a harness defect: `release()` followed by `press()` in the
+  same frame never gives the game a press edge. `press()` now leaves the key up
+  for a frame in that case and refuses to "press" a held key.
+- **No English label check.** The Options gates now inspect the TEXT SPEED row in
+  screenshots (three labels inside their columns, selected colour, no spill).
+- **Memory.** Heap walks only proved integrity. Printer allocations are now paired
+  with frees, and per-heap usage may not grow across 24 messages; the ITCM code,
+  payload and SDK arena are checked at the end of every session, not only at boot.
+- **Non-repeatable timing.** DeSmuME's real-time clock follows the host clock and
+  the game reads it at boot, so frame spans changed between runs even with the
+  game's clock cache pinned. `Harness(rtc=...)` fixes the emulated RTC through a
+  movie recording; repeated runs then match frame for frame.
+- **Silent hook replacement.** DeSmuME keeps one exec callback per address.
+  Measurement hooks are now registered `exclusive` and a later collision raises.
+- **Frame order assumed monotonic.** In 60 fps field scenes the game drops frames
+  while a task renders two or three glyphs, so FAST can take as many frames as
+  MEDIUM, and MEDIUM as many as SLOW. Printing frames excluding lag remain strictly
+  ordered and are asserted; lag-explained inversions are reported as warnings.
+
+See [the recipe](text_speed_release_checks.md) for the gate table, the single
+entry point and the fault fixtures used to prove each check fails when it should.

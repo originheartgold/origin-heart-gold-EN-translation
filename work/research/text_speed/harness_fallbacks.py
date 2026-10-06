@@ -7,30 +7,22 @@ These are branch tests, not natural gameplay claims. Inputs are never modified.
 import argparse
 from collections import Counter
 import json
-from pathlib import Path
-import sys
 
-from harness_regression import ROOT, digest
-sys.path.insert(0, str(ROOT/'work/tools'))
+from gate_common import (CLOCK, start_game, add_arguments, identity, inputs_unchanged, itcm_errors, load_expected_payload,
+                         resolve)
+import text_speed_checks as checks
 
 
 def main():
     from emu_harness import Harness
-    from text_speed_patch import load_payload
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--rom', required=True, type=Path)
-    p.add_argument('--save', required=True, type=Path)
-    p.add_argument('--out', required=True, type=Path)
-    a = p.parse_args()
-    a.rom,a.save,a.out = a.rom.resolve(),a.save.resolve(),a.out.resolve()
-    if not a.out.is_relative_to(ROOT/'work/build') or a.out == ROOT/'work/build':
-        p.error('Output must be in this worktree work/build')
-    a.out.mkdir(parents=True,exist_ok=True)
-    report = {'status':'failed','inputs':{str(x):digest(x) for x in (a.rom,a.save)},'cases':{}}
-    payload=load_payload()
+    add_arguments(p)
+    a = resolve(p, p.parse_args())
+    payload = load_expected_payload(a)
+    report = {'status':'failed',**identity(a,payload),'cases':{},'errors':[]}
     try:
-        with Harness(a.rom,a.save,out=a.out,verbose=False) as h:
-            h.boot_to_menu();h.continue_game()
+        with Harness(a.rom,a.save,out=a.out,verbose=False, rtc=CLOCK) as h:
+            start_game(h)
             checkpoint=a.out/'fresh-candidate.dst'
             h.save_state(checkpoint)
             cases=[('slow',0,0,False,0),('medium',1,0,False,0),('fast',2,0,False,0),
@@ -90,18 +82,28 @@ def main():
             # Compare task cadence exactly; VBlank boundaries can differ by one frame.
             assert cases['invalid']['glyph_tasks']==cases['null']['glyph_tasks']
             assert max(abs(a-b) for a,b in zip(cases['invalid']['glyphs'],cases['null']['glyphs']))<=1
-            assert cases['invalid']['span']>cases['slow']['span']
-            assert cases['slow']['span']>cases['medium']['span']>cases['fast']['span']
+            for name in ('slow','medium','fast','invalid'):
+                frames=sorted(set(cases[name]['glyphs']))
+                cases[name]['lag_frames']=sum(b-a-1 for a,b in zip(frames,frames[1:]))
+            names={3:'invalid',0:'slow',1:'medium',2:'fast'}
+            order,warnings=checks.speed_order_with_lag({m:cases[n]['span'] for m,n in names.items()},
+                                                       {m:cases[n]['lag_frames'] for m,n in names.items()})
+            report['errors'].extend(f'frame order: {e}' for e in order)
+            report['warnings']=warnings
             for name,budgets in (('slow',{1,2}),('medium',{2}),('fast',{3})):
                 observed=set(Counter(cases[name]['glyph_tasks']).values())
                 assert observed==budgets,(name,observed)
 
             assert cases['delay-slow']['glyphs']==cases['delay-medium']['glyphs']==cases['delay-fast']['glyphs']
             assert cases['delay-slow']['span']>cases['slow']['span']
-        assert all(digest(Path(path))==sha for path,sha in report['inputs'].items())
-        report['status']='passed'
+            report['errors'].extend(itcm_errors(h,payload))
+        assert inputs_unchanged(report),'input modified'
+        if not report['errors']:report['status']='passed'
+    except BaseException as exc:
+        report['errors'].append(f'{type(exc).__name__}: {exc}');raise
     finally:
-        (a.out/'report.json').write_text(json.dumps(report,indent=2))
+        (a.out/'report.json').write_text(json.dumps(report,indent=2,default=str))
+    if report['status']!='passed':raise SystemExit('\n'.join(report['errors']))
 
 
 if __name__=='__main__':main()

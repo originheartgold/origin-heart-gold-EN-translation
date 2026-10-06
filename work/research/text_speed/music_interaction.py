@@ -5,40 +5,24 @@ Hooks observe the original narrowed music getter and heap; no Options RAM writes
 """
 import argparse
 import json
-import sys
-from pathlib import Path
-from harness_regression import ROOT, digest
-sys.path.insert(0, str(ROOT / 'work/tools'))
+from gate_common import (CLOCK, start_game, add_arguments, attach_probe, identity, inputs_unchanged, itcm_errors,
+                         load_expected_payload, memory_errors, memory_summary, resolve)
 
 
 def main():
     from emu_harness import Harness
-    from text_speed_patch import load_payload
-    from memcheck import Probe
     parser = argparse.ArgumentParser(description=__doc__)
-    for name in ('rom', 'save', 'out'):
-        parser.add_argument('--' + name, type=Path, required=True)
-    args = parser.parse_args()
-    args.rom, args.save, args.out = (x.resolve() for x in (args.rom, args.save, args.out))
-    if not args.out.is_relative_to(ROOT / 'work/build') or args.out == ROOT / 'work/build':
-        parser.error('Output must be a separate directory under this worktree work/build')
-    args.out.mkdir(parents=True, exist_ok=True)
-    report = {'status': 'failed', 'inputs': {str(x): digest(x) for x in (args.rom, args.save)},
-              'cross_product': [], 'neighbor_rows': [], 'getter_checks': 0}
-    payload = load_payload()
+    add_arguments(parser)
+    args = resolve(parser, parser.parse_args())
+    payload = load_expected_payload(args)
+    report = {'status': 'failed', **identity(args, payload),
+              'cross_product': [], 'neighbor_rows': [], 'getter_checks': 0, 'errors': []}
     try:
-        with Harness(args.rom, args.save, out=args.out, verbose=False) as h:
-            h.boot_to_menu(); h.continue_game()
-            code = bytes.fromhex(payload['code'])
-            assert h.read(payload['base'], len(code)) == code
-            probe = Probe(h.emu); probe.armed = True
-            def frame(h):
-                if h.frame % 10 == 0 and probe.corrupt is None:
-                    probe.frame = h.frame
-                    bad = probe.heap_walk()
-                    if bad:
-                        probe.corrupt = (h.frame, bad)
-            h.on_frame(frame)
+        with Harness(args.rom, args.save, out=args.out, verbose=False, rtc=CLOCK) as h:
+            start_game(h)
+            start = itcm_errors(h, payload)
+            assert not start, start
+            probe = attach_probe(h)
             menus = []; exits = []; getter = []
             h.on_exec(payload['symbols']['load_rows'] & ~1, lambda h: menus.append(h.reg.r0))
             h.on_exec(payload['symbols']['exit_free'] & ~1, lambda h: exits.append(h.frame))
@@ -120,15 +104,16 @@ def main():
                                                 'restored': True})
             h.screenshot('completed-field')
             assert not getter and report['getter_checks'] >= 9
-            report['memory'] = {key: getattr(probe, key) for key in
-                                ('heap_checks', 'corrupt', 'fails', 'nullw', 'text_rejections',
-                                 'heap_table_errors', 'text_probe_errors')}
-            assert probe.heap_checks and not any(value for key, value in report['memory'].items()
-                                                 if key != 'heap_checks')
-        assert all(digest(Path(path)) == sha for path, sha in report['inputs'].items())
+            report['memory'] = memory_summary(probe)
+            problems = memory_errors(report['memory']) + itcm_errors(h, payload)
+            assert not problems, problems
+        assert inputs_unchanged(report), 'input modified'
         report['status'] = 'passed'
+    except BaseException as exc:
+        report['errors'].append(f'{type(exc).__name__}: {exc}')
+        raise
     finally:
-        (args.out / 'report.json').write_text(json.dumps(report, indent=2))
+        (args.out / 'report.json').write_text(json.dumps(report, indent=2, default=str))
 
 
 if __name__ == '__main__':

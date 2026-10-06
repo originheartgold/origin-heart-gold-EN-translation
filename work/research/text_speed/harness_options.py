@@ -1,35 +1,29 @@
-"""Native Options input boundaries, cancellation and repeated entry via emu_harness."""
+"""Native Options input boundaries, cancellation and repeated entry via emu_harness.
+
+Every time the menu is reopened after a commit (and for the reserved value), the
+screenshot's TEXT SPEED row must show three separate English labels, each inside
+its own touch column, only the stored choice in the selected colour, and nothing
+spilling out of the row (text_speed_checks.option_label_errors).
+"""
 import argparse
 import json
-from pathlib import Path
-import sys
-from harness_regression import ROOT, digest
-sys.path.insert(0,str(ROOT/'work/tools'))
+from gate_common import (CLOCK, start_game, add_arguments, attach_probe, identity, inputs_unchanged, itcm_errors,
+                         load_expected_payload, memory_errors, memory_summary, resolve)
+import text_speed_checks as checks
 
 
 def main():
     from emu_harness import Harness
-    from text_speed_patch import load_payload
-    from memcheck import Probe
     p=argparse.ArgumentParser(description=__doc__)
-    for name in ('rom','save','out'):p.add_argument('--'+name,type=Path,required=True)
-    a=p.parse_args()
-    a.rom,a.save,a.out=a.rom.resolve(),a.save.resolve(),a.out.resolve()
-    if not a.out.is_relative_to(ROOT/'work/build') or a.out==ROOT/'work/build':p.error('Use this worktree work/build')
-    a.out.mkdir(parents=True,exist_ok=True)
-    report={'status':'failed','inputs':{str(x):digest(x) for x in (a.rom,a.save)},'checks':[]}
+    add_arguments(p)
+    a=resolve(p,p.parse_args())
+    payload=load_expected_payload(a)
+    report={'status':'failed',**identity(a,payload),'checks':[],'errors':[]}
     try:
-        with Harness(a.rom,a.save,out=a.out,verbose=False) as h:
-            h.boot_to_menu();h.continue_game()
-            payload=load_payload();code=bytes.fromhex(payload['code'])
-            assert h.read(payload['base'],len(code))==code
-            probe=Probe(h.emu);probe.armed=True
-            def frame(h):
-                probe.frame=h.frame
-                if h.frame%10==0 and probe.corrupt is None:
-                    bad=probe.heap_walk()
-                    if bad:probe.corrupt=(h.frame,bad)
-            h.on_frame(frame)
+        with Harness(a.rom,a.save,out=a.out,verbose=False, rtc=CLOCK) as h:
+            start_game(h)
+            start=itcm_errors(h,payload);assert not start,start
+            probe=attach_probe(h)
             menus=[];exits=[]
             h.on_exec(payload['symbols']['load_rows']&~1,lambda h:menus.append(h.reg.r0))
             h.on_exec(payload['symbols']['exit_free']&~1,lambda h:exits.append(h.frame))
@@ -43,8 +37,16 @@ def main():
                 h.press(key,after=300)
                 assert len(exits)==count+1, 'Options did not exit'
                 h.press('B',after=90)
+            labels=report['labels']=[]
+            def check_labels(name,shown):
+                img=h.emu.screenshot().convert('RGB')
+                img.save(a.out/f'labels-{name}.png')
+                problems=checks.option_label_errors(img,shown)
+                labels.append({'case':name,'shown':shown,'errors':problems})
+                assert not problems,(name,problems)
             original=h.u16(h.array(1))
             d=open_menu()
+            check_labels('legacy-open',0)
             row=lambda:(h.u32(d+16)>>2)&7
             assert row()==0
             h.press('UP',after=30);assert row()==7
@@ -70,6 +72,7 @@ def main():
                 d=open_menu()
                 before=h.u16(h.array(1))
                 assert h.u16(d+0x27e)==(before>>2)&3
+                check_labels(f'reopen-{(before>>2)&3}',(before>>2)&3)
                 h.touch(x,152,after=30)
                 assert h.u16(d+0x27e)==mode and h.u16(h.array(1))==before
                 h.press('DOWN',after=30);h.press('LEFT',after=30)
@@ -79,17 +82,26 @@ def main():
             # Reserved raw value 3 is a controlled corrupt/unknown-setting case.
             h.w16(h.array(1),(original&~12)|12)
             d=open_menu();assert h.u16(d+0x27e)==1
+            check_labels('reserved-3',1)
             leave('B');assert h.u16(h.array(1))==(original&~12)|12
             d=open_menu();assert h.u16(d+0x27e)==1
             h.touch(149,180,after=300);h.press('B',after=90)
             assert h.u16(h.array(1))==(original&~12)|4
             report['checks'].append('reserved value displays MEDIUM; Cancel preserves it, Confirm normalizes it')
-            report['memory']={k:getattr(probe,k) for k in ('heap_checks','corrupt','fails','nullw','text_rejections','heap_table_errors','text_probe_errors')}
-            assert probe.heap_checks and not any(v for k,v in report['memory'].items() if k!='heap_checks')
-        assert all(digest(Path(path))==sha for path,sha in report['inputs'].items())
+            d=open_menu();check_labels('final-1',1);leave('B')
+            assert len(labels)==6,labels
+            report['checks'].append('English labels render inside their columns at every value (6 screenshots)')
+            report['itcm']=itcm_errors(h,payload)
+            assert not report['itcm'],report['itcm']
+            report['memory']=memory_summary(probe)
+            problems=memory_errors(report['memory']);assert not problems,problems
+        assert inputs_unchanged(report),'input modified'
         report['status']='passed'
+    except BaseException as exc:
+        report['errors'].append(f'{type(exc).__name__}: {exc}')
+        raise
     finally:
-        (a.out/'report.json').write_text(json.dumps(report,indent=2))
+        (a.out/'report.json').write_text(json.dumps(report,indent=2,default=str))
 
 
 if __name__=='__main__':main()

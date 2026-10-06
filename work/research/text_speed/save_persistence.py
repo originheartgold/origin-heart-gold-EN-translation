@@ -1,22 +1,25 @@
-"""Native Options -> actual in-game save -> reset/Continue for all three speeds."""
-import argparse,json,sys
-from pathlib import Path
-from harness_regression import ROOT,digest
-sys.path.insert(0,str(ROOT/'work/tools'))
+"""Native Options -> actual in-game save -> reset/Continue for all three speeds.
+
+No fixed-clock movie here: a reset during DeSmuME movie recording restores the
+movie's starting battery, which would discard the in-game save under test. This
+gate asserts stored values, not frame timing, so host-clock drift does not matter.
+Each reload also checks the ITCM payload/arena and that the reopened menu shows
+the stored choice in the English labels (text_speed_checks.option_label_errors).
+"""
+import argparse,json
+from gate_common import start_game,add_arguments,identity,inputs_unchanged,itcm_errors,load_expected_payload,resolve
+import text_speed_checks as checks
 
 def main():
     from emu_harness import Harness
-    from text_speed_patch import load_payload
     p=argparse.ArgumentParser(description=__doc__)
-    for name in ('rom','save','out'):p.add_argument('--'+name,type=Path,required=True)
-    a=p.parse_args();a.rom,a.save,a.out=a.rom.resolve(),a.save.resolve(),a.out.resolve()
-    if not a.out.is_relative_to(ROOT/'work/build') or a.out==ROOT/'work/build':p.error('Use work/build')
-    a.out.mkdir(parents=True,exist_ok=True)
-    report={'status':'failed','inputs':{str(x):digest(x) for x in (a.rom,a.save)},'modes':[]}
-    payload=load_payload()
+    add_arguments(p)
+    a=resolve(p,p.parse_args())
+    payload=load_expected_payload(a)
+    report={'status':'failed',**identity(a,payload),'modes':[],'errors':[]}
     try:
         with Harness(a.rom,a.save,out=a.out,verbose=False) as h:
-            h.boot_to_menu();h.continue_game();original=h.u16(h.array(1))
+            start_game(h);original=h.u16(h.array(1))
             assert original&12==0,'requires legacy save'
             menus=[]
             h.on_exec(payload['symbols']['load_rows']&~1,lambda h:menus.append(h.reg.r0))
@@ -32,13 +35,18 @@ def main():
                 h.screenshot(f'{mode}-saved')
                 h.emu.reset();menus.clear()
                 h.boot_to_menu();h.continue_game()
-                assert h.read(payload['base'],len(bytes.fromhex(payload['code'])))==bytes.fromhex(payload['code'])
+                problems=itcm_errors(h,payload);assert not problems,problems
                 actual=h.u16(h.array(1));assert actual==expected,(mode,actual,expected)
                 h.press('X',after=90);h.touch(124,115,after=300)
                 assert menus and h.u16(menus[-1]+0x27e)==mode
-                h.screenshot(f'{mode}-reloaded');h.press('B',after=300);h.press('B',after=90)
+                h.screenshot(f'{mode}-reloaded')
+                problems=checks.option_label_errors(h.emu.screenshot().convert('RGB'),mode);assert not problems,problems
+                h.press('B',after=300);h.press('B',after=90)
                 report['modes'].append({'mode':mode,'options_after_reset':actual})
-        assert all(digest(Path(path))==sha for path,sha in report['inputs'].items())
+        assert len(report['modes'])==3
+        assert inputs_unchanged(report),'input modified'
         report['status']='passed'
-    finally:(a.out/'report.json').write_text(json.dumps(report,indent=2))
+    except BaseException as exc:
+        report['errors'].append(f'{type(exc).__name__}: {exc}');raise
+    finally:(a.out/'report.json').write_text(json.dumps(report,indent=2,default=str))
 if __name__=='__main__':main()
