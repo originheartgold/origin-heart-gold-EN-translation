@@ -326,10 +326,10 @@
   {
    "id": 40,
    "zh": "忘记{NEWLINE}{VAR:0106:1},可以吗？",
-   "en": "Forget{NEWLINE}{VAR:0106:1}. Is that OK?",
+   "en": "Forget {VAR:0106:1}. Is that OK?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "emulator check (D-1138, item 4): one line like #44; \"Forget\" alone on line 1 read oddly"
   },
   {
    "id": 41,
