@@ -398,3 +398,33 @@ class HackBugs(unittest.TestCase):
         self.assertEqual(H.fateful(new), 1)
         self.assertEqual(E.decode_party_pokemon(new)["species"], 492)
         self.assertTrue(E.decode_party_pokemon(new)["checksum_ok"])
+
+
+class VerifyHelpers(unittest.TestCase):
+    """emu_verify: message ids from traced rows, MsgLog filtering, static message references (no ROM run)."""
+
+    def test_msg_ids_and_printed(self):
+        import emu_verify as V
+
+        class Tr:
+            rows = [("NPCMsg", 10, 0, 1, bytes([7, 0, 0, 0])), ("GenderMsgBox", 13, 0, 2, bytes([5, 6, 0, 0])),
+                    ("WaitButton", 16, 0, 3, b"\0\0\0\0"), ("NonNPCMsg", 18, 0, 4, bytes([200, 1, 0, 0]))]
+        self.assertEqual(V.msg_ids(Tr.rows[0]), [7])
+        self.assertEqual(V.msg_ids(Tr.rows[1]), [5, 6])
+        self.assertEqual(V.msg_ids(Tr.rows[2]), [])
+        self.assertEqual(V.printed(Tr()), [7, [5, 6], 200])
+
+    def test_msglog_read(self):
+        import emu_verify as V
+        ml = V.MsgLog.__new__(V.MsgLog)
+        ml.rows = [(27, 816, 0, 1), (27, 816, 0, 2), (16, 3, 5, 3), (27, 2, 4, 4), (27, 816, 5, 5)]
+        self.assertEqual(ml.read(), [(816, 0), (2, 4), (816, 5)])
+        self.assertEqual(ml.ids(816), [0, 5])
+        self.assertEqual(ml.read(816, since=2), [(816, 5)])
+
+    def test_cases_have_records(self):
+        import emu_verify as V
+        for name, (fn, variants, judge, records) in V.CASES.items():
+            self.assertTrue(callable(fn), name)
+            self.assertTrue(records.startswith("D-"), name)
+        self.assertLessEqual(set(V.SUITE_EXPECT), set(V.CASES))

@@ -1725,9 +1725,17 @@ def _check_calendar(rom, out):
     return emu_calendar.suite_check(rom, out)
 
 
+def _check_verify(rom, out):
+    """Verify-in-game records: placeholders never printed, Cerulean Gym statue branches, the Rocket-costume
+    nurse line (emu_verify.py SUITE_EXPECT)."""
+    import emu_verify
+    return emu_verify.suite_check(rom, out)
+
+
 SUITE_CHECKS = {"unown": _check_unown, "palpark": _check_palpark, "arceus": _check_arceus,
                 "evolve": _check_evolve, "dex": _check_dex, "skitty": _check_skitty, "guide0107": _check_guide0107,
-                "guide0813": _check_guide0813, "calendar": _check_calendar, "hackbugs": _check_hackbugs}
+                "guide0813": _check_guide0813, "calendar": _check_calendar, "hackbugs": _check_hackbugs,
+                "verify": _check_verify}
 
 
 def cmd_suite(a):
@@ -1781,6 +1789,11 @@ def _cmd_guide0813(a):
 def _cmd_hackbugs(a):
     import emu_hackbugs
     return emu_hackbugs.cmd(a)
+
+
+def _cmd_verify(a):
+    import emu_verify
+    return emu_verify.cmd(a)
 
 
 def _cmd_calendar(a):
@@ -1884,9 +1897,10 @@ def main(argv=None):
     sk.add_argument("--part", choices=("a", "b"), help=argparse.SUPPRESS)
     for gname, mod, chap in (("guide0107", "emu_guide0107.py", "01-07"),
                              ("guide0813", "emu_guide0813.py", "08-13 and known issues"),
-                             ("hackbugs", "emu_hackbugs.py", None)):
+                             ("hackbugs", "emu_hackbugs.py", None), ("verify", "emu_verify.py", None)):
         g7 = sub.add_parser(gname, help=f"checks for the hedged claims in guide chapters {chap} ({mod})" if chap
-                            else f"checks for the open hack-finding records of the register ({mod})")
+                            else f"checks for the open {'verify-in-game' if gname == 'verify' else 'hack-finding'}"
+                            f" records of the register ({mod})")
         g7.add_argument("--case", default="all", help=f"comma list of case names (see {mod})")
         g7.add_argument("--lang", choices=("cn", "en", "both"), default="cn")
         g7.add_argument("--rom-cn", default=str(DEF_ROM_CN))
@@ -1933,7 +1947,8 @@ def main(argv=None):
     a = ap.parse_args(argv)
     return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages, "suite": cmd_suite,
             "dexcapture": cmd_dexcapture, "skitty": _cmd_skitty, "guide0107": _cmd_guide0107,
-            "guide0813": _cmd_guide0813, "calendar": _cmd_calendar, "hackbugs": _cmd_hackbugs}[a.cmd](a)
+            "guide0813": _cmd_guide0813, "calendar": _cmd_calendar, "hackbugs": _cmd_hackbugs,
+            "verify": _cmd_verify}[a.cmd](a)
 
 
 if __name__ == "__main__":

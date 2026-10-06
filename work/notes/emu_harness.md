@@ -29,7 +29,8 @@ of the main checkout (also when run from an agent worktree).
     .venv/bin/python work/tools/emu_harness.py guide0813 [--case ribbon,magcargo,...] [--lang cn|en|both]   # guide 08-13, known issues
     .venv/bin/python work/tools/emu_harness.py calendar [--case table,battle,volcanion,stale] [--lang cn|en|both]   # calendar hook
     .venv/bin/python work/tools/emu_harness.py hackbugs [--case tutor,coins,...] [--lang cn|en|both]   # open hack-finding records
-    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty,guide0107,guide0813,calendar,hackbugs] [--jobs 10]
+    .venv/bin/python work/tools/emu_harness.py verify [--case bigtext,never,...] [--lang cn|en|both]   # open verify-in-game records
+    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty,guide0107,guide0813,calendar,hackbugs,verify] [--jobs 10]
     python3 -m unittest discover -s work/tools -p test_emu_harness.py      # pure parts, no ROM needed
 
 A boot plus teleport takes about 15 s; 20 Unown encounters take about 2–3 minutes (headless, ~300 fps).
@@ -399,6 +400,7 @@ from ordinary message commands in their scripts). The WIP build predates later b
 | guide0813 | 12 guide-claim cases (`emu_guide0813.py`: ribbon (Arthur + control), magcargo, white_flute, radio_quiz, fortune, sprout, kiln, whirl, bugsy, dance, morty, blackthorn), see 8 | each keeps its observed verdict (`SUITE_EXPECT`) | about 5 min |
 | calendar | calendar hook table (`emu_calendar.py`, case `table`), see 9 | for all 8 entries: the loaded buffer equals the ROM record the day before and record + configured slot-11 word(s) on the date | 2.5 min |
 | hackbugs | 22 hack-finding cases (`emu_hackbugs.py`, `SUITE_EXPECT`), see 10 | each keeps its observed verdict | about 6 min |
+| verify | placeholders never printed, Gym statue branches, costume nurse (`emu_verify.py`), see 11 | never_printed / confirmed / confirmed | about 1 min |
 
   Result (observed): all 10 (5 checks × 2 ROMs) pass, 2 min 13 s wall time with `--jobs 10`. A first run
   before the battery fix failed unown (both ROMs) and palpark (English) on the shared battery file, and one
@@ -663,6 +665,57 @@ the wild finalizer does not hold (the battle reloads them); the summary-screen m
 first move. The battle RNG is not reproducible between runs: in one CN run Blast Burn
 KO'd the Blissey with a critical hit (the judge then says 'unclear' for D-1318), so `move` is not in the suite;
 the D-1318 reading comes from the runs where the turn ended at the command menu (CN once, EN twice).
+
+### 11. Open verify-in-game records (`emu_verify.py`, 2026-10-06)
+
+`emu_harness.py verify [--case bigtext,never,statue:badge+misty,...] [--lang cn|en|both]` reaches the screen or
+scene line that a translator's "check in game" record names, on the Chinese ROM and the English build, and
+writes CN|EN pairs to `work/build/harness/verify/pairs/` (`<case>_<variant>.png`; message lines: top screen,
+menus and apps: both screens) plus `report_*.json`. Run on build CRC32 405146C4 (all 20 cases, both ROMs,
+6 min 36 s with `--jobs 14`); CN and EN behaved the same in every case.
+
+New pieces:
+
+- **`MsgLog`**: hooks the three MsgData readers (arm9 0x0200BB0C `ReadMsgDataIntoString`, 0x0200BB40
+  `NewString_ReadMsgData`, 0x0200BB94). `NewMsgDataFromNarc` (0x0200BA98) stores the NARC id at MsgData +4 and
+  the file at +6 in every mode, so each row is (narc, bank, id); a027 is NARC 27. Scripts, menus and apps (bag,
+  Pokégear, move relearner, the New Game notice) all read their text this way, so "is this string ever shown on
+  this screen" becomes a lookup. Found by disassembling the NPCMsg handler (ov1 0x021EE288 → 0x021EE448 →
+  0x021EE658 → 0x0200BB0C). The English build patches `NewMsgDataFromNarc`'s first bytes (type forced), the
+  +4/+6 fields are the same.
+- `scene_line`: warp into the zone, `run_from_with` the label of the message command (with a few buffer
+  commands first), press A and screenshot every page until the next command runs; `capture_message`,
+  `static_refs` (commands of a script file that name a message id; SetVar only for vars a *MsgVar prints).
+- `run_scene` / `play`: start any script (talk, `run_script`, `run_from_with`), answer menus, screenshot every
+  distinct screen, with OpTrace and MsgLog; `hide_flags(zone)`: the test saves' people overflow the sprite table
+  on Route 2, Route 3, Route 34 and Mt. Moon Square too (crash on entry, as Goldenrod, D-1547), so those lines run
+  with the zone's hide flags set; on Routes 2/3 the player stands below a door (a trainer sees the first object's
+  tile).
+
+| record | what it asked | case | result |
+|---|---|---|---|
+| D-0541, D-0553, D-0571, D-0719, D-0744, D-0853, D-0903, D-0983 | SIZE-200% lines fit at 2x | bigtext (38 lines run from their message commands in the real maps) | all fit; 0314 #14, 0476 #85 printed by no command (rendered with `show_message`, fit) |
+| D-0550, D-0746 | `---` placeholders shown in the scenes? | never | not printed (scene prints 139 → 141 and 101 → 99 → 102); no command names them |
+| D-0504 | New Game notice width | notice | all five pages, timer and QR caption fit |
+| D-0560 | Gym statue layout | statue (no badge / badge / flag 1042) | #6 / #7 / #53, same pages as the Chinese |
+| D-0575 | who is the Bonsly trader | trade | object 1 (sprite 50, hiker-type), not Brock (object 7) |
+| D-0622 | what Yes to 赞赏 does | tip | shows a WeChat tip QR code, then #31 |
+| D-0623 | prize menu | prize | touch-button list, one line each, fits |
+| D-0661 | Pal Park prompt | palpark | ENTER/INFO/EXIT menu follows; the added question fits |
+| D-0762, D-0936 | Pokégear gift / Running Shoes giver | mom, lines | Mom gives the Running Shoes (only GiveRunningShoes); 0537 #8, 0542 #7 never printed |
+| D-0781 | which situation prints 0044 #144 | nurse | Rocket costume (player state 3) at the nurse |
+| D-0829 | berry tags 0243 shown? | berrybag | not read by the bag; no script uses the bank |
+| D-0855 | what the seal is | seal | notice on a barrier, bg event (21,18) of zone 72 |
+| D-0884 | Special Ball item/sprite | ball | ordinary Poké Ball sprite 87, no item |
+| D-0955 | Alph hint lines | ruins, lines | puzzles read bank 0002, never 0073/0075; 0083 #0 statue line fits |
+| D-1076 | psychic vs Magician | psychic | both versions say 魔术师 / Magician in the prompt; kept |
+| D-1103 | 0123 #30 speaker; 0106 labels | elm, lines | script 4 used by no event (never shown); 0106 #95–97 fit |
+| D-1138 | Move Reminder prompts | relearner, lines | the app reads bank 0736; 0626 #40 fixed to one line |
+| D-1153 | which map spot shows #68/#117 | gearmap | Resort Zone and Route 48; fit |
+| D-0880, D-1072 | trade species; scratch-off line | static | lines printed by no command; no Celebi/Milotic trade |
+| D-0511, D-0518, D-0522, D-0913, D-1192 | – | – | **blocked** (screen not found; panel descriptions and battle bag paths not driven; content question; phone call) |
+
+Suite: `verify` (SUITE_EXPECT: never → never_printed, statue and nurse → confirmed).
 
 ### 5. Screen checks on the English WIP build (Tier 3)
 
