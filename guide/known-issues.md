@@ -905,6 +905,12 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 *Source:* D-1547; hide flags 439 (townsfolk) and 441 (takeover crowd): 33 overworld graphics for 32 slots. Single-flag changes: file 822 @2482, file 34 @1195, file 29 @3194/@3407.
 
+### Goldenrod Flower Shop sign
+
+**The sign beside the Goldenrod Flower Shop calls it a Poké Mart.** The shop inside is still the Flower Shop (Berry Pots and other goods). The Chinese sign says the same; the English keeps it. Cosmetic.
+
+*Source:* D-1475. File 882 script 30 (bg event at ≈373,333, `TrainerTips 46`, bank 0573#46 友好商店); the Flower Shop door is at ≈371,332. Observed in an emulator (`emu_harness.py vqueue --case sign`): the sign reads 0573#46 and stands at the Flower Shop's awning.
+
 ## Radio Tower, Ecruteak City and Olivine City
 
 [Quests on this page](10-ecruteak-olivine.md)
