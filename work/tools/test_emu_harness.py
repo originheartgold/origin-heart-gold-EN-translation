@@ -235,3 +235,54 @@ class Guide0107(unittest.TestCase):
         m = self.G.mon_details(bytes(raw))
         self.assertEqual((m["species"], m["moves"]), (18, [28, 16, 98, 18]))
         self.assertEqual(len(m["ivs"]), 6)
+
+
+class Guide0813(unittest.TestCase):
+    """emu_guide0813: the pure parts (registry, judges, helpers)."""
+
+    def setUp(self):
+        import emu_guide0813
+        self.G = emu_guide0813
+
+    def test_registry(self):
+        G = self.G
+        for name, (fn, variants, judge) in G.CASES.items():
+            self.assertTrue(callable(fn), name)
+            if judge is not None:
+                self.assertIsNotNone(variants, name)
+        self.assertTrue(set(G.SUITE_EXPECT) <= set(G.CASES))
+        for c, vs in G.SUITE_VARIANTS.items():
+            self.assertTrue(set(vs) <= set(G.CASES[c][1]), c)
+        self.assertEqual(G.cmd_names()[2], "End")
+        self.assertEqual(G.weekday_clock(4).isoweekday(), 4)        # Thursday
+        self.assertEqual(G.weekday_clock(0).isoweekday() % 7, 0)    # Sunday
+
+    def test_empty_mon(self):
+        raw = self.G.empty_mon()
+        self.assertEqual(len(raw), 236)
+        m = E.decode_party_pokemon(raw)
+        self.assertEqual(m["species"], 0)
+        self.assertTrue(m["checksum_ok"])
+        self.assertEqual(self.G.decrypted_blocks(raw), bytes(128))
+
+    def test_judges(self):
+        G = self.G
+        died = {"gave_ribbon": True, "bad_ops": [{"op": 2009}], "window_after": True, "walks": True,
+                "x_menu_opens": True, "save_prompt": True}
+        ctrl = {"bad_ops": [], "save_prompt": True, "window_after": False}
+        self.assertEqual(G.judge_ribbon({"arthur": died, "arthur_control": ctrl}), "contradicted")
+        self.assertEqual(G.judge_ribbon({"arthur": dict(died, walks=False, x_menu_opens=False),
+                                         "arthur_control": ctrl}), "confirmed")
+        quiz = {"b": {"flag_287": False, "msgs": [3, 125], "menu_values": {"375": [3]}},
+                "wrong": {"flag_287": False, "msgs": [125]}}
+        self.assertEqual(G.judge_radio_quiz(quiz), "contradicted")
+        quiz["b"].update(flag_287=True, msgs=[126])
+        self.assertEqual(G.judge_radio_quiz(quiz), "confirmed")
+        dance = {"tue01": {"movewarp": True}, "tue05": {"movewarp": False}, "mon22set": {"movewarp": False},
+                 "daychange": {"movewarp_after": True, "flag_2741_after": False}}
+        self.assertEqual(G.judge_dance(dance), "confirmed")
+        wf = {"one": {"battle_menu": True, "both_teams_in_ram": [[1], [2]], "turn": "stuck: x"},
+              "full": {"turn": "menu"}}
+        self.assertEqual(G.judge_white_flute(wf), "contradicted")
+        wf["full"]["turn"] = "stuck: y"                       # a broken control: inconclusive
+        self.assertEqual(G.judge_white_flute(wf), "blocked")

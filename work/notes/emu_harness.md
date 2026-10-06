@@ -26,7 +26,8 @@ of the main checkout (also when run from an agent worktree).
     .venv/bin/python work/tools/emu_harness.py drive --lang en gen:25,30 t43,73/120 s:party   # op language
     .venv/bin/python work/tools/emu_harness.py skitty                                    # D-0582: Route 8 scene, CN|EN
     .venv/bin/python work/tools/emu_harness.py guide0107 [--case pikachu,corner_kid,...] [--lang cn|en|both]  # guide 01-07
-    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty,guide0107] [--jobs 10]
+    .venv/bin/python work/tools/emu_harness.py guide0813 [--case ribbon,magcargo,...] [--lang cn|en|both]   # guide 08-13, known issues
+    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty,guide0107,guide0813] [--jobs 10]
     python3 -m unittest discover -s work/tools -p test_emu_harness.py      # pure parts, no ROM needed
 
 A boot plus teleport takes about 15 s; 20 Unown encounters take about 2–3 minutes (headless, ~300 fps).
@@ -390,12 +391,14 @@ from ordinary message commands in their scripts). The WIP build predates later b
 | dex | Pokédex entry panels 1–30, number read back | pixel-identical to the approved baseline (`baselines/dex_<rom>/`; created on the first run) | 20 s |
 | skitty | Route 8 Skitty scene (D-0582, `emu_skitty.py`), see below | cries, sprite 761 = Skitty, trainer 277 leads Skitty form 0, all 18 lines shown, EN text says Skitty | 1.1 min |
 | guide0107 | 9 guide-claim cases (`emu_guide0107.py`: pikachu, electrode, misty_date, azure_flute, koga, giovanni, sabrina, kecleon, promo_flag), see 7 | each keeps its observed verdict (`SUITE_EXPECT`); promo_flag writes the Pokédex seen bit of No. 1335 and doesn't repeat | about 4 min |
+| guide0813 | 12 guide-claim cases (`emu_guide0813.py`: ribbon (Arthur + control), magcargo, white_flute, radio_quiz, fortune, sprout, kiln, whirl, bugsy, dance, morty, blackthorn), see 8 | each keeps its observed verdict (`SUITE_EXPECT`) | about 5 min |
 
   Result (observed): all 10 (5 checks × 2 ROMs) pass, 2 min 13 s wall time with `--jobs 10`. A first run
   before the battery fix failed unown (both ROMs) and palpark (English) on the shared battery file, and one
   rockruff_12 run did not evolve.
   With `skitty` added (2026-10-05): all 12 pass, 2 min 10 s with `--jobs 10`.
   With `guide0107` added (2026-10-06): all 14 pass, 3 min 7 s with `--jobs 14`.
+  With `guide0813` added (2026-10-06): all 16 pass, 5 min 17 s with `--jobs 16`.
 
 ### 6. Route 8 Skitty scene (D-0582): observed, the fix holds
 
@@ -477,6 +480,60 @@ New harness pieces (in `emu_guide0107.py`, reusable):
   (`TrainerBattle a b 1 0`) the field comes back.
 - `SCREENS_KNOWN["battle_menu"]` now samples INFO at (244, 203): the English build's INFO label covers the old
   sample since the 2026-10-05 label fix, so English battle recipes never saw the command menu.
+
+### 8. Guide chapters 08–13 and known issues (`emu_guide0813.py`, 2026-10-06)
+
+`emu_harness.py guide0813` runs one recipe per claim that guide chapters 08–13 and `known-issues.md` marked
+"not confirmed in game" (or "probably"/"may" about behaviour), skipping what section 7 already covered. Same
+approach and helpers as section 7. Screenshots: `work/build/harness/guide08_13/<cn|en>/`; reports there. Every
+case ran on the Chinese ROM and the English WIP build (Oct 5): same verdicts on both.
+
+New piece: **`OpTrace`**, a hook on the script interpreter itself. `RunScriptContext` (arm9 0x0203F474) reads
+each opcode and, if it is below the context's command count (ctx +0x60, table at +0x5C), calls the handler
+(dispatch at 0x0203F4CE: r1 = opcode, r4 = context); otherwise (0x0203F4C4) it asserts and sets the context's
+mode to 0, which stops the script. ctx +8 is the script PC and ctx +0x7C the loaded script file, so every
+command executed is logged as (name, file offset, first argument bytes); bad opcodes are logged separately.
+A hook in CompareVarToValue (0x0204021C, r0 = `GetVarPointer` result) also logs the value it read, which shows
+special vars (0x8000+) at a given offset. With it a recipe can say which branch ran and whether a script ended
+or died. Other new helpers: `talk_through` (answers Yes/No and touch menus by DOWN presses, B or a touch
+position once the screen is stable, handles battles), `goto_obj`, `talk`, `session`, `set_money`, `add_item` /
+`remove_item`, `menu_opens`, `window_open`, `save_prompt`, `one_mon_party` (slots emptied as ZeroMonData does).
+
+| guide claim | recipe (case) | result |
+|---|---|---|
+| known issues: weekday siblings' ribbon gift "can freeze the game" (D-1331) | ribbon: all seven siblings on their day, var 0x4094 = 7, lead without ribbons; control: daily gift (var 6) | **contradicted**: the ribbon is given, the script dies on opcode 2009 with its message left on screen, but the player walks, X opens the menu and SAVE works (D-1558) |
+| 09 / known issues: fortune-teller takes $10,000 after checking $300 | fortune: $5,000 / $20,000 | **confirmed**: $5,000 → $0 with the item; $20,000 → $10,000 (agrees with D-1545) |
+| known issues: S.S. Anne shop TM checks $400, takes $4,000 | ssanne_tm: shop script 20 started directly, TM63 button touched; $1,000 / $5,000 | **confirmed**: $1,000 → $0, $5,000 → $1,000 |
+| known issues: Sprout Tower monk's offering without a money check | sprout: $1,000 / $5,000, Yes | **confirmed**: $1,000 → $0; $5,000 → $2,000 |
+| known issues: Charcoal Kiln apprentice takes HM01 unchecked | kiln: with / without HM01, Yes | **confirmed**: Leek both times; HM01 taken when held |
+| known issues: Whirl Islands Challenge pays again after one island | whirl: flags 2094 + 2097 only; report, accept, report | **confirmed**: two prizes |
+| 11 / known issues: Jirachi stone, 7 repairs, no Star Piece needed | jirachi: var 0x408C = 17; no Star Pieces / 10 | **confirmed**: the 7th repair starts the scene both times; 7 Star Pieces used when held |
+| known issues: Frontier Access Cut man without HM01 | cutman: with / without HM01 (var 0x40E5 = 1 skips the first-visit scene) | **confirmed**: without HM01 L1491 runs and a photo is taken |
+| 09 / known issues: radio quiz, B counts as right (D-1479) | radio_quiz: B on all five touch menus; control: wrong answer | **contradicted**: B returns the last button (3), so question 2 fails (D-1561) |
+| 09 / known issues: Buena's lottery line after a point | buena: from L4353 with var 0x413A = 1 | **confirmed**: lines 81 then 32 (the lottery line), points 2 |
+| known issues: Morty's Lv. 1 Pokémon | morty: `TrainerBattle 31 31` | **confirmed**: Lv. 80/80/80/1/1/1 in the battle party |
+| 11: Chuck's badge battle is a 4-on-4 Double | chuck: `TrainerBattle 34 34` | **confirmed**: one copy of the 4-Pokémon team, first two send-outs = his first two |
+| known issues: Elite Four practice names | e4names: trainers 703 / 705 | **observed**: CN "四天王阿桔" / "四天王梨琳" under Agatha's / Lance's pictures; EN "Elite Four Agatha" / "Lance" (D-1496 fix) |
+| known issues: Misty's Cerulean Cape photo hidden at every hour | misty_cape: 12, 14, 15 h, flag 2261 | **confirmed**: absent at all three; the hour compares read 12, 14/14, 15 |
+| known issues: Petrel's Chatot never catchable | petrel: flag 500 set / clear | **confirmed**: hidden when set; shown when clear but no catch offer |
+| 11 / known issues: Satsuki's short menu takes the Ho-Oh path | satsuki: from L4299, var 0x40A9 = 11 | **confirmed** (menu part): msg 87, var → 7 |
+| 08: dream-world Entei, Lv. 90, one chance | entei: Yes, flee | **confirmed**: Lv. 90; after fleeing flag 2318 set and Entei gone |
+| known issues: Bugsy's 4-Pokémon rule never applies | bugsy: fresh / after `SetVar 0x8005 5` in a previous script | **confirmed**, refined: 0x8005 reads 0 both times, six Pokémon accepted (D-1563) |
+| known issues: Magcargo loss "may restart the battle" | magcargo: Splash-only party, from L2519 | **contradicted**: the script loops back to L2519 but the field never returns; black screen, CPU at 0x01FF8030 (D-1560) |
+| 13: Clefairy dance also after midnight on Tuesday | dance: Tue 01 h, Tue 05 h, Mon 22 h seen, Mon 22 h seen → Tue 00:30 in game | **confirmed**: MoveWarp at Tue 01 h and after the day change (daily flag 2741 cleared), not at 05 h or when seen the same day |
+| known issues: Blackthorn Gym trainers skipped after the farmer's Yes | blackthorn: var 0x40A3 = 5 / 1, talk to the entrance trainer | **confirmed** (Gym side): msg 13 and no battle at 5; battle 932 at 1 |
+| 11: partner room shows only Blue | partner_room: as saved / flags 603 + 336 | **observed**: Yellow and Misty hidden after the Route 39 flags; Riley/Marley always hidden; Blue shown |
+| known issues: Island Forest has no wild Pokémon without a panel (D-1430) | island_forest: 400 steps in grass, flags 2423–2426 clear / 2423 set | **contradicted**: 4–8 battles either way (D-1562) |
+| known issues: Weezing caught bit from the expedition (D-1550) | weezing_dex: `SetFlag 4461` with No. 110 unseen; controls unseen / seen | **observed**: the Pokédex list leaves slot 0110 empty, same as unseen |
+| 09: Dept. Store 6F Double Battle with one Pokémon | white_flute: one-Pokémon party / six (control) | **contradicted**: the battle starts with a broken second ally and hangs at FIGHT; the control plays the turn (D-1559) |
+| 10 / known issues: MooMoo farmer never offers the cure again | moomoo: flag 744 clear with 2289 set / clear | **confirmed** (farmer side): L903 (greeting) vs L925 (investigation) |
+| 12: Petrel scene starts on entry with 0x40B2 = 4 | petrel_scene: var 4 / 3 | **confirmed**: frame script 2 runs at 4, not at 3 |
+| 08 Primo passwords; 09 radio show hours, lottery digit order; 12 Whirlpool without the move; 13 Forest of Time route; Goh's lure-scene loss | – | **blocked**: Easy Chat input, the Pokégear radio, the daily lottery number, a whirlpool tile and long maze/scene setups are not driven by the harness yet (time-boxed) |
+| known issues: story-order entries (Pokéathlon Dome tree, bug-hunt counters, Burned Tower, Giratina, Ho-Oh panel, Will and Karen, Radio Tower gap, red envelope, …) | – | not run: the open question is whether the story order allows the state, not what the game does in it |
+
+Suite (`SUITE_EXPECT`, 12 cases; ribbon runs Arthur and his control only): ribbon, magcargo, white_flute,
+radio_quiz keep `contradicted`; fortune, sprout, kiln, whirl, bugsy, dance, morty, blackthorn keep `confirmed`.
+With `guide0813` added (2026-10-06): all 16 checks pass, 5 min 17 s with `--jobs 16`.
 
 ### 5. Screen checks on the English WIP build (Tier 3)
 

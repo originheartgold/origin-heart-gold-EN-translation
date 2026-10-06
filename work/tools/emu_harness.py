@@ -1701,8 +1701,15 @@ def _check_guide0107(rom, out):
     return emu_guide0107.suite_check(rom, out)
 
 
+def _check_guide0813(rom, out):
+    """Guide chapters 08-13 and known issues: the cheap deterministic emu_guide0813 cases keep their verdicts."""
+    import emu_guide0813
+    return emu_guide0813.suite_check(rom, out)
+
+
 SUITE_CHECKS = {"unown": _check_unown, "palpark": _check_palpark, "arceus": _check_arceus,
-                "evolve": _check_evolve, "dex": _check_dex, "skitty": _check_skitty, "guide0107": _check_guide0107}
+                "evolve": _check_evolve, "dex": _check_dex, "skitty": _check_skitty, "guide0107": _check_guide0107,
+                "guide0813": _check_guide0813}
 
 
 def cmd_suite(a):
@@ -1746,6 +1753,11 @@ def _cmd_skitty(a):
 def _cmd_guide0107(a):
     import emu_guide0107
     return emu_guide0107.cmd(a)
+
+
+def _cmd_guide0813(a):
+    import emu_guide0813
+    return emu_guide0813.cmd(a)
 
 
 def cmd_dexcapture(a):
@@ -1842,15 +1854,17 @@ def main(argv=None):
     sk.add_argument("--out", default=str(DEF_OUT))
     sk.add_argument("--rom", help=argparse.SUPPRESS)
     sk.add_argument("--part", choices=("a", "b"), help=argparse.SUPPRESS)
-    g7 = sub.add_parser("guide0107", help="checks for the hedged claims in guide chapters 01-07 (emu_guide0107.py)")
-    g7.add_argument("--case", default="all", help="comma list of case names (see emu_guide0107.py)")
-    g7.add_argument("--lang", choices=("cn", "en", "both"), default="cn")
-    g7.add_argument("--rom-cn", default=str(DEF_ROM_CN))
-    g7.add_argument("--rom-en", default=str(DEF_ROM_EN))
-    g7.add_argument("--out", default=str(DEF_OUT))
-    g7.add_argument("--jobs", type=int, default=6)
-    g7.add_argument("--rom", help=argparse.SUPPRESS)
-    g7.add_argument("--child", help=argparse.SUPPRESS)
+    for gname, mod, chap in (("guide0107", "emu_guide0107.py", "01-07"),
+                             ("guide0813", "emu_guide0813.py", "08-13 and known issues")):
+        g7 = sub.add_parser(gname, help=f"checks for the hedged claims in guide chapters {chap} ({mod})")
+        g7.add_argument("--case", default="all", help=f"comma list of case names (see {mod})")
+        g7.add_argument("--lang", choices=("cn", "en", "both"), default="cn")
+        g7.add_argument("--rom-cn", default=str(DEF_ROM_CN))
+        g7.add_argument("--rom-en", default=str(DEF_ROM_EN))
+        g7.add_argument("--out", default=str(DEF_OUT))
+        g7.add_argument("--jobs", type=int, default=6)
+        g7.add_argument("--rom", help=argparse.SUPPRESS)
+        g7.add_argument("--child", help=argparse.SUPPRESS)
     dc = sub.add_parser("dexcapture", help=argparse.SUPPRESS)
     dc.add_argument("--rom", default=str(DEF_ROM_CN))
     dc.add_argument("--out", default=str(DEF_OUT))
@@ -1878,7 +1892,8 @@ def main(argv=None):
             p.add_argument("--json")
     a = ap.parse_args(argv)
     return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages, "suite": cmd_suite,
-            "dexcapture": cmd_dexcapture, "skitty": _cmd_skitty, "guide0107": _cmd_guide0107}[a.cmd](a)
+            "dexcapture": cmd_dexcapture, "skitty": _cmd_skitty, "guide0107": _cmd_guide0107,
+            "guide0813": _cmd_guide0813}[a.cmd](a)
 
 
 if __name__ == "__main__":
