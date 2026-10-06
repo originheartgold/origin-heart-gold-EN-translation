@@ -56,8 +56,28 @@ CALLED_ROUTINES=(
     (0x02029348,0x02029354,'Options accessor trampoline'),
     (0x02027740,0x02027764,'  tail-called save block getter'),
 )
-# Whole routines containing text-speed ARM9 edits (same derivation), plus data.
+# Hand-reviewed jump tables. The traversal refuses any computed PC write except
+# these. Both use the compiler's Thumb switch idiom, decoded by hand from the base
+# ARM9: 'cmp r1,#8; bls/bhi default; adds r1,r1,r1; add r1,pc; ldrh r1,[r1,#6];
+# lsls r1,#16; asrs r1,#16; add pc,r1'. The 9 signed halfword offsets start 2
+# bytes after the 'add pc,r1' at P, and case i jumps to P+4+offset[i]. The table
+# bytes are part of the routine's extent, and every case target is traversed.
+REVIEWED_SWITCHES={
+    # RenderText printer state (+0x28): 0..8, else default 0x020027e8.
+    0x020022f0:(0x02002304,0x02002698,0x020026b2,0x020026dc,0x0200270c,
+                0x02002762,0x0200276e,0x0200278e,0x020027b8),
+    # RenderText control codes 0x200..0x208, else default 0x02002622.
+    0x02002424:(0x0200246e,0x020024ee,0x02002510,0x02002528,0x02002534,
+                0x02002540,0x0200256c,0x0200249a,0x020024c4),
+}
+# Whole routines containing text-speed ARM9 edits or that the batching loop relies
+# on (same derivation; the RenderText state machine uses REVIEWED_SWITCHES), plus data.
+# print_task's loop calls 0x02020a88, which renders through 0x02002e40 into the
+# 0x020022d0 state machine. The loop relies on its results 0/1/3 and on which
+# controls it stops before (0xffff, 0xfffe, 0x25bc, 0x25bd, 0xf0fd).
 DEPENDENT_CODE=(
+    (0x02002e40,0x02002e70,'RenderText entry called by the glyph loop'),
+    (0x020022d0,0x020027ee,'RenderText control-code state machine (two reviewed jump tables)'),
     (0x020208d4,0x02020a1c,'printer constructor (alloc size, initializer call, task pointer)'),
     (0x0202b168,0x0202b1b4,'Options init (new-game default)'),
     (0x0202b1c4,0x0202b1d0,'music speed getter'),

@@ -7,6 +7,8 @@ from unittest.mock import patch
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 import text_speed_patch as speed
+try:import capstone
+except ImportError:capstone=None
 
 class PayloadTests(unittest.TestCase):
     def test_payload_is_current_and_entries_are_in_reserved_code(self):
@@ -169,6 +171,24 @@ class CodePatchGuardTests(unittest.TestCase):
                 with patch.object(speed,'native_call_targets',return_value=speed.native_call_targets()+[target]):
                     with self.assertRaises(ValueError):speed.dependency_ranges(0x110000)
 
+    def test_arm_mode_call_to_a_reviewed_entry_fails_closed(self):
+        # Even address of a reviewed Thumb entry: only the ARM-mode check can reject it.
+        self.assertIn(0x02020a1c,{lo for lo,_,_ in speed.CALLED_ROUTINES})
+        with patch.object(speed,'native_call_targets',return_value=speed.native_call_targets()+[0x02020a1c]):
+            with self.assertRaisesRegex(ValueError,'ARM-mode'):speed.dependency_ranges(0x110000)
+
+    @unittest.skipUnless(capstone,'capstone (in the project venv) runs the derivation helper')
+    def test_derivation_rejects_backward_branches_and_unreviewed_pc_writes(self):
+        B=0x02000000
+        cases={'b before entry':'0000 e7fc 4770','beq before entry':'0000 d0fc 4770',
+               'unreviewed add pc':'0000 448f 4770','computed bx':'0000 4708'}
+        for name,code in cases.items():
+            main=bytes.fromhex(code.replace(' ',''))
+            main=b''.join(main[i+1:i+2]+main[i:i+1] for i in range(0,len(main),2))+bytes(16)
+            with self.subTest(case=name),self.assertRaises(AssertionError):routine_extents(main,B+2)
+        main=bytes.fromhex('7047')+bytes(16)
+        self.assertEqual(routine_extents(main,B),[(B,B+2)])
+
     def test_real_code_patches_are_text_speed_compatible(self):
         names=[c[0] for c in speed.code_patch_ranges()]
         self.assertIn('msgload-all',names)
@@ -176,44 +196,73 @@ class CodePatchGuardTests(unittest.TestCase):
         self.assertEqual((heap[1],heap[2],heap[4]),('arm9',speed.HEAP_FIX[0],struct.pack('<H',speed.HEAP_FIX[1])))
 
 ROM=os.environ.get('TEXT_SPEED_TEST_ROM')
-try:import capstone
-except ImportError:capstone=None
 
 def routine_extents(main,entry):
     """[start,end) RAM ranges of a Thumb routine, as CALLED_ROUTINES documents.
 
     Recursive traversal from the entry: fall-through and in-function branches until
     every path returns (pop {pc} / bx); PC-relative literal pools are included; a
-    'ldr rX,=target; bx rX' tail call adds the target routine's own extent.
+    'ldr rX,=target; bx rX' tail call adds the target routine's own extent. A
+    computed PC write is accepted only at a hand-reviewed REVIEWED_SWITCHES site,
+    whose exact idiom, table and case targets are re-checked here; any other one,
+    or a branch to before the entry, is an error rather than a silent gap.
     """
     from capstone import arm
     md=capstone.Cs(capstone.CS_ARCH_ARM,capstone.CS_MODE_THUMB);md.detail=True
-    def one(x):return next(md.disasm(bytes(main[x-0x02000000:x-0x02000000+4]),x,1))
-    seen=set();lits=set();work=[entry];tails=[]
+    B=0x02000000
+    def one(x):return next(md.disasm(bytes(main[x-B:x-B+4]),x,1))
+    seen=set();data=set();work=[entry];tails=[]
+    def branch(x,t):
+        if not entry<=t<entry+0x1000:raise AssertionError(f'branch outside routine at {x:#x} -> {t:#x}')
+        return t
     while work:
         x=work.pop();regs={}
         while x not in seen:
             seen.add(x);i=one(x);m=i.mnemonic;ops=i.operands
             if m.startswith('ldr') and ops[-1].type==arm.ARM_OP_MEM and ops[-1].mem.base==arm.ARM_REG_PC:
-                lit=((x+4)&~3)+ops[-1].mem.disp;lits.add(lit)
-                regs[ops[0].reg]=struct.unpack_from('<I',main,lit-0x02000000)[0]
+                lit=((x+4)&~3)+ops[-1].mem.disp;data.update(range(lit,lit+4))
+                regs[ops[0].reg]=struct.unpack_from('<I',main,lit-B)[0]
             if m=='pop' and any(o.reg==arm.ARM_REG_PC for o in ops):break
             if m=='bx':
                 if ops[0].reg!=arm.ARM_REG_LR:
                     if ops[0].reg not in regs:raise AssertionError(f'computed jump at {x:#x}')
                     tails.append(regs[ops[0].reg]&~1)
                 break
-            if m=='b':
-                t=ops[0].imm
-                if not entry<=t<entry+0x1000:raise AssertionError(f'unexpected tail branch at {x:#x}')
-                x=t;continue
+            if m=='b':x=branch(x,ops[0].imm);continue
             if m.startswith('b') and m not in ('bl','blx','bic','bics') and ops and ops[0].type==arm.ARM_OP_IMM:
-                work.append(ops[0].imm)
-            if ops and ops[0].type==arm.ARM_OP_REG and ops[0].reg==arm.ARM_REG_PC:raise AssertionError(f'pc write at {x:#x}')
+                work.append(branch(x,ops[0].imm))
+            if ops and ops[0].type==arm.ARM_OP_REG and ops[0].reg==arm.ARM_REG_PC:
+                if x not in speed.REVIEWED_SWITCHES:raise AssertionError(f'unreviewed pc write at {x:#x}')
+                # adds r1,r1,r1; add r1,pc; ldrh r1,[r1,#6]; lsls r1,#16; asrs r1,#16; add pc,r1
+                # preceded by its bound check 'cmp r1,#8' (9 cases).
+                if (bytes(main[x-10-B:x+2-B])!=bytes.fromhex('49187944c988090409148f44')
+                        or b'\x08\x29' not in bytes(main[x-18-B:x-10-B]) or len(speed.REVIEWED_SWITCHES[x])!=9):
+                    raise AssertionError(f'switch idiom changed at {x:#x}')
+                cases=speed.REVIEWED_SWITCHES[x]
+                offsets=struct.unpack_from(f'<{len(cases)}h',main,x+2-B)
+                if tuple(x+4+o for o in offsets)!=cases:raise AssertionError(f'switch table changed at {x:#x}')
+                data.update(range(x+2,x+2+2*len(cases)))
+                work.extend(branch(x,t) for t in cases)
+                break
             x+=i.size
-    out=[(entry,max([max(seen)+2]+[l+4 for l in lits]))]
+    out=[(entry,max([max(seen)+2]+[d+1 for d in data]))]
     for t in tails:out+=routine_extents(main,t)
     return out
+
+def call_targets(main):
+    """Every Thumb BL target in the ARM9 main section, plus odd literal words (Thumb pointers)."""
+    B=0x02000000;out=set()
+    for off in range(0,len(main)-3,2):
+        hi,lo=struct.unpack_from('<HH',main,off)
+        if hi&0xf800==0xf000 and lo&0xf800==0xf800:
+            delta=((hi&0x7ff)<<12|(lo&0x7ff)<<1);delta-=(1<<23) if delta&(1<<22) else 0
+            out.add(B+off+4+delta)
+    out.update(w&~1 for (w,) in struct.iter_unpack('<I',bytes(main[:len(main)//4*4])) if w&1 and B<=w<B+len(main))
+    return out
+
+def is_function_entry(main,start,targets=None):
+    """A real routine start: called by a BL, or its Thumb address stored somewhere."""
+    return start in (call_targets(main) if targets is None else targets)
 
 def ndspy_reparse(rom):
     import ndspy.rom
@@ -339,6 +388,8 @@ class RomTests(unittest.TestCase):
         self.assertEqual(speed.verify(ndspy_reparse(rom),report)['status'],'passed')
         after=rom.loadArm9().sections[0].data
         self.assertEqual(bytes(after[0x8c262:0x8c264]),struct.pack('<H',0x221a))
+        ids=[c[0] for c in speed.code_patch_ranges() if c[1]=='arm9']
+        self.assertEqual(report['arm9_code_patches'],{'normalised_to_expect':ids,'held_value':['msgload-all']})
 
     def test_patch_byte_neither_expect_nor_value_fails_before_mutation(self):
         rom=copy.deepcopy(self.original);self.arm9_with(rom,0x8c262,struct.pack('<H',0x2221))
@@ -381,7 +432,18 @@ class RomTests(unittest.TestCase):
             if target<speed.OVBASE:derived.update(routine_extents(main,target&~1))
         self.assertEqual(derived,{(lo,hi) for lo,hi,_ in speed.CALLED_ROUTINES})
         code=[(lo,hi) for lo,hi,name in speed.DEPENDENT_CODE if lo<0x020d0000 and lo!=0x02000ba0]
+        self.assertEqual(len(code),6)
         for lo,hi in code:self.assertEqual(routine_extents(main,lo),[(lo,hi)],hex(lo))
+        # A start must be a real routine entry, so a shifted start cannot pass.
+        targets=call_targets(main)
+        def entry(start):
+            before=struct.unpack_from('<H',main,start-2-0x02000000)[0]
+            return is_function_entry(main,start,targets) or before==0x4770 or before&0xff00==0xbd00
+        for lo,_ in code+[(lo,hi) for lo,hi,_ in speed.CALLED_ROUTINES]:self.assertTrue(entry(lo),hex(lo))
+        for wrong in (0x020208e0,0x020208d6,0x0202b1d2,0x02002e42,0x020022d4):self.assertFalse(entry(wrong),hex(wrong))
+        # Both reviewed jump tables are traversed: their cases lie inside the extent.
+        for site,cases in speed.REVIEWED_SWITCHES.items():
+            self.assertTrue(all(0x020022d0<=t<0x020027ee for t in (site,*cases)))
         # Every ARM9 edit lies inside a reviewed enclosing routine or data range.
         for edit in self.report['edits']:
             addr=int(edit['address'],16)
@@ -395,7 +457,9 @@ class RomTests(unittest.TestCase):
         main=self.original.loadArm9().sections[0].data
         # Reviewer cases: print task body, Options accessor, printer initializer,
         # exit_free target, message loader, music getter; plus code settings.
-        for off in (0x20a40,0x2934a,0x20bea,0x71b2,0xbb42,0x2b1c4,0xba4,0xd1a1c):
+        # Glyph path: RenderText entry, state machine code and a jump table.
+        for off in (0x20a40,0x2934a,0x20bea,0x71b2,0xbb42,0x2b1c4,0xba4,0xd1a1c,
+                    0x2e50,0x22d2,0x2400,0x22f4,0x242a,0x27b8):
             old=struct.unpack_from('<H',main,off)[0]
             synthetic=dict(id='synthetic',file='arm9',offset=hex(off),expect=hex(old),value=hex(old^0x40),enabled=True)
             with self.subTest(offset=hex(off)):
@@ -411,6 +475,11 @@ class RomTests(unittest.TestCase):
         before=rom.save()
         with self.assertRaisesRegex(ValueError,'demand-loading heap fix'):speed.apply(rom)
         self.assertEqual(before,rom.save())
+
+    def test_verify_requires_heap_fix(self):
+        rom=copy.deepcopy(self.patched);self.arm9_with(rom,0xba9a,struct.pack('<H',0x1c05))
+        report=copy.deepcopy(self.report);report['arm9_sha256']=speed.digest(rom.arm9)
+        with self.assertRaisesRegex(ValueError,'Heap fix missing'):speed.verify(rom,report)
 
     def test_report_records_normalised_code_patches(self):
         ids=[c[0] for c in speed.code_patch_ranges() if c[1]=='arm9']
