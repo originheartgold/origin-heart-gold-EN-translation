@@ -1347,8 +1347,31 @@ These entries can freeze the game, cost you something, or close a quest or battl
 - **Volt Tackle** does no recoil damage (Double-Edge still does).
 - **Blast Burn** doesn't need a recharge turn; you can act again on the next turn (Hyper Beam still needs one). Frenzy Plant, Hydro Cannon and Rock Wrecker use the same move data, but weren't tried.
 - **Lunar Dance** doesn't make the user faint; it raises the user's Speed and Sp. Atk instead.
+- **Bounce** attacks on the turn you choose it; the user doesn't spring up first (Fly still takes two turns). Its description still says two turns.
 
 *Source:* D-1319 (Volt Tackle: recoil effect, recoil value 0), D-1318 (Blast Burn, Hydro Cannon, Frenzy Plant, Rock Wrecker: recharge effect without the recharge flag), D-1311 (Lunar Dance: Sp. Atk/Speed +1 fields). Emulator (`emu_harness.py hackbugs --case move`, both ROMs): a Lv. 100 user against a wild Pokémon; Volt Tackle KO'd a Magikarp with no HP lost (Double-Edge cost 4 HP); after Blast Burn the next command menu came after one Blissey attack, after Hyper Beam after two; Lunar Dance printed "Speed rose" and "Sp. Atk rose" and the user stayed in.
+
+*Source (Bounce):* D-1350 (charge flag clear; description 0738#340 stale). Emulator (`emu_harness.py vqueue --case probe`, both ROMs): Bounce printed "used Bounce!", no "sprang up" message (1#734) and no miss, and the command menu came back every turn; Fly printed "flew up high" (1#714) and hit on the next turn.
+
+### Battle messages that name the wrong thing
+
+**A few battle messages print the wrong word or side.** Cosmetic; the Chinese game does the same:
+- After **Soak**, **Protean** and similar type changes, the message names the move instead of the new type ("…transformed into the Soak type!").
+- When a wild Pokémon's **Future Sight** hits your Pokémon, the message says "The wild …took the Future Sight attack!" with your Pokémon's name; when yours hits the wild one, it leaves out "The wild". The message follows the side of the Pokémon that used the move.
+
+*Source:* D-1461 (battle_string 1#1212–1215), D-1568 (1#1464–1467). Emulator (`emu_harness.py vqueue --case probe`, both ROMs): Soak on a wild Geodude printed 1#1213 with 浸水 / Soak in the type slot; a Greninja with Protean using Quick Attack printed 1#1212 with the move name; a wild Mewtwo's Future Sight on the player's Chansey printed 1#1465, the player's on a wild Shuckle 1#1464.
+
+### Traded Pokémon get no Exp. boost
+
+**Pokémon from another Trainer get the same Exp. as your own.** In the official games a traded Pokémon gets 1.5 times the Exp. and a "boosted" message; here it gets the normal amount and the normal message. Probably an intended change.
+
+*Source:* D-1377. Emulator (`emu_harness.py vqueue --case exp`, both ROMs): a Lv. 50 Mewtwo beating a wild Chansey Lv. 10 gained 62 Exp. with its own and with a different OT ID; both printed battle_string 2#29, never the boosted 2#30.
+
+### Partner calls about the Celadon Gym
+
+**Your partners say a Venonat would love the Celadon Gym, but it's a walking Tangela that reacts there.** A walking Tangela wraps its vines around you and is having fun; a Venonat just "seems a bit nervous", like any other Pokémon. The Chinese calls say Venonat too.
+
+*Source:* D-1191 (a027/0653 #66, #139). Emulator (`emu_harness.py vqueue --case follow`, both ROMs): talking to a following Tangela in the Celadon Gym reads 0258#725; Venonat and Pikachu read 0258#205.
 
 ### Evolutions that cannot happen
 

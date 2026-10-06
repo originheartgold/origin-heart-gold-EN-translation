@@ -846,6 +846,40 @@ Suite (`SUITE_EXPECT`): arceus flame/zap `plate_type`, thief miltank `kept`, roc
 groudon_own `no_reversion` (palpark is too slow for the suite: 6–10 min per run). Full suite with `open` added
 (2026-10-06, `suite --jobs 4`, 13 checks × 2 ROMs): all 26 pass in 22 min 6 s; `open` about 2 min per ROM.
 
+### 14. The verify queue of the 2026-10-06 triage (`emu_vqueue.py`, 2026-10-06)
+
+`emu_harness.py vqueue [--case ssanne_story,new_captain,...[:variant+...]] [--lang cn|en|both] [--jobs 4]` (module
+`work/tools/emu_vqueue.py`) answers the open records of the triage's verify bucket (D). One child per case, variant
+and ROM (`run_child`, 2400 s timeout); reports `work/build/harness/verifyqueue/report_<cases>[_both].json`,
+screenshots and battle-message sheets in `work/build/harness/verifyqueue/<cn|en>/`. All cases were rerun on the
+Chinese ROM and the English build CRC32 576E1E55 with the same verdicts on both.
+
+| record | question | case (method) | result |
+|---|---|---|---|
+| D-1549 | how a normal first voyage reaches HM01 and the party | ssanne_story: Vermilion arrival flags, every S.S. Anne flag/var at its new-game value, real boarding (zone 387 sailor, `ScrCmd_723`), arrival scene and speech, a write watch on flag 1440's byte; variants oldboy_first / honey_first / blue_first | **observed**: no write to 1440 (only 156 @6350 sets it, at the hijack), so the voyage runs in the party state: Captain 253#62, no HM01. Old boy (sets 1424) then Honey → announcement 255#18, Water Stone, var 0x40A4 = 3, hall trigger speech. Honey first or Blue first (sets 1423) → nothing ever starts the party, exit blocked: softlock (hack bug) |
+| D-1549 | second HM01 source; Cut without HM01 | new_captain (zone 308 object 14, without / with HM01); cut_yes (Route 10 tree, Cascade Badge, Splash-only party, no HM01) | **observed**: '1000th visitor' line 69 + HM01 without one, line 68 with one; the tree is cut (flag 16 set, object gone) |
+| D-0905 | is the author's notice 0065#62 reachable | notice: Goodshow at 0x40A2 = 13, flag 106 set / clear | **unreachable**: #51 with the starter flag, #62 only without it |
+| D-1475 | which shop the 0573#46 sign labels | sign: read it (MsgLog), photograph the street | the sign beside the Flower Shop door |
+| D-0501 | context of 0272 #46 / #54 | banner: zone 385, SAVE window | #46 'Boot Camp Ruins' on the save window; #54 used by no map header |
+| D-1499 | B at the memory-rematch Doubles menu | rematch_b: file 78 from L832, B | **exits**: B returns 7 ('Never mind'), script to 813, no TrainerBattle |
+| D-1377 | traded Pokémon Exp. | exp: Mewtwo Lv50 vs wild Chansey Lv10, own OT / other OT (read back, checksum valid) | 62 Exp. both, 2#29 both: no boost |
+| D-1350 | Bounce one-turn? | probe bounce / fly (control), wild Shuckle with Splash | **one turn**: 'used Bounce!', no 'sprang up' (1#734), no miss, the foe acts the same turn; Fly prints 1#714 and strikes next turn |
+| D-1568 | 'The wild' string on the player's Pokémon | probe fs_foe (wild Mewtwo's Future Sight on the player's Chansey) / fs_own | foe's Future Sight on the player's Pokémon → 1#1465 ('The wild …') on **both ROMs**; the player's on the wild one → 1#1464: the string follows the user's side (game logic) |
+| D-1461 | Soak / Protean type-change message | probe soak (wild Geodude) / protean (Greninja, Quick Attack) | **reproduced**: Soak → 1#1213 with the move name in the type slot; Protean → 1#1212 with the move name |
+| D-1191 | which follower reacts in the Celadon Gym | follow: Venonat / Tangela / Pikachu, three talks each | Tangela 0258#725; Venonat and Pikachu 0258#205 |
+| D-1458 | R/L on the stats page by button mode | buttons: every Options row once (options word diff); bits 8–9 forced to 0/1/2, R then L | no BUTTON MODE row; rows flip bits 0, 6, 9 (BATTLE BG = bit 9); with bits 8–9 = 0/1/2, R does nothing, L opens the panel every time |
+| D-0522 | battle bag NEXT, 'Shrouded in mist!', APPEAL | battlebag: restore pocket with two pages, Guard Spec. used, party → CHECK MOVES → move detail | 0005 #21, #35 and 0006 #57 never read: pages use arrows and '2/2'; Guard Spec. prints battle_string 2#26 / 2#139; the move-detail page has no APPEAL |
+| D-0521 | Pokédex Front/Back, #179, language labels | dex: No. 421, every tab, forms-page buttons | #164/#165 are the FORMS tab's front/back sprite entries; #179 the DATA tab's MOVE header; #2–7 read on no tab |
+| D-0518 | INFO panel description width/lines | infopanel: Tyranitar (Sand Stream), INFO, RIGHT, A | popup of three ~198 px lines; a 201 px line lost its period → bank 0 lines ≥ 200 px shortened |
+
+New pieces: `FlagWatch` (a write hook on one flag's byte: frame, PC, bit after), `board()` (the real ferry boarding
+with timed walks, since `position()` lags after `ScrCmd_723`), `set_ot` (OT ID edit with the checksum and
+encryption redone). Suite (`SUITE_EXPECT`): cut_yes `cut`, new_captain `confirmed`, notice `unreachable`,
+rematch_b `exits`, follow (Venonat 205, Tangela 725).
+
+Found on the way: on the summary's SKILLS panel (L on the stats page) the English 'Sp. Atk' label covers the first
+IV digit (D-1574).
+
 ### 5. Screen checks on the English WIP build (Tier 3)
 
 `emu_harness.py screens [--only options,ev,dex,battle]` runs each screen recipe on the Chinese ROM and on
