@@ -31,7 +31,8 @@ of the main checkout (also when run from an agent worktree).
     .venv/bin/python work/tools/emu_harness.py hackbugs [--case tutor,coins,...] [--lang cn|en|both]   # open hack-finding records
     .venv/bin/python work/tools/emu_harness.py verify [--case bigtext,never,...] [--lang cn|en|both]   # open verify-in-game records
     .venv/bin/python work/tools/emu_harness.py sweeps --sweep trainers|desc|battle [--ids ...] [--lang cn|en|both] [--jobs 6] [--rejudge]   # text read-back, see 12
-    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty,guide0107,guide0813,calendar,hackbugs,verify,sweeps] [--jobs 4]
+    .venv/bin/python work/tools/emu_harness.py open [--case arceus,thief,rockruff,primal,palpark[:variant+...]] [--lang cn|en|both]   # open points, see 13
+    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty,guide0107,guide0813,calendar,hackbugs,verify,sweeps,open] [--jobs 4]
     .venv/bin/python work/tools/emu_harness.py cleanup [--kill [--all]]                   # leftover harness processes
     python3 -m unittest discover -s work/tools -p test_emu_harness.py      # pure parts, no ROM needed
 
@@ -336,7 +337,9 @@ item and the bag are compared. Messages of the Thief turns: `work/build/harness/
 The bag never changed: the item stays on the Pokémon that stole it. Wild control: a scripted wild
 Rattata given an Eviolite at the end of the wild finalizer (logged as holding 584) was hit by Thief twice
 without a steal message. **Inconclusive**: the scripted wild battle probably sets the held item after that
-point, so the control needs a different way to give a wild Pokémon an item.
+point, so the control needs a different way to give a wild Pokémon an item. Settled in section 13: the item must be written into the
+wild Pokémon's RAM copies (the finalizer's Pokémon is a temporary copy); in a wild battle the stolen item is kept and a
+second one goes to the Bag (D-1569).
 
 ### 4. Cut-scene big text (Tier 5): rendered, all English lines fit
 
@@ -406,6 +409,7 @@ from ordinary message commands in their scripts). The WIP build predates later b
 | hackbugs | 22 hack-finding cases (`emu_hackbugs.py`, `SUITE_EXPECT`), see 10 | each keeps its observed verdict | about 6 min |
 | verify | placeholders never printed, Gym statue branches, costume nurse (`emu_verify.py`), see 11 | never_printed / confirmed / confirmed | about 1 min |
 | sweeps | text read-back subsets (`emu_sweeps.py SUITE_SUBSETS`), see 12: 6 trainer intros, 6 bag + 4 move + 4 ability descriptions, 2 battles | EN rows `ok` (item 4 `past_panel`), CN rows captured | about 2 min |
+| open | open points (`emu_open.py SUITE_EXPECT`), see 13: Arceus flame/zap, wild Thief (Miltank), Rockruff 12:00/18:00 after a battle, Groudon + Red Orb | plate_type ×2, kept, midday/dusk, no_reversion | about 3 min |
 
   Result (observed): all 10 (5 checks × 2 ROMs) pass, 2 min 13 s wall time with `--jobs 10`. A first run
   before the battery fix failed unown (both ROMs) and palpark (English) on the shared battery file, and one
@@ -807,6 +811,41 @@ goes through `spawn()`:
 Full suite after these changes (2026-10-06, `suite --jobs 4`, 12 checks × 2 ROMs, build CRC32 588D0B73): all 24
 pass in 19 min 55 s; no emu_harness process left afterwards.
 
+### 13. Open points: Arceus in battle, wild Thief, Rockruff after a battle, Primal orbs, Pal Park prize (`emu_open.py`, item 6, 2026-10-06)
+
+`emu_harness.py open [--case arceus,thief,rockruff,primal,palpark[:variant+...]] [--lang cn|en|both]` (module
+`work/tools/emu_open.py`, one child per case/variant/ROM, `--jobs 4`). Every case ran on the Chinese ROM and the English
+build (CRC32 of `origin_hg_v4.0.3_en_wip.nds` of Oct 6 06:55) with identical verdicts; 44 runs in one `--lang both` call.
+Report `work/build/harness/open/report_all_both.json`; screenshots and battle-message sheets (`*_pages.png`) in
+`work/build/harness/open/<cn|en>/`.
+
+**Wild held items and moves (harness finding).** The wild finalizer's Pokémon (`WildLog`, r2) is a temporary copy: the
+BattleSetup party copy already exists when the finalizer ends, and about 130 frames later the battle overlay copies
+that party twice (memcpy from ~0x02215000). So the earlier Thief control, which gave the item at the finalizer, never
+reached the battle. `emu_open.wild_battle(h, species, level, item=, moves=, form=)` starts a scripted `WildBattle` and,
+right after the finalizer, rewrites every RAM copy with the wild Pokémon's PID (`pid_copies`); observed: all four copies
+in battle hold the item and the moves, and the foe uses the move. `encode_pokemon(moves=)` replaces only the slots it
+is given: use `emu_open.moveset([...], [...])` (pads to four slots) for a fixed moveset. The scripted `WildBattle`
+does roll held items itself: a wild Shuckle held Berry Juice, a Miltank Moomoo Milk (personal item 1 = item 2).
+No plain `BattleMon` struct with the moves was found in RAM (searched by PID and by the move ids), so the battle's own
+type field was not read; types come from the INFO panel and from effectiveness messages instead.
+
+**Battle message events.** `battle_events(ml)` groups the MsgLog battle_string reads per "used" message (1#2179 own,
+#2180 wild, #2181 trainer's), with the move name read from a027 bank 739 and the effectiveness: 2#74 super, 2#75 not
+very, 1#8–39 the targeted forms, 1#288–291 no effect, 1#292–295 missed.
+
+| point | method (case) | result (both ROMs) |
+|---|---|---|
+| 1. Arceus in-battle type (D-1501) | arceus: generator Arceus Lv100, Plate through Bag → Give (stored form as in round 2), Splash + Judgment; scripted wild foe Lv50 with one probe move. flame: Tangela / Water Gun; splash: Magmar / ThunderShock; zap: Psyduck / Earthquake (Mud-Slap made Judgment miss once); dread: Drowzee / Karate Chop; fist (control): Rattata / Gust | **observed, follows the Plate**: INFO panel type Fire / Water / Electric / Dark / Fighting with Multitype and the Plate; every probe super effective (as for the Plate type; the personal entry of the stored form, Water / Grass / Psychic / Fairy, would give not very effective or neutral); Judgment super effective on every foe (Fire, Water, Electric, Dark, Fighting). The stored-form mismatch has no in-battle effect. |
+| 2. Thief in a wild battle | thief: Chansey Lv100 (Thief, Seismic Toss, no item); miltank: wild Miltank Lv20 with the game's own Moomoo Milk; eviolite: wild Rattata Lv20 with an Eviolite in its copies; control: Miltank, Seismic Toss only | **observed**: "stole" (1#1432) both times; after the win the thief **holds** the item **and the Bag has one more** (Moomoo Milk +1, Eviolite +1); control: Bag unchanged, nothing held. Trainer battles (section 3) only leave it on the thief: the wild case duplicates the item (D-1569, hack-finding). |
+| 3. Rockruff after a battle win (D-1486) | rockruff: Rockruff Lv24 with exp 15,624 (Lv25 = 15,625, Medium Fast; `with_exp` edits block A +8), Tackle only; scripted wild Rattata Lv2 / Pidgey Lv3 / Sentret Lv2; only A pressed (B would cancel the evolution); hook 0x02074B0E | **observed**: evolves after the battle at Lv25; byte written 0 and Midday Form at 12:00 ×3 and 15:00 ×3; 18:00 → 2 Dusk, 22:00 → 1 Midnight. With the Rare Candy runs: 15 of 15 daytime evolutions Midday. |
+| 4. Nanab Berry, Pal Park prize | palpark fixed: Friday 12:00, $50,000, 99 Master Balls, Ninjask lead; talk to the receptionist (zone 479, object 6), take part → Fixed Catch → Yes; catch on the field grass. palpark stocked: the same after six Pokémon (Rattata, Pidgey, Spearow, Sentret, Raticate, Pidgeotto) are written into save array 28 (the GBA-migrated Pokémon, `SaveArray_Get(save, 28)` = 0x0202756C, 6 × 236 bytes) | fixed: real entry (809 #46, #48, $10,000 taken, warp), countdown and `PalParkAction 0` run (file 12 script 2), stocked species 0 ×6; six wild catches (Master Balls 98 → 93): caught flags at 0x021D3214 +0x30 stay 0, file 12 script 3 never runs, no score, no prize. **BLOCKED for Fixed Catch**: the flags are set only by 0x02054C38 for the entry the show's own step encounter picked (0x02054B8C), which needs stocked entries (loaded by 0x02054A70 from array 28; 0x0205493C inits). stocked: the normal show runs (no Fixed Catch prompt), stocked Pokémon appear through the step encounter (not the wild finalizer), each catch sets a flag (Caterpie / Weedle never appeared on the field grass, so field species were used), after the sixth script 3 runs, warp to the reception, score 320 (file 809 script 2), prize routine L4435 → L4974 → one Berry (Pecha CN, Cheri EN, random). The 3,300–3,499 tier (Nanab 1 in 7, L5171) was not reached: the score was not steered. D-1570; site note for Nanab updated (normal show with GBA-migrated Pokémon only). |
+| 5. Primal Groudon/Kyogre | primal: own Groudon / Kyogre Lv100 (Splash) vs wild Rattata; wild Groudon / Kyogre Lv70 with the orb in their copies vs Ninjask | **observed**: the Red / Blue Orb's Bag menu has no Give (only Move/Return), so the orb was set directly; no Primal (1#1666–1671) or Mega string read, battle copies keep form 0, party form 0 afterwards (D-1571). |
+
+Suite (`SUITE_EXPECT`): arceus flame/zap `plate_type`, thief miltank `kept`, rockruff 12a `midday` and 18 `dusk`, primal
+groudon_own `no_reversion` (palpark is too slow for the suite: 6–10 min per run). Full suite with `open` added
+(2026-10-06, `suite --jobs 4`, 13 checks × 2 ROMs): all 26 pass in 22 min 6 s; `open` about 2 min per ROM.
+
 ### 5. Screen checks on the English WIP build (Tier 3)
 
 `emu_harness.py screens [--only options,ev,dex,battle]` runs each screen recipe on the Chinese ROM and on
@@ -859,8 +898,7 @@ bugs. Both are visible in `work/build/harness/screens/`.
 - `generate_pokemon` overwrites party slot 6 when the party is full; the generator reuses one PID.
 - Wild-battle recipes depend on random encounters (single or double battle, CN vs EN differ), so screen
   pairs of battles are not pixel-identical between runs.
-- Not built: trainer battles (Thief test), talking to NPCs with scripted state (Pal Park prize), winning a
-  battle, contests.
+- Not built: contests. (Trainer battles, scripted NPC state, winning battles and the Pal Park show: see 2b, 7, 13.)
 
 ## Proposal: an automated regression suite (first version built: `suite`, see 5b)
 

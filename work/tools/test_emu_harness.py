@@ -516,3 +516,36 @@ class ChildProcesses(unittest.TestCase):
         self.assertTrue(E.timed_out({"verdict": "timeout"}))
         self.assertTrue(E.timed_out({"flee": {"verdict": "ok"}, "lose": {"verdict": "timeout", "error": "x"}}))
         self.assertFalse(E.timed_out({"flee": {"verdict": "ok"}, "lose": {"flag": 1}}))
+
+
+class OpenPoints(unittest.TestCase):
+    """emu_open's pure helpers: experience edit, padded movesets, battle message grouping, judges."""
+
+    def test_exp_roundtrip(self):
+        import emu_open as O
+        raw = O.with_exp(_encrypted_mon(7, species=744), 15624)
+        self.assertEqual(O.exp_of(raw), 15624)
+        mon = E.decode_pokemon(raw)
+        self.assertTrue(mon["checksum_ok"])
+        self.assertEqual(mon["species"], 744)
+
+    def test_moveset_pads(self):
+        import emu_open as O
+        self.assertEqual(O.moveset([150], [40]), {"moves": [150, 0, 0, 0], "pp": [40, 0, 0, 0]})
+
+    def test_battle_events_and_judges(self):
+        import emu_open as O
+
+        class ML:
+            rows = [(277, 1, 2179, 1), (27, 739, 150, 2), (277, 2, 99, 3),
+                    (277, 1, 2180, 4), (27, 739, 55, 5), (277, 2, 74, 6),
+                    (277, 1, 2179, 7), (27, 739, 449, 8), (277, 1, 293, 9),
+                    (277, 1, 2179, 10), (27, 739, 449, 11), (277, 2, 74, 12)]
+        events, reads = O.battle_events(ML())
+        self.assertEqual([(e["side"], e["move"], e["effect"]) for e in events],
+                         [("player", 150, "normal"), ("wild", 55, "super"), ("player", 449, "missed"),
+                          ("player", 449, "super")])
+        res = {"events": events, "expected_probe": ("super", "not_very"), "expected_judgment": ("super", "not_very")}
+        self.assertEqual(O.judge_arceus(res), "plate_type")
+        self.assertEqual(O.judge_rockruff({"after": {"species": 745, "form": 0}}), "midday")
+        self.assertEqual(O.judge_rockruff({"after": {"species": 744, "form": 0}}), "no_evolution")

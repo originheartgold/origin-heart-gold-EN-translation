@@ -1982,10 +1982,17 @@ def _check_sweeps(rom, out):
     return emu_sweeps.suite_check(rom, out)
 
 
+def _check_open(rom, out):
+    """Open behaviour points (emu_open.py SUITE_EXPECT): Arceus's in-battle type follows the Plate, a wild
+    Thief steal is kept, Rockruff evolving after a battle by day is Midday, a held Red Orb does nothing."""
+    import emu_open
+    return emu_open.suite_check(rom, out)
+
+
 SUITE_CHECKS = {"unown": _check_unown, "palpark": _check_palpark, "arceus": _check_arceus,
                 "evolve": _check_evolve, "dex": _check_dex, "skitty": _check_skitty, "guide0107": _check_guide0107,
                 "guide0813": _check_guide0813, "calendar": _check_calendar, "hackbugs": _check_hackbugs,
-                "verify": _check_verify, "sweeps": _check_sweeps}
+                "verify": _check_verify, "sweeps": _check_sweeps, "open": _check_open}
 
 
 def cmd_suite(a):
@@ -2054,6 +2061,11 @@ def _cmd_sweeps(a):
 def _cmd_calendar(a):
     import emu_calendar
     return emu_calendar.cmd(a)
+
+
+def _cmd_open(a):
+    import emu_open
+    return emu_open.cmd(a)
 
 
 def cmd_dexcapture(a):
@@ -2170,6 +2182,16 @@ def main(argv=None):
         g7.add_argument("--jobs", type=int, default=4)
         g7.add_argument("--rom", help=argparse.SUPPRESS)
         g7.add_argument("--child", help=argparse.SUPPRESS)
+    op = sub.add_parser("open", help="open behaviour points: Arceus in-battle type, wild Thief, Rockruff after a "
+                        "battle, Primal orbs, Pal Park prize (emu_open.py)")
+    op.add_argument("--case", default="all", help="comma list of case[:variant+variant] (see emu_open.py)")
+    op.add_argument("--lang", choices=("cn", "en", "both"), default="cn")
+    op.add_argument("--rom-cn", default=str(DEF_ROM_CN))
+    op.add_argument("--rom-en", default=str(DEF_ROM_EN))
+    op.add_argument("--out", default=str(DEF_OUT))
+    op.add_argument("--jobs", type=int, default=4)
+    op.add_argument("--rom", help=argparse.SUPPRESS)
+    op.add_argument("--child", help=argparse.SUPPRESS)
     ca = sub.add_parser("calendar", help="calendar encounter hook: loaded table, forced-slot battles (emu_calendar.py)")
     ca.add_argument("--case", default="all", help="comma list of: table, battle, volcanion, stale")
     ca.add_argument("--battles", help="comma list of entry:period battle variants (default: emu_calendar.BATTLES)")
@@ -2220,7 +2242,7 @@ def main(argv=None):
     return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages, "suite": cmd_suite,
             "dexcapture": cmd_dexcapture, "skitty": _cmd_skitty, "guide0107": _cmd_guide0107,
             "guide0813": _cmd_guide0813, "calendar": _cmd_calendar, "hackbugs": _cmd_hackbugs,
-            "verify": _cmd_verify, "sweeps": _cmd_sweeps, "cleanup": cmd_cleanup}[a.cmd](a)
+            "verify": _cmd_verify, "sweeps": _cmd_sweeps, "open": _cmd_open, "cleanup": cmd_cleanup}[a.cmd](a)
 
 
 if __name__ == "__main__":
