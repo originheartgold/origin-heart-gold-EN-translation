@@ -58,14 +58,14 @@ def main():
             report['checks'].append('text values wrap both directions; A does not close settings row')
             h.touch(227,152,after=30)
             leave('B');assert h.u16(h.array(1))==original
-            report['checks'].append('B discards INSTANT')
+            report['checks'].append('B discards FAST')
             d=open_menu();assert h.u16(d+0x27e)==0
             h.touch(177,152,after=30);h.press('DOWN',after=30)
             assert row()==7 and h.u16(d+0x2d2)==0
             h.press('LEFT',after=30);assert h.u16(d+0x2d2)==1
             h.press('RIGHT',after=30);assert h.u16(d+0x2d2)==0
             leave('A');assert h.u16(h.array(1))==original
-            report['checks'].append('Quit default and LEFT/RIGHT; A on Quit discards FAST')
+            report['checks'].append('Quit default and LEFT/RIGHT; A on Quit discards MEDIUM')
             for mode,x in ((2,227),(1,177),(0,130)):
                 d=open_menu()
                 before=h.u16(h.array(1))
@@ -76,6 +76,14 @@ def main():
                 leave('A')
                 assert h.u16(h.array(1))==(original&~12)|(mode<<2)
                 report['checks'].append(f'commit mode {mode}, reopen and preserve other bits')
+            # Reserved raw value 3 is a controlled corrupt/unknown-setting case.
+            h.w16(h.array(1),(original&~12)|12)
+            d=open_menu();assert h.u16(d+0x27e)==1
+            leave('B');assert h.u16(h.array(1))==(original&~12)|12
+            d=open_menu();assert h.u16(d+0x27e)==1
+            h.touch(149,180,after=300);h.press('B',after=90)
+            assert h.u16(h.array(1))==(original&~12)|4
+            report['checks'].append('reserved value displays MEDIUM; Cancel preserves it, Confirm normalizes it')
             report['memory']={k:getattr(probe,k) for k in ('heap_checks','corrupt','fails','nullw','text_rejections','heap_table_errors','text_probe_errors')}
             assert probe.heap_checks and not any(v for k,v in report['memory'].items() if k!='heap_checks')
         assert all(digest(Path(path))==sha for path,sha in report['inputs'].items())

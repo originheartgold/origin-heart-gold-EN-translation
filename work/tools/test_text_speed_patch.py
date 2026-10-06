@@ -114,6 +114,14 @@ class RomTests(unittest.TestCase):
         self.assertEqual(before.sections[0].data[off+12:off+20],after.sections[0].data[off+12:off+20])
         self.assertEqual(struct.unpack_from('<H',after.sections[0].data,0xba9a)[0],0x2501)
 
+    def test_private_printer_storage_and_new_game_default(self):
+        data=self.patched.loadArm9().sections[0].data
+        self.assertEqual(struct.unpack_from('<H',data,0x208ea)[0],0x2138)
+        self.assertEqual(bytes(data[0x20962:0x20966]),speed.bl(0x2020962,speed.load_payload()['symbols']['init_printer']))
+        self.assertEqual(struct.unpack_from('<HH',data,0x2b176),(0x2004,0x4301))
+        # Only the default initializer changes; the original save structure stays two bytes.
+        self.assertEqual(bytes(data[0x2b16e:0x2b170]),bytes(self.original.loadArm9().sections[0].data[0x2b16e:0x2b170]))
+
     def test_menu_choice_and_touch_tables(self):
         ov=self.patched.loadArm9Overlays()[50];b=ov.data;base=ov.ramAddress
         counts_ptr=struct.unpack_from('<I',b,0x21e53e0-base)[0]

@@ -1,5 +1,7 @@
 # Native text speed release candidate — 2026-10-05
 
+Current revision: [SLOW / MEDIUM / FAST](text_speed_readable_rc6.md). This document records the earlier candidate.
+
 **Current status:** the three review findings are resolved in the [rebuilt candidate and fix report](text_speed_fixes.md). The evidence below describes the superseded initial candidate. The user requires old-save → new-ROM upgrades; downgrades are out of scope.
 
 Worktree: `/private/tmp/poke-text-speed-research`, branch `codex/text-speed-research`, base `0121c30`. This implements the earlier [feasibility research](text_speed_research.md). All ROMs, saves, screenshots, traces and patches remain ignored under `work/build/text-speed/`. Nothing was merged or published.

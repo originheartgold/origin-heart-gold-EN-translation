@@ -12,9 +12,9 @@ BASE=0x01ff8620
 OVBASE=0x021e4980
 # This reviewed pin lives in patcher source, never in the mutable cache. Updating
 # native code requires review of its reproducible payload and this separate pin.
-REVIEWED_PAYLOAD_SHA256='a622530bc43d4736c91af9e6ede5f07b801e42d394a84a60c32cd8f12b9d58f5'
+REVIEWED_PAYLOAD_SHA256='6a5acbbf84b4e7608b0f3202f0b03d7b002d65865d012bcf311b4291f9b34ab7'
 REQUIRED_SYMBOLS=frozenset(('print_task','load_rows','load_choice','load_label',
-                            'commit_speed','exit_free','draw_label','setup_sprites'))
+                            'commit_speed','exit_free','draw_label','setup_sprites','init_printer'))
 MAX_PAYLOAD_SIZE=0x01ffa000-BASE
 OVHASH='852d8fcd01bf09ba54bee1a24609e2a82e71d25b5d6dd84c5d919cc0b3418856'
 
@@ -149,6 +149,11 @@ def apply(rom,payload=None):
     if end>0x01ffa000:raise ValueError('Native code exceeds reserved budget')
     patch(a,0x2000000,0x20d1a28,struct.pack('<I',BASE),struct.pack('<I',end))
     patch(a,0x2000000,0x2020a18,struct.pack('<I',0x2020a1d),struct.pack('<I',payload['symbols']['print_task']))
+    # Allocate/initialize private fractional-speed state; never reuse game-owned fields.
+    patch(a,0x2000000,0x20208ea,struct.pack('<H',0x2134),struct.pack('<H',0x2138))
+    patch(a,0x2000000,0x2020962,bl(0x2020962,0x2020be8),bl(0x2020962,payload['symbols']['init_printer']))
+    # Options_Init already cleared both bytes. Set MEDIUM (bits2..3=1), music remains0.
+    patch(a,0x2000000,0x202b176,struct.pack('<HH',0x200f,0x4381),struct.pack('<HH',0x2004,0x4301))
     # Music accesses mask only low two bits; its setter preserves the new bits.
     for addr,old,new in [(0x202b1c6,0x0700,0x0780),(0x202b1c8,0x0f00,0x0f80),(0x202b1d2,0x220f,0x2203),(0x202b1da,0x210f,0x2103)]:
         patch(a,0x2000000,addr,struct.pack('<H',old),struct.pack('<H',new))
@@ -242,7 +247,7 @@ def verify(rom,report):
     blob=bytes.fromhex(payload['code'])
     if bytes(sections[1].data[0x620:0x620+len(blob)])!=blob:raise ValueError('Native payload changed')
     if struct.unpack_from('<H',sections[0].data,0xba9a)[0]!=0x2501:raise ValueError('Heap fix missing')
-    return {'status':'passed','native_bytes':len(blob),'options_rows':7,'normal_default':True}
+    return {'status':'passed','native_bytes':len(blob),'options_rows':7,'new_game_default':'MEDIUM','legacy_save_default':'SLOW','speeds':['SLOW','MEDIUM','FAST']}
 
 if __name__=='__main__':
     import argparse,ndspy.rom

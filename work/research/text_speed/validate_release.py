@@ -33,7 +33,7 @@ def main():
     page_pixels = {}
     try:
         for mode, x in enumerate((130, 177, 227)):
-            name = ('normal', 'fast', 'instant')[mode]
+            name = ('slow', 'medium', 'fast')[mode]
             directory = output / name
             script = ('fieldboot; press X; wait 90; press RIGHT; wait 30; '
                       'press DOWN; wait 30; press DOWN; wait 30; press A; wait 300; shot open; '
@@ -63,9 +63,9 @@ def main():
                                       'saved_options': expected, 'heap_checks': report['heap_checks']}
             page_pixels[name] = Image.open(directory / 'page1.png').crop((8, 153, 236, 182)).tobytes()
             print(name, summary['modes'][name], flush=True)
-        spans = [summary['modes'][name]['frame_span'] for name in ('normal', 'fast', 'instant')]
+        spans = [summary['modes'][name]['frame_span'] for name in ('slow', 'medium', 'fast')]
         assert spans[0] > spans[1] > spans[2], spans
-        assert page_pixels['normal'] == page_pixels['fast'] == page_pixels['instant'], 'completed dialogue differs'
+        assert page_pixels['slow'] == page_pixels['medium'] == page_pixels['fast'], 'completed dialogue differs'
         assert hashlib.sha256(rom.read_bytes()).hexdigest() == identity, 'source ROM changed'
         summary['status'] = 'passed'
     finally:

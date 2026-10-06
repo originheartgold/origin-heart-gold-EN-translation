@@ -1,5 +1,7 @@
 # WIP RC6 device/playthrough candidate — 2026-10-05
 
+Current revision: [SLOW / MEDIUM / FAST](text_speed_readable_rc6.md). This document records the earlier candidate.
+
 Final independent high-effort review: [text_speed_final_rc6_review.md](text_speed_final_rc6_review.md).
 No new actionable implementation defect or blocker was found. The reviewer passed
 63 focused tests and independently reproduced the native payload. The coordinator

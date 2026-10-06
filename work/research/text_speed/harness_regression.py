@@ -61,7 +61,7 @@ def child(args):
             d = open_options()
             opts = h.u32(d+0x24)
             original = h.u16(opts)
-            assert (original >> 2) & 3 == 0, 'fixture is not an old NORMAL save'
+            assert (original >> 2) & 3 == 0, 'fixture is not an old SLOW save'
             # First exercise cancel after touch, then reopen and commit via buttons.
             h.touch(227, 152, after=60)
             assert h.u16(d+0x27e) == 2 and h.u16(opts) == original
@@ -86,7 +86,7 @@ def child(args):
             expected = (original & ~12) | (args.mode << 2)
             assert h.u16(opts) == expected, ('Confirm changed unrelated options', h.u16(opts), expected)
             result['options'] = {'before': original, 'after': expected, 'cancel': 'passed', 'buttons': 'passed'}
-            for bank, msg in CORPUS:
+            for bank, msg in (((718,160),) if args.controls else CORPUS):
                 mark = len(glyphs)
                 sentinel = h.get_var(SENTINEL_VAR)
                 h.set_var(SENTINEL_VAR, 0)
@@ -109,8 +109,16 @@ def child(args):
                     assert h.get_var(SENTINEL_VAR) == 0x5A5A, 'message did not complete within page budget'
                     gs = glyphs[mark:]
                     assert gs and pages, 'empty/vacuous message test'
-                    bank_source = json.loads((ROOT/f'work/translate/banks/a027/{bank:04d}.json').read_text())
-                    source = next(s['en'] for s in bank_source['strings'] if s['id']==msg)
+                    if args.controls:
+                        from control_fixture import TEXT
+                        source=TEXT
+                        before=len(re.sub(r'\{[^}]*\}', '', TEXT.split('{VAR:0201:60}')[0]))
+                        pause_gap=gs[before][0]-gs[before-1][0]
+                        assert pause_gap>=60, ('explicit pause shortened',pause_gap)
+                        result['explicit_pause_frames']=pause_gap
+                    else:
+                        bank_source = json.loads((ROOT/f'work/translate/banks/a027/{bank:04d}.json').read_text())
+                        source = next(s['en'] for s in bank_source['strings'] if s['id']==msg)
                     expected_glyphs = len(re.sub(r'\{[^}]*\}', '', source))
                     assert len(gs)==expected_glyphs, ('wrong message or incomplete rendering',bank,msg,len(gs),expected_glyphs)
                     result['messages'].append({'bank':bank, 'id':msg, 'pages':pages, 'glyphs':len(gs),
@@ -132,6 +140,7 @@ def main():
     p.add_argument('--save', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--mode', type=int, choices=range(3))
+    p.add_argument('--controls',action='store_true',help='Use the separately generated authored control fixture ROM')
     args = p.parse_args()
     args.rom, args.save, args.out = args.rom.resolve(), args.save.resolve(), args.out.resolve()
     if not args.out.is_relative_to(ROOT/'work/build') or args.out == ROOT/'work/build':
@@ -147,7 +156,7 @@ def main():
             out = args.out/str(mode)
             with (args.out/f'{mode}.log').open('w') as log:
                 subprocess.run([sys.executable, __file__, '--rom',str(args.rom),'--save',str(args.save),
-                                '--out',str(out),'--mode',str(mode)], check=True, timeout=600,
+                                '--out',str(out),'--mode',str(mode)]+(['--controls'] if args.controls else []), check=True, timeout=600,
                                stdout=log, stderr=subprocess.STDOUT, cwd=ROOT)
             r = json.loads((out/'report.json').read_text())
             assert r['status']=='passed' and r['rom_sha256']==identities[str(args.rom)]
