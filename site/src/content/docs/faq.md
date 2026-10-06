@@ -134,6 +134,10 @@ No. Charizard is the only Pokémon that can Mega Evolve, holding the Charizardit
 - Lt. Surge's Gym in Vermilion City, [after the construction-site clash](../guide/pewter-to-vermilion/#vermilion-city-after-the-construction-site-clash).
 - Wild [Pikachu](../pokemon/pikachu/) can hold one.
 
+### Why can't I use a Full Heal or a Revive in battle?
+
+The original hack leaves most medicine out of the battle Bag: status heals, Full Restore, Max and Hyper Potions, Revives and Ethers. This may be intended. Carry status-healing Berries (Lum, Pecha, Cheri and others) or the Blue, Yellow and Red Flutes, which do work in battle. The full list is in [Known issues](../guide/known-issues/#status-medicine-in-battle).
+
 ### Why can't I find a Pokémon or event someone else got?
 
 Many events and some wild Pokémon depend on your starter (Charmander, Pikachu or Bulbasaur). Pick your starter at the top of any quest page and the guide shows only what your game can get.

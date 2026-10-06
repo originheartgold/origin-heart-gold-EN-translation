@@ -4,13 +4,13 @@
 
 These are suspected bugs in the original Chinese hack, found by reading its game files. The translation keeps the hack's behaviour exactly as it is, so they are reported here, not fixed. Most haven't been confirmed in game yet; the entries that were tested in an emulator say so.
 
-Each entry says what you would do in game, what goes wrong, and how to avoid it or recover. Most entries are about a missed item, scene or battle. A few can freeze the game (a lost battle in Rock Tunnel or with the Pokémon Tower Magcargo, the Department Store's Double Battle with only one Pokémon), and two scenes write past the end of the game's story records into your Pokédex data (see [Out-of-range story records](#out-of-range-story-records-save-data)).
+Each entry says what you would do in game, what goes wrong, and how to avoid it or recover. Most entries are about a missed item, scene or battle. A few can freeze the game (a lost battle in Rock Tunnel or with the Pokémon Tower Magcargo, the Department Store's Double Battle with only one Pokémon, a Double Battle in the Safari Zone, entering Goldenrod City in one unusual story state), and two scenes write past the end of the game's story records into your Pokédex data (see [Out-of-range story records](#out-of-range-story-records-save-data)).
 
 ## Check these first
 
 These entries can freeze the game, cost you something, or close a quest or battle for good. Everything else on this page is cosmetic, in your favour, or can't happen in normal play.
 
-- **Can freeze the game:** [Rock Tunnel corner kid loss](#rock-tunnel-corner-kid-loss), [Pokémon Tower Magcargo loss](#pokémon-tower-magcargo-loss), [Department Store Double Battle with one Pokémon](#department-store-double-battle-with-one-pokémon).
+- **Can freeze the game:** [Rock Tunnel corner kid loss](#rock-tunnel-corner-kid-loss), [Pokémon Tower Magcargo loss](#pokémon-tower-magcargo-loss), [Department Store Double Battle with one Pokémon](#department-store-double-battle-with-one-pokémon), [Safari Zone Double Battle freeze](#safari-zone-double-battle-freeze), [Goldenrod City crash on entry](#goldenrod-city-crash-on-entry).
 - **Writes to your Pokédex data:** [Out-of-range story records (save data)](#out-of-range-story-records-save-data).
 - **Can take more money or items than it should:** [S.S. Anne TM price](#ss-anne-tm-price), [Sprout Tower offerings](#sprout-tower-offerings), [Fortune-teller's price](#fortune-tellers-price), [Game Corner 500-coin option](#game-corner-500-coin-option), [Charcoal Kiln HM01](#charcoal-kiln-hm01), [Pidgeot loan returns a different Pidgeot](#pidgeot-loan-returns-a-different-pidgeot), [Lightning Whip lesson teaches Charge](#lightning-whip-lesson-teaches-charge).
 - **Lost for good unless you act first:** [Bruno's Pewter City challenge](#brunos-pewter-city-challenge), [Pikachu starters' Charmander quest](#pikachu-starters-charmander-quest), [Virtue trial and the four-leaf clover](#virtue-trial-and-the-four-leaf-clover), [Cerulean burglary deadline](#cerulean-burglary-deadline), [Route 5 shelter raid](#route-5-shelter-raid), [Pokémon Tower Magcargo is missable](#pokémon-tower-magcargo-is-missable), [Misty's Gyarados and the Viridian Gym trials](#mistys-gyarados-and-the-viridian-gym-trials), [Switching sides at the construction clash](#switching-sides-at-the-construction-clash), [Swimmer Marina and the Dragonair delivery](#swimmer-marina-and-the-dragonair-delivery), [Losing on the Celadon roof](#losing-on-the-celadon-roof), [Sitrus Berries and the eating contest](#sitrus-berries-and-the-eating-contest), [Grandma's treats deadlines](#grandmas-treats-deadlines), [Cynthia and Steven in Fuchsia City](#cynthia-and-steven-in-fuchsia-city), [Misty missing from Cerulean Gym](#misty-missing-from-cerulean-gym), [TM14 Blizzard](#tm14-blizzard), [Crystal Onix](#crystal-onix), [Cinnabar graffiti couple](#cinnabar-graffiti-couple), [TM86 Grass Knot](#tm86-grass-knot), [Bikers' red envelope and Big Sis](#bikers-red-envelope-and-big-sis), [Cherrygrove Wooper boy and the clover hunter](#cherrygrove-wooper-boy-and-the-clover-hunter), [Pokémon Academy class and Youngster Ward](#pokémon-academy-class-and-youngster-ward), [Losing to Goh in Union Cave](#losing-to-goh-in-union-cave), [HM08 and Mr. Pokémon's quiz](#hm08-and-mr-pokémons-quiz), [Pewter Museum Brock and the Route 30 Chikorita](#pewter-museum-brock-and-the-route-30-chikorita), [Koume, Sakura and the bug hunt](#koume-sakura-and-the-bug-hunt), [Rocky Helmet and the bug hunt](#rocky-helmet-and-the-bug-hunt), [Purugly quest and the bug hunt](#purugly-quest-and-the-bug-hunt), [Forest of Time during the bug hunt](#forest-of-time-during-the-bug-hunt), [Dream World battles before the old man](#dream-world-battles-before-the-old-man), [Pokéathlon Dome and the Route 36 tree](#pokéathlon-dome-and-the-route-36-tree), [MooMoo Farm Miltank fall sick again](#moomoo-farm-miltank-fall-sick-again), [Burned Tower beasts scene and the expedition leader](#burned-tower-beasts-scene-and-the-expedition-leader), [Jirachi stone and the story counter](#jirachi-stone-and-the-story-counter), [Durin Berries for the Anti-Age Spray](#durin-berries-for-the-anti-age-spray), [Blackthorn Gym Trainers](#blackthorn-gym-trainers).
@@ -34,13 +34,13 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Pidgeot loan returns a different Pidgeot
 
-**The Viridian Forest Pidgeot loan gives you back a different Pidgeot.** The flower keeper borrows your Pidgeot. When he returns it, you get a fixed Lv. 20 Pidgeot instead of your own, although he says he's giving yours back. Lend him a Pidgeot you don't mind losing (see [Viridian Forest: lend her a Pidgeot](01-pallet-to-pewter.md#viridian-forest-lend-her-a-pidgeot-pikachu-starters-only)). Tested in an emulator: the returned Pidgeot is Lv. 20 with no item, a blank OT and ID No. 04336.
+**The Viridian Forest Pidgeot loan gives you back a different Pidgeot.** The flower keeper borrows your Pidgeot. When she returns it, you get a fixed Lv. 20 Pidgeot instead of your own, although she says she's giving yours back. Lend her a Pidgeot you don't mind losing (see [Viridian Forest: lend her a Pidgeot](01-pallet-to-pewter.md#viridian-forest-lend-her-a-pidgeot-pikachu-starters-only)). Tested in an emulator: the returned Pidgeot is Lv. 20 with no item, a blank OT and ID No. 04336.
 
 *Source:* file 115 L4827 (party selection), L5794 (return: `GiveLoanMon 6, 20, 75`, trade record 6); D-1392.
 
 ### Pidgeotto or Pidgeot request
 
-**The same request names a Pidgeotto, then a Pidgeot.** The flower keeper says he needs "a Pidgeotto", then asks "If you have a Pidgeot...". Only a Pidgeot is accepted. The Chinese says the same. Cosmetic.
+**The same request names a Pidgeotto, then a Pidgeot.** The flower keeper says she needs "a Pidgeotto", then asks "If you have a Pidgeot...". Only a Pidgeot is accepted. The Chinese says the same. Cosmetic.
 
 *Source:* bank 0130#149 (比比鸟 Pidgeotto, then 比雕 Pidgeot); D-1195.
 
@@ -161,6 +161,12 @@ These entries can freeze the game, cost you something, or close a quest or battl
 **Misty's Cerulean Cape photo can never appear for players who didn't confess to her.** After your final Hall of Fame entry, Misty is meant to stand at the tip of Cerulean Cape on Route 25 for a friendly photo if you never confessed to anyone or her romance is closed. The game seems to allow her only during one hour of the afternoon, but the check is written so that she is hidden at every hour. Nothing else brings her there. Players on Misty's romance route get her date photo as normal. Tested in an emulator: at 12:00, 14:00 and 15:00 she isn't there.
 
 *Source:* file 216 map script (header on-load scripts 4/9 → L3164): after flag 2261, if flag 1645 is clear or 2142 is set it goes to L8294: `ScrCmd_522` → `CompareVarToValue 0x4000, 14` → `GoToIf ≠` L8288 (`SetFlag 598`), then the same for 15, so 598 (hide flag of Route 25 object 35, Misty, script 41 → L7584 friendly photo, `CameronPhoto 84`) is always set. ScrCmd_522 is read as the hour: file 172 (script 13) compares it with every value 0–23. Only file 758 @6735 clears 598 (Misty's date start), and the map script sets it again on entry (D-1441).
+
+### Pewter City sign
+
+**The Pewter City town sign says "If you want to learn it, come back anytime."** The hack points the sign at a line of the Metal Claw tutor's instead of the sign's own text. Cosmetic; the Chinese does the same.
+
+*Source:* D-1354; file 748 script 4 `DirectionSignpost` msg 20 = bank 0453#20 (the tutor's line, also `NPCMsg 20` in script 31). The string is shared, so it can't be changed for the sign alone.
 
 ## Vermilion City to Celadon City
 
@@ -330,7 +336,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Switching sides at the construction clash
 
-**Switching sides after losing the Vermilion construction clash locks out both partners.** Every loss sends you to a Pokémon Center and lets you choose a side again, but the romance lock from your first choice stays. If you then pick the other side, both partners tied to the clash are locked. Only the wish in Island Forest on Six Island can undo it (see [Saffron City to Cinnabar Island](#saffron-city-to-cinnabar-island)). Stick with your first choice. Not confirmed in game.
+**Switching sides after losing the Vermilion construction clash locks out both partners.** Every loss sends you to a Pokémon Center and lets you choose a side again, but the romance lock from your first choice stays. If you then pick the other side, both partners tied to the clash are locked. Only the wish in Island Forest on Six Island can undo it (see [Saffron City to Cinnabar Island](#saffron-city-to-cinnabar-island)). Stick with your first choice. Partly confirmed in an emulator: the restart and the double lock were seen; the lost battle itself wasn't played (D-1555).
 
 *Source:* the choice is made in the Vermilion Pokémon Center (file 777 script 11): Blue's side sets 1064 + 2141 (L614), Green's side sets 1065 + 2153 (L651); neither clears the other lock. A lost clash whites out (file 774 L6321) and the clash restart (774 L2623) shows Green and Blue again (clears 1058), so switching sets both (D-1397). Undo: file 55 L3017–L3075.
 
@@ -386,9 +392,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 *Source:* bank 343#32 (熏香); file 201 L1818 gives item 239 (Miracle Seed).
 
-### Lara's Pretty Scales
+### Lara's Heart Scales
 
-**Lara on Route 14 promises "these Pretty Scales" but gives one Heart Scale.** The Chinese says the same. Cosmetic. Tested in an emulator: exactly one Heart Scale arrives.
+**Lara on Route 14 promises "these Heart Scales" but gives one Heart Scale.** The Chinese says the same. Cosmetic. Tested in an emulator: exactly one Heart Scale arrives.
 
 *Source:* bank 344#62 (这几个漂亮鳞片); file 202 L3529 gives item 93 (Heart Scale) ×1 (D-1502; `emu_harness.py hackbugs --case lara`).
 
@@ -440,6 +446,12 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 *Source:* D-1570. File 809 L6431–L6574 (Fixed Catch entry), file 12 script 2 (countdown, `PalParkAction 0`) and script 3 (the "caught the stocked Pokémon" scene), file 809 script 2 (score) and L4435 (prize tiers: under 3,000 / 3,300 / 3,500 / 10,000 points; Nanab Berry 166 in the 3,300–3,499 list, L5171). The caught flags (arm9 0x021D3214 +0x30) are set only by 0x02054C38 for the entry the show's step encounter picked (0x02054B8C), which needs stocked Pokémon (save array 28, loaded by 0x02054A70). `emu_harness.py open --case palpark`.
 
+### Safari Zone Double Battle freeze
+
+**About one in four wild encounters in the Safari Zone can turn into a broken Double Battle that freezes the game.** If you have two or more Pokémon that can battle, the game may set up a wild Double Battle, but the Safari Zone only creates one wild Pokémon: the second one is invisible garbage and the game freezes at the command menu. Enter the Safari Zone with only one Pokémon that can battle (deposit the rest or carry fainted ones). Tested in an emulator (Chinese ROM and English build) and reported by a player.
+
+*Source:* D-1535. ov2 0x022470C4: the wild Double Battle roll (rand % 4 with 2+ usable Pokémon) runs before the Safari check, and the Safari branch (0x0224718C → 0x02248204) creates only one wild Pokémon. The Bug-Catching Contest goes through the same code (read from the code only); you enter it with one Pokémon, so it needs no warning.
+
 ## Saffron City to Cinnabar Island
 
 [Quests on this page](05-saffron-cinnabar.md)
@@ -454,7 +466,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 **TM14 Blizzard can be missed.** The only TM14 comes from Articuno's no-Poké-Ball battle in the Seafoam Islands: beat it, choose to catch it, and the researcher stops you and gives you TM14. The post-game Team Rocket scene there (Lawrence and Archie) removes Articuno until Lance visits your home after the final Hall of Fame, and after that only the catch battle is left. Get TM14 before that Team Rocket scene. Before it, Articuno is there for everyone.
 
-*Source:* file 195 @957 hides Articuno with `HidePerson` (object 2, hide flag 1368); file 842 @2177 clears 1368 (needs flag 2261). Articuno's script (195 script 10) runs the no-Poké-Ball battle (trainer 505) only while 2261 is clear; after 2261 it offers only "Catch Articuno?" (L2249; the catch battle sets 1368 at L2696). The researcher's TM14 (item 341) is at L2960, flag 1483. The Route 3 painter's Ralts scene that also sets 1368 (file 175 script 16, L1145) is never triggered (D-1423), and file 115 L5744 is the early Viridian Forest Eevee rescue (D-1422).
+*Source:* D-1422. File 195 @957 hides Articuno with `HidePerson` (object 2, hide flag 1368); file 842 @2177 clears 1368 (needs flag 2261). Articuno's script (195 script 10) runs the no-Poké-Ball battle (trainer 505) only while 2261 is clear; after 2261 it offers only "Catch Articuno?" (L2249; the catch battle sets 1368 at L2696). The researcher's TM14 (item 341) is at L2960, flag 1483. The Route 3 painter's Ralts scene that also sets 1368 (file 175 script 16, L1145) is never triggered (D-1423), and file 115 L5744 is the early Viridian Forest Eevee rescue.
 
 ### Moltres and the S.S. Anne guest
 
@@ -625,6 +637,12 @@ These entries can freeze the game, cost you something, or close a quest or battl
 **The Cherrygrove Wooper boy and the Five Island clover hunter share a switch.** Talking to the crying boy in Cherrygrove City (whose Poké Ball the Wooper snatched) also removes the clover hunter on Five Island, the man who finds the four-leaf clover. If you haven't done the Five Island clover scene yet, it can't be started until the Ruins of Alph scene where you promise Molly to look for Prof. Hale, which brings him back. Nothing is lost unless that Ruins of Alph scene never happens; the Mt. Silver Revival Herbs (which need the Five Island scene) just wait. Do the Five Island clover scene before you talk to the boy. Side effect: if you forced the sale on Five Island, the hunter comes back after the Ruins of Alph scene and just repeats a line. Cosmetic.
 
 *Source:* flag 1973 is the hunter's hide flag (Five Island object 24, file 58 script 15; set when the sale is forced, L7740) and the Wooper quest's "talked to the boy" flag (file 847 L1106, checked by the Poké Ball at L1133). Cleared by the Ruins of Alph Molly scene (file 51 L4289, with 1975/1978). The Mt. Silver Turtwig owner who gives the Revival Herbs is shown by the Five Island "Forget it" path (file 58 L4425 clears his hide flag 1530) (D-1405).
+
+### Marauder's Deoxys sprite
+
+**Executive Marauder's lead Deoxys uses a form the game doesn't define, so it shows up in battle as a small garbled figure.** Cosmetic. Tested in an emulator (Chinese ROM and English build). Read from the game code only: it uses normal Deoxys stats.
+
+*Source:* D-1498; trainer 865, party slot 1, form 4 (no entry in the form table; the stat lookup falls back to base Deoxys). Work note: work/notes/trainer_runtime_review.md.
 
 ## Cherrygrove City to Azalea Town
 
@@ -804,9 +822,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Fortune-teller's price
 
-**The fortune-teller's ideal-Pokémon reading checks for $300 but charges $10,000.** With $300–$9,999 you still get the item, and your money drops to $0. Have $10,000 before asking. Tested in an emulator: $5,000 → $0 with the item; $20,000 → $10,000.
+**The fortune-teller's ideal-Pokémon reading checks for $300 but charges $10,000.** With $300–$9,999 you still get the item, and your money drops to $0. Have $10,000 before asking. Tested in an emulator: $5,000 → $0 with the item; $20,000 → $10,000. If you ask for a love reading without $10,000, she turns you down and the touch menu on the bottom screen stays hidden; you can still walk and press X for the menu. Cosmetic.
 
-*Source:* file 895 L228 `HasEnoughMoneyImmediate 300`; `SubMoneyImmediate 10000` at L313/L537/L589.
+*Source:* file 895 L228 `HasEnoughMoneyImmediate 300`; `SubMoneyImmediate 10000` at L313/L537/L589. Love reading: L323 → L484 without `TouchscreenMenuShow` (D-1546).
 
 ### Green's and Red's Route 30 dates
 
@@ -867,6 +885,18 @@ These entries can freeze the game, cost you something, or close a quest or battl
 **Cynthia's "Rest in my room" asks for a Snow Mail but would take a Bubble Mail.** At home in Pallet Town, Cynthia only adds "Rest in my room" to her menu if you carry a Snow Mail, but choosing it tries to take a Bubble Mail instead. In practice the option never appears: it needs the move-in step, which no player can finish, and neither Mail can be obtained anywhere in the game (see [Pallet Town to Pewter City](#pallet-town-to-pewter-city), which also lists the other Mail mismatches). In the same menu, "I'm busy" shows Misty's goodbye line instead of Cynthia's. Harmless.
 
 *Source:* file 842 script 15 (1F, Cynthia object 8, hide flag 422): L1064 needs var 0x40B5 ≥ 7 → L7063 `HasItem 144` (Snow Mail) → menu 537#197 "Rest in my room" → L7154 → L8417 `TakeItem 139` (Bubble Mail; result not checked) → warp to 2F, 0x40B5 = 8 (L8473). "I'm busy" (L7161) shows 537#212 (Misty) instead of #218. 0x40B5 = 7 is only set in file 843 (2F), whose PC script (script 1, L41 → L363) ends at L4292 for every player with a starter (flag 106) while the var is 6, the value Mom's visit leaves (file 736 script 4). Items 139/144 have no source (site/src/data/items.json; D-1398).
+
+### Route 34 photographer
+
+**The photographer never appears on Route 34.** His visit there checks for a Badge that doesn't exist, so he is always hidden and you can't get his photo on that route. Cosmetic. Tested in an emulator (Wednesday and Thursday, all 16 Badges). Read from the script only: one Route 30 line never shows for the same reason.
+
+*Source:* D-1334; file 237 @4691 `CheckBadge 18` (always false) → L6244 sets the photographer's hide flag 638; Route 30: file 227 @789 `CheckBadge 16`.
+
+### Goldenrod City crash on entry
+
+**Entering Goldenrod City can crash the game if both the townsfolk and the Team Rocket takeover crowd are switched on.** The city then needs more character graphics than the game has room for. Normally the story swaps one group for the other, but a few scenes (the first Hall of Fame entry, the Radio Tower deck and 1F) switch only one, and it isn't known yet which real story order leaves both on. Keep a save from before you enter Goldenrod. Tested in an emulator (Chinese ROM and English build) with both groups switched on.
+
+*Source:* D-1547; hide flags 439 (townsfolk) and 441 (takeover crowd): 33 overworld graphics for 32 slots. Single-flag changes: file 822 @2482, file 34 @1195, file 29 @3194/@3407.
 
 ## Radio Tower, Ecruteak City and Olivine City
 
@@ -991,6 +1021,12 @@ These entries can freeze the game, cost you something, or close a quest or battl
 **A wrong answer at the 4th or 5th lantern riddle makes Grandpa ask riddles 2–5 again before telling you that you failed.** Cosmetic.
 
 *Source:* file 916 L6631–L6715 and L6809–L6893 jump to L6935, the failure chain's riddle 2, instead of its riddle 5 (L7331) or the failure line (L7463) (D-1419).
+
+### Route 36 gatehouse talk
+
+**The people in the Route 36 gatehouse always say the odd tree still blocks the road, even after it's gone.** Cosmetic. Tested in an emulator. Read from the script only: the Elite Four door's "already open" line and one Route 4 line never show for the same reason.
+
+*Source:* D-1336; file 862 checks flag 450 (0x1C2), which the hack never sets (the tree is hidden by flag 463); files 817 @1623 and 178 @121.
 
 ## Battle Frontier, Cianwood City and Mahogany Town
 
@@ -1303,19 +1339,24 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Evolutions that cannot happen
 
-**A few Pokémon have an evolution method that the game never checks, so they can't evolve that way.** Pancham never becomes Pangoro, and Gimmighoul, Kubfu, Galarian Yamask, White-Striped Basculin, Pawmo, Rellor and Finizen never evolve at all through the evolution their data gives them. Galarian Farfetch'd can't become Sirfetch'd by landing critical hits; a regular Farfetch'd still evolves into Sirfetch'd at Lv 40. Eevee can't become Leafeon at a Moss Rock and Nosepass can't become Probopass in a magnetic field, but a Leaf Stone and a Thunder Stone still work. Most of these Pokémon can't be met in the game anyway. Each Pokémon's page (for example [Eevee](/pokemon/eevee/#evolution)) marks these as not possible and lists any method that still works. Verified in the game code; tested in an emulator for Pancham: a Pancham that reaches Lv. 32 with a Dark-type in the party stays a Pancham.
+**A few Pokémon have an evolution method that the game never checks, so they can't evolve that way.** Pancham never becomes Pangoro, and Gimmighoul, Kubfu, Galarian Yamask, White-Striped Basculin, Pawmo, Rellor and Finizen never evolve at all through the evolution their data gives them. Galarian Farfetch'd can't become Sirfetch'd by landing critical hits; a regular Farfetch'd still evolves into Sirfetch'd at Lv 40. Eevee can't become Leafeon at a Moss Rock and Nosepass can't become Probopass in a magnetic field, but a Leaf Stone and a Thunder Stone still work. Petilil holding a Black Belt during the day doesn't become Hisuian Lilligant: the game says "Petilil evolved into Petilil", uses up the Black Belt and leaves a Petilil; a Sun Stone then turns that Petilil into Hisuian Lilligant (tested in an emulator). Most of these Pokémon can't be met in the game anyway. Each Pokémon's page (for example [Eevee](/pokemon/eevee/#evolution)) marks these as not possible and lists any method that still works. Verified in the game code; tested in an emulator for Pancham: a Pancham that reaches Lv. 32 with a Dark-type in the party stays a Pancham.
 
-*Source:* D-1481. Evolution table `a/0/3/4` (10 slots × 6 bytes), evolution check arm9 0x020700FC: in the level-up switch methods 31–36 fall through to "no evolution" and methods 38+ fail the bound check (`cmp r0, #0x25`); methods 24–26 compare a map evolution code that is always 0 (stub 0x0203AAA0, copied into the battle setup at 0x020511B8). Trade context handles only methods 5–6, item use only 7, 16, 17.
+*Source:* D-1481. Evolution table `a/0/3/4` (10 slots × 6 bytes), evolution check arm9 0x020700FC: in the level-up switch methods 31–36 fall through to "no evolution" and methods 38+ fail the bound check (`cmp r0, #0x25`); methods 24–26 compare a map evolution code that is always 0 (stub 0x0203AAA0, copied into the battle setup at 0x020511B8). Trade context handles only methods 5–6, item use only 7, 16, 17. Petilil: D-1485 (the evolution form table is off by one species).
 
 ### Things you can't get, although the game has them
 
-**A few items and forms exist in the game's data but can't be obtained.** Read from the game code; not tried in game.
+**A few Pokémon, items and forms exist in the game's data but can't be obtained.** Read from the game code; not tried in game unless the entry says so.
 - **TM46 (Thief):** its item ball is never placed on a map.
 - **Flapple, Appletun and Alcremie:** Applin needs a Tart Apple or Sweet Apple and Milcery a Sweet, and none of these items can be obtained.
 - **Shaymin's Sky Forme:** the Gracidea only works on an event Shaymin, and the Shaymin from the Forest of Time isn't one (tested in an emulator: the Gracidea does nothing to it; on the same Shaymin marked as an event Pokémon it works).
 - **Unown letters:** every wild Unown comes out as A (tested in an emulator: 65 wild Unown, all A).
+- **About 256 later Pokémon** (from Gen 5 on; none from No. 1–493) have stats and moves in the game's data, but no way to catch, receive, evolve or breed them was found. A few may still be obtainable: the Safari Zone's object areas, roaming Pokémon, berry trees and held items weren't checked.
+- **Qualot, Tamato, Salac, Petaya, Apicot and Lansat Berries:** no shop, item ball or gift gives them. Berry trees, wild Pokémon's held items and random gifts (phone calls, Pokéwalker, lottery) weren't checked.
+- **Grip Claw:** its item ball is never placed on a map, and no shop sells it.
+- **Volcanion:** its April 16 calendar slot at the Lake of Rage never triggers (there's no grass there), and nothing else gives it. Tested in an emulator.
+- **Primal Groudon and Primal Kyogre:** the Red Orb and Blue Orb are key items that summon Groudon, Kyogre and Deoxys. They can't be given to a Pokémon, and even when one is held (save edit) no Primal Reversion happens. Tested in an emulator.
 
-*Source:* D-1339 (TM46 item ball, std 7136 unused), D-1493 (Tart Apple, Sweet Apple, Sweets have no source), D-1490 (Gracidea check arm9 0x02071024 needs the fateful flag), D-1487 (wild Unown form written back at ov2 0x02248AD4).
+*Source:* D-1339 (TM46 item ball, std 7136 unused), D-1493 (Tart Apple, Sweet Apple, Sweets have no source), D-1490 (Gracidea check arm9 0x02071024 needs the fateful flag), D-1487 (wild Unown form written back at ov2 0x02248AD4), D-1344 (work/notes/docs_crossref.md §4), D-1345 (v4 turned the old berry shop lists 5 and 22 into X-item lists; work/notes/sheet_mismatch_verification.md §4.6), D-1494 (Grip Claw item ball, std script 7223 unused), D-1488 (calendar table arm9 0x020F6A64; Lake of Rage land walk rate 0), D-1571 (Red/Blue Orb have no Give option; no Primal Reversion code).
 
 ### Thief in wild battles copies the item
 
@@ -1328,3 +1369,21 @@ These entries can freeze the game, cost you something, or close a quest or battl
 **Two scenes write past the end of the game's story records.** The Viridian Mart promoter on Route 1, who gives you a Berry Juice, and the end of the Mt. Mortar expedition each note that they've happened in a spot beyond the space the save keeps for story progress. Both scenes still play normally once. Measured in an emulator, both notes land in your save's Pokédex data. The promoter's sets a "seen" mark for entry No. 1335, past the end of the Pokédex; opening the Pokédex or the Trainer Card never reads it, so nothing visible changes. The expedition's sets the "caught" mark of Weezing (No. 110) without its "seen" mark; the Pokédex ignores it (tested in an emulator: Weezing's slot stays empty until you've seen one). There's no way to avoid it: the expedition is needed in the final chapter.
 
 *Source:* D-1333; work/notes/softlock_audit.md. File 168 script 4 `CheckFlag 7286` (0x1C76) at @235, `SetFlag 7286` at @1954 (Route 1 Viridian Mart promo, Berry Juice item 43); file 962 @1819 `SetFlag 4461` (0x116D) at the end of the expedition, next to `SetFlag 675`. The hack has 3,232 flags: arm9 `GetFlagAddr` (0x0204F8E4) bounds the byte index at 0x194 and still forms base + 0x2E0 + index past the bound; block size 0x474 (0x0204F840). Vanilla layout: 0x116D → Pokédex caught bit for species 110, 0x1C76 → a Pokédex language byte. Probably typos for 0x0C76 / 0x016D. Observed in the hack (`emu_harness.py guide0107 --case promo_flag,mortar_flag`, both ROMs): the SetFlag handler (PC 0x0204F8B6) writes save offset 0x151A bit 6 (7286) and 0x13B9 bit 5 (4461); both are inside save array 6 (offset 0x13A8, 0x374 bytes, magic 0xBEEFCAFE, the Pokédex): +0x172 = seen bit of No. 1335 (seen bits +0xCC, 200 bytes), +0x11 = caught bit of No. 110 (caught bits +0x4). With the bit cleared first, the promoter's scene plays (lines 2–7, Berry Juice), sets it, and the next talk shows line 1 only. Read hooks while the Pokédex and Trainer Card were open: no read of the No. 1335 word (control: the caught word of No. 1 is read). D-1550.
+
+### Status medicine in battle
+
+**Most medicine can't be used from the Bag in battle.** Antidote, Burn Heal, Ice Heal, Awakening, Paralyze Heal, Full Heal, Full Restore, Lava Cookie, Max Potion, Hyper Potion, Energy Powder, Energy Root, Revive, Max Revive, Revival Herb, Ether, Max Ether, Elixir, Max Elixir and Sacred Ash don't appear in the battle Bag. This may be intended; the Chinese game does the same. Carry status-healing Berries (Pecha, Cheri, Lum and others) or the Blue, Yellow and Red Flutes, which do appear; Heal Powder is listed under HP/PP Restore. Tested in an emulator (Chinese ROM and English build).
+
+*Source:* D-1495; these items' battle-pocket flags are 0 in the item data (a/0/1/7, identical in both ROMs). Work note: work/notes/status_healers_rc5.md.
+
+### Trainer Pokémon with unusual Abilities
+
+**Some Trainers' Pokémon have an Ability their species can't normally have**, for example a Glalie that starts hail (Snow Warning) or a Houndoom that brings harsh sunlight (Drought). The battle uses the Trainer's Ability. About 165 of the game's 3,891 Trainer Pokémon; possibly intended. Tested in an emulator.
+
+*Source:* D-1341; the trainer party record stores the Ability (observed for trainers 146 and 376). Full list: work/notes/docs_crossref.md §4.
+
+### Pokédex stops at No. 709
+
+**The Pokédex list ends at No. 0709 (Kommo-o), and there is no National Pokédex mode.** Pokémon after that point (and Pumpkaboo and Gourgeist) never get a Pokédex entry, even when you've seen or caught them, and from No. 0504 on the Pokédex number isn't the National Pokédex number. Your Pokémon themselves are unaffected. Tested in an emulator (Chinese ROM and English build).
+
+*Source:* D-1523; dex order table a/0/7/4 file 12 (781 entries); the National-mode check (arm9 0x0202AA74) always returns 0.
