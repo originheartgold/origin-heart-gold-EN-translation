@@ -261,6 +261,68 @@ class SkittyScene(unittest.TestCase):
         self.assertEqual(got[0]["addr"], hex(lo + a))
 
 
+class ExecutionHookFailures(unittest.TestCase):
+    def harness(self):
+        from unittest.mock import Mock
+        h = E.Harness.__new__(E.Harness)
+        h.emu = Mock()
+        h.frame = 0
+        h._per_frame = []
+        h._hook_error = None
+        return h
+
+    def test_callback_failure_is_raised_after_cycle_and_stays_fatal(self):
+        from unittest.mock import Mock
+        h = self.harness()
+        failure = AssertionError('bad printer state')
+        callback = Mock(side_effect=failure)
+        frame = Mock()
+        h.on_frame(frame)
+        h.on_exec(0x02020A1C, callback)
+        hook = h.emu.memory.register_exec.call_args.args[1]
+        h.emu.cycle.side_effect = lambda **kw: hook(0x02020A1C, 2)
+        with self.assertRaisesRegex(RuntimeError, '0x02020a1c') as caught:
+            h.step(3)
+        self.assertIs(caught.exception.__cause__, failure)
+        self.assertEqual(h.emu.cycle.call_count, 1)
+        frame.assert_not_called()
+        # A caller cannot accidentally continue from a failed measurement.
+        with self.assertRaises(RuntimeError):
+            h.step(1)
+        self.assertEqual(h.emu.cycle.call_count, 1)
+
+    def test_first_callback_failure_wins_and_later_hooks_do_not_mutate_state(self):
+        from unittest.mock import Mock
+        h = self.harness()
+        failure = ValueError('first failure')
+        h.on_exec(0x02020A1C, Mock(side_effect=failure))
+        first = h.emu.memory.register_exec.call_args.args[1]
+        second_fn = Mock()
+        h.on_exec(0x02002680, second_fn)
+        second = h.emu.memory.register_exec.call_args.args[1]
+        first(0, 2)  # must not throw across the C boundary
+        second(0, 2)
+        second_fn.assert_not_called()
+        with self.assertRaises(RuntimeError) as caught:
+            h.step()
+        self.assertIs(caught.exception.__cause__, failure)
+        h.emu.cycle.assert_not_called()
+
+    def test_success_and_unregister_keep_native_hook_api(self):
+        from unittest.mock import Mock
+        h = self.harness()
+        fn = Mock()
+        h.on_exec(0x02020A1C, fn)
+        hook = h.emu.memory.register_exec.call_args.args[1]
+        h.emu.cycle.side_effect = lambda **kw: hook(0, 2)
+        h.step(2)
+        self.assertEqual(h.frame, 2)
+        self.assertEqual(fn.call_count, 2)
+        fn.assert_called_with(h)
+        h.on_exec(0x02020A1C, None)
+        h.emu.memory.register_exec.assert_called_with(0x02020A1C, None)
+
+
 if __name__ == "__main__":
     unittest.main()
 

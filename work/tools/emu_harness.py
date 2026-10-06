@@ -467,6 +467,7 @@ class Harness:
         self.reg = self.emu.memory.register_arm9
         self.frame = 0
         self._per_frame = []
+        self._hook_error = None
         self._held = set()
 
     # ------------------------------------------------------------------ lifecycle
@@ -537,7 +538,22 @@ class Harness:
 
     def on_exec(self, addr, fn):
         """Call fn(harness) whenever the ARM9 executes addr (Thumb: even address). fn reads self.reg."""
-        self.emu.memory.register_exec(addr, (lambda a, s: fn(self)) if fn else None)
+        # ctypes callbacks cannot propagate Python exceptions through the emulator.
+        # Keep the first failure and raise it on the Python side of cycle(), so an
+        # assertion in instrumentation can never silently produce a passing run.
+        def checked(a, size):
+            if self._hook_error is not None:
+                return
+            try:
+                fn(self)
+            except BaseException as exc:
+                self._hook_error = (addr, exc)
+        self.emu.memory.register_exec(addr, checked if fn else None)
+
+    def _raise_hook_error(self):
+        if self._hook_error is not None:
+            addr, exc = self._hook_error
+            raise RuntimeError(f"ARM9 execution hook failed at {addr:#010x}") from exc
 
     def on_frame(self, fn):
         """Call fn(harness) after every emulated frame (e.g. to keep a RAM value forced)."""
@@ -545,8 +561,10 @@ class Harness:
 
     # ------------------------------------------------------------------ running and input
     def step(self, n=1):
+        self._raise_hook_error()
         for _ in range(n):
             self.emu.cycle(with_joystick=False)
+            self._raise_hook_error()
             self.frame += 1
             for fn in self._per_frame:
                 fn(self)

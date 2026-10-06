@@ -247,6 +247,27 @@ def verify(rom,report):
     blob=bytes.fromhex(payload['code'])
     if bytes(sections[1].data[0x620:0x620+len(blob)])!=blob:raise ValueError('Native payload changed')
     if struct.unpack_from('<H',sections[0].data,0xba9a)[0]!=0x2501:raise ValueError('Heap fix missing')
+    # Verify release-critical behaviour independently of the recorded output hashes.
+    # This catches future build composition mistakes even if a fresh receipt was
+    # recorded after a hook, allocation or default was accidentally overwritten.
+    end=(BASE+len(blob)+31)&~31
+    if (sections[0].ramAddress!=0x02000000 or sections[1].ramAddress!=0x01ff8000
+            or sections[1].bssSize or len(sections[1].data)!=end-0x01ff8000):
+        raise ValueError('Native runtime section layout changed')
+    critical={
+        0x020d1a28:struct.pack('<I',end),
+        0x02020a18:struct.pack('<I',payload['symbols']['print_task']),
+        0x020208ea:struct.pack('<H',0x2138),
+        0x02020962:bl(0x02020962,payload['symbols']['init_printer']),
+        0x0202b176:struct.pack('<HH',0x2004,0x4301),
+        0x0202b1c6:struct.pack('<HH',0x0780,0x0f80),
+        0x0202b1d2:struct.pack('<H',0x2203),
+        0x0202b1da:struct.pack('<H',0x2103),
+    }
+    for addr,want in critical.items():
+        off=addr-0x02000000
+        if bytes(sections[0].data[off:off+len(want)])!=want:
+            raise ValueError(f'Native runtime contract changed at {addr:08x}')
     return {'status':'passed','native_bytes':len(blob),'options_rows':7,'new_game_default':'MEDIUM','legacy_save_default':'SLOW','speeds':['SLOW','MEDIUM','FAST']}
 
 if __name__=='__main__':

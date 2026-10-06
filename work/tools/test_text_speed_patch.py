@@ -159,6 +159,18 @@ class RomTests(unittest.TestCase):
                 with self.assertRaises(ValueError):speed.apply(rom,p)
                 self.assertEqual(before,rom.save())
 
+    def test_critical_runtime_contract_is_independent_of_receipt_hashes(self):
+        # Simulate a later build stage overwriting a critical instruction before
+        # refreshing its output hash. A self-consistent receipt is not sufficient.
+        for off in (0xd1a28,0x20a18,0x208ea,0x20962,0x2b176,0x2b1c6,0x2b1d2,0x2b1da):
+            with self.subTest(offset=hex(off)):
+                rom=copy.deepcopy(self.patched)
+                code=rom.loadArm9();code.sections[0].data[off]^=1
+                rom.arm9=code.save(compress=False)
+                report=copy.deepcopy(self.report);report['arm9_sha256']=speed.digest(rom.arm9)
+                with self.assertRaisesRegex(ValueError,'Native runtime contract changed'):
+                    speed.verify(rom,report)
+
     def test_artifact_mutation_is_detected(self):
         rom=copy.deepcopy(self.patched);a=bytearray(rom.arm9);a[-40]^=1;rom.arm9=bytes(a)
         with self.assertRaises(ValueError):speed.verify(rom,self.report)
