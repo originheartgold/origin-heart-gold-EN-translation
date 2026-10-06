@@ -27,6 +27,60 @@ REVIEWED_BASE_ARM9_SHA256='b3249c2996c204695a2528e2e52bf0d9841ec05263a6bcecfc7db
 REVIEWED_ITCM_SHA256='838df87fbcf4107eb85d4c97d9fab741fd0a99d24a4dc85577e3bc8c3eded3c1'
 # Text speed depends on this enabled code patch (msgload-all, demand-loading heap fix).
 HEAP_FIX=(0xba9a,0x2501)
+# Original ARM9 code and data text speed relies on without editing it, as
+# [start,end) RAM addresses. No code patch may overlap these or the edited bytes.
+# Routine extents come from a recursive Thumb disassembly (capstone) of the base
+# ARM9 above: from the entry, follow fall-through and in-function branches until
+# every path returns (pop {pc} / bx), include PC-relative literal pools, and for
+# a 'ldr rX,=target; bx rX' trampoline also the routine it tail-calls.
+# test_text_speed_patch.RomTests re-derives every extent from the ROM and checks
+# that each FN() call target in native.c starts one of these routines.
+CALLED_ROUTINES=(
+    (0x02001194,0x020011a0,'runtime save pointer'),
+    (0x020071ac,0x020071b0,'overlay manager data getter'),
+    (0x020071b0,0x020071c0,'overlay manager data free'),
+    (0x0200bb0c,0x0200bb3e,'message load into string'),
+    (0x0200bb40,0x0200bb6c,'message load new string'),
+    (0x0200d8cc,0x0200d8d8,'sprite trampoline'),
+    (0x02025014,0x0202501a,'  tail-called by sprite trampoline'),
+    (0x0201dda8,0x0201ddf8,'window copy to VRAM'),
+    (0x0202075c,0x020207a4,'printer finish'),
+    (0x02020834,0x02020884,'add printer'),
+    (0x02020a1c,0x02020a88,'original print task'),
+    (0x02020a88,0x02020a9a,'render glyphs'),
+    (0x02020a9c,0x02020b40,'set text colours'),
+    (0x02020be8,0x02020bee,'printer initializer'),
+    (0x02024e48,0x02024e64,'sprite visibility'),
+    (0x02026864,0x02026890,'string new'),
+    (0x02026eb8,0x02026f1c,'string copy characters'),
+    (0x02029348,0x02029354,'Options accessor trampoline'),
+    (0x02027740,0x02027764,'  tail-called save block getter'),
+)
+# Whole routines containing text-speed ARM9 edits (same derivation), plus data.
+DEPENDENT_CODE=(
+    (0x020208d4,0x02020a1c,'printer constructor (alloc size, initializer call, task pointer)'),
+    (0x0202b168,0x0202b1b4,'Options init (new-game default)'),
+    (0x0202b1c4,0x0202b1d0,'music speed getter'),
+    (0x0202b1d0,0x0202b1e4,'music speed setter'),
+    (0x020d1a1c,0x020d1a38,'SDK arena bounds table (ITCM arena start)'),
+    (0x02000ba0,0x02000bb8,'code settings / autoload list words rewritten by code.save()'),
+)
+DEPENDENCIES=CALLED_ROUTINES+DEPENDENT_CODE
+
+def native_call_targets():
+    """Every FN(address, ...) call target in native.c (source pinned via the payload)."""
+    import re
+    return sorted({int(x,16) for x in re.findall(r'FN\((0x[0-9a-fA-F]+)\s*,',(ASSETS/'native.c').read_text())})
+
+def dependency_ranges(main_size):
+    """Reviewed dependency ranges as ARM9 offsets; fail closed on an unreviewed call target."""
+    entries={lo for lo,_,_ in CALLED_ROUTINES}
+    for target in native_call_targets():
+        if target&1==0:raise ValueError(f'Native code calls ARM-mode {target:#x}; review it')
+        if OVBASE<=target<OVBASE+0x121c:continue  # overlay 50 code: whole file hash-pinned (OVHASH)
+        if not ARM9BASE<=target<ARM9BASE+main_size or target&~1 not in entries:
+            raise ValueError(f'Native code calls unreviewed routine {target:#x}; add its extent to CALLED_ROUTINES')
+    return [(lo-ARM9BASE,hi-ARM9BASE) for lo,hi,_ in DEPENDENCIES]
 
 def digest(b):return hashlib.sha256(b).hexdigest()
 
@@ -134,6 +188,7 @@ def code_patch_ranges(code_patches=None):
     patches=hardcoded.load_code_patches() if code_patches is None else code_patches
     out=[]
     for cp in patches:
+        if type(cp) is not dict:raise ValueError(f'Invalid code patch entry {cp!r}')
         if not cp.get('enabled'):continue
         name=cp.get('id')
         try:
@@ -173,7 +228,7 @@ def apply(rom,payload=None,code_patches=None):
     import msgtool as m
     if payload['source_sha256']!=source_digest():raise ValueError('Stale native payload')
     code=rom.loadArm9();current=bytes(code.sections[0].data)
-    # Verify the hack's reviewed base ARM9, independent of our reviewed code patches:
+    # Verify the hack's reviewed base ARM9 main section, independent of our reviewed code patches:
     # put each enabled arm9 code patch back to its 'expect' bytes, then hash. The
     # text-speed edits below are made on this base and checked against it.
     cps=arm9_code_patches(rom.arm9,current,code_patches)
@@ -288,11 +343,15 @@ def apply(rom,payload=None,code_patches=None):
     if len(matches)!=1:raise ValueError('Row loader callers changed')
     call(OVBASE+matches[0],0x21e5334,'load_rows')
     call(0x21e4b5a,0x20071b0,'exit_free')
-    # Every ARM9 byte text speed reads and rewrites must be the hack's own code.
-    # The heap-fix halfword is the one intended dependency on a code patch; it is
-    # only read, and must already hold that patch's value (checked above).
+    # No code patch may touch a byte text speed edits, nor the reviewed routines and
+    # data it calls or depends on (DEPENDENCIES). The heap-fix halfword is the one
+    # intended dependency on a code patch; it is only read, and must already hold
+    # that patch's value (checked above). Other ARM9 bytes are covered only by the
+    # base digest, which code patches elsewhere are normalised out of.
     clash=overlapping(cps,arm9_ranges)
     if clash:raise ValueError('Code patches overlap text-speed ARM9 edits: '+', '.join(clash))
+    clash=overlapping(cps,dependency_ranges(len(a)))
+    if clash:raise ValueError('Code patches overlap original ARM9 code text speed depends on: '+', '.join(clash))
     # Restore the code patches (none overlaps an edit) on top of the edited base.
     for _,_,off,want,_ in cps:a[off:off+len(want)]=current[off:off+len(want)]
     # Commit only after all guards and preparation succeeded.
@@ -302,7 +361,9 @@ def apply(rom,payload=None,code_patches=None):
     for off in range(0,len(table),32):
         if struct.unpack_from('<I',table,off)[0]==50:struct.pack_into('<I',table,off+8,len(o));break
     rom.arm9OverlayTable=bytes(table);rom.files[ov.fileID]=bytes(o)
-    return {'itcm_start':hex(BASE),'itcm_end':hex(end),'payload_sha256':digest(blob),'overlay_sha256':digest(o),'arm9_sha256':digest(rom.arm9),'source_code_sha256':source_digest(),'edits':edits,'labels':4}
+    return {'itcm_start':hex(BASE),'itcm_end':hex(end),'payload_sha256':digest(blob),'overlay_sha256':digest(o),'arm9_sha256':digest(rom.arm9),'source_code_sha256':source_digest(),'edits':edits,'labels':4,
+            'arm9_code_patches':{'normalised_to_expect':[c[0] for c in cps],
+                                 'held_value':[c[0] for c in cps if bytes(current[c[2]:c[2]+len(c[4])])==c[4]]}}
 
 def verify(rom,report,code_patches=None):
     payload=load_payload()
@@ -333,9 +394,11 @@ def verify(rom,report,code_patches=None):
         0x0202b1d2:struct.pack('<H',0x2203),
         0x0202b1da:struct.pack('<H',0x2103),
     }
-    # Same rule as apply(): no current code patch may own a critical byte.
+    # Same rule as apply(): no current code patch may own a critical byte or a
+    # reviewed dependency.
     clash=overlapping([cp for cp in code_patch_ranges(code_patches) if cp[1]=='arm9'],
-                      [(addr-ARM9BASE,addr-ARM9BASE+len(want)) for addr,want in critical.items()])
+                      [(addr-ARM9BASE,addr-ARM9BASE+len(want)) for addr,want in critical.items()]
+                      +dependency_ranges(len(sections[0].data)))
     if clash:raise ValueError('Code patches overlap the native runtime contract: '+', '.join(clash))
     for addr,want in critical.items():
         off=addr-0x02000000

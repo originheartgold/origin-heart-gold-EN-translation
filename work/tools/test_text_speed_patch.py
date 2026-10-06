@@ -141,6 +141,34 @@ class CodePatchGuardTests(unittest.TestCase):
         self.assertEqual(speed.overlapping(patches,[(0x0e,0x24)]),['a','b'])
         self.assertEqual(speed.overlapping(patches,[(0x23,0x30)]),['b'])
 
+    def test_non_dict_code_patch_entry_is_value_error(self):
+        for bad in ('arm9:0x10',None,['arm9']):
+            with self.subTest(entry=bad),self.assertRaisesRegex(ValueError,'Invalid code patch entry'):
+                speed.code_patch_ranges([bad])
+
+    def test_every_native_call_target_is_a_reviewed_routine(self):
+        entries={lo for lo,_,_ in speed.CALLED_ROUTINES}
+        tails={lo for lo,_,name in speed.CALLED_ROUTINES if 'tail-called' in name}
+        main=[t for t in speed.native_call_targets() if t<speed.OVBASE]
+        overlay=[t for t in speed.native_call_targets() if t>=speed.OVBASE]
+        self.assertEqual(len(main),17)
+        self.assertEqual({t&~1 for t in main}|tails,entries)
+        self.assertEqual(overlay,[0x021e5335,0x021e5acd])
+        # Literal words in the compiled payload that point into main ARM9 code are
+        # reviewed entries too (some calls are computed from one base literal).
+        code=bytes.fromhex(speed.load_payload()['code'])
+        words={w for (w,) in struct.iter_unpack('<I',code[:len(code)//4*4])}
+        for w in words:
+            if speed.ARM9BASE<=w<0x02110000 and w&1:self.assertIn(w&~1,entries,hex(w))
+        self.assertEqual(len(speed.dependency_ranges(0x110000)),len(speed.DEPENDENCIES))
+        for lo,hi,name in speed.DEPENDENCIES:self.assertLess(lo,hi,name)
+
+    def test_unreviewed_native_call_target_fails_closed(self):
+        for target in (0x02030001,0x02030000,0x02200001):
+            with self.subTest(target=hex(target)):
+                with patch.object(speed,'native_call_targets',return_value=speed.native_call_targets()+[target]):
+                    with self.assertRaises(ValueError):speed.dependency_ranges(0x110000)
+
     def test_real_code_patches_are_text_speed_compatible(self):
         names=[c[0] for c in speed.code_patch_ranges()]
         self.assertIn('msgload-all',names)
@@ -148,6 +176,45 @@ class CodePatchGuardTests(unittest.TestCase):
         self.assertEqual((heap[1],heap[2],heap[4]),('arm9',speed.HEAP_FIX[0],struct.pack('<H',speed.HEAP_FIX[1])))
 
 ROM=os.environ.get('TEXT_SPEED_TEST_ROM')
+try:import capstone
+except ImportError:capstone=None
+
+def routine_extents(main,entry):
+    """[start,end) RAM ranges of a Thumb routine, as CALLED_ROUTINES documents.
+
+    Recursive traversal from the entry: fall-through and in-function branches until
+    every path returns (pop {pc} / bx); PC-relative literal pools are included; a
+    'ldr rX,=target; bx rX' tail call adds the target routine's own extent.
+    """
+    from capstone import arm
+    md=capstone.Cs(capstone.CS_ARCH_ARM,capstone.CS_MODE_THUMB);md.detail=True
+    def one(x):return next(md.disasm(bytes(main[x-0x02000000:x-0x02000000+4]),x,1))
+    seen=set();lits=set();work=[entry];tails=[]
+    while work:
+        x=work.pop();regs={}
+        while x not in seen:
+            seen.add(x);i=one(x);m=i.mnemonic;ops=i.operands
+            if m.startswith('ldr') and ops[-1].type==arm.ARM_OP_MEM and ops[-1].mem.base==arm.ARM_REG_PC:
+                lit=((x+4)&~3)+ops[-1].mem.disp;lits.add(lit)
+                regs[ops[0].reg]=struct.unpack_from('<I',main,lit-0x02000000)[0]
+            if m=='pop' and any(o.reg==arm.ARM_REG_PC for o in ops):break
+            if m=='bx':
+                if ops[0].reg!=arm.ARM_REG_LR:
+                    if ops[0].reg not in regs:raise AssertionError(f'computed jump at {x:#x}')
+                    tails.append(regs[ops[0].reg]&~1)
+                break
+            if m=='b':
+                t=ops[0].imm
+                if not entry<=t<entry+0x1000:raise AssertionError(f'unexpected tail branch at {x:#x}')
+                x=t;continue
+            if m.startswith('b') and m not in ('bl','blx','bic','bics') and ops and ops[0].type==arm.ARM_OP_IMM:
+                work.append(ops[0].imm)
+            if ops and ops[0].type==arm.ARM_OP_REG and ops[0].reg==arm.ARM_REG_PC:raise AssertionError(f'pc write at {x:#x}')
+            x+=i.size
+    out=[(entry,max([max(seen)+2]+[l+4 for l in lits]))]
+    for t in tails:out+=routine_extents(main,t)
+    return out
+
 def ndspy_reparse(rom):
     import ndspy.rom
     return ndspy.rom.NintendoDSRom(rom.save())
@@ -299,6 +366,58 @@ class RomTests(unittest.TestCase):
         synthetic=dict(id='synthetic',file='arm9',offset='0x2b1d2',expect=hex(old),value=hex(old),enabled=True)
         with self.assertRaisesRegex(ValueError,'native runtime contract: synthetic'):
             speed.verify(self.patched,self.report,code_patches=self.code_patches()+[synthetic])
+
+    def base_main(self):
+        main=bytearray(self.original.loadArm9().sections[0].data)
+        for _,_,off,want,_ in speed.arm9_code_patches(self.original.arm9,main):main[off:off+len(want)]=want
+        self.assertEqual(speed.digest(main),speed.REVIEWED_BASE_ARM9_SHA256)
+        return main
+
+    @unittest.skipUnless(capstone,'capstone (in the project venv) re-derives the routine extents')
+    def test_dependency_extents_rederive_from_base_arm9(self):
+        main=self.base_main()
+        derived=set()
+        for target in speed.native_call_targets():
+            if target<speed.OVBASE:derived.update(routine_extents(main,target&~1))
+        self.assertEqual(derived,{(lo,hi) for lo,hi,_ in speed.CALLED_ROUTINES})
+        code=[(lo,hi) for lo,hi,name in speed.DEPENDENT_CODE if lo<0x020d0000 and lo!=0x02000ba0]
+        for lo,hi in code:self.assertEqual(routine_extents(main,lo),[(lo,hi)],hex(lo))
+        # Every ARM9 edit lies inside a reviewed enclosing routine or data range.
+        for edit in self.report['edits']:
+            addr=int(edit['address'],16)
+            if addr>=speed.OVBASE:continue
+            end=addr+len(bytes.fromhex(edit['before']))
+            self.assertTrue(any(lo<=addr and end<=hi for lo,hi,_ in speed.DEPENDENT_CODE),hex(addr))
+        self.assertEqual(struct.unpack_from('<I',main,0xd1a28)[0],speed.BASE)
+        self.assertEqual(self.original.loadArm9().codeSettingsOffs,0xba0)
+
+    def test_code_patch_inside_a_dependency_fails(self):
+        main=self.original.loadArm9().sections[0].data
+        # Reviewer cases: print task body, Options accessor, printer initializer,
+        # exit_free target, message loader, music getter; plus code settings.
+        for off in (0x20a40,0x2934a,0x20bea,0x71b2,0xbb42,0x2b1c4,0xba4,0xd1a1c):
+            old=struct.unpack_from('<H',main,off)[0]
+            synthetic=dict(id='synthetic',file='arm9',offset=hex(off),expect=hex(old),value=hex(old^0x40),enabled=True)
+            with self.subTest(offset=hex(off)):
+                rom=copy.deepcopy(self.original);before=rom.save()
+                with self.assertRaisesRegex(ValueError,'synthetic'):
+                    speed.apply(rom,code_patches=self.code_patches()+[synthetic])
+                self.assertEqual(before,rom.save())
+                with self.assertRaisesRegex(ValueError,'native runtime contract: synthetic'):
+                    speed.verify(self.patched,self.report,code_patches=self.code_patches()+[synthetic])
+
+    def test_heap_fix_still_at_expect_fails_closed(self):
+        rom=copy.deepcopy(self.original);self.arm9_with(rom,0xba9a,struct.pack('<H',0x1c05))
+        before=rom.save()
+        with self.assertRaisesRegex(ValueError,'demand-loading heap fix'):speed.apply(rom)
+        self.assertEqual(before,rom.save())
+
+    def test_report_records_normalised_code_patches(self):
+        ids=[c[0] for c in speed.code_patch_ranges() if c[1]=='arm9']
+        got=self.report['arm9_code_patches']
+        self.assertEqual(got['normalised_to_expect'],ids)
+        self.assertEqual(got['held_value'],ids)
+        self.assertIn('ivev-panel-iv-x',ids)
 
     def test_overlay50_code_patch_fails_before_mutation(self):
         synthetic=dict(id='options',file='overlay50',offset='0x0',expect='0x0',value='0x1',enabled=True)
