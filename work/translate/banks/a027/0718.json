@@ -11418,10 +11418,10 @@
   {
    "id": 1396,
    "zh": "[zh redacted: song lyrics; sha256:f436ec560d3c70a9e2f09c8b78fc6537a23a938ef15bf9e853ab3055bcaa81d1]",
-   "en": "Hey, ha! ♪ (bellows an old kung fu theme{NEWLINE}song about the world’s highest peak) ♪{SCROLL}",
+   "en": "Hup! Hah!{SCROLL}(He bellows an old Hong Kong drama{NEWLINE}theme about the world’s tallest peak.){SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position; the zh line reads as a song lyric (old martial-arts TV theme); replaced with a hum line per D-0368, check | zh redacted: song lyrics (zh_redact.py)"
+   "notes": "v3 TM: 1 source(s), same position; the zh line reads as a song lyric (old martial-arts TV theme); replaced with a hum line per D-0368, check | zh redacted: song lyrics (zh_redact.py) | D-0913 (user 2026-10-06): the zh is a famous Hong Kong drama theme lyric; per D-0368 it is described, not translated; wording avoids a \"Kung Fu Fighting\" association."
   },
   {
    "id": 1397,
