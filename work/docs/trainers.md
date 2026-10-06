@@ -5583,7 +5583,7 @@ record 533
 | Swellow | 22 | Guts | Flame Orb | Generated | 10 HP / 6 others | — | U-turn, Pluck, Quick Attack, Roost |
 | Girafarig | 22 | Adaptability | Twisted Spoon | Generated | 10 HP / 6 others | — | Psybeam, Nasty Plot, Stomp, Grass Knot |
 
-#### Ace Trainer Ursula
+#### Ace Trainer Ulysses
 
 - Route 11: single battle
 

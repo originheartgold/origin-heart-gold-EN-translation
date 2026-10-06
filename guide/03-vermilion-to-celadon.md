@@ -262,7 +262,7 @@ Continues [Route 5: the Pokémon shelter raid](02-pewter-to-vermilion.md#route-5
 | Side with | You battle | Reward |
 |---|---|---|
 | The grass cutter (Scyther) | **Guitarist Gideon**: Electabuzz, Lunatone, Rotom (Lv. 22) | **Metal Coat** |
-| The environmentalist (Electabuzz) | **Ace Trainer Ursula**: Scyther, Seviper, Diglett (Lv. 22) | **Electirizer** |
+| The environmentalist (Electabuzz) | **Ace Trainer Ulysses**: Scyther, Seviper, Diglett (Lv. 22) | **Electirizer** |
 
 **Notes:** you only get one choice. The loser leaves. A loss whites you out and you can try again. Victory Road 3F checks which side lost, so the losing side comes back [on Victory Road 3F in the final chapter](06-sevii-islands-indigo.md#victory-road-the-indigo-conference-qualifiers-find-the-hidden-staff-member).
 

@@ -976,10 +976,10 @@
   {
    "id": 97,
    "zh": "对着松软的土地使用。{NEWLINE}树果的成熟时间变长。",
-   "en": "A fertilizer to be spread on soft soil.{NEWLINE}It extends the time ripened Berries{NEWLINE}stay on their plants before falling.",
+   "en": "A fertilizer to be spread on soft{NEWLINE}soil. It makes Berries stay ripe{NEWLINE}longer.",
    "status": "reviewed",
    "origin": "agent",
-   "notes": "US 0221/97",
+   "notes": "US 0221/97; fidelity follow-up applied 2026-10-06 (zh 成熟时间变长; textreview reconcile, D-1534 answer)",
    "qa_ignore": [
     "glossary:树果"
    ]
@@ -2143,10 +2143,10 @@
   {
    "id": 218,
    "zh": "音色畅快的铃铛。{NEWLINE}携带后精灵心情平静,{NEWLINE}获得亲密度增加。",
-   "en": "An item to be held by a Pokémon. It’s{NEWLINE}a bell with a comforting chime that{NEWLINE}calms the holder and makes it friendly.",
+   "en": "An item to be held by a Pokémon. A{NEWLINE}bell with a pleasant chime that calms{NEWLINE}the holder and raises its friendship.",
    "status": "reviewed",
    "origin": "agent",
-   "notes": "US 0221/218",
+   "notes": "US 0221/218; fidelity follow-up applied 2026-10-06 (zh 亲密度增加; textreview reconcile, D-1534 answer)",
    "qa_ignore": [
     "glossary:亲密度",
     "glossary:增加"
@@ -2836,10 +2836,10 @@
   {
    "id": 288,
    "zh": "携带后每回合损失１０％ＨＰ。{NEWLINE}受到对手接触攻击时{NEWLINE}会转移到对手身上。",
-   "en": "An item to be held by a Pokémon. The{NEWLINE}holder loses 10% of its HP a turn. It{NEWLINE}may latch on to a foe that touches it.",
+   "en": "An item to be held by a Pokémon. The{NEWLINE}holder loses 10% of its HP a turn. It{NEWLINE}latches on to a foe that touches it.",
    "status": "reviewed",
    "origin": "agent",
-   "notes": "US 0221/288"
+   "notes": "US 0221/288; fidelity follow-up applied 2026-10-06 (zh 会转移: certain, not ‘may’; textreview reconcile, D-1534 answer)"
   },
   {
    "id": 289,
@@ -3099,10 +3099,10 @@
   {
    "id": 314,
    "zh": "不可思议的香炉。{NEWLINE}携带后超能系技能威力１.０５倍。",
-   "en": "An item to be held by a Pokémon.{NEWLINE}Exotic-smelling incense that boosts the{NEWLINE}power of Psychic-type moves 1.05 times.",
+   "en": "An item to be held by a Pokémon. A{NEWLINE}mysterious incense that boosts the{NEWLINE}power of Psychic-type moves 1.05 times.",
    "status": "reviewed",
    "origin": "agent",
-   "notes": "US 0221/314",
+   "notes": "US 0221/314; fidelity follow-up applied 2026-10-06 (zh 不可思议的香炉; textreview reconcile, D-1534 answer)",
    "qa_ignore": [
     "glossary:携带"
    ]

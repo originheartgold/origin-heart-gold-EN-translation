@@ -97,7 +97,7 @@ Every "技能机NN"/"秘传机NN" (TM/HM) in the Chinese text (all banks) is che
 |---|---|---|---|---|---|
 | Diglett’s Cave | 5 | trade | Thunder Fang | yes | Rock Climb |
 | Mt. Moon | 7 | tutor | Fire Fang | yes | Earthquake, Eruption, Foresight, Helping Hand, Nasty Plot, Power Trip, Transform |
-| Mt. Moon Square | 9 | tutor | Moonblast | yes | Disable, Earth Power, Helping Hand, Nasty Plot, Rest, Water Pulse |
+| Mt. Moon Square | 9 | tutor | Moonblast | yes | Earth Power, Helping Hand, Nasty Plot, Rest, Water Pulse |
 | Pokémon Tower, upper floors | 17 | tutor | Curse | yes | Eruption, Helping Hand, Last Respects, Mimic, Nasty Plot, Protect |
 | Burned Tower | 23 | tutor | Eruption | yes | Coaching, Endeavor, Growl, Helping Hand, Imprison, Nasty Plot, Protect, Thief |
 | National Park | 25 | tutor | Charm | yes | Fly, Protect, Spore |
