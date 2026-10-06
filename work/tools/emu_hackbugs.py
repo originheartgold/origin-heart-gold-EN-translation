@@ -1142,7 +1142,7 @@ def run_cases(roms, cases, out, jobs=6, variants=None):
             return c, v, l, E.run_child(["hackbugs", "--child", c + (":" + v if v else ""), "--rom", roms[l],
                                          "--out", out], timeout=1800)
         except Exception as e:
-            return c, v, l, {"verdict": "error", "error": str(e)[-1500:]}
+            return c, v, l, E.child_error(e)
     with ThreadPoolExecutor(jobs) as ex:
         rows = list(ex.map(run, todo))
     report = {}
@@ -1154,7 +1154,9 @@ def run_cases(roms, cases, out, jobs=6, variants=None):
     for c in cases:
         for l in roms:
             r = report[c][l]
-            if CASES[c][2]:
+            if E.timed_out(r):
+                r["verdict"] = "timeout"
+            elif CASES[c][2]:
                 try:
                     r["verdict"] = CASES[c][2](r)
                 except Exception as e:

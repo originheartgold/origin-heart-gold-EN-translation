@@ -30,7 +30,12 @@ import tempfile
 import time
 from pathlib import Path
 
-WORK = Path(__file__).resolve().parent.parent
+if __name__ == "__main__":
+    # run as a script, the recipe modules' `import emu_harness` must get this module, not a second copy: the
+    # child-process registry (stop_children, the signal handlers) has to be one and the same
+    sys.modules.setdefault("emu_harness", sys.modules[__name__])
+
+WORK =Path(__file__).resolve().parent.parent
 # ROMs, saves and outputs live only in the main checkout (ignored by git). From an agent worktree
 # (<main>/.claude/worktrees/<name>/work) fall back to the main checkout's work/.
 _parts = WORK.parts
@@ -297,8 +302,10 @@ def decode_party_pokemon(raw):
     return mon
 
 
-def encode_pokemon(raw, species=None, item=None, form=None, moves=None, pp=None):
-    """Return raw (136+ bytes, encrypted) with boxed fields replaced; checksum recomputed."""
+def encode_pokemon(raw, species=None, item=None, form=None, moves=None, pp=None, ability=None):
+    """Return raw (136+ bytes, encrypted) with boxed fields replaced; checksum recomputed. ability: the
+    hack's u16 ability at block B +0x1A (abilities go past 255; vanilla's block-A byte +0x0D is not read,
+    found 2026-10-06: every party Pokemon holds its summary ability there)."""
     raw = bytearray(raw)
     pid, flags, checksum = struct.unpack_from("<IHH", raw, 0)
     if flags & 0x3:
@@ -311,6 +318,8 @@ def encode_pokemon(raw, species=None, item=None, form=None, moves=None, pp=None)
         struct.pack_into("<H", plain, pos["A"], species)
     if item is not None:
         struct.pack_into("<H", plain, pos["A"] + 2, item)
+    if ability is not None:
+        struct.pack_into("<H", plain, pos["B"] + 0x1A, ability)
     if form is not None:
         b = pos["B"] + 0x18
         plain[b] = (plain[b] & 0x07) | (form << 3)
@@ -412,6 +421,7 @@ class Harness:
         from desmume.controls import Keys, keymask
         self._keymask = keymask
         self._keys = {k: getattr(Keys, "KEY_" + k) for k in KEYS}
+        self._slot = _EmulatorSlot()       # waits while MAX_EMULATORS emulators run on this machine
         self.rom = Path(rom).resolve()
         self.out = Path(out)
         self.out.mkdir(parents=True, exist_ok=True)
@@ -447,6 +457,7 @@ class Harness:
         finally:
             os.chdir(self._cwd)
             shutil.rmtree(self._tmp, ignore_errors=True)
+            self._slot.release()
 
     def __enter__(self):
         return self
@@ -1163,16 +1174,250 @@ def cmd_wild(a):
     return 0
 
 
+# ----------------------------------------------------------------------------- child processes
+# Every harness command that fans out runs `emu_harness.py <cmd>` children (one emulator per process). They are
+# tracked so that none outlives its parent: a per-child wall-clock timeout (SIGTERM, then SIGKILL, the case
+# fails with 'timeout'), all live children are stopped when the parent exits or gets SIGINT/SIGTERM/SIGHUP, and
+# a child whose parent has died stops itself (watchdog thread; covers a parent killed with SIGKILL). Live
+# emulators are capped machine-wide by slot lock files (EMU_HARNESS_MAX_EMULATORS, default 6), so a big
+# fan-out queues instead of opening 20 emulators. `emu_harness.py cleanup [--kill]` lists leftovers.
+CHILD_ENV = "EMU_HARNESS_PARENT_PID"
+MAX_EMULATORS = int(os.environ.get("EMU_HARNESS_MAX_EMULATORS", "6"))
+SLOT_DIR = Path(tempfile.gettempdir()) / "emu_harness_slots"
+_CHILDREN = set()
+_CHILD_HOOKS = []
+
+
+class ChildTimeout(RuntimeError):
+    """A child ran past its wall-clock timeout and was stopped (the case is reported as 'timeout')."""
+
+
+def _signal_proc(proc, sig):
+    """Send sig to the child, and to its whole process group when it leads one (a top-level child: its own
+    children, emulator or not, share the group, so nothing of the tree survives)."""
+    try:
+        if getattr(proc, "own_group", False):
+            os.killpg(proc.pid, sig)
+        else:
+            proc.send_signal(sig)
+    except (ProcessLookupError, PermissionError):
+        pass
+
+
+def _stop_proc(proc, grace=10):
+    """SIGTERM a child (its own handlers stop its children), SIGKILL (the group) after <grace> s."""
+    import signal
+    if proc.poll() is not None:
+        if getattr(proc, "own_group", False):       # the child is gone; make sure its group is too
+            _signal_proc(proc, signal.SIGKILL)
+        return
+    try:
+        _signal_proc(proc, signal.SIGTERM)
+        proc.wait(grace)
+    except Exception:
+        pass
+    if getattr(proc, "own_group", False) or proc.poll() is None:
+        _signal_proc(proc, signal.SIGKILL)
+    try:
+        proc.wait(5)
+    except Exception:
+        pass
+
+
+def stop_children():
+    for proc in list(_CHILDREN):
+        _stop_proc(proc, grace=5)
+        _CHILDREN.discard(proc)
+
+
+def _install_child_handlers():
+    """Once per process: stop every tracked child at exit and on SIGINT/SIGTERM/SIGHUP."""
+    if _CHILD_HOOKS:
+        return
+    import atexit
+    import signal
+    import threading
+    _CHILD_HOOKS.append(True)
+    atexit.register(stop_children)
+    if threading.current_thread() is not threading.main_thread():
+        return
+
+    def handler(signum, frame):
+        stop_children()
+        raise SystemExit(128 + signum)
+    for sig in (signal.SIGINT, signal.SIGTERM, signal.SIGHUP):
+        try:
+            signal.signal(sig, handler)
+        except (ValueError, OSError):
+            pass
+
+
+def spawn(args, timeout=900):
+    """Run 'emu_harness.py <args>' as a tracked child; returns (returncode, stdout, stderr). On timeout the
+    child (and its process group) is stopped and ChildTimeout('timeout ...') is raised."""
+    import subprocess
+    _install_child_handlers()
+    env = dict(os.environ, **{CHILD_ENV: str(os.getpid())})
+    # a top-level parent puts each child in a new process group (session); nested children stay in their
+    # parent's group, so stopping a top-level child's group stops its whole tree
+    own_group = CHILD_ENV not in os.environ
+    proc = subprocess.Popen([sys.executable, str(Path(__file__).resolve())] + [str(x) for x in args],
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, env=env,
+                            start_new_session=own_group)
+    proc.own_group = own_group
+    _CHILDREN.add(proc)
+    # the clock starts when the child gets an emulator slot (SLOT_DIR/active_<pid>), so queueing behind the
+    # MAX_EMULATORS cap does not count; a child that never opens an emulator (a fan-out parent) gets 4 x timeout
+    t0, started, hard = time.time(), None, time.time() + 4 * timeout
+    try:
+        while True:
+            try:
+                out, err = proc.communicate(timeout=5)
+                break
+            except subprocess.TimeoutExpired:
+                now = time.time()
+                if started is None and (SLOT_DIR / f"active_{proc.pid}").exists():
+                    started = now
+                if (started is not None and now - started > timeout) or now > hard:
+                    _stop_proc(proc)
+                    out, err = proc.communicate()
+                    raise ChildTimeout(f"timeout after {round(now - (started or t0))} s: child {args[:4]} stopped; "
+                                       f"{err[-500:]}")
+    finally:
+        if proc.poll() is None:         # interrupted while waiting (KeyboardInterrupt, SystemExit)
+            _stop_proc(proc, grace=5)
+        _CHILDREN.discard(proc)
+        if own_group:                   # nothing of the child's tree outlives it (a stray grandchild)
+            import signal
+            _signal_proc(proc, signal.SIGKILL)
+        (SLOT_DIR / f"active_{proc.pid}").unlink(missing_ok=True)     # left behind by a killed child
+    return proc.returncode, out, err
+
+
+def child_error(e):
+    """The result row of a fan-out case whose child failed: verdict 'timeout' for ChildTimeout, else 'error'."""
+    return {"verdict": "timeout" if isinstance(e, ChildTimeout) else "error", "error": str(e)[-1500:]}
+
+
+def timed_out(r):
+    """True when a case result (or one of its variants) is a child that hit its timeout."""
+    return r.get("verdict") == "timeout" or any(isinstance(x, dict) and x.get("verdict") == "timeout"
+                                                for x in r.values())
+
+
+def _parent_watchdog():
+    """In a child: exit when the parent that started it is gone (re-parented), so an orphan never keeps an
+    emulator running."""
+    ppid = os.environ.get(CHILD_ENV)
+    if not ppid:
+        return
+    import threading
+
+    def watch():
+        while True:
+            time.sleep(5)
+            if os.getppid() != int(ppid):
+                stop_children()
+                os._exit(3)
+    threading.Thread(target=watch, daemon=True).start()
+
+
+class _EmulatorSlot:
+    """A machine-wide cap on live emulators: one of MAX_EMULATORS lock files, held while the Harness lives."""
+
+    def __init__(self):
+        import fcntl
+        SLOT_DIR.mkdir(exist_ok=True)
+        self.fh = None
+        while self.fh is None:
+            for k in range(MAX_EMULATORS):
+                fh = open(SLOT_DIR / f"slot{k}.lock", "w")
+                try:
+                    fcntl.flock(fh, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                except OSError:
+                    fh.close()
+                    continue
+                fh.write(str(os.getpid()))
+                fh.flush()
+                self.fh = fh
+                self.active = SLOT_DIR / f"active_{os.getpid()}"
+                self.active.touch()
+                break
+            else:
+                time.sleep(1)
+
+    def release(self):
+        if self.fh:
+            self.fh.close()            # closing drops the lock (also when the process dies)
+            self.fh = None
+            self.active.unlink(missing_ok=True)
+
+
+def parse_ps(out, self_pid):
+    """Rows of `ps -Ao pid=,ppid=,etime=,command=` output that run the emu_harness.py script (not a test file
+    or an editor that only names it), other than self_pid and cleanup itself."""
+    rows = []
+    for line in out.splitlines():
+        parts = line.split(None, 3)
+        if len(parts) != 4:
+            continue
+        argv = parts[3].split()
+        if Path(argv[0]).name.lower().startswith("python") and \
+                any(Path(t).name == "emu_harness.py" for t in argv[1:3]) and int(parts[0]) != self_pid and \
+                "cleanup" not in argv:
+            rows.append({"pid": int(parts[0]), "ppid": int(parts[1]), "elapsed": parts[2], "command": parts[3][:200],
+                         "orphan": int(parts[1]) == 1})
+    return rows
+
+
+def harness_processes():
+    """Running emu_harness.py processes (pid, ppid, elapsed, command, orphan) other than this one."""
+    import subprocess
+    out = subprocess.run(["ps", "-Ao", "pid=,ppid=,etime=,command="], capture_output=True, text=True).stdout
+    return parse_ps(out, os.getpid())
+
+
+def cmd_cleanup(a):
+    """List leftover harness processes; --kill stops the orphans (--all: every one)."""
+    import signal
+    rows = harness_processes()
+    for r in rows:
+        print(json.dumps(r))
+    victims = [r for r in rows if a.all or r["orphan"]] if a.kill else []
+    for r in victims:
+        try:
+            os.kill(r["pid"], signal.SIGTERM)
+        except ProcessLookupError:
+            pass
+    if victims:
+        time.sleep(5)
+        for r in victims:
+            try:
+                os.kill(r["pid"], signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+    stale = 0                       # slot markers of children that died without releasing them
+    for p in SLOT_DIR.glob("active_*"):
+        try:
+            os.kill(int(p.name.split("_")[1]), 0)      # still running (any process using the harness)
+        except ProcessLookupError:
+            p.unlink(missing_ok=True)
+            stale += 1
+        except (PermissionError, ValueError):
+            pass
+    print(json.dumps({"processes": len(rows), "orphans": sum(r["orphan"] for r in rows), "stopped": len(victims),
+                      "stale_slot_markers_removed": stale}))
+    return 0
+
+
 def run_child(args, timeout=900):
     """Run 'emu_harness.py <args>' in a fresh process and return the JSON of its 'RESULT ' line.
     One emulator per process: a second DeSmuME instance in the same process crashes (SIGSEGV)."""
-    import subprocess
-    proc = subprocess.run([sys.executable, str(Path(__file__).resolve())] + [str(x) for x in args],
-                          capture_output=True, text=True, timeout=timeout)
-    for line in proc.stdout.splitlines():
-        if line.startswith("RESULT "):
-            return json.loads(line[7:])
-    raise RuntimeError(f"child {args} failed (rc {proc.returncode}): {proc.stderr[-2000:]}")
+    rc, out, err = spawn(args, timeout)
+    for line in out.splitlines():
+        if "RESULT " in line:          # DeSmuME may print to stdout without a newline just before it
+            return json.loads(line[line.index("RESULT ") + 7:])
+    raise RuntimeError(f"child {args} failed (rc {rc}): {err[-2000:]}")
 
 
 PAL_PARK_MAP = 109
@@ -1616,11 +1861,9 @@ def cmd_messages(a):
 
 def _child_json(args, path, timeout=3600):
     """Run a harness command in a child process and load the JSON report it writes."""
-    import subprocess
-    proc = subprocess.run([sys.executable, str(Path(__file__).resolve())] + [str(x) for x in args],
-                          capture_output=True, text=True, timeout=timeout)
+    rc, out, err = spawn(args, timeout)
     if not Path(path).exists():
-        raise RuntimeError(f"{args[0]} failed (rc {proc.returncode}): {proc.stderr[-1500:]}")
+        raise RuntimeError(f"{args[0]} failed (rc {rc}): {err[-1500:]}")
     return json.loads(Path(path).read_text())
 
 
@@ -1732,10 +1975,17 @@ def _check_verify(rom, out):
     return emu_verify.suite_check(rom, out)
 
 
+def _check_sweeps(rom, out):
+    """Text sweeps (emu_sweeps.py SUITE_SUBSETS): trainer intros, bag/summary descriptions, battle pages read
+    back with the game font; EN rows keep their status, CN rows are captured."""
+    import emu_sweeps
+    return emu_sweeps.suite_check(rom, out)
+
+
 SUITE_CHECKS = {"unown": _check_unown, "palpark": _check_palpark, "arceus": _check_arceus,
                 "evolve": _check_evolve, "dex": _check_dex, "skitty": _check_skitty, "guide0107": _check_guide0107,
                 "guide0813": _check_guide0813, "calendar": _check_calendar, "hackbugs": _check_hackbugs,
-                "verify": _check_verify}
+                "verify": _check_verify, "sweeps": _check_sweeps}
 
 
 def cmd_suite(a):
@@ -1796,6 +2046,11 @@ def _cmd_verify(a):
     return emu_verify.cmd(a)
 
 
+def _cmd_sweeps(a):
+    import emu_sweeps
+    return emu_sweeps.cmd(a)
+
+
 def _cmd_calendar(a):
     import emu_calendar
     return emu_calendar.cmd(a)
@@ -1825,8 +2080,13 @@ def cmd_info(a):
 
 
 def main(argv=None):
+    _parent_watchdog()
+    _install_child_handlers()
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
+    cl = sub.add_parser("cleanup", help="list leftover emu_harness processes; --kill stops orphans (--all: every one)")
+    cl.add_argument("--kill", action="store_true")
+    cl.add_argument("--all", action="store_true")
     pp = sub.add_parser("palpark", help="D-1484: encounter record of map 109 per pinned weekday")
     pp.add_argument("--rom", default=str(DEF_ROM_CN))
     pp.add_argument("--sav", default=str(DEF_SAVES / "full_bag_6mons.sav"))
@@ -1888,7 +2148,8 @@ def main(argv=None):
     su.add_argument("--rom-cn", default=str(DEF_ROM_CN))
     su.add_argument("--rom-en", default=str(DEF_ROM_EN))
     su.add_argument("--out", default=str(DEF_OUT))
-    su.add_argument("--jobs", type=int, default=6, help="checks run in parallel (each starts its own emulators)")
+    su.add_argument("--jobs", type=int, default=4, help="checks run in parallel (each starts its own emulators; "
+                    "live emulators are capped by EMU_HARNESS_MAX_EMULATORS, default 6)")
     sk = sub.add_parser("skitty", help="D-0582: Route 8 Skitty scene on CN and EN (cries, sprite, trainer, text)")
     sk.add_argument("--rom-cn", default=str(DEF_ROM_CN))
     sk.add_argument("--rom-en", default=str(DEF_ROM_EN))
@@ -1906,7 +2167,7 @@ def main(argv=None):
         g7.add_argument("--rom-cn", default=str(DEF_ROM_CN))
         g7.add_argument("--rom-en", default=str(DEF_ROM_EN))
         g7.add_argument("--out", default=str(DEF_OUT))
-        g7.add_argument("--jobs", type=int, default=6)
+        g7.add_argument("--jobs", type=int, default=4)
         g7.add_argument("--rom", help=argparse.SUPPRESS)
         g7.add_argument("--child", help=argparse.SUPPRESS)
     ca = sub.add_parser("calendar", help="calendar encounter hook: loaded table, forced-slot battles (emu_calendar.py)")
@@ -1916,9 +2177,20 @@ def main(argv=None):
     ca.add_argument("--rom-cn", default=str(DEF_ROM_CN))
     ca.add_argument("--rom-en", default=str(DEF_ROM_EN))
     ca.add_argument("--out", default=str(DEF_OUT))
-    ca.add_argument("--jobs", type=int, default=6)
+    ca.add_argument("--jobs", type=int, default=4)
     ca.add_argument("--rom", help=argparse.SUPPRESS)
     ca.add_argument("--child", help=argparse.SUPPRESS)
+    sw = sub.add_parser("sweeps", help="text sweeps: capture, read back with the game font, compare (emu_sweeps.py)")
+    sw.add_argument("--sweep", required=True, help="trainers, battle or desc")
+    sw.add_argument("--ids", help="subset, e.g. 1-200,305 (trainer ids / item ids / scenario numbers)")
+    sw.add_argument("--lang", choices=("cn", "en", "both"), default="both")
+    sw.add_argument("--rom-cn", default=str(DEF_ROM_CN))
+    sw.add_argument("--rom-en", default=str(DEF_ROM_EN))
+    sw.add_argument("--out", default=str(DEF_OUT))
+    sw.add_argument("--jobs", type=int, default=6)
+    sw.add_argument("--rom", help=argparse.SUPPRESS)
+    sw.add_argument("--child", help=argparse.SUPPRESS)
+    sw.add_argument("--rejudge", action="store_true", help="judge the saved EN screenshots again (no emulator)")
     dc = sub.add_parser("dexcapture", help=argparse.SUPPRESS)
     dc.add_argument("--rom", default=str(DEF_ROM_CN))
     dc.add_argument("--out", default=str(DEF_OUT))
@@ -1948,7 +2220,7 @@ def main(argv=None):
     return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages, "suite": cmd_suite,
             "dexcapture": cmd_dexcapture, "skitty": _cmd_skitty, "guide0107": _cmd_guide0107,
             "guide0813": _cmd_guide0813, "calendar": _cmd_calendar, "hackbugs": _cmd_hackbugs,
-            "verify": _cmd_verify}[a.cmd](a)
+            "verify": _cmd_verify, "sweeps": _cmd_sweeps, "cleanup": cmd_cleanup}[a.cmd](a)
 
 
 if __name__ == "__main__":

@@ -30,7 +30,9 @@ of the main checkout (also when run from an agent worktree).
     .venv/bin/python work/tools/emu_harness.py calendar [--case table,battle,volcanion,stale] [--lang cn|en|both]   # calendar hook
     .venv/bin/python work/tools/emu_harness.py hackbugs [--case tutor,coins,...] [--lang cn|en|both]   # open hack-finding records
     .venv/bin/python work/tools/emu_harness.py verify [--case bigtext,never,...] [--lang cn|en|both]   # open verify-in-game records
-    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty,guide0107,guide0813,calendar,hackbugs,verify] [--jobs 10]
+    .venv/bin/python work/tools/emu_harness.py sweeps --sweep trainers|desc|battle [--ids ...] [--lang cn|en|both] [--jobs 6] [--rejudge]   # text read-back, see 12
+    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty,guide0107,guide0813,calendar,hackbugs,verify,sweeps] [--jobs 4]
+    .venv/bin/python work/tools/emu_harness.py cleanup [--kill [--all]]                   # leftover harness processes
     python3 -m unittest discover -s work/tools -p test_emu_harness.py      # pure parts, no ROM needed
 
 A boot plus teleport takes about 15 s; 20 Unown encounters take about 2–3 minutes (headless, ~300 fps).
@@ -278,7 +280,9 @@ caller, so a different stack history), which is where a non-zero byte could stil
 
 - `encode_pokemon(..., moves=, pp=)` / `edit_party_mon(slot, moves=[...])`: block B +0 four u16 move ids,
   +8 four u8 PP (the hunt agent verified them in the summary and in battle; round-trip unit test here).
-  Not integrated: writing the ability byte (block A +0x0D) had no effect in battle; the hack computes the
+  Correction (2026-10-06, item 5): the hack keeps the ability as a u16 at block B +0x1A (abilities go past 255);
+  `encode_pokemon`/`edit_party_mon(slot, ability=)` write it and the summary shows it (all 327 abilities). The
+  note that follows is about the unused vanilla byte. Not integrated: writing the ability byte (block A +0x0D) had no effect in battle; the hack computes the
   ability elsewhere (still to find; needed for Zen Mode or hidden-ability tests). Writing moves into the
   generator's rows 7–10 before START does nothing (the menu resets them): set moves after creation.
 - Touch coordinates: field touch menu POKéDEX (43, 33), POKéMON (43, 73), BAG (43, 113), POKéGEAR
@@ -384,7 +388,7 @@ from ordinary message commands in their scripts). The WIP build predates later b
   game font pixels, so they are not in git: `open_dex_list` learns them from entries 0001–0010 and caches
   them in `work/build/harness/dex_digit_templates.json`. `EMU_HARNESS_DATA=<checkout>/work` points copies
   outside the repo at the ROMs and saves.
-- **`emu_harness.py suite [--only ...] [--jobs 10]`**: runs each check on the Chinese ROM and the English
+- **`emu_harness.py suite [--only ...] [--jobs 4]`** (default 4; emulators capped at 6 machine-wide): runs each check on the Chinese ROM and the English
   build in parallel child processes and writes `work/build/harness/suite/suite_report.json`; exit 1 on any
   failure. Checks and expectations:
 
@@ -401,6 +405,7 @@ from ordinary message commands in their scripts). The WIP build predates later b
 | calendar | calendar hook table (`emu_calendar.py`, case `table`), see 9 | for all 8 entries: the loaded buffer equals the ROM record the day before and record + configured slot-11 word(s) on the date | 2.5 min |
 | hackbugs | 22 hack-finding cases (`emu_hackbugs.py`, `SUITE_EXPECT`), see 10 | each keeps its observed verdict | about 6 min |
 | verify | placeholders never printed, Gym statue branches, costume nurse (`emu_verify.py`), see 11 | never_printed / confirmed / confirmed | about 1 min |
+| sweeps | text read-back subsets (`emu_sweeps.py SUITE_SUBSETS`), see 12: 6 trainer intros, 6 bag + 4 move + 4 ability descriptions, 2 battles | EN rows `ok` (item 4 `past_panel`), CN rows captured | about 2 min |
 
   Result (observed): all 10 (5 checks × 2 ROMs) pass, 2 min 13 s wall time with `--jobs 10`. A first run
   before the battery fix failed unown (both ROMs) and palpark (English) on the shared battery file, and one
@@ -456,7 +461,7 @@ ROM and on the English WIP build (Oct 5): same results on both.
 |---|---|---|
 | 01 Viridian Pikachu thief: back at its first spot after you leave | pikachu: Yes at the first spot → object 5 at 1008,235; warp to Route 1 and back → 1033,247 | **confirmed** |
 | 01 Pidgeot loan: "Lv. 20, IVs 31, your name as OT" | pidgeot: lend a Lv60 Pidgeot with Leftovers through the party menu (it leaves the party), set 2404, take it back | **contradicted** in part: Lv20, IVs 6×31, moves 28/16/98/18, no item, trade record 6's PID, but OT ID 0x761510F0 (ID No. 04336) and an empty OT name (D-1552) |
-| 01 Victory Road Electrode: fleeing (probably) removes it; losing keeps it | electrode: Ninjask Lv100 flees → flag 1241 set, ball gone; doomed party loses → Pokémon Center, ball still there | **confirmed** (an Electrode that explodes counts as a win too) |
+| 01 Victory Road Electrode: fleeing (probably) removes it; losing keeps it | electrode: Ninjask Lv100 flees → flag 1241 set, ball gone; a Memento lead (rest at 0 HP) loses → Pokémon Center, ball still there | **confirmed** (an Electrode that explodes counts as a win too) |
 | 01 "Meet my mom" plays Cynthia's version | mom_visit: Yellow partner, 739 L10063 → zone 504 scene; control with flag 106 clear | **confirmed** (D-1553) |
 | 01 Living together blocked for everyone | living: 2F PC at 0x40B5 = 6 with the Cascade Badge prints nothing, player walks on; control (106 clear) starts the love letter | **confirmed** (D-1553) |
 | 02/04 Misty missing after a won Resort date | misty_date: 809 script 15 from L4312 → Gym with var 4; object 6 absent, also after re-entering; Cape object 35 absent | **confirmed** (D-1554) |
@@ -716,6 +721,91 @@ New pieces:
 | D-0511, D-0518, D-0522, D-0913, D-1192 | – | – | **blocked** (screen not found; panel descriptions and battle bag paths not driven; content question; phone call) |
 
 Suite: `verify` (SUITE_EXPECT: never → never_printed, statue and nurse → confirmed).
+
+### 12. Text sweeps: read back what the screen shows (`emu_text.py`, `emu_sweeps.py`, item 5, 2026-10-06)
+
+`emu_text.py` decodes a text window from a screenshot with the ROM's own font: the game prints 2bpp glyphs
+from `a/0/1/6` at a fixed origin, one 16-px row per line, advancing by the width table, so the window's ink
+(every pixel that is not the window background) parses exactly into glyphs (rows 1–14 compared, so ruled
+panels don't disturb it; identical bitmaps such as O/● resolve to the letter). A decoded line is the text the
+game printed, its rendered width, whether ink reaches the window's last column, and U+FFFD for pixels that
+start no glyph (garble, a window drawn over the text). Lines are compared with the bank string (buffers
+filled where known, otherwise any text; `{CLEAR}` repeats handled). English fonts only; CN runs give the
+CN|EN pairs.
+
+`emu_harness.py sweeps --sweep trainers|desc|battle [--ids] [--lang cn|en|both] [--jobs 6]` runs the work in
+child processes (one emulator each, a field savestate reloaded per item); reports and screenshots in
+`work/build/harness/sweeps/<sweep>/` (`report.json`, `<lang>/`, CN|EN `pairs/` of every EN row that is not
+`ok`), per-child progress files so a dead child loses nothing; `--rejudge` re-reads the saved EN screenshots
+after a decoder or bank change. Run on build CRC32 588D0B73 (bank fixes below included):
+
+| sweep | what | coverage | result (EN) | time |
+|---|---|---|---|---|
+| trainers | `TrainerBattle id 0 0 0` for all 1023 trainers of trainers.json; intro read back; MsgLog gives the string (2#482 for all), class (a027/0720) and name (0719) the game read | 1023 / 1023 both ROMs | **all 1023 ok**; widest intro line 125 px of 216; no garble, no cut name (10-character compressed names fit). The rival (class 23, 8 trainers) prints "Redhead" alone: the test save's rival name is empty, CN the same | 10 min (16 jobs); rerun with `--jobs 8` under the 6-emulator cap: 18 min, same result |
+| desc | bag: every item of items.json (582) in the Items pocket, cursor stepped through the pages, description panel (x 40, y 144, 200 px to the frame); summary skills page: ability description (top, x 8, 139 px to the divider) and the four move descriptions (bottom, x 136, 120 px), set with `edit_party_mon(moves=, ability=)` | 582 items, 902 moves, 327 abilities, both ROMs | moves 902 ok (widest 120 px), abilities 327 ok (widest 136 px), items 504 ok + **78 `past_panel`**: a line of 201–215 px runs into the bag frame (last letters hidden behind it), exactly QA's `line_past_frame` list (D-1534 counts 81; 3 of them are not obtainable). No blank panel, no garble | 4.4 min (16 jobs) |
+| battle | 24 scripted battles (`BATTLES`: weather ×4, stat stages, poison/sleep/burn/paralysis/confusion, crit, no effect, not very effective, level-up + Exp. Share, Leftovers, Life Orb, Sitrus, Intimidate/Drizzle/Drought/Speed Boost, a foe's Intimidate, switching, fainting + forced switch, Master Ball catch, escape, a trainer battle won); every stable page of the battle window decoded and matched with the battle_string (or a027, trainer line 0718) read before it | 87 of 2858 battle_string ids read, 79 printed and checked; 626 pages | **all 24 ok**: 614 pages match, 12 covered by the level-up stats window (by design) | 3 min (16 jobs) |
+
+Issues found and fixed (before → after, rebuilt and swept again):
+- 2#32 `{nick} wants to learn {move}...` cut at the window edge ('Maximilian wants to learn DragonBreath..'), and
+  page 2 'Should another move be forgotten to' ran its 'o' under the YES/NO prompt icons (x 211–228) →
+  `{nick} wants to learn{NEWLINE}{move}...{SCROLL}Should another move be forgotten{NEWLINE}to make room for {move}?`.
+- 2#73 'Would you like to forfeit the match and' (208 px) under the prompt icons → 'Would you like to forfeit the' /
+  'match and quit now?'.
+- 1#1464–1466 'The wild Kangarooey took the Future Sig' cut → 'took the{NEWLINE}{move} attack!' like #1467.
+
+QA rules added (`qa_config.json`, `qa.py`): `prompt_icon_overlap` (battle category, `prompt_px` 195: the lines of
+the view that ends with `{VAR:0200:..}`); battle_string buffer widths for {VAR:0107} move and {VAR:0106} ability
+(48/72 px) and {VAR:010C} nickname (54/60): QA had measured the battle's move buffer as 42/48 px. 56 more battle
+strings now warn `line_may_overflow` (a long nickname with a 12-character move): D-1566 (proposal: a break
+before the move buffer, as 1#1467). Numbers in battle text use the full-width digit codes (7–8 px), as in the
+Chinese ROM: D-1567. Seen once: the player's Pokémon hit by a wild foe's Future Sight got the "The wild"
+string (1#1465): D-1568 (CN not seen).
+
+Not covered: the HP-box name plates (species/nickname ≤ 10 characters, QA-enforced), contest and Pokéathlon
+text, battle bag item use, double-battle target prompts; most of the 2858 battle_string ids need specific
+moves, abilities or items (a scenario per family; add rows to `BATTLES`).
+
+Harness pieces from this round: `encode_pokemon(ability=)` (block B +0x1A, see the correction under "Integrated
+from the UI hunt agent"); a page watcher for the battle window (`PageWatch`: a page counts when unchanged for 3 looks); `BattleLog` (battle_string and
+a027 reads with frames); `run_child` finds `RESULT` mid-line (DeSmuME sometimes prints without a newline).
+
+**guide0107 `electrode` flake (fixed).** The suite once failed `electrode` on the Chinese ROM under load: in the
+lose variant the doomed lead (Splash, 1 HP) let the Lv70 Electrode act first, and its moves are Explosion, Zap
+Cannon, Gyro Ball and Mirror Coat. When the battle RNG picked Explosion before a damaging move, both sides
+fainted, the game counted it as a win (flag 1241 set, ball gone, as the guide notes) and the judge said
+'contradicted' (the failed run's screenshot shows the ball gone after the "loss"). The wild Pokémon's PID is
+identical across runs (main RNG reproducible), but the battle RNG is not (see section 10), so the outcome
+depended on the run. The lose variant now uses `memento_party`: a Lv100 Ninjask that knows only Memento leads
+and every other party Pokémon has 0 HP, so the player's side faints on turn 1 before the Electrode moves; the
+loss no longer depends on any random choice. Observed: 8 CN runs of the old variant all passed (the flake is
+rare); the new variant is confirmed on both ROMs, alone (4 runs × both ROMs × both variants on 2026-10-06, all confirmed) and in the full suite.
+
+**Child processes (2026-10-06, coordinator request).** A calendar child (`battle@keldeo:day`, stuck in a battle
+it could not flee) kept running at 100 % CPU for about 4 hours after its parent was gone. Now every fan-out
+goes through `spawn()`:
+- Per-child wall-clock timeout. It starts when the child gets an emulator slot; on expiry SIGTERM, then
+  SIGKILL of the child's process group; `spawn` raises `ChildTimeout` and the case gets verdict `timeout`
+  (sweep rows: status `timeout`), so a suite run fails instead of hanging. Sweep children get
+  600 s + a per-item budget (trainers 20 s, descriptions 15 s, battles 300 s).
+- Process groups. A top-level parent starts each child in its own session; the child's own children stay in
+  that group, so stopping a child stops its whole tree, and the group is SIGKILLed once the child has exited.
+- Parent exit. All tracked children are stopped at exit (atexit) and on SIGINT/SIGTERM/SIGHUP. Run as a
+  script, `emu_harness.py` registers itself as the module `emu_harness`, so the recipe modules
+  (`import emu_harness as E`) share the one child registry; before that fix SIGINT/SIGTERM on a `sweeps`
+  parent left its children running (they used a second copy of the module).
+- Orphans. A child whose parent died (also by SIGKILL) stops itself within 5 s (watchdog thread).
+- Checked on 2026-10-06 with a `sweeps --sweep trainers --ids 1-60 --lang both --jobs 2` parent: `kill -9`,
+  `-INT`, `-TERM` and `-HUP` of the parent each left no emu_harness process after 12 s; `spawn(..., timeout=25)`
+  on a 59-trainer child raised `ChildTimeout` after 25 s and left nothing behind.
+- Live emulators are capped machine-wide at `EMU_HARNESS_MAX_EMULATORS` (default 6; lock files in
+  `$TMPDIR/emu_harness_slots`), so a big fan-out queues instead of opening 20 emulators. `--jobs` defaults:
+  4 for suite, guide0107/0813, calendar; 6 for sweeps.
+- `emu_harness.py cleanup` lists running `python … emu_harness.py` processes (orphans marked; test files and
+  editors that only name the file are not listed) and removes slot markers of dead children; `--kill` stops
+  the orphans, `--kill --all` every one (also another session's runs: check the list first).
+
+Full suite after these changes (2026-10-06, `suite --jobs 4`, 12 checks × 2 ROMs, build CRC32 588D0B73): all 24
+pass in 19 min 55 s; no emu_harness process left afterwards.
 
 ### 5. Screen checks on the English WIP build (Tier 3)
 

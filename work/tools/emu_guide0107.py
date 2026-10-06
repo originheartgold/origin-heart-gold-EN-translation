@@ -117,6 +117,20 @@ def doomed_party(h):
         set_party_hp(h, i, 1 if i == 0 else 0)
 
 
+MEMENTO = 262
+
+
+def memento_party(h):
+    """A loss that no foe move can turn into a win: a Lv100 Ninjask lead (outspeeds everything the recipes
+    meet) that knows only Memento, every other party Pokemon at 0 HP. Memento faints the user on turn 1
+    before the foe acts, so the battle is lost whatever the battle RNG picks. (doomed_party leaves the foe
+    one move first: a wild Electrode then picked Explosion often enough to turn the 'loss' into a win, the
+    guide0107 'electrode' flake.)"""
+    lead(h, FAST_LEAD, moves=[MEMENTO], pp=[10])
+    for i in range(1, len(h.party())):
+        set_party_hp(h, i, 0)
+
+
 def lose_battle(h, max_steps=600):
     """Play the running battle to a loss: Splash at every command menu; on the forced-switch party list
     send out the next Pokemon (slots 1-5 in turn). Returns a trace of (in_field, map, pc) every 15 frames
@@ -374,12 +388,15 @@ def case_promo_flag(rom, out):
 def case_electrode(rom, out, variant):
     """01 Victory Road 1F (zone 124): file 109 script 9 = PlayCry; WildBattle Electrode; CheckBattleWon;
     win/flee -> SetFlag 1241, HidePerson 8; loss -> WhiteOut. Variant flee: a Lv100 Ninjask lead runs;
-    variant lose: doomed_party (Splash, lead at 1 HP, the rest at 0 HP), so the first hit ends it."""
+    variant lose: memento_party (the Ninjask uses Memento on turn 1, the rest are at 0 HP). The Electrode
+    (Lv70: Explosion, Zap Cannon, Gyro Ball, Mirror Coat) never gets a move, so the loss does not depend on
+    the battle RNG: with doomed_party it moved first, and an Explosion counted as a win (flag set, ball
+    gone), which made the suite fail once under load."""
     with E.start_at(None, rom=rom, out=out, verbose=False, clock=CLOCK) as h:
         if variant == "flee":
             lead(h, FAST_LEAD)
         else:
-            doomed_party(h)
+            memento_party(h)
         h.warp(124, 21, 41, E.DIRS["UP"])
         h.step(60)
         objs = K.live_objects(h, 124)
@@ -1158,7 +1175,7 @@ def run_cases(roms, cases, out, jobs=6):
             return c, v, l, E.run_child(["guide0107", "--child", c + (":" + v if v else ""), "--rom", roms[l],
                                          "--out", out], timeout=1800)
         except Exception as e:
-            return c, v, l, {"verdict": "error", "error": str(e)[-1500:]}
+            return c, v, l, E.child_error(e)
     with ThreadPoolExecutor(jobs) as ex:
         rows = list(ex.map(run, todo))
     report = {}
@@ -1170,7 +1187,9 @@ def run_cases(roms, cases, out, jobs=6):
     for c in cases:
         for l in roms:
             r = report[c][l]
-            if CASES[c][2]:
+            if E.timed_out(r):
+                r["verdict"] = "timeout"
+            elif CASES[c][2]:
                 try:
                     r["verdict"] = CASES[c][2](r)
                 except Exception as e:

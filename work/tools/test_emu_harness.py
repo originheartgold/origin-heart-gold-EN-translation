@@ -428,3 +428,91 @@ class VerifyHelpers(unittest.TestCase):
             self.assertTrue(callable(fn), name)
             self.assertTrue(records.startswith("D-"), name)
         self.assertLessEqual(set(V.SUITE_EXPECT), set(V.CASES))
+
+
+class TextReadBack(unittest.TestCase):
+    """emu_text (glyph parser, expected lines) and emu_sweeps (matching, judges) without a ROM."""
+
+    def font(self):
+        import emu_text as T
+        f = T.Font.__new__(T.Font)
+        g = {"A": (1, (0b0110, 0b1001, 0b1111, 0b1001, 0)), "B": (2, (0b1111, 0b1011, 0b0110, 0)),
+             "O": (3, (0b0110, 0b1001, 0b0110, 0)), "●": (4, (0b0110, 0b1001, 0b0110, 0)), " ": (5, (0, 0, 0))}
+        f.glyphs = {}
+        seen = set()
+        for ch in ("A", "B", "O", " ", "●"):      # the same order as Font: letters before symbols
+            code, cols = g[ch]
+            if (len(cols), cols) in seen and ch != " ":
+                continue
+            seen.add((len(cols), cols))
+            f.glyphs[code] = (ch, len(cols), cols)
+        f.index = {}
+        for ch, w, cols in f.glyphs.values():
+            f.index.setdefault(cols[0], []).append((ch, w, cols))
+        for k in f.index:
+            f.index[k].sort(key=lambda x: (-x[1], x[0] == " "))
+        return f
+
+    def test_parse_line(self):
+        import emu_text as T
+        f = self.font()
+        A, B, O, S = (0b0110, 0b1001, 0b1111, 0b1001, 0), (0b1111, 0b1011, 0b0110, 0), (0b0110, 0b1001, 0b0110, 0), (0, 0, 0)
+        cols = list(A + S + B + O) + [0] * 6
+        self.assertEqual(T.parse_line(cols, f), ("A BO", 15, 0))           # O, not the identical ●
+        bad = list(A) + [0b1111111] + list(B) + [0] * 4                     # one column no glyph starts with
+        text, right, unknown = T.parse_line(bad, f)
+        self.assertEqual((text, unknown), ("A" + T.UNKNOWN + "B", 1))
+        self.assertEqual(T.parse_line([0] * 8, f), ("", 0, 0))
+
+    def test_expected_lines_and_compare(self):
+        import emu_text as T
+        en = "{VAR:010E:0,0} {VAR:0100:1,0}{NEWLINE}wants to battle!{SCROLL}{VAR:0102:2}{COLOR:1}x{CLEAR}y"
+        pages = T.expected_lines(en, {0: "Youngster", 1: "Joey"})
+        self.assertEqual(pages, [["Youngster Joey", "wants to battle!"], ["\x00x", "y"]])
+        ok, d = T.compare(pages, ["Youngster Joey", "wants to battle!", "Pikachux", "Pikachux", "y"])
+        self.assertTrue(ok, d)                                              # {CLEAR} repeats a line
+        self.assertFalse(T.compare(pages, ["Youngster Joey", "wants to battle", "Pikachux", "y"])[0])
+
+    def test_ability_field(self):
+        raw = E.encode_pokemon(_encrypted_mon(7), ability=311)
+        order = E.BLOCK_ORDERS[((struct.unpack_from("<I", raw)[0] & 0x3E000) >> 13) % 24]
+        checksum = struct.unpack_from("<H", raw, 6)[0]
+        plain = struct.pack("<64H", *[w ^ k for w, k in zip(struct.unpack_from("<64H", raw, 8),
+                                                              E._prng_stream(checksum, 64))])
+        self.assertEqual(struct.unpack_from("<H", plain, 32 * order.index("B") + 0x1A)[0], 311)
+        self.assertTrue(E.decode_pokemon(raw)["checksum_ok"])
+
+    def test_sweep_helpers(self):
+        import emu_sweeps as S
+        self.assertTrue(S._prefix_match("\x00 grew to Lv. \x00!", "Butterfly1 grew to L"))
+        self.assertTrue(S._prefix_match("Should another move be forgotten", "Should another move be forg"))
+        self.assertFalse(S._prefix_match("Should another move", "Shall"))
+        self.assertEqual(S.ICON_TAIL.sub("", "What will Ditto do?          �"), "What will Ditto do?")
+        self.assertEqual(S.parse_ids("3-5,9", [1, 3, 4, 5, 9, 10]), [3, 4, 5, 9])
+        self.assertEqual([len(c) for c in S.chunks(list(range(10)), 3)], [4, 4, 2])
+        self.assertTrue(set(S.SUITE_SUBSETS) <= set(S.SWEEPS))
+        for name, (lead, foe, plan) in S.BATTLES.items():
+            self.assertTrue(plan and len(lead) == 6 and len(foe) == 2, name)
+
+
+class ChildProcesses(unittest.TestCase):
+    """Process hygiene helpers (no emulator): ps parsing for `cleanup`, timeout verdicts."""
+
+    def test_parse_ps(self):
+        out = "\n".join([
+            "  101     1 04:00:01 /x/.venv/bin/python /x/work/tools/emu_harness.py calendar --child battle@k:day",
+            "  102   100    00:10 /x/.venv/bin/python /x/work/tools/emu_harness.py sweeps --sweep trainers",
+            "  103   100    00:01 python -m unittest work/tools/test_emu_harness.py",
+            "  104   100    00:01 vim work/tools/emu_harness.py",
+            "  105   100    00:01 /x/.venv/bin/python work/tools/emu_harness.py cleanup --kill",
+            "  106   100    00:01 /x/.venv/bin/python work/tools/emu_harness.py suite"])
+        rows = E.parse_ps(out, self_pid=106)
+        self.assertEqual([r["pid"] for r in rows], [101, 102])
+        self.assertEqual([r["orphan"] for r in rows], [True, False])
+
+    def test_timeout_verdicts(self):
+        self.assertEqual(E.child_error(E.ChildTimeout("timeout after 901 s"))["verdict"], "timeout")
+        self.assertEqual(E.child_error(RuntimeError("child failed"))["verdict"], "error")
+        self.assertTrue(E.timed_out({"verdict": "timeout"}))
+        self.assertTrue(E.timed_out({"flee": {"verdict": "ok"}, "lose": {"verdict": "timeout", "error": "x"}}))
+        self.assertFalse(E.timed_out({"flee": {"verdict": "ok"}, "lose": {"flag": 1}}))

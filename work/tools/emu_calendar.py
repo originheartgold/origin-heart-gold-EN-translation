@@ -503,7 +503,7 @@ def run_cases(roms, cases, out, jobs=6, variants=None):
             return c, v, l, E.run_child(["calendar", "--child", c + ("@" + v if v else ""), "--rom", roms[l],
                                          "--out", out], timeout=1800)
         except Exception as e:
-            return c, v, l, {"verdict": "error", "error": str(e)[-1500:]}
+            return c, v, l, E.child_error(e)
     with ThreadPoolExecutor(jobs) as ex:
         rows = list(ex.map(run, todo))
     report = {}
