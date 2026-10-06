@@ -1460,10 +1460,10 @@
   {
    "id": 175,
    "zh": "详细资料",
-   "en": "DETAILS",
+   "en": "DATA",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Pokédex detail tab page header; tab graphic and header both DATA (D-1542)."
   },
   {
    "id": 176,

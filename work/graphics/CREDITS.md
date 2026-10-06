@@ -13,15 +13,16 @@ Graphics in this folder that did not come from the user's own USA HeartGold ROM.
 
 ## Other sources (no third-party art)
 
-- **USA HeartGold ROM** (the user's own dump): Pokédex header/buttons letters, naming-keyboard BACK/OK, trainer-card background, Pokégear weekday sheets, bag HM/SET labels, Pokéathlon SWITCH labels; pass 3: battle HP-box status icons PAR/FRZ/SLP/PSN/BRN (raw tiles from USA overlay 12), WIN/LOSE/DRAW labels (`a/1/0/4` #5), CANCEL buttons (`a/1/1/3` #30), START button (`a/2/1/5` #16) and the Pokéathlon instruction screens (`a/2/1/9`).
+- **USA HeartGold ROM** (the user's own dump): Pokédex header/buttons letters (the detail-page tab row AREA / DATA / SIZE / FORMS / BACK uses only USA letters: A R E S I Z F O M B C K from the USA area-page buttons, D and T from the USA list page's DETAILS button; "DATA" for the hack's 详细 tab is a user-approved composed label, D-1542), naming-keyboard BACK/OK, trainer-card background, Pokégear weekday sheets, bag HM/SET labels, Pokéathlon SWITCH labels; pass 3: battle HP-box status icons PAR/FRZ/SLP/PSN/BRN (raw tiles from USA overlay 12), WIN/LOSE/DRAW labels (`a/1/0/4` #5), CANCEL buttons (`a/1/1/3` #30), START button (`a/2/1/5` #16) and the Pokéathlon instruction screens (`a/2/1/9`).
 - **The game's own font** (`a/0/1/6` file 0 of the hack ROM): the title subtitle "Origin HeartGold", the weather labels SNOW / DOWNPOUR / HARSH SUN / WINDS, the trainer-card "/", "W", "L", the link-capture labels DETAILS / INFO / EXIT and the battle info-panel labels EXIT / SWAP (next to the hack's own Ⓑ and ✚ icons; D-1109).
-- **Hand-drawn in this project:** the naming-keyboard tab letters "QWE" / "abc" (`gfx.TAB_FONT`, in the style of the existing "ABC" tab) and the Pokédex button letter "N" (in the style of the USA button letters).
+- **Hand-drawn in this project:** the naming-keyboard tab letters "QWE" / "abc" (`gfx.TAB_FONT`, in the style of the existing "ABC" tab). (Until 2026-10-06 also the Pokédex button letter "N" of the tab label "INFO"; replaced by "DATA" from USA letters, D-1542.)
 - **pret/pokeheartgold** (https://github.com/pret/pokeheartgold, commit `9d8b7591f09b65804da2fb2dfd56f320633e0d36`): used only as a code reference (which screens and character sets the Pokédex draws together; the font glyph format). No pret files are shipped.
 
 ## Searched, nothing usable (pass 3)
 
 - hg-engine, all branches at the time of the search (main, ai-dev, item-dev, move-dev, sprite-dev, workflows/assets), listed with the GitHub tree API: no status icons, no battle-panel "exit/switch" labels, no extra weather labels, no Pokédex type-list sheet.
 - pret/pokeheartgold: only vanilla assets, which are the same as the USA ROM.
+- hg-engine for the Pokédex detail tab row (D-1542), main at `eb219cf764ff751160c2a30cc3732ad5ca1effc1` (2026-10-05) and all other branches, via the GitHub tree API: `rawdata/dex_gfx/` holds only `8_003` (caught-ball icon) and `8_123` (FAIRY badge); the tab-row graphic (`a/0/6/8` #4, screen #11) and the 详细 label are not in hg-engine (it keeps the vanilla screen), so nothing to adopt.
 
 ## hg-engine terms
 

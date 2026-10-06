@@ -1029,7 +1029,7 @@ DEX_HDR_COLUMN_EDGE = 7   # overlay 7/8 column: the banner's dark column outline
 # Every screen that shows #4 must be listed, or retile() hands its tiles out as free (D-1505).
 DEX_BTN_NCGR, DEX_BTN_SCREENS = 4, (5, 6, 9, 10, 11, 69, 70, 71)
 DEX_BTN_US_SCREENS = (5, 6, 71)   # same geometry and palette rows as the USA screens: show the USA buttons
-DEX_BTN_WORDS = ["AREA", "INFO", "SIZE", "FORMS", "BACK"]  # hack's 5-button area page 分布 详细 大小 样子 返回
+DEX_BTN_WORDS = ["AREA", "DATA", "SIZE", "FORMS", "BACK"]  # hack's 5-button area page 分布 详细 大小 样子 返回 (D-1542)
 
 
 def _word_spans(img, rows, x0, x1, ink, min_gap):
@@ -1055,7 +1055,7 @@ def make_dex_labels(us_path, cn_path, out_dir):
         the "NATIONAL ◀ ▶ JOHTO" switch row (y 120..135) is the USA one.
     Buttons (NCGR #4): screens 5/6/71 (list page) become the USA SEARCH/OPEN/QUIT and
       SEARCH/CRY/DETAILS/QUIT screens (same geometry); the hack's 5-button area page (screen 11)
-      keeps its geometry with USA-style letters AREA INFO SIZE FORMS BACK; the search-page bars 69/70
+      keeps its geometry with the USA letters AREA DATA SIZE FORMS BACK (D and T from the USA "DETAILS"); the search-page bars 69/70
       (labels are text) stay as they are, but their tiles must not be reused.
     Only tiles not referenced by the NCGR's own screens are overwritten (retile()).
     Writes <out_dir>/a068_<member>.bin for the changed members; returns {member: path}."""
@@ -1142,18 +1142,18 @@ def make_dex_labels(us_path, cn_path, out_dir):
     # --- buttons ------------------------------------------------------------------------------
     g = NCGR(cnf[DEX_BTN_NCGR])
     letters = {}
-    # N is not on the USA area page; drawn in the same 2-px-stroke style
-    letters["N"] = [[1 if c == "#" else 0 for c in r] for r in
-                    ["##..##", "###.##", "######", "######", "##.###", "##..##", "##..##", "##..##"]]
-    for s, words in ((11, ["AREA", "SIZE", "FORMS", "BACK"]),):
+    # every letter is a USA one: the area page (screen 11, rows 12..19) and the list page's
+    # SEARCH CRY DETAILS QUIT bar (screen 6, rows 22..29; D and T of "DETAILS" for the 详细 tab "DATA", D-1542)
+    for s, y0, words in ((11, 12, ["AREA", "SIZE", "FORMS", "BACK"]), (6, 22, ["SEARCH", "CRY", "DETAILS", "QUIT"])):
         u = img(usf, s, DEX_BTN_NCGR)
-        spans = _word_spans(u, range(12, 20), 0, 256, (3,), 3)
+        rows = range(y0, y0 + 8)
+        spans = _word_spans(u, rows, 0, 256, (3,), 3)
         assert len(spans) == len(words), (s, spans)
         for (a, b), word in zip(spans, words):
-            ls = _word_spans(u, range(12, 20), a, b, (3,), 1)
+            ls = _word_spans(u, rows, a, b, (3,), 1)
             assert len(ls) == len(word), (s, word, ls)
             for (la, lb), ch in zip(ls, word):
-                letters.setdefault(ch, [[1 if u[y][x][1] == 3 else 0 for x in range(la, lb)] for y in range(12, 20)])
+                letters.setdefault(ch, [[1 if u[y][x][1] == 3 else 0 for x in range(la, lb)] for y in rows])
     targets = []
     for s in DEX_BTN_SCREENS:
         if s in DEX_BTN_US_SCREENS:
