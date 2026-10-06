@@ -1989,10 +1989,18 @@ def _check_open(rom, out):
     return emu_open.suite_check(rom, out)
 
 
+def _check_vqueue(rom, out):
+    """Verify-queue cases (emu_vqueue.py SUITE_EXPECT): Cut without HM01, the new S.S. Anne captain's HM01, the
+    author's notice unreachable, B on the rematch menu exits, Tangela's Celadon Gym reaction."""
+    import emu_vqueue
+    return emu_vqueue.suite_check(rom, out)
+
+
 SUITE_CHECKS = {"unown": _check_unown, "palpark": _check_palpark, "arceus": _check_arceus,
                 "evolve": _check_evolve, "dex": _check_dex, "skitty": _check_skitty, "guide0107": _check_guide0107,
                 "guide0813": _check_guide0813, "calendar": _check_calendar, "hackbugs": _check_hackbugs,
-                "verify": _check_verify, "sweeps": _check_sweeps, "open": _check_open}
+                "verify": _check_verify, "sweeps": _check_sweeps, "open": _check_open,
+                "vqueue": _check_vqueue}
 
 
 def cmd_suite(a):
@@ -2066,6 +2074,11 @@ def _cmd_calendar(a):
 def _cmd_open(a):
     import emu_open
     return emu_open.cmd(a)
+
+
+def _cmd_vqueue(a):
+    import emu_vqueue
+    return emu_vqueue.cmd(a)
 
 
 def cmd_dexcapture(a):
@@ -2170,8 +2183,10 @@ def main(argv=None):
     sk.add_argument("--part", choices=("a", "b"), help=argparse.SUPPRESS)
     for gname, mod, chap in (("guide0107", "emu_guide0107.py", "01-07"),
                              ("guide0813", "emu_guide0813.py", "08-13 and known issues"),
-                             ("hackbugs", "emu_hackbugs.py", None), ("verify", "emu_verify.py", None)):
+                             ("hackbugs", "emu_hackbugs.py", None), ("verify", "emu_verify.py", None),
+                             ("vqueue", "emu_vqueue.py", None)):
         g7 = sub.add_parser(gname, help=f"checks for the hedged claims in guide chapters {chap} ({mod})" if chap
+                            else "the triage's verify queue (bucket D) of the register (emu_vqueue.py)" if gname == "vqueue"
                             else f"checks for the open {'verify-in-game' if gname == 'verify' else 'hack-finding'}"
                             f" records of the register ({mod})")
         g7.add_argument("--case", default="all", help=f"comma list of case names (see {mod})")
@@ -2242,7 +2257,8 @@ def main(argv=None):
     return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages, "suite": cmd_suite,
             "dexcapture": cmd_dexcapture, "skitty": _cmd_skitty, "guide0107": _cmd_guide0107,
             "guide0813": _cmd_guide0813, "calendar": _cmd_calendar, "hackbugs": _cmd_hackbugs,
-            "verify": _cmd_verify, "sweeps": _cmd_sweeps, "open": _cmd_open, "cleanup": cmd_cleanup}[a.cmd](a)
+            "verify": _cmd_verify, "sweeps": _cmd_sweeps, "open": _cmd_open, "vqueue": _cmd_vqueue,
+            "cleanup": cmd_cleanup}[a.cmd](a)
 
 
 if __name__ == "__main__":
