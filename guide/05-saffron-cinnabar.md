@@ -127,9 +127,9 @@
 | Pokéfan Enzo | right side, lower | Smeargle 34, Sableye 34, Ditto 34 |
 
 4. Battle **Ma Baoguo**: one **Machamp, Lv. 69**. A loss against him or a disciple whites you out; try again.
-**Reward:** pick **one** of the two Poké Balls by the wall: **Hitmonlee** or **Hitmonchan**, Lv. 35. The other stays sealed. Afterwards talk to Ma again for lessons: "Teach me the Lightning Whip!" teaches **Volt Switch** and "Receive, Transform, Release!" teaches **Counter**, $10,000 each (only Pokémon on his list can learn them). After Saffron is freed his menu also offers "Teach me a little life experience!": just a speech about Team Rocket, no reward.
+**Reward:** pick **one** of the two Poké Balls by the wall: **Hitmonlee** or **Hitmonchan**, Lv. 35. The other stays sealed. Afterwards talk to Ma again for lessons: "Teach me the Lightning Whip!" teaches **Volt Switch** and "Receive, Transform, Release!" teaches **Counter**, $10,000 each (only Pokémon on his list can learn them). **Watch out:** the Lightning Whip is only Volt Switch for a Pokémon that already knows four moves and forgets one; a Pokémon with a free move slot learns **Charge** instead, for the same $10,000 (a hack bug, tested in an emulator; see [the known issue](known-issues.md#lightning-whip-lesson-teaches-charge)). After Saffron is freed his menu also offers "Teach me a little life experience!": just a speech about Team Rocket, no reward.
 
-*Source:* script file 829 (scripts 1, 5, 11, 12, 14–18; flags 1652, 1664–1667, 1698, 1875/1876; lesson menu L1094 → L3025, the extra option at L3248 needs flag 1166 (Saffron freed), Volt Switch L3353, Counter L3522, speech L3691). Positions: Dojo door ≈1321,204; Ma ≈7,3; Tina ≈3,5, Lincoln ≈3,8, Tim ≈11,5, Enzo ≈11,8.
+*Source:* script file 829 (scripts 1, 5, 11, 12, 14–18; flags 1652, 1664–1667, 1698, 1875/1876; lesson menu L1094 → L3025, the extra option at L3248 needs flag 1166 (Saffron freed), Volt Switch L3353 (≤ 3 moves → L6363 `SetMonMove` 268 Charge; 4 moves → @4437 521 Volt Switch, D-1347), Counter L3522, speech L3691). Positions: Dojo door ≈1321,204; Ma ≈7,3; Tina ≈3,5, Lincoln ≈3,8, Tim ≈11,5, Enzo ≈11,8.
 
 ## Saffron City (takeover): help Ma Baoguo fight off Team Rocket
 

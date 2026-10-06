@@ -28,7 +28,8 @@ of the main checkout (also when run from an agent worktree).
     .venv/bin/python work/tools/emu_harness.py guide0107 [--case pikachu,corner_kid,...] [--lang cn|en|both]  # guide 01-07
     .venv/bin/python work/tools/emu_harness.py guide0813 [--case ribbon,magcargo,...] [--lang cn|en|both]   # guide 08-13, known issues
     .venv/bin/python work/tools/emu_harness.py calendar [--case table,battle,volcanion,stale] [--lang cn|en|both]   # calendar hook
-    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty,guide0107,guide0813,calendar] [--jobs 10]
+    .venv/bin/python work/tools/emu_harness.py hackbugs [--case tutor,coins,...] [--lang cn|en|both]   # open hack-finding records
+    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty,guide0107,guide0813,calendar,hackbugs] [--jobs 10]
     python3 -m unittest discover -s work/tools -p test_emu_harness.py      # pure parts, no ROM needed
 
 A boot plus teleport takes about 15 s; 20 Unown encounters take about 2–3 minutes (headless, ~300 fps).
@@ -397,6 +398,7 @@ from ordinary message commands in their scripts). The WIP build predates later b
 | guide0107 | 9 guide-claim cases (`emu_guide0107.py`: pikachu, electrode, misty_date, azure_flute, koga, giovanni, sabrina, kecleon, promo_flag), see 7 | each keeps its observed verdict (`SUITE_EXPECT`); promo_flag writes the Pokédex seen bit of No. 1335 and doesn't repeat | about 4 min |
 | guide0813 | 12 guide-claim cases (`emu_guide0813.py`: ribbon (Arthur + control), magcargo, white_flute, radio_quiz, fortune, sprout, kiln, whirl, bugsy, dance, morty, blackthorn), see 8 | each keeps its observed verdict (`SUITE_EXPECT`) | about 5 min |
 | calendar | calendar hook table (`emu_calendar.py`, case `table`), see 9 | for all 8 entries: the loaded buffer equals the ROM record the day before and record + configured slot-11 word(s) on the date | 2.5 min |
+| hackbugs | 22 hack-finding cases (`emu_hackbugs.py`, `SUITE_EXPECT`), see 10 | each keeps its observed verdict | about 6 min |
 
   Result (observed): all 10 (5 checks × 2 ROMs) pass, 2 min 13 s wall time with `--jobs 10`. A first run
   before the battery fix failed unown (both ROMs) and palpark (English) on the shared battery file, and one
@@ -405,6 +407,7 @@ from ordinary message commands in their scripts). The WIP build predates later b
   With `guide0107` added (2026-10-06): all 14 pass, 3 min 7 s with `--jobs 14`.
   With `guide0813` added (2026-10-06): all 16 pass, 5 min 17 s with `--jobs 16`.
   With `calendar` added (2026-10-06): all 18 pass, 6 min 1 s with `--jobs 18`.
+  With `hackbugs` added (2026-10-06): all 20 pass, 9 min 54 s with `--jobs 20`.
 
 ### 6. Route 8 Skitty scene (D-0582): observed, the fix holds
 
@@ -591,6 +594,75 @@ build (Oct 5) with the same results. Report: `work/build/harness/calendar/report
   player after the warp). Not investigated; the battle recipe now starts on the first grass pair and gives up
   on a battle it can't flee.
 - Harness fix found here: `MapGrid` read outdoor permissions from the wrong offset (see 1b).
+
+### 10. Open hack-finding records (`emu_hackbugs.py`, 2026-10-06)
+
+`emu_harness.py hackbugs` observes the open hack-finding records of the decision register that make a claim
+about behaviour (scripts, code, data), skipping those already observed (sections 7–9, D-1485/D-1486/D-1487/
+D-1501/D-1523). Same approach and helpers as sections 7 and 8; every case ran on the Chinese ROM and the English
+WIP build (Oct 5) with the same verdict. Screenshots: `work/build/harness/hackbugs/<cn|en>/`; reports
+`report_*.json` there. Evidence was appended to each record's rationale ("Observed in the emulator
+2026-10-06").
+
+New pieces: `run_from_with(h, file, label, pre=[...], anywhere=)` (a few commands of our own, e.g. the special
+var a skipped menu would set (0x800C = the chosen party slot), then a GoTo into the script's bytes; `anywhere`
+loads the file through the script loader, for maps that start a scene on entry such as the Hall of Fame),
+`face_obj` (re-warps until a wandering NPC is still in front), `mon()` (moves, IVs, block-A ability byte,
+party-extension HP and stats), `battle_parties_raw` (foe party in RAM with moves/IVs/form), coins at save
+array 1 +0x24 (`coins`/`set_coins`; script command 119 GetCoinAmount crashes this hack, and the coin commands
+only work after `ScriptOverlayCmd 3 0`), `summary_shot`, `two_forms`, `set_fateful` (block B +0x18 bit 0),
+`battle_turn_named` + `text_sheet` (a turn's text boxes stacked into one image).
+
+| record | claim | case (method) | result |
+|---|---|---|---|
+| D-1305 | Blackthorn tutor teaches Flail | tutor: from L1900 with 0x800C = 0, pupil with 3 / 4 moves | **confirmed**: 175 (抓狂) both paths; the forget screen names it |
+| D-1347 | Dojo "Lightning Whip": Charge on ≤ 3 moves | tutor: from L3446 | **confirmed**: 3 moves → 268 Charge, 4 → 521 Volt Switch, $10,000 both |
+| D-1338 | Rock Tunnel "Signal Beam" tutor gives Pollen Puff | tutor: from L4252 | **confirmed**: 676 both paths, one Dusk Ball taken |
+| D-1408 | Close Combat fee skipped when replacing | tutor: from L4077 | **confirmed**: 3 Rare Candies taken / none |
+| D-1404 | Route 26 "Have it" keeps the Nugget | nugget: talk, menu 1 / 0 | **confirmed** |
+| D-1399 | Friend Ball never taken | friendball: talk, Yes | **confirmed** (still 1 when the scene's battle starts) |
+| D-1425 | TM74 not taken | gyroball: talk, Yes | **confirmed** |
+| D-1415 | 50 coins for $50000 | coins: from L7575 / L7501 | **confirmed** |
+| D-1502 | Lara gives one Heart Scale | lara: from L3524 | **confirmed** |
+| D-1421 | merchant prints a menu label | merchant: from L2891, 4th item | **confirmed** (msg 40) |
+| D-1492, D-1335 | HoF checks S.S. Ticket 456; legendaries respawn | ssticket: file 822 from L154, 456 / 478 held, hide flags set | **confirmed**: 456 → L603, 478 → L175; hide flags cleared |
+| D-1403 | Fuchsia man checks HM04 | hm04: with / without | **confirmed** |
+| D-1444 | Veteran Dawn checks only badge 4 | dawn: badge 4 only / all but 4 | **confirmed** |
+| D-1439 | Uxie Q4 accepts only 14 | uxie: from L1205, each choice and B | **confirmed**; B returns 3 (fails) |
+| D-1334 | Cameron never on Route 34 | cameron: Wed/Thu, 16 badges, warp in | **confirmed** (CheckBadge 18 → 0, flag 638 set) |
+| D-1394 | Diglett's Cave Brock never shown | brock_cave: 17, 18, 19 h | **confirmed** |
+| D-1336 | Route 36 gatehouse line stuck | gatehouse: flag 450 clear / set | **confirmed** (gatehouse only) |
+| D-1424 | Museum Brock sets 1323 | museum: talk | **confirmed** |
+| D-1410, D-1447 | Lex Doubles single; Yellow Singles double | battle_type: send-outs before the first menu | **confirmed** |
+| D-1497, D-1342, D-1498 | trainer IVs; duplicate moves; Deoxys form 4 | trainer: `TrainerBattle t 0 0 0`, foe party in RAM | **confirmed** (HP IV 10/20/31, others iv·31/255; duplicates loaded; form 4 kept, odd small sprite) |
+| D-1341 | stored trainer ability used? | trainer 146 / 376 leads with stored Snow Warning / Drought | **observed**: hail / harsh sunlight on entry, so the stored ability is used |
+| D-1448 | Crystal Onix can learn no TM | crystal_onix: TM13/TM11/TM39 on form 1 and form 0 | **contradicted**: it uses personal 1439's list (Ice Beam yes, Sunny Day no) (D-1565) |
+| D-1443, D-1491 | Darumaka form 1 = base data; evolves into Zen Mode | darumaka: summary, Rare Candy at 34 | **confirmed** |
+| D-1481 | Pancham never evolves | pancham: Lv31 + Umbreon, Rare Candy | **confirmed** |
+| D-1319, D-1318, D-1311 | Volt Tackle recoil; Blast Burn recharge; Lunar Dance | move: scripted WildBattle, text sheets, HP | **observed**: no recoil; no recharge (Hyper Beam control has one); Lunar Dance raises Spe/SpA, no faint |
+| D-1428 | field moves without the move | cut: std 10000, Splash-only party | **confirmed** for Cut (slot 0 read, prompt shown) |
+| D-1332 | National Park gatehouse exit warp | gatehouse_warp: exit / entrance | **confirmed**, latent: player stuck at x 16384, y 59693; entrance tiles blocked |
+| D-1417 | Palkia cabin door | palkia_cabin: walk onto it | **confirmed** |
+| D-1400 | Route 17 Shiny Stone hidden by 1890 | shinystone: 1890 clear / set | **confirmed** (Mt. Moon part static) |
+| D-1412 | Rocky Helmet sets 2104 | rockyhelmet: talk | **confirmed** (flag part) |
+| D-1420 | graffiti loss keeps 1742 | graffiti: doomed party, from @3390, lose, talk | **confirmed** |
+| D-1490 | Gracidea can't change the gift Shaymin | gracidea: GiveMon, Gracidea; control with fateful bit | **confirmed** |
+
+Also marked observed from section 8 runs: D-1440 (morty), D-1407 (satsuki), D-1478 (buena), D-1441 (misty_cape).
+
+Not run, with reasons: D-1339, D-1343, D-1344, D-1345, D-1493, D-1494, D-1427, D-1423 (claims that something
+is never given/placed/triggered: a negative over the whole ROM, static); D-1348–D-1352 (comparisons with the
+author's spreadsheets); D-1393, D-1397, D-1401, D-1405, D-1406, D-1413, D-1416, D-1422, D-1429, D-1431 (shared
+flags/vars whose effect depends on story order); D-1398 (romance mail, needs the partner stages); D-1426
+(species blacklists, hundreds of species); D-1359 (phone), D-1460 (wireless), D-1418 and D-1445 (dead branches,
+static); D-1355, D-1381, D-1475, D-1477, D-1503 and other text-only records.
+
+Harness notes from this round: in a Double Battle `lose_battle` stalls on "has no will to fight" when the
+forced switch offers a fainted slot, so the graffiti case uses `doomed_party`; editing a wild Pokémon's moves at
+the wild finalizer does not hold (the battle reloads them); the summary-screen move picker takes A, A for the
+first move. The battle RNG is not reproducible between runs: in one CN run Blast Burn
+KO'd the Blissey with a critical hit (the judge then says 'unclear' for D-1318), so `move` is not in the suite;
+the D-1318 reading comes from the runs where the turn ended at the command menu (CN once, EN twice).
 
 ### 5. Screen checks on the English WIP build (Tier 3)
 

@@ -12,7 +12,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 - **Can freeze the game:** [Rock Tunnel corner kid loss](#rock-tunnel-corner-kid-loss), [Pokémon Tower Magcargo loss](#pokémon-tower-magcargo-loss), [Department Store Double Battle with one Pokémon](#department-store-double-battle-with-one-pokémon).
 - **Writes to your Pokédex data:** [Out-of-range story records (save data)](#out-of-range-story-records-save-data).
-- **Can take more money or items than it should:** [S.S. Anne TM price](#ss-anne-tm-price), [Sprout Tower offerings](#sprout-tower-offerings), [Fortune-teller's price](#fortune-tellers-price), [Game Corner 500-coin option](#game-corner-500-coin-option), [Charcoal Kiln HM01](#charcoal-kiln-hm01), [Pidgeot loan returns a different Pidgeot](#pidgeot-loan-returns-a-different-pidgeot).
+- **Can take more money or items than it should:** [S.S. Anne TM price](#ss-anne-tm-price), [Sprout Tower offerings](#sprout-tower-offerings), [Fortune-teller's price](#fortune-tellers-price), [Game Corner 500-coin option](#game-corner-500-coin-option), [Charcoal Kiln HM01](#charcoal-kiln-hm01), [Pidgeot loan returns a different Pidgeot](#pidgeot-loan-returns-a-different-pidgeot), [Lightning Whip lesson teaches Charge](#lightning-whip-lesson-teaches-charge).
 - **Lost for good unless you act first:** [Bruno's Pewter City challenge](#brunos-pewter-city-challenge), [Pikachu starters' Charmander quest](#pikachu-starters-charmander-quest), [Virtue trial and the four-leaf clover](#virtue-trial-and-the-four-leaf-clover), [Cerulean burglary deadline](#cerulean-burglary-deadline), [Route 5 shelter raid](#route-5-shelter-raid), [Pokémon Tower Magcargo is missable](#pokémon-tower-magcargo-is-missable), [Misty's Gyarados and the Viridian Gym trials](#mistys-gyarados-and-the-viridian-gym-trials), [Switching sides at the construction clash](#switching-sides-at-the-construction-clash), [Swimmer Marina and the Dragonair delivery](#swimmer-marina-and-the-dragonair-delivery), [Losing on the Celadon roof](#losing-on-the-celadon-roof), [Sitrus Berries and the eating contest](#sitrus-berries-and-the-eating-contest), [Grandma's treats deadlines](#grandmas-treats-deadlines), [Cynthia and Steven in Fuchsia City](#cynthia-and-steven-in-fuchsia-city), [Misty missing from Cerulean Gym](#misty-missing-from-cerulean-gym), [TM14 Blizzard](#tm14-blizzard), [Crystal Onix](#crystal-onix), [Cinnabar graffiti couple](#cinnabar-graffiti-couple), [TM86 Grass Knot](#tm86-grass-knot), [Bikers' red envelope and Big Sis](#bikers-red-envelope-and-big-sis), [Cherrygrove Wooper boy and the clover hunter](#cherrygrove-wooper-boy-and-the-clover-hunter), [Pokémon Academy class and Youngster Ward](#pokémon-academy-class-and-youngster-ward), [Losing to Goh in Union Cave](#losing-to-goh-in-union-cave), [HM08 and Mr. Pokémon's quiz](#hm08-and-mr-pokémons-quiz), [Pewter Museum Brock and the Route 30 Chikorita](#pewter-museum-brock-and-the-route-30-chikorita), [Koume, Sakura and the bug hunt](#koume-sakura-and-the-bug-hunt), [Rocky Helmet and the bug hunt](#rocky-helmet-and-the-bug-hunt), [Purugly quest and the bug hunt](#purugly-quest-and-the-bug-hunt), [Forest of Time during the bug hunt](#forest-of-time-during-the-bug-hunt), [Dream World battles before the old man](#dream-world-battles-before-the-old-man), [Pokéathlon Dome and the Route 36 tree](#pokéathlon-dome-and-the-route-36-tree), [MooMoo Farm Miltank fall sick again](#moomoo-farm-miltank-fall-sick-again), [Burned Tower beasts scene and the expedition leader](#burned-tower-beasts-scene-and-the-expedition-leader), [Jirachi stone and the story counter](#jirachi-stone-and-the-story-counter), [Durin Berries for the Anti-Age Spray](#durin-berries-for-the-anti-age-spray), [Blackthorn Gym Trainers](#blackthorn-gym-trainers).
 - **One chance only (save first):** [Lugia: one chance](#lugia-one-chance), [Uxie, Mesprit and Azelf: one chance](#uxie-mesprit-and-azelf-one-chance), [Raikou: one chance](#raikou-one-chance), [Dialga and Palkia: one chance](#dialga-and-palkia-one-chance), [Giratina after Lance's visit](#giratina-after-lances-visit), [Arceus and Regigigas out of reach](#arceus-and-regigigas-out-of-reach).
 
@@ -76,9 +76,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Friend Ball never taken
 
-**The Apricorn Ball maker never takes the Friend Ball he asks for.** You only need to have one in your Bag, and you keep it.
+**The Apricorn Ball maker never takes the Friend Ball he asks for.** You only need to have one in your Bag, and you keep it. Tested in an emulator: after "Give him a Friend Ball?" → Yes and the whole Nidoran♀ scene, the Friend Ball is still in the Bag.
 
-*Source:* file 170 L165 `HasItem 497` (Friend Ball) with no `TakeItem` anywhere in the file; D-1399.
+*Source:* file 170 L165 `HasItem 497` (Friend Ball) with no `TakeItem` anywhere in the file; D-1399. Emulator: `emu_harness.py hackbugs --case friendball` (both ROMs).
 
 ### Moving in with your partner
 
@@ -216,7 +216,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Veteran Dawn's Badge check
 
-**Veteran Dawn on Route 9 only needs the Marsh Badge.** She tells you to come back once you've "collected a few more" Badges, but the only Badge she checks is the Marsh Badge. Possibly intended. Low priority.
+**Veteran Dawn on Route 9 only needs the Marsh Badge.** She tells you to come back once you've "collected a few more" Badges, but the only Badge she checks is the Marsh Badge. Possibly intended. Low priority. Tested in an emulator: with the Marsh Badge alone she accepts; with every other Badge but that one she refuses.
 
 *Source:* file 190 script 20 L1252 `CheckBadge 4` (badge 4 = Marsh Badge, file 826 `GiveBadge 4`) → L3929; refusal msg 137; battle `TrainerBattle 977` at L5932 (Doubles 977 ×2 at L5992). Object 33 has no hide flag (D-1444).
 
@@ -312,9 +312,15 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Brock in Diglett's Cave
 
-**Brock never appears in Diglett's Cave.** He would need the hour to be 17, 18 and 19 at once. Not confirmed in game.
+**Brock never appears in Diglett's Cave.** He would need the hour to be 17, 18 and 19 at once. Tested in an emulator at 17:30, 18:30 and 19:30 after the final Hall of Fame: he isn't there.
 
 *Source:* file 5 L608 clears his hide flag 610 (object 7) only if `ScrCmd_522` returns 17 **and** 18 **and** 19 (three "≠" jumps to L711) (D-1394). `ScrCmd_522` returns the current hour (observed in an emulator at 0, 6, 7, 12, 18, 19 and 23 o'clock, `emu_harness.py guide0107 --case monday`); across the ROM it is only compared with values 3–22.
+
+### Rock Tunnel Signal Beam tutor
+
+**The Rock Tunnel tutor who asks for a Dusk Ball teaches Pollen Puff, not Signal Beam.** He's the Trainer who thought Signal Beam lights up caves. Every line says Signal Beam, but your Pokémon learns Pollen Puff (a Bug-type special move, 90 power). He takes one Dusk Ball either way. Tested in an emulator: with three moves and with four, the Pokémon learned Pollen Puff, and one Dusk Ball was taken.
+
+*Source:* file 129 script 25 (object 33): `MonHasMove`/`SetMonMove` use move 676 (Pollen Puff) at L4277, L5194 and L5360; the text (142#133–#146) says 信号光线 (Signal Beam, move 324); `TakeItem 13` (Dusk Ball) at L5241 and L5484 (D-1338; `emu_harness.py hackbugs --case tutor`).
 
 ### Rock Tunnel corner kid loss
 
@@ -382,9 +388,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Lara's Pretty Scales
 
-**Lara on Route 14 promises "these Pretty Scales" but gives one Heart Scale.** The Chinese says the same. Cosmetic.
+**Lara on Route 14 promises "these Pretty Scales" but gives one Heart Scale.** The Chinese says the same. Cosmetic. Tested in an emulator: exactly one Heart Scale arrives.
 
-*Source:* bank 344#62 (这几个漂亮鳞片); file 202 L3529 gives item 93 (Heart Scale) ×1.
+*Source:* bank 344#62 (这几个漂亮鳞片); file 202 L3529 gives item 93 (Heart Scale) ×1 (D-1502; `emu_harness.py hackbugs --case lara`).
 
 ### Cynthia and Steven in Fuchsia City
 
@@ -406,15 +412,15 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Fuchsia "Surf TM" man
 
-**The man in the Fuchsia City southwest house asks about the "Surf TM" but checks for HM04 Strength.** His line also talks about moving the big boulder in his house, which is Strength's job. The Chinese has the same slip. Only his line changes; nothing is given. Cosmetic.
+**The man in the Fuchsia City southwest house asks about the "Surf TM" but checks for HM04 Strength.** His line also talks about moving the big boulder in his house, which is Strength's job. The Chinese has the same slip. Only his line changes; nothing is given. Cosmetic. Tested in an emulator: with HM04 in the Bag he says the "Surf TM" line; without it, the pond line.
 
-*Source:* file 810 script 3 @98 `HasItem` item 423 (HM04) → L334 (line 509#6, 冲浪技能机); otherwise msg 5. No item is given on either path. His door is ≈1222,435 (Fuchsia Southwest house), not the rangers' room (D-1403).
+*Source:* file 810 script 3 @98 `HasItem` item 423 (HM04) → L334 (line 509#6, 冲浪技能机); otherwise msg 5. No item is given on either path. His door is ≈1222,435 (Fuchsia Southwest house), not the rangers' room (D-1403; `emu_harness.py hackbugs --case hm04`).
 
 ### Route 17 Shiny Stone
 
-**The Shiny Stone on Route 17 never appears.** Its item ball is removed during the Mt. Moon roadblock scene, long before you can reach Route 17, and nothing brings it back.
+**The Shiny Stone on Route 17 never appears.** Its item ball is removed during the Mt. Moon roadblock scene, long before you can reach Route 17, and nothing brings it back. Tested in an emulator: with the mark the Mt. Moon scene leaves, the ball isn't there; without it, the ball is there and gives the Shiny Stone. That the Mt. Moon scene sets the mark is read from its script.
 
-*Source:* object 21 at 1143,402 (file 209 script 4, item 107) is hidden by flag 1890, which the Mt. Moon roadblock scene sets (file 9 @5522) and nothing clears (D-1400).
+*Source:* object 21 at 1143,402 (file 209 script 4, item 107) is hidden by flag 1890, which the Mt. Moon roadblock scene sets (file 9 @5522) and nothing clears (D-1400; `emu_harness.py hackbugs --case shinystone`).
 
 ### Colette and the Cycling Road record
 
@@ -431,6 +437,12 @@ These entries can freeze the game, cost you something, or close a quest or battl
 ## Saffron City to Cinnabar Island
 
 [Quests on this page](05-saffron-cinnabar.md)
+
+### Lightning Whip lesson teaches Charge
+
+**Ma Baoguo's "Lightning Whip" lesson at the Saffron Fighting Dojo teaches Charge to a Pokémon with a free move slot.** Only a Pokémon that already knows four moves, and forgets one, learns Volt Switch. Either way he says it learned the Lightning Whip and takes $10,000. Teach it to a Pokémon that knows four moves. Tested in an emulator: a Pikachu with three moves learned Charge, one with four moves learned Volt Switch; $10,000 was taken both times.
+
+*Source:* file 829 L4309: `CountMonMoves` ≤ 3 → L6363 `SetMonMove` move 268 (Charge, the move's old v3 number); four moves → @4437 move 521 (Volt Switch); the retry path (L6641, @6748) also uses 268 (D-1347; `emu_harness.py hackbugs --case tutor`).
 
 ### TM14 Blizzard
 
@@ -488,15 +500,15 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Cinnabar graffiti couple
 
-**Losing to the Cinnabar graffiti couple counts as letting them carve their names.** You can't retry. Save before the battle.
+**Losing to the Cinnabar graffiti couple counts as letting them carve their names.** You can't retry. Save before the battle. Tested in an emulator: after the loss you wake up in the Pokémon Center, and the couple then only say their names are carved into the rock.
 
-*Source:* flag 1742 is set before the Double Battle (file 812 @3390, trainers 982/983) and only cleared on a win (L3453); a loss whites you out (L4661) and the couple then take the "carved" branch (L1394 → L3216) (D-1420).
+*Source:* flag 1742 is set before the Double Battle (file 812 @3390, trainers 982/983) and only cleared on a win (L3453); a loss whites you out (L4661) and the couple then take the "carved" branch (L1394 → L3216) (D-1420; `emu_harness.py hackbugs --case graffiti`, both ROMs).
 
 ### Choice-item merchant's goodbye
 
-**"Nothing, thanks" at the Saffron Choice-item merchant shows a menu label instead of his goodbye.** You see "The Pokémon League's reforms" instead of "If you're interested, come back next time!" The same happens if you back out of the menu. Cosmetic.
+**"Nothing, thanks" at the Saffron Choice-item merchant shows a menu label instead of his goodbye.** You see "The Pokémon League's reforms" instead of "If you're interested, come back next time!" The same happens if you back out of the menu. Cosmetic. Tested in an emulator.
 
-*Source:* file 824 L2989 shows 521#40 instead of 521#23 after menu item 22 (D-1421).
+*Source:* file 824 L2989 shows 521#40 instead of 521#23 after menu item 22 (D-1421; `emu_harness.py hackbugs --case merchant`).
 
 ## Sevii Islands and Indigo Plateau
 
@@ -568,7 +580,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Yellow's Champion room Singles
 
-**Yellow's "Singles" in the Champion's room is a Double Battle.** When you call Yellow to the Champion's room with "Call a Trainer", both options give the same Double Battle. Yellow's Singles on Mt. Silver is correct.
+**Yellow's "Singles" in the Champion's room is a Double Battle.** When you call Yellow to the Champion's room with "Call a Trainer", both options give the same Double Battle. Yellow's Singles on Mt. Silver is correct. Tested in an emulator: "Singles" sends out two of her Pokémon at once.
 
 *Source:* D-1447. File 821 L3742 and L3791: both menu choices start `TrainerBattle 951, 951`. Blue and Gold use `x, 0` for singles, and on Mt. Silver (file 107 L6518) Yellow's singles uses `951, 0`.
 
@@ -598,7 +610,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Route 26 Nugget
 
-**The Route 26 Phanpy Trainer gives you TM41 for your Nugget but lets you keep the Nugget.** This happens when you choose to give it to him; selling it to him works normally. In your favour.
+**The Route 26 Phanpy Trainer gives you TM41 for your Nugget but lets you keep the Nugget.** This happens when you choose to give it to him; selling it to him works normally. In your favour. Tested in an emulator: "Have it" gives TM41 and the Nugget stays in the Bag; "Sell" takes it and pays $30,000.
 
 *Source:* file 218: the give path (L1551) gives item 368 (TM41) and sets flag 1111 but has no `TakeItem`; the sell path (L1522) takes item 92 (D-1404).
 
@@ -704,13 +716,13 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Pewter Museum Brock and the Route 30 Chikorita
 
-**Talking to Brock in the Pewter Museum can make the Route 30 Chikorita disappear.** If you talk to him after the Cherrygrove orphanage scene but before the Route 30 Chikorita scene, while his siblings' quiz is unfinished, the Chikorita is gone for good. Do the Route 30 scene first.
+**Talking to Brock in the Pewter Museum can make the Route 30 Chikorita disappear.** If you talk to him after the Cherrygrove orphanage scene but before the Route 30 Chikorita scene, while his siblings' quiz is unfinished, the Chikorita is gone for good. Do the Route 30 scene first. Tested in an emulator: talking to him sets the record that hides the Chikorita.
 
 *Source:* flag 1323 hides the Chikorita and its Trainer (Route 30 objects 25/26) and marks the scene done (file 227 L1026, set at L4192). It is cleared once by file 851 @492 and set by Brock on every talk while his siblings' quiz isn't finished (file 753 L683/L3496 → L3506) (D-1424).
 
 ### Gyro Ball TM kept
 
-**The Violet City Forretress kid lets you keep the Gyro Ball TM.** In your favour.
+**The Violet City Forretress kid lets you keep the Gyro Ball TM.** In your favour. Tested in an emulator: after you hand it over, TM74 is still in the Bag.
 
 *Source:* file 854 L535 `HasItem 401` (TM74); the hand-over L3872–L3895 only sets flag 1850; the file has no `TakeItem 401` (D-1425).
 
@@ -822,7 +834,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Rocky Helmet and the bug hunt
 
-**Taking the Rocky Helmet in Ilex Forest before the bug hunt is over spoils the hunt.** The Helmet man is tied to the hunt's Ariados. If you take the Helmet first, the Ariados rock does nothing and the hunt counts the Ariados without crediting you. The hunt can still be finished, but you can deal with at most two bugs yourself, so you miss the top reward. If you find the Ariados first, he won't give the Helmet until the hunt ends. A Helmet taken mid-hunt means you can get a second one later. Finish the bug hunt first.
+**Taking the Rocky Helmet in Ilex Forest before the bug hunt is over spoils the hunt.** The Helmet man is tied to the hunt's Ariados. If you take the Helmet first, the Ariados rock does nothing and the hunt counts the Ariados without crediting you. The hunt can still be finished, but you can deal with at most two bugs yourself, so you miss the top reward. If you find the Ariados first, he won't give the Helmet until the hunt ends. A Helmet taken mid-hunt means you can get a second one later. Finish the bug hunt first. The Helmet man's part was tested in an emulator (his gift sets the Ariados record); the hunt itself wasn't replayed.
 
 *Source:* file 92 script 20 checks and sets flag 2104 (@985/@1056, gives item 324), the Ariados "done" flag: the Honey spot ignores you once it's set (L1927 → L4344) without adding to your count, but every end-of-hunt check (L4490, L4608, L9322, L9722) only needs 2104, and Skorupi's rock also resolves a still-hidden Ariados (L9976–L10004), so the hunt ends with at most two bugs credited (no top reward, PP Max + Heart Scale). 2104 is cleared at the hunt end (L5709) (D-1412).
 
@@ -840,7 +852,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Game Corner 500-coin option
 
-**At the raised Game Corner price, "500 coins for $50000" gives only 50 coins.** Choose "50 coins for $5000" instead, as often as you need.
+**At the raised Game Corner price, "500 coins for $50000" gives only 50 coins.** Choose "50 coins for $5000" instead, as often as you need. Tested in an emulator: $60,000 → $10,000 for 50 coins; the $5,000 option gives the same 50 coins.
 
 *Source:* file 903 L6374–L6455 (menu 94/95) → L7575: `HasEnoughMoneyImmediate 50000`, `SubMoneyImmediate 50000`, `GiveCoins 50` (L7596–L7623) (D-1415).
 
@@ -1094,13 +1106,13 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Close Combat tutor's fee
 
-**The Close Combat tutor is free if your Pokémon has to forget a move.** He still says he'll take the 3 Rare Candies. In your favour.
+**The Close Combat tutor is free if your Pokémon has to forget a move.** He still says he'll take the 3 Rare Candies. In your favour. Tested in an emulator: with a free move slot he took 3 Rare Candies; when a move was replaced he took none.
 
 *Source:* file 872 checks them at @3410 but takes them only on the free-slot path (@5159); the forget-a-move path ends at L5393 with the same line and no `TakeItem` (D-1408).
 
 ### Lex's Doubles
 
-**Lex's "Doubles" on Route 41 is a Single Battle.** Both options give the same Single Battle; Doubles only adds a party-size check.
+**Lex's "Doubles" on Route 41 is a Single Battle.** Both options give the same Single Battle; Doubles only adds a party-size check. Tested in an emulator: "Doubles" sends out one Pokémon.
 
 *Source:* file 960 script 2: menu L583–L604; both paths start `TrainerBattle 823, 0` (Swimmer Lex, L2332/L2392); Doubles adds `GetPartyCount` (L2368) (D-1410).
 
@@ -1116,9 +1128,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Lake guardian's quiz answers
 
-**Two of the lake guardian's quiz answers look wrong.** For the Koffing question, both 0 and 2 fit (10 Mankey, Koffing and Mareep with 26 legs allows 0–3 Koffing), but only 2 is accepted. The Pikachu question accepts 14, although four moves can be learned in 24 orders, and 24 isn't one of the options (12, 14, 16, 18). The Chinese may carry a hidden rule. Answer 2 and 14.
+**Two of the lake guardian's quiz answers look wrong.** For the Koffing question, both 0 and 2 fit (10 Mankey, Koffing and Mareep with 26 legs allows 0–3 Koffing), but only 2 is accepted. The Pikachu question accepts 14, although four moves can be learned in 24 orders, and 24 isn't one of the options (12, 14, 16, 18). The Chinese may carry a hidden rule. Answer 2 and 14. The Pikachu question was tested in an emulator: only 14 goes on; 12, 16, 18 and the B button (which picks the last choice, 18) fail.
 
-*Source:* bank 0618#8–12 and #28–32; file 935 L1111–L1198 (Q4: D-1439).
+*Source:* bank 0618#8–12 and #28–32; file 935 L1111–L1198 (Q4: D-1439; `emu_harness.py hackbugs --case uxie`, the value read at L1260).
 
 ### Uxie, Mesprit and Azelf: one chance
 
@@ -1156,11 +1168,17 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 *Source:* file 937 script 7: ribbon branch when var 0x4094 = 7 and weekday 6 (L197 → L1611 → L2751); L2774 `GiveRibbon` 64, `PlayFanfare [20]` at L2780, opcode 2009 at @2784. Wesley: file 934 L5643 `GiveRibbon` 61, same bytes (@5653). Both observed with `emu_harness.py guide0813 --case ribbon` (Wesley on a calm Wednesday, flag 202 and var 0x40B2 = 5). D-1331, D-1558; work/notes/softlock_audit.md.
 
+### Ice Path Darumaka and Zen Mode Darmanitan
+
+**The Darumaka in Ice Path (mornings and daytime) evolve into a Darmanitan stuck in Zen Mode.** The Darumaka themselves look and battle like ordinary Fire-type Darumaka, but at Lv. 35 they become Zen Mode Darmanitan (Fire/Psychic, low Attack, high Sp. Atk), and nothing changes them back outside battle. Tested in an emulator.
+
+*Source:* encounter record 60 uses Darumaka form 1, which the form table doesn't define (only form 2 → 1173), so it uses the base form's data (D-1443); evolving keeps form 1, and Darmanitan form 1 is Zen Mode (personal 1174) (D-1491). Emulator (`emu_harness.py hackbugs --case darumaka`): a form-1 Darumaka's summary shows a normal Darumaka, Fire type; after a Rare Candy at Lv. 34 it is Darmanitan form 1 with Zen Mode's sprite and types and Atk 28 / Sp. Atk 103 at Lv. 35.
+
 ### Play Rough tutor teaches Flail
 
-**The Blackthorn "Play Rough" tutor teaches Flail.** The runaway Dragonair Trainer's father promises Play Rough, and every line says Play Rough, but your Pokémon learns Flail.
+**The Blackthorn "Play Rough" tutor teaches Flail.** The runaway Dragonair Trainer's father promises Play Rough, and every line says Play Rough, but your Pokémon learns Flail. Tested in an emulator: a Pokémon with three moves and one with four both learned Flail; the forget-a-move screen already shows Flail as the new move.
 
-*Source:* file 944 script 8: `MonHasMove`/`SetMonMove` use move 175 (Flail; Play Rough is 583) at L1925 and L3461 (D-1305; 626#62).
+*Source:* file 944 script 8: `MonHasMove`/`SetMonMove` use move 175 (Flail; Play Rough is 583) at L1925, L3461 and L3619 (D-1305; 626#62). Emulator: `emu_harness.py hackbugs --case tutor`, both ROMs.
 
 ### Gallade's Berry Juice
 
@@ -1212,7 +1230,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Palkia's space cabin
 
-**The cabin in Palkia's space can't be entered.** So its Abra man and Cynthia scenes never play, and the Mystri Stage Arceus-circle scene can't be seen. Harmless.
+**The cabin in Palkia's space can't be entered.** So its Abra man and Cynthia scenes never play, and the Mystri Stage Arceus-circle scene can't be seen. Harmless. Tested in an emulator: walking into the cabin door does nothing.
 
 *Source:* zone 521's cabin door (20,25 → zone 523) has no door behaviour and 20,26 is blocked; no script warps in (D-1417, from the map's collision data). File 132's Cynthia (object 0, hide flag 733) would also need 733 cleared: new game (file 149 L464) sets 732, not 733, and 733 is set in the Ruins of Alph (file 53 L752); only file 132 itself clears it. File 131 scripts 4–6 also need an event Arceus as your only Pokémon.
 
@@ -1252,9 +1270,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Field moves without the move
 
-**Surf, Waterfall and the other field moves work without a Pokémon that knows them.** You only need the Badge; your first healthy Pokémon is used. The party menu still only lists moves a Pokémon knows. This is an intended HM-free feature, not itself a bug. The obstacle behavior is verified in the game code; every field-move and party-menu path has not been replayed.
+**Surf, Waterfall and the other field moves work without a Pokémon that knows them.** You only need the Badge; your first healthy Pokémon is used. The party menu still only lists moves a Pokémon knows. This is an intended HM-free feature, not itself a bug. Tested in an emulator for Cut: with the Cascade Badge and a party in which nobody knows Cut, a Cut tree still offers to cut. The other field moves are read from the game code.
 
-*Source:* the hack's script command 141 (`GetPartySlotWithMove`, handler 0x0204C8D4) returns the first healthy non-Egg slot; the water check (ov1 0x021E65E4) only needs the Rainbow Badge and the Waterfall check (ov1 0x021E5C86) always passes (D-1428). Not re-checked in this review (code analysis).
+*Source:* the hack's script command 141 (`GetPartySlotWithMove`, handler 0x0204C8D4) returns the first healthy non-Egg slot; the water check (ov1 0x021E65E4) only needs the Rainbow Badge and the Waterfall check (ov1 0x021E5C86) always passes (D-1428). Emulator (`emu_harness.py hackbugs --case cut`): the Cut prompt (std script 10000) reads slot 0 with a Splash-only party, and slot 2 with the lead at 0 HP; it never reads 6.
 
 ### Forest of Time during the bug hunt
 
@@ -1268,9 +1286,18 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 *Source:* map 492 is inside the original game's Ruins of Alph encounter check range (ov2 0x02248420: maps 490–492, flags 2423–2426) (D-1430). Observed (`emu_harness.py guide0813 --case island_forest`, both ROMs): 400 steps on two tall-grass tiles at 46,33 with flags 2423–2426 clear gave 4–8 wild battles (Electrike, Seedot, Wurmple, Meditite, Carnivine, Lotad, Surskit, Cherubi), as many as with flag 2423 set. Water encounters weren't tried (D-1562).
 
+### Moves that work differently
+
+**A few moves behave differently from the official games.** These may be intended changes by the hack; they are listed so you know what to expect. All tested in an emulator:
+- **Volt Tackle** does no recoil damage (Double-Edge still does).
+- **Blast Burn** doesn't need a recharge turn; you can act again on the next turn (Hyper Beam still needs one). Frenzy Plant, Hydro Cannon and Rock Wrecker use the same move data, but weren't tried.
+- **Lunar Dance** doesn't make the user faint; it raises the user's Speed and Sp. Atk instead.
+
+*Source:* D-1319 (Volt Tackle: recoil effect, recoil value 0), D-1318 (Blast Burn, Hydro Cannon, Frenzy Plant, Rock Wrecker: recharge effect without the recharge flag), D-1311 (Lunar Dance: Sp. Atk/Speed +1 fields). Emulator (`emu_harness.py hackbugs --case move`, both ROMs): a Lv. 100 user against a wild Pokémon; Volt Tackle KO'd a Magikarp with no HP lost (Double-Edge cost 4 HP); after Blast Burn the next command menu came after one Blissey attack, after Hyper Beam after two; Lunar Dance printed "Speed rose" and "Sp. Atk rose" and the user stayed in.
+
 ### Evolutions that cannot happen
 
-**A few Pokémon have an evolution method that the game never checks, so they can't evolve that way.** Pancham never becomes Pangoro, and Gimmighoul, Kubfu, Galarian Yamask, White-Striped Basculin, Pawmo, Rellor and Finizen never evolve at all through the evolution their data gives them. Galarian Farfetch'd can't become Sirfetch'd by landing critical hits; a regular Farfetch'd still evolves into Sirfetch'd at Lv 40. Eevee can't become Leafeon at a Moss Rock and Nosepass can't become Probopass in a magnetic field, but a Leaf Stone and a Thunder Stone still work. Most of these Pokémon can't be met in the game anyway. Each Pokémon's page (for example [Eevee](/pokemon/eevee/#evolution)) marks these as not possible and lists any method that still works. Verified in the game code; not tried in game.
+**A few Pokémon have an evolution method that the game never checks, so they can't evolve that way.** Pancham never becomes Pangoro, and Gimmighoul, Kubfu, Galarian Yamask, White-Striped Basculin, Pawmo, Rellor and Finizen never evolve at all through the evolution their data gives them. Galarian Farfetch'd can't become Sirfetch'd by landing critical hits; a regular Farfetch'd still evolves into Sirfetch'd at Lv 40. Eevee can't become Leafeon at a Moss Rock and Nosepass can't become Probopass in a magnetic field, but a Leaf Stone and a Thunder Stone still work. Most of these Pokémon can't be met in the game anyway. Each Pokémon's page (for example [Eevee](/pokemon/eevee/#evolution)) marks these as not possible and lists any method that still works. Verified in the game code; tested in an emulator for Pancham: a Pancham that reaches Lv. 32 with a Dark-type in the party stays a Pancham.
 
 *Source:* D-1481. Evolution table `a/0/3/4` (10 slots × 6 bytes), evolution check arm9 0x020700FC: in the level-up switch methods 31–36 fall through to "no evolution" and methods 38+ fail the bound check (`cmp r0, #0x25`); methods 24–26 compare a map evolution code that is always 0 (stub 0x0203AAA0, copied into the battle setup at 0x020511B8). Trade context handles only methods 5–6, item use only 7, 16, 17.
 
@@ -1279,7 +1306,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 **A few items and forms exist in the game's data but can't be obtained.** Read from the game code; not tried in game.
 - **TM46 (Thief):** its item ball is never placed on a map.
 - **Flapple, Appletun and Alcremie:** Applin needs a Tart Apple or Sweet Apple and Milcery a Sweet, and none of these items can be obtained.
-- **Shaymin's Sky Forme:** the Gracidea only works on an event Shaymin, and the Shaymin from the Forest of Time isn't one.
+- **Shaymin's Sky Forme:** the Gracidea only works on an event Shaymin, and the Shaymin from the Forest of Time isn't one (tested in an emulator: the Gracidea does nothing to it; on the same Shaymin marked as an event Pokémon it works).
 - **Unown letters:** every wild Unown comes out as A (tested in an emulator: 65 wild Unown, all A).
 
 *Source:* D-1339 (TM46 item ball, std 7136 unused), D-1493 (Tart Apple, Sweet Apple, Sweets have no source), D-1490 (Gracidea check arm9 0x02071024 needs the fateful flag), D-1487 (wild Unown form written back at ov2 0x02248AD4).
