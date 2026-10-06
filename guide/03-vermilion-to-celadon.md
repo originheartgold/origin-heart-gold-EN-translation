@@ -145,29 +145,35 @@ Gifts both sides get ([Vermilion City: after the construction-site clash](02-pew
 
 **Where:** on board the S.S. Anne, after the boarding speech. The girl with the Teddiursa and her grandfather are in the first north-west cabin (1F north-west rooms, the door at the top left of the hall). The cook is in the kitchen on B1F: take the stairs at the top middle of the hall down, and he's a few steps to the right, next to the fridge. The Captain is in the captain's cabin (1F, far east door).
 
-**Who gets it / when:** everyone. You need it to move the story on: the party (and the hijack after it) starts only once you've **given the girl Honey and met the Captain**.
+**Who gets it / when:** everyone. You need it to move the story on: the party (and the hijack after it) starts only when you give the girl Honey **after you've battled the old man in the main hall** (the "old boy", west side of the hall, near Blue). Tested in an emulator.
+
+**Order matters: you can get stuck on the ship.** From the moment you board, the ship behaves as if the party had already started: the party guests stand in the main hall, the hall shop is open, the Captain only says the party has started, and Blue offers a battle. The party is announced only if you give the girl the Honey after the old man's battle. Two orders leave the story stuck for good, with no way off the ship (the sailor at the exit doesn't move, and losing a battle sends you back to the hall):
+- giving the girl the Honey **before** battling the old man;
+- talking to **Blue** in the hall before you've given the Honey (talking to him starts a battle, and after it the girl only thanks you for "the honey").
+
+Save before you board, and follow the steps below in this order.
 
 **How it works:**
-1. Talk to the girl. Her Teddiursa won't eat the ship's food and she asks you to get **Honey** from the kitchen.
-2. The cook on B1F has Honey but has run out of salt. He asks for salt in exchange. (He only asks once the girl has asked you for Honey; before that he just mutters about the salt.)
-3. Get one **Shoal Salt**. There are three ways:
-   - **Blue** (in the main hall, 1F west) gives you one free, but **only if you're carrying less than $6000 and have no Shoal Salt in your Bag**, and only after the cook has asked for salt. With $6000 or more he just talks about the party. Green/Red only says "ask Blue". Blue's offer uses the same "party not started yet" check as the Captain's HM01: tested in an emulator, both hand over their item in that state and neither does without it. In the same test, boarding from Vermilion Harbor did not put the ship into that state: the Captain said the party had already started and Blue offered a battle instead of the salt. When the game switches to it before the party is still open.
-   - The merchant in the north-west rooms (lower-right cabin) sells one for **$6000** ("four times the price"), also only after the cook has asked.
-   - Any Honey you already carry also works. The girl only checks that you have Honey, so you can skip the salt step entirely.
-4. Give the Shoal Salt to the cook → **Honey**.
-5. Give the Honey to the girl ("Give away the Honey?" → Yes).
-6. Talk to the Captain in his cabin: he gives you **HM01 (Cut)**.
-7. When both 5 and 6 are done, the party is announced.
+1. Battle the old man in the main hall ("Ha ha, here it comes! A Trainer who dares to challenge this old boy!"). Win or lose, it counts, but a loss whites you out to the top of the hall. Don't talk to Blue yet.
+2. Talk to the girl. Her Teddiursa won't eat the ship's food and she asks you to get **Honey** from the kitchen.
+3. The cook on B1F has Honey but has run out of salt. He asks for salt in exchange. (He only asks once the girl has asked you for Honey; before that he just mutters about the salt.)
+4. Get one **Shoal Salt**:
+   - the merchant in the main hall sells it for **$1500** (his shop is open from the start; see below);
+   - the merchant in the north-west rooms (lower-right cabin) sells one for **$6000** ("four times the price"), only after the cook has asked;
+   - the old street merchant in Vermilion sells it for $2,000 before you board;
+   - any Honey you already carry also works: the girl only checks that you have Honey, so you can skip the salt step entirely.
+5. Give the Shoal Salt to the cook → **Honey**.
+6. Give the Honey to the girl ("Give away the Honey?" → Yes). The party is announced, and her grandfather gives you a **Water Stone** on the way to the hall.
 
-**Reward:** HM01 from the Captain; **Water Stone** from the grandfather.
+**Reward:** **Water Stone** from the grandfather.
 
-**The Water Stone is missable.** If you meet the Captain *first* and then give the Honey, the grandfather hands over the Water Stone automatically. If you give the Honey *first*, you must talk to the grandfather yourself **before** you see the Captain. Meeting the Captain starts the party, and the grandfather leaves the cabin for good. Safest order: Captain first, Honey second.
+**HM01 (Cut) is not given on this voyage.** The Captain in his cabin never hands it over in a normal game: he only says the party has already started. Tested in an emulator. You get HM01 later from the **new captain of the S.S. Anne**: after Sabrina gives you her Badge in Saffron City, board the ship at Vermilion Harbor and talk to him in the captain's cabin. He gives it to you as his "1000th visitor" if you don't have it. You don't need Cut before then: the game's only Cut trees (Route 10) can be cut with the Cascade Badge even if nobody in your party knows Cut (tested in an emulator).
 
-*Source:* file 161 (scripts 1, 3, 4; L1235, L1323, L1436, L1845), file 162 (script 4, L1551, L2797), file 156 (script 22, L4568, L6651; script 24, L6710), file 157 (script 5, L514). Cook on B1F ≈30,4 (north side, middle; the B1F stairs arrive at ≈24,3). Blue's free salt (file 156 script 22) needs flag 1422 (the cook has asked), less than $6000, no Shoal Salt (item 70) in the Bag, and flag 1440 set (the pre-party state). No script command sets 1440 before the first voyage (only 156 @6350, after the hijack; all script files scanned). The Captain's HM01 (157 script 5, @124) needs the same flag, so it must be set on boarding outside the scripts. The cook asks for salt only after the girl's request (162 script 4 checks flag 1421, set at 161 @227). The salt merchant (file 161 script 3) also sells only after 1422. Emulator (`emu_harness.py guide0107 --case ssanne`): a real boarding (zone 387 sailor, file 155 script 1, `ScrCmd_723` → zone 307), the arrival scene and the Captain's speech (coord script 5) leave 1440 clear (a fresh new game has it clear too); the Captain then shows 253#62 and Blue (with 1422, under $6000) 252#42/43. With 1440 set at that point, the Captain gives HM01 (253#55–#59) and Blue the salt (252#48). Only 156 @6350 (the hijack evacuation) sets 1440 (all script files scanned); question D-1549.
+*Source:* file 161 (scripts 1, 3, 4; L1235, L1323, L1436, L1845), file 162 (script 4, L1551, L2797), file 156 (script 22, L4502, L4568, L6651; script 23, L4604), file 157 (script 5, @124, L514; script 6, L606). Cook on B1F ≈30,4 (north side, middle; the B1F stairs arrive at ≈24,3). Flag 1440 ("before the party") is clear at new game and on boarding; only the hijack evacuation sets it (156 @6350, plus the hide flags of its 14 guest objects, @6362–@6430), and both party starts clear it (157 L550, 161 L1901); all script files scanned. With it clear, the Captain (157 script 5) shows 253#62 and gives no HM01, Blue (156 script 22) goes to his party battle L4502, which sets 1423 ("Honey given") before battling, and the old boy (script 23) to L4604, which sets 1424 ("met the Captain"). The girl's Honey script (161 L1436) sets 1423 and announces the party (L1535 → L1845: Water Stone, flags cleared, var 0x40A4 = 3, 0x40A5 = 0) only when 1424 is set; otherwise it ends (L1745). Nothing else announces the party, and the hall's party trigger (156 script 18, var 0x40A5 == 0) and the waiter (hide flag 1085, set on arriving in Vermilion) wait for it. The exit sailor (object 1) blocks the one-tile gangway; party-battle losses warp to the hall (L5022). After the hijack the Captain can't be reached: the cabin's Archie trigger covers the door (8–10,10–11) and he is hidden afterwards (157 @1496). New captain: zone 308 object 14, hide flag 1091 (set on arriving in Vermilion, file 774 @1255; cleared by Sabrina's HM02 scene, file 826 @936), `HasItem 420` → L606 HM01. Cut trees: Route 10 objects 3 and 8 (std 10000), the only ones in the game. Emulator (`emu_harness.py vqueue --case ssanne_story,new_captain,cut_yes`, CN ROM and EN build): from the Vermilion arrival state, real boarding, arrival scene and speech; a watch on flag 1440 saw no write. Old boy first, then Honey: announcement, Water Stone, var 0x40A4 = 3, Archie's party speech on the hall trigger; the Captain 253#62. Honey first: no announcement; the Captain, the old boy, the girl, the grandfather (Water Stone) and Blue (49) then change nothing, the hall trigger stays silent and the exit is blocked. Blue first: the girl only thanks you, nothing starts. The new captain gives HM01 without one in the Bag; Cut works with a Splash-only party and no HM01 (D-1549).
 
 ## S.S. Anne: the party battles and the missing Teddiursa
 
-**When:** as soon as the party starts (see above). The party guests are in the 1F main hall (west side).
+**When:** as soon as the party is announced (see above; the guests already stand in the 1F main hall, west side, from the moment you board).
 
 **How it works:**
 1. The waiter with the "special Pokémon food" (hall, far west) won't serve until you've had **all six party battles**:
@@ -187,7 +193,7 @@ Gifts both sides get ([Vermilion City: after the construction-site clash](02-pew
 
 **Notes:** your Pokémon didn't eat the food, so you and Green/Red fight Team Rocket in three Multi Battles in a row. Losing one whites you out to the top of the main hall, next to the stairs down to B1F, and you try again.
 
-**Ship shop during the party:** the merchant in the hall sells Shoal Salt $1500, TM21 Frustration $4000 (the menu calls it TM63; see [Known issues](known-issues.md#vermilion-city-to-celadon-city)), Liechi Berry $800 and Ganlon Berry $800. This is the only time these berries are on sale here.
+**Ship shop:** from the moment you board until the hijack, the merchant in the hall sells Shoal Salt $1500, TM21 Frustration $4000 (the menu calls it TM63; see [Known issues](known-issues.md#vermilion-city-to-celadon-city)), Liechi Berry $800 and Ganlon Berry $800. This is the only time these berries are on sale here. Tested in an emulator: he stands in the hall right after boarding.
 
 *Source:* file 156 (scripts 30–32, 34, 40; L4502, L4604, L4721, L4887; script 20 shop L4270–L4444), file 162 (script 5, script 6), file 158 (script 5). Blue (flag 1423, @4524), the old boy (1424, @4622) and the pre-party cabin battle (file 158, flag 1517) are set before the battle or without a result check. Hijack loss: L5829 whites out and warps to 1F ≈24,3.
 
