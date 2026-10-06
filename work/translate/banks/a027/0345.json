@@ -601,10 +601,10 @@
   {
    "id": 74,
    "zh": "对不起,对不起,我有眼不识泰山,{NEWLINE}请您不要再打我的蛋蛋了。{CLEAR}我们两个被马戏团赶出来后{CLEAR}就一路相依为命至此,{CLEAR}利用蛋蛋做坏事是我不对,{CLEAR}拜托您不要再打它了。",
-   "en": "I’m sorry, I’m sorry! I didn’t realize{NEWLINE}who I was dealing with! Please stop{CLEAR}beating my eggs! My Exeggcute and I{CLEAR}have stuck together ever since the{CLEAR}circus threw us out. Using Exeggcute{CLEAR}for crime was my fault. Please don’t hit{CLEAR}it anymore.",
+   "en": "I’m sorry, I’m sorry! I didn’t realize{NEWLINE}who I was dealing with! Please stop{CLEAR}busting my eggs! My Exeggcute and I{CLEAR}have stuck together ever since the{CLEAR}circus threw us out. Using Exeggcute{CLEAR}for crime was my fault. Please don’t hit{CLEAR}it anymore.",
    "status": "draft",
    "origin": "agent",
-   "notes": "蛋蛋 = Exeggcute and slang for ‘balls’; the zh double meaning is kept lightly with ‘beating my eggs’."
+   "notes": "蛋蛋 = Exeggcute and slang for ‘balls’; the zh double meaning is kept with ‘busting my eggs’ (echoes ‘busting my balls’; D-0692, D-0627)."
   },
   {
    "id": 75,

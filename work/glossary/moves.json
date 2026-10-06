@@ -1418,13 +1418,6 @@
   "source": "pokeapi-zh-Hans",
   "confidence": "high"
  },
- "束缚": {
-  "en": "Disable",
-  "id": 50,
-  "source": "fuzzy",
-  "confidence": "high",
-  "note": "sheet index -> official #50 (official zh-Hans 定身法; name sim 0.00)"
- },
  "溶解液": {
   "en": "Acid",
   "id": 51,

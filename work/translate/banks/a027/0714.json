@@ -3822,10 +3822,10 @@
   {
    "id": 477,
    "zh": "我是从北边来的{NEWLINE}重码期待的训练师。",
-   "en": "I’m a Trainer from the{NEWLINE}north with high hopes.",
+   "en": "I’m the much-anticipated Trainer{NEWLINE}from the north.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "zh 重码期待的训练师: 重码 is garbled, 期待的训练师 = the anticipated/promising Trainer (US 0724#477 'a new ray of hope from the land of the midnight sun') (D-1370)."
   },
   {
    "id": 478,
@@ -7086,10 +7086,10 @@
   {
    "id": 885,
    "zh": "哈,嗯之类的,{NEWLINE}对小孩子不管用么？",
-   "en": "Ha...{NEWLINE}My usual tricks don’t work on kids?",
+   "en": "Ooh... Mmm... Stuff like that{NEWLINE}doesn’t work on little kids?",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 哈,嗯之类的 looks garbled"
+   "notes": "zh 哈,嗯之类的 = her sultry noises (US 0724#885 'My ladylike charms don’t mean a thing to a little kid...'); kept flirtatious (D-1261, D-0627)"
   },
   {
    "id": 886,

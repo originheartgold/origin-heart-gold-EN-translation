@@ -1669,13 +1669,6 @@
   "confidence": "low",
   "note": "custom: sets Tailwind on entry"
  },
- "神秘守护": {
-  "en": "Wonder Guard",
-  "id": 25,
-  "source": "fuzzy",
-  "confidence": "high",
-  "note": "sheet index -> official #25 (official zh-Hans 神奇守护; name sim 0.75)"
- },
  "瑜伽力量": {
   "en": "Pure Power",
   "id": 74,

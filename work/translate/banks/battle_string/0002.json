@@ -958,18 +958,18 @@
   {
    "id": 119,
    "zh": "挥动手指后，使出了{VAR:0107:0,0}！",
-   "en": "Waggling a finger let it use {VAR:0107:0,0}!",
+   "en": "Waggling a finger let it use{NEWLINE}{VAR:0107:0,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 120,
    "zh": "自然之力变成了{NEWLINE}{VAR:0107:0,0}！",
-   "en": "Nature Power turned into {VAR:0107:0,0}!",
+   "en": "Nature Power turned into{NEWLINE}{VAR:0107:0,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 121,
@@ -1702,10 +1702,10 @@
   {
    "id": 212,
    "zh": "{VAR:0107:0,0}被{NEWLINE}掀榻榻米保护住了！",
-   "en": "{VAR:0107:0,0} was blocked by the kicked-up{NEWLINE}mat!",
+   "en": "{VAR:0107:0,0} was blocked{NEWLINE}by the kicked-up mat!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 213,

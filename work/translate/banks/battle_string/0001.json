@@ -3422,34 +3422,34 @@
   {
    "id": 412,
    "zh": "因{VAR:0102:0,0}的{NEWLINE}{VAR:0107:1,0}，冰冻被融化了！",
-   "en": "{VAR:0102:0,0}’s {VAR:0107:1,0} melted the ice!",
+   "en": "{VAR:0102:0,0}’s{NEWLINE}{VAR:0107:1,0} melted the ice!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 413,
    "zh": "因野生的{VAR:0102:0,0}的{NEWLINE}{VAR:0107:1,0}，冰冻被融化了！",
-   "en": "The wild {VAR:0102:0,0}’s {VAR:0107:1,0} melted{NEWLINE}the ice!",
+   "en": "The wild {VAR:0102:0,0}’s{NEWLINE}{VAR:0107:1,0} melted the ice!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 414,
    "zh": "因对手的{VAR:0102:0,0}的{NEWLINE}{VAR:0107:1,0}，冰冻被融化了！",
-   "en": "The foe’s {VAR:0102:0,0}’s {VAR:0107:1,0} melted{NEWLINE}the ice!",
+   "en": "The foe’s {VAR:0102:0,0}’s{NEWLINE}{VAR:0107:1,0} melted the ice!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 415,
    "zh": "因{VAR:0100:10,0}的{VAR:0102:0,0}的{NEWLINE}{VAR:0107:1,0}，冰冻被融化了！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}’s {VAR:0107:1,0}{NEWLINE}melted the ice!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}’s{NEWLINE}{VAR:0107:1,0} melted the ice!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 416,
@@ -4190,10 +4190,10 @@
   {
    "id": 508,
    "zh": "{VAR:0102:0,0}摆脱了{NEWLINE}{VAR:0107:1,0}的束缚！",
-   "en": "{VAR:0102:0,0} was freed from {VAR:0107:1,0}!",
+   "en": "{VAR:0102:0,0} was freed from{NEWLINE}{VAR:0107:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 509,
@@ -5182,18 +5182,18 @@
   {
    "id": 632,
    "zh": "将对手的{VAR:0102:0,0}的{NEWLINE}{VAR:0107:1,0}反射了回去！",
-   "en": "The foe’s {VAR:0102:0,0}’s {VAR:0107:1,0} was{NEWLINE}bounced back!",
+   "en": "The foe’s {VAR:0102:0,0}’s{NEWLINE}{VAR:0107:1,0} was bounced back!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 633,
    "zh": "将{VAR:0100:10,0}的{VAR:0102:0,0}的{NEWLINE}{VAR:0107:1,0}反射了回去！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}’s {VAR:0107:1,0}{NEWLINE}was bounced back!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}’s{NEWLINE}{VAR:0107:1,0} was bounced back!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 634,
@@ -6286,18 +6286,18 @@
   {
    "id": 770,
    "zh": "{VAR:0102:0,0}受到了挑衅，{NEWLINE}无法使出{VAR:0107:1,0}！",
-   "en": "{VAR:0102:0,0} can’t use {VAR:0107:1,0} after{NEWLINE}the taunt!",
+   "en": "{VAR:0102:0,0} can’t use{NEWLINE}{VAR:0107:1,0} after the taunt!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 771,
    "zh": "野生的{VAR:0102:0,0}受到了挑衅，{NEWLINE}无法使出{VAR:0107:1,0}！",
-   "en": "The wild {VAR:0102:0,0} can’t use {VAR:0107:1,0}{NEWLINE}after the taunt!",
+   "en": "The wild {VAR:0102:0,0} can’t use{NEWLINE}{VAR:0107:1,0} after the taunt!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 772,
@@ -6510,10 +6510,10 @@
   {
    "id": 798,
    "zh": "封住了{VAR:0102:0,0}的{NEWLINE}{VAR:0107:1,0}！",
-   "en": "{VAR:0102:0,0}’s {VAR:0107:1,0} was disabled!",
+   "en": "{VAR:0102:0,0}’s{NEWLINE}{VAR:0107:1,0} was disabled!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 799,
@@ -6526,34 +6526,34 @@
   {
    "id": 800,
    "zh": "封住了对手的{VAR:0102:0,0}的{NEWLINE}{VAR:0107:1,0}！",
-   "en": "The foe’s {VAR:0102:0,0}’s {VAR:0107:1,0} was{NEWLINE}disabled!",
+   "en": "The foe’s {VAR:0102:0,0}’s{NEWLINE}{VAR:0107:1,0} was disabled!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 801,
    "zh": "封住了{VAR:0100:10,0}的{VAR:0102:0,0}的{NEWLINE}{VAR:0107:1,0}！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}’s {VAR:0107:1,0}{NEWLINE}was disabled!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}’s{NEWLINE}{VAR:0107:1,0} was disabled!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 802,
    "zh": "{VAR:0102:0,0}因定身法{NEWLINE}而无法使出{VAR:0107:1,0}！",
-   "en": "{VAR:0102:0,0} can’t use {VAR:0107:1,0} because{NEWLINE}of Disable!",
+   "en": "{VAR:0102:0,0} can’t use{NEWLINE}{VAR:0107:1,0} because of Disable!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 803,
    "zh": "野生的{VAR:0102:0,0}因定身法{NEWLINE}而无法使出{VAR:0107:1,0}！",
-   "en": "The wild {VAR:0102:0,0} can’t use {VAR:0107:1,0}{NEWLINE}because of Disable!",
+   "en": "The wild {VAR:0102:0,0} can’t use{NEWLINE}{VAR:0107:1,0} because of Disable!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 804,
@@ -6974,34 +6974,34 @@
   {
    "id": 856,
    "zh": "因为怨念，{VAR:0102:0,0}失去了{NEWLINE}其招式{VAR:0107:1,0}的所有ＰＰ！",
-   "en": "{VAR:0102:0,0}’s {VAR:0107:1,0} lost all of its{NEWLINE}PP due to the grudge!",
+   "en": "{VAR:0102:0,0}’s {VAR:0107:1,0} lost{NEWLINE}all of its PP due to the grudge!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 857,
    "zh": "因为怨念，野生的{VAR:0102:0,0}失去了{NEWLINE}其招式{VAR:0107:1,0}的所有ＰＰ！",
-   "en": "The wild {VAR:0102:0,0}’s {VAR:0107:1,0} lost all{NEWLINE}of its PP due to the grudge!",
+   "en": "The wild {VAR:0102:0,0}’s {VAR:0107:1,0}{NEWLINE}lost all of its PP due to the grudge!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 858,
    "zh": "因为怨念，对手的{VAR:0102:0,0}失去了{NEWLINE}其招式{VAR:0107:1,0}的所有ＰＰ！",
-   "en": "The foe’s {VAR:0102:0,0}’s {VAR:0107:1,0} lost{NEWLINE}all of its PP due to the grudge!",
+   "en": "The foe’s {VAR:0102:0,0}’s {VAR:0107:1,0}{NEWLINE}lost all of its PP due to the grudge!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 859,
    "zh": "因为怨念，{VAR:0100:10,0}的{VAR:0102:0,0}失去了{NEWLINE}其招式{VAR:0107:1,0}的所有ＰＰ！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}’s {VAR:0107:1,0}{NEWLINE}lost all of its PP due to the grudge!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}’s{NEWLINE}{VAR:0107:1,0} lost all of its PP{CLEAR}due to the grudge!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 860,
@@ -7046,26 +7046,26 @@
   {
    "id": 865,
    "zh": "削减了野生的{VAR:0102:0,0}的{NEWLINE}{VAR:0107:1,0}{VAR:010F:2,0}点！",
-   "en": "It reduced the PP of the wild{NEWLINE}{VAR:0102:0,0}’s {VAR:0107:1,0} by {VAR:010F:2,0}!",
+   "en": "It reduced the PP of the wild{NEWLINE}{VAR:0102:0,0}’s{CLEAR}{VAR:0107:1,0} by {VAR:010F:2,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 866,
    "zh": "削减了对手的{VAR:0102:0,0}的{NEWLINE}{VAR:0107:1,0}{VAR:010F:2,0}点！",
-   "en": "It reduced the PP of the foe’s{NEWLINE}{VAR:0102:0,0}’s {VAR:0107:1,0} by {VAR:010F:2,0}!",
+   "en": "It reduced the PP of the foe’s{NEWLINE}{VAR:0102:0,0}’s{CLEAR}{VAR:0107:1,0} by {VAR:010F:2,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 867,
    "zh": "削减了{VAR:0100:10,0}的{VAR:0102:0,0}的{NEWLINE}{VAR:0107:1,0}{VAR:010F:2,0}点！",
-   "en": "It reduced the PP of {VAR:0100:10,0}’s{NEWLINE}{VAR:0102:0,0}’s {VAR:0107:1,0} by {VAR:010F:2,0}!",
+   "en": "It reduced the PP of{NEWLINE}{VAR:0100:10,0}’s {VAR:0102:0,0}’s{CLEAR}{VAR:0107:1,0} by {VAR:010F:2,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 868,
@@ -7558,18 +7558,18 @@
   {
    "id": 929,
    "zh": "野生的{VAR:0102:0,0}{NEWLINE}学会了{VAR:0107:1,0}！",
-   "en": "The wild {VAR:0102:0,0} learned {VAR:0107:1,0}!",
+   "en": "The wild {VAR:0102:0,0} learned{NEWLINE}{VAR:0107:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 930,
    "zh": "对手的{VAR:0102:0,0}{NEWLINE}学会了{VAR:0107:1,0}！",
-   "en": "The foe’s {VAR:0102:0,0} learned {VAR:0107:1,0}!",
+   "en": "The foe’s {VAR:0102:0,0} learned{NEWLINE}{VAR:0107:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 931,
@@ -7590,10 +7590,10 @@
   {
    "id": 933,
    "zh": "野生的{VAR:0102:0,0}{NEWLINE}对{VAR:0107:1,0}进行了写生！",
-   "en": "The wild {VAR:0102:0,0} sketched {VAR:0107:1,0}!",
+   "en": "The wild {VAR:0102:0,0} sketched{NEWLINE}{VAR:0107:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 934,
@@ -8366,10 +8366,10 @@
   {
    "id": 1030,
    "zh": "{VAR:0102:0,0}{NEWLINE}将{VAR:0107:1,0}反射了回去！",
-   "en": "{VAR:0102:0,0} bounced the {VAR:0107:1,0} back!",
+   "en": "{VAR:0102:0,0} bounced the{NEWLINE}{VAR:0107:1,0} back!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1031,
@@ -9758,18 +9758,18 @@
   {
    "id": 1204,
    "zh": "{VAR:0102:0,0}因回复封锁{NEWLINE}而无法使出{VAR:0107:1,0}！",
-   "en": "{VAR:0102:0,0} can’t use {VAR:0107:1,0} because{NEWLINE}of Heal Block!",
+   "en": "{VAR:0102:0,0} can’t use{NEWLINE}{VAR:0107:1,0} because of Heal Block!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1205,
    "zh": "野生的{VAR:0102:0,0}因回复封锁{NEWLINE}而无法使出{VAR:0107:1,0}！",
-   "en": "The wild {VAR:0102:0,0} can’t use {VAR:0107:1,0}{NEWLINE}because of Heal Block!",
+   "en": "The wild {VAR:0102:0,0} can’t use{NEWLINE}{VAR:0107:1,0} because of Heal Block!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1206,
@@ -10014,10 +10014,10 @@
   {
    "id": 1236,
    "zh": "{VAR:0102:0,0}用{VAR:0109:1,0}{NEWLINE}回复了{VAR:0107:2,0}的ＰＰ！",
-   "en": "{VAR:0102:0,0} restored PP to its {VAR:0107:2,0}{NEWLINE}using its {VAR:0109:1,0}!",
+   "en": "{VAR:0102:0,0} restored PP to its{NEWLINE}{VAR:0107:2,0} using its {VAR:0109:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1237,
@@ -10030,10 +10030,10 @@
   {
    "id": 1238,
    "zh": "对手的{VAR:0102:0,0}用{VAR:0109:1,0}{NEWLINE}回复了{VAR:0107:2,0}的ＰＰ！",
-   "en": "The foe’s {VAR:0102:0,0} restored PP to{NEWLINE}its {VAR:0107:2,0} using its {VAR:0109:1,0}!",
+   "en": "The foe’s {VAR:0102:0,0} restored PP to{NEWLINE}its {VAR:0107:2,0}{CLEAR}using its {VAR:0109:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1239,
@@ -11902,18 +11902,18 @@
   {
    "id": 1472,
    "zh": "{VAR:0102:0,0}因重力太强{NEWLINE}而无法使出{VAR:0107:1,0}！",
-   "en": "{VAR:0102:0,0} can’t use {VAR:0107:1,0} because{NEWLINE}of gravity!",
+   "en": "{VAR:0102:0,0} can’t use{NEWLINE}{VAR:0107:1,0} because of gravity!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1473,
    "zh": "野生的{VAR:0102:0,0}因重力太强{NEWLINE}而无法使出{VAR:0107:1,0}！",
-   "en": "The wild {VAR:0102:0,0} can’t use {VAR:0107:1,0}{NEWLINE}because of gravity!",
+   "en": "The wild {VAR:0102:0,0} can’t use{NEWLINE}{VAR:0107:1,0} because of gravity!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1474,
@@ -12990,26 +12990,26 @@
   {
    "id": 1608,
    "zh": "{VAR:0102:0,0}因{VAR:0109:1,0}{NEWLINE}而不会受到{VAR:0107:2,0}的攻击！",
-   "en": "{VAR:0102:0,0} is not affected by {VAR:0107:2,0}{NEWLINE}thanks to its {VAR:0109:1,0}!",
+   "en": "{VAR:0102:0,0} is not affected by{NEWLINE}{VAR:0107:2,0}{CLEAR}thanks to its {VAR:0109:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1609,
    "zh": "野生的{VAR:0102:0,0}因{VAR:0109:1,0}{NEWLINE}而不会受到{VAR:0107:2,0}的攻击！",
-   "en": "The wild {VAR:0102:0,0} is not affected by{NEWLINE}{VAR:0107:2,0} thanks to its {VAR:0109:1,0}!",
+   "en": "The wild {VAR:0102:0,0} is not affected by{NEWLINE}{VAR:0107:2,0}{CLEAR}thanks to its {VAR:0109:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1610,
    "zh": "对手的{VAR:0102:0,0}因{VAR:0109:1,0}{NEWLINE}而不会受到{VAR:0107:2,0}的攻击！",
-   "en": "The foe’s {VAR:0102:0,0} is not affected by{NEWLINE}{VAR:0107:2,0} thanks to its {VAR:0109:1,0}!",
+   "en": "The foe’s {VAR:0102:0,0} is not affected by{NEWLINE}{VAR:0107:2,0}{CLEAR}thanks to its {VAR:0109:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1611,
@@ -14590,34 +14590,34 @@
   {
    "id": 1808,
    "zh": "{VAR:0102:0,0}会将使用挥指后出现的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "{VAR:0102:0,0} turned the {VAR:0107:1,0} from{NEWLINE}Metronome into a Z-Move!",
+   "en": "{VAR:0102:0,0} turned the {VAR:0107:1,0}{NEWLINE}from Metronome into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1809,
    "zh": "野生的{VAR:0102:0,0}会将使用挥指后出现的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "The wild {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} from Metronome into a Z-Move!",
+   "en": "The wild {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0}{CLEAR}from Metronome into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1810,
    "zh": "对手的{VAR:0102:0,0}会将使用挥指后出现的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "The foe’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} from Metronome into a Z-Move!",
+   "en": "The foe’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0}{CLEAR}from Metronome into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1811,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}会将使用挥指后出现的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} from Metronome into a Z-Move!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0}{CLEAR}from Metronome into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1812,
@@ -14630,26 +14630,26 @@
   {
    "id": 1813,
    "zh": "野生的{VAR:0102:0,0}会将通过鹦鹉学舌{NEWLINE}学来的{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "The wild {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it copied with Mirror Move into{CLEAR}a Z-Move!",
+   "en": "The wild {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it copied{CLEAR}with Mirror Move into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1814,
    "zh": "对手的{VAR:0102:0,0}会将通过鹦鹉学舌{NEWLINE}学来的{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "The foe’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it copied with Mirror Move into{CLEAR}a Z-Move!",
+   "en": "The foe’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it copied{CLEAR}with Mirror Move into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1815,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}会将通过鹦鹉学舌{NEWLINE}学来的{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it copied with Mirror Move into{CLEAR}a Z-Move!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it copied{CLEAR}with Mirror Move into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1816,
@@ -14694,34 +14694,34 @@
   {
    "id": 1821,
    "zh": "野生的{VAR:0102:0,0}会将使用借助借来的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "The wild {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it borrowed with Assist into a{CLEAR}Z-Move!",
+   "en": "The wild {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it borrowed{CLEAR}with Assist into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1822,
    "zh": "对手的{VAR:0102:0,0}会将使用借助借来的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "The foe’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it borrowed with Assist into a{CLEAR}Z-Move!",
+   "en": "The foe’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it borrowed{CLEAR}with Assist into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1823,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}会将使用借助借来的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it borrowed with Assist into a{CLEAR}Z-Move!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it borrowed{CLEAR}with Assist into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1824,
    "zh": "{VAR:0102:0,0}会将抢先得到的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "{VAR:0102:0,0} turned the {VAR:0107:1,0} it got{NEWLINE}with Me First into a Z-Move!",
+   "en": "{VAR:0102:0,0} turned the {VAR:0107:1,0}{NEWLINE}it got with Me First into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1825,
@@ -14750,34 +14750,34 @@
   {
    "id": 1828,
    "zh": "{VAR:0102:0,0}会将梦话中说出的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "{VAR:0102:0,0} turned the {VAR:0107:1,0} from{NEWLINE}Sleep Talk into a Z-Move!",
+   "en": "{VAR:0102:0,0} turned the {VAR:0107:1,0}{NEWLINE}from Sleep Talk into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1829,
    "zh": "野生的{VAR:0102:0,0}会将梦话中说出的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "The wild {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} from Sleep Talk into a Z-Move!",
+   "en": "The wild {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0}{CLEAR}from Sleep Talk into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1830,
    "zh": "对手的{VAR:0102:0,0}会将梦话中说出的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "The foe’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} from Sleep Talk into a Z-Move!",
+   "en": "The foe’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0}{CLEAR}from Sleep Talk into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1831,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}会将梦话中说出的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} from Sleep Talk into a Z-Move!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0}{CLEAR}from Sleep Talk into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1832,
@@ -14790,26 +14790,26 @@
   {
    "id": 1833,
    "zh": "野生的{VAR:0102:0,0}会将仿效的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "The wild {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it copied with Copycat into a{CLEAR}Z-Move!",
+   "en": "The wild {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it copied{CLEAR}with Copycat into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1834,
    "zh": "对手的{VAR:0102:0,0}会将仿效的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "The foe’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it copied with Copycat into a{CLEAR}Z-Move!",
+   "en": "The foe’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it copied{CLEAR}with Copycat into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1835,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}会将仿效的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it copied with Copycat into a{CLEAR}Z-Move!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it copied{CLEAR}with Copycat into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 1836,
@@ -17574,10 +17574,10 @@
   {
    "id": 2181,
    "zh": "对手的{VAR:0102:0,0}使出了{NEWLINE}{VAR:0107:1,0}！",
-   "en": "The foe’s {VAR:0102:0,0} used {VAR:0107:1,0}!",
+   "en": "The foe’s {VAR:0102:0,0} used{NEWLINE}{VAR:0107:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1566: break before the move buffer so a 10-character name plus a 12-character move fits."
   },
   {
    "id": 2182,

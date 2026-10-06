@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "可喜可贺！{SCROLL}居然能得到{NEWLINE}龙神大人的骨头！",
-   "en": "Congratulations!{SCROLL}You actually got the bones of the great{NEWLINE}Dragon God!",
+   "en": "What a blessing!{SCROLL}To think the great Dragon God’s bones{NEWLINE}ended up here!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position | 龙神大人 'the great Dragon God': context unknown (no other mention in this bank)."
+   "notes": "v3 TM: 1 source(s), same position | 龙神大人 'the great Dragon God': an old visitor at the Pewter Museum's dragon skeleton (US 0464#12 'Never did I think I would get to see the bones of a dragon!'); 得到 has no subject, so the English no longer says the player got them (D-0549)."
   },
   {
    "id": 13,

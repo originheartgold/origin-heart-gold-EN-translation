@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "我在让大甲练习着{NEWLINE}用碎岩斩断小树,{CLEAR}目前不是很成功。{CLEAR}看来想要斩断路中间的小树,{CLEAR}必须得使用「居合斩」这个技能才行,{CLEAR}据说枯叶市有一位游轮的船长,{CLEAR}他就有「居合斩」的技能机。",
-   "en": "I’m having Pinsir practice cutting down{NEWLINE}small trees with Rock Smash. It’s not{CLEAR}going very well so far.{SCROLL}Looks like you really need the move Cut{NEWLINE}to clear the small trees in the road.{SCROLL}I hear a cruise ship captain in Vermilion{NEWLINE}City has the machine for Cut.",
+   "en": "I’m having Pinsir practice cutting down{NEWLINE}small trees with Rock Smash. It’s not{CLEAR}going very well so far.{SCROLL}Looks like you really need the move Cut{NEWLINE}to clear the small trees in the road.{SCROLL}I hear a cruise ship captain in Vermilion{NEWLINE}City has the HM for Cut.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "技能机 here is HM01: script 191 checks HasItem 420 (HM01) right after this line (D-0585, cf. D-0690)."
   },
   {
    "id": 13,

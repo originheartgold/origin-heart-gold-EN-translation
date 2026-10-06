@@ -152,10 +152,10 @@
   {
    "id": 18,
    "zh": "武藏『该打的也打完了,{NEWLINE}你赶紧走吧,别再让我看见你！",
-   "en": "Jessie: You got your beating{NEWLINE}in. Now hurry up and go, and{CLEAR}don’t let me see you again!",
+   "en": "Jessie: Fine, the fight’s over. Now{NEWLINE}hurry up and go, and don’t let me see{CLEAR}you again!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "zh 该打的也打完了 = the fight that had to happen is done (text-review reconcile)."
   },
   {
    "id": 19,

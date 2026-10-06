@@ -426,10 +426,10 @@
   {
    "id": 52,
    "zh": "找火箭队帮忙留下肥蓝猫",
-   "en": "Ask Team Rocket for help",
+   "en": "Ask Team Rocket to keep Purugly",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "zh 找火箭队帮忙留下肥蓝猫: ask Team Rocket for help keeping Purugly (text-review reconcile).",
    "category": "menu_touch_1line"
   },
   {
