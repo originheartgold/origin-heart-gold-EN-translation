@@ -27,7 +27,8 @@ of the main checkout (also when run from an agent worktree).
     .venv/bin/python work/tools/emu_harness.py skitty                                    # D-0582: Route 8 scene, CN|EN
     .venv/bin/python work/tools/emu_harness.py guide0107 [--case pikachu,corner_kid,...] [--lang cn|en|both]  # guide 01-07
     .venv/bin/python work/tools/emu_harness.py guide0813 [--case ribbon,magcargo,...] [--lang cn|en|both]   # guide 08-13, known issues
-    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty,guide0107,guide0813] [--jobs 10]
+    .venv/bin/python work/tools/emu_harness.py calendar [--case table,battle,volcanion,stale] [--lang cn|en|both]   # calendar hook
+    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty,guide0107,guide0813,calendar] [--jobs 10]
     python3 -m unittest discover -s work/tools -p test_emu_harness.py      # pure parts, no ROM needed
 
 A boot plus teleport takes about 15 s; 20 Unown encounters take about 2–3 minutes (headless, ~300 fps).
@@ -248,6 +249,9 @@ caller, so a different stack history), which is where a non-zero byte could stil
   session; not used). The Location's direction field is not updated while walking (facing is not read).
 - **Map data** (`MapGrid`): map header table 0x020F37C4 (0x18 bytes, +4 matrix id) → matrix a/0/4/1 →
   land data a/0/6/5 (32×32 u16 per chunk after a 0x14 header; low byte behaviour, bit 15 blocked).
+  Fixed 2026-10-06: the permissions start after the header's extra section (u16 size at +0x12, 0x1234 magic
+  before it): 0 bytes in most indoor maps, 8–72 bytes in many outdoor chunks (48 on Mt. Silver). Before the
+  fix, outdoor grids were shifted, e.g. "grass" on Mt. Silver was a dirt path and walls were open.
   `walk_to(x, y)` walks a BFS path and checks each step against the live position.
 - **Why the save teleport failed in Pal Park**: the map is only playable in the hack's Fixed Catch mode.
   With the save teleport the player was frozen and invisible (and without a pinned clock Continue even
@@ -392,6 +396,7 @@ from ordinary message commands in their scripts). The WIP build predates later b
 | skitty | Route 8 Skitty scene (D-0582, `emu_skitty.py`), see below | cries, sprite 761 = Skitty, trainer 277 leads Skitty form 0, all 18 lines shown, EN text says Skitty | 1.1 min |
 | guide0107 | 9 guide-claim cases (`emu_guide0107.py`: pikachu, electrode, misty_date, azure_flute, koga, giovanni, sabrina, kecleon, promo_flag), see 7 | each keeps its observed verdict (`SUITE_EXPECT`); promo_flag writes the Pokédex seen bit of No. 1335 and doesn't repeat | about 4 min |
 | guide0813 | 12 guide-claim cases (`emu_guide0813.py`: ribbon (Arthur + control), magcargo, white_flute, radio_quiz, fortune, sprout, kiln, whirl, bugsy, dance, morty, blackthorn), see 8 | each keeps its observed verdict (`SUITE_EXPECT`) | about 5 min |
+| calendar | calendar hook table (`emu_calendar.py`, case `table`), see 9 | for all 8 entries: the loaded buffer equals the ROM record the day before and record + configured slot-11 word(s) on the date | 2.5 min |
 
   Result (observed): all 10 (5 checks × 2 ROMs) pass, 2 min 13 s wall time with `--jobs 10`. A first run
   before the battery fix failed unown (both ROMs) and palpark (English) on the shared battery file, and one
@@ -399,6 +404,7 @@ from ordinary message commands in their scripts). The WIP build predates later b
   With `skitty` added (2026-10-05): all 12 pass, 2 min 10 s with `--jobs 10`.
   With `guide0107` added (2026-10-06): all 14 pass, 3 min 7 s with `--jobs 14`.
   With `guide0813` added (2026-10-06): all 16 pass, 5 min 17 s with `--jobs 16`.
+  With `calendar` added (2026-10-06): all 18 pass, 6 min 1 s with `--jobs 18`.
 
 ### 6. Route 8 Skitty scene (D-0582): observed, the fix holds
 
@@ -534,6 +540,57 @@ position once the screen is stable, handles battles), `goto_obj`, `talk`, `sessi
 Suite (`SUITE_EXPECT`, 12 cases; ribbon runs Arthur and his control only): ribbon, magcargo, white_flute,
 radio_quiz keep `contradicted`; fortune, sprout, kiln, whirl, bugsy, dance, morty, blackthorn keep `confirmed`.
 With `guide0813` added (2026-10-06): all 16 checks pass, 5 min 17 s with `--jobs 16`.
+
+### 9. Calendar encounters (`emu_calendar.py`, 2026-10-06)
+
+`emu_harness.py calendar` replays the calendar hook found statically in
+`chinese_source_rom_verify_calendar.md` (loader arm9 0x0203AD24, table 0x020F6A64, slot-11 words at buffer
++0x2A/+0x42/+0x5A for morning/day/night). Hooks: the loader's return (0x0203ADA8: r4 = map, r5 = the 0xC4-byte
+encounter buffer, copied as the game built it) and, for the forced-slot cases only, the two land slot pickers
+(ov2 0x02247A0C and the visible-spawn picker arm9 0x02019E3A, both `cmp r0, #0x14` with r0 = Random % 100):
+r0 is set to 99, which selects slot 11. Nothing else is changed: walking, the walk-rate roll, the wild
+finalizer, the battle and the catch are the game's own. Lead: generator Ninjask Lv100, party count lowered to
+1 so the catch lands in the party; 50 Master Balls in the Balls pocket (save edit). The catch goes through the
+battle bag by touch (BAG (36, 165) → Poké Balls (192, 56) → first ball (64, 28) → Use (100, 173)), then A
+through the Pokédex page and "joined the party" (no nickname prompt appeared). Encounter tiles come from
+`MapGrid` (behaviours 0x02 tall grass, 0x03, 0x08 forest/cave floor; Ilex Forest has only 0x08), limited
+to the matrix chunks whose zone header is the map. Every case ran on the Chinese ROM and the English WIP
+build (Oct 5) with the same results. Report: `work/build/harness/calendar/report_all_both.json`; screenshots
+`work/build/harness/calendar/<cn|en>/<entry>_<period>_{battle,catch_*,summary_1,summary_2}.png`.
+
+| entry (date, map) | table (control day / date) | forced-slot battle (observed) | after the catch |
+|---|---|---|---|
+| Keldeo (Jun 23, 181) | ROM slot 11 (175 / 1 / 778) / 647 in all three | Keldeo Lv5 at 06:00, 12:00, 22:00 | 647 form 0 Lv5; stats fit personal 647 |
+| Meloetta (Jul 14, 117) | 928 / 928 / 420 / 648 ×3 | Meloetta Lv6 (walk rate 5: 250–850 steps) | 648/0 Lv6 |
+| Genesect (Aug 11, 113) | 175 / 679 / 636 / 649 ×3 | Genesect Lv5 | 649/0 Lv5 |
+| Floette (Oct 16, 96) | 204 / 204 / 213 / 670 form 5 ×3 | Floette form 5 Lv14 | 670 form 5; stats fit personal 1222 (Eternal Flower), not 670; summary: Fairy only |
+| Diancie (Jul 19, 492) | 676 ×3 / 719 form 4 ×3 | Diancie form 4 Lv17 | 719 **form 4** kept; stats fit base personal 719, not Mega 1242; normal sprite, Rock/Fairy (D-1489) |
+| Hoopa (Jul 18 morning, 90) | 706 / 706 / 571 / 720 morning, 706 day, 720 form 1 night | 04:00, 06:00, 09:59: Hoopa Lv50; 10:00, 12:00, 19:59: Goodra (706) Lv50 | 720/0 |
+| Hoopa Unbound (Jul 18 night, 90) | (same buffer) | 20:00, 22:00, 03:59: Hoopa form 1 Lv50 | 720 form 1; stats fit personal 1243; Unbound sprite, Psychic/Dark |
+| Volcanion (Apr 16, 88) | 0 ×3, walk rate 0 / 721 ×3, walk rate 0, level 0 | no grass or cave tiles in the map; 400 steps per period on land with the slot forced: 0 battles | – (D-1488) |
+
+- **Table**: one emulator per ROM; per entry the clock is pinned to the day before, a `warp` onto an encounter
+  tile loads the map, then the clock is pinned to the date and a second warp reloads it. Control = the ROM's
+  record byte for byte; date = record + the configured word(s) only. **Confirmed for all 8, both ROMs** (also
+  the RAM table equals the ROM table). This is the suite check.
+- **Period windows** (observed at Mt. Silver on July 18): 03:59 night, 04:00 and 09:59 morning, 10:00 and 19:59
+  day, 20:00 night, i.e. morning 4–9, day 10–19 (evening counts as day), night 20–3; the date must still be
+  July 18 at 03:59.
+- **Stale buffer** (`stale`, D-1564): Mt. Silver loaded on July 17 22:00, clock then pinned to July 18 22:00
+  without leaving: the forced slot-11 encounter is the night table's normal Zoroark (571); the loader did not
+  run again, also not after that battle; after re-entering (warp) the same slot gives Hoopa Unbound. The date
+  is read only when the map's encounter data loads.
+- **Visible spawns**: with the visible picker forced too, the overworld Pokémon walking in the grass looked like the
+  calendar species (screenshot after a Keldeo catch in Koga's preserve), so the entry can also appear as a visible spawn. Not
+  measured: how often with the real 1% roll.
+- **Volcanion**: static scan (`volcanion_static`) of every script (GiveMon, GiveEgg, WildBattle, SetVar with
+  721), all encounter records (land, Surf, Rock Smash, fishing, swarm, Hoenn/Sinnoh sound), headbutt trees,
+  the Bug-Catching Contest table and NPC trades: no 721 anywhere except the calendar row.
+- Seen once on the English build in Koga's preserve (map 181, around (59, 42)): a battle against a Lv48
+  Typhlosion that the wild finalizer did not build and that RUN could not end (probably a trainer who saw the
+  player after the warp). Not investigated; the battle recipe now starts on the first grass pair and gives up
+  on a battle it can't flee.
+- Harness fix found here: `MapGrid` read outdoor permissions from the wrong offset (see 1b).
 
 ### 5. Screen checks on the English WIP build (Tier 3)
 

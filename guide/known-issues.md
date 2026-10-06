@@ -906,7 +906,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 **Morty's "weak to Ghost" rule refuses some Pokémon it shouldn't and lets others in.** It refuses Exeggutor and Rotom, which are Psychic or Ghost in this hack. It lets in Stunfisk, Yungoos and Gumshoos, which aren't. (Golduck and Noctowl are Psychic in this hack, so they're correct.)
 
-*Source:* file 918 L1140–L13661 is a fixed list of 660 banned species, not a type check (all jump to L14645). Refused: Exeggutor (103), Rotom (479), also Meloetta (648, not obtainable). The list is incomplete past #493.
+*Source:* file 918 L1140–L13661 is a fixed list of 660 banned species, not a type check (all jump to L14645). Refused: Exeggutor (103), Rotom (479), also Meloetta (648, only from the July 14 calendar encounter). The list is incomplete past #493.
 
 ### Lantern riddle 2 (not a bug)
 

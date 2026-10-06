@@ -40,3 +40,16 @@ This also means ordinary 'no encounter source found' outputs can miss a real nat
 First inspected the decoded event-command catalogue for month/date commands and identified only GetWeekday among explicit calendar readers. Then followed references to native RTC date readers across fresh ARM9/overlay disassemblies. The combined date/time reader's caller at0x0203AD52 exposed this table; direct reads and map metadata confirmed its structure and destinations. The weekly trio routine at0x0203A580 is separate and was not used as evidence for these month/day encounters.
 
 This was static verification of the native loader and source table. It does not establish encounter-rate behavior after radio/swarm/ability/Safari modifiers, whether date changes without reloading the map refresh the buffer, successful capture of unusual forms, or persistence of visible spawns across midnight. The English patched ROM was not independently replayed in this supplement.
+
+## Emulator replay (2026-10-06)
+
+Replayed in the emulator on this ROM and on the English WIP build (`emu_harness.py calendar`, details in
+`emu_harness.md` section 9). The loader's buffer matched this table for all eight rows (day before: the ROM
+record; date: the configured slot-11 words only). With slot 11 forced for the test, every entry except
+Volcanion appeared at the listed level and was caught with a Master Ball: Diancie form 4 is a normal Diancie
+(base personal 719, normal sprite; the stored form stays 4, D-1489), Floette form 5 uses personal 1222 and
+Hoopa form 1 personal 1243. Hoopa's windows were checked at 03:59, 04:00, 09:59, 10:00, 19:59 and 20:00
+(morning 4–9, day 10–19, night 20–3). Lake of Rage has no grass, and 400 forced-slot steps per period on
+April 16 gave no encounter (D-1488). The date is read only when the map's encounter data loads: a date
+change while staying on the map, or a battle, does not refresh it (D-1564). Not tested: interactions with
+other encounter modifiers (abilities, swarms, radio, Safari).
