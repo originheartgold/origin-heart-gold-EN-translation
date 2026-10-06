@@ -1,5 +1,6 @@
 """Unit tests for emu_harness's pure parts (no emulator, no ROM, no save fixtures)."""
 import binascii
+import json
 import random
 import struct
 import tempfile
@@ -328,3 +329,68 @@ class Calendar(unittest.TestCase):
             name, _, period = v.partition(":")
             self.assertIn(name, C.ENTRIES)
             C.battle_time(period)
+
+
+class HackBugs(unittest.TestCase):
+    """emu_hackbugs: the pure parts (registry, judges, the fateful-bit edit through the codec)."""
+
+    def setUp(self):
+        import emu_hackbugs
+        self.H = emu_hackbugs
+
+    def test_registry(self):
+        H = self.H
+        for name, (fn, variants, judge, records) in H.CASES.items():
+            self.assertTrue(callable(fn), name)
+            self.assertTrue(records.startswith("D-"), name)
+            if judge is not None:
+                self.assertIsNotNone(variants, name)
+        self.assertTrue(set(H.SUITE_EXPECT) <= set(H.CASES))
+        for c, vs in H.SUITE_VARIANTS.items():
+            self.assertTrue(set(vs) <= set(H.CASES[c][1]), c)
+
+    def test_judges(self):
+        H = self.H
+        tut = {}
+        for name, (_, _, _, _, _, _, m3, m4, _) in H.TUTORS.items():
+            tut[name + "3"] = {"learned": [m3], "expected_move": m3, "fee_taken": 3 if name == "hans" else 1}
+            tut[name + "4"] = {"learned": [m4], "expected_move": m4, "fee_taken": 0 if name == "hans" else 1}
+        self.assertEqual(H.judge_tutor(tut), "confirmed")
+        tut["hans4"]["fee_taken"] = 3
+        self.assertEqual(json.loads(H.judge_tutor(tut))["hans"], "contradicted")
+        mv = {"volttackle": {"hp_before": 190, "hp_after": 190}, "doubleedge": {"hp_before": 190, "hp_after": 186},
+              "thunderbolt": {"hp_before": 190, "hp_after": 190},
+              "blastburn": {"turns": [{"frames": 510}]}, "hyperbeam": {"turns": [{"frames": 861}]},
+              "flamethrower": {"turns": [{"frames": 612}]}, "lunardance": {"hp_after": 319}}
+        self.assertEqual(json.loads(H.judge_move(mv)),
+                         {"D-1311": "user survives", "D-1318": "no recharge", "D-1319": "no recoil"})
+        self.assertEqual(H.judge_move(mv), H.SUITE_EXPECT["move"])
+        gw = {"exit": {"samples": [{"pos": [96, 16384, 59693]}], "walks_after": False},
+              "entrance": {"path_from_south_gate_to_33_16": None, "tile_33_16": [6, True], "pos": [96, 33, 17]}}
+        self.assertEqual(H.judge_gatehouse_warp(gw), "confirmed")
+        self.assertEqual(H.judge_crystal_onix({"tm13_crystal": {"learned": True}, "tm11_crystal": {"learned": False}}),
+                         "contradicted")
+
+    def test_set_fateful_roundtrip(self):
+        H = self.H
+        raw = E.encode_pokemon(bytes(236), species=492, moves=[33, 0, 0, 0])
+
+        class FakeH:
+            def __init__(self):
+                self.mem = bytearray(8 + 236) + bytearray(236 * 6)
+
+            def array(self, _):
+                return 0
+
+            def read(self, a, n):
+                return bytes(self.mem[a:a + n])
+
+            def write(self, a, b):
+                self.mem[a:a + len(b)] = b
+        h = FakeH()
+        h.write(8, raw)
+        H.set_fateful(h, 0)
+        new = h.read(8, 236)
+        self.assertEqual(H.fateful(new), 1)
+        self.assertEqual(E.decode_party_pokemon(new)["species"], 492)
+        self.assertTrue(E.decode_party_pokemon(new)["checksum_ok"])
