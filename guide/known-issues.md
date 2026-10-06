@@ -412,9 +412,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Fuchsia "Surf TM" man
 
-**The man in the Fuchsia City southwest house asks about the "Surf TM" but checks for HM04 Strength.** His line also talks about moving the big boulder in his house, which is Strength's job. The Chinese has the same slip. Only his line changes; nothing is given. Cosmetic. Tested in an emulator: with HM04 in the Bag he says the "Surf TM" line; without it, the pond line.
+**In the Chinese, the man in the Fuchsia City southwest house asks about the "Surf TM" but checks for HM04 Strength.** His line also talks about moving the big boulder in his house, which is Strength's job, so the English patch says "Strength HM". Only his line changes; nothing is given. Cosmetic. Tested in an emulator: with HM04 in the Bag he says the HM line; without it, the pond line.
 
-*Source:* file 810 script 3 @98 `HasItem` item 423 (HM04) → L334 (line 509#6, 冲浪技能机); otherwise msg 5. No item is given on either path. His door is ≈1222,435 (Fuchsia Southwest house), not the rangers' room (D-1403; `emu_harness.py hackbugs --case hm04`).
+*Source:* file 810 script 3 @98 `HasItem` item 423 (HM04) → L334 (line 509#6, 冲浪技能机); otherwise msg 5. No item is given on either path. His door is ≈1222,435 (Fuchsia Southwest house), not the rangers' room (D-1403; `emu_harness.py hackbugs --case hm04`). English corrected with the user's approval (D-1496, D-1572).
 
 ### Route 17 Shiny Stone
 
@@ -592,9 +592,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Luxio and Luxray
 
-**The Sinnoh traveller calls her Pokémon "Luxio" after you answer "Luxray".** The Chinese says Luxio there too. Cosmetic.
+**In the Chinese, the Sinnoh traveller calls her Pokémon "Luxio" after you answer "Luxray".** The quiz and the cry both say Luxray, so the English patch says Luxray. Cosmetic.
 
-*Source:* bank 0536#49 says 我的这只电光狮 (Luxio); the quiz menu (file 841 L916–L940; Prof. Elm's Lab 2F) accepts index 2 = 0536#35 雷电狮 (Luxray) at L984 → L2395, and the cry line 0536#55 says Luxray.
+*Source:* bank 0536#49 says 我的这只电光狮 (Luxio); the quiz menu (file 841 L916–L940; Prof. Elm's Lab 2F) accepts index 2 = 0536#35 雷电狮 (Luxray) at L984 → L2395, and the cry line 0536#55 says Luxray. English corrected with the user's approval (D-0764, D-1496, D-1572).
 
 ### Leech Seed tutor line
 

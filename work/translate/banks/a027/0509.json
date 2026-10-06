@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "你已经有冲浪技能机啦？{NEWLINE}那你有没有用冲浪技能机{CLEAR}找到移动我家里这块大石头的方法呢？",
-   "en": "You already have the Surf TM? Then{NEWLINE}have you found a way to use it to move{CLEAR}this big boulder in my house?",
+   "en": "You already have the Strength HM? Then{NEWLINE}have you found a way to use it to move{CLEAR}this big boulder in my house?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-1403 (D-1496/D-1572, approved by the user 2026-10-06): zh 冲浪技能机 (Surf TM); script 810 @98 shows this line only with HasItem 423 (HM04 Strength)."
   },
   {
    "id": 7,

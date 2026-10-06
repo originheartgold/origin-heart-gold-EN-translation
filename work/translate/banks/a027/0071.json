@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "小美『大哥哥对不起,{NEWLINE}给你们添了这么多麻烦。{CLEAR}我以后会一边等爸爸,{CLEAR}一边跟叔叔们学习,{CLEAR}争取有朝一日能成为爸爸那样的专家。",
-   "en": "Molly: I’m sorry for causing you all{NEWLINE}so much trouble, big brother. From now{CLEAR}on, I’ll learn from the researchers{CLEAR}here while I wait for Daddy, so someday{CLEAR}I can be an expert just like him.",
+   "en": "Molly: I’m sorry for causing you all{NEWLINE}so much trouble, big sister. From now{CLEAR}on, I’ll learn from the researchers{CLEAR}here while I wait for Daddy, so someday{CLEAR}I can be an expert just like him.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-0954 (D-1496/D-1572, approved by the user 2026-10-06): female slot of GenderMsgBox [1, 2] (script 38 @409); zh copies 大哥哥, English says 'big sister'."
   },
   {
    "id": 3,

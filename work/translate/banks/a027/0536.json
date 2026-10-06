@@ -424,10 +424,10 @@
   {
    "id": 49,
    "zh": "哇哦！想不到你对{NEWLINE}神奥地区的精灵也这么了解。{SCROLL}正好我的这只电光狮{NEWLINE}在满金市的饲育屋{CLEAR}孵化了一只小电狮,{CLEAR}如果你不嫌弃的话{CLEAR}请带上这只小电狮旅行吧,{CLEAR}它一定会成为你的得力助手。{SCROLL}要带上小电狮一起旅行吗？",
-   "en": "Wow! I didn’t expect you to know Sinnoh{NEWLINE}Pokémon so well.{SCROLL}As it happens, my Luxio had a Shinx{NEWLINE}hatch at the Goldenrod City Day Care.{SCROLL}If you don’t mind, please take this{NEWLINE}Shinx along on your journey.{SCROLL}I’m sure it’ll be a great help to you.{SCROLL}Will you take Shinx with you?",
+   "en": "Wow! I didn’t expect you to know Sinnoh{NEWLINE}Pokémon so well.{SCROLL}As it happens, my Luxray had a Shinx{NEWLINE}hatch at the Goldenrod City Day Care.{SCROLL}If you don’t mind, please take this{NEWLINE}Shinx along on your journey.{SCROLL}I’m sure it’ll be a great help to you.{SCROLL}Will you take Shinx with you?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-0764 (D-1496/D-1572, approved by the user 2026-10-06): zh 电光狮 (Luxio); the quiz accepts only Luxray (script 841 @990 index 2 = #35) and the cry is Luxray (PlayCry 405, #55)."
   },
   {
    "id": 50,

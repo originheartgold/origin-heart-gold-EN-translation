@@ -1550,10 +1550,10 @@
   {
    "id": 193,
    "zh": "{VAR:0205}地点：赛马巨蛋",
-   "en": "{VAR:0205}Place: Race Dome",
+   "en": "{VAR:0205}Place: Clay Dome",
    "status": "draft",
-   "origin": "agent",
-   "notes": "US 0309/193; ext-review RCA-016"
+   "origin": "us",
+   "notes": "US 0309/193; ext-review RCA-016 | D-1365 (D-1496/D-1572, approved by the user 2026-10-06): zh 赛马巨蛋; US 0309#193 Clay Dome, like the sibling dome labels."
   },
   {
    "id": 194,

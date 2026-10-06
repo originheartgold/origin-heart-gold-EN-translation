@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "彦『如果让现在的搭档使用{VAR:0106:1}{CLEAR}那就正好是对{VAR:0100:0}和{SCROLL}{VAR:0106:3}有绝对自信的{VAR:0100:2}{SCROLL}要加他为伙伴吗？",
-   "en": "Riley: If my partner uses {VAR:0106:1},{NEWLINE}that suits my {VAR:0100:0} perfectly.{SCROLL}And my {VAR:0100:2} is supremely{NEWLINE}confident in {VAR:0106:3}.{SCROLL}Add him as your partner?",
+   "en": "Riley: The partners I have now?{SCROLL}Well, my {VAR:0100:0}’s nasty with its{NEWLINE}{VAR:0106:1}.{SCROLL}And there’s my {VAR:0100:2}, which{NEWLINE}is a sure hand with {VAR:0106:3}.{SCROLL}Would you like to team up with me?",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh is a garbled template; written as Riley's partner pitch.; ext-review RR-002"
+   "notes": "zh is a garbled template; written as Riley's partner pitch.; ext-review RR-002 | D-1355 (D-1496/D-1572, approved by the user 2026-10-06): garbled zh template rewritten as the US 0099#3 pitch (same buffer pairs: mon 0 + move 1, mon 2 + move 3)."
   },
   {
    "id": 4,

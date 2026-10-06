@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "救生员呆呆地望着岸上的九尾,{NEWLINE}眼神中既有欣慰又有落寞。",
-   "en": "The lifeguard gazes blankly at the{NEWLINE}Ninetales on the shore, his eyes full of{CLEAR}both comfort and loneliness.",
+   "en": "The lifeguard gazes blankly at the{NEWLINE}Vulpix on the shore, his eyes full of{CLEAR}both relief and loneliness.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-0745 (D-1496/D-1572, approved by the user 2026-10-06): zh 九尾 (Ninetales) corrected to Vulpix; #2-#5 and every cry in script 965 are Vulpix (PlayCry 37), no Ninetales in the scene."
   },
   {
    "id": 2,

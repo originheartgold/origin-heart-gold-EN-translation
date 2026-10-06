@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "{VAR:0103:2}送你{NEWLINE}１枚心之鳞片作礼物！{VAR:0207}",
-   "en": "{VAR:0103:2} gave you{NEWLINE}one Heart Scale as a gift!{VAR:0207}",
+   "en": "{VAR:0103:2} handed over one{NEWLINE}Heart Scale in exchange.{VAR:0207}",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (Says {VAR:0103:2} gives you a Heart Scale as a gift; in vanilla the player hands one over as payment); logged in hack_findings_import.jsonl"
+   "notes": "D-1381 (D-1496/D-1572, approved by the user 2026-10-06): zh says {player} gives you a Heart Scale as a gift; the Move Reminder takes one (script 944 TakeItem 93, then 0626#25 'handed over'), so the player pays. US 0747#9/#20 are blank; wording from US 0635#25."
   },
   {
    "id": 10,
@@ -166,10 +166,10 @@
   {
    "id": 20,
    "zh": "{VAR:0103:2}送你{NEWLINE}１枚心之鳞片作礼物！{VAR:0207}",
-   "en": "{VAR:0103:2} gave you{NEWLINE}one Heart Scale as a gift!{VAR:0207}",
+   "en": "{VAR:0103:2} handed over one{NEWLINE}Heart Scale in exchange.{VAR:0207}",
    "status": "draft",
    "origin": "agent",
-   "notes": "See #9.; ext-review RB-D02"
+   "notes": "See #9.; ext-review RB-D02 | D-1381: same fix as #9."
   },
   {
    "id": 21,

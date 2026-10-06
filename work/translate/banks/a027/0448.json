@@ -977,7 +977,7 @@
    "en": "Gold: You think you lot can stop me? Go{NEWLINE}get ’em, Exbo, Aibo, Togebo!",
    "status": "draft",
    "origin": "agent",
-   "notes": "#121–173: Gold (female-player romance route). Adventures nicknames: 爆太郎 Exbo (Typhlosion), 尾太郎 Aibo (Ambipom), 波克太郎 Togebo (Togepi; its cry in zh is 'Ammm', kept). Gold calls the player 偶像 → 'Idol' / 'my idol'."
+   "notes": "#121–173: Gold (female-player romance route). Adventures nicknames: 爆太郎 Exbo (Typhlosion), 尾太郎 Aibo (Ambipom), 波克太郎 Togebo (Togepi line; cry 468 Togekiss in this scene; #127's copied 'Ammm' corrected per D-0533). Gold calls the player 偶像 → 'Idol' / 'my idol'."
   },
   {
    "id": 122,
@@ -1022,10 +1022,10 @@
   {
    "id": 127,
    "zh": "波克太郎『Ammm……",
-   "en": "Togebo: Ammm...",
+   "en": "Togebo: Tooo...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-0533 (D-1496/D-1572, approved by the user 2026-10-06): zh repeats Aibo's 'Ammm'; script 109 plays cry 468 (Togekiss) with this line, so it uses Togebo's own cry (cf. 0620#6 Toooo-ge)."
   },
   {
    "id": 128,

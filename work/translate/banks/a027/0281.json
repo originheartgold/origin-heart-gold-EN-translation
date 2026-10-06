@@ -182,18 +182,18 @@
   {
    "id": 22,
    "zh": "干涉",
-   "en": "MEDDLING",
+   "en": "VIEWING",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0288/22"
+   "notes": "US 0288/22 | D-1235 (D-1496/D-1572, approved by the user 2026-10-06): zh 干涉 misreads かんしょう; same slot as US 0288#22 VIEWING (banks align 1:1, 104 words)."
   },
   {
    "id": 23,
    "zh": "完全",
-   "en": "PERFECTION",
+   "en": "SPECTATE",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0288/23 | was COMPLETE: renamed so no two words in the Easy Chat picker share the same English (Primo passwords)"
+   "notes": "US 0288/23 | was COMPLETE: renamed so no two words in the Easy Chat picker share the same English (Primo passwords) | D-1235 (D-1496/D-1572, approved by the user 2026-10-06): zh 完全 misreads かんせん; same slot as US 0288#23 SPECTATE (#34 完全 = COMPLETE stays)."
   },
   {
    "id": 24,

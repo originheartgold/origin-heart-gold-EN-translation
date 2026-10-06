@@ -882,10 +882,10 @@
   {
    "id": 109,
    "zh": "我跟你说,{NEWLINE}你的撞击次数{CLEAR}终于超过５００次了。{SCROLL}",
-   "en": "You know what? You’ve finally tackled{NEWLINE}over 500 times!{SCROLL}",
+   "en": "You know what? I’ve finally tackled{NEWLINE}over 500 times!{SCROLL}",
    "status": "reviewed",
    "origin": "agent",
-   "notes": "US 0138/109 [User-approved warning review 2026-10-04; exact proposal applied.] rc5 review: rewritten from the zh (user-approved 2026-10-04)."
+   "notes": "US 0138/109 [User-approved warning review 2026-10-04; exact proposal applied.] rc5 review: rewritten from the zh (user-approved 2026-10-04). | D-1476 (D-1496/D-1572, user 2026-10-06 'Change to I’ve'): zh 你的 'your count', but the count is his own (#110, #113; US 0138#109 'I have tackled')."
   },
   {
    "id": 110,
@@ -898,18 +898,18 @@
   {
    "id": 111,
    "zh": "我跟你说,{NEWLINE}你的撞击次数{CLEAR}终于超过１０００次了。{SCROLL}",
-   "en": "You know what? You’ve finally tackled{NEWLINE}over 1,000 times!{SCROLL}",
+   "en": "You know what? I’ve finally tackled{NEWLINE}over 1,000 times!{SCROLL}",
    "status": "reviewed",
    "origin": "agent",
-   "notes": "US 0138/111 [User-approved warning review 2026-10-04; exact proposal applied.] rc5 review: rewritten from the zh (user-approved 2026-10-04)."
+   "notes": "US 0138/111 [User-approved warning review 2026-10-04; exact proposal applied.] rc5 review: rewritten from the zh (user-approved 2026-10-04). | D-1476: see #109."
   },
   {
    "id": 112,
    "zh": "我跟你说,{NEWLINE}你的撞击次数{CLEAR}终于超过２０００次了。{SCROLL}这记录{NEWLINE}应该没这么容易击破了。{SCROLL}",
-   "en": "You know what? You’ve finally tackled{NEWLINE}over 2,000 times! I bet no one can{CLEAR}break this record easily!{SCROLL}",
+   "en": "You know what? I’ve finally tackled{NEWLINE}over 2,000 times! I bet no one can{CLEAR}break this record easily!{SCROLL}",
    "status": "reviewed",
-   "origin": "agent",
-   "notes": "US 0138/112 [User-approved warning review 2026-10-04; exact proposal applied.]"
+   "origin": "us",
+   "notes": "US 0138/112 [User-approved warning review 2026-10-04; exact proposal applied.] | D-1476: see #109; now identical to US 0138#112."
   },
   {
    "id": 113,

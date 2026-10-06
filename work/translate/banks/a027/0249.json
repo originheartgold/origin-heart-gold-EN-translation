@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "娜姿『星期日的白天{NEWLINE}接到我电话的话,{CLEAR}那说明我将和你{CLEAR}有一个非常重要的约定……",
-   "en": "Sabrina: If you get a call from me on a{NEWLINE}Sunday during the day, it means you and{CLEAR}I have a very important appointment...",
+   "en": "Sabrina: If you call me on a Sunday{NEWLINE}during the day, you and I will{CLEAR}have a very important appointment...",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0256/6; ext-review B-005"
+   "notes": "US 0256/6; ext-review B-005 | D-1359 (D-1496/D-1572, approved by the user 2026-10-06): zh has her calling you; her own phone line 0646#4 (zh 到时候你能打个电话过来吗) and US 0256#6 have you calling her."
   },
   {
    "id": 7,
