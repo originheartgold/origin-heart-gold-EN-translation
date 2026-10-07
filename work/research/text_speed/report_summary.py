@@ -114,7 +114,7 @@ def summary_lines(r):
     dirty = r.get('git_dirty')
     dirty_end = r.get('git_dirty_at_end')
     lines = [f"status={status} releasable={r.get('releasable', '?')} "
-             f"rom={short(r.get('rom_sha256'))} payload={short(r.get('payload_sha256'))} "
+             f"rom={short(r.get('rom_sha256'))} payload={short(r.get('payload_code_sha256') or r.get('payload_sha256'))} "
              f"save={short(r.get('save_sha256'))} commit={short(r.get('git_head'), 7)} "
              f"dirty={'?' if dirty is None else bool(dirty) or bool(dirty_end)}"]
     pr = r.get('payload_reproduction')
@@ -160,7 +160,7 @@ def cmd_diff(a):
     old, new = load(a.baseline), load(a.new)
     go, gn = gates_of(old), gates_of(new)
     out, regress = [], False
-    for k in ('status', 'releasable', 'rom_sha256', 'payload_sha256', 'git_head'):
+    for k in ('status', 'releasable', 'rom_sha256', 'payload_code_sha256', 'payload_sha256', 'git_head'):
         if old.get(k) != new.get(k):
             ov, nv = old.get(k), new.get(k)
             out.append(f'{k}: ' + (f'{short(ov, 12)}->{short(nv, 12)}' if 'sha' in k or k == 'git_head'

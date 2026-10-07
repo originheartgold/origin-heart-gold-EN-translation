@@ -232,6 +232,8 @@ def main():
     p.add_argument('--only', help='comma-separated gate names (default: all)')
     p.add_argument('--allow-dirty', action='store_true',
                    help='run on a modified tree; the result can only be "passed-not-releasable"')
+    p.add_argument('--summary', action='store_true',
+                   help='print the compact report_summary.py summary of report.json at the end')
     args = resolve(p, p.parse_args())
     payload = load_expected_payload(args)
     if args.fault_payload is None and args.rom.name.startswith('FAULT-'):
@@ -290,6 +292,9 @@ def main():
         (args.out / 'report.json').write_text(json.dumps(summary, indent=2, default=str))
     print('status', summary['status'], 'failed', summary.get('failed_gates'), summary.get('problems') or '',
           summary.get('fault_verdict') or '')
+    if args.summary:
+        import report_summary
+        report_summary.main(['summary', str(args.out / 'report.json')])
     if summary['status'] not in ('passed', 'fault-detected', 'fault-dead-code', 'partial-passed',
                                  'passed-not-releasable'):
         raise SystemExit(1)
