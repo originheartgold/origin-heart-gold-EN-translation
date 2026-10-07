@@ -12,10 +12,10 @@ BASE=0x01ff8620
 OVBASE=0x021e4980
 # This reviewed pin lives in patcher source, never in the mutable cache. Updating
 # native code requires review of its reproducible payload and this separate pin.
-REVIEWED_PAYLOAD_SHA256='82eaa3a33e74ac11a1a7dd2ad420e24bddd5b45bb0d3814d632638d00cfd5878'
+REVIEWED_PAYLOAD_SHA256='e4aabb93fbdd9a9804c713d4430146e0e08a7836dbbba3e4ab37fb04e07b1f23'
 REQUIRED_SYMBOLS=frozenset(('print_task','load_rows','load_choice','load_label',
                             'commit_speed','exit_free','draw_label','setup_sprites',
-                            'frame_end','pass_end','text_speed_state'))
+                            'frame_end','pass_end','text_speed_state','call_print'))
 # The one data symbol: the runtime frame state (zero at boot), the last
 # STATE_SIZE bytes of the block. Every other symbol is a Thumb entry point.
 STATE_SYMBOL='text_speed_state'
@@ -28,6 +28,17 @@ FRAME_END_CALL=(0x02000de0,0x020272d4)
 MAX_PAYLOAD_SIZE=0x01ffa000-BASE
 OVHASH='852d8fcd01bf09ba54bee1a24609e2a82e71d25b5d6dd84c5d919cc0b3418856'
 OVERLAY=50
+# Pokégear overlay (JP-base numbering 92) of the untouched Chinese hack; identical in
+# the English build. Its one phone-call page printer (0x021f11e8, used by outgoing
+# and incoming calls) calls AddTextPrinterParameterized at CALL_SITE; text speed
+# redirects that call to call_print (D-1600, bug D-1599). The whole file is pinned
+# before and after.
+CALL_OVERLAY=92
+CALL_OVBASE=0x021e67c0
+CALL_OVSIZE=0x13ae0
+CALL_OVHASH='63d914533045a08e813808869b72afe6042a832acbf183236c4f245ba5244ac6'
+CALL_SITE=0x021f1228
+ADD_PRINTER=0x02020834
 ARM9BASE=0x02000000
 # Main ARM9 section of the untouched Chinese hack (origin_v4.0.3_cn.nds). apply()
 # compares it after every enabled arm9 code patch from hardcoded/code_patches.json
@@ -47,6 +58,7 @@ HEAP_FIX=(0xba9a,0x2501)
 # that each FN() call target in native.c starts one of these routines.
 CALLED_ROUTINES=(
     (0x02001194,0x020011a0,'runtime save pointer'),
+    (0x02002b50,0x02002b8c,'text flags: SetAutoScrollParam (auto bit 2, auto A/B bit 5)'),
     (0x020071ac,0x020071b0,'overlay manager data getter'),
     (0x020071b0,0x020071c0,'overlay manager data free'),
     (0x0200bb0c,0x0200bb3e,'message load into string'),
@@ -263,8 +275,8 @@ def code_patch_ranges(code_patches=None):
         if not want or len(want)!=len(new) or off<0 or any(not 0<=u<=0xffff for u in want+new):
             raise ValueError(f'Invalid code patch {name!r}')
         mo=re.fullmatch(r'overlay(\d+)',str(key))
-        if mo and int(mo.group(1))==OVERLAY:
-            raise ValueError(f'Code patch {name} targets overlay {OVERLAY}, which text speed rewrites; review both together')
+        if mo and int(mo.group(1)) in (OVERLAY,CALL_OVERLAY):
+            raise ValueError(f'Code patch {name} targets overlay {int(mo.group(1))}, which text speed rewrites; review both together')
         out.append((name,key,off,struct.pack(f'<{len(want)}H',*want),struct.pack(f'<{len(new)}H',*new)))
     return out
 
@@ -306,6 +318,11 @@ def apply(rom,payload=None,code_patches=None):
     arm9_ranges=[]
     ov=rom.loadArm9Overlays()[50];original=bytes(ov.data)
     if digest(original)!=OVHASH or ov.bssSize or ov.ramAddress!=OVBASE:raise ValueError('Options overlay changed')
+    gear=rom.loadArm9Overlays()[CALL_OVERLAY];gear_original=bytes(gear.data)
+    if (digest(gear_original)!=CALL_OVHASH or gear.bssSize or gear.ramAddress!=CALL_OVBASE
+            or gear.ramSize!=CALL_OVSIZE or len(gear_original)!=CALL_OVSIZE or gear.compressed):
+        raise ValueError('Pokégear overlay changed')
+    g=bytearray(gear_original)
     o=bytearray(original);edits=[]
     def patch(buf,base,addr,old,new):
         off=addr-base
@@ -410,6 +427,9 @@ def apply(rom,payload=None,code_patches=None):
     if len(matches)!=1:raise ValueError('Row loader callers changed')
     call(OVBASE+matches[0],0x21e5334,'load_rows')
     call(0x21e4b5a,0x20071b0,'exit_free')
+    # Phone-call pages wait for A/B at every text speed (D-1600): the call printer's
+    # only AddTextPrinterParameterized call goes through call_print.
+    patch(g,CALL_OVBASE,CALL_SITE,bl(CALL_SITE,ADD_PRINTER),bl(CALL_SITE,payload['symbols']['call_print']))
     # No code patch may touch a byte text speed edits, nor the reviewed routines and
     # data it calls or depends on (DEPENDENCIES). The heap-fix halfword is the one
     # intended dependency on a code patch; it is only read, and must already hold
@@ -427,8 +447,9 @@ def apply(rom,payload=None,code_patches=None):
     table=bytearray(rom.arm9OverlayTable)
     for off in range(0,len(table),32):
         if struct.unpack_from('<I',table,off)[0]==50:struct.pack_into('<I',table,off+8,len(o));break
-    rom.arm9OverlayTable=bytes(table);rom.files[ov.fileID]=bytes(o)
-    return {'itcm_start':hex(BASE),'itcm_end':hex(end),'payload_code_sha256':digest(blob),'overlay_sha256':digest(o),'arm9_sha256':digest(rom.arm9),'source_code_sha256':source_digest(),'edits':edits,'labels':3,
+    rom.arm9OverlayTable=bytes(table);rom.files[ov.fileID]=bytes(o);rom.files[gear.fileID]=bytes(g)
+    return {'itcm_start':hex(BASE),'itcm_end':hex(end),'payload_code_sha256':digest(blob),'overlay_sha256':digest(o),
+            'call_overlay_sha256':digest(g),'arm9_sha256':digest(rom.arm9),'source_code_sha256':source_digest(),'edits':edits,'labels':3,
             'arm9_code_patches':{'normalised_to_expect':[c[0] for c in cps],
                                  'held_value':[c[0] for c in cps if bytes(current[c[2]:c[2]+len(c[4])])==c[4]]}}
 
@@ -440,6 +461,18 @@ def verify(rom,report,code_patches=None):
     if digest(ov.data)!=report['overlay_sha256']:raise ValueError('Patched Options overlay changed')
     if ov.ramAddress!=OVBASE or ov.ramSize!=len(ov.data) or ov.bssSize:
         raise ValueError('Patched Options overlay layout changed')
+    # Pokégear: the receipt hash, and independently the call redirect itself, with
+    # every other byte of the overlay still the reviewed original.
+    gear=rom.loadArm9Overlays()[CALL_OVERLAY];g=bytes(gear.data)
+    if digest(g)!=report.get('call_overlay_sha256'):raise ValueError('Patched Pokégear overlay changed')
+    if (gear.ramAddress!=CALL_OVBASE or gear.ramSize!=CALL_OVSIZE or len(g)!=CALL_OVSIZE
+            or gear.bssSize or gear.compressed):
+        raise ValueError('Patched Pokégear overlay layout changed')
+    site=CALL_SITE-CALL_OVBASE
+    if g[site:site+4]!=bl(CALL_SITE,payload['symbols']['call_print']):
+        raise ValueError(f'Native runtime contract changed at {CALL_SITE:08x}: phone-call printer not redirected')
+    if digest(g[:site]+bl(CALL_SITE,ADD_PRINTER)+g[site+4:])!=CALL_OVHASH:
+        raise ValueError('Pokégear overlay differs from the reviewed original outside the call redirect')
     sections=rom.loadArm9().sections
     blob=bytes.fromhex(payload['code'])
     if bytes(sections[1].data[0x620:0x620+len(blob)])!=blob:raise ValueError('Native payload changed')
@@ -470,7 +503,7 @@ def verify(rom,report,code_patches=None):
         off=addr-0x02000000
         if bytes(sections[0].data[off:off+len(want)])!=want:
             raise ValueError(f'Native runtime contract changed at {addr:08x}')
-    return {'status':'passed','native_bytes':len(blob),'options_rows':7,'new_game_default':'FAST','legacy_save_default':'NORMAL','speeds':['NORMAL','FAST']}
+    return {'status':'passed','native_bytes':len(blob),'options_rows':7,'phone_call_wait':True,'new_game_default':'FAST','legacy_save_default':'NORMAL','speeds':['NORMAL','FAST']}
 
 if __name__=='__main__':
     import argparse,ndspy.rom

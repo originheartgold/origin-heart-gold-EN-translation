@@ -18,6 +18,12 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / 'work/tools'))
 
 ITCM = 0x01FF8000
+GEAR = 92               # Pokégear overlay: an edit marked with it addresses this overlay's RAM range
+
+
+def bl(src, dst):
+    from text_speed_patch import bl as encode
+    return encode(src, dst)
 
 
 def units(text):
@@ -29,7 +35,7 @@ def nop(address, original):
     return (address, bytes.fromhex(original), bytes.fromhex('c046'))
 
 
-# name: {description, edits [(address, original bytes, broken bytes)], gates}.
+# name: {description, edits [(address, original bytes, broken bytes[, GEAR])], gates}.
 # 'gates' maps every gate that must FAIL on the fault to a substring its errors
 # must contain: text from the gate's own checks (validate_release.fault_verdict never
 # accepts an unexpected Python exception as detection). A fault with 'dead' instead
@@ -38,7 +44,8 @@ def nop(address, original):
 # that the gates' frame model matches the broken payload: such a fault can only be
 # caught by the product checks (frames, drops, frame stops), not by the model check.
 B = bytes.fromhex
-# Addresses are those of the reviewed D-1604 payload (NORMAL / FAST, 1406 bytes).
+# Addresses are those of the reviewed D-1604 payload (NORMAL / FAST, with the phone-call
+# wrapper call_print at 0x01FF8B40: 1466 bytes; code before it unchanged from 1406 bytes).
 # Removed with SLOW (D-1604): 'slow-flat' (SLOW's phase: there is no SLOW and no phase)
 # and 'no-phase-reset' (init_printer and the private +0x34 phase byte no longer exist).
 FAULTS = {
@@ -70,7 +77,7 @@ FAULTS = {
     'label-overflow': {
         'description': 'FAST label replaced by a ten-letter label',
         # labels[2] is u16[11]: FAST, terminator, six zero units.
-        'edits': [(0x01FF8B6C, units('FAST') + bytes(12), units('FASTFASTFA'))],
+        'edits': [(0x01FF8BA8, units('FAST') + bytes(12), units('FASTFASTFA'))],
         'gates': {'options': 'label', 'save': 'label'}},
     'new-game-normal': {
         'description': 'new-game Options initialiser sets NORMAL instead of FAST (main ARM9)',
@@ -78,8 +85,17 @@ FAULTS = {
         'gates': {'new-game': 'does not start at FAST'}},
     'arena-overlap': {
         'description': 'SDK ITCM arena lower bound put back over the payload (main ARM9 data)',
-        'edits': [(0x020D1A28, B('a08bff01'), B('2086ff01'))],
+        'edits': [(0x020D1A28, B('e08bff01'), B('2086ff01'))],
         'gates': {'lifecycle': 'ITCM arena', 'options': 'ITCM arena'}},
+    # Phone-call wait (D-1600, bug D-1599).
+    'no-call-redirect': {
+        'description': 'Pokégear call printer calls AddTextPrinterParameterized directly again (overlay 92)',
+        'edits': [(0x021F1228, bl(0x021F1228, 0x01FF8B41), bl(0x021F1228, 0x02020834), GEAR)],
+        'gates': {'phone-call': 'advanced without input'}},
+    'call-clear-noop': {
+        'description': 'call_print no longer clears auto-scroll (blx SetAutoScrollParam -> nop)',
+        'edits': [nop(0x01FF8B50, '8847')],
+        'gates': {'phone-call': 'advanced without input'}},
     'no-control-stop': {
         'description': 'batching no longer stops before control codes',
         'edits': [nop(0x01FF878E, '27d3'), nop(0x01FF8796, '23d3'), nop(0x01FF879C, '20d0')],
@@ -201,15 +217,27 @@ def main():
     if main.ramAddress != 0x02000000:
         raise SystemExit('unexpected ARM9 main section')
     data = {ITCM: bytearray(itcm.data), main.ramAddress: bytearray(main.data)}
-    for address, before, after in edits:
+    gear = rom.loadArm9Overlays()[GEAR]
+    gear_data = bytearray(gear.data)
+    if gear.compressed:
+        raise SystemExit('unexpected compressed Pokégear overlay')
+    for address, before, after, *where in edits:
         if len(after) > len(before):
             raise SystemExit(f'{a.fault}: edit at {address:#x} grows')
         after = after + before[len(after):]
-        start = ITCM if address < 0x02000000 else main.ramAddress
-        section, off = data[start], address - start
+        if where == [GEAR]:
+            start, section = gear.ramAddress, gear_data
+            if not start <= address < start + len(gear_data):
+                raise SystemExit(f'{a.fault}: {address:#x} is outside overlay {GEAR}')
+        elif where:
+            raise SystemExit(f'{a.fault}: unknown edit target {where}')
+        else:
+            start = ITCM if address < 0x02000000 else main.ramAddress
+            section = data[start]
+        off = address - start
         if bytes(section[off:off + len(before)]) != before:
             raise SystemExit(f'{a.fault}: candidate bytes at {address:#x} are not the reviewed ones')
-        if start == ITCM:
+        if section is data[ITCM]:
             rel = address - payload['base']
             if bytes(code[rel:rel + len(before)]) != before:
                 raise SystemExit(f'{a.fault}: payload bytes at {address:#x} are not the reviewed payload')
@@ -217,6 +245,7 @@ def main():
         section[off:off + len(before)] = after
     itcm.data, main.data = bytes(data[ITCM]), bytes(data[main.ramAddress])
     rom.arm9 = arm9.save(compress=False)
+    rom.files[gear.fileID] = bytes(gear_data)
     target = out / f'FAULT-{a.fault}.nds'
     rom.saveToFile(str(target))
     derived = dict(payload, code=code.hex(), fault={'name': a.fault, 'description': description,

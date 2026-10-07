@@ -16,7 +16,7 @@ class PayloadTests(unittest.TestCase):
         self.assertEqual(p['source_sha256'],speed.source_digest())
         self.assertLessEqual(speed.BASE+len(code),0x01ffa000)
         for name in ['print_task','load_rows','load_choice','load_label','exit_free','draw_label','setup_sprites',
-                     'frame_end','pass_end']:
+                     'frame_end','pass_end','call_print']:
             target=p['symbols'][name]
             self.assertEqual(target&1,1,name)
             self.assertTrue(speed.BASE <= (target&~1) < speed.BASE+len(code),name)
@@ -184,7 +184,7 @@ class CodePatchGuardTests(unittest.TestCase):
         tails={lo for lo,_,name in speed.CALLED_ROUTINES if 'tail-called' in name}
         main=[t for t in speed.native_call_targets() if t<speed.OVBASE]
         overlay=[t for t in speed.native_call_targets() if t>=speed.OVBASE]
-        self.assertEqual(len(main),17)
+        self.assertEqual(len(main),18)
         self.assertEqual({t&~1 for t in main}|tails,entries)
         self.assertEqual(overlay,[0x021e5335,0x021e5acd])
         # Literal words in the compiled payload that point into main ARM9 code are
@@ -195,6 +195,24 @@ class CodePatchGuardTests(unittest.TestCase):
             if speed.ARM9BASE<=w<0x02110000 and w&1:self.assertIn(w&~1,entries,hex(w))
         self.assertEqual(len(speed.dependency_ranges(0x110000)),len(speed.DEPENDENCIES))
         for lo,hi,name in speed.DEPENDENCIES:self.assertLess(lo,hi,name)
+
+    def test_phone_call_wrapper_targets_are_reviewed(self):
+        # call_print clears auto-scroll through SetAutoScrollParam, then calls the
+        # original AddTextPrinterParameterized; both entries are reviewed routines.
+        targets=speed.native_call_targets()
+        for target in (0x02002b51,speed.ADD_PRINTER|1):self.assertIn(target,targets)
+        routines={lo:hi for lo,hi,_ in speed.CALLED_ROUTINES}
+        self.assertEqual(routines[0x02002b50],0x02002b8c)
+        self.assertEqual(routines[speed.ADD_PRINTER],0x02020884)
+        # Its range is enforced: a code patch inside the setter is a dependency clash.
+        self.assertEqual(speed.overlapping([('p','arm9',0x2b6a,b'\0\0',b'\1\1')],speed.dependency_ranges(0x110000)),['p'])
+        with patch.object(speed,'CALLED_ROUTINES',tuple(r for r in speed.CALLED_ROUTINES if r[0]!=0x02002b50)):
+            with self.assertRaisesRegex(ValueError,'unreviewed routine 0x2002b51'):speed.dependency_ranges(0x110000)
+
+    def test_overlay92_code_patch_fails(self):
+        for name in ('overlay92','overlay092'):
+            with self.subTest(file=name),self.assertRaisesRegex(ValueError,'targets overlay 92'):
+                speed.code_patch_ranges([cp('gear',name,0x10,'0x1','0x2')])
 
     def test_unreviewed_native_call_target_fails_closed(self):
         for target in (0x02030001,0x02030000,0x02200001):
@@ -313,7 +331,8 @@ class RomTests(unittest.TestCase):
         reparsed=ndspy.rom.NintendoDSRom(self.patched.save())
         self.assertEqual(speed.verify(reparsed,self.report)['status'],'passed')
         changed=[i for i,(a,b) in enumerate(zip(self.original.files,reparsed.files)) if a!=b]
-        self.assertEqual(changed,[self.original.loadArm9Overlays()[50].fileID])
+        ovs=self.original.loadArm9Overlays()
+        self.assertEqual(changed,sorted([ovs[50].fileID,ovs[92].fileID]))
         self.assertEqual(self.original.arm7,reparsed.arm7)
         self.assertEqual(self.original.arm7OverlayTable,reparsed.arm7OverlayTable)
         # The ITCM extension does not move main code, DTCM, or main BSS.
@@ -359,15 +378,66 @@ class RomTests(unittest.TestCase):
         self.assertEqual(struct.unpack_from('<4I',b,row_ptr-base+14*8),(7,5,7,6))
 
     def test_unknown_binary_fails_before_mutation(self):
-        for kind in ['arm9','overlay']:
+        for kind in ['arm9','overlay','overlay92','overlay92-site']:
             rom=copy.deepcopy(self.original)
             if kind=='arm9':
                 a=bytearray(rom.arm9);a[0x20a46]^=1;rom.arm9=bytes(a)
             else:
-                i=rom.loadArm9Overlays()[50].fileID;b=bytearray(rom.files[i]);b[0]^=1;rom.files[i]=bytes(b)
+                n,off=(50,0) if kind=='overlay' else (92,0x100) if kind=='overlay92' else (92,speed.CALL_SITE-speed.CALL_OVBASE)
+                i=rom.loadArm9Overlays()[n].fileID;b=bytearray(rom.files[i]);b[off]^=1;rom.files[i]=bytes(b)
             before=rom.save()
-            with self.assertRaises(ValueError):speed.apply(rom)
+            with self.subTest(kind=kind),self.assertRaisesRegex(ValueError,'changed|Unreviewed'):speed.apply(rom)
             self.assertEqual(before,rom.save())
+
+    def gear(self,rom):
+        o=rom.loadArm9Overlays()[92];return o.fileID,bytearray(rom.files[o.fileID])
+
+    def test_phone_call_redirect(self):
+        fid,g=self.gear(self.patched);site=speed.CALL_SITE-speed.CALL_OVBASE
+        call=speed.load_payload()['symbols']['call_print']
+        self.assertEqual(bytes(g[site:site+4]),speed.bl(speed.CALL_SITE,call))
+        _,o=self.gear(self.original)
+        self.assertEqual(bytes(o[site:site+4]),speed.bl(speed.CALL_SITE,speed.ADD_PRINTER))
+        # Exactly one four-byte difference in the overlay; size and table entry unchanged.
+        self.assertEqual([i for i in range(len(o)) if o[i]!=g[i]],[i for i in range(site,site+4) if o[i]!=g[i]])
+        self.assertEqual(len(o),len(g))
+        self.assertEqual([e for e in self.report['edits'] if int(e['address'],16)==speed.CALL_SITE],
+                         [{'address':hex(speed.CALL_SITE),'before':speed.bl(speed.CALL_SITE,speed.ADD_PRINTER).hex(),
+                           'after':speed.bl(speed.CALL_SITE,call).hex()}])
+        self.assertEqual(self.report['call_overlay_sha256'],speed.digest(bytes(g)))
+
+    def test_overlay92_already_redirected_is_refused(self):
+        # Only the Pokégear edit present (e.g. a partial earlier application).
+        rom=copy.deepcopy(self.original);fid,g=self.gear(rom);site=speed.CALL_SITE-speed.CALL_OVBASE
+        g[site:site+4]=speed.bl(speed.CALL_SITE,speed.load_payload()['symbols']['call_print']);rom.files[fid]=bytes(g)
+        before=rom.save()
+        with self.assertRaisesRegex(ValueError,'Pokégear overlay changed'):speed.apply(rom)
+        self.assertEqual(before,rom.save())
+
+    def test_verify_fails_without_phone_call_redirect(self):
+        # Undo only the Pokégear redirect; a refreshed receipt must not hide it.
+        rom=copy.deepcopy(self.patched);fid,g=self.gear(rom);site=speed.CALL_SITE-speed.CALL_OVBASE
+        g[site:site+4]=speed.bl(speed.CALL_SITE,speed.ADD_PRINTER);rom.files[fid]=bytes(g)
+        report=copy.deepcopy(self.report)
+        with self.assertRaisesRegex(ValueError,'Pokégear overlay changed'):speed.verify(rom,report)
+        report['call_overlay_sha256']=speed.digest(bytes(g))
+        with self.assertRaisesRegex(ValueError,'phone-call printer not redirected'):speed.verify(rom,report)
+        # Redirect present, but another overlay byte changed: still refused.
+        rom=copy.deepcopy(self.patched);fid,g=self.gear(rom);g[0x100]^=1;rom.files[fid]=bytes(g)
+        report=copy.deepcopy(self.report);report['call_overlay_sha256']=speed.digest(bytes(g))
+        with self.assertRaisesRegex(ValueError,'outside the call redirect'):speed.verify(rom,report)
+        # A receipt without the Pokégear hash (older candidates) is refused.
+        report=copy.deepcopy(self.report);report.pop('call_overlay_sha256')
+        with self.assertRaisesRegex(ValueError,'Pokégear overlay changed'):speed.verify(self.patched,report)
+
+    def test_overlay92_code_patch_fails_before_mutation(self):
+        synthetic=dict(id='gear',file='overlay92',offset='0x0',expect='0x0',value='0x1',enabled=True)
+        rom=copy.deepcopy(self.original);before=rom.save()
+        with self.assertRaisesRegex(ValueError,'targets overlay 92'):
+            speed.apply(rom,code_patches=self.code_patches()+[synthetic])
+        self.assertEqual(before,rom.save())
+        with self.assertRaisesRegex(ValueError,'targets overlay 92'):
+            speed.verify(self.patched,self.report,code_patches=self.code_patches()+[synthetic])
 
     def test_double_apply_and_stale_payload_fail_closed(self):
         with self.assertRaises(ValueError):speed.apply(copy.deepcopy(self.patched))
@@ -400,6 +470,8 @@ class RomTests(unittest.TestCase):
         rom=copy.deepcopy(self.patched);a=bytearray(rom.arm9);a[-40]^=1;rom.arm9=bytes(a)
         with self.assertRaises(ValueError):speed.verify(rom,self.report)
         rom=copy.deepcopy(self.patched);i=rom.loadArm9Overlays()[50].fileID;b=bytearray(rom.files[i]);b[-4]^=1;rom.files[i]=bytes(b)
+        with self.assertRaises(ValueError):speed.verify(rom,self.report)
+        rom=copy.deepcopy(self.patched);i=rom.loadArm9Overlays()[92].fileID;b=bytearray(rom.files[i]);b[-4]^=1;rom.files[i]=bytes(b)
         with self.assertRaises(ValueError):speed.verify(rom,self.report)
         rom=copy.deepcopy(self.patched);table=bytearray(rom.arm9OverlayTable)
         for off in range(0,len(table),32):

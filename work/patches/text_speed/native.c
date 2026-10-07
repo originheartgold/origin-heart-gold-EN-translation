@@ -304,6 +304,17 @@ void pass_end(void) {
      * measure it across the VBlank wait. */
     s->marked=0;
 }
+/* Pokégear phone calls (D-1600, bug D-1599). Battles leave the renderer's
+ * auto-scroll mode on (SetAutoScrollParam(3), never cleared at battle exit),
+ * so call pages advanced by themselves after a battle. The single call-page
+ * printer in overlay 92 now comes here: clear auto-scroll (both bits, as a
+ * field message box does with SetAutoScrollParam(0)), then print exactly as
+ * before. The A/B speed-up and touch-advance flags stay as the Pokégear set
+ * them. Independent of the text-speed value, including the reserved values. */
+unsigned call_print(void *win,unsigned font,void *str,unsigned x,unsigned y,unsigned speed,unsigned color,void *cb) {
+    FN(0x02002b51,void (*)(unsigned))(0);
+    return FN(0x02020835,unsigned (*)(void *,unsigned,void *,unsigned,unsigned,unsigned,unsigned,void *))(win,font,str,x,y,speed,color,cb);
+}
 /* Defined last so that it is the last part of the payload block (zero at boot;
  * the gates compare the payload's code and data up to it). */
 struct frame_state text_speed_state;

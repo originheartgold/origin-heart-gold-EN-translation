@@ -73,6 +73,7 @@ def gates(args, out):
             out / 'controls' / 'report.json'),
         'battle': plain('battle_pacing.py', 'battle'),
         'natural-dialogue': plain('natural_dialogue.py', 'natural-dialogue'),
+        'phone-call': plain('phone_call_wait.py', 'phone-call'),
         'printers': plain('printer_smoke.py', 'printers'),
         'scenes': plain('scene_pacing.py', 'scenes'),
         'field-rate': plain('field_rate.py', 'field-rate'),
@@ -138,6 +139,14 @@ def observations(name, r):
             return {'combinations': len(r['cross_product']), 'getter_checks': r['getter_checks']}
         if name == 'save':
             return r['modes']
+        if name == 'phone-call':
+            return {n: {'flags_before_call': s.get('flags_before_call'),
+                        'messages': (s.get('call') or {}).get('messages'),
+                        'auto_waits': (s.get('call') or {}).get('auto_waits'),
+                        'pages': [(p['glyphs'], (p.get('hold') or {}).get('glyphs'), p.get('press_latency'))
+                                  for p in s.get('pages', [])],
+                        'next_battle_auto': (s.get('next_battle') or {}).get('auto_wait_completions')}
+                    for n, s in r['scenarios'].items()}
         if name == 'new-game':
             return [e['event'] for e in r['events']]
     except (KeyError, TypeError) as exc:

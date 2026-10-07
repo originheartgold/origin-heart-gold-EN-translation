@@ -88,6 +88,10 @@ def metric(name, obs):
     if name == 'field-rate' and isinstance(dget(obs, 'table'), dict) and obs['table']:
         fpg = [x['fpg'][1] for x in obs['table'].values() if x.get('fpg') and x['fpg'][1] is not None]
         return f'{len(obs["table"])} scenes, max fpg {max(fpg) if fpg else "?"}'
+    if name == 'phone-call' and isinstance(obs, dict) and obs:
+        pages = sum(len(v.get('pages') or []) for v in obs.values() if isinstance(v, dict))
+        msgs = max((v.get('messages') or 0 for v in obs.values() if isinstance(v, dict)), default=0)
+        return f'{len(obs)} scenarios, {pages} pages, max msgs {msgs}'
     if name == 'save' and isinstance(obs, list):
         return f'{len(obs)} modes'
     if obs is None or (isinstance(obs, (dict, list)) and not obs):

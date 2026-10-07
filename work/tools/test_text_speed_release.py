@@ -58,7 +58,8 @@ class Faults(unittest.TestCase):
             self.assertTrue(spec.get('gates') or spec.get('dead'), name)
             self.assertFalse(spec.get('gates') and spec.get('dead'), name)
             self.assertLessEqual(set(spec.get('gates', {})), known, name)
-            for address, before, after in spec['edits']:
+            for address, before, after, *where in spec['edits']:
+                self.assertIn(where, ([], [fault_fixture.GEAR]), name)
                 self.assertLessEqual(len(after), len(before), name)
 
     def test_verdict_needs_every_declared_gate_to_fail_for_its_reason(self):
