@@ -45,3 +45,26 @@ test('patcher stays disabled for absent or malformed release metadata', () => {
   assert.equal(isPatchManifest(good), true);
   for (const value of [null, {}, {...good, available: false}, {...good, tag: 7}, {...good, file: '../patch.xdelta'}, {...good, size: -1}, {...good, size: Infinity}, {...good, patched_sha1: 'bad'}, {...good, release_url: 'javascript:alert(1)'}, {...good, prerelease: 'false'}]) assert.equal(isPatchManifest(value), false);
 });
+
+test('wild-held sources retain valid species, location links and conditional rates', () => {
+  const items = json('../src/data/items.json');
+  const species = new Set(json('../src/data/species.json').map(s => s.id));
+  const areas = new Set(json('../src/data/areas.json').map(a => a.slug));
+  assert.equal(items.filter(i => i.wildHeld?.length).length, 72);
+  for (const item of items) {
+    if (item.unavailableReason) assert.deepEqual(item.wildHeld, [], item.name);
+    for (const holder of item.wildHeld ?? []) {
+      assert.ok(species.has(holder.species), item.name);
+      assert.ok([5, 50, 100].includes(holder.chance), item.name);
+      assert.ok(holder.locations.length, item.name);
+      for (const location of holder.locations) {
+        assert.ok(areas.has(location.area), `${item.name}: ${location.area}`);
+        assert.ok(location.method, item.name);
+        assert.ok(location.encounterRate === null ||
+          (location.encounterRate > 0 && location.encounterRate <= 100), item.name);
+      }
+    }
+  }
+  const lightBall = items.find(i => i.slug === 'light-ball');
+  assert.equal(lightBall.wildHeld.find(h => h.species === 25).chance, 5);
+});

@@ -3,9 +3,16 @@ import Availability from '../../components/Availability.astro';
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { items, url } from '../../lib/data';
 const pockets = [...new Set(items.map((i) => i.pocket))];
-const kinds = (i: typeof items[number]) => [...new Set(i.sources.map((s) => s.kind))].join(', ');
+const kinds = (i: typeof items[number]) => [...new Set([
+	...i.sources.map((s) => s.kind), ...((i.wildHeld?.length ?? 0) ? ['held by wild Pokémon'] : []),
+])].join(', ');
+const hasSource = (i: typeof items[number]) => !!(i.sources.length || i.wildHeld?.length);
+const places = (i: typeof items[number]) => new Set([
+	...i.sources.map((s) => s.area ?? s.place),
+	...(i.wildHeld ?? []).flatMap((holder) => holder.locations.map((location) => location.area)),
+]).size;
 ---
-<StarlightPage frontmatter={{ title: 'Items', description: 'Every item in Origin HeartGold and where to get it: item balls, hidden items, gifts and shops.', tableOfContents: false }}>
+<StarlightPage frontmatter={{ title: 'Items', description: 'Every item in Origin HeartGold and where to get it: wild Pokémon, item balls, hidden items, gifts and shops.', tableOfContents: false }}>
 	<p>All {items.length} named items in the game data, including entries unavailable through normal play. Shop prices are shown only where a shop sells the item. NOT AVAILABLE IN GAME means unavailable through normal play; the data remains here for save-editor and in-game generator reference.</p>
 	<div class="table-filter" data-table="item-table">
 		<input type="search" placeholder="Search items…" aria-label="Search items" />
@@ -25,13 +32,13 @@ const kinds = (i: typeof items[number]) => [...new Set(i.sources.map((s) => s.ki
 		<thead><tr><th>Item</th><th>Pocket</th><th>Shop price</th><th>How to get it</th><th>Places</th><th>Availability</th></tr></thead>
 		<tbody>
 			{items.map((i) => (
-				<tr data-pocket={i.pocket} data-availability={i.unavailableReason ? 'unavailable' : i.sources.length ? 'documented' : 'unknown'}>
+				<tr data-pocket={i.pocket} data-availability={i.unavailableReason ? 'unavailable' : hasSource(i) ? 'documented' : 'unknown'}>
 					<td><a href={url(`/items/${i.slug}/`)}>{i.name}</a>{i.game && <span class="sr-only"> {i.game}</span>}</td>
 					<td>{i.pocket}</td>
 					<td>{i.price && i.sources.some((s) => s.kind === 'shop') ? `$${i.price.toLocaleString('en-US')}` : '—'}</td>
 					<td>{kinds(i) || '—'}</td>
-					<td>{new Set(i.sources.map((s) => s.place)).size || ''}</td>
-					<td>{i.unavailableReason ? <Availability reason={i.unavailableReason} /> : i.sources.length ? 'Documented source' : 'No confirmed source'}</td>
+					<td>{places(i) || ''}</td>
+					<td>{i.unavailableReason ? <Availability reason={i.unavailableReason} /> : hasSource(i) ? 'Documented source' : 'No confirmed source'}</td>
 				</tr>
 			))}
 		</tbody>

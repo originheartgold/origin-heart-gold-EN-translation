@@ -76,7 +76,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Test guide parsers and trainer rules (no ROM required)
-        run: python3 -m unittest work/tools/docs/test_gen_docs.py work/tools/docs/test_trainer_guide.py work/tools/docs/test_trainer_runtime.py
+        run: python3 -m unittest work/tools/docs/test_gen_docs.py work/tools/docs/test_trainer_guide.py work/tools/docs/test_trainer_runtime.py work/tools/site/test_wild_held.py work/tools/site/test_safari_held.py
       - name: Generate the guide pages from guide/*.md
         run: python3 work/tools/site/sync_guide.py
       # The PDF is optional: if these two steps fail, the site deploys without it and

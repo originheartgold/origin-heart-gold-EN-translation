@@ -3,13 +3,14 @@ import Availability from '../../components/Availability.astro';
 import FormChanges from '../../components/FormChanges.astro';
 import { formChanges } from '../../lib/verified-mechanics';
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import { items, areaUrl, url, type Item } from '../../lib/data';
+import { items, areaUrl, areaBySlug, speciesById, pokemonUrl, url, type Item } from '../../lib/data';
 
 export function getStaticPaths() {
 	return items.map((i) => ({ params: { slug: i.slug }, props: { i } }));
 }
 const { i } = Astro.props as { i: Item };
 const forms = formChanges.filter((f) => f.item === i.id);
+const wildHeld = i.wildHeld ?? [];
 const groups = new Map<string, Item['sources']>();
 for (const s of i.sources) {
 	if (!groups.has(s.kind)) groups.set(s.kind, []);
@@ -28,7 +29,7 @@ const priceLine = i.price ? (sold ? ` · buy for ${money(i.price)}, sells for ${
 <StarlightPage frontmatter={{ title: i.name, description: `Where to get ${i.name} in Origin HeartGold.` }}>
 	<p class="small muted">{i.pocket} pocket{priceLine}{i.game ? ` · in-game spelling: ${i.game}` : ''}</p>
 	<Availability reason={i.unavailableReason} detail />
-	{!i.unavailableReason && i.sources.length === 0 && <p><strong>No confirmed way to get it.</strong> {i.note ?? 'No source was found in the game data.'}</p>}
+	{!i.unavailableReason && i.sources.length === 0 && wildHeld.length === 0 && <p><strong>No confirmed way to get it.</strong> {i.note ?? 'No source was found in the game data.'}</p>}
 	{[...groups].map(([kind, list]) => <>
 		<h2>{label[kind] ?? kind}</h2>
 		<ul>
@@ -45,6 +46,29 @@ const priceLine = i.price ? (sold ? ` · buy for ${money(i.price)}, sells for ${
 			))}
 		</ul>
 	</>)}
+	{wildHeld.length > 0 && <>
+		<h2 id="wild-held">Wild Pokémon holding this item</h2>
+		<p>These wild Pokémon can carry {i.name}. The hold chance is the base chance that the Pokémon has the item when encountered, before Ability effects such as Compound Eyes. The encounter chance shows how often that Pokémon appears for the listed method and time.</p>
+		<p class="small muted">Locations are in rough story order for each Pokémon. Radio, swarm and other special encounters require the conditions shown; see the location page for details. <a href={url('/calendar/')}>Calendar encounters</a> can replace ordinary encounter slots. Safari Zone entries depend on the selected area and, where noted, its objects and their development. A dash means no fixed encounter chance is listed.</p>
+		<table class="compact">
+			<thead><tr><th>Pokémon</th><th>Hold chance</th><th>Locations</th></tr></thead>
+			<tbody>{wildHeld.map((holder) => <tr>
+				<td><a href={pokemonUrl(holder.species)}>{speciesById.get(holder.species)?.name ?? `Pokémon ${holder.species}`}</a></td>
+				<td>{holder.chance}%</td>
+				<td><a href={`#wild-holder-${holder.species}`}>View locations ({new Set(holder.locations.map((location) => location.area)).size})</a></td>
+			</tr>)}</tbody>
+		</table>
+		{wildHeld.map((holder) => <>
+			<h3 id={`wild-holder-${holder.species}`}><a href={pokemonUrl(holder.species)}>{speciesById.get(holder.species)?.name ?? `Pokémon ${holder.species}`}</a> · {holder.chance}% hold chance</h3>
+			<table class="compact">
+				<thead><tr><th>Location</th><th>Method / time / condition</th><th>Level</th><th>Encounter chance</th></tr></thead>
+				<tbody>{holder.locations.map((location) => <tr>
+					<td><a href={areaUrl(location.area)}>{areaBySlug.get(location.area)?.name ?? location.place}</a>{location.place !== areaBySlug.get(location.area)?.name && <span class="small muted"> · {location.place}</span>}</td>
+					<td>{location.method}</td><td>{location.level}</td><td>{location.encounterRate == null ? '—' : `${location.encounterRate}%`}</td>
+				</tr>)}</tbody>
+			</table>
+		</>)}
+	</>}
 	{forms.length > 0 && <>
 		<h2>Held-item transformation</h2>
 		<FormChanges entries={forms} />

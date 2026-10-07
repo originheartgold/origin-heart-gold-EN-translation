@@ -94,9 +94,9 @@
 7. Talk to her **father** (downstairs, at the back on the left). He gives you a **Heart Scale** (once).
 **Reward:** Expert Belt, Twisted Spoon back, Silk Scarf, Heart Scale, and access to the free Extrasensory tutor.
 
-**Notes:** nothing is missable. If the takeover starts mid-quest, the steps wait until Saffron is freed.
+**Notes:** nothing is missable. If the takeover starts mid-quest, the steps wait until Saffron is freed: the magician is back outside after the liberation (tested in an emulator).
 
-*Source:* script files 824 (scripts 4, 6, 27, 34; L2831, L3802, L4665, L6981), 837 (scripts 1, 4, 5; L391, L472, L528, L559, L1038, L1779), 831 (script 13, flag 1874); var 0x40c2 (1 → 5). Positions: house door ≈1297,218, friends ≈1296–1297,223, magician ≈1330,219; inside the house the girl ≈40,7, magician later ≈42,7, father ≈5,7; station item ball ≈20,18.
+*Source:* script files 824 (scripts 4, 6, 27, 34; L2831, L3802, L4665, L6981), 837 (scripts 1, 4, 5; L391, L472, L528, L559, L1038, L1779), 831 (script 13, flag 1874); var 0x40c2 (1 → 5). The outside magician's hide flag 1424 is cleared on first entering Saffron (file 189 @107), set by the takeover (file 17 @12081) and cleared by the liberation only while flag 1518 is set (file 834 @6029 → L6052; 1518 is also the inside magician's hide flag, cleared when he moves in, 824 @6989). 1518 is otherwise set only by the S.S. Anne party battle with Ace Trainer Emily (file 156 @2017), which the waiter requires before the hijack (156 L1646), so it is set in normal play. Emulator (`work/build/harness/guide-review-20261006/ch05/magician.py`, CN ROM; the 1518-clear case also on the EN build; liberation tail run from 834 @6000 with 1424 set and var 0x40c2 = 2): 1518 set → 1424 cleared, magician (object 3) in Saffron; 1518 clear → he stays hidden and the inside magician only says 532#8. Positions: house door ≈1297,218, friends ≈1296–1297,223, magician ≈1330,219; inside the house the girl ≈40,7, magician later ≈42,7, father ≈5,7; station item ball ≈20,18.
 
 ## Saffron City: show the dog lover a Growlithe (unlocks Fire Punch)
 
@@ -115,7 +115,7 @@
 **Where:** the Hunyuan Dojo, the building just west of the Gym on Saffron's north side. Ma Baoguo stands at the top of the hall, between two Poké Balls.
 
 **How it works:**
-1. When you walk in, a scene plays: Master Ma "wins" a sparring match against a young man's Hitmonlee and Hitmonchan.
+1. If you first walk in before the takeover, a scene plays: Master Ma "wins" a sparring match against a young man's Hitmonlee and Hitmonchan. If your first visit comes after the takeover, the scene is skipped. Nothing depends on it.
 2. **Talk to Ma Baoguo first.** He tells you to beat his disciples. Until you've talked to him, the disciples won't battle.
 3. Beat the four disciples. **Pokéfan Enzo** (right side, lower) fights only after the other three.
 
@@ -129,7 +129,7 @@
 4. Battle **Ma Baoguo**: one **Machamp, Lv. 69**. A loss against him or a disciple whites you out; try again.
 **Reward:** pick **one** of the two Poké Balls by the wall: **Hitmonlee** or **Hitmonchan**, Lv. 35. The other stays sealed. Afterwards talk to Ma again for lessons: "Teach me the Lightning Whip!" teaches **Volt Switch** and "Receive, Transform, Release!" teaches **Counter**, $10,000 each (only Pokémon on his list can learn them). **Watch out:** the Lightning Whip is only Volt Switch for a Pokémon that already knows four moves and forgets one; a Pokémon with a free move slot learns **Charge** instead, for the same $10,000 (a hack bug, tested in an emulator; see [the known issue](known-issues.md#lightning-whip-lesson-teaches-charge)). After Saffron is freed his menu also offers "Teach me a little life experience!": just a speech about Team Rocket, no reward.
 
-*Source:* script file 829 (scripts 1, 5, 11, 12, 14–18; flags 1652, 1664–1667, 1698, 1875/1876; lesson menu L1094 → L3025, the extra option at L3248 needs flag 1166 (Saffron freed), Volt Switch L3353 (≤ 3 moves → L6363 `SetMonMove` 268 Charge; 4 moves → @4437 521 Volt Switch, D-1347), Counter L3522, speech L3691). Positions: Dojo door ≈1321,204; Ma ≈7,3; Tina ≈3,5, Lincoln ≈3,8, Tim ≈11,5, Enzo ≈11,8.
+*Source:* script file 829 (scripts 1, 5, 11, 12, 14–18; flags 1652, 1664–1667, 1698, 1875/1876; the intro is a step trigger at var 0x40c1 = 0, which the scene, the takeover start (file 17 @12105) and the liberation (file 834 @5988) all set to 1; the disciples only check flag 1666, set by talking to Ma (L1086); lesson menu L1094 → L3025, the extra option at L3248 needs flag 1166 (Saffron freed), Volt Switch L3353 (≤ 3 moves → L6363 `SetMonMove` 268 Charge; 4 moves → @4437 521 Volt Switch, D-1347), Counter L3522, speech L3691). Positions: Dojo door ≈1321,204; Ma ≈7,3; Tina ≈3,5, Lincoln ≈3,8, Tim ≈11,5, Enzo ≈11,8.
 
 ## Saffron City (takeover): help Ma Baoguo fight off Team Rocket
 
@@ -213,7 +213,7 @@
 
 **Where:** the lab in the north of the island.
 
-**Who gets it / when:** after the Volcano Badge. Before that the guard at the door turns you away.
+**Who gets it / when:** after the Volcano Badge. Before that the guard at the door turns you away. **This scene is part of the story:** until it has played, Sabrina in the [Pokémon Tower](03-vermilion-to-celadon.md#pokémon-tower-make-sabrina-laugh-the-marsh-badge-trial) only says she's "deep in her training", so come here before you go for the Marsh Badge.
 
 **How it works:**
 1. Walk up to the lab door and talk to the guard. A researcher runs out: "the monster in the lab has gone berserk" and Dr. Fuji has sealed the lab with emergency lockdown doors. The guard leaves and the lab is open.
@@ -240,7 +240,7 @@
 
 **Notes:** the R&D logs on the desk in the south-east part of the lab are four pages; say Yes to keep reading. If you've reached the matching step of the Mew hunt (you've freed the Five Island disciple; see [Five Island: the Island Pilgrimage leg](#five-island-the-island-pilgrimage-leg-five-island-trials)), reading all four makes **Mew** appear and flee, which moves that chain on. After the scene Blaine's staff mourn Amber and Blaine swears revenge on Team Rocket.
 
-*Source:* script files 812 (script 8, L3032–L5081; flags 1215, 1223), 852 (scripts 3–9, 12; L541–L2902 doors, flags 315 and 317–320; L717–L2634 Mewtwo, flag 316; L2935–L3108 Mew, needs var 0x409c = 10), 15 L1669 (Gym sets 1223). Computers and the doors they toggle (lab map zone 71): 15,3 → 1F door ≈3,11 (flag 315); 5,36 → east door ≈26,55 (317); 13,36 → west door ≈4,55 (318); 29,66 → ≈4,55 and ≈4,73 (318, 320); 10,59 → ≈26,55 and ≈7,64 (317, 319). Manual ≈23,60; stairs arrive at 5,38; back-room trigger ≈4,90; R&D log ≈25,87; Old Amber ≈29,94, Gracidea ≈2,67, Steel Armor ≈30,86. Route: a collision search over all 32 door combinations reaches ≈4,90 only with ≈3,11, ≈4,55, ≈7,64 and ≈4,73 open.
+*Source:* script files 812 (script 8, L3032–L5081; flags 1215, 1223), 852 (scripts 3–9, 12; L541–L2902 doors, flags 315 and 317–320; L717–L2634 Mewtwo, flag 316; L2935–L3108 Mew, needs var 0x409c = 10), 15 L1669 (Gym sets 1223). The back-room trigger (script 9) needs var 0x40AF = 0 and the scene sets it to 1 (@2626); Sabrina's Tower trial needs 0x40AF ≠ 0 (file 17 L3237). After the S.S. Anne hijack (file 156 @6600 sets 0) nothing else in Kanto before the Tower sets it (all writes scanned: the other setters are the Viridian Forest scene before the ship, the Viridian City and Victory Road triggers that need 1 or 2, Johto, Sevii and post-game scenes), so the lab scene always comes before the Tower, and Granny Mae's trial (file 782 @5360 sets 1) can't come first. Computers and the doors they toggle (lab map zone 71): 15,3 → 1F door ≈3,11 (flag 315); 5,36 → east door ≈26,55 (317); 13,36 → west door ≈4,55 (318); 29,66 → ≈4,55 and ≈4,73 (318, 320); 10,59 → ≈26,55 and ≈7,64 (317, 319). Manual ≈23,60; stairs arrive at 5,38; back-room trigger ≈4,90; R&D log ≈25,87; Old Amber ≈29,94, Gracidea ≈2,67, Steel Armor ≈30,86. Route: a collision search over all 32 door combinations reaches ≈4,90 only with ≈3,11, ≈4,55, ≈7,64 and ≈4,73 open.
 
 ## Cinnabar Island: the Fire-type quiz (unlocks Heat Wave)
 
@@ -281,13 +281,13 @@
 
 ## Cinnabar Island: small extras
 
-- **S.S. Anne painter (with a Smeargle, south-west of the lab door):** thanks you for saving the S.S. Anne and gives **5 King's Rocks** (once). He's only there if the ship didn't sink ([S.S. Anne: defuse the bomb](03-vermilion-to-celadon.md#ss-anne-defuse-the-bomb-or-the-ship-sinks-one-chance)).
+- **S.S. Anne painter (with a Smeargle, south-west of the lab door):** thanks you for saving the S.S. Anne and gives **5 King's Rocks** (once). He's only there if the ship didn't sink ([S.S. Anne: defuse the bomb](03-vermilion-to-celadon.md#ss-anne-defuse-the-bomb-or-the-ship-sinks-one-chance)), or after [the Celebi trip at the Ilex Forest shrine](09-ilex-goldenrod.md#forest-of-time-celebi-takes-you-back-to-the-ss-anne-post-game-only-if-the-ship-sank) has undone the sinking.
 - **Sailor Leroy (just south-west of the Pokémon Center door):** can't find the Cinnabar Gym and challenges you instead. Kingler, Drapion and Kecleon, all Lv. 58. Win for a **Flame Plate** (once).
 - **The graffiti couple (a few steps north-east of the Pokémon Center door):** they want to carve their names into the rock. "Stop them from scribbling all over the scenic spot?" Yes → Double Battle, Camper Rusty and Youngster Bowie (Hypno 57, Lucario 58 / Sceptile 58, Skarmory 57), no item. No → they carve it, and that choice sticks. **Losing the battle also lets them carve their names**, for good.
 - **Pokémon Center:** a man inside (he grumbles that hardly anyone earns the Volcano Badge) gives **TM50 Overheat** if you show him a **Volcano Badge** (once).
 - **Fossil restoring:** a scientist in the room behind the side door on the west of the island (just north of the Pokémon Center) restores Old Amber and the Helix, Dome, Root, Claw, Armor and Skull Fossils. He's straight ahead at the back of the room. He needs time: come back later. The Pokémon arrives at Lv. 20.
 
-*Source:* script files 812 (scripts 12–14; L3242–L3548; flags 1584, 1742, 1747, 1748; the graffiti flag 1742 is set before the battle, @3390, and a loss whites you out, hack finding D-1420), 813 (script 6, flag 1586), 905 (script 14). Positions: painter ≈1032,489; Leroy ≈1028,508; couple ≈1034,502; Pokémon Center man ≈10,7; fossil scientist ≈4,4 (side door ≈1029,493).
+*Source:* script files 812 (scripts 12–14; L3242–L3548; flags 1584, 1742, 1747, 1748; the graffiti flag 1742 is set before the battle, @3390, and a loss whites you out, hack finding D-1420), 813 (script 6, flag 1586), 905 (script 14). The painter's hide flag 1093 is set by the sinking (file 157 @2852) and cleared only by the Celebi trip (file 52 @4858). Positions: painter ≈1032,489; Leroy ≈1028,508; couple ≈1034,502; Pokémon Center man ≈10,7; fossil scientist ≈4,4 (side door ≈1029,493).
 
 ## Seafoam Islands: the ice walls, Articuno and the researcher (TM14 Blizzard)
 
@@ -299,7 +299,7 @@
 1. **The ice:** "Ordinary means won't move it." Talk to the ice with a **Magcargo** or a **Moltres** as your first healthy party Pokémon and it melts away for good. Nothing else works.
 2. **Before the final Hall of Fame** (the one after you beat Giovanni at League HQ, not your first entry; see [The Hall of Fame: what your two entries unlock](07-league-to-cherrygrove.md#the-hall-of-fame-what-your-two-entries-unlock)): talk to Articuno. You fight a **Lv. 90 Articuno** in a battle where no Balls can be thrown (Timid, Snow Warning, Sheer Cold / Blizzard / Freeze-Dry / Air Slash). Losing whites you out.
 3. Win and it asks "Catch it?". Say Yes and the researcher runs up and begs you to spare Articuno, because catching it could wake Kyogre. "Stop trying to catch Articuno?" No only makes him plead again; Yes gets you **TM14 Blizzard**. After that Articuno just sits there until the final Hall of Fame. Answering No to "Catch it?" does nothing and you can fight it again.
-4. **After the final Hall of Fame:** talk to Articuno → "Catch Articuno?" → a **wild Lv. 90 Articuno** you can catch. Once it's caught or knocked out it's gone.
+4. **After the final Hall of Fame:** talk to Articuno → "Catch Articuno?" → a **wild Lv. 90 Articuno** you can catch. Once it's caught, knocked out or run from, it's gone.
 **Reward:** TM14 Blizzard (the only one in the game) before the final Hall of Fame; Articuno after it. The researcher also teaches **Ice Shard** for free: to players who spared Articuno, and to everyone after the League HQ investigation's Team Rocket scene here (next entry).
 
 **Notes:** **TM14 is missable.** Get it before the Team Rocket scene in the Seafoam Islands during the League HQ investigation (next entry). That scene removes Articuno; it only comes back after [Lance's visit to your home](01-pallet-to-pewter.md#pallet-town-lances-visit-home-after-the-final-hall-of-fame), and by then only the catch battle is left, so TM14 can no longer be obtained. Until that scene, Articuno is there for everyone. (The Route 3 painter's Ralts scene would also remove it, but nothing in the game triggers that scene; see [Known issues](known-issues.md#saffron-city-to-cinnabar-island).)
@@ -317,9 +317,9 @@
 2. Lawrence has Moltres melt the ice. Articuno is taken. Second **Multi Battle** with Misty against **Executive Lawrence** (Moltres 90, Zapdos 90, Pidgeot 88, Aerodactyl 88, Staraptor 88, Noctowl 87) and a Grunt (Raichu 65, Claydol 64, Murkrow 63). Losing whites you out; the scene replays.
 3. Archie summons **Kyogre** with the Blue Orb and escapes with it. You can't stop him. If this was your last lead, you're told to report to League HQ; otherwise "check somewhere else".
 4. **Catching Kyogre (after the final Hall of Fame):** [Lance brings the seized legendary items to your home in Pallet Town](01-pallet-to-pewter.md#pallet-town-lances-visit-home-after-the-final-hall-of-fame), including the **Blue Orb**. Take it to the pedestal at the north end of the chamber and answer Yes to "Use the Blue Orb to summon Kyogre?" → a **wild Lv. 95 Kyogre**.
-**Notes:** Kyogre is one attempt: catch it or knock it out and it's gone for good. Losing whites you out and you can retry. The ice walls melted during the scene come back afterwards; melt them yourself (previous entry) to reach Articuno and the pedestal. Articuno doesn't come back after this scene until [Lance's visit](01-pallet-to-pewter.md#pallet-town-lances-visit-home-after-the-final-hall-of-fame).
+**Notes:** Kyogre is one attempt: catch it, knock it out or run away and it's gone for good. Losing whites you out and you can retry. The ice walls melted during the scene come back afterwards; melt them yourself (previous entry) to reach Articuno and the pedestal. Articuno doesn't come back after this scene until [Lance's visit](01-pallet-to-pewter.md#pallet-town-lances-visit-home-after-the-final-hall-of-fame).
 
-*Source:* script file 195 (script 12, step trigger at 34,52, flag 1133, var 0x408c = 15; script 14 L2410–L2889, flag 2288); files 758 L6356–L6372 (Cerulean Gym starts it), 842 L1916 (Lance gives the Blue Orb). Second Multi Battle Grunt is trainer 417. Pedestal ≈33,20.
+*Source:* script file 195 (script 12, step trigger at 34,52 while var 0x408c = 14; the Cerulean Gym scene sets 14 and clears the scene objects' hide flag 1133, file 758 @6368/@6372; the scene sets 1133 and 0x408c = 15 at its end, @1846/@1854, and hides Articuno, @957, before the second Multi Battle; script 14 L2410–L2889, flag 2288); files 758 L6356–L6372 (Cerulean Gym starts it), 842 L1916 (Lance gives the Blue Orb). Second Multi Battle Grunt is trainer 417. Pedestal ≈33,20. The post-game Articuno (L2672) and Kyogre (@2851) are `WildBattle` + `CheckBattleWon`; only a loss (→ L2283, white-out) keeps them, and running away counts as a win, as the emulator showed for other scripted wild battles (Electrode, Scyther, Groudon, Suicune).
 
 ## Cinnabar Island: Lawrence and Moltres (League HQ investigation), and catching Moltres
 
@@ -347,7 +347,7 @@ After your first Hall of Fame entry, talk to Blaine in the Gym for a rematch: ch
 
 **How it works:** the crowd doesn't move until you've finished the Team Rocket Executives battle with Gold on **Route 47** ([Route 47: Will, Karen and the Raikou device](12-lake-of-rage-to-sinjoh.md#route-47-will-karen-and-the-raikou-device-story-five-battles-in-a-row)). After that the tourists are gone and the path is open.
 
-**Notes:** the guard only says "you can't get through for a while". Nothing you do in Ecruteak opens the gate.
+**Notes:** the guard only says the crowds are so bad you won't get through anytime soon. Nothing you do in Ecruteak opens the gate.
 
 *Source:* script file 253 (objects 1–4 hidden by flag 2116), file 260 L4455 (Route 47 sets 2116).
 
@@ -389,39 +389,38 @@ After your first Hall of Fame entry, talk to Blaine in the Gym for a rematch: ch
 
 - **Barter stall** (in the market, the stall keeper with a Spinda), repeatable: 2 Revival Herbs → Sacred Ash, 2 Hyper Potions → Max Elixir, 2 Moon Stones → Shed Shell, 2 Premier Balls → **Cherish Ball**.
 - **Four Island treasure seller** (south end of the market, with a Trapinch): Rare Bone $6,000, and Shiny Stone, Dusk Stone and Hard Stone at $2,000 each. You can buy them again.
-- **S.S. Anne passenger** (a few steps north-east of the west Islander's House door): if you saved the S.S. Anne ([S.S. Anne: defuse the bomb](03-vermilion-to-celadon.md#ss-anne-defuse-the-bomb-or-the-ship-sinks-one-chance)), she gives you **2 Heart Scales**, once.
+- **S.S. Anne passenger** (a few steps north-east of the west Islander's House door): if you saved the S.S. Anne ([S.S. Anne: defuse the bomb](03-vermilion-to-celadon.md#ss-anne-defuse-the-bomb-or-the-ship-sinks-one-chance)), or later undid the sinking with [the Celebi trip at the Ilex Forest shrine](09-ilex-goldenrod.md#forest-of-time-celebi-takes-you-back-to-the-ss-anne-post-game-only-if-the-ship-sank), she gives you **2 Heart Scales**, once.
 
-*Source:* script file 734 (scripts 5, 6, 8). Positions: barter stall ≈105,135; treasure seller ≈119,141; passenger ≈103,111 (house door ≈99,113).
+*Source:* script file 734 (scripts 5, 6, 8; the passenger's hide flag 1093 is set by the sinking, file 157 @2852, and cleared only by the Celebi trip, file 52 @4858; flag 1634). Positions: barter stall ≈105,135; treasure seller ≈119,141; passenger ≈103,111 (house door ≈99,113).
 
 ## Three Island: the Alto Mare Bikers (save the Meowth?)
 
 **Where:** Three Island. Two bikers block the north entrance. More bikers stand outside the gang's house (the Islander's House on the north side, a biker guarding its door), and one biker is picking on a stray Meowth a few steps north-west of them.
 
-**Who gets it / when:** once someone on One Island has asked you to deal with the bikers and you've agreed (One Island's houses, [Sevii Islands and Indigo Plateau](06-sevii-islands-indigo.md)). Before that the guards just turn you away.
+**Who gets it / when:** once a man in the One Island Pokémon Center has asked you to drive off the bikers and you've agreed. He only turns up after Gold's battle on Route 39 in Johto (on the way to Olivine City). Until you've agreed, the guards just turn you away. **Missable:** once you clear the Dragon's Den (Clair, Rising Badge), the bikers leave Three Island for good.
 
 **How it works:**
 1. Talk to the entrance guards: double battle (Bikers Ivan and Warren, Lv. 62–64). They run to tell their Boss.
 2. Pick one of two ways to bring out the Boss:
    - **The house bikers:** double battle → the Boss wakes up → another double battle → the Boss himself (Black Belt Doyle, Breloom Lv. 72 lead).
    - **The Meowth:** the prompt is "Save this Meowth?". Say **Yes** and beat the cat catcher. The Boss comes out and orders his men to grab the Meowth.
-3. On the Meowth route, if you've already met Jessie, James and their Meowth (Route 39 in Johto), a **talking Meowth** leaps in to protect the stray, "Meowzie", and **Jessie & James** join the fight. Then you're asked **"Help Team Rocket?"**:
+3. On the Meowth route, a **talking Meowth** leaps in to protect the stray, "Meowzie", and **Jessie & James** join the fight. Then you're asked **"Help Team Rocket?"**:
    - **Yes:** you battle the Boss (Black Belt Doyle) yourself, then Team Rocket finish the gang. Losing whites you out.
    - **No:** you only watch; Team Rocket beat the bikers by themselves.
    Either way, Meowth then duels Meowzie's Persian "big brother" for her and wins. Meowzie turns him down anyway ("a Meowth that talks like a human is just too creepy!"), and Team Rocket leave.
-   If you haven't met them, the Boss sends two more rounds at you: a Double Battle against two bikers, then a Double Battle against the Boss (Black Belt Doyle) and Biker Rita.
-4. The bikers retreat to their Chief at the **Shipyard Ruins** (continued in [Shipyard Ruins: the bikers' Chief](06-sevii-islands-indigo.md#shipyard-ruins-three-island-the-bikers-chief-a-bribe-or-a-fight)).
+4. The bikers retreat to their Chief at the **Shipyard Ruins** (continued in [Shipyard Ruins: the bikers' Chief](06-sevii-islands-indigo.md#shipyard-ruins-three-island-the-bikers-chief-a-bribe-or-a-fight)). A biker at the top of the bridge south of the town won't let you through until you've talked to [Big Sis](06-sevii-islands-indigo.md#three-island-the-biker-big-sis-who-cant-ride), in the southern of the two houses, right next to him.
 
 **Reward:** no item for the fight itself. The story ends at the [Shipyard Ruins](06-sevii-islands-indigo.md#shipyard-ruins-three-island-the-bikers-chief-a-bribe-or-a-fight): winning the gauntlet there earns a **Protector** (missable: before you clear the Dragon's Den); taking the Chief's bribe costs you a $400,000 fine later.
 
 **Notes:** saying "No" to "Save this Meowth?" does nothing; you can talk to him again. The "Help Team Rocket?" choice only decides whether you fight the Boss.
 
-*Source:* script file 735 (scripts 5–8, 12, 13; L2992–L7248; flags 2013, 2014, 2018, 2021, 1109; var 0x4097 checks 6/7; "Help Team Rocket?" at @1992: choice 1 (No) jumps to L5268, Yes falls through to `TrainerBattle 654` at @2068; no-Rocket route doubles 650+651, then 654+653 at @5056), files 249 L5025 (clears 1109), 889/894 (set 2021 when you agree to help), 879 (Shipyard Ruins). Entrance guards are trainers 648/649. Positions: guards ≈178,99–100; house bikers ≈173–174,111; house door ≈180,108; cat catcher ≈172,107; rebuild man ≈175,109. Rebuild man: hide flag 2020, cleared only by the Shipyard Ruins gauntlet win (file 879 L2428) and set again by the Dragon's Den clear (file 112 L4867); Protector (item 321) at file 735 L7006.
+*Source:* script file 735 (scripts 5–8, 12, 13; L2992–L7248; flags 2013, 2014, 2018, 2021, 1109; var 0x4097 checks 6/7; "Help Team Rocket?" at @1992: choice 1 (No) jumps to L5268, Yes falls through to `TrainerBattle 654` at @2068; no-Rocket route doubles 650+651, then 654+653 at @5056), files 249 L5025 (Gold's Route 39 battle scene: clears 1109 and 2022 when flag 1663 is clear), 889 (script 6, the One Island Pokémon Center man, hide flag 2022, which file 826 @948 sets when you first sail to the islands; sets 2021 when you agree; the other asker, file 894 script 16, is placed on no map), 879 (Shipyard Ruins). The no-Rocket route (735 @1184 with 1109 set → L4776) can't play: the quest only starts after the scene that clears 1109, and the next setter, the Dragon's Den clear (file 112 @4887–@4891), also hides the bikers (flags 2013, 2014, 2018) and the asker (2022, @4859). Entrance guards are trainers 648/649. Bridge biker: coord script 11 at ≈180,123 on var 0x4097 = 2 (emulator CN+EN, see the Big Sis entry's source). Positions: guards ≈178,99–100; house bikers ≈173–174,111; house door ≈180,108; cat catcher ≈172,107; rebuild man ≈175,109. Rebuild man: hide flag 2020, cleared only by the Shipyard Ruins gauntlet win (file 879 L2428) and set again by the Dragon's Den clear (file 112 L4867); Protector (item 321) at file 735 L7006.
 
 ## Three Island → Six Island: the lost daughter (Three Island's pilgrimage trial)
 
 **Where:** a tourist father on Three Island's south side, a few steps south-east of the Shipyard Ruins entrance. His 5-year-old daughter is in the **Island Forest** on Six Island.
 
-**Who gets it / when:** the Three Island chief sets this as your Island Pilgrimage trial: help the tourists ([Three Island: the engineer's trial](06-sevii-islands-indigo.md#three-island-the-engineers-trial)).
+**Who gets it / when:** the Three Island chief sets this as your Island Pilgrimage trial: help the tourists ([Three Island: the engineer's trial](06-sevii-islands-indigo.md#three-island-the-engineers-trial)). The father only stands on Three Island once you've cleared the Dragon's Den (the Rising Badge); if he's missing, do that first.
 
 **How it works:**
 1. Talk to the father. His daughter has a ponytail and a pink top.
@@ -431,7 +430,7 @@ After your first Hall of Fame entry, talk to Blaine in the Gym for a rematch: ch
 
 **Notes:** the girl and her Hypno only appear after you've spoken to the father.
 
-*Source:* script file 735 (script 17, L7060–L7082; var 0x40b3 = 3, flag 2190), file 55 (script 16, step trigger at 42,36; Hypno `WildBattle` Lv. 30 at @953, only a loss branches away; sets 0x40b3 = 4), file 782 L6007–L6046 (the chief). Positions: father ≈174,144 (Shipyard Ruins door ≈169,140); girl ≈35,35.
+*Source:* script file 735 (script 17, L7060–L7082; var 0x40b3 = 3, flag 2190), file 55 (script 16, step trigger at 42,36; Hypno `WildBattle` Lv. 30 at @953, only a loss branches away; sets 0x40b3 = 4), file 782 L6007–L6046 (the chief). The father's hide flag 2017 is set when you first sail to the islands (file 826 @991) and cleared only by the Dragon's Den clear (file 112 @4899). Positions: father ≈174,144 (Shipyard Ruins door ≈169,140); girl ≈35,35.
 
 ## Island Forest (Six Island): before the Lucky Meowth God
 
@@ -441,28 +440,28 @@ The forest has two entrances from Six Island: a wide one on the west side and on
 
 - **The toll thug** (Roughneck George, in the north-east with his Ursaring and Zangoose) demands **$3,000** to let you through. Choose "Pay and go through", or "Force your way through" and beat him (Ursaring, Zangoose, Tauros, Drapion, all Lv. 63). Paying only gets you through that once; after a win, the path is free from then on.
 - **The stolen doll:** Hiker Brown (about 9 steps east of the west entrance) wants a battle (Golem 62, Donphan 63, Vigoroth 64, Honchkrow 65). Win to get the **Spoils** (a key item). Give it to the crying girl about 9 steps south of the west entrance ("Give it back"): **TM20 Safeguard**.
-- **The wishing pond** (a girl in the middle of the forest, about 10 steps east of a Trainer with a Flygon): give her an **Amulet Coin**. She throws it in and asks for your wish:
+- **The wishing pond** (a girl in the middle of the forest, about 10 steps east of a Trainer with a Flygon): give her an **Amulet Coin** (once). She throws it in and asks for your wish:
 
 | Wish | Effect |
 |---|---|
 | I want to get rich overnight | flavour only |
-| **I want to be more attractive** | **clears every romance "not this partner" mark** (Green/Red, Misty, Yellow, Cynthia, Blue and others), so partners you had closed off can be won back. It does nothing if you've already made the Dream World choice. |
+| **I want to be more attractive** | **clears every romance "not this partner" mark** (Green/Red, Misty, Yellow, Cynthia, Blue and others), so partners you had closed off can be won back. It no longer does anything once you've been to the Dream World. |
 | I want to get stronger | flavour only |
 | I don't really have a wish | flavour only |
 
 - **The lucky statue** (an attendant with a Shiftry in the south-east of the forest): $500 to view it (flavour). When the Lucky Meowth God arrives he moves beside the statue and stops charging.
 
-*Source:* script file 55 (scripts 3, 6, 8, 11, 14; L1488–L3094; flags 2191–2194, 2300; romance flags 2141–2145, 2153–2157; the quest lines check flag 2180, cleared by file 55 @1295 together with `SetFlag 2182`), file 249 L4198 (sets 2180), file 898 (Dream World sets 2300). George, Brown, the crying girl and the pond girl have no hide flag; only the attendant at ≈86,70 is hidden (flag 2182); a second copy beside the statue (flag 2180) appears instead (L2043). Paying George sets no flag (L1488); a win sets 2191. Positions: George ≈75,37; Brown ≈42,50; crying girl ≈34,60; pond girl ≈64,46; attendant ≈86,70; west entrance ≈33,50–52, east entrance ≈90,58.
+*Source:* script file 55 (scripts 3, 6, 8, 11, 14; L1488–L3094; flags 2191–2194, 2300; romance flags 2141–2145, 2153–2157; the quest lines check flag 2180, cleared by file 55 @1295 together with `SetFlag 2182`), file 249 L4198 (sets 2180), file 898 (sets 2300 on your first talk with the Dream World old man, @59; file 251 @1283 sets it on arrival if he isn't there). George, Brown, the crying girl and the pond girl have no hide flag; only the attendant at ≈86,70 is hidden (flag 2182); a second copy beside the statue (flag 2180) appears instead (L2043). Paying George sets no flag (L1488); a win sets 2191. Positions: George ≈75,37; Brown ≈42,50; crying girl ≈34,60; pond girl ≈64,46; attendant ≈86,70; west entrance ≈33,50–52, east entrance ≈90,58.
 
 ## Island Cave (Four Island): Crystal Onix and Granny Lisa
 
 **Where:** the Stone Workshop on Four Island (the craftsman, Islander's House) and a hidden part of the **Island Cave**, reached through the passage in its north-west corner.
 
-**Who gets it / when:** any time after you reach Four Island. Talk to the craftsman first; until then the scene in the cave doesn't start.
+**Who gets it / when:** any time after you reach Four Island. Talk to the craftsman first; until then the man at the passage blocks the way (tested in an emulator).
 
 **How it works:**
 1. Talk to the stone craftsman in the Stone Workshop. He's hunting for the legendary **Crystal Onix**.
-2. In the Island Cave, go to the north-west corner. A man stands beside a passage there ("There's nothing in the cave up ahead"). Go through it: you come out in a small area, and the old woman is about ten steps west of where you arrive. Walk up to her. She is patching a wounded Onix with Dawn Stones and attacks you as a "crooked merchant": **Medium Lisa** (Ledian 62, Misdreavus 63, Roselia 64, Seadra 65).
+2. In the Island Cave, go to the north-west corner. Until you've talked to the craftsman, a man stands in front of the passage there ("There's nothing in the cave up ahead") and you can't get past; afterwards he's gone. Go through it: you come out in a small area, and the old woman is about ten steps west of where you arrive. Walk up to her. She is patching a wounded Onix with Dawn Stones and attacks you as a "crooked merchant": **Medium Lisa** (Ledian 62, Misdreavus 63, Roselia 64, Seadra 65).
 3. She explains that craftsmen cut crystal from its body twenty years ago, and begs you not to tell anyone. Answer:
 
 | Choice | What happens |
@@ -474,7 +473,7 @@ The forest has two entrances from Six Island: a wide one on the west side and on
 
 **Notes:** **one chance.** The Onix disappears as soon as the battle starts, so if you knock it out, run or white out, it's gone. Save first and bring Poké Balls. The choice can't be undone.
 
-*Source:* script file 24 (scripts 1–5; L1116–L1803; var 0x409a 7→8/9→10→11; flags 2912, 2913; `WildBattle` 2143 = Onix form 1 at Lv. 40), file 737 (script 1 L178/L1463: the craftsman sets 0x409a = 7 and 10; nothing checks pilgrimage progress). The secret prompt is a Yes/No at file 24 @1355 (Yes → L1742). Positions: passage ≈4,12 (man ≈5,12) warps to ≈59,112; Lisa's trigger ≈49,109; Onix ≈50,104.
+*Source:* script file 24 (scripts 1–5; L1116–L1803; var 0x409a 7→8/9→10→11; flags 2912, 2913; `WildBattle` 2143 = Onix form 1 at Lv. 40), file 737 (script 1 L178/L1463: the craftsman sets 0x409a = 7 and 10; nothing checks pilgrimage progress). The secret prompt is a Yes/No at file 24 @1355 (Yes → L1742). Positions: passage ≈4,12 (man ≈5,12) warps to ≈59,112; Lisa's trigger ≈49,109; Onix ≈50,104. Tested in an emulator (CN and EN): at var 0x409a = 6 the man (≈5,12) stops you at the passage; at 7 the on-resume script (L978) moves him away. Reached by a direct warp at var 6, Lisa, the Onix and the craftsman are all there: talking to Lisa skips her battle and the Star Piece (script 5 → L1520), talking to the craftsman gives the Shiny Stone and sets var 11 (L1456); the man prevents this in normal play. Evidence: work/build/harness/guide-review-20261006/ch05/fork/.
 
 ## Island Cave: small extras
 
@@ -577,7 +576,7 @@ The forest has two entrances from Six Island: a wide one on the west side and on
 
 **Where:** the hidden garden reached by following "Bianca" (really Latias) on One Island through an illusory tree.
 
-**Who gets it / when:** during the League HQ investigation: after the [Lake of Rage scene](12-lake-of-rage-to-sinjoh.md#lake-of-rage-petrel-at-the-lake-guardians-house-league-hq-round-4-continues-pokémon-league-mt-silver-and-new-bark-towns-league-hq-entry) (round 4). Talk to Bianca in the Alto Mare Library first; the girl then appears on One Island (One Island, [Sevii Islands and Indigo Plateau](06-sevii-islands-indigo.md)).
+**Who gets it / when:** during the League HQ investigation: after the [Lake of Rage scene](12-lake-of-rage-to-sinjoh.md#lake-of-rage-petrel-at-the-lake-guardians-house-league-hq-round-4-continues-pokémon-league-mt-silver-and-new-bark-towns-league-hq-entry) (round 4). Talk to Bianca in the Alto Mare Library first (she's there once you've signed up for the Island Pilgrimage on Seven Island); the girl then appears on One Island (One Island, [Sevii Islands and Indigo Plateau](06-sevii-islands-indigo.md)).
 
 **How it works:**
 1. At the fountain, Latios appears. Then Lorenzo (the One Island chief) and the real Bianca arrive, and Latias reveals herself.
@@ -587,7 +586,7 @@ The forest has two entrances from Six Island: a wide one on the west side and on
 
 **Notes:** you need **two free party slots** (four or fewer Pokémon). Otherwise he says to sort your party and waits; saying no works the same way. Afterwards, the fountain in the garden fully heals your party. Stand at the fountain with **Latias leading your party** for a short extra scene. It only plays after your final Hall of Fame entry ([The Hall of Fame](07-league-to-cherrygrove.md#the-hall-of-fame-what-your-two-entries-unlock)), so come back later.
 
-*Source:* script file 239 (scripts 2, 5, 7, 8; L2558–L3639; var 0x40b2 5→6→7; flags 1147, 1149, 2261), file 244 (Bianca, clears 1146), file 845 L1400–L1419 (One Island illusory tree), file 935 L551 (Lake of Rage, sets 0x40b2 = 5).
+*Source:* script file 239 (scripts 2, 5, 7, 8; L2558–L3639; var 0x40b2 5→6→7; flags 1147, 1149, 2261), file 244 (Bianca, clears 1146; her hide flag 1149 is set at new game, file 842 @408, and cleared when you sign up on Seven Island, file 870 @1435), file 845 L1400–L1419 (One Island illusory tree), file 935 L551 (Lake of Rage, sets 0x40b2 = 5).
 
 ## Alto Mare Waters: Charmander's owner and the lifeguard
 

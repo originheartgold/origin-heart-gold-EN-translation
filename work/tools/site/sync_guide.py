@@ -9,6 +9,8 @@ What the conversion adds for the website:
 - a location link under each quest heading, when the place before the colon is a known area;
 - the "*Source:*" paragraphs (script files, flags, line numbers) folded into a <details class="tech"> box,
   hidden from players and from site search (shown with ?tech=1, see site/public/ohg.js);
+- pictures: guide/images/ is copied to site/src/content/docs/guide/images/, so Astro optimises them;
+  write `![what it shows](images/<name>.jpg)` in the guide (the alt text is the caption for screen readers);
 - inline solvers: a line `<!-- solver: NAME -->` (on its own line, indented like the text around it)
   becomes the matching Astro component from site/src/components/ at that spot (see SOLVERS).
   On GitHub the marker is an invisible HTML comment; put it right after the guide's own answer
@@ -20,15 +22,18 @@ What the conversion adds for the website:
     python3 work/tools/site/sync_guide.py --all-mdx # test: write every page as .mdx (then build and compare)
 """
 import argparse
+import filecmp
 import html
 import json
 import os
 import re
+import shutil
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, '..', '..', '..'))
 GUIDE = os.path.join(REPO, 'guide')
+IMAGES = os.path.join(GUIDE, 'images')
 OUT = os.path.join(REPO, 'site', 'src', 'content', 'docs', 'guide')
 AREAS = os.path.join(REPO, 'site', 'src', 'data', 'areas.json')
 
@@ -226,11 +231,34 @@ def rewrite_links(text, depth):
             if depth == 0:
                 url = './' + url
         return '](%s%s)' % (url, anchor)
+    # pictures sit beside the generated pages (see sync_images); Astro needs the explicit ./
+    text = re.sub(r'\]\(images/', '](./images/', text)
     text = re.sub(r'\]\(((?:\d+-[a-z0-9-]+|known-issues|README)\.md)(#[^)]*)?\)', repl, text)
     # site reference pages: "[Move tutors](/tutors/)" means the site root, whatever the base path is.
     # Guide pages sit at /guide/ (README, depth 0) or /guide/<page>/ (depth 1).
     root = '../' * (depth + 1)
     return re.sub(r'\]\(/(?!/)([^)\s]*)\)', lambda m: '](%s%s)' % (root, m.group(1)), text)
+
+
+def sync_images(check):
+    """Mirror guide/images/ into OUT/images/. Returns the names that changed."""
+    out = os.path.join(OUT, 'images')
+    want = sorted(os.listdir(IMAGES)) if os.path.isdir(IMAGES) else []
+    have = set(os.listdir(out)) if os.path.isdir(out) else set()
+    changed = []
+    for n in want:
+        src, dst = os.path.join(IMAGES, n), os.path.join(out, n)
+        if n not in have or not filecmp.cmp(src, dst, shallow=False):
+            changed.append('images/' + n)
+            if not check:
+                os.makedirs(out, exist_ok=True)
+                shutil.copyfile(src, dst + '.tmp')
+                os.replace(dst + '.tmp', dst)
+    for n in sorted(have - set(want)):
+        changed.append('images/%s (stale)' % n)
+        if not check:
+            os.remove(os.path.join(out, n))
+    return changed
 
 
 def tag_badges(tags):
@@ -483,6 +511,7 @@ def main(argv=None):
         changed.append(n + ' (stale)')
         if not a.check:
             os.remove(os.path.join(OUT, n))
+    changed += sync_images(a.check)
     for c in changed:
         print(('would change: ' if a.check else 'wrote: ') + 'site/src/content/docs/guide/' + c)
     print('%d guide pages, %d changed' % (len(want), len(changed)))

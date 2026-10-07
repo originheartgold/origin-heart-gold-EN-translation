@@ -292,7 +292,7 @@
 - If you never finish the act, or you win it, she has released Purugly by the time you pass Route 37 ("I released my Purugly into the wild… I miss it so much now"). If you lost the staged fight, she says she likes Purugly's round body more every day.
 - **This quest shares its progress with the bug hunt's Ariados.** On the normal path (hunt finished) it starts clean. If you left Ilex Forest in the middle of the hunt, the act can start as soon as you enter the girl's house, the clinic choice can be skipped, or the game can count it as "Purugly kept". Finishing the hunt after starting this quest wipes your Purugly progress. *(Suspected hack bug.)*
 
-*Source:* script file 897 (the shared clinic/house interior: scripts 1–8, L2154–L7251; var 0x409d 2→6; flags 2158/2160; trainers 13/23), outcome in file 246 (Route 37, L391–L404: flag 2252 if 0x409d = 5, else flag 2159). Var 0x409d is also the bug hunt's Ariados state. Doors: clinic ≈376,335; girl's house ≈373,362.
+*Source:* script file 897 (the shared clinic/house interior: scripts 1–8, L2154–L7251; var 0x409d 2→6; flags 2158/2160; trainers 13/23), outcome in file 246 (Route 37: L387 always sets flag 2252; L391–L404 also set flag 2159 unless 0x409d = 5; file 897 L963 checks 2159 (released) before 2252). Var 0x409d is also the bug hunt's Ariados state. Doors: clinic ≈376,335; girl's house ≈373,362.
 
 ## Goldenrod City: the popped Air Balloon (→ Fashion Case)
 
@@ -499,7 +499,7 @@ At **30 points** on your first card, Buena also gives you her **phone number**. 
 
 ## Romance route: how it's unlocked, how your partner is chosen, and what locks a partner out (central entry)
 
-Origin HeartGold has a hidden romance route. You pick **one** partner and confess in the final chapter. The scripts then offer post-game dates for some partners only, and moving in appears unreachable for everyone (table in step 4). Four steps decide it. **Steps 1 and 2 are missable and happen mid-game.**
+Origin HeartGold has a hidden romance route. You pick **one** partner and confess in the final chapter. The scripts then offer post-game dates for some partners only, and moving in appears unreachable for everyone (table in step 4). Four steps decide it. **Steps 1 and 2 are missable:** the love reading must come before the MooMoo Farm investigation, which the League HQ's round-3 order opens after the Silver Conference.
 
 ### 1. The love reading (Goldenrod fortune-teller; before the MooMoo Farm investigation)
 
@@ -520,9 +520,9 @@ After the ideal-Pokémon reading (entry above), talk to the fortune-teller again
 
 The fortune-teller stops offering "My love fortune" once you've fought Will and Karen in the Dream World (step 2). **Do the reading before the MooMoo Farm investigation.**
 
-### 2. The Dream World: choose your partner (MooMoo Farm, Route 39; from your first visit)
+### 2. The Dream World: choose your partner (MooMoo Farm, Route 39; League HQ round 3)
 
-The MooMoo Farm investigation (sick Miltank, Route 39; [MooMoo Farm: the sick Miltank investigation](10-ecruteak-olivine.md#moomoo-farm-the-sick-miltank-investigation-from-your-first-visit-leads-to-the-dream-world)) is offered from your **first visit to the farm**. The League HQ's round-3 order points you there too ([League HQ](07-league-to-cherrygrove.md#league-hq-the-trainer-affairs-departments-investigations-where-to-go-next)), but the farmer doesn't wait for it. It ends with Will and Karen opening a rift in the stable, and you're pulled into the **Dream World**.
+The MooMoo Farm investigation (sick Miltank, Route 39; [MooMoo Farm: the sick Miltank investigation](10-ecruteak-olivine.md#moomoo-farm-the-sick-miltank-investigation-league-hq-round-3-leads-to-the-dream-world)) only opens with the League HQ's **round-3 order** ([League HQ](07-league-to-cherrygrove.md#league-hq-the-trainer-affairs-departments-investigations-where-to-go-next)), after the Silver Conference. That order makes the farm's Miltank sick. Until then they're healthy and the farmer only talks about his milk, so you can't get to the Dream World earlier. The investigation is one of the round's leads, so everyone goes through it. It ends with Will and Karen opening a rift in the stable, and you're pulled into the **Dream World**.
 
 1. You arrive at the south end. **Walk north and talk to the old man first.** He stands on the path north, next to a signpost. He's only there if your love reading said "near future".
 2. "Do you like dreaming, young one?" → **Yes**. ("No" ends the talk and he never asks again. He only ever asks once.)
@@ -568,7 +568,7 @@ You can confess **once per game**, in the final chapter. It needs the love readi
 - **Green and Red's dates are reversed:** the Route 30 house only offers dates if you have **not** confessed to anyone. Confessing to Green or Red (or anyone) closes them, and male players get Green's dates whatever their Dream World pick. See [Known issues](known-issues.md#ilex-forest-and-goldenrod-city).
 - **Red can't confess to a female player:** his Victory Road confession checks Green's lock, which every female Dream World choice sets.
 
-*Source:* script files 895 (L323–L1795; flags 1617, 1618, 1619; partner flags 2141–2145, 2153–2157), 898 (scripts 2–9; L602–L2638; the old man sets 2300 on first talk (L59); L2307 sets 2289/2300 after the Will/Karen battle, and 2289 closes "My love fortune"; L2337 locks everyone if flag 2302 is clear), 251 (MooMoo stable: L861 hides the old man without flag 1619; coord 7,3 on var 0x40a3 = 5), 109 (confessions L1003/L1767/L2358/L3410), 110, 923, 758, 228 (L750–L1026), 259 (L1782–L2267 sets 2145), 907 (L3109–L4417 clears 2145; the gift checks only flag 175 and the Super Rod, no 2289/2300 test), 75 (L1521 clears 2143, L1658 clears 2142), 777, 175, 900, 55. Indigo Conference: "Cheer for Misty" sets 2155 (Steven's lock), "Cheer for Steven" sets 2142 (Misty's lock), "No, get ready for my match" sets both. Dream World: every pick except Steven (L2487) sets 2155, and so does the statue exit without a partner (L2337); file 900 L1678/L2778 set 2155 at the Indigo Conference. Vermilion: a female player siding with Red sets 2153 (Blue's lock). Moving in: file 843 script 1 L363 and script 4 check flag 106 (set with the starter, never cleared) before any partner check (hack finding D-1391). Dream World: old man ≈48,28, statue ≈48,13.
+*Source:* script files 895 (L323–L1795; flags 1617, 1618, 1619; partner flags 2141–2145, 2153–2157), 898 (scripts 2–9; L602–L2638; the old man sets 2300 on first talk (L59); L2307 sets 2289/2300 after the Will/Karen battle, and 2289 closes "My love fortune"; L2337 locks everyone if flag 2302 is clear), 251 (MooMoo stable: the farmer asks for help only while flag 744 is clear (L117 → L925); 744 is set at new game (file 149) and cleared only by the League HQ round-3 order (file 31 L4666; the file 840 clears are in an unreachable lab script; Miltank healthy until round 3 tested in an emulator); the round-3 report needs 2289 (file 31 L1902); L861 hides the old man without flag 1619; coord 7,3 on var 0x40a3 = 5), 109 (confessions L1003/L1767/L2358/L3410), 110, 923, 758, 228 (L750–L1026), 259 (L1782–L2267 sets 2145), 907 (L3109–L4417 clears 2145; the gift checks only flag 175 and the Super Rod, no 2289/2300 test), 75 (L1521 clears 2143, L1658 clears 2142), 777, 175, 900, 55. Indigo Conference: "Cheer for Misty" sets 2155 (Steven's lock), "Cheer for Steven" sets 2142 (Misty's lock), "No, get ready for my match" sets both. Dream World: every pick except Steven (L2487) sets 2155, and so does the statue exit without a partner (L2337); file 900 L1678/L2778 set 2155 at the Indigo Conference. Vermilion: a female player siding with Red sets 2153 (Blue's lock). Moving in: file 843 script 1 L363 and script 4 check flag 106 (set with the starter, never cleared) before any partner check (hack finding D-1391). Dream World: old man ≈48,28, statue ≈48,13.
 
 ## Goldenrod City: small extras
 
@@ -595,7 +595,7 @@ You can confess **once per game**, in the final chapter. It needs the love readi
 
 ## Dream World: Cresselia and Darkrai (post-game)
 
-**Where:** the Dream World, reached from the MooMoo Farm stable (Route 39; [MooMoo Farm](10-ecruteak-olivine.md#moomoo-farm-the-sick-miltank-investigation-from-your-first-visit-leads-to-the-dream-world)).
+**Where:** the Dream World, reached from the MooMoo Farm stable (Route 39; [MooMoo Farm](10-ecruteak-olivine.md#moomoo-farm-the-sick-miltank-investigation-league-hq-round-3-leads-to-the-dream-world)).
 
 **Who gets it / when:** after your final Hall of Fame entry, once the post-game scene at home has sent you off to hunt legendary Pokémon. That scene brings Cresselia and Darkrai back.
 

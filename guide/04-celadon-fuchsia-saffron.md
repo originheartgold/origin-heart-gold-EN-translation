@@ -75,7 +75,7 @@
 4. Mary and Tony reveal themselves as **Jessie and James**. Double battle: Jessie (Arbok 38, Lickilicky 37, Wobbuffet 36, Dustox 35) and James (Weezing 38, Victreebel 37, Gyarados 36, Meowth 20). James lets slip the "Pokémon Enhancer", the drug behind the berserk Pokémon on Route 7.
 **Reward:** Suzie's customers come back and from then on her massage is **free, forever**: it fully heals your party and gives the chosen Pokémon +10 friendship (plus Beauty and sheen). Outside the free window (before the Route 7 scene, and after the Gloom search if you skipped the quest) she charges **$2,000** a time.
 
-**Notes:** after the Route 7 scene, stepping in front of Tony does nothing until you've had Suzie's free massage. (Before the Route 7 scene the roof scene is armed from the start, so if you reach the roof that early it plays without the massage, and afterwards Suzie's massage is free too: tested in an emulator. Whether you can reach the roof that early in a normal playthrough hasn't been checked.) Losing to the Beedrill whites you out and the scene replays, so you can retry until the Gloom search ends. Losing to Jessie & James also whites you out, but the quest already counts as done: the scene doesn't replay and Suzie's massage is free from then on.
+**Notes:** after the Route 7 scene, stepping in front of Tony does nothing until you've had Suzie's free massage. (Before the Route 7 scene the roof scene is armed from the start, so if you reach the roof that early it plays without the massage, and afterwards Suzie's massage is free too: tested in an emulator. In a normal playthrough that seems out of reach: the Underground Path, which comes out on Route 7 past the scene's spot, is closed from Prof. Hale's Rock Tunnel rescue until Team Rocket's Saffron takeover, and before the rescue you can't get to Route 8, where it starts. Other ways to the roof weren't checked; see [Known issues](known-issues.md#celadon-roof-scene-before-route-7).) Losing to the Beedrill whites you out and the scene replays, so you can retry until the Gloom search ends. Losing to Jessie & James also whites you out, but the quest already counts as done: the scene doesn't replay and Suzie's massage is free from then on.
 
 *Source:* script files 792 (script 21, coord trigger at 4,5 on var 0x40d0 = 0, which is also the var's starting value; Tony/Mary hide flags 1544/1545 start clear; scripts 11, 15; the quest var is set to 2 at @1530, before the Jessie & James battle, and flags 1544/1545 set, 1535 cleared; Beedrill is trainer 462), 794 (script 1, L728/L1387/L758; $2,000 at L788 whenever flag 1535 is clear and 0x40d0 ≠ 2), 186 (Route 7 scene end, @1783/@1819, sets flag 1535 and 0x40d0 = 1, disarming the trigger; 794 @1402 sets it back to 0 after the free massage), 783 L4581–L4612 (closes it). Positions on the roof map: Tony ≈1,8, Mary ≈1,7, Kirlia owner ≈2,5; Suzie ≈10,5 on Condominiums 1F. Emulator (`emu_harness.py guide0107 --case tony`, both ROMs): with 0x40d0 = 0 and 1535 clear Suzie offers the paid massage (494#0); the roof trigger plays the scene, Beedrill 462 and then 460 + 461, and 0x40d0 is 2 (1544/1545 set, 1535 clear) when Jessie & James's battle starts; from that state Suzie offers the free massage (494#36).
 
@@ -368,11 +368,11 @@ Losing any battle before Dudley whites you out. **Losing to Dudley is allowed:**
 
 **Where:** the north end of Route 14, just south of Route 13: a woman who loves Chansey.
 
-**How it works:** walk up to her (not on the Bicycle) with a **Chansey leading your party** (first healthy Pokémon).
+**How it works:** talk to her (not on the Bicycle) with a **Chansey leading your party** (first healthy Pokémon).
 
 **Reward:** **Lucky Punch** (once; she checks you have bag space).
 
-*Source:* file 202 (script 6, L2798; flag 348). Woman ≈1348,387.
+*Source:* file 202 (script 6: `PlayerOnBikeCheck`, `GetPartyLeadAlive`, species 113 → L2798; flag 348). Woman ≈1348,387.
 
 ## Route 13: the Southeast League (eight representatives and a Champion)
 
@@ -403,13 +403,13 @@ After all eight, the **Champion, Ace Trainer Gus** (near the guide at the east e
 
 **Where:** Silence Bridge, Route 12. A Snorlax sleeps across the road east of the Route 11 gate (about 18 steps east of the gate's door). A Berry farmer stands just outside the Route 11 gate. The fighter he hired, Karate King Jet, is stuck right next to the Snorlax, on its east side.
 
-**How it works:** have the **Poké Flute** ([Lavender Town: Mr. Fuji's gifts](03-vermilion-to-celadon.md#lavender-town-mr-fujis-gifts-after-the-tower)). Check the Snorlax → "Play the Poké Flute?" → Yes → battle a wild **Snorlax, Lv. 35**. You can defeat or catch it. Losing whites you out and the Snorlax stays.
+**How it works:** have the **Poké Flute** ([Lavender Town: Mr. Fuji's gifts](03-vermilion-to-celadon.md#lavender-town-mr-fujis-gifts-after-the-tower)). Check the Snorlax → "Play the Poké Flute?" → Yes → battle a wild **Snorlax, Lv. 35**. Knocking it out, catching it or running away all clear the road for good, so if you want it, catch it in this battle. Losing whites you out and the Snorlax stays.
 
 **Reward:**
 - The farmer gives **2 Oran, 2 Sitrus and 2 Rowap Berries** (once). After that he teaches **Body Slam** for free (repeatable).
 - Karate King Jet offers a Single or Double Battle, repeatable, no prize.
 
-*Source:* file 199 (scripts 6, 8, 14; L1384, L1728, L2686, L3119). Positions: Snorlax ≈1426–1427,305–306, Route 11 gate door ≈1408,305, farmer ≈1410,305, Jet ≈1428,306.
+*Source:* file 199 (scripts 6, 8, 14; L1384, L1728, L2686, L3119; `WildBattle 143` at @1440, then `CheckBattleWon`, which also counts a flee or a catch as a win, emulator-confirmed for the Victory Road Electrode; a win sets the hide flag 1158 at @1464, a loss goes to `WhiteOut` at L2493). Positions: Snorlax ≈1426–1427,305–306, Route 11 gate door ≈1408,305, farmer ≈1410,305, Jet ≈1428,306.
 
 ## Route 12: Prof. Birch's Torchic (missable)
 
@@ -418,12 +418,12 @@ After all eight, the **Champion, Ace Trainer Gus** (near the guide at the east e
 **Who gets it / when:** only **before the Rainbow Badge ceremony**. That scene hides Birch for good.
 
 **How it works:**
-1. Talk to the Poochyena → "Stop it?" → Yes → battle a wild **Poochyena, Lv. 5**.
+1. Talk to the Poochyena → "Stop it?" → Yes → battle a wild **Poochyena, Lv. 5**. Knocking it out, catching it or running away all count; losing whites you out.
 2. Birch thanks you and asks you to take his Torchic along. **Yes** → **Torchic, Lv. 5** (optional nickname). With a full party he asks you to make room. Answer No and he waits for you nearby.
 
 **Notes:** you can only reach Birch by waking the Snorlax first ([previous entry](#route-12-wake-the-snorlax-poké-flute)): the Route 11 gate side and the Lavender side both end at it, and Route 13 can't be reached from Fuchsia this early. So wake it before the Rainbow Badge ceremony.
 
-*Source:* file 199 (scripts 16, 17; L2249–L2414), file 853 L3790–L3802 (sets flags 1447, 1448, 417). Reachability: the Snorlax (obj 2) and three invisible blockers (objs 3–5) share flag 1158, set only by waking it (@1464); the gate pocket and the Lavender boardwalk end at it; the south side connects only to Route 13/14, closed from Fuchsia until the marathon and the Cycling Road potion (209 L1708, herbalist hidden by 1800 until the ceremony). Birch ≈1424,318; Fishing Guru's door ≈1429,318.
+*Source:* file 199 (scripts 16, 17; L2249–L2414; `WildBattle 261` @2376, `CheckBattleWon` treats a flee as a win, a loss → L2493 `WhiteOut`), file 853 L3790–L3802 (sets flags 1447, 1448, 417). Reachability: the Snorlax (obj 2) and three invisible blockers (objs 3–5) share flag 1158, set only by waking it (@1464); the gate pocket and the Lavender boardwalk end at it; the south side connects only to Route 13/14, closed from Fuchsia until the marathon and the Cycling Road potion (209 L1708, herbalist hidden by 1800 until the ceremony). Birch ≈1424,318; Fishing Guru's door ≈1429,318.
 
 ## Route 12: the fish-zapper and the shiny Milotic (choose how to stop him)
 
@@ -460,9 +460,11 @@ After all eight, the **Champion, Ace Trainer Gus** (near the guide at the east e
 | **"You've got a girlfriend!"** | he accepts a battle |
 
 3. He has a single **Rattata, Lv. 13**. **Lose on purpose** (this battle doesn't white you out). If you win, he wails "I'm worthless!" and you have to try again. If he wins, he gets his confidence back.
+
+   **Watch out:** his Rattata knows only Normal-type moves (Tail Whip, Focus Energy, Quick Attack, Tackle), so a team of only Ghost types can't lose this battle. And a Pokémon with no PP left never uses Struggle, so once your moves run out the battle can't end at all and you have to reset ([known issue](known-issues.md#no-struggle-when-a-pokémon-runs-out-of-pp)). Bring a Pokémon that isn't a Ghost type.
 4. Talk to the girlfriend: **Zoom Lens**.
 
-*Source:* file 199 (scripts 11, 12; L1861–L3102, L2038; talking to her sets var 0x40bb = 1). Couple ≈1433–1434,273.
+*Source:* file 199 (scripts 11, 12; L1861–L3102, L2038; talking to her sets var 0x40bb = 1; `TrainerBattle 185, 0, 1, 0` at @1991, trainer 185's Rattata knows Tail Whip, Focus Energy, Quick Attack, Tackle). No Struggle at 0 PP: tested in an emulator on both ROMs (FACTS 2026-10-06, harness `bugreports-20261006/struggle`). Couple ≈1433–1434,273.
 
 ## Route 12: Bug Catcher Harlan's Butterfree
 
@@ -583,7 +585,7 @@ Continues [Misty's romance](02-pewter-to-vermilion.md#cerulean-gym--cerulean-cap
 
 **Notes:** **missable.** The hostages leave at the end of the Rocket Boss battle (win or lose), so take it before you go up to face him. The warehouse items on this floor (PP Max, HP Up, Sacred Ash, Rare Candy) can be picked up once the takeover has started.
 
-*Source:* file 755 (script 28, L3176; scripts 11, 29–31; items need flag 1226, set by the takeover). Hostages hidden by flag 1208, set at file 834 @5066/@5207. Employee ≈33,8 on the cafeteria map.
+*Source:* file 755 (script 28, L3176; scripts 11, 29–31; items need flag 1226, set by the takeover (file 17 @12023); it is also set from the end of the Mt. Moon roadblock story (file 9 @5598) until the Rock Tunnel rescue (file 129 @1141), but Saffron City's gates are shut before the rescue: Route 5/6 gates files 182/185 block while var 0x409F = 0, Route 7 gate file 187 while 0x40B9 = 0; read only, see the known-issues entry on the early Lavender curse). Hostages hidden by flag 1208, set at file 834 @5066/@5207. Employee ≈33,8 on the cafeteria map.
 
 ## Saffron City: the Team Rocket takeover (what it closes)
 

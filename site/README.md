@@ -78,6 +78,10 @@ Before committing: `python3 work/tools/site/build.py --check` fails if any gener
   trades page: trades and gifts are on the location page (`/locations/<slug>/#special`), shops at `#shops`.
   `sync_guide.py` rewrites these for the site's base path; the PDF turns them into links to the published
   site (`GUIDE_PUBLIC_URL`) or, without it, plain text. `check_site.py` reports broken ones.
+- Pictures go in `guide/images/` (lower-case, hyphenated names, e.g. `viridian-forest-honey-tree.jpg`) and are
+  linked as `![what the picture shows](images/<name>.jpg)`. The alt text says what the player should look for.
+  `sync_guide.py` copies them next to the site pages (Astro converts them to WebP) and the PDF embeds them.
+  Remove EXIF data from phone photos before adding them: it can include the location and the device.
 - Give directions with landmarks ("a few steps east of the Pokémon Center door"), never coordinates.
   `python3 work/tools/docs/landmarks.py near "Celadon City" 1236,238` turns a coordinate into
   landmarks; `python3 work/tools/docs/scriptdump.py <file>` shows an event script with its dialogue.

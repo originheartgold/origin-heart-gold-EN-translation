@@ -68,9 +68,9 @@
 
 **Reward:** 5 Heal Balls if you help hold back the Slugma and win. Step 5 also releases the **wild Chikorita** on Route 30 (next entry).
 
-**Notes:** after the final Hall of Fame entry Crystal is back in the orphanage. She offers a repeatable Singles or Doubles battle. If you confessed to her, she also offers "Let's go for a walk together", but that option only plays one line and ends: Crystal has no date scenes.
+**Notes:** after the final Hall of Fame entry Crystal is back in the orphanage. She offers a repeatable Singles or Doubles battle. If you've confessed (to anyone) and Crystal hasn't been ruled out as your partner, she also offers "Let's go for a walk together", but that option only plays one line and ends: Crystal has no date scenes.
 
-*Source:* script file 851 (scripts 4, 6; L1271–L2745; var 0x408b 7 → 9, flags 1964, 1965, 1967, 1968), file 847 (L7995–L8091 tour, coord 547,385 → L5553–L5763, L7374 sets 0x408b = 8; Slugma question L1945, trainer 745, Heal Balls (item 14) ×5 at L6549–L6561), file 840 (L1436–L1530). Positions: Crystal at 34,4 in the orphanage; Rhett at ≈547,385, north exit ≈549,386.
+*Source:* script file 851 (scripts 4, 6; L1271–L2745; var 0x408b 7 → 9, flags 1964, 1965, 1967, 1968), file 847 (L7995–L8091 tour, coord 547,385 → L5553–L5763, L7374 sets 0x408b = 8; Slugma question L1945, trainer 745, Heal Balls (item 14) ×5 at L6549–L6561), file 840 (lab script 3, L1436–L1530: hides the orphanage Crystal (flag 1964) and shows the Elm scene (clears 1968)); post-game: L926 checks flags 1645 (confessed) and 2145 (Crystal ruled out) before the walk option; flag 1964 is cleared again at the final Hall of Fame (file 822 L2522). Positions: Crystal at 34,4 in the orphanage; Rhett at ≈547,385, north exit ≈549,386.
 
 ## Route 30: the Stantler roadblock (Noctowl's Foresight)
 
@@ -163,21 +163,21 @@
 
 **Reward:** Black Glasses (Tamao, once).
 
-**Notes:** neither battle comes back after the ceremony. Crystal moves on to Route 32.
+**Notes:** neither battle comes back after the ceremony. Crystal moves on to the Ruins of Alph.
 
-*Source:* script file 854 (scripts 19, 20; L1981–L2115; flags 1839, 1849), file 18 (ceremony: HidePerson on the flag-739 objects, SetFlag 1839 at L3845). Tamao and Crystal are both hidden by flag 739, which the ceremony sets and nothing clears; the flag 1839 change on Route 34 (file 237) belongs to a different object (a Totodile). Positions: Tamao ≈474,252; Crystal ≈479,244.
+*Source:* script file 854 (scripts 19, 20; L1981–L2115; flags 1839, 1849), file 18 (ceremony: HidePerson on the flag-739 objects, SetFlag 1839 at L3845). Tamao and Crystal are both hidden by flag 739, which the ceremony sets and nothing clears; the ceremony's L3861 clears flag 1851, which shows Crystal and Gold at the Ruins of Alph; the flag 1839 change on Route 34 (file 237) belongs to a different object (a Totodile). Positions: Tamao ≈474,252; Crystal ≈479,244.
 
 ## Violet City: the S.S. Anne passenger and his girlfriend (only if you saved the S.S. Anne)
 
 **Where:** a woman and her boyfriend a few steps south of the Pokémon Academy door (the east house on the Gym's street).
 
-**Who gets it / when:** the boyfriend only stands here if the S.S. Anne did **not** sink ([S.S. Anne: defuse the bomb or the ship sinks](03-vermilion-to-celadon.md#ss-anne-defuse-the-bomb-or-the-ship-sinks-one-chance)). If it sank, only the woman is here and she says he "can never come back".
+**Who gets it / when:** the boyfriend only stands here if the S.S. Anne did **not** sink ([S.S. Anne: defuse the bomb or the ship sinks](03-vermilion-to-celadon.md#ss-anne-defuse-the-bomb-or-the-ship-sinks-one-chance)). If it sank, only the woman is here and she says he "can never come back", until the post-game Celebi trip undoes the sinking ([Forest of Time: Celebi takes you back to the S.S. Anne](09-ilex-goldenrod.md#forest-of-time-celebi-takes-you-back-to-the-ss-anne-post-game-only-if-the-ship-sank)).
 
 **Reward:** talk to him → **2 Mosaic Mail + 2 Brick Mail** (once). His girlfriend then thanks you too.
 
-**Notes:** the Sprout Tower monk in the next entry follows the same rule.
+**Notes:** the S.S. Anne monk in Sprout Tower ([Sprout Tower: optional battles](#sprout-tower-optional-battles-gold-the-ss-anne-monk-the-elder)) follows the same rule.
 
-*Source:* script file 854 (scripts 2, 16; L1320, L2431; flags 1093, 1822). Positions ≈494,263 and 493,263.
+*Source:* script file 854 (scripts 2, 16; L1320, L2431; flags 1093, 1822). The boyfriend (object 18) is hidden by flag 1093, set by the sinking (file 157 @2852) and cleared only by the Celebi trip (file 52 @4858). Positions ≈494,263 and 493,263.
 
 ## Sprout Tower: the monks' toll (pay or fight)
 
@@ -202,7 +202,7 @@ Either answer moves his Bellsprout aside for good. Losing a battle blacks you ou
 ## Sprout Tower: optional battles (Gold, the S.S. Anne monk, the Elder)
 
 - **Gold** (1F, a few steps in from the entrance, with Exbo the Cyndaquil): asks for a warm-up battle, Lv. 10–11. Only before the ceremony (he leaves with it). No reward.
-- **The S.S. Anne monk** (1F, with a Victreebel, at the west end of the same area as the first toll monk): **only if you saved the S.S. Anne.** He battles you (Sage Zhishen, six Pokémon at Lv. 81–82) and gives **1 Chesto Berry** as thanks. Afterwards he offers a rematch any time, Singles or Doubles (Doubles needs at least two Pokémon).
+- **The S.S. Anne monk** (1F, with a Victreebel, at the west end of the same area as the first toll monk): **only if you saved the S.S. Anne** (or after the post-game Celebi trip undoes the sinking). He battles you (Sage Zhishen, six Pokémon at Lv. 81–82) and gives **1 Chesto Berry** as thanks. Afterwards he offers a rematch any time, Singles or Doubles (Doubles needs at least two Pokémon).
 - **The Elder** (3F, top of the room): "I'm here to train" → Singles or Doubles against Elder Zhizhen (Lv. 81–82 Grass team: Victreebel, Carnivine, Ludicolo, Shiftry, Cacturne, Tangrowth), repeatable, no reward. "Please pray for me" → two sutras for **$5,000 each**; you only get the chanting, nothing else.
 
 *Source:* script file 16 (scripts 7, 11; flags 2106, 1810, 1093), file 18 (script 9; L2281–L2576). Positions: Gold ≈15,20; S.S. Anne monk ≈6,40.
@@ -221,7 +221,7 @@ No answer gives a reward.
 
 **Notes:** he turns up again in Union Cave in the Marill quest below.
 
-*Source:* script file 854 (script 17; answers 1–3 set his hide flag 1827 at L1932/L1947/L1962; "Thanks for clearing up my doubts" L1914). Position ≈491,232.
+*Source:* script file 854 (script 17; answers 1–3 set his hide flag 1827 at L1932/L1947/L1962; "Thanks for clearing up my doubts" L1914); the ceremony also sets 1827 (file 18 L3857). Position ≈491,232.
 
 ## Violet City: the runaway Marill (→ Heart Scale, 2 PP Max)
 
@@ -237,16 +237,16 @@ No answer gives a reward.
 | Choice | What happens | Reward |
 |---|---|---|
 | **Talk it into going home** | Marill "finds you annoying" and vanishes. The owner gives you a **Heart Scale**, then leaves to find it herself. Continue at step 4. | Heart Scale (+ 2 PP Max) |
-| **Take it back by force** | You drag it home; the owner apologises and gives you a **Heart Scale**. But after the Ilex Forest scene the Marill (she calls it Azumarill) has run away for good. | Heart Scale |
+| **Take it back by force** | You drag it home; the owner apologises and gives you a **Heart Scale**. But after the Ilex Forest scene the Marill has run away for good. | Heart Scale |
 | **Forget it** | The owner sobs; Marill never returns. | none |
 
 4. (Talk route only) In **Union Cave 1F**, walk up to the owner and Marill in the south-east part of the cave, east of the Route 33 exit. Shady Guy Yamamoto, the thief from Violet, knocks Marill out and throws a Poké Ball. "Step in and stop Marill from being caught?" → **Yes**: battle him (Girafarig, Vileplume, Ninjask, Rhyperior, Lv. 62–65). Win → owner and Marill make up and she gives you **2 PP Max**. Losing blacks you out, and the scene replays on your next visit.
 
 **Reward:** Heart Scale; 2 PP Max for the Talk route with the Union Cave rescue. On that route the owner and Marill are back in Violet straight after your Union Cave win.
 
-**Notes:** if you haven't finished by Crystal's Ilex Forest scene, the quest ends there and the owner stays alone. In Union Cave, answering No lets him take Marill, but the game still gives the happy ending later (see [Known issues](known-issues.md#cherrygrove-city-to-azalea-town)).
+**Notes:** if you haven't finished by Crystal's Ilex Forest scene, the quest ends there: the owner stays alone, and on the Talk route, if she has already left for Union Cave, she doesn't come back to Violet at all. In Union Cave, answering No lets him take Marill, but the game still gives the happy ending later (see [Known issues](known-issues.md#cherrygrove-city-to-azalea-town)).
 
-*Source:* script file 854 (scripts 5, 27; L1682–L1830, L2117–L2230, L3780–L3837, L3903–L5163; var 0x40AD, flags 1528, 1824–1826, 1896), file 231 (Route 31 gatehouse L179 sets 0x40AD = 1), file 56 (Union Cave script 5, L785–L989 and L2460–L2874; trainer #756; the return to Violet is set at L2848/L2852 right after the win), file 92 (Ilex Forest L10515–L10534, L10927; only repeats the same flag changes). Positions: owner ≈463,262; Marill ≈505,254 → ≈505,236; Union Cave ≈51,86.
+*Source:* script file 854 (scripts 5, 27; L1682–L1830, L2117–L2230, L3780–L3837, L3903–L5163; var 0x40AD, flags 1528, 1824–1826, 1896), file 231 (Route 31 gatehouse L179 sets 0x40AD = 1), file 56 (Union Cave script 5, L785–L989 and L2460–L2874; trainer #756; the return to Violet is set at L2848/L2852 right after the win), file 92 (Ilex Forest L10459–L10467 hide the Union Cave scene and the corner Marill; L10515–L10534 set 0x40AD = 8 and hide the Marill beside the owner unless the var is already 8, else L10927 shows the owner and Marill again; the owner's hide flag 1825, set when she leaves at L3815, is cleared only by the Union Cave win and L10927). Positions: owner ≈463,262; Marill ≈505,254 → ≈505,236; Union Cave ≈51,86.
 
 ## Violet City: teach Goh a lesson (before the Ruins of Alph chapter ends)
 
@@ -480,19 +480,19 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 **Where:** Ruins of Alph, outside, west side: a few steps north-west of the small building in the middle of the ruins.
 
 **How it works:**
-1. Talk to her. She is meant to start with "Do you have a Potion I could borrow?". In practice she skips straight to "Thanks for the Potion", **without taking one** (see [Known issues](known-issues.md#cherrygrove-city-to-azalea-town)), and asks you to find out why her face appeared on a statue underground.
-2. Go to the **Underground Hall** (enter the small building in the middle of the ruins and go down). Examine the **fourth statue from the left in the top row**: "{your name}'s face slowly appeared on the statue! Touch it?" → Yes → wild **Bronzor, Lv. 25** (beat or catch it).
+1. Talk to her: she scraped her knee. "Do you have a Potion I could borrow?" → **Yes** with a **Potion** in your Bag. She takes it, thanks you, and asks you to find out why her face appeared on a statue underground. (No: "You don't...?". Yes without a Potion: "Liar. You don't even have a Potion." Either way, talk to her again when you have one.)
+2. Go to the **Underground Hall** (enter the small building in the middle of the ruins and go down). Examine the **fourth statue from the left in the top row**: "{your name}'s face slowly appeared on the statue! Touch it?" → Yes → wild **Bronzor, Lv. 25** (beat it, catch it or run away). Before step 1 the statue is just "a replica of an ancient Pokémon."
 3. Go back and tell her.
 
-**Reward:** **Rock Incense** (one time).
+**Reward:** **Rock Incense** (one time). The quest costs one Potion.
 
-**Notes:** losing to Bronzor whites you out and you can try again.
+**Notes:** losing to Bronzor whites you out and you can try again. Tested in an emulator (Chinese ROM and English build): without a Potion she calls you a liar; with one, the Potion is taken, the statue starts the Bronzor battle (running away also counts), and she then gives the Rock Incense.
 
-*Source:* script file 37 (script 19, L1271–L1377; var 0x4079), file 42 (script 12, L273–L382: WildBattle 436 Lv. 25, var 0x4079 = 4), file 840 (Elm's Lab L3184/L3314 sets 0x4079 = 3). Positions: girl ≈425,279; statue 15,6 in the Underground Hall.
+*Source:* script file 37 (script 19, L616–L690: var 0x4079 0–2 → L1271 request, Yes → L1859 `HasItem 17` → L3312 `TakeItem 17`, sets 0x4079 = 3 at @3364; 3 → L1308; 4 → L1319, Rock Incense (item 315), sets 5), file 42 (script 12, L236 needs 0x4079 = 3; L273–L382: WildBattle 436 Lv. 25, sets 0x4079 = 4 unless you lose). Before Johto only Kanto story scenes write 0x4079, all with 0–2 (file 739 @965, file 212 @3120, file 115 @5535); the other writes of 3 (file 840 @3184/@3314) are in Elm's lab script 15, which never runs. Girl: object 1, no hide flag. Emulator (one-off run, `work/build/harness/guide-review-20261006/ch08/`, both ROMs; 0x4079 = 2 at the start): no Potion → 70#50, #52; with Potions → #50, #53, #54, one Potion taken, 0x4079 = 3; statue → wild Bronzor, fled, 0x4079 = 4; girl → #55–#57, Rock Incense, 0x4079 = 5. Positions: girl ≈425,279; statue 15,6 in the Underground Hall.
 
 ## Ruins of Alph: small extras
 
-- **Infernape's owner** (just south-west of the Route 36 gatehouse door, at the north edge of the ruins): "Wanna see?" → Yes → pick a Single or Double Battle. The first win gets a **Power Bracer**. You can rebattle him for nothing.
+- **Infernape's owner** (just south-west of the Route 36 gatehouse door, at the north edge of the ruins): "Wanna see?" → Yes → pick a Single or Double Battle. The first win gets a **Power Bracer**. You can battle again, with no further reward.
 - **Ancient Power tutor** (south-east corner, a man with a Yanmega): teaches **Ancient Power** for **1 Rare Bone** each time (93 species; see the [tutor table](/tutors/)).
 - **Prof. Hale's legend hints** (Research Center): once Prof. Hale is rescued from the Team Rocket HQ (Mahogany) and back with Molly, talk to him. His menu gives hints on the legendary birds, the beasts, the Regis ("take a Wailord and a Relicanth to Rock Tunnel"), the lake trio (Lake of Rage, the storm pauses on Wednesdays), Mewtwo, Mew, Ho-Oh, Lugia, Groudon (Mt. Moon's lava pool), Kyogre (Seafoam), Rayquaza (Sky Pillar Peak, Jade Orb), Dialga (Ice Path), Palkia (Mt. Mortar), Giratina, Regigigas, Arceus (Azure Flute), Shaymin and Celebi (Ilex Forest), Deoxys (Six Island), Jirachi, Heatran (Union Cave's lava pool, "a seething-hot stone"), Darkrai and Cresselia (Route 39), Manaphy and Phione (Alto Mare). After the final Hall of Fame he takes Molly to Ecruteak's Burned Tower (the Research Center tells you where he is). This guide only lists the hints; follow each one in its own chapter.
 - **Entei in the dream world (post-game, Lv. 90, one chance):** after you've met Prof. Hale and Molly at the Burned Tower, Entei waits again in the dead-end chamber where you fought it during the story, on the west side of the room. "Battle Entei?" → Yes → wild **Entei, Lv. 90**. Beat it, catch it or run away, and it disappears for good. Tested in an emulator (Lv. 90; gone after running away). How to get back in: the back wall of the Kabuto chamber → the hall → touch the statue → walk west to the foot of the steps, which takes you to Entei's room (from the map data; this route wasn't walked in game).
@@ -530,7 +530,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 - **Quick Powder** item on Route 32 (north half, a few steps west of the Hoppip tree): one Quick Powder. Once picked up it doesn't come back.
 - **The Friday weekday sibling** (Fridays only, north part, west side, across from the fire-breather): gives a **Poison Barb**. If you've met all seven siblings she gives your lead Pokémon a ribbon instead.
 
-*Source:* seller: file 232 script 1 (≈459,291). Quick Powder: file 232 script 4 (≈456,337); the script's HidePerson sets the item's hide flag 1314 for good and nothing clears it. Friday sibling: file 232 script 6 (≈458,308).
+*Source:* seller: file 232 script 1 (≈459,291). Quick Powder: file 232 script 4 (≈456,337); the script's HidePerson sets the item's hide flag 1314 for good. The only clear is Brock's Boulder Badge scene in Pewter Gym (file 750 @655), long before. Friday sibling: file 232 script 6 (≈458,308).
 
 ## Union Cave 1F: Goh and the wild Cyndaquil (before you finish the Ilex Forest story)
 
