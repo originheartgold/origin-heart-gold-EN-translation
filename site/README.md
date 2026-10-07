@@ -128,3 +128,9 @@ The repository URL, site URL and base path are taken from the repository automat
 
 Bug reports, screenshots and edit suggestions arrive as GitHub issues through the forms in
 `.github/ISSUE_TEMPLATE/`; every page links to them with the page filled in.
+
+## Save editor and navigation
+
+The header has a quick link to `/save-editor/`. The editor uses the standalone `sv` implementation in `work/save-editor/`, with its own full-width layout and a Guide link back to the site. Astro bundles its TypeScript and stylesheet directly. Both the standalone source in `sv` and the integrated copy include a persistent light/dark toggle.
+
+On desktop, the header hamburger collapses the guide sidebar and remembers that choice. On small screens, Starlight's existing hamburger opens the navigation drawer. All links respect `GUIDE_BASE` for GitHub Pages deployment.

@@ -109,3 +109,9 @@ ul.loc-list li { break-inside: avoid; }
 	.game-setup { padding: 0.6rem 0.75rem; }
 	table.compact { display: block; overflow-x: auto; }
 }
+
+/* Desktop sidebar can collapse; Starlight's mobile menu remains available. */
+@media (min-width: 50rem) {
+  :root[data-sidebar-collapsed] .sidebar-pane { display: none; }
+  :root[data-sidebar-collapsed] .main-frame { padding-inline-start: 0; }
+}

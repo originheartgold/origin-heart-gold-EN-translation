@@ -1,23 +1,17 @@
 {
-  "name": "origin-save-editor",
-  "version": "0.1.0",
+  "name": "origin-hg-save-editor",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
+  "description": "Standalone save editor for Pokémon Origin HeartGold v4.0.3 (English).",
   "scripts": {
-    "build": "node node_modules/typescript/bin/tsc -p tsconfig.json",
-    "test": "npm run build && node --test tests/*.test.mjs",
+    "build": "tsc -p tsconfig.json",
     "start": "npm run build && node scripts/serve.mjs",
-    "typecheck": "node node_modules/typescript/bin/tsc -p tsconfig.json --noEmit",
-    "lint": "node node_modules/eslint/bin/eslint.js src --max-warnings 0",
-    "check": "npm run typecheck && npm run lint && npm test"
+    "gen:extras": "npm run build && node scripts/generate-extras.mjs",
+    "test": "npm run build && node --test tests/*.test.mjs"
   },
   "devDependencies": {
-    "typescript": "5.8.3",
-    "eslint": "9.28.0",
-    "@typescript-eslint/parser": "8.34.0",
-    "@typescript-eslint/eslint-plugin": "8.34.0"
+    "typescript": "^5.8.3"
   },
-  "engines": {
-    "node": ">=22"
-  }
+  "engines": { "node": ">=22" }
 }
