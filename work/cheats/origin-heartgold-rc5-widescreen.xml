@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<codelist>
+  <name>Origin HeartGold v1.0.0-rc5 widescreen and camera</name>
+  <game>
+    <name>Origin HeartGold v1.0.0-rc5</name>
+    <gameid>IPKJ FC762E68</gameid>
+    <folder>
+      <name>Widescreen</name>
+      <cheat>
+        <name>16:9 camera - widescreen ON</name>
+        <note>Enable only one of these two codes at a time. Set the emulator's top screen to 16:9. The 3D camera switches when it is next created: enable the code before loading your save, or go through a door. Only the 3D view widens; 2D graphics on the top screen stretch.</note>
+        <codes>52023640 00001555 02023640 00001C72 D2000000 00000000</codes>
+      </cheat>
+      <cheat>
+        <name>4:3 camera - widescreen OFF</name>
+        <note>Disable the ON code first. Restores the standard 4:3 camera; set the top screen back to 4:3. The camera switches back when it is next created: go through a door or reload your save.</note>
+        <codes>52023640 00001C72 02023640 00001555 D2000000 00000000</codes>
+      </cheat>
+    </folder>
+    <folder>
+      <name>Camera</name>
+      <cheat>
+        <name>Interiors: real 3D, original framing</name>
+        <note>Switches the flat (orthographic) interior camera to a real 3D one with the same framing. Outdoor maps and gyms are not touched. Applies after the next door. To undo, disable the code and go through a door. See CAMERA_CHEATS.md.</note>
+        <codes>521E9C54 B084B5F8 02205448 02810000 022055D4 02810000 D2000000 00000000</codes>
+      </cheat>
+      <cheat>
+        <name>Interiors: normal outdoor 3D camera</name>
+        <note>Interiors use the normal outdoor camera (like the US Normal 3D code, but only inside buildings). Applies after the next door. To undo, disable the code and go through a door.</note>
+        <codes>521E9C54 B084B5F8 0220543C 0029AEC1 02205440 0000DD62 02205448 05C10000 02205450 004B0000 022055C8 0029AEC1 022055CC 0000DD62 022055D4 05C10000 022055DC 004B0000 D2000000 00000000</codes>
+      </cheat>
+      <cheat>
+        <name>Force preset 00: normal 3D everywhere</name>
+        <note>Port of the US Normal 3D code. Every map uses the outdoor camera. Enable only one Force or Custom code. Applies after the next door; the preset is stored in the save until the next door after disabling. Edit the last digits of the third line (00 to 10 hex) for any other preset.</note>
+        <codes>621CFF30 00000000 B21CFF30 00000000 20001308 00000000 D2000000 00000000</codes>
+      </cheat>
+      <cheat>
+        <name>Force preset 02: lower angle (Gen 5 style)</name>
+        <note>Port of the US Slightly lower code. Every map uses a 40 degree camera instead of 49. Enable only one Force or Custom code. Applies after the next door; the preset is stored in the save until the next door after disabling. Edit the last digits of the third line (00 to 10 hex) for any other preset.</note>
+        <codes>621CFF30 00000000 B21CFF30 00000000 20001308 00000002 D2000000 00000000</codes>
+      </cheat>
+      <cheat>
+        <name>Force preset 06: slightly lower, further view</name>
+        <note>Every map uses a 45 degree camera with more draw distance. Enable only one Force or Custom code. Applies after the next door; the preset is stored in the save until the next door after disabling. Edit the last digits of the third line (00 to 10 hex) for any other preset.</note>
+        <codes>621CFF30 00000000 B21CFF30 00000000 20001308 00000006 D2000000 00000000</codes>
+      </cheat>
+      <cheat>
+        <name>Force preset 09: steeper top-down</name>
+        <note>Every map uses a 60 degree camera. Enable only one Force or Custom code. Applies after the next door; the preset is stored in the save until the next door after disabling. Edit the last digits of the third line (00 to 10 hex) for any other preset.</note>
+        <codes>621CFF30 00000000 B21CFF30 00000000 20001308 00000009 D2000000 00000000</codes>
+      </cheat>
+      <cheat>
+        <name>Custom camera (template: normal camera)</name>
+        <note>Copies the normal camera into unused preset 6 and forces it everywhere. Edit the values: distance, tilt, FOV+projection, near, far, look-at shift X/Y/Z. See CAMERA_CHEATS.md for the encoding. Example: tilt 35 degrees = 02205488 0000E71C with far clip 02205498 005DC000. Enable only one Force or Custom code.</note>
+        <codes>521E9C54 B084B5F8 02205484 0029AEC1 02205488 0000DD62 02205490 05C10000 02205494 00096000 02205498 004B0000 0220549C 00000000 022054A0 00000000 022054A4 00000000 D2000000 00000000 621CFF30 00000000 B21CFF30 00000000 20001308 00000006 D2000000 00000000</codes>
+      </cheat>
+    </folder>
+  </game>
+</codelist>
