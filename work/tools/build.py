@@ -26,22 +26,19 @@ Pipeline
               USA tile data inside code
               (battle HP-box status icons, overlay 14) - see
               work/notes/graphics_inventory.md
-  3c. hardcoded  hardcoded.apply(): fix outfit-chooser-strings ([[string]]) - English for Chinese strings that
-              live outside the message NARCs (overlay 58 outfit chooser); written in place when they fit,
-              otherwise appended to the overlay and repointed; refuses anything that does not fit. Then the
-              selected code/data fixes (namelen, naming-keyboard, msgload, pcbox-name-width, ivev-panel):
-              asmpatch.apply() assembles each fix's armips source (work/patches/<fix>/<fix>.asm) over the
-              decompressed arm9/overlay images and refuses any change outside the regions its fix.toml
-              declares (--code-engine armips, the default; armips v0.11.0 from --armips, $ARMIPS or PATH, see
-              work/notes/toolchain.md). --code-engine python applies the frozen halfword patches of
-              legacy_code_patches.toml instead (kept to prove both give the same ROM) - see
-              work/notes/hardcoded_text.md
+  3c. hardcoded  asmpatch.apply(): the selected strings, data and code fixes (outfit-chooser-strings,
+              namelen, naming-keyboard, msgload, pcbox-name-width, ivev-panel) - armips assembles each fix's
+              source (work/patches/<fix>/<fix>.asm) over the decompressed arm9/overlay images; the build
+              refuses any change outside the regions its fix.toml declares, growth of an overlay beyond its
+              [[grow]], and strings that differ from their [[string]] en (overlay 58 outfit chooser: 'OK' in
+              place, 'Outfit 1/2/3' appended to the overlay and repointed). armips v0.11.0 from --armips,
+              $ARMIPS or PATH: work/notes/toolchain.md, work/notes/hardcoded_text.md
   4. write    work/build/origin_hg_v4.0.3_en_wip.nds
   5. verify   re-open with ndspy; message NARCs parse and round-trip (container rebuild byte-identical,
               every bank decodes and re-encodes identically, the exported text is what the ROM holds);
               every compressed-bank name fits its buffer and decompresses to the English;
               glyphs/widths equal the US ones; every patched graphics member is what the stage wrote;
-              every hardcoded string/pointer/overlay size is what stage 3c wrote
+              every hardcoded string/pointer/overlay size and code region is what stage 3c wrote
   6. patch    xdelta3 -e -9 -S lzma -s BASE TARGET work/build/Origin_HeartGold_v4.0.3_EN_wip.xdelta,
               then re-apply it to BASE and compare SHA-1 with TARGET
 
@@ -49,11 +46,11 @@ Usage
   python3 work/tools/build.py [--status tm,draft,reviewed] [--no-patch] [--lenient]
                               [--only FIX,...] [--without FIX,...]
                               [--glyph-fonts 0,1,2,4] [--no-graphics] [--no-regen-graphics]
-                              [--no-hardcoded] [--keep-export]
-                              [--code-engine armips|python] [--armips PATH]
+                              [--no-hardcoded] [--keep-export] [--armips PATH]
   --only/--without take fix ids (python3 work/tools/fixes.py list). --no-glyphs, --no-graphics and
   --no-hardcoded leave out every fix of kind font / graphics / strings+code+data; `requires` still holds,
-  so e.g. --no-hardcoded alone is refused (gfx-naming-tabs requires naming-keyboard).
+  so e.g. --no-hardcoded alone is refused (gfx-naming-tabs requires naming-keyboard). armips is needed
+  whenever a strings, code or data fix is selected.
 Nothing is uploaded anywhere; all outputs stay in work/build/.
 """
 from __future__ import annotations
@@ -76,7 +73,6 @@ sys.path.insert(0, str(TOOLS))
 import asmpatch  # noqa: E402
 import fixes as fixreg  # noqa: E402
 import gfx  # noqa: E402
-import hardcoded  # noqa: E402
 import msgtool as m  # noqa: E402
 import textmetrics as tm  # noqa: E402
 import ws  # noqa: E402
@@ -234,7 +230,7 @@ def verify_rom(out_rom: Path, export_dir: Path, us_font_narc: bytes, fonts, cm, 
     if gfx_report:
         res["graphics_layouts"] = gfx.check_layouts(lambda p: m.get_file(rom, p), gfx.CodeView(rom))
     if hc_report is not None:
-        res["hardcoded"] = hardcoded.verify(rom, hc_report, cm)
+        res["hardcoded"] = asmpatch.verify(rom, hc_report)
     return res
 
 
@@ -269,9 +265,6 @@ def main(argv=None):
                     help="use the generated graphics already in work/graphics instead of rebuilding them")
     ap.add_argument("--no-hardcoded", action="store_true",
                     help="leave out every strings, code and data fix (hardcoded stage)")
-    ap.add_argument("--code-engine", choices=("armips", "python"), default="armips",
-                    help="how the code/data fixes are applied: their armips sources (default), or the legacy "
-                         "Python halfword patches (legacy_code_patches.toml; for the equivalence check)")
     ap.add_argument("--armips", help=f"armips executable (default: ${asmpatch.ENV_VAR}, then PATH); must be "
                                      f"{asmpatch.PINNED_VERSION}")
     ap.add_argument("--no-patch", action="store_true")
@@ -327,9 +320,8 @@ def main(argv=None):
         fixreg.check_overlay_bases(rom)
     except fixreg.FixError as ex:
         sys.exit(str(ex))
-    report["code_engine"] = a.code_engine
     armips = None
-    if a.code_engine == "armips" and fixreg.code_entries_fixes(active):
+    if asmpatch.asm_fixes(active):
         try:
             armips = asmpatch.find_armips(a.armips)
             version = asmpatch.check_armips(armips)
@@ -372,28 +364,18 @@ def main(argv=None):
             f"{sum('code' in r for r in gfx_report)} code ranges patched by "
             f"{len({r.get('fix') for r in gfx_report})} graphics fixes")
 
-    # 3c. hardcoded strings (outside the message NARCs)
+    # 3c. hardcoded: strings, data and code fixes (armips)
     hc_report = None
-    if kinds & {"strings", "code", "data"}:
+    if armips is not None:
         try:
-            if a.code_engine == "python":
-                hc_report = hardcoded.apply(rom, cm, cfg=hardcoded.load(fixes=active),
-                                            code_patches=hardcoded.load_code_patches(fixes=active))
-            else:
-                hc_report = hardcoded.apply(rom, cm, cfg=hardcoded.load(fixes=active), code_patches=[])
-                if armips is not None:
-                    asm_report = asmpatch.apply(rom, active, armips)
-                    hc_report["code_patches"] = asm_report["code_patches"]
-                    hc_report["files"].update(asm_report["files"])
-                    hc_report["armips"] = asm_report["armips"]
-        except (hardcoded.HardcodedError, asmpatch.AsmError) as ex:
+            hc_report = asmpatch.apply(rom, active, armips)
+        except asmpatch.AsmError as ex:
             sys.exit(str(ex))
-        hc_report["code_engine"] = a.code_engine
+        hc_report["todo"] = sum(1 for e in fixreg.strings_config(active)["strings"] if not e.get("en"))
         report["hardcoded"] = hc_report
         log(f"hardcoded: {len(hc_report['strings'])} strings written "
             f"({sum(r['mode'] == 'relocated' for r in hc_report['strings'])} relocated), "
-            f"{hc_report['todo']} untranslated, {len(hc_report['code_patches'])} code/data regions "
-            f"({a.code_engine})")
+            f"{hc_report['todo']} untranslated, {len(hc_report['code_patches'])} code/data regions (armips)")
 
     # 4. write
     log(f"write {out_rom}")

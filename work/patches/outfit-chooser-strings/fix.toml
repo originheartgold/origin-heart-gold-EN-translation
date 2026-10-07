@@ -4,6 +4,7 @@ kind = "strings"
 enabled = true
 decisions = ["D-0830", "D-0831"]
 requires = []
+asm = "outfit-chooser-strings.asm"
 why = """
 Players: in Oak's speech, after 'boy or girl', the outfit chooser lists 形象1 形象2 形象3 确认 in Chinese even
 though all message text is English.
@@ -15,21 +16,25 @@ message NARCs.
 """
 what = """
 Old: 确认 / 形象1 / 形象3 / 形象2 in overlay 58.
-New: 'OK' is written in place. 'Outfit 1/2/3' do not fit their 3-character slots, so the build appends them to
-the end of overlay 58 (the overlay grows by 56 bytes, at most grow_max 64; its y9 ramSize is updated),
-repoints the pointer words at +0x7C0/+0x7C4/+0x7C8 and fills the old slots with 0xFFFF. The code copies each
-label into a String of capacity 16, so up to 15 characters are safe. The build refuses if the ROM no longer
-holds the Chinese, the growth passes grow_max, the overlay has .bss or another overlay starts in the grown range.
+New: 'OK' is written in place. 'Outfit 1/2/3' do not fit their 3-character slots, so the armips source
+(outfit-chooser-strings.asm) appends them to the end of overlay 58 (the overlay grows by 56 bytes, at most the
+[[grow]] max of 64; the build updates its y9 ramSize), repoints the pointer words at +0x7C0/+0x7C4/+0x7C8 and
+fills the old slots with 0xFFFF. The code copies each label into a String of capacity 16, so up to 15
+characters are safe. The English lives in the asm and in the [[string]] `en` below (translators and the text
+checks read it here); fixes.py check and the build refuse if they differ. The build also refuses if the ROM
+no longer holds the Chinese, the growth passes the [[grow]] max, the overlay has .bss or another overlay starts
+in the grown range.
 """
 evidence = [
   "work/notes/hardcoded_text.md: 'Survey' and 'Pipeline'",
   "In-game: work/build/screens/hardcoded_*.png (local): English labels, cursor works, OK leads to the naming screen",
-  "work/tools/test_hardcoded.py: scan finds exactly these 4 strings; apply + verify",
+  "work/tools/test_hardcoded.py: the scan finds exactly these 4 strings; test_asmpatch.py: the assembled overlay (golden SHA-1) and verify",
   "CHANGELOG.md v1.0.0: 'Hardcoded text outside the archives (the outfit chooser in overlay 58) is translated.'",
 ]
 
-[string_files.overlay58]
-grow_max = 64
+[[grow]]
+file = "overlay58"
+max = 64
 notes = "Hack-rewritten overlay 58 (RAM 0x021E83C0, 0x7E0 bytes, no .bss): the outfit chooser shown in Oak's speech before the naming screen. Loaded right after overlay 49 (0x021E4980-0x021E83C0). No other overlay starts inside 0x021E83C0-0x021E93C0, so growing it by up to 64 bytes cannot collide with a co-loaded overlay; the build re-checks this."
 
 [[string]]

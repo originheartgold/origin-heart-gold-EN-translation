@@ -20,7 +20,6 @@ import asmpatch
 import build
 import fixes as fixreg
 import gfx
-import hardcoded
 import msgtool as m
 
 MESSAGE_PATHS = frozenset(("a/0/2/7", "battle/string/battle_string.narc"))
@@ -36,16 +35,28 @@ def _expected_rom(source_path, us_path):
                       lambda p, data: m.set_file(rom, p, data),
                       lambda p: m.get_file(us, p),
                       code=gfx.CodeView(rom), us_code=gfx.CodeView(us))
-    hardcoded.apply(rom)                       # [[string]] entries
     active = [f for f in fixreg.load_all() if f.get("enabled")]
-    if fixreg.code_entries_fixes(active):      # code/data fixes: their armips sources
-        try:
-            armips = asmpatch.find_armips()
-        except asmpatch.AsmError as exc:       # a missing tool is a gap, not a failure
-            raise FileNotFoundError(str(exc)) from None
-        asmpatch.check_armips(armips)
-        asmpatch.apply(rom, active, armips)
+    if asmpatch.asm_fixes(active):             # strings/code/data fixes: their armips sources
+        asmpatch.apply(rom, active, _armips())
     return rom
+
+
+class ToolchainError(Exception):
+    """A tool is present but not the pinned one: the boundary cannot be derived as declared."""
+
+
+def _armips():
+    """The pinned armips. Missing: FileNotFoundError (a gap: the check is incomplete, like a missing ROM).
+    Present but another version: ToolchainError (the check fails, like an unapproved US reference ROM)."""
+    try:
+        armips = asmpatch.find_armips()
+    except asmpatch.AsmError as exc:
+        raise FileNotFoundError(str(exc)) from None
+    try:
+        asmpatch.check_armips(armips)
+    except asmpatch.AsmError as exc:
+        raise ToolchainError(str(exc)) from None
+    return armips
 
 
 def _compare(expected, candidate, candidate_path):
@@ -136,6 +147,10 @@ def check_boundary(source_path, candidate_path, us_path):
         expected = _expected_rom(source_path, us_path)
     except (FileNotFoundError, ModuleNotFoundError) as exc:
         result["gaps"].append(f"missing boundary dependency: {type(exc).__name__}: {exc}")
+        return result
+    except ToolchainError as exc:
+        result["errors"].append(f"wrong toolchain, cannot derive declared translation boundary: {exc}")
+        result["status"] = "failed"
         return result
     except Exception as exc:
         result["errors"].append(f"cannot derive declared translation boundary: {type(exc).__name__}: {exc}")

@@ -2,11 +2,14 @@
 """Unit tests for asmpatch.py (the armips code/data fix engine). Run:
     ARMIPS=/path/to/armips python3 -m unittest -v work/tools/test_asmpatch.py
 Tests that assemble are skipped when armips v0.11.0 is not found ($ARMIPS, then PATH); the ROM tests are
-also skipped when work/rom/origin_v4.0.3_cn.nds is missing. The ROM tests prove that the armips sources write
-exactly the bytes of the legacy Python engine (legacy_code_patches.toml), per fix and all together."""
+also skipped when work/rom/origin_v4.0.3_cn.nds is missing. The ROM tests compare the assembled binaries with
+golden SHA-1s (GOLDEN), recorded on 2026-10-08 from the run that proved the armips sources write exactly the
+bytes of the retired Python engine, per fix and all together (work/notes/toolchain.md)."""
+import hashlib
 import re
 import shutil
 import stat
+import struct
 import sys
 import tempfile
 import unittest
@@ -18,7 +21,47 @@ import asmpatch as A  # noqa: E402
 import fixes as F  # noqa: E402
 
 ROM_CN = HERE.parent / "rom" / "origin_v4.0.3_cn.nds"
-CODE_FIXES = ("namelen", "naming-keyboard", "msgload", "pcbox-name-width", "ivev-panel")
+ASM_FIXES = ("outfit-chooser-strings", "namelen", "naming-keyboard", "msgload", "pcbox-name-width", "ivev-panel")
+# SHA-1 of every binary each fix changes (alone, and all together as "all") and of the y9 overlay table
+GOLDEN = {
+    "outfit-chooser-strings": {
+        "overlay58": "8fb5f17c824265a0e8da07803410d5d4999b84a4",
+        "y9": "90ebb4a7ba151c4e4d3ae19a06be6f06451dabb1"
+    },
+    "namelen": {
+        "arm9": "4f353f1e220d6ef9ac9ff967c3f7f3fbdd5ba68d",
+        "overlay44": "bb8393e2d4c2cd05a094e984597a0de6ce0bd841",
+        "overlay49": "dc255061037a45f36d47c7698418f70874c7a035",
+        "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
+    },
+    "naming-keyboard": {
+        "arm9": "3b513dfb3737a997d300a8977bc1cf1b5304bacb",
+        "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
+    },
+    "msgload": {
+        "arm9": "17255012a4c3660b4c872c28b5aa3fb82116b4e9",
+        "overlay17": "5015627c82275c7836897b67dfec73c662015635",
+        "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
+    },
+    "pcbox-name-width": {
+        "overlay16": "87cd982681b4164781e92a68994d6190c54d7a35",
+        "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
+    },
+    "ivev-panel": {
+        "arm9": "0c8fd98f8d8fc6e314892055612ebcbaa412f0eb",
+        "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
+    },
+    "all": {
+        "arm9": "3abf3d93ea5a9f1059dc722a67ba71e54b967c78",
+        "overlay16": "87cd982681b4164781e92a68994d6190c54d7a35",
+        "overlay17": "5015627c82275c7836897b67dfec73c662015635",
+        "overlay44": "bb8393e2d4c2cd05a094e984597a0de6ce0bd841",
+        "overlay49": "dc255061037a45f36d47c7698418f70874c7a035",
+        "overlay58": "8fb5f17c824265a0e8da07803410d5d4999b84a4",
+        "y9": "90ebb4a7ba151c4e4d3ae19a06be6f06451dabb1"
+    }
+}
+
 
 
 def _armips():
@@ -54,6 +97,14 @@ class Charmap(unittest.TestCase):
         self.assertGreater(n, 100)
         names = [mo.group(1).lower() for mo in re.finditer(r"^(\w+)\s+equ", inc, re.M)]
         self.assertEqual(len(names), len(set(names)), "armips names are case-insensitive")
+
+    def test_charmap_tbl_is_current(self):
+        self.assertEqual(A.CHARMAP_TBL.read_bytes(), A.charmap_tbl().encode("utf-8"),
+                         "regenerate: python3 work/tools/asmpatch.py tbl")
+        tbl = A.charmap_tbl()
+        self.assertIn("\n2B01=A\n", tbl)          # 0x012B, written little-endian
+        self.assertIn("\nDE01= \n", tbl)          # space: the lowest of its codes
+        self.assertTrue(tbl.endswith("\n/FFFF\n"))
 
 
 class Locate(unittest.TestCase):
@@ -99,7 +150,9 @@ class Assemble(unittest.TestCase):
                 "code": [{"id": i, "file": "arm9", "offset": o, "expect": e, "notes": "n"} for i, o, e in regions]}
 
     def run_fix(self, fx, data=bytes(64)):
-        return A.assemble([fx], {"arm9": data}, ARMIPS)
+        new, rows, srows = A.assemble([fx], {"arm9": data}, ARMIPS)
+        self.assertEqual(srows, [])
+        return new, rows
 
     def test_writes_inside_its_region(self):
         new, rows = self.run_fix(self.fix(".org 0x02000010\n.area 2\nexpect16 0\nmov r3, #7\n.endarea"))
@@ -193,9 +246,130 @@ class Assemble(unittest.TestCase):
 
 
 @needs_armips
+class StringsAndGrowth(unittest.TestCase):
+    """A synthetic strings fix over a 32-byte 'overlay58' at 0x021E0000 that may grow."""
+    BASE = 0x021E0000
+
+    def setUp(self):
+        self.td = tempfile.TemporaryDirectory()
+        self.dir = Path(self.td.name) / "t"
+        self.dir.mkdir()
+        cm = A.charmap()
+        import msgtool as m
+        self.u = lambda t: struct.pack(f"<{len(m.encode_text(t, cm))}H", *m.encode_text(t, cm))
+        d = bytearray(32)
+        struct.pack_into("<I", d, 0, self.BASE + 0x10)          # pointer to the slot
+        d[0x10:0x18] = self.u("形象1")                          # 3 characters + end
+        self.image = bytes(d)
+
+    def tearDown(self):
+        self.td.cleanup()
+
+    def fix(self, body, en="Outfit 1", grow=64, pointers=True):
+        (self.dir / "t.asm").write_text('.nds\n.include "../include/guards.inc"\n'
+                                        '.loadtable "../include/charmap.tbl", "UTF-8"\n'
+                                        '.open "overlay58.bin", 0x021E0000\n' + body + "\n.close\n",
+                                        encoding="utf-8")
+        e = {"id": "overlay58:0x10", "file": "overlay58", "offset": "0x10", "zh": "形象1", "en": en,
+             "max_units": 3, "reloc_max_units": 15}
+        if pointers:
+            e["pointers"] = ["0x0"]
+        fx = {"id": "t", "kind": "strings", "asm": "t.asm", "_path": self.dir / "fix.toml", "string": [e]}
+        if grow:
+            fx["grow"] = [{"file": "overlay58", "max": grow}]
+        return fx
+
+    RELOC = (".org 0x021E0010\n.area 8\nexpect32_at 0, 0x0BFB05C5\n.fill 8, 0xFF\n.endarea\n"
+             ".org 0x021E0000\nexpect32 0x021E0010\n.word new\n"
+             ".org 0x021E0020\nexpect_end\nnew: .string \"Outfit 1\"\n.align 4, 0xFF")
+
+    def run_fix(self, fx, layout=None):
+        layout = layout if layout is not None else {"overlay58": (self.BASE, 32, 0)}
+        return A.assemble([fx], {"overlay58": self.image}, ARMIPS, {"overlay58": self.BASE}, layout=layout)
+
+    def test_relocated_string_grows_the_overlay(self):
+        new, rows, srows = self.run_fix(self.fix(self.RELOC))
+        ov = new["overlay58"]
+        self.assertEqual(len(ov), 32 + 20)
+        self.assertEqual(struct.unpack_from("<I", ov, 0)[0], self.BASE + 0x20)
+        self.assertEqual(ov[0x20:0x32], self.u("Outfit 1"))
+        self.assertEqual(ov[0x32:], b"\xff\xff")
+        self.assertEqual(rows, [])
+        self.assertEqual(srows, [{"id": "overlay58:0x10", "mode": "relocated", "addr": self.BASE + 0x20, "units": 9,
+                                  "en": "Outfit 1", "pointers": ["0x0"], "file": "overlay58", "fix": "t"}])
+
+    def test_in_place_string(self):
+        new, _, srows = self.run_fix(self.fix('.org 0x021E0010\n.area 8\n.string "OK"\n.fill 2, 0xFF\n.endarea',
+                                              en="OK"))
+        self.assertEqual(new["overlay58"][0x10:0x18], self.u("OK") + b"\xff\xff")
+        self.assertEqual(srows[0]["mode"], "in-place")
+
+    def test_string_differs_from_toml_en(self):
+        with self.assertRaises(A.AsmError) as cm:
+            self.run_fix(self.fix(self.RELOC, en="Outfit 2"))
+        self.assertIn("does not hold fix.toml en 'Outfit 2'", str(cm.exception))
+
+    def test_relocated_too_long_for_its_consumer(self):
+        fx = self.fix(self.RELOC)
+        fx["string"][0]["reloc_max_units"] = 7
+        with self.assertRaises(A.AsmError) as cm:
+            self.run_fix(fx)
+        self.assertIn("relocated it may have at most reloc_max_units = 7", str(cm.exception))
+
+    def test_growth_needs_a_grow_entry(self):
+        with self.assertRaises(A.AsmError) as cm:
+            self.run_fix(self.fix(self.RELOC, grow=None))
+        self.assertIn("overlay58.bin changed size 0x20 -> 0x34 (no [[grow]] for it in fix.toml)", str(cm.exception))
+
+    def test_growth_past_max(self):
+        with self.assertRaises(A.AsmError) as cm:
+            self.run_fix(self.fix(self.RELOC, grow=16))
+        self.assertIn("grew by 20 bytes, its [[grow]] max is 16", str(cm.exception))
+
+    def test_growth_must_stay_word_aligned(self):
+        with self.assertRaises(A.AsmError) as cm:
+            self.run_fix(self.fix(self.RELOC.replace("\n.align 4, 0xFF", "")))
+        self.assertIn("keep it a multiple of 4", str(cm.exception))
+
+    def test_growth_with_bss_or_into_another_overlay(self):
+        with self.assertRaises(A.AsmError) as cm:
+            self.run_fix(self.fix(self.RELOC), layout={"overlay58": (self.BASE, 32, 4)})
+        self.assertIn("overlay58 has .bss (4 bytes)", str(cm.exception))
+        with self.assertRaises(A.AsmError) as cm:
+            self.run_fix(self.fix(self.RELOC), layout={"overlay58": (self.BASE, 32, 0),
+                                                       "overlay9": (self.BASE + 0x24, 0x100, 0)})
+        self.assertIn("grown range 0x21e0020-0x21e0034 overlaps overlay9", str(cm.exception))
+        # an overlay that also covers the current image is never co-resident: allowed
+        self.run_fix(self.fix(self.RELOC), layout={"overlay58": (self.BASE, 32, 0),
+                                                   "overlay9": (self.BASE - 0x100, 0x200, 0)})
+
+    def test_growth_without_the_overlay_table_fails(self):
+        with self.assertRaises(A.AsmError) as cm:
+            self.run_fix(self.fix(self.RELOC), layout={})
+        self.assertIn("its overlay-table row is unknown", str(cm.exception))
+
+    def test_expect_end_guard(self):
+        with self.assertRaises(A.AsmError) as cm:
+            self.run_fix(self.fix(self.RELOC.replace(".org 0x021E0020\nexpect_end", ".org 0x021E0024\nexpect_end")))
+        self.assertIn("guard failed at 021E0024: the file ends at 021E0020", str(cm.exception))
+
+    def test_character_outside_the_table_fails(self):
+        with self.assertRaises(A.AsmError) as cm:
+            self.run_fix(self.fix('.org 0x021E0010\n.area 8\n.string "Ж"\n.endarea', en="Ж"))
+        self.assertIn("Failed to encode", str(cm.exception))
+
+    def test_toml_zh_checked_before_armips(self):
+        fx = self.fix(self.RELOC)
+        fx["string"][0]["zh"] = "形象2"
+        with self.assertRaises(A.AsmError) as cm:
+            self.run_fix(fx)
+        self.assertIn("region overlay58:0x10: overlay58+0x10 is", str(cm.exception))
+
+
+@needs_armips
 @unittest.skipUnless(ROM_CN.exists(), "Chinese ROM missing")
 class RealFixes(unittest.TestCase):
-    """The checked-in sources against the Chinese ROM, compared with the legacy Python engine."""
+    """The checked-in sources against the Chinese ROM, compared with GOLDEN."""
 
     @classmethod
     def setUpClass(cls):
@@ -211,40 +385,63 @@ class RealFixes(unittest.TestCase):
         view = self.hc.RomView(rom)
         return {k: view.get(k) for k in self.keys}, bytes(rom.arm9OverlayTable)
 
-    def both(self, ids):
-        fixes = [self.fixes[i] for i in ids]
-        py = self.m.load_rom(ROM_CN)
-        self.hc.apply(py, cfg={"files": {}, "strings": []}, code_patches=self.hc.load_code_patches(fixes=fixes))
-        asm = self.m.load_rom(ROM_CN)
-        rep = A.apply(asm, fixes, ARMIPS)
-        return self.images(py), self.images(asm), rep
-
-    def test_every_code_fix_has_a_source(self):
-        self.assertEqual(sorted(f["id"] for f in F.code_entries_fixes(self.fixes.values())), sorted(CODE_FIXES))
-
-    def test_each_fix_equals_the_python_engine(self):
-        orig, _ = self.images(self.cn)
-        for fid in CODE_FIXES:
-            with self.subTest(fix=fid):
-                (py, py_t), (asm, asm_t), rep = self.both([fid])
-                self.assertEqual(py_t, asm_t)
-                for k in self.keys:
-                    self.assertEqual(py[k], asm[k], f"{fid}: {k} differs between the engines")
-                self.assertTrue(any(asm[k] != orig[k] for k in self.keys), fid)
-                self.assertEqual({r["fix"] for r in rep["code_patches"]}, {fid})
-
-    def test_all_fixes_together_equal_the_python_engine(self):
-        (py, py_t), (asm, asm_t), rep = self.both(CODE_FIXES)
-        self.assertEqual(py_t, asm_t)
-        for k in self.keys:
-            self.assertEqual(py[k], asm[k], f"{k} differs between the engines")
-        self.assertEqual(len(rep["code_patches"]), 29)
-        self.assertEqual(rep["armips"]["version"], A.PINNED_VERSION)
-        # the report is what hardcoded.verify reads back
+    def assembled(self, ids):
         rom = self.m.load_rom(ROM_CN)
-        rep = A.apply(rom, [self.fixes[i] for i in CODE_FIXES], ARMIPS)
-        self.assertEqual(self.hc.verify(rom, {"strings": [], "code_patches": rep["code_patches"],
-                                              "files": rep["files"]}), "ok (0 strings, 29 code patches)")
+        rep = A.apply(rom, [self.fixes[i] for i in ids], ARMIPS)
+        return rom, rep
+
+    def check_golden(self, name, ids):
+        orig, orig_t = self.images(self.cn)
+        rom, rep = self.assembled(ids)
+        imgs, table = self.images(rom)
+        changed = {k for k in self.keys if imgs[k] != orig[k]}
+        want = GOLDEN[name]
+        self.assertEqual(changed, set(want) - {"y9"}, f"{name}: changed files")
+        for k in changed:
+            self.assertEqual(hashlib.sha1(imgs[k]).hexdigest(), want[k], f"{name}: {k}")
+        self.assertEqual(hashlib.sha1(table).hexdigest(), want["y9"], f"{name}: y9 overlay table")
+        return rom, rep
+
+    def test_every_armips_fix_has_a_source(self):
+        self.assertEqual(sorted(f["id"] for f in A.asm_fixes(self.fixes.values())), sorted(ASM_FIXES))
+
+    def test_each_fix_matches_golden(self):
+        for fid in ASM_FIXES:
+            with self.subTest(fix=fid):
+                _, rep = self.check_golden(fid, [fid])
+                self.assertEqual({r["fix"] for r in rep["code_patches"] + rep["strings"]}, {fid})
+
+    def test_all_fixes_together_match_golden(self):
+        rom, rep = self.check_golden("all", ASM_FIXES)
+        self.assertEqual(len(rep["code_patches"]), 29)
+        self.assertEqual([(r["id"], r["mode"], r["en"]) for r in rep["strings"]],
+                         [("overlay58:0x6F0", "in-place", "OK"), ("overlay58:0x6F6", "relocated", "Outfit 1"),
+                          ("overlay58:0x6FE", "relocated", "Outfit 3"), ("overlay58:0x706", "relocated", "Outfit 2")])
+        self.assertEqual(rep["armips"]["version"], A.PINNED_VERSION)
+        self.assertEqual(A.verify(rom, rep), "ok (4 strings, 29 code patches)")
+        view = self.hc.RomView(rom)
+        self.assertEqual(view.table_ram_size(58), 0x818)
+        self.assertEqual(rep["grown"], {"overlay58": {"from": 0x7E0, "to": 0x818}})
+        # a y9 ramSize that does not follow the grown overlay is caught
+        t = bytearray(rom.arm9OverlayTable)
+        row = next(r for r in range(len(t) // 32) if struct.unpack_from("<I", t, r * 32)[0] == 58)
+        struct.pack_into("<I", t, row * 32 + 8, 0x7E0)
+        rom.arm9OverlayTable = bytes(t)
+        with self.assertRaises(A.AsmError) as cm:
+            A.verify(rom, rep)
+        self.assertIn("y9 ramSize 0x7e0", str(cm.exception))
+        # no Chinese left in the chooser
+        cm_zh = self.m.Charmap.load([self.hc.ZH_CHARMAP])
+        self.assertEqual(list(self.hc.scan_blob(view.get("overlay58"), cm_zh, self.hc._bigrams())), [])
+
+    def test_verify_catches_a_changed_rom(self):
+        rom, rep = self.assembled(["outfit-chooser-strings"])
+        view = self.hc.RomView(rom)
+        ov = bytearray(view.get("overlay58"))
+        ov[0x7E0] ^= 1
+        view.set("overlay58", bytes(ov))
+        with self.assertRaises(A.AsmError):
+            A.verify(rom, rep)
 
     def copy_fix(self, fid, edit):
         """A copy of a real fix whose asm is changed by edit(text) -> text, in a temp registry."""
@@ -276,6 +473,16 @@ class RealFixes(unittest.TestCase):
             A.apply(rom, [fx], ARMIPS)
         self.assertIn("fix ivev-panel: arm9.bin+0x8c278..0x8c279 (RAM 0x0208C278) changed, outside every region",
                       str(cm.exception))
+
+
+    def test_real_strings_source_differing_from_toml_fails(self):
+        fx = self.copy_fix("outfit-chooser-strings", lambda t: t.replace('.string "Outfit 3"', '.string "Outfit 4"'))
+        rom = self.m.load_rom(ROM_CN)
+        before = self.images(rom)
+        with self.assertRaises(A.AsmError) as cm:
+            A.apply(rom, [fx], ARMIPS)
+        self.assertIn("overlay58:0x6FE: overlay58.bin+0x7f2 does not hold fix.toml en 'Outfit 3'", str(cm.exception))
+        self.assertEqual(self.images(rom), before)
 
 
 if __name__ == "__main__":

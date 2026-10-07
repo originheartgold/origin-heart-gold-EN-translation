@@ -1,23 +1,32 @@
 #!/usr/bin/env python3
-"""asmpatch - apply the code and data fixes by assembling their armips sources.
+"""asmpatch - apply the code, data and strings fixes by assembling their armips sources.
 
-A fix of kind code or data (work/patches/<fix>/fix.toml) has an armips source, `asm = "<fix>.asm"`, that
-writes the new bytes, and [[code]] entries that declare the regions it may change (file, offset, original
-bytes `expect`). The build:
+A fix of kind code, data or strings (work/patches/<fix>/fix.toml) has an armips source, `asm = "<fix>.asm"`,
+that writes the new bytes. fix.toml declares what it may change:
+  * [[code]] regions (kinds code, data): file, offset, original bytes `expect`; every region must change;
+  * [[string]] entries (kind strings): the slot of the Chinese string (`zh`, max_units + 1 code units) must
+    change, and its pointer words may change (a string too long for its slot is relocated); after assembling,
+    the string each entry's pointers (or its slot) lead to must be exactly the entry's `en`;
+  * [[grow]] (any of these kinds): an overlay that may grow by appending, up to `max` bytes.
+The build:
 
-  1. reads the decompressed arm9 / overlay images it needs from the ROM through hardcoded.RomView (the same
-     path the strings stage and the legacy Python engine use, so the ROM is written back identically) and
-     checks every region's `expect` bytes;
+  1. reads the decompressed arm9 / overlay images it needs from the ROM through RomView and checks every
+     region's original bytes (`expect`, the encoded `zh`, the pointers' old targets);
   2. stages them as <stage>/rom/arm9.bin, <stage>/rom/overlayNN.bin next to a copy of work/patches/include
-     (<stage>/include). armips resolves `.open` and `.include` paths against its working directory, which is
-     <stage>/rom, so a source says `.open "arm9.bin", 0x02000000` and `.include "../include/guards.inc"`;
+     (<stage>/include). armips resolves `.open`, `.include` and `.loadtable` paths against its working
+     directory, which is <stage>/rom, so a source says `.open "arm9.bin", 0x02000000` and
+     `.include "../include/guards.inc"`;
   3. runs armips once per fix, in build order (`armips -erroronwarning -temp <listing> <fix>.asm`). The
      source's own guards (guards.inc) check the original bytes again and stop armips, which then writes
      nothing; the listing shows every assembled line's address, and a byte written twice stops the build;
   4. after each run compares every staged file with its state before the run: a changed byte outside the
-     fix's declared regions, a declared region left unchanged, a file that changed size, or a file that
-     appeared or disappeared stops the build;
-  5. writes the changed images back through RomView.
+     fix's declared regions, a required region left unchanged, a file that appeared or disappeared, or a size
+     change stops the build. The one size change allowed is growth by appending, of an overlay the fix
+     declares in [[grow]]: at most `max` bytes, the size stays a multiple of 4, the overlay has no .bss, and
+     no other overlay starts in the grown range (one that overlaps the overlay itself is never loaded with
+     it, so it does not count). Strings fixes are then read back against their fix.toml `en`;
+  5. writes the changed images back through RomView, which also sets a grown overlay's ramSize in the y9
+     overlay table. verify() reads the result back after the ROM is written.
 
 armips is not bundled. It is found as --armips PATH (build.py), else the ARMIPS environment variable, else
 `armips` on PATH, and must report the pinned version (PINNED_VERSION). Build steps: work/notes/toolchain.md.
@@ -26,6 +35,8 @@ armips is not bundled. It is found as --armips PATH (build.py), else the ARMIPS 
                                          # assemble the selected fixes against the Chinese ROM (nothing written)
     python3 work/tools/asmpatch.py listing <fix-id> [--rom ROM] [--armips PATH]
                                          # each region of one fix: old bytes -> new bytes
+    python3 work/tools/asmpatch.py tbl [--out work/patches/include/charmap.tbl]
+                                         # the armips table file for `.string` (from charmap_en.tsv)
 """
 from __future__ import annotations
 
@@ -34,9 +45,11 @@ import hashlib
 import os
 import re
 import shutil
+import struct
 import subprocess
 import sys
 import tempfile
+from collections import namedtuple
 from pathlib import Path
 
 TOOLS = Path(__file__).resolve().parent
@@ -47,8 +60,13 @@ import fixes as fixreg  # noqa: E402
 
 PINNED_VERSION = "v0.11.0"
 INCLUDE_DIR = fixreg.PATCHES_DIR / fixreg.INCLUDE_DIR
+CHARMAP_TSV = TOOLS / "charmap_en.tsv"
+CHARMAP_TBL = INCLUDE_DIR / "charmap.tbl"
+# English (charmap_en.tsv) + the hack's Chinese table: encodes a [[string]]'s zh and en
+CHARMAPS = [str(CHARMAP_TSV), str(TOOLS / "charmaps" / "charmap_zh_xzonn_gen4.tsv")]
 ENV_VAR = "ARMIPS"
 TIMEOUT = 120
+END = 0xFFFF
 
 
 class AsmError(Exception):
@@ -71,8 +89,8 @@ def find_armips(explicit=None, env=None) -> str:
     p = shutil.which("armips")
     if not p:
         raise AsmError(f"armips {PINNED_VERSION} not found: put it on PATH, set {ENV_VAR}=/path/to/armips or pass "
-                       f"--armips (build steps: work/notes/toolchain.md); build.py and hardcoded.py check can "
-                       f"also run without it with --code-engine python")
+                       f"--armips (build steps: work/notes/toolchain.md); without it, build.py can only build "
+                       f"with --no-hardcoded (no strings, code or data fixes)")
     return p
 
 
@@ -100,17 +118,97 @@ def check_armips(path) -> str:
 
 
 # --------------------------------------------------------------------------------------
+# character table (`.loadtable` + `.string` in a strings fix)
+# --------------------------------------------------------------------------------------
+
+_CM = None
+
+
+def charmap():
+    """The msgtool charmap that encodes [[string]] zh and en (English codes + the hack's Chinese table)."""
+    global _CM
+    if _CM is None:
+        import msgtool as m
+        _CM = m.Charmap.load(CHARMAPS)
+    return _CM
+
+
+def charmap_tbl(tsv=CHARMAP_TSV) -> str:
+    """work/patches/include/charmap.tbl: the armips table file of the game's English charmap, for `.string`
+    in a fix source (`.loadtable "../include/charmap.tbl", "UTF-8"`, then `.string "OK"` writes 0x0139
+    0x0135 0xFFFF). Generated from work/tools/charmap_en.tsv (the Gen-4 font charmap from pret/pokeheartgold)
+    by `python3 work/tools/asmpatch.py tbl`; test_asmpatch.py checks the file is current, so do not edit it by
+    hand. The file holds table lines only (no comments: armips table files have no comment syntax).
+    One line per character, `<code bytes>=<character>`; armips writes an entry's hex digits as bytes in the
+    order given, so the u16 code is written little-endian (0x012B 'A' -> `2B01=A`). Where several codes share
+    a character the lowest is used, as msgtool encodes it; `/FFFF` is the terminator `.string` appends."""
+    import msgtool as m
+    cm = m.Charmap.load([str(tsv)])
+    lines = []
+    for text, code in sorted(cm.enc.items(), key=lambda kv: kv[1]):
+        if len(text) != 1 or text in "\r\n":
+            raise ValueError(f"{tsv}: code {code:#06x} is {text!r}; the table holds single characters only")
+        lines.append(f"{code & 0xFF:02X}{code >> 8:02X}={text}")
+    lines.append(f"/{END & 0xFF:02X}{END >> 8:02X}")
+    return "\n".join(lines) + "\n"
+
+
+# --------------------------------------------------------------------------------------
 # regions
 # --------------------------------------------------------------------------------------
 
-def regions(fx) -> list:
-    """(file, start, end, entry id, expect bytes) of a fix's [[code]] entries."""
+# file, start, end (file offsets); id; expect: the original bytes (None: not known without the ROM's base);
+# required: the asm must change it ([[code]] regions, string slots) or may leave it (string pointers)
+Region = namedtuple("Region", "file start end id expect required")
+
+
+def _base(key, bases):
+    return fixreg.ARM9_BASE if key == "arm9" else (bases or {}).get(key)
+
+
+def _pack_units(units) -> bytes:
+    return struct.pack(f"<{len(units)}H", *units)
+
+
+def _encode(text, what):
+    import msgtool as m
+    try:
+        return m.encode_text(text, charmap())
+    except ValueError as ex:
+        raise AsmError(f"{what} does not encode: {ex}") from None
+
+
+def regions(fx, bases=None) -> list:
+    """The Regions a fix may change: its [[code]] entries, and for each [[string]] with an en its slot
+    (expect = the encoded zh, which fills the slot: max_units + 1 code units) and its pointer words (expect =
+    the slot's RAM address; None when `bases` lacks the file's load address)."""
     out = []
     for e in fx.get("code", []):
         off = fixreg._int(e["offset"])
         hw = fixreg.halfwords(e["expect"])
-        out.append((e["file"], off, off + 2 * len(hw), e["id"], b"".join(h.to_bytes(2, "little") for h in hw)))
+        out.append(Region(e["file"], off, off + 2 * len(hw), e["id"],
+                          b"".join(h.to_bytes(2, "little") for h in hw), True))
+    for e in fx.get("string", []):
+        if not e.get("en"):
+            continue                                         # en unset: the Chinese stays
+        off = fixreg._int(e["offset"])
+        zh = _encode(e["zh"], f"fix {fx['id']}: {e['id']} zh")
+        slot = e["max_units"] + 1
+        if len(zh) != slot:
+            raise AsmError(f"fix {fx['id']}: {e['id']}: zh is {len(zh)} code units with its end, the slot "
+                           f"max_units + 1 is {slot}")
+        out.append(Region(e["file"], off, off + 2 * slot, e["id"], _pack_units(zh), True))
+        base = _base(e["file"], bases)
+        for ptr in e.get("pointers", []):
+            p = fixreg._int(ptr)
+            out.append(Region(e["file"], p, p + 4, f"{e['id']} pointer {ptr}",
+                              None if base is None else struct.pack("<I", base + off), False))
     return out
+
+
+def grows(fx) -> dict:
+    """{file: max bytes} of a fix's [[grow]] entries."""
+    return {g["file"]: g["max"] for g in fx.get("grow", [])}
 
 
 def _hw_str(data: bytes) -> str:
@@ -141,7 +239,7 @@ def _ranges(offs) -> list:
 
 
 _LISTING_RE = re.compile(r"^([0-9A-F]{8}) (.*?)\s*; (.*) line (\d+)$")
-_NO_WRITE = (".org", ".orga", ".skip", ".open", ".close", ".area", ".endarea", ".headersize")
+_NO_WRITE = (".org", ".orga", ".skip", ".open", ".close", ".area", ".endarea", ".headersize", ".loadtable", ".table")
 _NUM = re.compile(r"(?:0x[0-9A-Fa-f]+|\d+)\s*$")
 
 
@@ -201,28 +299,113 @@ def _asm(fx) -> Path:
 
 
 # --------------------------------------------------------------------------------------
+# growth and strings
+# --------------------------------------------------------------------------------------
+
+def growth_problems(fid, key, orig_len, new_len, grow_max, base, layout) -> list:
+    """Problems of growing `key` from orig_len to new_len bytes (the size before the build) by appending.
+    layout: {"overlayNN": (ram, ramSize, bssSize)} of every overlay in the ROM (y9 table)."""
+    probs = []
+    if new_len - orig_len > grow_max:
+        probs.append(f"fix {fid}: {_bin(key)} grew by {new_len - orig_len} bytes, its [[grow]] max is {grow_max}")
+    if new_len % 4:
+        probs.append(f"fix {fid}: {_bin(key)} grew to {new_len:#x} bytes; keep it a multiple of 4 (.align 4)")
+    if layout is None or key not in layout or base is None:
+        probs.append(f"fix {fid}: {_bin(key)} grew, but its overlay-table row is unknown (cannot check .bss "
+                     f"and the overlays after it)")
+        return probs
+    _, _, bss = layout[key]
+    if bss:
+        probs.append(f"fix {fid}: {key} has .bss ({bss} bytes); growing it would move its .bss")
+    lo, hi = base + orig_len, base + new_len
+    for other, (s, size, b) in sorted(layout.items()):
+        e = s + size + b
+        # an overlay that overlaps the current image can never be loaded together with it; one that
+        # overlaps only the grown tail could be, so refuse
+        if other != key and s < hi and e > lo and not (s < base + orig_len and e > base):
+            probs.append(f"fix {fid}: {key} grown range {lo:#x}-{hi:#x} overlaps {other} ({s:#x}-{e:#x})")
+    return probs
+
+
+def check_strings(fx, images: dict, orig_lens: dict, bases) -> tuple:
+    """Read back a strings fix's [[string]] entries after assembling: the string the pointers lead to (or the
+    slot, without pointers) must be exactly `en` with its 0xFFFF end; in place it must fit the slot
+    (max_units), relocated it may have at most reloc_max_units characters. Returns (rows, problems)."""
+    rows, probs = [], []
+    for e in fx.get("string", []):
+        if not e.get("en"):
+            continue
+        key, off = e["file"], fixreg._int(e["offset"])
+        data, base = images[key], _base(key, bases)
+        ptrs = [fixreg._int(p) for p in e.get("pointers", [])]
+        try:
+            want = _encode(e["en"], f"fix {fx['id']}: {e['id']} en")
+        except AsmError as ex:
+            probs.append(str(ex))
+            continue
+        if ptrs:
+            targets = {struct.unpack_from("<I", data, p)[0] for p in ptrs}
+            if len(targets) != 1 or base is None:
+                probs.append(f"fix {fx['id']}: {e['id']}: its pointers {', '.join(e['pointers'])} disagree "
+                             f"({', '.join(hex(t) for t in sorted(targets))})")
+                continue
+            target = targets.pop() - base
+        else:
+            target = off
+        got = (list(struct.unpack_from(f"<{len(want)}H", data, target))
+               if 0 <= target <= len(data) - 2 * len(want) else None)
+        if got != want:
+            probs.append(f"fix {fx['id']}: {e['id']}: {_bin(key)}+{target:#x} does not hold fix.toml en "
+                         f"{e['en']!r} with its end (the asm and fix.toml disagree)")
+            continue
+        n = len(want) - 1
+        mode = "in-place" if target == off else "relocated"
+        if mode == "in-place" and n > e["max_units"]:
+            probs.append(f"fix {fx['id']}: {e['id']}: {e['en']!r} is {n} characters, the slot holds {e['max_units']}")
+        if mode == "relocated" and n > e.get("reloc_max_units", 0):
+            probs.append(f"fix {fx['id']}: {e['id']}: {e['en']!r} is {n} characters; relocated it may have at "
+                         f"most reloc_max_units = {e.get('reloc_max_units', 0)}")
+        row = {"id": e["id"], "mode": mode, "addr": (base or 0) + target, "units": len(want), "en": e["en"]}
+        if mode == "relocated":
+            row["pointers"] = [hex(p) for p in ptrs]
+        rows.append(dict(row, file=key, fix=fx["id"]))
+    return rows, probs
+
+
+# --------------------------------------------------------------------------------------
 # assemble
 # --------------------------------------------------------------------------------------
 
-def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE_DIR):
-    """Assemble the code/data fixes among `fixes` (build order) over `binaries` {"arm9": bytes, "overlayNN":
-    bytes}. Returns (new binaries, report rows); raises AsmError listing every problem.
-    bases: {"overlayNN": load address} for the report's RAM column (optional)."""
-    todo = fixreg.code_entries_fixes(fixes)
+def asm_fixes(fixes) -> list:
+    """The fixes among `fixes` that have an armips source (kinds strings, data, code), in build order."""
+    return fixreg.code_entries_fixes(fixes)
+
+
+def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE_DIR, layout=None):
+    """Assemble the armips fixes among `fixes` (build order) over `binaries` {"arm9": bytes, "overlayNN":
+    bytes}. bases: {"overlayNN": load address} (string pointers and the report's RAM column); layout:
+    {"overlayNN": (ram, ramSize, bssSize)} of every overlay in the ROM, needed when a fix grows one.
+    Returns (new binaries, code rows, string rows); raises AsmError listing every problem."""
+    todo = asm_fixes(fixes)
     bases = bases or {}
     problems = []
+    regs_of = {}
     for fx in todo:
-        for key, start, end, eid, want in regions(fx):
+        regs_of[fx["id"]] = regs = regions(fx, bases)
+        for r in regs:
+            if r.file not in binaries:
+                problems.append(f"fix {fx['id']}: region {r.id}: {r.file} was not staged")
+            elif r.expect is not None and binaries[r.file][r.start:r.end] != r.expect:
+                problems.append(f"fix {fx['id']}: region {r.id}: {r.file}+{r.start:#x} is "
+                                f"{_hw_str(binaries[r.file][r.start:r.end])}, expected {_hw_str(r.expect)} "
+                                f"(fix.toml {'expect' if r.required and fx.get('code') else 'zh / pointer'})")
+        for key in grows(fx):
             if key not in binaries:
-                problems.append(f"fix {fx['id']}: region {eid}: {key} was not staged")
-            elif binaries[key][start:end] != want:
-                problems.append(f"fix {fx['id']}: region {eid}: {key}+{start:#x} is "
-                                f"{_hw_str(binaries[key][start:end])}, expected {_hw_str(want)} (fix.toml expect)")
+                problems.append(f"fix {fx['id']}: [[grow]] {key} was not staged")
     if problems:
-        raise AsmError("code/data fixes refused (the ROM does not hold the expected bytes):\n  " +
-                       "\n  ".join(problems))
+        raise AsmError("fixes refused (the ROM does not hold the expected bytes):\n  " + "\n  ".join(problems))
     cur = {k: bytes(v) for k, v in binaries.items()}
-    rows = []
+    rows, srows = [], []
     with tempfile.TemporaryDirectory(prefix="asmpatch-") as td:
         stage = Path(td)
         shutil.copytree(include_dir, stage / "include")
@@ -252,22 +435,28 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
             if names != want_names:
                 raise AsmError(f"fix {fx['id']}: armips created or removed files: "
                                f"{sorted(names ^ want_names)} (a fix only patches the staged binaries)")
-            regs = regions(fx)
-            touched = {r_[3]: False for r_ in regs}
+            regs = regs_of[fx["id"]]
+            may_grow = grows(fx)
+            touched = {r_.id: False for r_ in regs}
             new = {}
             for k in cur:
                 data = (romdir / _bin(k)).read_bytes()
-                if len(data) != len(cur[k]):
-                    problems.append(f"fix {fx['id']}: {_bin(k)} changed size {len(cur[k]):#x} -> {len(data):#x}")
+                old = cur[k]
+                if len(data) != len(old):
+                    if k not in may_grow or len(data) < len(old):
+                        problems.append(f"fix {fx['id']}: {_bin(k)} changed size {len(old):#x} -> {len(data):#x}"
+                                        f"{'' if k in may_grow else ' (no [[grow]] for it in fix.toml)'}")
+                        continue
+                    problems += growth_problems(fx["id"], k, len(binaries[k]), len(data), may_grow[k],
+                                                _base(k, bases), layout)
+                if data == old:
                     continue
-                if data == cur[k]:
-                    continue
-                mine = [r_ for r_ in regs if r_[0] == k]
+                mine = [r_ for r_ in regs if r_.file == k]
                 outside = []
-                for o in _changed(cur[k], data):          # per byte: adjacent regions count as one
-                    hit = [r_ for r_ in mine if r_[1] <= o < r_[2]]
+                for o in _changed(old, data[:len(old)]):     # per byte: adjacent regions count as one
+                    hit = [r_ for r_ in mine if r_.start <= o < r_.end]
                     for r_ in hit:
-                        touched[r_[3]] = True
+                        touched[r_.id] = True
                     if not hit:
                         outside.append(o)
                 for a, b in _ranges(outside):
@@ -276,28 +465,37 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
                                     f"{f' (RAM 0x{ram:08X})' if ram is not None else ''} changed, outside "
                                     f"every region the fix declares in fix.toml")
                 new[k] = data
-            for eid, hit in touched.items():
-                if not hit:
-                    problems.append(f"fix {fx['id']}: region {eid} declared in fix.toml, but the asm left it unchanged")
+            for r_ in regs:
+                if r_.required and not touched[r_.id]:
+                    problems.append(f"fix {fx['id']}: region {r_.id} declared in fix.toml, but the asm left it "
+                                    f"unchanged")
+            if not problems and fx.get("string"):
+                s_rows, s_probs = check_strings(fx, {**cur, **new}, {k: len(v) for k, v in binaries.items()}, bases)
+                srows += s_rows
+                problems += s_probs
             if problems:
-                raise AsmError("code/data fixes refused:\n  " + "\n  ".join(problems))
-            for key, start, end, eid, want in regs:
-                data = new.get(key, cur[key])
-                rows.append({"id": eid, "file": key, "offset": hex(start), "old": _hw_str(want),
-                             "new": _hw_str(data[start:end]), "fix": fx["id"], "engine": "armips"})
+                raise AsmError("fixes refused:\n  " + "\n  ".join(problems))
+            for r_ in regs:
+                if fx.get("code"):
+                    data = new.get(r_.file, cur[r_.file])
+                    rows.append({"id": r_.id, "file": r_.file, "offset": hex(r_.start), "old": _hw_str(r_.expect),
+                                 "new": _hw_str(data[r_.start:r_.end]), "fix": fx["id"], "engine": "armips"})
             cur.update(new)
-    return cur, rows
+    return cur, rows, srows
 
 
 def staged_keys(fixes) -> list:
-    """The files (arm9, overlayNN) the code/data fixes among `fixes` declare regions in."""
-    keys = {r[0] for fx in fixreg.code_entries_fixes(fixes) for r in regions(fx)}
+    """The files (arm9, overlayNN) the armips fixes among `fixes` change: their [[code]] regions, [[string]]
+    entries and [[grow]] overlays."""
+    keys = set()
+    for fx in asm_fixes(fixes):
+        keys |= {e["file"] for t in ("code", "string", "grow") for e in fx.get(t, [])}
     return sorted(keys, key=lambda k: (k != "arm9", int(k[7:]) if k.startswith("overlay") else 0))
 
 
 def apply(rom, fixes, armips: str, dry_run=False) -> dict:
-    """Assemble the code/data fixes among `fixes` into an ndspy ROM. Returns {"code_patches": rows,
-    "files": {key: sha1[:12]} of the changed files, "armips": {...}}; raises AsmError (nothing written)."""
+    """Assemble the armips fixes among `fixes` into an ndspy ROM. Returns {"code_patches": rows, "strings":
+    rows, "files": {key: sha1[:12]} of the changed files, "armips": {...}}; raises AsmError (nothing written)."""
     import hardcoded
     view = hardcoded.RomView(rom)
     keys = staged_keys(fixes)
@@ -306,13 +504,52 @@ def apply(rom, fixes, armips: str, dry_run=False) -> dict:
     except hardcoded.HardcodedError as ex:
         raise AsmError(str(ex)) from None
     bases = {k: view.base(k) for k in keys if k != "arm9"}
-    new, rows = assemble(fixes, binaries, armips, bases)
+    layout = {f"overlay{i}": (o.ramAddress, o.ramSize, o.bssSize) for i, o in view.ovs.items()}
+    new, rows, srows = assemble(fixes, binaries, armips, bases, layout=layout)
     changed = {k: v for k, v in new.items() if v != binaries[k]}
     if not dry_run:
         for k, v in changed.items():
             view.set(k, v)
-    return {"code_patches": rows, "files": {k: hashlib.sha1(v).hexdigest()[:12] for k, v in changed.items()},
+    return {"code_patches": rows, "strings": srows,
+            "files": {k: hashlib.sha1(v).hexdigest()[:12] for k, v in changed.items()},
+            "grown": {k: {"from": len(binaries[k]), "to": len(v)} for k, v in changed.items()
+                      if len(v) != len(binaries[k])},
             "armips": {"path": armips, "version": armips_version(armips)}}
+
+
+def verify(rom, report) -> str:
+    """Re-read a written ROM against apply()'s report (build.py stage 5): every changed file has the SHA-1
+    apply() produced, every overlay that grew has its new size and the same y9 ramSize, every string is
+    where the report says and its pointers point at it, and every [[code]] region holds its new bytes."""
+    import hardcoded
+    import msgtool as m
+    view = hardcoded.RomView(rom)
+    for key, h in report.get("files", {}).items():
+        data = view.get(key)
+        got = hashlib.sha1(data).hexdigest()[:12]
+        if got != h:
+            raise AsmError(f"{key}: sha1 {got} != {h}")
+    for key, g in report.get("grown", {}).items():
+        size = len(view.get(key))
+        if size != g["to"] or view.table_ram_size(int(key[7:])) != size:
+            raise AsmError(f"{key}: grew {g['from']:#x} -> {g['to']:#x}, but the file is {size:#x} bytes and its "
+                           f"y9 ramSize {view.table_ram_size(int(key[7:])):#x}")
+    for r in report.get("strings", []):
+        data = view.get(r["file"])
+        base = view.base(r["file"])
+        want = m.encode_text(r["en"], charmap())
+        off = r["addr"] - base
+        if list(struct.unpack_from(f"<{len(want)}H", data, off)) != want:
+            raise AsmError(f"{r['id']}: English not found at {r['addr']:#x}")
+        for p in r.get("pointers", []):
+            if struct.unpack_from("<I", data, int(p, 16))[0] != r["addr"]:
+                raise AsmError(f"{r['id']}: pointer {p} not repointed")
+    for r in report.get("code_patches", []):
+        want = b"".join(h.to_bytes(2, "little") for h in fixreg.halfwords(r["new"]))
+        off = int(r["offset"], 16)
+        if view.get(r["file"])[off:off + len(want)] != want:
+            raise AsmError(f"code patch {r['id']}: {r['file']}+{r['offset']} is not {r['new']}")
+    return f"ok ({len(report.get('strings', []))} strings, {len(report.get('code_patches', []))} code patches)"
 
 
 # --------------------------------------------------------------------------------------
@@ -322,12 +559,18 @@ def main(argv=None):
     ap.add_argument("--armips", help=f"armips executable (default: ${ENV_VAR}, then PATH)")
     ap.add_argument("--rom", default=str(fixreg.ROM_CN))
     sub = ap.add_subparsers(dest="cmd", required=True)
-    p = sub.add_parser("check", help="assemble the selected code/data fixes against the ROM (dry run)")
+    p = sub.add_parser("check", help="assemble the selected armips fixes against the ROM (dry run)")
     p.add_argument("--only")
     p.add_argument("--without")
     p = sub.add_parser("listing", help="old -> new bytes of one fix's regions")
     p.add_argument("id")
+    p = sub.add_parser("tbl", help="write the armips table file (charmap.tbl) from charmap_en.tsv")
+    p.add_argument("--out", default=str(CHARMAP_TBL))
     a = ap.parse_args(argv)
+    if a.cmd == "tbl":
+        Path(a.out).write_text(charmap_tbl(), encoding="utf-8")
+        print(f"wrote {a.out}")
+        return
     import msgtool as m
     try:
         armips = find_armips(a.armips)
@@ -338,16 +581,19 @@ def main(argv=None):
             act = [f for f in fixreg.load_all() if f["id"] == a.id]
             if not act:
                 sys.exit(f"unknown fix {a.id!r}")
-            if not fixreg.code_entries_fixes(act):
-                sys.exit(f"fix {a.id!r} is not a code/data fix (no asm)")
+            if not asm_fixes(act):
+                sys.exit(f"fix {a.id!r} has no armips source")
         rom = m.load_rom(a.rom)
         fixreg.check_overlay_bases(rom)
         rep = apply(rom, act, armips, dry_run=True)
     except (AsmError, fixreg.FixError) as ex:
         sys.exit(str(ex))
     for r in rep["code_patches"]:
-        print(f"  {r['fix']:18s} {r['id']:28s} {r['file']}+{r['offset']}: {r['old']} -> {r['new']}")
-    print(f"ok: {len({r['fix'] for r in rep['code_patches']})} fixes, {len(rep['code_patches'])} regions "
+        print(f"  {r['fix']:22s} {r['id']:28s} {r['file']}+{r['offset']}: {r['old']} -> {r['new']}")
+    for r in rep["strings"]:
+        print(f"  {r['fix']:22s} {r['id']:28s} {r['mode']:9s} -> {r['addr']:#010x}  {r['en']!r}")
+    print(f"ok: {len({r['fix'] for r in rep['code_patches'] + rep['strings']})} fixes, "
+          f"{len(rep['code_patches'])} code/data regions, {len(rep['strings'])} strings "
           f"(armips {rep['armips']['version']})")
 
 

@@ -20,9 +20,9 @@ DECS = {"D-0001", "D-0002"}
 
 
 def fix_toml(fid, kind="code", enabled=True, requires=(), entries="", extra="", asm=None):
-    """A fix.toml; kinds code and data get asm = "<fid>.asm" unless asm is given ("" = none)."""
+    """A fix.toml; kinds code, data and strings get asm = "<fid>.asm" unless asm is given ("" = none)."""
     if asm is None:
-        asm = f"{fid}.asm" if kind in ("code", "data") else ""
+        asm = f"{fid}.asm" if kind in ("code", "data", "strings") else ""
     head = textwrap.dedent(f"""\
         id = "{fid}"
         title = "Title of {fid}"
@@ -54,9 +54,14 @@ BASES = {"arm9": 0x02000000, "overlay58": 0x021E83C0}
 
 
 def asm_for(toml_text):
-    """A minimal armips source that opens every file the fix's [[code]] entries name, at its load address."""
+    """A minimal armips source that opens every file the fix's entries name, at its load address, and writes
+    each [[string]] en with .string."""
     files = sorted(set(re.findall(r'^file = "((?:arm9|overlay\d+))"', toml_text, re.M)))
-    return "".join(f'.open "{f}.bin", 0x{BASES.get(f, 0x02200000):08X}\n.close\n' for f in files)
+    ens = re.findall(r'^en = "([^"]*)"', toml_text, re.M)
+    head = '.loadtable "../include/charmap.tbl", "UTF-8"\n' if ens else ""
+    return head + "".join(f'.open "{f}.bin", 0x{BASES.get(f, 0x02200000):08X}\n' +
+                          "".join(f'.string "{en}"\n' for en in ens) + ".close\n" for f in files[:1]) + \
+        "".join(f'.open "{f}.bin", 0x{BASES.get(f, 0x02200000):08X}\n.close\n' for f in files[1:])
 
 
 GFX = """
@@ -168,7 +173,7 @@ class Registry(unittest.TestCase):
         self.write("c", fix_toml("c", kind="data", entries=code_entry("c-1", offset="0x20"), asm="sub/c.asm"))
         probs = self.problems()
         self.assertTrue(any("a/fix.toml: kind 'code' needs asm" in p for p in probs), probs)
-        self.assertTrue(any("b/fix.toml: 'asm' only belongs to kinds code, data" in p for p in probs), probs)
+        self.assertTrue(any("b/fix.toml: 'asm' only belongs to kinds strings, data, code" in p for p in probs), probs)
         self.assertTrue(any("c/fix.toml: asm must be a .asm file name" in p for p in probs), probs)
 
     def test_asm_file_and_opens(self):
@@ -186,12 +191,12 @@ class Registry(unittest.TestCase):
                           '.openfile "arm9.bin", "out.bin", 0x02000000\n')
         self.assertTrue(any("a.asm:2: overlay58.bin opened at 0x021e8000, but its load address is 0x021e83c0"
                             in p for p in probs), probs)
-        self.assertTrue(any("a.asm:3: opens 'overlay12.bin', but the fix declares no [[code]] region in it"
+        self.assertTrue(any("a.asm:3: opens 'overlay12.bin', but the fix declares no [[code]] / [[string]] / [[grow]] in it"
                             in p for p in probs), probs)
         self.assertTrue(any("a.asm:4: write .open as" in p for p in probs), probs)
         self.assertTrue(any("a.asm:5: write .open as" in p for p in probs), probs)
         probs = probs_for('; .open "overlay58.bin", 0x021E83C0 is only a comment\n.open "arm9.bin", 0x02000000\n')
-        self.assertEqual(probs, ["a/fix.toml: [[code]] regions in overlay58, but a.asm never opens overlay58.bin"])
+        self.assertEqual(probs, ["a/fix.toml: entries in overlay58, but a.asm never opens overlay58.bin"])
         probs = probs_for('.open "arm9.bin", 0x02000000\n.open "overlay58.bin", 0x021E83C0\n'
                           '  .headersize 0x02000010\n.CreateFile "x.bin", "y.bin", 0 ; no\n.create "z.bin", 0\n')
         for want in ("a.asm:3: .headersize is not allowed", "a.asm:4: .createfile is not allowed",
@@ -199,6 +204,64 @@ class Registry(unittest.TestCase):
             self.assertTrue(any(want in p for p in probs), (want, probs))
         asm.unlink()
         self.assertTrue(any("asm file a.asm does not exist" in p for p in self.problems()))
+
+    STRINGS = """
+[[grow]]
+file = "overlay58"
+max = 64
+notes = "n"
+
+[[string]]
+id = "overlay58:0x10"
+file = "overlay58"
+offset = "0x10"
+zh = "形象1"
+en = "Outfit 1"
+max_units = 3
+pointers = ["0x0"]
+reloc_max_units = 15
+"""
+
+    def test_strings_fix_asm_literals_match_toml_en(self):
+        (self.root / "overlays.toml").write_text("[overlay58]\nram = 0x021E83C0\n")
+        self.write("s", fix_toml("s", kind="strings", entries=self.STRINGS))
+        self.assertEqual(self.problems(), [])
+        fx = self.load()[0]
+        self.assertEqual(F.footprint(fx)[-1], ("overlay58", 1 << 40, (1 << 40) + 1, "overlay58 growth"))
+        asm = self.root / "s" / "s.asm"
+        good = asm.read_text(encoding="utf-8")
+        asm.write_text(good.replace('"Outfit 1"', '"Outfit 2"'), encoding="utf-8")
+        probs = self.problems()
+        self.assertTrue(any("its .string literals ['Outfit 2'] differ from the [[string]] en values ['Outfit 1']"
+                            in p for p in probs), probs)
+        asm.write_text(good.replace('.loadtable "../include/charmap.tbl", "UTF-8"\n', ""), encoding="utf-8")
+        self.assertTrue(any(".string needs the game's character table" in p for p in self.problems()))
+        self.assertEqual(F.asm_strings('lab: .string "a\\"b" ; c\n  .stringn "x"\n; .string "no"\n'),
+                         [(1, 'a"b'), (2, "x")])
+        for bad in ('.string "Outfit 1", 0', '.string "Outfit", " 1"', "lab: .str 0x41", '.stringn "Outfit 1",0'):
+            with self.subTest(form=bad):
+                asm.write_text(good.replace('.string "Outfit 1"', bad), encoding="utf-8")
+                probs = self.problems()
+                self.assertTrue(any("write one literal per line" in p and bad in p for p in probs), probs)
+        self.assertEqual(F.asm_string_forms('; .string "a", 0\n.string "a;b" ; c\n.strings\n'), [])
+        asm.write_text(good, encoding="utf-8")
+        md = F.render_docs(self.load(), overlay_bases={"overlay58": 0x021E83C0})
+        self.assertIn("`overlay58`: may grow by up to 64 bytes (appended at its end)", md)
+
+    def test_grow_checks(self):
+        (self.root / "overlays.toml").write_text("[overlay58]\nram = 0x021E83C0\n")
+        bad = self.STRINGS.replace('file = "overlay58"\nmax = 64', 'file = "arm9"\nmax = 0')
+        self.write("s", fix_toml("s", kind="strings", entries=bad))
+        probs = self.problems()
+        self.assertTrue(any("file must be 'overlayNN' (only an overlay can grow)" in p for p in probs), probs)
+        self.assertTrue(any("max must be 1..4096 bytes" in p for p in probs), probs)
+        self.write("s", fix_toml("s", kind="strings", entries=self.STRINGS))
+        self.write("t", fix_toml("t", entries='[[grow]]\nfile = "overlay58"\nmax = 8\n' +
+                                 code_entry("t-1", file="overlay58", offset="0x40")))
+        probs = self.problems()
+        self.assertTrue(any("overlap in overlay58" in p and "growth" in p for p in probs), probs)
+        self.write("t", fix_toml("t", kind="graphics", entries='[[grow]]\nfile = "overlay58"\nmax = 8\n' + GFX))
+        self.assertTrue(any("[[grow]] only belongs to kinds" in p for p in self.problems()))
 
     def test_include_folder_is_not_a_fix(self):
         self.write("a", fix_toml("a", entries=code_entry("a-1")))
@@ -311,8 +374,10 @@ class Registry(unittest.TestCase):
             "string-int": ("strings", "string = [1]\n", "'string' must be a list of table"),
             "graphics-int": ("graphics", "graphics = [1]\n", "'graphics' must be a list of table"),
             "font-int": ("font", "font = [1]\n", "'font' must be a list of table"),
-            "string-files-list": ("strings", 'string_files = [1]\n[[string]]\nid = "a:0x0"\nfile = "a"\n'
-                                  'offset = "0x0"\nzh = "z"\nmax_units = 1\n', "'string_files' must be a table"),
+            "grow-int": ("strings", 'grow = [1]\n[[string]]\nid = "arm9:0x0"\nfile = "arm9"\n'
+                         'offset = "0x0"\nzh = "z"\nmax_units = 1\n', "'grow' must be a list of table"),
+            "string-file": ("strings", '[[string]]\nid = "a/0/4/1:0x0"\nfile = "a/0/4/1"\noffset = "0x0"\nzh = "z"\n'
+                            'max_units = 1\n', "file must be 'arm9' or 'overlayNN'"),
             "files-list": ("graphics", '[[graphics]]\nop = "member_from_file"\nnarc = "a/0/0/8"\nfiles = [1]\n',
                            "'files' must be a table of table"),
             "op-list": ("graphics", '[[graphics]]\nop = ["copy_us"]\nnarc = "a/0/0/8"\n', "unknown op"),

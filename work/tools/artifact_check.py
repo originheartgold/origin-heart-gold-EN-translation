@@ -72,7 +72,11 @@ def check(a, export_fn=None, verify_fn=None):
             str(path.relative_to(build.WORK)): hashes(path)
             for path in (Path(__file__), build.TOOLS / "build.py", build.TOOLS / "ws.py",
                          build.TOOLS / "gfx.py", build.TOOLS / "hardcoded.py", build.TOOLS / "fixes.py",
+                         build.TOOLS / "asmpatch.py", build.TOOLS / "msgtool.py",
                          *sorted((build.WORK / "patches").glob("*/fix.toml")),
+                         *sorted((build.WORK / "patches").glob("*/*.asm")),
+                         *sorted((build.WORK / "patches" / "include").glob("*")),
+                         build.WORK / "patches" / "overlays.toml",
                          build.TOOLS / "qa_config.json", build.TOOLS / "charmap_en.tsv",
                          build.TOOLS / "charmaps" / "charmap_zh_xzonn_gen4.tsv",
                          build.WORK / "graphics" / "layout_checks.json")}

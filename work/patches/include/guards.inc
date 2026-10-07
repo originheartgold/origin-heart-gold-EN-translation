@@ -34,3 +34,16 @@
     .error "guard failed at " + tohex(addr, 8) + ": expected " + tohex(value, 8) + ", found " + tohex(readu32(outputname(), (addr) - headersize()), 8)
   .endif
 .endmacro
+
+; The word at the current address must be `value` (a pointer the edit replaces).
+.macro expect32, value
+  expect32_at 0, value
+.endmacro
+
+; The opened file must end at the current address: data appended here grows the file (and its overlay)
+; from its original end, not from a size some other edit left behind.
+.macro expect_end
+  .if filesize(outputname()) != org() - headersize()
+    .error "guard failed at " + tohex(org(), 8) + ": the file ends at " + tohex(filesize(outputname()) + headersize(), 8) + ", not here"
+  .endif
+.endmacro
