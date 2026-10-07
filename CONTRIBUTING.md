@@ -33,7 +33,7 @@ A dialogue box holds two lines of 216 px. `qa.py` measures the real font widths,
 
 ## Building the ROM (optional)
 
-To build, you need Python 3.12+, `pip install ndspy`, `xdelta3`, your own USA HeartGold dump and the Chinese v4.0.3 patch.
+To build, you need Python 3.12+, `pip install ndspy`, `xdelta3`, [armips](https://github.com/Kingcom/armips) **v0.11.0** (on `PATH`, or `ARMIPS=/path/to/armips`; build steps in [work/notes/toolchain.md](work/notes/toolchain.md)), your own USA HeartGold dump and the Chinese v4.0.3 patch.
 
 ```sh
 # 1. Put your USA dump at work/rom/Pokemon - HeartGold Version (USA).nds, then create the Chinese base:
@@ -57,9 +57,9 @@ A few strings that quote song lyrics store `[zh redacted: song lyrics; sha256:â€
 
 The build also regenerates the English graphics (`work/graphics/generated/`, `weather_en/` and two PNG sheets) from your two ROMs. They contain Nintendo and hack artwork, so they are git-ignored and never committed; see `work/notes/graphics_inventory.md` â†’ Build step.
 
-Everything the build changes in the Chinese ROM besides the message text (font glyphs, graphics, the hardcoded outfit-chooser strings and the code patches) is a *fix*: one folder per fix in `work/patches/<fix-id>/fix.toml`, with why it is needed, what it changes, its decisions and the bytes it checks and writes. [work/patches/FIXES.md](work/patches/FIXES.md) lists them all; regenerate it with `python3 work/tools/fixes.py docs --out work/patches/FIXES.md` after editing a fix, and check the registry with `python3 work/tools/fixes.py check`. `python3 work/tools/build.py --without <fix-id>` builds without one fix (`--only` builds with just the ones named); a fix that another one `requires` cannot be left out alone.
+Everything the build changes in the Chinese ROM besides the message text (font glyphs, graphics, the hardcoded outfit-chooser strings and the code patches) is a *fix*: one folder per fix in `work/patches/<fix-id>/fix.toml`, with why it is needed, what it changes, its decisions and the bytes it checks and writes. Code and data fixes are armips sources (`work/patches/<fix-id>/<fix-id>.asm`): fix.toml declares the regions and original bytes, the `.asm` writes the new bytes and guards the old ones, and the build refuses any change outside the declared regions (see [work/notes/toolchain.md](work/notes/toolchain.md)). [work/patches/FIXES.md](work/patches/FIXES.md) lists them all; regenerate it with `python3 work/tools/fixes.py docs --out work/patches/FIXES.md` after editing a fix, and check the registry with `python3 work/tools/fixes.py check`. `python3 work/tools/build.py --without <fix-id>` builds without one fix (`--only` builds with just the ones named); a fix that another one `requires` cannot be left out alone.
 
-Run the tool tests with `python3 -m unittest discover -s work/tools -p 'test_*.py'`.
+Run the tool tests with `python3 -m unittest discover -s work/tools -p 'test_*.py'` (the armips tests are skipped unless armips v0.11.0 is on `PATH` or in `ARMIPS`).
 
 ## The guide website
 

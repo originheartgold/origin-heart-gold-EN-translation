@@ -1,0 +1,36 @@
+; guards.inc - check the bytes a fix replaces before it writes (armips v0.11.0).
+;
+; Every edit in a fix's .asm starts with a guard on the original bytes at the current address
+; (org()). A guard reads the input file on disk (readu16 on outputname()), which still holds the
+; original bytes while armips assembles: armips writes the file only after the last pass, and writes
+; nothing at all when any .error fires. So if the Chinese ROM (or an earlier fix) changed these bytes,
+; the build stops with the address and the bytes found, instead of patching the wrong code.
+;
+; File offset = address - headersize(): `.open "arm9.bin", 0x02000000` makes headersize() the load
+; address of the opened file.
+
+; The halfword at the current address + off must be `value`.
+.macro expect16_at, off, value
+  .if readu16(outputname(), org() + (off) - headersize()) != (value)
+    .error "guard failed at " + tohex(org() + (off), 8) + ": expected " + tohex(value, 4) + ", found " + tohex(readu16(outputname(), org() + (off) - headersize()), 4)
+  .endif
+.endmacro
+
+; The halfword at the current address must be `value` (one THUMB instruction or one u16).
+.macro expect16, value
+  expect16_at 0, value
+.endmacro
+
+; The word at the current address + off must be `value` (a pointer, or two halfwords).
+.macro expect32_at, off, value
+  .if readu32(outputname(), org() + (off) - headersize()) != (value)
+    .error "guard failed at " + tohex(org() + (off), 8) + ": expected " + tohex(value, 8) + ", found " + tohex(readu32(outputname(), org() + (off) - headersize()), 8)
+  .endif
+.endmacro
+
+; The word at absolute address `addr` must be `value` (read-only check of nearby data, e.g. a pointer table).
+.macro expect32_abs, addr, value
+  .if readu32(outputname(), (addr) - headersize()) != (value)
+    .error "guard failed at " + tohex(addr, 8) + ": expected " + tohex(value, 8) + ", found " + tohex(readu32(outputname(), (addr) - headersize()), 8)
+  .endif
+.endmacro

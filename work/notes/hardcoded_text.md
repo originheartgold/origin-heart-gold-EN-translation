@@ -41,7 +41,7 @@ How the chooser uses these strings:
 
 The pipeline has four parts:
 - **Data:** the fix `work/patches/outfit-chooser-strings/fix.toml` (`[[string]]` entries). Its `[string_files.overlay58]` `grow_max` is 64.
-- **Code:** `work/tools/hardcoded.py`.
+- **Code:** `work/tools/hardcoded.py` (strings). The code and data fixes in this note (name lengths, naming keyboard) are armips sources applied by `work/tools/asmpatch.py`; see `toolchain.md`.
 - **Build:** stage 3c in `build.py`, with its checks in `verify_rom`.
 - **Tests:** `work/tools/test_hardcoded.py`.
 
@@ -80,7 +80,7 @@ These are **not** cut to `maxLen`. They are copied into `nameInputFlat[10]` and 
 
 "Silver" (#37–49) and "NEW NAME" (#36, #78) are DP-era leftovers. No code reads them (the only load of bank 0xF7 is in the naming screen). Even if the game read them, 6 characters fit the 7-character buffer. **No default name needs shortening.**
 
-The patches that raise the limits to the USA values are the fix `work/patches/namelen/fix.toml` (`namelen-*`). They are **enabled**: the user checked in melonDS that trainer names take 7 characters and nicknames 10.
+The patches that raise the limits to the USA values are the fix `work/patches/namelen/` (`namelen.asm`, regions `namelen-*` in `fix.toml`; armips, see `toolchain.md`). They are **enabled**: the user checked in melonDS that trainer names take 7 characters and nicknames 10.
 
 ## Naming keyboard (English)
 
@@ -88,7 +88,7 @@ The hack's keyboard (Japanese base) has four tabs. Page N uses the rows `sKeyboa
 
 | Tab | Hack | Now | How |
 |---|---|---|---|
-| 1 (page 0, opens first) | かな: pinyin IME. QWERTY letters go into a pinyin buffer (`data+0x5E4`); candidates from `a/0/3/1` #19/#20 fill rows 1–2 (lookup `0x020835E4`); picking one commits hanzi | **ABC**: the hack's ABC layout (A–M, N–Z, a–m, n–z, 0–9 . ,) in Western codes `0x0121–0x015E` | `naming-abc-row1..5`; tab art = the hack's own "ABC" label |
+| 1 (page 0, opens first) | かな: pinyin IME. QWERTY letters go into a pinyin buffer (`data+0x5E4`); candidates from `a/0/3/1` #19/#20 fill rows 1–2 (lookup `0x020835E4`); picking one commits hanzi | **ABC**: the hack's ABC layout (A–M, N–Z, a–m, n–z, 0–9 . ,) in Western codes `0x0121–0x015E` | `naming-abc-row1..5` (`naming-keyboard.asm`); tab art = the hack's own "ABC" label |
 | 2 (page 1) | カナ → a–z, A–Z, 0–9 (Western) | unchanged (**abc**) | – |
 | 3 (page 2) | full-width ＡＢＣ (`0x00AC–0x00DF`, ０–９) | **QWE**: blank row, 1–0, QWERTYUIOP, ASDFGHJKL ' -, ZXCVBNM , . (Western) | `naming-qwe-row1..5`; tab art "QWE" |
 | 4 (page 3) | 1/♪ full-width symbols | unchanged | – |

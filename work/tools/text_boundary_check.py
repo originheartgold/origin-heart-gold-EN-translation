@@ -16,7 +16,9 @@ import sys
 import ndspy.fnt
 import ndspy.rom
 
+import asmpatch
 import build
+import fixes as fixreg
 import gfx
 import hardcoded
 import msgtool as m
@@ -34,7 +36,15 @@ def _expected_rom(source_path, us_path):
                       lambda p, data: m.set_file(rom, p, data),
                       lambda p: m.get_file(us, p),
                       code=gfx.CodeView(rom), us_code=gfx.CodeView(us))
-    hardcoded.apply(rom)
+    hardcoded.apply(rom)                       # [[string]] entries
+    active = [f for f in fixreg.load_all() if f.get("enabled")]
+    if fixreg.code_entries_fixes(active):      # code/data fixes: their armips sources
+        try:
+            armips = asmpatch.find_armips()
+        except asmpatch.AsmError as exc:       # a missing tool is a gap, not a failure
+            raise FileNotFoundError(str(exc)) from None
+        asmpatch.check_armips(armips)
+        asmpatch.apply(rom, active, armips)
     return rom
 
 

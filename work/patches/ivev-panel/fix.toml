@@ -4,6 +4,7 @@ kind = "code"
 enabled = true
 decisions = ["D-1574"]
 requires = []
+asm = "ivev-panel.asm"
 why = """
 Players: on the summary stats page, L opens the hack's IV/EV panel. The English stat labels run into the IV
 column: 'Sp. Atk' covers the first digit (an IV of 31 reads '81') and 'Attack' touches it. The Chinese labels
@@ -29,13 +30,11 @@ id = "ivev-panel-iv-x"
 file = "arm9"
 offset = "0x8C262"
 expect = "0x221A"
-value = "0x2220"
-notes = "Summary IV/EV panel (L on the stats page; the hack's draw routine at 0x0208C1A8, called only from the summary screen at 0x02087EDC, 0x02088130, 0x02089744) (D-1574): the IV numbers are printed right-aligned by 0x0208C154 at x = r2 + 24; 'movs r2, #0x1A' -> 'movs r2, #0x20' moves the IV column 6 px right so two-digit IVs clear the widest label 'Defense' (41 px) by 3 px. The labels (0295 #110-115, shared with the stats page) and the EV column (r2 = 0x40 at 0x0208C278) are unchanged."
+notes = "Summary IV/EV panel: IV numbers x 0x1A -> 0x20 (6 px right)."
 
 [[code]]
 id = "ivev-panel-iv-header-x"
 file = "arm9"
 offset = "0x8C1E2"
 expect = "0x2322"
-value = "0x2328"
-notes = "Summary IV/EV panel (D-1574), same routine: the 'IVs' header (0295 #195) printed at x 0x22 -> 0x28 ('movs r3, #0x22' -> 'movs r3, #0x28'), 6 px right with the IV numbers so it stays above them; the 'EVs' header (x 0x43 at 0x0208C210) is unchanged."
+notes = "Summary IV/EV panel: 'IVs' header x 0x22 -> 0x28 (6 px right)."

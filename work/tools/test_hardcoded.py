@@ -10,6 +10,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
+import fixes as fixreg  # noqa: E402
 import hardcoded as hc  # noqa: E402
 import msgtool as m  # noqa: E402
 
@@ -120,8 +121,11 @@ class TestRegistryEntries(unittest.TestCase):
             self.assertIsInstance(cp["enabled"], bool)
             self.assertTrue(re.fullmatch(r"0x[0-9A-F]+", cp["offset"]), cp["id"])
             self.assertEqual(len(hc.halfwords(cp["expect"])), len(hc.halfwords(cp["value"])), cp["id"])
-            self.assertTrue(cp.get("notes"), cp["id"])
             self.assertTrue(cp.get("fix"), cp["id"])
+        # the legacy (frozen) patches cover exactly the registry's [[code]] regions, by id
+        regions = {e["id"]: e for e in fixreg.code_entries(fixreg.load_all())}
+        self.assertEqual(cids, set(regions))
+        self.assertTrue(all(e.get("notes") for e in regions.values()))
 
     def test_selection_limits_entries(self):
         import fixes

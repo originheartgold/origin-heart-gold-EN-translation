@@ -65,7 +65,9 @@ ROM SHA-256:
 
 ## Build-time config option
 
-The existing `work/tools/hardcoded.py` checks and applies the `[[code]]` entries of the enabled fixes in `work/patches/<fix-id>/fix.toml` (see `work/tools/fixes.py`). This proposed entry (when written, the code patch was a `code_patches.json` entry) dry-ran successfully against both ROMs. As a fix it would be its own folder, e.g. `work/patches/optional-exp-share-off/fix.toml` with `kind = "code"`, `enabled = false` and this entry:
+The build applies the code fixes enabled in `work/patches/<fix-id>/` (see `work/tools/fixes.py`; at the time of writing `work/tools/hardcoded.py` applied `[[code]]` halfword entries, now `work/tools/asmpatch.py` assembles each fix's armips source). This proposed entry (when written, the code patch was a `code_patches.json` entry) dry-ran successfully against both ROMs. As a fix it would be its own folder, e.g. `work/patches/optional-exp-share-off/fix.toml` with `kind = "code"`, `enabled = false` and this entry:
+
+**Since 2026-10-08 (step 2 of the patch refactor):** `[[code]]` entries no longer have `value`. A new code fix is an armips source, `work/patches/<fix-id>/<fix-id>.asm`, that writes the new bytes behind guards on the old ones, plus `asm = "<fix-id>.asm"` and `[[code]]` regions (file, offset, `expect` = original bytes) in its `fix.toml`; see `work/notes/toolchain.md`. The entry below is kept as written; read its `value` as what the asm would write.
 
 ```toml
 [[code]]

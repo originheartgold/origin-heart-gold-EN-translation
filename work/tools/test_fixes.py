@@ -2,6 +2,8 @@
 """Unit tests for fixes.py (the work/patches registry). Run:  python3 -m unittest -v work/tools/test_fixes.py"""
 import contextlib
 import io
+import re
+import shutil
 import sys
 import tempfile
 import textwrap
@@ -17,7 +19,10 @@ import fixes as F  # noqa: E402
 DECS = {"D-0001", "D-0002"}
 
 
-def fix_toml(fid, kind="code", enabled=True, requires=(), entries="", extra=""):
+def fix_toml(fid, kind="code", enabled=True, requires=(), entries="", extra="", asm=None):
+    """A fix.toml; kinds code and data get asm = "<fid>.asm" unless asm is given ("" = none)."""
+    if asm is None:
+        asm = f"{fid}.asm" if kind in ("code", "data") else ""
     head = textwrap.dedent(f"""\
         id = "{fid}"
         title = "Title of {fid}"
@@ -29,19 +34,29 @@ def fix_toml(fid, kind="code", enabled=True, requires=(), entries="", extra=""):
         what = "now it does Y"
         evidence = ["work/notes/x.md"]
         """).replace("'", '"')
+    if asm:
+        head += f'asm = "{asm}"\n'
     return head + extra + "\n" + textwrap.dedent(entries)
 
 
-def code_entry(eid, offset="0x10", expect="0x2305", value="0x2307", file="arm9"):
+def code_entry(eid, offset="0x10", expect="0x2305", file="arm9"):
     return f"""
 [[code]]
 id = "{eid}"
 file = "{file}"
 offset = "{offset}"
 expect = "{expect}"
-value = "{value}"
 notes = "n"
 """
+
+
+BASES = {"arm9": 0x02000000, "overlay58": 0x021E83C0}
+
+
+def asm_for(toml_text):
+    """A minimal armips source that opens every file the fix's [[code]] entries name, at its load address."""
+    files = sorted(set(re.findall(r'^file = "((?:arm9|overlay\d+))"', toml_text, re.M)))
+    return "".join(f'.open "{f}.bin", 0x{BASES.get(f, 0x02200000):08X}\n.close\n' for f in files)
 
 
 GFX = """
@@ -67,6 +82,9 @@ class Registry(unittest.TestCase):
         d = self.root / (folder or fid)
         d.mkdir(parents=True, exist_ok=True)
         (d / "fix.toml").write_text(text, encoding="utf-8")
+        mo = re.search(r'^asm = "([^"/]+)"', text, re.M)
+        if mo:
+            (d / mo.group(1)).write_text(asm_for(text), encoding="utf-8")
 
     def load(self):
         return F.load_all(self.root, decisions=DECS)
@@ -115,10 +133,14 @@ class Registry(unittest.TestCase):
         self.assertTrue(any("kind must be one of" in p for p in probs), probs)
 
     def test_code_entry_checks(self):
-        self.write("a", fix_toml("a", entries=code_entry("a-1", offset="16", expect="0x1 ", value="01DE 012B")))
+        self.write("a", fix_toml("a", entries=code_entry("a-1", offset="16", expect="01DE 12B")
+                                 + 'value = "0x2307"\n'))
+        self.write("b", fix_toml("b", entries=code_entry("b-1", file="a/0/4/1")))
         probs = self.problems()
         self.assertTrue(any("offset must be hex" in p for p in probs), probs)
-        self.assertTrue(any("expect and value differ in length" in p for p in probs), probs)
+        self.assertTrue(any("'01DE 12B': write one halfword" in p for p in probs), probs)
+        self.assertTrue(any("'value' is gone: the fix's asm writes the new bytes" in p for p in probs), probs)
+        self.assertTrue(any("b-1: file must be 'arm9' or 'overlayNN'" in p for p in probs), probs)
 
     def test_graphics_op_keys(self):
         self.write("a", fix_toml("a", kind="graphics", entries="""
@@ -140,9 +162,49 @@ class Registry(unittest.TestCase):
         self.assertTrue(any("D-9999 is not in the decision register" in p for p in probs), probs)
         self.assertTrue(any("'D-12' is not a D-NNNN id" in p for p in probs), probs)
 
-    def test_asm_reserved(self):
-        self.write("a", fix_toml("a", entries=code_entry("a-1"), extra='asm = "a.asm"\n'))
-        self.assertTrue(any("reserved for armips" in p for p in self.problems()))
+    def test_asm_required_for_code_and_data_only(self):
+        self.write("a", fix_toml("a", entries=code_entry("a-1"), asm=""))
+        self.write("b", fix_toml("b", kind="graphics", entries=GFX, asm="b.asm"))
+        self.write("c", fix_toml("c", kind="data", entries=code_entry("c-1", offset="0x20"), asm="sub/c.asm"))
+        probs = self.problems()
+        self.assertTrue(any("a/fix.toml: kind 'code' needs asm" in p for p in probs), probs)
+        self.assertTrue(any("b/fix.toml: 'asm' only belongs to kinds code, data" in p for p in probs), probs)
+        self.assertTrue(any("c/fix.toml: asm must be a .asm file name" in p for p in probs), probs)
+
+    def test_asm_file_and_opens(self):
+        self.write("a", fix_toml("a", entries=code_entry("a-1") + code_entry("a-2", file="overlay58")))
+        (self.root / "overlays.toml").write_text("[overlay58]\nram = 0x021E83C0\n")
+        self.assertEqual(self.problems(), [])
+        asm = self.root / "a" / "a.asm"
+
+        def probs_for(text):
+            asm.write_text(text, encoding="utf-8")
+            return F.validate(F.load_all(self.root, validate_all=False), decisions=DECS,
+                              overlay_bases=F.load_overlays(self.root))
+        probs = probs_for('.open "arm9.bin", 0x02000000 ; arm9\n.open "overlay58.bin", 0x021E8000\n'
+                          '.open "overlay12.bin", 0x02200000\n  .OPEN BIN, 0x02000000\n'
+                          '.openfile "arm9.bin", "out.bin", 0x02000000\n')
+        self.assertTrue(any("a.asm:2: overlay58.bin opened at 0x021e8000, but its load address is 0x021e83c0"
+                            in p for p in probs), probs)
+        self.assertTrue(any("a.asm:3: opens 'overlay12.bin', but the fix declares no [[code]] region in it"
+                            in p for p in probs), probs)
+        self.assertTrue(any("a.asm:4: write .open as" in p for p in probs), probs)
+        self.assertTrue(any("a.asm:5: write .open as" in p for p in probs), probs)
+        probs = probs_for('; .open "overlay58.bin", 0x021E83C0 is only a comment\n.open "arm9.bin", 0x02000000\n')
+        self.assertEqual(probs, ["a/fix.toml: [[code]] regions in overlay58, but a.asm never opens overlay58.bin"])
+        probs = probs_for('.open "arm9.bin", 0x02000000\n.open "overlay58.bin", 0x021E83C0\n'
+                          '  .headersize 0x02000010\n.CreateFile "x.bin", "y.bin", 0 ; no\n.create "z.bin", 0\n')
+        for want in ("a.asm:3: .headersize is not allowed", "a.asm:4: .createfile is not allowed",
+                     "a.asm:5: .create is not allowed"):
+            self.assertTrue(any(want in p for p in probs), (want, probs))
+        asm.unlink()
+        self.assertTrue(any("asm file a.asm does not exist" in p for p in self.problems()))
+
+    def test_include_folder_is_not_a_fix(self):
+        self.write("a", fix_toml("a", entries=code_entry("a-1")))
+        (self.root / "include").mkdir()
+        (self.root / "include" / "guards.inc").write_text("; macros\n")
+        self.assertEqual([f["id"] for f in self.load()], ["a"])
 
     def test_missing_requires_and_cycle(self):
         self.write("a", fix_toml("a", requires=["nope"], entries=code_entry("a-1")))
@@ -156,7 +218,7 @@ class Registry(unittest.TestCase):
             self.load()
 
     def test_overlap(self):
-        self.write("a", fix_toml("a", entries=code_entry("a-1", offset="0x10", expect="0001 0002", value="0003 0004")))
+        self.write("a", fix_toml("a", entries=code_entry("a-1", offset="0x10", expect="0001 0002")))
         self.write("b", fix_toml("b", entries=code_entry("b-1", offset="0x12")))
         self.write("c", fix_toml("c", entries=code_entry("c-1", offset="0x14")))     # adjacent: fine
         probs = self.problems()
@@ -203,7 +265,7 @@ class Registry(unittest.TestCase):
         for bad in ("2320", "0x12345", "01DE 12B", "0x01DE 0x012B", "", "01DE", 0x2305, ["0x1"]):
             with self.subTest(bad=bad), self.assertRaises(ValueError):
                 F.halfwords(bad)
-        self.write("a", fix_toml("a", entries=code_entry("a-1", value="2320")))
+        self.write("a", fix_toml("a", entries=code_entry("a-1", expect="2320")))
         self.assertTrue(any("'2320': write one halfword as 0xNNNN" in p for p in self.problems()))
 
     def test_list_element_types(self):
@@ -263,8 +325,7 @@ class Registry(unittest.TestCase):
         for name, (kind, body, want) in cases.items():
             with self.subTest(name=name):
                 for d in self.root.iterdir():
-                    (d / "fix.toml").unlink()
-                    d.rmdir()
+                    shutil.rmtree(d)
                 self.write("a", fix_toml("a", kind=kind, entries=body))
                 self.write("b", fix_toml("b", entries=code_entry("b-1", offset="0x80")))
                 probs = self.problems()
@@ -356,7 +417,8 @@ class Registry(unittest.TestCase):
         self.assertIn("| [`mid`](#mid) | code | **no** |", md)
         self.assertIn("- Required by: `alpha`", md)
         self.assertIn("- Decisions: D-0001\n", md)
-        self.assertIn("`arm9+0x10` (RAM 0x02000010) `z-1`: `2305` → `2307`", md)
+        self.assertIn("`arm9+0x10` (RAM 0x02000010) `z-1`: 2 bytes, was `2305`", md)
+        self.assertIn("<summary>zeta.asm</summary>\n\n```asm\n.open \"arm9.bin\", 0x02000000\n.close\n```", md)
         self.assertIn("`a/0/0/8` #1, #2: `copy_us` from USA ROM", md)
 
     def test_cli(self):

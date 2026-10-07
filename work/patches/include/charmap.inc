@@ -1,0 +1,145 @@
+; charmap.inc - game character codes used by the fix sources (armips v0.11.0).
+; Values from work/tools/charmap_en.tsv (the Gen-4 font charmap from pret/pokeheartgold); test_asmpatch.py
+; checks every constant here against it. Only the characters a fix needs are listed.
+; armips names are case-insensitive, so lower-case letters are CH_LC_<letter>; FW_ is the full-width
+; (CJK-width) form the Japanese base uses.
+
+; Western (narrow) characters: what English names are typed in
+CH_0           equ 0x0121   ; 0
+CH_1           equ 0x0122   ; 1
+CH_2           equ 0x0123   ; 2
+CH_3           equ 0x0124   ; 3
+CH_4           equ 0x0125   ; 4
+CH_5           equ 0x0126   ; 5
+CH_6           equ 0x0127   ; 6
+CH_7           equ 0x0128   ; 7
+CH_8           equ 0x0129   ; 8
+CH_9           equ 0x012A   ; 9
+CH_A           equ 0x012B   ; A
+CH_B           equ 0x012C   ; B
+CH_C           equ 0x012D   ; C
+CH_D           equ 0x012E   ; D
+CH_E           equ 0x012F   ; E
+CH_F           equ 0x0130   ; F
+CH_G           equ 0x0131   ; G
+CH_H           equ 0x0132   ; H
+CH_I           equ 0x0133   ; I
+CH_J           equ 0x0134   ; J
+CH_K           equ 0x0135   ; K
+CH_L           equ 0x0136   ; L
+CH_M           equ 0x0137   ; M
+CH_N           equ 0x0138   ; N
+CH_O           equ 0x0139   ; O
+CH_P           equ 0x013A   ; P
+CH_Q           equ 0x013B   ; Q
+CH_R           equ 0x013C   ; R
+CH_S           equ 0x013D   ; S
+CH_T           equ 0x013E   ; T
+CH_U           equ 0x013F   ; U
+CH_V           equ 0x0140   ; V
+CH_W           equ 0x0141   ; W
+CH_X           equ 0x0142   ; X
+CH_Y           equ 0x0143   ; Y
+CH_Z           equ 0x0144   ; Z
+CH_LC_A        equ 0x0145   ; a
+CH_LC_B        equ 0x0146   ; b
+CH_LC_C        equ 0x0147   ; c
+CH_LC_D        equ 0x0148   ; d
+CH_LC_E        equ 0x0149   ; e
+CH_LC_F        equ 0x014A   ; f
+CH_LC_G        equ 0x014B   ; g
+CH_LC_H        equ 0x014C   ; h
+CH_LC_I        equ 0x014D   ; i
+CH_LC_J        equ 0x014E   ; j
+CH_LC_K        equ 0x014F   ; k
+CH_LC_L        equ 0x0150   ; l
+CH_LC_M        equ 0x0151   ; m
+CH_LC_N        equ 0x0152   ; n
+CH_LC_O        equ 0x0153   ; o
+CH_LC_P        equ 0x0154   ; p
+CH_LC_Q        equ 0x0155   ; q
+CH_LC_R        equ 0x0156   ; r
+CH_LC_S        equ 0x0157   ; s
+CH_LC_T        equ 0x0158   ; t
+CH_LC_U        equ 0x0159   ; u
+CH_LC_V        equ 0x015A   ; v
+CH_LC_W        equ 0x015B   ; w
+CH_LC_X        equ 0x015C   ; x
+CH_LC_Y        equ 0x015D   ; y
+CH_LC_Z        equ 0x015E   ; z
+CH_SPACE       equ 0x01DE   ; ' '
+CH_COMMA       equ 0x01AD   ; ,
+CH_PERIOD      equ 0x01AE   ; .
+CH_APOSTROPHE  equ 0x01B3   ; ’
+CH_HYPHEN      equ 0x01BE   ; -
+
+; Full-width characters of the hack's (Japanese-base) keyboard pages
+FW_0           equ 0x00A2   ; ０
+FW_1           equ 0x00A3   ; １
+FW_2           equ 0x00A4   ; ２
+FW_3           equ 0x00A5   ; ３
+FW_4           equ 0x00A6   ; ４
+FW_5           equ 0x00A7   ; ５
+FW_6           equ 0x00A8   ; ６
+FW_7           equ 0x00A9   ; ７
+FW_8           equ 0x00AA   ; ８
+FW_9           equ 0x00AB   ; ９
+FW_A           equ 0x00AC   ; Ａ
+FW_B           equ 0x00AD   ; Ｂ
+FW_C           equ 0x00AE   ; Ｃ
+FW_D           equ 0x00AF   ; Ｄ
+FW_E           equ 0x00B0   ; Ｅ
+FW_F           equ 0x00B1   ; Ｆ
+FW_G           equ 0x00B2   ; Ｇ
+FW_H           equ 0x00B3   ; Ｈ
+FW_I           equ 0x00B4   ; Ｉ
+FW_J           equ 0x00B5   ; Ｊ
+FW_K           equ 0x00B6   ; Ｋ
+FW_L           equ 0x00B7   ; Ｌ
+FW_M           equ 0x00B8   ; Ｍ
+FW_N           equ 0x00B9   ; Ｎ
+FW_O           equ 0x00BA   ; Ｏ
+FW_P           equ 0x00BB   ; Ｐ
+FW_Q           equ 0x00BC   ; Ｑ
+FW_R           equ 0x00BD   ; Ｒ
+FW_S           equ 0x00BE   ; Ｓ
+FW_T           equ 0x00BF   ; Ｔ
+FW_U           equ 0x00C0   ; Ｕ
+FW_V           equ 0x00C1   ; Ｖ
+FW_W           equ 0x00C2   ; Ｗ
+FW_X           equ 0x00C3   ; Ｘ
+FW_Y           equ 0x00C4   ; Ｙ
+FW_Z           equ 0x00C5   ; Ｚ
+FW_LC_A        equ 0x00C6   ; ａ
+FW_LC_B        equ 0x00C7   ; ｂ
+FW_LC_C        equ 0x00C8   ; ｃ
+FW_LC_D        equ 0x00C9   ; ｄ
+FW_LC_E        equ 0x00CA   ; ｅ
+FW_LC_F        equ 0x00CB   ; ｆ
+FW_LC_G        equ 0x00CC   ; ｇ
+FW_LC_H        equ 0x00CD   ; ｈ
+FW_LC_I        equ 0x00CE   ; ｉ
+FW_LC_J        equ 0x00CF   ; ｊ
+FW_LC_K        equ 0x00D0   ; ｋ
+FW_LC_L        equ 0x00D1   ; ｌ
+FW_LC_M        equ 0x00D2   ; ｍ
+FW_LC_N        equ 0x00D3   ; ｎ
+FW_LC_O        equ 0x00D4   ; ｏ
+FW_LC_P        equ 0x00D5   ; ｐ
+FW_LC_Q        equ 0x00D6   ; ｑ
+FW_LC_R        equ 0x00D7   ; ｒ
+FW_LC_S        equ 0x00D8   ; ｓ
+FW_LC_T        equ 0x00D9   ; ｔ
+FW_LC_U        equ 0x00DA   ; ｕ
+FW_LC_V        equ 0x00DB   ; ｖ
+FW_LC_W        equ 0x00DC   ; ｗ
+FW_LC_X        equ 0x00DD   ; ｘ
+FW_LC_Y        equ 0x00DE   ; ｙ
+FW_LC_Z        equ 0x00DF   ; ｚ
+FW_SPACE       equ 0x0001   ; ideographic space U+3000
+FW_COMMA       equ 0x00F9   ; ，
+FW_PERIOD      equ 0x00F8   ; ．
+
+; Keyboard symbols
+CH_ARROW_LEFT  equ 0x011B   ; ←
+CH_ARROW_RIGHT equ 0x011E   ; →

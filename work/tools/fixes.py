@@ -21,14 +21,19 @@ fix.toml
                                             then the technical cause
     what        = '''...'''                 old -> new behaviour
     evidence    = ["work/notes/....md: section", "CHANGELOG.md: ...", ...]
-    # asm       = "namelen.asm"             reserved for step 2 (armips source); rejected for now
+    asm         = "namelen.asm"             kinds code and data only (required there): the armips source in the
+                                            fix's folder that writes the new bytes (see asmpatch.py and
+                                            work/notes/toolchain.md)
 
   Entries (arrays of tables; a fix uses the ones of its kind):
-    [[code]]      halfword patches (kinds code, data). Keys: id, file ("arm9" | "overlayNN"), offset
-                  ("0x4E", file offset; arm9/overlays: offset in the RAM image), expect, value, notes.
-                  expect/value: one halfword written 0x + 1-4 hex digits ("0x2305"), or a run of 2+
-                  halfwords of exactly 4 hex digits each ("01DE 012B ..."); anything else is refused (a bare
-                  "2320" is ambiguous). The build checks expect before it writes value.
+    [[code]]      the regions a code/data fix may change (kinds code, data). Keys: id, file ("arm9" |
+                  "overlayNN"), offset ("0x4E", file offset; arm9/overlays: offset in the RAM image), expect,
+                  notes. expect: the original bytes of the region, as one halfword written 0x + 1-4 hex digits
+                  ("0x2305") or a run of 2+ halfwords of exactly 4 hex digits each ("01DE 012B ..."); anything
+                  else is refused (a bare "2320" is ambiguous). The new bytes are not here: the fix's `asm`
+                  writes them. The build checks expect before it assembles, the asm guards the same bytes
+                  itself, and after assembling the build refuses any changed byte outside the fix's regions
+                  and any region the asm left unchanged.
     [[string]]    hardcoded strings (kind strings). Keys: id ("<file>:<offset>"), file, offset, zh, en,
                   max_units, optional pointers, reloc_max_units, context, notes. See hardcoded.py.
     [string_files.<file>]  per-file settings for [[string]] (grow_max, notes).
@@ -39,15 +44,22 @@ fix.toml
 work/patches/overlays.toml
     The RAM load address of every overlay a fix touches ([overlayNN] ram = 0x...), read from the y9 overlay
     table of the Chinese ROM by `fixes.py overlays --rom ROM`. Addresses only, no game data; FIXES.md uses it
-    for RAM addresses, and build.py checks it against the ROM it loads (step 2: armips .org addresses).
+    for RAM addresses, build.py checks it against the ROM it loads, and `check` checks every `.open` in a
+    fix's asm against it (armips sources use RAM addresses: `.open "overlay49.bin", 0x021E4980`).
 
-Every direct subfolder of work/patches must be a fix (have a fix.toml); a fix may keep extra files
-(assets, step 2's .asm) inside its own folder.
+work/patches/include/
+    Shared armips includes (guards.inc: the expect16/expect32 guard macros; charmap.inc: character codes).
+    Not a fix; the only subfolder of work/patches without a fix.toml.
+
+Every other direct subfolder of work/patches must be a fix (have a fix.toml); a fix may keep extra files
+(assets, its .asm) inside its own folder.
 
 Checks (`check`, and every load the build does): unknown keys, wrong types (also of list elements),
 malformed halfwords, duplicate fix or entry ids, id != folder, folders without fix.toml, unknown decisions,
-missing requires, dependency cycles, overlays without a RAM base, and two entries (in any fixes) touching
-the same bytes / NARC member / glyph.
+missing requires, dependency cycles, overlays without a RAM base, a code/data fix without its asm file, an
+asm `.open` of a file the fix declares no region in or at the wrong load address, an asm `.create`/`.createfile`/
+`.headersize`, and two entries (in any
+fixes) touching the same bytes / NARC member / glyph.
 
 Blind spots of the overlap check: it compares entries only within one namespace and granularity:
   * code bytes are keyed by "arm9" / "overlayNN" (byte ranges);
@@ -80,6 +92,8 @@ WORK = TOOLS.parent
 REPO = WORK.parent
 PATCHES_DIR = WORK / "patches"
 OVERLAYS_TOML = "overlays.toml"
+INCLUDE_DIR = "include"                 # work/patches/include: shared armips includes, not a fix
+ARM9_BASE = 0x02000000
 DECISIONS_JSONL = WORK / "translate" / "decisions" / "decisions.jsonl"
 ROM_CN = WORK / "rom" / "origin_v4.0.3_cn.nds"
 
@@ -88,13 +102,17 @@ ENTRY_TABLES = {"code": "code", "data": "code", "strings": "string", "graphics":
 STRS, INTS = ("list", str), ("list", int)       # list element types
 TABLES, TABLE_MAP = ("list", dict), ("dict", dict)   # [[entries]] and [name.<key>] sub-tables
 TOP_KEYS = {"id": str, "title": str, "kind": str, "enabled": bool, "decisions": STRS, "requires": STRS,
-            "why": str, "what": str, "evidence": STRS,
+            "why": str, "what": str, "evidence": STRS, "asm": str,
             "code": TABLES, "string": TABLES, "string_files": TABLE_MAP, "graphics": TABLES, "font": TABLES}
 REQUIRED_TOP = ("id", "title", "kind", "enabled", "decisions", "requires", "why", "what", "evidence")
-RESERVED_TOP = {"asm": "reserved for armips sources (step 2); not supported yet"}
+RESERVED_TOP = {}                        # top-level keys that are reserved but not supported yet
+ASM_KINDS = ("code", "data")            # kinds whose new bytes come from an armips source
 
-CODE_KEYS = {"id": str, "file": str, "offset": str, "expect": str, "value": str, "notes": str}
-CODE_REQUIRED = ("id", "file", "offset", "expect", "value", "notes")
+CODE_KEYS = {"id": str, "file": str, "offset": str, "expect": str, "notes": str}
+CODE_REQUIRED = ("id", "file", "offset", "expect", "notes")
+CODE_FILE_RE = re.compile(r"arm9|overlay\d+")
+# `.open "<file>.bin", 0x<load address>` in a fix's asm (comments allowed after it)
+ASM_OPEN_RE = re.compile(r'^\s*\.open\s+"([^"]+)"\s*,\s*(0x[0-9A-Fa-f]+)\s*(?:;.*)?$', re.I)
 STRING_KEYS = {"id": str, "file": str, "offset": str, "zh": str, "en": str, "max_units": int,
                "pointers": STRS, "reloc_max_units": int, "context": str, "notes": str}
 STRING_REQUIRED = ("id", "file", "offset", "zh", "max_units")
@@ -138,7 +156,8 @@ def load_all(root: Path = PATCHES_DIR, validate_all=True, decisions=None) -> lis
     if not root.is_dir():
         raise FixError(f"{root}: the fix registry folder does not exist")
     fixes, problems = [], []
-    for d in sorted(x for x in root.iterdir() if x.is_dir() and not x.name.startswith(".")):
+    for d in sorted(x for x in root.iterdir()
+                    if x.is_dir() and not x.name.startswith(".") and x.name != INCLUDE_DIR):
         if not (d / "fix.toml").is_file():
             problems.append(f"{d.name}/: folder without fix.toml (every folder under {root.name}/ is one fix)")
     for p in sorted(root.glob("*/fix.toml")):
@@ -224,11 +243,15 @@ def _validate_entries(fx, where, problems):
     for i, e in enumerate(_entries(fx, "code")):
         w = f"{where} [[code]] #{i} {e.get('id', '?')}"
         _types(w, e, CODE_KEYS, CODE_REQUIRED, problems)
+        if "value" in e:
+            problems.append(f"{w}: 'value' is gone: the fix's asm writes the new bytes; [[code]] keeps the "
+                            f"region and its original bytes (expect)")
         if isinstance(e.get("offset"), str) and not HEX_RE.fullmatch(e["offset"]):
             problems.append(f"{w}: offset must be hex like '0x4E'")
+        if isinstance(e.get("file"), str) and not CODE_FILE_RE.fullmatch(e["file"]):
+            problems.append(f"{w}: file must be 'arm9' or 'overlayNN'")
         try:
-            if len(halfwords(e["expect"])) != len(halfwords(e["value"])):
-                problems.append(f"{w}: expect and value differ in length")
+            halfwords(e["expect"])
         except KeyError:
             pass                                            # reported as missing above
         except ValueError as ex:
@@ -272,6 +295,85 @@ def _validate_entries(fx, where, problems):
                 problems.append(f"{where} [[font]] #{i}: code {c!r} must be hex like '0x01AF'")
 
 
+def asm_path(fx):
+    """The fix's armips source (Path), or None when it has none."""
+    if not isinstance(fx.get("asm"), str) or not fx.get("_path"):
+        return None
+    return fx["_path"].parent / fx["asm"]
+
+
+def asm_opens(text: str) -> list:
+    """(line number, file, base or None) of every `.open` in an armips source; base None = not a literal."""
+    out = []
+    for n, line in enumerate(text.splitlines(), 1):
+        code = line.split(";", 1)[0]
+        if not re.match(r"\s*\.open(?:file)?\b", code, re.I):
+            continue
+        mo = ASM_OPEN_RE.match(line)
+        out.append((n, mo.group(1), int(mo.group(2), 16)) if mo else (n, code.strip(), None))
+    return out
+
+
+ASM_FORBIDDEN_RE = re.compile(r"\s*(\.create(?:file)?|\.headersize)\b", re.I)
+
+
+def asm_forbidden(text: str) -> list:
+    """(line number, directive) of directives a fix source may not use: .create/.createfile (a fix only
+    patches the staged binaries) and .headersize (the load address is the one of its .open)."""
+    out = []
+    for n, line in enumerate(text.splitlines(), 1):
+        mo = ASM_FORBIDDEN_RE.match(line.split(";", 1)[0])
+        if mo:
+            out.append((n, mo.group(1).lower()))
+    return out
+
+
+def _validate_asm(fx, where, problems, overlay_bases):
+    """asm only for kinds code/data, and required there; the file exists in the fix's folder; every `.open`
+    is '<file>.bin' of a file with a [[code]] region, at that file's load address; every such file is opened."""
+    kind, asm = fx.get("kind"), fx.get("asm")
+    if kind not in ASM_KINDS:
+        if asm is not None:
+            problems.append(f"{where}: 'asm' only belongs to kinds {', '.join(ASM_KINDS)}")
+        return
+    if not isinstance(asm, str):
+        if asm is None:
+            problems.append(f"{where}: kind {kind!r} needs asm = \"<file>.asm\" (its armips source)")
+        return
+    if "/" in asm or "\\" in asm or not asm.endswith(".asm"):
+        problems.append(f"{where}: asm must be a .asm file name in the fix's own folder")
+        return
+    path = asm_path(fx)
+    if path is None:
+        return
+    if not path.is_file():
+        problems.append(f"{where}: asm file {asm} does not exist")
+        return
+    files = {e["file"] for e in _entries(fx, "code") if isinstance(e.get("file"), str)}
+    opened = set()
+    text = path.read_text(encoding="utf-8")
+    for n, d in asm_forbidden(text):
+        problems.append(f"{fx['_path'].parent.name}/{asm}:{n}: {d} is not allowed in a fix source "
+                        f"(it only patches the staged binaries at their load address)")
+    for n, name, base in asm_opens(text):
+        w = f"{fx['_path'].parent.name}/{asm}:{n}"
+        if base is None:
+            problems.append(f"{w}: write .open as '.open \"<file>.bin\", 0x<load address>' ({name})")
+            continue
+        key = name[:-4] if name.endswith(".bin") else None
+        if key not in files:
+            problems.append(f"{w}: opens {name!r}, but the fix declares no [[code]] region in it "
+                            f"(expected one of {', '.join(sorted(f + '.bin' for f in files)) or 'none'})")
+            continue
+        opened.add(key)
+        want = ARM9_BASE if key == "arm9" else (overlay_bases or {}).get(key)
+        if want is not None and base != want:
+            problems.append(f"{w}: {name} opened at {base:#010x}, but its load address is {want:#010x}"
+                            f"{'' if key == 'arm9' else ' (' + OVERLAYS_TOML + ')'}")
+    for key in sorted(files - opened):
+        problems.append(f"{where}: [[code]] regions in {key}, but {asm} never opens {key}.bin")
+
+
 def validate(fixes, decisions=None, overlay_bases=None) -> list:
     """Schema and registry problems (list of strings; empty = valid). decisions: set of known D-ids, or
     None to read the register (skipped if it is missing). overlay_bases: {"overlayNN": ram} from
@@ -312,6 +414,7 @@ def validate(fixes, decisions=None, overlay_bases=None) -> list:
         if isinstance(fx.get("evidence"), list) and not fx["evidence"]:
             problems.append(f"{where}: evidence is empty")
         _validate_entries(fx, where, problems)
+        _validate_asm(fx, where, problems, overlay_bases)
     # entry ids unique across all fixes
     seen = {}
     for fx in fixes:
@@ -535,9 +638,14 @@ def _staged(fixes):
     return sorted(fixes, key=lambda f: KINDS.index(f["kind"]))
 
 
+def code_entries_fixes(fixes) -> list:
+    """The code/data fixes among `fixes` (those with [[code]] regions and an asm), in build order."""
+    return [fx for fx in _staged(fixes) if fx.get("kind") in ASM_KINDS]
+
+
 def code_entries(fixes, all_enabled=False) -> list:
-    """[[code]] entries as hardcoded.py code patches: the entry plus "enabled" (the fix's enabled flag, or
-    True for every entry with all_enabled, i.e. `fixes` is a build's selection) and "fix"."""
+    """[[code]] regions as a flat list: the entry plus "enabled" (the fix's enabled flag, or True for every
+    entry with all_enabled, i.e. `fixes` is a build's selection) and "fix"."""
     out = []
     for fx in _staged(fixes):
         on = True if all_enabled else fx.get("enabled", False)
@@ -597,8 +705,8 @@ def _touched(fx, bases=None) -> list:
     for e in fx.get("code", []):
         off = _int(e["offset"])
         ram = _ram_note(e["file"], off, bases)
-        lines.append(f"`{e['file']}+{e['offset']}`{ram} `{e['id']}`: `{_hw_short(e['expect'])}` → "
-                     f"`{_hw_short(e['value'])}`")
+        n = 2 * len(halfwords(e["expect"]))
+        lines.append(f"`{e['file']}+{e['offset']}`{ram} `{e['id']}`: {n} bytes, was `{_hw_short(e['expect'])}`")
     for e in fx.get("string", []):
         ptr = f", pointers {', '.join(e['pointers'])}" if e.get("pointers") else ""
         lines.append(f"`{e['file']}+{e['offset']}`{_ram_note(e['file'], _int(e['offset']), bases)} "
@@ -646,7 +754,10 @@ def render_docs(fixes, overlay_bases=None) -> str:
            "work/patches/*/fix.toml. Do not edit by hand. -->", "",
            "Besides the message text (`a/0/2/7`, `battle_string.narc`), the English build changes the untouched "
            "Chinese ROM (`origin_v4.0.3_cn.nds`) only through the fixes below. Each one lives in "
-           "`work/patches/<id>/fix.toml` and checks what it replaces before it writes: code, data, strings and "
+           "`work/patches/<id>/fix.toml`; a code or data fix also has an armips source (`<id>.asm`, shown under "
+           "the fix) that writes the new bytes, while fix.toml declares the regions it may change and their "
+           "original bytes, and the build refuses any other change (`work/notes/toolchain.md`). Each fix "
+           "checks what it replaces before it writes: code, data, strings and "
            "`code_from_us`/`member_from_file` graphics check the exact bytes (or their SHA-1); `copy_us`, "
            "`tiles_from_file` and `tiles_from_us` check the bit depth and tile count; `tiles_from_png` checks "
            "that the image matches the sheet's tile grid, and `tile_range_from_png` that the range fits the "
@@ -682,6 +793,13 @@ def render_docs(fixes, overlay_bases=None) -> str:
         out += [f"- {ev}" for ev in fx["evidence"]]
         out += ["", "**Touches:**", ""]
         out += [f"- {t}" for t in _touched(fx, overlay_bases)]
+        src = asm_path(fx)
+        if src is not None and src.is_file():
+            rel = src.resolve()
+            rel = rel.relative_to(REPO).as_posix() if rel.is_relative_to(REPO) else rel.name
+            out += ["", f"**Source** (`{rel}`, armips; the new bytes):", "", "<details>",
+                    f"<summary>{src.name}</summary>", "", "```asm", src.read_text(encoding="utf-8").rstrip("\n"),
+                    "```", "", "</details>"]
     return "\n".join(out) + "\n"
 
 

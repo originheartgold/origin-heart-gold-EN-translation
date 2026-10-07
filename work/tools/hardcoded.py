@@ -2,11 +2,15 @@
 """hardcoded - Chinese strings stored outside the message NARCs (arm9, overlays, other ROM files).
 
 Source of truth: the fix registry work/patches/<fix-id>/fix.toml, read through fixes.py: the [[string]]
-entries and [string_files] of kind-'strings' fixes (outfit-chooser-strings), and the [[code]] entries
-(16-bit code/data patches: name-length limits, the English naming keyboard, heap fixes ...). Each code patch
-checks the current halfword(s) ('expect') before writing 'value'; both are one halfword ("0x2305") or a run
-of halfwords ("01DE 012B ..."). A code patch is applied when its fix is enabled (or selected with
-build.py --only / --without). Notes: work/notes/hardcoded_text.md; overview: work/patches/FIXES.md.
+entries and [string_files] of kind-'strings' fixes (outfit-chooser-strings). Notes:
+work/notes/hardcoded_text.md; overview: work/patches/FIXES.md.
+
+The code and data fixes (name-length limits, the English naming keyboard, heap fixes ...) are armips
+sources, work/patches/<fix>/<fix>.asm, applied by asmpatch.py (the build's default code engine). apply()
+below still has the old Python code-patch applier ("code_patches": halfword expect -> value), kept only as the
+legacy engine (build.py --code-engine python) that test_asmpatch.py compares the armips output against. Its
+entries come from the frozen work/tools/legacy_code_patches.toml (the [[code]] values as of c99993d), not from
+work/patches.
 
 [[string]] entries
     id          "<file>:<offset>"  e.g. "overlay58:0x6F0"
@@ -84,13 +88,32 @@ def _hw_str(units) -> str:
     return hex(units[0]) if len(units) == 1 else " ".join(f"{u:04X}" for u in units)
 
 
-def load_code_patches(fixes=None) -> list:
-    """[[code]] entries as a flat list: the entry's fields plus "enabled" and "fix" (the fix id).
+LEGACY_CODE_PATCHES = TOOLS / "legacy_code_patches.toml"
+
+
+def load_code_patches(fixes=None, path=LEGACY_CODE_PATCHES) -> list:
+    """The legacy Python engine's code patches (id, file, offset, expect, value, fix, enabled), from the frozen
+    legacy_code_patches.toml, in the order of the fixes (build stage, then requires) and of the file.
     fixes=None: every fix in work/patches, "enabled" = the fix's enabled flag. fixes = a build's selection:
-    only those fixes, all enabled."""
+    only those fixes' patches, all enabled. Raises HardcodedError when a selected code/data fix has no
+    legacy patches (a fix added after the freeze exists only as armips source)."""
+    import tomllib
+    with open(path, "rb") as f:
+        legacy = tomllib.load(f).get("code", [])
+    by_fix = collections.OrderedDict()
+    for e in legacy:
+        by_fix.setdefault(e["fix"], []).append(e)
+    all_enabled = fixes is not None
     if fixes is None:
-        return fixreg.code_entries(fixreg.load_all())
-    return fixreg.code_entries(fixes, all_enabled=True)
+        fixes = fixreg.load_all()
+    out = []
+    for fx in fixreg.code_entries_fixes(fixes):
+        if fx["id"] not in by_fix:
+            raise HardcodedError(f"fix {fx['id']}: no legacy Python code patches (it exists only as "
+                                 f"{fx.get('asm')}); build with --code-engine armips")
+        on = True if all_enabled else bool(fx.get("enabled"))
+        out += [dict(e, enabled=on) for e in by_fix[fx["id"]]]
+    return out
 
 
 # --------------------------------------------------------------------------------------
@@ -262,12 +285,13 @@ def _group(entries):
     return by
 
 
-def apply(rom, cm=None, cfg=None, code_patches=None, dry_run=False):
-    """Write every entry with en set, plus the enabled code patches. Returns a report dict.
-    Raises HardcodedError listing every problem; nothing is written if there is any problem."""
+def apply(rom, cm=None, cfg=None, code_patches=(), dry_run=False):
+    """Write every [[string]] entry with en set. code_patches: legacy Python code patches to apply too
+    (load_code_patches(); default none - the code/data fixes are applied by asmpatch.apply). Returns a
+    report dict. Raises HardcodedError listing every problem; nothing is written if there is any problem."""
     cm = cm or m.Charmap.load(CHARMAPS)
     cfg = cfg if cfg is not None else load()
-    code_patches = code_patches if code_patches is not None else load_code_patches()
+    code_patches = list(code_patches or ())
     view = RomView(rom)
     files_cfg = cfg.get("files", {})
     writes, rows, problems = {}, [], []
@@ -461,6 +485,10 @@ def main(argv=None):
     p.add_argument("--rom", default=str(WORK / "rom" / "origin_v4.0.3_cn.nds"))
     p.add_argument("--only", help="comma-separated fix ids (default: every enabled fix)")
     p.add_argument("--without", help="comma-separated fix ids to leave out")
+    p.add_argument("--code-engine", choices=("armips", "python"), default="armips",
+                   help="code/data fixes: assemble their armips sources (asmpatch.py, default) or apply the "
+                        "legacy Python patches")
+    p.add_argument("--armips", help="armips executable (default: $ARMIPS, then PATH)")
     sub.add_parser("list")
     p = sub.add_parser("scan")
     p.add_argument("rom")
@@ -472,14 +500,25 @@ def main(argv=None):
             act = fixreg.active_fixes(a.only, a.without)
         except fixreg.FixError as ex:
             sys.exit(str(ex))
-        rep = apply(m.load_rom(a.rom), cfg=load(fixes=act), code_patches=load_code_patches(fixes=act),
-                    dry_run=True)
+        import asmpatch
+        rom = m.load_rom(a.rom)
+        try:
+            if a.code_engine == "python":
+                rep = apply(rom, cfg=load(fixes=act), code_patches=load_code_patches(fixes=act), dry_run=True)
+            else:
+                rep = apply(rom, cfg=load(fixes=act), code_patches=[], dry_run=True)
+                if fixreg.code_entries_fixes(act):
+                    armips = asmpatch.find_armips(a.armips)
+                    asmpatch.check_armips(armips)
+                    rep["code_patches"] = asmpatch.apply(rom, act, armips, dry_run=True)["code_patches"]
+        except (HardcodedError, asmpatch.AsmError) as ex:
+            sys.exit(str(ex))
         for r in rep["strings"]:
             print(f"  {r['id']:20s} {r['mode']:9s} -> {r['addr']:#x}  {r['en']!r}")
         for r in rep["code_patches"]:
             print(f"  code patch {r['id']}: {r['file']}+{r['offset']} {r['old']} -> {r['new']}")
         print(f"ok: {len(rep['strings'])} strings would be written, {rep['todo']} still untranslated; "
-              f"{len(rep['code_patches'])} code patches")
+              f"{len(rep['code_patches'])} code/data regions ({a.code_engine})")
     elif a.cmd == "list":
         for e in load()["strings"]:
             st = "todo" if not e.get("en") else "set"

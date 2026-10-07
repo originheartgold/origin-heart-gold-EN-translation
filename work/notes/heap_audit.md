@@ -40,7 +40,9 @@ Run it before every rc:
 - Not covered: PC boxes, the photo album viewer, Pokéathlon, link and Wi-Fi screens, contests, the Battle Frontier. The static list names the banks and heaps involved there.
 - Spare room depends on the save's contents and on the exact screen state. A passing run is evidence, not proof; keep a margin (the WARN threshold).
 
-## Fix (`work/patches/msgload/fix.toml`)
+## Fix (`work/patches/msgload/`)
+
+The fix is an armips source, `msgload.asm` (regions and original bytes in `fix.toml`; how the build applies it: `toolchain.md`).
 
 - **`msgload-all`** (arm9 `0xBA9A`, `adds r5, r0, #0` → `movs r5, #1`): `NewMsgDataFromNarc` always creates an on-demand message handle (type 1), whatever type the caller asks for. No text bank is loaded whole into a screen's heap any more (149 call sites in rc3, `memcheck.py static` now lists 0). Safe at the code level: every MsgData function switches on the type and handles both, and no code outside them calls the whole-bank helpers. The handle itself is 0x54 bytes (`NARC_New`, `0x02007590`). Cost: one small ROM read per line instead of a memory read; the game already reads text this way at 186 call sites.
 - **`msgload-summary-*` / `msgload-bag-*`**: the same change at the five measured call sites (`movs r0, #0` → `#1`), kept as a second layer in case `msgload-all` is ever disabled.
