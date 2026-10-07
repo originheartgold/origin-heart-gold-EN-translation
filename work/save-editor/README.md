@@ -42,8 +42,8 @@ To host it, build (`npm run build`) and upload `index.html`, `styles.css`,
 ### GitHub Pages
 
 In the repository's **Settings → Pages**, set **Source** to **GitHub Actions**.
-The workflow in `.github/workflows/deploy-pages.yml` installs dependencies, builds
-the editor, then deploys the static site on every push to `main`.
+The workflow in `.github/workflows/site.yml` typechecks and tests the editor, then
+builds and deploys the complete guide site on relevant pushes to `main`.
 You can also run it manually from the **Actions** tab. The deployment's
 `github-pages` environment links to the published site.
 
@@ -108,7 +108,7 @@ This is the `sv` editor, served full-width at `/save-editor/` by `site/src/pages
 
 The theme button switches between light and dark and remembers the choice locally. Initially it follows the system theme.
 
-Run `npm test` for typechecking and tests. Real-save tests skip when no local fixture is available. To include them, set `OHG_SAVE_FIXTURE=/absolute/path/to/test.sav` or place a save at `local/fixture.sav` (gitignored). Never commit save files.
+Run `npm test` for typechecking and tests. The suite uses deterministic synthetic saves and runs in CI without private files. Set `OHG_SAVE_FIXTURE=/absolute/path/to/test.sav` to additionally exercise the existing party, PC and OT cases with a local save. Never commit save files. Mirror selection, equal-counter no-ops, rejected edits, cross-block atomicity, checksum preservation and asynchronous file selection have dedicated regression tests.
 
 Badge state is read from the active save's Origin-specific bytes at general `+0x80` and `+0x83`. It is never inferred from party levels, story progress, or previous files. Neighboring profile bytes do not affect badges. The theme control uses sun/moon icons with accessible labels and tooltips.
 

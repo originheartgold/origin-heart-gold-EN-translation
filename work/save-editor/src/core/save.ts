@@ -144,6 +144,7 @@ export function patchPartyRecord(input: Uint8Array, slot: number, record: Uint8A
   if (record.length !== BOXED_SIZE && record.length !== PARTY_STRIDE) {
     throw new EditorError('invalid-save', 'Expected a 136-byte boxed or 236-byte party Pokémon record.');
   }
+  decodePokemon(record);
   const offset = save.generalOffset + PARTY_OFFSET + slot * PARTY_STRIDE;
   const previous = record.length === BOXED_SIZE ? save.party[slot]! : save.partyRecords[slot]!;
   if (record.every((byte, index) => byte === previous[index])) return save.bytes;
@@ -187,6 +188,7 @@ export function addPartyRecord(input: Uint8Array, record: Uint8Array): Uint8Arra
   const save = readSave(input);
   if (save.partyCount >= 6) throw new EditorError('invalid-save', 'The party is full. Remove a Pokémon first.');
   if (record.length !== PARTY_STRIDE) throw new EditorError('invalid-save', 'Expected a 236-byte party Pokémon record.');
+  decodePokemon(record);
   const withRecord = patchGeneralRegion(input, PARTY_OFFSET + save.partyCount * PARTY_STRIDE, record);
   return patchGeneralRegion(withRecord, 0x94, u32(save.partyCount + 1));
 }

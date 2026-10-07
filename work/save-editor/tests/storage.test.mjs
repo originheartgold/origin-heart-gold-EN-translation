@@ -1,11 +1,10 @@
-import nodeTest from 'node:test';
+import test from 'node:test';
 import assert from 'node:assert/strict';
 import {fixture as original} from './fixture.mjs';
-const test = (name, fn) => nodeTest(name, {skip: !original}, fn);
 import {readStorage, patchBoxRecord, readSave, crc16} from '../dist/core/save.js';
 import {decodePokemon, patchPokemonStats, patchPokemonAbility, patchPokemonMoves, emptyPartyRecord} from '../dist/core/pokemon.js';
 import {loadBundledOriginData} from '../dist/core/bundled-data.js';
-const template = original && readSave(original).partyRecords[0].slice(0,136);
+const template = readSave(original).partyRecords[0].slice(0,136);
 function rewriteCounter(bytes, base, counter) { new DataView(bytes.buffer).setUint32(base+0x18408-16, counter, true); }
 test('Origin storage decodes all 24 boxes and all 720 slots', () => {
  const pc=readStorage(original);
@@ -18,7 +17,8 @@ test('editing the final PC slot preserves general blocks, backup storage and oth
  const pc=readStorage(original), result=patchBoxRecord(original,23,29,template);
  assert.deepEqual(readSave(result).partyRecords,readSave(original).partyRecords);
  for(const base of [0,0x40000]) assert.deepEqual(result.subarray(base,base+0xf7cc),original.subarray(base,base+0xf7cc));
- assert.deepEqual(result.subarray(0xf800,0xf800+0x18408),original.subarray(0xf800,0xf800+0x18408));
+ const backup = pc.offset === 0xf800 ? 0x4f800 : 0xf800;
+ assert.deepEqual(result.subarray(backup,backup+0x18408),original.subarray(backup,backup+0x18408));
  assert.deepEqual(readStorage(result).boxes[23][29],template);
  const allowed=new Set(Array.from({length:136},(_,i)=>pc.offset+23*0x1000+29*136+i));
  for(const off of [0x18004,0x18005,0x18006,0x18007,0x183f4,0x183f5,0x18406,0x18407])allowed.add(pc.offset+off);

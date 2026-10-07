@@ -14,3 +14,23 @@ export async function importSave(file: SaveFileInput): Promise<ImportedSave> {
   readSave(bytes).partyRecords.forEach(decodePokemon);
   return {filename: file.name, bytes, container};
 }
+
+/** Only the latest selection may replace a session or report a load failure.
+ * Edits and undo invalidate pending reads so they cannot discard newer work.
+ */
+export class SaveImportRequest {
+  private generation = 0;
+
+  invalidate(): void { this.generation++; }
+
+  async load(file: SaveFileInput): Promise<ImportedSave | undefined> {
+    const generation = ++this.generation;
+    try {
+      const imported = await importSave(file);
+      return generation === this.generation ? imported : undefined;
+    } catch (error) {
+      if (generation === this.generation) throw error;
+      return undefined;
+    }
+  }
+}

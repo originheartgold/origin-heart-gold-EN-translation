@@ -1,7 +1,7 @@
 import {editorReference} from '../core/editor-reference.js';
 import {advancedPokemon, boxTools, pokedexTile, metadataFields, type EditorContext} from './advanced.js';
 import { editorErrorMessage } from '../core/errors.js';
-import { importSave } from '../core/save-import.js';
+import { SaveImportRequest } from '../core/save-import.js';
 import { wrapSave, type SaveContainer } from '../core/save-container.js';
 import { readSave, readStorage, patchBoxRecord, BOX_COUNT, BOX_CAPACITY, patchPartyRecord, addPartyRecord, removePartyRecord } from '../core/save.js';
 import {
@@ -103,6 +103,7 @@ function commit(change: (bytes: Uint8Array) => Uint8Array, done: string): void {
   try {
     const next = change(session.working);
     if (sameBytes(next, session.working)) { render(); return; }
+    saveImport.invalidate();
     session.history.push(session.working);
     if (session.history.length > 60) session.history.shift();
     session.working = next;
@@ -852,9 +853,11 @@ function confirmAdd(): void {
 }
 
 /* ---------- file io ---------- */
+const saveImport = new SaveImportRequest();
 async function open(file: File): Promise<void> {
   try {
-    const imported = await importSave(file);
+    const imported = await saveImport.load(file);
+    if (!imported) return;
     session = {original: imported.bytes, working: imported.bytes.slice(), container: imported.container, filename: imported.filename, history: []};
     selected = 0; pcBox = 0; pcSlot = 0;
     render();
@@ -880,13 +883,14 @@ exportButton.addEventListener('click', exportSave);
 dockExport.addEventListener('click', exportSave);
 function undo(): void {
   if (!session?.history.length) return;
+  saveImport.invalidate();
   session.working = session.history.pop()!;
   render(); toast('Undone');
 }
 undoButton.addEventListener('click', undo);
 dockUndo.addEventListener('click', undo);
 document.addEventListener('keydown', event => {
-  const typing = event.target instanceof HTMLInputElement || event.target instanceof HTMLSelectElement;
+  const typing = event.target instanceof HTMLInputElement || event.target instanceof HTMLSelectElement || event.target instanceof HTMLTextAreaElement || (event.target instanceof HTMLElement && event.target.isContentEditable);
   if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'z' && !event.shiftKey && !typing) { event.preventDefault(); undo(); }
 });
 let dragDepth = 0;

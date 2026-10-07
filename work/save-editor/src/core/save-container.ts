@@ -18,14 +18,14 @@ function ascii(bytes: Uint8Array): string { return String.fromCharCode(...bytes)
 
 /** Split a file into raw 512 KiB save data and its emulator container. Detection uses content, not the file extension. */
 export function unwrapSave(file: Uint8Array): { readonly bytes: Uint8Array; readonly container: SaveContainer } {
-  if (file.length === RAW_SAVE_SIZE) return {bytes: file.slice(), container: {kind: 'raw'}};
+  if (file.length === RAW_SAVE_SIZE) return {bytes: Uint8Array.from(file), container: {kind: 'raw'}};
   if (file.length === RAW_SAVE_SIZE + DESMUME_FOOTER_SIZE) {
-    const footer = file.slice(RAW_SAVE_SIZE);
-    const view = new DataView(footer.buffer);
+    const footer = Uint8Array.from(file.subarray(RAW_SAVE_SIZE));
+    const view = new DataView(footer.buffer, footer.byteOffset, footer.byteLength);
     if (ascii(footer.subarray(0, DESMUME_NOTICE.length)) === DESMUME_NOTICE
       && ascii(footer.subarray(footer.length - DESMUME_COOKIE.length)) === DESMUME_COOKIE
       && view.getUint32(DESMUME_PAD_SIZE_OFFSET, true) === RAW_SAVE_SIZE) {
-      return {bytes: file.slice(0, RAW_SAVE_SIZE), container: {kind: 'desmume', footer}};
+      return {bytes: Uint8Array.from(file.subarray(0, RAW_SAVE_SIZE)), container: {kind: 'desmume', footer}};
     }
     throw new EditorError('invalid-save', 'This file has the size of a DeSmuME .dsv save but no valid DeSmuME footer.');
   }
@@ -35,7 +35,7 @@ export function unwrapSave(file: Uint8Array): { readonly bytes: Uint8Array; read
 /** Rebuild the on-disk file; the DeSmuME footer is kept byte for byte. */
 export function wrapSave(bytes: Uint8Array, container: SaveContainer): Uint8Array {
   if (bytes.length !== RAW_SAVE_SIZE) throw new EditorError('invalid-save', 'Save data must be exactly 512 KiB.');
-  if (container.kind === 'raw') return bytes.slice();
+  if (container.kind === 'raw') return Uint8Array.from(bytes);
   const file = new Uint8Array(RAW_SAVE_SIZE + container.footer.length);
   file.set(bytes); file.set(container.footer, RAW_SAVE_SIZE);
   return file;

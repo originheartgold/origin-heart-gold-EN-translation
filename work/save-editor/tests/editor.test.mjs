@@ -24,7 +24,7 @@ test('hidden power picks the cheapest IV spread', () => {
   assert.equal(Object.values(ivsForHiddenPower(perfect, 8)).filter(v => v === 30).length, 3);
 });
 
-test('party abilities decode including retained off-species abilities', {skip: !fixture}, () => {
+test('party abilities decode including retained off-species abilities', () => {
   for (const record of readSave(fixture).partyRecords) {
     const mon = decodePokemon(record);
     assert.ok(Number.isInteger(mon.ability) && mon.ability > 0 && mon.ability <= 65535);
@@ -33,7 +33,7 @@ test('party abilities decode including retained off-species abilities', {skip: !
   }
 });
 
-test('ability patch round-trips and only touches the two fields', {skip: !fixture}, () => {
+test('ability patch round-trips and only touches the two fields', () => {
   const save = readSave(fixture);
   const record = save.partyRecords[2];
   const before = decodePokemon(record);
@@ -59,7 +59,7 @@ test('ability patch round-trips and only touches the two fields', {skip: !fixtur
   assert.equal(both.shiny, true);
 });
 
-test('reapplying the current ability is a no-op', {skip: !fixture}, () => {
+test('reapplying the current ability is a no-op', () => {
   const record = readSave(fixture).partyRecords[0];
   const mon = decodePokemon(record);
   assert.deepEqual(patchPokemonAbility(record, mon.ability, mon.abilitySlot), record);
@@ -67,7 +67,7 @@ test('reapplying the current ability is a no-op', {skip: !fixture}, () => {
   assert.throws(() => patchPokemonAbility(record, 999));
 });
 
-test('created Pokémon decode correctly and join the party', {skip: !fixture}, async () => {
+test('created Pokémon decode correctly and join the party', async () => {
   const {createPokemon} = await import('../dist/core/pokemon.js');
   const {addPartyRecord, removePartyRecord} = await import('../dist/core/save.js');
   const {loadBundledOriginData} = await import('../dist/core/bundled-data.js');
