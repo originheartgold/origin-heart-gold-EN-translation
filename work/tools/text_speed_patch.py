@@ -12,9 +12,9 @@ BASE=0x01ff8620
 OVBASE=0x021e4980
 # This reviewed pin lives in patcher source, never in the mutable cache. Updating
 # native code requires review of its reproducible payload and this separate pin.
-REVIEWED_PAYLOAD_SHA256='c4fcfd06ceec40b97f757a1b0f79f13a5f12e7a95dceca4fa4db487cdc84ebc8'
+REVIEWED_PAYLOAD_SHA256='82eaa3a33e74ac11a1a7dd2ad420e24bddd5b45bb0d3814d632638d00cfd5878'
 REQUIRED_SYMBOLS=frozenset(('print_task','load_rows','load_choice','load_label',
-                            'commit_speed','exit_free','draw_label','setup_sprites','init_printer',
+                            'commit_speed','exit_free','draw_label','setup_sprites',
                             'frame_end','pass_end','text_speed_state'))
 # The one data symbol: the runtime frame state (zero at boot), the last
 # STATE_SIZE bytes of the block. Every other symbol is a Thumb entry point.
@@ -59,7 +59,6 @@ CALLED_ROUTINES=(
     (0x02020a1c,0x02020a88,'original print task'),
     (0x02020a88,0x02020a9a,'render glyphs'),
     (0x02020a9c,0x02020b40,'set text colours'),
-    (0x02020be8,0x02020bee,'printer initializer'),
     (0x02024e48,0x02024e64,'sprite visibility'),
     (0x020272d4,0x020272f8,'3D swap request (the game loop call frame_end makes first)'),
     (0x02026864,0x02026890,'string new'),
@@ -90,7 +89,7 @@ DEPENDENT_CODE=(
     (0x02000c88,0x02000e38,'game loop NitroMain (frame-end hook site; its VBlank wait follows the hooked call)'),
     (0x02002e40,0x02002e70,'RenderText entry called by the glyph loop'),
     (0x020022d0,0x020027ee,'RenderText control-code state machine (two reviewed jump tables)'),
-    (0x020208d4,0x02020a1c,'printer constructor (alloc size, initializer call, task pointer)'),
+    (0x020208d4,0x02020a1c,'printer constructor (task pointer)'),
     (0x0202b168,0x0202b1b4,'Options init (new-game default)'),
     (0x0202b1c4,0x0202b1d0,'music speed getter'),
     (0x0202b1d0,0x0202b1e4,'music speed setter'),
@@ -332,12 +331,9 @@ def apply(rom,payload=None,code_patches=None):
     if end>0x01ffa000:raise ValueError('Native code exceeds reserved budget')
     patch(a,0x2000000,0x20d1a28,struct.pack('<I',BASE),struct.pack('<I',end))
     patch(a,0x2000000,0x2020a18,struct.pack('<I',0x2020a1d),struct.pack('<I',payload['symbols']['print_task']))
-    # Allocate/initialize private fractional-speed state; never reuse game-owned fields.
-    patch(a,0x2000000,0x20208ea,struct.pack('<H',0x2134),struct.pack('<H',0x2138))
-    patch(a,0x2000000,0x2020962,bl(0x2020962,0x2020be8),bl(0x2020962,payload['symbols']['init_printer']))
     # The game loop's last call before its VBlank wait goes through pass_end (frame_end, then the printer catch-up).
     patch(a,0x2000000,FRAME_END_CALL[0],bl(*FRAME_END_CALL),bl(FRAME_END_CALL[0],payload['symbols']['pass_end']))
-    # Options_Init already cleared both bytes. Set MEDIUM (bits2..3=1), music remains0.
+    # Options_Init already cleared both bytes. Set FAST (bits2..3=1, D-1604), music remains 0.
     patch(a,0x2000000,0x202b176,struct.pack('<HH',0x200f,0x4381),struct.pack('<HH',0x2004,0x4301))
     # Music accesses mask only low two bits; its setter preserves the new bits.
     for addr,old,new in [(0x202b1c6,0x0700,0x0780),(0x202b1c8,0x0f00,0x0f80),(0x202b1d2,0x220f,0x2203),(0x202b1da,0x210f,0x2103)]:
@@ -375,15 +371,17 @@ def apply(rom,payload=None,code_patches=None):
         (0x21e565e,0x1d80,0x1dc0),(0x21e568e,0x2107,0x2108),
         (0x21e5268,0x2018,0x2014),(0x21e53f6,0x2018,0x2014)]:hw(addr,old,new)
     patch(o,OVBASE,0x21e53e8,struct.pack('<I',0x27e),struct.pack('<I',0x2d2))
-    redirect(0x21e5c14,append(struct.pack('<8I',3,2,2,2,3,20,3,2)))
+    # Choices per row: TEXT SPEED (row 6) has two, NORMAL and FAST (D-1604).
+    redirect(0x21e5c14,append(struct.pack('<8I',3,2,2,2,3,20,2,2)))
     redirect(0x21e5bf8,append(struct.pack('<8i',-8,-28,-48,-68,-88,-108,-128,-156)))
     boxes=[list(v) for v in struct.iter_unpack('<4B',original[0x1334:0x1378])][:-1]
     mapping=[list(v) for v in struct.iter_unpack('<II',original[0x1378:0x13f8])]
     for box,(row,choice) in zip(boxes,mapping):
         if row<6:box[0]-=row*4;box[1]-=row*4
     mapping[14][0]=mapping[15][0]=7
-    boxes.extend([[146,166,108,154],[146,166,156,202],[146,166,204,252],[255,0,0,0]])
-    mapping.extend([[6,0],[6,1],[6,2]])
+    # TEXT SPEED touch boxes: the two-choice columns of rows 2 and 3, on row 6.
+    boxes.extend([[146,166,112,167],[146,166,192,247],[255,0,0,0]])
+    mapping.extend([[6,0],[6,1]])
     redirect(0x21e5cb4,append(b''.join(struct.pack('<4B',*v) for v in boxes)))
     mapping_ptr=append(b''.join(struct.pack('<II',*v) for v in mapping))
     redirect(0x21e5cf8,mapping_ptr)
@@ -399,7 +397,8 @@ def apply(rom,payload=None,code_patches=None):
     hw(0x21e540e,0x2100,0x2122)
     patch(o,OVBASE,0x21e5534,struct.pack('<I',0x00010200),struct.pack('<I',0x00030200))
     patch(o,OVBASE,0x21e553c,struct.pack('<I',0x000f0200),struct.pack('<I',0x00010200))
-    patch(o,OVBASE,0x21e5bae,b'\x00',b'\xfd')
+    # Row 6 label pitch 32 (labels at x 108 and 188), as the two-choice rows 2 and 3.
+    patch(o,OVBASE,0x21e5bae,b'\x00',b'\x20')
     call(0x21e5284,0x2020834,'draw_label')
     matches=[off for off in range(0,0x121c,2) if original[off:off+4]==bl(OVBASE+off,0x21e5acc)]
     if len(matches)!=1:raise ValueError('Sprite setup callers changed')
@@ -429,7 +428,7 @@ def apply(rom,payload=None,code_patches=None):
     for off in range(0,len(table),32):
         if struct.unpack_from('<I',table,off)[0]==50:struct.pack_into('<I',table,off+8,len(o));break
     rom.arm9OverlayTable=bytes(table);rom.files[ov.fileID]=bytes(o)
-    return {'itcm_start':hex(BASE),'itcm_end':hex(end),'payload_code_sha256':digest(blob),'overlay_sha256':digest(o),'arm9_sha256':digest(rom.arm9),'source_code_sha256':source_digest(),'edits':edits,'labels':4,
+    return {'itcm_start':hex(BASE),'itcm_end':hex(end),'payload_code_sha256':digest(blob),'overlay_sha256':digest(o),'arm9_sha256':digest(rom.arm9),'source_code_sha256':source_digest(),'edits':edits,'labels':3,
             'arm9_code_patches':{'normalised_to_expect':[c[0] for c in cps],
                                  'held_value':[c[0] for c in cps if bytes(current[c[2]:c[2]+len(c[4])])==c[4]]}}
 
@@ -455,8 +454,6 @@ def verify(rom,report,code_patches=None):
     critical={
         0x020d1a28:struct.pack('<I',end),
         0x02020a18:struct.pack('<I',payload['symbols']['print_task']),
-        0x020208ea:struct.pack('<H',0x2138),
-        0x02020962:bl(0x02020962,payload['symbols']['init_printer']),
         FRAME_END_CALL[0]:bl(FRAME_END_CALL[0],payload['symbols']['pass_end']),
         0x0202b176:struct.pack('<HH',0x2004,0x4301),
         0x0202b1c6:struct.pack('<HH',0x0780,0x0f80),
@@ -473,7 +470,7 @@ def verify(rom,report,code_patches=None):
         off=addr-0x02000000
         if bytes(sections[0].data[off:off+len(want)])!=want:
             raise ValueError(f'Native runtime contract changed at {addr:08x}')
-    return {'status':'passed','native_bytes':len(blob),'options_rows':7,'new_game_default':'MEDIUM','legacy_save_default':'SLOW','speeds':['SLOW','MEDIUM','FAST']}
+    return {'status':'passed','native_bytes':len(blob),'options_rows':7,'new_game_default':'FAST','legacy_save_default':'NORMAL','speeds':['NORMAL','FAST']}
 
 if __name__=='__main__':
     import argparse,ndspy.rom

@@ -6,31 +6,37 @@ themselves are unit-tested (test_text_speed_checks.py) and cannot silently pass
 on empty input. Every check returns a list of human-readable errors; an empty
 list is a pass only when the observation it was given was itself non-empty.
 
-Design under test (work/patches/text_speed/native.c):
-- SLOW (0): one native task renders at most 1 + phase renderer steps, where the
-  printer's private phase byte (+0x34) flips after every task that drew output;
-- MEDIUM (1): at most 2 per task; FAST (2): at most 3 per task;
-- reserved value 3, callbacks and explicit delays: the original task (1 per task).
-- every native task draws at least one glyph (or handles one control). Before
+Design under test (work/patches/text_speed/native.c, D-1604):
+- NORMAL (stored 0, also every unknown value 2/3 and an unpublished save): the
+  original printer task, one renderer step per task, plus the printer catch-up in
+  30 fps maps (D-1603, pass_end) that every printer gets;
+- FAST (stored 1): at most 3 renderer steps per native task;
+- callbacks and explicit delays: the original task at both speeds.
+- every FAST task draws at least one glyph (or handles one control). Before
   each further glyph it predicts the end of the game loop pass from costs it
   measured itself (FrameModel, a line-for-line mirror of the payload's frame
   state): it draws when the glyph and the rest of the pass fit before VBlank, or
-  when the frame is lost anyway; otherwise it stops (frame stop), and a frame
-  stop keeps SLOW's two-glyph phase for the next task.
+  when the frame is lost anyway; otherwise it stops (frame stop).
 
 Two kinds of checks use this:
 - the model (task_errors): every decision of the binary equals FrameModel's,
   and the payload's stored state equals the state predicted from the costs the
   gate observed itself (gate_common.PrinterTrace);
-- the product (pass_info, product_errors, order_errors, slow_floor_errors):
-  frames, dropped frames and whether each frame stop was physically necessary,
-  judged from the observed frame ends only, without the model's constants.
+- the product (pass_info, speed_record, order_errors): frames, dropped frames and
+  whether each frame stop was physically necessary, judged from the observed frame
+  ends only, without the model's constants.
 """
 from collections import Counter, defaultdict
 import math
 
-ORIGINAL = 3
-NAMES = {0: "SLOW", 1: "MEDIUM", 2: "FAST", ORIGINAL: "ORIGINAL"}
+# Stored text-speed values the gates use (bits 2..3 of the Options record, D-1604).
+# ORIGINAL is the reference: the unknown value 3, which the payload must treat as
+# NORMAL (the original printer task); NORMAL must be identical to it.
+NORMAL, FAST, ORIGINAL = 0, 1, 3
+NAMES = {NORMAL: "NORMAL", FAST: "FAST", ORIGINAL: "ORIGINAL"}
+MODES = (ORIGINAL, NORMAL, FAST)       # baseline first
+DELEGATING = frozenset((ORIGINAL, NORMAL))
+FAST_BUDGET = 3
 # Units the native loop stops before (end, extended control, page/scroll prompts, 0xF0FD).
 CONTROLS = frozenset((0xFFFF, 0xFFFE, 0x25BC, 0x25BD, 0xF0FD))
 # Same values as the constants in work/patches/text_speed/native.c, pinned here
@@ -41,6 +47,8 @@ GLYPH_SEED = 13
 REST_SEED = 20
 STALE = 60
 MARGIN = 1
+SHORT = 3            # fewer measured rests than this: the rest counts at least SHORT_REST lines
+SHORT_REST = 7
 STATE_SIZE = 26
 VISIBLE_LINES, TOTAL_LINES = 192, 263
 # Fault fixtures only (fault_fixture.py 'checker', applied by gate_common for a
@@ -55,19 +63,15 @@ NO_CATCH_UP = False       # fault model: pass_end never catches up
 # model edits of print_task's decision, which pass_end does not share).
 PASS_END_SEEDS = (GLYPH_SEED, REST_SEED, MARGIN)
 FAULT_KNOBS = frozenset(("MARGIN", "GLYPH_SEED", "REST_SEED", "FIXED_MODEL", "IGNORE_REST", "IGNORE_GLYPH",
-                         "GLYPH_COST_BIAS", "NO_CATCH_UP"))
+                         "GLYPH_COST_BIAS", "NO_CATCH_UP", "SHORT_REST"))
 STOP_REASONS = ("budget", "frame", "control", "result", "original", "paused")
 
 
-def task_budget(mode, phase):
-    """Renderer steps one native task may take for this printer."""
+def task_budget(mode):
+    """Renderer steps one native task may take at this speed."""
     if mode not in NAMES:
         raise ValueError(f"unknown text-speed mode {mode!r}")
-    if mode == ORIGINAL:
-        return 1
-    if mode == 0:
-        return 1 + (phase & 1)
-    return mode + 1
+    return FAST_BUDGET if mode == FAST else 1
 
 
 def cadence(mode, glyphs):
@@ -76,43 +80,35 @@ def cadence(mode, glyphs):
     Whether a task that drew fewer glyphs than its budget had a reason to stop is
     judged per task by task_errors(), which sees the frame checks and controls.
 
-    glyphs: [(task, phase, frame), ...] in render order: task is a unique id of the
-    native task invocation that drew the glyph, phase the printer's private phase
-    byte at that task's entry, frame the emulator frame. Returns (summary, errors).
+    glyphs: [(task, frame), ...] in render order: task is a unique id of the native
+    task invocation that drew the glyph, frame the emulator frame. Returns (summary, errors).
     """
     errors = []
     if not glyphs:
         return {"glyphs": 0}, ["no glyphs observed (vacuous cadence check)"]
-    if any(task is None for task, _, _ in glyphs):
+    if any(task is None for task, _ in glyphs):
         errors.append("glyph drawn outside an observed native task")
         glyphs = [g for g in glyphs if g[0] is not None]
         if not glyphs:
             return {"glyphs": 0}, errors
-    counts = Counter(task for task, _, _ in glyphs)
-    phases = {task: phase for task, phase, _ in glyphs}
-    budgets = {task: task_budget(mode, phases[task]) for task in counts}
-    over = sorted({(counts[t], budgets[t]) for t in counts if counts[t] > budgets[t]})
+    counts = Counter(task for task, _ in glyphs)
+    budget = task_budget(mode)
+    over = sorted({counts[t] for t in counts if counts[t] > budget})
     if over:
-        errors.append(f"{NAMES[mode]}: tasks rendered more glyphs than the design budget "
-                      f"(count, budget) {over}")
-    per_budget = defaultdict(lambda: [0, 0])          # budget -> [tasks, tasks at full budget]
-    for task, count in counts.items():
-        row = per_budget[budgets[task]]
-        row[0] += 1
-        row[1] += count == budgets[task]
-    frames = Counter(frame for _, _, frame in glyphs)
+        errors.append(f"{NAMES[mode]}: tasks rendered more glyphs than the design budget {budget}: {over}")
+    frames = Counter(frame for _, frame in glyphs)
     first, last = min(frames), max(frames)
     summary = {
         "glyphs": len(glyphs), "tasks": len(counts),
         "per_task": dict(sorted(Counter(counts.values()).items())),
-        "full_budget": {b: f"{full}/{n}" for b, (n, full) in sorted(per_budget.items())},
+        "full_budget": f"{sum(1 for n in counts.values() if n == budget)}/{len(counts)}",
         "frames_with_glyphs": len(frames), "max_per_frame": max(frames.values()),
         "first_to_last_frame": last - first,
     }
     # The game itself sometimes runs a printer task twice in one frame (seen in battle
     # with the original task too), so glyphs per frame are an observation; the
     # scheduler is compared against the original printer by the gates.
-    task_frames = {(task, frame) for task, _, frame in glyphs}
+    task_frames = set(glyphs)
     summary["max_tasks_per_frame"] = max(Counter(frame for _, frame in task_frames).values())
     return summary, errors
 
@@ -228,12 +224,16 @@ class FrameModel:
 
     def estimates(self):
         """(glyph, rest, low, seeded): the predicted cost of one more glyph, of the rest of the
-        pass, the shortest recent rest (0: none), and whether a seed stood in for a measurement."""
+        pass, the shortest recent rest (0: none), and whether a seed stood in for a measurement.
+        While fewer than SHORT rests are measured the rest counts at least SHORT_REST lines
+        (none measured: the seed)."""
         glyph = max(self.glyph)
         measured = [r for r in self.rest if r]
         seeded = not glyph or not measured
-        return (glyph or GLYPH_SEED, max(measured) if measured else REST_SEED,
-                min(measured) if measured else 0, seeded)
+        rest = max(measured) if measured else REST_SEED
+        if measured and len(measured) < SHORT:
+            rest = max(rest, SHORT_REST)
+        return glyph or GLYPH_SEED, rest, min(measured) if measured else 0, seeded
 
     def decide(self, now):
         """The payload's room() at display line now: 'fit' (draw: the glyph and the rest end
@@ -256,20 +256,19 @@ DRAWS = ("fit", "lost")
 def task_errors(mode, tasks):
     """Judge every native task of one message against the loop's design.
 
-    tasks: [{'id', 'phase' (+0x34 at entry), 'paused' (global print pause flag at
-    entry), 'delegated' (the native task called the original task), 'events': [('render',),
-    ('glyph', next unit), ('check', VCOUNT line, decision), ('mark', line), ...] in order,
-    'next_phase' (phase at the same printer's next task, None if none)}].
+    tasks: [{'id', 'paused' (global print pause flag at entry), 'delegated' (the native task
+    called the original task), 'special' (callback or explicit delay), 'events': [('render',),
+    ('glyph', next unit), ('check', VCOUNT line, decision), ('mark', line), ...] in order}].
     A 'check' is the reading after every render; its decision is FrameModel.decide() at
     that line (gate_common.PrinterTrace), None if the gate had no model.
 
-    Rules: an ordinary task renders at least once and reads the line after every render;
-    after a glyph with budget left and no control next (a decision point) the task draws
-    another glyph exactly when the decision says so; a task that drew marks its end once,
-    after its last reading, and a task that drew nothing does not. A task that ends with
-    budget left after a glyph must stop for a reason: the next unit is a control, or the
-    decision was a frame stop. SLOW's phase flips after a task that drew, except after a
-    frame stop; MEDIUM/FAST never change it.
+    Rules: NORMAL (and the unknown value ORIGINAL), callbacks and explicit delays delegate
+    every task to the original printer; FAST never delegates an ordinary task. A FAST task
+    renders at least once and reads the line after every render; after a glyph with budget
+    left and no control next (a decision point) the task draws another glyph exactly when
+    the decision says so; a task that drew marks its end once, after its last reading, and a
+    task that drew nothing does not. A task that ends with budget left after a glyph must
+    stop for a reason: the next unit is a control, or the decision was a frame stop.
     Returns (summary {'reasons': {reason: n}, 'frame': n, 'decisions': {kind: n}}, errors)."""
     errors, reasons, kinds = [], Counter(), Counter()
     if not tasks:
@@ -278,11 +277,11 @@ def task_errors(mode, tasks):
         tag = f"task {t['id']}"
         if t.get("delegated"):
             reasons["original"] += 1
-            if mode != ORIGINAL and not t.get("special"):
+            if mode not in DELEGATING and not t.get("special"):
                 errors.append(f"{tag}: {NAMES[mode]} task delegated to the original printer")
             continue
-        if mode == ORIGINAL or t.get("special"):
-            errors.append(f"{tag}: {'ORIGINAL mode' if mode == ORIGINAL else 'callback/delay'} task "
+        if mode in DELEGATING or t.get("special"):
+            errors.append(f"{tag}: {NAMES[mode] + ' mode' if mode in DELEGATING else 'callback/delay'} task "
                           "did not delegate to the original printer")
             continue
         events = t["events"]
@@ -291,7 +290,7 @@ def task_errors(mode, tasks):
             if events:
                 errors.append(f"{tag}: rendered although printing was paused")
             continue
-        budget = task_budget(mode, t["phase"])
+        budget = task_budget(mode)
         renders = [i for i, e in enumerate(events) if e[0] == "render"]
         glyphs = sum(1 for e in events if e[0] == "glyph")
         marks = [i for i, e in enumerate(events) if e[0] == "mark"]
@@ -355,12 +354,6 @@ def task_errors(mode, tasks):
             errors.append(f"{tag}: marked a batch end without drawing")
         elif marks and any(e[0] in ("render", "check") for e in events[marks[0] + 1:]):
             errors.append(f"{tag}: marked the batch end before its last reading")
-        if t.get("next_phase") is not None:
-            flip = mode == 0 and glyphs > 0 and reason != "frame"
-            want = (t["phase"] ^ 1) & 0xFF if flip else t["phase"]
-            if t["next_phase"] != want:
-                errors.append(f"{tag}: phase {t['phase']} -> {t['next_phase']}, expected {want} "
-                              f"({NAMES[mode]}, {reason} stop)")
     summary = {"tasks": len(tasks), "reasons": dict(sorted(reasons.items())), "frame": reasons["frame"],
                "decisions": dict(sorted(kinds.items()))}
     return summary, errors
@@ -418,7 +411,9 @@ def speed_record(tasks, pages, warm_cost):
     glyph_tasks: tasks that drew at least one glyph (an explicit pause inside a page runs
     tasks that draw nothing, at every speed alike);
     unforced_drops: drops after a pass that only the task's extra glyphs pushed past VBlank;
-    stops: frame stops and whether each was necessary."""
+    stops: frame stops and whether each was necessary; slacks: lines from the end of each
+    glyph task's pass to its deadline (order_errors: did a frame have room for one more
+    glyph); warm_cost: the extra-glyph cost the record was judged with."""
     ran = sorted({t["frame"] for t in tasks})
     by_frame = {}
     for t in tasks:
@@ -438,7 +433,11 @@ def speed_record(tasks, pages, warm_cost):
             info = infos.get(id(by_frame[before[-1]])) if before else None
             unforced += bool(info and info["unforced"])
     stops = [i for i in infos.values() if i and i.get("frame_stop")]
+    slacks = sorted(infos[id(t)]["slack"] for t in tasks
+                    if infos.get(id(t)) and any(e[0] == "glyph" for e in t.get("events", ()))
+                    and any(a <= t["frame"] <= b for a, b in pages))
     return {"frames": frames, "drops": drops, "printing_tasks": printing, "glyph_tasks": glyph_tasks,
+            "slacks": slacks, "warm_cost": warm_cost,
             "pages": len(pages),
             "unforced_drops": unforced, "forced_drops": drops - unforced,
             "frame_stops": len(stops), "seeded_stops": sum(1 for i in stops if i["seeded"]),
@@ -448,79 +447,72 @@ def speed_record(tasks, pages, warm_cost):
 
 
 def merge_records(records):
-    """One record for several messages (e.g. a battle segment): counts add up."""
+    """One record for several messages (e.g. a battle segment): counts add up, slacks are
+    concatenated, warm_cost is the largest (a frame has room only for the dearest glyph)."""
     out = {}
     for r in records:
         for k, v in r.items():
-            if isinstance(v, (int, float)) and not isinstance(v, bool) and k != "warm_cost":
+            if k == "warm_cost":
+                if v is not None:
+                    out[k] = max(out.get(k, v), v)
+            elif k == "slacks":
+                out[k] = sorted(out.get(k, []) + list(v))
+            elif isinstance(v, (int, float)) and not isinstance(v, bool):
                 out[k] = out.get(k, 0) + v
     return out
 
 
-def slow_floor(original, slow):
-    """SLOW renders three glyphs per two tasks, the original one per task: SLOW's tasks that
-    drew a glyph are at most ceil(2/3 of the original's), plus one per page (the phase at a page's
-    start), plus one per futile frame stop of SLOW: a stop that tried to save a frame the
-    pass then missed anyway (whether a frame can still be saved is not known when the
-    batch decides; the frame model declares a frame lost only when even the shortest
-    recent rest misses VBlank). Such a stop keeps SLOW's two-glyph turn for the next task,
-    so it costs one task, never a glyph."""
-    return math.ceil(original["glyph_tasks"] * 2 / 3) + original["pages"] + slow["futile_stops"]
+IDENTICAL_KEYS = ("frames", "drops", "printing_tasks", "glyph_tasks", "pages", "slacks")
+
+
+def room_frames(normal, fast):
+    """Glyph tasks of the NORMAL run whose pass had room for one more glyph: with one more
+    glyph of FAST's measured extra-glyph cost it would still have ended two or more lines
+    before VBlank (the same physical test as an unnecessary frame stop)."""
+    warm = fast.get("warm_cost") or GLYPH_SEED
+    return sum(1 for slack in normal.get("slacks", ()) if slack >= warm + 2)
 
 
 def order_errors(records):
     """Judge one message's speeds by the product (records: {mode: speed_record}).
 
-    - no frame stop gave up a glyph that would have fitted: with one more glyph of the
-      median observed cost the pass would still have ended at least two lines before
+    - NORMAL is the original printer: frames, dropped frames, printing and glyph tasks,
+      pages and every pass's slack equal the ORIGINAL (unknown value 3) run's exactly;
+    - no FAST frame stop gave up a glyph that would have fitted: with one more glyph of
+      the median observed cost the pass would still have ended at least two lines before
       VBlank (pass_info; stops before any cost was measured in the scene are exempt);
-    - the original printer takes strictly more frames than SLOW;
-    - SLOW > MEDIUM > FAST in frames, strictly. A tie or inversion between two
-      neighbours is allowed only at the physical cap: both drew every glyph that fitted
-      (no unnecessary frame stop, above), and the faster one's frames, without the drops
-      its mandatory first glyphs forced, are at most the slower one's (the difference is
-      only drops no batching can avoid);
-    - no speed drops more frames than the original printer, and none drops a frame only
-      because of its extra glyphs (an unforced overrun);
-    - SLOW floor: SLOW's tasks that drew glyphs at most slow_floor().
+    - FAST takes at most NORMAL's frames, and strictly fewer when any NORMAL frame had
+      room for one more glyph (room_frames); a tie without such a frame is reported as a
+      note (the physical cap);
+    - FAST drops no more frames than NORMAL, and none only because of its extra glyphs
+      (an unforced overrun).
     Returns (errors, notes)."""
-    if any(m not in records for m in (ORIGINAL, 0, 1, 2)):
-        return [f"speeds missing: {sorted(set((ORIGINAL, 0, 1, 2)) - set(records))} (vacuous order check)"], []
+    if any(m not in records for m in MODES):
+        return [f"speeds missing: {sorted(set(MODES) - set(records))} (vacuous order check)"], []
     errors, notes = [], []
-    o, slow = records[ORIGINAL], records[0]
-    errors += [f"{NAMES[m]}: {records[m]['unnecessary_stops']} frame stops gave up a glyph that would have fitted "
-               "(one more glyph would still have ended the pass two or more lines before VBlank)"
-               for m in (0, 1, 2) if records[m]["unnecessary_stops"]]
+    o, n, f = records[ORIGINAL], records[NORMAL], records[FAST]
     if not o["frames"]:
         errors.append("the original printer took no frames (vacuous order check)")
-    if slow["frames"] >= o["frames"]:
-        errors.append(f"SLOW ({slow['frames']} frames) is not faster than ORIGINAL ({o['frames']} frames)")
-    for x, y in ((0, 1), (1, 2)):
-        a, b = records[x], records[y]
-        if b["frames"] < a["frames"]:
-            continue
-        what = "not faster than" if b["frames"] == a["frames"] else "slower than"
-        problems = [f"{NAMES[m]} had {records[m]['unnecessary_stops']} unnecessary frame stops"
-                    for m in (x, y) if records[m]["unnecessary_stops"]]
-        net = (b["frames"] - b["forced_drops"], a["frames"] - a["forced_drops"])
-        if net[0] > net[1]:
-            problems.append(f"without forced drops {NAMES[y]} takes {net[0]} frames, {NAMES[x]} {net[1]}")
-        if problems:
-            errors.append(f"{NAMES[y]} ({b['frames']} frames) is {what} {NAMES[x]} ({a['frames']} frames): "
-                          + "; ".join(problems))
+    errors += [f"NORMAL: {k} {n.get(k)} != original {o.get(k)} (NORMAL must be the original printer)"
+               for k in IDENTICAL_KEYS if n.get(k) != o.get(k)]
+    if f["unnecessary_stops"]:
+        errors.append(f"FAST: {f['unnecessary_stops']} frame stops gave up a glyph that would have fitted "
+                      "(one more glyph would still have ended the pass two or more lines before VBlank)")
+    room = room_frames(n, f)
+    if f["frames"] > n["frames"]:
+        errors.append(f"FAST ({f['frames']} frames) is slower than NORMAL ({n['frames']} frames)")
+    elif f["frames"] == n["frames"]:
+        if room:
+            errors.append(f"FAST ({f['frames']} frames) is not faster than NORMAL ({n['frames']} frames) although "
+                          f"{room} NORMAL frames had room for one more glyph")
         else:
-            notes.append(f"{NAMES[y]} {b['frames']} / {NAMES[x]} {a['frames']} frames at the physical cap: no "
-                         f"unnecessary frame stop; forced drops {b['forced_drops']} / {a['forced_drops']}")
-    errors += [f"{NAMES[m]}: {records[m]['drops']} dropped frames while printing, original {o['drops']}"
-               for m in (0, 1, 2) if records[m]["drops"] > o["drops"]]
-    errors += [f"{NAMES[m]}: {records[m]['unforced_overruns']} frames dropped only because of the batch's "
-               "extra glyphs (without them the pass would have ended before VBlank)"
-               for m in (0, 1, 2) if records[m]["unforced_overruns"]]
-    floor = slow_floor(o, slow)
-    if slow["glyph_tasks"] > floor:
-        errors.append(f"SLOW floor: {slow['glyph_tasks']} tasks drew glyphs, at most {floor} "
-                      f"(2/3 of the original's {o['glyph_tasks']} plus {o['pages']} per page plus "
-                      f"{slow['futile_stops']} futile frame stops)")
+            notes.append(f"FAST {f['frames']} / NORMAL {n['frames']} frames at the physical cap: no NORMAL frame "
+                         "had room for one more glyph")
+    if f["drops"] > n["drops"]:
+        errors.append(f"FAST: {f['drops']} dropped frames while printing, NORMAL {n['drops']}")
+    if f["unforced_overruns"]:
+        errors.append(f"FAST: {f['unforced_overruns']} frames dropped only because of the batch's extra glyphs "
+                      "(without them the pass would have ended before VBlank)")
     return errors, notes
 
 
@@ -550,7 +542,7 @@ def nonblank(pixels, background=None):
 # ----------------------------------------------------------------- Options screen
 TEXT_SPEED_ROW = (344, 353)   # glyph rows of the seventh Options row (bottom screen, 256x384 shot)
 ROW_X = (8, 248)              # the row's background; the blue panel border starts at x=248
-VALUE_COLUMNS = ((100, 150), (150, 200), (200, 248))   # SLOW, MEDIUM, FAST touch columns
+VALUE_COLUMNS = ((100, 184), (184, 248))   # NORMAL (label at x 108), FAST (label at x 188)
 SELECTED = (232, 32, 16)
 
 
@@ -583,9 +575,9 @@ def row_clusters(img, y0, y1, x0=100, x1=248, gap=4):
 
 
 def option_label_errors(img, mode, row=TEXT_SPEED_ROW, columns=VALUE_COLUMNS):
-    """The TEXT SPEED row shows three separate value labels, each inside its own touch
-    column, the one for `mode` (0..2) in the selected colour and the others not, and
-    nothing spills above/below the row. A label running into the panel border
+    """The TEXT SPEED row shows two separate value labels (NORMAL, FAST), each inside its own
+    column, the one for `mode` (0 NORMAL, 1 FAST) in the selected colour and the other not,
+    and nothing spills above/below the row. A label running into the panel border
     (x >= 248) leaves its column. img: 256x384 RGB."""
     y0, y1 = row
     errors = []
@@ -595,8 +587,8 @@ def option_label_errors(img, mode, row=TEXT_SPEED_ROW, columns=VALUE_COLUMNS):
         if spill:
             errors.append(f"text pixels outside the row at y={y} x={spill[0]}..{spill[-1]}")
     labels = row_clusters(img, y0, y1)
-    if len(labels) != 3:
-        return errors + [f"expected 3 value labels in the TEXT SPEED row, found {len(labels)}: {labels}"]
+    if len(labels) != len(columns):
+        return errors + [f"expected {len(columns)} value labels in the TEXT SPEED row, found {len(labels)}: {labels}"]
     for i, ((lo, hi), (x0, x1, red, n)) in enumerate(zip(columns, labels)):
         if not (lo <= x0 and x1 < hi - 3):     # keep a 4 px gap to the next column / panel border
             errors.append(f"label {i} spans x={x0}..{x1}, outside its column {lo}..{hi - 4}")
@@ -652,6 +644,22 @@ def battle_pacing_errors(baseline, other, jitter=None):
                 label = "after_last" if field == "pause" else "dwell"
                 errors.append(f"{name!r}: {label} {vb} {unit} != original {va} (pause not preserved; the "
                               f"original's own values with a delayed start: {sorted(seen.get(field, ()), key=str)})")
+    return errors
+
+
+def rng_pin_errors(pins, seed):
+    """Battle RNG pin (battle_pacing.py): every segment-0 run must have written `seed` into the
+    battle RNG state at its first use and read the same value back. pins: [{'applied',
+    'readback', 'mode', 'delay', ...}] in run order."""
+    if not pins:
+        return ["no battle RNG pin recorded (vacuous pin check)"]
+    errors = []
+    for p in pins:
+        tag = f"{p.get('mode')} delay {p.get('delay', 0)}"
+        if not p.get("applied"):
+            errors.append(f"battle RNG pin not applied ({tag}): the battle RNG was never used in segment 0")
+        elif p.get("readback") != seed:
+            errors.append(f"battle RNG pin did not hold ({tag}): read back {p.get('readback')!r}, pinned {seed:#x}")
     return errors
 
 

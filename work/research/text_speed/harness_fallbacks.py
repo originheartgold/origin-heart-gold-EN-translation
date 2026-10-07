@@ -6,12 +6,14 @@ These are branch tests, not natural gameplay claims. Inputs are never modified.
 
 Every case prints the trainer's first page (54 glyphs) from the same checkpoint.
 Native tasks are judged per task (text_speed_checks.task_errors, with the frame
-model). Invalid mode, an unpublished runtime pointer and explicit delays must
-delegate every task to the original printer; legacy music values must behave
-exactly like SLOW. The invalid-mode original printer is the baseline of the
-product rules (text_speed_checks.order_errors): ORIGINAL > SLOW > MEDIUM > FAST in
-printing frames (a tie only at the physical cap), no speed with more dropped frames
-than the original, none dropped only because of extra glyphs, SLOW within its floor.
+model). NORMAL, the unknown values 2 and 3, an unpublished runtime pointer (with
+FAST stored) and explicit delays must delegate every task to the original printer
+(D-1604); the unknown value 2 must print exactly like value 3; legacy music values
+next to FAST must behave exactly like FAST. The value-3 original printer is the
+baseline of the product rules (text_speed_checks.order_errors): NORMAL identical to
+it, FAST at most NORMAL's printing frames (strictly fewer where a NORMAL frame had
+room for one more glyph), no more dropped frames than NORMAL, none dropped only
+because of extra glyphs.
 """
 import argparse
 import json
@@ -24,10 +26,11 @@ from gate_common import (CLOCK, PRINTER_START, PrinterTrace, start_game, add_arg
 import text_speed_checks as checks
 
 RUNTIME = 0x021106C8   # main runtime SaveData pointer (null before publication)
-CASES = [('slow', 0, 0, False, 0), ('medium', 1, 0, False, 0), ('fast', 2, 0, False, 0),
-         ('invalid', 3, 0, False, 0), ('null', 2, 0, True, 0),
-         ('old-music-1', 0, 1, False, 0), ('old-music-2', 0, 2, False, 0),
-         ('delay-slow', 0, 0, False, 3), ('delay-medium', 1, 0, False, 3), ('delay-fast', 2, 0, False, 3)]
+# (name, stored text-speed value, music bits, unpublished runtime pointer, explicit delay)
+CASES = [('normal', 0, 0, False, 0), ('fast', 1, 0, False, 0),
+         ('invalid', 3, 0, False, 0), ('invalid-2', 2, 0, False, 0), ('null', 1, 0, True, 0),
+         ('old-music-1', 1, 1, False, 0), ('old-music-2', 1, 2, False, 0),
+         ('delay-normal', 0, 0, False, 3), ('delay-fast', 1, 0, False, 3)]
 
 
 def main():
@@ -81,7 +84,7 @@ def main():
                 require(len(rows) == 54, f'{name}: expected 54 glyphs, observed {len(rows)}')
                 tasks = list(tracer.tasks)
                 native_n, original_n = len(tasks), sum(1 for t in tasks if t['delegated'])
-                fallback = mode == 3 or null or delay
+                fallback = mode != checks.FAST or null or delay
                 require(native_n > 0, f'{name}: no native task')
                 if fallback:
                     require(original_n == native_n, f'{name}: fallback skipped the original task '
@@ -90,20 +93,24 @@ def main():
                     require(original_n == 0, f'{name}: {original_n} tasks delegated to the original printer')
                 if delay:
                     require(state['delayed'], f'{name}: delay injection not exercised')
-                judged = checks.ORIGINAL if (mode == 3 or null) else mode
+                judged = checks.ORIGINAL if (mode in (2, 3) or null) else mode
                 record, stops, stop_errors = judge_message(tracer, judged, 0, 0)
                 errors.extend(f'{name}: {e}' for e in stop_errors + tracer.state_errors)
-                first = rows[0][3]
-                report['cases'][name] = {'glyphs': [r[3] - first for r in rows],
+                first = rows[0][2]
+                report['cases'][name] = {'glyphs': [r[2] - first for r in rows],
                                          'glyph_tasks': [r[1] for r in rows], 'record': record,
-                                         'span': rows[-1][3] - first, 'lag_frames': record['drops'],
+                                         'span': rows[-1][2] - first, 'lag_frames': record['drops'],
                                          'native': native_n, 'original': original_n, 'stops': stops,
-                                         'per_task': checks.cadence(judged, [(r[1], r[2], r[3]) for r in rows])[0]
+                                         'per_task': checks.cadence(judged, [(r[1], r[2]) for r in rows])[0]
                                          .get('per_task')}
             cases = report['cases']
             for name in ('old-music-1', 'old-music-2'):
-                if cases[name]['glyphs'] != cases['slow']['glyphs']:
-                    errors.append(f'{name}: glyph timing differs from SLOW')
+                if cases[name]['glyphs'] != cases['fast']['glyphs']:
+                    errors.append(f'{name}: glyph timing differs from FAST')
+            # Unknown value 2 is NORMAL exactly like value 3 (D-1604).
+            for key in ('glyphs', 'span', 'lag_frames', 'record'):
+                if cases['invalid-2'][key] != cases['invalid'][key]:
+                    errors.append(f'invalid-2: {key} differs from the unknown value 3 (both must print as NORMAL)')
             # The null injection adds instructions before the same original task:
             # task cadence must be identical, display frames may differ by one.
             invalid_tasks = [t - cases['invalid']['glyph_tasks'][0] for t in cases['invalid']['glyph_tasks']]
@@ -112,14 +119,14 @@ def main():
                 errors.append('null: task cadence differs from the invalid-mode original printer')
             if max(abs(x - y) for x, y in zip(cases['invalid']['glyphs'], cases['null']['glyphs'])) > 1:
                 errors.append('null: glyph frames differ from the invalid-mode original printer by more than 1')
-            names = {3: 'invalid', 0: 'slow', 1: 'medium', 2: 'fast'}
+            names = {checks.ORIGINAL: 'invalid', checks.NORMAL: 'normal', checks.FAST: 'fast'}
             order, notes = checks.order_errors({m: cases[n]['record'] for m, n in names.items()})
             errors.extend(f'frame order: {e}' for e in order)
             report['capped_ties'] = notes
-            if not cases['delay-slow']['glyphs'] == cases['delay-medium']['glyphs'] == cases['delay-fast']['glyphs']:
+            if not cases['delay-normal']['glyphs'] == cases['delay-fast']['glyphs']:
                 errors.append('explicit delay: glyph timing differs between speeds')
-            if not cases['delay-slow']['span'] > cases['slow']['span']:
-                errors.append('explicit delay: not slower than SLOW (delay not applied)')
+            if not cases['delay-normal']['span'] > cases['normal']['span']:
+                errors.append('explicit delay: not slower than NORMAL (delay not applied)')
             errors.extend(itcm_errors(h, payload))
         if not inputs_unchanged(report):
             errors.append('input modified')

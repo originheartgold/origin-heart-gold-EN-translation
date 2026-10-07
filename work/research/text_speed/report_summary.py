@@ -62,8 +62,9 @@ METRICS = {
     'options': [[('checks', ('checks',)), ('heap', ('heap_checks',))]],
     'music': [[('combos', ('combinations',)), ('getters', ('getter_checks',))]],
     'lifecycle': [[('msgs', ('messages',)), ('ctors', ('constructors',)), ('reused', ('reused_allocations',))]],
-    'fallbacks': [[('span s/m/f', ('slow', 'span'), ('medium', 'span'), ('fast', 'span'))]],
-    'natural-dialogue': [[('span s/m/f', ('slow', 'frame_span'), ('medium', 'frame_span'), ('fast', 'frame_span'))]],
+    'fallbacks': [[('span o/n/f', ('invalid', 'span'), ('normal', 'span'), ('fast', 'span'))]],
+    'natural-dialogue': [[('span o/n/f', ('original', 'frame_span'), ('normal', 'frame_span'),
+                           ('fast', 'frame_span'))]],
 }
 
 

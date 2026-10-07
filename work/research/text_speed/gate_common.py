@@ -44,6 +44,7 @@ PRINTER_DESTROY = 0x0202075C   # RemoveTextPrinter(id)
 RENDER = 0x02020A88            # render one step (glyph or control) of a printer: r0 printer
 PRINT_PAUSED = 0x021D0EF4      # global flag: printer tasks return without printing
 FREE_TO_HEAP = 0x0201B33C
+PRINTER_INIT_CALL = 0x02020962 # the printer constructor's call of the printer initializer: r0 new printer
 MEMORY_KEYS = ('heap_checks', 'corrupt', 'fails', 'nullw', 'text_rejections',
                'heap_table_errors', 'text_probe_errors')
 
@@ -151,7 +152,7 @@ def judge_message(trace, mode, mark, task_mark, pages=None):
     glyphs = trace.since(mark)
     tasks = trace.tasks_since(task_mark, set(trace.printers_since(mark)))
     summary, errors = checks.task_errors(mode, tasks)
-    pages = pages or page_ranges([f for _, _, f in glyphs])
+    pages = pages or page_ranges([f for _, f in glyphs])
     warm = checks.warm_costs(tasks)
     cost = statistics.median(warm) if warm else None
     record = checks.speed_record(tasks, pages, cost if cost is not None else checks.GLYPH_SEED)
@@ -235,7 +236,7 @@ class PrinterTrace:
     same address later, which DeSmuME would otherwise do silently): the native
     print_task (r1 printer), the original task when the native task delegates to it,
     the render step when the native loop calls it, the glyph draw (r4 printer),
-    RemoveTextPrinter, the native init_printer (r0 new printer), FreeToHeap (r0), and
+    RemoveTextPrinter, the constructor's initializer call (r0 new printer), FreeToHeap (r0), and
     every VCOUNT / VBlank-counter load in print_task, frame_end and pass_end (found by
     io_reads; hooked on the instruction after the load, so the hook sees exactly the value
     the payload read), and the game loop's instruction after the pass_end call.
@@ -259,7 +260,7 @@ class PrinterTrace:
     A glyph belongs to the printer's most recent native task. The entry is dropped
     when the printer is (re)initialised or freed, so a synchronous print or a
     reused allocation never inherits a stale task.
-    glyphs rows: (printer, task id, phase at task entry, frame, x, y).
+    glyphs rows: (printer, task id, frame, x, y).
     tasks: one record per native task for text_speed_checks.task_errors()."""
 
     def __init__(self, h, payload, font=None, probe=None, on_task=None, on_glyph=None, on_destroy=None,
@@ -283,7 +284,7 @@ class PrinterTrace:
         self._state = payload['symbols']['text_speed_state']
         self.reads = io_reads(payload)
         h.on_exec(payload['symbols']['print_task'] & ~1, self._task, exclusive=True)
-        h.on_exec(payload['symbols']['init_printer'] & ~1, self._init, exclusive=True)
+        h.on_exec(PRINTER_INIT_CALL, self._init, exclusive=True)
         h.on_exec(PRINTER_TASK, self._original, exclusive=True)
         h.on_exec(RENDER, self._render, exclusive=True)
         h.on_exec(GLYPH, self._glyph, exclusive=True)
@@ -409,14 +410,10 @@ class PrinterTrace:
     def _task(self, h):
         self.task += 1
         ptr = h.reg.r1
-        phase = h.u8(ptr + 0x34)
-        previous = self.records.get(ptr)
-        if previous is not None:
-            previous['next_phase'] = phase
-        rec = {'id': self.task, 'printer': ptr, 'frame': h.frame, 'phase': phase, 'font': h.u8(ptr + 9),
+        rec = {'id': self.task, 'printer': ptr, 'frame': h.frame, 'font': h.u8(ptr + 9),
                'printer_id': h.u8(ptr + 0x2C), 'paused': h.u8(PRINT_PAUSED) != 0, 'delegated': False,
                'special': h.u32(ptr + 0x1C) != 0 or (h.u8(ptr + 0x29) & 127) != 0,
-               'events': [], 'next_phase': None, 'start': (h.u32(VBLANKS), h.u16(VCOUNT)), 'b_lines': [],
+               'events': [], 'start': (h.u32(VBLANKS), h.u16(VCOUNT)), 'b_lines': [],
                'pass_end': None, '_since_render': None}
         if self._catching is not None:
             rec['catchup'] = True
@@ -428,7 +425,7 @@ class PrinterTrace:
         self.active = rec
         self.tasks.append(rec)
         self._open.append(rec)
-        self.current[ptr] = (self.task, phase)
+        self.current[ptr] = self.task
         self.task_frames.setdefault(ptr, set()).add(h.frame)
         if self._on_task is not None:
             self._on_task(h, ptr)
@@ -490,10 +487,10 @@ class PrinterTrace:
             rec['_since_render'] = 'glyph'
         if self.font is not None and h.u8(ptr + 9) != self.font:
             return
-        task, phase = self.current.get(ptr, (None, None))
-        self.glyphs.append((ptr, task, phase, h.frame, h.u16(ptr + 12), h.u16(ptr + 14)))
+        task = self.current.get(ptr)
+        self.glyphs.append((ptr, task, h.frame, h.u16(ptr + 12), h.u16(ptr + 14)))
         if self._on_glyph is not None:
-            self._on_glyph(h, ptr, (task, phase, h.frame))
+            self._on_glyph(h, ptr, (task, h.frame))
 
     def reset(self):
         """Forget everything recorded (e.g. after loading a savestate); hooks stay. The
@@ -510,7 +507,7 @@ class PrinterTrace:
         return len(self.tasks)
 
     def since(self, mark, printer=None):
-        return [(task, phase, frame) for ptr, task, phase, frame, _, _ in self.glyphs[mark:]
+        return [(task, frame) for ptr, task, frame, _, _ in self.glyphs[mark:]
                 if printer is None or ptr == printer]
 
     def printers_since(self, mark):
@@ -525,7 +522,7 @@ class PrinterTrace:
         rows = self.glyphs[mark:end]
         total = 0
         for ptr in {r[0] for r in rows}:
-            frames = [r[3] for r in rows if r[0] == ptr]
+            frames = [r[2] for r in rows if r[0] == ptr]
             ran = self.task_frames.get(ptr, set())
             total += sum(1 for f in range(min(frames), max(frames) + 1) if f not in ran)
         return total

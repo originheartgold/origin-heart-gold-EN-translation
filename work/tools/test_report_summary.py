@@ -21,7 +21,7 @@ def report(**kw):
     r = {'status': 'passed', 'releasable': True, 'rom_sha256': 'a' * 64, 'payload_sha256': 'b' * 64,
          'save_sha256': 'c' * 64, 'git_head': 'd' * 40, 'git_dirty': [], 'git_dirty_at_end': [],
          'gates': {'options': gate(obs={'checks': 9, 'heap_checks': 5}),
-                   'fallbacks': gate(obs={'slow': {'span': 37}, 'medium': {'span': 35}, 'fast': {'span': 31}}),
+                   'fallbacks': gate(obs={'invalid': {'span': 53}, 'normal': {'span': 53}, 'fast': {'span': 21}}),
                    'mystery': gate(obs={'a': 1, 'b': [1, 2]})},
          'problems': [], 'warnings': {}}
     r.update(kw)
@@ -51,7 +51,7 @@ class SummaryTests(Base):
         code, out = self.run_cli('summary', self.write('r.json', report()))
         self.assertEqual(code, 0)
         self.assertIn('rom=aaaaaaaa', out)
-        self.assertIn('span s/m/f=37/35/31', out)
+        self.assertIn('span o/n/f=53/53/21', out)
         self.assertIn('checks=9 heap=5', out)
         self.assertIn('3 obs', out)
         self.assertLess(len(out.splitlines()), 25)

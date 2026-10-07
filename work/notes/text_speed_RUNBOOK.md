@@ -4,9 +4,11 @@ The one required read. Background (long, read only when a gate fails and you nee
 the reasoning): `text_speed_release_checks.md` (gates, fault matrix),
 `text_speed_vcount.md` (frame rule), `text_speed_harness.md`.
 
-Purpose: prove that a candidate ROM with the native text-speed feature is
-releasable. Everything is a command that writes a report under ignored
-`work/build/`; you read the compact `report_summary.py` output, not the JSON.
+Purpose: prove that a candidate ROM with the native text-speed feature (Options
+TEXT SPEED NORMAL / FAST, D-1604: NORMAL is the original printer plus the 30 fps
+catch-up, FAST the batched printer plus the catch-up) is releasable. Everything is
+a command that writes a report under ignored `work/build/`; you read the compact
+`report_summary.py` output, not the JSON.
 
 ## Setup (once per worktree)
 

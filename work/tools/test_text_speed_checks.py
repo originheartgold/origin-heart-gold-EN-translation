@@ -6,72 +6,75 @@ from PIL import Image
 import text_speed_checks as C
 
 
-def batches(sizes, phases=None, start_frame=100, frames_per_task=1):
-    """Glyph events for consecutive tasks of `sizes` glyphs each."""
+F, N, O = C.FAST, C.NORMAL, C.ORIGINAL
+
+
+def batches(sizes, start_frame=100, frames_per_task=1):
+    """Glyph events (task, frame) for consecutive tasks of `sizes` glyphs each."""
     out = []
     for i, n in enumerate(sizes):
-        phase = phases[i] if phases else 0
-        out += [(i + 1, phase, start_frame + i * frames_per_task)] * n
+        out += [(i + 1, start_frame + i * frames_per_task)] * n
     return out
 
 
 class Budgets(unittest.TestCase):
     def test_design_budgets(self):
-        self.assertEqual([C.task_budget(0, p) for p in (0, 1, 2, 3)], [1, 2, 1, 2])
-        self.assertEqual(C.task_budget(1, 0), 2)
-        self.assertEqual(C.task_budget(2, 1), 3)
-        self.assertEqual(C.task_budget(C.ORIGINAL, 1), 1)
-        with self.assertRaises(ValueError):
-            C.task_budget(4, 0)
+        self.assertEqual((C.NORMAL, C.FAST, C.ORIGINAL), (0, 1, 3))
+        self.assertEqual([C.task_budget(m) for m in (N, F, O)], [1, 3, 1])
+        self.assertEqual(C.MODES, (O, N, F))
+        self.assertEqual(C.DELEGATING, {O, N})
+        for unknown in (2, 4):
+            with self.assertRaises(ValueError):
+                C.task_budget(unknown)
 
 
 class Cadence(unittest.TestCase):
     def test_designed_cadence_passes(self):
-        for mode, sizes, phases in ((0, [1, 2] * 10, [0, 1] * 10), (1, [2] * 15, None), (2, [3] * 10 + [2], None),
-                                    (C.ORIGINAL, [1] * 30, None)):
-            summary, errors = C.cadence(mode, batches(sizes, phases))
+        for mode, sizes in ((F, [3] * 10 + [2]), (N, [1] * 30), (O, [1] * 30)):
+            summary, errors = C.cadence(mode, batches(sizes))
             self.assertEqual(errors, [], (mode, summary))
             self.assertEqual(summary["glyphs"], sum(sizes))
 
     def test_empty_is_an_error(self):
-        self.assertTrue(C.cadence(1, [])[1])
+        self.assertTrue(C.cadence(F, [])[1])
 
     def test_over_budget_fails(self):
         # e.g. an INSTANT-like FAST that prints 9 glyphs per task
-        _, errors = C.cadence(2, batches([9] * 4))
+        _, errors = C.cadence(F, batches([9] * 4))
         self.assertTrue(any("more glyphs than the design budget" in e for e in errors), errors)
-        _, errors = C.cadence(C.ORIGINAL, batches([2] * 10))
-        self.assertTrue(errors)
+        for mode in (N, O):
+            _, errors = C.cadence(mode, batches([2] * 10))
+            self.assertTrue(errors)
 
     def test_short_batches_are_left_to_the_stop_reason_check(self):
         # cadence() only bounds tasks from above; task_errors() judges early stops
-        self.assertEqual(C.cadence(2, batches([1] * 20))[1], [])
+        self.assertEqual(C.cadence(F, batches([1] * 20))[1], [])
 
     def test_short_messages_only_judged_on_the_upper_bound(self):
-        self.assertEqual(C.cadence(2, batches([1, 2]))[1], [])
-        self.assertTrue(C.cadence(2, batches([4]))[1])
+        self.assertEqual(C.cadence(F, batches([1, 2]))[1], [])
+        self.assertTrue(C.cadence(F, batches([4]))[1])
 
     def test_glyph_outside_task_is_reported(self):
-        events = batches([2] * 8) + [(None, None, 999)]
-        _, errors = C.cadence(1, events)
+        events = batches([2] * 8) + [(None, 999)]
+        _, errors = C.cadence(F, events)
         self.assertTrue(any("outside an observed native task" in e for e in errors))
 
     def test_tasks_per_frame_observed(self):
-        events = [(1, 0, 10), (1, 0, 10), (2, 0, 10), (2, 0, 10)]
-        summary, errors = C.cadence(1, events)
+        events = [(1, 10), (1, 10), (2, 10), (2, 10)]
+        summary, errors = C.cadence(F, events)
         self.assertEqual((summary["max_tasks_per_frame"], summary["max_per_frame"]), (2, 4))
         self.assertEqual(errors, [])
 
 
 class Lag(unittest.TestCase):
     def test_no_extra_dropped_frame(self):
-        self.assertEqual(C.lag_errors({3: 1, 0: 1, 1: 1, 2: 0}), [])
-        self.assertTrue(C.lag_errors({3: 1, 0: 1, 1: 2, 2: 1}))
+        self.assertEqual(C.lag_errors({3: 1, 0: 1, 1: 0}), [])
+        self.assertTrue(C.lag_errors({3: 1, 0: 1, 1: 2}))
         self.assertTrue(C.lag_errors({0: 1}))
 
     def test_exact(self):
         self.assertEqual(C.exact_errors("to_free", 1, {0: 1, 1: 1}), [])
-        self.assertTrue(C.exact_errors("to_free", 1, {0: 1, 2: 0}))
+        self.assertTrue(C.exact_errors("to_free", 1, {0: 1, 1: 0}))
         self.assertTrue(C.exact_errors("to_free", None, {0: 1}))
 
 
@@ -89,7 +92,7 @@ class Pinned(unittest.TestCase):
         from pathlib import Path
         import re
         src = (Path(__file__).resolve().parents[1] / "patches/text_speed/native.c").read_text()
-        for name in ("SLOTS", "GLYPH_SEED", "REST_SEED", "STALE", "MARGIN"):
+        for name in ("SLOTS", "GLYPH_SEED", "REST_SEED", "STALE", "MARGIN", "SHORT", "SHORT_REST", "FAST_BUDGET"):
             self.assertEqual(int(re.search(rf"#define {name} (\d+)", src).group(1)), getattr(C, name), name)
         self.assertEqual(int(re.search(r"#define VBLANK_LINE (\d+)", src).group(1)), C.VISIBLE_LINES)
         self.assertEqual(int(re.search(r"#define LINES (\d+)", src).group(1)), C.TOTAL_LINES)
@@ -110,6 +113,7 @@ class Pinned(unittest.TestCase):
     def test_fault_knobs_are_off(self):
         self.assertIsNone(C.FIXED_MODEL)
         self.assertFalse(C.IGNORE_REST or C.IGNORE_GLYPH or C.GLYPH_COST_BIAS or C.NO_CATCH_UP)
+        self.assertEqual((C.SHORT, C.SHORT_REST), (3, 7))
         self.assertEqual(C.PASS_END_SEEDS, (C.GLYPH_SEED, C.REST_SEED, C.MARGIN))
 
 
@@ -205,7 +209,7 @@ class FrameModelTests(unittest.TestCase):
         self.assertEqual(m.idle, C.STALE)              # stops at STALE
 
     def test_decisions(self):
-        m = state(glyph=(9, 10), rest=(7, 8))
+        m = state(glyph=(9, 10), rest=(7, 8, 8))
         self.assertEqual(m.decide(173)["kind"], "fit")    # 19 left >= 10 + 8 + 1
         self.assertEqual(m.decide(174)["kind"], "stop")   # 18 left
         self.assertEqual(m.decide(184)["kind"], "stop")   # 8 left: the shortest rest (7) still fits
@@ -216,9 +220,24 @@ class FrameModelTests(unittest.TestCase):
                          (C.GLYPH_SEED, C.REST_SEED, 0, True))
         self.assertEqual(state().decide(191)["kind"], "stop")   # no rest measured: never lost
 
+    def test_short_history_rest_floor(self):
+        # fewer than SHORT rests: the rest counts at least SHORT_REST (7) lines
+        for rests, rest in (((6,), 7), ((6, 6), 7), ((8,), 8), ((6, 8), 8), ((6, 6, 6), 6), ((6,) * 8, 6)):
+            m = state(glyph=(10,), rest=rests)
+            d = m.decide(150)
+            self.assertEqual((d["rest"], d["low"]), (rest, 6 if 6 in rests else min(rests)), rests)
+            self.assertEqual(m.decide(192 - 10 - rest - 1)["kind"], "fit", rests)
+            self.assertEqual(m.decide(192 - 10 - rest)["kind"], "stop", rests)
+        # Route 1 promoter (2026-10-07): one rest of 6, 17 lines left: no longer draws
+        self.assertEqual(state(glyph=(10,), rest=(6,)).decide(175)["kind"], "stop")
+        self.assertEqual(state(glyph=(10,), rest=(7,)).decide(174)["kind"], "fit")   # Route 1: 18 left
+        from unittest.mock import patch
+        with patch.object(C, "SHORT_REST", 0):
+            self.assertEqual(state(glyph=(10,), rest=(6,)).decide(175)["kind"], "fit")   # 17 >= 10 + 6 + 1
+
     def test_fault_knobs(self):
         from unittest.mock import patch
-        m = state(glyph=(10,), rest=(8,))
+        m = state(glyph=(10,), rest=(8, 8, 8))
         with patch.object(C, "FIXED_MODEL", (20, 7)):
             self.assertEqual([m.decide(x)["kind"] for x in (172, 173, 185, 186)], ["fit", "stop", "stop", "lost"])
         with patch.object(C, "IGNORE_REST", True):
@@ -230,9 +249,8 @@ class FrameModelTests(unittest.TestCase):
             self.assertEqual(m.glyph[0], 13)
 
 
-def task(events, phase=0, next_phase=None, **kw):
-    return dict({"id": 1, "phase": phase, "paused": False, "delegated": False,
-                 "events": events, "next_phase": next_phase}, **kw)
+def task(events, **kw):
+    return dict({"id": 1, "paused": False, "delegated": False, "events": events}, **kw)
 
 
 R = ("render",)
@@ -252,28 +270,28 @@ M = ("mark", 180)
 
 class StopReasons(unittest.TestCase):
     def test_reasons(self):
-        tasks = [task([R, G(), X(160), R, G(), X(170), R, G(), X(178, "stop"), M], phase=0),   # FAST budget
+        tasks = [task([R, G(), X(160), R, G(), X(170), R, G(), X(178, "stop"), M]),            # FAST budget
                  task([R, G(), X(174, "stop"), M]),                                         # frame
                  task([R, G(0xFFFE), X(165), M]),                                           # control
                  task([R, X(160, "stop")])]                                                 # result (prompt)
-        summary, errors = C.task_errors(2, tasks)
+        summary, errors = C.task_errors(F, tasks)
         self.assertEqual(errors, [])
         self.assertEqual(summary["reasons"], {"budget": 1, "control": 1, "frame": 1, "result": 1})
         self.assertEqual(summary["decisions"], {"fit": 2, "stop": 1})
         self.assertEqual(tasks[1]["stop"]["reason"], "frame")
 
     def test_lost_frame_draws_on(self):
-        _, errors = C.task_errors(2, [task([R, G(), X(188, "lost"), R, G(), X(198), R, G(), X(208), M])])
+        _, errors = C.task_errors(F, [task([R, G(), X(188, "lost"), R, G(), X(198), R, G(), X(208), M])])
         self.assertEqual(errors, [])
 
     def test_ignored_frame_stop_fails(self):
-        _, errors = C.task_errors(2, [task([R, G(), X(175, "stop"), R, G(), X(185, "stop"), M])])
+        _, errors = C.task_errors(F, [task([R, G(), X(175, "stop"), R, G(), X(185, "stop"), M])])
         self.assertTrue(any("after a frame stop" in e for e in errors), errors)
 
     def test_early_stop_without_reason_fails(self):
-        _, errors = C.task_errors(2, [task([R, G(0x1DE), X(160, None), M])])
+        _, errors = C.task_errors(F, [task([R, G(0x1DE), X(160, None), M])])
         self.assertTrue(any("without a reason" in e for e in errors), errors)
-        _, errors = C.task_errors(2, [task([R, G(), X(160), M])])           # decision said draw, task ended
+        _, errors = C.task_errors(F, [task([R, G(), X(160), M])])           # decision said draw, task ended
         self.assertTrue(any("allowed another glyph" in e for e in errors), errors)
 
     def test_structure(self):
@@ -289,21 +307,11 @@ class StopReasons(unittest.TestCase):
         self.assertTrue(any("without drawing" in e for e in errors), errors)
         self.assertTrue(C.task_errors(1, [])[1])
 
-    def test_slow_phase(self):
-        ok = [task([R, G(), X(160), M], phase=0, next_phase=1),
-              task([R, G(), X(160), R, G(), X(170), M], phase=1, next_phase=0),
-              task([R, G(), X(175, "stop"), M], phase=1, next_phase=1)]     # frame stop keeps phase 1
-        self.assertEqual(C.task_errors(0, ok)[1], [])
-        _, errors = C.task_errors(0, [task([R, G(), X(175, "stop"), M], phase=1, next_phase=0)])
-        self.assertTrue(any("phase" in e for e in errors), errors)
-        _, errors = C.task_errors(0, [task([R, G(), X(160, None), M], phase=1, next_phase=1)])
-        self.assertTrue(errors)
-        _, errors = C.task_errors(1, [task([R, G(), X(160), R, G(), X(170), M], next_phase=1)])
-        self.assertTrue(any("phase" in e for e in errors), errors)
-
     def test_delegation_and_pause(self):
-        self.assertEqual(C.task_errors(C.ORIGINAL, [task([], delegated=True)])[1], [])
-        self.assertTrue(C.task_errors(C.ORIGINAL, [task([R, G(), X(160), M])])[1])
+        for mode in (O, N):              # NORMAL is the original printer task (D-1604)
+            self.assertEqual(C.task_errors(mode, [task([], delegated=True)])[1], [])
+            errors = C.task_errors(mode, [task([R, G(), X(160), M])])[1]
+            self.assertTrue(any("did not delegate" in e for e in errors), errors)
         self.assertTrue(C.task_errors(1, [task([], delegated=True)])[1])
         self.assertEqual(C.task_errors(1, [task([], delegated=True, special=True)])[1], [])
         self.assertTrue(C.task_errors(1, [task([R, G(), X(160), M], special=True)])[1])
@@ -348,41 +356,47 @@ class Product(unittest.TestCase):
         self.assertEqual((r["unforced_drops"], r["forced_drops"], r["unforced_overruns"]), (1, 0, 2))
         merged = C.merge_records([r, r])
         self.assertEqual((merged["frames"], merged["pages"]), (8, 2))
+        self.assertEqual((r["slacks"], r["warm_cost"]), ([-8, -3, 12, 22], 10))   # every glyph task in the page
 
-    def rec(self, frames, drops=0, forced=None, tasks=None, unnecessary=0, futile=0, unforced=0, pages=1):
-        return {"frames": frames, "drops": drops, "forced_drops": drops if forced is None else forced,
+    def rec(self, frames, drops=0, tasks=None, unnecessary=0, unforced=0, pages=1, slacks=(), warm=None):
+        return {"frames": frames, "drops": drops, "forced_drops": drops,
                 "printing_tasks": frames + pages - drops, "glyph_tasks": tasks if tasks is not None else frames + 1,
-                "pages": pages, "unnecessary_stops": unnecessary, "futile_stops": futile,
-                "unforced_overruns": unforced}
+                "pages": pages, "unnecessary_stops": unnecessary, "futile_stops": 0,
+                "unforced_overruns": unforced, "slacks": sorted(slacks), "warm_cost": warm}
 
     def test_order(self):
-        good = {3: self.rec(54, 1, tasks=54), 0: self.rec(36, 1, tasks=36), 1: self.rec(27, 1, tasks=27),
-                2: self.rec(21, 1, tasks=21)}
+        normal = self.rec(54, 1, tasks=54, slacks=(3, 30))
+        good = {O: normal, N: dict(normal), F: self.rec(21, 1, tasks=21, warm=10)}
         self.assertEqual(C.order_errors(good), ([], []))
-        tie = {**good, 1: self.rec(36, 1, tasks=30)}
-        errors, notes = C.order_errors(tie)
-        self.assertEqual(errors, [])
+        # NORMAL must be the original printer, exactly
+        for key, value in (("frames", 55), ("drops", 2), ("glyph_tasks", 53), ("slacks", [3, 31])):
+            errors = C.order_errors({**good, N: dict(normal, **{key: value})})[0]
+            self.assertTrue(any("NORMAL must be the original printer" in e for e in errors), key)
+        # FAST at most NORMAL's frames; a tie only when no NORMAL frame had room
+        self.assertTrue(any("slower than NORMAL" in e for e in C.order_errors({**good, F: self.rec(55, 1)})[0]))
+        tie = {**good, F: self.rec(54, 1, warm=10)}
+        errors = C.order_errors(tie)[0]
+        self.assertTrue(any("not faster than NORMAL" in e and "1 NORMAL frames had room" in e for e in errors),
+                        errors)
+        capped = {O: self.rec(54, 1, slacks=(3, 11)), N: self.rec(54, 1, slacks=(3, 11)), F: self.rec(54, 1, warm=10)}
+        errors, notes = C.order_errors(capped)
+        self.assertEqual(errors, [])                                     # 11 < 10 + 2: no room anywhere
         self.assertTrue(notes)
-        inverted = {**good, 0: self.rec(61, 25, tasks=37), 1: self.rec(62, 26, tasks=37),
-                    3: self.rec(88, 35, tasks=54)}
-        self.assertEqual(C.order_errors(inverted)[0], [])               # only forced drops differ
-        unforced = {**good, 1: self.rec(36, 1, forced=0, tasks=30)}
-        self.assertTrue(any("without forced drops" in e for e in C.order_errors(unforced)[0]))
-        lazy = {**good, 1: self.rec(27, 1, tasks=27, unnecessary=3)}
+        self.assertEqual(C.room_frames({"slacks": [11, 12, 30]}, {"warm_cost": 10}), 2)
+        self.assertEqual(C.room_frames({"slacks": [14, 15]}, {"warm_cost": None}), 1)   # seed 13
+        lazy = {**good, F: self.rec(21, 1, unnecessary=3)}
         self.assertTrue(any("would have fitted" in e for e in C.order_errors(lazy)[0]))
-        slow = {**good, 0: self.rec(54, 1, tasks=54)}
-        errors = C.order_errors(slow)[0]
-        self.assertTrue(any("not faster than ORIGINAL" in e for e in errors))
-        self.assertTrue(any("SLOW floor" in e for e in errors))
-        drops = {**good, 2: self.rec(21, 2, tasks=21)}
-        self.assertTrue(any("dropped frames" in e for e in C.order_errors(drops)[0]))
-        pushed = {**good, 2: self.rec(21, 1, tasks=21, unforced=1)}
+        drops = {**good, F: self.rec(21, 2)}
+        self.assertTrue(any("dropped frames while printing, NORMAL 1" in e for e in C.order_errors(drops)[0]))
+        pushed = {**good, F: self.rec(21, 1, unforced=1)}
         self.assertTrue(any("only because" in e for e in C.order_errors(pushed)[0]))
-        self.assertTrue(C.order_errors({3: good[3]})[0])
+        self.assertTrue(C.order_errors({O: good[O]})[0])
+        self.assertTrue(C.order_errors({**good, O: self.rec(0, slacks=(3, 30))})[0])
 
-    def test_slow_floor(self):
-        o = self.rec(122, 40, tasks=84, pages=2)
-        self.assertEqual(C.slow_floor(o, self.rec(85, 28, tasks=59, futile=3, pages=2)), 56 + 2 + 3)
+    def test_merge_keeps_slacks_and_the_dearest_glyph(self):
+        a, b = self.rec(5, slacks=(3, 9), warm=10), self.rec(4, slacks=(1,), warm=11)
+        merged = C.merge_records([a, b, self.rec(2, warm=None)])
+        self.assertEqual((merged["frames"], merged["slacks"], merged["warm_cost"]), (11, [1, 3, 9], 11))
 
 
 class Messages(unittest.TestCase):
@@ -423,22 +437,24 @@ def options_image(labels, selected, title=True, spill=None):
 
 
 class OptionLabels(unittest.TestCase):
-    good = [(116, 138), (161, 195), (206, 228)]
+    good = [(108, 146), (188, 212)]                   # NORMAL, FAST
 
     def test_rendered_labels_pass(self):
-        for mode in range(3):
+        for mode in (N, F):
             self.assertEqual(C.option_label_errors(options_image(self.good, mode), mode), [])
 
     def test_wrong_selection(self):
-        self.assertTrue(C.option_label_errors(options_image(self.good, 2), 1))
+        self.assertTrue(C.option_label_errors(options_image(self.good, F), N))
 
     def test_overflowing_label_fails(self):
-        wide = [(116, 138), (161, 215), (218, 240)]       # MEDIUM runs into FAST's column
-        self.assertTrue(C.option_label_errors(options_image(wide, 1), 1))
-        merged = [(116, 138), (161, 228)]
-        self.assertTrue(C.option_label_errors(options_image(merged, 1), 1))
-        edge = [(116, 138), (161, 195), (206, 250)]        # FAST runs into the panel border
-        self.assertTrue(C.option_label_errors(options_image(edge, 2), 2))
+        wide = [(108, 186), (190, 212)]                # NORMAL runs into FAST's column
+        self.assertTrue(C.option_label_errors(options_image(wide, N), N))
+        merged = [(108, 212)]
+        self.assertTrue(C.option_label_errors(options_image(merged, N), N))
+        three = [(108, 130), (150, 170), (190, 212)]   # a third label (the old three-choice row)
+        self.assertTrue(C.option_label_errors(options_image(three, N), N))
+        edge = [(108, 146), (188, 250)]                # FAST runs into the panel border
+        self.assertTrue(C.option_label_errors(options_image(edge, F), F))
 
     def test_missing_labels_or_title_or_spill_fail(self):
         self.assertTrue(C.option_label_errors(options_image([], 0), 0))
@@ -477,6 +493,19 @@ class BattlePacing(unittest.TestCase):
         self.assertTrue(C.battle_pacing_errors([], []))
         self.assertTrue(C.battle_pacing_errors(self.base, self.other(glyphs=12)))
         self.assertTrue(C.battle_pacing_errors(self.base, self.other(after_last_passes=None)))
+
+
+class RngPin(unittest.TestCase):
+    def test_pin_must_be_applied_and_hold(self):
+        seed = 0x5EED1604
+        ok = [{"mode": "ORIGINAL", "delay": 0, "applied": True, "readback": seed},
+              {"mode": "FAST", "delay": 0, "applied": True, "readback": seed}]
+        self.assertEqual(C.rng_pin_errors(ok, seed), [])
+        self.assertTrue(any("vacuous" in e for e in C.rng_pin_errors([], seed)))
+        missing = ok + [{"mode": "NORMAL", "delay": 0, "applied": False}]
+        self.assertTrue(any("not applied" in e for e in C.rng_pin_errors(missing, seed)))
+        lost = [dict(ok[0], readback=seed ^ 1)]
+        self.assertTrue(any("did not hold" in e for e in C.rng_pin_errors(lost, seed)))
 
 
 class Memory(unittest.TestCase):

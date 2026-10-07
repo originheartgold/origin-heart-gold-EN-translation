@@ -44,7 +44,7 @@ class TraceMetrics(unittest.TestCase):
 
     def test_lag_counts_frames_without_the_printers_task(self):
         tasks = [{'printer': 1, 'frame': f, 'events': []} for f in (10, 11, 13, 15)]
-        glyphs = [(1, None, None, f, 0, 0) for f in (10, 13, 15)]
+        glyphs = [(1, None, f, 0, 0) for f in (10, 13, 15)]
         self.assertEqual(self.trace(tasks, glyphs).lag(0), 2)
 
 
@@ -62,9 +62,9 @@ class Faults(unittest.TestCase):
                 self.assertLessEqual(len(after), len(before), name)
 
     def test_verdict_needs_every_declared_gate_to_fail_for_its_reason(self):
-        fault = {'name': 'slow-flat'}
+        fault = {'name': 'fast-budget'}
         gates = {g: row('failed', [f'x: {text} (from the check)'])
-                 for g, text in fault_fixture.FAULTS['slow-flat']['gates'].items()}
+                 for g, text in fault_fixture.FAULTS['fast-budget']['gates'].items()}
         self.assertEqual(validate_release.fault_verdict(fault, gates)[0], 'fault-detected')
         missing = dict(gates)
         missing.pop('corpus')

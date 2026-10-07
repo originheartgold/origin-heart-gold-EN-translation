@@ -6,8 +6,8 @@ so in maps where a pass spans two VBlanks text prints at half the vanilla rate
 (vanilla runs the queue twice per pass). pass_end runs each text printer task once
 more when a VBlank passed during the pass. This gate proves, per field scene:
 
-- rate: the original printer (reserved mode 3, the hack's own printer) prints at most
-  MAX_FPG frames per glyph (vanilla FAST measured 0.98 in Viridian);
+- rate: NORMAL (stored 0: the hack's own printer task plus the catch-up, D-1604) prints
+  at most MAX_FPG frames per glyph (vanilla FAST measured 0.98 in Viridian);
 - no cost without text: idle loop passes over IDLE frames are not fewer than with the
   catch-up off (same checkpoint);
 - same text: glyph count, glyph positions, page count and the message window's pixels
@@ -56,7 +56,7 @@ SCENES = {
     'violet-city': (73, 479, 258),
 }
 TEXT = (718, 160)
-MODE = checks.ORIGINAL
+MODE = checks.NORMAL
 MAX_FPG = 1.05        # vanilla US FAST: 0.98 frames per glyph (Viridian, 2026-10-07)
 SLOW_FPG = 1.5        # catch-up off at or above this: a 30 fps scene
 MIN_30FPS = 5
@@ -205,7 +205,7 @@ def child(args, name):
             idle_on, text_on = measure(h, loop, checkpoint, True, glyphs, name, after_load=trace.reset)
             # trace.reset() after the last load: everything recorded belongs to the message.
             record, stops, task_errors = judge_message(trace, MODE, 0, 0)
-            errors.extend(f'ORIGINAL: {e}' for e in task_errors)
+            errors.extend(f'NORMAL: {e}' for e in task_errors)
             errors.extend(trace.state_errors)
             catch = [c for c in trace.catchups if c[3]]
             report['catch_up'] = {'late_passes': sum(1 for c in trace.catchups if c[2]), 'decisions': len(catch),

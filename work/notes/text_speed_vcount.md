@@ -7,6 +7,14 @@ itself while the game runs, not from fixed constants. This note records why, how
 the rule works and was derived, what was measured, and how the gates check it.
 Branch `codex/text-speed-research`.
 
+**Since D-1604 (2026-10-07) TEXT SPEED is NORMAL / FAST.** NORMAL is the hack's
+original printer task (no batching) plus the printer catch-up below; FAST is the
+batching loop this note describes (budget 3) plus the catch-up. SLOW and MEDIUM are
+gone, and with them SLOW's phase byte, the SLOW floor and the three-speed order.
+Paragraphs and tables below that mention SLOW or MEDIUM record the three-speed
+revision of the same day and are historical; the frame rule itself is unchanged
+except for the short-history rest floor ([below](#short-history-rest-floor-d-1604)).
+
 ## The problem
 
 The game loop (NitroMain, `0x02000C88`) wakes at the start of VBlank (display line
@@ -59,18 +67,41 @@ loop predicts where the game loop will end if it draws one more glyph:
   later than read; the maxima of eight samples already include the rounding of the
   two costs.
 
-The budgets stay the maxima (SLOW 1/2 by phase, MEDIUM 2, FAST 3), so a batch can
-never run long. SLOW's phase: if a two-glyph task is stopped by the frame rule, the
-phase is not flipped, so the next task keeps the two-glyph turn.
+The budget stays the maximum (FAST 3), so a batch can never run long. (Historical:
+the three-speed revision had SLOW 1/2 by phase and MEDIUM 2; a frame stop kept
+SLOW's two-glyph turn.)
 
-The batch also stops before every control (end of text, extended control, page
-prompts, `0xF0FD`); since this revision it looks past newlines (`0xE000`) when it
-checks: RenderText draws a newline in the same step as the unit after it, so a
-newline right before the end of the text or a prompt is that control's step. The
-original printer takes that step in the next task; before this fix FAST took it in
-the same task as the last glyph when a battle message ended with a newline
-(Picnicker Amelia's defeat line, found by the multi-battle gate; the `cf50a23`
-candidate has the same defect).
+### Short-history rest floor (D-1604)
+
+While the rest history holds fewer than `SHORT` (3) measured rests, the rest counts
+at least `SHORT_REST` (7) lines, the typical rest: `rest = max(largest rest, 7)`.
+With no rest measured the seed (20) applies as before; from three rests on the
+largest measured rest alone.
+
+Why: in the full run of 2026-10-07 FAST dropped a frame the original printer did not
+drop (Route 1 promoter: 2 against 1, flagged as dropped only because of the batch's
+extra glyphs). The history then held a single rest of 6 lines; the real rest was 8,
+and the pass ended one line after VBlank. Measured with the payload of that run over
+the 17 scenes (FAST; each rest sample against the largest rest measured before it in
+the same history; all 432 samples were 6, 7 or 8 lines: 47, 371 and 14):
+
+| rests in the history | samples | next rest above the largest so far | above max(largest, 7) |
+| --- | --- | --- | --- |
+| 1 | 17 | by 2 lines once (Route 1 promoter: 6, then 8), by 1 once | by 1 once |
+| 2 | 17 | by 1 once (Goldenrod Dept. Store 6F: 7, 6, then 8) | by 1 once |
+| 3 to 7 | 85 | never (3-6), by 1 once (7) | (no floor) |
+| 8 (full) | 296 | by 1 line 7 times | (no floor) |
+
+`MARGIN` (1) covers an excess of one line (the full-history case, no dropped frame in
+any scene); only a single low first sample left an excess of two. A floor, not an
+extra line of margin: a first try with one more line of margin while the history is
+short (the review's suggestion) stopped FAST on Route 1 with 18 lines left after a
+single rest of 7 (glyph 10 + rest 7 + 2 = 19), a stop the product rule flags as
+giving up a glyph that would have fitted (the pass ended 11 lines before VBlank, the
+median extra glyph costs 9.5). The floor changes only histories whose largest rest is
+below 7; a short history of typical rests decides exactly as before. The gates check
+both sides (no extra dropped frame, no stop that would have fitted), and fault
+`short-history-unguarded` (floor removed) must fail the scenes gate.
 
 ### Measuring the rest
 
@@ -145,6 +176,33 @@ this model (`text_speed_checks.FrameModel`), and the payload's state against the
 costs the gate measured itself; a unit test keeps the constants equal to `native.c`.
 
 ## Scenes before and after
+
+D-1604 (NORMAL / FAST, short-history rest floor; dirty candidate `8867d27d`, run
+`work/build/text-speed/nf2`): printing frames / dropped frames per scene. NORMAL equals
+the original printer (value 3) in every scene; FAST has no more dropped frames than
+NORMAL anywhere (Route 1 promoter: 1, was 2 before the floor).
+
+| Scene | original | NORMAL | FAST |
+| --- | --- | --- | --- |
+| trainer-fresh | 53 / 1 | 53 / 1 | 21 / 1 |
+| trainer-after-options | 53 / 1 | 53 / 1 | 31 / 1 |
+| route1-idle | 54 / 24 | 54 / 24 | 20 / 7 |
+| pallet-house-2f | 81 / 0 | 81 / 0 | 25 / 0 |
+| ecruteak-theater | 81 / 0 | 81 / 0 | 25 / 0 |
+| pokeathlon-gatehouse | 81 / 0 | 81 / 0 | 25 / 0 |
+| mt-moon | 81 / 0 | 81 / 0 | 25 / 0 |
+| celadon-gym | 81 / 0 | 81 / 0 | 44 / 0 |
+| goldenrod-dept-6f | 81 / 27 | 81 / 27 | 34 / 11 |
+| route1 | 81 / 0 | 81 / 0 | 44 / 0 |
+| route1-30fps | 81 / 40 | 81 / 40 | 25 / 12 |
+| viridian-city | 83 / 42 | 83 / 42 | 27 / 13 |
+| viridian-forest | 83 / 41 | 83 / 41 | 28 / 14 |
+| ss-anne | 83 / 41 | 83 / 41 | 27 / 13 |
+| route1-promoter | 82 / 1 | 82 / 1 | 46 / 1 |
+| route1-promoter-30fps | 93 / 46 | 93 / 46 | 31 / 15 |
+| seven-island-tourist | 66 / 0 | 66 / 0 | 21 / 0 |
+
+The tables below are historical (SLOW / MEDIUM / FAST revision).
 
 Printing frames (sum of page spans: first to last glyph of each page) and dropped
 frames inside those spans (frames in which the printer's task did not run), original
@@ -266,25 +324,25 @@ reads. It mirrors the payload's frame state from those readings only and compare
 with the payload's RAM before every reading; each task's decisions must equal the
 mirror's (`FrameModel.decide`), a task draws at least once, reads the line after every
 render, marks its end once if it drew, stops only for a reason (budget, control,
-render result, frame stop), and SLOW's phase flips except after a frame stop.
+render result, frame stop). NORMAL (and the unknown value 3) must delegate every task
+to the original printer task.
 
 Product (`text_speed_checks.order_errors`, in every gate that compares speeds, and
-the `scenes` gate over the 17 scenes above), per message:
+the `scenes` gate over the 17 scenes above), per message (D-1604):
 
-- frames: the original printer > SLOW > MEDIUM > FAST, strictly, except at the
-  physical cap as above;
-- no speed drops more frames than the original printer;
+- NORMAL equals the original printer (value 3) exactly: frames, dropped frames,
+  printing and glyph tasks, pages, every glyph task's slack;
+- frames: FAST at most NORMAL's, strictly fewer when any NORMAL glyph task's pass
+  had room for one more glyph (slack of at least FAST's median extra-glyph cost + 2);
+- FAST drops no more frames than NORMAL;
 - no frame is dropped only because of the batch's extra glyphs (the pass, without
   the extra glyphs' lines, would have ended before VBlank);
 - no frame stop gave up a glyph that would have fitted: with one more glyph of the
   message's median measured cost the pass would still have ended two or more lines
-  before VBlank (stops taken before any cost of the scene was measured are exempt);
-- SLOW floor: SLOW's tasks that drew glyphs are at most 2/3 of the original
-  printer's (SLOW draws three glyphs per two tasks, the original one per task), plus
-  one per page (the phase at a page's start), plus one per futile frame stop (a stop
-  whose pass then missed VBlank anyway: it keeps SLOW's two-glyph turn, so it costs a
-  task, never a glyph; whether a frame can still be saved is not known when the batch
-  decides).
+  before VBlank (stops taken before any cost of the scene was measured are exempt).
+
+(Historical, removed with SLOW: the SLOW floor and the original > SLOW > MEDIUM >
+FAST order.)
 
 These rules use only observed frame ends, not the model's constants, so a payload
 that is too conservative, or the fixed `cf50a23` rule, fails even when the gate's

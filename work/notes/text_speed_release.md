@@ -1,6 +1,22 @@
 # Native text speed release candidate — 2026-10-05
 
-Current revision: [SLOW / MEDIUM / FAST](text_speed_readable_rc6.md). This document records the earlier candidate.
+Current revision: **NORMAL / FAST** (D-1604, 2026-10-07): see "Current design" below; gates and fault matrix in [text_speed_release_checks.md](text_speed_release_checks.md), frame rule in [text_speed_vcount.md](text_speed_vcount.md). The SLOW / MEDIUM / FAST revision ([text_speed_readable_rc6.md](text_speed_readable_rc6.md)) and the NORMAL / FAST / INSTANT candidate recorded further down are historical.
+
+## Current design (D-1604)
+
+- **TEXT SPEED** has two choices, **NORMAL** and **FAST**. NORMAL is the hack's original printer task (one glyph per printer turn, no batching) plus the 30 fps printer catch-up (D-1603), so text prints at the vanilla FAST rate (about one glyph per frame) in 60 fps and 30 fps maps. FAST batches up to three glyphs per printer task under the measured frame rule (D-1601), plus the catch-up. Callback-driven printers and printers with an explicit glyph delay use the original task at both speeds.
+- **Stored value** (bits 2-3 of the two-byte Options record; music speed keeps bits 0-1):
+
+  | Stored | Shown | Prints as | Where it comes from |
+  | --- | --- | --- | --- |
+  | 0 | NORMAL | NORMAL | every existing save (the bits were always 0), choosing NORMAL |
+  | 1 | FAST | FAST | new games (the Options initialiser), choosing FAST |
+  | 2 | NORMAL | NORMAL | unreleased SLOW/MEDIUM/FAST-era test saves (old FAST), corrupt data |
+  | 3 | NORMAL | NORMAL | unreleased test saves (old reserved value), corrupt data |
+
+  Before the save is published (title screen, new-game intro) the payload has no Options record and uses NORMAL. Opening Options on an unknown value shows NORMAL; Cancel keeps the stored value, Confirm stores 0 (NORMAL) or 1 (FAST).
+- **Options row:** two labels, NORMAL at x 108 and FAST at x 188 (the label pitch and touch columns of the two-choice rows 2 and 3: boxes x 112-167 and 192-247 on the row's y 146-166). The labels are project-authored in the existing English font.
+- **ARM9 edits** since D-1604: the private printer extension (allocation 0x34 to 0x38 and the `init_printer` wrapper that cleared the SLOW phase byte) is gone; the printer constructor is unchanged. Remaining edits: print task pointer, game-loop `pass_end` call, SDK ITCM arena bound, new-game default (FAST), music getter/setter masks. Native payload 1418 bytes (26 of them the frame state), ITCM `01FF8620`-`01FF8BC0`.
 
 **Current status:** the three review findings are resolved in the [rebuilt candidate and fix report](text_speed_fixes.md). The evidence below describes the superseded initial candidate. The user requires old-save → new-ROM upgrades; downgrades are out of scope.
 
@@ -16,7 +32,7 @@ The RC4 demand-loading instruction at `0200BA9A` stays `0125`. Loading one reque
 
 ## Implementation and compatibility
 
-The first three bullets were updated on 2026-10-06 to match the current code (SLOW / MEDIUM / FAST). The rest of this document, including the validation evidence, still describes the superseded NORMAL / FAST / INSTANT candidate.
+Historical: the first three bullets were updated on 2026-10-06 to match the SLOW / MEDIUM / FAST code of that day (superseded by D-1604, see "Current design" above; the guard rules they describe still apply). The rest of this document, including the validation evidence, describes the superseded NORMAL / FAST / INSTANT candidate.
 
 - `work/patches/text_speed/native.c` and `labels.h` are original project code. The checked-in `payload.json` contains compiled project code, not extracted ROM content. Apple clang 21.0.0 reproduces it exactly. Normal builds use the cached payload and do not require clang.
 - `work/tools/text_speed_patch.py` checks these before changing anything:

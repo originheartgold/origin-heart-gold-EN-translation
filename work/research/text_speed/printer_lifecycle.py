@@ -1,11 +1,12 @@
-"""Private printer state, allocation pairing and heap steadiness over many messages.
+"""Printer construction, allocation pairing and heap steadiness over many messages.
 
-Poison only the new private byte (+0x34) before the native initializer runs and
-require the game's constructor return to see both the phase and the original
-focus pointer (+0x30) reset, for every printer including reused heap slots.
+Every printer constructed (the constructor's call of the original initializer) must
+return from the constructor with its focus pointer (+0x30) reset, including reused
+heap slots. (Text speed no longer extends the printer: the former private SLOW phase
+byte at +0x34 is gone with SLOW, D-1604.)
 
-The same two-page message is then shown REPEATS times (one per text-speed value,
-cycling SLOW/MEDIUM/FAST). Every printer allocation must be freed, and every
+The same two-page message is shown REPEATS times (one per text-speed value,
+alternating NORMAL/FAST). Every printer allocation must be freed, and every
 heap's used blocks/bytes may not grow from the first to the last idle point by
 more than text_speed_checks.heap_growth_errors' tolerance (2 blocks / 1 KiB; the
 field itself allocates and frees a few unrelated blocks while time passes), so a
@@ -21,7 +22,7 @@ import json
 import sys as _sys  # noqa: E402
 from pathlib import Path as _Path  # noqa: E402
 _sys.path.insert(0, str(_Path(__file__).resolve().parent))   # python -I adds no script directory
-from gate_common import (CLOCK, FREE_TO_HEAP, add_arguments, attach_probe, heap_usage, identity, inputs_unchanged,
+from gate_common import (CLOCK, FREE_TO_HEAP, PRINTER_INIT_CALL, add_arguments, attach_probe, heap_usage, identity, inputs_unchanged,
                          itcm_errors, load_expected_payload, memory_errors, memory_summary, require, resolve)
 from text_speed_checks import heap_growth_errors, unfreed
 
@@ -56,27 +57,26 @@ def main():
                 seen.add(ptr)
                 events['n'] += 1
                 events['allocations'].append((events['n'], ptr))
-                h.w8(ptr + 0x34, 255)
 
             def end(h):
                 ptr = h.reg.r4
                 if not pending or pending.pop() != ptr:
                     errors.append('constructor pairing mismatch')
-                if h.u8(ptr + 0x34) != 0 or h.u32(ptr + 0x30) != 0:
-                    errors.append(f'printer {ptr:#x}: initializer did not reset private phase/focus pointer')
+                if h.u32(ptr + 0x30) != 0:
+                    errors.append(f'printer {ptr:#x}: initializer did not reset the focus pointer')
                 report['constructors'] += 1
 
             def free(h):
                 events['n'] += 1
                 events['frees'].append((events['n'], h.reg.r0))
                 probe._on_summary_free(FREE_TO_HEAP, 2)
-            h.on_exec(payload['symbols']['init_printer'] & ~1, begin)
+            h.on_exec(PRINTER_INIT_CALL, begin)
             h.on_exec(CONSTRUCTOR_RETURN, end)
             h.on_exec(FREE_TO_HEAP, free)
             opts = h.array(1)
             idle, open_usage = [], []
             for i in range(REPEATS):
-                mode = i % 3
+                mode = i % 2          # NORMAL, FAST
                 h.w16(opts, (h.u16(opts) & ~12) | (mode << 2))
                 idle.append(heap_usage(h))
                 saved = h.get_var(SENTINEL_VAR)

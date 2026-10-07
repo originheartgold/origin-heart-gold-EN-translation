@@ -3,21 +3,21 @@
 Each scene is a fresh cold boot (own process, private battery directory, pinned clock)
 into the trainer fixture's Route 1 spot, then the scene's setup (an Options visit, a long
 idle, or a scripted warp and 600 frames to settle), then a checkpoint. From that
-checkpoint the same text is printed once per mode: the original printer (reserved value
-3, controlled RAM write of the two text-speed bits) first, then SLOW, MEDIUM and FAST.
+checkpoint the same text is printed once per mode: the original printer (unknown value
+3, controlled RAM write of the two text-speed bits) first, then NORMAL and FAST (D-1604).
 The text is either the 54-glyph trainer page (A on the trainer), message 718#160 (two
 pages, injected with the game's own message command, A between pages), or a real NPC
 talk (A until no new glyph appears).
 
-Per mode the gate requires the model checks (text_speed_checks.task_errors: budgets,
-every frame decision equal to the payload's frame model, stop reasons, SLOW phase; the
-payload's frame state equal to the costs the gate measured itself), the same glyph count
-and layout as the original printer, and the product rules of
-text_speed_checks.order_errors: ORIGINAL > SLOW > MEDIUM > FAST in printing frames, a tie
-or inversion only at the physical cap (no unnecessary frame stop, judged from the
-observed frame ends; the remaining difference only drops that the mandatory first glyph
-forced), no speed with more dropped frames than the original printer, and SLOW within
-its design floor (2/3 of the original's printing tasks plus one per page).
+Per mode the gate requires the model checks (text_speed_checks.task_errors: NORMAL
+delegates every task to the original printer; FAST budgets, every frame decision equal to
+the payload's frame model, stop reasons; the payload's frame state equal to the costs the
+gate measured itself), the same glyph count and layout as the original printer, and the
+product rules of text_speed_checks.order_errors: NORMAL identical to the original printer
+(frames, dropped frames, tasks, every pass's slack); FAST at most NORMAL's printing frames,
+strictly fewer where a NORMAL frame had room for one more glyph; no FAST frame stop that
+gave up a glyph that would have fitted; FAST with no more dropped frames than NORMAL and
+none dropped only because of its extra glyphs.
 
 The scene set is the independent review's (2026-10-07): busy 60 fps scenes where even
 one glyph per frame sometimes overruns, light 60 fps scenes, and 30 fps scenes.
@@ -35,7 +35,7 @@ from gate_common import (CLOCK, ROOT, PrinterTrace, add_arguments, attach_probe,
                          memory_summary, require, resolve)
 import text_speed_checks as checks  # noqa: E402
 
-MODES = (3, 0, 1, 2)
+MODES = checks.MODES
 # name: (setup, text). setup: ('trainer', condition) stays on the fixture's Route 1 spot;
 # (map, x, y) warps there with the game's Warp command; None stays where the save starts.
 SCENES = {
@@ -153,8 +153,8 @@ def judge(scene):
     if set(modes) != set(MODES):
         return [f'modes missing: {sorted(set(MODES) - set(modes))}'], []
     errors = []
-    base = modes[3]
-    for m in (0, 1, 2):
+    base = modes[checks.ORIGINAL]
+    for m in (checks.NORMAL, checks.FAST):
         if modes[m]['glyphs'] != base['glyphs'] or modes[m]['layout'] != base['layout']:
             errors.append(f'{checks.NAMES[m]}: glyphs or layout differ from the original printer')
         if modes[m]['pages'] != base['pages']:

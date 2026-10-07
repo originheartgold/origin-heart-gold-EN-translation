@@ -1,18 +1,19 @@
 """Cold-boot text-speed corpus regression using emu_harness.
 
-Script injection selects messages only; SLOW/MEDIUM/FAST are chosen through the
+Script injection selects messages only; NORMAL/FAST are chosen through the
 native Options UI. Each mode runs in its own process with a private battery
 directory. No old savestates.
 
-Mode 3 is the controlled baseline: Options are confirmed through the UI, then the
-reserved value 3 is written to the two text-speed bits, which makes the native
-task delegate every call to the original printer task. All three choices must
-reproduce that baseline's completed pages, glyph count and glyph layout exactly.
+Mode 3 is the controlled baseline: NORMAL is confirmed through the UI (the same input
+as the NORMAL run), then the unknown value 3 is written to the two text-speed bits,
+which the native task must treat as NORMAL: it delegates every call to the original
+printer task. Both choices must reproduce that baseline's completed pages, glyph
+count and glyph layout exactly; NORMAL must also equal it in frames and tasks.
 
 Per message and speed the child also records the glyph cadence (glyphs per native
 task and per frame, judged by text_speed_checks.cadence against the design
-budgets), the model checks per native task (text_speed_checks.task_errors with the
-payload's frame model), the product record (gate_common.judge_message: frames,
+budgets), the model checks per native task (text_speed_checks.task_errors: NORMAL
+delegates, FAST against the payload's frame model), the product record (gate_common.judge_message: frames,
 dropped frames, frame stops), printer allocation/free pairing and per-heap usage
 before and after the corpus, and the ITCM payload/arena state at the start and end
 of the session. The parent compares the speeds with the original printer
@@ -35,7 +36,7 @@ from gate_common import (CLOCK, ROOT, PRINTER_START, PrinterTrace, add_arguments
 import text_speed_checks as checks  # noqa: E402
 
 CORPUS = ((48, 20), (48, 26), (48, 60), (457, 123), (718, 160), (718, 1093))
-MODES = (3, 0, 1, 2)          # baseline first
+MODES = checks.MODES          # baseline first
 CROP = (8, 145, 236, 184)     # message window text area; excludes the animated continuation arrow
 
 
@@ -66,21 +67,22 @@ def child(args):
                 h.touch(124, 115, after=300)
                 require(len(menus) == before + 1, 'Options failed to open')
                 d = menus[-1]
-                require(h.u16(d + 0x27c) == 3, 'text row missing')
+                require(h.u16(d + 0x27c) == 2, 'text row missing (TEXT SPEED must have two choices)')
                 return d
             d = open_options()
             opts = h.u32(d + 0x24)
             original = h.u16(opts)
-            require((original >> 2) & 3 == 0, 'fixture is not an old SLOW save')
+            require((original >> 2) & 3 == checks.NORMAL, 'fixture is not an old (NORMAL) save')
             # First exercise cancel after touch, then reopen and commit via buttons.
-            h.touch(227, 152, after=60)
-            require(h.u16(d + 0x27e) == 2 and h.u16(opts) == original, 'check failed: h.u16(d + 0x27e) == 2 and h.u16(opts) == original')
+            h.touch(210, 152, after=60)
+            require(h.u16(d + 0x27e) == checks.FAST and h.u16(opts) == original,
+                    'touching FAST did not select it, or changed the saved Options before Confirm')
             h.touch(220, 180, after=300)
             require(h.u16(opts) == original, 'Cancel committed text speed')
             d = open_options()
             require(h.u16(d + 0x27e) == 0, 'check failed: h.u16(d + 0x27e) == 0')
             # Touch locates the row; d-pad moves the value and A confirms native UI.
-            ui_mode = 1 if args.mode == 3 else args.mode
+            ui_mode = checks.NORMAL if args.mode == checks.ORIGINAL else args.mode
             h.touch(130, 152, after=40)
             for _ in range(ui_mode):
                 h.press('RIGHT', after=30)
@@ -99,8 +101,8 @@ def child(args):
             require((stored >> 2) & 3 == (expected >> 2) & 3,
                     f'Confirm did not store the chosen text speed (Options {stored:#x}, expected {expected:#x})')
             require(stored == expected, repr(('Confirm changed unrelated options', stored, expected)))
-            if args.mode == 3:
-                expected = original | 12          # controlled: reserved value -> original printer task
+            if args.mode == checks.ORIGINAL:
+                expected = original | 12          # controlled: unknown value 3 -> original printer task
                 h.w16(opts, expected)
             result['options'] = {'before': original, 'after': expected, 'cancel': 'passed', 'buttons': 'passed'}
             idle_heaps = heap_usage(h)
@@ -137,7 +139,7 @@ def child(args):
                         from control_fixture import TEXT
                         source = TEXT
                         before = len(re.sub(r'\{[^}]*\}', '', TEXT.split('{VAR:0201:60}')[0]))
-                        pause_gap = glyphs[before][2] - glyphs[before - 1][2]
+                        pause_gap = glyphs[before][1] - glyphs[before - 1][1]
                         require(pause_gap >= 60, repr(('explicit pause shortened', pause_gap)))
                         result['explicit_pause_frames'] = pause_gap
                         printer = trace.glyphs[mark + before][0]
@@ -152,12 +154,12 @@ def child(args):
                     # Printing time per page: first to last glyph, excluding page waits and input.
                     bounds = [m - mark for m in page_marks]
                     require(bounds[-1] == len(glyphs), 'glyphs drawn after the last page was captured')
-                    page_frames = [(glyphs[a][2], glyphs[b - 1][2])
+                    page_frames = [(glyphs[a][1], glyphs[b - 1][1])
                                    for a, b in zip([0] + bounds[:-1], bounds) if b > a]
                     page_spans = [b - a for a, b in page_frames]
                     summary, cadence_errors = checks.cadence(args.mode, glyphs)
                     errors.extend(f'{bank}#{msg}: {e}' for e in cadence_errors)
-                    # Model (budgets, frame decisions, stop reasons, phase) and product record:
+                    # Model (delegation, budgets, frame decisions, stop reasons) and product record:
                     # frames, dropped frames (frames inside a page's printing in which the
                     # printer's task did not run), frame stops.
                     record, stops, stop_errors = judge_message(trace, args.mode, mark, task_mark, page_frames)
@@ -199,9 +201,10 @@ def child(args):
 def compare(report):
     """Cross-mode assertions; returns errors."""
     modes = {r['mode']: r for r in report['modes']}
-    baseline = modes[3]['messages']
+    baseline = modes[checks.ORIGINAL]['messages']
+    speeds = (checks.NORMAL, checks.FAST)
     errors = []
-    for mode in (0, 1, 2):
+    for mode in speeds:
         errors += [f'{checks.NAMES[mode]}: {e}' for e in checks.compare_messages(baseline, modes[mode]['messages'])]
     orders = []
     for i, base in enumerate(baseline):
@@ -211,9 +214,9 @@ def compare(report):
         free = {m: modes[m]['messages'][i]['control_latency'] for m in MODES}
         name = f"{base['bank']}#{base['id']}"
         order, notes = checks.order_errors({m: modes[m]['messages'][i]['record'] for m in MODES})
-        order += checks.exact_errors('printer tasks from each page\'s last glyph to its control step', free[3],
-                                     {m: free[m] for m in (0, 1, 2)})
-        if not free[3]:
+        order += checks.exact_errors('printer tasks from each page\'s last glyph to its control step',
+                                     free[checks.ORIGINAL], {m: free[m] for m in speeds})
+        if not free[checks.ORIGINAL]:
             order.append('no control step observed after a glyph (vacuous control-latency check)')
         orders.append({'message': name, 'print_frames': spans, 'lag_frames': lag, 'frame_stops': limited,
                        'control_latency': free, 'errors': order, 'capped_ties': notes})
@@ -222,16 +225,16 @@ def compare(report):
     report['speed_order'] = orders
     per_frame = {m: max(x['cadence']['max_tasks_per_frame'] for x in modes[m]['messages']) for m in MODES}
     report['max_tasks_per_frame'] = per_frame
-    errors += [f'{checks.NAMES[m]}: {per_frame[m]} printer tasks in one frame, original {per_frame[3]}'
-               for m in (0, 1, 2) if per_frame[m] > per_frame[3]]
-    if 'explicit_pause_tasks' in modes[3]:
+    errors += [f'{checks.NAMES[m]}: {per_frame[m]} printer tasks in one frame, original {per_frame[checks.ORIGINAL]}'
+               for m in speeds if per_frame[m] > per_frame[checks.ORIGINAL]]
+    if 'explicit_pause_tasks' in modes[checks.ORIGINAL]:
         # The 60-tick pause counts printer tasks; frames are an observation (a dropped
         # frame inside the pause lengthens it by one frame at any speed, original included).
         report['explicit_pause_frames'] = {m: modes[m]['explicit_pause_frames'] for m in MODES}
         pause = {m: modes[m]['explicit_pause_tasks'] for m in MODES}
         report['explicit_pause_tasks'] = pause
-        errors += [f'{checks.NAMES[m]}: explicit pause {pause[m]} printer tasks != original {pause[3]}'
-                   for m in (0, 1, 2) if pause[m] != pause[3]]
+        errors += [f'{checks.NAMES[m]}: explicit pause {pause[m]} printer tasks != original {pause[checks.ORIGINAL]}'
+                   for m in speeds if pause[m] != pause[checks.ORIGINAL]]
     return errors
 
 

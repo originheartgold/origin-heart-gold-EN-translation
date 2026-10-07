@@ -1,8 +1,8 @@
 """Controlled callback fallback, busy callback retries and A/B input comparisons.
 
 Uses a same-candidate checkpoint in front of the trainer fixture (a two-page
-conversation). Mode 3 (reserved value, controlled RAM write) is the original
-printer task and the baseline for every case.
+conversation). Mode 3 (unknown value, controlled RAM write) is the original
+printer task and the baseline for every case; NORMAL must delegate exactly like it.
 
 - callback / busy: an existing, byte-verified return-zero code sequence is
   injected as the printer callback; only its return value is overridden to
@@ -16,7 +16,8 @@ printer task and the baseline for every case.
   tap that began after page 1 was complete, with exactly the original's latency from
   that tap; page 1 and the start of page 2 keep the original layout.
 Plain/held/tap cases are judged per native task (text_speed_checks.task_errors:
-budget, frame decisions against the payload's frame model, stop reason, SLOW phase).
+NORMAL delegates; FAST budget, frame decisions against the payload's frame model,
+stop reason).
 These are renderer/input tests on one natural conversation, not a scene audit.
 """
 import argparse
@@ -62,7 +63,7 @@ def main():
             code = code_bytes(payload)
             tracer = PrinterTrace(h, payload, font=1)
             for kind in kinds:
-                for mode in (3, 0, 1, 2):
+                for mode in checks.MODES:
                     h.load_state(checkpoint)
                     tracer.reset()
                     require(h.read(payload['base'], len(code)) == code, 'stale checkpoint executable')
@@ -128,11 +129,12 @@ def main():
                         trace['pixels'] = hashlib.sha256(h.emu.screenshot().crop(CROP).tobytes()).hexdigest()
                     else:
                         require(not trace['callbacks'] and not trace['injected'], f'{tag}: unexpected callback')
-                        require(bool(original) == (mode == 3), f'{tag}: delegation does not match the mode')
+                        require(original == (native if mode in checks.DELEGATING else 0),
+                                f'{tag}: delegation does not match the mode ({original} of {native} tasks delegated)')
                         later = rows[PAGE1:]
                         if kind in ('held-A', 'held-B', 'tap'):
                             require(later, f'{tag}: page 2 never started: input lost')
-                            done = page1[-1][3]
+                            done = page1[-1][2]
                             if kind == 'tap':
                                 press = min((t for t in trace['taps'] if t > done), default=None)
                                 require([t for t in trace['taps'] if t <= done],
@@ -142,15 +144,15 @@ def main():
                             # glyph and polls input from the task after that (last glyph + 2);
                             # a tap that starts earlier is seen then. Latency counts from the
                             # later of the press and that frame, for every mode alike.
-                            trace['page2_latency'] = later[0][3] - max(press, done + PROMPT_READY)
-                            trace['page2_raw_latency'] = later[0][3] - press
+                            trace['page2_latency'] = later[0][2] - max(press, done + PROMPT_READY)
+                            trace['page2_raw_latency'] = later[0][2] - press
                             trace['page1_done'], trace['page2_press'] = done, press
-                        summary, cadence_errors = checks.cadence(mode, [(r[1], r[2], r[3]) for r in page1])
+                        summary, cadence_errors = checks.cadence(mode, [(r[1], r[2]) for r in page1])
                         trace['cadence'] = summary
                         trace['stops'], stop_errors = checks.task_errors(mode, tasks)
                         errors.extend(f'{tag}: {e}' for e in cadence_errors + stop_errors + tracer.state_errors)
                     first = page1[0][1]
-                    trace['layout'] = [[r[4], r[5]] for r in rows]
+                    trace['layout'] = [[r[3], r[4]] for r in rows]
                     trace['task_offsets'] = [r[1] - first for r in page1]
                     trace['native'], trace['original'] = native, original
                     bad = probe.heap_walk()
@@ -161,8 +163,8 @@ def main():
                     h._per_frame.clear()
                     trace['glyph_count'] = len(rows)
                     report['cases'][tag] = trace
-                base = report['cases'][f'{kind}-3']
-                for mode in range(3):
+                base = report['cases'][f'{kind}-{checks.ORIGINAL}']
+                for mode in (checks.NORMAL, checks.FAST):
                     case = report['cases'][f'{kind}-{mode}']
                     n = min(len(case['layout']), len(base['layout']))
                     if case['layout'][:n] != base['layout'][:n] or n < PAGE1 + (kind in ('held-A', 'held-B', 'tap')):

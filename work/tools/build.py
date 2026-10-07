@@ -264,7 +264,7 @@ def main(argv=None):
     ap.add_argument("--no-regen-graphics", action="store_true",
                     help="use the generated graphics already in work/graphics instead of rebuilding them")
     ap.add_argument("--no-hardcoded", action="store_true", help="skip the hardcoded-strings stage")
-    ap.add_argument("--no-text-speed", action="store_true", help="omit the native SLOW/MEDIUM/FAST setting")
+    ap.add_argument("--no-text-speed", action="store_true", help="omit the native NORMAL/FAST setting")
     ap.add_argument("--no-patch", action="store_true")
     ap.add_argument("--no-verify", action="store_true")
     ap.add_argument("--lenient", action="store_true", help="unencodable en falls back to zh instead of failing")
@@ -347,7 +347,7 @@ def main(argv=None):
             f"({sum(r['mode'] == 'relocated' for r in hc_report['strings'])} relocated), "
             f"{hc_report['todo']} untranslated, {len(hc_report['code_patches'])} code patches")
 
-    # 3d. Text speed defaults to MEDIUM for new games and preserves demand loading.
+    # 3d. Text speed defaults to FAST for new games (existing saves: NORMAL) and preserves demand loading.
     speed_report = {"enabled": False, "reason": "--no-text-speed" if a.no_text_speed else "--no-hardcoded"}
     report["text_speed"] = speed_report
     if not a.no_text_speed and not a.no_hardcoded:
@@ -359,7 +359,7 @@ def main(argv=None):
         hc_report["files_before_text_speed"] = dict(hc_report["files"])
         hc_report["files"]["arm9"] = hashlib.sha1(hardcoded.RomView(rom).get("arm9")).hexdigest()[:12]
         report["text_speed"] = speed_report
-        log("text speed: native SLOW / MEDIUM / FAST and seven-row Options menu")
+        log("text speed: native NORMAL / FAST and seven-row Options menu")
 
     # 4. write
     log(f"write {out_rom}")

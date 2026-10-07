@@ -2,20 +2,22 @@
 
 One cold boot per speed (own process, private battery directory, pinned clock),
 using the frame schedule of the former native_probe 'fieldboot' run: Continue,
-open Options with buttons, check the old-save default SLOW, touch-select the
+open Options with buttons, check the old-save default NORMAL, touch-select the
 speed (not committed early), Confirm (neighbouring Options bits kept), then the
 trainer's first page (54 glyphs) is printed with no harness checkpoint.
 
-The original printer (reserved value 3 written after Confirm) is the baseline.
-Requires per mode: the design glyph budget and a valid stop reason for every
-native task, every frame decision equal to the payload's frame model and the
-payload's frame state equal to the costs the gate measured itself
-(text_speed_checks.task_errors, gate_common.PrinterTrace); completed pixels and
-glyph layout identical to the original; and the product rules of
-text_speed_checks.order_errors: ORIGINAL > SLOW > MEDIUM > FAST in printing frames
-(a tie only at the physical cap), no speed with more dropped frames than the
-original (dropped frame = a frame in which the printer's task did not run), none
-dropped only because of extra glyphs, and SLOW within its design floor.
+The original printer (unknown value 3 written after Confirm) is the baseline; its run
+touches NORMAL, as the NORMAL run does, so both runs get the same input.
+Requires per mode: NORMAL delegates every task to the original printer; FAST keeps
+the design glyph budget and a valid stop reason for every native task, every frame
+decision equal to the payload's frame model and the payload's frame state equal to
+the costs the gate measured itself (text_speed_checks.task_errors,
+gate_common.PrinterTrace); completed pixels and glyph layout identical to the
+original; and the product rules of text_speed_checks.order_errors: NORMAL identical
+to the original printer, FAST at most NORMAL's printing frames (strictly fewer where a
+NORMAL frame had room for one more glyph), no more dropped frames than NORMAL
+(dropped frame = a frame in which the printer's task did not run), none dropped only
+because of extra glyphs.
 """
 import argparse
 import hashlib
@@ -30,7 +32,8 @@ from gate_common import (CLOCK, PrinterTrace, ROOT, add_arguments, attach_probe,
                          memory_summary, require, resolve)
 import text_speed_checks as checks  # noqa: E402
 
-NAMES = ('slow', 'medium', 'fast', 'original')
+NAMES = {checks.NORMAL: 'normal', checks.FAST: 'fast', checks.ORIGINAL: 'original'}
+TOUCH_X = {checks.NORMAL: 130, checks.FAST: 210}     # inside the TEXT SPEED touch columns
 
 
 def child(args):
@@ -64,9 +67,9 @@ def child(args):
             h.press('A', after=300)
             require(menus, 'Options did not open')
             opened = row6()
-            require((opened['count'], opened['value']) == (3, 0), f'old-save default changed: {opened}')
-            ui = 1 if mode == checks.ORIGINAL else mode
-            h.touch((130, 177, 227)[ui], 152, frames=6, after=60)
+            require((opened['count'], opened['value']) == (2, checks.NORMAL), f'old-save default changed: {opened}')
+            ui = checks.NORMAL if mode == checks.ORIGINAL else mode
+            h.touch(TOUCH_X[ui], 152, frames=6, after=60)
             selected = row6()
             require(selected['value'] == ui, 'touch selection missed')
             require(selected['saved'] == opened['saved'], 'selection committed early')
@@ -108,7 +111,7 @@ def child(args):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     add_arguments(parser)
-    parser.add_argument('--mode', type=int, choices=range(4))
+    parser.add_argument('--mode', type=int, choices=sorted(NAMES))
     args = resolve(parser, parser.parse_args())
     if args.mode is not None:
         child(args)
@@ -116,7 +119,7 @@ def main():
     payload = load_expected_payload(args)
     summary = {'status': 'failed', **identity(args, payload), 'modes': {}, 'errors': []}
     try:
-        for mode, name in enumerate(NAMES):
+        for mode, name in NAMES.items():
             out = args.out / name
             command = [sys.executable, '-I', __file__, '--rom', str(args.rom), '--save', str(args.save),
                        '--out', str(out), '--mode', str(mode)]
@@ -134,12 +137,12 @@ def main():
         if not summary['errors']:
             modes = summary['modes']
             base = modes['original']
-            for name in NAMES[:3]:
+            for name in (NAMES[checks.NORMAL], NAMES[checks.FAST]):
                 if modes[name]['pixels'] != base['pixels']:
                     summary['errors'].append(f'{name}: completed dialogue pixels differ from the original printer')
                 if modes[name]['layout'] != base['layout']:
                     summary['errors'].append(f'{name}: glyph layout differs from the original printer')
-            order, notes = checks.order_errors({m: modes[n]['record'] for m, n in enumerate(NAMES)})
+            order, notes = checks.order_errors({m: modes[n]['record'] for m, n in NAMES.items()})
             summary['errors'] += [f'frame order: {e}' for e in order]
             summary['capped_ties'] = notes
         if not inputs_unchanged(summary):

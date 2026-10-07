@@ -16,7 +16,7 @@ class PayloadTests(unittest.TestCase):
         self.assertEqual(p['source_sha256'],speed.source_digest())
         self.assertLessEqual(speed.BASE+len(code),0x01ffa000)
         for name in ['print_task','load_rows','load_choice','load_label','exit_free','draw_label','setup_sprites',
-                     'frame_end','pass_end','init_printer']:
+                     'frame_end','pass_end']:
             target=p['symbols'][name]
             self.assertEqual(target&1,1,name)
             self.assertTrue(speed.BASE <= (target&~1) < speed.BASE+len(code),name)
@@ -184,7 +184,7 @@ class CodePatchGuardTests(unittest.TestCase):
         tails={lo for lo,_,name in speed.CALLED_ROUTINES if 'tail-called' in name}
         main=[t for t in speed.native_call_targets() if t<speed.OVBASE]
         overlay=[t for t in speed.native_call_targets() if t>=speed.OVBASE]
-        self.assertEqual(len(main),18)
+        self.assertEqual(len(main),17)
         self.assertEqual({t&~1 for t in main}|tails,entries)
         self.assertEqual(overlay,[0x021e5335,0x021e5acd])
         # Literal words in the compiled payload that point into main ARM9 code are
@@ -325,10 +325,15 @@ class RomTests(unittest.TestCase):
         self.assertEqual(before.sections[0].data[off+12:off+20],after.sections[0].data[off+12:off+20])
         self.assertEqual(struct.unpack_from('<H',after.sections[0].data,0xba9a)[0],0x2501)
 
-    def test_private_printer_storage_and_new_game_default(self):
+    def test_printer_unchanged_and_new_game_default(self):
         data=self.patched.loadArm9().sections[0].data
-        self.assertEqual(struct.unpack_from('<H',data,0x208ea)[0],0x2138)
-        self.assertEqual(bytes(data[0x20962:0x20966]),speed.bl(0x2020962,speed.load_payload()['symbols']['init_printer']))
+        original=self.original.loadArm9().sections[0].data
+        # No private printer storage since D-1604 (no SLOW phase): the constructor's
+        # allocation size and its call of the original initializer are untouched.
+        self.assertEqual(struct.unpack_from('<H',data,0x208ea)[0],0x2134)
+        self.assertEqual(bytes(data[0x208ea:0x208ec]),bytes(original[0x208ea:0x208ec]))
+        self.assertEqual(bytes(data[0x20962:0x20966]),speed.bl(0x2020962,0x2020be8))
+        # New games start on FAST (text-speed bits 2..3 = 1, D-1604).
         self.assertEqual(struct.unpack_from('<HH',data,0x2b176),(0x2004,0x4301))
         # The game loop's last call before its VBlank wait goes through pass_end (frame_end, catch-up).
         self.assertEqual(bytes(data[0xde0:0xde4]),speed.bl(0x02000de0,speed.load_payload()['symbols']['pass_end']))
@@ -339,12 +344,18 @@ class RomTests(unittest.TestCase):
     def test_menu_choice_and_touch_tables(self):
         ov=self.patched.loadArm9Overlays()[50];b=ov.data;base=ov.ramAddress
         counts_ptr=struct.unpack_from('<I',b,0x21e53e0-base)[0]
-        self.assertEqual(struct.unpack_from('<8I',b,counts_ptr-base),(3,2,2,2,3,20,3,2))
+        self.assertEqual(struct.unpack_from('<8I',b,counts_ptr-base),(3,2,2,2,3,20,2,2))   # TEXT SPEED: NORMAL, FAST
         # The two pointers into the mapping must relocate together.
         row_ptr=struct.unpack_from('<I',b,0x21e5930-base)[0]
         choice_ptr=struct.unpack_from('<I',b,0x21e5938-base)[0]
         self.assertEqual(choice_ptr,row_ptr+4)
-        self.assertEqual(struct.unpack_from('<6I',b,row_ptr-base+16*8),(6,0,6,1,6,2))
+        self.assertEqual(struct.unpack_from('<4I',b,row_ptr-base+16*8),(6,0,6,1))
+        boxes_ptr=row_ptr-19*4               # apply() appends the 19 touch boxes right before the mapping
+        boxes=list(struct.iter_unpack('<4B',b[boxes_ptr-base:boxes_ptr-base+19*4]))
+        self.assertIn(struct.pack('<I',boxes_ptr),b)
+        self.assertEqual(boxes[16:],[(146,166,112,167),(146,166,192,247),(255,0,0,0)])
+        # Row 6 label pitch 32 (as the two-choice rows 2 and 3): NORMAL at x 108, FAST at 188.
+        self.assertEqual(b[0x21e5bae-base],0x20)
         self.assertEqual(struct.unpack_from('<4I',b,row_ptr-base+14*8),(7,5,7,6))
 
     def test_unknown_binary_fails_before_mutation(self):
@@ -376,7 +387,7 @@ class RomTests(unittest.TestCase):
     def test_critical_runtime_contract_is_independent_of_receipt_hashes(self):
         # Simulate a later build stage overwriting a critical instruction before
         # refreshing its output hash. A self-consistent receipt is not sufficient.
-        for off in (0xd1a28,0x20a18,0x208ea,0x20962,0x2b176,0x2b1c6,0x2b1d2,0x2b1da,0xde0):
+        for off in (0xd1a28,0x20a18,0x2b176,0x2b1c6,0x2b1d2,0x2b1da,0xde0):
             with self.subTest(offset=hex(off)):
                 rom=copy.deepcopy(self.patched)
                 code=rom.loadArm9();code.sections[0].data[off]^=1
@@ -489,12 +500,12 @@ class RomTests(unittest.TestCase):
 
     def test_code_patch_inside_a_dependency_fails(self):
         main=self.original.loadArm9().sections[0].data
-        # Reviewer cases: print task body, Options accessor, printer initializer,
+        # Reviewer cases: print task body, Options accessor,
         # exit_free target, message loader, music getter; plus code settings.
         # Glyph path: RenderText entry, state machine code and a jump table.
         # Game loop (pass_end hook site and its VBlank wait) and the call frame_end makes.
         # Printer catch-up: slot allocator, queue run and queue add.
-        for off in (0x20a40,0x2934a,0x20bea,0x71b2,0xbb42,0x2b1c4,0xba4,0xd1a1c,
+        for off in (0x20a40,0x2934a,0x71b2,0xbb42,0x2b1c4,0xba4,0xd1a1c,
                     0x2e50,0x22d2,0x2400,0x22f4,0x242a,0x27b8,0xde0,0xde8,0xd90,0x272d6,
                     0x20738,0x2005c,0x200c0):
             old=struct.unpack_from('<H',main,off)[0]

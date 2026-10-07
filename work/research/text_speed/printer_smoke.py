@@ -1,13 +1,13 @@
 """Smoke gate for text printers outside ordinary field dialogue.
 
 Each screen is played from the same checkpoint once per mode: the original printer
-(reserved value 3) and SLOW / MEDIUM / FAST. Every AddTextPrinter call is logged
+(unknown value 3), NORMAL and FAST. Every AddTextPrinter call is logged
 (speed, callback, caller). Per screen the gate requires:
 - the batched path is used exactly as declared: 'batched' screens print through
-  native batching tasks at every speed (and only through the original task with
-  value 3); 'synchronous' screens start no asynchronous printer at all;
-- every native task passes text_speed_checks.task_errors (budget, frame rule,
-  stop reasons);
+  native batching tasks with FAST (and only through the original task with NORMAL
+  and value 3); 'synchronous' screens start no asynchronous printer at all;
+- every native task passes text_speed_checks.task_errors (delegation, budget, frame
+  rule, stop reasons);
 - the captured screens equal the original printer's, after the text completed
   (top screen rows TEXT_ROWS, which exclude the page arrow and animated field).
 
@@ -17,7 +17,7 @@ card), mail (no mail item), the credits (end of the game) and the new-game
 introduction: it is reachable from a blank battery (about 32 A presses), but its
 pages are drawn synchronously; the one asynchronous printer it starts renders a
 single control step before the scene removes it, and New Game re-initialises
-Options (MEDIUM), so a mode cannot be chosen there. No batched glyphs to compare.
+Options (FAST), so a mode cannot be chosen there. No batched glyphs to compare.
 """
 import argparse
 import hashlib
@@ -32,7 +32,7 @@ from gate_common import (CLOCK, PRINTER_START, ROOT, PrinterTrace, add_arguments
                          itcm_errors, load_expected_payload, require, resolve, start_game)
 import text_speed_checks as checks
 
-MODES = (3, 0, 1, 2)
+MODES = checks.MODES
 PC_CENTER = (69, 11, 13)          # Cherrygrove Pokémon Center 1F: tile below the PC (behaviour 0x83), facing up
 SIGN_SCRIPT = 3                   # Route 1 bg event 0: the direction sign
 
@@ -130,9 +130,9 @@ def child(args, payload, battery):
                             errors.append(f'{tag}: declared synchronous, but started async printers {asynchronous}')
                     elif not asynchronous:
                         errors.append(f'{tag}: declared batched, but no async printer started')
-                    elif mode == 3 and batched:
+                    elif mode in checks.DELEGATING and batched:
                         errors.append(f'{tag}: {batched} batched tasks with the original printer selected')
-                    elif mode != 3 and not batched:
+                    elif mode not in checks.DELEGATING and not batched:
                         errors.append(f'{tag}: async printer did not go through the batched path')
                     if not tracer.glyphs:
                         errors.append(f'{tag}: no glyphs drawn (vacuous)')
@@ -175,11 +175,11 @@ def main():
                 errors.extend(f'{battery}: {e}' for e in (r['errors'] or [f'exit {code}']))
         results = {(r['screen'], r['mode']): r for r in report['screens']}
         for name in SCREENS:
-            base = results.get((name, 3))
+            base = results.get((name, checks.ORIGINAL))
             if base is None:
                 errors.append(f'{name}: original printer run missing')
                 continue
-            for mode in (0, 1, 2):
+            for mode in (checks.NORMAL, checks.FAST):
                 other = results.get((name, mode))
                 if other is None:
                     errors.append(f'{name} {checks.NAMES[mode]}: run missing')

@@ -8,7 +8,10 @@ typedef unsigned int u32;
 #define U32(p,o) (*(u32 *)((u8 *)(p)+(o)))
 #define U16(p,o) (*(u16 *)((u8 *)(p)+(o)))
 #define U8(p,o) (*(u8 *)((u8 *)(p)+(o)))
-static inline unsigned mode(void) {
+/* Text speed (D-1604): the two bits 2..3 of the Options record hold 1 for FAST;
+ * every other value (0: NORMAL and existing saves; 2 and 3: unreleased or unknown
+ * values) is NORMAL, the hack's original printer task. Returns 1 for FAST. */
+static inline unsigned fast(void) {
     void *save=FN(0x02001195,void *(*)(void))();
     /* This accessor uses the main runtime pointer, published at 0x02000cda
      * only after SaveData construction, block metadata and Options init/load
@@ -16,18 +19,10 @@ static inline unsigned mode(void) {
      * constructor pointer is a different global and must not be used here.
      * SaveData + 4 means a cartridge save exists, not runtime readiness:
      * fresh games have initialized Options while that flag is still zero. */
-    if (!save) return 3;
+    if (!save) return 0;
     u16 *opts=FN(0x02029349,u16 *(*)(void *))(save);
-    if (!opts) return 3;
-    unsigned m=(*opts>>2)&3;
-    return m;
-}
-/* Constructor storage grows from 0x34 to 0x38 bytes. The original initializer
- * still owns +0x30; only our extension byte +0x34 stores the SLOW phase.
- * Each newly allocated printer starts independently, including reused heap slots. */
-void init_printer(void *p) {
-    FN(0x02020be9,void (*)(void *))(p);
-    U8(p,0x34)=0;
+    if (!opts) return 0;
+    return ((*opts>>2)&3)==1;
 }
 /* Frame timing (work/notes/text_speed_vcount.md). The game loop wakes at the
  * start of VBlank (display line 192), runs the field or battle work, then waits
@@ -62,12 +57,22 @@ void init_printer(void *p) {
  * task and keeps the history.
  * MARGIN: VCOUNT counts whole lines; the current line can be up to one line
  * later than read. The maxima of eight samples already cover the rounding of
- * the two costs. */
+ * the two costs.
+ * SHORT_REST: while the rest history holds fewer than SHORT samples, the rest
+ * counts at least SHORT_REST lines, the typical rest (7 lines in 371 of 432
+ * samples over 17 field scenes; 6 in 47, 8 in 14). Measured (FAST, 2026-10-07):
+ * a next rest exceeded the largest earlier one by 2 lines only with a single low
+ * sample (Route 1 promoter: 6, then 8: a dropped frame); against the floor every
+ * excess was at most 1 line, as with a full history, which MARGIN covers
+ * (work/notes/text_speed_vcount.md). A floor, not an extra margin: a short
+ * history of typical rests decides exactly as before. */
 #define SLOTS 8
 #define GLYPH_SEED 13
 #define REST_SEED 20
 #define STALE 60
 #define MARGIN 1
+#define SHORT 3
+#define SHORT_REST 7
 /* RAM use: these 26 bytes, zero at boot, in the payload's ITCM block (the
  * SDK's ITCM arena starts after them). One global state: glyph costs do not
  * depend on the printer, and the rest belongs to the frame, not the printer. */
@@ -124,15 +129,17 @@ static unsigned room(struct frame_state *s,unsigned now) {
     /* Lines left until the next VBlank starts (1..263). In VBlank (battle
      * text, or a frame already lost) the next VBlank is a whole frame away. */
     unsigned left=now<VBLANK_LINE?VBLANK_LINE-now:VBLANK_LINE+LINES-now;
-    unsigned glyph=0,rest=0,low=255;
+    unsigned glyph=0,rest=0,low=255,samples=0;
     for(unsigned i=0;i<SLOTS;i++) {
         unsigned g=s->glyph[i],r=s->rest[i];
         if(g>glyph) glyph=g;
         if(r>rest) rest=r;
         if(r && r<low) low=r;
+        if(r) samples++;
     }
     if(!glyph) glyph=GLYPH_SEED;
     if(!rest) {rest=REST_SEED; low=0;}
+    else if(samples<SHORT && rest<SHORT_REST) rest=SHORT_REST;
     /* Fits: one more glyph and the rest end before VBlank. */
     if(left>=glyph+rest+MARGIN) return 1;
     /* Lost: even the shortest recent rest ends after VBlank if the batch
@@ -140,17 +147,17 @@ static unsigned room(struct frame_state *s,unsigned now) {
      * following VBlank, and the batch may use it (still within its budget). */
     return left<low;
 }
-/* Preserve special pacing and callbacks. Invalid/unpublished options use the
- * original renderer; ordinary SLOW/MEDIUM/FAST use bounded glyph batches. */
+/* NORMAL, unpublished options, callbacks and explicit delays use the original
+ * printer task (one step per task). FAST draws batches of up to three glyphs. */
+#define FAST_BUDGET 3
 void print_task(void *task, void *p) {
-    unsigned m=mode();
-    if (m==3 || U32(p,0x1c) || (U8(p,0x29)&127)) {
+    if (!fast() || U32(p,0x1c) || (U8(p,0x29)&127)) {
         FN(0x02020a1d,void (*)(void *,void *))(task,p); return;
     }
     if (*(volatile u8 *)0x021d0ef4) return;
     struct frame_state *s=&text_speed_state;
     s->ran=1;
-    unsigned budget=m==0?1+(U8(p,0x34)&1):m+1;
+    unsigned budget=FAST_BUDGET;
     unsigned dirty=0;
     FN(0x02020a9d,void (*)(unsigned,unsigned,unsigned))(U8(p,0x15),U8(p,0x16),U8(p,0x17));
     unsigned before=0,extra=0;
@@ -187,32 +194,26 @@ void print_task(void *task, void *p) {
         while(next==0xe000) next=*++q;
         if(next==0xffff || next==0xfffe || next==0x25bc || next==0x25bd || next==0xf0fd) break;
         if(!--budget) break;
-        if(!room(s,now)) {
-            /* A stop here leaves budget unused. For SLOW that is its two-glyph
-               phase: undo the flip below so the next task keeps the two-glyph
-               turn instead of losing it to the frame limit. */
-            if(m==0) U8(p,0x34)^=1;
-            break;
-        }
+        if(!room(s,now)) break;
         before=now;
         extra=1;
     }
     if(dirty) {
         mark(s);
-        if(m==0) U8(p,0x34)^=1;
         FN(0x0201dda9,void (*)(void *))((void *)U32(p,4));
     }
 }
 /* Music still uses the low two bits. Text speed lives in the upper two bits
- * of the historical four-bit music field. Other settings are untouched. */
+ * of the historical four-bit music field. Other settings are untouched.
+ * The row shows NORMAL (choice 0) or FAST (choice 1): stored 1 shows FAST,
+ * every other stored value shows NORMAL (D-1604). */
 void load_rows(void *d) {
     FN(0x021e5335,void (*)(void *))(d);
-    unsigned m=(U16((void *)U32(d,0x24),0)>>2)&3;
-    U16(d,0x27e)=m<3?m:1;
+    U16(d,0x27e)=((U16((void *)U32(d,0x24),0)>>2)&3)==1;
     U16(d,0x2d2)=0;
 }
 void *load_choice(void *msg,unsigned id) {
-    if(id>=41 && id<=43) {
+    if(id>=41 && id<=42) {
         void *s=FN(0x02026865,void *(*)(unsigned,unsigned))(16,38);
         FN(0x02026eb9,void (*)(void *,const u16 *,unsigned))(s,labels[id-40],11);
         return s;
@@ -226,8 +227,7 @@ void load_label(void *msg,unsigned id,void *str) {
 void commit_speed(void *d) {
     if((U32(d,0x10)&3)==1) {
         u16 *opts=(u16 *)U32(d,0x24);
-        unsigned m=U16(d,0x27e);
-        if(m>2) m=1;
+        unsigned m=U16(d,0x27e)==1;
         *opts=(*opts&~12)|(m<<2);
     }
 }

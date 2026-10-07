@@ -38,7 +38,7 @@ def main():
                 report['getter_checks'] += 1
             h.on_exec(0x0202b1c4, getter_entry)
             h.on_exec(0x0202b1ce, getter_return)
-            counts = (3, 2, 2, 2, 3, 20, 3)
+            counts = (3, 2, 2, 2, 3, 20, 2)       # TEXT SPEED: NORMAL, FAST
             def rows(d):
                 return [h.u16(d + 0x86 + row * 0x54) for row in range(7)]
             def open_menu():
@@ -64,12 +64,12 @@ def main():
                 require(rows(d)[0] == target, 'check failed: rows(d)[0] == target')
             original = h.u16(h.array(1))
             d = open_menu(); initial_rows = rows(d); leave(False)
-            for mode in range(3):
+            for mode in (0, 1):                  # NORMAL, FAST
                 for music in range(3):
                     d = open_menu()
                     before = h.u16(h.array(1))
                     select_music(d, music)
-                    h.touch((130, 177, 227)[mode], 152, after=30)
+                    h.touch((130, 210)[mode], 152, after=30)
                     require(rows(d) == [music, *initial_rows[1:6], mode], 'check failed: rows(d) == [music, *initial_rows[1:6], mode]')
                     require(h.u16(h.array(1)) == before, 'Menu edits changed saved Options before Confirm')
                     leave(True)
@@ -98,12 +98,12 @@ def main():
                 wanted = list(before); wanted[row] = (before[row] + 1) % counts[row]
                 require(rows(d) == wanted, 'check failed: rows(d) == wanted')
                 leave(True)
-                require(h.u16(h.array(1)) & 15 == 10, 'check failed: h.u16(h.array(1)) & 15 == 10')  # FAST and music 1/4
+                require(h.u16(h.array(1)) & 15 == 6, 'check failed: h.u16(h.array(1)) & 15 == 6')  # FAST and music 1/4
                 d = open_menu(); require(rows(d) == wanted, 'check failed: rows(d) == wanted')
                 for _ in range(row): h.press('DOWN', after=30)
                 h.press('LEFT', after=30); require(rows(d) == before, 'check failed: rows(d) == before')
                 leave(True)
-                require(h.u16(h.array(1)) == (original & ~15) | 10, 'check failed: h.u16(h.array(1)) == (original & ~15) | 10')
+                require(h.u16(h.array(1)) == (original & ~15) | 6, 'check failed: h.u16(h.array(1)) == (original & ~15) | 6')
                 report['neighbor_rows'].append({'row': row, 'before': before[row], 'committed': wanted[row],
                                                 'restored': True})
             h.screenshot('completed-field')

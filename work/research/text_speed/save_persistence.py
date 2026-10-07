@@ -1,4 +1,4 @@
-"""Native Options -> actual in-game save -> reset/Continue for all three speeds.
+"""Native Options -> actual in-game save -> reset/Continue for both speeds (FAST, then NORMAL).
 
 No fixed-clock movie here: a reset during DeSmuME movie recording restores the
 movie's starting battery, which would discard the in-game save under test. This
@@ -26,10 +26,10 @@ def main():
             require(original&12==0, 'requires legacy save')
             menus=[]
             h.on_exec(payload['symbols']['load_rows']&~1,lambda h:menus.append(h.reg.r0))
-            for mode in (2,1,0):
+            for mode in (1,0):
                 h.press('X',after=90);h.touch(124,115,after=300)
                 require(menus, 'check failed: menus')
-                h.touch((130,177,227)[mode],152,after=40);h.touch(149,180,after=300)
+                h.touch((130,210)[mode],152,after=40);h.touch(149,180,after=300)
                 expected=(original&~12)|(mode<<2)
                 require(h.u16(h.array(1))==expected, f'Confirm did not store the chosen text speed (Options {h.u16(h.array(1)):#x}, expected {expected:#x})')
                 h.press('B',after=90);h.press('X',after=90)
@@ -46,7 +46,7 @@ def main():
                 problems=checks.option_label_errors(h.emu.screenshot().convert('RGB'),mode);require(not problems, repr(problems))
                 h.press('B',after=300);h.press('B',after=90)
                 report['modes'].append({'mode':mode,'options_after_reset':actual})
-        require(len(report['modes'])==3, "check failed: len(report['modes'])==3")
+        require(len(report['modes'])==2, "check failed: len(report['modes'])==2")
         require(inputs_unchanged(report), 'input modified')
         report['status']='passed'
     except BaseException as exc:
