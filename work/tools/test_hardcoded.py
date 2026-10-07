@@ -168,6 +168,24 @@ class TestRom(unittest.TestCase):
             hc.apply(rom2, CM, code_patches=bad)
         self.assertEqual(hc.RomView(rom2).get("overlay58"), self.orig_ov58)
 
+    def test_antipiracy_stubs(self):
+        # the six DS Protect entries in overlay114 return the genuine-cart values 0,1,0,1,0,1
+        # ('mov r0,#n; bx lr'); nothing else in the overlay changes
+        ap = [p for p in hc.load_code_patches() if p["id"].startswith("antipiracy-")]
+        self.assertEqual([p["offset"] for p in ap], ["0x864", "0x94C", "0xA34", "0xB1C", "0xC04", "0xCCC"])
+        self.assertTrue(all(p["enabled"] and p["file"] == "overlay114" for p in ap))
+        rom = m.load_rom(ROM_CN)
+        orig = hc.RomView(self.rom).get("overlay114")
+        hc.apply(rom, CM, cfg={"strings": []}, code_patches=ap)
+        new = hc.RomView(rom).get("overlay114")
+        self.assertEqual(len(new), len(orig))
+        changed = {i for i in range(len(orig)) if orig[i] != new[i]}
+        self.assertTrue(changed <= {int(p["offset"], 16) + k for p in ap for k in range(8)})
+        for p, ret in zip(ap, (0, 1, 0, 1, 0, 1)):
+            off = int(p["offset"], 16)
+            self.assertEqual(orig[off:off + 8].hex(), "f0472de980d04de2")
+            self.assertEqual(struct.unpack_from("<2I", new, off), (0xE3A00000 | ret, 0xE12FFF1E))
+
 
 if __name__ == "__main__":
     unittest.main()
