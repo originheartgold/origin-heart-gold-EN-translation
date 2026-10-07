@@ -12,7 +12,7 @@ BASE=0x01ff8620
 OVBASE=0x021e4980
 # This reviewed pin lives in patcher source, never in the mutable cache. Updating
 # native code requires review of its reproducible payload and this separate pin.
-REVIEWED_PAYLOAD_SHA256='6a5acbbf84b4e7608b0f3202f0b03d7b002d65865d012bcf311b4291f9b34ab7'
+REVIEWED_PAYLOAD_SHA256='fccee87490cfa47ce6d73e996cb128df8d487e3a0c31f4633ee0cb211d5cf211'
 REQUIRED_SYMBOLS=frozenset(('print_task','load_rows','load_choice','load_label',
                             'commit_speed','exit_free','draw_label','setup_sprites','init_printer'))
 MAX_PAYLOAD_SIZE=0x01ffa000-BASE
@@ -86,6 +86,9 @@ DEPENDENT_CODE=(
     (0x02000ba0,0x02000bb8,'code settings / autoload list words rewritten by code.save()'),
 )
 DEPENDENCIES=CALLED_ROUTINES+DEPENDENT_CODE
+# The batching loop also reads VCOUNT (0x04000006), the DS display line I/O
+# register, to stop before a frame overruns. It is hardware, not ARM9 code or data,
+# so no code patch can overlap it and it has no dependency range.
 
 def native_call_targets():
     """Every FN(address, ...) call target in native.c (source pinned via the payload)."""
