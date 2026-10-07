@@ -309,9 +309,12 @@ suspected double printer runs. What was found:
 Rule (`text_speed_checks.battle_pacing_errors`): the first glyph and the end-of-text
 step must be exactly as many passes after the printer's start and last glyph as with
 the original printer. The pause after each message (passes) and the completed text's
-on-screen dwell (frames) must equal the original's, or be a value the original
-printer itself shows when its run is replayed from the same checkpoint with its start
-delayed by 1-12 frames (the gate runs those replays whenever a value differs).
+on-screen dwell (frames) must equal the original's. Where one differs, the gate replays
+the speed run from the same checkpoint and switches it to the original printer at that
+message's pause start (the pass in which its printer is freed); the replay must show
+exactly the plain speed run's pause and dwell (2026-10-07; the earlier acceptance of
+values seen in 1-12 frame delayed replays of the original is gone: a delayed original
+cannot reproduce the sound engine's state, see text_speed_release_checks.md).
 The dwell counts from the first frame the completed text is on screen
 (`text_speed_checks.completed_shown`), not from the final glyph's frame number.
 DeSmuME's emulator frame starts at display line 0, a battle loop pass at VBlank
@@ -323,7 +326,7 @@ although the pause (76 passes), the end-of-text step (1 pass) and the frames the
 completed text was actually on screen (69, NORMAL and the original alike) were
 identical. Not a printer defect: the window copy of that batch runs in the same pass
 and the text appears in the same frame relative to the next message.
-In the final run 14 of 231 pauses of the three speeds differed from the original printer's (by +1, -1 or -2 passes), all values the original itself shows in its replays; 217 were equal. Each segment must also be shorter by exactly the printing frames saved
+On 2026-10-07 (eight trainers) NORMAL equalled the original everywhere; 8 FAST messages differed by one pass or frame, and in all 8 the A/B replay showed exactly the plain FAST values. Each segment must also be shorter by exactly the printing frames saved
 plus those pause differences, with an identical lead-in.
 
 ## How the gates check it
@@ -422,6 +425,7 @@ Fault `no-catch-up` (catch-up never runs) must fail it with 'frames per glyph'.
 - Two scenes reach the physical cap (above); MEDIUM is one frame slower than SLOW on
   idle Route 1 because of forced drops. Only cheaper glyphs (the glyph cache) can
   change that.
-- The sound rule accepts a battle pause only if the original printer shows that
-  value in 12 delayed replays; a value it would show only with other delays fails the
-  gate (none seen).
+- A battle pause or dwell that differs from the original's is accepted only when the
+  A/B replay (switch to the original printer at the pause start) shows exactly the
+  speed run's values; the game state at the pause start is not compared (background
+  processes, see text_speed_release_checks.md).

@@ -22,14 +22,16 @@ passes, not display frames:
   command menu) and the completed text's on-screen dwell: equal to the original's
   (pause in passes, dwell in frames from the first frame the completed text is on
   screen: text_speed_checks.completed_shown, not from the final glyph's frame number,
-  which for a FAST batch spanning line 0 is one frame later for the same pass), or a value that the original printer itself
-  shows when replayed from the same checkpoint with its start delayed by
-  1..JITTER_DELAYS frames (seen: up to two passes apart). Mechanism: the battle
-  waits for its sound (move/cry sound effects) to end, and the sound engine runs on
-  the ARM7's own sound-frame clock (about 5.2 ms), not on video frames, so the pass
-  in which the battle sees the sound end depends on the absolute timing; in those
-  replays RAM differs only in the sound engine's work area and two timer words
-  until the pass where the battle moves on (work/notes/text_speed_vcount.md).
+  which for a FAST batch spanning line 0 is one frame later for the same pass).
+  Where a speed's value differs, an A/B replay decides (user decision 2026-10-07): the
+  speed run is replayed from the same checkpoint and switched to the original printer
+  (the two text-speed bits) at that message's pause start, the pass in which its
+  printer is freed; the replay must reproduce the speed run up to there and its pause
+  and dwell must equal the plain speed run's exactly. The pause is the battle waiting
+  for its sounds, which run on the ARM7's sound-frame clock (2728 x 64 cycles); the
+  sound engine's state at the pause start is shaped by every sound triggered earlier
+  in the segment at its own absolute time, which faster text moves, so no delayed
+  replay of the original can reproduce it (work/notes/text_speed_vcount.md).
 - the lead-in before the first message is identical, and each segment is shorter by
   exactly the printing frames saved plus the pause differences.
 
@@ -66,7 +68,6 @@ MODES = checks.MODES
 SPEEDS = (checks.NORMAL, checks.FAST)
 TEXT_BOX = (8, 153, 248, 184)
 TURNS = 3
-JITTER_DELAYS = 12
 # Battle RNG (CN/EN ARM9 overlay 14, also loaded in battle): the routine at BATTLE_RNG_ROUTINE
 # advances the u32 at [BATTLE_RNG_HOLDER] + BATTLE_RNG_OFFSET (x * 0x41C64E6D + 0x6073) and
 # returns (x >> 16) % r0. Found by hooking it during battle turns (the main LCRNG and the
@@ -102,10 +103,9 @@ EXCLUDED = {100: 'Fisherman Noah: his Poliwrath (Lv 64) faints the fixture\'s on
                 'original printer (black-out waits for a button); in the gate until the pin (2026-10-07)'}
 
 
-def play_segment(h, segment, trainer, delay=0):
+def play_segment(h, segment, trainer):
     """Play one segment from the loaded checkpoint; True when it reached the command menu or the field."""
     from emu_harness import BATTLE_BUTTONS, MOVE_BUTTONS
-    h.step(delay)
     if segment == 0:
         h.trainer_battle(trainer)
         return (h.run_until(lambda h: not h.in_field(), 600)
@@ -122,7 +122,7 @@ def child(args, trainer):
     cm = msgtool.Charmap.load([str(ROOT / 'work/tools/charmap_en.tsv')])
     report = {'status': 'failed', 'trainer': trainer, 'rom_sha256': digest(args.rom), 'segments': [], 'errors': []}
     errors = report['errors']
-    state = {'rows': None}
+    state = {'rows': None, 'switch': None}
     active = {}
     try:
         with Harness(args.rom, args.save, out=args.out, verbose=False, rtc=CLOCK) as h:
@@ -188,6 +188,13 @@ def child(args, trainer):
                     if row['id'] == h.reg.r0:
                         row['end'], row['end_pass'] = h.frame, passes()
                         del active[ptr]
+                        if row['glyphs']:
+                            index = [r for r in state['rows'] if r['glyphs']].index(row)
+                            if state['switch'] == index:
+                                # A/B replay: the original printer from here on.
+                                opts = h.array(1)
+                                h.w16(opts, (h.u16(opts) & ~12) | (checks.ORIGINAL << 2))
+                                row['switched'] = (h.frame, passes())
             tracer = PrinterTrace(h, payload, probe=probe, on_task=task, on_glyph=glyph, on_destroy=destroy)
             pin = {'armed': False, 'record': None}
             report['rng_pins'] = []
@@ -223,7 +230,9 @@ def child(args, trainer):
             checkpoint = args.out / 'segment-0.dst'
             h.save_state(checkpoint)
 
-            def run(segment, mode, delay=0):
+            def run(segment, mode, switch=None):
+                """Play one segment from the checkpoint in `mode`; with switch=i, write the original
+                printer's value at the pause start of printed message i (A/B replay)."""
                 h.load_state(checkpoint)
                 tracer.resync()
                 active.clear()
@@ -231,12 +240,13 @@ def child(args, trainer):
                 opts_now = h.array(1)
                 h.w16(opts_now, (h.u16(opts_now) & ~12) | (mode << 2))
                 rows = state['rows'] = []
+                state['switch'] = switch
                 if segment == 0 and not args.no_rng_pin:
-                    pin['record'] = {'segment': 0, 'mode': checks.NAMES[mode], 'delay': delay, 'applied': False}
+                    pin['record'] = {'segment': 0, 'mode': checks.NAMES[mode], 'switch': switch, 'applied': False}
                     report['rng_pins'].append(pin['record'])
                     pin['armed'] = True
                 began, began_pass = h.frame, passes()
-                reached = play_segment(h, segment, trainer, delay)
+                reached = play_segment(h, segment, trainer)
                 pin['armed'] = False
                 ended, ended_pass = h.frame, passes()
                 h.step(4)
@@ -253,11 +263,13 @@ def child(args, trainer):
                     row['glyph_count'] = len(row['glyphs'])
                     row['to_free'] = row['end'] - last if row.get('end') is not None else None
                     row['to_free_passes'] = row['end_pass'] - last_pass if row.get('end') is not None else None
-                lead = (printed[0]['start'] - began - delay) if printed else None
-                return reached, ended - began - delay, lead, printed
+                for row in printed:
+                    row['rel_last'] = row['glyphs'][-1][1] - began
+                lead = (printed[0]['start'] - began) if printed else None
+                return reached, ended - began, lead, printed
 
             for segment in range(TURNS + 1):
-                runs = {}
+                runs, rel_last = {}, {}
                 for mode in MODES:
                     reached, frames, lead, printed = run(segment, mode)
                     h.screenshot(f'segment-{segment}-{checks.NAMES[mode]}')
@@ -293,36 +305,41 @@ def child(args, trainer):
                                                'lag_frames', 'pixels', 'callback', 'delay', 'cadence', 'stops',
                                                'record')} | {'glyphs': r['glyph_count']}
                         for r in printed]}
+                    rel_last[mode] = [r['rel_last'] for r in printed]
                     if mode == 3:
                         following = args.out / f'segment-{segment + 1}.dst'
                         h.save_state(following)
                 base = runs[3]['messages']
                 if not base:
                     errors.append(f'segment {segment}: original printer printed nothing (vacuous)')
-                # The original printer's own pauses with its start delayed by 1..JITTER_DELAYS frames:
-                # needed only where a speed's pause differs from the original's by one pass.
-                jitter = None
-                if any((a['after_last_passes'], a.get('dwell')) != (b['after_last_passes'], b.get('dwell'))
-                       for m in SPEEDS for a, b in zip(base, runs[m]['messages'])
-                       if [x['text'] for x in base] == [x['text'] for x in runs[m]['messages']]):
-                    jitter = [{'pause': {r['after_last_passes']}, 'dwell': {r.get('dwell')}} for r in base]
-                    replays = []
-                    for delay in range(1, JITTER_DELAYS + 1):
-                        reached, _, _, printed = run(segment, 3, delay)
-                        texts = [r['text'] for r in printed]
-                        same = reached and texts == [r['text'] for r in base]
-                        replays.append({'delay': delay, 'reached': reached, 'same_battle': same,
-                                        'pauses': [r['after_last_passes'] for r in printed],
-                                        'dwell': [r.get('dwell') for r in printed]})
-                        if same:
-                            for i, r in enumerate(printed):
-                                jitter[i]['pause'].add(r['after_last_passes'])
-                                jitter[i]['dwell'].add(r.get('dwell'))
-                    tracer.state_errors.clear()
-                    runs[3]['jitter_replays'] = replays
+                same_texts = {m: [x['text'] for x in base] == [x['text'] for x in runs[m]['messages']]
+                              for m in SPEEDS}
                 for mode in SPEEDS:
+                    # A/B replay wherever the pause or dwell differs from the original's: the speed run
+                    # again from the same checkpoint, switched to the original printer at that
+                    # message's pause start; both values must equal the plain speed run's exactly.
+                    ab = {}
+                    for i, (a, b) in enumerate(zip(base, runs[mode]['messages'])):
+                        b['ab'] = None
+                        if not same_texts[mode] or checks.pause_values(a) == checks.pause_values(b):
+                            continue
+                        reached, _, _, printed = run(segment, mode, switch=i)
+                        plain = runs[mode]['messages']
+                        faithful = (reached and [r['text'] for r in printed] == [r['text'] for r in plain]
+                                    and printed[i].get('switched') is not None
+                                    and [r['rel_last'] for r in printed[:i + 1]] == rel_last[mode][:i + 1]
+                                    and [checks.pause_values(r) for r in printed[:i]]
+                                    == [checks.pause_values(r) for r in plain[:i]])
+                        ab[i] = b['ab'] = {'faithful': faithful, 'switched_at_frame': printed[i].get('switched')
+                                           if i < len(printed) else None,
+                                           'plain': list(checks.pause_values(b)),
+                                           'switched': list(checks.pause_values(printed[i])) if i < len(printed)
+                                           else None,
+                                           'original': list(checks.pause_values(a))}
+                    errors.extend(f'segment {segment} {checks.NAMES[mode]} A/B replay: {e}' for e in tracer.state_errors)
+                    tracer.state_errors.clear()
                     errors.extend(f'segment {segment} {checks.NAMES[mode]}: {e}'
-                                  for e in checks.battle_pacing_errors(base, runs[mode]['messages'], jitter))
+                                  for e in checks.battle_pacing_errors(base, runs[mode]['messages'], ab))
                     if runs[mode]['lead_in'] != runs[3]['lead_in']:
                         errors.append(f"segment {segment} {checks.NAMES[mode]}: lead-in {runs[mode]['lead_in']} "
                                       f"frames != original {runs[3]['lead_in']}")
@@ -341,8 +358,6 @@ def child(args, trainer):
                 order, notes = checks.order_errors(records)
                 errors.extend(f'segment {segment}: {e}' for e in order)
                 report['segments'].append({'segment': segment, 'runs': runs,
-                                           'jitter': [{k: sorted(v, key=str) for k, v in x.items()} for x in jitter]
-                                           if jitter else None,
                                            'order': {'print_frames': spans, 'records': records,
                                                      'capped_ties': notes}})
                 checkpoint = args.out / f'segment-{segment + 1}.dst'
@@ -412,8 +427,12 @@ def main():
                              for s in b['segments'] for x in s['runs'][str(m)]['messages']), default=0)
                      for m in MODES}
         report['max_tasks_per_frame'] = per_frame
-        report['jitter'] = {t: [(s['segment'], s['jitter']) for s in b['segments'] if s['jitter']]
-                            for t, b in report['battles'].items()}
+        # Per message whose pause or dwell differed from the original's: the A/B replay's values.
+        report['ab_replays'] = [{'trainer': t, 'segment': s['segment'], 'mode': checks.NAMES[int(m)],
+                                 'text': x['text'][:40], **x['ab']}
+                                for t, b in report['battles'].items() for s in b['segments']
+                                for m, run in s['runs'].items() for x in run['messages'] if x.get('ab')]
+
         if not inputs_unchanged(report):
             errors.append('input modified')
         if not errors and len(report['battles']) == len(trainers):

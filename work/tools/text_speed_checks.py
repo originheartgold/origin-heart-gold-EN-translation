@@ -625,7 +625,12 @@ def completed_shown(shots, last, final):
     return shown
 
 
-def battle_pacing_errors(baseline, other, jitter=None):
+def pause_values(row):
+    """(pause in passes, dwell in frames) of one battle message row."""
+    return (row.get("after_last_passes"), row.get("dwell"))
+
+
+def battle_pacing_errors(baseline, other, ab=None):
     """Compare one segment (battle start or one turn) between the original printer and a
     speed, both started from the same checkpoint. Rows: {'text', 'glyphs', 'pixels',
     'to_first_passes' / 'to_free_passes': game-loop passes from the printer's start to its
@@ -635,10 +640,16 @@ def battle_pacing_errors(baseline, other, jitter=None):
 
     The text sequence must be identical (same battle), every message complete and its
     completed text pixels identical; the first-glyph and end-of-text steps exactly equal.
-    The pause (passes) and the dwell (frames) must equal the original's, or be values in
-    jitter[i]: the original printer's own pause and dwell for message i when its run
-    started 1..n frames later (the battle waits for its sound, which runs on the ARM7
-    sound clock, so the game itself varies there). No other tolerance."""
+    The pause (passes) and the dwell (frames) must equal the original's. Where they do
+    not, ab[i] must hold the A/B replay of that message (battle_pacing.py): the speed run
+    replayed from the same checkpoint, switched to the original printer at the pause
+    start (the pass in which the printer is freed). {'faithful': the replay reproduced
+    the speed run up to the switch, 'plain': (pause, dwell) of the speed run, 'switched':
+    (pause, dwell) of the replay}. The difference is accepted only when the replay is
+    faithful and both values are exactly equal to the speed run's: the pause then does
+    not depend on the speed's code during the pause. The pause depends on the sound engine's
+    state, which every sound triggered earlier in the segment shapes at its own absolute
+    time (work/notes/text_speed_vcount.md). Nothing is sampled and nothing tolerated."""
     if not baseline:
         return ["baseline segment printed no messages (vacuous comparison)"]
     errors = []
@@ -648,7 +659,6 @@ def battle_pacing_errors(baseline, other, jitter=None):
         return [f"message sequence differs from the original printer: {texts_b} != {texts_a}"]
     for i, (a, b) in enumerate(zip(baseline, other)):
         name = a["text"][:40]
-        seen = jitter[i] if jitter and i < len(jitter) else {}
         if a["glyphs"] != b["glyphs"]:
             errors.append(f"{name!r}: {b['glyphs']} glyphs != original {a['glyphs']}")
         if a.get("pixels") != b.get("pixels"):
@@ -659,14 +669,25 @@ def battle_pacing_errors(baseline, other, jitter=None):
         if a.get("to_free_passes") != b.get("to_free_passes"):
             errors.append(f"{name!r}: to_free {b.get('to_free_passes')} passes != original "
                           f"{a.get('to_free_passes')} (the end-of-text step moved)")
-        for key, unit, field in (("after_last_passes", "passes", "pause"), ("dwell", "frames", "dwell")):
-            va, vb = a.get(key), b.get(key)
-            if key == "after_last_passes" and (va is None or vb is None):
-                errors.append(f"{name!r}: pause not measured in passes")
-            elif va != vb and vb not in seen.get(field, ()):
-                label = "after_last" if field == "pause" else "dwell"
-                errors.append(f"{name!r}: {label} {vb} {unit} != original {va} (pause not preserved; the "
-                              f"original's own values with a delayed start: {sorted(seen.get(field, ()), key=str)})")
+        if a.get("after_last_passes") is None or b.get("after_last_passes") is None:
+            errors.append(f"{name!r}: pause not measured in passes")
+            continue
+        va, vb = pause_values(a), pause_values(b)
+        if va == vb:
+            continue
+        what = f"pause/dwell {vb[0]} passes/{vb[1]} frames != original {va[0]}/{va[1]}"
+        replay = (ab or {}).get(i)
+        if replay is None:
+            errors.append(f"{name!r}: {what} and no A/B replay at the pause start")
+        elif not replay.get("faithful"):
+            errors.append(f"{name!r}: {what}; the A/B replay did not reproduce the speed run up to the pause "
+                          f"start")
+        elif tuple(replay["plain"]) != vb:
+            errors.append(f"{name!r}: {what}; the A/B replay's speed values {tuple(replay['plain'])} are not the "
+                          f"speed run's {vb}")
+        elif tuple(replay["switched"]) != vb:
+            errors.append(f"{name!r}: {what}; switched to the original printer at the pause start the pause/"
+                          f"dwell is {tuple(replay['switched'])}: the speed's code changes the pause")
     return errors
 
 

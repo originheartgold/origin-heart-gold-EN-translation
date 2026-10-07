@@ -481,12 +481,46 @@ class BattlePacing(unittest.TestCase):
                            ("pixels", "c"), ("dwell", 87)):
             self.assertTrue(C.battle_pacing_errors(self.base, self.other(**{key: value})), key)
 
-    def test_values_the_original_itself_shows_are_allowed(self):
-        jitter = [{"pause": {88, 89, 90}, "dwell": {88, 89}}, {"pause": {50}, "dwell": {None}}]
-        self.assertEqual(C.battle_pacing_errors(self.base, self.other(after_last_passes=90, dwell=89), jitter), [])
-        errors = C.battle_pacing_errors(self.base, self.other(after_last_passes=91), jitter)
-        self.assertTrue(any("pause not preserved" in e for e in errors), errors)
-        self.assertTrue(C.battle_pacing_errors(self.base, self.other(to_free_passes=0), jitter))
+    def ab(self, plain=(89, 88), switched=(89, 88), faithful=True):
+        return {0: {"faithful": faithful, "plain": list(plain), "switched": list(switched)}}
+
+    def test_ab_replay_equal_accepts_a_different_pause(self):
+        # Trainer 40, segment 2, 'Harden!': FAST 145 passes / 154 frames, ORIGINAL 145 / 153;
+        # switched to the original printer at the pause start the FAST run still shows 145 / 154.
+        other = self.other(after_last_passes=89)
+        self.assertEqual(C.battle_pacing_errors(self.base, other, self.ab()), [])
+        other = self.other(dwell=89)
+        self.assertEqual(C.battle_pacing_errors(self.base, other, self.ab(plain=(88, 89), switched=(88, 89))), [])
+
+    def test_ab_replay_unequal_fails(self):
+        other = self.other(after_last_passes=89)
+        errors = C.battle_pacing_errors(self.base, other, self.ab(switched=(88, 88)))
+        self.assertTrue(any("the speed's code changes the pause" in e for e in errors), errors)
+        errors = C.battle_pacing_errors(self.base, other, self.ab(switched=(89, 87)))
+        self.assertTrue(any("the speed's code changes the pause" in e for e in errors), errors)
+
+    def test_ab_replay_missing_unfaithful_or_other_run_fails(self):
+        other = self.other(after_last_passes=89)
+        self.assertTrue(any("no A/B replay" in e for e in C.battle_pacing_errors(self.base, other)))
+        self.assertTrue(any("no A/B replay" in e for e in C.battle_pacing_errors(self.base, other, {})))
+        errors = C.battle_pacing_errors(self.base, other, self.ab(faithful=False))
+        self.assertTrue(any("did not reproduce" in e for e in errors), errors)
+        errors = C.battle_pacing_errors(self.base, other, self.ab(plain=(90, 88), switched=(90, 88)))
+        self.assertTrue(any("are not the speed run's" in e for e in errors), errors)
+        # An A/B replay never excuses the exact steps.
+        self.assertTrue(C.battle_pacing_errors(self.base, self.other(to_free_passes=0, after_last_passes=89),
+                                               self.ab()))
+
+    def test_no_sampled_jitter_acceptance(self):
+        # The old acceptance of values the original showed with a delayed start is gone:
+        # a jitter set (pause/dwell value sets) is no A/B replay and accepts nothing.
+        import inspect
+        self.assertNotIn("jitter", inspect.signature(C.battle_pacing_errors).parameters)
+        jitter_like = {0: {"pause": {88, 89}, "dwell": {88, 89}}}
+        self.assertTrue(C.battle_pacing_errors(self.base, self.other(after_last_passes=89), jitter_like))
+        from pathlib import Path
+        gate = Path(__file__).resolve().parents[1] / "research/text_speed/battle_pacing.py"
+        self.assertNotIn("JITTER_DELAYS", gate.read_text())
 
     def test_divergence_and_vacuity_fail(self):
         self.assertTrue(C.battle_pacing_errors(self.base, self.base[:1]))

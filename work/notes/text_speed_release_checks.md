@@ -134,7 +134,7 @@ SLOW > MEDIUM > FAST order) were removed with SLOW and MEDIUM.
 | callbacks | `callback_regression.py` | callback/busy cadence and pixels vs the original task; held A, held B and tapping: no page skipped, one new press after release starts page 2 with exactly the original's latency (counted from the later of the press and the frame the page prompt reads input, last glyph + 2); per-task rule |
 | corpus | `harness_regression.py` | six real messages per speed (NORMAL, FAST) vs the original printer (unknown value 3, chosen after the same NORMAL input): Confirm stores the chosen speed; identical page pixels, glyph count and layout; per-task rule; product rules; printer tasks from each page's last glyph to its control step (prompt, scroll, end) exactly equal to the original's; printer allocation/free pairing; heap growth; ITCM at start and end |
 | controls | `control_fixture.py` + `harness_regression.py --controls` | the authored scroll/clear/size/60-tick-pause message against the original, with the corpus checks; the explicit pause in printer tasks exactly equal (frames are reported: a dropped frame inside the pause lengthens it by one frame at any speed) |
-| battle | `battle_pacing.py` | eight battles (trainers 1, 2, 5, 15, 8, 40, 50, 20; each its own process; the battle RNG pinned to `0x5EED1604` at its first use in every segment-0 run, written, read back and recorded in the report, a missing or lost pin fails the gate; 15 replaced Leader Whitney (30), who blacks out with the original printer under the pin), from shared checkpoints battle start + three turns per speed and the original: same messages and glyph counts, completed text pixels; the first glyph and the end-of-text step the same number of loop passes after the printer's start and last glyph as with the original; the pause after every message (passes) and its on-screen dwell (frames, from the first frame the completed text is on screen) equal to the original's, or a value the original printer itself shows when replayed from the same checkpoint with its start delayed by 1-12 frames (the battle waits for its sound; [mechanism](text_speed_vcount.md#battle)); identical lead-in; each segment shorter by exactly the printing frames saved plus those pause differences; per-task rule; product rules per segment. Excluded with reason: trainers 100, 3, 6, 10, 30 (black-out needs a button), 9, 13 (the original printer itself does not reach the command menu without input under the pin) |
+| battle | `battle_pacing.py` | eight battles (trainers 1, 2, 5, 15, 8, 40, 50, 20; each its own process; the battle RNG pinned to `0x5EED1604` at its first use in every segment-0 run, written, read back and recorded in the report, a missing or lost pin fails the gate; 15 replaced Leader Whitney (30), who blacks out with the original printer under the pin), from shared checkpoints battle start + three turns per speed and the original: same messages and glyph counts, completed text pixels; the first glyph and the end-of-text step the same number of loop passes after the printer's start and last glyph as with the original; the pause after every message (passes) and its on-screen dwell (frames, from the first frame the completed text is on screen) equal to the original's; where a speed's value differs, an A/B replay: the speed run replayed from the same checkpoint and switched to the original printer at that message's pause start (the pass in which its printer is freed) must reproduce the speed run up to there and show exactly the plain speed run's pause and dwell, so the difference does not come from the speed's code (the battle waits for its sound, shaped by every earlier sound at its own absolute time; [mechanism](text_speed_vcount.md#battle); user decision 2026-10-07, replacing the sampled acceptance of values the original showed with its start delayed by 1-12 frames); identical lead-in; each segment shorter by exactly the printing frames saved plus those pause differences; per-task rule; product rules per segment. Excluded with reason: trainers 100, 3, 6, 10, 30 (black-out needs a button), 9, 13 (the original printer itself does not reach the command menu without input under the pin) |
 | natural-dialogue | `natural_dialogue.py` | touch selection after a cold boot (old-save default NORMAL, row of two), trainer page, original printer as baseline (same input as NORMAL): per-task rule, identical pixels/layout, product rules |
 | printers | `printer_smoke.py` | save prompt, Route 1 sign, Pokémon Center PC (two messages), Pokégear phone call to Mom (three pages, each captured), each from one checkpoint per mode: every AddTextPrinter call logged (speed, callback, caller); the declared path holds (save, PC and phone go through the batched path with FAST and only through the original task with NORMAL and value 3; the sign starts no asynchronous printer); per-task rule; captured text identical to the original printer |
 | phone-call | `phone_call_wait.py` | D-1600 / D-1599. Seven scenarios, each its own process: win the trainer.sav battle, then call Mom from the Pokégear at NORMAL, FAST and the reserved value 3 (speed set after the battle so every run reaches the call identically); win the battle, then Mom calls the player (incoming call through the game's scripted-call commands `SetPhoneCall 0, 2, 0` / `RunPhoneCall`; several messages) at NORMAL and FAST; and both calls with no battle (controls). The battle must leave auto-scroll set (else the bug was not reproduced: fail), the controls must not; every call message enters `call_print`; no call glyph is drawn with auto-scroll set; the auto-scroll wait `02002AB0` is never entered for the call printer; every complete page holds 600 frames without input (no glyph, no advance, window pixels unchanged, page wait polled every frame) and a fresh A press continues within 30 frames; the Pokégear call teardown runs; the next battle sets auto-scroll again on entry and reaches its command menu with no input; per call (outgoing, incoming) the pages' window pixel buffer and glyph layout are identical in every scenario; the incoming call has at least two messages |
@@ -171,6 +171,41 @@ against the USA base, CRC32 `C180A0E9`, to that ROM). Build verification, `artif
 `--no-text-speed` fixture `6fa7b4e7…a7d3`, no skips) passed. The runtime report is
 `work/build/text-speed/release-adaptive/report.json`, bound to the commit that added this paragraph;
 frame numbers are in [text_speed_vcount.md](text_speed_vcount.md).
+
+### Battle pauses: A/B replay, and why there is no RAM check (2026-10-07)
+
+The battle gate used to accept a speed's pause or dwell when the original printer showed
+the same value in one of 12 replays with its start delayed by 1-12 frames. Trainer 40,
+segment 2 ("The foe's Metapod used Harden!") failed that way: FAST 145 passes / 154 frames,
+ORIGINAL 145 / 153, delayed replays {152, 153}. A sweep of delays 0-60 per mode showed 154
+for the original too (delay 20): one long pass in the pause ends at line 187-194 depending
+on the start, i.e. on either side of VBlank (line 192). The dwell follows the ARM7
+sound-frame clock (2728 timer ticks of 64 cycles; leave-one-out prediction 59 of 61), but
+no delay of the original reproduces a speed run: with the final glyph in the same
+absolute frame (ORIGINAL delayed 20, FAST delayed 52) the dwell was still 154 against 153
+(7 of 29 such pairs disagreed), because the sound library's work area (0x021DC4A0-
+0x021E280B) holds the history of every sound triggered earlier in the segment at its own
+time. Switching a FAST run to the original printer when its printer is freed kept the
+same pause and dwell in all 7 delays tried. Hence the A/B replay: exact, nothing sampled.
+
+A second check, main RAM at each pause start equal to the original's outside time and
+sound ranges, was implemented and dropped (user decision 2026-10-07). With RTC caches,
+play time, tick and frame counters, the touch-panel sampling index, a 30 Hz VRAM transfer
+queue and the battle's copy of the Options word excluded, NORMAL matched everywhere but
+FAST still differed in 7 messages (1-62 bytes in the battle heap). The traces show the
+battle's background processes on their own clock, which do not wait for the message:
+trainer 8 "Tail Whip" (34 bytes) reaches the original's pause-start values 1 pass after
+its pause start, trainer 20 segment 1 (62 bytes) 13 passes later, trainer 5's defeat fade
+(36 bytes) 17 passes later, and the intro of trainers 1, 5 and 40 (2 bytes) flips every
+second pass (a 30 Hz animation). At the command menu 4-72 bytes differ for the same
+reason. Printer leftovers stay covered: completed text pixels and glyph counts per
+message, the lifecycle gate (printer allocation, heap), and the A/B replay for anything
+the speed's code does after the printer is freed.
+
+Fault `budget-batch-no-copy` (FAST batches that end on their budget skip their window
+copy, so the next message changes the box later) proves the A/B replay is not vacuous:
+switched to the original printer at the pause start, the dwell returns to the
+original's (trainer 1 segment 1: plain 86/95, switched 86/89).
 
 ### Proving a check is not vacuous
 

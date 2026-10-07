@@ -110,6 +110,13 @@ FAULTS = {
                        'rendered with the batch',
         'edits': [(0x01FF8782, B('01d1'), B('01e0'))],
         'gates': {'battle': 'end-of-text step moved'}},
+    'budget-batch-no-copy': {
+        'description': 'a FAST batch that ends on its glyph budget skips its window copy (and mark): the drawn '
+                       'glyphs appear with the next copy, so the box changes later at the start of the next '
+                       'message; the glyph draws and the completed text are unchanged',
+        # beq (budget exhausted) to the window copy -> beq to the return
+        'edits': [(0x01FF87A4, B('1cd0'), B('abd0'))],
+        'gates': {'battle': 'the speed\'s code changes the pause'}},
     'space-stop': {
         'description': 'batching stops before every space (0x01DE) instead of 0xF0FD',
         'edits': [(0x01FF8824, B('fdf00000'), B('de010000'))],
