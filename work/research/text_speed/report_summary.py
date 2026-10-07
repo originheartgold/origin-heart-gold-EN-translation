@@ -84,6 +84,9 @@ def metric(name, obs):
             return f'{len(n)} msgs'
     if name == 'battle' and isinstance(dget(obs, 'segments'), list):
         return f'{len(obs["segments"])} segs'
+    if name == 'field-rate' and isinstance(dget(obs, 'table'), dict) and obs['table']:
+        fpg = [x['fpg'][1] for x in obs['table'].values() if x.get('fpg') and x['fpg'][1] is not None]
+        return f'{len(obs["table"])} scenes, max fpg {max(fpg) if fpg else "?"}'
     if name == 'save' and isinstance(obs, list):
         return f'{len(obs)} modes'
     if obs is None or (isinstance(obs, (dict, list)) and not obs):

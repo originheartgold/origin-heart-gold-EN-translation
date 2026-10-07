@@ -68,7 +68,7 @@ void init_printer(void *p) {
 #define REST_SEED 20
 #define STALE 60
 #define MARGIN 1
-/* RAM use: these 24 bytes, zero at boot, in the payload's ITCM block (the
+/* RAM use: these 26 bytes, zero at boot, in the payload's ITCM block (the
  * SDK's ITCM arena starts after them). One global state: glyph costs do not
  * depend on the printer, and the rest belongs to the frame, not the printer. */
 struct frame_state {
@@ -80,6 +80,8 @@ struct frame_state {
     u16 mark_line;        /* VCOUNT at that batch end */
     u8 mark_vblanks;      /* VBLANKS at that batch end */
     u8 ran;               /* a batching task ran in this loop pass */
+    u8 end_vblanks;       /* VBLANKS at the previous loop pass end (pass_end) */
+    u8 ended;             /* end_vblanks is valid (a pass has ended since power-on) */
 };
 extern struct frame_state text_speed_state;
 static unsigned lines_between(unsigned from,unsigned to) {
@@ -243,6 +245,64 @@ void setup_sprites(void *d) {
     FN(0x021e5acd,void (*)(void *))(d);
     for(unsigned i=5;i<7;i++) FN(0x0200d8cd,void (*)(void *,unsigned))((void *)U32(d,0x32c+4*i),0);
     for(unsigned i=0;i<5;i++) FN(0x02024e49,void (*)(void *,unsigned))((void *)U32(d,0x32c+4*i),0);
+}
+/* Printer catch-up (D-1603). The vanilla game loop runs the print task queue twice
+ * per pass (logic is capped at 30 fps, text runs once per VBlank). The hack's loop
+ * runs it once per pass and does not cap logic, so when a pass spans two VBlanks
+ * (most outdoor maps) text prints at half the vanilla rate. pass_end runs where the
+ * vanilla loop makes its second queue run: after the 3D swap request, before the
+ * VBlank wait. If a VBlank passed during this pass (the frame is lost, the wait
+ * returns only at the following VBlank), each text printer task runs once more, as
+ * vanilla does. Passes within one frame (60 fps scenes) are unchanged, and at most
+ * one extra run is made per pass (vanilla's two runs per pass). Only the text
+ * printer tasks run (the 8 SysTask slots of the printer system at 0x021d0efc, filled
+ * by 0x02020728), only when their next step draws a glyph; other queue tasks keep
+ * the hack's rate. A task is run as the
+ * queue run (0x02020040) runs it: func +0x14 with (task, data +0x10), skipped while
+ * its added-during-a-run flag +0x18 is set; only tasks present before the catch-up
+ * started run, so a printer added by a callback during the catch-up waits for the
+ * next pass. The catch-up only starts when one glyph and the measured rest fit
+ * before the next VBlank (the frame model's 'fits'), so it never drops a frame. */
+#define PRINTER_TASKS ((u32 *volatile *)0x021d0efc)
+void pass_end(void) {
+    frame_end();
+    struct frame_state *s=&text_speed_state;
+    unsigned vblanks=VBLANKS,line=VCOUNT;
+    unsigned late=s->ended && ((vblanks-s->end_vblanks)&255)>=2;
+    s->end_vblanks=vblanks;
+    s->ended=1;
+    if(late) {
+        unsigned left=line<VBLANK_LINE?VBLANK_LINE-line:VBLANK_LINE+LINES-line;
+        unsigned glyph=0,rest=0;
+        for(unsigned i=0;i<SLOTS;i++) {
+            if(s->glyph[i]>glyph) glyph=s->glyph[i];
+            if(s->rest[i]>rest) rest=s->rest[i];
+        }
+        if(!glyph) glyph=GLYPH_SEED;
+        if(!rest) rest=REST_SEED;
+        if(left>=glyph+rest+MARGIN) {
+            u32 *tasks[8];
+            for(unsigned i=0;i<8;i++) tasks[i]=PRINTER_TASKS[i];
+            for(unsigned i=0;i<8;i++) {
+                u32 *t=tasks[i];
+                if(!t || PRINTER_TASKS[i]!=t || t[6] || !t[5]) continue;
+                /* Only a printer about to draw a glyph: RenderText in state 0 and the
+                 * next unit (past newlines) not a control. Prompts, scrolls, page
+                 * clears, waits for a button and the end of the text keep the hack's
+                 * one step per pass, so input is polled exactly as before. */
+                u8 *p=(u8 *)t[4];
+                if(U8(p,0x28)) continue;
+                const u16 *q=*(const u16 **)p;
+                u16 next=*q;
+                while(next==0xe000) next=*++q;
+                if(next==0xffff || next==0xfffe || next==0x25bc || next==0x25bd || next==0xf0fd) continue;
+                ((void (*)(void *,void *))t[5])(t,p);
+            }
+        }
+    }
+    /* A catch-up batch's rest is not a sample: frame_end of the next pass would
+     * measure it across the VBlank wait. */
+    s->marked=0;
 }
 /* Defined last so that it is the last part of the payload block (zero at boot;
  * the gates compare the payload's code and data up to it). */

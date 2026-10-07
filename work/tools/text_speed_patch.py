@@ -12,17 +12,18 @@ BASE=0x01ff8620
 OVBASE=0x021e4980
 # This reviewed pin lives in patcher source, never in the mutable cache. Updating
 # native code requires review of its reproducible payload and this separate pin.
-REVIEWED_PAYLOAD_SHA256='e17e38e0e2a5aa93788a7d5de220ae312e751adcf12f0556a1a92e52ce7afbe9'
+REVIEWED_PAYLOAD_SHA256='c4fcfd06ceec40b97f757a1b0f79f13a5f12e7a95dceca4fa4db487cdc84ebc8'
 REQUIRED_SYMBOLS=frozenset(('print_task','load_rows','load_choice','load_label',
                             'commit_speed','exit_free','draw_label','setup_sprites','init_printer',
-                            'frame_end','text_speed_state'))
+                            'frame_end','pass_end','text_speed_state'))
 # The one data symbol: the runtime frame state (zero at boot), the last
 # STATE_SIZE bytes of the block. Every other symbol is a Thumb entry point.
 STATE_SYMBOL='text_speed_state'
-STATE_SIZE=24
+STATE_SIZE=26
 # The game loop's last call before its wait for VBlank (NitroMain, 0x02000C88):
-# 'bl 0x020272d4' at this address is redirected to the payload's frame_end,
-# which makes that call first and then measures the end of the frame.
+# 'bl 0x020272d4' at this address is redirected to the payload's pass_end, which
+# calls frame_end (that call first, then the frame measurement) and then the
+# printer catch-up (D-1603).
 FRAME_END_CALL=(0x02000de0,0x020272d4)
 MAX_PAYLOAD_SIZE=0x01ffa000-BASE
 OVHASH='852d8fcd01bf09ba54bee1a24609e2a82e71d25b5d6dd84c5d919cc0b3418856'
@@ -94,6 +95,13 @@ DEPENDENT_CODE=(
     (0x0202b1c4,0x0202b1d0,'music speed getter'),
     (0x0202b1d0,0x0202b1e4,'music speed setter'),
     (0x020d1a1c,0x020d1a38,'SDK arena bounds table (ITCM arena start)'),
+    # Printer catch-up (pass_end): the 8 printer task slots (0x021d0efc, .bss) are
+    # filled only by the slot allocator and cleared by printer finish; a task is run
+    # as the queue run runs it (+0x10 data, +0x14 func, +0x18 added-during-run skip
+    # flag, which the task add routine sets).
+    (0x02020728,0x0202075c,'printer task slot allocator (slot array 0x021d0efc)'),
+    (0x02020040,0x0202007e,'task queue run (the task layout pass_end mirrors)'),
+    (0x02020094,0x02020114,'task queue add (sets the +0x18 skip flag)'),
     (0x02000ba0,0x02000bb8,'code settings / autoload list words rewritten by code.save()'),
 )
 DEPENDENCIES=CALLED_ROUTINES+DEPENDENT_CODE
@@ -101,7 +109,8 @@ DEPENDENCIES=CALLED_ROUTINES+DEPENDENT_CODE
 # line I/O register, and the SDK's VBlank counter HW_VBLANK_COUNT_BUF (0x027FFC3C,
 # the main-memory system word OS_GetVBlankCount reads). Neither is ARM9 code or
 # data in the ARM9 binary, so no code patch can overlap them and they have no
-# dependency range.
+# dependency range. The printer task slot array (0x021d0efc) that pass_end reads
+# is .bss, outside the ARM9 binary; the routines that own it are reviewed above.
 
 def native_call_targets():
     """Every FN(address, ...) call target in native.c (source pinned via the payload)."""
@@ -158,12 +167,24 @@ def compile_payload(out):
         if s[1]!=9:raise ValueError('Unsupported ELF RELA')
         for off in range(s[4],s[4]+s[5],8):
             target,info=struct.unpack_from('<II',b,off);kind=info&255
-            if kind!=2:raise ValueError(f'Unsupported native relocation {kind}')
+            if kind not in (2,10):raise ValueError(f'Unsupported native relocation {kind}')
             address=tables[s[6]][info>>8]
             if address is None:raise ValueError('Undefined native symbol')
             pos=placed[s[7]]+target
-            addend=struct.unpack_from('<I',image,pos)[0]
-            struct.pack_into('<I',image,pos,(addend+address)&0xffffffff)
+            if kind==2:  # R_ARM_ABS32: literal word
+                addend=struct.unpack_from('<I',image,pos)[0]
+                struct.pack_into('<I',image,pos,(addend+address)&0xffffffff)
+                continue
+            # R_ARM_THM_CALL: a Thumb 'bl' to a Thumb function of the payload itself
+            # (pass_end calls frame_end). The addend is the instruction's own offset.
+            hi,lo=struct.unpack_from('<HH',image,pos)
+            if hi>>11!=0b11110 or lo>>11!=0b11111 or not address&1:
+                raise ValueError('Native call relocation is not a Thumb bl to Thumb code')
+            addend=((hi&0x7ff)<<12)|((lo&0x7ff)<<1)
+            if addend&0x400000:addend-=0x800000
+            value=(address&~1)+addend-(BASE+pos)
+            if not -0x400000<=value<0x400000:raise ValueError('Native call out of range')
+            struct.pack_into('<HH',image,pos,0xf000|((value>>12)&0x7ff),0xf800|((value>>1)&0x7ff))
     payload={'source_sha256':source_digest(),'base':BASE,'code':image.hex(),'symbols':symbols}
     return payload
 
@@ -197,7 +218,7 @@ def validate_payload(payload):
         raise ValueError('Native payload symbol inventory changed')
     state=symbols[STATE_SYMBOL]
     if type(state) is not int or state!=BASE+len(blob)-STATE_SIZE or state&3 or any(blob[-STATE_SIZE:]):
-        raise ValueError('Native frame state must be the zeroed last 24 bytes of the payload')
+        raise ValueError(f'Native frame state must be the zeroed last {STATE_SIZE} bytes of the payload')
     for name,address in symbols.items():
         if name==STATE_SYMBOL:continue
         if type(address) is not int or not address&1 or not BASE<address<state:
@@ -314,8 +335,8 @@ def apply(rom,payload=None,code_patches=None):
     # Allocate/initialize private fractional-speed state; never reuse game-owned fields.
     patch(a,0x2000000,0x20208ea,struct.pack('<H',0x2134),struct.pack('<H',0x2138))
     patch(a,0x2000000,0x2020962,bl(0x2020962,0x2020be8),bl(0x2020962,payload['symbols']['init_printer']))
-    # The game loop's last call before its VBlank wait goes through frame_end.
-    patch(a,0x2000000,FRAME_END_CALL[0],bl(*FRAME_END_CALL),bl(FRAME_END_CALL[0],payload['symbols']['frame_end']))
+    # The game loop's last call before its VBlank wait goes through pass_end (frame_end, then the printer catch-up).
+    patch(a,0x2000000,FRAME_END_CALL[0],bl(*FRAME_END_CALL),bl(FRAME_END_CALL[0],payload['symbols']['pass_end']))
     # Options_Init already cleared both bytes. Set MEDIUM (bits2..3=1), music remains0.
     patch(a,0x2000000,0x202b176,struct.pack('<HH',0x200f,0x4381),struct.pack('<HH',0x2004,0x4301))
     # Music accesses mask only low two bits; its setter preserves the new bits.
@@ -436,7 +457,7 @@ def verify(rom,report,code_patches=None):
         0x02020a18:struct.pack('<I',payload['symbols']['print_task']),
         0x020208ea:struct.pack('<H',0x2138),
         0x02020962:bl(0x02020962,payload['symbols']['init_printer']),
-        FRAME_END_CALL[0]:bl(FRAME_END_CALL[0],payload['symbols']['frame_end']),
+        FRAME_END_CALL[0]:bl(FRAME_END_CALL[0],payload['symbols']['pass_end']),
         0x0202b176:struct.pack('<HH',0x2004,0x4301),
         0x0202b1c6:struct.pack('<HH',0x0780,0x0f80),
         0x0202b1d2:struct.pack('<H',0x2203),

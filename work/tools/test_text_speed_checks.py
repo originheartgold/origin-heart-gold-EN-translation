@@ -93,7 +93,7 @@ class Pinned(unittest.TestCase):
             self.assertEqual(int(re.search(rf"#define {name} (\d+)", src).group(1)), getattr(C, name), name)
         self.assertEqual(int(re.search(r"#define VBLANK_LINE (\d+)", src).group(1)), C.VISIBLE_LINES)
         self.assertEqual(int(re.search(r"#define LINES (\d+)", src).group(1)), C.TOTAL_LINES)
-        # struct frame_state: glyph[8], rest[8], four u8, u16 mark_line, two u8 = 24 bytes
+        # struct frame_state: glyph[8], rest[8], four u8, u16 mark_line, four u8 = 26 bytes
         body = re.search(r"struct frame_state \{(.*?)\};", src, re.S).group(1)
         fields = []
         for decl in re.sub(r"/\*.*?\*/", "", body, flags=re.S).split(";"):
@@ -105,19 +105,20 @@ class Pinned(unittest.TestCase):
         size = sum((2 if t == "u16" else 1) * (C.SLOTS if n else 1) for t, _, n in fields)
         self.assertEqual(size, C.STATE_SIZE)
         self.assertEqual([f[1] for f in fields], ["glyph", "rest", "next_glyph", "next_rest", "marked", "idle",
-                                                  "mark_line", "mark_vblanks", "ran"])
+                                                  "mark_line", "mark_vblanks", "ran", "end_vblanks", "ended"])
 
     def test_fault_knobs_are_off(self):
         self.assertIsNone(C.FIXED_MODEL)
-        self.assertFalse(C.IGNORE_REST or C.IGNORE_GLYPH or C.GLYPH_COST_BIAS)
+        self.assertFalse(C.IGNORE_REST or C.IGNORE_GLYPH or C.GLYPH_COST_BIAS or C.NO_CATCH_UP)
+        self.assertEqual(C.PASS_END_SEEDS, (C.GLYPH_SEED, C.REST_SEED, C.MARGIN))
 
 
 class FrameModelTests(unittest.TestCase):
     def test_bytes_round_trip(self):
-        data = bytes(range(1, 25))
+        data = bytes(range(1, 27))
         self.assertEqual(C.FrameModel(data).to_bytes(), data)
         with self.assertRaises(ValueError):
-            C.FrameModel(bytes(23))
+            C.FrameModel(bytes(25))
 
     def test_lines(self):
         self.assertEqual([C.lines_to_vblank(x) for x in (0, 170, 191, 192, 262)], [192, 22, 1, 263, 193])
@@ -153,6 +154,40 @@ class FrameModelTests(unittest.TestCase):
         m.mark(1, 100)
         self.assertEqual(m.frame_end(1, 100), 1)       # never 0 (0 marks an empty slot)
         self.assertEqual(m.marked, 0)
+
+    def test_pass_end_catch_up(self):
+        m = C.FrameModel()
+        self.assertEqual(m.pass_end(10, 100), (False, False))     # first pass end since power-on
+        self.assertEqual((m.end_vblanks, m.ended), (10, 1))
+        self.assertEqual(m.pass_end(11, 100), (False, False))     # one VBlank: the wait only (60 fps)
+        self.assertEqual(m.pass_end(13, 250), (True, True))       # missed one: 205 lines left >= 13 + 20 + 1
+        self.assertEqual(m.pass_end(16, 250), (True, True))       # missed two: still one catch-up
+        self.assertEqual(m.pass_end(18, 160), (True, False))      # 32 lines left < 34 (seeds)
+        m.glyph[0], m.rest[0] = 9, 8
+        self.assertEqual(m.pass_end(20, 174), (True, True))       # 18 left >= 9 + 8 + 1 (measured)
+        self.assertEqual(m.pass_end(22, 175), (True, False))      # 17 left
+        self.assertEqual(m.pass_end(23, 175), (False, False))
+        self.assertEqual(m.pass_end(1, 250), (True, True))        # the counter's low byte wraps (23 -> 257)
+        m.marked = 1
+        m.catch_up_done()
+        self.assertEqual(m.marked, 0)                             # a catch-up batch end is no rest sample
+
+    def test_pass_end_ignores_print_task_fault_knobs(self):
+        old = (C.MARGIN, C.REST_SEED, C.IGNORE_REST)
+        try:
+            C.MARGIN, C.REST_SEED, C.IGNORE_REST = 40, 1, True
+            m = C.FrameModel()
+            m.pass_end(0, 0)
+            self.assertEqual(m.pass_end(2, 158), (True, True))    # 34 left >= 13 + 20 + 1: native constants
+        finally:
+            C.MARGIN, C.REST_SEED, C.IGNORE_REST = old
+        try:
+            C.NO_CATCH_UP = True
+            m = C.FrameModel()
+            m.pass_end(0, 0)
+            self.assertEqual(m.pass_end(2, 250), (True, False))
+        finally:
+            C.NO_CATCH_UP = False
 
     def test_stale_history_is_cleared_but_waiting_keeps_it(self):
         m = state(rest=(8, 9))

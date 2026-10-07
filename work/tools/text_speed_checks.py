@@ -41,7 +41,7 @@ GLYPH_SEED = 13
 REST_SEED = 20
 STALE = 60
 MARGIN = 1
-STATE_SIZE = 24
+STATE_SIZE = 26
 VISIBLE_LINES, TOTAL_LINES = 192, 263
 # Fault fixtures only (fault_fixture.py 'checker', applied by gate_common for a
 # --fault-payload run, never for release evidence): make the gates' model match a
@@ -50,8 +50,12 @@ FIXED_MODEL = None        # (fits at or above, lost below): the cf50a23 constant
 IGNORE_REST = False
 IGNORE_GLYPH = False
 GLYPH_COST_BIAS = 0
+NO_CATCH_UP = False       # fault model: pass_end never catches up
+# pass_end's own copy of the decision constants (native.c values; the fault knobs above
+# model edits of print_task's decision, which pass_end does not share).
+PASS_END_SEEDS = (GLYPH_SEED, REST_SEED, MARGIN)
 FAULT_KNOBS = frozenset(("MARGIN", "GLYPH_SEED", "REST_SEED", "FIXED_MODEL", "IGNORE_REST", "IGNORE_GLYPH",
-                         "GLYPH_COST_BIAS"))
+                         "GLYPH_COST_BIAS", "NO_CATCH_UP"))
 STOP_REASONS = ("budget", "frame", "control", "result", "original", "paused")
 
 
@@ -144,27 +148,30 @@ def lines_to_vblank(line):
 
 
 class FrameModel:
-    """Line-for-line mirror of the payload's frame state (struct frame_state, 24 bytes).
+    """Line-for-line mirror of the payload's frame state (struct frame_state, 26 bytes).
 
     The gates build it from the payload's RAM once, then update it only from what
     they observe themselves (the VCOUNT / VBlank-counter values the payload read),
     and compare it with the payload's RAM at every read: the payload must store
     exactly the costs the gate measured, and decide exactly as decide() says."""
 
-    FIELDS = ("next_glyph", "next_rest", "marked", "idle", "mark_line", "mark_vblanks", "ran")
+    FIELDS = ("next_glyph", "next_rest", "marked", "idle", "mark_line", "mark_vblanks", "ran", "end_vblanks",
+              "ended")
 
     def __init__(self, data=bytes(STATE_SIZE)):
         if len(data) != STATE_SIZE:
-            raise ValueError("frame state is 24 bytes")
+            raise ValueError(f"frame state is {STATE_SIZE} bytes")
         self.glyph = list(data[0:8])
         self.rest = list(data[8:16])
         self.next_glyph, self.next_rest, self.marked, self.idle = data[16], data[17], data[18], data[19]
         self.mark_line = data[20] | data[21] << 8
         self.mark_vblanks, self.ran = data[22], data[23]
+        self.end_vblanks, self.ended = data[24], data[25]
 
     def to_bytes(self):
         return bytes(self.glyph + self.rest + [self.next_glyph, self.next_rest, self.marked, self.idle,
-                                               self.mark_line & 255, self.mark_line >> 8, self.mark_vblanks, self.ran])
+                                               self.mark_line & 255, self.mark_line >> 8, self.mark_vblanks, self.ran,
+                                               self.end_vblanks, self.ended])
 
     def task_ran(self):
         """A batching task started (after the pause test, before its first render)."""
@@ -199,6 +206,25 @@ class FrameModel:
                 self.rest = [0] * SLOTS
         self.ran = 0
         return sample
+
+    def pass_end(self, vblanks, line):
+        """pass_end's reading after frame_end (D-1603): the pass is late when a VBlank passed
+        since the previous pass ended (the counter moved by two or more: the wait plus a
+        missed VBlank). A late pass catches up (each printer task runs once more) only when
+        one glyph and the rest fit before the next VBlank. Returns (late, catch_up).
+        The catch-up's batch end is no rest sample: catch_up_done() clears the mark."""
+        late = bool(self.ended) and (vblanks - self.end_vblanks) & 255 >= 2
+        self.end_vblanks, self.ended = vblanks & 255, 1
+        if not late or NO_CATCH_UP:
+            return late, False
+        glyph_seed, rest_seed, margin = PASS_END_SEEDS
+        glyph = max(self.glyph) or glyph_seed
+        rest = max(self.rest) or rest_seed
+        return late, lines_to_vblank(line) >= glyph + rest + margin
+
+    def catch_up_done(self):
+        """End of pass_end: a catch-up batch's end is not measured."""
+        self.marked = 0
 
     def estimates(self):
         """(glyph, rest, low, seeded): the predicted cost of one more glyph, of the rest of the

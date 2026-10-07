@@ -127,3 +127,44 @@ class Isolation(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class FieldRate(unittest.TestCase):
+    """field_rate.judge: the catch-up gate's cross-run rules (synthetic scene reports)."""
+
+    def report(self, on_fpg=0.99, off_fpg=2.0, tasks=200, overruns=0, idle=(300, 300), runs=None):
+        def run(fpg, passes):
+            text = {'glyphs': 92, 'pages': 2, 'layout': [(0, 0)], 'windows': ['aa'], 'fpg': fpg, 'passes': 400,
+                    'queue_runs': 400 if runs is None else runs, 'elapsed': {}, 'other_tasks': {}, 'slot_errors': []}
+            return {'idle': {'passes': passes, 'queue_runs': passes, 'other_tasks': {}, 'elapsed': {}},
+                    'text': text}
+        return {'on': run(on_fpg, idle[1]), 'off': run(off_fpg, idle[0]),
+                'catch_up': {'tasks': tasks, 'overruns': overruns, 'late_passes': tasks, 'decisions': tasks}}
+
+    def test_clean_scene_passes(self):
+        import field_rate
+        self.assertEqual(field_rate.judge(self.report()), [])
+        self.assertEqual(field_rate.judge(self.report(on_fpg=0.99, off_fpg=1.0, tasks=0)), [])   # 60 fps scene
+
+    def test_each_rule_fails(self):
+        import field_rate
+        self.assertIn('frames per glyph', ' '.join(field_rate.judge(self.report(on_fpg=1.9))))
+        self.assertIn('idle', ' '.join(field_rate.judge(self.report(idle=(300, 299)))))
+        self.assertIn('dropped frames', ' '.join(field_rate.judge(self.report(overruns=1))))
+        self.assertIn('ran no catch-up task', ' '.join(field_rate.judge(self.report(tasks=0))))
+        self.assertIn('once per pass', ' '.join(field_rate.judge(self.report(runs=401))))
+        r = self.report()
+        r['on']['text']['windows'] = ['bb']
+        self.assertIn('pixels differ', ' '.join(field_rate.judge(r)))
+        r = self.report()
+        r['on']['text']['layout'] = [(1, 0)]
+        self.assertIn('layout', ' '.join(field_rate.judge(r)))
+
+    def test_gate_and_fault_are_wired(self):
+        class A:
+            rom = save = Path('x.nds')
+            fault_payload = None
+        self.assertIn('field-rate', validate_release.gates(A, Path('/tmp/out')))
+        spec = fault_fixture.FAULTS['no-catch-up']
+        self.assertEqual(spec['gates'], {'field-rate': 'frames per glyph'})
+        self.assertEqual(spec['checker'], {'NO_CATCH_UP': True})

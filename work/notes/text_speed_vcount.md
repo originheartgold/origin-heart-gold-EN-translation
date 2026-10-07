@@ -290,6 +290,54 @@ These rules use only observed frame ends, not the model's constants, so a payloa
 that is too conservative, or the fixed `cf50a23` rule, fails even when the gate's
 model is changed to match it (fault matrix in [the recipe](text_speed_release_checks.md)).
 
+## Printer catch-up in 30 fps maps (D-1603, provisional)
+
+Measured 2026-10-07: in most outdoor maps the hack (and the English build) printed
+about 2.0 frames per glyph against vanilla US FAST 0.98. The cause is the game loop
+(`NitroMain`, CN/EN `0x02000D90`-`0x02000E10`, US `0x02000DAC`-`0x02000E42`):
+
+- US: logic, main tasks, print queue (`gSystem+0x24`), then a VBlank wait unless the
+  VBlank handler already counted one during the pass (`gSystem+0x30`, incremented at
+  `0x0201A0AE`), then render, the 3D swap request, the print queue **again**, and the
+  wait. Logic is capped at 30 fps, the print queue runs twice per pass.
+- CN/EN: logic, main tasks, print queue, render, swap request, one wait. Logic is
+  uncapped; when a pass spans two VBlanks (most outdoor maps, 320-340 lines even
+  without text) the printer runs once per two frames.
+
+The loop came with the hack's base build, not a byte patch: the ROM header is
+`NTR-IPKJ-JPN` (Japanese HeartGold), every ARM9 function after the loop is shifted
+(e.g. US `0x02000E6C` = CN `0x02000E38`) and the literal pool follows the loop with no
+gap. No Japanese ROM is available to confirm that the retail Japanese loop is the same.
+
+Print queue audit (CN ARM9 and all 120 overlays): tasks reach `gSystem+0x24` only through
+`0x0200DEAC`, called by the printer slot allocator `0x02020728` (one caller,
+`0x020209A6` in AddTextPrinter, task function the printer task `0x02020A1D`, which the
+payload redirects to `print_task`) and by overlay 68 (`0x0220FCB6`, a sprite render task
+`0x0220FE09`; the same call exists in US overlay 71, so it is not hack-added). At run
+time (Route 1, Viridian, Viridian Forest, Routes 29/30, New Bark, Cherrygrove and its
+Pokémon Center, Violet, every X-menu screen, saving, a trainer battle, NPC talk, the
+Pokéathlon gate, the Ecruteak theater) the queue held only printer tasks.
+
+Design: `pass_end` (the loop's redirected call before its wait) calls `frame_end`, then,
+if a VBlank passed during this pass (the VBlank counter moved by two or more since the
+previous pass end: the frame is lost anyway), runs each text printer task once more,
+where vanilla makes its second queue run. Only printer tasks run (the 8 slots at
+`0x021D0EFC`), only tasks present before the catch-up, only printers whose next step
+draws a glyph (RenderText state 0, next unit past newlines not a control): prompts,
+scrolls, page clears, button waits and the end of the text keep one step per pass, so
+input is polled exactly as before. The catch-up starts only if one glyph and the
+measured rest fit before the next VBlank, so it never pushes the pass past a VBlank,
+and a catch-up batch's end is not a rest sample. Passes within one frame (60 fps
+scenes) are unchanged. All four settings (and reserved value 3, the original printer)
+get it. Consequences: explicit text pauses and auto-advance waits counted in printer
+turns run at vanilla speed in 30 fps maps (half as long as in the hack); script waits
+counted in frames do not change; scripts synchronise with text by waiting for the
+message, not by time.
+
+Gate `field-rate` (`field_rate.py`) compares, per scene from one checkpoint, the
+catch-up on and off (off: a hook clears the state's `ended` byte at `pass_end` entry).
+Fault `no-catch-up` (catch-up never runs) must fail it with 'frames per glyph'.
+
 ## Limits
 
 - Hardware: the costs are measured at run time, so different card or CPU timing on a

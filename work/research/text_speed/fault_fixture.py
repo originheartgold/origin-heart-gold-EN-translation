@@ -63,7 +63,7 @@ FAULTS = {
     'label-overflow': {
         'description': 'MEDIUM label replaced by a ten-letter label',
         # labels[2] is u16[11]: MEDIUM, terminator, four zero units.
-        'edits': [(0x01FF8AB4, units('MEDIUM') + bytes(8), units('MEDIUMMEDI'))],
+        'edits': [(0x01FF8BB0, units('MEDIUM') + bytes(8), units('MEDIUMMEDI'))],
         'gates': {'options': 'label', 'save': 'label'}},
     'default-slow': {
         'description': 'new-game Options initialiser sets SLOW instead of MEDIUM (main ARM9)',
@@ -139,6 +139,12 @@ FAULTS = {
         'edits': [(0x01FF88D8, B('1c19'), B('241c'))],
         'checker': {'IGNORE_GLYPH': True},
         'gates': {'scenes': 'dropped only because', 'natural-dialogue': 'dropped only because'}},
+    'no-catch-up': {
+        'description': 'pass_end never catches up (a late pass needs 255 VBlanks): the hack\'s half rate in 30 fps maps',
+        # cmp r2,#2 (VBlanks since the previous pass end) -> cmp r2,#255
+        'edits': [(0x01FF8AAE, B('022a'), B('ff2a'))],
+        'checker': {'NO_CATCH_UP': True},
+        'gates': {'field-rate': 'frames per glyph'}},
     'too-conservative-24': {
         'description': 'needs 4 more lines for an extra glyph (the review\'s threshold 24 against 20)',
         # cmp r1,#0; adds r4,r1,#4; cmp r1,#0; bne: a measured rest counts 4 lines more.

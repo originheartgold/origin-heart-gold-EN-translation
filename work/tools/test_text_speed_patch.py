@@ -16,7 +16,7 @@ class PayloadTests(unittest.TestCase):
         self.assertEqual(p['source_sha256'],speed.source_digest())
         self.assertLessEqual(speed.BASE+len(code),0x01ffa000)
         for name in ['print_task','load_rows','load_choice','load_label','exit_free','draw_label','setup_sprites',
-                     'frame_end','init_printer']:
+                     'frame_end','pass_end','init_printer']:
             target=p['symbols'][name]
             self.assertEqual(target&1,1,name)
             self.assertTrue(speed.BASE <= (target&~1) < speed.BASE+len(code),name)
@@ -24,6 +24,28 @@ class PayloadTests(unittest.TestCase):
         state=p['symbols'][speed.STATE_SYMBOL]
         self.assertEqual(state,speed.BASE+len(code)-speed.STATE_SIZE)
         self.assertEqual(code[-speed.STATE_SIZE:],bytes(speed.STATE_SIZE))
+
+    @unittest.skipIf(capstone is None, 'capstone is required to disassemble the payload')
+    def test_pass_end_calls_frame_end_then_runs_printer_slots(self):
+        # The one intra-payload call (R_ARM_THM_CALL) is pass_end's bl to frame_end; the
+        # catch-up reads the printer slot array and calls each task's function by register.
+        p=speed.load_payload();code=bytes.fromhex(p['code']);base=p['base']
+        start=p['symbols']['pass_end']&~1
+        end=min([a&~1 for n,a in p['symbols'].items() if (a&~1)>start and n!=speed.STATE_SYMBOL]
+                +[p['symbols'][speed.STATE_SYMBOL]])
+        ins=list(capstone.Cs(capstone.CS_ARCH_ARM,capstone.CS_MODE_THUMB).disasm(code[start-base:end-base],start))
+        calls=[i for i in ins if i.mnemonic=='bl']
+        self.assertEqual([int(i.op_str.lstrip('#'),16) for i in calls],[p['symbols']['frame_end']&~1])
+        self.assertEqual(calls[0].address,ins[2].address)    # push, sub sp, then frame_end first
+        self.assertEqual(sum(1 for i in ins if i.mnemonic=='blx'),1)
+        words={struct.unpack_from('<I',code,off)[0] for off in range((start-base+3)&~3,end-base-3,4)}
+        for value in (0x021d0efc,0x027ffc3c,0x04000006,p['symbols'][speed.STATE_SYMBOL]):
+            self.assertIn(value,words,hex(value))
+
+    def test_thumb_call_relocation_is_the_only_new_kind(self):
+        # compile_payload accepts R_ARM_THM_CALL only as a Thumb 'bl' to Thumb payload code.
+        src=Path(speed.__file__).read_text()
+        self.assertIn("if kind not in (2,10):raise ValueError",src)
 
     @unittest.skipUnless(shutil.which('clang'), 'ARM clang is required to reproduce the native payload')
     def test_cached_payload_reproduces_from_source(self):
@@ -308,8 +330,8 @@ class RomTests(unittest.TestCase):
         self.assertEqual(struct.unpack_from('<H',data,0x208ea)[0],0x2138)
         self.assertEqual(bytes(data[0x20962:0x20966]),speed.bl(0x2020962,speed.load_payload()['symbols']['init_printer']))
         self.assertEqual(struct.unpack_from('<HH',data,0x2b176),(0x2004,0x4301))
-        # The game loop's last call before its VBlank wait goes through frame_end.
-        self.assertEqual(bytes(data[0xde0:0xde4]),speed.bl(0x02000de0,speed.load_payload()['symbols']['frame_end']))
+        # The game loop's last call before its VBlank wait goes through pass_end (frame_end, catch-up).
+        self.assertEqual(bytes(data[0xde0:0xde4]),speed.bl(0x02000de0,speed.load_payload()['symbols']['pass_end']))
         self.assertEqual(bytes(self.original.loadArm9().sections[0].data[0xde0:0xde4]),speed.bl(0x02000de0,0x020272d4))
         # Only the default initializer changes; the original save structure stays two bytes.
         self.assertEqual(bytes(data[0x2b16e:0x2b170]),bytes(self.original.loadArm9().sections[0].data[0x2b16e:0x2b170]))
@@ -444,7 +466,7 @@ class RomTests(unittest.TestCase):
             if target<speed.OVBASE:derived.update(routine_extents(main,target&~1))
         self.assertEqual(derived,{(lo,hi) for lo,hi,_ in speed.CALLED_ROUTINES})
         code=[(lo,hi) for lo,hi,name in speed.DEPENDENT_CODE if lo<0x020d0000 and lo!=0x02000ba0]
-        self.assertEqual(len(code),7)
+        self.assertEqual(len(code),10)
         for lo,hi in code:self.assertEqual(routine_extents(main,lo),[(lo,hi)],hex(lo))
         # A start must be a real routine entry, so a shifted start cannot pass.
         targets=call_targets(main)
@@ -470,9 +492,11 @@ class RomTests(unittest.TestCase):
         # Reviewer cases: print task body, Options accessor, printer initializer,
         # exit_free target, message loader, music getter; plus code settings.
         # Glyph path: RenderText entry, state machine code and a jump table.
-        # Game loop (frame_end hook site and its VBlank wait) and the call frame_end makes.
+        # Game loop (pass_end hook site and its VBlank wait) and the call frame_end makes.
+        # Printer catch-up: slot allocator, queue run and queue add.
         for off in (0x20a40,0x2934a,0x20bea,0x71b2,0xbb42,0x2b1c4,0xba4,0xd1a1c,
-                    0x2e50,0x22d2,0x2400,0x22f4,0x242a,0x27b8,0xde0,0xde8,0xd90,0x272d6):
+                    0x2e50,0x22d2,0x2400,0x22f4,0x242a,0x27b8,0xde0,0xde8,0xd90,0x272d6,
+                    0x20738,0x2005c,0x200c0):
             old=struct.unpack_from('<H',main,off)[0]
             synthetic=dict(id='synthetic',file='arm9',offset=hex(off),expect=hex(old),value=hex(old^0x40),enabled=True)
             with self.subTest(offset=hex(off)):

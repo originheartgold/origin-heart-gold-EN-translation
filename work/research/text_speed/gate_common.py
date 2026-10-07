@@ -223,7 +223,7 @@ def heap_usage(h):
 
 VCOUNT = 0x04000006            # DS display line register (I/O)
 VBLANKS = 0x027FFC3C           # SDK VBlank counter (HW_VBLANK_COUNT_BUF), stepped at line 192
-FRAME_END_CALL = 0x02000DE0    # the game loop's 'bl' that the payload redirects to frame_end
+FRAME_END_CALL = 0x02000DE0    # the game loop's 'bl' that the payload redirects to pass_end (frame_end, catch-up)
 FRAME_END_RETURN = 0x02000DE4  # the instruction after it
 
 
@@ -236,9 +236,10 @@ class PrinterTrace:
     print_task (r1 printer), the original task when the native task delegates to it,
     the render step when the native loop calls it, the glyph draw (r4 printer),
     RemoveTextPrinter, the native init_printer (r0 new printer), FreeToHeap (r0), and
-    every VCOUNT / VBlank-counter load in print_task and frame_end (found by io_reads;
-    hooked on the instruction after the load, so the hook sees exactly the value the
-    payload read). memcheck.Probe's own FreeToHeap handler is chained.
+    every VCOUNT / VBlank-counter load in print_task, frame_end and pass_end (found by
+    io_reads; hooked on the instruction after the load, so the hook sees exactly the value
+    the payload read), and the game loop's instruction after the pass_end call.
+    memcheck.Probe's own FreeToHeap handler is chained.
 
     The frame model (text_speed_checks.FrameModel) starts from the payload's state in
     RAM and is then updated only from these observed readings; before every reading
@@ -247,6 +248,13 @@ class PrinterTrace:
     decision at that line; the end of a batch as ('mark', line). Each task also gets
     'start' (VBlank count, line) at entry, 'b_lines' (readings after renders that drew
     a glyph) and 'pass_end' (VBlank count, line) from the next frame_end.
+
+    Printer catch-up (D-1603): pass_end's own reading after frame_end gives the model's
+    (late, catch_up) decision, recorded in catchups as [frame, line, late, catch_up, tasks
+    run]. Tasks that start inside pass_end are catch-up tasks ('catchup': True); they are
+    allowed only after a catch_up decision, and their pass ends when pass_end returns
+    (the gate's own reading there). catchup_overruns counts catch-ups during which the
+    VBlank counter moved (the catch-up itself pushed the pass past a VBlank).
 
     A glyph belongs to the printer's most recent native task. The entry is dropped
     when the printer is (re)initialised or freed, so a synchronous print or a
@@ -281,6 +289,7 @@ class PrinterTrace:
         h.on_exec(GLYPH, self._glyph, exclusive=True)
         h.on_exec(FREE_TO_HEAP, self._free, exclusive=True)
         h.on_exec(PRINTER_DESTROY, self._destroy, exclusive=True)
+        h.on_exec(FRAME_END_RETURN, self._pass_return, exclusive=True)
         for where, loads in self.reads.items():
             for address, mnemonic, base_reg, index_reg, offset in loads:
                 h.on_exec(address, self._load(where, mnemonic, base_reg, index_reg, offset), exclusive=True)
@@ -291,6 +300,8 @@ class PrinterTrace:
         self.model = self._checks.FrameModel(self.h.read(self._state, self._checks.STATE_SIZE))
         self.state_errors = []
         self.frame_ends = []
+        self.catchups, self.catchup_overruns = [], 0
+        self._catching = None      # (catch_up decision, VBlank count) from pass_end's reading to its return
         self._open = []            # tasks whose loop pass has not ended yet
         self._vblanks = None       # VBlank counter value just read, waiting for its VCOUNT reading
 
@@ -336,6 +347,14 @@ class PrinterTrace:
             vblanks, self._vblanks = self._vblanks, None
             if vblanks is None:
                 self._compare(f'{where} reading')
+            if where == 'pass_end':
+                if vblanks is None:
+                    self.state_errors.append(f'frame {h.frame}: pass_end read VCOUNT without the VBlank counter')
+                    return
+                late, catch = self.model.pass_end(vblanks, line)
+                self.catchups.append([h.frame, line, late, catch, 0])
+                self._catching = (catch, h.u32(VBLANKS))
+                return
             if where == 'frame_end':
                 if vblanks is None:
                     self.state_errors.append(f'frame {h.frame}: frame_end read VCOUNT without the VBlank counter')
@@ -366,6 +385,23 @@ class PrinterTrace:
             rec['events'].append(('check', line, self.model.decide(line)))
         return hook
 
+    def _pass_return(self, h):
+        """The game loop right after pass_end: close the catch-up tasks' pass."""
+        if self._catching is None:
+            return
+        catch, vblanks = self._catching
+        self._catching = None
+        self.model.catch_up_done()
+        self._compare('pass_end return')
+        ran = [rec for rec in self._open if rec.get('catchup')]
+        end = (h.u32(VBLANKS), h.u16(VCOUNT))
+        for rec in ran:
+            rec['pass_end'] = end
+            rec['pass_end_frame'] = h.frame
+        self._open = [rec for rec in self._open if not rec.get('catchup')]
+        if ran and end[0] != vblanks:
+            self.catchup_overruns += 1
+
     def _from_payload(self, h):
         lo, hi = self._payload_range
         return lo <= (h.reg.lr & ~1) < hi
@@ -382,6 +418,12 @@ class PrinterTrace:
                'special': h.u32(ptr + 0x1C) != 0 or (h.u8(ptr + 0x29) & 127) != 0,
                'events': [], 'next_phase': None, 'start': (h.u32(VBLANKS), h.u16(VCOUNT)), 'b_lines': [],
                'pass_end': None, '_since_render': None}
+        if self._catching is not None:
+            rec['catchup'] = True
+            self.catchups[-1][4] += 1
+            if not self._catching[0]:
+                self.state_errors.append(f'frame {h.frame}: printer task ran in pass_end without a catch-up '
+                                         'decision')
         self.records[ptr] = rec
         self.active = rec
         self.tasks.append(rec)
@@ -518,7 +560,7 @@ class PrinterTrace:
 
 def io_reads(payload):
     """{routine: [(address, mnemonic, base register, offset register or None, offset)]}: every
-    byte, halfword or word load in print_task and frame_end (from each entry to the next
+    byte, halfword or word load in print_task, frame_end and pass_end (from each entry to the next
     global symbol, so inlined and local helpers are included). PrinterTrace hooks all of
     them and keeps those whose effective address, computed from the registers when the
     instruction is about to run, is VCOUNT or the VBlank counter. This does not depend
@@ -530,7 +572,7 @@ def io_reads(payload):
     md = capstone.Cs(capstone.CS_ARCH_ARM, capstone.CS_MODE_THUMB)
     md.detail = True
     out = {}
-    for routine in ('print_task', 'frame_end'):
+    for routine in ('print_task', 'frame_end', 'pass_end'):
         start = payload['symbols'][routine] & ~1
         end = min([a for a in starts if a > start] + [state])
         loads = []

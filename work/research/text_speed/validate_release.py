@@ -75,6 +75,7 @@ def gates(args, out):
         'natural-dialogue': plain('natural_dialogue.py', 'natural-dialogue'),
         'printers': plain('printer_smoke.py', 'printers'),
         'scenes': plain('scene_pacing.py', 'scenes'),
+        'field-rate': plain('field_rate.py', 'field-rate'),
     }
 
 
@@ -122,6 +123,8 @@ def observations(name, r):
         if name == 'scenes':
             return {'table': r.get('table'), 'capped_ties': {n: x.get('capped_ties') for n, x in r['scenes'].items()
                                                              if x.get('capped_ties')}}
+        if name == 'field-rate':
+            return {'table': r.get('table')}
         if name == 'printers':
             return {s['screen']: {k: s.get(k) for k in ('batched', 'async_starts', 'identical')}
                     for s in r.get('screens', [])}
