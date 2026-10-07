@@ -4,7 +4,7 @@ The one required read. Background (long, read only when a gate fails and you nee
 the reasoning): `text_speed_release_checks.md` (gates, fault matrix),
 `text_speed_vcount.md` (frame rule), `text_speed_harness.md`.
 
-Purpose: prove that a candidate ROM with the native SLOW/MEDIUM/FAST text speed is
+Purpose: prove that a candidate ROM with the native text-speed feature is
 releasable. Everything is a command that writes a report under ignored
 `work/build/`; you read the compact `report_summary.py` output, not the JSON.
 
@@ -20,6 +20,31 @@ Run from the worktree root with the repo venv (`/Users/simonvergauwen/Developer/
 - `git status --short` must be empty (untracked files count). Never commit or
   publish ROMs, saves, reports or extracted text. Never download anything.
 
+## Process (user rules, 2026-10-07)
+
+Work in three stages and stop at the first one that fails:
+
+1. **Inner loop, per change** (minutes): cached build, then only the unit tests
+   and `--only` gates your change can affect. Repeat until green. Never run the
+   full gate suite or any fault run here.
+2. **Full suite, once** (~8 min): only when the inner loop is green and the change
+   is committed on a clean tree. If any gate fails: stop, do NOT start the fault
+   matrix, and report the failure (or fix it and go back to stage 1).
+3. **Fault matrix, release candidates only** (~20-25 min in parallel): only after
+   stage 2 passed, and only when the task says this is a release candidate or the
+   gate/check code changed. Between releases rerun only the faults whose declared
+   gates or checked code you changed. Start every fault run at once as its own
+   background job; the machine-wide emulator cap (6) queues them. Never one by one.
+
+Stop and report instead of starting another long run when a decision is needed
+(a check that would have to be loosened, a behaviour trade-off, a design change).
+Never loosen a check to make a run pass.
+
+Checkpoints: commit after every green inner loop, and keep every report under the
+worktree's ignored `work/build/` (never `/private/tmp`, which is wiped on restart).
+After a crash, read `git log` and the newest summaries and continue from the last
+completed stage; do not rerun stages whose commit, ROM and fixture hashes match.
+
 ## Commands
 
 ```sh
@@ -34,12 +59,12 @@ PY work/tools/text_speed_patch.py --check-payload
 PY work/tools/artifact_check.py --rom <rom> --base work/rom/"Pokemon - HeartGold Version (USA).nds" \
    --build-report <cache dir>/build_report.json --ws work/translate/banks --extract work/extract/v4 \
    --output work/build/text-speed/<run>/artifact
-# 5. runtime gates (iterate on a subset; full run only at the end)
+# 5. runtime gates (stage 1: subset; stage 2: full run once)
 PY work/research/text_speed/validate_release.py --rom <rom> --save <trainer.sav> \
    --out work/build/text-speed/<run> --jobs 6 --only corpus,battle
 PY work/research/text_speed/validate_release.py --rom <rom> --save <trainer.sav> \
    --out work/build/text-speed/<run-full> --jobs 6
-# 6. fault matrix: for each fault NAME in fault_fixture.FAULTS
+# 6. fault matrix (stage 3 only): for each fault NAME in fault_fixture.FAULTS, all in parallel
 PY work/research/text_speed/fault_fixture.py <rom> work/build/text-speed/faults --fault NAME
 PY work/research/text_speed/validate_release.py --rom work/build/text-speed/faults/FAULT-NAME.nds \
    --fault-payload work/build/text-speed/faults/FAULT-NAME.payload.json --save <trainer.sav> \
@@ -70,7 +95,7 @@ inside it). Release evidence needs `status: passed` and `releasable: true`
 
 - Run builds, the unit suite, validate_release and the fault matrix in the
   background (`run_in_background`) and wait for the completion notice; do not poll
-  or tail logs in a loop. A full validate_release takes about 10 minutes.
+  or tail logs in a loop. A full validate_release takes about 8 minutes.
 - Pipe long output through `tail -15`; build_cached already prints one line.
 - Read only `report_summary.py` output. Open a gate's own `report.json` or `.log`
   only for one specific failing gate, and read just its `errors` (e.g. with
@@ -79,6 +104,5 @@ inside it). Release evidence needs `status: passed` and `releasable: true`
   once at the end, on a clean committed tree.
 - After a change, compare with `report_summary.py diff <baseline> <new>` instead of
   re-reading two summaries.
-- Fault matrix: run only the faults relevant to what you changed while iterating;
-  the full matrix once at the end. `faults DIR` exits 1 if any is MISSED
+- Fault matrix: see Process stage 3. `faults DIR` exits 1 if any is MISSED
   (`dead-code` is a documented unreachable fault, not a miss).
