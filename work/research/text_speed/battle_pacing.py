@@ -273,12 +273,12 @@ def child(args, trainer):
                 for mode in MODES:
                     reached, frames, lead, printed = run(segment, mode)
                     h.screenshot(f'segment-{segment}-{checks.NAMES[mode]}')
-                    if segment == 0 and not args.no_rng_pin:
-                        problems = checks.rng_pin_errors(report['rng_pins'][-1:], BATTLE_RNG_SEED)
-                        require(not problems, f'segment 0 {checks.NAMES[mode]}: {problems}')
-                    require(reached, f'segment {segment} {checks.NAMES[mode]}: stuck without A/B input'
-                            + ('' if mode != checks.ORIGINAL else ' (the original printer itself: a fixture '
-                               'problem, e.g. the battle blacks out)'))
+                    pins = report['rng_pins'][-1:] if segment == 0 and not args.no_rng_pin else None
+                    problems = checks.segment_start_errors(reached, pins, BATTLE_RNG_SEED)
+                    if not reached and mode == checks.ORIGINAL:
+                        problems = [e + (' (the original printer itself: a fixture problem, e.g. the battle '
+                                         'blacks out)' if e.startswith('stuck') else '') for e in problems]
+                    require(not problems, f'segment {segment} {checks.NAMES[mode]}: ' + '; '.join(problems))
                     for row in printed:
                         tasks = [t for t in tracer.tasks[row['task_mark']:] if t['printer'] == row['printer']
                                  and t['frame'] <= row.get('end', h.frame)]

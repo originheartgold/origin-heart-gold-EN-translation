@@ -559,6 +559,26 @@ class RngPin(unittest.TestCase):
         self.assertTrue(any("did not hold" in e for e in C.rng_pin_errors(lost, seed)))
 
 
+    def test_segment_start_reports_the_cause_first(self):
+        seed = 0x5EED1604
+        ok = [{"mode": "FAST", "delay": 0, "applied": True, "readback": seed}]
+        never = [{"mode": "FAST", "delay": 0, "applied": False}]
+        lost = [dict(ok[0], readback=seed ^ 1)]
+        self.assertEqual(C.segment_start_errors(True, ok, seed), [])
+        self.assertEqual(C.segment_start_errors(True, None, seed), [])
+        # reached: the pin check stays strict
+        self.assertIn("not applied", C.segment_start_errors(True, never, seed)[0])
+        self.assertIn("did not hold", C.segment_start_errors(True, lost, seed)[0])
+        # stuck before the battle RNG's first use: stuck first, the pin as its consequence
+        stuck = C.segment_start_errors(False, never, seed)
+        self.assertEqual(stuck[0], "stuck without A/B input")
+        self.assertIn("not applied", stuck[1])
+        # a pin that did not hold may be why the run got stuck: it comes first
+        self.assertIn("did not hold", C.segment_start_errors(False, lost, seed)[0])
+        self.assertEqual(C.segment_start_errors(False, ok, seed), ["stuck without A/B input"])
+        self.assertEqual(C.segment_start_errors(False, None, seed), ["stuck without A/B input"])
+
+
 class Memory(unittest.TestCase):
     def test_unfreed(self):
         self.assertEqual(C.unfreed([(1, 0x10), (3, 0x10)], [(2, 0x10), (4, 0x10)]), [])

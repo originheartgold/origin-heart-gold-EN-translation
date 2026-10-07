@@ -171,8 +171,11 @@ FAULTS = {
         'gates': {'scenes': 'dropped only because', 'natural-dialogue': 'dropped only because'}},
     'short-history-unguarded': {
         'description': 'no rest floor while fewer than 3 rests are measured (the Route 1 promoter drop of 2026-10-07)',
-        # rest = max(rest, 7) while samples < 3  ->  max(rest, 0)
-        'edits': [(0x01FF8882, B('0721'), B('0021'))],
+        # rest = max(rest, 7) while samples < 3  ->  max(rest, 0) = rest. The compiled floor is
+        # r1 = rest; if rest <= 7: r1 = 7 (movs r1,#7); if samples >= 3: r1 = rest. movs r1,#0
+        # would make the rest 0, not unfloored (a payload the model does not describe, caught
+        # by the model check instead of the product check); movs r1,r0 keeps the measured rest.
+        'edits': [(0x01FF8882, B('0721'), B('0100'))],
         'checker': {'SHORT_REST': 0},
         'gates': {'scenes': 'dropped only because'}},
     'no-catch-up': {

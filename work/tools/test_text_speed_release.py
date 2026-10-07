@@ -202,6 +202,41 @@ class Faults(unittest.TestCase):
                 fault_fixture.FAULTS['commit-noop'], gates={'options': None})}):
             self.assertEqual(validate_release.fault_verdict(fault, gates)[0], 'fault-missed')
 
+    def test_phone_call_scenario_errors_reach_the_gate(self):
+        import phone_call_wait
+        child = {'status': 'failed', 'errors': ['page 1 advanced without input during the 600-frame hold']}
+        errors = phone_call_wait.scenario_errors('battle-fast', 1, child)
+        self.assertEqual(errors, ['battle-fast: page 1 advanced without input during the 600-frame hold'])
+        self.assertEqual(phone_call_wait.scenario_errors('control', 0, {'status': 'passed', 'errors': []}), [])
+        self.assertTrue(phone_call_wait.scenario_errors('control', 1, {'status': 'passed', 'errors': []}))
+        fault = {'name': 'no-call-redirect'}
+        self.assertEqual(validate_release.fault_verdict(fault, {'phone-call': row('failed', errors)})[0],
+                         'fault-detected')
+        # no inner timeout: it counted emulator-slot waits and, when it fired, lost every scenario
+        source = Path(phone_call_wait.__file__).read_text()
+        self.assertNotIn('timeout=', source)
+
+    def test_model_matched_faults_carry_their_model_in_the_payload(self):
+        import json
+        import tempfile
+        import text_speed_checks
+        spec = fault_fixture.FAULTS['short-history-unguarded']
+        # movs r1,r0 (no floor: the measured rest), not movs r1,#0 (a zero rest the model does not describe)
+        self.assertEqual(spec['edits'], [(0x01FF8882, bytes.fromhex('0721'), bytes.fromhex('0100'))])
+        payload = {'source_sha256': '', 'base': 0, 'code': '', 'symbols': {}, 'fault': {'name': 'x'},
+                   'checker': spec['checker']}
+        with tempfile.TemporaryDirectory(dir=gate_common.BUILD) as d:
+            path = Path(d) / 'p.json'
+            path.write_text(json.dumps(payload))
+
+            class A:
+                fault_payload = path
+            with unittest.mock.patch.object(text_speed_checks, 'SHORT_REST', 7):
+                gate_common.load_expected_payload(A)
+                model = text_speed_checks.FrameModel()
+                model.rest[0] = 3
+                self.assertEqual(model.estimates()[1], 3)
+
     def test_dead_code_fault_is_reported_as_such(self):
         self.assertEqual(validate_release.fault_verdict({'name': 'no-state-stop'}, {})[0], 'fault-dead-code')
 

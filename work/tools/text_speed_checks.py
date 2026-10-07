@@ -707,6 +707,22 @@ def rng_pin_errors(pins, seed):
     return errors
 
 
+def segment_start_errors(reached, pins, seed):
+    """One battle segment run (battle_pacing.py): whether it reached its end without A/B input
+    and, for a segment-0 run (pins: its pin records; None for later segments), the pin check.
+    Cause first: a run that stopped before the battle RNG's first use (the pin was never
+    applied) failed by being stuck, and the missing pin is a consequence. A pin that was
+    applied but did not hold comes first (the wrong battle may be why the run got stuck);
+    a run that reached its end gets the strict pin check alone."""
+    pin = rng_pin_errors(pins, seed) if pins is not None else []
+    if reached:
+        return pin
+    stuck = "stuck without A/B input"
+    if pins and not all(p.get("applied") for p in pins):
+        return [stuck] + [f"{e} (a consequence: the run stopped before the battle RNG's first use)" for e in pin]
+    return pin + [stuck]
+
+
 def heap_growth_errors(points, max_blocks=2, max_bytes=1024):
     """points: [{heap id: (used blocks, used bytes)}, ...] at idle moments, oldest first.
 

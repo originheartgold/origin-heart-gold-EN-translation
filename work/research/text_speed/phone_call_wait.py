@@ -315,6 +315,14 @@ def child(args):
         (args.out / 'report.json').write_text(json.dumps(result, indent=2, default=str))
 
 
+def scenario_errors(name, code, report):
+    """A failed scenario's own errors, each prefixed with the scenario name (as the other
+    gates list their children's errors), so the gate's errors carry its checks' text."""
+    if not code and report.get('status') == 'passed':
+        return []
+    return [f'{name}: {e}' for e in (report.get('errors') or [f'exit {code}, report status {report.get("status")}'])]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     add_arguments(parser)
@@ -334,9 +342,11 @@ def main():
         command = [sys.executable, '-I', __file__, '--rom', str(args.rom), '--save', str(args.save),
                    '--out', str(out), '--scenario', name]
         command += ['--fault-payload', str(args.fault_payload)] if args.fault_payload else []
+        # No inner timeout: validate_release's gate timeout (running time, slot waits excluded)
+        # covers this process group. An inner one counted slot waits and, when it fired, threw
+        # away every scenario's errors.
         with (args.out / f'{name}.log').open('w') as log:
-            return name, subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT,
-                                        timeout=1800).returncode
+            return name, subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT).returncode
     try:
         with ThreadPoolExecutor(max(1, args.jobs)) as pool:
             results = list(pool.map(run, names))
@@ -354,8 +364,7 @@ def main():
                                                    for p in r.get('pages', [])]
             if r.get('rom_sha256') != digest(args.rom):
                 summary['errors'].append(f'{name}: wrong candidate executed')
-            if code or r['status'] != 'passed':
-                summary['errors'].append(f'{name}: {r.get("errors")}')
+            summary['errors'].extend(scenario_errors(name, code, r))
         if not summary['errors']:
             for kind in ('out', 'in'):
                 same = [n for n in names if SCENARIOS[n][2] == kind]
