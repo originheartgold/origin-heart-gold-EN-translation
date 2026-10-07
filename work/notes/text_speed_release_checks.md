@@ -238,8 +238,12 @@ addresses, declared gates and texts). Not yet run as a matrix for this revision.
   original task', corpus 'did not delegate').
 - New: `normal-batches` (NORMAL batches like FAST; corpus, scenes, natural-dialogue and
   field-rate 'did not delegate', fallbacks 'fallback skipped the original task') and
-  `short-history-unguarded` (the short-history rest floor removed, gates' model set to match;
-  scenes 'dropped only because', the Route 1 promoter drop).
+  `short-history-unguarded` (the short-history branch forces the rest to 0 instead of the
+  floor 7; the gates keep the real floor in their model; scenes 'drew on after a frame stop').
+  The floor's code path is verified by the model check (this fault). No gate shows the floor
+  value 7 saving a frame in the current 17 scenes (2026-10-08: with the floor removed and the
+  model matched, all decisions equal the candidate's). The floor is kept as margin for
+  hardware timing.
 - Changed: the too-conservative payloads now bias every stored glyph cost (+4: `too-conservative-24`,
   +7: `too-conservative-27`, the largest bias one Thumb instruction encodes; the SLOW-era
   `too-conservative-30` biased the rest by 7 and the glyph by 3) with the gates' model set to
@@ -288,6 +292,7 @@ floor, `tail-ignored` and `glyph-ignored` by frames dropped only because of extr
 | `glyph-ignored` | the decision leaves out the glyph cost (predicts only the rest of the pass) (gates' model set to match) | scenes ('dropped only because'), natural-dialogue ('dropped only because') | natural-dialogue, scenes | fault-detected |
 | `too-conservative-24` | needs 4 more lines for an extra glyph (the review's threshold 24 against 20) (gates' model set to match) | scenes ('SLOW floor'), natural-dialogue ('SLOW floor') | natural-dialogue, scenes | fault-detected |
 | `too-conservative-30` | needs 10 more lines for an extra glyph (the review's threshold 30 against 20) (gates' model set to match) | scenes ('SLOW floor'), natural-dialogue ('SLOW floor') | natural-dialogue, scenes | fault-detected |
+| `short-history-unguarded` (2026-10-08) | the short-history branch forces the rest to 0 instead of the floor 7 (gates keep the real floor) | scenes ('drew on after a frame stop') | scenes | fault-detected |
 
 `no-state-stop` removes the loop's test of RenderText's state (+0x28) and delay
 counter (+0x2a) after a glyph. It is dead code under the pinned base ARM9, proven

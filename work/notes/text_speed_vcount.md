@@ -100,8 +100,13 @@ single rest of 7 (glyph 10 + rest 7 + 2 = 19), a stop the product rule flags as
 giving up a glyph that would have fitted (the pass ended 11 lines before VBlank, the
 median extra glyph costs 9.5). The floor changes only histories whose largest rest is
 below 7; a short history of typical rests decides exactly as before. The gates check
-both sides (no extra dropped frame, no stop that would have fitted), and fault
-`short-history-unguarded` (floor removed) must fail the scenes gate.
+both sides (no extra dropped frame, no stop that would have fitted).
+
+The floor's code path is verified by the model check: fault `short-history-unguarded`
+(the short-history branch forces the rest to 0; the gates' model keeps the floor) must fail
+the scenes gate with 'drew on after a frame stop'. No gate shows the floor value 7 saving a
+frame in the current 17 scenes (2026-10-08: with the floor removed and the model matched,
+all decisions equal the candidate's). The floor is kept as margin for hardware timing.
 
 ### Measuring the rest
 

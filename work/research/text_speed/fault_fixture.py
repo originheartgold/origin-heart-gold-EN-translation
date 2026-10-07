@@ -169,15 +169,16 @@ FAULTS = {
         'edits': [(0x01FF8892, B('5118'), B('0900'))],
         'checker': {'IGNORE_GLYPH': True},
         'gates': {'scenes': 'dropped only because', 'natural-dialogue': 'dropped only because'}},
+    # The floor's code path is proven by the model check (user decision 2026-10-08): no gate
+    # shows the floor value 7 saving a frame in the current 17 scenes (with the floor removed,
+    # movs r1,r0, and the gates' model matched, all decisions equal the candidate's). This edit
+    # forces the short-history rest to 0; the gates keep the real floor in their model.
     'short-history-unguarded': {
-        'description': 'no rest floor while fewer than 3 rests are measured (the Route 1 promoter drop of 2026-10-07)',
-        # rest = max(rest, 7) while samples < 3  ->  max(rest, 0) = rest. The compiled floor is
-        # r1 = rest; if rest <= 7: r1 = 7 (movs r1,#7); if samples >= 3: r1 = rest. movs r1,#0
-        # would make the rest 0, not unfloored (a payload the model does not describe, caught
-        # by the model check instead of the product check); movs r1,r0 keeps the measured rest.
-        'edits': [(0x01FF8882, B('0721'), B('0100'))],
-        'checker': {'SHORT_REST': 0},
-        'gates': {'scenes': 'dropped only because'}},
+        'description': 'the short-history branch forces the rest to 0 instead of the floor 7 (code path of the '
+                       'floor added after the Route 1 promoter drop of 2026-10-07)',
+        # compiled floor: r1 = rest; if rest <= 7: r1 = 7 (movs r1,#7 -> movs r1,#0); if samples >= 3: r1 = rest
+        'edits': [(0x01FF8882, B('0721'), B('0021'))],
+        'gates': {'scenes': 'drew on after a frame stop'}},
     'no-catch-up': {
         'description': 'pass_end never catches up (a late pass needs 255 VBlanks): the hack\'s half rate in 30 fps maps',
         # cmp r2,#2 (VBlanks since the previous pass end) -> cmp r2,#255

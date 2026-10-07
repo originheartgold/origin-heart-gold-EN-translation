@@ -220,9 +220,7 @@ class Faults(unittest.TestCase):
         import json
         import tempfile
         import text_speed_checks
-        spec = fault_fixture.FAULTS['short-history-unguarded']
-        # movs r1,r0 (no floor: the measured rest), not movs r1,#0 (a zero rest the model does not describe)
-        self.assertEqual(spec['edits'], [(0x01FF8882, bytes.fromhex('0721'), bytes.fromhex('0100'))])
+        spec = fault_fixture.FAULTS['tail-ignored']
         payload = {'source_sha256': '', 'base': 0, 'code': '', 'symbols': {}, 'fault': {'name': 'x'},
                    'checker': spec['checker']}
         with tempfile.TemporaryDirectory(dir=gate_common.BUILD) as d:
@@ -231,11 +229,16 @@ class Faults(unittest.TestCase):
 
             class A:
                 fault_payload = path
-            with unittest.mock.patch.object(text_speed_checks, 'SHORT_REST', 7):
+            with unittest.mock.patch.object(text_speed_checks, 'IGNORE_REST', False):
                 gate_common.load_expected_payload(A)
-                model = text_speed_checks.FrameModel()
-                model.rest[0] = 3
-                self.assertEqual(model.estimates()[1], 3)
+                self.assertTrue(text_speed_checks.IGNORE_REST)
+
+    def test_short_history_floor_is_proven_by_the_model_check(self):
+        spec = fault_fixture.FAULTS['short-history-unguarded']
+        # movs r1,#7 -> movs r1,#0: the short-history branch forces the rest to 0
+        self.assertEqual(spec['edits'], [(0x01FF8882, bytes.fromhex('0721'), bytes.fromhex('0021'))])
+        self.assertNotIn('checker', spec)       # the gates keep the real floor in their model
+        self.assertEqual(spec['gates'], {'scenes': 'drew on after a frame stop'})
 
     def test_dead_code_fault_is_reported_as_such(self):
         self.assertEqual(validate_release.fault_verdict({'name': 'no-state-stop'}, {})[0], 'fault-dead-code')
