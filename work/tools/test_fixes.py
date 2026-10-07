@@ -247,6 +247,8 @@ reloc_max_units = 15
         asm.write_text(good, encoding="utf-8")
         md = F.render_docs(self.load(), overlay_bases={"overlay58": 0x021E83C0})
         self.assertIn("`overlay58`: may grow by up to 64 bytes (appended at its end)", md)
+        self.assertIn("`overlay58+0x10` (RAM 0x021E83D0) (slot of 3 characters, pointers 0x0): 形象1 → 'Outfit 1' "
+                      "(relocated, at most 15 characters there)", md)
 
     def test_grow_checks(self):
         (self.root / "overlays.toml").write_text("[overlay58]\nram = 0x021E83C0\n")
@@ -262,6 +264,16 @@ reloc_max_units = 15
         self.assertTrue(any("overlap in overlay58" in p and "growth" in p for p in probs), probs)
         self.write("t", fix_toml("t", kind="graphics", entries='[[grow]]\nfile = "overlay58"\nmax = 8\n' + GFX))
         self.assertTrue(any("[[grow]] only belongs to kinds" in p for p in self.problems()))
+
+    def test_code_from_us_offsets_are_hex_strings(self):
+        op = ('[[graphics]]\nop = "code_from_us"\nfile = "overlay14"\noffset = "0x4C0A8"\nus_file = "overlay12"\n'
+              'us_offset = "0x36340"\nlength = 4\nexpect_sha1 = "a"\nus_sha1 = "b"\n')
+        self.write("g", fix_toml("g", kind="graphics", entries=op))
+        self.assertFalse([p for p in self.problems() if "code_from_us" in p or "offset" in p])
+        self.write("g", fix_toml("g", kind="graphics", entries=op.replace('"0x4C0A8"', "311464")))
+        self.assertTrue(any("'offset' must be string" in p for p in self.problems()))
+        self.write("g", fix_toml("g", kind="graphics", entries=op.replace('"0x36340"', '"36340"')))
+        self.assertTrue(any("us_offset must be hex" in p for p in self.problems()))
 
     def test_include_folder_is_not_a_fix(self):
         self.write("a", fix_toml("a", entries=code_entry("a-1")))
@@ -522,7 +534,8 @@ class RealRegistry(unittest.TestCase):
 
     def test_every_fix_documents_itself(self):
         for f in self.fixes:
-            self.assertTrue(f["decisions"], f["id"])
+            # a fix without a decision must say in its evidence which decision is pending
+            self.assertTrue(f["decisions"] or any(e.startswith("Decision pending:") for e in f["evidence"]), f["id"])
             self.assertGreater(len(f["why"].strip()), 80, f["id"])
             self.assertGreater(len(f["what"].strip()), 30, f["id"])
 

@@ -21,7 +21,7 @@ make
 
 The binary itself is not reproducible (its banner embeds the build date and time), so there is no binary hash to check: the tag and commit above are the pin, and the build checks the version banner.
 
-The build finds armips in this order: `build.py --armips PATH`, the `ARMIPS` environment variable, `armips` on `PATH`. It runs it with no arguments and requires the banner `armips assembler v0.11.0`; any other version stops the build. Without armips the build stops as soon as a strings, code or data fix is selected; `--no-hardcoded` leaves them all out (and is refused while a graphics fix `requires` one, e.g. `gfx-naming-tabs`).
+The build finds armips in this order: `build.py --armips PATH`, the `ARMIPS` environment variable, `armips` on `PATH`. It runs it with no arguments and requires the banner `armips assembler v0.11.0`; any other version stops the build. Without armips the build stops as soon as a strings, code or data fix is selected; `--no-hardcoded --without gfx-naming-tabs` leaves them all out (`gfx-naming-tabs` `requires` the naming keyboard, so `--no-hardcoded` alone is refused). The build looks for armips in stage 0, before the export, so a missing or wrong armips stops it at once. A relative `--armips`/`ARMIPS` path is made absolute (armips runs in a staging folder); a bare name is looked up on `PATH`.
 
 ## Layout
 

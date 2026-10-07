@@ -20,7 +20,8 @@ what = """
 Old: tab 1 (page 0) = pinyin IME, tab 2 = a-z/A-Z/0-9 (Western), tab 3 = full-width ＡＢＣ, tab 4 = 1/♪.
 New: 'bne' -> 'b' at 0x02083C24, so every page inserts keys directly and the IME never starts.
 Tab 1 (page 0, still the default) = ABC: the hack's own ABC layout (A-M, N-Z, a-m, n-z, 0-9 . , space) in
-Western codes 0x0121-0x015E. Tab 3 (page 2) = QWE: blank row, 1-0, QWERTYUIOP, ASDFGHJKL ' -, ZXCVBNM , .
+Western codes 0x0121-0x015E. Tab 3 (page 2) = QWE: blank row, 1-0, QWERTYUIOP, ASDFGHJKL ’ -, ZXCVBNM , .
+(’ is the apostrophe of the game font, 0x01B3; there is no straight ' key.)
 Tabs 2 and 4 are the hack's. Putting ABC on page 0 makes it the default without touching the init code
 (changing the default page would need 5+ patches). The tab labels are fix gfx-naming-tabs, which requires
 this fix; building --without gfx-naming-tabs keeps the hack's Japanese tab art, so the かな label sits over
@@ -100,7 +101,7 @@ id = "naming-qwe-row4"
 file = "arm9"
 offset = "0x100E6C"
 expect = "00D3 00D4 00D5 00D6 00D7 00D8 00D9 00DA 00DB 00DC 00DD 00DE 00DF"
-notes = "Page 2 row 4: full-width n-z -> ASDFGHJKL ' -."
+notes = "Page 2 row 4: full-width n-z -> ASDFGHJKL ’ - (’ = 0x01B3, the font's apostrophe)."
 
 [[code]]
 id = "naming-qwe-row5"

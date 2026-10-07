@@ -19,7 +19,6 @@ affected allocation. It preserves the translations and the bounded-copy
 check. It is an English-required capacity change, consistent with D-1002.
 
 The proposed bag entry is below, as a `[[code]]` entry for a new fix folder (`work/patches/<fix-id>/fix.toml`; written when the registry was `code_patches.json`).
-**Since 2026-10-08 (step 2 of the patch refactor):** `[[code]]` entries no longer have `value`. A new code fix is an armips source, `work/patches/<fix-id>/<fix-id>.asm`, that writes the new bytes behind guards on the old ones, plus `asm = "<fix-id>.asm"` and `[[code]]` regions (file, offset, `expect` = original bytes) in its `fix.toml`; see `work/notes/toolchain.md`. The entries below are kept as written; read the replacement halfwords as what the asm would write.
 Equivalent guarded entries are needed at overlay 3 address `0x02259B34`
 (shop, heap 11) and overlay 9 address `0x021EC12A` (dynamic heap).
 A bag-only change would leave two affected consumers.
@@ -42,6 +41,8 @@ expect = "2072 2106 F628 FFC7"
 value = "2080 2106 F628 FFC7"
 notes = "Bag item-description String: capacity 114 -> 128 stored units, including terminator; maximum current English description is 120. Guard the heap-6 argument and String_New call; leave the separate formatted-menu allocation unchanged."
 ```
+
+**Note (2026-10-08):** `[[code]]` entries no longer have `value`. A code fix is now an armips source, `work/patches/<fix-id>/<fix-id>.asm`, that writes the new bytes behind guards on the old ones, plus `asm = "<fix-id>.asm"` and `[[code]]` regions (file, offset, `expect` = original bytes) in its `fix.toml`; see `work/notes/toolchain.md`. The entries above are kept as written; read the replacement halfwords as what the asm would write.
 
 Only the first halfword changes: `movs r0, #114` becomes `movs r0, #128` at
 `0x021FD8CE`. The heap argument and call remain identical. The read-only buffer

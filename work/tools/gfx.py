@@ -28,11 +28,12 @@ Patch operations (one [[graphics]] table each; shown here as JSON objects):
   {"op": "member_from_file", "narc": ..., "files": {"1": {"src": "generated/x.bin", "expect_sha1": "<12 hex>"}, ...}}
         replace each listed member with a generated file (any format), but only if the hack's member
         still has the SHA-1 the file was generated from. (Single-member form: "member", "src", "expect_sha1".)
-  {"op": "code_from_us", "file": "overlay14", "offset": 311464, "us_file": "overlay12", "us_offset": 222016,
+  {"op": "code_from_us", "file": "overlay14", "offset": "0x4C0A8", "us_file": "overlay12", "us_offset": "0x36340",
    "length": 480, "expect_sha1": "<12 hex>", "us_sha1": "<12 hex>"}
         graphics stored as raw tile data inside code (arm9 / overlays, not in a NARC), e.g. the battle
         HP-box status icons: copy `length` bytes from the USA ROM's (decompressed) code file into the
-        hack's code file. Offsets are file offsets in the decompressed image. Checks: the hack's bytes
+        hack's code file. Offsets are hex strings, file offsets in the decompressed image (as in
+        [[code]]). Checks: the hack's bytes
         and the USA bytes still have the recorded SHA-1s; the hack's overlay must be uncompressed.
   "also": the same operation is applied to each listed NARC too (e.g. the hack's per-costume
         copies data/clothes1/a068.narc and data/clothes2/a068.narc), after checking that the
@@ -743,14 +744,15 @@ def _apply_code_op(op, code, us_code):
     if code is None or us_code is None:
         raise ValueError(f"{op['op']}: no code access (pass code=/us_code= to apply_patches)")
     cur = bytearray(code.get(op["file"]))
-    off, n = op["offset"], op["length"]
+    off, n = fixreg._int(op["offset"]), op["length"]
+    us_off = fixreg._int(op["us_offset"])
     got = hashlib.sha1(bytes(cur[off:off + n])).hexdigest()[:12]
     if got != op["expect_sha1"]:
         raise ValueError(f"{op['file']}+{off:#x}: hack bytes are {got}, expected {op['expect_sha1']}")
-    us = us_code.get(op["us_file"])[op["us_offset"]:op["us_offset"] + n]
+    us = us_code.get(op["us_file"])[us_off:us_off + n]
     ug = hashlib.sha1(us).hexdigest()[:12]
     if ug != op["us_sha1"]:
-        raise ValueError(f"{op['us_file']}+{op['us_offset']:#x}: USA bytes are {ug}, expected {op['us_sha1']}")
+        raise ValueError(f"{op['us_file']}+{us_off:#x}: USA bytes are {ug}, expected {op['us_sha1']}")
     cur[off:off + n] = us
     code.set(op["file"], bytes(cur))
     return {"code": op["file"], "offset": off, "length": n, "op": op["op"], "src": "usa " + op["us_file"],

@@ -7,7 +7,7 @@ An English fan translation of **起源心金 (Pokémon Origin HeartGold) v4.0.3*
 [Patch your game here](https://originheartgold.github.io/origin-heart-gold-EN-translation/patch/) and run on any emulator.
 Real Nintendo hardware is **not** supported and might result in strange and unexpected behavior.
 
-Stuck on a quest? The [quest guide]([guide/README.md](https://originheartgold.github.io/origin-heart-gold-EN-translation/guide/)) covers side quests, puzzles and easy-to-miss events, region by region.
+Stuck on a quest? The [quest guide](https://originheartgold.github.io/origin-heart-gold-EN-translation/guide/) ([source](guide/README.md)) covers side quests, puzzles and easy-to-miss events, region by region.
 
 Cannot find a Pokémon? Check the [full reference](https://originheartgold.github.io/origin-heart-gold-EN-translation/pokemon/) including movesets including egg, and moveset, evolution level or method, location, and more.
 

@@ -113,7 +113,6 @@ TOP_KEYS = {"id": str, "title": str, "kind": str, "enabled": bool, "decisions": 
             "why": str, "what": str, "evidence": STRS, "asm": str,
             "code": TABLES, "string": TABLES, "grow": TABLES, "graphics": TABLES, "font": TABLES}
 REQUIRED_TOP = ("id", "title", "kind", "enabled", "decisions", "requires", "why", "what", "evidence")
-RESERVED_TOP = {}                        # top-level keys that are reserved but not supported yet
 ASM_KINDS = ("strings", "data", "code")  # kinds whose new bytes come from an armips source
 
 CODE_KEYS = {"id": str, "file": str, "offset": str, "expect": str, "notes": str}
@@ -143,7 +142,7 @@ GRAPHICS_OPS = {   # op -> (allowed keys with types, required keys)
     "tile_range_from_png": ({**_NARC, "member": int, "first": int, "src": str, "width_tiles": int},
                             ("narc", "member", "first", "src")),
     "member_from_file": ({**_NARC, "files": TABLE_MAP, "member": int, "src": str, "expect_sha1": str}, ("narc",)),
-    "code_from_us": ({"file": str, "offset": int, "us_file": str, "us_offset": int, "length": int,
+    "code_from_us": ({"file": str, "offset": str, "us_file": str, "us_offset": str, "length": int,
                       "expect_sha1": str, "us_sha1": str, "notes": str},
                      ("file", "offset", "us_file", "us_offset", "length", "expect_sha1", "us_sha1")),
 }
@@ -299,6 +298,10 @@ def _validate_entries(fx, where, problems):
         if op == "tiles_from_us" and _is(e.get("tiles"), ("list", INTS)) and \
                 any(len(r) != 2 or r[0] > r[1] for r in e["tiles"]):
             problems.append(f"{w}: tiles must be [first, last] pairs")
+        if op == "code_from_us":
+            for k in ("offset", "us_offset"):
+                if isinstance(e.get(k), str) and not HEX_RE.fullmatch(e[k]):
+                    problems.append(f"{w}: {k} must be hex like '0x4C0A8'")
         if op == "member_from_file":
             files = e.get("files") if _is(e.get("files"), TABLE_MAP) else None
             if "files" not in e and not all(k in e for k in ("member", "src", "expect_sha1")):
@@ -437,10 +440,7 @@ def validate(fixes, decisions=None, overlay_bases=None) -> list:
     for fx in fixes:
         path = fx.get("_path")
         where = f"{path.parent.name}/fix.toml" if path else f"fix {fx.get('id', '?')}"
-        for k in RESERVED_TOP:
-            if k in fx:
-                problems.append(f"{where}: {k!r} is {RESERVED_TOP[k]}")
-        _types(where, {k: v for k, v in fx.items() if k != "_path" and k not in RESERVED_TOP},
+        _types(where, {k: v for k, v in fx.items() if k != "_path"},
                TOP_KEYS, REQUIRED_TOP, problems)
         fid = fx.get("id")
         if isinstance(fid, str):
@@ -588,7 +588,8 @@ def footprint(fx) -> list:
         rows.append((g["file"], 1 << 40, (1 << 40) + 1, f"{g['file']} growth"))   # appended at the overlay's end
     for e in fx.get("graphics", []):
         if e["op"] == "code_from_us":
-            rows.append((e["file"], e["offset"], e["offset"] + e["length"], f"{e['op']} {e['file']}"))
+            off = _int(e["offset"])
+            rows.append((e["file"], off, off + e["length"], f"{e['op']} {e['file']}"))
             continue
         members = e.get("members") or ([e["member"]] if "member" in e else [int(k) for k in e.get("files", {})])
         for narc in [e["narc"]] + e.get("also", []):
@@ -754,16 +755,22 @@ def _touched(fx, bases=None) -> list:
         lines.append(f"`{e['file']}+{e['offset']}`{ram} `{e['id']}`: {n} bytes, was `{_hw_short(e['expect'])}`")
     for e in fx.get("string", []):
         ptr = f", pointers {', '.join(e['pointers'])}" if e.get("pointers") else ""
+        en = e.get("en")
+        if not en:
+            where = "unchanged"
+        elif len(en) <= e["max_units"]:
+            where = "in place"
+        else:
+            where = f"relocated, at most {e.get('reloc_max_units')} characters there"
         lines.append(f"`{e['file']}+{e['offset']}`{_ram_note(e['file'], _int(e['offset']), bases)} "
-                     f"({e['max_units']} characters in place{ptr}): "
-                     f"{e['zh']} → {e.get('en')!r}")
+                     f"(slot of {e['max_units']} characters{ptr}): "
+                     f"{e['zh']} → {en!r} ({where})")
     for g in fx.get("grow", []):
         lines.append(f"`{g['file']}`: may grow by up to {g['max']} bytes (appended at its end)")
     for e in fx.get("graphics", []):
         if e["op"] == "code_from_us":
-            lines.append(f"`{e['file']}+0x{e['offset']:X}`{_ram_note(e['file'], e['offset'], bases)}, "
-                         f"{e['length']} bytes ← USA `{e['us_file']}+"
-                         f"0x{e['us_offset']:X}` (`{e['op']}`)")
+            lines.append(f"`{e['file']}+{e['offset']}`{_ram_note(e['file'], _int(e['offset']), bases)}, "
+                         f"{e['length']} bytes ← USA `{e['us_file']}+{e['us_offset']}` (`{e['op']}`)")
             continue
         members = e.get("members") or ([e["member"]] if "member" in e else [int(k) for k in e.get("files", {})])
         ms = ", ".join(f"#{mb}" for mb in members)
@@ -811,7 +818,10 @@ def render_docs(fixes, overlay_bases=None) -> str:
            "count and mapping; and the font fix checks the glyph size. Each fix can be left out of a build "
            "with `python3 work/tools/build.py --without <id>` (or built alone with `--only`). A fix whose "
            "`requires` names another fix only makes sense together with it; the build refuses to drop one without "
-           "the other.", "",
+           "the other. Outside the message archives and these fixes, the only other bytes that differ from the "
+           "Chinese ROM are container bookkeeping: the ROM header's layout fields, the FAT and the offset at 0x1000 "
+           "where the RSA signature is stored move because ndspy rebuilds the ROM container around the changed "
+           "files, not because of a fix.", "",
            "Stages (and the order of this list): font → graphics → hardcoded strings → data and code patches. "
            "Offsets are file offsets; for arm9 "
            "and overlays that is the offset in the RAM image, so RAM = load address + offset (arm9 0x02000000; "

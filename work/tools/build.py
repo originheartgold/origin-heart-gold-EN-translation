@@ -5,6 +5,7 @@ Pipeline
   0. fixes    fixes.py: load work/patches/<fix-id>/fix.toml (every change to the Chinese ROM besides the
               message text; overview work/patches/FIXES.md), validate it and select the enabled fixes
               (--only / --without; a selected fix whose `requires` is not selected stops the build);
+              when a strings/code/data fix is selected, find armips and check its version (before the export);
               work/patches/overlays.toml is checked against the ROM's overlay table in stage 2
   1. export   ws.export(): workspace (statuses tm,draft,reviewed by default) -> work/build/export/<narc>/;
               banks in qa_config.json "compressed_banks" (trainer names a027/0719) are written
@@ -45,7 +46,7 @@ Pipeline
 Usage
   python3 work/tools/build.py [--status tm,draft,reviewed] [--no-patch] [--lenient]
                               [--only FIX,...] [--without FIX,...]
-                              [--glyph-fonts 0,1,2,4] [--no-graphics] [--no-regen-graphics]
+                              [--glyph-fonts 0,1,2,4] [--no-glyphs] [--no-graphics] [--no-regen-graphics]
                               [--no-hardcoded] [--keep-export] [--armips PATH]
   --only/--without take fix ids (python3 work/tools/fixes.py list). --no-glyphs, --no-graphics and
   --no-hardcoded leave out every fix of kind font / graphics / strings+code+data; `requires` still holds,
@@ -293,6 +294,16 @@ def main(argv=None):
     report["fixes"] = {"only": a.only, "without": a.without, "without_kinds": list(without_kinds),
                        "applied": [f["id"] for f in active]}
     log(f"fixes: {len(active)} selected: {', '.join(f['id'] for f in active)}")
+    # the assembler for the strings/code/data fixes: checked now, before the export, so a missing or wrong
+    # armips stops the build at once
+    armips = None
+    if asmpatch.asm_fixes(active):
+        try:
+            armips = asmpatch.find_armips(a.armips)
+            version = asmpatch.check_armips(armips)
+        except asmpatch.AsmError as ex:
+            sys.exit(str(ex))
+        log(f"armips {version}: {armips}")
 
     # 1. export
     export_dir = paths["export"]
@@ -320,14 +331,6 @@ def main(argv=None):
         fixreg.check_overlay_bases(rom)
     except fixreg.FixError as ex:
         sys.exit(str(ex))
-    armips = None
-    if asmpatch.asm_fixes(active):
-        try:
-            armips = asmpatch.find_armips(a.armips)
-            version = asmpatch.check_armips(armips)
-        except asmpatch.AsmError as ex:
-            sys.exit(str(ex))
-        log(f"armips {version}: {armips}")
     for narc_key, path in NARCS.items():
         tmpl = m.Narc.parse(m.get_file(rom, path))
         narc = m.build_msg_narc(tmpl, export_dir / narc_key, cm)
@@ -375,7 +378,7 @@ def main(argv=None):
         report["hardcoded"] = hc_report
         log(f"hardcoded: {len(hc_report['strings'])} strings written "
             f"({sum(r['mode'] == 'relocated' for r in hc_report['strings'])} relocated), "
-            f"{hc_report['todo']} untranslated, {len(hc_report['code_patches'])} code/data regions (armips)")
+            f"{hc_report['todo']} untranslated, {len(hc_report['code_regions'])} code/data regions (armips)")
 
     # 4. write
     log(f"write {out_rom}")

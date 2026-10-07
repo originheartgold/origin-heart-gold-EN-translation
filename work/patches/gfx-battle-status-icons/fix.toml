@@ -23,9 +23,9 @@ evidence = [
 [[graphics]]
 op = "code_from_us"
 file = "overlay14"
-offset = 0x4C0A8
+offset = "0x4C0A8"
 us_file = "overlay12"
-us_offset = 0x36340
+us_offset = "0x36340"
 length = 480
 expect_sha1 = "96bf7f39b274"
 us_sha1 = "92034e7984fd"

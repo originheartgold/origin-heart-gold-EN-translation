@@ -31,9 +31,9 @@ The build:
 armips is not bundled. It is found as --armips PATH (build.py), else the ARMIPS environment variable, else
 `armips` on PATH, and must report the pinned version (PINNED_VERSION). Build steps: work/notes/toolchain.md.
 
-    python3 work/tools/asmpatch.py check [--rom ROM] [--only IDS] [--without IDS] [--armips PATH]
+    python3 work/tools/asmpatch.py [--rom ROM] [--armips PATH] check [--only IDS] [--without IDS]
                                          # assemble the selected fixes against the Chinese ROM (nothing written)
-    python3 work/tools/asmpatch.py listing <fix-id> [--rom ROM] [--armips PATH]
+    python3 work/tools/asmpatch.py [--rom ROM] [--armips PATH] listing <fix-id>
                                          # each region of one fix: old bytes -> new bytes
     python3 work/tools/asmpatch.py tbl [--out work/patches/include/charmap.tbl]
                                          # the armips table file for `.string` (from charmap_en.tsv)
@@ -82,16 +82,23 @@ def find_armips(explicit=None, env=None) -> str:
     env = os.environ if env is None else env
     for how, cand in (("--armips", explicit), (f"${ENV_VAR}", env.get(ENV_VAR))):
         if cand:
-            p = shutil.which(cand) or (cand if Path(cand).is_file() else None)
+            cand = str(cand)
+            if os.sep in cand or (os.altsep and os.altsep in cand):
+                # a path: absolute, because armips runs in the staging folder (another working directory)
+                path = Path(cand).expanduser().resolve()
+                p = str(path) if path.is_file() and os.access(path, os.X_OK) else None
+            else:
+                p = shutil.which(cand)                  # a bare name: looked up on PATH
             if not p:
                 raise AsmError(f"armips from {how} not found or not executable: {cand}")
-            return p
+            return str(Path(p).resolve())
     p = shutil.which("armips")
     if not p:
         raise AsmError(f"armips {PINNED_VERSION} not found: put it on PATH, set {ENV_VAR}=/path/to/armips or pass "
                        f"--armips (build steps: work/notes/toolchain.md); without it, build.py can only build "
-                       f"with --no-hardcoded (no strings, code or data fixes)")
-    return p
+                       f"with --no-hardcoded --without gfx-naming-tabs (no strings, code or data fixes, and the "
+                       f"naming-tab graphics need the naming keyboard)")
+    return str(Path(p).resolve())
 
 
 def armips_version(path) -> str:
@@ -421,6 +428,8 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
                                    capture_output=True, text=True, timeout=TIMEOUT)
             except subprocess.TimeoutExpired:
                 raise AsmError(f"fix {fx['id']}: armips did not finish within {TIMEOUT} s") from None
+            except OSError as ex:
+                raise AsmError(f"fix {fx['id']}: cannot run armips {armips}: {ex}") from None
             out = (r.stdout + r.stderr).strip()
             if r.returncode != 0:
                 shown = src.relative_to(fixreg.REPO) if src.is_relative_to(fixreg.REPO) else src
@@ -494,7 +503,7 @@ def staged_keys(fixes) -> list:
 
 
 def apply(rom, fixes, armips: str, dry_run=False) -> dict:
-    """Assemble the armips fixes among `fixes` into an ndspy ROM. Returns {"code_patches": rows, "strings":
+    """Assemble the armips fixes among `fixes` into an ndspy ROM. Returns {"code_regions": rows, "strings":
     rows, "files": {key: sha1[:12]} of the changed files, "armips": {...}}; raises AsmError (nothing written)."""
     import hardcoded
     view = hardcoded.RomView(rom)
@@ -510,7 +519,7 @@ def apply(rom, fixes, armips: str, dry_run=False) -> dict:
     if not dry_run:
         for k, v in changed.items():
             view.set(k, v)
-    return {"code_patches": rows, "strings": srows,
+    return {"code_regions": rows, "strings": srows,
             "files": {k: hashlib.sha1(v).hexdigest()[:12] for k, v in changed.items()},
             "grown": {k: {"from": len(binaries[k]), "to": len(v)} for k, v in changed.items()
                       if len(v) != len(binaries[k])},
@@ -544,12 +553,14 @@ def verify(rom, report) -> str:
         for p in r.get("pointers", []):
             if struct.unpack_from("<I", data, int(p, 16))[0] != r["addr"]:
                 raise AsmError(f"{r['id']}: pointer {p} not repointed")
-    for r in report.get("code_patches", []):
+    # "code_patches": the same rows in build reports written before 2026-10-08 (artifact_check reads them)
+    code_rows = report.get("code_regions", report.get("code_patches", []))
+    for r in code_rows:
         want = b"".join(h.to_bytes(2, "little") for h in fixreg.halfwords(r["new"]))
         off = int(r["offset"], 16)
         if view.get(r["file"])[off:off + len(want)] != want:
-            raise AsmError(f"code patch {r['id']}: {r['file']}+{r['offset']} is not {r['new']}")
-    return f"ok ({len(report.get('strings', []))} strings, {len(report.get('code_patches', []))} code patches)"
+            raise AsmError(f"code region {r['id']}: {r['file']}+{r['offset']} is not {r['new']}")
+    return f"ok ({len(report.get('strings', []))} strings, {len(code_rows)} code regions)"
 
 
 # --------------------------------------------------------------------------------------
@@ -588,12 +599,12 @@ def main(argv=None):
         rep = apply(rom, act, armips, dry_run=True)
     except (AsmError, fixreg.FixError) as ex:
         sys.exit(str(ex))
-    for r in rep["code_patches"]:
+    for r in rep["code_regions"]:
         print(f"  {r['fix']:22s} {r['id']:28s} {r['file']}+{r['offset']}: {r['old']} -> {r['new']}")
     for r in rep["strings"]:
         print(f"  {r['fix']:22s} {r['id']:28s} {r['mode']:9s} -> {r['addr']:#010x}  {r['en']!r}")
-    print(f"ok: {len({r['fix'] for r in rep['code_patches'] + rep['strings']})} fixes, "
-          f"{len(rep['code_patches'])} code/data regions, {len(rep['strings'])} strings "
+    print(f"ok: {len({r['fix'] for r in rep['code_regions'] + rep['strings']})} fixes, "
+          f"{len(rep['code_regions'])} code/data regions, {len(rep['strings'])} strings "
           f"(armips {rep['armips']['version']})")
 
 

@@ -6,6 +6,7 @@ also skipped when work/rom/origin_v4.0.3_cn.nds is missing. The ROM tests compar
 golden SHA-1s (GOLDEN), recorded on 2026-10-08 from the run that proved the armips sources write exactly the
 bytes of the retired Python engine, per fix and all together (work/notes/toolchain.md)."""
 import hashlib
+import os
 import re
 import shutil
 import stat
@@ -113,8 +114,8 @@ class Locate(unittest.TestCase):
             fake = Path(td) / "armips"
             fake.write_text("#!/bin/sh\necho 'armips assembler v0.10.0 (Jan 1 2020) by Kingcom'\nexit 1\n")
             fake.chmod(fake.stat().st_mode | stat.S_IXUSR)
-            self.assertEqual(A.find_armips(str(fake), env={}), str(fake))
-            self.assertEqual(A.find_armips(None, env={A.ENV_VAR: str(fake)}), str(fake))
+            self.assertEqual(A.find_armips(str(fake), env={}), str(fake.resolve()))
+            self.assertEqual(A.find_armips(None, env={A.ENV_VAR: str(fake)}), str(fake.resolve()))
             with self.assertRaises(A.AsmError) as cm:
                 A.find_armips(str(Path(td) / "nope"), env={})
             self.assertIn("--armips not found", str(cm.exception))
@@ -129,6 +130,40 @@ class Locate(unittest.TestCase):
             with self.assertRaises(A.AsmError) as cm:
                 A.armips_version(fake)
             self.assertIn("does not look like armips", str(cm.exception))
+
+    def test_relative_armips_path_is_made_absolute(self):
+        with tempfile.TemporaryDirectory() as td:
+            (Path(td) / "bin").mkdir()
+            fake = Path(td) / "bin" / "armips"
+            fake.write_text("#!/bin/sh\necho 'armips assembler v0.11.0 (Jan 1 2020) by Kingcom'\n")
+            fake.chmod(fake.stat().st_mode | stat.S_IXUSR)
+            old = Path.cwd()
+            os.chdir(td)
+            try:
+                for how in ({"explicit": "bin/armips", "env": {}}, {"env": {A.ENV_VAR: "./bin/armips"}}):
+                    p = A.find_armips(**how)
+                    self.assertTrue(Path(p).is_absolute(), p)
+                    self.assertEqual(p, str(fake.resolve()))
+                with self.assertRaises(A.AsmError) as cm:
+                    A.find_armips("bin/nope", env={})
+                self.assertIn("--armips not found or not executable: bin/nope", str(cm.exception))
+            finally:
+                os.chdir(old)
+            self.assertEqual(A.armips_version(p), "v0.11.0")       # still runs from another directory
+            fake.chmod(0o644)                                      # a path that is not executable
+            with self.assertRaises(A.AsmError):
+                A.find_armips(str(fake), env={})
+
+    def test_armips_that_cannot_run_is_an_asm_error(self):
+        with tempfile.TemporaryDirectory() as td:
+            d = Path(td) / "t"
+            d.mkdir()
+            (d / "t.asm").write_text('.open "arm9.bin", 0x02000000\n.close\n', encoding="utf-8")
+            fx = {"id": "t", "kind": "code", "asm": "t.asm", "_path": d / "fix.toml",
+                  "code": [{"id": "t-1", "file": "arm9", "offset": "0x0", "expect": "0x0000", "notes": "n"}]}
+            with self.assertRaises(A.AsmError) as cm:
+                A.assemble([fx], {"arm9": bytes(8)}, str(Path(td) / "missing" / "armips"))
+            self.assertIn("fix t: cannot run armips", str(cm.exception))
 
 
 @needs_armips
@@ -409,16 +444,16 @@ class RealFixes(unittest.TestCase):
         for fid in ASM_FIXES:
             with self.subTest(fix=fid):
                 _, rep = self.check_golden(fid, [fid])
-                self.assertEqual({r["fix"] for r in rep["code_patches"] + rep["strings"]}, {fid})
+                self.assertEqual({r["fix"] for r in rep["code_regions"] + rep["strings"]}, {fid})
 
     def test_all_fixes_together_match_golden(self):
         rom, rep = self.check_golden("all", ASM_FIXES)
-        self.assertEqual(len(rep["code_patches"]), 29)
+        self.assertEqual(len(rep["code_regions"]), 29)
         self.assertEqual([(r["id"], r["mode"], r["en"]) for r in rep["strings"]],
                          [("overlay58:0x6F0", "in-place", "OK"), ("overlay58:0x6F6", "relocated", "Outfit 1"),
                           ("overlay58:0x6FE", "relocated", "Outfit 3"), ("overlay58:0x706", "relocated", "Outfit 2")])
         self.assertEqual(rep["armips"]["version"], A.PINNED_VERSION)
-        self.assertEqual(A.verify(rom, rep), "ok (4 strings, 29 code patches)")
+        self.assertEqual(A.verify(rom, rep), "ok (4 strings, 29 code regions)")
         view = self.hc.RomView(rom)
         self.assertEqual(view.table_ram_size(58), 0x818)
         self.assertEqual(rep["grown"], {"overlay58": {"from": 0x7E0, "to": 0x818}})
@@ -430,6 +465,10 @@ class RealFixes(unittest.TestCase):
         with self.assertRaises(A.AsmError) as cm:
             A.verify(rom, rep)
         self.assertIn("y9 ramSize 0x7e0", str(cm.exception))
+        # a build report from before the rename ("code_patches") still verifies
+        old = {k: v for k, v in rep.items() if k not in ("code_regions", "grown")}
+        old["code_patches"] = rep["code_regions"]
+        self.assertEqual(A.verify(rom, old), "ok (4 strings, 29 code regions)")
         # no Chinese left in the chooser
         cm_zh = self.m.Charmap.load([self.hc.ZH_CHARMAP])
         self.assertEqual(list(self.hc.scan_blob(view.get("overlay58"), cm_zh, self.hc._bigrams())), [])

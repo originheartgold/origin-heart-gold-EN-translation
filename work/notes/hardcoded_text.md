@@ -92,7 +92,7 @@ The hack's keyboard (Japanese base) has four tabs. Page N uses the rows `sKeyboa
 |---|---|---|---|
 | 1 (page 0, opens first) | かな: pinyin IME. QWERTY letters go into a pinyin buffer (`data+0x5E4`); candidates from `a/0/3/1` #19/#20 fill rows 1–2 (lookup `0x020835E4`); picking one commits hanzi | **ABC**: the hack's ABC layout (A–M, N–Z, a–m, n–z, 0–9 . ,) in Western codes `0x0121–0x015E` | `naming-abc-row1..5` (`naming-keyboard.asm`); tab art = the hack's own "ABC" label |
 | 2 (page 1) | カナ → a–z, A–Z, 0–9 (Western) | unchanged (**abc**) | – |
-| 3 (page 2) | full-width ＡＢＣ (`0x00AC–0x00DF`, ０–９) | **QWE**: blank row, 1–0, QWERTYUIOP, ASDFGHJKL ' -, ZXCVBNM , . (Western) | `naming-qwe-row1..5`; tab art "QWE" |
+| 3 (page 2) | full-width ＡＢＣ (`0x00AC–0x00DF`, ０–９) | **QWE**: blank row, 1–0, QWERTYUIOP, ASDFGHJKL ’ -, ZXCVBNM , . (Western; ’ is 0x01B3) | `naming-qwe-row1..5`; tab art "QWE" |
 | 4 (page 3) | 1/♪ full-width symbols | unchanged | – |
 
 - **IME off:** `naming-ime-off` changes `bne 0x02083CF8` at `0x02083C24` (in the key handler `0x02083814`, the hack's `NamingScreen_HandleCharacterInput`) to `b`. Every key now takes the normal insert path, so the pinyin buffer stays empty and the candidate rows, ← → paging and the pinyin BACK path never run.
