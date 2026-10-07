@@ -1,0 +1,128 @@
+---
+// Interactive Action Replay code builder for the overworld camera (page: camera-codes.mdx).
+// Encoding and preset table: src/lib/camera-codes.mjs; evidence: work/cheats/CAMERA_CHEATS.md.
+// Without JavaScript the form stays hidden; the page lists ready-made codes.
+import { PRESETS, PRESET_NAMES as NAMES, toSettings } from '../lib/camera-codes.mjs';
+const hex2 = (i: number) => i.toString(16).toUpperCase().padStart(2, '0');
+---
+<div class="camb not-content" data-presets={JSON.stringify(PRESETS.map(toSettings))}>
+	<form class="camb-form" hidden onsubmit="return false">
+		<p class="camb-title">Camera code builder</p>
+		<fieldset class="camb-scope">
+			<legend>Change the camera</legend>
+			<label><input type="radio" name="scope" value="interiors" checked /> Inside buildings only</label>
+			<label><input type="radio" name="scope" value="everywhere" /> On every map</label>
+		</fieldset>
+		<label class="camb-row">
+			<span>Start from preset</span>
+			<select name="preset">
+				{PRESETS.map((_, i) => <option value={i}>{hex2(i)}: {NAMES[i]}</option>)}
+			</select>
+		</label>
+		<label class="camb-row" for="camera-tilt"><span>Tilt (looking down) <output name="tiltOut"></output></span>
+			<input id="camera-tilt" type="range" name="tilt" min="10" max="75" step="1" /></label>
+		<label class="camb-row" for="camera-distance"><span>Distance (zoom) <output name="distanceOut"></output></span>
+			<input id="camera-distance" type="range" name="distance" min="250" max="2000" step="1" /></label>
+		<label class="camb-row" for="camera-fov"><span>Field of view <output name="fovOut"></output></span>
+			<input id="camera-fov" type="range" name="fov" min="4" max="45" step="1" /></label>
+		<label class="camb-row" for="camera-far"><span>Draw distance <output name="farOut"></output></span>
+			<input id="camera-far" type="range" name="far" min="600" max="2500" step="5" /></label>
+		<label class="camb-check"><input type="checkbox" name="flat" /> Flat (orthographic) instead of 3D</label>
+		<p class="camb-hint"></p>
+		<div class="camb-out">
+			<pre class="camb-code" aria-label="Action Replay code"></pre>
+			<button type="button" class="camb-copy">Copy code</button>
+			<span class="camb-copied" role="status" aria-live="polite"></span>
+		</div>
+		<button type="button" class="camb-reset">Reset to the preset</button>
+	</form>
+</div>
+
+<style>
+	.camb { margin: 1rem 0 1.5rem; }
+	.camb [hidden] { display: none !important; }
+	.camb-form {
+		border: 1px solid var(--sl-color-gray-5); border-radius: 0.75rem; padding: 1rem 1.25rem;
+		background: var(--sl-color-gray-7, var(--sl-color-black)); display: grid; gap: 0.75rem;
+	}
+	.camb-title { font-weight: 700; color: var(--sl-color-white); margin: 0 !important; }
+	.camb-scope { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+	.camb-scope legend { font-size: var(--sl-text-sm); font-weight: 600; color: var(--sl-color-white); margin-bottom: 0.25rem; }
+	.camb-scope label, .camb-check { font-size: var(--sl-text-sm); display: inline-flex; gap: 0.4rem; align-items: center; margin: 0 !important; }
+	.camb-row { display: grid; gap: 0.2rem; font-size: var(--sl-text-sm); font-weight: 600; color: var(--sl-color-white); margin: 0 !important; }
+	.camb-row output { font-weight: 400; color: var(--sl-color-text-accent); margin-left: 0.4rem; }
+	.camb-row input[type='range'] { width: 100%; accent-color: var(--sl-color-accent); margin: 0 !important; }
+	.camb select, .camb button {
+		font: inherit; font-size: var(--sl-text-sm); color: var(--sl-color-white); background: var(--sl-color-bg);
+		border: 1px solid var(--sl-color-gray-4); border-radius: 0.4rem; padding: 0.35rem 0.6rem; margin: 0 !important; max-width: 100%;
+	}
+	.camb button { cursor: pointer; justify-self: start; }
+	.camb button:hover { border-color: var(--sl-color-text-accent); }
+	.camb :is(select, button, input):focus-visible { outline: 2px solid var(--sl-color-text-accent); outline-offset: 2px; }
+	.camb-hint { font-size: var(--sl-text-sm); color: var(--sl-color-gray-2); margin: 0 !important; }
+	.camb-out { display: flex; flex-wrap: wrap; gap: 0.5rem 0.75rem; align-items: end; }
+	.camb-code {
+		flex: 1 1 100%; margin: 0 !important; padding: 0.6rem 0.8rem; border-radius: 0.4rem; border: 1px solid var(--sl-color-gray-5);
+		background: var(--sl-color-bg); font-family: var(--__sl-font-mono, monospace); font-size: var(--sl-text-sm); line-height: 1.5;
+		color: var(--sl-color-white); white-space: pre; overflow-x: auto;
+	}
+	.camb-copied { font-size: var(--sl-text-sm); color: var(--sl-color-gray-2); }
+	@media print { .camb { display: none; } }
+</style>
+
+<script>
+	import { buildCode } from '../lib/camera-codes.mjs';
+
+	type Settings = { distance: number; tilt: number; fov: number; flat: boolean; far: number };
+	for (const root of document.querySelectorAll<HTMLElement>('.camb')) {
+		const presets: Settings[] = JSON.parse(root.dataset.presets || '[]');
+		const form = root.querySelector<HTMLFormElement>('.camb-form')!;
+		const el = (n: string) => form.elements.namedItem(n) as HTMLInputElement;
+		const out = (n: string) => form.querySelector<HTMLOutputElement>(`output[name="${n}Out"]`)!;
+		const code = root.querySelector<HTMLElement>('.camb-code')!;
+		const hint = root.querySelector<HTMLElement>('.camb-hint')!;
+		const copied = root.querySelector<HTMLElement>('.camb-copied')!;
+		const presetSel = form.elements.namedItem('preset') as HTMLSelectElement;
+		const scope = () => (form.querySelector<HTMLInputElement>('input[name="scope"]:checked')!.value);
+
+		const load = (i: number, flat?: boolean) => {
+			const p = presets[i];
+			for (const k of ['tilt', 'distance', 'fov', 'far'] as const) el(k).value = String(p[k]);
+			el('flat').checked = flat ?? p.flat;
+			update();
+		};
+		const update = () => {
+			const s: Settings = {
+				tilt: Number(el('tilt').value), distance: Number(el('distance').value), fov: Number(el('fov').value),
+				far: Number(el('far').value), flat: el('flat').checked,
+			};
+			out('tilt').textContent = `${s.tilt}°`;
+			out('distance').textContent = String(s.distance);
+			out('fov').textContent = `${s.fov}°`;
+			out('far').textContent = String(s.far);
+			const sc = scope();
+			code.textContent = buildCode(sc, s, Number(presetSel.value)).join('\n');
+			hint.textContent = sc === 'interiors'
+				? 'Changes the camera of almost every building interior. Routes, towns, caves and gyms with their own angle keep their camera.'
+				: 'Every map uses this camera, including gyms and towers that normally have their own angle.';
+			if (s.distance > 900 && !s.flat && sc === 'everywhere') hint.textContent += ' A long distance with a normal field of view zooms far out: the edge of the loaded map shows.';
+			copied.textContent = '';
+		};
+		form.addEventListener('input', (e) => {
+			const t = e.target as HTMLElement;
+			if (t === presetSel) load(Number(presetSel.value), scope() === 'interiors' ? false : undefined);
+			else if ((t as HTMLInputElement).name === 'scope') {
+				presetSel.value = scope() === 'interiors' ? '4' : '0';
+				load(Number(presetSel.value), scope() === 'interiors' ? false : undefined);
+			} else update();
+		});
+		root.querySelector('.camb-reset')!.addEventListener('click', () => load(Number(presetSel.value), scope() === 'interiors' ? false : undefined));
+		root.querySelector('.camb-copy')!.addEventListener('click', async () => {
+			try { await navigator.clipboard.writeText(code.textContent || ''); copied.textContent = 'Copied.'; }
+			catch { copied.textContent = 'Select the code and copy it by hand.'; }
+		});
+		presetSel.value = '4';
+		load(4, false);
+		form.hidden = false;
+	}
+</script>

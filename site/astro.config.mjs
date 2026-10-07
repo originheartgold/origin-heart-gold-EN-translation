@@ -42,6 +42,7 @@ export default defineConfig({
             { label: "Patch your game", slug: "patch" },
             { label: "How to use this guide", slug: "about" },
             { label: "Mechanics and controls", slug: "mechanics" },
+            { label: "Camera and widescreen codes", slug: "camera-codes" },
           ],
         },
         {
