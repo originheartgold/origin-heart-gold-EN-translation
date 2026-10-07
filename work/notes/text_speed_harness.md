@@ -115,15 +115,17 @@ branch (`e9aedbb1…2d13`, 760-byte payload). Gaps found and closed:
   original task) and requires identical page pixels, glyph count and layout.
 - **Cadence was asserted on one page only.** Every corpus, battle, callback/input
   and natural-dialogue message is now judged per native task against the design
-  budget (`text_speed_checks.cadence`): never more than the budget, and at least
-  half of the tasks must use it (a ROM that prints one glyph per task fails).
-  The phase byte is read at task entry, so SLOW's 1/2 alternation is checked.
+  budget (`text_speed_checks.cadence`): never more than the budget. (Superseded:
+  the first version also required half of the tasks to use their whole budget;
+  that rule is now replaced by a stop reason per task, see the section below.)
 - **Battle pauses were recorded, not asserted.** `battle_pacing.py` now replays
   battle start and three turns from shared checkpoints for the original and all
   three speeds, so the same messages print, and requires the pause after each
   completed message and its on-screen dwell to equal the original within 2 frames.
-  Observed: every pause identical, and each segment is shorter by exactly the
-  printing frames saved.
+  (Correction: that run was not all identical. One message, "Blazor used
+  Scratch!" in turn 3, paused one frame longer at every speed, and that segment was
+  shortened by one frame less than the printing saved; the gate's 2n+2 slack hid
+  it. The gate is now exact, see below.)
 - **Held input never released.** Held A/B cases now release and press once; page 2
   must start with the original's latency. A new tap case taps A throughout. This
   check first caught a harness defect: `release()` followed by `press()` in the
@@ -140,10 +142,42 @@ branch (`e9aedbb1…2d13`, 760-byte payload). Gaps found and closed:
   movie recording; repeated runs then match frame for frame.
 - **Silent hook replacement.** DeSmuME keeps one exec callback per address.
   Measurement hooks are now registered `exclusive` and a later collision raises.
-- **Frame order assumed monotonic.** In 60 fps field scenes the game drops frames
-  while a task renders two or three glyphs, so FAST can take as many frames as
-  MEDIUM, and MEDIUM as many as SLOW. Printing frames excluding lag remain strictly
-  ordered and are asserted; lag-explained inversions are reported as warnings.
+- **Frame order assumed monotonic.** In 60 fps field scenes the game dropped frames
+  while a task rendered two or three glyphs, so FAST could take as many frames as
+  MEDIUM, and MEDIUM as many as SLOW. (Superseded: the gates then subtracted "frames
+  without a glyph" as lag, which also counted page waits and pauses and excused the
+  inversions. The cause was the batch overrunning VBlank: about 10 lines per glyph,
+  mostly two cartridge reads of font data per glyph; it is fixed in the payload,
+  see [text_speed_vcount.md](text_speed_vcount.md).)
 
 See [the recipe](text_speed_release_checks.md) for the gate table, the single
 entry point and the fault fixtures used to prove each check fails when it should.
+
+## Exact gates and the frame rule — 2026-10-07
+
+Second independent review of `35c1a31` and user decision D-1601. Changes:
+
+- **Payload:** the batching loop stops before another glyph when the frame is
+  nearly used up (VCOUNT), see [text_speed_vcount.md](text_speed_vcount.md). Payload
+  812 bytes, ITCM extension `01FF8620`-`01FF8960`.
+- **Per-task stop reasons** replace the "half the tasks at full budget" rule: every
+  native task is judged from hooks on the task, render step, glyph and the VCOUNT
+  read (`text_speed_checks.task_errors`).
+- **Dropped frames** are frames in which the printer's task did not run (the game
+  loop missed a VBlank), not frames without a glyph. Frame order is strict in every
+  scene; a tie is allowed only when the faster speed hit the frame limit.
+- **Exact comparisons:** battle pauses, dwell, last glyph → printer removal and the
+  segment shortening are exact; page-2 latency is exact (from the later of the press
+  and the frame the prompt reads input); printer tasks from each page's last glyph to
+  its control step are exact (this catches a batch that runs into a control, which no
+  gate caught before); the controls pause is exact in printer tasks.
+- **Battle pixels** are compared with the original printer.
+- **Printers smoke gate** (`printer_smoke.py`): save prompt, sign, PC, phone call.
+- **Fail closed:** no `python -O`, `require()` instead of `assert`, clean tree incl.
+  untracked files or `passed-not-releasable`, faults must be caught by their
+  declared gates with their declared text, slot waits excluded from timeouts.
+
+The old "+1" battle pause was not investigated further: with the new payload the
+same checkpoint plays a different battle (turn 2 onwards; the RNG follows frame
+timing), and every pause of every message in the four segments equals the
+original exactly, so the gate stays exact rather than pinning golden deltas.
