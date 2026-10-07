@@ -21,6 +21,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import romdata as R  # noqa: E402
 import places  # noqa: E402
+from trainer_guide import STORY_CLASSES, GYM_CHALLENGES, GYM_CHALLENGE_IDS, LEADER_ORDER, story_group
 
 DOCS = os.path.join(R.REPO, 'work', 'docs')
 CROSSREF = os.path.join(R.REPO, 'work', 'notes', 'docs_crossref.md')
@@ -77,6 +78,33 @@ def evo_possible(m):
     return m in EVO_TEXT
 
 
+# Reviewed availability lists in work/tools/site/, each verified against the ROM (see each file's _about):
+# not_in_game (species and forms a player never meets), extra_sources (sources and notes the scan misses),
+# items_not_in_game and items_extra_sources (the same for items). Both the docs and the site read them here.
+_LISTS = {}
+
+
+def reviewed(name):
+    """{id: entry} of the reviewed list work/tools/site/<name>.json."""
+    if name not in _LISTS:
+        path = os.path.join(R.REPO, 'work', 'tools', 'site', name + '.json')
+        _LISTS[name] = {e['id']: e for e in R.read_json(path)['entries']}
+    return _LISTS[name]
+
+
+# Evolution methods whose parameter is an item. An item a player can never get makes those evolutions impossible too.
+ITEM_EVO = {6, 7, 16, 17, 18, 19, 37}
+
+
+def items_not_in_game():
+    return reviewed('items_not_in_game')
+
+
+def evo_works(m, p):
+    """The evolution can happen in this game: the code checks the method and any item it needs exists."""
+    return evo_possible(m) and not (m in ITEM_EVO and p in items_not_in_game())
+
+
 def full_names(_cat=None):
     """In-game (shortened) spelling -> full official name, from the glossary's abbreviation tables
     (work/glossary/manual_overrides.py ABBREV and work/tools/fill_names.py LOCAL_ABBREV). The banks keep
@@ -86,7 +114,8 @@ def full_names(_cat=None):
     for path, var in ((os.path.join(R.REPO, 'work', 'glossary', 'manual_overrides.py'), 'ABBREV'),
                       (os.path.join(R.REPO, 'work', 'tools', 'fill_names.py'), 'LOCAL_ABBREV')):
         try:
-            tree = ast.parse(open(path, encoding='utf-8').read())
+            with open(path, encoding='utf-8') as source:
+                tree = ast.parse(source.read())
         except OSError:
             continue
         for node in tree.body:
@@ -417,8 +446,12 @@ def species_block(ctx, sp, par, tutors, avail):
     L.append('Catch rate %d · %s · egg groups %s · %s growth · EV yield %s%s  ' % (
         p['catch_rate'], gender_text(p['gender']), ' / '.join(eg), R.GROWTH[p['growth']] if p['growth'] < 6 else '?',
         evtxt or '—', (' · wild held item: ' + ', '.join(held)) if held else ''))
-    ev_from = ['%s (%s)' % (ctx.sp(s), evo_text(ctx, m, q)) for s, m, q in par.get(sp, [])]
-    ev_to = ['%s (%s)' % (ctx.sp(evo_target(ctx, sp, t)), evo_text(ctx, m, q)) for m, q, t in ctx.evos[sp]]
+    def how(m, q):
+        if evo_possible(m) and not evo_works(m, q):
+            return '%s; not possible: %s can\'t be obtained' % (evo_text(ctx, m, q), ctx.it(q))
+        return evo_text(ctx, m, q)
+    ev_from = ['%s (%s)' % (ctx.sp(s), how(m, q)) for s, m, q in par.get(sp, [])]
+    ev_to = ['%s (%s)' % (ctx.sp(evo_target(ctx, sp, t)), how(m, q)) for m, q, t in ctx.evos[sp]]
     ev_to = list(dict.fromkeys(ev_to))
     ev_from = list(dict.fromkeys(ev_from))
     if ev_from:
@@ -429,8 +462,14 @@ def species_block(ctx, sp, par, tutors, avail):
             L.append(n + '  ')
     if not ev_from and not ev_to:
         L.append('Does not evolve.  ')
-    if avail is not None:
-        L.append('How to get it: ' + (avail or '**no source found in the game data**'))
+    extra = reviewed('extra_sources').get(sp, {})
+    lines = ['%s: %s' % (label, extra[k]) for k, label in (('battle', 'Battle only'), ('note', 'Note')) if extra.get(k)]
+    if sp in reviewed('not_in_game'):
+        lines.insert(0, 'How to get it: **never met in play** (%s)' % reviewed('not_in_game')[sp]['reason'].rstrip('.'))
+    elif avail is not None:
+        lines.insert(0, 'How to get it: ' + (avail or '**no source found in the game data**'))
+    if lines:
+        L.append('  \n'.join(lines))
     L.append('')
     ls = ctx.learn[sp]
     if ls:
@@ -468,7 +507,8 @@ def gen_pokemon(ctx, tutors, avail):
              'lists inside each tutor\'s script (see [trades_tutors.md](trades_tutors.md)).\n',
              'Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get it" is derived from the '
              'wild encounter tables, gift/trade/static-battle scripts and evolutions (see [encounters.md](encounters.md)); '
-             'species with no source are still listed because their data exists.\n']
+             'species with no source are still listed because their data exists. Species marked "never met in play" are '
+             'confirmed unreachable (work/tools/site/not_in_game.json); the website retains them with availability labels.\n']
     for lo, hi, title in RANGES:
         fn = 'pokemon_%04d-%04d.md' % (lo, hi)
         index.append('- [%s: #%d–#%d](%s)' % (title, lo, hi, fn))
@@ -490,7 +530,7 @@ def gen_pokemon(ctx, tutors, avail):
                 index.append('| %d | [%s](%s#%s) | %s | %s | %s | %d | %s |' % (
                     sp, md_escape(name), fn, anchor('%04d %s' % (sp, name)), types, ' / '.join(abil),
                     ctx.ab(p['hidden_ability']) if p['hidden_ability'] else '—', sum(p['stats']),
-                    'yes' if avail.get(sp) else 'no'))
+                    'never' if sp in reviewed('not_in_game') else 'yes' if avail.get(sp) else 'no'))
         pages[fn] = '\n'.join(body) + '\n'
     pages['pokemon.md'] = '\n'.join(index) + '\n'
     return pages
@@ -754,16 +794,65 @@ CONTEST_SETS = ['before you have the National Pokédex', 'Tuesdays, with the Nat
                 'Thursdays, with the National Pokédex', 'Saturdays, with the National Pokédex']
 CONTEST_NOTE = ('Which set is used follows HeartGold\'s rule (set 1 until you have the National Pokédex, then one set '
                 'per contest day); the hack keeps HeartGold\'s species, but the rule is not confirmed in this hack.')
+# Maps whose wild table changes with the weekday: the hack's encounter-bank getter (arm9 0x0203A7B0) returns the map
+# header's record + weekday - 1 (weekday 0 = Sunday) for Pal Park, so Sunday reads Cerulean Cave's record 141 and
+# record 148 is never used (hack finding D-1484). The player gets there through the Catching Show's Fixed Catch mode.
+ENC_WEEKDAY = {109: 'Pal Park, Fixed Catch mode'}
+WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+ENC_WEEKDAY_NOTE = ('The wild table changes with the day of the week (by the DS clock). You get in through the '
+                    'Catching Show\'s Fixed Catch mode at the Pal Park reception ($10,000; bring your own Poké Balls). '
+                    'Sunday\'s table is the same as Cerulean Cave\'s, probably by mistake in the hack, so it also has '
+                    'Surf and fishing slots: the park has a pond and a stretch of sea.')
+# Methods a map has no terrain for, although the record it reads has slots for them. Pal Park's map (matrix 8, land_data
+# 415/668-670, unchanged from US HeartGold) has water but no breakable rocks: events file 106 has no sprite-85 rocks.
+ENC_MAP_LACKS = {109: {'rock'}}
+
+
+def map_record(e, zid):
+    """Encounter record e as map zid can use it: methods the map has no terrain for are switched off."""
+    lacks = ENC_MAP_LACKS.get(zid)
+    return dict(e, rates={k: 0 if k in lacks else v for k, v in e['rates'].items()}) if lacks else e
+
+
+def weekday_records(zone, n_records):
+    """[(weekday name, encounter record)] for a ENC_WEEKDAY map."""
+    b = zone['wild_encounter_bank']
+    return [(d, b + w - 1) for w, d in enumerate(WEEKDAYS) if 0 <= b + w - 1 < n_records]
+
+
+def enc_tables(e, secs):
+    """Markdown for one encounter record: its rate line and a table per section."""
+    rates = ', '.join('%s %d' % (RATE_NAMES.get(k, k), v) for k, v in e['rates'].items() if v)
+    L = ['_Encounter rate: %s_\n' % rates]
+    for t, rows in secs:
+        L += ['**%s**\n' % t, '| Pokémon | Level | Chance |', '|---|---|---|']
+        L += ['| %s | %s | %s |' % (md_escape(n), l, '—' if p is None else '%d%%' % p) for n, l, p in rows]
+        L.append('')
+    return L
+
+
+def enc_records(ctx):
+    """Encounter record -> zones that use it, the weekday records of ENC_WEEKDAY maps included."""
+    by_file = ctx.enc_by_file[1]
+    out = {b: list(zs) for b, zs in by_file.items()}
+    for zid, days in ctx.enc_weekday.items():
+        for _d, b in days:
+            out.setdefault(b, []).append(zid)
+    return out
 
 
 def gen_encounters(ctx):
     enc = [R.parse_encounter(b) for b in ctx.rom['encounter']]
     by_file = collections.defaultdict(list)
     ctx.enc_placeholders = {}
+    ctx.enc_weekday = {}
     for z in ctx.zones:
         b = z['wild_encounter_bank']
         if z['zone_id'] in ENC_PLACEHOLDER:
             ctx.enc_placeholders[z['zone_id']] = (b, ENC_PLACEHOLDER[z['zone_id']])
+            continue
+        if z['zone_id'] in ENC_WEEKDAY and b != 255:
+            ctx.enc_weekday[z['zone_id']] = weekday_records(z, len(enc))
             continue
         if b != 255 and b < len(enc):
             by_file[b].append(z['zone_id'])
@@ -792,15 +881,25 @@ def gen_encounters(ctx):
             usage[s].append(title)
         out.append('- [%s](#%s)' % (title, anchor(title)))
         body.append('## %s\n' % title)
-        rates = ', '.join('%s %d' % (RATE_NAMES.get(k, k), v) for k, v in e['rates'].items() if v)
-        body.append('_Encounter rate: %s_\n' % rates)
-        for t, rows in secs:
-            body.append('**%s**\n' % t)
-            body.append('| Pokémon | Level | Chance |')
-            body.append('|---|---|---|')
-            for n, l, p in rows:
-                body.append('| %s | %s | %s |' % (md_escape(n), l, '—' if p is None else '%d%%' % p))
-            body.append('')
+        body += enc_tables(e, secs)
+    for zid, days in sorted(ctx.enc_weekday.items(), key=lambda kv: ctx.zrank(kv[0])):
+        title = ENC_WEEKDAY[zid]
+        days = [(day, e, encounter_sections(ctx, e)) for day, e in ((d, map_record(enc[b], zid)) for d, b in days)]
+        days = [(day, e, secs) for day, e, secs in days if secs]
+        if not days:
+            continue
+        out.append('- [%s](#%s)' % (title, anchor(title)))
+        body.append('## %s\n' % title)
+        body.append(ENC_WEEKDAY_NOTE + '\n')
+        on = collections.defaultdict(list)          # species -> days, so each species gets one usage entry
+        for day, e, _secs in days:
+            for s in enc_species(e, ctx):
+                on[s].append(day + 's')
+        for s, ds in on.items():
+            usage[s].append('%s (%s)' % (title, 'every day' if len(ds) == 7 else ', '.join(ds)))
+        for day, e, secs in days:
+            body.append('### %s\n' % day)
+            body += enc_tables(e, secs)
     # headbutt
     hb = []
     for zid, b in enumerate(ctx.rom['headbutt']):
@@ -1158,14 +1257,64 @@ def conditions_for(d, pc, ctx=None, f=None):
 
 
 # ======================================================================== trainers
-STORY_CLASSES = [
-    ('Rival battles', {90, 110}),
-    ('Gym Leaders', {66, 67, 70, 72, 73, 74, 75, 76, 98, 104, 105, 106, 107, 108}),
-    ('Elite Four', {87, 88, 89, 112}),
-    ('Champions', {127, 128}),
-    ('Team Rocket bosses and Executives', {17, 51, 83, 84, 86, 95, 96, 114, 116, 117, 118, 124}),
-    ('Other named Trainers', {1, 91, 92, 93, 94, 103, 109, 111, 119, 120, 121, 125, 126, 97, 99, 100, 101, 102}),
-]
+TRAINER_NOTES = {
+    254: 'Starmie holds Wise Glasses. This hack’s Illuminate description says it makes the Pokémon harder to hit; misses do not imply Bright Powder.',
+    325: 'This is Janine disguised as Koga during the Fuchsia trial. The battle uses Koga’s name; it is not the Soul Badge challenge.',
+    760: 'This unlocated record contains a species-zero, level-zero placeholder, not a confirmed playable team.',
+    865: 'The stored team requests Deoxys form 4. That form is not in the form table; its battle appearance needs confirmation.',
+}
+
+
+def trainer_page_sections(ctx, tds, parties, loc):
+    """One home per featured team, with reviewed Gym order and explicit reference-only records."""
+    sections = []
+    used = set()
+    for section in GYM_CHALLENGES:
+        entries = []
+        for leader in section['leaders']:
+            ids = [t for t in leader['ids'] if parties[t]]
+            entries.append(dict(title=leader['title'] + ' — ' + leader['location'], ids=ids,
+                                note=leader.get('note')))
+            used.update(ids)
+        sections.append(dict(title=section['title'], description=None, entries=entries))
+    unconfirmed = []
+    for group, _classes in STORY_CLASSES:
+        ids = [t for t in range(1, len(tds)) if parties[t] and t not in used
+               and story_group(t, tds[t]['cls'], ctx.TRN.get(t, '')) == group]
+        live = []
+        for t in ids:
+            places = loc.get(t, [])
+            if not places or all(conds and all(c.startswith('never ') for c in conds) for _, _, conds in places):
+                unconfirmed.append(t)
+            else:
+                live.append(t)
+        def rank(t):
+            name = ctx.TRN.get(t, '')
+            return (LEADER_ORDER.index(name) if group == 'Gym Leaders' and name in LEADER_ORDER else 999,
+                    name.casefold(), t)
+        groups = collections.OrderedDict()
+        for t in sorted(live, key=rank):
+            # A character may have several classes over the story; retain the exact class on each team.
+            name = ctx.TRN.get(t, '').strip() or trainer_label(ctx, t, tds[t])
+            groups.setdefault(name, []).append(t)
+        if groups:
+            title = 'Other Gym Leader battles' if group == 'Gym Leaders' else group
+            desc = ('Rematches, story encounters and partner appearances, grouped by character. '
+                    'Battle conditions below distinguish each use; these teams are not in chronological order.')
+            if group == 'Champions':
+                title = 'Steven and Cynthia'
+                desc = 'Champion-class teams. Other League opponents appear under their own Gym, rival or named-trainer entries.'
+            sections.append(dict(title=title, description=desc,
+                                 entries=[dict(title=n, ids=ts, note=None) for n, ts in groups.items()]))
+        used.update(ids)
+    if unconfirmed:
+        sections.append(dict(title='Encounters not confirmed', description=(
+            'These named trainers have stored teams, but no active overworld encounter was identified. '
+            'They are reference records, not a list of battles you can necessarily play. '
+            'Battle Frontier facilities can select Pokémon from separate pools.'),
+            entries=[dict(title=trainer_label(ctx, t, tds[t]), ids=[t], note=None)
+                     for t in sorted(unconfirmed, key=lambda t: trainer_label(ctx, t, tds[t]).casefold())]))
+    return sections
 
 
 def trainer_label(ctx, tid, td=None):
@@ -1179,7 +1328,9 @@ def trainer_label(ctx, tid, td=None):
 # Scripts that no event, sign, step trigger or map script runs (leftover vanilla scenes): file -> script numbers.
 # 816 script 7 (League entrance rival) and 847 script 4 (Cherrygrove rival): nothing in their zones' events or
 # map-script headers reaches them.
-DEAD_SCRIPTS = {816: {7}, 847: {4}}
+# 741 script 1 is the old Blue badge battle: zone 496 has no event calling it;
+# its map header (516) calls script 3 only. Blue's lodge battle remains live.
+DEAD_SCRIPTS = {741: {1}, 816: {7}, 847: {4}}
 # Zones no warp or script leads into. 176 (Dark Cave, Route 31 side) runs file 964, a stale copy of Route 41's
 # file 960, so its trainers are really fought on Route 41 only.
 UNREACHABLE_ZONES = {176}
@@ -1260,10 +1411,58 @@ def trainer_locations(ctx):
                     for zid in ctx.file_zones.get(f, [None]):
                         if zid not in UNREACHABLE_ZONES:
                             loc[t].append((zid, how, conds))
+    # The psychic's memory menu passes a variable to TrainerBattle, so the
+    # ordinary constant-propagation scan misses these additional locations.
+    # Verify the local assignment-to-call paths in the CN script itself. This
+    # covers explicit opponent selections, not cancellation/fallback values.
+    for t in memory_trainer_ids(ctx):
+        for zid in ctx.file_zones.get(78, [None]):
+            for how, choice in (
+                ('single battle (memory rematch)', 'Singles'),
+                ('double battle against this one team, sent out two at a time (memory rematch)', 'Doubles'),
+            ):
+                loc[t].append((zid, how, ('after the final Hall of Fame, if you pick “%s” and this opponent' % choice,)))
     return loc
 
 
-EV_STATS = ['HP', 'Atk', 'Def', 'SpA', 'SpD', 'Spe']   # the hack's trainer EV order (its spreads are 252 Atk/252 Spe etc.)
+def memory_trainer_ids(ctx):
+    """Explicit file-78 assignments with verified paths to both battle forms.
+
+    Deliberately bounded to the reviewed memory menu, rather than treating
+    arbitrary numeric operands or unresolved variables as trainer IDs.
+    """
+    d = ctx.S.get(78)
+    if not d:
+        return []
+    ins = d['ins']
+    commands = R.cmds()
+
+    def matches(pc, name, args=None, target=None):
+        if pc not in ins:
+            return False
+        op, a, _n, t = ins[pc]
+        return (commands[op][0] == name and (args is None or a == args)
+                and (target is None or t == target))
+
+    if not (matches(1040, 'TrainerBattle', [0x800c, 0x800c, 0, 0])
+            and matches(1083, 'TrainerBattle', [0x800c, 0, 0, 0])):
+        raise ValueError('Memory trainer battle commands changed; review file 78')
+    ids = []
+    for pc, (op, args, _next, _target) in ins.items():
+        if commands[op][0] != 'SetVar' or args[0] != 0x800c:
+            continue
+        if not (matches(pc + 6, 'CheckFlag', [311])
+                and matches(pc + 10, 'GoToIf', target=1033)
+                and ins[pc + 10][1][0] == 0
+                and matches(pc + 17, 'GoTo', target=1076)):
+            raise ValueError('Memory trainer assignment path changed at %d' % pc)
+        ids.append(args[1])
+    if len(ids) != 17 or len(set(ids)) != 17:
+        raise ValueError('Memory trainer selection count changed; review file 78')
+    return sorted(ids)
+
+
+EV_STATS = ['HP', 'Atk', 'Def', 'SpA', 'SpD', 'Spe']   # display order; parse_trpoke reorders stored Speed/SpA/SpD
 
 
 def ev_text(evs):
@@ -1283,13 +1482,15 @@ def battle_lines(ctx, locs):
 
 def trainer_block(ctx, tid, td, mons, locs, level=3, title=None):
     L = ['%s %s' % ('#' * level, md_escape(title or trainer_label(ctx, tid, td))), '']
+    if tid in TRAINER_NOTES:
+        L += [TRAINER_NOTES[tid], '']
     lines = battle_lines(ctx, locs)
     if lines:
         L += ['- ' + md_escape(s) for s in lines[:8]]
         if len(lines) > 8:
             L.append('- … and %d more' % (len(lines) - 8))
     else:
-        L.append('- Not placed on any map or started by any scene (probably unused).')
+        L.append('- No overworld encounter identified; availability is unconfirmed. Facility teams may come from separate pools.')
     meta = []
     if td['double']:
         meta.append('Double battle team')
@@ -1301,10 +1502,11 @@ def trainer_block(ctx, tid, td, mons, locs, level=3, title=None):
     L.append('| Pokémon | Lv | Ability | Held item | Nature | IVs | EVs | Moves |')
     L.append('|---|---|---|---|---|---|---|---|')
     for m in mons:
-        L.append('| %s | %d | %s | %s | %s | %d | %s | %s |' % (
-            md_escape(ctx.sp(m['species'], m['form'])), m['level'], ctx.ab(m['ability']) if m['ability'] else '—',
-            ctx.it(m['item']) if m['item'] else '—', R.NATURES[m['nature']] if m['nature'] is not None and m['nature'] < 25 else '—',
-            m['ivs'], ev_text(m['evs']), ', '.join(ctx.mv(x) for x in m['moves']) or '(default level-up moves)'))
+        ivs = str(m['ivs']) if m['hp_ivs'] == m['ivs'] else '%d HP / %d others' % (m['hp_ivs'], m['ivs'])
+        L.append('| %s | %d | %s | %s | %s | %s | %s | %s |' % (
+            md_escape(ctx.sp(m['species'], m['form'])), m['level'], ctx.ab(m['ability']) if m['ability'] else 'Species default',
+            ctx.it(m['item']) if m['item'] else '—', R.NATURES[m['nature']] if m['nature'] is not None and m['nature'] < 25 else 'Generated',
+            ivs, ev_text(m['evs']), ', '.join(ctx.mv(x) for x in m['moves']) or '(default level-up moves)'))
     L.append('')
     return '\n'.join(L)
 
@@ -1353,35 +1555,38 @@ def gen_trainers(ctx):
     loc = trainer_locations(ctx)
     ctx.trainer_loc = loc
     out = [GEN_NOTE, '# Trainers\n',
-           'Every trainer team in the game, with full teams. The story trainers come first (rivals, Gym Leaders, Elite Four, '
-           'Champions, Team Rocket bosses and other named trainers), then every other trainer by location.\n',
+           'Every stored trainer team, including opponents, allies and records whose encounters remain unconfirmed. '
+           'Gym challenges follow the quest guide’s route through Kanto and then Johto; this is not a strict prerequisite '
+           'schedule. Other story teams are grouped by character, then ordinary trainers by location.\n',
            'Under each team, the list says where you battle it and how: a trainer standing on the map, or a single, double '
            'or multi battle started by a scene. When a scene picks one of several teams, the condition is given in words '
            '(your menu answer, your starter, your gender, which Badges you have, the day of the week). "Only in some story '
            'branches" means it depends on story progress; the quest guide explains when. Many Gym Leaders and League '
            'members offer a rematch menu: "Singles" starts a single battle against one team, "Doubles" a double battle '
            'against the same team, sent out two at a time.\n',
-           'IVs are the same in every stat of a Pokémon (0–31). EVs are listed per stat. "(default level-up moves)" means the '
-           'game gives the Pokémon the last four moves it learns by level.\n',
+           'HP IV is listed separately from the other five stats because the hack’s trainer loader changes it. '
+           'EVs are listed per stat. "Generated" means no fixed nature is stored. "(default level-up moves)" means the '
+           'game gives the Pokémon the last four moves it learns by level. Encounter conditions are partial script summaries, '
+           'not proof that every listed scene can be reached.\n',
            '## Contents\n']
     body = []
     used = set()
-    for title, classes in STORY_CLASSES:
-        ids = [t for t in range(1, len(tds)) if tds[t]['cls'] in classes and parties[t]]
-        if not ids:
-            continue
+    for section in trainer_page_sections(ctx, tds, parties, loc):
+        title = section['title']
         out.append('- [%s](#%s)' % (title, anchor(title)))
         body.append('## %s\n' % title)
-        groups = collections.OrderedDict()
-        for t in ids:
-            groups.setdefault(trainer_label(ctx, t, tds[t]), []).append(t)
-        for label, ts in groups.items():
-            body.append('### %s\n' % md_escape(label))
+        if section['description']:
+            body.append(section['description'] + '\n')
+        for entry in section['entries']:
+            ts = entry['ids']
+            body.append('### %s\n' % md_escape(entry['title']))
+            if entry['note']:
+                body.append(entry['note'] + '\n')
             if len(ts) > 1:
                 body.append('%d teams.\n' % len(ts))
             for i, t in enumerate(ts):
                 body.append(trainer_block(ctx, t, tds[t], parties[t], loc.get(t, []), level=4,
-                                          title='Team %d' % (i + 1) if len(ts) > 1 else None))
+                                          title=trainer_label(ctx, t, tds[t]) + (' — Team %d' % (i + 1) if len(ts) > 1 else '')))
                 used.add(t)
     # all others by first location
     rest = [t for t in range(1, len(tds)) if t not in used and parties[t]]
@@ -1406,15 +1611,17 @@ def gen_trainers(ctx):
     if by_place.get(None):
         out.append('- [Trainers not placed anywhere](#trainers-not-placed-anywhere)')
         body.append('## Trainers not placed anywhere\n')
-        body.append('No map or scene was found that uses these teams. They are probably unused, or a scene picks them '
-                    'in a way this list can\'t follow.\n')
+        body.append('No map or scene was found that uses these teams. Their availability is unconfirmed; they may be unused '
+                    'or selected in a way this list cannot follow.\n')
         for t in by_place[None]:
             body.append(trainer_block(ctx, t, tds[t], parties[t], [], level=4))
     out.append('- [Maintainer notes](#maintainer-notes)')
     body.append('## Maintainer notes\n')
     body.append('Read from `a/0/5/5` (trainer data) and `a/0/5/6` (parties). Each party record is a fixed 28 bytes: IV '
-                'level, ability slot, nature, explicit ability, level, species (form in the top bits), held item, four '
-                'moves and six EVs (HP, Atk, Def, SpA, SpD, Spe). The IV is derived from the difficulty byte (byte × 31 / 255). '
+                'level, ability slot, form byte, nature, explicit ability, level, species, held item, four '
+                'moves and six EVs (stored HP, Atk, Def, Spe, SpA, SpD; reordered for display). The five non-HP IVs '
+                'are derived from the difficulty byte (byte × 31 / 255). The loader overwrites HP IV with 10 at levels '
+                'up to 40, 20 at levels 41–79, and 31 at levels 80+. '
                 '"record N" is the trainer id. Places come from map objects (scripts 3000+ and 5000+ for double battles) and '
                 'from TrainerBattle / MultiBattle commands in event scripts. Conditions are read from the compare and jump '
                 'just before the battle: menu vars are resolved to the option text in the map\'s message bank, CheckBadge '
@@ -1806,20 +2013,34 @@ def static_mons(ctx):
     out = []
     for f, d in ctx.S.items():
         for r in d['recs']:
-            a = r['args']
-            if r['kind'] == 'mon_give' and a[0]:
-                sp, fm = R.split_species(a[0])
-                out.append(('gift', sp, fm, a[1], f))
-            elif r['kind'] == 'egg_give' and a[0]:
-                sp, fm = R.split_species(a[0])
-                out.append(('egg', sp, fm, None, f))
-            elif r['kind'] == 'wild' and a[0]:
-                sp, fm = R.split_species(a[0])
-                raw = r['raw'][1]
-                # the hack writes levels as 0xFF00 | level; ScriptGetVar returns it unchanged and the u8 keeps the low byte
-                lv = raw if raw < 0x4000 else (raw & 0xFF if raw >= 0xFF00 else None)
-                out.append(('static', sp, fm, lv, f))
+            if r['kind'] in ('mon_give', 'egg_give', 'wild') and r['args'][0] is None and r.get('alt0'):
+                # species chosen at run time (e.g. Game Corner prizes): every constant the variable can hold,
+                # only when every path is known (a partial list would pass a guess off as a confirmed source)
+                if not r.get('alt0_complete'):
+                    continue
+                for v in r['alt0']:
+                    out.extend(static_mons_rec(dict(r, args=[v] + r['args'][1:]), f))
+                continue
+            out.extend(static_mons_rec(r, f))
     return out
+
+
+def static_mons_rec(r, f):
+    """static_mons rows for one script record."""
+    a = r['args']
+    if r['kind'] == 'mon_give' and a[0]:
+        sp, fm = R.split_species(a[0])
+        return [('gift', sp, fm, a[1], f)]
+    if r['kind'] == 'egg_give' and a[0]:
+        sp, fm = R.split_species(a[0])
+        return [('egg', sp, fm, None, f)]
+    if r['kind'] == 'wild' and a[0]:
+        sp, fm = R.split_species(a[0])
+        raw = r['raw'][1]
+        # the hack writes levels as 0xFF00 | level; ScriptGetVar returns it unchanged and the u8 keeps the low byte
+        lv = raw if raw < 0x4000 else (raw & 0xFF if raw >= 0xFF00 else None)
+        return [('static', sp, fm, lv, f)]
+    return []
 
 
 def form_index(ctx, sp, fm):
@@ -1852,6 +2073,9 @@ def availability(ctx):
         for item, sp in R.fossils(ctx.rom):
             if ctx.item_sources.get(item):
                 how[sp].append('revive %s at %s' % (ctx.it(item), ', '.join(dict.fromkeys(revive))))
+    for sp, e in reviewed('extra_sources').items():   # a verified source replaces what the scan found
+        if e.get('how'):
+            how[sp] = [e['how']]
     direct = {k for k, v in how.items() if v}
     # evolution closure and breeding
     par = evo_parents(ctx)
@@ -1862,7 +2086,7 @@ def availability(ctx):
         for s in list(obtain):
             for m, p, t in ctx.evos[s]:
                 t = evo_target(ctx, s, t)
-                if t not in obtain and evo_possible(m):
+                if t not in obtain and evo_works(m, p):
                     obtain.add(t)
                     how[t].append('evolve %s' % ctx.sp(s))
                     changed = True
@@ -2163,11 +2387,11 @@ def crossref(ctx, tutors, avail):
     for z in ctx.zones:
         if z['map_name_zh'] and len(z['map_name_zh']) >= 2 and z['map_name_zh'] != 'ーーーー':
             loc_zh.setdefault(z['map_name_zh'], set()).add(z['zone_id'])
-    enc, by_file = ctx.enc_by_file
+    enc = ctx.enc_by_file[0]
     zone_species = collections.defaultdict(set)
-    for b, zs in by_file.items():
+    for b, zs in enc_records(ctx).items():
         for z in zs:
-            zone_species[z] |= enc_species(enc[b])
+            zone_species[z] |= enc_species(map_record(enc[b], z))
     for zid, b in enumerate(ctx.rom['headbutt']):
         h = R.parse_headbutt(b)
         if h and zid < len(ctx.zones):
@@ -2261,7 +2485,8 @@ def crossref(ctx, tutors, avail):
     if ab_issues:
         F.append(('Trainer Pokémon with abilities outside their species\' ability list',
                   '%d trainer party records store an ability the species cannot have per a/0/0/2, e.g. %s. The trainer '
-                  'record (28-byte hack format) stores the ability explicitly; engine behaviour not verified. Full list in '
+                  'record (28-byte hack format) stores the ability explicitly, and the original loader applies nonzero '
+                  'ability overrides (see work/notes/trainer_runtime_review.md). Full list in '
                   'work/notes/docs_crossref.md.' % (len(ab_issues), '; '.join('%s: %s' % (w, p.split(' is not')[0]) for w, p in ab_issues[:6])), []))
     if other:
         F.append(('Trainer parties with duplicate or invalid moves', '; '.join('%s: %s' % (w, p) for w, p in other[:12]), []))
@@ -2272,9 +2497,10 @@ def crossref(ctx, tutors, avail):
     L.append('- In-game trade records not loaded by any script (LoadNPCTrade or GiveLoanMon): %s.' % (', '.join('#%d (%s for %s)' % (
         i, ctx.sp(R.parse_trade(ctx.rom['trade'][i])['give']), ctx.sp(R.parse_trade(ctx.rom['trade'][i])['ask'])) for i in unused_tr) or 'none'))
     L.append('- Shop lists not opened by any script: %s.' % (', '.join(map(str, ctx.unused_marts)) or 'none'))
-    enc, by_file = ctx.enc_by_file
-    L.append('- Encounter records in `a/0/3/7` that no map header uses: %s.' % (
-        ', '.join(str(b) for b in range(len(enc)) if b not in by_file) or 'none'))
+    enc = ctx.enc_by_file[0]
+    used = enc_records(ctx)
+    L.append('- Encounter records in `a/0/3/7` that no map uses: %s.' % (
+        ', '.join(str(b) for b in range(len(enc)) if b not in used) or 'none'))
     L.append('- Evolution methods in `a/0/3/4` that the evolution code (arm9 0x020700FC) never checks: %s.' % ', '.join(
         '%d (%s)' % (m, ', '.join(sorted({ctx.sp(s) for s, ev in enumerate(ctx.evos) for mm, p, t in ev if mm == m})))
         for m in sorted(NEVER_EVO) if any(mm == m for ev in ctx.evos for mm, _, _ in ev)))
@@ -2299,7 +2525,7 @@ def crossref(ctx, tutors, avail):
 
 # ======================================================================== README
 def coverage(ctx):
-    enc, by_file = ctx.enc_by_file
+    enc = ctx.enc_by_file[0]
     tds, parties = load_trainers(ctx)
     ids = ctx.species_ids()
     avail = getattr(ctx, '_avail', {})
@@ -2311,7 +2537,7 @@ def coverage(ctx):
                                               sum(1 for s in ids if avail.get(s)))),
         ('Moves', '%d' % (len(ctx.moves) - 1)),
         ('TMs / HMs', '%d / 8' % (len(ctx.tm) - 8)),
-        ('Encounter records linked to maps', '%d of %d' % (len(by_file), len(enc))),
+        ('Encounter records linked to maps', '%d of %d' % (len(enc_records(ctx)), len(enc))),
         ('Trainers with a party', '%d (%d placed on a map or started by a script)' % (
             sum(1 for p in parties[1:] if p), sum(1 for t in range(1, len(parties)) if parties[t] and t not in ctx.unplaced_trainers))),
         ('Field items (item balls / hidden)', '%d / %d' % (sum(len(v['ball']) for v in ctx._field.values()),
@@ -2365,8 +2591,8 @@ python3 -m unittest work/tools/docs/test_gen_docs.py
 - [moves.md](moves.md): move data and the TM/HM list.
 - [encounters.md](encounters.md): wild Pokémon per map and method, Headbutt trees, Bug-Catching Contest.
 - [items.md](items.md): key/quest items, field and hidden items, NPC gifts, shops, prize and paid exchanges.
-- [trainers.md](trainers.md): rival, Gym Leaders, Elite Four, Champions, Rocket bosses, named trainers, then every
-  trainer by map, with full teams.
+- [trainers.md](trainers.md): Gym challenges in guide order, other named opponents and allies, then ordinary
+  trainers by map, with full teams and separate unconfirmed records.
 - [trades_tutors.md](trades_tutors.md): in-game trades, move tutors, the Move Reminder, gift Pokémon and one-time
   battles.
 

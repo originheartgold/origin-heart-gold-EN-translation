@@ -388,11 +388,11 @@ Then, "as you are the Champion", he adds a battle: **Elder Huguo** (Infernape, T
 
 **How it works:**
 1. Talk to the tourist first.
-2. Check the blocked spot with an **Alomomola first in your party** (not fainted; Alomomola is found by Surfing on Route 19 or Route 30). The scene then plays Noctowl's cry and a "Nooo-tow!" line, so it was probably meant for Noctowl, but only Alomomola works (not confirmed in game; see [Known issues](known-issues.md#sevii-islands-and-indigo-plateau)). Your Pokémon spots a **Kecleon** eating snacks, and it attacks: a **wild Kecleon, Lv. 25**. A loss whites you out.
+2. Check the blocked spot with an **Alomomola first in your party** (not fainted; Alomomola is found by Surfing on Route 19 or Route 30). The scene then plays Noctowl's cry and a "Nooo-tow!" line, so it was probably meant for Noctowl, but only Alomomola works (tested in an emulator: with a Noctowl in front nothing happens; see [Known issues](known-issues.md#sevii-islands-and-indigo-plateau)). Your Pokémon spots a **Kecleon** eating snacks, and it attacks: a **wild Kecleon, Lv. 25**. A loss whites you out.
 3. Beat or catch it: you pick up a **Lava Cookie**. Tell the tourist for an **Old Gateau**.
 **Reward:** Lava Cookie + Old Gateau (and a Kecleon if you catch it).
 
-*Source:* script file 870 (scripts 9, 12; L988–L1498, L1038–L1766; flags 2197, 2198). Tourist ≈240,109; blocked spot ≈245,103 (shrine door ≈241,105).
+*Source:* script file 870 (scripts 9, 12; L988–L1498, L1038–L1766; flags 2197, 2198; L1038 compares the first healthy party Pokémon with species 594). Tourist ≈240,109; blocked spot ≈245,103 (shrine door ≈241,105). Emulator (`emu_harness.py guide0107 --case kecleon`): Alomomola lead → cries 164 (Noctowl), msgs 33–37 and a wild Kecleon (352); Noctowl lead → msg 33 only.
 
 ## Victory Road 3F (final chapter): Silver's and Crystal's confessions
 
@@ -451,9 +451,9 @@ The [Indigo Plateau slope](07-league-to-cherrygrove.md#indigo-plateau-slope-fina
 
 **What the keeper offers:** after the final Hall of Fame, the keeper says the Azure Flute was returned and asks "Borrow the Azure Flute?". Yes gives you the **Azure Flute**, which you need to replay the [Arceus scene in the Ruins of Alph](08-cherrygrove-to-azalea.md#ruins-of-alph-giovanni-catches-arceus-league-hq-lead) and for the [Sinjoh Ruins](12-lake-of-rage-to-sinjoh.md#sinjoh-ruins-temple-of-arceus-regigigas-and-arceus-after-the-final-hall-of-fame).
 
-**Catch:** the keeper checks your story progress first. Once you've reported to President Goodshow at League HQ after the Arceus scene (a story step before the final Hall of Fame), she only says "Please keep the Azure Flute safe" and never gives it. In a normal playthrough that report always comes before the final Hall of Fame, so the offer can't be reached (not confirmed in game). See [Known issues](known-issues.md#sevii-islands-and-indigo-plateau).
+**Catch:** the keeper checks your story progress first. Once you've reported to President Goodshow at League HQ after the Arceus scene (a story step before the final Hall of Fame), she only says "Please keep the Azure Flute safe" and never gives it. In a normal playthrough that report always comes before the final Hall of Fame, so the offer can't be reached. The keeper's check was tested in an emulator (after the report she only says "keep it safe"; with the story one step earlier she hands over the flute); that the report always comes first is read from the scripts. See [Known issues](known-issues.md#sevii-islands-and-indigo-plateau).
 
-*Source:* keeper ≈16,3. Script file 942 (script 4 L104–L293, L516–L547; var 0x40b7 ≥ 4 checked before flag 2261), file 31 L3316 (League HQ sets 0x40b7 = 4 before the Hall of Fame), files 49 L694 and 131 L590 (use the flute).
+*Source:* keeper ≈16,3 (with the pilgrimage flag 2137 clear, script 1 moves her to ≈15,26). Script file 942 (script 4 L104–L293, L516–L547; var 0x40b7 ≥ 4 checked before flag 2261), file 31 L3316 (League HQ sets 0x40b7 = 4 before the Hall of Fame), files 49 L694 and 131 L590 (use the flute). Writes to 0x40b7: 17 @2509 (1), 129 @1183 (1), 769 @2423 (0), 49 @5260 (3, Arceus scene), 31 @3316 (4), 942 @539 (5) and @1874 (2), 131 @1288/@1367 (6/7). Emulator (`emu_harness.py guide0107 --case azure_flute`, 2261 and 2137 set): 0x40b7 = 4 → 624#47, no item; 0x40b7 = 3 → 624#45, Yes → item 536, 0x40b7 = 5.
 
 ## Sevii Islands: small extras
 

@@ -155,7 +155,7 @@
 **How it works:**
 1. Chuck trains under the waterfall and ignores you ("He's so into his training, he doesn't seem to notice you."). Turn the **large winch** on the back (north) wall to stop the waterfall, then talk to him. You have to do this on every visit.
 2. Choose **"I'm here for the Badge"**. His rules:
-   - a **Double Battle**, 4-on-4: Chuck sends out his four Pokémon two at a time (not confirmed in game);
+   - a **Double Battle**, 4-on-4: Chuck sends out his four Pokémon two at a time (tested in an emulator);
    - **2 to 4 Pokémon** in your party ("at most 4"; with 1 Pokémon, or 5 or 6, he refuses);
    - he asks for **Fighting types only**, but the game actually checks your party against a fixed list of banned species. Every Pokémon that is Fighting-type in this hack passes, except **Staraptor** (Fighting/Flying here, but refused). This hack changes some types, so Ledian, Slaking, Zangoose, Lopunny and Electivire count as Fighting. A few non-Fighting Pokémon also slip through ([known issue](known-issues.md#chucks-fighting-rule)).
 3. Beat **Chuck** (Lv. 80 Toxicroak, Medicham, Hitmonchan, Hitmonlee). Losing blacks you out; you can retry.
@@ -236,7 +236,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 
 **How it would work:** the room has spots for Blue, Yellow, Riley, Marley and Misty. Say Yes to Yellow ("I'm ready. Let's battle together!") or Misty ("Shall we start the challenge now?") and they become your Multi Battle partner. Doing so **clears that partner's romance lock** (Yellow: the Dream World lock; Misty: the Route 3 "No" or Indigo Conference lock), then hides her from the room for good.
 
-**But:** Yellow and Misty are hidden as soon as you pass the scene with Gold and Crystal on Route 39, on your way into Olivine City. That scene is the only way to reach Olivine City, and so the Battle Frontier. Nothing ever makes them visible again, so in a normal game **neither ever appears in the partner room**, and this way back into a romance doesn't work. Your first visit to the Trainer House basement in Frontier Access also hides Yellow. Riley and Marley are normally hidden as well, so in practice Blue is the only partner you'll find there (not confirmed in game).
+**But:** Yellow and Misty are hidden as soon as you pass the scene with Gold and Crystal on Route 39, on your way into Olivine City. That scene is the only way to reach Olivine City, and so the Battle Frontier. Nothing ever makes them visible again, so in a normal game **neither ever appears in the partner room**, and this way back into a romance doesn't work. Your first visit to the Trainer House basement in Frontier Access also hides Yellow. Riley and Marley are normally hidden as well, so in practice Blue is the only partner you'll find there. Tested in an emulator with the Route 39 scene's changes applied: the room shows Blue but not Yellow, Misty, Riley or Marley.
 
 **Notes:** for Yellow and Misty, the way to undo a romance lock is the Island Forest wish before the Dream World ([Island Forest (Six Island)](05-saffron-cinnabar.md#island-forest-six-island-before-the-lucky-meowth-god); see [the romance route's central entry](09-ilex-goldenrod.md#romance-route-how-its-unlocked-how-your-partner-is-chosen-and-what-locks-a-partner-out-central-entry) for every partner's options). See also [the known issue](known-issues.md#yellow-and-misty-in-the-battle-tower-partner-room).
 
@@ -441,7 +441,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 
 **How it works:**
 1. Examine the stone: "It looks like a Star Piece would fill in the broken part perfectly. Use a Star Piece to repair the stone?" → **Yes**. Each repair takes a Star Piece if you have one, but still counts if you have none ([known issue](known-issues.md#jirachi-stone-without-star-pieces)).
-2. Keep choosing Yes. If you've finished the legendary investigation story (it ends in Cherrygrove City, when Crystal takes Suicune back to the orphanage), the stone wakes after **7 repairs** (not confirmed in game). **Warning:** if that story isn't finished, it needs more repairs, and waking Jirachi stops that story's remaining scenes from playing. Finish it first ([known issue](known-issues.md#jirachi-stone-and-the-story-counter)).
+2. Keep choosing Yes. If you've finished the legendary investigation story (it ends in Cherrygrove City, when Crystal takes Suicune back to the orphanage), the stone wakes after **7 repairs** (tested in an emulator). **Warning:** if that story isn't finished, it needs more repairs, and waking Jirachi stops that story's remaining scenes from playing. Finish it first ([known issue](known-issues.md#jirachi-stone-and-the-story-counter)).
 3. The stone turns into **Jirachi**. Two Team Rocket stragglers run in and try to make it grant their wish (a world ruled by Team Rocket). Nothing happens, and you fight them in a **Double Battle**: Grunts with Honchkrow 65, Weavile 64, Butterfree 63 and Gyarados 65, Rampardos 63, Gallade 64.
 4. Win, and they give up Team Rocket. The man asks you to give Jirachi a safe home. Talk to Jirachi → "Take it with you on your journey?" → **Yes**.
 

@@ -10,8 +10,8 @@ Several quests depend on your **starter** (Charmander, Pikachu or Bulbasaur), ge
 
 - [Pallet Town to Pewter City](01-pallet-to-pewter.md) (22)
 - [Pewter City to Vermilion City](02-pewter-to-vermilion.md) (23)
-- [Vermilion City to Celadon City](03-vermilion-to-celadon.md) (29)
-- [Celadon City, Fuchsia City and Saffron City](04-celadon-fuchsia-saffron.md) (35)
+- [Vermilion City to Celadon City](03-vermilion-to-celadon.md) (30)
+- [Celadon City, Fuchsia City and Saffron City](04-celadon-fuchsia-saffron.md) (37)
 - [Saffron City to Cinnabar Island](05-saffron-cinnabar.md) (38)
 - [Sevii Islands and Indigo Plateau](06-sevii-islands-indigo.md) (27)
 - [Pokémon League, Mt. Silver and New Bark Town](07-league-to-cherrygrove.md) (21)

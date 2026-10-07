@@ -4,7 +4,7 @@
 import Mon from './Mon.astro';
 import { speciesById, itemById, itemUrl, moveById, moveUrl, type EvoLink, type EvoCond } from '../lib/data';
 const { label, entries } = Astro.props as { label: string; entries: EvoLink[] };
-const name = (id: number) => speciesById.get(id)?.name ?? '?';
+const name = (id: number, fallback?: string) => speciesById.get(id)?.name ?? fallback ?? '?';
 const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 /** A condition split around its link: [text before, link, text after]. */
 function parts(c: EvoCond, first: boolean) {
@@ -19,9 +19,11 @@ const extra = (e: EvoLink) => (e.original === undefined ? '' : e.original === nu
 const single = entries.length === 1;
 ---
 {single ? (
-	<p>{label} <Mon id={entries[0].id} name={name(entries[0].id)} />
+	<p>{label} <Mon id={entries[0].id} name={name(entries[0].id, entries[0].name)} />
 		{entries[0].never ? (
-			<>: <strong>not possible in this game</strong>. The game never checks the method its data gives (in the official games: {entries[0].official}).</>
+			entries[0].blocked
+				? <>: <strong>not available through normal play</strong>: {entries[0].blocked}.</>
+				: <>: <strong>not possible in this game</strong>. The game never checks the method its data gives (in the official games: {entries[0].official}).</>
 		) : entries[0].conds.length === 1 ? (
 			<> {(() => { const p = parts(entries[0].conds[0], false); return <>{p.pre}{p.mon !== undefined ? <Mon id={p.mon} name={name(p.mon)} /> : p.href ? <a href={p.href}>{p.text}</a> : p.text}{p.post}</>; })()}<span class="small muted">{extra(entries[0])}</span>.</>
 		) : (
@@ -38,9 +40,11 @@ const single = entries.length === 1;
 	<ul>
 		{entries.map((e) => (
 			<li>
-				<Mon id={e.id} name={name(e.id)} />
+				<Mon id={e.id} name={name(e.id, e.name)} />
 				{e.never ? (
-					<>: <strong>not possible in this game</strong> (in the official games: {e.official})</>
+					e.blocked
+						? <>: <strong>not available through normal play</strong> ({e.blocked})</>
+						: <>: <strong>not possible in this game</strong> (in the official games: {e.official})</>
 				) : e.conds.length === 1 ? (
 					<> {(() => { const p = parts(e.conds[0], false); return <>{p.pre}{p.mon !== undefined ? <Mon id={p.mon} name={name(p.mon)} /> : p.href ? <a href={p.href}>{p.text}</a> : p.text}{p.post}</>; })()}<span class="small muted">{extra(e)}</span></>
 				) : (

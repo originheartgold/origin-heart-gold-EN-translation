@@ -254,7 +254,7 @@
 **How it works:**
 1. Talk to the Lopunny owner. Goh mocks Normal types, and his Blaziken knocks out the man's Lopunny with Close Combat. "Go teach Goh a lesson?"
 2. **No:** Goh mocks you as a coward and leaves. The event is over, with no reward.
-3. **Yes:** you confront him and he dares you: "beat me with Normal-type Pokémon!" The game checks your party against a long list of non-Normal species. Pure Normal types and Normal dual types such as Pidgeot or Fearow pass (Raticate is pure Normal in this hack). The list has quirks: it refuses Braviary but lets Staraptor, Flapple and Appletun through.
+3. **Yes:** you confront him and he dares you: "beat me with Normal-type Pokémon!" The game checks your party against a long list of non-Normal species. Pure Normal types and Normal dual types such as Pidgeot or Fearow pass (Raticate is pure Normal in this hack). The list has quirks: it refuses Braviary but lets Staraptor and Stunfisk through.
    - Any other Pokémon in the party: "go swap in Normal-type Pokémon". Goh stays next to the plaza. Talk to him again with an all-Normal party: "Beat Goh using Normal-type Pokémon?"
    - Battle **One-Ball Man Goh**: Machamp 84, Rhyperior 85, Magnezone 84, Hariyama 85, Blaziken 84, Bastiodon 85 (a Fighting/Rock/Steel team built to beat Normal types).
 4. Win: Goh storms off ("I need the power of legendary Pokémon"). Lose: you white out and can retry.
@@ -316,7 +316,7 @@
 
 **Reward:** White Flute.
 
-**Notes:** the game doesn't check your party size before this battle, so with only one Pokémon you face both of them with it (not confirmed in game).
+**Notes:** the game doesn't check your party size before this battle. **Bring at least two Pokémon:** with only one, a broken second Pokémon appears beside yours and the game freezes when you choose FIGHT (tested in an emulator; [known issue](known-issues.md#department-store-double-battle-with-one-pokémon)).
 
 *Source:* script file 901 (script 11, L2210–L3303; flags 2146/2147; trainers 777+778). Old man ≈2,6 on 6F.
 
@@ -420,7 +420,7 @@ At the brawl you pick a line:
 
 **Reward:** an expansion card for your radio (more stations).
 
-**Notes:** pressing B on a question also counts as a right answer (see [Known issues](known-issues.md#radio-quiz-b-button)). Not confirmed in game.
+**Notes:** pressing B on a question picks its last choice, so it's no shortcut (tested in an emulator; see [Known issues](known-issues.md#radio-quiz-b-button)).
 
 *Source:* script file 29 (script 3, L300–L809; flags 280, 287). Right answers fall through to the reward at L786–L803; a wrong answer at question 1–4 jumps to a copy of the remaining questions (L2212, L2310, L2408, L2506) that ends at msg 125 (L2604) whatever you pick. Menus are cancellable (B result 0xFFFE), and only the three wrong options are tested.
 
@@ -493,7 +493,7 @@ At **30 points** on your first card, Buena also gives you her **phone number**. 
 
 **Reward:** the item, for a **$10,000** fee.
 
-**Notes:** one time only. Afterwards she just repeats your result. "That's superstition!" only gets you a lecture. She only checks that you have $300 before this reading, but takes $10,000; with less than that your money probably drops to $0 (suspected hack bug, see Known issues).
+**Notes:** one time only. Afterwards she just repeats your result. "That's superstition!" only gets you a lecture. She only checks that you have $300 before this reading, but takes $10,000; with less than that your money drops to $0 (suspected hack bug, tested in an emulator; see Known issues).
 
 *Source:* script file 895 (script 1, L215–L597; flag 1617). House door ≈352,334. Evolution methods from the ROM's evolution table, checked against the evolution code (arm9 0x020700FC): Rhydon method 37 (level up holding Protector), Happiny method 1 (friendship 220+), Haunter method 19 (holding Spell Tag at night, hours 20–3).
 
@@ -551,7 +551,7 @@ The Island Forest wish is "I want to be more attractive" at the Six Island wishi
 
 ### 4. Confession, dates, moving in
 
-You can confess **once per game**, in the final chapter. It needs the love reading done (any result) and your partner still open. After your final Hall of Fame entry, dates use a shared progress counter. The last date is meeting your mom, and then your partner is meant to move into your house. **Moving in is probably unreachable for everyone:** the step that moves your partner in first checks whether you've received your starter from Prof. Oak (which every player has), and stops there (not confirmed in game; see [the Pallet Town romance entry](01-pallet-to-pewter.md#romance-route-victory-road-confessions-yellows-dates-and-your-house)).
+You can confess **once per game**, in the final chapter. It needs the love reading done (any result) and your partner still open. After your final Hall of Fame entry, dates use a shared progress counter. The last date is meeting your mom, and then your partner is meant to move into your house. **Moving in is unreachable for everyone:** the step that moves your partner in first checks whether you've received your starter from Prof. Oak (which every player has), and stops there (tested in an emulator; see [the Pallet Town romance entry](01-pallet-to-pewter.md#romance-route-victory-road-confessions-yellows-dates-and-your-house)).
 
 | Partner | Confession | Dates (post-game) |
 |---|---|---|

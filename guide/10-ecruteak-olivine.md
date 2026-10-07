@@ -195,7 +195,7 @@
 - **National Park, date couples** (optional Double Battles, no reward): Rich Boy Alan & Lady Olivia (about ten steps north of the south entrance), Veteran Wilbur & Veteran Nancy (west side, east of the puppy-love kids), Karate King Ming & Aroma Lady Connie (just south of the east entrance), Ace Trainers Everett & Penny (middle of the park's north half). Lv. 62–65. One win each.
 - **National Park, Bugsy:** about 17 steps west of the east entrance. After your final Hall of Fame entry, on **Mondays, Wednesdays and Fridays**, Bugsy offers a photo.
 - **Route 35, Ace Trainer Marshal** (the man with a Glaceon, east side of the route): Single or Double Battle on request, Lv. 81–82, repeatable, no reward.
-- **Route 36, Arthur (Thursdays):** a few steps north of the gatehouse door that leads south to the Ruins of Alph. The weekday brother gives a **Hard Stone**. If you've met all seven siblings he gives your lead Pokémon a ribbon instead; that ribbon gift has the known freeze (see [Known issues](known-issues.md#radio-tower-ecruteak-city-and-olivine-city)), so save first.
+- **Route 36, Arthur (Thursdays):** a few steps north of the gatehouse door that leads south to the Ruins of Alph. The weekday brother gives a **Hard Stone**. If you've met all seven siblings he gives your lead Pokémon a ribbon instead; after that gift its message stays on screen until you walk away or press X ([known issue](known-issues.md#arthurs-ribbon-message)).
 - **Route 36, Honey seller** (the man with two Combee, a few steps west of the Violet City gatehouse): sells Honey, 1/3/5/10 for $200/$600/$1,000/$2,000.
 - **Pokéathlon Dome**: the usual HeartGold Pokéathlon. Three fans each give a **Rare Candy** once your records pass their goal: the old woman on 1F for **1,000 total jumps**, the man on 1F for **2,001 total tackles**, the man outside the Dome for **1,000 total dashes**.
 
@@ -235,7 +235,7 @@
 
 **How it works:** Morty only battles a **full party of six** from his accepted list (meant to be Psychic- and Ghost-types). The match is a **Double Battle** against Morty's six, sent out two at a time (see [Known issues](known-issues.md#mortys-lv-1-pokémon) for its Lv. 1 members).
 - Fewer than six Pokémon: "You're carrying fewer than six Pokémon…"
-- Any Pokémon he doesn't accept: "Some of the Pokémon you're carrying…". The game checks a fixed list of species, not types (Eggs are skipped by the species check). Psychic and Ghost lines from Gens 1–4 are accepted, plus **Golduck** and **Noctowl** (Psychic in this hack). **Exeggutor and Rotom are refused.** Yungoos, Gumshoos, Flapple and Appletun also slip through.
+- Any Pokémon he doesn't accept: "Some of the Pokémon you're carrying…". The game checks a fixed list of species, not types (Eggs are skipped by the species check). Psychic and Ghost lines from Gens 1–4 are accepted, plus **Golduck** and **Noctowl** (Psychic in this hack). **Exeggutor and Rotom are refused.** Stunfisk, Yungoos and Gumshoos also slip through.
 - Full list from Gens 1–4: Abra line, Slowpoke line (incl. Slowking), Gastly line, Drowzee, Hypno, Exeggcute, Starmie, Mr. Mime, Mime Jr., Jynx, Smoochum, Mewtwo, Mew, Natu, Xatu, Espeon, Misdreavus, Mismagius, Unown, Wobbuffet, Wynaut, Girafarig, Lugia, Celebi, Ralts line, Gallade, Shedinja, Sableye, Meditite, Medicham, Spoink, Grumpig, Lunatone, Solrock, Baltoy, Claydol, Shuppet, Banette, Duskull line, Chimecho, Chingling, Beldum line, Latias, Latios, Jirachi, Deoxys, Drifloon, Drifblim, Bronzor, Bronzong, Spiritomb, Froslass, Uxie, Mesprit, Azelf, Giratina, Cresselia, Golduck, Noctowl. Exeggutor and Rotom are refused, although they are Psychic/Ghost.
 - Losing whites you out; try again.
 
@@ -405,13 +405,13 @@
 
 ## Ecruteak City: small extras
 
-- **Sunny, the Sunday sibling (Route 37, Sundays only):** gives a **Magnet**. If you've met all seven siblings she gives your lead Pokémon a ribbon instead (the known freeze, see [Known issues](known-issues.md#radio-tower-ecruteak-city-and-olivine-city); save first).
+- **Sunny, the Sunday sibling (Route 37, Sundays only):** gives a **Magnet**. If you've met all seven siblings she gives your lead Pokémon a ribbon instead (its message then stays on screen until you walk away or press X; see [Known issues](known-issues.md#arthurs-ribbon-message)).
 - **Sage Mozhi (Route 37):** repeatable Single/Double Battle.
 - **S.S. Anne fan:** in the left-hand (western) of the two houses just south of the Burned Tower. Only if you saved the S.S. Anne. Gives a **Muscle Band** once.
 - **Eruption tutor (Burned Tower 1F):** the S.S. Anne survivor teaches Eruption only if the ship didn't sink. **Aura Sphere tutor (Bell Tower gatehouse):** appears after the Burned Tower battle.
 - **Dance rehearsal (Dance Theater):** watching the Kimono Girls' rehearsal and either answer to Satsuki's question give the same result. Plays once, after Koume's Ilex Forest story ([Ilex Forest: Koume](09-ilex-goldenrod.md#ilex-forest-koume-the-kimono-girl-who-lost-her-way-blocks-the-exit-to-route-34)).
 
-*Source:* Sunny: file 246 script 2 (ribbon freeze D-1331). Mozhi: file 246 script 7, trainer 798. S.S. Anne fan: file 925 script 3, flag 1621, house door ≈375,164. Eruption tutor: file 23 script 7. Aura Sphere tutor: file 922 L1065. Dance rehearsal: file 924 script 14/18, trigger on var 0x409a = 1.
+*Source:* Sunny: file 246 script 2 (ribbon gift dies at opcode 2009 @764: D-1331, D-1558). Mozhi: file 246 script 7, trainer 798. S.S. Anne fan: file 925 script 3, flag 1621, house door ≈375,164. Eruption tutor: file 23 script 7. Aura Sphere tutor: file 922 L1065. Dance rehearsal: file 924 script 14/18, trigger on var 0x409a = 1.
 
 ## Route 38: the Murkrow that stole a coin (Nugget trap; → 2 Rare Candies, 2 Lava Cookies or keep the Amulet Coin)
 
@@ -490,7 +490,7 @@ Seals go on Poké Balls through **BALL CAPSULES** in the PC menu.
 **Notes:**
 - **Moomoo Milk stall** (the farmer's daughter at the farm entrance, a few steps south of the stable doors): 1 for $1,000, 3 for $3,000, 8 for $8,000, 12 for $12,000. Closed while the Miltank are sick.
 - **After your final Hall of Fame entry**, examine the back wall of the west stable room to return to the Dream World ([Dream World: Cresselia and Darkrai](09-ilex-goldenrod.md#dream-world-cresselia-and-darkrai-post-game)). You don't need a Lunar Wing for this.
-- **If you can, do the investigation after the League HQ's round-3 order.** That order always makes the Miltank sick again, and once you've been through the Dream World the farmer never offers the cure again. So if you clear the Dream World first, the milk stall, the farm's seal girl and the Sunflora old lady close for good (suspected hack bug; not confirmed in game).
+- **If you can, do the investigation after the League HQ's round-3 order.** That order always makes the Miltank sick again, and once you've been through the Dream World the farmer never offers the cure again. So if you clear the Dream World first, the milk stall, the farm's seal girl and the Sunflora old lady close for good (suspected hack bug; the farmer's side was tested in an emulator: once the Dream World is done he never offers the investigation again).
 
 *Source:* script file 251 (scripts 1, 8, 9; L903–L1431, L1283, L1295; flags 744, 2299, 2289, 2301; var 0x40a3 = 5; farmer script L117 offers the investigation whenever flag 744 is clear), 249 (script 21, L2851–L3076), 31 (L4666 clears 744), 840 (Prof. Elm's lab, L3194/L3324 clear 744), 898 (L2329 sets 744; the only SetFlag 744 besides the new-game setup in file 149, so after 2289 is set nothing cures a later ClearFlag 744 at file 31 L4666, and script 1 @106 sends the farmer to L903 once 2289 is set); return trip: script 9 @882 CheckFlag 2261 → L1295 → Warp, the file's only HasItem is 434 (Seal Case). Farmer at ≈38,5 in the stable; right-hand stable door ≈265,164 leads to the east room, left-hand door ≈260,164 to the west room. Milk stall at ≈268,169.
 
@@ -573,7 +573,7 @@ A chain across four places in Olivine. **HM05 Whirlpool** is the reward. Crossin
 
 **How it works:** Jasmine's rule is a **3-on-3 Single Battle using only Pokémon with a base Defense of 130 or higher.**
 - Carry **3 Pokémon or fewer**. With 4 or more she refuses.
-- **Every** Pokémon must be on her list. The game checks a fixed list of species meant to match base Defense 130+, for example Steelix, Skarmory, Forretress, Shuckle, Aggron, Metagross, Bastiodon and Probopass. **Aegislash is refused**, though Doublade is allowed, and a few weak species slip through (Yungoos, Gumshoos, Flapple and Appletun; see [Known issues](known-issues.md#radio-tower-ecruteak-city-and-olivine-city)). Eggs are skipped by the check.
+- **Every** Pokémon must be on her list. The game checks a fixed list of species meant to match base Defense 130+, for example Steelix, Skarmory, Forretress, Shuckle, Aggron, Metagross, Bastiodon and Probopass. **Aegislash is refused**, though Doublade is allowed, and a few weak species slip through (Stunfisk, Yungoos and Gumshoos; see [Known issues](known-issues.md#radio-tower-ecruteak-city-and-olivine-city)). Eggs are skipped by the check.
 - Full list of obtainable species that pass: Golem, Cloyster, Onix, Steelix, Forretress, Shuckle, Skarmory, Nosepass, Probopass, Lairon, Aggron, Torkoal, Dusclops, Dusknoir, Relicanth, Metagross, Regirock, Registeel, Bastiodon, Rhyperior, Leafeon, Uxie, Lugia, Groudon, Gigalith, Cofagrigus, Carracosta, Ferrothorn, Doublade, Carbink, Avalugg, Toxapex, Pyukumuku.
 - Jasmine: Steelix, Metagross, Skarmory, all Lv. 80. Losing whites you out, and you can retry.
 

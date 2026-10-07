@@ -8,9 +8,9 @@ name: Website
 on:
   push:
     branches: [main]
-    paths: ['site/**', 'guide/**', 'work/tools/site/**', 'work/save-editor/**', '.github/workflows/site.yml']
+    paths: ['site/**', 'guide/**', 'work/tools/site/**', 'work/tools/docs/**', 'work/save-editor/**', '.github/workflows/site.yml']
   pull_request:
-    paths: ['site/**', 'guide/**', 'work/tools/site/**', 'work/save-editor/**']
+    paths: ['site/**', 'guide/**', 'work/tools/site/**', 'work/tools/docs/**', 'work/save-editor/**', '.github/workflows/site.yml']
   workflow_dispatch:
   # A new release redeploys the site so /patch/ serves the new patch (see the redeploy job).
   release:
@@ -21,7 +21,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: pages
+  group: website-${{ github.event_name == 'pull_request' && github.ref || github.event_name == 'release' && github.ref || 'production' }}
   cancel-in-progress: true
 
 jobs:
@@ -75,6 +75,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Test guide parsers and trainer rules (no ROM required)
+        run: python3 -m unittest work/tools/docs/test_gen_docs.py work/tools/docs/test_trainer_guide.py work/tools/docs/test_trainer_runtime.py
       - name: Generate the guide pages from guide/*.md
         run: python3 work/tools/site/sync_guide.py
       # The PDF is optional: if these two steps fail, the site deploys without it and
@@ -132,6 +134,10 @@ jobs:
           cat "$out/latest.json"
       - run: npm ci
         working-directory: site
+      - run: npm test
+        working-directory: site
+      - name: Check Primo passwords against the reference encoder
+        run: node work/tools/site/test_primo.mjs
       - run: npx astro build
         working-directory: site
       - name: Check links
@@ -144,6 +150,9 @@ jobs:
   deploy:
     if: github.event_name != 'pull_request' && github.event_name != 'release'
     needs: [build, save-editor]
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     permissions:
       pages: write

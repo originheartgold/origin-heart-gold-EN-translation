@@ -9,11 +9,12 @@ import tutorsJson from '../data/tutors.json';
 import { engineItemSources, formChanges, calendarEncounters, type FormChange, type CalendarEncounter } from './verified-mechanics';
 
 export interface Species {
+	unavailableReason?: string | null;
 	id: number; name: string; slug: string; region: string; types: string[];
 	abilities: string[]; hidden: string | null; stats: number[]; catch: number; gender: string;
 	eggGroups: string[]; growth: string; ev: number[]; held: string[];
 	evoFrom: EvoLink[]; evoTo: EvoLink[]; evoNotes: string[];
-	how: string; levelup: [number, number][]; tms: 'all' | [string, number][];
+	how: string; battleOnly?: string | null; note?: string | null; levelup: [number, number][]; tms: 'all' | [string, number][];
 	tutors: number[]; egg: number[]; foundIn: { area: string; methods: string[] }[];
 	game?: string | null; tmNote?: string | null; quests?: Quest[];
 	formChanges: FormChange[]; calendar: CalendarEncounter[];
@@ -21,7 +22,7 @@ export interface Species {
 /** One evolution as the game checks it; `never` marks a method the game's evolution code ignores. */
 export interface EvoCond { text: string; item?: number; move?: number; species?: number }
 export interface EvoLink {
-	id: number; how: string; conds: EvoCond[]; never?: boolean; official?: string; original?: string | null;
+	id: number; how: string; conds: EvoCond[]; never?: boolean; official?: string; blocked?: string; name?: string; original?: string | null;
 }
 /** A guide quest that explains a source (its heading carries the condition, e.g. a starter). */
 export interface Quest { title: string; href: string }
@@ -34,8 +35,9 @@ export interface ItemSource {
 	near?: string | null; quests?: Quest[]; note?: string;
 }
 export interface Item {
+	unavailableReason?: string | null;
 	id: number; name: string; slug: string; pocket: string; price: number; sources: ItemSource[];
-	neededBy: { place: string; area: string | null }[]; game?: string | null;
+	neededBy: { place: string; area: string | null }[]; game?: string | null; note?: string | null;
 }
 export interface ContestRow { id: number; name: string; level: string; rate: number; score: number }
 export interface EncRow { id: number | null; name: string; level: string; pct: number | null }
@@ -55,11 +57,11 @@ export interface Area {
 }
 export interface TrainerMon {
 	id: number; name: string; level: number; ability: string | null; item: string | null; nature: string | null;
-	ivs: number; evs: number[] | null; moves: string[];
+	ivs: number; hpIvs: number; evs: number[] | null; moves: string[];
 }
 export interface Trainer {
 	id: number; cls: string; name: string; double: boolean; items: string[]; team: TrainerMon[];
-	places: { area: string | null; map: string | null; how: string; conds: string[] }[]; group: string | null;
+	places: { area: string | null; map: string | null; how: string; conds: string[] }[]; group: string | null; note?: string | null;
 }
 export interface Tutor {
 	move: number; moveName: string; game?: string | null; places: { place: string; area: string | null }[]; cost: unknown;
@@ -85,6 +87,7 @@ const REGION_OVERRIDES: Record<string, string> = {
 	'secret-forest': 'sevii', 'shipyard-ruins': 'sevii', 'sky-pillar-peak': 'sevii',
 	'alto-mare-library': 'sevii', 'alto-mare-waters': 'sevii',
 	's-s-anne': 'other', 'jubilife-city': 'other', 'dream-world': 'other',
+	'safari-zone-gate': 'johto',    // the Pal Park map; reached only from the Resort Zone
 };
 export const areas: Area[] = areasJson.map((a) => ({ ...a,
 	region: REGION_OVERRIDES[a.slug] ?? a.region,
@@ -102,9 +105,9 @@ export const areaBySlug = new Map(areas.map((a) => [a.slug, a]));
 export const areaByName = new Map(areas.map((a) => [a.name, a]));
 export const trainerById = new Map(trainers.map((t) => [t.id, t]));
 
-// A documented route is not a promise of a completed capture test. Unresolved calendar rows do not count.
+// A documented route is not a promise of a completed capture test. Only configured calendar rows count.
 export function hasDocumentedSource(s: Species) {
-	return !!(s.how || s.formChanges.some((f) => f.result === s.id && speciesById.get(f.base)?.how) ||
+	return !s.unavailableReason && !!(s.how || s.formChanges.some((f) => f.result === s.id && speciesById.get(f.base)?.how) ||
 		s.calendar.some((e) => e.pokemon === s.id && e.status === 'configured'));
 }
 

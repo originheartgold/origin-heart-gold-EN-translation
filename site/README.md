@@ -20,6 +20,15 @@ Never edit the generated files by hand: change the source and regenerate. `src/d
 committed, because CI has no ROM. `src/content/docs/guide` is not committed: CI and
 `build.py` regenerate it from `guide/*.md`.
 
+## Availability labels
+
+Keep all named Pokémon, forms and items in the reference listings. The reviewed
+`work/tools/site/not_in_game.json` and `items_not_in_game.json` lists provide the
+`unavailableReason` exported with each affected entry. They label normal-play
+availability; they must not remove reference pages or imply that an entry cannot
+be added with an editor or generator. An unknown source is a separate status.
+Listings show all entries by default and offer an availability filter.
+
 ## Everyday tasks
 
 ```sh

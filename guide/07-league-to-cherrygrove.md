@@ -35,13 +35,13 @@
 **How it works:**
 1. Giovanni battles you with his full **Lv. 100** team (Mewtwo, Tyranitar, Nidoking, Rhydon, Nidoqueen, Aerodactyl). Losing doesn't white you out. If you **win**, Mewtwo uses Recover and the same battle starts again, as often as you keep winning. The duel only moves on once you lose.
 2. You wake up "at the bottom of the lake". With Charmander and the Mystery Stone, the stone reacts: it becomes a **Charizardite**. Without either, the scene just continues.
-3. Rematch: a Double Battle against Giovanni's team, sent out two at a time; he opens with Mewtwo and Tyranitar (not confirmed in game). **A loss here whites you out.** Giovanni stays, but to retry you have to talk to him again and replay the whole scene: the duel, the collapse and the lake.
+3. Rematch: a Double Battle against Giovanni's team, sent out two at a time; he opens with Mewtwo and Tyranitar (tested in an emulator). **A loss here whites you out.** Giovanni stays, but to retry you have to talk to him again and replay the whole scene: the duel, the collapse and the lake.
 4. After the win you free Mewtwo and Giovanni escapes. You wake up at home, and Prof. Oak sends you to Mt. Silver (the rehabilitation below).
 **Reward:** Charizardite (Charmander starters with the Mystery Stone only).
 
 **Notes:** the [Dragon Shrine](12-lake-of-rage-to-sinjoh.md#dragon-shrine-the-mystery-stone-becomes-a-charizardite-and-the-dragon-rush-tutor) in Johto's Dragon's Den can also turn the Mystery Stone into a Charizardite. It works for any starter; only this cave scene checks for Charmander.
 
-*Source:* script file 912 (L4818/L4922 `TrainerBattle 402` no-loss; a win jumps to L4855, Recover, and repeats the battle; a loss goes on at L4953; L5414 `CheckFlag 1287`, L5425 `HasItem 504`, L5497–L5517 gives item 325; L2559 double battle 402+402 (same id twice = a Double Battle against one trainer, one copy of the team; trainer 402 opens with Mewtwo and Tyranitar), a loss → L4849 `WhiteOut`; the rematch trigger at 45,5 can only be reached from the lake-bottom scene), file 112 L1201 (Dragon's Den, no starter check).
+*Source:* script file 912 (L4818/L4922 `TrainerBattle 402` no-loss; a win jumps to L4855, Recover, and repeats the battle; a loss goes on at L4953; L5414 `CheckFlag 1287`, L5425 `HasItem 504`, L5497–L5517 gives item 325; L2559 double battle 402+402 (same id twice = a Double Battle against one trainer, one copy of the team; trainer 402 opens with Mewtwo and Tyranitar), a loss → L4849 `WhiteOut`; the rematch trigger at 45,5 can only be reached from the lake-bottom scene), file 112 L1201 (Dragon's Den, no starter check). Emulator (`emu_harness.py guide0107 --case giovanni`): `TrainerBattle 402 402 0 0` is a double battle, send-out cries 150 then 248, one team (150, 248, 34, 112, 31, 142) in RAM.
 
 ## Mt. Silver lodge: the rehabilitation (how to move it along)
 
@@ -351,11 +351,11 @@ Both can be reopened once by the [Island Forest wish](05-saffron-cinnabar.md#isl
 
 ## League gate, Mt. Silver, Route 29 and Cherrygrove: small extras
 
-- **League reception gate (Route 26), Koga's photo:** after the final Hall of Fame, Koga trains in the gate from 18:00 to 20:59 (DS clock) and offers a souvenir photo. He stands on the **east (Route 22) side** of the gate, near the Route 22 exit. (Not confirmed in game.)
+- **League reception gate (Route 26), Koga's photo:** after the final Hall of Fame, Koga trains in the gate from 18:00 to 20:59 (DS clock) and offers a souvenir photo. He stands on the **east (Route 22) side** of the gate, near the Route 22 exit. (Tested in an emulator: there at 18:00 and 20:00, gone at 17:00 and 21:00.)
 - **Mt. Silver photographers:** photo spots at the foot of Mt. Silver (Wednesdays and Fridays) and in Mt. Silver Cave 1F (Thursdays). The one at the foot of the mountain isn't there while the Silver Conference crowd is gathered outside the Pokémon Center.
-- **Route 29, Tuscany (Tuesdays):** the weekday sister gives a Scope Lens. Her ribbon gift for meeting all seven siblings has the known freeze; save first.
+- **Route 29, Tuscany (Tuesdays):** the weekday sister gives a Scope Lens. Her ribbon gift for meeting all seven siblings leaves its message stuck on screen; walk away or press X to clear it ([known issue](known-issues.md#arthurs-ribbon-message)).
 - **Cherrygrove City, Crystal's sale:** 10 Poké Balls for $800 during her tour; if you can't pay she gives you one free.
 
-*Source:* Koga: file 213 script 16 (photo) and L523 (map load: needs flag 2261, visible when the hour is 18, 19 or 20, otherwise hide flag 624 is set; object at ≈17,10 next to the Route 22 door ≈21,8). Photographers: file 945 L864 (weekday 3 or 5) and script 2 (if flag 1339 is clear, i.e. from the League HQ scene until the end of the Silver Conference, the photographer stays hidden), file 105 L244 (weekday 4). Tuscany: file 225 script 4; freeze is decision D-1331. Crystal's sale: file 847 L7064, L7956.
+*Source:* Koga: file 213 script 16 (photo) and L523 (map load: needs flag 2261, visible when the hour is 18, 19 or 20, otherwise hide flag 624 is set; object at ≈17,10 next to the Route 22 door ≈21,8; emulator `emu_harness.py guide0107 --case koga`: object 12 present at 18:00 and 20:00 at 17,10, talk → 354#12, absent at 17:00 and 21:00). Photographers: file 945 L864 (weekday 3 or 5) and script 2 (if flag 1339 is clear, i.e. from the League HQ scene until the end of the Silver Conference, the photographer stays hidden), file 105 L244 (weekday 4). Tuscany: file 225 script 4; freeze is decision D-1331. Crystal's sale: file 847 L7064, L7956.
 
 See [Known issues](known-issues.md#pokémon-league-mt-silver-and-new-bark-town) for suspected hack bugs in this area.

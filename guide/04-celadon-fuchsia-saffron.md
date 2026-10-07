@@ -36,8 +36,10 @@
 - [Route 12: other optional battles](#route-12-other-optional-battles)
 - [Resort Zone (Johto): the broke backpacker](#resort-zone-johto-the-broke-backpacker)
 - [Resort Zone: Misty's date, the Pal Park and the Couples Double Battle](#resort-zone-mistys-date-the-pal-park-and-the-couples-double-battle)
+- [Resort Zone: the Pal Park's Fixed Catch mode (wild Pokémon by weekday)](#resort-zone-the-pal-parks-fixed-catch-mode-wild-pokémon-by-weekday)
 - [Silph Co. (Saffron takeover): the employee's Lapras (missable)](#silph-co-saffron-takeover-the-employees-lapras-missable)
 - [Saffron City: the Team Rocket takeover (what it closes)](#saffron-city-the-team-rocket-takeover-what-it-closes)
+- [Saffron City (takeover): getting past the barrier into the city](#saffron-city-takeover-getting-past-the-barrier-into-the-city)
 - [Silph Co. president's office: the Goodshow meeting and the Saffron takeover finale](#silph-co-presidents-office-the-goodshow-meeting-and-the-saffron-takeover-finale)
 
 ## Celadon Department Store roof: the prize quiz
@@ -73,9 +75,9 @@
 4. Mary and Tony reveal themselves as **Jessie and James**. Double battle: Jessie (Arbok 38, Lickilicky 37, Wobbuffet 36, Dustox 35) and James (Weezing 38, Victreebel 37, Gyarados 36, Meowth 20). James lets slip the "Pokémon Enhancer", the drug behind the berserk Pokémon on Route 7.
 **Reward:** Suzie's customers come back and from then on her massage is **free, forever**: it fully heals your party and gives the chosen Pokémon +10 friendship (plus Beauty and sheen). Outside the free window (before the Route 7 scene, and after the Gloom search if you skipped the quest) she charges **$2,000** a time.
 
-**Notes:** after the Route 7 scene, stepping in front of Tony does nothing until you've had Suzie's free massage. (Before the Route 7 scene the roof scene is armed from the start, so if you reach the roof that early it can play without the massage; whether that early visit is possible, and how it affects Suzie's prices, is not confirmed in game.) Losing to the Beedrill whites you out and the scene replays, so you can retry until the Gloom search ends. Losing to Jessie & James also whites you out, but the quest already counts as done: the scene doesn't replay and Suzie's massage is free from then on.
+**Notes:** after the Route 7 scene, stepping in front of Tony does nothing until you've had Suzie's free massage. (Before the Route 7 scene the roof scene is armed from the start, so if you reach the roof that early it plays without the massage, and afterwards Suzie's massage is free too: tested in an emulator. Whether you can reach the roof that early in a normal playthrough hasn't been checked.) Losing to the Beedrill whites you out and the scene replays, so you can retry until the Gloom search ends. Losing to Jessie & James also whites you out, but the quest already counts as done: the scene doesn't replay and Suzie's massage is free from then on.
 
-*Source:* script files 792 (script 21, coord trigger at 4,5 on var 0x40d0 = 0, which is also the var's starting value; Tony/Mary hide flags 1544/1545 start clear; scripts 11, 15; the quest var is set to 2 at @1530, before the Jessie & James battle, and flags 1544/1545 set, 1535 cleared; Beedrill is trainer 462), 794 (script 1, L728/L1387/L758; $2,000 at L788 whenever flag 1535 is clear and 0x40d0 ≠ 2), 186 (Route 7 scene end, @1783/@1819, sets flag 1535 and 0x40d0 = 1, disarming the trigger; 794 @1402 sets it back to 0 after the free massage), 783 L4581–L4612 (closes it). Positions on the roof map: Tony ≈1,8, Mary ≈1,7, Kirlia owner ≈2,5; Suzie ≈10,5 on Condominiums 1F.
+*Source:* script files 792 (script 21, coord trigger at 4,5 on var 0x40d0 = 0, which is also the var's starting value; Tony/Mary hide flags 1544/1545 start clear; scripts 11, 15; the quest var is set to 2 at @1530, before the Jessie & James battle, and flags 1544/1545 set, 1535 cleared; Beedrill is trainer 462), 794 (script 1, L728/L1387/L758; $2,000 at L788 whenever flag 1535 is clear and 0x40d0 ≠ 2), 186 (Route 7 scene end, @1783/@1819, sets flag 1535 and 0x40d0 = 1, disarming the trigger; 794 @1402 sets it back to 0 after the free massage), 783 L4581–L4612 (closes it). Positions on the roof map: Tony ≈1,8, Mary ≈1,7, Kirlia owner ≈2,5; Suzie ≈10,5 on Condominiums 1F. Emulator (`emu_harness.py guide0107 --case tony`, both ROMs): with 0x40d0 = 0 and 1535 clear Suzie offers the paid massage (494#0); the roof trigger plays the scene, Beedrill 462 and then 460 + 461, and 0x40d0 is 2 (1544/1545 set, 1535 clear) when Jessie & James's battle starts; from that state Suzie offers the free massage (494#36).
 
 ## Celadon Condominiums → Silph Co. 5F: Grandma's treats for Shota (Master Ball; missable)
 
@@ -292,7 +294,7 @@ Either way Goh leaves and there is no item.
 - **Shard trader** (north-east part of town, a few steps below the rangers' house): one Shard for a set of three Berries: Red → Persim/Razz/Pomeg, Blue → Bluk/Kelpsy/Cornn, Yellow → Pinap/Grepa/Nomel, Green → Wepear/Hondew/Durin. Repeatable. He refuses if you can't carry the set.
 - **Safari Ball seller** (north-west corner of town): 1 for $1,500, 5 for $7,000, 10 for $13,500, as often as you like.
 - **Photographer** (by the Route 19 gate at the south edge of town) only on Tuesdays and Saturdays.
-- **Baoba's family house** (the door in the middle of the south part of town, just above the Dodrio owner): a man talks about Surf and hints at the Safari Zone. Once you carry **HM04 Strength** he asks instead: "You already have the Surf TM? Then have you found a way to use it to move this big boulder in my house?" Flavour only, no reward. ("Surf TM" is the hack's own slip: the item he checks is HM04, and moving boulders is Strength's job.)
+- **Baoba's family house** (the door in the middle of the south part of town, just above the Dodrio owner): a man talks about Surf and hints at the Safari Zone. Once you carry **HM04 Strength** he asks instead: "You already have the Strength HM? Then have you found a way to use it to move this big boulder in my house?" Flavour only, no reward. (The Chinese says "Surf TM", but the item he checks is HM04, and moving boulders is Strength's job, so the English says Strength.)
 
 *Source:* file 807 (script 2), file 804 (scripts 9, 24; L1445), file 810 (script 3: `HasItem 423` = HM04, line 509#6). Positions: Rock-type fan ≈13,13 in the Pokémon Center; Shard trader ≈1230,414; Safari Ball seller ≈1194,405; photographer ≈1201,445; Baoba family door ≈1222,435 (man ≈69,5 in its room).
 
@@ -534,9 +536,42 @@ Continues [Misty's romance](02-pewter-to-vermilion.md#cerulean-gym--cerulean-cap
 
 **Notes:** starting the date removes Misty from the Cerulean Gym.
 - **If you lose a Couples battle**, you white out and Misty is not in the Gym. Find her at the photo spot at the tip of Cerulean Cape: say Yes to her photo (you need room in your album) and the Cape date plays again. Afterwards she's back in the Gym and you can ask for the Resort Zone date again.
-- **If you win**, the date ends in the Gym, but Misty doesn't reappear there or at the Cape, so her next date ("I want you to meet my mom", in Pallet Town) can't be started. The other scenes that send her back to the Gym all belong to the main story, which is over by then, so nothing found brings her back. Save before the date. This looks like a hack bug (not confirmed in game; see [the known issue](known-issues.md#misty-missing-from-cerulean-gym)).
+- **If you win**, the date ends in the Gym, but Misty doesn't reappear there or at the Cape, so her next date ("I want you to meet my mom", in Pallet Town) can't be started. The other scenes that send her back to the Gym all belong to the main story, which is over by then, so nothing found brings her back. Save before the date. This looks like a hack bug (tested in an emulator: after the date's ending Misty is neither in the Gym, also after leaving and coming back, nor at the Cape; see [the known issue](known-issues.md#misty-missing-from-cerulean-gym)).
 
-*Source:* file 758 (L7555–L7857; the date start sets Misty's hide flag 595 at @7636; the Gym's map script, script 8 → L3641, only clears 595 when flag 1645 is clear or flag 2142 is set), file 809 (script 15, L2897–L4348; trainer pairs 426+982, 565+10, 560+915, 674+1023). Next date: var 0x40b5 = 4 (809 @4348, after the warp to the Gym at L4324; 809 never clears 595). Retry after a loss: every loss goes to L4885 `WhiteOut` with var 0x40b5 = 3 (@592) and 595 still set; Route 25's map script (216 script 4 → L3164) then shows the Cape Misty (flag 598), and her Cape date (script 41) ends at L12196, which clears 595 (@12236). With var = 4 she stays hidden at the Cape too. The other scripts that clear 595 (files 34, 195, 217, 795, 821, 834, 853, 912) are one-time story scenes, all over before the final Hall of Fame (flag 2261) that the dates need.
+*Source:* file 758 (L7555–L7857; the date start sets Misty's hide flag 595 at @7636; the Gym's map script, script 8 → L3641, only clears 595 when flag 1645 is clear or flag 2142 is set), file 809 (script 15, L2897–L4348; trainer pairs 426+982, 565+10, 560+915, 674+1023). Next date: var 0x40b5 = 4 (809 @4348, after the warp to the Gym at L4324; 809 never clears 595). Retry after a loss: every loss goes to L4885 `WhiteOut` with var 0x40b5 = 3 (@592) and 595 still set; Route 25's map script (216 script 4 → L3164) then shows the Cape Misty (flag 598), and her Cape date (script 41) ends at L12196, which clears 595 (@12236). With var = 4 she stays hidden at the Cape too. The other scripts that clear 595 (files 34, 195, 217, 795, 821, 834, 853, 912) are one-time story scenes, all over before the final Hall of Fame (flag 2261) that the dates need. Emulator (`emu_harness.py guide0107 --case misty_date`): 809 script 15 run from L4312 with 2261 and 1645 set, 2142 clear and 595 set → zone 427 with var 0x40b5 = 4, object 6 absent, also after a fresh warp into the Gym; Route 25 object 35 (flag 598) absent.
+
+## Resort Zone: the Pal Park's Fixed Catch mode (wild Pokémon by weekday)
+
+**Where:** the Pal Park reception building in the Resort Zone (Route 48, open after the Cianwood Gym story).
+
+**How it works:** talk to the receptionist and ask to take part. You need room for six more Pokémon in your PC Boxes. If you haven't brought Pokémon over from a Game Boy Advance game, she offers **Fixed Catch mode**: pay **$10,000** and you're taken into the park, where you catch with your own Poké Balls. (She says each catch costs $10,000, but the game only charges once, when you go in.)
+
+**What you'll find:**
+- **Wild Pokémon:** a different table on each day of the week (by the DS clock). Each day's table is on the [Pal Park location page](/locations/safari-zone-gate/#wild) (listed as Safari Zone Gate, the map's name in the game). Friday's is the only place to find **Stunfisk** (1%). On Sundays you can also surf and fish in the park's pond and sea.
+- **Pokémon standing in the park** (Lv. 10, one battle each): two of the eight groups below appear, depending on the day.
+
+- **A:** Treecko, Ralts, Mawile, Carvanha, Seviper, Tropius
+- **B:** Torchic, Shroomish, Meditite, Numel, Corphish, Absol
+- **C:** Mudkip, Makuhita, Electrike, Spoink, Baltoy, Relicanth
+- **D:** Sableye, Gulpin, Swablu, Duskull, Bagon, Beldum
+- **E:** Turtwig, Bidoof, Buizel, Buneary, Spiritomb, Carnivine
+- **F:** Chimchar, Shinx, Cherubi, Stunky, Riolu, Finneon
+- **G:** Piplup, Budew, Shellos, Bronzor, Hippopotas, Snover
+- **H:** Pachirisu, Drifloon, Chatot, Gible, Croagunk, Rotom
+
+| Day | Groups |
+|---|---|
+| Sunday | C and D |
+| Monday | A and D from 7:00 to 18:59, E and H the rest of the day |
+| Tuesday | E and F |
+| Wednesday | A and B |
+| Thursday | F and G |
+| Friday | B and C |
+| Saturday | G and H |
+
+**Notes:** a Fixed Catch show never ends with a score or a Berry prize: it only counts Pokémon stocked from a GBA game, so leave whenever you like and keep what you caught ([known issue](known-issues.md#pal-park-fixed-catch-show-never-ends), tested in an emulator). Sunday's table is the same as Cerulean Cave's, probably by mistake in the hack. Monday's groups depend on the hour of the DS clock. The weekday tables and Monday's hours were checked in an emulator (each day loads the table listed; on a Monday the receptionist sets out A and D from 7:00 to 18:59), and wild Pokémon met in the park on a Friday, a Sunday and a Monday all came from that day's table; the rest is read from the game's scripts.
+
+*Source:* file 809 (receptionist: L5439 room check, L5785 weekday branches clearing hide flags 2124–2131, L6431–L6528 $10,000 and warp to map 109); file 12 (48 one-time battles, scripts 7–54); wild table record = 142 + weekday − 1 (arm9 0x0203A7B0, D-1484). Monday branch L6143: `ScrCmd_522` (the current hour, observed) 7–18 → L6679 clears 2124 + 2127 (A, D), else 2128 + 2131 (E, H); emulator `emu_harness.py guide0107 --case monday` (00:30, 06:30 → E+H; 07:30, 12:30, 18:30 → A+D; 19:30, 23:30 → E+H).
 
 ## Silph Co. (Saffron takeover): the employee's Lapras (missable)
 
@@ -563,7 +598,35 @@ Continues [Misty's romance](02-pewter-to-vermilion.md#cerulean-gym--cerulean-cap
 - the Shota step at Silph Co. ([Grandma's treats](#celadon-condominiums--silph-co-5f-grandmas-treats-for-shota-master-ball-missable)); the grandma's errand is closed at the end of the takeover
 **Paused during it:** Koga is hidden from the Fuchsia Gym until Saffron is freed.
 
+**Can't get into Saffron?** An invisible barrier seals all four gates. The way in is [the next entry](#saffron-city-takeover-getting-past-the-barrier-into-the-city).
+
 *Source:* file 17 (L11987–L12610), file 834 (L5062–L5221, L5641, L5948–L5994).
+
+## Saffron City (takeover): getting past the barrier into the city
+
+**Where:** the four roads into Saffron City, just outside each gatehouse. Gym Leaders, Elite Four members and friends stand at every one, all stuck behind the same invisible barrier.
+
+**Who gets it / when:** everyone. This is the main story, right after Sabrina's call in Pokémon Tower. Players get stuck here because talking to the Leaders seems to do nothing. The step that's easy to miss is going back to Sabrina at the end.
+
+**How it works:**
+1. **East gate (Route 8, the Lavender side):** Sabrina waits here with Agatha and Green (boys) or Red (girls). She explains the barrier and asks you to check the other three entrances while she thinks of another way in.
+2. **Check the other three gates.** At each one, talk to at least one of the **people** (talking to their Pokémon doesn't count). The order doesn't matter.
+
+   | Gate | Talk to any of |
+   |---|---|
+   | North (Route 5, the Cerulean side) | Brock, Misty, Bruno, Bill or Blue |
+   | South (Route 6, the Vermilion side) | Lt. Surge, Blaine, Lorelei or Cynthia |
+   | West (Route 7, the Celadon side) | Koga, Erika, Lance or Steven |
+
+3. **Go back to Sabrina on Route 8.** She says "So you've checked all of Saffron City's other entrances..." and offers to send you in through her other dimension. Answer **Yes**. If you answer No, talk to her again and she asks again; nothing is lost. If she still repeats her first speech, a gate is missing.
+4. You land in the **pocket dimension**, the copy of Saffron from [Sabrina's willpower test](05-saffron-cinnabar.md#saffron-gym-sabrinas-willpower-test-and-the-pocket-dimension-before-the-takeover). Go to the house in the south-east, where Mr. Psychic's house stands in the real city, and talk to the caretaker at the back. She gives you the **Sub. Doll** and sends you into the occupied Saffron Gym.
+5. In Saffron, Blue turns up (Bill sent him in through the PC storage system) and the two of you fight off the Rockets together. Blue then suggests sneaking into **Silph Co.**, where their boss and the key to the barrier should be.
+
+**Next:** Silph Co. In Rotom's Room, a glowing floor panel leads on to the hostages' floor ([Rotom's Room](05-saffron-cinnabar.md#rotoms-room-silph-co-change-rotoms-form), [the employee's Lapras](#silph-co-saffron-takeover-the-employees-lapras-missable)). Then go up to Ariana and the [president's office](#silph-co-presidents-office-the-goodshow-meeting-and-the-saffron-takeover-finale). Optional on the way: [help Ma Baoguo](05-saffron-cinnabar.md#saffron-city-takeover-help-ma-baoguo-fight-off-team-rocket) outside the Hunyuan Dojo.
+
+**Notes:** Fly can't get you over the barrier either: Lance says it covers the sky. Read from the game's scripts; the Blue scene in step 5 was also played in an emulator.
+
+*Source:* file 188 (Route 8), script 16 (Sabrina, L618): message 62 while any of flags 1494–1496 is set; message 68 once all three are clear; Yes → L1965 → L2723 `Warp 405` 52,40. If you said No, L1957 clears flag 1504 and the next talk goes to L1792 (message 74). The gate flags are cleared by talking to the people at the gates: file 179 (Route 5, scripts 9/11/13/15/16), file 186 (Route 7, scripts 8/10/12/14), file 184 (Route 6, scripts 10/12/14/16). They're set earlier by the Pokémon Tower ghosts' ideas (file 17 @3333, @5653/@5719, @5852), so they are all set when the takeover starts. Blue's scene: message bank 524, lines 20–44 (the Saffron Pokémon Center, zone 407, coord script 5 of file 827). Emulator (`emu_harness.py guide0107 --case blue_saffron`, both ROMs): run from the trigger tile with a Lv100 lead, TrainerBattle 414 and the two MultiBattles with Blue (385+416+613, 385+614+615) won, lines 20–44 shown (32 and 34 are the female-player versions; the script never prints 24), ending with #44 (Silph Co.).
 
 ## Silph Co. president's office: the Goodshow meeting and the Saffron takeover finale
 

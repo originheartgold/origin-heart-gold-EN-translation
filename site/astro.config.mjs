@@ -40,6 +40,8 @@ export default defineConfig({
           items: [
             { label: "Home", link: "/" },
             { label: "Patch your game", slug: "patch" },
+            { label: "FAQ", slug: "faq" },
+            { label: "Save editor", link: "/save-editor/" },
             { label: "How to use this guide", slug: "about" },
             { label: "Mechanics and controls", slug: "mechanics" },
             { label: "Camera and widescreen codes", slug: "camera-codes" },

@@ -1,26 +1,31 @@
 ---
 import type { Trainer } from '../lib/data';
-import { areaUrl, moveByName, url } from '../lib/data';
+import { areaUrl, itemByName, moveByName, url } from '../lib/data';
 import Mon from './Mon.astro';
 // `area`: on a location page, list only the battles in that area (all of them if none match).
-const { t, showPlaces = false, area } = Astro.props as { t: Trainer; showPlaces?: boolean; area?: string };
+const { t, showPlaces = false, area, note } = Astro.props as { t: Trainer; showPlaces?: boolean; area?: string; note?: string };
 // One line per distinct battle: place, format and (when a scene picks between teams) the condition in words.
 const here = area ? t.places.filter((p) => p.area === area) : [];
 const battles = [...new Map((here.length ? here : t.places).map((p) => [`${p.map}|${p.how}|${p.conds.join('|')}`, p])).values()];
-const ivSet = new Set(t.team.map((m) => m.ivs));
-const showIvs = ivSet.size > 1;
+const ivText = (m: Trainer['team'][number]) => m.hpIvs === m.ivs ? `${m.ivs}` : `${m.hpIvs} HP / ${m.ivs} others`;
 const showEvs = t.team.some((m) => m.evs);
 const EV_STATS = ['HP', 'Atk', 'Def', 'SpA', 'SpD', 'Spe'];
 const evText = (evs: number[] | null) =>
-	evs ? evs.map((v, i) => (v ? `${v} ${EV_STATS[i]}` : '')).filter(Boolean).join(', ') : '—';
+	evs ? evs.map((v, i) => (v ? `${v} ${EV_STATS[i]}` : '')).filter(Boolean).join(', ') : '0';
 const label = `${t.cls} ${t.name}`.trim() || 'Unnamed trainer';
+const partnerOnly = battles.length > 0 && battles.every((p) => p.how.startsWith('your partner'));
+const inactive = battles.length > 0 && battles.every((p) => p.conds.length > 0 && p.conds.every((c) => c.startsWith('never ')));
 ---
 <details class="trainer" id={`trainer-${t.id}`}>
 	<summary>
 		<span class="trainer-name">{label}</span>
 		<span class="trainer-team">{t.team.map((m) => `${m.name} ${m.level}`).join(' · ')}</span>
-		{t.double && <span class="tag">Double</span>}
+		{partnerOnly && <span class="tag">Partner</span>}
+		{inactive && <span class="tag">Inactive scene</span>}
+		{!battles.length && <span class="tag">Encounter unconfirmed</span>}
 	</summary>
+	{(note || t.note) && <p class="small">{note || t.note}</p>}
+	{!battles.length && <p class="small">No map or story encounter has been identified for this stored team. Its availability is unconfirmed; facility battles may select a different team.</p>}
 	{battles.length > 0 && (
 		<ul class="small trainer-battles">
 			{battles.map((p) => (
@@ -33,24 +38,26 @@ const label = `${t.cls} ${t.name}`.trim() || 'Unnamed trainer';
 	)}
 	{t.items.length > 0 && <p class="small">Uses items: {t.items.join(', ')}</p>}
 	<table class="compact">
-		<thead><tr><th>Pokémon</th><th>Lv</th><th>Ability</th><th>Item</th><th>Nature</th>{showIvs && <th>IVs</th>}{showEvs && <th>EVs</th>}<th>Moves</th></tr></thead>
+		<thead><tr><th>Pokémon</th><th>Lv</th><th>Ability</th><th>Item</th><th>Nature</th><th>IVs</th>{showEvs && <th>EVs</th>}<th>Moves</th></tr></thead>
 		<tbody>
 			{t.team.map((m) => (
 				<tr>
 					<td><Mon id={m.id} name={m.name} /></td>
 					<td>{m.level}</td>
-					<td>{m.ability ?? '—'}</td>
-					<td>{m.item ?? '—'}</td>
-					<td>{m.nature ?? '—'}</td>
-					{showIvs && <td>{m.ivs}</td>}
+					<td>{m.ability ?? (m.id ? 'Species default' : '—')}</td>
+					<td>{m.item && itemByName.has(m.item) ? <a href={url(`/items/${itemByName.get(m.item)!.slug}/`)}>{m.item}</a> : (m.item ?? '—')}</td>
+					<td>{m.nature ?? (m.id ? 'Generated' : '—')}</td>
+					<td>{ivText(m)}</td>
 					{showEvs && <td>{evText(m.evs)}</td>}
 					<td>{m.moves.length ? m.moves.map((mv, i) => {
 						const mm = moveByName.get(mv);
 						return <>{i > 0 && ', '}{mm ? <a href={url(`/moves/#move-${mm.id}`)}>{mv}</a> : mv}</>;
-					}) : <em>level-up moves</em>}</td>
+						}) : <em>{m.id ? 'level-up moves' : '—'}</em>}</td>
 				</tr>
 			))}
 		</tbody>
 	</table>
-	<p class="small muted">{showIvs ? 'IVs per Pokémon (the same in every stat)' : `IVs ${t.team[0]?.ivs ?? '?'} in every stat`} · trainer #{t.id}</p>
+	<p class="small muted">IVs show HP separately when it differs; “others” means each of the other five stats.
+		{!showEvs && ' No EV investment.'} “Generated” means no fixed nature is stored.</p>
+	<p class="tech" data-pagefind-ignore="all">Trainer #{t.id}</p>
 </details>
