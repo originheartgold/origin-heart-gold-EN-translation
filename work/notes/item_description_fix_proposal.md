@@ -18,7 +18,7 @@ A 128-unit allocation fits every current description and adds 28 bytes to each
 affected allocation. It preserves the translations and the bounded-copy
 check. It is an English-required capacity change, consistent with D-1002.
 
-The proposed bag entry for `work/translate/hardcoded/code_patches.json` is below.
+The proposed bag entry is below, as a `[[code]]` entry for a new fix folder (`work/patches/<fix-id>/fix.toml`; written when the registry was `code_patches.json`).
 Equivalent guarded entries are needed at overlay 3 address `0x02259B34`
 (shop, heap 11) and overlay 9 address `0x021EC12A` (dynamic heap).
 A bag-only change would leave two affected consumers.
@@ -32,16 +32,14 @@ A bag-only change would leave two affected consumers.
 These use the patch file's halfword notation. The corresponding first two bytes
 change from `72 20` to `80 20`; the surrounding instructions remain identical.
 
-```json
-{
-  "id": "bag-description-capacity",
-  "file": "overlay17",
-  "offset": "0x51EE",
-  "expect": "2072 2106 F628 FFC7",
-  "value": "2080 2106 F628 FFC7",
-  "enabled": true,
-  "notes": "Bag item-description String: capacity 114 -> 128 stored units, including terminator; maximum current English description is 120. Guard the heap-6 argument and String_New call; leave the separate formatted-menu allocation unchanged."
-}
+```toml
+[[code]]
+id = "bag-description-capacity"
+file = "overlay17"
+offset = "0x51EE"
+expect = "2072 2106 F628 FFC7"
+value = "2080 2106 F628 FFC7"
+notes = "Bag item-description String: capacity 114 -> 128 stored units, including terminator; maximum current English description is 120. Guard the heap-6 argument and String_New call; leave the separate formatted-menu allocation unchanged."
 ```
 
 Only the first halfword changes: `movs r0, #114` becomes `movs r0, #128` at

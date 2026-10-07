@@ -15,7 +15,7 @@ Cannot find a Pokémon? Check the [full reference](https://originheartgold.githu
 
 ## How it works
 
-The translation lives as JSON files in `work/translate/banks/`: one file per message bank, holding the Chinese source and the English for each string. Python tools in `work/tools/` check the text against the DS text boxes, wrap lines, record naming decisions, and build the ROM and patch. See [CONTRIBUTING.md](CONTRIBUTING.md) to help out.
+The translation lives as JSON files in `work/translate/banks/`: one file per message bank, holding the Chinese source and the English for each string. Python tools in `work/tools/` check the text against the DS text boxes, wrap lines, record naming decisions, and build the ROM and patch. Every other change to the Chinese ROM (graphics, font glyphs, code patches) is a documented fix in `work/patches/` ([FIXES.md](work/patches/FIXES.md)). See [CONTRIBUTING.md](CONTRIBUTING.md) to help out.
 
 Most of the first-draft English was written by AI agents working from the Chinese, following [the style guide](work/translate/STYLE.md) and [AGENTS.md](AGENTS.md). Humans review it. Official US HeartGold text is reused wherever the hack didn't change a line.
 

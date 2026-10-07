@@ -124,7 +124,8 @@ def assess_record(original, units, ref, contracts, bounds=None, exceptions=None)
 
 
 def inspect_hardcoded_workspace(cm, contracts):
-    document = json.loads((Path(__file__).resolve().parents[1]/'translate/hardcoded/strings.json').read_text())
+    import hardcoded
+    document = hardcoded.load()  # [[string]] entries of the enabled fixes in work/patches
     rows, errors = [], []
     expected = {c['id']: c for c in contracts if c.get('bank') == 'hardcoded'}
     ids = [e.get('id') for e in document['strings']]

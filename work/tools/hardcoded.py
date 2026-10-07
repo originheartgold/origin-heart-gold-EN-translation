@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """hardcoded - Chinese strings stored outside the message NARCs (arm9, overlays, other ROM files).
 
-Source of truth: work/translate/hardcoded/strings.json (translator-editable) and
-work/translate/hardcoded/code_patches.json (16-bit code/data patches: name-length limits, the English
-naming keyboard). Each patch checks the current halfword(s) ('expect') before writing 'value'; both are one
-halfword ("0x2305") or a run of halfwords ("01DE 012B ...").
-Notes: work/notes/hardcoded_text.md.
+Source of truth: the fix registry work/patches/<fix-id>/fix.toml, read through fixes.py: the [[string]]
+entries and [string_files] of kind-'strings' fixes (outfit-chooser-strings), and the [[code]] entries
+(16-bit code/data patches: name-length limits, the English naming keyboard, heap fixes ...). Each code patch
+checks the current halfword(s) ('expect') before writing 'value'; both are one halfword ("0x2305") or a run
+of halfwords ("01DE 012B ..."). A code patch is applied when its fix is enabled (or selected with
+build.py --only / --without). Notes: work/notes/hardcoded_text.md; overview: work/patches/FIXES.md.
 
-strings.json entries
+[[string]] entries
     id          "<file>:<offset>"  e.g. "overlay58:0x6F0"
     file        "arm9" | "overlayNN" | a ROM path ("a/0/4/1") | "path#member" (NARC member)
     offset      hex offset of the string inside that file (overlay/arm9: offset in the RAM image)
@@ -23,12 +24,13 @@ strings.json entries
 Writing rules (apply()):
   * len(en) <= max_units            -> written in place; the rest of the slot is filled with 0xFFFF.
   * else, pointers + reloc_max_units and the file is an uncompressed overlay with "grow_max" set in
-    strings.json "files": the string is appended to the overlay (the overlay grows; its y9 ramSize is
+    its fix's [string_files.<file>]: the string is appended to the overlay (the overlay grows; its y9 ramSize is
     updated) and every pointer is repointed; the old slot is filled with 0xFFFF. Refused if the overlay has
     .bss, if the growth passes grow_max, or if another overlay starts inside the grown range.
   * anything else is refused (SystemExit with the list of problems).
 
-    python3 work/tools/hardcoded.py check [--rom ROM]       # dry run against the Chinese ROM
+    python3 work/tools/hardcoded.py check [--rom ROM] [--only IDS] [--without IDS]
+                                                             # dry run against the Chinese ROM
     python3 work/tools/hardcoded.py list                     # table of entries and status
     python3 work/tools/hardcoded.py scan ROM [--base US_ROM] [--all-files]
                                                              # look for hack-charmap Chinese outside the
@@ -49,10 +51,9 @@ TOOLS = Path(__file__).resolve().parent
 WORK = TOOLS.parent
 sys.path.insert(0, str(TOOLS))
 
+import fixes as fixreg  # noqa: E402
 import msgtool as m  # noqa: E402
 
-STRINGS_JSON = WORK / "translate" / "hardcoded" / "strings.json"
-CODE_PATCHES_JSON = WORK / "translate" / "hardcoded" / "code_patches.json"
 CHARMAPS = [str(TOOLS / "charmap_en.tsv"), str(TOOLS / "charmaps" / "charmap_zh_xzonn_gen4.tsv")]
 ZH_CHARMAP = str(TOOLS / "charmaps" / "charmap_zh_xzonn_gen4.tsv")
 EXCLUDED = ("a/0/2/7", "battle/string/battle_string.narc")
@@ -67,32 +68,29 @@ def _int(v) -> int:
     return v if isinstance(v, int) else int(str(v), 0)
 
 
-def load(path=STRINGS_JSON) -> dict:
-    return json.loads(Path(path).read_text(encoding="utf-8"))
+def load(fixes=None) -> dict:
+    """The hardcoded-strings document {"files": {...}, "strings": [...]}: from the given active fixes, else
+    from every enabled fix in work/patches."""
+    if fixes is None:
+        fixes = [f for f in fixreg.load_all() if f.get("enabled")]
+    return fixreg.strings_config(fixes)
 
 
-def halfwords(v) -> list:
-    """A code-patch 'expect'/'value': one halfword ("0x2305" or an int) or a run of halfwords
-    ("01DE 012B ..." hex without 0x, or a list of such values)."""
-    if isinstance(v, int):
-        return [v]
-    if isinstance(v, list):
-        return [_int(x) if isinstance(x, int) or str(x).startswith("0x") else int(str(x), 16) for x in v]
-    s = str(v).strip()
-    if " " in s:
-        return [int(x, 16) for x in s.split()]
-    return [_int(s)]
+# expect/value parsing: one definition, shared with the registry's validation
+halfwords = fixreg.halfwords
 
 
 def _hw_str(units) -> str:
     return hex(units[0]) if len(units) == 1 else " ".join(f"{u:04X}" for u in units)
 
 
-def load_code_patches(path=CODE_PATCHES_JSON) -> list:
-    p = Path(path)
-    if not p.exists():
-        return []
-    return json.loads(p.read_text(encoding="utf-8")).get("patches", [])
+def load_code_patches(fixes=None) -> list:
+    """[[code]] entries as a flat list: the entry's fields plus "enabled" and "fix" (the fix id).
+    fixes=None: every fix in work/patches, "enabled" = the fix's enabled flag. fixes = a build's selection:
+    only those fixes, all enabled."""
+    if fixes is None:
+        return fixreg.code_entries(fixreg.load_all())
+    return fixreg.code_entries(fixes, all_enabled=True)
 
 
 # --------------------------------------------------------------------------------------
@@ -306,7 +304,7 @@ def apply(rom, cm=None, cfg=None, code_patches=None, dry_run=False):
         struct.pack_into(f"<{len(new)}H", data, off, *new)
         writes[key] = bytes(data)
         patch_rows.append({"id": cp["id"], "file": key, "offset": hex(off), "old": _hw_str(want),
-                           "new": _hw_str(new)})
+                           "new": _hw_str(new), **({"fix": cp["fix"]} if "fix" in cp else {})})
     if problems:
         raise HardcodedError("hardcoded strings refused:\n  " + "\n  ".join(problems))
     if not dry_run:
@@ -461,6 +459,8 @@ def main(argv=None):
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("check", help="dry-run apply against the Chinese ROM")
     p.add_argument("--rom", default=str(WORK / "rom" / "origin_v4.0.3_cn.nds"))
+    p.add_argument("--only", help="comma-separated fix ids (default: every enabled fix)")
+    p.add_argument("--without", help="comma-separated fix ids to leave out")
     sub.add_parser("list")
     p = sub.add_parser("scan")
     p.add_argument("rom")
@@ -468,12 +468,18 @@ def main(argv=None):
     p.add_argument("--code-only", action="store_true", help="arm9 and overlays only")
     a = ap.parse_args(argv)
     if a.cmd == "check":
-        rep = apply(m.load_rom(a.rom), dry_run=True)
+        try:
+            act = fixreg.active_fixes(a.only, a.without)
+        except fixreg.FixError as ex:
+            sys.exit(str(ex))
+        rep = apply(m.load_rom(a.rom), cfg=load(fixes=act), code_patches=load_code_patches(fixes=act),
+                    dry_run=True)
         for r in rep["strings"]:
             print(f"  {r['id']:20s} {r['mode']:9s} -> {r['addr']:#x}  {r['en']!r}")
         for r in rep["code_patches"]:
             print(f"  code patch {r['id']}: {r['file']}+{r['offset']} {r['old']} -> {r['new']}")
-        print(f"ok: {len(rep['strings'])} strings would be written, {rep['todo']} still untranslated")
+        print(f"ok: {len(rep['strings'])} strings would be written, {rep['todo']} still untranslated; "
+              f"{len(rep['code_patches'])} code patches")
     elif a.cmd == "list":
         for e in load()["strings"]:
             st = "todo" if not e.get("en") else "set"

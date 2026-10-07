@@ -2,19 +2,23 @@
 """build - build the English WIP ROM of 起源心金 (Origin HeartGold v4.0.3) and its xdelta patch.
 
 Pipeline
+  0. fixes    fixes.py: load work/patches/<fix-id>/fix.toml (every change to the Chinese ROM besides the
+              message text; overview work/patches/FIXES.md), validate it and select the enabled fixes
+              (--only / --without; a selected fix whose `requires` is not selected stops the build);
+              work/patches/overlays.toml is checked against the ROM's overlay table in stage 2
   1. export   ws.export(): workspace (statuses tm,draft,reviewed by default) -> work/build/export/<narc>/;
               banks in qa_config.json "compressed_banks" (trainer names a027/0719) are written
               {COMPRESSED} like US 0729, so 8-10 character names fit the battle's u16[8] (D-1326)
   2. insert   msgtool: rebuild a/0/2/7 and battle/string/battle_string.narc from the export into a copy
               of work/rom/origin_v4.0.3_cn.nds (charmaps: charmap_en.tsv + Xzonn zh table, so the
               remaining Chinese strings still encode)
-  3. glyphs   restore … “ ” (codes 0x01AF, 0x01B4, 0x01B5) in font NARC a/0/1/6 files 0/1/2/4 from the
-              USA ROM's font (glyph bitmap + width-table byte); the hack drew them 12/13 px wide
+  3. glyphs   fix font-glyphs: restore … “ ” (codes 0x01AF, 0x01B4, 0x01B5) in font NARC a/0/1/6 files
+              0/1/2/4 from the USA ROM's font (glyph bitmap + width-table byte); the hack drew them 12/13 px wide
   3a. regen   gfx.regenerate(): run every `gfx.py make-*` generator from the two ROMs into work/graphics
               (generated/*.bin, weather_en/*.png, dex_type_list_en.png, naming_labels_en.png). These
               files hold Nintendo / hack art, so they are git-ignored; the generators are deterministic,
               so a fresh clone builds the same ROM and patch
-  3b. graphics  gfx.apply_patches(): work/graphics/patches.json - restore English graphics from the USA
+  3b. graphics  gfx.apply_patches(): the gfx-* fixes' [[graphics]] entries - restore English graphics from the USA
               ROM (type/contest icons, Pokedex type badges, summary labels, YES/NO buttons, Pokegear,
               bag, Pokeathlon SWITCH), hg-engine FAIRY icons and weather letters, PNG-built sheets
               (naming keyboard, weather banners), generated members (Pokedex header/buttons,
@@ -22,11 +26,11 @@ Pipeline
               USA tile data inside code
               (battle HP-box status icons, overlay 14) - see
               work/notes/graphics_inventory.md
-  3c. hardcoded  hardcoded.apply(): work/translate/hardcoded/strings.json - English for Chinese strings that
+  3c. hardcoded  hardcoded.apply(): fix outfit-chooser-strings ([[string]]) - English for Chinese strings that
               live outside the message NARCs (overlay 58 outfit chooser); written in place when they fit,
-              otherwise appended to the overlay and repointed; refuses anything that does not fit. Also the
-              enabled entries of code_patches.json (name-length limits, English naming keyboard) - see
-              work/notes/hardcoded_text.md
+              otherwise appended to the overlay and repointed; refuses anything that does not fit. Then the
+              [[code]] entries of the selected code/data fixes (namelen, naming-keyboard, msgload,
+              pcbox-name-width, ivev-panel) - see work/notes/hardcoded_text.md
   4. write    work/build/origin_hg_v4.0.3_en_wip.nds
   5. verify   re-open with ndspy; message NARCs parse and round-trip (container rebuild byte-identical,
               every bank decodes and re-encodes identically, the exported text is what the ROM holds);
@@ -38,8 +42,12 @@ Pipeline
 
 Usage
   python3 work/tools/build.py [--status tm,draft,reviewed] [--no-patch] [--lenient]
+                              [--only FIX,...] [--without FIX,...]
                               [--glyph-fonts 0,1,2,4] [--no-graphics] [--no-regen-graphics]
                               [--no-hardcoded] [--keep-export]
+  --only/--without take fix ids (python3 work/tools/fixes.py list). --no-glyphs, --no-graphics and
+  --no-hardcoded leave out every fix of kind font / graphics / strings+code+data; `requires` still holds,
+  so e.g. --no-hardcoded alone is refused (gfx-naming-tabs requires naming-keyboard).
 Nothing is uploaded anywhere; all outputs stay in work/build/.
 """
 from __future__ import annotations
@@ -59,6 +67,7 @@ TOOLS = Path(__file__).resolve().parent
 WORK = TOOLS.parent
 sys.path.insert(0, str(TOOLS))
 
+import fixes as fixreg  # noqa: E402
 import gfx  # noqa: E402
 import hardcoded  # noqa: E402
 import msgtool as m  # noqa: E402
@@ -72,7 +81,6 @@ OUT_ROM = BUILD / "origin_hg_v4.0.3_en_wip.nds"
 OUT_PATCH = BUILD / "Origin_HeartGold_v4.0.3_EN_wip.xdelta"
 CHARMAPS = [str(TOOLS / "charmap_en.tsv"), str(TOOLS / "charmaps" / "charmap_zh_xzonn_gen4.tsv")]
 NARCS = {"a027": m.MSG_NARC_PATH, "battle_string": "battle/string/battle_string.narc"}
-GLYPH_CODES = (0x01AF, 0x01B4, 0x01B5)          # … “ ”
 US_SHA1 = "4fcded0e2713dc03929845de631d0932ea2b5a37"
 
 
@@ -97,8 +105,25 @@ def _font_hdr(data: bytes):
     return hs, wo, cnt, 16 * tw * th
 
 
-def restore_glyphs(font_narc: bytes, us_font_narc: bytes, fonts=(0, 1, 2, 4), codes=GLYPH_CODES):
-    """Copy glyph bitmaps + widths for `codes` from the US font files into the hack's font files."""
+def glyph_spec(fixes=None):
+    """(fonts, codes) of the font fixes (default: every enabled fix), or ((), ()) when none is selected."""
+    if fixes is None:
+        fixes = [f for f in fixreg.load_all() if f.get("enabled")]
+    spec = fixreg.font_spec(fixes)
+    if spec is None:
+        return (), ()
+    narc, fonts, codes = spec
+    assert narc == m.FONT_NARC_PATH, f"font fix targets {narc}, the build restores {m.FONT_NARC_PATH}"
+    return fonts, codes
+
+
+def restore_glyphs(font_narc: bytes, us_font_narc: bytes, fonts=None, codes=None):
+    """Copy glyph bitmaps + widths for `codes` from the US font files into the hack's font files.
+    fonts/codes default to the enabled font fix (font-glyphs: … “ ” in fonts 0/1/2/4)."""
+    if fonts is None or codes is None:
+        f, c = glyph_spec()
+        fonts = f if fonts is None else fonts
+        codes = c if codes is None else codes
     narc = m.Narc.parse(font_narc)
     us = m.Narc.parse(us_font_narc)
     files = list(narc.files)
@@ -146,7 +171,8 @@ def verify_name_bank(data: bytes, spec: dict) -> str:
     return f"ok ({n_comp} compressed, {n_plain} plain, all fit u16[{spec['max_units']}])"
 
 
-def verify_rom(out_rom: Path, export_dir: Path, us_font_narc: bytes, fonts, cm, gfx_report=(), hc_report=None):
+def verify_rom(out_rom: Path, export_dir: Path, us_font_narc: bytes, fonts, cm, gfx_report=(), hc_report=None,
+               glyph_codes=None):
     import ndspy.rom
     rom = ndspy.rom.NintendoDSRom.fromFile(str(out_rom))
     res = {"title": rom.name.decode("ascii", "replace"), "code": bytes(rom.idCode).decode("ascii", "replace"),
@@ -176,13 +202,15 @@ def verify_rom(out_rom: Path, export_dir: Path, us_font_narc: bytes, fonts, cm, 
             spec = tm.compressed_spec(narc_key, bi)
             if spec is not None:
                 res[f"{narc_key}/{bi:04d}"] = verify_name_bank(data, spec)
+    if glyph_codes is None:
+        glyph_codes = glyph_spec()[1]
     font = m.Narc.parse(m.get_file(rom, m.FONT_NARC_PATH))
     us = m.Narc.parse(us_font_narc)
     for fi in fonts:
         d, u = font.files[fi], us.files[fi]
         hs, wo, _, gsz = _font_hdr(d)
         uhs, uwo, _, _ = _font_hdr(u)
-        for c in GLYPH_CODES:
+        for c in glyph_codes:
             assert d[hs + (c - 1) * gsz: hs + c * gsz] == u[uhs + (c - 1) * gsz: uhs + c * gsz]
             assert d[wo + c - 1] == u[uwo + c - 1]
     res["glyphs"] = "ok"
@@ -224,12 +252,16 @@ def main(argv=None):
     ap.add_argument("--work-dir", default=str(BUILD), help="Directory for export, build report and patch verification scratch files")
     ap.add_argument("--out", help="ROM output (default: selected work directory / standard ROM filename)")
     ap.add_argument("--patch", help="Patch output (default: selected work directory / standard patch filename)")
-    ap.add_argument("--glyph-fonts", default="0,1,2,4")
-    ap.add_argument("--no-glyphs", action="store_true")
-    ap.add_argument("--no-graphics", action="store_true", help="skip the graphics_patches stage")
+    ap.add_argument("--only", help="build with exactly these fixes (comma-separated ids, see fixes.py list); "
+                                   "a disabled fix named here is applied too")
+    ap.add_argument("--without", help="leave out these fixes (comma-separated ids)")
+    ap.add_argument("--glyph-fonts", default=None, help="font files for the font fix (default: from the fix, 0,1,2,4)")
+    ap.add_argument("--no-glyphs", action="store_true", help="leave out every font fix")
+    ap.add_argument("--no-graphics", action="store_true", help="leave out every graphics fix")
     ap.add_argument("--no-regen-graphics", action="store_true",
                     help="use the generated graphics already in work/graphics instead of rebuilding them")
-    ap.add_argument("--no-hardcoded", action="store_true", help="skip the hardcoded-strings stage")
+    ap.add_argument("--no-hardcoded", action="store_true",
+                    help="leave out every strings, code and data fix (hardcoded stage)")
     ap.add_argument("--no-patch", action="store_true")
     ap.add_argument("--no-verify", action="store_true")
     ap.add_argument("--lenient", action="store_true", help="unencodable en falls back to zh instead of failing")
@@ -240,8 +272,22 @@ def main(argv=None):
     out_rom, patch, base = paths["rom"], paths["patch"], Path(a.base)
     paths["work"].mkdir(parents=True, exist_ok=True)
     statuses = tuple(s.strip() for s in a.status.split(",") if s.strip())
-    fonts = tuple(int(x) for x in a.glyph_fonts.split(",")) if not a.no_glyphs else ()
     report = {"statuses": statuses}
+
+    # 0. fixes: everything the build changes besides the message text
+    without_kinds = (("font",) if a.no_glyphs else ()) + (("graphics",) if a.no_graphics else ()) + \
+        (("strings", "code", "data") if a.no_hardcoded else ())
+    try:
+        active = fixreg.active_fixes(a.only, a.without, without_kinds)
+    except fixreg.FixError as ex:
+        sys.exit(str(ex))
+    kinds = {f["kind"] for f in active}
+    fonts, glyph_codes = glyph_spec(active)
+    if a.glyph_fonts is not None and fonts:
+        fonts = tuple(int(x) for x in a.glyph_fonts.split(","))
+    report["fixes"] = {"only": a.only, "without": a.without, "without_kinds": list(without_kinds),
+                       "applied": [f["id"] for f in active]}
+    log(f"fixes: {len(active)} selected: {', '.join(f['id'] for f in active)}")
 
     # 1. export
     export_dir = paths["export"]
@@ -265,6 +311,10 @@ def main(argv=None):
     cm = m.Charmap.load(CHARMAPS)
     log(f"load {a.rom}")
     rom = m.load_rom(a.rom)
+    try:
+        fixreg.check_overlay_bases(rom)
+    except fixreg.FixError as ex:
+        sys.exit(str(ex))
     for narc_key, path in NARCS.items():
         tmpl = m.Narc.parse(m.get_file(rom, path))
         narc = m.build_msg_narc(tmpl, export_dir / narc_key, cm)
@@ -276,35 +326,37 @@ def main(argv=None):
     us_font = m.get_file(us_rom, m.FONT_NARC_PATH)
     del us_rom
     if fonts:
-        new_font, changes = restore_glyphs(m.get_file(rom, m.FONT_NARC_PATH), us_font, fonts)
+        new_font, changes = restore_glyphs(m.get_file(rom, m.FONT_NARC_PATH), us_font, fonts, glyph_codes)
         m.set_file(rom, m.FONT_NARC_PATH, new_font)
         report["glyphs"] = [{"font": f, "code": "%04X" % c, "width": [wo, wn], "bitmap_changed": ch}
                             for f, c, wo, wn, ch in changes]
         log("glyphs restored: " + ", ".join(f"f{f}:{c:04X} {wo}->{wn}px" for f, c, wo, wn, _ in changes))
 
     # 3a. regenerate the git-ignored generated graphics from the ROMs
-    if not a.no_graphics and not a.no_regen_graphics:
+    if "graphics" in kinds and not a.no_regen_graphics:
         written = gfx.regenerate(a.rom, base, log=log)
         report["graphics_regenerated"] = {str(p.relative_to(gfx.GRAPHICS)): sha1(p) for p in written}
         log(f"graphics regenerated: {len(written)} files in {gfx.GRAPHICS}")
 
     # 3b. graphics
     gfx_report = []
-    if not a.no_graphics:
+    if "graphics" in kinds:
         us_rom = m.load_rom(base)
         gfx_report = gfx.apply_patches(lambda p: m.get_file(rom, p), lambda p, b: m.set_file(rom, p, b),
-                                       lambda p: m.get_file(us_rom, p),
-                                       code=gfx.CodeView(rom), us_code=gfx.CodeView(us_rom))
+                                       lambda p: m.get_file(us_rom, p), manifest=gfx.load_manifest(fixes=active),
+                                       code=gfx.CodeView(rom), us_code=gfx.CodeView(us_rom), check_layout=True)
         del us_rom
         report["graphics"] = gfx_report
         log(f"graphics: {sum('code' not in r for r in gfx_report)} NARC members and "
-            f"{sum('code' in r for r in gfx_report)} code ranges patched from {gfx.PATCHES}")
+            f"{sum('code' in r for r in gfx_report)} code ranges patched by "
+            f"{len({r.get('fix') for r in gfx_report})} graphics fixes")
 
     # 3c. hardcoded strings (outside the message NARCs)
     hc_report = None
-    if not a.no_hardcoded:
+    if kinds & {"strings", "code", "data"}:
         try:
-            hc_report = hardcoded.apply(rom, cm)
+            hc_report = hardcoded.apply(rom, cm, cfg=hardcoded.load(fixes=active),
+                                        code_patches=hardcoded.load_code_patches(fixes=active))
         except hardcoded.HardcodedError as ex:
             sys.exit(str(ex))
         report["hardcoded"] = hc_report
@@ -322,7 +374,8 @@ def main(argv=None):
     # 5. verify
     if not a.no_verify:
         log("verify: ndspy parse, NARC round-trip, text == export, glyphs, graphics, hardcoded")
-        report["verify"] = verify_rom(out_rom, export_dir, us_font, fonts, cm, gfx_report, hc_report)
+        report["verify"] = verify_rom(out_rom, export_dir, us_font, fonts, cm, gfx_report, hc_report,
+                                      glyph_codes)
         log(f"verify ok: {report['verify']}")
 
     # 6. patch

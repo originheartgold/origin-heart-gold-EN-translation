@@ -71,7 +71,8 @@ def check(a, export_fn=None, verify_fn=None):
         report["verification_inputs"] = {
             str(path.relative_to(build.WORK)): hashes(path)
             for path in (Path(__file__), build.TOOLS / "build.py", build.TOOLS / "ws.py",
-                         build.TOOLS / "gfx.py", build.TOOLS / "hardcoded.py",
+                         build.TOOLS / "gfx.py", build.TOOLS / "hardcoded.py", build.TOOLS / "fixes.py",
+                         *sorted((build.WORK / "patches").glob("*/fix.toml")),
                          build.TOOLS / "qa_config.json", build.TOOLS / "charmap_en.tsv",
                          build.TOOLS / "charmaps" / "charmap_zh_xzonn_gen4.tsv",
                          build.WORK / "graphics" / "layout_checks.json")}
@@ -92,11 +93,13 @@ def check(a, export_fn=None, verify_fn=None):
         base = msgtool.load_rom(a.base)
         font = msgtool.get_file(base, msgtool.FONT_NARC_PATH)
         fonts = sorted({row["font"] for row in prior["glyphs"]})
+        # the glyph codes the build restored (None: the enabled font fix's codes)
+        glyph_codes = tuple(sorted({int(row["code"], 16) for row in prior["glyphs"] if "code" in row})) or None
         if not fonts or not prior["graphics"] or not prior["hardcoded"]:
             report.update(status="incomplete", reason="empty verification metadata for glyphs, graphics or hardcoded patches")
             return report
         report["verification"] = verify_fn(a.rom, a.output / "export", font, fonts, cm,
-                                            prior["graphics"], prior["hardcoded"])
+                                            prior["graphics"], prior["hardcoded"], glyph_codes)
         report["checks"]["artifact"] = "passed"
         # Detect edits while verification was running.
         for name in ("rom", "base", "build_report"):

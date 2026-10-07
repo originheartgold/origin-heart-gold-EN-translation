@@ -1,0 +1,41 @@
+id = "ivev-panel"
+title = "Summary IV/EV panel: the IV column clears the English stat labels"
+kind = "code"
+enabled = true
+decisions = ["D-1574"]
+requires = []
+why = """
+Players: on the summary stats page, L opens the hack's IV/EV panel. The English stat labels run into the IV
+column: 'Sp. Atk' covers the first digit (an IV of 31 reads '81') and 'Attack' touches it. The Chinese labels
+are two characters and leave room.
+
+Technical: the panel is drawn by the hack's arm9 routine 0x0208C1A8 (called only from the summary screen).
+It prints the IV numbers right-aligned by 0x0208C154 at x = r2 + 24 with r2 = 0x1A, so their right edge is at
+x 50; the widest English label 'Defense' is 41 px.
+"""
+what = """
+Old: IV numbers end at x 50, the 'IVs' header starts at x 0x22.
+New: 'movs r2, #0x1A' -> 'movs r2, #0x20' at 0x0208C262 moves the IV column 6 px right (two-digit IVs clear
+'Defense' by 3 px), and 'movs r3, #0x22' -> '#0x28' at 0x0208C1E2 moves the 'IVs' header with it. The labels
+(0295 #110-115) and the EV column (r2 = 0x40) are unchanged.
+"""
+evidence = [
+  "D-1574: emu_harness.py vqueue --case buttons, work/build/harness/verifyqueue/en/buttons_m*_L.png (local)",
+  "git c7d2c29 'Code: summary IV/EV panel IV column clears the English stat labels (D-1574)'",
+]
+
+[[code]]
+id = "ivev-panel-iv-x"
+file = "arm9"
+offset = "0x8C262"
+expect = "0x221A"
+value = "0x2220"
+notes = "Summary IV/EV panel (L on the stats page; the hack's draw routine at 0x0208C1A8, called only from the summary screen at 0x02087EDC, 0x02088130, 0x02089744) (D-1574): the IV numbers are printed right-aligned by 0x0208C154 at x = r2 + 24; 'movs r2, #0x1A' -> 'movs r2, #0x20' moves the IV column 6 px right so two-digit IVs clear the widest label 'Defense' (41 px) by 3 px. The labels (0295 #110-115, shared with the stats page) and the EV column (r2 = 0x40 at 0x0208C278) are unchanged."
+
+[[code]]
+id = "ivev-panel-iv-header-x"
+file = "arm9"
+offset = "0x8C1E2"
+expect = "0x2322"
+value = "0x2328"
+notes = "Summary IV/EV panel (D-1574), same routine: the 'IVs' header (0295 #195) printed at x 0x22 -> 0x28 ('movs r3, #0x22' -> 'movs r3, #0x28'), 6 px right with the IV numbers so it stays above them; the 'EVs' header (x 0x43 at 0x0208C210) is unchanged."

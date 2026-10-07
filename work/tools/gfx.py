@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """gfx - Nitro 2D graphics helpers and the graphics-patch stage for the English build.
 
-Formats handled (enough for the patches in work/graphics/patches.json):
+Formats handled (enough for the [[graphics]] entries of the fixes in work/patches/):
   NCGR (RGCN) 4bpp/8bpp character data, NCLR (RLCN) palettes, NSCR (RCSN) screens,
   LZ10 (0x10) / LZ11 (0x11) compressed NARC members.
 
 The build (work/tools/build.py, stage "graphics") calls apply_patches(); nothing here edits a ROM
-in place. Every patch is data: work/graphics/patches.json plus the files it names.
+in place. Every patch is data: the [[graphics]] entries of the kind-'graphics' fixes in
+work/patches/<fix-id>/fix.toml (read through fixes.py; build.py applies the enabled ones, or the
+--only/--without selection) plus the files they name. Overview: work/patches/FIXES.md.
 
-Patch operations (patches.json, list of objects):
+Patch operations (one [[graphics]] table each; shown here as JSON objects):
   {"op": "copy_us", "narc": "a/0/0/8", "members": [219, ...], "also": [<more NARC paths>]}
         replace the member with the USA ROM's member of the same NARC index (bytes as-is).
         Checks: both are NCGR, same bpp and tile count, same compression.
@@ -51,7 +53,7 @@ CLI
         regenerate the naming-keyboard tab/button labels (data/namein.narc #10 tiles 0..207)
   python3 work/tools/gfx.py make-dex-labels [--out work/graphics/generated]
         regenerate the English Pokedex header/button members (a/0/6/8 #1 #4 and their screens);
-        prints the matching member_from_file manifest entries
+        prints the matching member_from_file [[graphics]] entry (TOML, for work/patches/gfx-dex-header/fix.toml)
   python3 work/tools/gfx.py make-title-subtitle [--out work/graphics/generated]
         regenerate the optional bilingual title subtitle (a/2/6/4 #0 #3 #8)
   python3 work/tools/gfx.py make-weather-banners [--hge DIR] [--out work/graphics/weather_en]
@@ -87,10 +89,10 @@ from pathlib import Path
 TOOLS = Path(__file__).resolve().parent
 WORK = TOOLS.parent
 GRAPHICS = WORK / "graphics"
-PATCHES = GRAPHICS / "patches.json"
 LAYOUTS = GRAPHICS / "layout_checks.json"
 sys.path.insert(0, str(TOOLS))
 
+import fixes as fixreg  # noqa: E402
 import msgtool as m  # noqa: E402
 
 ROM_CN = WORK / "rom" / "origin_v4.0.3_cn.nds"
@@ -478,8 +480,12 @@ def render_screen(sc: NSCR, g: NCGR, pal=None):
 # patches
 # ---------------------------------------------------------------------------------------------
 
-def load_manifest(path=PATCHES):
-    return json.loads(Path(path).read_text(encoding="utf-8"))
+def load_manifest(fixes=None):
+    """The graphics operations to apply, in order: the [[graphics]] entries of the given active fixes, else
+    of every enabled fix in work/patches (each op carries "fix" = its fix id)."""
+    if fixes is None:
+        fixes = [f for f in fixreg.load_all() if f.get("enabled")]
+    return fixreg.graphics_manifest(fixes)
 
 
 def validate_member_layout(before, after, label):
@@ -748,7 +754,7 @@ def _apply_code_op(op, code, us_code):
     cur[off:off + n] = us
     code.set(op["file"], bytes(cur))
     return {"code": op["file"], "offset": off, "length": n, "op": op["op"], "src": "usa " + op["us_file"],
-            "note": op.get("note", ""), "sha1": hashlib.sha1(us).hexdigest()[:12]}
+            "notes": op.get("notes", ""), "sha1": hashlib.sha1(us).hexdigest()[:12]}
 
 
 def verify_code_rows(code, report):
@@ -765,12 +771,16 @@ def verify_code_rows(code, report):
 
 
 def apply_patches(get_file, set_file, get_us_file, manifest=None, root: Path = GRAPHICS, code=None, us_code=None,
-                  layouts=None):
-    """Apply the manifest. get_file/set_file work on the target ROM (path -> bytes),
-    get_us_file on the USA ROM; code/us_code are CodeView-like objects for the code_* ops.
+                  layouts=None, check_layout=None):
+    """Apply the manifest (default: every enabled fix's [[graphics]] entries). get_file/set_file work on the
+    target ROM (path -> bytes), get_us_file on the USA ROM; code/us_code are CodeView-like objects for the
+    code_* ops. The audited screen layouts (layout_checks.json) are checked for the default manifest, when
+    `layouts` is given, or when check_layout is true (build.py: the selected fixes).
     Returns a report list (one row per patched member or code range)."""
     default_manifest = manifest is None
     manifest = load_manifest() if default_manifest else manifest
+    if check_layout is None:
+        check_layout = default_manifest or layouts is not None
     narcs, us_narcs, report = {}, {}, []
 
     def narc(path):
@@ -788,7 +798,10 @@ def apply_patches(get_file, set_file, get_us_file, manifest=None, root: Path = G
 
     for op in manifest:
         if op["op"].startswith("code_"):
-            report.append(_apply_code_op(op, code, us_code))
+            row = _apply_code_op(op, code, us_code)
+            if "fix" in op:
+                row["fix"] = op["fix"]
+            report.append(row)
             continue
         members = op.get("members", [op["member"]] if "member" in op else [int(k) for k in op.get("files", {})])
         main = op["narc"]
@@ -815,8 +828,9 @@ def apply_patches(get_file, set_file, get_us_file, manifest=None, root: Path = G
                 validate_member_layout(before, n.files[mb], f"{path} #{mb}")
                 report.append({"narc": path, "member": mb, "op": op["op"],
                                "src": op["files"][str(mb)]["src"] if "files" in op else op.get("src", "usa"),
-                               "note": op.get("note", ""), "sha1": hashlib.sha1(n.files[mb]).hexdigest()[:12]})
-    if default_manifest or layouts is not None:
+                               "notes": op.get("notes", ""), "sha1": hashlib.sha1(n.files[mb]).hexdigest()[:12],
+                               **({"fix": op["fix"]} if "fix" in op else {})})
+    if check_layout:
         changed_screens = [(r["narc"], r["member"]) for r in report if "narc" in r
                            and unpack(narcs[r["narc"]].files[r["member"]])[0][:4] == b"RCSN"]
         check_layouts(lambda p: narcs[p].build() if p in narcs else get_file(p), code, rules=layouts,
@@ -970,7 +984,7 @@ def draw_outlined(canvas, x0, y0, text, font=TAB_FONT, letter=7, edge=0xB, corne
 def make_naming_labels(us_path, cn_path, out_png):
     """English labels for the hack's (Japanese-layout) naming keyboard, OBJ sheet data/namein.narc #10
     (identical tiles 0..207 in a/0/3/1 #10 and data/clothes*/a031.narc #10):
-      - the keyboard pages are rearranged by the naming-* code patches (code_patches.json): page 0 (the
+      - the keyboard pages are rearranged by the naming-* code patches (fix naming-keyboard): page 0 (the
         page the screen opens on; was the pinyin page かな) is now ABC, page 2 (was the full-width ＡＢＣ
         page) is now a plain QWERTY page. So tab 0 gets the hack's own "ABC" tab art (copied from tab 2,
         NAMEIN_TAB_COPY), tab 2 -> "QWE" and tab 1 カナ (a-z/A-Z page) -> "abc", drawn in the tab-label
@@ -1589,7 +1603,7 @@ def battle_panel_review(cn_path, new_member: bytes, out_png, scale=6):
 
 
 def _manifest_src(p) -> str:
-    """patches.json "src" for a written file: relative to work/graphics when it lives there; for an
+    """[[graphics]] "src" for a written file: relative to work/graphics when it lives there; for an
     --out elsewhere (e.g. a scratch directory) the absolute path, so printing the entry never fails."""
     p = Path(p).resolve()
     try:
@@ -1598,7 +1612,7 @@ def _manifest_src(p) -> str:
         return str(p)
 
 
-# Generated inputs of patches.json. They hold Nintendo / hack art, so they are git-ignored and rebuilt
+# Generated inputs of the [[graphics]] entries. They hold Nintendo / hack art, so they are git-ignored and rebuilt
 # from the user's ROMs by regenerate() (called by build.py before the graphics stage). The generators
 # are deterministic: the output is byte-identical on every run with the same ROMs.
 GENERATED_OUTPUTS = ("generated", "weather_en", "dex_type_list_en.png", "naming_labels_en.png")
@@ -1637,7 +1651,7 @@ def manifest_entry(narc, cn_files, written, note):
             "files": {str(mb): {"src": _manifest_src(p),
                                 "expect_sha1": hashlib.sha1(cn_files[mb]).hexdigest()[:12]}
                       for mb, p in sorted(written.items())},
-            "note": note}
+            "notes": note}
 
 
 def scan(cn_path, us_path, out_dir):
@@ -1952,13 +1966,14 @@ def main(argv=None):
         e = manifest_entry(DEX, cn, make_dex_labels(a.us, a.rom, a.out),
                            "Pokedex header (JOHTO/NATIONAL POKeDEX) and bottom buttons; gfx.py make-dex-labels")
         e["also"] = ["data/clothes1/a068.narc", "data/clothes2/a068.narc"]
-        print(json.dumps(e, ensure_ascii=False))
+        print(fixreg.toml_table("graphics", e), end="")
     elif a.cmd == "make-title-subtitle":
         cn = m.Narc.parse(m.get_file(m.load_rom(a.rom), TITLE)).files
-        print(json.dumps(manifest_entry(TITLE, cn, make_title_subtitle(a.rom, a.out),
-                                        "OPTIONAL bilingual title: 'Origin HeartGold' under the logo; "
-                                        "delete this entry to keep the Chinese-only logo; gfx.py make-title-subtitle"),
-                         ensure_ascii=False))
+        print(fixreg.toml_table("graphics", manifest_entry(
+            TITLE, cn, make_title_subtitle(a.rom, a.out),
+            "OPTIONAL bilingual title: 'Origin HeartGold' under the logo; "
+            "disable the fix (--without gfx-title-subtitle) to keep the Chinese-only logo; "
+            "gfx.py make-title-subtitle")), end="")
     elif a.cmd == "make-weather-banners":
         for mb, p in make_weather_banners(a.rom, a.hge, a.out).items():
             print(p)
@@ -1967,21 +1982,23 @@ def main(argv=None):
         e = manifest_entry(TCARD, cn, make_trainer_card(a.us, a.rom, a.out),
                            "trainer card: baked units 元 只 年月日 回 胜负 -> blank / '/' / W L; gfx.py make-trainer-card")
         e["also"] = ["data/clothes1/a049.narc", "data/clothes2/a049.narc"]
-        print(json.dumps(e, ensure_ascii=False))
+        print(fixreg.toml_table("graphics", e), end="")
     elif a.cmd == "make-linkcapture":
         cn = m.Narc.parse(m.get_file(m.load_rom(a.rom), LINKCAP)).files
-        print(json.dumps(manifest_entry(LINKCAP, cn, make_linkcapture(a.rom, a.out),
-                                        "hack's link/capture menu bar: 详细说明 (X):信息 (Y):退出 -> DETAILS INFO EXIT; "
-                                        "gfx.py make-linkcapture"), ensure_ascii=False))
+        print(fixreg.toml_table("graphics", manifest_entry(
+            LINKCAP, cn, make_linkcapture(a.rom, a.out),
+            "hack's link/capture menu bar: 详细说明 (X):信息 (Y):退出 -> DETAILS INFO EXIT; "
+            "gfx.py make-linkcapture")), end="")
     elif a.cmd == "make-battle-panel-labels":
         cn = m.Narc.parse(m.get_file(m.load_rom(a.rom), BPANEL)).files
         written = make_battle_panel_labels(a.rom, a.out)
         if a.review:
             print(battle_panel_review(a.rom, written[BPANEL_NCGR].read_bytes(), a.review), file=sys.stderr)
-        print(json.dumps(manifest_entry(BPANEL, cn, written,
-                                        "hack's battle info panel labels (B)退出 (+)(+)切换 -> (B)EXIT (+)(+)SWAP; "
-                                        "font-0 letters, hack symbols/palette/cells kept (user-approved exception); "
-                                        "gfx.py make-battle-panel-labels"), ensure_ascii=False))
+        print(fixreg.toml_table("graphics", manifest_entry(
+            BPANEL, cn, written,
+            "hack's battle info panel labels (B)退出 (+)(+)切换 -> (B)EXIT (+)(+)SWAP; "
+            "font-0 letters, hack symbols/palette/cells kept (user-approved exception); "
+            "gfx.py make-battle-panel-labels")), end="")
     elif a.cmd == "regenerate":
         for p in regenerate(a.rom, a.us, Path(a.out), log=lambda t: print(t, file=sys.stderr)):
             print(p)

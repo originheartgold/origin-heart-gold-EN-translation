@@ -1,0 +1,38 @@
+id = "font-glyphs"
+title = "Font: the USA … “ ” glyphs instead of the hack's 12-13 px ones"
+kind = "font"
+enabled = true
+decisions = ["D-0028"]
+requires = []
+why = """
+Players: in English text an ellipsis or a pair of double quotes shows as a wide gap ("Wait…" has a
+double-width "…", and “quotes” stand apart from their words); lines with them can run past the edge of the
+text box.
+
+Technical: the hack redrew the ellipsis (code 0x01AF) and the curly double quotes (0x01B4, 0x01B5) of the
+font NARC a/0/1/6 as CJK-width glyphs: 12 px wide in fonts 0, 1 and 2 and 13 px in font 4 (the hack's
+redrawn Latin font), where the USA fonts have 6-7 px. In fonts 0-2 every other Latin glyph and width is
+byte-identical to the USA ROM.
+QA lays out the English against the vanilla widths and flags lines that only fit with them
+(needs_vanilla_glyphs).
+"""
+what = """
+Old: … “ ” are 12-13 px CJK-width glyphs in fonts 0, 1, 2 and 4.
+New: the glyph bitmap and the width-table byte of these three codes are copied from the USA ROM's font
+files 0, 1, 2 and 4, so they are the US glyphs again (6 px in fonts 0/1, 7 px in fonts 2/4). No other
+glyph changes. build.py --glyph-fonts can narrow the font list; the verify step checks every restored glyph against the USA font.
+"""
+evidence = [
+  "D-2042 (open question to the user, in the main register): confirm the glyph restore as a decision; no decision of its own yet. D-0028 (quote-style rule, provisional) is only related: it cites the 12 px widths",
+  "work/notes/text_metrics.md: 'The hack's Latin is the vanilla Latin' (width table, recommendation)",
+  "work/notes/integrity_audit_text.md: fonts row (only 01AF/01B4/01B5 differ from the hack)",
+  "work/tools/qa.py: needs_vanilla_glyphs warning",
+  "CHANGELOG.md v1.0.0: 'Restored the US glyphs for … “ ”, which the hack had widened to 12 px.'",
+]
+
+[[font]]
+narc = "a/0/1/6"
+fonts = [0, 1, 2, 4]
+codes = ["0x01AF", "0x01B4", "0x01B5"]
+source = "usa"
+notes = "restore … “ ” (codes 0x01AF, 0x01B4, 0x01B5) in font NARC a/0/1/6 files 0/1/2/4 from the USA ROM's font (glyph bitmap + width-table byte); the hack drew them 12/13 px wide"

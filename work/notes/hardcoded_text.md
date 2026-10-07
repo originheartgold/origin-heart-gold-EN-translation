@@ -40,7 +40,7 @@ How the chooser uses these strings:
 ## Pipeline
 
 The pipeline has four parts:
-- **Data:** `work/translate/hardcoded/strings.json`. Its `files.overlay58.grow_max` is 64.
+- **Data:** the fix `work/patches/outfit-chooser-strings/fix.toml` (`[[string]]` entries). Its `[string_files.overlay58]` `grow_max` is 64.
 - **Code:** `work/tools/hardcoded.py`.
 - **Build:** stage 3c in `build.py`, with its checks in `verify_rom`.
 - **Tests:** `work/tools/test_hardcoded.py`.
@@ -80,7 +80,7 @@ These are **not** cut to `maxLen`. They are copied into `nameInputFlat[10]` and 
 
 "Silver" (#37–49) and "NEW NAME" (#36, #78) are DP-era leftovers. No code reads them (the only load of bank 0xF7 is in the naming screen). Even if the game read them, 6 characters fit the 7-character buffer. **No default name needs shortening.**
 
-The patches that raise the limits to the USA values are in `work/translate/hardcoded/code_patches.json` (`namelen-*`). They are **enabled**: the user checked in melonDS that trainer names take 7 characters and nicknames 10.
+The patches that raise the limits to the USA values are the fix `work/patches/namelen/fix.toml` (`namelen-*`). They are **enabled**: the user checked in melonDS that trainer names take 7 characters and nicknames 10.
 
 ## Naming keyboard (English)
 

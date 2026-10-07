@@ -57,6 +57,8 @@ A few strings that quote song lyrics store `[zh redacted: song lyrics; sha256:â€
 
 The build also regenerates the English graphics (`work/graphics/generated/`, `weather_en/` and two PNG sheets) from your two ROMs. They contain Nintendo and hack artwork, so they are git-ignored and never committed; see `work/notes/graphics_inventory.md` â†’ Build step.
 
+Everything the build changes in the Chinese ROM besides the message text (font glyphs, graphics, the hardcoded outfit-chooser strings and the code patches) is a *fix*: one folder per fix in `work/patches/<fix-id>/fix.toml`, with why it is needed, what it changes, its decisions and the bytes it checks and writes. [work/patches/FIXES.md](work/patches/FIXES.md) lists them all; regenerate it with `python3 work/tools/fixes.py docs --out work/patches/FIXES.md` after editing a fix, and check the registry with `python3 work/tools/fixes.py check`. `python3 work/tools/build.py --without <fix-id>` builds without one fix (`--only` builds with just the ones named); a fix that another one `requires` cannot be left out alone.
+
 Run the tool tests with `python3 -m unittest discover -s work/tools -p 'test_*.py'`.
 
 ## The guide website

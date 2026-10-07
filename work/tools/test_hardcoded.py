@@ -99,7 +99,9 @@ class TestPlan(unittest.TestCase):
         self.assertTrue(probs and "does not encode" in probs[0])
 
 
-class TestStringsJson(unittest.TestCase):
+class TestRegistryEntries(unittest.TestCase):
+    """The [[string]] and [[code]] entries of work/patches, as hardcoded.py sees them."""
+
     def test_schema(self):
         cfg = hc.load()
         ids = set()
@@ -119,11 +121,25 @@ class TestStringsJson(unittest.TestCase):
             self.assertTrue(re.fullmatch(r"0x[0-9A-F]+", cp["offset"]), cp["id"])
             self.assertEqual(len(hc.halfwords(cp["expect"])), len(hc.halfwords(cp["value"])), cp["id"])
             self.assertTrue(cp.get("notes"), cp["id"])
+            self.assertTrue(cp.get("fix"), cp["id"])
+
+    def test_selection_limits_entries(self):
+        import fixes
+        act = fixes.select(fixes.load_all(), without="ivev-panel")
+        ids = {cp["id"] for cp in hc.load_code_patches(fixes=act)}
+        self.assertNotIn("ivev-panel-iv-x", ids)
+        self.assertIn("msgload-all", ids)
+        self.assertTrue(all(cp["enabled"] for cp in hc.load_code_patches(fixes=act)))
+        self.assertEqual(hc.load(fixes=[f for f in act if f["id"] != "outfit-chooser-strings"]),
+                         {"files": {}, "strings": []})
 
     def test_halfwords(self):
         self.assertEqual(hc.halfwords("0x2305"), [0x2305])
         self.assertEqual(hc.halfwords("01DE 012B"), [0x01DE, 0x012B])
-        self.assertEqual(hc.halfwords(["0x1", "FFFF"]), [1, 0xFFFF])
+        with self.assertRaises(ValueError):
+            hc.halfwords("2320")             # ambiguous: decimal or hex
+        self.assertEqual(hc.halfwords(hc._hw_str([0x2307])), [0x2307])
+        self.assertEqual(hc.halfwords(hc._hw_str([0x1DE, 0x12B])), [0x1DE, 0x12B])
         self.assertEqual(hc._hw_str([0x2307]), "0x2307")
         self.assertEqual(hc._hw_str([0x1DE, 0x12B]), "01DE 012B")
 

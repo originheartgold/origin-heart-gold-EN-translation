@@ -1,0 +1,120 @@
+id = "naming-keyboard"
+title = "English naming keyboard: ABC page first, pinyin IME off"
+kind = "code"
+enabled = true
+decisions = ["D-1039", "D-1002"]
+requires = []
+why = """
+Players: the naming screen opens on a pinyin input page: typed letters turn into Chinese character
+candidates, so an English name cannot be typed there. The hack's ＡＢＣ page types full-width letters that
+look spaced out in every dialogue that shows the name.
+
+Technical: the hack's keyboard (Japanese base) has four tabs; page N uses the rows sKeyboardLayoutPtrs[N]
+(arm9 0x0210F688, 13 keys + 0xFFFF per row). Page 0 (the page the screen opens on) runs the hack's pinyin
+IME from the key handler at 0x02083814 ('cmp r0, #0; bne 0x02083CF8' at 0x02083C22: keys on page 0 go into
+the pinyin buffer at data+0x5E4, candidates from a/0/3/1 #19/#20). Page 2 holds the full-width codes
+0x00AC-0x00DF, whose glyphs are 9-11 px wide in message fonts 1/2/4 (Western letters 6-7 px).
+"""
+what = """
+Old: tab 1 (page 0) = pinyin IME, tab 2 = a-z/A-Z/0-9 (Western), tab 3 = full-width ＡＢＣ, tab 4 = 1/♪.
+New: 'bne' -> 'b' at 0x02083C24, so every page inserts keys directly and the IME never starts.
+Tab 1 (page 0, still the default) = ABC: the hack's own ABC layout (A-M, N-Z, a-m, n-z, 0-9 . , space) in
+Western codes 0x0121-0x015E. Tab 3 (page 2) = QWE: blank row, 1-0, QWERTYUIOP, ASDFGHJKL ' -, ZXCVBNM , .
+Tabs 2 and 4 are the hack's. Putting ABC on page 0 makes it the default without touching the init code
+(changing the default page would need 5+ patches). The tab labels are fix gfx-naming-tabs, which requires
+this fix; building --without gfx-naming-tabs keeps the hack's Japanese tab art, so the かな label sits over
+the ABC page and ＡＢＣ over the QWE page.
+"""
+evidence = [
+  "work/notes/hardcoded_text.md: 'Naming keyboard (English)'",
+  "DeSmuME check: work/build/screens/naming_fix_*.png (local): opens on ABC, every tab types, the dialogue shows 'Your name is An1zQ5!?'",
+  "CHANGELOG.md v1.0.0: 'Naming keyboard: the Chinese pinyin input is removed, and the keyboard opens on ABC. The tabs are ABC / abc / QWE / 1♪.'",
+]
+
+[[code]]
+id = "naming-ime-off"
+file = "arm9"
+offset = "0x83C24"
+expect = "0xD168"
+value = "0xE068"
+notes = "Naming screen key handler (0x02083814, US NamingScreen_HandleCharacterInput): 'cmp r0,#0; bne 0x02083CF8' at 0x02083C22 sends keys on pages 1-3 straight to the normal insert path and keys on page 0 into the hack's pinyin IME (pinyin buffer at data+0x5E4, candidate lookup 0x020835E4 over a/0/3/1 #19/#20, candidates drawn into keyboard rows 1-2). 'bne' -> 'b': every page inserts the key directly, the IME never starts. Keys >= 0x1FF (hanzi) still take the hack's commit path, but no page has them any more."
+
+[[code]]
+id = "naming-abc-row1"
+file = "arm9"
+offset = "0x100CE4"
+expect = "01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE"
+value = "012B 012C 012D 012E 012F 0130 0131 0132 0133 0134 0135 0136 0137"
+notes = "Naming keyboard tab 1 / page 0 (opens first), label ABC: row at 0x02100CE4 (13 keys, ends 0xFFFF; sKeyboardLayoutPtrs at 0x0210F688) -> A-M (was: empty pinyin candidate row 1 of the QWE page)"
+
+[[code]]
+id = "naming-abc-row2"
+file = "arm9"
+offset = "0x100D00"
+expect = "01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE"
+value = "0138 0139 013A 013B 013C 013D 013E 013F 0140 0141 0142 0143 0144"
+notes = "Naming keyboard tab 1 / page 0 (opens first), label ABC: row at 0x02100D00 (13 keys, ends 0xFFFF; sKeyboardLayoutPtrs at 0x0210F688) -> N-Z (was: empty pinyin candidate row 2)"
+
+[[code]]
+id = "naming-abc-row3"
+file = "arm9"
+offset = "0x100D1C"
+expect = "013B 0141 012F 013C 013E 0143 013F 0133 0139 013A 01DE 01DE 01DE"
+value = "0145 0146 0147 0148 0149 014A 014B 014C 014D 014E 014F 0150 0151"
+notes = "Naming keyboard tab 1 / page 0 (opens first), label ABC: row at 0x02100D1C (13 keys, ends 0xFFFF; sKeyboardLayoutPtrs at 0x0210F688) -> a-m (was: QWERTYUIOP)"
+
+[[code]]
+id = "naming-abc-row4"
+file = "arm9"
+offset = "0x100C90"
+expect = "01DE 012B 013D 012E 0130 0131 0132 0134 0135 0136 01DE 011B 011E"
+value = "0152 0153 0154 0155 0156 0157 0158 0159 015A 015B 015C 015D 015E"
+notes = "Naming keyboard tab 1 / page 0 (opens first), label ABC: row at 0x02100C90 (13 keys, ends 0xFFFF; sKeyboardLayoutPtrs at 0x0210F688) -> n-z (was: _ASDFGHJKL_ plus the candidate arrows <- ->)"
+
+[[code]]
+id = "naming-abc-row5"
+file = "arm9"
+offset = "0x100CC8"
+expect = "01DE 01DE 0144 0142 012D 0140 012C 0138 0137 01DE 01DE 01DE 01DE"
+value = "0121 0122 0123 0124 0125 0126 0127 0128 0129 012A 01AE 01AD 01DE"
+notes = "Naming keyboard tab 1 / page 0 (opens first), label ABC: row at 0x02100CC8 (13 keys, ends 0xFFFF; sKeyboardLayoutPtrs at 0x0210F688) -> 0-9 . , space (was: __ZXCVBNM)"
+
+[[code]]
+id = "naming-qwe-row1"
+file = "arm9"
+offset = "0x100DFC"
+expect = "00AC 00AD 00AE 00AF 00B0 00B1 00B2 00B3 00B4 00B5 00B6 00B7 00B8"
+value = "01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE"
+notes = "Naming keyboard tab 3 / page 2, label QWE: row at 0x02100DFC (13 keys, ends 0xFFFF; sKeyboardLayoutPtrs at 0x0210F688) -> empty (was: full-width A-M)"
+
+[[code]]
+id = "naming-qwe-row2"
+file = "arm9"
+offset = "0x100E34"
+expect = "00B9 00BA 00BB 00BC 00BD 00BE 00BF 00C0 00C1 00C2 00C3 00C4 00C5"
+value = "0122 0123 0124 0125 0126 0127 0128 0129 012A 0121 01DE 01DE 01DE"
+notes = "Naming keyboard tab 3 / page 2, label QWE: row at 0x02100E34 (13 keys, ends 0xFFFF; sKeyboardLayoutPtrs at 0x0210F688) -> 1234567890 (was: full-width N-Z)"
+
+[[code]]
+id = "naming-qwe-row3"
+file = "arm9"
+offset = "0x100E50"
+expect = "00C6 00C7 00C8 00C9 00CA 00CB 00CC 00CD 00CE 00CF 00D0 00D1 00D2"
+value = "013B 0141 012F 013C 013E 0143 013F 0133 0139 013A 01DE 01DE 01DE"
+notes = "Naming keyboard tab 3 / page 2, label QWE: row at 0x02100E50 (13 keys, ends 0xFFFF; sKeyboardLayoutPtrs at 0x0210F688) -> QWERTYUIOP (was: full-width a-m)"
+
+[[code]]
+id = "naming-qwe-row4"
+file = "arm9"
+offset = "0x100E6C"
+expect = "00D3 00D4 00D5 00D6 00D7 00D8 00D9 00DA 00DB 00DC 00DD 00DE 00DF"
+value = "01DE 012B 013D 012E 0130 0131 0132 0134 0135 0136 01DE 01B3 01BE"
+notes = "Naming keyboard tab 3 / page 2, label QWE: row at 0x02100E6C (13 keys, ends 0xFFFF; sKeyboardLayoutPtrs at 0x0210F688) -> _ASDFGHJKL_ ' - (was: full-width n-z)"
+
+[[code]]
+id = "naming-qwe-row5"
+file = "arm9"
+offset = "0x100EA4"
+expect = "00A2 00A3 00A4 00A5 00A6 00A7 00A8 00A9 00AA 00AB 00F8 00F9 0001"
+value = "01DE 01DE 0144 0142 012D 0140 012C 0138 0137 01DE 01DE 01AD 01AE"
+notes = "Naming keyboard tab 3 / page 2, label QWE: row at 0x02100EA4 (13 keys, ends 0xFFFF; sKeyboardLayoutPtrs at 0x0210F688) -> __ZXCVBNM__ , . (was: full-width 0-9 . , space)"

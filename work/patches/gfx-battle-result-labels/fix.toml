@@ -1,0 +1,24 @@
+id = "gfx-battle-result-labels"
+title = "Battle result labels WIN / LOSE / DRAW"
+kind = "graphics"
+enabled = true
+decisions = ["D-1105", "D-0768", "D-1041"]
+requires = []
+why = """
+Players: the result display of link or facility battles shows 胜 / 负 / 平.
+
+Technical: a/1/0/4 #5 (OBJ sheet; its cells #6 are identical to the USA ones).
+"""
+what = """
+Old: 胜 / 负 / 平.
+New: the USA member: WIN / LOSE / DRAW.
+"""
+evidence = [
+  "work/notes/graphics_inventory.md: row 27 (pass3_restores.png)",
+]
+
+[[graphics]]
+op = "copy_us"
+narc = "a/1/0/4"
+members = [5]
+notes = "battle result labels 胜 负 平 -> USA WIN / LOSE / DRAW (OBJ sheet; NCER #6 identical to USA)"

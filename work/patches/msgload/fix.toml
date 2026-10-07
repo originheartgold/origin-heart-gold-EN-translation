@@ -1,0 +1,79 @@
+id = "msgload"
+title = "Text banks are read line by line (fixes the summary and bag memory crashes)"
+kind = "code"
+enabled = true
+decisions = ["D-1390", "D-1002"]
+requires = []
+why = """
+Players (rc3): switching Pokémon on the summary screen's skills page crashed the game (melonDS crash,
+DeSmuME hang); the bag was 108 bytes from the same crash. The untouched Chinese ROM does not crash with the
+same save, so this is caused by the translation, not a hack bug.
+
+Technical: each screen gets a fixed-size heap, and many screens load whole message banks into it
+(NewMsgDataFromNarc type 0, arm9 0x0200BA98). The English banks are 1.5-3x the size of the Chinese ones:
+on the summary screen (heap 19) banks 0295 and 0739 grew by 3,056 and 11,790 bytes and the spare room went
+from 208 to -124 bytes. The failed allocation returns NULL, the next file read goes to address 0, which
+mirrors ITCM, and overwrites the interrupt handler at 0x01FF8000.
+"""
+what = """
+Old: callers choose type 0 (whole bank into the screen heap) or type 1 (a NARC handle that reads each line
+when asked); 149 call sites use type 0.
+New: msgload-all makes NewMsgDataFromNarc always store type 1 ('adds r5, r0, #0' -> 'movs r5, #1' at
+0x0200BA9A), so no screen loads a whole bank any more. Every MsgData function handles both types and nothing
+outside them reads a loaded bank. The same change at the five measured call sites (summary 0295/0739, bag
+0010/0219/0739: 'movs r0, #0' -> '#1') is kept as a second layer. Same text; only where it is read from.
+Spare room: summary 208 -> 10,376 bytes, bag 108 -> 55,540.
+"""
+evidence = [
+  "work/notes/heap_audit.md: crash class, fix and results table",
+  "work/tools/memcheck.py run, scenarios summary, summary_full, bag, bag_full (work/tools/memcheck_scenarios.json): no failed allocation, no heap below 4 KB more than 256 bytes under the Chinese figure",
+  "CHANGELOG.md v1.0.0-rc4: 'Crash when switching Pokémon on the summary screen's skills page, and a bag that was 108 bytes from the same crash.'",
+]
+
+[[code]]
+id = "msgload-summary-0295"
+file = "arm9"
+offset = "0x8799A"
+expect = "0x2000"
+value = "0x2001"
+notes = "Summary screen (heap 19): bank 0295 (summary labels, 6916 -> 9972 bytes) at 0x0208799A (call 0x020879A0)"
+
+[[code]]
+id = "msgload-summary-0739"
+file = "arm9"
+offset = "0x87A0C"
+expect = "0x2000"
+value = "0x2001"
+notes = "Summary screen (heap 19): bank 0739 (move names, 15226 -> 27016 bytes) at 0x02087A0C (call 0x02087A12)"
+
+[[code]]
+id = "msgload-bag-0010"
+file = "overlay17"
+offset = "0x940"
+expect = "0x2000"
+value = "0x2001"
+notes = "Bag (heap 6): bank 0010 (bag labels) at 0x021F9020 (call 0x021F9028)"
+
+[[code]]
+id = "msgload-bag-0219"
+file = "overlay17"
+offset = "0x970"
+expect = "0x2000"
+value = "0x2001"
+notes = "Bag (heap 6): bank 0219 (item names, 14252 -> 22524 bytes) at 0x021F9050 (call 0x021F9058)"
+
+[[code]]
+id = "msgload-bag-0739"
+file = "overlay17"
+offset = "0x982"
+expect = "0x2000"
+value = "0x2001"
+notes = "Bag (heap 6): bank 0739 (move names for the TM pocket; bank = 0xBE*4-0x15) at 0x021F9062 (call 0x021F906A)"
+
+[[code]]
+id = "msgload-all"
+file = "arm9"
+offset = "0xBA9A"
+expect = "0x1C05"
+value = "0x2501"
+notes = "All screens: NewMsgDataFromNarc at 0x0200BA98 stores type 1 whatever the caller asked: 'adds r5, r0, #0' -> 'movs r5, #1' at 0x0200BA9A. Every text bank is read line by line; none is loaded whole into a screen heap any more (149 call sites in rc3). Every MsgData function handles both types, and nothing outside them reads a loaded bank. The msgload-summary/bag patches are kept as a second layer."

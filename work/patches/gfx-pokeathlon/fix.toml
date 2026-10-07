@@ -1,0 +1,49 @@
+id = "gfx-pokeathlon"
+title = "Pokéathlon SWITCH buttons and instruction screens"
+kind = "graphics"
+enabled = true
+decisions = ["D-0768", "D-1106", "D-1041"]
+requires = []
+why = """
+Players: the Pokéathlon SWITCH button says 交换, and the event instruction screens show the Japanese art
+(こうたい, まい, ポケスロン, Japanese player names, POKETHLON).
+
+Technical: the SWITCH label tiles are in a/1/7/8 #17, a/2/3/2 #8 and a/2/4/0 #16 (the last two LZ11). The
+hack is built on the Japanese ROM, so a/2/1/9 #12-21, #44, #45, #48-51 are the Japanese members where the USA
+ROM has English.
+"""
+what = """
+Old: 交换 and Japanese instruction art.
+New: only the SWITCH label tiles are copied from the USA members (the hack's other edits in a/1/7/8 #17
+stay); the instruction screens are the USA members (SWITCH, Pcs., YOU / Eoin / Aven / Shania, POKéATHLON).
+"""
+evidence = [
+  "work/notes/graphics_inventory.md: rows 19 and 30 (pass3_pokeathlon.png)",
+]
+
+[[graphics]]
+op = "tiles_from_us"
+narc = "a/1/7/8"
+member = 17
+tiles = [[912, 927], [944, 959], [976, 991], [1008, 1023], [1040, 1055]]
+notes = "Pokeathlon SWITCH button (交换) -> USA SWITCH; only the label tiles (grid columns 16-31), the hack's other edits stay"
+
+[[graphics]]
+op = "tiles_from_us"
+narc = "a/2/3/2"
+member = 8
+tiles = [[1440, 1455], [1472, 1487], [1504, 1519], [1536, 1551]]
+notes = "Pokeathlon SWITCH button (交换) -> USA SWITCH label tiles"
+
+[[graphics]]
+op = "tiles_from_us"
+narc = "a/2/4/0"
+member = 16
+tiles = [[104, 119], [136, 151], [168, 183], [200, 215]]
+notes = "Pokeathlon SWITCH button (交换) -> USA SWITCH label tiles"
+
+[[graphics]]
+op = "copy_us"
+narc = "a/2/1/9"
+members = [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 44, 45, 48, 49, 50, 51]
+notes = "Pokeathlon instruction screens: the hack ships the Japanese art (こうたい, まい, ポケスロン, JP names, POKETHLON) -> USA (SWITCH, Pcs., YOU / Eoin / Aven / Shania, POKeATHLON); only label tiles differ"

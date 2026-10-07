@@ -65,21 +65,19 @@ ROM SHA-256:
 
 ## Build-time config option
 
-The existing `work/tools/hardcoded.py` checks and applies enabled entries in `work/translate/hardcoded/code_patches.json`. This proposed entry dry-ran successfully against both ROMs:
+The existing `work/tools/hardcoded.py` checks and applies the `[[code]]` entries of the enabled fixes in `work/patches/<fix-id>/fix.toml` (see `work/tools/fixes.py`). This proposed entry (when written, the code patch was a `code_patches.json` entry) dry-ran successfully against both ROMs. As a fix it would be its own folder, e.g. `work/patches/optional-exp-share-off/fix.toml` with `kind = "code"`, `enabled = false` and this entry:
 
-```json
-{
-  "id": "optional-exp-share-off",
-  "file": "overlay14",
-  "offset": "0x14FE0",
-  "expect": "0x2001",
-  "value": "0x2000",
-  "enabled": true,
-  "notes": "Optional gameplay change: disables party-wide EXP and EV awards to nonparticipants."
-}
+```toml
+[[code]]
+id = "optional-exp-share-off"
+file = "overlay14"
+offset = "0x14FE0"
+expect = "0x2001"
+value = "0x2000"
+notes = "Optional gameplay change: disables party-wide EXP and EV awards to nonparticipants."
 ```
 
-This is a build choice: changing `enabled` requires rebuilding and replacing the ROM. It is not a player-facing in-game setting. Leave it absent/disabled for the default faithful translation. Sample, not installed: `work/build/exp-share-research/build-option.json`.
+This is a build choice: changing `enabled` (or `build.py --only/--without`) requires rebuilding and replacing the ROM. It is not a player-facing in-game setting. Leave it absent/disabled for the default faithful translation. Sample, not installed: `work/build/exp-share-research/build-option.json`.
 
 ## In-game Options toggle
 

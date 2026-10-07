@@ -1,0 +1,32 @@
+id = "gfx-battle-status-icons"
+title = "Battle HP-box status icons (PAR FRZ SLP PSN BRN)"
+kind = "graphics"
+enabled = true
+decisions = ["D-1104", "D-0768", "D-1041"]
+requires = []
+why = """
+Players: in every battle the status icon next to the HP bar reads 麻痹 冰冻 睡眠 中毒 灼伤.
+
+Technical: these icons are not in any NARC: they are raw 4bpp tiles inside the battle overlay (pret
+gBattleHpBar_RawGraphicComponents 41-55, 3 tiles each; hack overlay 14 = USA overlay 12), file offset
+0x4C0A8, 480 bytes.
+"""
+what = """
+Old: Chinese status abbreviations.
+New: the 480 bytes are copied from the USA overlay 12 (0x36340), the same layout; the other 38 components are
+identical apart from the hack's 'HP:'. Both ranges are checked by SHA-1 first.
+"""
+evidence = [
+  "work/notes/graphics_inventory.md: row 25 and 'Graphics inside code' (status_icons_battle_hpbox.png)",
+]
+
+[[graphics]]
+op = "code_from_us"
+file = "overlay14"
+offset = 0x4C0A8
+us_file = "overlay12"
+us_offset = 0x36340
+length = 480
+expect_sha1 = "96bf7f39b274"
+us_sha1 = "92034e7984fd"
+notes = "battle HP-box status icons (PAR FRZ SLP PSN BRN; pret gBattleHpBar_RawGraphicComponents 41-55, 3 tiles each) - raw tiles inside the battle overlay (hack overlay 14 = USA overlay 12); USA restore, same layout"

@@ -128,11 +128,12 @@ def inspect_consumers(rom_path):
             add(f'raw-name-{bank}', bank, spec['raw_max_chars'] + 1, ids=spec['raw_ids'],
                 stage='decompressed', note='qa_config raw trainer names consumed without formatter; consumer remains unguarded.')
     # Hardcoded strings: follow actual pointers, so relocated labels are checked as shipped.
-    hc = json.loads((HERE.parent / 'translate/hardcoded/strings.json').read_text())
+    import hardcoded
+    hc = hardcoded.load()  # [[string]] entries of the enabled fixes in work/patches
     for entry in hc['strings']:
         contract = dict(id=entry['id'], bank='hardcoded', ids=[entry['id']], stage='decompressed',
                         capacity_units=entry.get('reloc_max_units', entry['max_units']) + 1,
-                        evidence_level='policy_only', evidence='hardcoded_text.md and strings.json; receiving code not guarded',
+                        evidence_level='policy_only', evidence='hardcoded_text.md and work/patches/outfit-chooser-strings/fix.toml; receiving code not guarded',
                         includes_terminator=True, exhaustive_consumers=False, status='incomplete')
         contracts.append(contract)
         try:

@@ -1,0 +1,93 @@
+id = "namelen"
+title = "Name lengths: US limits (7 characters for trainers, 10 for Pokémon)"
+kind = "code"
+enabled = true
+decisions = ["D-0858"]
+requires = []
+why = """
+Players: the naming screen stops after 5 characters, so most English names and nicknames do not fit
+("Charlie", "Charmeleon").
+
+Technical: the hack is built on the Japanese HeartGold (game code IPKJ). Every caller of
+NamingScreen_CreateArgs (hack 0x02081DA4) passes maxLen = 5: the player and rival in Oak's speech
+(overlay 49) and in the script commands, the script nickname command (gift Pokémon, Name Rater), the egg
+hatch nickname, the group name and naming kind 7. The save buffers already have the US sizes, so only
+the limit is Japanese.
+"""
+what = """
+Old: maxLen 5 at all 8 call sites: seven pass the literal 5 ('movs r3, #5'), the group-name site passes
+r1, which holds 5 there ('adds r3, r1, #0').
+New: the USA values: 7 for the player, rival, group name and kind 7; 10 for the two Pokémon nickname
+call sites. Each patch changes one immediate ('movs r3, #5' -> '#7' / '#10'; the group-name site
+'adds r3, r1, #0' -> 'movs r3, #7'). Box names (8) are unchanged. There is no battle-capture nickname call:
+the hack removed that prompt (D-1040). Default names (bank 0247) are 5 characters or fewer and need no change.
+"""
+evidence = [
+  "work/notes/hardcoded_text.md: 'Name lengths' (call-site table, default names)",
+  "In-game check by the user in melonDS: 7-character trainer names, 10-character nicknames (D-0858)",
+  "CHANGELOG.md v1.0.0: 'Name lengths restored to US limits: 7 characters for trainers, 10 for Pokémon'",
+]
+
+[[code]]
+id = "namelen-player-intro"
+file = "overlay49"
+offset = "0x4E"
+expect = "0x2305"
+value = "0x2307"
+notes = "Oak's speech: NamingScreen_CreateArgs(heap, PLAYER, 0, 5) at 0x021E49CE (US ov53: 7)"
+
+[[code]]
+id = "namelen-rival-intro"
+file = "overlay49"
+offset = "0x66"
+expect = "0x2305"
+value = "0x2307"
+notes = "Oak's speech: CreateArgs(heap, RIVAL, 0, 5) at 0x021E49E6 (US: 7)"
+
+[[code]]
+id = "namelen-player-script"
+file = "arm9"
+offset = "0x42862"
+expect = "0x2305"
+value = "0x2307"
+notes = "Script command 'name player': CallTask_NamingScreen(.., PLAYER, 0, 5) at 0x02042862 (US 0x020431D6: 7)"
+
+[[code]]
+id = "namelen-rival-script"
+file = "arm9"
+offset = "0x42892"
+expect = "0x2305"
+value = "0x2307"
+notes = "Script command 'name rival' at 0x02042892 (US: 7)"
+
+[[code]]
+id = "namelen-nickname-script"
+file = "arm9"
+offset = "0x4291E"
+expect = "0x2305"
+value = "0x230A"
+notes = "Script command 'nickname Pokemon' (gift/starter Pokemon, Name Rater) at 0x0204291E (US 0x02043292: 10)"
+
+[[code]]
+id = "namelen-nickname-egg"
+file = "arm9"
+offset = "0x90944"
+expect = "0x2305"
+value = "0x230A"
+notes = "Egg hatch nickname: CreateArgs(heap, POKEMON, species, 5) at 0x02090944 (US 0x020911C4: 10)"
+
+[[code]]
+id = "namelen-group-script"
+file = "arm9"
+offset = "0x490DA"
+expect = "0x1C0B"
+value = "0x2307"
+notes = "Script command 'name group' (kind 5): 'adds r3, r1, #0' (r1 = 5) -> 'movs r3, #7' at 0x020490DA (US: 7)"
+
+[[code]]
+id = "namelen-kind7"
+file = "overlay44"
+offset = "0x2E6C"
+expect = "0x2305"
+value = "0x2307"
+notes = "CreateArgs(heap, kind 7, 0, 5) at 0x02228DAC (US ov43 0x0222CD5A: 7); pret calls kind 7 NAME_SCREEN_UNK7"
