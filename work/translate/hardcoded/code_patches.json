@@ -1,5 +1,5 @@
 {
-  "_about": "16-bit code/data patches applied by build.py stage 3c when 'enabled' is true. Each checks the current halfword(s) ('expect') first; 'expect'/'value' are one halfword (\"0x2305\") or a run of halfwords (\"01DE 012B ...\"). namelen-*: naming-screen length limits raised from the hack's 5 (Japanese base, IPKJ) to the US values (7 trainer names, 10 Pokemon); the save buffers already have the US sizes. Enabled after the user's in-game check (7-char trainer names, 10-char nicknames). naming-*: English naming keyboard (localisation necessity, D-1002): the hack's pinyin page is gone. Tab 1 (page 0, the page the screen opens on) is ABC = the hack's ABC layout (A-M, N-Z, a-m, n-z, 0-9) in Western letter codes; tab 3 (page 2, was the full-width ABC page, whose letters render 8-11 px wide in the English message fonts) is QWE = a plain uppercase QWERTY page; tabs 2 (abc) and 4 (1/music note) are the hack's. Tab labels: graphics patch naming_labels_en.png (gfx.py make-naming-labels). See work/notes/hardcoded_text.md. msgload-*: heap fixes (work/notes/heap_audit.md). The English message banks are 1.5-3x the Chinese ones; screens that load whole banks into a fixed heap ran out of memory (summary: switch Pokemon on the skills page crashed; bag: 108 bytes to spare). NewMsgDataFromNarc(type, narc, bank, heap) at 0x0200BA98: type 0 loads the whole bank into the heap, type 1 keeps a NARC handle and reads each line when asked. 'movs r0, #0' -> 'movs r0, #1' at the call site; same text, only where it is read from.",
+  "_about": "16-bit code/data patches applied by build.py stage 3c when 'enabled' is true. Each checks the current halfword(s) ('expect') first; 'expect'/'value' are one halfword (\"0x2305\") or a run of halfwords (\"01DE 012B ...\"). namelen-*: naming-screen length limits raised from the hack's 5 (Japanese base, IPKJ) to the US values (7 trainer names, 10 Pokemon); the save buffers already have the US sizes. Enabled after the user's in-game check (7-char trainer names, 10-char nicknames). naming-*: English naming keyboard (localisation necessity, D-1002): the hack's pinyin page is gone. Tab 1 (page 0, the page the screen opens on) is ABC = the hack's ABC layout (A-M, N-Z, a-m, n-z, 0-9) in Western letter codes; tab 3 (page 2, was the full-width ABC page, whose letters render 8-11 px wide in the English message fonts) is QWE = a plain uppercase QWERTY page; tabs 2 (abc) and 4 (1/music note) are the hack's. Tab labels: graphics patch naming_labels_en.png (gfx.py make-naming-labels). See work/notes/hardcoded_text.md. msgload-*: heap fixes (work/notes/heap_audit.md). The English message banks are 1.5-3x the Chinese ones; screens that load whole banks into a fixed heap ran out of memory (summary: switch Pokemon on the skills page crashed; bag: 108 bytes to spare). NewMsgDataFromNarc(type, narc, bank, heap) at 0x0200BA98: type 0 loads the whole bank into the heap, type 1 keeps a NARC handle and reads each line when asked. 'movs r0, #0' -> 'movs r0, #1' at the call site; same text, only where it is read from. antipiracy-*: Nintendo DS Protect in overlay114 (RAM 0x02263200): its six entry points are stubbed to return the genuine-cart values (0,1,0,1,0,1), so flashcarts and loaders that fail the card-mirror or MAC checks no longer leak heap 3 at Continue and on every menu, or fill the task queue until the game freezes (work/notes/hardware_support.md).",
   "patches": [
     {
       "id": "namelen-player-intro",
@@ -261,6 +261,60 @@
       "value": "0x2328",
       "enabled": true,
       "notes": "Summary IV/EV panel (D-1574), same routine: the 'IVs' header (0295 #195) printed at x 0x22 -> 0x28 ('movs r3, #0x22' -> 'movs r3, #0x28'), 6 px right with the IV numbers so it stays above them; the 'EVs' header (x 0x43 at 0x0208C210) is unchanged."
+    },
+    {
+      "id": "antipiracy-ov114-0x864",
+      "file": "overlay114",
+      "offset": "0x864",
+      "expect": "47F0 E92D D080 E24D",
+      "value": "0000 E3A0 FF1E E12F",
+      "enabled": true,
+      "notes": "DS Protect 'any bad' entry, flashcart card-mirror check (raw card-bus B7 reads of ROM 0x1000-0x1400 vs 0x8000-0x8400, CRC32) + integrity check; returns 1 if any check detects. Called by ov1 field init, ov28 and ov5. Stubbed to 'mov r0,#0; bx lr': 0 is the value the untouched hack returns on a genuine cart (and in DeSmuME). Original 'push {r4-r10,lr}; sub sp,#0x80'. The entry takes r0 = callback and is called by Thumb blx, so 'bx lr' returns correctly; the stub skips the callback, which on the genuine path is a bare 'bx lr' (the 'detected' callbacks are 1000-byte heap-3 leaks). The integrity checks cover only the four check bodies, not the entry prologues. Same 8 bytes as Bradams' Speedoption ov114. See work/notes/hardware_support.md."
+    },
+    {
+      "id": "antipiracy-ov114-0x94C",
+      "file": "overlay114",
+      "offset": "0x94C",
+      "expect": "47F0 E92D D080 E24D",
+      "value": "0001 E3A0 FF1E E12F",
+      "enabled": true,
+      "notes": "DS Protect 'all good' entry, flashcart card-mirror check + integrity check; returns 1 if all pass (genuine cart). Called by ov115 (Continue checksum), ov1 field exit and ov31. Stubbed to 'mov r0,#1; bx lr': 1 is the value the untouched hack returns on a genuine cart (and in DeSmuME). Original 'push {r4-r10,lr}; sub sp,#0x80'. The entry takes r0 = callback and is called by Thumb blx, so 'bx lr' returns correctly; the stub skips the callback, which on the genuine path is a bare 'bx lr' (the 'detected' callbacks are 1000-byte heap-3 leaks). The integrity checks cover only the four check bodies, not the entry prologues. Same 8 bytes as Bradams' Speedoption ov114. See work/notes/hardware_support.md."
+    },
+    {
+      "id": "antipiracy-ov114-0xA34",
+      "file": "overlay114",
+      "offset": "0xA34",
+      "expect": "47F0 E92D D080 E24D",
+      "value": "0000 E3A0 FF1E E12F",
+      "enabled": true,
+      "notes": "DS Protect 'any bad' entry, emulator check (DS MAC 00:09:BF:00:00:31 with empty owner info, or all-zero MAC) + integrity check. Called by ov115 (Continue checksum), ov5 and ov31. Stubbed to 'mov r0,#0; bx lr': 0 is the value the untouched hack returns on a genuine cart (and in DeSmuME). Original 'push {r4-r10,lr}; sub sp,#0x80'. The entry takes r0 = callback and is called by Thumb blx, so 'bx lr' returns correctly; the stub skips the callback, which on the genuine path is a bare 'bx lr' (the 'detected' callbacks are 1000-byte heap-3 leaks). The integrity checks cover only the four check bodies, not the entry prologues. Same 8 bytes as Bradams' Speedoption ov114. See work/notes/hardware_support.md."
+    },
+    {
+      "id": "antipiracy-ov114-0xB1C",
+      "file": "overlay114",
+      "offset": "0xB1C",
+      "expect": "47F0 E92D D080 E24D",
+      "value": "0001 E3A0 FF1E E12F",
+      "enabled": true,
+      "notes": "DS Protect 'all good' entry, emulator check + integrity check; returns 1 on genuine hardware. Called by ov1 field init and field exit, and ov28. Stubbed to 'mov r0,#1; bx lr': 1 is the value the untouched hack returns on a genuine cart (and in DeSmuME). Original 'push {r4-r10,lr}; sub sp,#0x80'. The entry takes r0 = callback and is called by Thumb blx, so 'bx lr' returns correctly; the stub skips the callback, which on the genuine path is a bare 'bx lr' (the 'detected' callbacks are 1000-byte heap-3 leaks). The integrity checks cover only the four check bodies, not the entry prologues. Same 8 bytes as Bradams' Speedoption ov114. See work/notes/hardware_support.md."
+    },
+    {
+      "id": "antipiracy-ov114-0xC04",
+      "file": "overlay114",
+      "offset": "0xC04",
+      "expect": "47F0 E92D D080 E24D",
+      "value": "0000 E3A0 FF1E E12F",
+      "enabled": true,
+      "notes": "DS Protect 'any bad' entry with an empty check list: already always returns 0, stubbed for parity with Speedoption. Called by ov1 field init and exit, and ov31. Stubbed to 'mov r0,#0; bx lr': 0 is the value the untouched hack returns on a genuine cart (and in DeSmuME). Original 'push {r4-r10,lr}; sub sp,#0x80'. The entry takes r0 = callback and is called by Thumb blx, so 'bx lr' returns correctly; the stub skips the callback, which on the genuine path is a bare 'bx lr' (the 'detected' callbacks are 1000-byte heap-3 leaks). The integrity checks cover only the four check bodies, not the entry prologues. Same 8 bytes as Bradams' Speedoption ov114. See work/notes/hardware_support.md."
+    },
+    {
+      "id": "antipiracy-ov114-0xCCC",
+      "file": "overlay114",
+      "offset": "0xCCC",
+      "expect": "47F0 E92D D080 E24D",
+      "value": "0001 E3A0 FF1E E12F",
+      "enabled": true,
+      "notes": "DS Protect 'all good' entry with an empty check list: already always returns 1, stubbed for parity with Speedoption. Called by ov115, ov28 and ov5. Stubbed to 'mov r0,#1; bx lr': 1 is the value the untouched hack returns on a genuine cart (and in DeSmuME). Original 'push {r4-r10,lr}; sub sp,#0x80'. The entry takes r0 = callback and is called by Thumb blx, so 'bx lr' returns correctly; the stub skips the callback, which on the genuine path is a bare 'bx lr' (the 'detected' callbacks are 1000-byte heap-3 leaks). The integrity checks cover only the four check bodies, not the entry prologues. Same 8 bytes as Bradams' Speedoption ov114. See work/notes/hardware_support.md."
     }
   ]
 }
