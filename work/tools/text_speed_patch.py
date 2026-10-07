@@ -12,9 +12,18 @@ BASE=0x01ff8620
 OVBASE=0x021e4980
 # This reviewed pin lives in patcher source, never in the mutable cache. Updating
 # native code requires review of its reproducible payload and this separate pin.
-REVIEWED_PAYLOAD_SHA256='fccee87490cfa47ce6d73e996cb128df8d487e3a0c31f4633ee0cb211d5cf211'
+REVIEWED_PAYLOAD_SHA256='e17e38e0e2a5aa93788a7d5de220ae312e751adcf12f0556a1a92e52ce7afbe9'
 REQUIRED_SYMBOLS=frozenset(('print_task','load_rows','load_choice','load_label',
-                            'commit_speed','exit_free','draw_label','setup_sprites','init_printer'))
+                            'commit_speed','exit_free','draw_label','setup_sprites','init_printer',
+                            'frame_end','text_speed_state'))
+# The one data symbol: the runtime frame state (zero at boot), the last
+# STATE_SIZE bytes of the block. Every other symbol is a Thumb entry point.
+STATE_SYMBOL='text_speed_state'
+STATE_SIZE=24
+# The game loop's last call before its wait for VBlank (NitroMain, 0x02000C88):
+# 'bl 0x020272d4' at this address is redirected to the payload's frame_end,
+# which makes that call first and then measures the end of the frame.
+FRAME_END_CALL=(0x02000de0,0x020272d4)
 MAX_PAYLOAD_SIZE=0x01ffa000-BASE
 OVHASH='852d8fcd01bf09ba54bee1a24609e2a82e71d25b5d6dd84c5d919cc0b3418856'
 OVERLAY=50
@@ -51,6 +60,7 @@ CALLED_ROUTINES=(
     (0x02020a9c,0x02020b40,'set text colours'),
     (0x02020be8,0x02020bee,'printer initializer'),
     (0x02024e48,0x02024e64,'sprite visibility'),
+    (0x020272d4,0x020272f8,'3D swap request (the game loop call frame_end makes first)'),
     (0x02026864,0x02026890,'string new'),
     (0x02026eb8,0x02026f1c,'string copy characters'),
     (0x02029348,0x02029354,'Options accessor trampoline'),
@@ -76,6 +86,7 @@ REVIEWED_SWITCHES={
 # 0x020022d0 state machine. The loop relies on its results 0/1/3 and on which
 # controls it stops before (0xffff, 0xfffe, 0x25bc, 0x25bd, 0xf0fd).
 DEPENDENT_CODE=(
+    (0x02000c88,0x02000e38,'game loop NitroMain (frame-end hook site; its VBlank wait follows the hooked call)'),
     (0x02002e40,0x02002e70,'RenderText entry called by the glyph loop'),
     (0x020022d0,0x020027ee,'RenderText control-code state machine (two reviewed jump tables)'),
     (0x020208d4,0x02020a1c,'printer constructor (alloc size, initializer call, task pointer)'),
@@ -86,9 +97,11 @@ DEPENDENT_CODE=(
     (0x02000ba0,0x02000bb8,'code settings / autoload list words rewritten by code.save()'),
 )
 DEPENDENCIES=CALLED_ROUTINES+DEPENDENT_CODE
-# The batching loop also reads VCOUNT (0x04000006), the DS display line I/O
-# register, to stop before a frame overruns. It is hardware, not ARM9 code or data,
-# so no code patch can overlap it and it has no dependency range.
+# The batching loop and frame_end also read VCOUNT (0x04000006), the DS display
+# line I/O register, and the SDK's VBlank counter HW_VBLANK_COUNT_BUF (0x027FFC3C,
+# the main-memory system word OS_GetVBlankCount reads). Neither is ARM9 code or
+# data in the ARM9 binary, so no code patch can overlap them and they have no
+# dependency range.
 
 def native_call_targets():
     """Every FN(address, ...) call target in native.c (source pinned via the payload)."""
@@ -120,11 +133,16 @@ def compile_payload(out):
     names=data(sections[h[13]])
     def name(off,tab=names):return tab[off:].split(b'\0',1)[0].decode()
     placed={};image=bytearray()
-    for i,s in enumerate(sections):
-        if not s[2]&2 or name(s[0]).startswith('.ARM.exidx'):continue
-        if s[1] not in (1,8):raise ValueError('Unexpected allocated section')
-        align=max(4,s[8]);image.extend(bytes((-len(image))%align));placed[i]=len(image)
-        image.extend(data(s) if s[1]==1 else bytes(s[5]))
+    # Code and constant data first, zero-initialised data (.bss: the runtime frame
+    # state) last, so the state is the tail of the block and everything before it
+    # is fixed bytes that the gates can compare in RAM.
+    for kind in (1,8):
+        for i,s in enumerate(sections):
+            if not s[2]&2 or name(s[0]).startswith('.ARM.exidx'):continue
+            if s[1] not in (1,8):raise ValueError('Unexpected allocated section')
+            if s[1]!=kind:continue
+            align=max(4,s[8]);image.extend(bytes((-len(image))%align));placed[i]=len(image)
+            image.extend(data(s) if s[1]==1 else bytes(s[5]))
     tables={};symbols={}
     for i,s in enumerate(sections):
         if s[1]!=2:continue
@@ -177,8 +195,12 @@ def validate_payload(payload):
     symbols=payload['symbols']
     if type(symbols) is not dict or set(symbols)!=REQUIRED_SYMBOLS:
         raise ValueError('Native payload symbol inventory changed')
+    state=symbols[STATE_SYMBOL]
+    if type(state) is not int or state!=BASE+len(blob)-STATE_SIZE or state&3 or any(blob[-STATE_SIZE:]):
+        raise ValueError('Native frame state must be the zeroed last 24 bytes of the payload')
     for name,address in symbols.items():
-        if type(address) is not int or not address&1 or not BASE<address<BASE+len(blob):
+        if name==STATE_SYMBOL:continue
+        if type(address) is not int or not address&1 or not BASE<address<state:
             raise ValueError(f'Invalid native Thumb entry point: {name}')
     if len(set(symbols.values()))!=len(symbols):raise ValueError('Native entry points overlap')
     if payload_digest(payload)!=REVIEWED_PAYLOAD_SHA256:
@@ -198,7 +220,7 @@ def verify_reproducible_payload():
     with tempfile.TemporaryDirectory(prefix='text-speed-reproduce-') as directory:
         rebuilt=compile_payload(Path(directory)/'native.o')
     if rebuilt!=payload:raise ValueError('Native payload does not reproduce from current source')
-    return {'status':'passed','payload_sha256':payload_digest(payload),'native_bytes':len(bytes.fromhex(payload['code']))}
+    return {'status':'passed','reviewed_payload_digest':payload_digest(payload),'native_bytes':len(bytes.fromhex(payload['code']))}
 
 def code_patch_ranges(code_patches=None):
     """Enabled hardcoded code patches as (id,file,offset,expect bytes,value bytes).
@@ -292,6 +314,8 @@ def apply(rom,payload=None,code_patches=None):
     # Allocate/initialize private fractional-speed state; never reuse game-owned fields.
     patch(a,0x2000000,0x20208ea,struct.pack('<H',0x2134),struct.pack('<H',0x2138))
     patch(a,0x2000000,0x2020962,bl(0x2020962,0x2020be8),bl(0x2020962,payload['symbols']['init_printer']))
+    # The game loop's last call before its VBlank wait goes through frame_end.
+    patch(a,0x2000000,FRAME_END_CALL[0],bl(*FRAME_END_CALL),bl(FRAME_END_CALL[0],payload['symbols']['frame_end']))
     # Options_Init already cleared both bytes. Set MEDIUM (bits2..3=1), music remains0.
     patch(a,0x2000000,0x202b176,struct.pack('<HH',0x200f,0x4381),struct.pack('<HH',0x2004,0x4301))
     # Music accesses mask only low two bits; its setter preserves the new bits.
@@ -384,7 +408,7 @@ def apply(rom,payload=None,code_patches=None):
     for off in range(0,len(table),32):
         if struct.unpack_from('<I',table,off)[0]==50:struct.pack_into('<I',table,off+8,len(o));break
     rom.arm9OverlayTable=bytes(table);rom.files[ov.fileID]=bytes(o)
-    return {'itcm_start':hex(BASE),'itcm_end':hex(end),'payload_sha256':digest(blob),'overlay_sha256':digest(o),'arm9_sha256':digest(rom.arm9),'source_code_sha256':source_digest(),'edits':edits,'labels':4,
+    return {'itcm_start':hex(BASE),'itcm_end':hex(end),'payload_code_sha256':digest(blob),'overlay_sha256':digest(o),'arm9_sha256':digest(rom.arm9),'source_code_sha256':source_digest(),'edits':edits,'labels':4,
             'arm9_code_patches':{'normalised_to_expect':[c[0] for c in cps],
                                  'held_value':[c[0] for c in cps if bytes(current[c[2]:c[2]+len(c[4])])==c[4]]}}
 
@@ -412,6 +436,7 @@ def verify(rom,report,code_patches=None):
         0x02020a18:struct.pack('<I',payload['symbols']['print_task']),
         0x020208ea:struct.pack('<H',0x2138),
         0x02020962:bl(0x02020962,payload['symbols']['init_printer']),
+        FRAME_END_CALL[0]:bl(FRAME_END_CALL[0],payload['symbols']['frame_end']),
         0x0202b176:struct.pack('<HH',0x2004,0x4301),
         0x0202b1c6:struct.pack('<HH',0x0780,0x0f80),
         0x0202b1d2:struct.pack('<H',0x2203),

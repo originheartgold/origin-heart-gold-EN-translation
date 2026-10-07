@@ -1,167 +1,310 @@
-# Text speed: frame-aware batching (D-1601)
+# Text speed: frame-aware batching with measured costs (D-1601)
 
 The native batching loop in `work/patches/text_speed/native.c` stops drawing
-further glyphs in a task when the current frame is nearly used up. This note
-records why, how the rule and its two constants were derived, and what was
-measured before and after. Branch `codex/text-speed-research`.
+further glyphs in a task when one more glyph would make the game miss the next
+VBlank. Since 2026-10-07 (second revision) it predicts that from costs it measures
+itself while the game runs, not from fixed constants. This note records why, how
+the rule works and was derived, what was measured, and how the gates check it.
+Branch `codex/text-speed-research`.
 
 ## The problem
 
-An independent review measured, deterministically, that in ordinary 60 fps field
-dialogue the game drops frames while a task draws two or three glyphs:
+The game loop (NitroMain, `0x02000C88`) wakes at the start of VBlank (display line
+192), runs the field or battle work, the task queues (the text printer is one of
+those tasks), then a few post steps, and finally waits for the next VBlank
+(`OS_WaitIrq` at `0x02000DE8`). If the loop is still running when that VBlank
+starts, the wait misses it and waits for the one after: the frame is dropped (no
+game update; the printer task does not run).
 
-- The game loop wakes at VBlank (display line 192) and runs the field work first;
-  the printer task starts late in the frame, at about line 150-180. If the loop is
-  still running when the next VBlank starts, the game waits for the one after, and
-  that frame is dropped (no game update; the printer task does not run).
-- Each glyph costs about 10 display lines. Most of that is not drawing: the
-  hack's font is read lazily from the cartridge, two card transfers per glyph
-  (109 card transfers for the 54-glyph trainer page). The window copy to VRAM is
-  already done once per task (2-3 lines).
-- So a task that starts at line 163 has room for one glyph, a task at line 155 for
-  two. The previous loop drew its whole budget (2 or 3) regardless, ended at about
-  line 190-200 and the game ran at 30 fps while printing. Trainer page, 54 glyphs:
-  SLOW / MEDIUM / FAST 37 / 38 / 34 frames with 1 / 11 / 16 dropped frames; the
-  original printer (one glyph per task) 55 frames with 1 dropped frame.
+Each glyph costs about 9-12 display lines; 7-9 of them are one lazy cartridge read
+of the glyph's font data (`NARC_ReadFromAbsOffset`, `0x02007784`; one read per
+glyph). The window copy to VRAM is done once per task (about 2-3 lines).
+
+The first frame rule (`cc36910`..`cf50a23`) stopped before another glyph when
+`7 <= 192 - line < 20`: two fixed constants measured in two DeSmuME scenes. An
+independent review found it failing in busy 60 fps scenes: in Goldenrod Dept. Store
+6F MEDIUM took 85 frames for message 718#160 against SLOW's 84; many stops did not
+save the frame; speeds collapsed in Celadon Gym, after the Options menu and on an
+idle Route 1. A constant cannot follow scenes whose costs differ, and the constants
+were calibrated in one emulator only.
 
 ## The rule
 
 Every task still draws at least one glyph (or handles one control), exactly like
-the original printer, so no setting can be slower per task than the original.
-Before each further glyph the loop reads VCOUNT (I/O register `0x04000006`, the
-current display line; read only, so it is not ARM9 code and needs no reviewed
-dependency range) and computes the lines left until the next VBlank starts:
+the original printer. Before each further glyph (budget left, no control next) the
+loop predicts where the game loop will end if it draws one more glyph:
 
-    left = 192 - line            for line 0..191
-    left = 192 + 263 - line      for line 192..262 (in VBlank: a whole frame ahead)
+    draw   if  left >= glyph + rest + MARGIN          (it fits)
+    draw   if  left <  low                            (the frame is lost anyway)
+    stop   otherwise
 
-It stops when `FRAME_LOST_LINES <= left < MIN_LINES_FOR_GLYPH`, i.e. when one more
-glyph would not fit before the VBlank but stopping now still would. With
-`left >= MIN_LINES_FOR_GLYPH` the glyph fits. With `left < FRAME_LOST_LINES` the
-loop cannot reach the halt before VBlank even if it stops now: the frame is lost
-anyway, the deadline becomes the following VBlank (a whole frame away), and the
-batch may continue. The per-task budgets (SLOW 1/2, MEDIUM 2, FAST 3) stay the
-maxima, so a batch can never run long.
+- `left`: lines until the next VBlank starts, from VCOUNT (`0x04000006`) read right
+  after the previous glyph: `192 - line` before VBlank, `192 + 263 - line` in VBlank
+  (a VBlank-time task, as in battle, or a frame already lost: the next VBlank is a
+  whole frame away).
+- `glyph`: the largest of the last eight measured extra-glyph costs: lines from the
+  reading after one glyph to the reading after the next, the exact quantity being
+  predicted. A task's first glyph is not a sample (it runs after the field work with
+  cold caches and costs about two lines more). With no sample since power-on:
+  `GLYPH_SEED` 13.
+- `rest`: the largest of the last eight measured rests: lines from the end of a
+  batch that drew to the end of its game-loop pass (window copy, task exit and
+  everything the loop still does before its wait). With no sample: `REST_SEED` 20,
+  and no frame is declared lost.
+- `low`: the shortest of those rests. If even that does not fit (`left < low`), a
+  stop could not reach the wait before VBlank: the frame is dropped whatever the
+  batch does, the next deadline is the following VBlank, and the batch may use the
+  time (still within its budget).
+- `MARGIN` 1: VCOUNT counts whole lines, so the current line can be up to one line
+  later than read; the maxima of eight samples already include the rounding of the
+  two costs.
 
-Field and battle differ, and the rule is correct in both because it is relative to
-the next VBlank, not to an absolute line:
+The budgets stay the maxima (SLOW 1/2 by phase, MEDIUM 2, FAST 3), so a batch can
+never run long. SLOW's phase: if a two-glyph task is stopped by the frame rule, the
+phase is not flipped, so the next task keeps the two-glyph turn.
 
-- Field (60 fps): tasks start at about lines 150-180, so the rule is active.
-- Battle: the printer task runs in VBlank (lines 220-260), right after the loop
-  wakes; `left` is 195-235 and the whole budget is drawn, as before. An absolute
-  "stop in VBlank" rule (tried first) made every battle speed as slow as the
-  original printer (SLOW identical to the original over battle start and two turns).
-- Heavy field scenes where even the original printer drops every other frame (the
-  script-injected corpus messages after the Options menu): the first glyph often
-  ends at line 182-197. Stopping there no longer saves the frame, so the
-  `FRAME_LOST_LINES` zone lets the batch continue. Two earlier variants failed
-  there: "stop when `left < 22` or when a VBlank started during the task" made FAST
-  take 74 frames for a message the original prints in 81 and SLOW 83; "stop when
-  `left < 22`" made MEDIUM slower than SLOW on another message (190 / 187 frames).
-- VCOUNT wrap: there is no start-of-task reference to go wrong. After a VBlank has
-  started during a task, `left` is again the distance to the next VBlank (200+
-  lines), which is the right deadline once the frame is lost; the budget (at most
-  three glyphs, about 30 lines) bounds the batch.
+The batch also stops before every control (end of text, extended control, page
+prompts, `0xF0FD`); since this revision it looks past newlines (`0xE000`) when it
+checks: RenderText draws a newline in the same step as the unit after it, so a
+newline right before the end of the text or a prompt is that control's step. The
+original printer takes that step in the next task; before this fix FAST took it in
+the same task as the last glyph when a battle message ended with a newline
+(Picnicker Amelia's defeat line, found by the multi-battle gate; the `cf50a23`
+candidate has the same defect).
 
-SLOW's phase: SLOW alternates one- and two-glyph tasks. If a two-glyph task is
-stopped by the frame rule, the phase is not flipped, so the next task keeps the
-two-glyph turn. Without that, in the trainer scene every two-glyph turn fell on a
-late task and SLOW printed exactly as slowly as the original (55 frames).
+### Measuring the rest
+
+The payload hooks the game loop's last call before its VBlank wait: the `bl
+0x020272d4` (a 3D swap request) at `0x02000DE0` now calls `frame_end`, which makes
+that call first and then reads VCOUNT and the SDK's VBlank counter
+(`HW_VBLANK_COUNT_BUF`, `0x027FFC3C`, the word `OS_GetVBlankCount` reads; it steps
+at line 192). A batch that drew records the line and the counter's low byte at its
+end. `frame_end` measures the rest from there, but keeps the sample only if the
+counter agrees with the lines: one VBlank in between if the interval crossed line
+192, none otherwise. A loop that waited for VBlank elsewhere in between (the save
+code does) gives no sample. If no batching task ran for 60 loop passes (`STALE`,
+about a second without text: a map change), the rest history is cleared, because a
+new scene's loop may be heavier; a printer waiting for a button still runs its task
+and keeps the history. Neither VCOUNT nor the VBlank counter is ARM9 code, so neither
+has a reviewed dependency range.
+
+### State and RAM
+
+One global `struct frame_state` of 24 bytes (glyph[8], rest[8], two ring indexes,
+the open mark, the idle count, the mark's line and counter byte, the 'ran' flag),
+zero at boot, the last 24 bytes of the payload block in ITCM; the SDK ITCM arena
+starts after the block. Glyph costs do not depend on the printer and the rest
+belongs to the loop pass, so the state is global; the per-printer SLOW phase stays
+in the printer's private byte `+0x34`. Payload 1240 bytes, ITCM extension
+`01FF8620`-`01FF8B00`. `text_speed_patch.py` checks that the state symbol is the
+zeroed tail of the block; the gates compare the fixed bytes before it.
+
+ARM9 guard: the edit at `0x02000DE0` is in `apply()`'s edit list and `verify()`'s
+critical bytes; the whole game loop (`0x02000C88`-`0x02000E38`) and the called
+routine (`0x020272D4`-`0x020272F8`) are reviewed dependencies, both re-derived from
+the base ARM9 by the unit tests, so no code patch may overlap them.
 
 ## Deriving the constants
 
-Measured with the review probe (per frame: task entry, each glyph, each VCOUNT
-check, window copy, idle halt) on the trainer page:
+Measured in DeSmuME across the 17 scenes below (`work/research/text_speed/scene_pacing.py`):
 
-| From the VCOUNT check | Lines |
+| Quantity | Measured |
 | --- | --- |
-| stop now: window copy + rest of the game loop up to the idle halt | 7-8 |
-| one more glyph (two cartridge font reads), then stop | 16-18 |
-| first glyph after task entry (includes the colour setup) | 12-13 |
+| extra glyph (reading to reading) | 7-11 lines, median 10; cheap glyphs 2-5 |
+| first glyph of a task (from before its render) | 11-13 lines |
+| rest (batch end to loop end, with window copy) | 5-10 lines, 6-8 typical; a waiting task (no copy): 1 |
 
-- `MIN_LINES_FOR_GLYPH = 20`: one more glyph costs at most 18 lines from the check,
-  and the loop must reach its halt by line 191, so the check may be at line 173
-  (19 lines left) at the latest; one line of margin gives 20. Measured: a check
-  with 19 lines left ended the loop at line 190-191, with 22 left at 186-188.
-  Margins compared on the trainer page (SLOW / MEDIUM / FAST frames, every speed
-  with the original's 1 dropped frame): 22 → 37 / 37 / 36 (MEDIUM ties SLOW),
-  21 → 37 / 37 / 36, 20 → 37 / 36 / 35, 19 → 37 / 35 / 33 (no margin left).
-  20 is the smallest value with a margin and gives the strict order.
-- `FRAME_LOST_LINES = 7`: the least measured cost of stopping. With 6 or fewer lines
-  left a stop ends the loop at line 193 or later: the frame is lost either way.
+- `GLYPH_SEED` 13: the largest glyph cost seen anywhere, first glyphs included.
+- `REST_SEED` 20: about twice the largest rest. It only applies to a printer's first
+  decision after a second without text; it costs at most one glyph there (seen: two
+  frames on a two-page message in two 30 fps scenes).
+- `SLOTS` 8: the maxima follow a scene within eight samples, and an outlier is
+  forgotten after eight.
+- `MARGIN` 1: see the rule.
 
-Both are named constants in `native.c` and are pinned again independently in
-`work/tools/text_speed_checks.py`; a unit test keeps the two equal. The gates check
-every VCOUNT decision of the binary against that model (see below), so a changed
-threshold in the payload fails the gates.
+How the rule got there (probe runs over the same scenes; SLOW / MEDIUM / FAST
+frames on the trainer page after Options, then Celadon Gym):
 
-Limits: the costs were measured in DeSmuME in two field scenes. A scene whose
-remaining loop work after the printer task is heavier than measured can still drop
-a frame the original would not; the gates require every speed to drop at most one
-frame more than the original in every measured message. Hardware card timing may
-differ from DeSmuME's; a device check is still needed.
+1. One line of margin per reading (3), first glyphs as samples, every empty slot
+   counted as the seed: 42 / 43 / 39 (MEDIUM slower than SLOW). Too conservative:
+   a first glyph costs about two lines more than an extra one.
+2. Margin 1: 38 / 37 / 36; Celadon Gym 54 / 57 / 55 with a dropped frame the
+   original printer does not drop.
+3. Only extra glyphs as samples: Celadon still dropped that frame. Cause: tasks that
+   only wait for a button gave rest samples of about 1 line (no window copy), so after
+   every page wait the rule drew glyphs that did not fit.
+4. Rest samples only from batches that drew: no extra dropped frames anywhere, but
+   the rest history was cleared during every page wait (no rest sample there), so
+   each page started with the seed.
+5. A task that runs (also while waiting) keeps the history fresh; seeds 13 and 20,
+   empty slots ignored once a sample exists: the final rule, 37 / 35 / 33 and
+   54 / 52 / 46.
 
-## Before and after
+Every frame decision of the binary is checked against a line-for-line mirror of
+this model (`text_speed_checks.FrameModel`), and the payload's state against the
+costs the gate measured itself; a unit test keeps the constants equal to `native.c`.
 
-Frames from the first to the last glyph (sum of page spans for multi-page
-messages) and dropped frames (frames inside that span in which the printer's task
-did not run), original printer / SLOW / MEDIUM / FAST. Before: candidate
-`e9aedbb1…2d13` (no frame rule). After: the payload in this commit.
+## Scenes before and after
+
+Printing frames (sum of page spans: first to last glyph of each page) and dropped
+frames inside those spans (frames in which the printer's task did not run), original
+printer / SLOW / MEDIUM / FAST. Before: the `cf50a23` candidate (`8c6e97f9…fb86c`,
+fixed rule). After: this payload. Both measured with the same scene procedures
+(`scene_pacing.py`: cold boot, the scene's setup, one checkpoint, then the four modes).
 
 | Scene | Before: frames | Before: dropped | After: frames | After: dropped |
 | --- | --- | --- | --- | --- |
-| Natural trainer page (54 glyphs) | 54 / 36 / 37 / 33 | 1 / 1 / 11 / 16 | 54 / 37 / 36 / 35 | 1 / 1 / 1 / 1 |
-| Fallback scene, same page | 54 / 36 / 28 / 29 | 1 / 1 / 2 / 12 | 54 / 37 / 35 / 31 | 1 / 1 / 1 / 1 |
-| Corpus 48#20 | 81 / 55 / 41 / 27 | 38 / 27 / 20 / 13 | 81 / 54 / 45 / 35 | 38 / 25 / 20 / 16 |
-| Corpus 48#26 | 268 / 184 / 141 / 91 | 126 / 89 / 70 / 45 | 270 / 179 / 141 / 96 | 128 / 83 / 67 / 45 |
-| Corpus 48#60 | 531 / 353 / 261 / 173 | 265 / 176 / 130 / 86 | 531 / 353 / 261 / 173 | 265 / 176 / 130 / 86 |
-| Corpus 457#123 | 115 / 75 / 55 / 35 | 57 / 37 / 27 / 17 | 115 / 75 / 55 / 35 | 57 / 37 / 27 / 17 |
-| Corpus 718#160 | 163 / 107 / 79 / 51 | 81 / 53 / 39 / 25 | 163 / 107 / 79 / 51 | 81 / 53 / 39 / 25 |
-| Corpus 718#1093 | 513 / 341 / 251 / 169 | 256 / 170 / 125 / 84 | 513 / 341 / 251 / 169 | 256 / 170 / 125 / 84 |
-| Controls fixture 718#160 | 205 / 161 / 139 / 111 | 64 / 46 / 38 / 24 | 205 / 158 / 145 / 119 | 64 / 43 / 38 / 25 |
-| Battle segment 0 | 31 / 21 / 15 / 10 | 0 / 0 / 0 / 0 | 31 / 21 / 15 / 10 | 0 / 0 / 0 / 0 |
-| Battle segment 1 | 47 / 31 / 22 / 14 | 0 / 0 / 0 / 0 | 47 / 31 / 22 / 14 | 0 / 0 / 0 / 0 |
-| Battle segment 2* | 154 / 101 / 73 / 46 | 0 / 0 / 0 / 0 | 72 / 47 / 34 / 22 | 0 / 0 / 0 / 0 |
-| Battle segment 3* | 114 / 75 / 54 / 34 | 0 / 0 / 0 / 0 | 87 / 57 / 40 / 25 | 0 / 0 / 0 / 0 |
+| Trainer page, fresh boot (Route 1) | 54 / 36 / 27 / 22 | 1 / 1 / 1 / 1 | 54 / 36 / 27 / 21 | 1 / 1 / 1 / 1 |
+| Trainer page after the Options menu | 54 / 36 / 36 / 35 | 1 / 1 / 1 / 1 | 54 / 37 / 35 / 33 | 1 / 1 / 1 / 1 |
+| Trainer page after 35 s idle on Route 1 | 85 / 57 / 55 / 39 | 32 / 22 / 20 / 14 | 88 / 61 / 62 / 44 | 35 / 25 / 26 / 18 |
+| 718#160 Pallet Town house 2F | 82 / 54 / 40 / 26 | 0 / 0 / 0 / 0 | 82 / 54 / 40 / 26 | 0 / 0 / 0 / 0 |
+| 718#160 Ecruteak Dance Theater | 82 / 54 / 40 / 26 | 0 / 0 / 0 / 0 | 82 / 54 / 40 / 26 | 0 / 0 / 0 / 0 |
+| 718#160 Pokéathlon gatehouse | 82 / 54 / 40 / 26 | 1 / 1 / 1 / 1 | 82 / 54 / 40 / 26 | 1 / 1 / 1 / 1 |
+| 718#160 Mt. Moon | 82 / 54 / 40 / 26 | 0 / 0 / 0 / 0 | 82 / 54 / 40 / 26 | 0 / 0 / 0 / 0 |
+| 718#160 Celadon Gym | 82 / 54 / 52 / 47 | 0 / 0 / 0 / 0 | 82 / 54 / 52 / 46 | 0 / 0 / 0 / 0 |
+| 718#160 Goldenrod Dept. Store 6F | 122 / 84 / 85 / 62 | 40 / 27 / 28 / 20 | 122 / 85 / 85 / 63 | 40 / 28 / 28 / 20 |
+| 718#160 Route 1 (60 fps) | 82 / 55 / 53 / 50 | 0 / 0 / 0 / 0 | 82 / 54 / 52 / 46 | 0 / 0 / 0 / 0 |
+| 718#160 Route 1 after a warp (30 fps) | 163 / 107 / 79 / 51 | 81 / 53 / 39 / 25 | 163 / 107 / 81 / 53 | 81 / 53 / 40 / 26 |
+| 718#160 Viridian City (30 fps) | 165 / 109 / 81 / 53 | 83 / 55 / 41 / 27 | 165 / 109 / 81 / 53 | 83 / 55 / 41 / 27 |
+| 718#160 Viridian Forest (30 fps) | 163 / 107 / 79 / 53 | 81 / 53 / 39 / 26 | 163 / 107 / 81 / 53 | 81 / 53 / 40 / 26 |
+| 718#160 S.S. Anne (30 fps) | 165 / 109 / 81 / 53 | 83 / 55 / 41 / 27 | 165 / 109 / 81 / 53 | 83 / 55 / 41 / 27 |
+| Route 1 promoter talk (60 fps) | 83 / 57 / 53 / 52 | 1 / 1 / 1 / 1 | 83 / 56 / 52 / 48 | 1 / 1 / 1 / 1 |
+| Route 1 promoter talk after a warp (30 fps) | 189 / 127 / 93 / 61 | 94 / 63 / 46 / 30 | 189 / 127 / 93 / 61 | 94 / 63 / 46 / 30 |
+| Seven Island tourist talk | 67 / 45 / 33 / 22 | 0 / 0 / 0 / 0 | 67 / 45 / 33 / 22 | 0 / 0 / 0 / 0 |
 
-\* Battle turns 2 and 3 are different battles before and after (the RNG follows
-frame timing from the checkpoint on), so only their after values compare with each
-other. In every battle segment every pause, dwell and printer removal equals the
-original printer's exactly, before and after.
+(The original printer's own numbers differ between the two builds in the idle
+Route 1 scene: there the loop ends within a line of VBlank, see below, and the two
+ROMs differ slightly before the message, so the same scene drops different frames.
+Each speed is compared with the original printer of its own ROM.)
 
-Field scenes trade a few frames for no dropped frames: in the controlled fallback
-scene MEDIUM took 28 frames before with 2 dropped (most second glyphs happened to
-fit) and takes 35 now, FAST 29 before with 12 dropped (slower than MEDIUM) and 31
-now; all speeds now drop exactly the original's one frame and are strictly ordered.
+No speed drops more frames than the original printer in any scene, and no speed
+drops a frame only because of its extra glyphs (the gates check both). In 15 of the
+17 scenes the speeds are strictly ordered. Two are not, and cannot be without making
+glyphs cheaper (the glyph cache):
 
-The corpus and controls messages run in a heavy scene (after the Options menu,
-via an injected script) where even the original printer drops about every other
-frame; "dropped" there counts those frames too, for every mode alike. In that scene
-the frame rule makes FAST a little slower than before on two messages (48#20: 27 →
-35 frames, 48#26: 91 → 96; controls: 111 → 119), because stopping there costs
-about 10-11 lines rather than the 7-8 measured in the trainer scene, so some stops
-in the 7-10 line zone do not save the frame. A `FRAME_LOST_LINES` of 11 was faster
-there (48#20 FAST 26 frames) with no extra dropped frames in the measured scenes,
-but would give up frames that stopping saves in the trainer scene; the constant is
-kept at the measured minimum.
+- **Goldenrod Dept. Store 6F: SLOW = MEDIUM.** The loop passes alternate: a task at
+  about line 167 has room for exactly one glyph (it ends at 180, the loop at 189; a
+  second glyph would end it at 199); a task at about line 175 ends its first glyph at
+  188, so that frame is lost anyway (the original printer drops it too). MEDIUM
+  draws 1 and 2 there, its physical maximum: a second glyph in the 167 pass would
+  drop a frame the original keeps. SLOW also draws 1 and 2, because its two-glyph
+  turn, kept by the frame stop in the 167 pass, falls into the lost pass. Both are at
+  the maximum the frames allow; the gate shows that no frame stop gave up a glyph
+  that would have fitted.
+- **Idle Route 1: MEDIUM one frame slower than SLOW.** The same structure one line
+  from the edge: a task at about line 169 ends its single, mandatory glyph at 182 and
+  the loop at 191-193, so whether that frame drops is decided by the original glyph
+  alone (the original printer drops 35 of its 88 frames). SLOW and MEDIUM draw
+  exactly the same per pass (1, then 2 in the lost pass); MEDIUM's run had one more of
+  those forced drops. Without forced drops both take the same number of frames. This
+  is an inversion of one frame that the batching cannot influence.
 
-Natural trainer page: the speeds are strictly ordered, 54 / 37 / 36 / 35 frames,
-and no speed drops a frame more than the original (1). The scene leaves room for
-about 1.5 glyphs per frame (two glyphs in a frame whose task starts near line 155,
-one near line 163), so the speeds are close together there; the differences come
-from tasks whose second or third glyph just fits. The gates allow a tie between two
-speeds only when the faster one stopped on the frame limit
-(`text_speed_checks.frame_order`); any inversion fails. In lighter scenes (battle,
-the corpus messages) the speeds keep their full budgets.
+The gates accept a tie or inversion between two speeds only at this physical cap:
+neither speed stopped a glyph that would have fitted (judged from the observed frame
+ends), and the faster speed's frames without its forced drops are at most the slower
+one's. Everything else must be strictly ordered.
+
+Light 60 fps scenes leave room for two or three glyphs per frame and every speed
+keeps its full budget. In 30 fps scenes (Route 1 after a warp, Viridian, the forest,
+the S.S. Anne) the field work takes longer than a frame, so the printer task runs
+after a lost VBlank with most of a frame ahead; every speed keeps its full budget
+there too. MEDIUM and FAST are two frames slower than before on two 30 fps messages:
+the printer's first decision after a second without text uses `REST_SEED`.
+
+## Battle
+
+Battle text runs in VBlank (the loop pass starts at line 192, the task runs at about
+line 220-260 and the pass ends before the next VBlank), so every speed keeps its
+budget. The battle gate (`battle_pacing.py`) now plays seven battles (trainers 1, 2
+Steven, 5 Picnicker Amelia, 30 Whitney, 8 Rival Blue, 40 and 50: battle start and
+three turns each, or until the battle ends). Fisherman Noah (100), Cynthia (3),
+Youngster Sol (6) and Rich Boy Howard (10) are excluded: the fixture's only Pokémon
+(Lv 9) faints and the black-out waits for a button, with the original printer too.
+
+The review saw pauses after a message differ from the original's by a frame and
+suspected double printer runs. What was found:
+
+- **Frames versus loop passes.** A battle pass runs from one VBlank start to the
+  next, but emulator frames are scans (lines 0-262). When a pass ends after line 0,
+  one emulator frame holds two loop passes and two printer task runs, so an interval
+  counted in frames can be one shorter than in passes, and where a batch ends decides
+  in which of the two runs a step falls. In the final run, last glyph to printer
+  removal differed between frames and passes in 28 of 308 removals (the trainers'
+  opening lines, removed by the battle about 100 frames later); for every other
+  message both were 1. So the gate compares the battle's waits in loop passes.
+- **The pauses themselves.** Measured in passes, a pause can still differ from the
+  original printer's by one or two passes. The original printer alone does the same:
+  replayed from the same checkpoint with its start delayed by 1-40 frames, the pause
+  after "Blazor used Scratch!" (trainer 1, turn 3) is 249 or 250 frames depending
+  only on the delay (249 at delays 0, 4, 8, 17, 21, 30, 34, 38). In those replays the
+  RAM of a 0- and a 1-frame-delayed run differs during the whole pause only in the
+  sound library's work area (`0x021DC4A0`.., initialised by the NITRO sound code at
+  `0x020C6BE0`) and two timer words (the RTC refresh counter `0x021CFE94`, the
+  loop-pass counter `0x021D00C0`), until the pass in which one run moves on. The
+  game's LC random number generator is identical. So the battle waits for its sound
+  effect or cry to end, and the sound engine runs on the ARM7's own sound-frame clock
+  (about 5.2 ms), not on video frames: the pass in which the battle sees the sound
+  end depends on the absolute timing, which faster text changes. (Aligning only the
+  end of the message is not enough: SLOW, delayed so that it finishes the message on
+  the original's frame, still paused 250 against 249.)
+
+Rule (`text_speed_checks.battle_pacing_errors`): the first glyph and the end-of-text
+step must be exactly as many passes after the printer's start and last glyph as with
+the original printer. The pause after each message (passes) and the completed text's
+on-screen dwell (frames) must equal the original's, or be a value the original
+printer itself shows when its run is replayed from the same checkpoint with its start
+delayed by 1-12 frames (the gate runs those replays whenever a value differs).
+In the final run 14 of 231 pauses of the three speeds differed from the original printer's (by +1, -1 or -2 passes), all values the original itself shows in its replays; 217 were equal. Each segment must also be shorter by exactly the printing frames saved
+plus those pause differences, with an identical lead-in.
 
 ## How the gates check it
 
-`gate_common.PrinterTrace` finds the VCOUNT read in the payload by disassembly and
-hooks the instruction after it, so it sees exactly the line the code compared. For
-every native task `text_speed_checks.task_errors` requires: at least one render; a
-frame check after every glyph that has budget left and no control next; the next
-glyph exactly when the model allows it (`frame_stop`); and a reason for every task
-that drew less than its budget (control next, render result, or a frame stop).
-SLOW's phase must flip after a task that drew, except after a frame stop.
-Fault fixtures `vcount-ignored` and `vcount-zero-glyph` prove the check is not
-vacuous.
+Model (`text_speed_checks.task_errors` with `gate_common.PrinterTrace`): the trace
+hooks every load in `print_task` and `frame_end` and keeps those whose effective
+address is VCOUNT or the VBlank counter, so it sees exactly the values the payload
+reads. It mirrors the payload's frame state from those readings only and compares it
+with the payload's RAM before every reading; each task's decisions must equal the
+mirror's (`FrameModel.decide`), a task draws at least once, reads the line after every
+render, marks its end once if it drew, stops only for a reason (budget, control,
+render result, frame stop), and SLOW's phase flips except after a frame stop.
+
+Product (`text_speed_checks.order_errors`, in every gate that compares speeds, and
+the `scenes` gate over the 17 scenes above), per message:
+
+- frames: the original printer > SLOW > MEDIUM > FAST, strictly, except at the
+  physical cap as above;
+- no speed drops more frames than the original printer;
+- no frame is dropped only because of the batch's extra glyphs (the pass, without
+  the extra glyphs' lines, would have ended before VBlank);
+- no frame stop gave up a glyph that would have fitted: with one more glyph of the
+  message's median measured cost the pass would still have ended two or more lines
+  before VBlank (stops taken before any cost of the scene was measured are exempt);
+- SLOW floor: SLOW's tasks that drew glyphs are at most 2/3 of the original
+  printer's (SLOW draws three glyphs per two tasks, the original one per task), plus
+  one per page (the phase at a page's start), plus one per futile frame stop (a stop
+  whose pass then missed VBlank anyway: it keeps SLOW's two-glyph turn, so it costs a
+  task, never a glyph; whether a frame can still be saved is not known when the batch
+  decides).
+
+These rules use only observed frame ends, not the model's constants, so a payload
+that is too conservative, or the fixed `cf50a23` rule, fails even when the gate's
+model is changed to match it (fault matrix in [the recipe](text_speed_release_checks.md)).
+
+## Limits
+
+- Hardware: the costs are measured at run time, so different card or CPU timing on a
+  real DS changes the samples, not the rule. The seeds, the margin and the stale
+  period were chosen from DeSmuME measurements, and the frame-end hook's own cost (a
+  few dozen cycles per loop pass) was not measured on hardware. A device check is
+  still needed.
+- The VBlank branch of `left` (`192 + 263 - line`) is the correct deadline for a task
+  that runs in VBlank, but in every measured VBlank-time task (battle, lost frames)
+  the deadline was 200 or more lines away, so the unsigned value of `192 - line`
+  would decide the same. No gate can tell the two apart; it only matters if a
+  VBlank-time pass needs nearly a whole frame after the text task.
+- Two scenes reach the physical cap (above); MEDIUM is one frame slower than SLOW on
+  idle Route 1 because of forced drops. Only cheaper glyphs (the glyph cache) can
+  change that.
+- The sound rule accepts a battle pause only if the original printer shows that
+  value in 12 delayed replays; a value it would show only with other delays fails the
+  gate (none seen).

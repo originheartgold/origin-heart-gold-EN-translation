@@ -56,6 +56,10 @@ Fail closed:
 
 - `validate_release.py` and every gate refuse to run under `python -O`; gate checks
   use `gate_common.require()` (raises `GateError` with a message), never `assert`.
+- Every gate process (and every child a gate starts) runs as `python -I` (no
+  `PYTHONPATH`, no user site, no script directory injected) with a clean
+  environment: only `PATH`, `HOME`, `USER`, `LOGNAME`, `TMPDIR`, the locale variables
+  and `EMU_HARNESS_MAX_EMULATORS` are passed on (`validate_release.gate_env`).
 - The work tree must be clean, untracked files included
   (`git status --porcelain --untracked-files=all`); it is checked again at the end,
   with HEAD. `--allow-dirty` runs anyway but can only end in
@@ -71,22 +75,33 @@ movie recording restores the starting battery) and asserts values only. Because
 runs repeat frame for frame, the gates compare with the original printer exactly,
 without tolerances.
 
-Shared per-task rule (corpus, controls, battle, callbacks, fallbacks,
-natural-dialogue, printers): `text_speed_checks.task_errors` judges every native
-task from hooks on the task, the render step, each glyph and the VCOUNT read: at
-most its budget (SLOW 1/2 by phase, MEDIUM 2, FAST 3); at least one render; a frame
-check after each glyph that has budget left and no control next, and another glyph
-exactly when the frame rule allows it ([frame rule](text_speed_vcount.md)); every
-task that drew less than its budget stopped for a logged reason (control next,
-render result, frame stop); SLOW's phase flips after a task that drew, except after
-a frame stop; callback and explicit-delay printers delegate to the original task.
+Shared per-task rule, the model (corpus, controls, battle, callbacks, fallbacks,
+natural-dialogue, printers, scenes): `text_speed_checks.task_errors` judges every
+native task. `gate_common.PrinterTrace` hooks the task, the render step, each glyph
+and every load in `print_task` and `frame_end` whose address is VCOUNT or the VBlank
+counter, mirrors the payload's frame state from those readings
+(`text_speed_checks.FrameModel`) and compares it with the payload's RAM before every
+reading. Rules: at most its budget (SLOW 1/2 by phase, MEDIUM 2, FAST 3); at least
+one render; a line reading after every render; after a glyph with budget left and no
+control next (a newline counts as part of the unit after it), another glyph exactly
+when the model's decision draws ([frame rule](text_speed_vcount.md)); a task that
+drew marks its end once, after its last reading; every task that drew less than its
+budget stopped for a logged reason (control next, render result, frame stop); SLOW's
+phase flips after a task that drew, except after a frame stop; callback and
+explicit-delay printers delegate to the original task.
 
-Frame order (corpus, controls, battle, fallbacks, natural-dialogue): total printing
-frames original > SLOW >= MEDIUM >= FAST for every message; two speeds may tie only
-when the faster one stopped on the frame limit in that message (reported as
-`frame_limited_ties`), any inversion fails. Dropped frames (frames between a
-printer's first and last glyph in which its task did not run, i.e. the game loop
-missed a VBlank) may exceed the original printer's by at most one per message.
+Product rules (corpus, controls, battle per segment, fallbacks, natural-dialogue,
+scenes; `text_speed_checks.order_errors`), per message against the original printer:
+no frame stop gave up a glyph that would have fitted (one more glyph of the message's
+median measured cost would still have ended the loop pass two or more lines before
+VBlank; stops before any cost of the scene was measured are exempt); total printing
+frames original > SLOW > MEDIUM > FAST, strictly, except at the physical cap (both
+speeds without an unnecessary stop, and the faster one's frames without its forced
+drops at most the slower one's; reported as `capped_ties`); no speed drops more
+frames than the original printer (dropped frame: a frame inside a page's printing in
+which the printer's task did not run); no frame dropped only because of a batch's
+extra glyphs; SLOW floor (SLOW's tasks that drew glyphs at most 2/3 of the
+original's, plus one per page, plus one per futile frame stop).
 
 | Gate | Script | What fails it |
 | --- | --- | --- |
@@ -95,16 +110,18 @@ missed a VBlank) may exceed the original printer's by at most one per message.
 | save | `save_persistence.py` | in-game save → reset → Continue for all three values; reloaded menu labels |
 | new-game | `new_game_default.py` | blank battery: MEDIUM (516) before runtime publication |
 | lifecycle | `printer_lifecycle.py` | phase/focus reset after poisoning; 24 messages: every printer freed, heap growth ≤ 2 blocks / 1 KiB, an open message must be visible to the heap measurement |
-| fallbacks | `harness_fallbacks.py` | invalid/null/legacy-music/explicit-delay paths (every task delegated where required); per-task rule; frame order and dropped frames against the invalid-mode original printer |
+| fallbacks | `harness_fallbacks.py` | invalid/null/legacy-music/explicit-delay paths (every task delegated where required); per-task rule; product rules against the invalid-mode original printer |
 | callbacks | `callback_regression.py` | callback/busy cadence and pixels vs the original task; held A, held B and tapping: no page skipped, one new press after release starts page 2 with exactly the original's latency (counted from the later of the press and the frame the page prompt reads input, last glyph + 2); per-task rule |
-| corpus | `harness_regression.py` | six real messages per speed vs the original printer (reserved value 3): identical page pixels, glyph count and layout; per-task rule; frame order; dropped frames; printer tasks from each page's last glyph to its control step (prompt, scroll, end) exactly equal to the original's; printer allocation/free pairing; heap growth; ITCM at start and end |
+| corpus | `harness_regression.py` | six real messages per speed vs the original printer (reserved value 3): Confirm stores the chosen speed; identical page pixels, glyph count and layout; per-task rule; product rules; printer tasks from each page's last glyph to its control step (prompt, scroll, end) exactly equal to the original's; printer allocation/free pairing; heap growth; ITCM at start and end |
 | controls | `control_fixture.py` + `harness_regression.py --controls` | the authored scroll/clear/size/60-tick-pause message against the original, with the corpus checks; the explicit pause in printer tasks exactly equal (frames are reported: a dropped frame inside the pause lengthens it by one frame at any speed) |
-| battle | `battle_pacing.py` | from shared checkpoints, battle start + three turns per speed and the original: same messages and glyph counts, completed text pixels, the pause after every completed message, its on-screen dwell and the frames from the last glyph to the printer's removal all exactly equal to the original; each segment shorter by exactly the printing frames saved; per-task rule; frame order; dropped frames |
-| natural-dialogue | `natural_dialogue.py` | touch selection after a cold boot, trainer page, original printer as baseline: per-task rule, identical pixels/layout, frame order, dropped frames |
-| printers | `printer_smoke.py` | save prompt, Route 1 sign, Pokémon Center PC (two messages), Pokégear phone call, each from one checkpoint per mode: every AddTextPrinter call logged (speed, callback, caller); the declared path holds (save, PC and phone go through the batched path at every speed and only through the original task with value 3; the sign starts no asynchronous printer); per-task rule; captured text identical to the original printer |
+| battle | `battle_pacing.py` | seven battles (trainers 1, 2, 5, 30, 8, 40, 50; each its own process), from shared checkpoints battle start + three turns per speed and the original: same messages and glyph counts, completed text pixels; the first glyph and the end-of-text step the same number of loop passes after the printer's start and last glyph as with the original; the pause after every message (passes) and its on-screen dwell (frames) equal to the original's, or a value the original printer itself shows when replayed from the same checkpoint with its start delayed by 1-12 frames (the battle waits for its sound; [mechanism](text_speed_vcount.md#battle)); identical lead-in; each segment shorter by exactly the printing frames saved plus those pause differences; per-task rule; product rules per segment. Excluded with reason: trainers 100, 3, 6, 10 (black-out needs a button) |
+| natural-dialogue | `natural_dialogue.py` | touch selection after a cold boot, trainer page, original printer as baseline: per-task rule, identical pixels/layout, product rules |
+| printers | `printer_smoke.py` | save prompt, Route 1 sign, Pokémon Center PC (two messages), Pokégear phone call to Mom (three pages, each captured), each from one checkpoint per mode: every AddTextPrinter call logged (speed, callback, caller); the declared path holds (save, PC and phone go through the batched path at every speed and only through the original task with value 3; the sign starts no asynchronous printer); per-task rule; captured text identical to the original printer |
+| scenes | `scene_pacing.py` | 17 scenes, each a cold boot (busy 60 fps: trainer page after Options, idle Route 1, Celadon Gym, Goldenrod Dept. Store 6F; light 60 fps; 30 fps): the trainer page, message 718#160 or a real NPC talk per speed and the original printer from one checkpoint: per-task rule, identical glyphs/layout/pages, product rules ([table](text_speed_vcount.md#scenes-before-and-after)) |
 
 Every Harness gate checks at start and end that the original ITCM code still has
-its reviewed hash, the payload bytes equal the expected payload and the SDK ITCM
+its reviewed hash, the payload's fixed bytes (all but the 24-byte runtime frame
+state at its end) equal the expected payload and the SDK ITCM
 arena (`0x027FFDAC`/`0x027FFDD0`) starts at or above the payload end. Heap
 integrity is walked every 10 frames. Measurement hooks are registered
 `exclusive`: emu_harness raises if anything later registers the same address
@@ -117,13 +134,13 @@ presses), but its pages are drawn synchronously: the one asynchronous printer it
 starts renders a single control step before the scene removes it, and New Game
 re-initialises Options, so no mode can be chosen there.
 
-Candidate of 2026-10-07: `work/build/text-speed/candidate-vcount/`, ROM SHA-256
-`8c6e97f97cbd844df34c3554615275230a7b3cc50dd63d2e78d94f72399fb86c`, xdelta
-`27200ee8…6c29` (decodes against the USA base, CRC32 `C180A0E9`, to that ROM).
-Build verification, `artifact_check.py`, `--check-payload` and the full unit suite
-(601 tests against a fresh `--no-text-speed` fixture, no skips) passed. The runtime
-report is `work/build/text-speed/release-vcount/report.json`, bound to the commit
-that added this paragraph; frame numbers are in [text_speed_vcount.md](text_speed_vcount.md).
+Candidate of 2026-10-07 (second revision): `work/build/text-speed/candidate-adaptive/`, ROM SHA-256
+`5fc707148c4ef8503f4ed8141dfdf876fbcd6c26bc47f02aebdb3c95962a2460`, xdelta `6d460e7a…d60d` (decodes
+against the USA base, CRC32 `C180A0E9`, to that ROM). Build verification, `artifact_check.py`,
+`--check-payload` (digest `e17e38e0…be9`) and the full unit suite (612 tests against a fresh
+`--no-text-speed` fixture `6fa7b4e7…a7d3`, no skips) passed. The runtime report is
+`work/build/text-speed/release-adaptive/report.json`, bound to the commit that added this paragraph;
+frame numbers are in [text_speed_vcount.md](text_speed_vcount.md).
 
 ### Proving a check is not vacuous
 
@@ -133,33 +150,53 @@ bytes are verified first; the candidate is never changed). Each fault declares t
 gates that must catch it and a text their errors must contain. Run
 `validate_release.py --rom <dir>/FAULT-NAME.nds --fault-payload <dir>/FAULT-NAME.payload.json --only <declared gates>`;
 its status must be `fault-detected`, which requires every declared gate to fail with
-its declared text (a timeout or crash does not count). Fault reports are marked and
+its declared text, found in the gate's own check messages (a timeout, a crash or an
+unexpected Python exception such as a `KeyError` does not count; every declared gate
+names a text). A fault may also set the gates' frame model to the broken payload's
+(`checker` in `fault_fixture.FAULTS`, applied only for `--fault-payload` runs): then
+only the product rules can catch it. Fault reports are marked and
 are never release evidence; validate_release refuses a `FAULT-` ROM without the
 flag. Pure rules live in `work/tools/text_speed_checks.py` and are unit-tested in
 `test_text_speed_checks.py`; the runner's verdict rules in `test_text_speed_release.py`.
 
-Results on candidate `8c6e97f9…fb86c` (2026-10-07, payload `fccee874…f211`,
-812 bytes; reports in ignored `work/build/text-speed/matrix-rc/`). Every fault was
-run with `--only` its declared gates; `no-state-stop` with corpus, controls,
-natural-dialogue, callbacks, fallbacks and battle, none of which failed.
+Results on candidate `5fc70714…2460` (2026-10-07, second revision; payload digest `e17e38e0…be9`,
+1240 bytes; reports in ignored `work/build/text-speed/matrix-adaptive/`). Every fault was run with
+`--only` its declared gates; `no-state-stop` with corpus, controls, natural-dialogue, callbacks,
+fallbacks, battle and scenes, none of which failed. After the runs, the declared texts of five faults
+(`slow-flat`, `space-stop`, `no-control-stop`, `eos-only-no-stop`, `zero-glyph`) were changed to the
+wording the new model check reports (for example 'stopped although the frame decision ... allowed
+another glyph' instead of 'without a reason': every glyph now has a decision); every declared gate of
+those faults had failed, and their verdicts were recomputed from the stored reports with
+`validate_release.fault_verdict` (`verdicts.json`). The last five faults set the gates' frame model to
+the broken payload's, so only the product rules could catch them: `fixed-model` (the `cf50a23` rule) by
+frame stops that gave up a glyph that would have fitted (trainer page after Options, Celadon Gym),
+the two too-conservative payloads (the review's thresholds 24 and 30) by the same rule and the SLOW
+floor, `tail-ignored` and `glyph-ignored` by frames dropped only because of extra glyphs.
 
 | Fault | What it breaks | Declared gates (required text) | Gates that failed | Verdict |
 | --- | --- | --- | --- | --- |
-| `fast-budget` | MEDIUM/FAST budget m+7 instead of m+1 (8 and 9 glyphs per task) | corpus ('design budget'), battle ('design budget'), callbacks ('design budget'), fallbacks ('budget'), natural-dialogue ('design budget') | battle, callbacks, corpus, fallbacks, natural-dialogue | fault-detected |
-| `slow-flat` | SLOW ignores its phase: always one glyph per task | corpus ('without a reason'), callbacks ('without a reason'), fallbacks ('without a reason'), natural-dialogue ('without a reason'), battle ('without a reason') | battle, callbacks, corpus, fallbacks, natural-dialogue | fault-detected |
+| `fast-budget` | MEDIUM/FAST budget m+7 instead of m+1 (8 and 9 glyphs per task) | corpus ('design budget'), battle ('design budget'), callbacks ('design budget'), fallbacks ('budget'), natural-dialogue ('design budget'), scenes ('budget') | battle, callbacks, corpus, fallbacks, natural-dialogue, scenes | fault-detected |
+| `slow-flat` | SLOW ignores its phase: always one glyph per task | corpus ('allowed another glyph'), callbacks ('allowed another glyph'), fallbacks ('allowed another glyph'), natural-dialogue ('allowed another glyph'), battle ('allowed another glyph'), scenes ('allowed another glyph') | battle, callbacks, corpus, fallbacks, natural-dialogue, scenes | fault-detected |
 | `no-phase-reset` | init_printer no longer clears the private phase byte (+0x34) | lifecycle ('phase') | lifecycle | fault-detected |
-| `commit-noop` | Options Confirm no longer stores the text-speed bits | options, save, music, corpus | corpus, music, options, save | fault-detected |
+| `commit-noop` | Options Confirm no longer stores the text-speed bits | options ('did not store the chosen text speed'), save ('did not store the chosen text speed'), music ('did not store the chosen text speed'), corpus ('did not store the chosen text speed') | corpus, music, options, save | fault-detected |
 | `label-overflow` | MEDIUM label replaced by a ten-letter label | options ('label'), save ('label') | options, save | fault-detected |
-| `default-slow` | new-game Options initialiser sets SLOW instead of MEDIUM (main ARM9) | new-game | new-game | fault-detected |
+| `default-slow` | new-game Options initialiser sets SLOW instead of MEDIUM (main ARM9) | new-game ('does not start at MEDIUM') | new-game | fault-detected |
 | `arena-overlap` | SDK ITCM arena lower bound put back over the payload (main ARM9 data) | lifecycle ('ITCM arena'), options ('ITCM arena') | lifecycle, options | fault-detected |
-| `no-control-stop` | batching no longer stops before control codes | corpus ('control step'), controls ('control step'), battle ('to_free') | battle, controls, corpus | fault-detected |
-| `eos-only-no-stop` | batching no longer stops before 0xFFFF/0xFFFE (end of text, extended controls) | corpus ('control step'), battle ('to_free') | battle, corpus | fault-detected |
-| `space-stop` | batching stops before every space (0x01DE) instead of 0xF0FD | corpus ('without a reason'), natural-dialogue ('without a reason'), fallbacks ('without a reason'), callbacks ('without a reason') | callbacks, corpus, fallbacks, natural-dialogue | fault-detected |
+| `no-control-stop` | batching no longer stops before control codes | corpus ('without a frame decision'), controls ('without a frame decision'), battle ('to_free') | battle, controls, corpus | fault-detected |
+| `eos-only-no-stop` | batching no longer stops before 0xFFFF/0xFFFE (end of text, extended controls) | corpus ('without a frame decision'), battle ('without a frame decision') | battle, corpus | fault-detected |
+| `no-newline-peek` | batching no longer looks past a newline: a newline before the end of the text is rendered with the batch | battle ('end-of-text step moved') | battle | fault-detected |
+| `space-stop` | batching stops before every space (0x01DE) instead of 0xF0FD | corpus ('allowed another glyph'), natural-dialogue ('allowed another glyph'), fallbacks ('allowed another glyph'), callbacks ('allowed another glyph') | callbacks, corpus, fallbacks, natural-dialogue | fault-detected |
 | `no-color-setup` | native task no longer sets the glyph colour table before rendering | corpus ('pages differs'), controls ('pages differs'), callbacks ('pixels differ') | callbacks, controls, corpus | fault-detected |
 | `no-state-stop` | batch ignores RenderText state +0x28 / delay counter +0x2a after a glyph | none: dead code | none | fault-dead-code |
-| `reserved-fast` | Options shows reserved/legacy value 3 as FAST instead of MEDIUM | options | options | fault-detected |
-| `vcount-ignored` | batch ignores the VCOUNT frame check (always draws its whole budget) | natural-dialogue ('after a frame stop'), fallbacks ('after a frame stop'), callbacks ('after a frame stop') | callbacks, fallbacks, natural-dialogue | fault-detected |
-| `vcount-zero-glyph` | frame check runs before the first glyph (a late task draws nothing) | corpus ('did not complete'), natural-dialogue ('before the first glyph'), fallbacks ('before the first glyph'), callbacks ('before the first glyph'), battle ('before the first glyph') | battle, callbacks, corpus, fallbacks, natural-dialogue | fault-detected |
+| `reserved-fast` | Options shows reserved/legacy value 3 as FAST instead of MEDIUM | options ('reserved value 3 is not shown as MEDIUM') | options | fault-detected |
+| `zero-glyph` | the batching task returns before its first render (draws nothing) | corpus ('did not complete'), natural-dialogue ('expected the 54-glyph trainer page'), fallbacks ('expected 54 glyphs'), callbacks ('(0 glyphs)'), scenes ('no native tasks observed'), battle ('stuck without A/B input') | battle, callbacks, corpus, fallbacks, natural-dialogue, scenes | fault-detected |
+| `frame-rule-ignored` | the frame decision always draws (the batch always uses its whole budget) | natural-dialogue ('after a frame stop'), fallbacks ('after a frame stop'), callbacks ('after a frame stop'), scenes ('after a frame stop') | callbacks, fallbacks, natural-dialogue, scenes | fault-detected |
+| `rest-not-stored` | frame_end no longer stores the measured rest (the decision runs on the seed) | natural-dialogue ('payload state'), scenes ('payload state'), corpus ('payload state'), fallbacks ('payload state'), callbacks ('payload state') | callbacks, corpus, fallbacks, natural-dialogue, scenes | fault-detected |
+| `fixed-model` | the cf50a23 rule: draw when 20 or more lines are left, lost below 7, no measured costs (gates' model set to match) | scenes ('would have fitted') | scenes | fault-detected |
+| `tail-ignored` | the decision leaves out the rest of the pass (predicts only the glyph) (gates' model set to match) | scenes ('dropped only because'), natural-dialogue ('dropped only because') | natural-dialogue, scenes | fault-detected |
+| `glyph-ignored` | the decision leaves out the glyph cost (predicts only the rest of the pass) (gates' model set to match) | scenes ('dropped only because'), natural-dialogue ('dropped only because') | natural-dialogue, scenes | fault-detected |
+| `too-conservative-24` | needs 4 more lines for an extra glyph (the review's threshold 24 against 20) (gates' model set to match) | scenes ('SLOW floor'), natural-dialogue ('SLOW floor') | natural-dialogue, scenes | fault-detected |
+| `too-conservative-30` | needs 10 more lines for an extra glyph (the review's threshold 30 against 20) (gates' model set to match) | scenes ('SLOW floor'), natural-dialogue ('SLOW floor') | natural-dialogue, scenes | fault-detected |
 
 `no-state-stop` removes the loop's test of RenderText's state (+0x28) and delay
 counter (+0x2a) after a glyph. It is dead code under the pinned base ARM9, proven
@@ -172,7 +209,8 @@ the glyph block writes neither field (it stores only the x position +0x0C; its
 callees get the window and glyph data, not the printer). The native task batches
 only printers with +0x29 & 0x7F = 0 and nothing in the loop changes +0x29. So after
 every glyph +0x28 = 0 and +0x2a = 0, and the test can never fire. It is kept as a
-guard; no gate can catch its removal.
+guard; no gate can catch its removal. (The proof does not depend on the payload's
+frame rule; the test is the same in this revision.)
 
 The standalone `commit_speed` routine in the payload is never called: the compiler
 inlined it into `exit_free`. The `commit-noop` fault therefore patches the inlined
@@ -187,6 +225,7 @@ printers; physical hardware and a second emulator. Preserve the documented nativ
 battle pauses. Use MEDIUM as the recommended starting point for English
 playtesting. Device checks should include short failed-move/status messages,
 ordinary multi-page conversations, Options changes and a save/restart during the
-real playthrough. Frame costs were measured in DeSmuME; whether hardware drops the
-same frames needs a device check. Unreleased INSTANT-era saves are not a
+real playthrough. The frame rule measures its costs at run time, but its seeds and
+margin were chosen from DeSmuME measurements; whether hardware drops the same frames
+needs a device check. Unreleased INSTANT-era saves are not a
 migration-support requirement.

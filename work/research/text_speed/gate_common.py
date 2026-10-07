@@ -90,15 +90,24 @@ def load_expected_payload(args):
     if not args.fault_payload.is_relative_to(BUILD):
         raise SystemExit('fault payloads must live under work/build')
     payload = json.loads(args.fault_payload.read_text())
-    if set(payload) != {'source_sha256', 'base', 'code', 'symbols', 'fault'}:
+    if not {'source_sha256', 'base', 'code', 'symbols', 'fault'} <= set(payload) <= {
+            'source_sha256', 'base', 'code', 'symbols', 'fault', 'checker'}:
         raise SystemExit('not a fault_fixture.py payload')
+    # A fault may declare the frame model its broken payload implements, so that the
+    # gates' model matches it and only the product checks can catch the fault. Only
+    # fault payloads (never release evidence) can do this.
+    import text_speed_checks
+    for name, value in payload.get('checker', {}).items():
+        if name not in text_speed_checks.FAULT_KNOBS:
+            raise SystemExit(f'fault payload sets unknown checker constant {name}')
+        setattr(text_speed_checks, name, tuple(value) if isinstance(value, list) else value)
     return payload
 
 
 def identity(args, payload):
     """Report header binding the run to its inputs and expected payload."""
     inputs = {str(p): digest(p) for p in (args.rom, getattr(args, 'save', None)) if p is not None}
-    head = {'inputs': inputs, 'payload_sha256': hashlib.sha256(bytes.fromhex(payload['code'])).hexdigest()}
+    head = {'inputs': inputs, 'payload_code_sha256': hashlib.sha256(bytes.fromhex(payload['code'])).hexdigest()}
     if 'fault' in payload:
         head['fault_fixture'] = payload['fault']
     return head
@@ -112,6 +121,44 @@ def payload_bytes(payload):
     return bytes.fromhex(payload['code'])
 
 
+def code_bytes(payload):
+    """The payload's fixed bytes: everything before the runtime frame state (its last bytes)."""
+    return payload_bytes(payload)[:payload['symbols']['text_speed_state'] - payload['base']]
+
+
+PAGE_GAP = 20   # frames without a glyph that separate two pages (page waits are far longer)
+
+
+def page_ranges(frames, gap=PAGE_GAP):
+    """[(first, last)] glyph frames of each page, split where no glyph was drawn for > gap frames."""
+    out = []
+    for f in sorted(frames):
+        if out and f - out[-1][1] <= gap:
+            out[-1][1] = f
+        else:
+            out.append([f, f])
+    return [tuple(x) for x in out]
+
+
+def judge_message(trace, mode, mark, task_mark, pages=None):
+    """Model and product verdict for one message printed since (mark, task_mark).
+
+    Returns (record, stop summary, errors): text_speed_checks.task_errors over the
+    printer's tasks (must run before the product record), then speed_record with the
+    median observed cost of an extra glyph."""
+    import statistics
+    import text_speed_checks as checks
+    glyphs = trace.since(mark)
+    tasks = trace.tasks_since(task_mark, set(trace.printers_since(mark)))
+    summary, errors = checks.task_errors(mode, tasks)
+    pages = pages or page_ranges([f for _, _, f in glyphs])
+    warm = checks.warm_costs(tasks)
+    cost = statistics.median(warm) if warm else None
+    record = checks.speed_record(tasks, pages, cost if cost is not None else checks.GLYPH_SEED)
+    record.update(warm_cost=cost, glyphs=len(glyphs), page_spans=[b - a for a, b in pages])
+    return record, summary, errors
+
+
 def itcm_errors(h, payload):
     """Original ITCM code, payload and arena reservation intact in emulator RAM."""
     import text_speed_patch
@@ -121,7 +168,8 @@ def itcm_errors(h, payload):
     original = h.read(ITCM_START, base - ITCM_START)
     if hashlib.sha256(original).hexdigest() != text_speed_patch.REVIEWED_ITCM_SHA256:
         errors.append('original ITCM code changed in RAM')
-    if h.read(base, len(code)) != code:
+    fixed = code_bytes(payload)
+    if h.read(base, len(fixed)) != fixed:
         errors.append('native payload in ITCM differs from the expected payload')
     end = (base + len(code) + 31) & ~31
     lo, hi = h.u32(ARENA_LO_ITCM), h.u32(ARENA_HI_ITCM)
@@ -173,16 +221,32 @@ def heap_usage(h):
     return usage
 
 
+VCOUNT = 0x04000006            # DS display line register (I/O)
+VBLANKS = 0x027FFC3C           # SDK VBlank counter (HW_VBLANK_COUNT_BUF), stepped at line 192
+FRAME_END_CALL = 0x02000DE0    # the game loop's 'bl' that the payload redirects to frame_end
+FRAME_END_RETURN = 0x02000DE4  # the instruction after it
+
+
 class PrinterTrace:
-    """Per-glyph and per-task trace of native printer tasks, plus printer allocation pairing.
+    """Per-glyph and per-task trace of native printer tasks, the payload's frame model,
+    and printer allocation pairing.
 
     Hooks are registered exclusive (emu_harness raises if anything else registers the
     same address later, which DeSmuME would otherwise do silently): the native
     print_task (r1 printer), the original task when the native task delegates to it,
-    the render step when the native loop calls it, the native task's VCOUNT reads
-    (found by vcount_reads), the glyph draw (r4 printer), RemoveTextPrinter, the native
-    init_printer (r0 new printer) and FreeToHeap (r0). memcheck.Probe's own
-    FreeToHeap handler is chained.
+    the render step when the native loop calls it, the glyph draw (r4 printer),
+    RemoveTextPrinter, the native init_printer (r0 new printer), FreeToHeap (r0), and
+    every VCOUNT / VBlank-counter load in print_task and frame_end (found by io_reads;
+    hooked on the instruction after the load, so the hook sees exactly the value the
+    payload read). memcheck.Probe's own FreeToHeap handler is chained.
+
+    The frame model (text_speed_checks.FrameModel) starts from the payload's state in
+    RAM and is then updated only from these observed readings; before every reading
+    the payload's RAM state must equal the model (state_errors otherwise). Each
+    reading after a render is recorded as ('check', line, decision) with the model's
+    decision at that line; the end of a batch as ('mark', line). Each task also gets
+    'start' (VBlank count, line) at entry, 'b_lines' (readings after renders that drew
+    a glyph) and 'pass_end' (VBlank count, line) from the next frame_end.
 
     A glyph belongs to the printer's most recent native task. The entry is dropped
     when the printer is (re)initialised or freed, so a synchronous print or a
@@ -192,6 +256,8 @@ class PrinterTrace:
 
     def __init__(self, h, payload, font=None, probe=None, on_task=None, on_glyph=None, on_destroy=None,
                  on_original=None, on_render=None):
+        import text_speed_checks as checks
+        self._checks = checks
         self.h, self.font, self._probe = h, font, probe
         self._on_render = on_render
         self._on_task, self._on_glyph, self._on_destroy, self._on_original = on_task, on_glyph, on_destroy, on_original
@@ -206,7 +272,8 @@ class PrinterTrace:
         self.task_frames = {}
         code = payload_bytes(payload)
         self._payload_range = (payload['base'], payload['base'] + len(code))
-        self.vcount_reads = vcount_reads(payload)
+        self._state = payload['symbols']['text_speed_state']
+        self.reads = io_reads(payload)
         h.on_exec(payload['symbols']['print_task'] & ~1, self._task, exclusive=True)
         h.on_exec(payload['symbols']['init_printer'] & ~1, self._init, exclusive=True)
         h.on_exec(PRINTER_TASK, self._original, exclusive=True)
@@ -214,8 +281,90 @@ class PrinterTrace:
         h.on_exec(GLYPH, self._glyph, exclusive=True)
         h.on_exec(FREE_TO_HEAP, self._free, exclusive=True)
         h.on_exec(PRINTER_DESTROY, self._destroy, exclusive=True)
-        for address, register in self.vcount_reads:
-            h.on_exec(address, self._vcount(register), exclusive=True)
+        for where, loads in self.reads.items():
+            for address, mnemonic, base_reg, index_reg, offset in loads:
+                h.on_exec(address, self._load(where, mnemonic, base_reg, index_reg, offset), exclusive=True)
+        self._reset_model()
+
+    # ------------------------------------------------------------------ frame model
+    def _reset_model(self):
+        self.model = self._checks.FrameModel(self.h.read(self._state, self._checks.STATE_SIZE))
+        self.state_errors = []
+        self.frame_ends = []
+        self._open = []            # tasks whose loop pass has not ended yet
+        self._vblanks = None       # VBlank counter value just read, waiting for its VCOUNT reading
+
+    def resync(self):
+        """After loading a savestate without reset(): restart the frame model from RAM (the
+        payload's state came back with the savestate); recorded tasks and errors stay."""
+        errors = self.state_errors
+        self._reset_model()
+        self.state_errors = errors
+
+    def _compare(self, where):
+        ram = self.h.read(self._state, self._checks.STATE_SIZE)
+        want = self.model.to_bytes()
+        if ram != want and len(self.state_errors) < 20:
+            self.state_errors.append(f'frame {self.h.frame} {where}: payload state {ram.hex()} != model '
+                                     f'{want.hex()} (the stored costs differ from the observed ones)')
+            self.model = self._checks.FrameModel(ram)   # resynchronise; the error stays
+
+    def _load(self, where, mnemonic, base_reg, index_reg, offset):
+        """Hook on a load instruction about to run: if it reads VCOUNT or the VBlank counter,
+        record the value it is going to load (no emulated time passes before it runs)."""
+        size = {'ldrb': 1, 'ldrsb': 1, 'ldrh': 2, 'ldrsh': 2}.get(mnemonic, 4)
+        io = self._io(where)
+
+        def hook(h):
+            address = (getattr(h.reg, base_reg) + (getattr(h.reg, index_reg) if index_reg else offset)) & 0xFFFFFFFF
+            if address == VCOUNT:
+                if size != 2:
+                    self.state_errors.append(f'frame {h.frame}: {mnemonic} of VCOUNT in {where}')
+                io(h, 'vcount', h.u16(VCOUNT))
+            elif address == VBLANKS:
+                io(h, 'vblanks', h.u8(VBLANKS) if size == 1 else h.u32(VBLANKS))
+        return hook
+
+    def _io(self, where):
+        def hook(h, what, value):
+            if what == 'vblanks':
+                # mark() stores the counter before it reads VCOUNT: compare here, before that store.
+                self._compare(f'{where} reading')
+                self._vblanks = value & 255
+                return
+            line = value
+            vblanks, self._vblanks = self._vblanks, None
+            if vblanks is None:
+                self._compare(f'{where} reading')
+            if where == 'frame_end':
+                if vblanks is None:
+                    self.state_errors.append(f'frame {h.frame}: frame_end read VCOUNT without the VBlank counter')
+                    return
+                self.model.frame_end(vblanks, line)
+                full = h.u32(VBLANKS)
+                end = (full - ((full - vblanks) & 255), line)
+                self.frame_ends.append((h.frame, line, end[0]))
+                for rec in self._open:
+                    rec['pass_end'] = end
+                    rec['pass_end_frame'] = h.frame
+                self._open = []
+                return
+            rec = self.active
+            if vblanks is not None:                      # mark(): VBlank counter, then VCOUNT
+                self.model.mark(vblanks, line)
+                if rec is not None:
+                    rec['events'].append(('mark', line))
+                return
+            if rec is None:
+                self.state_errors.append(f'frame {h.frame}: print_task read VCOUNT outside an observed task')
+                return
+            drew = rec['_since_render'] == 'glyph'
+            if drew:
+                if rec['b_lines']:
+                    self.model.glyph_cost(rec['b_lines'][-1], line)
+                rec['b_lines'].append(line)
+            rec['events'].append(('check', line, self.model.decide(line)))
+        return hook
 
     def _from_payload(self, h):
         lo, hi = self._payload_range
@@ -231,10 +380,12 @@ class PrinterTrace:
         rec = {'id': self.task, 'printer': ptr, 'frame': h.frame, 'phase': phase, 'font': h.u8(ptr + 9),
                'printer_id': h.u8(ptr + 0x2C), 'paused': h.u8(PRINT_PAUSED) != 0, 'delegated': False,
                'special': h.u32(ptr + 0x1C) != 0 or (h.u8(ptr + 0x29) & 127) != 0,
-               'events': [], 'next_phase': None}
+               'events': [], 'next_phase': None, 'start': (h.u32(VBLANKS), h.u16(VCOUNT)), 'b_lines': [],
+               'pass_end': None, '_since_render': None}
         self.records[ptr] = rec
         self.active = rec
         self.tasks.append(rec)
+        self._open.append(rec)
         self.current[ptr] = (self.task, phase)
         self.task_frames.setdefault(ptr, set()).add(h.frame)
         if self._on_task is not None:
@@ -255,14 +406,10 @@ class PrinterTrace:
         lr = h.reg.lr & ~1
         if rec is not None and rec['printer'] == h.reg.r0 and (
                 self._from_payload(h) or PRINTER_TASK <= lr < RENDER):
+            if self._from_payload(h) and not any(e[0] == 'render' for e in rec['events']):
+                self.model.task_ran()        # print_task sets 'ran' before its first render
             rec['events'].append(('render',))
-
-    def _vcount(self, register):
-        def hook(h):
-            rec = self.active
-            if rec is not None:
-                rec['events'].append(('check', getattr(h.reg, register)))
-        return hook
+            rec['_since_render'] = 'render'
 
     def _forget(self, ptr):
         self.current.pop(ptr, None)
@@ -291,7 +438,14 @@ class PrinterTrace:
         ptr = h.reg.r4
         rec = self.records.get(ptr)
         if rec is not None and rec is self.active:
-            rec['events'].append(('glyph', h.u16(h.u32(ptr))))
+            # The next unit the batch looks at: newlines (0xE000) render together with the unit after them.
+            at = h.u32(ptr)
+            unit = h.u16(at)
+            while unit == 0xE000:
+                at += 2
+                unit = h.u16(at)
+            rec['events'].append(('glyph', unit))
+            rec['_since_render'] = 'glyph'
         if self.font is not None and h.u8(ptr + 9) != self.font:
             return
         task, phase = self.current.get(ptr, (None, None))
@@ -300,10 +454,12 @@ class PrinterTrace:
             self._on_glyph(h, ptr, (task, phase, h.frame))
 
     def reset(self):
-        """Forget everything recorded (e.g. after loading a savestate); hooks stay."""
+        """Forget everything recorded (e.g. after loading a savestate); hooks stay. The
+        frame model restarts from the payload's state in RAM."""
         self.current, self.records, self.active = {}, {}, None
         self.tasks, self.glyphs, self.task_frames = [], [], {}
         self.allocations, self.frees, self.destroys = [], [], []
+        self._reset_model()
 
     def mark(self):
         return len(self.glyphs)
@@ -340,7 +496,7 @@ class PrinterTrace:
         Counted in tasks, not frames, so dropped frames do not change it."""
         flat = []
         for n, t in enumerate(t for t in self.tasks[task_mark:] if t['printer'] in printers):
-            flat += [(n, e[0]) for e in t['events'] if e[0] != 'check']
+            flat += [(n, e[0]) for e in t['events'] if e[0] in ('render', 'glyph')]
         out = []
         for i, (n, kind) in enumerate(flat):
             if kind != 'render' or (i + 1 < len(flat) and flat[i + 1][1] == 'glyph'):
@@ -360,35 +516,30 @@ class PrinterTrace:
         from text_speed_checks import unfreed
         return unfreed(self.allocations, self.frees)
 
-VCOUNT = 0x04000006            # DS display line register (I/O, read by the native batching loop)
-
-
-def vcount_reads(payload):
-    """[(hook address, register)] of every VCOUNT read in the native print_task.
-
-    Found by disassembling the payload: an 'ldr rX, [pc, #n]' whose literal is
-    VCOUNT, followed by 'ldrh rY, [rX]'. The hook address is the instruction after
-    the ldrh, where rY holds exactly the line the code compares. Expected: the
-    task-start read, then the read before each extra glyph."""
+def io_reads(payload):
+    """{routine: [(address, mnemonic, base register, offset register or None, offset)]}: every
+    byte, halfword or word load in print_task and frame_end (from each entry to the next
+    global symbol, so inlined and local helpers are included). PrinterTrace hooks all of
+    them and keeps those whose effective address, computed from the registers when the
+    instruction is about to run, is VCOUNT or the VBlank counter. This does not depend
+    on how the compiler keeps the I/O address in registers."""
     import capstone
-    import struct
     code, base = payload_bytes(payload), payload['base']
-    start = payload['symbols']['print_task'] & ~1
-    end = min([a & ~1 for a in payload['symbols'].values() if (a & ~1) > start] + [base + len(code)])
+    state = payload['symbols']['text_speed_state']
+    starts = sorted(a & ~1 for n, a in payload['symbols'].items() if n != 'text_speed_state')
     md = capstone.Cs(capstone.CS_ARCH_ARM, capstone.CS_MODE_THUMB)
     md.detail = True
-    ins = list(md.disasm(code[start - base:end - base], start))
-    found, loaded = [], {}
-    for i, x in enumerate(ins):
-        if x.mnemonic == 'ldr' and '[pc' in x.op_str:
-            lit = ((x.address + 4) & ~3) + x.operands[1].mem.disp
-            if base <= lit < base + len(code) - 3 and struct.unpack_from('<I', code, lit - base)[0] == VCOUNT:
-                loaded[x.operands[0].reg] = True
-                continue
-        if x.mnemonic == 'ldrh' and x.operands[1].mem.base in loaded and x.operands[1].mem.disp == 0 \
-                and i + 1 < len(ins):
-            found.append((ins[i + 1].address, x.reg_name(x.operands[0].reg)))
-        for op in x.operands[:1]:
-            if op.type == capstone.arm.ARM_OP_REG and x.mnemonic not in ('cmp', 'tst', 'str', 'strh', 'strb'):
-                loaded.pop(op.reg, None)
-    return found
+    out = {}
+    for routine in ('print_task', 'frame_end'):
+        start = payload['symbols'][routine] & ~1
+        end = min([a for a in starts if a > start] + [state])
+        loads = []
+        for x in md.disasm(code[start - base:end - base], start):
+            if x.mnemonic in ('ldrb', 'ldrh', 'ldr', 'ldrsb', 'ldrsh') and len(x.operands) == 2:
+                mem = x.operands[1].mem
+                if mem.base == capstone.arm.ARM_REG_PC:
+                    continue
+                index = x.reg_name(mem.index) if mem.index else None
+                loads.append((x.address, x.mnemonic, x.reg_name(mem.base), index, mem.disp))
+        out[routine] = loads
+    return out

@@ -147,8 +147,8 @@ branch (`e9aedbb1…2d13`, 760-byte payload). Gaps found and closed:
   MEDIUM, and MEDIUM as many as SLOW. (Superseded: the gates then subtracted "frames
   without a glyph" as lag, which also counted page waits and pauses and excused the
   inversions. The cause was the batch overrunning VBlank: about 10 lines per glyph,
-  mostly two cartridge reads of font data per glyph; it is fixed in the payload,
-  see [text_speed_vcount.md](text_speed_vcount.md).)
+  most of it one lazy cartridge read of the glyph's font data; it is fixed in the
+  payload, see [text_speed_vcount.md](text_speed_vcount.md).)
 
 See [the recipe](text_speed_release_checks.md) for the gate table, the single
 entry point and the fault fixtures used to prove each check fails when it should.
@@ -177,7 +177,27 @@ Second independent review of `35c1a31` and user decision D-1601. Changes:
   untracked files or `passed-not-releasable`, faults must be caught by their
   declared gates with their declared text, slot waits excluded from timeouts.
 
-The old "+1" battle pause was not investigated further: with the new payload the
-same checkpoint plays a different battle (turn 2 onwards; the RNG follows frame
-timing), and every pause of every message in the four segments equals the
-original exactly, so the gate stays exact rather than pinning golden deltas.
+The old "+1" battle pause was not investigated in this round. (It was later: the
+battle waits for its sound, whose clock is not the video frame; see the next section.)
+
+## Measured frame costs and the product gates — 2026-10-07 (second revision)
+
+Third independent review of `cc36910..cf50a23`; user decision extends D-1601.
+
+- **Payload:** the frame rule predicts the end of the game loop from costs it
+  measures itself (extra-glyph cost, rest of the loop pass after the batch, measured
+  through a hook on the game loop's last call before its VBlank wait), instead of two
+  fixed constants; a newline before a control is that control's step. Payload 1240
+  bytes, ITCM extension `01FF8620`-`01FF8B00`. See [text_speed_vcount.md](text_speed_vcount.md).
+- **Gates measure the product:** frames strictly ordered except at a demonstrated
+  physical cap, no more dropped frames than the original printer, no frame dropped
+  only by extra glyphs, no frame stop that gave up a glyph that would have fitted, a
+  SLOW floor derived from its design; a `scenes` gate over 17 busy, light and 30 fps
+  scenes. The model check mirrors the payload's frame state from the readings the
+  gate observes and compares it with RAM.
+- **Battle:** seven battles; waits compared in loop passes; a pause may differ from
+  the original only by values the original printer itself shows when replayed with a
+  delayed start (the battle waits for its sound).
+- **Fail closed:** gates run with `python -I` and a clean environment; every fault
+  declares the failure text its gates must report from their own checks; faults whose
+  gate model is set to match the broken payload prove the product checks.

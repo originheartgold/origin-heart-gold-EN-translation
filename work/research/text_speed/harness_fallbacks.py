@@ -5,17 +5,22 @@ cartridge-save flag, a transient null runtime pointer, and requested printer del
 These are branch tests, not natural gameplay claims. Inputs are never modified.
 
 Every case prints the trainer's first page (54 glyphs) from the same checkpoint.
-Native tasks are judged per task (text_speed_checks.task_errors). Invalid mode,
-an unpublished runtime pointer and explicit delays must delegate every task to
-the original printer; legacy music values must behave exactly like SLOW. Total
-printing frames: original > SLOW >= MEDIUM >= FAST (ties only at the frame limit),
-and no speed may drop more than one frame more than the original while printing.
+Native tasks are judged per task (text_speed_checks.task_errors, with the frame
+model). Invalid mode, an unpublished runtime pointer and explicit delays must
+delegate every task to the original printer; legacy music values must behave
+exactly like SLOW. The invalid-mode original printer is the baseline of the
+product rules (text_speed_checks.order_errors): ORIGINAL > SLOW > MEDIUM > FAST in
+printing frames (a tie only at the physical cap), no speed with more dropped frames
+than the original, none dropped only because of extra glyphs, SLOW within its floor.
 """
 import argparse
 import json
 
-from gate_common import (CLOCK, PRINTER_START, PrinterTrace, start_game, add_arguments, identity, inputs_unchanged,
-                         itcm_errors, load_expected_payload, require, resolve)
+import sys as _sys  # noqa: E402
+from pathlib import Path as _Path  # noqa: E402
+_sys.path.insert(0, str(_Path(__file__).resolve().parent))   # python -I adds no script directory
+from gate_common import (CLOCK, PRINTER_START, PrinterTrace, start_game, add_arguments, code_bytes, identity,
+                         inputs_unchanged, itcm_errors, judge_message, load_expected_payload, require, resolve)
 import text_speed_checks as checks
 
 RUNTIME = 0x021106C8   # main runtime SaveData pointer (null before publication)
@@ -38,7 +43,7 @@ def main():
             start_game(h)
             checkpoint = a.out / 'fresh-candidate.dst'
             h.save_state(checkpoint)
-            code = bytes.fromhex(payload['code'])
+            code = code_bytes(payload)
             state = {'null': False, 'hidden': False, 'save': 0, 'delay': 0, 'delayed': 0}
 
             def restore(h, *_):
@@ -86,12 +91,12 @@ def main():
                 if delay:
                     require(state['delayed'], f'{name}: delay injection not exercised')
                 judged = checks.ORIGINAL if (mode == 3 or null) else mode
-                stops, stop_errors = checks.task_errors(judged, [t for t in tasks if t['font'] == 1])
-                errors.extend(f'{name}: {e}' for e in stop_errors)
+                record, stops, stop_errors = judge_message(tracer, judged, 0, 0)
+                errors.extend(f'{name}: {e}' for e in stop_errors + tracer.state_errors)
                 first = rows[0][3]
                 report['cases'][name] = {'glyphs': [r[3] - first for r in rows],
-                                         'glyph_tasks': [r[1] for r in rows],
-                                         'span': rows[-1][3] - first, 'lag_frames': tracer.lag(0),
+                                         'glyph_tasks': [r[1] for r in rows], 'record': record,
+                                         'span': rows[-1][3] - first, 'lag_frames': record['drops'],
                                          'native': native_n, 'original': original_n, 'stops': stops,
                                          'per_task': checks.cadence(judged, [(r[1], r[2], r[3]) for r in rows])[0]
                                          .get('per_task')}
@@ -108,12 +113,9 @@ def main():
             if max(abs(x - y) for x, y in zip(cases['invalid']['glyphs'], cases['null']['glyphs'])) > 1:
                 errors.append('null: glyph frames differ from the invalid-mode original printer by more than 1')
             names = {3: 'invalid', 0: 'slow', 1: 'medium', 2: 'fast'}
-            order, notes = checks.frame_order({m: cases[n]['span'] for m, n in names.items()},
-                                              {m: cases[n]['stops'].get('frame', 0) for m, n in names.items()})
+            order, notes = checks.order_errors({m: cases[n]['record'] for m, n in names.items()})
             errors.extend(f'frame order: {e}' for e in order)
-            errors.extend(f'dropped frames: {e}' for e in
-                          checks.lag_errors({m: cases[n]['lag_frames'] for m, n in names.items()}))
-            report['frame_limited_ties'] = notes
+            report['capped_ties'] = notes
             if not cases['delay-slow']['glyphs'] == cases['delay-medium']['glyphs'] == cases['delay-fast']['glyphs']:
                 errors.append('explicit delay: glyph timing differs between speeds')
             if not cases['delay-slow']['span'] > cases['slow']['span']:

@@ -29,6 +29,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 import json
 from pathlib import Path
+import re
 import subprocess
 import sys
 import time
@@ -36,6 +37,9 @@ import time
 if sys.flags.optimize:
     raise SystemExit('validate_release.py refuses to run with python -O (sys.flags.optimize is set)')
 
+import sys as _sys  # noqa: E402
+from pathlib import Path as _Path  # noqa: E402
+_sys.path.insert(0, str(_Path(__file__).resolve().parent))   # python -I adds no script directory
 from gate_common import ROOT, add_arguments, digest, identity, inputs_unchanged, load_expected_payload, resolve
 
 HERE = Path(__file__).resolve().parent
@@ -44,32 +48,45 @@ TIMEOUT = 3600          # seconds of running time per gate, excluding waits for 
 
 def gates(args, out):
     """name -> (command, report path)."""
-    py = sys.executable
+    py = [sys.executable, '-I']     # isolated: no PYTHONPATH, no user site, no script-directory injection
     rom, save = str(args.rom), str(args.save)
     fault = ['--fault-payload', str(args.fault_payload)] if args.fault_payload else []
-    plain = lambda script, name, extra=(): ([py, str(HERE / script), '--rom', rom, '--save', save,
+    plain = lambda script, name, extra=(): ([*py, str(HERE / script), '--rom', rom, '--save', save,
                                              '--out', str(out / name), *extra, *fault], out / name / 'report.json')
     control_rom = out / 'controls-fixture' / 'control.nds'
     return {
         'options': plain('harness_options.py', 'options'),
         'music': plain('music_interaction.py', 'music'),
         'save': plain('save_persistence.py', 'save'),
-        'new-game': ([py, str(HERE / 'new_game_default.py'), '--rom', rom, '--out', str(out / 'new-game')],
+        'new-game': ([*py, str(HERE / 'new_game_default.py'), '--rom', rom, '--out', str(out / 'new-game')],
                      out / 'new-game' / 'report.json'),
         'lifecycle': plain('printer_lifecycle.py', 'lifecycle'),
         'fallbacks': plain('harness_fallbacks.py', 'fallbacks'),
         'callbacks': plain('callback_regression.py', 'callbacks'),
         'corpus': plain('harness_regression.py', 'corpus'),
-        'controls': ([py, '-c', ';'.join([
+        'controls': ([*py, '-c', ';'.join([
             'import subprocess,sys',
-            f'subprocess.run([sys.executable,{str(HERE / "control_fixture.py")!r},{rom!r},{str(control_rom)!r}],check=True)',
-            f'sys.exit(subprocess.run([sys.executable,{str(HERE / "harness_regression.py")!r},"--controls","--rom",'
-            f'{str(control_rom)!r},"--save",{save!r},"--out",{str(out / "controls")!r}]+{fault!r}).returncode)'])],
+            f'subprocess.run([sys.executable,"-I",{str(HERE / "control_fixture.py")!r},{rom!r},{str(control_rom)!r}],'
+            'check=True)',
+            f'sys.exit(subprocess.run([sys.executable,"-I",{str(HERE / "harness_regression.py")!r},"--controls",'
+            f'"--rom",{str(control_rom)!r},"--save",{save!r},"--out",{str(out / "controls")!r}]+{fault!r}).returncode)'])],
             out / 'controls' / 'report.json'),
         'battle': plain('battle_pacing.py', 'battle'),
         'natural-dialogue': plain('natural_dialogue.py', 'natural-dialogue'),
         'printers': plain('printer_smoke.py', 'printers'),
+        'scenes': plain('scene_pacing.py', 'scenes'),
     }
+
+
+# Gate processes get only these variables from the caller's environment (plus the
+# slot-wait log): no PYTHON* variable or other injection reaches them.
+ENV_KEEP = ('PATH', 'HOME', 'USER', 'LOGNAME', 'TMPDIR', 'LANG', 'LC_ALL', 'LC_CTYPE', 'EMU_HARNESS_MAX_EMULATORS')
+
+
+def gate_env(waits):
+    env = {k: os.environ[k] for k in ENV_KEEP if k in os.environ}
+    env['EMU_HARNESS_WAIT_LOG'] = str(waits)
+    return env
 
 
 def observations(name, r):
@@ -79,7 +96,7 @@ def observations(name, r):
             out = {'print_frames': {o['message']: o['print_frames'] for o in r.get('speed_order', [])},
                    'lag_frames': {o['message']: o['lag_frames'] for o in r.get('speed_order', [])},
                    'control_latency': {o['message']: o['control_latency'] for o in r.get('speed_order', [])},
-                   'frame_limited_ties': r.get('frame_limited_ties'),
+                   'capped_ties': r.get('capped_ties'),
                    'max_tasks_per_frame': r.get('max_tasks_per_frame')}
             if name == 'controls':
                 out['explicit_pause_frames'] = r.get('explicit_pause_frames')
@@ -101,7 +118,10 @@ def observations(name, r):
                         'stops': (v.get('stops') or {}).get('reasons')} for k, v in r['cases'].items()}
         if name == 'natural-dialogue':
             return {n: {k: m.get(k) for k in ('frame_span', 'lag_frames', 'stops', 'per_task')}
-                    for n, m in r['modes'].items()} | {'frame_limited_ties': r.get('frame_limited_ties')}
+                    for n, m in r['modes'].items()} | {'capped_ties': r.get('capped_ties')}
+        if name == 'scenes':
+            return {'table': r.get('table'), 'capped_ties': {n: x.get('capped_ties') for n, x in r['scenes'].items()
+                                                             if x.get('capped_ties')}}
         if name == 'printers':
             return {s['screen']: {k: s.get(k) for k in ('batched', 'async_starts', 'identical')}
                     for s in r.get('screens', [])}
@@ -129,7 +149,7 @@ def run_gate(name, command, report_path, log):
         report_path.unlink()
     waits = log.with_suffix('.slot-waits')
     waits.unlink(missing_ok=True)
-    env = dict(os.environ, EMU_HARNESS_WAIT_LOG=str(waits))
+    env = gate_env(waits)
     started = time.time()
     with log.open('w') as handle:
         # Own process group, so a timeout also stops the gate's child processes. Gates have
@@ -155,7 +175,7 @@ def run_gate(name, command, report_path, log):
            'slot_wait_seconds': waited}
     if status != 'passed':
         row['errors'] = r.get('errors') or f"report status {r.get('status')}"
-    if name != 'new-game' and r.get('payload_sha256') is None:
+    if name != 'new-game' and r.get('payload_code_sha256') is None:
         row['status'], row['reason'] = 'failed', 'report not bound to a payload'
     if r.get('warnings'):
         row['warnings'] = r['warnings']
@@ -171,8 +191,18 @@ def tree_state():
     return head.stdout.strip(), status.stdout.splitlines()
 
 
+# An unexpected Python exception recorded in a gate's errors ('KeyError: ...', 'RuntimeError: ...'
+# up to the end of that error string) never counts as detection; GateError is how checks fail.
+UNEXPECTED = re.compile(r'(?<![A-Za-z])(?!GateError\b)[A-Z][A-Za-z]*(?:Error|Exception|Interrupt)\b: [^"\\]*')
+
+
+def checks_text(errors):
+    """The gate's errors as one string, with unexpected exceptions removed."""
+    return UNEXPECTED.sub('<exception>', json.dumps(errors))
+
+
 def fault_verdict(fault, gates):
-    """Did every gate the fault declares fail, with the declared error text?"""
+    """Did every gate the fault declares fail, with the declared error text from its checks?"""
     from fault_fixture import FAULTS
     spec = FAULTS.get(fault['name'])
     if spec is None:
@@ -182,14 +212,16 @@ def fault_verdict(fault, gates):
     problems = []
     for gate, text in spec['gates'].items():
         row = gates.get(gate)
-        if row is None:
+        if not isinstance(text, str) or not text.strip():
+            problems.append(f'{gate}: the fault declares no failure text (detection must name the check)')
+        elif row is None:
             problems.append(f'{gate}: declared gate was not run')
         elif row['status'] != 'failed':
             problems.append(f'{gate}: passed although it must catch {fault["name"]}')
         elif 'errors' not in row:
             problems.append(f"{gate}: failed without a report ({row.get('reason')}), not by its checks")
-        elif text is not None and text not in json.dumps(row['errors']):
-            problems.append(f'{gate}: failed, but not with {text!r}')
+        elif text not in checks_text(row['errors']):
+            problems.append(f'{gate}: failed, but not with {text!r} from its checks')
     return ('fault-detected' if not problems else 'fault-missed'), problems
 
 
@@ -212,8 +244,8 @@ def main():
                'releasable': False, 'started': datetime.now(timezone.utc).isoformat(timespec='seconds'), 'gates': {}}
     failures = []
     try:
-        check = subprocess.run([sys.executable, str(ROOT / 'work/tools/text_speed_patch.py'), '--check-payload'],
-                               cwd=ROOT, capture_output=True, text=True)
+        check = subprocess.run([sys.executable, '-I', str(ROOT / 'work/tools/text_speed_patch.py'), '--check-payload'],
+                               cwd=ROOT, capture_output=True, text=True, env=gate_env(args.out / 'payload.slot-waits'))
         summary['payload_reproduction'] = {'exit': check.returncode, 'output': check.stdout.strip()[-400:]}
         if check.returncode != 0:
             failures.append('payload does not reproduce from source (--check-payload failed)')

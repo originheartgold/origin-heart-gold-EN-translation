@@ -5,6 +5,9 @@ Hooks observe the original narrowed music getter and heap; no Options RAM writes
 """
 import argparse
 import json
+import sys as _sys  # noqa: E402
+from pathlib import Path as _Path  # noqa: E402
+_sys.path.insert(0, str(_Path(__file__).resolve().parent))   # python -I adds no script directory
 from gate_common import (CLOCK, start_game, add_arguments, attach_probe, identity, inputs_unchanged, itcm_errors,
                          load_expected_payload, memory_errors, memory_summary, require, resolve)
 
@@ -71,7 +74,8 @@ def main():
                     require(h.u16(h.array(1)) == before, 'Menu edits changed saved Options before Confirm')
                     leave(True)
                     expected = (original & ~15) | music | (mode << 2)
-                    require(h.u16(h.array(1)) == expected, 'check failed: h.u16(h.array(1)) == expected')
+                    require(h.u16(h.array(1)) == expected, f'Confirm did not store the chosen text speed and music '
+                            f'(Options {h.u16(h.array(1)):#x}, expected {expected:#x})')
                     d = open_menu(); committed = rows(d)
                     require(committed == [music, *initial_rows[1:6], mode], 'check failed: committed == [music, *initial_rows[1:6], mode]')
                     # Every setting row can be changed, then canceled atomically.

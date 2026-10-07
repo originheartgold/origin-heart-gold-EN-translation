@@ -2,6 +2,9 @@
 import argparse,json,os,tempfile,hashlib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[3]
+import sys as _sys  # noqa: E402
+from pathlib import Path as _Path  # noqa: E402
+_sys.path.insert(0, str(_Path(__file__).resolve().parent))   # python -I adds no script directory
 from gate_common import require
 
 def main():
@@ -32,7 +35,8 @@ def main():
                 log=report['events']
                 require([x['event'] for x in log]==['constructor-entry','metadata-init','new-game-init','constructor-ready','before-publication','after-publication'], repr(log))
                 require(all(x['runtime']==0 for x in log[:-1]), "check failed: all(x['runtime']==0 for x in log[:-1])")
-                require(all(x['block1_id']==1 and x['block1_offset']>0 and x['options']==516 for x in log if 'save' in x), repr(log))
+                require(all(x['block1_id']==1 and x['block1_offset']>0 for x in log if 'save' in x), repr(log))
+                require(all(x['options']==516 for x in log if 'save' in x), 'new game does not start at MEDIUM (Options 516): '+repr([x.get('options') for x in log]))
                 last=log[-1];require(last['runtime']==last['save'] and last['flag']==0, "check failed: last['runtime']==last['save'] and last['flag']==0")
             finally:e.destroy()
         require(hashlib.sha256(a.rom.read_bytes()).hexdigest()==identity, 'check failed: hashlib.sha256(a.rom.read_bytes()).hexdigest()==identity')

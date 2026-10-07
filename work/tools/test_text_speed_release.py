@@ -1,7 +1,9 @@
 """Unit tests for the text-speed release runner's fail-closed rules (no emulator)."""
 from pathlib import Path
+import os
 import sys
 import unittest
+import unittest.mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'research/text_speed'))
 import fault_fixture  # noqa: E402
@@ -61,8 +63,8 @@ class Faults(unittest.TestCase):
 
     def test_verdict_needs_every_declared_gate_to_fail_for_its_reason(self):
         fault = {'name': 'slow-flat'}
-        gates = {g: row('failed', ['x: stopped after 1 of 2 glyphs without a reason'])
-                 for g in fault_fixture.FAULTS['slow-flat']['gates']}
+        gates = {g: row('failed', [f'x: {text} (from the check)'])
+                 for g, text in fault_fixture.FAULTS['slow-flat']['gates'].items()}
         self.assertEqual(validate_release.fault_verdict(fault, gates)[0], 'fault-detected')
         missing = dict(gates)
         missing.pop('corpus')
@@ -74,8 +76,53 @@ class Faults(unittest.TestCase):
         other = dict(gates, corpus=row('failed', ['pixels differ']))
         self.assertEqual(validate_release.fault_verdict(fault, other)[0], 'fault-missed')
 
+    def test_every_detection_names_a_check(self):
+        import text_speed_checks
+        for name, spec in fault_fixture.FAULTS.items():
+            for gate, text in spec.get('gates', {}).items():
+                self.assertIsInstance(text, str, (name, gate))
+                self.assertTrue(text.strip(), (name, gate))
+            self.assertLessEqual(set(spec.get('checker', {})), text_speed_checks.FAULT_KNOBS, name)
+
+    def test_unexpected_exceptions_never_count_as_detection(self):
+        fault = {'name': 'commit-noop'}
+        text = fault_fixture.FAULTS['commit-noop']['gates']['options']
+        gates = {g: row('failed', [f'GateError: {t} (Options 0x200, expected 0x204)'])
+                 for g, t in fault_fixture.FAULTS['commit-noop']['gates'].items()}
+        self.assertEqual(validate_release.fault_verdict(fault, gates)[0], 'fault-detected')
+        crashed = dict(gates, options=row('failed', [f'KeyError: {text}']))
+        self.assertEqual(validate_release.fault_verdict(fault, crashed)[0], 'fault-missed')
+        nested = dict(gates, options=row('failed', [f'mode 1 child failed: ["RuntimeError: {text}"]']))
+        self.assertEqual(validate_release.fault_verdict(fault, nested)[0], 'fault-missed')
+        with unittest.mock.patch.dict(fault_fixture.FAULTS, {'commit-noop': dict(
+                fault_fixture.FAULTS['commit-noop'], gates={'options': None})}):
+            self.assertEqual(validate_release.fault_verdict(fault, gates)[0], 'fault-missed')
+
     def test_dead_code_fault_is_reported_as_such(self):
         self.assertEqual(validate_release.fault_verdict({'name': 'no-state-stop'}, {})[0], 'fault-dead-code')
+
+
+class Isolation(unittest.TestCase):
+    def test_gates_run_isolated_with_a_clean_environment(self):
+        class A:
+            rom = save = Path('x.nds')
+            fault_payload = None
+        commands = validate_release.gates(A, Path('/tmp/out'))
+        self.assertIn('scenes', commands)
+        for name, (command, _) in commands.items():
+            self.assertEqual(command[1], '-I', name)
+        with unittest.mock.patch.dict(os.environ, {'PYTHONPATH': '/x', 'PYTHONSTARTUP': '/y', 'PATH': '/bin',
+                                                   'EMU_HARNESS_MAX_EMULATORS': '3'}):
+            env = validate_release.gate_env(Path('/tmp/w'))
+        self.assertFalse([k for k in env if k.startswith('PYTHON')])
+        self.assertEqual(env['EMU_HARNESS_WAIT_LOG'], '/tmp/w')
+        self.assertEqual(env['EMU_HARNESS_MAX_EMULATORS'], '3')
+
+    def test_busy_scenes_are_in_the_scene_gate(self):
+        import scene_pacing
+        self.assertLessEqual(set(scene_pacing.BUSY), set(scene_pacing.SCENES))
+        for name in ('goldenrod-dept-6f', 'celadon-gym', 'route1-idle', 'trainer-after-options'):
+            self.assertIn(name, scene_pacing.BUSY)
 
 
 if __name__ == '__main__':

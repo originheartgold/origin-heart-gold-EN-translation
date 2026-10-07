@@ -29,32 +29,115 @@ void init_printer(void *p) {
     FN(0x02020be9,void (*)(void *))(p);
     U8(p,0x34)=0;
 }
-/* DS display line counter: an I/O register, not ARM9 code, so it has no
- * reviewed dependency range. Lines 0..191 are drawn, 192..262 are VBlank. */
+/* Frame timing (work/notes/text_speed_vcount.md). The game loop wakes at the
+ * start of VBlank (display line 192), runs the field or battle work, then waits
+ * for the next VBlank. If it is still running when that VBlank starts, the wait
+ * misses it and the frame is dropped. Before each extra glyph the batching loop
+ * predicts where the loop will end from costs measured at run time:
+ *   now + (cost of one more glyph) + (rest of the loop after the batch)
+ * and draws the glyph only if that ends before line 192.
+ * VCOUNT is the display line I/O register (0..191 drawn, 192..262 VBlank).
+ * VBLANKS is the SDK's VBlank counter (HW_VBLANK_COUNT_BUF, the word that
+ * OS_GetVBlankCount reads). Neither is ARM9 code, so neither has a reviewed
+ * dependency range. */
 #define VCOUNT (*(volatile u16 *)0x04000006)
-/* Lines left until the next VBlank starts (1..263). The game loop wakes at
- * VBlank; if it is still running when the next VBlank starts, that frame is
- * dropped. Field tasks run late in the frame (about line 150-180), battle
- * tasks early (in VBlank, about line 220-260), so the rule is relative to the
- * next VBlank, not to an absolute line: a task in VBlank has a whole frame
- * ahead of it. After VCOUNT wraps the next VBlank is again the deadline. */
-static inline unsigned lines_to_vblank(void) {
-    unsigned line=VCOUNT;
-    return line<192?192-line:192+263-line;
+#define VBLANKS (*(volatile u8 *)0x027ffc3c)
+#define LINES 263
+#define VBLANK_LINE 192
+/* Eight recent samples of each cost; a slot of 0 is empty.
+ * Glyph: the lines one extra glyph took, from the reading after the previous
+ * glyph to the reading after it (render and the loop's own checks), the exact
+ * quantity the decision predicts. A task's first glyph is not a sample: it runs
+ * after the field work with cold caches and costs about two lines more. With
+ * no extra glyph measured since power-on the glyph counts as GLYPH_SEED, the
+ * largest glyph cost measured in any scene (first glyphs included; extra glyphs
+ * cost at most 11).
+ * Rest: lines from the end of a batch that drew to the end of the game loop
+ * pass (window copy, task exit, the rest of the loop). With none measured it
+ * counts as REST_SEED, about twice the largest rest measured in any scene (11),
+ * so a printer's first frame in a new scene draws a second glyph only well
+ * before VBlank. After STALE loop passes in which no batching task ran (no text
+ * on screen, e.g. a map change) the rest history is cleared, because the new
+ * scene's loop may be heavier. A printer waiting for a button still runs its
+ * task and keeps the history.
+ * MARGIN: VCOUNT counts whole lines; the current line can be up to one line
+ * later than read. The maxima of eight samples already cover the rounding of
+ * the two costs. */
+#define SLOTS 8
+#define GLYPH_SEED 13
+#define REST_SEED 20
+#define STALE 60
+#define MARGIN 1
+/* RAM use: these 24 bytes, zero at boot, in the payload's ITCM block (the
+ * SDK's ITCM arena starts after them). One global state: glyph costs do not
+ * depend on the printer, and the rest belongs to the frame, not the printer. */
+struct frame_state {
+    u8 glyph[SLOTS];      /* recent glyph costs in lines (0: not measured; at most 255) */
+    u8 rest[SLOTS];       /* recent rests in lines: batch end to loop end (0: empty; 1..255) */
+    u8 next_glyph, next_rest;
+    u8 marked;            /* a batch ended in this loop pass; its rest is still open */
+    u8 idle;              /* loop passes without a batching task (stops at STALE) */
+    u16 mark_line;        /* VCOUNT at that batch end */
+    u8 mark_vblanks;      /* VBLANKS at that batch end */
+    u8 ran;               /* a batching task ran in this loop pass */
+};
+extern struct frame_state text_speed_state;
+static unsigned lines_between(unsigned from,unsigned to) {
+    return to>=from?to-from:to+LINES-from;
 }
-/* Measured in the field (work/notes/text_speed_vcount.md): from this check,
- * stopping costs 7-8 more lines (window copy and the rest of the game loop);
- * one more glyph and then stopping costs 16-18 lines (the glyph takes about
- * 10, mostly two cartridge reads of its font data).
- * MIN_LINES_FOR_GLYPH: the worst measured cost of one more glyph (18 lines)
- * must end the loop by line 191; one line of margin on top gives 20. With at
- * least this many lines left, the glyph fits.
- * FRAME_LOST_LINES: the least measured cost of stopping. With fewer lines
- * left, the loop misses this VBlank even if the batch stops now, so the frame
- * is lost anyway and the next deadline is the following VBlank, a whole frame
- * away: the batch may continue (still bounded by its budget of at most 3). */
-#define MIN_LINES_FOR_GLYPH 20
-#define FRAME_LOST_LINES 7
+/* End of a batch that drew: remember when, so frame_end can measure the rest.
+ * Only batches that drew count: the rest of such a batch includes the window
+ * copy to VRAM (about six lines), which a task that only waits for input skips. */
+static void mark(struct frame_state *s) {
+    s->mark_vblanks=VBLANKS;
+    s->mark_line=VCOUNT;
+    s->marked=1;
+}
+/* Called by the game loop as its last step before the wait for VBlank, in place
+ * of its call to 0x020272d4 (which it still makes first). Measures the rest of
+ * the latest batch in this loop pass: lines from its end to here. The VBlank
+ * counter must agree with the lines: exactly one VBlank in between if the
+ * interval crossed line 192, else none. Otherwise (the loop waited for VBlank
+ * elsewhere in between) the sample is discarded. */
+void frame_end(void) {
+    FN(0x020272d5,void (*)(void))();
+    struct frame_state *s=&text_speed_state;
+    unsigned vblanks=VBLANKS,line=VCOUNT;
+    if(s->marked) {
+        unsigned from=s->mark_line,rest=lines_between(from,line);
+        unsigned crossed=from<VBLANK_LINE?from+rest>=VBLANK_LINE:from+rest>=VBLANK_LINE+LINES;
+        s->marked=0;
+        if(((vblanks-s->mark_vblanks)&255)==crossed) {
+            s->rest[s->next_rest]=rest>255?255:rest?rest:1;
+            s->next_rest=(s->next_rest+1)&(SLOTS-1);
+        }
+    }
+    if(s->ran) s->idle=0;
+    else if(s->idle<STALE && ++s->idle==STALE)
+        for(unsigned i=0;i<SLOTS;i++) s->rest[i]=0;
+    s->ran=0;
+}
+/* May the batch draw one more glyph at display line now? */
+static unsigned room(struct frame_state *s,unsigned now) {
+    /* Lines left until the next VBlank starts (1..263). In VBlank (battle
+     * text, or a frame already lost) the next VBlank is a whole frame away. */
+    unsigned left=now<VBLANK_LINE?VBLANK_LINE-now:VBLANK_LINE+LINES-now;
+    unsigned glyph=0,rest=0,low=255;
+    for(unsigned i=0;i<SLOTS;i++) {
+        unsigned g=s->glyph[i],r=s->rest[i];
+        if(g>glyph) glyph=g;
+        if(r>rest) rest=r;
+        if(r && r<low) low=r;
+    }
+    if(!glyph) glyph=GLYPH_SEED;
+    if(!rest) {rest=REST_SEED; low=0;}
+    /* Fits: one more glyph and the rest end before VBlank. */
+    if(left>=glyph+rest+MARGIN) return 1;
+    /* Lost: even the shortest recent rest ends after VBlank if the batch
+     * stops now, so the frame is dropped anyway; its time runs on to the
+     * following VBlank, and the batch may use it (still within its budget). */
+    return left<low;
+}
 /* Preserve special pacing and callbacks. Invalid/unpublished options use the
  * original renderer; ordinary SLOW/MEDIUM/FAST use bounded glyph batches. */
 void print_task(void *task, void *p) {
@@ -63,39 +146,57 @@ void print_task(void *task, void *p) {
         FN(0x02020a1d,void (*)(void *,void *))(task,p); return;
     }
     if (*(volatile u8 *)0x021d0ef4) return;
+    struct frame_state *s=&text_speed_state;
+    s->ran=1;
     unsigned budget=m==0?1+(U8(p,0x34)&1):m+1;
     unsigned dirty=0;
     FN(0x02020a9d,void (*)(unsigned,unsigned,unsigned))(U8(p,0x15),U8(p,0x16),U8(p,0x17));
+    unsigned before=0,extra=0;
     for(;;) {
         U16(p,0x2e)=0;
         unsigned result=FN(0x02020a89,unsigned (*)(void *))(p);
-        if (result==0) dirty=1;
+        unsigned now=VCOUNT;
+        if (result==0) {
+            dirty=1;
+            if(extra) {
+                unsigned cost=lines_between(before,now);
+                s->glyph[s->next_glyph]=cost>255?255:cost;
+                s->next_glyph=(s->next_glyph+1)&(SLOTS-1);
+            }
+        }
         if (result==1) {
-            if(dirty) FN(0x0201dda9,void (*)(void *))((void *)U32(p,4));
+            if(dirty) {
+                mark(s);
+                FN(0x0201dda9,void (*)(void *))((void *)U32(p,4));
+            }
             FN(0x0202075d,void (*)(unsigned))(U8(p,0x2c)); return;
         }
         /* After a glyph (result 0) RenderText is in state 0 with its delay
            counter +0x2a = +0x29&127 = 0, so this state test never fires today;
            it is kept as a guard (see text_speed_release_checks.md). */
         if(result!=0 || U8(p,0x28) || U8(p,0x2a)) break;
-        u16 next=*(u16 *)U32(p,0);
         /* Stop before every non-glyph control, including extended controls.
-           Newline is handled by the native RenderFont repeat dispatcher. */
+           A newline (0xe000) is rendered in the same step as the unit after it
+           (the native RenderFont repeat dispatcher), so look past newlines: a
+           newline before the end of the text or a prompt is that control's step,
+           which the original printer takes in the next task. */
+        const u16 *q=*(const u16 **)((u8 *)p);
+        u16 next=*q;
+        while(next==0xe000) next=*++q;
         if(next==0xffff || next==0xfffe || next==0x25bc || next==0x25bd || next==0xf0fd) break;
         if(!--budget) break;
-        /* Frame nearly used up: leave the rest for the next task, unless the
-           frame is lost anyway (see FRAME_LOST_LINES). After a VBlank has begun
-           during the task, the next one is a whole frame away. */
-        unsigned left=lines_to_vblank();
-        if(left<MIN_LINES_FOR_GLYPH && left>=FRAME_LOST_LINES) {
+        if(!room(s,now)) {
             /* A stop here leaves budget unused. For SLOW that is its two-glyph
                phase: undo the flip below so the next task keeps the two-glyph
                turn instead of losing it to the frame limit. */
             if(m==0) U8(p,0x34)^=1;
             break;
         }
+        before=now;
+        extra=1;
     }
     if(dirty) {
+        mark(s);
         if(m==0) U8(p,0x34)^=1;
         FN(0x0201dda9,void (*)(void *))((void *)U32(p,4));
     }
@@ -143,3 +244,6 @@ void setup_sprites(void *d) {
     for(unsigned i=5;i<7;i++) FN(0x0200d8cd,void (*)(void *,unsigned))((void *)U32(d,0x32c+4*i),0);
     for(unsigned i=0;i<5;i++) FN(0x02024e49,void (*)(void *,unsigned))((void *)U32(d,0x32c+4*i),0);
 }
+/* Defined last so that it is the last part of the payload block (zero at boot;
+ * the gates compare the payload's code and data up to it). */
+struct frame_state text_speed_state;

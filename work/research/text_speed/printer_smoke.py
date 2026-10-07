@@ -12,7 +12,7 @@ Each screen is played from the same checkpoint once per mode: the original print
   (top screen rows TEXT_ROWS, which exclude the page arrow and animated field).
 
 Screens: save prompt, Route 1 sign, Pokémon Center PC (two messages) and a
-Pokégear phone call. Not covered: the Pokégear radio (the fixture has no radio
+Pokégear phone call to Mom (three pages, each captured). Not covered: the Pokégear radio (the fixture has no radio
 card), mail (no mail item), the credits (end of the game) and the new-game
 introduction: it is reachable from a blank battery (about 32 A presses), but its
 pages are drawn synchronously; the one asynchronous printer it starts renders a
@@ -25,6 +25,9 @@ import json
 import subprocess
 import sys
 
+import sys as _sys  # noqa: E402
+from pathlib import Path as _Path  # noqa: E402
+_sys.path.insert(0, str(_Path(__file__).resolve().parent))   # python -I adds no script directory
 from gate_common import (CLOCK, PRINTER_START, ROOT, PrinterTrace, add_arguments, identity, inputs_unchanged,
                          itcm_errors, load_expected_payload, require, resolve, start_game)
 import text_speed_checks as checks
@@ -44,7 +47,8 @@ SCREENS = {
     'save': {'path': 'batched', 'shots': {'prompt': MESSAGE_BOX}},
     'sign': {'path': 'synchronous', 'shots': {'sign': MESSAGE_BOX}},
     'pc': {'path': 'batched', 'shots': {'booted': MESSAGE_BOX, 'which-pc': (8, 145, 200, 184)}},
-    'phone': {'path': 'batched', 'shots': {'call': (8, 120, 248, 176)}},
+    'phone': {'path': 'batched', 'shots': {'call': (8, 120, 248, 176), 'call-2': (8, 120, 248, 176),
+                                           'call-3': (8, 120, 248, 176)}},
 }
 
 
@@ -71,7 +75,11 @@ def play(h, name, shot):
         h.press('A', after=90)
         h.press('A', after=90)
         h.press('A', after=300)
-        shot('call')
+        shot('call')                  # Mom: three pages, A between them
+        h.press('A', after=200)
+        shot('call-2')
+        h.press('A', after=200)
+        shot('call-3')
 
 
 def child(args, payload, battery):
@@ -111,7 +119,7 @@ def child(args, payload, battery):
                     batched = sum(1 for t in drew if not t['delegated'])
                     delegated = sum(1 for t in drew if t['delegated'])
                     stops, stop_errors = checks.task_errors(mode, drew) if drew else ({}, [])
-                    errors.extend(f'{tag}: {e}' for e in stop_errors)
+                    errors.extend(f'{tag}: {e}' for e in stop_errors + tracer.state_errors)
                     row = {'screen': name, 'mode': mode, 'path': SCREENS[name]['path'], 'shots': shots,
                            'async_starts': asynchronous, 'sync_starts': len(starts) - len(asynchronous),
                            'glyphs': len(tracer.glyphs), 'batched': batched, 'delegated': delegated,
@@ -153,7 +161,7 @@ def main():
     try:
         for battery in ('fixture',):
             out = args.out / battery
-            command = [sys.executable, __file__, '--rom', str(args.rom), '--save', str(args.save),
+            command = [sys.executable, '-I', __file__, '--rom', str(args.rom), '--save', str(args.save),
                        '--out', str(out), '--battery', battery]
             command += ['--fault-payload', str(args.fault_payload)] if args.fault_payload else []
             with (args.out / f'{battery}.log').open('w') as log:

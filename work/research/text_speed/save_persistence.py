@@ -7,6 +7,9 @@ Each reload also checks the ITCM payload/arena and that the reopened menu shows
 the stored choice in the English labels (text_speed_checks.option_label_errors).
 """
 import argparse,json
+import sys as _sys  # noqa: E402
+from pathlib import Path as _Path  # noqa: E402
+_sys.path.insert(0, str(_Path(__file__).resolve().parent))   # python -I adds no script directory
 from gate_common import start_game,add_arguments,identity,inputs_unchanged,itcm_errors,load_expected_payload,require,resolve
 import text_speed_checks as checks
 
@@ -28,7 +31,7 @@ def main():
                 require(menus, 'check failed: menus')
                 h.touch((130,177,227)[mode],152,after=40);h.touch(149,180,after=300)
                 expected=(original&~12)|(mode<<2)
-                require(h.u16(h.array(1))==expected, 'check failed: h.u16(h.array(1))==expected')
+                require(h.u16(h.array(1))==expected, f'Confirm did not store the chosen text speed (Options {h.u16(h.array(1)):#x}, expected {expected:#x})')
                 h.press('B',after=90);h.press('X',after=90)
                 h.touch(123,73,after=180);h.screenshot(f'{mode}-save-prompt')
                 h.press('A',after=180);h.press('A',after=600)

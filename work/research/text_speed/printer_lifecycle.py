@@ -18,6 +18,9 @@ import argparse
 from datetime import datetime
 import json
 
+import sys as _sys  # noqa: E402
+from pathlib import Path as _Path  # noqa: E402
+_sys.path.insert(0, str(_Path(__file__).resolve().parent))   # python -I adds no script directory
 from gate_common import (CLOCK, FREE_TO_HEAP, add_arguments, attach_probe, heap_usage, identity, inputs_unchanged,
                          itcm_errors, load_expected_payload, memory_errors, memory_summary, require, resolve)
 from text_speed_checks import heap_growth_errors, unfreed

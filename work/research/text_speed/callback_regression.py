@@ -16,14 +16,17 @@ printer task and the baseline for every case.
   tap that began after page 1 was complete, with exactly the original's latency from
   that tap; page 1 and the start of page 2 keep the original layout.
 Plain/held/tap cases are judged per native task (text_speed_checks.task_errors:
-budget, VCOUNT frame rule, stop reason, SLOW phase).
+budget, frame decisions against the payload's frame model, stop reason, SLOW phase).
 These are renderer/input tests on one natural conversation, not a scene audit.
 """
 import argparse
 import hashlib
 import json
 
-from gate_common import (CLOCK, PRINTER_START, PrinterTrace, start_game, add_arguments, attach_probe, identity,
+import sys as _sys  # noqa: E402
+from pathlib import Path as _Path  # noqa: E402
+_sys.path.insert(0, str(_Path(__file__).resolve().parent))   # python -I adds no script directory
+from gate_common import (CLOCK, PRINTER_START, PrinterTrace, start_game, add_arguments, attach_probe, code_bytes, identity,
                          inputs_unchanged, itcm_errors, load_expected_payload, memory_errors, memory_summary, require,
                          resolve)
 import text_speed_checks as checks
@@ -56,7 +59,7 @@ def main():
             require(not start, f'ITCM at start: {start}')
             checkpoint = args.out / 'candidate.dst'
             h.save_state(checkpoint)
-            code = bytes.fromhex(payload['code'])
+            code = code_bytes(payload)
             tracer = PrinterTrace(h, payload, font=1)
             for kind in kinds:
                 for mode in (3, 0, 1, 2):
@@ -145,7 +148,7 @@ def main():
                         summary, cadence_errors = checks.cadence(mode, [(r[1], r[2], r[3]) for r in page1])
                         trace['cadence'] = summary
                         trace['stops'], stop_errors = checks.task_errors(mode, tasks)
-                        errors.extend(f'{tag}: {e}' for e in cadence_errors + stop_errors)
+                        errors.extend(f'{tag}: {e}' for e in cadence_errors + stop_errors + tracer.state_errors)
                     first = page1[0][1]
                     trace['layout'] = [[r[4], r[5]] for r in rows]
                     trace['task_offsets'] = [r[1] - first for r in page1]

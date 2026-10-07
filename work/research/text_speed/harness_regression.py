@@ -11,22 +11,28 @@ reproduce that baseline's completed pages, glyph count and glyph layout exactly.
 
 Per message and speed the child also records the glyph cadence (glyphs per native
 task and per frame, judged by text_speed_checks.cadence against the design
-budgets), per-page printing spans, printer allocation/free pairing and per-heap
-usage before and after the corpus, and the ITCM payload/arena state at the start
-and end of the session.
+budgets), the model checks per native task (text_speed_checks.task_errors with the
+payload's frame model), the product record (gate_common.judge_message: frames,
+dropped frames, frame stops), printer allocation/free pairing and per-heap usage
+before and after the corpus, and the ITCM payload/arena state at the start and end
+of the session. The parent compares the speeds with the original printer
+(text_speed_checks.order_errors) and requires the printer tasks from each page's
+last glyph to its control step to equal the original's.
 """
 import argparse
 from datetime import datetime
 import hashlib
 import json
+from pathlib import Path
 import re
 import subprocess
 import sys
 
-from gate_common import (CLOCK, ROOT, PRINTER_START, PrinterTrace, add_arguments, attach_probe,
-                         digest, heap_usage, identity, inputs_unchanged, itcm_errors, load_expected_payload,
-                         memory_errors, memory_summary, require, resolve)
-import text_speed_checks as checks
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from gate_common import (CLOCK, ROOT, PRINTER_START, PrinterTrace, add_arguments, attach_probe,  # noqa: E402
+                         digest, heap_usage, identity, inputs_unchanged, itcm_errors, judge_message,
+                         load_expected_payload, memory_errors, memory_summary, require, resolve)
+import text_speed_checks as checks  # noqa: E402
 
 CORPUS = ((48, 20), (48, 26), (48, 60), (457, 123), (718, 160), (718, 1093))
 MODES = (3, 0, 1, 2)          # baseline first
@@ -89,7 +95,10 @@ def child(args):
             h.press('B', after=90)  # Options returns to the field menu; close it before scripts.
             h.screenshot('after-confirm')
             expected = (original & ~12) | (ui_mode << 2)
-            require(h.u16(opts) == expected, repr(('Confirm changed unrelated options', h.u16(opts), expected)))
+            stored = h.u16(opts)
+            require((stored >> 2) & 3 == (expected >> 2) & 3,
+                    f'Confirm did not store the chosen text speed (Options {stored:#x}, expected {expected:#x})')
+            require(stored == expected, repr(('Confirm changed unrelated options', stored, expected)))
             if args.mode == 3:
                 expected = original | 12          # controlled: reserved value -> original printer task
                 h.w16(opts, expected)
@@ -143,20 +152,22 @@ def child(args):
                     # Printing time per page: first to last glyph, excluding page waits and input.
                     bounds = [m - mark for m in page_marks]
                     require(bounds[-1] == len(glyphs), 'glyphs drawn after the last page was captured')
-                    page_spans = [glyphs[b - 1][2] - glyphs[a][2]
-                                  for a, b in zip([0] + bounds[:-1], bounds) if b > a]
-                    # Frames inside a page's printing in which the printer's task did not run
-                    # (frames the game dropped).
-                    lag_frames = sum(trace.lag(mark + a, mark + b) for a, b in zip([0] + bounds[:-1], bounds) if b > a)
+                    page_frames = [(glyphs[a][2], glyphs[b - 1][2])
+                                   for a, b in zip([0] + bounds[:-1], bounds) if b > a]
+                    page_spans = [b - a for a, b in page_frames]
                     summary, cadence_errors = checks.cadence(args.mode, glyphs)
                     errors.extend(f'{bank}#{msg}: {e}' for e in cadence_errors)
-                    tasks = trace.tasks_since(task_mark, set(trace.printers_since(mark)))
-                    stops, stop_errors = checks.task_errors(args.mode, tasks)
-                    errors.extend(f'{bank}#{msg}: {e}' for e in stop_errors)
+                    # Model (budgets, frame decisions, stop reasons, phase) and product record:
+                    # frames, dropped frames (frames inside a page's printing in which the
+                    # printer's task did not run), frame stops.
+                    record, stops, stop_errors = judge_message(trace, args.mode, mark, task_mark, page_frames)
+                    errors.extend(f'{bank}#{msg}: {e}' for e in stop_errors + trace.state_errors)
+                    lag_frames = record['drops']
                     require(live_during, 'no live printer observed while the message was displayed')
                     result['messages'].append({'bank': bank, 'id': msg, 'pages': pages, 'glyphs': len(glyphs),
                                                'layout': trace.layout(mark), 'page_spans': page_spans,
                                                'print_frames': sum(page_spans), 'lag_frames': lag_frames,
+                                               'record': record,
                                                'control_latency': trace.control_latencies(
                                                    task_mark, set(trace.printers_since(mark))),
                                                'cadence': summary, 'stops': stops})
@@ -199,16 +210,15 @@ def compare(report):
         limited = {m: modes[m]['messages'][i]['stops'].get('frame', 0) for m in MODES}
         free = {m: modes[m]['messages'][i]['control_latency'] for m in MODES}
         name = f"{base['bank']}#{base['id']}"
-        order, notes = checks.frame_order(spans, limited)
-        order += checks.lag_errors(lag)
+        order, notes = checks.order_errors({m: modes[m]['messages'][i]['record'] for m in MODES})
         order += checks.exact_errors('printer tasks from each page\'s last glyph to its control step', free[3],
                                      {m: free[m] for m in (0, 1, 2)})
         if not free[3]:
             order.append('no control step observed after a glyph (vacuous control-latency check)')
         orders.append({'message': name, 'print_frames': spans, 'lag_frames': lag, 'frame_stops': limited,
-                       'control_latency': free, 'errors': order, 'frame_limited_ties': notes})
+                       'control_latency': free, 'errors': order, 'capped_ties': notes})
         errors += [f'{name}: {e}' for e in order]
-        report.setdefault('frame_limited_ties', []).extend(f'{name}: {n}' for n in notes)
+        report.setdefault('capped_ties', []).extend(f'{name}: {n}' for n in notes)
     report['speed_order'] = orders
     per_frame = {m: max(x['cadence']['max_tasks_per_frame'] for x in modes[m]['messages']) for m in MODES}
     report['max_tasks_per_frame'] = per_frame
@@ -241,7 +251,7 @@ def main():
     try:
         for mode in MODES:
             out = args.out / str(mode)
-            command = [sys.executable, __file__, '--rom', str(args.rom), '--save', str(args.save),
+            command = [sys.executable, '-I', __file__, '--rom', str(args.rom), '--save', str(args.save),
                        '--out', str(out), '--mode', str(mode)]
             command += ['--controls'] if args.controls else []
             command += ['--fault-payload', str(args.fault_payload)] if args.fault_payload else []

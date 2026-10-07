@@ -7,6 +7,9 @@ spilling out of the row (text_speed_checks.option_label_errors).
 """
 import argparse
 import json
+import sys as _sys  # noqa: E402
+from pathlib import Path as _Path  # noqa: E402
+_sys.path.insert(0, str(_Path(__file__).resolve().parent))   # python -I adds no script directory
 from gate_common import (CLOCK, start_game, add_arguments, attach_probe, identity, inputs_unchanged, itcm_errors,
                          load_expected_payload, memory_errors, memory_summary, require, resolve)
 import text_speed_checks as checks
@@ -77,14 +80,14 @@ def main():
                 require(h.u16(d+0x27e)==mode and h.u16(h.array(1))==before, 'check failed: h.u16(d+0x27e)==mode and h.u16(h.array(1))==before')
                 h.press('DOWN',after=30);h.press('LEFT',after=30)
                 leave('A')
-                require(h.u16(h.array(1))==(original&~12)|(mode<<2), 'check failed: h.u16(h.array(1))==(original&~12)|(mode<<2)')
+                require(h.u16(h.array(1))==(original&~12)|(mode<<2), f'Confirm did not store the chosen text speed (Options {h.u16(h.array(1)):#x}, expected {(original&~12)|(mode<<2):#x})')
                 report['checks'].append(f'commit mode {mode}, reopen and preserve other bits')
             # Reserved raw value 3 is a controlled corrupt/unknown-setting case.
             h.w16(h.array(1),(original&~12)|12)
-            d=open_menu();require(h.u16(d+0x27e)==1, 'check failed: h.u16(d+0x27e)==1')
+            d=open_menu();require(h.u16(d+0x27e)==1, f'reserved value 3 is not shown as MEDIUM (row value {h.u16(d+0x27e)})')
             check_labels('reserved-3',1)
             leave('B');require(h.u16(h.array(1))==(original&~12)|12, 'check failed: h.u16(h.array(1))==(original&~12)|12')
-            d=open_menu();require(h.u16(d+0x27e)==1, 'check failed: h.u16(d+0x27e)==1')
+            d=open_menu();require(h.u16(d+0x27e)==1, f'reserved value 3 is not shown as MEDIUM (row value {h.u16(d+0x27e)})')
             h.touch(149,180,after=300);h.press('B',after=90)
             require(h.u16(h.array(1))==(original&~12)|4, 'check failed: h.u16(h.array(1))==(original&~12)|4')
             report['checks'].append('reserved value displays MEDIUM; Cancel preserves it, Confirm normalizes it')

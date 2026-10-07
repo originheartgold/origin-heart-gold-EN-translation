@@ -8,22 +8,27 @@ trainer's first page (54 glyphs) is printed with no harness checkpoint.
 
 The original printer (reserved value 3 written after Confirm) is the baseline.
 Requires per mode: the design glyph budget and a valid stop reason for every
-native task (text_speed_checks.task_errors, including the VCOUNT frame rule);
-completed pixels and glyph layout identical to the original; total printing
-frames original > SLOW >= MEDIUM >= FAST, where a tie is allowed only if the
-faster speed stopped on the frame limit (text_speed_checks.frame_order); and no
-speed may drop more than one frame more than the original while printing
-(dropped frame = a frame in which the printer's task did not run).
+native task, every frame decision equal to the payload's frame model and the
+payload's frame state equal to the costs the gate measured itself
+(text_speed_checks.task_errors, gate_common.PrinterTrace); completed pixels and
+glyph layout identical to the original; and the product rules of
+text_speed_checks.order_errors: ORIGINAL > SLOW > MEDIUM > FAST in printing frames
+(a tie only at the physical cap), no speed with more dropped frames than the
+original (dropped frame = a frame in which the printer's task did not run), none
+dropped only because of extra glyphs, and SLOW within its design floor.
 """
 import argparse
 import hashlib
 import json
+from pathlib import Path
 import subprocess
 import sys
 
-from gate_common import (CLOCK, PrinterTrace, ROOT, add_arguments, attach_probe, digest, identity, inputs_unchanged,
-                         itcm_errors, load_expected_payload, memory_errors, memory_summary, require, resolve)
-import text_speed_checks as checks
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from gate_common import (CLOCK, PrinterTrace, ROOT, add_arguments, attach_probe, digest, identity,  # noqa: E402
+                         inputs_unchanged, itcm_errors, judge_message, load_expected_payload, memory_errors,
+                         memory_summary, require, resolve)
+import text_speed_checks as checks  # noqa: E402
 
 NAMES = ('slow', 'medium', 'fast', 'original')
 
@@ -80,12 +85,11 @@ def child(args):
             require(checks.nonblank(crop), 'blank message window')
             summary, cadence_errors = checks.cadence(mode, glyphs)
             errors.extend(cadence_errors)
-            tasks = trace.tasks_since(task_mark, set(trace.printers_since(mark)))
-            stops, stop_errors = checks.task_errors(mode, tasks)
+            record, stops, stop_errors = judge_message(trace, mode, mark, task_mark)
             errors.extend(stop_errors)
-            frames = sorted({f for _, _, f in glyphs})
-            result.update(options=expected, glyphs=len(glyphs), cadence=summary, stops=stops,
-                          frame_span=frames[-1] - frames[0], lag_frames=trace.lag(mark),
+            errors.extend(trace.state_errors)
+            result.update(options=expected, glyphs=len(glyphs), cadence=summary, stops=stops, record=record,
+                          frame_span=record['frames'], lag_frames=record['drops'],
                           layout=trace.layout(mark), pixels=hashlib.sha256(crop).hexdigest())
             h.press('A', after=234)
             require(trace.mark() > mark + 54, 'second page did not start')
@@ -114,14 +118,14 @@ def main():
     try:
         for mode, name in enumerate(NAMES):
             out = args.out / name
-            command = [sys.executable, __file__, '--rom', str(args.rom), '--save', str(args.save),
+            command = [sys.executable, '-I', __file__, '--rom', str(args.rom), '--save', str(args.save),
                        '--out', str(out), '--mode', str(mode)]
             command += ['--fault-payload', str(args.fault_payload)] if args.fault_payload else []
             with (args.out / f'{name}.log').open('w') as log:
                 code = subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT).returncode
             r = json.loads((out / 'report.json').read_text())
             summary['modes'][name] = {k: r.get(k) for k in ('status', 'glyphs', 'frame_span', 'lag_frames',
-                                                            'options', 'stops', 'errors')}
+                                                            'options', 'stops', 'record', 'errors')}
             summary['modes'][name]['per_task'] = (r.get('cadence') or {}).get('per_task')
             if code or r['status'] != 'passed':
                 summary['errors'].append(f'{name}: {r.get("errors")}')
@@ -135,13 +139,9 @@ def main():
                     summary['errors'].append(f'{name}: completed dialogue pixels differ from the original printer')
                 if modes[name]['layout'] != base['layout']:
                     summary['errors'].append(f'{name}: glyph layout differs from the original printer')
-            spans = {m: modes[n]['frame_span'] for m, n in enumerate(NAMES)}
-            lag = {m: modes[n]['lag_frames'] for m, n in enumerate(NAMES)}
-            limited = {m: (modes[n]['stops'] or {}).get('frame', 0) for m, n in enumerate(NAMES)}
-            order, notes = checks.frame_order(spans, limited)
+            order, notes = checks.order_errors({m: modes[n]['record'] for m, n in enumerate(NAMES)})
             summary['errors'] += [f'frame order: {e}' for e in order]
-            summary['errors'] += [f'dropped frames: {e}' for e in checks.lag_errors(lag)]
-            summary['frame_limited_ties'] = notes
+            summary['capped_ties'] = notes
         if not inputs_unchanged(summary):
             summary['errors'].append('source input changed')
         if not summary['errors']:
