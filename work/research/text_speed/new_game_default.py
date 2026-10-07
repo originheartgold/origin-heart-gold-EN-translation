@@ -2,6 +2,7 @@
 import argparse,json,os,tempfile,hashlib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[3]
+from gate_common import require
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
@@ -29,12 +30,12 @@ def main():
                     callbacks.append(cb);e.memory.register_exec(address,cb)
                 for _ in range(2400):e.cycle(with_joystick=False)
                 log=report['events']
-                assert [x['event'] for x in log]==['constructor-entry','metadata-init','new-game-init','constructor-ready','before-publication','after-publication'],log
-                assert all(x['runtime']==0 for x in log[:-1])
-                assert all(x['block1_id']==1 and x['block1_offset']>0 and x['options']==516 for x in log if 'save' in x),log
-                last=log[-1];assert last['runtime']==last['save'] and last['flag']==0
+                require([x['event'] for x in log]==['constructor-entry','metadata-init','new-game-init','constructor-ready','before-publication','after-publication'], repr(log))
+                require(all(x['runtime']==0 for x in log[:-1]), "check failed: all(x['runtime']==0 for x in log[:-1])")
+                require(all(x['block1_id']==1 and x['block1_offset']>0 and x['options']==516 for x in log if 'save' in x), repr(log))
+                last=log[-1];require(last['runtime']==last['save'] and last['flag']==0, "check failed: last['runtime']==last['save'] and last['flag']==0")
             finally:e.destroy()
-        assert hashlib.sha256(a.rom.read_bytes()).hexdigest()==identity
+        require(hashlib.sha256(a.rom.read_bytes()).hexdigest()==identity, 'check failed: hashlib.sha256(a.rom.read_bytes()).hexdigest()==identity')
         report['status']='passed'
     except BaseException as exc:
         report.setdefault('errors',[]).append(f'{type(exc).__name__}: {exc}');raise

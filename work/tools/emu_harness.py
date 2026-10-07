@@ -1400,6 +1400,35 @@ def _parent_watchdog():
     threading.Thread(target=watch, daemon=True).start()
 
 
+def _log_slot_wait(event):
+    """Append 'wait <time>' / 'got <time>' to $EMU_HARNESS_WAIT_LOG (if set), so a supervising
+    runner can exclude time spent waiting for an emulator slot from its timeout."""
+    path = os.environ.get("EMU_HARNESS_WAIT_LOG")
+    if path:
+        with open(path, "a") as fh:
+            fh.write(f"{event} {os.getpid()} {time.time():.3f}\n")
+
+
+def slot_wait_seconds(path, now=None):
+    """Seconds processes logging to `path` spent waiting for a slot (open waits count up to now)."""
+    now = time.time() if now is None else now
+    total, open_waits = 0.0, {}
+    try:
+        lines = Path(path).read_text().splitlines()
+    except FileNotFoundError:
+        return 0.0
+    for line in lines:
+        parts = line.split()
+        if len(parts) != 3:
+            continue
+        event, pid, stamp = parts[0], parts[1], float(parts[2])
+        if event == "wait":
+            open_waits[pid] = stamp
+        elif event == "got" and pid in open_waits:
+            total += stamp - open_waits.pop(pid)
+    return total + sum(now - t for t in open_waits.values())
+
+
 class _EmulatorSlot:
     """A machine-wide cap on live emulators: one of MAX_EMULATORS lock files, held while the Harness lives."""
 
@@ -1407,6 +1436,13 @@ class _EmulatorSlot:
         import fcntl
         SLOT_DIR.mkdir(exist_ok=True)
         self.fh = None
+        _log_slot_wait("wait")
+        try:
+            self._acquire(fcntl)
+        finally:
+            _log_slot_wait("got")
+
+    def _acquire(self, fcntl):
         while self.fh is None:
             for k in range(MAX_EMULATORS):
                 fh = open(SLOT_DIR / f"slot{k}.lock", "w")

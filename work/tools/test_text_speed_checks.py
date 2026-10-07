@@ -43,17 +43,9 @@ class Cadence(unittest.TestCase):
         _, errors = C.cadence(C.ORIGINAL, batches([2] * 10))
         self.assertTrue(errors)
 
-    def test_unused_budget_fails(self):
-        # FAST that only ever prints one glyph per task is slower than designed
-        _, errors = C.cadence(2, batches([1] * 20))
-        self.assertTrue(any("used it" in e for e in errors), errors)
-        # SLOW whose phase-1 tasks still print one glyph (no alternation in effect)
-        _, errors = C.cadence(0, batches([1] * 20, [0, 1] * 10))
-        self.assertTrue(any("budget 2 used it" in e for e in errors), errors)
-
-    def test_slow_phase_must_alternate(self):
-        _, errors = C.cadence(0, batches([1] * 20, [0] * 20))
-        self.assertTrue(any("alternate" in e for e in errors), errors)
+    def test_short_batches_are_left_to_the_stop_reason_check(self):
+        # cadence() only bounds tasks from above; task_errors() judges early stops
+        self.assertEqual(C.cadence(2, batches([1] * 20))[1], [])
 
     def test_short_messages_only_judged_on_the_upper_bound(self):
         self.assertEqual(C.cadence(2, batches([1, 2]))[1], [])
@@ -84,17 +76,111 @@ class Ordering(unittest.TestCase):
         self.assertTrue(C.speed_order({1: 3}))
 
 
-class OrderingWithLag(unittest.TestCase):
-    def test_lag_explained_inversion_is_a_warning(self):
-        errors, warnings = C.speed_order_with_lag({0: 36, 1: 28, 2: 33}, {0: 1, 1: 2, 2: 16})
-        self.assertEqual(errors, [])
-        self.assertEqual(len(warnings), 1)
+class FrameOrder(unittest.TestCase):
+    def test_strict_order_passes(self):
+        self.assertEqual(C.frame_order({3: 54, 0: 36, 1: 28, 2: 19}, {}), ([], []))
 
-    def test_inversion_without_lag_is_an_error(self):
-        errors, _ = C.speed_order_with_lag({0: 36, 1: 28, 2: 33}, {0: 1, 1: 2, 2: 2})
+    def test_inversion_fails_even_with_frame_stops(self):
+        errors, _ = C.frame_order({0: 36, 1: 28, 2: 33}, {2: 10})
+        self.assertTrue(any("slower than MEDIUM" in e for e in errors), errors)
+
+    def test_tie_needs_frame_limit_on_the_faster_speed(self):
+        errors, notes = C.frame_order({3: 54, 0: 37, 1: 37, 2: 36}, {1: 9, 2: 18})
+        self.assertEqual(errors, [])
+        self.assertEqual(len(notes), 1)
+        errors, _ = C.frame_order({3: 54, 0: 37, 1: 37, 2: 36}, {1: 0, 2: 18})
         self.assertTrue(errors)
-        errors, warnings = C.speed_order_with_lag({0: 36, 1: 28, 2: 19}, {0: 0, 1: 0, 2: 0})
-        self.assertEqual((errors, warnings), ([], []))
+
+    def test_original_must_be_strictly_slower(self):
+        errors, _ = C.frame_order({3: 37, 0: 37}, {0: 5})
+        self.assertTrue(errors)
+        self.assertTrue(C.frame_order({1: 3}, {})[0])
+
+
+class Lag(unittest.TestCase):
+    def test_one_extra_dropped_frame_allowed(self):
+        self.assertEqual(C.lag_errors({3: 1, 0: 1, 1: 2, 2: 1}), [])
+        self.assertTrue(C.lag_errors({3: 1, 0: 1, 1: 11, 2: 16}))
+        self.assertTrue(C.lag_errors({0: 1}))
+
+    def test_exact(self):
+        self.assertEqual(C.exact_errors("to_free", 1, {0: 1, 1: 1}), [])
+        self.assertTrue(C.exact_errors("to_free", 1, {0: 1, 2: 0}))
+        self.assertTrue(C.exact_errors("to_free", None, {0: 1}))
+
+
+def task(events, phase=0, next_phase=None, start=155, **kw):
+    return dict({"id": 1, "phase": phase, "paused": False, "delegated": False, "start_line": start,
+                 "events": events, "next_phase": next_phase}, **kw)
+
+
+R, G, X = ("render",), (lambda u=0x12B: ("glyph", u)), (lambda line: ("check", line))
+
+
+class StopReasons(unittest.TestCase):
+    def test_native_value_is_pinned(self):
+        from pathlib import Path
+        import re
+        src = (Path(__file__).resolve().parents[1] / "patches/text_speed/native.c").read_text()
+        self.assertEqual(int(re.search(r"#define MIN_LINES_FOR_GLYPH (\d+)", src).group(1)), C.MIN_LINES_FOR_GLYPH)
+        self.assertEqual(int(re.search(r"#define FRAME_LOST_LINES (\d+)", src).group(1)), C.FRAME_LOST_LINES)
+
+    def test_lines_to_vblank(self):
+        self.assertEqual([C.lines_to_vblank(x) for x in (0, 170, 191, 192, 262)], [192, 22, 1, 263, 193])
+        self.assertTrue(C.frame_stop(173))                # 19 lines left
+        self.assertFalse(C.frame_stop(172))               # 20 lines left: the glyph fits
+        self.assertFalse(C.frame_stop(250))               # battle / after a VBlank: a frame ahead
+        self.assertFalse(C.frame_stop(5))                 # wrapped: next VBlank 187 lines away
+        self.assertTrue(C.frame_stop(185))                # 7 lines: stopping still saves the frame
+        self.assertFalse(C.frame_stop(186))               # 6 lines: the frame is lost anyway
+
+    def test_reasons(self):
+        tasks = [task([R, G(), X(160), R, G(), X(170), R, G()], phase=0),           # FAST budget
+                 task([R, G(), X(174)]),                                            # frame
+                 task([R, G(0xFFFE)]),                                             # control
+                 task([R])]                                                        # result (prompt)
+        summary, errors = C.task_errors(2, tasks)
+        self.assertEqual(errors, [])
+        self.assertEqual(summary["reasons"], {"budget": 1, "control": 1, "frame": 1, "result": 1})
+
+    def test_ignored_frame_stop_fails(self):
+        _, errors = C.task_errors(2, [task([R, G(), X(175), R, G()])])
+        self.assertTrue(any("after a frame stop" in e for e in errors), errors)
+
+    def test_early_stop_without_reason_fails(self):
+        _, errors = C.task_errors(2, [task([R, G(0x1DE)])])               # e.g. stopping at a space
+        self.assertTrue(any("without a reason" in e for e in errors), errors)
+        _, errors = C.task_errors(2, [task([R, G(), X(160)])])             # check said go, task ended
+        self.assertTrue(any("allowed another glyph" in e for e in errors), errors)
+
+    def test_structure(self):
+        _, errors = C.task_errors(1, [task([])])
+        self.assertTrue(any("rendered nothing" in e for e in errors), errors)
+        _, errors = C.task_errors(1, [task([X(160), R, G()])])
+        self.assertTrue(any("before the first glyph" in e for e in errors), errors)
+        _, errors = C.task_errors(1, [task([R, G(), R, G()])])
+        self.assertTrue(any("without a frame check" in e for e in errors), errors)
+        self.assertTrue(C.task_errors(1, [])[1])
+
+    def test_slow_phase(self):
+        ok = [task([R, G()], phase=0, next_phase=1), task([R, G(), X(160), R, G()], phase=1, next_phase=0),
+              task([R, G(), X(175)], phase=1, next_phase=1)]                  # frame stop keeps phase 1
+        self.assertEqual(C.task_errors(0, ok)[1], [])
+        _, errors = C.task_errors(0, [task([R, G(), X(175)], phase=1, next_phase=0)])
+        self.assertTrue(any("phase" in e for e in errors), errors)
+        _, errors = C.task_errors(0, [task([R, G()], phase=1, next_phase=1)])  # phase 2 drew one, no reason
+        self.assertTrue(errors)
+        _, errors = C.task_errors(1, [task([R, G(), X(160), R, G()], next_phase=1)])
+        self.assertTrue(any("phase" in e for e in errors), errors)
+
+    def test_delegation_and_pause(self):
+        self.assertEqual(C.task_errors(C.ORIGINAL, [task([], delegated=True)])[1], [])
+        self.assertTrue(C.task_errors(C.ORIGINAL, [task([R, G()])])[1])
+        self.assertTrue(C.task_errors(1, [task([], delegated=True)])[1])
+        self.assertEqual(C.task_errors(1, [task([], delegated=True, special=True)])[1], [])
+        self.assertTrue(C.task_errors(1, [task([R, G()], special=True)])[1])
+        self.assertEqual(C.task_errors(1, [task([], paused=True)])[1], [])
+        self.assertTrue(C.task_errors(1, [task([R, G()], paused=True)])[1])
 
 
 class Messages(unittest.TestCase):
@@ -159,12 +245,17 @@ class OptionLabels(unittest.TestCase):
 
 
 class BattlePacing(unittest.TestCase):
-    base = [{"text": "Foe used Tackle!", "glyphs": 16, "after_last": 90, "dwell": 88},
-            {"text": "It missed!", "glyphs": 10, "after_last": 50, "dwell": None}]
+    base = [{"text": "Foe used Tackle!", "glyphs": 16, "after_last": 90, "dwell": 88, "pixels": "a", "to_free": 1},
+            {"text": "It missed!", "glyphs": 10, "after_last": 50, "dwell": None, "pixels": "b", "to_free": 1}]
 
     def test_preserved(self):
-        other = [dict(self.base[0], after_last=91), dict(self.base[1])]
+        other = [dict(self.base[0]), dict(self.base[1])]
         self.assertEqual(C.battle_pacing_errors(self.base, other), [])
+
+    def test_exact(self):
+        for key, value in (("after_last", 91), ("to_free", 0), ("pixels", "c")):
+            other = [dict(self.base[0], **{key: value}), dict(self.base[1])]
+            self.assertTrue(C.battle_pacing_errors(self.base, other), key)
 
     def test_shortened_pause_fails(self):
         other = [dict(self.base[0], after_last=80), dict(self.base[1])]

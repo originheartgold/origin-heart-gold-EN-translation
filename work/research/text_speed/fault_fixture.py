@@ -25,28 +25,89 @@ def units(text):
     return b''.join((0x12B + ord(c) - ord('A')).to_bytes(2, 'little') for c in text) + b'\xff\xff'
 
 
-# name: (description, [(address, original bytes, broken bytes)])
+def nop(address, original):
+    return (address, bytes.fromhex(original), bytes.fromhex('c046'))
+
+
+# name: {description, edits [(address, original bytes, broken bytes)], gates}.
+# 'gates' maps every gate that must FAIL on the fault to a substring its errors
+# must contain (None: any failure). validate_release.py --fault-payload reports
+# 'fault-detected' only if every declared gate failed that way. A fault with
+# 'dead' instead of gates is proven unreachable (see text_speed_release_checks.md)
+# and has no gate to declare.
 FAULTS = {
-    'fast-budget': ('MEDIUM/FAST budget m+7 instead of m+1 (8 and 9 glyphs per task)',
-                    [(0x01FF867E, bytes.fromhex('781c'), bytes.fromhex('f81d'))]),
-    'slow-flat': ('SLOW ignores its phase: always one glyph per task',
-                  [(0x01FF8684, bytes.fromhex('0121'), bytes.fromhex('0021'))]),
-    'no-phase-reset': ('init_printer no longer clears the private phase byte (+0x34)',
-                       [(0x01FF862C, bytes.fromhex('2154'), bytes.fromhex('c046'))]),
+    'fast-budget': {
+        'description': 'MEDIUM/FAST budget m+7 instead of m+1 (8 and 9 glyphs per task)',
+        'edits': [(0x01FF867E, bytes.fromhex('781c'), bytes.fromhex('f81d'))],
+        'gates': {'corpus': 'design budget', 'battle': 'design budget', 'callbacks': 'design budget',
+                  'fallbacks': 'budget', 'natural-dialogue': 'design budget'}},
+    'slow-flat': {
+        'description': 'SLOW ignores its phase: always one glyph per task',
+        'edits': [(0x01FF8684, bytes.fromhex('0121'), bytes.fromhex('0021'))],
+        'gates': {'corpus': 'without a reason', 'callbacks': 'without a reason',
+                  'fallbacks': 'without a reason', 'natural-dialogue': 'without a reason',
+                  'battle': 'without a reason'}},
+    'no-phase-reset': {
+        'description': 'init_printer no longer clears the private phase byte (+0x34)',
+        'edits': [nop(0x01FF862C, '2154')],
+        'gates': {'lifecycle': 'phase'}},
     # exit_free has commit_speed inlined; the standalone commit_speed copy is not called.
-    'commit-noop': ('Options Confirm no longer stores the text-speed bits',
-                    [(0x01FF8836, bytes.fromhex('0280'), bytes.fromhex('c046'))]),
-    'label-overflow': ('MEDIUM label replaced by a ten-letter label',
-                       # labels[2] is u16[11]: MEDIUM, terminator, four zero units.
-                       [(0x01FF88EC, units('MEDIUM') + bytes(8), units('MEDIUMMEDI'))]),
-    'default-slow': ('new-game Options initialiser sets SLOW instead of MEDIUM (main ARM9)',
-                     [(0x0202B176, bytes.fromhex('0420'), bytes.fromhex('0020'))]),
-    'arena-overlap': ('SDK ITCM arena lower bound put back over the payload (main ARM9 data)',
-                      [(0x020D1A28, bytes.fromhex('2089ff01'), bytes.fromhex('2086ff01'))]),
-    'no-control-stop': ('batching no longer stops before control codes',
-                        [(0x01FF86D4, bytes.fromhex('17d3'), bytes.fromhex('c046')),
-                         (0x01FF86DC, bytes.fromhex('13d3'), bytes.fromhex('c046')),
-                         (0x01FF86E2, bytes.fromhex('10d0'), bytes.fromhex('c046'))]),
+    'commit-noop': {
+        'description': 'Options Confirm no longer stores the text-speed bits',
+        'edits': [nop(0x01FF886A, '0280')],
+        'gates': {'options': None, 'save': None, 'music': None, 'corpus': None}},
+    'label-overflow': {
+        'description': 'MEDIUM label replaced by a ten-letter label',
+        # labels[2] is u16[11]: MEDIUM, terminator, four zero units.
+        'edits': [(0x01FF8920, units('MEDIUM') + bytes(8), units('MEDIUMMEDI'))],
+        'gates': {'options': 'label', 'save': 'label'}},
+    'default-slow': {
+        'description': 'new-game Options initialiser sets SLOW instead of MEDIUM (main ARM9)',
+        'edits': [(0x0202B176, bytes.fromhex('0420'), bytes.fromhex('0020'))],
+        'gates': {'new-game': None}},
+    'arena-overlap': {
+        'description': 'SDK ITCM arena lower bound put back over the payload (main ARM9 data)',
+        'edits': [(0x020D1A28, bytes.fromhex('6089ff01'), bytes.fromhex('2086ff01'))],
+        'gates': {'lifecycle': 'ITCM arena', 'options': 'ITCM arena'}},
+    'no-control-stop': {
+        'description': 'batching no longer stops before control codes',
+        'edits': [nop(0x01FF86D4, '2fd3'), nop(0x01FF86DC, '2bd3'), nop(0x01FF86E2, '28d0')],
+        'gates': {'corpus': 'control step', 'controls': 'control step', 'battle': 'to_free'}},
+    'eos-only-no-stop': {
+        'description': 'batching no longer stops before 0xFFFF/0xFFFE (end of text, extended controls)',
+        'edits': [nop(0x01FF86DC, '2bd3')],
+        'gates': {'corpus': 'control step', 'battle': 'to_free'}},
+    'space-stop': {
+        'description': 'batching stops before every space (0x01DE) instead of 0xF0FD',
+        'edits': [(0x01FF8768, bytes.fromhex('fdf00000'), bytes.fromhex('de010000'))],
+        'gates': {'corpus': 'without a reason', 'natural-dialogue': 'without a reason',
+                  'fallbacks': 'without a reason', 'callbacks': 'without a reason'}},
+    'no-color-setup': {
+        'description': 'native task no longer sets the glyph colour table before rendering',
+        'edits': [nop(0x01FF8698, '9847')],
+        'gates': {'corpus': 'pages differs', 'controls': 'pages differs', 'callbacks': 'pixels differ'}},
+    'no-state-stop': {
+        'description': 'batch ignores RenderText state +0x28 / delay counter +0x2a after a glyph',
+        'edits': [nop(0x01FF86C2, '38d1'), nop(0x01FF86C8, '35d1')],
+        'dead': 'after a glyph (result 0) RenderText is always in state 0 with +0x2a = 0; '
+                'see text_speed_release_checks.md'},
+    'reserved-fast': {
+        'description': 'Options shows reserved/legacy value 3 as FAST instead of MEDIUM',
+        'edits': [(0x01FF8792, bytes.fromhex('0120'), bytes.fromhex('0220'))],
+        'gates': {'options': None}},
+    'vcount-ignored': {
+        'description': 'batch ignores the VCOUNT frame check (always draws its whole budget)',
+        'edits': [nop(0x01FF870A, '10d2'), (0x01FF8716, bytes.fromhex('c7d3'), bytes.fromhex('c7e7'))],
+        'gates': {'natural-dialogue': 'after a frame stop', 'fallbacks': 'after a frame stop',
+                  'callbacks': 'after a frame stop'}},
+    'vcount-zero-glyph': {
+        'description': 'frame check runs before the first glyph (a late task draws nothing)',
+        'edits': [(0x01FF86A6, bytes.fromhex('0500'), bytes.fromhex('21e0'))],
+        # In the corpus scene every task starts late, so the printer never draws: the
+        # message cannot complete (a stuck message), before any per-task check runs.
+        'gates': {'corpus': 'did not complete', 'natural-dialogue': 'before the first glyph',
+                  'fallbacks': 'before the first glyph', 'callbacks': 'before the first glyph',
+                  'battle': 'before the first glyph'}},
 }
 
 
@@ -62,7 +123,8 @@ def main():
     if not out.is_relative_to(ROOT / 'work/build') or out == ROOT / 'work/build':
         p.error('output must be a separate directory under this worktree work/build')
     out.mkdir(parents=True, exist_ok=True)
-    description, edits = FAULTS[a.fault]
+    fault = FAULTS[a.fault]
+    description, edits = fault['description'], fault['edits']
     payload = load_payload()
     code = bytearray.fromhex(payload['code'])
     rom = ndspy.rom.NintendoDSRom.fromFile(str(a.candidate))

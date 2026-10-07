@@ -48,6 +48,15 @@ class PokemonCodec(unittest.TestCase):
         self.assertEqual(after["fateful"], before["fateful"])
 
 
+class SlotWaits(unittest.TestCase):
+    def test_closed_and_open_waits(self):
+        with tempfile.TemporaryDirectory() as d:
+            log = Path(d) / 'waits'
+            self.assertEqual(E.slot_wait_seconds(log), 0.0)
+            log.write_text('wait 1 100.0\ngot 1 130.0\nwait 2 140.0\ngot 2 141.5\nwait 3 150.0\njunk\n')
+            self.assertAlmostEqual(E.slot_wait_seconds(log, now=160.0), 30.0 + 1.5 + 10.0)
+
+
 class MessageScript(unittest.TestCase):
     def test_wide_message_ids_use_native_external_command(self):
         from unittest.mock import Mock

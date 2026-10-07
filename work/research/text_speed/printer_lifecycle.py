@@ -19,7 +19,7 @@ from datetime import datetime
 import json
 
 from gate_common import (CLOCK, FREE_TO_HEAP, add_arguments, attach_probe, heap_usage, identity, inputs_unchanged,
-                         itcm_errors, load_expected_payload, memory_errors, memory_summary, resolve)
+                         itcm_errors, load_expected_payload, memory_errors, memory_summary, require, resolve)
 from text_speed_checks import heap_growth_errors, unfreed
 
 CONSTRUCTOR_RETURN = 0x02020966
@@ -42,7 +42,7 @@ def main():
             h.boot_to_menu()
             h.continue_game()
             start = itcm_errors(h, payload)
-            assert not start, start
+            require(not start, repr(start))
             probe = attach_probe(h)
 
             def begin(h):
@@ -85,7 +85,7 @@ def main():
                         if h.get_var(SENTINEL_VAR) == 0x5A5A:
                             break
                         h.press('A', after=240)
-                    assert h.get_var(SENTINEL_VAR) == 0x5A5A, f'message {i} did not complete'
+                    require(h.get_var(SENTINEL_VAR) == 0x5A5A, f'message {i} did not complete')
                 finally:
                     h.set_var(SENTINEL_VAR, saved)
                 h.step(30)
@@ -107,7 +107,7 @@ def main():
             report['memory'] = memory_summary(probe)
             errors.extend(memory_errors(report['memory']))
             errors.extend(f'end of session: {e}' for e in itcm_errors(h, payload))
-        assert inputs_unchanged(report), 'input modified'
+        require(inputs_unchanged(report), 'input modified')
         if not errors:
             report['status'] = 'passed'
     except BaseException as exc:

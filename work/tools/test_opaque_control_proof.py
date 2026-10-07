@@ -30,7 +30,7 @@ class OpaqueControlProofTests(unittest.TestCase):
         self.assertFalse(p.native_evidence_ok(rows,{'before':{'blocks':[]},'after':{'blocks':[1]}}))
 
     def test_native_code_mutations_invalidate_proof(self):
-        path=Path('work/rom/origin_v4.0.3_cn.nds')
+        path=Path(__file__).resolve().parents[2]/'work/rom/origin_v4.0.3_cn.nds'
         if not path.exists():self.skipTest('Local Chinese ROM unavailable')
         import ndspy.rom
         arm=ndspy.rom.NintendoDSRom.fromFile(str(path)).loadArm9().sections[0]

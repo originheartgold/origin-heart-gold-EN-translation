@@ -25,7 +25,7 @@ import sys
 
 from gate_common import (CLOCK, ROOT, PRINTER_START, PrinterTrace, add_arguments, attach_probe,
                          digest, heap_usage, identity, inputs_unchanged, itcm_errors, load_expected_payload,
-                         memory_errors, memory_summary, resolve)
+                         memory_errors, memory_summary, require, resolve)
 import text_speed_checks as checks
 
 CORPUS = ((48, 20), (48, 26), (48, 60), (457, 123), (718, 160), (718, 1093))
@@ -44,7 +44,7 @@ def child(args):
             h.boot_to_menu()
             h.continue_game()
             start_itcm = itcm_errors(h, payload)
-            assert not start_itcm, start_itcm
+            require(not start_itcm, repr(start_itcm))
             probe = attach_probe(h)
             menus = []
             exits = []
@@ -58,45 +58,48 @@ def child(args):
                 before = len(menus)
                 h.press('X', after=90)
                 h.touch(124, 115, after=300)
-                assert len(menus) == before + 1, 'Options failed to open'
+                require(len(menus) == before + 1, 'Options failed to open')
                 d = menus[-1]
-                assert h.u16(d + 0x27c) == 3, 'text row missing'
+                require(h.u16(d + 0x27c) == 3, 'text row missing')
                 return d
             d = open_options()
             opts = h.u32(d + 0x24)
             original = h.u16(opts)
-            assert (original >> 2) & 3 == 0, 'fixture is not an old SLOW save'
+            require((original >> 2) & 3 == 0, 'fixture is not an old SLOW save')
             # First exercise cancel after touch, then reopen and commit via buttons.
             h.touch(227, 152, after=60)
-            assert h.u16(d + 0x27e) == 2 and h.u16(opts) == original
+            require(h.u16(d + 0x27e) == 2 and h.u16(opts) == original, 'check failed: h.u16(d + 0x27e) == 2 and h.u16(opts) == original')
             h.touch(220, 180, after=300)
-            assert h.u16(opts) == original, 'Cancel committed text speed'
+            require(h.u16(opts) == original, 'Cancel committed text speed')
             d = open_options()
-            assert h.u16(d + 0x27e) == 0
+            require(h.u16(d + 0x27e) == 0, 'check failed: h.u16(d + 0x27e) == 0')
             # Touch locates the row; d-pad moves the value and A confirms native UI.
             ui_mode = 1 if args.mode == 3 else args.mode
             h.touch(130, 152, after=40)
             for _ in range(ui_mode):
                 h.press('RIGHT', after=30)
-            assert h.u16(d + 0x27e) == ui_mode, 'button selection failed'
+            require(h.u16(d + 0x27e) == ui_mode, 'button selection failed')
             h.press('DOWN', after=30)
-            assert (h.u32(d + 16) >> 2) & 7 == 7
+            require((h.u32(d + 16) >> 2) & 7 == 7, 'check failed: (h.u32(d + 16) >> 2) & 7 == 7')
             h.press('LEFT', after=30)  # Native CN row defaults to Quit (0); Confirm is 1.
-            assert h.u16(d + 0x2d2) == 1, 'Confirm button not selected'
+            require(h.u16(d + 0x2d2) == 1, 'Confirm button not selected')
             prior_exits = len(exits)
             h.press('A', after=300)
-            assert len(exits) == prior_exits + 1, 'A did not leave Options'
+            require(len(exits) == prior_exits + 1, 'A did not leave Options')
             h.press('B', after=90)  # Options returns to the field menu; close it before scripts.
             h.screenshot('after-confirm')
             expected = (original & ~12) | (ui_mode << 2)
-            assert h.u16(opts) == expected, ('Confirm changed unrelated options', h.u16(opts), expected)
+            require(h.u16(opts) == expected, repr(('Confirm changed unrelated options', h.u16(opts), expected)))
             if args.mode == 3:
                 expected = original | 12          # controlled: reserved value -> original printer task
                 h.w16(opts, expected)
             result['options'] = {'before': original, 'after': expected, 'cancel': 'passed', 'buttons': 'passed'}
             idle_heaps = heap_usage(h)
-            for bank, msg in (((718, 160),) if args.controls else CORPUS):
-                mark = trace.mark()
+            corpus = ((718, 160),) if args.controls else CORPUS
+            if args.only_message:
+                corpus = (tuple(int(x) for x in args.only_message.split('#')),)
+            for bank, msg in corpus:
+                mark, task_mark = trace.mark(), trace.task_mark()
                 sentinel = h.get_var(SENTINEL_VAR)
                 h.set_var(SENTINEL_VAR, 0)
                 program = message_script(bank, msg)
@@ -107,7 +110,7 @@ def child(args):
                         if h.get_var(SENTINEL_VAR) == 0x5A5A:
                             break
                         crop = h.emu.screenshot().crop(CROP)
-                        assert checks.nonblank(crop.tobytes()), f'blank message window on page {page}'
+                        require(checks.nonblank(crop.tobytes()), f'blank message window on page {page}')
                         pages.append(hashlib.sha256(crop.tobytes()).hexdigest())
                         page_marks.append(trace.mark())
                         if live_during is None:
@@ -115,44 +118,53 @@ def child(args):
                         h.screenshot(f'{bank}_{msg}_{page}')
                         n = trace.mark()
                         h.step(120)
-                        assert trace.mark() == n, 'page progressed without input'
-                        assert crop.tobytes() == h.emu.screenshot().crop(CROP).tobytes(), 'text changed while waiting'
+                        require(trace.mark() == n, 'page progressed without input')
+                        require(crop.tobytes() == h.emu.screenshot().crop(CROP).tobytes(), 'text changed while waiting')
                         h.press('A', after=480)
-                    assert h.get_var(SENTINEL_VAR) == 0x5A5A, 'message did not complete within page budget'
+                    require(h.get_var(SENTINEL_VAR) == 0x5A5A, 'message did not complete within page budget')
                     glyphs = trace.since(mark)
-                    assert glyphs and pages, 'empty/vacuous message test'
+                    require(glyphs and pages, 'empty/vacuous message test')
                     if args.controls:
                         from control_fixture import TEXT
                         source = TEXT
                         before = len(re.sub(r'\{[^}]*\}', '', TEXT.split('{VAR:0201:60}')[0]))
                         pause_gap = glyphs[before][2] - glyphs[before - 1][2]
-                        assert pause_gap >= 60, ('explicit pause shortened', pause_gap)
+                        require(pause_gap >= 60, repr(('explicit pause shortened', pause_gap)))
                         result['explicit_pause_frames'] = pause_gap
+                        printer = trace.glyphs[mark + before][0]
+                        result['explicit_pause_tasks'] = trace.tasks_between(glyphs[before - 1][0], glyphs[before][0],
+                                                                             printer)
                     else:
                         bank_source = json.loads((ROOT / f'work/translate/banks/a027/{bank:04d}.json').read_text())
                         source = next(s['en'] for s in bank_source['strings'] if s['id'] == msg)
                     expected_glyphs = len(re.sub(r'\{[^}]*\}', '', source))
-                    assert len(glyphs) == expected_glyphs, ('wrong message or incomplete rendering', bank, msg,
-                                                            len(glyphs), expected_glyphs)
+                    require(len(glyphs) == expected_glyphs, repr(('wrong message or incomplete rendering', bank, msg,
+                                                            len(glyphs), expected_glyphs)))
                     # Printing time per page: first to last glyph, excluding page waits and input.
                     bounds = [m - mark for m in page_marks]
-                    assert bounds[-1] == len(glyphs), 'glyphs drawn after the last page was captured'
+                    require(bounds[-1] == len(glyphs), 'glyphs drawn after the last page was captured')
                     page_spans = [glyphs[b - 1][2] - glyphs[a][2]
                                   for a, b in zip([0] + bounds[:-1], bounds) if b > a]
-                    # Frames inside a page's printing in which no glyph was drawn (game lag or
-                    # explicit pauses; the same pauses occur at every speed).
-                    lag_frames = sum(glyphs[b - 1][2] - glyphs[a][2] + 1 - len({g[2] for g in glyphs[a:b]})
-                                     for a, b in zip([0] + bounds[:-1], bounds) if b > a)
+                    # Frames inside a page's printing in which the printer's task did not run
+                    # (frames the game dropped).
+                    lag_frames = sum(trace.lag(mark + a, mark + b) for a, b in zip([0] + bounds[:-1], bounds) if b > a)
                     summary, cadence_errors = checks.cadence(args.mode, glyphs)
                     errors.extend(f'{bank}#{msg}: {e}' for e in cadence_errors)
-                    assert live_during, 'no live printer observed while the message was displayed'
+                    tasks = trace.tasks_since(task_mark, set(trace.printers_since(mark)))
+                    stops, stop_errors = checks.task_errors(args.mode, tasks)
+                    errors.extend(f'{bank}#{msg}: {e}' for e in stop_errors)
+                    require(live_during, 'no live printer observed while the message was displayed')
                     result['messages'].append({'bank': bank, 'id': msg, 'pages': pages, 'glyphs': len(glyphs),
                                                'layout': trace.layout(mark), 'page_spans': page_spans,
                                                'print_frames': sum(page_spans), 'lag_frames': lag_frames,
-                                               'cadence': summary})
+                                               'control_latency': trace.control_latencies(
+                                                   task_mark, set(trace.printers_since(mark))),
+                                               'cadence': summary, 'stops': stops})
                 finally:
                     h.set_var(SENTINEL_VAR, sentinel)
-                assert h.u16(opts) == expected, 'dialogue changed Options'
+                require(h.u16(opts) == expected, 'dialogue changed Options')
+            if args.dump_tasks:
+                (args.out / 'tasks.json').write_text(json.dumps(trace.tasks, default=str))
             h.step(60)
             result['printers'] = {'starts': len(starts), 'allocations': len(printers.allocations),
                                   'live_after': printers.live()}
@@ -164,11 +176,10 @@ def child(args):
             result['memory'] = memory_summary(probe)
             errors.extend(memory_errors(result['memory']))
             errors.extend(f'end of session: {e}' for e in itcm_errors(h, payload))
-            assert not errors, errors
-            result['status'] = 'passed'
+            if not errors:
+                result['status'] = 'passed'
     except BaseException as exc:
-        if not errors or str(exc) != str(errors):
-            errors.append(f'{type(exc).__name__}: {exc}')
+        errors.append(f'{type(exc).__name__}: {exc}')
         raise
     finally:
         (args.out / 'report.json').write_text(json.dumps(result, indent=2, default=str))
@@ -185,21 +196,32 @@ def compare(report):
     for i, base in enumerate(baseline):
         spans = {m: modes[m]['messages'][i]['print_frames'] for m in MODES}
         lag = {m: modes[m]['messages'][i]['lag_frames'] for m in MODES}
-        order, warnings = checks.speed_order_with_lag(spans, lag)
-        orders.append({'message': f"{base['bank']}#{base['id']}", 'print_frames': spans, 'lag_frames': lag,
-                       'errors': order, 'warnings': warnings})
-        errors += [f"{base['bank']}#{base['id']}: {e}" for e in order]
-        report.setdefault('warnings', []).extend(f"{base['bank']}#{base['id']}: {w}" for w in warnings)
+        limited = {m: modes[m]['messages'][i]['stops'].get('frame', 0) for m in MODES}
+        free = {m: modes[m]['messages'][i]['control_latency'] for m in MODES}
+        name = f"{base['bank']}#{base['id']}"
+        order, notes = checks.frame_order(spans, limited)
+        order += checks.lag_errors(lag)
+        order += checks.exact_errors('printer tasks from each page\'s last glyph to its control step', free[3],
+                                     {m: free[m] for m in (0, 1, 2)})
+        if not free[3]:
+            order.append('no control step observed after a glyph (vacuous control-latency check)')
+        orders.append({'message': name, 'print_frames': spans, 'lag_frames': lag, 'frame_stops': limited,
+                       'control_latency': free, 'errors': order, 'frame_limited_ties': notes})
+        errors += [f'{name}: {e}' for e in order]
+        report.setdefault('frame_limited_ties', []).extend(f'{name}: {n}' for n in notes)
     report['speed_order'] = orders
     per_frame = {m: max(x['cadence']['max_tasks_per_frame'] for x in modes[m]['messages']) for m in MODES}
     report['max_tasks_per_frame'] = per_frame
     errors += [f'{checks.NAMES[m]}: {per_frame[m]} printer tasks in one frame, original {per_frame[3]}'
                for m in (0, 1, 2) if per_frame[m] > per_frame[3]]
-    if 'explicit_pause_frames' in modes[3]:
-        pause = {m: modes[m]['explicit_pause_frames'] for m in MODES}
-        report['explicit_pause_frames'] = pause
-        errors += [f'{checks.NAMES[m]}: explicit pause {pause[m]} frames != original {pause[3]}'
-                   for m in (0, 1, 2) if abs(pause[m] - pause[3]) > 1]
+    if 'explicit_pause_tasks' in modes[3]:
+        # The 60-tick pause counts printer tasks; frames are an observation (a dropped
+        # frame inside the pause lengthens it by one frame at any speed, original included).
+        report['explicit_pause_frames'] = {m: modes[m]['explicit_pause_frames'] for m in MODES}
+        pause = {m: modes[m]['explicit_pause_tasks'] for m in MODES}
+        report['explicit_pause_tasks'] = pause
+        errors += [f'{checks.NAMES[m]}: explicit pause {pause[m]} printer tasks != original {pause[3]}'
+                   for m in (0, 1, 2) if pause[m] != pause[3]]
     return errors
 
 
@@ -208,6 +230,8 @@ def main():
     add_arguments(p)
     p.add_argument('--mode', type=int, choices=MODES)
     p.add_argument('--controls', action='store_true', help='Use the separately generated authored control fixture ROM')
+    p.add_argument('--only-message', help='diagnosis only: BANK#ID of one corpus message (child mode)')
+    p.add_argument('--dump-tasks', action='store_true', help='diagnosis only: write every task record (child mode)')
     args = resolve(p, p.parse_args())
     if args.mode is not None:
         child(args)
@@ -222,17 +246,21 @@ def main():
             command += ['--controls'] if args.controls else []
             command += ['--fault-payload', str(args.fault_payload)] if args.fault_payload else []
             with (args.out / f'{mode}.log').open('w') as log:
-                code = subprocess.run(command, timeout=900, stdout=log, stderr=subprocess.STDOUT,
+                code = subprocess.run(command, stdout=log, stderr=subprocess.STDOUT,
                                       cwd=ROOT).returncode
+            if not (out / 'report.json').exists():
+                report['errors'].append(f'mode {mode} child wrote no report (exit {code})')
+                continue
             r = json.loads((out / 'report.json').read_text())
-            assert r['rom_sha256'] == report['inputs'][str(args.rom)], 'wrong candidate executed'
+            require(r['rom_sha256'] == report['inputs'][str(args.rom)], 'wrong candidate executed')
             report['modes'].append(r)
             if code or r['status'] != 'passed':
                 report['errors'].append(f"mode {mode} child failed: {r.get('errors') or 'see ' + str(out)}")
         if not report['errors']:
             report['errors'] = compare(report)
-        assert inputs_unchanged(report), 'input modified'
-        if not report['errors']:
+        if not inputs_unchanged(report):
+            report['errors'].append('input modified')
+        if not report['errors'] and len(report['modes']) == len(MODES):
             report['status'] = 'passed'
     finally:
         (args.out / 'report.json').write_text(json.dumps(report, indent=2, default=str))

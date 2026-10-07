@@ -19,8 +19,10 @@ import argparse
 import json
 from datetime import datetime
 
-from gate_common import (CLOCK, ROOT, PRINTER_DESTROY, PrinterTrace, add_arguments, attach_probe, identity, inputs_unchanged,
-                         itcm_errors, load_expected_payload, memory_errors, memory_summary, resolve)
+import hashlib
+
+from gate_common import (CLOCK, ROOT, PrinterTrace, add_arguments, attach_probe, identity, inputs_unchanged,
+                         itcm_errors, load_expected_payload, memory_errors, memory_summary, require, resolve)
 import text_speed_checks as checks
 
 MODES = (3, 0, 1, 2)
@@ -46,7 +48,7 @@ def main():
             h.boot_to_menu()
             h.continue_game()
             start = itcm_errors(h, payload)
-            assert not start, start
+            require(not start, repr(start))
             probe = attach_probe(h)
             screens = {}
 
@@ -60,6 +62,7 @@ def main():
                     last = row['glyphs'][-1][2]
                     if h.frame == last + 3:   # allow the display transfer after the final glyph
                         screens[i] = (last, h.emu.screenshot().crop(TEXT_BOX).tobytes())
+                        row['pixels'] = hashlib.sha256(screens[i][1]).hexdigest()
                     elif i in screens and screens[i][0] == last and h.frame > last + 3:
                         if h.emu.screenshot().crop(TEXT_BOX).tobytes() != screens[i][1]:
                             row['dwell'] = h.frame - last - 3
@@ -75,7 +78,8 @@ def main():
                         break
                     units.append(unit)
                 row = {'start': h.frame, 'text': msgtool.decode_units(units, cm), 'callback': h.u32(ptr + 0x1C),
-                       'delay': h.u8(ptr + 0x29) & 127, 'id': h.u8(ptr + 0x2C), 'glyphs': []}
+                       'delay': h.u8(ptr + 0x29) & 127, 'id': h.u8(ptr + 0x2C), 'glyphs': [], 'printer': ptr,
+                       'task_mark': len(tracer.tasks) - 1, 'glyph_mark': tracer.mark()}
                 active[ptr] = row
                 state['rows'].append(row)
 
@@ -90,20 +94,19 @@ def main():
                     if row['id'] == h.reg.r0:
                         row['end'] = h.frame
                         del active[ptr]
-            PrinterTrace(h, payload, probe=probe, on_task=task, on_glyph=glyph)
-            h.on_exec(PRINTER_DESTROY, destroy)
+            tracer = PrinterTrace(h, payload, probe=probe, on_task=task, on_glyph=glyph, on_destroy=destroy)
 
             menus = []
             h.on_exec(payload['symbols']['load_rows'] & ~1, lambda h: menus.append(h.reg.r0))
             h.press('X', after=90)
             h.touch(124, 115, after=300)
-            assert menus, 'Options did not open'
+            require(menus, 'Options did not open')
             opts = h.u32(menus[-1] + 0x24)
             before = h.u16(opts)
             h.touch(227, 152, after=40)
             h.touch(149, 180, after=300)
             h.press('B', after=90)
-            assert h.u16(opts) == (before & ~12) | 8, 'native UI did not select FAST'
+            require(h.u16(opts) == (before & ~12) | 8, 'native UI did not select FAST')
             checkpoint = args.out / 'segment-0.dst'
             h.save_state(checkpoint)
 
@@ -132,20 +135,30 @@ def main():
                     h.step(4)
                     state['rows'] = None
                     h.screenshot(f'segment-{segment}-{checks.NAMES[mode]}')
-                    assert reached, f'segment {segment} {checks.NAMES[mode]}: stuck without A/B input'
+                    require(reached, f'segment {segment} {checks.NAMES[mode]}: stuck without A/B input')
                     printed = [r for r in rows if r['glyphs']]
                     for i, row in enumerate(printed):
                         nxt = printed[i + 1]['start'] if i + 1 < len(printed) else ended
-                        row['after_last'] = nxt - row['glyphs'][-1][2]
-                        row['print_frames'] = row['glyphs'][-1][2] - row['glyphs'][0][2]
+                        last = row['glyphs'][-1][2]
+                        row['after_last'] = nxt - last
+                        row['print_frames'] = last - row['glyphs'][0][2]
                         row['glyph_count'] = len(row['glyphs'])
+                        row['to_free'] = row['end'] - last if row.get('end') is not None else None
+                        tasks = [t for t in tracer.tasks[row['task_mark']:] if t['printer'] == row['printer']
+                                 and t['frame'] <= row.get('end', ended)]
+                        row['lag_frames'] = sum(1 for f in range(row['glyphs'][0][2], last + 1)
+                                                if f not in {t['frame'] for t in tasks})
                         summary, cadence_errors = checks.cadence(mode, row['glyphs'])
                         row['cadence'] = summary
-                        errors.extend(f"segment {segment} {checks.NAMES[mode]} {row['text'][:30]!r}: {e}"
-                                      for e in cadence_errors)
+                        row['stops'], stop_errors = checks.task_errors(mode, tasks)
+                        tag = f"segment {segment} {checks.NAMES[mode]} {row['text'][:30]!r}"
+                        errors.extend(f'{tag}: {e}' for e in cadence_errors + stop_errors)
+                        if row.get('pixels') is None:
+                            errors.append(f'{tag}: completed text pixels not captured')
                     runs[mode] = {'frames': ended - began, 'field': h.in_field(), 'messages': [
                         {k: r.get(k) for k in ('text', 'glyph_count', 'print_frames', 'after_last', 'dwell',
-                                               'end', 'callback', 'delay', 'cadence')} | {'glyphs': r['glyph_count']}
+                                               'end', 'to_free', 'lag_frames', 'pixels', 'callback', 'delay',
+                                               'cadence', 'stops')} | {'glyphs': r['glyph_count']}
                         for r in printed]}
                     if mode == 3:
                         following = args.out / f'segment-{segment + 1}.dst'
@@ -159,12 +172,17 @@ def main():
                     saved = sum(r['print_frames'] for r in base) - sum(r['print_frames'] for r in runs[mode]['messages'])
                     runs[mode]['frames_saved_vs_original'] = runs[3]['frames'] - runs[mode]['frames']
                     runs[mode]['print_frames_saved'] = saved
-                    if abs(runs[mode]['frames_saved_vs_original'] - saved) > 2 * len(base) + 2:
+                    if runs[mode]['frames_saved_vs_original'] != saved:
                         errors.append(f'segment {segment} {checks.NAMES[mode]}: segment shortened by '
-                                      f"{runs[mode]['frames_saved_vs_original']} frames but printing only by {saved}")
+                                      f"{runs[mode]['frames_saved_vs_original']} frames, printing by {saved}")
                 spans = {m: sum(r['print_frames'] for r in runs[m]['messages']) for m in MODES}
-                errors.extend(f'segment {segment}: {e}' for e in checks.speed_order(spans, strict=True))
-                report['segments'].append({'segment': segment, 'runs': runs})
+                limited = {m: sum(r['stops'].get('frame', 0) for r in runs[m]['messages']) for m in MODES}
+                lag = {m: sum(r['lag_frames'] for r in runs[m]['messages']) for m in MODES}
+                order, notes = checks.frame_order(spans, limited)
+                errors.extend(f'segment {segment}: {e}' for e in order + checks.lag_errors(lag))
+                order_info = {'print_frames': spans, 'frame_stops': limited, 'lag_frames': lag,
+                                 'frame_limited_ties': notes}
+                report['segments'].append({'segment': segment, 'runs': runs, 'order': order_info})
                 checkpoint = args.out / f'segment-{segment + 1}.dst'
                 if runs[3]['field']:
                     break
@@ -181,7 +199,7 @@ def main():
             report['memory'] = memory_summary(probe)
             errors.extend(memory_errors(report['memory']))
             errors.extend(f'end of session: {e}' for e in itcm_errors(h, payload))
-        assert inputs_unchanged(report), 'input modified'
+        require(inputs_unchanged(report), 'input modified')
         if not errors:
             report['status'] = 'passed'
     except BaseException as exc:
