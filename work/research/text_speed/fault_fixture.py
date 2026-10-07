@@ -71,7 +71,7 @@ FAULTS = {
         'gates': {'new-game': 'does not start at MEDIUM'}},
     'arena-overlap': {
         'description': 'SDK ITCM arena lower bound put back over the payload (main ARM9 data)',
-        'edits': [(0x020D1A28, B('008bff01'), B('2086ff01'))],
+        'edits': [(0x020D1A28, B('008cff01'), B('2086ff01'))],
         'gates': {'lifecycle': 'ITCM arena', 'options': 'ITCM arena'}},
     'no-control-stop': {
         'description': 'batching no longer stops before control codes',
@@ -150,12 +150,13 @@ FAULTS = {
         # cmp r1,#0; adds r4,r1,#4; cmp r1,#0; bne: a measured rest counts 4 lines more.
         'edits': [(0x01FF88CA, B('8c46'), B('0c1d')), (0x01FF88CC, B('6446'), B('0029'))],
         'checker': {'MARGIN': 5, 'REST_SEED': 16},
-        'gates': {'scenes': 'SLOW floor', 'natural-dialogue': 'SLOW floor'}},
+        'gates': {'scenes': 'SLOW floor', 'natural-dialogue': 'would have fitted'}},
     'too-conservative-30': {
         'description': 'needs 10 more lines for an extra glyph (the review\'s threshold 30 against 20)',
-        # a measured rest counts 7 lines more, every stored glyph cost 3 more
+        # a measured rest counts 7 lines more, every stored glyph cost 3 more (both the
+        # plain and the line-wrap branch of lines_between: catch-up batches cross line 0)
         'edits': [(0x01FF88CA, B('8c46'), B('cc1d')), (0x01FF88CC, B('6446'), B('0029')),
-                  (0x01FF8770, B('2900'), B('e91c'))],
+                  (0x01FF8770, B('2900'), B('e91c')), (0x01FF8776, B('0831'), B('0b31'))],
         'checker': {'MARGIN': 8, 'REST_SEED': 13, 'GLYPH_COST_BIAS': 3},
         'gates': {'scenes': 'SLOW floor', 'natural-dialogue': 'SLOW floor'}},
 }
