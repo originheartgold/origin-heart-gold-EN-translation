@@ -25,6 +25,109 @@ class Require(unittest.TestCase):
             gate_common.require(False, 'boom')
 
 
+class HeapMidUpdate(unittest.TestCase):
+    """attach_probe's re-walk (gate_common.heap_frame): only a failure inside heap-list code
+    is walked again, and only a clean re-walk turns it into a recorded sample."""
+    IN, OUT = 0x020B4428, 0x020D2D28          # RemoveMBlock between its link stores; elsewhere
+    BAD = 'heap 5 (022C0E70): free block at 022F363C has a broken back link'
+
+    def run_frames(self, walks, pcs, start=10):
+        class P:
+            corrupt = None
+            heap_checks = 0
+        probe, pending = P(), []
+        probe.mid_update_samples = []
+        results = iter(walks)
+
+        def walk():
+            probe.heap_checks += 1
+            return next(results)
+        probe.heap_walk = walk
+        for i, pc in enumerate(pcs):
+            gate_common.heap_frame(probe, pending, start + i, pc)
+        return probe, pending
+
+    def test_transient_in_heap_code_passes_with_a_recorded_sample(self):
+        probe, pending = self.run_frames([self.BAD, None], [self.IN, self.OUT])
+        self.assertIsNone(probe.corrupt)
+        self.assertEqual(probe.mid_update_samples, [{'frame': 10, 'pc': hex(self.IN),
+                                                     'heap': 'heap 5 (022C0E70)', 'message': self.BAD}])
+        self.assertEqual((probe.heap_checks, pending), (2, []))
+
+    def test_persistent_failure_fails(self):
+        probe, _ = self.run_frames([self.BAD, self.BAD], [self.IN, self.IN])
+        self.assertEqual(probe.corrupt, (10, self.BAD))
+        self.assertEqual(probe.mid_update_samples, [])
+
+    def test_failure_outside_heap_code_fails(self):
+        probe, pending = self.run_frames([self.BAD], [self.OUT])
+        self.assertEqual(probe.corrupt, (10, self.BAD))
+        self.assertEqual((probe.mid_update_samples, pending), ([], []))
+        for pc in (0x020B440B, 0x020B4AE8, 0x020B4684):     # just outside the reviewed routines
+            self.assertFalse(gate_common.in_heap_list_code(pc), hex(pc))
+
+    def test_run_ending_before_the_rewalk_fails(self):
+        probe, pending = self.run_frames([self.BAD], [self.IN])
+        probe.mid_update_pending = pending
+        for key in gate_common.MEMORY_KEYS:
+            if not hasattr(probe, key):
+                setattr(probe, key, [])
+        self.assertEqual(gate_common.memory_summary(probe)['corrupt'], (10, self.BAD))
+
+    def test_routines_are_rederived_from_the_rom(self):
+        rom = os.environ.get('TEXT_SPEED_TEST_ROM')
+        if not rom:
+            self.skipTest('TEXT_SPEED_TEST_ROM not set')
+        import ndspy.rom
+        main = bytes(ndspy.rom.NintendoDSRom.fromFile(rom).loadArm9().sections[0].data)
+        self.assertEqual([(lo, hi) for lo, hi, _ in gate_common.HEAP_LIST_CODE],
+                         [routine_extent(main, lo) for lo, _, _ in gate_common.HEAP_LIST_CODE])
+        # Every call of the three list helpers in the module comes from a listed routine.
+        helpers = [lo for lo, _, _ in gate_common.HEAP_LIST_CODE[:3]]
+        calls = arm_calls(main, 0x020B3C00, 0x020B5800, helpers)
+        self.assertTrue(calls)
+        self.assertTrue(all(gate_common.in_heap_list_code(a) for a in calls), [hex(a) for a in calls])
+
+
+def arm_instructions(main, lo, hi):
+    import capstone
+    md = capstone.Cs(capstone.CS_ARCH_ARM, capstone.CS_MODE_ARM)
+    md.detail = True
+    return md, md.disasm(main[lo - 0x02000000:hi - 0x02000000], lo)
+
+
+def arm_calls(main, lo, hi, targets):
+    _, ins = arm_instructions(main, lo, hi)
+    return [i.address for i in ins if i.mnemonic == 'bl' and int(i.op_str[1:], 16) in targets]
+
+
+def routine_extent(main, entry):
+    """[start, end) of an ARM routine: fall-through and in-routine branches until every path
+    returns, plus PC-relative literal pools."""
+    import capstone
+    md, _ = arm_instructions(main, entry, entry + 4)
+    seen, todo, end = set(), [entry], entry
+    while todo:
+        a = todo.pop()
+        while a not in seen:
+            seen.add(a)
+            i = next(md.disasm(main[a - 0x02000000:a - 0x02000000 + 4], a))
+            end = max(end, a + 4)
+            if i.mnemonic.startswith('ldr') and '[pc' in i.op_str:
+                end = max(end, a + 8 + int(i.op_str.split('#')[-1].rstrip(']'), 16) + 4)
+            unconditional = i.cc in (0, capstone.arm.ARM_CC_AL)
+            if (i.mnemonic.startswith('b') and i.mnemonic not in ('bl', 'blx', 'bic', 'bics', 'bx')
+                    and i.op_str.startswith('#')):
+                todo.append(int(i.op_str[1:], 16))
+                if unconditional:
+                    break
+            if unconditional and ((i.mnemonic.startswith(('pop', 'ldm')) and 'pc' in i.op_str)
+                                  or (i.mnemonic == 'bx' and i.op_str == 'lr')):
+                break
+            a += 4
+    return entry, end
+
+
 class TraceMetrics(unittest.TestCase):
     def trace(self, tasks, glyphs=()):
         t = gate_common.PrinterTrace.__new__(gate_common.PrinterTrace)

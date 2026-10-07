@@ -47,6 +47,29 @@ FREE_TO_HEAP = 0x0201B33C
 PRINTER_INIT_CALL = 0x02020962 # the printer constructor's call of the printer initializer: r0 new printer
 MEMORY_KEYS = ('heap_checks', 'corrupt', 'fails', 'nullw', 'text_rejections',
                'heap_table_errors', 'text_probe_errors')
+# NNS expanded-heap routines that rewrite block headers or the free/used block lists
+# (main ARM9 of the reviewed base, identical in the Chinese hack and the English build;
+# the base ARM9 is pinned by text_speed_patch.REVIEWED_BASE_ARM9_SHA256). Derived from
+# disassembly: the three list helpers RemoveMBlock (unlink; the walk of 2026-10-07 caught
+# it between its two link stores), InsertMBlock (link) and InitMBlock (header), and every
+# routine of the module that calls one of them (heap initialiser, allocate from a free
+# block, recycle a freed region, resize, free). Extents: from the entry, follow fall-through and in-routine
+# branches until every path returns, plus PC-relative literal pools (as for
+# text_speed_patch.CALLED_ROUTINES). test_text_speed_release re-derives them from the ROM.
+HEAP_LIST_CODE = (
+    (0x020B440C, 0x020B4434, 'RemoveMBlock (unlink)'),
+    (0x020B4434, 0x020B4464, 'InsertMBlock (link)'),
+    (0x020B4464, 0x020B4490, 'InitMBlock (block header)'),
+    (0x020B4490, 0x020B4504, 'heap initialiser (first free block: InitMBlock, list heads)'),
+    (0x020B4504, 0x020B4684, 'allocate a used block from a free block (unlink, link)'),
+    (0x020B47E8, 0x020B48D8, 'recycle a freed region into the free list (unlink, link)'),
+    (0x020B494C, 0x020B4AAC, 'resize a used block (unlink, link)'),
+    (0x020B4AAC, 0x020B4AE8, 'free a used block (unlink)'),
+)
+
+
+def in_heap_list_code(pc):
+    return any(lo <= pc < hi for lo, hi, _ in HEAP_LIST_CODE)
 
 
 # The emulated RTC otherwise follows host time; clock-driven field work changes how
@@ -180,23 +203,56 @@ def itcm_errors(h, payload):
 
 
 def attach_probe(h, every=10):
-    """memcheck.Probe with a heap walk every `every` frames, armed now."""
+    """memcheck.Probe with a heap walk every `every` frames, armed now.
+
+    The walk runs at the emulator frame boundary, which can fall inside a heap routine
+    halfway through a list update (coordinator decision, 2026-10-07). Only when a walk
+    fails while the ARM9 PC is inside HEAP_LIST_CODE is the heap walked again on the
+    next frame: clean, the sample is recorded in probe.mid_update_samples (frame, pc,
+    heap, message); failing again, it is a corruption as before (the first finding).
+    A failure with the PC anywhere else is a corruption at once."""
     from memcheck import Probe
     probe = Probe(h.emu)
     probe.armed = True
+    probe.mid_update_samples = []
+    pending = probe.mid_update_pending = []
 
     def frame(h):
         probe.frame = h.frame
-        if h.frame % every == 0 and probe.corrupt is None:
-            bad = probe.heap_walk()
-            if bad:
-                probe.corrupt = (h.frame, bad)
+        heap_frame(probe, pending, h.frame, h.reg.pc, every)
     h.on_frame(frame)
     return probe
 
 
+def heap_frame(probe, pending, frame, pc, every=10):
+    """One frame of attach_probe's heap checking (pure: probe.heap_walk() is the only probe call)."""
+    if probe.corrupt is not None:
+        return
+    if pending:
+        first = pending.pop()
+        if probe.heap_walk():
+            probe.corrupt = (first['frame'], first['message'])
+        else:
+            probe.mid_update_samples.append(first)
+        return
+    if frame % every:
+        return
+    bad = probe.heap_walk()
+    if not bad:
+        return
+    if in_heap_list_code(pc):
+        pending.append({'frame': frame, 'pc': hex(pc), 'heap': bad.split(':')[0], 'message': bad})
+    else:
+        probe.corrupt = (frame, bad)
+
+
 def memory_summary(probe):
-    return {key: getattr(probe, key) for key in MEMORY_KEYS}
+    # A failed walk still waiting for its re-walk when the run ends counts as a corruption.
+    for first in getattr(probe, 'mid_update_pending', []):
+        if probe.corrupt is None:
+            probe.corrupt = (first['frame'], first['message'])
+    return dict({key: getattr(probe, key) for key in MEMORY_KEYS},
+                mid_update_samples=list(getattr(probe, 'mid_update_samples', [])))
 
 
 def memory_errors(summary):

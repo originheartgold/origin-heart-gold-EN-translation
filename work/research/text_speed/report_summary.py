@@ -134,8 +134,13 @@ def summary_lines(r):
     for name, row in gates_of(r).items():
         row = row if isinstance(row, dict) else {}
         err = first_error(row)
+        mid = row.get('mid_update_samples')
         lines.append(f"{name:<17} {row.get('status', '?'):<7} {metric(name, row.get('observations'))}"
+                     + (f' mid-update={len(mid)}' if isinstance(mid, list) and mid else '')
                      + (f'  | {err}' if err else ''))
+    mids = [m for row in gates_of(r).values() if isinstance(row, dict)
+            for m in (row.get('mid_update_samples') or [])]
+    lines.append(f'mid-update heap samples: {len(mids)}')
     for key in ('problems', 'warnings'):
         v = r.get(key)
         items = list(v.items()) if isinstance(v, dict) else list(v or [])

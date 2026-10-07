@@ -154,6 +154,30 @@ def observations(name, r):
     return {}
 
 
+def mid_update_samples(directory):
+    """Heap walks re-checked clean on the next frame (gate_common.attach_probe), from every
+    report under a gate's output directory, without duplicates (summaries repeat children)."""
+    found = {}
+
+    def scan(node):
+        if isinstance(node, dict):
+            for key, value in node.items():
+                if key == 'mid_update_samples' and isinstance(value, list):
+                    for sample in value:
+                        found.setdefault(json.dumps(sample, sort_keys=True), sample)
+                else:
+                    scan(value)
+        elif isinstance(node, list):
+            for value in node:
+                scan(value)
+    for path in sorted(Path(directory).rglob('report.json')):
+        try:
+            scan(json.loads(path.read_text()))
+        except (OSError, ValueError):
+            continue
+    return list(found.values())
+
+
 def run_gate(name, command, report_path, log):
     """Run one gate; its timeout counts running time only, not waits for an emulator slot."""
     from emu_harness import slot_wait_seconds
@@ -192,6 +216,7 @@ def run_gate(name, command, report_path, log):
     if r.get('warnings'):
         row['warnings'] = r['warnings']
     row['observations'] = observations(name, r)
+    row['mid_update_samples'] = mid_update_samples(report_path.parent)
     return row
 
 

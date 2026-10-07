@@ -145,7 +145,15 @@ Every Harness gate checks at start and end that the original ITCM code still has
 its reviewed hash, the payload's fixed bytes (all but the 26-byte runtime frame
 state at its end) equal the expected payload and the SDK ITCM
 arena (`0x027FFDAC`/`0x027FFDD0`) starts at or above the payload end. Heap
-integrity is walked every 10 frames. Measurement hooks are registered
+integrity is walked every 10 frames, at the emulator frame boundary, which can
+fall inside a heap routine halfway through a list update (2026-10-07: trainer 8,
+PC `020B4428` in RemoveMBlock between its two link stores; clean one frame later).
+Only when a walk fails while the PC is inside one of the reviewed NNS expanded-heap
+list routines (`gate_common.HEAP_LIST_CODE`, derived by disassembly and re-derived
+by `test_text_speed_release`) is the heap walked again on the next frame: clean, the
+sample is recorded as `mid_update_samples` (frame, PC, heap, message) and counted by
+`report_summary`; failing again, or with the PC anywhere else, it is a corruption as
+before (coordinator decision). Measurement hooks are registered
 `exclusive`: emu_harness raises if anything later registers the same address
 (DeSmuME would otherwise replace a hook silently).
 
