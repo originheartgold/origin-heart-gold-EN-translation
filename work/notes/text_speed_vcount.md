@@ -312,6 +312,17 @@ the original printer. The pause after each message (passes) and the completed te
 on-screen dwell (frames) must equal the original's, or be a value the original
 printer itself shows when its run is replayed from the same checkpoint with its start
 delayed by 1-12 frames (the gate runs those replays whenever a value differs).
+The dwell counts from the first frame the completed text is on screen
+(`text_speed_checks.completed_shown`), not from the final glyph's frame number.
+DeSmuME's emulator frame starts at display line 0, a battle loop pass at VBlank
+(line 192), so one task run can span two emulator frames. Found 2026-10-07 with the
+pinned battle RNG (trainers 9, 13, 20): a FAST batch drew its last three glyphs at
+lines 254, 258 and 2, so the final glyph carried the next frame's number; measured
+from it the dwell was 67 frames against the original's 68 ('Blazor's Attack fell!'),
+although the pause (76 passes), the end-of-text step (1 pass) and the frames the
+completed text was actually on screen (69, NORMAL and the original alike) were
+identical. Not a printer defect: the window copy of that batch runs in the same pass
+and the text appears in the same frame relative to the next message.
 In the final run 14 of 231 pauses of the three speeds differed from the original printer's (by +1, -1 or -2 passes), all values the original itself shows in its replays; 217 were equal. Each segment must also be shorter by exactly the printing frames saved
 plus those pause differences, with an identical lead-in.
 

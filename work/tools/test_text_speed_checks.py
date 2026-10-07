@@ -495,6 +495,23 @@ class BattlePacing(unittest.TestCase):
         self.assertTrue(C.battle_pacing_errors(self.base, self.other(after_last_passes=None)))
 
 
+class CompletedShown(unittest.TestCase):
+    def test_first_frame_of_the_completed_text(self):
+        # Original printer: final glyph at frame 10, text complete on screen from 12.
+        self.assertEqual(C.completed_shown({10: "x", 11: "y", 12: "f", 13: "f"}, 10, "f"), 12)
+        # FAST batch whose last glyph fell after line 0 (labelled one frame later):
+        # complete on screen from the frame after it, the same absolute frame.
+        self.assertEqual(C.completed_shown({11: "y", 12: "f", 13: "f"}, 11, "f"), 12)
+        self.assertEqual(C.completed_shown({10: "f", 11: "f"}, 10, "f"), 10)
+
+    def test_gaps_changes_and_missing_snapshot(self):
+        self.assertEqual(C.completed_shown({10: "f", 11: "y", 12: "f"}, 10, "f"), 12)
+        self.assertEqual(C.completed_shown({10: "f", 12: "f"}, 10, "f"), 12)   # unrecorded frame: no claim
+        self.assertIsNone(C.completed_shown({10: "f", 11: "y"}, 10, "f"))
+        self.assertIsNone(C.completed_shown({}, 10, "f"))
+        self.assertEqual(C.completed_shown({9: "f", 10: "y", 11: "f"}, 10, "f"), 11)  # before the glyph: ignored
+
+
 class RngPin(unittest.TestCase):
     def test_pin_must_be_applied_and_hold(self):
         seed = 0x5EED1604

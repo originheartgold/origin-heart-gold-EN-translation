@@ -602,6 +602,29 @@ def option_label_errors(img, mode, row=TEXT_SPEED_ROW, columns=VALUE_COLUMNS):
 
 
 # ----------------------------------------------------------------- battle pacing
+def completed_shown(shots, last, final):
+    """First frame from which the text box shows the completed message, or None.
+
+    shots: {emulator frame: text-box hash} for the frames from the final glyph's frame
+    `last` up to the snapshot of the completed text (hash `final`). The completed
+    text is on screen from the earliest frame f >= last such that every recorded
+    frame from f up to the snapshot shows `final`. The battle's dwell is measured
+    from this frame, not from the final glyph's frame: DeSmuME's emulator frame
+    starts at display line 0, while a battle loop pass starts at VBlank (line 192),
+    so one task run can span two emulator frames, and a FAST batch whose last glyph
+    is drawn after line 0 gets the next frame's number although the pass, its window
+    copy and the frame the text appears in are the same (work/notes/text_speed_vcount.md)."""
+    frames = sorted(f for f in shots if f >= last)
+    if not frames or shots[frames[-1]] != final:
+        return None
+    shown = frames[-1]
+    for f in reversed(frames[:-1]):
+        if shots[f] != final or f != shown - 1:
+            break
+        shown = f
+    return shown
+
+
 def battle_pacing_errors(baseline, other, jitter=None):
     """Compare one segment (battle start or one turn) between the original printer and a
     speed, both started from the same checkpoint. Rows: {'text', 'glyphs', 'pixels',

@@ -20,7 +20,9 @@ passes, not display frames:
   first or the second decides whether the removal shares its frame.)
 - the pause after a completed message (final glyph to the next printer, or to the
   command menu) and the completed text's on-screen dwell: equal to the original's
-  (pause in passes, dwell in frames), or a value that the original printer itself
+  (pause in passes, dwell in frames from the first frame the completed text is on
+  screen: text_speed_checks.completed_shown, not from the final glyph's frame number,
+  which for a FAST batch spanning line 0 is one frame later for the same pass), or a value that the original printer itself
   shows when replayed from the same checkpoint with its start delayed by
   1..JITTER_DELAYS frames (seen: up to two passes apart). Mechanism: the battle
   waits for its sound (move/cry sound effects) to end, and the sound engine runs on
@@ -79,8 +81,11 @@ BATTLE_RNG_SEED = 0x5EED1604
 # fixture's default; 2: Steven; 5: Picnicker Amelia (won in turn 2: victory and prize
 # messages); 15: Bug Catcher Dylan; 8: Rival Blue (a switch-in); 40 and 50: two more
 # battles whose three turns run without input from this checkpoint with the pinned
-# battle RNG (BATTLE_RNG_SEED). 15 replaced 30 (Leader Whitney) on 2026-10-07.
-TRAINERS = (1, 2, 5, 15, 8, 40, 50)
+# battle RNG (BATTLE_RNG_SEED). 15 replaced 30 (Leader Whitney) on 2026-10-07. 20: Leader
+# Falkner, whose 'Attack fell!' message is the case where a FAST batch's final glyph is
+# drawn after display line 0 and so carries the next emulator frame's number (the dwell
+# is measured from the frame the completed text appears; see completed_shown).
+TRAINERS = (1, 2, 5, 15, 8, 40, 50, 20)
 # Not runnable without input, with the original printer as well (checked
 # 2026-10-07): the fixture's only Pokémon (Charmander, Lv 9) faints and the game
 # blacks out, which waits for a button press.
@@ -89,6 +94,10 @@ EXCLUDED = {100: 'Fisherman Noah: his Poliwrath (Lv 64) faints the fixture\'s on
             3: 'Sinnoh Trainer Cynthia: the fixture\'s Pokémon faints in turn 2 (black-out waits for a button)',
             6: 'Youngster Sol: the fixture\'s Pokémon faints in turn 3 (black-out waits for a button)',
             10: 'Rich Boy Howard: the fixture\'s Pokémon faints in turn 1 (black-out waits for a button)',
+            9: 'Mimi: with the pinned battle RNG the original printer does not reach the command menu '
+               'without input in turn 1 (checked 2026-10-07)',
+            13: 'Jessie: with the pinned battle RNG the original printer does not reach the command menu '
+                'without input in turn 3 (checked 2026-10-07)',
             30: 'Leader Whitney: with the pinned battle RNG the fixture\'s Pokémon faints in turn 2 with the '
                 'original printer (black-out waits for a button); in the gate until the pin (2026-10-07)'}
 
@@ -136,12 +145,18 @@ def child(args, trainer):
                     if not row['glyphs'] or 'dwell' in row:
                         continue
                     last = row['glyphs'][-1][1]
-                    if h.frame == last + 3:   # allow the display transfer after the final glyph
-                        screens[i] = (last, h.emu.screenshot().crop(TEXT_BOX).tobytes())
-                        row['pixels'] = hashlib.sha256(screens[i][1]).hexdigest()
+                    if last <= h.frame <= last + 3:   # allow the display transfer after the final glyph
+                        box = h.emu.screenshot().crop(TEXT_BOX).tobytes()
+                        row.setdefault('shots', {})[h.frame] = hashlib.sha256(box).hexdigest()
+                        if h.frame == last + 3:
+                            screens[i] = (last, box)
+                            row['pixels'] = row['shots'][h.frame]
+                            row['shown'] = checks.completed_shown(row['shots'], last, row['pixels'])
                     elif i in screens and screens[i][0] == last and h.frame > last + 3:
                         if h.emu.screenshot().crop(TEXT_BOX).tobytes() != screens[i][1]:
-                            row['dwell'] = h.frame - last - 3
+                            # Frames the completed text was on screen, from the frame it appeared
+                            # (not the final glyph's frame number: see completed_shown).
+                            row['dwell'] = h.frame - row['shown'] if row.get('shown') is not None else None
             h.on_frame(frame)
 
             def task(h, ptr):
@@ -166,6 +181,7 @@ def child(args, trainer):
                     row['glyphs'].append(event)
                     row['glyph_passes'].append(passes())
                     row.pop('dwell', None)
+                    row.pop('shown', None)
 
             def destroy(h):
                 for ptr, row in list(active.items()):
@@ -273,7 +289,7 @@ def child(args, trainer):
                     runs[mode] = {'frames': frames, 'lead_in': lead, 'field': h.in_field(), 'messages': [
                         {k: r.get(k) for k in ('text', 'glyph_count', 'print_frames', 'to_first', 'to_first_passes',
                                                'after_last',
-                                               'after_last_passes', 'dwell', 'end', 'to_free', 'to_free_passes',
+                                               'after_last_passes', 'dwell', 'shown', 'end', 'to_free', 'to_free_passes',
                                                'lag_frames', 'pixels', 'callback', 'delay', 'cadence', 'stops',
                                                'record')} | {'glyphs': r['glyph_count']}
                         for r in printed]}
