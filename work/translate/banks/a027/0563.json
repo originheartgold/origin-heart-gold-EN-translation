@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "岩铁『噢,{VAR:0103:0}{NEWLINE}工作完成得很出色啊！{SCROLL}刚才也说过了,{NEWLINE}火箭队应该在三年前被{CLEAR}叫做小赤的少年{CLEAR}给收拾掉了啊……{SCROLL}那么他们再次复活这事,{NEWLINE}总觉得有不好的预感啊……{SCROLL}先不管这个了,{VAR:0103:0},{NEWLINE}我很看好你哦！{SCROLL}如果是你的话,{NEWLINE}我会很乐意为你做球的！{SCROLL}现在在手里的只有这个了。{CLEAR}就先拿着吧！{SCROLL}",
-   "en": "Kurt: Hi, {VAR:0103:0}!{NEWLINE}You handled yourself like a real hero.{SCROLL}As I mentioned before, Team Rocket was{NEWLINE}disbanded by a boy called Red three{CLEAR}years ago.{SCROLL}Now that they have come back...{NEWLINE}I have a bad feeling about it...{SCROLL}In any case, it would please me greatly{NEWLINE}to make Poké Balls for a Trainer{CLEAR}like you, {VAR:0103:0}.{CLEAR}This is all I have now, but take it.{SCROLL}",
+   "en": "Kurt: Oh, {VAR:0103:0}! That was excellent{NEWLINE}work! As I said before, Team Rocket was{CLEAR}supposed to have been dealt with three{CLEAR}years ago by a boy called Red... So{CLEAR}them coming back to life like this gives{CLEAR}me a bad feeling... Never mind that for{CLEAR}now. {VAR:0103:0}, I have high hopes for{CLEAR}you! For you, I’d be glad to make Balls!{CLEAR}This is all I have on hand right now.{CLEAR}Take it for now!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0571/1"
+   "origin": "agent",
+   "notes": "US 0571/1 | RV033: omission: US line dropped ‘I have high hopes for you’ and changed the praise; retranslated from the Chinese"
   },
   {
    "id": 2,
@@ -33,10 +33,10 @@
   {
    "id": 3,
    "zh": "岩铁『我用柑果{NEWLINE}做成特制的球。{SCROLL}调查外边的柑果树{NEWLINE}能收集到果实哦。{CLEAR}那样的话,我就可以做球了。",
-   "en": "Kurt: I make Poké Balls from Apricorns.{SCROLL}Collect them from trees and bring{NEWLINE}’em to me.{SCROLL}I’ll make Poké Balls out of them.",
+   "en": "Kurt: I make special Balls out of{NEWLINE}Apricorns. Check the Apricorn trees{CLEAR}outside and you can collect their fruit.{CLEAR}Then I can make you a Ball.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0571/3"
+   "origin": "agent",
+   "notes": "US 0571/3 | RV033: omission: US dropped 特制 (special) and the trees outside"
   },
   {
    "id": 4,
@@ -97,18 +97,18 @@
   {
    "id": 11,
    "zh": "呆呆兽都不见了……{NEWLINE}怎么办呐……{CLEAR}被坏人带走了么？",
-   "en": "The Slowpoke are gone...{NEWLINE}Were they taken away by bad people?",
+   "en": "The Slowpoke are all gone...{NEWLINE}What do I do...?{CLEAR}Were they taken away by bad people?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0571/11; modernised from US 0571#11"
+   "origin": "agent",
+   "notes": "US 0571/11; modernised from US 0571#11 | RV033: omission: 怎么办呐 dropped"
   },
   {
    "id": 12,
    "zh": "爷爷去哪了啦？{NEWLINE}我好孤单啊……",
-   "en": "Grandpa’s gone...{NEWLINE}I’m so lonely...",
+   "en": "Where did Grandpa go? I’m so lonely...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0571/12"
+   "origin": "agent",
+   "notes": "US 0571/12 | RV033: meaning: Chinese asks where Grandpa went"
   },
   {
    "id": 13,
@@ -121,18 +121,18 @@
   {
    "id": 14,
    "zh": "爸爸在西鲁夫公司{NEWLINE}研究新型的精灵球。{SCROLL}这些天我就和{NEWLINE}爷爷还有呆呆兽看家。",
-   "en": "Dad works at Silph where he studies{NEWLINE}Poké Balls.{SCROLL}I have to stay home with Grandpa{NEWLINE}and Slowpoke.",
+   "en": "Dad’s at Silph Co., researching new{NEWLINE}kinds of Poké Balls. These days,{CLEAR}Grandpa, the Slowpoke and I are looking{CLEAR}after the house.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0571/14; modernised from US 0571#14"
+   "origin": "agent",
+   "notes": "US 0571/14; modernised from US 0571#14 | RV033: omission: 新型 (new kinds) and 这些天 dropped by US"
   },
   {
    "id": 15,
    "zh": "这样啊！{NEWLINE}要把爷爷的{CLEAR}电话号码告诉你吗？{VAR:0200:0}",
-   "en": "That’s right!{NEWLINE}I’ll give you my grandpa’s number. {VAR:0200:0}",
+   "en": "I see! Want me to give you Grandpa’s{NEWLINE}phone number?{VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0571/15"
+   "origin": "agent",
+   "notes": "US 0571/15 | RV033: meaning: Chinese is a yes/no question, US was a statement"
   },
   {
    "id": 16,
@@ -145,18 +145,18 @@
   {
    "id": 17,
    "zh": "给爷爷打电话就能{NEWLINE}知道柑果的事情哦。",
-   "en": "My grandpa can tell you more{NEWLINE}about Apricorns.",
+   "en": "If you call Grandpa, he can tell you{NEWLINE}about Apricorns.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0571/17"
+   "origin": "agent",
+   "notes": "US 0571/17 | RV033: omission: 给爷爷打电话 (calling) dropped"
   },
   {
    "id": 18,
    "zh": "啊！为什么？{NEWLINE}不想要爷爷的电话号码么？",
-   "en": "No? Why?{NEWLINE}You don’t want to talk to my grandpa?",
+   "en": "What?! Why? Don’t you want Grandpa’s{NEWLINE}phone number?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0571/18"
+   "origin": "agent",
+   "notes": "US 0571/18 | RV033: meaning: Chinese asks about the phone number"
   },
   {
    "id": 19,
@@ -185,10 +185,10 @@
   {
    "id": 22,
    "zh": "在祭祀森林之神。",
-   "en": "It’s a statue of the forest’s{NEWLINE}protector.",
+   "en": "The god of the forest is{NEWLINE}worshipped here.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0571/22"
+   "origin": "agent",
+   "notes": "US 0571/22 | RV033: meaning: 祭祀森林之神 = worship of the forest god, no statue (D-1871)"
   },
   {
    "id": 23,

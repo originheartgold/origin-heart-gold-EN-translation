@@ -112,10 +112,10 @@
   {
    "id": 13,
    "zh": "桧皮镇道馆{NEWLINE}馆主阿笔{CLEAR}陆行虫系精灵的专家",
-   "en": "Azalea Town Pokémon Gym{NEWLINE}Leader: Bugsy{CLEAR}The Walking Bug Pokémon Encyclopedia",
+   "en": "Azalea Town Pokémon Gym{NEWLINE}Leader: Bugsy{CLEAR}The Walking Bug Pokémon Expert",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0564/13"
+   "origin": "agent",
+   "notes": "US 0564/13 | RV033: meaning: 专家 = expert, US ‘Encyclopedia’ not in the Chinese"
   },
   {
    "id": 14,
@@ -474,10 +474,10 @@
   {
    "id": 58,
    "zh": "你刚才对我的最强理论很不屑啊,{NEWLINE}是因为冠军做太久脑袋都糊涂了吗？{CLEAR}看来我需要好好教教你了。{SCROLL}要跟我来一场比试试,{NEWLINE}看看谁才是最强吗？",
-   "en": "You scoffed at my strongest theory{NEWLINE}just now. Has being Champion for so{CLEAR}long turned your brain to mush? I{CLEAR}think I need to teach you a lesson.{SCROLL}Want to have a match and see{NEWLINE}who’s really the strongest?",
+   "en": "You scoffed at my theory of who’s{NEWLINE}strongest just now. Has being Champion{CLEAR}for so long turned your brain to mush?{CLEAR}I think I need to teach you a lesson.{CLEAR}Want to have a match and see who’s{CLEAR}really the strongest?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV033: grammar: ‘my strongest theory’ unclear"
   },
   {
    "id": 59,

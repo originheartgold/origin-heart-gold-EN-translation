@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "干得不错嘛！{NEWLINE}年轻训练师之间的激烈对战……{SCROLL}精灵世界的未来有希望了！",
-   "en": "Well done! That was a great clash{NEWLINE}of talented young Trainers.{SCROLL}With people like you, the future of{NEWLINE}Pokémon is bright!",
+   "en": "Well done! A fierce battle between{NEWLINE}young Trainers... The future of the{CLEAR}Pokémon world is bright!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0566/1"
+   "origin": "agent",
+   "notes": "US 0566/1 | RV033: addition: US ‘talented’/‘With people like you’ not in the Chinese; 激烈 = fierce"
   },
   {
    "id": 2,

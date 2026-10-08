@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "别看大妈我这样,{NEWLINE}我可是追星一族哦！{CLEAR}我会收集帅气训练家们的{CLEAR}海报、手办、明信片之类的东西。{CLEAR}在我心目中全地区最帅的训练家{CLEAR}是常磐道馆的馆主小绿,{CLEAR}排名第二的是四天王阿渡,{CLEAR}排名第三的是桔梗道馆的阿速。",
-   "en": "I may not look it, but this auntie{NEWLINE}is a big fangirl! I collect posters,{CLEAR}figures, postcards and all that stuff{CLEAR}of handsome Trainers. In my heart,{CLEAR}the most handsome Trainer in all the{CLEAR}regions is Blue, the Viridian Gym Leader.{CLEAR}Second is Lance of the Elite Four, and{CLEAR}third is Falkner of the Violet Gym.",
+   "en": "I may not look it, but this auntie is a{NEWLINE}big fangirl! I collect posters, figures,{CLEAR}postcards and all that stuff of{CLEAR}handsome Trainers. In my heart, the{CLEAR}most handsome Trainer in the whole{CLEAR}region is Blue, the Viridian Gym Leader.{CLEAR}Second is Lance of the Elite Four, and{CLEAR}third is Falkner of the Violet Gym.",
    "status": "draft",
    "origin": "agent",
-   "notes": "大妈 → ‘this auntie’ (self-reference)."
+   "notes": "大妈 → ‘this auntie’ (self-reference). | RV033: meaning: 全地区 = the whole region, not all regions (D-1870)"
   },
   {
    "id": 2,

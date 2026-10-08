@@ -318,10 +318,10 @@
   {
    "id": 39,
    "zh": "比夏斯『本大爷可不怕你。{NEWLINE}出来吧,班吉拉！",
-   "en": "Marauder: Like I’d ever be scared of{NEWLINE}you. Come on out, Tyranitar!",
+   "en": "Marauder: The great Marauder isn’t{NEWLINE}scared of you. Come on out, Tyranitar!",
    "status": "draft",
    "origin": "agent",
-   "notes": "tone review: 本大爷 is arrogant self-reference; swagger carried by 'Like I'd ever...' (D-0627)"
+   "notes": "tone review: 本大爷 is arrogant self-reference; swagger carried by 'Like I'd ever...' (D-0627) | RV033: voice: 本大爷 swagger carried as ‘The great Marauder’ (D-2081)"
   },
   {
    "id": 40,
@@ -582,10 +582,10 @@
   {
    "id": 72,
    "zh": "{VAR:0103:0}『你们火箭队为了自己的野心{NEWLINE}真的是坏事做绝。",
-   "en": "{VAR:0103:0}: Your Team Rocket will stoop{NEWLINE}to any evil for your own ambitions.",
+   "en": "{VAR:0103:0}: You Team Rocket people will{NEWLINE}stoop to any evil for your ambitions.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV033: grammar: ‘Your Team Rocket’ unnatural"
   },
   {
    "id": 73,
