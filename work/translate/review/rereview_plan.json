@@ -5456,7 +5456,7 @@
   {
    "id": "RV075",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 553,
    "labels": [
     "a027/0025 battle_frontier",
