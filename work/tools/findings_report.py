@@ -74,7 +74,7 @@ def read_jsonl(path: Path) -> list:
             try:
                 out.append(json.loads(line))
             except json.JSONDecodeError as e:
-                raise SystemExit(f"{path}:{n}: bad JSON ({e})")
+                raise SystemExit(f"{path}:{n}: bad JSON ({e})") from None
     return out
 
 

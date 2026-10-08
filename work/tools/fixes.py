@@ -211,6 +211,7 @@ def load_all(root: Path = PATCHES_DIR, validate_all=True, decisions=None) -> lis
         problems.append(f"{root}: no */fix.toml found")
     if validate_all and not problems:
         problems += validate(fixes, decisions=decisions, overlay_bases=load_overlays(root))
+        problems += lint_includes(root)
     if problems:
         raise FixError("work/patches is invalid:\n  " + "\n  ".join(problems))
     return sorted(fixes, key=lambda f: f.get("id", ""))
@@ -404,6 +405,396 @@ def asm_forbidden(text: str) -> list:
     return out
 
 
+# --------------------------------------------------------------------------------------
+# asm lint: static rules for a fix's armips source (no armips, no ROM)
+# --------------------------------------------------------------------------------------
+#
+# lint_asm() reads the source like armips does, as far as the rules need: it follows `.include` (for macros
+# and `equ` constants), expands macro invocations (textual parameter substitution, as armips does), and
+# classifies every statement as a write (an instruction or a data directive), a guard, or neither. A guard is
+# an `.if` whose condition reads the file being patched: `readu8/16/32(outputname(), <address with org()>)`
+# guards the bytes at the current address (expect16, expect32, expect16_at, ...); `filesize(outputname())`
+# is the end guard (expect_end, appended data); a read at an absolute address (expect32_abs) is a read-only
+# check and guards nothing. Rules, each reported as <fix>/<file>.asm:<line>:
+#   header   line 1 is `; <fix-id> - <title>`, and the header (the leading comment lines up to the first `;`
+#            line or code) names every decision of fix.toml, or the pending decision when it has none;
+#   length   no line is longer than ASM_MAX_LINE characters;
+#   area     every write is inside an `.area` (so it can never grow into the next code), each `.area` is the
+#            first one after its `.org` (so its address is the .org's), and no write comes before an `.org`;
+#   guard    the first write of every `.area` has a guard since its `.org` (an appended area: expect_end);
+#   region   an `.area` that is not appended lies inside the regions fix.toml declares in the opened file
+#            ([[code]] regions, [[string]] slots and pointer words), resolved statically from the `.org`
+#            and `.area` expressions (numbers, `equ` constants, `.definelabel`s); an appended one (expect_end)
+#            needs a [[grow]] of that file. An `.org` block without writes (read-only guards) may be anywhere.
+# armips itself stays the authority on the bytes; these rules catch an unguarded or unbounded edit, or one
+# outside fix.toml's regions, before anything is assembled.
+
+ASM_MAX_LINE = 120
+ASM_WRITE_DIRECTIVES = {
+    "byte", "db", "dcb", "ascii", "asciiz", "halfword", "hword", "dh", "dcw", "word", "dw", "dcd", "doubleword",
+    "dcq", "float", "double", "string", "stringn", "str", "strn", "sjis", "sjisn", "fill", "defs", "ds", "align",
+    "skip", "incbin", "import", "importobj", "importlib", "pool"}
+ASM_NEUTRAL_DIRECTIVES = {
+    "nds", "gba", "psx", "ps2", "n64", "rsp", "arm", "thumb", "include", "open", "close", "org", "area", "endarea",
+    "definelabel", "macro", "endmacro", "if", "ifdef", "ifndef", "elseif", "elseifdef", "elseifndef", "else",
+    "endif", "error", "warning", "notice", "loadtable", "table", "erroronwarning", "relativeinclude", "sym", "func",
+    "endfunc", "function", "endfunction", "headersize", "create", "createfile", "openfile"}
+_LINT_LABEL_RE = re.compile(r"^\s*([A-Za-z_@.][\w@.]*):(?!:)\s*(.*)$")
+_LINT_EQU_RE = re.compile(r"^\s*([A-Za-z_]\w*)\s+equ\s+(.+?)\s*$", re.I)
+_LINT_DIRECTIVE_RE = re.compile(r"^\s*\.([A-Za-z][\w.]*)\b\s*(.*?)\s*$")
+_LINT_INCLUDE_RE = re.compile(r'^\s*\.include\s+"([^"]+)"', re.I)
+_LINT_READ_RE = re.compile(r"\breadu?(?:8|16|32|64)\s*\(", re.I)
+
+
+def _strip_comment(line: str) -> str:
+    """The line without its `;` or `//` comment (quotes respected)."""
+    quote = None
+    for i, ch in enumerate(line):
+        if quote:
+            if ch == "\\":
+                continue
+            if ch == quote:
+                quote = None
+        elif ch in "\"'":
+            quote = ch
+        elif ch == ";" or line.startswith("//", i):
+            return line[:i]
+    return line
+
+
+def _split_args(text: str) -> list:
+    """Macro / directive arguments: split at commas outside parentheses and quotes."""
+    out, depth, quote, cur = [], 0, None, []
+    for ch in text:
+        if quote:
+            quote = None if ch == quote else quote
+        elif ch in "\"'":
+            quote = ch
+        elif ch == "(":
+            depth += 1
+        elif ch == ")":
+            depth -= 1
+        elif ch == "," and depth == 0:
+            out.append("".join(cur).strip())
+            cur = []
+            continue
+        cur.append(ch)
+    if "".join(cur).strip():
+        out.append("".join(cur).strip())
+    return out
+
+
+def _call_args(text: str, start: int) -> str:
+    """The text inside the parentheses that open at text[start - 1]."""
+    depth = 1
+    for i in range(start, len(text)):
+        depth += {"(": 1, ")": -1}.get(text[i], 0)
+        if depth == 0:
+            return text[start:i]
+    return text[start:]
+
+
+def guard_kind(cond: str):
+    """What an `.if` condition checks: "pos" (bytes at the current address), "end" (the file ends here),
+    "abs" (bytes at an absolute address: a read-only check) or None (no read of the patched file)."""
+    c = cond.lower().replace(" ", "")
+    if "filesize(outputname())" in c and "org()" in c:
+        return "end"
+    kinds = set()
+    for mo in _LINT_READ_RE.finditer(cond):
+        args = _call_args(cond, mo.end()).lower().replace(" ", "")
+        if args.startswith("outputname()"):
+            kinds.add("pos" if "org()" in args else "abs")
+    return "pos" if "pos" in kinds else ("abs" if kinds else None)
+
+
+def eval_asm_expr(expr: str, names: dict, _depth=0):
+    """Value of an armips expression of numbers, + - * / % << >> & | ^ ~ and names (`equ` / .definelabel,
+    case-insensitive), or None when it cannot be resolved statically."""
+    import ast
+    if _depth > 20:
+        return None
+    try:
+        tree = ast.parse(expr.strip(), mode="eval")
+    except SyntaxError:
+        return None
+    ops = {ast.Add: lambda a, b: a + b, ast.Sub: lambda a, b: a - b, ast.Mult: lambda a, b: a * b,
+           ast.Div: lambda a, b: int(a / b), ast.FloorDiv: lambda a, b: a // b, ast.Mod: lambda a, b: a % b,
+           ast.LShift: lambda a, b: a << b, ast.RShift: lambda a, b: a >> b, ast.BitAnd: lambda a, b: a & b,
+           ast.BitOr: lambda a, b: a | b, ast.BitXor: lambda a, b: a ^ b}
+
+    def ev(n):
+        if isinstance(n, ast.Constant) and isinstance(n.value, int) and not isinstance(n.value, bool):
+            return n.value
+        if isinstance(n, ast.Name):
+            v = names.get(n.id.lower())
+            return eval_asm_expr(v, names, _depth + 1) if isinstance(v, str) else v
+        if isinstance(n, ast.UnaryOp) and isinstance(n.op, (ast.USub, ast.UAdd, ast.Invert)):
+            v = ev(n.operand)
+            return None if v is None else {ast.USub: -v, ast.UAdd: v}.get(type(n.op), ~v)
+        if isinstance(n, ast.BinOp) and type(n.op) in ops:
+            a, b = ev(n.left), ev(n.right)
+            if a is None or b is None or (isinstance(n.op, (ast.Div, ast.FloorDiv, ast.Mod)) and b == 0):
+                return None
+            return ops[type(n.op)](a, b)
+        return None
+    return ev(tree.body)
+
+
+def _merge(ranges) -> list:
+    out = []
+    for s, e in sorted(ranges):
+        if out and s <= out[-1][1]:
+            out[-1][1] = max(out[-1][1], e)
+        else:
+            out.append([s, e])
+    return out
+
+
+def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_root=None) -> list:
+    """Static rules for one fix source (see above); problems as strings with file:line."""
+    problems = []
+    fid = fx.get("id", "?")
+    where = f"{fid}/{name}"
+    base_dir = Path(include_root) if include_root else (fx["_path"].parent if fx.get("_path") else PATCHES_DIR)
+    lines = text.splitlines()
+    # -- header ---------------------------------------------------------------------------------------
+    header = []
+    for line in lines:
+        if not line.startswith(";") or line.strip() == ";":
+            break
+        header.append(line)
+    if not lines or not re.match(rf";\s*{re.escape(fid)}\s+-\s+\S", lines[0]):
+        problems.append(f"{where}:1: the source must start with a header comment '; {fid} - <title>. <decisions>'")
+    head_text = "\n".join(header)
+    decs = [d for d in fx.get("decisions", []) if isinstance(d, str)] if _is(fx.get("decisions"), STRS) else []
+    missing = [d for d in decs if d not in head_text]
+    if missing:
+        problems.append(f"{where}:1: the header comment does not name {', '.join(missing)} "
+                        f"(fix.toml decisions: name them in the leading comment lines)")
+    if not decs and not DEC_RE.search(head_text):
+        problems.append(f"{where}:1: fix.toml lists no decision, so the header comment must name the pending "
+                        f"decision (a D-NNNN id)")
+    # -- line length ----------------------------------------------------------------------------------
+    for n, line in enumerate(lines, 1):
+        if len(line) > ASM_MAX_LINE:
+            problems.append(f"{where}:{n}: line is {len(line)} characters, more than {ASM_MAX_LINE} (wrap it)")
+    # -- statements: includes, macros, equ ----------------------------------------------------------------
+    names, macros = {}, {}
+
+    def collect(src_lines, src_name, src_dir, seen):
+        """Macro definitions and equ / .definelabel of an included file (statements are not linted)."""
+        i = 0
+        while i < len(src_lines):
+            code = _strip_comment(src_lines[i])
+            mo = _LINT_INCLUDE_RE.match(code)
+            if mo:
+                inc = _resolve_include(src_dir, mo.group(1))
+                if inc is not None and inc not in seen:
+                    seen.add(inc)
+                    collect(inc.read_text(encoding="utf-8").splitlines(), inc.name, inc.parent, seen)
+            i = _define(src_lines, i, src_name) + 1
+
+    def _define(src_lines, i, src_name):
+        """Record a macro (returns the index of its .endmacro), an equ or a .definelabel at line i."""
+        code = _strip_comment(src_lines[i])
+        mo = _LINT_DIRECTIVE_RE.match(code)
+        if mo and mo.group(1).lower() == "macro":
+            args = _split_args(mo.group(2))
+            body, j = [], i + 1
+            while j < len(src_lines) and not re.match(r"\s*\.endmacro\b", _strip_comment(src_lines[j]), re.I):
+                body.append((src_name, j + 1, src_lines[j]))
+                j += 1
+            if args:
+                macros[args[0].lower()] = ([a.lower() for a in args[1:]], body)
+            return j
+        if mo and mo.group(1).lower() == "definelabel":
+            args = _split_args(mo.group(2))
+            if len(args) == 2:
+                names[args[0].lower()] = args[1]
+        mo = _LINT_EQU_RE.match(code)
+        if mo:
+            names[mo.group(1).lower()] = mo.group(2)
+        return i
+
+    # -- the walk ----------------------------------------------------------------------------------
+    regions = {}                        # file key -> merged [start, end) RAM ranges
+    grown = {g.get("file") for g in _entries(fx, "grow")}
+    rows = []
+    try:
+        rows = footprint(fx)
+    except (KeyError, ValueError, TypeError):
+        pass                            # malformed entries are reported by the schema checks
+    state = {"file": None, "base": None, "block": None, "depth": 0, "area": None}
+
+    def loc(stack):
+        return " (" + ", ".join(f"via {s}:{n}" for s, n in stack) + ")" if stack else ""
+
+    def ranges_for(key, base):
+        if key not in regions:
+            regions[key] = _merge((base + s, base + e) for r, s, e, _ in rows if r == key and s < 1 << 40)
+        return regions[key]
+
+    def statement(code, n, stack, depth=0):
+        st = state
+        mo = _LINT_LABEL_RE.match(code)
+        if mo and not code.lstrip().startswith("."):
+            code = mo.group(2)
+        if not code.strip():
+            return
+        at = f"{where}:{n}{loc(stack)}"
+        mo = _LINT_EQU_RE.match(code)
+        if mo:
+            names[mo.group(1).lower()] = mo.group(2)
+            return
+        mo = _LINT_DIRECTIVE_RE.match(code)
+        if mo:
+            d, rest = mo.group(1).lower(), mo.group(2)
+            if d == "definelabel":
+                args = _split_args(rest)
+                if len(args) == 2:
+                    names[args[0].lower()] = args[1]
+            elif d == "open":
+                mo2 = ASM_OPEN_RE.match(code)
+                st["file"] = mo2.group(1)[:-4] if mo2 and mo2.group(1).endswith(".bin") else None
+                st["base"] = int(mo2.group(2), 16) if mo2 else None
+                st["block"] = None
+            elif d == "close":
+                st["file"] = st["base"] = st["block"] = None
+            elif d == "org":
+                if st["depth"]:
+                    problems.append(f"{at}: .org inside an .area")
+                st["block"] = {"addr": eval_asm_expr(rest, names), "expr": rest, "guarded": False,
+                               "appended": False, "areas": 0}
+            elif d == "orga":
+                problems.append(f"{at}: .orga takes a file offset; write .org with the RAM address")
+            elif d == "area":
+                st["depth"] += 1
+                if st["depth"] == 1:
+                    blk = st["block"]
+                    if blk is None:
+                        problems.append(f"{at}: .area before any .org")
+                    elif blk["areas"]:
+                        problems.append(f"{at}: a second .area after one .org: start each .area with its own .org "
+                                        f"(the lint checks the area's address range from the .org)")
+                    else:
+                        blk["areas"] = 1
+                    args = _split_args(rest)
+                    st["area"] = {"line": at, "size": eval_asm_expr(args[0], names) if args else None,
+                                  "size_expr": args[0] if args else "", "written": False,
+                                  "start": blk["addr"] if blk else None}
+            elif d == "endarea":
+                if st["depth"] == 0:
+                    problems.append(f"{at}: .endarea without .area")
+                else:
+                    st["depth"] -= 1
+                    if st["depth"] == 0:
+                        st["area"] = None
+            elif d in ("if", "elseif"):
+                kind = guard_kind(rest)
+                if kind in ("pos", "end") and st["block"] is not None:
+                    st["block"]["guarded"] = True
+                    st["block"]["appended"] |= kind == "end"
+            elif d in ASM_WRITE_DIRECTIVES:
+                write(at, n)
+            elif d not in ASM_NEUTRAL_DIRECTIVES:
+                problems.append(f"{at}: unknown directive .{d}: the lint does not know whether it writes "
+                                f"(add it to fixes.ASM_WRITE_DIRECTIVES or ASM_NEUTRAL_DIRECTIVES)")
+            return
+        word = code.split(None, 1)
+        if word and word[0].lower() in macros:
+            if depth > 30:
+                problems.append(f"{at}: macro nesting too deep")
+                return
+            params, body = macros[word[0].lower()]
+            args = dict(zip(params, _split_args(word[1]) if len(word) > 1 else [], strict=False))
+            subst = re.compile(r"(?<![\w@.])(" + "|".join(map(re.escape, args)) + r")(?![\w@])", re.I) \
+                if args else None
+            for src, bn, bline in body:
+                b = _strip_comment(bline)
+                if subst:
+                    b = subst.sub(lambda m: args[m.group(1).lower()], b)
+                statement(b, n, stack + [(src, bn)], depth + 1)
+            return
+        write(at, n)                                     # an instruction
+
+    def write(at, n):
+        st = state
+        if st["depth"] == 0:
+            problems.append(f"{at}: write outside an .area (wrap every edit in .area <size> / .endarea)")
+            return
+        area = st["area"]
+        if area["written"]:
+            return
+        area["written"] = True
+        blk = st["block"]
+        if blk is None:
+            return                                       # reported at the .area
+        if not blk["guarded"]:
+            problems.append(f"{area['line']}: the .area's first write (line {n}) has no guard since its .org "
+                            f"(expect16 / expect32 / expect16_at / ... on the bytes it replaces, or expect_end "
+                            f"for appended data)")
+        key = st["file"]
+        if key is None:
+            return
+        if blk["appended"]:
+            if key not in grown:
+                problems.append(f"{area['line']}: data appended to {key}.bin (expect_end), but fix.toml has no "
+                                f"[[grow]] for {key}")
+            return
+        if blk["addr"] is None or area["size"] is None:
+            what = f".org {blk['expr']}" if blk["addr"] is None else f".area {area['size_expr']}"
+            problems.append(f"{area['line']}: cannot resolve {what} statically (use numbers, equ constants or "
+                            f".definelabel), so the region check cannot run")
+            return
+        if st["base"] is None:
+            return
+        s, e = blk["addr"], blk["addr"] + area["size"]
+        if not any(lo <= s and e <= hi for lo, hi in ranges_for(key, st["base"])):
+            off = s - st["base"]
+            problems.append(f"{area['line']}: .area {s:#010x}-{e:#010x} ({key}+{off:#x}, {area['size']} bytes) is "
+                            f"not inside one region fix.toml declares in {key} ([[code]] regions, [[string]] slots "
+                            f"and pointers)")
+
+    collect(lines, name, base_dir, set())
+    i = 0
+    while i < len(lines):
+        code = _strip_comment(lines[i])
+        mo = _LINT_DIRECTIVE_RE.match(code)
+        if mo and mo.group(1).lower() == "macro":
+            i = _define(lines, i, name) + 1              # a definition: its body runs where it is invoked
+            continue
+        if mo and mo.group(1).lower() == "include":
+            i += 1
+            continue
+        statement(code, i + 1, [])
+        i += 1
+    if state["depth"]:
+        problems.append(f"{where}: an .area is not closed (.endarea missing)")
+    return problems
+
+
+def _resolve_include(src_dir: Path, rel: str):
+    """An `.include` path: relative to the including file's folder (armips runs in <stage>/rom, next to
+    <stage>/include, and the sources live one folder below work/patches, so `../include/x` resolves the same
+    way); falls back to work/patches/include for synthetic test registries."""
+    p = (Path(src_dir) / rel).resolve()
+    if p.is_file():
+        return p
+    alt = PATCHES_DIR / INCLUDE_DIR / Path(rel).name
+    return alt if rel.replace("\\", "/").startswith("../include/") and alt.is_file() else None
+
+
+def lint_includes(root: Path = PATCHES_DIR) -> list:
+    """Line length of the shared armips includes (work/patches/include/*.inc)."""
+    out = []
+    for p in sorted((Path(root) / INCLUDE_DIR).glob("*.inc")):
+        for n, line in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
+            if len(line) > ASM_MAX_LINE:
+                out.append(f"{INCLUDE_DIR}/{p.name}:{n}: line is {len(line)} characters, more than {ASM_MAX_LINE}")
+    return out
+
+
 def _validate_asm(fx, where, problems, overlay_bases):
     """asm only for kinds code/data/strings, and required there; the file exists in the fix's folder; every
     `.open` is '<file>.bin' of a file with a [[code]] region, [[string]] entry or [[grow]], at that file's load
@@ -431,6 +822,7 @@ def _validate_asm(fx, where, problems, overlay_bases):
     files = {e["file"] for t in ("code", "string", "grow") for e in _entries(fx, t) if isinstance(e.get("file"), str)}
     opened = set()
     text = path.read_text(encoding="utf-8")
+    problems += lint_asm(text, fx, overlay_bases, name=asm)
     for n, d in asm_forbidden(text):
         problems.append(f"{fx['_path'].parent.name}/{asm}:{n}: {d} is not allowed in a fix source "
                         f"(it only patches the staged binaries at their load address)")
@@ -703,7 +1095,7 @@ def footprint(fx) -> list:
 def overlaps(fixes) -> list:
     rows = sorted((r[0], r[1], r[2], r[3], fx["id"]) for fx in fixes for r in footprint(fx))
     problems = []
-    for a, b in zip(rows, rows[1:]):
+    for a, b in zip(rows, rows[1:], strict=False):
         if a[0] == b[0] and b[1] < a[2]:
             problems.append(f"overlap in {a[0]}: {a[4]} ({a[3]}, {a[1]:#x}-{a[2]:#x}) and "
                             f"{b[4]} ({b[3]}, {b[1]:#x}-{b[2]:#x})")
@@ -913,7 +1305,8 @@ def render_docs(fixes, overlay_bases=None) -> str:
            "`code_from_us`/`member_from_file` graphics check the exact bytes (or their SHA-1); `copy_us`, "
            "`tiles_from_file` and `tiles_from_us` check the bit depth and tile count; `tiles_from_png` checks "
            "that the image matches the sheet's tile grid, and `tile_range_from_png` that the range fits the "
-           "sheet, both that every palette index is below the bit-depth limit; every replaced NARC member must keep its format, compression, bit depth, tile "
+           "sheet, both that every palette index is below the bit-depth limit; every replaced NARC member must "
+           "keep its format, compression, bit depth, tile "
            "count and mapping; and the font fix checks the glyph size. Each fix can be left out of a build "
            "with `python3 work/tools/build.py --without <id>` (or built alone with `--only`). A fix whose "
            "`requires` names another fix only makes sense together with it; the build refuses to drop one without "

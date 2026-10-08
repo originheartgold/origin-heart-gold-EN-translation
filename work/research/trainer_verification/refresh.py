@@ -3,7 +3,6 @@
 Run from the repository root with .venv/bin/python. Does not build or modify a
 ROM. Every data/disassembly output stays under ignored work/build/.
 """
-import hashlib
 import json
 from pathlib import Path
 import subprocess

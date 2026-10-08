@@ -31,6 +31,7 @@ work/patches/include/charmap.inc    character-code constants (CH_A, CH_LC_A, FW_
 work/patches/include/charmap.tbl    armips table file for `.string` (generated: `asmpatch.py tbl`)
 work/patches/<fix>/fix.toml         why/what/decisions, `asm = "<fix>.asm"`, [[code]] regions / [[string]] entries, [[grow]]
 work/patches/<fix>/<fix>.asm        the armips source: the single source of the new bytes
+work/patches/expected.toml          hashes of the default full build (check.py --full; see Checks)
 ```
 
 A fix's `[[code]]` entries declare the regions the source may change (`file`, `offset` in the file, `expect` = the original bytes). They do not hold the new bytes. They are there so the registry can be checked without armips or a ROM (`fixes.py check`: overlaps between fixes, and every `.open` of the source is a declared file at its load address), and so FIXES.md can list what each fix touches.
@@ -95,8 +96,12 @@ Conventions:
 
 - **Binaries:** `arm9.bin` (load address `0x02000000`), `itcm.bin` (the ARM9 autoload section copied to ITCM, load address `0x01FF8000`) and `overlayNN.bin` (load address from `work/patches/overlays.toml`, the y9 table of the Chinese ROM), decompressed, overlay numbers of the hack (Japanese base; the USA and pret numbers differ).
 - **Addresses** are RAM addresses: `.org 0x021E49CE`, not file offsets. `.headersize`, `.create` and `.createfile` are refused (`fixes.py check`): a source only patches the staged binaries, at the load address of its `.open`.
-- **Guards:** every edit starts with a guard on the bytes it replaces (`expect16`, `expect32`, or a macro built on `expect16_at` / `expect32_at` such as the keyboard's `keys_were` or the PC box's `window_was`); appended data starts with `expect_end`. A guard reads the file on disk, which still holds the original bytes while armips assembles; on a mismatch armips stops with `guard failed at <address>: expected …, found …` and writes nothing.
-- **`.area`** around every edit, so it can never grow into the next code.
+- **Header:** line 1 is `; <fix-id> - <title>. <decisions>`; the leading comment lines name every decision of fix.toml (or, when it lists none, the pending decision).
+- **Guards:** every edit starts with a guard on the bytes it replaces (`expect16`, `expect32`, or a macro built on `expect16_at` / `expect32_at` such as the keyboard's `keys_were_1to7` / `keys_were_8to13` or the PC box's `window_was`); appended data starts with `expect_end`. A guard reads the file on disk, which still holds the original bytes while armips assembles; on a mismatch armips stops with `guard failed at <address>: expected …, found …` and writes nothing.
+- **`.area`** around every edit, so it can never grow into the next code; one `.area` per `.org`.
+- **Lines** of at most 120 characters (a long row of data is split over several `.halfword` lines).
+
+`fixes.py check` (and every registry load, so the build too) enforces these statically; see "Checks" below.
 - **Syntax:** armips v0.11.0 takes pre-UAL THUMB syntax: `mov r3, #7` (not `movs`), `add r5, r0, #0` (not `adds`). Check each instruction's encoding against the bytes you expect (`asmpatch.py listing <fix>`).
 - **Names** are case-insensitive in armips, so lower-case letters in `charmap.inc` are `CH_LC_A`…, full-width ones `FW_A`….
 
@@ -132,10 +137,12 @@ To assemble one fix by hand, copy the decompressed binaries into a folder next t
 Commands:
 
 ```sh
+python3 work/tools/check.py [--full]                                  # all checks (see "Checks" below)
 ARMIPS=/path/to/armips python3 work/tools/asmpatch.py check          # assemble every enabled fix (dry run)
 ARMIPS=/path/to/armips python3 work/tools/asmpatch.py listing namelen # old -> new bytes of one fix
 python3 work/tools/asmpatch.py tbl                                    # regenerate include/charmap.tbl
-python3 work/tools/fixes.py check                                     # registry, regions, .open lines, .string = en; no armips
+python3 work/tools/fixes.py check                                     # registry, regions, .open lines, .string = en,
+                                                                      # asm lint; no armips
 ```
 
 ## Proof of equivalence and golden hashes
@@ -171,3 +178,34 @@ Fixes added after these runs were written as armips sources from the start; each
 | `refactor/patches-rc` `--without overworld-texture-frame-bounds` (= the RC's, xdelta `588b931f…`) | `35e67a5f53b9a05e62ea8b38d2c73a4268001102` |
 
 These depend on the workspace text at the time (2026-10-08, branches `refactor/fix-format` and `refactor/patches-rc`); a translation change moves them. The per-binary golden SHA-1s in `test_asmpatch.py` (`GOLDEN`: every binary each fix changes, alone and all together, plus the y9 overlay table) do not depend on the text, so the test suite checks them on every run that has armips and the Chinese ROM. A change to a fix source that changes its bytes must update `GOLDEN` and say why.
+
+## Checks
+
+`python3 work/tools/check.py` is the one entry point (`work/tools/check.py` docstring; the pre-commit hook `.githooks/pre-commit` runs it on the staged files, see CONTRIBUTING.md → Checks). Every step prints PASS / FAIL / SKIP and its time; the exit status is non-zero when a step failed.
+
+| Step | Fast (default) | `--full` |
+|---|---|---|
+| `registry`: `fixes.py check`, including the asm lint below | yes | yes |
+| `fixes-md`: `work/patches/FIXES.md` equals `fixes.py docs` | yes | yes |
+| `ruff`: `ruff check` with `ruff.toml`, the version pinned in `work/tools/requirements-dev.txt` | yes (SKIP with a note when ruff is not installed) | yes (required) |
+| `tests`: every `work/tools/test_*.py` | armips hidden; ROM tests run only if the ROM is there | with armips: GOLDEN |
+| `prereq`: armips v0.11.0, both ROMs, `xdelta3` | – | required |
+| `asmpatch`: `asmpatch.py check` against the Chinese ROM | – | yes |
+| `build`: `build.py --work-dir work/build/check`, hashes against `work/patches/expected.toml` | – | yes |
+
+Timings on the reference machine (2026-10-08): fast about 6 s (the staged run too), full about 30 s (the build 23 s).
+
+**The asm lint** (`fixes.lint_asm`, no armips, no ROM) reads a fix source as armips does as far as the rules need: it follows `.include` for macros and `equ` constants, expands macro invocations with their arguments, and classifies each statement as a write (an instruction or a data directive such as `.halfword`, `.word`, `.string`, `.fill`, `.align`, `.incbin`), a guard, or neither; an unknown directive is reported rather than guessed. A guard is an `.if` that reads the patched file: `readu8/16/32(outputname(), …org()…)` checks the bytes at the current address (`expect16`, `expect32`, `expect16_at`, `expect32_at` and macros built on them), `filesize(outputname())` is the end guard (`expect_end`), and a read at an absolute address (`expect32_abs`, e.g. the keyboard's `keyboard_row`) is a read-only check that guards nothing. The rules, each reported as `<fix>/<file>.asm:<line>` (with `via <file>:<line>` inside a macro):
+
+- **header**: line 1 is `; <fix-id> - …`, and the leading comment lines (up to the first `;` line) name every decision of fix.toml, or a D-id when fix.toml lists none (the pending decision). Catches a source copied from another fix, or a decision added to fix.toml but not to the source.
+- **area**: every write is inside an `.area`, no `.area` comes before an `.org`, each `.area` is the first after its `.org`, no `.org` inside an `.area`, every `.area` is closed. Catches an edit that could silently grow into the next code (armips stops only at an `.area` overflow).
+- **guard**: the first write of every `.area` has a guard since its `.org` (before the `.area` or inside it). Catches an edit that would patch whatever bytes are there. It checks that a guard exists, not that it covers every byte (the build's `expect` check and the region check cover that).
+- **region**: an `.area` lies inside the regions fix.toml declares in the opened file (`[[code]]` regions, `[[string]]` slots and pointer words; adjacent regions count together), computed from the `.org` and `.area` expressions (numbers, `equ`, `.definelabel`; anything else is reported as unresolvable); an appended area (`expect_end`) needs a `[[grow]]` of that file. An `.org` block that only reads (the overworld fix's read-only guard of the whole routine) may be anywhere. Catches an `.area` larger than its region or an `.org` off its region before armips runs (the build still compares every byte after assembling).
+- **length**: no line of a fix source or of `work/patches/include/*.inc` is longer than 120 characters.
+
+Tests: `test_fixes.py` → `AsmLint`, each rule positive and negative, plus every checked-in source clean.
+
+**Expected hashes** (`work/patches/expected.toml`, per branch): the per-binary GOLDEN SHA-1s in `test_asmpatch.py` cover only the armips binaries, so `--full` also builds the whole ROM and compares four SHA-1s: `nontext_sha1` (every ROM part except the two message NARCs: arm9, arm7, overlay tables, banner, every other file; what the fixes, graphics and code produce, independent of the text), `text_sha1` (the two message NARCs), and `rom_sha1` / `xdelta_sha1` (what is released). A change to the translation text moves `text_sha1`, `rom_sha1` and `xdelta_sha1` but not `nontext_sha1`; the failure message says which of the two happened. Whoever changes the text or a fix records the new hashes in the same commit after reviewing the build: `python3 work/tools/check.py --full --update-expected`. Translators do not run `--full` (the pre-commit hook runs the fast check, and only for commits that touch the tools or the fixes), so a text-only commit leaves `expected.toml` stale until the next `--full`, which then says so.
+
+**ruff** (`ruff.toml`, pinned in `work/tools/requirements-dev.txt`) checks every Python file under `work/` with pycodestyle errors and warnings, pyflakes, bugbear and import order. The toolchain files (`fixes.py`, `asmpatch.py`, `build.py`, `check.py` and their tests) get every rule, line length 120; the older tools, audits and research scripts keep their compact style (per-file ignores of the style-only rules: line length, one-line statements, ambiguous names, import order, unused loop variables, closures over loop variables, `zip()` without `strict=`), while the bug-finding rules (undefined names, unused imports and variables, mutable defaults, …) apply to every file. `ruff format` is not enforced.
+

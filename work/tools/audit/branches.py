@@ -1,5 +1,5 @@
 """Compare effects of gender / starter branches."""
-import collections, json, sys
+import collections, json
 import core, sdis as dis, index
 A=dis.all_files(); o=index.load()
 EFF={}

@@ -61,6 +61,7 @@ Nothing is uploaded anywhere; all outputs stay in work/build/.
 from __future__ import annotations
 
 import argparse
+import functools
 import hashlib
 import json
 import shutil
@@ -79,8 +80,8 @@ import asmpatch  # noqa: E402
 import fixes as fixreg  # noqa: E402
 import gfx  # noqa: E402
 import msgtool as m  # noqa: E402
-import textmetrics as tm  # noqa: E402
 import text_speed_patch  # noqa: E402
+import textmetrics as tm  # noqa: E402
 import ws  # noqa: E402
 
 ROM_CN = WORK / "rom" / "origin_v4.0.3_cn.nds"
@@ -293,7 +294,8 @@ def main(argv=None):
     ap.add_argument("--extract", default=str(ws.DEFAULT_EXTRACT))
     ap.add_argument("--rom", default=str(ROM_CN))
     ap.add_argument("--base", default=str(ROM_US), help="USA HeartGold dump: font source and patch base")
-    ap.add_argument("--work-dir", default=str(BUILD), help="Directory for export, build report and patch verification scratch files")
+    ap.add_argument("--work-dir", default=str(BUILD),
+                    help="Directory for export, build report and patch verification scratch files")
     ap.add_argument("--out", help="ROM output (default: selected work directory / standard ROM filename)")
     ap.add_argument("--patch", help="Patch output (default: selected work directory / standard patch filename)")
     ap.add_argument("--only", help="build with exactly these fixes (comma-separated ids, see fixes.py list); "
@@ -398,8 +400,8 @@ def main(argv=None):
     gfx_report = []
     if "graphics" in kinds:
         us_rom = m.load_rom(base)
-        gfx_report = gfx.apply_patches(lambda p: m.get_file(rom, p), lambda p, b: m.set_file(rom, p, b),
-                                       lambda p: m.get_file(us_rom, p), manifest=gfx.load_manifest(fixes=active),
+        gfx_report = gfx.apply_patches(functools.partial(m.get_file, rom), functools.partial(m.set_file, rom),
+                                       functools.partial(m.get_file, us_rom), manifest=gfx.load_manifest(fixes=active),
                                        code=gfx.CodeView(rom), us_code=gfx.CodeView(us_rom), check_layout=True)
         del us_rom
         report["graphics"] = gfx_report

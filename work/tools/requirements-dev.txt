@@ -1,0 +1,4 @@
+# Development tools for the checks (python3 work/tools/check.py; work/notes/toolchain.md).
+# ruff is pinned: another version reports other findings. Install with
+#   pip install -r work/tools/requirements-dev.txt
+ruff==0.16.8

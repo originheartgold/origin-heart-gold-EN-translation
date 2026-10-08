@@ -15,13 +15,12 @@ import collections
 import json
 import os
 import re
-import struct
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import romdata as R  # noqa: E402
 import places  # noqa: E402
-from trainer_guide import STORY_CLASSES, GYM_CHALLENGES, GYM_CHALLENGE_IDS, LEADER_ORDER, story_group
+from trainer_guide import STORY_CLASSES, GYM_CHALLENGES, LEADER_ORDER, story_group
 
 DOCS = os.path.join(R.REPO, 'work', 'docs')
 CROSSREF = os.path.join(R.REPO, 'work', 'notes', 'docs_crossref.md')
@@ -1637,7 +1636,7 @@ def item_ball_table(ctx):
     """file 141 entry i (script 7000+i) -> (item, qty)."""
     f = next(sb for lo, sb, mb in ctx.rom.std_mapping() if lo == 7000)
     d = ctx.S[f]
-    known = R.const_prop(d['entries'], d['ins'])
+    R.const_prop(d['entries'], d['ins'])
     out = {}
     for i, e in enumerate(d['entries']):
         pc, item, qty = e, None, 1
@@ -2054,8 +2053,8 @@ def form_index(ctx, sp, fm):
 def availability(ctx):
     """species index -> short 'how to get it' text (empty if no source found)."""
     how = collections.defaultdict(list)
-    for sp, places in ctx.enc_usage.items():
-        ps = list(dict.fromkeys(places))
+    for sp, wild_places in ctx.enc_usage.items():
+        ps = list(dict.fromkeys(wild_places))
         how[sp].append('wild: ' + ', '.join(ps[:4]) + (' and %d more' % (len(ps) - 4) if len(ps) > 4 else ''))
     for kind, sp, fm, lv, f in static_mons(ctx):
         idx = form_index(ctx, sp, fm)

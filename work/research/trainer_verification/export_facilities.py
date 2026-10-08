@@ -2,7 +2,7 @@
 16-byte candidate schema cross-checked with public battle-factory-editor-hgss
 parse_a203; pool memberships with parse_a202. Runtime evidence is recorded separately in facilities_runtime.json; this file preserves the raw inventory.
 """
-import collections,hashlib,json,struct
+import hashlib,json,struct
 from pathlib import Path
 import ndspy.rom,ndspy.narc
 SOURCE=Path(__file__).resolve().parents[3]

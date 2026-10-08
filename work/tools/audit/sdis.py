@@ -1,5 +1,5 @@
 """Script disassembler for a/0/1/2 (pret command table, 853 cmds; hack table has 843)."""
-import json, struct, os, pickle, sys
+import json, struct, os, pickle
 import core
 D=core.D
 C={int(k):v for k,v in json.load(open(D+'/cmds.json')).items()}

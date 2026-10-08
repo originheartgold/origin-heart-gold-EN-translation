@@ -710,7 +710,7 @@ class Harness:
         self.step(2400)
         self.press("START", after=400)
         self.step(300)
-        self.save   # raises if the save was not loaded
+        _ = self.save   # raises if the save was not loaded
         self.check_code(CODE_SIG)
         for arr, off in ARRAY_OFFSETS.items():
             have = self.u32(self.save + SAVE_TABLE + 16 * arr)
@@ -1360,7 +1360,7 @@ def spawn(args, timeout=900):
                     _stop_proc(proc)
                     out, err = proc.communicate()
                     raise ChildTimeout(f"timeout after {round(now - (started or t0))} s: child {args[:4]} stopped; "
-                                       f"{err[-500:]}")
+                                       f"{err[-500:]}") from None
     finally:
         if proc.poll() is None:         # interrupted while waiting (KeyboardInterrupt, SystemExit)
             _stop_proc(proc, grace=5)

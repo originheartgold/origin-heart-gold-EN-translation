@@ -115,10 +115,15 @@ TextSpeed_ItcmEnd:
 
 RECORD_SIZE equ 0x54
 
+; Stop the build: the mov/lsl pair at `addr` builds `built`, not the field offset `offset`.
+.macro relocate_failed, addr, built, offset
+    .error "relocate_field at " + tohex(addr, 8) + ": the old mov/lsl build " + tohex(built) + ", not " + tohex(offset)
+.endmacro
+
 ; A field offset built as `mov rN, #imm` + `lsl rN, rN, #shift` (shift 2 or 4) is rebuilt with shift 2.
 .macro relocate_field, addr, reg, old_mov, lsl_addr, old_lsl, offset
     .if ((old_mov & 0xFF) << ((old_lsl >> 6) & 0x1F)) != offset
-      .error "relocate_field at " + tohex(addr, 8) + ": the old mov/lsl build " + tohex((old_mov & 0xFF) << ((old_lsl >> 6) & 0x1F)) + ", not " + tohex(offset)
+      relocate_failed addr, (old_mov & 0xFF) << ((old_lsl >> 6) & 0x1F), offset
     .endif
     .if (offset + RECORD_SIZE) % 4 || (offset + RECORD_SIZE) / 4 > 255
       .error "field offset " + tohex(offset + RECORD_SIZE) + " cannot be encoded as mov #imm8 + lsl #2"

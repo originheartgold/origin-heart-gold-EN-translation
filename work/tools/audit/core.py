@@ -41,7 +41,7 @@ def std_mapping():
         lo,sb,mb=struct.unpack_from('<HHH',a,off+6*i); m.append((lo,sb,mb))
     return m
 def parse_events(b):
-    p=0; out={}
+    p=0
     n=struct.unpack_from('<I',b,p)[0]; p+=4; bgs=[]
     for i in range(n):
         sid,typ,x,z,y,d=struct.unpack_from('<HHiiiH',b,p); p+=20; bgs.append(dict(script=sid,type=typ,x=x,z=z,y=y,dir=d))

@@ -452,7 +452,6 @@ def render_obj(g: NCGR, parts, pal=None):
 
 def render_screen(sc: NSCR, g: NCGR, pal=None):
     from PIL import Image
-    tw = sc.w // 8
     img = Image.new("RGB", (sc.w, sc.h))
     pix = img.load()
     for k, e in enumerate(sc.ents):
@@ -1355,7 +1354,6 @@ def make_weather_banners(cn_path, hge_dir, out_dir):
                         elif c == (66, 66, 66) and img[f0 + y][x] == fill:
                             img[f0 + y][x] = dark
             else:
-                text = render_font_text(label, font, cm, white, dark)
                 # compact space: 3 px instead of the font's advance
                 x = 12
                 for ch in label:
@@ -1659,7 +1657,6 @@ def manifest_entry(narc, cn_files, written, note):
 def scan(cn_path, us_path, out_dir):
     """Changed/added NCGRs in the hack vs the USA ROM, rendered with US-identical tiles dimmed."""
     import ndspy.rom
-    from PIL import Image
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
 

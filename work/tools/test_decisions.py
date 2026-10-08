@@ -133,7 +133,7 @@ class Base(unittest.TestCase):
                 D.main(argv)
             except SystemExit as e:
                 if not expect_exit:
-                    raise AssertionError(f"exit {e.code}: {err.getvalue()} {out.getvalue()}")
+                    raise AssertionError(f"exit {e.code}: {err.getvalue()} {out.getvalue()}") from None
                 return out.getvalue(), err.getvalue(), e.code
         return (out.getvalue(), err.getvalue(), 0) if expect_exit else out.getvalue()
 

@@ -237,7 +237,7 @@ def case_arceus(rom, out, variant):
     plate, ptype, etype, foe, probe, exp_probe, exp_judg = ARCEUS_CASES[variant]
     o = out_dir(out, rom)
     with M.session(rom, o, clock=CLOCK) as h:
-        mon = h.generate_pokemon(ARCEUS, level=100)
+        h.generate_pokemon(ARCEUS, level=100)
         slot = h.generated_slot
         given = give_via_bag(h, plate, slot)
         h.edit_party_mon(slot, **moveset([SPLASH, JUDGMENT], [40, 10]))

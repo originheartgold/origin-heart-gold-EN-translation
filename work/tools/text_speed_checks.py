@@ -26,8 +26,7 @@ Two kinds of checks use this:
   whether each frame stop was physically necessary, judged from the observed frame
   ends only, without the model's constants.
 """
-from collections import Counter, defaultdict
-import math
+from collections import Counter
 
 # Stored text-speed values the gates use (bits 2..3 of the Options record, D-1604).
 # ORIGINAL is the reference: the unknown value 3, which the payload must treat as
@@ -304,7 +303,6 @@ def task_errors(mode, tasks):
         drawn, decision, last_unit = 0, None, None
         for n, i in enumerate(renders):
             following = [e for e in events[i + 1:(renders[n + 1] if n + 1 < len(renders) else len(events))]]
-            kinds_after = [e[0] for e in following]
             glyph = next((e for e in following if e[0] == "glyph"), None)
             check = next((e for e in following if e[0] == "check"), None)
             if check is None:

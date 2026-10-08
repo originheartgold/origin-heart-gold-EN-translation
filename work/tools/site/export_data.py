@@ -167,7 +167,7 @@ def quests_for(gq, f, name=None, limit=3):
     return qs[:limit]
 
 
-def landmark(ctx, zid, x, z, cache={}):
+def landmark(ctx, zid, x, z, cache={}):  # noqa: B006 (the cache persists across calls on purpose)
     """'3 steps north of the door to Celadon Poké Mart': the nearest door, never a coordinate."""
     if zid not in cache:
         cache[zid] = [t for t in LM.things(ctx, zid) if t[2] == 'door']

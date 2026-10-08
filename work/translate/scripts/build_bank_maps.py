@@ -90,7 +90,7 @@ def parse_events(b):
     o = 0
     nb = struct.unpack_from('<I', b, o)[0]; o += 4 + nb * 20
     no = struct.unpack_from('<I', b, o)[0]
-    objs = [struct.unpack_from('<HHHHH', b, o + 4 + 32 * i) for i in range(no)]  # id, sprite, move, type, flag
+    _objs = [struct.unpack_from('<HHHHH', b, o + 4 + 32 * i) for i in range(no)]  # id, sprite, move, type, flag
     o += 4 + no * 32
     nw = struct.unpack_from('<I', b, o)[0]
     warps = [struct.unpack_from('<HHHHI', b, o + 4 + 12 * i) for i in range(nw)]

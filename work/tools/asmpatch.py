@@ -16,7 +16,8 @@ The build:
      region's original bytes (`expect`, the encoded `zh`, the pointers' old targets);
   2. stages them as <stage>/rom/arm9.bin, <stage>/rom/itcm.bin (the ARM9 autoload section at 0x01FF8000,
      ndspy loadArm9), <stage>/rom/overlayNN.bin next to a copy of work/patches/include (<stage>/include) and
-     each [native] fix's payload bytes as <stage>/native/<fix>.bin, after its module validated them. armips resolves `.open`, `.include` and `.loadtable` paths against its working
+     each [native] fix's payload bytes as <stage>/native/<fix>.bin, after its module validated them. armips
+     resolves `.open`, `.include` and `.loadtable` paths against its working
      directory, which is <stage>/rom, so a source says `.open "arm9.bin", 0x02000000` and
      `.include "../include/guards.inc"`;
   3. runs armips once per fix, in build order (`armips -erroronwarning -temp <listing> <fix>.asm`). The
@@ -293,14 +294,14 @@ def double_writes(listing: str) -> list:
             num = _NUM.search(text)
             base = int(num.group(0).strip(), 0) if num else base
     spans = {}
-    for (f, a, low, src, n), nxt in zip(rows, rows[1:] + [(None, 0, None, "", 0)]):
+    for (f, a, low, src, n), nxt in zip(rows, rows[1:] + [(None, 0, None, "", 0)], strict=True):
         if low.startswith(_NO_WRITE) or nxt[0] != f or nxt[1] <= a:
             continue
         spans.setdefault(f, []).append((a, nxt[1], f"{Path(src).name}:{n}"))
     problems = []
     for f, ss in spans.items():
         ss.sort()
-        for (a0, b0, w0), (a1, b1, w1) in zip(ss, ss[1:]):
+        for (_a0, b0, w0), (a1, b1, w1) in zip(ss, ss[1:], strict=False):
             if a1 < b0:
                 problems.append(f"{f}+0x{a1:X}..0x{min(b0, b1):X} written twice ({w0} and {w1})")
     return problems

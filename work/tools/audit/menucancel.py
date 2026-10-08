@@ -1,5 +1,5 @@
 """For cancellable menus, follow the B-press (0xFFFE) result and see whether the script ends while still locked."""
-import collections, json
+import json
 import core, sdis as dis, lockcheck as LC
 A=dis.all_files()
 INIT={64,65,68,69,749,750}; EXEC={67,71,752}
@@ -41,7 +41,7 @@ def explore(f,start,locked,tracked):
         if op==26: st.append((t,l,tv,lastcmp,steps+1,stack+(n,))); continue
         if op==22: st.append((t,l,tv,lastcmp,steps+1,stack)); continue
         if op==20:
-            tg=LC.std_target(a[0])
+            LC.std_target(a[0])
             # assume std calls return with same lock state
         if op in (23,24,25,225): st.append((t,l,tv,lastcmp,steps+1,stack))
         st.append((n,l,tv,lastcmp,steps+1,stack))

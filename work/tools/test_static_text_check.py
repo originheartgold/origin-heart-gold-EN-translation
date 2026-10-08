@@ -2,7 +2,6 @@ import copy
 from pathlib import Path
 import tempfile
 import unittest
-from unittest.mock import patch
 
 import static_text_check as check
 

@@ -61,6 +61,26 @@ Everything the build changes in the Chinese ROM besides the message text (font g
 
 Run the tool tests with `python3 -m unittest discover -s work/tools -p 'test_*.py'` (the armips tests are skipped unless armips v0.11.0 is on `PATH` or in `ARMIPS`).
 
+## Checks
+
+One command runs the checks of the tools and the fixes:
+
+```sh
+pip install -r work/tools/requirements-dev.txt   # once: ruff, pinned
+python3 work/tools/check.py                      # fast, about 10 s: no armips, no ROM
+python3 work/tools/check.py --full               # also assembles the fixes and builds the ROM (about 1 min)
+```
+
+The fast check runs `fixes.py check` (the fix registry and the asm lint: a header naming the fix and its decisions, every write inside an `.area`, a guard before every area's first write, every area inside the regions fix.toml declares, lines of at most 120 characters), checks that `work/patches/FIXES.md` is current, runs `ruff check` (config: `ruff.toml`) and the unit tests with armips hidden. `--full` needs armips v0.11.0, both ROMs and `xdelta3`; it adds `asmpatch.py check`, the unit tests with armips (the per-binary golden hashes) and a full build compared with `work/patches/expected.toml`. A change to the translation text moves the ROM's and the patch's hashes recorded there (the hash of everything outside the message text stays): after reviewing the build, record the new ones with `python3 work/tools/check.py --full --update-expected` in the same commit. Details: [work/notes/toolchain.md](work/notes/toolchain.md) → Checks.
+
+**Pre-commit hook.** `.githooks/pre-commit` runs the fast check on what you stage (`check.py --staged`: the staged files, exported to a temp folder), but only when the commit touches Python, `work/patches/`, the decision register, `ruff.toml` or the hook itself; translation-only commits skip it. Turn it on once per clone (it then applies to every worktree of the clone):
+
+```sh
+git config core.hooksPath .githooks
+```
+
+It runs `$POKE_PYTHON` if set (for example a virtualenv's `python`), else `python3`. `git commit --no-verify` skips it for one commit.
+
 ## The guide website
 
 The quest guide (`guide/*.md`) and the generated game docs are published as a website from `site/`. See [site/README.md](site/README.md) for how it is built and how to write guide entries.

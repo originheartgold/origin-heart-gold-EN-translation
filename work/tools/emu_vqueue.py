@@ -479,7 +479,7 @@ def case_probe(rom, out, variant):
         if abil:
             h.edit_party_mon(0, ability=abil)
         ml = V.MsgLog(h)
-        m = ml.mark()
+        ml.mark()
         O.wild_battle(h, foe, flv, moves=fmoves)
         if not h.wait_screen("battle_menu", 2000):
             raise RuntimeError("battle menu not reached")

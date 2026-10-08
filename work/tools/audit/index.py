@@ -1,5 +1,5 @@
 """Build the flag/var/item/mon/warp index from all scripts + events."""
-import json, pickle, os, collections, struct
+import pickle, os, collections
 import core, sdis as dis
 D=core.D
 N=dis.NAME
@@ -39,7 +39,6 @@ def build():
     file_zones=collections.defaultdict(list)
     for z in Z: file_zones[z['scripts_bank']].append(z['zone_id'])
     stdmap=core.std_mapping()
-    std_files={sb:lo for lo,sb,mb in stdmap}
     rec=[]  # dicts
     for f,d in A.items():
         if d['kind']!='script': continue

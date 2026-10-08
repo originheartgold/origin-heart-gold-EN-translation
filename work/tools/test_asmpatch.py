@@ -476,7 +476,7 @@ class RealFixes(unittest.TestCase):
         offs = [int(e["offset"], 16) for e in fx["code"]]
         changed = {i for i in range(len(orig)) if orig[i] != new[i]}
         self.assertTrue(changed <= {o + k for o in offs for k in range(8)})
-        for off, ret in zip(offs, (0, 1, 0, 1, 0, 1)):
+        for off, ret in zip(offs, (0, 1, 0, 1, 0, 1), strict=True):
             self.assertEqual(orig[off:off + 8].hex(), "f0472de980d04de2")
             self.assertEqual(struct.unpack_from("<2I", new, off), (0xE3A00000 | ret, 0xE12FFF1E))
 

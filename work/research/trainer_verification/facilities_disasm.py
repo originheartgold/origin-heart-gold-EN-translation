@@ -1,6 +1,6 @@
 """Inspect untouched CN facility code; dump disassembly only to ignored work/build."""
 from pathlib import Path
-import json,struct,hashlib
+import struct
 import ndspy.rom
 import capstone
 ROOT=Path.cwd(); OUT=ROOT/'work/build/trainer_verification/facilities'

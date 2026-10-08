@@ -1,0 +1,19 @@
+# What `python3 work/tools/check.py --full` expects from the default full build of this branch
+# (python3 work/tools/build.py: every enabled fix, the workspace text). Recorded by
+# `check.py --full --update-expected`.
+#
+# work/patches/expected.toml records four SHA-1s of the default full build (`build.py`, every enabled fix):
+#   nontext_sha1  every part of the ROM except the two message NARCs (arm9, arm7, overlay tables, banner and
+#                 every other file): what the fixes, graphics and code produce; it does not depend on the text;
+#   text_sha1     the two message NARCs (a/0/2/7, battle_string.narc): the translation text;
+#   rom_sha1, xdelta_sha1  the ROM and the release patch: they move with the text.
+# A change to the translation text changes text_sha1, rom_sha1 and xdelta_sha1 (not nontext_sha1); a change to a
+# fix, the graphics or the code changes nontext_sha1. After such a change, review the build and record the new
+# hashes in the same commit:  python3 work/tools/check.py --full --update-expected
+
+[build]
+nontext_sha1 = "403226ffd4d983dac6a704d93d46864e8c84de43"
+text_sha1 = "999d63b5135e9c48fcc1ee0a7bd92e54a78a3c46"
+rom_sha1 = "fa34e72444401d7a966cc751cdbab0e54dad8d7c"
+xdelta_sha1 = "71d44f915f8a4a11863ceb43e703fd32914bb45a"
+recorded = "2026-10-08"

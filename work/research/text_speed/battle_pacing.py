@@ -245,7 +245,7 @@ def child(args, trainer):
                     pin['record'] = {'segment': 0, 'mode': checks.NAMES[mode], 'switch': switch, 'applied': False}
                     report['rng_pins'].append(pin['record'])
                     pin['armed'] = True
-                began, began_pass = h.frame, passes()
+                began, _began_pass = h.frame, passes()
                 reached = play_segment(h, segment, trainer)
                 pin['armed'] = False
                 ended, ended_pass = h.frame, passes()

@@ -367,7 +367,7 @@ def precheck(rom,fixes=None,code_patches=None):
     fixes: the build's selection (default: every enabled fix); code_patches: the other
     fixes' regions as registry_code_patches() gives them (default: from fixes).
     """
-    payload=load_payload()
+    load_payload()  # validates payload.json (raises ValueError)
     code=rom.loadArm9();current=bytes(code.sections[0].data)
     source=registry_code_patches(fixes) if code_patches is None else code_patches
     # The demand-loading heap fix (msgload-all) is assembled in the same armips stage: it must be selected,

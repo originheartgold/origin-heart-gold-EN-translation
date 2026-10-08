@@ -21,7 +21,7 @@ def load(path):
     try:
         data = json.loads(Path(path).read_text())
     except (OSError, ValueError) as e:
-        raise SystemExit(f'{path}: cannot read report ({e})')
+        raise SystemExit(f'{path}: cannot read report ({e})') from None
     if not isinstance(data, dict):
         raise SystemExit(f'{path}: not a report object')
     return data
@@ -118,7 +118,6 @@ def gates_of(report):
 
 def summary_lines(r):
     status = r.get('status', '?')
-    inputs = r.get('inputs') if isinstance(r.get('inputs'), dict) else {}
     dirty = r.get('git_dirty')
     dirty_end = r.get('git_dirty_at_end')
     lines = [f"status={status} releasable={r.get('releasable', '?')} "

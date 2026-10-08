@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Unit tests for msgtool.py. Run:  python3 -m unittest -v work/tools/test_msgtool.py"""
-import argparse
 import json
 import os
 import random
