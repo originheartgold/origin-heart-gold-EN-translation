@@ -181,14 +181,12 @@ void frame_end(void) {
         for(unsigned i=0;i<SLOTS;i++) s->rest[i]=0;
     s->ran=0;
 }
-/* The lower (upper: the upper) median of the slots at or above floor (0 when
- * fewer than SHORT). */
-static unsigned median(const u16 *v,unsigned floor,unsigned *count,unsigned upper) {
+/* The lower median of the slots at or above floor (0 when fewer than SHORT). */
+static unsigned median(const u16 *v,unsigned floor,unsigned *count) {
     unsigned n=0;
     for(unsigned i=0;i<SLOTS;i++) n+=v[i] && v[i]>=floor;
     *count=n;
     if(n<SHORT) return 0;
-    unsigned k=upper?n/2:(n-1)/2;
     for(unsigned i=0;i<SLOTS;i++) {
         unsigned x=v[i],below=0,same=0;
         if(!x || x<floor) continue;
@@ -197,21 +195,19 @@ static unsigned median(const u16 *v,unsigned floor,unsigned *count,unsigned uppe
             below+=v[j]<x;
             same+=v[j]==x;
         }
-        if(below<=k && k<below+same) return x;
+        if(below<=(n-1)/2 && (n-1)/2<below+same) return x;
     }
     return 0;
 }
 /* The typical recent glyph cost and rest in ticks, and the shortest recent rest
  * (0: none). A glyph cost is typical among the glyphs that read their font data
  * (at least half the seed, GLYPH_SEED / 2 lines; a glyph whose data was just read
- * costs about half as much). The rest is the upper median: the game's own work
- * after the batch varies from frame to frame in busy scenes, and the lower median
- * ran 28 ticks short there on average (Route 1, D-2277). With fewer than SHORT such samples the glyph counts
+ * costs about half as much). With fewer than SHORT such samples the glyph counts
  * as the largest recent cost, at least the seed; with fewer than SHORT rests the
  * rest counts as the largest recent rest (then at least SHORT_REST lines, below),
  * with none as the seed. */
 static unsigned costs(struct frame_state *s,unsigned *rest,unsigned *low,unsigned *samples) {
-    unsigned n,seed=(GLYPH_SEED*RHO)>>8,glyph=median(s->glyph,seed/2,&n,0),r=median(s->rest,1,samples,1);
+    unsigned n,seed=(GLYPH_SEED*RHO)>>8,glyph=median(s->glyph,seed/2,&n),r=median(s->rest,1,samples);
     unsigned top=0,l=0xffff,big=0;
     for(unsigned i=0;i<SLOTS;i++) {
         if(s->glyph[i]>top) top=s->glyph[i];
@@ -224,14 +220,24 @@ static unsigned costs(struct frame_state *s,unsigned *rest,unsigned *low,unsigne
     *rest=r; *low=l;
     return glyph;
 }
-/* May the batch draw one more glyph at this reading? */
-static inline __attribute__((always_inline)) unsigned room(struct frame_state *s,unsigned line,unsigned tick) {
-    unsigned rest,low,samples;
-    unsigned glyph=costs(s,&rest,&low,&samples);
-    if(low && samples<SHORT) {
+/* The predicted costs of one batch, taken once at its first decision (D-2279):
+ * costs() runs two medians over the history (about 30 ticks), and a batch that
+ * stops on time pays that once more after its last glyph, outside every measured
+ * rest. Taken once per batch, the stop decision costs a few ticks, the part MARGIN
+ * allows for. Glyph costs measured during the batch count from the next batch. */
+struct estimate {unsigned glyph,rest,low;};
+static inline __attribute__((always_inline)) void estimate(struct frame_state *s,struct estimate *e) {
+    unsigned samples;
+    e->glyph=costs(s,&e->rest,&e->low,&samples);
+    if(e->low && samples<SHORT) {
         unsigned floor=(SHORT_REST*RHO)>>8;
-        if(rest<floor) rest=floor;
+        if(e->rest<floor) e->rest=floor;
     }
+}
+/* May the batch draw one more glyph at this reading? */
+static inline __attribute__((always_inline)) unsigned room(struct frame_state *s,const struct estimate *e,
+                                                           unsigned line,unsigned tick) {
+    unsigned glyph=e->glyph,rest=e->rest,low=e->low;
     unsigned left=left_ticks(s,line,tick);
     /* Fits: one more glyph and the rest end before VBlank. */
     if(left>=glyph+rest+MARGIN) return 1;
@@ -253,7 +259,8 @@ void print_task(void *task, void *p) {
     unsigned budget=FAST_BUDGET;
     unsigned dirty=0;
     FN(0x02020a9d,void (*)(unsigned,unsigned,unsigned))(U8(p,0x15),U8(p,0x16),U8(p,0x17));
-    unsigned before=0,before_tick=0,extra=0;
+    unsigned before=0,before_tick=0,extra=0,estimated=0;
+    struct estimate e;
     for(;;) {
         U16(p,0x2e)=0;
         unsigned result=FN(0x02020a89,unsigned (*)(void *))(p);
@@ -289,7 +296,8 @@ void print_task(void *task, void *p) {
         while(next==0xe000) next=*++q;
         if(next==0xffff || next==0xfffe || next==0x25bc || next==0x25bd || next==0xf0fd) break;
         if(!--budget) break;
-        if(!room(s,now,tick)) break;
+        if(!estimated) {estimate(s,&e); estimated=1;}
+        if(!room(s,&e,now,tick)) break;
         before=now;
         before_tick=tick;
         extra=1;

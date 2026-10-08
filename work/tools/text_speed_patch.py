@@ -24,7 +24,7 @@ BASE=0x01ff8620
 OVBASE=0x021e4980
 # This reviewed pin lives in patcher source, never in the mutable cache. Updating
 # native code requires review of its reproducible payload and this separate pin.
-REVIEWED_PAYLOAD_SHA256='fa7bb441e5be92c9799e50de6b707a5d176995232bdd84eace856e698eabbb2b'
+REVIEWED_PAYLOAD_SHA256='939bf288405f5178437bb3d59fd2b605c3723da5e7ca4c7b012471c4f6cb5d2d'
 REQUIRED_SYMBOLS=frozenset(('print_task','load_rows','load_choice','load_label',
                             'commit_speed','exit_free','draw_label','setup_sprites',
                             'frame_end','pass_end','text_speed_state','call_print'))

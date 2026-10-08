@@ -44,14 +44,14 @@ def nop(address, original):
 # that the gates' frame model matches the broken payload: such a fault can only be
 # caught by the product checks (frames, drops, frame stops), not by the model check.
 B = bytes.fromhex
-# Addresses are those of the reviewed payload of D-2269/D-2271/D-2277 (tick-timer timing, upper-median rest:
-# 2428 bytes, print_task 0x01FF874C, pass_end 0x01FF8B5C, call_print 0x01FF8E04, frame state 0x01FF8F68).
+# Addresses are those of the reviewed payload of D-2269/D-2271/D-2279 (tick-timer timing, estimates once per
+# batch: 2460 bytes, print_task 0x01FF874C, pass_end 0x01FF8B88, call_print 0x01FF8E2C, frame state 0x01FF8F88).
 # Removed with SLOW (D-1604): 'slow-flat' (SLOW's phase: there is no SLOW and no phase)
 # and 'no-phase-reset' (init_printer and the private +0x34 phase byte no longer exist).
 FAULTS = {
     'fast-budget': {
         'description': 'FAST budget 9 instead of 3 glyphs per task',
-        'edits': [(0x01FF87AC, B('0320'), B('0920'))],
+        'edits': [(0x01FF87B2, B('0320'), B('0920'))],
         'gates': {'corpus': 'design budget', 'battle': 'design budget', 'callbacks': 'design budget',
                   'fallbacks': 'budget', 'natural-dialogue': 'design budget', 'scenes': 'budget'}},
     'normal-batches': {
@@ -64,20 +64,20 @@ FAULTS = {
         'description': 'unknown values 2 and 3 are treated as FAST (printer and Options row)',
         # fast(): bne original -> blo original (only value 0 delegates); load_rows: shows
         # FAST for every nonzero value (subs r0,r1,#1; movs r1,#0; adcs r1,r1)
-        'edits': [(0x01FF876C, B('07d1'), B('07d3')), (0x01FF89F6, B('081f'), B('481e')),
-                  (0x01FF89F8, B('4142'), B('0021')), (0x01FF89FA, B('4141'), B('4941'))],
+        'edits': [(0x01FF876C, B('07d1'), B('07d3')), (0x01FF8A22, B('081f'), B('481e')),
+                  (0x01FF8A24, B('4142'), B('0021')), (0x01FF8A26, B('4141'), B('4941'))],
         'gates': {'options': 'is not shown as NORMAL', 'fallbacks': 'fallback skipped the original task',
                   'corpus': 'did not delegate'}},
     # exit_free has commit_speed inlined; the standalone commit_speed copy is not called.
     'commit-noop': {
         'description': 'Options Confirm no longer stores the text-speed bits',
-        'edits': [nop(0x01FF8AD2, '0180')],
+        'edits': [nop(0x01FF8AFE, '0180')],
         'gates': {'options': 'did not store the chosen text speed', 'save': 'did not store the chosen text speed',
                   'music': 'did not store the chosen text speed', 'corpus': 'did not store the chosen text speed'}},
     'label-overflow': {
         'description': 'FAST label replaced by a ten-letter label',
         # labels[2] is u16[11]: FAST, terminator, six zero units.
-        'edits': [(0x01FF8F50, units('FAST') + bytes(12), units('FASTFASTFA'))],
+        'edits': [(0x01FF8F70, units('FAST') + bytes(12), units('FASTFASTFA'))],
         'gates': {'options': 'label', 'save': 'label'}},
     'new-game-normal': {
         'description': 'new-game Options initialiser sets NORMAL instead of FAST (main ARM9)',
@@ -85,50 +85,50 @@ FAULTS = {
         'gates': {'new-game': 'does not start at FAST'}},
     'arena-overlap': {
         'description': 'SDK ITCM arena lower bound put back over the payload (main ARM9 data)',
-        'edits': [(0x020D1A28, B('a08fff01'), B('2086ff01'))],
+        'edits': [(0x020D1A28, B('c08fff01'), B('2086ff01'))],
         'gates': {'lifecycle': 'ITCM arena', 'options': 'ITCM arena'}},
     # Phone-call wait (D-1600, bug D-1599).
     'no-call-redirect': {
         'description': 'Pokégear call printer calls AddTextPrinterParameterized directly again (overlay 92)',
-        'edits': [(0x021F1228, bl(0x021F1228, 0x01FF8E05), bl(0x021F1228, 0x02020834), GEAR)],
+        'edits': [(0x021F1228, bl(0x021F1228, 0x01FF8E2D), bl(0x021F1228, 0x02020834), GEAR)],
         'gates': {'phone-call': 'advanced without input'}},
     'call-clear-noop': {
         'description': 'call_print no longer clears auto-scroll (blx SetAutoScrollParam -> nop)',
-        'edits': [nop(0x01FF8E14, '8847')],
+        'edits': [nop(0x01FF8E3C, '8847')],
         'gates': {'phone-call': 'advanced without input'}},
     'no-control-stop': {
         'description': 'batching no longer stops before control codes',
-        'edits': [nop(0x01FF8884, '65d3'), nop(0x01FF888C, '61d3'), nop(0x01FF8892, '5ed0')],
+        'edits': [nop(0x01FF88A4, '6bd3'), nop(0x01FF88AC, '67d3'), nop(0x01FF88B2, '64d0')],
         'gates': {'corpus': 'without a frame decision', 'controls': 'without a frame decision',
                   'battle': 'to_free', 'callbacks': 'page 2 latency'}},
     'eos-only-no-stop': {
         'description': 'batching no longer stops before 0xFFFF/0xFFFE (end of text, extended controls)',
-        'edits': [nop(0x01FF888C, '61d3')],
+        'edits': [nop(0x01FF88AC, '67d3')],
         'gates': {'corpus': 'without a frame decision', 'battle': 'without a frame decision'}},
     'no-newline-peek': {
         'description': 'batching no longer looks past a newline: a newline before the end of the text is '
                        'rendered with the batch',
-        'edits': [(0x01FF8878, B('01d1'), B('01e0'))],
+        'edits': [(0x01FF8898, B('01d1'), B('01e0'))],
         'gates': {'battle': 'end-of-text step moved'}},
     'budget-batch-no-copy': {
         'description': 'a FAST batch that ends on its glyph budget skips its window copy (and mark): the drawn '
                        'glyphs appear with the next copy, so the box changes later at the start of the next '
                        'message; the glyph draws and the completed text are unchanged',
         # beq (budget exhausted) to the window copy -> beq to the return
-        'edits': [(0x01FF889A, B('5ad0'), B('59d0'))],
+        'edits': [(0x01FF88BA, B('60d0'), B('5fd0'))],
         'gates': {'battle': 'the speed\'s code changes the pause'}},
     'space-stop': {
         'description': 'batching stops before every space (0x01DE) instead of 0xF0FD',
-        'edits': [(0x01FF89DC, B('fdf00000'), B('de010000'))],
+        'edits': [(0x01FF8A08, B('fdf00000'), B('de010000'))],
         'gates': {'corpus': 'allowed another glyph', 'natural-dialogue': 'allowed another glyph',
                   'fallbacks': 'allowed another glyph', 'callbacks': 'allowed another glyph'}},
     'no-color-setup': {
         'description': 'native task no longer sets the glyph colour table before rendering',
-        'edits': [nop(0x01FF87AA, '9847')],
+        'edits': [nop(0x01FF87A6, '9847')],
         'gates': {'corpus': 'pages differs', 'controls': 'pages differs', 'callbacks': 'pixels differ'}},
     'no-state-stop': {
         'description': 'batch ignores RenderText state +0x28 / delay counter +0x2a after a glyph',
-        'edits': [nop(0x01FF8866, '74d1'), nop(0x01FF886C, '71d1')],
+        'edits': [nop(0x01FF8886, '7ad1'), nop(0x01FF888C, '77d1')],
         'dead': 'after a glyph (result 0) RenderText is always in state 0 with +0x2a = 0; '
                 'see text_speed_release_checks.md'},
     'zero-glyph': {
@@ -139,7 +139,7 @@ FAULTS = {
                   'scenes': 'no native tasks observed', 'battle': 'stuck without A/B input'}},
     'frame-rule-ignored': {
         'description': 'the frame decision always draws (the batch always uses its whole budget)',
-        'edits': [(0x01FF88D0, B('00f064fa'), B('01200004'))],
+        'edits': [(0x01FF88F6, B('00f065fa'), B('01200004'))],
         'gates': {'natural-dialogue': 'after a frame stop', 'fallbacks': 'after a frame stop',
                   'callbacks': 'after a frame stop', 'scenes': 'after a frame stop'}},
     'rest-not-stored': {
@@ -152,20 +152,20 @@ FAULTS = {
     'fixed-model': {
         'description': 'a fixed rule that ignores the measured costs: an extra glyph needs 664 ticks (about 20 '
                        'lines, the cf50a23 threshold) whatever the glyph and the rest cost',
-        # need = glyph + rest + MARGIN (adds r0,r0,r2; adds r0,#0x40) -> movs r0,#0xa6; lsls r0,r0,#2
-        'edits': [(0x01FF88C6, B('80184030'), B('a6208000'))],
+        # need = glyph + rest + MARGIN (adds r1,r1,r2; adds r1,#0x40) -> movs r1,#0xa6; lsls r1,r1,#2
+        'edits': [(0x01FF8900, B('89184031'), B('a6218900'))],
         'checker': {'FIXED_NEED': 664},
         'gates': {'scenes': 'would have fitted'}},
     'tail-ignored': {
         'description': 'the decision leaves out the rest of the pass (predicts only the glyph)',
-        # adds r0,r0,r2 (glyph + rest) -> nop (glyph)
-        'edits': [nop(0x01FF88C6, '8018')],
+        # adds r1,r1,r2 (glyph + rest) -> nop (glyph)
+        'edits': [nop(0x01FF8900, '8918')],
         'checker': {'IGNORE_REST': True},
         'gates': {'scenes': 'dropped only because', 'natural-dialogue': 'dropped only because'}},
     'glyph-ignored': {
         'description': 'the decision leaves out the glyph cost (predicts only the rest of the pass)',
-        # adds r0,r0,r2 (glyph + rest) -> movs r0,r2 (rest)
-        'edits': [(0x01FF88C6, B('8018'), B('1000'))],
+        # adds r1,r1,r2 (glyph + rest) -> movs r1,r2 (rest)
+        'edits': [(0x01FF8900, B('8918'), B('1100'))],
         'checker': {'IGNORE_GLYPH': True},
         'gates': {'scenes': 'dropped only because', 'natural-dialogue': 'dropped only because'}},
     # The floor's code path is proven by the model check (user decision 2026-10-08): no gate
@@ -175,13 +175,13 @@ FAULTS = {
     'short-history-unguarded': {
         'description': 'the short-history branch forces the rest to 0 instead of the floor 7 (code path of the '
                        'floor added after the Route 1 promoter drop of 2026-10-07)',
-        # compiled floor: r2 = rest; if rest <= 232 ticks (7 lines): r2 = 232 (movs r2,#232 -> movs r2,#0); with 3 or more rests r2 = rest
-        'edits': [(0x01FF88B0, B('e822'), B('0022'))],
+        # compiled floor: rest; if rest <= 232 ticks (7 lines): the floor 232 (movs r1,#232 -> movs r1,#0); with 3 or more rests the rest
+        'edits': [(0x01FF88D6, B('e821'), B('0021'))],
         'gates': {'scenes': 'drew on after a frame stop'}},
     'no-catch-up': {
         'description': 'pass_end never catches up (a late pass needs 255 VBlanks): the hack\'s half rate in 30 fps maps',
         # cmp r2,#2 (VBlanks since the previous pass end) -> cmp r2,#255
-        'edits': [(0x01FF8BA6, B('022a'), B('ff2a'))],
+        'edits': [(0x01FF8BD2, B('022a'), B('ff2a'))],
         'checker': {'NO_CATCH_UP': True},
         'gates': {'field-rate': 'frames per glyph'}},
     # D-2175: the field-rate gate bounds what pass_end costs without text (its reading to its return, in
@@ -192,21 +192,21 @@ FAULTS = {
         'description': 'pass_end\'s catch-up walks 255 printer slots instead of 8 in every late pass that fits, '
                        'with or without text',
         # cmp r5,#8 (the printer slot loop) -> cmp r5,#255
-        'edits': [(0x01FF8C46, B('082d'), B('ff2d'))],
+        'edits': [(0x01FF8C72, B('082d'), B('ff2d'))],
         'gates': {'field-rate': 'idle: pass_end took'}},
     # Too conservative: every decision needs more time than the margin covers (the margin's
-    # immediate adds r0,#0x40 raised: +133 ticks, about 4 display lines, and +191, the
+    # immediate adds r1,#0x40 raised: +133 ticks, about 4 display lines, and +191, the
     # largest one Thumb instruction encodes); the gates' model is set to match, so only the
     # 'would have fitted' rule can catch them.
     'too-conservative-24': {
         'description': 'needs 4 more lines (133 ticks) for an extra glyph',
-        'edits': [(0x01FF88C8, B('4030'), B('c530'))],
+        'edits': [(0x01FF8902, B('4031'), B('c531'))],
         'checker': {'MARGIN': 197},
         'gates': {'scenes': 'would have fitted', 'natural-dialogue': 'would have fitted'}},
     'too-conservative-27': {
         'description': 'needs 191 more ticks (about 5.7 lines) for an extra glyph: the largest margin one Thumb '
                        'instruction encodes',
-        'edits': [(0x01FF88C8, B('4030'), B('ff30'))],
+        'edits': [(0x01FF8902, B('4031'), B('ff31'))],
         'checker': {'MARGIN': 255},
         'gates': {'scenes': 'would have fitted', 'natural-dialogue': 'would have fitted'}},
 }

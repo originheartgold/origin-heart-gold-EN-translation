@@ -14,16 +14,16 @@
 
 .definelabel frame_end,         0x01FF8620
 .definelabel print_task,        0x01FF874C
-.definelabel load_rows,         0x01FF89E0
-.definelabel load_choice,       0x01FF8A10
-.definelabel load_label,        0x01FF8A54
-.definelabel commit_speed,      0x01FF8A7C
-.definelabel exit_free,         0x01FF8AA8
-.definelabel draw_label,        0x01FF8AE4
-.definelabel setup_sprites,     0x01FF8B08
-.definelabel pass_end,          0x01FF8B5C
-.definelabel call_print,        0x01FF8E04
-.definelabel text_speed_state,  0x01FF8F68
+.definelabel load_rows,         0x01FF8A0C
+.definelabel load_choice,       0x01FF8A3C
+.definelabel load_label,        0x01FF8A80
+.definelabel commit_speed,      0x01FF8AA8
+.definelabel exit_free,         0x01FF8AD4
+.definelabel draw_label,        0x01FF8B10
+.definelabel setup_sprites,     0x01FF8B34
+.definelabel pass_end,          0x01FF8B88
+.definelabel call_print,        0x01FF8E2C
+.definelabel text_speed_state,  0x01FF8F88
 
 THUMB equ 1                     ; bit 0 of a code pointer: Thumb
 

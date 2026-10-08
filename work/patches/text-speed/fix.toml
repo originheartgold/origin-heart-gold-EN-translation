@@ -21,7 +21,7 @@ Old: six Options rows; one printer speed; at 30 fps one letter per two frames; c
 auto-advance.
 New: native Thumb code (native.c, compiled by clang into the reviewed payload.json, sha256 pinned in
 text_speed_patch.py) is appended to the ARM9 ITCM autoload block by the armips source (.incbin; 0x01FF8620-
-0x01FF8FA0; the SDK's ITCM arena start at 0x020D1A28 moves past it). Options gets a seventh row TEXT SPEED with NORMAL / FAST (overlay 50
+0x01FF8FC0; the SDK's ITCM arena start at 0x020D1A28 moves past it). Options gets a seventh row TEXT SPEED with NORMAL / FAST (overlay 50
 grows by 284 bytes for the new row tables; 40 field offsets, row counts, touch boxes, button positions and
 six calls are rewritten). NORMAL is the hack's printer; FAST prints up to three letters per frame when the
 frame has room (frame-bounded, D-1601). The game loop's last call before its VBlank wait (0x02000DE0) goes
@@ -57,7 +57,7 @@ id = "text-speed-itcm-arena"
 file = "arm9"
 offset = "0xD1A28"
 expect = "8620 01FF"
-notes = "SDK arena bounds table: the ITCM arena starts after the payload (0x01FF8620 -> 0x01FF8FA0)."
+notes = "SDK arena bounds table: the ITCM arena starts after the payload (0x01FF8620 -> 0x01FF8FC0)."
 
 [[code]]
 id = "text-speed-print-task"
@@ -124,4 +124,4 @@ notes = "The seventh row's tables (choices per row, label offsets, touch boxes, 
 [[grow]]
 file = "itcm"
 max = 6624
-notes = "The native payload (2428 bytes) and its 32-byte alignment, appended to the ITCM autoload block: 0x620 -> 0xFA0 bytes. The block may end at 0x01FFA000 at most."
+notes = "The native payload (2460 bytes) and its 32-byte alignment, appended to the ITCM autoload block: 0x620 -> 0xFC0 bytes. The block may end at 0x01FFA000 at most."

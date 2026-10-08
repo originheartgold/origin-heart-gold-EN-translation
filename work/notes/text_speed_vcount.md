@@ -124,12 +124,14 @@ new scene's loop may be heavier; a printer waiting for a button still runs its t
 and keeps the history. Neither VCOUNT nor the VBlank counter is ARM9 code, so neither
 has a reviewed dependency range.
 
-The prediction uses the **upper** median of the stored rests (D-2277, 2026-10-09; the glyph
-cost stays the lower median). In busy overworld scenes the game's own work after the batch
-varies from frame to frame: on Route 1 the anchored time-left estimate was exact (0-1 ticks
-off), but the lower-median rest ran 28 ticks short on average and 80 at worst, which caused
-the one real self-caused FAST frame drop of the D-2276 run (diagnosis: a wrapper around
-`gate_common.judge_message` dumping every FAST task's decisions and timing).
+A batch takes its cost estimates once, at its first decision (D-2279, 2026-10-09; supersedes
+D-2277). `costs()` runs two medians over the history, about 30 ticks; computed at every decision, a
+batch that stopped on time paid it once more after its last glyph, after the reading that
+predicted the pass but before the batch end that starts the rest sample, so no measurement held
+it. On Route 1 and the promoter scene the true rest after a time stop ran about 30 ticks over the
+prediction (median), and the margin, sized for spikes, was half used up (the self-caused drops of
+the D-2276 runs; found with a wrapper around `gate_common.judge_message` that dumps every FAST
+task's decisions and timing). Glyph costs measured during a batch count from the next batch.
 
 ### State and RAM
 

@@ -235,8 +235,8 @@ class Faults(unittest.TestCase):
 
     def test_short_history_floor_is_proven_by_the_model_check(self):
         spec = fault_fixture.FAULTS['short-history-unguarded']
-        # movs r2,#232 (7 lines of ticks) -> movs r2,#0: the short-history branch forces the rest to 0
-        self.assertEqual(spec['edits'], [(0x01FF88B0, bytes.fromhex('e822'), bytes.fromhex('0022'))])
+        # movs r1,#232 (7 lines of ticks) -> movs r1,#0: the short-history branch forces the rest to 0
+        self.assertEqual(spec['edits'], [(0x01FF88D6, bytes.fromhex('e821'), bytes.fromhex('0021'))])
         self.assertNotIn('checker', spec)       # the gates keep the real floor in their model
         self.assertEqual(spec['gates'], {'scenes': 'drew on after a frame stop'})
 

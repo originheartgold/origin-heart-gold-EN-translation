@@ -12,8 +12,8 @@ day, when its armips source replaced text_speed_patch.apply(): arm9 (with the gr
 was added later from a build equal to its code_patches.json original (same note); bulbasaur-reflection-boundary
 on 2026-10-08 (D-2270): its overlay1 is the Chinese overlay 1 with the one byte 0x1191B changed 0xDD -> 0xDB,
 checked independently of armips. text-speed's arm9, overlay50 and overlay92 (and "all") were re-pinned on
-2026-10-08 for the 2416-byte tick-timer payload (D-2271): the payload moves the symbols those overlays call; arm9 and
-overlay92 again on 2026-10-09 for the 2428-byte upper-median payload (D-2277: call_print moved by 4)."""
+2026-10-08 for the 2416-byte tick-timer payload (D-2271): the payload moves the symbols those overlays call; all three
+again on 2026-10-09 for the 2460-byte payload that takes its estimates once per batch (D-2279)."""
 import hashlib
 import os
 import re
@@ -75,21 +75,21 @@ GOLDEN = {
         "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
     },
     "text-speed": {
-        "arm9": "781738084d77467331ada1da45a8d39a3108fa47",
-        "overlay50": "c6ac52693077547c08747154fff88c16b90ea2b4",
-        "overlay92": "c45126239d255791fa1575f9fb878ffbc4cace68",
+        "arm9": "5a4efb4737ca6f892ee0930b2ee113f4f568bfd1",
+        "overlay50": "1fd493386aac113cafab10e6872e85b502fe9dbc",
+        "overlay92": "1adb1a13649442f6995453eb0034214aaf4de515",
         "y9": "25d4a33a740ce2bb960ed27a8afa1a0d3b56208f"
     },
     "all": {
-        "arm9": "849313398b69a640676efdee4699d7d2e7e9b882",
+        "arm9": "a4191f913bbd1e4fa0939cfb9731e112ec13e53e",
         "overlay1": "e47febed127e898212e32db2d91b577e7ff6106c",
         "overlay16": "87cd982681b4164781e92a68994d6190c54d7a35",
         "overlay17": "5015627c82275c7836897b67dfec73c662015635",
         "overlay44": "bb8393e2d4c2cd05a094e984597a0de6ce0bd841",
         "overlay49": "dc255061037a45f36d47c7698418f70874c7a035",
-        "overlay50": "c6ac52693077547c08747154fff88c16b90ea2b4",
+        "overlay50": "1fd493386aac113cafab10e6872e85b502fe9dbc",
         "overlay58": "8fb5f17c824265a0e8da07803410d5d4999b84a4",
-        "overlay92": "c45126239d255791fa1575f9fb878ffbc4cace68",
+        "overlay92": "1adb1a13649442f6995453eb0034214aaf4de515",
         "overlay114": "2ab9890fab31a6b5fa4e432652ffb1a5b5d40a3c",
         "y9": "3483751df97682d807071808d46d411fd316a428"
     }
@@ -637,10 +637,10 @@ class RealFixes(unittest.TestCase):
         code, cn = rom.loadArm9(), self.cn.loadArm9()
         blob = bytes.fromhex(speed.load_payload()["code"])
         itcm = self.hc.RomView(rom).itcm_section(code)
-        self.assertEqual((itcm.ramAddress, len(itcm.data), itcm.bssSize), (0x01FF8000, 0xFA0, 0))
+        self.assertEqual((itcm.ramAddress, len(itcm.data), itcm.bssSize), (0x01FF8000, 0xFC0, 0))
         self.assertEqual(bytes(itcm.data[:0x620]), bytes(cn.sections[1].data))
         self.assertEqual(bytes(itcm.data[0x620:0x620 + len(blob)]), blob)
-        self.assertEqual(bytes(itcm.data[0x620 + len(blob):]), bytes(0xFA0 - 0x620 - len(blob)))
+        self.assertEqual(bytes(itcm.data[0x620 + len(blob):]), bytes(0xFC0 - 0x620 - len(blob)))
         self.assertEqual(bytes(code.sections[2].data), bytes(cn.sections[2].data))       # DTCM unchanged
         new, old = code.sections[0].data, cn.sections[0].data
         own = [(r[1], r[2]) for r in F.footprint(self.fixes["text-speed"]) if r[0] == "arm9"]
@@ -670,7 +670,7 @@ class RealFixes(unittest.TestCase):
         self.assertEqual(view.table_ram_size(58), 0x818)
         self.assertEqual(rep["grown"], {"overlay58": {"from": 0x7E0, "to": 0x818},
                                         "overlay50": {"from": 0x1600, "to": 0x171C},
-                                        "itcm": {"from": 0x620, "to": 0xFA0}})
+                                        "itcm": {"from": 0x620, "to": 0xFC0}})
         # a y9 ramSize that does not follow the grown overlay is caught
         t = bytearray(rom.arm9OverlayTable)
         row = next(r for r in range(len(t) // 32) if struct.unpack_from("<I", t, r * 32)[0] == 58)

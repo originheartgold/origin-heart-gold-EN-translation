@@ -2071,7 +2071,7 @@ auto-advance.
 
 New: native Thumb code (native.c, compiled by clang into the reviewed payload.json, sha256 pinned in
 text_speed_patch.py) is appended to the ARM9 ITCM autoload block by the armips source (.incbin; 0x01FF8620-
-0x01FF8FA0; the SDK's ITCM arena start at 0x020D1A28 moves past it). Options gets a seventh row TEXT SPEED with NORMAL / FAST (overlay 50
+0x01FF8FC0; the SDK's ITCM arena start at 0x020D1A28 moves past it). Options gets a seventh row TEXT SPEED with NORMAL / FAST (overlay 50
 grows by 284 bytes for the new row tables; 40 field offsets, row counts, touch boxes, button positions and
 six calls are rewritten). NORMAL is the hack's printer; FAST prints up to three letters per frame when the
 frame has room (frame-bounded, D-1601). The game loop's last call before its VBlank wait (0x02000DE0) goes
@@ -2131,16 +2131,16 @@ writing, text_speed_patch.verify checks the runtime contract again.
 
 .definelabel frame_end,         0x01FF8620
 .definelabel print_task,        0x01FF874C
-.definelabel load_rows,         0x01FF89E0
-.definelabel load_choice,       0x01FF8A10
-.definelabel load_label,        0x01FF8A54
-.definelabel commit_speed,      0x01FF8A7C
-.definelabel exit_free,         0x01FF8AA8
-.definelabel draw_label,        0x01FF8AE4
-.definelabel setup_sprites,     0x01FF8B08
-.definelabel pass_end,          0x01FF8B5C
-.definelabel call_print,        0x01FF8E04
-.definelabel text_speed_state,  0x01FF8F68
+.definelabel load_rows,         0x01FF8A0C
+.definelabel load_choice,       0x01FF8A3C
+.definelabel load_label,        0x01FF8A80
+.definelabel commit_speed,      0x01FF8AA8
+.definelabel exit_free,         0x01FF8AD4
+.definelabel draw_label,        0x01FF8B10
+.definelabel setup_sprites,     0x01FF8B34
+.definelabel pass_end,          0x01FF8B88
+.definelabel call_print,        0x01FF8E2C
+.definelabel text_speed_state,  0x01FF8F88
 
 THUMB equ 1                     ; bit 0 of a code pointer: Thumb
 
