@@ -8,6 +8,12 @@
 ;
 ; File offset = address - headersize(): `.open "arm9.bin", 0x02000000` makes headersize() the load
 ; address of the opened file.
+;
+; Synthetic assembly: `asmpatch.py synthetic` (check.py, CI) assembles every source without the ROM, over
+; zero-filled stand-ins of the right sizes (work/patches/sizes.toml), and passes `-definelabel GUARDS_OFF 1`
+; so these guards check nothing there: it catches syntax errors and .area overflows, not wrong bytes. Nothing
+; else may define GUARDS_OFF (fixes.py check refuses the name in every source and include, and asmpatch.py
+; refuses it in a real build); the build never passes it, so its guards are always on.
 
 ; Stop the build: the bytes at `addr` are `found` (hex text), not `want` (hex text).
 .macro guard_failed, addr, want, found
@@ -21,7 +27,7 @@
 
 ; The halfword at the current address + off must be `value`.
 .macro expect16_at, off, value
-  .if readu16(outputname(), org() + (off) - headersize()) != (value)
+  .if !defined(GUARDS_OFF) && readu16(outputname(), org() + (off) - headersize()) != (value)
     guard_failed org() + (off), tohex(value, 4), tohex(readu16(outputname(), org() + (off) - headersize()), 4)
   .endif
 .endmacro
@@ -33,14 +39,14 @@
 
 ; The word at the current address + off must be `value` (a pointer, or two halfwords).
 .macro expect32_at, off, value
-  .if readu32(outputname(), org() + (off) - headersize()) != (value)
+  .if !defined(GUARDS_OFF) && readu32(outputname(), org() + (off) - headersize()) != (value)
     guard_failed org() + (off), tohex(value, 8), tohex(readu32(outputname(), org() + (off) - headersize()), 8)
   .endif
 .endmacro
 
 ; The word at absolute address `addr` must be `value` (read-only check of nearby data, e.g. a pointer table).
 .macro expect32_abs, addr, value
-  .if readu32(outputname(), (addr) - headersize()) != (value)
+  .if !defined(GUARDS_OFF) && readu32(outputname(), (addr) - headersize()) != (value)
     guard_failed addr, tohex(value, 8), tohex(readu32(outputname(), (addr) - headersize()), 8)
   .endif
 .endmacro
@@ -53,7 +59,7 @@
 ; The opened file must end at the current address: data appended here grows the file (and its overlay)
 ; from its original end, not from a size some other edit left behind.
 .macro expect_end
-  .if filesize(outputname()) != org() - headersize()
+  .if !defined(GUARDS_OFF) && filesize(outputname()) != org() - headersize()
     end_guard_failed tohex(filesize(outputname()) + headersize(), 8)
   .endif
 .endmacro

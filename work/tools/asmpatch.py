@@ -38,11 +38,21 @@ The build:
 armips is not bundled. It is found as --armips PATH (build.py), else the ARMIPS environment variable, else
 `armips` on PATH, and must report the pinned version (PINNED_VERSION). Build steps: work/notes/toolchain.md.
 
+Synthetic assembly (`synthetic`, check.py, CI): every armips source assembled without the ROM, over
+zero-filled stand-ins of the binaries (sizes from work/patches/sizes.toml, the fix.toml `expect` bytes put in
+their regions) with guards.inc's guards off (`-definelabel GUARDS_OFF 1`). It catches what armips alone
+finds (syntax, unknown names, .area overflows, a .string outside the table) and the build's checks that do
+not need the real bytes (a byte written twice, writes outside the declared regions, growth, the strings read
+back); not wrong bytes. The stand-ins are SyntheticImages: assemble() turns the guards off only for those, and
+refuses any source or include that names GUARDS_OFF, so a real build always assembles with its guards.
+
     python3 work/tools/asmpatch.py [--rom ROM] [--armips PATH] check [--only IDS] [--without IDS]
                                          # assemble the selected fixes against the Chinese ROM (nothing written)
     python3 work/tools/asmpatch.py [--rom ROM] [--armips PATH] listing [--write | --check] [IDS...]
                                          # the disassembly snapshots work/patches/<id>/<id>.listing
                                          # (asmlisting.py): print, write, or check them (default: every fix)
+    python3 work/tools/asmpatch.py [--armips PATH] synthetic
+                                         # assemble every armips fix without the ROM, guards off (above)
     python3 work/tools/asmpatch.py tbl [--out work/patches/include/charmap.tbl]
                                          # the armips table file for `.string` (from charmap_en.tsv)
 """
@@ -75,6 +85,7 @@ CHARMAPS = [str(CHARMAP_TSV), str(TOOLS / "charmaps" / "charmap_zh_xzonn_gen4.ts
 ENV_VAR = "ARMIPS"
 TIMEOUT = 120
 END = 0xFFFF
+GUARDS_OFF_ARGS = ("-definelabel", fixreg.GUARDS_OFF, "1")      # only for SyntheticImages (synthetic())
 
 
 class AsmError(Exception):
@@ -418,14 +429,41 @@ def asm_fixes(fixes) -> list:
     return fixreg.code_entries_fixes(fixes)
 
 
+class SyntheticImages(dict):
+    """Zero-filled stand-ins for the binaries (synthetic_inputs): the only images assemble() assembles with
+    the guards off. apply() never sees them: it stages the ROM's own images."""
+
+
+def guards_live_problems(fixes, include_dir=INCLUDE_DIR) -> list:
+    """GUARDS_OFF named in a fix's source, an include in its folder or a shared include (other than guards.inc's
+    `defined(GUARDS_OFF)`): such a file could switch the guards off in a real build (fixes.guards_off_problems)."""
+    out = []
+    for p in sorted(Path(include_dir).glob("*.inc")):
+        out += fixreg.guards_off_problems(p.read_text(encoding="utf-8").splitlines(), f"include/{p.name}",
+                                          allow_defined=p.name == fixreg.GUARDS_INC)
+    for fx in fixes:
+        src = _asm(fx)
+        for p in [src] + sorted(src.parent.glob("*.inc")):
+            out += fixreg.guards_off_problems(p.read_text(encoding="utf-8").splitlines(), f"{fx['id']}/{p.name}")
+    return out
+
+
 def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE_DIR, layout=None, listings=None):
     """Assemble the armips fixes among `fixes` (build order) over `binaries` {"arm9": bytes, "overlayNN":
     bytes}. bases: {"overlayNN": load address} (string pointers and the report's RAM column); layout:
     {"overlayNN": (ram, ramSize, bssSize)} of every overlay in the ROM, needed when a fix grows one;
     listings: a dict that receives each fix's armips -temp listing text by fix id (asmlisting.py).
+    binaries: SyntheticImages (synthetic_inputs) are assembled with the guards off and without the SHA-1
+    regions' checks; any other mapping holds the real images and is assembled with the guards on.
     Returns (new binaries, code rows, string rows); raises AsmError listing every problem."""
     todo = asm_fixes(fixes)
     bases = bases or {}
+    synthetic = isinstance(binaries, SyntheticImages)
+    guards_args = list(GUARDS_OFF_ARGS) if synthetic else []
+    live = guards_live_problems(todo, include_dir)
+    if live:
+        raise AsmError("refused: a source or include names GUARDS_OFF, which would switch the guards off:\n  "
+                       + "\n  ".join(live))
     problems = []
     regs_of = {}
     natives = {}
@@ -439,7 +477,7 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
         for r in regs:
             if r.file not in binaries:
                 problems.append(f"fix {fx['id']}: region {r.id}: {r.file} was not staged")
-            elif r.sha1 is not None:
+            elif r.sha1 is not None and not synthetic:
                 got = hashlib.sha1(binaries[r.file][r.start:r.end]).hexdigest()
                 if r.end > len(binaries[r.file]) or got != r.sha1:
                     problems.append(f"fix {fx['id']}: region {r.id}: {r.file}+{r.start:#x}..{r.end:#x} has SHA-1 "
@@ -470,8 +508,8 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
             src = _asm(fx)
             listing = stage / "listing.txt"
             try:
-                r = subprocess.run([armips, "-erroronwarning", "-temp", str(listing), str(src)], cwd=romdir,
-                                   capture_output=True, text=True, timeout=TIMEOUT)
+                r = subprocess.run([armips, "-erroronwarning", *guards_args, "-temp", str(listing), str(src)],
+                                   cwd=romdir, capture_output=True, text=True, timeout=TIMEOUT)
             except subprocess.TimeoutExpired:
                 raise AsmError(f"fix {fx['id']}: armips did not finish within {TIMEOUT} s") from None
             except OSError as ex:
@@ -524,7 +562,7 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
                                     f"every region the fix declares in fix.toml")
                 new[k] = data
             for r_ in regs:
-                if r_.required and not touched[r_.id]:
+                if r_.required and not touched[r_.id] and not (synthetic and r_.sha1 is not None):
                     problems.append(f"fix {fx['id']}: region {r_.id} declared in fix.toml, but the asm left it "
                                     f"unchanged")
             if not problems and fx.get("string"):
@@ -630,6 +668,48 @@ def apply(rom, fixes, armips: str, dry_run=False) -> dict:
             "armips": {"path": armips, "version": armips_version(armips)}}
 
 
+def synthetic_inputs(fixes, root=fixreg.PATCHES_DIR) -> tuple:
+    """(SyntheticImages, bases, layout) for assemble() without the ROM: every file the armips fixes among
+    `fixes` stage (staged_keys), zero-filled to its size in sizes.toml, with each region's fix.toml `expect`
+    bytes (the encoded zh of a string slot, a pointer's old target) in place; the RAM bases from overlays.toml;
+    the layout of the staged overlays and ITCM only (the build checks growth against every overlay)."""
+    sizes, bases = fixreg.load_sizes(root), fixreg.load_overlays(root)
+    keys = staged_keys(fixes)
+    missing = [k for k in keys if k not in sizes]
+    if missing:
+        raise AsmError(f"{', '.join(missing)}: no size in work/patches/{fixreg.SIZES_TOML} (regenerate it with the "
+                       f"ROM: python3 work/tools/fixes.py overlays)")
+    images = {k: bytearray(sizes[k]["size"]) for k in keys}
+    for fx in asm_fixes(fixes):
+        for r in regions(fx, bases):
+            if r.expect is not None and r.file in images:
+                if r.end > len(images[r.file]):
+                    raise AsmError(f"fix {fx['id']}: region {r.id} ends at {r.file}+{r.end:#x}, past its size in "
+                                   f"{fixreg.SIZES_TOML} ({len(images[r.file]):#x})")
+                images[r.file][r.start:r.end] = r.expect
+    layout = {k: (bases.get(k), sizes[k]["size"], sizes[k]["bss"]) for k in keys if k.startswith("overlay")}
+    if "itcm" in keys:
+        layout["itcm"] = (fixreg.ITCM_BASE, sizes["itcm"]["size"], sizes["itcm"]["bss"])
+    images = SyntheticImages({k: bytes(v) for k, v in images.items()})
+    return images, {k: bases[k] for k in keys if k in bases}, layout
+
+
+def synthetic(armips, all_fixes=None, root=fixreg.PATCHES_DIR) -> str:
+    """Assemble every armips fix without the ROM (synthetic_inputs, guards off): the enabled ones together in
+    build order, as the build does, then every disabled one alone. Raises AsmError; returns a summary."""
+    all_fixes = fixreg.load_all(root) if all_fixes is None else all_fixes
+    enabled = asm_fixes(fixreg.select(all_fixes))
+    disabled = [fx for fx in asm_fixes(all_fixes) if fx not in enabled]
+    n_regions = n_strings = 0
+    for run in ([enabled] if enabled else []) + [[fx] for fx in disabled]:
+        images, bases, layout = synthetic_inputs(run, root)
+        _new, rows, srows = assemble(run, images, armips, bases, layout=layout)
+        n_regions, n_strings = n_regions + len(rows), n_strings + len(srows)
+    return (f"{len(enabled) + len(disabled)} armips fixes assembled without the ROM ({len(enabled)} enabled "
+            f"together, {len(disabled)} disabled alone), guards off: {n_regions} code/data regions, "
+            f"{n_strings} strings")
+
+
 def verify(rom, report) -> str:
     """Re-read a written ROM against apply()'s report (build.py stage 5): every changed file has the SHA-1
     apply() produced, every overlay that grew has its new size and the same y9 ramSize, every string is
@@ -726,6 +806,8 @@ def main(argv=None):
     g = p.add_mutually_exclusive_group()
     g.add_argument("--write", action="store_true", help="write work/patches/<id>/<id>.listing")
     g.add_argument("--check", action="store_true", help="exit 1 when a committed snapshot is stale")
+    sub.add_parser("synthetic", help="assemble every armips fix without the ROM, over zero-filled stand-ins, "
+                                     "guards off (syntax, .area overflows, regions; not the bytes)")
     p = sub.add_parser("tbl", help="write the armips table file (charmap.tbl) from charmap_en.tsv")
     p.add_argument("--out", default=str(CHARMAP_TBL))
     a = ap.parse_args(argv)
@@ -739,6 +821,9 @@ def main(argv=None):
         check_armips(armips)
         if a.cmd == "listing":
             return listing_cli(a, armips)
+        if a.cmd == "synthetic":
+            print("ok: " + synthetic(armips))
+            return 0
         act = fixreg.active_fixes(a.only, a.without)
         rom = m.load_rom(a.rom)
         fixreg.check_overlay_bases(rom)

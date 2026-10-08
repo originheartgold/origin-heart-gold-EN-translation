@@ -482,6 +482,18 @@ reloc_max_units = 15
             F.load_overlays(self.root)
         self.assertIn("overlays.toml", str(cm.exception))
 
+    def test_sizes(self):
+        self.assertEqual(F.load_sizes(self.root), {})
+        (self.root / "sizes.toml").write_text("[arm9]\nsize = 0x40\n[itcm]\nsize = 0x20\nbss = 0\n"
+                                              "[overlay58]\nsize = 0x7E0\nbss = 0\n")
+        self.assertEqual(F.load_sizes(self.root), {"arm9": {"size": 0x40}, "itcm": {"size": 0x20, "bss": 0},
+                                                   "overlay58": {"size": 0x7E0, "bss": 0}})
+        for bad in ("[arm9]\nsize = 1\nbss = 0\n", "[overlay58]\nsize = 1\n", "[a/0/2/7]\nsize = 1\n",
+                    "[overlay58]\nsize = -1\nbss = 0\n", "[itcm]\nsize = '1'\nbss = 0\n"):
+            (self.root / "sizes.toml").write_text(bad)
+            with self.assertRaises(F.FixError, msg=bad):
+                F.load_sizes(self.root)
+
     # -- order and selection -------------------------------------------------------------
     def _chain(self):
         self.write("zeta", fix_toml("zeta", entries=code_entry("z-1")))
@@ -744,6 +756,25 @@ class AsmLint(unittest.TestCase):
             self.assertIn("t/t.asm: .include 'missing.inc' not found", probs)
         self.assertEqual(F.lint_includes(), [])            # guards.inc, charmap.inc: definitions only
 
+    # -- guards off ---------------------------------------------------------------------------------
+    def test_guards_off_name_is_reserved(self):
+        for line in (".definelabel GUARDS_OFF, 1\n", "guards_off equ 1\n", ".if defined(GUARDS_OFF)\n.endif\n"):
+            probs = self.lint(line + self.GOOD)
+            self.assertProblem(probs, "t/t.asm:6: GUARDS_OFF is reserved")
+        self.assertEqual(self.lint("; GUARDS_OFF in a comment is fine\n" + self.GOOD), [])
+        self.assertEqual(self.lint(".definelabel GUARDS_OFF_X, 1\n" + self.GOOD), [])     # another name
+        # only guards.inc may test it, and only with defined()
+        lines = [".macro m", "  .if !defined(GUARDS_OFF) && 1", "  .endif", ".endmacro"]
+        self.assertEqual(F.guards_off_problems(lines, "include/guards.inc", allow_defined=True), [])
+        self.assertTrue(F.guards_off_problems(lines, "include/other.inc"))
+        self.assertTrue(F.guards_off_problems(["GUARDS_OFF equ 1"], "include/guards.inc", allow_defined=True))
+        with tempfile.TemporaryDirectory() as td:
+            (Path(td) / F.INCLUDE_DIR).mkdir()
+            (Path(td) / F.INCLUDE_DIR / "other.inc").write_text(".definelabel GUARDS_OFF, 1\n")
+            self.assertTrue(any("include/other.inc:1: GUARDS_OFF is reserved" in p for p in F.lint_includes(td)))
+        guards = (F.PATCHES_DIR / F.INCLUDE_DIR / F.GUARDS_INC).read_text(encoding="utf-8")
+        self.assertEqual(guards.count("!defined(GUARDS_OFF) && "), 4)       # every guard macro's condition
+
     def test_comments_and_quotes(self):
         self.assertEqual(F._strip_comment('.string "a;b\\"c;d" ; x'), '.string "a;b\\"c;d" ')
         self.assertEqual(F._strip_comment("mov r0, #1 // x"), "mov r0, #1 ")
@@ -803,6 +834,25 @@ class RealRegistry(unittest.TestCase):
         bases = F.load_overlays()
         self.assertEqual(bases["overlay58"], 0x021E83C0)
         self.assertEqual(bases["overlay14"], 0x022007E0)
+
+    def test_sizes_match_rom(self):
+        rom_cn = F.ROM_CN
+        if not rom_cn.exists():
+            self.skipTest("Chinese ROM missing")
+        import msgtool as m
+        rom = m.load_rom(rom_cn)
+        sizes = F.load_sizes()
+        self.assertEqual(F.rom_sizes(rom, sizes), sizes)        # also part of check_overlay_bases (above)
+        files = {e["file"] for fx in self.fixes if fx.get("asm") for t in ("code", "string", "grow")
+                 for e in fx.get(t, [])}
+        self.assertEqual(set(sizes), files, "regenerate: python3 work/tools/fixes.py overlays")
+        with tempfile.TemporaryDirectory() as td:
+            shutil.copy(F.PATCHES_DIR / "overlays.toml", td)
+            (Path(td) / "sizes.toml").write_text("[overlay58]\nsize = 0x7E4\nbss = 0\n")
+            with self.assertRaises(F.FixError) as cm:
+                F.check_overlay_bases(rom, td)
+            self.assertIn("overlay58: sizes.toml {'size': 2020, 'bss': 0}, ROM {'size': 2016, 'bss': 0}",
+                          str(cm.exception))
 
     def test_default_selection(self):
         act = F.select(self.fixes)
