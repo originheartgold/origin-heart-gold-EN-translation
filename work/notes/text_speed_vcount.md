@@ -414,6 +414,16 @@ message, not by time.
 Gate `field-rate` (`field_rate.py`) compares, per scene from one checkpoint, the
 catch-up on and off (off: a hook clears the state's `ended` byte at `pass_end` entry).
 Fault `no-catch-up` (catch-up never runs) must fail it with 'frames per glyph'.
+Without text, the catch-up's cost is bounded directly (D-2175): from pass_end's own
+reading to its return, at most `IDLE_TICKS` (12) ticks of the SDK's tick timer (timer 0,
+33.5 MHz / 64, about 33 per display line) in every idle pass without an interrupt in
+between (the game handles about 350 a frame); measured 1 tick in a
+pass that is not late and up to 7 in a late one (decision, estimate loop, eight empty
+printer slots). It used to require as many idle loop passes with the catch-up on as
+off, which depends on the input phase: in New Bark most passes end at lines 190-202,
+so a few instructions decide whether a frame is lost, and the 1-frame input delay
+turned 342 / 340 passes into 333 / 333. Fault `catch-up-idle-cost` (the estimate loop
+runs 255 times) must fail it with 'idle: pass_end took'.
 
 ## Limits
 

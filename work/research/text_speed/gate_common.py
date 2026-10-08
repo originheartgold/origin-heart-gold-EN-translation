@@ -77,9 +77,27 @@ def in_heap_list_code(pc):
 CLOCK = datetime(2026, 10, 9, 12)
 
 
-def start_game(h):
-    """Pinned clock, cold boot, Continue into the field."""
+# Input phases (D-2175): the timing gates run their whole input script once as written
+# (phase 0) and once with every input one frame later (phase 1), each from its own cold
+# boot. A ROM layout change (e.g. a message bank's offset) can move the game by part of a
+# frame against the fixed input frames, and in 30 fps scenes that decides on which of the
+# two frames of a loop pass an input lands; a verdict must not depend on it, so both
+# phases must pass.
+PHASES = (0, 1)
+
+
+def input_delay(h, phase):
+    """Delay every later input of the gate's script by `phase` frames: call right after
+    set_clock, before the first input after power-on."""
+    if phase not in PHASES:
+        raise ValueError(f'unknown input phase {phase!r}')
+    h.step(phase)
+
+
+def start_game(h, phase=0):
+    """Pinned clock, cold boot (inputs delayed by `phase` frames), Continue into the field."""
     h.set_clock(CLOCK)
+    input_delay(h, phase)
     h.boot_to_menu()
     h.continue_game()
 
@@ -95,6 +113,9 @@ def add_arguments(parser, save=True):
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--fault-payload', type=Path,
                         help='payload.json of a fault_fixture.py ROM (proves a check fails; never release evidence)')
+    parser.add_argument('--phase', type=int, default=0, choices=PHASES,
+                        help='input phase: frames every input is delayed after power-on (D-2175; timing gates '
+                             'are run at every phase by validate_release)')
 
 
 def resolve(parser, args):
@@ -131,7 +152,8 @@ def load_expected_payload(args):
 def identity(args, payload):
     """Report header binding the run to its inputs and expected payload."""
     inputs = {str(p): digest(p) for p in (args.rom, getattr(args, 'save', None)) if p is not None}
-    head = {'inputs': inputs, 'payload_code_sha256': hashlib.sha256(bytes.fromhex(payload['code'])).hexdigest()}
+    head = {'inputs': inputs, 'payload_code_sha256': hashlib.sha256(bytes.fromhex(payload['code'])).hexdigest(),
+            'phase': getattr(args, 'phase', 0)}
     if 'fault' in payload:
         head['fault_fixture'] = payload['fault']
     return head
@@ -282,6 +304,9 @@ VCOUNT = 0x04000006            # DS display line register (I/O)
 VBLANKS = 0x027FFC3C           # SDK VBlank counter (HW_VBLANK_COUNT_BUF), stepped at line 192
 FRAME_END_CALL = 0x02000DE0    # the game loop's 'bl' that the payload redirects to pass_end (frame_end, catch-up)
 FRAME_END_RETURN = 0x02000DE4  # the instruction after it
+TICK_TIMER = 0x04000100        # timer 0 counter: the SDK's OS tick timer (OS_InitTick: prescaler 64, running)
+TICK_TIMER_CONTROL = 0x04000102
+IRQ_VECTOR = 0x027E3FFC        # DTCM + 0x3FFC: the interrupt handler the BIOS calls (the SDK's OS_IrqHandler)
 
 
 class PrinterTrace:
@@ -308,7 +333,11 @@ class PrinterTrace:
 
     Printer catch-up (D-1603): pass_end's own reading after frame_end gives the model's
     (late, catch_up) decision, recorded in catchups as [frame, line, late, catch_up, tasks
-    run]. Tasks that start inside pass_end are catch-up tasks ('catchup': True); they are
+    run, ticks, irqs]: ticks is the time from that reading to pass_end's return in ticks of
+    the SDK's tick timer (timer 0, 33.5 MHz / 64: about 33 ticks per display line; D-2175),
+    the cost of pass_end's own decision and catch-up plus any interrupt handled meanwhile;
+    irqs counts those interrupts when the gate passed irqs (a callable returning a running
+    count of interrupt handler entries), else None. Tasks that start inside pass_end are catch-up tasks ('catchup': True); they are
     allowed only after a catch_up decision, and their pass ends when pass_end returns
     (the gate's own reading there). catchup_overruns counts catch-ups during which the
     VBlank counter moved (the catch-up itself pushed the pass past a VBlank).
@@ -320,11 +349,12 @@ class PrinterTrace:
     tasks: one record per native task for text_speed_checks.task_errors()."""
 
     def __init__(self, h, payload, font=None, probe=None, on_task=None, on_glyph=None, on_destroy=None,
-                 on_original=None, on_render=None):
+                 on_original=None, on_render=None, irqs=None):
         import text_speed_checks as checks
         self._checks = checks
         self.h, self.font, self._probe = h, font, probe
         self._on_render = on_render
+        self._irqs = irqs or (lambda: None)
         self._on_task, self._on_glyph, self._on_destroy, self._on_original = on_task, on_glyph, on_destroy, on_original
         self.task = 0
         self.current = {}
@@ -409,8 +439,8 @@ class PrinterTrace:
                     self.state_errors.append(f'frame {h.frame}: pass_end read VCOUNT without the VBlank counter')
                     return
                 late, catch = self.model.pass_end(vblanks, line)
-                self.catchups.append([h.frame, line, late, catch, 0])
-                self._catching = (catch, h.u32(VBLANKS))
+                self.catchups.append([h.frame, line, late, catch, 0, None, None])
+                self._catching = (catch, h.u32(VBLANKS), h.u16(TICK_TIMER), self._irqs())
                 return
             if where == 'frame_end':
                 if vblanks is None:
@@ -446,8 +476,11 @@ class PrinterTrace:
         """The game loop right after pass_end: close the catch-up tasks' pass."""
         if self._catching is None:
             return
-        catch, vblanks = self._catching
+        catch, vblanks, ticks, irqs = self._catching
         self._catching = None
+        self.catchups[-1][5] = (h.u16(TICK_TIMER) - ticks) & 0xFFFF
+        if irqs is not None:
+            self.catchups[-1][6] = self._irqs() - irqs
         self.model.catch_up_done()
         self._compare('pass_end return')
         ran = [rec for rec in self._open if rec.get('catchup')]

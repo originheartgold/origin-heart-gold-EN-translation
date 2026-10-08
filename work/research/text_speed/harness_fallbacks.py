@@ -43,7 +43,7 @@ def main():
     errors = report['errors']
     try:
         with Harness(a.rom, a.save, out=a.out, verbose=False, rtc=CLOCK) as h:
-            start_game(h)
+            start_game(h, a.phase)
             checkpoint = a.out / 'fresh-candidate.dst'
             h.save_state(checkpoint)
             code = code_bytes(payload)

@@ -59,7 +59,7 @@ import subprocess
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from gate_common import (CLOCK, ROOT, PrinterTrace, add_arguments, attach_probe, digest, identity,  # noqa: E402
+from gate_common import (CLOCK, ROOT, PrinterTrace, add_arguments, attach_probe, digest, identity, input_delay,  # noqa: E402
                          inputs_unchanged, itcm_errors, load_expected_payload, memory_errors, memory_summary,
                          require, resolve)
 import text_speed_checks as checks  # noqa: E402
@@ -127,6 +127,7 @@ def child(args, trainer):
     try:
         with Harness(args.rom, args.save, out=args.out, verbose=False, rtc=CLOCK) as h:
             h.set_clock(datetime(2026, 10, 9, 12))
+            input_delay(h, args.phase)
             h.boot_to_menu()
             h.continue_game()
             start = itcm_errors(h, payload)
@@ -402,6 +403,7 @@ def main():
         command = [sys.executable, '-I', __file__, '--rom', str(args.rom), '--save', str(args.save),
                    '--out', str(out), '--trainer', str(trainer)]
         command += ['--fault-payload', str(args.fault_payload)] if args.fault_payload else []
+        command += ['--phase', str(args.phase)]
         command += ['--no-rng-pin'] if args.no_rng_pin else []
         with (args.out / f'trainer-{trainer}.log').open('w') as log:
             code = subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT).returncode

@@ -27,7 +27,7 @@ import subprocess
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from gate_common import (CLOCK, PrinterTrace, ROOT, add_arguments, attach_probe, digest, identity,  # noqa: E402
+from gate_common import (CLOCK, PrinterTrace, ROOT, add_arguments, attach_probe, digest, identity, input_delay,  # noqa: E402
                          inputs_unchanged, itcm_errors, judge_message, load_expected_payload, memory_errors,
                          memory_summary, require, resolve)
 import text_speed_checks as checks  # noqa: E402
@@ -45,6 +45,7 @@ def child(args):
     try:
         with Harness(args.rom, args.save, out=args.out, verbose=False, rtc=CLOCK) as h:
             h.set_clock(CLOCK)
+            input_delay(h, args.phase)
             h.step(2400)
             h.press('START', after=400)
             for _ in range(2):
@@ -122,7 +123,7 @@ def main():
         for mode, name in NAMES.items():
             out = args.out / name
             command = [sys.executable, '-I', __file__, '--rom', str(args.rom), '--save', str(args.save),
-                       '--out', str(out), '--mode', str(mode)]
+                       '--out', str(out), '--mode', str(mode), '--phase', str(args.phase)]
             command += ['--fault-payload', str(args.fault_payload)] if args.fault_payload else []
             with (args.out / f'{name}.log').open('w') as log:
                 code = subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT).returncode

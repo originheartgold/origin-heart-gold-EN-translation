@@ -8,8 +8,15 @@ more when a VBlank passed during the pass. This gate proves, per field scene:
 
 - rate: NORMAL (stored 0: the hack's own printer task plus the catch-up, D-1604) prints
   at most MAX_FPG frames per glyph (vanilla FAST measured 0.98 in Viridian);
-- no cost without text: idle loop passes over IDLE frames are not fewer than with the
-  catch-up off (same checkpoint);
+- no cost without text (D-2175): in the catch-up-on run's IDLE frames without text, the
+  time from pass_end's own reading to its return (its decision and catch-up loop, with no
+  printer to run) is at most IDLE_TICKS ticks of the SDK's tick timer (timer 0, about 33
+  per display line) in every loop pass in which no interrupt was handled meanwhile (the
+  game takes about 350 interrupts a frame; their handlers' time is not pass_end's); the idle loop passes with the catch-up on and off
+  are reported, not compared: one game pass ends within a fraction of a line of VBlank
+  often enough in 30 fps maps (New Bark: most passes end at lines 190-202) that a few
+  instructions decide whether a frame is lost, and where they fall depends on the input
+  phase (gate_common.PHASES), not on the catch-up's cost;
 - same text: glyph count, glyph positions, page count and the message window's pixels
   of every page equal the catch-up-off run;
 - other queue tasks keep their rate: the print queue is run exactly once per pass in
@@ -38,7 +45,7 @@ import subprocess
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from gate_common import (CLOCK, GLYPH, ROOT, PrinterTrace, add_arguments, attach_probe, digest, identity,  # noqa: E402
+from gate_common import (CLOCK, GLYPH, IRQ_VECTOR, ROOT, TICK_TIMER_CONTROL, input_delay, PrinterTrace, add_arguments, attach_probe, digest, identity,  # noqa: E402
                          inputs_unchanged, itcm_errors, judge_message, load_expected_payload, memory_errors,
                          memory_summary, require, resolve)
 import text_speed_checks as checks  # noqa: E402
@@ -60,6 +67,7 @@ MODE = checks.NORMAL
 MAX_FPG = 1.05        # vanilla US FAST: 0.98 frames per glyph (Viridian, 2026-10-07)
 SLOW_FPG = 1.5        # catch-up off at or above this: a 30 fps scene
 MIN_30FPS = 5
+IDLE_TICKS = 12       # about a third of a display line: the decision without a printer measured 1 (not late) to 7 ticks
 IDLE = 600
 PAGE_GAP = 40
 WINDOW = (8, 148, 232, 187)   # message window text area on the top screen (x0, y0, x1, y1); the arrow is outside
@@ -71,8 +79,9 @@ PRINTER_SLOTS = 0x021D0EFC
 VBLANKS = 0x027FFC3C
 
 
-def setup(h, spec):
+def setup(h, spec, phase=0):
     h.set_clock(CLOCK)
+    input_delay(h, phase)
     h.step(2400)
     h.press('START', after=400)
     for _ in range(2):
@@ -142,16 +151,17 @@ def window(path):
     return Image.open(path).convert('RGB').crop(WINDOW).tobytes()
 
 
-def measure(h, loop, checkpoint, catch_up, glyphs, name, after_load=lambda: None):
+def measure(h, loop, checkpoint, catch_up, glyphs, name, after_load=lambda: None, after_idle=dict):
     """One run from the checkpoint: idle passes, then the message in the original printer.
-    after_load runs after each savestate load (the trace restarts its model from RAM)."""
+    after_load runs after each savestate load (the trace restarts its model from RAM);
+    after_idle() returns more observations of the idle frames."""
     h.load_state(checkpoint)
     after_load()
     loop.reset()
     loop.on = True
     h.step(IDLE)
     idle = {'passes': loop.passes, 'elapsed': dict(loop.elapsed), 'queue_runs': loop.runs,
-            'other_tasks': dict(loop.others)}
+            'other_tasks': dict(loop.others), **after_idle()}
     h.load_state(checkpoint)
     after_load()
     loop.reset()
@@ -177,7 +187,7 @@ def child(args, name):
     state = payload['symbols']['text_speed_state']
     try:
         with Harness(args.rom, args.save, out=args.out, verbose=False, rtc=CLOCK) as h:
-            setup(h, spec)
+            setup(h, spec, args.phase)
             start = itcm_errors(h, payload)
             require(not start, f'ITCM at start: {start}')
             report['location'] = h.location()
@@ -199,10 +209,26 @@ def child(args, name):
             h.on_exec(GLYPH, None)
             h.load_state(checkpoint)
             probe = attach_probe(h)
-            trace = PrinterTrace(h, payload, font=1, probe=probe,
+            irq = h.u32(IRQ_VECTOR)
+            require(0x01FF8000 <= irq < 0x02000000, f'interrupt handler {irq:#x} is not in ITCM')
+            irqs = [0]
+            h.on_exec(irq & ~1, lambda h: irqs.__setitem__(0, irqs[0] + 1), exclusive=True)
+            trace = PrinterTrace(h, payload, font=1, probe=probe, irqs=lambda: irqs[0],
                                  on_glyph=lambda h, ptr, info: glyphs.append((h.frame, h.u16(ptr + 12),
                                                                               h.u16(ptr + 14))))
-            idle_on, text_on = measure(h, loop, checkpoint, True, glyphs, name, after_load=trace.reset)
+            timer = h.u16(TICK_TIMER_CONTROL)
+            require(timer & 0x83 == 0x81, f'tick timer (timer 0) not running at prescaler 64: control {timer:#06x}')
+
+            def pass_end_cost():
+                ends = [c for c in trace.catchups if c[5] is not None]
+                ticks = [c[5] for c in ends if c[6] == 0]
+                late = [c[5] for c in ends if c[6] == 0 and c[2]]
+                require(ticks, 'no pass_end without an interrupt in the idle frames (vacuous cost check)')
+                return {'pass_end_ticks': max(ticks), 'pass_ends': len(ends), 'measured': len(ticks),
+                        'late_measured': len(late), 'late_passes': sum(1 for c in ends if c[2]),
+                        'printer_tasks': sum(c[4] for c in ends)}
+            idle_on, text_on = measure(h, loop, checkpoint, True, glyphs, name, after_load=trace.reset,
+                                       after_idle=pass_end_cost)
             # trace.reset() after the last load: everything recorded belongs to the message.
             record, stops, task_errors = judge_message(trace, MODE, 0, 0)
             errors.extend(f'NORMAL: {e}' for e in task_errors)
@@ -234,9 +260,12 @@ def judge(r):
     if t_on['fpg'] is None or t_on['fpg'] > MAX_FPG:
         errors.append(f"original printer: {t_on['fpg']} frames per glyph, at most {MAX_FPG} (vanilla 0.98; "
                       f"catch-up off {t_off['fpg']})")
-    if on['idle']['passes'] < off['idle']['passes']:
-        errors.append(f"idle: {on['idle']['passes']} loop passes in {IDLE} frames, catch-up off "
-                      f"{off['idle']['passes']}")
+    idle = on['idle']
+    if idle['printer_tasks']:
+        errors.append(f"idle: {idle['printer_tasks']} printer tasks ran in pass_end without text")
+    if idle['pass_end_ticks'] > IDLE_TICKS:
+        errors.append(f"idle: pass_end took {idle['pass_end_ticks']} timer ticks after its reading without a "
+                      f"printer, at most {IDLE_TICKS} (a third of a display line)")
     for k in ('glyphs', 'pages', 'layout'):
         if t_on[k] != t_off[k]:
             errors.append(f'text differs from the catch-up-off run: {k}')
@@ -281,7 +310,7 @@ def main():
     def run(name):
         out = args.out / name
         command = [sys.executable, '-I', __file__, '--rom', str(args.rom), '--save', str(args.save),
-                   '--out', str(out), '--scene', name]
+                   '--out', str(out), '--scene', name, '--phase', str(args.phase)]
         command += ['--fault-payload', str(args.fault_payload)] if args.fault_payload else []
         with (args.out / f'{name}.log').open('w') as log:
             code = subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT).returncode
@@ -306,6 +335,7 @@ def main():
             slow += (r['off']['text']['fpg'] or 0) >= SLOW_FPG
             report['scenes'][name] = {
                 'location': r.get('location'), 'errors': scene_errors, 'catch_up': r['catch_up'],
+                'idle_pass_end_ticks': r['on']['idle']['pass_end_ticks'],
                 **{run: {'idle_passes': r[run]['idle']['passes'], 'idle_elapsed': r[run]['idle']['elapsed'],
                          'fpg': r[run]['text']['fpg'], 'glyphs': r[run]['text']['glyphs'],
                          'text_elapsed': r[run]['text']['elapsed']} for run in ('off', 'on')}}
@@ -314,6 +344,7 @@ def main():
                           '(vacuous rate check)')
         report['table'] = {n: {'fpg': (x['off']['fpg'], x['on']['fpg']),
                                'idle_passes': (x['off']['idle_passes'], x['on']['idle_passes']),
+                               'idle_pass_end_ticks': x['idle_pass_end_ticks'],
                                'catch_up_tasks': x['catch_up']['tasks']} for n, x in report['scenes'].items()}
         if not inputs_unchanged(report):
             errors.append('input modified')

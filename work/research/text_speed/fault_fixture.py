@@ -100,7 +100,7 @@ FAULTS = {
         'description': 'batching no longer stops before control codes',
         'edits': [nop(0x01FF878E, '27d3'), nop(0x01FF8796, '23d3'), nop(0x01FF879C, '20d0')],
         'gates': {'corpus': 'without a frame decision', 'controls': 'without a frame decision',
-                  'battle': 'to_free'}},
+                  'battle': 'to_free', 'callbacks': 'page 2 latency'}},
     'eos-only-no-stop': {
         'description': 'batching no longer stops before 0xFFFF/0xFFFE (end of text, extended controls)',
         'edits': [nop(0x01FF8796, '23d3')],
@@ -185,6 +185,16 @@ FAULTS = {
         'edits': [(0x01FF8A6A, B('022a'), B('ff2a'))],
         'checker': {'NO_CATCH_UP': True},
         'gates': {'field-rate': 'frames per glyph'}},
+    # D-2175: the field-rate gate bounds what pass_end costs without text (its reading to its return, in
+    # timer ticks) instead of comparing idle pass counts with the catch-up off, which depend on the
+    # input phase. This fault proves the bound: pass_end's estimate loop runs 255 times instead of 8
+    # (it reads past the frame state; the maxima it finds also suppress catch-ups).
+    'catch-up-idle-cost': {
+        'description': 'pass_end\'s catch-up estimate loop runs 255 times instead of 8 in every late pass, with '
+                       'or without text',
+        # cmp r5,#8 (the SLOTS loop over glyph[] and rest[]) -> cmp r5,#255
+        'edits': [(0x01FF8A88, B('082d'), B('ff2d'))],
+        'gates': {'field-rate': 'idle: pass_end took'}},
     # Too conservative: every stored glyph cost is larger (both the plain and the line-wrap
     # branch of lines_between: catch-up batches cross line 0), so an extra glyph needs that
     # many more lines once a glyph cost is measured. (The SLOW-era variants biased the rest
