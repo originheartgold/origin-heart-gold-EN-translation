@@ -140,6 +140,10 @@ def summary_lines(r):
     mids = [m for row in gates_of(r).values() if isinstance(row, dict)
             for m in (row.get('mid_update_samples') or [])]
     lines.append(f'mid-update heap samples: {len(mids)}')
+    budget = r.get('overrun_budget')
+    if budget:
+        lines.append(f"FAST unforced overruns: {budget.get('unforced_overruns', 0)} in {budget.get('fast_frames', 0)} "
+                     'FAST printing frames (budget 1 per 1000, D-2276)')
     for key in ('problems', 'warnings'):
         v = r.get(key)
         items = list(v.items()) if isinstance(v, dict) else list(v or [])

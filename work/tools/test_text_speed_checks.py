@@ -402,10 +402,25 @@ class Product(unittest.TestCase):
         self.assertTrue(any("vacuous stop check" in e for e in C.order_errors(untimed)[0]))
         drops = {**good, F: self.rec(21, 2)}
         self.assertTrue(any("dropped frames while printing, NORMAL 1" in e for e in C.order_errors(drops)[0]))
-        pushed = {**good, F: self.rec(21, 1, unforced=1)}
-        self.assertTrue(any("only because" in e for e in C.order_errors(pushed)[0]))
+        pushed = {**good, F: self.rec(21, 1, unforced=1)}               # one per message: a note (D-2276)
+        errors, notes = C.order_errors(pushed)
+        self.assertEqual(errors, [])
+        self.assertTrue(any("only because" in n and "budget" in n for n in notes), notes)
+        twice = {**good, F: self.rec(21, 1, unforced=2)}
+        self.assertTrue(any("dropped only because" in e for e in C.order_errors(twice)[0]))
         self.assertTrue(C.order_errors({O: good[O]})[0])
         self.assertTrue(C.order_errors({**good, O: self.rec(0, slacks=(3, 30))})[0])
+
+    def test_overrun_budget(self):
+        report = {}
+        C.tally_overruns(report, {O: self.rec(54), N: self.rec(54), F: self.rec(600, unforced=1)})
+        C.tally_overruns(report, {O: self.rec(54), N: self.rec(54), F: self.rec(400)})
+        C.tally_overruns(report, {O: self.rec(54)})                      # no FAST run: nothing counted
+        self.assertEqual(report["overrun_budget"], {"fast_frames": 1000, "unforced_overruns": 1})
+        self.assertIsNone(C.overrun_budget_error(report["overrun_budget"]))   # 1 in 1000: within
+        error = C.overrun_budget_error({"fast_frames": 999, "unforced_overruns": 1})
+        self.assertIn("dropped only because", error)
+        self.assertIsNone(C.overrun_budget_error({}))
 
     def test_merge_keeps_slacks_and_the_dearest_glyph(self):
         a, b = self.rec(5, slacks=(3, 9), warm=10), self.rec(4, slacks=(1,), warm=11)

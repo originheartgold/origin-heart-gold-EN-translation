@@ -120,8 +120,13 @@ scenes; `text_speed_checks.order_errors`), per message against the original prin
   extra-glyph cost + 2 lines, the same physical test); a tie without such a frame
   is reported as `capped_ties`;
 - FAST drops no more frames than NORMAL (dropped frame: a frame inside a page's
-  printing in which the printer's task did not run), and none only because of a
-  batch's extra glyphs.
+  printing in which the printer's task did not run). Frames dropped only because
+  of a batch's extra glyphs (unforced overruns) are a budget, not zero (D-2276,
+  amends D-2271): at most 1 per message (one is a note in `capped_ties`), and at
+  most 1 per 1,000 FAST printing frames over the whole run (each gate reports
+  `overrun_budget`; validate_release sums them and fails above the budget;
+  `report_summary.py` always prints the count). DeSmuME's random cost spikes make
+  zero unprovable with any fixed MARGIN, and one late frame is invisible.
 
 The SLOW-only rules of the earlier revision (SLOW floor, SLOW phase flips, the
 SLOW > MEDIUM > FAST order) were removed with SLOW and MEDIUM.

@@ -60,6 +60,12 @@ VISIBLE_LINES, TOTAL_LINES = 192, 263
 # when one more glyph of the message's median cost would still have ended the pass more than
 # FIT_ALLOWANCE ticks before VBlank (see work/notes/text_speed_vcount.md for the derivation).
 FIT_ALLOWANCE = 79
+# Unforced overruns (a FAST frame dropped only because of the batch's extra glyphs) are a
+# budget, not zero (D-2276, amends D-2271): at most OVERRUNS_PER_MESSAGE in one message (here),
+# at most one per OVERRUN_FRAMES FAST printing frames over the whole run (validate_release,
+# from every gate's 'overrun_budget', see tally_overruns()).
+OVERRUNS_PER_MESSAGE = 1
+OVERRUN_FRAMES = 1000
 # Fault fixtures only (fault_fixture.py 'checker', applied by gate_common for a
 # --fault-payload run, never for release evidence): make the gates' model match a
 # deliberately broken payload, so that only the product checks can catch it.
@@ -577,8 +583,8 @@ def order_errors(records):
     - FAST takes at most NORMAL's frames, and strictly fewer when any NORMAL frame had
       room for one more glyph (room_frames); a tie without such a frame is reported as a
       note (the physical cap);
-    - FAST drops no more frames than NORMAL, and none only because of its extra glyphs
-      (an unforced overrun).
+    - FAST drops no more frames than NORMAL, and at most OVERRUNS_PER_MESSAGE only because
+      of its extra glyphs (an unforced overrun; one is reported as a note, D-2276).
     Returns (errors, notes)."""
     if any(m not in records for m in MODES):
         return [f"speeds missing: {sorted(set(MODES) - set(records))} (vacuous order check)"], []
@@ -605,10 +611,34 @@ def order_errors(records):
                          "had room for one more glyph")
     if f["drops"] > n["drops"]:
         errors.append(f"FAST: {f['drops']} dropped frames while printing, NORMAL {n['drops']}")
-    if f["unforced_overruns"]:
+    if f["unforced_overruns"] > OVERRUNS_PER_MESSAGE:
         errors.append(f"FAST: {f['unforced_overruns']} frames dropped only because of the batch's extra glyphs "
-                      "(without them the pass would have ended before VBlank)")
+                      f"(without them the pass would have ended before VBlank; at most {OVERRUNS_PER_MESSAGE} "
+                      "per message, D-2276)")
+    elif f["unforced_overruns"]:
+        notes.append(f"FAST: {f['unforced_overruns']} frame dropped only because of the batch's extra glyphs "
+                     "(within the per-message budget, D-2276)")
     return errors, notes
+
+
+def tally_overruns(summary, records):
+    """Add one message's FAST printing frames and unforced overruns to the gate report's
+    'overrun_budget' (validate_release judges the run's total against OVERRUN_FRAMES, D-2276)."""
+    f = records.get(FAST)
+    if not f:
+        return
+    budget = summary.setdefault("overrun_budget", {"fast_frames": 0, "unforced_overruns": 0})
+    budget["fast_frames"] += f.get("frames", 0)
+    budget["unforced_overruns"] += f.get("unforced_overruns", 0)
+
+
+def overrun_budget_error(total):
+    """The run-wide budget (D-2276): total {'fast_frames', 'unforced_overruns'} over all gates."""
+    over, frames = total.get("unforced_overruns", 0), total.get("fast_frames", 0)
+    if over * OVERRUN_FRAMES > frames:
+        return (f"FAST: {over} frames dropped only because of the batch's extra glyphs in {frames} FAST "
+                f"printing frames (budget: at most 1 per {OVERRUN_FRAMES}, D-2276)")
+    return None
 
 
 def compare_messages(baseline, other, keys=("bank", "id", "glyphs", "layout", "pages")):

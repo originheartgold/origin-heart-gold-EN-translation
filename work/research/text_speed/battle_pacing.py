@@ -357,6 +357,7 @@ def child(args, trainer):
                 spans = {m: sum(r['print_frames'] for r in runs[m]['messages']) for m in MODES}
                 records = {m: checks.merge_records([r['record'] for r in runs[m]['messages']]) for m in MODES}
                 order, notes = checks.order_errors(records)
+                checks.tally_overruns(report, records)
                 errors.extend(f'segment {segment}: {e}' for e in order)
                 report['segments'].append({'segment': segment, 'runs': runs,
                                            'order': {'print_frames': spans, 'records': records,

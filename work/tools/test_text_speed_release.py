@@ -299,6 +299,10 @@ class Isolation(unittest.TestCase):
         timeout = validate_release.merge_phases([crash, ok])
         self.assertEqual((timeout['status'], timeout.get('errors')), ('failed', None))
         self.assertIn('phase 0: timeout', timeout['reason'])
+        counted = dict(ok, overrun_budget={'fast_frames': 600, 'unforced_overruns': 1})
+        summed = validate_release.merge_phases([counted, counted, ok])     # D-2276: phases add up
+        self.assertEqual(summed['overrun_budget'], {'fast_frames': 1200, 'unforced_overruns': 2})
+        self.assertNotIn('overrun_budget', validate_release.merge_phases([ok, ok]))
 
     def test_busy_scenes_are_in_the_scene_gate(self):
         import scene_pacing

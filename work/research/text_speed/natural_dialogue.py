@@ -143,7 +143,9 @@ def main():
                     summary['errors'].append(f'{name}: completed dialogue pixels differ from the original printer')
                 if modes[name]['layout'] != base['layout']:
                     summary['errors'].append(f'{name}: glyph layout differs from the original printer')
-            order, notes = checks.order_errors({m: modes[n]['record'] for m, n in NAMES.items()})
+            records = {m: modes[n]['record'] for m, n in NAMES.items()}
+            order, notes = checks.order_errors(records)
+            checks.tally_overruns(summary, records)
             summary['errors'] += [f'frame order: {e}' for e in order]
             summary['capped_ties'] = notes
         if not inputs_unchanged(summary):

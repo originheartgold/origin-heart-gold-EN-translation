@@ -41,6 +41,7 @@ import sys as _sys  # noqa: E402
 from pathlib import Path as _Path  # noqa: E402
 _sys.path.insert(0, str(_Path(__file__).resolve().parent))   # python -I adds no script directory
 from gate_common import ROOT, add_arguments, digest, identity, inputs_unchanged, load_expected_payload, resolve
+import text_speed_checks as checks  # noqa: E402  (work/tools, on the path via gate_common)
 
 HERE = Path(__file__).resolve().parent
 TIMEOUT = 3600          # seconds of running time per gate, excluding waits for an emulator slot
@@ -244,6 +245,8 @@ def run_gate(name, command, report_path, log):
         row['status'], row['reason'] = 'failed', 'report not bound to a payload'
     if r.get('warnings'):
         row['warnings'] = r['warnings']
+    if r.get('overrun_budget'):
+        row['overrun_budget'] = r['overrun_budget']
     row['observations'] = observations(name, r)
     row['mid_update_samples'] = mid_update_samples(report_path.parent)
     return row
@@ -281,7 +284,15 @@ def merge_phases(rows):
     for p, r in enumerate(rows[1:], 1):
         row['observations'] = dict(row.get('observations') or {}, **{f'phase{p}': r.get('observations')})
     row['mid_update_samples'] = [s for r in rows for s in r.get('mid_update_samples', [])]
+    budgets = [r['overrun_budget'] for r in rows if r.get('overrun_budget')]
+    if budgets:
+        row['overrun_budget'] = add_budgets(budgets)
     return row
+
+
+def add_budgets(budgets):
+    """Sum gate 'overrun_budget' counts (FAST printing frames, unforced overruns; D-2276)."""
+    return {k: sum(b.get(k, 0) for b in budgets) for k in ('fast_frames', 'unforced_overruns')}
 
 
 def tree_state():
@@ -380,6 +391,11 @@ def main():
         summary['git_head_at_end'], summary['git_dirty_at_end'] = end_head, end_dirty
         if (end_head, end_dirty) != (head, dirty):
             failures.append('work tree or HEAD changed during validation')
+        summary['overrun_budget'] = add_budgets([g['overrun_budget'] for g in summary['gates'].values()
+                                                 if g.get('overrun_budget')])
+        budget_error = checks.overrun_budget_error(summary['overrun_budget'])
+        if budget_error:
+            failures.append(budget_error)
         failed = sorted(n for n, g in summary['gates'].items() if g['status'] != 'passed')
         summary['failed_gates'] = failed
         summary['problems'] = failures

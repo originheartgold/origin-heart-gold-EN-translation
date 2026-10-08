@@ -211,6 +211,7 @@ def main():
                 errors.extend(f'{name}: {e}' for e in (r['errors'] or [f'exit {code}']))
             else:
                 scene_errors, notes = judge(r)
+                checks.tally_overruns(report, {int(m): x for m, x in r['modes'].items()})
                 row['errors'], row['capped_ties'] = scene_errors, notes
                 errors.extend(f'{name}: {e}' for e in scene_errors)
             report['scenes'][name] = row

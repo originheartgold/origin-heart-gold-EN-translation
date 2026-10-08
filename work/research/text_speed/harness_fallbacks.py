@@ -120,7 +120,9 @@ def main():
             if max(abs(x - y) for x, y in zip(cases['invalid']['glyphs'], cases['null']['glyphs'])) > 1:
                 errors.append('null: glyph frames differ from the invalid-mode original printer by more than 1')
             names = {checks.ORIGINAL: 'invalid', checks.NORMAL: 'normal', checks.FAST: 'fast'}
-            order, notes = checks.order_errors({m: cases[n]['record'] for m, n in names.items()})
+            records = {m: cases[n]['record'] for m, n in names.items()}
+            order, notes = checks.order_errors(records)
+            checks.tally_overruns(report, records)
             errors.extend(f'frame order: {e}' for e in order)
             report['capped_ties'] = notes
             if not cases['delay-normal']['glyphs'] == cases['delay-fast']['glyphs']:

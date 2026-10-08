@@ -214,7 +214,9 @@ def compare(report):
         limited = {m: modes[m]['messages'][i]['stops'].get('frame', 0) for m in MODES}
         free = {m: modes[m]['messages'][i]['control_latency'] for m in MODES}
         name = f"{base['bank']}#{base['id']}"
-        order, notes = checks.order_errors({m: modes[m]['messages'][i]['record'] for m in MODES})
+        records = {m: modes[m]['messages'][i]['record'] for m in MODES}
+        order, notes = checks.order_errors(records)
+        checks.tally_overruns(report, records)
         order += checks.exact_errors('printer tasks from each page\'s last glyph to its control step',
                                      free[checks.ORIGINAL], {m: free[m] for m in speeds})
         if not free[checks.ORIGINAL]:

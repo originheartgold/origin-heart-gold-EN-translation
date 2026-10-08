@@ -354,8 +354,9 @@ the `scenes` gate over the 17 scenes above), per message (D-1604):
 - frames: FAST at most NORMAL's, strictly fewer when any NORMAL glyph task's pass
   had room for one more glyph (slack of at least FAST's median extra-glyph cost + 2);
 - FAST drops no more frames than NORMAL;
-- no frame is dropped only because of the batch's extra glyphs (the pass, without
-  the extra glyphs' lines, would have ended before VBlank);
+- frames dropped only because of the batch's extra glyphs (the pass, without the
+  extra glyphs' lines, would have ended before VBlank) stay within the budget of
+  D-2276: at most 1 per message and 1 per 1,000 FAST printing frames per run;
 - no frame stop gave up a glyph that would have fitted: with one more glyph of the
   message's median measured cost the pass would still have ended two or more lines
   before VBlank (stops taken before any cost of the scene was measured are exempt).
