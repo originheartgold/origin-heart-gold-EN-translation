@@ -150,10 +150,10 @@
   {
    "id": 18,
    "zh": "温柔待人这样的品德{NEWLINE}不是给火箭队准备的,{CLEAR}尽情地咬碎吧,大嘴娃！",
-   "en": "Kindness is a virtue that’s{NEWLINE}not meant for Team Rocket.{CLEAR}Crush them to bits, Mawile!",
+   "en": "Kindness is a virtue that’s not meant{NEWLINE}for Team Rocket. Go wild and bite them{CLEAR}to pieces, Mawile!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV041: meaning: 尽情地咬碎 = bite to pieces freely; 'crush' lost bite and 尽情"
   },
   {
    "id": 19,

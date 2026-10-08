@@ -137,10 +137,10 @@
   {
    "id": 16,
    "zh": "贴心的告示牌！{SCROLL}精灵即将进化时,{NEWLINE}按下Ｂ键{CLEAR}精灵就会停止进化。{CLEAR}这被称为取消进化。",
-   "en": "Trainer Tips{SCROLL}If a Pokémon is trying to evolve,{NEWLINE}you can stop it.{SCROLL}Press the B Button during evolution.{SCROLL}That startles the Pokémon and stops{NEWLINE}its evolution.",
+   "en": "Trainer Tips{SCROLL}When a Pokémon is about to evolve,{NEWLINE}press the B Button and it will{CLEAR}stop evolving.{SCROLL}This is called canceling evolution.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US Trainer Tips kept; zh says the same (press B to cancel evolution)."
+   "origin": "agent",
+   "notes": "US Trainer Tips kept; zh says the same (press B to cancel evolution). | RV041: meaning: US line added 'startles the Pokémon' and dropped 'called canceling evolution'; retranslated from zh"
   },
   {
    "id": 17,
@@ -401,10 +401,10 @@
   {
    "id": 48,
    "zh": "这是你的货物,请拿好。",
-   "en": "Here are your goods.{NEWLINE}Take care of them.",
+   "en": "Here are your goods. Please take them.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV041: meaning: 请拿好 = please take them, not 'take care of them'"
   },
   {
    "id": 49,

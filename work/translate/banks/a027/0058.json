@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "比夏斯『既然你诚心诚意地发问了,{NEWLINE}那我就大发慈悲地告诉你吧。{SCROLL}比夏斯『当一个小空间里{NEWLINE}同时出现凤王羽毛和透明铃铛时,{CLEAR}二者会激发出类似凤王之力的能量,{CLEAR}这与封印三圣兽的能量非常相似……{SCROLL}比夏斯『此时如果念出解除封印的命令：",
-   "en": "Marauder: Prepare for trouble! Heh...{NEWLINE}since you asked, I’ll tell you.{SCROLL}Marauder: When Ho-Oh’s feather{NEWLINE}and the Clear Bell are together{CLEAR}in a small space, they stir up an{CLEAR}energy like Ho-Oh’s own power,{CLEAR}very much like the energy that seals{CLEAR}the three legendary beasts...{SCROLL}Marauder: And if you then recite the{NEWLINE}command to break the seal...",
+   "en": "Marauder: Prepare for trouble... and{NEWLINE}make it double! Since you asked, I’ll be{CLEAR}generous and tell you.{SCROLL}Marauder: When Ho-Oh’s feather and the{NEWLINE}Clear Bell are together in a small{CLEAR}space, they stir up an energy like{CLEAR}Ho-Oh’s own power, very much like{CLEAR}the energy that seals the three{CLEAR}legendary beasts...{SCROLL}Marauder: And if you then recite the{NEWLINE}command to break the seal...",
    "status": "draft",
    "origin": "agent",
-   "notes": "Motto parody, canon dub opener (D-1437)."
+   "notes": "Motto parody, canon dub opener (D-1437). | RV041: canon: motto parody now 'Prepare for trouble... make it double' per D-1437; dropped added 'Heh', restored 大发慈悲"
   },
   {
    "id": 10,
@@ -182,10 +182,10 @@
   {
    "id": 22,
    "zh": "小松『这不详的黑色制服……{NEWLINE}你们这些火箭队终于漏出狐狸尾巴了！",
-   "en": "Morty: Those ominous black uniforms...{NEWLINE}So you Team Rocket rats have finally{CLEAR}shown your true colors!",
+   "en": "Morty: Those ominous black uniforms...{NEWLINE}So you Team Rocket lot have finally{CLEAR}shown your true colors!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV041: addition: 'rats' not in zh"
   },
   {
    "id": 23,
@@ -214,10 +214,10 @@
   {
    "id": 26,
    "zh": "赤焰松『队员们,{NEWLINE}给我拖住这几个家伙,{CLEAR}为回收三圣兽争取时间！",
-   "en": "Maxie: Troops! Hold these people{NEWLINE}off and buy us time to recover the{CLEAR}legendary beasts!",
+   "en": "Maxie: Troops! Hold these guys off and{NEWLINE}buy us time to recover the legendary{CLEAR}beasts!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV041: softened: 这几个家伙 = these guys, not 'these people'"
   },
   {
    "id": 27,
@@ -1152,10 +1152,10 @@
   {
    "id": 143,
    "zh": "水君『Suiiii——cun！",
-   "en": "Suicune: Suiiii-cune!",
+   "en": "Suicune: Suiiii-cun!",
    "status": "draft",
    "origin": "agent",
-   "notes": "copied from a027/0356#175 (identical zh)"
+   "notes": "copied from a027/0356#175 (identical zh) | RV041: meaning: cry as the zh writes it (cun)"
   },
   {
    "id": 144,

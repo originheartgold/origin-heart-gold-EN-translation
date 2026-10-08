@@ -174,18 +174,18 @@
   {
    "id": 21,
    "zh": "小松『啊！这……{NEWLINE}你是联盟冠军{VAR:0103:0}先生！",
-   "en": "Morty: Ah! You’re...{NEWLINE}League Champion {VAR:0103:0}!",
+   "en": "Morty: Ah! You’re... Mr. {VAR:0103:0}, the{NEWLINE}League Champion!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Female-player variant is #22 (先生/小姐 only; same English)."
+   "notes": "Female-player variant is #22 (先生/小姐 only; same English). | RV041: omission: 先生 dropped"
   },
   {
    "id": 22,
    "zh": "小松『啊！这……{NEWLINE}你是联盟冠军{VAR:0103:0}小姐！",
-   "en": "Morty: Ah! You’re...{NEWLINE}League Champion {VAR:0103:0}!",
+   "en": "Morty: Ah! You’re... Miss {VAR:0103:0}, the{NEWLINE}League Champion!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Female-player variant of #21."
+   "notes": "Female-player variant of #21. | RV041: omission: 小姐 dropped"
   },
   {
    "id": 23,
@@ -294,10 +294,10 @@
   {
    "id": 36,
    "zh": "小松『我刚才说把透明铃铛{NEWLINE}保存到了一个绝对安全的地方。{CLEAR}其实是指把铃铛带在了身上。{CLEAR}现在正好将计就计{CLEAR}去烧焦塔会会这个闹事者。",
-   "en": "Morty: I said I’d put the Clear Bell{NEWLINE}somewhere absolutely safe. What I{CLEAR}meant was, I’m carrying it on me.{SCROLL}So let’s play along{NEWLINE}with their scheme and go meet this{CLEAR}troublemaker at the Burned Tower.",
+   "en": "Morty: When I said earlier that I’d put{NEWLINE}the Clear Bell somewhere absolutely{CLEAR}safe, I meant I’m carrying it on me.{SCROLL}So let’s play along with their scheme{NEWLINE}and go meet this troublemaker at the{CLEAR}Burned Tower.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV041: meaning: 我刚才说 = 'when I said earlier'; bell was already stored (cf. #17)"
   },
   {
    "id": 37,
