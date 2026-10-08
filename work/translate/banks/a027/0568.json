@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "有个黑皮肤的训练家{NEWLINE}说我完全不会培育小福蛋,{CLEAR}让一只潜力巨大的精灵{CLEAR}只维持在宝宝形态是一种浪费。{CLEAR}我确实养了小福蛋好久了,{CLEAR}可是它一直都没有进化,{CLEAR}是不是真像那个训练家说的那样,{CLEAR}我没有培养精灵的天赋,{CLEAR}让小福蛋留在我身边是在耽误它啊。",
-   "en": "A dark-skinned Trainer told me I{NEWLINE}have no idea how to raise Happiny. He{CLEAR}said keeping a Pokémon with so much{CLEAR}potential in its baby form is a waste.{SCROLL}It’s true I’ve been raising my Happiny{NEWLINE}for ages, but it still hasn’t evolved.{SCROLL}Is that Trainer right? Do I have no{NEWLINE}talent for raising Pokémon? Am I holding{CLEAR}Happiny back by keeping it with me?",
+   "en": "A dark-skinned Trainer told me I have{NEWLINE}no idea how to raise Happiny. They said{CLEAR}keeping a Pokémon with so much{CLEAR}potential in its baby form is a waste.{SCROLL}It’s true I’ve been raising my Happiny{NEWLINE}for ages, but it still hasn’t evolved.{SCROLL}Is that Trainer right? Do I have no{NEWLINE}talent for raising Pokémon? Am I holding{CLEAR}Happiny back by keeping it with me?",
    "status": "draft",
    "origin": "agent",
-   "notes": "黑皮肤的训练家: unnamed; possibly an anime/Unova reference (Iris?). Kept literal."
+   "notes": "黑皮肤的训练家: unnamed; possibly an anime/Unova reference (Iris?). Kept literal. | RV044: addition: zh gives no gender for the Trainer"
   },
   {
    "id": 1,
@@ -145,10 +145,10 @@
   {
    "id": 17,
    "zh": "我的朋友把天蝎寄养在了我这里,{NEWLINE}可是朋友的天蝎{CLEAR}非常喜欢我的斗笠菇的剧毒珠,{CLEAR}两只精灵经常为了抢剧毒珠而打架。{CLEAR}要是再有一个剧毒珠就好了……",
-   "en": "A friend left her Gligar with me.{NEWLINE}But my friend’s Gligar just loves{CLEAR}my Breloom’s Toxic Orb, and the{CLEAR}two of them keep fighting over it.{SCROLL}If only I had one more Toxic Orb...",
+   "en": "A friend of mine left their Gligar with{NEWLINE}me. But my friend’s Gligar just loves my{CLEAR}Breloom’s Toxic Orb, and the two of{CLEAR}them keep fighting over it.{SCROLL}If only I had one more Toxic Orb...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV044: addition: zh gives no gender for the friend"
   },
   {
    "id": 18,

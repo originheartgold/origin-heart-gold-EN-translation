@@ -431,10 +431,10 @@
   {
    "id": 53,
    "zh": "湛蓝道馆的馆主阿四{NEWLINE}经常跟格斗系精灵对打,{CLEAR}这种乱来的修行方式{CLEAR}根本就不是正常人嘛。",
-   "en": "Chuck, the Cianwood Gym{NEWLINE}Leader, is always sparring with{CLEAR}his Fighting-type Pokémon. Nobody{CLEAR}normal trains in such a crazy way.",
+   "en": "Cianwood’s Gym Leader Chuck is always{NEWLINE}sparring with Fighting-type Pokémon.{SCROLL}With training that reckless, he’s just{NEWLINE}not a normal human being.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV044: meaning: zh says Chuck himself isn't normal"
   },
   {
    "id": 54,

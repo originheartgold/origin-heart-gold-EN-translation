@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "在这个战斗轮盘里{NEWLINE}一边应付众多的活动,{CLEAR}一边战斗看能撑到什么地步。{CLEAR}根据战斗之前停住的轮盘,{CLEAR}战斗可能变成对你有利,{CLEAR}也可能变成对你不利。{SCROLL}同时,在战斗轮盘里{NEWLINE}挑战开始之前,{CLEAR}可以把精灵带的道具{CLEAR}暂时寄存在这里。{SCROLL}如果成功取得7连胜的话{CLEAR}会获得ＢＰ值！{SCROLL}另外,想要临时中断挑战的时候{SCROLL}一定要保存好记录,不然就{NEWLINE}不能从中断的地方接着玩！{SCROLL}请一定要注意！{SCROLL}",
-   "en": "At the Battle Arcade, you may take a{NEWLINE}Single or Double Battle challenge.{SCROLL}Here, a game board is activated{NEWLINE}before every match.{SCROLL}Depending on what comes up on the{NEWLINE}game board, an event takes place.{SCROLL}Some events will be good for the{NEWLINE}challenger, while others won’t be.{SCROLL}The objective is to keep a winning{NEWLINE}streak alive as long as possible.{SCROLL}During your challenge, any items held by{NEWLINE}your Pokémon will be kept in storage.{SCROLL}If you manage to win seven matches in{NEWLINE}a row, you will earn Battle Points (BP).{SCROLL}If you want to interrupt your{NEWLINE}challenge, please save the game.{SCROLL}If you don’t save, you will be{NEWLINE}disqualified from your challenge.{SCROLL}Please be aware of that!{SCROLL}",
+   "en": "At the Battle Arcade, you battle while{NEWLINE}dealing with all sorts of events, to see{CLEAR}how far you can go.{SCROLL}Depending on where the game board{NEWLINE}stops before each battle, the match{CLEAR}may turn in your favor or against you.{SCROLL}Also, before your challenge starts, you{NEWLINE}may leave your Pokémon’s held items{CLEAR}with us.{SCROLL}If you manage to win seven matches in a{NEWLINE}row, you will earn Battle Points (BP)!{SCROLL}Also, if you want to pause your{NEWLINE}challenge, be sure to save. Otherwise,{CLEAR}you won’t be able to continue from{CLEAR}where you stopped!{SCROLL}Please keep that in mind!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0110/2"
+   "origin": "agent",
+   "notes": "US 0110/2 | RV044: meaning: US text restructured; restored optional item deposit and 'can't continue' wording"
   },
   {
    "id": 3,
@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "在这里两人可以联手合作与{NEWLINE}训练师进行多人战！{SCROLL}战斗之前要挑战轮盘,{SCROLL}轮盘停止后,{NEWLINE}会有很多各种活动发生。{SCROLL}活动会很大程度地改变{NEWLINE}战斗的走向！{SCROLL}当完成７个小游戏之后{NEWLINE}将获赠ＢＰ值！{SCROLL}而且,挑战之前可以在{NEWLINE}战斗轮盘寄存{CLEAR}精灵的道具。{CLEAR}另外,在多人战不能临时中断！{SCROLL}",
-   "en": "You may team up with a friend for a{NEWLINE}Multi Battle challenge.{SCROLL}Here, a game board is activated{NEWLINE}before every match.{SCROLL}Depending on what comes up on the{NEWLINE}game board, an event takes place.{SCROLL}The events may have great impact on{NEWLINE}the match’s outcome, good or bad.{SCROLL}The objective is to keep a winning{NEWLINE}streak alive as long as possible.{SCROLL}During your challenge, any items held by{NEWLINE}your Pokémon will be kept in storage.{SCROLL}If you manage to win seven matches in{NEWLINE}a row, you will earn Battle Points (BP).{SCROLL}Please note: a Battle Arcade Multi{NEWLINE}Battle challenge can’t be interrupted.{SCROLL}",
+   "en": "Here, two Trainers can team up for a{NEWLINE}Multi Battle against other Trainers!{SCROLL}Before each battle, you spin the game{NEWLINE}board.{SCROLL}When it stops, all sorts of events{NEWLINE}happen.{SCROLL}The events can greatly change how the{NEWLINE}battle goes!{SCROLL}When you complete seven mini-games, you{NEWLINE}will earn Battle Points (BP)!{SCROLL}Also, before your challenge, you may{NEWLINE}leave your Pokémon’s held items with{CLEAR}the Battle Arcade.{SCROLL}Please note: a Multi Battle challenge{NEWLINE}can’t be interrupted.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0110/5"
+   "origin": "agent",
+   "notes": "US 0110/5 | RV044: meaning: US text restructured; zh says seven mini-games (hack-finding logged)"
   },
   {
    "id": 6,
@@ -238,18 +238,18 @@
   {
    "id": 29,
    "zh": "您和朋友选择了同样的{VAR:0100:0}{SCROLL}请和朋友商量好之后再来。{SCROLL}",
-   "en": "Both Trainers have chosen the{NEWLINE}Pokémon {VAR:0100:0}.{SCROLL}Please confer with the other Trainer{NEWLINE}and choose different Pokémon.{SCROLL}",
+   "en": "You and your friend have both chosen{NEWLINE}{VAR:0100:0}.{SCROLL}Please talk it over with your friend and{NEWLINE}come back.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0110/29"
+   "origin": "agent",
+   "notes": "US 0110/29 | RV044: meaning: zh says come back, not choose different Pokémon"
   },
   {
    "id": 30,
    "zh": "您和朋友选择了同样的{VAR:0100:0}和{VAR:0100:1}！{CLEAR}请和朋友商量之后再来。{SCROLL}",
-   "en": "Both Trainers have chosen the Pokémon{NEWLINE}{VAR:0100:0} and {VAR:0100:1}.{SCROLL}Please confer with the other Trainer{NEWLINE}and choose different Pokémon.{SCROLL}",
+   "en": "You and your friend have both chosen{NEWLINE}{VAR:0100:0} and {VAR:0100:1}!{SCROLL}Please talk it over with your friend and{NEWLINE}come back.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0110/30"
+   "origin": "agent",
+   "notes": "US 0110/30 | RV044: meaning: zh says come back, not choose different Pokémon"
   },
   {
    "id": 31,
@@ -374,42 +374,42 @@
   {
    "id": 46,
    "zh": "轮盘就如人生一般,{SCROLL}不停旋转,{NEWLINE}命运周而复始。{SCROLL}你听懂我这句听起来有点深度{NEWLINE}但其实一点深度也没有的话了吗？",
-   "en": "The game board is like your life.{SCROLL}It goes round and round{NEWLINE}as your fortune goes up and down...{CLEAR}How did that sound?{SCROLL}It almost made some kind of sense,{NEWLINE}didn’t it?",
+   "en": "The game board is just like life.{SCROLL}It keeps on spinning, and fate comes{NEWLINE}round again and again.{SCROLL}Did you get that? It sounds kind of{NEWLINE}deep, but it isn’t deep at all.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0110/46"
+   "origin": "agent",
+   "notes": "US 0110/46 | RV044: meaning: zh mocks its own fake-deep line"
   },
   {
    "id": 47,
    "zh": "在精灵对战中,{NEWLINE}运气也是一个非常重要的因素。{SCROLL}你只要玩玩这轮盘,{NEWLINE}就能深刻理解{CLEAR}我这句话的含义了。",
-   "en": "There’s an aspect of luck in{NEWLINE}Pokémon battles...{SCROLL}The Battle Arcade reminds me of that,{NEWLINE}decisively. Very decisively...",
+   "en": "In Pokémon battles, luck is a really{NEWLINE}important factor too.{SCROLL}Just play on this game board, and you’ll{NEWLINE}understand exactly what I mean.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0110/47"
+   "origin": "agent",
+   "notes": "US 0110/47 | RV044: meaning: US line replaced with zh content"
   },
   {
    "id": 48,
    "zh": "你认为是什么主导着这里？{NEWLINE}力量？{CLEAR}智慧？{CLEAR}运气？{SCROLL}都不是,{NEWLINE}我个人感觉,{CLEAR}最为主要的,{CLEAR}其实是你要想得开⋯⋯",
-   "en": "What quality is most needed here?{NEWLINE}Is it strength?{CLEAR}Wisdom?{CLEAR}Luck?{CLEAR}No. The answer is...flexibility.{CLEAR}That’s what my gut tells me.",
+   "en": "What do you think rules this place?{NEWLINE}Strength?{CLEAR}Wisdom?{CLEAR}Luck?{SCROLL}None of those. Personally, I feel the{NEWLINE}most important thing is actually...{CLEAR}being able to roll with it...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0110/48"
+   "origin": "agent",
+   "notes": "US 0110/48 | RV044: meaning: zh says taking things in stride, not flexibility/gut"
   },
   {
    "id": 49,
    "zh": "你晓得什么叫「目押」吗？{NEWLINE}其实就是你要盯住{CLEAR}想让轮盘停下的时候按下按钮。{SCROLL}这个也是需要眼疾手快的,{NEWLINE}３０秒过后,{CLEAR}轮盘会自动停下来。",
-   "en": "Do you know what I mean by{NEWLINE}“stop on the spot”?{SCROLL}It’s the skill of stopping the{NEWLINE}game board at the right time!{SCROLL}But, remember...{CLEAR}If you don’t stop it in 30 seconds,{NEWLINE}it will stop by itself.",
+   "en": "Do you know what “stop on the spot”{NEWLINE}means? It’s when you watch the game{CLEAR}board closely and press the button{CLEAR}right when you want it to stop.{SCROLL}That takes sharp eyes and quick hands,{NEWLINE}too. After 30 seconds, the game board{CLEAR}stops by itself.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0110/49"
+   "origin": "agent",
+   "notes": "US 0110/49 | RV044: omission: restored 'sharp eyes and quick hands'"
   },
   {
    "id": 50,
    "zh": "我原本想用我那只花了{NEWLINE}巨大心血培养的精灵前来一战,{CLEAR}结果和对手的精灵交换之后{CLEAR}反倒成为了我的对手！{SCROLL}看来我还得{NEWLINE}重新再考虑一套战术。",
-   "en": "I thought I was fully prepared with my{NEWLINE}prized Pokémon, but I had to swap them{CLEAR}and use my opponent’s instead!{CLEAR}I need to rethink all my strategies.",
+   "en": "I was going to battle with a Pokémon I’d{NEWLINE}poured my heart into raising, but after{CLEAR}it got swapped with my opponent’s, it{CLEAR}ended up battling against me!{SCROLL}Looks like I need to come up with a{NEWLINE}whole new strategy.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0110/50"
+   "origin": "agent",
+   "notes": "US 0110/50 | RV044: omission: restored that his own Pokémon became his opponent"
   },
   {
    "id": 51,
@@ -422,26 +422,26 @@
   {
    "id": 52,
    "zh": "掌握好目押的技巧{NEWLINE}的确能给自己带来更大的胜算,{SCROLL}但是自己将命运交给轮盘,{NEWLINE}而不是依靠自己的那种感觉{CLEAR}也别有一番风味⋯⋯",
-   "en": "There are advantages to be gained from{NEWLINE}“stop on the spot” skills!{SCROLL}But there’s a lot of fun in letting the{NEWLINE}unknown hand of luck decide...",
+   "en": "Mastering the “stop on the spot”{NEWLINE}skill really does improve your odds.{SCROLL}But leaving your fate to the game board{NEWLINE}instead of relying on yourself has a{CLEAR}charm of its own...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0110/52"
+   "origin": "agent",
+   "notes": "US 0110/52 | RV044: meaning: closer to zh (fate left to the board)"
   },
   {
    "id": 53,
    "zh": "越强的人来玩,{NEWLINE}轮盘出的点数也越好。{SCROLL}难道⋯⋯{NEWLINE}这轮盘通人性吗？",
-   "en": "The game board shows better choices{NEWLINE}the greater the wins you achieve...{SCROLL}Could this board be alive...?",
+   "en": "The stronger the player, the better{NEWLINE}the results the game board gives.{SCROLL}Could it be... this board can read{NEWLINE}people?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0110/53"
+   "origin": "agent",
+   "notes": "US 0110/53 | RV044: meaning: zh says stronger players, board understands people"
   },
   {
    "id": 54,
    "zh": "你知道吗？{NEWLINE}地面类型的精灵{CLEAR}不会受到麻痹,{CLEAR}去把这事通知给大伙吧。",
-   "en": "Did you figure this one out?{SCROLL}Paralyzing events here won’t{NEWLINE}affect Ground-type Pokémon.{SCROLL}You should tell everybody!",
+   "en": "Did you know? Ground-type Pokémon{NEWLINE}can’t be paralyzed.{SCROLL}Go spread the word to everyone!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0110/54"
+   "origin": "agent",
+   "notes": "US 0110/54 | RV044: addition: dropped 'events here'"
   },
   {
    "id": 55,

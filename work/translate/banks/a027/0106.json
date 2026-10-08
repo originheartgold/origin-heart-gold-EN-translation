@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "在这里两人可以选择{NEWLINE}３０级以上的同类精灵{CLEAR}进行多人战！{SCROLL}开始进行战斗的时候,{NEWLINE}要先选择精灵的{CLEAR}种类和级别,{CLEAR}然后和符合条件的精灵{CLEAR}进行战斗。{SCROLL}重复战斗的过程成功取得{NEWLINE}１０连胜的话{CLEAR}就将获赠ＢＰ点！{SCROLL}另外,在战斗舞台,{NEWLINE}多人战里不能临时中断！{SCROLL}",
-   "en": "You may team up with a friend for a{NEWLINE}Multi Battle challenge using the{CLEAR}same kind of Pokémon that are at{CLEAR}least Lv. 30 each.{SCROLL}When you enter the Hall, you will be{NEWLINE}asked to choose the type and rank of{CLEAR}the Pokémon you want to battle.{SCROLL}If you manage to win ten matches in{NEWLINE}a row, you will earn Battle Points (BP).{SCROLL}Please note: a Battle Hall Multi Battle{NEWLINE}challenge can’t be interrupted.{SCROLL}",
+   "en": "You may team up with a friend for a Multi{NEWLINE}Battle challenge using the same kind of{CLEAR}Pokémon that are at least Lv. 30 each.{SCROLL}When you start, you will first be asked{NEWLINE}to choose the type and rank of the{CLEAR}Pokémon, and then you battle Pokémon{CLEAR}that match your choice.{SCROLL}Keep battling, and if you manage to win{NEWLINE}ten matches in a row, you will earn{CLEAR}Battle Points (BP)!{SCROLL}Please note: a Battle Hall Multi Battle{NEWLINE}challenge can’t be interrupted.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/5"
+   "origin": "agent",
+   "notes": "US 0108/5 | RV044: omission: restored 'then battle matching Pokémon'; dropped added 'enter the Hall'"
   },
   {
    "id": 6,
@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "是这样的啊,对吧⋯⋯{SCROLL}人们说人生也是一种学习{NEWLINE}精灵战斗对于训练师的学习来说{CLEAR}这儿正合适⋯⋯",
-   "en": "You are quite right.{SCROLL}They say life is an endless series of{NEWLINE}learning opportunities.{SCROLL}This place is the best for learning{NEWLINE}about Pokémon battles and about{CLEAR}other Trainers...",
+   "en": "You are quite right.{SCROLL}They say life is an endless series of{NEWLINE}learning opportunities.{SCROLL}For a Trainer learning about Pokémon{NEWLINE}battles, this place is just perfect...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/25"
+   "origin": "agent",
+   "notes": "US 0108/25 | RV044: addition: US added 'about other Trainers'"
   },
   {
    "id": 26,
@@ -222,10 +222,10 @@
   {
    "id": 27,
    "zh": "奶奶！奶奶！{NEWLINE}我换到了首饰！{CLEAR}送给奶奶！",
-   "en": "Grandma, yoo-hoo! Grandma!{NEWLINE}I’ve come to trade Accessories!{CLEAR}I’ve got somethin’ just for my grandma!",
+   "en": "Grandma! Grandma!{NEWLINE}I traded for an Accessory!{CLEAR}It’s for you, Grandma!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/27"
+   "origin": "agent",
+   "notes": "US 0108/27 | RV044: meaning: zh says she got an Accessory in a trade and gives it to Grandma"
   },
   {
    "id": 28,
@@ -478,26 +478,26 @@
   {
    "id": 59,
    "zh": "吃饭的时候,你是先吃喜欢的,{NEWLINE}还是把它留在最后呢？{SCROLL}我有个建议,{NEWLINE}在这座战斗舞台,{CLEAR}你应该先选择自己不擅长的类型！{SCROLL}因为战斗越到后面,{NEWLINE}对手的等级也越高！",
-   "en": "Do you eat your favorite dish first or{NEWLINE}leave it for later?{SCROLL}At the Battle Hall, it’s better to start{NEWLINE}with the types that your Pokémon{CLEAR}do not like. Why?{SCROLL}Because the opposition goes up in{NEWLINE}level as you progress!",
+   "en": "Do you eat your favorite dish first, or{NEWLINE}save it for last?{SCROLL}Here’s my advice: at the Battle Hall,{NEWLINE}you should start with the types you{CLEAR}struggle with most!{SCROLL}Because the further you go, the higher{NEWLINE}your opponents’ levels get!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/59"
+   "origin": "agent",
+   "notes": "US 0108/59 | RV044: meaning: zh says types you are bad at, not types your Pokémon dislike"
   },
   {
    "id": 60,
    "zh": "我真是爱死这地方了！{SCROLL}这里会根据精灵的不同种类,{NEWLINE}对其连胜纪录进行保存,{CLEAR}所以无论哪种精灵{CLEAR}都能登上那座舞台！{SCROLL}让自己的精灵{NEWLINE}不断刷新纪录,{CLEAR}这感觉真是妙不可言！",
-   "en": "That opulent stage!{SCROLL}Your streaks of winnings are kept per{NEWLINE}each kind of Pokémon.{CLEAR}Every Pokémon can get up there.{SCROLL}Don’t you think it’s wonderful{NEWLINE}you can aim for the top with{CLEAR}any Pokémon?",
+   "en": "I just love this place to death!{SCROLL}It keeps win-streak records for each{NEWLINE}kind of Pokémon, so any Pokémon at all{CLEAR}can get up on that stage!{SCROLL}Watching your own Pokémon keep{NEWLINE}breaking records... That feeling is just{CLEAR}wonderful!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/60"
+   "origin": "agent",
+   "notes": "US 0108/60 | RV044: meaning: US 'opulent stage' line replaced; restored love of place and record-breaking feeling"
   },
   {
    "id": 61,
    "zh": "呆⋯⋯{SCROLL}你别看我的呆河马一副呆像,{NEWLINE}它好歹也是和{CLEAR}那位首领战斗过的！{SCROLL}对了,那位首领{NEWLINE}会以相同的等级等待你的挑战！",
-   "en": "Slow...{SCROLL}My Slowbro is a cutie, but he’s even{NEWLINE}battled the Brain here.{SCROLL}The Brain will take your Pokémon on at{NEWLINE}the same level, to be fair.",
+   "en": "Slow...{SCROLL}My Slowbro may look dopey, but it has{NEWLINE}battled the Brain, I’ll have you know!{SCROLL}Oh, right. The Brain will await your{NEWLINE}challenge at the same level!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/61; modernised from US 0108#61"
+   "origin": "agent",
+   "notes": "US 0108/61; modernised from US 0108#61 | RV044: meaning: zh says Slowbro looks dopey, not cute; dropped added 'to be fair'"
   },
   {
    "id": 62,
@@ -510,10 +510,10 @@
   {
    "id": 63,
    "zh": "来,你听我说,{SCROLL}如果你想在{NEWLINE}总和成绩上有所突破,{CLEAR}那就不能光靠一只精灵去打拼,{CLEAR}而是挑选各种精灵,{CLEAR}前去战斗舞台进行挑战。",
-   "en": "Here is a tip!{SCROLL}You should try the Battle Hall with{NEWLINE}not just your favorite Pokémon,{SCROLL}but different kinds of Pokémon{NEWLINE}if you want to build your{CLEAR}overall record as well.",
+   "en": "Here, listen to this.{SCROLL}If you want a breakthrough in your{NEWLINE}overall record, you can’t rely on just{CLEAR}one Pokémon.{SCROLL}Pick all kinds of different Pokémon and{NEWLINE}take on the Battle Hall with them.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/63"
+   "origin": "agent",
+   "notes": "US 0108/63 | RV044: meaning: zh says not just one Pokémon, not 'your favorite'"
   },
   {
    "id": 64,
@@ -526,10 +526,10 @@
   {
    "id": 65,
    "zh": "以毽子草做比方,{NEWLINE}它是「草」和「飞行」{CLEAR}类型的精灵。{SCROLL}所以它不仅会出现在「草」类型,{NEWLINE}还会出现在「飞行」类型中！{SCROLL}你问我是什么类型？{NEWLINE}讨厌啦,人家是⋯⋯{CLEAR}「爽朗」和「美女」类的啦。",
-   "en": "You know how Hoppip has two types--{NEWLINE}Grass and Flying?{SCROLL}That means it can appear as a{NEWLINE}Grass type and as a Flying type.{SCROLL}Me?{SCROLL}You could think of me as...{NEWLINE}a “Lighthearted” type and{CLEAR}a “Beautiful” type, I guess.",
+   "en": "You know how Hoppip has two{NEWLINE}types--Grass and Flying?{SCROLL}That means it can appear not just as a{NEWLINE}Grass type, but as a Flying type too!{SCROLL}What type am I, you ask? Oh, stop it!{NEWLINE}I’m... a “Cheerful” type and a{CLEAR}“Beautiful” type.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/65; modernised from US 0108#65"
+   "origin": "agent",
+   "notes": "US 0108/65; modernised from US 0108#65 | RV044: voice: restored coy 'you ask? Oh, stop it!'"
   },
   {
    "id": 66,
@@ -550,10 +550,10 @@
   {
    "id": 68,
    "zh": "那么,现在通知您在{NEWLINE}战斗舞台的单人战中{CLEAR}最多连胜次数的总和。{CLEAR}",
-   "en": "I keep track of the total number of{NEWLINE}wins from your longest Single Battle{CLEAR}win streaks at the Battle Hall.{SCROLL}To explain, I add only the longest win{NEWLINE}streaks of each kind of Pokémon.",
+   "en": "Now then, let me tell you the total of{NEWLINE}your longest win streaks in Battle Hall{CLEAR}Single Battles.{CLEAR}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/68"
+   "origin": "agent",
+   "notes": "US 0108/68 | RV044: addition: US added an explanation page the zh lacks"
   },
   {
    "id": 69,
@@ -606,10 +606,10 @@
   {
    "id": 75,
    "zh": "欧彦『说起战斗舞台{NEWLINE}最近有些一般！{SCROLL}因为老没有那种{NEWLINE}咄咄逼人的挑战者。{SCROLL}能够战胜头目的⋯⋯{NEWLINE}挑战者还没有出现呢。",
-   "en": "Winston: The Battle Hall’s been kind of{NEWLINE}boring lately.{SCROLL}There haven’t been any dazzling{NEWLINE}challengers who can electrify crowds.{SCROLL}The kind of challenger who can beat the{NEWLINE}Brain... Aren’t there any around?",
+   "en": "Winston: The Battle Hall’s been kind of{NEWLINE}so-so lately!{SCROLL}There just haven’t been any fierce,{NEWLINE}in-your-face challengers.{SCROLL}A challenger who can beat the Brain...{NEWLINE}hasn’t shown up yet.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/75"
+   "origin": "agent",
+   "notes": "US 0108/75 | RV044: meaning: zh says aggressive challengers, none has beaten the Brain"
   },
   {
    "id": 76,
@@ -622,10 +622,10 @@
   {
    "id": 77,
    "zh": "欧彦『目不转睛地{NEWLINE}盯着面前的舞台看了半天{SCROLL}感觉你很有天赋啊。{SCROLL}对了⋯⋯{NEWLINE}要不要让我验证一下？{CLEAR}不知为何我看好你哦！",
-   "en": "Winston: ...{NEWLINE}...Oh, sorry for staring!{SCROLL}I saw you on stage the last time.{NEWLINE}You’ve got some star quality.{SCROLL}I think I’m going to keep an eye on you.{NEWLINE}There’s real charisma there.",
+   "en": "Winston: You’ve been staring at the{NEWLINE}stage for ages without taking your eyes{CLEAR}off it.{SCROLL}I get the feeling you’ve got real{NEWLINE}talent.{SCROLL}Say... how about letting me check that{NEWLINE}out? I don’t know why, but I’ve got{CLEAR}high hopes for you!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/77"
+   "origin": "agent",
+   "notes": "US 0108/77 | RV044: meaning: US line about seeing player on stage/charisma replaced with zh content"
   },
   {
    "id": 78,
@@ -638,10 +638,10 @@
   {
    "id": 79,
    "zh": "欧彦『喂,你小子！{NEWLINE}接下来要和哪一只精灵{CLEAR}去获得记录呢！？{SCROLL}这个问题一直在我的脑海里{NEWLINE}盘绕,夜里都睡不着觉了,{CLEAR}每天早上都睡懒觉,这就是我！",
-   "en": "Winston: Hey, there!{NEWLINE}What are you going to do this time?{SCROLL}Which Pokémon are you going for a{NEWLINE}record with next?{SCROLL}When I get to thinking about that,{NEWLINE}I get too wound up to sleep at night.{SCROLL}That’s why I’ve been sleeping in lately!",
+   "en": "Winston: Hey, kid! Which Pokémon are{NEWLINE}you going for a record with next!?{SCROLL}That question keeps spinning in my head,{NEWLINE}so I can’t sleep at night...{SCROLL}and I sleep in every morning. That’s me!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/79"
+   "origin": "agent",
+   "notes": "US 0108/79 | RV044: addition: dropped added question; voice: 你小子 'kid'"
   },
   {
    "id": 80,
@@ -654,58 +654,58 @@
   {
    "id": 81,
    "zh": "欧彦『能那样让精灵{NEWLINE}踊跃争斗的训练师{CLEAR}你是第一个哦！{SCROLL}我为你自豪和骄傲！{SCROLL}在获得记录之前我就跟别人说{NEWLINE}“那小子会成大事的”！",
-   "en": "Winston: I’ve never seen Pokémon{NEWLINE}battle as enjoyably as yours do.{SCROLL}You’re the first of a kind for me as{NEWLINE}Trainers go.{SCROLL}You know, I brag about you to everyone{NEWLINE}who’s willing to listen.{SCROLL}I was saying that you’re going to be a{NEWLINE}star before you even got a record!",
+   "en": "Winston: You’re the first Trainer I’ve{NEWLINE}seen who can get Pokémon that fired up{CLEAR}for battle!{SCROLL}I’m so proud of you!{SCROLL}Even before your first record, I told{NEWLINE}people, “That kid’s going places!”",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/81"
+   "origin": "agent",
+   "notes": "US 0108/81 | RV044: meaning: zh says he is proud and predicted success; US bragging line was added"
   },
   {
    "id": 82,
    "zh": "欧彦『ＧＯ！ＧＯ！{VAR:0103:0}{NEWLINE}ＧＯ！ＧＯ！{VAR:0103:0}{SCROLL}我正在创作加油的舞蹈呢！{SCROLL}所以今后继续努力{NEWLINE}不断收获更多的记录！",
-   "en": "Winston: Go, {VAR:0103:0}, go!{NEWLINE}Go, {VAR:0103:0}, go!{SCROLL}I’m thinking up some dance steps and{NEWLINE}cheers I can do to support you.{SCROLL}If you want to see them, you’ll need to{NEWLINE}keep working on your records!",
+   "en": "Winston: Go, {VAR:0103:0}, go!{NEWLINE}Go, {VAR:0103:0}, go!{SCROLL}I’m making up a cheer dance for you!{SCROLL}So keep at it and keep racking up more{NEWLINE}records!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/82"
+   "origin": "agent",
+   "notes": "US 0108/82 | RV044: addition: dropped 'if you want to see them'"
   },
   {
    "id": 83,
    "zh": "欧彦『在舞台上{NEWLINE}经历无数战斗{CLEAR}所获得的无数光荣！{SCROLL}真是太厉害了！",
-   "en": "Winston: You’re phenomenal.{NEWLINE}All the battles you waged on stage...{CLEAR}All those moments of glory...{SCROLL}Your star burns so bright and huge!{NEWLINE}I can barely open my eyes around you!",
+   "en": "Winston: All the countless battles{NEWLINE}you’ve fought on stage... All the{CLEAR}countless glories you’ve won!{SCROLL}That’s just amazing!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/83"
+   "origin": "agent",
+   "notes": "US 0108/83 | RV044: addition: dropped invented 'star burns so bright' line"
   },
   {
    "id": 84,
    "zh": "欧彦『战斗舞台上你的爱是{CLEAR}无限博大{CLEAR}无限深厚的⋯⋯{SCROLL}热爱所有的精灵{CLEAR}是永远都不会改变的！！",
-   "en": "Winston: The love for Pokémon you{NEWLINE}exhibited at the Battle Hall is as{CLEAR}infinitely deep as it is wide...{SCROLL}You can count on me, Winston, to be{NEWLINE}your lifelong fan.{SCROLL}Just as you love Pokémon, I love you{NEWLINE}as the Pokémon superstar!",
+   "en": "Winston: The love you’ve shown at the{NEWLINE}Battle Hall is boundlessly broad and{CLEAR}boundlessly deep...{SCROLL}That love for every Pokémon... it will{NEWLINE}never change!!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/84"
+   "origin": "agent",
+   "notes": "US 0108/84 | RV044: addition: dropped lifelong-fan pledge and 'I love you' (D-1630)"
   },
   {
    "id": 85,
    "zh": "Ｌ『战斗舞台最近比较没看头⋯{SCROLL}因为老没有那种{NEWLINE}咄咄逼人的挑战者。{SCROLL}不知道会不会出现那种{NEWLINE}希望成为他的粉丝的挑战者。",
-   "en": "Serena: It’s about the Battle Hall...{NEWLINE}It hasn’t excited me lately.{SCROLL}There’s been no gorgeous sort of{NEWLINE}challenger who can dazzle me.{SCROLL}The kind of challenger who can make me{NEWLINE}a fan... Aren’t there any around?",
+   "en": "Serena: The Battle Hall hasn’t been{NEWLINE}much to watch lately...{SCROLL}There haven’t been any fierce,{NEWLINE}in-your-face challengers.{SCROLL}I wonder if a challenger will ever show{NEWLINE}up that I’d want to be a fan of.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/85"
+   "origin": "agent",
+   "notes": "US 0108/85 | RV044: meaning: zh says aggressive challengers, not gorgeous/dazzling"
   },
   {
    "id": 86,
    "zh": "Ｌ『啊,那个⋯⋯{SCROLL}你该不会是{CLEAR}迷上了战斗舞台吧？{SCROLL}战斗舞台很有意思吧？{NEWLINE}赢得次数越多就会有越多的{CLEAR}精灵出现！",
-   "en": "Serena: Um... Excuse me?{SCROLL}If you don’t mind me asking, are you{NEWLINE}getting into the Battle Hall?{SCROLL}It’s fun in an engrossing way, isn’t it?{NEWLINE}Did you know?{SCROLL}The more you win, the more kinds of{NEWLINE}Pokémon appear.",
+   "en": "Serena: Um... Excuse me?{SCROLL}You haven’t gotten hooked on the{NEWLINE}Battle Hall, have you?{SCROLL}It’s fun, isn’t it? The more you win, the{NEWLINE}more kinds of Pokémon appear!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/86"
+   "origin": "agent",
+   "notes": "US 0108/86 | RV044: addition: dropped 'Did you know?'"
   },
   {
    "id": 87,
    "zh": "Ｌ『啊,那个⋯⋯{SCROLL}之前的舞台上见过你{NEWLINE}一下子就感兴趣了{SCROLL}嗯,以前是今后也希望{NEWLINE}作为您的粉丝支持您{CLEAR}可以吗？",
-   "en": "Serena: Um... Excuse me?{SCROLL}I watched you when you were on stage.{NEWLINE}It made me feel all tingly seeing you.{SCROLL}Um... You won’t mind if I cheer for you{NEWLINE}from now on, will you? Please, may I?",
+   "en": "Serena: Um... Excuse me?{SCROLL}I saw you on stage before, and I was{NEWLINE}drawn to you right away.{SCROLL}Um... I’ve been your fan, and I’d like{NEWLINE}to keep cheering you on as one. Would{CLEAR}that be okay?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/87"
+   "origin": "agent",
+   "notes": "US 0108/87 | RV044: addition: dropped 'all tingly'; restored 'have been and will be your fan'"
   },
   {
    "id": 88,
@@ -718,10 +718,10 @@
   {
    "id": 89,
    "zh": "Ｌ『啊,那个⋯⋯{SCROLL}接下来要和什么样的精灵一起{CLEAR}去获取记录呢！？{SCROLL}我经常在考虑这样的问题{CLEAR}导致晚上都睡不着了！",
-   "en": "Serena: Um... Excuse me?{SCROLL}Can you tell me what kind of Pokémon{NEWLINE}you’re going for a record with next?{SCROLL}When I start thinking about that, I get{NEWLINE}sort of all choked up.{SCROLL}I have trouble sleeping at night when{NEWLINE}I get that way.",
+   "en": "Serena: Um... Excuse me?{SCROLL}What kind of Pokémon are you going for a{NEWLINE}record with next!?{SCROLL}I’m always thinking about it, so much{NEWLINE}that I can’t sleep at night!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/89"
+   "origin": "agent",
+   "notes": "US 0108/89 | RV044: addition: dropped 'all choked up'"
   },
   {
    "id": 90,
@@ -734,10 +734,10 @@
   {
    "id": 91,
    "zh": "Ｌ『能够让精灵变得如此活跃的人{CLEAR}你是头一个！{SCROLL}我⋯⋯曾向朋友们夸你呢！{SCROLL}我说也想成为{NEWLINE}像你那样棒的训练师！",
-   "en": "Serena: I’ve never seen Pokémon{NEWLINE}battle as enjoyably as yours do.{SCROLL}You’re the first Trainer ever who’s{NEWLINE}done that.{SCROLL}I... I brag about you to all my friends.{NEWLINE}I hope you don’t mind.{SCROLL}I tell them I wish I could be as{NEWLINE}wonderful a Trainer as you!",
+   "en": "Serena: You’re the first person I’ve{NEWLINE}seen who can make Pokémon so lively!{SCROLL}I... I’ve been bragging about you to my{NEWLINE}friends!{SCROLL}I told them I want to become a{NEWLINE}wonderful Trainer like you, too!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/91"
+   "origin": "agent",
+   "notes": "US 0108/91 | RV044: addition: dropped 'I hope you don't mind' and duplicated praise"
   },
   {
    "id": 92,
@@ -750,18 +750,18 @@
   {
    "id": 93,
    "zh": "Ｌ『在舞台上经历无数战斗{CLEAR}获得的无上光荣！{SCROLL}连一直关注着你的我{CLEAR}都能感觉到变得幸福了{NEWLINE}哈哈！",
-   "en": "Serena: You’re so inspiring to me.{SCROLL}All the glory you earned while battling{NEWLINE}so often on that shining stage...{SCROLL}Just seeing you makes me feel all{NEWLINE}happy inside. ♫",
+   "en": "Serena: All the battles you’ve fought{NEWLINE}on stage, and all the glory you’ve won!{SCROLL}Even I feel happy, just from watching{NEWLINE}you all this time. Ha ha!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/93"
+   "origin": "agent",
+   "notes": "US 0108/93 | RV044: addition: dropped 'so inspiring'; restored laugh"
   },
   {
    "id": 94,
    "zh": "Ｌ『战斗舞台上{NEWLINE}你对精灵的爱{SCROLL}是无限广博{NEWLINE}无限深厚的⋯⋯{SCROLL}热爱所有的精灵的你⋯⋯{CLEAR}我,最喜欢了！！",
-   "en": "Serena: Your Pokémon love that you’ve{NEWLINE}shown at the Battle Hall is as infinitely{CLEAR}deep as it is wide...{SCROLL}It’s amazing, but you love every kind of{NEWLINE}Pokémon there is.{SCROLL}I love you for being so amazing and{NEWLINE}dedicated!",
+   "en": "Serena: The love you show Pokémon at{NEWLINE}the Battle Hall is boundlessly broad and{CLEAR}boundlessly deep...{SCROLL}You love every single Pokémon... and{NEWLINE}I... I just adore you!!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/94"
+   "origin": "agent",
+   "notes": "US 0108/94 | RV044: meaning: zh says she adores the player who loves all Pokémon"
   },
   {
    "id": 95,
