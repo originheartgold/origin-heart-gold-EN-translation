@@ -816,7 +816,7 @@
   021E5B8E  5820       ldr r0, [r4, r0]
   021E5B90  F63F FAF2  bl #0x2025178
 
-== overlay50+0x122E (RAM 0x021E5BAE), 1 bytes, data: text-speed-options-menu
+== overlay50+0x122E (RAM 0x021E5BAE), 1 byte, data: text-speed-options-menu
 - 021E5BAE  00
 + 021E5BAE  20
 

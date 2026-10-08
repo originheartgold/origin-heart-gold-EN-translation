@@ -14,7 +14,7 @@
   02263A6C  E1A0A000   mov sl, r0
 
 == overlay114+0x94C (RAM 0x02263B4C), 8 bytes, arm: antipiracy-ov114-0x94C
-  02263B48  02264114   eoreq r4, r6, #20, #2
+  02263B48  02264114   .word 0x02264114
 - 02263B4C  E92D47F0   push {r4, r5, r6, r7, r8, sb, sl, lr}
 - 02263B50  E24DD080   sub sp, sp, #0x80
 + 02263B4C  E3A00001   mov r0, #1
@@ -22,7 +22,7 @@
   02263B54  E1A0A000   mov sl, r0
 
 == overlay114+0xA34 (RAM 0x02263C34), 8 bytes, arm: antipiracy-ov114-0xA34
-  02263C30  022641EC   eoreq r4, r6, #236, #2
+  02263C30  022641EC   .word 0x022641EC
 - 02263C34  E92D47F0   push {r4, r5, r6, r7, r8, sb, sl, lr}
 - 02263C38  E24DD080   sub sp, sp, #0x80
 + 02263C34  E3A00000   mov r0, #0
@@ -30,7 +30,7 @@
   02263C3C  E1A0A000   mov sl, r0
 
 == overlay114+0xB1C (RAM 0x02263D1C), 8 bytes, arm: antipiracy-ov114-0xB1C
-  02263D18  02263F94   eoreq r3, r6, #148, #30
+  02263D18  02263F94   .word 0x02263F94
 - 02263D1C  E92D47F0   push {r4, r5, r6, r7, r8, sb, sl, lr}
 - 02263D20  E24DD080   sub sp, sp, #0x80
 + 02263D1C  E3A00001   mov r0, #1
@@ -38,7 +38,7 @@
   02263D24  E1A0A000   mov sl, r0
 
 == overlay114+0xC04 (RAM 0x02263E04), 8 bytes, arm: antipiracy-ov114-0xC04
-  02263E00  02264054   eoreq r4, r6, #0x54
+  02263E00  02264054   .word 0x02264054
 - 02263E04  E92D47F0   push {r4, r5, r6, r7, r8, sb, sl, lr}
 - 02263E08  E24DD080   sub sp, sp, #0x80
 + 02263E04  E3A00000   mov r0, #0
