@@ -6,7 +6,7 @@
   {
    "id": 0,
    "zh": "通往１９号水路的沙滩{NEWLINE}由于火山喷发的关系,{CLEAR}现在禁止通行。{SCROLL}红莲岛的居民没什么事吧？",
-   "en": "The beach to Route 19 is closed for now{NEWLINE}because of the volcanic eruption. Are{CLEAR}the people of Cinnabar Island all right?",
+   "en": "The beach to Route 19 is closed for now{NEWLINE}because of the volcanic eruption.{SCROLL}Are the people of Cinnabar Island{NEWLINE}all right?",
    "status": "draft",
    "origin": "agent",
    "notes": "US 0741/0 | RV028: addition: 现在 is \"for now\", not \"indefinitely\"; question restored (coordinator)"
