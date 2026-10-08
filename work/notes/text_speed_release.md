@@ -32,7 +32,7 @@ Text speed shares the old 4-bit options field (bit 2; MUSIC SPEED keeps bits 0-1
 
 ## Known gaps and risks
 
-- Automated emulator gates ran in DeSmuME only for this build. The melonDS check could not run (macOS permissions), so there is no second-emulator pass.
+- Automated emulator gates ran in DeSmuME only for this build. No melonDS or other second-emulator pass was made for it (an earlier melonDS attempt on the old candidate stopped on macOS permissions).
 - No hardware test, of the text speed or of the anti-piracy bypass.
 - Not covered by gates: cutscenes, intro and credits, radio and TV, mail, the naming screen.
 - The frame rule was calibrated in DeSmuME only.
@@ -41,7 +41,7 @@ Text speed shares the old 4-bit options field (bit 2; MUSIC SPEED keeps bits 0-1
 
 ## Evidence
 
-Final run at d115c71: `work/build/text-speed/rc4`. Full suite releasable; 664 unit tests; 25 faults detected; 1 dead-code finding. Details per gate are in [text_speed_release_checks.md](text_speed_release_checks.md).
+Final run at d115c71: `work/build/text-speed/rc4`. Full suite releasable; 664 unit tests; 25 faults detected by their declared gates; 1 fault (`no-state-stop`) targets code proven unreachable (the batching loop's state-field stop; RenderText disassembly in text_speed_release_checks.md). Details per gate are in [text_speed_release_checks.md](text_speed_release_checks.md).
 
 ## Reproduce
 
