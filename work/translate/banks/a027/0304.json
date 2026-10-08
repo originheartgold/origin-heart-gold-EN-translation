@@ -110,10 +110,10 @@
   {
    "id": 13,
    "zh": "那技巧堪称精密仪器！{NEWLINE}靠计算来防御的结果是？{SCROLL}",
-   "en": "That skill is like a well-oiled machine!{NEWLINE}The result of the calculation is...!{SCROLL}",
+   "en": "That skill is a precision instrument!{NEWLINE}How will its calculated defense fare?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0311/13"
+   "origin": "agent",
+   "notes": "US 0311/13 | RV079: omission: 靠计算来防御 (calculated defense) dropped (D-1779)"
   },
   {
    "id": 14,
@@ -158,18 +158,18 @@
   {
    "id": 19,
    "zh": "我能看到胜利！{NEWLINE}因为,我不可能输！{SCROLL}",
-   "en": "I can see victory! That’s because I{NEWLINE}don’t think there’s any way I’ll lose!{SCROLL}",
+   "en": "I can see victory!{NEWLINE}Because there’s no way I can lose!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0311/19"
+   "origin": "agent",
+   "notes": "US 0311/19 | RV079: softened: 我不可能输 is a flat assertion, not “I don’t think”"
   },
   {
    "id": 20,
    "zh": "这些精灵们{NEWLINE}还能飞！飞到彩虹的尽头！{SCROLL}",
-   "en": "I can fly with these Pokémon so far!{NEWLINE}Over the rainbow!{SCROLL}",
+   "en": "These Pokémon can fly even farther!{NEWLINE}To the end of the rainbow!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0311/20"
+   "origin": "agent",
+   "notes": "US 0311/20 | RV079: meaning: the Pokémon fly, to the end of the rainbow (D-1779)"
   },
   {
    "id": 21,
@@ -238,10 +238,10 @@
   {
    "id": 29,
    "zh": "奔跑吧！前面等你的{NEWLINE}是名为友情的终点！{SCROLL}",
-   "en": "Run! The thing beyond that--the goal{NEWLINE}is called friendship!{SCROLL}",
+   "en": "Run! What awaits you ahead is{NEWLINE}a finish line called friendship!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0311/29"
+   "origin": "agent",
+   "notes": "US 0311/29 | RV079: grammar: unclear US-style line; zh = the finish line ahead is called friendship"
   },
   {
    "id": 30,
@@ -294,10 +294,10 @@
   {
    "id": 36,
    "zh": "友情？我已经对它无所谓了。{NEWLINE}因为我们已经成为一体了。{SCROLL}",
-   "en": "Friendship? We don’t need it. That’s{NEWLINE}because we are already one.{SCROLL}",
+   "en": "Friendship? I’m past caring about that.{NEWLINE}That’s because we are already one.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0311/36"
+   "origin": "agent",
+   "notes": "US 0311/36 | RV079: meaning: 已经对它无所谓了 = no longer care, not “don’t need” (D-1779)"
   },
   {
    "id": 37,
@@ -390,10 +390,10 @@
   {
    "id": 48,
    "zh": "天涯海角我们都能去。{NEWLINE}走吧,一起去,直到天涯海角！！{SCROLL}",
-   "en": "We can go as far as we want...{NEWLINE}Come on, let’s go together!{SCROLL}",
+   "en": "We can go to the ends of the earth.{NEWLINE}Come on, together, to the very end!!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0311/48"
+   "origin": "agent",
+   "notes": "US 0311/48 | RV079: omission: 天涯海角 repeated promise dropped (D-1779)"
   },
   {
    "id": 49,

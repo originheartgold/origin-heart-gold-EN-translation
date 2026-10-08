@@ -5952,7 +5952,7 @@
   {
    "id": "RV079",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 547,
    "labels": [
     "a027/0294 easy_chat_words + side_features_minigames",
