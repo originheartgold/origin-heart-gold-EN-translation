@@ -51,6 +51,13 @@ class Disassemble(unittest.TestCase):
         rows = L.disassemble(bytes.fromhex("0000a0e31eff2fe1"), 0x02263A64, "arm")
         self.assertEqual(rows, [(0x02263A64, "E3A00000", "mov r0, #0"), (0x02263A68, "E12FFF1E", "bx lr")])
 
+    def test_arm_literal_pool_words_in_context(self):
+        data = bytes.fromhex("14412602f0472de9")          # a pointer into RAM, then push {r4-r10, lr}
+        rows = L.disassemble(data, 0x02263B48, "arm", literals=True)
+        self.assertEqual(rows[0], (0x02263B48, "02264114", ".word 0x02264114"))
+        self.assertTrue(rows[1][2].startswith("push"))
+        self.assertTrue(L.disassemble(data, 0x02263B48, "arm")[0][2].startswith("eoreq"))   # what capstone says
+
     def test_undecodable_bytes_are_shown_as_data(self):
         rows = L.disassemble(hw(0xF000), 0x02000000, "thumb")      # half a bl
         self.assertEqual(rows, [(0x02000000, "F000", ".hword 0xF000")])

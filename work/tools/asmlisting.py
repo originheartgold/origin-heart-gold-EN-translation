@@ -91,14 +91,25 @@ def _bl_second(h):
     return h >> 11 in (0x1D, 0x1F)               # Thumb bl (0x1F) / blx (0x1D): second halfword
 
 
-def disassemble(data: bytes, addr: int, mode: str, labels=None) -> list:
+def _ram_word(v) -> bool:
+    """A word that points into ITCM or main RAM: in ARM context, a literal pool entry rather than code."""
+    return 0x01FF8000 <= v < 0x02400000
+
+
+def disassemble(data: bytes, addr: int, mode: str, labels=None, literals=False) -> list:
     """(address, bytes text, instruction text) rows; bytes text: Thumb halfwords ("2305", "F026 FA78"), ARM
     words ("E92D47F0"). Bytes capstone does not decode are shown as .hword / .word. labels: {address: name}
-    to name branch targets."""
+    to name branch targets. literals (context only): an ARM word that points into RAM is shown as .word, as
+    it is most likely a literal pool entry (capstone would decode it as a conditional data-processing op)."""
     rows, i = [], 0
     step = 2 if mode == "thumb" else 4
     md = _cs(mode)
     while i < len(data):
+        if literals and mode == "arm" and len(data) - i >= 4 and _ram_word(struct.unpack_from("<I", data, i)[0]):
+            v = struct.unpack_from("<I", data, i)[0]
+            rows.append((addr + i, _hex(data[i:i + 4], mode), f".word 0x{v:08X}"))
+            i += 4
+            continue
         insn = next(md.disasm(data[i:], addr + i, count=1), None)
         if insn is None or insn.size > len(data) - i:
             n = min(step, len(data) - i)
@@ -345,15 +356,15 @@ def render_area(asm: Assembled, area: dict, labels: dict, changed: dict, writes:
     if appended:
         what = f"appended {end - start} bytes ({key} 0x{len(old):X} -> 0x{len(new):X} bytes)"
     else:
-        what = f"{end - start} bytes"
+        what = f"{end - start} byte{'' if end - start == 1 else 's'}"
     out = [f"== {key}+0x{start:X} (RAM 0x{area['start']:08X}), {what}, {mode if code else 'data'}: {region}"]
     if code:
         s, e = (start, end) if appended else _context(asm, key, start, end, mode, changed[key])
-        out += _lines("  ", disassemble(old[s:start], base + s, mode, labels))
+        out += _lines("  ", disassemble(old[s:start], base + s, mode, labels, literals=True))
         if not appended:
             out += _lines("- ", disassemble(old[start:end], base + start, mode, labels))
         out += _lines("+ ", disassemble(new[start:end], base + start, mode, labels))
-        out += _lines("  ", disassemble(old[end:e], base + end, mode, labels))
+        out += _lines("  ", disassemble(old[end:e], base + end, mode, labels, literals=True))
         return out
     rows = [w for w in writes.get(key, []) if area["start"] <= w[0] < base + end]
     for i, (addr, d, src, n) in enumerate(rows):
