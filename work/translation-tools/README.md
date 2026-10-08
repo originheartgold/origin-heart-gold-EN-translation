@@ -9,10 +9,10 @@ Two environments, two gates:
 
 | Gate | Environment | Tools and pins |
 | --- | --- | --- |
-| `work/tools/check.py` (repo-wide: fix registry, `ruff check` with `ruff.toml`, unit tests, `--full` build) | root `.venv` | `work/tools/requirements-dev.txt`: ruff 0.16.10, capstone |
+| `work/tools/check.py` (repo-wide: fix registry, `ruff check` with `ruff.toml`, unit tests, `--full` build) | root `.venv` | `work/tools/requirements-dev.txt`: ruff 0.16.8, capstone |
 | `work/tools/check_translation.py` (translation tooling: ruff with `work/tools/ruff-translation.toml`, strict mypy with `work/pyproject.toml`, tests) | `work/.venv` | `work/uv.lock`: ruff 0.16.10, mypy 2.4.0, ndspy |
 
-The ruff version is the same in both; change both pins together.
+The ruff pins differ (0.16.8 in the root `.venv`, 0.16.10 here); aligning them needs a download, so it waits for the user. Change both pins together.
 
 The user approved these dependency downloads. For a fresh checkout, obtain
 permission before downloading tools or dependencies as required by `AGENTS.md`.
