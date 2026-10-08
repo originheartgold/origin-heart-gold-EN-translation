@@ -4412,7 +4412,7 @@
   {
    "id": "RV069",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 550,
    "labels": [
     "a027/0014 std_script + tv_news",

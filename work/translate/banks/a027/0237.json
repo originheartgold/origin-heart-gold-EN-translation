@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "最终,{NEWLINE}搜查队的努力付诸东流,{SCROLL}在散步公园的遗迹中,{NEWLINE}有一种精灵{SCROLL}飞走后,留下了一片{NEWLINE}类似于翅膀的东西⋯⋯{SCROLL}因此,我们制作本期特别节目{NEWLINE}「拥有闪光翅膀的精灵？」{SCROLL}在全国电视网络{NEWLINE}为大家进行追踪报道,{SCROLL}请各位观众下周继续锁定本频道！",
-   "en": "In the end, the search team’s{NEWLINE}efforts came to nothing.{SCROLL}In the ruins of Amity{NEWLINE}Square, a Pokémon flew away,{SCROLL}leaving behind only something{NEWLINE}that looked like a feather...{SCROLL}And so we bring you this special{NEWLINE}program, “The Pokémon with Shining{CLEAR}Wings?”, with follow-up coverage{CLEAR}on our nationwide TV network.{SCROLL}Viewers, be sure to stay tuned{NEWLINE}to this channel next week!",
+   "en": "In the end, the search team’s{NEWLINE}efforts came to nothing.{SCROLL}In the ruins of Amity{NEWLINE}Square, a Pokémon flew away,{SCROLL}leaving behind only something{NEWLINE}that looked like a wing...{SCROLL}And so we bring you this special{NEWLINE}program, “The Pokémon with Shining{CLEAR}Wings?”, with follow-up coverage{CLEAR}on our nationwide TV network.{SCROLL}Viewers, be sure to stay tuned{NEWLINE}to this channel next week!",
    "status": "draft",
    "origin": "agent",
-   "notes": "DP-era TV leftover; US HGSS blanks this bank (probably unused)."
+   "notes": "DP-era TV leftover; US HGSS blanks this bank (probably unused). | RV069: meaning: 类似于翅膀 = like a wing; D-1754"
   },
   {
    "id": 5,
@@ -70,18 +70,18 @@
   {
    "id": 8,
    "zh": "转播员『新奥体育！{NEWLINE}我们将为您带来{CLEAR}马克西假面的实况转播！{SCROLL}⋯⋯对方使出了必杀技！{NEWLINE}马克西假面很冷静！{SCROLL}这次轮到他的反击,{NEWLINE}是泰山压顶！{SCROLL}这是他毕生的绝技！{NEWLINE}{VAR:0100:0}！！！{SCROLL}对方被压得一动不动。{NEWLINE}一！二！三！！{SCROLL}简直就是无敌！马克西假面{NEWLINE}又一次延续了他的连胜记录！！{SCROLL}以上就是本期的新奥体育！",
-   "en": "Commentator: Sinnoh Sports! We bring{NEWLINE}you live coverage of Crasher Wake!{SCROLL}...His opponent unleashes a finishing{NEWLINE}move! Crasher Wake stays calm!{SCROLL}Now it’s his turn to{NEWLINE}strike back: a body slam!{SCROLL}The ultimate technique of his{NEWLINE}life! {VAR:0100:0} PRESS!!!{SCROLL}His opponent is pinned{NEWLINE}flat! One! Two! Three!!{SCROLL}Simply invincible! Crasher Wake extends{NEWLINE}his winning streak once again!!{SCROLL}That’s all for this{NEWLINE}week’s Sinnoh Sports!",
+   "en": "Commentator: Sinnoh Sports! We bring{NEWLINE}you live coverage of Crasher Wake!{SCROLL}...His opponent unleashes a finishing{NEWLINE}move! Crasher Wake stays calm!{SCROLL}Now it’s his turn to{NEWLINE}strike back: a body slam!{SCROLL}The ultimate technique of his{NEWLINE}life! {VAR:0100:0}!!!{SCROLL}His opponent is pinned{NEWLINE}flat! One! Two! Three!!{SCROLL}Simply invincible! Crasher Wake extends{NEWLINE}his winning streak once again!!{SCROLL}That’s all for this{NEWLINE}week’s Sinnoh Sports!",
    "status": "draft",
    "origin": "agent",
-   "notes": "DP-era TV leftover; US HGSS blanks this bank (probably unused)."
+   "notes": "DP-era TV leftover; US HGSS blanks this bank (probably unused). | RV069: addition: ‘PRESS’ not in zh"
   },
   {
    "id": 9,
    "zh": "转播员『新奥体育！{NEWLINE}我们将为您带来{CLEAR}马克西假面的实况转播！{SCROLL}{VAR:0133:1}分钟的比赛后,{NEWLINE}他依然精力充沛！无限活力。{SCROLL}王者马克西假面{NEWLINE}使出了他灌注灵魂的一击！{SCROLL}怒吼吧,巨浪！必杀！{NEWLINE}ＭＡＸ・{VAR:0100:0}・冲击！{SCROLL}对方不知所措,毫无还手之力！{NEWLINE}这是第三次翻盘！{SCROLL}不愧是马克西假面,{NEWLINE}拥有１０００种技能的男人！{SCROLL}以上就是本期的新奥体育！",
-   "en": "Commentator: Sinnoh Sports! We bring{NEWLINE}you live coverage of Crasher Wake!{SCROLL}{VAR:0133:1} minutes into the match, he’s{NEWLINE}still full of energy! Limitless vigor!{SCROLL}The king, Crasher Wake,{NEWLINE}unleashes a blow full of soul!{SCROLL}Roar, mighty waves! His finisher!{NEWLINE}MAX {VAR:0100:0} IMPACT!{SCROLL}His opponent is at a loss, unable to{NEWLINE}hit back! That’s his third comeback!{SCROLL}What else from Crasher Wake,{NEWLINE}the man of 1000 moves!{SCROLL}That’s all for this{NEWLINE}week’s Sinnoh Sports!",
+   "en": "Commentator: Sinnoh Sports! We bring{NEWLINE}you live coverage of Crasher Wake!{SCROLL}{VAR:0133:1} minutes into the match, he’s{NEWLINE}still full of energy! Limitless vigor!{SCROLL}The king, Crasher Wake,{NEWLINE}unleashes a blow full of soul!{SCROLL}Roar, mighty waves! His finisher!{NEWLINE}MAX {VAR:0100:0} IMPACT!{SCROLL}His opponent is at a loss, unable to{NEWLINE}hit back! That’s his third comeback!{SCROLL}That’s Crasher Wake for you,{NEWLINE}the man of 1000 moves!{SCROLL}That’s all for this{NEWLINE}week’s Sinnoh Sports!",
    "status": "draft",
    "origin": "agent",
-   "notes": "DP-era TV leftover; US HGSS blanks this bank (probably unused)."
+   "notes": "DP-era TV leftover; US HGSS blanks this bank (probably unused). | RV069: grammar: 不愧是 = that’s X for you"
   },
   {
    "id": 10,
@@ -113,7 +113,7 @@
    "en": "Anchor: Our drama, At Surf’s End...{NEWLINE}Episode 9: The Rusted League Badges.{SCROLL}Boy: I came alone, just like{NEWLINE}you said! Give me back my mom!{SCROLL}Mother: ......{SCROLL}Boy: Mom!{SCROLL}Mother: You’re wrong, you’re{NEWLINE}wrong! Turn over the League Badges{CLEAR}you earned and take a good look...{SCROLL}Boy: Mom, what are you talking{NEWLINE}about? The Badges? These?{SCROLL}Ah! If I turn all the Badges over and{NEWLINE}fit them together, there are letters!{SCROLL}Mother: That’s right... This{NEWLINE}town was originally yours...{SCROLL}Boy: It’s no good, Mom! The{NEWLINE}Badges are all rusted! I can’t{CLEAR}read what’s carved on them at all!{SCROLL}Mother: The sea air{NEWLINE}must have rusted them.{SCROLL}Boy: No way! Mom! Tell me what to do!{SCROLL}Music: Da-dum!{NEWLINE}Ba-ba-ba-ba-ba-ba-boom!{SCROLL}Anchor: The next episode of At Surf’s{NEWLINE}End is the grand finale. Don’t miss it!",
    "status": "draft",
    "origin": "agent",
-   "notes": "DP-era TV leftover; US HGSS blanks this bank (probably unused)."
+   "notes": "DP-era TV leftover; US HGSS blanks this bank (probably unused). | RV069: name: zh typo 说写 for 说些, intended word kept; logged D-2224"
   },
   {
    "id": 14,
@@ -166,10 +166,10 @@
   {
    "id": 20,
    "zh": "我是一名普通的女孩子,{NEWLINE}因为那电击而一见钟情！{SCROLL}想不到,我的男友{NEWLINE}居然是道馆馆主！{SCROLL}虽然我没有精灵,{NEWLINE}但这没关系！原因很简单。{CLEAR}因为单纯就是美！{SCROLL}我也要成为精灵训练师！{NEWLINE}而且万事都已俱备！！{SCROLL}新节目口袋魔法第１集！{NEWLINE}「一见钟情开始了！{CLEAR}　迷人这个技能你知道吗？」{SCROLL}对了,大家是用什么方法{NEWLINE}得到自己的精灵的？",
-   "en": "I’m just an ordinary girl, and{NEWLINE}it was love at first sight,{CLEAR}all because of that shock!{SCROLL}Who knew my crush would turn{NEWLINE}out to be a Gym Leader!{SCROLL}I don’t have any Pokémon, but{NEWLINE}that doesn’t matter! The reason’s{CLEAR}simple. Because simple is beautiful!{SCROLL}I’ll become a Pokémon Trainer too!{NEWLINE}And then everything will be all set!!{SCROLL}New show, PokéMagic, Episode 1!{SCROLL}“It Began with Love at First Sight!{NEWLINE}Do You Know the Move Attract?”{SCROLL}By the way, everyone, how did{NEWLINE}you get your first Pokémon?",
+   "en": "I’m just an ordinary girl, and{NEWLINE}it was love at first sight,{CLEAR}all because of that shock!{SCROLL}Who knew my boyfriend would turn{NEWLINE}out to be a Gym Leader!{SCROLL}I don’t have any Pokémon, but{NEWLINE}that doesn’t matter! The reason’s{CLEAR}simple. Because simple is beautiful!{SCROLL}I’ll become a Pokémon Trainer too!{NEWLINE}And everything’s already set!!{SCROLL}New show, PokéMagic, Episode 1!{SCROLL}“It Began with Love at First Sight!{NEWLINE}Do You Know the Move Attract?”{SCROLL}By the way, everyone, how did{NEWLINE}you get your first Pokémon?",
    "status": "draft",
    "origin": "agent",
-   "notes": "DP-era TV leftover; US HGSS blanks this bank (probably unused)."
+   "notes": "DP-era TV leftover; US HGSS blanks this bank (probably unused). | RV069: meaning: 我的男友 = my boyfriend; 万事都已俱备 = already set; D-1755"
   },
   {
    "id": 21,
@@ -185,7 +185,7 @@
    "en": "My Kricketot only knows two moves:{SCROLL}Growl and Bide! Isn’t{NEWLINE}that way too weak?{SCROLL}Oh, right! My childhood friend{NEWLINE}said that if I let it hold an Oran{CLEAR}Berry, then while it’s Biding{SCROLL}it can really take a beating. As{NEWLINE}expected of a former Bug Catcher!{CLEAR}So, give me an Oran Berry!{SCROLL}Next time, PokéMagic Episode 3!{SCROLL}“Love Matters Most! Where{NEWLINE}There’s Love, There’s Power!”{SCROLL}Trainers and Pokémon! Let’s{NEWLINE}all get stronger together!",
    "status": "draft",
    "origin": "agent",
-   "notes": "DP-era TV leftover; US HGSS blanks this bank (probably unused)."
+   "notes": "DP-era TV leftover; US HGSS blanks this bank (probably unused). | RV069: name: zh typo 不亏 for 不愧, intended word kept; logged D-2224"
   },
   {
    "id": 23,
@@ -209,7 +209,7 @@
    "en": "Kricketot keeps getting{NEWLINE}stronger, and Kricketot’s{CLEAR}friends keep growing in number.{CLEAR}But now we’re off on a long trip!{SCROLL}Speaking of which, the person I admire{NEWLINE}is in XXXX City. How do I get there?{SCROLL}I have the map on my phone,{NEWLINE}but I can’t read maps.{SCROLL}Whatever, I’ll reach the{NEWLINE}next city eventually!{SCROLL}Next time, PokéMagic Episode 6!{SCROLL}“I Discovered an{NEWLINE}Earth-Shattering Secret: Not{CLEAR}Every Town Has a Pokémon Gym!”{SCROLL}Lost, but I still won’t look at the map!{NEWLINE}Because I read it upside down anyway!",
    "status": "draft",
    "origin": "agent",
-   "notes": "DP-era TV leftover; US HGSS blanks this bank (probably unused)."
+   "notes": "DP-era TV leftover; US HGSS blanks this bank (probably unused). | RV069: name: zh typo 总回 for 总会, intended word kept; logged D-2224"
   },
   {
    "id": 26,

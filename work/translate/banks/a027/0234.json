@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "ＤＪ『精灵！{NEWLINE}捕获成功！！{SCROLL}这期也将捕获精灵的{NEWLINE}训练师的记录{CLEAR}与大家分享！{SCROLL}这次出色地展开捕获的{NEWLINE}训练师的名字是{CLEAR}{VAR:0103:0}！{SCROLL}{VAR:0103:0}捕获的{NEWLINE}精灵是⋯⋯{SCROLL}⋯⋯嗯？请稍等一下⋯⋯{SCROLL}{VAR:0103:0}精灵{NEWLINE}捕获失败⋯⋯{SCROLL}丢球丢了{VAR:0134:1}次{NEWLINE}还是不行啊⋯⋯{SCROLL}然后,{VAR:0103:0}{NEWLINE}对精灵进行了治疗⋯⋯{SCROLL}啊啊⋯这是何等的失态啊⋯{SCROLL}这家伙,伤心过度以至于{NEWLINE}出不了新闻了⋯⋯{SCROLL}{VAR:0103:0}！！{NEWLINE}加油哦！下次还有机会的！！{SCROLL}像那样的精灵的事,{NEWLINE}就忘掉它吧！！{SCROLL}在这个广阔的新奥,{NEWLINE}与你合拍的精灵{CLEAR}还有很多很多呐~！",
-   "en": "DJ: Pokémon! Capture Success!!{SCROLL}This time, too, we’re sharing the record{NEWLINE}of a Trainer who caught a Pokémon!{SCROLL}The Trainer who pulled off this{NEWLINE}splendid catch is {VAR:0103:0}!{SCROLL}The Pokémon {VAR:0103:0} caught was...{SCROLL}...Hm? Please wait a moment...{SCROLL}{VAR:0103:0} failed to catch the Pokémon...{SCROLL}They threw {VAR:0134:1} Balls and{NEWLINE}still couldn’t do it...{SCROLL}And then, {VAR:0103:0}{NEWLINE}healed the Pokémon...{SCROLL}Ahh... What a blunder...{SCROLL}This one’s so heartbreaking it{NEWLINE}can’t even make the news...{SCROLL}{VAR:0103:0}!! Hang in there!{NEWLINE}You’ll get another chance!!{SCROLL}Just forget about a Pokémon like that!!{SCROLL}In this wide world of Sinnoh,{NEWLINE}there are lots and lots more{CLEAR}Pokémon that’ll click with you!",
+   "en": "DJ: Pokémon! Capture Success!!{SCROLL}This time, too, we’re sharing the record{NEWLINE}of a Trainer who caught a Pokémon!{SCROLL}The Trainer who pulled off this{NEWLINE}splendid catch is {VAR:0103:0}!{SCROLL}The Pokémon {VAR:0103:0} caught was...{SCROLL}...Hm? Please wait a moment...{SCROLL}{VAR:0103:0} failed to catch the Pokémon...{SCROLL}They threw {VAR:0134:1} Balls and{NEWLINE}still couldn’t do it...{SCROLL}And then, {VAR:0103:0}{NEWLINE}healed the Pokémon...{SCROLL}Ahh... What a blunder...{SCROLL}This one’s so heartbroken they{NEWLINE}can’t even make the news...{SCROLL}{VAR:0103:0}!! Hang in there!{NEWLINE}You’ll get another chance!!{SCROLL}Just forget about a Pokémon like that!!{SCROLL}In this wide world of Sinnoh,{NEWLINE}there are lots and lots more{CLEAR}Pokémon that’ll click with you!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV069: meaning: 这家伙伤心过度 = the trainer is heartbroken"
   },
   {
    "id": 3,

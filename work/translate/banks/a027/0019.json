@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "有很多看起来很方便的东西！{NEWLINE}都很想要！",
-   "en": "There’s a ton of convenient items.{NEWLINE}They all look useful.",
+   "en": "There are lots of handy-looking things!{NEWLINE}I want them all!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0020/6"
+   "origin": "agent",
+   "notes": "US 0020/6 | RV069: omission: 都很想要 (want them all) restored; D-1640"
   },
   {
    "id": 7,

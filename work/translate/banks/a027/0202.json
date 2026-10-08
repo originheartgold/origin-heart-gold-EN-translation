@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "你想加入队伍吗？{SCROLL}加入队伍的话{NEWLINE}可以和朋友相互竞争{CLEAR}或相互合作,非常有趣！{VAR:0200:0}",
-   "en": "Hey, you! I know it’s a little sudden,{NEWLINE}but would you like to join a group?{SCROLL}If you join a group, you can compete{NEWLINE}or cooperate with fellow members.{SCROLL}It’s a lot of fun. Want to join? {VAR:0200:0}",
+   "en": "Would you like to join a group?{SCROLL}If you join a group, you can compete{NEWLINE}or cooperate with your friends.{SCROLL}It’s a lot of fun! {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0204/2"
+   "origin": "agent",
+   "notes": "US 0204/2 | RV069: addition: US added ‘I know it’s a little sudden’ and ‘Want to join?’"
   },
   {
    "id": 3,
@@ -86,10 +86,10 @@
   {
    "id": 10,
    "zh": "组建队伍{NEWLINE}在联机大厅登录的话,{SCROLL}朋友们就可以加入相同的队伍,{SCROLL}加入相同的队伍的话{NEWLINE}两边就会发生相同的事件,{CLEAR}非常让人期待！{SCROLL}任何人都可以组建队伍,{CLEAR}加入也是一样的！{SCROLL}赶紧增加同伴跟大家一起玩！{VAR:0200:0}",
-   "en": "When you form or join a new group,{NEWLINE}be sure to visit any Union Room.{SCROLL}Mix your records with group members,{NEWLINE}and you’ll become integrated.{SCROLL}When you’re in the same group,{NEWLINE}events can happen simultaneously.{SCROLL}It makes things a lot more fun{NEWLINE}playing in a group!{SCROLL}Anyone can make a new group, and{NEWLINE}anyone can join.{SCROLL}I hope you recruit lots of friends{NEWLINE}so everyone can have fun! {VAR:0200:0}",
+   "en": "Once you’ve made a group, log in at{NEWLINE}the Union Room, and your friends can{CLEAR}join the same group.{SCROLL}When you’re in the same group, the same{NEWLINE}events happen for both of you.{SCROLL}It’s really exciting!{SCROLL}Anyone can make a group, and{NEWLINE}anyone can join one, too!{SCROLL}Hurry and gather lots of friends so{NEWLINE}you can all have fun together! {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0204/10"
+   "origin": "agent",
+   "notes": "US 0204/10 | RV069: meaning: US added record mixing/‘integrated’; zh says register at the Union Room so friends can join"
   },
   {
    "id": 11,
