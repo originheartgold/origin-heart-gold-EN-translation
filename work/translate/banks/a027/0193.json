@@ -286,10 +286,10 @@
   {
    "id": 35,
    "zh": "客人！{NEWLINE}恭喜您！{SCROLL}能够来到这里{NEWLINE}我承认您有相当的实力,{CLEAR}顾问好像很希望和客人您对战！{SCROLL}不过请先和工厂头目战斗吧！{CLEAR}您已经有所觉悟了吗？{SCROLL}",
-   "en": "Congratulations to you, Trainer!{SCROLL}Having made it this far, you clearly{NEWLINE}have considerable skill. Our advisor{CLEAR}seems very eager to battle you!{SCROLL}But first, please battle the{NEWLINE}Factory Head! Are you prepared?{SCROLL}",
+   "en": "Congratulations to you, Trainer!{SCROLL}Having made it this far, I must{NEWLINE}admit you have considerable skill.{CLEAR}Our advisor seems very eager{CLEAR}to battle you!{SCROLL}But first, please battle the{NEWLINE}Factory Head! Are you prepared?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0195/35 | zh mentions both 顾问 (the advisor) and 工厂头目 (the Factory Head); kept as written."
+   "notes": "US 0195/35 | zh mentions both 顾问 (the advisor) and 工厂头目 (the Factory Head); kept as written. | RV076: omission: 我承认 (I must admit) restored"
   },
   {
    "id": 36,

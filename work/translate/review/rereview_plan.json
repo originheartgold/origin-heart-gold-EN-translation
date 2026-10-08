@@ -5514,7 +5514,7 @@
   {
    "id": "RV076",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 552,
    "labels": [
     "a027/0032 battle_frontier + side_features_minigames",
