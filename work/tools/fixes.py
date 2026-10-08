@@ -131,6 +131,7 @@ OVERLAYS_TOML = "overlays.toml"
 SIZES_TOML = "sizes.toml"
 GUARDS_INC = "guards.inc"
 GUARDS_OFF = "GUARDS_OFF"               # -definelabel GUARDS_OFF 1: guards.inc's guards off (asmpatch synthetic)
+GUARDS_REAL = "GUARDS_REAL"             # -definelabel GUARDS_REAL 1: every real run; the guards stay on
 INCLUDE_DIR = "include"                 # work/patches/include: shared armips includes, not a fix
 ARM9_BASE = 0x02000000
 DECISIONS_JSONL = WORK / "translate" / "decisions" / "decisions.jsonl"
@@ -732,22 +733,25 @@ def _block_comments(lines, label) -> list:
             for n, line in enumerate(lines, 1) if "/*" in _strip_comment(line)]
 
 
-_GUARDS_OFF_RE = re.compile(r"(?<![\w@.])" + GUARDS_OFF + r"(?![\w@])", re.I)
-_GUARDS_OFF_DEFINED_RE = re.compile(r"\bdefined\s*\(\s*" + GUARDS_OFF + r"\s*\)", re.I)
+_GUARDS_OFF_RE = re.compile(r"(?<![\w@.])(" + GUARDS_OFF + "|" + GUARDS_REAL + r")(?![\w@])", re.I)
+_GUARDS_OFF_DEFINED_RE = re.compile(r"\bdefined\s*\(\s*(" + GUARDS_OFF + "|" + GUARDS_REAL + r")\s*\)", re.I)
 
 
 def guards_off_problems(lines, label, allow_defined=False) -> list:
-    """The name GUARDS_OFF switches guards.inc's guards off; only `asmpatch.py synthetic` may set it, on the
-    armips command line. Refused anywhere in a source or include (comments aside), except as
-    `defined(GUARDS_OFF)` where allow_defined (guards.inc), so no source can switch the guards off."""
+    """The names GUARDS_OFF (guards.inc's guards off: only `asmpatch.py synthetic` sets it) and GUARDS_REAL (the
+    guards on whatever else is defined: every real run sets it), both on the armips command line. Refused
+    anywhere in a source or include (comments aside), except as `defined(...)` where allow_defined
+    (guards.inc), so no source can switch the guards off or fake the real-run switch."""
     out = []
     for n, line in enumerate(lines, 1):
         code = _strip_comment(line)
         if allow_defined:
             code = _GUARDS_OFF_DEFINED_RE.sub("", code)
-        if _GUARDS_OFF_RE.search(code):
-            out.append(f"{label}:{n}: {GUARDS_OFF} is reserved: only asmpatch.py synthetic sets it (on the armips "
-                       f"command line, to assemble without the ROM); a source or include may not use it")
+        mo = _GUARDS_OFF_RE.search(code)
+        if mo:
+            out.append(f"{label}:{n}: {mo.group(1).upper()} is reserved: only asmpatch.py sets it (on the armips "
+                       f"command line: guards off without the ROM, guards on for real); a source or include may "
+                       f"not use it")
     return out
 
 

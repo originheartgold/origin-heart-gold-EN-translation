@@ -44,7 +44,8 @@ their regions) with guards.inc's guards off (`-definelabel GUARDS_OFF 1`). It ca
 finds (syntax, unknown names, .area overflows, a .string outside the table) and the build's checks that do
 not need the real bytes (a byte written twice, writes outside the declared regions, growth, the strings read
 back); not wrong bytes. The stand-ins are SyntheticImages: assemble() turns the guards off only for those, and
-refuses any source or include that names GUARDS_OFF, so a real build always assembles with its guards.
+refuses any source or include that names GUARDS_OFF or GUARDS_REAL; every other run passes
+`-definelabel GUARDS_REAL 1`, which keeps the guards on, so a real build always assembles with its guards.
 
     python3 work/tools/asmpatch.py [--rom ROM] [--armips PATH] check [--only IDS] [--without IDS]
                                          # assemble the selected fixes against the Chinese ROM (nothing written)
@@ -86,6 +87,7 @@ ENV_VAR = "ARMIPS"
 TIMEOUT = 120
 END = 0xFFFF
 GUARDS_OFF_ARGS = ("-definelabel", fixreg.GUARDS_OFF, "1")      # only for SyntheticImages (synthetic())
+GUARDS_REAL_ARGS = ("-definelabel", fixreg.GUARDS_REAL, "1")    # every other run: the guards stay on
 
 
 class AsmError(Exception):
@@ -465,7 +467,7 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
     todo = asm_fixes(fixes)
     bases = bases or {}
     synthetic = isinstance(binaries, SyntheticImages)
-    guards_args = list(GUARDS_OFF_ARGS) if synthetic else []
+    guards_args = list(GUARDS_OFF_ARGS if synthetic else GUARDS_REAL_ARGS)
     live = guards_live_problems(todo, include_dir)
     if live:
         raise AsmError("refused: a source or include could switch the guards off (GUARDS_OFF, an include "
@@ -518,6 +520,8 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
             src = _asm(fx)
             listing, syms = stage / "listing.txt", stage / "syms.txt"
             sym_args = [] if synthetic else ["-sym", str(syms)]   # real run: prove GUARDS_OFF stayed undefined
+            for stale in (listing, syms):                     # never read a previous fix's files
+                stale.unlink(missing_ok=True)
             try:
                 r = subprocess.run([armips, "-erroronwarning", *guards_args, *sym_args, "-temp", str(listing),
                                     str(src)], cwd=romdir, capture_output=True, text=True, timeout=TIMEOUT)
@@ -537,6 +541,8 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
                 if bad:
                     raise AsmError(f"fix {fx['id']}: {fixreg.GUARDS_OFF} was defined while assembling against the "
                                    f"ROM, so the guards were off; refused, nothing written: {'; '.join(bad)}")
+            if not listing.is_file():
+                raise AsmError(f"fix {fx['id']}: armips wrote no listing; cannot check its writes")
             listing_text = listing.read_text(encoding="utf-8-sig", errors="replace")
             if listings is not None:
                 listings[fx["id"]] = listing_text

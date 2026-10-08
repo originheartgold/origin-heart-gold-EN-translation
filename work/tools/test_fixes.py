@@ -781,6 +781,8 @@ class AsmLint(unittest.TestCase):
         for line in (".definelabel GUARDS_OFF, 1\n", "guards_off equ 1\n", ".if defined(GUARDS_OFF)\n.endif\n"):
             probs = self.lint(line + self.GOOD)
             self.assertProblem(probs, "t/t.asm:6: GUARDS_OFF is reserved")
+        for line in ("guards_real:\n", ".if defined(GUARDS_REAL)\n.endif\n"):
+            self.assertProblem(self.lint(line + self.GOOD), "t/t.asm:6: GUARDS_REAL is reserved")
         self.assertEqual(self.lint("; GUARDS_OFF in a comment is fine\n" + self.GOOD), [])
         self.assertEqual(self.lint(".definelabel GUARDS_OFF_X, 1\n" + self.GOOD), [])     # another name
         # only guards.inc may test it, and only with defined()
@@ -793,7 +795,7 @@ class AsmLint(unittest.TestCase):
             (Path(td) / F.INCLUDE_DIR / "other.inc").write_text(".definelabel GUARDS_OFF, 1\n")
             self.assertTrue(any("include/other.inc:1: GUARDS_OFF is reserved" in p for p in F.lint_includes(td)))
         guards = (F.PATCHES_DIR / F.INCLUDE_DIR / F.GUARDS_INC).read_text(encoding="utf-8")
-        self.assertEqual(guards.count("!defined(GUARDS_OFF) && "), 4)       # every guard macro's condition
+        self.assertEqual(guards.count("(defined(GUARDS_REAL) || !defined(GUARDS_OFF)) && "), 4)   # every guard
 
     def test_comments_and_quotes(self):
         self.assertEqual(F._strip_comment('.string "a;b\\"c;d" ; x'), '.string "a;b\\"c;d" ')

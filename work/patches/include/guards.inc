@@ -14,7 +14,8 @@
 ; so these guards check nothing there (any value: they test defined(); their reads are still evaluated): it
 ; catches syntax errors and .area overflows, not wrong bytes. Nothing else may define GUARDS_OFF: fixes.py
 ; check and asmpatch.py refuse the name in every source and include and any non-canonical .include, and a
-; real build refuses a symbol file that defines it. The build never passes it, so its guards are always on.
+; real build refuses a symbol file that defines it. A real build also passes `-definelabel GUARDS_REAL 1`,
+; which keeps every guard on even if GUARDS_OFF were somehow defined (a label outside .open escapes -sym).
 
 ; Stop the build: the bytes at `addr` are `found` (hex text), not `want` (hex text).
 .macro guard_failed, addr, want, found
@@ -28,7 +29,7 @@
 
 ; The halfword at the current address + off must be `value`.
 .macro expect16_at, off, value
-  .if !defined(GUARDS_OFF) && readu16(outputname(), org() + (off) - headersize()) != (value)
+  .if (defined(GUARDS_REAL) || !defined(GUARDS_OFF)) && readu16(outputname(), org() + (off) - headersize()) != (value)
     guard_failed org() + (off), tohex(value, 4), tohex(readu16(outputname(), org() + (off) - headersize()), 4)
   .endif
 .endmacro
@@ -40,14 +41,14 @@
 
 ; The word at the current address + off must be `value` (a pointer, or two halfwords).
 .macro expect32_at, off, value
-  .if !defined(GUARDS_OFF) && readu32(outputname(), org() + (off) - headersize()) != (value)
+  .if (defined(GUARDS_REAL) || !defined(GUARDS_OFF)) && readu32(outputname(), org() + (off) - headersize()) != (value)
     guard_failed org() + (off), tohex(value, 8), tohex(readu32(outputname(), org() + (off) - headersize()), 8)
   .endif
 .endmacro
 
 ; The word at absolute address `addr` must be `value` (read-only check of nearby data, e.g. a pointer table).
 .macro expect32_abs, addr, value
-  .if !defined(GUARDS_OFF) && readu32(outputname(), (addr) - headersize()) != (value)
+  .if (defined(GUARDS_REAL) || !defined(GUARDS_OFF)) && readu32(outputname(), (addr) - headersize()) != (value)
     guard_failed addr, tohex(value, 8), tohex(readu32(outputname(), (addr) - headersize()), 8)
   .endif
 .endmacro
@@ -60,7 +61,7 @@
 ; The opened file must end at the current address: data appended here grows the file (and its overlay)
 ; from its original end, not from a size some other edit left behind.
 .macro expect_end
-  .if !defined(GUARDS_OFF) && filesize(outputname()) != org() - headersize()
+  .if (defined(GUARDS_REAL) || !defined(GUARDS_OFF)) && filesize(outputname()) != org() - headersize()
     end_guard_failed tohex(filesize(outputname()) + headersize(), 8)
   .endif
 .endmacro

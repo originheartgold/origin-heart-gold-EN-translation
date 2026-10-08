@@ -485,7 +485,8 @@ class Synthetic(unittest.TestCase):
     def test_real_run_refuses_guards_off_in_the_symbol_file(self):
         # the last line of defence: whatever slipped past the static checks, armips's symbol file shows it
         from unittest import mock
-        fx = self.fix(".definelabel GUARDS_OFF, 1\n.org 0x02000010\n.area 2\nexpect16 0x2305\nmov r3, #7\n.endarea")
+        # (GUARDS_REAL keeps the guards on anyway: this guard matches, so armips succeeds and -sym must refuse)
+        fx = self.fix(".definelabel GUARDS_OFF, 1\n.org 0x02000010\n.area 2\nexpect16 0\nmov r3, #7\n.endarea")
         with mock.patch.object(A, "guards_live_problems", return_value=[]):
             with self.assertRaises(A.AsmError) as cm:
                 self.run_fix(fx)
@@ -493,6 +494,48 @@ class Synthetic(unittest.TestCase):
             self.assertIn("guards_off", str(cm.exception))
         self.assertEqual(A.guards_off_symbols("02000000 0\n00000001 guards_off\n00000001 guards_off_x\n"),
                          ["00000001 guards_off"])
+
+    @needs_armips
+    def test_guards_real_keeps_the_guards_on(self):
+        # a label outside .open defines GUARDS_OFF but escapes -sym; GUARDS_REAL (every real run) keeps the guard
+        from unittest import mock
+        (self.dir / "t.asm").write_text('.nds\n.thumb\n.include "../include/guards.inc"\nguards_off:\n'
+                                        '.open "arm9.bin", 0x02000000\n.org 0x02000010\n.area 2\nexpect16 0x2305\n'
+                                        'mov r3, #7\n.endarea\n.close\n', encoding="utf-8")
+        fx = {"id": "t", "kind": "code", "asm": "t.asm", "_path": self.dir / "fix.toml",
+              "code": [{"id": "t-1", "file": "arm9", "offset": "0x10", "expect": "0x0000", "notes": "n"}]}
+        with mock.patch.object(A, "guards_live_problems", return_value=[]):
+            with self.assertRaises(A.AsmError) as cm:
+                self.run_fix(fx)
+        self.assertIn("guard failed at 02000010: expected 2305, found 0000", str(cm.exception))
+
+    @needs_armips
+    def test_stale_listing_or_symbol_file_is_not_reused(self):
+        # two fixes in one stage: the second "armips" run writes nothing, so the first run's files must not count
+        import subprocess
+        from unittest import mock
+        real_run = subprocess.run
+        body = ".org 0x{:08X}\n.area 2\nexpect16 0\nmov r3, #7\n.endarea"
+        fx1 = self.fix(body.format(0x02000010))
+        d2 = Path(self.td.name) / "u"
+        d2.mkdir()
+        (d2 / "u.asm").write_text((self.dir / "t.asm").read_text(encoding="utf-8").replace("0x02000010",
+                                                                                           "0x02000020"))
+        fx2 = {"id": "u", "kind": "code", "asm": "u.asm", "_path": d2 / "fix.toml",
+               "code": [{"id": "u-1", "file": "arm9", "offset": "0x20", "expect": "0x0000", "notes": "n"}]}
+        for data, want in (({"arm9": bytes(64)}, "armips wrote no symbol file"),
+                           (A.SyntheticImages({"arm9": bytes(64)}), "armips wrote no listing")):
+            calls = []
+
+            def fake(cmd, calls=calls, **kw):
+                calls.append(cmd)
+                if len(calls) == 1:
+                    return real_run(cmd, **kw)
+                return subprocess.CompletedProcess(cmd, 0, "", "")
+            with mock.patch.object(A.subprocess, "run", side_effect=fake):
+                with self.assertRaises(A.AsmError) as cm:
+                    A.assemble([fx1, fx2], data, ARMIPS)
+            self.assertIn(f"fix u: {want}", str(cm.exception))
 
     @needs_armips
     def test_guards_are_off_only_for_synthetic_images(self):
