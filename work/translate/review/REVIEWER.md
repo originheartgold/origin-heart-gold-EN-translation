@@ -18,6 +18,10 @@ but different**, and by **flattening a character's voice**. Those are the faults
 
 ## What to check, for every string in your batch
 
+**Vanilla text (D-2201, user):** where the hack did not change the text (vanilla battle, system, menu and description
+lines), keep the official US English if it says the same thing as the Chinese, even in different words. Fix it only
+where the meaning differs or content is dropped or added. Lines the hack rewrote are always translated from the Chinese.
+
 Every string with Chinese is in scope: `origin` `us` (official US text), `tm_v3`, `agent`, `glossary`,
 everything except `copy`. Don't trust a line because it is official US text: the hack often rewrote the
 Chinese at the same position, so the US line can say something else.
