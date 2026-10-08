@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "蜜柑『啊,您是联盟冠军{VAR:0103:0}大人！{SCROLL}蜜柑『啊……我……刚打完道馆战,{NEWLINE}身上还满是汗味呢。{CLEAR}居然以这样的形象与您见面,{CLEAR}真是太丢人了……",
-   "en": "Jasmine: Ah, you’re{NEWLINE}League Champion {VAR:0103:0}!{SCROLL}Jasmine: Oh... I... I just finished{NEWLINE}a Gym battle, and I’m still all{CLEAR}sweaty. Meeting you looking like{CLEAR}this... It’s so embarrassing...",
+   "en": "Jasmine: Ah, you’re League Champion{NEWLINE}{VAR:0103:0}!{SCROLL}Jasmine: Oh... I... I just finished{NEWLINE}a Gym battle, and I still smell all{CLEAR}sweaty. Meeting you like this...{CLEAR}It’s so embarrassing...",
    "status": "draft",
    "origin": "agent",
-   "notes": "{VAR}大人 → ‘League Champion {player}’; Jasmine is shy and formal with the Champion."
+   "notes": "{VAR}大人 → ‘League Champion {player}’; Jasmine is shy and formal with the Champion. | RV042: omission: 满是汗味: she smells of sweat (D-1934)"
   },
   {
    "id": 1,
@@ -134,18 +134,18 @@
   {
    "id": 16,
    "zh": "是道馆馆主蜜柑么？{SCROLL}灯塔里的精灵的状况{NEWLINE}好像不是很好,{CLEAR}所以她去照看了！{SCROLL}真正强的训练师,{NEWLINE}是力量和温柔{CLEAR}兼备的人呢……",
-   "en": "Jasmine, the Gym Leader?{NEWLINE}She’s at the Lighthouse.{SCROLL}She’s been tending to a sick Pokémon.{SCROLL}A strong Trainer is compassionate{NEWLINE}at the same time...",
+   "en": "Jasmine, the Gym Leader?{SCROLL}The Pokémon in the Lighthouse doesn’t{NEWLINE}seem to be doing well, so she went{CLEAR}to look after it!{SCROLL}A truly strong Trainer has both{NEWLINE}strength and kindness...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0606/16"
+   "origin": "agent",
+   "notes": "US 0606/16 | RV042: omission: US line dropped 真正强的…力量和温柔兼备 (strength and kindness)"
   },
   {
    "id": 17,
    "zh": "蜜柑馆主非常擅长使用钢系精灵。{SCROLL}为了不让挑战者们{NEWLINE}发现她心中的那份温柔,{CLEAR}用钢铁的那般冷酷{CLEAR}将其深藏起来了！",
-   "en": "Jasmine uses Steel-type Pokémon.{SCROLL}She’s trying to hide her tenderness{NEWLINE}behind her steely coldness.",
+   "en": "Gym Leader Jasmine is very skilled{NEWLINE}with Steel-type Pokémon.{SCROLL}She hides her kind heart deep beneath{NEWLINE}a steely coldness, so challengers{CLEAR}won’t see it!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0606/17"
+   "origin": "agent",
+   "notes": "US 0606/17 | RV042: omission: US line dropped 非常擅长 (very skilled) and the challengers"
   },
   {
    "id": 18,
@@ -158,10 +158,10 @@
   {
    "id": 19,
    "zh": "嗯,你果然来了呢！{SCROLL}虽说你为道馆馆主{NEWLINE}而帮了大忙,但是{CLEAR}道馆就是道馆！{SCROLL}请你认真对待！",
-   "en": "I knew you’d come here.{SCROLL}Thank you for helping the Gym Leader,{NEWLINE}but battle is a separate matter.{SCROLL}Go for it!",
+   "en": "Mm, I knew you’d come!{SCROLL}You were a big help to the Gym Leader,{NEWLINE}but a Gym is a Gym!{SCROLL}Take this seriously!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0606/19"
+   "origin": "agent",
+   "notes": "US 0606/19 | RV042: meaning: US line changed 道馆就是道馆！请你认真对待！ into “battle is a separate matter. Go for it!”"
   },
   {
    "id": 20,
@@ -174,10 +174,10 @@
   {
    "id": 21,
    "zh": "呵呵,我在灯塔里{NEWLINE}已经见识过你的实力了。{SCROLL}这次,你和蜜柑{NEWLINE}算是棋逢对手！{SCROLL}……我为你加油！",
-   "en": "Giggle...{SCROLL}I know how capable you are{NEWLINE}from the Lighthouse.{SCROLL}It’s time you showed that side of{NEWLINE}yourself to Jasmine! Good luck!",
+   "en": "Heh heh...{SCROLL}I already saw what you can do{NEWLINE}at the Lighthouse.{SCROLL}This time, you and Jasmine are evenly{NEWLINE}matched! ...I’m rooting for you!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0606/21"
+   "origin": "agent",
+   "notes": "US 0606/21 | RV042: meaning: 棋逢对手: evenly matched; US line said something else (D-1934)"
   },
   {
    "id": 22,
@@ -278,10 +278,10 @@
   {
    "id": 34,
    "zh": "蜜柑『这次战斗的限制条件是{NEWLINE}使用「物防种族值不低于130」的精灵{CLEAR}与我进行3V3单打对战。{CLEAR}您携带有不符合条件的精灵,{CLEAR}请您整理一下背包再来吧。",
-   "en": "Jasmine: For this battle, you must use{NEWLINE}Pokémon with a base Defense of 130{CLEAR}or higher in a 3-on-3 Single Battle.{SCROLL}Some of the Pokémon you’re{NEWLINE}carrying don’t qualify. Please sort{CLEAR}out your party and come back.",
+   "en": "Jasmine: For this battle, you must use{NEWLINE}Pokémon with a base Defense of 130{CLEAR}or higher in a 3-on-3 Single Battle.{SCROLL}Some of the Pokémon you’re{NEWLINE}carrying don’t qualify. Please sort{CLEAR}out your Bag and come back.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV042: meaning: zh says 背包 (Bag), not party; silent correction undone (D-1934), hack-finding logged (hack-finding D-2173)"
   },
   {
    "id": 35,

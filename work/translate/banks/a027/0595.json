@@ -511,10 +511,10 @@
   {
    "id": 63,
    "zh": "漆黑的夜路很危险！{NEWLINE}漆黑的海上也有很多危险！{SCROLL}没有灯塔的灯光{NEWLINE}船是没有办法航行的！",
-   "en": "Dark roads are dangerous at night.{SCROLL}But, in the pitch-black night,{NEWLINE}the sea is even more treacherous!{SCROLL}Without the beacon of the Lighthouse{NEWLINE}to guide her, no ship can sail.",
+   "en": "Dark roads at night are dangerous!{SCROLL}The pitch-black sea is full of{NEWLINE}dangers too!{SCROLL}Without the Lighthouse’s light,{NEWLINE}ships can’t sail!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0604/1"
+   "origin": "agent",
+   "notes": "US 0604/1 | RV042: addition: US line added “even more treacherous” and “to guide her”; zh only says the sea is dangerous too"
   },
   {
    "id": 64,

@@ -14,34 +14,34 @@
   {
    "id": 1,
    "zh": "……啊呜啊呜……啊呜啊呜{SCROLL}……唔！{NEWLINE}噎在喉咙里了！！{SCROLL}不行不行,{NEWLINE}吃饭一定要细嚼慢咽。",
-   "en": "Gobble...gobble...{SCROLL}...Choke!{NEWLINE}Ack... I’m choking!{SCROLL}Whew! That was close.{NEWLINE}I should chew before I swallow my food.",
+   "en": "...Chomp chomp... chomp chomp...{SCROLL}...Mmph!{NEWLINE}It’s stuck in my throat!!{SCROLL}No, no, I’ve got to chew slowly{NEWLINE}when I eat.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0611/1"
+   "origin": "agent",
+   "notes": "US 0611/1 | RV042: addition: US line added “Whew! That was close”"
   },
   {
    "id": 2,
    "zh": "到了浅葱市,一定要到{NEWLINE}这个食堂里来吃饭哦！{SCROLL}这里的饭不管哪一种都会给人{NEWLINE}带来力量,让人欲罢不能！",
-   "en": "Whenever I roll into Olivine, I always{NEWLINE}visit the Olivine Café.{SCROLL}Everything on the menu makes me feel{NEWLINE}stronger. I can’t stop eating!",
+   "en": "When you come to Olivine, you’ve got{NEWLINE}to eat at this café!{SCROLL}Every dish here gives you strength.{NEWLINE}You just can’t stop!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0611/2"
+   "origin": "agent",
+   "notes": "US 0611/2 | RV042: meaning: zh advises the player; US line made it the speaker’s own habit"
   },
   {
    "id": 3,
    "zh": "这个浅葱市食堂里面{NEWLINE}有很多的菜都能让那些{CLEAR}自卖自夸的海男满足！",
-   "en": "Olivine Café’s menu is chock-full{NEWLINE}of hearty fare for beefy Sailors!",
+   "en": "This Olivine Café has lots of dishes that{NEWLINE}satisfy even those boastful sailors!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0611/3"
+   "origin": "agent",
+   "notes": "US 0611/3 | RV042: meaning: 自卖自夸的海男: boastful sailors, not “beefy Sailors”"
   },
   {
    "id": 4,
    "zh": "蜜柑『贵安{NEWLINE}……　……　……！{SCROLL}啊,不是,这碗东西{NEWLINE}并不是全部{CLEAR}我一个吃掉的……{SCROLL}对,对了！{NEWLINE}是我之前说过的那个人{CLEAR}他吃剩下的……{SCROLL}……　……　……{SCROLL}要不要和我交换电话号码？{NEWLINE}我们好不容易见面不是么？{VAR:0200:0}",
-   "en": "Jasmine: Hi!{NEWLINE}...!{SCROLL}These empty dishes in front of me{NEWLINE}are not all mine...{SCROLL}Er...{SCROLL}Actually, the person who sat here{NEWLINE}ahead of me ate a lot...{SCROLL}Anyway, do you want to exchange{NEWLINE}phone numbers? {VAR:0200:0}",
+   "en": "Jasmine: Good day...{NEWLINE}... ... ...!{SCROLL}Ah, n-no, I didn’t eat this whole{NEWLINE}bowl all by myself...{SCROLL}Th-that’s right! It’s what that person{NEWLINE}I mentioned before left over...{SCROLL}... ... ...{SCROLL}Would you like to exchange phone{NEWLINE}numbers? We finally got to meet,{CLEAR}didn’t we?{VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0611/4"
+   "origin": "agent",
+   "notes": "US 0611/4 | RV042: omission: US line dropped “leftovers of the person I mentioned” and “we finally met”"
   },
   {
    "id": 5,
@@ -78,26 +78,26 @@
   {
    "id": 9,
    "zh": "蜜柑『千奇百怪的地方{NEWLINE}都能见到你啊。{SCROLL}机会难得,和我照张相{NEWLINE}作为纪念怎么样？{VAR:0200:0}",
-   "en": "Jasmine: We seem to...bump into each{NEWLINE}other often.{SCROLL}Why don’t we take a picture{NEWLINE}to make this a memory? {VAR:0200:0}",
+   "en": "Jasmine: I keep running into you{NEWLINE}in the strangest places.{SCROLL}It’s a rare chance, so how about{NEWLINE}a photo with me to remember it?{VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0611/9"
+   "origin": "agent",
+   "notes": "US 0611/9 | RV042: meaning: US line; zh: 千奇百怪的地方都能见到你, 机会难得"
   },
   {
    "id": 10,
    "zh": "蜜柑『那我拍咯。{SCROLL}",
-   "en": "Jasmine: Are you ready?{SCROLL}",
+   "en": "Jasmine: OK, I’ll take it now!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0611/10"
+   "origin": "agent",
+   "notes": "US 0611/10 | RV042: meaning: 那我拍咯: she is taking the photo, not asking if ready"
   },
   {
    "id": 11,
    "zh": "蜜柑『好,拍完了！{NEWLINE}嗯,不错不错。",
-   "en": "Jasmine: You did a fine job.{NEWLINE}We look good.",
+   "en": "Jasmine: OK, all done! Mm, very nice.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0611/11"
+   "origin": "agent",
+   "notes": "US 0611/11 | RV042: meaning: 好,拍完了！嗯,不错不错。"
   },
   {
    "id": 12,

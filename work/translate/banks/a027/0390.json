@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "哎呀！{NEWLINE}你的贴纸太多了！{SCROLL}",
-   "en": "Ha!{NEWLINE}Your Seal Case is full!{SCROLL}",
+   "en": "Oh dear! You have too many Seals!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "Same zh as 0391 #3 (US line); reused."
+   "notes": "Same zh as 0391 #3 (US line); reused. | RV042: meaning: 哎呀 is dismay, not “Ha!”; zh says too many Seals"
   },
   {
    "id": 4,

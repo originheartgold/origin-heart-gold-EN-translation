@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "你是训练家吗？{NEWLINE}我刚给球贴上了装饰品。{SCROLL}我想听听你的看法,{NEWLINE}所以能和我来场对决么？{VAR:0200:0}",
-   "en": "Oh, are you a Trainer?{SCROLL}You came at just the right time!{NEWLINE}I just finished putting my Ball Capsule{CLEAR}on my Poké Ball.{SCROLL}Do you want to battle and be{NEWLINE}amazed by my decoration? {VAR:0200:0}",
+   "en": "Are you a Trainer?{SCROLL}I just put decorations on my Ball.{NEWLINE}I’d like to hear what you think,{CLEAR}so will you battle me?{VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0607/4"
+   "origin": "agent",
+   "notes": "US 0607/4 | RV042: addition: US line added “right time” and “be amazed”; zh asks for the player’s opinion"
   },
   {
    "id": 5,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "要是带着贴纸的话,{NEWLINE}使用自己的电脑{CLEAR}就可以制作球贴了。{SCROLL}只属于自己的球{NEWLINE}最棒了是不是？{CLEAR}你也试试看吧！{SCROLL}啊！{NEWLINE}做好的球贴{CLEAR}不进行设置是没有办法使用的,{CLEAR}要注意哦！",
-   "en": "You can turn your Poké Balls into your{NEWLINE}own special creations by adding Seals.{SCROLL}How cool is it to have a Poké Ball that{NEWLINE}only you have in the entire world?{CLEAR}Give it a whirl!{SCROLL}Oh, remember to put the Ball Capsule{NEWLINE}on a Poké Ball once it’s ready!",
+   "en": "If you’ve got Seals, you can make Ball{NEWLINE}Capsules on your own PC.{SCROLL}A Ball that’s yours alone is the best,{NEWLINE}right? Give it a try!{SCROLL}Oh! A finished Ball Capsule can’t be{NEWLINE}used until you attach it, so be careful!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0607/6"
+   "origin": "agent",
+   "notes": "US 0607/6 | RV042: omission: US line dropped 使用自己的电脑 (on your own PC) and the warning"
   },
   {
    "id": 7,

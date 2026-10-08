@@ -70,26 +70,26 @@
   {
    "id": 8,
    "zh": "还有还有,{NEWLINE}拿着！{SCROLL}",
-   "en": "Have more!{SCROLL}",
+   "en": "And more! Here, take these!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0609/8"
+   "origin": "agent",
+   "notes": "US 0609/8 | RV042: omission: 还有还有, 拿着！"
   },
   {
    "id": 9,
    "zh": "把贴纸轻轻地{NEWLINE}贴在球上！",
-   "en": "Stick them on your Ball Capsules!",
+   "en": "Stick the Seals gently on your Balls!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0609/9"
+   "origin": "agent",
+   "notes": "US 0609/9 | RV042: meaning: zh: stick Seals gently on the Balls, not on Ball Capsules"
   },
   {
    "id": 10,
    "zh": "哇！你的贴纸{NEWLINE}已经满了啊！",
-   "en": "Your Seal Case is full!",
+   "en": "Whoa! Your Seal Case is already full!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0609/10"
+   "origin": "agent",
+   "notes": "US 0609/10 | RV042: omission: 哇 and 已经 dropped"
   },
   {
    "id": 11,
