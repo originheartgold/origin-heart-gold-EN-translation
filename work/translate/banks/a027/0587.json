@@ -166,10 +166,10 @@
   {
    "id": 20,
    "zh": "希罗娜『双重急冻光线么……{NEWLINE}看来是我把对战想的太简单了。{CLEAR}我输得心服口服,小绿。{CLEAR}恭喜你取得胜利。",
-   "en": "Cynthia: A double Ice Beam... Looks{NEWLINE}like I thought this battle would be{CLEAR}too simple.{SCROLL}I lost fair and square, Blue.{NEWLINE}Congratulations on your win.",
+   "en": "Cynthia: A double Ice Beam... Looks like{NEWLINE}I thought this battle was simpler than{CLEAR}it was. I lost fair and square, Blue.{CLEAR}Congratulations on your win.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV006: grammar: unclear clause"
   },
   {
    "id": 21,
@@ -302,10 +302,10 @@
   {
    "id": 37,
    "zh": "小蓝『是啊,都快蠢哭了呢。",
-   "en": "Green: Yeah. Stupid enough to make{NEWLINE}you cry.",
+   "en": "Green: Yeah. So stupid it makes me want{NEWLINE}to cry.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV006: meaning: 都快蠢哭了 = so stupid I could cry (as #42)"
   },
   {
    "id": 38,
@@ -1142,10 +1142,10 @@
   {
    "id": 142,
    "zh": "小绿『哟,怎么不用你擅长的{NEWLINE}超能系精灵呢？{CLEAR}是对自己没信心了吗？",
-   "en": "Blue: Whoa, not using your beloved{NEWLINE}Psychic types? Lost your confidence?",
+   "en": "Blue: Whoa, not using your specialty,{NEWLINE}Psychic types? Lost your confidence?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV006: meaning: 擅长的 = specialty, not beloved"
   },
   {
    "id": 143,
@@ -1206,10 +1206,10 @@
   {
    "id": 150,
    "zh": "小绿『恶属性不过是{NEWLINE}口袋妖怪力量类型的一个名称,{CLEAR}比起这个名称,{CLEAR}你们火箭队做的那些勾当,{CLEAR}才是真正的恶！",
-   "en": "Blue: Dark is just the name of one kind{NEWLINE}of Pokémon power.{SCROLL}The dirty work you Team Rocket creeps{NEWLINE}get up to... that’s real evil!",
+   "en": "Blue: Dark is just the name of one kind{NEWLINE}of Pokémon power. Compared to a name,{CLEAR}the dirty work you Team Rocket guys{CLEAR}get up to... now that’s real evil!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV006: addition: ‘creeps’ not in zh; omission: 比起这个名称 restored"
   },
   {
    "id": 151,
@@ -1286,10 +1286,10 @@
   {
    "id": 160,
    "zh": "梨花『我可不会再让你得意下去了。",
-   "en": "Karen: I won’t let you get the better{NEWLINE}of us again.",
+   "en": "Karen: I won’t let you keep gloating.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV006: meaning: 再让你得意下去 = let you go on gloating"
   },
   {
    "id": 161,
@@ -1662,10 +1662,10 @@
   {
    "id": 207,
    "zh": "小蓝『是啊,都快蠢哭了呢。",
-   "en": "Green: Yeah. Stupid enough to make{NEWLINE}you cry.",
+   "en": "Green: Yeah. So stupid it makes me want{NEWLINE}to cry.",
    "status": "draft",
    "origin": "agent",
-   "notes": "#207-#251: alternate version of the Green/Red vs Will match (Trick Room read in advance)."
+   "notes": "#207-#251: alternate version of the Green/Red vs Will match (Trick Room read in advance). | RV006: meaning: 都快蠢哭了 = so stupid I could cry (as #210)"
   },
   {
    "id": 208,

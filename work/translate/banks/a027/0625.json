@@ -721,10 +721,10 @@
   {
    "id": 87,
    "zh": "明明属性相克却没有倒下？！",
-   "en": "It had the type advantage, and it{NEWLINE}didn’t go down?!",
+   "en": "Even with the type advantage, it didn’t{NEWLINE}go down?!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV006: meaning: 明明属性相克 is the attackers’ advantage, not the target’s"
   },
   {
    "id": 88,
@@ -889,10 +889,10 @@
   {
    "id": 108,
    "zh": "比夏斯『混蛋……又一次被打败了……",
-   "en": "Marauder: Damn it... Beaten again...",
+   "en": "Marauder: Bastard... Beaten again...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV006: softened: 混蛋 kept as ‘Bastard’"
   },
   {
    "id": 109,
@@ -1081,10 +1081,10 @@
   {
    "id": 132,
    "zh": "我刚才正在做研究,{NEWLINE}这些家伙突然出现{CLEAR}不由分说地就把我给赶下来了,{CLEAR}真是蛮不讲理！",
-   "en": "I was in the middle of my research when{NEWLINE}those guys suddenly showed up and{CLEAR}threw me down here without a word of{CLEAR}explanation. Totally unreasonable!",
+   "en": "I was in the middle of my research when{NEWLINE}those guys suddenly showed up and{CLEAR}chased me off without a word of{CLEAR}explanation. Totally unreasonable!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV006: meaning: 赶下来 = drove off, not threw"
   },
   {
    "id": 133,
@@ -1177,10 +1177,10 @@
   {
    "id": 144,
    "zh": "钱！给钱就行。{NEWLINE}天降红星每年能给六之岛{CLEAR}带来上千万的旅游业收入。{CLEAR}按每年一千万,连续营收十年算,{CLEAR}你给我一个亿,这事就算过去了。",
-   "en": "Money! Just pay up. The Fallen Red Star{NEWLINE}brings Six Island tens of millions in{CLEAR}tourism every year. Call it ten million a{CLEAR}year, for ten years. Give me a hundred{CLEAR}million, and we’ll call it even.",
+   "en": "Money! Just pay up. The Fallen Red Star{NEWLINE}brings Six Island more than ten million{CLEAR}in tourism every year. Call it ten million{CLEAR}a year, for ten years. Give me a{CLEAR}hundred million, and we’ll call it even.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV006: meaning: 上千万 = over ten million, not tens of millions",
    "qa_ignore": [
     "number_missing"
    ]
