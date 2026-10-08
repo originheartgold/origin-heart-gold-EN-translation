@@ -95,7 +95,8 @@ Write plain English, then wrap the ids you changed:
 python3 work/tools/qa.py wrap work/translate/banks/a027/NNNN.json --ids 12,15,40 --mode scroll --which max --reflow --in-place
 ```
 
-Paragraphs → `{SCROLL}`, overflow → `{CLEAR}`; no one-word orphans; keep every `{...}` tag; keep
+`--reflow` can merge a deliberate `{SCROLL}` (speaker change, paragraph) into the text: after wrapping, check each
+line and put such breaks back by hand. Paragraphs → `{SCROLL}`, overflow → `{CLEAR}`; no one-word orphans; keep every `{...}` tag; keep
 "Mt.", "Prof.", "S.S.", "Lt.", "Mr.", "Dr." with the following name. Check the layout of description banks
 against their box (QA reports overflow).
 
