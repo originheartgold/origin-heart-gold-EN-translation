@@ -654,10 +654,10 @@
   {
    "id": 81,
    "zh": "{VAR:0103:0}『对不起……主席,{NEWLINE}虽然我保护了拉帝欧斯和拉帝亚斯,{CLEAR}但是烈空坐、代欧奇希斯、{CLEAR}圣柱王和阿尔宙斯{CLEAR}全都落入了火箭队手中。{CLEAR}唉……没想到事情发展到了最坏的地步。",
-   "en": "{VAR:0103:0}: I’m sorry... Mr. President. I{NEWLINE}protected Latios and Latias...{SCROLL}...but Rayquaza, Deoxys, Regigigas and{NEWLINE}Arceus have all fallen into Team{CLEAR}Rocket’s hands.{SCROLL}*sigh*... I never thought things would{NEWLINE}come to the worst.",
+   "en": "{VAR:0103:0}: I’m sorry... Mr. President. I{NEWLINE}protected Latios and Latias...{SCROLL}...but Rayquaza, Deoxys, Regigigas and{NEWLINE}Arceus have all fallen into Team{CLEAR}Rocket’s hands.{SCROLL}*sigh*... I never thought it would come{NEWLINE}to the worst possible outcome.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV007: grammar: ‘come to the worst’ unnatural"
   },
   {
    "id": 82,
@@ -766,10 +766,10 @@
   {
    "id": 95,
    "zh": "绿稚『我的爸爸、我的爷爷、{NEWLINE}我爸爸的爷爷{CLEAR}都曾是桔梗道馆的馆主。{CLEAR}但是因为精灵联盟的改革,{CLEAR}我没能从去世的父亲那里{CLEAR}继承本应属于我的馆主之位。{CLEAR}而你,这个达马兰奇的打手,{CLEAR}就是这伙强盗的帮凶！{SCROLL}绿稚『就你也配称为正义？我呸！{NEWLINE}火箭队帮我拿回属于我的东西,{CLEAR}他们才是真的正义！",
-   "en": "Verdell: My dad, my grandpa, my{NEWLINE}dad’s grandpa... they were all{CLEAR}Violet Gym Leaders.{SCROLL}But because of the Pokémon League’s{NEWLINE}reforms, I couldn’t inherit the Gym{CLEAR}Leader post from my late father, the{CLEAR}post that should have been mine.{SCROLL}And you, Goodshow’s hired thug, are an{NEWLINE}accomplice to this gang of robbers!{SCROLL}Verdell: You, call yourself{NEWLINE}justice? Pah! Team Rocket is{CLEAR}helping me take back what’s mine.{CLEAR}They’re the real justice!",
+   "en": "Verdell: My dad, my grandpa, my dad’s{NEWLINE}grandpa... they were all{CLEAR}Violet Gym Leaders.{SCROLL}But because of the Pokémon League’s{NEWLINE}reforms, I couldn’t inherit the Gym{CLEAR}Leader post from my late father, the{CLEAR}post that should have been mine.{SCROLL}And you, Goodshow’s hired thug, are an{NEWLINE}accomplice to this gang of robbers!{SCROLL}Verdell: Someone like you, calling{NEWLINE}yourself justice? Pah! Team Rocket is{CLEAR}helping me take back what’s mine.{CLEAR}They’re the real justice!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV007: grammar: 就你也配称为正义 phrasing fixed"
   },
   {
    "id": 96,

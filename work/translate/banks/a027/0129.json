@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "琴音『啊！{SCROLL}刚刚跟眼神很凶的孩子{NEWLINE}吵架的大叔！{SCROLL}",
-   "en": "Lyra: Huh?{SCROLL}That’s the guy we just saw arguing with{NEWLINE}that boy!{SCROLL}",
+   "en": "Lyra: Huh?{SCROLL}It’s the man we just saw arguing with{NEWLINE}that sharp-eyed boy!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0131/8"
+   "origin": "agent",
+   "notes": "US 0131/8 | RV007: omission: restored 眼神很凶 (sharp-eyed boy)"
   },
   {
    "id": 9,

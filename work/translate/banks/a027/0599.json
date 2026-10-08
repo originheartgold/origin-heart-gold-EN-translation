@@ -136,10 +136,10 @@
   {
    "id": 16,
    "zh": "小霞『你们火箭队又想搞什么阴谋？",
-   "en": "Misty: What are you Team Rocket creeps{NEWLINE}scheming this time?",
+   "en": "Misty: So what’s Team Rocket scheming{NEWLINE}this time?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV007: addition: dropped added insult ‘creeps’; zh has none"
   },
   {
    "id": 17,
@@ -592,10 +592,10 @@
   {
    "id": 73,
    "zh": "坂木『口袋妖怪不过是我{NEWLINE}实现目标的工具,不需要什么感情。{CLEAR}你抱着这种婆婆妈妈的软弱思想,{CLEAR}是没资格成为最强训练家的。",
-   "en": "Giovanni: Pokémon are nothing but{NEWLINE}tools for achieving my goals. They need{CLEAR}no feelings.{SCROLL}With your soft, sentimental thinking,{NEWLINE}you have no right to be the{CLEAR}strongest Trainer.",
+   "en": "Giovanni: Pokémon are nothing but tools{NEWLINE}for achieving my goals. There’s no need{CLEAR}for feelings.{SCROLL}With your soft, sentimental thinking,{NEWLINE}you have no right to be the{CLEAR}strongest Trainer.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV007: meaning: 不需要什么感情 has no subject; don’t say Pokémon lack feelings (D-1949)"
   },
   {
    "id": 74,
@@ -888,10 +888,10 @@
   {
    "id": 110,
    "zh": "大木博士『精灵联盟封锁白银山,{NEWLINE}主要是因为那里面的精灵都非常强大,{CLEAR}担心普通训练家进去遇到危险。{CLEAR}但是{VAR:0103:0}你作为联盟冠军,{CLEAR}肯定不用担心这个问题。",
-   "en": "Prof. Oak: The Pokémon League{NEWLINE}sealed off Mt. Silver mainly because{CLEAR}the Pokémon there are very strong,{CLEAR}and it worried ordinary Trainers{CLEAR}would get hurt.{SCROLL}But as League Champion, {VAR:0103:0}, you{NEWLINE}certainly needn’t worry about that.",
+   "en": "Prof. Oak: The Pokémon League sealed{NEWLINE}off Mt. Silver mainly because the{CLEAR}Pokémon there are very strong, and it{CLEAR}feared ordinary Trainers who went in{CLEAR}would be in danger.{SCROLL}But as League Champion, {VAR:0103:0}, you{NEWLINE}certainly needn’t worry about that.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV007: grammar: ‘it worried ordinary Trainers’ misread; clarified"
   },
   {
    "id": 111,
