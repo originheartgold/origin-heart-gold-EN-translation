@@ -528,10 +528,10 @@
   {
    "id": 64,
    "zh": "小黄『千里先生你太过奖了。{NEWLINE}跟联盟冠军{VAR:0103:0}哥哥相比{CLEAR}我还差得远呢。",
-   "en": "Yellow: You flatter me, Mr. Norman.{SCROLL}Compared to League Champion {VAR:0103:0}, I{NEWLINE}still have a long way to go.",
+   "en": "Yellow: You flatter me, Mr. Norman.{SCROLL}Compared to Big Bro {VAR:0103:0}, the{NEWLINE}League Champion, I still have a long way{CLEAR}to go.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position Yellow's 哥哥/姐姐 (male #64 / female #89) dropped; both read the same in English."
+   "notes": "v3 TM: 1 source(s), same position Yellow's 哥哥/姐姐 (male #64 / female #89) dropped; both read the same in English. | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 65,
@@ -728,10 +728,10 @@
   {
    "id": 89,
    "zh": "小黄『千里先生你太过奖了。{NEWLINE}跟联盟冠军{VAR:0103:0}姐姐相比{CLEAR}我还差得远呢。",
-   "en": "Yellow: You flatter me, Mr. Norman.{SCROLL}Compared to League Champion {VAR:0103:0}, I{NEWLINE}still have a long way to go.",
+   "en": "Yellow: You flatter me, Mr. Norman.{SCROLL}Compared to Big Sis {VAR:0103:0}, the{NEWLINE}League Champion, I still have a long way{CLEAR}to go.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 90,
@@ -1506,10 +1506,10 @@
   {
    "id": 186,
    "zh": "小黄『{VAR:0103:0}哥哥,{NEWLINE}我居然就这样跟你一起{CLEAR}生活在真新镇了,{CLEAR}想想真是让人害羞和不可思议。",
-   "en": "Yellow: {VAR:0103:0}, I can’t believe I’m{NEWLINE}living in Pallet Town with you.{SCROLL}Just thinking about it makes me blush.{NEWLINE}It feels so unreal.",
+   "en": "Yellow: Big Bro {VAR:0103:0}, I can’t{NEWLINE}believe I’m living in Pallet Town{CLEAR}with you.{SCROLL}Just thinking about it makes me blush.{NEWLINE}It feels so unreal.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Post-game partner branches: Yellow (male player, #186–#198), Green (male player) #199/#201/#203/#205/#207/#209, Red (female player) #200/#202/#204/#206/#208/#210, Misty #211–#216, Cynthia #217–#222. Menu #197 ‘rest in my room’ leads to the bedroom scenes in 0538."
+   "notes": "Post-game partner branches: Yellow (male player, #186–#198), Green (male player) #199/#201/#203/#205/#207/#209, Red (female player) #200/#202/#204/#206/#208/#210, Misty #211–#216, Cynthia #217–#222. Menu #197 ‘rest in my room’ leads to the bedroom scenes in 0538. | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 187,
@@ -1532,18 +1532,18 @@
   {
    "id": 189,
    "zh": "小黄『{VAR:0103:0}哥哥再见,{NEWLINE}我会在这等你回来的。",
-   "en": "Yellow: Bye, {VAR:0103:0}. I’ll be right here{NEWLINE}waiting for you to come back.",
+   "en": "Yellow: Bye, Big Bro {VAR:0103:0}. I’ll be{NEWLINE}right here waiting for you to come back.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 190,
    "zh": "小黄『好啊好啊,{NEWLINE}我也想跟{VAR:0103:0}哥哥比试一下呢！{CLEAR}咱们这次是单打还是双打？",
-   "en": "Yellow: Sure, sure! I want to test{NEWLINE}myself against you too, {VAR:0103:0}!{SCROLL}Singles or doubles this time?",
+   "en": "Yellow: Sure, sure! I want{NEWLINE}to test myself against you{CLEAR}too, Big Bro {VAR:0103:0}!{SCROLL}Singles or doubles this time?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 191,
@@ -1583,18 +1583,18 @@
   {
    "id": 195,
    "zh": "小黄『{VAR:0103:0}哥哥,{NEWLINE}这是我的最强伙伴,{CLEAR}请你看看我们之间的羁绊！",
-   "en": "Yellow: {VAR:0103:0}, this is my strongest{NEWLINE}partner. Look at the bond we share!",
+   "en": "Yellow: Big Bro {VAR:0103:0}, this is my{NEWLINE}strongest partner. Look at the bond{CLEAR}we share!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 196,
    "zh": "小黄『真不愧是{VAR:0103:0}哥哥,{NEWLINE}能够跟你在一起真是太好了。",
-   "en": "Yellow: That’s you all over, {VAR:0103:0}.{NEWLINE}I’m so glad I get to be with you.",
+   "en": "Yellow: That’s you all over,{NEWLINE}Big Bro {VAR:0103:0}. I’m so glad I get to{CLEAR}be with you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 197,
@@ -1608,10 +1608,10 @@
   {
    "id": 198,
    "zh": "小黄『好的……{VAR:0103:0}哥哥……",
-   "en": "Yellow: O-OK... {VAR:0103:0}...",
+   "en": "Yellow: O-OK... Big Bro {VAR:0103:0}...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 199,

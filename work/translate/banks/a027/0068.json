@@ -806,18 +806,18 @@
   {
    "id": 100,
    "zh": "小黄『叔叔你也听到了吧,{NEWLINE}{VAR:0103:0}哥哥需要我！",
-   "en": "Yellow: Uncle, you heard that too,{NEWLINE}right? {VAR:0103:0} needs me!",
+   "en": "Yellow: Uncle, you heard that too,{NEWLINE}right? Big Bro {VAR:0103:0} needs me!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 101,
    "zh": "小黄『叔叔你也听到了吧,{NEWLINE}{VAR:0103:0}姐姐需要我！",
-   "en": "Yellow: Uncle, you heard that too,{NEWLINE}right? {VAR:0103:0} needs me!",
+   "en": "Yellow: Uncle, you heard that too,{NEWLINE}right? Big Sis {VAR:0103:0} needs me!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 102,

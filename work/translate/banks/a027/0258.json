@@ -1081,10 +1081,10 @@
   {
    "id": 131,
    "zh": "{VAR:0101:0}{NEWLINE}似乎对陷阱很好奇。",
-   "en": "{VAR:0101:0} is concerned about the{NEWLINE}trap.",
+   "en": "{VAR:0101:0} is curious about the trap.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/131"
+   "origin": "agent",
+   "notes": "US 0265/131 | D-2275: 'curious about'/'interested in' for zh 好奇/有兴趣 (was US 'concerned about')"
   },
   {
    "id": 132,
@@ -1769,10 +1769,10 @@
   {
    "id": 214,
    "zh": "{VAR:0101:0}好奇外面！",
-   "en": "{VAR:0101:0} is concerned about going{NEWLINE}outside!",
+   "en": "{VAR:0101:0} is curious about the{NEWLINE}outside!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/214"
+   "origin": "agent",
+   "notes": "US 0265/214 | D-2275: 'curious about'/'interested in' for zh 好奇/有兴趣 (was US 'concerned about')"
   },
   {
    "id": 215,
@@ -1825,10 +1825,10 @@
   {
    "id": 221,
    "zh": "{VAR:0101:0}{NEWLINE}似乎对瀑布很有兴趣！",
-   "en": "{VAR:0101:0} seems concerned about{NEWLINE}the waterfall!",
+   "en": "{VAR:0101:0} seems very interested in{NEWLINE}the waterfall!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/221"
+   "origin": "agent",
+   "notes": "US 0265/221 | D-2275: 'curious about'/'interested in' for zh 好奇/有兴趣 (was US 'concerned about')"
   },
   {
    "id": 222,
@@ -2834,10 +2834,10 @@
   {
    "id": 346,
    "zh": "{VAR:0101:0}似乎对摇晃的{NEWLINE}柱子很好奇。",
-   "en": "{VAR:0101:0} is concerned about the{NEWLINE}swaying pillar.",
+   "en": "{VAR:0101:0} is curious about the swaying{NEWLINE}pillar.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/346"
+   "origin": "agent",
+   "notes": "US 0265/346 | D-2275: 'curious about'/'interested in' for zh 好奇/有兴趣 (was US 'concerned about')"
   },
   {
    "id": 347,
@@ -3378,10 +3378,10 @@
   {
    "id": 414,
    "zh": "{VAR:0101:0}似乎对{NEWLINE}妈妈很感兴趣！",
-   "en": "{VAR:0101:0} is concerned about your{NEWLINE}mom!",
+   "en": "{VAR:0101:0} seems very interested in{NEWLINE}your mom!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/414"
+   "origin": "agent",
+   "notes": "US 0265/414 | D-2275: 'curious about'/'interested in' for zh 好奇/有兴趣 (was US 'concerned about')"
   },
   {
    "id": 415,
@@ -4129,10 +4129,10 @@
   {
    "id": 506,
    "zh": "{VAR:0101:0}{NEWLINE}似乎对栅栏那侧很好奇。",
-   "en": "{VAR:0101:0} is concerned about the{NEWLINE}other side of the fence, it seems.",
+   "en": "{VAR:0101:0} seems curious about the{NEWLINE}other side of the fence.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/506"
+   "origin": "agent",
+   "notes": "US 0265/506 | D-2275: 'curious about'/'interested in' for zh 好奇/有兴趣 (was US 'concerned about')"
   },
   {
    "id": 507,
@@ -4169,10 +4169,10 @@
   {
    "id": 511,
    "zh": "似乎对下面的房间{NEWLINE}非常有兴趣。",
-   "en": "Your Pokémon is very concerned about{NEWLINE}the room below.",
+   "en": "Your Pokémon seems very interested in{NEWLINE}the room below.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/511"
+   "origin": "agent",
+   "notes": "US 0265/511 | D-2275: 'curious about'/'interested in' for zh 好奇/有兴趣 (was US 'concerned about')"
   },
   {
    "id": 512,
@@ -5984,10 +5984,10 @@
   {
    "id": 733,
    "zh": "{VAR:0101:0}{NEWLINE}似乎对盒子的里面很好奇。",
-   "en": "{VAR:0101:0} is concerned about the{NEWLINE}contents of the case.",
+   "en": "{VAR:0101:0} is curious about the{NEWLINE}contents of the case.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/733",
+   "origin": "agent",
+   "notes": "US 0265/733 | D-2275: 'curious about'/'interested in' for zh 好奇/有兴趣 (was US 'concerned about')",
    "qa_ignore": [
     "glossary:盒子"
    ]

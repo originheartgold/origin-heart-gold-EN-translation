@@ -457,18 +457,18 @@
   {
    "id": 56,
    "zh": "小黄『{VAR:0103:0}哥哥！",
-   "en": "Yellow: {VAR:0103:0}!",
+   "en": "Yellow: Big Bro {VAR:0103:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 57,
    "zh": "小黄『{VAR:0103:0}姐姐！",
-   "en": "Yellow: {VAR:0103:0}!",
+   "en": "Yellow: Big Sis {VAR:0103:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 58,
@@ -1227,66 +1227,66 @@
   {
    "id": 152,
    "zh": "小黄『我能坚定地{NEWLINE}走上训练家这条路,{CLEAR}都要感谢{VAR:0103:0}哥哥。{CLEAR}一直以来我都以您为目标努力着,{CLEAR}今天终于有机会在正式场合向您……{CLEAR}向您挑战。{CLEAR}我会好好加油的。",
-   "en": "Yellow: I owe it to you, {VAR:0103:0}, that I{NEWLINE}could set out on the path of a Trainer{CLEAR}with confidence.{SCROLL}I’ve always worked hard with you as my{NEWLINE}goal.{SCROLL}And today, I finally get the chance to{NEWLINE}challenge you... officially.{SCROLL}I’ll do my very best.",
+   "en": "Yellow: I owe it to you,{NEWLINE}Big Bro {VAR:0103:0}, that I could{CLEAR}set out on the path of a Trainer{CLEAR}with confidence.{SCROLL}I’ve always worked hard with you as my{NEWLINE}goal.{SCROLL}And today, I finally get the chance to{NEWLINE}challenge you... officially.{SCROLL}I’ll do my very best.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 153,
    "zh": "小黄『我能坚定地{NEWLINE}走上训练家这条路,{CLEAR}都要感谢{VAR:0103:0}姐姐。{CLEAR}一直以来我都以您为目标努力着,{CLEAR}今天终于有机会在正式场合向您……{CLEAR}向您挑战。{CLEAR}我会好好加油的。",
-   "en": "Yellow: I owe it to you, {VAR:0103:0}, that I{NEWLINE}could set out on the path of a Trainer{CLEAR}with confidence.{SCROLL}I’ve always worked hard with you as my{NEWLINE}goal.{SCROLL}And today, I finally get the chance to{NEWLINE}challenge you... officially.{SCROLL}I’ll do my very best.",
+   "en": "Yellow: I owe it to you,{NEWLINE}Big Sis {VAR:0103:0}, that I could{CLEAR}set out on the path of a Trainer{CLEAR}with confidence.{SCROLL}I’ve always worked hard with you as my{NEWLINE}goal.{SCROLL}And today, I finally get the chance to{NEWLINE}challenge you... officially.{SCROLL}I’ll do my very best.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 154,
    "zh": "小黄『嗯好,请{VAR:0103:0}哥哥{NEWLINE}看看我的成长吧！",
-   "en": "Yellow: OK! {VAR:0103:0}, please see how{NEWLINE}much I’ve grown!",
+   "en": "Yellow: OK! Big Bro {VAR:0103:0}, please see{NEWLINE}how much I’ve grown!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 155,
    "zh": "小黄『嗯好,请{VAR:0103:0}姐姐{NEWLINE}看看我的成长吧！",
-   "en": "Yellow: OK! {VAR:0103:0}, please see how{NEWLINE}much I’ve grown!",
+   "en": "Yellow: OK! Big Sis {VAR:0103:0}, please see{NEWLINE}how much I’ve grown!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 156,
    "zh": "小黄『可是{VAR:0103:0}哥哥带的精灵{NEWLINE}不够进行双打啊,{CLEAR}这样是不公平的,{CLEAR}所以咱们还是进行单打比赛吧！",
-   "en": "Yellow: But you don’t have enough{NEWLINE}Pokémon for a Double Battle, {VAR:0103:0}.{SCROLL}That wouldn’t be fair, so let’s have a{NEWLINE}single battle instead!",
+   "en": "Yellow: But you don’t have{NEWLINE}enough Pokémon for a Double{CLEAR}Battle, Big Bro {VAR:0103:0}.{SCROLL}That wouldn’t be fair, so let’s have a{NEWLINE}single battle instead!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 157,
    "zh": "小黄『可是{VAR:0103:0}姐姐带的精灵{NEWLINE}不够进行双打啊,{CLEAR}这样是不公平的,{CLEAR}所以咱们还是进行单打比赛吧！",
-   "en": "Yellow: But you don’t have enough{NEWLINE}Pokémon for a Double Battle, {VAR:0103:0}.{SCROLL}That wouldn’t be fair, so let’s have a{NEWLINE}single battle instead!",
+   "en": "Yellow: But you don’t have{NEWLINE}enough Pokémon for a Double{CLEAR}Battle, Big Sis {VAR:0103:0}.{SCROLL}That wouldn’t be fair, so let’s have a{NEWLINE}single battle instead!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 158,
    "zh": "小黄『嘿嘿,谢谢{VAR:0103:0}哥哥的认可。{NEWLINE}能在这里跟{VAR:0103:0}哥哥对战{CLEAR}我真的非常满足！",
-   "en": "Yellow: Hee hee, thank you for{NEWLINE}acknowledging me, {VAR:0103:0}.{SCROLL}Getting to battle you here, {VAR:0103:0},{NEWLINE}makes me so happy!",
+   "en": "Yellow: Hee hee, thank you for{NEWLINE}acknowledging me, Big Bro {VAR:0103:0}.{SCROLL}Getting to battle you here,{NEWLINE}Big Bro {VAR:0103:0}, makes me so happy!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 159,
    "zh": "小黄『嘿嘿,谢谢{VAR:0103:0}姐姐的认可。{NEWLINE}能在这里跟{VAR:0103:0}姐姐对战{CLEAR}我真的非常满足！",
-   "en": "Yellow: Hee hee, thank you for{NEWLINE}acknowledging me, {VAR:0103:0}.{SCROLL}Getting to battle you here, {VAR:0103:0},{NEWLINE}makes me so happy!",
+   "en": "Yellow: Hee hee, thank you for{NEWLINE}acknowledging me, Big Sis {VAR:0103:0}.{SCROLL}Getting to battle you here,{NEWLINE}Big Sis {VAR:0103:0}, makes me so happy!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 160,
