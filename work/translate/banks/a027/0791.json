@@ -430,10 +430,10 @@
   {
    "id": 44,
    "zh": "从嘴里流出来的蜜有着{NEWLINE}就算在2公里外也能把鼻子{NEWLINE}熏歪的强烈臭味。",
-   "en": "The honey dripping from its mouth has{NEWLINE}a stench so strong it can bend noses{NEWLINE}from 2 km away.",
+   "en": "The honey dripping from its mouth has a{NEWLINE}stench so strong it can curl noses from{NEWLINE}2 km away.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV091: meaning: 熏歪鼻子 as idiomatic 'curl noses' (official wording for this entry), D-1935"
   },
   {
    "id": 45,
@@ -2282,10 +2282,10 @@
   {
    "id": 233,
    "zh": "为了能够开发行星{NEWLINE}而将多边兽升级而成，{NEWLINE}但连飞上空中都还做不到。",
-   "en": "This upgraded version of Porygon{NEWLINE}is designed for space exploration.{NEWLINE}It can’t fly, however.",
+   "en": "Porygon was upgraded into this form for{NEWLINE}planetary development, but it can’t{NEWLINE}even fly yet.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0803/233; modernised from US 0803#233"
+   "origin": "agent",
+   "notes": "US 0803/233; modernised from US 0803#233 | RV091: meaning: 开发行星 is planetary development, not space exploration; 连…都还做不到 = can't even…yet, D-1936"
   },
   {
    "id": 234,
@@ -2484,10 +2484,10 @@
   {
    "id": 254,
    "zh": "会轻快地在丛林里跑来跑去，{NEWLINE}并用手臂上长出的锋利叶子解决猎物。",
-   "en": "It agilely leaps about the jungle{NEWLINE}and uses the sharp leaves on its{NEWLINE}arms to strike its prey.",
+   "en": "It agilely leaps about the jungle and{NEWLINE}uses the sharp leaves on its arms to{NEWLINE}finish off its prey.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0803/254",
+   "origin": "agent",
+   "notes": "US 0803/254 | RV091: softened: 解决猎物 = finish off prey (as #17), D-1937",
    "qa_ignore": [
     "more_lines_than_zh"
    ]
@@ -2985,10 +2985,10 @@
   {
    "id": 305,
    "zh": "挖掘铁矿石作为食物。{NEWLINE}有着用钢铁之躯互相撞击{NEWLINE}以争夺领地的习性。",
-   "en": "It loves iron ore. Groups of them{NEWLINE}fight for territory by bashing one{NEWLINE}another with their steel bodies.",
+   "en": "It digs up iron ore to eat. They fight{NEWLINE}over territory by bashing their steel{NEWLINE}bodies together.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0803/305",
+   "origin": "agent",
+   "notes": "US 0803/305 | RV091: omission: restored digging ore for food; dropped added 'groups', D-1938",
    "qa_ignore": [
     "glossary:撞击"
    ]
@@ -3067,10 +3067,10 @@
   {
    "id": 313,
    "zh": "到了晚上会亮起臀部与伙伴交流。{NEWLINE}非常喜欢甜甜萤放出的甜甜香气。",
-   "en": "It emits light from its tail to{NEWLINE}communicate. It loves the{NEWLINE}sweet aroma given off by Illumise.",
+   "en": "At night, it lights up its rear end to{NEWLINE}communicate with others. It loves the{NEWLINE}sweet aroma given off by Illumise.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0803/313; modernised from US 0803#313",
+   "origin": "agent",
+   "notes": "US 0803/313; modernised from US 0803#313 | RV091: omission: restored at night/with companions; 臀部 = rear, not tail, D-1938",
    "qa_ignore": [
     "more_lines_than_zh"
    ]
@@ -3766,10 +3766,10 @@
   {
    "id": 383,
    "zh": "很久以前与盖欧卡殊死搏斗后，{NEWLINE}一直在地下岩浆里沉睡的宝可梦。",
-   "en": "After a fierce battle with Kyogre long{NEWLINE}ago, this Pokémon has slept in magma{NEWLINE}underground ever since.",
+   "en": "After a life-or-death battle with{NEWLINE}Kyogre long ago, this Pokémon has slept{NEWLINE}in magma underground ever since.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV091: softened: 殊死搏斗 = life-or-death battle, D-1939",
    "qa_ignore": [
     "more_lines_than_zh"
    ]
@@ -4508,10 +4508,10 @@
   {
    "id": 460,
    "zh": "雪花盛开之时会从某处现身，{NEWLINE}雪花凋零之时则会再度{NEWLINE}前往某处并隐藏自己的身影。",
-   "en": "It appears from somewhere when{NEWLINE}snowflakes bloom, and when they fade,{NEWLINE}it goes off somewhere again to hide.",
+   "en": "It appears from somewhere when the{NEWLINE}snow flowers bloom. When they wilt, it{NEWLINE}goes off somewhere again to hide.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV091: meaning: 雪花盛开/凋零 = snow flowers blooming/wilting (official Platinum sense), not snowflakes"
   },
   {
    "id": 461,
@@ -4631,10 +4631,10 @@
   {
    "id": 472,
    "zh": "可以不发出振翅声而在空中飞行。{NEWLINE}用长长的尾巴捕捉猎物，{NEWLINE}再用牙齿一击刺中要害。",
-   "en": "Its flight is soundless. It uses its{NEWLINE}lengthy tail to carry off its prey...{NEWLINE}Then its elongated fangs do the rest.",
+   "en": "Its flight is soundless. It catches prey{NEWLINE}with its long tail, then pierces a vital{NEWLINE}spot with its fangs in a single strike.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0803/472"
+   "origin": "agent",
+   "notes": "US 0803/472 | RV091: omission: restored tail catch and one fang strike to a vital spot, D-1940"
   },
   {
    "id": 473,
@@ -4659,10 +4659,10 @@
   {
    "id": 475,
    "zh": "因为有着能敏锐感知对手想法的能力，{NEWLINE}所以可以率先攻击。",
-   "en": "Because it can sense what its foe{NEWLINE}is thinking, its attacks burst out{NEWLINE}first, fast, and fierce.",
+   "en": "Because it can keenly sense what its{NEWLINE}foe is thinking, it can always{NEWLINE}strike first.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0803/475",
+   "origin": "agent",
+   "notes": "US 0803/475 | RV091: addition: \"fast, and fierce\" not in the zh; 敏锐 restored (coordinator, D-2201)",
    "qa_ignore": [
     "more_lines_than_zh"
    ]
