@@ -88,7 +88,7 @@ For every changed line, append to its `notes`: ` | RVxxx: <category>: <short rea
 Write plain English, then wrap the ids you changed:
 
 ```sh
-python3 work/tools/qa.py wrap a027/NNNN --ids 12,15,40 --mode scroll --which max --reflow --in-place
+python3 work/tools/qa.py wrap work/translate/banks/a027/NNNN.json --ids 12,15,40 --mode scroll --which max --reflow --in-place
 ```
 
 Paragraphs → `{SCROLL}`, overflow → `{CLEAR}`; no one-word orphans; keep every `{...}` tag; keep
