@@ -3146,10 +3146,10 @@
   {
    "id": 385,
    "zh": "{VAR:0101:0}精神地{NEWLINE}跟在后面！",
-   "en": "{VAR:0101:0} is coming along happily!",
+   "en": "{VAR:0101:0} is energetically{NEWLINE}following behind!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/385"
+   "origin": "agent",
+   "notes": "US 0265/385 | RV068: meaning: zh 精神地 = energetically"
   },
   {
    "id": 386,
@@ -3178,10 +3178,10 @@
   {
    "id": 389,
    "zh": "{VAR:0101:0}{NEWLINE}滑了一跤！",
-   "en": "{VAR:0101:0} slipped and seems about{NEWLINE}to fall over!",
+   "en": "{VAR:0101:0} slipped!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/389"
+   "origin": "agent",
+   "notes": "US 0265/389 | RV068: meaning: zh 滑了一跤 = slipped (completed), as #316/#339"
   },
   {
    "id": 390,
@@ -3194,18 +3194,18 @@
   {
    "id": 391,
    "zh": "{VAR:0101:0}看着外面{NEWLINE}非常激动！",
-   "en": "{VAR:0101:0} is looking outside and{NEWLINE}frolicking!",
+   "en": "{VAR:0101:0} is looking outside,{NEWLINE}very excited!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/391"
+   "origin": "agent",
+   "notes": "US 0265/391 | RV068: addition: zh 非常激动; 'frolicking' not in zh"
   },
   {
    "id": 392,
    "zh": "{VAR:0101:0}静静地{NEWLINE}盯着天空。",
-   "en": "{VAR:0101:0} is staring intently at the{NEWLINE}sky.",
+   "en": "{VAR:0101:0} is quietly staring{NEWLINE}at the sky.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/392"
+   "origin": "agent",
+   "notes": "US 0265/392 | RV068: omission: zh 静静地 quietly"
   },
   {
    "id": 393,
@@ -3242,10 +3242,10 @@
   {
    "id": 397,
    "zh": "{VAR:0101:0}{NEWLINE}激动地跳着！",
-   "en": "{VAR:0101:0} was jumping up and down!",
+   "en": "{VAR:0101:0} is jumping up and{NEWLINE}down excitedly!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/397"
+   "origin": "agent",
+   "notes": "US 0265/397 | RV068: omission: zh 激动地 excitedly"
   },
   {
    "id": 398,
@@ -3290,10 +3290,10 @@
   {
    "id": 403,
    "zh": "{VAR:0101:0}很困,{NEWLINE}无精打采的⋯⋯",
-   "en": "{VAR:0101:0}’s head is nodding as it{NEWLINE}starts to fall asleep...",
+   "en": "{VAR:0101:0} is very sleepy{NEWLINE}and listless...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/403"
+   "origin": "agent",
+   "notes": "US 0265/403 | RV068: addition: zh 很困,无精打采; head nodding not in zh"
   },
   {
    "id": 404,
@@ -3314,10 +3314,10 @@
   {
    "id": 406,
    "zh": "{VAR:0101:0}{NEWLINE}在玩树叶。",
-   "en": "{VAR:0101:0} is making its leaf twitch.",
+   "en": "{VAR:0101:0} is playing with its leaf.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/406"
+   "origin": "agent",
+   "notes": "US 0265/406 | RV068: meaning: zh 在玩树叶 = playing with the leaf"
   },
   {
    "id": 407,
@@ -3346,26 +3346,26 @@
   {
    "id": 410,
    "zh": "{VAR:0101:0}{NEWLINE}放出了火。",
-   "en": "{VAR:0101:0} blew out a fireball.",
+   "en": "{VAR:0101:0} let out some fire.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/410"
+   "origin": "agent",
+   "notes": "US 0265/410 | RV068: addition: zh 放出了火; no fireball"
   },
   {
    "id": 411,
    "zh": "{VAR:0101:0}{NEWLINE}放出了火。",
-   "en": "{VAR:0101:0} blew out a couple{NEWLINE}of fireballs.",
+   "en": "{VAR:0101:0} let out some fire.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/411"
+   "origin": "agent",
+   "notes": "US 0265/411 | RV068: addition: zh 放出了火; no fireballs or number"
   },
   {
    "id": 412,
    "zh": "{VAR:0101:0}{NEWLINE}烧出大火！",
-   "en": "{VAR:0101:0} is breathing out fire!",
+   "en": "{VAR:0101:0} let out a huge blaze!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/412"
+   "origin": "agent",
+   "notes": "US 0265/412 | RV068: omission: zh 烧出大火 big fire"
   },
   {
    "id": 413,
@@ -3394,10 +3394,10 @@
   {
    "id": 416,
    "zh": "{VAR:0101:0}看着映在{NEWLINE}水池中的脸⋯⋯",
-   "en": "{VAR:0101:0} is staring at the{NEWLINE}reflections in the water.",
+   "en": "{VAR:0101:0} is looking at the face{NEWLINE}reflected in the water...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/416"
+   "origin": "agent",
+   "notes": "US 0265/416 | RV068: omission: zh 映在水池中的脸 face"
   },
   {
    "id": 417,
@@ -3429,10 +3429,10 @@
   {
    "id": 420,
    "zh": "{VAR:0101:0}非常悠闲！",
-   "en": "{VAR:0101:0} is composed!",
+   "en": "{VAR:0101:0} is very relaxed!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/420"
+   "origin": "agent",
+   "notes": "US 0265/420 | RV068: meaning: zh 非常悠闲 = very relaxed, as #349"
   },
   {
    "id": 421,
@@ -3469,10 +3469,10 @@
   {
    "id": 425,
    "zh": "⋯⋯{NEWLINE}好像是吃坏东西了,{CLEAR}表情很难受⋯⋯",
-   "en": "......{NEWLINE}It seems to have eaten something{CLEAR}strange. It’s making an odd face...",
+   "en": "......{NEWLINE}It seems to have eaten something bad.{CLEAR}It’s making a pained face...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/425"
+   "origin": "agent",
+   "notes": "US 0265/425 | RV068: meaning: zh 吃坏东西 bad food, 表情很难受 pained look"
   },
   {
    "id": 426,
@@ -3568,10 +3568,10 @@
   {
    "id": 437,
    "zh": "⋯⋯{NEWLINE}叫它也不理你。",
-   "en": "......{NEWLINE}Your Pokémon won’t come even though{CLEAR}you’re calling.",
+   "en": "......{NEWLINE}Your Pokémon ignores you even when{CLEAR}you call it.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/437"
+   "origin": "agent",
+   "notes": "US 0265/437 | RV068: meaning: zh 叫它也不理你 = ignores you"
   },
   {
    "id": 438,
@@ -3600,18 +3600,18 @@
   {
    "id": 441,
    "zh": "啊！{NEWLINE}滑了一跤朝这边来了！",
-   "en": "Oh!{NEWLINE}It’s slipping and came over here for{CLEAR}support!",
+   "en": "Oh!{NEWLINE}It slipped and is coming this way!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/441"
+   "origin": "agent",
+   "notes": "US 0265/441 | RV068: addition: zh 滑了一跤朝这边来了; 'for support' not in zh"
   },
   {
    "id": 442,
    "zh": "啊！{NEWLINE}想抓来吃！{CLEAR}要注意一下吗？{VAR:0200:0}",
-   "en": "Oh!{NEWLINE}It’s stealing food!{CLEAR}Scold it?{VAR:0200:0}",
+   "en": "Oh!{NEWLINE}It wants to grab some food to eat!{CLEAR}Scold it?{VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/442"
+   "origin": "agent",
+   "notes": "US 0265/442 | RV068: meaning: zh 想抓来吃 = wants to grab it to eat"
   },
   {
    "id": 443,
@@ -3710,18 +3710,18 @@
   {
    "id": 454,
    "zh": "危险！{NEWLINE}差点就掉下去了⋯⋯",
-   "en": "Careful!{NEWLINE}Your Pokémon seems about to fall...",
+   "en": "Careful!{NEWLINE}Your Pokémon almost fell down...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/454"
+   "origin": "agent",
+   "notes": "US 0265/454 | RV068: meaning: zh 差点就掉下去了 = nearly fell"
   },
   {
    "id": 455,
    "zh": "危险！{NEWLINE}地板破了差点掉下去！",
-   "en": "Careful! Seems like the floor could{NEWLINE}collapse, and it might fall.",
+   "en": "Careful! The floor broke, and your{NEWLINE}Pokémon almost fell through!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/455"
+   "origin": "agent",
+   "notes": "US 0265/455 | RV068: meaning: zh 地板破了差点掉下去 = floor broke, nearly fell"
   },
   {
    "id": 456,
@@ -3798,10 +3798,10 @@
   {
    "id": 465,
    "zh": "{VAR:0101:0}{NEWLINE}感觉不爽,生气了！",
-   "en": "{VAR:0101:0} is suddenly angry!",
+   "en": "{VAR:0101:0} got irritated and angry!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/465"
+   "origin": "agent",
+   "notes": "US 0265/465 | RV068: meaning: zh 感觉不爽,生气了; 'suddenly' not in zh"
   },
   {
    "id": 466,
@@ -3822,10 +3822,10 @@
   {
    "id": 468,
    "zh": "{VAR:0101:0}{NEWLINE}蹭着岩石玩！",
-   "en": "{VAR:0101:0} started grinding at the{NEWLINE}rocks!",
+   "en": "{VAR:0101:0} is having fun rubbing{NEWLINE}against the rocks!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/468"
+   "origin": "agent",
+   "notes": "US 0265/468 | RV068: meaning: zh 蹭着岩石玩 = rubbing against rocks for fun"
   },
   {
    "id": 469,
@@ -3854,34 +3854,34 @@
   {
    "id": 472,
    "zh": "{VAR:0101:0}用奇怪的姿势{NEWLINE}跳起了舞来。",
-   "en": "{VAR:0101:0} started to dance and{NEWLINE}wobble in a strange manner.",
+   "en": "{VAR:0101:0} started to dance in a{NEWLINE}strange pose.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/472"
+   "origin": "agent",
+   "notes": "US 0265/472 | RV068: addition: zh 用奇怪的姿势跳舞; no wobble"
   },
   {
    "id": 473,
    "zh": "{VAR:0101:0}{NEWLINE}不可思议地跳起了舞来。",
-   "en": "{VAR:0101:0} swayed and danced{NEWLINE}mysteriously.",
+   "en": "{VAR:0101:0} started to{NEWLINE}dance mysteriously.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/473"
+   "origin": "agent",
+   "notes": "US 0265/473 | RV068: addition: zh 不可思议地跳起了舞; no sway"
   },
   {
    "id": 474,
    "zh": "{VAR:0101:0}用奇怪的姿势{NEWLINE}跳起了舞来。",
-   "en": "{VAR:0101:0} started to dance and{NEWLINE}sway in a strange manner.",
+   "en": "{VAR:0101:0} started to dance in a{NEWLINE}strange pose.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/474"
+   "origin": "agent",
+   "notes": "US 0265/474 | RV068: addition: zh 用奇怪的姿势跳舞; no sway"
   },
   {
    "id": 475,
    "zh": "{VAR:0101:0}{NEWLINE}不可思议地跳起了舞来。",
-   "en": "{VAR:0101:0} swayed and danced{NEWLINE}mysteriously.",
+   "en": "{VAR:0101:0} started to{NEWLINE}dance mysteriously.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/475"
+   "origin": "agent",
+   "notes": "US 0265/475 | RV068: addition: zh 不可思议地跳起了舞; no sway"
   },
   {
    "id": 476,
@@ -3926,10 +3926,10 @@
   {
    "id": 481,
    "zh": "从里面{NEWLINE}似乎吹来了风。",
-   "en": "Seems the breeze is coming from here.",
+   "en": "A breeze seems to be blowing{NEWLINE}from inside.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/481"
+   "origin": "agent",
+   "notes": "US 0265/481 | RV068: meaning: zh 从里面 = from inside"
   },
   {
    "id": 482,
@@ -4017,10 +4017,10 @@
   {
    "id": 492,
    "zh": "似乎对周围转来转去的{NEWLINE}点心很好奇。",
-   "en": "Your Pokémon seems curious about the{NEWLINE}things spinning around.",
+   "en": "Your Pokémon seems curious about the{NEWLINE}snacks spinning around.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0265/492; ext-review B-008 | Hack text error fixed with user approval (D-1360, D-1496)."
+   "notes": "US 0265/492; ext-review B-008 | Hack text error fixed with user approval (D-1360, D-1496). | RV068: omission: zh 点心 snacks"
   },
   {
    "id": 493,
@@ -4185,10 +4185,10 @@
   {
    "id": 513,
    "zh": "转着自行车的螺丝玩。",
-   "en": "Your Pokémon is rolling a screw from a{NEWLINE}Bicycle around.",
+   "en": "Your Pokémon is playing at turning the{NEWLINE}Bicycle’s screws.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/513"
+   "origin": "agent",
+   "notes": "US 0265/513 | RV068: meaning: zh 转着自行车的螺丝玩 = turning the screws"
   },
   {
    "id": 514,
@@ -4249,10 +4249,10 @@
   {
    "id": 521,
    "zh": "{VAR:0101:0}{NEWLINE}开心地跳了起来！",
-   "en": "{VAR:0101:0} danced happily!",
+   "en": "{VAR:0101:0} happily jumped up!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/521"
+   "origin": "agent",
+   "notes": "US 0265/521 | RV068: meaning: zh 开心地跳了起来 = jumped up"
   },
   {
    "id": 522,
@@ -4297,10 +4297,10 @@
   {
    "id": 527,
    "zh": "绊了一跤！",
-   "en": "Your Pokémon stumbled and nearly fell!",
+   "en": "Your Pokémon tripped!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/527"
+   "origin": "agent",
+   "notes": "US 0265/527 | RV068: meaning: zh 绊了一跤 = tripped (completed)"
   },
   {
    "id": 528,
@@ -4313,10 +4313,10 @@
   {
    "id": 529,
    "zh": "滑滑地{NEWLINE}戳着身体！",
-   "en": "Your Pokémon is trying to push you!",
+   "en": "Your Pokémon is poking at{NEWLINE}you, all slippery!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/529"
+   "origin": "agent",
+   "notes": "US 0265/529 | RV068: meaning: zh 滑滑地戳着身体 = slipperily poking"
   },
   {
    "id": 530,
@@ -4329,10 +4329,10 @@
   {
    "id": 531,
    "zh": "{VAR:0101:0}开心地{NEWLINE}刨着地面！",
-   "en": "{VAR:0101:0} is making noise as it{NEWLINE}happily digs in the ground!",
+   "en": "{VAR:0101:0} is happily digging{NEWLINE}at the ground!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/531",
+   "origin": "agent",
+   "notes": "US 0265/531 | RV068: addition: zh 开心地刨着地面; no noise",
    "qa_ignore": [
     "glossary:地面"
    ]
@@ -4340,10 +4340,10 @@
   {
    "id": 532,
    "zh": "{VAR:0101:0}{NEWLINE}不断地挖着地面！",
-   "en": "{VAR:0101:0} is scraping at the ground{NEWLINE}intensely!",
+   "en": "{VAR:0101:0} keeps digging{NEWLINE}at the ground!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/532",
+   "origin": "agent",
+   "notes": "US 0265/532 | RV068: meaning: zh 不断地挖 = keeps digging",
    "qa_ignore": [
     "glossary:地面"
    ]
@@ -4423,10 +4423,10 @@
   {
    "id": 542,
    "zh": "不知怎么感觉很不舒服。",
-   "en": "Your Pokémon seems somehow unhappy.",
+   "en": "Your Pokémon feels very uncomfortable{NEWLINE}for some reason.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/542"
+   "origin": "agent",
+   "notes": "US 0265/542 | RV068: meaning: zh 不知怎么感觉很不舒服 = uncomfortable"
   },
   {
    "id": 543,
@@ -4471,10 +4471,10 @@
   {
    "id": 548,
    "zh": "吹来了冷风！",
-   "en": "A cold wind suddenly blew by!",
+   "en": "A cold wind blew by!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/548"
+   "origin": "agent",
+   "notes": "US 0265/548 | RV068: addition: 'suddenly' not in zh"
   },
   {
    "id": 549,
@@ -4511,10 +4511,10 @@
   {
    "id": 553,
    "zh": "{VAR:0101:0}{NEWLINE}开心地刨着地面！",
-   "en": "{VAR:0101:0} is happily digging itself{NEWLINE}into the ground!",
+   "en": "{VAR:0101:0} is happily digging{NEWLINE}at the ground!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/553",
+   "origin": "agent",
+   "notes": "US 0265/553 | RV068: meaning: zh 刨着地面 = digging at the ground, not itself into it",
    "qa_ignore": [
     "glossary:地面"
    ]
@@ -4522,10 +4522,10 @@
   {
    "id": 554,
    "zh": "{VAR:0101:0}{NEWLINE}哼着歌！",
-   "en": "{VAR:0101:0} is singing and humming!",
+   "en": "{VAR:0101:0} is humming a tune!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/554"
+   "origin": "agent",
+   "notes": "US 0265/554 | RV068: addition: zh 哼着歌 = humming; no singing"
   },
   {
    "id": 555,
@@ -4538,10 +4538,10 @@
   {
    "id": 556,
    "zh": "好像想立刻跳进海里！",
-   "en": "Your Pokémon seems to want to go to{NEWLINE}the sea as soon as possible!",
+   "en": "Your Pokémon seems to want to jump{NEWLINE}straight into the sea!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/556"
+   "origin": "agent",
+   "notes": "US 0265/556 | RV068: meaning: zh 想立刻跳进海里 = jump into the sea right away"
   },
   {
    "id": 557,
@@ -4586,10 +4586,10 @@
   {
    "id": 562,
    "zh": "{VAR:0101:0}{NEWLINE}拿出了干劲！",
-   "en": "{VAR:0101:0} is trembling with{NEWLINE}eagerness!",
+   "en": "{VAR:0101:0} is feeling very eager!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/562",
+   "origin": "agent",
+   "notes": "US 0265/562 | RV068: addition: zh 拿出了干劲; no trembling (as #731)",
    "qa_ignore": [
     "glossary:干劲"
    ]
@@ -4685,26 +4685,26 @@
   {
    "id": 574,
    "zh": "{VAR:0101:0}{NEWLINE}身体摇摇晃晃的！",
-   "en": "{VAR:0101:0} is shaking!",
+   "en": "{VAR:0101:0} is wobbling!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/574"
+   "origin": "agent",
+   "notes": "US 0265/574 | RV068: meaning: zh 摇摇晃晃 = wobbling (as #590)"
   },
   {
    "id": 575,
    "zh": "软绵绵的很舒服！",
-   "en": "Your Pokémon seems very happy that{NEWLINE}it’s soft!",
+   "en": "So soft and fluffy! Your Pokémon feels{NEWLINE}very comfy!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/575"
+   "origin": "agent",
+   "notes": "US 0265/575 | RV068: meaning: zh 软绵绵的很舒服 = soft, fluffy and comfortable"
   },
   {
    "id": 576,
    "zh": "把脸扭了过去⋯⋯",
-   "en": "Your Pokémon turned to face the other{NEWLINE}way, showing a defiant expression...",
+   "en": "Your Pokémon turned its face away...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/576"
+   "origin": "agent",
+   "notes": "US 0265/576 | RV068: addition: zh 把脸扭了过去; no defiant expression"
   },
   {
    "id": 577,
@@ -4717,10 +4717,10 @@
   {
    "id": 578,
    "zh": "{VAR:0101:0}{NEWLINE}紧紧地盯着两人看。",
-   "en": "{VAR:0101:0} is peeking in on the two.",
+   "en": "{VAR:0101:0} is staring intently at the{NEWLINE}two of them.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/578"
+   "origin": "agent",
+   "notes": "US 0265/578 | RV068: meaning: zh 紧紧地盯着 = staring hard, not peeking"
   },
   {
    "id": 579,
@@ -4773,10 +4773,10 @@
   {
    "id": 585,
    "zh": "看不到前面撞上了！",
-   "en": "Your Pokémon wasn’t watching where it{NEWLINE}was going and ran into you!",
+   "en": "Your Pokémon couldn’t see{NEWLINE}ahead and crashed!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/585"
+   "origin": "agent",
+   "notes": "US 0265/585 | RV068: meaning: zh 看不到前面撞上了 = couldn't see ahead; 'into you' not in zh"
   },
   {
    "id": 586,
@@ -4789,18 +4789,18 @@
   {
    "id": 587,
    "zh": "{VAR:0101:0}用奇怪的姿势{NEWLINE}跳起了舞。",
-   "en": "{VAR:0101:0} swayed and danced around{NEWLINE}as it pleased.",
+   "en": "{VAR:0101:0} danced in a strange pose.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/587"
+   "origin": "agent",
+   "notes": "US 0265/587 | RV068: meaning: zh 用奇怪的姿势跳起了舞; not 'as it pleased'"
   },
   {
    "id": 588,
    "zh": "{VAR:0101:0}跳起了{NEWLINE}不可思议的舞蹈。",
-   "en": "{VAR:0101:0} swayed around, dancing in{NEWLINE}a strange manner.",
+   "en": "{VAR:0101:0} danced a mysterious dance.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/588"
+   "origin": "agent",
+   "notes": "US 0265/588 | RV068: addition: zh 不可思议的舞蹈; no sway"
   },
   {
    "id": 589,
@@ -4829,10 +4829,10 @@
   {
    "id": 592,
    "zh": "不安地张望四周,{NEWLINE}有点神经兮兮。",
-   "en": "Your Pokémon is suspicious and looking{NEWLINE}around restlessly.",
+   "en": "Your Pokémon is looking around uneasily{NEWLINE}and seems a bit jumpy.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/592"
+   "origin": "agent",
+   "notes": "US 0265/592 | RV068: meaning: zh 不安地, 神经兮兮 = uneasy, jumpy; not suspicious"
   },
   {
    "id": 593,
@@ -4853,10 +4853,10 @@
   {
    "id": 595,
    "zh": "{VAR:0101:0}{NEWLINE}波上水很开心！",
-   "en": "{VAR:0101:0} seems very refreshed to{NEWLINE}be all wet!",
+   "en": "{VAR:0101:0} seems very happy{NEWLINE}to be splashed!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/595"
+   "origin": "agent",
+   "notes": "US 0265/595 | RV068: meaning: zh 波上水 (typo for 泼上水) 很开心 = happy to be splashed"
   },
   {
    "id": 596,
@@ -4888,10 +4888,10 @@
   {
    "id": 599,
    "zh": "{VAR:0101:0}{NEWLINE}对着头顶大吼！",
-   "en": "{VAR:0101:0} looked up at the ceiling{NEWLINE}and howled!",
+   "en": "{VAR:0101:0} looked straight{NEWLINE}up and roared!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/599"
+   "origin": "agent",
+   "notes": "US 0265/599 | RV068: addition: zh 对着头顶大吼; no ceiling"
   },
   {
    "id": 600,
@@ -5035,10 +5035,10 @@
   {
    "id": 617,
    "zh": "哇！{NEWLINE}一阵冷风吹过！⋯⋯{CLEAR}不过它还很开心。",
-   "en": "Whoa!{NEWLINE}A cold wind suddenly blew!{CLEAR}And now it looks happy?",
+   "en": "Whoa!{NEWLINE}A cold wind blew by!......{CLEAR}But your Pokémon still looks happy.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/617"
+   "origin": "agent",
+   "notes": "US 0265/617 | RV068: meaning: zh 不过它还很开心 = but it is still happy; no question"
   },
   {
    "id": 618,
@@ -5075,10 +5075,10 @@
   {
    "id": 622,
    "zh": "似乎有点害怕！",
-   "en": "Your Pokémon seems to have gotten{NEWLINE}a little shock!",
+   "en": "Your Pokémon seems a little scared!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/622"
+   "origin": "agent",
+   "notes": "US 0265/622 | RV068: meaning: zh 害怕 = scared, not shocked"
   },
   {
    "id": 623,
@@ -5147,10 +5147,10 @@
   {
    "id": 631,
    "zh": "非常开心！",
-   "en": "Your Pokémon is indescribably happy!",
+   "en": "Your Pokémon is very happy!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/631"
+   "origin": "agent",
+   "notes": "US 0265/631 | RV068: addition: zh 非常开心; 'indescribably' not in zh"
   },
   {
    "id": 632,
@@ -5187,18 +5187,18 @@
   {
    "id": 636,
    "zh": "口水{NEWLINE}流了下来⋯⋯",
-   "en": "Your Pokémon is staring blankly{NEWLINE}and drooling...",
+   "en": "Your Pokémon is drooling...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/636"
+   "origin": "agent",
+   "notes": "US 0265/636 | RV068: addition: 'staring blankly' not in zh"
   },
   {
    "id": 637,
    "zh": "很开心的样子！",
-   "en": "How nice! Your Pokémon is bouncing{NEWLINE}around happily!",
+   "en": "Your Pokémon looks really happy!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/637"
+   "origin": "agent",
+   "notes": "US 0265/637 | RV068: addition: zh 很开心的样子; no 'How nice', no bouncing (as #623)"
   },
   {
    "id": 638,
@@ -5267,10 +5267,10 @@
   {
    "id": 646,
    "zh": "啊！{NEWLINE}差点摔倒⋯⋯",
-   "en": "Oh!{NEWLINE}Your Pokémon seemed about to fall...",
+   "en": "Oh!{NEWLINE}Your Pokémon almost fell...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/646"
+   "origin": "agent",
+   "notes": "US 0265/646 | RV068: meaning: zh 差点摔倒 = nearly fell"
   },
   {
    "id": 647,
@@ -5283,10 +5283,10 @@
   {
    "id": 648,
    "zh": "口水{NEWLINE}流下来了⋯⋯",
-   "en": "Your Pokémon is staring blankly{NEWLINE}and drooling...",
+   "en": "Your Pokémon is drooling...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/648"
+   "origin": "agent",
+   "notes": "US 0265/648 | RV068: addition: 'staring blankly' not in zh"
   },
   {
    "id": 649,
@@ -5363,18 +5363,18 @@
   {
    "id": 658,
    "zh": "啊！架子快倒了,{NEWLINE}吓了一大跳！",
-   "en": "Ah! Your Pokémon seems surprised that{NEWLINE}the shelves look about to break!",
+   "en": "Ah! The shelves are about to topple!{NEWLINE}Your Pokémon got a big fright!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/658"
+   "origin": "agent",
+   "notes": "US 0265/658 | RV068: meaning: zh 架子快倒了 = about to fall over, not break; 吓了一大跳"
   },
   {
    "id": 659,
    "zh": "掉了张纸片下来。",
-   "en": "Your Pokémon opened its mouth and a{NEWLINE}scrap of paper fell out.",
+   "en": "Your Pokémon dropped a scrap of paper.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/659"
+   "origin": "agent",
+   "notes": "US 0265/659 | RV068: addition: zh 掉了张纸片下来; 'opened its mouth' not in zh"
   },
   {
    "id": 660,
@@ -5430,10 +5430,10 @@
   {
    "id": 666,
    "zh": "啊！{NEWLINE}喉咙卡住了！",
-   "en": "Ack! It seems to have something caught{NEWLINE}in its throat... It keeps spitting.",
+   "en": "Ack! Something is caught in its throat!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/666"
+   "origin": "agent",
+   "notes": "US 0265/666 | RV068: addition: zh 喉咙卡住了; no spitting"
   },
   {
    "id": 667,
@@ -5446,10 +5446,10 @@
   {
    "id": 668,
    "zh": "啊！{NEWLINE}喉咙卡住了！",
-   "en": "Ack! It seems to have something caught{NEWLINE}in its throat... It keeps spitting.",
+   "en": "Ack! Something is caught in its throat!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/668"
+   "origin": "agent",
+   "notes": "US 0265/668 | RV068: addition: zh 喉咙卡住了; no spitting"
   },
   {
    "id": 669,
@@ -5470,18 +5470,18 @@
   {
    "id": 671,
    "zh": "非常开心！",
-   "en": "Your Pokémon is bouncing happily!",
+   "en": "Your Pokémon is very happy!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/671"
+   "origin": "agent",
+   "notes": "US 0265/671 | RV068: addition: zh 非常开心; no bouncing"
   },
   {
    "id": 672,
    "zh": "悲伤地吐出了{NEWLINE}垃圾！",
-   "en": "Your Pokémon made a sour face and{NEWLINE}spat out some garbage!",
+   "en": "Your Pokémon sadly spat{NEWLINE}out some garbage!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/672"
+   "origin": "agent",
+   "notes": "US 0265/672 | RV068: meaning: zh 悲伤地 = sadly, not a sour face"
   },
   {
    "id": 673,
@@ -5606,10 +5606,10 @@
   {
    "id": 688,
    "zh": "{VAR:0101:0}和舞女{NEWLINE}一同跳起了舞！",
-   "en": "{VAR:0101:0} is dancing in the same{NEWLINE}manner as the Kimono Girls.",
+   "en": "{VAR:0101:0} danced along with{NEWLINE}the Kimono Girls!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/688"
+   "origin": "agent",
+   "notes": "US 0265/688 | RV068: meaning: zh 一同 = together with (as #689)"
   },
   {
    "id": 689,
@@ -5662,18 +5662,18 @@
   {
    "id": 695,
    "zh": "{VAR:0101:0}看着电梯{NEWLINE}心情似乎不太好。",
-   "en": "{VAR:0101:0} is looking at the lift and{NEWLINE}feeling a touch of queasiness.",
+   "en": "{VAR:0101:0} is looking at the lift and{NEWLINE}seems to be in a bad mood.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/695"
+   "origin": "agent",
+   "notes": "US 0265/695 | RV068: meaning: zh 心情似乎不太好 = bad mood, not queasy"
   },
   {
    "id": 696,
    "zh": "{VAR:0101:0}{NEWLINE}激动地到处走动！",
-   "en": "{VAR:0101:0} began to scuttle around!",
+   "en": "{VAR:0101:0} is excitedly{NEWLINE}walking all around!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/696"
+   "origin": "agent",
+   "notes": "US 0265/696 | RV068: meaning: zh 激动地到处走动"
   },
   {
    "id": 697,
@@ -5686,10 +5686,10 @@
   {
    "id": 698,
    "zh": "{VAR:0101:0}很兴奋,{NEWLINE}呼吸都急促了！",
-   "en": "{VAR:0101:0} started breathing roughly{NEWLINE}through its nose in excitement!",
+   "en": "{VAR:0101:0} is so excited,{NEWLINE}it’s breathing hard!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/698"
+   "origin": "agent",
+   "notes": "US 0265/698 | RV068: addition: zh 呼吸都急促了; no nose"
   },
   {
    "id": 699,
@@ -5729,10 +5729,10 @@
   {
    "id": 703,
    "zh": "{VAR:0101:0}{NEWLINE}感觉很悲伤⋯⋯",
-   "en": "{VAR:0101:0} seems somehow sad...",
+   "en": "{VAR:0101:0} feels very sad...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/703"
+   "origin": "agent",
+   "notes": "US 0265/703 | RV068: meaning: zh 感觉很悲伤 = feels very sad"
   },
   {
    "id": 704,
@@ -5831,10 +5831,10 @@
   {
    "id": 715,
    "zh": "{VAR:0101:0}张开身体{NEWLINE}发出大叫！",
-   "en": "{VAR:0101:0} gathered itself up and let{NEWLINE}out a huge roar!",
+   "en": "{VAR:0101:0} spread its body wide and let{NEWLINE}out a huge roar!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/715"
+   "origin": "agent",
+   "notes": "US 0265/715 | RV068: meaning: zh 张开身体 = spread its body"
   },
   {
    "id": 716,
@@ -5887,10 +5887,10 @@
   {
    "id": 722,
    "zh": "{VAR:0101:0}{NEWLINE}放出了软绵绵的孢子！",
-   "en": "{VAR:0101:0} sent a ring-shaped cloud{NEWLINE}of spores into the air!",
+   "en": "{VAR:0101:0} released fluffy spores!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/722",
+   "origin": "agent",
+   "notes": "US 0265/722 | RV068: addition: zh 软绵绵的孢子; no ring-shaped cloud",
    "qa_ignore": [
     "glossary:孢子"
    ]
@@ -5898,10 +5898,10 @@
   {
    "id": 723,
    "zh": "{VAR:0101:0}{NEWLINE}想贴到树上！",
-   "en": "{VAR:0101:0} is clinging to the tree!",
+   "en": "{VAR:0101:0} wants to cling to the tree!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/723"
+   "origin": "agent",
+   "notes": "US 0265/723 | RV068: meaning: zh 想贴到树上 = wants to cling"
   },
   {
    "id": 724,
@@ -5949,18 +5949,18 @@
   {
    "id": 729,
    "zh": "{VAR:0101:0}{NEWLINE}看着研究所。",
-   "en": "{VAR:0101:0} is looking restlessly at{NEWLINE}the lab.",
+   "en": "{VAR:0101:0} is looking at the lab.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/729"
+   "origin": "agent",
+   "notes": "US 0265/729 | RV068: addition: 'restlessly' not in zh"
   },
   {
    "id": 730,
    "zh": "似乎对转来转去的机器{NEWLINE}很好奇。",
-   "en": "Your Pokémon seems concerned that the{NEWLINE}machine is running.",
+   "en": "Your Pokémon seems curious about the{NEWLINE}spinning machine.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/730"
+   "origin": "agent",
+   "notes": "US 0265/730 | RV068: meaning: zh 对转来转去的机器很好奇 = curious about the spinning machine"
   },
   {
    "id": 731,
@@ -5995,10 +5995,10 @@
   {
    "id": 734,
    "zh": "{VAR:0101:0}{NEWLINE}看着石头。",
-   "en": "{VAR:0101:0} is looking restlessly at{NEWLINE}the rock.",
+   "en": "{VAR:0101:0} is looking at the rock.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/734"
+   "origin": "agent",
+   "notes": "US 0265/734 | RV068: addition: 'restlessly' not in zh"
   },
   {
    "id": 735,
@@ -6067,10 +6067,10 @@
   {
    "id": 743,
    "zh": "{VAR:0101:0}被不稳的地板{NEWLINE}吓了一跳！",
-   "en": "{VAR:0101:0} was surprised by the{NEWLINE}creaking of the floor!",
+   "en": "{VAR:0101:0} was startled by{NEWLINE}the unsteady floor!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/743"
+   "origin": "agent",
+   "notes": "US 0265/743 | RV068: meaning: zh 不稳的地板 = unsteady floor, no creaking"
   },
   {
    "id": 744,
