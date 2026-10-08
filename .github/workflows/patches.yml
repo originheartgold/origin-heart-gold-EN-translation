@@ -1,0 +1,85 @@
+# Check the patch toolchain (work/patches, work/tools) on every push and pull request that touches it:
+# `check.py --fast` with armips, so the synthetic assembly runs too (asmpatch.py synthetic: every armips source
+# assembled over zero-filled stand-ins of the binaries, sizes from work/patches/sizes.toml, guards off).
+# No ROM and no game data here: the ROM tests skip, and the full check (`check.py --full`: the sources against
+# the Chinese ROM, the snapshots, the USA claims, GOLDEN, a full build) stays local. See CONTRIBUTING.md → Checks.
+# It runs only in a repository that holds work/patches: the published repository once the patch toolchain is
+# published with it. Until then `python3 work/tools/check.py` is the gate.
+# Downloads: the actions, the pinned pip packages and the armips source at its pinned commit, nothing else.
+name: Patch toolchain
+
+on:
+  push:
+    paths: ['work/patches/**', 'work/tools/**', 'ruff.toml', 'work/translate/decisions/decisions.jsonl',
+            '.github/workflows/patches.yml']
+  pull_request:
+    paths: ['work/patches/**', 'work/tools/**', 'ruff.toml', 'work/translate/decisions/decisions.jsonl',
+            '.github/workflows/patches.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# A newer push to the same branch or pull request replaces a running check.
+concurrency:
+  group: patches-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # armips v0.11.0 (work/notes/toolchain.md): the commit is the pin; check.py checks the version banner.
+  ARMIPS_COMMIT: 156f78f6bccfc07498578ac491ce7fe2a1e807a6
+
+jobs:
+  check:
+    # The image is pinned and named in the armips cache key: a binary built on another image is not reused.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          # the validated environment of requirements-runtime.txt
+          python-version: '3.14'
+          cache: pip
+          cache-dependency-path: work/tools/requirements-*.txt
+      # Not py-desmume: only the emulator harness (work/tools/emu_*.py) uses it, and no check needs it.
+      - name: Install the pinned Python packages
+        run: |
+          grep -v '^py-desmume==' work/tools/requirements-runtime.txt > "$RUNNER_TEMP/requirements-runtime.txt"
+          python -m pip install -r work/tools/requirements-dev.txt -r "$RUNNER_TEMP/requirements-runtime.txt"
+      # Built once per pinned commit and image, then restored from the cache.
+      - name: Restore armips
+        id: armips
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/armips
+          key: armips-${{ env.ARMIPS_COMMIT }}-ubuntu-24.04-${{ runner.arch }}
+      # v0.11.0 is untested with this image's GCC (13+), which no longer pulls <cstdint> in through other
+      # standard headers; `-include cstdint` is the usual workaround for such older sources and harmless otherwise.
+      - name: Build armips v0.11.0 from source
+        if: steps.armips.outputs.cache-hit != 'true'
+        env:
+          CXXFLAGS: -include cstdint
+        run: |
+          src="$RUNNER_TEMP/armips-src"
+          git init -q "$src" && cd "$src"
+          git fetch -q --depth 1 https://github.com/Kingcom/armips.git "$ARMIPS_COMMIT"
+          git checkout -q FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$ARMIPS_COMMIT"
+          mkdir build && cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+          make -j"$(nproc)"
+          mkdir -p ~/armips && cp armips ~/armips/
+      # Saved right after the build, so a failing check below does not cost the next run a rebuild.
+      - name: Save armips
+        if: steps.armips.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ~/armips
+          key: ${{ steps.armips.outputs.cache-primary-key }}
+      - run: echo "ARMIPS=$HOME/armips/armips" >> "$GITHUB_ENV"
+      # --armips: a missing or wrong armips fails the asm-synth step instead of skipping it.
+      - name: Fast check (registry, FIXES.md, ruff, synthetic assembly, unit tests)
+        run: python work/tools/check.py --fast --armips "$ARMIPS"

@@ -17,6 +17,28 @@ import check as C  # noqa: E402
 GOT = {"nontext_sha1": "n" * 40, "text_sha1": "t" * 40, "rom_sha1": "r" * 40, "xdelta_sha1": "x" * 40}
 
 
+class Synthetic(unittest.TestCase):
+    def test_without_armips_skip_or_fail(self):
+        import asmpatch
+        with patch.object(asmpatch, "find_armips", side_effect=asmpatch.AsmError("armips not found")):
+            with self.assertRaises(C.Skip) as cm:
+                C.step_synthetic(None, required=False)
+            self.assertFalse(cm.exception.fail)
+            self.assertIn("not found", str(cm.exception))
+            with self.assertRaises(C.Skip) as cm:
+                C.step_synthetic("/nonexistent/armips", required=True)    # --armips given (CI), or --full
+            self.assertTrue(cm.exception.fail)
+
+    def test_assembly_error_fails(self):
+        import asmpatch
+        with patch.object(asmpatch, "find_armips", return_value="armips"), \
+                patch.object(asmpatch, "check_armips", return_value="v0.11.0"), \
+                patch.object(asmpatch, "synthetic", side_effect=asmpatch.AsmError("fix t: armips failed")):
+            with self.assertRaises(C.Failed) as cm:
+                C.step_synthetic(None, required=False)
+            self.assertIn("fix t: armips failed", str(cm.exception))
+
+
 class Expected(unittest.TestCase):
     def test_round_trip(self):
         with tempfile.TemporaryDirectory() as td:

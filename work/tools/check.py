@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """check - one entry point for the patch toolchain's checks.
 
-    python3 work/tools/check.py [--fast]       registry + asm lint, FIXES.md current, ruff, unit tests (no armips)
+    python3 work/tools/check.py [--fast]       registry + asm lint, FIXES.md current, ruff, the synthetic assembly
+                                               (when armips is found), unit tests (armips hidden); no ROM
     python3 work/tools/check.py --full         also: asmpatch.py check, the disassembly snapshots, the USA
                                                claims, the unit tests with armips (GOLDEN), a full build
                                                compared with work/patches/expected.toml
@@ -13,16 +14,20 @@
     python3 work/tools/check.py --full --update-expected
                                                record the full build's hashes in work/patches/expected.toml
 
-Fast (the default, also the pre-commit hook; about 6 s) needs neither armips nor a ROM:
+Fast (the default, also the pre-commit hook and CI; about 6 s) needs no ROM, and armips only for asm-synth:
   registry   fixes.py check: fix.toml schema, regions, overlaps, `.open` lines, `.string` = en, and the asm
              lint (header, .area around every write, a guard before every area's first write, every area
              inside fix.toml's regions or appended under expect_end with a [[grow]], line length);
   fixes-md   work/patches/FIXES.md equals `fixes.py docs`;
   ruff       `ruff check` with the repo's ruff.toml, by the version pinned in work/tools/requirements-dev.txt
              (skipped with a note when ruff is not installed; --full requires it);
+  asm-synth  `asmpatch.py synthetic`: every armips source assembled without the ROM, over zero-filled stand-ins
+             of the binaries (work/patches/sizes.toml), guards off: syntax, .area overflows, regions, growth,
+             strings; not the bytes. Needs armips v0.11.0 (--armips, $ARMIPS, PATH): skipped with a note when
+             it is not found, a failure when --armips names one that is not there (CI passes --armips);
   tests      every work/tools/test_*.py, with armips hidden (the armips tests skip; tests that read the
              Chinese ROM run when it is there and skip when it is not).
-Full adds (and fails when armips v0.11.0, the two ROMs or xdelta3 are missing):
+Full adds (and fails when armips v0.11.0, the two ROMs or xdelta3 are missing; asm-synth then requires armips):
   asmpatch   asmpatch.py check: every enabled armips fix assembled against the Chinese ROM;
   listings   every armips fix assembled alone and disassembled (asmlisting.py, capstone pinned in
              requirements-dev.txt): each work/patches/<id>/<id>.listing must equal it (a stale snapshot fails,
@@ -159,6 +164,24 @@ def run_tests(env_armips):
         fails = [ln for ln in tail if ln.startswith(("FAIL:", "ERROR:"))]
         raise Failed("\n".join(fails[:40] + [ran, result]) or r.stderr[-4000:])
     return f"{ran.split(' in ')[0][4:]}, {result}"
+
+
+def step_synthetic(armips_arg, required):
+    """asmpatch.py synthetic; without armips a SKIP, or a failure when `required` (--full, or --armips given)."""
+    import asmpatch
+    import fixes
+    try:
+        armips = asmpatch.find_armips(armips_arg)
+        asmpatch.check_armips(armips)
+    except asmpatch.AsmError as ex:
+        if not required:
+            raise Skip(f"armips {asmpatch.PINNED_VERSION} not found (--armips, $ARMIPS or PATH; "
+                       f"work/notes/toolchain.md)") from None
+        raise Skip(str(ex), fail=True) from None
+    try:
+        return asmpatch.synthetic(armips)
+    except (asmpatch.AsmError, fixes.FixError) as ex:
+        raise Failed(str(ex)) from None
 
 
 def step_tests_fast():
@@ -399,7 +422,8 @@ def main(argv=None) -> int:
     mode.add_argument("--staged", action="store_true", help="the fast check on the staged files")
     ap.add_argument("--registry-only", action="store_true",
                     help="only the registry step (fixes.py check with the asm lint); with --fast or --staged")
-    ap.add_argument("--armips", help="armips executable for --full (default: $ARMIPS, then PATH)")
+    ap.add_argument("--armips", help="armips executable for asm-synth and --full (default: $ARMIPS, then PATH); "
+                                     "given, asm-synth fails without it")
     ap.add_argument("--work-dir", default=str(DEFAULT_WORK_DIR), help="build folder for --full "
                                                                      "(default work/build/check)")
     ap.add_argument("--update-expected", action="store_true",
@@ -415,11 +439,12 @@ def main(argv=None) -> int:
         return staged(["--registry-only"] if a.registry_only else [])
     if a.registry_only:
         return run([("registry", step_registry)])
-    steps = [("registry", step_registry), ("fixes-md", step_fixes_md), ("ruff", lambda: step_ruff(a.full))]
+    steps = [("registry", step_registry), ("fixes-md", step_fixes_md), ("ruff", lambda: step_ruff(a.full)),
+             ("asm-synth", lambda: step_synthetic(a.armips, a.full or a.armips is not None))]
     if not a.full:
         steps.append(("tests", step_tests_fast))
         code = run(steps)
-        print("fast mode: armips, ROM and build steps not run (python3 work/tools/check.py --full)")
+        print("fast mode: the ROM and build steps not run (python3 work/tools/check.py --full)")
         return code
     armips = {}
 

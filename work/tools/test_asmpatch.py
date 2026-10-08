@@ -430,6 +430,140 @@ class StringsAndGrowth(unittest.TestCase):
         self.assertIn("region overlay58:0x10: overlay58+0x10 is", str(cm.exception))
 
 
+class Synthetic(unittest.TestCase):
+    """asmpatch.synthetic: the sources assembled without the ROM over zero-filled stand-ins, guards off."""
+
+    setUp, tearDown, fix, run_fix = Assemble.setUp, Assemble.tearDown, Assemble.fix, Assemble.run_fix
+
+    def run_synthetic(self, fx, data=bytes(64)):
+        return A.assemble([fx], A.SyntheticImages({"arm9": data}), ARMIPS)
+
+    def test_stand_ins_cover_every_armips_file(self):
+        fixes = F.load_all()
+        images, bases, layout = A.synthetic_inputs(A.asm_fixes(fixes))
+        self.assertIsInstance(images, A.SyntheticImages)
+        sizes = F.load_sizes()
+        self.assertEqual({k: len(v) for k, v in images.items()}, {k: v["size"] for k, v in sizes.items()})
+        self.assertEqual(set(layout), set(sizes) - {"arm9"})
+        # the regions hold their fix.toml expect bytes, everything else is zero
+        nl = next(f for f in fixes if f["id"] == "namelen")
+        r = A.regions(nl, bases)[0]
+        self.assertEqual(images[r.file][r.start:r.end], r.expect)
+        with tempfile.TemporaryDirectory() as td:
+            shutil.copy(F.PATCHES_DIR / "overlays.toml", td)
+            with self.assertRaises(A.AsmError) as cm:
+                A.synthetic_inputs([nl], td)
+            self.assertIn("no size in work/patches/sizes.toml", str(cm.exception))
+
+    def test_guards_off_name_refused_before_armips(self):
+        # without armips: refused before it would run, in a real build and in the synthetic one
+        for data in ({"arm9": bytes(64)}, A.SyntheticImages({"arm9": bytes(64)})):
+            fx = self.fix(".definelabel GUARDS_OFF, 1\n.org 0x02000010\n.area 2\nexpect16 0\nmov r3, #7\n.endarea")
+            with self.assertRaises(A.AsmError) as cm:
+                A.assemble([fx], data, "/nonexistent/armips")
+            self.assertIn("t/t.asm:5: GUARDS_OFF is reserved", str(cm.exception))
+
+    def test_obfuscated_includes_refused_before_armips(self):
+        # the review's bypasses: a non-.inc file in include/, reached through a labelled or equ-named include
+        good = ".org 0x02000010\n.area 2\nexpect16 0\nmov r3, #7\n.endarea"
+        with tempfile.TemporaryDirectory() as td:
+            inc = Path(td) / "include"
+            shutil.copytree(A.INCLUDE_DIR, inc)
+            for line in ('lbl: .include "../include/helper.s"', 'F equ "../include/helper.s"\n.include F',
+                         '.include"../include/helper.s"', '.include "local.inc"'):
+                with self.assertRaises(A.AsmError, msg=line) as cm:
+                    A.assemble([self.fix(line + "\n" + good)], {"arm9": bytes(64)}, "/nonexistent/armips",
+                               include_dir=inc)
+                self.assertIn("write includes as", str(cm.exception))
+            (inc / "helper.s").write_text(".definelabel GUARDS_OFF, 1\n")
+            with self.assertRaises(A.AsmError) as cm:
+                A.assemble([self.fix(good)], {"arm9": bytes(64)}, "/nonexistent/armips", include_dir=inc)
+            msg = str(cm.exception)
+            self.assertIn("include/helper.s: only .inc includes and .tbl table files", msg)
+
+    @needs_armips
+    def test_real_run_refuses_guards_off_in_the_symbol_file(self):
+        # the last line of defence: whatever slipped past the static checks, armips's symbol file shows it
+        from unittest import mock
+        # (GUARDS_REAL keeps the guards on anyway: this guard matches, so armips succeeds and -sym must refuse)
+        fx = self.fix(".definelabel GUARDS_OFF, 1\n.org 0x02000010\n.area 2\nexpect16 0\nmov r3, #7\n.endarea")
+        with mock.patch.object(A, "guards_live_problems", return_value=[]):
+            with self.assertRaises(A.AsmError) as cm:
+                self.run_fix(fx)
+            self.assertIn("GUARDS_OFF was defined while assembling against the ROM", str(cm.exception))
+            self.assertIn("guards_off", str(cm.exception))
+        self.assertEqual(A.guards_off_symbols("02000000 0\n00000001 guards_off\n00000001 guards_off_x\n"),
+                         ["00000001 guards_off"])
+
+    @needs_armips
+    def test_guards_real_keeps_the_guards_on(self):
+        # a label outside .open defines GUARDS_OFF but escapes -sym; GUARDS_REAL (every real run) keeps the guard
+        from unittest import mock
+        (self.dir / "t.asm").write_text('.nds\n.thumb\n.include "../include/guards.inc"\nguards_off:\n'
+                                        '.open "arm9.bin", 0x02000000\n.org 0x02000010\n.area 2\nexpect16 0x2305\n'
+                                        'mov r3, #7\n.endarea\n.close\n', encoding="utf-8")
+        fx = {"id": "t", "kind": "code", "asm": "t.asm", "_path": self.dir / "fix.toml",
+              "code": [{"id": "t-1", "file": "arm9", "offset": "0x10", "expect": "0x0000", "notes": "n"}]}
+        with mock.patch.object(A, "guards_live_problems", return_value=[]):
+            with self.assertRaises(A.AsmError) as cm:
+                self.run_fix(fx)
+        self.assertIn("guard failed at 02000010: expected 2305, found 0000", str(cm.exception))
+
+    @needs_armips
+    def test_stale_listing_or_symbol_file_is_not_reused(self):
+        # two fixes in one stage: the second "armips" run writes nothing, so the first run's files must not count
+        import subprocess
+        from unittest import mock
+        real_run = subprocess.run
+        body = ".org 0x{:08X}\n.area 2\nexpect16 0\nmov r3, #7\n.endarea"
+        fx1 = self.fix(body.format(0x02000010))
+        d2 = Path(self.td.name) / "u"
+        d2.mkdir()
+        (d2 / "u.asm").write_text((self.dir / "t.asm").read_text(encoding="utf-8").replace("0x02000010",
+                                                                                           "0x02000020"))
+        fx2 = {"id": "u", "kind": "code", "asm": "u.asm", "_path": d2 / "fix.toml",
+               "code": [{"id": "u-1", "file": "arm9", "offset": "0x20", "expect": "0x0000", "notes": "n"}]}
+        for data, want in (({"arm9": bytes(64)}, "armips wrote no symbol file"),
+                           (A.SyntheticImages({"arm9": bytes(64)}), "armips wrote no listing")):
+            calls = []
+
+            def fake(cmd, calls=calls, **kw):
+                calls.append(cmd)
+                if len(calls) == 1:
+                    return real_run(cmd, **kw)
+                return subprocess.CompletedProcess(cmd, 0, "", "")
+            with mock.patch.object(A.subprocess, "run", side_effect=fake):
+                with self.assertRaises(A.AsmError) as cm:
+                    A.assemble([fx1, fx2], data, ARMIPS)
+            self.assertIn(f"fix u: {want}", str(cm.exception))
+
+    @needs_armips
+    def test_guards_are_off_only_for_synthetic_images(self):
+        fx = self.fix(".org 0x02000010\n.area 2\nexpect16 0x2305\nmov r3, #7\n.endarea")
+        with self.assertRaises(A.AsmError) as cm:
+            self.run_fix(fx)                                   # real images: the guard fires
+        self.assertIn("guard failed at 02000010: expected 2305, found 0000", str(cm.exception))
+        new, rows, _ = self.run_synthetic(fx)
+        self.assertEqual(new["arm9"][0x10:0x12], bytes([0x07, 0x23]))
+
+    @needs_armips
+    def test_synthetic_still_catches_overflow_outside_writes_and_double_writes(self):
+        cases = [(".org 0x02000010\n.area 2\nexpect16 0\nmov r3, #7\nmov r3, #8\n.endarea", "overflow"),
+                 (".org 0x02000020\n.area 2\nexpect16 0\nmov r3, #7\n.endarea", "outside every region"),
+                 (".org 0x02000010\n.area 2\nexpect16 0\nmov r3, #7\n.endarea\n"
+                  ".org 0x02000010\n.area 2\nexpect16 0\nmov r3, #6\n.endarea", "more than once"),
+                 (".org 0x02000010\n.area 2\nexpect16 0\nmovs r3, #7\n.endarea", "armips failed")]
+        for body, want in cases:
+            with self.assertRaises(A.AsmError, msg=want) as cm:
+                self.run_synthetic(self.fix(body))
+            self.assertIn(want, str(cm.exception).lower() if want == "overflow" else str(cm.exception))
+
+    @needs_armips
+    def test_every_source_assembles_without_the_rom(self):
+        summary = A.synthetic(ARMIPS)
+        self.assertIn(f"{len(ASM_FIXES)} armips fixes assembled without the ROM", summary)
+
+
 @needs_armips
 @unittest.skipUnless(ROM_CN.exists(), "Chinese ROM missing")
 class RealFixes(unittest.TestCase):

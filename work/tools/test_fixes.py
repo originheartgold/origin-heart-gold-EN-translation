@@ -482,6 +482,18 @@ reloc_max_units = 15
             F.load_overlays(self.root)
         self.assertIn("overlays.toml", str(cm.exception))
 
+    def test_sizes(self):
+        self.assertEqual(F.load_sizes(self.root), {})
+        (self.root / "sizes.toml").write_text("[arm9]\nsize = 0x40\n[itcm]\nsize = 0x20\nbss = 0\n"
+                                              "[overlay58]\nsize = 0x7E0\nbss = 0\n")
+        self.assertEqual(F.load_sizes(self.root), {"arm9": {"size": 0x40}, "itcm": {"size": 0x20, "bss": 0},
+                                                   "overlay58": {"size": 0x7E0, "bss": 0}})
+        for bad in ("[arm9]\nsize = 1\nbss = 0\n", "[overlay58]\nsize = 1\n", "[a/0/2/7]\nsize = 1\n",
+                    "[overlay58]\nsize = -1\nbss = 0\n", "[itcm]\nsize = '1'\nbss = 0\n"):
+            (self.root / "sizes.toml").write_text(bad)
+            with self.assertRaises(F.FixError, msg=bad):
+                F.load_sizes(self.root)
+
     # -- order and selection -------------------------------------------------------------
     def _chain(self):
         self.write("zeta", fix_toml("zeta", entries=code_entry("z-1")))
@@ -731,18 +743,59 @@ class AsmLint(unittest.TestCase):
         self.assertIn("inc:7: an include file may only define macros, equ constants and .definelabel labels "
                       "(found: .org 0x02000010)", probs[1])
         self.assertIn("inc:9: /* */ block comments", probs[0])
-        with tempfile.TemporaryDirectory() as td:          # a fix-local include is checked with the fix
-            d = Path(td) / "t"
-            d.mkdir()
-            (d / "local.inc").write_text(bad, encoding="utf-8")
-            fx = dict(self.fx(), _path=d / "fix.toml")
-            text = self.HEAD + '.include "local.inc"\n' + self.GOOD + ".close\n"
-            probs = F.lint_asm(text, fx, name="t.asm")
-            self.assertTrue(any(p.startswith("t/local.inc:7: an include file may only define") for p in probs),
+        with tempfile.TemporaryDirectory() as td:          # a shared include: every file of include/ is checked
+            (Path(td) / F.INCLUDE_DIR).mkdir()
+            (Path(td) / F.INCLUDE_DIR / "local.inc").write_text(bad, encoding="utf-8")
+            probs = F.lint_includes(td)
+            self.assertTrue(any(p.startswith("include/local.inc:7: an include file may only define") for p in probs),
                             probs)
-            probs = F.lint_asm(text.replace("local.inc", "missing.inc"), fx, name="t.asm")
-            self.assertIn("t/t.asm: .include 'missing.inc' not found", probs)
-        self.assertEqual(F.lint_includes(), [])            # guards.inc, charmap.inc: definitions only
+        probs = self.lint('.include "../include/missing.inc"\n' + self.GOOD)
+        self.assertIn("t/t.asm: .include '../include/missing.inc' not found", probs)
+        self.assertEqual(F.lint_includes(), [])            # guards.inc, charmap.inc, charmap.tbl
+
+    def test_include_only_in_its_canonical_form(self):
+        # armips resolves includes against its working directory (<stage>/rom): only ../include/<name>.inc
+        # is staged and linted; any other form could pull in a file nobody checked
+        for line in ('.include "local.inc"\n', '.include "../include/helper.s"\n', 'lbl: .include "../include/x.inc"\n',
+                     'F equ "../include/x.inc"\n.include F\n', '.include "../include/guards.inc", "UTF-8"\n',
+                     '.INCLUDE "../t/other.inc"\n'):
+            probs = self.lint(line + self.GOOD)
+            self.assertProblem(probs, "write includes as `.include \"../include/<name>.inc\"`")
+        self.assertEqual(self.lint('.include "../include/charmap.inc" ; ok\n' + self.GOOD), [])
+
+    def test_include_folder_holds_only_checked_files(self):
+        with tempfile.TemporaryDirectory() as td:
+            inc = Path(td) / F.INCLUDE_DIR
+            inc.mkdir()
+            (inc / "helper.s").write_text(".definelabel GUARDS_OFF, 1\n")
+            (inc / "sub").mkdir()
+            (inc / "t.tbl").write_text("2B01=A\n/FFFF\n.definelabel X, 1\n")
+            (inc / "a.inc").write_text('X equ 1\n.include "../include/b.s"\n')
+            probs = F.lint_includes(td)
+            for want in ("include/helper.s: only .inc includes and .tbl table files", "include/sub: only .inc",
+                         "include/t.tbl:3: not an armips table line", "include/a.inc:2: write includes as"):
+                self.assertTrue(any(p.startswith(want) for p in probs), (want, probs))
+
+    # -- guards off ---------------------------------------------------------------------------------
+    def test_guards_off_name_is_reserved(self):
+        for line in (".definelabel GUARDS_OFF, 1\n", "guards_off equ 1\n", ".if defined(GUARDS_OFF)\n.endif\n"):
+            probs = self.lint(line + self.GOOD)
+            self.assertProblem(probs, "t/t.asm:6: GUARDS_OFF is reserved")
+        for line in ("guards_real:\n", ".if defined(GUARDS_REAL)\n.endif\n"):
+            self.assertProblem(self.lint(line + self.GOOD), "t/t.asm:6: GUARDS_REAL is reserved")
+        self.assertEqual(self.lint("; GUARDS_OFF in a comment is fine\n" + self.GOOD), [])
+        self.assertEqual(self.lint(".definelabel GUARDS_OFF_X, 1\n" + self.GOOD), [])     # another name
+        # only guards.inc may test it, and only with defined()
+        lines = [".macro m", "  .if !defined(GUARDS_OFF) && 1", "  .endif", ".endmacro"]
+        self.assertEqual(F.guards_off_problems(lines, "include/guards.inc", allow_defined=True), [])
+        self.assertTrue(F.guards_off_problems(lines, "include/other.inc"))
+        self.assertTrue(F.guards_off_problems(["GUARDS_OFF equ 1"], "include/guards.inc", allow_defined=True))
+        with tempfile.TemporaryDirectory() as td:
+            (Path(td) / F.INCLUDE_DIR).mkdir()
+            (Path(td) / F.INCLUDE_DIR / "other.inc").write_text(".definelabel GUARDS_OFF, 1\n")
+            self.assertTrue(any("include/other.inc:1: GUARDS_OFF is reserved" in p for p in F.lint_includes(td)))
+        guards = (F.PATCHES_DIR / F.INCLUDE_DIR / F.GUARDS_INC).read_text(encoding="utf-8")
+        self.assertEqual(guards.count("(defined(GUARDS_REAL) || !defined(GUARDS_OFF)) && "), 4)   # every guard
 
     def test_comments_and_quotes(self):
         self.assertEqual(F._strip_comment('.string "a;b\\"c;d" ; x'), '.string "a;b\\"c;d" ')
@@ -803,6 +856,25 @@ class RealRegistry(unittest.TestCase):
         bases = F.load_overlays()
         self.assertEqual(bases["overlay58"], 0x021E83C0)
         self.assertEqual(bases["overlay14"], 0x022007E0)
+
+    def test_sizes_match_rom(self):
+        rom_cn = F.ROM_CN
+        if not rom_cn.exists():
+            self.skipTest("Chinese ROM missing")
+        import msgtool as m
+        rom = m.load_rom(rom_cn)
+        sizes = F.load_sizes()
+        self.assertEqual(F.rom_sizes(rom, sizes), sizes)        # also part of check_overlay_bases (above)
+        files = {e["file"] for fx in self.fixes if fx.get("asm") for t in ("code", "string", "grow")
+                 for e in fx.get(t, [])}
+        self.assertEqual(set(sizes), files, "regenerate: python3 work/tools/fixes.py overlays")
+        with tempfile.TemporaryDirectory() as td:
+            shutil.copy(F.PATCHES_DIR / "overlays.toml", td)
+            (Path(td) / "sizes.toml").write_text("[overlay58]\nsize = 0x7E4\nbss = 0\n")
+            with self.assertRaises(F.FixError) as cm:
+                F.check_overlay_bases(rom, td)
+            self.assertIn("overlay58: sizes.toml size 0x7e4, bss 0x0, ROM size 0x7e0, bss 0x0",
+                          str(cm.exception))
 
     def test_default_selection(self):
         act = F.select(self.fixes)
