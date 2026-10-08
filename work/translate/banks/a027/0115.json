@@ -158,10 +158,10 @@
   {
    "id": 19,
    "zh": "好的！{NEWLINE}我会做得很好的！",
-   "en": "OK! I hope I do a good job!",
+   "en": "OK! I’ll do a great job!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0117/19"
+   "origin": "agent",
+   "notes": "US 0117/19 | RV036: meaning: confident promise, not doubt (D-1705)"
   },
   {
    "id": 20,
@@ -254,10 +254,10 @@
   {
    "id": 31,
    "zh": "那么要拍了哦,{SCROLL}你要有种{SCROLL}「这个世界是我的！」的感觉,{NEWLINE}好了,说茄……子！{SCROLL}",
-   "en": "Are you ready?{SCROLL}Come on!{NEWLINE}Look cool as if you own the world!{SCROLL}",
+   "en": "Here we go! Give me that ‘The world is{NEWLINE}mine!’ feeling! OK, say chee...se!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0117/31"
+   "origin": "agent",
+   "notes": "US 0117/31 | RV036: omission: say-cheese restored (D-1706)"
   },
   {
    "id": 32,
@@ -294,18 +294,18 @@
   {
    "id": 36,
    "zh": "嗯？{NEWLINE}你也是新来的吗？{SCROLL}若要为广播塔作战计划{NEWLINE}而增加成员的话,{CLEAR}那么火箭队的制服{CLEAR}就不够用了。{SCROLL}然后我听说照相馆{NEWLINE}里面有,{CLEAR}于是去偷了件过来,{SCROLL}正好！{NEWLINE}你就在这里换吧。{SCROLL}",
-   "en": "Huh?{NEWLINE}Are you a newcomer, too?{SCROLL}We had to recruit new members for the{NEWLINE}Radio Tower mission.{CLEAR}Then we ran out of uniforms.{SCROLL}I heard this studio has some, so I{NEWLINE}decided to “borrow” one.{SCROLL}Since you are here, why don’t you{NEWLINE}change as well?{SCROLL}",
+   "en": "Huh? Are you a new recruit too?{SCROLL}If we’re adding members for the Radio{NEWLINE}Tower operation, there won’t be enough{CLEAR}Team Rocket uniforms.{SCROLL}Then I heard the photo studio had some,{NEWLINE}so I went and stole one.{SCROLL}Perfect timing!{NEWLINE}Go ahead and change right here.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0117/36"
+   "origin": "agent",
+   "notes": "US 0117/36 | RV036: softened: zh says stole, not ‘borrow’ (D-1707); dropped ‘change here’ restored"
   },
   {
    "id": 37,
    "zh": "嗯,还挺合适的~！{SCROLL}但是穿成这样子{NEWLINE}跑到城市里去转悠,{CLEAR}吓到市民就不好了哦！",
-   "en": "Look at you! Pretty good!{SCROLL}Oh, but you shouldn’t try to scare{NEWLINE}people walking around looking{CLEAR}like that, OK?",
+   "en": "Mm, it suits you pretty well! But if you{NEWLINE}wander around the city dressed like{CLEAR}that, you’ll scare people. That{CLEAR}wouldn’t be nice!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0117/37"
+   "origin": "agent",
+   "notes": "US 0117/37 | RV036: omission: restored ‘suits you’ and ‘around the city’"
   },
   {
    "id": 38,
@@ -318,18 +318,18 @@
   {
    "id": 39,
    "zh": "你的精灵{NEWLINE}好有魅力哦{SCROLL}若是在这里穿上礼服的话{NEWLINE}会变的更加,更加,更加{CLEAR}有魅力！{SCROLL}这样的话就可以特意为你{NEWLINE}把一张照片装饰在{CLEAR}最里面的房间！{SCROLL}怎样？要试试吗？{VAR:0200:0}",
-   "en": "Ooh, your Pokémon are so very{NEWLINE}charming! How enchanting!{SCROLL}If you dress up your Pokémon here,{NEWLINE}make it a sight to behold!{SCROLL}Then I will even hang a picture of one{NEWLINE}in the other room!{SCROLL}You will do this, won’t you? {VAR:0200:0}",
+   "en": "Ooh, your Pokémon are so charming! If{NEWLINE}they dress up here, they’ll be even{CLEAR}more, more, MORE charming! Then I’ll{CLEAR}specially hang a photo in the room at{CLEAR}the very back for you! How about it?{CLEAR}Want to try? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0117/39"
+   "origin": "agent",
+   "notes": "US 0117/39 | RV036: meaning: US line differed from the hack (more, more charming; back room)"
   },
   {
    "id": 40,
    "zh": "真是的！{NEWLINE}真是个冷淡的人……",
-   "en": "Oh, you silly thing...{NEWLINE}Where’s your sense of adventure?",
+   "en": "Honestly! What a cold person...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0117/40"
+   "origin": "agent",
+   "notes": "US 0117/40 | RV036: meaning: zh calls the player cold, not unadventurous (D-1708)"
   },
   {
    "id": 41,
@@ -358,26 +358,26 @@
   {
    "id": 44,
    "zh": "从你手里的{NEWLINE}饰品盒的里面{CLEAR}挑选喜欢的装饰品{CLEAR}给精灵戴上！{SCROLL}好了以后会把照片{NEWLINE}装饰在最里面的房间,{SCROLL}通过记录通信{NEWLINE}连朋友的照片{CLEAR}也能拿到哦！{SCROLL}首先,总之{NEWLINE}让我们先试试吧！{VAR:0200:0}",
-   "en": "You have a Fashion Case, don’t you?{NEWLINE}Ah, oui, wonderful!{SCROLL}Just choose the Accessories and put{NEWLINE}them on your Pokémon.{SCROLL}When you’re done, I will snap a photo{NEWLINE}and put it up beside me!{SCROLL}If you mix your records with others,{NEWLINE}you can get their photos, too!{SCROLL}I think it will be much easier if{NEWLINE}you will just try! {VAR:0200:0}",
+   "en": "Pick the Accessories you like from your{NEWLINE}Fashion Case and put them on your{CLEAR}Pokémon! When you’re done, I’ll hang{CLEAR}the photo in the room at the very back.{CLEAR}If you mix records, you can even get{CLEAR}your friends’ photos! Anyway, let’s{CLEAR}just give it a try first! {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0117/44"
+   "origin": "agent",
+   "notes": "US 0117/44 | RV036: meaning: US ‘Ah, oui’ and ‘beside me’ not in zh; back room (D-1709)"
   },
   {
    "id": 45,
    "zh": "辛苦你啦！{NEWLINE}把完成的照片装饰上去吧,{CLEAR}要加上标题哦！{SCROLL}",
-   "en": "Ooh, nice work!{NEWLINE}Let’s display the photo right away!{CLEAR}Oh, but it needs to have a title!{SCROLL}",
+   "en": "Thanks for your hard work!{NEWLINE}Let’s put up the finished photo.{CLEAR}Oh, and it needs a title!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0117/45"
+   "origin": "agent",
+   "notes": "US 0117/45 | RV036: meaning: US line added ‘right away’; follow the hack"
   },
   {
    "id": 46,
    "zh": "{VAR:011C:0}{NEWLINE}……　……　……{SCROLL}好,好,原来如此！{NEWLINE}看上去闪闪发光！{SCROLL}",
-   "en": "{VAR:011C:0}...{SCROLL}Ooh, yes, yes! I get it now!{NEWLINE}Your aesthetics shine through!{SCROLL}",
+   "en": "{VAR:011C:0}... Ooh, yes, yes! I see!{NEWLINE}It looks dazzling!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0117/46"
+   "origin": "agent",
+   "notes": "US 0117/46 | RV036: addition: US ‘Your aesthetics’ not in zh"
   },
   {
    "id": 47,
@@ -390,18 +390,18 @@
   {
    "id": 48,
    "zh": "啊……就这样什么都没有{NEWLINE}就好了吗,真是寂寞啊！",
-   "en": "Oh... You came out without doing{NEWLINE}anything... How disappointing.",
+   "en": "Oh... You’re fine leaving it with nothing{NEWLINE}at all? How lonely!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0117/48"
+   "origin": "agent",
+   "notes": "US 0117/48 | RV036: meaning: zh asks if nothing at all is OK, ‘how lonely’"
   },
   {
    "id": 49,
    "zh": "再来穿礼服的话,{NEWLINE}就会帮你把装饰照片{CLEAR}换成新的！{SCROLL}要穿礼服吗？{VAR:0200:0}",
-   "en": "If you dress up any Pokémon again,{NEWLINE}the photo here will be changed.{SCROLL}Would you like to dress up{NEWLINE}a Pokémon, dearie? {VAR:0200:0}",
+   "en": "If you dress up again, I’ll replace the{NEWLINE}photo on display with a new one! Would{CLEAR}you like to dress up? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0117/49"
+   "origin": "agent",
+   "notes": "US 0117/49 | RV036: addition: US ‘dearie’ not in zh"
   },
   {
    "id": 50,
@@ -422,10 +422,10 @@
   {
    "id": 52,
    "zh": "你的照片已经装饰在{NEWLINE}里面的房间里了啊！",
-   "en": "I put your photo up right here.{NEWLINE}It just looks so perfect there!",
+   "en": "Your photo is now on display in the room{NEWLINE}at the very back!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0117/52"
+   "origin": "agent",
+   "notes": "US 0117/52 | RV036: meaning: photo is in the back room, not ‘right here’ (D-1709)"
   },
   {
    "id": 53,
@@ -446,10 +446,10 @@
   {
    "id": 55,
    "zh": "从刚刚开始穿黑衣的{NEWLINE}火箭队员们{CLEAR}就慌慌张张地走来走去……{SCROLL}我还以为他们想闹点什么事,{NEWLINE}结果是你把火箭队员给……{CLEAR}你真强！{SCROLL}既然这样,{NEWLINE}传说的……{SCROLL}",
-   "en": "Team Rocket members in black suits{NEWLINE}have been running around...{SCROLL}I was wondering what was going on.{NEWLINE}So, you took on Team Rocket?{CLEAR}You are impressive!{SCROLL}You may be able to face the{NEWLINE}legendary Poké...{SCROLL}",
+   "en": "Team Rocket members in black have been{NEWLINE}rushing around in a panic...{SCROLL}I thought they were up to something,{NEWLINE}but it turns out you gave those{CLEAR}Rockets a...{SCROLL}You’re really strong!{NEWLINE}In that case, the legendary...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0117/55"
+   "origin": "agent",
+   "notes": "US 0117/55 | RV036: addition: US ‘you may be able to face the legendary Poké...’ not in zh; trailing-off kept"
   },
   {
    "id": 56,

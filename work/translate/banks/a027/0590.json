@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "到了。",
-   "en": "We are already on that floor?!",
+   "en": "Here we are.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0598/4"
+   "origin": "agent",
+   "notes": "US 0598/4 | RV036: meaning: zh 到了 ‘here we are’, not a question"
   },
   {
    "id": 5,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "２楼　货品齐全{NEWLINE}训练师超市。",
-   "en": "Second floor has the Trainer’s Market,{NEWLINE}where various useful items are sold.",
+   "en": "Second floor has the fully stocked{NEWLINE}Trainer’s Market.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0598/6"
+   "origin": "agent",
+   "notes": "US 0598/6 | RV036: addition: zh 货品齐全 ‘fully stocked’ only"
   },
   {
    "id": 7,
