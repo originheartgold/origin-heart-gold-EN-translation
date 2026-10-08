@@ -2071,7 +2071,7 @@ auto-advance.
 
 New: native Thumb code (native.c, compiled by clang into the reviewed payload.json, sha256 pinned in
 text_speed_patch.py) is appended to the ARM9 ITCM autoload block by the armips source (.incbin; 0x01FF8620-
-0x01FF8BE0; the SDK's ITCM arena start at 0x020D1A28 moves past it). Options gets a seventh row TEXT SPEED with NORMAL / FAST (overlay 50
+0x01FF8FA0; the SDK's ITCM arena start at 0x020D1A28 moves past it). Options gets a seventh row TEXT SPEED with NORMAL / FAST (overlay 50
 grows by 284 bytes for the new row tables; 40 field offsets, row counts, touch boxes, button positions and
 six calls are rewritten). NORMAL is the hack's printer; FAST prints up to three letters per frame when the
 frame has room (frame-bounded, D-1601). The game loop's last call before its VBlank wait (0x02000DE0) goes
@@ -2123,24 +2123,24 @@ writing, text_speed_patch.verify checks the runtime contract again.
 ; sha256 in work/tools/text_speed_patch.py). The build writes its bytes to ../native/text-speed.bin before
 ; armips runs; this source places them in the ARM9 ITCM block and hooks the game into them. The labels below
 ; are the payload's symbols (payload.json "symbols", Thumb bit cleared; `fixes.py check` compares them):
-; Thumb entry points, except text_speed_state (the zeroed runtime frame state, the last 26 bytes).
+; Thumb entry points, except text_speed_state (the zeroed runtime frame state, the last 52 bytes).
 
 .nds
 .thumb
 .include "../include/guards.inc"
 
 .definelabel frame_end,         0x01FF8620
-.definelabel print_task,        0x01FF86C4
-.definelabel load_rows,         0x01FF88C8
-.definelabel load_choice,       0x01FF88F8
-.definelabel load_label,        0x01FF893C
-.definelabel commit_speed,      0x01FF8964
-.definelabel exit_free,         0x01FF8990
-.definelabel draw_label,        0x01FF89CC
-.definelabel setup_sprites,     0x01FF89F0
-.definelabel pass_end,          0x01FF8A44
-.definelabel call_print,        0x01FF8B40
-.definelabel text_speed_state,  0x01FF8BC0
+.definelabel print_task,        0x01FF874C
+.definelabel load_rows,         0x01FF89E0
+.definelabel load_choice,       0x01FF8A10
+.definelabel load_label,        0x01FF8A54
+.definelabel commit_speed,      0x01FF8A7C
+.definelabel exit_free,         0x01FF8AA8
+.definelabel draw_label,        0x01FF8AE4
+.definelabel setup_sprites,     0x01FF8B08
+.definelabel pass_end,          0x01FF8B5C
+.definelabel call_print,        0x01FF8E00
+.definelabel text_speed_state,  0x01FF8F5C
 
 THUMB equ 1                     ; bit 0 of a code pointer: Thumb
 
@@ -2155,8 +2155,8 @@ THUMB equ 1                     ; bit 0 of a code pointer: Thumb
     expect_end                                  ; guard: the hack's ITCM block still ends here
 TextSpeed_Payload:
     .incbin "../native/text-speed.bin"
-    .if text_speed_state != org() - 26
-      .error "payload.json symbols do not match its bytes: text_speed_state must be the last 26 bytes"
+    .if text_speed_state != org() - 52
+      .error "payload.json symbols do not match its bytes: text_speed_state must be the last 52 bytes"
     .endif
     .align 32, 0
 TextSpeed_ItcmEnd:

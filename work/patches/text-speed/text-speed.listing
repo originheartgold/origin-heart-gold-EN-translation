@@ -8,13 +8,13 @@
 == arm9+0xDE0 (RAM 0x02000DE0), 4 bytes, thumb: text-speed-frame-end
   02000DDC  F016 FF04  bl #0x2017be8
 - 02000DE0  F026 FA78  bl #0x20272d4
-+ 02000DE0  F7F7 FE30  bl #0x1ff8a44  ; pass_end
++ 02000DE0  F7F7 FEBC  bl #0x1ff8b5c  ; pass_end
   02000DE4  2001       movs r0, #1
   02000DE6  1C01       adds r1, r0, #0
 
 == arm9+0x20A18 (RAM 0x02020A18), 4 bytes, data: text-speed-print-task
 - 02020A18  02020A1D
-+ 02020A18  01FF86C5 (print_task+1)
++ 02020A18  01FF874D (print_task+1)
 
 == arm9+0x2B176 (RAM 0x0202B176), 4 bytes, thumb: text-speed-new-game-default
   0202B170  F0A8 EAF0  blx #0x20d3754
@@ -49,23 +49,23 @@
 
 == arm9+0xD1A28 (RAM 0x020D1A28), 4 bytes, data: text-speed-itcm-arena
 - 020D1A28  01FF8620
-+ 020D1A28  01FF8BE0 (TextSpeed_ItcmEnd)
++ 020D1A28  01FF8FA0 (TextSpeed_ItcmEnd)
 
-== itcm+0x620 (RAM 0x01FF8620), appended 1472 bytes (itcm 0x620 -> 0xBE0 bytes), data: [[grow]] itcm
-+ 01FF8620  .incbin text-speed.bin: 1466 bytes, sha256 ae3df5ec17776f7ad224f1523efde753a4b70c7dfef703318950851fcf301978; its labels:
+== itcm+0x620 (RAM 0x01FF8620), appended 2432 bytes (itcm 0x620 -> 0xFA0 bytes), data: [[grow]] itcm
++ 01FF8620  .incbin text-speed.bin: 2416 bytes, sha256 85ea58fe25b96bc787190340df3f88f5263ff6438878eec6005a3c74beebe200; its labels:
 +   01FF8620  frame_end, TextSpeed_Payload
-+   01FF86C4  print_task
-+   01FF88C8  load_rows
-+   01FF88F8  load_choice
-+   01FF893C  load_label
-+   01FF8964  commit_speed
-+   01FF8990  exit_free
-+   01FF89CC  draw_label
-+   01FF89F0  setup_sprites
-+   01FF8A44  pass_end
-+   01FF8B40  call_print
-+   01FF8BC0  text_speed_state
-+ 01FF8BDA  6 bytes of 0x00 (.align)
++   01FF874C  print_task
++   01FF89E0  load_rows
++   01FF8A10  load_choice
++   01FF8A54  load_label
++   01FF8A7C  commit_speed
++   01FF8AA8  exit_free
++   01FF8AE4  draw_label
++   01FF8B08  setup_sprites
++   01FF8B5C  pass_end
++   01FF8E00  call_print
++   01FF8F5C  text_speed_state
++ 01FF8F90  16 bytes of 0x00 (.align)
 
 == overlay50+0x14 (RAM 0x021E4994), 2 bytes, thumb: text-speed-options-menu
   021E4990  F636 FBCE  bl #0x201b130
@@ -94,7 +94,7 @@
   021E4B54  F646 FB2E  bl #0x202b1b4
   021E4B58  1C28       adds r0, r5, #0
 - 021E4B5A  F622 FB29  bl #0x20071b0
-+ 021E4B5A  F613 FF19  bl #0x1ff8990  ; exit_free
++ 021E4B5A  F613 FFA5  bl #0x1ff8aa8  ; exit_free
   021E4B5E  6820       ldr r0, [r4]
   021E4B60  F636 FB40  bl #0x201b1e4
 
@@ -151,7 +151,7 @@
   021E4D78  62A0       str r0, [r4, #0x28]
   021E4D7A  1C20       adds r0, r4, #0
 - 021E4D7C  F000 FADA  bl #0x21e5334
-+ 021E4D7C  F613 FDA4  bl #0x1ff88c8  ; load_rows
++ 021E4D7C  F613 FE30  bl #0x1ff89e0  ; load_rows
   021E4D80  E01C       b #0x21e4dbc
   021E4D82  F000 F94F  bl #0x21e5024
 
@@ -159,7 +159,7 @@
   021E4D9C  F655 F81E  bl #0x2039ddc
   021E4DA0  1C20       adds r0, r4, #0
 - 021E4DA2  F000 FE93  bl #0x21e5acc
-+ 021E4DA2  F613 FE25  bl #0x1ff89f0  ; setup_sprites
++ 021E4DA2  F613 FEB1  bl #0x1ff8b08  ; setup_sprites
   021E4DA6  480C       ldr r0, [pc, #0x30]
   021E4DA8  1C21       adds r1, r4, #0
 
@@ -186,7 +186,7 @@
   021E5260  1C61       adds r1, r4, #1
   021E5262  1C2A       adds r2, r5, #0
 - 021E5264  F626 FC52  bl #0x200bb0c
-+ 021E5264  F613 FB6A  bl #0x1ff893c  ; load_label
++ 021E5264  F613 FBF6  bl #0x1ff8a54  ; load_label
 - 021E5268  2018       movs r0, #0x18
 + 021E5268  2014       movs r0, #0x14
   021E526A  4360       muls r0, r4, r0
@@ -196,7 +196,7 @@
   021E5280  1C2A       adds r2, r5, #0
   021E5282  2304       movs r3, #4
 - 021E5284  F63B FAD6  bl #0x2020834
-+ 021E5284  F613 FBA2  bl #0x1ff89cc  ; draw_label
++ 021E5284  F613 FC2E  bl #0x1ff8ae4  ; draw_label
   021E5288  1C60       adds r0, r4, #1
   021E528A  0400       lsls r0, r0, #0x10
   021E528C  0C04       lsrs r4, r0, #0x10
@@ -217,7 +217,7 @@
   021E5362  6AB0       ldr r0, [r6, #0x28]
   021E5364  3109       adds r1, #9
 - 021E5366  F626 FBEB  bl #0x200bb40
-+ 021E5366  F613 FAC7  bl #0x1ff88f8  ; load_choice
++ 021E5366  F613 FB53  bl #0x1ff8a10  ; load_choice
   021E536A  9900       ldr r1, [sp]
   021E536C  00A2       lsls r2, r4, #2
 
@@ -668,6 +668,6 @@
   021F1224  68E0       ldr r0, [r4, #0xc]
   021F1226  6D62       ldr r2, [r4, #0x54]
 - 021F1228  F62F FB04  bl #0x2020834
-+ 021F1228  F607 FC8A  bl #0x1ff8b40  ; call_print
++ 021F1228  F607 FDEA  bl #0x1ff8e00  ; call_print
   021F122C  3435       adds r4, #0x35
   021F122E  7020       strb r0, [r4]
