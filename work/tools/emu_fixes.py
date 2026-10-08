@@ -154,13 +154,13 @@ CROPS = {
 APPROVAL_IMAGES = "work/build/hard4/approve/ (in the poke-patches worktree): <crop>_build.png, <crop>_chinese.png"
 APPROVED = {   # taken from run work/build/hard4/run3 (2026-10-08), the build of develop aab6efb
     "naming-tabs": {"digest": "037dab60bd0a6a0ac04d497fdd82463dd679ac22c72ba558c188d501f0e991b1",
-                    "approved_by": "pending user review", "images": APPROVAL_IMAGES},
+                    "approved_by": "user, 2026-10-08", "images": APPROVAL_IMAGES},
     "type-icon-summary": {"digest": "dea47b53d48bb954194db1cc0b0c219395697b40a966ee4e43035809464aa85b",
-                          "approved_by": "pending user review", "images": APPROVAL_IMAGES},
+                          "approved_by": "user, 2026-10-08", "images": APPROVAL_IMAGES},
     "type-icon-battle": {"digest": "cdd429d35e5f48a50c0a98fa4b68a55cd2a289675c582ffb1278364b8cdff89b",
-                         "approved_by": "pending user review", "images": APPROVAL_IMAGES},
+                         "approved_by": "user, 2026-10-08", "images": APPROVAL_IMAGES},
     "title-subtitle": {"digest": "ef249d7e92d33f907702649a2304ccbfb587e2ffdc317053aa1b2c8cfd10f1ad",
-                       "approved_by": "pending user review", "images": APPROVAL_IMAGES},
+                       "approved_by": "user, 2026-10-08", "images": APPROVAL_IMAGES},
 }
 TITLE_FRAME = 2400                  # frames after power-on (intro movie); START then shows the title screen
 

@@ -1054,16 +1054,17 @@ exactly 6 px further right than on the control in every row; more name pixels th
 Graphics fixes are judged by screen crops: `fixed` only when the crop's digest (sha256 of its RGB pixels) is
 the approved one in `emu_fixes.APPROVED`, `original` when it equals the untouched Chinese ROM's crop (an extra
 `cn` run). Any other picture (a mirrored label, a wrong palette) is `unclear` and fails. Only the digests are in
-git; the crop images are game graphics. The approved digests were taken from run `work/build/hard4/run3` and
-are marked "approved by: pending user review"; the build and Chinese crops they come from are in
-`work/build/hard4/approve/` of the poke-patches worktree (`<crop>_build.png`, `<crop>_chinese.png`, git-ignored).
+git; the crop images are game graphics. The approved digests were taken from run `work/build/hard4/run3` (the summary
+type icon from a widened box, so the whole icon is in it) and approved by the user on 2026-10-08 after viewing
+the crops in `work/build/hard4/approve/` of the poke-patches worktree (`<crop>_build.png`, `<crop>_chinese.png`,
+git-ignored; `type-icon-summary_build_v2.png` is the widened crop).
 A crop change (another box, new art) needs a new approved digest.
 
 | Crop | Screen | Box (256x384 screenshot) |
 |---|---|---|
 | naming-tabs | naming screen: the four tabs and BACK / OK | 20,246 - 240,276 |
 | title-subtitle | title screen under the logo: 'Origin HeartGold' | 96,98 - 250,128 |
-| type-icon-summary | summary skills page: the first move's type icon | 8,203 - 38,216 |
+| type-icon-summary | summary skills page: the first move's type icon | 7,201 - 41,215 |
 | type-icon-battle | battle FIGHT menu: the first move's type icon | 16,247 - 49,261 |
 
     .venv/bin/python work/tools/emu_harness.py fixes --rom work/build/check/origin_hg_v4.0.3_en_wip.nds \
