@@ -1,0 +1,22 @@
+# ruff (version pinned in work/tools/requirements-dev.txt), run by `python3 work/tools/check.py` and the
+# pre-commit hook: `ruff check` from the repo root. Python lives only under work/ (tools, research scripts,
+# translation scripts, glossary helpers); git-ignored folders (work/build, work/extract, ...) are skipped.
+# The formatter is not enforced (`ruff format` is not part of the checks).
+target-version = "py312"
+line-length = 120
+
+[lint]
+# pycodestyle errors and warnings, pyflakes, bugbear, import order
+select = ["E", "F", "W", "B", "I"]
+
+[lint.per-file-ignores]
+# Strict for the patch toolchain (fixes.py, asmpatch.py, build.py, check.py and their tests); the older tools,
+# audits and research scripts keep their compact style: these rules would only reformat them. The bug-finding
+# rules (F: undefined names, unused imports and variables; B: bugbear except the style ones below) apply to
+# every file. B023 (closure over a loop variable) and B905 (zip without strict=) were reviewed on 2026-10-08:
+# the closures are called inside their iteration and the zips pair equal-length sequences.
+"!work/tools/{fixes,asmpatch,build,check,test_fixes,test_asmpatch,test_check}.py" = [
+    "E401", "E402", "E501", "E701", "E702", "E731", "E741", "B007", "B023", "B905", "I001"]
+# `from common import *`: the translation scripts share one helper module
+"work/translate/scripts/*.py" = ["F403", "F405"]
+"work/research/trainer_verification/facilities_test.py" = ["F403", "F405"]

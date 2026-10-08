@@ -479,7 +479,7 @@ def run_scenario(rom, sav, script, shots, tag):
                 pr.frame += 1
                 if pr.frame % 600 == 0:
                     print("MEMCHECK " + json.dumps(probe_data(pr)), flush=True)
-                if pr.frame >= 600 and pr.corrupt is None and pr.frame % 30 == 0:   # not gated on 'boot' 
+                if pr.frame >= 600 and pr.corrupt is None and pr.frame % 30 == 0:   # not gated on 'boot'
                     bad = pr.heap_walk()
                     if bad:
                         pr.corrupt = (pr.frame, bad)

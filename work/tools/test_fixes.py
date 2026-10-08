@@ -53,15 +53,28 @@ notes = "n"
 BASES = {"arm9": 0x02000000, "overlay58": 0x021E83C0}
 
 
+def asm_header(fid, decisions="D-0001"):
+    """The header comment the asm lint requires on line 1."""
+    return f"; {fid} - Title of {fid}. {decisions}\n"
+
+
 def asm_for(toml_text):
-    """A minimal armips source that opens every file the fix's entries name, at its load address, and writes
-    each [[string]] en with .string."""
+    """A minimal armips source that passes the asm lint: the header, every file the fix's entries name opened at
+    its load address, and each [[string]] en written with .string in an appended (expect_end) area."""
+    fid = re.search(r'^id = "([^"]+)"', toml_text, re.M).group(1)
     files = sorted(set(re.findall(r'^file = "((?:arm9|overlay\d+))"', toml_text, re.M)))
     ens = re.findall(r'^en = "([^"]*)"', toml_text, re.M)
-    head = '.loadtable "../include/charmap.tbl", "UTF-8"\n' if ens else ""
-    return head + "".join(f'.open "{f}.bin", 0x{BASES.get(f, 0x02200000):08X}\n' +
-                          "".join(f'.string "{en}"\n' for en in ens) + ".close\n" for f in files[:1]) + \
-        "".join(f'.open "{f}.bin", 0x{BASES.get(f, 0x02200000):08X}\n.close\n' for f in files[1:])
+    head = asm_header(fid) + '.include "../include/guards.inc"\n' + \
+        ('.loadtable "../include/charmap.tbl", "UTF-8"\n' if ens else "")
+    out = head
+    for i, f in enumerate(files):
+        base = BASES.get(f, 0x02200000)
+        out += f'.open "{f}.bin", 0x{base:08X}\n'
+        if i == 0 and ens:
+            out += (f".org 0x{base + 0x1000:08X}\n.area 64\n    expect_end\n" +
+                    "".join(f'    .string "{en}"\n' for en in ens) + ".endarea\n")
+        out += ".close\n"
+    return out
 
 
 GFX = """
@@ -191,11 +204,12 @@ class Registry(unittest.TestCase):
                           '.openfile "arm9.bin", "out.bin", 0x02000000\n')
         self.assertTrue(any("a.asm:2: overlay58.bin opened at 0x021e8000, but its load address is 0x021e83c0"
                             in p for p in probs), probs)
-        self.assertTrue(any("a.asm:3: opens 'overlay12.bin', but the fix declares no [[code]] / [[string]] / [[grow]] in it"
-                            in p for p in probs), probs)
+        self.assertTrue(any("a.asm:3: opens 'overlay12.bin', but the fix declares no [[code]] / [[string]] / "
+                            "[[grow]] in it" in p for p in probs), probs)
         self.assertTrue(any("a.asm:4: write .open as" in p for p in probs), probs)
         self.assertTrue(any("a.asm:5: write .open as" in p for p in probs), probs)
-        probs = probs_for('; .open "overlay58.bin", 0x021E83C0 is only a comment\n.open "arm9.bin", 0x02000000\n')
+        probs = probs_for(asm_header("a") + '; .open "overlay58.bin", 0x021E83C0 is only a comment\n'
+                          '.open "arm9.bin", 0x02000000\n')
         self.assertEqual(probs, ["a/fix.toml: entries in overlay58, but a.asm never opens overlay58.bin"])
         probs = probs_for('.open "arm9.bin", 0x02000000\n.open "overlay58.bin", 0x021E83C0\n'
                           '  .headersize 0x02000010\n.CreateFile "x.bin", "y.bin", 0 ; no\n.create "z.bin", 0\n')
@@ -495,7 +509,8 @@ reloc_max_units = 15
         self.assertIn("- Required by: `alpha`", md)
         self.assertIn("- Decisions: D-0001\n", md)
         self.assertIn("`arm9+0x10` (RAM 0x02000010) `z-1`: 2 bytes, was `2305`", md)
-        self.assertIn("<summary>zeta.asm</summary>\n\n```asm\n.open \"arm9.bin\", 0x02000000\n.close\n```", md)
+        self.assertIn("<summary>zeta.asm</summary>\n\n```asm\n; zeta - Title of zeta. D-0001\n"
+                      ".include \"../include/guards.inc\"\n.open \"arm9.bin\", 0x02000000\n.close\n```", md)
         self.assertIn("`a/0/0/8` #1, #2: `copy_us` from USA ROM", md)
 
     def test_cli(self):
@@ -515,6 +530,157 @@ reloc_max_units = 15
               "notes": "quote \" backslash \\ 中文 'x'", "also": ["x", "y"], "tiles": [[1, 2], [3, 4]]}
         text = F.toml_table("graphics", op)
         self.assertEqual(tomllib.loads(text)["graphics"], [op])
+
+
+class AsmLint(unittest.TestCase):
+    """fixes.lint_asm: the static rules for a fix's armips source (each rule positive and negative)."""
+
+    HEAD = '; t - Title. D-0001\n.nds\n.thumb\n.include "../include/guards.inc"\n.open "arm9.bin", 0x02000000\n'
+    GOOD = ".org 0x02000010\n.area 2\n    expect16 0x2305\n    mov r3, #7\n.endarea\n"
+
+    def fx(self, decisions=("D-0001",), regions=(("0x10", "0x2305"),), grow=None):
+        f = {"id": "t", "kind": "code", "decisions": list(decisions),
+             "code": [{"id": f"t-{i}", "file": "arm9", "offset": o, "expect": e, "notes": "n"}
+                      for i, (o, e) in enumerate(regions)]}
+        if grow:
+            f["grow"] = [{"file": grow, "max": 64}]
+        return f
+
+    def lint(self, body, head=None, **kw):
+        return F.lint_asm((self.HEAD if head is None else head) + body + ".close\n", self.fx(**kw), name="t.asm")
+
+    def assertProblem(self, probs, *parts):
+        self.assertTrue(any(all(x in p for x in parts) for p in probs), (parts, probs))
+
+    def test_clean_source(self):
+        self.assertEqual(self.lint(self.GOOD), [])
+
+    # -- header ------------------------------------------------------------------------------------
+    def test_header_names_the_fix(self):
+        probs = self.lint(self.GOOD, head=self.HEAD.replace("; t - Title. D-0001\n", ".nds ; t - Title. D-0001\n"))
+        self.assertProblem(probs, "t/t.asm:1: the source must start with a header comment '; t - <title>")
+        probs = self.lint(self.GOOD, head=self.HEAD.replace("; t -", "; other -"))
+        self.assertProblem(probs, "t/t.asm:1: the source must start with a header comment")
+
+    def test_header_names_every_decision(self):
+        self.assertEqual(self.lint(self.GOOD, decisions=("D-0001",)), [])
+        probs = self.lint(self.GOOD, decisions=("D-0001", "D-0002"))
+        self.assertProblem(probs, "t/t.asm:1: the header comment does not name D-0002")
+        # the header is the leading comment paragraph: a decision named after the first ';' line does not count
+        head = self.HEAD.replace("D-0001\n", "\n;\n; D-0002\n")
+        self.assertProblem(self.lint(self.GOOD, head=head, decisions=("D-0002",)), "does not name D-0002")
+        head = self.HEAD.replace("D-0001\n", "\n; continued: D-0002\n;\n")
+        self.assertEqual(self.lint(self.GOOD, head=head, decisions=("D-0002",)), [])
+
+    def test_header_names_a_pending_decision(self):
+        probs = self.lint(self.GOOD, head=self.HEAD.replace(" D-0001", ""), decisions=())
+        self.assertProblem(probs, "fix.toml lists no decision, so the header comment must name the pending decision")
+        self.assertEqual(self.lint(self.GOOD, head=self.HEAD.replace("D-0001", "D-2043 (pending)"), decisions=()), [])
+
+    # -- line length -------------------------------------------------------------------------------
+    def test_line_length(self):
+        ok = ".org 0x02000010" + " " * 20 + ";" + "x" * (F.ASM_MAX_LINE - 36) + "\n"
+        self.assertEqual(len(ok), F.ASM_MAX_LINE + 1)
+        self.assertEqual(self.lint(ok + self.GOOD), [])
+        probs = self.lint(ok.replace(";", ";x") + self.GOOD)
+        self.assertProblem(probs, "t/t.asm:6: line is 121 characters, more than 120")
+        inc = F.lint_includes(F.PATCHES_DIR)
+        self.assertEqual(inc, [])
+
+    # -- area --------------------------------------------------------------------------------------
+    def test_write_outside_an_area(self):
+        probs = self.lint(".org 0x02000010\n    expect16 0x2305\n    mov r3, #7\n")
+        self.assertProblem(probs, "t/t.asm:8: write outside an .area")
+        probs = self.lint(".org 0x02000010\n    expect16 0x2305\n    .halfword 7\n")
+        self.assertProblem(probs, "t/t.asm:8: write outside an .area")
+
+    def test_write_outside_an_area_in_a_macro(self):
+        mac = ".macro put, v\n    .halfword v\n.endmacro\n"
+        probs = self.lint(mac + ".org 0x02000010\n    expect16 0x2305\n    put 7\n")
+        self.assertProblem(probs, "t/t.asm:11 (via t.asm:7): write outside an .area")
+        self.assertEqual(self.lint(mac + ".org 0x02000010\n.area 2\n    expect16 0x2305\n    put 7\n.endarea\n"), [])
+
+    def test_area_rules(self):
+        self.assertProblem(self.lint(".area 2\n    mov r3, #7\n.endarea\n"), "t/t.asm:6: .area before any .org")
+        probs = self.lint(self.GOOD + ".area 2\n    expect16 0x2305\n    mov r3, #7\n.endarea\n",
+                          regions=(("0x10", "2305 2305"),))
+        self.assertProblem(probs, "t/t.asm:11: a second .area after one .org")
+        probs = self.lint(".org 0x02000010\n.area 2\n.org 0x02000010\n    expect16 0x2305\n    mov r3, #7\n.endarea\n")
+        self.assertProblem(probs, "t/t.asm:8: .org inside an .area")
+        self.assertProblem(self.lint(".org 0x02000010\n.area 2\n"), "an .area is not closed")
+        self.assertProblem(self.lint(".endarea\n"), "t/t.asm:6: .endarea without .area")
+        self.assertProblem(self.lint(".org 0x02000010\n.area 2\n.frobnicate 1\n.endarea\n"),
+                           "t/t.asm:8: unknown directive .frobnicate")
+        self.assertProblem(self.lint(".orga 0x10\n"), ".orga takes a file offset")
+
+    # -- guard -------------------------------------------------------------------------------------
+    def test_unguarded_area(self):
+        probs = self.lint(".org 0x02000010\n.area 2\n    mov r3, #7\n.endarea\n")
+        self.assertProblem(probs, "t/t.asm:7: the .area's first write (line 8) has no guard since its .org")
+
+    def test_guard_forms(self):
+        for guard in ("    expect16 0x2305\n", "    expect16_at 0, 0x2305\n", "    expect32_at -2, 0x23050000\n",
+                      ".if readu8(outputname(), org() - headersize()) != 5\n  .error \"x\"\n.endif\n"):
+            with self.subTest(guard=guard):
+                self.assertEqual(self.lint(".org 0x02000010\n.area 2\n" + guard + "    mov r3, #7\n.endarea\n"), [])
+                self.assertEqual(self.lint(".org 0x02000010\n" + guard + ".area 2\n    mov r3, #7\n.endarea\n"), [])
+
+    def test_guard_must_follow_the_org(self):
+        # a guard of the previous .org block does not cover the next one
+        probs = self.lint(self.GOOD + ".org 0x02000012\n.area 2\n    mov r3, #7\n.endarea\n",
+                          regions=(("0x10", "2305 2305"),))
+        self.assertProblem(probs, "t/t.asm:12: the .area's first write (line 13) has no guard")
+        # a guard after the first write does not count
+        probs = self.lint(".org 0x02000010\n.area 2\n    mov r3, #7\n    expect16 0x2305\n.endarea\n")
+        self.assertProblem(probs, "has no guard")
+
+    def test_read_only_check_is_not_a_guard(self):
+        probs = self.lint(".org 0x02000010\n    expect32_abs 0x02000020, org()\n.area 2\n    mov r3, #7\n.endarea\n")
+        self.assertProblem(probs, "has no guard")
+        self.assertIsNone(F.guard_kind("text_speed_state != org() - 26"))
+        self.assertEqual(F.guard_kind("readu32(outputname(), (0x02000020) - headersize()) != (org())"), "abs")
+        self.assertEqual(F.guard_kind("readu16(outputname(), org() + (2) - headersize()) != (5)"), "pos")
+        self.assertEqual(F.guard_kind("filesize(outputname()) != org() - headersize()"), "end")
+
+    # -- region ------------------------------------------------------------------------------------
+    def test_area_outside_the_regions(self):
+        probs = self.lint(".org 0x02000012\n.area 2\n    expect16 0\n    mov r3, #7\n.endarea\n")
+        self.assertProblem(probs, "t/t.asm:7: .area 0x02000012-0x02000014 (arm9+0x12, 2 bytes) is not inside one "
+                                  "region fix.toml declares in arm9")
+        probs = self.lint(".org 0x02000010\n.area 4\n    expect16 0x2305\n    mov r3, #7\n.endarea\n")
+        self.assertProblem(probs, "0x02000010-0x02000014")
+        # adjacent regions together cover an area
+        self.assertEqual(self.lint(".org 0x02000010\n.area 4\n    expect32 0x23052305\n    .word 0\n.endarea\n",
+                                   regions=(("0x10", "0x2305"), ("0x12", "0x2305"))), [])
+
+    def test_region_from_names_and_macros(self):
+        body = ("T_ADDR equ 0x02000000 + 0x10\n.definelabel T_Label, T_ADDR - 2\nSIZE equ 2\n"
+                ".macro patch, addr, value\n.org addr\n.area SIZE\n    expect16 0x2305\n    .halfword value\n"
+                ".endarea\n.endmacro\n    patch T_Label + 2, 7\n")
+        self.assertEqual(self.lint(body), [])
+        self.assertProblem(self.lint(body.replace("T_Label + 2, 7", "T_Label, 7")), "is not inside one region")
+
+    def test_unresolvable_org(self):
+        probs = self.lint(".org somewhere\n.area 2\n    expect16 0x2305\n    mov r3, #7\n.endarea\n")
+        self.assertProblem(probs, "cannot resolve .org somewhere statically")
+
+    def test_appended_area_needs_a_grow(self):
+        body = ".org 0x02000040\n.area 16\n    expect_end\nlab:\n    .word 1\n.endarea\n"
+        self.assertProblem(self.lint(body), "data appended to arm9.bin (expect_end), but fix.toml has no [[grow]]")
+        self.assertEqual(self.lint(body, grow="arm9"), [])
+
+    def test_read_only_block_may_be_anywhere(self):
+        self.assertEqual(self.lint(".org 0x02000100\n    expect16_at 0, 0x1234\n    expect16_at 2, 0x5678\n"
+                                   + self.GOOD), [])
+
+    def test_real_sources_are_clean(self):
+        bases = F.load_overlays()
+        for fx in F.load_all():
+            src = F.asm_path(fx)
+            if src is None:
+                continue
+            with self.subTest(fix=fx["id"]):
+                self.assertEqual(F.lint_asm(src.read_text(encoding="utf-8"), fx, bases, name=src.name), [])
 
 
 class RealRegistry(unittest.TestCase):

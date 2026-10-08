@@ -27,13 +27,15 @@ MSGDATA_LOAD_LAZY equ 1
 ; Second layer, kept in case the line above is ever dropped: the five call sites that were measured
 ; (memcheck.py) pass type 1 themselves.
 
-.org 0x0208799A                 ; summary screen (heap 19): bank 0295, summary labels, 6916 -> 9972 bytes in English (call at 0x020879A0)
+; Summary screen (heap 19): bank 0295, summary labels, 6916 -> 9972 bytes in English (call at 0x020879A0).
+.org 0x0208799A
 .area 2
     expect16 0x2000             ; mov r0, #0
     mov     r0, #MSGDATA_LOAD_LAZY
 .endarea
 
-.org 0x02087A0C                 ; summary screen (heap 19): bank 0739, move names, 15226 -> 27016 bytes (call at 0x02087A12)
+; Summary screen (heap 19): bank 0739, move names, 15226 -> 27016 bytes (call at 0x02087A12).
+.org 0x02087A0C
 .area 2
     expect16 0x2000             ; mov r0, #0
     mov     r0, #MSGDATA_LOAD_LAZY
@@ -43,19 +45,22 @@ MSGDATA_LOAD_LAZY equ 1
 
 .open "overlay17.bin", 0x021F86E0  ; the bag
 
-.org 0x021F9020                 ; bag (heap 6): bank 0010, bag labels (call at 0x021F9028)
+; Bag (heap 6): bank 0010, bag labels (call at 0x021F9028).
+.org 0x021F9020
 .area 2
     expect16 0x2000             ; mov r0, #0
     mov     r0, #MSGDATA_LOAD_LAZY
 .endarea
 
-.org 0x021F9050                 ; bag (heap 6): bank 0219, item names, 14252 -> 22524 bytes (call at 0x021F9058)
+; Bag (heap 6): bank 0219, item names, 14252 -> 22524 bytes (call at 0x021F9058).
+.org 0x021F9050
 .area 2
     expect16 0x2000             ; mov r0, #0
     mov     r0, #MSGDATA_LOAD_LAZY
 .endarea
 
-.org 0x021F9062                 ; bag (heap 6): bank 0739, move names for the TM pocket; bank = 0xBE*4-0x15 (call at 0x021F906A)
+; Bag (heap 6): bank 0739, move names for the TM pocket; bank = 0xBE*4-0x15 (call at 0x021F906A).
+.org 0x021F9062
 .area 2
     expect16 0x2000             ; mov r0, #0
     mov     r0, #MSGDATA_LOAD_LAZY

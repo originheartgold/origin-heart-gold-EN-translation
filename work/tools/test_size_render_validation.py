@@ -1,4 +1,3 @@
-import copy
 import unittest
 from size_render_validation import SENTINEL, validate_case, validate_report
 

@@ -536,7 +536,6 @@ def cmd_roundtrip(a):
         cmd_extract(ns)
         rebuilt = build_msg_narc(narc, Path(td), cm).build()
         # also exercise the "edited text" path: re-encode every exact string from text only
-        bad = []
         for p in sorted(Path(td).glob("[0-9]*.json")):
             obj = json.loads(p.read_text(encoding="utf-8"))
             for e in obj.get("strings", []):

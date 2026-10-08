@@ -1,4 +1,4 @@
-import collections, json, struct
+import collections, json
 import core, index, sdis as dis, dump as DU
 o=index.load(); Z=core.zones(); EV=o['ev']; A=dis.all_files(); r=core.raw()
 STD=core.std_mapping()

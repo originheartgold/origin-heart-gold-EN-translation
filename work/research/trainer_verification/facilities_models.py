@@ -3,7 +3,7 @@
 These do not simulate RNG, map dispatch, team completion or all facility modes.
 Selection functions return (accept, updated_conflict_counter).
 """
-from facilities_verify import evs
+from facilities_verify import evs  # noqa: F401  (re-exported to facilities_test.py)
 
 def unpack_form(stored_word):
     return stored_word & 31

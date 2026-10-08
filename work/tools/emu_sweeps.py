@@ -176,7 +176,7 @@ def _one_trainer(h, ml, f, tid, d, lang, max_frames=2400):
     except RuntimeError as e:
         return {**row, "status": "no_start", "error": str(e)}
     watch = PageWatch(h, f) if f else None
-    intro, intro_at, best = None, None, None
+    intro, intro_at = None, None
     shots = []
     for _ in range(0, max_frames, POLL):
         h.step(POLL)

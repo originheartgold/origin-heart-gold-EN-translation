@@ -1,0 +1,19 @@
+#!/bin/sh
+# Pre-commit hook: the fast toolchain check (python3 work/tools/check.py --staged) on what is being committed.
+# Activate once per clone (it applies to every worktree of the repository):
+#   git config core.hooksPath .githooks
+# Skip it for one commit with `git commit --no-verify`. The Python it runs: $POKE_PYTHON, else python3
+# (it needs the packages of work/tools/requirements-runtime.txt, and ruff from requirements-dev.txt).
+#
+# Only commits that stage something the check covers run it: Python, the fix registry (work/patches), the
+# decision register, the ruff config or this hook. Translation-only commits (work/translate/banks, guide,
+# site) are not slowed down.
+set -e
+top=$(git rev-parse --show-toplevel)
+if ! git diff --cached --name-only --diff-filter=ACMRD | grep -Eq \
+    '(\.py$|^work/patches/|^work/translate/decisions/decisions\.jsonl$|^ruff\.toml$|^work/tools/requirements|^\.githooks/)'
+then
+    exit 0
+fi
+py=${POKE_PYTHON:-python3}
+exec "$py" "$top/work/tools/check.py" --staged

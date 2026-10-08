@@ -464,7 +464,7 @@ def case_uxie(rom, out, variant):
         run_from_with(h, 935, 1205)
         ans = ["B"] if variant == "b" else [int(variant[1])]
         shots = []
-        end = M.talk_through(h, tr, answers=ans, shots=shots, tag=f"uxie_{variant}", max_iter=25)
+        M.talk_through(h, tr, answers=ans, shots=shots, tag=f"uxie_{variant}", max_iter=25)
         res = {"variant": variant, "choice_value": tr.cmp_at(1260, m), "q5": tr.reached(1299, m),
                "fail": tr.reached(1825, m), "msgs": tr.msgs(m)[:6], "shots": shots[-3:]}
     return res
@@ -1053,7 +1053,7 @@ def case_gracidea(rom, out, variant):
         h.w32(h.array(E.ARR_PARTY) + 4, 5)
         tr = M.OpTrace(h)
         enter(h, 327)
-        m = tr.mark()
+        tr.mark()
         run_from_with(h, 52, 3428)
         M.talk_through(h, tr, max_iter=30)
         party = h.party()

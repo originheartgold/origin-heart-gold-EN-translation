@@ -9,7 +9,7 @@ frames; all pages and a following normal-font sentinel are captured. Broken
 Misty newline is an expected-failure negative control. Outputs contain game text
 and MUST remain under ignored work/build.
 """
-import argparse, hashlib, json, os, re, tempfile, subprocess, sys, struct
+import argparse, hashlib, json, re, subprocess, sys, struct
 from pathlib import Path
 import msgtool as m
 
@@ -186,7 +186,6 @@ def run_worker(a):
     sentinel=case['screenshots'][-1]
     case['assertions']={'heap_observations':pr.heap_checks>0 and bool(pr.minspare),'all_pages_have_glyphs':len(case['screenshots'])==len(pages(text)) and all(x['glyphs'] for x in case['screenshots']),'size_sequence_matches':observed_sizes==expected_sizes,'sentinel_drawn_normal':sentinel['sentinel'] and bool(sentinel['glyphs']) and all(g['size_word']==0 for g in sentinel['glyphs']),'enlarged_glyphs_at_top':all(g['y']==0 for g in glyphs if g['size_word']==65532),'fresh_printers_normal':bool(printer_starts) and all(x['size_word']==0 for x in printer_starts)}
     if entry.get('ui_case'):
-        target=size_events[0]['printer'] if size_events else None
         following=[g for g in glyphs if g['frame']>sentinel['frame_end']]
         later_starts=[x for x in printer_starts if x['frame']>sentinel['frame_end']]
         case['assertions'].pop('sentinel_drawn_normal')

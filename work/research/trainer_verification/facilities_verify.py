@@ -63,7 +63,7 @@ def verify():
         got=hashlib.sha256(ndspy.narc.NARC(r.getFileByName(path)).files[member]).hexdigest()
         if got!=wanted: raise ValueError('Unreviewed Factory script')
         script_guards.append(dict(archive=path,member=member,sha256=got))
-    rows={};counts={} 
+    rows={};counts={}
     for path in ('a/1/2/9','a/2/0/3','a/2/0/4'):
         members=ndspy.narc.NARC(r.getFileByName(path)).files;out=[]
         for i,b in enumerate(members):

@@ -6,7 +6,6 @@ Run from repository root: python3 work/tools/review_site/server.py
 import argparse
 import difflib
 import re
-from collections import Counter
 from datetime import datetime, timezone
 import hashlib
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer

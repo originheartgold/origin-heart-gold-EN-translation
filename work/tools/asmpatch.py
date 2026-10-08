@@ -281,14 +281,14 @@ def double_writes(listing: str) -> list:
             num = _NUM.search(text)
             base = int(num.group(0).strip(), 0) if num else base
     spans = {}
-    for (f, a, low, src, n), nxt in zip(rows, rows[1:] + [(None, 0, None, "", 0)]):
+    for (f, a, low, src, n), nxt in zip(rows, rows[1:] + [(None, 0, None, "", 0)], strict=True):
         if low.startswith(_NO_WRITE) or nxt[0] != f or nxt[1] <= a:
             continue
         spans.setdefault(f, []).append((a, nxt[1], f"{Path(src).name}:{n}"))
     problems = []
     for f, ss in spans.items():
         ss.sort()
-        for (a0, b0, w0), (a1, b1, w1) in zip(ss, ss[1:]):
+        for (_a0, b0, w0), (a1, b1, w1) in zip(ss, ss[1:], strict=False):
             if a1 < b0:
                 problems.append(f"{f}+0x{a1:X}..0x{min(b0, b1):X} written twice ({w0} and {w1})")
     return problems

@@ -1,5 +1,5 @@
-import json, os, sys, collections
-import core, sdis as dis, index
+import json, os, sys
+import core, sdis as dis
 D=core.D; N=dis.NAME
 FL=core.consts('flags.h','FLAG_'); VA=core.consts('vars.h','VAR_')
 IT=core.consts('items.h','ITEM_'); SP=core.consts('species.h','SPECIES_')

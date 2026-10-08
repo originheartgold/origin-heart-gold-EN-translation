@@ -277,7 +277,6 @@ def main():
     if cur:
         batches.append(cur)
 
-    oldb = {b['batch']: b for b in man['batches']}
     out_batches = []
     for i, b in enumerate(batches):
         prio = PRIORITY.get(b['group'], 'P1' if b['group'] == 'first_hour' else 'P3')
