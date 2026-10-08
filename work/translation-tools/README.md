@@ -5,6 +5,15 @@ Run commands from the repository root. This project uses uv 0.12.23, Python 3.14
 dependency resolution. `work/.venv` is isolated from the existing root `.venv`,
 which remains the environment for emulator and runtime analysis tools.
 
+Two environments, two gates:
+
+| Gate | Environment | Tools and pins |
+| --- | --- | --- |
+| `work/tools/check.py` (repo-wide: fix registry, `ruff check` with `ruff.toml`, unit tests, `--full` build) | root `.venv` | `work/tools/requirements-dev.txt`: ruff 0.16.10, capstone |
+| `work/tools/check_translation.py` (translation tooling: ruff with `work/tools/ruff-translation.toml`, strict mypy with `work/pyproject.toml`, tests) | `work/.venv` | `work/uv.lock`: ruff 0.16.10, mypy 2.4.0, ndspy |
+
+The ruff version is the same in both; change both pins together.
+
 The user approved these dependency downloads. For a fresh checkout, obtain
 permission before downloading tools or dependencies as required by `AGENTS.md`.
 
@@ -34,8 +43,8 @@ To check one tool while working on it:
 
 ```sh
 work/.venv/bin/python -m mypy --config-file work/pyproject.toml work/tools/translation_eval.py work/tools/test_translation_eval.py
-work/.venv/bin/python -m ruff check --config work/pyproject.toml work/tools/translation_eval.py work/tools/test_translation_eval.py
-work/.venv/bin/python -m ruff format --check --config work/pyproject.toml work/tools/translation_eval.py work/tools/test_translation_eval.py
+work/.venv/bin/python -m ruff check --config work/tools/ruff-translation.toml work/tools/translation_eval.py work/tools/test_translation_eval.py
+work/.venv/bin/python -m ruff format --check --config work/tools/ruff-translation.toml work/tools/translation_eval.py work/tools/test_translation_eval.py
 ```
 
 Only format files you own. Do not run a repository-wide auto-fix. Generated

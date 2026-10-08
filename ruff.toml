@@ -4,9 +4,10 @@
 # The formatter is not enforced (`ruff format` is not part of the checks).
 target-version = "py312"
 line-length = 120
-# check.py passes this file with --config, so work/pyproject.toml's [tool.ruff] (the translation tools' own,
-# stricter settings, run by work/tools/check_translation.py) does not replace it under work/. The tools are
-# first-party for import sorting, also when a stray build/ folder sits at the repo root.
+# check.py passes this file with --config; a plain `ruff check` from the root finds it too, because no other ruff
+# config sits under work/ (the translation tools' own, stricter settings are in work/tools/ruff-translation.toml,
+# passed explicitly by work/tools/check_translation.py). The tools are first-party for import sorting, also when
+# a stray build/ folder sits at the repo root.
 src = ["work/tools"]
 
 [lint]

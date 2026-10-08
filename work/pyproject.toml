@@ -12,13 +12,8 @@ dev = ["mypy==2.4.0", "ruff==0.16.10"]
 package = false
 required-version = "==0.12.23"
 
-[tool.ruff]
-target-version = "py314"
-line-length = 100
-cache-dir = "build/ruff"
-
-[tool.ruff.lint]
-select = ["E4", "E7", "E9", "F", "I", "UP", "B"]
+# ruff settings for the translation tooling are in work/tools/ruff-translation.toml (check_translation.py), so
+# that a plain `ruff check` from the repo root keeps using ruff.toml for every file under work/.
 
 [tool.mypy]
 python_version = "3.14"

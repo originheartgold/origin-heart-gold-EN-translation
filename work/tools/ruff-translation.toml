@@ -1,0 +1,9 @@
+# ruff settings for the translation tooling (translation_context, translation_package, translation_eval, their
+# tests and check_translation.py), run by work/tools/check_translation.py with --config in work/.venv
+# (work/translation-tools/README.md). The repo-wide check (`ruff check` from the root, check.py) uses ruff.toml.
+target-version = "py314"
+line-length = 100
+cache-dir = "work/build/ruff"   # relative to the working directory (the repo root), like mypy's cache_dir
+
+[lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "B"]

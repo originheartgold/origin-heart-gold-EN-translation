@@ -138,8 +138,8 @@ def step_ruff(full):
     if have != want:
         raise Failed(f"ruff {have} at {ruff}, but work/tools/requirements-dev.txt pins {want} (other versions "
                      f"report other findings): pip install -r work/tools/requirements-dev.txt")
-    # --config: work/pyproject.toml has its own, stricter [tool.ruff] for the translation tools
-    # (check_translation.py), which ruff would otherwise pick for every file under work/
+    # --config: explicit, so a ruff config added under work/ later cannot silently replace ruff.toml there
+    # (the translation tools' stricter settings live in work/tools/ruff-translation.toml, check_translation.py)
     r = subprocess.run([ruff, "check", "--no-cache", "--quiet", "--output-format", "concise",
                         "--config", str(REPO / "ruff.toml"), "."],
                        cwd=REPO, capture_output=True, text=True)

@@ -22,9 +22,10 @@ def main() -> int:
         return 2
     paths = [str(path.relative_to(ROOT)) for path in files]
     config = "work/pyproject.toml"
+    ruff_config = "work/tools/ruff-translation.toml"
     commands = [
-        ["ruff", "check", "--config", config, *paths],
-        ["ruff", "format", "--check", "--config", config, *paths],
+        ["ruff", "check", "--config", ruff_config, *paths],
+        ["ruff", "format", "--check", "--config", ruff_config, *paths],
         ["mypy", "--config-file", config, *paths],
         ["unittest", "discover", "-s", "work/tools", "-p", "test_translation_*.py", "-v"],
     ]

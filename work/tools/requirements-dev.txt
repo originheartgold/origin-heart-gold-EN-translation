@@ -1,7 +1,9 @@
 # Development tools for the checks (python3 work/tools/check.py; work/notes/toolchain.md).
-# ruff is pinned: another version reports other findings. Install with
+# ruff is pinned: another version reports other findings. Same version as work/pyproject.toml / work/uv.lock
+# (the translation-tool environment work/.venv); keep the two pins equal. Install into the root .venv with
 #   pip install -r work/tools/requirements-dev.txt
-ruff==0.16.8
+# mypy is not needed here: only work/tools/check_translation.py runs it, in work/.venv (work/uv.lock).
+ruff==0.16.10
 # capstone disassembles the fixes' snapshots (work/patches/<id>/<id>.listing, check.py --full): pinned, because
 # another version may print an instruction differently and every snapshot would look stale.
 capstone==5.0.9
