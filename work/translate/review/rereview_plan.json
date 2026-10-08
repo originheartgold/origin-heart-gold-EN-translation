@@ -6912,7 +6912,7 @@
   {
    "id": "RV115",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 519,
    "labels": [
     "a027/0792 pokedex_entries_ss",
