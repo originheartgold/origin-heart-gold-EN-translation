@@ -2253,12 +2253,15 @@ def main(argv=None):
             p.add_argument("--tag", default="unown_cn" if unown else "wild")
             p.add_argument("--state", help="also write a DeSmuME savestate taken right after the teleport")
             p.add_argument("--json")
+    tx = sub.add_parser("texture-bounds", help="four overworld texture-bound reproducers; original/fixed assertions")
+    import emu_texture_bounds
+    emu_texture_bounds.add_arguments(tx)
     a = ap.parse_args(argv)
     return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages, "suite": cmd_suite,
             "dexcapture": cmd_dexcapture, "skitty": _cmd_skitty, "guide0107": _cmd_guide0107,
             "guide0813": _cmd_guide0813, "calendar": _cmd_calendar, "hackbugs": _cmd_hackbugs,
             "verify": _cmd_verify, "sweeps": _cmd_sweeps, "open": _cmd_open, "vqueue": _cmd_vqueue,
-            "cleanup": cmd_cleanup}[a.cmd](a)
+            "texture-bounds": emu_texture_bounds.run, "cleanup": cmd_cleanup}[a.cmd](a)
 
 
 if __name__ == "__main__":

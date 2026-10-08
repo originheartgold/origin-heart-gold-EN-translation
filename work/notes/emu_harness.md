@@ -954,3 +954,53 @@ process, the Mac has the cores), writes one JSON report and exits non-zero on a 
 run would take about 5 minutes in parallel, about 10 minutes sequentially. Saves stay in
 `work/build/memcheck/`; outputs in `work/build/harness/`; nothing goes into git except the recipes and
 expected values.
+
+## Texture bounds regressions: Rocket HQ, Five Island, Seven Island and Bell Tower
+
+`texture-bounds` runs four permanent checks for the invalid overworld texture-frame lookup at
+ARM9 `0202467C` / `02024696`. DeSmuME tolerates the original null read, so these tests use read-only
+instruction hooks to prove that the failing path was exercised. They do not infer safety from a
+responsive screenshot alone. The original behavior must produce the expected out-of-range request
+and a null load; the fixed behavior must still exercise that request, retain valid texture updates,
+and produce **zero** null loads. Unexpected locations, branch bytes or hook failures fail the run.
+
+The fix is `work/patches/overworld-texture-frame-bounds` (one byte, `08 D2` -> `2C D2`); a normal build has it,
+`build.py --without overworld-texture-frame-bounds` does not. Run from the repository root. The primary checkout supplies the existing virtualenv,
+ROM and raw 512 KiB battery save; use absolute input paths because the emulator uses a private working
+directory. No downloads are needed. Substitute your local paths below, and choose new output folders:
+
+```sh
+<primary-checkout>/.venv/bin/python work/tools/emu_harness.py texture-bounds \
+  --rom <primary-checkout>/work/rom/origin_v4.0.3_cn.nds \
+  --sav <absolute-path-to-raw-save.sav> \
+  --out work/build/texture-bounds-original --case all --expect original
+
+<primary-checkout>/.venv/bin/python work/tools/emu_harness.py texture-bounds \
+  --rom <absolute-path-to-fixed-build.nds> \
+  --sav <absolute-path-to-the-same-raw-save.sav> \
+  --out work/build/texture-bounds-fixed --case all --expect fixed
+```
+
+`--case` accepts `all` or a comma-separated subset of `rocket_hq,five_island,seven_island,bell_tower`.
+Both commands return zero only when every requested expectation passes. `--expect original` means
+successful reproduction of the defect, not that the original ROM is safe. A fresh `report.json`
+contains input SHA-256 hashes, setup flag values, target and observed positions, bounded register
+samples, request/null-load counters, screenshot paths, pass/fail reasons and an input-unchanged check.
+Existing reports are not overwritten. Screenshots, reports and any emulator states stay in ignored
+`work/build/`; do not commit input ROMs or saves.
+
+| Case | Map and position | Explicit RAM setup | Expected bad texture index/count |
+|---|---|---|---|
+| `rocket_hq` | 247 (17,4) | Clear hide flag355 | 4 / 1 |
+| `five_island` | 154 (104,54) | Clear hide flag2173 | 4 / 1 |
+| `seven_island` | 163 (245,104) | Clear hide flag2198 | 11 / 1 |
+| `bell_tower` | 340 (15,17) | Clear hide flag1140 | 15 / 1 |
+
+These are deterministic synthetic visibility fixtures. They import an existing save, capture a
+private baseline state from the ROM under test, and restore that same baseline before every case.
+Each case changes the listed visibility flag in disposable emulator RAM and uses the game's
+scripted map warp. This prevents earlier cases' flag or map-script changes carrying into later
+cases; it does not claim to complete each location's story prerequisite. Bell Tower in particular requires the
+visibility setup for the supplied saves. The ROM and original battery file are never intentionally
+edited or exported over. This checks the shared bounds guard across four known failing resources;
+it does not replace end-to-end story playthroughs or reproduce the full reporter's travel route.

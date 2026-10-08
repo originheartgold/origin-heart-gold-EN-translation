@@ -1,0 +1,48 @@
+id = "overworld-texture-frame-bounds"
+title = "Overworld objects: a texture frame the texture does not have no longer crashes (Rocket HQ freeze)"
+kind = "code"
+enabled = true
+decisions = []
+requires = []
+asm = "overworld-texture-frame-bounds.asm"
+why = """
+Players: the game freezes when certain overworld objects come on screen: in the Team Rocket hideout under
+Mahogany Town, walking right on B1F towards the camera ambush (melonDS, Delta); also at Five Island and
+Seven Island, and with a Bell Tower object made visible. DeSmuME happens to read address 0 without trapping
+and keeps going, so the same save passes there. The untouched Chinese ROM freezes in the same place, so this
+is a bug of the hack (D-1337 says such bugs are reported, not fixed; the user asked for this fix on
+2026-10-08, see the evidence).
+
+Technical: an object's texture animation picks a texture frame each frame, and the hack's arm9 routine
+0x02024654 (called from 0x02024604) binds that frame's texture to the object's model. Some objects get an
+animation whose frames run past the textures they have: the Rocket HQ barrier (model a/0/8/1 #269, texture
+#243 'stop', one texture) gets animation #280/#286, frames 0, 8-15, 1-7, and asks for frame 4. The routine
+checks the frame against the texture count (cmp/bhs at 0x0202467A), but the out-of-range branch goes to
+'movs r0, #0' and then into the unconditional 'ldr r0, [r0]' at 0x02024696: a NULL read, which on melonDS
+and hardware-accurate emulators is a data abort (CPSR 0x97, abort LR 0x0202469E), and the game hangs.
+"""
+what = """
+Old: frame >= texture count -> r0 = NULL -> ldr r0, [r0] -> data abort.
+New: the same bounds branch (0x0202467C, 'bhs') goes to the routine's own return 'pop {r3-r7, pc}' at
+0x020246D8 instead ('08 D2' -> '2C D2', one byte). An out-of-range frame leaves the texture that is
+already bound (the barrier keeps its one texture); a valid frame takes the old path unchanged. Nothing the
+routine does before the branch writes memory, and the pop matches its push, so returning there is safe; the
+caller ignores the return value and still updates the palette (index 0, valid here). Not fixed: the
+animation assignment itself, a NULL model or texture pointer (0x0202466C, 0x02024672), invalid palette
+indices.
+"""
+evidence = [
+  "Decision pending: D-2043 (hack-finding, Rocket HQ B1F renderer data abort) is in the main checkout's register; it is not yet in this branch's register, so this fix lists no decision of its own",
+  "User request 2026-10-08 (Codex session, codex/rocket-hq-freeze): 'When you are done reproducing collect all information you can and try to create a fix in a worktree', then 'Okay, so all 4 reproducers should live in the harness and we need to build 4 fixes so they now work.' (exception to D-1337 for this crash)",
+  "work/notes/rocket_hq_freeze_repro_20261008.md: reproduction on melonDS 1.1 (Chinese ROM, rc5, WIP), crash registers",
+  "work/notes/rocket_hq_freeze_fix_20261008.md: the resources, the branch, its semantics and the before/after runs",
+  "work/notes/five_island_freeze_20261008.md, texture_additional_repro_20261008.md: the same abort at Five Island and Seven Island, fixed by the same byte",
+  "work/notes/texture_regression_integration_20261008.md: emu_harness.py texture-bounds, 4 cases x original/fixed x Chinese/rc5, all 16 pass",
+]
+
+[[code]]
+id = "overworld-texture-frame-bounds-branch"
+file = "arm9"
+offset = "0x2467C"
+expect = "0xD208"
+notes = "ObjTex_SetTexture: the frame >= count branch goes to the return (0x020246D8) instead of the NULL path (0x02024690). The asm also guards the rest of the routine, read-only."

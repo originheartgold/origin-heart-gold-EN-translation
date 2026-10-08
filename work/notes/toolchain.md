@@ -135,4 +135,11 @@ Until 2026-10-08 the code and data fixes were halfword patches (`expect` → `va
 | `--only pcbox-name-width --no-patch` | `f2637eca68680cb4d7a2540252338e51a1d279d5` |
 | `--only ivev-panel --no-patch` | `ee868d1878d6d55db35090e139e212daf88dd215` |
 
+Fixes added after that run were written as armips sources from the start; each was proven against a build of its original form:
+
+| Build (2026-10-08) | ROM SHA-1 |
+|---|---|
+| `overworld-texture-frame-bounds` (Rocket HQ freeze): full, = develop `dfe8ba2` + its `code_patches.json` entry (worktree `codex/rocket-hq-freeze`); xdelta `427c0ec160187cdb28a9c30353d47ba9f9b51691` | `df28a14ff92de9169bf5d4b8613136ab1207cf72` |
+| `--without overworld-texture-frame-bounds` (= the full build above, xdelta `0241fd9f…`) | `2a052d2f2d78f04596352797fd501cdad4c6381e` |
+
 These depend on the workspace text at the time (2026-10-08, branch `refactor/fix-format`); a translation change moves them. The per-binary golden SHA-1s in `test_asmpatch.py` (`GOLDEN`: every binary each fix changes, alone and all together, plus the y9 overlay table) do not depend on the text, so the test suite checks them on every run that has armips and the Chinese ROM. A change to a fix source that changes its bytes must update `GOLDEN` and say why.
