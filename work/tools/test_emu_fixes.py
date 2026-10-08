@@ -75,7 +75,7 @@ class Addresses(unittest.TestCase):
         for e in REGISTRY["antipiracy"]["code"]:
             self.assertEqual(bytes.fromhex(e["expect"].replace(" ", "")),
                              bytes.fromhex("47F0E92DD080E24D"))
-        # the expect halfwords, as bytes in memory, are the prologue the scenario recognises
+        # the prologue the scenario recognises is read from fix.toml's expect (halfwords, little-endian)
         self.assertEqual(F.ANTIPIRACY_PROLOGUE, bytes.fromhex("f0472de980d04de2"))
 
     def test_outfit_overlay(self):
@@ -112,6 +112,12 @@ class Helpers(unittest.TestCase):
         with self.assertRaises(ValueError):
             F.select("nonsense")
 
+    def test_case_argument(self):
+        import argparse
+        self.assertEqual(F._case_arg("pcbox"), {"pcbox": ["pcbox-name-width"]})
+        with self.assertRaises(argparse.ArgumentTypeError):
+            F._case_arg("no-such-fix")
+
     def test_dependents(self):
         self.assertEqual(F.dependents("naming-keyboard"), ["gfx-naming-tabs", "naming-keyboard"])
         self.assertEqual(F.dependents("msgload"), ["msgload", "text-speed"])
@@ -125,22 +131,29 @@ class Helpers(unittest.TestCase):
         self.assertEqual(jobs[2][2], Path("ctl") / "no-namelen.nds")
 
 
+EN_TABS = F.APPROVED["naming-tabs"]["digest"]
 # Observations recorded on the 2026-10-08 runs (work/build/hard4/run2/fixes_report.json), trimmed.
 NAMING = {
-    "fixed": {"player": {"codes": [0x12B] * 7, "text": "A" * 7, "crops": {"gfx-naming-tabs": "en"}},
+    "fixed": {"player": {"codes": [0x12B] * 7, "text": "A" * 7, "crops": {"naming-tabs": EN_TABS}},
               "nickname": {"codes": [0x12B] * 10, "text": "A" * 10},
               "max_len": {"namelen-player-script": [7], "namelen-rival-script": [7], "namelen-nickname-script": [10]},
               "ime_path_runs": 0},
-    "no-namelen": {"player": {"codes": [0x12B] * 5, "text": "A" * 5, "crops": {"gfx-naming-tabs": "en"}},
+    "no-namelen": {"player": {"codes": [0x12B] * 5, "text": "A" * 5, "crops": {"naming-tabs": EN_TABS}},
                    "nickname": {"codes": [0x12B] * 5, "text": "A" * 5},
                    "max_len": {"namelen-player-script": [5], "namelen-rival-script": [5],
                                "namelen-nickname-script": [5]}, "ime_path_runs": 0},
-    "no-naming-keyboard": {"player": {"codes": [0x1DE] * 7, "text": " " * 7, "crops": {"gfx-naming-tabs": "cn"}},
+    "no-naming-keyboard": {"player": {"codes": [0x1DE] * 7, "text": " " * 7, "crops": {"naming-tabs": "cn"}},
                            "nickname": {"codes": [0x1DE] * 10, "text": " " * 10},
                            "max_len": {"namelen-player-script": [7], "namelen-rival-script": [7],
                                        "namelen-nickname-script": [10]}, "ime_path_runs": 24},
 }
-CN_NAMING = {"player": {"crops": {"gfx-naming-tabs": "cn"}}}
+CN_NAMING = {"player": {"crops": {"naming-tabs": "cn"}}}
+
+
+PCBOX_FIXED = {"name_window_width": 8, "ink_columns_x120_127": 1, "template": "x", "name_ink_pixels": 300,
+               "name_ink_right": 120, "base_tiles": F.PCBOX_BASES["fixed"]}
+PCBOX_ORIGINAL = {"name_window_width": 7, "ink_columns_x120_127": 0, "template": "x", "name_ink_pixels": 295,
+                  "name_ink_right": 119, "base_tiles": F.PCBOX_BASES["original"]}
 
 
 class Judges(unittest.TestCase):
@@ -169,6 +182,18 @@ class Judges(unittest.TestCase):
         self.assertEqual(judge("naming", NAMING["fixed"], CN_NAMING)[0], "fixed")
         self.assertEqual(judge("naming", NAMING["no-naming-keyboard"], CN_NAMING)[0], "original")
         self.assertEqual(judge("naming", NAMING["fixed"], None)[0], "unclear")
+        # any other picture (e.g. a mirrored label) is neither the approved crop nor the Chinese one
+        other = {"player": {"crops": {"naming-tabs": "f" * 64}}}
+        self.assertEqual(judge("naming", other, CN_NAMING)[0], "unclear")
+
+    def test_approved_digests(self):
+        self.assertEqual(set(F.APPROVED), set(F.CROPS))
+        for key, a in F.APPROVED.items():
+            self.assertRegex(a["digest"], r"^[0-9a-f]{64}$", key)
+            self.assertTrue(a["approved_by"])
+            self.assertIn("work/build/", a["images"])
+        used = {"naming-tabs", "type-icon-summary", "type-icon-battle", "title-subtitle"}
+        self.assertEqual(used, set(F.CROPS))
 
     def test_outfit(self):
         en = ["Outfit 1", "Outfit 2", "Outfit 3", "OK"]
@@ -181,12 +206,26 @@ class Judges(unittest.TestCase):
         self.assertEqual(F.judge_outfit("newgame", {"error": "no chooser"})[0], "unclear")
 
     def test_pcbox(self):
-        self.assertEqual(F.judge_pcbox("pcbox", {"name_window_width": 8, "ink_columns_x120_127": 1,
-                                                 "template": "x"})[0], "fixed")
-        self.assertEqual(F.judge_pcbox("pcbox", {"name_window_width": 7, "ink_columns_x120_127": 0,
-                                                 "template": "x"})[0], "original")
-        self.assertEqual(F.judge_pcbox("pcbox", {"name_window_width": 8, "ink_columns_x120_127": 0,
-                                                 "template": "x"})[0], "unclear")
+        self.assertEqual(F.judge_pcbox("pcbox", PCBOX_FIXED)[0], "fixed")
+        self.assertEqual(F.judge_pcbox("pcbox", PCBOX_ORIGINAL)[0], "original")
+        self.assertEqual(F.judge_pcbox("pcbox", dict(PCBOX_FIXED, ink_columns_x120_127=0))[0], "unclear")
+        self.assertEqual(F.judge_pcbox("pcbox", dict(PCBOX_FIXED, base_tiles=F.PCBOX_BASES["original"]))[0],
+                         "unclear")
+        self.assertTrue(F.pair_pcbox(PCBOX_FIXED, PCBOX_ORIGINAL)[0])
+        self.assertFalse(F.pair_pcbox(PCBOX_FIXED, PCBOX_FIXED)[0])
+
+    def test_pcbox_bases_follow_the_asm(self):
+        asm = (Path(F.WORK) / "patches" / "pcbox-name-width" / "pcbox-name-width.asm").read_text()
+        import re
+        old = [int(m, 16) for m in re.findall(r"window_was\s+(?:\d+,\s*){6}(0x[0-9A-F]+)", asm)][:9]
+        new = [int(m, 16) for m in re.findall(r"^\s+window\s+(?:\d+,\s*){6}(0x[0-9A-F]+)", asm, re.M)][:9]
+        self.assertEqual(old, F.PCBOX_BASES["original"])
+        self.assertEqual(new, F.PCBOX_BASES["fixed"])
+
+    def test_ivev_pair(self):
+        fixed = {"iv_ev_distance": [32, 32, 32, 33, 31, 33]}
+        self.assertTrue(F.pair_ivev(fixed, {"iv_ev_distance": [38, 38, 38, 39, 37, 39]})[0])
+        self.assertFalse(F.pair_ivev(fixed, {"iv_ev_distance": [38, 38, 38, 39, 37, 38]})[0])
 
     def test_ivev(self):
         fixed = {"iv_x": [0x20], "header_x": [0x28], "iv_calls": 6, "iv_ev_distance": [32, 32, 32, 33, 31, 33]}
@@ -239,19 +278,56 @@ class Judges(unittest.TestCase):
 
     def test_judge_rows(self):
         selection = {"pcbox": ["pcbox-name-width"]}
-        results = {("pcbox", "fixed"): {"name_window_width": 8, "ink_columns_x120_127": 2, "template": "x"},
-                   ("pcbox", "no-pcbox-name-width"): {"name_window_width": 7, "ink_columns_x120_127": 0,
-                                                      "template": "x"}}
+        results = {("pcbox", "fixed"): PCBOX_FIXED, ("pcbox", "no-pcbox-name-width"): PCBOX_ORIGINAL}
         rows = F.judge(selection, results)
         self.assertTrue(rows[0]["pass"])
         # a control that still shows the fix fails the row: the scenario would prove nothing
         results[("pcbox", "no-pcbox-name-width")] = results[("pcbox", "fixed")]
         self.assertFalse(F.judge(selection, results)[0]["pass"])
+        # both judged right, but the cross-run check fails: the fixed name shows no more text
+        results[("pcbox", "no-pcbox-name-width")] = dict(PCBOX_ORIGINAL, name_ink_pixels=400)
+        rows = F.judge(selection, results)
+        self.assertFalse(rows[0]["pass"])
+        self.assertFalse(rows[0]["pair"]["ok"])
         # a crashed run is an error, not a pass
         rows = F.judge(selection, {("pcbox", "fixed"): {"error": "boom"}})
         self.assertEqual(rows[0]["fixed_rom"]["state"], "error")
         self.assertEqual(rows[0]["control"]["state"], "error")
         self.assertFalse(rows[0]["pass"])
+
+
+class ControlProvenance(unittest.TestCase):
+    """A reused control ROM must be the build of this tree without exactly its fix (and dependents)."""
+
+    def make(self, td, fix, applied, rom_bytes=b"rom", report_sha=None):
+        import hashlib
+        import json
+        controls = Path(td)
+        (controls / f"no-{fix}.nds").write_bytes(rom_bytes)
+        (controls / f"work-no-{fix}").mkdir()
+        sha = report_sha or hashlib.sha1(rom_bytes).hexdigest()
+        (controls / f"work-no-{fix}" / "build_report.json").write_text(
+            json.dumps({"rom": {"sha1": sha}, "fixes": {"applied": applied}}))
+        return controls
+
+    def test_checks(self):
+        import tempfile
+        from unittest.mock import patch
+        applied = ["gfx-naming-tabs", "msgload", "namelen", "naming-keyboard", "text-speed"]
+        with patch.object(F, "text_sha1", return_value="t"):
+            with tempfile.TemporaryDirectory() as td:
+                c = self.make(td, "msgload", ["gfx-naming-tabs", "namelen", "naming-keyboard"])
+                self.assertEqual(F.control_problems(c, "msgload", applied, "t"), [])
+                self.assertIn("differs", F.control_problems(c, "msgload", applied, "other")[0])
+            with tempfile.TemporaryDirectory() as td:     # text-speed (requires msgload) was left in
+                c = self.make(td, "msgload", ["gfx-naming-tabs", "namelen", "naming-keyboard", "text-speed"])
+                self.assertIn("extra ['text-speed']", F.control_problems(c, "msgload", applied, "t")[0])
+            with tempfile.TemporaryDirectory() as td:     # the report belongs to another file
+                c = self.make(td, "namelen", ["gfx-naming-tabs", "msgload", "naming-keyboard", "text-speed"],
+                              report_sha="0" * 40)
+                self.assertIn("rom.sha1 differs", F.control_problems(c, "namelen", applied, "t")[0])
+            with tempfile.TemporaryDirectory() as td:
+                self.assertIn("missing", F.control_problems(Path(td), "namelen", applied, "t")[0])
 
 
 if __name__ == "__main__":

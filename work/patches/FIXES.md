@@ -398,7 +398,7 @@ leaves the Japanese かな tab label over the ABC page and ＡＢＣ over QWE.
 - work/notes/graphics_inventory.md: row 14
 - work/notes/hardcoded_text.md: 'Naming keyboard (English)'
 - work/build/screens/naming_fix_*.png (local)
-- Runtime: emu_harness.py fixes --case gfx-naming-tabs (scenario naming: the keyboard tabs crop differs from the Chinese ROM's; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
+- Runtime: emu_harness.py fixes --case gfx-naming-tabs (scenario naming: the crop of the keyboard tabs and BACK / OK equals the approved one; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -538,7 +538,7 @@ slots 150/240, which no title or intro graphic uses (gfx.py make-title-subtitle)
 
 - work/notes/graphics_inventory.md: row 11
 - CHANGELOG.md v1.0.0: 'Bilingual title screen: the original 起源心金 logo with an "Origin HeartGold" subtitle in the game's own font.'
-- Runtime: emu_harness.py fixes --case gfx-title-subtitle (scenario newgame: the title screen crop under the logo differs from the Chinese ROM's; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
+- Runtime: emu_harness.py fixes --case gfx-title-subtitle (scenario newgame: the title screen crop under the logo equals the approved one; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -609,7 +609,7 @@ pink palette row (#74 row 2, idx 10-12) and takes the tiles of hg-engine's FAIRY
 - work/notes/graphics_inventory.md: rows 1-2
 - work/graphics/CREDITS.md: hg-engine source, commit and licence
 - CHANGELOG.md v1.0.0: 'English type icons for battle, the summary screen and the move relearner. The FAIRY icon comes from hg-engine.'
-- Runtime: emu_harness.py fixes --case gfx-type-icons (scenario ivev: the summary type icon crop differs from the Chinese ROM's; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
+- Runtime: emu_harness.py fixes --case gfx-type-icons (scenario ivev: the summary type icon crop, scenario battle: the FIGHT menu type icon crop, each equal to the approved one; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 

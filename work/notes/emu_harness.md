@@ -1039,57 +1039,86 @@ One scenario per fix in `work/patches`: it plays the screen the fix changes and 
 there. A fix counts as proven only by a pair of runs: on a normal build the scenario must classify the fix as
 `fixed`, and on a control build without it (`build.py --no-patch --without <fix>[,<fixes that require it>]`)
 as `original`, the Chinese hack's behaviour. A scenario that passes on both builds proves nothing, so the
-control is part of every check. Graphics fixes are judged against the untouched Chinese ROM (an extra
-`cn` run): the crop must differ from the Chinese ROM's on the build and equal it on the control.
+control is part of every check. For ivev-panel and pcbox-name-width a cross-run check follows (the IV column
+exactly 6 px further right than on the control in every row; more name pixels than the cut control).
+
+Graphics fixes are judged by screen crops: `fixed` only when the crop's digest (sha256 of its RGB pixels) is
+the approved one in `emu_fixes.APPROVED`, `original` when it equals the untouched Chinese ROM's crop (an extra
+`cn` run). Any other picture (a mirrored label, a wrong palette) is `unclear` and fails. Only the digests are in
+git; the crop images are game graphics. The approved digests were taken from run `work/build/hard4/run3` and
+are marked "approved by: pending user review"; the build and Chinese crops they come from are in
+`work/build/hard4/approve/` of the poke-patches worktree (`<crop>_build.png`, `<crop>_chinese.png`, git-ignored).
+A crop change (another box, new art) needs a new approved digest.
+
+| Crop | Screen | Box (256x384 screenshot) |
+|---|---|---|
+| naming-tabs | naming screen: the four tabs and BACK / OK | 20,246 - 240,276 |
+| title-subtitle | title screen under the logo: 'Origin HeartGold' | 96,98 - 250,128 |
+| type-icon-summary | summary skills page: the first move's type icon | 8,203 - 38,216 |
+| type-icon-battle | battle FIGHT menu: the first move's type icon | 16,247 - 49,261 |
 
     .venv/bin/python work/tools/emu_harness.py fixes --rom work/build/check/origin_hg_v4.0.3_en_wip.nds \
         --controls work/build/fixes-controls --build-controls [--case all|<scenario>|<fix id>,...] \
-        [--sav-dir work/build/memcheck] [--out DIR] [--jobs 3]
-    .venv/bin/python work/tools/check.py --full --emu [--emu-saves DIR]   # the same after the full build, controls rebuilt
+        [--rom-report work/build/check/build_report.json] [--sav-dir work/build/memcheck] [--out DIR [--overwrite]] [--jobs 3]
+    .venv/bin/python work/tools/check.py --full --emu [--emu-saves DIR] [--emu-jobs N]   # the same after the full build
     python3 -m unittest work/tools/test_emu_fixes.py                     # coverage, addresses, judges; no emulator
 
-`--build-controls` builds the missing control ROMs (about 7 s each), `--rebuild-controls` all of them: a
-control from an older tree proves nothing. A control drops the fix and every fix that `requires` it, in one
-comma-separated `--without` (build.py keeps only the last of repeated `--without` options). The report
-(`fixes_report.json`) has one row per fix with the state and the evidence on both ROMs, every observation, the
-ROM hashes and what each control left out. Each fix's fix.toml evidence points at its scenario
-(`Runtime: emu_harness.py fixes --case <fix>`); `test_emu_fixes.py` keeps that, the coverage list and the
-hooked addresses (checked against each fix's `[[code]]` regions and `overlays.toml`) in step.
+Controls. A control drops the fix and every fix that `requires` it (one comma-separated `--without`; since
+d6481b9 build.py also accepts repeated `--without`, before that it kept only the last one). A control ROM in
+`--controls` is reused only when its build report (`work-no-<fix>/build_report.json`) belongs to that file,
+lists exactly the fixed ROM's fixes minus the dropped ones (the fixed ROM's report: `--rom-report`, else
+`build_report.json` next to it, else the registry's enabled fixes) and the ROM carries the fixed ROM's message
+text; otherwise `--build-controls` rebuilds it in place (about 7 s) and the run fails without that flag.
+`--rebuild-controls` rebuilds all. `check.py --emu` uses `<work-dir>-emu/controls` and writes its report to
+`<work-dir>-emu/run`, replaced by every run (`--overwrite`). `--sav-dir` and `check.py --emu-saves` both default
+to `<checkout>/work/build/memcheck`.
+
+The report (`fixes_report.json`) has one row per fix with the state and the evidence on both ROMs, the
+cross-run check, every observation, the ROM hashes and each control's provenance. Each fix's fix.toml evidence
+points at its scenario (`Runtime: emu_harness.py fixes --case <fix>`); `test_emu_fixes.py` keeps that, the
+coverage list, the approved digests and the hooked addresses (checked against each fix's `[[code]]` regions,
+`overlays.toml` and the asm) in step.
 
 | Fix | Scenario | What is observed | Build (fixed) | Control (original) |
 |---|---|---|---|---|
 | namelen | naming | Script commands NamePlayer, NameRival and NicknameInput (party slot 0) in the field; maxLen (r3) of each naming call by call site; A until the screen closes, then the stored name | maxLen 7 / 7 / 10; 'AAAAAAA', 'AAAAAAAAAA' | maxLen 5 / 5 / 5; 'AAAAA', 'AAAAA' |
 | namelen | newgame | Blank battery, New Game: maxLen of Oak's speech calls (player, rival) | 7 / 7 | 5 / 5 |
 | naming-keyboard | naming | Runs of the pinyin IME path (the instruction after the patched branch); the code the first key types | 0 runs, 0x012B 'A' | 24 runs, 0x01DE (blank candidate key) |
-| gfx-naming-tabs | naming | Keyboard tabs crop vs the Chinese ROM | differs | identical |
+| gfx-naming-tabs | naming | naming-tabs crop | the approved crop | the Chinese ROM's |
 | outfit-chooser-strings | newgame | Overlay 58's list pointers and the strings the game reads while building the list (read watch) | Outfit 1 / 2 / 3, OK | the four Chinese strings in their original slots |
-| gfx-title-subtitle | newgame | Title screen crop under the logo vs the Chinese ROM | differs | identical |
-| pcbox-name-width | pcbox | Cherrygrove Pokémon Center PC (std script 2010) → box screen: the name window template and text pixels in its 8th tile (Charmeleon) | width 8, text in x 120-127 | width 7, none |
-| ivev-panel | ivev | Summary skills page, L: x of the IV numbers and header (hooked), the IV/EV right-edge distance per stat row on screen | 0x20 / 0x28; 31-33 px | 0x1A / 0x22; 37-39 px |
-| gfx-type-icons | ivev | First move's type icon crop vs the Chinese ROM | differs | identical |
-| antipiracy | antipiracy | Continue, field, bag, party: every call of the six DS Protect entries, the bytes there, whether the check body runs, the value returned | all six reached, stubs, bodies never run, genuine values | bodies run on every call, the same values (DeSmuME passes the checks) |
+| gfx-title-subtitle | newgame | title-subtitle crop | the approved crop | the Chinese ROM's |
+| pcbox-name-width | pcbox | Cherrygrove Pokémon Center PC (std script 2010) → box screen with Charmeleon: the nine window templates (width, base tiles) and the name's pixels | width 8, bases moved by 2; text to x 120, 151 px | width 7, bases unchanged; text to x 119, 146 px |
+| ivev-panel | ivev | Summary skills page, L: x of the IV numbers and header (hooked), the IV/EV right-edge distance per stat row (±1 px for the digits' ink) | 0x20 / 0x28; 31-33 px | 0x1A / 0x22; 37-39 px (6 px more in every row) |
+| gfx-type-icons | ivev, battle | type-icon-summary crop; type-icon-battle crop (wild Shuckle, FIGHT) | the approved crops | the Chinese ROM's |
+| antipiracy | antipiracy | Continue, field, bag, party: every call of the six DS Protect entries, the bytes there (the prologue read from fix.toml), whether the check body runs, the value returned | all six reached, stubs, bodies never run, genuine values | bodies run on every call, the same values (DeSmuME passes the checks) |
 | font-glyphs | font | Widths of … “ ” in the font width tables the field holds in RAM (fonts 0, 1, 4) | 6 / 6 / 7 | 12 / 12 / 13 |
-| text-speed | textspeed | Message 457#123 at NORMAL and FAST (Options bits 2-3): frames until the window's text stops changing | 28 / 8 frames | 29 / 30 frames (the setting does nothing) |
+| text-speed | textspeed | Message 457#123 at NORMAL and FAST (Options bits 2-3): frames until the window's text stops changing; fixed needs NORMAL/FAST ≥ 2, original ≤ 1.25 | 28 / 8 frames | 29 / 29-30 frames (±1 between runs; the setting does nothing) |
 | msgload | msgload | memcheck.py's `summary` scenario (switch Pokémon on every summary page) | passed | allocation failure on heap 19 (6448 bytes), null write: the rc3 crash |
 | overworld-texture-frame-bounds | texture-bounds | The four `texture-bounds` cases, `--expect fixed` on the build, `--expect original` on the control | all 4 pass | all 4 reproduce the null load |
 
 Result (observed 2026-10-08, branch hardening/emu, build of `develop` aab6efb plus this work, saves copied from
-`work/build/memcheck/`): all 14 fix/scenario pairs pass (also through `check.py --full --emu`: the emu step
-took 268 s with the 13 control builds). 26 runs (22 scenario sessions, 2 memcheck runs, which
-also run the Chinese ROM, and 2 texture-bounds runs) took 2 min 47 s with `--jobs 3`: a session 12-25 s,
-memcheck 40-45 s. The 13 control builds took about 7 s each.
+`work/build/memcheck/`): `check.py --full --emu --emu-jobs 2` passes all 15 fix/scenario rows. The emu step took
+264 s for 29 runs (25 scenario sessions of 12-21 s, 2 memcheck runs of 38-43 s, which also run the Chinese ROM,
+and 2 texture-bounds runs of 24-25 s), 2 at a time; the 13 controls were reused (provenance checked). Building
+all 13 controls adds about 90 s.
+
+An earlier run (`run3`) reported texture-bounds as `unclear` on both ROMs: the disk was full, so the case's
+baseline savestate could not be written ("Unable to load savesate"). With space again it passes. A full disk
+shows up as `unclear`/`error`, never as a pass.
 
 Not covered (`emu_fixes.UNCOVERED`): the graphics fixes gfx-bag-labels, gfx-battle-panel-labels,
 gfx-battle-result-labels, gfx-battle-status-icons, gfx-dex-header, gfx-dex-type-badges, gfx-jp-buttons,
 gfx-linkcapture-bar, gfx-pokeathlon, gfx-pokegear-calendar, gfx-summary-labels, gfx-trainer-card,
-gfx-weather-banners and gfx-yes-no-buttons. Each would be one more crop against the Chinese ROM on a screen a
-recipe already reaches (bag, Pokégear, trainer card, summary pages, a battle in weather); the battle result
+gfx-weather-banners and gfx-yes-no-buttons. Each would be one more approved crop on a screen a recipe already
+reaches (bag, Pokégear, trainer card, summary pages, a battle in weather or with a status); the battle result
 labels, the Chain Logger bar and the Pokéathlon need recipes that do not exist.
 
 Limits:
 
-- A crop that differs from the Chinese ROM's shows that the fix's graphic is on screen, not that it looks
-  right; that stays a human review of the saved crops (`*_crop.png`).
+- An approved crop is only as good as its review: until the user approves the images in `approve/`, the
+  digests only prove that the build shows the same picture as on 2026-10-08.
+- gfx-type-icons: two of its icons are checked (ELECTR on the summary page and in the FIGHT menu); the other
+  types, the contest icons and the move relearner are not.
 - namelen: five of the eight call sites run (the script player, rival and nickname calls, Oak's player and
   rival). The egg hatch, group name and naming kind 7 sites are not reached.
 - antipiracy: DeSmuME passes the checks, so both builds return the genuine values; the scenario proves that the
@@ -1101,4 +1130,3 @@ Limits:
 - msgload: only the summary crash. The bag scenarios do not fail on the control (memcheck `bag`, `bag_full` on
   the build without msgload: passed, heap 6 with 112 and 2984 bytes to spare, warnings only), so the bag half
   of the fix is shown by memcheck's headroom figures, not by a crash.
-

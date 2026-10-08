@@ -32,6 +32,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import struct
 import subprocess
 import sys
@@ -52,7 +53,7 @@ COVERAGE = {
     "gfx-title-subtitle": ("newgame",),
     "pcbox-name-width": ("pcbox",),
     "ivev-panel": ("ivev",),
-    "gfx-type-icons": ("ivev",),
+    "gfx-type-icons": ("ivev", "battle"),
     "antipiracy": ("antipiracy",),
     "font-glyphs": ("font",),
     "text-speed": ("textspeed",),
@@ -108,6 +109,9 @@ PCBOX_TEMPLATES = 0x021F781C        # [0] = species name window {bg 4, x 8, y 5,
 PC_STD_SCRIPT = 2010                # the Pokemon Center PC (found by running std scripts 2000-2039)
 PC_MAP = (69, 4, 9)                 # Cherrygrove Pokemon Center 1F, in front of the PC
 NAME_BOX = (120, 40, 128, 56)       # screenshot box: the 8th tile of the name window (x 120-127, top screen)
+NAME_ROW = (64, 40, 128, 56)        # the whole name window (8 tiles from x 64; the gender icon starts at x 128)
+PCBOX_BASES = {"fixed": [0x69, 0x79, 0x89, 0x0F, 0x95, 0x99, 0xA5, 0xB5, 0xCB],     # templates [0]-[8], base tile
+               "original": [0x69, 0x77, 0x87, 0x0F, 0x93, 0x97, 0xA3, 0xB3, 0xC9]}  # (pcbox-name-width.asm)
 # ivev-panel (ivev-panel.listing): 'movs r2, #x' before bl 0x0208C154 (IV numbers), 'movs r3, #x' before the
 # 'IVs' header print; the EV column is drawn with x 0x40 by the same routine and is not changed.
 IVEV_IV_CALL = 0x0208C264
@@ -117,7 +121,16 @@ IVEV_ROWS = [(56, 72), (72, 88), (88, 104), (104, 120), (120, 136), (136, 152)] 
 IVEV_X = (150, 256)
 # antipiracy (antipiracy.listing): the six DS Protect entry points in overlay 114 and their genuine values
 ANTIPIRACY_ENTRIES = {0x02263A64: 0, 0x02263B4C: 1, 0x02263C34: 0, 0x02263D1C: 1, 0x02263E04: 0, 0x02263ECC: 1}
-ANTIPIRACY_PROLOGUE = bytes.fromhex("f0472de980d04de2")     # push {r4-r10, lr}; sub sp, sp, #0x80
+def _fix_expect_bytes(fix_id, region_id):
+    """A [[code]] region's expect (halfwords) as the bytes in memory (little-endian per halfword)."""
+    import tomllib
+    with open(WORK / "patches" / fix_id / "fix.toml", "rb") as f:
+        entry = next(e for e in tomllib.load(f)["code"] if e["id"] == region_id)
+    return b"".join(int(hw, 16).to_bytes(2, "little") for hw in entry["expect"].split())
+
+
+# push {r4-r10, lr}; sub sp, sp, #0x80: the entries' original first 8 bytes (all six regions expect the same)
+ANTIPIRACY_PROLOGUE = _fix_expect_bytes("antipiracy", "antipiracy-ov114-0x864")
 # font-glyphs: the codes the fix restores and the fonts whose width tables the field keeps in RAM
 FONT_CODES = (0x01AF, 0x01B4, 0x01B5)      # … “ ”
 FONT_RAM = (0, 1, 4)                       # font 2 is not loaded in the field
@@ -127,11 +140,26 @@ TEXT_SPEED_MSG = (457, 123)         # a field message of the text-speed corpus (
 TEXT_WINDOW = (8, 150, 232, 186)    # the field message window's text area (top screen), without the page arrow
 TEXT_SPEED_FRAMES = 400
 
-# Graphics crops (screenshot coordinates, 256x384: bottom screen from y 192) compared with the Chinese ROM.
+# Graphics crops (screenshot coordinates, 256x384: bottom screen from y 192). A graphics fix is 'fixed' when its
+# crop is the approved one (and not the Chinese ROM's), 'original' when it equals the Chinese ROM's crop.
 CROPS = {
-    "gfx-naming-tabs": (24, 250, 124, 274),      # the four keyboard tabs of the naming screen
-    "gfx-type-icons": (8, 203, 38, 216),         # the first move's type icon on the summary skills page
-    "gfx-title-subtitle": (100, 100, 230, 126),  # under the 起源心金 logo: the 'Origin HeartGold' subtitle
+    "naming-tabs": (20, 246, 240, 276),          # naming screen: the four tabs and the BACK / OK buttons
+    "type-icon-summary": (8, 203, 38, 216),      # summary skills page: the first move's type icon
+    "type-icon-battle": (16, 247, 49, 261),      # battle FIGHT menu: the first move's type icon
+    "title-subtitle": (96, 98, 250, 128),        # title screen under the 起源心金 logo: 'Origin HeartGold'
+}
+# sha256 of each crop's RGB pixels (crop_digest) on the fixed build. Only the digests are in git: the crop
+# images are game graphics. The images the digests were taken from are kept locally for review.
+APPROVAL_IMAGES = "work/build/hard4/approve/ (in the poke-patches worktree): <crop>_build.png, <crop>_chinese.png"
+APPROVED = {   # taken from run work/build/hard4/run3 (2026-10-08), the build of develop aab6efb
+    "naming-tabs": {"digest": "037dab60bd0a6a0ac04d497fdd82463dd679ac22c72ba558c188d501f0e991b1",
+                    "approved_by": "pending user review", "images": APPROVAL_IMAGES},
+    "type-icon-summary": {"digest": "434ab3127e3d835d3927e94f9d973d18954fe6795cb2ebcfe03dccdb1e19d904",
+                          "approved_by": "pending user review", "images": APPROVAL_IMAGES},
+    "type-icon-battle": {"digest": "cdd429d35e5f48a50c0a98fa4b68a55cd2a289675c582ffb1278364b8cdff89b",
+                         "approved_by": "pending user review", "images": APPROVAL_IMAGES},
+    "title-subtitle": {"digest": "ef249d7e92d33f907702649a2304ccbfb587e2ffdc317053aa1b2c8cfd10f1ad",
+                       "approved_by": "pending user review", "images": APPROVAL_IMAGES},
 }
 TITLE_FRAME = 2400                  # frames after power-on (intro movie); START then shows the title screen
 
@@ -163,6 +191,14 @@ def codes(raw: bytes) -> list:
             break
         out.append(w)
     return out
+
+
+def file_sha1(path) -> str:
+    h = hashlib.sha1()
+    with open(path, "rb") as f:
+        for block in iter(lambda: f.read(1 << 20), b""):
+            h.update(block)
+    return h.hexdigest()
 
 
 def file_sha256(path) -> str:
@@ -282,7 +318,7 @@ def observe_naming(h):
     h.on_exec(NAMING_IME_PATH, lambda m: ime.append(m.frame))
     obs = {}
     done = scripted(h, ("NamePlayer", 0x8000))
-    shot, _ = screenshot(h, "naming_player_open", crops=("gfx-naming-tabs",))
+    shot, _ = screenshot(h, "naming_player_open", crops=("naming-tabs",))
     obs["player"] = dict(shot, **type_name(h, done, 14))
     name = h.read(h.array(1) + 4, 16)          # PlayerProfile name, u16[8] (save array 1 after the 4-byte Options)
     obs["player"].update(codes=codes(name), text=decode(name))
@@ -317,7 +353,7 @@ def observe_newgame(h):
     obs = {}
     h.step(TITLE_FRAME)
     h.press("START", after=400)        # skips the intro movie to the title screen
-    shot, _ = screenshot(h, "newgame_title", crops=("gfx-title-subtitle",))
+    shot, _ = screenshot(h, "newgame_title", crops=("title-subtitle",))
     obs["title"] = shot
     for i in range(160):
         if h.read(OV58, 16) == sig:
@@ -353,9 +389,14 @@ def observe_pcbox(h):
             break
     h.step(120)
     shot, img = screenshot(h, "pcbox_top")
-    tmpl = h.read(PCBOX_TEMPLATES, 8)
-    return dict(shot, a_presses=i + 1, template=tmpl.hex(), name_window_width=tmpl[3],
-                ink_columns_x120_127=len(ink_columns(img, NAME_BOX, threshold=300)))
+    tmpl = h.read(PCBOX_TEMPLATES, 0x18 * 8)
+    rgb = img.convert("RGB")
+    x0, y0, x1, y1 = NAME_ROW
+    ink = [(x, y) for x in range(x0, x1) for y in range(y0, y1) if sum(rgb.getpixel((x, y))) < 300]
+    return dict(shot, a_presses=i + 1, template=tmpl[:8].hex(), name_window_width=tmpl[3],
+                base_tiles=[int.from_bytes(tmpl[8 * k + 6:8 * k + 8], "little") for k in range(9)],
+                ink_columns_x120_127=len(ink_columns(img, NAME_BOX, threshold=300)),
+                name_ink_pixels=len(ink), name_ink_right=max((x for x, _ in ink), default=None))
 
 
 def observe_ivev(h):
@@ -369,7 +410,7 @@ def observe_ivev(h):
     h.touch(*E.PARTY_SLOTS[0], frames=12, after=60)
     h.touch(*E.PARTY_SUMMARY, frames=12, after=150)
     h.press("RIGHT", after=60)
-    shot, _ = screenshot(h, "ivev_skills", crops=("gfx-type-icons",))
+    shot, _ = screenshot(h, "ivev_skills", crops=("type-icon-summary",))
     h.press("L", after=90)
     panel, img = screenshot(h, "ivev_panel")
     rows = []
@@ -484,6 +525,18 @@ def observe_textspeed(h):
     return out
 
 
+def observe_battle(h):
+    """A scripted wild battle (Shuckle Lv5), FIGHT: the move buttons with their type icons."""
+    import emu_harness as E
+    import emu_open
+    emu_open.wild_battle(h, 213, 5)
+    if not h.wait_screen("battle_menu", 2400):
+        return {"error": "the battle command menu never appeared"}
+    h.touch(*E.BATTLE_BUTTONS["fight"], frames=10, after=90)
+    shot, _ = screenshot(h, "battle_fight", crops=("type-icon-battle",))
+    return {"fight": shot}
+
+
 SCENARIOS = {
     # name: (save file or None for a blank battery, start map or None, observe, needs the Chinese reference run)
     "naming": ("full_bag_6mons.sav", None, observe_naming, True),
@@ -493,6 +546,7 @@ SCENARIOS = {
     "antipiracy": ("full_bag_6mons.sav", None, observe_antipiracy, False),
     "font": ("full_bag_6mons.sav", None, observe_font, False),
     "textspeed": ("full_bag_6mons.sav", None, observe_textspeed, False),
+    "battle": ("full_bag_6mons.sav", None, observe_battle, True),
 }
 EXTERNAL = {"msgload", "texture-bounds"}     # scenarios run by other tools (memcheck.py, emu_texture_bounds.py)
 ALL_SCENARIOS = tuple(SCENARIOS) + tuple(sorted(EXTERNAL))
@@ -555,12 +609,18 @@ def judge_naming_keyboard(scenario, obs, ref=None):
 
 
 def _judge_crop(key, shot, ref_shot):
+    """'fixed': the crop is the approved one (APPROVED) and not the Chinese ROM's; 'original': it is the
+    Chinese ROM's. Any other picture (a mirrored label, a wrong palette, a missing tile) is 'unclear'."""
     mine = (shot or {}).get("crops", {}).get(key)
     theirs = (ref_shot or {}).get("crops", {}).get(key)
-    why = {"crop": CROPS[key], "digest": mine, "chinese_rom_digest": theirs}
+    approved = APPROVED[key]
+    why = {"crop": CROPS[key], "digest": mine, "chinese_rom_digest": theirs, "approved_digest": approved["digest"],
+           "approved_by": approved["approved_by"]}
     if not mine or not theirs:
         return "unclear", dict(why, error="crop missing")
-    return _state(mine != theirs, mine == theirs, why)
+    if not approved["digest"]:
+        return "unclear", dict(why, error=f"no approved digest for {key}")
+    return _state(mine == approved["digest"] and mine != theirs, mine == theirs, why)
 
 
 def judge_outfit(scenario, obs, ref=None):
@@ -577,9 +637,22 @@ def judge_outfit(scenario, obs, ref=None):
 
 
 def judge_pcbox(scenario, obs, ref=None):
-    why = {k: obs[k] for k in ("name_window_width", "ink_columns_x120_127", "template")}
-    return _state(obs["name_window_width"] == 8 and obs["ink_columns_x120_127"] > 0,
-                  obs["name_window_width"] == 7 and obs["ink_columns_x120_127"] == 0, why)
+    """The window templates in RAM (width and every moved base tile) and the name's pixels: with the fix the
+    name's last letter reaches into the 8th tile (x 120-127); without it the text stops at x 119."""
+    why = {k: obs.get(k) for k in ("name_window_width", "base_tiles", "ink_columns_x120_127", "name_ink_pixels",
+                                   "name_ink_right", "template")}
+    right = obs.get("name_ink_right")
+    fixed = (obs["name_window_width"] == 8 and obs.get("base_tiles") == PCBOX_BASES["fixed"]
+             and obs["ink_columns_x120_127"] > 0 and right is not None and right >= 120)
+    original = (obs["name_window_width"] == 7 and obs.get("base_tiles") == PCBOX_BASES["original"]
+                and obs["ink_columns_x120_127"] == 0 and right is not None and right <= 119)
+    return _state(fixed, original, why)
+
+
+def pair_pcbox(fixed, control):
+    """The fixed name shows more of the text than the cut one."""
+    return fixed["name_ink_pixels"] > control["name_ink_pixels"], {
+        "name_ink_pixels": [fixed["name_ink_pixels"], control["name_ink_pixels"]]}
 
 
 def judge_ivev(scenario, obs, ref=None):
@@ -587,11 +660,18 @@ def judge_ivev(scenario, obs, ref=None):
     why = {k: obs[k] for k in ("iv_x", "header_x", "iv_calls", "iv_ev_distance")}
 
     def is_state(iv, header):
-        # the right edges of the IV and EV numbers are (EV x - IV x) apart; the last digit's ink moves the
-        # measured edge by up to 2 px (observed 31-33 with the fix, 37-39 without)
+        # the right edges of the IV and EV numbers are (EV x - IV x) apart; the last digits' ink moves the
+        # measured edge by 1 px (observed 31-33 with the fix, 37-39 without)
         return (obs["iv_x"] == [iv] and obs["header_x"] == [header] and obs["iv_calls"] >= 6
-                and all(d is not None and abs(d - (IVEV_EV_X - iv)) <= 2 for d in dist))
+                and all(d is not None and abs(d - (IVEV_EV_X - iv)) <= 1 for d in dist))
     return _state(is_state(0x20, 0x28), is_state(0x1A, 0x22), why)
+
+
+def pair_ivev(fixed, control):
+    """Row by row the IV column sits exactly 6 px further right (the same digits on both builds)."""
+    shift = [c - f if c is not None and f is not None else None
+             for f, c in zip(fixed["iv_ev_distance"], control["iv_ev_distance"])]
+    return shift == [0x20 - 0x1A] * len(IVEV_ROWS), {"iv_shift_px": shift}
 
 
 def judge_antipiracy(scenario, obs, ref=None):
@@ -632,15 +712,17 @@ JUDGES = {
     ("naming", "namelen"): judge_namelen,
     ("newgame", "namelen"): judge_namelen,
     ("naming", "naming-keyboard"): judge_naming_keyboard,
-    ("naming", "gfx-naming-tabs"): lambda s, o, r: _judge_crop("gfx-naming-tabs", o.get("player"),
+    ("naming", "gfx-naming-tabs"): lambda s, o, r: _judge_crop("naming-tabs", o.get("player"),
                                                                (r or {}).get("player")),
     ("newgame", "outfit-chooser-strings"): judge_outfit,
-    ("newgame", "gfx-title-subtitle"): lambda s, o, r: _judge_crop("gfx-title-subtitle", o.get("title"),
+    ("newgame", "gfx-title-subtitle"): lambda s, o, r: _judge_crop("title-subtitle", o.get("title"),
                                                                    (r or {}).get("title")),
     ("pcbox", "pcbox-name-width"): judge_pcbox,
     ("ivev", "ivev-panel"): judge_ivev,
-    ("ivev", "gfx-type-icons"): lambda s, o, r: _judge_crop("gfx-type-icons", o.get("skills"),
+    ("ivev", "gfx-type-icons"): lambda s, o, r: _judge_crop("type-icon-summary", o.get("skills"),
                                                             (r or {}).get("skills")),
+    ("battle", "gfx-type-icons"): lambda s, o, r: _judge_crop("type-icon-battle", o.get("fight"),
+                                                              (r or {}).get("fight")),
     ("antipiracy", "antipiracy"): judge_antipiracy,
     ("font", "font-glyphs"): judge_font,
     ("textspeed", "text-speed"): judge_textspeed,
@@ -674,6 +756,8 @@ def judge_msgload(scenario, obs, ref=None):
 def run_texture_bounds(rom, expect, sav_dir, out):
     import emu_harness as E
     out = Path(out)
+    if (out / "report.json").exists():       # --overwrite: texture-bounds refuses an existing report
+        os.replace(out / "report.json", out / "report.previous.json")
     t0 = time.time()
     rc, _, err = E.spawn(["texture-bounds", "--rom", Path(rom).resolve(), "--sav",
                           (Path(sav_dir) / "full_bag_6mons.sav").resolve(), "--out", out.resolve(), "--case", "all",
@@ -695,6 +779,8 @@ def judge_texture_bounds(scenario, obs, ref=None):
 
 
 JUDGES[("msgload", "msgload")] = judge_msgload
+# checks across the two runs of a fix (fixed ROM, control), after both judged right
+PAIR_CHECKS = {("ivev", "ivev-panel"): pair_ivev, ("pcbox", "pcbox-name-width"): pair_pcbox}
 JUDGES[("texture-bounds", "overworld-texture-frame-bounds")] = judge_texture_bounds
 
 
@@ -760,6 +846,56 @@ def build_control(fix_id, controls, armips=None, log=print):
     return control_path(controls, fix_id)
 
 
+def text_sha1(rom_path):
+    """SHA-1 over the two message NARCs (check.TEXT_NARCS): a control must carry the same text as the build."""
+    import check
+    import msgtool
+    rom = msgtool.load_rom(str(rom_path))
+    h = hashlib.sha1()
+    for path in check.TEXT_NARCS:
+        h.update(hashlib.sha1(bytes(rom.files[rom.filenames.idOf(path)])).digest())
+    return h.hexdigest()
+
+
+def fixed_applied(rom, rom_report=None):
+    """The fixes the fixed ROM was built with: its build report (--rom-report, or build_report.json next to the
+    ROM when its rom.sha1 matches), else every enabled fix of the registry (a normal build)."""
+    candidates = [Path(rom_report)] if rom_report else [Path(rom).parent / "build_report.json"]
+    for rep_path in candidates:
+        if rep_path.is_file():
+            rep = json.loads(rep_path.read_text(encoding="utf-8"))
+            if rep.get("rom", {}).get("sha1") == file_sha1(rom):
+                return sorted(rep["fixes"]["applied"]), str(rep_path)
+            if rom_report:
+                raise ValueError(f"{rep_path} is not the report of {rom} (rom.sha1 differs)")
+    import fixes as fixreg
+    return sorted(f["id"] for f in fixreg.active_fixes()), "registry (every enabled fix)"
+
+
+def control_problems(controls, fix_id, applied, text):
+    """Why the control ROM no-<fix>.nds cannot be trusted as 'the build without <fix>' ([] when it can): its
+    build report must be the file's, list exactly the fixed ROM's fixes minus dependents(fix), and the ROM must
+    carry the same message text as the fixed ROM."""
+    rom = control_path(controls, fix_id)
+    rep_path = Path(controls) / f"work-no-{fix_id}" / "build_report.json"
+    if not rom.is_file():
+        return [f"{rom} is missing"]
+    if not rep_path.is_file():
+        return [f"{rep_path} is missing (built elsewhere?)"]
+    rep = json.loads(rep_path.read_text(encoding="utf-8"))
+    problems = []
+    if rep.get("rom", {}).get("sha1") != file_sha1(rom):
+        problems.append(f"{rep_path} is not the report of {rom.name} (rom.sha1 differs)")
+    want = sorted(set(applied) - set(dependents(fix_id)))
+    got = sorted(rep.get("fixes", {}).get("applied", []))
+    if got != want:
+        problems.append(f"applied fixes differ from the build minus {dependents(fix_id)}: extra "
+                        f"{sorted(set(got) - set(want))}, missing {sorted(set(want) - set(got))}")
+    if not problems and text_sha1(rom) != text:
+        problems.append("its message text differs from the fixed ROM's (another tree)")
+    return problems
+
+
 def plan(selection, rom, cn, controls):
     """The runs: (scenario, label, rom). 'fixed' (the ROM under test), 'cn' (reference crops) and one control
     ('no-<fix>') per judged fix."""
@@ -813,6 +949,11 @@ def judge(selection, results):
                     state, why = "error", {"error": obs.get("error") or f"{type(exc).__name__}: {exc}"}
                 row[key] = {"state": state, "expected": want, "evidence": why, "seconds": obs.get("wall_seconds")}
             row["pass"] = (row["fixed_rom"].get("state") == "fixed" and row["control"].get("state") == "original")
+            pair = PAIR_CHECKS.get((sc, fx))
+            if pair and row["pass"]:
+                ok, why = pair(results[(sc, "fixed")], results[(sc, f"no-{fx}")])
+                row["pair"] = dict(why, ok=ok)
+                row["pass"] = ok
             rows.append(row)
     return rows
 
@@ -820,19 +961,28 @@ def judge(selection, results):
 def run(a):
     from concurrent.futures import ThreadPoolExecutor
     out = Path(a.out).resolve()
-    if (out / "fixes_report.json").exists():
-        raise ValueError(f"{out}/fixes_report.json exists; choose a new --out")
-    selection = select(a.case)
+    if (out / "fixes_report.json").exists() and not a.overwrite:
+        raise ValueError(f"{out}/fixes_report.json exists; choose a new --out or pass --overwrite")
+    selection = select(a.case) if isinstance(a.case, str) else a.case
     rom, cn, sav_dir = Path(a.rom).resolve(), Path(a.rom_cn).resolve(), Path(a.sav_dir).resolve()
     controls = Path(a.controls).resolve()
     t0 = time.time()
-    built = []
+    built, provenance = [], {}
+    applied, applied_from = fixed_applied(rom, a.rom_report)
+    text = text_sha1(rom)
     for fx in sorted({f for fixes in selection.values() for f in fixes}):
-        if a.rebuild_controls or not control_path(controls, fx).exists():
+        problems = ["--rebuild-controls"] if a.rebuild_controls else control_problems(controls, fx, applied, text)
+        if problems:
             if not (a.build_controls or a.rebuild_controls):
-                raise ValueError(f"control ROM {control_path(controls, fx)} is missing (pass --build-controls)")
+                raise ValueError(f"control ROM no-{fx}.nds cannot be used: {'; '.join(problems)} "
+                                 "(pass --build-controls to rebuild it)")
             build_control(fx, controls, a.armips)
             built.append(fx)
+            problems = control_problems(controls, fx, applied, text)
+            if problems:
+                raise ValueError(f"rebuilt control no-{fx}.nds still does not match the fixed ROM: "
+                                 + "; ".join(problems))
+        provenance[fx] = "checked: build report, applied fixes, message text"
     inputs = {"rom": {"path": str(rom), "sha256": file_sha256(rom)}, "cn": {"path": str(cn), "sha256": file_sha256(cn)},
               "controls": {fx: {"path": str(control_path(controls, fx)),
                                 "sha256": file_sha256(control_path(controls, fx)),
@@ -849,7 +999,8 @@ def run(a):
     with ThreadPoolExecutor(max(1, min(a.jobs, 3))) as ex:
         results = {(job[0], job[1]): obs for job, obs in ex.map(go, jobs)}
     rows = judge(selection, results)
-    report = {"schema": 1, "inputs": inputs, "controls_built": built, "seconds": round(time.time() - t0, 1),
+    inputs["fixed_applied_from"] = applied_from
+    report = {"schema": 1, "inputs": inputs, "controls_built": built, "controls_provenance": provenance, "seconds": round(time.time() - t0, 1),
               "pass": all(r["pass"] for r in rows), "fixes": rows,
               "uncovered": {fx: why for fx, why in UNCOVERED.items()},
               "observations": {f"{sc}/{label}": obs for (sc, label), obs in results.items()}}
@@ -868,6 +1019,13 @@ def cmd_child(a):
     return 0
 
 
+def _case_arg(value):
+    try:
+        return select(value)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError(str(exc)) from None
+
+
 def add_arguments(p, data):
     """The `fixes` subcommand of emu_harness.py; data = emu_harness.DATA (the checkout's work/ with ROMs)."""
     p.add_argument("--rom", required=True, help="the fixed ROM (a normal build)")
@@ -878,9 +1036,14 @@ def add_arguments(p, data):
     p.add_argument("--rebuild-controls", action="store_true",
                    help="build every selected control ROM again (a control from an older tree proves nothing)")
     p.add_argument("--armips", help="armips for --build-controls (default: $ARMIPS, PATH)")
-    p.add_argument("--case", default="all", help="all, or scenario names / fix ids: " + ",".join(ALL_SCENARIOS))
-    p.add_argument("--sav-dir", default=str(data / "build" / "memcheck"), help="folder with full_bag_6mons.sav and "
-                   "route1_path_2mons.sav (read only)")
+    p.add_argument("--case", default="all", type=_case_arg,
+                   help="all, or scenario names / fix ids: " + ",".join(ALL_SCENARIOS))
+    p.add_argument("--rom-report", help="build_report.json of --rom (default: next to the ROM, else the registry's "
+                                        "enabled fixes): what each control must equal minus its fix")
+    p.add_argument("--overwrite", action="store_true", help="reuse --out (a fixed run folder; files are replaced)")
+    p.add_argument("--sav-dir", default=str(data / "build" / "memcheck"),
+                   help="folder with full_bag_6mons.sav and route1_path_2mons.sav (read only; default "
+                        "<checkout>/work/build/memcheck, the same folder as check.py --emu-saves)")
     p.add_argument("--out", default=str(data / "build" / "harness" / "fixes" / time.strftime("%Y%m%dT%H%M%S")))
     p.add_argument("--jobs", type=int, default=3, help="parallel emulator runs (at most 3)")
 

@@ -58,10 +58,13 @@ Full adds (and fails when armips v0.11.0, the two ROMs or xdelta3 are missing; a
 
 --emu adds (needs py-desmume in this Python, i.e. the harness venv, and the battery saves of --emu-saves):
   emu        emu_harness.py fixes (emu_fixes.py) on the build's ROM: each covered fix's scenario must show the
-             fix ('fixed') on it and the hack's behaviour ('original') on a control ROM built here without that
-             fix (build.py --no-patch --without <fix>[,<fixes that require it>], rebuilt every run into
-             <work-dir>-emu/controls). The fixes without a scenario are listed in emu_fixes.UNCOVERED. Not part of
-             --full by default: it runs 26 emulator runs (3 at a time) plus 13 control builds, about 4-5 min.
+             fix ('fixed') on it and the hack's behaviour ('original') on a control ROM without that fix
+             (build.py --no-patch --without <fix>[,<fixes that require it>] in <work-dir>-emu/controls; reused
+             when its build report and message text match this build, else rebuilt in place). Graphics crops
+             must equal the approved digests (emu_fixes.APPROVED). The report goes to <work-dir>-emu/run,
+             replaced by every run. The fixes without a scenario are listed in emu_fixes.UNCOVERED. Not part of
+             --full by default: 29 emulator runs (--emu-jobs at a time, default 3), about 4-5 min, plus up
+             to 13 control builds.
 
 Exit status 0 only when no step failed. Each step prints PASS / FAIL / SKIP with its time.
 """
@@ -492,8 +495,10 @@ def locale_note(env) -> str:
 EMU_SAVES = ("full_bag_6mons.sav", "route1_path_2mons.sav")     # what emu_fixes' scenarios import
 
 
-def step_emu(armips, first: dict, work_dir, saves) -> str:
-    """emu_harness.py fixes on the full build's ROM, with every control ROM rebuilt from this tree."""
+def step_emu(armips, first: dict, work_dir, saves, jobs=3) -> str:
+    """emu_harness.py fixes on the full build's ROM. A control ROM in <work-dir>-emu/controls is reused only when
+    its build report shows this build's fixes minus its fix and its message text is the build's (emu_fixes
+    control_problems); otherwise it is rebuilt there (the same file name: no extra copies)."""
     if "report" not in first:
         raise Skip("no build to test (the build step failed)", fail=True)
     probe = subprocess.run([sys.executable, "-c", "import desmume.emulator, PIL"], capture_output=True, text=True)
@@ -503,13 +508,15 @@ def step_emu(armips, first: dict, work_dir, saves) -> str:
     if missing:
         raise Skip(f"--emu needs the battery saves {', '.join(missing)} in {saves} (--emu-saves)", fail=True)
     emu_dir = Path(work_dir).with_name(Path(work_dir).name + "-emu")
-    out = emu_dir / time.strftime("run-%Y%m%dT%H%M%S")
+    out = emu_dir / "run"                    # one folder, replaced by every run (--overwrite)
     log = emu_dir / "emu.log"
     emu_dir.mkdir(parents=True, exist_ok=True)
     with open(log, "w", encoding="utf-8") as f:
         r = subprocess.run([sys.executable, str(TOOLS / "emu_harness.py"), "fixes",
                             "--rom", first["report"]["rom"]["path"], "--controls", str(emu_dir / "controls"),
-                            "--rebuild-controls", "--armips", armips, "--sav-dir", str(saves), "--out", str(out)],
+                            "--build-controls", "--jobs", str(jobs), "--armips", armips, "--sav-dir", str(saves),
+                            "--out", str(out), "--overwrite",
+                            "--rom-report", str(Path(work_dir) / "build_report.json")],
                            cwd=REPO, stdout=f, stderr=subprocess.STDOUT)
     try:
         report = json.loads((out / "fixes_report.json").read_text(encoding="utf-8"))
@@ -647,7 +654,9 @@ def main(argv=None) -> int:
                     help="with --full: one emulator scenario per fix on the build and on control builds without "
                          "it (emu_harness.py fixes; needs py-desmume; about 4 min)")
     ap.add_argument("--emu-saves", default=str(WORK / "build" / "memcheck"),
-                    help="folder with the battery saves the --emu scenarios import (read only)")
+                    help="folder with the battery saves the --emu scenarios import (read only; the same default "
+                         "as emu_harness.py fixes --sav-dir)")
+    ap.add_argument("--emu-jobs", type=int, default=3, help="parallel emulator runs for --emu (at most 3)")
     a = ap.parse_args(argv)
     if (a.update_expected or a.strict_release or a.repro or a.emu) and not a.full:
         ap.error("--update-expected, --strict-release, --repro and --emu need --full")
@@ -694,7 +703,7 @@ def main(argv=None) -> int:
         steps.append(("repro", need(lambda p: step_repro(p, first, work_dir.with_name(work_dir.name + "-repro"),
                                                          env=REPRO_ENVS[1]))))
     if a.emu:
-        steps.append(("emu", need(lambda p: step_emu(p, first, work_dir, a.emu_saves))))
+        steps.append(("emu", need(lambda p: step_emu(p, first, work_dir, a.emu_saves, a.emu_jobs))))
     return run(steps)
 
 

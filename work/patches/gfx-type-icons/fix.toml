@@ -20,7 +20,7 @@ evidence = [
   "work/notes/graphics_inventory.md: rows 1-2",
   "work/graphics/CREDITS.md: hg-engine source, commit and licence",
   "CHANGELOG.md v1.0.0: 'English type icons for battle, the summary screen and the move relearner. The FAIRY icon comes from hg-engine.'",
-  "Runtime: emu_harness.py fixes --case gfx-type-icons (scenario ivev: the summary type icon crop differs from the Chinese ROM's; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
+  "Runtime: emu_harness.py fixes --case gfx-type-icons (scenario ivev: the summary type icon crop, scenario battle: the FIGHT menu type icon crop, each equal to the approved one; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[graphics]]
