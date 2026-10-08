@@ -4262,10 +4262,10 @@
   {
    "id": 532,
    "zh": "将角刺入，吸取对手的养分。{NEWLINE}可以回复给予{NEWLINE}对手伤害的一半ＨＰ。",
-   "en": "The user drains the{NEWLINE}foe’s nutrients with{NEWLINE}its horns. Half the{NEWLINE}damage dealt restores{NEWLINE}the user’s HP.",
+   "en": "The user jabs its{NEWLINE}horns into the foe to{NEWLINE}drain its nutrients.{NEWLINE}Half the damage dealt{NEWLINE}restores its HP.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV087: omission: zh 将角刺入 (pierces with its horns) was dropped (D-1971)"
   },
   {
    "id": 533,
@@ -4438,10 +4438,10 @@
   {
    "id": 554,
    "zh": "用能够冻结一切的强{NEWLINE}烈冷气，在第２回合{NEWLINE}包裹住对手。有时会{NEWLINE}让对手陷入灼伤状态{NEWLINE}。",
-   "en": "On turn 2, the user{NEWLINE}engulfs the foe in{NEWLINE}freezing air. It may{NEWLINE}leave the foe with a{NEWLINE}burn.",
+   "en": "On turn 2, the user{NEWLINE}engulfs the foe in{NEWLINE}intense cold that can{NEWLINE}freeze anything. It{NEWLINE}may burn the foe.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV087: omission: zh 能够冻结一切的强烈冷气 (intense cold that freezes everything) was dropped (D-1610)"
   },
   {
    "id": 555,
@@ -4462,10 +4462,10 @@
   {
    "id": 557,
    "zh": "从前额产生灼热的火{NEWLINE}焰，舍身撞击对手。{NEWLINE}防御、特防和速度会{NEWLINE}降低。",
-   "en": "The user rams the foe{NEWLINE}with searing flames{NEWLINE}from its forehead. Its{NEWLINE}Defense, Sp. Def, and{NEWLINE}Speed fall.",
+   "en": "The user hurls itself{NEWLINE}at the foe, its{NEWLINE}forehead ablaze. Its{NEWLINE}Defense, Sp. Def, and{NEWLINE}Speed fall.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV087: omission: zh 舍身撞击 (reckless, self-sacrificing ram) was flattened to 'rams'"
   },
   {
    "id": 558,
@@ -5070,10 +5070,10 @@
   {
    "id": 633,
    "zh": "通过Ｚ力量召唤大大{NEWLINE}的岩山，全力撞向对{NEWLINE}手。威力会根据原来{NEWLINE}的招式而改变。",
-   "en": "With Z-Power, the{NEWLINE}user summons a huge{NEWLINE}rocky mountain. Power{NEWLINE}varies with the base{NEWLINE}move.",
+   "en": "With Z-Power, the{NEWLINE}user calls up a huge{NEWLINE}rock mountain to ram{NEWLINE}the foe. Power varies{NEWLINE}with the base move.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV087: omission: zh 全力撞向对手 (rams the foe) was dropped"
   },
   {
    "id": 634,
@@ -5230,10 +5230,10 @@
   {
    "id": 653,
    "zh": "通过Ｚ力量将气场实{NEWLINE}体化，向对手全力发{NEWLINE}动袭击。威力会根据{NEWLINE}原来的招式而改变。",
-   "en": "With Z-Power, the{NEWLINE}user gives its aura{NEWLINE}form to strike. Power{NEWLINE}varies with the base{NEWLINE}move.",
+   "en": "With Z-Power, the{NEWLINE}user gives form to its{NEWLINE}aura and strikes the{NEWLINE}foe. Power varies with{NEWLINE}the base move.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV087: grammar: 'gives its aura form to strike' was unclear; zh 将气场实体化，向对手全力发动袭击"
   },
   {
    "id": 654,
@@ -5566,10 +5566,10 @@
   {
    "id": 695,
    "zh": "通过Ｚ力量制造出无{NEWLINE}数箭的狙射树枭将全{NEWLINE}力射穿对手进行攻击{NEWLINE}。",
-   "en": "With Z-Power,{NEWLINE}Decidueye makes{NEWLINE}countless arrows and{NEWLINE}shoots the foe with{NEWLINE}full force.",
+   "en": "With Z-Power,{NEWLINE}Decidueye shoots{NEWLINE}countless arrows{NEWLINE}through the foe with{NEWLINE}full force.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV087: omission: zh 射穿 = shoots through the foe (D-1971)"
   },
   {
    "id": 696,
@@ -5662,10 +5662,10 @@
   {
    "id": 707,
    "zh": "化悔恨为力量进行攻击。{NEWLINE}如果上一回合招式{NEWLINE}没有打中，{NEWLINE}威力就会翻倍。",
-   "en": "The user attacks,{NEWLINE}driven by regret. Its{NEWLINE}power doubles if the{NEWLINE}user’s last move{NEWLINE}missed.",
+   "en": "The user attacks,{NEWLINE}driven by regret. Its{NEWLINE}power doubles if the{NEWLINE}user’s move missed on{NEWLINE}the previous turn.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV087: meaning: zh 上一回合招式没有打中 = missed on the previous turn, not 'last move' (D-1975)"
   },
   {
    "id": 708,
@@ -5942,10 +5942,10 @@
   {
    "id": 742,
    "zh": "以胸口为中心旋转，{NEWLINE}并连续２次挥动手臂{NEWLINE}打击对手。{NEWLINE}有时会使对手畏缩。",
-   "en": "The user spins on its{NEWLINE}chest and swings its{NEWLINE}arms 2 times. It may{NEWLINE}make the foe flinch.",
+   "en": "The user spins around{NEWLINE}its chest and strikes{NEWLINE}with its arms twice in{NEWLINE}a row. It may make{NEWLINE}the foe flinch.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV087: meaning: zh 以胸口为中心旋转 = spins around its chest, not 'on' it; 连续２次 → twice in a row (D-1517)"
   },
   {
    "id": 743,
@@ -7134,10 +7134,10 @@
   {
    "id": 891,
    "zh": "将对世间的留恋聚集{NEWLINE}于剑尖，并斩击对手{NEWLINE}。可以回复给予对手{NEWLINE}伤害的一半ＨＰ。",
-   "en": "The user focuses its{NEWLINE}lingering regrets into{NEWLINE}its blade. Half the{NEWLINE}damage dealt restores{NEWLINE}its HP.",
+   "en": "The user gathers its{NEWLINE}attachment to this{NEWLINE}world at its sword tip{NEWLINE}and slashes. Half the{NEWLINE}damage heals it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV087: meaning: zh 对世间的留恋 = attachment to this world, not regrets; 剑尖 slash restored (D-1976); shortened to fit the 5-line box"
   },
   {
    "id": 892,
@@ -7230,10 +7230,10 @@
   {
    "id": 903,
    "zh": "使粘稠的麦芽糖浆爆{NEWLINE}炸，让对手陷入满身{NEWLINE}糖状态，在３回合内{NEWLINE}持续降低其速度。",
-   "en": "The user bursts{NEWLINE}sticky syrup on the{NEWLINE}foe, lowering its{NEWLINE}Speed for 3 turns.",
+   "en": "The user bursts{NEWLINE}sticky syrup on the{NEWLINE}foe, coating it so{NEWLINE}that its Speed keeps{NEWLINE}falling for 3 turns.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV087: meaning: zh 持续降低 = Speed keeps falling over 3 turns; 满身糖 coating restored (D-1977)"
   },
   {
    "id": 904,
@@ -7326,10 +7326,10 @@
   {
    "id": 915,
    "zh": "以自暴自弃的气势进{NEWLINE}行攻击。如果上一回{NEWLINE}合招式没有命中，威{NEWLINE}力就会翻倍。",
-   "en": "The user attacks in a{NEWLINE}reckless fit. Its{NEWLINE}power doubles if the{NEWLINE}user’s last move{NEWLINE}missed.",
+   "en": "The user attacks in a{NEWLINE}reckless fit. Its{NEWLINE}power doubles if the{NEWLINE}user’s move missed on{NEWLINE}the previous turn.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV087: meaning: zh 上一回合招式没有命中 = missed on the previous turn, not 'last move' (D-1975)"
   },
   {
    "id": 916,
@@ -7342,10 +7342,10 @@
   {
    "id": 917,
    "zh": "用令对手不舒服的音{NEWLINE}波进行攻击。让对手{NEWLINE}在２回合内无法通过{NEWLINE}招式、特性或携带的{NEWLINE}道具回复ＨＰ。",
-   "en": "Unpleasant sound{NEWLINE}waves hit the foe. For{NEWLINE}2 turns, it can’t heal{NEWLINE}HP with moves,{NEWLINE}abilities, or items.",
+   "en": "Unpleasant sound{NEWLINE}waves hit the foe. For{NEWLINE}2 turns, it can’t heal{NEWLINE}with moves, abilities,{NEWLINE}or held items.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV087: meaning: zh 携带的道具 = held items, not any items (D-1977)"
   },
   {
    "id": 918,

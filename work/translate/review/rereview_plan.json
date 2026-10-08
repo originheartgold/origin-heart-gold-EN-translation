@@ -6376,7 +6376,7 @@
   {
    "id": "RV087",
    "group": "6-desc",
-   "status": "todo",
+   "status": "done",
    "strings": 451,
    "labels": [
     "a027/0738 move_descriptions [part 2/2]"
