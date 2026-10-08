@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "我在这里为捣毁地鼠洞穴做准备工作,{NEWLINE}虽然很不想破坏它们的栖息地,{CLEAR}但是在金婆婆旗下的建筑公司打工,{CLEAR}不听她的就得失业了啊……{SCROLL}希望马志士馆主{NEWLINE}能及时跟精灵联盟取得联系,{CLEAR}赶紧制止这场生态灾难吧。",
-   "en": "I’m getting things ready to dig up{NEWLINE}Diglett’s Cave. I really don’t want to{CLEAR}wreck their home...{SCROLL}But I work for Granny Kin’s{NEWLINE}construction company. If I don’t do as{CLEAR}she says, I’m out of a job...{SCROLL}I hope Lt. Surge gets through to the{NEWLINE}Pokémon League in time...{SCROLL}...and stops this ecological disaster.",
+   "en": "I’m getting things ready to destroy{NEWLINE}Diglett’s Cave. I really don’t want to{CLEAR}wreck their habitat...{SCROLL}But I work for Granny Kin’s{NEWLINE}construction company. If I don’t do as{CLEAR}she says, I’m out of a job...{SCROLL}I hope Lt. Surge gets through to the{NEWLINE}Pokémon League in time...{SCROLL}...and stops this ecological disaster.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV008: softened: 捣毁 = destroy, not dig up (D-1685)"
   },
   {
    "id": 1,
@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "小刚『是吗……{NEWLINE}太遗憾了,不过也没办法。",
-   "en": "Brock: Well...{NEWLINE}That’s OK.",
+   "en": "Brock: I see... That’s too bad, but it{NEWLINE}can’t be helped.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0047/9"
+   "origin": "agent",
+   "notes": "US 0047/9 | RV008: omission: 是吗/太遗憾了/也没办法 were reduced to 'That’s OK' (D-1686)"
   },
   {
    "id": 10,

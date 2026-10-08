@@ -177,10 +177,10 @@
   {
    "id": 21,
    "zh": "臭丫头,让你看看火箭队姐姐{NEWLINE}最喜欢的以多欺少战术。",
-   "en": "Listen, you little brat. Let big sis show{NEWLINE}you Team Rocket’s favorite tactic:{CLEAR}ganging up on you!",
+   "en": "Listen up, you bratty little girl. Let{NEWLINE}Big Sis show you Team Rocket’s favorite{CLEAR}tactic: ganging up on you!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position | tone review: 臭丫头 is a contemptuous insult for a girl; kept as 'you little brat' (D-0627)"
+   "notes": "v3 TM: 1 source(s), same position | tone review: 臭丫头 is a contemptuous insult for a girl; kept as 'you little brat' (D-0627) | RV008: addressee: 臭丫头 targets Misty, keep the insult gendered; 姐姐 → Big Sis (D-0427)"
   },
   {
    "id": 22,
@@ -737,10 +737,10 @@
   {
    "id": 91,
    "zh": "混蛋,竟然被你们识破了！{NEWLINE}不过你们想凭人数突破这里……{CLEAR}真是太瞧不起我们火箭队了！",
-   "en": "Dammit, you saw through us! But if you{NEWLINE}think you can push through here just{CLEAR}because there’s more of you...{SCROLL}...you’re seriously underestimating{NEWLINE}Team Rocket!",
+   "en": "You bastards, you saw through us! But{NEWLINE}if you think you can push through here{CLEAR}just because there’s more of you...{SCROLL}...you’re seriously underestimating{NEWLINE}Team Rocket!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV008: softened: 混蛋 is an insult (bastards), not 'Dammit'"
   },
   {
    "id": 92,
@@ -785,10 +785,10 @@
   {
    "id": 97,
    "zh": "小蓝『面对这么多训练家,{NEWLINE}你们还是乖乖让开比较好哟！",
-   "en": "Green: With this many Trainers here,{NEWLINE}you’d better step aside like good little{CLEAR}crooks!",
+   "en": "Green: With this many Trainers here,{NEWLINE}you’d better be good and step aside!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV008: addition: 'crooks' not in zh; 乖乖 = be good/obediently"
   },
   {
    "id": 98,
@@ -865,10 +865,10 @@
   {
    "id": 107,
    "zh": "妈的！竟然全员战败？！{SCROLL}得赶紧向伦达达人报告！",
-   "en": "Dammit! All of us got beaten?!{SCROLL}We’ve got to report to Lord Petrel,{NEWLINE}fast!",
+   "en": "Shit! All of us got beaten?!{SCROLL}We’ve got to report to Lord Petrel,{NEWLINE}fast!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost"
+   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost | RV008: softened: 妈的 is a real curse (cf. 0048#57)"
   },
   {
    "id": 108,
@@ -1025,10 +1025,10 @@
   {
    "id": 127,
    "zh": "喵喵『加上上次在常磐森林,{NEWLINE}坏我们的好事,{CLEAR}我们要跟你好好算算这笔账啊喵。",
-   "en": "Meowth: Plus there’s the time you{NEWLINE}ruined our fun in Viridian Forest. We got{CLEAR}a score to settle with you, meow.",
+   "en": "Meowth: Plus there’s the time you{NEWLINE}ruined our plans in Viridian Forest. We{CLEAR}got a score to settle with you, meow.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV008: meaning: 坏我们的好事 = spoiled our scheme, not 'fun'"
   },
   {
    "id": 128,

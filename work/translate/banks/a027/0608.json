@@ -278,10 +278,10 @@
   {
    "id": 34,
    "zh": "冥王『屏障早就在那里了,{NEWLINE}只不过刚刚被骑拉帝纳的{CLEAR}反转之力给隐藏了。{CLEAR}这是专门为你设计的陷阱,{CLEAR}我给它取名为看不见的官材,{CLEAR}你应该很喜欢吧？哈哈哈哈。",
-   "en": "Charon: The barriers were there all{NEWLINE}along. Giratina’s power of reversal{CLEAR}simply kept them hidden.{SCROLL}This trap was designed just for you. I{NEWLINE}call it the Invisible Coffin.{SCROLL}You must love it, don’t you? Hah hah{NEWLINE}hah hah.",
+   "en": "Charon: The barriers were there all{NEWLINE}along. Giratina’s power of reversal{CLEAR}simply kept them hidden.{SCROLL}This trap was designed just for you. I{NEWLINE}call it the Invisible Coffin.{SCROLL}You must love it, right? Hah hah{NEWLINE}hah hah.",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 官材 is a typo for 棺材 (coffin)."
+   "notes": "zh 官材 is a typo for 棺材 (coffin). | RV008: grammar: 'You must love it, don’t you?' → 'right?'"
   },
   {
    "id": 35,
@@ -742,10 +742,10 @@
   {
    "id": 92,
    "zh": "冥王『富士那个死人,{NEWLINE}研究的成果还真不赖啊。",
-   "en": "Charon: That dead fool Fuji... His{NEWLINE}research turned out pretty damn well.",
+   "en": "Charon: That dead fool Fuji... His{NEWLINE}research really wasn’t half bad.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV008: addition: 还真不赖 has no 'damn'"
   },
   {
    "id": 93,
@@ -822,10 +822,10 @@
   {
    "id": 102,
    "zh": "冥王『啊啊啊！！！刚刚明明差一点{NEWLINE}就能团灭三个地区的冠军。{CLEAR}都怪富士那个老东西留下的祸害。",
-   "en": "Charon: Aaargh!!! We were this{NEWLINE}close to wiping out the Champions of{CLEAR}three regions!{SCROLL}It’s all the fault of that menace that{NEWLINE}old geezer Fuji left behind.",
+   "en": "Charon: Aaargh!!! We were this close to{NEWLINE}wiping out the Champions of three{CLEAR}regions!{SCROLL}It’s all because of that pest the old{NEWLINE}geezer Fuji left behind!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV008: grammar: clumsy 'that menace that old geezer'; 祸害 = pest/scourge"
   },
   {
    "id": 103,
