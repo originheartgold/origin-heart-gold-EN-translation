@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "{VAR:0103:0}『我也{NEWLINE}好想早点拥有精灵啊。{SCROLL}那样就可以和精灵一起{NEWLINE}周游世界了啊。",
-   "en": "{VAR:0103:0}: I really want{NEWLINE}my own Pokémon soon.{SCROLL}Then I could travel all over{NEWLINE}with Pokémon.",
+   "en": "{VAR:0103:0}: I really want my own{NEWLINE}Pokémon soon, too.{SCROLL}Then I could travel the world{NEWLINE}with Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV058: omission: 我也 (too), 周游世界 (the world)"
   },
   {
    "id": 4,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "{VAR:0103:0}『别只听我说啊。{NEWLINE}咱们到湖边去吧,{SCROLL}我心里都痒痒得{NEWLINE}坐不住了！！",
-   "en": "{VAR:0103:0}: Enough talking.{NEWLINE}Let’s go to the lake!{SCROLL}I’m so excited,{NEWLINE}I can’t sit still!!",
+   "en": "{VAR:0103:0}: Don’t just listen to me talk.{NEWLINE}Let’s go to the lake!{SCROLL}I’m so excited,{NEWLINE}I can’t sit still!!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV058: meaning: 别只听我说 = don't just listen to me"
   },
   {
    "id": 7,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "{VAR:0103:0}『刚才我也是{NEWLINE}迫不得已才使用了别人的精灵。{SCROLL}可毕竟是人家的精灵啊⋯⋯{NEWLINE}等会还要还给人家。{SCROLL}虽然是第一次一起战斗的{NEWLINE}精灵呢⋯⋯",
-   "en": "{VAR:0103:0}: Back there, we had{NEWLINE}no choice but to use their Pokémon.{SCROLL}But they’re still someone else’s...{NEWLINE}We’ll have to give them back.{SCROLL}Even though it’s the first Pokémon{NEWLINE}I ever battled with...",
+   "en": "{VAR:0103:0}: Back there, I had no choice{NEWLINE}but to use someone else’s Pokémon too.{SCROLL}But it’s someone else’s Pokémon...{NEWLINE}I’ll have to give it back later.{SCROLL}Even though it’s the first Pokémon{NEWLINE}I ever battled with...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV058: meaning: zh speaker says 'I too', singular"
   },
   {
    "id": 9,
@@ -254,10 +254,10 @@
   {
    "id": 31,
    "zh": "彦『谢谢你救了我。{NEWLINE}请收下这个精灵⋯⋯{CLEAR}它叫路卡,{CLEAR}你能带它走吗？{SCROLL}",
-   "en": "Riley: Thank you for saving me.{NEWLINE}If you’d like, this Pokémon...{CLEAR}Its name is Luca.{CLEAR}Would you take it with you?{SCROLL}",
+   "en": "Riley: Thank you for saving me.{NEWLINE}Please accept this Pokémon...{CLEAR}Its name is Luca.{CLEAR}Would you take it with you?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "路卡 = JP ルカ, the name Riley gives his Pokémon (Riolu/Lucario); kept as 'Luca'. Unverified."
+   "notes": "路卡 = JP ルカ, the name Riley gives his Pokémon (Riolu/Lucario); kept as 'Luca'. Unverified. | RV058: meaning: 请收下 = please accept"
   },
   {
    "id": 32,

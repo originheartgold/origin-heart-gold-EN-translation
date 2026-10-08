@@ -278,10 +278,10 @@
   {
    "id": 34,
    "zh": "有一棵很适合头槌的大树！",
-   "en": "There’s a large, formidable tree{NEWLINE}that looks like it can be headbutted!",
+   "en": "There’s a big tree here that’s{NEWLINE}perfect for Headbutt!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0211/34"
+   "origin": "agent",
+   "notes": "US 0211/34 | RV058: addition: zh has no 'formidable'"
   }
  ]
 }
