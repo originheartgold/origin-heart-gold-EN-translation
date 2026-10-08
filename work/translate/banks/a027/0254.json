@@ -182,10 +182,10 @@
   {
    "id": 22,
    "zh": "真是一场让人冒汗的较量！{NEWLINE}随时欢迎你再来找我切磋。",
-   "en": "What a sweaty match! Come spar with me{NEWLINE}again anytime.",
+   "en": "That match really made me sweat! Come{NEWLINE}spar with me again anytime.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV052: grammar: ‘What a sweaty match’ was unnatural"
   },
   {
    "id": 23,

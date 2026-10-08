@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "啊,真抱歉！{NEWLINE}是老爷爷我太急了！{SCROLL}我家的孙女不见了,{NEWLINE}我正在找她呢！{CLEAR}是个很娇小的女孩子！{CLEAR}你若看到她,请务必告诉我！{SCROLL}",
-   "en": "Whoa! Excuse me. I was in a hurry!{SCROLL}My granddaughter is missing!{SCROLL}She’s just a wee girl. If you see{NEWLINE}her, please let me know!{SCROLL}",
+   "en": "Ah, I’m so sorry! This old man was in{NEWLINE}too much of a hurry!{SCROLL}My granddaughter is missing, and I’m{NEWLINE}looking for her!{SCROLL}She’s a tiny little girl! If you see her,{NEWLINE}please let me know!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0259/7"
+   "origin": "agent",
+   "notes": "US 0259/7 | RV052: omission: US line dropped ‘我正在找她呢’ and the speaker’s ‘老爷爷我’; apology restored"
   },
   {
    "id": 8,
@@ -979,10 +979,10 @@
   {
    "id": 121,
    "zh": "我们爷孙俩的这次旅行{NEWLINE}多亏遇到你才能这么顺利,{CLEAR}真是太感谢了。",
-   "en": "Our trip went so smoothly thanks to{NEWLINE}you. Thank you so much.",
+   "en": "Thanks to you, this trip with my{NEWLINE}granddaughter went so smoothly.{CLEAR}Thank you so much.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV052: omission: ‘我们爷孙俩的’ (grandfather and granddaughter) restored"
   },
   {
    "id": 122,
@@ -1067,10 +1067,10 @@
   {
    "id": 132,
    "zh": "火箭队？！{NEWLINE}我看过最近精灵联盟的通报,{CLEAR}好像是一伙很恶劣的犯罪组织。",
-   "en": "Team Rocket?! I read the{NEWLINE}Pokémon League’s latest bulletin.{CLEAR}They’re a vicious criminal gang!",
+   "en": "Team Rocket?! I read the{NEWLINE}Pokémon League’s latest bulletin.{SCROLL}Apparently, they’re a vicious{NEWLINE}criminal gang!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV052: omission: hedge ‘好像’ restored"
   },
   {
    "id": 133,
@@ -1531,10 +1531,10 @@
   {
    "id": 190,
    "zh": "小绿『火箭队这招下毒可真够阴的,{NEWLINE}{VAR:0103:0}你独自去跟火箭队周旋{CLEAR}可一定要小心啊！{SCROLL}小绿『等我想办法{NEWLINE}解除精灵的混乱后就去帮你。",
-   "en": "Blue: Poisoning the food... that’s a low{NEWLINE}trick, even for Team Rocket.{SCROLL}{VAR:0103:0}, you’re taking them on alone,{NEWLINE}so be careful!{SCROLL}Blue: Once I figure out how to snap my{NEWLINE}Pokémon out of confusion, I’ll come{CLEAR}help.",
+   "en": "Blue: Team Rocket poisoning the food...{NEWLINE}that’s a really dirty trick.{SCROLL}{VAR:0103:0}, you’re taking them on alone,{NEWLINE}so be careful!{SCROLL}Blue: Once I figure out how to snap{NEWLINE}my Pokémon out of confusion,{CLEAR}I’ll come help.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV052: addition: removed invented ‘even for Team Rocket’"
   },
   {
    "id": 191,

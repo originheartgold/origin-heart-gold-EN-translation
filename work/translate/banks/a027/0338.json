@@ -126,10 +126,10 @@
   {
    "id": 15,
    "zh": "你在发电厂越努力,{NEWLINE}这个世界就越光明。{CLEAR}——火箭动力发电厂",
-   "en": "Work harder for a brighter world!{NEWLINE}-Rocket Power Plant",
+   "en": "The harder you work at the plant,{NEWLINE}the brighter the world becomes.{CLEAR}-Rocket Power Plant",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV052: omission: ‘在发电厂’ and the more-X-more-Y structure restored"
   },
   {
    "id": 16,
@@ -302,10 +302,10 @@
   {
    "id": 37,
    "zh": "你准备受死吧。",
-   "en": "Prepare to meet your end.",
+   "en": "Prepare to die.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV052: softened: 受死 = die"
   },
   {
    "id": 38,

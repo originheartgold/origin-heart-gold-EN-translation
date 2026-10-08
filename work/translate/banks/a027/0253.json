@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "水吾桐『你问为什么？{NEWLINE}本大爷可是拥有12个徽章、{CLEAR}在石英大会中拿到名次的精英训练家！{CLEAR}结果却被派在这破船上{CLEAR}每天给这些一无是处的客人陪笑脸,{CLEAR}最终渐渐变成跟他们一样的普通人……",
-   "en": "Archie: Why, you ask? I’m an Ace{NEWLINE}Trainer with 12 Badges who placed at{CLEAR}the Indigo Conference!{SCROLL}And yet I get stuck on this rust{NEWLINE}bucket, smiling for good-for-nothing{CLEAR}passengers every day...{SCROLL}...until I slowly turn as ordinary as{NEWLINE}they are...",
+   "en": "Archie: Why, you ask? I, the great{NEWLINE}Archie, am an Ace Trainer with 12 Badges{CLEAR}who placed at the Indigo Conference!{SCROLL}And yet I get stuck on this rust{NEWLINE}bucket, smiling for good-for-nothing{CLEAR}passengers every day...{SCROLL}...until I slowly turn as ordinary as{NEWLINE}they are...",
    "status": "draft",
    "origin": "agent",
-   "notes": "ext-review RV-020"
+   "notes": "ext-review RV-020 | RV052: voice: 本大爷 self-reference carried"
   },
   {
    "id": 3,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "{VAR:0103:0}『真是好笑,{NEWLINE}你们火箭队给我当手下还差不多！",
-   "en": "{VAR:0103:0}: What a joke. Team Rocket{NEWLINE}would make better underlings for me!",
+   "en": "{VAR:0103:0}: What a joke. Team Rocket{NEWLINE}working as my underlings would make{CLEAR}more sense!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV052: meaning: ‘给我当手下还差不多’ = Team Rocket should be MY underlings; old line read as a comparison"
   },
   {
    "id": 7,
@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "水吾桐『哈哈哈哈,{NEWLINE}就凭你们怎么可能赢得了本大爷！{CLEAR}回来吧,我的口袋妖怪们。",
-   "en": "Archie: Ha ha ha ha! As if the likes of{NEWLINE}you could ever beat me! Return, my{CLEAR}Pokémon.",
+   "en": "Archie: Ha ha ha ha! As if the likes of{NEWLINE}you could ever beat the great Archie!{CLEAR}Return, my Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV052: voice: 本大爷 self-reference carried"
   },
   {
    "id": 10,
@@ -126,10 +126,10 @@
   {
    "id": 15,
    "zh": "水吾桐『可恶的臭小鬼们！{NEWLINE}居然敢坏本大爷的事！{CLEAR}我绝对饶不了你们！{CLEAR}你们就跟圣安努号一起{CLEAR}沉没在这片大海里吧！",
-   "en": "Archie: Damned brats! How dare you ruin{NEWLINE}my plans! I’ll never forgive you!{SCROLL}You can sink to the bottom of this sea{NEWLINE}along with the S.S. Anne!",
+   "en": "Archie: Damned brats! How dare you ruin{NEWLINE}the great Archie’s plans!{CLEAR}I’ll never forgive you!{SCROLL}You can sink to the bottom of this sea{NEWLINE}along with the S.S. Anne!",
    "status": "draft",
    "origin": "agent",
-   "notes": "tone review: 可恶的臭小鬼们 = 'Damned brats' for the villain (D-0627)"
+   "notes": "tone review: 可恶的臭小鬼们 = 'Damned brats' for the villain (D-0627) | RV052: voice: 本大爷 self-reference carried (D-2081 queue item)"
   },
   {
    "id": 16,
@@ -150,10 +150,10 @@
   {
    "id": 18,
    "zh": "水吾桐『看来你还真有两下子,{NEWLINE}不过我水吾桐大人也不是吃素的,{CLEAR}这就让你见识一下火箭队干部的实力！",
-   "en": "Archie: Looks like you’ve got some skill.{NEWLINE}But I, Archie, am no pushover either.{SCROLL}Now I’ll show you the power of a Team{NEWLINE}Rocket Executive!",
+   "en": "Archie: Looks like you’ve got some{NEWLINE}skill. But the great Archie is no{CLEAR}pushover either.{SCROLL}Now I’ll show you the power of a Team{NEWLINE}Rocket Executive!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV052: voice: 水吾桐大人 self-aggrandising self-reference carried"
   },
   {
    "id": 19,
@@ -214,18 +214,18 @@
   {
    "id": 26,
    "zh": "水吾桐『哈哈哈哈,就凭你{NEWLINE}也想阻止全力出击的本大爷？{CLEAR}螳臂当车！",
-   "en": "Archie: Ha ha ha ha! You think you can{NEWLINE}stop me when I’m going all out? You’re a{CLEAR}bug trying to stop a train!",
+   "en": "Archie: Ha ha ha ha! You think the likes{NEWLINE}of you can stop the great Archie when{CLEAR}he’s going all out? You’re a bug trying{CLEAR}to stop a train!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV052: omission: ‘就凭你’ and 本大爷 voice restored"
   },
   {
    "id": 27,
    "zh": "小绿『治疗混乱稍微耽误了点时间,{NEWLINE}怎么样啊{VAR:0103:0},你还没有被揍扁吧？",
-   "en": "Blue: Curing the confusion took a little{NEWLINE}longer than I thought. How’s it going,{CLEAR}{VAR:0103:0}? Not flattened yet?",
+   "en": "Blue: Curing the confusion held me up a{NEWLINE}bit. How’s it going, {VAR:0103:0}? Not{CLEAR}flattened yet?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV052: addition: removed invented ‘than I thought’"
   },
   {
    "id": 28,
@@ -278,10 +278,10 @@
   {
    "id": 34,
    "zh": "船长『为了防止再有意外发生,{NEWLINE}圣安努号的本次航行暂时终止,{CLEAR}我现在就把游轮开回枯叶港。",
-   "en": "Captain: To prevent any more trouble,{NEWLINE}this voyage of the S.S. Anne is{CLEAR}cancelled.{SCROLL}I’ll take the ship back to Vermilion{NEWLINE}Harbor right away.",
+   "en": "Captain: To prevent any more trouble,{NEWLINE}this voyage of the S.S. Anne is{CLEAR}suspended for now.{SCROLL}I’ll take the ship back to Vermilion{NEWLINE}Harbor right away.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV052: meaning: 暂时终止 = suspended for now, not cancelled"
   },
   {
    "id": 35,
@@ -342,18 +342,18 @@
   {
    "id": 42,
    "zh": "小绿『所以{VAR:0103:0},{NEWLINE}我们一定要变得更强,{CLEAR}要从这种坏人手里保护大家！{CLEAR}总有一天要让火箭队{CLEAR}为今天所做的事情付出代价！",
-   "en": "Blue: So, {VAR:0103:0}, we’ve got to get{NEWLINE}stronger. We have to protect everyone{CLEAR}from scum like that!{SCROLL}Someday we’ll make Team Rocket pay for{NEWLINE}what they did today!",
+   "en": "Blue: So, {VAR:0103:0}, we’ve got to get{NEWLINE}stronger. We have to protect everyone{CLEAR}from bad guys like that!{SCROLL}Someday we’ll make Team Rocket pay for{NEWLINE}what they did today!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV052: addition: 坏人 is ‘bad guys’, not the stronger ‘scum’"
   },
   {
    "id": 43,
    "zh": "小蓝『都怪我考虑不周全{NEWLINE}才会让事情变成这样……{CLEAR}我从小就跟火箭队接触,{CLEAR}虽然知道他们是危险的犯罪组织,{CLEAR}但真没想到他们会这么丧心病狂,{CLEAR}还是我太低估他们了啊……",
-   "en": "Green: It’s my fault for not thinking{NEWLINE}things through...{SCROLL}I’ve dealt with Team Rocket since I was{NEWLINE}little. I knew they were a dangerous{CLEAR}criminal gang...{SCROLL}...but I never dreamed they’d go this{NEWLINE}far. I underestimated them...",
+   "en": "Green: It’s my fault for not thinking{NEWLINE}things through...{SCROLL}I’ve dealt with Team Rocket since I was{NEWLINE}little. I knew they were a dangerous{CLEAR}criminal gang...{SCROLL}...but I never dreamed they’d be this{NEWLINE}depraved. I underestimated them...",
    "status": "draft",
    "origin": "agent",
-   "notes": "Branch: Green = male-player route (Red alternate)."
+   "notes": "Branch: Green = male-player route (Red alternate). | RV052: softened: 丧心病狂 = depraved/insanely vicious, not ‘go this far’"
   },
   {
    "id": 44,
@@ -582,10 +582,10 @@
   {
    "id": 72,
    "zh": "水吾桐『哈哈哈,自寻死路的家伙。{NEWLINE}铁螯龙虾,给我剪断这个小鬼的脖子！",
-   "en": "Archie: Ha ha ha! You asked for it.{NEWLINE}Crawdaunt, snip this brat’s head off!",
+   "en": "Archie: Ha ha ha! You’re just digging{NEWLINE}your own grave. Crawdaunt, snip this{CLEAR}brat’s head off!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Faithful: zh 剪断这个小鬼的脖子 ('snip this brat's neck'). | Full fidelity review: specific wording approved by user (D-1724, 2026-10-07)."
+   "notes": "Faithful: zh 剪断这个小鬼的脖子 ('snip this brat's neck'). | Full fidelity review: specific wording approved by user (D-1724, 2026-10-07). | RV052: softened: 自寻死路 carries death; ‘You asked for it’ was weaker"
   },
   {
    "id": 73,
