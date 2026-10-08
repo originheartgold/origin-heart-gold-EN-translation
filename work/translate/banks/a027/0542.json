@@ -134,10 +134,10 @@
   {
    "id": 16,
    "zh": "在精灵中心旁边的精灵爷爷{NEWLINE}你去说过话了吗？{SCROLL}他能让你的手机{NEWLINE}显示城都地区{CLEAR}的地图喔！",
-   "en": "Did you talk to the old man by the{NEWLINE}Pokémon Center?{SCROLL}He’ll put a Map of Johto on your{NEWLINE}Pokégear.",
+   "en": "Did you talk to Mr. Pokémon by the{NEWLINE}Pokémon Center? He’ll put a Map of{CLEAR}Johto on your Pokégear.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0550/16"
+   "origin": "agent",
+   "notes": "US 0550/16 | RV029: meaning: 精灵爷爷 is Mr. Pokémon; translated as written, suspected hack error logged (D-1861, coordinator)"
   },
   {
    "id": 17,
@@ -503,10 +503,10 @@
   {
    "id": 62,
    "zh": "阿金『也对哦,现在不是{NEWLINE}跟这个凶巴巴小孩生气的时候。",
-   "en": "Gold: Yeah, you’re right.{NEWLINE}This is no time to get worked{CLEAR}up over some grumpy punk.",
+   "en": "Gold: Yeah, you’re right. This is no time{NEWLINE}to get worked up over some grumpy kid.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV029: meaning: 小孩 = kid, not 'punk'"
   },
   {
    "id": 63,
@@ -1341,10 +1341,10 @@
   {
    "id": 166,
    "zh": "水晶『嗯,既然如此那我就不推辞了。{NEWLINE}为了回应水君的心意,{CLEAR}请与我一战吧,米那君先生！",
-   "en": "Crystal: Well... in that case, I{NEWLINE}won’t refuse. To answer Suicune’s{CLEAR}feelings, please battle me, Eusine!",
+   "en": "Crystal: Well... in that case, I won’t{NEWLINE}refuse. To answer Suicune’s feelings,{CLEAR}please battle me, Mr. Eusine!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV029: omission: 先生"
   },
   {
    "id": 167,
@@ -1365,10 +1365,10 @@
   {
    "id": 169,
    "zh": "{VAR:0103:0}『没问题,我来和水君一起,{NEWLINE}见证你们对决的结果。",
-   "en": "{VAR:0103:0}: No problem. Suicune and I{NEWLINE}will see how your match turns out.",
+   "en": "{VAR:0103:0}: No problem. Suicune and I will{NEWLINE}witness the outcome of your duel.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV029: meaning: 见证 = witness"
   },
   {
    "id": 170,

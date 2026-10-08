@@ -571,10 +571,10 @@
   {
    "id": 70,
    "zh": "小银『嘿,没想到你会主动送上门来。{NEWLINE}那我可就不客气了。",
-   "en": "Silver: Heh. Never thought{NEWLINE}you’d just walk right up to{CLEAR}me. Then I won’t hold back.",
+   "en": "Silver: Heh. Never thought you’d just{NEWLINE}walk right up to me.{CLEAR}Then don’t mind if I do.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV029: meaning: 不客气 = help myself, not 'won't hold back'"
   },
   {
    "id": 71,

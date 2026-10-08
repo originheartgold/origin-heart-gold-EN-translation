@@ -254,10 +254,10 @@
   {
    "id": 31,
    "zh": "小蓝『不错哟,看来你没有变迟钝嘛。",
-   "en": "Green: Not bad. Looks like{NEWLINE}you haven’t gone soft.",
+   "en": "Green: Not bad. Looks like you haven’t{NEWLINE}gotten slow after all.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Same zh as 0537 #207; English copied."
+   "notes": "Same zh as 0537 #207; English copied. | RV029: meaning: 迟钝 callback to #59/#60 ('slow')"
   },
   {
    "id": 32,
@@ -270,10 +270,10 @@
   {
    "id": 33,
    "zh": "小蓝『你是想用1只精灵跟我双打吗？{NEWLINE}别太看不起人啊喂！",
-   "en": "Green: You want a Double Battle{NEWLINE}with me using 1 Pokémon? Don’t{CLEAR}look down on me like that, hey!",
+   "en": "Green: You want a Double Battle with me{NEWLINE}using 1 Pokémon? Hey, don’t look down{CLEAR}on me like that!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV029: grammar: dangling 'hey!'"
   },
   {
    "id": 34,
@@ -436,10 +436,10 @@
   {
    "id": 53,
    "zh": "小蓝『嗯！明白！{NEWLINE}毕竟你是个老实人,哈哈哈。",
-   "en": "Green: Mm-hmm! Got it! You’re an{NEWLINE}honest guy, after all. Ha ha ha!",
+   "en": "Green: Mm-hmm! Got it! You’re such a{NEWLINE}nice guy, after all. Ha ha ha!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV029: meaning: 老实人 is a backhanded dig (player asks if it's an insult)"
   },
   {
    "id": 54,
@@ -868,10 +868,10 @@
   {
    "id": 107,
    "zh": "恋爱最甜美的时候,{NEWLINE}就是刚刚在一起时的青涩时光。",
-   "en": "The sweetest time in love is when{NEWLINE}you’ve just started going out.",
+   "en": "The sweetest time in love is those shy,{NEWLINE}awkward early days when you’ve just{CLEAR}gotten together.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Same zh as 0445 #216; English copied."
+   "notes": "Same zh as 0445 #216; English copied. | RV029: omission: 青涩 (callback in #108)"
   },
   {
    "id": 108,
