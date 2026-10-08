@@ -124,7 +124,8 @@ scenes; `text_speed_checks.order_errors`), per message against the original prin
   of a batch's extra glyphs (unforced overruns) are a budget, not zero (D-2276,
   amends D-2271): at most 1 per message (one is a note in `capped_ties`), and at
   most 1 per 1,000 FAST printing frames over the whole run (each gate reports
-  `overrun_budget`; validate_release sums them and fails above the budget;
+  `overrun_budget`; validate_release sums them and fails a full run above the
+  budget, an `--only` run reports the count without judging the rate;
   `report_summary.py` always prints the count). DeSmuME's random cost spikes make
   zero unprovable with any fixed MARGIN, and one late frame is invisible.
 

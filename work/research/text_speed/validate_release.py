@@ -393,7 +393,9 @@ def main():
             failures.append('work tree or HEAD changed during validation')
         summary['overrun_budget'] = add_budgets([g['overrun_budget'] for g in summary['gates'].values()
                                                  if g.get('overrun_budget')])
-        budget_error = checks.overrun_budget_error(summary['overrun_budget'])
+        # The rate is judged over the whole run only (D-2276: 'across the whole corpus'): an --only
+        # run is too small for 1 per 1000 and never releasable; it still reports the count.
+        budget_error = None if args.only else checks.overrun_budget_error(summary['overrun_budget'])
         if budget_error:
             failures.append(budget_error)
         failed = sorted(n for n, g in summary['gates'].items() if g['status'] != 'passed')
