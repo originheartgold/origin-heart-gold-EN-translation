@@ -1367,7 +1367,7 @@
    "en": "You have too many Pokémon with you.{NEWLINE}Sort out your party and come back.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | D-2272: 'party' for 背包 confirmed per D-1852 (user-approved hack slip)"
   },
   {
    "id": 170,

@@ -3993,10 +3993,10 @@
   {
    "id": 471,
    "zh": "泥土会减慢干燥,{NEWLINE}树果的成长速度减慢。",
-   "en": "It slows the growth of Berries and{NEWLINE}causes the soil to dry more slowly.",
+   "en": "It extends the time ripened Berries{NEWLINE}remain on their plants before falling.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0191/471"
+   "notes": "US 0191/471 | D-2272: fixed per D-2199 (user-approved hack slip)"
   },
   {
    "id": 472,

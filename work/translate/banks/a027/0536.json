@@ -432,10 +432,10 @@
   {
    "id": 50,
    "zh": "你身上带的精灵太多了{NEWLINE}整理一下背包再来吧。",
-   "en": "You’re carrying too many Pokémon. Sort{NEWLINE}out your Bag and come back.",
+   "en": "You’re carrying too many Pokémon. Sort{NEWLINE}out your party and come back.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s) | RV053: meaning: zh says 背包 (Bag); silent correction to ‘party’ undone (D-1886; hack-finding logged)"
+   "notes": "v3 TM: 1 source(s) | RV053: meaning: zh says 背包 (Bag); silent correction to ‘party’ undone (D-1886; hack-finding logged) | D-2272: fixed per D-2188 (user-approved hack slip)"
   },
   {
    "id": 51,

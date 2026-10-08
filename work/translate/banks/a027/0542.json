@@ -134,10 +134,10 @@
   {
    "id": 16,
    "zh": "在精灵中心旁边的精灵爷爷{NEWLINE}你去说过话了吗？{SCROLL}他能让你的手机{NEWLINE}显示城都地区{CLEAR}的地图喔！",
-   "en": "Did you talk to Mr. Pokémon by the{NEWLINE}Pokémon Center? He’ll put a Map of{CLEAR}Johto on your Pokégear.",
+   "en": "Did you talk to the old man by the{NEWLINE}Pokémon Center? He’ll put a Map of{CLEAR}Johto on your Pokégear.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0550/16 | RV029: meaning: 精灵爷爷 is Mr. Pokémon; translated as written, suspected hack error logged (D-1861, coordinator)"
+   "notes": "US 0550/16 | RV029: meaning: 精灵爷爷 is Mr. Pokémon; translated as written, suspected hack error logged (D-1861, coordinator) | D-2272: fixed per D-2140 (user-approved hack slip)"
   },
   {
    "id": 17,

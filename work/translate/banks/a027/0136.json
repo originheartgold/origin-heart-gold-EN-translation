@@ -350,10 +350,10 @@
   {
    "id": 43,
    "zh": "力量＆耐力项目{NEWLINE}有注重力量和{CLEAR}力量的{CLEAR}４种比试。{SCROLL}劈开那些石板！{NEWLINE}「劈石板」{SCROLL}挤开对手,{NEWLINE}抢到座位！{CLEAR}「抢位置」{SCROLL}射门射到{NEWLINE}精疲力尽！{CLEAR}「足球」{SCROLL}撞掉对手,{NEWLINE}成为台上的幸存者！{CLEAR}「撞人」{SCROLL}获胜后能得到力量奖牌和{NEWLINE}耐力奖牌,{SCROLL}请一定要选{NEWLINE}３只对力量和耐力{CLEAR}有信心的精灵{CLEAR}来参加。{SCROLL}",
-   "en": "The Power & Stamina Course consists of{NEWLINE}four events that require good Power{CLEAR}and Power.{SCROLL}“Block Smash”{NEWLINE}Smash those Blocks!{SCROLL}“Circle Push”{NEWLINE}Push them away and grab your spot!{SCROLL}“Goal Roll”{NEWLINE}Keep shooting until you’re worn out!{SCROLL}“Ring Drop”{NEWLINE}Knock them off and be the last on{CLEAR}the Ring!{SCROLL}When you win, you will be awarded the{NEWLINE}Power Medal and the Stamina Medal.{SCROLL}Choose three Pokémon with confidence in{NEWLINE}their Power and Stamina!{SCROLL}{SCROLL}",
+   "en": "The Power & Stamina Course consists of{NEWLINE}four events that require good Power{CLEAR}and Stamina.{SCROLL}“Block Smash”{NEWLINE}Smash those Blocks!{SCROLL}“Circle Push”{NEWLINE}Push them away and grab your spot!{SCROLL}“Goal Roll”{NEWLINE}Keep shooting until you’re worn out!{SCROLL}“Ring Drop”{NEWLINE}Knock them off and be the last on{CLEAR}the Ring!{SCROLL}When you win, you will be awarded the{NEWLINE}Power Medal and the Stamina Medal.{SCROLL}Choose three Pokémon with confidence in{NEWLINE}their Power and Stamina!{SCROLL}{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": " | RV039: meaning: silent correction reverted: zh says 力量和力量 (Power and Power); hack-finding logged (D-1669)"
+   "notes": " | RV039: meaning: silent correction reverted: zh says 力量和力量 (Power and Power); hack-finding logged (D-1669) | D-2272: fixed per D-2170 (user-approved hack slip)"
   },
   {
    "id": 44,

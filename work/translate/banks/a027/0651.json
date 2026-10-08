@@ -54,18 +54,18 @@
   {
    "id": 6,
    "zh": "{VAR:0100:10}的等级已经到{NEWLINE}{VAR:0134:11}了。{SCROLL}",
-   "en": "Your {VAR:0100:10} has reached Level {VAR:0134:11}.{SCROLL}",
+   "en": "By level, your {VAR:0100:10} has{NEWLINE}grown by about {VAR:0134:11}.{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0660/6 | RV071: meaning: zh says level has reached N; suspected source error logged as hack-finding (hack-finding D-2225)"
+   "notes": "US 0660/6 | RV071: meaning: zh says level has reached N; suspected source error logged as hack-finding (hack-finding D-2225) | D-2272: fixed per D-2225 (user-approved hack slip)"
   },
   {
    "id": 7,
    "zh": "{VAR:0100:12}的等级已经到{NEWLINE}{VAR:0134:13}了。{SCROLL}",
-   "en": "Your {VAR:0100:12} has reached Level {VAR:0134:13}.{SCROLL}",
+   "en": "By level, your {VAR:0100:12} has{NEWLINE}grown by about {VAR:0134:13}.{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0660/7 | RV071: meaning: zh says level has reached N; suspected source error logged as hack-finding (hack-finding D-2225)"
+   "notes": "US 0660/7 | RV071: meaning: zh says level has reached N; suspected source error logged as hack-finding (hack-finding D-2225) | D-2272: fixed per D-2225 (user-approved hack slip)"
   },
   {
    "id": 8,

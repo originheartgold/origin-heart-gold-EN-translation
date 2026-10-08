@@ -702,10 +702,10 @@
   {
    "id": 87,
    "zh": "自行车道,{NEWLINE}北侧的终点。",
-   "en": "The northern end point{NEWLINE}of Cycling Road.",
+   "en": "The southern end point{NEWLINE}of Cycling Road.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0273/87 | RV070: meaning: zh says northern end; US silently said southern (hack-finding logged)"
+   "notes": "US 0273/87 | RV070: meaning: zh says northern end; US silently said southern (hack-finding logged) | D-2272: fixed per D-2234 (user-approved hack slip)"
   },
   {
    "id": 88,

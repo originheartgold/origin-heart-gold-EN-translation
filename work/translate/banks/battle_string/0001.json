@@ -13342,34 +13342,34 @@
   {
    "id": 1652,
    "zh": "{VAR:0102:0,0}{NEWLINE}压制了所有气场！",
-   "en": "{VAR:0102:0,0} suppressed all auras!",
+   "en": "{VAR:0102:0,0} reversed all other{NEWLINE}Pokémon’s auras!",
    "status": "draft",
    "origin": "agent",
-   "notes": "RV104: meaning: 压制了所有气场 = suppressed all auras, not reversed (D-1905; hack-finding logged)"
+   "notes": "RV104: meaning: 压制了所有气场 = suppressed all auras, not reversed (D-1905; hack-finding logged) | D-2272: fixed per D-2262 (user-approved hack slip)"
   },
   {
    "id": 1653,
    "zh": "野生的{VAR:0102:0,0}{NEWLINE}压制了所有气场！",
-   "en": "The wild {VAR:0102:0,0} suppressed{NEWLINE}all auras!",
+   "en": "The wild {VAR:0102:0,0} reversed all other{NEWLINE}Pokémon’s auras!",
    "status": "draft",
    "origin": "agent",
-   "notes": "RV104: meaning: same as #1652"
+   "notes": "RV104: meaning: same as #1652 | D-2272: fixed per D-2262 (user-approved hack slip)"
   },
   {
    "id": 1654,
    "zh": "对手的{VAR:0102:0,0}{NEWLINE}压制了所有气场！",
-   "en": "The foe’s {VAR:0102:0,0} suppressed{NEWLINE}all auras!",
+   "en": "The foe’s {VAR:0102:0,0} reversed all{NEWLINE}other Pokémon’s auras!",
    "status": "draft",
    "origin": "agent",
-   "notes": "RV104: meaning: same as #1652"
+   "notes": "RV104: meaning: same as #1652 | D-2272: fixed per D-2262 (user-approved hack slip)"
   },
   {
    "id": 1655,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}{NEWLINE}压制了所有气场！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}{NEWLINE}suppressed all auras!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} reversed{NEWLINE}all other Pokémon’s auras!",
    "status": "draft",
    "origin": "agent",
-   "notes": "RV104: meaning: same as #1652"
+   "notes": "RV104: meaning: same as #1652 | D-2272: fixed per D-2262 (user-approved hack slip)"
   },
   {
    "id": 1656,

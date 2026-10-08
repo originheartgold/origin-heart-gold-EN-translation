@@ -278,10 +278,10 @@
   {
    "id": 34,
    "zh": "蜜柑『这次战斗的限制条件是{NEWLINE}使用「物防种族值不低于130」的精灵{CLEAR}与我进行3V3单打对战。{CLEAR}您携带有不符合条件的精灵,{CLEAR}请您整理一下背包再来吧。",
-   "en": "Jasmine: For this battle, you must use{NEWLINE}Pokémon with a base Defense of 130{CLEAR}or higher in a 3-on-3 Single Battle.{SCROLL}Some of the Pokémon you’re{NEWLINE}carrying don’t qualify. Please sort{CLEAR}out your Bag and come back.",
+   "en": "Jasmine: For this battle, you must use{NEWLINE}Pokémon with a base Defense of 130{CLEAR}or higher in a 3-on-3 Single Battle.{SCROLL}Some of the Pokémon you’re{NEWLINE}carrying don’t qualify. Please sort{CLEAR}out your party and come back.",
    "status": "draft",
    "origin": "agent",
-   "notes": "RV042: meaning: zh says 背包 (Bag), not party; silent correction undone (D-1934), hack-finding logged (hack-finding D-2173)"
+   "notes": "RV042: meaning: zh says 背包 (Bag), not party; silent correction undone (D-1934), hack-finding logged (hack-finding D-2173) | D-2272: fixed per D-2173 (user-approved hack slip)"
   },
   {
    "id": 35,
