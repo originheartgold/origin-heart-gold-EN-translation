@@ -6230,7 +6230,7 @@
   {
    "id": "RV082",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 457,
    "labels": [
     "a027/0713 battle_frontier_trainer_text [part 2/2]"

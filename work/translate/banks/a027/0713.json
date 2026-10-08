@@ -3718,10 +3718,10 @@
   {
    "id": 464,
    "zh": "传说中最强者的称号！{NEWLINE}决不会让给你这黄毛小儿！{SCROLL}",
-   "en": "The title of legendary strongest! I’ll{NEWLINE}never hand it to a greenhorn like you!{SCROLL}",
+   "en": "The title of legendary strongest! Never{NEWLINE}will I yield it to you, whippersnapper!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV082: strength: 黄毛小儿 is a contemptuous 'whippersnapper', not 'greenhorn'"
   },
   {
    "id": 465,
@@ -3942,10 +3942,10 @@
   {
    "id": 492,
    "zh": "你也来学习！",
-   "en": "You learn, too!",
+   "en": "Come and learn, too!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV082: grammar: 你也来学习 = come and learn too"
   },
   {
    "id": 493,
@@ -4534,10 +4534,10 @@
   {
    "id": 566,
    "zh": "还要再来一次么？{SCROLL}",
-   "en": "Want to go again?{SCROLL}",
+   "en": "Want an encore?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV082: meaning: 再来一次 here is the music fan's encore (JP アンコール)"
   },
   {
    "id": 567,
@@ -4966,10 +4966,10 @@
   {
    "id": 620,
    "zh": "但！其实真正的我{NEWLINE}依然是那个可爱的迷你裙少女！{SCROLL}",
-   "en": "But the real me...{NEWLINE}I’m still a Lass in a miniskirt!{SCROLL}",
+   "en": "But the real me... I’m still a cute Lass{NEWLINE}in a miniskirt!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/620"
+   "origin": "agent",
+   "notes": "US 0723/620 | RV082: omission: 可爱的 (cute) was dropped"
   },
   {
    "id": 621,
@@ -5070,10 +5070,10 @@
   {
    "id": 633,
    "zh": "别看大婶我现在这样,{NEWLINE}年轻的时候可是摩登女郎哦！",
-   "en": "You won’t guess it now, but I was{NEWLINE}quite the party girl in my day.",
+   "en": "This old auntie may not look it now, but{NEWLINE}in my day I was quite the modern girl!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/633"
+   "origin": "agent",
+   "notes": "US 0723/633 | RV082: voice: 大婶我 self-reference kept; 摩登女郎 = modern girl"
   },
   {
    "id": 634,
@@ -5638,10 +5638,10 @@
   {
    "id": 704,
    "zh": "刚刚稍微发了一会儿呆⋯⋯{SCROLL}",
-   "en": "I seemed to have let my{NEWLINE}mind wander...{SCROLL}",
+   "en": "I seem to have let my mind wander for a{NEWLINE}moment...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/704"
+   "origin": "agent",
+   "notes": "US 0723/704 | RV082: grammar: 'seemed to have' fixed; 稍微一会儿 (for a moment) kept"
   },
   {
    "id": 705,
@@ -5886,10 +5886,10 @@
   {
    "id": 735,
    "zh": "哥哥已经指导过我了哦！{NEWLINE}眼睛！眼睛一定要瞄准！",
-   "en": "My big brother coached me! Eyes!{NEWLINE}Always keep your eyes on target!",
+   "en": "My big brother coached me! The eyes!{NEWLINE}Always aim for the eyes!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV082: meaning: 眼睛一定要瞄准 = aim for the eyes (JP めを ねらえ); settles D-1919"
   },
   {
    "id": 736,
@@ -6566,10 +6566,10 @@
   {
    "id": 820,
    "zh": "倒莱米发扫垃圾~{SCROLL}",
-   "en": "Do-re-mi-fa-so-la-ti!{SCROLL}",
+   "en": "Do-re-mi-fa-so-la-trash!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV082: omission: 扫垃圾 solfège pun (sweep the trash) kept"
   },
   {
    "id": 821,
