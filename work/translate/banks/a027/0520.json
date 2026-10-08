@@ -110,10 +110,10 @@
   {
    "id": 13,
    "zh": "坂木『你确实是我征服之路上的{NEWLINE}最大绊脚石,{CLEAR}在华蓝洞穴被你打败之后,{CLEAR}我就一直思考该如何战胜你。{CLEAR}所以我费尽周折得到阿尔宙斯的力量,{CLEAR}为的就是永远立于不败之地,{CLEAR}无论是谁来都不可能战胜我！",
-   "en": "Giovanni: You’ve been the biggest{NEWLINE}obstacle on my road to conquest.{SCROLL}Ever since you beat me in Cerulean{NEWLINE}Cave, I’ve pondered how to defeat you.{SCROLL}That’s why I went to such lengths for{NEWLINE}Arceus’s power: to stand forever{CLEAR}undefeated, beyond anyone’s reach!",
+   "en": "Giovanni: You’ve been the biggest{NEWLINE}obstacle on my road to conquest.{SCROLL}Ever since you beat me in Cerulean{NEWLINE}Cave, I’ve pondered how to defeat you.{SCROLL}That’s why I went to such lengths for{NEWLINE}Arceus’s power: to stand forever{CLEAR}undefeated, so that no one, whoever{CLEAR}they are, could ever beat me!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV026: omission: restore 无论是谁来都不可能战胜我 (no one, whoever comes, could beat me)"
   },
   {
    "id": 14,

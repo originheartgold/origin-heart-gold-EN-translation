@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "娜姿『你终于来了！{NEWLINE}谢谢你在精灵之塔跟我逗乐,{CLEAR}更谢谢你帮忙守护了金黄市。{CLEAR}对于以最强训练家为目标的你来说,{CLEAR}我能给予的最好回报就是{CLEAR}堂堂正正、全力以赴的一场对战了。{SCROLL}娜姿『来吧,让我更真切地{NEWLINE}感受一下你的实力。{SCROLL}",
-   "en": "Sabrina: You’ve finally come! Thank you{NEWLINE}for keeping me company at the Pokémon{CLEAR}Tower, and thank you even more for{CLEAR}helping protect Saffron City. For a{CLEAR}Trainer who aims to be the strongest,{CLEAR}the best reward I can give you is a fair{CLEAR}battle, fought with everything I have.{SCROLL}Sabrina: Come. Let me feel your true{NEWLINE}strength for myself.{SCROLL}",
+   "en": "Sabrina: You’ve finally come! Thank you{NEWLINE}for making me laugh at the Pokémon{CLEAR}Tower, and thank you even more for{CLEAR}helping protect Saffron City. For a{CLEAR}Trainer who aims to be the strongest,{CLEAR}the best reward I can give you is a fair{CLEAR}battle, fought with everything I have.{SCROLL}Sabrina: Come. Let me feel your true{NEWLINE}strength for myself.{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV026: meaning: 跟我逗乐 = made me laugh (the Pokémon Tower 'make me laugh' task, 0053 #151ff), not 'kept me company'; settles D-1859"
   },
   {
    "id": 1,

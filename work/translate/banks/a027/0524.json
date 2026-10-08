@@ -150,10 +150,10 @@
   {
    "id": 18,
    "zh": "妈的,我记得你,{NEWLINE}你是闯进彩虹市基地的那个丫头！{CLEAR}那天让你们打了个措手不及,{CLEAR}今天我们可不会再大意了。{CLEAR}给我围住他！",
-   "en": "Dammit, I remember you! You’re the girl{NEWLINE}who stormed our base in Celadon City!{CLEAR}You caught us off guard that day, but{CLEAR}we won’t be careless again today.{CLEAR}Surround her!",
+   "en": "Dammit, I remember you! You’re the girl{NEWLINE}who stormed our base in Celadon City!{CLEAR}You caught us off guard that day, but{CLEAR}we won’t be careless again today.{CLEAR}Surround them!",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh still says 他 (him) at the end; English uses her."
+   "notes": "zh still says 他 (him) at the end; English uses her. | RV026: addressee: zh keeps 他 in the female branch; gender-neutral per D-1224 instead of silently correcting to 'her' (finding logged)"
   },
   {
    "id": 19,

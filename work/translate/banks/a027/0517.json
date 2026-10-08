@@ -342,10 +342,10 @@
   {
    "id": 41,
    "zh": "冠军大人,人家好怕,呜呜呜……",
-   "en": "Champion, I was so scared...{NEWLINE}Boo-hoo-hoo...",
+   "en": "Champion, I’m so scared...{NEWLINE}Boo-hoo-hoo...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV026: meaning: 人家好怕 is present tense ('I'm so scared'), not 'I was'"
   },
   {
    "id": 42,
