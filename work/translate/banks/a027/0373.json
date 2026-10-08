@@ -284,10 +284,10 @@
   {
    "id": 34,
    "zh": "嘻嘻,现在只要我走到哪里,{NEWLINE}咩利羊就会乖乖跟到哪里了。",
-   "en": "Tee-hee. Now wherever I go,{NEWLINE}Mareep follows me like a good girl.",
+   "en": "Tee-hee. Now wherever I go, Mareep{NEWLINE}follows right along, nice and obedient.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV031: addition: no gender for Mareep in zh (settles D-1809)"
   },
   {
    "id": 35,
@@ -562,10 +562,10 @@
   {
    "id": 68,
    "zh": "你觉得人类可以食用口袋妖怪吗？",
-   "en": "Do you think people should eat Pokémon?",
+   "en": "Do you think it’s OK for people to eat{NEWLINE}Pokémon?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV031: meaning: 可以 ‘may/can’, not ‘should’"
   },
   {
    "id": 69,

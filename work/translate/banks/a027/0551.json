@@ -102,58 +102,58 @@
   {
    "id": 12,
    "zh": "阿元『你好啊！！{SCROLL}我是精灵迷所熟知的{CLEAR}电视教学的{CLEAR}阿元大哥哥！{SCROLL}今天,在大家看来{NEWLINE}哥哥是什么样子的呢？{CLEAR}能告诉我吗？{VAR:0200:0}",
-   "en": "Primo: Hello!{NEWLINE}I should be a familiar face to every{CLEAR}Pokémon fan. I’m from the TV show,{CLEAR}“The Show Me Show!”{SCROLL}I am Primo, the big brother!{SCROLL}Today, would you, one of my fans,{NEWLINE}tell me what you think of me? {VAR:0200:0}",
+   "en": "Primo: Hello there! I’m Primo, the big{NEWLINE}brother from educational TV, known to{CLEAR}every Pokémon fan! So, today... how do{CLEAR}I look to all of you? Can you tell me?{VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0559/12"
+   "origin": "agent",
+   "notes": "US 0559/12 | RV031: addition: US line added ‘The Show Me Show’ and dropped ‘how do I look to you’; retranslated from zh"
   },
   {
    "id": 13,
    "zh": "阿元『诶！！{NEWLINE}看起来是这样子的吗？{SCROLL}自己搞不清自己的事情啊。{SCROLL}大家觉得大哥哥我这个人{CLEAR}怎么样呢？{SCROLL}",
-   "en": "Primo: Oh my...!{NEWLINE}Is that how you feel about me?!{SCROLL}I never thought of it that way before.{NEWLINE}By the way, how do you like the{CLEAR}way I am so exciting and fun?{SCROLL}",
+   "en": "Primo: Whoa! So that’s how I look?! You{NEWLINE}never can tell about yourself, huh. So{CLEAR}what do you all think of me, the big{CLEAR}brother, as a person?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0559/13"
+   "origin": "agent",
+   "notes": "US 0559/13 | RV031: meaning: open question about him as a person, not presupposed ‘exciting and fun’ (settles D-1866)"
   },
   {
    "id": 14,
    "zh": "阿元『这样啊！！{SCROLL}那么大哥哥{NEWLINE}不更加努力就不行啦！{SCROLL}感谢大家的宝贵意见,{NEWLINE}这是我们很好参考哦。{SCROLL}从今往后,{NEWLINE}也请你们多关照了！",
-   "en": "Primo: Truly?{SCROLL}That gives me all-new energy so{NEWLINE}I can work even harder!{SCROLL}Great feedback! It’ll help me a lot.{NEWLINE}Thank you for your continued support!",
+   "en": "Primo: Is that so?! Then the big{NEWLINE}brother has to work even harder!{CLEAR}Thanks for the valuable feedback,{CLEAR}everyone. It’s a great help to us.{CLEAR}Please keep supporting me from now on!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0559/14"
+   "origin": "agent",
+   "notes": "US 0559/14 | RV031: meaning: US paraphrase (‘all-new energy’) replaced with the zh"
   },
   {
    "id": 15,
    "zh": "怎…怎么会,对大哥哥{NEWLINE}没有兴趣么……？{SCROLL}不会的,不会的,根本不可能！{NEWLINE}你也有很多事{CLEAR}要忙的吧？对吧？{SCROLL}下次有时间的话,{NEWLINE}我会很乐意听你的回答。{SCROLL}那么,再见！",
-   "en": "You cannot possibly mean that you are{NEWLINE}not interested in the big brother...?{SCROLL}Arrgh, that cannot be true!{NEWLINE}You are just busy right now,{CLEAR}aren’t you? That must be it!{SCROLL}Why don’t you answer my questions{NEWLINE}when you’ve got time for me?{SCROLL}See you!",
+   "en": "Wh-what? You’re not interested in the{NEWLINE}big brother...? No, no, that can’t be!{CLEAR}You must just have lots to do, right?{CLEAR}Right? Next time you’ve got a moment,{CLEAR}I’d love to hear your answer.{SCROLL}Bye for now!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0559/15"
+   "origin": "agent",
+   "notes": "US 0559/15 | RV031: meaning: ‘I’d love to hear your answer next time’ restored from zh"
   },
   {
    "id": 16,
    "zh": "阿元『……噢？{SCROLL}说出这样的话,{NEWLINE}看来不是一般人。{SCROLL}你是训练师吧？{NEWLINE}那么,我利用我的人脉{CLEAR}给你的箱子{CLEAR}增加些壁纸吧！{SCROLL}今后也请你多关照,{NEWLINE}我是电视教学的大哥哥！",
-   "en": "Primo: ...!{SCROLL}You are no ordinary fan, knowing such{NEWLINE}a thing!{SCROLL}You’re a Trainer, right?{NEWLINE}I’ll pull some strings for you.{SCROLL}I think I can swing a deal to get you{NEWLINE}a new wallpaper for your PC Boxes.{SCROLL}Make sure you keep your channel{NEWLINE}tuned to “The Show Me Show!”{SCROLL}And don’t forget about me, the{NEWLINE}big brother!",
+   "en": "Primo: ...Oh? Anyone who says that is no{NEWLINE}ordinary person. You’re a Trainer,{CLEAR}right? Then I’ll use my connections to{CLEAR}get some new wallpapers added to your{CLEAR}Boxes! Please keep supporting me, the{CLEAR}big brother from educational TV!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0559/16"
+   "origin": "agent",
+   "notes": "US 0559/16 | RV031: addition: US ‘Show Me Show’/channel lines not in zh; retranslated"
   },
   {
    "id": 17,
    "zh": "阿元『……噢？{SCROLL}说出这样的话,{NEWLINE}看来不是一般人。{SCROLL}你是训练师吧？{NEWLINE}那么,我利用我的人脉{CLEAR}让你能够收到{CLEAR}礼物哦！{SCROLL}今后也请你多关照,{NEWLINE}我是电视教学的大哥哥！",
-   "en": "Primo: ...!{SCROLL}You are no ordinary fan, knowing such{NEWLINE}a thing!{SCROLL}You are a Trainer, right?{NEWLINE}I’ll pull some strings for you.{SCROLL}I think I can swing a deal so you{NEWLINE}can receive a Mystery Gift.{SCROLL}Make sure you keep your channel{NEWLINE}tuned to “The Show Me Show!”{SCROLL}And don’t forget about me, the{NEWLINE}big brother!",
+   "en": "Primo: ...Oh? Anyone who says that is no{NEWLINE}ordinary person. You’re a Trainer,{CLEAR}right? Then I’ll use my connections so{CLEAR}you can receive a gift! Please keep{CLEAR}supporting me, the big brother from{CLEAR}educational TV!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0559/17"
+   "origin": "agent",
+   "notes": "US 0559/17 | RV031: addition: US ‘Show Me Show’/Mystery Gift lines not in zh; retranslated"
   },
   {
    "id": 18,
    "zh": "阿元『……噢？{SCROLL}说出这样的话,{NEWLINE}看来不是一般人。{SCROLL}你是训练师吧？{NEWLINE}那么,我利用我的人脉{SCROLL}送你这个蛋吧,{NEWLINE}要好好地照顾哦！{SCROLL}",
-   "en": "Primo: ...!{SCROLL}You are no ordinary fan, knowing such{NEWLINE}a thing!{SCROLL}You are a Trainer, right?{NEWLINE}I’ll pull some strings for you.{SCROLL}I think I can swing a deal and{NEWLINE}give you this Egg.{CLEAR}You take good care of it!{SCROLL}",
+   "en": "Primo: ...Oh? Anyone who says that is no{NEWLINE}ordinary person. You’re a Trainer,{CLEAR}right? Then I’ll use my connections and{CLEAR}give you this Egg. Take good care of it!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0559/18"
+   "origin": "agent",
+   "notes": "US 0559/18 | RV031: meaning: aligned with zh (no ‘fan’, no ‘swing a deal’)"
   },
   {
    "id": 19,
@@ -166,10 +166,10 @@
   {
    "id": 20,
    "zh": "阿元『……噢？{SCROLL}说出这样的话,{NEWLINE}看来不是一般人。{SCROLL}你是训练师吧？{NEWLINE}那么,我利用我的人脉{SCROLL}送你这个蛋吧,{NEWLINE}要好好地照顾哦！{SCROLL}……{SCROLL}……身上的精灵已经满了,{NEWLINE}这蛋给不了你了哟。",
-   "en": "Primo: ...!{SCROLL}You are no ordinary fan, knowing such{NEWLINE}a thing!{SCROLL}You are a Trainer, right?{NEWLINE}I’ll pull some strings for you.{SCROLL}I think I can swing a deal and{NEWLINE}give you this Egg.{CLEAR}You take good care of it!{SCROLL}...{SCROLL}Your party is full, and I can’t{NEWLINE}give it to you!",
+   "en": "Primo: ...Oh? Anyone who says that is no{NEWLINE}ordinary person. You’re a Trainer,{CLEAR}right? Then I’ll use my connections and{CLEAR}give you this Egg. Take good care of it!{SCROLL}......{SCROLL}...Your party is already full, so{NEWLINE}I can’t give you the Egg.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0559/20"
+   "origin": "agent",
+   "notes": "US 0559/20 | RV031: meaning: aligned with zh, same as #18"
   },
   {
    "id": 21,
@@ -214,10 +214,10 @@
   {
    "id": 26,
    "zh": "你……有被{NEWLINE}误认为是{VAR:010E:0}的经历吧？{SCROLL}不过,我看上去也像{NEWLINE}其他的训练师。{SCROLL}那么……{SCROLL}再次请问,能告诉我{NEWLINE}你所喜欢的训练师吗？{SCROLL}",
-   "en": "Hello! You’ve been mistaken for{NEWLINE}{VAR:010E:0}, haven’t you?{SCROLL}But I think you can also pass for{NEWLINE}a different kind of Trainer.{SCROLL}So, how about telling me what kind of{NEWLINE}Trainer you like?{SCROLL}",
+   "en": "You... you’ve been mistaken for{NEWLINE}{VAR:010E:0} before, haven’t you?{CLEAR}But I look like other kinds of Trainers,{CLEAR}too. So... let me ask again. Can you tell{CLEAR}me what kind of Trainer you like?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0559/26"
+   "origin": "agent",
+   "notes": "US 0559/26 | RV031: meaning: speaker’s own look restored, added ‘Hello!’ dropped (settles D-1867)"
   },
   {
    "id": 27,

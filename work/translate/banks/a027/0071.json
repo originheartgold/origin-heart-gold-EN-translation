@@ -153,10 +153,10 @@
   {
    "id": 18,
    "zh": "墙壁上画着的图案{NEWLINE}是解开遗迹谜题的钥匙！{SCROLL}……我有这种感觉。",
-   "en": "There are odd patterns drawn on the{NEWLINE}walls of the ruins.{SCROLL}They must be the keys for unraveling{NEWLINE}the mystery of the ruins.",
+   "en": "The patterns drawn on the walls are the{NEWLINE}key to solving the mystery of the{CLEAR}ruins! ...Or so I feel.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0073/18"
+   "origin": "agent",
+   "notes": "US 0073/18 | RV031: omission: ‘…我有这种感觉’ hedge restored; US made it certain"
   },
   {
    "id": 19,
@@ -655,10 +655,10 @@
   {
    "id": 78,
    "zh": "秀力博士『研钵山的最底层{NEWLINE}空间磁场极其混乱,{CLEAR}正常行走的话{CLEAR}完全无法穿过底层的乱石阵。{CLEAR}这可能是受帕路奇亚{CLEAR}空间力量影响形成的现象。{CLEAR}如果能够想办法穿过那片乱石阵,{CLEAR}就有可能见到帕路奇亚。",
-   "en": "Prof. Hale: The magnetic field on{NEWLINE}the lowest level of Mt. Mortar is{CLEAR}in total chaos. Walking normally,{CLEAR}you can’t get through the{CLEAR}maze of boulders down there.{SCROLL}Prof. Hale: This may be the work of{NEWLINE}Palkia’s power over space. If you can{CLEAR}find a way through those boulders,{CLEAR}you may be able to meet Palkia.",
+   "en": "Prof. Hale: The spatial magnetic field{NEWLINE}on the lowest level of Mt. Mortar is{CLEAR}in total chaos. Walking normally,{CLEAR}you can’t get through the maze of{CLEAR}boulders down there.{SCROLL}Prof. Hale: This may be the work of{NEWLINE}Palkia’s power over space. If you can{CLEAR}find a way through those boulders,{CLEAR}you may be able to meet Palkia.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV031: omission: 空间 ‘spatial’ restored"
   },
   {
    "id": 79,

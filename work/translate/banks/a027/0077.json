@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "呼,{NEWLINE}不知是何时的东西……{SCROLL}这些文字的意思是……{CLEAR}……　……　……{SCROLL}",
-   "en": "Hmmm.{NEWLINE}When did this appear...?{SCROLL}I wonder what these symbols mean...{CLEAR}..................{SCROLL}",
+   "en": "Hmm... I wonder how old these are...{NEWLINE}What could these symbols mean... ......{CLEAR}...... ......{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0079/1"
+   "origin": "agent",
+   "notes": "US 0079/1 | RV031: meaning: 何时的东西 ‘how old’, not ‘when did this appear’"
   },
   {
    "id": 2,

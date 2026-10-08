@@ -622,10 +622,10 @@
   {
    "id": 77,
    "zh": "阿金『偶像,这只结草儿{NEWLINE}虽然没受什么皮外伤,{CLEAR}但精神上好像出了问题,{CLEAR}会是应激反应么……",
-   "en": "Gold: Idol, this Burmy doesn’t{NEWLINE}have any wounds on the outside, but{CLEAR}something’s wrong with it on the inside.{CLEAR}Is it some kind of stress reaction...?",
+   "en": "Gold: Idol, this Burmy doesn’t have any{NEWLINE}wounds on the outside, but something{CLEAR}seems wrong with it mentally. Is it some{CLEAR}kind of stress reaction...?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV031: meaning: 精神上 ‘mentally’, not ‘on the inside’"
   },
   {
    "id": 78,

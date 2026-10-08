@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "您、您{NEWLINE}复原了石版吗……！？{SCROLL}太厉害了！{NEWLINE}天才考古学家出现了！{CLEAR}是吧！",
-   "en": "You reconstructed the stone panel?{SCROLL}That’s great!{NEWLINE}We have an archaeology genius here!",
+   "en": "Y-you reconstructed the stone{NEWLINE}panel...?! That’s amazing! We have an{CLEAR}archaeology genius here! Right?!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0074/1"
+   "origin": "agent",
+   "notes": "US 0074/1 | RV031: omission: stammer and 是吧 restored"
   },
   {
    "id": 2,
@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "小银『混蛋,我怎么能栽在这里……",
-   "en": "Silver: Damn it, how could I get{NEWLINE}cornered in a place like this...",
+   "en": "Silver: Bastards! How could I get{NEWLINE}caught in a place like this...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV031: softened: 混蛋 is an insult, not ‘damn it’ (D-2081 per line)"
   },
   {
    "id": 12,

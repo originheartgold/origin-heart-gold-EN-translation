@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "这里是阿鲁夫遗迹,{SCROLL}对这个遗迹进行探险,{NEWLINE}力争成为化石博士吧！",
-   "en": "Ruins of Alph.{SCROLL}Feel free to explore the ruins and{NEWLINE}become a fossil professor!",
+   "en": "Ruins of Alph. Explore the ruins and{NEWLINE}strive to become a fossil professor!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0072/8"
+   "origin": "agent",
+   "notes": "US 0072/8 | RV031: meaning: 力争 ‘strive’, not ‘feel free’"
   },
   {
    "id": 9,

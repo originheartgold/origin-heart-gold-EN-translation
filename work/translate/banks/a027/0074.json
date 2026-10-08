@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "这座遗迹既未被盗贼光顾过,{CLEAR}也没有被人{CLEAR}乱涂乱画过,{SCROLL}几乎是以和从前一样的{NEWLINE}状态保存下来了。{SCROLL}这里一定有什么东西,{NEWLINE}才能做到这种程度。",
-   "en": "The ruins have not been robbed, nor{NEWLINE}tampered with. No graffiti, either.{SCROLL}Things are well preserved.{NEWLINE}Something here must make people{CLEAR}feel they should preserve it.",
+   "en": "These ruins have never been visited by{NEWLINE}thieves or scribbled on. They’ve been{CLEAR}preserved almost exactly as they were{CLEAR}long ago. Something here must be what{CLEAR}keeps them like this.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0076/4"
+   "origin": "agent",
+   "notes": "US 0076/4 | RV031: meaning: US added ‘make people feel they should preserve it’"
   },
   {
    "id": 5,

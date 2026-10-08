@@ -198,10 +198,10 @@
   {
    "id": 24,
    "zh": "这是人与精灵伟大情谊的体现",
-   "en": "Speak of their bond",
+   "en": "It shows a great bond",
    "status": "draft",
    "origin": "agent",
-   "notes": "Speech choice #24–#26 → #28 (bond) / #29–#33, #107–#109 (Team Rocket) / #37, #71 (refuse; #27 asks again).",
+   "notes": "Speech choice #24–#26 → #28 (bond) / #29–#33, #107–#109 (Team Rocket) / #37, #71 (refuse; #27 asks again). | RV031: omission: menu choice: ‘this shows the great bond’, not ‘speak of’",
    "category": "menu_touch_1line"
   },
   {
