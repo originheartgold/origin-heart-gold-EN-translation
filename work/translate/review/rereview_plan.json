@@ -7038,7 +7038,7 @@
   {
    "id": "RV118",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 294,
    "labels": [
     "a027/0744 link_wifi",
