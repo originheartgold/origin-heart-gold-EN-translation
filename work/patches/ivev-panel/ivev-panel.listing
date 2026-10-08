@@ -1,0 +1,20 @@
+; ivev-panel - disassembly snapshot of ivev-panel.asm: every edit, old -> new. Generated; do not edit.
+; Regenerate: python3 work/tools/asmpatch.py listing --write ivev-panel   (check.py --full fails when it is stale)
+; Old: the Chinese ROM. New: ivev-panel.asm assembled alone over it by armips v0.11.0.
+; Disassembly: capstone 5.0.9 (UAL syntax). '  ' unchanged context, '- ' old, '+ ' new;
+; addresses are RAM addresses, Thumb bytes are halfwords, ARM bytes words; data rows are what one
+; statement writes (u16 rows of a string or key row with their characters, '|' = 0xFFFF end).
+
+== arm9+0x8C1E2 (RAM 0x0208C1E2), 2 bytes, thumb: ivev-panel-iv-header-x
+  0208C1DE  58AA       ldr r2, [r5, r2]
+  0208C1E0  1828       adds r0, r5, r0
+- 0208C1E2  2322       movs r3, #0x22
++ 0208C1E2  2328       movs r3, #0x28
+  0208C1E4  F794 FB26  bl #0x2020834
+
+== arm9+0x8C262 (RAM 0x0208C262), 2 bytes, thumb: ivev-panel-iv-x
+  0208C25E  0109       lsls r1, r1, #4
+  0208C260  5C51       ldrb r1, [r2, r1]
+- 0208C262  221A       movs r2, #0x1a
++ 0208C262  2220       movs r2, #0x20
+  0208C264  F7FF FF76  bl #0x208c154

@@ -22,3 +22,9 @@ op = "copy_us"
 narc = "a/1/4/3"
 members = [6, 7, 8, 9, 10, 11]
 notes = "Pokegear clock/calendar weekday and date sheets (OBJ); cells (NCER) unchanged vs USA"
+
+[[us_ref]]
+id = "pokegear-calendar-us-cells"
+claim = "The cells and animations of a/1/4/3 (#12-23, NCER / NANR) are the USA ones"
+file = "a/1/4/3"
+members = [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]

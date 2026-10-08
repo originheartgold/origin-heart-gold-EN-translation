@@ -3,3 +3,4 @@
 work/patches/include/charmap.tbl text eol=lf
 work/patches/**/*.asm text eol=lf
 work/patches/**/*.inc text eol=lf
+work/patches/**/*.listing text eol=lf

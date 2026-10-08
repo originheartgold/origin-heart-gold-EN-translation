@@ -22,3 +22,10 @@ op = "copy_us"
 narc = "a/1/5/2"
 members = [1]
 notes = "touch-screen YES/NO buttons (Poke Mart buy confirmation etc.); screens #2-9 have identical tile maps"
+
+[[us_ref]]
+id = "yes-no-buttons-us-screens"
+claim = "Screens #2-9 of a/1/5/2 (LZ10) decompress to the USA ones, so the USA sheet #1 fits them"
+file = "a/1/5/2"
+members = [2, 3, 4, 5, 6, 7, 8, 9]
+lz10 = true

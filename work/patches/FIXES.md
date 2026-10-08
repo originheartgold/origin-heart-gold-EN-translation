@@ -54,8 +54,10 @@ text box.
 
 Technical: the hack redrew the ellipsis (code 0x01AF) and the curly double quotes (0x01B4, 0x01B5) of the
 font NARC a/0/1/6 as CJK-width glyphs: 12 px wide in fonts 0, 1 and 2 and 13 px in font 4 (the hack's
-redrawn Latin font), where the USA fonts have 6-7 px. In fonts 0-2 every other Latin glyph and width is
-byte-identical to the USA ROM.
+redrawn Latin font), where the USA fonts have 6-7 px. In fonts 0-2 the letters, digits and common
+punctuation are byte-identical to the USA ROM; besides these three, the hack also changed 《 》 (0x01B7,
+0x01B8: 12 px in fonts 0-2), ~ (0x01C3, fonts 1-2: another glyph, same width), Ø ø (font 0) and, in font 1,
+Æ Ð Ø Þ æ ð ø þ ° _ ＿ (width 0), Œ œ and Ş ş. This fix leaves those as they are.
 QA lays out the English against the vanilla widths and flags lines that only fit with them
 (needs_vanilla_glyphs).
 
@@ -174,6 +176,10 @@ New: the USA member: WIN / LOSE / DRAW.
 
 - `a/1/0/4` #5: `copy_us` from USA ROM
 
+**USA cross-checks** (`[[us_ref]]`, each checked against the USA ROM by `usref.py`, `check.py --full`):
+
+- `a/1/0/4` #6 = the same members as the Chinese ROM: The cells of the result sheet (a/1/0/4 #6, NCER) are the USA ones
+
 ## gfx-battle-status-icons
 
 **Battle HP-box status icons (PAR FRZ SLP PSN BRN)**
@@ -196,8 +202,8 @@ gBattleHpBar_RawGraphicComponents 41-55, 3 tiles each; hack overlay 14 = USA ove
 
 Old: Chinese status abbreviations.
 
-New: the 480 bytes are copied from the USA overlay 12 (0x36340), the same layout; the other 38 components are
-identical apart from the hack's 'HP:'. Both ranges are checked by SHA-1 first.
+New: the 480 bytes are copied from the USA battle overlay (US overlay12+0x36340), the same layout; the other 38
+components are identical apart from the hack's 'HP:'. Both ranges are checked by SHA-1 first.
 
 **Evidence:**
 
@@ -206,6 +212,11 @@ identical apart from the hack's 'HP:'. Both ranges are checked by SHA-1 first.
 **Touches:**
 
 - `overlay14+0x4C0A8` (RAM 0x0224C888), 480 bytes ← USA `overlay12+0x36340` (`code_from_us`)
+
+**USA cross-checks** (`[[us_ref]]`, each checked against the USA ROM by `usref.py`, `check.py --full`):
+
+- `US overlay12+0x35E60` = the Chinese ROM's 1248 bytes at `overlay14+0x4BBC8`: Hack overlay 14 = USA overlay 12: the 1248 bytes before the icons (US overlay12+0x35E60) are the hack's
+- `US overlay12+0x36520` = the Chinese ROM's 352 bytes at `overlay14+0x4C288`: Hack overlay 14 = USA overlay 12: the 352 bytes after the icons (US overlay12+0x36520) are the hack's
 
 ## gfx-dex-header
 
@@ -458,6 +469,10 @@ New: the USA members (MONDAY ...).
 
 - `a/1/4/3` #6, #7, #8, #9, #10, #11: `copy_us` from USA ROM
 
+**USA cross-checks** (`[[us_ref]]`, each checked against the USA ROM by `usref.py`, `check.py --full`):
+
+- `a/1/4/3` #12, #13, #14, #15, #16, #17, #18, #19, #20, #21, #22, #23 = the same members as the Chinese ROM: The cells and animations of a/1/4/3 (#12-23, NCER / NANR) are the USA ones
+
 ## gfx-summary-labels
 
 **Summary screen: condition labels, status icons, POKéRUS badge**
@@ -669,6 +684,10 @@ New: the USA member: YES / NO.
 
 - `a/1/5/2` #1: `copy_us` from USA ROM
 
+**USA cross-checks** (`[[us_ref]]`, each checked against the USA ROM by `usref.py`, `check.py --full`):
+
+- `a/1/5/2` #2, #3, #4, #5, #6, #7, #8, #9 = the same members as the Chinese ROM (decompressed): Screens #2-9 of a/1/5/2 (LZ10) decompress to the USA ones, so the USA sheet #1 fits them
+
 ## outfit-chooser-strings
 
 **Outfit chooser labels (hardcoded in overlay 58)**
@@ -716,6 +735,8 @@ in the grown range.
 - `overlay58+0x6FE` (RAM 0x021E8ABE) (slot of 3 characters, pointers 0x7C8): 形象3 → 'Outfit 3' (relocated, at most 15 characters there)
 - `overlay58+0x706` (RAM 0x021E8AC6) (slot of 3 characters, pointers 0x7C4): 形象2 → 'Outfit 2' (relocated, at most 15 characters there)
 - `overlay58`: may grow by up to 64 bytes (appended at its end)
+
+**Disassembly snapshot:** [`outfit-chooser-strings.listing`](outfit-chooser-strings/outfit-chooser-strings.listing) (every edit, old → new; `python3 work/tools/asmpatch.py listing --write outfit-chooser-strings`)
 
 **Source** (`work/patches/outfit-chooser-strings/outfit-chooser-strings.asm`, armips; the new bytes):
 
@@ -824,7 +845,8 @@ Old: name window 04 08 05 07 (56 px); the following bg-4 windows start at base t
 
 New: the USA values: name window 04 08 05 08 (64 px, ending at the gender icon at x 128), and the base tiles
 of the later bg-4 windows move up by 2 (0x77 -> 0x79 ... 0x107 -> 0x109), so bg-4 tiles run to 288 as in the
-USA ROM. Templates [0]-[8] and [17]-[19] equal the USA overlay 14 table (0x12BB4, 0x12C3C). Nothing else on the screen changes.
+USA ROM. Templates [0]-[8] and [17]-[19] equal the USA table (US overlay14+0x12BB4, US overlay14+0x12C3C).
+Nothing else on the screen changes.
 
 **Evidence:**
 
@@ -835,6 +857,13 @@ USA ROM. Templates [0]-[8] and [17]-[19] equal the USA overlay 14 table (0x12BB4
 
 - `overlay16+0x12E9C` (RAM 0x021F781C) `pcbox-header-name-width`: 72 bytes, was `0804 0705 0F02 0069 … (36 halfwords)`
 - `overlay16+0x12F24` (RAM 0x021F78A4) `pcbox-header-name-width-2`: 24 bytes, was `0104 080B 0F02 00E1 … (12 halfwords)`
+
+**USA cross-checks** (`[[us_ref]]`, each checked against the USA ROM by `usref.py`, `check.py --full`):
+
+- `US overlay14+0x12BB4` = the new bytes of `pcbox-header-name-width`: US overlay14+0x12BB4: the USA window templates [0]-[8] are the ones this fix writes
+- `US overlay14+0x12C3C` = the new bytes of `pcbox-header-name-width-2`: US overlay14+0x12C3C: the USA window templates [17]-[19] are the ones this fix writes
+
+**Disassembly snapshot:** [`pcbox-name-width.listing`](pcbox-name-width/pcbox-name-width.listing) (every edit, old → new; `python3 work/tools/asmpatch.py listing --write pcbox-name-width`)
 
 **Source** (`work/patches/pcbox-name-width/pcbox-name-width.asm`, armips; the new bytes):
 
@@ -848,7 +877,7 @@ USA ROM. Templates [0]-[8] and [17]-[19] equal the USA overlay 14 table (0x12BB4
 ; The PC box top screen builds its windows from a WindowTemplate table in overlay 16 (8 bytes each:
 ; bg, x, y, width, height, palette, base tile; all in tiles). The hack (Japanese base) makes the
 ; species-name window 7 tiles (56 px) wide, so 'Charmeleon' shows as 'Charmeleor'. The new values are
-; the USA ones (US overlay 14: 0x12BB4 for [0]-[8], 0x12C3C for [17]-[19]): the name window is 8 tiles
+; the USA ones (US overlay14+0x12BB4 for [0]-[8], US overlay14+0x12C3C for [17]-[19]): the name window is 8 tiles
 ; (64 px, ending at the gender icon at x 128), and the bg-4 windows after it move their first tile up
 ; by 2, so bg-4 tiles run to 288 as in the USA ROM. Nothing else on the screen changes.
 
@@ -961,6 +990,8 @@ of the Bradams 'Speedoption' build, which runs on New 2DS XL.
 - `overlay114+0xC04` (RAM 0x02263E04) `antipiracy-ov114-0xC04`: 8 bytes, was `47F0 E92D D080 E24D`
 - `overlay114+0xCCC` (RAM 0x02263ECC) `antipiracy-ov114-0xCCC`: 8 bytes, was `47F0 E92D D080 E24D`
 
+**Disassembly snapshot:** [`antipiracy.listing`](antipiracy/antipiracy.listing) (every edit, old → new; `python3 work/tools/asmpatch.py listing --write antipiracy`)
+
 **Source** (`work/patches/antipiracy/antipiracy.asm`, armips; the new bytes):
 
 <details>
@@ -1054,6 +1085,8 @@ New: 'movs r2, #0x1A' -> 'movs r2, #0x20' at 0x0208C262 moves the IV column 6 px
 - `arm9+0x8C262` (RAM 0x0208C262) `ivev-panel-iv-x`: 2 bytes, was `221A`
 - `arm9+0x8C1E2` (RAM 0x0208C1E2) `ivev-panel-iv-header-x`: 2 bytes, was `2322`
 
+**Disassembly snapshot:** [`ivev-panel.listing`](ivev-panel/ivev-panel.listing) (every edit, old → new; `python3 work/tools/asmpatch.py listing --write ivev-panel`)
+
 **Source** (`work/patches/ivev-panel/ivev-panel.asm`, armips; the new bytes):
 
 <details>
@@ -1143,6 +1176,8 @@ Spare room: summary 208 -> 10,376 bytes, bag 108 -> 55,540.
 - `overlay17+0x970` (RAM 0x021F9050) `msgload-bag-0219`: 2 bytes, was `2000`
 - `overlay17+0x982` (RAM 0x021F9062) `msgload-bag-0739`: 2 bytes, was `2000`
 - `arm9+0xBA9A` (RAM 0x0200BA9A) `msgload-all`: 2 bytes, was `1C05`
+
+**Disassembly snapshot:** [`msgload.listing`](msgload/msgload.listing) (every edit, old → new; `python3 work/tools/asmpatch.py listing --write msgload`)
 
 **Source** (`work/patches/msgload/msgload.asm`, armips; the new bytes):
 
@@ -1271,6 +1306,21 @@ the hack removed that prompt (D-1040). Default names (bank 0247) are 5 character
 - `arm9+0x490DA` (RAM 0x020490DA) `namelen-group-script`: 2 bytes, was `1C0B`
 - `overlay44+0x2E6C` (RAM 0x02228DAC) `namelen-kind7`: 2 bytes, was `2305`
 
+**USA cross-checks** (`[[us_ref]]`, each checked against the USA ROM by `usref.py`, `check.py --full`):
+
+- `US arm9 0x020830D8` = `B5F8 1C0D 2154 9000`: US arm9 0x020830D8 is NamingScreen_CreateArgs; push {r3-r7, lr}, alloc 0x54 bytes, as at hack 0x02081DA4
+- `US overlay53 0x021E594E` = the new bytes of `namelen-player-intro`: US overlay53 0x021E594E: Oak's speech, player name, the same call with mov r3, #7
+- `US overlay53 0x021E5966` = the new bytes of `namelen-rival-intro`: US overlay53 0x021E5966: Oak's speech, rival name, the same call with mov r3, #7
+- `US arm9 0x020431D6` = the new bytes of `namelen-player-script`: US arm9 0x020431D6: script 'name player', the same call with mov r3, #7
+- `US arm9 0x02043206` = the new bytes of `namelen-rival-script`: US arm9 0x02043206: script 'name rival', the same call with mov r3, #7
+- `US arm9 0x02043292` = the new bytes of `namelen-nickname-script`: US arm9 0x02043292: script 'nickname Pokémon', the same call with mov r3, #10
+- `US arm9 0x02049BBE` = the new bytes of `namelen-group-script`: US arm9 0x02049BBE: script 'name group', mov r3, #7 (the hack passes r1 = 5)
+- `US arm9 0x020911C4` = `230A F7F1 FF87`: US arm9 0x020911C4: egg hatch, mov r3, #10, then bl NamingScreen_CreateArgs (US arm9 0x020830D8)
+- `US overlay43 0x0222CD56` = `0x2107`: US overlay43 0x0222CD56: naming kind 7 sets r1 = 7 (mov r1, #7) for maxLen
+- `US overlay43 0x0222CD5C` = `1C0B F656 F9BB`: US overlay43 0x0222CD5C: naming kind 7 passes maxLen = r1 (add r3, r1, #0), then bl NamingScreen_CreateArgs
+
+**Disassembly snapshot:** [`namelen.listing`](namelen/namelen.listing) (every edit, old → new; `python3 work/tools/asmpatch.py listing --write namelen`)
+
 **Source** (`work/patches/namelen/namelen.asm`, armips; the new bytes):
 
 <details>
@@ -1281,7 +1331,7 @@ the hack removed that prompt (D-1040). Default names (bank 0247) are 5 character
 ; Why and what: fix.toml next to this file; overview work/patches/FIXES.md.
 ;
 ; The hack is built on the Japanese HeartGold, so every naming-screen call passes maxLen = 5 in r3:
-; the direct calls of NamingScreen_CreateArgs (hack 0x02081DA4, US 0x020830D8) in Oak's speech, the
+; the direct calls of NamingScreen_CreateArgs (hack 0x02081DA4, US arm9 0x020830D8) in Oak's speech, the
 ; egg hatch and kind 7, and the script commands' calls of CallTask_NamingScreen (hack 0x0203EDEC).
 ; The save buffers already have the US sizes; only the limit is Japanese. Each edit below changes the
 ; one instruction that loads maxLen.
@@ -1295,7 +1345,7 @@ TRAINER_NAME_LEN equ 7          ; US PLAYER_NAME_LENGTH: player, rival, group, k
 POKEMON_NAME_LEN equ 10         ; US POKEMON_NAME_LENGTH: nicknames
 
 ; ---------------------------------------------------------------------------------------------
-; Oak's speech (hack overlay 49; US overlay 53)
+; Oak's speech (hack overlay 49; the USA calls with #7: US overlay53 0x021E594E, US overlay53 0x021E5966)
 .open "overlay49.bin", 0x021E4980
 
 .org 0x021E49CE                 ; NamingScreen_CreateArgs(heap, NAME_SCREEN_PLAYER, 0, maxLen)
@@ -1316,31 +1366,36 @@ POKEMON_NAME_LEN equ 10         ; US POKEMON_NAME_LENGTH: nicknames
 ; Script commands and the egg hatch (arm9)
 .open "arm9.bin", 0x02000000
 
-.org 0x02042862                 ; script 'name player': CallTask_NamingScreen(.., PLAYER, 0, maxLen) (US 0x020431D6)
+; US arm9 0x020431D6 is the same call with #7.
+.org 0x02042862                 ; script 'name player': CallTask_NamingScreen(.., PLAYER, 0, maxLen)
 .area 2
     expect16 0x2305             ; mov r3, #5
     mov     r3, #TRAINER_NAME_LEN
 .endarea
 
+; US arm9 0x02043206 is the same call with #7.
 .org 0x02042892                 ; script 'name rival'
 .area 2
     expect16 0x2305             ; mov r3, #5
     mov     r3, #TRAINER_NAME_LEN
 .endarea
 
-.org 0x0204291E                 ; script 'nickname Pokémon': gift/starter Pokémon, Name Rater (US 0x02043292)
+; US arm9 0x02043292 is the same call with #10.
+.org 0x0204291E                 ; script 'nickname Pokémon': gift/starter Pokémon, Name Rater
 .area 2
     expect16 0x2305             ; mov r3, #5
     mov     r3, #POKEMON_NAME_LEN
 .endarea
 
+; US arm9 0x02049BBE passes 'mov r3, #7' here, the instruction this edit writes.
 .org 0x020490DA                 ; script 'name group' (kind 5): r1 holds 5 here
 .area 2
     expect16 0x1C0B             ; add r3, r1, #0   (maxLen = r1 = 5)
     mov     r3, #TRAINER_NAME_LEN
 .endarea
 
-.org 0x02090944                 ; egg hatch: CreateArgs(heap, NAME_SCREEN_POKEMON, species, maxLen) (US 0x020911C4)
+; US arm9 0x020911C4 is the same call with #10.
+.org 0x02090944                 ; egg hatch: CreateArgs(heap, NAME_SCREEN_POKEMON, species, maxLen)
 .area 2
     expect16 0x2305             ; mov r3, #5
     mov     r3, #POKEMON_NAME_LEN
@@ -1349,7 +1404,8 @@ POKEMON_NAME_LEN equ 10         ; US POKEMON_NAME_LENGTH: nicknames
 .close
 
 ; ---------------------------------------------------------------------------------------------
-; Naming kind 7 (hack overlay 44; US overlay 43 0x0222CD5C; pret calls it NAME_SCREEN_UNK7)
+; Naming kind 7 (hack overlay 44; pret calls it NAME_SCREEN_UNK7). The USA call passes r1 = 7:
+; US overlay43 0x0222CD56 'mov r1, #7', US overlay43 0x0222CD5C 'add r3, r1, #0'.
 .open "overlay44.bin", 0x02225F40
 
 .org 0x02228DAC                 ; NamingScreen_CreateArgs(heap, 7, 0, maxLen)
@@ -1419,6 +1475,12 @@ the ABC page and ＡＢＣ over the QWE page.
 - `arm9+0x100E6C` (RAM 0x02100E6C) `naming-qwe-row4`: 26 bytes, was `00D3 00D4 00D5 00D6 … (13 halfwords)`
 - `arm9+0x100EA4` (RAM 0x02100EA4) `naming-qwe-row5`: 26 bytes, was `00A2 00A3 00A4 00A5 … (13 halfwords)`
 
+**USA cross-checks** (`[[us_ref]]`, each checked against the USA ROM by `usref.py`, `check.py --full`):
+
+- `US arm9 0x02084884` = the Chinese ROM's 6 bytes at `arm9 0x02083814`: US arm9 0x02084884 is the USA key handler (pret NamingScreen_HandleCharacterInput), hack 0x02083814: same prologue
+
+**Disassembly snapshot:** [`naming-keyboard.listing`](naming-keyboard/naming-keyboard.listing) (every edit, old → new; `python3 work/tools/asmpatch.py listing --write naming-keyboard`)
+
 **Source** (`work/patches/naming-keyboard/naming-keyboard.asm`, armips; the new bytes):
 
 <details>
@@ -1484,7 +1546,7 @@ the ABC page and ＡＢＣ over the QWE page.
 .open "arm9.bin", 0x02000000
 
 ; ---------------------------------------------------------------------------------------------
-; IME off. In the key handler (hack 0x02083814, US NamingScreen_HandleCharacterInput),
+; IME off. In the key handler (hack 0x02083814; US arm9 0x02084884, pret NamingScreen_HandleCharacterInput),
 ; 'cmp r0, #0; bne NamingScreen_InsertKey' sends keys on pages 1-3 to the normal insert path and keys
 ; on page 0 into the hack's pinyin IME (pinyin buffer at data+0x5E4, candidate lookup 0x020835E4 over
 ; a/0/3/1 #19/#20). An unconditional branch makes every page insert the key directly; the IME never
@@ -1657,6 +1719,8 @@ being bound to texture parameters read from address 0.
 **Touches:**
 
 - `arm9+0x2467C` (RAM 0x0202467C) `overworld-texture-frame-bounds-branch`: 2 bytes, was `D208`
+
+**Disassembly snapshot:** [`overworld-texture-frame-bounds.listing`](overworld-texture-frame-bounds/overworld-texture-frame-bounds.listing) (every edit, old → new; `python3 work/tools/asmpatch.py listing --write overworld-texture-frame-bounds`)
 
 **Source** (`work/patches/overworld-texture-frame-bounds/overworld-texture-frame-bounds.asm`, armips; the new bytes):
 
@@ -1850,6 +1914,8 @@ writing, text_speed_patch.verify checks the runtime contract again.
 - `overlay92+0xAA68` (RAM 0x021F1228) `text-speed-call-print`: 4 bytes, was `F62F FB04`
 - `overlay50`: may grow by up to 512 bytes (appended at its end)
 - `itcm`: may grow by up to 6624 bytes (appended at its end)
+
+**Disassembly snapshot:** [`text-speed.listing`](text-speed/text-speed.listing) (every edit, old → new; `python3 work/tools/asmpatch.py listing --write text-speed`)
 
 **Source** (`work/patches/text-speed/text-speed.asm`, armips; the new bytes):
 

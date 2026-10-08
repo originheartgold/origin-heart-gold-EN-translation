@@ -2,3 +2,6 @@
 # ruff is pinned: another version reports other findings. Install with
 #   pip install -r work/tools/requirements-dev.txt
 ruff==0.16.8
+# capstone disassembles the fixes' snapshots (work/patches/<id>/<id>.listing, check.py --full): pinned, because
+# another version may print an instruction differently and every snapshot would look stale.
+capstone==5.0.9

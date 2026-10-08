@@ -57,7 +57,7 @@
 .open "arm9.bin", 0x02000000
 
 ; ---------------------------------------------------------------------------------------------
-; IME off. In the key handler (hack 0x02083814, US NamingScreen_HandleCharacterInput),
+; IME off. In the key handler (hack 0x02083814; US arm9 0x02084884, pret NamingScreen_HandleCharacterInput),
 ; 'cmp r0, #0; bne NamingScreen_InsertKey' sends keys on pages 1-3 to the normal insert path and keys
 ; on page 0 into the hack's pinyin IME (pinyin buffer at data+0x5E4, candidate lookup 0x020835E4 over
 ; a/0/3/1 #19/#20). An unconditional branch makes every page insert the key directly; the IME never

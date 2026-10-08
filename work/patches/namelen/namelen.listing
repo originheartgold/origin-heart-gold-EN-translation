@@ -1,0 +1,64 @@
+; namelen - disassembly snapshot of namelen.asm: every edit, old -> new. Generated; do not edit.
+; Regenerate: python3 work/tools/asmpatch.py listing --write namelen   (check.py --full fails when it is stale)
+; Old: the Chinese ROM. New: namelen.asm assembled alone over it by armips v0.11.0.
+; Disassembly: capstone 5.0.9 (UAL syntax). '  ' unchanged context, '- ' old, '+ ' new;
+; addresses are RAM addresses, Thumb bytes are halfwords, ARM bytes words; data rows are what one
+; statement writes (u16 rows of a string or key row with their characters, '|' = 0xFFFF end).
+
+== arm9+0x42862 (RAM 0x02042862), 2 bytes, thumb: namelen-player-script
+  0204285E  6F60       ldr r0, [r4, #0x74]
+  02042860  1C0A       adds r2, r1, #0
+- 02042862  2305       movs r3, #5
++ 02042862  2307       movs r3, #7
+  02042864  F7FC FAC2  bl #0x203edec
+
+== arm9+0x42892 (RAM 0x02042892), 2 bytes, thumb: namelen-rival-script
+  0204288E  6F60       ldr r0, [r4, #0x74]
+  02042890  2103       movs r1, #3
+- 02042892  2305       movs r3, #5
++ 02042892  2307       movs r3, #7
+  02042894  F7FC FAAA  bl #0x203edec
+
+== arm9+0x4291E (RAM 0x0204291E), 2 bytes, thumb: namelen-nickname-script
+  0204291A  6F60       ldr r0, [r4, #0x74]
+  0204291C  2101       movs r1, #1
+- 0204291E  2305       movs r3, #5
++ 0204291E  230A       movs r3, #0xa
+  02042920  F7FC FA64  bl #0x203edec
+
+== arm9+0x490DA (RAM 0x020490DA), 2 bytes, thumb: namelen-group-script
+  020490D6  2105       movs r1, #5
+  020490D8  6F60       ldr r0, [r4, #0x74]
+- 020490DA  1C0B       adds r3, r1, #0
++ 020490DA  2307       movs r3, #7
+  020490DC  F7F5 FE86  bl #0x203edec
+
+== arm9+0x90944 (RAM 0x02090944), 2 bytes, thumb: namelen-nickname-egg
+  02090940  2101       movs r1, #1
+  02090942  1C3A       adds r2, r7, #0
+- 02090944  2305       movs r3, #5
++ 02090944  230A       movs r3, #0xa
+  02090946  F7F1 FA2D  bl #0x2081da4
+
+== overlay44+0x2E6C (RAM 0x02228DAC), 2 bytes, thumb: namelen-kind7
+  02228DA8  1C20       adds r0, r4, #0
+  02228DAA  2107       movs r1, #7
+- 02228DAC  2305       movs r3, #5
++ 02228DAC  2307       movs r3, #7
+  02228DAE  F658 FFF9  bl #0x2081da4
+
+== overlay49+0x4E (RAM 0x021E49CE), 2 bytes, thumb: namelen-player-intro
+  021E49CA  9000       str r0, [sp]
+  021E49CC  2050       movs r0, #0x50
+- 021E49CE  2305       movs r3, #5
++ 021E49CE  2307       movs r3, #7
+  021E49D0  9101       str r1, [sp, #4]
+  021E49D2  F69D F9E7  bl #0x2081da4
+
+== overlay49+0x66 (RAM 0x021E49E6), 2 bytes, thumb: namelen-rival-intro
+  021E49E2  2050       movs r0, #0x50
+  021E49E4  2103       movs r1, #3
+- 021E49E6  2305       movs r3, #5
++ 021E49E6  2307       movs r3, #7
+  021E49E8  9201       str r2, [sp, #4]
+  021E49EA  F69D F9DB  bl #0x2081da4
