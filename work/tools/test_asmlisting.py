@@ -77,7 +77,7 @@ class RenderArea(unittest.TestCase):
 
     def render(self, asm, area):
         changed = {k: L._changed_offsets(asm.old[k], asm.new[k]) for k in asm.old}
-        return L.render_area(asm, area, {}, changed, {k: L.write_rows(asm, k) for k in asm.old})
+        return L.render_area(asm, area, ({}, {}, {}), changed, {k: L.write_rows(asm, k) for k in asm.old})
 
     def test_code_area_with_context(self):
         old = hw(0x9000, 0x2050, 0x2305, 0x9101, 0x2000, 0x4770) + bytes(4)
@@ -132,6 +132,46 @@ class SourceLayout(unittest.TestCase):
         self.assertEqual(found["readonly"], [{"file": "arm9", "base": 0x02000000, "start": 0x02000100, "mode": "arm",
                                               "reads": [(0x02000100, 2), (0x02000102, 2)]}])
         self.assertEqual(found["abs"], [("arm9", 0x02000000, 0x02000040, 4)])
+
+
+@needs_cs
+class Grouping(unittest.TestCase):
+    def area(self, start, size, writes=("insn",)):
+        return {"file": "arm9", "base": 0x02000000, "start": start, "size": size, "mode": "thumb",
+                "appended": False, "writes": list(writes)}
+
+    def test_nearby_code_areas_share_a_section(self):
+        old = hw(0x2000, 0x20B5, 0x0080, 0x5820, 0x20B5, 0x0109, 0x2000, 0x2000, 0x2000, 0x2000, 0x2000, 0x20B5)
+        new = hw(0x2000, 0x20CA, 0x0080, 0x5820, 0x20CA, 0x0089, 0x2000, 0x2000, 0x2000, 0x2000, 0x2000, 0x20CA)
+        areas = [self.area(0x02000002, 2), self.area(0x02000004, 2), self.area(0x02000008, 2),
+                 self.area(0x0200000A, 2), self.area(0x02000016, 2)]
+        asm = fake(old, new, regions=(("t-1", "0x0", " ".join(["2000"] * 12)),))
+        groups = L._groups(asm, areas)
+        self.assertEqual([len(g) for g in groups], [4, 1])            # 0x0C..0x16 is 10 bytes > MERGE_GAP
+        changed = {"arm9": L._changed_offsets(old, new)}
+        out = L.render_code(asm, groups[0], ({}, {}, {}), changed)
+        self.assertEqual(out[0], "== arm9+0x2 (RAM 0x02000002), 4 edits in 10 bytes, thumb: t-1")
+        # the lsl rewritten with the same bytes is context; the unchanged ldr between the edits is shown once
+        self.assertEqual([ln[:10] for ln in out[1:]],
+                         ["  02000000", "- 02000002", "+ 02000002", "  02000004", "  02000006", "- 02000008",
+                          "+ 02000008", "- 0200000A", "+ 0200000A", "  0200000C", "  0200000E"])
+
+    def test_old_bytes_get_only_the_hacks_names(self):
+        listing = ('FFFFFFFF .open "arm9.bin",0x02000000 ; /x/t.asm line 3\n'
+                   '02000010 old_table: ; /x/t.asm line 1\n'
+                   '02000020 new_table: ; /x/t.asm line 9\n'
+                   '02000020 appended_end: ; /x/t.asm line 2\n')
+        with tempfile.TemporaryDirectory() as td:
+            d = Path(td)
+            (d / "t.asm").write_text(".definelabel old_table, 0x02000010\n.definelabel appended_end, 0x02000020\n"
+                                     "new_table:\n", encoding="utf-8")
+            asm = fake(bytes(32), bytes(48), listing)
+            asm.fx.update(asm="t.asm", _path=d / "fix.toml")
+            asm.layout["areas"] = [dict(self.area(0x02000020, 16, ("word",)), appended=True)]
+            new, old, every = L.labels_of(asm)
+        self.assertEqual(new, {0x02000010: "old_table", 0x02000020: "new_table"})    # a code label first
+        self.assertEqual(old, {0x02000010: "old_table"})          # nothing the fix appends
+        self.assertEqual(every[0x02000020], ["new_table", "appended_end"])
 
 
 class Stale(unittest.TestCase):

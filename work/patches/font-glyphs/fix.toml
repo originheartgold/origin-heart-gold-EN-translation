@@ -11,10 +11,10 @@ text box.
 
 Technical: the hack redrew the ellipsis (code 0x01AF) and the curly double quotes (0x01B4, 0x01B5) of the
 font NARC a/0/1/6 as CJK-width glyphs: 12 px wide in fonts 0, 1 and 2 and 13 px in font 4 (the hack's
-redrawn Latin font), where the USA fonts have 6-7 px. In fonts 0-2 the letters, digits and common
-punctuation are byte-identical to the USA ROM; besides these three, the hack also changed 《 》 (0x01B7,
-0x01B8: 12 px in fonts 0-2), ~ (0x01C3, fonts 1-2: another glyph, same width), Ø ø (font 0) and, in font 1,
-Æ Ð Ø Þ æ ð ø þ ° _ ＿ (width 0), Œ œ and Ş ş. This fix leaves those as they are.
+redrawn Latin font), where the USA fonts have 6-7 px. In fonts 0-2 the half-width Latin range (0-9, A-Z,
+a-z, 0x0121-0x015E, and the ASCII punctuation but ~) is byte-identical to the USA ROM. Every other code that differs
+(《 》, some full-width punctuation, a few accented letters, spacing codes, the hack's added 0x01F0-0x01FD) is
+listed in work/notes/text_metrics.md; this fix leaves them as they are.
 QA lays out the English against the vanilla widths and flags lines that only fit with them
 (needs_vanilla_glyphs).
 """
@@ -27,7 +27,7 @@ glyph changes. build.py --glyph-fonts can narrow the font list; the verify step 
 evidence = [
   "D-2082: the user confirmed the glyph restore (the question D-2042, resolved)",
   "Related: D-0028 (quote-style rule, provisional) cites the hack's 12 px widths of “ ”",
-  "work/notes/text_metrics.md: 'The hack's Latin is the vanilla Latin' (width table, recommendation)",
+  "work/notes/text_metrics.md: 'The hack's half-width Latin is the vanilla Latin' (width table of every differing code, recommendation)",
   "work/notes/integrity_audit_text.md: fonts row (only 01AF/01B4/01B5 differ from the hack)",
   "work/tools/qa.py: needs_vanilla_glyphs warning",
   "CHANGELOG.md v1.0.0: 'Restored the US glyphs for … “ ”, which the hack had widened to 12 px.'",

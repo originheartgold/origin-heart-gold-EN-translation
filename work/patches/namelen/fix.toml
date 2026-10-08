@@ -89,59 +89,76 @@ notes = "Naming kind 7 (pret NAME_SCREEN_UNK7; US overlay43 0x0222CD5C): maxLen 
 
 [[us_ref]]
 id = "namelen-us-createargs"
-claim = "US arm9 0x020830D8 is NamingScreen_CreateArgs; push {r3-r7, lr}, alloc 0x54 bytes, as at hack 0x02081DA4"
+claim = "US arm9 0x020830D8 is NamingScreen_CreateArgs: push {r3-r7, lr}, alloc 0x54 bytes; equivalent to the hack's 0x02081DA4 (register allocation differs)"
 file = "arm9"
 address = "0x020830D8"
 expect = "B5F8 1C0D 2154 9000"
+unique = true
+
+[[us_ref]]
+id = "namelen-us-calltask"
+claim = "US arm9 0x0203F6E0 is CallTask_NamingScreen: its first 16 bytes are the hack's 0x0203EDEC"
+file = "arm9"
+address = "0x0203F6E0"
+hack = "arm9 0x0203EDEC"
+length = 16
+unique = true
 
 [[us_ref]]
 id = "namelen-us-player-intro"
-claim = "US overlay53 0x021E594E: Oak's speech, player name, the same call with mov r3, #7"
+claim = "US overlay53 0x021E594E: Oak's speech, player name: mov r3, #7, then bl NamingScreen_CreateArgs"
 file = "overlay53"
 address = "0x021E594E"
 new = "namelen-player-intro"
+calls = "0x020830D8"
 
 [[us_ref]]
 id = "namelen-us-rival-intro"
-claim = "US overlay53 0x021E5966: Oak's speech, rival name, the same call with mov r3, #7"
+claim = "US overlay53 0x021E5966: Oak's speech, rival name: mov r3, #7, then bl NamingScreen_CreateArgs"
 file = "overlay53"
 address = "0x021E5966"
 new = "namelen-rival-intro"
+calls = "0x020830D8"
 
 [[us_ref]]
 id = "namelen-us-player-script"
-claim = "US arm9 0x020431D6: script 'name player', the same call with mov r3, #7"
+claim = "US arm9 0x020431D6: script 'name player': mov r3, #7, then bl CallTask_NamingScreen"
 file = "arm9"
 address = "0x020431D6"
 new = "namelen-player-script"
+calls = "0x0203F6E0"
 
 [[us_ref]]
 id = "namelen-us-rival-script"
-claim = "US arm9 0x02043206: script 'name rival', the same call with mov r3, #7"
+claim = "US arm9 0x02043206: script 'name rival': mov r3, #7, then bl CallTask_NamingScreen"
 file = "arm9"
 address = "0x02043206"
 new = "namelen-rival-script"
+calls = "0x0203F6E0"
 
 [[us_ref]]
 id = "namelen-us-nickname-script"
-claim = "US arm9 0x02043292: script 'nickname Pokémon', the same call with mov r3, #10"
+claim = "US arm9 0x02043292: script 'nickname Pokémon': mov r3, #10, then bl CallTask_NamingScreen"
 file = "arm9"
 address = "0x02043292"
 new = "namelen-nickname-script"
+calls = "0x0203F6E0"
 
 [[us_ref]]
 id = "namelen-us-group-script"
-claim = "US arm9 0x02049BBE: script 'name group', mov r3, #7 (the hack passes r1 = 5)"
+claim = "US arm9 0x02049BBE: script 'name group': mov r3, #7 (the hack passes r1 = 5), then bl CallTask_NamingScreen"
 file = "arm9"
 address = "0x02049BBE"
 new = "namelen-group-script"
+calls = "0x0203F6E0"
 
 [[us_ref]]
 id = "namelen-us-nickname-egg"
-claim = "US arm9 0x020911C4: egg hatch, mov r3, #10, then bl NamingScreen_CreateArgs (US arm9 0x020830D8)"
+claim = "US arm9 0x020911C4: egg hatch: mov r3, #10, then bl NamingScreen_CreateArgs"
 file = "arm9"
 address = "0x020911C4"
-expect = "230A F7F1 FF87"
+new = "namelen-nickname-egg"
+calls = "0x020830D8"
 
 [[us_ref]]
 id = "namelen-us-kind7-len"
@@ -155,4 +172,5 @@ id = "namelen-us-kind7"
 claim = "US overlay43 0x0222CD5C: naming kind 7 passes maxLen = r1 (add r3, r1, #0), then bl NamingScreen_CreateArgs"
 file = "overlay43"
 address = "0x0222CD5C"
-expect = "1C0B F656 F9BB"
+expect = "0x1C0B"
+calls = "0x020830D8"

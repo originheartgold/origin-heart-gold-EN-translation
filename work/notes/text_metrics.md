@@ -33,9 +33,9 @@ Files:
 - **Line width** is therefore just the sum of the advances. Line height is 16 px.
 - **Hanzi** sit outside the 512-entry width table. They advance a fixed 12 px (13 px in font 4).
 
-### The hack's Latin is the vanilla Latin
+### The hack's half-width Latin is the vanilla Latin
 The tooling notes said the Latin glyphs were "condensed 5–6 px". **They are not condensed.**
-- In fonts 0, 1 and 2, the glyph bitmaps and widths for `0–9 A–Z a–z` and ordinary punctuation are **byte-identical to the USA ROM**.
+- In fonts 0, 1 and 2, the glyph bitmaps and widths for `0–9 A–Z a–z` (0x0121–0x015E) and ordinary punctuation (all but `~` in fonts 1 and 2) are **byte-identical to the USA ROM**. That holds for the half-width Latin range only: the table below lists every code that differs (checked against the USA ROM, all codes 0x0001–0x01FD, 2026-10-08).
 - The vanilla US font is itself near-monospaced: almost every letter is 6 px, with i=3, l=4, f=5, j=5, space=4, `, . : ;`=5 and `’ ‘`=5.
 
 The differences between hack and vanilla are all in `latin_width_diffs_hack_vs_vanilla` in the JSON:
@@ -46,8 +46,17 @@ The differences between hack and vanilla are all in `latin_width_diffs_hack_vs_v
 | 01B4/01B5 | “ ” | 6 | **12** | redrawn as CJK-width quotes |
 | 01B7/01B8 | 《 》 | 6 | 12 | Chinese book-title marks |
 | 0177 | Ø | 6 | 7 (font 0) | – |
-| font 1 | Æ Ð Ø Þ æ ð ø þ ° _ | 5–10 | **0 (blank)** | glyphs removed from the message font |
+| 0197 | ø | 6 | 6, another glyph (font 0) | – |
+| 01C3 | ~ | 6/7 | same width, another glyph (fonts 1, 2) | – |
+| font 1 | Æ Ð Ø Þ æ ð ø þ ° _ ＿ | 5–10 | **0 (blank)** | glyphs removed from the message font |
 | font 1 | Œ œ | 10 | 7/8 | – |
+| font 1 | Ş ş | 6 | 6, other glyphs | – |
+| 00E1–00F9 | full-width punctuation (part) | 5–11 | 12 (fonts 0–2), 13 (font 4) | CJK-width; 00E1–00E4, 00EC, 00ED, 00F5–00F7, 00F9 in every font, all of 00E1–00F9 in font 1 |
+| 00CC | ｇ | – | another glyph (font 0) | – |
+| font 1 | 0002–0120 | – | redrawn (kana, full-width) | not used by the English |
+| 01E3–01E7 | (spacing codes) | 1–16 | 0 (font 1) | – |
+| 01EB, 01EC | (spacing codes) | 2–5 | 0 (fonts 0–2, 4) | – |
+| 01F0–01FD | – | 0 (empty in the USA font) | 12 (13 in font 4) | added by the hack |
 | font 4 | all Latin redrawn | 7 | 7 (same widths) | Ã Å Õ Ý ÿ Ş ş ₧ ₦ ° _ etc. blank; space 5 → 7 |
 
 `é` (Pokémon) is intact in every font.

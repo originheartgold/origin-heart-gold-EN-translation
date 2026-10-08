@@ -5,10 +5,13 @@ A snapshot shows, for every `.area` of a fix's source, the address, the old byte
 new bytes (the source assembled alone over the Chinese ROM by armips), disassembled: Thumb or ARM as the
 source assembles that area (`.thumb` / `.arm`), data areas (keyboard rows, window templates, strings, pointer
 tables) as the values each statement writes, a native payload (`.incbin`) as size, SHA-256 and the labels
-inside it. Code areas get two bytes-or-so of unchanged context on each side (up to 4 bytes, widened to whole
-Thumb `bl` pairs and cut where the fix changes other bytes); an `.org` block that only guards (the
+inside it. Code areas get up to 4 bytes of unchanged context on each side (6 where that is needed to show a
+Thumb `bl` pair whole; cut where the fix changes other bytes), and code areas at most MERGE_GAP bytes apart
+are shown as one section with the unchanged bytes between them; an `.org` block that only guards (the
 overworld fix's read-only check of the whole routine) is shown as unchanged context; the words read by
-absolute guards (`expect32_abs`) are listed. Nothing else of the ROM is in a snapshot: its old bytes are the
+absolute guards (`expect32_abs`) are listed. Old bytes are annotated only with the names of the hack's own
+addresses (`.definelabel`), new bytes with every label (a code label before a `.definelabel` at the same
+address). Nothing else of the ROM is in a snapshot: its old bytes are the
 regions fix.toml already declares (`expect`), the bytes the guards already name, and a few context bytes.
 
 Why: a review of a fix then reads the effect of an edit in the diff of one small text file, and a change to a
@@ -34,6 +37,7 @@ TOOLS = Path(__file__).resolve().parent
 REQUIREMENTS_DEV = TOOLS / "requirements-dev.txt"
 SUFFIX = ".listing"
 CONTEXT = 4                     # bytes of unchanged context before and after a code area
+MERGE_GAP = 8                   # code areas at most this many bytes apart share one section
 WRITE_CMD = "python3 work/tools/asmpatch.py listing --write"
 
 
@@ -111,7 +115,7 @@ def disassemble(data: bytes, addr: int, mode: str, labels=None, literals=False) 
             i += 4
             continue
         insn = next(md.disasm(data[i:], addr + i, count=1), None)
-        if insn is None or insn.size > len(data) - i:
+        if insn is None:
             n = min(step, len(data) - i)
             chunk = data[i:i + n]
             if n == 2:
@@ -159,7 +163,7 @@ class Assembled:
 
     def base(self, key):
         import asmpatch
-        return asmpatch._base(key, self.bases)
+        return asmpatch.base_of(key, self.bases)
 
 
 def assemble_each(rom, fixes, armips) -> dict:
@@ -197,21 +201,34 @@ def listing_rows(text: str) -> list:
     return out
 
 
-def labels_of(asm: Assembled) -> dict:
-    """{address: name} of the labels and .definelabel symbols of the fix's source (armips lists them in lower
-    case at their value; the source's spelling is restored)."""
+def labels_of(asm: Assembled) -> tuple:
+    """(new, old, every): {address: name} of the fix source's labels, for the new bytes (every label; a code label
+    wins over a .definelabel at the same address) and for the old bytes (only .definelabel names of the hack's
+    own addresses, none inside data the fix appends). armips lists labels in lower case at their value; the
+    source's spelling is restored. every: {address: [names]}, all of them."""
     import fixes as fixreg
     src = fixreg.asm_path(asm.fx)
-    spelled = {}
+    spelled, defined = {}, set()
     for name in re.findall(r"(?:^|\s)\.definelabel\s+(\w+)|^\s*(\w+):", src.read_text(encoding="utf-8"), re.M):
         n = name[0] or name[1]
         spelled[n.lower()] = n
-    out = {}
+        if name[0]:
+            defined.add(n.lower())
+    appended = [(a["start"], a["start"] + (a["size"] or 0)) for a in asm.layout.get("areas", []) if a["appended"]]
+    new, old, every = {}, {}, {}
     for addr, stmt, _src, _n in listing_rows(asm.listing):
-        if addr != 0xFFFFFFFF and re.fullmatch(r"[\w@.]+:", stmt):
-            low = stmt[:-1]
-            out.setdefault(addr, spelled.get(low, low))
-    return out
+        if addr == 0xFFFFFFFF or not re.fullmatch(r"[\w@.]+:", stmt):
+            continue
+        low = stmt[:-1]
+        name = spelled.get(low, low)
+        every.setdefault(addr, []).append(name)
+        if low in defined:
+            new.setdefault(addr, name)
+            if not any(a <= addr < b for a, b in appended):
+                old.setdefault(addr, name)
+        else:
+            new[addr] = name if addr not in new or new[addr].lower() in defined else new[addr]
+    return new, old, every
 
 
 def write_rows(asm: Assembled, key: str) -> list:
@@ -290,15 +307,24 @@ def _data_text(chunk: bytes, kind: str, labels: dict) -> str:
     return " ".join(f"{b:02X}" for b in chunk)
 
 
-def _kind_of(directive: str, src: str, n: int) -> str:
+def _kind_of(directive: str, src: str, n: int, string_slot=False) -> str:
     line = _source_line(src, n)
-    if re.search(r"\.(string|stringn|str)\b", line, re.I):
+    if string_slot or re.search(r"\.(string|stringn|str)\b", line, re.I):
         return "chars"
     if directive in ("halfword", "hword", "dh", "dcw"):
         return "chars" if re.search(r"\b(CH|FW)_\w+", line) else "u16"
     if directive in ("word", "dw", "dcd"):
         return "u32"
     return "u8"
+
+
+def _in_string_slot(fx, key, off) -> bool:
+    """`off` lies in a [[string]] slot (its old bytes are a string)."""
+    for e in fx.get("string", []):
+        start = int(e["offset"], 16)
+        if e["file"] == key and start <= off < start + 2 * (e["max_units"] + 1):
+            return True
+    return False
 
 
 def _region_of(fx, key, off, bases) -> str:
@@ -341,31 +367,65 @@ def _lines(prefix, rows) -> list:
     return [f"{prefix}{a:08X}  {b:<{max(9, len(b))}s}  {t}".rstrip() for a, b, t in rows]
 
 
-def render_area(asm: Assembled, area: dict, labels: dict, changed: dict, writes: dict) -> list:
+def _span(asm: Assembled, area: dict) -> tuple:
+    """(file offset start, end) of an area; appended data ends where the grown file ends."""
+    base = asm.base(area["file"])
+    start = area["start"] - base
+    end = min(len(asm.new[area["file"]]), start + area["size"]) if area["appended"] else start + area["size"]
+    return start, end
+
+
+def render_code(asm: Assembled, group: list, labels: tuple, changed: dict) -> list:
+    """One section for code areas of one file and mode, at most MERGE_GAP bytes apart: context, each area's
+    old and new instructions, the unchanged bytes between them."""
+    new_labels, old_labels, _every = labels
+    key, mode = group[0]["file"], group[0]["mode"]
+    base = asm.base(key)
+    old, new = asm.old[key], asm.new[key]
+    spans = [_span(asm, a) for a in group]
+    start, end = spans[0][0], spans[-1][1]
+    regions = list(dict.fromkeys(_region_of(asm.fx, key, s0, asm.bases) for s0, _ in spans))
+    appended = group[0]["appended"]
+    if appended:
+        what = f"appended {end - start} bytes ({key} 0x{len(old):X} -> 0x{len(new):X} bytes)"
+    elif len(group) > 1:
+        what = f"{len(group)} edits in {end - start} bytes"
+    else:
+        what = f"{end - start} byte{'' if end - start == 1 else 's'}"
+    out = [f"== {key}+0x{start:X} (RAM 0x{base + start:08X}), {what}, {mode}: {', '.join(regions)}"]
+    s, _ = (start, end) if appended else _context(asm, key, *spans[0], mode, changed[key])
+    _, e = (start, end) if appended else _context(asm, key, *spans[-1], mode, changed[key])
+    out += _lines("  ", disassemble(old[s:start], base + s, mode, old_labels, literals=True))
+    for i, (a, b) in enumerate(spans):
+        if i:
+            gap = spans[i - 1][1]
+            out += _lines("  ", disassemble(old[gap:a], base + gap, mode, old_labels, literals=True))
+        if not appended and old[a:b] == new[a:b]:        # rewritten with the same instruction
+            out += _lines("  ", disassemble(old[a:b], base + a, mode, old_labels))
+            continue
+        if not appended:
+            out += _lines("- ", disassemble(old[a:b], base + a, mode, old_labels))
+        out += _lines("+ ", disassemble(new[a:b], base + a, mode, new_labels))
+    out += _lines("  ", disassemble(old[end:e], base + end, mode, old_labels, literals=True))
+    return out
+
+
+def render_area(asm: Assembled, area: dict, labels: tuple, changed: dict, writes: dict) -> list:
+    """One section for a data area (or a code area alone: render_code)."""
+    if "insn" in area["writes"]:
+        return render_code(asm, [area], labels, changed)
+    new_labels, old_labels, every = labels
     key, base = area["file"], asm.base(area["file"])
     old, new = asm.old[key], asm.new[key]
-    start = area["start"] - base
+    start, end = _span(asm, area)
     appended = area["appended"]
-    if appended:
-        end = min(len(new), start + area["size"])
-    else:
-        end = start + area["size"]
-    mode = area["mode"]
-    code = "insn" in area["writes"]
     region = _region_of(asm.fx, key, start, asm.bases)
     if appended:
         what = f"appended {end - start} bytes ({key} 0x{len(old):X} -> 0x{len(new):X} bytes)"
     else:
         what = f"{end - start} byte{'' if end - start == 1 else 's'}"
-    out = [f"== {key}+0x{start:X} (RAM 0x{area['start']:08X}), {what}, {mode if code else 'data'}: {region}"]
-    if code:
-        s, e = (start, end) if appended else _context(asm, key, start, end, mode, changed[key])
-        out += _lines("  ", disassemble(old[s:start], base + s, mode, labels, literals=True))
-        if not appended:
-            out += _lines("- ", disassemble(old[start:end], base + start, mode, labels))
-        out += _lines("+ ", disassemble(new[start:end], base + start, mode, labels))
-        out += _lines("  ", disassemble(old[end:e], base + end, mode, labels, literals=True))
-        return out
+    out = [f"== {key}+0x{start:X} (RAM 0x{area['start']:08X}), {what}, data: {region}"]
+    slot = _in_string_slot(asm.fx, key, start)
     rows = [w for w in writes.get(key, []) if area["start"] <= w[0] < base + end]
     for i, (addr, d, src, n) in enumerate(rows):
         a = addr - base
@@ -374,7 +434,7 @@ def render_area(asm: Assembled, area: dict, labels: dict, changed: dict, writes:
             continue
         if d == "incbin":
             blob = new[a:b]
-            inside = sorted((k, v) for k, v in labels.items() if addr <= k < base + b)
+            inside = sorted((k, ", ".join(v)) for k, v in every.items() if addr <= k < base + b)
             mo = re.search(r'"([^"]+)"', _source_line(src, n))
             out.append(f"+ {addr:08X}  .incbin {Path(mo.group(1)).name if mo else '?'}: {len(blob)} bytes, "
                        f"sha256 {hashlib.sha256(blob).hexdigest()}; its labels:")
@@ -383,13 +443,27 @@ def render_area(asm: Assembled, area: dict, labels: dict, changed: dict, writes:
         if d in ("align", "fill", "skip") and len(set(new[a:b])) == 1 and (appended or a >= len(old)):
             out.append(f"+ {addr:08X}  {b - a} bytes of 0x{new[a]:02X} (.{d})")
             continue
-        kind = _kind_of(d, src, n)
+        kind = _kind_of(d, src, n, slot and (b - a) % 2 == 0)
         if a < len(old) and not appended:
             if old[a:b] == new[a:b]:                     # rewritten with the same values
-                out.append(f"  {addr:08X}  {_data_text(old[a:b], kind, labels)}")
+                out.append(f"  {addr:08X}  {_data_text(old[a:b], kind, old_labels)}")
                 continue
-            out.append(f"- {addr:08X}  {_data_text(old[a:b], kind, labels)}")
-        out.append(f"+ {addr:08X}  {_data_text(new[a:b], kind, labels)}")
+            out.append(f"- {addr:08X}  {_data_text(old[a:b], kind, old_labels)}")
+        out.append(f"+ {addr:08X}  {_data_text(new[a:b], kind, new_labels)}")
+    return out
+
+
+def _groups(asm: Assembled, areas: list) -> list:
+    """Areas in address order, code areas of one file and mode at most MERGE_GAP bytes apart grouped."""
+    out = []
+    for a in areas:
+        prev = out[-1][-1] if out else None
+        if prev is not None and "insn" in a["writes"] and "insn" in prev["writes"] and not a["appended"] \
+                and not prev["appended"] and a["file"] == prev["file"] and a["mode"] == prev["mode"] \
+                and 0 <= a["start"] - (prev["start"] + prev["size"]) <= MERGE_GAP:
+            out[-1].append(a)
+        else:
+            out.append([a])
     return out
 
 
@@ -397,6 +471,7 @@ def render(asm: Assembled, cs_version: str, armips_version: str) -> str:
     """The snapshot text of one fix."""
     fid = asm.fx["id"]
     labels = labels_of(asm)
+    old_labels = labels[1]
     changed = {k: _changed_offsets(asm.old[k], asm.new[k]) for k in asm.old}
     writes = {k: write_rows(asm, k) for k in asm.old}
     src = Path(asm.fx["_path"]).parent / asm.fx["asm"]
@@ -408,18 +483,19 @@ def render(asm: Assembled, cs_version: str, armips_version: str) -> str:
            "; statement writes (u16 rows of a string or key row with their characters, '|' = 0xFFFF end).",
            ""]
     areas = sorted(asm.layout.get("areas", []), key=lambda a: (a["file"], a["start"]))
-    blocks = [("area", a["file"], a["start"], a) for a in areas]
+    blocks = [("area", g[0]["file"], g[0]["start"], g) for g in _groups(asm, areas)]
     blocks += [("readonly", r["file"], r["start"], r) for r in asm.layout.get("readonly", [])]
     for kind, _key, _start, item in sorted(blocks, key=lambda b: (b[1], b[2], b[0] != "readonly")):
         if kind == "area":
-            out += render_area(asm, item, labels, changed, writes)
+            out += (render_code(asm, item, labels, changed) if len(item) > 1
+                    else render_area(asm, item[0], labels, changed, writes))
         else:
             key, base = item["file"], asm.base(item["file"])
             lo = min(a for a, _ in item["reads"]) - base
             hi = max(a + n for a, n in item["reads"]) - base
             out.append(f"== {key}+0x{lo:X} (RAM 0x{base + lo:08X}), {hi - lo} bytes, {item['mode']}: read-only guard "
                        f"(the source checks these bytes and writes none of them)")
-            out += _lines("  ", disassemble(asm.old[key][lo:hi], base + lo, item["mode"], labels))
+            out += _lines("  ", disassemble(asm.old[key][lo:hi], base + lo, item["mode"], old_labels))
         out.append("")
     absreads = sorted(set(asm.layout.get("abs", [])))
     if absreads:
@@ -427,7 +503,7 @@ def render(asm: Assembled, cs_version: str, armips_version: str) -> str:
         for key, _b, addr, n in absreads:
             base = asm.base(key)
             chunk = asm.old[key][addr - base:addr - base + n]
-            out.append(f"  {addr:08X}  {_data_text(chunk, 'u32' if n == 4 else 'u8', labels)}")
+            out.append(f"  {addr:08X}  {_data_text(chunk, 'u32' if n == 4 else 'u8', old_labels)}")
         out.append("")
     return "\n".join(out).rstrip("\n") + "\n"
 

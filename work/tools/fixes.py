@@ -60,7 +60,9 @@ fix.toml
     [[us_ref]]    a claim about the USA ROM (any kind): id, claim, file ("arm9" | "overlayNN" in USA numbering |
                   a NARC path), address (RAM) or offset, and what is there: expect (the USA bytes, a few
                   halfwords), new (a [[code]] region of this fix: the bytes the fix writes there) or hack +
-                  length (a Chinese-ROM location with the same bytes); a NARC reference has members (and lz10)
+                  length (a Chinese-ROM location with the same bytes); optional calls (the Thumb bl within 8
+                  bytes after them goes to this USA address) and unique (those bytes occur once in the USA
+                  file); a NARC reference has members (and lz10)
                   and means the same members as the Chinese ROM. Every USA address the fix's fix.toml or source
                   cites must be written `US <file> 0x<RAM>` / `US <file>+0x<offset>` and have a [[us_ref]];
                   usref.py checks the claims against the USA ROM (check.py --full).
@@ -161,7 +163,7 @@ GROW_KEYS = {"file": str, "max": int, "notes": str}
 GROW_REQUIRED = ("file", "max")
 # [[us_ref]]: a claim about the USA ROM that a source or fix.toml cites, checked by usref.py (check.py --full)
 US_REF_KEYS = {"id": str, "claim": str, "file": str, "address": str, "offset": str, "members": INTS, "lz10": bool,
-               "length": int, "expect": str, "new": str, "hack": str}
+               "length": int, "expect": str, "new": str, "hack": str, "calls": str, "unique": bool}
 US_REF_REQUIRED = ("id", "claim", "file")
 US_CODE_FILE_RE = re.compile(r"arm9|overlay\d+")
 US_NARC_RE = re.compile(r"[a-z0-9_]+(?:/[A-Za-z0-9_.]+)+")
@@ -170,8 +172,14 @@ US_ADDR_RE = re.compile(r"0x[0-9A-Fa-f]{8}")
 US_HACK_RE = re.compile(r"(arm9|overlay\d+)(?: (0x[0-9A-Fa-f]{8})|\+(0x[0-9A-Fa-f]+))")
 # a citation of the USA ROM in a source or fix.toml: "US arm9 0x020431D6", "US overlay14+0x12BB4"
 US_CITE_RE = re.compile(r"\bUS (arm9|overlay\d+)(?: (0x[0-9A-Fa-f]{8})|\+(0x[0-9A-Fa-f]+))\b")
-US_WORD_RE = re.compile(r"\bUSA?\b")
-US_HEX_RE = re.compile(r"\b0x[0-9A-Fa-f]{4,}\b")
+# the lint below: a mention of the USA ROM (any case, also "U.S."), and the numbers after it that look like an
+# address: an 8-digit ITCM / main-RAM address, or a hex number right after a file name ("overlay 14: 0x12BB4",
+# "arm9 2084884")
+US_WORD_RE = re.compile(r"(?<![\w.])(?:U\.S\.|USA|US)(?!\w)", re.I)
+US_ADDR_RE = re.compile(r"\b0x(?:01[Ff]{2}[89A-Fa-f][0-9A-Fa-f]{3}|02[0-9A-Fa-f]{6})\b")
+US_FILE_HEX_RE = re.compile(r"\b(?:arm9|arm7|itcm|overlay\s*\d+|ov\s*\d+)(?:\s*[:+]\s*|\s+)((?:0x)?[0-9A-Fa-f]{4,})\b",
+                            re.I)
+US_NOT_USA = ("hack", "cn", "chinese")     # a number right after these words is the hack's, not a USA address
 US_CITE_FORM = ("write a USA address as `US <file> 0x<RAM address>` or `US <file>+0x<file offset>` (USA "
                 "overlay numbers) and add a [[us_ref]] that states what is there")
 # `.string "..."` / `.stringn` / `.str` literals in an asm, optionally after a label (armips escapes: \\ \")
@@ -412,6 +420,9 @@ def _validate_us_refs(fx, where, problems):
                 problems.append(f"{w}: length (bytes) goes with hack, and only there")
             if _is(e.get("length"), int) and e["length"] <= 0:
                 problems.append(f"{w}: length must be positive")
+            if isinstance(e.get("calls"), str) and not US_ADDR_RE.fullmatch(e["calls"]):
+                problems.append(f"{w}: calls must be a RAM address like '0x020830D8' (the target of the Thumb bl "
+                                f"that follows the bytes)")
             for k in ("members", "lz10"):
                 if k in e:
                     problems.append(f"{w}: {k} belongs to a NARC reference")
@@ -419,7 +430,7 @@ def _validate_us_refs(fx, where, problems):
             if not e.get("members"):
                 problems.append(f"{w}: a NARC reference needs members (compared with the same members of the "
                                 f"Chinese ROM)")
-            for k in ("address", "offset", "length", "expect", "new", "hack"):
+            for k in ("address", "offset", "length", "expect", "new", "hack", "calls", "unique"):
                 if k in e:
                     problems.append(f"{w}: {k} belongs to an arm9 / overlay reference")
         else:
@@ -441,11 +452,38 @@ def _validate_us_refs(fx, where, problems):
         problems.extend(us_citation_problems(text, label, cited))
 
 
+def _us_window_end(text: str, start: int, prose: bool) -> int:
+    """The end of the clause after a USA mention at `start`: the next ')', sentence end ('. ' or a '.' before a
+    line end), mid-line ';', or USA mention; it runs on into the next line only when that line continues the
+    prose or comment (fix.toml text, or an asm line starting with ';' or '//'), and never past 160 characters."""
+    end = min(len(text), start + 160)
+    nxt = US_WORD_RE.search(text, start)
+    if nxt and nxt.start() < end:
+        end = nxt.start()
+    i, lines = start, 0
+    while i < end:
+        ch = text[i]
+        if ch == ")" or (ch == "." and (i + 1 >= len(text) or text[i + 1] in " \n")):
+            return i
+        if ch == ";" and text[text.rfind("\n", 0, i) + 1:i].strip():
+            return i                                    # a ';' after other text on its line: a clause break
+        if ch == "\n":
+            lines += 1
+            rest = text[i + 1:text.find("\n", i + 1) if text.find("\n", i + 1) != -1 else len(text)].strip()
+            if lines > 1 or not rest or not (prose or rest.startswith((";", "//"))):
+                return i
+        i += 1
+    return end
+
+
 def us_citation_problems(text: str, label: str, cited: set) -> list:
     """USA citations in `text`: each `US <file> 0x<RAM>` / `US <file>+0x<offset>` must be in `cited` ({(file,
-    "ram" | "off", value)}), and a hex number of 4+ digits after a 'US'/'USA' in the same clause (up to the next
-    ';', ')', '. ' or line end) must be such a citation."""
+    "ram" | "off", value)}). In the clause after any mention of the USA ROM (US, USA, U.S., any case), a number
+    that looks like an address (US_ADDR_RE, or a hex number right after a file name) must be such a citation,
+    unless 'hack', 'CN' or 'Chinese' comes in the three words before it (the hack's address). Other numbers
+    (values, 0xFFFF) are prose."""
     probs = []
+    prose = label.endswith(".toml")
 
     def line_of(pos):
         return text.count("\n", 0, pos) + 1
@@ -457,14 +495,16 @@ def us_citation_problems(text: str, label: str, cited: set) -> list:
             probs.append(f"{label}:{line_of(mo.start())}: '{mo.group(0)}' has no [[us_ref]] in fix.toml with that "
                          f"{'address' if mo.group(2) else 'offset'} (usref.py checks each one against the USA ROM)")
     for mo in US_WORD_RE.finditer(text):
-        end = len(text)
-        for stop in (";", ")", "\n", ". "):
-            k = text.find(stop, mo.end())
-            if k != -1:
-                end = min(end, k)
-        for hx in US_HEX_RE.finditer(text, mo.end(), end):
-            if not any(a <= hx.start() < b for a, b in spans):
-                probs.append(f"{label}:{line_of(hx.start())}: {hx.group(0)} follows '{mo.group(0)}': {US_CITE_FORM}")
+        end = _us_window_end(text, mo.end(), prose)
+        found = {hx.start(): hx.group(0) for hx in US_ADDR_RE.finditer(text, mo.end(), end)}
+        found.update({hx.start(1): hx.group(1) for hx in US_FILE_HEX_RE.finditer(text, mo.end(), end)})
+        for pos, num in sorted(found.items()):
+            if any(a <= pos < b for a, b in spans):
+                continue
+            before = re.findall(r"[A-Za-z]+", text[mo.end():pos].replace("'s", ""))[-3:]
+            if any(w.lower() in US_NOT_USA for w in before):
+                continue
+            probs.append(f"{label}:{line_of(pos)}: {num} follows '{mo.group(0)}': {US_CITE_FORM}")
     return sorted(set(probs), key=lambda p: (int(p.split(":")[1]), p))
 
 
@@ -1572,6 +1612,10 @@ def render_docs(fixes, overlay_bases=None) -> str:
                     where = f"`US {e['file']} {e['address']}`" if "address" in e else f"`US {e['file']}+{e['offset']}`"
                     what = (f"`{e['expect']}`" if "expect" in e else f"the new bytes of `{e['new']}`" if "new" in e
                             else f"the Chinese ROM's {e['length']} bytes at `{e['hack']}`")
+                if e.get("calls"):
+                    what += f", then `bl {e['calls']}`"
+                if e.get("unique"):
+                    what += " (unique in the file)"
                 out.append(f"- {where} = {what}: {e['claim']}")
         src = asm_path(fx)
         if src is not None and src.is_file():

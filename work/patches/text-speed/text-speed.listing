@@ -26,7 +26,7 @@
   0202B17A  8021       strh r1, [r4]
   0202B17C  8821       ldrh r1, [r4]
 
-== arm9+0x2B1C6 (RAM 0x0202B1C6), 4 bytes, thumb: text-speed-music-getter
+== arm9+0x2B1C6 (RAM 0x0202B1C6), 3 edits in 22 bytes, thumb: text-speed-music-getter, text-speed-music-setter-mask, text-speed-music-setter-value
   0202B1C2  4770       bx lr
   0202B1C4  8800       ldrh r0, [r0]
 - 0202B1C6  0700       lsls r0, r0, #0x1c
@@ -35,16 +35,11 @@
 + 0202B1C8  0F80       lsrs r0, r0, #0x1e
   0202B1CA  0600       lsls r0, r0, #0x18
   0202B1CC  0E00       lsrs r0, r0, #0x18
-
-== arm9+0x2B1D2 (RAM 0x0202B1D2), 2 bytes, thumb: text-speed-music-setter-mask
   0202B1CE  4770       bx lr
   0202B1D0  8803       ldrh r3, [r0]
 - 0202B1D2  220F       movs r2, #0xf
 + 0202B1D2  2203       movs r2, #3
   0202B1D4  0409       lsls r1, r1, #0x10
-  0202B1D6  4393       bics r3, r2
-
-== arm9+0x2B1DA (RAM 0x0202B1DA), 2 bytes, thumb: text-speed-music-setter-value
   0202B1D6  4393       bics r3, r2
   0202B1D8  0C0A       lsrs r2, r1, #0x10
 - 0202B1DA  210F       movs r1, #0xf
@@ -53,12 +48,12 @@
   0202B1DE  4319       orrs r1, r3
 
 == arm9+0xD1A28 (RAM 0x020D1A28), 4 bytes, data: text-speed-itcm-arena
-- 020D1A28  01FF8620 (frame_end)
+- 020D1A28  01FF8620
 + 020D1A28  01FF8BE0 (TextSpeed_ItcmEnd)
 
 == itcm+0x620 (RAM 0x01FF8620), appended 1472 bytes (itcm 0x620 -> 0xBE0 bytes), data: [[grow]] itcm
 + 01FF8620  .incbin text-speed.bin: 1466 bytes, sha256 ae3df5ec17776f7ad224f1523efde753a4b70c7dfef703318950851fcf301978; its labels:
-+   01FF8620  frame_end
++   01FF8620  frame_end, TextSpeed_Payload
 +   01FF86C4  print_task
 +   01FF88C8  load_rows
 +   01FF88F8  load_choice
@@ -86,12 +81,10 @@
   021E49A2  2100       movs r1, #0
   021E49A4  0092       lsls r2, r2, #2
 
-== overlay50+0xC6 (RAM 0x021E4A46), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0xC6 (RAM 0x021E4A46), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E4A42  F633 F8F1  bl #0x2017c28
 - 021E4A46  2132       movs r1, #0x32
 + 021E4A46  21DD       movs r1, #0xdd
-
-== overlay50+0xC8 (RAM 0x021E4A48), 2 bytes, thumb: text-speed-options-menu
 - 021E4A48  0109       lsls r1, r1, #4
 + 021E4A48  0089       lsls r1, r1, #2
   021E4A4A  5060       str r0, [r4, r1]
@@ -105,85 +98,52 @@
   021E4B5E  6820       ldr r0, [r4]
   021E4B60  F636 FB40  bl #0x201b1e4
 
-== overlay50+0x248 (RAM 0x021E4BC8), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x248 (RAM 0x021E4BC8), 4 edits in 16 bytes, thumb: text-speed-options-menu
   021E4BC4  F000 FFB0  bl #0x21e5b28
 - 021E4BC8  20B5       movs r0, #0xb5
 + 021E4BC8  20CA       movs r0, #0xca
   021E4BCA  0080       lsls r0, r0, #2
   021E4BCC  5820       ldr r0, [r4, r0]
-
-== overlay50+0x24A (RAM 0x021E4BCA), 2 bytes, thumb: text-speed-options-menu
-- 021E4BCA  0080       lsls r0, r0, #2
-+ 021E4BCA  0080       lsls r0, r0, #2
-  021E4BCC  5820       ldr r0, [r4, r0]
-  021E4BCE  F627 FFEF  bl #0x200cbb0
-
-== overlay50+0x254 (RAM 0x021E4BD4), 2 bytes, thumb: text-speed-options-menu
   021E4BCE  F627 FFEF  bl #0x200cbb0
   021E4BD2  E050       b #0x21e4c76
 - 021E4BD4  20B5       movs r0, #0xb5
 + 021E4BD4  20CA       movs r0, #0xca
   021E4BD6  0080       lsls r0, r0, #2
   021E4BD8  5820       ldr r0, [r4, r0]
-
-== overlay50+0x256 (RAM 0x021E4BD6), 2 bytes, thumb: text-speed-options-menu
-- 021E4BD6  0080       lsls r0, r0, #2
-+ 021E4BD6  0080       lsls r0, r0, #2
-  021E4BD8  5820       ldr r0, [r4, r0]
   021E4BDA  F627 FFE9  bl #0x200cbb0
 
-== overlay50+0x274 (RAM 0x021E4BF4), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x274 (RAM 0x021E4BF4), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E4BF0  0F89       lsrs r1, r1, #0x1e
   021E4BF2  D005       beq #0x21e4c00
 - 021E4BF4  20B5       movs r0, #0xb5
 + 021E4BF4  20CA       movs r0, #0xca
   021E4BF6  0080       lsls r0, r0, #2
   021E4BF8  5820       ldr r0, [r4, r0]
-
-== overlay50+0x276 (RAM 0x021E4BF6), 2 bytes, thumb: text-speed-options-menu
-- 021E4BF6  0080       lsls r0, r0, #2
-+ 021E4BF6  0080       lsls r0, r0, #2
-  021E4BF8  5820       ldr r0, [r4, r0]
   021E4BFA  F627 FFD9  bl #0x200cbb0
 
-== overlay50+0x284 (RAM 0x021E4C04), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x284 (RAM 0x021E4C04), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E4C00  F000 FDC4  bl #0x21e578c
 - 021E4C04  20B5       movs r0, #0xb5
 + 021E4C04  20CA       movs r0, #0xca
   021E4C06  0080       lsls r0, r0, #2
   021E4C08  5820       ldr r0, [r4, r0]
-
-== overlay50+0x286 (RAM 0x021E4C06), 2 bytes, thumb: text-speed-options-menu
-- 021E4C06  0080       lsls r0, r0, #2
-+ 021E4C06  0080       lsls r0, r0, #2
-  021E4C08  5820       ldr r0, [r4, r0]
   021E4C0A  F627 FFD1  bl #0x200cbb0
 
-== overlay50+0x294 (RAM 0x021E4C14), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x294 (RAM 0x021E4C14), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E4C10  2000       movs r0, #0
   021E4C12  BD18       pop {r3, r4, pc}
 - 021E4C14  20B5       movs r0, #0xb5
 + 021E4C14  20CA       movs r0, #0xca
   021E4C16  0080       lsls r0, r0, #2
   021E4C18  5820       ldr r0, [r4, r0]
-
-== overlay50+0x296 (RAM 0x021E4C16), 2 bytes, thumb: text-speed-options-menu
-- 021E4C16  0080       lsls r0, r0, #2
-+ 021E4C16  0080       lsls r0, r0, #2
-  021E4C18  5820       ldr r0, [r4, r0]
   021E4C1A  F627 FFC9  bl #0x200cbb0
 
-== overlay50+0x2CA (RAM 0x021E4C4A), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x2CA (RAM 0x021E4C4A), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E4C46  2000       movs r0, #0
   021E4C48  BD18       pop {r3, r4, pc}
 - 021E4C4A  20B5       movs r0, #0xb5
 + 021E4C4A  20CA       movs r0, #0xca
   021E4C4C  0080       lsls r0, r0, #2
-  021E4C4E  5820       ldr r0, [r4, r0]
-
-== overlay50+0x2CC (RAM 0x021E4C4C), 2 bytes, thumb: text-speed-options-menu
-- 021E4C4C  0080       lsls r0, r0, #2
-+ 021E4C4C  0080       lsls r0, r0, #2
   021E4C4E  5820       ldr r0, [r4, r0]
   021E4C50  F627 FFAE  bl #0x200cbb0
 
@@ -222,27 +182,22 @@
 + 021E512E  2122       movs r1, #0x22
   021E5130  F639 F83A  bl #0x201e1a8
 
-== overlay50+0x8E4 (RAM 0x021E5264), 4 bytes, thumb: text-speed-options-menu
+== overlay50+0x8E4 (RAM 0x021E5264), 2 edits in 6 bytes, thumb: text-speed-options-menu
   021E5260  1C61       adds r1, r4, #1
   021E5262  1C2A       adds r2, r5, #0
 - 021E5264  F626 FC52  bl #0x200bb0c
 + 021E5264  F613 FB6A  bl #0x1ff893c  ; load_label
-
-== overlay50+0x8E8 (RAM 0x021E5268), 2 bytes, thumb: text-speed-options-menu
 - 021E5268  2018       movs r0, #0x18
 + 021E5268  2014       movs r0, #0x14
   021E526A  4360       muls r0, r4, r0
   021E526C  1D40       adds r0, r0, #5
 
-== overlay50+0x904 (RAM 0x021E5284), 4 bytes, thumb: text-speed-options-menu
+== overlay50+0x904 (RAM 0x021E5284), 2 edits in 12 bytes, thumb: text-speed-options-menu
   021E5280  1C2A       adds r2, r5, #0
   021E5282  2304       movs r3, #4
 - 021E5284  F63B FAD6  bl #0x2020834
 + 021E5284  F613 FBA2  bl #0x1ff89cc  ; draw_label
   021E5288  1C60       adds r0, r4, #1
-  021E528A  0400       lsls r0, r0, #0x10
-
-== overlay50+0x90E (RAM 0x021E528E), 2 bytes, thumb: text-speed-options-menu
   021E528A  0400       lsls r0, r0, #0x10
   021E528C  0C04       lsrs r4, r0, #0x10
 - 021E528E  2C06       cmp r4, #6
@@ -306,27 +261,20 @@
 - 021E553C  000F0200
 + 021E553C  00010200
 
-== overlay50+0xBD2 (RAM 0x021E5552), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0xBD2 (RAM 0x021E5552), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E554E  428C       cmp r4, r1
   021E5550  D106       bne #0x21e5560
 - 021E5552  21BB       movs r1, #0xbb
 + 021E5552  21D0       movs r1, #0xd0
   021E5554  0089       lsls r1, r1, #2
   021E5556  5840       ldr r0, [r0, r1]
-
-== overlay50+0xBD4 (RAM 0x021E5554), 2 bytes, thumb: text-speed-options-menu
-- 021E5554  0089       lsls r1, r1, #2
-+ 021E5554  0089       lsls r1, r1, #2
-  021E5556  5840       ldr r0, [r0, r1]
   021E5558  2101       movs r1, #1
 
-== overlay50+0xBE4 (RAM 0x021E5564), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0xBE4 (RAM 0x021E5564), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E5560  2C01       cmp r4, #1
   021E5562  D105       bne #0x21e5570
 - 021E5564  212F       movs r1, #0x2f
 + 021E5564  21D1       movs r1, #0xd1
-
-== overlay50+0xBE6 (RAM 0x021E5566), 2 bytes, thumb: text-speed-options-menu
 - 021E5566  0109       lsls r1, r1, #4
 + 021E5566  0089       lsls r1, r1, #2
   021E5568  5840       ldr r0, [r0, r1]
@@ -340,15 +288,11 @@
   021E55A2  D028       beq #0x21e55f6
   021E55A4  4B76       ldr r3, [pc, #0x1d8]
 
-== overlay50+0xCD8 (RAM 0x021E5658), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0xCD8 (RAM 0x021E5658), 2 edits in 8 bytes, thumb: text-speed-options-menu
   021E5654  D017       beq #0x21e5686
   021E5656  6920       ldr r0, [r4, #0x10]
 - 021E5658  2107       movs r1, #7
 + 021E5658  2108       movs r1, #8
-  021E565A  06C0       lsls r0, r0, #0x1b
-  021E565C  0F40       lsrs r0, r0, #0x1d
-
-== overlay50+0xCDE (RAM 0x021E565E), 2 bytes, thumb: text-speed-options-menu
   021E565A  06C0       lsls r0, r0, #0x1b
   021E565C  0F40       lsrs r0, r0, #0x1d
 - 021E565E  1D80       adds r0, r0, #6
@@ -371,29 +315,19 @@
   021E56CA  D12E       bne #0x21e572a
   021E56CC  2054       movs r0, #0x54
 
-== overlay50+0xD68 (RAM 0x021E56E8), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0xD68 (RAM 0x021E56E8), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E56E4  F620 FC3A  bl #0x2005f5c
 - 021E56E8  20BE       movs r0, #0xbe
 + 021E56E8  20D3       movs r0, #0xd3
   021E56EA  0080       lsls r0, r0, #2
   021E56EC  5820       ldr r0, [r4, r0]
-
-== overlay50+0xD6A (RAM 0x021E56EA), 2 bytes, thumb: text-speed-options-menu
-- 021E56EA  0080       lsls r0, r0, #2
-+ 021E56EA  0080       lsls r0, r0, #2
-  021E56EC  5820       ldr r0, [r4, r0]
   021E56EE  2103       movs r1, #3
 
-== overlay50+0xD90 (RAM 0x021E5710), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0xD90 (RAM 0x021E5710), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E570C  F620 FC26  bl #0x2005f5c
 - 021E5710  20BD       movs r0, #0xbd
 + 021E5710  20D2       movs r0, #0xd2
   021E5712  0080       lsls r0, r0, #2
-  021E5714  5820       ldr r0, [r4, r0]
-
-== overlay50+0xD92 (RAM 0x021E5712), 2 bytes, thumb: text-speed-options-menu
-- 021E5712  0080       lsls r0, r0, #2
-+ 021E5712  0080       lsls r0, r0, #2
   021E5714  5820       ldr r0, [r4, r0]
   021E5716  2103       movs r1, #3
 
@@ -405,93 +339,64 @@
   021E5748  D10D       bne #0x21e5766
   021E574A  2054       movs r0, #0x54
 
-== overlay50+0xDD8 (RAM 0x021E5758), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0xDD8 (RAM 0x021E5758), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E5754  2800       cmp r0, #0
   021E5756  D106       bne #0x21e5766
 - 021E5758  20BD       movs r0, #0xbd
 + 021E5758  20D2       movs r0, #0xd2
   021E575A  0080       lsls r0, r0, #2
   021E575C  5820       ldr r0, [r4, r0]
-
-== overlay50+0xDDA (RAM 0x021E575A), 2 bytes, thumb: text-speed-options-menu
-- 021E575A  0080       lsls r0, r0, #2
-+ 021E575A  0080       lsls r0, r0, #2
-  021E575C  5820       ldr r0, [r4, r0]
   021E575E  2103       movs r1, #3
 
-== overlay50+0xDE6 (RAM 0x021E5766), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0xDE6 (RAM 0x021E5766), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E5760  F63F FBCE  bl #0x2024f00
   021E5764  E005       b #0x21e5772
 - 021E5766  20BD       movs r0, #0xbd
 + 021E5766  20D2       movs r0, #0xd2
   021E5768  0080       lsls r0, r0, #2
   021E576A  5820       ldr r0, [r4, r0]
-
-== overlay50+0xDE8 (RAM 0x021E5768), 2 bytes, thumb: text-speed-options-menu
-- 021E5768  0080       lsls r0, r0, #2
-+ 021E5768  0080       lsls r0, r0, #2
-  021E576A  5820       ldr r0, [r4, r0]
   021E576C  2102       movs r1, #2
 
-== overlay50+0xE66 (RAM 0x021E57E6), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0xE66 (RAM 0x021E57E6), 2 edits in 6 bytes, thumb: text-speed-options-menu
   021E57E2  F620 FBBB  bl #0x2005f5c
 - 021E57E6  2032       movs r0, #0x32
 + 021E57E6  20DD       movs r0, #0xdd
-  021E57E8  2101       movs r1, #1
-
-== overlay50+0xE6A (RAM 0x021E57EA), 2 bytes, thumb: text-speed-options-menu
   021E57E8  2101       movs r1, #1
 - 021E57EA  0100       lsls r0, r0, #4
 + 021E57EA  0080       lsls r0, r0, #2
   021E57EC  5021       str r1, [r4, r0]
   021E57EE  6A20       ldr r0, [r4, #0x20]
 
-== overlay50+0xE92 (RAM 0x021E5812), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0xE92 (RAM 0x021E5812), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E580E  F000 F899  bl #0x21e5944
 - 021E5812  20BE       movs r0, #0xbe
 + 021E5812  20D3       movs r0, #0xd3
   021E5814  0080       lsls r0, r0, #2
   021E5816  5820       ldr r0, [r4, r0]
-
-== overlay50+0xE94 (RAM 0x021E5814), 2 bytes, thumb: text-speed-options-menu
-- 021E5814  0080       lsls r0, r0, #2
-+ 021E5814  0080       lsls r0, r0, #2
-  021E5816  5820       ldr r0, [r4, r0]
   021E5818  2103       movs r1, #3
 
-== overlay50+0xED4 (RAM 0x021E5854), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0xED4 (RAM 0x021E5854), 2 edits in 6 bytes, thumb: text-speed-options-menu
   021E5850  F620 FB84  bl #0x2005f5c
 - 021E5854  2032       movs r0, #0x32
 + 021E5854  20DD       movs r0, #0xdd
-  021E5856  2101       movs r1, #1
-
-== overlay50+0xED8 (RAM 0x021E5858), 2 bytes, thumb: text-speed-options-menu
   021E5856  2101       movs r1, #1
 - 021E5858  0100       lsls r0, r0, #4
 + 021E5858  0080       lsls r0, r0, #2
   021E585A  5021       str r1, [r4, r0]
   021E585C  6A20       ldr r0, [r4, #0x20]
 
-== overlay50+0xF00 (RAM 0x021E5880), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0xF00 (RAM 0x021E5880), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E587C  F000 F862  bl #0x21e5944
 - 021E5880  20BD       movs r0, #0xbd
 + 021E5880  20D2       movs r0, #0xd2
   021E5882  0080       lsls r0, r0, #2
   021E5884  5820       ldr r0, [r4, r0]
-
-== overlay50+0xF02 (RAM 0x021E5882), 2 bytes, thumb: text-speed-options-menu
-- 021E5882  0080       lsls r0, r0, #2
-+ 021E5882  0080       lsls r0, r0, #2
-  021E5884  5820       ldr r0, [r4, r0]
   021E5886  2103       movs r1, #3
 
-== overlay50+0xF78 (RAM 0x021E58F8), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0xF78 (RAM 0x021E58F8), 2 edits in 6 bytes, thumb: text-speed-options-menu
   021E58F4  F000 F86E  bl #0x21e59d4
 - 021E58F8  2032       movs r0, #0x32
 + 021E58F8  20DD       movs r0, #0xdd
-  021E58FA  2101       movs r1, #1
-
-== overlay50+0xF7C (RAM 0x021E58FC), 2 bytes, thumb: text-speed-options-menu
   021E58FA  2101       movs r1, #1
 - 021E58FC  0100       lsls r0, r0, #4
 + 021E58FC  0080       lsls r0, r0, #2
@@ -518,83 +423,47 @@
   021E594C  D124       bne #0x21e5998
   021E594E  2000       movs r0, #0
 
-== overlay50+0xFE4 (RAM 0x021E5964), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0xFE4 (RAM 0x021E5964), 4 edits in 16 bytes, thumb: text-speed-options-menu
   021E5960  2800       cmp r0, #0
   021E5962  D10C       bne #0x21e597e
 - 021E5964  20BD       movs r0, #0xbd
 + 021E5964  20D2       movs r0, #0xd2
   021E5966  0080       lsls r0, r0, #2
   021E5968  5828       ldr r0, [r5, r0]
-
-== overlay50+0xFE6 (RAM 0x021E5966), 2 bytes, thumb: text-speed-options-menu
-- 021E5966  0080       lsls r0, r0, #2
-+ 021E5966  0080       lsls r0, r0, #2
-  021E5968  5828       ldr r0, [r5, r0]
   021E596A  2101       movs r1, #1
-
-== overlay50+0xFF0 (RAM 0x021E5970), 2 bytes, thumb: text-speed-options-menu
   021E596C  F63F FAC8  bl #0x2024f00
 - 021E5970  20BE       movs r0, #0xbe
 + 021E5970  20D3       movs r0, #0xd3
   021E5972  0080       lsls r0, r0, #2
   021E5974  5828       ldr r0, [r5, r0]
-
-== overlay50+0xFF2 (RAM 0x021E5972), 2 bytes, thumb: text-speed-options-menu
-- 021E5972  0080       lsls r0, r0, #2
-+ 021E5972  0080       lsls r0, r0, #2
-  021E5974  5828       ldr r0, [r5, r0]
   021E5976  2100       movs r1, #0
 
-== overlay50+0xFFE (RAM 0x021E597E), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0xFFE (RAM 0x021E597E), 4 edits in 16 bytes, thumb: text-speed-options-menu
   021E5978  F63F FAC2  bl #0x2024f00
   021E597C  BD38       pop {r3, r4, r5, pc}
 - 021E597E  20BD       movs r0, #0xbd
 + 021E597E  20D2       movs r0, #0xd2
   021E5980  0080       lsls r0, r0, #2
   021E5982  5828       ldr r0, [r5, r0]
-
-== overlay50+0x1000 (RAM 0x021E5980), 2 bytes, thumb: text-speed-options-menu
-- 021E5980  0080       lsls r0, r0, #2
-+ 021E5980  0080       lsls r0, r0, #2
-  021E5982  5828       ldr r0, [r5, r0]
   021E5984  2100       movs r1, #0
-
-== overlay50+0x100A (RAM 0x021E598A), 2 bytes, thumb: text-speed-options-menu
   021E5986  F63F FABB  bl #0x2024f00
 - 021E598A  20BE       movs r0, #0xbe
 + 021E598A  20D3       movs r0, #0xd3
   021E598C  0080       lsls r0, r0, #2
   021E598E  5828       ldr r0, [r5, r0]
-
-== overlay50+0x100C (RAM 0x021E598C), 2 bytes, thumb: text-speed-options-menu
-- 021E598C  0080       lsls r0, r0, #2
-+ 021E598C  0080       lsls r0, r0, #2
-  021E598E  5828       ldr r0, [r5, r0]
   021E5990  2101       movs r1, #1
 
-== overlay50+0x102E (RAM 0x021E59AE), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x102E (RAM 0x021E59AE), 4 edits in 16 bytes, thumb: text-speed-options-menu
   021E59AA  F636 FD87  bl #0x201c4bc
 - 021E59AE  20BD       movs r0, #0xbd
 + 021E59AE  20D2       movs r0, #0xd2
   021E59B0  0080       lsls r0, r0, #2
   021E59B2  5828       ldr r0, [r5, r0]
-
-== overlay50+0x1030 (RAM 0x021E59B0), 2 bytes, thumb: text-speed-options-menu
-- 021E59B0  0080       lsls r0, r0, #2
-+ 021E59B0  0080       lsls r0, r0, #2
-  021E59B2  5828       ldr r0, [r5, r0]
   021E59B4  2100       movs r1, #0
-
-== overlay50+0x103A (RAM 0x021E59BA), 2 bytes, thumb: text-speed-options-menu
   021E59B6  F63F FAA3  bl #0x2024f00
 - 021E59BA  20BE       movs r0, #0xbe
 + 021E59BA  20D3       movs r0, #0xd3
   021E59BC  0080       lsls r0, r0, #2
-  021E59BE  5828       ldr r0, [r5, r0]
-
-== overlay50+0x103C (RAM 0x021E59BC), 2 bytes, thumb: text-speed-options-menu
-- 021E59BC  0080       lsls r0, r0, #2
-+ 021E59BC  0080       lsls r0, r0, #2
   021E59BE  5828       ldr r0, [r5, r0]
   021E59C0  2100       movs r1, #0
 
@@ -610,209 +479,139 @@
   021E59DE  D103       bne #0x21e59e8
   021E59E0  2000       movs r0, #0
 
-== overlay50+0x1088 (RAM 0x021E5A08), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x1088 (RAM 0x021E5A08), 4 edits in 16 bytes, thumb: text-speed-options-menu
   021E5A04  F627 F850  bl #0x200caa8
 - 021E5A08  212D       movs r1, #0x2d
 + 021E5A08  21C9       movs r1, #0xc9
-
-== overlay50+0x108A (RAM 0x021E5A0A), 2 bytes, thumb: text-speed-options-menu
 - 021E5A0A  0109       lsls r1, r1, #4
 + 021E5A0A  0089       lsls r1, r1, #2
   021E5A0C  5060       str r0, [r4, r1]
   021E5A0E  5860       ldr r0, [r4, r1]
-
-== overlay50+0x1094 (RAM 0x021E5A14), 2 bytes, thumb: text-speed-options-menu
   021E5A10  F627 F85A  bl #0x200cac8
 - 021E5A14  27B5       movs r7, #0xb5
 + 021E5A14  27CA       movs r7, #0xca
   021E5A16  00BF       lsls r7, r7, #2
   021E5A18  AA09       add r2, sp, #0x24
-
-== overlay50+0x1096 (RAM 0x021E5A16), 2 bytes, thumb: text-speed-options-menu
-- 021E5A16  00BF       lsls r7, r7, #2
-+ 021E5A16  00BF       lsls r7, r7, #2
-  021E5A18  AA09       add r2, sp, #0x24
   021E5A1A  4B1F       ldr r3, [pc, #0x7c]
 
-== overlay50+0x10EE (RAM 0x021E5A6E), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x10EE (RAM 0x021E5A6E), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E5A6A  1E49       subs r1, r1, #1
   021E5A6C  D1F9       bne #0x21e5a62
 - 021E5A6E  212D       movs r1, #0x2d
 + 021E5A6E  21C9       movs r1, #0xc9
-
-== overlay50+0x10F0 (RAM 0x021E5A70), 2 bytes, thumb: text-speed-options-menu
 - 021E5A70  0109       lsls r1, r1, #4
 + 021E5A70  0089       lsls r1, r1, #2
   021E5A72  5860       ldr r0, [r4, r1]
   021E5A74  1D09       adds r1, r1, #4
 
-== overlay50+0x10FE (RAM 0x021E5A7E), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x10FE (RAM 0x021E5A7E), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E5A7A  F627 F9D3  bl #0x200ce24
 - 021E5A7E  202D       movs r0, #0x2d
 + 021E5A7E  20C9       movs r0, #0xc9
-
-== overlay50+0x1100 (RAM 0x021E5A80), 2 bytes, thumb: text-speed-options-menu
 - 021E5A80  0100       lsls r0, r0, #4
 + 021E5A80  0080       lsls r0, r0, #2
   021E5A82  5820       ldr r0, [r4, r0]
   021E5A84  F627 F83A  bl #0x200cafc
 
-== overlay50+0x1126 (RAM 0x021E5AA6), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x1126 (RAM 0x021E5AA6), 2 edits in 6 bytes, thumb: text-speed-options-menu
   021E5AA2  021E       lsls r6, r3, #8
   021E5AA4  B510       push {r4, lr}
 - 021E5AA6  212D       movs r1, #0x2d
 + 021E5AA6  21C9       movs r1, #0xc9
-  021E5AA8  1C04       adds r4, r0, #0
-
-== overlay50+0x112A (RAM 0x021E5AAA), 2 bytes, thumb: text-speed-options-menu
   021E5AA8  1C04       adds r4, r0, #0
 - 021E5AAA  0109       lsls r1, r1, #4
 + 021E5AAA  0089       lsls r1, r1, #2
   021E5AAC  5860       ldr r0, [r4, r1]
   021E5AAE  1D09       adds r1, r1, #4
 
-== overlay50+0x1136 (RAM 0x021E5AB6), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x1136 (RAM 0x021E5AB6), 4 edits in 16 bytes, thumb: text-speed-options-menu
   021E5AB2  F627 F8DF  bl #0x200cc74
 - 021E5AB6  202D       movs r0, #0x2d
 + 021E5AB6  20C9       movs r0, #0xc9
-
-== overlay50+0x1138 (RAM 0x021E5AB8), 2 bytes, thumb: text-speed-options-menu
 - 021E5AB8  0100       lsls r0, r0, #4
 + 021E5AB8  0080       lsls r0, r0, #2
   021E5ABA  5820       ldr r0, [r4, r0]
-  021E5ABC  F627 F8EC  bl #0x200cc98
-
-== overlay50+0x1140 (RAM 0x021E5AC0), 2 bytes, thumb: text-speed-options-menu
   021E5ABC  F627 F8EC  bl #0x200cc98
 - 021E5AC0  20B5       movs r0, #0xb5
 + 021E5AC0  20CA       movs r0, #0xca
   021E5AC2  2100       movs r1, #0
   021E5AC4  0080       lsls r0, r0, #2
-
-== overlay50+0x1144 (RAM 0x021E5AC4), 2 bytes, thumb: text-speed-options-menu
-  021E5AC2  2100       movs r1, #0
-- 021E5AC4  0080       lsls r0, r0, #2
-+ 021E5AC4  0080       lsls r0, r0, #2
   021E5AC6  5021       str r1, [r4, r0]
   021E5AC8  BD10       pop {r4, pc}
 
-== overlay50+0x1158 (RAM 0x021E5AD8), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x1158 (RAM 0x021E5AD8), 4 edits in 8 bytes, thumb: text-speed-options-menu
   021E5AD4  00A0       lsls r0, r4, #2
   021E5AD6  1835       adds r5, r6, r0
 - 021E5AD8  202D       movs r0, #0x2d
 + 021E5AD8  20C9       movs r0, #0xc9
-
-== overlay50+0x115A (RAM 0x021E5ADA), 2 bytes, thumb: text-speed-options-menu
 - 021E5ADA  21B5       movs r1, #0xb5
 + 021E5ADA  21CA       movs r1, #0xca
-
-== overlay50+0x115C (RAM 0x021E5ADC), 2 bytes, thumb: text-speed-options-menu
 - 021E5ADC  0100       lsls r0, r0, #4
 + 021E5ADC  0080       lsls r0, r0, #2
   021E5ADE  0089       lsls r1, r1, #2
   021E5AE0  2228       movs r2, #0x28
-
-== overlay50+0x115E (RAM 0x021E5ADE), 2 bytes, thumb: text-speed-options-menu
-- 021E5ADE  0089       lsls r1, r1, #2
-+ 021E5ADE  0089       lsls r1, r1, #2
-  021E5AE0  2228       movs r2, #0x28
   021E5AE2  4362       muls r2, r4, r2
 
-== overlay50+0x116E (RAM 0x021E5AEE), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x116E (RAM 0x021E5AEE), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E5AEA  F627 F9AB  bl #0x200ce44
 - 021E5AEE  21B6       movs r1, #0xb6
 + 021E5AEE  21CB       movs r1, #0xcb
   021E5AF0  0089       lsls r1, r1, #2
   021E5AF2  5068       str r0, [r5, r1]
-
-== overlay50+0x1170 (RAM 0x021E5AF0), 2 bytes, thumb: text-speed-options-menu
-- 021E5AF0  0089       lsls r1, r1, #2
-+ 021E5AF0  0089       lsls r1, r1, #2
-  021E5AF2  5068       str r0, [r5, r1]
   021E5AF4  1C08       adds r0, r1, #0
 
-== overlay50+0x117E (RAM 0x021E5AFE), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x117E (RAM 0x021E5AFE), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E5AFA  F627 FEE7  bl #0x200d8cc
 - 021E5AFE  20B6       movs r0, #0xb6
 + 021E5AFE  20CB       movs r0, #0xcb
   021E5B00  0080       lsls r0, r0, #2
   021E5B02  5828       ldr r0, [r5, r0]
-
-== overlay50+0x1180 (RAM 0x021E5B00), 2 bytes, thumb: text-speed-options-menu
-- 021E5B00  0080       lsls r0, r0, #2
-+ 021E5B00  0080       lsls r0, r0, #2
-  021E5B02  5828       ldr r0, [r5, r0]
   021E5B04  2101       movs r1, #1
 
-== overlay50+0x1194 (RAM 0x021E5B14), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x1194 (RAM 0x021E5B14), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E5B10  2C09       cmp r4, #9
   021E5B12  D3DF       blo #0x21e5ad4
 - 021E5B14  20BD       movs r0, #0xbd
 + 021E5B14  20D2       movs r0, #0xd2
   021E5B16  0080       lsls r0, r0, #2
   021E5B18  5830       ldr r0, [r6, r0]
-
-== overlay50+0x1196 (RAM 0x021E5B16), 2 bytes, thumb: text-speed-options-menu
-- 021E5B16  0080       lsls r0, r0, #2
-+ 021E5B16  0080       lsls r0, r0, #2
-  021E5B18  5830       ldr r0, [r6, r0]
   021E5B1A  2101       movs r1, #1
 
-== overlay50+0x11B2 (RAM 0x021E5B32), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x11B2 (RAM 0x021E5B32), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E5B2E  2700       movs r7, #0
   021E5B30  1C2E       adds r6, r5, #0
 - 021E5B32  20B6       movs r0, #0xb6
 + 021E5B32  20CB       movs r0, #0xcb
   021E5B34  0080       lsls r0, r0, #2
   021E5B36  A900       add r1, sp, #0
-
-== overlay50+0x11B4 (RAM 0x021E5B34), 2 bytes, thumb: text-speed-options-menu
-- 021E5B34  0080       lsls r0, r0, #2
-+ 021E5B34  0080       lsls r0, r0, #2
-  021E5B36  A900       add r1, sp, #0
   021E5B38  5828       ldr r0, [r5, r0]
 
-== overlay50+0x11D6 (RAM 0x021E5B56), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x11D6 (RAM 0x021E5B56), 2 edits in 8 bytes, thumb: text-speed-options-menu
   021E5B52  8041       strh r1, [r0, #2]
   021E5B54  2102       movs r1, #2
 - 021E5B56  20B6       movs r0, #0xb6
 + 021E5B56  20CB       movs r0, #0xcb
   021E5B58  5E51       ldrsh r1, [r2, r1]
   021E5B5A  2200       movs r2, #0
-
-== overlay50+0x11DC (RAM 0x021E5B5C), 2 bytes, thumb: text-speed-options-menu
-  021E5B58  5E51       ldrsh r1, [r2, r1]
-  021E5B5A  2200       movs r2, #0
-- 021E5B5C  0080       lsls r0, r0, #2
-+ 021E5B5C  0080       lsls r0, r0, #2
+  021E5B5C  0080       lsls r0, r0, #2
   021E5B5E  5E9A       ldrsh r2, [r3, r2]
   021E5B60  5828       ldr r0, [r5, r0]
 
-== overlay50+0x11FC (RAM 0x021E5B7C), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x11FC (RAM 0x021E5B7C), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E5B78  B510       push {r4, lr}
   021E5B7A  1C04       adds r4, r0, #0
 - 021E5B7C  20BD       movs r0, #0xbd
 + 021E5B7C  20D2       movs r0, #0xd2
   021E5B7E  0080       lsls r0, r0, #2
   021E5B80  5820       ldr r0, [r4, r0]
-
-== overlay50+0x11FE (RAM 0x021E5B7E), 2 bytes, thumb: text-speed-options-menu
-- 021E5B7E  0080       lsls r0, r0, #2
-+ 021E5B7E  0080       lsls r0, r0, #2
-  021E5B80  5820       ldr r0, [r4, r0]
   021E5B82  F63F FAF9  bl #0x2025178
 
-== overlay50+0x120A (RAM 0x021E5B8A), 2 bytes, thumb: text-speed-options-menu
+== overlay50+0x120A (RAM 0x021E5B8A), 2 edits in 4 bytes, thumb: text-speed-options-menu
   021E5B86  2800       cmp r0, #0
   021E5B88  D108       bne #0x21e5b9c
 - 021E5B8A  20BE       movs r0, #0xbe
 + 021E5B8A  20D3       movs r0, #0xd3
   021E5B8C  0080       lsls r0, r0, #2
-  021E5B8E  5820       ldr r0, [r4, r0]
-
-== overlay50+0x120C (RAM 0x021E5B8C), 2 bytes, thumb: text-speed-options-menu
-- 021E5B8C  0080       lsls r0, r0, #2
-+ 021E5B8C  0080       lsls r0, r0, #2
   021E5B8E  5820       ldr r0, [r4, r0]
   021E5B90  F63F FAF2  bl #0x2025178
 

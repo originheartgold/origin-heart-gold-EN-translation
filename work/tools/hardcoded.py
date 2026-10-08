@@ -120,6 +120,20 @@ class RomView:
             return bytes(m.Narc.parse(data).files[int(mem)])
         return data
 
+    def code(self, key) -> bytes:
+        """Read only: the RAM image of arm9 (its main section, decompressed) or of an overlay (decompressed),
+        also in a ROM whose code is compressed (the USA ROM; usref.py)."""
+        if key == "arm9":
+            return bytes(self.rom.loadArm9().sections[0].data)
+        ov = self.overlay(key)
+        if ov is None:
+            raise HardcodedError(f"{key}: no such overlay")
+        return bytes(ov.data)
+
+    def narc(self, path) -> list:
+        """The members of the NARC at `path`."""
+        return m.Narc.parse(m.get_file(self.rom, path)).files
+
     def set(self, key, data: bytes):
         if key == "arm9":
             self.rom.arm9 = bytes(data)

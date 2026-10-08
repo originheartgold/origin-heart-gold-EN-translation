@@ -27,7 +27,7 @@ Full adds (and fails when armips v0.11.0, the two ROMs or xdelta3 are missing):
   listings   every armips fix assembled alone and disassembled (asmlisting.py, capstone pinned in
              requirements-dev.txt): each work/patches/<id>/<id>.listing must equal it (a stale snapshot fails,
              with the command that regenerates it);
-  us-refs    every [[us_ref]] claim checked against the USA ROM (usref.py; skipped with a note without it);
+  us-refs    every [[us_ref]] claim checked against the USA ROM (usref.py);
   tests      the unit tests again with armips: the per-binary GOLDEN SHA-1s of test_asmpatch.py, which do not
              depend on the translation text;
   build      build.py into --work-dir (default work/build/check), then its hashes against
@@ -194,7 +194,7 @@ def step_asmpatch(armips):
     return r.stdout.strip().splitlines()[-1]
 
 
-class Assembled:
+class AssemblyCache:
     """The Chinese ROM and every armips fix assembled alone over it, shared by the listings and us-refs steps."""
 
     def __init__(self):
@@ -236,8 +236,6 @@ def step_us_refs(armips, cache):
     import build
     import msgtool
     import usref
-    if not build.ROM_US.is_file():
-        raise Skip(f"{build.ROM_US.relative_to(REPO)} is missing: the USA claims are not checked")
     all_fixes, cn, done = cache.get(armips)
     rows, probs = usref.check_all(all_fixes, msgtool.load_rom(str(build.ROM_US)), cn, done)
     if probs:
@@ -436,7 +434,7 @@ def main(argv=None) -> int:
             return fn(armips["path"])
         return go
 
-    cache = Assembled()
+    cache = AssemblyCache()
     steps += [("prereq", prereq), ("asmpatch", need(step_asmpatch)),
               ("listings", need(lambda p: step_listings(p, cache))),
               ("us-refs", need(lambda p: step_us_refs(p, cache))),
