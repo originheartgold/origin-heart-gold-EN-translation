@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "小松『这样啊……{SCROLL}前阵子,舞女们所说的{NEWLINE}就是你啦……{SCROLL}啊！不不,没什么事,{NEWLINE}不要在意啊。{SCROLL}既然你拥有这股力量,{NEWLINE}那对你来说,横渡大海{CLEAR}就是小菜一碟。{SCROLL}从这里向西走,{NEWLINE}然后再向南走的话,{CLEAR}就是浅葱市了。{CLEAR}试试去那里看看吧……",
-   "en": "Morty: I get it...{SCROLL}The person the Kimono Girls were{NEWLINE}talking about must be you...{SCROLL}Never mind.{SCROLL}You should be strong enough to go{NEWLINE}across the sea.{SCROLL}When you go west and then south,{NEWLINE}you’ll reach Olivine City.{CLEAR}Why don’t you head for it?",
+   "en": "Morty: I see...{SCROLL}So you’re the one the Kimono Girls{NEWLINE}were talking about the other day...{SCROLL}Ah! No, no, it’s nothing.{NEWLINE}Don’t mind me.{SCROLL}With power like yours, crossing the sea{NEWLINE}will be a piece of cake for you.{SCROLL}Go west from here and then south,{NEWLINE}and you’ll reach Olivine City.{CLEAR}Why not try going there...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0614/6"
+   "origin": "agent",
+   "notes": "US 0614/6 | RV040: omission: US line dropped 前阵子, 啊！不不,没什么事,不要在意, 小菜一碟"
   },
   {
    "id": 7,
@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "干什么,找道馆馆主有事么？{SCROLL}馆主小松{NEWLINE}现在出门去那座烧掉的塔了。{SCROLL}不好意思,还是请你回去吧。{NEWLINE}哈哈哈。{SCROLL}",
-   "en": "You have business with the Gym Leader?{SCROLL}Morty, the Gym Leader, has gone to{NEWLINE}the Burned Tower.{SCROLL}Sorry, but you’ll have to leave.{NEWLINE}Ho ho ho.{SCROLL}",
+   "en": "What is it? Got business with{NEWLINE}the Gym Leader?{SCROLL}Morty, the Gym Leader, has gone out{NEWLINE}to that burned tower.{SCROLL}Sorry, but please go back for now.{NEWLINE}Ha ha ha.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0614/9"
+   "origin": "agent",
+   "notes": "US 0614/9 | RV040: omission: restored 干什么, 出门, 那座烧掉的塔, 哈哈哈"
   },
   {
    "id": 10,

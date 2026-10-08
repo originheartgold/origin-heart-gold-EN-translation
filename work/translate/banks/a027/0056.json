@@ -62,18 +62,18 @@
   {
    "id": 7,
    "zh": "如果这是您的看法,{NEWLINE}我们就没什么要说的了。{SCROLL}不过……{NEWLINE}要是你想再来看凤王的话,{CLEAR}等你做完所有的事后{CLEAR}再到这里来,{CLEAR}可以吗？",
-   "en": "If that is what you believe, we will not{NEWLINE}try to convince you otherwise.{SCROLL}Still, if you want to see Ho-Oh once{NEWLINE}more, perhaps you can come back here{CLEAR}after everything has been settled...",
+   "en": "If that is how you see it, then we{NEWLINE}have nothing more to say.{SCROLL}However... If you want to see Ho-Oh{NEWLINE}again, would you come back here{CLEAR}after you have finished everything{CLEAR}you need to do?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0058/7; modernised from US 0058#7"
+   "origin": "agent",
+   "notes": "US 0058/7; modernised from US 0058#7 | RV040: meaning: US line paraphrased; restored 没什么要说的, 不过…… and the question"
   },
   {
    "id": 8,
    "zh": "你离开这里的话{NEWLINE}凤王短时间内{CLEAR}也不会再来了……{SCROLL}你还是做完所有的事情{CLEAR}再到这个地方来吧……",
-   "en": "I think when you turn your back to it,{NEWLINE}Ho-Oh will not come back for{CLEAR}some time...{SCROLL}If you want to see Ho-Oh, perhaps you{NEWLINE}can come back here after everything{CLEAR}has been settled...",
+   "en": "If you leave here, Ho-Oh will not{NEWLINE}come back for some time...{SCROLL}Finish everything you need to do first,{NEWLINE}and then come back to this place...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0058/8; modernised from US 0058#8"
+   "origin": "agent",
+   "notes": "US 0058/8; modernised from US 0058#8 | RV040: meaning: US line changed second half; zh tells player to finish everything first"
   },
   {
    "id": 9,
@@ -158,10 +158,10 @@
   {
    "id": 19,
    "zh": "彩月『小女子姐妹五人{NEWLINE}现已如约来至塔顶,{CLEAR}有何吩咐请二位示下。",
-   "en": "Satsuki: We five sisters have come{NEWLINE}to the top of the tower as promised.{CLEAR}Please tell us what you require of us.",
+   "en": "Satsuki: We five humble sisters have{NEWLINE}come to the top of the tower{CLEAR}as promised.{SCROLL}Please tell us what you require of us.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV040: voice: 小女子 humble self-reference dropped"
   },
   {
    "id": 20,
@@ -214,10 +214,10 @@
   {
    "id": 26,
    "zh": "彩月『不行啊小松馆主,{NEWLINE}凤王是我们通过舞蹈召唤来的,{CLEAR}由我来收服才更合理吧？",
-   "en": "Satsuki: Oh, no, Morty. We summoned{NEWLINE}Ho-Oh with our dance, so wouldn’t it{CLEAR}make more sense for me to catch it?",
+   "en": "Satsuki: That will not do, Morty.{NEWLINE}We summoned Ho-Oh with our dance,{CLEAR}so would it not make more sense{CLEAR}for me to catch it?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV040: meaning: 不行啊 = that won't do, not 'Oh, no'"
   },
   {
    "id": 27,
@@ -230,10 +230,10 @@
   {
    "id": 28,
    "zh": "乔伊『凭你想阻止我们还差得远呢！{NEWLINE}阿波罗『凭你想阻止我们还差得远呢！",
-   "en": "Joy: You’ll never stop us!{NEWLINE}Archer: You’ll never stop us!",
+   "en": "Joy: The likes of you can’t stop us!{NEWLINE}Archer: The likes of you can’t stop us!",
    "status": "draft",
    "origin": "agent",
-   "notes": "two speakers in one box, forced {NEWLINE} between them"
+   "notes": "two speakers in one box, forced {NEWLINE} between them | RV040: omission: 凭你 (the likes of you) contempt dropped"
   },
   {
    "id": 29,
@@ -462,10 +462,10 @@
   {
    "id": 57,
    "zh": "阿波罗『混蛋！{NEWLINE}这次明明是二打一的……",
-   "en": "Archer: Damn it! This time it was{NEWLINE}supposed to be two against one...",
+   "en": "Archer: Bastard! This time it was{NEWLINE}supposed to be two against one...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV040: softened: 混蛋 is an insult (bastard), not 'Damn it'; referent left ambiguous (D-1691)"
   },
   {
    "id": 58,
@@ -798,18 +798,18 @@
   {
    "id": 99,
    "zh": "小松『{VAR:0103:0}先生说的没错。{NEWLINE}为了救出凤王,{CLEAR}也为了保护这里的人们{CLEAR}不再受火箭队的侵害,{CLEAR}从现在起咱们就要做好准备,{CLEAR}到时候与火箭队决一死战！",
-   "en": "Morty: Mr. {VAR:0103:0} is right.{NEWLINE}To rescue Ho-Oh, and to protect{CLEAR}the people here from Team Rocket,{CLEAR}we must start preparing now.{SCROLL}When the time comes, we’ll fight Team{NEWLINE}Rocket to the bitter end!",
+   "en": "Morty: Mr. {VAR:0103:0} is right.{NEWLINE}To rescue Ho-Oh, and to protect{CLEAR}the people here from Team Rocket,{CLEAR}we must start preparing now.{SCROLL}When the time comes, we’ll fight{NEWLINE}Team Rocket to the death!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV040: softened: 决一死战 = fight to the death"
   },
   {
    "id": 100,
    "zh": "小松『{VAR:0103:0}小姐说的没错。{NEWLINE}为了救出凤王,{CLEAR}也为了保护这里的人们{CLEAR}不再受火箭队的侵害,{CLEAR}从现在起咱们就要做好准备,{CLEAR}到时候与火箭队决一死战！",
-   "en": "Morty: Miss {VAR:0103:0} is right.{NEWLINE}To rescue Ho-Oh, and to protect{CLEAR}the people here from Team Rocket,{CLEAR}we must start preparing now.{SCROLL}When the time comes, we’ll fight Team{NEWLINE}Rocket to the bitter end!",
+   "en": "Morty: Miss {VAR:0103:0} is right.{NEWLINE}To rescue Ho-Oh, and to protect{CLEAR}the people here from Team Rocket,{CLEAR}we must start preparing now.{SCROLL}When the time comes, we’ll fight{NEWLINE}Team Rocket to the death!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV040: softened: 决一死战 = fight to the death"
   },
   {
    "id": 101,
@@ -822,10 +822,10 @@
   {
    "id": 102,
    "zh": "小梅『近距离看到凤王了……{NEWLINE}好美啊……",
-   "en": "Koume: This humble maiden has seen{NEWLINE}Ho-Oh up close... How beautiful...",
+   "en": "Koume: To see Ho-Oh up close...{NEWLINE}How beautiful...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV040: addition: 'This humble maiden' not in zh"
   },
   {
    "id": 103,

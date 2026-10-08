@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "缘朱市的道馆馆主小松,{NEWLINE}以成为凤王的训练家为目标{CLEAR}而努力修行着。{SCROLL}小松有一个好朋友叫米那君,{NEWLINE}据说他也以成为水君的训练家为目标{CLEAR}而不断努力探索。{SCROLL}我觉得无论他们最后能否成功,{NEWLINE}只要为了这个目标全力以赴过{CLEAR}人生就没有遗憾了。",
-   "en": "Morty, Ecruteak City’s Gym Leader,{NEWLINE}trains hard with the goal of becoming{CLEAR}Ho-Oh’s Trainer.{SCROLL}Morty has a good friend named Eusine.{NEWLINE}They say he’s also searching tirelessly,{CLEAR}with the goal of becoming{CLEAR}Suicune’s Trainer.{SCROLL}Whether or not they succeed in the end,{NEWLINE}as long as they give it everything{CLEAR}they’ve got, they’ll have no regrets{CLEAR}in life.",
+   "en": "Morty, Ecruteak City’s Gym Leader,{NEWLINE}trains hard with the goal of becoming{CLEAR}Ho-Oh’s Trainer.{SCROLL}Morty has a good friend named Eusine.{NEWLINE}They say he’s also searching tirelessly,{CLEAR}with the goal of becoming{CLEAR}Suicune’s Trainer.{SCROLL}I think whether or not they succeed in{NEWLINE}the end, as long as they give it{CLEAR}everything they’ve got, they’ll have{CLEAR}no regrets in life.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV040: omission: restored 我觉得 (I think)"
   },
   {
    "id": 6,
@@ -119,10 +119,10 @@
   {
    "id": 14,
    "zh": "这座塔被谜一般的大火烧掉了。{SCROLL}那里有种危险的气息,{NEWLINE}还是不要太靠近了。",
-   "en": "Burned Tower{NEWLINE}It was destroyed by a mysterious fire.{SCROLL}Please stay away, as it is unsafe.",
+   "en": "This tower was burned down by a{NEWLINE}mysterious fire.{SCROLL}There’s a dangerous air about it.{NEWLINE}Better not get too close.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0612/14"
+   "origin": "agent",
+   "notes": "US 0612/14 | RV040: addition: US title 'Burned Tower' not in zh; restored 危险的气息 and 不要太靠近"
   },
   {
    "id": 15,
@@ -731,10 +731,10 @@
   {
    "id": 90,
    "zh": "哦！不！这修长的嘴巴,张开的双翼！{NEWLINE}这不是跟画册里的凤王一模一样吗？{SCROLL}谢谢你让我看到{NEWLINE}跟凤王这么像的精灵,{CLEAR}这个送给你就当做是感谢吧。",
-   "en": "Oh! No! That long beak, those spread{NEWLINE}wings! Isn’t it just like the Ho-Oh in{CLEAR}my picture book?{SCROLL}Thank you for showing me a{NEWLINE}Pokémon so much like Ho-Oh.{CLEAR}Please take this as thanks.",
+   "en": "Oh! No, wait! That long beak, those{NEWLINE}spread wings! Isn’t it just like the{CLEAR}Ho-Oh in my picture book?{SCROLL}Thank you for showing me a{NEWLINE}Pokémon so much like Ho-Oh.{CLEAR}Please take this as thanks.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV040: meaning: 哦！不！ is the speaker reversing, not dismay"
   },
   {
    "id": 91,

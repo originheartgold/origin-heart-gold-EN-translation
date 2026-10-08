@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "我的伊布{NEWLINE}进化成为太阳精灵了哟~{SCROLL}可是,朋友的伊布{NEWLINE}却进化成为月亮精灵了。{SCROLL}到底有什么地方不一样呢？{NEWLINE}我们两人明明都是{CLEAR}照着伊布习性培养的。",
-   "en": "My Eevee evolved into an Espeon.{SCROLL}But my friend’s Eevee turned into{NEWLINE}an Umbreon.{SCROLL}I wonder why? We both were raising{NEWLINE}our Eevee in the same way...",
+   "en": "My Eevee evolved into an Espeon.{NEWLINE}But my friend’s Eevee turned into{CLEAR}an Umbreon. What made the difference?{SCROLL}We both definitely raised our Eevee{NEWLINE}to suit its nature...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0613/0; modernised from US 0613#0"
+   "origin": "agent",
+   "notes": "US 0613/0; modernised from US 0613#0 | RV040: meaning: 照着伊布习性培养 = raised according to Eevee's nature, not 'in the same way'"
   },
   {
    "id": 1,

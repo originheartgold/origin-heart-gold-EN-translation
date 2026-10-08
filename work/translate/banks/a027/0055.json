@@ -46,26 +46,26 @@
   {
    "id": 5,
    "zh": "原来如此,原来如此！{SCROLL}一切都是因为你和铃声吧！",
-   "en": "Hmmm.{SCROLL}So it was you and the Bell!",
+   "en": "I see, I see! So it was all because of{NEWLINE}you and the ringing of the bell!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0057/5"
+   "origin": "agent",
+   "notes": "US 0057/5 | RV040: omission: US line dropped 原来如此 twice, 一切, 铃声"
   },
   {
    "id": 6,
    "zh": "施主年纪轻轻{NEWLINE}已有这种造化了啊……",
-   "en": "You are quite a remarkable Trainer{NEWLINE}for your age...",
+   "en": "So young, traveler, and already blessed{NEWLINE}with such fortune...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0057/6"
+   "origin": "agent",
+   "notes": "US 0057/6 | RV040: meaning: 施主…已有这种造化 = blessed fortune, not 'remarkable Trainer'"
   },
   {
    "id": 7,
    "zh": "小松『铃铛塔是确认人类和精灵{CLEAR}羁绊的地方。{SCROLL}你可能天生具有那种素质……{SCROLL}能和我互换一下电话号码吗？{SCROLL}我想多看看你和精灵{NEWLINE}之间的羁绊。{VAR:0200:0}",
-   "en": "Morty: Bell Tower is where{NEWLINE}people and Pokémon test their trust.{SCROLL}You may be born with some talent...{CLEAR}Can we exchange numbers?{SCROLL}I would love to examine the trust{NEWLINE}you have with your Pokémon. {VAR:0200:0}",
+   "en": "Morty: The Bell Tower is a place where{NEWLINE}the bond between people and Pokémon{CLEAR}is confirmed.{SCROLL}You may have been born with that{NEWLINE}quality... Can we exchange numbers?{SCROLL}I’d like to see more of the bond{NEWLINE}between you and your Pokémon. {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0057/7"
+   "origin": "agent",
+   "notes": "US 0057/7 | RV040: meaning: 确认…羁绊 = confirming the bond; 那种素质 = that quality"
   },
   {
    "id": 8,
@@ -78,18 +78,18 @@
   {
    "id": 9,
    "zh": "小松『能在周二的晚上{NEWLINE}给我打电话吗？{SCROLL}那时候我可以再和你比试。",
-   "en": "Morty: Give me a call on Tuesday nights.{NEWLINE}I can battle you again then.",
+   "en": "Morty: Could you give me a call on{NEWLINE}Tuesday nights?{CLEAR}I can battle you again then.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0057/9 [D-2064 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
+   "notes": "US 0057/9 [D-2064 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.] | RV040: grammar: zh is a request with a question (能…吗？); kept D-2064 content"
   },
   {
    "id": 10,
    "zh": "小松『我想多看看你和精灵{NEWLINE}之间的羁绊……",
-   "en": "Morty: I really wanted to see the{NEWLINE}trust you have with your Pokémon...",
+   "en": "Morty: I wanted to see more of the bond{NEWLINE}between you and your Pokémon...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0057/10"
+   "origin": "agent",
+   "notes": "US 0057/10 | RV040: meaning: 多看看…羁绊 = see more of the bond"
   },
   {
    "id": 11,

@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "第一道问题。{SCROLL}传说中烧焦塔曾经烧死过三只精灵,{NEWLINE}凤王后来对这三只精灵做了什么？{SCROLL}",
-   "en": "First question.{SCROLL}Legend says three Pokémon once{NEWLINE}burned to death in the Burned Tower.{CLEAR}What did Ho-Oh later do for those{CLEAR}three Pokémon?{SCROLL}",
+   "en": "First question.{SCROLL}Legend says three Pokémon once{NEWLINE}burned to death in the Burned Tower.{CLEAR}What did Ho-Oh later do to those{CLEAR}three Pokémon?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV040: meaning: 对…做了什么 is neutral 'do to', 'do for' hinted the answer"
   },
   {
    "id": 2,
@@ -280,10 +280,10 @@
   {
    "id": 32,
    "zh": "人们需要保护时",
-   "en": "When people need them",
+   "en": "When people need protecting",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV040: meaning: 人们需要保护时 = when people need protecting",
    "category": "menu_touch_1line"
   },
   {
