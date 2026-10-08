@@ -67,19 +67,27 @@ One command runs the checks of the tools and the fixes:
 
 ```sh
 pip install -r work/tools/requirements-dev.txt   # once: ruff, pinned
-python3 work/tools/check.py                      # fast, about 10 s: no armips, no ROM
-python3 work/tools/check.py --full               # also assembles the fixes and builds the ROM (about 1 min)
+python3 work/tools/check.py                      # fast, about 6 s: no armips, no ROM
+python3 work/tools/check.py --full               # also assembles the fixes and builds the ROM (about 30-40 s)
 ```
 
-The fast check runs `fixes.py check` (the fix registry and the asm lint: a header naming the fix and its decisions, every write inside an `.area`, a guard before every area's first write, every area inside the regions fix.toml declares, lines of at most 120 characters), checks that `work/patches/FIXES.md` is current, runs `ruff check` (config: `ruff.toml`) and the unit tests with armips hidden. `--full` needs armips v0.11.0, both ROMs and `xdelta3`; it adds `asmpatch.py check`, the unit tests with armips (the per-binary golden hashes) and a full build compared with `work/patches/expected.toml`. A change to the translation text moves the ROM's and the patch's hashes recorded there (the hash of everything outside the message text stays): after reviewing the build, record the new ones with `python3 work/tools/check.py --full --update-expected` in the same commit. Details: [work/notes/toolchain.md](work/notes/toolchain.md) → Checks.
+The fast check runs `fixes.py check` (the fix registry and the asm lint: a header naming the fix and its decisions, every write inside an `.area`, a guard before every area's first write, every area inside the regions fix.toml declares, lines of at most 120 characters), checks that `work/patches/FIXES.md` is current, runs `ruff check` (config: `ruff.toml`) and the unit tests with armips hidden. `--full` needs armips v0.11.0, both ROMs and `xdelta3`; it adds `asmpatch.py check`, the unit tests with armips (the per-binary golden hashes) and a full build compared with `work/patches/expected.toml`: the hash of everything outside the message banks must match (it moves with a fix, the graphics, the code or a hardcoded string's English, e.g. outfit-chooser-strings); the text, ROM and patch hashes move with every translation change, so they are only reported (`--strict-release` fails on them too). After a change that moves them on purpose, review the build and record the new hashes with `python3 work/tools/check.py --full --update-expected` in the same commit. Details: [work/notes/toolchain.md](work/notes/toolchain.md) → Checks.
 
-**Pre-commit hook.** `.githooks/pre-commit` runs the fast check on what you stage (`check.py --staged`: the staged files, exported to a temp folder), but only when the commit touches Python, `work/patches/`, the decision register, `ruff.toml` or the hook itself; translation-only commits skip it. Turn it on once per clone (it then applies to every worktree of the clone):
+**Pre-commit hook.** `.githooks/pre-commit` runs `check.py --staged` (the check on the staged files, exported to a temp folder): the whole fast check when the commit touches Python, `work/patches/`, `ruff.toml`, `work/tools/requirements*` or `.githooks/`; only the registry step (`--registry-only`, under a second) when the only such file is the decision register (`work/translate/decisions/decisions.jsonl`, e.g. a translation batch); nothing for translation-only commits. It uses `$POKE_PYTHON` if set, else the shared clone's `.venv/bin/python` if there is one, else `python3`, and needs Python 3.11 or newer.
+
+It is not active by itself, and `core.hooksPath` must not be set: the clone's shared `.git/hooks/` already holds the `pre-commit` and `pre-push` hooks of the author identity guard (`originheartgold_identity.py`), and `core.hooksPath` would switch them off in every worktree. To activate it, the shared `.git/hooks/pre-commit` becomes a dispatcher that runs the identity guard first and then the repository's hook of the worktree being committed, if it exists and is executable:
 
 ```sh
-git config core.hooksPath .githooks
+#!/bin/sh
+# .git/hooks/pre-commit (shared by every worktree): the identity guard, then the repo's own check
+python3 "$(git rev-parse --git-common-dir)/hooks/originheartgold_identity.py" commit "$@" || exit $?
+hook="$(git rev-parse --show-toplevel)/.githooks/pre-commit"
+if [ -x "$hook" ]; then
+    exec "$hook" "$@"
+fi
 ```
 
-It runs `$POKE_PYTHON` if set (for example a virtualenv's `python`), else `python3`. `git commit --no-verify` skips it for one commit.
+`git commit --no-verify` skips both for one commit.
 
 ## The guide website
 

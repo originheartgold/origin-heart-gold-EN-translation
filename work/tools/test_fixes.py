@@ -713,6 +713,36 @@ class AsmLint(unittest.TestCase):
         self.assertEqual(self.lint(".org 0x02000100\n    expect16_at 0, 0x1234\n    expect16_at 2, 0x5678\n"
                                    + self.GOOD), [])
 
+    def test_negative_area_and_block_comments(self):
+        probs = self.lint(".org 0x02000010\n.area 2 - 4\n    expect16 0x2305\n    mov r3, #7\n.endarea\n")
+        self.assertEqual(probs, ["t/t.asm:7: .area 2 - 4 is -2 bytes (must be positive)"])
+        probs = self.lint("/* .org 0x02000010\n.halfword 1 */\n" + self.GOOD)
+        self.assertProblem(probs, "t/t.asm:6: /* */ block comments are not supported")
+        self.assertEqual(self.lint('; /* in a comment */\n.org 0x02000010 ; "/*"\n.area 2\n    expect16 0x2305\n'
+                                   '    .halfword 7\n.endarea\n'), [])
+
+    def test_include_files_define_only(self):
+        good = "; helpers\nX equ 2\n.definelabel L, 0x02000010\n.macro put, v\n    .halfword v\n.endmacro\n"
+        self.assertEqual(F.include_problems(good.splitlines(), "inc"), [])
+        bad = good + ".org 0x02000010\n    .halfword 1\n/* x */\n"
+        probs = F.include_problems(bad.splitlines(), "inc")
+        self.assertEqual(len(probs), 4, probs)             # .org, .halfword, the block comment twice
+        self.assertIn("inc:7: an include file may only define macros, equ constants and .definelabel labels "
+                      "(found: .org 0x02000010)", probs[1])
+        self.assertIn("inc:9: /* */ block comments", probs[0])
+        with tempfile.TemporaryDirectory() as td:          # a fix-local include is checked with the fix
+            d = Path(td) / "t"
+            d.mkdir()
+            (d / "local.inc").write_text(bad, encoding="utf-8")
+            fx = dict(self.fx(), _path=d / "fix.toml")
+            text = self.HEAD + '.include "local.inc"\n' + self.GOOD + ".close\n"
+            probs = F.lint_asm(text, fx, name="t.asm")
+            self.assertTrue(any(p.startswith("t/local.inc:7: an include file may only define") for p in probs),
+                            probs)
+            probs = F.lint_asm(text.replace("local.inc", "missing.inc"), fx, name="t.asm")
+            self.assertIn("t/t.asm: .include 'missing.inc' not found", probs)
+        self.assertEqual(F.lint_includes(), [])            # guards.inc, charmap.inc: definitions only
+
     def test_comments_and_quotes(self):
         self.assertEqual(F._strip_comment('.string "a;b\\"c;d" ; x'), '.string "a;b\\"c;d" ')
         self.assertEqual(F._strip_comment("mov r0, #1 // x"), "mov r0, #1 ")
