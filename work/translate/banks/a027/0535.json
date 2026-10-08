@@ -617,18 +617,18 @@
   {
    "id": 76,
    "zh": "嗯~……{NEWLINE}一边的耳朵{CLEAR}叉型的很奇怪呢,{CLEAR}和我所知道的皮丘{CLEAR}有些不一样,{SCROLL}真是很少见呢！{SCROLL}",
-   "en": "Hmm...{NEWLINE}One of the ears is spiky...{CLEAR}That’s strange.{CLEAR}There seems to be something more to it.{SCROLL}It really is a rare sight.{SCROLL}",
+   "en": "Hmm... One of its ears is forked. How{NEWLINE}strange.{SCROLL}It’s a bit different from the Pichu I{NEWLINE}know. It really is rare!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0543/76"
+   "origin": "agent",
+   "notes": "US 0543/76 | RV053: meaning: US ‘something more to it’ replaces 和我所知道的皮丘有些不一样"
   },
   {
    "id": 77,
    "zh": "是在桐树林遇到的？{SCROLL}桐树林里有名叫雪拉比{NEWLINE}不可思议的精灵,{CLEAR}偶尔会现身一下哦！{SCROLL}",
-   "en": "You met it at the Ilex Forest?{SCROLL}A mysterious Pokémon called Celebi{NEWLINE}has been sighted there, or so I heard.{SCROLL}",
+   "en": "You met it in Ilex Forest?{SCROLL}A mysterious Pokémon called Celebi lives{NEWLINE}in Ilex Forest, and it shows itself{CLEAR}every now and then!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0543/77; modernised from US 0543#77"
+   "origin": "agent",
+   "notes": "US 0543/77; modernised from US 0543#77 | RV053: meaning: US ‘or so I heard’ not in zh; 偶尔会现身"
   },
   {
    "id": 78,
@@ -649,10 +649,10 @@
   {
    "id": 80,
    "zh": "空木『雪拉比的{VAR:FF00:1}时空穿越{VAR:FF00:0}……{NEWLINE}能自由来往于{CLEAR}过去与未来呢！{SCROLL}",
-   "en": "Prof. Elm: Celebi can use its mystic{NEWLINE}power called {VAR:FF00:1}Time Travel{VAR:FF00:0}...to travel to{CLEAR}the past and future.{SCROLL}",
+   "en": "Prof. Elm: Celebi’s {VAR:FF00:1}Time Travel{VAR:FF00:0}...{SCROLL}It can travel freely between the past{NEWLINE}and the future!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0543/80; modernised from US 0543#80"
+   "notes": "US 0543/80; modernised from US 0543#80 | RV053: addition: ‘mystic power’ not in zh; omission: 自由"
   },
   {
    "id": 81,
@@ -737,10 +737,10 @@
   {
    "id": 91,
    "zh": "空木『叉耳皮丘{NEWLINE}很健康喔,{SCROLL}不会进化的皮丘{NEWLINE}都没听说过,{CLEAR}你要好好保护它喔！",
-   "en": "Prof. Elm: Your Spiky-eared Pichu looks{NEWLINE}just fine!{SCROLL}I’ve never heard of a Pokémon that{NEWLINE}doesn’t evolve when it’s supposed to.{SCROLL}Please take good care of it.",
+   "en": "Prof. Elm: Your Spiky-eared Pichu is{NEWLINE}very healthy!{SCROLL}I’ve never even heard of a Pichu that{NEWLINE}doesn’t evolve. Take good care of it!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0543/91; modernised from US 0543#91"
+   "notes": "US 0543/91; modernised from US 0543#91 | RV053: meaning: zh says ‘a Pichu that doesn’t evolve’"
   },
   {
    "id": 92,
@@ -753,10 +753,10 @@
   {
    "id": 93,
    "zh": "{VAR:0103:0}取出了书{SCROLL}探险心得其１{SCROLL}下画面的Ａ键　砰！{NEWLINE}可以说话,调查！",
-   "en": "{VAR:0103:0} opened a book.{SCROLL}Travel Tip 1: Touch the A Button{NEWLINE}icon on the Touch Screen.{SCROLL}You can check things, talk to people,{NEWLINE}and so on.",
+   "en": "{VAR:0103:0} took out a book.{SCROLL}Travel Tip 1: Tap the A Button on the{NEWLINE}lower screen!{SCROLL}You can talk to people and check{NEWLINE}things!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0543/93"
+   "origin": "agent",
+   "notes": "US 0543/93 | RV053: addition: US ‘and so on’; 取出了书"
   },
   {
    "id": 94,
@@ -769,10 +769,10 @@
   {
    "id": 95,
    "zh": "{VAR:0103:0}取出了书{SCROLL}探险心得其３{SCROLL}背包里有各种口袋,{NEWLINE}根据道具不同种类,{CLEAR}口袋也有各自的分类！",
-   "en": "{VAR:0103:0} opened a book.{SCROLL}Travel Tip 3: Items in your Bag are{NEWLINE}sorted by their categories.",
+   "en": "{VAR:0103:0} took out a book.{SCROLL}Travel Tip 3: Your Bag has all kinds of{NEWLINE}pockets, and each pocket holds its own{CLEAR}kind of item!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0543/95"
+   "origin": "agent",
+   "notes": "US 0543/95 | RV053: omission: pockets dropped by US"
   },
   {
    "id": 96,
@@ -785,10 +785,10 @@
   {
    "id": 97,
    "zh": "笔记被人丢掉了……{SCROLL}「精灵要进化的时候{NEWLINE}　按Ｂ键{CLEAR}　进化就会被取消」",
-   "en": "You found a memo...{NEWLINE}If a Pokémon is trying to evolve,{CLEAR}you can stop it.{SCROLL}Press the B Button during evolution.",
+   "en": "Someone threw away a note...{SCROLL}“If a Pokémon is evolving, press the B{NEWLINE}Button to cancel the evolution.”",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0543/97"
+   "origin": "agent",
+   "notes": "US 0543/97 | RV053: meaning: 笔记被人丢掉了 = someone threw it away"
   },
   {
    "id": 98,
@@ -809,34 +809,34 @@
   {
    "id": 100,
    "zh": "{VAR:0103:0}说{NEWLINE}很想看看从蛋里{CLEAR}孵出的精灵喔！",
-   "en": "I’d love to see the Pokémon that{NEWLINE}hatched from that Egg, {VAR:0103:0}.",
+   "en": "{VAR:0103:0} says they’d love to see the{NEWLINE}Pokémon that hatched from that Egg!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV053: meaning: zh ‘{player}说很想看看’; English had silently made Elm the speaker (D-1860; hack-finding logged)"
   },
   {
    "id": 101,
    "zh": "{VAR:0103:0}说{NEWLINE}很想看看从蛋里{CLEAR}孵出的精灵喔！",
-   "en": "I’d love to see the Pokémon that{NEWLINE}hatched from that Egg, {VAR:0103:0}.",
+   "en": "{VAR:0103:0} says they’d love to see the{NEWLINE}Pokémon that hatched from that Egg!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV053: meaning: zh ‘{player}说很想看看’; English had silently made Elm the speaker (D-1860; hack-finding logged)"
   },
   {
    "id": 102,
    "zh": "空木『{VAR:0103:0}{NEWLINE}我大吃一惊呢！{SCROLL}你问什么？{NEWLINE}你这么厉害的训练师{CLEAR}就在我身边。{CLEAR}啊！{SCROLL}多亏了{VAR:0103:0},{NEWLINE}带着精灵一齐走的{CLEAR}意义也稍稍弄明白点了,{SCROLL}那就是……{SCROLL}精灵和人类{NEWLINE}之间的关系{CLEAR}是不会终结的！{SCROLL}{VAR:0103:0}{NEWLINE}我再一次表示感谢,{SCROLL}谢谢你！",
-   "en": "Prof. Elm: {VAR:0103:0}! I’m truly amazed!{SCROLL}Can you believe it? Such a great Trainer{NEWLINE}was right here beside me all along!{SCROLL}{VAR:0103:0}, you’ve helped me see what it{NEWLINE}means to walk with Pokémon.{SCROLL}It’s this...{SCROLL}The bond between people and Pokémon{NEWLINE}never ends!{SCROLL}{VAR:0103:0}, let me thank you once again.{SCROLL}Thank you!",
+   "en": "Prof. Elm: {VAR:0103:0}! I’m truly amazed!{SCROLL}You ask why? Because such a great{NEWLINE}Trainer is right here beside me!{SCROLL}Thanks to you, {VAR:0103:0}, I’ve started{NEWLINE}to understand, just a little, what it{CLEAR}means to walk with Pokémon.{SCROLL}It’s this...{SCROLL}The bond between people and Pokémon{NEWLINE}never ends!{SCROLL}{VAR:0103:0}, let me thank you once again.{SCROLL}Thank you!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0543/102 | seed rejected us [tag_mismatch] (candidate US 0543#102; text not kept)"
+   "notes": "US 0543/102 | seed rejected us [tag_mismatch] (candidate US 0543#102; text not kept) | RV053: meaning: 你问什么？ = ‘You ask why?’; omission: 稍稍"
   },
   {
    "id": 103,
    "zh": "空木『{VAR:0103:0}{NEWLINE}我大吃一惊呢！{SCROLL}你问什么？{NEWLINE}你这么厉害的训练师{CLEAR}就在我身边{CLEAR}啊！{SCROLL}多亏了{VAR:0103:0},{NEWLINE}带着精灵一齐走的{CLEAR}意义也稍稍弄明白点了,{SCROLL}那就是……{SCROLL}精灵和人类{NEWLINE}之间的关系{CLEAR}是不会终结的！{SCROLL}{VAR:0103:0}{NEWLINE}我再一次表示感谢,{SCROLL}谢谢你！",
-   "en": "Prof. Elm: {VAR:0103:0}! I’m truly amazed!{SCROLL}Can you believe it? Such a great Trainer{NEWLINE}was right here beside me all along!{SCROLL}{VAR:0103:0}, you’ve helped me see what it{NEWLINE}means to walk with Pokémon.{SCROLL}It’s this...{SCROLL}The bond between people and Pokémon{NEWLINE}never ends!{SCROLL}{VAR:0103:0}, let me thank you once again.{SCROLL}Thank you!",
+   "en": "Prof. Elm: {VAR:0103:0}! I’m truly amazed!{SCROLL}You ask why? Because such a great{NEWLINE}Trainer is right here beside me!{SCROLL}Thanks to you, {VAR:0103:0}, I’ve started{NEWLINE}to understand, just a little, what it{CLEAR}means to walk with Pokémon.{SCROLL}It’s this...{SCROLL}The bond between people and Pokémon{NEWLINE}never ends!{SCROLL}{VAR:0103:0}, let me thank you once again.{SCROLL}Thank you!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0543/103 | seed rejected us [tag_mismatch] (candidate US 0543#103; text not kept)"
+   "notes": "US 0543/103 | seed rejected us [tag_mismatch] (candidate US 0543#103; text not kept) | RV053: meaning: 你问什么？ = ‘You ask why?’; omission: 稍稍"
   },
   {
    "id": 104,
