@@ -505,7 +505,7 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
     with tempfile.TemporaryDirectory(prefix="asmpatch-") as td:
         stage = Path(td)
         (stage / "include").mkdir()
-        for p in Path(include_dir).iterdir():                # what lint_include_dir accepted, nothing else
+        for p in sorted(Path(include_dir).iterdir()):        # what lint_include_dir accepted, nothing else
             if p.is_file() and p.suffix in (".inc", ".tbl"):
                 shutil.copyfile(p, stage / "include" / p.name)
         if natives:

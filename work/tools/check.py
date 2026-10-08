@@ -9,8 +9,12 @@
     python3 work/tools/check.py --staged       the fast check on the staged files (the pre-commit hook)
     python3 work/tools/check.py --staged --registry-only
                                                only the registry step (the hook, for decision-register commits)
+    python3 work/tools/check.py --full --repro also: the native payload recompiled with the pinned clang, and a
+                                               second build (another folder, file names, cwd, TZ, locale and
+                                               hash seed) byte-identical to the first (about 30 s more)
     python3 work/tools/check.py --full --strict-release
-                                               also fail when the text, ROM or xdelta hash moved (a release)
+                                               also fail when the text, ROM or xdelta hash moved; implies --repro
+                                               (a release)
     python3 work/tools/check.py --full --update-expected
                                                record the full build's hashes in work/patches/expected.toml
 
@@ -37,7 +41,15 @@ Full adds (and fails when armips v0.11.0, the two ROMs or xdelta3 are missing; a
              depend on the translation text;
   build      build.py into --work-dir (default work/build/check), then its hashes against
              work/patches/expected.toml (see EXPECTED_HELP below): nontext_sha1 must match; the text, ROM and
-             xdelta hashes are reported, and fail the step only with --strict-release.
+             xdelta hashes are reported, and fail the step only with --strict-release. prereq also requires
+             xdelta3 at build.XDELTA3_VERSION and warns about another Python / ndspy / pillow.
+--repro (and --strict-release) adds:
+  repro      text_speed_patch.verify_reproducible_payload() (native.c recompiled by the pinned clang, fix.toml
+             [native] compiler: the same bytes and symbols as payload.json), then build.py again into
+             <work-dir>-repro, with the base ROM linked under another name, other --out / --patch names, that
+             folder as the working directory and other TZ, LC_ALL/LANG and PYTHONHASHSEED (REPRO_ENVS; the
+             first build runs with the other set): the ROM, the xdelta and build_report.json (without its paths)
+             must be byte-identical; a ROM difference is listed by NDS part (arm9, overlay N, file path).
 
 Exit status 0 only when no step failed. Each step prints PASS / FAIL / SKIP with its time.
 """
@@ -64,6 +76,11 @@ sys.path.insert(0, str(TOOLS))
 EXPECTED = WORK / "patches" / "expected.toml"
 REQUIREMENTS_DEV = TOOLS / "requirements-dev.txt"
 DEFAULT_WORK_DIR = WORK / "build" / "check"
+# the two environments of a --repro run: the first build runs in A, the second in B (another folder too)
+REPRO_ENVS = ({"TZ": "UTC", "LC_ALL": "C", "LANG": "C", "PYTHONHASHSEED": "0"},
+              {"TZ": "Asia/Kathmandu", "LC_ALL": "en_US.ISO8859-1", "LANG": "en_US.ISO8859-1",
+               "PYTHONHASHSEED": "4242"})
+REPORT_PATH_KEYS = (("base", "path"), ("rom", "path"), ("patch", "path"))
 NO_ARMIPS = "/nonexistent/armips-hidden-by-check.py"     # $ARMIPS for the fast tests: armips is not found
 TEXT_NARCS = ("a/0/2/7", "battle/string/battle_string.narc")
 EXPECTED_HELP = """\
@@ -202,8 +219,10 @@ def full_prerequisites(armips_arg):
     for p in (build.ROM_CN, build.ROM_US):
         if not p.is_file():
             missing.append(f"{p.relative_to(REPO)} is missing (CONTRIBUTING.md: Building the ROM)")
-    if not shutil.which("xdelta3"):
-        missing.append("xdelta3 is not on PATH")
+    try:
+        build.check_xdelta3()
+    except build.ToolchainError as ex:
+        missing.append(str(ex))
     if missing:
         raise Skip("--full needs: " + "; ".join(missing), fail=True)
     return armips
@@ -337,17 +356,27 @@ def compare_expected(got: dict, want: dict, strict=False) -> tuple:
     return fails, notes
 
 
-def step_build(armips, work_dir, update, strict=False):
+def run_build(armips, work_dir, extra=(), env=None, cwd=REPO) -> dict:
+    """build.py --work-dir work_dir; its build_report.json. env: variables set over os.environ."""
     work_dir = Path(work_dir)
     log = work_dir / "build.log"
     work_dir.mkdir(parents=True, exist_ok=True)
     with open(log, "w", encoding="utf-8") as f:
         r = subprocess.run([sys.executable, str(TOOLS / "build.py"), "--work-dir", str(work_dir),
-                            "--armips", armips], cwd=REPO, stdout=f, stderr=subprocess.STDOUT)
+                            "--armips", armips, *extra], cwd=cwd, env=dict(os.environ, **(env or {})),
+                           stdout=f, stderr=subprocess.STDOUT)
     if r.returncode:
         raise Failed(f"build.py failed (exit {r.returncode}); log: {log}\n" +
-                     "\n".join(log.read_text(encoding="utf-8").splitlines()[-15:]))
-    report = json.loads((work_dir / "build_report.json").read_text(encoding="utf-8"))
+                     "\n".join(log.read_text(encoding="utf-8", errors="replace").splitlines()[-15:]))
+    return json.loads((work_dir / "build_report.json").read_text(encoding="utf-8"))
+
+
+def step_build(armips, work_dir, update, strict=False, env=None, out=None):
+    """The full build against expected.toml; `out` (a dict) receives its report and work dir for repro."""
+    report = run_build(armips, work_dir, env=env)
+    if out is not None:
+        out.update(report=report, work_dir=Path(work_dir))
+    log = Path(work_dir) / "build.log"
     got = {"rom_sha1": report["rom"]["sha1"], "xdelta_sha1": report["patch"]["sha1"],
            **rom_hashes(report["rom"]["path"])}
     if update:
@@ -361,6 +390,106 @@ def step_build(armips, work_dir, update, strict=False):
         return "\n".join([head + " (not the recorded ones, see the notes; --strict-release fails on them)"]
                          + [f"note: {n}" for n in notes])
     return head + ": as recorded"
+
+
+def normalized_report(report: dict, work_dir) -> str:
+    """build_report.json without what may differ between two builds of the same tree: the base, ROM and patch
+    paths, and the work folder anywhere else (as <work>)."""
+    rep = json.loads(json.dumps(report))
+    for outer, inner in REPORT_PATH_KEYS:
+        if isinstance(rep.get(outer), dict):
+            rep[outer].pop(inner, None)
+    text = json.dumps(rep, indent=1, ensure_ascii=False)
+    for form in {str(Path(work_dir)), str(Path(work_dir).resolve())}:
+        text = text.replace(json.dumps(form)[1:-1], "<work>")
+    return text
+
+
+def rom_parts(rom) -> dict:
+    """{part name: sha1} of an ndspy ROM: the header fields ndspy keeps, arm9, arm7, the overlay tables, the
+    banner and every file, named by its path (or as the ARM9 / ARM7 overlay it is)."""
+    names = {}
+    for which, loader in (("arm9", "loadArm9Overlays"), ("arm7", "loadArm7Overlays")):
+        try:
+            for ov_id, ov in getattr(rom, loader)().items():
+                names[ov.fileID] = f"{which} overlay {ov_id} (file {ov.fileID})"
+        except Exception:                                   # noqa: BLE001 - a broken table: files by number
+            pass
+    out = {}
+    for name in ("arm9", "arm7", "arm9OverlayTable", "arm7OverlayTable", "iconBanner", "debugRom"):
+        data = getattr(rom, name, None)
+        if data is not None:
+            out[name] = hashlib.sha1(bytes(data)).hexdigest()
+    header = {k: v for k, v in vars(rom).items()
+              if isinstance(v, (int, str, bytes, bool)) and not k.startswith("_") and k not in out}
+    out["header fields"] = hashlib.sha1(repr(sorted(header.items())).encode()).hexdigest()
+    for i, data in enumerate(rom.files):
+        name = names.get(i)
+        if name is None:
+            try:
+                name = rom.filenames.filenameOf(i)
+            except Exception:                               # noqa: BLE001
+                name = None
+            name = f"{name} (file {i})" if name else f"file {i}"
+        out[name] = hashlib.sha1(bytes(data)).hexdigest()
+    return out
+
+
+def rom_part_diff(path_a, path_b) -> list:
+    """The NDS parts that differ between two ROM files (romdiff: ndspy, part by part)."""
+    import msgtool
+    a, b = rom_parts(msgtool.load_rom(str(path_a))), rom_parts(msgtool.load_rom(str(path_b)))
+    diff = [k for k in a if a[k] != b.get(k)] + [k for k in b if k not in a]
+    if not diff:
+        return ["no NDS part differs: the bytes outside the parts (header CRCs, padding, file layout)"]
+    return diff
+
+
+def same_bytes(a, b) -> bool:
+    import filecmp
+    return Path(a).stat().st_size == Path(b).stat().st_size and filecmp.cmp(a, b, shallow=False)
+
+
+def step_repro(armips, first: dict, work_dir, env=None) -> str:
+    """The native payload from source with the pinned clang, then a second build in another folder, under other
+    file names, working directory and environment: the ROM, xdelta and report must equal the first build's."""
+    import text_speed_patch
+    if not first:
+        raise Failed("the first build did not finish (see build)")
+    t0 = time.monotonic()
+    try:
+        payload = text_speed_patch.verify_reproducible_payload()
+    except (OSError, ValueError, subprocess.CalledProcessError) as ex:
+        raise Failed(f"native payload: {ex} (text_speed_patch.py --check-payload; clang pinned in "
+                     f"work/patches/text-speed/fix.toml [native] compiler)") from None
+    t_payload = time.monotonic() - t0
+    work_dir = Path(work_dir)
+    if work_dir.resolve() == first["work_dir"].resolve():
+        raise Failed("the repro build needs its own folder")
+    work_dir.mkdir(parents=True, exist_ok=True)
+    base_link = work_dir / "usa base (renamed).nds"
+    base_link.unlink(missing_ok=True)
+    import build
+    build.link_as(Path(first["report"]["base"]["path"]), base_link)
+    second = run_build(armips, work_dir, extra=["--base", str(base_link), "--out", str(work_dir / "repro.nds"),
+                                                "--patch", str(work_dir / "repro.xdelta")],
+                       env=env, cwd=work_dir)
+    a, b = first["report"], second
+    fails = []
+    if not same_bytes(a["rom"]["path"], b["rom"]["path"]):
+        fails.append(f"the ROM differs ({a['rom']['sha1']} vs {b['rom']['sha1']}); NDS parts: "
+                     + ", ".join(rom_part_diff(a["rom"]["path"], b["rom"]["path"])))
+    if not same_bytes(a["patch"]["path"], b["patch"]["path"]):
+        fails.append(f"the xdelta differs ({a['patch']['sha1']} vs {b['patch']['sha1']})")
+    ra, rb = normalized_report(a, first["work_dir"]), normalized_report(b, work_dir)
+    if ra != rb:
+        import difflib
+        d = list(difflib.unified_diff(ra.splitlines(), rb.splitlines(), "first", "repro", lineterm="", n=1))
+        fails.append("build_report.json differs (paths left out):\n" + "\n".join(d[:40]))
+    if fails:
+        raise Failed("\n".join(fails) + f"\n(builds: {first['work_dir']}, {work_dir})")
+    return (f"payload reproduced by {payload['compiler']} ({t_payload:.1f} s); second build in {work_dir.name} "
+            f"(renamed base, other names, cwd, TZ, locale, hash seed): ROM, xdelta and report identical")
 
 
 # --------------------------------------------------------------------------------------
@@ -429,10 +558,17 @@ def main(argv=None) -> int:
     ap.add_argument("--update-expected", action="store_true",
                     help="with --full: record the build's hashes in work/patches/expected.toml")
     ap.add_argument("--strict-release", action="store_true",
-                    help="with --full: also fail when the text, ROM or xdelta hash is not the recorded one")
+                    help="with --full: also fail when the text, ROM or xdelta hash is not the recorded one; "
+                         "implies --repro")
+    ap.add_argument("--repro", action="store_true",
+                    help="with --full: recompile the native payload with the pinned clang and build a second time "
+                         "(another folder, names, cwd and environment); both builds must be byte-identical")
     a = ap.parse_args(argv)
-    if (a.update_expected or a.strict_release) and not a.full:
-        ap.error("--update-expected and --strict-release need --full")
+    if (a.update_expected or a.strict_release or a.repro) and not a.full:
+        ap.error("--update-expected, --strict-release and --repro need --full")
+    repro = a.repro or a.strict_release
+    # build.py runs with cwd=REPO (the repro build elsewhere): a relative --work-dir is relative to the repo root
+    work_dir = Path(a.work_dir) if Path(a.work_dir).is_absolute() else REPO / a.work_dir
     if a.registry_only and a.full:
         ap.error("--registry-only is a fast check")
     if a.staged:
@@ -450,7 +586,10 @@ def main(argv=None) -> int:
 
     def prereq():
         armips["path"] = full_prerequisites(a.armips)
-        return f"armips {armips['path']}, both ROMs, xdelta3"
+        import build
+        warn = build.python_warnings()
+        return "\n".join([f"armips {armips['path']}, both ROMs, xdelta3 {build.XDELTA3_VERSION}"]
+                         + [f"warning: {w}" for w in warn])
 
     def need(fn):
         def go():
@@ -460,11 +599,16 @@ def main(argv=None) -> int:
         return go
 
     cache = AssemblyCache()
+    first = {}
     steps += [("prereq", prereq), ("asmpatch", need(step_asmpatch)),
               ("listings", need(lambda p: step_listings(p, cache))),
               ("us-refs", need(lambda p: step_us_refs(p, cache))),
               ("tests", need(step_tests_full)),
-              ("build", need(lambda p: step_build(p, a.work_dir, a.update_expected, a.strict_release)))]
+              ("build", need(lambda p: step_build(p, work_dir, a.update_expected, a.strict_release,
+                                                  env=REPRO_ENVS[0] if repro else None, out=first)))]
+    if repro:
+        steps.append(("repro", need(lambda p: step_repro(p, first, work_dir.with_name(work_dir.name + "-repro"),
+                                                         env=REPRO_ENVS[1]))))
     return run(steps)
 
 

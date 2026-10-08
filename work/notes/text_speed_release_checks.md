@@ -24,6 +24,8 @@ unchanged. Never commit ROMs, battery saves or extracted game text.
    `git status --short` must stay empty.
 2. Run `work/tools/text_speed_patch.py --check-payload`. This independently
    recompiles the cached native code and checks the complete code/symbol identity.
+   It refuses any clang but the pinned one (`fix.toml` `[native] compiler`); `check.py
+   --full --repro` runs it too.
 3. Build with the native feature enabled, retaining the normal ROM verifier and
    xdelta round-trip check. Verify the intended USA base CRC32 `C180A0E9`.
 4. Run `work/tools/artifact_check.py` against that ROM and its build report, using

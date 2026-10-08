@@ -47,6 +47,9 @@ source = "native.c"
 headers = ["labels.h"]
 payload = "payload.json"
 module = "text_speed_patch"
+# the first line of `clang --version` that compiled the reviewed payload (Xcode toolchain, macOS); compiling with any
+# other clang is refused (text_speed_patch.check_clang): another clang may emit other bytes (work/notes/toolchain.md)
+compiler = "Apple clang version 21.0.0 (clang-2100.0.123.102)"
 
 [[code]]
 id = "text-speed-itcm-arena"

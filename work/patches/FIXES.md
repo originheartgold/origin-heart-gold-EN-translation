@@ -1857,7 +1857,7 @@ being bound to texture parameters read from address 0.
 - Requires: `msgload`
 - Decisions: D-1604, D-1601, D-1603, D-1600, D-1575
 - Source: `work/patches/text-speed/fix.toml`
-- Native code: `native.c`, `labels.h`, compiled into `payload.json` (reviewed, checked by `work/tools/text_speed_patch.py`); the asm places it with `.incbin`
+- Native code: `native.c`, `labels.h`, compiled by Apple clang version 21.0.0 (clang-2100.0.123.102) into `payload.json` (reviewed, checked by `work/tools/text_speed_patch.py`); the asm places it with `.incbin`
 
 **Why (the Chinese hack):**
 
