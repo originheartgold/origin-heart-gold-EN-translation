@@ -141,6 +141,32 @@ class HangCases(unittest.TestCase):
         self.assertTrue(emu_hang.judge(alive, "hang", case))
 
 
+class AbortRecord(unittest.TestCase):
+    def test_r0_is_masked(self):
+        import emu_hang
+        ab = {"cpsr": 0x60000097, "abort_lr": 0x0202469E, "fault_pc": 0x02024696, "r": [0xB] + list(range(1, 16))}
+        rec = emu_hang.abort_record(ab)
+        self.assertIsNone(rec["r"][0])
+        self.assertEqual(rec["r"][1], "0x00000001")
+        self.assertEqual(rec["fault_pc"], "0x02024696")
+        self.assertEqual(rec, emu_hang.abort_record(ab | {"r": [0x5] + list(range(1, 16))}))
+        self.assertIn("r0_note", rec)
+
+
+class FixScenariosBackend(unittest.TestCase):
+    def test_pin_backend_overrides_a_stray_choice(self):
+        import emu_fixes
+        with mock.patch.dict("os.environ", {"EMU_HARNESS_EMULATOR": "melonds"}):
+            with mock.patch("sys.stderr"):
+                emu_fixes.pin_backend()
+            self.assertEqual(E.default_emulator(), "desmume")
+        with mock.patch.dict("os.environ", {}, clear=False):
+            import os
+            os.environ.pop("EMU_HARNESS_EMULATOR", None)
+            emu_fixes.pin_backend()
+            self.assertEqual(os.environ["EMU_HARNESS_EMULATOR"], "desmume")
+
+
 class FakeMelon:
     """Just enough of melonds.MelonDS for the Harness adapter."""
 

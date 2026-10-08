@@ -143,6 +143,16 @@ def judge(rep, expect, case):
     return problems
 
 
+R0_NOTE = ("R0 is not recorded: after an aborted load melonDS writes an uninitialised local of the core into the "
+           "destination register (T_LDR_IMM), so it differs between processes (work/notes/melonds_backend.md)")
+
+
+def abort_record(ab):
+    """Harness.arm9_abort() for report.json: addresses in hex, R0 masked (see R0_NOTE)."""
+    return ab | {k: f"{ab[k]:#010x}" for k in ("cpsr", "abort_lr", "fault_pc")} | {
+        "r": [None] + [f"{v:#010x}" for v in ab["r"][1:]], "r0_note": R0_NOTE}
+
+
 def run(a):
     import emu_harness as eh
     case = CASES[a.case] if a.case != "save" else save_case(a)
@@ -171,9 +181,7 @@ def run(a):
                 "rom": {"path": str(rom), "sha256": sha256(rom)}, "sav": {"path": str(sav), "sha256": have},
                 "rtc": RTC.isoformat(), "party": party})
     if rep.get("abort"):
-        ab = rep["abort"]
-        rep["abort"] = ab | {k: f"{ab[k]:#010x}" for k in ("cpsr", "abort_lr", "fault_pc")} | {
-            "r": [f"{v:#010x}" for v in ab["r"]]}
+        rep["abort"] = abort_record(rep["abort"])
     (out / "report.json").write_text(json.dumps(rep, indent=1) + "\n", encoding="utf-8")
     print(f"RESULT {tag} {emulator} {rom.name}: {'OK' if not problems else 'FAIL'} (expect {a.expect}; "
           f"hung={rep['hung']}, goal={rep['reached_goal']}, last={rep['steps'][-1]['position'] if rep['steps'] else None}"

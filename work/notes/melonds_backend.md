@@ -31,7 +31,7 @@ The core builds with Apple clang and CMake 4 alone: the configuration (no Qt/SDL
 
 - Two consoles in one process, on a heap first filled with garbage and with a destroyed console's state, give byte-identical savestates at frames 0 and 200 (`test_melonds.Determinism`; the test fails without the zeroing).
 - Two processes booting player A's save give identical savestate hashes at frames 0, 200, 1300 and 3000.
-- Two processes running `hang --case rocket_hq` abort at the same frame (4283) with the same R1–R15, CPSR and abort LR.
+- Two processes running `hang --case rocket_hq` abort at the same frame (4283) with the same R1–R15, CPSR and abort LR. `report.json` writes R0 as `null` with an `r0_note`, so identical runs give identical abort records.
 - A savestate reloaded and run for the same frames gives the same RAM.
 
 Not deterministic: **R0 after the Rocket HQ abort** (seen as `0x5`, `0xB`, `0xC`). The faulting `ldr r0,[r0]` is melonDS's `T_LDR_IMM`, which writes an uninitialised local variable into R0 when the read aborts. That is stack garbage inside the core, which the shim cannot reach without changing melonDS. The game never uses that R0 (the handler spins), but do not compare it.
@@ -110,6 +110,8 @@ Builds from this branch (develop `172dbc0`): `develop.nds` = `build.py --no-patc
 | follower_viridian, Bulbasaur | develop (no reflection fix yet) | hang | **hang**, the same signature |
 | follower_viridian, Charmander (species 4) | Chinese and develop | pass | **pass**: all four steps, no abort |
 
+The Rocket HQ rows match the manual melonDS 1.1 reproduction in [rocket_hq_freeze_repro_20261008.md](rocket_hq_freeze_repro_20261008.md) exactly: same CPSR, abort LR and faulting instruction. Loading the manual `.ml1` crash states in the shim gives the same registers too. In every row where the abort happens while walking (Rocket HQ, follower_viridian with Bulbasaur), the picture freezes on its last frame and is not black: the ARM9 spins in the abort handler. When the abort happens while Continue loads the map (the fixture saves below), both screens stay black.
+
 Bulbasaur fixture saves, `hang --case save`, run 2026-10-08 after the determinism fix. ROMs were reused read-only from the reflection fix's branch: full build `c72ad376…` and `--without bulbasaur-reflection-boundary` `acd75bfe…`.
 
 | Save | ROM | Expect | Result |
@@ -120,7 +122,6 @@ Bulbasaur fixture saves, `hang --case save`, run 2026-10-08 after the determinis
 | Route 22 pond, Bulbasaur | full build | pass | **pass**: four steps, ends at (967,270) |
 | Viridian / Route 22, Charmander | without the fix | pass | **pass** |
 
-These match the manual melonDS 1.1 reproduction in [rocket_hq_freeze_repro_20261008.md](rocket_hq_freeze_repro_20261008.md) exactly: same CPSR, abort LR and faulting instruction. Loading the manual `.ml1` crash states in the shim also gives the same registers. The Bulbasaur freeze is a static, not a black, screen: the last frame stays up while the ARM9 spins in the abort handler.
 
 ### The Bulbasaur reflection fixture saves (`hang --case save`)
 
