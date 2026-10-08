@@ -22,26 +22,26 @@
   {
    "id": 2,
    "zh": "真厉害啊！",
-   "en": "Ooh, la la!{NEWLINE}Very indeed nice!",
+   "en": "How amazing!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0556/2"
+   "origin": "agent",
+   "notes": "US 0556/2 | RV030: voice: US Yoda-style speech absent from the zh (D-1864)"
   },
   {
    "id": 3,
    "zh": "这样啊~{NEWLINE}那么,来学习吧。{CLEAR}要跟上哦~{SCROLL}",
-   "en": "Is that so? Then study shall you!{CLEAR}Follow me!{SCROLL}",
+   "en": "I see! Well then, let’s study.{SCROLL}Keep up, now!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0556/3"
+   "origin": "agent",
+   "notes": "US 0556/3 | RV030: voice: US Yoda-style speech absent from the zh (D-1864)"
   },
   {
    "id": 4,
    "zh": "我是这里的老师！{SCROLL}你在这儿听课{NEWLINE}也可以哦~{SCROLL}",
-   "en": "Here, teacher I am.{NEWLINE}Good it is you study here!{SCROLL}",
+   "en": "I’m the teacher here! You’re welcome{NEWLINE}to sit in on my class, too!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0556/4"
+   "origin": "agent",
+   "notes": "US 0556/4 | RV030: voice: US Yoda-style speech absent from the zh (D-1864)"
   },
   {
    "id": 5,
@@ -111,26 +111,26 @@
   {
    "id": 13,
    "zh": "那个蛋……{SCROLL}",
-   "en": "Me oh my...{NEWLINE}That Egg must be...!{SCROLL}",
+   "en": "That Egg...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0556/13"
+   "origin": "agent",
+   "notes": "US 0556/13 | RV030: addition: US ‘Me oh my... must be...!’ not in the zh"
   },
   {
    "id": 14,
    "zh": "嗯哪,原是这般……{NEWLINE}于精灵爷爷处获此物,{CLEAR}送往空木博士之手,{SCROLL}尔后,自空木博士之手{NEWLINE}传与汝。{SCROLL}果不其然……{SCROLL}",
-   "en": "I see...{NEWLINE}So it was handed from Mr. Pokémon to{CLEAR}Professor Elm, then from Professor Elm{CLEAR}to you.{SCROLL}Now I get it...{SCROLL}",
+   "en": "Hmm, so that is how it was... This was{NEWLINE}obtained from Mr. Pokémon and sent into{CLEAR}Professor Elm’s hands,{SCROLL}and thereafter passed from Professor{NEWLINE}Elm’s hands unto thee.{SCROLL}Just as I thought...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0556/14"
+   "origin": "agent",
+   "notes": "US 0556/14 | RV030: voice: zh uses archaic 汝; meaning follows the zh"
   },
   {
    "id": 15,
    "zh": "那汝须温柔{NEWLINE}对待此蛋,{CLEAR}尽心力育之。{SCROLL}可托付于汝么？{SCROLL}",
-   "en": "That Egg is truly an important Egg.{NEWLINE}Please do take good care of it for me.{SCROLL}Is that understood?{SCROLL}",
+   "en": "Then thou must treat this Egg gently{NEWLINE}and raise it with all thy heart.{SCROLL}May I entrust it to thee?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0556/15"
+   "origin": "agent",
+   "notes": "US 0556/15 | RV030: meaning: US line said something else; archaic 汝 kept"
   },
   {
    "id": 16,
@@ -878,10 +878,10 @@
   {
    "id": 108,
    "zh": "玛力露是我的好朋友,{NEWLINE}我不能眼睁睁看着它在外面流浪。{CLEAR}这次我要亲自把它找回来{CLEAR}跟它好好道歉和解。",
-   "en": "Marill is my best friend. I can’t just{NEWLINE}stand by while it wanders around out{CLEAR}there. This time, I’m going to find it{CLEAR}myself and make up with it properly.",
+   "en": "Marill is my best friend. I can’t just{NEWLINE}stand by while it wanders around out{CLEAR}there. This time, I’m going to find it{CLEAR}myself, apologize to it properly and{CLEAR}make up with it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV030: omission: kept the apology (D-1865)"
   },
   {
    "id": 109,

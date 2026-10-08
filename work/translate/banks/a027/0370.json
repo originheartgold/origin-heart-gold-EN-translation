@@ -266,10 +266,10 @@
   {
    "id": 30,
    "zh": "从没见过的硬币{NEWLINE}散落了一地！{CLEAR}是什么国家的钱币呢？",
-   "en": "A whole pile of strange coins!{CLEAR}Maybe they’re from another country...",
+   "en": "Coins you’ve never seen before are{NEWLINE}scattered all over! What country could{CLEAR}they be from?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0377/30"
+   "origin": "agent",
+   "notes": "US 0377/30 | RV030: meaning: US line changed the wording; follow the zh"
   },
   {
    "id": 31,

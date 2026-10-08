@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "就算是刚刚抓到的{NEWLINE}弱小精灵,只要用心培育,{CLEAR}总有一天会变强的哦。{SCROLL}我想,重点是要给与精灵关爱。",
-   "en": "When you first catch a Pokémon,{NEWLINE}it may be weak.{SCROLL}But it will eventually grow to{NEWLINE}be strong.{SCROLL}It’s important to treat Pokémon{NEWLINE}with love.",
+   "en": "Even a weak Pokémon you’ve just caught{NEWLINE}will grow strong someday, as long as you{CLEAR}raise it with care.{SCROLL}I think the key is to give Pokémon love.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0557/0"
+   "origin": "agent",
+   "notes": "US 0557/0 | RV030: omission: US line dropped ‘as long as you raise it with care’"
   },
   {
    "id": 1,

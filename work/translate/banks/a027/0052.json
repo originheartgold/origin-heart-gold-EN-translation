@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "被供奉的精灵……{NEWLINE}感到有一丝神圣感。",
-   "en": "A Pokémon statue...{SCROLL}It looks very distinguished.",
+   "en": "An enshrined Pokémon... You sense a{NEWLINE}hint of holiness.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0054/4"
+   "origin": "agent",
+   "notes": "US 0054/4 | RV030: meaning: enshrined/sacred feeling, not a distinguished-looking statue (D-1687)"
   },
   {
    "id": 5,
@@ -174,10 +174,10 @@
   {
    "id": 21,
    "zh": "咳,是你啊。我还以为{NEWLINE}长老又来抓我偷吃狗肉呢。{SCROLL}你还记得洒家吗？{NEWLINE}当年在圣安努号上{CLEAR}多亏你出手相助,{CLEAR}洒家等人才能全身而退。{CLEAR}不想竟在这里久别重逢。{SCROLL}来来来,先与洒家痛痛快快{NEWLINE}打上一场再说！",
-   "en": "*cough* Oh, it’s you. I thought{NEWLINE}the Elder had come to catch{CLEAR}me sneaking dog meat again.{SCROLL}Do you remember this old boy? Back{NEWLINE}on the S.S. Anne, you lent us a{CLEAR}hand, and my crew and I got out in{CLEAR}one piece. Who’d have thought we’d{CLEAR}meet again here after so long?{SCROLL}Come, come! First, let’s{NEWLINE}have a good, hearty battle!",
+   "en": "*cough* Oh, it’s you. I thought the{NEWLINE}Elder had come to catch me sneaking dog{CLEAR}meat again.{SCROLL}Do you remember this old boy? Back on{NEWLINE}the S.S. Anne, you lent us a hand, and{CLEAR}this old boy and the others got out in{CLEAR}one piece. Who’d have thought we’d meet{CLEAR}again here after so long?{SCROLL}Come, come! First, let’s have a good,{NEWLINE}hearty battle!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Drinking, dog-eating monk (洒家 ‘this old boy’) is the same S.S. Anne survivor as 0371 #7–#10 (shared lines identical)."
+   "notes": "Drinking, dog-eating monk (洒家 ‘this old boy’) is the same S.S. Anne survivor as 0371 #7–#10 (shared lines identical). | RV030: addition: 洒家等人 is ‘me and the others’, no crew"
   },
   {
    "id": 22,

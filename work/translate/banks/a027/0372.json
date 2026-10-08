@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "哦！旅途中的训练师,{NEWLINE}你去精灵道馆挑战过了吗？",
-   "en": "You must be an adventuring Trainer.{NEWLINE}Did you challenge the Pokémon Gym yet?",
+   "en": "Oh! A traveling Trainer! Have you{NEWLINE}challenged the Pokémon Gym yet?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0379/0"
+   "origin": "agent",
+   "notes": "US 0379/0 | RV030: meaning: follow the zh (dropped 哦！, added ‘You must be’)"
   },
   {
    "id": 1,

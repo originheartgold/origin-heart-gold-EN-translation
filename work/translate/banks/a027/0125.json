@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "黑眼镜……{NEWLINE}若是让精灵带着的话,{CLEAR}就能提升恶系技能的攻击力！",
-   "en": "Black Glasses up the power of{NEWLINE}Dark-type moves.",
+   "en": "Black Glasses... If a Pokémon holds{NEWLINE}them, its Dark-type moves get more{CLEAR}powerful!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0127/2; modernised from US 0127#2"
+   "origin": "agent",
+   "notes": "US 0127/2; modernised from US 0127#2 | RV030: omission: US line dropped the held-item clause"
   },
   {
    "id": 3,
@@ -110,10 +110,10 @@
   {
    "id": 13,
    "zh": "年轻人,他们说你是联盟冠军,{NEWLINE}那你应该很厉害吧？{CLEAR}刚才这伙人强行闯进了洞穴{CLEAR}想要拿走里面封印的邪恶宝物。{CLEAR}如果让邪宝重见天日,{CLEAR}恐怕会有不祥的灾祸降临。{CLEAR}拜托你去阻止他们吧！求你了！",
-   "en": "Young one, they said you’re{NEWLINE}the League Champion, so you must{CLEAR}be very strong. Those people just{CLEAR}forced their way into the cave to{CLEAR}take the evil treasure sealed inside.{SCROLL}If that evil treasure{NEWLINE}sees the light of day again, I fear{CLEAR}a terrible calamity will fall on us.{CLEAR}Please stop them! I’m begging you!",
+   "en": "Young one, they said you’re the League{NEWLINE}Champion, so you must be very strong,{CLEAR}right? Those people just forced their{CLEAR}way into the cave to take the evil{CLEAR}treasure sealed inside.{SCROLL}If that evil treasure sees the light of{NEWLINE}day again, I fear a terrible calamity{CLEAR}will fall on us.{CLEAR}Please stop them! I’m begging you!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV030: omission: kept the question 吧？"
   },
   {
    "id": 14,

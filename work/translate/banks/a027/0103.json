@@ -94,18 +94,18 @@
   {
    "id": 11,
    "zh": "{VAR:0103:0}哥哥！请给我签名！",
-   "en": "{VAR:0103:0}! Can I have your autograph?!",
+   "en": "Big Bro {VAR:0103:0}! Can I have your{NEWLINE}autograph?!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Gender pairs with no difference in English: #11/#12 (哥哥/姐姐), #71/#72."
+   "notes": "Gender pairs with no difference in English: #11/#12 (哥哥/姐姐), #71/#72. | RV030: omission: kept 哥哥"
   },
   {
    "id": 12,
    "zh": "{VAR:0103:0}姐姐！请给我签名！",
-   "en": "{VAR:0103:0}! Can I have your autograph?!",
+   "en": "Big Sis {VAR:0103:0}! Can I have your{NEWLINE}autograph?!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV030: omission: kept 姐姐"
   },
   {
    "id": 13,
@@ -221,10 +221,10 @@
   {
    "id": 26,
    "zh": "伊布能变成仙子精灵？我怎么不知道",
-   "en": "Eevee can become Sylveon?!",
+   "en": "Eevee can? I had no idea!",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV030: omission: kept ‘I didn’t know’",
    "category": "menu_touch_1line"
   },
   {
@@ -538,10 +538,10 @@
   {
    "id": 64,
    "zh": "俗话说读万卷书不如行万里路,{NEWLINE}等我从精灵学校毕业了,{CLEAR}我就去城都各地旅行,{CLEAR}收集道馆徽章！",
-   "en": "Like they say, traveling a thousand{NEWLINE}miles beats reading ten thousand{CLEAR}books. Once I graduate from the{CLEAR}Pokémon Academy, I’m going to travel{CLEAR}all over Johto and collect Gym Badges!",
+   "en": "Like they say, traveling ten thousand{NEWLINE}miles beats reading ten thousand books.{CLEAR}Once I graduate from the Pokémon{CLEAR}Academy, I’m going to travel all over{CLEAR}Johto and collect Gym Badges!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV030: meaning: 万里 is ten thousand miles (D-1700)"
   },
   {
    "id": 65,
@@ -594,18 +594,18 @@
   {
    "id": 71,
    "zh": "{VAR:0103:0}哥哥！{NEWLINE}人家是你的忠实粉丝哦,{CLEAR}人家就是因为把你当成偶像,{CLEAR}才会来精灵学校学习的哦。",
-   "en": "{VAR:0103:0}! I’m your biggest fan!{NEWLINE}You’re my idol, and that’s why I came{CLEAR}to study at the Pokémon Academy!",
+   "en": "Big Bro {VAR:0103:0}! I’m your biggest fan!{NEWLINE}You’re my idol, and that’s why I came to{CLEAR}study at the Pokémon Academy!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV030: omission: kept 哥哥"
   },
   {
    "id": 72,
    "zh": "{VAR:0103:0}姐姐！{NEWLINE}人家是你的忠实粉丝哦,{CLEAR}人家就是因为把你当成偶像,{CLEAR}才会来精灵学校学习的哦。",
-   "en": "{VAR:0103:0}! I’m your biggest fan!{NEWLINE}You’re my idol, and that’s why I came{CLEAR}to study at the Pokémon Academy!",
+   "en": "Big Sis {VAR:0103:0}! I’m your biggest fan!{NEWLINE}You’re my idol, and that’s why I came to{CLEAR}study at the Pokémon Academy!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV030: omission: kept 姐姐"
   },
   {
    "id": 73,

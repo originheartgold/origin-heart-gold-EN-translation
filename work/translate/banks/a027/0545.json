@@ -465,10 +465,10 @@
   {
    "id": 57,
    "zh": "我前些天在吉野市北边的入口{NEWLINE}见到了熔岩虫！{CLEAR}那可是只有在黑暗洞穴才能遇到的{CLEAR}巨大巨大超级超级高级的精灵。",
-   "en": "The other day, I saw a{NEWLINE}Slugma by the north entrance of{CLEAR}Cherrygrove City! You can only{CLEAR}find those in Dark Cave. It’s a{CLEAR}super-duper, mega-rare Pokémon!",
+   "en": "The other day, I saw a Slugma by the{NEWLINE}north entrance of Cherrygrove City!{CLEAR}You can only find those in Dark Cave.{CLEAR}It’s a huge, HUGE, super-duper{CLEAR}high-class Pokémon!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV030: omission: kept the huge/high-class exaggeration (D-1862)"
   },
   {
    "id": 58,
@@ -585,10 +585,10 @@
   {
    "id": 72,
    "zh": "姐们你好,以前我在练习攀岩时,{NEWLINE}遇到了一个使用超能力的训练家,{CLEAR}我向他发起挑战{CLEAR}结果被打的一败涂地。{SCROLL}从那以后我就下定决心{NEWLINE}一定要努力修炼打败他。{CLEAR}你愿意与我来一场{CLEAR}全力以赴的决斗吗？",
-   "en": "Hey there, sis. A while back, when I{NEWLINE}was practicing rock climbing, I ran into{CLEAR}a Trainer who used Psychic Pokémon. I{CLEAR}challenged him and got beaten to a pulp.{SCROLL}Ever since, I’ve been determined{NEWLINE}to train hard and beat him. Will{CLEAR}you give me an all-out battle?",
+   "en": "Hey there, sis. A while back, when I was{NEWLINE}practicing rock climbing, I ran into a{CLEAR}Trainer who used psychic powers. I{CLEAR}challenged him and got beaten to a pulp.{SCROLL}Ever since, I’ve been determined to{NEWLINE}train hard and beat him. Will you give me{CLEAR}an all-out battle?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV030: meaning: 使用超能力 is psychic powers, not Psychic Pokémon (D-1863)"
   },
   {
    "id": 73,

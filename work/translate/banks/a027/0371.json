@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "是你啊！你还记得洒家吗？{NEWLINE}当年在圣安努号上{CLEAR}多亏你出手相助,{CLEAR}洒家等人才能全身而退。{CLEAR}不想竟在这里久别重逢。{SCROLL}来来来,先与洒家痛痛快快{NEWLINE}打上一场再说！",
-   "en": "It’s you! Do you remember this old{NEWLINE}boy? Back on the S.S. Anne, you lent{CLEAR}us a hand, and my crew and I got{CLEAR}out in one piece. Who’d have thought{CLEAR}we’d meet again here after so long?{SCROLL}Come, come! First, let’s{NEWLINE}have a good, hearty battle!",
+   "en": "It’s you! Do you remember this old boy?{NEWLINE}Back on the S.S. Anne, you lent us a{CLEAR}hand, and this old boy and the others{CLEAR}got out in one piece.{CLEAR}Who’d have thought we’d meet again{CLEAR}here after so long?{SCROLL}Come, come! First, let’s have a good,{NEWLINE}hearty battle!",
    "status": "draft",
    "origin": "agent",
-   "notes": "洒家 = ‘this old boy’ (D-phrase): the hard-drinking monk from the S.S. Anne rescue, expelled from Sprout Tower for drinking."
+   "notes": "洒家 = ‘this old boy’ (D-phrase): the hard-drinking monk from the S.S. Anne rescue, expelled from Sprout Tower for drinking. | RV030: addition: 洒家等人 is ‘me and the others’, no crew (D-1788)"
   },
   {
    "id": 8,
@@ -127,10 +127,10 @@
   {
    "id": 15,
    "zh": "嗯？什么？{NEWLINE}那个是精灵的蛋？{CLEAR}第一次见到呢。{SCROLL}嗝……",
-   "en": "Huh? What is it?{NEWLINE}Is that a Pokémon Egg?{CLEAR}I’ve never seen one.{SCROLL}...Zzz...",
+   "en": "Huh? What is it? Is that a Pokémon Egg?{NEWLINE}I’ve never seen one.{SCROLL}*hic*...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0378/15"
+   "origin": "agent",
+   "notes": "US 0378/15 | RV030: meaning: 嗝 is a hiccup, not snoring (D-1788)"
   },
   {
    "id": 16,
