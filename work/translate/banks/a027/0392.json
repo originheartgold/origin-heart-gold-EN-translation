@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "这里是４２号道路{NEWLINE}东　卡吉镇",
-   "en": "Rt. 42 Ecruteak City{NEWLINE}to Mahogany Town",
+   "en": "Rt. 42{NEWLINE}East to Mahogany Town",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0399/0",
+   "origin": "agent",
+   "notes": "US 0399/0 | RV046: meaning: sign says East to Mahogany Town; added Ecruteak endpoint dropped, compass direction restored (D-1793)",
    "category": "sign"
   },
   {
@@ -31,10 +31,10 @@
   {
    "id": 3,
    "zh": "这里是４２号道路{NEWLINE}西　缘朱市",
-   "en": "Rt. 42 Mahogany Town{NEWLINE}to Ecruteak City",
+   "en": "Rt. 42{NEWLINE}West to Ecruteak City",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0399/3",
+   "origin": "agent",
+   "notes": "US 0399/3 | RV046: meaning: sign says West to Ecruteak City; added Mahogany endpoint dropped, compass direction restored (D-1793)",
    "category": "sign"
   },
   {
@@ -232,10 +232,10 @@
   {
    "id": 28,
    "zh": "雅典娜『这个危险的家伙{NEWLINE}到卡吉镇来了吗……",
-   "en": "Ariana: So that dangerous pest{NEWLINE}has come to Mahogany Town...",
+   "en": "Ariana: So that dangerous character{NEWLINE}has come to Mahogany Town...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV046: addition: 家伙 is neutral; 'pest' added an insult"
   },
   {
    "id": 29,

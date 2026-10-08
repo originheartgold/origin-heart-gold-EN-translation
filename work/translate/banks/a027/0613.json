@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "柳伯『嗯嗯,{NEWLINE}很精彩的战斗。{SCROLL}只要有这坚强的意志,{NEWLINE}不管发生什么,{CLEAR}你也一定能够克服。{SCROLL}好吧！{NEWLINE}这个徽章你拿去吧。{SCROLL}",
-   "en": "Pryce: I am impressed by your prowess.{SCROLL}With your strong will, I know you{NEWLINE}will overcome all life’s obstacles.{CLEAR}You are worthy of this Badge!{SCROLL}",
+   "en": "Pryce: Mm, a splendid battle.{SCROLL}With a will as strong as yours, you{NEWLINE}will surely overcome whatever{CLEAR}comes your way.{SCROLL}Very well! Take this Badge.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0622/1"
+   "origin": "agent",
+   "notes": "US 0622/1 | RV046: meaning: US line ('impressed by your prowess', 'worthy of this Badge') replaced by what the hack's zh says (很精彩的战斗 / 好吧！这个徽章你拿去吧)"
   },
   {
    "id": 2,
@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "柳伯『那么,在照相之前{NEWLINE}给你一个好的建议吧。{SCROLL}照相的时候,{NEWLINE}深呼吸,放松力量,{CLEAR}然后缓缓地微笑~{SCROLL}好,照了哦！{SCROLL}",
-   "en": "Pryce: I have advice to give you before{NEWLINE}we take the picture.{SCROLL}Breathe in and relax first.{NEWLINE}Then slowly begin to smile.{CLEAR}Are you ready?{SCROLL}",
+   "en": "Pryce: Then let me give you some good{NEWLINE}advice before we take the picture.{SCROLL}When the picture is taken, breathe{NEWLINE}deeply and relax.{CLEAR}Then slowly smile...{SCROLL}All right, here goes!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0622/7"
+   "origin": "agent",
+   "notes": "US 0622/7 | RV046: meaning: zh ends 好,照了哦 (here goes), not 'Are you ready?'; 好的建议 kept"
   },
   {
    "id": 8,
@@ -78,18 +78,18 @@
   {
    "id": 9,
    "zh": "柳伯『这样啊……{NEWLINE}好吧,随你喜欢吧。",
-   "en": "Pryce: That’s OK, too.{NEWLINE}Suit yourself.",
+   "en": "Pryce: I see...{SCROLL}Very well. Suit yourself.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0622/9"
+   "origin": "agent",
+   "notes": "US 0622/9 | RV046: meaning: zh 这样啊……好吧,随你喜欢吧; US 'That’s OK, too' replaced"
   },
   {
    "id": 10,
    "zh": "相册里面的相片好像{NEWLINE}已经装得满满的了。{SCROLL}用电脑把相册里面的照片{NEWLINE}整理一下吧！",
-   "en": "Your Photo Album is full.{SCROLL}Access your PC to delete{NEWLINE}some pictures.",
+   "en": "Your Photo Album seems to be full.{SCROLL}Use a PC to sort out the photos{NEWLINE}in your Photo Album!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0622/10"
+   "origin": "agent",
+   "notes": "US 0622/10 | RV046: meaning: zh says 整理 (sort out) photos, not delete; 好像 kept"
   },
   {
    "id": 11,
@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "柳伯『咱们的规则是你不能使用{NEWLINE}靠特性改变天气的精灵,{CLEAR}在这个条件下跟我来一场双打对战。{CLEAR}你现在的随身精灵不符合条件,{CLEAR}整理一下背包再来吧。",
-   "en": "Pryce: Our rule is that you may not{NEWLINE}use Pokémon whose Abilities change the{CLEAR}weather, and we fight a Double Battle.{SCROLL}The Pokémon you have with you{NEWLINE}do not meet that condition. Sort{CLEAR}out your party and come back.",
+   "en": "Pryce: Our rule is that you may not use{NEWLINE}Pokémon whose Abilities change the{CLEAR}weather, and we fight a Double Battle.{SCROLL}The Pokémon you have with you{NEWLINE}do not meet that condition.{CLEAR}Sort out your Bag and come back.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV046: meaning: zh says 背包 (Bag), not party; silent correction undone (D-1992), hack-finding logged (hack-finding D-2178)"
   },
   {
    "id": 15,

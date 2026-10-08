@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "阿金『渡先生,柳伯馆主,{NEWLINE}学习委员是个很认真的人,{CLEAR}她说那几个人进了这边的商店{CLEAR}一般就不会有错,{CLEAR}咱们进去看看吧。",
-   "en": "Gold: Mr. Lance, Pryce, Class{NEWLINE}Rep is a really serious person.{CLEAR}If she says those guys went into{CLEAR}this shop, she’s usually right.{SCROLL}Let’s go in and take a look.",
+   "en": "Gold: Mr. Lance, Gym Leader Pryce,{NEWLINE}Class Rep is a really serious person.{SCROLL}If she says those guys went into{NEWLINE}this shop, she’s usually right.{CLEAR}Let’s go in and take a look.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV046: omission: 柳伯馆主 title (Gym Leader) dropped"
   },
   {
    "id": 6,

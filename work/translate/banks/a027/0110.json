@@ -46,18 +46,18 @@
   {
    "id": 5,
    "zh": "发现秘密按钮！{SCROLL}闪着红色的灯,{CLEAR}要试着按一下吗？{VAR:0200:0}",
-   "en": "A secret switch!{SCROLL}The red switch is flashing in a{NEWLINE}suspicious manner.{CLEAR}Will you press it? {VAR:0200:0}",
+   "en": "A secret switch!{SCROLL}A red light is flashing.{CLEAR}Will you try pressing it? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0112/5"
+   "origin": "agent",
+   "notes": "US 0112/5 | RV046: addition: US 'in a suspicious manner' not in zh (闪着红色的灯, 要试着按一下吗)"
   },
   {
    "id": 6,
    "zh": "发现秘密按钮！{SCROLL}闪着蓝色的灯,{CLEAR}要试着按一下吗？{VAR:0200:0}",
-   "en": "A secret switch!{SCROLL}The blue switch is lit.{CLEAR}Will you press it? {VAR:0200:0}",
+   "en": "A secret switch!{SCROLL}A blue light is flashing.{CLEAR}Will you try pressing it? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0112/6"
+   "origin": "agent",
+   "notes": "US 0112/6 | RV046: meaning: zh 闪着蓝色的灯 (flashing blue light), 要试着按一下吗 (try pressing)"
   },
   {
    "id": 7,
@@ -726,10 +726,10 @@
   {
    "id": 90,
    "zh": "{VAR:0103:0}『研钵山的火箭队基地里{NEWLINE}有条隐藏的密道能通到这儿。{CLEAR}我们是从那边进来的。{CLEAR}不过卡吉镇商店的入口开启,{CLEAR}应该不是火箭队故意为之,{CLEAR}而是因为我们刚才逼火箭队员{CLEAR}打开了基地里所有封闭的通道。",
-   "en": "{VAR:0103:0}: There’s a hidden passage from{NEWLINE}the Team Rocket base in Mt. Mortar{CLEAR}that leads here. That’s how we came in.{SCROLL}But the Mahogany Town shop entrance{NEWLINE}opening wasn’t Team Rocket’s doing.{SCROLL}It’s because we just made a{NEWLINE}Team Rocket member open every{CLEAR}sealed passage in the base.",
+   "en": "{VAR:0103:0}: There’s a hidden passage from{NEWLINE}the Team Rocket base in Mt. Mortar{CLEAR}that leads here. That’s how we came in.{SCROLL}But I don’t think Team Rocket{NEWLINE}opened the shop entrance in{CLEAR}Mahogany Town on purpose.{SCROLL}It’s because we just made a{NEWLINE}Team Rocket member open every{CLEAR}sealed passage in the base.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV046: omission: 应该不是…故意为之 (probably not on purpose) was flattened to 'wasn’t Team Rocket’s doing'"
   },
   {
    "id": 91,
