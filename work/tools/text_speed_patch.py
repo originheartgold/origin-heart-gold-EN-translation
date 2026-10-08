@@ -1,7 +1,18 @@
-"""Guarded native text speed and Options integration for the reviewed JP hack.
+"""Text speed (fix work/patches/text-speed): the native payload and the checks around it.
 
-Native payload is original project code, not extracted ROM data. All writes are
-prepared on a private ROM object; this module never writes a source ROM file.
+The ROM edits are the armips source work/patches/text-speed/text-speed.asm, applied by
+asmpatch.py like every code fix; its payload bytes come from payload.json through
+load_payload(). This module holds what the build and the release gates check, and
+changes no ROM:
+  * the payload: compile_payload() (clang, the reviewed flags), validate_payload() and
+    the reviewed sha256 pin, verify_reproducible_payload() (release gate: recompile);
+  * precheck(): before assembling, the hack's base ARM9, ITCM and overlays 50/92 are the
+    reviewed images and no other fix touches text speed's edits or dependencies;
+  * receipt() and verify(): after writing, the hashes and the runtime contract.
+Native payload is original project code, not extracted ROM data.
+
+  python3 work/tools/text_speed_patch.py --check-payload
+  python3 work/tools/text_speed_patch.py --compile work/build/text-speed/payload.json
 """
 from pathlib import Path
 import hashlib,json,struct,subprocess,tempfile
@@ -334,158 +345,61 @@ def overlapping(patches,ranges):
     """Code patches whose bytes overlap any [start,end) ARM9 offset range."""
     return sorted({name for name,_,off,want,_ in patches for lo,hi in ranges if off<hi and lo<off+len(want)})
 
-def apply(rom,payload=None,code_patches=None):
-    payload=load_payload() if payload is None else validate_payload(payload)
-    import msgtool as m
-    if payload['source_sha256']!=source_digest():raise ValueError('Stale native payload')
+def own_arm9_ranges(fixes=None):
+    """[start,end) ARM9 offsets of text speed's own arm9 [[code]] regions (work/patches/text-speed/fix.toml)."""
+    import fixes as fixreg
+    pool=fixreg.load_all() if fixes is None else fixes
+    fx=[f for f in pool if f['id']==FIX_ID]
+    if len(fx)!=1:raise ValueError(f'Fix {FIX_ID} not found in the registry')
+    return [(r[1],r[2]) for r in fixreg.footprint(fx[0]) if r[0]=='arm9']
+
+def precheck(rom,fixes=None,code_patches=None):
+    """Before the armips stage assembles text-speed.asm: the inputs are the reviewed ones.
+
+    The payload is the reviewed one (schema, source digest, pin). The hack's main
+    ARM9 section, with the other fixes' arm9 regions put back to their 'expect'
+    bytes, is the reviewed base; the ITCM section, the Options overlay 50 and the
+    Pokégear overlay 92 are the reviewed images. No other selected fix touches a
+    byte text speed edits, overlays 50/92, or the original routines and data it
+    depends on (DEPENDENCIES). Raises ValueError; changes nothing.
+    fixes: the build's selection (default: every enabled fix); code_patches: the other
+    fixes' regions as registry_code_patches() gives them (default: from fixes).
+    """
+    payload=load_payload()
     code=rom.loadArm9();current=bytes(code.sections[0].data)
-    # Verify the hack's reviewed base ARM9 main section, independent of our reviewed code patches:
-    # put each enabled arm9 code patch back to its 'expect' bytes, then hash. The
-    # text-speed edits below are made on this base and checked against it.
-    cps=arm9_code_patches(rom.arm9,current,code_patches)
+    cps=arm9_code_patches(rom.arm9,current,registry_code_patches(fixes) if code_patches is None else code_patches)
     a=bytearray(current)
     for _,_,off,want,_ in cps:a[off:off+len(want)]=want
     if digest(a)!=REVIEWED_BASE_ARM9_SHA256:raise ValueError('Unreviewed ARM9 image')
-    if digest(code.sections[1].data)!=REVIEWED_ITCM_SHA256:
-        raise ValueError('Unreviewed ITCM image')
-    if struct.unpack_from('<H',current,HEAP_FIX[0])[0]!=HEAP_FIX[1]:raise ValueError('Text speed requires the demand-loading heap fix')
-    arm9_ranges=[]
-    ov=rom.loadArm9Overlays()[50];original=bytes(ov.data)
-    if digest(original)!=OVHASH or ov.bssSize or ov.ramAddress!=OVBASE:raise ValueError('Options overlay changed')
-    gear=rom.loadArm9Overlays()[CALL_OVERLAY];gear_original=bytes(gear.data)
-    if (digest(gear_original)!=CALL_OVHASH or gear.bssSize or gear.ramAddress!=CALL_OVBASE
-            or gear.ramSize!=CALL_OVSIZE or len(gear_original)!=CALL_OVSIZE or gear.compressed):
-        raise ValueError('Pokégear overlay changed')
-    g=bytearray(gear_original)
-    o=bytearray(original);edits=[]
-    def patch(buf,base,addr,old,new):
-        off=addr-base
-        if bytes(buf[off:off+len(old)])!=old:raise ValueError(f'Unexpected code at {addr:08x}')
-        if len(old)!=len(new):raise ValueError('In-place size changed')
-        buf[off:off+len(old)]=new;edits.append({'address':hex(addr),'before':old.hex(),'after':new.hex()})
-        if buf is a:arm9_ranges.append((off,off+len(old)))
-    def hw(addr,old,new):patch(o,OVBASE,addr,struct.pack('<H',old),struct.pack('<H',new))
-    def call(addr,old_target,name):patch(o,OVBASE,addr,bl(addr,old_target),bl(addr,payload['symbols'][name]))
-    def append(blob):
-        while len(o)%4:o.append(0)
-        ptr=OVBASE+len(o);o.extend(blob);return ptr
-    def redirect(old,new):
-        found=[]
-        for off in range(0,len(original)-3,4):
-            if struct.unpack_from('<I',original,off)[0]==old:
-                patch(o,OVBASE,OVBASE+off,struct.pack('<I',old),struct.pack('<I',new));found.append(off)
-        if not found:raise ValueError(f'No pointer to {old:x}')
-    # Reserve original-code extension in ITCM, using the SDK arena boundary.
     itcm=code.sections[1]
     if itcm.ramAddress!=0x01ff8000 or len(itcm.data)!=0x620 or itcm.bssSize:raise ValueError('ITCM layout changed')
-    blob=bytes.fromhex(payload['code']);end=(BASE+len(blob)+31)&~31
-    if end>0x01ffa000:raise ValueError('Native code exceeds reserved budget')
-    patch(a,0x2000000,0x20d1a28,struct.pack('<I',BASE),struct.pack('<I',end))
-    patch(a,0x2000000,0x2020a18,struct.pack('<I',0x2020a1d),struct.pack('<I',payload['symbols']['print_task']))
-    # The game loop's last call before its VBlank wait goes through pass_end (frame_end, then the printer catch-up).
-    patch(a,0x2000000,FRAME_END_CALL[0],bl(*FRAME_END_CALL),bl(FRAME_END_CALL[0],payload['symbols']['pass_end']))
-    # Options_Init already cleared both bytes. Set FAST (bits2..3=1, D-1604), music remains 0.
-    patch(a,0x2000000,0x202b176,struct.pack('<HH',0x200f,0x4381),struct.pack('<HH',0x2004,0x4301))
-    # Music accesses mask only low two bits; its setter preserves the new bits.
-    for addr,old,new in [(0x202b1c6,0x0700,0x0780),(0x202b1c8,0x0f00,0x0f80),(0x202b1d2,0x220f,0x2203),(0x202b1da,0x210f,0x2103)]:
-        patch(a,0x2000000,addr,struct.pack('<H',old),struct.pack('<H',new))
-    # Expand seven records to eight, shifting only the following metadata.
-    # Original overlay SHA is mandatory before decoding these fixed instructions.
-    moved=[]
-    for off in range(0,0x121c,2):
-        ins,nxt=struct.unpack_from('<HH',original,off)
-        if ins&0xf800==0x2000 and nxt&0xf800==0 and (nxt>>3)&7==(ins>>8)&7:
-            value=(ins&255)<<((nxt>>6)&31)
-            if 0x2d0<=value<=0x324:
-                new=value+0x54
-                if new%4 or new//4>255:raise ValueError('Metadata offset cannot be encoded')
-                hw(OVBASE+off,ins,(ins&0xff00)|(new//4))
-                hw(OVBASE+off+2,nxt,(nxt&63)|(2<<6));moved.append(OVBASE+off)
-    if len(moved)!=32:raise ValueError('Metadata relocation inventory changed')
-    for addr in [0x21e57e6,0x21e5854,0x21e58f8]:
-        hw(addr,0x2032,0x20dd);hw(addr+4,0x0100,0x0080)
-    for addr,shift_addr,oldimm,oldshift,newimm,newshift in [
-        (0x21e5aa6,0x21e5aaa,0x212d,0x0109,0x21c9,0x0089),
-        (0x21e5ac0,0x21e5ac4,0x20b5,0x0080,0x20ca,0x0080),
-        (0x21e5ad8,0x21e5adc,0x202d,0x0100,0x20c9,0x0080),
-        (0x21e5ada,0x21e5ade,0x21b5,0x0089,0x21ca,0x0089),
-        (0x21e5b56,0x21e5b5c,0x20b6,0x0080,0x20cb,0x0080)]:
-        hw(addr,oldimm,newimm);hw(shift_addr,oldshift,newshift)
-    for addr in [0x21e4994,0x21e49a0]:
-        old=struct.unpack_from('<H',original,addr-OVBASE)[0];hw(addr,old,(old&0xff00)|0xde)
-    for addr,old,new in [
-        (0x21e4e24,0x2f06,0x2f07),(0x21e528e,0x2c06,0x2c07),
-        (0x21e52fa,0x2c07,0x2c08),(0x21e538c,0x2806,0x2807),
-        (0x21e55a0,0x2906,0x2907),(0x21e56c8,0x2906,0x2907),
-        (0x21e5746,0x2906,0x2907),(0x21e594a,0x2c06,0x2c07),
-        (0x21e59dc,0x2806,0x2807),(0x21e5658,0x2107,0x2108),
-        (0x21e565e,0x1d80,0x1dc0),(0x21e568e,0x2107,0x2108),
-        (0x21e5268,0x2018,0x2014),(0x21e53f6,0x2018,0x2014)]:hw(addr,old,new)
-    patch(o,OVBASE,0x21e53e8,struct.pack('<I',0x27e),struct.pack('<I',0x2d2))
-    # Choices per row: TEXT SPEED (row 6) has two, NORMAL and FAST (D-1604).
-    redirect(0x21e5c14,append(struct.pack('<8I',3,2,2,2,3,20,2,2)))
-    redirect(0x21e5bf8,append(struct.pack('<8i',-8,-28,-48,-68,-88,-108,-128,-156)))
-    boxes=[list(v) for v in struct.iter_unpack('<4B',original[0x1334:0x1378])][:-1]
-    mapping=[list(v) for v in struct.iter_unpack('<II',original[0x1378:0x13f8])]
-    for box,(row,choice) in zip(boxes,mapping):
-        if row<6:box[0]-=row*4;box[1]-=row*4
-    mapping[14][0]=mapping[15][0]=7
-    # TEXT SPEED touch boxes: the two-choice columns of rows 2 and 3, on row 6.
-    boxes.extend([[146,166,112,167],[146,166,192,247],[255,0,0,0]])
-    mapping.extend([[6,0],[6,1]])
-    redirect(0x21e5cb4,append(b''.join(struct.pack('<4B',*v) for v in boxes)))
-    mapping_ptr=append(b''.join(struct.pack('<II',*v) for v in mapping))
-    redirect(0x21e5cf8,mapping_ptr)
-    redirect(0x21e5cfc,mapping_ptr+4)
-    # Reuse the existing button graphics; move their Y coordinates only.
-    for i in range(7):
-        off=0x1484+i*40+6
-        y=struct.unpack_from('<H',original,off)[0]
-        new=24+20*i if i<5 else 124
-        patch(o,OVBASE,OVBASE+off,struct.pack('<H',y),struct.pack('<H',new))
-    # Opaque inherited palette background keeps seven compact rows legible.
-    hw(0x21e512e,0x2100,0x2122)
-    hw(0x21e540e,0x2100,0x2122)
-    patch(o,OVBASE,0x21e5534,struct.pack('<I',0x00010200),struct.pack('<I',0x00030200))
-    patch(o,OVBASE,0x21e553c,struct.pack('<I',0x000f0200),struct.pack('<I',0x00010200))
-    # Row 6 label pitch 32 (labels at x 108 and 188), as the two-choice rows 2 and 3.
-    patch(o,OVBASE,0x21e5bae,b'\x00',b'\x20')
-    call(0x21e5284,0x2020834,'draw_label')
-    matches=[off for off in range(0,0x121c,2) if original[off:off+4]==bl(OVBASE+off,0x21e5acc)]
-    if len(matches)!=1:raise ValueError('Sprite setup callers changed')
-    call(OVBASE+matches[0],0x21e5acc,'setup_sprites')
-    call(0x21e5366,0x200bb40,'load_choice')
-    call(0x21e5264,0x200bb0c,'load_label')
-    # Locate the single setup call to the original row loader.
-    matches=[off for off in range(0,0x121c,2) if original[off:off+4]==bl(OVBASE+off,0x21e5334)]
-    if len(matches)!=1:raise ValueError('Row loader callers changed')
-    call(OVBASE+matches[0],0x21e5334,'load_rows')
-    call(0x21e4b5a,0x20071b0,'exit_free')
-    # Phone-call pages wait for A/B at every text speed (D-1600): the call printer's
-    # only AddTextPrinterParameterized call goes through call_print.
-    patch(g,CALL_OVBASE,CALL_SITE,bl(CALL_SITE,ADD_PRINTER),bl(CALL_SITE,payload['symbols']['call_print']))
-    # No code patch may touch a byte text speed edits, nor the reviewed routines and
-    # data it calls or depends on (DEPENDENCIES). The heap-fix halfword is the one
-    # intended dependency on a code patch; it is only read, and must already hold
-    # that patch's value (checked above). Other ARM9 bytes are covered only by the
-    # base digest, which code patches elsewhere are normalised out of.
-    clash=overlapping(cps,arm9_ranges)
+    if digest(itcm.data)!=REVIEWED_ITCM_SHA256:raise ValueError('Unreviewed ITCM image')
+    ovs=rom.loadArm9Overlays();ov=ovs[OVERLAY]
+    if digest(ov.data)!=OVHASH or ov.bssSize or ov.ramAddress!=OVBASE:raise ValueError('Options overlay changed')
+    gear=ovs[CALL_OVERLAY]
+    if (digest(gear.data)!=CALL_OVHASH or gear.bssSize or gear.ramAddress!=CALL_OVBASE
+            or gear.ramSize!=CALL_OVSIZE or len(gear.data)!=CALL_OVSIZE or gear.compressed):
+        raise ValueError('Pokégear overlay changed')
+    clash=overlapping(cps,own_arm9_ranges(fixes))
     if clash:raise ValueError('Code patches overlap text-speed ARM9 edits: '+', '.join(clash))
     clash=overlapping(cps,dependency_ranges(len(a)))
     if clash:raise ValueError('Code patches overlap original ARM9 code text speed depends on: '+', '.join(clash))
-    # Restore the code patches (none overlaps an edit) on top of the edited base.
-    for _,_,off,want,_ in cps:a[off:off+len(want)]=current[off:off+len(want)]
-    # Commit only after all guards and preparation succeeded.
-    code.sections[0].data=a;itcm.data=bytearray(itcm.data)+blob+bytes(end-BASE-len(blob))
-    rom.arm9=code.save(compress=False)
-    table=bytearray(rom.arm9OverlayTable)
-    for off in range(0,len(table),32):
-        if struct.unpack_from('<I',table,off)[0]==50:struct.pack_into('<I',table,off+8,len(o));break
-    rom.arm9OverlayTable=bytes(table);rom.files[ov.fileID]=bytes(o);rom.files[gear.fileID]=bytes(g)
-    return {'itcm_start':hex(BASE),'itcm_end':hex(end),'payload_code_sha256':digest(blob),'overlay_sha256':digest(o),
-            'call_overlay_sha256':digest(g),'arm9_sha256':digest(rom.arm9),'source_code_sha256':source_digest(),'edits':edits,'labels':3,
+    return {'normalised_to_expect':[c[0] for c in cps]}
+
+def receipt(rom,code_patches=None):
+    """After the armips stage wrote text-speed.asm: the hashes verify() checks, and which arm9 regions of
+    the other fixes hold the bytes the armips stage wrote (code_patches with values, as
+    registry_code_patches(fixes, hc_report) gives them)."""
+    payload=load_payload();blob=bytes.fromhex(payload['code']);end=(BASE+len(blob)+31)&~31
+    main=bytes(rom.loadArm9().sections[0].data)
+    if struct.unpack_from('<H',main,HEAP_FIX[0])[0]!=HEAP_FIX[1]:raise ValueError('Text speed requires the demand-loading heap fix')
+    cps=[c for c in code_patch_ranges(code_patches) if c[1]=='arm9']
+    ovs=rom.loadArm9Overlays()
+    return {'itcm_start':hex(BASE),'itcm_end':hex(end),'payload_code_sha256':digest(blob),
+            'overlay_sha256':digest(ovs[OVERLAY].data),'call_overlay_sha256':digest(ovs[CALL_OVERLAY].data),
+            'arm9_sha256':digest(rom.arm9),'source_code_sha256':source_digest(),'labels':3,
             'arm9_code_patches':{'normalised_to_expect':[c[0] for c in cps],
-                                 'held_value':[c[0] for c in cps if c[4] is not None and bytes(current[c[2]:c[2]+len(c[4])])==c[4]]}}
+                                 'held_value':[c[0] for c in cps if c[4] is not None and main[c[2]:c[2]+len(c[4])]==c[4]]}}
 
 def verify(rom,report,code_patches=None):
     payload=load_payload()
@@ -540,17 +454,18 @@ def verify(rom,report,code_patches=None):
     return {'status':'passed','native_bytes':len(blob),'options_rows':7,'phone_call_wait':True,'new_game_default':'FAST','legacy_save_default':'NORMAL','speeds':['NORMAL','FAST']}
 
 if __name__=='__main__':
-    import argparse,ndspy.rom
+    import argparse
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--check-payload',action='store_true',help='Required RC gate: reproduce the reviewed payload with clang')
-    ap.add_argument('--rom',type=Path);ap.add_argument('--out',type=Path);args=ap.parse_args()
-    if args.check_payload:
-        if args.rom or args.out:ap.error('--check-payload cannot be combined with ROM output')
-        print(json.dumps(verify_reproducible_payload()));raise SystemExit(0)
-    if not args.rom or not args.out:ap.error('--rom and --out are required unless checking the payload')
-    if not args.out.resolve().is_relative_to((WORK/'build').resolve()):ap.error('Output must be in this worktree work/build')
-    if args.out.resolve()==args.rom.resolve():ap.error('Refusing source overwrite')
-    args.out.parent.mkdir(parents=True,exist_ok=True)
-    payload=compile_payload(args.out.parent/'native.o');(args.out.parent/'payload.json').write_text(json.dumps(payload,indent=2))
-    rom=ndspy.rom.NintendoDSRom.fromFile(str(args.rom));report=apply(rom,payload);rom.saveToFile(str(args.out))
-    report['source_sha256']=digest(args.rom.read_bytes());report['rom_sha256']=digest(args.out.read_bytes());(args.out.parent/'patch-report.json').write_text(json.dumps(report,indent=2));print(json.dumps({k:v for k,v in report.items() if k!='edits'}))
+    ap.add_argument('--compile',type=Path,metavar='OUT.json',
+                    help='Compile native.c into a candidate payload (under work/build) and print its symbols as '
+                         'text-speed.asm .definelabel lines; review it, then replace payload.json, the pin and the labels')
+    args=ap.parse_args()
+    if args.check_payload==bool(args.compile):ap.error('give --check-payload or --compile')
+    if args.check_payload:print(json.dumps(verify_reproducible_payload()));raise SystemExit(0)
+    if not args.compile.resolve().is_relative_to((WORK/'build').resolve()):ap.error('Output must be in this worktree work/build')
+    args.compile.parent.mkdir(parents=True,exist_ok=True)
+    payload=compile_payload(args.compile.parent/'native.o');args.compile.write_text(json.dumps(payload,indent=2))
+    print(f'payload digest {payload_digest(payload)}, {len(payload["code"])//2} bytes')
+    for name,address in sorted(payload['symbols'].items(),key=lambda kv:kv[1]):
+        print(f'.definelabel {name+",":18s} 0x{address&~1:08X}')

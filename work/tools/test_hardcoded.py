@@ -63,5 +63,19 @@ class TestRom(unittest.TestCase):
         self.assertEqual({i // 32 for i in range(len(t0)) if t0[i] != t1[i]}, {58})
 
 
+    def test_romview_itcm(self):
+        # "itcm": the ARM9 autoload section at 0x01FF8000; writing it back rebuilds the ARM9 file with ndspy
+        rom = m.load_rom(ROM_CN)
+        view = hc.RomView(rom)
+        itcm = view.get("itcm")
+        self.assertEqual((view.base("itcm"), len(itcm)), (0x01FF8000, 0x620))
+        before = bytes(rom.arm9)
+        view.set("itcm", itcm)
+        self.assertEqual(bytes(rom.arm9), before)                 # same bytes: the same ARM9 file
+        view.set("itcm", itcm + bytes(32))
+        self.assertEqual(view.get("itcm"), itcm + bytes(32))
+        self.assertEqual(len(rom.arm9), len(before) + 32)
+
+
 if __name__ == "__main__":
     unittest.main()

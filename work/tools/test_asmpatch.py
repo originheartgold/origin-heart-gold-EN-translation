@@ -6,7 +6,9 @@ also skipped when work/rom/origin_v4.0.3_cn.nds is missing. The ROM tests compar
 golden SHA-1s (GOLDEN), recorded on 2026-10-08 from the run that proved the armips sources write exactly the
 bytes of the retired Python engine, per fix and all together (work/notes/toolchain.md). The antipiracy entry
 was added on 2026-10-08 when the fix was ported from code_patches.json: its overlay114 equals the one of the
-text-speed release candidate (fb5fa7e), built by the retired Python engine."""
+text-speed release candidate (fb5fa7e), built by the retired Python engine; the text-speed entry the same
+day, when its armips source replaced text_speed_patch.apply(): arm9 (with the grown ITCM block), overlays 50 and
+92 equal the release candidate's, alone and together with every other fix."""
 import hashlib
 import os
 import re
@@ -25,7 +27,7 @@ import fixes as F  # noqa: E402
 
 ROM_CN = HERE.parent / "rom" / "origin_v4.0.3_cn.nds"
 ASM_FIXES = ("outfit-chooser-strings", "namelen", "naming-keyboard", "msgload", "pcbox-name-width", "ivev-panel",
-             "antipiracy")
+             "antipiracy", "text-speed")
 # SHA-1 of every binary each fix changes (alone, and all together as "all") and of the y9 overlay table
 GOLDEN = {
     "outfit-chooser-strings": {
@@ -59,15 +61,23 @@ GOLDEN = {
         "overlay114": "2ab9890fab31a6b5fa4e432652ffb1a5b5d40a3c",
         "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
     },
+    "text-speed": {
+        "arm9": "6586b58024a267d629e9e9b32d9a4805adc355cc",
+        "overlay50": "a6ddf367a7042d7daf573cb5c513ebfb1f4b570f",
+        "overlay92": "67f29acd4adb19f049923cd35dc3931a66ff85d3",
+        "y9": "25d4a33a740ce2bb960ed27a8afa1a0d3b56208f"
+    },
     "all": {
-        "arm9": "3abf3d93ea5a9f1059dc722a67ba71e54b967c78",
+        "arm9": "7d6b6a2e4fe812ca2c7257689af8630c8ba39933",
         "overlay16": "87cd982681b4164781e92a68994d6190c54d7a35",
         "overlay17": "5015627c82275c7836897b67dfec73c662015635",
         "overlay44": "bb8393e2d4c2cd05a094e984597a0de6ce0bd841",
         "overlay49": "dc255061037a45f36d47c7698418f70874c7a035",
+        "overlay50": "a6ddf367a7042d7daf573cb5c513ebfb1f4b570f",
         "overlay58": "8fb5f17c824265a0e8da07803410d5d4999b84a4",
+        "overlay92": "67f29acd4adb19f049923cd35dc3931a66ff85d3",
         "overlay114": "2ab9890fab31a6b5fa4e432652ffb1a5b5d40a3c",
-        "y9": "90ebb4a7ba151c4e4d3ae19a06be6f06451dabb1"
+        "y9": "3483751df97682d807071808d46d411fd316a428"
     }
 }
 
@@ -465,6 +475,29 @@ class RealFixes(unittest.TestCase):
             self.assertEqual(orig[off:off + 8].hex(), "f0472de980d04de2")
             self.assertEqual(struct.unpack_from("<2I", new, off), (0xE3A00000 | ret, 0xE12FFF1E))
 
+    def test_text_speed_itcm_block(self):
+        # the payload is .incbin'd at the end of the ITCM autoload block, which ndspy writes back with its
+        # autoload table; the main section changes only in the fix's regions and the two autoload words
+        import text_speed_patch as speed
+        rom, rep = self.assembled(["text-speed"])
+        code, cn = rom.loadArm9(), self.cn.loadArm9()
+        blob = bytes.fromhex(speed.load_payload()["code"])
+        itcm = self.hc.RomView(rom).itcm_section(code)
+        self.assertEqual((itcm.ramAddress, len(itcm.data), itcm.bssSize), (0x01FF8000, 0xBE0, 0))
+        self.assertEqual(bytes(itcm.data[:0x620]), bytes(cn.sections[1].data))
+        self.assertEqual(bytes(itcm.data[0x620:0x620 + len(blob)]), blob)
+        self.assertEqual(bytes(itcm.data[0x620 + len(blob):]), bytes(0xBE0 - 0x620 - len(blob)))
+        self.assertEqual(bytes(code.sections[2].data), bytes(cn.sections[2].data))       # DTCM unchanged
+        new, old = code.sections[0].data, cn.sections[0].data
+        own = [(r[1], r[2]) for r in F.footprint(self.fixes["text-speed"]) if r[0] == "arm9"]
+        off = cn.codeSettingsOffs
+        outside = [i for i in range(len(old)) if new[i] != old[i] and not any(a <= i < b for a, b in own)]
+        self.assertEqual(sorted({i & ~3 for i in outside}), [off, off + 4])
+        self.assertEqual(A.verify(rom, rep), "ok (0 strings, 9 code regions)")
+        # growth past the ITCM reserve is refused
+        probs = A.growth_problems("t", "itcm", 0x620, 0x2004, 0x19E0, 0x01FF8000, {"itcm": (0x01FF8000, 0x620, 0)})
+        self.assertTrue(any("past 0x1ffa000" in p for p in probs), probs)
+
     def test_each_fix_matches_golden(self):
         for fid in ASM_FIXES:
             with self.subTest(fix=fid):
@@ -473,15 +506,17 @@ class RealFixes(unittest.TestCase):
 
     def test_all_fixes_together_match_golden(self):
         rom, rep = self.check_golden("all", ASM_FIXES)
-        self.assertEqual(len(rep["code_regions"]), 35)
+        self.assertEqual(len(rep["code_regions"]), 44)
         self.assertEqual([(r["id"], r["mode"], r["en"]) for r in rep["strings"]],
                          [("overlay58:0x6F0", "in-place", "OK"), ("overlay58:0x6F6", "relocated", "Outfit 1"),
                           ("overlay58:0x6FE", "relocated", "Outfit 3"), ("overlay58:0x706", "relocated", "Outfit 2")])
         self.assertEqual(rep["armips"]["version"], A.PINNED_VERSION)
-        self.assertEqual(A.verify(rom, rep), "ok (4 strings, 35 code regions)")
+        self.assertEqual(A.verify(rom, rep), "ok (4 strings, 44 code regions)")
         view = self.hc.RomView(rom)
         self.assertEqual(view.table_ram_size(58), 0x818)
-        self.assertEqual(rep["grown"], {"overlay58": {"from": 0x7E0, "to": 0x818}})
+        self.assertEqual(rep["grown"], {"overlay58": {"from": 0x7E0, "to": 0x818},
+                                        "overlay50": {"from": 0x1600, "to": 0x171C},
+                                        "itcm": {"from": 0x620, "to": 0xBE0}})
         # a y9 ramSize that does not follow the grown overlay is caught
         t = bytearray(rom.arm9OverlayTable)
         row = next(r for r in range(len(t) // 32) if struct.unpack_from("<I", t, r * 32)[0] == 58)
@@ -493,7 +528,7 @@ class RealFixes(unittest.TestCase):
         # a build report from before the rename ("code_patches") still verifies
         old = {k: v for k, v in rep.items() if k not in ("code_regions", "grown")}
         old["code_patches"] = rep["code_regions"]
-        self.assertEqual(A.verify(rom, old), "ok (4 strings, 35 code regions)")
+        self.assertEqual(A.verify(rom, old), "ok (4 strings, 44 code regions)")
         # no Chinese left in the chooser
         cm_zh = self.m.Charmap.load([self.hc.ZH_CHARMAP])
         self.assertEqual(list(self.hc.scan_blob(view.get("overlay58"), cm_zh, self.hc._bigrams())), [])

@@ -123,23 +123,37 @@ class Registry(unittest.TestCase):
         self.assertTrue(any("differs from its folder name" in p for p in probs), probs)
         self.assertTrue(any("duplicate fix id 'a'" in p for p in probs), probs)
 
-    def test_applier_instead_of_asm(self):
+    def test_sha1_region_native_payload_and_itcm(self):
         sha = 'length = 64\nexpect_sha1 = "' + "0" * 40 + '"'
         region = code_entry("t-1", file="overlay50", offset="0x0").replace('expect = "0x2305"', sha)
-        self.write("t", fix_toml("t", asm="", extra='applier = "text_speed_patch"\n', entries=region))
+        native = '[native]\nsource = "n.c"\npayload = "p.json"\nmodule = "text_speed_patch"\n'
+        grow = '\n[[grow]]\nfile = "itcm"\nmax = 6624\n'
+        self.write("t", fix_toml("t", extra=native, entries=region + grow))
+        (self.root / "t" / "n.c").write_text("int x;\n")
+        (self.root / "t" / "p.json").write_text('{"symbols": {"entry": 33523233, "state": 33524672}}')
+        asm = (self.root / "t" / "t.asm")
+        good = ('.definelabel entry, 0x01FF8620\n.definelabel state, 0x01FF8BC0\n'
+                '.open "itcm.bin", 0x01FF8000\n.incbin "../native/t.bin"\n.close\n'
+                '.open "overlay50.bin", 0x02200000\n.close\n')
+        asm.write_text(good)
         self.write("u", fix_toml("u", entries=code_entry("u-1", offset="0x20", file="overlay50")))
         probs = self.problems()
+        self.assertEqual([p for p in probs if "overlap" not in p], [])
         self.assertTrue(any("overlap in overlay50" in p for p in probs), probs)   # the sha1 region is 64 bytes
         fixes = F.load_all(self.root, validate_all=False)
-        self.assertEqual([f["id"] for f in F.applier_fixes(fixes)], ["t"])
-        self.assertEqual([f["id"] for f in F.code_entries_fixes(fixes)], ["u"])
         self.assertIn("original SHA-1", F.render_docs(fixes, {"overlay50": 0x021E4980}))
-        # unknown applier, applier with asm, half a sha1 region
-        self.write("t", fix_toml("t", extra='applier = "evil"\n', entries=code_entry("t-1", offset="0x60")))
+        self.assertIn("Native code: `n.c`", F.render_docs(fixes, {"overlay50": 0x021E4980}))
+        # a label off by the Thumb bit, a missing .incbin, an unknown module, ITCM at the wrong address
+        asm.write_text(good.replace("0x01FF8620", "0x01FF8621").replace('.incbin "../native/t.bin"\n', "")
+                       .replace('"itcm.bin", 0x01FF8000', '"itcm.bin", 0x01FF8020'))
+        self.write("t", fix_toml("t", extra=native.replace("text_speed_patch", "evil"), entries=region + grow))
+        asm.write_text(good.replace("0x01FF8620", "0x01FF8621").replace('.incbin "../native/t.bin"\n', "")
+                       .replace('"itcm.bin", 0x01FF8000', '"itcm.bin", 0x01FF8020'))
         self.write("u", fix_toml("u", entries=code_entry("u-1", offset="0x20").replace('expect = "0x2305"',
                                                                                       'length = 3')))
         probs = self.problems()
-        for want in ("unknown applier 'evil'", "give asm or applier, not both", "length must be a positive even",
+        for want in ("wrong or missing: entry", "must include the payload once", "module 'evil' is unknown",
+                     "itcm.bin opened at 0x01ff8020", "length must be a positive even",
                      "missing 'expect' (or 'length' + 'expect_sha1'"):
             self.assertTrue(any(want in p for p in probs), (want, probs))
 
@@ -275,7 +289,7 @@ reloc_max_units = 15
         bad = self.STRINGS.replace('file = "overlay58"\nmax = 64', 'file = "arm9"\nmax = 0')
         self.write("s", fix_toml("s", kind="strings", entries=bad))
         probs = self.problems()
-        self.assertTrue(any("file must be 'overlayNN' (only an overlay can grow)" in p for p in probs), probs)
+        self.assertTrue(any("file must be 'overlayNN' or 'itcm'" in p for p in probs), probs)
         self.assertTrue(any("max must be 1..4096 bytes" in p for p in probs), probs)
         self.write("s", fix_toml("s", kind="strings", entries=self.STRINGS))
         self.write("t", fix_toml("t", entries='[[grow]]\nfile = "overlay58"\nmax = 8\n' +

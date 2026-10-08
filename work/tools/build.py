@@ -32,14 +32,10 @@ Pipeline
               source (work/patches/<fix>/<fix>.asm) over the decompressed arm9/overlay images; the build
               refuses any change outside the regions its fix.toml declares, growth of an overlay beyond its
               [[grow]], and strings that differ from their [[string]] en (overlay 58 outfit chooser: 'OK' in
-              place, 'Outfit 1/2/3' appended to the overlay and repointed). armips v0.11.0 from --armips,
+              place, 'Outfit 1/2/3' appended to the overlay and repointed; text-speed: the native payload
+              .incbin'd into the grown ITCM block, the Options overlay 50, the game-loop hook and the
+              Pokégear call printer, after text_speed_patch.precheck). armips v0.11.0 from --armips,
               $ARMIPS or PATH: work/notes/toolchain.md, work/notes/hardcoded_text.md
-  3d. applier  code fixes applied by a Python module (fix.toml `applier`): text-speed (text_speed_patch.py)
-              appends the native NORMAL/FAST code (work/patches/text-speed/payload.json, compiled from
-              native.c, sha256-pinned) to the ARM9 ITCM block, grows and rewrites the Options overlay 50
-              (seventh row TEXT SPEED), redirects the game loop's frame-end call and the Pokégear call
-              printer (overlay 92). It requires msgload, checks the armips stage first and refuses any other
-              fix touching its edits, overlays 50/92 or the routines it calls; --without text-speed leaves it out
   4. write    work/build/origin_hg_v4.0.3_en_wip.nds
   5. verify   re-open with ndspy; message NARCs parse and round-trip (container rebuild byte-identical,
               every bank decodes and re-encodes identically, the exported text is what the ROM holds);
@@ -81,7 +77,6 @@ sys.path.insert(0, str(TOOLS))
 import asmpatch  # noqa: E402
 import fixes as fixreg  # noqa: E402
 import gfx  # noqa: E402
-import hardcoded  # noqa: E402
 import msgtool as m  # noqa: E402
 import textmetrics as tm  # noqa: E402
 import text_speed_patch  # noqa: E402
@@ -413,6 +408,15 @@ def main(argv=None):
 
     # 3c. hardcoded: strings, data and code fixes (armips)
     hc_report = None
+    speed_report = {"enabled": False, "reason": "not-selected"}
+    speeding = any(f["id"] == text_speed_patch.FIX_ID for f in active)
+    if speeding:
+        # text-speed: the reviewed base ARM9, ITCM and overlays 50/92, and no other fix on its bytes or the
+        # routines its payload calls; checked before anything is assembled
+        try:
+            text_speed_patch.precheck(rom, active)
+        except ValueError as ex:
+            sys.exit(f"fix {text_speed_patch.FIX_ID}: {ex}")
     if armips is not None:
         try:
             hc_report = asmpatch.apply(rom, active, armips)
@@ -423,29 +427,11 @@ def main(argv=None):
         log(f"hardcoded: {len(hc_report['strings'])} strings written "
             f"({sum(r['mode'] == 'relocated' for r in hc_report['strings'])} relocated), "
             f"{hc_report['todo']} untranslated, {len(hc_report['code_regions'])} code/data regions (armips)")
-
-    # 3d. code fixes applied by a Python module (fix.toml `applier`): text-speed (text_speed_patch.py), after
-    # the armips fixes, whose arm9 regions it checks and leaves in place. text-speed requires msgload (the
-    # demand-loading heap fix), so hc_report exists whenever it is selected.
-    speed_report = {"enabled": False, "reason": "not-selected"}
-    report["text_speed"] = speed_report
-    for fx in fixreg.applier_fixes(active):
-        if fx["applier"] != "text_speed_patch" or hc_report is None:
-            sys.exit(f"fix {fx['id']}: applier {fx['applier']!r} is not supported here, or ran without its "
-                     f"required armips fixes")
-        # Verify the earlier stage before composing a second ARM9 patch. Keep
-        # its original hashes for audit; final verification still checks every
-        # hardcoded string, pointer and instruction plus the final file hashes.
-        asmpatch.verify(rom, hc_report)
-        try:
-            speed_report = dict(text_speed_patch.apply(
-                rom, code_patches=text_speed_patch.registry_code_patches(active, hc_report)), enabled=True)
-        except ValueError as ex:
-            sys.exit(f"fix {fx['id']}: {ex}")
-        hc_report["files_before_text_speed"] = dict(hc_report["files"])
-        hc_report["files"]["arm9"] = hashlib.sha1(hardcoded.RomView(rom).get("arm9")).hexdigest()[:12]
-        report["text_speed"] = speed_report
+    if speeding:
+        speed_report = dict(text_speed_patch.receipt(
+            rom, text_speed_patch.registry_code_patches(active, hc_report)), enabled=True)
         log("text speed: native NORMAL / FAST and seven-row Options menu")
+    report["text_speed"] = speed_report
 
     # 4. write
     log(f"write {out_rom}")

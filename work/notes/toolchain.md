@@ -93,24 +93,39 @@ Outfit1Label_EN:
 
 Conventions:
 
-- **Binaries:** `arm9.bin` (load address `0x02000000`) and `overlayNN.bin` (load address from `work/patches/overlays.toml`, the y9 table of the Chinese ROM), decompressed, overlay numbers of the hack (Japanese base; the USA and pret numbers differ).
+- **Binaries:** `arm9.bin` (load address `0x02000000`), `itcm.bin` (the ARM9 autoload section copied to ITCM, load address `0x01FF8000`) and `overlayNN.bin` (load address from `work/patches/overlays.toml`, the y9 table of the Chinese ROM), decompressed, overlay numbers of the hack (Japanese base; the USA and pret numbers differ).
 - **Addresses** are RAM addresses: `.org 0x021E49CE`, not file offsets. `.headersize`, `.create` and `.createfile` are refused (`fixes.py check`): a source only patches the staged binaries, at the load address of its `.open`.
 - **Guards:** every edit starts with a guard on the bytes it replaces (`expect16`, `expect32`, or a macro built on `expect16_at` / `expect32_at` such as the keyboard's `keys_were` or the PC box's `window_was`); appended data starts with `expect_end`. A guard reads the file on disk, which still holds the original bytes while armips assembles; on a mismatch armips stops with `guard failed at <address>: expected …, found …` and writes nothing.
 - **`.area`** around every edit, so it can never grow into the next code.
 - **Syntax:** armips v0.11.0 takes pre-UAL THUMB syntax: `mov r3, #7` (not `movs`), `add r5, r0, #0` (not `adds`). Check each instruction's encoding against the bytes you expect (`asmpatch.py listing <fix>`).
 - **Names** are case-insensitive in armips, so lower-case letters in `charmap.inc` are `CH_LC_A`…, full-width ones `FW_A`….
 
+## Native code (text speed)
+
+One fix adds C code: `text-speed` (work/patches/text-speed). Its parts:
+
+- `native.c` + `labels.h`: the new Thumb routines (print task, frame measurement, printer catch-up, the Options row, the call printer). Original project code.
+- `payload.json`: the reviewed compiler output, `{source_sha256, base, code, symbols}`: the bytes to place at `0x01FF8620` and each routine's address. `work/tools/text_speed_patch.py` links it from the clang object itself (no linker: `.text`, then `.rodata`, each 4-aligned, then `.bss`, so the zeroed 26-byte frame state is the block's tail; only `R_ARM_ABS32` and payload-internal `R_ARM_THM_CALL` relocations), and pins its canonical sha256 (`REVIEWED_PAYLOAD_SHA256`) separately from the file. Normal builds use payload.json and need no compiler; `text_speed_patch.py --check-payload` (a release gate, also `test_cached_payload_reproduces_from_source`) recompiles and requires the same bytes and symbols.
+- **Compiler pin:** Apple clang 21.0.0 (`clang-2100.0.123.102`, Xcode toolchain, macOS), flags `-target arm-none-eabi -march=armv5te -mthumb -Os -Wall -Werror -ffreestanding -fno-builtin -fno-unwind-tables -fno-asynchronous-unwind-tables -c`. Another clang may produce other bytes; then the reproduction gate fails, and a new payload needs review (below).
+- `text-speed.asm`: every ROM edit, like any other fix. It `.incbin`s the payload (`"../native/text-speed.bin"`: the build writes payload.json's bytes there after `text_speed_patch.load_payload()` validated them: schema, source digest, pin) at the end of `itcm.bin`, names each payload symbol with `.definelabel` (the address with the Thumb bit clear; `fixes.py check` compares them with payload.json; a Thumb pointer is written `label + 1`, a `bl label` needs the even address), and writes the hooks: the game loop's frame-end call, the printer task pointer, the new-game default, the music-speed masks, the SDK ITCM arena start, the Options overlay 50 (seventh row: 40 field offsets, row counts, positions, calls, its tables appended) and the overlay 92 call printer. Each edit is guarded by its original bytes.
+- fix.toml declares its regions (overlay 50 as one SHA-1-pinned region: `length` + `expect_sha1`, since it is rewritten in ~100 places) and `[[grow]]` overlay 50 and `itcm`, and `[native]` (source, headers, payload, the checking module).
+- Before assembling, build.py runs `text_speed_patch.precheck()`: the hack's base ARM9 (with the other fixes' arm9 regions put back to `expect`), the ITCM section and overlays 50/92 equal the reviewed images (sha256), and no other selected fix touches a byte text speed edits, overlays 50/92, or the original routines and data the payload calls or relies on (`DEPENDENCIES`, derived by a capstone traversal, re-derived by the tests). After writing, `text_speed_patch.receipt()` records the hashes (and checks that msgload's demand-loading fix is in place) and `verify()` checks the runtime contract in the written ROM.
+
+**ITCM growth.** `itcm.bin` is staged from ndspy `loadArm9()` (the section at `0x01FF8000`) and written back through `RomView.set("itcm")`, which rebuilds the ARM9 file with ndspy `save(compress=False)`: the main section, the autoload sections and their table, and the two code-settings words that point at that table (autoload list start and end, ARM9 `+0xBA0`/`+0xBA4`). asmpatch writes arm9 before itcm and then refuses any other main-section difference from the assembled `arm9.bin`. A grown ITCM block must stay a multiple of 4, have no .bss and end at or below `0x01FFA000` (`fixes.ITCM_LIMIT`, the RC's reserve below the rest of ITCM's arena); the asm aligns its end to 32 bytes and points the SDK arena there.
+
+**Why `.incbin` and not `.importobj`.** armips v0.11.0 can link the clang object directly (`.importobj "native.o"` assembles, and its symbols become labels), but it lays the sections out in section-header order with their natural alignment (`.text`, `.bss`, `.rodata` for this object: the frame state lands at `0x01FF8B7C` instead of the block's tail at `0x01FF8BC0`), so it cannot produce the reviewed payload without changing native.c (and its review). The payload stays the reviewed artifact, placed with `.incbin`.
+
+**Changing native.c:** `python3 work/tools/text_speed_patch.py --compile work/build/text-speed/payload.json` compiles a candidate and prints its `.definelabel` lines; after review, replace payload.json, `REVIEWED_PAYLOAD_SHA256` and the labels in text-speed.asm together, and rerun the text-speed release gates (work/notes/text_speed_RUNBOOK.md).
+
 ## How the build applies them
 
 `build.py` stage 3c, `asmpatch.apply()`, for every selected fix of kind strings, data or code (strings first, then data and code, as in FIXES.md):
 
 1. Reads the decompressed `arm9` and overlay images it needs through `hardcoded.RomView` and checks each region's original bytes (`expect`; for a string its encoded `zh` and its pointers' old target).
-2. Stages them in a temp folder as `<tmp>/rom/arm9.bin`, `<tmp>/rom/overlayNN.bin`, next to a copy of `work/patches/include` (`<tmp>/include`). armips resolves `.open` and `.include` paths against its **working directory** (not the source's folder), and runs in `<tmp>/rom`; that is why sources say `.open "arm9.bin"` and `.include "../include/guards.inc"`.
+2. Stages them in a temp folder as `<tmp>/rom/arm9.bin`, `<tmp>/rom/itcm.bin`, `<tmp>/rom/overlayNN.bin` (and a `[native]` fix's payload bytes as `<tmp>/native/<fix>.bin`), next to a copy of `work/patches/include` (`<tmp>/include`). armips resolves `.open` and `.include` paths against its **working directory** (not the source's folder), and runs in `<tmp>/rom`; that is why sources say `.open "arm9.bin"` and `.include "../include/guards.inc"`.
 3. Runs `armips -erroronwarning -temp <listing> <fix>.asm` once per enabled fix, in build order. The listing gives the address of every assembled line; a byte the source writes twice (the later write would win silently) stops the build.
 4. After each run, compares every staged file with its state before: a changed byte outside the fix's regions, a required region left unchanged, a size change other than `[[grow]]` growth (above), or a file created or removed stops the build. A strings fix is then read back against its `en`.
-5. Writes the changed images back through `RomView` (which updates a grown overlay's y9 `ramSize`); the verify stage (`asmpatch.verify`) re-reads the written ROM: file hashes, overlay sizes, strings and pointers, code regions.
-
-One code fix is not an armips source yet: `text-speed` names `applier = "text_speed_patch"` instead of `asm`. Its fix.toml declares the regions it changes (arm9 instructions and data words, overlay 50 as one SHA-1-pinned region with `length`/`expect_sha1`, the overlay 92 call, `[[grow]]` overlay 50), so the overlap checks and FIXES.md cover it; build.py runs it as stage 3d, after `asmpatch.apply()`, and `work/tools/text_speed_patch.py` pins the base ARM9 (after putting the other fixes' arm9 regions back to `expect`), the ITCM image and both overlays by hash before it writes. `antipiracy` is a regular armips fix in ARM mode (`.arm`).
+5. Writes the changed images back through `RomView` (which updates a grown overlay's y9 `ramSize`, and rebuilds the ARM9 file around a grown ITCM section, see "Native code"); the verify stage (`asmpatch.verify`) re-reads the written ROM: file hashes, overlay sizes, strings and pointers, code regions.
 
 To assemble one fix by hand, copy the decompressed binaries into a folder next to a copy of `include/` and run armips from that folder. Keep that folder out of the repo: the binaries are game data (`*.bin` under `work/patches/` is git-ignored as a safety net).
 
@@ -137,4 +152,13 @@ Until 2026-10-08 the code and data fixes were halfword patches (`expect` → `va
 | `--only pcbox-name-width --no-patch` | `f2637eca68680cb4d7a2540252338e51a1d279d5` |
 | `--only ivev-panel --no-patch` | `ee868d1878d6d55db35090e139e212daf88dd215` |
 
-These depend on the workspace text at the time (2026-10-08, branch `refactor/fix-format`); a translation change moves them. The per-binary golden SHA-1s in `test_asmpatch.py` (`GOLDEN`: every binary each fix changes, alone and all together, plus the y9 overlay table) do not depend on the text, so the test suite checks them on every run that has armips and the Chinese ROM. A change to a fix source that changes its bytes must update `GOLDEN` and say why.
+Then the text-speed release candidate (`codex/text-speed-research` fb5fa7e, with the anti-piracy bypass) was ported in two steps on branch `refactor/patches-rc`: first merged as it was (antipiracy as an armips fix; text speed still applied by `text_speed_patch.apply()` as a build stage of its own), then text speed as the armips source above. Each step built the same bytes as the release candidate's own build of fb5fa7e (its runbook, `build_cached.py`, built twice), and the full text-speed runtime gate suite passed on the step-1 ROM (releasable, the same results as the RC's run rc4; the step-2 ROM is the same file):
+
+| Build (2026-10-08) | ROM SHA-1 |
+|---|---|
+| full (xdelta `588b931f97774fa5f35f19aa1cc821f79de86385`) | `35e67a5f53b9a05e62ea8b38d2c73a4268001102` (sha256 `91cc299e…`, the RC's) |
+| `--only text-speed,msgload --no-patch` | `50676fea5dba10601f9b458399d72bcf5de712b9` |
+| `--without text-speed --no-patch` (= the RC's `--no-text-speed`) | `139e252258bd41bb31fae4ebbc2515fd365130e1` |
+| `--only antipiracy --no-patch` | `64dfa83282456548d11d3a3c16f703bf88900558` |
+
+These depend on the workspace text at the time (2026-10-08, branches `refactor/fix-format` and `refactor/patches-rc`); a translation change moves them. The per-binary golden SHA-1s in `test_asmpatch.py` (`GOLDEN`: every binary each fix changes, alone and all together, plus the y9 overlay table) do not depend on the text, so the test suite checks them on every run that has armips and the Chinese ROM. A change to a fix source that changes its bytes must update `GOLDEN` and say why.

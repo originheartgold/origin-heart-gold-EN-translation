@@ -23,11 +23,14 @@ fix.toml
     evidence    = ["work/notes/....md: section", "CHANGELOG.md: ...", ...]
     asm         = "namelen.asm"             kinds code, data and strings only (required there): the armips source
                                             in the fix's folder that writes the new bytes (see asmpatch.py and
-                                            work/notes/toolchain.md); not with `applier`
-    applier     = "text_speed_patch"        kind code only, instead of `asm`: a Python module (one of APPLIERS)
-                                            applies the fix, in build.py stage 3d after the armips fixes. Its
-                                            [[code]] / [[grow]] entries still declare what it changes (overlap
-                                            checks, docs); the module itself pins and checks the bytes.
+                                            work/notes/toolchain.md)
+    [native]    source = "native.c"         kind code only: C code compiled into a payload that the asm places with
+                headers = ["labels.h"]      `.incbin "../native/<fix-id>.bin"`. payload: the reviewed compiler
+                payload = "payload.json"    output in the fix's folder ({source_sha256, base, code (hex), symbols});
+                module = "text_speed_patch" module (one of NATIVE_MODULES) validates it (schema, source digest,
+                                            the reviewed sha256 pin) and reproduces it with clang. The asm names
+                                            every symbol with `.definelabel <name>, <address>` (Thumb bit clear);
+                                            `check` compares them with payload.json.
 
   Entries (arrays of tables; a fix uses the ones of its kind):
     [[code]]      the regions a code/data fix may change (kinds code, data). Keys: id, file ("arm9" |
@@ -48,8 +51,9 @@ fix.toml
                   include/charmap.tbl); `check` requires its `.string` literals to be exactly the entries'
                   en values, and the build reads the result back against en. The entries also feed
                   translators and the text checks (text_consumer_check.py, text_safety_check.py).
-    [[grow]]      an overlay the fix's asm may grow by appending (kinds code, data, strings). Keys: file
-                  ("overlayNN"), max (bytes), notes. One fix per overlay; see asmpatch.py for the checks.
+    [[grow]]      an overlay, or the ARM9 ITCM block ("itcm", staged as itcm.bin at 0x01FF8000, at most up to
+                  ITCM_LIMIT), the fix's asm may grow by appending (kinds code, data, strings). Keys: file
+                  ("overlayNN" | "itcm"), max (bytes), notes. One fix per file; see asmpatch.py for the checks.
     [[graphics]]  graphics operations (kind graphics). Keys: op plus that op's fields, see gfx.py and
                   GRAPHICS_OPS below; notes.
     [[font]]      glyph restores (kind font). Keys: narc, fonts, codes, source ("usa"), notes.
@@ -116,18 +120,26 @@ ENTRY_TABLES = {"code": "code", "data": "code", "strings": "string", "graphics":
 STRS, INTS = ("list", str), ("list", int)       # list element types
 TABLES, TABLE_MAP = ("list", dict), ("dict", dict)   # [[entries]] and [name.<key>] sub-tables
 TOP_KEYS = {"id": str, "title": str, "kind": str, "enabled": bool, "decisions": STRS, "requires": STRS,
-            "why": str, "what": str, "evidence": STRS, "asm": str, "applier": str,
+            "why": str, "what": str, "evidence": STRS, "asm": str, "native": dict,
             "code": TABLES, "string": TABLES, "grow": TABLES, "graphics": TABLES, "font": TABLES}
 REQUIRED_TOP = ("id", "title", "kind", "enabled", "decisions", "requires", "why", "what", "evidence")
 ASM_KINDS = ("strings", "data", "code")  # kinds whose new bytes come from an armips source
-# Python modules (work/tools/<name>.py) that apply a code fix instead of an armips source (`applier`)
-APPLIERS = ("text_speed_patch",)
+# Python modules (work/tools/<name>.py) that validate a fix's native payload ([native] module = ...)
+NATIVE_MODULES = ("text_speed_patch",)
+NATIVE_KEYS = {"source": str, "headers": STRS, "payload": str, "module": str}
+NATIVE_REQUIRED = ("source", "payload", "module")
+ASM_DEFINELABEL_RE = re.compile(r"^\s*\.definelabel\s+(\w+)\s*,\s*(0x[0-9A-Fa-f]+)\s*(?:;.*)?$", re.I)
+ASM_INCBIN_RE = re.compile(r'^\s*(?:\w+:\s*)?\.incbin\s+"([^"]+)"', re.I)
+# The ARM9 ITCM autoload block (file key "itcm", staged as itcm.bin): its RAM address, and how far a fix may
+# grow it (the RC's reserve; DTCM and the SDK arena come after)
+ITCM_BASE = 0x01FF8000
+ITCM_LIMIT = 0x01FFA000
 
 CODE_KEYS = {"id": str, "file": str, "offset": str, "expect": str, "length": int, "expect_sha1": str,
              "notes": str}
 CODE_REQUIRED = ("id", "file", "offset", "notes")         # plus expect, or length + expect_sha1
 SHA1_RE = re.compile(r"[0-9a-f]{40}")
-CODE_FILE_RE = re.compile(r"arm9|overlay\d+")
+CODE_FILE_RE = re.compile(r"arm9|itcm|overlay\d+")
 # `.open "<file>.bin", 0x<load address>` in a fix's asm (comments allowed after it)
 ASM_OPEN_RE = re.compile(r'^\s*\.open\s+"([^"]+)"\s*,\s*(0x[0-9A-Fa-f]+)\s*(?:;.*)?$', re.I)
 STRING_KEYS = {"id": str, "file": str, "offset": str, "zh": str, "en": str, "max_units": int,
@@ -298,10 +310,11 @@ def _validate_entries(fx, where, problems):
     for i, g in enumerate(_entries(fx, "grow")):
         w = f"{where} [[grow]] #{i}"
         _types(w, g, GROW_KEYS, GROW_REQUIRED, problems)
-        if isinstance(g.get("file"), str) and not re.fullmatch(r"overlay\d+", g["file"]):
-            problems.append(f"{w}: file must be 'overlayNN' (only an overlay can grow)")
-        if _is(g.get("max"), int) and not 0 < g["max"] <= 0x1000:
-            problems.append(f"{w}: max must be 1..4096 bytes")
+        if isinstance(g.get("file"), str) and not re.fullmatch(r"overlay\d+|itcm", g["file"]):
+            problems.append(f"{w}: file must be 'overlayNN' or 'itcm' (only an overlay or the ITCM block can grow)")
+        limit = ITCM_LIMIT - ITCM_BASE if g.get("file") == "itcm" else 0x1000
+        if _is(g.get("max"), int) and not 0 < g["max"] <= limit:
+            problems.append(f"{w}: max must be 1..{limit} bytes")
         if g.get("file") in grown:
             problems.append(f"{w}: {g['file']} has more than one [[grow]]")
         grown.add(g.get("file"))
@@ -393,14 +406,8 @@ def _validate_asm(fx, where, problems, overlay_bases):
     `.open` is '<file>.bin' of a file with a [[code]] region, [[string]] entry or [[grow]], at that file's load
     address; every such file is opened; a strings fix's `.string` literals are its [[string]] en values."""
     kind, asm = fx.get("kind"), fx.get("asm")
-    if "applier" in fx:
-        if kind != "code":
-            problems.append(f"{where}: 'applier' only belongs to kind 'code'")
-        if asm is not None:
-            problems.append(f"{where}: give asm or applier, not both")
-        if isinstance(fx["applier"], str) and fx["applier"] not in APPLIERS:
-            problems.append(f"{where}: unknown applier {fx['applier']!r} (known: {', '.join(APPLIERS)})")
-        return
+    if "native" in fx and kind != "code":
+        problems.append(f"{where}: [native] only belongs to kind 'code'")
     if kind not in ASM_KINDS:
         if asm is not None:
             problems.append(f"{where}: 'asm' only belongs to kinds {', '.join(ASM_KINDS)}")
@@ -435,12 +442,13 @@ def _validate_asm(fx, where, problems, overlay_bases):
                             f"(expected one of {', '.join(sorted(f + '.bin' for f in files)) or 'none'})")
             continue
         opened.add(key)
-        want = ARM9_BASE if key == "arm9" else (overlay_bases or {}).get(key)
+        want = ARM9_BASE if key == "arm9" else ITCM_BASE if key == "itcm" else (overlay_bases or {}).get(key)
         if want is not None and base != want:
             problems.append(f"{w}: {name} opened at {base:#010x}, but its load address is {want:#010x}"
                             f"{'' if key == 'arm9' else ' (' + OVERLAYS_TOML + ')'}")
     for key in sorted(files - opened):
         problems.append(f"{where}: entries in {key}, but {asm} never opens {key}.bin")
+    _validate_native(fx, where, text, problems)
     for n, line in asm_string_forms(text):
         problems.append(f"{fx['_path'].parent.name}/{asm}:{n}: write one literal per line, "
                         f'.string "<text>" (found: {line}); fixes.py compares each literal with a [[string]] en')
@@ -453,6 +461,60 @@ def _validate_asm(fx, where, problems, overlay_bases):
         if lits and not any(ASM_LOADTABLE_RE.match(line) for line in text.splitlines()):
             problems.append(f"{fx['_path'].parent.name}/{asm}: .string needs the game's character table: "
                             f'.loadtable "../include/charmap.tbl", "UTF-8"')
+
+
+def native_payload(fx):
+    """The fix's payload.json as parsed JSON (not validated: the [native] module does that), or None."""
+    nat = fx.get("native")
+    if not isinstance(nat, dict) or not isinstance(nat.get("payload"), str) or not fx.get("_path"):
+        return None
+    return json.loads((fx["_path"].parent / nat["payload"]).read_text(encoding="utf-8"))
+
+
+def native_bin(fx) -> str:
+    """Where the build stages a fix's payload bytes, relative to armips's working directory."""
+    return f"../native/{fx['id']}.bin"
+
+
+def _validate_native(fx, where, text, problems):
+    """[native]: keys, files in the fix's folder, a known module; the asm includes the payload with
+    `.incbin "../native/<id>.bin"` and names every payload symbol with `.definelabel` at its address
+    (Thumb bit clear), and nothing else under those names."""
+    nat = fx.get("native")
+    if nat is None:
+        if any(ASM_INCBIN_RE.match(line) for line in text.splitlines()):
+            problems.append(f"{where}: its asm uses .incbin, but the fix has no [native] payload")
+        return
+    if not isinstance(nat, dict):
+        return                                          # reported by the type check
+    _types(f"{where} [native]", nat, NATIVE_KEYS, NATIVE_REQUIRED, problems)
+    if isinstance(nat.get("module"), str) and nat["module"] not in NATIVE_MODULES:
+        problems.append(f"{where}: [native] module {nat['module']!r} is unknown (known: {', '.join(NATIVE_MODULES)})")
+    folder = fx["_path"].parent
+    for name in [nat.get("source"), nat.get("payload")] + list(nat.get("headers") or []):
+        if isinstance(name, str) and ("/" in name or not (folder / name).is_file()):
+            problems.append(f"{where}: [native] file {name!r} is not in the fix's folder")
+    incs = [mo.group(1) for line in text.splitlines() if (mo := ASM_INCBIN_RE.match(line))]
+    if incs != [native_bin(fx)]:
+        problems.append(f"{where}: its asm must include the payload once, as .incbin \"{native_bin(fx)}\" "
+                        f"(found {incs})")
+    try:
+        payload = native_payload(fx)
+        symbols = payload["symbols"]
+        assert isinstance(symbols, dict) and all(isinstance(v, int) for v in symbols.values())
+    except (OSError, ValueError, KeyError, TypeError, AssertionError):
+        problems.append(f"{where}: [native] payload {nat.get('payload')!r} is missing or has no symbol table")
+        return
+    labels = {}
+    for line in text.splitlines():
+        mo = ASM_DEFINELABEL_RE.match(line)
+        if mo and mo.group(1) in symbols:
+            labels[mo.group(1)] = int(mo.group(2), 16)
+    want = {k: v & ~1 for k, v in symbols.items()}
+    if labels != want:
+        bad = sorted(k for k in want if labels.get(k) != want[k])
+        problems.append(f"{where}: its asm's .definelabel lines must give every payload symbol its address "
+                        f"(payload.json, Thumb bit clear); wrong or missing: {', '.join(bad)}")
 
 
 def validate(fixes, decisions=None, overlay_bases=None) -> list:
@@ -588,6 +650,8 @@ def write_overlays(rom, fixes, root: Path = PATCHES_DIR) -> Path:
 def _ram(file, off, bases):
     if file == "arm9":
         return 0x02000000 + off
+    if file == "itcm":
+        return ITCM_BASE + off
     return bases[file] + off if file in bases else None
 
 
@@ -723,14 +787,8 @@ def _staged(fixes):
 
 
 def code_entries_fixes(fixes) -> list:
-    """The fixes among `fixes` that have an armips source (kinds strings, data, code, without `applier`), in
-    build order."""
-    return [fx for fx in _staged(fixes) if fx.get("kind") in ASM_KINDS and "applier" not in fx]
-
-
-def applier_fixes(fixes) -> list:
-    """The fixes among `fixes` applied by a Python module (`applier`), in build order."""
-    return [fx for fx in _staged(fixes) if "applier" in fx]
+    """The fixes among `fixes` that have an armips source (kinds strings, data, code), in build order."""
+    return [fx for fx in _staged(fixes) if fx.get("kind") in ASM_KINDS]
 
 
 def code_entries(fixes, all_enabled=False) -> list:
@@ -838,7 +896,7 @@ def render_docs(fixes, overlay_bases=None) -> str:
         paths = [f["_path"] for f in fixes if f.get("_path")]
         overlay_bases = load_overlays(paths[0].parent.parent) if paths else {}
     order(fixes)                                  # raises on a cycle
-    fixes = sorted(fixes, key=lambda f: (KINDS.index(f["kind"]), "applier" in f, f["id"]))   # by build stage, then id
+    fixes = sorted(fixes, key=lambda f: (KINDS.index(f["kind"]), f["id"]))   # by build stage, then id
     out = ["# Fixes to the Chinese ROM", "",
            "<!-- Generated by `python3 work/tools/fixes.py docs --out work/patches/FIXES.md` from "
            "work/patches/*/fix.toml. Do not edit by hand. -->", "",
@@ -860,8 +918,7 @@ def render_docs(fixes, overlay_bases=None) -> str:
            "Chinese ROM are container bookkeeping: the ROM header's layout fields, the FAT and the offset at 0x1000 "
            "where the RSA signature is stored move because ndspy rebuilds the ROM container around the changed "
            "files, not because of a fix.", "",
-           "Stages (and the order of this list): font → graphics → hardcoded strings → data and code patches "
-           "(armips) → code fixes with their own applier (text speed). "
+           "Stages (and the order of this list): font → graphics → hardcoded strings → data and code patches. "
            "Offsets are file offsets; for arm9 "
            "and overlays that is the offset in the RAM image, so RAM = load address + offset (arm9 0x02000000; "
            "overlays from the y9 table, recorded in `work/patches/overlays.toml`). Decisions are ids in the "
@@ -883,9 +940,11 @@ def render_docs(fixes, overlay_bases=None) -> str:
         if fx.get("_path"):
             src = fx["_path"].resolve()
             out.append(f"- Source: `{src.relative_to(REPO).as_posix() if src.is_relative_to(REPO) else src}`")
-        if fx.get("applier"):
-            out.append(f"- Applied by: `work/tools/{fx['applier']}.py` (build stage 3d, after the armips fixes; "
-                       f"its [[code]] / [[grow]] entries declare what it changes)")
+        if fx.get("native"):
+            nat = fx["native"]
+            files = ", ".join(f"`{x}`" for x in [nat["source"]] + nat.get("headers", []))
+            out.append(f"- Native code: {files}, compiled into `{nat['payload']}` (reviewed, checked by "
+                       f"`work/tools/{nat['module']}.py`); the asm places it with `.incbin`")
         out += ["", "**Why (the Chinese hack):**", "", _paragraphs(fx["why"]), "",
                 "**What (old → new):**", "", _paragraphs(fx["what"]), "", "**Evidence:**", ""]
         out += [f"- {ev}" for ev in fx["evidence"]]

@@ -7,8 +7,9 @@ What is left here after the strings fix moved to armips (2026-10-08):
     the text checks (text_consumer_check.py, text_safety_check.py) read them. The bytes are written by the
     fix's armips source (outfit-chooser-strings.asm), applied by asmpatch.py like every code/data fix; the
     build refuses when the asm's strings and the entries' en differ.
-  * RomView: arm9 / overlay / filesystem access by file key, shared with asmpatch.py; setting an overlay of
-    another size also sets its ramSize in the y9 overlay table.
+  * RomView: arm9 / itcm / overlay / filesystem access by file key, shared with asmpatch.py; setting an overlay
+    of another size also sets its ramSize in the y9 overlay table; setting "itcm" (the ARM9 autoload section at
+    0x01FF8000) rebuilds the ARM9 file with ndspy (its autoload table and code-settings words follow).
   * `scan`: the survey that looks for hack-charmap Chinese outside the message NARCs (it found the four
     outfit-chooser labels in overlay 58 and nothing else player-facing).
 Notes: work/notes/hardcoded_text.md; overview: work/patches/FIXES.md.
@@ -49,6 +50,7 @@ import msgtool as m  # noqa: E402
 
 ZH_CHARMAP = str(TOOLS / "charmaps" / "charmap_zh_xzonn_gen4.tsv")
 EXCLUDED = ("a/0/2/7", "battle/string/battle_string.narc")
+ITCM_BASE = fixreg.ITCM_BASE            # file key "itcm": the ARM9 autoload section copied to ITCM
 END = 0xFFFF
 
 
@@ -89,12 +91,24 @@ class RomView:
     def base(self, key) -> int:
         if key == "arm9":
             return 0x02000000
+        if key == "itcm":
+            return ITCM_BASE
         ov = self.overlay(key)
         return ov.ramAddress if ov else 0
+
+    def itcm_section(self, code=None):
+        """The ARM9 autoload section loaded at ITCM_BASE (ndspy loadArm9), from `code` or the ROM."""
+        code = self.rom.loadArm9() if code is None else code
+        found = [s for s in code.sections if s.ramAddress == ITCM_BASE]
+        if len(found) != 1:
+            raise HardcodedError(f"arm9: {len(found)} autoload sections at {ITCM_BASE:#010x}, expected 1")
+        return found[0]
 
     def get(self, key) -> bytes:
         if key == "arm9":
             return bytes(self.rom.arm9)
+        if key == "itcm":
+            return bytes(self.itcm_section().data)
         ov = self.overlay(key)
         if ov is not None:
             if ov.compressed:
@@ -109,6 +123,15 @@ class RomView:
     def set(self, key, data: bytes):
         if key == "arm9":
             self.rom.arm9 = bytes(data)
+            return
+        if key == "itcm":
+            # ndspy rebuilds the ARM9 file: main section, the autoload sections and their table, and the two
+            # code-settings words that point at that table (autoload list start/end, ARM9 +0xBA0/+0xBA4 here)
+            code = self.rom.loadArm9()
+            if bytes(code.save(compress=False)) != bytes(self.rom.arm9):
+                raise HardcodedError("arm9 does not round-trip through ndspy (compressed?); cannot grow ITCM")
+            self.itcm_section(code).data = bytearray(data)
+            self.rom.arm9 = bytes(code.save(compress=False))
             return
         ov = self.overlay(key)
         if ov is not None:

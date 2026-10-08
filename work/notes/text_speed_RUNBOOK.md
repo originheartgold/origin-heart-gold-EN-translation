@@ -54,7 +54,7 @@ completed stage; do not rerun stages whose commit, ROM and fixture hashes match.
 PY work/tools/build_cached.py                       # -> cached|built <rom> <sha256>
 # 2. unit suite needs a fixture WITHOUT the feature (the patch is applied by the tests)
 PY work/tools/build_cached.py --without text-speed --no-patch   # -> <fixture rom> (its build_report.json is read too)
-TEXT_SPEED_TEST_ROM=<fixture rom> PY -m unittest discover -s work/tools -p 'test_*.py' 2>&1 | tail -15
+ARMIPS=<armips v0.11.0> TEXT_SPEED_TEST_ROM=<fixture rom> PY -m unittest discover -s work/tools -p 'test_*.py' 2>&1 | tail -15
 # 3. payload recompiles from source
 PY work/tools/text_speed_patch.py --check-payload
 # 4. artifact check against the candidate and its build report (same cache dir)

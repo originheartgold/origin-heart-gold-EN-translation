@@ -164,12 +164,15 @@ def charmap_tbl(tsv=CHARMAP_TSV) -> str:
 # regions
 # --------------------------------------------------------------------------------------
 
-# file, start, end (file offsets); id; expect: the original bytes (None: not known without the ROM's base);
-# required: the asm must change it ([[code]] regions, string slots) or may leave it (string pointers)
-Region = namedtuple("Region", "file start end id expect required")
+# file, start, end (file offsets); id; expect: the original bytes (None: not known without the ROM's base, or a
+# SHA-1-pinned region); required: the asm must change it ([[code]] regions, string slots) or may leave it
+# (string pointers); sha1: the original bytes' SHA-1 of a large [[code]] region (length + expect_sha1)
+Region = namedtuple("Region", "file start end id expect required sha1", defaults=(None,))
 
 
 def _base(key, bases):
+    if key == "itcm":
+        return fixreg.ITCM_BASE
     return fixreg.ARM9_BASE if key == "arm9" else (bases or {}).get(key)
 
 
@@ -192,6 +195,9 @@ def regions(fx, bases=None) -> list:
     out = []
     for e in fx.get("code", []):
         off = fixreg._int(e["offset"])
+        if "expect_sha1" in e:
+            out.append(Region(e["file"], off, off + e["length"], e["id"], None, True, e["expect_sha1"]))
+            continue
         hw = fixreg.halfwords(e["expect"])
         out.append(Region(e["file"], off, off + 2 * len(hw), e["id"],
                           b"".join(h.to_bytes(2, "little") for h in hw), True))
@@ -311,8 +317,20 @@ def _asm(fx) -> Path:
 
 def growth_problems(fid, key, orig_len, new_len, grow_max, base, layout) -> list:
     """Problems of growing `key` from orig_len to new_len bytes (the size before the build) by appending.
-    layout: {"overlayNN": (ram, ramSize, bssSize)} of every overlay in the ROM (y9 table)."""
+    layout: {"overlayNN": (ram, ramSize, bssSize)} of every overlay in the ROM (y9 table), and "itcm":
+    (ram, size, bssSize) of the ITCM autoload section. The ITCM block may grow up to fixes.ITCM_LIMIT."""
     probs = []
+    if key == "itcm":
+        if new_len - orig_len > grow_max:
+            probs.append(f"fix {fid}: itcm.bin grew by {new_len - orig_len} bytes, its [[grow]] max is {grow_max}")
+        if new_len % 4:
+            probs.append(f"fix {fid}: itcm.bin grew to {new_len:#x} bytes; keep it a multiple of 4")
+        if fixreg.ITCM_BASE + new_len > fixreg.ITCM_LIMIT:
+            probs.append(f"fix {fid}: itcm.bin would end at {fixreg.ITCM_BASE + new_len:#x}, past "
+                         f"{fixreg.ITCM_LIMIT:#x} (the ITCM reserve)")
+        if layout is None or "itcm" not in layout or layout["itcm"][2]:
+            probs.append(f"fix {fid}: the ITCM section is unknown or has .bss; growing it would move the .bss")
+        return probs
     if new_len - orig_len > grow_max:
         probs.append(f"fix {fid}: {_bin(key)} grew by {new_len - orig_len} bytes, its [[grow]] max is {grow_max}")
     if new_len % 4:
@@ -397,11 +415,22 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
     bases = bases or {}
     problems = []
     regs_of = {}
+    natives = {}
     for fx in todo:
         regs_of[fx["id"]] = regs = regions(fx, bases)
+        if fx.get("native"):
+            try:
+                natives[fx["id"]] = native_bytes(fx)
+            except (ValueError, OSError) as ex:
+                problems.append(f"fix {fx['id']}: native payload refused: {ex}")
         for r in regs:
             if r.file not in binaries:
                 problems.append(f"fix {fx['id']}: region {r.id}: {r.file} was not staged")
+            elif r.sha1 is not None:
+                got = hashlib.sha1(binaries[r.file][r.start:r.end]).hexdigest()
+                if r.end > len(binaries[r.file]) or got != r.sha1:
+                    problems.append(f"fix {fx['id']}: region {r.id}: {r.file}+{r.start:#x}..{r.end:#x} has SHA-1 "
+                                    f"{got}, expected {r.sha1} (fix.toml expect_sha1)")
             elif r.expect is not None and binaries[r.file][r.start:r.end] != r.expect:
                 problems.append(f"fix {fx['id']}: region {r.id}: {r.file}+{r.start:#x} is "
                                 f"{_hw_str(binaries[r.file][r.start:r.end])}, expected {_hw_str(r.expect)} "
@@ -416,6 +445,10 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
     with tempfile.TemporaryDirectory(prefix="asmpatch-") as td:
         stage = Path(td)
         shutil.copytree(include_dir, stage / "include")
+        if natives:
+            (stage / "native").mkdir()
+            for fid, blob in natives.items():
+                (stage / "native" / f"{fid}.bin").write_bytes(blob)      # the asm's .incbin
         romdir = stage / "rom"
         romdir.mkdir()
         for k, v in cur.items():
@@ -487,19 +520,46 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
             for r_ in regs:
                 if fx.get("code"):
                     data = new.get(r_.file, cur[r_.file])
-                    rows.append({"id": r_.id, "file": r_.file, "offset": hex(r_.start), "old": _hw_str(r_.expect),
-                                 "new": _hw_str(data[r_.start:r_.end]), "fix": fx["id"], "engine": "armips"})
+                    if r_.sha1 is not None:                         # a large region: its SHA-1 before and after
+                        old, now = f"sha1:{r_.sha1}", f"sha1:{hashlib.sha1(data[r_.start:r_.end]).hexdigest()}"
+                    else:
+                        old, now = _hw_str(r_.expect), _hw_str(data[r_.start:r_.end])
+                    row = {"id": r_.id, "file": r_.file, "offset": hex(r_.start), "old": old, "new": now,
+                           "fix": fx["id"], "engine": "armips"}
+                    if r_.sha1 is not None:
+                        row["length"] = r_.end - r_.start
+                    rows.append(row)
             cur.update(new)
     return cur, rows, srows
 
 
+def native_bytes(fx) -> bytes:
+    """A fix's native payload bytes, validated by its [native] module (schema, source digest, reviewed pin)."""
+    import importlib
+    module = fx["native"]["module"]
+    if module not in fixreg.NATIVE_MODULES:
+        raise ValueError(f"unknown [native] module {module!r}")
+    payload = importlib.import_module(module).load_payload()
+    return bytes.fromhex(payload["code"])
+
+
 def staged_keys(fixes) -> list:
-    """The files (arm9, overlayNN) the armips fixes among `fixes` change: their [[code]] regions, [[string]]
-    entries and [[grow]] overlays."""
+    """The files (arm9, itcm, overlayNN) the armips fixes among `fixes` change: their [[code]] regions,
+    [[string]] entries and [[grow]] files. In write-back order: arm9 before itcm (writing itcm rebuilds the
+    ARM9 file around the main section), then the overlays."""
     keys = set()
     for fx in asm_fixes(fixes):
         keys |= {e["file"] for t in ("code", "string", "grow") for e in fx.get(t, [])}
-    return sorted(keys, key=lambda k: (k != "arm9", int(k[7:]) if k.startswith("overlay") else 0))
+    order = {"arm9": 0, "itcm": 1}
+    return sorted(keys, key=lambda k: (order.get(k, 2), int(k[7:]) if k.startswith("overlay") else 0))
+
+
+def arm9_bookkeeping(old: bytes, new: bytes, main_len: int, settings_offs: int) -> list:
+    """Offsets where `new` (the ARM9 file ndspy wrote after the ITCM section grew) differs from `old` (the
+    assembled arm9.bin) inside the main section, other than the two code-settings words ndspy rewrites
+    (autoload list start and end, at settings_offs and settings_offs + 4)."""
+    allowed = set(range(settings_offs, settings_offs + 8))
+    return [o for o in _changed(old[:main_len], new[:main_len]) if o not in allowed]
 
 
 def apply(rom, fixes, armips: str, dry_run=False) -> dict:
@@ -514,13 +574,28 @@ def apply(rom, fixes, armips: str, dry_run=False) -> dict:
         raise AsmError(str(ex)) from None
     bases = {k: view.base(k) for k in keys if k != "arm9"}
     layout = {f"overlay{i}": (o.ramAddress, o.ramSize, o.bssSize) for i, o in view.ovs.items()}
+    if "itcm" in keys:
+        sec = view.itcm_section()
+        layout["itcm"] = (sec.ramAddress, len(sec.data), sec.bssSize)
     new, rows, srows = assemble(fixes, binaries, armips, bases, layout=layout)
     changed = {k: v for k, v in new.items() if v != binaries[k]}
+    final = dict(changed)
     if not dry_run:
-        for k, v in changed.items():
+        for k, v in changed.items():                        # staged_keys order: arm9, itcm, overlays
             view.set(k, v)
+        if "itcm" in changed:
+            # ndspy rebuilt the ARM9 file: only its autoload bookkeeping may differ from the assembled arm9.bin
+            code = rom.loadArm9()
+            main_len = len(code.sections[0].data)
+            got = view.get("arm9")
+            bad = arm9_bookkeeping(changed.get("arm9", binaries["arm9"]), got, main_len, code.codeSettingsOffs)
+            if bad:
+                raise AsmError(f"arm9: writing the grown ITCM section changed main-section bytes outside the "
+                               f"autoload bookkeeping: {', '.join(f'+{a:#x}' for a, _ in _ranges(bad))}")
+            final["arm9"] = got
+            final["itcm"] = view.get("itcm")
     return {"code_regions": rows, "strings": srows,
-            "files": {k: hashlib.sha1(v).hexdigest()[:12] for k, v in changed.items()},
+            "files": {k: hashlib.sha1(v).hexdigest()[:12] for k, v in final.items()},
             "grown": {k: {"from": len(binaries[k]), "to": len(v)} for k, v in changed.items()
                       if len(v) != len(binaries[k])},
             "armips": {"path": armips, "version": armips_version(armips)}}
@@ -540,6 +615,10 @@ def verify(rom, report) -> str:
             raise AsmError(f"{key}: sha1 {got} != {h}")
     for key, g in report.get("grown", {}).items():
         size = len(view.get(key))
+        if key == "itcm":
+            if size != g["to"]:
+                raise AsmError(f"itcm: grew {g['from']:#x} -> {g['to']:#x}, but the section is {size:#x} bytes")
+            continue
         if size != g["to"] or view.table_ram_size(int(key[7:])) != size:
             raise AsmError(f"{key}: grew {g['from']:#x} -> {g['to']:#x}, but the file is {size:#x} bytes and its "
                            f"y9 ramSize {view.table_ram_size(int(key[7:])):#x}")
@@ -556,8 +635,13 @@ def verify(rom, report) -> str:
     # "code_patches": the same rows in build reports written before 2026-10-08 (artifact_check reads them)
     code_rows = report.get("code_regions", report.get("code_patches", []))
     for r in code_rows:
-        want = b"".join(h.to_bytes(2, "little") for h in fixreg.halfwords(r["new"]))
         off = int(r["offset"], 16)
+        if r["new"].startswith("sha1:"):
+            got = hashlib.sha1(view.get(r["file"])[off:off + r["length"]]).hexdigest()
+            if f"sha1:{got}" != r["new"]:
+                raise AsmError(f"code region {r['id']}: {r['file']}+{r['offset']} has {got}, not {r['new']}")
+            continue
+        want = b"".join(h.to_bytes(2, "little") for h in fixreg.halfwords(r["new"]))
         if view.get(r["file"])[off:off + len(want)] != want:
             raise AsmError(f"code region {r['id']}: {r['file']}+{r['offset']} is not {r['new']}")
     return f"ok ({len(report.get('strings', []))} strings, {len(code_rows)} code regions)"

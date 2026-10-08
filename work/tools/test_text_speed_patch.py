@@ -93,7 +93,7 @@ class PayloadTests(unittest.TestCase):
             with self.subTest(case=name):
                 with patch.object(speed.json,'loads',return_value=payload):
                     with self.assertRaises(ValueError):speed.load_payload()
-                with self.assertRaises(ValueError):speed.apply(object(),payload)
+                with self.assertRaises(ValueError):speed.validate_payload(payload)
 
     def test_reviewed_pin_is_independent_of_cache(self):
         payload=speed.load_payload();payload['code']='fee7'+payload['code'][4:]
@@ -263,6 +263,24 @@ class CodePatchGuardTests(unittest.TestCase):
 
 ROM=os.environ.get('TEXT_SPEED_TEST_ROM')
 
+def find_armips():
+    import asmpatch
+    try:
+        path=asmpatch.find_armips();asmpatch.check_armips(path);return path
+    except asmpatch.AsmError:return None
+
+ARMIPS=find_armips()
+
+def apply_text_speed(rom,cps):
+    """What build.py does for the text-speed fix, on a fixture built without it: precheck,
+    assemble work/patches/text-speed/text-speed.asm (asmpatch, armips), receipt."""
+    import asmpatch,fixes
+    speed.precheck(rom,code_patches=cps)
+    fx=[f for f in fixes.load_all() if f['id']==speed.FIX_ID]
+    try:asmpatch.apply(rom,fx,ARMIPS)
+    except asmpatch.AsmError as ex:raise ValueError(str(ex)) from None
+    return speed.receipt(rom,cps)
+
 def fixture_code_patches():
     """The other fixes' code regions with the values the fixture's own build wrote (its build_report.json)."""
     report=Path(ROM).parent/'build_report.json'
@@ -343,6 +361,7 @@ def ndspy_reparse(rom):
     return ndspy.rom.NintendoDSRom(rom.save())
 
 @unittest.skipUnless(ROM and Path(ROM).is_file(),'Set TEXT_SPEED_TEST_ROM for local binary tests')
+@unittest.skipUnless(ARMIPS,'armips v0.11.0 ($ARMIPS or PATH) assembles text-speed.asm')
 class RomTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -350,7 +369,7 @@ class RomTests(unittest.TestCase):
         cls.original=ndspy.rom.NintendoDSRom.fromFile(ROM)
         cls.patched=copy.deepcopy(cls.original)
         cls.cps=fixture_code_patches()
-        cls.report=speed.apply(cls.patched,code_patches=cls.cps)
+        cls.report=apply_text_speed(cls.patched,cls.cps)
 
     def test_guarded_roundtrip_and_unmodified_game_data(self):
         import ndspy.rom
@@ -412,7 +431,7 @@ class RomTests(unittest.TestCase):
                 n,off=(50,0) if kind=='overlay' else (92,0x100) if kind=='overlay92' else (92,speed.CALL_SITE-speed.CALL_OVBASE)
                 i=rom.loadArm9Overlays()[n].fileID;b=bytearray(rom.files[i]);b[off]^=1;rom.files[i]=bytes(b)
             before=rom.save()
-            with self.subTest(kind=kind),self.assertRaisesRegex(ValueError,'changed|Unreviewed'):speed.apply(rom,code_patches=self.cps)
+            with self.subTest(kind=kind),self.assertRaisesRegex(ValueError,'changed|Unreviewed'):apply_text_speed(rom,self.cps)
             self.assertEqual(before,rom.save())
 
     def gear(self,rom):
@@ -427,9 +446,12 @@ class RomTests(unittest.TestCase):
         # Exactly one four-byte difference in the overlay; size and table entry unchanged.
         self.assertEqual([i for i in range(len(o)) if o[i]!=g[i]],[i for i in range(site,site+4) if o[i]!=g[i]])
         self.assertEqual(len(o),len(g))
-        self.assertEqual([e for e in self.report['edits'] if int(e['address'],16)==speed.CALL_SITE],
-                         [{'address':hex(speed.CALL_SITE),'before':speed.bl(speed.CALL_SITE,speed.ADD_PRINTER).hex(),
-                           'after':speed.bl(speed.CALL_SITE,call).hex()}])
+        # The fix declares exactly this region in overlay 92: the call, with its original bytes.
+        import fixes
+        fx=[f for f in fixes.load_all() if f['id']==speed.FIX_ID][0]
+        self.assertEqual([(e['offset'],e['expect']) for e in fx['code'] if e['file']=='overlay92'],
+                         [(hex(site).upper().replace('0X','0x'),
+                           ' '.join(f'{h:04X}' for h in struct.unpack('<2H',speed.bl(speed.CALL_SITE,speed.ADD_PRINTER))))])
         self.assertEqual(self.report['call_overlay_sha256'],speed.digest(bytes(g)))
 
     def test_overlay92_already_redirected_is_refused(self):
@@ -437,7 +459,7 @@ class RomTests(unittest.TestCase):
         rom=copy.deepcopy(self.original);fid,g=self.gear(rom);site=speed.CALL_SITE-speed.CALL_OVBASE
         g[site:site+4]=speed.bl(speed.CALL_SITE,speed.load_payload()['symbols']['call_print']);rom.files[fid]=bytes(g)
         before=rom.save()
-        with self.assertRaisesRegex(ValueError,'Pokégear overlay changed'):speed.apply(rom,code_patches=self.cps)
+        with self.assertRaisesRegex(ValueError,'Pokégear overlay changed'):apply_text_speed(rom,self.cps)
         self.assertEqual(before,rom.save())
 
     def test_verify_fails_without_phone_call_redirect(self):
@@ -460,15 +482,16 @@ class RomTests(unittest.TestCase):
         synthetic=dict(id='gear',file='overlay92',offset='0x0',expect='0x0',value='0x1',enabled=True)
         rom=copy.deepcopy(self.original);before=rom.save()
         with self.assertRaisesRegex(ValueError,'targets overlay 92'):
-            speed.apply(rom,code_patches=self.code_patches()+[synthetic])
+            apply_text_speed(rom,self.code_patches()+[synthetic])
         self.assertEqual(before,rom.save())
         with self.assertRaisesRegex(ValueError,'targets overlay 92'):
             speed.verify(self.patched,self.report,code_patches=self.code_patches()+[synthetic])
 
     def test_double_apply_and_stale_payload_fail_closed(self):
-        with self.assertRaises(ValueError):speed.apply(copy.deepcopy(self.patched),code_patches=self.cps)
+        with self.assertRaises(ValueError):apply_text_speed(copy.deepcopy(self.patched),self.cps)
         p=speed.load_payload();p['source_sha256']='0'*64
-        with self.assertRaises(ValueError):speed.apply(copy.deepcopy(self.original),p)
+        with patch.object(speed,'load_payload',side_effect=lambda:speed.validate_payload(p)):
+            with self.assertRaises(ValueError):apply_text_speed(copy.deepcopy(self.original),self.cps)
 
     def test_invalid_explicit_payload_does_not_mutate_rom(self):
         for kind in ('code','symbol','base'):
@@ -477,7 +500,8 @@ class RomTests(unittest.TestCase):
                 if kind=='code':p['code']='fee7'+p['code'][4:]
                 elif kind=='symbol':p['symbols']['print_task']=speed.BASE+3
                 else:p['base']+=4
-                with self.assertRaises(ValueError):speed.apply(rom,p)
+                with patch.object(speed,'load_payload',side_effect=lambda:speed.validate_payload(p)):
+                    with self.assertRaises(ValueError):apply_text_speed(rom,self.cps)
                 self.assertEqual(before,rom.save())
 
     def test_critical_runtime_contract_is_independent_of_receipt_hashes(self):
@@ -526,7 +550,7 @@ class RomTests(unittest.TestCase):
         rom=copy.deepcopy(self.original);main=rom.loadArm9().sections[0].data
         for name,_,off,want,_ in speed.arm9_code_patches(rom.arm9,main,self.cps):
             if name!='msgload-all':self.arm9_with(rom,off,want)
-        report=speed.apply(rom,code_patches=self.cps)
+        report=apply_text_speed(rom,self.cps)
         self.assertEqual(speed.verify(ndspy_reparse(rom),report)['status'],'passed')
         after=rom.loadArm9().sections[0].data
         self.assertEqual(bytes(after[0x8c262:0x8c264]),struct.pack('<H',0x221a))
@@ -536,7 +560,7 @@ class RomTests(unittest.TestCase):
     def test_patch_byte_neither_expect_nor_value_fails_before_mutation(self):
         rom=copy.deepcopy(self.original);self.arm9_with(rom,0x8c262,struct.pack('<H',0x2221))
         before=rom.save()
-        with self.assertRaisesRegex(ValueError,'ivev-panel-iv-x.*neither'):speed.apply(rom,code_patches=self.cps)
+        with self.assertRaisesRegex(ValueError,'ivev-panel-iv-x.*neither'):apply_text_speed(rom,self.cps)
         self.assertEqual(before,rom.save())
 
     def test_synthetic_code_patch_overlapping_text_speed_edit_fails(self):
@@ -550,7 +574,7 @@ class RomTests(unittest.TestCase):
                     synthetic=dict(id='synthetic',file='arm9',offset=hex(off),expect=hex(old),value=hex(old^0x40),enabled=True)
                     before=rom.save()
                     with self.assertRaisesRegex(ValueError,'overlap text-speed ARM9 edits: synthetic'):
-                        speed.apply(rom,code_patches=self.code_patches()+[synthetic])
+                        apply_text_speed(rom,self.code_patches()+[synthetic])
                     self.assertEqual(before,rom.save())
 
     def test_synthetic_code_patch_overlapping_runtime_contract_fails_verify(self):
@@ -586,11 +610,9 @@ class RomTests(unittest.TestCase):
         # Both reviewed jump tables are traversed: their cases lie inside the extent.
         for site,cases in speed.REVIEWED_SWITCHES.items():
             self.assertTrue(all(0x020022d0<=t<0x020027ee for t in (site,*cases)))
-        # Every ARM9 edit lies inside a reviewed enclosing routine or data range.
-        for edit in self.report['edits']:
-            addr=int(edit['address'],16)
-            if addr>=speed.OVBASE:continue
-            end=addr+len(bytes.fromhex(edit['before']))
+        # Every ARM9 edit (the fix's arm9 [[code]] regions) lies inside a reviewed enclosing routine or data range.
+        for lo,hi in speed.own_arm9_ranges():
+            addr,end=speed.ARM9BASE+lo,speed.ARM9BASE+hi
             self.assertTrue(any(lo<=addr and end<=hi for lo,hi,_ in speed.DEPENDENT_CODE),hex(addr))
         self.assertEqual(struct.unpack_from('<I',main,0xd1a28)[0],speed.BASE)
         self.assertEqual(self.original.loadArm9().codeSettingsOffs,0xba0)
@@ -610,16 +632,16 @@ class RomTests(unittest.TestCase):
             with self.subTest(offset=hex(off)):
                 rom=copy.deepcopy(self.original);before=rom.save()
                 with self.assertRaisesRegex(ValueError,'synthetic'):
-                    speed.apply(rom,code_patches=self.code_patches()+[synthetic])
+                    apply_text_speed(rom,self.code_patches()+[synthetic])
                 self.assertEqual(before,rom.save())
                 with self.assertRaisesRegex(ValueError,'native runtime contract: synthetic'):
                     speed.verify(self.patched,self.report,code_patches=self.code_patches()+[synthetic])
 
     def test_heap_fix_still_at_expect_fails_closed(self):
+        # msgload is assembled in the same armips stage, so the heap fix is checked after it (receipt);
+        # the build stops there, before it writes a ROM.
         rom=copy.deepcopy(self.original);self.arm9_with(rom,0xba9a,struct.pack('<H',0x1c05))
-        before=rom.save()
-        with self.assertRaisesRegex(ValueError,'demand-loading heap fix'):speed.apply(rom,code_patches=self.cps)
-        self.assertEqual(before,rom.save())
+        with self.assertRaisesRegex(ValueError,'demand-loading heap fix'):apply_text_speed(rom,self.cps)
 
     def test_verify_requires_heap_fix(self):
         rom=copy.deepcopy(self.patched);self.arm9_with(rom,0xba9a,struct.pack('<H',0x1c05))
@@ -637,7 +659,7 @@ class RomTests(unittest.TestCase):
         synthetic=dict(id='options',file='overlay50',offset='0x0',expect='0x0',value='0x1',enabled=True)
         rom=copy.deepcopy(self.original);before=rom.save()
         with self.assertRaisesRegex(ValueError,'targets overlay 50'):
-            speed.apply(rom,code_patches=self.code_patches()+[synthetic])
+            apply_text_speed(rom,self.code_patches()+[synthetic])
         self.assertEqual(before,rom.save())
         with self.assertRaisesRegex(ValueError,'targets overlay 50'):
             speed.verify(self.patched,self.report,code_patches=self.code_patches()+[synthetic])
