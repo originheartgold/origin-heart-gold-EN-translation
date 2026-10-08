@@ -201,10 +201,10 @@
   {
    "id": 24,
    "zh": "水都群岛共有7座主岛{NEWLINE}和2个大型岛礁组成,{CLEAR}目前一之岛、二之岛、三之岛{CLEAR}商业化开发程度较高,{CLEAR}绝对是您旅行购物的首选。{SCROLL}如果您想感受水都群岛的自然气息,{NEWLINE}四、五、六、七岛将会带给您{CLEAR}完全不同的感受。",
-   "en": "The Alto Mare Islands consist of 7 main{NEWLINE}islands and 2 large reefs.{SCROLL}One, Two and Three Island are the most{NEWLINE}developed.{SCROLL}They’re the top choice for shopping on{NEWLINE}your trip.{SCROLL}If you want to experience the islands’{NEWLINE}natural side, Four, Five, Six and Seven{CLEAR}Island will feel completely different.",
+   "en": "The Alto Mare Islands consist of 7 main{NEWLINE}islands and 2 large reefs. One, Two and{CLEAR}Three Island are the most developed.{CLEAR}They’re definitely the top choice for{CLEAR}shopping on your trip. If you want to{CLEAR}experience the islands’ natural side,{CLEAR}Four, Five, Six and Seven Island will{CLEAR}feel completely different.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV028: omission: 绝对 (definitely) restored"
   },
   {
    "id": 25,
@@ -297,10 +297,10 @@
   {
    "id": 36,
    "zh": "在我们群岛餐厅{NEWLINE}既可以品尝到各地的美味小吃,{CLEAR}又能享受对战的乐趣,{CLEAR}请您务必进店体验一下。",
-   "en": "At our island restaurant, you can taste{NEWLINE}snacks from all over.{SCROLL}You can enjoy battles, too! Be sure to{NEWLINE}stop by!",
+   "en": "At our Island Restaurant, you can{NEWLINE}taste delicious snacks from all over and{CLEAR}enjoy battles, too! Please be sure to{CLEAR}stop by!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV028: name: 群岛餐厅 = the Island Restaurant (D-0869); omission: 美味 restored"
   },
   {
    "id": 37,
