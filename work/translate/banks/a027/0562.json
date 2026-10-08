@@ -344,10 +344,10 @@
   {
    "id": 42,
    "zh": "东边这间房子里住着一位{NEWLINE}非常乐善好施的婆婆哦,{CLEAR}来七之岛的游客有困难了{CLEAR}都会去找她帮忙。{SCROLL}有次我的包裹被岛上的变隐龙偷走了,{NEWLINE}就是这位婆婆帮忙找回来的呢。",
-   "en": "A very generous old lady lives in the{NEWLINE}house to the east. Whenever tourists{CLEAR}on Seven Island are in trouble, they go{CLEAR}to her for help.{SCROLL}Once, a Kecleon on the island stole my{NEWLINE}bag, and she helped me get it back.",
+   "en": "A very generous old lady lives in the{NEWLINE}house to the east. Whenever tourists{CLEAR}on Seven Island are in trouble, they go{CLEAR}to her for help.{SCROLL}Once, a Kecleon on the island stole my{NEWLINE}package, and she helped me get it back.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV005: meaning: 包裹 is a package/parcel, not a bag"
   },
   {
    "id": 43,
@@ -517,10 +517,10 @@
   {
    "id": 63,
    "zh": "好了好了,别打了！{NEWLINE}你那么喜欢大珍珠,还给你就是！{CLEAR}呸！",
-   "en": "All right, all right, stop! If you love{NEWLINE}the Big Pearl so much, then take it{CLEAR}back! Pfft!",
+   "en": "All right, all right, stop hitting me! If{NEWLINE}you love the Big Pearl so much, then{CLEAR}take it back! Pfft!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV005: omission: 别打了 = stop hitting/fighting me (D-1926)"
   },
   {
    "id": 64,

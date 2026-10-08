@@ -242,10 +242,10 @@
   {
    "id": 29,
    "zh": "对不起,请听我说一句。{NEWLINE}那天没能赶得及救下小火龙{CLEAR}我也非常自责。{CLEAR}如果给您带来了悲伤的情绪,{CLEAR}就请冲我发泄吧。{CLEAR}您和精灵都是无辜的,{CLEAR}请放过它们和您自己吧。",
-   "en": "I’m sorry, but please hear me out. I{NEWLINE}blame myself terribly for not making it{CLEAR}in time to save Charmander that day. If{CLEAR}I’ve caused you grief, then please take{CLEAR}it out on me. You and the Pokémon are{CLEAR}innocent. Please let them go, and let{CLEAR}yourself go too.",
+   "en": "I’m sorry, but please hear me out. I{NEWLINE}blame myself terribly for not making it{CLEAR}in time to save Charmander that day. If{CLEAR}I’ve caused you grief, then please take{CLEAR}it out on me. You and the Pokémon are{CLEAR}innocent. Please spare them, and spare{CLEAR}yourself too.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV005: meaning: 放过它们和您自己 = spare them and yourself; ‘let yourself go’ meant something else in English"
   },
   {
    "id": 30,
@@ -397,15 +397,15 @@
    "en": "Vulpix: Vuuuu-Vuuuu-!{SCROLL}Vulpix wailed at the middle-aged man.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "zh 中年年子 read as 中年男子 (as #26)"
   },
   {
    "id": 49,
    "zh": "我真的非常非常抱歉,{NEWLINE}那天没能赶得及救下小火龙{CLEAR}我也是自责无比。{CLEAR}如果给您带来了悲伤的情绪,{CLEAR}就请冲我发泄吧。{CLEAR}您和精灵都是无辜的,{CLEAR}请放过它们和您自己吧。",
-   "en": "I’m truly, truly sorry. I blame myself{NEWLINE}terribly for not making it in time to{CLEAR}save Charmander that day. If I’ve{CLEAR}caused you grief, then please take it{CLEAR}out on me. You and the Pokémon are{CLEAR}innocent. Please let them go, and let{CLEAR}yourself go too.",
+   "en": "I’m truly, truly sorry. I blame myself{NEWLINE}terribly for not making it in time to{CLEAR}save Charmander that day. If I’ve{CLEAR}caused you grief, then please take it{CLEAR}out on me. You and the Pokémon are{CLEAR}innocent. Please spare them, and spare{CLEAR}yourself too.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV005: meaning: 放过它们和您自己 = spare them and yourself; ‘let yourself go’ meant something else in English"
   },
   {
    "id": 50,

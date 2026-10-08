@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "大叔我啊正在四之岛挖金珠,{NEWLINE}等我挖够了金珠换成钱,{CLEAR}就去关东地区买个房子定居。",
-   "en": "I’m digging for Nuggets on Four Island.{NEWLINE}Once I’ve dug up enough to cash in, I’ll{CLEAR}buy a house in Kanto and settle down.",
+   "en": "This old guy’s digging for Nuggets on{NEWLINE}Four Island. Once I’ve dug up enough{CLEAR}Nuggets to cash in, I’ll buy a house in{CLEAR}Kanto and settle down.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV005: voice: self-reference 大叔我 restored"
   },
   {
    "id": 13,
