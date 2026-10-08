@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "贴着传单！{SCROLL}最近有不守礼节的训练家{NEWLINE}在地下通道{CLEAR}进行精灵对决,{SCROLL}因附近居民对此投诉,{CLEAR}故封闭地下通道！{CLEAR}　　　　……彩虹市警察",
-   "en": "There is a notice!{SCROLL}...Uncouth Trainers have been holding{NEWLINE}battles in the Underground Path.{SCROLL}Because of rising complaints by local{NEWLINE}residents, the Underground Path has{CLEAR}been sealed indefinitely.{CLEAR}Signed, the Celadon Police",
+   "en": "There’s a notice posted!{SCROLL}Recently, ill-mannered Trainers have{NEWLINE}been holding Pokémon battles in the{CLEAR}Underground Path.{SCROLL}Due to complaints from local residents,{NEWLINE}the Underground Path is closed!{SCROLL}...Celadon City Police",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0336/0"
+   "origin": "agent",
+   "notes": "US 0336/0 | RV011: addition: US line added 'rising'/'indefinitely'; aligned with sibling signs 0322#48, 0327#58"
   },
   {
    "id": 1,
@@ -166,10 +166,10 @@
   {
    "id": 20,
    "zh": "还好啦莉佳大小姐,{NEWLINE}只是轻微擦伤而已。",
-   "en": "I’m fine, Miss Erika. It’s just a{NEWLINE}scratch.",
+   "en": "I’m fine, Lady Erika. It’s just a{NEWLINE}scratch.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV011: voice: 莉佳大小姐 = 'Lady Erika' as everywhere else (D-0589)"
   },
   {
    "id": 21,
@@ -366,10 +366,10 @@
   {
    "id": 45,
    "zh": "大吾『{VAR:0103:0},我刚要挑战浅红道馆,{NEWLINE}阿桔先生就接到精灵联盟的通知{CLEAR}要来解决金黄市的突发情况。{CLEAR}我本来以为四天王和馆主们齐聚这里,{CLEAR}一定能迅速解决事件。{CLEAR}谁知道现在连金黄市都进不去,{CLEAR}更别提跟火箭队战斗了。",
-   "en": "Steven: {VAR:0103:0}. I was just about to{NEWLINE}challenge the Fuchsia Gym when Koga got{CLEAR}word from the Pokémon League...{SCROLL}...that he had to come deal with the{NEWLINE}emergency in Saffron City.{SCROLL}I thought that with the Elite Four and{NEWLINE}the Gym Leaders all gathered here, this{CLEAR}would be settled quickly.{SCROLL}Who knew we couldn’t even get into{NEWLINE}Saffron City, let alone fight them?",
+   "en": "Steven: {VAR:0103:0}, I was just about to{NEWLINE}challenge the Fuchsia Gym when Koga was{CLEAR}notified by the Pokémon League that he{CLEAR}had to come deal with the emergency in{CLEAR}Saffron City.{SCROLL}I thought that with the Elite Four and{NEWLINE}the Gym Leaders all gathered here, this{CLEAR}would be settled quickly.{SCROLL}Who knew we couldn’t even get into{NEWLINE}Saffron City, let alone fight{CLEAR}Team Rocket?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV011: omission: 跟火箭队战斗 named Team Rocket; removed stray split ellipsis"
   },
   {
    "id": 46,

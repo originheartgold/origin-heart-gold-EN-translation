@@ -254,10 +254,10 @@
   {
    "id": 31,
    "zh": "小霞『呼……{NEWLINE}你没受伤真是太好了！{SCROLL}小霞『这是我的暴鲤龙,{NEWLINE}准确点说是爸爸给我的。{CLEAR}因为我目前的训练家等级还不够,{CLEAR}所以还不能自如地指挥它。{SCROLL}小霞『本来想在月见山上{NEWLINE}跟它一起锻炼一下的,{CLEAR}没成想却差点误伤了你。{CLEAR}唉，我还真是没用。",
-   "en": "Misty: Phew... I’m so glad you’re not{NEWLINE}hurt!{SCROLL}Misty: This is my Gyarados. Well, to be{NEWLINE}exact, my dad gave it to me.{SCROLL}My Trainer level isn’t high enough yet,{NEWLINE}so I can’t command it properly.{SCROLL}Misty: I wanted to train with it here on{NEWLINE}Mt. Moon, but instead it nearly hurt{CLEAR}you.{SCROLL}Sigh... I’m so useless.",
+   "en": "Misty: Phew... I’m so glad you’re not{NEWLINE}hurt!{SCROLL}Misty: This is my Gyarados. Well, to be{NEWLINE}exact, my dad gave it to me.{SCROLL}My Trainer level isn’t high enough yet,{NEWLINE}so I can’t command it properly.{SCROLL}Misty: I wanted to train with it on{NEWLINE}Mt. Moon, but it nearly hurt you.{SCROLL}Sigh... I’m so useless.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV011: addition: dropped 'here' (zh 在月见山上; scene is on Route 3)"
   },
   {
    "id": 32,

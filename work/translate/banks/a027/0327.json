@@ -254,10 +254,10 @@
   {
    "id": 31,
    "zh": "两个人对练的修行,{NEWLINE}进步总是比一个人练习更快。{CLEAR}感谢你陪我练习,{CLEAR}我这里有一招千锤百炼出来{CLEAR}足以击碎岩石的绝招「子弹拳」,{CLEAR}如果你有精灵想学的话,{CLEAR}只要给我1个速度球,{CLEAR}我就可以教给它们。{SCROLL}怎么样,要学吗？{SCROLL}",
-   "en": "Training in pairs always makes you{NEWLINE}improve faster than training alone.{SCROLL}Thanks for practicing with us!{SCROLL}I have a special move, honed through{NEWLINE}endless practice and strong enough to{CLEAR}shatter rock: Bullet Punch.{SCROLL}If any of your Pokémon want to learn it,{NEWLINE}just give me one Fast Ball.{SCROLL}Well? Want to learn it?{SCROLL}",
+   "en": "Training in pairs always makes you{NEWLINE}improve faster than training alone.{SCROLL}Thanks for practicing with me!{SCROLL}I have a special move, honed through{NEWLINE}endless practice and strong enough to{CLEAR}shatter rock: Bullet Punch.{SCROLL}If any of your Pokémon want to learn it,{NEWLINE}just give me one Fast Ball.{SCROLL}Well? Want to learn it?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV011: meaning: 陪我练习 = with me"
   },
   {
    "id": 32,

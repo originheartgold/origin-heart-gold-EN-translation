@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "我跟孙女一起,{NEWLINE}在这里照顾这些无助的精灵们。{CLEAR}这个世界没有那么多人与人的竞争,{CLEAR}所以请你好好珍惜{CLEAR}跟你一起旅行的伙伴。{SCROLL}不要因为个体值、性格{NEWLINE}这种小事就遗弃他们。",
-   "en": "My granddaughter and I look after{NEWLINE}these helpless Pokémon here.{SCROLL}Life doesn’t have to be all about{NEWLINE}beating other people.{SCROLL}So please treasure the partners who{NEWLINE}travel with you.{SCROLL}Don’t abandon them over little things{NEWLINE}like IVs or natures.",
+   "en": "My granddaughter and I look after{NEWLINE}these helpless Pokémon here.{SCROLL}There isn’t that much competition{NEWLINE}between people in this world.{SCROLL}So please treasure the partners who{NEWLINE}travel with you.{SCROLL}Don’t abandon them over little things{NEWLINE}like IVs or natures.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Route 5 Pokémon shelter house (the girl from 0322 and her grandfather). Bulbasaur / Growlithe alternate ids throughout (#1/2, #3/4, #5/6, #8/9, #10/12, #13/19, #15/20, #16/36, #21/22, #34/35): whichever Pokémon the grunt tried to take in 0322. #25 male / #26 female player. #32: Swablu found living with a kind girl elsewhere; the owner lets it stay."
+   "notes": "Route 5 Pokémon shelter house (the girl from 0322 and her grandfather). Bulbasaur / Growlithe alternate ids throughout (#1/2, #3/4, #5/6, #8/9, #10/12, #13/19, #15/20, #16/36, #21/22, #34/35): whichever Pokémon the grunt tried to take in 0322. #25 male / #26 female player. #32: Swablu found living with a kind girl elsewhere; the owner lets it stay. | RV011: meaning: zh states a fact about the world, not advice (D-1761)"
   },
   {
    "id": 1,

@@ -670,10 +670,10 @@
   {
    "id": 83,
    "zh": "小明『我在每次战斗开始前{NEWLINE}都会提前收取你3000元作为激励金,{CLEAR}在你胜利之后再还给你一定金额。{CLEAR}不过你今天似乎没有带够钱啊。{CLEAR}为了保证每场对战的质量,{CLEAR}你还是准备好激励金再来吧！",
-   "en": "A.J.: Before every battle, I collect{NEWLINE}a $3000 incentive fee from you, and I{CLEAR}pay some of it back if you win.{SCROLL}But it looks like you didn’t bring enough{NEWLINE}money today.{SCROLL}To keep every battle worthwhile, come{NEWLINE}back when you have the fee ready!",
+   "en": "A.J.: Before every battle, I collect a{NEWLINE}$3000 incentive fee from you, and after{CLEAR}you win, I pay you back a certain{CLEAR}amount.{SCROLL}But it looks like you didn’t bring enough{NEWLINE}money today.{SCROLL}To keep every battle worthwhile, come{NEWLINE}back when you have the fee ready!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position | [D-0383 rename 2026-09-29: Johnny → A.J.]; ext-review RV-002"
+   "notes": "v3 TM: 1 source(s), same position | [D-0383 rename 2026-09-29: Johnny → A.J.]; ext-review RV-002 | RV011: meaning: 再还给你一定金额 = a certain amount, not 'some of it' (D-1759)"
   },
   {
    "id": 84,
