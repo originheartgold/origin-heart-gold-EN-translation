@@ -5660,7 +5660,7 @@
   {
    "id": "RV077",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 488,
    "labels": [
     "a027/0214 side_features_minigames + mail + pokeathlon + easy_chat_words",
