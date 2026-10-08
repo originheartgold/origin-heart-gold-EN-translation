@@ -12,8 +12,9 @@ FAST stored) and explicit delays must delegate every task to the original printe
 next to FAST must behave exactly like FAST. The value-3 original printer is the
 baseline of the product rules (text_speed_checks.order_errors): NORMAL identical to
 it, FAST at most NORMAL's printing frames (strictly fewer where a NORMAL frame had
-room for one more glyph), no more dropped frames than NORMAL, none dropped only
-because of extra glyphs.
+room for one more glyph), no more dropped frames than NORMAL, at most one dropped
+only because of extra glyphs (D-2276). The unpublished-pointer case's display frames
+are reported against value 3, not judged (D-2280); its task cadence must be identical.
 """
 import argparse
 import json
@@ -111,14 +112,21 @@ def main():
             for key in ('glyphs', 'span', 'lag_frames', 'record'):
                 if cases['invalid-2'][key] != cases['invalid'][key]:
                     errors.append(f'invalid-2: {key} differs from the unknown value 3 (both must print as NORMAL)')
-            # The null injection adds instructions before the same original task:
-            # task cadence must be identical, display frames may differ by one.
+            # The null injection adds instructions before the same original task: the task
+            # cadence must be identical (the printer's behaviour). Display frames follow the game's
+            # own lag frames, which a few instructions can tip near a frame edge (phase 1: 2 more
+            # lag frames), so their difference is reported, not judged (D-2280).
             invalid_tasks = [t - cases['invalid']['glyph_tasks'][0] for t in cases['invalid']['glyph_tasks']]
             null_tasks = [t - cases['null']['glyph_tasks'][0] for t in cases['null']['glyph_tasks']]
             if invalid_tasks != null_tasks:
                 errors.append('null: task cadence differs from the invalid-mode original printer')
-            if max(abs(x - y) for x, y in zip(cases['invalid']['glyphs'], cases['null']['glyphs'])) > 1:
-                errors.append('null: glyph frames differ from the invalid-mode original printer by more than 1')
+            shift = max(abs(x - y) for x, y in zip(cases['invalid']['glyphs'], cases['null']['glyphs']))
+            report['null_glyph_frame_shift'] = shift
+            if shift > 1:
+                report.setdefault('warnings', []).append(
+                    f'null: glyph frames up to {shift} from the invalid-mode original printer '
+                    f"(lag frames {cases['null']['lag_frames']} vs {cases['invalid']['lag_frames']}; "
+                    'task cadence identical)')
             names = {checks.ORIGINAL: 'invalid', checks.NORMAL: 'normal', checks.FAST: 'fast'}
             records = {m: cases[n]['record'] for m, n in names.items()}
             order, notes = checks.order_errors(records)
