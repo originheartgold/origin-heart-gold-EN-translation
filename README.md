@@ -4,12 +4,12 @@ An English fan translation of **起源心金 (Pokémon Origin HeartGold) v4.0.3*
 
 ## Play it
 
-[Patch your game here](https://originheartgold.github.io/origin-heart-gold-EN-translation/patch/) and run on any emulator.
+[Patch your game here](https://originheartgold.github.io/origin-heart-gold-EN-translation/patch/) and play it in an emulator. It is tested in melonDS.
 Real Nintendo hardware is **not** supported and might result in strange and unexpected behavior.
 
-Stuck on a quest? The [quest guide]([guide/README.md](https://originheartgold.github.io/origin-heart-gold-EN-translation/guide/)) covers side quests, puzzles and easy-to-miss events, region by region.
+Stuck on a quest? The [quest guide](https://originheartgold.github.io/origin-heart-gold-EN-translation/guide/) ([source](guide/README.md)) covers side quests, puzzles and easy-to-miss events, region by region.
 
-Cannot find a Pokémon? Check the [full reference](https://originheartgold.github.io/origin-heart-gold-EN-translation/pokemon/) including movesets including egg, and moveset, evolution level or method, location, and more.
+Can't find a Pokémon? The [Pokédex](https://originheartgold.github.io/origin-heart-gold-EN-translation/pokemon/) lists each species' level-up, TM, tutor and Egg moves, how it evolves, where to find it, and more.
 
 **Status: release candidate (v1.0.0-rc5).** All 67,078 translatable strings are in English and pass the automated checks. The event scripts have been audited (softlocks, trades, gifts, passwords; see [CHANGELOG.md](CHANGELOG.md)), and game documentation generated from the ROM's own data is in [work/docs/](work/docs/README.md). Please report anything odd.
 

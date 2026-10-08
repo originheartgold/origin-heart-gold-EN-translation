@@ -46,7 +46,8 @@ Go through every string in the batch's bank/id ranges in `work/translate/banks/<
 
 - `status` "todo", or `en` is null → translate it. Set `en`, `status: "draft"`, `origin: "agent"`.
 - `status` "tm" (US text or the v3 fan translation, already QA-clean) → read it against the Chinese. If it is correct and natural, set `status: "draft"` and keep the origin. If it is wrong, stale (the hack changed the line) or clumsy, rewrite it and set origin "agent". If the hack rewrote the Chinese of a US line, retranslate it from the Chinese.
-- Official US lines survive only where the hack's Chinese still says the same thing. Modernise their names to the glossary.
+- Official US lines (`origin: "us"`) and v3 lines are never trusted unread: review every one against the hack's Chinese like any other line. The hack often rewrote a line while keeping its position, so the US text can be stale. Keep the US wording only when it says what the hack's Chinese says, with nothing dropped or added; otherwise retranslate from the Chinese. Modernise kept names to the glossary.
+- Tone words (可恶, 滚, 老娘, 本大爷, insults and the like) are chosen per line from the scene and the speaker's voice (D-2081). Earlier renderings in the register are precedents, not rules. Never record a new global style or wording rule without the user's approval: add a question instead.
 - `status` "draft" from an earlier agent → leave it unless it is clearly wrong.
 - `origin: "copy"` (English leftovers, dashes, empty strings) → leave it unless it is Chinese.
 - `zh` is `[zh redacted: song lyrics; sha256:…]` → a placeholder for song lyrics kept out of git (`work/tools/zh_redact.py`). Leave it as is; the tools fill in the real text from the local dump.
