@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "唉……要参加捕捉秀{NEWLINE}精灵的数量不够啊。{SCROLL}等你预存了从芳缘地区带来的{NEWLINE}６只精灵后,{CLEAR}你再来吧！",
-   "en": "Oh, hold on. You don’t have enough{NEWLINE}Pokémon for a Catching Show.{SCROLL}You’ll need to stock us with six{NEWLINE}Pokémon to participate.{SCROLL}You should make some Pokémon migrate{NEWLINE}from Hoenn or another region!",
+   "en": "Oh, hold on. You don’t have enough{NEWLINE}Pokémon for a Catching Show.{SCROLL}Come back once you’ve stocked six{NEWLINE}Pokémon brought from Hoenn!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0516/12"
+   "origin": "agent",
+   "notes": "US 0516/12 | RV024: addition: zh says Hoenn only; resolves D-1858"
   },
   {
    "id": 13,
@@ -286,18 +286,18 @@
   {
    "id": 35,
    "zh": "今天我想把幸福{NEWLINE}分享给大家……{SCROLL}我也把这个……{NEWLINE}皇冠送给你。{SCROLL}虽然只是装饰精灵的{NEWLINE}小饰品而已。{SCROLL}",
-   "en": "I feel so happy that I’d like to share{NEWLINE}my happiness with you today.{SCROLL}I must crown you with this...{NEWLINE}Crown.{SCROLL}Oh, before you get the wrong idea,{NEWLINE}it’s an Accessory for Pokémon.{SCROLL}",
+   "en": "I feel so happy that I’d like to share{NEWLINE}my happiness with you today...{SCROLL}So I’ll give you this... Crown, too.{SCROLL}It’s only a little Accessory for{NEWLINE}dressing up Pokémon, though.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0516/35"
+   "origin": "agent",
+   "notes": "US 0516/35 | RV024: addition: US crown pun not in zh (D-2050)"
   },
   {
    "id": 36,
    "zh": "今天我想把幸福{NEWLINE}分送给大家……{SCROLL}我也把这个……{NEWLINE}后冠送给你。{SCROLL}虽然只是装饰精灵的{NEWLINE}小饰品而已。{SCROLL}",
-   "en": "I feel so happy that I’d like to share{NEWLINE}my happiness with you today.{SCROLL}I feel compelled to give you this{NEWLINE}Tiara.{SCROLL}Oh, before you get the wrong idea,{NEWLINE}it’s an Accessory for Pokémon.{SCROLL}",
+   "en": "I feel so happy that I’d like to share{NEWLINE}my happiness with you today...{SCROLL}So I’ll give you this... Tiara, too.{SCROLL}It’s only a little Accessory for{NEWLINE}dressing up Pokémon, though.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0516/36"
+   "origin": "agent",
+   "notes": "US 0516/36 | RV024: addition: ‘feel compelled’ not in zh"
   },
   {
    "id": 37,
@@ -326,10 +326,10 @@
   {
    "id": 40,
    "zh": "有了口袋竞技场,{NEWLINE}就有战斗前线,{CLEAR}有了狩猎场,{CLEAR}也就有联动公园……{SCROLL}除了我之外的其他人,{NEWLINE}全都拼命努力着。{CLEAR}啊啊,一想到这里就{CLEAR}心跳不已！",
-   "en": "Not only is there the Pokéathlon and{NEWLINE}the Safari Zone, but also the{CLEAR}Battle Frontier and the Pal Park...{SCROLL}People other than me are working{NEWLINE}so hard... How dreamy...{CLEAR}This region sets my heart aflutter.",
+   "en": "Where there’s a Pokéathlon, there’s a{NEWLINE}Battle Frontier. Where there’s a Safari{CLEAR}Zone, there’s a Pal Park...{SCROLL}Everyone but me is working so hard.{SCROLL}Oh, just thinking about it makes my{NEWLINE}heart race!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0516/40"
+   "origin": "agent",
+   "notes": "US 0516/40 | RV024: meaning: US line added ‘How dreamy’/region; zh pairs the facilities"
   },
   {
    "id": 41,

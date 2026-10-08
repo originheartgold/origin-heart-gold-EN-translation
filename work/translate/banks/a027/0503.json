@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "咕噜咕噜……{SCROLL}我还能吃！{SCROLL}再来一份树果！老板！{SCROLL}",
-   "en": "Crunch... Crunch...{SCROLL}I can keep eating!{NEWLINE}More, chef!{SCROLL}",
+   "en": "Crunch... Crunch...{SCROLL}I can keep eating! More Berries, chef!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0510/4"
+   "origin": "agent",
+   "notes": "US 0510/4 | RV024: omission: 再来一份树果 names the Berries"
   },
   {
    "id": 5,

@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "我的变装怎么样？{NEWLINE}人家说很适合我啊。",
-   "en": "Well? Wasn’t my disguise perfect?",
+   "en": "How’s my disguise? People say it really{NEWLINE}suits me!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0514/8"
+   "origin": "agent",
+   "notes": "US 0514/8 | RV024: omission: 人家说很适合我 dropped"
   },
   {
    "id": 9,
