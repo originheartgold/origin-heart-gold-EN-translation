@@ -36,7 +36,7 @@ Valid old in-game saves still upgrade without preparation. New-save → old-ROM 
 
 - Native candidates reject missing feature metadata or a false opt-out.
 - Legacy candidates without the native feature remain supported.
-- New opt-outs explicitly record `--no-text-speed` or `--no-hardcoded` (since 2026-10-08, when text speed became the fix `text-speed`: `not-selected`; the old reasons stay accepted for old reports).
+- New opt-outs explicitly record why the feature is absent. Since 2026-10-08 text speed is the fix `text-speed`, and every build without it (`--without text-speed`, an `--only` list without it, `--no-hardcoded`) records the reason `not-selected`; build reports written before then recorded `--no-text-speed` or `--no-hardcoded`, which are still accepted.
 - Enabled artifact validation calls the feature verifier and requires payload reproduction.
 - Patcher, C source, labels header and cached payload are fingerprinted and checked again after verification.
 

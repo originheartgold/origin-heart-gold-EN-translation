@@ -1582,7 +1582,7 @@ auto-advance.
 New: native Thumb code (native.c, compiled by clang into the reviewed payload.json, sha256 pinned in
 text_speed_patch.py) is appended to the ARM9 ITCM autoload block by the armips source (.incbin; 0x01FF8620-
 0x01FF8BE0; the SDK's ITCM arena start at 0x020D1A28 moves past it). Options gets a seventh row TEXT SPEED with NORMAL / FAST (overlay 50
-grows by 284 bytes for the new row tables; 32 metadata offsets, row counts, touch boxes, button positions and
+grows by 284 bytes for the new row tables; 40 field offsets, row counts, touch boxes, button positions and
 six calls are rewritten). NORMAL is the hack's printer; FAST prints up to three letters per frame when the
 frame has room (frame-bounded, D-1601). The game loop's last call before its VBlank wait (0x02000DE0) goes
 through pass_end, which gives every printer one extra turn per missed refresh (30 fps catch-up, D-1603).
@@ -1741,6 +1741,9 @@ RECORD_SIZE equ 0x54
 
 ; A field offset built as `mov rN, #imm` + `lsl rN, rN, #shift` (shift 2 or 4) is rebuilt with shift 2.
 .macro relocate_field, addr, reg, old_mov, lsl_addr, old_lsl, offset
+    .if ((old_mov & 0xFF) << ((old_lsl >> 6) & 0x1F)) != offset
+      .error "relocate_field at " + tohex(addr, 8) + ": the old mov/lsl build " + tohex((old_mov & 0xFF) << ((old_lsl >> 6) & 0x1F)) + ", not " + tohex(offset)
+    .endif
     .if (offset + RECORD_SIZE) % 4 || (offset + RECORD_SIZE) / 4 > 255
       .error "field offset " + tohex(offset + RECORD_SIZE) + " cannot be encoded as mov #imm8 + lsl #2"
     .endif

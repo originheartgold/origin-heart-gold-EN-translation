@@ -7,13 +7,16 @@ that writes the new bytes. fix.toml declares what it may change:
   * [[string]] entries (kind strings): the slot of the Chinese string (`zh`, max_units + 1 code units) must
     change, and its pointer words may change (a string too long for its slot is relocated); after assembling,
     the string each entry's pointers (or its slot) lead to must be exactly the entry's `en`;
-  * [[grow]] (any of these kinds): an overlay that may grow by appending, up to `max` bytes.
+  * [[grow]] (any of these kinds): an overlay, or the ARM9 ITCM block ("itcm"), that may grow by appending,
+    up to `max` bytes; the ITCM block can only grow (no [[code]] or [[string]] in it);
+  * [native] (kind code): a payload (reviewed compiler output) the asm places with `.incbin`.
 The build:
 
   1. reads the decompressed arm9 / overlay images it needs from the ROM through RomView and checks every
      region's original bytes (`expect`, the encoded `zh`, the pointers' old targets);
-  2. stages them as <stage>/rom/arm9.bin, <stage>/rom/overlayNN.bin next to a copy of work/patches/include
-     (<stage>/include). armips resolves `.open`, `.include` and `.loadtable` paths against its working
+  2. stages them as <stage>/rom/arm9.bin, <stage>/rom/itcm.bin (the ARM9 autoload section at 0x01FF8000,
+     ndspy loadArm9), <stage>/rom/overlayNN.bin next to a copy of work/patches/include (<stage>/include) and
+     each [native] fix's payload bytes as <stage>/native/<fix>.bin, after its module validated them. armips resolves `.open`, `.include` and `.loadtable` paths against its working
      directory, which is <stage>/rom, so a source says `.open "arm9.bin", 0x02000000` and
      `.include "../include/guards.inc"`;
   3. runs armips once per fix, in build order (`armips -erroronwarning -temp <listing> <fix>.asm`). The
@@ -26,7 +29,10 @@ The build:
      no other overlay starts in the grown range (one that overlaps the overlay itself is never loaded with
      it, so it does not count). Strings fixes are then read back against their fix.toml `en`;
   5. writes the changed images back through RomView, which also sets a grown overlay's ramSize in the y9
-     overlay table. verify() reads the result back after the ROM is written.
+     overlay table; arm9 first, then itcm, whose write rebuilds the ARM9 file with ndspy. The rebuilt main
+     section may differ from the assembled arm9.bin only in the two autoload-list words, and the other
+     autoload sections (DTCM) must stay as they were; a grown ITCM block must stay a multiple of 4, without
+     .bss, ending at or below fixes.ITCM_LIMIT. verify() reads the result back after the ROM is written.
 
 armips is not bundled. It is found as --armips PATH (build.py), else the ARMIPS environment variable, else
 `armips` on PATH, and must report the pinned version (PINNED_VERSION). Build steps: work/notes/toolchain.md.
@@ -580,6 +586,8 @@ def apply(rom, fixes, armips: str, dry_run=False) -> dict:
     new, rows, srows = assemble(fixes, binaries, armips, bases, layout=layout)
     changed = {k: v for k, v in new.items() if v != binaries[k]}
     final = dict(changed)
+    autoload_before = [(s.ramAddress, bytes(s.data), s.bssSize) for s in rom.loadArm9().sections[1:]
+                       if s.ramAddress != fixreg.ITCM_BASE] if "itcm" in changed else None
     if not dry_run:
         for k, v in changed.items():                        # staged_keys order: arm9, itcm, overlays
             view.set(k, v)
@@ -592,6 +600,10 @@ def apply(rom, fixes, armips: str, dry_run=False) -> dict:
             if bad:
                 raise AsmError(f"arm9: writing the grown ITCM section changed main-section bytes outside the "
                                f"autoload bookkeeping: {', '.join(f'+{a:#x}' for a, _ in _ranges(bad))}")
+            after = [(s.ramAddress, bytes(s.data), s.bssSize) for s in code.sections[1:]
+                     if s.ramAddress != fixreg.ITCM_BASE]
+            if after != autoload_before:
+                raise AsmError("arm9: writing the grown ITCM section changed another autoload section (DTCM)")
             final["arm9"] = got
             final["itcm"] = view.get("itcm")
     return {"code_regions": rows, "strings": srows,

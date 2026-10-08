@@ -283,6 +283,8 @@ def registry_code_patches(fixes=None,hc_report=None):
     for fx in fixes:
         if fx['id']==FIX_ID:continue
         for row in fixreg.footprint(fx):
+            if row[0]=='itcm':
+                raise ValueError(f'Fix {fx["id"]} ({row[3]}) touches the ITCM block, which text speed pins and extends; review both together')
             if row[0] in (f'overlay{OVERLAY}',f'overlay{CALL_OVERLAY}'):
                 raise ValueError(f'Fix {fx["id"]} ({row[3]}) touches {row[0]}, which text speed rewrites; review both together')
     for fx in fixreg.code_entries_fixes(fixes):
@@ -367,7 +369,13 @@ def precheck(rom,fixes=None,code_patches=None):
     """
     payload=load_payload()
     code=rom.loadArm9();current=bytes(code.sections[0].data)
-    cps=arm9_code_patches(rom.arm9,current,registry_code_patches(fixes) if code_patches is None else code_patches)
+    source=registry_code_patches(fixes) if code_patches is None else code_patches
+    # The demand-loading heap fix (msgload-all) is assembled in the same armips stage: it must be selected,
+    # and its region must cover HEAP_FIX with that value (or an unknown value, before the stage has run).
+    heap=[c for c in code_patch_ranges(source) if c[1]=='arm9' and c[2]<=HEAP_FIX[0]<c[2]+len(c[3])]
+    if not heap or any(c[4] is not None and struct.unpack_from('<H',c[4],HEAP_FIX[0]-c[2])[0]!=HEAP_FIX[1] for c in heap):
+        raise ValueError('Text speed requires the demand-loading heap fix (fix msgload, region msgload-all)')
+    cps=arm9_code_patches(rom.arm9,current,source)
     a=bytearray(current)
     for _,_,off,want,_ in cps:a[off:off+len(want)]=want
     if digest(a)!=REVIEWED_BASE_ARM9_SHA256:raise ValueError('Unreviewed ARM9 image')
@@ -423,6 +431,7 @@ def verify(rom,report,code_patches=None):
         raise ValueError('Pokégear overlay differs from the reviewed original outside the call redirect')
     sections=rom.loadArm9().sections
     blob=bytes.fromhex(payload['code'])
+    if digest(bytes(sections[1].data[:0x620]))!=REVIEWED_ITCM_SHA256:raise ValueError('Original ITCM section changed')
     if bytes(sections[1].data[0x620:0x620+len(blob)])!=blob:raise ValueError('Native payload changed')
     if struct.unpack_from('<H',sections[0].data,HEAP_FIX[0])[0]!=HEAP_FIX[1]:raise ValueError('Heap fix missing')
     # Verify release-critical behaviour independently of the recorded output hashes.

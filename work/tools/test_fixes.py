@@ -152,6 +152,10 @@ class Registry(unittest.TestCase):
         self.write("u", fix_toml("u", entries=code_entry("u-1", offset="0x20").replace('expect = "0x2305"',
                                                                                       'length = 3')))
         probs = self.problems()
+        # the ITCM block only grows: a region or string in it is refused
+        self.write("v", fix_toml("v", entries=code_entry("v-1", file="itcm")))
+        probs = self.problems()
+        self.assertTrue(any("(the ITCM block 'itcm' may only grow" in p for p in probs), probs)
         for want in ("wrong or missing: entry", "must include the payload once", "module 'evil' is unknown",
                      "itcm.bin opened at 0x01ff8020", "length must be a positive even",
                      "missing 'expect' (or 'length' + 'expect_sha1'"):

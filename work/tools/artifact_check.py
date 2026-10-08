@@ -80,7 +80,8 @@ def check(a, export_fn=None, verify_fn=None):
                          build.TOOLS / "qa_config.json", build.TOOLS / "charmap_en.tsv",
                          build.TOOLS / "charmaps" / "charmap_zh_xzonn_gen4.tsv",
                          build.WORK / "graphics" / "layout_checks.json",
-                         # text-speed: its applier and native sources (its fix.toml is in the glob above);
+                         # text-speed: its checking module and native sources (fix.toml and text-speed.asm are
+                         # in the globs above);
                          # text_speed_patch.verify() checks the other fixes' regions against its contract.
                          build.TOOLS / "text_speed_patch.py",
                          *(build.text_speed_patch.ASSETS / name for name in

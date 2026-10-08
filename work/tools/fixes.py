@@ -131,7 +131,10 @@ NATIVE_REQUIRED = ("source", "payload", "module")
 ASM_DEFINELABEL_RE = re.compile(r"^\s*\.definelabel\s+(\w+)\s*,\s*(0x[0-9A-Fa-f]+)\s*(?:;.*)?$", re.I)
 ASM_INCBIN_RE = re.compile(r'^\s*(?:\w+:\s*)?\.incbin\s+"([^"]+)"', re.I)
 # The ARM9 ITCM autoload block (file key "itcm", staged as itcm.bin): its RAM address, and how far a fix may
-# grow it (the RC's reserve; DTCM and the SDK arena come after)
+# grow it: 0x01FFA000 is the text-speed release candidate's budget for native code (its MAX_PAYLOAD_SIZE), not
+# a hardware boundary (ITCM is 32 KiB at 0x01FF8000; DTCM is the autoload section at 0x027E0000). A fix may
+# only append to the block ([[grow]] itcm); [[code]] / [[string]] entries in it are refused, so its original
+# bytes can only change with a new review.
 ITCM_BASE = 0x01FF8000
 ITCM_LIMIT = 0x01FFA000
 
@@ -139,7 +142,7 @@ CODE_KEYS = {"id": str, "file": str, "offset": str, "expect": str, "length": int
              "notes": str}
 CODE_REQUIRED = ("id", "file", "offset", "notes")         # plus expect, or length + expect_sha1
 SHA1_RE = re.compile(r"[0-9a-f]{40}")
-CODE_FILE_RE = re.compile(r"arm9|itcm|overlay\d+")
+CODE_FILE_RE = re.compile(r"arm9|overlay\d+")   # [[code]] / [[string]] files; "itcm" only grows ([[grow]])
 # `.open "<file>.bin", 0x<load address>` in a fix's asm (comments allowed after it)
 ASM_OPEN_RE = re.compile(r'^\s*\.open\s+"([^"]+)"\s*,\s*(0x[0-9A-Fa-f]+)\s*(?:;.*)?$', re.I)
 STRING_KEYS = {"id": str, "file": str, "offset": str, "zh": str, "en": str, "max_units": int,
@@ -279,7 +282,7 @@ def _validate_entries(fx, where, problems):
         if isinstance(e.get("offset"), str) and not HEX_RE.fullmatch(e["offset"]):
             problems.append(f"{w}: offset must be hex like '0x4E'")
         if isinstance(e.get("file"), str) and not CODE_FILE_RE.fullmatch(e["file"]):
-            problems.append(f"{w}: file must be 'arm9' or 'overlayNN'")
+            problems.append(f"{w}: file must be 'arm9' or 'overlayNN' (the ITCM block 'itcm' may only grow: [[grow]])")
         if "expect" in e and ("length" in e or "expect_sha1" in e):
             problems.append(f"{w}: give expect, or length + expect_sha1, not both")
         elif "expect" not in e:
@@ -302,7 +305,7 @@ def _validate_entries(fx, where, problems):
         if e.get("id") and e.get("file") and e.get("offset") and e["id"] != f"{e['file']}:{e['offset']}":
             problems.append(f"{w}: id must be '<file>:<offset>'")
         if isinstance(e.get("file"), str) and not CODE_FILE_RE.fullmatch(e["file"]):
-            problems.append(f"{w}: file must be 'arm9' or 'overlayNN'")
+            problems.append(f"{w}: file must be 'arm9' or 'overlayNN' (the ITCM block 'itcm' may only grow: [[grow]])")
         for ptr in e.get("pointers", []) if _is(e.get("pointers", []), STRS) else []:
             if not HEX_RE.fullmatch(ptr):
                 problems.append(f"{w}: pointer {ptr!r} must be hex like '0x4E4'")

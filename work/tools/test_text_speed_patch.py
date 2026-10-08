@@ -257,6 +257,11 @@ class CodePatchGuardTests(unittest.TestCase):
                        {'id':'x','kind':'code','grow':[{'file':key,'max':4}]}):
                 with self.subTest(key=key,kind=fx['kind']),self.assertRaisesRegex(ValueError,f'touches {key}'):
                     speed.registry_code_patches([fx])
+        # nor the ITCM block, which text speed pins and extends (the RC pinned the whole ITCM image)
+        for fx in ({'id':'x','kind':'code','grow':[{'file':'itcm','max':4}]},
+                   {'id':'x','kind':'code','code':[{'id':'x-1','file':'itcm','offset':'0x10','expect':'0x0'}]}):
+            with self.subTest(itcm=list(fx)[-1]),self.assertRaisesRegex(ValueError,'touches the ITCM block'):
+                speed.registry_code_patches([fx])
         # text speed's own footprint is not a clash
         own=[f for f in fixes.load_all() if f['id']==speed.FIX_ID]
         self.assertEqual(speed.registry_code_patches(own),[])
@@ -636,6 +641,23 @@ class RomTests(unittest.TestCase):
                 self.assertEqual(before,rom.save())
                 with self.assertRaisesRegex(ValueError,'native runtime contract: synthetic'):
                     speed.verify(self.patched,self.report,code_patches=self.code_patches()+[synthetic])
+
+    def test_heap_fix_not_selected_fails_before_mutation(self):
+        # precheck refuses before anything is assembled when msgload's heap region is not in the selection
+        # (or would write another value there)
+        rom=copy.deepcopy(self.original);before=rom.save()
+        without=[c for c in self.cps if c['id']!='msgload-all']
+        other=[dict(c,value='0x2502') if c['id']=='msgload-all' else c for c in self.cps]
+        for cps in (without,other):
+            with self.assertRaisesRegex(ValueError,'demand-loading heap fix'):apply_text_speed(rom,cps)
+            self.assertEqual(before,rom.save())
+
+    def test_verify_detects_a_changed_original_itcm(self):
+        # another stage editing the hack's own ITCM bytes is caught, even with a refreshed receipt
+        rom=copy.deepcopy(self.patched);code=rom.loadArm9();code.sections[1].data[0x100]^=1
+        rom.arm9=code.save(compress=False)
+        report=copy.deepcopy(self.report);report['arm9_sha256']=speed.digest(rom.arm9)
+        with self.assertRaisesRegex(ValueError,'Original ITCM section changed'):speed.verify(rom,report)
 
     def test_heap_fix_still_at_expect_fails_closed(self):
         # msgload is assembled in the same armips stage, so the heap fix is checked after it (receipt);

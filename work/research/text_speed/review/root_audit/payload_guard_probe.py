@@ -1,6 +1,7 @@
 """Read-only source-ROM probe of cached native payload validation.
 
-Run from the worktree root with an unpatched, demand-loaded English ROM path.
+Run from the worktree root with an English ROM built without text speed (build.py --without text-speed)
+and ARMIPS set to armips v0.11.0.
 Mutations stay in memory; this never writes a ROM or changes the checked-in cache.
 The observed result should become rejection after the validation gap is fixed.
 """
@@ -15,6 +16,8 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / 'tools'))
 import ndspy.rom
+import asmpatch
+import fixes
 import text_speed_patch as speed
 
 
@@ -43,7 +46,16 @@ def main():
                     shutil.copy2(speed.ASSETS / name, cache / name)
                 (cache / 'payload.json').write_text(json.dumps(payload))
                 with patch.object(speed, 'ASSETS', cache):
-                    report = speed.apply(rom)
+                    # what build.py does for the text-speed fix (since 2026-10-08 an armips source): precheck,
+                    # assemble text-speed.asm with the payload from the patched ASSETS, receipt, verify. ROM:
+                    # an English build without text speed (build.py --without text-speed); armips from $ARMIPS.
+                    speed.precheck(rom)
+                    try:
+                        asmpatch.apply(rom, [f for f in fixes.load_all() if f['id'] == speed.FIX_ID],
+                                       asmpatch.find_armips())
+                    except asmpatch.AsmError as error:
+                        raise ValueError(str(error)) from None
+                    report = speed.receipt(rom)
                     result = speed.verify(rom, report)
             results.append({'case': case, 'rejected': False, 'verification': result})
         except (ValueError, AssertionError) as error:
