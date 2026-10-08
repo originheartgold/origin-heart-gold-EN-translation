@@ -368,10 +368,10 @@
   {
    "id": 45,
    "zh": "干安『能不能碰上{NEWLINE}好的精灵,{CLEAR}也是要看人品的。",
-   "en": "Don: Whether you get the right Pokémon{NEWLINE}or not is half luck.",
+   "en": "Don: Whether you run into a good{NEWLINE}Pokémon or not is down to karma.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/45"
+   "origin": "agent",
+   "notes": "US 0062/45 | RV038: meaning: 人品 = karma/luck, no 'half'"
   },
   {
    "id": 46,
@@ -416,10 +416,10 @@
   {
    "id": 51,
    "zh": "绘里『听说颜色漂亮的{NEWLINE}精灵容易拿到第一,{CLEAR}这是真的吗？",
-   "en": "Abby: Somebody told me that colorful{NEWLINE}Pokémon are more likely to win.{CLEAR}I wonder if it’s true...",
+   "en": "Abby: I heard Pokémon with pretty{NEWLINE}colors are more likely to take first{CLEAR}place. Is that true?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/51"
+   "origin": "agent",
+   "notes": "US 0062/51 | RV038: meaning: zh asks directly"
   },
   {
    "id": 52,
@@ -536,10 +536,10 @@
   {
    "id": 66,
    "zh": "智道『听说有人抓到{NEWLINE}绿毛虫就拿了冠军！",
-   "en": "Josh: Somebody won the Contest{NEWLINE}with a Caterpie!",
+   "en": "Josh: I heard someone won the Contest{NEWLINE}with a Caterpie!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/66; modernised from US 0062#66"
+   "origin": "agent",
+   "notes": "US 0062/66; modernised from US 0062#66 | RV038: omission: restored 听说 (hearsay)"
   },
   {
    "id": 67,
@@ -952,10 +952,10 @@
   {
    "id": 118,
    "zh": "梨花『我们只记得{NEWLINE}好像跟你的哪个同伴{CLEAR}在一起共事过呢。",
-   "en": "Karen: All we remember is that we used{NEWLINE}to work alongside one of your friends.",
+   "en": "Karen: All we remember is that we may{NEWLINE}have worked with one of your friends.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV038: omission: restored 好像 hedge"
   },
   {
    "id": 119,
@@ -1376,10 +1376,10 @@
   {
    "id": 171,
    "zh": "能打有什么用,{NEWLINE}你还能当联盟冠军不成？{CLEAR}我跟你说真正成熟的女孩子{CLEAR}是不会喜欢你这种人的。",
-   "en": "What good is being able to fight? What,{NEWLINE}you think you’re the League Champion?{SCROLL}Let me tell you, a truly mature girl{NEWLINE}won’t go for a guy like you.",
+   "en": "What good is being able to fight? What,{NEWLINE}you think you can become League{CLEAR}Champion or something?{SCROLL}Let me tell you, a truly mature girl{NEWLINE}won’t go for a guy like you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV038: meaning: 你还能当联盟冠军不成 = could you become Champion"
   },
   {
    "id": 172,
@@ -1408,10 +1408,10 @@
   {
    "id": 175,
    "zh": "能打有什么用,{NEWLINE}你还能当联盟冠军不成？{CLEAR}我跟你说真正成熟的男人{CLEAR}是不会喜欢你这种暴力婆的。",
-   "en": "What good is being able to fight? What,{NEWLINE}you think you’re the League Champion?{SCROLL}Let me tell you, a truly mature man{NEWLINE}won’t go for a violent shrew like you.",
+   "en": "What good is being able to fight? What,{NEWLINE}you think you can become League{CLEAR}Champion or something?{SCROLL}Let me tell you, a truly mature man{NEWLINE}won’t go for a violent shrew like you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV038: meaning: 你还能当联盟冠军不成 = could you become Champion"
   },
   {
    "id": 176,

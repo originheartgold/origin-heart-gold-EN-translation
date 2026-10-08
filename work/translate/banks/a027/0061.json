@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "绘里『我为了参加大会{NEWLINE}特意培养了一只速度快的精灵。",
-   "en": "Abby: I am training my Pokémon to raise{NEWLINE}its Speed to prepare for the Contest.",
+   "en": "Abby: I raised a fast Pokémon especially{NEWLINE}for the Contest.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0063/9"
+   "origin": "agent",
+   "notes": "US 0063/9 | RV038: meaning: zh: raised a fast Pokémon for the Contest"
   },
   {
    "id": 10,
@@ -150,10 +150,10 @@
   {
    "id": 18,
    "zh": "佑一『在捉虫精灵{NEWLINE}的时候要先削减它的体力{SCROLL}再扔出球,这一点很重要。",
-   "en": "Barry: You should{NEWLINE}weaken bug Pokémon{CLEAR}first, then throw{CLEAR}a Ball.",
+   "en": "Barry: When you catch Bug Pokémon, it’s{NEWLINE}important to wear down their HP first,{CLEAR}then throw a Ball.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0063/18"
+   "origin": "agent",
+   "notes": "US 0063/18 | RV038: omission: restored 这一点很重要"
   },
   {
    "id": 19,

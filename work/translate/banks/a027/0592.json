@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "我们也可以从{NEWLINE}寄存的众多精灵中{SCROLL}挑选出您所需要的精灵。{SCROLL}当你要交换该精灵时,{NEWLINE}需要将对方需要的精灵{CLEAR}寄存给我们。{SCROLL}您还需要听取{NEWLINE}其他的详细说明吗？{VAR:0200:0}",
-   "en": "You may search among the Pokémon{NEWLINE}that are offered by other Trainers.{SCROLL}They will all identify what Pokémon{NEWLINE}their Trainers want back in return.{SCROLL}If you find one that you want, you{NEWLINE}must provide us with the kind of{CLEAR}Pokémon wanted in return.{SCROLL}Should I explain anything else? {VAR:0200:0}",
+   "en": "You can also search the many Pokémon{NEWLINE}deposited here for the one you want.{SCROLL}To trade for it, you need to deposit the{NEWLINE}Pokémon that the other Trainer wants{CLEAR}with us.{SCROLL}Should I explain anything else? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0600/4"
+   "origin": "agent",
+   "notes": "US 0600/4 | RV038: addition: US added explanation the zh lacks (D-1932 scope)"
   },
   {
    "id": 5,
@@ -86,10 +86,10 @@
   {
    "id": 10,
    "zh": "地球怎么才这么点啊？{SCROLL}什么！你说这只是一个模型？{NEWLINE}真正的地球{CLEAR}有它的成千上万倍大？{SCROLL}我滴这个乖乖龙地咚！",
-   "en": "Such a small world it is, eh?{SCROLL}Eh? Wait, this is a miniature?{NEWLINE}The real Earth is millions of times bigger{CLEAR}than this?{SCROLL}Whoaaaaaaa!",
+   "en": "Why is the Earth so tiny? What?! You’re{NEWLINE}saying this is just a model?{SCROLL}The real Earth is thousands and{NEWLINE}thousands of times bigger than this?{SCROLL}Whoaaaaaaa!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0600/10"
+   "origin": "agent",
+   "notes": "US 0600/10 | RV038: meaning: 成千上万 not millions; zh asks why the Earth is so small (D-1932)"
   },
   {
    "id": 11,
@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "我们把精灵寄存在这,{NEWLINE}然后回去睡上一觉,{CLEAR}等你醒来的时候,{CLEAR}发现交换已经完成了！",
-   "en": "All I need to do is leave a Pokémon{NEWLINE}here to trade.{SCROLL}Who knows, it might be traded while{NEWLINE}I’m asleep tonight.",
+   "en": "We leave our Pokémon here, go home for{NEWLINE}a good sleep, and when we wake up, the{CLEAR}trade is already done!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0600/12"
+   "origin": "agent",
+   "notes": "US 0600/12 | RV038: meaning: zh: wake to a finished trade, not a maybe (D-1932)"
   },
   {
    "id": 13,
@@ -118,18 +118,18 @@
   {
    "id": 14,
    "zh": "这个地球仪上{NEWLINE}可是能够记录下{CLEAR}你所住的地方哦！{SCROLL}记录之后,{NEWLINE}与你交换过的玩家{CLEAR}也能知道你住在什么地方。",
-   "en": "You can register where you live on{NEWLINE}this giant globe.{SCROLL}Once you do, you can show your location{NEWLINE}to anyone you communicate with.",
+   "en": "This globe can record where you live!{NEWLINE}Once it’s recorded, the players you’ve{CLEAR}traded with can see where you live too.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0600/14"
+   "origin": "agent",
+   "notes": "US 0600/14 | RV038: meaning: only traded players see your location (D-1932)"
   },
   {
    "id": 15,
    "zh": "是ＷｉーＦｉ链接{NEWLINE}让我从此过上了{CLEAR}能与其他玩家{CLEAR}便捷交换的日子。",
-   "en": "Nintendo WFC is so easy to use,{NEWLINE}even I can trade Pokémon now!",
+   "en": "Thanks to Nintendo WFC, I can now trade{NEWLINE}with other players easily!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0600/15"
+   "origin": "agent",
+   "notes": "US 0600/15 | RV038: addition: US 'even I' not in zh (D-1932)"
   },
   {
    "id": 16,
@@ -198,26 +198,26 @@
   {
    "id": 24,
    "zh": "你在对别人{SCROLL}介绍自己的时候会说哪些呢？{NEWLINE}快点告诉我吧！{VAR:0200:0}",
-   "en": "Yo, yo, yo!{SCROLL}Wanna let the world know about you?{NEWLINE}Then you gotta tell me, yo! {VAR:0200:0}",
+   "en": "What do you say when you introduce{NEWLINE}yourself to others? Tell me, quick! {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0600/24"
+   "origin": "agent",
+   "notes": "US 0600/24 | RV038: meaning: zh asks how you introduce yourself; US 'yo' voice not in zh (D-1932)"
   },
   {
    "id": 25,
    "zh": "我已经对你有所了解了！{SCROLL}如果你想换一句说辞,{NEWLINE}来找我就行。",
-   "en": "Yo, I know all I need to know about{NEWLINE}you now.{SCROLL}If you want to change your message,{NEWLINE}I’m the guy to see, yo!",
+   "en": "I feel like I know you now!{SCROLL}If you want to change what you say,{NEWLINE}just come see me.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0600/25"
+   "origin": "agent",
+   "notes": "US 0600/25 | RV038: addition: US 'yo' tic not in zh"
   },
   {
    "id": 26,
    "zh": "什么！{NEWLINE}你就没什么话想说吗？{SCROLL}如果你想换一句说辞,{NEWLINE}来找我就行。",
-   "en": "Yo! You don’t have anything you want{NEWLINE}to say?{SCROLL}If you want to change your message,{NEWLINE}I’m the guy to see, yo!",
+   "en": "What?! You don’t have anything you{NEWLINE}want to say?{SCROLL}If you want to change what you say,{NEWLINE}just come see me.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0600/26"
+   "origin": "agent",
+   "notes": "US 0600/26 | RV038: addition: US 'yo' tic not in zh"
   },
   {
    "id": 27,

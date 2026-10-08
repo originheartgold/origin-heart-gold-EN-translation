@@ -134,10 +134,10 @@
   {
    "id": 16,
    "zh": "志霸『得赶紧回去协助小绿馆主{NEWLINE}防守石英高原才行。",
-   "en": "Bruno: We have to get back and help{NEWLINE}Blue defend Indigo Plateau!",
+   "en": "Bruno: We have to get back and help Gym{NEWLINE}Leader Blue defend Indigo Plateau!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV038: omission: restored 馆主 title"
   },
   {
    "id": 17,
@@ -566,10 +566,10 @@
   {
    "id": 70,
    "zh": "娜姿『我的冠军大人,{NEWLINE}现在联盟主席和四天王都失联了,{CLEAR}火箭队又占据了权力中心,{CLEAR}整个地区的人们都陷入了恐慌,{CLEAR}所有训练家也群龙无首,{CLEAR}组织不起对火箭队的有效反击。{CLEAR}所以这时候你的职责{CLEAR}可不仅仅是当一个打手。{CLEAR}你要成为这场战争的{CLEAR}精神支柱和战场指挥官,{CLEAR}带领大家与火箭队决战。",
-   "en": "Sabrina: My dear Champion...{NEWLINE}Right now the League President and the{CLEAR}Elite Four are out of contact, and Team{CLEAR}Rocket holds the seat of power.{SCROLL}People all over the region are in a{NEWLINE}panic. The Trainers are leaderless,{CLEAR}and can’t mount a real counterattack{CLEAR}against Team Rocket.{SCROLL}So right now, your job is more than{NEWLINE}being a fighter.{SCROLL}You need to be the pillar of this{NEWLINE}war and our commander in the field.{CLEAR}Lead everyone into the decisive battle{CLEAR}against Team Rocket.",
+   "en": "Sabrina: My dear Champion... Right now{NEWLINE}the League President and the Elite Four{CLEAR}are out of contact, and Team Rocket{CLEAR}holds the seat of power.{SCROLL}People all over the region are in a{NEWLINE}panic. The Trainers are leaderless, and{CLEAR}can’t mount a real counterattack{CLEAR}against Team Rocket.{SCROLL}So right now, your job is more than{NEWLINE}being a fighter.{SCROLL}You need to be the spiritual pillar of{NEWLINE}this war and our commander in the field.{CLEAR}Lead everyone into the decisive battle{CLEAR}against Team Rocket.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV038: omission: restored 精神 (spiritual pillar)"
   },
   {
    "id": 71,
@@ -782,10 +782,10 @@
   {
    "id": 97,
    "zh": "{VAR:0103:0}『目前满金市的火箭队{NEWLINE}已经被我和四天王率领的部队赶跑……",
-   "en": "{VAR:0103:0}: Team Rocket has now been{NEWLINE}driven out of Goldenrod City by me and{CLEAR}the forces led by the Elite Four...",
+   "en": "{VAR:0103:0}: Team Rocket has now been{NEWLINE}driven out of Goldenrod City by the{CLEAR}forces that the Elite Four and I led...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV038: meaning: zh: forces led by me and the Elite Four"
   },
   {
    "id": 98,

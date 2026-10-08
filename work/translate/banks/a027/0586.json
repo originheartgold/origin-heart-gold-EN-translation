@@ -217,10 +217,10 @@
   {
    "id": 25,
    "zh": "一树『你居然什么都不知道{NEWLINE}就闯进了这个世界,{CLEAR}真是个有勇无谋的联盟冠军啊。{CLEAR}这里是一个独立的空间——梦境世界,{CLEAR}传说中能制造美梦的克雷色利亚{CLEAR}和制造噩梦的达克莱伊栖息在这里。{CLEAR}大奶罐就是被空间裂缝里{CLEAR}溢出的能量影响才会产生异常。{CLEAR}而我们也正是发现了这些异常,{CLEAR}才会来到这里抓捕克雷色利亚它们。",
-   "en": "Will: You barged into this world{NEWLINE}without knowing a thing? What{CLEAR}a reckless League Champion.{SCROLL}This is a separate{NEWLINE}dimension: the Dream World.{SCROLL}It’s home to the legendary{NEWLINE}Cresselia, who makes sweet dreams,{CLEAR}and Darkrai, who makes nightmares.{SCROLL}The Miltank went strange because of{NEWLINE}energy leaking from a rift in space.{SCROLL}We noticed those anomalies{NEWLINE}too, and came here to catch{CLEAR}Cresselia and its kind.",
+   "en": "Will: You barged into this world without{NEWLINE}knowing a thing? What a reckless{CLEAR}League Champion.{SCROLL}This is a separate dimension:{NEWLINE}the Dream World.{SCROLL}It’s home to the legendary Cresselia,{NEWLINE}who makes sweet dreams, and Darkrai,{CLEAR}who makes nightmares.{SCROLL}The Miltank went strange because of{NEWLINE}energy leaking from a rift in space.{SCROLL}We noticed those anomalies too,{NEWLINE}and came here to catch Cresselia{CLEAR}and the others.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV038: meaning: 它们 = Cresselia and the others, not its kind"
   },
   {
    "id": 26,
@@ -401,10 +401,10 @@
   {
    "id": 48,
    "zh": "梨花『你居然什么都不知道{NEWLINE}就闯进了这个世界,{CLEAR}真是个有勇无谋的联盟冠军啊。{CLEAR}这里是一个独立的空间——梦境世界,{CLEAR}传说中能制造美梦的克雷色利亚{CLEAR}和制造噩梦的达克莱伊栖息在这里。{CLEAR}大奶罐就是被空间裂缝里{CLEAR}溢出的能量影响才会产生异常。{CLEAR}而我们也正是发现了这些异常,{CLEAR}才会来到这里抓捕达克莱伊它们。",
-   "en": "Karen: You barged into this{NEWLINE}world without knowing a thing?{CLEAR}What a reckless League Champion.{SCROLL}This is a separate{NEWLINE}dimension: the Dream World.{SCROLL}It’s home to the legendary{NEWLINE}Cresselia, who makes sweet dreams,{CLEAR}and Darkrai, who makes nightmares.{SCROLL}The Miltank went strange because of{NEWLINE}energy leaking from a rift in space.{SCROLL}We noticed those anomalies too, and{NEWLINE}came here to catch Darkrai and its kind.",
+   "en": "Karen: You barged into this world{NEWLINE}without knowing a thing? What a{CLEAR}reckless League Champion.{SCROLL}This is a separate dimension:{NEWLINE}the Dream World.{SCROLL}It’s home to the legendary Cresselia,{NEWLINE}who makes sweet dreams, and Darkrai,{CLEAR}who makes nightmares.{SCROLL}The Miltank went strange because of{NEWLINE}energy leaking from a rift in space.{SCROLL}We noticed those anomalies too,{NEWLINE}and came here to catch Darkrai{CLEAR}and the others.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV038: meaning: 它们 = Darkrai and the others, not its kind"
   },
   {
    "id": 49,
