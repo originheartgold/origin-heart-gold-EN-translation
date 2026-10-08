@@ -5,10 +5,14 @@
     python3 work/tools/check.py --full         also: asmpatch.py check, the unit tests with armips (GOLDEN),
                                                a full build compared with work/patches/expected.toml
     python3 work/tools/check.py --staged       the fast check on the staged files (the pre-commit hook)
+    python3 work/tools/check.py --staged --registry-only
+                                               only the registry step (the hook, for decision-register commits)
+    python3 work/tools/check.py --full --strict-release
+                                               also fail when the text, ROM or xdelta hash moved (a release)
     python3 work/tools/check.py --full --update-expected
                                                record the full build's hashes in work/patches/expected.toml
 
-Fast (the default, also the pre-commit hook; about 10 s) needs neither armips nor a ROM:
+Fast (the default, also the pre-commit hook; about 6 s) needs neither armips nor a ROM:
   registry   fixes.py check: fix.toml schema, regions, overlaps, `.open` lines, `.string` = en, and the asm
              lint (header, .area around every write, a guard before every area's first write, every area
              inside fix.toml's regions or appended under expect_end with a [[grow]], line length);
@@ -22,7 +26,8 @@ Full adds (and fails when armips v0.11.0, the two ROMs or xdelta3 are missing):
   tests      the unit tests again with armips: the per-binary GOLDEN SHA-1s of test_asmpatch.py, which do not
              depend on the translation text;
   build      build.py into --work-dir (default work/build/check), then its hashes against
-             work/patches/expected.toml (see EXPECTED_HELP below).
+             work/patches/expected.toml (see EXPECTED_HELP below): nontext_sha1 must match; the text, ROM and
+             xdelta hashes are reported, and fail the step only with --strict-release.
 
 Exit status 0 only when no step failed. Each step prints PASS / FAIL / SKIP with its time.
 """
@@ -54,12 +59,15 @@ TEXT_NARCS = ("a/0/2/7", "battle/string/battle_string.narc")
 EXPECTED_HELP = """\
 work/patches/expected.toml records four SHA-1s of the default full build (`build.py`, every enabled fix):
   nontext_sha1  every part of the ROM except the two message NARCs (arm9, arm7, overlay tables, banner and
-                every other file): what the fixes, graphics and code produce; it does not depend on the text;
-  text_sha1     the two message NARCs (a/0/2/7, battle_string.narc): the translation text;
-  rom_sha1, xdelta_sha1  the ROM and the release patch: they move with the text.
-A change to the translation text changes text_sha1, rom_sha1 and xdelta_sha1 (not nontext_sha1); a change to a
-fix, the graphics or the code changes nontext_sha1. After such a change, review the build and record the new
-hashes in the same commit:  python3 work/tools/check.py --full --update-expected"""
+                every other file): what the fixes, graphics and code produce. It does not depend on the
+                message banks, but it does hold the English of the hardcoded strings: outfit-chooser-strings
+                writes its [[string]] en into overlay 58, so changing that English moves it too;
+  text_sha1     the two message NARCs (a/0/2/7, battle_string.narc): the message-bank text;
+  rom_sha1, xdelta_sha1  the ROM and the release patch: they move with any text.
+`check.py --full` fails when nontext_sha1 differs; the other three are reported and fail only with
+--strict-release (a translation change moves them). After a change to a fix, the graphics, the code or a
+hardcoded string, review the build and record the new hashes in the same commit:
+  python3 work/tools/check.py --full --update-expected"""
 
 
 # --------------------------------------------------------------------------------------
@@ -125,7 +133,8 @@ def step_ruff(full):
     if have != want:
         raise Failed(f"ruff {have} at {ruff}, but work/tools/requirements-dev.txt pins {want} (other versions "
                      f"report other findings): pip install -r work/tools/requirements-dev.txt")
-    r = subprocess.run([ruff, "check", "--no-cache", "--quiet", "."], cwd=REPO, capture_output=True, text=True)
+    r = subprocess.run([ruff, "check", "--no-cache", "--quiet", "--output-format", "concise", "."],
+                       cwd=REPO, capture_output=True, text=True)
     if r.returncode:
         raise Failed((r.stdout + r.stderr).strip())
     return f"ruff {have}: clean"
@@ -215,36 +224,40 @@ def write_expected(values: dict, path=EXPECTED):
              "", "[build]"]
     for k in ("nontext_sha1", "text_sha1", "rom_sha1", "xdelta_sha1"):
         lines.append(f'{k} = "{values[k]}"')
-    lines.append(f'recorded = "{values["recorded"]}"')
     Path(path).write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def compare_expected(got: dict, want: dict) -> list:
-    """Problems (strings) of a build's hashes against expected.toml."""
+def compare_expected(got: dict, want: dict, strict=False) -> tuple:
+    """(failures, notes) of a build's hashes against expected.toml. nontext_sha1 must match; text_sha1,
+    rom_sha1 and xdelta_sha1 move with the translation text, so they are notes unless strict (a release)."""
+    upd = "python3 work/tools/check.py --full --update-expected"
     if not want:
-        return [f"{EXPECTED.relative_to(REPO)} is missing; record it: python3 work/tools/check.py --full "
-                f"--update-expected"]
-    probs = []
+        return [f"{EXPECTED.relative_to(REPO)} is missing; record it: {upd}"], []
+    fails, notes = [], []
     nontext_same = got["nontext_sha1"] == want.get("nontext_sha1")
     if not nontext_same:
-        probs.append(f"the ROM outside the message text changed (nontext_sha1 {got['nontext_sha1']}, expected "
-                     f"{want.get('nontext_sha1')}): a fix, the graphics or the code builds other bytes. If that is "
-                     f"intended, say why in the commit and record it with --update-expected")
+        fails.append(f"the ROM outside the message banks changed (nontext_sha1 {got['nontext_sha1']}, expected "
+                     f"{want.get('nontext_sha1')}): a fix, the graphics, the code or a hardcoded string's English "
+                     f"builds other bytes. If that is intended, say why in the commit and record it: {upd}")
     text_changed = got["text_sha1"] != want.get("text_sha1")
-    for k in ("rom_sha1", "xdelta_sha1"):
-        if got[k] != want.get(k):
-            why = ("the translation text changed since the hashes were recorded (text_sha1 "
-                   f"{got['text_sha1']}, recorded {want.get('text_sha1')}), so the ROM and the patch moved"
-                   + ("; the bytes outside the text are unchanged" if nontext_same else "")
-                   ) if text_changed else ("it follows from the change outside the text (above)" if not nontext_same
-                                           else "the message text and everything outside it are the recorded "
-                                                "ones, so this is unexpected (the container or the patch tool?)")
-            probs.append(f"{k} {got[k]}, expected {want.get(k)}: {why}. Record the new hashes after reviewing "
-                         f"the build: python3 work/tools/check.py --full --update-expected")
-    return probs
+    for k in ("text_sha1", "rom_sha1", "xdelta_sha1"):
+        if got[k] == want.get(k):
+            continue
+        if k == "text_sha1":
+            why = "the message-bank text changed since the hashes were recorded"
+        elif text_changed:
+            why = "the message-bank text changed" + ("; the bytes outside it are unchanged" if nontext_same else "")
+        elif not nontext_same:
+            why = "it follows from the change outside the message banks (above)"
+        else:
+            why = ("the message text and everything outside it are the recorded ones, so this is unexpected "
+                   "(the container or the patch tool?)")
+        (fails if strict else notes).append(f"{k} {got[k]}, expected {want.get(k)}: {why}. After reviewing the "
+                                            f"build, record the new hashes: {upd}")
+    return fails, notes
 
 
-def step_build(armips, work_dir, update):
+def step_build(armips, work_dir, update, strict=False):
     work_dir = Path(work_dir)
     log = work_dir / "build.log"
     work_dir.mkdir(parents=True, exist_ok=True)
@@ -258,12 +271,16 @@ def step_build(armips, work_dir, update):
     got = {"rom_sha1": report["rom"]["sha1"], "xdelta_sha1": report["patch"]["sha1"],
            **rom_hashes(report["rom"]["path"])}
     if update:
-        write_expected(dict(got, recorded=time.strftime("%Y-%m-%d")))
+        write_expected(got)
         return f"recorded in {EXPECTED.relative_to(REPO)}: ROM {got['rom_sha1']}, xdelta {got['xdelta_sha1']}"
-    probs = compare_expected(got, load_expected())
-    if probs:
-        raise Failed("\n".join(probs) + f"\n(build log: {log})")
-    return f"ROM {got['rom_sha1']}, xdelta {got['xdelta_sha1']}, non-text {got['nontext_sha1'][:12]}: as expected"
+    fails, notes = compare_expected(got, load_expected(), strict)
+    if fails:
+        raise Failed("\n".join(fails + [f"note: {n}" for n in notes]) + f"\n(build log: {log})")
+    head = f"non-text {got['nontext_sha1'][:12]} as expected; ROM {got['rom_sha1']}, xdelta {got['xdelta_sha1']}"
+    if notes:
+        return "\n".join([head + " (not the recorded ones, see the notes; --strict-release fails on them)"]
+                         + [f"note: {n}" for n in notes])
+    return head + ": as recorded"
 
 
 # --------------------------------------------------------------------------------------
@@ -296,7 +313,7 @@ def run(steps) -> int:
     return 1 if failed else 0
 
 
-def staged() -> int:
+def staged(extra=()) -> int:
     """The fast check on the index (what `git commit` records): the staged tree is exported to a temp folder
     (git checkout-index; untracked and git-ignored files such as the ROMs are not there) and checked there."""
     git = shutil.which("git")
@@ -310,8 +327,11 @@ def staged() -> int:
     with tempfile.TemporaryDirectory(prefix="poke-check-") as td:
         subprocess.run([git, "checkout-index", "--all", f"--prefix={td}/"], cwd=top.stdout.strip(), check=True)
         print(f"staged tree exported to {td}", flush=True)
-        return subprocess.run([sys.executable, str(Path(td) / "work" / "tools" / "check.py"), "--fast"],
-                              cwd=td).returncode
+        inner = Path(td) / "work" / "tools" / "check.py"
+        if not inner.is_file():
+            print("work/tools/check.py is not in the staged tree; nothing to check")
+            return 0
+        return subprocess.run([sys.executable, str(inner), "--fast", *extra], cwd=td).returncode
 
 
 def main(argv=None) -> int:
@@ -320,16 +340,24 @@ def main(argv=None) -> int:
     mode.add_argument("--fast", action="store_true", help="no armips, no ROM (the default)")
     mode.add_argument("--full", action="store_true", help="also assemble, GOLDEN tests and a full build")
     mode.add_argument("--staged", action="store_true", help="the fast check on the staged files")
+    ap.add_argument("--registry-only", action="store_true",
+                    help="only the registry step (fixes.py check with the asm lint); with --fast or --staged")
     ap.add_argument("--armips", help="armips executable for --full (default: $ARMIPS, then PATH)")
     ap.add_argument("--work-dir", default=str(DEFAULT_WORK_DIR), help="build folder for --full "
                                                                      "(default work/build/check)")
     ap.add_argument("--update-expected", action="store_true",
                     help="with --full: record the build's hashes in work/patches/expected.toml")
+    ap.add_argument("--strict-release", action="store_true",
+                    help="with --full: also fail when the text, ROM or xdelta hash is not the recorded one")
     a = ap.parse_args(argv)
-    if a.update_expected and not a.full:
-        ap.error("--update-expected needs --full")
+    if (a.update_expected or a.strict_release) and not a.full:
+        ap.error("--update-expected and --strict-release need --full")
+    if a.registry_only and a.full:
+        ap.error("--registry-only is a fast check")
     if a.staged:
-        return staged()
+        return staged(["--registry-only"] if a.registry_only else [])
+    if a.registry_only:
+        return run([("registry", step_registry)])
     steps = [("registry", step_registry), ("fixes-md", step_fixes_md), ("ruff", lambda: step_ruff(a.full))]
     if not a.full:
         steps.append(("tests", step_tests_fast))
@@ -350,7 +378,7 @@ def main(argv=None) -> int:
         return go
 
     steps += [("prereq", prereq), ("asmpatch", need(step_asmpatch)), ("tests", need(step_tests_full)),
-              ("build", need(lambda p: step_build(p, a.work_dir, a.update_expected)))]
+              ("build", need(lambda p: step_build(p, a.work_dir, a.update_expected, a.strict_release)))]
     return run(steps)
 
 

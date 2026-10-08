@@ -519,6 +519,33 @@ def _merge(ranges) -> list:
     return out
 
 
+def _block_comments(lines, label) -> list:
+    """`/* */` comments: the lint reads `;` and `//` comments only, so it refuses block comments."""
+    return [f"{label}:{n}: /* */ block comments are not supported (the asm lint reads ; and // comments only)"
+            for n, line in enumerate(lines, 1) if "/*" in _strip_comment(line)]
+
+
+def include_problems(lines, label) -> list:
+    """An include file may only define: macros, `equ` constants and `.definelabel` labels (and include other
+    files). The lint reads includes for these definitions only, so any other statement (a write, an .org, a
+    guard) would escape it; such a file is refused."""
+    out, in_macro = _block_comments(lines, label), False
+    for n, line in enumerate(lines, 1):
+        code = _strip_comment(line).strip()
+        if not code:
+            continue
+        mo = _LINT_DIRECTIVE_RE.match(code)
+        d = mo.group(1).lower() if mo else None
+        if in_macro:
+            in_macro = d != "endmacro"
+        elif d == "macro":
+            in_macro = True
+        elif d not in ("include", "definelabel") and not _LINT_EQU_RE.match(code):
+            out.append(f"{label}:{n}: an include file may only define macros, equ constants and .definelabel "
+                       f"labels (found: {code}); put statements in the fix's own .asm, where they are linted")
+    return out
+
+
 def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_root=None) -> list:
     """Static rules for one fix source (see above); problems as strings with file:line."""
     problems = []
@@ -543,6 +570,7 @@ def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_ro
     if not decs and not DEC_RE.search(head_text):
         problems.append(f"{where}:1: fix.toml lists no decision, so the header comment must name the pending "
                         f"decision (a D-NNNN id)")
+    problems += _block_comments(lines, where)
     # -- line length ----------------------------------------------------------------------------------
     for n, line in enumerate(lines, 1):
         if len(line) > ASM_MAX_LINE:
@@ -558,9 +586,14 @@ def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_ro
             mo = _LINT_INCLUDE_RE.match(code)
             if mo:
                 inc = _resolve_include(src_dir, mo.group(1))
-                if inc is not None and inc not in seen:
+                if inc is None:
+                    problems.append(f"{where}: .include {mo.group(1)!r} not found")
+                elif inc not in seen:
                     seen.add(inc)
-                    collect(inc.read_text(encoding="utf-8").splitlines(), inc.name, inc.parent, seen)
+                    inc_lines = inc.read_text(encoding="utf-8").splitlines()
+                    if not inc.is_relative_to((PATCHES_DIR / INCLUDE_DIR).resolve()):
+                        problems.extend(include_problems(inc_lines, f"{fid}/{inc.name}"))   # shared: lint_includes
+                    collect(inc_lines, inc.name, inc.parent, seen)
             i = _define(src_lines, i, src_name) + 1
 
     def _define(src_lines, i, src_name):
@@ -651,6 +684,9 @@ def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_ro
                     st["area"] = {"line": at, "size": eval_asm_expr(args[0], names) if args else None,
                                   "size_expr": args[0] if args else "", "written": False,
                                   "start": blk["addr"] if blk else None}
+                    if st["area"]["size"] is not None and st["area"]["size"] <= 0:
+                        problems.append(f"{at}: .area {args[0]} is {st['area']['size']} bytes (must be positive)")
+                        st["area"]["bad"] = True
             elif d == "endarea":
                 if st["depth"] == 0:
                     problems.append(f"{at}: .endarea without .area")
@@ -710,6 +746,8 @@ def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_ro
                 problems.append(f"{area['line']}: data appended to {key}.bin (expect_end), but fix.toml has no "
                                 f"[[grow]] for {key}")
             return
+        if area.get("bad"):
+            return                                       # reported at the .area
         if blk["addr"] is None or area["size"] is None:
             what = f".org {blk['expr']}" if blk["addr"] is None else f".area {area['size_expr']}"
             problems.append(f"{area['line']}: cannot resolve {what} statically (use numbers, equ constants or "
@@ -754,9 +792,11 @@ def _resolve_include(src_dir: Path, rel: str):
 
 
 def lint_includes(root: Path = PATCHES_DIR) -> list:
-    """Line length of the shared armips includes (work/patches/include/*.inc)."""
+    """The shared armips includes (work/patches/include/*.inc): definitions only (include_problems), no block
+    comments, line length."""
     out = []
     for p in sorted((Path(root) / INCLUDE_DIR).glob("*.inc")):
+        out += include_problems(p.read_text(encoding="utf-8").splitlines(), f"{INCLUDE_DIR}/{p.name}")
         for n, line in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
             if len(line) > ASM_MAX_LINE:
                 out.append(f"{INCLUDE_DIR}/{p.name}:{n}: line is {len(line)} characters, more than {ASM_MAX_LINE}")

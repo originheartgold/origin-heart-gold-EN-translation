@@ -280,6 +280,8 @@ def double_writes(listing: str) -> list:
         elif low.startswith(".headersize"):
             num = _NUM.search(text)
             base = int(num.group(0).strip(), 0) if num else base
+    if not rows:
+        return []                                       # nothing listed in an opened file
     spans = {}
     for (f, a, low, src, n), nxt in zip(rows, rows[1:] + [(None, 0, None, "", 0)], strict=True):
         if low.startswith(_NO_WRITE) or nxt[0] != f or nxt[1] <= a:

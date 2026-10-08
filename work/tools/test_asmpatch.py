@@ -114,6 +114,12 @@ class Charmap(unittest.TestCase):
         self.assertTrue(tbl.endswith("\n/FFFF\n"))
 
 
+class Listing(unittest.TestCase):
+    def test_double_writes_of_an_empty_listing(self):
+        self.assertEqual(A.double_writes(""), [])
+        self.assertEqual(A.double_writes("not a listing line\n"), [])
+
+
 class Locate(unittest.TestCase):
     def test_find_armips_explicit_env_and_missing(self):
         with tempfile.TemporaryDirectory() as td:

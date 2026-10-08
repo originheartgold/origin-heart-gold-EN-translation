@@ -21,38 +21,48 @@ class Expected(unittest.TestCase):
     def test_round_trip(self):
         with tempfile.TemporaryDirectory() as td:
             p = Path(td) / "expected.toml"
-            C.write_expected(dict(GOT, recorded="2026-10-08"), p)
-            self.assertEqual(C.load_expected(p), dict(GOT, recorded="2026-10-08"))
-            self.assertIn("python3 work/tools/check.py --full --update-expected", p.read_text(encoding="utf-8"))
+            C.write_expected(GOT, p)
+            self.assertEqual(C.load_expected(p), GOT)
+            text = p.read_text(encoding="utf-8")
+            self.assertIn("python3 work/tools/check.py --full --update-expected", text)
+            self.assertIn("outfit-chooser-strings", text)                 # what moves nontext_sha1
+            self.assertNotIn("recorded =", text)
             self.assertEqual(C.load_expected(Path(td) / "missing.toml"), {})
 
     def test_same_build_passes(self):
-        self.assertEqual(C.compare_expected(GOT, dict(GOT)), [])
+        self.assertEqual(C.compare_expected(GOT, dict(GOT)), ([], []))
 
     def test_missing_file(self):
-        self.assertIn("--update-expected", C.compare_expected(GOT, {})[0])
+        fails, _ = C.compare_expected(GOT, {})
+        self.assertIn("--update-expected", fails[0])
 
-    def test_text_change_says_so(self):
+    def test_text_change_is_a_note_unless_strict(self):
         want = dict(GOT, text_sha1="T" * 40, rom_sha1="R" * 40, xdelta_sha1="X" * 40)
-        probs = C.compare_expected(GOT, want)
-        self.assertEqual(len(probs), 2)                      # the ROM and the patch, not the non-text bytes
-        for p in probs:
-            self.assertIn("the translation text changed since the hashes were recorded", p)
-            self.assertIn("the bytes outside the text are unchanged", p)
-            self.assertIn("python3 work/tools/check.py --full --update-expected", p)
+        fails, notes = C.compare_expected(GOT, want)
+        self.assertEqual(fails, [])
+        self.assertEqual(len(notes), 3)                       # text, ROM and patch; not the non-text bytes
+        self.assertIn("the message-bank text changed since the hashes were recorded", notes[0])
+        for n in notes[1:]:
+            self.assertIn("the bytes outside it are unchanged", n)
+            self.assertIn("python3 work/tools/check.py --full --update-expected", n)
+        fails, notes = C.compare_expected(GOT, want, strict=True)
+        self.assertEqual((len(fails), notes), (3, []))
 
     def test_nontext_change_fails_whatever_the_text(self):
         want = dict(GOT, nontext_sha1="N" * 40, text_sha1="T" * 40, rom_sha1="R" * 40)
-        probs = C.compare_expected(GOT, want)
-        self.assertIn("the ROM outside the message text changed", probs[0])
-        self.assertNotIn("the bytes outside the text are unchanged", "".join(probs))
-        probs = C.compare_expected(GOT, dict(GOT, nontext_sha1="N" * 40, rom_sha1="R" * 40))
-        self.assertIn("it follows from the change outside the text (above)", probs[1])
+        fails, notes = C.compare_expected(GOT, want)
+        self.assertEqual(len(fails), 1)
+        self.assertIn("the ROM outside the message banks changed", fails[0])
+        self.assertNotIn("the bytes outside it are unchanged", "".join(notes))
+        _, notes = C.compare_expected(GOT, dict(GOT, nontext_sha1="N" * 40, rom_sha1="R" * 40))
+        self.assertIn("it follows from the change outside the message banks (above)", notes[0])
 
     def test_same_text_other_rom_is_unexpected(self):
-        probs = C.compare_expected(GOT, dict(GOT, rom_sha1="R" * 40))
-        self.assertEqual(len(probs), 1)
-        self.assertIn("are the recorded ones, so this is unexpected", probs[0])
+        fails, notes = C.compare_expected(GOT, dict(GOT, rom_sha1="R" * 40))
+        self.assertEqual((fails, len(notes)), ([], 1))
+        self.assertIn("are the recorded ones, so this is unexpected", notes[0])
+        fails, _ = C.compare_expected(GOT, dict(GOT, rom_sha1="R" * 40), strict=True)
+        self.assertEqual(len(fails), 1)
 
 
 class Runner(unittest.TestCase):
@@ -95,8 +105,9 @@ class Runner(unittest.TestCase):
             self.assertTrue(cm.exception.fail)
 
     def test_update_expected_needs_full(self):
-        with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
-            C.main(["--update-expected"])
+        for args in (["--update-expected"], ["--strict-release"]):
+            with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+                C.main(args)
 
 
 if __name__ == "__main__":
