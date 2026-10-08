@@ -46,18 +46,18 @@
   {
    "id": 5,
    "zh": "啊,是{VAR:0103:0}啊⋯⋯{SCROLL}我只是一个不留神⋯⋯{CLEAR}我的天啊⋯⋯",
-   "en": "Oh, {VAR:0103:0}...{SCROLL}I just stepped away for a second...{NEWLINE}How could...?",
+   "en": "Oh, {VAR:0103:0}...{SCROLL}I only took my eyes off it for a{NEWLINE}second... Oh my goodness...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0716/5"
+   "origin": "agent",
+   "notes": "US 0716/5 | RV073: meaning: 一个不留神 = a moment's inattention; 我的天啊 = oh my goodness; settles D-2019 (5/6)"
   },
   {
    "id": 6,
    "zh": "啊,是{VAR:0103:0}啊⋯⋯{SCROLL}我只是一个不留神⋯⋯{CLEAR}我的天啊⋯⋯",
-   "en": "Oh, {VAR:0103:0}...{SCROLL}I just stepped away for a second...{NEWLINE}How could...?",
+   "en": "Oh, {VAR:0103:0}...{SCROLL}I only took my eyes off it for a{NEWLINE}second... Oh my goodness...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0716/6"
+   "origin": "agent",
+   "notes": "US 0716/6 | RV073: meaning: 一个不留神 = a moment's inattention; 我的天啊 = oh my goodness; settles D-2019 (5/6)"
   },
   {
    "id": 7,
@@ -286,18 +286,18 @@
   {
    "id": 35,
    "zh": "喂喂,{VAR:0103:0}吗？{NEWLINE}在那之后我又了解了一些情况！{SCROLL}具体情况电话里说不清,{NEWLINE}但那个蛋我还是想让你带着！{SCROLL}我的助手现在应该在桔梗市的{CLEAR}商店里,{CLEAR}你到那边去领那个蛋吧！",
-   "en": "Hello, {VAR:0103:0}?{NEWLINE}We’ve discovered something!{SCROLL}The details are...well, I can’t really{NEWLINE}say anything, but we want you to carry{CLEAR}that Egg!{SCROLL}My assistant is at the Poké Mart in{NEWLINE}Violet City. Could you go meet him and{CLEAR}pick up that Egg?",
+   "en": "Hello, {VAR:0103:0}? We’ve found out more{NEWLINE}since then!{SCROLL}I can’t explain the details over the{NEWLINE}phone, but I still want you to carry{CLEAR}that Egg!{SCROLL}My assistant should be at the Poké Mart{NEWLINE}in Violet City. Could you go meet him and{CLEAR}pick up that Egg?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0716/35"
+   "origin": "agent",
+   "notes": "US 0716/35 | RV073: meaning: 电话里说不清 = can't explain over the phone, not secrecy; settles D-2019 (35/36)"
   },
   {
    "id": 36,
    "zh": "喂喂,{VAR:0103:0}吗？{NEWLINE}在那之后我又了解了一些情况！{SCROLL}具体情况电话里说不清,{NEWLINE}但那个蛋我还是想让你带着！{SCROLL}我的助手现在应该在桔梗市的{CLEAR}商店里,{CLEAR}你到那边去领那个蛋吧！",
-   "en": "Hello, {VAR:0103:0}?{NEWLINE}We’ve discovered something!{SCROLL}The details are...well, I can’t really{NEWLINE}say anything, but we want you to carry{CLEAR}that Egg!{SCROLL}My assistant is at the Poké Mart in{NEWLINE}Violet City. Could you go meet him and{CLEAR}pick up that Egg?",
+   "en": "Hello, {VAR:0103:0}? We’ve found out more{NEWLINE}since then!{SCROLL}I can’t explain the details over the{NEWLINE}phone, but I still want you to carry{CLEAR}that Egg!{SCROLL}My assistant should be at the Poké Mart{NEWLINE}in Violet City. Could you go meet him and{CLEAR}pick up that Egg?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0716/36"
+   "origin": "agent",
+   "notes": "US 0716/36 | RV073: meaning: 电话里说不清 = can't explain over the phone, not secrecy; settles D-2019 (35/36)"
   },
   {
    "id": 37,

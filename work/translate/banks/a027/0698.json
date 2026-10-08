@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "你知道郊游和野营{NEWLINE}之间的区别吗？{SCROLL}区别在于⋯⋯歌曲！{SCROLL}郊游应该是{NEWLINE}唱着轻快的歌曲,{CLEAR}信步在山野间。{SCROLL}野营则应该是{NEWLINE}唱着哀愁,孤独的曲子,{CLEAR}然后注视那燃烧的火焰。{SCROLL}哎？{NEWLINE}你不信？{SCROLL}那下次有时间了,{NEWLINE}我们一起去野营,{CLEAR}我们两人盯着那火焰,{CLEAR}一起唱那首{CLEAR}哀伤的曲调！",
-   "en": "Do you know the difference between{NEWLINE}going on a picnic and camping?{SCROLL}It’s a song, of course!{SCROLL}When you’re going on a picnic, you sing a{NEWLINE}happy, upbeat little tune as you hike{CLEAR}over hills and fields.{SCROLL}When you’re camping, you sing quiet,{NEWLINE}mournful songs of grief and loss while{CLEAR}sitting and staring at the campfire.{SCROLL}What? You don’t believe me?{SCROLL}Then we should go camping sometime{NEWLINE}and sit around the fire and see what{CLEAR}kind of melodies you feel like singing!",
+   "en": "Do you know the difference between{NEWLINE}going on a picnic and camping?{SCROLL}It’s a song, of course!{SCROLL}When you’re going on a picnic, you sing a{NEWLINE}happy, upbeat little tune as you hike{CLEAR}over hills and fields.{SCROLL}When you’re camping, you sing quiet,{NEWLINE}mournful songs of grief and loss while{CLEAR}sitting and staring at the campfire.{SCROLL}What? You don’t believe me?{SCROLL}Then next time we’ve got the chance,{NEWLINE}let’s go camping together. The two of{CLEAR}us can stare into the flames and sing a{CLEAR}sad tune together!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0707/12"
+   "origin": "agent",
+   "notes": "US 0707/12 | RV073: meaning: zh ends with the two of them staring into the fire singing a sad tune together"
   },
   {
    "id": 13,

@@ -5204,7 +5204,7 @@
   {
    "id": "RV073",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 363,
    "labels": [
     "a027/0686 pokegear_phone + tv_news + side_features_minigames",

@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "话说回来,{SCROLL}我是一个登山男,{NEWLINE}所以经常要爬山！{SCROLL}反倒是镇里不常去！{SCROLL}看你这样子,应该是在{NEWLINE}经常在各个城市之间旅行吧。{SCROLL}既然如此,那我们就{NEWLINE}交换一下电话号码,{CLEAR}相互交换各自的情报吧？{VAR:0200:0}",
-   "en": "By the way, I’m a Hiker, so I often go{NEWLINE}to mountains and caves.{SCROLL}I don’t usually go to the town.{SCROLL}I bet you go to all kinds of towns on{NEWLINE}your journey, don’t you?{SCROLL}You know, if we were to trade phone{NEWLINE}numbers, then we could exchange{CLEAR}all kinds of information, yes? {VAR:0200:0}",
+   "en": "By the way, I’m a Hiker, so I’m always{NEWLINE}climbing mountains.{SCROLL}I don’t usually go to the town.{SCROLL}I bet you go to all kinds of towns on{NEWLINE}your journey, don’t you?{SCROLL}You know, if we were to trade phone{NEWLINE}numbers, then we could exchange all{CLEAR}kinds of information, yes? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0711/1"
+   "origin": "agent",
+   "notes": "US 0711/1 | RV073: addition: removed added 'and caves'"
   },
   {
    "id": 2,
@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "都这么近了还要打电话？{SCROLL}大叔我就⋯⋯{NEWLINE}那么耀眼吗？",
-   "en": "You’re nearby, and yet you’re going to{NEWLINE}call me on the phone?{SCROLL}Am I that “dazzling” that you need to{NEWLINE}keep your distance?",
+   "en": "You’re nearby, and yet you’re going to{NEWLINE}call me on the phone?{SCROLL}Is this old guy really... that{NEWLINE}“dazzling”?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0711/5"
+   "origin": "agent",
+   "notes": "US 0711/5 | RV073: voice: kept 大叔我 self-reference; removed added 'keep your distance'"
   },
   {
    "id": 6,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "对了,前不久我在和{NEWLINE}{VAR:0100:11}战斗的时候,{CLEAR}被一旁路过的{CLEAR}成熟大姐吸引,{CLEAR}结果被它给逃走了。{SCROLL}你对战的时候一定要集中精神啊！{NEWLINE}请多保重！",
-   "en": "Oh yeah, I was battling this{NEWLINE}{VAR:0100:11} the other day...{CLEAR}It took off when I got distracted by a{CLEAR}passing Beauty.{SCROLL}Learn from my mistake--always stay{NEWLINE}focused on the job at hand!{SCROLL}All right then!{NEWLINE}Be good!",
+   "en": "Oh yeah, I was battling this {VAR:0100:11}{NEWLINE}the other day... It took off when I got{CLEAR}distracted by an attractive older woman{CLEAR}passing by.{SCROLL}Learn from my mistake--always stay{NEWLINE}focused on the job at hand!{SCROLL}All right then! Be good!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0711/8"
+   "origin": "agent",
+   "notes": "US 0711/8 | RV073: meaning: 成熟大姐 = mature older woman, not the Beauty class; settles D-1904"
   },
   {
    "id": 9,

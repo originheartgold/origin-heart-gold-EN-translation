@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "这是多么难得的机会啊,{NEWLINE}我们交换电话号码吧？{VAR:0200:0}",
-   "en": "So, how about we{NEWLINE}exchange phone numbers?{VAR:0200:0}",
+   "en": "This is such a rare chance! How about{NEWLINE}we exchange phone numbers?{VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0702/1"
+   "origin": "agent",
+   "notes": "US 0702/1 | RV073: omission: restored 这是多么难得的机会啊"
   },
   {
    "id": 2,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "是我,利塔！{SCROLL}你最近还好吗？{CLEAR}我们的精灵又多了好⋯⋯啊！{SCROLL}喂喂？我是小胜啊！{NEWLINE}你偶尔也找找我⋯⋯哇！{SCROLL}对了,最近一个不小心让{NEWLINE}{VAR:0100:11}给逃掉了。{CLEAR}他最近老是说些奇怪的话,{CLEAR}像什么我们根本无法{CLEAR}和你的精灵比什么的⋯⋯啊！{SCROLL}喂喂！我是小胜！{NEWLINE}她可真是个⋯⋯哇！{SCROLL}就是这样了,{NEWLINE}下次再打电话给你。{CLEAR}拜拜！",
-   "en": "It’s me, Sue!{SCROLL}How have you been? Our{NEWLINE}Pokémon have grown so... Ah!{SCROLL}Hello? It’s Tim! Call me{NEWLINE}once in a while, too... Wah!{SCROLL}Anyway, the other day he carelessly let{NEWLINE}a {VAR:0100:11} get away. And lately he{CLEAR}keeps saying weird things, like how our{CLEAR}Pokémon can’t compare to yours... Ah!{SCROLL}Hello! It’s Tim! She’s such a... Wah!{SCROLL}So, that’s how it is. We’ll{NEWLINE}call you again. Bye-bye!",
+   "en": "It’s me, Sue!{SCROLL}How have you been? We’ve got so many{NEWLINE}more Pokémon now... Ah!{SCROLL}Hello? It’s Tim! Call me once in a while,{NEWLINE}too... Wah!{SCROLL}Anyway, the other day he carelessly let{NEWLINE}a {VAR:0100:11} get away. And lately he{CLEAR}keeps saying weird things, like how our{CLEAR}Pokémon can’t compare to yours... Ah!{SCROLL}Hello! It’s Tim! She’s such a... Wah!{SCROLL}So, that’s how it is. We’ll call you{NEWLINE}again. Bye-bye!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0702/8"
+   "notes": "US 0702/8 | RV073: meaning: 精灵又多了好⋯⋯ = more Pokémon, not grown; settles D-1903"
   },
   {
    "id": 9,

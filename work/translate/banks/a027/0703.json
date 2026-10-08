@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "你已经好就没和{NEWLINE}我进行精灵对战了,{CLEAR}怎么样？{SCROLL}⋯⋯要来一场吗！{SCROLL}你真是个懂事的孩子！{NEWLINE}那我在{VAR:0104:3}等你！",
-   "en": "What do you say to a battle with me?{NEWLINE}Good, you’re going to do it!{SCROLL}For a kid, you’re quite agreeable.{NEWLINE}{VAR:0104:3} is the spot!",
+   "en": "It’s been ages since we had a Pokémon{NEWLINE}battle. What do you say?{SCROLL}...You’ll battle me?{SCROLL}What a good kid you are!{NEWLINE}{VAR:0104:3} is the spot!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0712/9"
+   "origin": "agent",
+   "notes": "US 0712/9 | RV073: omission: restored 好久没对战 and the question/answer beat"
   },
   {
    "id": 10,
