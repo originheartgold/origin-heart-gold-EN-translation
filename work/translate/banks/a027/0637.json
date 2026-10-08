@@ -110,10 +110,10 @@
   {
    "id": 13,
    "zh": "你喜欢占卜吗？{SCROLL}我对于⋯⋯{NEWLINE}花瓣丝{CLEAR}和切树叶的占卜方法{CLEAR}不怎么⋯⋯{SCROLL}啊,这并不是说我讨厌{NEWLINE}紫苑镇里那位{CLEAR}很有名的占卜师啦。",
-   "en": "Do you like telling fortunes?{SCROLL}Me...{NEWLINE}I don’t really like the kind where you{CLEAR}pull off flower petals...{SCROLL}Oh, but it’s not that I dislike the{NEWLINE}fortune-teller in Lavender Town.",
+   "en": "Do you like fortune-telling?{SCROLL}Me...{SCROLL}I’m not very fond of the kinds where{NEWLINE}you pluck flower petals or cut leaves...{SCROLL}Oh, but that doesn’t mean I dislike the{NEWLINE}famous fortune-teller in Lavender Town.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0646/13"
+   "origin": "agent",
+   "notes": "US 0646/13 | RV070: omission: US dropped leaf-cutting divination and famous (D-1915)"
   },
   {
    "id": 14,

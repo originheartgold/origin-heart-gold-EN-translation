@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "我的大尾立虽然能力不够出众,{NEWLINE}但是它的接力棒绝技{CLEAR}可是非常好的团队合作技能。{SCROLL}如果你也有精灵想学这招的话,{NEWLINE}只要给我1个等级球,{CLEAR}我就可以教你哦。{SCROLL}怎么样,要学吗？{SCROLL}",
-   "en": "My Furret isn’t that strong, but Baton{NEWLINE}Pass is a great teamwork move.{SCROLL}If one of your Pokémon wants to learn{NEWLINE}it, I’ll teach it for one Level Ball.{SCROLL}So, how about it? Want to learn it?{SCROLL}",
+   "en": "My Furret isn’t that strong, but its{NEWLINE}specialty, Baton Pass, is a great{CLEAR}teamwork move.{SCROLL}If one of your Pokémon wants to learn{NEWLINE}it, I’ll teach it for one Level Ball.{SCROLL}So, how about it? Want to learn it?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV053: omission: 绝技"
   },
   {
    "id": 4,
@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "好！{VAR:0103:0}{SCROLL}空木博士发现了{NEWLINE}新的精灵了啊！",
-   "en": "Yo, {VAR:0103:0}!{SCROLL}I hear Professor Elm discovered some{NEWLINE}new Pokémon.",
+   "en": "Yo, {VAR:0103:0}!{SCROLL}Professor Elm discovered a new{NEWLINE}Pokémon!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0542/12"
+   "origin": "agent",
+   "notes": "US 0542/12 | RV053: addition: US ‘I hear’ not in zh"
   },
   {
    "id": 13,
@@ -314,10 +314,10 @@
   {
    "id": 38,
    "zh": "阿金『偶像,我听说今年的石英大会{NEWLINE}改成白银大会了,{CLEAR}也不再需要连胜四天王{CLEAR}才能向你挑战。{SCROLL}阿金『嘿嘿,这样我要获得{NEWLINE}向你挑战的资格{CLEAR}也变得容易了。",
-   "en": "Gold: Idol, I heard they renamed this{NEWLINE}year’s Indigo Conference.{SCROLL}It’s the Silver Conference now!{SCROLL}Plus, you don’t need to beat the Elite{NEWLINE}Four in a row to face you anymore!{SCROLL}Gold: Heh heh, so it just got a lot{NEWLINE}easier for me to earn a shot at you.",
+   "en": "Gold: Idol, I heard they renamed this{NEWLINE}year’s Indigo Conference.{SCROLL}It’s the Silver Conference now!{SCROLL}Plus, nobody needs to beat the Elite{NEWLINE}Four in a row to challenge you now!{SCROLL}Gold: Heh heh, so it just got a lot{NEWLINE}easier for me to earn a shot at you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV053: grammar: dangling ‘to face you’"
   },
   {
    "id": 39,
@@ -429,10 +429,10 @@
   {
    "id": 52,
    "zh": "阿金『异常？嗯……{NEWLINE}最近我们家电灯忽明忽暗的,{CLEAR}空木博士那里最近也经常说{CLEAR}电压不稳什么的。{CLEAR}我原本没太当回事,{CLEAR}但偶像你这么一说,{CLEAR}那这些现象会不会是{CLEAR}三圣兽在附近引起的？",
-   "en": "Gold: Strange? Hmm...{SCROLL}Lately the lights at our house keep{NEWLINE}flickering, and Professor Elm keeps{CLEAR}saying the voltage is unstable.{SCROLL}I didn’t think much of it.{SCROLL}But now that you mention it, Idol...{NEWLINE}could one of the legendary beasts{CLEAR}nearby be causing it?",
+   "en": "Gold: Strange? Hmm...{SCROLL}Lately the lights at our house keep{NEWLINE}flickering, and Professor Elm keeps{CLEAR}saying the voltage is unstable.{SCROLL}I didn’t think much of it.{SCROLL}But now that you mention it, Idol...{NEWLINE}could the legendary beasts nearby be{CLEAR}causing all this?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV053: meaning: zh names the three beasts collectively, not ‘one of’"
   },
   {
    "id": 53,

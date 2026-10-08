@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "天气小姐『由我天气小姐来为大家{NEWLINE}播报此地区的天气情况！{SCROLL}{VAR:0104:0}{NEWLINE}今天是阴沉沉的多云天气。{SCROLL}虽然没有出太阳,{NEWLINE}但实际上呢,这种天气才是{CLEAR}紫外线强,要注意防晒哦！{SCROLL}以上是我为您播报的天气情况！",
-   "en": "Weather Girl: I’m the Weather Girl,{NEWLINE}here with the weather for this area!{SCROLL}It’s gloomy and overcast at{NEWLINE}{VAR:0104:0} today.{SCROLL}There’s no sun, but actually,{NEWLINE}this is the kind of weather{CLEAR}when UV rays are strongest, so{CLEAR}don’t forget your sunscreen!{SCROLL}That’s been your weather report!",
+   "en": "Weather Girl: I’m the Weather Girl,{NEWLINE}here with the weather for this area!{SCROLL}It’s gloomy and overcast at{NEWLINE}{VAR:0104:0} today.{SCROLL}There’s no sun, but actually,{NEWLINE}this is exactly the kind of weather{CLEAR}when UV rays are strong, so{CLEAR}don’t forget your sunscreen!{SCROLL}That’s been your weather report!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV069: addition: superlative not in zh; D-1729"
   },
   {
    "id": 6,
@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "天气小姐『由我天气小姐来为大家{NEWLINE}播报此地区的天气情况！{CLEAR}今天可以见到,{CLEAR}非~常罕见的景象哦！{SCROLL}在{VAR:0104:0},{NEWLINE}出现了钻石星辰！{SCROLL}在我周围闪闪发光,{NEWLINE}真是非常美丽！{SCROLL}有恋人的各位,考虑下{NEWLINE}在这里把自己打扮成公主,{CLEAR}或是向心仪的她求婚如何？{SCROLL}以上是我为您播报的天气情况！",
-   "en": "Weather Girl: I’m the Weather Girl, here{NEWLINE}with the weather for this area! Today{CLEAR}you can see a really, really rare sight!{SCROLL}At {VAR:0104:0},{NEWLINE}there’s diamond dust!{SCROLL}It’s sparkling all around{NEWLINE}me. It’s so beautiful!{SCROLL}Those of you with sweethearts, how{NEWLINE}about dressing up like a princess here,{CLEAR}or proposing to the one you love?{SCROLL}That’s been your weather report!",
+   "en": "Weather Girl: I’m the Weather Girl, here{NEWLINE}with the weather for this area! Today{CLEAR}you can see a really, really rare sight!{SCROLL}At {VAR:0104:0},{NEWLINE}there’s diamond dust!{SCROLL}It’s sparkling all around{NEWLINE}me. It’s so beautiful!{SCROLL}Those of you with sweethearts, how{NEWLINE}about dressing up like a princess here,{CLEAR}or proposing to the girl you love?{SCROLL}That’s been your weather report!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV069: meaning: 心仪的她 = her"
   },
   {
    "id": 13,
@@ -433,7 +433,7 @@
    "en": "Host: Today is the last day of the year.{SCROLL}I’m sure a lot happened{NEWLINE}to everyone this year...{SCROLL}Meeting new Pokémon,{SCROLL}meeting new friends,{SCROLL}meeting me on this side of the TV...{SCROLL}They’re all irreplaceable,{NEWLINE}wonderful memories!{SCROLL}Keep this year’s experiences in your{NEWLINE}heart, and do your best next year too!{SCROLL}Please keep watching{NEWLINE}Jubilife TV next year!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV069: name: zh typo 今天的最后一天 for 今年, intended word kept; logged D-2224; D-1729"
   },
   {
    "id": 54,

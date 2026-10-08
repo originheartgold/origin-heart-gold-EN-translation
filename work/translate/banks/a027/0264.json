@@ -302,10 +302,10 @@
   {
    "id": 37,
    "zh": "⋯⋯无法连接！{NEWLINE}似乎是在圈外⋯⋯",
-   "en": "That number is out{NEWLINE}of the area.",
+   "en": "......Can’t connect!{NEWLINE}Seems to be out of range......",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0271/37"
+   "origin": "agent",
+   "notes": "US 0271/37 | RV070: meaning: zh says the call cannot connect and the other party seems to be out of range (D-1736)"
   },
   {
    "id": 38,

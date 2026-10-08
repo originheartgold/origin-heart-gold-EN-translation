@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "无法读取存档。{NEWLINE}请切断电源{NEWLINE}重新插拔卡带。",
-   "en": "The data could not be read.{NEWLINE}{NEWLINE}Please turn off the power, then{NEWLINE}remove and reinsert the Game Boy{NEWLINE}Advance Game Pak.",
+   "en": "The save data could not be{NEWLINE}accessed.{NEWLINE}{NEWLINE}Please turn the power off and{NEWLINE}reinsert the DS Game Card.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0008/1"
+   "origin": "agent",
+   "notes": "US 0008/1 | RV056: addition: same zh as #0 (reinsert the cartridge); US GBA Game Pak line not in the zh; reuse #0 English"
   }
  ]
 }

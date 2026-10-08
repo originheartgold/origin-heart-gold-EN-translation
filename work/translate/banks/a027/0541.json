@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "娜姿『我给你制定的康复锻炼计划,{NEWLINE}简单来说就是充分的锻炼和休息。{CLEAR}我每隔一段时间{CLEAR}会给你安排一位训练家与你对战,{CLEAR}你在对战时要全力以赴取胜,{CLEAR}然后用白银山的温泉恢复体力。{CLEAR}在白银山的水土影响之下,{CLEAR}如此往复循环几个月后,{CLEAR}就可以清除你体内的残留能量了。",
-   "en": "Sabrina: Put simply, the rehabilitation{NEWLINE}plan I made for you is plenty of{CLEAR}exercise and rest.{SCROLL}Every so often, I will arrange for a{NEWLINE}Trainer to battle you.{SCROLL}You must give everything to win.{SCROLL}Then you will recover your strength in{NEWLINE}Mt. Silver’s hot springs.{SCROLL}With the help of Mt. Silver’s land and{NEWLINE}water, a few months of this cycle should{CLEAR}clear the energy from your body.",
+   "en": "Sabrina: Put simply, the rehabilitation{NEWLINE}plan I made for you is plenty of{CLEAR}exercise and rest.{SCROLL}Every so often, I will arrange for a{NEWLINE}Trainer to battle you.{SCROLL}You must give everything to win.{SCROLL}Then you will recover your strength in{NEWLINE}Mt. Silver’s hot springs.{SCROLL}With the help of Mt. Silver’s land and{NEWLINE}water, a few months of this cycle{CLEAR}should clear the leftover energy{CLEAR}from your body.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV054: omission: 残留 (leftover) restored"
   },
   {
    "id": 12,
@@ -182,18 +182,18 @@
   {
    "id": 22,
    "zh": "小刚『你在华蓝洞穴{NEWLINE}为了救我们而被超梦打伤,{CLEAR}所以娜姿小姐要我协助她{CLEAR}帮你治疗伤势,{CLEAR}我当然就义不容辞地来了。",
-   "en": "Brock: Mewtwo hurt you in Cerulean Cave{NEWLINE}while you were saving us.{SCROLL}So when Sabrina asked for my help, I{NEWLINE}came right away.",
+   "en": "Brock: Mewtwo hurt you in Cerulean Cave{NEWLINE}while you were saving us.{SCROLL}So when Sabrina asked me to help her{NEWLINE}treat your injuries, of course I came{CLEAR}without a second thought.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV054: omission: 协助她帮你治疗伤势 and 义不容辞 restored"
   },
   {
    "id": 23,
    "zh": "娜姿『小刚馆主,{NEWLINE}现在请你好好教教这个乱来的冠军,{CLEAR}该怎么沉稳地战斗吧。",
-   "en": "Sabrina: Brock, please teach this{NEWLINE}reckless Champion some composure.",
+   "en": "Sabrina: Brock, please teach this{NEWLINE}reckless Champion how to battle{CLEAR}with composure.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV054: omission: 该怎么沉稳地战斗 (how to battle calmly)"
   },
   {
    "id": 24,
@@ -222,10 +222,10 @@
   {
    "id": 27,
    "zh": "娜姿『多亏了小刚馆主,{NEWLINE}这家伙现在的体内能量{CLEAR}已经宣泄出去了一部分。",
-   "en": "Sabrina: Thanks to you, Brock, some of{NEWLINE}the energy inside this troublemaker has{CLEAR}been released.",
+   "en": "Sabrina: Thanks to you, Brock, some of{NEWLINE}the energy inside this one has{CLEAR}been released.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV054: addition: 这家伙 = this one/this fellow, not ‘troublemaker’"
   },
   {
    "id": 28,
@@ -398,10 +398,10 @@
   {
    "id": 49,
    "zh": "小绿『听说你在华蓝洞穴{NEWLINE}被坂木给揍了,{CLEAR}你总这样打败仗可不行啊。{CLEAR}害的我不得不放下道馆的一堆事情{CLEAR}来这里帮你做康复锻炼。",
-   "en": "Blue: I heard Giovanni beat you up in{NEWLINE}Cerulean Cave.{SCROLL}You can’t keep losing like that, you{NEWLINE}know.{SCROLL}Now I had to drop a pile of Gym work to{NEWLINE}come help with your rehab.",
+   "en": "Blue: I heard Giovanni beat you up in{NEWLINE}Cerulean Cave.{SCROLL}You can’t keep losing like that, you{NEWLINE}know.{SCROLL}Thanks to you, I had to drop a pile of{NEWLINE}Gym work to come help with your rehab.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV054: grammar: 害得我 = ‘thanks to you’; fixed tense"
   },
   {
    "id": 50,
@@ -646,10 +646,10 @@
   {
    "id": 80,
    "zh": "娜姿『像你这样稚嫩的训练家,{NEWLINE}我的读心术还能读到更多东西呢。",
-   "en": "Sabrina: With a Trainer as young as you,{NEWLINE}I can read much more than that.",
+   "en": "Sabrina: With a Trainer as inexperienced{NEWLINE}as you, my mind reading can pick up much{CLEAR}more than that.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV054: meaning: 稚嫩 = inexperienced, not young; 读心术 restored (D-1923)"
   },
   {
    "id": 81,
@@ -878,10 +878,10 @@
   {
    "id": 109,
    "zh": "收音机里正在播放新闻：{NEWLINE}一位训练家的精灵身患怪病,{CLEAR}四处求医问药无果后来到尼比市{CLEAR}请求著名的饲育家小刚为精灵治疗。{SCROLL}但小刚馆主几番检查之后{NEWLINE}对精灵的病因毫无头绪。{CLEAR}恰巧此时有一位{CLEAR}来尼比道馆挑战的年轻训练家,{CLEAR}她在抚摸生病的精灵后,{CLEAR}竟然神奇地将精灵治愈了！",
-   "en": "The radio is playing the news: A{NEWLINE}Trainer’s Pokémon came down with a{CLEAR}strange illness.{SCROLL}No one could cure it, so the Trainer{NEWLINE}asked the famed breeder Brock of{CLEAR}Pewter City.{SCROLL}But even after several exams, Gym{NEWLINE}Leader Brock was stumped.{SCROLL}Then a young Trainer who came to{NEWLINE}challenge the Pewter Gym stroked the{CLEAR}sick Pokémon.{SCROLL}It was miraculously cured!",
+   "en": "The radio is playing the news: A{NEWLINE}Trainer’s Pokémon came down with a{CLEAR}strange illness.{SCROLL}After seeking a cure everywhere in{NEWLINE}vain, the Trainer came to Pewter City{CLEAR}to ask the famed breeder Brock{CLEAR}for help.{SCROLL}But even after several exams, Gym{NEWLINE}Leader Brock had no idea what was{CLEAR}wrong with it.{SCROLL}Just then, a young Trainer came to{NEWLINE}challenge the Pewter Gym.{SCROLL}After she stroked the sick Pokémon,{NEWLINE}it was miraculously cured!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Radio news #109–#112 hint at Yellow's powers (healing, Mt. Moon Clefairy) and wins."
+   "notes": "Radio news #109–#112 hint at Yellow's powers (healing, Mt. Moon Clefairy) and wins. | RV054: omission: healer’s 她 and 来到尼比市 restored (D-1923)"
   },
   {
    "id": 110,

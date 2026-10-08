@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "你在搞什么啊！{NEWLINE}我们不是约好了{CLEAR}要对战的吗！{SCROLL}我就在{VAR:0104:3},{NEWLINE}你别忘了！",
-   "en": "What’s up with that?!{NEWLINE}Didn’t you say you were going to come{CLEAR}out here and get schooled?!{SCROLL}Come on! I’m waiting on{NEWLINE}{VAR:0104:3}, so hurry up!",
+   "en": "What’s the deal?! Didn’t we agree to{NEWLINE}battle?!{SCROLL}I’m on {VAR:0104:3}. Don’t you{NEWLINE}forget it!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0701/11"
+   "origin": "agent",
+   "notes": "US 0701/11 | RV073: addition: removed added 'get schooled'/'hurry up'; 你别忘了 = don't forget"
   },
   {
    "id": 12,

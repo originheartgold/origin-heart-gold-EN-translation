@@ -166,10 +166,10 @@
   {
    "id": 20,
    "zh": "对了,在金黄市{NEWLINE}有个叫{CLEAR}超能力大叔的人。{SCROLL}把超能系的技能{NEWLINE}带去他那儿看看吧。",
-   "en": "You know how there’s a guy named{NEWLINE}Mr. Psychic in Saffron City?{SCROLL}I wonder what would happen if you took{NEWLINE}Psychic-type Pokémon there?",
+   "en": "You know how there’s a guy named{NEWLINE}Mr. Psychic in Saffron City? Try taking{CLEAR}some Psychic-type moves to him and see!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/20"
+   "origin": "agent",
+   "notes": "US 0663/20 | RV071: meaning: zh says Psychic-type moves (D-1998/D-1916) (hack-finding D-2227)"
   },
   {
    "id": 21,
@@ -238,10 +238,10 @@
   {
    "id": 29,
    "zh": "现在你在１７号道路？{NEWLINE}也就是到了{CLEAR}自行车道了吗？{SCROLL}要是能和精灵{NEWLINE}一起在那里奔跑就好了⋯⋯{CLEAR}不过那样很危险吧！",
-   "en": "You’re at Route 17 right now?{NEWLINE}So that means...{CLEAR}you’re on the Cycling Road!{SCROLL}It’s so much fun running with your{NEWLINE}Pokémon...but of course that’d be{CLEAR}a little dangerous there!",
+   "en": "You’re on Route 17 right now? So you’ve{NEWLINE}made it to Cycling Road? It’d be great{CLEAR}to run there with your Pokémon... But{CLEAR}that’d be dangerous!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/29"
+   "origin": "agent",
+   "notes": "US 0663/29 | RV071: meaning: same zh as #28/#30, now parallel"
   },
   {
    "id": 30,
@@ -342,10 +342,10 @@
   {
    "id": 42,
    "zh": "把火球鼠带到{NEWLINE}３１号道路去怎么样？{CLEAR}它肯定会很高兴的！{SCROLL}因为我听说火球鼠{NEWLINE}非常喜欢那个地方！",
-   "en": "You know, I bet it would be really{NEWLINE}interesting to take Cyndaquil with you{CLEAR}to Route 31!{SCROLL}I heard that Cyndaquil really like{NEWLINE}that area!",
+   "en": "How about taking a Cyndaquil to Route{NEWLINE}31? I bet it’d be really happy! I heard{CLEAR}that Cyndaquil really like that area!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/42; modernised from US 0663#42"
+   "origin": "agent",
+   "notes": "US 0663/42; modernised from US 0663#42 | RV071: meaning: 'it'd be happy', not 'interesting'"
   },
   {
    "id": 43,
@@ -446,26 +446,26 @@
   {
    "id": 55,
    "zh": "现在你在⋯⋯４４号道路！{SCROLL}对吗？猜对了！{SCROLL}那边一年四季都是很冷的,{NEWLINE}怕冷的精灵到那儿{CLEAR}就是遭罪啊。{SCROLL}不过冰系精灵{NEWLINE}肯定会很高兴吧。",
-   "en": "Right now you’re...on Route 44!{SCROLL}Was I right? All right!{SCROLL}It’s pretty cold around there, right?{NEWLINE}I feel bad for the Pokémon that are{CLEAR}sensitive to cold...{SCROLL}But I bet Ice-type Pokémon feel{NEWLINE}right at home!",
+   "en": "Right now you’re...on Route 44! Was I{NEWLINE}right? All right! It’s cold there all{CLEAR}year round. Pokémon that can’t stand{CLEAR}the cold have a rough time there...{CLEAR}But I bet Ice-type Pokémon feel right{CLEAR}at home!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/55"
+   "origin": "agent",
+   "notes": "US 0663/55 | RV071: omission: 'all year round' and 遭罪 (D-2000)"
   },
   {
    "id": 56,
    "zh": "４５号道路一带{NEWLINE}都是弯曲的河流,{CLEAR}真漂亮啊！{SCROLL}之前我去那儿的时候,{NEWLINE}精灵也是一副{CLEAR}望眼欲穿的眼神啊！",
-   "en": "You know, there’s that river that{NEWLINE}meanders around near Route 45.{CLEAR}It’s a fun route to take.{SCROLL}I went there recently, and my Pokémon{NEWLINE}were really interested in the river.{CLEAR}They kept looking out at it.",
+   "en": "Route 45 is all winding rivers. It’s so{NEWLINE}pretty! When I went there before, my{CLEAR}Pokémon kept gazing out at them{CLEAR}longingly!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/56"
+   "origin": "agent",
+   "notes": "US 0663/56 | RV071: meaning: 'so pretty', longing gaze"
   },
   {
    "id": 57,
    "zh": "喂喂,４６号道路{NEWLINE}因为遍地都是草丛,{CLEAR}所以我带的精灵也是一副{CLEAR}担心不知何时撞上{CLEAR}野生精灵的样子！",
-   "en": "Hey, you know how there’s so much tall{NEWLINE}grass on Route 46?{CLEAR}Well, the Pokémon you have with you{CLEAR}also become worried about when a wild{CLEAR}Pokémon will come leaping out!",
+   "en": "Hey, Route 46 is covered in tall grass,{NEWLINE}so the Pokémon I had with me looked{CLEAR}worried about when they’d run into a{CLEAR}wild Pokémon!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/57"
+   "origin": "agent",
+   "notes": "US 0663/57 | RV071: meaning: 我带的精灵 = the speaker's Pokémon"
   },
   {
    "id": 58,
@@ -518,18 +518,18 @@
   {
    "id": 64,
    "zh": "现在你到哪儿了？{NEWLINE}紫苑镇？{CLEAR}你已经到这么远的地方了啊！{SCROLL}那个小镇被称作{NEWLINE}灵魂之家。{CLEAR}那里有精灵的坟墓。{SCROLL}凡是训练师{NEWLINE}都要去那儿参拜一下。",
-   "en": "Where are you now?{NEWLINE}Lavender Town?{CLEAR}You’ve gone pretty far, huh?{SCROLL}In that town, there’s a place called{NEWLINE}the House of Memories where they have{CLEAR}Pokémon graves, you know.{SCROLL}As a Trainer, you should visit at least{NEWLINE}once out of respect.",
+   "en": "Where are you now? Lavender Town?{NEWLINE}You’ve gone pretty far, huh? That town{CLEAR}is called the House of Memories. There{CLEAR}are Pokémon graves there. Every{CLEAR}Trainer should go there to pay their{CLEAR}respects.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/64"
+   "origin": "agent",
+   "notes": "US 0663/64 | RV071: meaning: zh calls the town itself 灵魂之家; logged as hack-finding (D-2000/D-1916) (hack-finding D-2226)"
   },
   {
    "id": 65,
    "zh": "你现在在哪儿？枯叶市？{SCROLL}我记得那边有个叫{NEWLINE}超喜欢俱乐部的地方！{SCROLL}那儿还有月桂叶,{NEWLINE}过去打个招呼吧？",
-   "en": "Where are you now? Vermilion City?{SCROLL}That’s where the Pokémon Fan Club is if{NEWLINE}I recall correctly!{SCROLL}If you’ve got a Bayleef, you should{NEWLINE}take it over there to them and say hi!",
+   "en": "Where are you now? Vermilion City?{NEWLINE}That’s where the Pokémon Fan Club is if{CLEAR}I recall correctly! There’s a Bayleef{CLEAR}there too, so why not go say hi?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/65; modernised from US 0663#65"
+   "origin": "agent",
+   "notes": "US 0663/65; modernised from US 0663#65 | RV071: meaning: zh says a Bayleef is there (D-1998/D-1916) (hack-finding D-2227)"
   },
   {
    "id": 66,
@@ -574,10 +574,10 @@
   {
    "id": 71,
    "zh": "现在你在哪儿？{NEWLINE}啊,到若叶镇了啊！{SCROLL}都回家了啊？{NEWLINE}带上精灵和你妈妈{CLEAR}问个好吧。",
-   "en": "Where are you now?{NEWLINE}What are you doing in New Bark Town?{SCROLL}Did you go back home?{NEWLINE}You should show off your Pokémon to{CLEAR}your mom. I bet she’d be happy!",
+   "en": "Where are you now? Oh, you’re in New{NEWLINE}Bark Town! Did you go back home? Take{CLEAR}your Pokémon along and say hello to{CLEAR}your mom.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/71"
+   "origin": "agent",
+   "notes": "US 0663/71 | RV071: addition: removed 'show off' and 'she'd be happy' (D-2000)"
   },
   {
    "id": 72,
@@ -598,10 +598,10 @@
   {
    "id": 74,
    "zh": "现在你到哪了？{SCROLL}我猜猜⋯⋯湛蓝市！{SCROLL}错了？那桧皮镇？{SCROLL}桧皮镇的道馆很厉害的！{NEWLINE}线球车{CLEAR}你坐过了吗？{SCROLL}带着真正的线球{NEWLINE}到那个道馆去{CLEAR}会有什么样的反应呢？{SCROLL}好期待啊！",
-   "en": "So, whereabouts are you now?{SCROLL}You’re in...Cianwood!{SCROLL}No? You’re in Azalea Town?{SCROLL}Azalea’s Gym is really awesome,{NEWLINE}isn’t it?{CLEAR}Did you try riding on the Spinarak yet?{SCROLL}I wonder what would happen if you took{NEWLINE}a real Spinarak to that Gym?{SCROLL}I think that would be interesting!",
+   "en": "So, where are you now? Let me{NEWLINE}guess...Cianwood! No? Then Azalea{CLEAR}Town? Azalea’s Gym is really awesome!{CLEAR}Have you ridden the Spinarak cart yet?{CLEAR}I wonder what would happen if you took{CLEAR}a real Spinarak to that Gym? I can’t{CLEAR}wait to find out!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/74; modernised from US 0663#74"
+   "origin": "agent",
+   "notes": "US 0663/74; modernised from US 0663#74 | RV071: omission: 'Let me guess', cart, 'can't wait'"
   },
   {
    "id": 75,
@@ -614,10 +614,10 @@
   {
    "id": 76,
    "zh": "现在你到哪了？{NEWLINE}满金市？{SCROLL}仔细看看道馆的话,你会发现{NEWLINE}那其实是皮皮的造型。{SCROLL}对了！{NEWLINE}带皮皮去看看怎么样？{SCROLL}也许它还{NEWLINE}挺喜欢的。",
-   "en": "So, where are you now?{NEWLINE}Goldenrod City?{SCROLL}You know, if you look carefully at that{NEWLINE}Gym, it’s in the shape of a Clefairy.{SCROLL}It’s true!{NEWLINE}You should take a Clefairy there!{SCROLL}I bet that whatever happens, it will be{NEWLINE}incredibly cute!",
+   "en": "So, where are you now? Goldenrod City?{NEWLINE}You know, if you look carefully at the{CLEAR}Gym, it’s actually in the shape of a{CLEAR}Clefairy. Oh, I know! How about taking{CLEAR}a Clefairy to see it? It might really{CLEAR}like it.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/76; modernised from US 0663#76"
+   "origin": "agent",
+   "notes": "US 0663/76; modernised from US 0663#76 | RV071: meaning: 'it might like it', not 'incredibly cute' (D-2000)"
   },
   {
    "id": 77,
@@ -726,10 +726,10 @@
   {
    "id": 90,
    "zh": "对了,在金黄市{NEWLINE}有一座格斗道馆。{SCROLL}或许是因为那里是对战的地方,{NEWLINE}所以跟在身后的精灵{CLEAR}都会吓一跳的！",
-   "en": "You know, there’s a Fighting Dojo in{NEWLINE}Saffron City?{SCROLL}It’s a place just for battles. All the{NEWLINE}Pokémon I had with me were surprised!",
+   "en": "You know, there’s a Fighting Dojo in{NEWLINE}Saffron City? Maybe because it’s a{CLEAR}place for battling, the Pokémon{CLEAR}following you all get startled!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/90; zh itself names the Saffron Fighting Dojo (not a rematch venue), so kept"
+   "origin": "agent",
+   "notes": "US 0663/90; zh itself names the Saffron Fighting Dojo (not a rematch venue), so kept | RV071: meaning: 'maybe because', Pokémon following you (D-2000)"
   },
   {
    "id": 91,
@@ -782,10 +782,10 @@
   {
    "id": 97,
    "zh": "在紫苑镇有个叫{NEWLINE}精灵小屋的地方,{CLEAR}把精灵们去那儿的话,{CLEAR}它们会很高兴的。",
-   "en": "There’s a Pokémon House in{NEWLINE}Lavender Town. You should take your{CLEAR}Pokémon there. I think it would{CLEAR}enjoy it.",
+   "en": "There’s a Pokémon House in Lavender{NEWLINE}Town. If you take your Pokémon there,{CLEAR}they’ll be really happy.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/97"
+   "origin": "agent",
+   "notes": "US 0663/97 | RV071: grammar: plural Pokémon, 'they'"
   },
   {
    "id": 98,
@@ -814,34 +814,34 @@
   {
    "id": 101,
    "zh": "你在自行车道上{NEWLINE}奔跑过吗？{SCROLL}和精灵一起在那里奔跑{NEWLINE}简直是太爽了⋯⋯{CLEAR}不过就是太危险了！",
-   "en": "Have you had the chance to take{NEWLINE}the Cycling Road yet?{SCROLL}It’s so much fun running with your{NEWLINE}Pokémon...but of course that’d be a{CLEAR}little dangerous there!",
+   "en": "Have you ridden along Cycling Road yet?{NEWLINE}Running there with your Pokémon is such{CLEAR}a rush... But it’s way too dangerous!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/101"
+   "origin": "agent",
+   "notes": "US 0663/101 | RV071: softened: 太危险 'way too dangerous' (D-1999)"
   },
   {
    "id": 102,
    "zh": "你在自行车道上{NEWLINE}奔跑过吗？{SCROLL}和精灵一起在那里奔跑{NEWLINE}简直是太爽了⋯⋯{CLEAR}不过就是太危险了！",
-   "en": "Have you had the chance to take{NEWLINE}the Cycling Road yet?{SCROLL}It’s so much fun running with your{NEWLINE}Pokémon...but of course that’d be a{CLEAR}little dangerous there!",
+   "en": "Have you ridden along Cycling Road yet?{NEWLINE}Running there with your Pokémon is such{CLEAR}a rush... But it’s way too dangerous!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/102"
+   "origin": "agent",
+   "notes": "US 0663/102 | RV071: softened: 太危险 'way too dangerous' (D-1999)"
   },
   {
    "id": 103,
    "zh": "你在自行车道上{NEWLINE}奔跑过吗？{SCROLL}和精灵一起在那里奔跑{NEWLINE}简直是太爽了⋯⋯{CLEAR}不过就是太危险了！",
-   "en": "Have you had the chance to take{NEWLINE}the Cycling Road yet?{SCROLL}It’s so much fun running with your{NEWLINE}Pokémon...but of course that’d be a{CLEAR}little dangerous there!",
+   "en": "Have you ridden along Cycling Road yet?{NEWLINE}Running there with your Pokémon is such{CLEAR}a rush... But it’s way too dangerous!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/103"
+   "origin": "agent",
+   "notes": "US 0663/103 | RV071: softened: 太危险 'way too dangerous' (D-1999)"
   },
   {
    "id": 104,
    "zh": "在水边和精灵{NEWLINE}一同戏水实在太有意思了！{SCROLL}我好像记得１９号水路{NEWLINE}能直接通往大海⋯⋯",
-   "en": "It’s so much fun to play with Pokémon{NEWLINE}along the water’s edge!{SCROLL}If I recall correctly, you can see the{NEWLINE}sea from Route 19...",
+   "en": "It’s so much fun to splash around in{NEWLINE}the water with your Pokémon! If I{CLEAR}remember right, Route 19 leads straight{CLEAR}out to the sea...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/104"
+   "origin": "agent",
+   "notes": "US 0663/104 | RV071: meaning: Route 19 leads to the sea (D-2000)"
   },
   {
    "id": 105,
@@ -902,10 +902,10 @@
   {
    "id": 112,
    "zh": "对了,当你走在２８号道路{NEWLINE}通往白银山脉的那条道上时,{SCROLL}精灵们{NEWLINE}一定闭着嘴跟你走。{CLEAR}实际上它们心里非常紧张,{CLEAR}心扑通扑通直跳。",
-   "en": "Route 28, that’s the one going to{NEWLINE}Mt. Silver, right?{SCROLL}Your Pokémon probably put on a good{NEWLINE}show of being brave, but I bet they{CLEAR}worry a little bit, too...",
+   "en": "Oh yeah, when you walk Route 28, the{NEWLINE}road to Mt. Silver, your Pokémon must{CLEAR}follow you without a word. But inside{CLEAR}they’re really nervous, their hearts{CLEAR}pounding away.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/112"
+   "origin": "agent",
+   "notes": "US 0663/112 | RV071: softened: nervous, pounding hearts; removed added 'show of being brave' (D-1999)"
   },
   {
    "id": 113,
@@ -1038,10 +1038,10 @@
   {
    "id": 129,
    "zh": "４５号道路一带{NEWLINE}流淌着弯弯的河流,{CLEAR}真让人心情舒畅！{SCROLL}前段时间我去那儿的时候{NEWLINE}看到精灵露出一副{CLEAR}饶有兴趣的样子！",
-   "en": "You know, there’s that river that{NEWLINE}meanders around near Route 45.{CLEAR}It’s a fun route to take.{SCROLL}I went there recently, and my Pokémon{NEWLINE}were really interested in the river.{CLEAR}They kept looking out at it.",
+   "en": "A winding river flows all along Route 45.{NEWLINE}It’s so refreshing! When I went there a{CLEAR}while back, my Pokémon looked really{CLEAR}interested!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/129"
+   "origin": "agent",
+   "notes": "US 0663/129 | RV071: addition: removed 'fun route', 'kept looking out at it'"
   },
   {
    "id": 130,
@@ -1062,10 +1062,10 @@
   {
    "id": 132,
    "zh": "４７号道路那{NEWLINE}有一个很高的悬崖。{SCROLL}带上精灵{NEWLINE}去那边走走的话,{CLEAR}精灵一定会很害怕的。{SCROLL}我？我⋯⋯{NEWLINE}我从来都不恐高的！",
-   "en": "You know how there’s that really tall{NEWLINE}cliff near Route 47?{SCROLL}When you’re walking around there, the{NEWLINE}Pokémon with you all get pretty{CLEAR}scared, too...{SCROLL}Me?{NEWLINE}I’m perfectly fine with heights!",
+   "en": "There’s a really tall cliff on Route 47.{NEWLINE}If you take your Pokémon for a walk{CLEAR}there, they’re sure to get scared.{SCROLL}Me? I-I’m...{NEWLINE}I’ve never been scared of heights!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/132"
+   "origin": "agent",
+   "notes": "US 0663/132 | RV071: omission: the stammer 我？我⋯⋯ restored"
   },
   {
    "id": 133,
@@ -1102,10 +1102,10 @@
   {
    "id": 137,
    "zh": "在紫苑镇{NEWLINE}有个叫灵魂之家的{CLEAR}精灵坟墓。{SCROLL}如果你是训练师的话,{NEWLINE}就去那里祭拜一下吧。",
-   "en": "In Lavender Town, there’s a place{NEWLINE}called the House of Memories where{CLEAR}they have Pokémon graves, you know.{SCROLL}As a Trainer, you should visit at least{NEWLINE}once out of respect.",
+   "en": "In Lavender Town, there’s a Pokémon{NEWLINE}grave called the House of Memories. If{CLEAR}you’re a Trainer, go there and pay your{CLEAR}respects.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/137"
+   "origin": "agent",
+   "notes": "US 0663/137 | RV071: addition: removed 'at least once'; 祭拜 pay respects"
   },
   {
    "id": 138,
@@ -1158,10 +1158,10 @@
   {
    "id": 144,
    "zh": "对了,要是你回到{NEWLINE}若叶镇的话{CLEAR}带上精灵{CLEAR}给你妈妈{CLEAR}去打个招呼吧！",
-   "en": "If you go back home to New Bark Town,{NEWLINE}you should show off your Pokémon to{CLEAR}your mom. I bet she’d be happy!",
+   "en": "If you go back to New Bark Town, take{NEWLINE}your Pokémon along and say hello to{CLEAR}your mom!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/144"
+   "origin": "agent",
+   "notes": "US 0663/144 | RV071: addition: removed 'show off' and 'she'd be happy' (D-2000)"
   },
   {
    "id": 145,
@@ -1198,10 +1198,10 @@
   {
    "id": 149,
    "zh": "仔细看看满金市的{NEWLINE}道馆,实际上{CLEAR}那是皮皮的造型。{SCROLL}对了！{NEWLINE}带上皮皮去那看看吧。{SCROLL}或许能看到它{NEWLINE}可爱的样子。",
-   "en": "You know, if you look carefully at the{NEWLINE}Goldenrod City Gym, it’s in the shape of{CLEAR}a Clefairy?{SCROLL}It’s true!{NEWLINE}You should take a Clefairy there!{SCROLL}I bet that whatever happens, it will be{NEWLINE}incredibly cute!",
+   "en": "You know, if you look carefully at the{NEWLINE}Goldenrod City Gym, it’s actually in the{CLEAR}shape of a Clefairy. Oh, I know! Take a{CLEAR}Clefairy there and see. You might get to{CLEAR}see it looking cute.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0663/149; modernised from US 0663#149"
+   "origin": "agent",
+   "notes": "US 0663/149; modernised from US 0663#149 | RV071: meaning: 'might see it being cute', not 'incredibly cute'"
   },
   {
    "id": 150,

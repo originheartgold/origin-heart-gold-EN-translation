@@ -134,6 +134,65 @@ class Runner(unittest.TestCase):
 
 
 
+class Emu(unittest.TestCase):
+    """check.py --full --emu: the emulator scenarios per fix (emu_harness.py fixes) after the build."""
+
+    def test_emu_needs_full_and_runs_last(self):
+        with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+            C.main(["--emu"])
+        seen = []
+        with patch.object(C, "run", side_effect=lambda steps: seen.append([n for n, _ in steps]) or 0):
+            C.main(["--full", "--emu"])
+            C.main(["--full", "--repro", "--emu"])
+            C.main(["--full"])
+        self.assertEqual(seen[0][-2:], ["build", "emu"])
+        self.assertEqual(seen[1][-3:], ["build", "repro", "emu"])
+        self.assertNotIn("emu", seen[2])                                  # not in --full by default
+
+    def test_emu_prerequisites_fail(self):
+        with self.assertRaises(C.Skip) as cm:
+            C.step_emu("armips", {}, Path("work/build/check"), "/nonexistent")
+        self.assertTrue(cm.exception.fail)
+        first = {"report": {"rom": {"path": "x.nds"}}}
+        with tempfile.TemporaryDirectory() as td, patch.object(C.subprocess, "run") as run:
+            run.return_value.returncode = 0                                  # py-desmume importable
+            with self.assertRaises(C.Skip) as cm:
+                C.step_emu("armips", first, Path(td) / "check", td)          # no saves there
+            self.assertTrue(cm.exception.fail)
+            self.assertIn("full_bag_6mons.sav", str(cm.exception))
+            run.return_value.returncode = 1                                  # no py-desmume
+            with self.assertRaises(C.Skip) as cm:
+                C.step_emu("armips", first, Path(td) / "check", td)
+            self.assertIn("py-desmume", str(cm.exception))
+
+    def test_emu_report(self):
+        report = {"pass": False, "seconds": 200.0, "uncovered": {"gfx-bag-labels": "why"},
+                  "fixes": [{"fix": "namelen", "scenario": "naming", "pass": True, "fixed_rom": {"state": "fixed"},
+                             "control": {"state": "original"}},
+                            {"fix": "msgload", "scenario": "msgload", "pass": False, "fixed_rom": {"state": "fixed"},
+                             "control": {"state": "unclear"}}]}
+        with tempfile.TemporaryDirectory() as td:
+            for n in C.EMU_SAVES:
+                (Path(td) / n).write_bytes(b"")
+
+            def fake_run(cmd, **kw):
+                class R:
+                    returncode = 0
+                if "fixes" in cmd:
+                    out = Path(cmd[cmd.index("--out") + 1])
+                    out.mkdir(parents=True)
+                    (out / "fixes_report.json").write_text(__import__("json").dumps(report))
+                    R.returncode = 1
+                return R
+            with patch.object(C.subprocess, "run", side_effect=fake_run):
+                with self.assertRaises(C.Failed) as cm:
+                    C.step_emu("armips", {"report": {"rom": {"path": "x.nds"}}}, Path(td) / "check", td)
+            text = str(cm.exception)
+            self.assertIn("1/2 fix scenarios", text)
+            self.assertIn("FAIL msgload (msgload): fixed ROM fixed, control unclear", text)
+            self.assertIn("no scenario: gfx-bag-labels", text)
+
+
 class Repro(unittest.TestCase):
     """check.py --full --repro: the second build must equal the first (ROM, xdelta, report without paths)."""
 

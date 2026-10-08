@@ -150,18 +150,18 @@
   {
    "id": 18,
    "zh": "限制时间已确定,{NEWLINE}开始游戏！",
-   "en": "The time limit has been reached.{NEWLINE}Let the game begin!",
+   "en": "The time limit has been set.{NEWLINE}Let the game begin!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0776/18; ext-review RB-011 | Hack text error fixed with user approval (D-1373, D-1496)."
+   "notes": "US 0776/18; ext-review RB-011 | Hack text error fixed with user approval (D-1373, D-1496). | RV121: meaning: 限制时间已确定 = the time limit is set, not reached (D-1922; hack-finding D-2268)"
   },
   {
    "id": 19,
    "zh": "没有设定限制时间,{NEWLINE}人员没能集齐。{SCROLL}请从最初开始{NEWLINE}重新办理手续。{SCROLL}",
-   "en": "Not enough members gathered within{NEWLINE}the time limit.{SCROLL}Please register from the start again.{SCROLL}",
+   "en": "No time limit was set, and not{NEWLINE}enough members gathered.{SCROLL}Please register from the start again.{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0776/19; ext-review RB-011 | Hack text error fixed with user approval (D-1373, D-1496)."
+   "notes": "US 0776/19; ext-review RB-011 | Hack text error fixed with user approval (D-1373, D-1496). | RV121: meaning: 没有设定限制时间 = no time limit was set; EN had silently repaired it (D-1922; hack-finding D-2268)"
   },
   {
    "id": 20,
@@ -174,10 +174,10 @@
   {
    "id": 21,
    "zh": "已经决定了限制时间,{NEWLINE}{VAR:0300:0}中止！{SCROLL}",
-   "en": "The time limit has been reached.{NEWLINE}The {VAR:0300:0} is now closed!{SCROLL}",
+   "en": "The time limit has been decided.{NEWLINE}The {VAR:0300:0} has been canceled!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0776/21; ext-review RB-011 | Hack text error fixed with user approval (D-1373, D-1496)."
+   "notes": "US 0776/21; ext-review RB-011 | Hack text error fixed with user approval (D-1373, D-1496). | RV121: meaning: 已经决定了限制时间 = the time limit has been decided; 中止 = canceled, as in #8 (D-1922; hack-finding D-2268)"
   },
   {
    "id": 22,
@@ -294,10 +294,10 @@
   {
    "id": 36,
    "zh": "「{VAR:0300:0}」{SCROLL}把泵从上面直直压下,{NEWLINE}充入大量的空气,{CLEAR}一个一个地打破气球！{SCROLL}一下一下压下到泵变红的话{NEWLINE}充入的空气就会增加！{SCROLL}然后如果好好配合{NEWLINE}周围的小果然的话,{CLEAR}就能充入更多的空气！{SCROLL}不过就算是相同的小果然,{NEWLINE}碰到细的小果然的话,{CLEAR}空气也会减少,要小心！{SCROLL}",
-   "en": "{VAR:0300:0}{SCROLL}Press down on the pump from{NEWLINE}directly above to pump maximum{CLEAR}air into a balloon until it pops.{SCROLL}Pop balloons until time runs out.{SCROLL}Pressing the pump hard will make it{NEWLINE}turn red, increasing its capacity.{SCROLL}The circling Wynaut can also help.{SCROLL}Line a Wynaut up with the pump to{NEWLINE}boost the air volume, but beware:{SCROLL}lining up the pump with a skinny{NEWLINE}Wynaut reduces the air volume.{SCROLL}",
+   "en": "{VAR:0300:0}{SCROLL}Press down on the pump from{NEWLINE}directly above to pump maximum{CLEAR}air into a balloon until it pops.{SCROLL}Pressing the pump hard will make it{NEWLINE}turn red, increasing its capacity.{SCROLL}The circling Wynaut can also help.{SCROLL}Line a Wynaut up with the pump to{NEWLINE}boost the air volume, but beware:{SCROLL}lining up the pump with a skinny{NEWLINE}Wynaut reduces the air volume.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0776/36; modernised from US 0776#36"
+   "origin": "agent",
+   "notes": "US 0776/36; modernised from US 0776#36 | RV121: addition: removed 'Pop balloons until time runs out.', not in the Chinese (D-2201)"
   }
  ]
 }

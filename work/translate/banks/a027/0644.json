@@ -110,18 +110,18 @@
   {
    "id": 13,
    "zh": "我曾有一次{NEWLINE}在非常近的距离{CLEAR}接触过炎帝。{SCROLL}当时炎帝那双注视{NEWLINE}我的眼神我这辈子都忘不掉。{SCROLL}简直就像能{NEWLINE}看穿我的心灵一样⋯⋯",
-   "en": "You know, I once saw Entei. I mean like{NEWLINE}up close. It was amazing.{SCROLL}Entei looked me in the eyes. I’ll never{NEWLINE}forget its eyes.{SCROLL}It was like it could see right through{NEWLINE}me, down into the depths of my heart...",
+   "en": "I once came face to face with Entei,{NEWLINE}really up close. I’ll never forget the{CLEAR}way Entei’s eyes stared at me. It was{CLEAR}like it could see right into my heart...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0653/13"
+   "origin": "agent",
+   "notes": "US 0653/13 | RV071: addition: removed added 'It was amazing'"
   },
   {
    "id": 14,
    "zh": "你近况如何？{NEWLINE}有没有遇到什么有意思的事？{CLEAR}我还是老样子,{CLEAR}做着道馆馆主迎接挑战！{SCROLL}自你之后就再也没有{NEWLINE}能让我称心的训练师了。{SCROLL}果然你是百年难得一见的{NEWLINE}训练师奇才啊。{SCROLL}哈哈哈,我可没有夸张啊！",
-   "en": "How have you been?{NEWLINE}Anything interesting happening?{SCROLL}I’m doing the same as usual, just my{NEWLINE}regular Gym Leader duties.{SCROLL}There haven’t been any really strong{NEWLINE}Trainers here since you came through.{SCROLL}Seems like you’re one of those genius{NEWLINE}Trainers you seldom meet.{SCROLL}Ha ha ha! I don’t mean to flatter you!",
+   "en": "How have you been? Anything interesting{NEWLINE}happen? Me, I’m the same as ever,{CLEAR}taking on challengers as a Gym Leader!{SCROLL}Since you, I haven’t met a single{NEWLINE}Trainer who’s satisfied me.{SCROLL}You really are a once-in-a-century{NEWLINE}Trainer prodigy.{SCROLL}Ha ha ha, and I’m not exaggerating!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0653/14"
+   "origin": "agent",
+   "notes": "US 0653/14 | RV071: meaning: once-in-a-century prodigy and 'no Trainer has satisfied me' restored (D-1895)"
   }
  ]
 }

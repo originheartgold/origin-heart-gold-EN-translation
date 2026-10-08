@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "前几天我在最后关头{NEWLINE}被{VAR:0100:11}逃掉了！{CLEAR}真是可惜啊。{SCROLL}为了不忘记这份耻辱,{NEWLINE}我将所有逃掉的精灵的名字{CLEAR}全部都记录在了笔记本上。{SCROLL}现在我的笔记本上{NEWLINE}都是精灵的名字！",
-   "en": "Recently I was trying to catch a{NEWLINE}{VAR:0100:11}, but it ran away!{CLEAR}So disappointing!{SCROLL}And so I don’t forget how disappointing{NEWLINE}it was, I’m writing down the name of the{CLEAR}Pokémon that got away on my notebook.{SCROLL}There’re Pokémon names all over{NEWLINE}my notebook!",
+   "en": "The other day, a {VAR:0100:11} got away{NEWLINE}from me at the very last moment!{SCROLL}Such a shame.{SCROLL}So I never forget this humiliation, I{NEWLINE}write the name of every Pokémon that{CLEAR}gets away in my notebook.{SCROLL}Now my notebook is full of Pokémon{NEWLINE}names!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0673/8"
+   "origin": "agent",
+   "notes": "US 0673/8 | RV072: softened: 耻辱 = humiliation; every escaped Pokémon (D-1900)"
   },
   {
    "id": 9,

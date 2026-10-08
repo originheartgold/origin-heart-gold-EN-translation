@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "这里是冰之通路{SCROLL}地上很滑,{NEWLINE}请注意不要结成冰了！",
-   "en": "Ice Path{SCROLL}Careful not to slip, fall over,{NEWLINE}freeze, and get stuck on the ice.",
+   "en": "Ice Path{SCROLL}The ground is slippery. Be{NEWLINE}careful not to freeze solid!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0404/0"
+   "origin": "agent",
+   "notes": "US 0404/0 | RV047: addition: US line added slipping/falling/getting stuck; zh says the ground is slippery, don't freeze into ice"
   },
   {
    "id": 1,
@@ -231,10 +231,10 @@
   {
    "id": 28,
    "zh": "胡说,明明是我的狃拉更厉害！",
-   "en": "Liar! My Sneasel is way tougher!",
+   "en": "Nonsense! My Sneasel is way tougher!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV047: meaning: 胡说 is 'nonsense', not 'liar'"
   },
   {
    "id": 29,
@@ -639,10 +639,10 @@
   {
    "id": 79,
    "zh": "{VAR:0103:0}『这个就很多了,{NEWLINE}像是新人时期在月见山{CLEAR}差点被火箭队杀死。{CLEAR}后来又差点跟圣安努号一起沉入海底。{CLEAR}再后来在西鲁夫公司和华蓝洞穴{CLEAR}又差点死在坂木手上。{SCROLL}{VAR:0103:0}『但正是跟精灵们经历了{NEWLINE}这一次次接近死亡的失败后,{CLEAR}我们才能心意相通、共同成长。",
-   "en": "{VAR:0103:0}: Oh, lots. As a rookie, Team{NEWLINE}Rocket nearly killed me on Mt. Moon.{SCROLL}Later I nearly sank to the bottom{NEWLINE}of the sea with the S.S. Anne. After{CLEAR}that, I nearly died at Giovanni’s hands{CLEAR}at Silph Co. and in Cerulean Cave.{SCROLL}{VAR:0103:0}: But it was going through{NEWLINE}those near-death defeats with{CLEAR}my Pokémon that let our hearts{CLEAR}connect and let us grow together.",
+   "en": "{VAR:0103:0}: Oh, lots. When I was a{NEWLINE}rookie, Team Rocket nearly killed me{CLEAR}on Mt. Moon.{SCROLL}Later I nearly sank to the bottom{NEWLINE}of the sea with the S.S. Anne. After{CLEAR}that, I nearly died at Giovanni’s hands{CLEAR}at Silph Co. and in Cerulean Cave.{SCROLL}{VAR:0103:0}: But it was going through{NEWLINE}those near-death defeats with{CLEAR}my Pokémon that let our hearts{CLEAR}connect and let us grow together.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV047: grammar: dangling 'As a rookie'"
   },
   {
    "id": 80,
@@ -772,7 +772,7 @@
    "en": "Aaah! Because you disturbed me,{NEWLINE}the Poliwag got away. How are{CLEAR}you going to make it up to me?!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV047: zh typo 陪 for 赔 (compensate); translated as intended, see hack-finding D-2181"
   },
   {
    "id": 96,

@@ -1284,10 +1284,10 @@
   {
    "id": 141,
    "zh": "天气为乱流状态。{NEWLINE}与飞行属性相克且效果绝佳的属性，{NEWLINE}其招式威力会变弱。",
-   "en": "Mysterious strong winds blow.{NEWLINE}Moves super effective on Flying{NEWLINE}types are weakened.",
+   "en": "Strong winds are blowing.{NEWLINE}Moves super effective on Flying{NEWLINE}types are weakened.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV100: addition: dropped “Mysterious”, which the Chinese (天气为乱流状态) does not have",
    "qa_ignore": [
     "too_many_lines",
     "glossary:天气",

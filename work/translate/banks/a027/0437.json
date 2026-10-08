@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "小光『{VAR:0103:0}！{SCROLL}{VAR:0103:0}就是{VAR:0103:0},{SCROLL}把全国图鉴完成了,{NEWLINE}恭喜你！！",
-   "en": "Dawn: {VAR:0103:0}!{SCROLL}{VAR:0103:0}! Hey, {VAR:0103:0}!{SCROLL}Congratulations on completing the{NEWLINE}National Pokédex!!",
+   "en": "Dawn: {VAR:0103:0}!{SCROLL}That’s the {VAR:0103:0} I know,{NEWLINE}{VAR:0103:0}!{SCROLL}Congratulations on completing the{NEWLINE}National Pokédex!!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV061: omission: zh X就是X = that's X for you, rendered 'That's the X I know'; English only repeated the name (D-1799)"
   },
   {
    "id": 10,
@@ -190,10 +190,10 @@
   {
    "id": 23,
    "zh": "幸树『{VAR:0103:0}！{SCROLL}你真是太厉害了！{NEWLINE}我都快说不出话了,{SCROLL}我真心祝贺你{NEWLINE}完成全国图鉴！！",
-   "en": "Lucas: {VAR:0103:0}!{SCROLL}You’re amazing! I’m almost speechless.{SCROLL}Congratulations on completing the{NEWLINE}National Pokédex!!",
+   "en": "Lucas: {VAR:0103:0}!{SCROLL}You’re amazing! I’m almost speechless.{SCROLL}My heartfelt congratulations on{NEWLINE}completing the National Pokédex!!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV061: omission: zh 真心祝贺 = sincerely congratulate"
   },
   {
    "id": 24,
@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "幸树『是么！{NEWLINE}{VAR:0103:0},生日快乐！{CLEAR}以后也请多多关照。",
-   "en": "Lucas: I knew it! Happy birthday,{NEWLINE}{VAR:0103:0}! Let’s stay friends!",
+   "en": "Lucas: Really! Happy birthday,{NEWLINE}{VAR:0103:0}! Let’s stay friends!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV061: meaning: zh 是么！ = Is it!/Really!; 'I knew it' added certainty"
   },
   {
    "id": 26,

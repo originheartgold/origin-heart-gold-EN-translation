@@ -3118,7 +3118,7 @@
   {
    "id": "RV046",
    "group": "2-johto",
-   "status": "todo",
+   "status": "done",
    "strings": 529,
    "labels": [
     "a027/0392 Cianwood Cave + Whirl Islands + Route 42 + Mt. Mortar",
@@ -3192,7 +3192,7 @@
   {
    "id": "RV047",
    "group": "2-johto",
-   "status": "todo",
+   "status": "done",
    "strings": 450,
    "labels": [
     "a027/0616 Boot Camp Ruins + Mahogany Town + Team Rocket HQ",
@@ -3258,7 +3258,7 @@
   {
    "id": "RV048",
    "group": "2-johto",
-   "status": "todo",
+   "status": "done",
    "strings": 516,
    "labels": [
     "a027/0617 Team Rocket HQ + Lake of Rage + Route 43 + Route 44",
@@ -3316,7 +3316,7 @@
   {
    "id": "RV049",
    "group": "2-johto",
-   "status": "todo",
+   "status": "done",
    "strings": 482,
    "labels": [
     "a027/0620 Ice Path + Blackthorn City + Dragon’s Den",
@@ -3390,7 +3390,7 @@
   {
    "id": "RV050",
    "group": "2-johto",
-   "status": "todo",
+   "status": "done",
    "strings": 416,
    "labels": [
     "a027/0399 Dragon’s Den + Route 45 + Route 46 + Cliff Cave + Route 47 + Route 48 …",
@@ -3464,7 +3464,7 @@
   {
    "id": "RV051",
    "group": "2-johto",
-   "status": "todo",
+   "status": "done",
    "strings": 470,
    "labels": [
     "a027/0124 Mt. Silver",
@@ -3522,7 +3522,7 @@
   {
    "id": "RV052",
    "group": "2-johto",
-   "status": "todo",
+   "status": "done",
    "strings": 521,
    "labels": [
     "a027/0252 S.S. Anne",
@@ -3588,7 +3588,7 @@
   {
    "id": "RV053",
    "group": "2-johto",
-   "status": "todo",
+   "status": "done",
    "strings": 527,
    "labels": [
     "a027/0366 Route 29",
@@ -3662,7 +3662,7 @@
   {
    "id": "RV054",
    "group": "2-johto",
-   "status": "todo",
+   "status": "done",
    "strings": 493,
    "labels": [
     "a027/0537 Pallet Town",
@@ -3704,7 +3704,7 @@
   {
    "id": "RV055",
    "group": "2-johto",
-   "status": "todo",
+   "status": "done",
    "strings": 177,
    "labels": [
     "a027/0627 Mt. Silver",
@@ -3730,7 +3730,7 @@
   {
    "id": "RV056",
    "group": "3-other",
-   "status": "todo",
+   "status": "done",
    "strings": 544,
    "labels": [
     "a027/0005 no map",
@@ -3876,7 +3876,7 @@
   {
    "id": "RV057",
    "group": "3-other",
-   "status": "todo",
+   "status": "done",
    "strings": 559,
    "labels": [
     "a027/0189 no map",
@@ -3942,7 +3942,7 @@
   {
    "id": "RV058",
    "group": "3-other",
-   "status": "todo",
+   "status": "done",
    "strings": 534,
    "labels": [
     "a027/0207 no map",
@@ -4064,7 +4064,7 @@
   {
    "id": "RV059",
    "group": "3-other",
-   "status": "todo",
+   "status": "done",
    "strings": 523,
    "labels": [
     "a027/0265 no map",
@@ -4122,7 +4122,7 @@
   {
    "id": "RV060",
    "group": "3-other",
-   "status": "todo",
+   "status": "done",
    "strings": 162,
    "labels": [
     "a027/0295 no map",
@@ -4156,7 +4156,7 @@
   {
    "id": "RV061",
    "group": "3-other",
-   "status": "todo",
+   "status": "done",
    "strings": 554,
    "labels": [
     "a027/0417 no map",
@@ -4230,7 +4230,7 @@
   {
    "id": "RV062",
    "group": "3-other",
-   "status": "todo",
+   "status": "done",
    "strings": 404,
    "labels": [
     "a027/0715 no map",
@@ -4304,7 +4304,7 @@
   {
    "id": "RV063",
    "group": "4-trainer",
-   "status": "todo",
+   "status": "done",
    "strings": 427,
    "labels": [
     "a027/0718 trainer_battle_text [part 1/4]"
@@ -4322,7 +4322,7 @@
   {
    "id": "RV064",
    "group": "4-trainer",
-   "status": "todo",
+   "status": "done",
    "strings": 427,
    "labels": [
     "a027/0718 trainer_battle_text [part 2/4]"
@@ -4340,7 +4340,7 @@
   {
    "id": "RV065",
    "group": "4-trainer",
-   "status": "todo",
+   "status": "done",
    "strings": 427,
    "labels": [
     "a027/0718 trainer_battle_text [part 3/4]"
@@ -4358,7 +4358,7 @@
   {
    "id": "RV066",
    "group": "4-trainer",
-   "status": "todo",
+   "status": "done",
    "strings": 424,
    "labels": [
     "a027/0718 trainer_battle_text [part 4/4]"
@@ -4376,7 +4376,7 @@
   {
    "id": "RV067",
    "group": "4-trainer",
-   "status": "todo",
+   "status": "done",
    "strings": 380,
    "labels": [
     "a027/0258 walking_pokemon_reactions [part 1/2]"
@@ -4394,7 +4394,7 @@
   {
    "id": "RV068",
    "group": "4-trainer",
-   "status": "todo",
+   "status": "done",
    "strings": 379,
    "labels": [
     "a027/0258 walking_pokemon_reactions [part 2/2]"
@@ -4412,7 +4412,7 @@
   {
    "id": "RV069",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 550,
    "labels": [
     "a027/0014 std_script + tv_news",
@@ -4582,7 +4582,7 @@
   {
    "id": "RV070",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 554,
    "labels": [
     "a027/0264 tv_news + pokegear_radio_map + pokegear_phone",
@@ -4784,7 +4784,7 @@
   {
    "id": "RV071",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 535,
    "labels": [
     "a027/0641 pokegear_phone",
@@ -4922,7 +4922,7 @@
   {
    "id": "RV072",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 546,
    "labels": [
     "a027/0658 pokegear_phone",
@@ -5204,7 +5204,7 @@
   {
    "id": "RV073",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 363,
    "labels": [
     "a027/0686 pokegear_phone + tv_news + side_features_minigames",
@@ -5406,7 +5406,7 @@
   {
    "id": "RV074",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 554,
    "labels": [
     "a027/0013 side_features_minigames + battle_frontier",
@@ -5456,7 +5456,7 @@
   {
    "id": "RV075",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 553,
    "labels": [
     "a027/0025 battle_frontier",
@@ -5514,7 +5514,7 @@
   {
    "id": "RV076",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 552,
    "labels": [
     "a027/0032 battle_frontier + side_features_minigames",
@@ -5660,7 +5660,7 @@
   {
    "id": "RV077",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 488,
    "labels": [
     "a027/0214 side_features_minigames + mail + pokeathlon + easy_chat_words",
@@ -5854,7 +5854,7 @@
   {
    "id": "RV078",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 545,
    "labels": [
     "a027/0280 side_features_minigames + mail + pokeathlon + easy_chat_words",
@@ -5952,7 +5952,7 @@
   {
    "id": "RV079",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 547,
    "labels": [
     "a027/0294 easy_chat_words + side_features_minigames",
@@ -6050,7 +6050,7 @@
   {
    "id": "RV080",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 549,
    "labels": [
     "a027/0307 pokeathlon + side_features_minigames",
@@ -6180,7 +6180,7 @@
   {
    "id": "RV081",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 522,
    "labels": [
     "a027/0429 side_features_minigames + battle_frontier",
@@ -6230,7 +6230,7 @@
   {
    "id": "RV082",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 457,
    "labels": [
     "a027/0713 battle_frontier_trainer_text [part 2/2]"
@@ -6248,7 +6248,7 @@
   {
    "id": "RV083",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 463,
    "labels": [
     "a027/0714 battle_frontier_trainer_text [part 1/2]"
@@ -6266,7 +6266,7 @@
   {
    "id": "RV084",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 539,
    "labels": [
     "a027/0714 battle_frontier_trainer_text [part 2/2]",
@@ -6332,7 +6332,7 @@
   {
    "id": "RV085",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 60,
    "labels": [
     "a027/0740 battle_frontier_trainer_text + side_features_minigames + map_bank_unreferenced",
@@ -6358,7 +6358,7 @@
   {
    "id": "RV086",
    "group": "6-desc",
-   "status": "todo",
+   "status": "done",
    "strings": 451,
    "labels": [
     "a027/0738 move_descriptions [part 1/2]"
@@ -6376,7 +6376,7 @@
   {
    "id": "RV087",
    "group": "6-desc",
-   "status": "todo",
+   "status": "done",
    "strings": 451,
    "labels": [
     "a027/0738 move_descriptions [part 2/2]"
@@ -6394,7 +6394,7 @@
   {
    "id": "RV088",
    "group": "6-desc",
-   "status": "todo",
+   "status": "done",
    "strings": 378,
    "labels": [
     "a027/0218 item_descriptions [part 1/2]"
@@ -6412,7 +6412,7 @@
   {
    "id": "RV089",
    "group": "6-desc",
-   "status": "todo",
+   "status": "done",
    "strings": 442,
    "labels": [
     "a027/0218 item_descriptions [part 2/2]",
@@ -6438,7 +6438,7 @@
   {
    "id": "RV090",
    "group": "6-desc",
-   "status": "todo",
+   "status": "done",
    "strings": 327,
    "labels": [
     "a027/0712 item_descriptions + ability_descriptions + berry_descriptions"
@@ -6456,7 +6456,7 @@
   {
    "id": "RV091",
    "group": "6-desc",
-   "status": "todo",
+   "status": "done",
    "strings": 480,
    "labels": [
     "a027/0791 pokedex_entries_hg [part 1/3]"
@@ -6474,7 +6474,7 @@
   {
    "id": "RV092",
    "group": "6-desc",
-   "status": "todo",
+   "status": "done",
    "strings": 480,
    "labels": [
     "a027/0791 pokedex_entries_hg [part 2/3]"
@@ -6492,7 +6492,7 @@
   {
    "id": "RV093",
    "group": "6-desc",
-   "status": "todo",
+   "status": "done",
    "strings": 480,
    "labels": [
     "a027/0791 pokedex_entries_hg [part 3/3]"
@@ -6510,7 +6510,7 @@
   {
    "id": "RV094",
    "group": "7-battle",
-   "status": "todo",
+   "status": "done",
    "strings": 467,
    "labels": [
     "a027/0003 battle text [part 1/3]"
@@ -6528,7 +6528,7 @@
   {
    "id": "RV095",
    "group": "7-battle",
-   "status": "todo",
+   "status": "done",
    "strings": 467,
    "labels": [
     "a027/0003 battle text [part 2/3]"
@@ -6546,7 +6546,7 @@
   {
    "id": "RV096",
    "group": "7-battle",
-   "status": "todo",
+   "status": "done",
    "strings": 467,
    "labels": [
     "a027/0003 battle text [part 3/3]"
@@ -6564,7 +6564,7 @@
   {
    "id": "RV097",
    "group": "7-battle",
-   "status": "todo",
+   "status": "done",
    "strings": 425,
    "labels": [
     "a027/0195 battle text [part 1/3]"
@@ -6582,7 +6582,7 @@
   {
    "id": "RV098",
    "group": "7-battle",
-   "status": "todo",
+   "status": "done",
    "strings": 425,
    "labels": [
     "a027/0195 battle text [part 2/3]"
@@ -6600,7 +6600,7 @@
   {
    "id": "RV099",
    "group": "7-battle",
-   "status": "todo",
+   "status": "done",
    "strings": 425,
    "labels": [
     "a027/0195 battle text [part 3/3]"
@@ -6618,7 +6618,7 @@
   {
    "id": "RV100",
    "group": "7-battle",
-   "status": "todo",
+   "status": "done",
    "strings": 164,
    "labels": [
     "battle_string/0000 battle text"
@@ -6636,7 +6636,7 @@
   {
    "id": "RV101",
    "group": "7-battle",
-   "status": "todo",
+   "status": "done",
    "strings": 442,
    "labels": [
     "battle_string/0001 battle text [part 1/5]"
@@ -6654,7 +6654,7 @@
   {
    "id": "RV102",
    "group": "7-battle",
-   "status": "todo",
+   "status": "done",
    "strings": 442,
    "labels": [
     "battle_string/0001 battle text [part 2/5]"
@@ -6672,7 +6672,7 @@
   {
    "id": "RV103",
    "group": "7-battle",
-   "status": "todo",
+   "status": "done",
    "strings": 442,
    "labels": [
     "battle_string/0001 battle text [part 3/5]"
@@ -6690,7 +6690,7 @@
   {
    "id": "RV104",
    "group": "7-battle",
-   "status": "todo",
+   "status": "done",
    "strings": 442,
    "labels": [
     "battle_string/0001 battle text [part 4/5]"
@@ -6708,7 +6708,7 @@
   {
    "id": "RV105",
    "group": "7-battle",
-   "status": "todo",
+   "status": "done",
    "strings": 439,
    "labels": [
     "battle_string/0001 battle text [part 5/5]"
@@ -6726,7 +6726,7 @@
   {
    "id": "RV106",
    "group": "7-battle",
-   "status": "todo",
+   "status": "done",
    "strings": 499,
    "labels": [
     "battle_string/0002 battle text",
@@ -6752,7 +6752,7 @@
   {
    "id": "RV107",
    "group": "8-names",
-   "status": "todo",
+   "status": "done",
    "strings": 49,
    "labels": [
     "a027/0033 names",
@@ -6778,7 +6778,7 @@
   {
    "id": "RV108",
    "group": "8-names",
-   "status": "todo",
+   "status": "done",
    "strings": 768,
    "labels": [
     "a027/0219 names"
@@ -6796,7 +6796,7 @@
   {
    "id": "RV109",
    "group": "8-names",
-   "status": "todo",
+   "status": "done",
    "strings": 1438,
    "labels": [
     "a027/0232 names"
@@ -6814,7 +6814,7 @@
   {
    "id": "RV110",
    "group": "8-names",
-   "status": "todo",
+   "status": "done",
    "strings": 326,
    "labels": [
     "a027/0711 names"
@@ -6832,7 +6832,7 @@
   {
    "id": "RV111",
    "group": "8-names",
-   "status": "todo",
+   "status": "done",
    "strings": 1007,
    "labels": [
     "a027/0719 names"
@@ -6850,7 +6850,7 @@
   {
    "id": "RV112",
    "group": "8-names",
-   "status": "todo",
+   "status": "done",
    "strings": 145,
    "labels": [
     "a027/0720 names",
@@ -6876,7 +6876,7 @@
   {
    "id": "RV113",
    "group": "8-names",
-   "status": "todo",
+   "status": "done",
    "strings": 902,
    "labels": [
     "a027/0739 names"
@@ -6894,7 +6894,7 @@
   {
    "id": "RV114",
    "group": "8-names",
-   "status": "todo",
+   "status": "done",
    "strings": 1441,
    "labels": [
     "a027/0803 names"
@@ -6912,7 +6912,7 @@
   {
    "id": "RV115",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 519,
    "labels": [
     "a027/0792 pokedex_entries_ss",
@@ -6962,7 +6962,7 @@
   {
    "id": "RV116",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 493,
    "labels": [
     "a027/0798 pokedex_entries_platinum + link_wifi"
@@ -6980,7 +6980,7 @@
   {
    "id": "RV117",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 544,
    "labels": [
     "a027/0726 link_wifi",
@@ -7038,7 +7038,7 @@
   {
    "id": "RV118",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 294,
    "labels": [
     "a027/0744 link_wifi",
@@ -7128,7 +7128,7 @@
   {
    "id": "RV119",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 437,
    "labels": [
     "a027/0754 link_wifi [part 1/2]"
@@ -7146,7 +7146,7 @@
   {
    "id": "RV120",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 468,
    "labels": [
     "a027/0754 link_wifi [part 2/2]",
@@ -7188,7 +7188,7 @@
   {
    "id": "RV121",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 559,
    "labels": [
     "a027/0763 link_wifi",
@@ -7270,7 +7270,7 @@
   {
    "id": "RV122",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 524,
    "labels": [
     "a027/0772 link_wifi",
@@ -7416,7 +7416,7 @@
   {
    "id": "RV123",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 529,
    "labels": [
     "a027/0785 link_wifi + debug_unused + debug_or_unlisted",
@@ -7482,7 +7482,7 @@
   {
    "id": "RV124",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 514,
    "labels": [
     "a027/0156 debug_or_unlisted",
@@ -7604,7 +7604,7 @@
   {
    "id": "RV125",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 70,
    "labels": [
     "a027/0176 debug_or_unlisted + debug_unused",

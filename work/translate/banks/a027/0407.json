@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "就会入梦",
-   "en": "So many it’ll seem like a dream",
+   "en": "It’ll come to you in dreams",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0414/7"
+   "origin": "agent",
+   "notes": "US 0414/7 | RV070: meaning: zh: it enters your dreams; US so many it seems a dream (D-1794)"
   },
   {
    "id": 8,
@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "只要呆在那里",
-   "en": "Only when you’re there",
+   "en": "Just by being there",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0414/9"
+   "origin": "agent",
+   "notes": "US 0414/9 | RV070: meaning: zh: just by staying there"
   },
   {
    "id": 10,
@@ -110,18 +110,18 @@
   {
    "id": 13,
    "zh": "悄悄瞅一眼",
-   "en": "If you look at it from a different angle",
+   "en": "If you sneak a peek at it",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0414/13"
+   "origin": "agent",
+   "notes": "US 0414/13 | RV070: meaning: zh: sneak a peek"
   },
   {
    "id": 14,
    "zh": "就像被班主任盯着一样",
-   "en": "It’ll resemble a teacher",
+   "en": "Like your homeroom teacher’s watching",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0414/14"
+   "origin": "agent",
+   "notes": "US 0414/14 | RV070: meaning: zh: like being watched by your homeroom teacher"
   },
   {
    "id": 15,
@@ -174,10 +174,10 @@
   {
    "id": 21,
    "zh": "非常可靠",
-   "en": "you’ll feel so hopeful.",
+   "en": "you’ll find it so dependable.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0414/21"
+   "origin": "agent",
+   "notes": "US 0414/21 | RV070: meaning: zh: very dependable"
   },
   {
    "id": 22,
@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "所有人都在膜拜！",
-   "en": "you’ll be admired by all!",
+   "en": "everyone will worship it!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0414/25"
+   "origin": "agent",
+   "notes": "US 0414/25 | RV070: meaning: zh: everyone worships it; US you will be admired"
   },
   {
    "id": 26,
@@ -222,10 +222,10 @@
   {
    "id": 27,
    "zh": "大魄力！",
-   "en": "you’ll be intensely appealing.",
+   "en": "it’s so imposing!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0414/27"
+   "origin": "agent",
+   "notes": "US 0414/27 | RV070: meaning: zh: great presence; US you will be appealing"
   },
   {
    "id": 28,

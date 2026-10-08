@@ -132,10 +132,10 @@
   {
    "id": 15,
    "zh": "遗忘{VAR:0106:1},{NEWLINE}可以吗？{VAR:0200:0}",
-   "en": "Forget {VAR:0106:1}, am I right? {VAR:0200:0}",
+   "en": "Forget {VAR:0106:1}. Is that OK? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV053: grammar: ‘am I right?’ unnatural for 可以吗"
   },
   {
    "id": 16,
@@ -260,10 +260,10 @@
   {
    "id": 31,
    "zh": "别看战斗前线的首领们名气不大,{NEWLINE}他们当年可是选拔联盟四天王时{CLEAR}惜败的银牌选手,{CLEAR}实力不输给道馆馆主们哦！",
-   "en": "The Frontier Brains may not be famous,{NEWLINE}but they were the runners-up when the{CLEAR}Elite Four were chosen.{SCROLL}They’re every bit as strong as Gym{NEWLINE}Leaders!",
+   "en": "The Frontier Brains may not be famous,{NEWLINE}but back when the Elite Four were{CLEAR}chosen, they were the runners-up who{CLEAR}just barely lost.{SCROLL}They’re every bit as strong as Gym{NEWLINE}Leaders!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV053: omission: 惜败 (narrowly lost)"
   },
   {
    "id": 32,
@@ -308,10 +308,10 @@
   {
    "id": 37,
    "zh": "对战攻略手册……{SCROLL}文字像是{NEWLINE}大岩蛇留下的痕迹一样。{CLEAR}看不清……",
-   "en": "...What’s this?{NEWLINE}A strategy memo?{SCROLL}This writing looks like Onix tracks...{CLEAR}It’s completely illegible...",
+   "en": "A battle strategy guide...{SCROLL}The writing looks like tracks left by an{NEWLINE}Onix. I can’t make it out...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0457/7; modernised from US 0457#7"
+   "origin": "agent",
+   "notes": "US 0457/7; modernised from US 0457#7 | RV053: addition: US ‘What’s this?’ not in zh"
   }
  ]
 }

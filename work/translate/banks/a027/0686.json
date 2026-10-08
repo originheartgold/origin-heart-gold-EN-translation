@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "我和{VAR:0100:10}{NEWLINE}最近觉得{CLEAR}越来越合得来了！{SCROLL}不过,{SCROLL}我还是没抓到{NEWLINE}{VAR:0100:11},{CLEAR}都有点不耐烦了。{SCROLL}我们下次再聊吧。",
-   "en": "My {VAR:0100:10} and I are getting more{NEWLINE}in sync with each other.{SCROLL}But, you know what?{SCROLL}I still haven’t caught {VAR:0100:11}.{NEWLINE}It’s getting beyond frustrating...{SCROLL}Bye! Let’s chat again!",
+   "en": "My {VAR:0100:10} and I are getting more in{NEWLINE}sync with each other.{SCROLL}But, you know what?{SCROLL}I still haven’t caught {VAR:0100:11}. I’m{NEWLINE}getting a little impatient...{SCROLL}Bye! Let’s chat again!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0695/8"
+   "origin": "agent",
+   "notes": "US 0695/8 | RV073: meaning: 有点不耐烦 is a little impatient, not beyond frustrating"
   },
   {
    "id": 9,

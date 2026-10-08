@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "请一定要和我交换{NEWLINE}电话号码啊！{SCROLL}请务必和我交换！{VAR:0200:0}",
-   "en": "I’d do anything to get{NEWLINE}your phone number!{SCROLL}Please, let’s trade numbers! {VAR:0200:0}",
+   "en": "Please trade phone numbers with me!{NEWLINE}Please, I’m begging you! {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0682/4"
+   "origin": "agent",
+   "notes": "US 0682/4 | RV072: addition: removed 'I'd do anything' (D-2016)"
   },
   {
    "id": 5,
@@ -102,18 +102,18 @@
   {
    "id": 12,
    "zh": "阿、阿嚏！{SCROLL}阿嚏！{SCROLL}我的鸟精灵们{NEWLINE}突然间都拍起了翅膀,{CLEAR}他们翅膀上的绒毛{CLEAR}都散落在周围,{CLEAR}弄得我鼻⋯⋯鼻子里面{CLEAR}痒痒的⋯⋯{SCROLL}阿嚏！！",
-   "en": "Ah... Ah... Achoo!{SCROLL}Ah... Ah... Ah... Achoo!{SCROLL}Oh, it’s nothing. It’s just that my bird{NEWLINE}Pokémon suddenly started flapping its{CLEAR}wings...so there’s dust and stuff from{CLEAR}their wings floating around my face...{CLEAR}Ah... Ah... Now my nose is itchy...{SCROLL}Achoooo!",
+   "en": "Ah... Ah... Achoo! Achoo!{SCROLL}My bird Pokémon suddenly started{NEWLINE}flapping their wings, and the fluff from{CLEAR}their wings is floating all around, so my{CLEAR}n-nose is all itchy...{SCROLL}Achoooo!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0682/12"
+   "origin": "agent",
+   "notes": "US 0682/12 | RV072: meaning: 绒毛 = down/fluff; removed 'it's nothing' (D-2016)"
   },
   {
    "id": 13,
    "zh": "最近我的精灵上{NEWLINE}多了些什么东西,{SCROLL}我还在想是什么呢,仔细一看{NEWLINE}居然！居然是光之石！{CLEAR}你也吓一跳吧？{SCROLL}不过光之石到底是什么东西？{SCROLL}我对这东西一无所知,{NEWLINE}拿在我手上也没什么用,{CLEAR}还是送给你吧！{SCROLL}我在{VAR:0104:3},{NEWLINE}等你来拿吧！",
-   "en": "My Pokémon was holding{NEWLINE}something in its mouth recently.{SCROLL}I was thinking “What in the world?” and{NEWLINE}I pulled it out... It was a Shiny Stone!{CLEAR}I was surprised. Wouldn’t you be?{SCROLL}...But what’s a Shiny Stone?{SCROLL}I don’t really have any use for it,{NEWLINE}and I don’t know what it’s{CLEAR}worth...so I’ll just give it to you!{SCROLL}I’ll wait for you on{NEWLINE}{VAR:0104:3}. Come get it!",
+   "en": "Recently there was something on my{NEWLINE}Pokémon.{SCROLL}I wondered what it was, and when I{NEWLINE}looked closely... It was...{SCROLL}It was a Shiny Stone! Surprised, aren’t{NEWLINE}you? But what even is a Shiny Stone?{SCROLL}I don’t know a thing about it, and it’s{NEWLINE}no use to me, so I’ll give it to you!{SCROLL}I’m on {VAR:0104:3}. Come get it!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0682/13"
+   "origin": "agent",
+   "notes": "US 0682/13 | RV072: addition: removed invented mouth/pulling (D-2016)"
   },
   {
    "id": 14,

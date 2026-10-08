@@ -45,6 +45,7 @@ evidence = [
   "work/notes/rocket_hq_freeze_fix_20261008.md: the resources, the branch, its semantics and the before/after runs",
   "work/notes/five_island_freeze_20261008.md, texture_additional_repro_20261008.md: the same abort at Five Island and Seven Island, fixed by the same byte",
   "work/notes/texture_regression_integration_20261008.md: emu_harness.py texture-bounds, 4 cases x original/fixed x Chinese/rc5, all 16 pass; Bell Tower is a forced state (hide flag 1140 cleared), reachability in normal play unproven",
+  "Runtime: emu_harness.py fixes --case overworld-texture-frame-bounds (scenario texture-bounds: the four texture-bounds cases; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[code]]

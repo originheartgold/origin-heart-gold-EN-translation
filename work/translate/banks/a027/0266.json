@@ -86,10 +86,10 @@
   {
    "id": 10,
    "zh": "所有一切都未被污染的{NEWLINE}纯洁小镇。",
-   "en": "A fairly new and quiet town.{NEWLINE}It’s a small and pretty place.",
+   "en": "A pure town where nothing{NEWLINE}has ever been polluted.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/10"
+   "origin": "agent",
+   "notes": "US 0273/10 | RV070: meaning: zh: unpolluted pure town; US new/quiet town (D-1738)"
   },
   {
    "id": 11,
@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "被险峻的山和{NEWLINE}石头包围的城镇。",
-   "en": "A quiet city nestled between{NEWLINE}rugged mountains and rocks.",
+   "en": "A city nestled between{NEWLINE}rugged mountains and rocks.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/12"
+   "origin": "agent",
+   "notes": "US 0273/12 | RV070: addition: US added quiet"
   },
   {
    "id": 13,
@@ -118,18 +118,18 @@
   {
    "id": 14,
    "zh": "适合紫色的尊贵的{NEWLINE}小镇。",
-   "en": "A small town covered in a{NEWLINE}beautiful hue of purple.",
+   "en": "A noble little town that{NEWLINE}suits the color purple.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/14"
+   "origin": "agent",
+   "notes": "US 0273/14 | RV070: meaning: zh: noble town befitting purple"
   },
   {
    "id": 15,
    "zh": "被夕阳染成{NEWLINE}橙色的港口城镇。",
-   "en": "A southern city that is bathed{NEWLINE}in orange by the setting sun.",
+   "en": "A port town dyed orange{NEWLINE}by the setting sun.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/15"
+   "origin": "agent",
+   "notes": "US 0273/15 | RV070: meaning: zh: harbour town; US dropped port, added southern"
   },
   {
    "id": 16,
@@ -142,10 +142,10 @@
   {
    "id": 17,
    "zh": "新旧交替不断的城镇。",
-   "en": "A historic village that has{NEWLINE}become new.",
+   "en": "A town where the old and{NEWLINE}the new keep changing places.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/17"
+   "origin": "agent",
+   "notes": "US 0273/17 | RV070: meaning: zh: ever-changing old and new; US became new"
   },
   {
    "id": 18,
@@ -174,10 +174,10 @@
   {
    "id": 21,
    "zh": "吹起连接{NEWLINE}起点之风的城镇。",
-   "en": "A town where the wind blows{NEWLINE}and tells of impending change.",
+   "en": "A town where the wind blows{NEWLINE}that leads to beginnings.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/21 | D-1524: rewrapped to 168 px (town picture at x=193 on the Pokégear map)."
+   "origin": "agent",
+   "notes": "US 0273/21 | D-1524: rewrapped to 168 px (town picture at x=193 on the Pokégear map). | RV070: meaning: zh: wind linking to the starting point; US impending change"
   },
   {
    "id": 22,
@@ -190,10 +190,10 @@
   {
    "id": 23,
    "zh": "保留着古乡气息的小镇。",
-   "en": "An old village still surrounded{NEWLINE}by trees and other scenery.",
+   "en": "A town that still keeps the{NEWLINE}feel of an old village.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0273/23 | D-1524: reworded to fit 168 px in two lines (US: 'This old village is still surrounded by trees and other scenery.')."
+   "notes": "US 0273/23 | D-1524: reworded to fit 168 px in two lines (US: 'This old village is still surrounded by trees and other scenery.'). | RV070: meaning: zh: keeps old-village air; US trees and scenery"
   },
   {
    "id": 24,
@@ -214,10 +214,10 @@
   {
    "id": 26,
    "zh": "人与精灵{NEWLINE}交互发展的大都市。",
-   "en": "A developing city where people{NEWLINE}and Pokémon come and go.",
+   "en": "A big city where people and{NEWLINE}Pokémon grow side by side.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0273/26 | D-1524: reworded to fit 168 px in two lines (US: 'A developing city where people and Pokémon come and go as they like.')."
+   "notes": "US 0273/26 | D-1524: reworded to fit 168 px in two lines (US: 'A developing city where people and Pokémon come and go as they like.'). | RV070: meaning: zh: develop together; US come and go"
   },
   {
    "id": 27,
@@ -238,10 +238,10 @@
   {
    "id": 29,
    "zh": "弥漫着神秘气息的{NEWLINE}隔世村庄。",
-   "en": "A town with a suspicious air.{NEWLINE}It’s a hiding place for ninjas.",
+   "en": "A secluded village with{NEWLINE}an air of mystery.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0273/29 | D-1524: reworded to fit 168 px in two lines (US: 'A town with a suspicious air to it. It’s a hiding place for ninjas.')."
+   "notes": "US 0273/29 | D-1524: reworded to fit 168 px in two lines (US: 'A town with a suspicious air to it. It’s a hiding place for ninjas.'). | RV070: addition: US added suspicious ninja hiding place"
   },
   {
    "id": 30,
@@ -262,10 +262,10 @@
   {
    "id": 32,
    "zh": "在等待着什么的{NEWLINE}险峻高山。",
-   "en": "A mountain where something mysterious{NEWLINE}awaits you underfoot.",
+   "en": "A rugged, towering mountain{NEWLINE}where something lies waiting.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/32"
+   "origin": "agent",
+   "notes": "US 0273/32 | RV070: addition: US added underfoot"
   },
   {
    "id": 33,
@@ -334,10 +334,10 @@
   {
    "id": 41,
    "zh": "无关传说,树叶都被染成{NEWLINE}夕阳色的小镇。",
-   "en": "A path said to always be bathed in{NEWLINE}sunset, no matter what the season.",
+   "en": "A town where, legends aside, the{NEWLINE}leaves are dyed the color of sunset.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/41"
+   "origin": "agent",
+   "notes": "US 0273/41 | RV070: meaning: zh: town, regardless of legends; US path, regardless of season (hack-finding logged)"
   },
   {
    "id": 42,
@@ -470,10 +470,10 @@
   {
    "id": 58,
    "zh": "城都地下的{NEWLINE}漆黑隧道。",
-   "en": "A dark, difficult-to-navigate tunnel{NEWLINE}that runs beneath the Johto region.",
+   "en": "A pitch-black tunnel that runs{NEWLINE}beneath the Johto region.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/58"
+   "origin": "agent",
+   "notes": "US 0273/58 | RV070: addition: US added difficult to navigate"
   },
   {
    "id": 59,
@@ -542,10 +542,10 @@
   {
    "id": 67,
    "zh": "为关东地区不断提供{NEWLINE}能源的地方。",
-   "en": "The plant that generates all the{NEWLINE}energy for the Kanto region.",
+   "en": "A place that keeps supplying{NEWLINE}energy to the Kanto region.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/67"
+   "origin": "agent",
+   "notes": "US 0273/67 | RV070: meaning: zh: continually supplies; US all the energy"
   },
   {
    "id": 68,
@@ -590,10 +590,10 @@
   {
    "id": 73,
    "zh": "坡度较缓的{NEWLINE}上下坡路。",
-   "en": "A one-way road down a hill that has{NEWLINE}a gentle slope and is fun to traverse.",
+   "en": "A gently sloping road that{NEWLINE}goes up and down.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/73"
+   "origin": "agent",
+   "notes": "US 0273/73 | RV070: meaning: zh: gentle up-and-down slope; US one-way downhill"
   },
   {
    "id": 74,
@@ -638,10 +638,10 @@
   {
    "id": 79,
    "zh": "运气好的话能{NEWLINE}到发电站的路。",
-   "en": "A road that passes along the canal{NEWLINE}and comes out at the Power Plant.",
+   "en": "A road that can lead you to the{NEWLINE}Power Plant, if you’re lucky.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/79"
+   "origin": "agent",
+   "notes": "US 0273/79 | RV070: meaning: zh: if lucky, to the Power Plant; US canal"
   },
   {
    "id": 80,
@@ -702,10 +702,10 @@
   {
    "id": 87,
    "zh": "自行车道,{NEWLINE}北侧的终点。",
-   "en": "The southern ending point of{NEWLINE}Cycling Road.",
+   "en": "The northern end point{NEWLINE}of Cycling Road.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/87"
+   "origin": "agent",
+   "notes": "US 0273/87 | RV070: meaning: zh says northern end; US silently said southern (hack-finding logged)"
   },
   {
    "id": 88,
@@ -726,18 +726,18 @@
   {
    "id": 90,
    "zh": "只留下了火山,{NEWLINE}时刻能感受到大自然威胁的海路。",
-   "en": "A coastal road where the only threat{NEWLINE}might be the volcano on the horizon.",
+   "en": "A sea route where only the volcano is{NEWLINE}left and nature always feels menacing.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/90"
+   "origin": "agent",
+   "notes": "US 0273/90 | RV070: meaning: zh: constant threat of nature; US only possible threat"
   },
   {
    "id": 91,
    "zh": "艰难险峻的通往{NEWLINE}冠军之路的道路",
-   "en": "A path to Victory Road that{NEWLINE}eventually becomes impassable.",
+   "en": "A rugged and treacherous road{NEWLINE}that leads to Victory Road.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/91"
+   "origin": "agent",
+   "notes": "US 0273/91 | RV070: meaning: zh: steep road to Victory Road; US becomes impassable"
   },
   {
    "id": 92,
@@ -790,18 +790,18 @@
   {
    "id": 98,
    "zh": "被草的香味所包围,{NEWLINE}幽静的旅行之镇。",
-   "en": "A road that begins a journey. The{NEWLINE}road smells like freshly cut grass.",
+   "en": "A quiet town for travelers,{NEWLINE}wrapped in the scent of grass.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/98"
+   "origin": "agent",
+   "notes": "US 0273/98 | RV070: meaning: zh says town of travel; US journey road (hack-finding logged)"
   },
   {
    "id": 99,
    "zh": "年轻训练师们寻求挑战的{NEWLINE}年轻气盛的城镇。",
-   "en": "A grassy path where you can battle{NEWLINE}other young Trainers.",
+   "en": "A hot-blooded town where young{NEWLINE}Trainers go looking for a challenge.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/99"
+   "origin": "agent",
+   "notes": "US 0273/99 | RV070: meaning: zh says town; US grassy path (hack-finding logged)"
   },
   {
    "id": 100,
@@ -814,26 +814,26 @@
   {
    "id": 101,
    "zh": "大桥与栈桥交错的{NEWLINE}自然与文明相融合的道路。",
-   "en": "A path crossed by the Magnet Train{NEWLINE}bridge--nature meets technology.",
+   "en": "A road of crisscrossing bridges and{NEWLINE}piers where nature meets civilization.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/101"
+   "origin": "agent",
+   "notes": "US 0273/101 | RV070: meaning: zh: bridges and piers; US Magnet Train"
   },
   {
    "id": 102,
    "zh": "离开洞窟后每次{NEWLINE}都是下雨天的道路。",
-   "en": "A difficult and always rainy path{NEWLINE}that comes out in a cave.",
+   "en": "A road where it rains every{NEWLINE}time you come out of the cave.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/102"
+   "origin": "agent",
+   "notes": "US 0273/102 | RV070: meaning: zh: rains after leaving the cave; US comes out in a cave"
   },
   {
    "id": 103,
    "zh": "尽管在大城市旁边{NEWLINE}但却有很多绿化的城镇。",
-   "en": "A lush, green path, even though it’s{NEWLINE}right next to a city.",
+   "en": "A town with lots of greenery,{NEWLINE}even though it’s next to a big city.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/103"
+   "origin": "agent",
+   "notes": "US 0273/103 | RV070: meaning: zh says town; US path (hack-finding logged)"
   },
   {
    "id": 104,
@@ -846,18 +846,18 @@
   {
    "id": 105,
    "zh": "树木郁郁葱葱的{NEWLINE}绿色道路。",
-   "en": "A green and densely overgrown path{NEWLINE}that forks in two directions.",
+   "en": "A green road thick{NEWLINE}with lush trees.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/105"
+   "origin": "agent",
+   "notes": "US 0273/105 | RV070: addition: US added forks in two directions"
   },
   {
    "id": 106,
    "zh": "以橡果树为特征,{NEWLINE}很受训练师欢迎的道路。",
-   "en": "A popular route for Trainers, marked{NEWLINE}by three Apricorn trees.",
+   "en": "A road popular with Trainers,{NEWLINE}known for its Apricorn trees.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/106"
+   "origin": "agent",
+   "notes": "US 0273/106 | RV070: addition: US added three trees"
   },
   {
    "id": 107,
@@ -870,18 +870,18 @@
   {
    "id": 108,
    "zh": "被高原的风风化成{NEWLINE}一阶阶的道路。",
-   "en": "A downhill path that passes through a{NEWLINE}grassy and breezy plain.",
+   "en": "A road worn into steps{NEWLINE}by the highland winds.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/108"
+   "origin": "agent",
+   "notes": "US 0273/108 | RV070: meaning: zh: weathered into steps; US downhill plain"
   },
   {
    "id": 109,
    "zh": "大海从浅葱市的西侧{NEWLINE}延伸至此的潮风城镇。",
-   "en": "You can hear the waves on this path{NEWLINE}from west Olivine City to the sea.",
+   "en": "A sea-breeze town where the sea{NEWLINE}stretches out west of Olivine City.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/109"
+   "origin": "agent",
+   "notes": "US 0273/109 | RV070: meaning: zh says town; US path (hack-finding logged)"
   },
   {
    "id": 110,
@@ -894,18 +894,18 @@
   {
    "id": 111,
    "zh": "由陡峭的山脉劈出一部分{NEWLINE}形成的山路。",
-   "en": "A small path opened at the base of{NEWLINE}challenging Mt. Mortar.",
+   "en": "A mountain path carved out{NEWLINE}of the steep mountains.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/111"
+   "origin": "agent",
+   "notes": "US 0273/111 | RV070: meaning: zh: path cut from steep mountains; US base of Mt. Mortar"
   },
   {
    "id": 112,
    "zh": "穿过湖的小路,{NEWLINE}要小心贪得无厌的门卫。",
-   "en": "A woodland path that comes out at a{NEWLINE}lake. Beware the greedy gate.",
+   "en": "A path across the lake. Beware{NEWLINE}of the greedy gatekeeper.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0273/112"
+   "origin": "agent",
+   "notes": "US 0273/112 | RV070: meaning: zh: path across the lake, greedy gatekeeper"
   },
   {
    "id": 113,

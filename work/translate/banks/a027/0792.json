@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "能够将受到的阳光转换成能量,这种作{NEWLINE}用在夏季会变得更强。",
-   "en": "It is able to convert sunlight into{NEWLINE}energy. As a result, it is more{NEWLINE}powerful in the summertime.",
+   "en": "It can convert the sunlight it receives{NEWLINE}into energy. This process grows{NEWLINE}stronger in the summertime.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0804/3"
+   "origin": "agent",
+   "notes": "US 0804/3 | RV115: meaning: summer strengthens the conversion, not the Pokémon (D-1984)"
   },
   {
    "id": 4,
@@ -574,10 +574,10 @@
   {
    "id": 71,
    "zh": "将因蜜汁的香味而聚集来的猎物全部吞{NEWLINE}在嘴里溶解掉,是个极其凶暴残忍的植{NEWLINE}物精灵。",
-   "en": "This horrifying plant Pokémon attracts{NEWLINE}prey with aromatic honey,{NEWLINE}then melts them in its mouth.",
+   "en": "An extremely vicious, cruel plant{NEWLINE}Pokémon. It swallows all prey lured by{NEWLINE}its honey’s scent and dissolves them.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0804/71"
+   "origin": "agent",
+   "notes": "US 0804/71 | RV115: softened: 极其凶暴残忍 restored; swallows all prey (D-1983)"
   },
   {
    "id": 72,
@@ -966,10 +966,10 @@
   {
    "id": 120,
    "zh": "只要身体中发光的核心还在,身体就算{NEWLINE}被切碎也能够复原。",
-   "en": "Even if its body is torn, it can{NEWLINE}regenerate as long as the glowing{NEWLINE}central core remains intact.",
+   "en": "Even if its body is cut to pieces, it can{NEWLINE}regenerate as long as the glowing{NEWLINE}central core remains intact.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0804/120"
+   "origin": "agent",
+   "notes": "US 0804/120 | RV115: softened: 切碎 = cut to pieces (D-1983)"
   },
   {
    "id": 121,
@@ -1366,10 +1366,10 @@
   {
    "id": 170,
    "zh": "在黑暗的海底仅靠不断闪烁的触角的灯{NEWLINE}光作为通信手段。",
-   "en": "On the dark ocean floor, its only{NEWLINE}means of communication is its{NEWLINE}constantly flashing lights.",
+   "en": "On the dark ocean floor, its only means{NEWLINE}of communication is the constantly{NEWLINE}flashing lights of its antennae.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0804/170"
+   "origin": "agent",
+   "notes": "US 0804/170 | RV115: omission: antenna lights restored"
   },
   {
    "id": 171,
@@ -1446,10 +1446,10 @@
   {
    "id": 180,
    "zh": "松软的毛易于蓄电,靠着橡胶般的皮肤{NEWLINE}使自己不会麻痹。",
-   "en": "Its fluffy fleece easily stores{NEWLINE}electricity. Its rubbery hide keeps{NEWLINE}it from being electrocuted.",
+   "en": "Its fluffy fleece easily stores{NEWLINE}electricity. Its rubbery hide keeps it{NEWLINE}from becoming paralyzed.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0804/180"
+   "origin": "agent",
+   "notes": "US 0804/180 | RV115: meaning: 麻痹 = paralysis, not electrocution (D-1984)"
   },
   {
    "id": 181,
@@ -1518,10 +1518,10 @@
   {
    "id": 189,
    "zh": "一边乘着季风一边为了增加子孙后代而{NEWLINE}将孢子散布到世界各地。",
-   "en": "Drifts on seasonal winds and spreads{NEWLINE}its cotton-like spores all over{NEWLINE}the world to make more offspring.",
+   "en": "It drifts on seasonal winds and spreads{NEWLINE}its spores all over the world to make{NEWLINE}more offspring.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0804/189"
+   "origin": "agent",
+   "notes": "US 0804/189 | RV115: addition: cotton-like not in zh; fixed fragment"
   },
   {
    "id": 190,
@@ -1558,10 +1558,10 @@
   {
    "id": 194,
    "zh": "在地上四处走动时,会用粘糊糊的有毒{NEWLINE}粘膜覆盖在身体的表面上保护自己。",
-   "en": "When it walks around on the{NEWLINE}ground, it coats its body with a{NEWLINE}slimy, poisonous film.",
+   "en": "When it walks around on the ground, it{NEWLINE}coats its body with a slimy, poisonous{NEWLINE}film to protect itself.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0804/194"
+   "origin": "agent",
+   "notes": "US 0804/194 | RV115: omission: purpose (to protect itself) restored"
   },
   {
    "id": 195,
@@ -2294,10 +2294,10 @@
   {
    "id": 286,
    "zh": "经常会给因吸进有毒孢子而痛苦的对手{NEWLINE}一记强烈的重拳。",
-   "en": "It scatters poisonous spores and{NEWLINE}throws powerful punches while its{NEWLINE}foe is hampered by inhaled spores.",
+   "en": "It often lands a powerful punch on foes{NEWLINE}that are suffering from inhaled{NEWLINE}poisonous spores.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0804/286"
+   "origin": "agent",
+   "notes": "US 0804/286 | RV115: meaning: zh punches foes suffering from spores; US added spore scattering (D-1983)"
   },
   {
    "id": 287,
@@ -2310,10 +2310,10 @@
   {
    "id": 288,
    "zh": "身体要是不动的话,压抑的力量便积蓄{NEWLINE}过度使健康状况变得糟糕。",
-   "en": "Its stress level rises if it{NEWLINE}cannot keep moving constantly.{NEWLINE}Too much stress makes it feel sick.",
+   "en": "If it stops moving, its pent-up energy{NEWLINE}builds up too much and its health takes{NEWLINE}a turn for the worse.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0804/288"
+   "origin": "agent",
+   "notes": "US 0804/288 | RV115: meaning: pent-up energy, not stress (D-1984)"
   },
   {
    "id": 289,
@@ -2382,10 +2382,10 @@
   {
    "id": 297,
    "zh": "非常喜欢比试力量,拥有能空手停住飞{NEWLINE}驰而来的列车的力量。",
-   "en": "It loves challenging others to{NEWLINE}tests of strength. It has the{NEWLINE}power to stop a train with a slap.",
+   "en": "It loves contests of strength. It has{NEWLINE}the power to stop a speeding train with{NEWLINE}its bare hands.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0804/297"
+   "origin": "agent",
+   "notes": "US 0804/297 | RV115: meaning: 空手 = bare hands, not a slap (D-1984)"
   },
   {
    "id": 298,
@@ -2430,10 +2430,10 @@
   {
    "id": 303,
    "zh": "能用钢铁触角变形而成的巨大颚一口将{NEWLINE}对手紧紧咬住。",
-   "en": "It chomps with its gaping mouth.{NEWLINE}Its huge jaws are actually steel{NEWLINE}horns that have been transformed.",
+   "en": "With huge jaws transformed from steel{NEWLINE}antennae, it can clamp down tight on a{NEWLINE}foe in a single bite.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0804/303"
+   "origin": "agent",
+   "notes": "US 0804/303 | RV115: meaning: jaws from steel antennae (触角), not horns (D-1984)"
   },
   {
    "id": 304,
@@ -2518,10 +2518,10 @@
   {
    "id": 314,
    "zh": "从缎带般的触角里发送出{NEWLINE}令心情平和的波动来终止战斗。",
-   "en": "Its sweet fragrance attracts a swarm{NEWLINE}of Volbeat, which then draw over 200{NEWLINE}patterns in the night sky.",
+   "en": "It sends out calming waves from its{NEWLINE}ribbon-like antennae to put an end to{NEWLINE}fights.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0804/314; modernised from US 0804#314 | Hack text error fixed with user approval (D-1280, D-1496)."
+   "notes": "US 0804/314; modernised from US 0804#314 | Hack text error fixed with user approval (D-1280, D-1496). | RV115: meaning: English was another entry (Volbeat/sweet scent); now matches zh (D-1611)"
   },
   {
    "id": 315,
@@ -2614,10 +2614,10 @@
   {
    "id": 326,
    "zh": "操纵对手时使用的奇妙舞步过去在外国{NEWLINE}非常流行。",
-   "en": "It can perform odd dance steps to{NEWLINE}influence foes. Its style of dancing{NEWLINE}became hugely popular overseas.",
+   "en": "The odd dance steps it uses to control{NEWLINE}its foes were once hugely popular{NEWLINE}overseas.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0804/326"
+   "origin": "agent",
+   "notes": "US 0804/326 | RV115: meaning: dance used to control foes; was popular abroad in the past (D-1984)"
   },
   {
    "id": 327,
@@ -2902,10 +2902,10 @@
   {
    "id": 362,
    "zh": "靠着一瞬间冻结空气中水分的能力能瞬{NEWLINE}间将猎物冷冻。",
-   "en": "It can instantly freeze moisture in{NEWLINE}the atmosphere. It uses this power{NEWLINE}to freeze its foes.",
+   "en": "It can instantly freeze moisture in the{NEWLINE}atmosphere. It uses this power to{NEWLINE}freeze its prey in an instant.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0804/362"
+   "origin": "agent",
+   "notes": "US 0804/362 | RV115: softened: freezes prey, not foes (D-1983)"
   },
   {
    "id": 363,
@@ -3166,10 +3166,10 @@
   {
    "id": 395,
    "zh": "虽不喜欢无意义的争斗,但威胁到族群{NEWLINE}的安全时,也会不留情地消灭敌人。",
-   "en": "It avoids unnecessary disputes,{NEWLINE}but it will decimate anything that{NEWLINE}threatens its pride.",
+   "en": "It avoids pointless fights, but it will{NEWLINE}mercilessly destroy any foe that{NEWLINE}threatens its flock’s safety.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0804/395"
+   "origin": "agent",
+   "notes": "US 0804/395 | RV115: meaning: threat to its flock’s safety; 消灭 = destroy (D-1985)"
   },
   {
    "id": 396,
@@ -3262,10 +3262,10 @@
   {
    "id": 407,
    "zh": "用香甜味引诱猎物靠近再下毒放倒,毒{NEWLINE}性越强,香甜味也会越发的浓烈。",
-   "en": "Its sweet aroma attracts prey.{NEWLINE}Then it spews poison. The more{NEWLINE}toxic it is, the sweeter its aroma.",
+   "en": "It lures prey close with a sweet aroma,{NEWLINE}then poisons it and brings it down. The{NEWLINE}more toxic it is, the sweeter its aroma.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0804/407"
+   "origin": "agent",
+   "notes": "US 0804/407 | RV115: softened: 下毒放倒 = poisons and brings it down (D-1983)"
   },
   {
    "id": 408,

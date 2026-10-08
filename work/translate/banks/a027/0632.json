@@ -30,18 +30,18 @@
   {
    "id": 3,
    "zh": "你好,我是小葵⋯⋯{SCROLL}早上好,{VAR:0103:0},{NEWLINE}早上好想赖床啊。{SCROLL}",
-   "en": "Hi, this is Buena...{SCROLL}Oh! Good morning, {VAR:0103:0}!{NEWLINE}I’m kind of foggy in the morning...{SCROLL}",
+   "en": "Hi, this is Buena...{SCROLL}Oh! Good morning, {VAR:0103:0}! In the{NEWLINE}morning, I just want to stay in bed...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0641/3"
+   "origin": "agent",
+   "notes": "US 0641/3 | RV070: meaning: zh: wants to sleep in; US foggy (D-1994)"
   },
   {
    "id": 4,
    "zh": "你好,我是小葵⋯⋯{SCROLL}早上好,{VAR:0103:0},{NEWLINE}早上好想赖床啊。{SCROLL}",
-   "en": "Hi, this is Buena...{SCROLL}Oh! Good morning, {VAR:0103:0}!{NEWLINE}I’m kind of foggy in the morning...{SCROLL}",
+   "en": "Hi, this is Buena...{SCROLL}Oh! Good morning, {VAR:0103:0}! In the{NEWLINE}morning, I just want to stay in bed...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0641/4"
+   "origin": "agent",
+   "notes": "US 0641/4 | RV070: meaning: zh: wants to sleep in; US foggy (D-1994)"
   },
   {
    "id": 5,
@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "今天天气不错啊。{SCROLL}一直待在广播塔里{NEWLINE}都不知道外面的天气了,{CLEAR}好无聊啊。{SCROLL}再见啦,下次再打电话！",
-   "en": "Is it sunny outside today?{SCROLL}When you’re cooped up in the Radio{NEWLINE}Tower as much as I am, you lose touch{CLEAR}with the outside.{SCROLL}It can be boring. Please call again!",
+   "en": "Nice weather today, huh?{SCROLL}When you’re cooped up in the Radio{NEWLINE}Tower all the time, you can’t even tell{CLEAR}what the weather’s like outside.{SCROLL}It’s so boring.{SCROLL}Bye! Call me again!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0641/12"
+   "origin": "agent",
+   "notes": "US 0641/12 | RV070: meaning: zh: nice weather statement, so boring (D-1994)"
   },
   {
    "id": 13,
@@ -198,10 +198,10 @@
   {
    "id": 24,
    "zh": "昨天晚上{SCROLL}我工作忙完后,{NEWLINE}就觉得好累,{CLEAR}所以吃了好多的点心！{SCROLL}不过我现在在和胡桃比瘦身,{NEWLINE}这么一来就前功尽弃了⋯⋯{SCROLL}哎？她有多重？{SCROLL}不要说出去哦！{NEWLINE}其实胡桃的体重是{SCROLL}⋯⋯！啊,胡桃！{NEWLINE}那个那个,{CLEAR}这个人打错电话了！",
-   "en": "You know, last night...{SCROLL}I was so stressed out from work, I ate{NEWLINE}a ton of junk food!{SCROLL}Mary and I have this deal about losing{NEWLINE}weight... This won’t do...{SCROLL}Huh? What’s her weight?{NEWLINE}This has to be a total secret!{SCROLL}Mary weighs...{SCROLL}Aiyee! M-Mary!{SCROLL}Uh... Um... I... Sorry, wrong number!",
+   "en": "You know, last night...{SCROLL}After work, I was so worn out that I{NEWLINE}ate a ton of snacks!{SCROLL}But Mary and I are in a diet contest{NEWLINE}right now, so that was all{CLEAR}for nothing...{SCROLL}Huh? How much does she weigh?{SCROLL}Don’t tell anyone!{NEWLINE}Mary actually weighs...{SCROLL}...! Ah! M-Mary!{SCROLL}Uh... Um... This person dialed the{NEWLINE}wrong number!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0641/24"
+   "origin": "agent",
+   "notes": "US 0641/24 | RV070: meaning: zh: tired, diet contest, effort wasted, this person dialed wrong (D-1994)"
   },
   {
    "id": 25,
@@ -214,10 +214,10 @@
   {
    "id": 26,
    "zh": "⋯⋯咳咳、咳咳！{SCROLL}波、波好意识⋯⋯{NEWLINE}追近感冒了⋯⋯{SCROLL}可我斯个专业人斯,{NEWLINE}播出来的节目{CLEAR}不嫩让人听不懂⋯⋯{SCROLL}沃还是换个呻吟吧{SCROLL}⋯⋯下次我再打电话给你！{NEWLINE}我是小葵！",
-   "en": "...Cough, cough!{NEWLINE}Uhm sorry uh got uh code dite now.{SCROLL}Buh uma pro so uh hav to cover id ub{NEWLINE}so no un notice while uhm on air.{SCROLL}Uh fidz muh voice now.{SCROLL}I’ll catch you on the fly. This has{NEWLINE}been Buena!",
+   "en": "...Cough, cough!{SCROLL}S-sowwy... I’b got a code...{SCROLL}Bud I’b a pwofessional, so I can’d pud{NEWLINE}ad a show dobody can udderstand...{SCROLL}I’d bedder chadge by voice...{SCROLL}...I’ll call you agaid dext tibe! This{NEWLINE}is Buena!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0641/26"
+   "origin": "agent",
+   "notes": "US 0641/26 | RV070: meaning: zh: pro cannot air a show nobody understands, will change voice; US cover it up (D-1994)"
   },
   {
    "id": 27,
@@ -230,18 +230,18 @@
   {
    "id": 28,
    "zh": "最近来参加{NEWLINE}暗语的人越来越多了,{CLEAR}我好高兴啊。{SCROLL}不过当有一天{NEWLINE}暗语是皮卡丘的时候{CLEAR}有好多好多⋯⋯{SCROLL}同好会的人打来电话{NEWLINE}拼命喊{SCROLL}「皮卡丘！」{SCROLL}「皮卡丘！」{SCROLL}叫得好大声啊。{SCROLL}当时听节目的听众们{NEWLINE}肯定吓了一跳吧。{SCROLL}不说了,工作工作！{NEWLINE}下次再打电话！",
-   "en": "I’m elated that more people are taking{NEWLINE}part in my password show.{SCROLL}But when Pikachu was the password,{NEWLINE}it was uh...whew...overwhelming.{SCROLL}Fan Club people came out in droves,{NEWLINE}shouting “Pikachu!” over and over.{SCROLL}I mean, they were loud.{SCROLL}Anyone tuning in around then must{NEWLINE}have been shocked by the racket!{SCROLL}Anyway, back to work for me!{NEWLINE}Let’s chat again!",
+   "en": "I’m so happy that more and more people{NEWLINE}are taking part in the password lately.{SCROLL}But one day, when the password was{NEWLINE}Pikachu, tons and tons of Fan Club{CLEAR}people called in, shouting “Pikachu!”{CLEAR}“Pikachu!” super loud.{SCROLL}Everyone listening to the show then{NEWLINE}must have jumped out of their skin.{SCROLL}Anyway, back to work! Call me again!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0641/28; modernised from US 0641#28"
+   "origin": "agent",
+   "notes": "US 0641/28; modernised from US 0641#28 | RV070: meaning: zh: Fan Club called in shouting; US came out in droves (D-1994)"
   },
   {
    "id": 29,
    "zh": "我和你说哦,{NEWLINE}话说广播塔的局长{CLEAR}实际上很喜欢看电视的。{SCROLL}前不久看到电视上说{NEWLINE}「最近流行茶色西装！」{SCROLL}的广告语后,{NEWLINE}他就一直都穿着{CLEAR}茶色的西装！{SCROLL}但是喜欢看电视是{NEWLINE}局长的秘密,{CLEAR}你见到他绝对不能跟他说。{SCROLL}啊,局长{NEWLINE}马上就要来了。{CLEAR}再见！要听我节目哦！",
-   "en": "Guess what? The Radio Tower’s Director{NEWLINE}is a big fan of TV!{SCROLL}A while ago, a fashion show on TV said{NEWLINE}that brown suits were in.{SCROLL}Now all he wears are brown suits.{SCROLL}But it’s a secret that our Director is a{NEWLINE}TV fan, so if you see him, don’t you{CLEAR}dare mention it!{SCROLL}Oh! The Director will be here soon!{NEWLINE}Later! Tune into my show!",
+   "en": "Guess what? The Radio Tower’s Director{NEWLINE}actually loves watching TV!{SCROLL}A while ago, he saw an ad on TV saying{NEWLINE}“Brown suits are all the rage!” and{CLEAR}ever since, he’s worn nothing but{CLEAR}brown suits!{SCROLL}But loving TV is the Director’s secret,{NEWLINE}so if you see him, don’t you dare{CLEAR}mention it!{SCROLL}Oh! The Director will be here any{NEWLINE}minute. Bye! Listen to my show!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0641/29"
+   "origin": "agent",
+   "notes": "US 0641/29 | RV070: meaning: zh: TV ad, not fashion show (D-1994)"
   },
   {
    "id": 30,
@@ -278,18 +278,18 @@
   {
    "id": 34,
    "zh": "我们大家决定下个休息天{NEWLINE}满金市广播塔的所有人{CLEAR}都到紫苑镇广播塔{CLEAR}去参观一下！{SCROLL}不过,好不容易的休息天{NEWLINE}居然还是到广播塔去,{CLEAR}觉得有点浪费⋯⋯{CLEAR}我好想去海边啊！{SCROLL}{VAR:0103:0},{NEWLINE}你要替我好好玩啊！{CLEAR}拜拜！",
-   "en": "Guess what? All of us from the Radio{NEWLINE}Tower are going on a company vacation{CLEAR}to the Radio Tower in Lavender.{SCROLL}We’re wasting our vacation on a trip to{NEWLINE}another Radio Tower?{SCROLL}I’d much rather go to the beach!{SCROLL}{VAR:0103:0}, I hope you have enough{NEWLINE}fun for both of us on your journey!{SCROLL}Bye-bye!",
+   "en": "On our next day off, everyone from the{NEWLINE}Goldenrod City Radio Tower is going to{CLEAR}visit the Radio Tower in Lavender Town!{SCROLL}But spending our precious day off at{NEWLINE}another Radio Tower seems like kind of{CLEAR}a waste...{SCROLL}I’d much rather go to the beach!{SCROLL}{VAR:0103:0}, have lots of fun for{NEWLINE}me! Bye-bye!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0641/34"
+   "origin": "agent",
+   "notes": "US 0641/34 | RV070: addition: zh: Goldenrod staff, have fun for me; US added on your journey"
   },
   {
    "id": 35,
    "zh": "我们大家决定下个休息天{NEWLINE}满金市广播塔的所有人{CLEAR}都到紫苑镇广播塔{CLEAR}去参观一下！{SCROLL}不过,好不容易的休息天{NEWLINE}居然还是到广播塔去,{CLEAR}觉得有点浪费⋯⋯{CLEAR}我好想去海边啊！{SCROLL}{VAR:0103:0},{NEWLINE}你要替我好好玩啊！{CLEAR}拜拜！",
-   "en": "Guess what? All of us from the Radio{NEWLINE}Tower are going on a company vacation{CLEAR}to the Radio Tower in Lavender.{SCROLL}We’re wasting our vacation on a trip to{NEWLINE}another Radio Tower?{SCROLL}I’d much rather go to the beach!{SCROLL}{VAR:0103:0}, I hope you have enough{NEWLINE}fun for both of us on your journey!{SCROLL}Bye-bye!",
+   "en": "On our next day off, everyone from the{NEWLINE}Goldenrod City Radio Tower is going to{CLEAR}visit the Radio Tower in Lavender Town!{SCROLL}But spending our precious day off at{NEWLINE}another Radio Tower seems like kind of{CLEAR}a waste...{SCROLL}I’d much rather go to the beach!{SCROLL}{VAR:0103:0}, have lots of fun for{NEWLINE}me! Bye-bye!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0641/35"
+   "origin": "agent",
+   "notes": "US 0641/35 | RV070: addition: zh: Goldenrod staff, have fun for me; US added on your journey"
   },
   {
    "id": 36,

@@ -220,10 +220,10 @@
   {
    "id": 26,
    "zh": "妈妈『哎呀？{NEWLINE}都没零花钱了啊！{SCROLL}乱花钱可不行,{NEWLINE}不过这点你和妈妈很像,{CLEAR}我还是很放心的！",
-   "en": "Mom: Oh? You don’t have any money left!{SCROLL}You mustn’t waste it.{SCROLL}But you’re sensible, just like me, so{NEWLINE}I’m not worried!",
+   "en": "Mom: Oh? You don’t have any money left!{SCROLL}You mustn’t waste it. But you take{NEWLINE}after me there, so I’m not worried!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0545/26"
+   "notes": "US 0545/26 | RV054: addition: ‘sensible’ not in zh; 这点你和妈妈很像 kept as ‘take after me’"
   },
   {
    "id": 27,
@@ -312,10 +312,10 @@
   {
    "id": 37,
    "zh": "水池铮亮！{NEWLINE}妈妈真是个洁癖。",
-   "en": "A squeaky-clean sink!{NEWLINE}Mom loves having it clean.",
+   "en": "A squeaky-clean sink!{NEWLINE}Mom’s such a neat freak.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0545/37"
+   "origin": "agent",
+   "notes": "US 0545/37 | RV054: softened: 洁癖 = neat freak"
   },
   {
    "id": 38,
@@ -384,10 +384,10 @@
   {
    "id": 46,
    "zh": "妈妈『哈哈,妈妈看到你回来太高兴,{NEWLINE}一不小心就说多了。{CLEAR}这是妈妈给你准备的零食,{CLEAR}你再出门的时候带着在路上吃吧！",
-   "en": "Mom: Ha ha, I was so happy to see you{NEWLINE}that I got carried away.{SCROLL}Here are some snacks I made for you.{SCROLL}Take them with you next time you head{NEWLINE}out!",
+   "en": "Mom: Ha ha, I was so happy to see you{NEWLINE}that I got carried away.{SCROLL}Here are some snacks I packed for you.{SCROLL}Take them with you next time you head{NEWLINE}out!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV054: addition: 准备 = prepared/packed, not ‘made’"
   },
   {
    "id": 47,
@@ -824,10 +824,10 @@
   {
    "id": 101,
    "zh": "电视中出现了图像和声音——{SCROLL}坂木『全地区的观众,{NEWLINE}今天是一个激动人心的日子……",
-   "en": "Picture and sound come on...{SCROLL}Giovanni: People of every region, today{NEWLINE}is a momentous day...",
+   "en": "Picture and sound come on...{SCROLL}Giovanni: People across the region,{NEWLINE}today is a momentous day...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV054: meaning: 全地区 = the whole region, not every region (D-1878)"
   },
   {
    "id": 102,
@@ -840,10 +840,10 @@
   {
    "id": 103,
    "zh": "坂木『由这个世界上{NEWLINE}最精锐训练家组成的火箭队,{CLEAR}在此向全地区的人们发布宣言……",
-   "en": "Giovanni: Team Rocket, made up of the{NEWLINE}most elite Trainers in the world, hereby{CLEAR}issues a declaration to the people of{CLEAR}every region...",
+   "en": "Giovanni: Team Rocket, made up of the{NEWLINE}most elite Trainers in the world, hereby{CLEAR}issues a declaration to everyone across{CLEAR}the region...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV054: meaning: 全地区 = the whole region (D-1878)"
   },
   {
    "id": 104,
@@ -872,10 +872,10 @@
   {
    "id": 107,
    "zh": "坂木『我今天站在这里,{NEWLINE}代表全地区所有优秀的训练家,{CLEAR}向精灵联盟正式宣战！",
-   "en": "Giovanni: I stand here today on behalf{NEWLINE}of every outstanding Trainer in every{CLEAR}region, and formally declare war on the{CLEAR}Pokémon League!",
+   "en": "Giovanni: I stand here today on behalf{NEWLINE}of every outstanding Trainer{CLEAR}throughout the region, and formally{CLEAR}declare war on the Pokémon League!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV054: meaning: 全地区 = the whole region (D-1878)"
   },
   {
    "id": 108,

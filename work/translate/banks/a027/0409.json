@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "今天是星期一{NEWLINE}精灵们精力充沛的{NEWLINE}精灵比赛时间！",
-   "en": "Today’s Monday, and you know what that{NEWLINE}means, right? It means it’s time to{NEWLINE}wake your Pokémon up with a march!",
+   "en": "Today’s Monday!{NEWLINE}It’s Pokémon Match time, when Pokémon{NEWLINE}are full of pep!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0416/4"
+   "origin": "agent",
+   "notes": "US 0416/4 | RV070: meaning: zh says 比赛 (match/competition), not march (hack-finding logged; D-1819)"
   },
   {
    "id": 5,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "今天是星期三{NEWLINE}精灵们精力充沛的{NEWLINE}精灵比赛时间！",
-   "en": "Today’s Wednesday, and you know what{NEWLINE}that means, right? It means it’s time to{NEWLINE}wake your Pokémon up with a march!",
+   "en": "Today’s Wednesday!{NEWLINE}It’s Pokémon Match time, when Pokémon{NEWLINE}are full of pep!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0416/6"
+   "origin": "agent",
+   "notes": "US 0416/6 | RV070: meaning: zh says 比赛 (match/competition), not march (hack-finding logged; D-1819)"
   },
   {
    "id": 7,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "今天是星期五！{NEWLINE}精灵们精力充沛的{NEWLINE}精灵比赛时间！",
-   "en": "Today’s Friday, and you know what that{NEWLINE}means, right? It means it’s time to{NEWLINE}wake your Pokémon up with a march!",
+   "en": "Today’s Friday!{NEWLINE}It’s Pokémon Match time, when Pokémon{NEWLINE}are full of pep!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0416/8"
+   "origin": "agent",
+   "notes": "US 0416/8 | RV070: meaning: zh says 比赛 (match/competition), not march (hack-finding logged; D-1819)"
   },
   {
    "id": 9,
@@ -86,26 +86,26 @@
   {
    "id": 10,
    "zh": "星期三的精灵音乐{NEWLINE}是传递芳缘地区的芳香的{NEWLINE}芳缘音乐！{NEWLINE}精灵们说不定{NEWLINE}都会被芳缘的音乐吸引{NEWLINE}而跳出来！",
-   "en": "Wednesday’s Pokémon Music is the Hoenn{NEWLINE}Sound that carries a hint of Hoenn Region{NEWLINE}taste! The Hoenn music might just lure a{NEWLINE}bunch of Pokémon to follow you!",
+   "en": "Wednesday’s Pokémon Music is Hoenn{NEWLINE}Music, carrying the scent of the Hoenn{NEWLINE}region! The Hoenn music might just draw{NEWLINE}Pokémon out of hiding!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0416/10"
+   "origin": "agent",
+   "notes": "US 0416/10 | RV070: meaning: zh: Pokémon jump out, drawn by the music; US follow you"
   },
   {
    "id": 11,
    "zh": "星期四的精灵音乐{NEWLINE}是传递新奥地区的芳香的{NEWLINE}新奥音乐！{NEWLINE}能让人感知到北方大路。{NEWLINE}精灵们说不定{NEWLINE}都会被新奥的音乐吸引{NEWLINE}而跳出来！",
-   "en": "Thursday’s Pokémon Music is the Sinnoh{NEWLINE}Sound that carries a hint of Sinnoh{NEWLINE}Region atmosphere! The Sinnoh music, the{NEWLINE}sound of the great land to the north,{NEWLINE}might just lure a bunch of Pokémon to{NEWLINE}follow you!",
+   "en": "Thursday’s Pokémon Music is Sinnoh{NEWLINE}Music, carrying the scent of the Sinnoh{NEWLINE}region! It lets you feel the great land{NEWLINE}to the north. The Sinnoh music might{NEWLINE}just draw Pokémon out of hiding!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0416/11"
+   "origin": "agent",
+   "notes": "US 0416/11 | RV070: meaning: zh: Pokémon jump out; 大路 read as 大陆 (typo, hack-finding logged)"
   },
   {
    "id": 12,
    "zh": "今天是星期天！{NEWLINE}精灵们精力充沛的{NEWLINE}精灵比赛时间！",
-   "en": "Today’s Sunday, and you know what that{NEWLINE}means, right? It means it’s time to{NEWLINE}wake your Pokémon up with a march!",
+   "en": "Today’s Sunday!{NEWLINE}It’s Pokémon Match time, when Pokémon{NEWLINE}are full of pep!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0416/12"
+   "origin": "agent",
+   "notes": "US 0416/12 | RV070: meaning: zh says 比赛 (match/competition), not march (hack-finding logged; D-1819)"
   }
  ]
 }

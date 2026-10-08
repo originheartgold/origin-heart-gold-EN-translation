@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "我还是第一次{NEWLINE}在这么近的距离用这东西！{SCROLL}用什么？当然是电话！",
-   "en": "This has to be the first time I’ve done{NEWLINE}something like this from so close!{SCROLL}I mean talking on the phone!",
+   "en": "This is my first time using this thing{NEWLINE}from so close! Using what?{SCROLL}The phone, of course!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0667/1"
+   "origin": "agent",
+   "notes": "US 0667/1 | RV072: omission: restored the 'using what?' question"
   },
   {
    "id": 2,
@@ -62,58 +62,58 @@
   {
    "id": 7,
    "zh": "你好,{VAR:0103:0}！{NEWLINE}我是园长巴奥巴！{SCROLL}让你久等了！{NEWLINE}我想到新的游戏了！{SCROLL}名字还是简单明了的{NEWLINE}区域配置！{SCROLL}具体内容我会在{NEWLINE}狩猎场跟你说明,{SCROLL}我等着你！",
-   "en": "Oh hi, {VAR:0103:0}!{NEWLINE}This is Warden Baoba.{SCROLL}Sorry to have kept you waiting!{NEWLINE}I thought of a new way to play!{SCROLL}It’s called Object Arrangement!{SCROLL}I’ll give you more details at the{NEWLINE}Safari Zone. See you there!",
+   "en": "Oh hi, {VAR:0103:0}! This is Warden Baoba.{NEWLINE}Sorry to have kept you waiting!{SCROLL}I thought of a new way to play! It’s{NEWLINE}called Area Arrangement!{SCROLL}I’ll give you more details at the Safari{NEWLINE}Zone. See you there!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0667/7"
+   "origin": "agent",
+   "notes": "US 0667/7 | RV072: meaning: 区域配置 = Area Arrangement, not Object Arrangement (D-2001)"
   },
   {
    "id": 8,
    "zh": "你好,{VAR:0103:0}！{NEWLINE}我是园长巴奥巴！{SCROLL}我准好了新的区域了,{SCROLL}这下能遇到{NEWLINE}更多的精灵了。{SCROLL}加油吧！",
-   "en": "Oh hi, {VAR:0103:0}!{NEWLINE}This is Warden Baoba.{SCROLL}We’ve come up with new objects.{SCROLL}With these, you should be able to meet{NEWLINE}lots of different Pokémon.{SCROLL}Do your best!",
+   "en": "Oh hi, {VAR:0103:0}! This is Warden Baoba.{NEWLINE}I’ve got new Areas ready.{SCROLL}Now you’ll be able to meet even more{NEWLINE}Pokémon. Do your best!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0667/8"
+   "origin": "agent",
+   "notes": "US 0667/8 | RV072: meaning: 新的区域 = new Areas, not objects (D-2001)"
   },
   {
    "id": 9,
    "zh": "你好,{VAR:0103:0}！{NEWLINE}我是园长巴奥巴！{SCROLL}我准好了新的区域了,{SCROLL}这下能遇到{NEWLINE}更多的精灵了。{SCROLL}加油吧！",
-   "en": "Oh hi, {VAR:0103:0}!{NEWLINE}This is Warden Baoba.{SCROLL}We’ve come up with new objects.{SCROLL}With these, you should be able to meet{NEWLINE}lots of different Pokémon.{SCROLL}Do your best!",
+   "en": "Oh hi, {VAR:0103:0}! This is Warden Baoba.{NEWLINE}I’ve got new Areas ready.{SCROLL}Now you’ll be able to meet even more{NEWLINE}Pokémon. Do your best!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0667/9"
+   "origin": "agent",
+   "notes": "US 0667/9 | RV072: meaning: 新的区域 = new Areas, not objects (D-2001)"
   },
   {
    "id": 10,
    "zh": "你好,{VAR:0103:0}！{NEWLINE}我是园长巴奥巴！{SCROLL}我准好了新的区域了,{NEWLINE}这次大了很多！{SCROLL}有这么大,{NEWLINE}我想应该足够了！{SCROLL}接下来就是设置,这下你能遇到{NEWLINE}更多种类的精灵了,{CLEAR}加油。",
-   "en": "Oh hi, {VAR:0103:0}!{NEWLINE}This is Warden Baoba.{SCROLL}We’ve come up with new objects!{NEWLINE}There’re so many now!{SCROLL}With these new additions, that should be{NEWLINE}plenty I think!{SCROLL}You should try placing a bunch of{NEWLINE}different objects to see what different{CLEAR}Pokémon you can meet.",
+   "en": "Oh hi, {VAR:0103:0}! This is Warden Baoba.{SCROLL}I’ve got new Areas ready, and they’re{NEWLINE}much bigger this time!{SCROLL}With this much room, I think it should be{NEWLINE}plenty!{SCROLL}Now it’s up to you to arrange them.{SCROLL}You’ll be able to meet even more kinds{NEWLINE}of Pokémon. Good luck!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0667/10"
+   "origin": "agent",
+   "notes": "US 0667/10 | RV072: meaning: new Areas, much bigger; objects/count invented (D-2001)"
   },
   {
    "id": 11,
    "zh": "你好,{VAR:0103:0}！{NEWLINE}我是园长巴奥巴！{SCROLL}我准好了新的区域了,{NEWLINE}这次大了很多！{SCROLL}有这么大,{NEWLINE}我想应该足够了！{SCROLL}接下来就是设置,这下你能遇到{NEWLINE}更多种类的精灵了,{CLEAR}加油。",
-   "en": "Oh hi, {VAR:0103:0}!{NEWLINE}This is Warden Baoba.{SCROLL}We’ve come up with new objects!{NEWLINE}There’re so many now!{SCROLL}With these new additions, that should be{NEWLINE}plenty I think!{SCROLL}You should try placing a bunch of{NEWLINE}different objects to see what different{CLEAR}Pokémon you can meet.",
+   "en": "Oh hi, {VAR:0103:0}! This is Warden Baoba.{SCROLL}I’ve got new Areas ready, and they’re{NEWLINE}much bigger this time!{SCROLL}With this much room, I think it should be{NEWLINE}plenty!{SCROLL}Now it’s up to you to arrange them.{SCROLL}You’ll be able to meet even more kinds{NEWLINE}of Pokémon. Good luck!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0667/11"
+   "origin": "agent",
+   "notes": "US 0667/11 | RV072: meaning: new Areas, much bigger; objects/count invented (D-2001)"
   },
   {
    "id": 12,
    "zh": "你好,{VAR:0103:0}！{NEWLINE}我是园长巴奥巴！{SCROLL}我想到新的游戏了！{NEWLINE}名字还是简单明了的{NEWLINE}区域配置！{SCROLL}⋯⋯什么？{NEWLINE}我已经跟你说过了？{SCROLL}那我在区域配置里{NEWLINE}追加了新的区域{SCROLL}⋯⋯这个也说过了？{SCROLL}算了！{NEWLINE}反正你到狩猎场来玩就是了！{SCROLL}我等你！",
-   "en": "Oh hi, {VAR:0103:0}!{NEWLINE}This is Warden Baoba.{SCROLL}I thought of a new way to play!{NEWLINE}It’s called Object Arrangement!{SCROLL}...Wait...{NEWLINE}Did I already tell you about this?{SCROLL}Well, we’ve got new objects for{NEWLINE}Object Arrangement...{SCROLL}...Huh? I already told you that, too?{SCROLL}Well, never mind! Just come{NEWLINE}and play at the Safari Zone!{SCROLL}See you there!",
+   "en": "Oh hi, {VAR:0103:0}! This is Warden Baoba. I{NEWLINE}thought of a new way to play!{SCROLL}It’s called Area Arrangement! ...What?{NEWLINE}I already told you about this?{SCROLL}Well, I’ve added new Areas to Area{NEWLINE}Arrangement... ...I told you that, too?{SCROLL}Never mind! Just come and play at the{NEWLINE}Safari Zone! I’ll be waiting!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0667/12"
+   "notes": "US 0667/12 | RV072: meaning: Area Arrangement and new Areas (D-2001)"
   },
   {
    "id": 13,
    "zh": "你好,{VAR:0103:0}！{NEWLINE}我是园长巴奥巴！{SCROLL}我想到新的游戏了！{NEWLINE}名字还是简单明了的区域配置！{SCROLL}⋯⋯什么？{NEWLINE}我已经跟你说过了？{SCROLL}那我在区域配置里{NEWLINE}追加了新的区域{SCROLL}⋯⋯这个也说过了？{SCROLL}算了！{NEWLINE}反正你到{CLEAR}狩猎场来玩就是了！{SCROLL}我等你！",
-   "en": "Oh hi, {VAR:0103:0}!{NEWLINE}This is Warden Baoba.{SCROLL}I thought of a new way to play!{NEWLINE}It’s called Object Arrangement!{SCROLL}...Wait...{NEWLINE}Did I already tell you about this?{SCROLL}Well, we’ve got new objects for{NEWLINE}Object Arrangement...{SCROLL}...Huh? I already told you that, too?{SCROLL}Well, never mind! Just come{NEWLINE}and play at the Safari Zone!{SCROLL}See you there!",
+   "en": "Oh hi, {VAR:0103:0}! This is Warden Baoba. I{NEWLINE}thought of a new way to play!{SCROLL}It’s called Area Arrangement! ...What?{NEWLINE}I already told you about this?{SCROLL}Well, I’ve added new Areas to Area{NEWLINE}Arrangement... ...I told you that, too?{SCROLL}Never mind! Just come and play at the{NEWLINE}Safari Zone! I’ll be waiting!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0667/13"
+   "notes": "US 0667/13 | RV072: meaning: Area Arrangement and new Areas (D-2001)"
   },
   {
    "id": 14,
@@ -214,18 +214,18 @@
   {
    "id": 26,
    "zh": "喂喂,{NEWLINE}啊,是{VAR:0103:0}啊！{SCROLL}距离狩猎场开业{NEWLINE}还需要再等一段时间,{CLEAR}你就稍稍忍耐一下吧。{SCROLL}再见咯！",
-   "en": "Hello?{NEWLINE}Oh hi, {VAR:0103:0}!{SCROLL}My apologies. The Safari Zone isn’t{NEWLINE}quite ready yet. I’m sorry for the{CLEAR}inconvenience, but if you could be{CLEAR}patient just a little longer.{SCROLL}I’ll call you later.",
+   "en": "Hello? Oh hi, {VAR:0103:0}!{SCROLL}The Safari Zone still needs a little more{NEWLINE}time before it opens, so please bear{CLEAR}with me a bit longer.{SCROLL}Bye now!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0667/26"
+   "origin": "agent",
+   "notes": "US 0667/26 | RV072: addition: removed added apologies; 再见咯 is a goodbye"
   },
   {
    "id": 27,
    "zh": "喂喂,{NEWLINE}啊,是{VAR:0103:0}啊！{SCROLL}距离狩猎场开业{NEWLINE}还需要再等一段时间,{CLEAR}你就稍稍忍耐一下吧。{SCROLL}再见咯！",
-   "en": "Hello?{NEWLINE}Oh hi, {VAR:0103:0}!{SCROLL}My apologies. The Safari Zone isn’t{NEWLINE}quite ready yet. I’m sorry for the{CLEAR}inconvenience, but if you could be{CLEAR}patient just a little longer.{SCROLL}I’ll call you later.",
+   "en": "Hello? Oh hi, {VAR:0103:0}!{SCROLL}The Safari Zone still needs a little more{NEWLINE}time before it opens, so please bear{CLEAR}with me a bit longer.{SCROLL}Bye now!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0667/27"
+   "origin": "agent",
+   "notes": "US 0667/27 | RV072: addition: removed added apologies; 再见咯 is a goodbye"
   },
   {
    "id": 28,

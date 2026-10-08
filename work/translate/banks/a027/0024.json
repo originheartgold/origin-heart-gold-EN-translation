@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "没有能战斗的精灵！",
-   "en": "That’s your last Pokémon!",
+   "en": "You have no Pokémon that can battle!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0025/6"
+   "origin": "agent",
+   "notes": "US 0025/6 | RV056: meaning: zh 没有能战斗的精灵 = no Pokémon that can battle; US 'That's your last Pokémon'"
   },
   {
    "id": 7,
@@ -150,10 +150,10 @@
   {
    "id": 18,
    "zh": "触摸精灵！",
-   "en": "Which one will you take?",
+   "en": "Touch a Pokémon!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0025/18"
+   "origin": "agent",
+   "notes": "US 0025/18 | RV056: meaning: zh 触摸精灵 = touch a Pokémon; US 'Which one will you take?'"
   },
   {
    "id": 19,
@@ -446,10 +446,10 @@
   {
    "id": 55,
    "zh": "没有{VAR:0108:0}！",
-   "en": "Cannot hold {VAR:0108:0}!",
+   "en": "No {VAR:0108:0}!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0025/55"
+   "origin": "agent",
+   "notes": "US 0025/55 | RV056: meaning: zh 没有X = no X; English had silently followed JP 'can't hold'; hack-finding logged"
   },
   {
    "id": 56,

@@ -22,26 +22,26 @@
   {
    "id": 2,
    "zh": "呀~你好！{NEWLINE}哎呀~这真是令人震惊呢！{SCROLL}刚才的精灵是芳缘地区流传的{CLEAR}创世神话里出现的{CLEAR}盖欧卡！！{SCROLL}原来如此~原来如此~{SCROLL}这个埋没之塔是芳缘地方的人们{CLEAR}建造的东西啊。{SCROLL}",
-   "en": "Well, hello!{NEWLINE}That was something you don’t see{CLEAR}every day!{SCROLL}That Pokémon is Kyogre,{NEWLINE}a legendary Pokémon in the Hoenn myth{CLEAR}about the shaping of that region.{SCROLL}I see...{CLEAR}I see.{SCROLL}The Embedded Tower was built{NEWLINE}by the people from Hoenn.{SCROLL}",
+   "en": "Well, hello!{NEWLINE}Oh my, that was truly shocking!{SCROLL}That Pokémon was Kyogre, which{NEWLINE}appears in the creation myth handed{CLEAR}down in the Hoenn region!!{SCROLL}I see... I see.{SCROLL}So the Embedded Tower was built by the{NEWLINE}people of Hoenn.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0149/2; modernised from US 0149#2"
+   "origin": "agent",
+   "notes": "US 0149/2; modernised from US 0149#2 | RV050: meaning: US rewrote; zh: shocking, creation myth of Hoenn"
   },
   {
    "id": 3,
    "zh": "如此说来⋯⋯？{SCROLL}连接海洋、陆地、天空的塔⋯⋯{SCROLL}在芳缘神话里出现的精灵并不只有{CLEAR}盖欧卡而已⋯⋯{SCROLL}关于此处还有很多地方不甚明朗,{CLEAR}仍然还留有谜团呢。{SCROLL}",
-   "en": "The Tower that binds together{NEWLINE}the sea, the land, and the sky...{SCROLL}Kyogre was not the only Pokémon{NEWLINE}described in the Hoenn myth...{SCROLL}This place may still be hiding{NEWLINE}its secrets.{SCROLL}",
+   "en": "Which means...?{SCROLL}A tower that links the sea, the land,{NEWLINE}and the sky...{SCROLL}Kyogre was not the only Pokémon in the{NEWLINE}Hoenn myths...{SCROLL}There is still a lot about this place{NEWLINE}that’s unclear. Mysteries remain.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0149/3; modernised from US 0149#3"
+   "origin": "agent",
+   "notes": "US 0149/3; modernised from US 0149#3 | RV050: omission: 如此说来⋯⋯？ dropped"
   },
   {
    "id": 4,
    "zh": "如果让博学的精灵博士{NEWLINE}看看盖欧卡的话,{CLEAR}或许会得到某些线索？{SCROLL}哎呀哎呀,{NEWLINE}精灵与神话的关系{CLEAR}还真是源远流长呢。{SCROLL}那么,{NEWLINE}下次在哪里再相见吧！{SCROLL}",
-   "en": "The knowledgeable Pokémon Professor{NEWLINE}may be able to tell you more when you{CLEAR}show him Kyogre.{SCROLL}Phew!{SCROLL}There are so many connections between{NEWLINE}Pokémon and myths.{SCROLL}See you around.{SCROLL}",
+   "en": "Maybe a knowledgeable Pokémon{NEWLINE}Professor could find some clues if you{CLEAR}showed them Kyogre?{SCROLL}My, my! Pokémon and myths really do go{NEWLINE}back a long way together.{SCROLL}Well then, until we meet{NEWLINE}again somewhere!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0149/4; modernised from US 0149#4"
+   "origin": "agent",
+   "notes": "US 0149/4; modernised from US 0149#4 | RV050: meaning: US 'Phew!' and statement form; zh is a question, 源远流长"
   }
  ]
 }

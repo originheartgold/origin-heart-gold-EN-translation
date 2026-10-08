@@ -14,18 +14,18 @@
   {
    "id": 1,
    "zh": "喂喂⋯⋯{NEWLINE}是{VAR:0103:0}吗？{SCROLL}你最近怎么样？{NEWLINE}其实你不用打电话啊,{CLEAR}你不就在附近吗？",
-   "en": "Hello...{NEWLINE}Oh hello there. Is this {VAR:0103:0}?{SCROLL}What’s wrong?{NEWLINE}Why are you calling even though{CLEAR}you’re nearby?",
+   "en": "Hello... Is this {VAR:0103:0}? How have you{NEWLINE}been? You don’t need to call, you know.{CLEAR}Aren’t you right nearby?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0660/1"
+   "origin": "agent",
+   "notes": "US 0660/1 | RV071: meaning: 'How have you been?', not 'What's wrong?' (D-1996)"
   },
   {
    "id": 2,
    "zh": "喂喂⋯⋯{NEWLINE}是{VAR:0103:0}吗？{SCROLL}你最近怎么样？{NEWLINE}其实你不用打电话啊,{CLEAR}你不就在附近吗？",
-   "en": "Hello...{NEWLINE}Oh hello there. Is this {VAR:0103:0}?{SCROLL}What’s wrong?{NEWLINE}Why are you calling even though{CLEAR}you’re nearby?",
+   "en": "Hello... Is this {VAR:0103:0}? How have you{NEWLINE}been? You don’t need to call, you know.{CLEAR}Aren’t you right nearby?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0660/2"
+   "origin": "agent",
+   "notes": "US 0660/2 | RV071: meaning: 'How have you been?', not 'What's wrong?' (D-1996)"
   },
   {
    "id": 3,
@@ -54,18 +54,18 @@
   {
    "id": 6,
    "zh": "{VAR:0100:10}的等级已经到{NEWLINE}{VAR:0134:11}了。{SCROLL}",
-   "en": "By level, your {VAR:0100:10} has{NEWLINE}grown by about {VAR:0134:11}.{SCROLL}",
+   "en": "Your {VAR:0100:10} has reached Level {VAR:0134:11}.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0660/6"
+   "origin": "agent",
+   "notes": "US 0660/6 | RV071: meaning: zh says level has reached N; suspected source error logged as hack-finding (hack-finding D-2225)"
   },
   {
    "id": 7,
    "zh": "{VAR:0100:12}的等级已经到{NEWLINE}{VAR:0134:13}了。{SCROLL}",
-   "en": "By level, your {VAR:0100:12} has{NEWLINE}grown by about {VAR:0134:13}.{SCROLL}",
+   "en": "Your {VAR:0100:12} has reached Level {VAR:0134:13}.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0660/7"
+   "origin": "agent",
+   "notes": "US 0660/7 | RV071: meaning: zh says level has reached N; suspected source error logged as hack-finding (hack-finding D-2225)"
   },
   {
    "id": 8,

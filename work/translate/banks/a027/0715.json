@@ -158,10 +158,10 @@
   {
    "id": 19,
    "zh": "远离村落的山谷里{NEWLINE}安静地坐落着龙婆的屋子。",
-   "en": "Far from any village, a granny’s{NEWLINE}house sits quietly in the valley.",
+   "en": "Far from any village, the dragon{NEWLINE}granny’s house sits quietly in the{NEWLINE}valley.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV062: omission: 龙婆 'dragon granny' (Draco Meteor tutor) kept"
   },
   {
    "id": 20,
@@ -230,10 +230,10 @@
   {
    "id": 28,
    "zh": "海滨的小屋子里一个叫卷太{NEWLINE}通称足迹博士的人独自生活着。",
-   "en": "A man known as Dr. Footstep lives{NEWLINE}alone in a hut by the shore.",
+   "en": "A man named Juantai, known as{NEWLINE}Dr. Footstep, lives alone in a hut{NEWLINE}by the shore.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV062: omission: personal name 卷太 restored (pinyin, low confidence; see question) (D-2223)"
   },
   {
    "id": 29,
@@ -374,10 +374,10 @@
   {
    "id": 46,
    "zh": "不断纷落得火山灰{NEWLINE}阻碍人们视野的危险道路。",
-   "en": "A dangerous road where falling{NEWLINE}volcanic ash blocks the view.",
+   "en": "A dangerous road where ever-falling{NEWLINE}volcanic ash blocks the view.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV062: omission: 不断 'endlessly' falling"
   },
   {
    "id": 47,
@@ -414,10 +414,10 @@
   {
    "id": 51,
    "zh": "能够感受到{NEWLINE}嫩叶的气息和什么东西{NEWLINE}的开端的小路。",
-   "en": "A little town where you can feel{NEWLINE}the breath of fresh leaves and{NEWLINE}the start of something new.",
+   "en": "A little path where you can feel{NEWLINE}the breath of fresh leaves and{NEWLINE}the start of something new.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV062: meaning: Chinese says 小路 'path', not town (D-1918; hack-finding logged) (D-2221)"
   },
   {
    "id": 52,
@@ -438,10 +438,10 @@
   {
    "id": 54,
    "zh": "致力于精灵研究的七度灶博士{NEWLINE}的研究所位于小镇的醒目位置。",
-   "en": "Professor Rowan’s Pokémon lab{NEWLINE}stands out in the middle of town.",
+   "en": "Professor Rowan’s Pokémon research{NEWLINE}lab stands out in town.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV062: addition: 'in the middle' not in Chinese; 致力于精灵研究 kept"
   },
   {
    "id": 55,
@@ -486,10 +486,10 @@
   {
    "id": 60,
    "zh": "穿过树林是花蕊遗迹的入口。",
-   "en": "Through the trees is the entrance{NEWLINE}to the ruins.",
+   "en": "Through the trees is the entrance to{NEWLINE}Solaceon Ruins.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV062: omission: 花蕊遗迹 named"
   },
   {
    "id": 61,
@@ -726,10 +726,10 @@
   {
    "id": 90,
    "zh": "为了保存各种物资而建的仓库群。{NEWLINE}要买东西这儿有高级百货店。",
-   "en": "Warehouses built to store all{NEWLINE}kinds of goods. Shop at the Dept.{NEWLINE}Store.",
+   "en": "Warehouses built to store all{NEWLINE}kinds of goods. For shopping, there’s{NEWLINE}an upscale Dept. Store.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV062: omission: 高级 'upscale'"
   },
   {
    "id": 91,
@@ -926,10 +926,10 @@
   {
    "id": 115,
    "zh": "利用穿过山谷的风吹动风车来发电",
-   "en": "Wind blowing through the valley{NEWLINE}turns the windmills.",
+   "en": "Wind blowing through the valley turns{NEWLINE}the windmills to make electricity.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV062: omission: 发电 'generate power'"
   },
   {
    "id": 116,
@@ -990,10 +990,10 @@
   {
    "id": 123,
    "zh": "被用水冲刷过的火山灰重重覆盖的{NEWLINE}坚固的岩石山。",
-   "en": "A rugged mountain buried under{NEWLINE}layers of volcanic ash.",
+   "en": "A rugged mountain buried under layers{NEWLINE}of water-worn volcanic ash.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV062: omission: 被用水冲刷过 'washed by water'"
   },
   {
    "id": 124,
@@ -1014,10 +1014,10 @@
   {
    "id": 126,
    "zh": "白岱市近海处的小矿山岛。",
-   "en": "A small mining island off the coast.",
+   "en": "A small mining island off the coast of{NEWLINE}Eterna City.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV062: omission: 白岱市 named as the Chinese says (hack-finding logged: Iron Island is off Canalave) (D-2222)"
   },
   {
    "id": 127,

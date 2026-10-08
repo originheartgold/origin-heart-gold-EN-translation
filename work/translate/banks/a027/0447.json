@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "小绿『……　……　……{SCROLL}我弄错了,{NEWLINE}你真的是{CLEAR}很有本事的训练师！{CLEAR}我承认你了！{SCROLL}不过啊！{NEWLINE}别忘了！{SCROLL}我总有一天会赢过你的！",
-   "en": "Blue: ...{SCROLL}All right, I was wrong. You’re the{NEWLINE}real deal.{CLEAR}You are a good Trainer.{SCROLL}But I’m going to beat you someday.{NEWLINE}Don’t you forget it!",
+   "en": "Blue: ... ... ...{SCROLL}I was wrong. You really are a skilled{NEWLINE}Trainer! I’ll admit it!{SCROLL}But hey! Don’t you forget! Someday I’m{NEWLINE}going to beat you!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0454/5"
+   "origin": "agent",
+   "notes": "US 0454/5 | RV053: meaning: US line reworded; restore 我承认你了/不过啊！别忘了！ structure"
   },
   {
    "id": 6,
@@ -326,10 +326,10 @@
   {
    "id": 40,
    "zh": "{VAR:0103:0}『我在关东这一路的旅行,{NEWLINE}看到的是你们火箭队{CLEAR}围殴梦幻、抢劫游轮、{CLEAR}欺负老人、偷窃精灵、{CLEAR}暗杀报复、人体实验的罪行！{SCROLL}{VAR:0103:0}『你们这种毫无底线的行为,{NEWLINE}精灵联盟当然不会允许！",
-   "en": "{VAR:0103:0}: On my journey through Kanto,{NEWLINE}I’ve seen what Team Rocket does:{SCROLL}ganging up on Mew, robbing a cruise{NEWLINE}ship, bullying old people, stealing{CLEAR}Pokémon...{SCROLL}revenge killings, experiments on people!{SCROLL}{VAR:0103:0}: Of course the Pokémon League{NEWLINE}won’t allow crimes like that!",
+   "en": "{VAR:0103:0}: On my journey through Kanto,{NEWLINE}I’ve seen what Team Rocket does:{SCROLL}ganging up on Mew, robbing a cruise{NEWLINE}ship, bullying old people, stealing{CLEAR}Pokémon...{SCROLL}revenge killings, experiments on people!{SCROLL}{VAR:0103:0}: There’s no line you people{NEWLINE}won’t cross.{SCROLL}Of course the Pokémon League won’t{NEWLINE}allow that!",
    "status": "draft",
    "origin": "agent",
-   "notes": "#40–44 and #57 are alternative versions of the player's rebuttal. | #40–44 and #57 are alternative versions of the player's rebuttal."
+   "notes": "#40–44 and #57 are alternative versions of the player's rebuttal. | #40–44 and #57 are alternative versions of the player's rebuttal. | RV053: omission: 毫无底线的行为"
   },
   {
    "id": 41,
@@ -342,10 +342,10 @@
   {
    "id": 42,
    "zh": "{VAR:0103:0}『我都能感觉到你那{NEWLINE}无穷无尽的私欲和自以为是的傲慢。{CLEAR}达马兰奇主席肯定早就看透了你,{CLEAR}他还能让你继续担任常磐市的馆主{CLEAR}就已经是对你的恩情了！",
-   "en": "{VAR:0103:0}: I can feel your endless greed{NEWLINE}and your arrogance.{SCROLL}President Goodshow must have seen{NEWLINE}through you long ago.{SCROLL}Letting you stay on as Viridian’s Gym{NEWLINE}Leader was already a kindness!",
+   "en": "{VAR:0103:0}: I can feel your endless greed{NEWLINE}and your self-righteous arrogance.{SCROLL}President Goodshow must have seen{NEWLINE}through you long ago.{SCROLL}Letting you stay on as Viridian’s Gym{NEWLINE}Leader was already a kindness!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV053: omission: 自以为是"
   },
   {
    "id": 43,
@@ -414,10 +414,10 @@
   {
    "id": 51,
    "zh": "坂木『你达马兰奇就是个不知感恩的白眼狼。达马兰奇借助我的武力清除反对者,建立了管理整个地区的精灵联盟。但是他却自己独享最高权力,把我排除在精灵联盟的管理机构之外,宁可培养渡这个后辈也不把权力交给我。",
-   "en": "Giovanni: Goodshow is an ungrateful{NEWLINE}snake. He used my strength to crush his{CLEAR}opponents and build the League that{CLEAR}runs this whole region.{SCROLL}Then he kept all the power for himself{NEWLINE}and shut me out of the League’s{CLEAR}leadership.{SCROLL}He’d sooner groom a junior like Lance{NEWLINE}than hand any power to me.",
+   "en": "Giovanni: Goodshow is an ungrateful{NEWLINE}snake. He used my strength to eliminate{CLEAR}his opponents and build the League that{CLEAR}runs this whole region.{SCROLL}Then he kept all the power for himself{NEWLINE}and shut me out of the League’s{CLEAR}leadership.{SCROLL}He’d sooner groom a junior like Lance{NEWLINE}than hand any power to me.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV053: softened: 清除反对者 = eliminate, not crush"
   },
   {
    "id": 52,
@@ -462,10 +462,10 @@
   {
    "id": 57,
    "zh": "{VAR:0103:0}『我在这一年的关东旅行中,{NEWLINE}看到的是火箭队围殴梦幻、抢劫游轮、{CLEAR}欺负老人、偷窃精灵、{CLEAR}暗杀报复、人体实验的罪行。{SCROLL}{VAR:0103:0}『我看到的是{NEWLINE}你们对生命的践踏、对他人的漠视,{CLEAR}看到了你心中无穷无尽的私欲{CLEAR}和自以为是的傲慢！{CLEAR}达马兰奇主席肯定早就看透了你。{CLEAR}你还能担任常磐市的馆主{CLEAR}就已经是最大的回报了！",
-   "en": "{VAR:0103:0}: On my journey through Kanto{NEWLINE}this past year, I’ve seen Team Rocket’s{CLEAR}crimes:{SCROLL}ganging up on Mew, robbing a cruise{NEWLINE}ship, bullying old people, stealing{CLEAR}Pokémon...{SCROLL}revenge killings, experiments on people.{SCROLL}{VAR:0103:0}: I’ve seen you trample on lives{NEWLINE}and not care about anyone else.{SCROLL}I’ve seen the endless greed in your{NEWLINE}heart and your arrogance!{SCROLL}President Goodshow must have seen{NEWLINE}through you long ago.{SCROLL}Being allowed to stay on as Viridian’s{NEWLINE}Gym Leader is the biggest reward you’ll{CLEAR}ever get!",
+   "en": "{VAR:0103:0}: On my journey through Kanto{NEWLINE}this past year, I’ve seen Team Rocket’s{CLEAR}crimes:{SCROLL}ganging up on Mew, robbing a cruise{NEWLINE}ship, bullying old people, stealing{CLEAR}Pokémon...{SCROLL}revenge killings, experiments on people.{SCROLL}{VAR:0103:0}: I’ve seen you trample on lives{NEWLINE}and not care about anyone else.{SCROLL}In your heart I’ve seen endless greed{NEWLINE}and self-righteous arrogance!{SCROLL}President Goodshow must have seen{NEWLINE}through you long ago.{SCROLL}Being allowed to stay on as Viridian’s{NEWLINE}Gym Leader is the biggest reward you’ll{CLEAR}ever get!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV053: omission: 自以为是"
   },
   {
    "id": 58,
@@ -526,10 +526,10 @@
   {
    "id": 65,
    "zh": "阿波罗『老大,这小鬼的精灵{NEWLINE}没有多少体力了,{CLEAR}请允许我给他最后一击！",
-   "en": "Archer: Boss, this brat’s Pokémon have{NEWLINE}almost no HP left. Let me finish him off!",
+   "en": "Archer: Boss, this brat’s Pokémon have{NEWLINE}almost no HP left. Let me finish the{CLEAR}brat off!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV053: addressee: 他 for a player who may be female, no gender branch; neutral per D-1224 (D-1834)"
   },
   {
    "id": 66,
@@ -582,10 +582,10 @@
   {
    "id": 72,
    "zh": "坂木『阿波罗,向所有火箭队员传达。{NEWLINE}火箭队从现在起就地解散。{CLEAR}各队员按计划回归原本的身份。",
-   "en": "Giovanni: Archer, tell every member of{NEWLINE}Team Rocket...{SCROLL}Team Rocket is disbanded, effective{NEWLINE}now. All members return to their cover{CLEAR}identities as planned.",
+   "en": "Giovanni: Archer, tell every member of{NEWLINE}Team Rocket...{SCROLL}Team Rocket is disbanded, effective{NEWLINE}now. All members return to their former{CLEAR}identities as planned.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV053: meaning: 原本的身份 is their original identities, not ‘cover’ identities"
   },
   {
    "id": 73,
@@ -978,10 +978,10 @@
   {
    "id": 119,
    "zh": "这常磐道馆的人毛病真多,{NEWLINE}居然说我满嘴脏话、{CLEAR}穿着背心拖鞋的德行太差,{CLEAR}所以不允许我进去挑战。{SCROLL}真是搞笑,只要我实力够强就行了,{NEWLINE}我说什么、穿什么用得着他管吗？{CLEAR}你说是吧！",
-   "en": "The people at this Viridian Gym are so{NEWLINE}fussy.{SCROLL}They said I swear too much and dress{NEWLINE}too sloppy in my tank top and{CLEAR}flip-flops...{SCROLL}so they won’t let me in to challenge!{SCROLL}What a joke! As long as I’m strong,{NEWLINE}that’s all that matters.{SCROLL}Why should they care what I say or{NEWLINE}wear? Right?",
+   "en": "The people at this Viridian Gym are so{NEWLINE}fussy.{SCROLL}They said my filthy mouth, tank top and{NEWLINE}flip-flops show poor character...{SCROLL}so they won’t let me in to challenge!{SCROLL}What a joke! As long as I’m strong,{NEWLINE}that’s all that matters.{SCROLL}Why should they care what I say or{NEWLINE}wear? Right?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV053: meaning: 满嘴脏话/德行太差 = foul mouth, poor character (the Virtue trial), not ‘sloppy dress’"
   },
   {
    "id": 120,

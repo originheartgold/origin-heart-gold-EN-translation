@@ -86,18 +86,18 @@
   {
    "id": 10,
    "zh": "我听说了！{SCROLL}你打败了缘朱市的{NEWLINE}小松！太厉害了！{SCROLL}其实我也到了道馆的入口{CLEAR}给你加油鼓劲的,{SCROLL}可是我看到大家头上{NEWLINE}都顶着蜡烛,感觉好恶心⋯⋯{CLEAR}我心里很害怕就回来了⋯⋯{SCROLL}我们下次再聊吧！",
-   "en": "I saw, I heard!{SCROLL}You beat Morty of Ecruteak{NEWLINE}Gym! Th-that’s just incredible!{SCROLL}I actually went to the Gym’s{NEWLINE}entrance to cheer you on.{SCROLL}Did you know that? But everyone{NEWLINE}had these candles on their{CLEAR}heads, it was kinda creepy...{SCROLL}So I chickened out and{NEWLINE}took off for home...{SCROLL}Call you later!",
+   "en": "I heard! You beat Ecruteak’s Morty!{NEWLINE}That’s amazing!{SCROLL}Actually, I went to the Gym’s entrance{NEWLINE}to cheer you on...{SCROLL}But everyone had candles on their{NEWLINE}heads, and it gave me the creeps...{SCROLL}I got scared and went home... Call you{NEWLINE}later!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0691/10"
+   "origin": "agent",
+   "notes": "US 0691/10 | RV072: addition: removed invented 'did you know' and stammer"
   },
   {
    "id": 11,
    "zh": "我听说了！{SCROLL}你打败了缘朱市的{NEWLINE}小松！太厉害了！{SCROLL}其实我也到了道馆的入口{CLEAR}给你加油鼓劲的,{SCROLL}可是我看到大家头上{NEWLINE}都顶着蜡烛,感觉好恶心⋯⋯{CLEAR}我心里很害怕就回来了⋯⋯{SCROLL}我们下次再聊吧！",
-   "en": "I saw, I heard!{SCROLL}You beat Morty of Ecruteak{NEWLINE}Gym! Th-that’s just incredible!{SCROLL}I actually went to the Gym’s{NEWLINE}entrance to cheer you on.{SCROLL}Did you know that? But everyone{NEWLINE}had these candles on their{CLEAR}heads, it was kinda creepy...{SCROLL}So I chickened out and{NEWLINE}took off for home...{SCROLL}Call you later!",
+   "en": "I heard! You beat Ecruteak’s Morty!{NEWLINE}That’s amazing!{SCROLL}Actually, I went to the Gym’s entrance{NEWLINE}to cheer you on...{SCROLL}But everyone had candles on their{NEWLINE}heads, and it gave me the creeps...{SCROLL}I got scared and went home... Call you{NEWLINE}later!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0691/11"
+   "origin": "agent",
+   "notes": "US 0691/11 | RV072: addition: removed invented 'did you know' and stammer"
   },
   {
    "id": 12,
@@ -182,18 +182,18 @@
   {
    "id": 22,
    "zh": "我看到了！{SCROLL}{VAR:0103:0}在船上{NEWLINE}那英姿飒爽的身姿！{SCROLL}你真是个{NEWLINE}适合大海的人啊！{SCROLL}今天就说这么多了！{NEWLINE}拜拜！",
-   "en": "I saw, I saw, I saw!{SCROLL}You striding onto a ship, {VAR:0103:0}!{SCROLL}I can’t get over how good you look with{NEWLINE}the sea as your backdrop!{SCROLL}I hate having to hang up on you!{NEWLINE}Call you later!",
+   "en": "I saw, I saw, I saw! You looking so{NEWLINE}dashing on the ship, {VAR:0103:0}!{SCROLL}The sea really suits you! That’s all for{NEWLINE}today! Bye-bye!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0691/22"
+   "origin": "agent",
+   "notes": "US 0691/22 | RV072: meaning: 今天就说这么多了 = that's all for today"
   },
   {
    "id": 23,
    "zh": "我看到了！{SCROLL}{VAR:0103:0}在船上{NEWLINE}那英姿飒爽的身姿！{SCROLL}你真是个{NEWLINE}适合大海的人啊！{SCROLL}今天就说这么多了！{NEWLINE}拜拜！",
-   "en": "I saw, I saw, I saw!{SCROLL}You striding onto a ship, {VAR:0103:0}!{SCROLL}I can’t get over how good you look with{NEWLINE}the sea as your backdrop!{SCROLL}I hate having to hang up on you!{NEWLINE}Call you later!",
+   "en": "I saw, I saw, I saw! You looking so{NEWLINE}dashing on the ship, {VAR:0103:0}!{SCROLL}The sea really suits you! That’s all for{NEWLINE}today! Bye-bye!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0691/23"
+   "origin": "agent",
+   "notes": "US 0691/23 | RV072: meaning: 今天就说这么多了 = that's all for today"
   },
   {
    "id": 24,
@@ -326,10 +326,10 @@
   {
    "id": 40,
    "zh": "你最近还好吗？{SCROLL}你现在在干什么呢？{SCROLL}现在你在哪？{SCROLL}你得到多少个徽章了？{SCROLL}你存了多少零花钱了？{SCROLL}你妈妈身体还好吗？{SCROLL}抓到很多精灵了吗？{SCROLL}明天会是个大晴天吗？{SCROLL}啊呀,想问的东西太多了,{NEWLINE}我都停不下来了！",
-   "en": "How are you?{SCROLL}What are you doing?{SCROLL}Where are you?{SCROLL}How many Badges do you have now?{SCROLL}How much money have you saved?{SCROLL}How’s your mom?{SCROLL}Have you got lots of Pokémon?{SCROLL}Is it going to be sunny tomorrow?{SCROLL}Arrgh, there’s so much I want to{NEWLINE}chat about! This is going nowhere!",
+   "en": "How are you? What are you doing? Where{NEWLINE}are you?{SCROLL}How many Badges do you have now? How{NEWLINE}much money have you saved?{SCROLL}How’s your mom? Have you caught lots of{NEWLINE}Pokémon?{SCROLL}Is it going to be sunny tomorrow?{SCROLL}Arrgh, there’s so much I want to ask, I{NEWLINE}can’t stop!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0691/40"
+   "origin": "agent",
+   "notes": "US 0691/40 | RV072: meaning: can't stop asking"
   }
  ]
 }

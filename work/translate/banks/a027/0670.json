@@ -54,18 +54,18 @@
   {
    "id": 6,
    "zh": "奇怪？{NEWLINE}难道你已经到附近了？{SCROLL}都这么近了{NEWLINE}还有必要打电话吗？{CLEAR}你这人还真奇怪。",
-   "en": "Huh?{NEWLINE}Wait, aren’t you nearby?{SCROLL}Do you just really like talking on the{NEWLINE}phone or something? What an odd hobby.",
+   "en": "Huh? Don’t tell me you’re already{NEWLINE}nearby?{SCROLL}We’re this close, so do you really need{NEWLINE}to call? You’re a strange one.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0679/6"
+   "origin": "agent",
+   "notes": "US 0679/6 | RV072: meaning: no 'hobby'; restored the question"
   },
   {
    "id": 7,
    "zh": "我们的{VAR:0100:10}{NEWLINE}变强了　！{SCROLL}前段时间和{VAR:0100:11}{NEWLINE}战斗的时候{CLEAR}也是一招定胜负的。{SCROLL}对了,{NEWLINE}现在是{CLEAR}小古跟你通的电话。",
-   "en": "Our {VAR:0100:10} is much stronger now!{SCROLL}We were battling a {VAR:0100:11}{NEWLINE}recently and it was over before we{CLEAR}knew it!{SCROLL}Oh yeah, by the way, this is Tia.",
+   "en": "Our {VAR:0100:10} has gotten stronger!{SCROLL}The other day, we battled a {VAR:0100:11}{NEWLINE}and settled it with one move.{SCROLL}Oh yeah, by the way, this is Tia on the{NEWLINE}phone.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0679/7"
+   "origin": "agent",
+   "notes": "US 0679/7 | RV072: meaning: 一招定胜负 = won with one move (D-2004)"
   },
   {
    "id": 8,
@@ -86,10 +86,10 @@
   {
    "id": 10,
    "zh": "我们三个{NEWLINE}再来一次对战吧。{SCROLL}我们在{VAR:0104:3},{NEWLINE}你一定要来哦。",
-   "en": "We should have another battle, just{NEWLINE}the three of us.{SCROLL}We’re on {VAR:0104:3}, so come on{NEWLINE}over when you get the chance.",
+   "en": "Let’s have another battle, the three{NEWLINE}of us.{SCROLL}We’re on {VAR:0104:3}, so be sure{NEWLINE}to come.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0679/10"
+   "origin": "agent",
+   "notes": "US 0679/10 | RV072: softened: 你一定要来哦 = be sure to come"
   },
   {
    "id": 11,
@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "难得你给我们打电话,{NEWLINE}就出个谜题给你吧。{SCROLL}⋯⋯　⋯⋯　⋯⋯{SCROLL}现在和你通电话的,{NEWLINE}是小古{CLEAR}还是扎古呢？{SCROLL}⋯⋯　⋯⋯　⋯⋯{NEWLINE}⋯⋯　⋯⋯　⋯⋯{CLEAR}⋯⋯　⋯⋯　⋯⋯{CLEAR}⋯⋯　⋯⋯　⋯⋯{CLEAR}正确答案是⋯⋯{SCROLL}偶尔来看看她们的{NEWLINE}超喜欢俱乐部的{CLEAR}三春。",
-   "en": "Since you went to the trouble of{NEWLINE}calling us, here’s a riddle for you.{SCROLL}... ... ...{SCROLL}Who are you talking to{NEWLINE}right now? Tia or Kay?{SCROLL}... ... ... ... ... ... The{NEWLINE}correct answer is...{SCROLL}Eleanor from the Pokémon Fan Club, who{NEWLINE}drops by to see the twins now and then!",
+   "en": "Since you went to the trouble of calling{NEWLINE}us, here’s a riddle for you. ... ... ...{SCROLL}Who are you talking to right now? Tia or{NEWLINE}Kay? ... ... ... ... ... ...{SCROLL}The correct answer is...{SCROLL}Pokéfan Eleanor, who drops by to see{NEWLINE}the twins now and then!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0679/12; 三春 = US Eleanor (Fan Club)"
+   "notes": "US 0679/12; 三春 = US Eleanor (Fan Club) | RV072: name: 超喜欢俱乐部 is the Pokéfan class (0671#30)"
   },
   {
    "id": 13,

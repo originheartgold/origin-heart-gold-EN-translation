@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "输给你了,不过{NEWLINE}这场对战我觉得很开心⋯⋯{SCROLL}在这边钓鱼的时候,{NEWLINE}偶尔能钓到{CLEAR}别人掉在水里的道具,{CLEAR}到时候送给你吧⋯⋯{SCROLL}把你的电话号码{NEWLINE}告诉我怎样？{VAR:0200:0}",
-   "en": "Well, that was a very interesting{NEWLINE}battle now, wasn’t it?{SCROLL}When I’m fishing here, I sometimes{NEWLINE}catch items that people have dropped.{CLEAR}If I find anything, I’ll give it to you.{SCROLL}Will you give me your{NEWLINE}phone number? {VAR:0200:0}",
+   "en": "I lost to you, but I really enjoyed that{NEWLINE}battle...{SCROLL}When I fish here, I sometimes hook items{NEWLINE}people dropped in the water.{SCROLL}When I do, I’ll give them to you... How{NEWLINE}about telling me your phone number? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0676/1"
+   "origin": "agent",
+   "notes": "US 0676/1 | RV072: omission: restored the loss"
   },
   {
    "id": 2,
@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "你来了啊,{SCROLL}看！{NEWLINE}我钓到了这种精灵球！{SCROLL}不过上面粘有水草,{NEWLINE}所以看不清是什么球,{CLEAR}你应该能看出来吧？{SCROLL}",
-   "en": "Ah! Here it is!{SCROLL}Come on!{NEWLINE}I caught a Poké Ball!{SCROLL}It’s kind of covered with algae and{NEWLINE}seaweed. I can’t really tell what kind{CLEAR}of Poké Ball it is, but I bet you know!{SCROLL}",
+   "en": "There you are! Look! I fished up this{NEWLINE}Poké Ball!{SCROLL}But it’s covered in water weeds, so I{NEWLINE}can’t tell what kind of Ball it is.{SCROLL}You should be able to tell, right?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0676/5"
+   "origin": "agent",
+   "notes": "US 0676/5 | RV072: meaning: matched zh opening and question"
   },
   {
    "id": 6,
@@ -86,10 +86,10 @@
   {
    "id": 10,
    "zh": "{VAR:0104:3}最近{NEWLINE}都钓不到什么大家伙了⋯⋯{SCROLL}快来和我对战吧。",
-   "en": "Sigh...They’re not biting like before on{NEWLINE}{VAR:0104:3}...{SCROLL}You have to come for a battle!",
+   "en": "I haven’t hooked anything big on{NEWLINE}{VAR:0104:3} lately...{SCROLL}Hurry and come battle me.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0676/10"
+   "origin": "agent",
+   "notes": "US 0676/10 | RV072: meaning: no big catches; request to battle"
   },
   {
    "id": 11,
@@ -102,18 +102,18 @@
   {
    "id": 12,
    "zh": "哦哦,刚才{NEWLINE}好像有什么道具上钩了！{SCROLL}我想你会用得上的,{NEWLINE}快来{VAR:0104:3}吧！",
-   "en": "I snagged an item while fishing.{NEWLINE}Come pick it up on {VAR:0104:3}!",
+   "en": "Ooh, looks like some item just got{NEWLINE}hooked!{SCROLL}I think you’ll find it useful, so hurry{NEWLINE}to {VAR:0104:3}!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0676/12"
+   "origin": "agent",
+   "notes": "US 0676/12 | RV072: omission: restored 'you'll find it useful'"
   },
   {
    "id": 13,
    "zh": "你不来拿道具吗？{NEWLINE}什么？不知道我在哪？{SCROLL}我就在{VAR:0104:3}啊,{NEWLINE}从卡吉镇往烟墨市那边走{CLEAR}你就能看到了！",
-   "en": "Don’t you want this item?{NEWLINE}Hah? You don’t know where?{SCROLL}{VAR:0104:3}... Just head{NEWLINE}from Mahogany toward Blackthorn!",
+   "en": "Don’t you want this item? Huh? You{NEWLINE}don’t know where I am?{SCROLL}I’m on {VAR:0104:3}!{SCROLL}Head from Mahogany Town toward{NEWLINE}Blackthorn City, and you’ll see me!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0676/13"
+   "origin": "agent",
+   "notes": "US 0676/13 | RV072: omission: restored 'you'll see me'"
   }
  ]
 }

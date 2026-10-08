@@ -382,10 +382,10 @@
   {
    "id": 47,
    "zh": "出身地",
-   "en": "Location",
+   "en": "Hometown",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0758/47 | Wi-Fi Plaza survey (defunct online feature)"
+   "origin": "agent",
+   "notes": "US 0758/47 | Wi-Fi Plaza survey (defunct online feature) | RV118: meaning: 出身地 = place of origin, not a generic location (D-2027)"
   },
   {
    "id": 48,

@@ -424,9 +424,11 @@ def main(argv=None):
                     help="Directory for export, build report and patch verification scratch files")
     ap.add_argument("--out", help="ROM output (default: selected work directory / standard ROM filename)")
     ap.add_argument("--patch", help="Patch output (default: selected work directory / standard patch filename)")
-    ap.add_argument("--only", help="build with exactly these fixes (comma-separated ids, see fixes.py list); "
-                                   "a disabled fix named here is applied too")
-    ap.add_argument("--without", help="leave out these fixes (comma-separated ids)")
+    ap.add_argument("--only", action="append",
+                    help="build with exactly these fixes (comma-separated ids, see fixes.py list; may be repeated); "
+                         "a disabled fix named here is applied too")
+    ap.add_argument("--without", action="append",
+                    help="leave out these fixes (comma-separated ids; may be repeated, every one counts)")
     ap.add_argument("--glyph-fonts", default=None, help="font files for the font fix (default: from the fix, 0,1,2,4)")
     ap.add_argument("--no-glyphs", action="store_true", help="leave out every font fix")
     ap.add_argument("--no-graphics", action="store_true", help="leave out every graphics fix")
@@ -463,7 +465,8 @@ def main(argv=None):
     fonts, glyph_codes = glyph_spec(active)
     if a.glyph_fonts is not None and fonts:
         fonts = tuple(int(x) for x in a.glyph_fonts.split(","))
-    report["fixes"] = {"only": a.only, "without": a.without, "without_kinds": list(without_kinds),
+    report["fixes"] = {"only": ",".join(a.only) if a.only else None,
+                       "without": ",".join(a.without) if a.without else None, "without_kinds": list(without_kinds),
                        "applied": [f["id"] for f in active]}
     log(f"fixes: {len(active)} selected: {', '.join(f['id'] for f in active)}")
     # the assembler for the strings/code/data fixes: checked now, before the export, so a missing or wrong

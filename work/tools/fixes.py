@@ -1843,8 +1843,8 @@ def main(argv=None):
     p = sub.add_parser("show")
     p.add_argument("id")
     p = sub.add_parser("check")
-    p.add_argument("--only")
-    p.add_argument("--without")
+    p.add_argument("--only", action="append", help="comma-separated fix ids; may be repeated")
+    p.add_argument("--without", action="append", help="comma-separated fix ids; may be repeated")
     p = sub.add_parser("docs")
     p.add_argument("--out", help="write here instead of stdout")
     p = sub.add_parser("overlays", help="write overlays.toml (RAM bases of the overlays the fixes touch) "

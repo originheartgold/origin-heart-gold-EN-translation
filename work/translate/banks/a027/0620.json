@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "这前面是烟墨市的禁地龙之洞穴,{NEWLINE}如果没有伊吹馆主的许可{CLEAR}是不能进去的。",
-   "en": "Beyond here is the Dragon’s Den,{NEWLINE}Blackthorn City’s sacred ground.{CLEAR}You can’t enter without the{CLEAR}permission of Clair, the Gym Leader.",
+   "en": "Beyond here is the Dragon’s Den,{NEWLINE}Blackthorn City’s forbidden ground. You{CLEAR}can’t enter without the permission of{CLEAR}Clair, the Gym Leader.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV049: meaning: 禁地 = forbidden ground, not sacred ground (D-1887)"
   },
   {
    "id": 2,
@@ -423,10 +423,10 @@
   {
    "id": 52,
    "zh": "水晶『谢谢前辈愿意指导,{NEWLINE}我会全力以赴真人对待的。",
-   "en": "Crystal: Thank you for{NEWLINE}agreeing to coach me! I’ll{CLEAR}give it everything I’ve got.",
+   "en": "Crystal: Thank you for agreeing to{NEWLINE}coach me! I’ll give it everything I’ve{CLEAR}got and take it seriously.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV049: omission: 认真对待 (zh typo 真人对待) restored"
   },
   {
    "id": 53,

@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "哔！哔！{SCROLL}爱？{SCROLL}⋯⋯啊,是吗。{NEWLINE}我还以为你是被{CLEAR}我的笛声所吸引来的！{SCROLL}原来你是来拿{NEWLINE}星之碎片的啊。{SCROLL}给你吧,哔！{SCROLL}",
-   "en": "Tweet! Tweeeeeet!{SCROLL}Huh?{SCROLL}...Oh, I see.{NEWLINE}I thought you came over here because{CLEAR}you were enticed by my whistling.{SCROLL}That wasn’t it. You just came for the{NEWLINE}Star Piece, didn’t you? Here you go!{SCROLL}",
+   "en": "Tweet! Tweeeeeet! Huh? ...Oh, I see.{SCROLL}I thought you came over here because{NEWLINE}you were enticed by my whistling.{SCROLL}So you came for the Star Piece. Here{NEWLINE}you go! Tweet!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0671/5"
+   "origin": "agent",
+   "notes": "US 0671/5 | RV072: omission: restored final 哔"
   },
   {
    "id": 6,
@@ -86,10 +86,10 @@
   {
    "id": 10,
    "zh": "我们再来一次对战吧？{NEWLINE}我的大葱鸭现在{CLEAR}可是斗志满满啊⋯⋯{SCROLL}我在{VAR:0104:3},{NEWLINE}你路过的话就和我打个招呼吧！",
-   "en": "Want to battle again?{SCROLL}For some reason, my Farfetch’d is all{NEWLINE}worked up and raring to go.{SCROLL}{VAR:0104:3} is where I’m at.{NEWLINE}Keep an eye out for me, OK?",
+   "en": "Want to battle again? My Farfetch’d is{NEWLINE}all fired up right now...{SCROLL}I’m on {VAR:0104:3}. If you’re{NEWLINE}passing by, come say hi!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0671/10; modernised from US 0671#10"
+   "origin": "agent",
+   "notes": "US 0671/10; modernised from US 0671#10 | RV072: meaning: 'if you're passing by, say hi'; removed 'for some reason'"
   },
   {
    "id": 11,
@@ -126,10 +126,10 @@
   {
    "id": 15,
    "zh": "怎么？不要吗？　{NEWLINE}我们在{VAR:0104:3},{CLEAR}快点来吧。",
-   "en": "What’s wrong?{NEWLINE}Don’t you want this gift?{SCROLL}Catch up to me on {VAR:0104:3},{NEWLINE}and I’ll let you have it.",
+   "en": "What’s wrong? Don’t you want it? We’re{NEWLINE}on {VAR:0104:3}, so hurry over.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0671/15"
+   "origin": "agent",
+   "notes": "US 0671/15 | RV072: meaning: matched the zh request"
   }
  ]
 }

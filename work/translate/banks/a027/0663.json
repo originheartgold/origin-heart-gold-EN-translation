@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "怎么了？{NEWLINE}就在附近怎么还打电话？{CLEAR}埃米不害怕啦,{CLEAR}你直接来和埃米见面吧。",
-   "en": "What’s up? Why call when you’re{NEWLINE}right nearby? Emmy isn’t scary!{CLEAR}Just come see Emmy in person.",
+   "en": "What’s up? Why call when you’re right{NEWLINE}nearby? Emmy’s not scared!{SCROLL}Just come see Emmy in person.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0672/6"
+   "notes": "US 0672/6 | RV072: meaning: 不害怕 = Emmy isn't scared (D-1899)"
   },
   {
    "id": 7,

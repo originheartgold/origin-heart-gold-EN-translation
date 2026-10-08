@@ -11249,10 +11249,10 @@
   {
    "id": 1067,
    "zh": "邪恶精灵",
-   "en": "Wicked Pokémon",
+   "en": "Malevolent Pokémon",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s) | RV114: name: Galarian Moltres official category is Malevolent Pokémon (zh 邪恶 = official zh genus); v3 had Wicked.",
    "qa_ignore": [
     "wider_than_zh"
    ]

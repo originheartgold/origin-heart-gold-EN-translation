@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "我的{VAR:0100:10}{NEWLINE}一直都在坚持锻炼！{SCROLL}因为我不想输给{NEWLINE}{VAR:0100:11}！",
-   "en": "My {VAR:0100:10} is always training!{SCROLL}It won’t lose to any {VAR:0100:11}!",
+   "en": "My {VAR:0100:10} is always training!{SCROLL}Because I don’t want to lose to{NEWLINE}{VAR:0100:11}!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0681/7"
+   "origin": "agent",
+   "notes": "US 0681/7 | RV072: meaning: 因为我不想输 = I don't want to lose"
   },
   {
    "id": 8,
@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "嗯⋯⋯我可是{NEWLINE}很想把果实给你啊。{SCROLL}我在{VAR:0104:3}{NEWLINE}等你来拿！",
-   "en": "Yeah... We’d really like to give you this{NEWLINE}Berry... We’re on {VAR:0104:3},{CLEAR}so come get it please!",
+   "en": "Hmm... I really do want to give you this{NEWLINE}Berry.{SCROLL}I’ll be waiting on {VAR:0104:3}{NEWLINE}for you to come get it!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0681/14"
+   "origin": "agent",
+   "notes": "US 0681/14 | RV072: meaning: speaker is 'I'; restored the wait"
   }
  ]
 }

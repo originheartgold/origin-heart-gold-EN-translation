@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "我的{VAR:0100:10}{NEWLINE}变得越来越强了！{CLEAR}这一切都在我的计算之内！{SCROLL}对了,前不久我把{NEWLINE}{VAR:0100:11}打败了！{SCROLL}这对我的学习很有用！{SCROLL}再见啦！",
-   "en": "My {VAR:0100:10}’s getting stronger,{NEWLINE}exactly as I calculated!{SCROLL}By the way, we knocked out a wild{NEWLINE}{VAR:0100:11} just the other day.{SCROLL}Studying up in advance worked!{SCROLL}See you later!",
+   "en": "My {VAR:0100:10}’s getting stronger,{NEWLINE}exactly as I calculated!{SCROLL}By the way, we knocked out a{NEWLINE}{VAR:0100:11} the other day.{SCROLL}It was really useful for my studies! See{NEWLINE}you later!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0689/7"
+   "origin": "agent",
+   "notes": "US 0689/7 | RV072: meaning: battle helped his studies (D-1901)"
   },
   {
    "id": 8,

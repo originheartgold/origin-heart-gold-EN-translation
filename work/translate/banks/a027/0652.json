@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "喂喂,{NEWLINE}你有什么事么？{SCROLL}现在的小孩子,就算再近{NEWLINE}也只肯用电话联系。{SCROLL}我想跟他们{CLEAR}面对面聊天啊。",
-   "en": "Hello?{NEWLINE}Oh, hello. How are you?{SCROLL}Kids nowadays can just call even though{NEWLINE}they’re nearby...{SCROLL}I’d rather talk face-to-face...",
+   "en": "Hello? What can I do for you? Kids these{NEWLINE}days will only call, no matter how close{CLEAR}by they are. I’d like to talk with them{CLEAR}face-to-face...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0661/1"
+   "origin": "agent",
+   "notes": "US 0661/1 | RV071: meaning: 'What do you need?' greeting"
   },
   {
    "id": 2,
@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "你寄放在我这的精灵{NEWLINE}下蛋了,{SCROLL}想看看是什么样的蛋吗？{NEWLINE}那就快来我这儿拿吧。",
-   "en": "One of your Pokémon we’re raising is{NEWLINE}holding an Egg!{SCROLL}I bet you’d like to know what kind of{NEWLINE}Egg it is, right? You should come get it!",
+   "en": "The Pokémon you left with us{NEWLINE}laid an Egg!{SCROLL}Want to see what kind of Egg it is?{NEWLINE}Then hurry over and pick it up!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0661/3"
+   "origin": "agent",
+   "notes": "US 0661/3 | RV071: meaning: 下蛋 is 'laid an Egg' (D-1997)"
   },
   {
    "id": 4,
@@ -102,18 +102,18 @@
   {
    "id": 12,
    "zh": "喂喂,是我啊。{NEWLINE}养育屋的老爷爷。{SCROLL}你寄放在我这的精灵{NEWLINE}培养了一下⋯⋯然后！{SCROLL}精灵居然下蛋了！{SCROLL}虽然不知道是怎么下出来的,{NEWLINE}但的确是你的精灵{CLEAR}下出来的蛋。{SCROLL}想看看是什么样的蛋吗？{NEWLINE}那就快来我这拿吧。",
-   "en": "Hello? It’s me, the Day-Care Man.{SCROLL}We were raising your Pokémon,{NEWLINE}and my goodness, were we surprised!{SCROLL}Your Pokémon was holding an Egg!{SCROLL}We don’t know how it got there,{NEWLINE}but your Pokémon had it.{SCROLL}I bet you’d like to know what kind of{NEWLINE}Egg it is, right? You should come get it!",
+   "en": "Hello? It’s me, the Day-Care Man. We{NEWLINE}were raising the Pokémon you left with{CLEAR}us... and then! Your Pokémon actually{CLEAR}laid an Egg! We don’t know how it laid it,{CLEAR}but it’s definitely an Egg your Pokémon{CLEAR}laid. Want to see what kind of Egg it is?{CLEAR}Then hurry over and pick it up!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0661/12"
+   "origin": "agent",
+   "notes": "US 0661/12 | RV071: meaning: 下蛋 is 'laid an Egg' (D-1997)"
   },
   {
    "id": 13,
    "zh": "喂喂,是我啊。{NEWLINE}养育屋的老爷爷。{SCROLL}你寄放在我这的精灵{NEWLINE}下蛋了,{SCROLL}想看看是什么样的蛋吗？{NEWLINE}那就快来我这拿吧。",
-   "en": "Hello? It’s me, the Day-Care Man.{SCROLL}Your Pokémon is holding an Egg!{SCROLL}I bet you’d like to know what kind of{NEWLINE}Egg it is, right? You should come get it!",
+   "en": "Hello? It’s me, the Day-Care Man.{SCROLL}The Pokémon you left with us{NEWLINE}laid an Egg!{SCROLL}Want to see what kind of Egg it is?{NEWLINE}Then hurry over and pick it up!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0661/13"
+   "origin": "agent",
+   "notes": "US 0661/13 | RV071: meaning: 下蛋 is 'laid an Egg' (D-1997)"
   }
  ]
 }

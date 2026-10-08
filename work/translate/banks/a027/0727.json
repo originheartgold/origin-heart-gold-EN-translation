@@ -438,10 +438,10 @@
   {
    "id": 54,
    "zh": "又画了一张奇怪的脸,{NEWLINE}不要笑啊！",
-   "en": "You drew another funny face! Don’t{NEWLINE}make me laugh!",
+   "en": "Drew another weird face!{NEWLINE}Don’t laugh!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0738/54; ext-review RB-005"
+   "notes": "US 0738/54; ext-review RB-005 | RV117: meaning: zh names no drawer and says 'don't laugh' (D-1969)"
   },
   {
    "id": 55,
@@ -646,10 +646,10 @@
   {
    "id": 80,
    "zh": "不断地混合吧！",
-   "en": "I’m going to mix records with{NEWLINE}everyone!",
+   "en": "Let’s keep on mixing!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0738/80"
+   "origin": "agent",
+   "notes": "US 0738/80 | RV117: meaning: zh 不断地混合吧 'keep mixing'; US added 'with everyone'"
   },
   {
    "id": 81,
@@ -662,10 +662,10 @@
   {
    "id": 82,
    "zh": "你也下次再混合吧！",
-   "en": "You should mix records, too!",
+   "en": "You should mix records next time, too!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0738/82"
+   "origin": "agent",
+   "notes": "US 0738/82 | RV117: omission: 下次 'next time' restored"
   },
   {
    "id": 83,
@@ -750,10 +750,10 @@
   {
    "id": 93,
    "zh": "旋转交换真是期待呀！",
-   "en": "Spin Trades are so much fun!",
+   "en": "I can’t wait for the Spin Trade!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0738/93"
+   "origin": "agent",
+   "notes": "US 0738/93 | RV117: meaning: zh 真是期待 'looking forward', as #79/#139"
   },
   {
    "id": 94,
@@ -838,10 +838,10 @@
   {
    "id": 104,
    "zh": "现在给你看一下{NEWLINE}训练师卡以示友好吧。",
-   "en": "We’re showing each other our{NEWLINE}Trainer Cards to get acquainted.",
+   "en": "Let me show you my Trainer Card now as{NEWLINE}a friendly greeting.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0738/104"
+   "origin": "agent",
+   "notes": "US 0738/104 | RV117: meaning: zh is the speaker showing their card, not 'each other'"
   },
   {
    "id": 105,
@@ -1158,10 +1158,10 @@
   {
    "id": 144,
    "zh": "啊久等了！{NEWLINE}我们开始吧！",
-   "en": "OK, all ready!{NEWLINE}Let’s get this Spin Trade started!",
+   "en": "Sorry I made you wait!{NEWLINE}Let’s get this Spin Trade started!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0738/144"
+   "origin": "agent",
+   "notes": "US 0738/144 | RV117: omission: 久等了 restored"
   },
   {
    "id": 145,
@@ -1198,10 +1198,10 @@
   {
    "id": 149,
    "zh": "久等了！那么一起{NEWLINE}开始旋转交换吧！",
-   "en": "OK!{NEWLINE}Let’s do a Spin Trade together!",
+   "en": "Thanks for waiting!{NEWLINE}Let’s do a Spin Trade together!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0738/149"
+   "origin": "agent",
+   "notes": "US 0738/149 | RV117: omission: 久等了 restored"
   },
   {
    "id": 150,
@@ -1246,10 +1246,10 @@
   {
    "id": 155,
    "zh": "好想要那个蛋啊！",
-   "en": "There goes the Egg I wanted...",
+   "en": "I really want that Egg!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0738/155"
+   "origin": "agent",
+   "notes": "US 0738/155 | RV117: meaning: zh 好想要那个蛋啊 is wanting, not losing it"
   },
   {
    "id": 156,
@@ -1478,26 +1478,26 @@
   {
    "id": 184,
    "zh": "欢迎！{SCROLL}敬请期待联机房间{NEWLINE}无法进行的{CLEAR}真正对战吧！{SCROLL}",
-   "en": "Good luck! I hope you enjoy{NEWLINE}serious battles.{SCROLL}You can’t experience ones like{NEWLINE}this in the Union Room!{SCROLL}",
+   "en": "Welcome!{SCROLL}Look forward to the real battles{NEWLINE}you can’t have in the Union Room!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0738/184"
+   "origin": "agent",
+   "notes": "US 0738/184 | RV117: meaning: zh 欢迎 'Welcome', not 'Good luck'"
   },
   {
    "id": 185,
    "zh": "去跟别人说话吧！{SCROLL}为什么总是和我对话呢！？{SCROLL}你一定要更加{NEWLINE}主动积极地与别人对话,{CLEAR}不然就交不到朋友了！{SCROLL}",
-   "en": "You want to chat?{SCROLL}Well, you shouldn’t be wasting your{NEWLINE}time chatting with me.{SCROLL}You need to be more active and talk{NEWLINE}to other players.{SCROLL}After all, you can’t make friends{NEWLINE}if you don’t talk to people.{SCROLL}",
+   "en": "Go talk to other people!{SCROLL}Why do you keep talking to me?!{SCROLL}You need to be more active and talk{NEWLINE}to other players, or you’ll never{CLEAR}make any friends!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0738/185"
+   "origin": "agent",
+   "notes": "US 0738/185 | RV117: softened: zh tells the player off for always talking to them"
   },
   {
    "id": 186,
    "zh": "在哪儿？{CLEAR}就在你的眼前啊！{SCROLL}啊！{NEWLINE}难道是假的！？{SCROLL}真的在别的地方吗？{SCROLL}⋯⋯请不要　{NEWLINE}说些奇怪的话了！{CLEAR}够了！{SCROLL}",
-   "en": "Where are you?{NEWLINE}Um... Right before my eyes.{SCROLL}Oh!{NEWLINE}Are you maybe an impostor?{SCROLL}The real player is somewhere else?{SCROLL}...That’s ridiculous!{NEWLINE}Please, don’t be silly!{CLEAR}My word!{SCROLL}",
+   "en": "Where?{CLEAR}Right before your eyes!{SCROLL}Oh!{NEWLINE}Could it be a fake?!{SCROLL}Is the real one somewhere else?{SCROLL}...Please stop saying weird things!{CLEAR}Enough!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0738/186"
+   "origin": "agent",
+   "notes": "US 0738/186 | RV117: addressee: zh 你的眼前 'your eyes'; no invented 'player'/'impostor' (D-1969)"
   },
   {
    "id": 187,

@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "告诉你件很有意思的事。{NEWLINE}前段时间我和别人{CLEAR}交换了猫头鹰,{SCROLL}可那个猫头鹰{NEWLINE}居然是我很久以前{CLEAR}和别的训练师{CLEAR}交换掉的！{SCROLL}它转辗地最后又回到了{CLEAR}我的身边。{SCROLL}这世界还真是小啊！",
-   "en": "I was so surprised!{NEWLINE}A few days ago, I received a Noctowl{CLEAR}when I traded with someone.{SCROLL}It turns out that Noctowl was the same{NEWLINE}one I gave away in a trade with another{CLEAR}Trainer years ago!{SCROLL}I guess that’s a case of “What goes{NEWLINE}around, comes around,” in that it came{CLEAR}back to me.{SCROLL}The world is small after all!",
+   "en": "Let me tell you something interesting.{SCROLL}A while ago, I received a Noctowl in a{NEWLINE}trade.{SCROLL}It turned out to be a Noctowl I had{NEWLINE}traded to another Trainer long ago!{SCROLL}After passing from hand to hand, it{NEWLINE}found its way back to me.{SCROLL}It’s a small world after all!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0670/6; modernised from US 0670#6"
+   "origin": "agent",
+   "notes": "US 0670/6; modernised from US 0670#6 | RV072: addition: removed invented proverb; restored opening"
   },
   {
    "id": 7,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "我去抓{NEWLINE}野生精灵的时候,{CLEAR}几乎都没有成功过。{SCROLL}前几天又让{NEWLINE}小拉达给跑掉了⋯⋯{SCROLL}还是在我脱掉帽子{NEWLINE}毕恭毕敬行礼的时候{CLEAR}跑掉的。{SCROLL}野生的小拉达{NEWLINE}真是没礼貌⋯⋯",
-   "en": "You know, whenever I try to catch a{NEWLINE}wild Pokémon, they seem to always run{CLEAR}away. It’s happened so many times.{SCROLL}A couple days ago a Rattata got away{NEWLINE}from me...{SCROLL}You know, whenever I meet a person or{NEWLINE}Pokémon, I always make sure to take off{CLEAR}my hat and introduce myself properly,{CLEAR}and that’s when they run away.{SCROLL}Rattata are such impolite creatures...",
+   "en": "Whenever I try to catch a wild Pokémon,{NEWLINE}I almost never succeed.{SCROLL}A few days ago, a Rattata got away from{NEWLINE}me again...{SCROLL}and right while I was taking off my hat{NEWLINE}and bowing to it respectfully.{SCROLL}Wild Rattata are so rude...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0670/8; modernised from US 0670#8"
+   "origin": "agent",
+   "notes": "US 0670/8; modernised from US 0670#8 | RV072: addition: removed invented 'introduce myself to people' clause"
   },
   {
    "id": 9,

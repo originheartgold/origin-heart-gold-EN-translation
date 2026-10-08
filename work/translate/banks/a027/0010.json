@@ -358,10 +358,10 @@
   {
    "id": 44,
    "zh": "在此无法获得信件！",
-   "en": "You can’t write Mail here!",
+   "en": "You can’t get Mail here!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV056: meaning: zh 获得 = get/obtain; English had silently followed JP 'write'; hack-finding logged"
   },
   {
    "id": 45,
@@ -510,10 +510,10 @@
   {
    "id": 63,
    "zh": "之前使用的喷剂效果还在！",
-   "en": "Since a Repel’s effects still linger,{NEWLINE}you can’t use this now.",
+   "en": "The effects of the Repel you used{NEWLINE}earlier still linger!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0010/63"
+   "origin": "agent",
+   "notes": "US 0010/63 | RV056: addition: zh only says the earlier spray's effect remains; dropped US 'you can't use this now'"
   },
   {
    "id": 64,
@@ -620,10 +620,10 @@
   {
    "id": 76,
    "zh": "{VAR:0108:0}{NEWLINE}无法卖出。",
-   "en": "{VAR:0108:0}? Oh, no.{NEWLINE}I can’t buy that.",
+   "en": "{VAR:0108:0}{NEWLINE}can’t be sold.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0010/76"
+   "origin": "agent",
+   "notes": "US 0010/76 | RV056: addition: zh 无法卖出 = can't be sold; US added clerk's 'Oh, no. I can't buy that'"
   },
   {
    "id": 77,
@@ -828,10 +828,10 @@
   {
    "id": 102,
    "zh": "能够把背包中的一些道具{NEWLINE}登录到快捷键上。",
-   "en": "A Key Item in the Bag can be assigned{NEWLINE}to this button for instant use.",
+   "en": "Some items in your Bag can be{NEWLINE}registered to this button.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0010/102"
+   "origin": "agent",
+   "notes": "US 0010/102 | RV056: meaning: zh: some items in the Bag can be registered to the shortcut button; US said Key Item / instant use"
   },
   {
    "id": 103,

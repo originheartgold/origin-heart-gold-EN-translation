@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "除了我之外还有其他{NEWLINE}厉害的道馆馆主吧？{CLEAR}你就尽力去打败他们吧！",
-   "en": "You know there’re some stronger{NEWLINE}Gym Leaders around.{CLEAR}Don’t lose heart! Keep going!",
+   "en": "There are other tough Gym Leaders{NEWLINE}besides me, right? Give it everything{CLEAR}you’ve got and beat them!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0656/3"
+   "origin": "agent",
+   "notes": "US 0656/3 | RV071: meaning: no 'stronger than me'; 'beat them' restored (D-1896)"
   },
   {
    "id": 4,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "嗯⋯⋯你现在{NEWLINE}还有时间和我战斗吗？{SCROLL}你不是和别的人{NEWLINE}也有预约了么？",
-   "en": "Hmm... You’re just battling me, right?{NEWLINE}Don’t you have other plans?",
+   "en": "Hmm... Do you even have time to battle{NEWLINE}me right now? Don’t you have plans with{CLEAR}someone else too?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0656/8"
+   "origin": "agent",
+   "notes": "US 0656/8 | RV071: meaning: zh asks whether you have time"
   },
   {
    "id": 9,
@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "最近道馆的瀑布设备{NEWLINE}有点问⋯⋯哇！{SCROLL}哗啦啦啦啦啦啦啦啦啦{NEWLINE}啦啦啦啦啦啦啦啦啦啦{CLEAR}啦啦啦啦啦啦啦啦啦啦{CLEAR}啦啦啦啦啦啦啦啦啦啦⋯⋯{SCROLL}⋯⋯不好意思,{NEWLINE}刚才那个装置又坏了,{CLEAR}水喷了出来。{SCROLL}等我修好它之后{NEWLINE}再给你回个电话！",
-   "en": "Lately my Gym’s waterfall device has{NEWLINE}been malfunction... Aaaaahh!{SCROLL}Boomwhooshoowhooshoowhoosh{CLEAR}oowhooshoowhooshoowhoosh{CLEAR}oowhooshoowhooshoowhoosh...!{SCROLL}...Haa haaa haaaaa. Sorry.{NEWLINE}While I was on the phone with you, the{CLEAR}device broke and I just got doused{CLEAR}with water.{SCROLL}I’ll call you back once things have{NEWLINE}calmed down a bit here!",
+   "en": "Lately my Gym’s waterfall device has{NEWLINE}had a bit of a probl... Waaah!{SCROLL}Boomwhooshoowhooshoowhoosh{CLEAR}oowhooshoowhooshoowhoosh{CLEAR}oowhooshoowhooshoowhoosh...!{SCROLL}...Sorry about that. The device just{NEWLINE}broke again and water came{CLEAR}spraying out.{SCROLL}I’ll call you back once I’ve fixed it!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0656/14"
+   "origin": "agent",
+   "notes": "US 0656/14 | RV071: meaning: device broke 'again'; 'once I've fixed it' (D-1897); removed added panting"
   }
  ]
 }

@@ -6,26 +6,26 @@
   {
    "id": 0,
    "zh": "⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯{NEWLINE}⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯{SCROLL}呼噜~呼~呼噜噜⋯⋯{NEWLINE}⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯{SCROLL}什么！已经这么晚了！{NEWLINE}糟了！貌似睡过头了！{SCROLL}",
-   "en": "...{NEWLINE}...{SCROLL}Yaaaaawn...{NEWLINE}...{SCROLL}Huh? What?! Is it already that late?!{NEWLINE}Oh no! I overslept!{SCROLL}",
+   "en": "...{NEWLINE}...{SCROLL}Snore... Zzz... Snnnore...{NEWLINE}...{SCROLL}What?! It’s already this late?!{NEWLINE}Oh no! Looks like I overslept!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV058: meaning: 呼噜 is snoring, not a yawn; 貌似 kept"
   },
   {
    "id": 1,
    "zh": "⋯⋯　⋯⋯　⋯⋯{NEWLINE}⋯⋯　⋯⋯　⋯⋯{SCROLL}呼噜~呼~呼噜噜⋯⋯{NEWLINE}⋯⋯　⋯⋯　⋯⋯{SCROLL}咦！天都已经这么亮了！{SCROLL}",
-   "en": "...{NEWLINE}...{SCROLL}Yaaaaaaawn...{NEWLINE}...{SCROLL}Huh? It’s already become so{NEWLINE}bright outside!{SCROLL}",
+   "en": "...{NEWLINE}...{SCROLL}Snore... Zzz... Snnnore...{NEWLINE}...{SCROLL}Huh? It’s already become so{NEWLINE}bright outside!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0219/1"
+   "origin": "agent",
+   "notes": "US 0219/1 | RV058: meaning: 呼噜 is snoring, not a yawn"
   },
   {
    "id": 2,
    "zh": "⋯⋯　⋯⋯　⋯⋯{NEWLINE}⋯⋯　⋯⋯　⋯⋯{SCROLL}呼噜~呼~呼噜噜⋯⋯{NEWLINE}⋯⋯　⋯⋯　⋯⋯{SCROLL}什么！已经这么晚了！{NEWLINE}糟了！貌似睡过头了！{SCROLL}",
-   "en": "...{NEWLINE}...{SCROLL}Yaaaaawn...{NEWLINE}...{SCROLL}Huh? What?! Is it already that late?!{NEWLINE}Oh no! I overslept!{SCROLL}",
+   "en": "...{NEWLINE}...{SCROLL}Snore... Zzz... Snnnore...{NEWLINE}...{SCROLL}What?! It’s already this late?!{NEWLINE}Oh no! Looks like I overslept!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0219/2"
+   "origin": "agent",
+   "notes": "US 0219/2 | RV058: meaning: 呼噜 is snoring, not a yawn; 貌似 kept"
   },
   {
    "id": 3,
@@ -38,18 +38,18 @@
   {
    "id": 4,
    "zh": "⋯⋯　⋯⋯　⋯⋯{NEWLINE}⋯⋯　⋯⋯　⋯⋯{SCROLL}嗯,嗯,嗯嗯嗯⋯⋯{NEWLINE}⋯⋯　⋯⋯　⋯⋯{SCROLL}嗯？啊！抱歉！抱歉！{NEWLINE}刚才看书看得太入迷了。{SCROLL}",
-   "en": "...{NEWLINE}...{SCROLL}Hmm... Interesting...{NEWLINE}...{SCROLL}Huh? Oh! Excuse me, sorry!{NEWLINE}I was just reading this book here.{SCROLL}",
+   "en": "...{NEWLINE}...{SCROLL}Mm, mm, mmm...{NEWLINE}...{SCROLL}Huh? Oh! Sorry! Sorry!{NEWLINE}I got too absorbed in my book.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0219/4"
+   "origin": "agent",
+   "notes": "US 0219/4 | RV058: omission: 看书看得太入迷 (too absorbed); 'Interesting' not in zh"
   },
   {
    "id": 5,
    "zh": "⋯⋯　⋯⋯　⋯⋯{NEWLINE}⋯⋯　⋯⋯　⋯⋯{SCROLL}呼噜~呼~呼噜噜⋯⋯{NEWLINE}⋯⋯　⋯⋯　⋯⋯{SCROLL}哦呀？在这种时候,{NEWLINE}还有客人呀⋯⋯{SCROLL}",
-   "en": "...{NEWLINE}...{SCROLL}Yaaaaaaawn...{NEWLINE}...{SCROLL}Huh? A guest?{NEWLINE}At this hour?{SCROLL}",
+   "en": "...{NEWLINE}...{SCROLL}Snore... Zzz... Snnnore...{NEWLINE}...{SCROLL}Huh? A guest?{NEWLINE}At this hour?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0219/5"
+   "origin": "agent",
+   "notes": "US 0219/5 | RV058: meaning: 呼噜 is snoring, not a yawn"
   },
   {
    "id": 6,
@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "起源心金{NEWLINE}完结版4.0——特别版{NEWLINE}欢迎来到这个奇幻的世界{NEWLINE}一起回味最初的感动和快乐",
-   "en": "Pokémon Origin HeartGold{NEWLINE}Final Version 4.0: Special Edition{NEWLINE}Welcome to this world of wonders!{NEWLINE}Relive the joy of the very start!",
+   "en": "Pokémon Origin HeartGold{NEWLINE}Final Version 4.0: Special Edition{NEWLINE}Welcome to this world of wonders!{NEWLINE}Relive the first wonder and joy!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Hack title card for v4.0 special edition."
+   "notes": "Hack title card for v4.0 special edition. | RV058: omission: 最初的感动 (first wonder/being moved)"
   },
   {
    "id": 8,
@@ -238,26 +238,26 @@
   {
    "id": 29,
    "zh": "在屋子里、道路上、草丛里,{NEWLINE}还有洞窟内和森林之中⋯⋯{NEWLINE}请和各个不同地方的人们{NEWLINE}搭话试试看。",
-   "en": "Talk to people wherever you go:{NEWLINE}in houses, on roads, in the grass,{NEWLINE}in caves and in forests...{NEWLINE}Everyone has something to say.",
+   "en": "In houses, on roads, in the grass,{NEWLINE}in caves and in forests...{NEWLINE}Try talking to the people{NEWLINE}you meet in all these places.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0219/29"
+   "notes": "US 0219/29 | RV058: addition: 'Everyone has something to say' not in zh"
   },
   {
    "id": 30,
    "zh": "帮助有难处的人们,{NEWLINE}通过解开谜题,{NEWLINE}进而开启新的道路。",
-   "en": "New paths will open to you when{NEWLINE}you help people in need, overcome{NEWLINE}challenges, and solve mysteries.",
+   "en": "Help people in need and{NEWLINE}solve puzzles, and new paths{NEWLINE}will open up to you.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0219/30"
+   "origin": "agent",
+   "notes": "US 0219/30 | RV058: addition: 'overcome challenges' not in zh"
   },
   {
    "id": 31,
    "zh": "有时,人们{NEWLINE}会邀请你进行对战,{NEWLINE}被野生的生物们{NEWLINE}挡住去路的事情也是有的吧？{NEWLINE}{NEWLINE}通过战胜对手,{NEWLINE}你会逐渐变强。",
-   "en": "At times, you will be challenged{NEWLINE}by others to a battle.{NEWLINE}At other times, wild creatures{NEWLINE}may stand in your way.{NEWLINE}{NEWLINE}By overcoming such hurdles,{NEWLINE}you will gain great power.",
+   "en": "At times, people will challenge{NEWLINE}you to battle.{NEWLINE}And wild creatures may block{NEWLINE}your path, too.{NEWLINE}{NEWLINE}By defeating your opponents,{NEWLINE}you will gradually grow stronger.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0219/31"
+   "origin": "agent",
+   "notes": "US 0219/31 | RV058: meaning: zh = grow stronger gradually by defeating foes, not 'gain great power'"
   },
   {
    "id": 32,
@@ -278,10 +278,10 @@
   {
    "id": 34,
    "zh": "在这个世界上,{NEWLINE}到处生活着口袋妖怪{CLEAR}又名：精灵{CLEAR}这是一种不可思议的生物！{SCROLL}",
-   "en": "This world is widely inhabited by{NEWLINE}creatures known as Pokémon.{SCROLL}",
+   "en": "This world is widely inhabited by{NEWLINE}creatures known as Pokémon.{CLEAR}They are truly mysterious beings!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0219/34"
+   "origin": "agent",
+   "notes": "US 0219/34 | RV058: omission: 不可思议的生物 (D-1728)"
   },
   {
    "id": 35,
@@ -350,10 +350,10 @@
   {
    "id": 43,
    "zh": "{VAR:0103:0}！！{NEWLINE}准备好了吗？{SCROLL}现在,{NEWLINE}只属于你的故事终于要开始了！{SCROLL}无论是快乐还是伤心,{NEWLINE}一定有许多精彩的事情在等着你！{SCROLL}带着勇气与梦想！{NEWLINE}向着口袋妖怪的世界！{CLEAR}出~发！{SCROLL}那么,我们过会儿再见吧！{SCROLL}",
-   "en": "{VAR:0103:0}!{NEWLINE}Are you ready?{SCROLL}Your very own tale of grand adventure{NEWLINE}is about to unfold.{SCROLL}Fun experiences, difficult experiences,{NEWLINE}there’s so much waiting for you!{SCROLL}Dreams! Adventure!{NEWLINE}Let’s go to the world of Pokémon!{SCROLL}I’ll see you later!{SCROLL}",
+   "en": "{VAR:0103:0}!!{NEWLINE}Are you ready?{SCROLL}Now your very own story{NEWLINE}is finally about to begin!{SCROLL}Happy times and sad times, so many{NEWLINE}wonderful things are waiting for you!{SCROLL}With courage and dreams!{NEWLINE}To the world of Pokémon!{CLEAR}Let’s go!{SCROLL}Well then, I’ll see you later!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0219/43"
+   "origin": "agent",
+   "notes": "US 0219/43 | RV058: meaning: 快乐/伤心, 勇气与梦想 restored (D-1728)"
   },
   {
    "id": 44,

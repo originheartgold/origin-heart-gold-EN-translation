@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "你不要吗？{NEWLINE}人家难得想给你的⋯⋯",
-   "en": "Aww, you don’t want anything?{NEWLINE}But it’s all for free...",
+   "en": "Aww, you don’t want it? And I hardly{NEWLINE}ever feel like giving stuff away...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0700/3"
+   "origin": "agent",
+   "notes": "US 0700/3 | RV073: meaning: 人家难得想给你的 = I rarely want to give; not 'it's all for free'"
   },
   {
    "id": 4,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "我说,你不觉得{NEWLINE}女孩子打电话的样子{CLEAR}非常有魅力吗？{SCROLL}不是？{SCROLL}嘿嘿,你现在就在附近偷看我吧？{NEWLINE}为什么不{CLEAR}直接来找我聊天呢！",
-   "en": "Hey, tell me, don’t you think that the{NEWLINE}sight of a girl on the phone is charming?{SCROLL}It’s not?{SCROLL}Ha ha ha, you’re nearby,{NEWLINE}aren’t you? Why not come{CLEAR}over here and talk in person?",
+   "en": "Hey, tell me, don’t you think that the{NEWLINE}sight of a girl on the phone is charming?{SCROLL}It’s not?{SCROLL}Ha ha ha, you’re nearby, sneaking a{NEWLINE}peek at me, aren’t you? Why not come{CLEAR}over here and talk in person?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0700/6"
+   "origin": "agent",
+   "notes": "US 0700/6 | RV073: omission: restored 偷看我 (sneaking a peek at me); settles D-1902"
   },
   {
    "id": 7,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "最近,我的{VAR:0100:10}{NEWLINE}越来越可爱了。{CLEAR}我现在有好多它的照片了！{SCROLL}还有还有,{NEWLINE}{VAR:0100:11}又跑掉了,{CLEAR}真是好可惜啊！{CLEAR}真的就差那么一点点了！{SCROLL}拜拜！",
-   "en": "My {VAR:0100:10} is getting prettier!{NEWLINE}I’ve been taking tons of pictures!{SCROLL}You know what? A wild {VAR:0100:11}{NEWLINE}got away from me again.{SCROLL}It was so close! Really, just a{NEWLINE}little bit more, and I would’ve...{SCROLL}Later!",
+   "en": "My {VAR:0100:10} is getting cuter! I’ve{NEWLINE}been taking tons of pictures!{SCROLL}You know what? A wild {VAR:0100:11} got{NEWLINE}away from me again.{SCROLL}It was so close! Really, just a little{NEWLINE}bit more, and I would’ve...{SCROLL}Later!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0700/8"
+   "origin": "agent",
+   "notes": "US 0700/8 | RV073: meaning: 可爱 = cuter, parallel with #7"
   },
   {
    "id": 9,

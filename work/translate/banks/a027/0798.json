@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "下雨过后的第二天,背上的大花的香味会{NEWLINE}更浓郁,精灵们都会被香味所吸引,成群{NEWLINE}而来。",
-   "en": "After a rainy day, the flower on{NEWLINE}its back smells stronger. The{NEWLINE}scent attracts other Pokémon.",
+   "en": "After a rainy day, the flower on its{NEWLINE}back smells stronger. The scent{NEWLINE}attracts Pokémon in flocks.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0805/3"
+   "origin": "agent",
+   "notes": "US 0805/3 | RV116: omission: restore 成群而来 (come in flocks)"
   },
   {
    "id": 4,
@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "先缩进壳里保护自己,趁对手疏于防备之{NEWLINE}际,喷出水柱进行反击。",
-   "en": "It shelters itself in its shell,{NEWLINE}then strikes back with spouts{NEWLINE}of water at every opportunity.",
+   "en": "It shelters in its shell for protection,{NEWLINE}then fires spouts of water when foes{NEWLINE}drop their guard.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0805/7"
+   "origin": "agent",
+   "notes": "US 0805/7 | RV116: meaning: 趁对手疏于防备之际 = when the foe drops its guard"
   },
   {
    "id": 8,
@@ -246,10 +246,10 @@
   {
    "id": 30,
    "zh": "一感觉到危险全身的刺都会竖立起来,和{NEWLINE}尼多力诺相比,成长的稍慢。",
-   "en": "When it senses danger, it raises{NEWLINE}all the barbs on its body. These{NEWLINE}barbs grow slower than Nidorino’s.",
+   "en": "When it senses danger, it raises all the{NEWLINE}barbs on its body. It grows a little{NEWLINE}slower than Nidorino.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0805/30"
+   "origin": "agent",
+   "notes": "US 0805/30 | RV116: meaning: zh says it grows slower than Nidorino, not its barbs"
   },
   {
    "id": 31,
@@ -430,10 +430,10 @@
   {
    "id": 53,
    "zh": "气派十足的精灵,在它的狂热粉丝中,其{NEWLINE}前额上的宝石大小也是谈论的话题。",
-   "en": "A very haughty Pokémon. Among{NEWLINE}fans, the size of the jewel in its{NEWLINE}forehead is a topic of much talk.",
+   "en": "A Pokémon with a stately air. Among its{NEWLINE}ardent fans, the size of the jewel in its{NEWLINE}forehead is a hot topic.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0805/53"
+   "origin": "agent",
+   "notes": "US 0805/53 | RV116: meaning: 气派十足 = stately, not haughty"
   },
   {
    "id": 54,
@@ -942,10 +942,10 @@
   {
    "id": 117,
    "zh": "用尖刺保护自己不被敌人攻击,传言说它{NEWLINE}的鳍和骨头都是贵重药材。",
-   "en": "Its spines provide protection.{NEWLINE}Its fins and bones are prized as{NEWLINE}traditional medicine ingredients.",
+   "en": "Its spines protect it from foes. Its{NEWLINE}fins and bones are rumored to be prized{NEWLINE}medicine ingredients.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0805/117"
+   "origin": "agent",
+   "notes": "US 0805/117 | RV116: omission: restore 传言说 (rumored)"
   },
   {
    "id": 118,
@@ -1502,10 +1502,10 @@
   {
    "id": 187,
    "zh": "会因风吹而飘浮起来,据说毽子草在山里{NEWLINE}聚集起来的话,就意味着春天要来临了。",
-   "en": "It drifts on winds. It is said that{NEWLINE}when Hoppip gather in fields and{NEWLINE}mountains, spring is on the way.",
+   "en": "It drifts on winds. It is said that when{NEWLINE}Hoppip gather in the mountains, spring{NEWLINE}is on the way.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0805/187"
+   "origin": "agent",
+   "notes": "US 0805/187 | RV116: addition: zh has mountains only"
   },
   {
    "id": 188,
@@ -1686,10 +1686,10 @@
   {
    "id": 210,
    "zh": "与外表不同,性格十分胆小,不过一旦被{NEWLINE}触怒的话,会用长长的獠牙进行猛烈的反{NEWLINE}击。",
-   "en": "It is timid in spite of its looks.{NEWLINE}If it becomes enraged, however,{NEWLINE}it will strike with its huge fangs.",
+   "en": "It is timid in spite of its looks. If{NEWLINE}enraged, however, it strikes back{NEWLINE}fiercely with its long fangs.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0805/210"
+   "origin": "agent",
+   "notes": "US 0805/210 | RV116: omission: restore 猛烈的反击 (fierce counterattack), 长长的獠牙"
   },
   {
    "id": 211,
@@ -2070,10 +2070,10 @@
   {
    "id": 258,
    "zh": "透过脑袋上的鳍可以感应水流的动向从{NEWLINE}而探知周围的情况。具有能够抬起大石{NEWLINE}头的力量。",
-   "en": "To alert it, the fin on its head{NEWLINE}senses the flow of water. It has{NEWLINE}the strength to heft boulders.",
+   "en": "The fin on its head senses the flow of{NEWLINE}water to read its surroundings. It has{NEWLINE}the strength to heft boulders.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0805/258"
+   "origin": "agent",
+   "notes": "US 0805/258 | RV116: meaning: fin senses currents to detect its surroundings"
   },
   {
    "id": 259,
@@ -2102,10 +2102,10 @@
   {
    "id": 262,
    "zh": "组成群队进行围猎,对优秀训练师的命令{NEWLINE}会誓死服从。",
-   "en": "It chases down prey in a pack.{NEWLINE}It will never disobey the{NEWLINE}commands of a skilled Trainer.",
+   "en": "It hunts prey in packs. It will obey{NEWLINE}a skilled Trainer’s commands to{NEWLINE}the death.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0805/262"
+   "origin": "agent",
+   "notes": "US 0805/262 | RV116: softened: 誓死服从 = obey to the death"
   },
   {
    "id": 263,
@@ -2270,10 +2270,10 @@
   {
    "id": 283,
    "zh": "走起路来就像是在水上滑行,靠脑袋上的{NEWLINE}触角发出气味吸引猎物。",
-   "en": "It appears as if it is skating on{NEWLINE}water. It draws prey with a sweet{NEWLINE}scent from the tip of its head.",
+   "en": "It looks as if it is skating on water. It{NEWLINE}draws prey with a scent from the{NEWLINE}antennae on its head.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0805/283"
+   "origin": "agent",
+   "notes": "US 0805/283 | RV116: addition: zh has no 'sweet'; scent comes from its antennae"
   },
   {
    "id": 284,
@@ -2302,10 +2302,10 @@
   {
    "id": 287,
    "zh": "一天几乎所有的时间都在睡觉中度过,光{NEWLINE}看着它的样子都会想睡觉。",
-   "en": "It spends nearly all its time{NEWLINE}in a day sprawled out. Just{NEWLINE}seeing it makes one drowsy.",
+   "en": "It spends nearly all day asleep. Just{NEWLINE}seeing it makes one drowsy.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0805/287"
+   "origin": "agent",
+   "notes": "US 0805/287 | RV116: meaning: zh says it sleeps nearly all day"
   },
   {
    "id": 288,
@@ -2382,10 +2382,10 @@
   {
    "id": 297,
    "zh": "最喜欢与其他体型庞大的精灵们比划较{NEWLINE}劲,扇一个巴掌可以把大卡车击飞。",
-   "en": "It loves to match power with{NEWLINE}big-bodied Pokémon. It can knock a{NEWLINE}truck flying with its arm thrusts.",
+   "en": "It loves to match power with big-bodied{NEWLINE}Pokémon. A single slap from it can send{NEWLINE}a big truck flying.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0805/297"
+   "origin": "agent",
+   "notes": "US 0805/297 | RV116: meaning: 扇一个巴掌 = one slap"
   },
   {
    "id": 298,
@@ -2406,10 +2406,10 @@
   {
    "id": 300,
    "zh": "喜欢追着会动的东西跑,有时会追着自己{NEWLINE}的尾巴打转。",
-   "en": "It can’t stop itself from chasing{NEWLINE}moving things, and it runs{NEWLINE}in a circle, chasing its own tail.",
+   "en": "It loves chasing anything that moves,{NEWLINE}and sometimes it runs in circles chasing{NEWLINE}its own tail.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0805/300"
+   "origin": "agent",
+   "notes": "US 0805/300 | RV116: meaning: zh says 'likes' and 'sometimes'"
   },
   {
    "id": 301,
@@ -2438,10 +2438,10 @@
   {
    "id": 304,
    "zh": "平时居住在深山中,肚子饿的时候会出现{NEWLINE}在山脚下,吃掉铁路和汽车。",
-   "en": "It usually lives deep in mountains.{NEWLINE}However, hunger may drive it{NEWLINE}to eat railroad tracks and cars.",
+   "en": "It usually lives deep in mountains. When{NEWLINE}hungry, it comes down to the foothills{NEWLINE}to eat railroad tracks and cars.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0805/304"
+   "origin": "agent",
+   "notes": "US 0805/304 | RV116: omission: restore 出现在山脚下 (comes to the foothills)"
   },
   {
    "id": 305,
@@ -2486,10 +2486,10 @@
   {
    "id": 310,
    "zh": "鬃毛处能放出高压电,在头顶制造雷云召{NEWLINE}唤闪电攻击。",
-   "en": "It discharges electricity from its{NEWLINE}mane. It creates a thundercloud{NEWLINE}overhead to drop lightning bolts.",
+   "en": "It discharges high-voltage electricity{NEWLINE}from its mane and makes thunderclouds{NEWLINE}overhead to call down lightning.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0805/310"
+   "origin": "agent",
+   "notes": "US 0805/310 | RV116: omission: restore 高压 (high-voltage)"
   },
   {
    "id": 311,

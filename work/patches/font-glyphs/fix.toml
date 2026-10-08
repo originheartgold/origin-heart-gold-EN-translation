@@ -31,6 +31,7 @@ evidence = [
   "work/notes/integrity_audit_text.md: fonts row (only 01AF/01B4/01B5 differ from the hack)",
   "work/tools/qa.py: needs_vanilla_glyphs warning",
   "CHANGELOG.md v1.0.0: 'Restored the US glyphs for … “ ”, which the hack had widened to 12 px.'",
+  "Runtime: emu_harness.py fixes --case font-glyphs (scenario font: the widths of … “ ” in the font width tables the game holds in RAM; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[font]]

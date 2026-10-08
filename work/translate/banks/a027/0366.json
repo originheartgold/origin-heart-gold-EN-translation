@@ -253,10 +253,10 @@
   {
    "id": 30,
    "zh": "虽然这次还是你赢,{NEWLINE}但我不会再因为输给你而灰心了。{CLEAR}我会用我的努力向你证明,{CLEAR}只要肯坚持不懈,一定能有所成就！",
-   "en": "You won again, but I won’t lose heart{NEWLINE}over it anymore.{SCROLL}My hard work will prove it: keep at it,{NEWLINE}and you can achieve anything!",
+   "en": "You won again, but I won’t lose heart{NEWLINE}over losing to you anymore.{SCROLL}I’ll prove it to you with my hard work:{NEWLINE}if you keep at it, you’re sure to{CLEAR}achieve something!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV053: meaning: 有所成就 is ‘achieve something’, not ‘anything’; restore 向你证明/输给你"
   },
   {
    "id": 31,
@@ -341,10 +341,10 @@
   {
    "id": 41,
    "zh": "我真是您的铁杆粉丝,{NEWLINE}当年谣传您被坂木打伤时,{CLEAR}有人就说坂木才是世上最强。{CLEAR}每次遇到这样的人{CLEAR}我就狠狠地教训他一顿,{CLEAR}坚决维护您的「最强」称号。{SCROLL}您就满足我这个铁粉的小愿望,{NEWLINE}与我来一场对战吧！",
-   "en": "I’m your biggest fan, honest!{SCROLL}Back when rumor had it that Giovanni{NEWLINE}had injured you, some people said{CLEAR}Giovanni was the strongest in the world.{SCROLL}Every time I met someone like that, I{NEWLINE}gave them a good beating.{SCROLL}I’ll defend your title as ‘the{NEWLINE}strongest’ to the end!{SCROLL}Please grant this die-hard fan’s little{NEWLINE}wish and battle me!",
+   "en": "I really am your die-hard fan!{SCROLL}Back when rumor had it that Giovanni{NEWLINE}had injured you, some people said{CLEAR}Giovanni was the strongest in the world.{SCROLL}Every time I met someone like that, I{NEWLINE}gave them a good beating to defend your{CLEAR}title as ‘the strongest’!{SCROLL}Please grant this die-hard fan’s little{NEWLINE}wish and battle me!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV053: meaning: beatings were the way of defending the title (past), not a future vow; keep 铁杆粉丝"
   },
   {
    "id": 42,
@@ -421,10 +421,10 @@
   {
    "id": 51,
    "zh": "我只和新人训练家对战,{NEWLINE}像你这种一看就很厉害的高手,{CLEAR}还是找别人切磋去吧。",
-   "en": "I only battle new Trainers. A pro like{NEWLINE}you should go spar with someone else.",
+   "en": "I only battle new Trainers. Anyone can{NEWLINE}see you’re a real pro, so go spar with{CLEAR}someone else.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV053: omission: 一看就很厉害"
   }
  ]
 }

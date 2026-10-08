@@ -465,10 +465,10 @@
   {
    "id": 57,
    "zh": "麻麻的味道！",
-   "en": "A pungent flavor!",
+   "en": "A tingly flavor!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0021/57"
+   "origin": "agent",
+   "notes": "US 0021/57 | RV074: meaning: 麻麻 is a numbing tingle, not pungent (D-1641)"
   },
   {
    "id": 58,
@@ -537,10 +537,10 @@
   {
    "id": 66,
    "zh": "回味无穷的酸！",
-   "en": "A deep sourness!",
+   "en": "A lingering sourness!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0021/66"
+   "origin": "agent",
+   "notes": "US 0021/66 | RV074: meaning: 回味无穷 is a lingering taste, as #121 (D-1641)"
   },
   {
    "id": 67,
@@ -553,10 +553,10 @@
   {
    "id": 68,
    "zh": "涩涩的味道！",
-   "en": "A refined, dry taste.",
+   "en": "A dry taste.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0021/68"
+   "origin": "agent",
+   "notes": "US 0021/68 | RV074: addition: US 'refined' not in zh 涩涩的味道"
   },
   {
    "id": 69,
@@ -625,10 +625,10 @@
   {
    "id": 77,
    "zh": "喷饭的苦味！",
-   "en": "A massively bitter taste!",
+   "en": "So bitter, you’ll spit out your food!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0021/77"
+   "origin": "agent",
+   "notes": "US 0021/77 | RV074: meaning: 喷饭 image restored (D-1643)"
   },
   {
    "id": 78,
@@ -649,10 +649,10 @@
   {
    "id": 80,
    "zh": "有点甜的味道！",
-   "en": "A sweet taste.",
+   "en": "A slightly sweet taste.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0021/80"
+   "origin": "agent",
+   "notes": "US 0021/80 | RV074: omission: 有点 (a little) dropped; matches #62/#74"
   },
   {
    "id": 81,
@@ -673,10 +673,10 @@
   {
    "id": 83,
    "zh": "超甜的味道！",
-   "en": "A sickly-sweet flavor!",
+   "en": "A super-sweet flavor!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0021/83"
+   "origin": "agent",
+   "notes": "US 0021/83 | RV074: meaning: 超甜 is super sweet, not sickly; matches #75"
   },
   {
    "id": 84,
@@ -1041,18 +1041,18 @@
   {
    "id": 129,
    "zh": "什么都说不出来的味道！{NEWLINE}相互融合的味道⋯{NEWLINE}不知道到底算什么！",
-   "en": "Unspeakably incredible flavor!{NEWLINE}Its tastes are evenly balanced.{NEWLINE}I can’t tell what kind of flavor!",
+   "en": "An indescribable flavor!{NEWLINE}Its tastes are evenly balanced.{NEWLINE}I can’t tell what kind of flavor!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0021/129"
+   "origin": "agent",
+   "notes": "US 0021/129 | RV074: addition: 'incredible' praise not in zh 什么都说不出来 (D-1641)"
   },
   {
    "id": 130,
    "zh": "什么都说不起来的味道！{NEWLINE}相互排斥的味道⋯{NEWLINE}不知道到底是什么！",
-   "en": "Incredibly unspeakable flavor!{NEWLINE}Its tastes are all competing.{NEWLINE}I can’t tell what kind of flavor!",
+   "en": "An indescribable flavor!{NEWLINE}Its tastes are all competing.{NEWLINE}I can’t tell what kind of flavor!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0021/130"
+   "origin": "agent",
+   "notes": "US 0021/130 | RV074: addition: 'incredibly' not in zh; 说不起来 read as 说不出来"
   },
   {
    "id": 131,

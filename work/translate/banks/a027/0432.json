@@ -94,34 +94,34 @@
   {
    "id": 11,
    "zh": "一定要好好培养啊！{SCROLL}不过居然能发现蛋⋯⋯{SCROLL}哎呀呀,不过搞不好{NEWLINE}还会再发现的！{SCROLL}",
-   "en": "Take good care of it!{SCROLL}That is, I don’t think we’ll ever find{NEWLINE}another...{SCROLL}No, no, I’m sure we’ll find another one.{NEWLINE}I’m definitely sure of it!{SCROLL}",
+   "en": "Take good care of it!{SCROLL}To think we found an Egg...{SCROLL}Oh my, but we may well find another!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0439/11"
+   "origin": "agent",
+   "notes": "US 0439/11 | RV061: meaning: zh 居然能发现蛋…搞不好还会再发现 = surprise, then maybe another; US invented doubt and certainty (D-1825)"
   },
   {
    "id": 12,
    "zh": "那我就收下了,{NEWLINE}谢谢啦。{SCROLL}不过居然能发现蛋⋯⋯{SCROLL}哎呀呀,不过搞不好{NEWLINE}还会再发现的！{SCROLL}",
-   "en": "Well all right then, I’ll take it.{NEWLINE}Thank you.{SCROLL}That is, I don’t think we’ll ever find{NEWLINE}another...{SCROLL}No, no, I’m sure we’ll find another one.{NEWLINE}I’m definitely sure of it!{SCROLL}",
+   "en": "Well all right then, I’ll take it.{NEWLINE}Thank you.{SCROLL}To think we found an Egg...{SCROLL}Oh my, but we may well find another!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0439/12"
+   "origin": "agent",
+   "notes": "US 0439/12 | RV061: meaning: same as #11 (D-1825)"
   },
   {
    "id": 13,
    "zh": "{VAR:0103:0}啊⋯⋯{NEWLINE}等你寄存的精灵生蛋之后{CLEAR}我会立刻电话{CLEAR}联系你的,没问题吧？{VAR:0200:0}",
-   "en": "{VAR:0103:0}...{NEWLINE}If we are looking after your Pokémon{CLEAR}and notice one is holding an Egg, would{CLEAR}you like me to contact you by{CLEAR}phone? Would that be all right? {VAR:0200:0}",
+   "en": "{VAR:0103:0}...{NEWLINE}Once the Pokémon you left with us lay{CLEAR}an Egg, I’ll call you right away.{CLEAR}Is that all right? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0439/13"
+   "origin": "agent",
+   "notes": "US 0439/13 | RV061: meaning: zh 生蛋之后 立刻电话联系 = once they lay an Egg I'll call right away; US 'holding an Egg', no 'right away' (D-1826)"
   },
   {
    "id": 14,
    "zh": "{VAR:0103:0}啊⋯⋯{NEWLINE}等你寄存的精灵{CLEAR}生蛋之后{CLEAR}我会立刻电话联系你的,{NEWLINE}没问题吧？{VAR:0200:0}",
-   "en": "{VAR:0103:0}...{NEWLINE}If we are looking after your Pokémon{CLEAR}and notice one is holding an Egg, would{CLEAR}you like me to contact you by{CLEAR}phone? Would that be all right? {VAR:0200:0}",
+   "en": "{VAR:0103:0}...{NEWLINE}Once the Pokémon you left with us lay{CLEAR}an Egg, I’ll call you right away.{CLEAR}Is that all right? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0439/14"
+   "origin": "agent",
+   "notes": "US 0439/14 | RV061: meaning: same as #13 (D-1826)"
   },
   {
    "id": 15,
@@ -166,10 +166,10 @@
   {
    "id": 20,
    "zh": "２只精灵{NEWLINE}都只自顾自地玩⋯⋯",
-   "en": "The two play with other{NEWLINE}Pokémon rather than with each other...",
+   "en": "The two just play on their own...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0439/20"
+   "origin": "agent",
+   "notes": "US 0439/20 | RV061: meaning: zh 只自顾自地玩 = each plays on its own; US 'with other Pokémon' (D-1827)"
   },
   {
    "id": 21,
@@ -294,10 +294,10 @@
   {
    "id": 36,
    "zh": "嗯？{NEWLINE}精灵好像就剩１只了呢。{SCROLL}要再来哦。",
-   "en": "Oh? But you only have one{NEWLINE}Pokémon with you.{SCROLL}You can’t go off without a Pokémon.{NEWLINE}Come back another time.",
+   "en": "Oh? But you only have one{NEWLINE}Pokémon with you.{SCROLL}Come back another time.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0439/36"
+   "origin": "agent",
+   "notes": "US 0439/36 | RV061: addition: US 'You can't go off without a Pokémon' not in zh"
   },
   {
    "id": 37,
@@ -318,10 +318,10 @@
   {
    "id": 39,
    "zh": "嗯？{NEWLINE}你再把那只精灵也寄存的话,{CLEAR}那么就只剩下１只精灵了。{SCROLL}多带些精灵过来比较好哦？",
-   "en": "Huh? Now, now.{SCROLL}If you leave that Pokémon with{NEWLINE}me, you’ll be left with just one.{SCROLL}You will be better off if you catch{NEWLINE}some more, if I do say so myself.",
+   "en": "Huh?{SCROLL}If you leave that Pokémon with{NEWLINE}me too, you’ll be left with just one.{SCROLL}You’d be better off bringing more{NEWLINE}Pokémon along.",
    "status": "draft",
-   "origin": "us",
-   "notes": ""
+   "origin": "agent",
+   "notes": " | RV061: meaning: zh 多带些精灵过来比较好 = better to bring more Pokémon; US 'catch some more, if I do say so myself'"
   },
   {
    "id": 40,
@@ -406,10 +406,10 @@
   {
    "id": 50,
    "zh": "２只精灵{NEWLINE}都只自顾自地玩⋯⋯{SCROLL}",
-   "en": "The two play with other{NEWLINE}Pokémon rather than with each other...{SCROLL}",
+   "en": "The two just play on their own...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0439/50"
+   "origin": "agent",
+   "notes": "US 0439/50 | RV061: meaning: same as #20 (D-1827)"
   }
  ]
 }

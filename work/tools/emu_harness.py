@@ -2370,12 +2370,18 @@ def main(argv=None):
     tx = sub.add_parser("texture-bounds", help="four overworld texture-bound reproducers; original/fixed assertions")
     import emu_texture_bounds
     emu_texture_bounds.add_arguments(tx)
+    import emu_fixes
+    fx = sub.add_parser("fixes", help="one scenario per fix in work/patches: the fixed ROM and each control build "
+                                      "(build.py --without <fix>) (emu_fixes.py)")
+    emu_fixes.add_arguments(fx, DATA)
+    emu_fixes.add_child_arguments(sub.add_parser("fixes-child", help=argparse.SUPPRESS))
     a = ap.parse_args(argv)
     return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages, "suite": cmd_suite,
             "dexcapture": cmd_dexcapture, "skitty": _cmd_skitty, "guide0107": _cmd_guide0107,
             "guide0813": _cmd_guide0813, "calendar": _cmd_calendar, "hackbugs": _cmd_hackbugs,
             "verify": _cmd_verify, "sweeps": _cmd_sweeps, "open": _cmd_open, "vqueue": _cmd_vqueue,
-            "texture-bounds": emu_texture_bounds.run, "cleanup": cmd_cleanup}[a.cmd](a)
+            "texture-bounds": emu_texture_bounds.run, "fixes": emu_fixes.run, "fixes-child": emu_fixes.cmd_child,
+            "cleanup": cmd_cleanup}[a.cmd](a)
 
 
 if __name__ == "__main__":

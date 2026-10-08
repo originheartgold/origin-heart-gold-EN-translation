@@ -31,6 +31,7 @@ evidence = [
   "D-1616 (real-hardware support built into the single English patch) and D-1617 (bypass vs fidelity, D-1002/D-1337), both accepted",
   "work/notes/hardware_support.md: checks, the six entry points and their genuine-cart values (DeSmuME), the 18 call sites, the punishments, why loaders do not fix it",
   "git 177cffe 'Code: built-in anti-piracy bypass for real hardware (D-1616, D-1617)': reviewed statically and in DeSmuME (polarity measured, emulator-check failure simulated); not yet run on real hardware",
+  "Runtime: emu_harness.py fixes --case antipiracy (scenario antipiracy: the six entries' calls, return values and whether the check bodies run; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[code]]

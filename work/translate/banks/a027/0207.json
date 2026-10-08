@@ -6,26 +6,26 @@
   {
    "id": 0,
    "zh": "早安！{NEWLINE}{VAR:0103:0}。{SCROLL}我这里有您的礼物,{NEWLINE}请收下！{SCROLL}",
-   "en": "Good morning. You must be{NEWLINE}{VAR:0103:0}.{SCROLL}I’ve received a gift for you.{NEWLINE}Here you go!{SCROLL}",
+   "en": "Good morning, {VAR:0103:0}!{SCROLL}I have a gift for you.{NEWLINE}Here you go!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0209/0"
+   "origin": "agent",
+   "notes": "US 0209/0 | RV058: addition: zh has no 'You must be'"
   },
   {
    "id": 1,
    "zh": "你好！{NEWLINE}{VAR:0103:0}。{SCROLL}我这里有您的礼物,{NEWLINE}请收下！{SCROLL}",
-   "en": "Good day. You must be{NEWLINE}{VAR:0103:0}.{SCROLL}I’ve received a gift for you.{NEWLINE}Here you go!{SCROLL}",
+   "en": "Good day, {VAR:0103:0}!{SCROLL}I have a gift for you.{NEWLINE}Here you go!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0209/1"
+   "origin": "agent",
+   "notes": "US 0209/1 | RV058: addition: zh has no 'You must be'"
   },
   {
    "id": 2,
    "zh": "晚上好！{NEWLINE}{VAR:0103:0}。{SCROLL}我这里有您的礼物,{NEWLINE}请收下！{SCROLL}",
-   "en": "Good evening. You must be{NEWLINE}{VAR:0103:0}.{SCROLL}I’ve received a gift for you.{NEWLINE}Here you go!{SCROLL}",
+   "en": "Good evening, {VAR:0103:0}!{SCROLL}I have a gift for you.{NEWLINE}Here you go!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0209/2"
+   "origin": "agent",
+   "notes": "US 0209/2 | RV058: addition: zh has no 'You must be'"
   },
   {
    "id": 3,
@@ -38,26 +38,26 @@
   {
    "id": 4,
    "zh": "您手上的精灵已经满了,{NEWLINE}无法交给您。",
-   "en": "Your party is full, I’m afraid.{NEWLINE}I can’t give this to you yet.",
+   "en": "Your party is already full,{NEWLINE}so I can’t give this to you.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0209/4"
+   "origin": "agent",
+   "notes": "US 0209/4 | RV058: addition: dropped 'yet'"
   },
   {
    "id": 5,
    "zh": "{VAR:0108:0}满了,{NEWLINE}无法交给您。",
-   "en": "Another {VAR:0108:0}? You already{NEWLINE}have too many to accept any more.",
+   "en": "You can’t carry any more {VAR:0108:0},{NEWLINE}so I can’t give this to you.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0209/5"
+   "origin": "agent",
+   "notes": "US 0209/5 | RV058: meaning: zh = the item is full, can't hand it over"
   },
   {
    "id": 6,
    "zh": "背包满了,{NEWLINE}无法交给您。",
-   "en": "To accept this, you need to make{NEWLINE}room for decoration goods.",
+   "en": "Your Bag is full,{NEWLINE}so I can’t give this to you.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0209/6"
+   "origin": "agent",
+   "notes": "US 0209/6 | RV058: meaning: zh = Bag is full, not decoration goods"
   },
   {
    "id": 7,
@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "{VAR:0103:0}得到了{NEWLINE}{VAR:FF00:1}{VAR:0108:1}{VAR:FF00:0}！{SCROLL}",
-   "en": "{VAR:0103:0} received{NEWLINE}the gift {VAR:FF00:1}{VAR:0108:1}{VAR:FF00:0}!{SCROLL}",
+   "en": "{VAR:0103:0} received{NEWLINE}{VAR:FF00:1}{VAR:0108:1}{VAR:FF00:0}!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0209/9"
+   "origin": "agent",
+   "notes": "US 0209/9 | RV058: addition: zh has no 'the gift'"
   },
   {
    "id": 10,
@@ -94,18 +94,18 @@
   {
    "id": 11,
    "zh": "{VAR:0103:0}得到了{NEWLINE}{VAR:FF00:1}{VAR:010A:1}{VAR:FF00:0}！{SCROLL}",
-   "en": "{VAR:0103:0} received{NEWLINE}the gift {VAR:FF00:1}{VAR:010A:1}{VAR:FF00:0}!{SCROLL}",
+   "en": "{VAR:0103:0} received{NEWLINE}{VAR:FF00:1}{VAR:010A:1}{VAR:FF00:0}!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0209/11"
+   "origin": "agent",
+   "notes": "US 0209/11 | RV058: addition: zh has no 'the gift'"
   },
   {
    "id": 12,
    "zh": "{VAR:0103:0}得到了{NEWLINE}{VAR:FF00:1}{VAR:011F:1}{VAR:FF00:0}！{SCROLL}",
-   "en": "{VAR:0103:0} received{NEWLINE}the gift {VAR:FF00:1}{VAR:011F:1}{VAR:FF00:0}.{SCROLL}",
+   "en": "{VAR:0103:0} received{NEWLINE}{VAR:FF00:1}{VAR:011F:1}{VAR:FF00:0}!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0209/12"
+   "origin": "agent",
+   "notes": "US 0209/12 | RV058: addition: zh has no 'the gift'"
   },
   {
    "id": 13,
@@ -214,10 +214,10 @@
   {
    "id": 26,
    "zh": "⋯⋯哎呀呀,{VAR:0103:0}。{NEWLINE}这线路图{SCROLL}{VAR:0104:1}{NEWLINE}已经有了啊。",
-   "en": "Oh no, {VAR:0103:0}!{NEWLINE}That Route Map!{SCROLL}It already has {VAR:0104:1},{NEWLINE}doesn’t it?",
+   "en": "Oh no, {VAR:0103:0}!{NEWLINE}You already have this Route Map,{SCROLL}{VAR:0104:1}.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0209/26"
+   "origin": "agent",
+   "notes": "US 0209/26 | RV058: meaning: zh = you already have this Route Map"
   },
   {
    "id": 27,

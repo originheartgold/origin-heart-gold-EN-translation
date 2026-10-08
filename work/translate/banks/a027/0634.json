@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "我是岩铁！{NEWLINE}哦,{VAR:0101:0}啊,有什么事！{SCROLL}",
-   "en": "This is Kurt!{NEWLINE}You’re {VAR:0101:0}, right?{SCROLL}",
+   "en": "This is Kurt!{SCROLL}Oh, {VAR:0101:0}! What can I do for ya?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0643/2"
+   "origin": "agent",
+   "notes": "US 0643/2 | RV070: meaning: zh: Kurt asks what the player wants"
   },
   {
    "id": 3,
@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "我现在正在做！{NEWLINE}还有一天就好了！",
-   "en": "You just asked me to make ’em!{NEWLINE}Ya gotta give me a day at least!",
+   "en": "I’m makin’ ’em right now! Just one more{NEWLINE}day and they’ll be done!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0643/4"
+   "origin": "agent",
+   "notes": "US 0643/4 | RV070: meaning: zh: working on it, one more day; US you just asked (D-1915)"
   },
   {
    "id": 5,

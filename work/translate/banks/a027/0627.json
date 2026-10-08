@@ -702,10 +702,10 @@
   {
    "id": 87,
    "zh": "哼,看来你是做好被暴揍的准备了,{NEWLINE}那我们就成全你！",
-   "en": "Hmph. Looks like you’re ready for a{NEWLINE}beating. Then we’ll give you one!",
+   "en": "Hmph. Looks like you’re ready to get{NEWLINE}beaten to a pulp.{SCROLL}Then we’ll grant your wish!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV055: softened: 暴揍 is a brutal beating; 成全你 = grant your wish"
   },
   {
    "id": 88,
@@ -934,10 +934,10 @@
   {
    "id": 116,
    "zh": "那只跟海底宝藏息息相关的精灵,{NEWLINE}我一定要找到它！",
-   "en": "That Pokémon is the key to the{NEWLINE}treasure under the sea. I’m going to{CLEAR}find it, no matter what!",
+   "en": "That Pokémon is closely tied to the{NEWLINE}treasure under the sea.{SCROLL}I’m going to find it, no matter what!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV055: meaning: 息息相关 is 'closely tied to', not 'the key to'"
   },
   {
    "id": 117,
@@ -1022,10 +1022,10 @@
   {
    "id": 127,
    "zh": "涨潮季总算过去了,{NEWLINE}终于可以带着乘龙好好放松一下了。{CLEAR}但是如果不锻炼的话,{CLEAR}身体也会变得迟钝,{CLEAR}你能跟我来场精灵对战{CLEAR}帮我保持一下状态吗？",
-   "en": "Tide season is finally over, so I can{NEWLINE}finally relax with my Lapras.{SCROLL}But if I don’t train, my body will get{NEWLINE}sluggish.{SCROLL}Would you have a Pokémon battle with me{NEWLINE}to help me stay in shape?",
+   "en": "Tide season is over at last, so I can{NEWLINE}finally relax with my Lapras.{SCROLL}But if I don’t train, my body will get{NEWLINE}sluggish.{SCROLL}Would you have a Pokémon battle with me{NEWLINE}to help me stay in shape?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV055: grammar: doubled 'finally'"
   },
   {
    "id": 128,
@@ -1334,18 +1334,18 @@
   {
    "id": 166,
    "zh": "小黄『{VAR:0103:0}哥哥,{NEWLINE}去年的石英大会上{CLEAR}我没能向你挑战有些遗憾,{CLEAR}所以我想在今年的白银大会上{CLEAR}再努力一次试试！",
-   "en": "Yellow: {VAR:0103:0}, I didn’t get to{NEWLINE}challenge you at last year’s Indigo{CLEAR}Conference, and I’ve felt a bit sorry{CLEAR}about it ever since.{SCROLL}So I want to give it another try at this{NEWLINE}year’s Silver Conference!",
+   "en": "Yellow: {VAR:0103:0}, it was a bit of a shame{NEWLINE}that I didn’t get to challenge you at{CLEAR}last year’s Indigo Conference.{SCROLL}So I want to give it another try at this{NEWLINE}year’s Silver Conference!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV055: addition: 有些遗憾 is 'a bit of a shame'; 'ever since' was added"
   },
   {
    "id": 167,
    "zh": "小黄『{VAR:0103:0}姐姐,{NEWLINE}去年的石英大会上{CLEAR}我没能向你挑战有些遗憾,{CLEAR}所以我想在今年的白银大会上{CLEAR}再努力一次试试！",
-   "en": "Yellow: {VAR:0103:0}, I didn’t get to{NEWLINE}challenge you at last year’s Indigo{CLEAR}Conference, and I’ve felt a bit sorry{CLEAR}about it ever since.{SCROLL}So I want to give it another try at this{NEWLINE}year’s Silver Conference!",
+   "en": "Yellow: {VAR:0103:0}, it was a bit of a shame{NEWLINE}that I didn’t get to challenge you at{CLEAR}last year’s Indigo Conference.{SCROLL}So I want to give it another try at this{NEWLINE}year’s Silver Conference!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV055: addition: 有些遗憾 is 'a bit of a shame'; 'ever since' was added"
   },
   {
    "id": 168,

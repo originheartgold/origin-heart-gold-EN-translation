@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "ＣＭ『冒险的朋友{NEWLINE}每个人都有一只{NEWLINE}口袋手机。",
-   "en": "Commercial: Your friend for adventure,{NEWLINE}your Pokégear...Pokégear...Pokégear!{NEWLINE}Your Pokégear from Silph Co. Take our{NEWLINE}latest model on your next adventure!",
+   "en": "Commercial: Your friend for adventure!{NEWLINE}Everyone has one: the Pokégear!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0412/4"
+   "origin": "agent",
+   "notes": "US 0412/4 | RV070: addition: US added Silph Co., latest model, chant; zh: everyone has one (D-1774)"
   },
   {
    "id": 5,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "ＣＭ『你的冒险搭档{NEWLINE}永远会在你的身后,{NEWLINE}现在就带着你的精灵{NEWLINE}一起散步吧。{NEWLINE}精灵联盟广播",
-   "en": "Commercial: Whenever you turn your head,{NEWLINE}there it is. Your constant companion in{NEWLINE}life’s journey. Your Pokémon is always{NEWLINE}there to help. This has been a message{NEWLINE}from the Pokémon League.",
+   "en": "Commercial: Your partner in adventure{NEWLINE}will always be right behind you.{NEWLINE}So take your Pokémon out for a walk{NEWLINE}together today!{NEWLINE}This has been a message from the{NEWLINE}Pokémon League.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0412/6"
+   "origin": "agent",
+   "notes": "US 0412/6 | RV070: meaning: zh: partner always behind you, go for a walk with your Pokémon"
   },
   {
    "id": 7,
@@ -86,10 +86,10 @@
   {
    "id": 10,
    "zh": "ＣＭ『希望之光{NEWLINE}点亮不安的海上之旅,{NEWLINE}欢迎来到港镇的旗帜！{NEWLINE}浅葱市灯塔。{NEWLINE}城都观光协会",
-   "en": "Commercial: The light of hope shines over{NEWLINE}an anxious boat trip to this port city’s{NEWLINE}landmark! Come see the lighthouse!{NEWLINE}This message brought to you by the{NEWLINE}Johto Bureau of Tourism.",
+   "en": "Commercial: A light of hope for uneasy{NEWLINE}voyages at sea!{NEWLINE}Welcome to the pride of the port town:{NEWLINE}the Olivine City Lighthouse!{NEWLINE}This message brought to you by the{NEWLINE}Johto Bureau of Tourism.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0412/10"
+   "origin": "agent",
+   "notes": "US 0412/10 | RV070: omission: US dropped Olivine City and the welcome"
   },
   {
    "id": 11,
@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "ＣＭ『精简的设计,{NEWLINE}跳动的身姿,{NEWLINE}跟精灵一起狂奔的{NEWLINE}运动鞋！",
-   "en": "Commercial: A polished design, a lively{NEWLINE}silhouette. A cloud of dust rising up.{NEWLINE}Running along with your Pokémon in your{NEWLINE}running shoes!",
+   "en": "Commercial: A sleek design!{NEWLINE}A bounding stride!{NEWLINE}Running shoes for racing along with{NEWLINE}your Pokémon!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0412/12"
+   "origin": "agent",
+   "notes": "US 0412/12 | RV070: addition: US added cloud of dust"
   },
   {
    "id": 13,
@@ -134,10 +134,10 @@
   {
    "id": 16,
    "zh": "ＣＭ『来吧来吧！{NEWLINE}欢迎来到{NEWLINE}ＷｉーＦｉ广场{NEWLINE}所有人能在{NEWLINE}ＷｉーＦｉ广场一起尽兴地玩！",
-   "en": "Commercial: Come one, come all! Welcome!{NEWLINE}Welcome to the Wi-Fi Plaza, where{NEWLINE}everyone meets! Play games with others{NEWLINE}in the Wi-Fi Plaza! The wa...! Wi-Fi Plaza!",
+   "en": "Commercial: Come one, come all!{NEWLINE}Welcome to the Wi-Fi Plaza!{NEWLINE}In the Wi-Fi Plaza, everyone can have a{NEWLINE}great time together!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0412/16"
+   "origin": "agent",
+   "notes": "US 0412/16 | RV070: addition: US added play games and a jingle fragment"
   },
   {
    "id": 17,
@@ -198,18 +198,18 @@
   {
    "id": 24,
    "zh": "ＣＭ『卡吉镇特产{NEWLINE}愤怒馒头！{NEWLINE}由老婆婆一个个{NEWLINE}倾注了心神的特产,{NEWLINE}愤怒馒头！{NEWLINE}多送一个愤怒馒头！",
-   "en": "Commercial: Mahogany Town’s famous Rage{NEWLINE}Candy Bar! They work so hard every day{NEWLINE}to make these famous RageCandyBars!{NEWLINE}Why not take one back home to your{NEWLINE}friends--a Rage Candy Bar!",
+   "en": "Commercial: Mahogany Town’s specialty,{NEWLINE}the Rage Candy Bar!{NEWLINE}A specialty made one by one by an old{NEWLINE}lady who puts her whole heart into{NEWLINE}each: the Rage Candy Bar!{NEWLINE}We’ll throw in an extra Rage Candy Bar!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0412/24; modernised from US 0412#24"
+   "origin": "agent",
+   "notes": "US 0412/24; modernised from US 0412#24 | RV070: omission: US dropped the old lady making each bar; zh: one extra given (D-1774)"
   },
   {
    "id": 25,
    "zh": "ＣＭ『突如其来的精灵对战,{NEWLINE}如果你喜欢的话就来战斗塔吧！{NEWLINE}很多战斗你只有在{NEWLINE}这里才能体验的到。{NEWLINE}要一个人挑战,{NEWLINE}还是想两个人协力！？",
-   "en": "Commercial: Extraordinary Pokémon{NEWLINE}battles, the kind you’ve always wished{NEWLINE}for, are found only in the Battle Tower.{NEWLINE}Take part in the highest-grade battles.{NEWLINE}Will you take on the challenge by{NEWLINE}yourself or with a partner?",
+   "en": "Commercial: If you love sudden Pokémon{NEWLINE}battles, come to the Battle Tower!{NEWLINE}There are lots of battles you can only{NEWLINE}experience here.{NEWLINE}Will you take on the challenge alone, or{NEWLINE}team up with a partner?!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0412/25"
+   "origin": "agent",
+   "notes": "US 0412/25 | RV070: meaning: zh: sudden battles, battles only here; US extraordinary, highest-grade"
   },
   {
    "id": 26,
@@ -230,18 +230,18 @@
   {
    "id": 28,
    "zh": "ＣＭ『收集城堡点数吧！{NEWLINE}用好城堡点数{NEWLINE}能够让你在战斗开始前就{NEWLINE}占据有利条件！　战斗城堡",
-   "en": "Commercial: Collect Castle Points!{NEWLINE}Manage your Castle Points and use them{NEWLINE}before each battle in the Battle Castle!",
+   "en": "Commercial: Collect Castle Points!{NEWLINE}Use your Castle Points well, and you can{NEWLINE}gain the upper hand before the battle{NEWLINE}even starts!{NEWLINE}The Battle Castle!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0412/28"
+   "origin": "agent",
+   "notes": "US 0412/28 | RV070: omission: US dropped gaining the advantage before battle (D-1774)"
   },
   {
    "id": 29,
    "zh": "ＣＭ『命运就是那{NEWLINE}听天由命的轮盘,{NEWLINE}相信你和你的精灵,{NEWLINE}前进吧！{NEWLINE}正视你的命运！{NEWLINE}战斗轮盘！{NEWLINE}一步天堂？{NEWLINE}还是地狱呢？",
-   "en": "Commercial: Luck is so fickle and selfish{NEWLINE}at the Battle Arcade! Just believe in{NEWLINE}your Pokémon and go! Fight against fate{NEWLINE}in the Battle Arcade! Will the next step{NEWLINE}lead you to heaven, or{NEWLINE}to hell?",
+   "en": "Commercial: Fate is a roulette wheel at{NEWLINE}the mercy of chance!{NEWLINE}Believe in yourself and your Pokémon,{NEWLINE}and go!{NEWLINE}Look your fate in the eye!{NEWLINE}The Battle Arcade!{NEWLINE}One step to heaven? Or to hell?",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0412/29; ext-review B-024"
+   "notes": "US 0412/29; ext-review B-024 | RV070: meaning: zh: face your fate, believe in you and your Pokémon; US fight fate"
   },
   {
    "id": 30,
@@ -254,10 +254,10 @@
   {
    "id": 31,
    "zh": "ＣＭ『喷气式客船,{NEWLINE}要想往来浅葱与枯叶市,{NEWLINE}或是享受一段美妙的大海之旅{NEWLINE}的话就来坐船吧！",
-   "en": "Commercial: We invite you to travel the{NEWLINE}lightning-fast trip between Olivine and{NEWLINE}Vermilion Cities on a hydroplane-like{NEWLINE}boat ride!",
+   "en": "Commercial: Want to travel between{NEWLINE}Olivine and Vermilion City, or enjoy a{NEWLINE}wonderful voyage across the sea?{NEWLINE}Then take the jet-powered{NEWLINE}passenger ship!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0412/31"
+   "origin": "agent",
+   "notes": "US 0412/31 | RV070: omission: US dropped the sea-voyage option"
   },
   {
    "id": 32,
@@ -302,10 +302,10 @@
   {
    "id": 37,
    "zh": "ＣＭ『往来满金市与{NEWLINE}金黄市的超特快！{NEWLINE}坐上超特快{NEWLINE}你肯定也有种穿越的快感！",
-   "en": "Commercial: From Goldenrod to Saffron{NEWLINE}City, a surprising high-speed arrival and{NEWLINE}a high-quality journey!{NEWLINE}Ride the Magnet Train--the{NEWLINE}transportation of the future!",
+   "en": "Commercial: The super express between{NEWLINE}Goldenrod City and Saffron City!{NEWLINE}Ride the Magnet Train, and you’re sure{NEWLINE}to feel the thrill of crossing over in{NEWLINE}a flash!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0412/37"
+   "origin": "agent",
+   "notes": "US 0412/37 | RV070: meaning: zh: thrill of crossing over; US transportation of the future"
   }
  ]
 }

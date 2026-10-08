@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "这里会{NEWLINE}举办捕虫大会⋯⋯{CLEAR}只能在周二、四、六{SCROLL}才能参加,{NEWLINE}而抓到的虫精灵{CLEAR}也可以自己拿回去。",
-   "en": "The Bug-Catching Contest is held on{NEWLINE}Tuesday, Thursday, and Saturday.{SCROLL}Not only do you earn a prize just for{NEWLINE}participating, you also get to keep the{CLEAR}last bug Pokémon you caught.",
+   "en": "The Bug-Catching Contest is held{NEWLINE}here...{SCROLL}You can only take part on Tuesdays,{NEWLINE}Thursdays and Saturdays, and you can{CLEAR}take home the bug Pokémon you catch.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0246/7"
+   "origin": "agent",
+   "notes": "US 0246/7 | RV069: addition: US added a participation prize and ‘last’ bug; zh lacks both"
   },
   {
    "id": 8,
@@ -238,26 +238,26 @@
   {
    "id": 29,
    "zh": "审查各位抓到的精灵！{SCROLL}⋯⋯　⋯⋯　⋯⋯{NEWLINE}⋯⋯　⋯⋯　⋯⋯{SCROLL}公布结果！！{NEWLINE}咣咣咣！！{SCROLL}",
-   "en": "We will now judge the Pokémon you’ve{NEWLINE}caught.{SCROLL}......{NEWLINE}......{SCROLL}We have chosen the winners!{NEWLINE}Are you ready for this?{SCROLL}",
+   "en": "We will now judge the Pokémon you’ve{NEWLINE}caught!{SCROLL}......{NEWLINE}......{SCROLL}And now, the results!!{NEWLINE}Ta-da-da-dah!!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0246/29"
+   "origin": "agent",
+   "notes": "US 0246/29 | RV069: meaning: zh announces the results with a fanfare (咣咣咣); US ‘Are you ready for this?’ not in zh"
   },
   {
    "id": 30,
    "zh": "第３名是抓到了{VAR:0100:1}的{NEWLINE}{VAR:0103:0}。{SCROLL}",
-   "en": "Placing third is {VAR:0103:0}, who{NEWLINE}caught a writhing {VAR:0100:1}!{SCROLL}",
+   "en": "Placing third is {VAR:0103:0}, who{NEWLINE}caught a {VAR:0100:1}!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0246/30"
+   "origin": "agent",
+   "notes": "US 0246/30 | RV069: addition: adjective not in zh"
   },
   {
    "id": 31,
    "zh": "第３名是抓到了{VAR:0100:1}的{NEWLINE}{VAR:010E:2}的{CLEAR}{VAR:0103:0}{SCROLL}",
-   "en": "Placing third is the {VAR:010E:2}{NEWLINE}{VAR:0103:0}, who caught a writhing{CLEAR}{VAR:0100:1}!{SCROLL}",
+   "en": "Placing third is the {VAR:010E:2}{NEWLINE}{VAR:0103:0}, who caught{CLEAR}a {VAR:0100:1}!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0246/31"
+   "origin": "agent",
+   "notes": "US 0246/31 | RV069: addition: adjective not in zh"
   },
   {
    "id": 32,
@@ -270,34 +270,34 @@
   {
    "id": 33,
    "zh": "第２名是抓到了{VAR:0100:1}的{NEWLINE}{VAR:0103:0}。{SCROLL}",
-   "en": "Placing second is {VAR:0103:0}, who{NEWLINE}caught a wriggling {VAR:0100:1}!{SCROLL}",
+   "en": "Placing second is {VAR:0103:0}, who{NEWLINE}caught a {VAR:0100:1}!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0246/33"
+   "origin": "agent",
+   "notes": "US 0246/33 | RV069: addition: adjective not in zh"
   },
   {
    "id": 34,
    "zh": "第２名是抓带的{VAR:0100:1}的{NEWLINE}{VAR:010E:2}的{CLEAR}{VAR:0103:0}。{SCROLL}",
-   "en": "Placing second is the {VAR:010E:2}{NEWLINE}{VAR:0103:0}, who caught a{CLEAR}wriggling {VAR:0100:1}!{SCROLL}",
+   "en": "Placing second is the {VAR:010E:2}{NEWLINE}{VAR:0103:0}, who caught{CLEAR}a {VAR:0100:1}!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0246/34"
+   "origin": "agent",
+   "notes": "US 0246/34 | RV069: addition: adjective not in zh; zh typo 抓带 for 抓到 logged D-2224"
   },
   {
    "id": 35,
    "zh": "那么！这次大会的{NEWLINE}第一名,冠军就是⋯⋯{SCROLL}抓到了{VAR:0100:1}的{NEWLINE}{VAR:0103:0}。{SCROLL}",
-   "en": "This Bug-Catching Contest winner is...{SCROLL}{VAR:0103:0}, who caught a whopping{NEWLINE}{VAR:0100:1}!{SCROLL}",
+   "en": "This Bug-Catching Contest winner is...{SCROLL}{VAR:0103:0}, who caught{NEWLINE}a {VAR:0100:1}!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0246/35"
+   "origin": "agent",
+   "notes": "US 0246/35 | RV069: addition: adjective not in zh"
   },
   {
    "id": 36,
    "zh": "那么！这次大会的{NEWLINE}第一名,冠军就是⋯⋯{SCROLL}抓到了{VAR:0100:1}的{NEWLINE}{VAR:010E:2}的{CLEAR}{VAR:0103:0}。{SCROLL}",
-   "en": "This Bug-Catching Contest winner is...{SCROLL}The {VAR:010E:2} {VAR:0103:0}, who{NEWLINE}caught a whopping {VAR:0100:1}!{SCROLL}",
+   "en": "This Bug-Catching Contest winner is...{SCROLL}The {VAR:010E:2} {VAR:0103:0}, who{NEWLINE}caught a {VAR:0100:1}!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0246/36"
+   "origin": "agent",
+   "notes": "US 0246/36 | RV069: addition: adjective not in zh"
   },
   {
    "id": 37,
@@ -398,10 +398,10 @@
   {
    "id": 49,
    "zh": "干安『强的精灵{NEWLINE}出不出来{CLEAR}还是很考验人品的啊~",
-   "en": "Don: Luck plays a big part in this.{SCROLL}You never know if Pokémon will{NEWLINE}appear.",
+   "en": "Don: Luck plays a big part in this.{SCROLL}You never know if strong Pokémon{NEWLINE}will appear.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0246/49"
+   "origin": "agent",
+   "notes": "US 0246/49 | RV069: omission: 强的 (strong) restored"
   },
   {
    "id": 50,

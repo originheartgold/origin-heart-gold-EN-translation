@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "我们离得这么近{NEWLINE}干嘛还用电话聊天,{SCROLL}你别害羞啊,{NEWLINE}直接来找我聊天好了。",
-   "en": "Even though you’re nearby, talking on{NEWLINE}the phone makes you seem far away.{SCROLL}Don’t be shy. Why not come talk{NEWLINE}to me in person?",
+   "en": "We’re this close, so why talk on the{NEWLINE}phone? Don’t be shy.{SCROLL}Just come talk to me in person.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0687/5"
+   "origin": "agent",
+   "notes": "US 0687/5 | RV072: meaning: matched zh"
   },
   {
    "id": 6,
@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "垂钓的乐趣,{NEWLINE}在于你提竿之前,{CLEAR}根本不知道{CLEAR}会出现什么。{SCROLL}我还幻想{NEWLINE}有一天能够钓到{CLEAR}传说中的精灵呢。{SCROLL}不过这个可能性{NEWLINE}差不多是０吧？{SCROLL}比如雷公什么的。{NEWLINE}我在各地巡回的时候{CLEAR}可能会一个不小心{CLEAR}掉到海里去。{SCROLL}那个雷公或许也有一天{NEWLINE}掉进海里去的吧？{SCROLL}⋯⋯好像扯了一点。",
-   "en": "The fun of fishing is that{NEWLINE}you never know what you’ll{CLEAR}get until you reel it in.{SCROLL}I even daydream about fishing up{NEWLINE}a legendary Pokémon someday.{SCROLL}But the chances of that{NEWLINE}are basically zero, right?{SCROLL}Take Raikou, for example. As it{NEWLINE}roams all over the place, it{CLEAR}might slip and fall into the sea.{SCROLL}Maybe one day that Raikou{NEWLINE}will fall into the sea, too?{SCROLL}...I guess that’s a bit of a stretch.",
+   "en": "The fun of fishing is not knowing what{NEWLINE}you’ll get until you reel it in.{SCROLL}I even daydream about fishing up a{NEWLINE}legendary Pokémon someday.{SCROLL}But the chances of that are basically{NEWLINE}zero, right? Like Raikou, for example.{SCROLL}When I travel around, I might slip and{NEWLINE}fall into the sea by accident.{SCROLL}Maybe that Raikou will fall into the sea{NEWLINE}one day, too? ...I guess that’s a bit of{CLEAR}a stretch.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0687/11; modernised from US 0687#11"
+   "notes": "US 0687/11; modernised from US 0687#11 | RV072: meaning: the fisherman's own fall (D-2017)"
   }
  ]
 }

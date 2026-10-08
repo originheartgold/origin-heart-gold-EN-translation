@@ -41,10 +41,10 @@
   {
    "id": 4,
    "zh": "我是来帮助你这位战斗狂人的{NEWLINE}技能大叔！{SCROLL}只要分我一点战斗点数{NEWLINE}我就教给你一些{CLEAR}技巧型技能！{VAR:0200:0}",
-   "en": "If you’ve become a bit of a fanatic{NEWLINE}about battles, I’m the guy who can{CLEAR}teach your Pokémon all kinds of moves.{SCROLL}May I teach your Pokémon{NEWLINE}moves in exchange for BP? {VAR:0200:0}",
+   "en": "I’m the move guy, here to help battle{NEWLINE}fanatics like you!{SCROLL}Share a little BP with me, and I’ll{NEWLINE}teach you some technical moves! {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0748/4"
+   "origin": "agent",
+   "notes": "US 0748/4 | RV062: meaning: D-2201/D-2025: self-intro and 技巧型 'technical' specialty restored"
   },
   {
    "id": 5,
@@ -57,10 +57,10 @@
   {
    "id": 6,
    "zh": "真是不爽！{NEWLINE}战斗点数不够！{SCROLL}",
-   "en": "Oh, what an unhappy thing!{NEWLINE}You don’t have enough BP!{SCROLL}",
+   "en": "What a bummer!{NEWLINE}You don’t have enough BP!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0748/6"
+   "origin": "agent",
+   "notes": "US 0748/6 | RV062: grammar: 不爽 as natural English"
   },
   {
    "id": 7,
@@ -121,10 +121,10 @@
   {
    "id": 14,
    "zh": "{VAR:0100:0}学会了{NEWLINE}{VAR:0106:1}！{SCROLL}",
-   "en": "{VAR:0100:0} learned how to use{NEWLINE}{VAR:0106:1}. Wow!{SCROLL}",
+   "en": "{VAR:0100:0} learned{NEWLINE}{VAR:0106:1}!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0748/14"
+   "origin": "agent",
+   "notes": "US 0748/14 | RV062: addition: 'Wow!' not in Chinese (D-2201)"
   },
   {
    "id": 15,
@@ -137,10 +137,10 @@
   {
    "id": 16,
    "zh": "我是赌上生命{NEWLINE}进行精灵对战的你的同伴,{CLEAR}技能大叔！{SCROLL}只要分给我点战斗点数{NEWLINE}我就交给你一些{CLEAR}力量型技能！{VAR:0200:0}",
-   "en": "If you’ve poured your whole life into{NEWLINE}Pokémon battles, I’m the guy who can{CLEAR}teach your Pokémon all kinds of moves.{SCROLL}May I teach your Pokémon{NEWLINE}moves in exchange for BP? {VAR:0200:0}",
+   "en": "I’m the move guy, your comrade in{NEWLINE}Pokémon battles fought with your life{CLEAR}on the line!{SCROLL}Share some BP with me, and I’ll{NEWLINE}teach you some power moves! {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0748/16"
+   "origin": "agent",
+   "notes": "US 0748/16 | RV062: meaning: D-2201/D-2025: 赌上生命 'stake life' and 力量型 'power' specialty restored"
   },
   {
    "id": 17,
@@ -217,10 +217,10 @@
   {
    "id": 26,
    "zh": "{VAR:0100:0}学会了{NEWLINE}{VAR:0106:1}！{SCROLL}",
-   "en": "{VAR:0100:0} learned how to use{NEWLINE}{VAR:0106:1}. Great!{SCROLL}",
+   "en": "{VAR:0100:0} learned{NEWLINE}{VAR:0106:1}!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0748/26"
+   "origin": "agent",
+   "notes": "US 0748/26 | RV062: addition: 'Great!' not in Chinese (D-2201)"
   },
   {
    "id": 27,
@@ -233,10 +233,10 @@
   {
    "id": 28,
    "zh": "我是将灵魂注入{NEWLINE}精灵对战的你的同伴,{CLEAR}技能大叔！{SCROLL}只要分给我一些战斗点数{NEWLINE}我就交给你一些{CLEAR}摇曳心灵的技能。{VAR:0200:0}",
-   "en": "If you’ve poured your heart and soul{NEWLINE}into Pokémon battles, I’m the guy who{CLEAR}can teach your Pokémon all kinds{CLEAR}of moves.{SCROLL}May I teach your Pokémon{NEWLINE}moves in exchange for BP? {VAR:0200:0}",
+   "en": "I’m the move guy, your comrade who{NEWLINE}pours heart and soul into Pokémon{CLEAR}battles!{SCROLL}Share some BP with me, and I’ll teach{NEWLINE}you some heart-stirring moves. {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0748/28"
+   "origin": "agent",
+   "notes": "US 0748/28 | RV062: meaning: D-2201/D-2025: 将灵魂注入 and 摇曳心灵 'heart-stirring' specialty restored"
   },
   {
    "id": 29,

@@ -563,10 +563,10 @@
   {
    "id": 54,
    "zh": "白岱的秘藏特产。{NEWLINE}解除１只精灵的所有异常状态。",
-   "en": "Old Chateau’s hidden specialty.{NEWLINE}It heals all the status problems of a{NEWLINE}single Pokémon.",
+   "en": "Eterna City’s hidden specialty. It{NEWLINE}heals all the status problems of a{NEWLINE}single Pokémon.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/54",
+   "origin": "agent",
+   "notes": "US 0221/54 | RV088: meaning: 白岱 is Eterna (cf. D-1918/D-2222), not Old Chateau; D-1740",
    "qa_ignore": [
     "glossary:异常状态",
     "number_missing"
@@ -726,34 +726,34 @@
   {
    "id": 72,
    "zh": "红色小碎片。{NEWLINE}似乎是制造什么东西的一部分。",
-   "en": "A small red shard.{NEWLINE}It appears to be from some sort of{NEWLINE}implement made long ago.",
+   "en": "A small red shard. It appears to be{NEWLINE}part of some sort of implement.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/72"
+   "origin": "agent",
+   "notes": "US 0221/72 | RV088: addition: zh has no 'made long ago'"
   },
   {
    "id": 73,
    "zh": "蓝色小碎片。{NEWLINE}似乎是制造什么东西的一部分。",
-   "en": "A small blue shard.{NEWLINE}It appears to be from some sort of{NEWLINE}implement made long ago.",
+   "en": "A small blue shard. It appears to be{NEWLINE}part of some sort of implement.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/73"
+   "origin": "agent",
+   "notes": "US 0221/73 | RV088: addition: zh has no 'made long ago'"
   },
   {
    "id": 74,
    "zh": "黄色小碎片。{NEWLINE}似乎是制造什么东西的一部分。",
-   "en": "A small yellow shard.{NEWLINE}It appears to be from some sort of{NEWLINE}implement made long ago.",
+   "en": "A small yellow shard. It appears to{NEWLINE}be part of some sort of implement.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/74"
+   "origin": "agent",
+   "notes": "US 0221/74 | RV088: addition: zh has no 'made long ago'"
   },
   {
    "id": 75,
    "zh": "绿色小碎片。{NEWLINE}似乎是制造什么东西的一部分。",
-   "en": "A small green shard.{NEWLINE}It appears to be from some sort of{NEWLINE}implement made long ago.",
+   "en": "A small green shard. It appears to{NEWLINE}be part of some sort of implement.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/75"
+   "origin": "agent",
+   "notes": "US 0221/75 | RV088: addition: zh has no 'made long ago'"
   },
   {
    "id": 76,
@@ -815,10 +815,10 @@
   {
    "id": 82,
    "zh": "能让特定精灵进化{NEWLINE}不可思议的石头。{NEWLINE}发出橙黄色的光辉。",
-   "en": "A peculiar stone that makes certain{NEWLINE}species of Pokémon evolve.{NEWLINE}It is colored orange.",
+   "en": "A peculiar stone that makes certain{NEWLINE}species of Pokémon evolve. It glows{NEWLINE}orange-yellow.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/82",
+   "origin": "agent",
+   "notes": "US 0221/82 | RV088: meaning: zh 发出橙黄色的光辉 = glows orange-yellow; D-1741",
    "qa_ignore": [
     "glossary:进化"
    ]
@@ -826,10 +826,10 @@
   {
    "id": 83,
    "zh": "能让特定精灵进化{NEWLINE}不可思议的石头。{NEWLINE}雷电般的外形。",
-   "en": "A peculiar stone that makes certain{NEWLINE}species of Pokémon evolve.{NEWLINE}It has a thunderbolt pattern.",
+   "en": "A peculiar stone that makes certain{NEWLINE}species of Pokémon evolve. It is{NEWLINE}shaped like a thunderbolt.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/83",
+   "origin": "agent",
+   "notes": "US 0221/83 | RV088: meaning: zh 雷电般的外形 = thunderbolt shape, not pattern; D-1741",
    "qa_ignore": [
     "glossary:进化"
    ]
@@ -837,10 +837,10 @@
   {
    "id": 84,
    "zh": "能让特定精灵进化{NEWLINE}不可思议的石头。{NEWLINE}呈蓝色水滴状。",
-   "en": "A peculiar stone that makes certain{NEWLINE}species of Pokémon evolve.{NEWLINE}It is a clear, light blue.",
+   "en": "A peculiar stone that makes certain{NEWLINE}species of Pokémon evolve. It is blue{NEWLINE}and shaped like a water drop.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/84",
+   "origin": "agent",
+   "notes": "US 0221/84 | RV088: omission: zh 呈蓝色水滴状 = blue drop shape; D-1741",
    "qa_ignore": [
     "glossary:进化"
    ]
@@ -848,10 +848,10 @@
   {
    "id": 85,
    "zh": "能让特定精灵进化{NEWLINE}不可思议的石头。{NEWLINE}叶子般的外形。",
-   "en": "A peculiar stone that makes certain{NEWLINE}species of Pokémon evolve.{NEWLINE}It has a leaf pattern.",
+   "en": "A peculiar stone that makes certain{NEWLINE}species of Pokémon evolve. It is{NEWLINE}shaped like a leaf.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/85",
+   "origin": "agent",
+   "notes": "US 0221/85 | RV088: meaning: zh 叶子般的外形 = leaf shape, not pattern; D-1741",
    "qa_ignore": [
     "glossary:进化"
    ]
@@ -1087,10 +1087,10 @@
   {
    "id": 109,
    "zh": "能让特定精灵进化,{NEWLINE}不可思议的石头。{NEWLINE}光辉耀眼。",
-   "en": "A peculiar stone that makes certain{NEWLINE}species of Pokémon evolve.{NEWLINE}It sparkles like eyes.",
+   "en": "A peculiar stone that makes certain{NEWLINE}species of Pokémon evolve. Its{NEWLINE}radiance is dazzling.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/109",
+   "origin": "agent",
+   "notes": "US 0221/109 | RV088: meaning: zh 光辉耀眼 = dazzling radiance, no eye simile; D-1741",
    "qa_ignore": [
     "glossary:进化"
    ]
@@ -1377,10 +1377,10 @@
   {
    "id": 143,
    "zh": "印着心形图案的信纸。{NEWLINE}可让精灵携带。",
-   "en": "Stationery featuring a print of giant{NEWLINE}heart patterns.{NEWLINE}Let a Pokémon hold it for delivery.",
+   "en": "Stationery featuring a print of{NEWLINE}heart patterns. Let a Pokémon hold{NEWLINE}it for delivery.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/143"
+   "origin": "agent",
+   "notes": "US 0221/143 | RV088: addition: zh has no 'giant'"
   },
   {
    "id": 144,
@@ -2363,7 +2363,7 @@
    "en": "An item to be held by a Pokémon.{NEWLINE}Shady-looking glasses that boost the{NEWLINE}power of Dark-type moves 1.2 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/240",
+   "notes": "US 0221/240 | RV088: zh 眼睛 is a typo for 眼镜 (glasses); English kept; hack-finding D-2246",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2568,42 +2568,42 @@
   {
    "id": 260,
    "zh": "携带后参加竞技赛,{NEWLINE}该精灵会比平常更帅气。",
-   "en": "An item to be held by a Pokémon.{NEWLINE}It boosts the “Cool” aspect of the{NEWLINE}holder in a Contest in Sinnoh.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}boosts the “Cool” aspect of the{NEWLINE}holder in a Contest.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/260"
+   "origin": "agent",
+   "notes": "US 0221/260 | RV088: addition: zh has no 'in Sinnoh'"
   },
   {
    "id": 261,
    "zh": "携带后参加竞技赛,{NEWLINE}该精灵会比平常更美丽。",
-   "en": "An item to be held by a Pokémon. It{NEWLINE}boosts the “Beauty” aspect of the{NEWLINE}holder in a Contest in Sinnoh.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}boosts the “Beauty” aspect of the{NEWLINE}holder in a Contest.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/261 | D-1512: rewrapped to 200 px (bag panel frame at x=240)."
+   "origin": "agent",
+   "notes": "US 0221/261 | D-1512: rewrapped to 200 px (bag panel frame at x=240). | RV088: addition: zh has no 'in Sinnoh'"
   },
   {
    "id": 262,
    "zh": "携带后参加竞技赛,{NEWLINE}该精灵会比平常更可爱。",
-   "en": "An item to be held by a Pokémon.{NEWLINE}It boosts the “Cute” aspect of the{NEWLINE}holder in a Contest in Sinnoh.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}boosts the “Cute” aspect of the{NEWLINE}holder in a Contest.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/262"
+   "origin": "agent",
+   "notes": "US 0221/262 | RV088: addition: zh has no 'in Sinnoh'"
   },
   {
    "id": 263,
    "zh": "携带后参加竞技赛,{NEWLINE}该精灵会比平常更聪明。",
-   "en": "An item to be held by a Pokémon.{NEWLINE}It boosts the “Smart” aspect of the{NEWLINE}holder in a Contest in Sinnoh.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}boosts the “Smart” aspect of the{NEWLINE}holder in a Contest.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/263"
+   "origin": "agent",
+   "notes": "US 0221/263 | RV088: addition: zh has no 'in Sinnoh'"
   },
   {
    "id": 264,
    "zh": "携带后参加竞技赛,{NEWLINE}该精灵会比平常更健壮。",
-   "en": "An item to be held by a Pokémon.{NEWLINE}It boosts the “Tough” aspect of the{NEWLINE}holder in a Contest in Sinnoh.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}boosts the “Tough” aspect of the{NEWLINE}holder in a Contest.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/264"
+   "origin": "agent",
+   "notes": "US 0221/264 | RV088: addition: zh has no 'in Sinnoh'"
   },
   {
    "id": 265,
@@ -2633,7 +2633,7 @@
    "en": "An item to be held by a Pokémon. It is a{NEWLINE}thick pair of glasses that boosts the{NEWLINE}power of special moves 1.1 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/267",
+   "notes": "US 0221/267 | RV088: zh 眼睛 is a typo for 眼镜 (glasses); English kept; hack-finding D-2246",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -2641,10 +2641,10 @@
   {
    "id": 268,
    "zh": "难用的黑带。{NEWLINE}携带后发出克制的攻击时{NEWLINE}技能威力１.１倍。",
-   "en": "An item to be held by a Pokémon. It is a{NEWLINE}well-worn belt that boosts the power of{NEWLINE}supereffective moves 1.1 times.",
+   "en": "An item to be held by a Pokémon. A{NEWLINE}hard-to-use black belt that boosts{NEWLINE}supereffective moves 1.1 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/268",
+   "notes": "US 0221/268 | RV088: meaning: zh 难用的黑带 = hard-to-use black belt, not well-worn; D-1743",
    "qa_ignore": [
     "glossary:携带",
     "glossary:黑带"
@@ -2669,10 +2669,10 @@
   {
    "id": 271,
    "zh": "让精灵携带后,{NEWLINE}需要１回合畜力时间的技能{NEWLINE}可立刻发动。",
-   "en": "A single-use item to be held by a{NEWLINE}Pokémon. It allows the immediate use of{NEWLINE}a move that charges on the first turn.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}allows the immediate use of a move{NEWLINE}that charges on the first turn.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/271",
+   "origin": "agent",
+   "notes": "US 0221/271 | RV088: addition: zh does not say single-use",
    "qa_ignore": [
     "glossary:携带",
     "number_missing"
@@ -2681,10 +2681,10 @@
   {
    "id": 272,
    "zh": "触碰分泌毒液的珠。{NEWLINE}携带后在战斗中变为剧毒状态。",
-   "en": "An item to be held by a Pokémon. It{NEWLINE}is a bizarre orb that badly poisons{NEWLINE}the holder in battle.",
+   "en": "An item to be held by a Pokémon. An orb{NEWLINE}that oozes poison when touched. It{NEWLINE}badly poisons the holder in battle.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/272 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
+   "origin": "agent",
+   "notes": "US 0221/272 | D-1512: rewrapped to 200 px (bag panel frame at x=240). | RV088: omission: zh 触碰分泌毒液的珠 (oozes poison when touched)",
    "qa_ignore": [
     "glossary:剧毒"
    ]
@@ -2692,10 +2692,10 @@
   {
    "id": 273,
    "zh": "触碰后发热的珠。{NEWLINE}携带后在战斗中变为烧伤状态。",
-   "en": "An item to be held by a Pokémon.{NEWLINE}It is a bizarre orb that inflicts a{NEWLINE}burn on the holder in battle.",
+   "en": "An item to be held by a Pokémon. An orb{NEWLINE}that heats up when touched. It inflicts{NEWLINE}a burn on the holder in battle.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/273"
+   "origin": "agent",
+   "notes": "US 0221/273 | RV088: omission: zh 触碰后发热的珠 (heats up when touched)"
   },
   {
    "id": 274,
@@ -3110,10 +3110,10 @@
   {
    "id": 315,
    "zh": "不可思议的香炉。{NEWLINE}携带后岩系技能威力１.０５倍。",
-   "en": "An item to be held by a Pokémon. An{NEWLINE}exotic-smelling incense that boosts the{NEWLINE}power of Rock-type moves 1.05 times.",
+   "en": "An item to be held by a Pokémon. A{NEWLINE}mysterious incense that boosts the{NEWLINE}power of Rock-type moves 1.05 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/315",
+   "notes": "US 0221/315 | RV088: meaning: zh 不可思议的香炉 = mysterious incense (as #314); D-1744",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -3121,10 +3121,10 @@
   {
    "id": 316,
    "zh": "不可思议的香炉。{NEWLINE}携带后精灵的行动变迟钝。",
-   "en": "An item to be held by a Pokémon. It is{NEWLINE}an exotic-smelling incense that makes{NEWLINE}the holder bloated and slow moving.",
+   "en": "An item to be held by a Pokémon. It{NEWLINE}is a mysterious incense that makes{NEWLINE}the holder sluggish.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/316",
+   "origin": "agent",
+   "notes": "US 0221/316 | RV088: addition: zh has no bloating, mysterious not exotic-smelling; D-1744",
    "qa_ignore": [
     "glossary:迟钝"
    ]
@@ -3132,10 +3132,10 @@
   {
    "id": 317,
    "zh": "不可思议的香炉。{NEWLINE}携带后水系技能威力１.０５倍。",
-   "en": "An item to be held by a Pokémon. An{NEWLINE}exotic-smelling incense that boosts the{NEWLINE}power of Water-type moves 1.05 times.",
+   "en": "An item to be held by a Pokémon. A{NEWLINE}mysterious incense that boosts the{NEWLINE}power of Water-type moves 1.05 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/317",
+   "notes": "US 0221/317 | RV088: meaning: zh 不可思议的香炉 = mysterious incense (as #314); D-1744",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -3143,10 +3143,10 @@
   {
    "id": 318,
    "zh": "不可思议的香炉。{NEWLINE}携带后草系技能威力１.０５倍。",
-   "en": "An item to be held by a Pokémon. An{NEWLINE}exotic-smelling incense that boosts the{NEWLINE}power of Grass-type moves 1.05 times.",
+   "en": "An item to be held by a Pokémon. A{NEWLINE}mysterious incense that boosts the{NEWLINE}power of Grass-type moves 1.05 times.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/318",
+   "notes": "US 0221/318 | RV088: meaning: zh 不可思议的香炉 = mysterious incense (as #314); D-1744",
    "qa_ignore": [
     "glossary:携带"
    ]
@@ -3756,10 +3756,10 @@
   {
    "id": 384,
    "zh": "放电攻击。{NEWLINE}吸收剩下的电,{NEWLINE}７０％特攻上升１级。",
-   "en": "The user attacks with an electric{NEWLINE}charge. It has a 70% chance to raise{NEWLINE}its Sp. Atk by 1 stage.",
+   "en": "An electric attack. The user absorbs{NEWLINE}the leftover charge: 70% chance to{NEWLINE}raise its Sp. Atk by 1 stage.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0221/384",
+   "notes": "US 0221/384 | RV088: omission: zh 吸收剩下的电 (absorbs leftover electricity); D-1745",
    "qa_ignore": [
     "glossary:放电"
    ]
@@ -3825,10 +3825,10 @@
   {
    "id": 391,
    "zh": "释放全部能量大爆炸。{NEWLINE}使用后濒死。",
-   "en": "The user explodes to inflict damage{NEWLINE}on all Pokémon in battle. The user{NEWLINE}faints upon using this move.",
+   "en": "The user releases all its energy in a{NEWLINE}huge explosion. The user faints upon{NEWLINE}using this move.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/391 | D-1512: rewrapped to 200 px (bag panel frame at x=240).",
+   "origin": "agent",
+   "notes": "US 0221/391 | D-1512: rewrapped to 200 px (bag panel frame at x=240). | RV088: addition: zh has no 'all Pokémon in battle' target scope; D-2050",
    "qa_ignore": [
     "glossary:大爆炸"
    ]
@@ -4016,10 +4016,10 @@
   {
    "id": 412,
    "zh": "吃掉睡眠中对手的梦。{NEWLINE}给予伤害的一半{NEWLINE}转为自己的ＨＰ。",
-   "en": "An attack that works only on a{NEWLINE}sleeping foe. It absorbs half the{NEWLINE}damage caused to heal the user’s HP.",
+   "en": "The user eats the dream of a{NEWLINE}sleeping foe. It absorbs half the{NEWLINE}damage caused to heal the user’s HP.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/412"
+   "origin": "agent",
+   "notes": "US 0221/412 | RV089: omission: zh 吃掉睡眠中对手的梦 (eats the sleeping foe's dream) was missing; D-1745"
   },
   {
    "id": 413,
@@ -6131,10 +6131,10 @@
   {
    "id": 653,
    "zh": "能让某些宝可梦进{NEWLINE}化的神奇铠甲。蕴{NEWLINE}含着诅咒的感情。",
-   "en": "Mysterious armor that makes certain{NEWLINE}Pokémon evolve. It is imbued with a{NEWLINE}curse.",
+   "en": "Mysterious armor that makes certain{NEWLINE}Pokémon evolve. It is imbued with{NEWLINE}cursed feelings.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV089: omission: zh 诅咒的感情 (feelings of a curse); 感情 was dropped, parallel to #646",
    "qa_ignore": [
     "glossary:进化"
    ]

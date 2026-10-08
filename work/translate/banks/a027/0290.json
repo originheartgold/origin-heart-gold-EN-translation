@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "弥次郎兵卫投掷",
-   "en": "Baltoy: slow",
+   "en": "Baltoy: throw",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0297/9; modernised from US 0297#9"
+   "origin": "agent",
+   "notes": "US 0297/9; modernised from US 0297#9 | RV078: meaning: zh 弥次郎兵卫投掷 says throw, as kept at #10/#22 (RCA-013)"
   },
   {
    "id": 10,
@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "锯齿状左右弹跳",
-   "en": "Sliced sideways jump",
+   "en": "Zigzag sideways bounce",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0297/11"
+   "origin": "agent",
+   "notes": "US 0297/11 | RV078: meaning: 锯齿状 = zigzag, same zh as #25 (D-1726)"
   },
   {
    "id": 12,
@@ -1094,10 +1094,10 @@
   {
    "id": 136,
    "zh": "ＰＬ　Ｂ　弥次郎兵卫　投掷",
-   "en": "PL　B　Baltoy: slow",
+   "en": "PL　B　Baltoy: throw",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0297/136; modernised from US 0297#136"
+   "origin": "agent",
+   "notes": "US 0297/136; modernised from US 0297#136 | RV078: meaning: zh 投掷 says throw, as #9/#141"
   },
   {
    "id": 137,

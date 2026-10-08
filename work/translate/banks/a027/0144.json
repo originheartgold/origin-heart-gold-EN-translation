@@ -54,42 +54,42 @@
   {
    "id": 6,
    "zh": "茜罗娜『在古代文献中说{NEWLINE}一旦阿尔宙斯立于{VAR:FF00:1}光之舞台{VAR:FF00:0}之上,{CLEAR}时间和空间以及反物质世界,{NEWLINE}就此诞生。{SCROLL}",
-   "en": "Cynthia: According to an ancient{NEWLINE}document, time, space, and antimatter,{CLEAR}or what combined we call the world,{CLEAR}shall be born when Arceus stands{CLEAR}on the {VAR:FF00:1}Mystri Stage{VAR:FF00:0}.{SCROLL}",
+   "en": "Cynthia: Ancient texts say that once{NEWLINE}Arceus stands on the {VAR:FF00:1}Mystri Stage{VAR:FF00:0},{CLEAR}time, space and the world of{CLEAR}antimatter are born.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0146/6; modernised from US 0146#6"
+   "origin": "agent",
+   "notes": "US 0146/6; modernised from US 0146#6 | RV050: addition: US added 'or what combined we call the world'"
   },
   {
    "id": 7,
    "zh": "茜罗娜『这是掌管空间的{NEWLINE}帕路奇亚的纹章……{SCROLL}",
-   "en": "Cynthia: This is the pattern that{NEWLINE}represents Palkia, the master of{CLEAR}space and dimensions...{SCROLL}",
+   "en": "Cynthia: This is the pattern that{NEWLINE}represents Palkia, the master{CLEAR}of space...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0146/7; modernised from US 0146#7"
+   "origin": "agent",
+   "notes": "US 0146/7; modernised from US 0146#7 | RV050: addition: 'and dimensions' not in zh"
   },
   {
    "id": 8,
    "zh": "茜罗娜『这是掌管时间的{NEWLINE}帝牙卢卡的纹章……{SCROLL}还有……{SCROLL}",
-   "en": "Cynthia: This is the pattern that{NEWLINE}represents Dialga, the guardian{CLEAR}of time...{SCROLL}",
+   "en": "Cynthia: This is the pattern that{NEWLINE}represents Dialga, the guardian of{CLEAR}time... And...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0146/8; modernised from US 0146#8"
+   "origin": "agent",
+   "notes": "US 0146/8; modernised from US 0146#8 | RV050: omission: restored trailing 还有…… (And...)"
   },
   {
    "id": 9,
    "zh": "茜罗娜『这是骑拉帝纳……{NEWLINE}这个世界的反面,{CLEAR}它与时间、空间相对,{CLEAR}掌管着反转的世界……{SCROLL}",
-   "en": "Cynthia: This is the pattern that{NEWLINE}represents Giratina, the ruler of{CLEAR}the world that is on the opposite side{CLEAR}of ours, the world of antimatter...{SCROLL}",
+   "en": "Cynthia: This is Giratina...{NEWLINE}It stands on the reverse side of this{CLEAR}world, opposite time and space, and{CLEAR}rules the reversed world...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0146/9; modernised from US 0146#9"
+   "origin": "agent",
+   "notes": "US 0146/9; modernised from US 0146#9 | RV050: meaning: US 'world of antimatter' replaced zh: reverse side, opposed to time and space, rules reversed world"
   },
   {
    "id": 10,
    "zh": "茜罗娜『你是被阿尔宙斯{NEWLINE}认可的训练师。{SCROLL}创造出宇宙的阿尔宙斯的力量{CLEAR}即使只展现出一部分,{SCROLL}这力量或许也足以从无的状态,{CLEAR}诞生出新的生命！{SCROLL}",
-   "en": "Cynthia: Arceus has accepted you as{NEWLINE}a Trainer.{SCROLL}Arceus, having shaped the world,{NEWLINE}is said to show you a glimpse of{CLEAR}its true power.{SCROLL}The power of possibly making life{NEWLINE}appear out of nothing...{SCROLL}",
+   "en": "Cynthia: You are a Trainer whom Arceus{NEWLINE}has acknowledged.{SCROLL}Arceus created the universe. Even if it{NEWLINE}shows only part of its power, that{CLEAR}power may be enough to bring new life{CLEAR}into being out of nothing!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0146/10; modernised from US 0146#10"
+   "origin": "agent",
+   "notes": "US 0146/10; modernised from US 0146#10 | RV050: meaning: US 'is said to show you a glimpse' changed meaning; zh: even part of its power may create life from nothing"
   },
   {
    "id": 11,
@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "茜罗娜『选择掌管空间的{NEWLINE}帕路奇亚吗？{VAR:0200:0}",
-   "en": "Cynthia: So you choose Palkia, the{NEWLINE}master of space and dimensions? {VAR:0200:0}",
+   "en": "Cynthia: So you choose Palkia, the{NEWLINE}master of space? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0146/14; modernised from US 0146#14"
+   "origin": "agent",
+   "notes": "US 0146/14; modernised from US 0146#14 | RV050: addition: 'and dimensions' not in zh"
   },
   {
    "id": 15,
@@ -134,18 +134,18 @@
   {
    "id": 16,
    "zh": "茜罗娜『刚才发光的球体……{NEWLINE}难道说是……{CLEAR}蛋？{SCROLL}前所未见的蛋{NEWLINE}我们竟有幸亲眼见证了它{CLEAR}诞生的瞬间……　{SCROLL}",
-   "en": "Cynthia: That shining sphere...{NEWLINE}Could it be...an Egg?{SCROLL}Did we just witness the very moment{NEWLINE}an Egg was brought to this world?{CLEAR}A moment no one has ever seen?{SCROLL}",
+   "en": "Cynthia: That shining sphere just now...{NEWLINE}Could it be... an Egg?{SCROLL}An Egg like none ever seen before...{NEWLINE}and we were lucky enough to witness the{CLEAR}very moment it was born...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0146/16"
+   "origin": "agent",
+   "notes": "US 0146/16 | RV050: meaning: 前所未见的蛋 = an unprecedented Egg; 有幸 dropped"
   },
   {
    "id": 17,
    "zh": "茜罗娜『蛋是孕育{NEWLINE}一切生命的摇篮。{SCROLL}我们居住的这个星球也正如{NEWLINE}蛋一般……{SCROLL}从蛋中诞生的生命{NEWLINE}总有一天会燃尽。{CLEAR}然后,{CLEAR}作为新的生命再度诞生……{SCROLL}阿尔宙斯或许是想让我们{CLEAR}见证这一切……{SCROLL}",
-   "en": "Cynthia: An Egg is the cradle of every{NEWLINE}being. This planet itself is an Egg{CLEAR}in a sense...{SCROLL}Life that comes from an Egg will{NEWLINE}come to an end in due course...{CLEAR}to begin anew...{SCROLL}That may be what Arceus{NEWLINE}wanted to show us.{SCROLL}{NEWLINE}",
+   "en": "Cynthia: An Egg is the cradle of all life.{NEWLINE}This planet we live on is just{CLEAR}like an Egg...{SCROLL}Life born from an Egg will burn out{NEWLINE}one day. And then it will be born{CLEAR}again as new life...{SCROLL}Perhaps Arceus wanted us to witness{NEWLINE}all of this...{SCROLL}{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0146/17; modernised from US 0146#17"
+   "origin": "agent",
+   "notes": "US 0146/17; modernised from US 0146#17 | RV050: meaning: 燃尽 burn out / 作为新的生命再度诞生 restored"
   },
   {
    "id": 18,
@@ -158,10 +158,10 @@
   {
    "id": 19,
    "zh": "茜罗娜『巨大的能量漩涡再次出现了！{SCROLL}",
-   "en": "Cynthia: We seem to be surrounded by{NEWLINE}that strong power again...!{SCROLL}",
+   "en": "Cynthia: That huge vortex of energy{NEWLINE}has appeared again!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0146/19"
+   "origin": "agent",
+   "notes": "US 0146/19 | RV050: meaning: 巨大的能量漩涡再次出现 (D-1720)"
   },
   {
    "id": 20,
@@ -198,10 +198,10 @@
   {
    "id": 24,
    "zh": "茜罗娜『这个{VAR:FF00:1}神都遗迹{VAR:FF00:0}是{NEWLINE}为了供奉阿尔宙斯{CLEAR}而建造起来的神殿。",
-   "en": "Cynthia: The {VAR:FF00:1}Sinjoh Ruins{VAR:FF00:0} are what{NEWLINE}remains of a temple built to show{CLEAR}respect for Arceus.",
+   "en": "Cynthia: The {VAR:FF00:1}Sinjoh Ruins{VAR:FF00:0} are a temple{NEWLINE}built to worship Arceus.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0146/24; modernised from US 0146#24"
+   "origin": "agent",
+   "notes": "US 0146/24; modernised from US 0146#24 | RV050: softened: 供奉 = worship/enshrine, stronger than 'show respect'"
   },
   {
    "id": 25,
@@ -254,10 +254,10 @@
   {
    "id": 31,
    "zh": "似乎有资格站在这里的只有阿尔宙斯…！",
-   "en": "It seems that only a single Arceus{NEWLINE}can stand here...",
+   "en": "It seems only Arceus is worthy of{NEWLINE}standing here...!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0146/31; modernised from US 0146#31"
+   "origin": "agent",
+   "notes": "US 0146/31; modernised from US 0146#31 | RV050: meaning: 只有阿尔宙斯 = only Arceus, not 'a single Arceus' (D-1718)"
   },
   {
    "id": 32,
@@ -270,10 +270,10 @@
   {
    "id": 33,
    "zh": "阿尔宙斯似乎……{NEWLINE}已经没反应了！",
-   "en": "It seems it no longer responds{NEWLINE}to this Arceus...",
+   "en": "Arceus seems to... have stopped{NEWLINE}responding!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0146/33; modernised from US 0146#33"
+   "origin": "agent",
+   "notes": "US 0146/33; modernised from US 0146#33 | RV050: meaning: subject is Arceus (D-1719)"
   },
   {
    "id": 34,

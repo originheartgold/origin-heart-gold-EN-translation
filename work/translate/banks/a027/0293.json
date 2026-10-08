@@ -678,10 +678,10 @@
   {
    "id": 84,
    "zh": "背包已经满了,{NEWLINE}无法再装道具！{VAR:0207}",
-   "en": "The Bag is full.{VAR:0207}",
+   "en": "The Bag is full. No more items will fit!{VAR:0207}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0300/84"
+   "origin": "agent",
+   "notes": "US 0300/84 | RV059: omission: restored 无法再装道具 clause"
   },
   {
    "id": 85,
@@ -1446,18 +1446,18 @@
   {
    "id": 180,
    "zh": "精灵跟在身后走的时候{NEWLINE}无法使用！{VAR:0207}",
-   "en": "You can’t use that when you have{NEWLINE}someone with you.{VAR:0207}",
+   "en": "You can’t use that while a Pokémon is{NEWLINE}following you!{VAR:0207}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0300/180"
+   "origin": "agent",
+   "notes": "US 0300/180 | RV059: meaning: Chinese says a Pokémon following behind, not someone with you; hack-finding logged"
   },
   {
    "id": 181,
    "zh": "现在不是做这事的时候！{VAR:0207}",
-   "en": "This isn’t the place for that!{VAR:0207}",
+   "en": "Now isn’t the time to do that!{VAR:0207}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0300/181"
+   "origin": "agent",
+   "notes": "US 0300/181 | RV059: meaning: Chinese 现在不是做这事的时候 is about time, not place"
   },
   {
    "id": 182,

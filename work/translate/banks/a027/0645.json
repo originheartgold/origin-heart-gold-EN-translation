@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "除了我之外,{NEWLINE}很有许多厉害的训练师,{CLEAR}请你努力吧⋯⋯",
-   "en": "There are so many other Trainers out{NEWLINE}there who are much stronger than me...{CLEAR}You should challenge them and see.",
+   "en": "There are lots of other strong Trainers{NEWLINE}besides me... Please do your best...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0654/3"
+   "origin": "agent",
+   "notes": "US 0654/3 | RV071: meaning: no 'stronger than me' / 'challenge them' in zh"
   },
   {
    "id": 4,
@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "小明最近也是{NEWLINE}一副精神饱满的样子。{CLEAR}我也能得到{CLEAR}一些空闲时间了,{SCROLL}我们再来一场{NEWLINE}精灵对战怎么样？{VAR:0200:0}",
-   "en": "Amphy’s gotten better lately. I’ve also{NEWLINE}been able to take some time to myself.{SCROLL}What do you think? Would you like to{NEWLINE}battle me again? {VAR:0200:0}",
+   "en": "Amphy’s been full of energy lately, too.{NEWLINE}I’ve also been able to take some time to{CLEAR}myself. What do you think? Would you{CLEAR}like to battle me again? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0654/5"
+   "origin": "agent",
+   "notes": "US 0654/5 | RV071: meaning: Amphy looks full of energy (not 'gotten better')"
   },
   {
    "id": 6,
@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "那之后你去过{NEWLINE}浅葱市的灯塔了吗？{SCROLL}我最近也非常忙,{NEWLINE}所以去看小明的机会{CLEAR}也越来越少了⋯⋯{SCROLL}不过⋯⋯到了晚上,{NEWLINE}一看到灯塔的光,{CLEAR}我就会想{CLEAR}「小明,你要好起来啊」",
-   "en": "Have you been to the Lighthouse lately?{SCROLL}I’ve been so busy myself. I haven’t{NEWLINE}been able to get over there to see{CLEAR}Amphy much...{SCROLL}But...whenever I see the Lighthouse’s{NEWLINE}lights at night, I always think,{CLEAR}“I hope you’re doing well, Amphy.”",
+   "en": "Have you been to the Olivine City{NEWLINE}Lighthouse since then? I’ve been so{CLEAR}busy myself lately, so I get fewer and{CLEAR}fewer chances to go see Amphy... But...{CLEAR}at night, whenever I see the{CLEAR}Lighthouse’s light, I think, “Amphy,{CLEAR}please get well...”",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0654/12"
+   "origin": "agent",
+   "notes": "US 0654/12 | RV071: meaning: 'Amphy, get well' wish and Olivine City restored"
   },
   {
    "id": 13,

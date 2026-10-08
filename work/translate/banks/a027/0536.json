@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "哎呀,我的老公好像很忙啊,{NEWLINE}身体没什么问题吧？{SCROLL}他一碰到精灵的研究{NEWLINE}就专心得连饭也顾不上吃！",
-   "en": "Oh my, my husband seems awfully busy. I{NEWLINE}hope he’s looking after himself.{SCROLL}Once he gets into his Pokémon research,{NEWLINE}he’s so focused he forgets to eat!",
+   "en": "Oh my, my husband seems awfully busy.{NEWLINE}His health is holding up, isn’t it?{SCROLL}Once he gets into his Pokémon research,{NEWLINE}he’s so focused he forgets to eat!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0544/0 | seed rejected us [tag_mismatch] (candidate US 0544#0; text not kept)"
+   "notes": "US 0544/0 | seed rejected us [tag_mismatch] (candidate US 0544#0; text not kept) | RV053: meaning: 身体没什么问题吧？ is about his health"
   },
   {
    "id": 1,
@@ -388,10 +388,10 @@
   {
    "id": 45,
    "zh": "电磁感知",
-   "en": "Senses electricity",
+   "en": "Electromagnetic sense",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV053: meaning: 电磁感知 (D-1885 part)",
    "category": "menu_touch_1line"
   },
   {
@@ -432,10 +432,10 @@
   {
    "id": 50,
    "zh": "你身上带的精灵太多了{NEWLINE}整理一下背包再来吧。",
-   "en": "You’re carrying too many Pokémon. Sort{NEWLINE}out your party and come back.",
+   "en": "You’re carrying too many Pokémon. Sort{NEWLINE}out your Bag and come back.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s)"
+   "notes": "v3 TM: 1 source(s) | RV053: meaning: zh says 背包 (Bag); silent correction to ‘party’ undone (D-1886; hack-finding logged)"
   },
   {
    "id": 51,

@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "我在星期六的白天都很闲,{CLEAR}到时候给我打电话啊。",
-   "en": "I’m often bored Saturdays at noon.{NEWLINE}There’s nothing to do...{CLEAR}Um... So, call me Saturday, OK?",
+   "en": "I’m pretty free during the day on{NEWLINE}Saturdays. Give me a call then, OK?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0644/4"
+   "origin": "agent",
+   "notes": "US 0644/4 | RV070: meaning: zh: Saturday daytime; US noon (D-1894)"
   },
   {
    "id": 5,

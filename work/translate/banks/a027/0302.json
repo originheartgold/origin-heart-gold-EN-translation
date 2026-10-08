@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "各位选手们辛苦了。{SCROLL}究竟哪个队伍是激斗的赢家呢,{NEWLINE}现在宣布！{SCROLL}首先要给予{NEWLINE}充满挑战精神的⋯⋯{SCROLL}",
-   "en": "Great job, athletes!{SCROLL}Which team fought the hardest?{NEWLINE}We’ve got the results!{SCROLL}But first...{NEWLINE}who’s overflowing with fighting spirit?{SCROLL}",
+   "en": "Great job, athletes!{SCROLL}Which team won this fierce battle?{NEWLINE}We’ve got the results!{SCROLL}But first...{NEWLINE}who’s overflowing with fighting spirit?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/3"
+   "origin": "agent",
+   "notes": "US 0309/3 | RV079: meaning: zh asks which team won the fierce battle, not which fought hardest"
   },
   {
    "id": 4,
@@ -446,10 +446,10 @@
   {
    "id": 55,
    "zh": "在闭幕式上得到追加奖励数{NEWLINE}{VAR:0137:1}次,运气也是实力！{SCROLL}",
-   "en": "Closing-ceremony bonus awards.{NEWLINE}{VAR:0137:1} times. Luck and true strength!{SCROLL}",
+   "en": "Closing-ceremony bonus awards.{NEWLINE}{VAR:0137:1} times. Luck is strength too!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/55"
+   "origin": "agent",
+   "notes": "US 0309/55 | RV079: meaning: 运气也是实力 = luck is strength too (D-1777)"
   },
   {
    "id": 56,
@@ -470,10 +470,10 @@
   {
    "id": 58,
    "zh": "看！这团队协作！{NEWLINE}感受吧！这份友情！！{SCROLL}",
-   "en": "Look at this! This teamwork! It’s{NEWLINE}amazing! You can feel the friendship!{SCROLL}",
+   "en": "Look! This teamwork!{NEWLINE}Feel it! This friendship!!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/58"
+   "origin": "agent",
+   "notes": "US 0309/58 | RV079: addition: US added \"It’s amazing\"; zh is look/feel it"
   },
   {
    "id": 59,
@@ -502,10 +502,10 @@
   {
    "id": 62,
    "zh": "失败记录{VAR:0137:1}次！{NEWLINE}失败是通往成功之路！{SCROLL}",
-   "en": "Failed {VAR:0137:1} times!{NEWLINE}Failure is just a shortcut to success!{SCROLL}",
+   "en": "Failed {VAR:0137:1} times!{NEWLINE}Failure is the road to success!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/62"
+   "origin": "agent",
+   "notes": "US 0309/62 | RV079: meaning: 通往成功之路 = road to success, not a shortcut (D-1777)"
   },
   {
    "id": 63,
@@ -598,10 +598,10 @@
   {
    "id": 74,
    "zh": "为了胜利狠命撞吧！{NEWLINE}次数是{VAR:0137:1}次！{SCROLL}",
-   "en": "Strike for victory!{NEWLINE}{VAR:0137:1} times, that is!{SCROLL}",
+   "en": "Tackle with all your might for victory!{NEWLINE}{VAR:0137:1} times, that is!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/74"
+   "origin": "agent",
+   "notes": "US 0309/74 | RV079: softened: 狠命撞 = tackle with all your might (D-1777)"
   },
   {
    "id": 75,
@@ -678,10 +678,10 @@
   {
    "id": 84,
    "zh": "体力不是一切！{NEWLINE}策略才是胜利的捷径！{SCROLL}",
-   "en": "Strength isn’t everything! Strategy is{NEWLINE}another important factor to success!{SCROLL}",
+   "en": "Strength isn’t everything! Strategy{NEWLINE}is the shortcut to victory!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/84"
+   "origin": "agent",
+   "notes": "US 0309/84 | RV079: meaning: 策略才是胜利的捷径 = strategy is the shortcut to victory (D-1777)"
   },
   {
    "id": 85,
@@ -846,10 +846,10 @@
   {
    "id": 105,
    "zh": "你看到旗子你就该想到那是我的！{NEWLINE}抢旗的英雄！{SCROLL}",
-   "en": "When you see Pennants, you think of me!{NEWLINE}I am a Pennant-capturing hero!{SCROLL}",
+   "en": "When you see a Pennant, know it’s mine!{NEWLINE}I am a Pennant-capturing hero!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/105"
+   "origin": "agent",
+   "notes": "US 0309/105 | RV079: meaning: zh says every Pennant you see is mine (D-1777)"
   },
   {
    "id": 106,
@@ -942,18 +942,18 @@
   {
    "id": 117,
    "zh": "捕捉口袋竞技的明天,{NEWLINE}专为捕捉飞碟而来！{SCROLL}",
-   "en": "I’ve come to catch Discs and catch the{NEWLINE}Pokéathlon!{SCROLL}",
+   "en": "Catching the Pokéathlon’s tomorrow!{NEWLINE}I came here just to catch Discs!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/117"
+   "origin": "agent",
+   "notes": "US 0309/117 | RV079: omission: 口袋竞技的明天 (tomorrow) was dropped (D-1777)"
   },
   {
    "id": 118,
    "zh": "你抓到的飞碟{NEWLINE}是一种叫未来的希望之星！{SCROLL}",
-   "en": "The Disc you caught is tomorrow’s{NEWLINE}shooting star!{SCROLL}",
+   "en": "The Disc you caught is a star{NEWLINE}of hope called the future!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/118"
+   "origin": "agent",
+   "notes": "US 0309/118 | RV079: meaning: 一种叫未来的希望之星 = a star of hope called the future (D-1777)"
   },
   {
    "id": 119,
@@ -1038,10 +1038,10 @@
   {
    "id": 129,
    "zh": "被逼到绝境后就完了！{NEWLINE}连续击落至最后一只！{SCROLL}",
-   "en": "Get cornered and it’s all over!{NEWLINE}Knock them down, one after another!{SCROLL}",
+   "en": "Get cornered and it’s all over!{NEWLINE}Knock them all down, to the last one!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0309/129"
+   "notes": "US 0309/129 | RV079: omission: 至最后一只 (to the last one) (D-1777)"
   },
   {
    "id": 130,
@@ -1166,10 +1166,10 @@
   {
    "id": 145,
    "zh": "出现了！大家的人气！{NEWLINE}签名就等拿到冠军之后吧！{SCROLL}",
-   "en": "Here it is! What you’ve all been waiting{NEWLINE}for! Autographs after the competition!{SCROLL}",
+   "en": "Here it is! Everyone’s favorite!{NEWLINE}Autographs after I win the title!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/145"
+   "origin": "agent",
+   "notes": "US 0309/145 | RV079: meaning: 大家的人气 = everyone’s favorite; autographs after winning the championship (D-1777)"
   },
   {
    "id": 146,
@@ -1678,10 +1678,10 @@
   {
    "id": 209,
    "zh": "触摸精灵跳跃！{NEWLINE}同时操作３只！{NEWLINE}像那谁一样跨栏吧！",
-   "en": "Touch the Pokémon to jump!{NEWLINE}Control three Pokémon at the{NEWLINE}same time. Jump the Hurdles!",
+   "en": "Touch the Pokémon to jump!{NEWLINE}Control three at the same time!{NEWLINE}Clear Hurdles like you-know-who!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/209",
+   "origin": "agent",
+   "notes": "US 0309/209 | RV079: omission: 像那谁一样 (like you-know-who) joke was dropped (D-1777)",
    "category": "ui"
   },
   {
@@ -1894,10 +1894,10 @@
   {
    "id": 233,
    "zh": "１）快速在上面滑动{NEWLINE}　　就能扔雪球！{NEWLINE}２）触摸雪球就会变大！",
-   "en": "1) Quickly flick upward on{NEWLINE}your Pokémon to throw Snow!{NEWLINE}2) Touch to hoard more Snow!",
+   "en": "1) Quickly flick upward on{NEWLINE}your Pokémon to throw Snow!{NEWLINE}2) Touch to make Snowballs bigger!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/233",
+   "origin": "agent",
+   "notes": "US 0309/233 | RV079: meaning: 触摸雪球就会变大 = touch to make the Snowball bigger (D-1777)",
    "category": "ui"
   },
   {
@@ -2076,10 +2076,10 @@
   {
    "id": 255,
    "zh": "该比赛成绩{NEWLINE}决定分数！{SCROLL}",
-   "en": "This event’s results will be determined{NEWLINE}by points!{SCROLL}",
+   "en": "This event’s results{NEWLINE}determine your points!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/255"
+   "origin": "agent",
+   "notes": "US 0309/255 | RV079: meaning: results determine points, US had it reversed (D-1777)"
   },
   {
    "id": 256,
@@ -2148,10 +2148,10 @@
   {
    "id": 264,
    "zh": "下一场比赛将决定一切！{NEWLINE}好好加油,别让自己后悔啊！{SCROLL}",
-   "en": "Everything comes down to the final{NEWLINE}event! Give it all you’ve got!{SCROLL}",
+   "en": "Everything rides on the next event!{NEWLINE}Go all out so you have no regrets!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/264"
+   "origin": "agent",
+   "notes": "US 0309/264 | RV079: omission: 别让自己后悔 (no regrets) dropped; 下一场 = next event"
   },
   {
    "id": 265,
@@ -2172,10 +2172,10 @@
   {
    "id": 267,
    "zh": "到底最后结果是怎么样呢？{NEWLINE}发表最后的成绩！{SCROLL}",
-   "en": "Will it be what we expect?!{NEWLINE}I’ll announce the final results!{SCROLL}",
+   "en": "What will the final results be?!{NEWLINE}Announcing the final scores!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/267"
+   "origin": "agent",
+   "notes": "US 0309/267 | RV079: meaning: zh asks what the final results will be, not whether as expected"
   },
   {
    "id": 268,
@@ -2308,10 +2308,10 @@
   {
    "id": 284,
    "zh": "下一场比赛将决定一切！{NEWLINE}好好加油,别让自己后悔啊！{SCROLL}",
-   "en": "Everything comes down to the final{NEWLINE}event! Give it all you’ve got!{SCROLL}",
+   "en": "Everything rides on the next event!{NEWLINE}Go all out so you have no regrets!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/284"
+   "origin": "agent",
+   "notes": "US 0309/284 | RV079: omission: 别让自己后悔 (no regrets) dropped; 下一场 = next event"
   },
   {
    "id": 285,
@@ -2332,10 +2332,10 @@
   {
    "id": 287,
    "zh": "到底最后结果是怎么样呢？{NEWLINE}发表最后的成绩！{SCROLL}",
-   "en": "Will it be what we expect?!{NEWLINE}I’ll announce the final results!{SCROLL}",
+   "en": "What will the final results be?!{NEWLINE}Announcing the final scores!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0309/287"
+   "origin": "agent",
+   "notes": "US 0309/287 | RV079: meaning: zh asks what the final results will be, not whether as expected"
   },
   {
    "id": 288,

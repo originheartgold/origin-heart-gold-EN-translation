@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "现在公布{NEWLINE}若叶镇的前３名！{NEWLINE}第３名是ｚ,锵锵锵！{NEWLINE}「穿越城镇的风！」{NEWLINE}众所周知这个镇子{NEWLINE}经常刮着风！{NEWLINE}接下来第２名ｚ{NEWLINE}锵锵锵！！{NEWLINE}「风向标！」{NEWLINE}放置风向标,{NEWLINE}你就能主动{NEWLINE}感受风的吹拂。{NEWLINE}然后第１名ｚ{NEWLINE}锵锵锵！！！{NEWLINE}「空木研究所！」{NEWLINE}以精灵研究{NEWLINE}而闻名的{NEWLINE}空木博士的研究所{NEWLINE}荣登第１名ｚ！",
-   "en": "Announcing the top 3 in New Bark Town!{NEWLINE}Number three is... Ta-da!{NEWLINE}The wind that blows through the town!{NEWLINE}There’s a wind that will suddenly blast{NEWLINE}through the town, as residents know.{NEWLINE}Moving on, number two is... Ta-da!{NEWLINE}The weather vanes!{NEWLINE}The weather vanes posted around the{NEWLINE}town allow us to be proactive in{NEWLINE}predicting when the wind will blow{NEWLINE}through the town.{NEWLINE}And the number one thing is... Ta-da!{NEWLINE}Professor Elm’s Laboratory!{NEWLINE}Professor Elm’s doing great research on{NEWLINE}Pokémon as companions, and so we’re{NEWLINE}listing his Lab as splendid number one!",
+   "en": "Announcing the top 3 in New Bark Town!{NEWLINE}Number three is... Ta-da!{NEWLINE}The wind that blows through town!{NEWLINE}As everyone knows, it’s always windy in{NEWLINE}this town!{NEWLINE}Moving on, number two is... Ta-da!{NEWLINE}The weather vanes!{NEWLINE}Put up a weather vane, and you can feel{NEWLINE}the wind blowing for yourself.{NEWLINE}And the number one thing is... Ta-da!{NEWLINE}Professor Elm’s Lab!{NEWLINE}The lab of Professor Elm, famous for his{NEWLINE}Pokémon research, takes number one!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0415/4"
+   "origin": "agent",
+   "notes": "US 0415/4 | RV070: meaning: zh: always windy; feel the wind; famous for Pokémon research; US predicting wind"
   },
   {
    "id": 5,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "满金市的前３名{NEWLINE}公布！{NEWLINE}第３名ｚ,锵锵锵！{NEWLINE}「盛装大叔！」{NEWLINE}在地下通道有个{NEWLINE}做着衣服生意的大叔,{NEWLINE}在他那如汉子般的外表下,{NEWLINE}却隐藏着如少女般{NEWLINE}温柔的心灵。{NEWLINE}接下来,第２名ｚ{NEWLINE}锵锵锵！！{NEWLINE}「全球接点！」{NEWLINE}全球接点{NEWLINE}能让大家与全世界的人交换精灵,{NEWLINE}所以受到推崇{NEWLINE}也是自然的。{NEWLINE}然后第１名ｚ{NEWLINE}锵锵锵！！！{NEWLINE}「广播塔！」{NEWLINE}播放着城都地区{NEWLINE}各种新闻的广播塔{NEWLINE}登上了本期的第一名。{NEWLINE}各位现在所收听的{NEWLINE}本节目同样也是由{NEWLINE}城都地区的广播塔{NEWLINE}进行播报的ｚ。",
-   "en": "Announcing the top 3 in Goldenrod City!{NEWLINE}Number three is... Ta-da!{NEWLINE}The Dress-Up Guy!{NEWLINE}The gentleman running the Dress-Up{NEWLINE}Shop in the tunnel is manly on{NEWLINE}the outside, but at heart, he’s kind of{NEWLINE}like a little girl. But still, he’s an{NEWLINE}all-around nice guy.{NEWLINE}Moving on, number two is... Ta-da!{NEWLINE}The Global Terminal!{NEWLINE}In the Global Terminal, you can trade{NEWLINE}Pokémon with people all around the world,{NEWLINE}so it was expected that it would be{NEWLINE}quite popular.{NEWLINE}And the number one thing is... Ta-da!{NEWLINE}The Radio Tower!{NEWLINE}Transmitting information all over Johto,{NEWLINE}the Radio Tower is the number one{NEWLINE}magnificent sparkling attraction. And of{NEWLINE}course, the show you’re listening to now{NEWLINE}is being transmitted from that very{NEWLINE}same tower, and that’s why it’s our{NEWLINE}splendid number one!",
+   "en": "Announcing the top 3 in Goldenrod City!{NEWLINE}Number three is... Ta-da!{NEWLINE}The Dress-Up Guy!{NEWLINE}The guy who runs a clothing business in{NEWLINE}the Underground looks manly on the{NEWLINE}outside, but he hides a heart as gentle{NEWLINE}as a young girl’s.{NEWLINE}Moving on, number two is... Ta-da!{NEWLINE}The Global Terminal!{NEWLINE}At the Global Terminal, everyone can{NEWLINE}trade Pokémon with people all over the{NEWLINE}world, so it’s only natural that it’s so{NEWLINE}highly rated.{NEWLINE}And the number one thing is... Ta-da!{NEWLINE}The Radio Tower!{NEWLINE}The Radio Tower, which broadcasts all{NEWLINE}sorts of news across the Johto region,{NEWLINE}takes this week’s number one. The show{NEWLINE}you’re listening to now is broadcast{NEWLINE}from the Johto Radio Tower too!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0415/8"
+   "origin": "agent",
+   "notes": "US 0415/8 | RV070: meaning: zh: gentle heart like a young girl; US added \"but still nice guy\" (D-1847) and sparkling attraction"
   },
   {
    "id": 9,
@@ -86,26 +86,26 @@
   {
    "id": 10,
    "zh": "缘朱市的前３名{NEWLINE}公布！{NEWLINE}第３名ｚ,锵锵锵！{NEWLINE}「烧焦塔！」{NEWLINE}这座塔至今都留存着{NEWLINE}被大火烧过的痕迹,{NEWLINE}流传着一个个悲伤的传说。{NEWLINE}于是,大家都满怀钦佩{NEWLINE}前来参观。{NEWLINE}接下来,第２名ｚ{NEWLINE}锵锵锵！！{NEWLINE}「歌舞练场！」{NEWLINE}人们可以在这里{NEWLINE}听到优雅的音乐,{NEWLINE}因此在游客中受到广泛好评！{NEWLINE}每当来到这里,{NEWLINE}就会有种想跳舞的冲动。{NEWLINE}然后第１名ｚ{NEWLINE}锵锵锵！！！{NEWLINE}「铃音小路！」{NEWLINE}通往铃铛塔的小径{NEWLINE}一直都铺满了红叶,{NEWLINE}真是一道靓丽的风景线！{NEWLINE}而且普通人无法入内,{NEWLINE}使得其更受欢迎！{NEWLINE}铃音小路{NEWLINE}荣登第１名ｚ！",
-   "en": "Announcing the top 3 in Ecruteak City!{NEWLINE}Number three is... Ta-da!{NEWLINE}The Burned Tower!{NEWLINE}The large hole burned into this tower{NEWLINE}stands as a reminder of its long, yet sad{NEWLINE}legacy. But it’s still garnering people’s{NEWLINE}interest.{NEWLINE}Moving on, number two is... Ta-da!{NEWLINE}The Ecruteak Dance Theater!{NEWLINE}You can always hear strains of elegant{NEWLINE}music coming from this dance theater,{NEWLINE}which is very popular with tourists. It’s{NEWLINE}overflowing with charm that will make you{NEWLINE}want to get up and dance!{NEWLINE}And the number one thing is... Ta-da!{NEWLINE}The Bellchime Trail!{NEWLINE}The trail to the Bell Tower is always{NEWLINE}decorated in shades of autumn for some{NEWLINE}reason, and is quite the{NEWLINE}magnificent sight!{NEWLINE}Regular people are not allowed to{NEWLINE}enter, but it is still very popular, and{NEWLINE}that’s why it’s our splendid number one!",
+   "en": "Announcing the top 3 in Ecruteak City!{NEWLINE}Number three is... Ta-da!{NEWLINE}The Burned Tower!{NEWLINE}This tower still bears the scars of the{NEWLINE}great fire, and sad legends are told{NEWLINE}about it one after another. So people{NEWLINE}come to visit, full of admiration.{NEWLINE}Moving on, number two is... Ta-da!{NEWLINE}The Dance Theater!{NEWLINE}You can hear elegant music here, so it’s{NEWLINE}very well received by tourists! Every{NEWLINE}time you come here, you get the urge{NEWLINE}to dance.{NEWLINE}And the number one thing is... Ta-da!{NEWLINE}The Bellchime Trail!{NEWLINE}The path to the Bell Tower is always{NEWLINE}covered in red leaves. What a beautiful{NEWLINE}sight! And since ordinary people can’t{NEWLINE}go in, that makes it even more popular!{NEWLINE}The Bellchime Trail takes number one!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0415/10"
+   "origin": "agent",
+   "notes": "US 0415/10 | RV070: meaning: zh: scars of fire, popular because closed; US hole, popular despite"
   },
   {
    "id": 11,
    "zh": "湛蓝市的前３名{NEWLINE}公布！{NEWLINE}第３名ｚ,锵锵锵！{NEWLINE}「药店！」{NEWLINE}这个药店居然{NEWLINE}已经创立５００年了！{NEWLINE}真是无法想象,{NEWLINE}在那么久以前{NEWLINE}就已经开始营业了。{NEWLINE}接下来,第２名ｚ{NEWLINE}锵锵锵！！{NEWLINE}「岸边的大钳蟹！」{NEWLINE}打碎岸边的岩石后,{NEWLINE}偶尔会出现大钳蟹,{NEWLINE}许多人都冲着这点{NEWLINE}来到这里。{NEWLINE}然后第１名ｚ{NEWLINE}锵锵锵！！！{NEWLINE}「向导阿姨！」{NEWLINE}为人们指点前往{NEWLINE}狩猎场道路的向导阿姨{NEWLINE}用其极具风味的说话方式{NEWLINE}折服了许许多多的人！　{NEWLINE}荣登第１名ｚ！",
-   "en": "Announcing the top 3 in Cianwood City!{NEWLINE}Number three is... Ta-da!{NEWLINE}The Pharmacy!{NEWLINE}This Pharmacy has been in business for{NEWLINE}500 years, can you believe it? For 500{NEWLINE}years, they’ve been doing the same{NEWLINE}business!{NEWLINE}Moving on, number two is... Ta-da!{NEWLINE}Catching Krabby on the beach!{NEWLINE}When you break rocks on the beach,{NEWLINE}sometimes Krabby will gather. When that{NEWLINE}happens, many people will try to catch{NEWLINE}the Krabby.{NEWLINE}And the number one thing is... Ta-da!{NEWLINE}The Guide Lady!{NEWLINE}This lady will guide you to the path{NEWLINE}leading to the Safari Zone with her{NEWLINE}rhythmical way of speaking. She’s very{NEWLINE}popular among the locals, and that’s why{NEWLINE}she’s our splendid number one!",
+   "en": "Announcing the top 3 in Cianwood City!{NEWLINE}Number three is... Ta-da!{NEWLINE}The Pharmacy!{NEWLINE}This Pharmacy was founded 500 years{NEWLINE}ago! It’s hard to imagine it opened for{NEWLINE}business so long ago.{NEWLINE}Moving on, number two is... Ta-da!{NEWLINE}The Krabby on the beach!{NEWLINE}When you smash rocks on the beach,{NEWLINE}Krabby sometimes appear, and lots of{NEWLINE}people come here just for that.{NEWLINE}And the number one thing is... Ta-da!{NEWLINE}The Guide Lady!{NEWLINE}The guide lady who shows people the way{NEWLINE}to the Safari Zone has won over lots of{NEWLINE}people with her colorful way of talking!{NEWLINE}She takes number one!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0415/11; modernised from US 0415#11"
+   "origin": "agent",
+   "notes": "US 0415/11; modernised from US 0415#11 | RV070: meaning: zh: people come for the Krabby; won people over; US catch, locals"
   },
   {
    "id": 12,
    "zh": "卡吉镇的前３名{NEWLINE}公布！{NEWLINE}第３名ｚ,锵锵锵！{NEWLINE}「消防局！」{NEWLINE}为了扑灭邻镇{NEWLINE}缘朱市的大火{NEWLINE}而建立的消防局{NEWLINE}是本期的３名！{NEWLINE}接下来,第２名ｚ{NEWLINE}锵锵锵！！{NEWLINE}「特产愤怒馒头！」{NEWLINE}不愧是特产！{NEWLINE}虽然不知道这东西{NEWLINE}味道怎么样,{NEWLINE}但它就是畅销,{NEWLINE}这就是愤怒馒头！{NEWLINE}然后第１名ｚ{NEWLINE}锵锵锵！！！{NEWLINE}「谜一样的礼物商店！」{NEWLINE}虽然卖的都是些很平常的东西,{NEWLINE}却经常有{NEWLINE}穿着黑色衣服的顾客{NEWLINE}出入那里,{NEWLINE}给奇怪的礼物商店{NEWLINE}投了很多的票,于是{NEWLINE}荣登第１名ｚ！",
-   "en": "Announcing the top 3 in Mahogany Town!{NEWLINE}Number three is... Ta-da!{NEWLINE}The fire lookout points!{NEWLINE}They learned their lesson from the fire{NEWLINE}that happened in nearby Ecruteak City,{NEWLINE}and constructed fire lookout points,{NEWLINE}which ended up at number three on our{NEWLINE}list! Moving on, number two is... Ta-da!{NEWLINE}Their famous RageCandyBars!{NEWLINE}What clever souvenirs! We don’t know if{NEWLINE}these are delicious or not, but for some{NEWLINE}reason we bought one anyway! That’s the{NEWLINE}power of a Rage Candy Bar!{NEWLINE}And the number one thing is... Ta-da!{NEWLINE}The strange souvenir shop!{NEWLINE}They’re not selling anything special, so{NEWLINE}what’s with these customers in black{NEWLINE}clothes entering and leaving all{NEWLINE}day long?{NEWLINE}It’s a strange souvenir shop, and our{NEWLINE}station was mysteriously flooded with{NEWLINE}votes for it, so that’s why it’s our{NEWLINE}splendid number one!",
+   "en": "Announcing the top 3 in Mahogany Town!{NEWLINE}Number three is... Ta-da!{NEWLINE}The fire station!{NEWLINE}The fire station built to fight the great{NEWLINE}fire in nearby Ecruteak City is this{NEWLINE}week’s number three!{NEWLINE}Moving on, number two is... Ta-da!{NEWLINE}The famous Rage Candy Bar!{NEWLINE}Now that’s a real specialty! We don’t{NEWLINE}know how it tastes, but it sells like{NEWLINE}hotcakes. That’s the Rage Candy Bar!{NEWLINE}And the number one thing is... Ta-da!{NEWLINE}The mysterious souvenir shop!{NEWLINE}It only sells ordinary stuff, but{NEWLINE}customers dressed in black are always{NEWLINE}going in and out. Lots of votes came in{NEWLINE}for the strange souvenir shop, so it{NEWLINE}takes number one!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0415/12; modernised from US 0415#12"
+   "origin": "agent",
+   "notes": "US 0415/12; modernised from US 0415#12 | RV070: meaning: zh: fire station built to fight the fire; sells well; votes; US lookout points, we bought one (D-1848)"
   },
   {
    "id": 13,
@@ -142,10 +142,10 @@
   {
    "id": 17,
    "zh": "华蓝市的前３名{NEWLINE}公布！{NEWLINE}第３名ｚ,锵锵锵！{NEWLINE}「奇迹之轮！」{NEWLINE}尽管它好不容易登上第３,{NEWLINE}但听说最近{NEWLINE}要改行做救生圈生意,{NEWLINE}这是真的么ｚ？{NEWLINE}接下来,第２名ｚ{NEWLINE}锵锵锵！！{NEWLINE}「金球大桥！」{NEWLINE}它和不远处的海角高台{NEWLINE}并称约会最佳地点,{NEWLINE}因此人气极高。{NEWLINE}然后第１名ｚ{NEWLINE}锵锵锵！！！{NEWLINE}「华蓝洞穴！」{NEWLINE}这里只有战胜了关东地区{NEWLINE}所有道馆的人才允许进入,{NEWLINE}正是出于这份神圣感{NEWLINE}才会被这么多的人{NEWLINE}所憧憬ｚ！",
-   "en": "Announcing the top 3 in Cerulean City!{NEWLINE}Number three is... Ta-da!{NEWLINE}The Bike Shop!{NEWLINE}This comes in as our number three, but{NEWLINE}there has been some gossip that it will{NEWLINE}be turned into a shop selling{NEWLINE}inflatable tubes. We wonder if there’s{NEWLINE}any truth to that?{NEWLINE}Moving on, number two is... Ta-da!{NEWLINE}The Nugget Bridge!{NEWLINE}Together with the high cape, this is a{NEWLINE}very popular date spot.{NEWLINE}And the number one thing is... Ta-da!{NEWLINE}Cerulean Cave!{NEWLINE}Only those who have defeated every Gym{NEWLINE}in Kanto are allowed to enter this cave!{NEWLINE}That’s why everyone’s aching to enter,{NEWLINE}and that’s why it’s our splendid{NEWLINE}number one!",
+   "en": "Announcing the top 3 in Cerulean City!{NEWLINE}Number three is... Ta-da!{NEWLINE}The Miracle Cycle!{NEWLINE}This comes in as our number three, but{NEWLINE}there has been some gossip that it will{NEWLINE}be turned into a shop selling{NEWLINE}inflatable tubes. We wonder if there’s{NEWLINE}any truth to that?{NEWLINE}Moving on, number two is... Ta-da!{NEWLINE}The Nugget Bridge!{NEWLINE}Together with the high cape, this is a{NEWLINE}very popular date spot.{NEWLINE}And the number one thing is... Ta-da!{NEWLINE}Cerulean Cave!{NEWLINE}Only those who have defeated every Gym{NEWLINE}in Kanto are allowed to enter this cave!{NEWLINE}That’s why everyone’s aching to enter,{NEWLINE}and that’s why it’s our splendid{NEWLINE}number one!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0415/17"
+   "origin": "agent",
+   "notes": "US 0415/17 | RV070: name: zh names the Miracle Cycle; US generic Bike Shop"
   },
   {
    "id": 18,
@@ -190,10 +190,10 @@
   {
    "id": 23,
    "zh": "金黄市的前３名{NEWLINE}公布！{NEWLINE}第３名ｚ,锵锵锵！{NEWLINE}「超能力大叔！」{NEWLINE}被小镇上的人称呼为{NEWLINE}超能力大叔的{NEWLINE}超能力者。{NEWLINE}接下来,第２名ｚ{NEWLINE}锵锵锵！！{NEWLINE}「格斗道馆！」{NEWLINE}据称是道馆馆主空手大王{NEWLINE}所建的,大家可以在这里{NEWLINE}进行精灵对战,{NEWLINE}互相进行切磋。{NEWLINE}然后第１名ｚ{NEWLINE}锵锵锵！！！{NEWLINE}「西鲁夫公司！」{NEWLINE}果然不出所料,{NEWLINE}发明了各种物品,{NEWLINE}并制造家用电气的{NEWLINE}西鲁夫公司{NEWLINE}荣登第１名ｚ！",
-   "en": "Announcing the top 3 in Saffron City!{NEWLINE}Number three is... Ta-da!{NEWLINE}Mr. Psychic!{NEWLINE}This is the psychic gentleman everyone in{NEWLINE}town knows and calls Mr. Psychic!{NEWLINE}Moving on, number two is... Ta-da!{NEWLINE}The Fighting Dojo!{NEWLINE}It’s said that the Dojo owner is a{NEWLINE}Karate King. This Dojo is a place for{NEWLINE}Trainers who love battle to gather{NEWLINE}and converse.{NEWLINE}And the number one thing is... Ta-da!{NEWLINE}Silph Co.!{NEWLINE}This was just as expected, wasn’t it?{NEWLINE}As you may know, Silph Co. produces all{NEWLINE}kinds of inventions and home appliances,{NEWLINE}and that’s why it’s our splendid{NEWLINE}number one!",
+   "en": "Announcing the top 3 in Saffron City!{NEWLINE}Number three is... Ta-da!{NEWLINE}Mr. Psychic!{NEWLINE}The psychic the townspeople call{NEWLINE}Mr. Psychic!{NEWLINE}Moving on, number two is... Ta-da!{NEWLINE}The Fighting Dojo!{NEWLINE}It’s said to have been built by its{NEWLINE}master, the Karate King. Here,{NEWLINE}everyone can have Pokémon battles and{NEWLINE}test their skills against each other.{NEWLINE}And the number one thing is... Ta-da!{NEWLINE}Silph Co.!{NEWLINE}Just as expected, Silph Co., which{NEWLINE}invented all sorts of items and makes{NEWLINE}home appliances, takes number one!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0415/23"
+   "origin": "agent",
+   "notes": "US 0415/23 | RV070: meaning: zh: built by the Karate King, battle and spar; US gather and converse (D-1848)"
   }
  ]
 }

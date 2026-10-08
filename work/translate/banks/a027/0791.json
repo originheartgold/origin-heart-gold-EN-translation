@@ -430,10 +430,10 @@
   {
    "id": 44,
    "zh": "从嘴里流出来的蜜有着{NEWLINE}就算在2公里外也能把鼻子{NEWLINE}熏歪的强烈臭味。",
-   "en": "The honey dripping from its mouth has{NEWLINE}a stench so strong it can bend noses{NEWLINE}from 2 km away.",
+   "en": "The honey dripping from its mouth has a{NEWLINE}stench so strong it can curl noses from{NEWLINE}2 km away.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV091: meaning: 熏歪鼻子 as idiomatic 'curl noses' (official wording for this entry), D-1935"
   },
   {
    "id": 45,
@@ -2282,10 +2282,10 @@
   {
    "id": 233,
    "zh": "为了能够开发行星{NEWLINE}而将多边兽升级而成，{NEWLINE}但连飞上空中都还做不到。",
-   "en": "This upgraded version of Porygon{NEWLINE}is designed for space exploration.{NEWLINE}It can’t fly, however.",
+   "en": "Porygon was upgraded into this form for{NEWLINE}planetary development, but it can’t{NEWLINE}even fly yet.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0803/233; modernised from US 0803#233"
+   "origin": "agent",
+   "notes": "US 0803/233; modernised from US 0803#233 | RV091: meaning: 开发行星 is planetary development, not space exploration; 连…都还做不到 = can't even…yet, D-1936"
   },
   {
    "id": 234,
@@ -2484,10 +2484,10 @@
   {
    "id": 254,
    "zh": "会轻快地在丛林里跑来跑去，{NEWLINE}并用手臂上长出的锋利叶子解决猎物。",
-   "en": "It agilely leaps about the jungle{NEWLINE}and uses the sharp leaves on its{NEWLINE}arms to strike its prey.",
+   "en": "It agilely leaps about the jungle and{NEWLINE}uses the sharp leaves on its arms to{NEWLINE}finish off its prey.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0803/254",
+   "origin": "agent",
+   "notes": "US 0803/254 | RV091: softened: 解决猎物 = finish off prey (as #17), D-1937",
    "qa_ignore": [
     "more_lines_than_zh"
    ]
@@ -2985,10 +2985,10 @@
   {
    "id": 305,
    "zh": "挖掘铁矿石作为食物。{NEWLINE}有着用钢铁之躯互相撞击{NEWLINE}以争夺领地的习性。",
-   "en": "It loves iron ore. Groups of them{NEWLINE}fight for territory by bashing one{NEWLINE}another with their steel bodies.",
+   "en": "It digs up iron ore to eat. They fight{NEWLINE}over territory by bashing their steel{NEWLINE}bodies together.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0803/305",
+   "origin": "agent",
+   "notes": "US 0803/305 | RV091: omission: restored digging ore for food; dropped added 'groups', D-1938",
    "qa_ignore": [
     "glossary:撞击"
    ]
@@ -3067,10 +3067,10 @@
   {
    "id": 313,
    "zh": "到了晚上会亮起臀部与伙伴交流。{NEWLINE}非常喜欢甜甜萤放出的甜甜香气。",
-   "en": "It emits light from its tail to{NEWLINE}communicate. It loves the{NEWLINE}sweet aroma given off by Illumise.",
+   "en": "At night, it lights up its rear end to{NEWLINE}communicate with others. It loves the{NEWLINE}sweet aroma given off by Illumise.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0803/313; modernised from US 0803#313",
+   "origin": "agent",
+   "notes": "US 0803/313; modernised from US 0803#313 | RV091: omission: restored at night/with companions; 臀部 = rear, not tail, D-1938",
    "qa_ignore": [
     "more_lines_than_zh"
    ]
@@ -3766,10 +3766,10 @@
   {
    "id": 383,
    "zh": "很久以前与盖欧卡殊死搏斗后，{NEWLINE}一直在地下岩浆里沉睡的宝可梦。",
-   "en": "After a fierce battle with Kyogre long{NEWLINE}ago, this Pokémon has slept in magma{NEWLINE}underground ever since.",
+   "en": "After a life-or-death battle with{NEWLINE}Kyogre long ago, this Pokémon has slept{NEWLINE}in magma underground ever since.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV091: softened: 殊死搏斗 = life-or-death battle, D-1939",
    "qa_ignore": [
     "more_lines_than_zh"
    ]
@@ -4508,10 +4508,10 @@
   {
    "id": 460,
    "zh": "雪花盛开之时会从某处现身，{NEWLINE}雪花凋零之时则会再度{NEWLINE}前往某处并隐藏自己的身影。",
-   "en": "It appears from somewhere when{NEWLINE}snowflakes bloom, and when they fade,{NEWLINE}it goes off somewhere again to hide.",
+   "en": "It appears from somewhere when the{NEWLINE}snow flowers bloom. When they wilt, it{NEWLINE}goes off somewhere again to hide.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV091: meaning: 雪花盛开/凋零 = snow flowers blooming/wilting (official Platinum sense), not snowflakes"
   },
   {
    "id": 461,
@@ -4631,10 +4631,10 @@
   {
    "id": 472,
    "zh": "可以不发出振翅声而在空中飞行。{NEWLINE}用长长的尾巴捕捉猎物，{NEWLINE}再用牙齿一击刺中要害。",
-   "en": "Its flight is soundless. It uses its{NEWLINE}lengthy tail to carry off its prey...{NEWLINE}Then its elongated fangs do the rest.",
+   "en": "Its flight is soundless. It catches prey{NEWLINE}with its long tail, then pierces a vital{NEWLINE}spot with its fangs in a single strike.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0803/472"
+   "origin": "agent",
+   "notes": "US 0803/472 | RV091: omission: restored tail catch and one fang strike to a vital spot, D-1940"
   },
   {
    "id": 473,
@@ -4659,10 +4659,10 @@
   {
    "id": 475,
    "zh": "因为有着能敏锐感知对手想法的能力，{NEWLINE}所以可以率先攻击。",
-   "en": "Because it can sense what its foe{NEWLINE}is thinking, its attacks burst out{NEWLINE}first, fast, and fierce.",
+   "en": "Because it can keenly sense what its{NEWLINE}foe is thinking, it can always{NEWLINE}strike first.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0803/475",
+   "origin": "agent",
+   "notes": "US 0803/475 | RV091: addition: \"fast, and fierce\" not in the zh; 敏锐 restored (coordinator, D-2201)",
    "qa_ignore": [
     "more_lines_than_zh"
    ]
@@ -4957,10 +4957,10 @@
   {
    "id": 506,
    "zh": "虽说是勇猛的宝可梦，{NEWLINE}但也有很聪明的一面，{NEWLINE}会在认清对手的实力后避开战斗。",
-   "en": "It is a brave Pokémon, but it is clever{NEWLINE}too. It sizes up a foe’s strength and{NEWLINE}avoids fights it can’t win.",
+   "en": "It is a brave Pokémon, but it is clever{NEWLINE}too. It sizes up a foe’s strength and{NEWLINE}then avoids the fight.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV092: addition: dropped added 'it can’t win'; 认清实力后避开战斗"
   },
   {
    "id": 507,
@@ -5103,10 +5103,10 @@
   {
    "id": 523,
    "zh": "有着闪电般的瞬间爆发力。{NEWLINE}如果雷电斑马以全速奔跑，{NEWLINE}就会雷声轰鸣。",
-   "en": "It has lightning-fast reflexes. When{NEWLINE}Zebstrika runs at full speed, thunder{NEWLINE}rumbles.",
+   "en": "It has lightning-fast bursts of power.{NEWLINE}When Zebstrika runs at full speed,{NEWLINE}thunder rumbles.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV092: meaning: 瞬间爆发力 = explosive burst, not reflexes"
   },
   {
    "id": 524,
@@ -6604,10 +6604,10 @@
   {
    "id": 685,
    "zh": "嗅觉比人类灵敏1亿倍以上。{NEWLINE}通过空气中飘浮的细微气味{NEWLINE}就能完全了解周围的情形。",
-   "en": "Its sense of smell is over 100 million{NEWLINE}times keener than a human’s. It reads{NEWLINE}its surroundings from faint smells.",
+   "en": "Its nose is over 100 million times keener{NEWLINE}than a human’s. Faint scents in the air{NEWLINE}tell it all about its surroundings.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV092: omission: restored 完全 (fully) and 空气中飘浮",
    "qa_ignore": [
     "number_missing",
     "glossary:嗅觉",
@@ -6633,10 +6633,10 @@
   {
    "id": 688,
    "zh": "利用拉伸身体的{NEWLINE}反作用力提着岩石走路。{NEWLINE}在波浪拍打的海滩上吃冲上来的海藻。",
-   "en": "It walks carrying a rock, using the{NEWLINE}recoil of stretching its body. It eats{NEWLINE}seaweed washed up on beaches.",
+   "en": "It walks carrying a rock, using the{NEWLINE}recoil of stretching its body. It eats{NEWLINE}seaweed the waves wash up on beaches.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV092: omission: restored 波浪拍打的 (waves washing seaweed ashore)",
    "qa_ignore": [
     "glossary:拍打"
    ]
@@ -7426,18 +7426,18 @@
   {
    "id": 776,
    "zh": "在火山上生活，吃下的硫磺就是{NEWLINE}甲壳上炸药的原料。{NEWLINE}连粪便也会爆炸，十分危险。",
-   "en": "It lives on volcanoes. The sulfur it{NEWLINE}eats becomes the explosives on its{NEWLINE}shell. Even its dung explodes!",
+   "en": "It lives on volcanoes. The sulfur it{NEWLINE}eats makes its shell’s explosives. Even{NEWLINE}its dung explodes. Very dangerous.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV092: omission: restored 十分危险; dropped added '!'"
   },
   {
    "id": 777,
    "zh": "在危急时刻会把身体卷成一团，{NEWLINE}倒竖起背上的尖刺，{NEWLINE}不分青红皂白地发出电击。",
-   "en": "In a pinch, it curls into a ball, raises{NEWLINE}the spikes on its back and fires{NEWLINE}electric shocks at anything in reach.",
+   "en": "In a pinch, it curls into a ball, raises{NEWLINE}the spikes on its back and fires{NEWLINE}electric shocks indiscriminately.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV092: addition: 不分青红皂白 = indiscriminately, not 'in reach'",
    "qa_ignore": [
     "glossary:电击"
    ]
@@ -7527,10 +7527,10 @@
   {
    "id": 787,
    "zh": "会鸣响尾巴，告知自己的居所，{NEWLINE}以避免不必要的战争。{NEWLINE}是操纵草木的乌拉乌拉的守护神。",
-   "en": "It rings its tail to announce where it{NEWLINE}is so it can avoid needless fights. The{NEWLINE}plant-controlling guardian of Ula’ula.",
+   "en": "It rings its tail to say where it is and{NEWLINE}avoid needless fights. Plant-controlling{NEWLINE}guardian deity of Ula’ula.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV092: omission: restored 守护神 'deity' (as #785/#786/#788)"
   },
   {
    "id": 788,
@@ -7698,10 +7698,10 @@
   {
    "id": 806,
    "zh": "从究极之洞里出现的究极异兽。{NEWLINE}用爆炸吓唬对手，{NEWLINE}趁那空当夺走对方的生命气息。",
-   "en": "An Ultra Beast that came out of an{NEWLINE}Ultra Wormhole. It startles foes with{NEWLINE}explosions and steals their life force.",
+   "en": "An Ultra Beast from an Ultra Wormhole.{NEWLINE}Startling foes with explosions, it seizes{NEWLINE}the moment to steal their life force.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV092: omission: restored 趁那空当 (seizing the opening)"
   },
   {
    "id": 807,
@@ -7793,10 +7793,10 @@
   {
    "id": 817,
    "zh": "虽然性格上很怕麻烦，{NEWLINE}但智商很高，{NEWLINE}会设置陷阱来保护自己的住所。",
-   "en": "It hates to be bothered, but it is{NEWLINE}very smart. It sets traps to protect{NEWLINE}its home.",
+   "en": "It hates any kind of hassle, but it is{NEWLINE}very smart. It sets traps to protect{NEWLINE}its home.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV092: meaning: 怕麻烦 = hates hassle, not hates being bothered",
    "qa_ignore": [
     "glossary:性格"
    ]
@@ -8416,10 +8416,10 @@
   {
    "id": 885,
    "zh": "明明不吃却又会咬住铁臂枪虾不放。{NEWLINE}听说这是它生前遗留下来的活动习性。",
-   "en": "It bites Clauncher and won’t let go,{NEWLINE}though it doesn’t eat them. It is said{NEWLINE}to be a habit left over from its life.",
+   "en": "It bites Clauncher and won’t let go,{NEWLINE}though it doesn’t eat them. It is said{NEWLINE}to be a habit from when it was alive.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV092: grammar: 生前 = from when it was alive"
   },
   {
    "id": 886,
@@ -8546,10 +8546,10 @@
   {
    "id": 900,
    "zh": "野蛮、粗鲁又狂暴的家伙。{NEWLINE}通过挥舞巨大沉重的{NEWLINE}岩石斧头来干掉猎物。",
-   "en": "A savage, rough and violent beast. It{NEWLINE}finishes off prey by swinging its huge,{NEWLINE}heavy rock axes.",
+   "en": "A savage, rough and violent beast. It{NEWLINE}kills its prey by swinging its huge,{NEWLINE}heavy rock axes.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV092: softened: 干掉猎物 = kill prey (D-0627)"
   },
   {
    "id": 901,
@@ -8738,10 +8738,10 @@
   {
    "id": 921,
    "zh": "手部的肉球是放电器官。{NEWLINE}努力用后脚站立起来，{NEWLINE}然后从手掌释放出电击。",
-   "en": "The pads on its hands are organs that{NEWLINE}discharge electricity. It stands up on{NEWLINE}its hind legs and shocks from its palms.",
+   "en": "The pads on its hands are discharge{NEWLINE}organs. It struggles up onto its hind{NEWLINE}legs and fires shocks from its palms.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV092: omission: restored 努力 (struggles to stand)",
    "qa_ignore": [
     "glossary:电击"
    ]
@@ -8782,7 +8782,7 @@
    "en": "Before anyone noticed, a child had{NEWLINE}joined them. They live like a family, but{NEWLINE}how the three are related is a mystery.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV092: zh typo 迷 for 谜 (mystery), translated as intended; D-2256",
    "qa_ignore": [
     "number_missing"
    ]
@@ -9091,10 +9091,10 @@
   {
    "id": 958,
    "zh": "栖息在堆满破铜烂铁的地方。{NEWLINE}为了测试锤子的强度，{NEWLINE}会和伙伴们激烈地敲打彼此。",
-   "en": "It lives where scrap metal piles up.{NEWLINE}To test its hammer’s strength, it{NEWLINE}bangs hard against its friends.",
+   "en": "It lives where scrap metal piles up. To{NEWLINE}test their hammers’ strength, it and{NEWLINE}its friends bang hard on each other.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV092: meaning: 和伙伴们激烈地敲打彼此 = they hit each other"
   },
   {
    "id": 959,
@@ -9204,10 +9204,10 @@
   {
    "id": 971,
    "zh": "爱亲近人，害怕寂寞。{NEWLINE}即使只和它玩了一小会儿，{NEWLINE}它也会一直跟在身后。",
-   "en": "Friendly, and afraid of being lonely.{NEWLINE}Play with it for even a little while,{NEWLINE}and it will follow you forever.",
+   "en": "Friendly, and afraid of being lonely.{NEWLINE}Play with it for even a little while,{NEWLINE}and it will keep following you around.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV093: addition: 一直跟在身后 = keeps following you; 'forever' overstated"
   },
   {
    "id": 972,
@@ -9277,10 +9277,10 @@
   {
    "id": 979,
    "zh": "会将隐藏在心里的{NEWLINE}愤怒之情凝聚在拳头里，{NEWLINE}其威力能深入对手骨髓，使其粉碎。",
-   "en": "It concentrates the anger hidden in its{NEWLINE}heart into its fists. Their power{NEWLINE}reaches a foe’s marrow and shatters it.",
+   "en": "It packs the anger hidden in its heart{NEWLINE}into its fists. Their power sinks into{NEWLINE}a foe’s marrow and shatters the foe.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV093: meaning: 使其粉碎: the foe is shattered; old 'it' read as the marrow (D-1945)",
    "qa_ignore": [
     "glossary:愤怒"
    ]
@@ -9447,10 +9447,10 @@
   {
    "id": 998,
    "zh": "会倒转身体并从口中吐出冷气，{NEWLINE}然后靠吐气的作用力猛冲，{NEWLINE}用背鳍的剑给予敌人致命一击。",
-   "en": "It spins upside down and breathes cold{NEWLINE}air, riding the thrust to charge and{NEWLINE}deliver a deadly blow with its fin blade.",
+   "en": "It turns upside down and breathes cold{NEWLINE}air, riding the thrust to charge and{NEWLINE}deliver a deadly blow with its fin blade.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV093: meaning: 倒转身体 = turns upside down, not spins"
   },
   {
    "id": 999,
@@ -9582,10 +9582,10 @@
   {
    "id": 1013,
    "zh": "喜欢待在民宅的地板下{NEWLINE}和架子深处等阴凉的地方。{NEWLINE}日落后会四处徘徊寻找猎物。",
-   "en": "It likes cool spots, like under floors{NEWLINE}or at the back of shelves. After{NEWLINE}sunset, it roams in search of prey.",
+   "en": "It likes cool spots in homes, like{NEWLINE}under floors or deep in shelves. After{NEWLINE}sunset, it roams in search of prey.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV093: omission: restored 民宅 (in homes)"
   },
   {
    "id": 1014,
@@ -9782,10 +9782,10 @@
   {
    "id": 1035,
    "zh": "让穿山鼠在冰上滑行，{NEWLINE}比赛滑行的距离。{NEWLINE}这是自古就有的阿罗拉的庆典之一。",
-   "en": "Racing Sandshrew by sliding them{NEWLINE}across ice is one of Alola’s age-old{NEWLINE}festivals.",
+   "en": "Sliding Sandshrew across ice to{NEWLINE}see whose slide goes farthest is{NEWLINE}one of Alola’s age-old festivals.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV093: meaning: 比赛滑行的距离 = contest of sliding distance, not racing (D-1946)"
   },
   {
    "id": 1036,
@@ -10561,10 +10561,10 @@
   {
    "id": 1124,
    "zh": "超级进化的力量过强，{NEWLINE}颚部都碎掉了。{NEWLINE}因没法好好吃东西而焦躁。",
-   "en": "Mega Evolution’s power was so strong{NEWLINE}it shattered its jaws. Unable to eat{NEWLINE}properly, it is always irritable.",
+   "en": "Mega Evolution’s power was so{NEWLINE}strong it shattered its jaws. Unable{NEWLINE}to eat properly, it is irritable.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV093: addition: dropped added 'always'"
   },
   {
    "id": 1125,
@@ -11144,10 +11144,10 @@
   {
    "id": 1185,
    "zh": "此乃被称为形态变化的现象。据考察，{NEWLINE}此一形同怪鸟的姿态才是其真正样貌。{NEWLINE}曾被目击以此姿态横越大海。",
-   "en": "This is called a change of form. This{NEWLINE}strange birdlike form is thought to be{NEWLINE}its true one. It has crossed the sea.",
+   "en": "This is a change of form. This strange{NEWLINE}birdlike form is thought to be its true{NEWLINE}one. It was seen crossing the sea in it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV093: omission: 曾被目击以此姿态横越大海: restored 'seen' and 'in this form'",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -12754,10 +12754,10 @@
   {
    "id": 1354,
    "zh": "据说它是受到洗翠的灵山之气影响，{NEWLINE}才形成了现在的模样。{NEWLINE}据说会用火焰净化并超渡灵魂。",
-   "en": "The air of Hisui’s sacred mountains is{NEWLINE}said to have shaped it. It purifies{NEWLINE}souls with fire and lays them to rest.",
+   "en": "Hisui’s sacred mountain air is said to{NEWLINE}have shaped it. It is said to purify{NEWLINE}souls with fire and lay them to rest.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV093: omission: restored second 据说 (said to)"
   },
   {
    "id": 1355,
@@ -12833,10 +12833,10 @@
   {
    "id": 1362,
    "zh": "与野蛮鲈鱼的生态相差甚远，{NEWLINE}因此它们是不同种类的{NEWLINE}说法在近年以来备受支持。",
-   "en": "Its habits differ so much from{NEWLINE}Basculin’s that the theory that it is a{NEWLINE}separate species has gained support.",
+   "en": "Its habits are so unlike Basculin’s{NEWLINE}that the theory that it’s a separate{NEWLINE}species has recently gained support.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV093: omission: restored 近年以来 (recently)"
   },
   {
    "id": 1363,
@@ -12852,10 +12852,10 @@
   {
    "id": 1364,
    "zh": "疯狂舞动白发的姿态如同死神。{NEWLINE}在足以撕裂自身的深刻仇怨驱使下，{NEWLINE}抱定同归于尽之心袭杀仇敌。",
-   "en": "Tossing its white mane, it looks like{NEWLINE}death itself. Driven by deep hatred,{NEWLINE}it attacks, willing to die with its foe.",
+   "en": "Its wild white mane makes it look like{NEWLINE}death. Self-rending hatred drives it{NEWLINE}to kill foes, ready to die with them.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV093: softened: restored 足以撕裂自身 and 袭杀 = kill (D-1947, D-0627)"
   },
   {
    "id": 1365,
@@ -12887,10 +12887,10 @@
   {
    "id": 1368,
    "zh": "包覆下颚的冰块装甲硬度更胜钢铁，{NEWLINE}能轻易地击碎岩石。它会借此铲开{NEWLINE}厚重积雪，在险峻的山路上猛冲。",
-   "en": "Its ice armor is harder than steel and{NEWLINE}smashes rock. It plows through deep{NEWLINE}snow on steep mountain paths with it.",
+   "en": "Its jaw’s ice armor, harder than steel,{NEWLINE}easily smashes rock. With it, it rams{NEWLINE}through deep snow on steep paths.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV093: omission: restored 下颚 (jaw), 轻易 (easily), 猛冲 (rams)",
    "qa_ignore": [
     "glossary:碎岩"
    ]

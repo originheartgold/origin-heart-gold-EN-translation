@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "我知道了,不过⋯⋯{NEWLINE}我不想输在你手上！",
-   "en": "Oh, all right...{NEWLINE}But I won’t lose to you again!",
+   "en": "Oh, all right... But I don’t want to lose{NEWLINE}to you!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0675/3"
+   "origin": "agent",
+   "notes": "US 0675/3 | RV072: meaning: 不想输 = doesn't want to lose, not a boast"
   },
   {
    "id": 4,
@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "前段时间我看到{VAR:0100:11}了！{NEWLINE}想要去抓的⋯⋯{CLEAR}可惜失败了！{SCROLL}哎,真是伤脑筋,{NEWLINE}谁叫我抓精灵{CLEAR}这么不熟练呢。",
-   "en": "Oh yeah, I saw a wild{NEWLINE}{VAR:0100:11}! I thought about{CLEAR}going for it, but then I failed!{SCROLL}Oh well. I guess that’s just{NEWLINE}the way it goes. I’m not very{CLEAR}good at catching Pokémon...",
+   "en": "I saw a {VAR:0100:11} a while ago! I tried{NEWLINE}to catch it... but I failed!{SCROLL}Ugh, what a pain. That’s what I get for{NEWLINE}being so bad at catching Pokémon.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0675/9"
+   "origin": "agent",
+   "notes": "US 0675/9 | RV072: meaning: he tried and failed; self-blame restored"
   },
   {
    "id": 10,

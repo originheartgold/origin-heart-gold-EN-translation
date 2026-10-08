@@ -4710,10 +4710,10 @@
   {
    "id": 573,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}猛地向{NEWLINE}{VAR:0100:11,0}的{VAR:0102:1,0}出示了红牌！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} held up its{NEWLINE}Red Card against {VAR:0100:11,0}’s{CLEAR}{VAR:0102:1,0}!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} held up its{NEWLINE}Red Card against{CLEAR}{VAR:0100:11,0}’s {VAR:0102:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV102: layout: one-word {CLEAR} orphan rebalanced"
   },
   {
    "id": 574,
@@ -6398,18 +6398,18 @@
   {
    "id": 784,
    "zh": "对手的{VAR:0102:0,0}遭到了无理取闹，{NEWLINE}因此无法继续使出相同的招式！",
-   "en": "The foe’s {VAR:0102:0,0} can’t use the{NEWLINE}same move twice in a row due to the{CLEAR}torment!",
+   "en": "The foe’s {VAR:0102:0,0} can’t use the{NEWLINE}same move twice in a row{CLEAR}due to the torment!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV102: layout: one-word {CLEAR} orphan rebalanced"
   },
   {
    "id": 785,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}遭到了无理取闹，{NEWLINE}因此无法继续使出相同的招式！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} can’t use{NEWLINE}the same move twice in a row due to the{CLEAR}torment!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} can’t use{NEWLINE}the same move twice in a row{CLEAR}due to the torment!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV102: layout: one-word {CLEAR} orphan rebalanced"
   },
   {
    "id": 786,
@@ -6870,10 +6870,10 @@
   {
    "id": 843,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}复制了{NEWLINE}{VAR:0100:11,0}的{VAR:0102:1,0}的{SCROLL}{NEWLINE}{VAR:0106:2,0}！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} copied{NEWLINE}{VAR:0100:11,0}’s {VAR:0102:1,0}’s{CLEAR}{VAR:0106:2,0}{CLEAR}Ability!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} copied{NEWLINE}{VAR:0100:11,0}’s {VAR:0102:1,0}’s{CLEAR}{VAR:0106:2,0} Ability!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV102: layout: stray {CLEAR} left \"Ability!\" alone on its own line"
   },
   {
    "id": 844,
@@ -7142,10 +7142,10 @@
   {
    "id": 877,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}{NEWLINE}变身成了{VAR:0100:11,0}的{VAR:0102:1,0}！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}{NEWLINE}transformed into {VAR:0100:11,0}’s{CLEAR}{VAR:0102:1,0}!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}{NEWLINE}transformed into{CLEAR}{VAR:0100:11,0}’s {VAR:0102:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV102: layout: one-word {CLEAR} orphan rebalanced"
   },
   {
    "id": 878,
@@ -10742,10 +10742,10 @@
   {
    "id": 1327,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}用{VAR:0109:1,0}{NEWLINE}大幅提高了闪避率！",
-   "en": "The {VAR:0109:1,0} sharply raised{NEWLINE}{VAR:0100:10,0}’s {VAR:0102:0,0}’s{CLEAR}evasiveness!",
+   "en": "The {VAR:0109:1,0} sharply raised{NEWLINE}the evasiveness of{CLEAR}{VAR:0100:10,0}’s {VAR:0102:0,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1328,
@@ -10934,10 +10934,10 @@
   {
    "id": 1351,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}用{VAR:0109:1,0}{NEWLINE}巨幅提高了命中率！",
-   "en": "The {VAR:0109:1,0} drastically raised{NEWLINE}{VAR:0100:10,0}’s {VAR:0102:0,0}’s{CLEAR}accuracy!",
+   "en": "The {VAR:0109:1,0} drastically raised{NEWLINE}the accuracy of{CLEAR}{VAR:0100:10,0}’s {VAR:0102:0,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1352,
@@ -10966,10 +10966,10 @@
   {
    "id": 1355,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}用{VAR:0109:1,0}{NEWLINE}巨幅提高了闪避率！",
-   "en": "The {VAR:0109:1,0} drastically raised{NEWLINE}{VAR:0100:10,0}’s {VAR:0102:0,0}’s{CLEAR}evasiveness!",
+   "en": "The {VAR:0109:1,0} drastically raised{NEWLINE}the evasiveness of{CLEAR}{VAR:0100:10,0}’s {VAR:0102:0,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1356,
@@ -11734,10 +11734,10 @@
   {
    "id": 1451,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}削减了自己的体力，{NEWLINE}并诅咒了{VAR:0100:11,0}的{VAR:0102:1,0}！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} cut its own{NEWLINE}HP and put a curse on {VAR:0100:11,0}’s{CLEAR}{VAR:0102:1,0}!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} cut its own{NEWLINE}HP and put a curse on{CLEAR}{VAR:0100:11,0}’s {VAR:0102:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1452,
@@ -12006,10 +12006,10 @@
   {
    "id": 1485,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}变成了和{NEWLINE}{VAR:0100:11,0}的{VAR:0102:1,0}相同的属性！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} became the{NEWLINE}same type as {VAR:0100:11,0}’s{CLEAR}{VAR:0102:1,0}!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} became the{NEWLINE}same type as{CLEAR}{VAR:0100:11,0}’s {VAR:0102:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1486,
@@ -12326,10 +12326,10 @@
   {
    "id": 1525,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}{NEWLINE}将{VAR:0100:11,0}的{VAR:0102:1,0}带上了高空！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} took{NEWLINE}{VAR:0100:11,0}’s {VAR:0102:1,0} into the{CLEAR}sky!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} took{NEWLINE}{VAR:0100:11,0}’s {VAR:0102:1,0}{CLEAR}into the sky!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1526,
@@ -12494,34 +12494,34 @@
   {
    "id": 1546,
    "zh": "让{VAR:0102:0,0}{NEWLINE}浮在了空中！",
-   "en": "{VAR:0102:0,0} was hurled into the air!",
+   "en": "{VAR:0102:0,0} was made to float in{NEWLINE}the air!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: meaning: 让X浮在了空中 = made to float; official \"hurled into the air\" adds a throw (D-1908; hack-finding logged)"
   },
   {
    "id": 1547,
    "zh": "让野生的{VAR:0102:0,0}{NEWLINE}浮在了空中！",
-   "en": "The wild {VAR:0102:0,0} was hurled into the{NEWLINE}air!",
+   "en": "The wild {VAR:0102:0,0} was made to float{NEWLINE}in the air!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: meaning: same as #1546"
   },
   {
    "id": 1548,
    "zh": "让对手的{VAR:0102:0,0}{NEWLINE}浮在了空中！",
-   "en": "The foe’s {VAR:0102:0,0} was hurled into{NEWLINE}the air!",
+   "en": "The foe’s {VAR:0102:0,0} was made to{NEWLINE}float in the air!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: meaning: same as #1546"
   },
   {
    "id": 1549,
    "zh": "让{VAR:0100:10,0}的{VAR:0102:0,0}{NEWLINE}浮在了空中！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} was hurled{NEWLINE}into the air!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} was{NEWLINE}made to float in the air!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: meaning: same as #1546"
   },
   {
    "id": 1550,
@@ -12918,10 +12918,10 @@
   {
    "id": 1599,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}{NEWLINE}正在伺机使出掀榻榻米！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} intends to{NEWLINE}flip up a mat and block incoming{CLEAR}attacks!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} intends to{NEWLINE}flip up a mat and{CLEAR}block incoming attacks!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1600,
@@ -13238,10 +13238,10 @@
   {
    "id": 1639,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}将{VAR:0109:1,0}{NEWLINE}交给了{VAR:0100:12,0}的{VAR:0102:2,0}！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} shared its{NEWLINE}{VAR:0109:1,0} with {VAR:0100:12,0}’s{CLEAR}{VAR:0102:2,0}!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} shared its{NEWLINE}{VAR:0109:1,0} with{CLEAR}{VAR:0100:12,0}’s {VAR:0102:2,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1640,
@@ -13342,34 +13342,34 @@
   {
    "id": 1652,
    "zh": "{VAR:0102:0,0}{NEWLINE}压制了所有气场！",
-   "en": "{VAR:0102:0,0} reversed all other{NEWLINE}Pokémon’s auras!",
+   "en": "{VAR:0102:0,0} suppressed all auras!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: meaning: 压制了所有气场 = suppressed all auras, not reversed (D-1905; hack-finding logged)"
   },
   {
    "id": 1653,
    "zh": "野生的{VAR:0102:0,0}{NEWLINE}压制了所有气场！",
-   "en": "The wild {VAR:0102:0,0} reversed all other{NEWLINE}Pokémon’s auras!",
+   "en": "The wild {VAR:0102:0,0} suppressed{NEWLINE}all auras!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: meaning: same as #1652"
   },
   {
    "id": 1654,
    "zh": "对手的{VAR:0102:0,0}{NEWLINE}压制了所有气场！",
-   "en": "The foe’s {VAR:0102:0,0} reversed all{NEWLINE}other Pokémon’s auras!",
+   "en": "The foe’s {VAR:0102:0,0} suppressed{NEWLINE}all auras!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: meaning: same as #1652"
   },
   {
    "id": 1655,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}{NEWLINE}压制了所有气场！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} reversed{NEWLINE}all other Pokémon’s auras!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}{NEWLINE}suppressed all auras!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: meaning: same as #1652"
   },
   {
    "id": 1656,
@@ -13446,10 +13446,10 @@
   {
    "id": 1665,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}受到了{NEWLINE}{VAR:0100:11,0}的{VAR:0102:1,0}的死缠烂打！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} is being{NEWLINE}pestered by {VAR:0100:11,0}’s{CLEAR}{VAR:0102:1,0}!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} is being{NEWLINE}pestered by{CLEAR}{VAR:0100:11,0}’s {VAR:0102:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1666,
@@ -13470,10 +13470,10 @@
   {
    "id": 1668,
    "zh": "对手的{VAR:0102:0,0}的原始回归！{NEWLINE}恢复了原始的样子！",
-   "en": "The foe’s {VAR:0102:0,0}’s Primal{NEWLINE}Reversion! It reverted to its primal{CLEAR}form!",
+   "en": "The foe’s {VAR:0102:0,0}’s{NEWLINE}Primal Reversion!{CLEAR}It reverted to its primal form!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1669,
@@ -13494,10 +13494,10 @@
   {
    "id": 1671,
    "zh": "对手的{VAR:0102:0,0}的原始回归！{NEWLINE}恢复了原始的样子！",
-   "en": "The foe’s {VAR:0102:0,0}’s Primal{NEWLINE}Reversion! It reverted to its primal{CLEAR}form!",
+   "en": "The foe’s {VAR:0102:0,0}’s{NEWLINE}Primal Reversion!{CLEAR}It reverted to its primal form!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1672,
@@ -14102,10 +14102,10 @@
   {
    "id": 1747,
    "zh": "因为Ｚ力量，{NEWLINE}{VAR:0100:10,0}的{VAR:0102:0,0}的闪避率大幅提高了！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} sharply{NEWLINE}boosted its evasiveness using its{CLEAR}Z-Power!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} sharply{NEWLINE}boosted its evasiveness{CLEAR}using its Z-Power!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV104: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1748,
@@ -14318,18 +14318,18 @@
   {
    "id": 1774,
    "zh": "因为Ｚ力量，{NEWLINE}对手的{VAR:0102:0,0}的闪避率巨幅提高了！",
-   "en": "The foe’s {VAR:0102:0,0} drastically{NEWLINE}boosted its evasiveness using its{CLEAR}Z-Power!",
+   "en": "The foe’s {VAR:0102:0,0} drastically{NEWLINE}boosted its evasiveness{CLEAR}using its Z-Power!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1775,
    "zh": "因为Ｚ力量，{NEWLINE}{VAR:0100:10,0}的{VAR:0102:0,0}的闪避率巨幅提高了！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} drastically{NEWLINE}boosted its evasiveness using its{CLEAR}Z-Power!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} drastically{NEWLINE}boosted its evasiveness{CLEAR}using its Z-Power!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1776,
@@ -14438,26 +14438,26 @@
   {
    "id": 1789,
    "zh": "因为Ｚ力量，{NEWLINE}野生的{VAR:0102:0,0}恢复了降低的能力！",
-   "en": "The wild {VAR:0102:0,0} returned its{NEWLINE}decreased stats to normal using its{CLEAR}Z-Power!",
+   "en": "The wild {VAR:0102:0,0} returned its{NEWLINE}decreased stats to normal{CLEAR}using its Z-Power!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1790,
    "zh": "因为Ｚ力量，{NEWLINE}对手的{VAR:0102:0,0}恢复了降低的能力！",
-   "en": "The foe’s {VAR:0102:0,0} returned its{NEWLINE}decreased stats to normal using its{CLEAR}Z-Power!",
+   "en": "The foe’s {VAR:0102:0,0} returned its{NEWLINE}decreased stats to normal{CLEAR}using its Z-Power!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1791,
    "zh": "因为Ｚ力量，{NEWLINE}{VAR:0100:10,0}的{VAR:0102:0,0}恢复了降低的能力！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} returned{NEWLINE}its decreased stats to normal using its{CLEAR}Z-Power!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} returned{NEWLINE}its decreased stats to normal{CLEAR}using its Z-Power!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1792,
@@ -14518,10 +14518,10 @@
   {
    "id": 1799,
    "zh": "因为Ｚ力量，{VAR:0100:10,0}的{VAR:0102:0,0}{NEWLINE}将会回复来替换的宝可梦的ＨＰ！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} will{NEWLINE}restore its replacement’s HP using its{CLEAR}Z-Power!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} will{NEWLINE}restore its replacement’s HP{CLEAR}using its Z-Power!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1800,
@@ -14726,26 +14726,26 @@
   {
    "id": 1825,
    "zh": "野生的{VAR:0102:0,0}会将抢先得到的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "The wild {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it got with Me First into a{CLEAR}Z-Move!",
+   "en": "The wild {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it got with Me First{CLEAR}into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1826,
    "zh": "对手的{VAR:0102:0,0}会将抢先得到的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "The foe’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it got with Me First into a{CLEAR}Z-Move!",
+   "en": "The foe’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it got with Me First{CLEAR}into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1827,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}会将抢先得到的{NEWLINE}{VAR:0107:1,0}变成Ｚ招式！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it got with Me First into a{CLEAR}Z-Move!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} turned the{NEWLINE}{VAR:0107:1,0} it got with Me First{CLEAR}into a Z-Move!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1828,
@@ -14950,18 +14950,18 @@
   {
    "id": 1853,
    "zh": "野生的{VAR:0102:0,0}{NEWLINE}因地狱突刺的效果无法使出招式！",
-   "en": "The effects of Throat Chop prevent the{NEWLINE}wild {VAR:0102:0,0} from using certain{CLEAR}moves!",
+   "en": "The effects of Throat Chop prevent the{NEWLINE}wild {VAR:0102:0,0} from using{CLEAR}certain moves!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1854,
    "zh": "对手的{VAR:0102:0,0}{NEWLINE}因地狱突刺的效果无法使出招式！",
-   "en": "The effects of Throat Chop prevent the{NEWLINE}foe’s {VAR:0102:0,0} from using certain{CLEAR}moves!",
+   "en": "The effects of Throat Chop prevent the{NEWLINE}foe’s {VAR:0102:0,0} from using{CLEAR}certain moves!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1855,
@@ -15270,10 +15270,10 @@
   {
    "id": 1893,
    "zh": "根据{VAR:0100:10,0}的{VAR:0102:0,0}的指示，{NEWLINE}{VAR:0100:11,0}的{VAR:0102:1,0}使出了招式！",
-   "en": "{VAR:0100:11,0}’s {VAR:0102:1,0} used the{NEWLINE}move instructed by {VAR:0100:10,0}’s{CLEAR}{VAR:0102:0,0}!",
+   "en": "{VAR:0100:11,0}’s {VAR:0102:1,0} used the{NEWLINE}move instructed by{CLEAR}{VAR:0100:10,0}’s {VAR:0102:0,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1894,
@@ -15382,26 +15382,26 @@
   {
    "id": 1907,
    "zh": "野生的{VAR:0102:0,0}{NEWLINE}浑身充满了牵绊之力！",
-   "en": "The wild {VAR:0102:0,0} became fully{NEWLINE}charged due to its bond with its{CLEAR}Trainer!",
+   "en": "The wild {VAR:0102:0,0} became fully{NEWLINE}charged due to its bond{CLEAR}with its Trainer!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1908,
    "zh": "对手的{VAR:0102:0,0}{NEWLINE}浑身充满了牵绊之力！",
-   "en": "The foe’s {VAR:0102:0,0} became fully{NEWLINE}charged due to its bond with its{CLEAR}Trainer!",
+   "en": "The foe’s {VAR:0102:0,0} became fully{NEWLINE}charged due to its bond{CLEAR}with its Trainer!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1909,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}{NEWLINE}浑身充满了牵绊之力！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} became{NEWLINE}fully charged due to its bond with its{CLEAR}Trainer!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} became{NEWLINE}fully charged due to its bond{CLEAR}with its Trainer!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1910,
@@ -15598,34 +15598,34 @@
   {
    "id": 1934,
    "zh": "{VAR:0102:0,0}通过究极爆发{NEWLINE}现出了新的样子！",
-   "en": "{VAR:0102:0,0} regained its true power{NEWLINE}through Ultra Burst!",
+   "en": "{VAR:0102:0,0} took on a new form through{NEWLINE}Ultra Burst!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: meaning: 通过究极爆发现出了新的样子 = took on a new form; official \"regained its true power\" says something else (D-1906; hack-finding logged)"
   },
   {
    "id": 1935,
    "zh": "野生的{VAR:0102:0,0}通过究极爆发{NEWLINE}现出了新的样子！",
-   "en": "The wild {VAR:0102:0,0} regained its true{NEWLINE}power through Ultra Burst!",
+   "en": "The wild {VAR:0102:0,0} took on a new form{NEWLINE}through Ultra Burst!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: meaning: same as #1934"
   },
   {
    "id": 1936,
    "zh": "对手的{VAR:0102:0,0}通过究极爆发{NEWLINE}现出了新的样子！",
-   "en": "The foe’s {VAR:0102:0,0} regained its true{NEWLINE}power through Ultra Burst!",
+   "en": "The foe’s {VAR:0102:0,0} took on a new{NEWLINE}form through Ultra Burst!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: meaning: same as #1934"
   },
   {
    "id": 1937,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}通过究极爆发{NEWLINE}现出了新的样子！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} regained{NEWLINE}its true power through Ultra Burst!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} took on a{NEWLINE}new form through Ultra Burst!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: meaning: same as #1934"
   },
   {
    "id": 1938,
@@ -15654,10 +15654,10 @@
   {
    "id": 1941,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}{NEWLINE}受到背水一战的效果影响，无法逃走了！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} can no{NEWLINE}longer escape because it used No{CLEAR}Retreat!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} can no{NEWLINE}longer escape{CLEAR}because it used No Retreat!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1942,
@@ -15718,10 +15718,10 @@
   {
    "id": 1949,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}摇了摇头，{NEWLINE}好像无法使出这个招式……",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} shook its{NEWLINE}head. It seems like it can’t use this{CLEAR}move...",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} shook its{NEWLINE}head.{CLEAR}It seems like it can’t use this move...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1950,
@@ -15734,18 +15734,18 @@
   {
    "id": 1951,
    "zh": "野生的{VAR:0102:0,0}{NEWLINE}交换了双方的场地效果！",
-   "en": "The wild {VAR:0102:0,0} swapped the battle{NEWLINE}effects affecting each side of the{CLEAR}field!",
+   "en": "The wild {VAR:0102:0,0} swapped the battle{NEWLINE}effects affecting each side{CLEAR}of the field!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1952,
    "zh": "对手的{VAR:0102:0,0}{NEWLINE}交换了双方的场地效果！",
-   "en": "The foe’s {VAR:0102:0,0} swapped the{NEWLINE}battle effects affecting each side of{CLEAR}the field!",
+   "en": "The foe’s {VAR:0102:0,0} swapped the{NEWLINE}battle effects affecting{CLEAR}each side of the field!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1953,
@@ -15910,10 +15910,10 @@
   {
    "id": 1973,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}被困在{NEWLINE}超极巨炎石喷发的岩石之中，疼痛难忍！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} is hurt by{NEWLINE}the rocks thrown out by G-Max{CLEAR}Volcalith!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} is hurt by{NEWLINE}the rocks thrown out by{CLEAR}G-Max Volcalith!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 1974,
@@ -16302,18 +16302,18 @@
   {
    "id": 2022,
    "zh": "{VAR:0106:1,0}使对手的{VAR:0102:0,0}{NEWLINE}行动变快了！",
-   "en": "The foe’s {VAR:0102:0,0} can act faster{NEWLINE}than normal, thanks to its{CLEAR}{VAR:0106:1,0}!",
+   "en": "The foe’s {VAR:0102:0,0} can act faster{NEWLINE}than normal,{CLEAR}thanks to its {VAR:0106:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2023,
    "zh": "{VAR:0106:1,0}使{VAR:0100:10,0}的{VAR:0102:0,0}{NEWLINE}行动变快了！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} can act{NEWLINE}faster than normal, thanks to its{CLEAR}{VAR:0106:1,0}!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} can act{NEWLINE}faster than normal,{CLEAR}thanks to its {VAR:0106:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2024,
@@ -16422,10 +16422,10 @@
   {
    "id": 2037,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}被{NEWLINE}{VAR:0100:11,0}的{VAR:0102:1,0}困住了！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} was{NEWLINE}trapped by {VAR:0100:11,0}’s{CLEAR}{VAR:0102:1,0}!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} was{NEWLINE}trapped by{CLEAR}{VAR:0100:11,0}’s {VAR:0102:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2038,
@@ -16486,10 +16486,10 @@
   {
    "id": 2045,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}通过{NEWLINE}驱劲能量发动了古代活性！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} used its{NEWLINE}Booster Energy to activate{CLEAR}Protosynthesis!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} used its{NEWLINE}Booster Energy{CLEAR}to activate Protosynthesis!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2046,
@@ -16518,10 +16518,10 @@
   {
    "id": 2049,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}通过{NEWLINE}大晴天发动了古代活性！",
-   "en": "The harsh sunlight activated{NEWLINE}{VAR:0100:10,0}’s {VAR:0102:0,0}’s{CLEAR}Protosynthesis!",
+   "en": "The harsh sunlight activated{CLEAR}{VAR:0100:10,0}’s {VAR:0102:0,0}’s{NEWLINE}Protosynthesis!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2050,
@@ -16582,10 +16582,10 @@
   {
    "id": 2057,
    "zh": "{VAR:0100:0,10}的{VAR:0102:0,0}通过{NEWLINE}驱劲能量发动了夸克充能！",
-   "en": "{VAR:0100:0,10}’s {VAR:0102:0,0} used its{NEWLINE}Booster Energy to activate its Quark{CLEAR}Drive!",
+   "en": "{VAR:0100:0,10}’s {VAR:0102:0,0} used its{NEWLINE}Booster Energy to activate{CLEAR}its Quark Drive!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2058,
@@ -16614,10 +16614,10 @@
   {
    "id": 2061,
    "zh": "{VAR:0100:0,10}的{VAR:0102:0,0}通过{NEWLINE}电气场地发动了夸克充能！",
-   "en": "The Electric Terrain activated{NEWLINE}{VAR:0100:0,10}’s {VAR:0102:0,0}’s Quark{CLEAR}Drive!",
+   "en": "The Electric Terrain activated{NEWLINE}{VAR:0100:0,10}’s {VAR:0102:0,0}’s{CLEAR}Quark Drive!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2062,
@@ -16662,18 +16662,18 @@
   {
    "id": 2067,
    "zh": "野生的{VAR:0102:0,0}的{NEWLINE}灾祸之鼎令周围的宝可梦的特攻减弱了！",
-   "en": "The wild {VAR:0102:0,0}’s Vessel of Ruin{NEWLINE}weakened the Sp. Atk of all surrounding{CLEAR}Pokémon!",
+   "en": "The wild {VAR:0102:0,0}’s Vessel of Ruin{NEWLINE}weakened the Sp. Atk{CLEAR}of all surrounding Pokémon!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2068,
    "zh": "对手的{VAR:0102:0,0}的{NEWLINE}灾祸之鼎令周围的宝可梦的特攻减弱了！",
-   "en": "The foe’s {VAR:0102:0,0}’s Vessel of Ruin{NEWLINE}weakened the Sp. Atk of all surrounding{CLEAR}Pokémon!",
+   "en": "The foe’s {VAR:0102:0,0}’s Vessel of Ruin{NEWLINE}weakened the Sp. Atk{CLEAR}of all surrounding Pokémon!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2069,
@@ -16694,18 +16694,18 @@
   {
    "id": 2071,
    "zh": "野生的{VAR:0102:0,0}的{NEWLINE}灾祸之剑令周围的宝可梦的防御减弱了！",
-   "en": "The wild {VAR:0102:0,0}’s Sword of Ruin{NEWLINE}weakened the Defense of all surrounding{CLEAR}Pokémon!",
+   "en": "The wild {VAR:0102:0,0}’s Sword of Ruin{NEWLINE}weakened the Defense{CLEAR}of all surrounding Pokémon!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2072,
    "zh": "对手的{VAR:0102:0,0}的{NEWLINE}灾祸之剑令周围的宝可梦的防御减弱了！",
-   "en": "The foe’s {VAR:0102:0,0}’s Sword of Ruin{NEWLINE}weakened the Defense of all surrounding{CLEAR}Pokémon!",
+   "en": "The foe’s {VAR:0102:0,0}’s Sword of Ruin{NEWLINE}weakened the Defense{CLEAR}of all surrounding Pokémon!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2073,
@@ -16726,18 +16726,18 @@
   {
    "id": 2075,
    "zh": "野生的{VAR:0102:0,0}的{NEWLINE}灾祸之简令周围的宝可梦的攻击减弱了！",
-   "en": "The wild {VAR:0102:0,0}’s Tablets of Ruin{NEWLINE}weakened the Attack of all surrounding{CLEAR}Pokémon!",
+   "en": "The wild {VAR:0102:0,0}’s Tablets of Ruin{NEWLINE}weakened the Attack{CLEAR}of all surrounding Pokémon!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2076,
    "zh": "对手的{VAR:0102:0,0}的{NEWLINE}灾祸之简令周围的宝可梦的攻击减弱了！",
-   "en": "The foe’s {VAR:0102:0,0}’s Tablets of Ruin{NEWLINE}weakened the Attack of all surrounding{CLEAR}Pokémon!",
+   "en": "The foe’s {VAR:0102:0,0}’s Tablets of Ruin{NEWLINE}weakened the Attack{CLEAR}of all surrounding Pokémon!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2077,
@@ -16758,18 +16758,18 @@
   {
    "id": 2079,
    "zh": "野生的{VAR:0102:0,0}的{NEWLINE}灾祸之玉令周围的宝可梦的特防减弱了！",
-   "en": "The wild {VAR:0102:0,0}’s Beads of Ruin{NEWLINE}weakened the Sp. Def of all surrounding{CLEAR}Pokémon!",
+   "en": "The wild {VAR:0102:0,0}’s Beads of Ruin{NEWLINE}weakened the Sp. Def{CLEAR}of all surrounding Pokémon!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2080,
    "zh": "对手的{VAR:0102:0,0}的{NEWLINE}灾祸之玉令周围的宝可梦的特防减弱了！",
-   "en": "The foe’s {VAR:0102:0,0}’s Beads of Ruin{NEWLINE}weakened the Sp. Def of all surrounding{CLEAR}Pokémon!",
+   "en": "The foe’s {VAR:0102:0,0}’s Beads of Ruin{NEWLINE}weakened the Sp. Def{CLEAR}of all surrounding Pokémon!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2081,
@@ -16782,34 +16782,34 @@
   {
    "id": 2082,
    "zh": "{VAR:0102:0,0}从{NEWLINE}被打倒的同伴身上得到力量了！",
-   "en": "{VAR:0102:0,0} gained strength from the{NEWLINE}fallen!",
+   "en": "{VAR:0102:0,0} gained strength from its{NEWLINE}fallen allies!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: omission: 被打倒的同伴 = its fallen allies; \"the fallen\" dropped 同伴 (D-1908)"
   },
   {
    "id": 2083,
    "zh": "野生的{VAR:0102:0,0}从{NEWLINE}被打倒的同伴身上得到力量了！",
-   "en": "The wild {VAR:0102:0,0} gained strength{NEWLINE}from the fallen!",
+   "en": "The wild {VAR:0102:0,0} gained strength{NEWLINE}from its fallen allies!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: omission: same as #2082"
   },
   {
    "id": 2084,
    "zh": "对手的{VAR:0102:0,0}从{NEWLINE}被打倒的同伴身上得到力量了！",
-   "en": "The foe’s {VAR:0102:0,0} gained strength{NEWLINE}from the fallen!",
+   "en": "The foe’s {VAR:0102:0,0} gained strength{NEWLINE}from its fallen allies!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: omission: same as #2082"
   },
   {
    "id": 2085,
    "zh": "{VAR:0100:0,10}的{VAR:0102:0,0}从{NEWLINE}被打倒的同伴身上得到力量了！",
-   "en": "{VAR:0100:0,10}’s {VAR:0102:0,0} gained{NEWLINE}strength from the fallen!",
+   "en": "{VAR:0100:0,10}’s {VAR:0102:0,0} gained{NEWLINE}strength from its fallen allies!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: omission: same as #2082"
   },
   {
    "id": 2086,
@@ -16854,26 +16854,26 @@
   {
    "id": 2091,
    "zh": "野生的{VAR:0102:0,0}的特性{NEWLINE}正受到{VAR:0109:0,1}效果的保护！",
-   "en": "The wild {VAR:0102:0,0}’s Ability is{NEWLINE}protected by the effects of its{CLEAR}{VAR:0109:0,1}!",
+   "en": "The wild {VAR:0102:0,0}’s Ability is{NEWLINE}protected by the effects{CLEAR}of its {VAR:0109:0,1}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2092,
    "zh": "对手的{VAR:0102:0,0}的特性{NEWLINE}正受到{VAR:0109:0,1}效果的保护！",
-   "en": "The foe’s {VAR:0102:0,0}’s Ability is{NEWLINE}protected by the effects of its{CLEAR}{VAR:0109:0,1}!",
+   "en": "The foe’s {VAR:0102:0,0}’s Ability is{NEWLINE}protected by the effects{CLEAR}of its {VAR:0109:0,1}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2093,
    "zh": "{VAR:0100:0,10}的{VAR:0102:0,0}的特性{NEWLINE}正受到{VAR:0109:0,1}效果的保护！",
-   "en": "{VAR:0100:0,10}’s {VAR:0102:0,0}’s Ability is{NEWLINE}protected by the effects of its{CLEAR}{VAR:0109:0,1}!",
+   "en": "{VAR:0100:0,10}’s {VAR:0102:0,0}’s Ability is{NEWLINE}protected by the effects{CLEAR}of its {VAR:0109:0,1}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2094,
@@ -16918,18 +16918,18 @@
   {
    "id": 2099,
    "zh": "野生的{VAR:0102:0,0}使用模仿香草{NEWLINE}模仿了对手的能力变化！",
-   "en": "The wild {VAR:0102:0,0} used its Mirror{NEWLINE}Herb to mirror its opponent’s stat{CLEAR}changes!",
+   "en": "The wild {VAR:0102:0,0} used its{NEWLINE}Mirror Herb to mirror its{CLEAR}opponent’s stat changes!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2100,
    "zh": "对手的{VAR:0102:0,0}使用模仿香草{NEWLINE}模仿了对手的能力变化！",
-   "en": "The foe’s {VAR:0102:0,0} used its Mirror{NEWLINE}Herb to mirror its opponent’s stat{CLEAR}changes!",
+   "en": "The foe’s {VAR:0102:0,0} used its{NEWLINE}Mirror Herb to mirror its{CLEAR}opponent’s stat changes!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2101,
@@ -16950,10 +16950,10 @@
   {
    "id": 2103,
    "zh": "野生的{VAR:0102:0,0}令日照变强，{NEWLINE}激起了古代的脉动！",
-   "en": "The wild {VAR:0102:0,0} turned the sunlight{NEWLINE}harsh, sending its ancient pulse into a{CLEAR}frenzy!",
+   "en": "The wild {VAR:0102:0,0} turned the sunlight{NEWLINE}harsh, sending its ancient pulse{CLEAR}into a frenzy!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2104,
@@ -17046,18 +17046,18 @@
   {
    "id": 2115,
    "zh": "野生的{VAR:0102:0,0}用电气场地{NEWLINE}使未来的机关跃动起来！！",
-   "en": "The wild {VAR:0102:0,0} used the Electric{NEWLINE}Terrain to energize its futuristic{CLEAR}engine!",
+   "en": "The wild {VAR:0102:0,0} used the Electric{NEWLINE}Terrain to energize{CLEAR}its futuristic engine!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2116,
    "zh": "对手的{VAR:0102:0,0}用电气场地{NEWLINE}使未来的机关跃动起来！！",
-   "en": "The foe’s {VAR:0102:0,0} used the Electric{NEWLINE}Terrain to energize its futuristic{CLEAR}engine!",
+   "en": "The foe’s {VAR:0102:0,0} used the Electric{NEWLINE}Terrain to energize{CLEAR}its futuristic engine!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2117,
@@ -17302,50 +17302,50 @@
   {
    "id": 2147,
    "zh": "野生的{VAR:0102:0,0}让碧之假面{NEWLINE}发出光辉，速度提高了！",
-   "en": "The Teal Mask worn by the wild{NEWLINE}{VAR:0102:0,0} shone brilliantly, raising its{CLEAR}Speed!",
+   "en": "The Teal Mask worn by the wild{NEWLINE}{VAR:0102:0,0} shone brilliantly,{CLEAR}raising its Speed!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2148,
    "zh": "对手的{VAR:0102:0,0}让碧之假面{NEWLINE}发出光辉，速度提高了！",
-   "en": "The Teal Mask worn by the foe’s{NEWLINE}{VAR:0102:0,0} shone brilliantly, raising its{CLEAR}Speed!",
+   "en": "The Teal Mask worn by the foe’s{NEWLINE}{VAR:0102:0,0} shone brilliantly,{CLEAR}raising its Speed!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2149,
    "zh": "{VAR:0100:0,10}的{VAR:0102:0,0}让碧之假面{NEWLINE}发出光辉，速度提高了！",
-   "en": "The Teal Mask worn by {VAR:0100:0,10}’s{NEWLINE}{VAR:0102:0,0} shone brilliantly, raising its{CLEAR}Speed!",
+   "en": "The Teal Mask worn by {VAR:0100:0,10}’s{NEWLINE}{VAR:0102:0,0} shone brilliantly,{CLEAR}raising its Speed!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2150,
    "zh": "{VAR:0102:0,0}让灶之假面{NEWLINE}发出光辉，攻击提高了！",
-   "en": "The Hearthflame Mask worn by{NEWLINE}{VAR:0102:0,0} shone brilliantly, raising its{CLEAR}Attack!",
+   "en": "The Hearthflame Mask worn by{NEWLINE}{VAR:0102:0,0} shone brilliantly,{CLEAR}raising its Attack!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2151,
    "zh": "野生的{VAR:0102:0,0}让灶之假面{NEWLINE}发出光辉，攻击提高了！",
-   "en": "The Hearthflame Mask worn by the wild{NEWLINE}{VAR:0102:0,0} shone brilliantly, raising its{CLEAR}Attack!",
+   "en": "The Hearthflame Mask worn by the wild{NEWLINE}{VAR:0102:0,0} shone brilliantly,{CLEAR}raising its Attack!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2152,
    "zh": "对手的{VAR:0102:0,0}让灶之假面{NEWLINE}发出光辉，攻击提高了！",
-   "en": "The Hearthflame Mask worn by the foe’s{NEWLINE}{VAR:0102:0,0} shone brilliantly, raising its{CLEAR}Attack!",
+   "en": "The Hearthflame Mask worn by the foe’s{NEWLINE}{VAR:0102:0,0} shone brilliantly,{CLEAR}raising its Attack!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2153,
@@ -17358,26 +17358,26 @@
   {
    "id": 2154,
    "zh": "{VAR:0102:0,0}让础之假面{NEWLINE}发出光辉，防御提高了！",
-   "en": "The Cornerstone Mask worn by{NEWLINE}{VAR:0102:0,0} shone brilliantly, raising its{CLEAR}Defense!",
+   "en": "The Cornerstone Mask worn by{NEWLINE}{VAR:0102:0,0} shone brilliantly,{CLEAR}raising its Defense!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2155,
    "zh": "野生的{VAR:0102:0,0}让础之假面{NEWLINE}发出光辉，防御提高了！",
-   "en": "The Cornerstone Mask worn by the wild{NEWLINE}{VAR:0102:0,0} shone brilliantly, raising its{CLEAR}Defense!",
+   "en": "The Cornerstone Mask worn by the wild{NEWLINE}{VAR:0102:0,0} shone brilliantly,{CLEAR}raising its Defense!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2156,
    "zh": "对手的{VAR:0102:0,0}让础之假面{NEWLINE}发出光辉，防御提高了！",
-   "en": "The Cornerstone Mask worn by the foe’s{NEWLINE}{VAR:0102:0,0} shone brilliantly, raising its{CLEAR}Defense!",
+   "en": "The Cornerstone Mask worn by the foe’s{NEWLINE}{VAR:0102:0,0} shone brilliantly,{CLEAR}raising its Defense!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2157,
@@ -17398,18 +17398,18 @@
   {
    "id": 2159,
    "zh": "野生的{VAR:0102:0,0}让井之假面{NEWLINE}发出光辉，特防提高了！",
-   "en": "The Wellspring Mask worn by the wild{NEWLINE}{VAR:0102:0,0} shone brilliantly, raising its{CLEAR}Sp. Def!",
+   "en": "The Wellspring Mask worn by the wild{NEWLINE}{VAR:0102:0,0} shone brilliantly,{CLEAR}raising its Sp. Def!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2160,
    "zh": "对手的{VAR:0102:0,0}让井之假面{NEWLINE}发出光辉，特防提高了！",
-   "en": "The Wellspring Mask worn by the foe’s{NEWLINE}{VAR:0102:0,0} shone brilliantly, raising its{CLEAR}Sp. Def!",
+   "en": "The Wellspring Mask worn by the foe’s{NEWLINE}{VAR:0102:0,0} shone brilliantly,{CLEAR}raising its Sp. Def!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2161,
@@ -17478,10 +17478,10 @@
   {
    "id": 2169,
    "zh": "{VAR:0100:0,10}的{VAR:0102:0,0}的蜜{NEWLINE}散发出了甜甜香气！",
-   "en": "A supersweet aroma is wafting from the{NEWLINE}syrup covering {VAR:0100:0,10}’s{CLEAR}{VAR:0102:0,0}!",
+   "en": "A supersweet aroma is wafting from{NEWLINE}the syrup covering{CLEAR}{VAR:0100:0,10}’s {VAR:0102:0,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2170,
@@ -17550,10 +17550,10 @@
   {
    "id": 2178,
    "zh": "{VAR:0100:0,10}的{VAR:0102:0,0}让甲壳发出光辉，{NEWLINE}使属性相克发生扭曲！！",
-   "en": "{VAR:0100:0,10}’s {VAR:0102:0,0} made its{NEWLINE}shell gleam! It’s distorting type{CLEAR}matchups!",
+   "en": "{VAR:0100:0,10}’s {VAR:0102:0,0} made its{NEWLINE}shell gleam!{CLEAR}It’s distorting type matchups!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2179,
@@ -17654,34 +17654,34 @@
   {
    "id": 2191,
    "zh": "{VAR:0102:0,0}的{NEWLINE}变身后归来了",
-   "en": "{VAR:0102:0,0} underwent a heroic{NEWLINE}transformation!",
+   "en": "{VAR:0102:0,0} came back transformed!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: meaning: 变身后归来了 = came back transformed; official \"underwent a heroic transformation\" adds heroic, drops the return (D-1906; hack-finding logged)"
   },
   {
    "id": 2192,
    "zh": "野生的{VAR:0102:0,0}{NEWLINE}变身后归来了！",
-   "en": "The wild {VAR:0102:0,0} underwent a heroic{NEWLINE}transformation!",
+   "en": "The wild {VAR:0102:0,0} came back{NEWLINE}transformed!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: meaning: same as #2191"
   },
   {
    "id": 2193,
    "zh": "对手的{VAR:0102:0,0}{NEWLINE}变身后归来了！",
-   "en": "The foe’s {VAR:0102:0,0} underwent a{NEWLINE}heroic transformation!",
+   "en": "The foe’s {VAR:0102:0,0} came back{NEWLINE}transformed!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: meaning: same as #2191"
   },
   {
    "id": 2194,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}的{NEWLINE}变身后归来了！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} underwent{NEWLINE}a heroic transformation!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} came back{NEWLINE}transformed!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: meaning: same as #2191"
   },
   {
    "id": 2195,
@@ -17710,10 +17710,10 @@
   {
    "id": 2198,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}作为发号施令的要员{NEWLINE}而被{VAR:0102:1,0}吞下去了！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} was{NEWLINE}swallowed by {VAR:0102:1,0} and became its{CLEAR}commander!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} was{NEWLINE}swallowed by {VAR:0102:1,0}{CLEAR}and became its commander!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2199,
@@ -17758,26 +17758,26 @@
   {
    "id": 2204,
    "zh": "野生的{VAR:0102:0,0}使用模仿香草{NEWLINE}模仿了我方的能力变化！",
-   "en": "The wild {VAR:0102:0,0} used its Mirror{NEWLINE}Herb to mirror your team’s stat{CLEAR}changes!",
+   "en": "The wild {VAR:0102:0,0} used its{NEWLINE}Mirror Herb to mirror{CLEAR}your team’s stat changes!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2205,
    "zh": "对手的{VAR:0102:0,0}使用模仿香草{NEWLINE}模仿了我方的能力变化！",
-   "en": "The foe’s {VAR:0102:0,0} used its Mirror{NEWLINE}Herb to mirror your team’s stat{CLEAR}changes!",
+   "en": "The foe’s {VAR:0102:0,0} used its{NEWLINE}Mirror Herb to mirror{CLEAR}your team’s stat changes!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   },
   {
    "id": 2206,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}使用模仿香草{NEWLINE}模仿了我方的能力变化！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} used its{NEWLINE}Mirror Herb to mirror your team’s stat{CLEAR}changes!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} used its{NEWLINE}Mirror Herb to mirror{CLEAR}your team’s stat changes!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV105: layout: one-word orphan after {CLEAR}"
   }
  ]
 }

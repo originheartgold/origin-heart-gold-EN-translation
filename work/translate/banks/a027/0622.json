@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "你好啊！{NEWLINE}未来的冠军！{SCROLL}这个道馆中的立足点很不稳定,{NEWLINE}会有危险,{CLEAR}所以要看好精灵哦。{SCROLL}……对了,{NEWLINE}伊吹使用的精灵{CLEAR}是传说的生物,{CLEAR}神圣的龙精灵！{SCROLL}轻微的攻击{NEWLINE}是伤不到它的！{SCROLL}……但是{NEWLINE}听说龙对冰系的技能{CLEAR}抗性较弱！",
-   "en": "Yo! Champ in the making!{SCROLL}The Gym has unstable footing.{NEWLINE}Keep your Pokémon in their Poké Balls.{SCROLL}Now, Clair uses the mythical and sacred{NEWLINE}Dragon-type Pokémon.{SCROLL}You can’t damage them very easily.{SCROLL}But you know, they’re supposed{NEWLINE}to be weak against Ice-type moves.",
+   "en": "Hello there, future Champion! The{NEWLINE}footing in this Gym is unstable and{CLEAR}dangerous, so keep a close eye on your{CLEAR}Pokémon. ...Oh, right, Clair uses{CLEAR}legendary creatures: sacred Dragon{CLEAR}Pokémon! Weak attacks won’t hurt{CLEAR}them! ...But I hear dragons are weak{CLEAR}against Ice-type moves!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0631/0"
+   "origin": "agent",
+   "notes": "US 0631/0 | RV049: meaning: US said keep Pokémon in Balls and dropped 会有危险; zh says watch your Pokémon"
   },
   {
    "id": 1,

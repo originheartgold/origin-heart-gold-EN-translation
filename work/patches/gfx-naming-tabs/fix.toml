@@ -23,6 +23,7 @@ evidence = [
   "work/notes/graphics_inventory.md: row 14",
   "work/notes/hardcoded_text.md: 'Naming keyboard (English)'",
   "work/build/screens/naming_fix_*.png (local)",
+  "Runtime: emu_harness.py fixes --case gfx-naming-tabs (scenario naming: the crop of the keyboard tabs and BACK / OK equals the approved one; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[graphics]]

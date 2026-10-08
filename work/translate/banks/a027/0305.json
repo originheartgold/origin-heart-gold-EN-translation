@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "{VAR:0103:0}{NEWLINE}换上了运动服！",
-   "en": "{VAR:0103:0} changed clothes.",
+   "en": "{VAR:0103:0} changed into sportswear!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0312/8"
+   "origin": "agent",
+   "notes": "US 0312/8 | RV069: omission: 运动服 (sportswear); D-1780"
   },
   {
    "id": 9,
@@ -150,10 +150,10 @@
   {
    "id": 18,
    "zh": "技巧竞技{NEWLINE}是由３个以{CLEAR}技术为主的赛事{CLEAR}组成的。{SCROLL}精准地扔雪球吧！{NEWLINE}「扔雪球」{SCROLL}目标明天,漂亮射门！{NEWLINE}「足球」{SCROLL}快速切换抢旗子吧！{NEWLINE}「抢旗」{SCROLL}拿到冠军就能得到{NEWLINE}技巧奖章。{SCROLL}请一定要带着有自信的{NEWLINE}３只技巧的精灵{CLEAR}来参加啊。{SCROLL}",
-   "en": "The Skill Course consists of three{NEWLINE}events that require good{CLEAR}Technique Performance.{SCROLL}“Snow Throw”{NEWLINE}Aim for them and throw Snow!{SCROLL}“Goal Roll”{NEWLINE}Roll the balls into the Goal!{SCROLL}“Pennant Capture”{NEWLINE}Make a quick turn and grab Pennants!{SCROLL}When you win, you will be awarded{NEWLINE}the Skill Medal.{SCROLL}Choose three Pokémon with good Skill{NEWLINE}for these events.{SCROLL}",
+   "en": "The Skill Course consists of three{NEWLINE}events that require good{CLEAR}Technique Performance.{SCROLL}“Snow Throw”{NEWLINE}Aim for them and throw Snow!{SCROLL}“Goal Roll”{NEWLINE}Roll the balls into the Goal!{SCROLL}“Pennant Capture”{NEWLINE}Switch quickly and grab Pennants!{SCROLL}When you win, you will be awarded{NEWLINE}the Skill Medal.{SCROLL}Choose three Pokémon with good Skill{NEWLINE}for these events.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0312/18"
+   "origin": "agent",
+   "notes": "US 0312/18 | RV069: meaning: 快速切换 = switch quickly; D-1780"
   },
   {
    "id": 19,
@@ -286,10 +286,10 @@
   {
    "id": 35,
    "zh": "{VAR:0103:0}{NEWLINE}换上了运动服！",
-   "en": "{VAR:0103:0} changed clothes.",
+   "en": "{VAR:0103:0} changed into sportswear!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0312/35"
+   "origin": "agent",
+   "notes": "US 0312/35 | RV069: omission: 运动服 (sportswear); D-1780"
   },
   {
    "id": 36,
@@ -302,18 +302,18 @@
   {
    "id": 37,
    "zh": "哎呀！{NEWLINE}您的精灵数量{CLEAR}似乎不够啊。{SCROLL}想玩口袋竞技就必须{NEWLINE}要有３只以上的精灵。{SCROLL}口袋竞技的话精灵越多{CLEAR}乐趣越大。{SCROLL}请多带几只精灵过来吧。",
-   "en": "Oh no! It seems like you don’t have{NEWLINE}enough Pokémon.{SCROLL}In order to participate in the{NEWLINE}Pokéathlon, you need to have{CLEAR}at least three Pokémon.{SCROLL}The Pokéathlon brings together all{NEWLINE}kinds of Pokémon from all over.{SCROLL}The more, the merrier! Please, bring a{NEWLINE}bunch of Pokémon and you’ll see.",
+   "en": "Oh no! It seems you don’t have{NEWLINE}enough Pokémon.{SCROLL}In order to participate in the{NEWLINE}Pokéathlon, you need to have{CLEAR}at least three Pokémon.{SCROLL}In the Pokéathlon, the more Pokémon{NEWLINE}you have, the more fun it is.{SCROLL}Please bring more Pokémon with you.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0312/37"
+   "origin": "agent",
+   "notes": "US 0312/37 | RV069: addition: US ‘brings together all kinds of Pokémon from all over’ and ‘you’ll see’ not in zh"
   },
   {
    "id": 38,
    "zh": "欢迎,{NEWLINE}这里是通信口袋竞技的接待处。{SCROLL}哎呀！{NEWLINE}您是第一次参加吗？{SCROLL}那么请先去单机的接待处{CLEAR}问问吧。{SCROLL}从这里往右的中央柜台就是了。{SCROLL}那儿能问到口袋竞技的说明,{NEWLINE}推荐您先去那儿。",
-   "en": "Welcome. This is the reception for the{NEWLINE}Link Pokéathlon.{SCROLL}Oh, my!{NEWLINE}This is your first time, isn’t it?{SCROLL}If that’s true, then please head over{NEWLINE}to the “Single” reception.{SCROLL}If you go to the right from here, it’s{NEWLINE}the middle counter.{SCROLL}You can get information about the{NEWLINE}Pokéathlon and decide on a course.",
+   "en": "Welcome. This is the reception for the{NEWLINE}Link Pokéathlon.{SCROLL}Oh, my!{NEWLINE}Is this your first time?{SCROLL}Then please ask at the single-player{NEWLINE}reception first.{SCROLL}If you go to the right from here, it’s{NEWLINE}the middle counter.{SCROLL}You can get an explanation of the{NEWLINE}Pokéathlon there, so I recommend{CLEAR}going there first.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0312/38"
+   "origin": "agent",
+   "notes": "US 0312/38 | RV069: meaning: US added ‘decide on a course’, dropped the recommendation"
   },
   {
    "id": 39,
@@ -358,18 +358,18 @@
   {
    "id": 44,
    "zh": "耐力＆速度竞技{NEWLINE}是由结合了耐力与速度的{CLEAR}４场赛事{CLEAR}所组成的。{SCROLL}重视耐力与速度的{NEWLINE}「赛跑」{SCROLL}将对手击出圈外！{NEWLINE}「撞人」{SCROLL}跨越障碍目标第一！{NEWLINE}「跨栏」{SCROLL}强推对手进入圈内！{NEWLINE}「抢位置」{SCROLL}拿到冠军后就能得到{NEWLINE}耐力奖章与速度奖章。{SCROLL}请一定要带着对耐力与{NEWLINE}速度有自信的３只精灵{CLEAR}和朋友们一起来参加啊。{SCROLL}",
-   "en": "The Stamina & Speed Course consists{NEWLINE}of four events that require good{CLEAR}Stamina and Speed Performance.{SCROLL}“Relay Run”{NEWLINE}Both Stamina and Speed are key!{SCROLL}“Ring Drop”{NEWLINE}Drop them from high while you survive!{SCROLL}“Hurdle Dash”{NEWLINE}Over you go! Aim for number one!{SCROLL}“Circle Push”{NEWLINE}Push them away and stay in the Circle!{SCROLL}When you win, you will be awarded{NEWLINE}the Stamina Medal and the Speed Medal.{SCROLL}Choose three Pokémon with good Stamina{NEWLINE}and Speed for these events, and{CLEAR}bring your friends as well.{SCROLL}",
+   "en": "The Stamina & Speed Course consists{NEWLINE}of four events that require good{CLEAR}Stamina and Speed Performance.{SCROLL}“Relay Run”{NEWLINE}Both Stamina and Speed are key!{SCROLL}“Ring Drop”{NEWLINE}Knock your opponents out of the Ring!{SCROLL}“Hurdle Dash”{NEWLINE}Over you go! Aim for number one!{SCROLL}“Circle Push”{NEWLINE}Shove them and get into the Circle!{SCROLL}When you win, you will be awarded{NEWLINE}the Stamina Medal and the Speed Medal.{SCROLL}Choose three Pokémon with good Stamina{NEWLINE}and Speed for these events, and{CLEAR}bring your friends as well.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0312/44"
+   "origin": "agent",
+   "notes": "US 0312/44 | RV069: meaning: Ring Drop = knock them out of the ring; Circle Push 强推对手进入圈内 kept ambiguous; D-1780"
   },
   {
    "id": 45,
    "zh": "大师竞技{NEWLINE}是每次都是不同{CLEAR}比赛的超难赛事。{SCROLL}必须要选择无论{NEWLINE}什么比赛都能克服的{CLEAR}万能型队伍！{SCROLL}大师竞技{NEWLINE}无法得到奖牌,{SCROLL}但是得到的竞技点数{NEWLINE}会是两倍！{SCROLL}请和朋友一起{NEWLINE}来挑战吧！{SCROLL}",
-   "en": "The Master Course is a difficult course{NEWLINE}that offers different events{CLEAR}every time.{SCROLL}Teams must do their best to get{NEWLINE}through the course, no matter what it{CLEAR}may be!{SCROLL}You won’t receive any medals for a{NEWLINE}Master Course.{SCROLL}However, you will receive twice as many{NEWLINE}Athlete Points.{SCROLL}By all means, get your friends together{NEWLINE}and give it a try.{SCROLL}",
+   "en": "The Master Course is a super-hard{NEWLINE}course with different events{CLEAR}every time.{SCROLL}You must choose an all-round team{NEWLINE}that can handle any event!{SCROLL}You won’t receive any medals for a{NEWLINE}Master Course.{SCROLL}However, you will receive twice as many{NEWLINE}Athlete Points!{SCROLL}Please come and take it on with{NEWLINE}your friends!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0312/45"
+   "origin": "agent",
+   "notes": "US 0312/45 | RV069: meaning: all-round team requirement restored; D-1780"
   },
   {
    "id": 46,
@@ -382,10 +382,10 @@
   {
    "id": 47,
    "zh": "这次{VAR:0103:0}选手的{NEWLINE}得分是{VAR:0134:1}！{SCROLL}由于大师竞技的翻倍效果{NEWLINE}获得{VAR:0135:2}点！{SCROLL}",
-   "en": "This time, {VAR:0103:0}’s score was{NEWLINE}{VAR:0134:1}!{SCROLL}Since it was on a Master Course,{NEWLINE}{VAR:0135:2} points were earned!{SCROLL}",
+   "en": "This time, {VAR:0103:0}’s score was{NEWLINE}{VAR:0134:1}!{SCROLL}Thanks to the Master Course’s double{NEWLINE}points, {VAR:0135:2} points were earned!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0312/47"
+   "origin": "agent",
+   "notes": "US 0312/47 | RV069: omission: 翻倍效果 (doubling) restored; D-1780"
   },
   {
    "id": 48,

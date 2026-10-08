@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "啊！{NEWLINE}战斗记录器给我看下,{SCROLL}把这里这样……{NEWLINE}那里那样……{CLEAR}好,完成了！{SCROLL}战斗记录器改良了{NEWLINE}能看到战斗点数的机能！{SCROLL}",
-   "en": "Oh! I’ll borrow your Vs. Recorder{NEWLINE}for a moment.{SCROLL}Let’s see... Slide open this part here,{NEWLINE}and ticka-tacka-kachunk there!{SCROLL}All done!{SCROLL}Now you can check your Battle Points{NEWLINE}using your Vs. Recorder!{SCROLL}",
+   "en": "Oh! Let me see your Vs. Recorder.{SCROLL}This part goes like this... That part{NEWLINE}goes like that...{SCROLL}OK, all done!{SCROLL}Your Vs. Recorder has been upgraded so{NEWLINE}it can show your Battle Points!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0458/9"
+   "origin": "agent",
+   "notes": "US 0458/9 | RV053: addition: US sound effects/‘slide open’ not in zh"
   },
   {
    "id": 10,

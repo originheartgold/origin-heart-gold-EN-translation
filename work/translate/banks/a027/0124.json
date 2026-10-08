@@ -233,10 +233,10 @@
   {
    "id": 28,
    "zh": "哎？恢复？不是禁止带伤药……？",
-   "en": "Huh? Heal it? But isn’t medicine{NEWLINE}banned...?",
+   "en": "Huh? Heal it? But aren’t Potions{NEWLINE}banned...?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV051: name: 伤药 = Potion (glossary)"
   },
   {
    "id": 29,
@@ -777,10 +777,10 @@
   {
    "id": 96,
    "zh": "阿金『撞人是我的责任,{NEWLINE}你专心去跟四天王对战就行！{CLEAR}再磨蹭的话{CLEAR}后面的训练家就要赶上来了。",
-   "en": "Gold: Crashing into him is my{NEWLINE}responsibility. You just focus on{CLEAR}battling the Elite Four!{SCROLL}If you dawdle any longer, the Trainers{NEWLINE}behind us will catch up.",
+   "en": "Gold: I’m the one who crashed into him,{NEWLINE}so that’s on me. You just focus on{CLEAR}battling the Elite Four!{SCROLL}If you dawdle any longer, the Trainers{NEWLINE}behind us will catch up.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV051: grammar: 撞人是我的责任 = it was my fault, not 'my responsibility'"
   },
   {
    "id": 97,

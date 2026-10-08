@@ -310,10 +310,10 @@
   {
    "id": 38,
    "zh": "嗯嗯~我明白的⋯⋯{NEWLINE}你什么都不用说了⋯⋯{SCROLL}",
-   "en": "It’s fine, fine...{NEWLINE}No need to say a word...{SCROLL}",
+   "en": "Mm-hm, I understand... You don’t need{NEWLINE}to say anything...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/38"
+   "origin": "agent",
+   "notes": "US 0723/38 | RV081: omission: 嗯嗯~我明白的 (I understand) was dropped"
   },
   {
    "id": 39,
@@ -1126,10 +1126,10 @@
   {
    "id": 140,
    "zh": "制服弄脏了啦！{SCROLL}",
-   "en": "You messed up my uniform!{SCROLL}",
+   "en": "My uniform got all dirty!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/140"
+   "origin": "agent",
+   "notes": "US 0723/140 | RV081: meaning: zh does not blame the player (制服弄脏了)"
   },
   {
    "id": 141,
@@ -1182,10 +1182,10 @@
   {
    "id": 147,
    "zh": "用这个网,{NEWLINE}把你也套住！！",
-   "en": "I’ll snag you with my net!",
+   "en": "With this net, I’ll snag you too!!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/147"
+   "origin": "agent",
+   "notes": "US 0723/147 | RV081: omission: 也 (you too)"
   },
   {
    "id": 148,
@@ -1262,10 +1262,10 @@
   {
    "id": 157,
    "zh": "哈哈！看到没！{SCROLL}",
-   "en": "Hahah!{NEWLINE}You saw it!{SCROLL}",
+   "en": "Hahah! Did you see that?!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/157"
+   "origin": "agent",
+   "notes": "US 0723/157 | RV081: grammar: 看到没 is a question"
   },
   {
    "id": 158,
@@ -1590,10 +1590,10 @@
   {
    "id": 198,
    "zh": "大姐姐我啊~不喜欢{NEWLINE}孱弱的训练师哦！",
-   "en": "I really don’t like weak Trainers!",
+   "en": "Big Sis here doesn’t like weak Trainers!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/198"
+   "origin": "agent",
+   "notes": "US 0723/198 | RV081: voice: 大姐姐我 self-reference kept"
   },
   {
    "id": 199,
@@ -1614,10 +1614,10 @@
   {
    "id": 201,
    "zh": "大姐姐我啊⋯⋯最近{NEWLINE}好烦恼呢⋯⋯",
-   "en": "Lately, I’ve had a lot to{NEWLINE}worry about...",
+   "en": "Big Sis here has had a lot on her mind{NEWLINE}lately...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/201"
+   "origin": "agent",
+   "notes": "US 0723/201 | RV081: voice: 大姐姐我 self-reference kept"
   },
   {
    "id": 202,
@@ -2038,10 +2038,10 @@
   {
    "id": 254,
    "zh": "即使输了{NEWLINE}马拉松还是最赞了！{SCROLL}",
-   "en": "So I lost!{NEWLINE}I can still run great marathons!{SCROLL}",
+   "en": "Even if I lost, marathons are still{NEWLINE}the best!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/254"
+   "origin": "agent",
+   "notes": "US 0723/254 | RV081: meaning: zh says marathons are still the best despite losing"
   },
   {
    "id": 255,
@@ -2118,10 +2118,10 @@
   {
    "id": 264,
    "zh": "来闻闻,大叔我的身上{NEWLINE}牧草的香味扑鼻而来对吧？",
-   "en": "Take a whiff!{NEWLINE}Smell the hay on me, right?",
+   "en": "Take a whiff! Smell the hay on{NEWLINE}this old man, right?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV081: voice: 大叔我 self-reference kept"
   },
   {
    "id": 265,
@@ -2142,10 +2142,10 @@
   {
    "id": 267,
    "zh": "来吧来吧~大叔来陪你练练手！{NEWLINE}你可得好好地领教哦！",
-   "en": "Come on, come on, I’ll give you a{NEWLINE}workout! Learn a good lesson!",
+   "en": "Come on, come on, this old man’ll{NEWLINE}give you a workout! Learn it well!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV081: voice: 大叔 self-reference kept; 你可得好好地领教 = learn it well"
   },
   {
    "id": 268,
@@ -2566,10 +2566,10 @@
   {
    "id": 320,
    "zh": "可恶⋯⋯你给我记着！{SCROLL}",
-   "en": "Urgh... Don’t you forget this!{SCROLL}",
+   "en": "Damn... You’d better remember this!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/320"
+   "origin": "agent",
+   "notes": "US 0723/320 | RV081: softened: 可恶 / 你给我记着 is a grudge threat"
   },
   {
    "id": 321,
@@ -3174,10 +3174,10 @@
   {
    "id": 396,
    "zh": "嗯嗯⋯⋯你有着一双{NEWLINE}非常漂亮的眼瞳呢！",
-   "en": "Hmhm... I must say I like the look{NEWLINE}in your eyes.",
+   "en": "Hmhm... You have such beautiful eyes!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/396"
+   "origin": "agent",
+   "notes": "US 0723/396 | RV081: meaning: zh praises the player's beautiful eyes (leads into 397/398 jewel lines)"
   },
   {
    "id": 397,
@@ -3438,10 +3438,10 @@
   {
    "id": 429,
    "zh": "人家的爸爸和妈妈都是{NEWLINE}超强的训练师哦！",
-   "en": "My papa and mama are high-skill{NEWLINE}Trainers, too.",
+   "en": "My papa and mama are both super-strong{NEWLINE}Trainers!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/429"
+   "origin": "agent",
+   "notes": "US 0723/429 | RV081: meaning: 超强 kept, invented 'too' removed"
   },
   {
    "id": 430,
@@ -3646,10 +3646,10 @@
   {
    "id": 455,
    "zh": "怎么这样⋯⋯{NEWLINE}今晚还不睡的话⋯⋯{SCROLL}",
-   "en": "Oh, but...{NEWLINE}I really needed to sleep tonight...{SCROLL}",
+   "en": "No way... If I stay up again tonight...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/455"
+   "origin": "agent",
+   "notes": "US 0723/455 | RV081: meaning: 今晚还不睡的话 = another sleepless night ahead"
   },
   {
    "id": 456,
@@ -3718,10 +3718,10 @@
   {
    "id": 464,
    "zh": "传说中最强者的称号！{NEWLINE}决不会让给你这黄毛小儿！{SCROLL}",
-   "en": "The title of legendary strongest! I’ll{NEWLINE}never hand it to a greenhorn like you!{SCROLL}",
+   "en": "The title of legendary strongest! Never{NEWLINE}will I yield it to you, whippersnapper!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV082: strength: 黄毛小儿 is a contemptuous 'whippersnapper', not 'greenhorn'"
   },
   {
    "id": 465,
@@ -3942,10 +3942,10 @@
   {
    "id": 492,
    "zh": "你也来学习！",
-   "en": "You learn, too!",
+   "en": "Come and learn, too!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV082: grammar: 你也来学习 = come and learn too"
   },
   {
    "id": 493,
@@ -4534,10 +4534,10 @@
   {
    "id": 566,
    "zh": "还要再来一次么？{SCROLL}",
-   "en": "Want to go again?{SCROLL}",
+   "en": "Want an encore?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV082: meaning: 再来一次 here is the music fan's encore (JP アンコール)"
   },
   {
    "id": 567,
@@ -4966,10 +4966,10 @@
   {
    "id": 620,
    "zh": "但！其实真正的我{NEWLINE}依然是那个可爱的迷你裙少女！{SCROLL}",
-   "en": "But the real me...{NEWLINE}I’m still a Lass in a miniskirt!{SCROLL}",
+   "en": "But the real me... I’m still a cute Lass{NEWLINE}in a miniskirt!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/620"
+   "origin": "agent",
+   "notes": "US 0723/620 | RV082: omission: 可爱的 (cute) was dropped"
   },
   {
    "id": 621,
@@ -5070,10 +5070,10 @@
   {
    "id": 633,
    "zh": "别看大婶我现在这样,{NEWLINE}年轻的时候可是摩登女郎哦！",
-   "en": "You won’t guess it now, but I was{NEWLINE}quite the party girl in my day.",
+   "en": "This old auntie may not look it now, but{NEWLINE}in my day I was quite the modern girl!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/633"
+   "origin": "agent",
+   "notes": "US 0723/633 | RV082: voice: 大婶我 self-reference kept; 摩登女郎 = modern girl"
   },
   {
    "id": 634,
@@ -5638,10 +5638,10 @@
   {
    "id": 704,
    "zh": "刚刚稍微发了一会儿呆⋯⋯{SCROLL}",
-   "en": "I seemed to have let my{NEWLINE}mind wander...{SCROLL}",
+   "en": "I seem to have let my mind wander for a{NEWLINE}moment...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0723/704"
+   "origin": "agent",
+   "notes": "US 0723/704 | RV082: grammar: 'seemed to have' fixed; 稍微一会儿 (for a moment) kept"
   },
   {
    "id": 705,
@@ -5886,10 +5886,10 @@
   {
    "id": 735,
    "zh": "哥哥已经指导过我了哦！{NEWLINE}眼睛！眼睛一定要瞄准！",
-   "en": "My big brother coached me! Eyes!{NEWLINE}Always keep your eyes on target!",
+   "en": "My big brother coached me! The eyes!{NEWLINE}Always aim for the eyes!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV082: meaning: 眼睛一定要瞄准 = aim for the eyes (JP めを ねらえ); settles D-1919"
   },
   {
    "id": 736,
@@ -6566,10 +6566,10 @@
   {
    "id": 820,
    "zh": "倒莱米发扫垃圾~{SCROLL}",
-   "en": "Do-re-mi-fa-so-la-ti!{SCROLL}",
+   "en": "Do-re-mi-fa-so-la-trash!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV082: omission: 扫垃圾 solfège pun (sweep the trash) kept"
   },
   {
    "id": 821,

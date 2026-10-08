@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "星期天的白天{NEWLINE}我一般都是有时间的。{SCROLL}到时候你能{NEWLINE}打个电话过来吗⋯⋯？",
-   "en": "I think I’ve got some free time on{NEWLINE}Sundays around noon.{SCROLL}Could you call me back then?",
+   "en": "I am usually free on Sundays around{NEWLINE}noon. Could you give me a call then...?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0655/4"
+   "origin": "agent",
+   "notes": "US 0655/4 | RV071: voice: 'usually', Sabrina's formal register (noon kept, see D-1913)"
   },
   {
    "id": 5,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "你现在怎么会有空{NEWLINE}和我战斗呢？{SCROLL}你还有其他预约的话,{NEWLINE}请先去解决掉吧。",
-   "en": "Do you really have some free time to{NEWLINE}battle me?{SCROLL}If you’ve got plans with other people,{NEWLINE}you should really do that first.",
+   "en": "How is it that you have time to{NEWLINE}battle me now? If you have other{CLEAR}appointments, please take care of{CLEAR}them first.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0655/8"
+   "origin": "agent",
+   "notes": "US 0655/8 | RV071: meaning: closer to zh question and request"
   },
   {
    "id": 9,

@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "什么？{NEWLINE}你还有很多{CLEAR}和其他人的预约吗？",
-   "en": "Wha...?{NEWLINE}Oh, c’mon... Haven’t you made plans{CLEAR}with enough other people?",
+   "en": "Wha...? You’ve still got a bunch of{NEWLINE}plans with other people?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0647/8"
+   "origin": "agent",
+   "notes": "US 0647/8 | RV070: addition: zh: plain question; US added complaint"
   },
   {
    "id": 9,

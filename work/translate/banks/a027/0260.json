@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "初次见面！{SCROLL}我是精灵ＷｉーＦｉ俱乐部的{NEWLINE}引导员青奈,{SCROLL}那么请先往这边！{SCROLL}",
-   "en": "Hello.{NEWLINE}I’m glad to meet you.{SCROLL}My name is Teala, and I’m your guide{NEWLINE}to the Pokémon Wi-Fi Club.{SCROLL}First, I need to give you this.{SCROLL}",
+   "en": "Hello.{NEWLINE}I’m glad to meet you.{SCROLL}My name is Teala, and I’m your guide{NEWLINE}to the Pokémon Wi-Fi Club.{SCROLL}Now, please come this way first.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0267/1"
+   "origin": "agent",
+   "notes": "US 0267/1 | RV058: meaning: zh = please come this way, not 'give you this'"
   },
   {
    "id": 2,
@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "欢迎来到{NEWLINE}精灵中心ＷｉーＦｉ俱乐部！{SCROLL}要使用ＷｉーＦｉ联络吗？",
-   "en": "Welcome to the Pokémon Wi-Fi Club!{SCROLL}Would you like to use Nintendo Wi-Fi{NEWLINE}Connection?",
+   "en": "Welcome to the Pokémon Center Wi-Fi{NEWLINE}Club!{SCROLL}Would you like to use Nintendo Wi-Fi{NEWLINE}Connection?",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0267/7 | seed rejected us [tag_mismatch] (candidate US 0267#7; text not kept)"
+   "notes": "US 0267/7 | seed rejected us [tag_mismatch] (candidate US 0267#7; text not kept) | RV058: omission: 精灵中心 (Pokémon Center) restored"
   },
   {
    "id": 8,
@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "⋯⋯啊啦？{SCROLL}客人您还没有在朋友手册{NEWLINE}里登录朋友呢{SCROLL}在ＷｉーＦｉ俱乐部,{NEWLINE}没有在朋友手册{CLEAR}登录朋友的话,{CLEAR}是无法使用的。{SCROLL}客人想获取{NEWLINE}您的朋友号码吗？{VAR:0200:0}",
-   "en": "...Oh?{SCROLL}I’m sorry, but you don’t have any{NEWLINE}friends registered in your Pal Pad.{SCROLL}The Wi-Fi Club cannot be used if{NEWLINE}no friends are in your Pal Pad.{SCROLL}Would you like to get your own{NEWLINE}Friend Code at least? {VAR:0200:0}",
+   "en": "...Oh?{SCROLL}I’m sorry, but you don’t have any{NEWLINE}friends registered in your Pal Pad.{SCROLL}The Wi-Fi Club cannot be used if{NEWLINE}no friends are in your Pal Pad.{SCROLL}Would you like to get your{NEWLINE}Friend Code? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": ""
+   "origin": "agent",
+   "notes": " | RV058: addition: 'at least' not in zh"
   },
   {
    "id": 12,
@@ -110,10 +110,10 @@
   {
    "id": 13,
    "zh": "ＷｉーＦｉ俱乐部里,{NEWLINE}能够与朋友手册中的{CLEAR}朋友享受精灵交换和{CLEAR}通信对战的乐趣。{SCROLL}这里的通信对战{NEWLINE}分成单人和双人２种,{SCROLL}并分成「无限制」「等级５０」{NEWLINE}「等级１００」三种,{SCROLL}「等级５０」和「等级１００」的{CLEAR}精灵全部得是那个等级的。{SCROLL}要连接{NEWLINE}ＷｉーＦｉ吗？{VAR:0200:0}",
-   "en": "At any Wi-Fi Club, you may play using{NEWLINE}Nintendo Wi-Fi Connection.{SCROLL}Doing so, you may trade or battle with{NEWLINE}friends you have registered in your{CLEAR}Pal Pad.{SCROLL}Two kinds of battles can be conducted:{NEWLINE}Single or Double.{SCROLL}For each kind, you may choose one of{NEWLINE}three level restrictions: Free,{CLEAR}Level 50, or Level 100.{SCROLL}For Level 50 and Level 100, the levels{NEWLINE}of all participating Pokémon will be{CLEAR}temporarily changed to the set level.{SCROLL}Connect to Nintendo WFC? {VAR:0200:0}",
+   "en": "At the Wi-Fi Club, you may enjoy{NEWLINE}trades and link battles with friends{CLEAR}registered in your Pal Pad.{SCROLL}Link battles here come in two kinds:{NEWLINE}Single and Double.{SCROLL}They are also split into three kinds:{NEWLINE}Free, Level 50 and Level 100.{SCROLL}In Level 50 and Level 100, all{NEWLINE}Pokémon have to be at that level.{SCROLL}Connect to Nintendo WFC? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0267/13"
+   "origin": "agent",
+   "notes": "US 0267/13 | RV058: addition: US 'At any Wi-Fi Club...' and 'temporarily changed' not in zh"
   },
   {
    "id": 14,
@@ -153,10 +153,10 @@
   {
    "id": 18,
    "zh": "由我来带您去精灵中心的{NEWLINE}ＷｉーＦｉ广场。{SCROLL}要使用ＷｉーＦｉ吗？{VAR:0200:0}",
-   "en": "Hello, you may enter our{NEWLINE}Pokémon Center Wi-Fi Plaza from here.{SCROLL}Would you like to use Nintendo{NEWLINE}Wi-Fi Connection? {VAR:0200:0}",
+   "en": "Let me take you to the{NEWLINE}Pokémon Center Wi-Fi Plaza.{SCROLL}Would you like to use Nintendo{NEWLINE}Wi-Fi Connection? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0267/18"
+   "origin": "agent",
+   "notes": "US 0267/18 | RV058: meaning: zh = I'll take you to the Plaza"
   },
   {
    "id": 19,
@@ -185,10 +185,10 @@
   {
    "id": 22,
    "zh": "ＷｉーＦｉ广场{NEWLINE}是和全世界的精灵训练员{CLEAR}交流用的设施。{SCROLL}谈话和广场游戏{NEWLINE}以及在ＷｉーＦｉ广场才有的道具{CLEAR}等等等等都能使用。{SCROLL}此外ＷｉーＦｉ广场{NEWLINE}的连接游戏,{CLEAR}时间是有限制的。{SCROLL}结束前请尽情享受！{SCROLL}要连接{NEWLINE}ＷｉーＦｉ吗？{VAR:0200:0}",
-   "en": "The Wi-Fi Plaza is a facility where you{NEWLINE}may meet Trainers from around the{CLEAR}world.{SCROLL}You can take part in chats and play{NEWLINE}Plaza Games.{SCROLL}You may also play with Tap Toys{NEWLINE}that are exclusive to the Wi-Fi Plaza.{SCROLL}Please note there is a time limit to the{NEWLINE}Wi-Fi Plaza connection.{SCROLL}You will be disconnected after a set{NEWLINE}amount of time.{SCROLL}We hope you will get the most out of{NEWLINE}each visit to the Wi-Fi Plaza!{SCROLL}Connect to Nintendo WFC? {VAR:0200:0}",
+   "en": "The Wi-Fi Plaza is a facility where you{NEWLINE}may interact with Pokémon Trainers{CLEAR}from all over the world.{SCROLL}You can chat, play Plaza Games, use{NEWLINE}items found only in the Wi-Fi Plaza,{CLEAR}and much more.{SCROLL}Please note that play in the Wi-Fi{NEWLINE}Plaza has a time limit.{SCROLL}Enjoy yourself to the full until{NEWLINE}it ends!{SCROLL}Connect to Nintendo WFC? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0267/22"
+   "origin": "agent",
+   "notes": "US 0267/22 | RV058: addition: US disconnection/visit lines not in zh; zh items not Tap Toys"
   },
   {
    "id": 23,

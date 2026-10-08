@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "哦？你也喜欢{NEWLINE}在附近打电话吗？{SCROLL}我在家里也经常和{NEWLINE}我妈妈这样说话的。",
-   "en": "Huh? Do you like to talk to{NEWLINE}people nearby over the phone?{SCROLL}You know, this is how I talk to my{NEWLINE}mother when I’m home?",
+   "en": "Huh? You like calling from nearby too?{SCROLL}I talk to my mom like this at home all{NEWLINE}the time.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0688/6"
+   "origin": "agent",
+   "notes": "US 0688/6 | RV072: grammar: stray question mark"
   },
   {
    "id": 7,
@@ -134,10 +134,10 @@
   {
    "id": 16,
    "zh": "你知道吗？{NEWLINE}正辉先生很讨厌牛奶,{CLEAR}基本上完全不喝。{SCROLL}⋯⋯好啦,再见！",
-   "en": "Did you know...?{NEWLINE}Bill supposedly hates milk and{CLEAR}can’t drink it.{SCROLL}So that’s it then.",
+   "en": "Did you know...?{SCROLL}Bill hates milk and basically never{NEWLINE}drinks it. ...So that’s it then.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0688/16"
+   "origin": "agent",
+   "notes": "US 0688/16 | RV072: meaning: never drinks, not can't"
   },
   {
    "id": 17,
@@ -174,10 +174,10 @@
   {
    "id": 21,
    "zh": "你还是那么闲啊,{NEWLINE}要不再来一场对战吧？{SCROLL}你还能看到我那些{NEWLINE}很少见的精灵,{CLEAR}绝对不会亏的。{SCROLL}我就在{VAR:0104:3},{NEWLINE}到了之后就来找我吧。",
-   "en": "You’ve got time like usual, right?{NEWLINE}Feel like having a battle?{SCROLL}It’ll be a chance to see my rare{NEWLINE}Pokémon. It’ll be worth your time!{SCROLL}You know where--{VAR:0104:3}.",
+   "en": "You’re as idle as ever, huh? How about{NEWLINE}another battle?{SCROLL}You’ll get to see my rare Pokémon, so{NEWLINE}it’s definitely worth it.{SCROLL}I’m on {VAR:0104:3}. Come find me{NEWLINE}when you get there.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0688/21"
+   "origin": "agent",
+   "notes": "US 0688/21 | RV072: omission: restored 'come find me'"
   },
   {
    "id": 22,

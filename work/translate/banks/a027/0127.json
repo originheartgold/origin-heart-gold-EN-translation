@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "怎么了？{NEWLINE}若是要去精灵联盟的话,{CLEAR}从这里回到若叶镇去,{CLEAR}乘浪渡过{CLEAR}27号道路就好。{SCROLL}但是……你好像是{NEWLINE}一副还有事情没有做完的{CLEAR}表情呢,{SCROLL}振作一点！{NEWLINE}不管以后要做什么,{CLEAR}放弃了就绝不原谅你！{SCROLL}要不是输了给你的我{NEWLINE}岂不是很惨！{SCROLL}……　……　……{NEWLINE}……加油！{SCROLL}",
-   "en": "What’s the matter?{NEWLINE}If you are headed to the{CLEAR}Pokémon League, go back to New Bark{CLEAR}Town and Surf along Route 27.{SCROLL}Your face...is telling me you have{NEWLINE}some unfinished business...{SCROLL}Come on!{SCROLL}Whatever you have to face from now,{NEWLINE}don’t you dare give up!{SCROLL}If you do, I’ll feel even worse{NEWLINE}about having lost to you!{CLEAR}Give it your all.{SCROLL}",
+   "en": "What’s the matter? If you’re headed{NEWLINE}to the Pokémon League, go back to{CLEAR}New Bark Town from here and Surf{CLEAR}across Route 27.{SCROLL}But... you look like someone who still{NEWLINE}has unfinished business.{SCROLL}Pull yourself together! Whatever you{NEWLINE}do from now on, if you give up, I’ll{CLEAR}never forgive you!{SCROLL}Otherwise, wouldn’t I look pathetic for{NEWLINE}losing to you?!{SCROLL}... ... ...{NEWLINE}...Good luck!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/5"
+   "origin": "agent",
+   "notes": "US 0129/5 | RV048: omission: US line dropped 'never forgive you' and the trailing pause"
   },
   {
    "id": 6,
@@ -62,26 +62,26 @@
   {
    "id": 7,
    "zh": "{VAR:0103:1}『……　……　……{NEWLINE}是{VAR:0103:0}啊……{SCROLL}我在这里训练精灵,{SCROLL}是不是觉得很奇怪？{SCROLL}这有什么关系,{NEWLINE}反正现在这些家伙{CLEAR}也赢不了你,{SCROLL}我也不想让他们太为难,{NEWLINE}不然,{CLEAR}我就不能成为最强的{CLEAR}训练师。",
-   "en": "{VAR:0103:1}: ...{NEWLINE}What? {VAR:0103:0}?{SCROLL}Yeah, I am training my Pokémon here.{NEWLINE}You can laugh at me now...{SCROLL}But it needs to be done.{NEWLINE}My Pokémon aren’t ready to beat you.{CLEAR}I can’t push them too hard now.{SCROLL}I have to be disciplined to become{NEWLINE}the greatest Pokémon Trainer...",
+   "en": "{VAR:0103:1}: ... ... ...{NEWLINE}Oh, it’s {VAR:0103:0}...{SCROLL}I’m training my Pokémon here.{SCROLL}Think that’s weird?{SCROLL}So what? These guys can’t beat you{NEWLINE}right now anyway.{SCROLL}And I don’t want to push them too hard.{NEWLINE}Otherwise, I can’t become the{CLEAR}strongest Trainer.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/7"
+   "origin": "agent",
+   "notes": "US 0129/7 | RV048: meaning: US reasons replaced by the zh ones (D-1666)"
   },
   {
    "id": 8,
    "zh": "{VAR:0103:1}『……　……　……{SCROLL}唉……{NEWLINE}别来打扰我啊！",
-   "en": "{VAR:0103:1}: ...{SCROLL}Whew...{SCROLL}Learn to stay out{NEWLINE}of my way...",
+   "en": "{VAR:0103:1}: ... ... ...{SCROLL}Sigh...{NEWLINE}Quit bothering me!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/8"
+   "origin": "agent",
+   "notes": "US 0129/8 | RV048: meaning: zh: don't bother me"
   },
   {
    "id": 9,
    "zh": "伊吹『一大早的你还真闲啊！{SCROLL}我可以做你聊天的对象！{SCROLL}你一定要的话,{NEWLINE}我也可以{CLEAR}跟你交换手机号码！{VAR:0200:0}",
-   "en": "Clair: It’s still early, and you’ve got{NEWLINE}nothing to do already?{SCROLL}I may have time to listen to you.{NEWLINE}If you insist, I can exchange{CLEAR}numbers, too! {VAR:0200:0}",
+   "en": "Clair: You sure have time on your hands{NEWLINE}this early in the morning!{SCROLL}I can be someone for you to chat with!{SCROLL}If you insist, I could even exchange{NEWLINE}numbers with you! {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/9"
+   "origin": "agent",
+   "notes": "US 0129/9 | RV048: meaning: zh offers to be a chat partner"
   },
   {
    "id": 10,
@@ -126,34 +126,34 @@
   {
    "id": 15,
    "zh": "渡『呀啊,{VAR:0103:0}！{NEWLINE}你是……{CLEAR}火箭队的干部吧？{SCROLL}",
-   "en": "Lance: Hi, {VAR:0103:0}!{NEWLINE}And...you.{CLEAR}We met at the Team Rocket hideout.{SCROLL}",
+   "en": "Lance: Hey, {VAR:0103:0}!{NEWLINE}And you’re...{CLEAR}a Team Rocket Executive, aren’t you?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/15"
+   "origin": "agent",
+   "notes": "US 0129/15 | RV048: meaning: zh calls the rival a Rocket Executive (this hack's Silver; D-1665)"
   },
   {
    "id": 16,
    "zh": "渡『呀啊,{VAR:0103:0}！{NEWLINE}你是……{CLEAR}火箭队的干部吧？{SCROLL}",
-   "en": "Lance: Hi, {VAR:0103:0}!{NEWLINE}And...you.{CLEAR}We met at the Team Rocket hideout.{SCROLL}",
+   "en": "Lance: Hey, {VAR:0103:0}!{NEWLINE}And you’re...{CLEAR}a Team Rocket Executive, aren’t you?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/16"
+   "origin": "agent",
+   "notes": "US 0129/16 | RV048: meaning: zh calls the rival a Rocket Executive (this hack's Silver; D-1665)"
   },
   {
    "id": 17,
    "zh": "{VAR:0103:1}『你！{NEWLINE}之前藏哪去了呀！！{SCROLL}这次我一定要打败你,{NEWLINE}跟我决一胜负吧！！{SCROLL}",
-   "en": "{VAR:0103:1}: You!{NEWLINE}Where have you been all this time?{SCROLL}Prepare to lose to me this time.{NEWLINE}I challenge you!{SCROLL}",
+   "en": "{VAR:0103:1}: You!{NEWLINE}Where have you been hiding?!{SCROLL}This time I’m going to beat you for{NEWLINE}sure. Fight me!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/17"
+   "origin": "agent",
+   "notes": "US 0129/17 | RV048: meaning: 藏哪去了 = where were you hiding"
   },
   {
    "id": 18,
    "zh": "渡『算了,别这么生气,{NEWLINE}那个时候是赶时间,{CLEAR}也对你做了不好的事情。{SCROLL}但是……决一胜负{NEWLINE}我也很赞成！{SCROLL}对了！{SCROLL}既然这么难得,我们２对２吧,{NEWLINE}怎么样？{SCROLL}",
-   "en": "Lance: Calm down.{NEWLINE}I was in a bit of a hurry then.{SCROLL}Sorry for that.{NEWLINE}But...I always welcome challengers!{SCROLL}Hey!{NEWLINE}How about a Double Battle?{SCROLL}",
+   "en": "Lance: Now, now, don’t be so angry.{NEWLINE}I was in a hurry back then, and{CLEAR}I treated you badly.{SCROLL}But... I’m all for a battle too!{SCROLL}I know!{SCROLL}Since this is such a rare chance, let’s{NEWLINE}make it two-on-two. How about it?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/18"
+   "origin": "agent",
+   "notes": "US 0129/18 | RV048: omission: rare-chance reason and 'too' restored"
   },
   {
    "id": 19,
@@ -166,18 +166,18 @@
   {
    "id": 20,
    "zh": "渡『哎呀,别这么说,{NEWLINE}２对２{CLEAR}也是蛮有趣的哦。{SCROLL}好了！{VAR:0103:0}{NEWLINE}再次跟我联手吧！{SCROLL}",
-   "en": "Lance: Come on.{NEWLINE}A Double Battle is really not bad.{CLEAR}{VAR:0103:0}, you’ll be on my side!{SCROLL}",
+   "en": "Lance: Oh, don’t say that. Two-on-two{NEWLINE}is a lot of fun too.{SCROLL}All right! {VAR:0103:0}, team{NEWLINE}up with me again!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/20"
+   "origin": "agent",
+   "notes": "US 0129/20 | RV048: omission: 'again' restored"
   },
   {
    "id": 21,
    "zh": "渡『哎呀,别这么说,{NEWLINE}２对２{CLEAR}也是蛮有趣的哦。{SCROLL}好了！{VAR:0103:0}{NEWLINE}再次跟我联手吧！{SCROLL}",
-   "en": "Lance: Come on.{NEWLINE}A Double Battle is really not bad.{CLEAR}{VAR:0103:0}, you’ll be on my side!{SCROLL}",
+   "en": "Lance: Oh, don’t say that. Two-on-two{NEWLINE}is a lot of fun too.{SCROLL}All right! {VAR:0103:0}, team{NEWLINE}up with me again!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/21"
+   "origin": "agent",
+   "notes": "US 0129/21 | RV048: omission: 'again' restored"
   },
   {
    "id": 22,
@@ -190,10 +190,10 @@
   {
    "id": 23,
    "zh": "{VAR:0103:1}『开什么玩笑！{SCROLL}我才不要跟这种奇怪装扮的人{NEWLINE}联手呐！{SCROLL}",
-   "en": "{VAR:0103:1}: You must be kidding!{SCROLL}That embarrassing one in the weird{NEWLINE}costume for me?{CLEAR}No way I can battle with her!{SCROLL}",
+   "en": "{VAR:0103:1}: You must be kidding!{SCROLL}No way I’m teaming up with someone in a{NEWLINE}weird getup like that!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/23"
+   "origin": "agent",
+   "notes": "US 0129/23 | RV048: addition: US 'embarrassing one' not in zh"
   },
   {
    "id": 24,
@@ -206,18 +206,18 @@
   {
    "id": 25,
    "zh": "渡『跟我想的一样,{NEWLINE}你们的合作{CLEAR}真是漂亮……{SCROLL}一个人追求力量{NEWLINE}把目标定在{CLEAR}高处固然没错……{SCROLL}但是,{NEWLINE}用精灵对决的乐趣{CLEAR}不只是如此。{SCROLL}算了,这已无法用{NEWLINE}语言表达,{CLEAR}相信你也已经{CLEAR}注意到了这点。{SCROLL}那么,{VAR:0103:0}{NEWLINE}再见吧！{SCROLL}",
-   "en": "Lance: Just as I expected.{NEWLINE}You two make quite a team...{SCROLL}Going solo is certainly one way to aim{NEWLINE}for the top...{SCROLL}But that’s not all there is to Pokémon{NEWLINE}battle. Although I don’t feel it’s{CLEAR}necessary to remind you guys.{SCROLL}See you, {VAR:0103:0},{NEWLINE}another time!{SCROLL}",
+   "en": "Lance: Just as I thought. You two work{NEWLINE}together beautifully...{SCROLL}There’s nothing wrong with seeking{NEWLINE}strength alone and setting{CLEAR}your sights high...{SCROLL}But that isn’t all there is to the joy of{NEWLINE}Pokémon battles.{SCROLL}Ah, it can’t be put into words. I’m sure{NEWLINE}you’ve realized it by now too.{SCROLL}Well then, {VAR:0103:0}, see you!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/25"
+   "origin": "agent",
+   "notes": "US 0129/25 | RV048: meaning: US 'don't need to remind you' replaced by zh (D-1666)"
   },
   {
    "id": 26,
    "zh": "渡『跟我想的一样,{NEWLINE}你们的合作{CLEAR}真是漂亮……{SCROLL}一个人追求力量{NEWLINE}把目标定在{CLEAR}高处固然没错……{SCROLL}但是,{NEWLINE}用精灵对决的乐趣{CLEAR}不只是如此。{SCROLL}算了,这已无法用{NEWLINE}语言表达,{CLEAR}相信你也已经{CLEAR}注意到了这点。{SCROLL}那么,{VAR:0103:0}{NEWLINE}再见吧！{SCROLL}",
-   "en": "Lance: Just as I expected.{NEWLINE}You two make quite a team...{SCROLL}Going solo is certainly one way to aim{NEWLINE}for the top...{SCROLL}But that’s not all there is to Pokémon{NEWLINE}battle. Although I don’t feel it’s{CLEAR}necessary to remind you guys.{SCROLL}See you, {VAR:0103:0},{NEWLINE}another time!{SCROLL}",
+   "en": "Lance: Just as I thought. You two work{NEWLINE}together beautifully...{SCROLL}There’s nothing wrong with seeking{NEWLINE}strength alone and setting{CLEAR}your sights high...{SCROLL}But that isn’t all there is to the joy of{NEWLINE}Pokémon battles.{SCROLL}Ah, it can’t be put into words. I’m sure{NEWLINE}you’ve realized it by now too.{SCROLL}Well then, {VAR:0103:0}, see you!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/26"
+   "origin": "agent",
+   "notes": "US 0129/26 | RV048: meaning: US 'don't need to remind you' replaced by zh (D-1666)"
   },
   {
    "id": 27,
@@ -230,10 +230,10 @@
   {
    "id": 28,
    "zh": "{VAR:0103:1}『{VAR:0103:0}……{SCROLL}看样子{NEWLINE}情况不妙。{SCROLL}但是,我没有！{NEWLINE}还没有放弃{CLEAR}要打倒你！{SCROLL}我要把这些家伙变得更强,{NEWLINE}然后,我的……{CLEAR}我的心也要变强,{CLEAR}再次,挡在{CLEAR}你面前……{SCROLL}",
-   "en": "{VAR:0103:1}: {VAR:0103:0}...{SCROLL}It wasn’t supposed to go this way...{NEWLINE}Anyway, I am not giving up beating you!{SCROLL}I’ll train my Pokémon and...my own{NEWLINE}heart, too.{SCROLL}I’ll come back as the toughest{NEWLINE}challenge for you!{SCROLL}",
+   "en": "{VAR:0103:1}: {VAR:0103:0}...{SCROLL}Looks like things aren’t going my way.{SCROLL}But I haven’t! I haven’t given up on{NEWLINE}beating you!{SCROLL}I’ll make these guys stronger. And then{NEWLINE}my... my heart will get stronger too.{CLEAR}And I’ll stand in your way again...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/28"
+   "origin": "agent",
+   "notes": "US 0129/28 | RV048: meaning: US paraphrase replaced by zh"
   },
   {
    "id": 29,
@@ -246,26 +246,26 @@
   {
    "id": 30,
    "zh": "伊吹『那么,拍了哦！{SCROLL}",
-   "en": "Clair: Are you ready?{SCROLL}",
+   "en": "Clair: All right, here goes!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/30"
+   "origin": "agent",
+   "notes": "US 0129/30 | RV048: meaning: zh: she is taking the photo"
   },
   {
    "id": 31,
    "zh": "伊吹『不愧是我,{NEWLINE}拍得蛮帅的嘛！",
-   "en": "Clair: Excellent one of me!{NEWLINE}Another cool picture.",
+   "en": "Clair: That’s me for you.{NEWLINE}I look pretty cool in it!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/31"
+   "origin": "agent",
+   "notes": "US 0129/31 | RV048: meaning: 不愧是我; US added 'another'"
   },
   {
    "id": 32,
    "zh": "伊吹『哎呀,是吗,真可惜！",
-   "en": "Clair: That’s too bad.",
+   "en": "Clair: Oh, really? What a shame!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0129/32"
+   "origin": "agent",
+   "notes": "US 0129/32 | RV048: omission: 哎呀,是吗 restored"
   },
   {
    "id": 33,

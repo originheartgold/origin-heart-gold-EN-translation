@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "哟！你是今天{NEWLINE}最后一位客人哦！{SCROLL}",
-   "en": "OK!{NEWLINE}You must be the last passenger.{SCROLL}",
+   "en": "Hey! You’re our last passenger today!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0256/0"
+   "origin": "agent",
+   "notes": "US 0256/0 | RV051: omission: zh 今天"
   },
   {
    "id": 1,
@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "如若这次旅行后,{NEWLINE}我能活着归来,再度踏上{CLEAR}浅葱的土地的话,{CLEAR}请和我一起生活吧！{SCROLL}嗯？好不好？",
-   "en": "If I make it back alive from this{NEWLINE}journey and set foot in Olivine City{CLEAR}again, will you live there with me?{SCROLL}Well? How about it?",
+   "en": "If I make it back alive from this journey{NEWLINE}and set foot in Olivine City again,{CLEAR}please live with me! Well? How about it?",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0256/2 | tone review: 活着归来 = come back alive; US 'safely' dropped the death stakes #3 mocks. Retranslated from the Chinese (再度踏上 = set foot again; 嗯？好不好？ = 'Well? How about it?')"
+   "notes": "US 0256/2 | tone review: 活着归来 = come back alive; US 'safely' dropped the death stakes #3 mocks. Retranslated from the Chinese (再度踏上 = set foot again; 嗯？好不好？ = 'Well? How about it?') | RV051: meaning: zh is a plea (请和我一起生活吧), no 'there'"
   },
   {
    "id": 3,
@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "娜姿『偶尔也会想看看……{NEWLINE}大海呢……{SCROLL}对了,和你交换电话号码,{CLEAR}似乎挺有趣的呢……{SCROLL}试着交换看看吧？{VAR:0200:0}",
-   "en": "Sabrina: Out of the blue...{NEWLINE}I get the urge to see the ocean...{SCROLL}It may be fun to exchange numbers{NEWLINE}with you...{SCROLL}Do you want mine? {VAR:0200:0}",
+   "en": "Sabrina: Every now and then, I want to{NEWLINE}see... the ocean...{SCROLL}Oh, yes. Exchanging numbers with you{NEWLINE}might be rather interesting...{SCROLL}Shall we try it? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0256/4"
+   "origin": "agent",
+   "notes": "US 0256/4 | RV051: meaning: zh 偶尔 = now and then; offers to exchange, not 'want mine'"
   },
   {
    "id": 5,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "娜姿『你想知道{NEWLINE}我的电话号码了吗？{SCROLL}我可是{NEWLINE}知道你内心所想的事哦……{VAR:0200:0}",
-   "en": "Sabrina: Now you want to know{NEWLINE}my number?{CLEAR}I can see it in your eyes... {VAR:0200:0}",
+   "en": "Sabrina: So now you want to know my{NEWLINE}number? I know what you are thinking,{CLEAR}after all... {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0256/8"
+   "origin": "agent",
+   "notes": "US 0256/8 | RV051: meaning: zh 知道你内心所想 = knows your thoughts (D-1723)"
   },
   {
    "id": 9,
@@ -86,10 +86,10 @@
   {
    "id": 10,
    "zh": "娜姿『那~要照咯！{SCROLL}",
-   "en": "Sabrina: Are you ready?{SCROLL}",
+   "en": "Sabrina: All right, here goes!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0256/10"
+   "origin": "agent",
+   "notes": "US 0256/10 | RV051: meaning: 那~要照咯 = here goes, she takes the photo"
   },
   {
    "id": 11,

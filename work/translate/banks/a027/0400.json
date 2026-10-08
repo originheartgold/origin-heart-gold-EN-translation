@@ -110,10 +110,10 @@
   {
    "id": 13,
    "zh": "一树『因为没有得到{NEWLINE}浅葱灯塔的电龙,{CLEAR}所以装置可能没法做到完美。{CLEAR}不过以目前吸引电系精灵的效果来看,{CLEAR}应该能达到咱们的预期。",
-   "en": "Will: Since we didn’t get Amphy{NEWLINE}from the Olivine Lighthouse,{CLEAR}the device may not be perfect.{SCROLL}But judging by how well it’s drawing{NEWLINE}in Electric-type Pokémon so far,{CLEAR}it should do what we expect.",
+   "en": "Will: Since we didn’t get the Ampharos{NEWLINE}at the Olivine Lighthouse, the device{CLEAR}may not be perfect.{SCROLL}But judging by how well it’s drawing in{NEWLINE}Electric-type Pokémon so far, it should{CLEAR}do what we expect.",
    "status": "draft",
    "origin": "agent",
-   "notes": "浅葱灯塔的电龙 = Amphy"
+   "notes": "浅葱灯塔的电龙 = Amphy | RV050: name: zh says 电龙 (species), not the nickname Amphy; matches 0569#0"
   },
   {
    "id": 14,
@@ -574,10 +574,10 @@
   {
    "id": 71,
    "zh": "梨花『混蛋,居然用球撞球！",
-   "en": "Karen: Damn you! He used{NEWLINE}a ball to hit another ball!",
+   "en": "Karen: Damn you! Hitting a ball with{NEWLINE}another ball?!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV050: grammar: mixed 'you'/'He' address; Karen speaks to Gold"
   },
   {
    "id": 72,
@@ -1166,10 +1166,10 @@
   {
    "id": 144,
    "zh": "{VAR:0103:0}『我在附近{NEWLINE}遇到过一只艾路雷朵,{CLEAR}当时它正在试图救治一只卷耳兔,{CLEAR}不知道是不是你说的那只。",
-   "en": "{VAR:0103:0}: I met a Gallade near here.{NEWLINE}It was trying to help a Buneary.{CLEAR}I wonder if it’s the one you mean.",
+   "en": "{VAR:0103:0}: I met a Gallade near here.{NEWLINE}It was trying to nurse a Buneary{CLEAR}back to health. I wonder if it’s{CLEAR}the one you mean.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV050: meaning: 救治 = treat/nurse, not just help"
   },
   {
    "id": 145,

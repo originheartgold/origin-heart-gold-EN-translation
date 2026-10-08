@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "你一般都和精灵在哪里玩？",
-   "en": "Where do you usually play Pokémon?",
+   "en": "Where do you usually play with Pokémon?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0761/7 | Wi-Fi Plaza survey (defunct online feature)"
+   "origin": "agent",
+   "notes": "US 0761/7 | Wi-Fi Plaza survey (defunct online feature) | RV118: meaning: 和精灵玩 = play with Pokémon, not the game only (D-2028)"
   },
   {
    "id": 8,
@@ -102,18 +102,18 @@
   {
    "id": 12,
    "zh": "能捕获最多精灵{NEWLINE}的地点是哪里？",
-   "en": "Where do you catch Pokémon most often?",
+   "en": "Where can you catch the most Pokémon?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0761/12 | Wi-Fi Plaza survey (defunct online feature)"
+   "origin": "agent",
+   "notes": "US 0761/12 | Wi-Fi Plaza survey (defunct online feature) | RV118: meaning: 能捕获最多 = where can catch the most (D-2028)"
   },
   {
    "id": 13,
    "zh": "什么时候和精灵玩？",
-   "en": "When do you play Pokémon?",
+   "en": "When do you play with Pokémon?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0761/13 | Wi-Fi Plaza survey (defunct online feature)"
+   "origin": "agent",
+   "notes": "US 0761/13 | Wi-Fi Plaza survey (defunct online feature) | RV118: meaning: 和精灵玩 = play with Pokémon (D-2028)"
   },
   {
    "id": 14,
@@ -318,10 +318,10 @@
   {
    "id": 39,
    "zh": "喜欢哪种能力比较高{NEWLINE}的精灵？",
-   "en": "What do you consider to be the most{NEWLINE}important in Pokémon?",
+   "en": "Which stats do you like a Pokémon to be{NEWLINE}high in?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0761/39 | Wi-Fi Plaza survey (defunct online feature)"
+   "origin": "agent",
+   "notes": "US 0761/39 | Wi-Fi Plaza survey (defunct online feature) | RV118: omission: US dropped the high-stat reference (D-2028)"
   },
   {
    "id": 40,

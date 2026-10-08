@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "塞里奥『纪录刷刷刷！{NEWLINE}这期为你介绍抢旗名人的{CLEAR}惊人纪录哦！{SCROLL}伽耶子『抢旗吗？{SCROLL}塞里奥『是哦,伽耶子！{NEWLINE}在新奥地下公路,{CLEAR}抢旗子的人的纪录哦！{SCROLL}伽耶子『嗯。{SCROLL}塞里奥『{VAR:0103:0}{NEWLINE}也通信一次,{CLEAR}抢个{VAR:0134:1}次旗子吧！{SCROLL}伽耶子『拼命,吧⋯⋯{SCROLL}塞里奥『不是不是！{NEWLINE}只是玩玩而已啦！{CLEAR}名人确实厉害！{CLEAR}那就这样,大家,下期见啦！",
-   "en": "Serio: Record Rush! This time, we{NEWLINE}introduce an amazing record from{CLEAR}a Capture the Flag celebrity!{SCROLL}Kayako: Capture the Flag?{SCROLL}Serio: That’s right, Kayako!{NEWLINE}It’s a record for stealing flags{CLEAR}in the Sinnoh Underground!{SCROLL}Kayako: Uh-huh.{SCROLL}Serio: {VAR:0103:0} linked up and{NEWLINE}snatched flags {VAR:0134:1} times!{SCROLL}Kayako: Giving it their all, huh...{SCROLL}Serio: No, no! It’s just for fun!{NEWLINE}Celebrities really are amazing!{CLEAR}Well, everyone, see you next time!",
+   "en": "Serio: Record Rush! This time, we{NEWLINE}introduce an amazing record from{CLEAR}a Capture the Flag celebrity!{SCROLL}Kayako: Capture the Flag?{SCROLL}Serio: That’s right, Kayako!{NEWLINE}It’s a record for stealing flags{CLEAR}in the Sinnoh Underground!{SCROLL}Kayako: Uh-huh.{SCROLL}Serio: {VAR:0103:0}, link up too and{NEWLINE}snatch flags {VAR:0134:1} times!{SCROLL}Kayako: Like your life depends on it...{SCROLL}Serio: No, no! It’s just for fun!{NEWLINE}Celebrities really are amazing!{CLEAR}Well, everyone, see you next time!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV069: meaning: zh is an invitation (也通信一次,抢个N次旗子吧), not a done record; Kayako 拼命 follows; D-1753"
   },
   {
    "id": 9,

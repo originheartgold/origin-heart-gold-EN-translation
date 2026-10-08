@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "残留着已清除的战斗录像的记录！",
-   "en": "A Battle Video appears to have been{NEWLINE}erased.",
+   "en": "Data from a deleted Battle Video{NEWLINE}remains!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0229/3"
+   "origin": "agent",
+   "notes": "US 0229/3 | RV058: meaning: zh asserts leftover data of a deleted video (D-1751)"
   },
   {
    "id": 4,

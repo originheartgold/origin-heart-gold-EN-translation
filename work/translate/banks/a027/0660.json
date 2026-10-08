@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "你也喜欢皮皮吗？{SCROLL}皮皮非常可爱吧。{SCROLL}我们好像很合得来啊！{NEWLINE}我们做个朋友怎么样？{CLEAR}方便的话把你的电话号码{CLEAR}告诉给我好吗？{SCROLL}我们聊些关于皮皮的话题吧！{VAR:0200:0}",
-   "en": "Hi! You like Clefairy, too?{NEWLINE}They’re so very cute, aren’t they?{SCROLL}I think we can be good friends!{NEWLINE}I want to know your phone number!{SCROLL}Let’s talk about Clefairy! {VAR:0200:0}",
+   "en": "You like Clefairy, too? Clefairy are so{NEWLINE}cute, aren’t they?{SCROLL}We really seem to hit it off! Why don’t{NEWLINE}we be friends?{SCROLL}If it’s OK, could you give me your phone{NEWLINE}number? Let’s talk about Clefairy! {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0669/1; modernised from US 0669#1"
+   "origin": "agent",
+   "notes": "US 0669/1; modernised from US 0669#1 | RV072: omission: restored 'we get along' / 'be friends' clauses"
   },
   {
    "id": 2,
@@ -78,18 +78,18 @@
   {
    "id": 9,
    "zh": "你是不是觉得{NEWLINE}我的{VAR:0100:10}很可爱啊？{SCROLL}我们一直睡在一起,{NEWLINE}软绵绵的,好暖和！{SCROLL}还有,{NEWLINE}前段时间我和{VAR:0100:11}{CLEAR}大战了一场⋯⋯{SCROLL}结果我的小皮皮{NEWLINE}差一点就挂掉了！{SCROLL}太过分了！{NEWLINE}{VAR:0100:11}什么的,人家最讨厌了！{SCROLL}这次就聊这些了,拜拜！",
-   "en": "My {VAR:0100:10}’s adorable, don’t you{NEWLINE}think so?{SCROLL}I always sleep next to it--it’s so{NEWLINE}fluffy and warm!{SCROLL}Oh, and we had to battle a wild{NEWLINE}{VAR:0100:11} a while ago...{SCROLL}My Clefairy nearly croaked!{NEWLINE}Isn’t that awful?{SCROLL}I hate those nasty {VAR:0100:11}!{NEWLINE}Bye-bye!",
+   "en": "My {VAR:0100:10}’s adorable, don’t you{NEWLINE}think so?{SCROLL}We always sleep together--it’s so{NEWLINE}fluffy and warm!{SCROLL}Oh, and a while ago we had a big battle{NEWLINE}with a {VAR:0100:11}...{SCROLL}My Clefairy nearly croaked! That was so{NEWLINE}mean! I just hate {VAR:0100:11}!{SCROLL}That’s all for now. Bye-bye!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0669/9; modernised from US 0669#9 | tone review: 挂掉 is slang for dying: 'nearly croaked' (D-0627)"
+   "notes": "US 0669/9; modernised from US 0669#9 | tone review: 挂掉 is slang for dying: 'nearly croaked' (D-0627) | RV072: omission: restored 'that was so mean' and 'that's all for now'"
   },
   {
    "id": 10,
    "zh": "你是不是觉得{NEWLINE}我的{VAR:0100:10}很可爱啊？{SCROLL}我们一直睡在一起,{NEWLINE}软绵绵的,好暖和！{SCROLL}还有,{NEWLINE}前段时间我和{VAR:0100:11}{CLEAR}大战了一场⋯⋯{SCROLL}结果小皮皮畏战了,{NEWLINE}一溜烟逃了！{SCROLL}今后我一定要{NEWLINE}好好保护我的小皮皮,{SCROLL}再见！",
-   "en": "My {VAR:0100:10}’s adorable, don’t you{NEWLINE}think so?{SCROLL}I always sleep next to it--it’s so{NEWLINE}fluffy and warm!{SCROLL}Oh, and we had to battle a wild{NEWLINE}{VAR:0100:11} a while ago...{SCROLL}My Clefairy got frightened, so we ran{NEWLINE}away as fast as we could!{SCROLL}I just can’t help feeling protective of{NEWLINE}my Clefairy.{SCROLL}Bye-bye!",
+   "en": "My {VAR:0100:10}’s adorable, don’t you{NEWLINE}think so?{SCROLL}We always sleep together--it’s so{NEWLINE}fluffy and warm!{SCROLL}Oh, and a while ago we had a big battle{NEWLINE}with a {VAR:0100:11}...{SCROLL}My Clefairy got scared of battling and{NEWLINE}ran off like a shot!{SCROLL}From now on, I’ll protect my Clefairy{NEWLINE}properly. Bye!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0669/10; modernised from US 0669#10"
+   "origin": "agent",
+   "notes": "US 0669/10; modernised from US 0669#10 | RV072: meaning: only Clefairy fled; future promise to protect (D-1898)"
   },
   {
    "id": 11,
@@ -102,18 +102,18 @@
   {
    "id": 12,
    "zh": "你怎么了？怎么还没来？{SCROLL}小皮皮都已经{NEWLINE}等得睡过去了。{CLEAR}不知道对战的时候会不会醒⋯⋯{SCROLL}我们在{VAR:0104:3},{NEWLINE}快来啊！",
-   "en": "What’s wrong? Can’t you visit?{SCROLL}Clefairy got tired and fell asleep.{NEWLINE}I’m not sure if I can wake it up...{SCROLL}Please hurry to {VAR:0104:3}!",
+   "en": "What’s wrong? Why aren’t you here yet?{SCROLL}Clefairy got so tired of waiting that it{NEWLINE}fell asleep.{SCROLL}I don’t know if it’ll wake up for our{NEWLINE}battle...{SCROLL}We’re on {VAR:0104:3}, so hurry!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0669/12; modernised from US 0669#12"
+   "origin": "agent",
+   "notes": "US 0669/12; modernised from US 0669#12 | RV072: meaning: worry is whether Clefairy wakes for the battle"
   },
   {
    "id": 13,
    "zh": "人家最喜欢把小皮皮{NEWLINE}打扮得漂漂亮亮的了！",
-   "en": "I love dressing up my Clefairy!",
+   "en": "I just love making my Clefairy look all{NEWLINE}pretty!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0669/13; modernised from US 0669#13"
+   "origin": "agent",
+   "notes": "US 0669/13; modernised from US 0669#13 | RV072: omission: 漂漂亮亮 restored"
   },
   {
    "id": 14,

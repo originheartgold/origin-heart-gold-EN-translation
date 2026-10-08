@@ -254,10 +254,10 @@
   {
    "id": 31,
    "zh": "秀力博士『{VAR:0103:0}你不要听他的,{NEWLINE}火箭队是不会信守诺言的。{CLEAR}不要管我的死活,{CLEAR}快趁现在消灭他们！",
-   "en": "Prof. Hale: Don’t listen to him,{NEWLINE}{VAR:0103:0}! Team Rocket never keeps{CLEAR}its promises. Forget about me.{CLEAR}Take them down now, while you can!",
+   "en": "Prof. Hale: Don’t listen to him,{NEWLINE}{VAR:0103:0}! Team Rocket never keeps its{CLEAR}promises. Never mind whether I live or{CLEAR}die. Take them down now, while you can!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV047: omission: 不要管我的死活 (whether I live or die) restored"
   },
   {
    "id": 32,
@@ -358,10 +358,10 @@
   {
    "id": 44,
    "zh": "{VAR:0103:0}『唉,还是让他们逃掉了。",
-   "en": "{VAR:0103:0}: Sigh. They got away again.",
+   "en": "{VAR:0103:0}: Sigh. They got away after all.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV047: addition: 还是 is 'after all', not 'again'"
   },
   {
    "id": 45,
@@ -489,7 +489,7 @@
    "en": "Prof. Hale: Team Rocket plans to use{NEWLINE}the power of legendary Pokémon to wipe{CLEAR}out the Ace Trainers strong enough to{CLEAR}oppose them.{SCROLL}At the same time, they’re developing a{NEWLINE}radio-wave system. It uses{CLEAR}Electric-type Pokémon as a power{CLEAR}source to send out radio waves at a{CLEAR}special frequency.{SCROLL}Weak Pokémon within range of the waves{NEWLINE}evolve and obey Team Rocket’s orders.{CLEAR}The system is designed for dealing with{CLEAR}the huge numbers of ordinary Trainers.{SCROLL}Prof. Hale: Team Rocket calls this plan{NEWLINE}to conquer every Trainer ‘Project R.’",
    "status": "draft",
    "origin": "agent",
-   "notes": "ext-review RV-020"
+   "notes": "ext-review RV-020 | RV047: zh typo 成为 for 称为 (calls); translated as intended, see hack-finding D-2180"
   },
   {
    "id": 61,
@@ -534,10 +534,10 @@
   {
    "id": 66,
    "zh": "{VAR:0103:0}『这个语气语调……{NEWLINE}没错,它是在模仿刚才伦达的声音！",
-   "en": "{VAR:0103:0}: That tone of voice...{NEWLINE}Yes, it’s imitating Petrel just now!",
+   "en": "{VAR:0103:0}: That tone of voice... Yes, it’s{NEWLINE}imitating Petrel’s voice from just now!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV047: grammar: 'imitating Petrel just now' was unclear"
   },
   {
    "id": 67,

@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "小霞好像很喜欢{NEWLINE}２５号道路啊！{SCROLL}每天到了傍晚{NEWLINE}都会去那里看落日！",
-   "en": "It seems like Misty really likes{NEWLINE}Route 25!{SCROLL}Every night she goes there to watch{NEWLINE}the sunset!",
+   "en": "It seems like Misty really likes Route{NEWLINE}25!{SCROLL}Every evening, she goes there to watch{NEWLINE}the sunset!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0683/9"
+   "origin": "agent",
+   "notes": "US 0683/9 | RV072: meaning: 傍晚 = evening (D-1917)"
   },
   {
    "id": 10,
@@ -94,26 +94,26 @@
   {
    "id": 11,
    "zh": "这个我只跟你说哦,{SCROLL}其实蜜柑看上去很一般,{NEWLINE}但食量却大得很哦！{SCROLL}差不多中午的时候{NEWLINE}去浅葱市的食堂{CLEAR}就能遇到蜜柑！",
-   "en": "Maybe I should only tell you this...{SCROLL}The truth is that Jasmine is a bit of a{NEWLINE}big eater!{SCROLL}If you go to the Olivine Café past{NEWLINE}noon, you’re sure to run into{CLEAR}Jasmine there!",
+   "en": "I’m only telling you this...{SCROLL}Jasmine looks ordinary, but she{NEWLINE}actually eats a ton!{SCROLL}If you go to the Olivine Café around{NEWLINE}noon, you’ll run into Jasmine!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0683/11"
+   "origin": "agent",
+   "notes": "US 0683/11 | RV072: omission: restored 'looks ordinary'; around noon (D-1917)"
   },
   {
    "id": 12,
    "zh": "红莲道馆的馆主夏伯{NEWLINE}好像非常喜欢{CLEAR}红莲岛啊。{SCROLL}每周二的早上会在{NEWLINE}老红莲道馆所在的地方{CLEAR}独自一个人沉思。",
-   "en": "Cinnabar Gym’s leader Blaine really{NEWLINE}thinks a lot about the town of{CLEAR}Cinnabar, you know?{SCROLL}Every Tuesday morning he sits on the{NEWLINE}site where the Cinnabar Gym once was{CLEAR}and contemplates.",
+   "en": "Cinnabar Gym’s Leader Blaine really{NEWLINE}seems to love Cinnabar Island.{SCROLL}Every Tuesday morning, he meditates{NEWLINE}alone on the site where the old Cinnabar{CLEAR}Gym stood.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0683/12"
+   "origin": "agent",
+   "notes": "US 0683/12 | RV072: meaning: loves the island; alone restored"
   },
   {
    "id": 13,
    "zh": "尼比市的馆主小刚{NEWLINE}非常喜欢岩石！{SCROLL}他每天到了中午{NEWLINE}都会去{CLEAR}地鼠洞穴里去。",
-   "en": "Pewter Gym’s Leader{NEWLINE}Brock really loves rocks!{SCROLL}He goes into Diglett’s{NEWLINE}Cave every day past noon.",
+   "en": "Pewter Gym’s Leader Brock really loves{NEWLINE}rocks!{SCROLL}Every day at noon, he goes into{NEWLINE}Diglett’s Cave.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0683/13; modernised from US 0683#13"
+   "origin": "agent",
+   "notes": "US 0683/13; modernised from US 0683#13 | RV072: meaning: at noon (D-1917)"
   },
   {
    "id": 14,
@@ -126,10 +126,10 @@
   {
    "id": 15,
    "zh": "柳伯总给人一种{NEWLINE}成熟的感觉！{SCROLL}听说他会在早上７点左右{NEWLINE}会去眺望愤怒湖！",
-   "en": "Pryce is certainly a man of refined{NEWLINE}tastes, don’t you agree?{SCROLL}Every morning at seven he goes out by{NEWLINE}himself and gazes out at the{CLEAR}Lake of Rage.",
+   "en": "Pryce always comes across as so{NEWLINE}mature!{SCROLL}I hear he gazes out at the Lake of Rage{NEWLINE}at around seven in the morning!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0683/15"
+   "origin": "agent",
+   "notes": "US 0683/15 | RV072: meaning: mature air; approximate time, hearsay (D-1917)"
   },
   {
    "id": 16,
@@ -158,10 +158,10 @@
   {
    "id": 19,
    "zh": "等我了解了道馆馆主的情况后{NEWLINE}会打电话联系你的！",
-   "en": "If anything about the Gym Leaders{NEWLINE}changes, I’ll be sure to call you!",
+   "en": "Once I find out more about the Gym{NEWLINE}Leaders, I’ll call you!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0683/19"
+   "origin": "agent",
+   "notes": "US 0683/19 | RV072: meaning: call once he learns more (D-1917)"
   }
  ]
 }

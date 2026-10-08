@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "你有没有和精灵一起玩过？",
-   "en": "Have you played Pokémon before?",
+   "en": "Have you ever played with Pokémon?",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0765/4 | US question differs; retranslated from zh"
+   "notes": "US 0765/4 | US question differs; retranslated from zh | RV118: meaning: 和精灵一起玩 = play together with Pokémon (D-1921)"
   },
   {
    "id": 5,

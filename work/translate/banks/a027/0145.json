@@ -6,42 +6,42 @@
   {
    "id": 0,
    "zh": "茜罗娜『我是茜罗娜,{NEWLINE}是精灵训练师。{SCROLL}来到这个{VAR:FF00:1}神都遗迹{VAR:FF00:0}{NEWLINE}使我想起了{CLEAR}自己的家乡,新奥地区。{SCROLL}一开始还以为这里也是像新奥那样{CLEAR}常年被冰雪所覆盖。{SCROLL}但事实并非如此。{SCROLL}远古时期⋯⋯{NEWLINE}有一批新奥地区人们{CLEAR}移居到这片土地。{SCROLL}他们思念家乡,{NEWLINE}于是就在这里建造了神殿。{SCROLL}那就是{VAR:FF00:1}神都遗迹{VAR:FF00:0}⋯⋯{SCROLL}",
-   "en": "Cynthia: My name is Cynthia.{NEWLINE}I am a Pokémon Trainer.{SCROLL}The {VAR:FF00:1}Sinjoh Ruins{VAR:FF00:0} remind me of Sinnoh,{NEWLINE}where I come from.{SCROLL}Initially, I thought it was because{NEWLINE}it snows a lot here as well.{SCROLL}But that was not it.{SCROLL}A long time ago...people came from{NEWLINE}Sinnoh to live here.{SCROLL}They must have built a temple here{NEWLINE}while longing for home.{SCROLL}That’s why we call these the{NEWLINE}{VAR:FF00:1}Sinjoh Ruins{VAR:FF00:0}...{SCROLL}",
+   "en": "Cynthia: My name is Cynthia. I am a{NEWLINE}Pokémon Trainer.{SCROLL}Coming to the {VAR:FF00:1}Sinjoh Ruins{VAR:FF00:0} reminded me{NEWLINE}of my home, Sinnoh.{SCROLL}At first I thought this place was{NEWLINE}covered in snow all year round,{CLEAR}like Sinnoh.{SCROLL}But that was not it.{SCROLL}A long time ago... people from Sinnoh{NEWLINE}moved to this land.{SCROLL}They missed their home, so they built a{NEWLINE}temple here.{SCROLL}That temple is the {VAR:FF00:1}Sinjoh Ruins{VAR:FF00:0}...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0147/0"
+   "origin": "agent",
+   "notes": "US 0147/0 | RV050: meaning: US 'must have'/'That's why we call these' not in zh"
   },
   {
    "id": 1,
    "zh": "茜罗娜『你是⋯⋯{SCROLL}精灵训练师？{SCROLL}从你带着的精灵上{CLEAR}能感觉到强大的力量⋯⋯{SCROLL}",
-   "en": "Cynthia: You are...{CLEAR}a Pokémon Trainer?{SCROLL}I can sense strong power coming{NEWLINE}from your Poké Ball...{SCROLL}",
+   "en": "Cynthia: You are...{CLEAR}a Pokémon Trainer?{SCROLL}I can sense great power from the{NEWLINE}Pokémon you have with you...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0147/1"
+   "origin": "agent",
+   "notes": "US 0147/1 | RV050: meaning: 从你带着的精灵上 = from your Pokémon, not Poké Ball"
   },
   {
    "id": 2,
    "zh": "茜罗娜『无法想象你居然凭借{NEWLINE}独自一人的力量能到达这里。{SCROLL}这里一年到头{NEWLINE}都被厚重的积雪覆盖着,{SCROLL}连心都快要冻住的暴雪地带⋯⋯{SCROLL}想回去的话,{NEWLINE}就去跟老爷爷说一声吧。{SCROLL}他会用凯西的力量,{NEWLINE}把你送回原来的地方。",
-   "en": "Cynthia: I wouldn’t assume you managed{NEWLINE}to get here by yourself.{SCROLL}This is a heavy-snowfall area where{NEWLINE}the snowbound land freezes you{CLEAR}to the core...{SCROLL}Talk to the old man if you wish to go{NEWLINE}back. Abra should be able to take you{CLEAR}where you come from.",
+   "en": "Cynthia: I can hardly imagine you made{NEWLINE}it here all on your own.{SCROLL}Thick snow covers this place all year{NEWLINE}round. It’s a blizzard zone cold enough{CLEAR}to freeze your very heart...{SCROLL}If you want to go back, just tell the{NEWLINE}old man. He’ll use Abra’s power to send{CLEAR}you back where you came from.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0147/2; modernised from US 0147#2"
+   "origin": "agent",
+   "notes": "US 0147/2; modernised from US 0147#2 | RV050: meaning: US 'I wouldn't assume' reversed meaning of 无法想象你居然...能到达这里"
   },
   {
    "id": 3,
    "zh": "茜罗娜『这个力量的感觉⋯⋯{NEWLINE}帝牙卢卡{CLEAR}帕路奇亚{CLEAR}还有⋯⋯骑拉帝纳？{SCROLL}感觉有些相似但又不太一样⋯⋯{SCROLL}",
-   "en": "Cynthia: I feel a familiar presence...{NEWLINE}The power of Dialga...{CLEAR}Palkia...{CLEAR}or could it be Giratina?{SCROLL}It’s similar, but not quite the same...{SCROLL}",
+   "en": "Cynthia: The feel of this power...{NEWLINE}Dialga...{CLEAR}Palkia...{CLEAR}and... Giratina?{SCROLL}It’s similar, but not quite the same...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0147/3; modernised from US 0147#3"
+   "origin": "agent",
+   "notes": "US 0147/3; modernised from US 0147#3 | RV050: meaning: 还有 = and, not 'or could it be'; 'familiar presence' added"
   },
   {
    "id": 4,
    "zh": "茜罗娜『你现在有空吗？{SCROLL}一起去{VAR:FF00:1}神都遗迹{VAR:FF00:0}{NEWLINE}看看吧！{SCROLL}如果我的感觉没错的话,{NEWLINE}你和你的精灵{CLEAR}站上那个舞台的时候,{CLEAR}将会发生些什么事。{SCROLL}",
-   "en": "Cynthia: Have you got time?{SCROLL}Can you come to the {VAR:FF00:1}Sinjoh Ruins{VAR:FF00:0}{NEWLINE}with me?{SCROLL}Call it a Trainer’s intuition.{SCROLL}When you and your Pokémon step onto{NEWLINE}that stage, something will happen.{SCROLL}",
+   "en": "Cynthia: Are you free right now?{SCROLL}Let’s go to the {VAR:FF00:1}Sinjoh Ruins{VAR:FF00:0} together!{SCROLL}If my hunch is right, something will{NEWLINE}happen when you and your Pokémon step{CLEAR}onto that stage.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0147/4"
+   "origin": "agent",
+   "notes": "US 0147/4 | RV050: addition: 'Call it a Trainer's intuition' not in zh; 如果我的感觉没错 restored"
   },
   {
    "id": 5,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "茜罗娜『还真是没想到会{NEWLINE}在被积雪覆盖的{CLEAR}遗迹里相会⋯⋯{SCROLL}改变时间与空间的话,{NEWLINE}人们的生活也会相应地改变。{SCROLL}留下了什么与什么有交集⋯⋯{CLEAR}新奥,城都⋯⋯{CLEAR}即使自以为了解了这世界的一切,{SCROLL}也只是把世界圈禁在自己的框架内{CLEAR}让其毁灭罢了。{SCROLL}",
-   "en": "Cynthia: The snowbound ruins make{NEWLINE}me wonder...{SCROLL}Time and space change, and we with{NEWLINE}them. We leave some things behind{CLEAR}and give each other company...{SCROLL}Sinnoh, Johto...{NEWLINE}When you feel you’re close to{CLEAR}understanding the whole world,{CLEAR}you are merely drowning in your{CLEAR}own miniscule perception.{SCROLL}",
+   "en": "Cynthia: I never imagined we’d meet in{NEWLINE}ruins buried in snow...{SCROLL}When time and space change, people’s{NEWLINE}lives change with them.{CLEAR}What was left behind, and what{CLEAR}crossed paths with what...{SCROLL}Sinnoh, Johto... Even if you believe you{NEWLINE}understand everything in this world,{CLEAR}you’re only locking the world inside{CLEAR}your own frame and letting it die.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0147/6"
+   "origin": "agent",
+   "notes": "US 0147/6 | RV050: meaning: US line diverged from zh throughout (unused string)"
   },
   {
    "id": 7,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "茜罗娜的肉体据说是{NEWLINE}从蛋中诞生的。{SCROLL}在城都,{NEWLINE}精灵的蛋被认为是{CLEAR}孕育生命的容器,{CLEAR}是非常神圣的东西。{SCROLL}相距遥远的土地却有着{NEWLINE}相似的神话{CLEAR}与传说⋯⋯{CLEAR}真是有趣呢~",
-   "en": "Arceus is said to have emerged from{NEWLINE}an Egg.{SCROLL}Johto people believe that Pokémon Eggs{NEWLINE}are the vessels of life, and thus{CLEAR}something astounding.{SCROLL}Places far from each other can share{NEWLINE}similar myths and legends...{SCROLL}That’s quite interesting, isn’t it?",
+   "en": "Arceus is said to have emerged{NEWLINE}from an Egg.{SCROLL}In Johto, Pokémon Eggs are believed to{NEWLINE}be vessels that nurture life, and{CLEAR}something very sacred.{SCROLL}Places far from each other can share{NEWLINE}similar myths and legends...{SCROLL}That’s quite interesting, isn’t it?",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (Says Cynthia’s (茜罗娜) body was born from an Egg; vanilla says Arceus (likely a name-replace slip)); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-1137, D-1496)."
+   "notes": "D-1195: reverted to match the zh (Says Cynthia’s (茜罗娜) body was born from an Egg; vanilla says Arceus (likely a name-replace slip)); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-1137, D-1496). | RV050: softened: 非常神圣 = very sacred (D-1721)"
   },
   {
    "id": 9,
@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "这样啊~{NEWLINE}那么请在自己的脑海中,{CLEAR}想象一下家乡的样子。{SCROLL}",
-   "en": "OK. OK.{NEWLINE}Picture your house in your mind...{SCROLL}",
+   "en": "OK... OK... Then please picture your{NEWLINE}hometown in your mind...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0147/11"
+   "origin": "agent",
+   "notes": "US 0147/11 | RV050: meaning: 家乡 = hometown, not house"
   },
   {
    "id": 12,
