@@ -4340,7 +4340,7 @@
   {
    "id": "RV065",
    "group": "4-trainer",
-   "status": "todo",
+   "status": "done",
    "strings": 427,
    "labels": [
     "a027/0718 trainer_battle_text [part 3/4]"

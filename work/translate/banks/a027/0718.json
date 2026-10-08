@@ -7160,10 +7160,10 @@
   {
    "id": 875,
    "zh": "敢碍我们火箭队的事,{NEWLINE}都给老娘死去！{NEWLINE}",
-   "en": "Anyone who gets in Team{NEWLINE}Rocket’s way can go die!{NEWLINE}",
+   "en": "Anyone who dares get in Team Rocket’s{NEWLINE}way can go die!{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV065: omission: 敢 (dares) restored"
   },
   {
    "id": 876,
@@ -7363,10 +7363,10 @@
   {
    "id": 900,
    "zh": "看来必须扫清一切{NEWLINE}杂念修行啊⋯⋯{NEWLINE}",
-   "en": "This calls for extreme measures. I must{NEWLINE}take to the hills and train in solitude.{NEWLINE}",
+   "en": "Looks like I must clear every stray{NEWLINE}thought from my mind and train...{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/900"
+   "origin": "agent",
+   "notes": "US 0728/900 | RV065: addition: 扫清一切杂念修行 = clear all distracting thoughts and train; US 'extreme measures/hills' not in zh (D-1960)"
   },
   {
    "id": 901,
@@ -7785,10 +7785,10 @@
   {
    "id": 952,
    "zh": "你一定在想我是个小不点吧？{NEWLINE}我才不是！{SCROLL}",
-   "en": "You think I’m a baby?{NEWLINE}That’s not fair!{SCROLL}",
+   "en": "You think I’m just a little squirt,{NEWLINE}don’t you? Well, I’m not!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/952"
+   "origin": "agent",
+   "notes": "US 0728/952 | RV065: meaning: 我才不是 = I'm not; US 'That's not fair' (D-1961)"
   },
   {
    "id": 953,
@@ -7801,10 +7801,10 @@
   {
    "id": 954,
    "zh": "小不点这种称呼{NEWLINE}对孩子来说是很失礼的！{NEWLINE}",
-   "en": "Baby is a rude name to call someone!{NEWLINE}",
+   "en": "Calling a kid a little squirt is rude!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/954"
+   "origin": "agent",
+   "notes": "US 0728/954 | RV065: omission: 对孩子来说 (to a child) restored (D-1961)"
   },
   {
    "id": 955,
@@ -7817,10 +7817,10 @@
   {
    "id": 956,
    "zh": "我们可不是小不点！{NEWLINE}这对淑女是很失礼的。{SCROLL}",
-   "en": "I’m not a baby!{NEWLINE}That’s not a nice thing to say!{SCROLL}",
+   "en": "We’re not little squirts!{NEWLINE}That’s rude to say to a lady.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/956"
+   "origin": "agent",
+   "notes": "US 0728/956 | RV065: omission: plural 我们 and 淑女 (lady) restored (D-1961)"
   },
   {
    "id": 957,
@@ -7841,10 +7841,10 @@
   {
    "id": 959,
    "zh": "不多带些精灵来{NEWLINE}我就不带你玩了！{NEWLINE}",
-   "en": "If you don’t bring more Pokémon, then{NEWLINE}you can’t play with everyone.{NEWLINE}",
+   "en": "Bring more Pokémon,{NEWLINE}or I won’t play with you!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/959"
+   "origin": "agent",
+   "notes": "US 0728/959 | RV065: meaning: 我就不带你玩了 = I won't play with you (D-1961)"
   },
   {
    "id": 960,
@@ -8668,10 +8668,10 @@
   {
    "id": 1059,
    "zh": "我好想让你看看{NEWLINE}我可爱的精灵啊。{SCROLL}",
-   "en": "I’ve been waiting here to brag to you{NEWLINE}about my Pokémon!{SCROLL}",
+   "en": "I’ve been dying to show you my cute{NEWLINE}Pokémon!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1059"
+   "origin": "agent",
+   "notes": "US 0728/1059 | RV065: meaning: 好想让你看看我可爱的精灵 = really want to show you my cute Pokémon; 'cute' was dropped, 'waiting here' added"
   },
   {
    "id": 1060,
@@ -8943,10 +8943,10 @@
   {
    "id": 1093,
    "zh": "兰斯『站住！{SCROLL}⋯⋯哦呀？你好像是{NEWLINE}在呆呆兽之井{CLEAR}妨碍了我们的⋯⋯{SCROLL}原来如此⋯⋯你是这么{NEWLINE}想要激怒我啊。{SCROLL}好吧,就如你所愿,{NEWLINE}让你见识一下{CLEAR}火箭队干部的愤怒吧！{SCROLL}",
-   "en": "Proton: Now, wait just one second!{SCROLL}Aren’t you the one who got in{NEWLINE}our way at the Slowpoke Well?{SCROLL}I see... You’re doing all this because{NEWLINE}you want to make me angry. Be careful!{SCROLL}But since you seem to wish it, I’ll show{NEWLINE}you the full extent of a Team Rocket{CLEAR}Executive’s wrath!{SCROLL}",
+   "en": "Proton: Now, wait just one second!{SCROLL}Aren’t you the one who got in{NEWLINE}our way at the Slowpoke Well?{SCROLL}I see... You’re doing all this because{NEWLINE}you want to make me angry.{SCROLL}But since you seem to wish it, I’ll show{NEWLINE}you the full extent of a Team Rocket{CLEAR}Executive’s wrath!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1093; modernised from US 0728#1093",
+   "origin": "agent",
+   "notes": "US 0728/1093; modernised from US 0728#1093 | RV065: addition: removed US 'Be careful!' not in zh",
    "qa_ignore": [
     "glossary:愤怒"
    ]
@@ -9093,10 +9093,10 @@
   {
    "id": 1111,
    "zh": "唔唔唔唔唔~！{SCROLL}我已经尽了全力⋯⋯{NEWLINE}还是赢不了你！{NEWLINE}",
-   "en": "Aaaieeeee!{NEWLINE}This can’t be happening!{SCROLL}I fought hard, but I still lost...{NEWLINE}",
+   "en": "Aaaieeeee!{SCROLL}I gave it everything I had... and I still{NEWLINE}can’t beat you!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1111"
+   "origin": "agent",
+   "notes": "US 0728/1111 | RV065: addition: removed US 'This can't be happening!'; 我已经尽了全力⋯⋯还是赢不了你"
   },
   {
    "id": 1112,
@@ -9691,18 +9691,18 @@
   {
    "id": 1185,
    "zh": "你很厉害,我喜欢！{NEWLINE}一起去外国吧？{NEWLINE}",
-   "en": "What power! How would you like to sail{NEWLINE}the seas with me?{NEWLINE}",
+   "en": "What power! I like you! How would you{NEWLINE}like to sail abroad with me?{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1185"
+   "origin": "agent",
+   "notes": "US 0728/1185 | RV065: omission: 我喜欢 (I like you) and 外国 (abroad) restored"
   },
   {
    "id": 1186,
    "zh": "呀啊,来了来了！{NEWLINE}刚好我手痒了！{SCROLL}",
-   "en": "Hey, you’re back!{NEWLINE}Just in time for me to show off!{SCROLL}",
+   "en": "Ooh, here you come! I’ve been itching{NEWLINE}for a battle!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1186"
+   "origin": "agent",
+   "notes": "US 0728/1186 | RV065: meaning: 刚好我手痒了 = I've been itching (to fight), not 'show off'"
   },
   {
    "id": 1187,
