@@ -1,0 +1,54 @@
+id = "bulbasaur-reflection-boundary"
+title = "Following Pokémon: Bulbasaur's reflection in water no longer reads a NULL graphics pointer (black screen over water)"
+kind = "code"
+enabled = true
+decisions = ["D-2270"]
+requires = []
+asm = "bulbasaur-reflection-boundary.asm"
+why = """
+Players: with Bulbasaur as the following Pokémon, the game can black-screen or freeze when Bulbasaur walks next
+to water that shows reflections. A player on Delta (iOS) reported a black screen in Viridian City when
+switching the lead to Bulbasaur while standing above the pond; a separate bug report (Delta and melonDS)
+describes a freeze on Route 22 'next to Misty' when walking away from one spot, which the user links to this
+bug; the exact tile is not known. On melonDS 1.1 the game hangs with Bulbasaur following at both ponds
+(Viridian City; Route 22 beside Misty): a frozen picture when it happens mid-walk, a black screen when it
+happens while the map loads (Continue next to the water); Charmander and Onix are fine. DeSmuME keeps
+running. Real hardware is untested. The untouched Chinese ROM does the same, so this is a bug of the hack.
+
+Status: D-1337 says hack bugs are reported, not fixed. This fix is a user-approved exception to it
+(D-2270, 2026-10-08); other hack bugs stay report-only.
+
+Technical: the water reflection of a map object draws with the graphics object that overlay 1's
+ReflectionGfx_Get (0x021F61E8) returns. For sprite ids 428..1894, the following Pokémon, that is the follower's
+own graphics pointer at object+0x108; for most other ids the generic field at object+0x10C. The lower bound
+is 'cmp r0, #428; ble' (0x021F6298), so 428 itself, Bulbasaur, the first follower sprite, takes the generic
+field, which is NULL for a follower. Both reflection callbacks (0x021FCC88, 0x021FD19A) hand the result to
+the graphics getters 0x0202451C / 0x02024558 without a check: they call the assertion handler, which
+returns in this build, and then read address 0xB6 / 0xB8. Nothing is readable at address 0 under the game's
+ARM9 protection-unit setup: a data abort on melonDS 1.1 (fault 0x02024528, the half getter's ldrh from 0xB6);
+hardware inferred, untested. DeSmuME does not emulate the protection unit, reads it and goes on, which is why
+the bug does not show there.
+"""
+what = """
+Old: sprite 428 (Bulbasaur following) -> generic field object+0x10C = NULL -> the reflection reads address
+0xB6/0xB8 every frame it is drawn.
+New: the lower bound is 'blt' (0x021F629A, '07 DD' -> '07 DB', one byte), the same target for ids < 428
+instead of <= 428. A signed ble and blt differ only when the values are equal, so 428 is the only sprite id
+whose path changes: it now reads the follower's own pointer at object+0x108, like 429..1894. Not changed:
+the other listed ids, the upper bound, the special range 0x106..0x10D, the callbacks and the getters (they
+still have no NULL check of their own). The same one-byte change was made independently in a community fork
+of the hack; this port was reproduced and verified here, not copied.
+"""
+evidence = [
+  "D-2270: the user-approved exception to D-1337 for this fix (re-creates a fix investigated 2026-10-05/06 and never committed)",
+  "work/notes/bulbasaur_reflection_fix.md: the routine, why only sprite 428 changes, the emulator runs before and after",
+  "Runtime: emu_harness.py fixes --case bulbasaur-reflection-boundary (scenario reflection: emu_reflection.py, Bulbasaur, Charmander and Onix along the Viridian City and Route 22 ponds, hooks on the reflection lookup; run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios' and 'Following-Pokémon water reflection'). 2026-10-08, DeSmuME: the untouched Chinese ROM and the --without build show a NULL return on every Bulbasaur reflection call, the full build none",
+  "melonDS 1.1 (headless backend of hardening/melonds, ebcf039), 2026-10-08: follower_viridian and in-game saves on both pond shores; Bulbasaur hangs (data abort at 0x02024528) on the Chinese ROM and the --without build, black screens when the abort happens during Continue; Charmander passes; the full build passes every run (work/notes/bulbasaur_reflection_fix.md 'melonDS 1.1')",
+]
+
+[[code]]
+id = "bulbasaur-reflection-boundary-branch"
+file = "overlay1"
+offset = "0x1191A"
+expect = "0xDD07"
+notes = "ReflectionGfx_Get: the follower range's lower bound 'ble' -> 'blt' after cmp r0, #428, so sprite 428 (Bulbasaur) uses the follower graphics pointer (object+0x108) instead of the generic field (object+0x10C, NULL for a follower). The asm also guards, read-only, the code sprite ids > 0xF8 run through."

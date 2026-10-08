@@ -211,6 +211,8 @@ Fixes added after these runs were written as armips sources from the start; each
 | `--without overworld-texture-frame-bounds` (= the develop full build above, xdelta `0241fd9f…`) | `2a052d2f2d78f04596352797fd501cdad4c6381e` |
 | `refactor/patches-rc` full, with `overworld-texture-frame-bounds` (xdelta `71d44f915f8a4a11863ceb43e703fd32914bb45a`): the RC's ROM with only the one arm9 byte changed | `fa34e72444401d7a966cc751cdbab0e54dad8d7c` |
 | `refactor/patches-rc` `--without overworld-texture-frame-bounds` (= the RC's, xdelta `588b931f…`) | `35e67a5f53b9a05e62ea8b38d2c73a4268001102` |
+| `bulbasaur-reflection-boundary` (D-2270; its first form was never committed, so there is no original build to compare): `--no-patch` full build on `fix/bulbasaur-reflection`; differs from the `--without bulbasaur-reflection-boundary` build below only in overlay 1, one byte at file offset 0x1191B (`DD` -> `DB`); arm9, arm7, y9 and every other file identical | `5d45d74b1a594d34582937f77287193377857291` |
+| `--without bulbasaur-reflection-boundary --no-patch` (same branch and workspace) | `75f83193df4629c34a9a78dcf1b52a5e1576f8c9` |
 
 These depend on the workspace text at the time (2026-10-08, branches `refactor/fix-format` and `refactor/patches-rc`); a translation change moves them. The per-binary golden SHA-1s in `test_asmpatch.py` (`GOLDEN`: every binary each fix changes, alone and all together, plus the y9 overlay table) do not depend on the text, so the test suite checks them on every run that has armips and the Chinese ROM. A change to a fix source that changes its bytes must update `GOLDEN` and say why.
 

@@ -11,6 +11,10 @@ size = 0x110D38
 size = 0x620
 bss = 0x0
 
+[overlay1]
+size = 0x255A0
+bss = 0x3C020
+
 [overlay16]
 size = 0x13D60
 bss = 0x0
