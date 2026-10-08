@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "乔班尼！{NEWLINE}精灵学堂超棒呐！{SCROLL}当然了,不管是不是这里的正式学生,{NEWLINE}都可以从我这里学到{CLEAR}很多很多精灵知识。{SCROLL}那么你想知道什么？{NEWLINE}关于变强的秘诀,{CLEAR}想知道吗？{VAR:0200:0}",
-   "en": "Earl, I am! Wonderful is the Pokémon{NEWLINE}Academy, yes!{SCROLL}Of course, student or not, learn much{NEWLINE}about Pokémon from me you can!{SCROLL}What you want to know? Want to be a{NEWLINE}winner is you? {VAR:0200:0}",
+   "en": "Earl, I am! Wonderful is the Pokémon{NEWLINE}Academy, yes!{SCROLL}Of course, student or not, learn much{NEWLINE}about Pokémon from me you can!{SCROLL}So, what to know you want? The secret{NEWLINE}of getting stronger, hear it you want? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0560/0 | R001: Earl (乔班尼, US name) keeps the US inverted speech (D voice).; ext-review C012"
+   "notes": "US 0560/0 | R001: Earl (乔班尼, US name) keeps the US inverted speech (D voice).; ext-review C012 | RV001: meaning: 'Want to be a winner is you?' was garbled; Chinese asks if you want the secret of getting stronger (voice kept pending D-1864)"
   },
   {
    "id": 1,
@@ -134,10 +134,10 @@
   {
    "id": 16,
    "zh": "受到睡觉效果后,{NEWLINE}精灵只能使用梦话和打鼾{CLEAR}这两个攻击技能。{SCROLL}该效果将保留到{NEWLINE}战斗结束后,{CLEAR}可以用清醒药消除此效果。{SCROLL}",
-   "en": "If asleep, your Pokémon can use only{NEWLINE}certain moves, such as Sleep Talk and{CLEAR}Snore.{SCROLL}A sleeping Pokémon doesn’t wake up{NEWLINE}after battle.{CLEAR}Wake it up with an Awakening.{SCROLL}",
+   "en": "If asleep, a Pokémon can use only two{NEWLINE}moves: Sleep Talk and Snore.{SCROLL}A sleeping Pokémon stays asleep after{NEWLINE}battle. Wake it with an Awakening.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0560/16"
+   "origin": "agent",
+   "notes": "US 0560/16 | RV001: meaning: Chinese names exactly these two moves, not an open list (D-1868)"
   },
   {
    "id": 17,
@@ -182,10 +182,10 @@
   {
    "id": 22,
    "zh": "培育口袋妖怪{NEWLINE}并使用其参与对战的人{CLEAR}被称作精灵训练家。{SCROLL}训练家的目标是{NEWLINE}战胜各地精灵道馆的{CLEAR}强力训练师！{SCROLL}下一页……{NEWLINE}是空白的！{SCROLL}",
-   "en": "‘People who catch and use Pokémon{NEWLINE}in battle are called Pokémon Trainers.’{SCROLL}‘They are expected to visit Pokémon{NEWLINE}Gyms and defeat other Trainers.’{SCROLL}The next page is... Blank!{SCROLL}",
+   "en": "‘People who raise Pokémon and use them{NEWLINE}in battle are called Pokémon Trainers.’{SCROLL}‘A Trainer’s goal: defeat the strong{NEWLINE}Trainers of Pokémon Gyms everywhere!’{SCROLL}The next page is... Blank!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0560/22 | R001: quotes changed to single ‘ ’ to match #19–#21."
+   "origin": "agent",
+   "notes": "US 0560/22 | R001: quotes changed to single ‘ ’ to match #19–#21. | RV001: meaning: 培育 is raise, not catch; the goal clause was paraphrased (D-1869)"
   },
   {
    "id": 23,
@@ -724,10 +724,10 @@
   {
    "id": 89,
    "zh": "我们这里原来有个{NEWLINE}非常臭屁的同学小银,{CLEAR}他整天自以为是的瞧不起我们。{CLEAR}但是大吾和希罗娜前辈{CLEAR}作为我们学校的学生{CLEAR}能进入石英大会前8强,{CLEAR}就足以说明我们学校的厉害！",
-   "en": "We used to have this super stuck-up{NEWLINE}classmate, Silver. He was so full of{CLEAR}himself, always looking down on us.{SCROLL}But Steven and Cynthia, from our very{NEWLINE}own school, made the top 8 at the{CLEAR}Indigo Conference!{SCROLL}That proves how awesome our school is!",
+   "en": "We used to have this super stuck-up{NEWLINE}classmate, Silver. He was so full of{CLEAR}himself, always looking down on us.{SCROLL}But our upperclassmen Steven and{NEWLINE}Cynthia, from our very own school, made{CLEAR}the top 8 at the Indigo Conference!{SCROLL}That proves how awesome our school is!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV001: omission: 前辈 (upperclassmen) restored"
   },
   {
    "id": 90,
@@ -831,10 +831,10 @@
   {
    "id": 102,
    "zh": "乔班尼！{NEWLINE}精灵学堂超棒呐！{SCROLL}不管是不是这里的正式学生,{NEWLINE}都可以从我这里学到{CLEAR}很多很多精灵知识。{SCROLL}那么你想知道什么？{NEWLINE}关于变强的秘诀,{CLEAR}想知道吗？{VAR:0200:0}",
-   "en": "Earl, I am! Wonderful is the Pokémon{NEWLINE}Academy, yes!{SCROLL}Student or not, learn much about{NEWLINE}Pokémon from me you can!{SCROLL}What you want to know? Want to be a{NEWLINE}winner is you? {VAR:0200:0}",
+   "en": "Earl, I am! Wonderful is the Pokémon{NEWLINE}Academy, yes!{SCROLL}Student or not, learn much about{NEWLINE}Pokémon from me you can!{SCROLL}So, what to know you want? The secret{NEWLINE}of getting stronger, hear it you want? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "R001: Hack variant of #0 (drops 当然了); same US text.; ext-review C012"
+   "notes": "R001: Hack variant of #0 (drops 当然了); same US text.; ext-review C012 | RV001: meaning: same fix as #0 (voice kept pending D-1864)"
   },
   {
    "id": 103,
@@ -1242,10 +1242,10 @@
   {
    "id": 153,
    "zh": "{VAR:0103:0}『既然无法再往前走了,{NEWLINE}咱们就去那边看看吧？",
-   "en": "{VAR:0103:0}: Since we can’t go any farther,{NEWLINE}let’s go look over there.",
+   "en": "{VAR:0103:0}: Since we can’t go any farther,{NEWLINE}why don’t we go look over there?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV001: meaning: the Chinese is a suggestion-question (吧？)"
   },
   {
    "id": 154,

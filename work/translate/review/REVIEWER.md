@@ -68,6 +68,10 @@ If you need to see how the same Chinese is translated elsewhere: `grep -rl '<zh>
 - **No new rules.** Don't add `style`, `term` or `voice` decisions and don't change existing ones. Everything
   you would want to make general goes in a question: `python3 work/tools/decisions.py add --type question
   --subtype rereview --ref <bank#id> --en "<issue and proposed English>" --source agent:RVxxx`.
+- **Open questions on your lines:** the packet lists them. If your edit settles an open `fidelity-review`,
+  `translation-quality` or `rereview` question, resolve it:
+  `python3 work/tools/decisions.py resolve <id> --answer "Settled in RVxxx: <what you did>"`. Never resolve
+  `hack-finding` questions or questions asking the user to decide; leave those open and mention them in your report.
 - **No git commands** that change anything (no commit, add, checkout, stash, reset). `git diff` is fine.
 - **No downloads, no ROM builds, no tool changes.**
 

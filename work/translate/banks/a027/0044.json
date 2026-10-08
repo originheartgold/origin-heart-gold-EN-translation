@@ -56,10 +56,10 @@
   {
    "id": 6,
    "zh": "对战共有５种模式。{SCROLL}单人战斗的时候{NEWLINE}就是拿出一只精灵{CLEAR}进行两人对战。{SCROLL}双人战斗的时候{NEWLINE}就是拿出两只精灵{CLEAR}进行两人对战。{SCROLL}混合战斗的时候{NEWLINE}要各自挑选{CLEAR}３只精灵,并选择对方的{CLEAR}一只精灵与自己交换对战。{SCROLL}平等战斗能让５０级{NEWLINE}以上的精灵回归５０级{CLEAR}进行战斗。{SCROLL}多人战斗战斗的时候{NEWLINE}由４人各拿出{CLEAR}１只进行{CLEAR}２对２的对战。{SCROLL}",
-   "en": "There are five Battle Modes.{SCROLL}Single Battle is for two Trainers{NEWLINE}with one or more Pokémon each.{SCROLL}Each Trainer can have one Pokémon{NEWLINE}in battle at a time.{SCROLL}Double Battle is for two Trainers{NEWLINE}with two or more Pokémon each.{SCROLL}Each Trainer will send out two{NEWLINE}Pokémon to battle at a time.{SCROLL}Mix Battle is for two Trainers{NEWLINE}with three Pokémon each.{SCROLL}Each Trainer chooses one of the{NEWLINE}opponent’s Pokémon, mixes them{CLEAR}with their own party, and then{CLEAR}battles the other Trainer.{SCROLL}Flat Battle is for Pokémon over Lv. 50.{SCROLL}All Pokémon will become Lv. 50 for{NEWLINE}the battle.{SCROLL}Multi Battle is for four Trainers{NEWLINE}with one or more Pokémon each.{SCROLL}Each Trainer can have one Pokémon{NEWLINE}in battle at a time.{SCROLL}",
+   "en": "There are five Battle Modes.{SCROLL}In a Single Battle, two Trainers each{NEWLINE}send out one Pokémon.{SCROLL}In a Double Battle, two Trainers each{NEWLINE}send out two Pokémon.{SCROLL}In a Mix Battle, each Trainer picks{NEWLINE}three Pokémon, then chooses one of the{CLEAR}opponent’s Pokémon to swap with their{CLEAR}own for the battle.{SCROLL}In a Flat Battle, Pokémon above{NEWLINE}Lv. 50 go back to Lv. 50 to battle.{SCROLL}In a Multi Battle, four Trainers{NEWLINE}each send one Pokémon into a{CLEAR}two-on-two battle.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "R001: official US text (US 0046/6)"
+   "origin": "agent",
+   "notes": "R001: official US text (US 0046/6) | RV001: meaning: US text said 'one or more', made Flat Battle only for over-50 Pokémon and dropped Multi's 2-vs-2; follows the Chinese (D-1647)"
   },
   {
    "id": 7,
@@ -212,10 +212,10 @@
   {
    "id": 25,
    "zh": "能够参加基艾斯杯的{NEWLINE}特殊精灵{SCROLL}{VAR:0103:0}{NEWLINE}找到的精灵中⋯{SCROLL}",
-   "en": "You need a special Pokémon to enter the{NEWLINE}GS Cup.{SCROLL}{VAR:0103:0}, out of the Pokémon{NEWLINE}you’ve found...{SCROLL}",
+   "en": "Special Pokémon for the GS Cup...{SCROLL}Among the Pokémon {VAR:0103:0} has found...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/25"
+   "origin": "agent",
+   "notes": "US 0046/25 | RV001: meaning: US text invented 'You need a special Pokémon'; Chinese only labels the eligible special Pokémon (D-1647)"
   },
   {
    "id": 26,
@@ -228,18 +228,18 @@
   {
    "id": 27,
    "zh": "能够参加。{SCROLL}",
-   "en": "can be entered in the competition.{SCROLL}",
+   "en": "can take part.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/27"
+   "origin": "agent",
+   "notes": "US 0046/27 | RV001: grammar: follows #25/#26 (能够参加)"
   },
   {
    "id": 28,
    "zh": "好像是没有。{SCROLL}",
-   "en": "none are eligible.{SCROLL}",
+   "en": "There don’t seem to be any.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/28"
+   "origin": "agent",
+   "notes": "US 0046/28 | RV001: meaning: 好像是没有, follows #25"
   },
   {
    "id": 29,

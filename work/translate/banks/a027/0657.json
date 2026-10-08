@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "是我！大木！{NEWLINE}你的表现非常精彩！{SCROLL}我想起了我{NEWLINE}年轻的时候！",
-   "en": "Hello, this is Professor Oak!{SCROLL}You’re moving along at an{NEWLINE}incredible pace! You remind me of{CLEAR}myself when I was younger!",
+   "en": "Hello, this is Professor Oak!{SCROLL}You’re doing brilliantly! You remind me{NEWLINE}of myself when I was younger!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0666/5"
+   "origin": "agent",
+   "notes": "US 0666/5 | RV001: meaning: Chinese praises the performance, no 'pace'"
   },
   {
    "id": 6,
@@ -70,18 +70,18 @@
   {
    "id": 8,
    "zh": "是我！大木！{NEWLINE}你好像发现了城都和关东{CLEAR}都没有出现过的精灵！{SCROLL}有你这样优秀的{NEWLINE}训练师在,精灵的研究{CLEAR}一定能得到长足的进步！",
-   "en": "Hello, this is Professor Oak!{SCROLL}It looks like you’ve found some Pokémon{NEWLINE}that aren’t from the Johto or the{CLEAR}Kanto regions, haven’t you?{SCROLL}You’re a strong Trainer, and you’re{NEWLINE}really making some discoveries!",
+   "en": "Hello, this is Professor Oak!{SCROLL}It looks like you’ve found Pokémon that{NEWLINE}have never appeared in Johto or Kanto!{SCROLL}With an excellent Trainer like you{NEWLINE}around, Pokémon research is sure to{CLEAR}make great strides!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0666/8"
+   "origin": "agent",
+   "notes": "US 0666/8 | RV001: meaning: second half of US line differed from the Chinese"
   },
   {
    "id": 9,
    "zh": "⋯⋯我是大木,{NEWLINE}最近研究好忙啊,{CLEAR}弄得我都没好好睡过觉⋯⋯{SCROLL}算了！不说这个了！{NEWLINE}期待你能收集到{CLEAR}更多的图鉴！",
-   "en": "...This is Professor Oak.{NEWLINE}I’ve been so busy with my research{CLEAR}that I haven’t gotten much{CLEAR}sleep lately...{SCROLL}Oh, but never mind that!{NEWLINE}You’ve made such good progress on your{CLEAR}Pokédex. I can’t wait to see it!",
+   "en": "...This is Professor Oak. I’ve been so{NEWLINE}busy with my research lately that I’ve{CLEAR}hardly slept...{SCROLL}Oh, never mind that! I look forward{NEWLINE}to seeing you fill in even more{CLEAR}of your Pokédex!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0666/9"
+   "origin": "agent",
+   "notes": "US 0666/9 | RV001: meaning: Chinese looks forward to more entries, not 'seeing it'"
   },
   {
    "id": 10,
@@ -94,18 +94,18 @@
   {
    "id": 11,
    "zh": "是我！大木！{NEWLINE}像你这样{CLEAR}优秀的训练师{CLEAR}真是百年难遇啊！{SCROLL}能遇到你我真要{NEWLINE}好好感谢空木博士了！",
-   "en": "Hello, this is Professor Oak!{NEWLINE}You know, I don’t see many wonderful{CLEAR}Trainers such as yourself very{CLEAR}often lately!{SCROLL}I’ll have to thank Professor Elm for{NEWLINE}introducing us!",
+   "en": "Hello, this is Professor Oak! A Trainer{NEWLINE}as excellent as you comes along once in{CLEAR}a hundred years!{SCROLL}I really must thank Professor Elm for{NEWLINE}letting me meet you!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0666/11"
+   "origin": "agent",
+   "notes": "US 0666/11 | RV001: softened: 百年难遇 (once in a century) was weakened"
   },
   {
    "id": 12,
    "zh": "是我！大木！{NEWLINE}你什么都不用说！{CLEAR}我比谁都清楚,{CLEAR}你现在非常努力,{SCROLL}所以我为你{CLEAR}准备了一份礼物⋯⋯{CLEAR}不过忘了送给你了,{CLEAR}哇哈哈！{SCROLL}别担心,{NEWLINE}现在也来得及,{CLEAR}这东西你可定能用得上,{CLEAR}所以请你亲自过来取吧！{SCROLL}到我真新镇上的{NEWLINE}研究所来吧！",
-   "en": "Hello, this is Professor Oak!{NEWLINE}Oh, you don’t have to say anything!{CLEAR}I know better than anyone else how{CLEAR}hard you’re working!{SCROLL}I thought I should get you a present{NEWLINE}or something in appreciation...{CLEAR}Well, I picked something up, but I{CLEAR}completely forgot to give it to you!{CLEAR}Ha ha ha!{SCROLL}Oh, you don’t have to wonder about it{NEWLINE}at all. I know it’s something that will{CLEAR}be very helpful to you. You should just{CLEAR}come here and pick it up!{SCROLL}I’ll be waiting for you at my Laboratory{NEWLINE}in Pallet Town!{NEWLINE}",
+   "en": "Hello, this is Professor Oak! You don’t{NEWLINE}have to say anything! I know better{CLEAR}than anyone how hard you’re working,{SCROLL}so I got a present ready for you... But{NEWLINE}I forgot to give it to you! Wahaha!{SCROLL}Don’t worry, it’s not too late. You’re{NEWLINE}sure to find it useful, so please come{CLEAR}and pick it up yourself!{SCROLL}Come to my Lab in Pallet Town!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0666/12"
+   "origin": "agent",
+   "notes": "US 0666/12 | RV001: addition: US text added lines not in the Chinese"
   },
   {
    "id": 13,
@@ -202,10 +202,10 @@
   {
    "id": 24,
    "zh": "太棒了！{NEWLINE}全国图鉴完美了！{SCROLL}嗯嗯⋯⋯{NEWLINE}初次见面时{CLEAR}我对你的评价果然没错！{SCROLL}{VAR:0103:0}的{NEWLINE}成长甚至{CLEAR}超出了我的想象！{SCROLL}{VAR:0103:0}！{NEWLINE}谢谢！",
-   "en": "Excellent!{NEWLINE}That is an amazing National Pokédex!{SCROLL}Wow...{NEWLINE}You’ve lived up to my expectations{CLEAR}wonderfully!{SCROLL}No, you’ve exceeded them,{NEWLINE}{VAR:0103:0}. You’ve become an{CLEAR}amazing Trainer!{SCROLL}Thank you, {VAR:0103:0}!",
+   "en": "Excellent! The National Pokédex is{NEWLINE}complete!{SCROLL}Mm-hmm... I was right about you when we{NEWLINE}first met!{SCROLL}{VAR:0103:0}, you’ve grown even more than I{NEWLINE}imagined!{SCROLL}{VAR:0103:0}! Thank you!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0666/24"
+   "origin": "agent",
+   "notes": "US 0666/24 | RV001: meaning: US text differed (first-meeting judgment dropped, 'amazing Trainer' added)"
   },
   {
    "id": 25,
@@ -226,10 +226,10 @@
   {
    "id": 27,
    "zh": "我被你的表现给征服了！{SCROLL}你大大超过了我的预期,{CLEAR}居然连全国图鉴{CLEAR}都全部完成了！{CLEAR}太完美了！{SCROLL}精灵和围绕着它们的{NEWLINE}训练师们的世界将会变得{CLEAR}更宽阔,更深邃,更丰富！{SCROLL}正因此,我们对精灵的研究{NEWLINE}也永不止步！",
-   "en": "You have truly surprised me!{SCROLL}You’ve more than exceeded my{NEWLINE}expectations. You’ve gone far past{CLEAR}them in completing the{CLEAR}National Pokédex!{SCROLL}I’m speechless...!{SCROLL}Because of this, the world of Pokémon{NEWLINE}and Trainers is more vast, deeper,{CLEAR}and more abundant!{SCROLL}Now there will be no end to{NEWLINE}Pokémon research!",
+   "en": "You’ve completely won me over!{SCROLL}You went far beyond my expectations{NEWLINE}and completed even the National{CLEAR}Pokédex! Simply perfect!{SCROLL}The world of Pokémon and the Trainers{NEWLINE}around them will grow wider,{CLEAR}deeper and richer!{SCROLL}And that is exactly why our research{NEWLINE}into Pokémon will never stop!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0666/27"
+   "origin": "agent",
+   "notes": "US 0666/27 | RV001: meaning: US text said 'speechless' and changed the logic of the last clause"
   },
   {
    "id": 28,
@@ -258,26 +258,26 @@
   {
    "id": 31,
    "zh": "哼哼,看来你已经{NEWLINE}掌握了它们的习性！{SCROLL}",
-   "en": "Hmm, you’re catching Pokémon at a{NEWLINE}decent pace!{SCROLL}",
+   "en": "Heh heh, looks like you’ve got a handle{NEWLINE}on their habits!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0666/31"
+   "origin": "agent",
+   "notes": "US 0666/31 | RV001: meaning: Chinese is about mastering their habits, not pace"
   },
   {
    "id": 32,
    "zh": "要加油啊,{NEWLINE}这样你才能集成一份{CLEAR}像样的精灵图鉴！{SCROLL}",
-   "en": "You’re trying--I can see that.{NEWLINE}Your Pokédex is coming together.{SCROLL}",
+   "en": "Keep at it! That’s how you’ll put{NEWLINE}together a decent Pokédex!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0666/32"
+   "origin": "agent",
+   "notes": "US 0666/32 | RV001: meaning: US line differed"
   },
   {
    "id": 33,
    "zh": "有些精灵用普通的{NEWLINE}培育方法是无法进化的！{SCROLL}",
-   "en": "You’re training them well. You know{NEWLINE}some Pokémon don’t evolve just by{CLEAR}battling with others, right?{SCROLL}",
+   "en": "Some Pokémon won’t evolve through{NEWLINE}ordinary training!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0666/33"
+   "origin": "agent",
+   "notes": "US 0666/33 | RV001: addition: 'You’re training them well' not in Chinese"
   },
   {
    "id": 34,
@@ -314,10 +314,10 @@
   {
    "id": 38,
    "zh": "哈哈！太棒了！{NEWLINE}不仅成功捕获,{CLEAR}还进行了进化！{SCROLL}",
-   "en": "I’m impressed.{NEWLINE}You’re evolving Pokémon, not just{CLEAR}catching them.{SCROLL}",
+   "en": "Ha ha! Wonderful! You’re not just{NEWLINE}catching Pokémon, you’re{CLEAR}evolving them too!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0666/38"
+   "origin": "agent",
+   "notes": "US 0666/38 | RV001: omission: 哈哈！太棒了！ restored"
   },
   {
    "id": 39,
@@ -330,10 +330,10 @@
   {
    "id": 40,
    "zh": "收集精灵的时候,{NEWLINE}如果有能够交流情报的伙伴{CLEAR}就会事半功倍！{SCROLL}",
-   "en": "When you trade Pokémon, you can also{NEWLINE}trade information. Your friends can{CLEAR}really help you!{SCROLL}",
+   "en": "When you’re collecting Pokémon, having{NEWLINE}friends to swap information with makes{CLEAR}it so much easier!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0666/40"
+   "origin": "agent",
+   "notes": "US 0666/40 | RV001: meaning: Chinese is about collecting, not trading"
   },
   {
    "id": 41,
@@ -346,10 +346,10 @@
   {
    "id": 42,
    "zh": "居然超出２００种了！{NEWLINE}你交出了一份{CLEAR}很令人满意的图鉴！{SCROLL}",
-   "en": "Wow! You’ve reached 200!{NEWLINE}Your Pokédex is looking great!{SCROLL}",
+   "en": "Wow, over 200 already! You’ve turned in{NEWLINE}a very satisfying Pokédex!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0666/42"
+   "origin": "agent",
+   "notes": "US 0666/42 | RV001: meaning: 超出200 = over 200"
   },
   {
    "id": 43,
@@ -450,10 +450,10 @@
   {
    "id": 55,
    "zh": "就剩最后一点了！{NEWLINE}我等着你的好消息！{SCROLL}",
-   "en": "Just a little more!{NEWLINE}I’ve got high expectations for you!{SCROLL}",
+   "en": "Just a little more to go! I’m waiting for{NEWLINE}your good news!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0666/55"
+   "origin": "agent",
+   "notes": "US 0666/55 | RV001: meaning: 等着你的好消息"
   },
   {
    "id": 56,

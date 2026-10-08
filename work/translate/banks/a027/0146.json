@@ -289,10 +289,10 @@
   {
    "id": 35,
    "zh": "赤焰松『来吧,用你强大的力量{NEWLINE}为我们火箭队效忠吧！",
-   "en": "Maxie: Come! Lend your mighty power to{NEWLINE}us, Team Rocket!",
+   "en": "Maxie: Come! Use your mighty power to{NEWLINE}serve us, Team Rocket!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV001: softened: 效忠 is serve/pledge loyalty, not 'lend'"
   },
   {
    "id": 36,
