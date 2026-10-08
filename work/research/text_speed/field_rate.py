@@ -67,7 +67,7 @@ MODE = checks.NORMAL
 MAX_FPG = 1.05        # vanilla US FAST: 0.98 frames per glyph (Viridian, 2026-10-07)
 SLOW_FPG = 1.5        # catch-up off at or above this: a 30 fps scene
 MIN_30FPS = 5
-IDLE_TICKS = 12       # about a third of a display line: the decision without a printer measured 1 (not late) to 7 ticks
+IDLE_TICKS = 20       # about 0.6 display lines: the decision without a printer measured 15 ticks in a late pass (D-2269 payload)
 IDLE = 600
 PAGE_GAP = 40
 WINDOW = (8, 148, 232, 187)   # message window text area on the top screen (x0, y0, x1, y1); the arrow is outside
@@ -198,7 +198,7 @@ def child(args, name):
 
             def disable(h):          # pass_end entry: no previous pass end -> never late
                 if off['on']:
-                    h.w8(state + 25, 0)
+                    h.w8(state + checks.ENDED_OFFSET, 0)
             h.on_exec(payload['symbols']['pass_end'] & ~1, disable)
             glyphs = []
             h.on_exec(GLYPH, lambda h: glyphs.append((h.frame, h.u16(h.reg.r4 + 12), h.u16(h.reg.r4 + 14)))
@@ -261,7 +261,7 @@ def judge(r):
         errors.append(f"idle: {idle['printer_tasks']} printer tasks ran in pass_end without text")
     if idle['pass_end_ticks'] > IDLE_TICKS:
         errors.append(f"idle: pass_end took {idle['pass_end_ticks']} timer ticks after its reading without a "
-                      f"printer, at most {IDLE_TICKS} (a third of a display line)")
+                      f"printer, at most {IDLE_TICKS} (0.6 display lines)")
     for k in ('glyphs', 'pages', 'layout'):
         if t_on[k] != t_off[k]:
             errors.append(f'text differs from the catch-up-off run: {k}')

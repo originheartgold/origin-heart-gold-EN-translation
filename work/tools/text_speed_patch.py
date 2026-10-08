@@ -23,14 +23,14 @@ BASE=0x01ff8620
 OVBASE=0x021e4980
 # This reviewed pin lives in patcher source, never in the mutable cache. Updating
 # native code requires review of its reproducible payload and this separate pin.
-REVIEWED_PAYLOAD_SHA256='fb4856be90d49eb2b6dd4b13be1e76f61414224821bf2e670b4046cc12532078'
+REVIEWED_PAYLOAD_SHA256='587f29a5a2b19e1c71a24b5df6104c5588d2a54a45fca16fe4bf6dc6ee12933e'
 REQUIRED_SYMBOLS=frozenset(('print_task','load_rows','load_choice','load_label',
                             'commit_speed','exit_free','draw_label','setup_sprites',
                             'frame_end','pass_end','text_speed_state','call_print'))
 # The one data symbol: the runtime frame state (zero at boot), the last
 # STATE_SIZE bytes of the block. Every other symbol is a Thumb entry point.
 STATE_SYMBOL='text_speed_state'
-STATE_SIZE=44
+STATE_SIZE=52
 # The game loop's last call before its wait for VBlank (NitroMain, 0x02000C88):
 # 'bl 0x020272d4' at this address is redirected to the payload's pass_end, which
 # calls frame_end (that call first, then the frame measurement) and then the
@@ -126,14 +126,23 @@ DEPENDENT_CODE=(
     (0x02020040,0x0202007e,'task queue run (the task layout pass_end mirrors)'),
     (0x02020094,0x02020114,'task queue add (sets the +0x18 skip flag)'),
     (0x02000ba0,0x02000bb8,'code settings / autoload list words rewritten by code.save()'),
+    # Sub-line timing (D-2269): the payload reads the SDK tick count as OS_GetTick does,
+    # OSi_TickCounter (0x021e0a5c, the low word of the u64 at struct 0x021e0a54 + 8) and
+    # timer 0 (0x04000100), which OS_InitTick starts at prescaler 64 with its overflow
+    # interrupt, and that interrupt handler counts. Both are ARM code.
+    (0x020d2180,0x020d21f0,'OS_InitTick (timer 0 at bus clock / 64, overflow interrupt) and its literals'),
+    (0x020d2208,0x020d2270,'tick timer interrupt (counts OSi_TickCounter) and its literals'),
+    (0x020d2270,0x020d2310,'OS_GetTick (the read the payload mirrors) and its literals'),
 )
 DEPENDENCIES=CALLED_ROUTINES+DEPENDENT_CODE
 # The batching loop and frame_end also read VCOUNT (0x04000006), the DS display
 # line I/O register, and the SDK's VBlank counter HW_VBLANK_COUNT_BUF (0x027FFC3C,
 # the main-memory system word OS_GetVBlankCount reads). Neither is ARM9 code or
 # data in the ARM9 binary, so no code patch can overlap them and they have no
-# dependency range. The printer task slot array (0x021d0efc) that pass_end reads
-# is .bss, outside the ARM9 binary; the routines that own it are reviewed above.
+# dependency range. The same holds for timer 0 (0x04000100) and the interrupt
+# flags (0x04000214), read for the tick count. The printer task slot array
+# (0x021d0efc) that pass_end reads and OSi_TickCounter (0x021e0a54) are .bss,
+# outside the ARM9 binary; the routines that own them are reviewed above.
 
 def native_call_targets():
     """Every FN(address, ...) call target in native.c (source pinned via the payload)."""

@@ -628,10 +628,10 @@ class RealFixes(unittest.TestCase):
         code, cn = rom.loadArm9(), self.cn.loadArm9()
         blob = bytes.fromhex(speed.load_payload()["code"])
         itcm = self.hc.RomView(rom).itcm_section(code)
-        self.assertEqual((itcm.ramAddress, len(itcm.data), itcm.bssSize), (0x01FF8000, 0xE80, 0))
+        self.assertEqual((itcm.ramAddress, len(itcm.data), itcm.bssSize), (0x01FF8000, 0xFA0, 0))
         self.assertEqual(bytes(itcm.data[:0x620]), bytes(cn.sections[1].data))
         self.assertEqual(bytes(itcm.data[0x620:0x620 + len(blob)]), blob)
-        self.assertEqual(bytes(itcm.data[0x620 + len(blob):]), bytes(0xE80 - 0x620 - len(blob)))
+        self.assertEqual(bytes(itcm.data[0x620 + len(blob):]), bytes(0xFA0 - 0x620 - len(blob)))
         self.assertEqual(bytes(code.sections[2].data), bytes(cn.sections[2].data))       # DTCM unchanged
         new, old = code.sections[0].data, cn.sections[0].data
         own = [(r[1], r[2]) for r in F.footprint(self.fixes["text-speed"]) if r[0] == "arm9"]

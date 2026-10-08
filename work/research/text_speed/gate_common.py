@@ -308,6 +308,7 @@ TICK_TIMER = 0x04000100        # timer 0 counter: the SDK's OS tick timer (OS_In
 TICK_TIMER_CONTROL = 0x04000102
 VISIBLE_LINE = 192
 IRQ_ENABLE, IRQ_FLAGS = 0x04000210, 0x04000214
+TICK_COUNTER = 0x021E0A5C      # OSi_TickCounter, low word: timer 0 overflows counted by the SDK's tick interrupt
 IRQ_VECTOR = 0x027E3FFC        # DTCM + 0x3FFC: the interrupt handler the BIOS calls (the SDK's OS_IrqHandler)
 
 
@@ -342,15 +343,13 @@ class PrinterTrace:
     when pass_end returns (the gate's own reading there). catchup_overruns counts catch-ups
     during which the VBlank counter moved (the catch-up itself pushed the pass past a VBlank).
 
-    Sub-line timing (D-2269): a reading after a render is VCOUNT and TM0; a batch end,
-    frame_end and pass_end also read the VBlank counter first. When the model's decision at
-    a decision point depends on how far into the line the task is ('wait'), the task must
-    wait for VCOUNT to change; the VCOUNT reads of that wait and the TM0 reading at the new
-    line start resolve the decision (FrameModel.waited), recorded in place of the check's
-    decision with 'waited': (line, tick). The gate times each task's frame itself: the
-    interrupt handler entry of the VBlank interrupt gives the deadline ('deadline_tick',
-    ticks since the task's 'start_tick'), and the median of VBlank-to-VBlank intervals the
-    ticks per display line ('line_ticks'); 'end_tick' is the pass end in ticks since
+    Sub-line timing (D-2269, D-2271): a reading after a render is VCOUNT and the tick count
+    (OSi_TickCounter, TM0, the interrupt flags); a batch end, frame_end and pass_end also read
+    the VBlank counter first. At FAST, pass_end may then wait for VCOUNT to change and keep the
+    tick count there as the model's anchor (anchors). The gate times each task's frame itself:
+    the interrupt handler entry of the VBlank interrupt gives the deadline ('deadline_tick',
+    TM0 ticks since the task's 'start_tick'), the median of VBlank-to-VBlank intervals the
+    ticks per display line ('line_ticks'); 'end_tick' is the pass end in TM0 ticks since
     'start_tick', 'b_ticks' the TM0 readings after each glyph. irq_count counts every
     interrupt handler entry.
 
@@ -407,7 +406,9 @@ class PrinterTrace:
         self._catching = None      # (catch_up decision, VBlank count, tick, irqs) from pass_end's reading to its return
         self._open = []            # tasks whose loop pass has not ended yet
         self._await = []           # tasks waiting for the VBlank that ends their frame (deadline)
-        self._reading = {}         # the reading in progress: 'vblanks', 'line' (TM0 completes it)
+        self._reading = {}         # the reading in progress: 'vblanks', 'line', 'hi', 'lo' (the flags complete it)
+        self._anchor_wait = None   # pass_end after its decision: the VCOUNT values of its anchor wait
+        self.anchors = []          # (frame, line, tick) of every pass_end anchor (D-2269)
 
     def resync(self):
         """After loading a savestate without reset(): restart the frame model from RAM (the
@@ -425,17 +426,20 @@ class PrinterTrace:
             self.model = self._checks.FrameModel(ram)   # resynchronise; the error stays
 
     def _load(self, where, mnemonic, base_reg, index_reg, offset):
-        """Hook on a load instruction about to run: if it reads VCOUNT, TM0 or the VBlank counter,
-        record the value it is going to load (no emulated time passes before it runs)."""
+        """Hook on a load instruction about to run: if it reads VCOUNT, the VBlank counter or a part
+        of the tick count (OSi_TickCounter, TM0, the interrupt flags), record the value it is going
+        to load (no emulated time passes before it runs)."""
         size = {'ldrb': 1, 'ldrsb': 1, 'ldrh': 2, 'ldrsh': 2}.get(mnemonic, 4)
         io = self._io(where)
+        kinds = {VCOUNT: ('vcount', 2), TICK_TIMER: ('tm0', 2), TICK_COUNTER: ('ticks', 4), IRQ_FLAGS: ('irqf', 4)}
 
         def hook(h):
             address = (getattr(h.reg, base_reg) + (getattr(h.reg, index_reg) if index_reg else offset)) & 0xFFFFFFFF
-            if address in (VCOUNT, TICK_TIMER):
-                if size != 2:
+            if address in kinds:
+                what, want = kinds[address]
+                if size != want:
                     self.state_errors.append(f'frame {h.frame}: {mnemonic} of {address:#x} in {where}')
-                io(h, 'vcount' if address == VCOUNT else 'tick', h.u16(address))
+                io(h, what, h.u16(address) if want == 2 else h.u32(address))
             elif address == VBLANKS:
                 io(h, 'vblanks', h.u8(VBLANKS) if size == 1 else h.u32(VBLANKS))
         return hook
@@ -467,49 +471,71 @@ class PrinterTrace:
         self._await = []
 
     def _io(self, where):
+        """Readings: a check after a render is VCOUNT and the tick count; a batch end, frame_end
+        and pass_end read the VBlank counter, VCOUNT and the tick count; at FAST, pass_end then may
+        read VCOUNT until it changes and the tick count there (the anchor). The tick count is
+        OSi_TickCounter, TM0, OSi_TickCounter again (repeated if it changed) and the interrupt
+        flags (a pending timer 0 overflow adds one), as native ticks() reads it."""
         checks = self._checks
 
         def hook(h, what, value):
             r = self._reading
-            rec = self.active if where == 'print_task' else None
             if what == 'vblanks':
                 # mark() stores the counter before it reads VCOUNT: compare here, before that store.
                 self._compare(f'{where} reading')
-                self._reading = {'vblanks': value & 255}
+                self._reading = {'where': where, 'vblanks': value & 255}
                 return
             if what == 'vcount':
-                if rec is not None and rec.get('_wait') is not None:
-                    rec['_wait'].append(value)          # the task waits for the next line start
+                if where == 'pass_end' and self._anchor_wait is not None:
+                    if not self._anchor_wait:
+                        self.model.catch_up_done()        # pass_end clears the mark before its anchor
+                        self._compare('pass_end anchor')
+                    self._anchor_wait.append(value)
                     return
                 if 'vblanks' not in r:
                     self._compare(f'{where} reading')
+                    r = self._reading = {'where': where}
                 r['line'] = value
-                if where == 'pass_end':
-                    self._reading = {}
-                    if r.get('vblanks') is None:
-                        self.state_errors.append(f'frame {h.frame}: pass_end read VCOUNT without the VBlank counter')
-                        return
-                    late, catch = self.model.pass_end(r['vblanks'], value)
-                    self.catchups.append([h.frame, value, late, catch, 0, None, None])
-                    self._catching = (catch, h.u32(VBLANKS), h.u16(TICK_TIMER), self.irq_count)
                 return
-            tick = value
+            if what == 'ticks':
+                if 'lo' in r and r.get('hi') == value:
+                    r['stable'] = True
+                else:
+                    r.pop('lo', None)
+                    r.pop('stable', None)
+                    r['hi'] = value
+                return
+            if what == 'tm0':
+                r['lo'] = value
+                return
+            # the interrupt flags: the tick count is complete
             self._reading = {}
-            if rec is not None and rec.get('_wait') is not None:
-                wait, rec['_wait'] = rec['_wait'], None
-                event = rec['events'][-1]
-                if event[0] != 'check' or wait[-1] == event[1] or any(x != event[1] for x in wait[:-1]):
-                    self.state_errors.append(f'frame {h.frame}: task {rec["id"]} waited for a line start without '
-                                             f'a line change from line {event[1]}: {wait[:3]}..{wait[-2:]}')
+            if not r.get('stable') or 'lo' not in r:
+                self.state_errors.append(f'frame {h.frame}: {where} read the tick count out of order')
+                return
+            tick = ((r['hi'] + bool(value & 8 and not r['lo'] & 0x8000)) << 16 | r['lo']) & 0xFFFFFFFF
+            if where == 'pass_end' and self._anchor_wait is not None:
+                wait, self._anchor_wait = self._anchor_wait, None
+                if len(wait) < 2 or checks.lines_to_vblank(wait[0]) < 3 or wait[-1] == wait[0] \
+                        or any(x != wait[0] for x in wait[:-1]):
+                    self.state_errors.append(f'frame {h.frame}: pass_end anchor without a line change: {wait[:3]}')
                     return
-                decision = checks.FrameModel.waited(event[2], rec['_place'], wait[-1], tick)
-                rec['events'][-1] = ('check', event[1], decision)
-                rec['_before'] = (wait[-1], tick)
+                self.model.set_anchor(tick)
+                self.anchors.append((h.frame, wait[-1], tick))
                 return
             if 'line' not in r:
-                self.state_errors.append(f'frame {h.frame}: {where} read TM0 without VCOUNT')
+                self.state_errors.append(f'frame {h.frame}: {where} read the tick count without VCOUNT')
                 return
             line, vblanks = r['line'], r.get('vblanks')
+            if where == 'pass_end':
+                if vblanks is None:
+                    self.state_errors.append(f'frame {h.frame}: pass_end read VCOUNT without the VBlank counter')
+                    return
+                late, catch = self.model.pass_end(vblanks, line, tick)
+                self.catchups.append([h.frame, line, late, catch, 0, None, None])
+                self._catching = (catch, h.u32(VBLANKS), h.u16(TICK_TIMER), self.irq_count)
+                self._anchor_wait = []
+                return
             if where == 'frame_end':
                 if vblanks is None:
                     self.state_errors.append(f'frame {h.frame}: frame_end read VCOUNT without the VBlank counter')
@@ -520,12 +546,12 @@ class PrinterTrace:
                 self.frame_ends.append((h.frame, line, end[0]))
                 for rec in self._open:
                     rec['pass_end'] = end
-                    rec['end_tick'] = (tick - rec['start_tick']) & 0xFFFF
+                    rec['end_tick'] = (h.u16(TICK_TIMER) - rec['start_tick']) & 0xFFFF
                     rec['pass_end_frame'] = h.frame
                 self._open = []
                 return
             rec = self.active
-            if vblanks is not None:                      # mark(): VBlank counter, VCOUNT, TM0
+            if vblanks is not None:                      # mark(): VBlank counter, VCOUNT, ticks
                 self.model.mark(vblanks, line, tick)
                 if rec is not None:
                     rec['events'].append(('mark', line))
@@ -536,22 +562,19 @@ class PrinterTrace:
             drew = rec['_since_render'] == 'glyph'
             if drew:
                 if rec['b_lines']:
-                    self.model.glyph_cost(*rec['_before'], line, tick)
+                    self.model.glyph_cost(rec['b_lines'][-1], rec['_ticks'][-1], line, tick)
                 rec['b_lines'].append(line)
-                rec['b_ticks'].append(tick)
-            place = rec['_place']
-            checks.task_place(place, line)
-            glyphs = [e for e in rec['events'] if e[0] == 'glyph']
-            point = drew and len(glyphs) < checks.FAST_BUDGET and glyphs[-1][1] not in checks.CONTROLS
-            decision = self.model.decide(line, tick, place if point else dict(place))
-            rec['events'].append(('check', line, decision))
-            rec['_before'] = (line, tick)
-            if point and decision['kind'] == 'wait':
-                rec['_wait'] = []
+                rec['_ticks'].append(tick)
+                rec['b_ticks'].append(h.u16(TICK_TIMER))
+            rec['events'].append(('check', line, self.model.decide(line, tick)))
         return hook
 
     def _pass_return(self, h):
         """The game loop right after pass_end: close the catch-up tasks' pass."""
+        wait, self._anchor_wait = self._anchor_wait, None
+        if wait and (len(wait) > 1 or self._checks.lines_to_vblank(wait[0]) >= 3):
+            self.state_errors.append(f'frame {h.frame}: pass_end waited for a line change without an anchor '
+                                     f'({wait[:3]})')
         if self._catching is None:
             return
         catch, vblanks, ticks, irqs = self._catching
@@ -582,8 +605,7 @@ class PrinterTrace:
                'printer_id': h.u8(ptr + 0x2C), 'paused': h.u8(PRINT_PAUSED) != 0, 'delegated': False,
                'special': h.u32(ptr + 0x1C) != 0 or (h.u8(ptr + 0x29) & 127) != 0,
                'events': [], 'start': (h.u32(VBLANKS), h.u16(VCOUNT)), 'b_lines': [], 'b_ticks': [],
-               'start_tick': h.u16(TICK_TIMER), 'pass_end': None, '_since_render': None,
-               '_place': {'from': self._checks.NO_LINE, 'at': 0}, '_wait': None, '_before': None}
+               'start_tick': h.u16(TICK_TIMER), 'pass_end': None, '_since_render': None, '_ticks': []}
         if self._catching is not None:
             rec['catchup'] = True
             self.catchups[-1][4] += 1
@@ -612,8 +634,6 @@ class PrinterTrace:
         if self._on_render is not None:
             self._on_render(h)
         rec = self.active
-        if rec is not None and rec.get('_wait') is not None:
-            rec['_wait'] = None                 # the model expected a wait that did not happen (task_errors reports it)
         lr = h.reg.lr & ~1
         if rec is not None and rec['printer'] == h.reg.r0 and (
                 self._from_payload(h) or PRINTER_TASK <= lr < RENDER):

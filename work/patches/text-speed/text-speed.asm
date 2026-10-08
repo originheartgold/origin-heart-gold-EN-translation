@@ -6,24 +6,24 @@
 ; sha256 in work/tools/text_speed_patch.py). The build writes its bytes to ../native/text-speed.bin before
 ; armips runs; this source places them in the ARM9 ITCM block and hooks the game into them. The labels below
 ; are the payload's symbols (payload.json "symbols", Thumb bit cleared; `fixes.py check` compares them):
-; Thumb entry points, except text_speed_state (the zeroed runtime frame state, the last 44 bytes).
+; Thumb entry points, except text_speed_state (the zeroed runtime frame state, the last 52 bytes).
 
 .nds
 .thumb
 .include "../include/guards.inc"
 
 .definelabel frame_end,         0x01FF8620
-.definelabel print_task,        0x01FF8708
-.definelabel load_rows,         0x01FF8AA0
-.definelabel load_choice,       0x01FF8AD0
-.definelabel load_label,        0x01FF8B14
-.definelabel commit_speed,      0x01FF8B3C
-.definelabel exit_free,         0x01FF8B68
-.definelabel draw_label,        0x01FF8BA4
-.definelabel setup_sprites,     0x01FF8BC8
-.definelabel pass_end,          0x01FF8C1C
-.definelabel call_print,        0x01FF8DCC
-.definelabel text_speed_state,  0x01FF8E4C
+.definelabel print_task,        0x01FF874C
+.definelabel load_rows,         0x01FF89E0
+.definelabel load_choice,       0x01FF8A10
+.definelabel load_label,        0x01FF8A54
+.definelabel commit_speed,      0x01FF8A7C
+.definelabel exit_free,         0x01FF8AA8
+.definelabel draw_label,        0x01FF8AE4
+.definelabel setup_sprites,     0x01FF8B08
+.definelabel pass_end,          0x01FF8B5C
+.definelabel call_print,        0x01FF8E00
+.definelabel text_speed_state,  0x01FF8F5C
 
 THUMB equ 1                     ; bit 0 of a code pointer: Thumb
 
@@ -38,8 +38,8 @@ THUMB equ 1                     ; bit 0 of a code pointer: Thumb
     expect_end                                  ; guard: the hack's ITCM block still ends here
 TextSpeed_Payload:
     .incbin "../native/text-speed.bin"
-    .if text_speed_state != org() - 44
-      .error "payload.json symbols do not match its bytes: text_speed_state must be the last 44 bytes"
+    .if text_speed_state != org() - 52
+      .error "payload.json symbols do not match its bytes: text_speed_state must be the last 52 bytes"
     .endif
     .align 32, 0
 TextSpeed_ItcmEnd:
