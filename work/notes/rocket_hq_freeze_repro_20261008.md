@@ -4,6 +4,8 @@
 
 The reported Rocket HQ freeze reproduces in melonDS 1.1 on macOS ARM64 with player A's corrected battery save. Released English rc5, current English WIP, and untouched Chinese v4.0.3 all enter the same ARM9 data-abort loop at map 247, position (17,4), before the camera ambush at (23,4). This is an original-hack failure exposed by this emulator configuration, not an English translation regression. Preserve it under D-1002/D-1337.
 
+**Automated (2026-10-08, later):** the harness reproduces this headless on the melonDS 1.1 core: `emu_harness.py hang --case rocket_hq --expect hang` on the untouched Chinese ROM and on a build `--without overworld-texture-frame-bounds` gives the same CPSR, abort LR and faulting instruction as below, and develop's build passes to (23,4). See [melonds_backend.md](melonds_backend.md).
+
 ## Correct input and reproduction
 
 Use `Downloads/Origin_HeartGold_v4.0.3_EN_v1.0.0-rc5.sav` (524288 bytes), SHA-256 `ee32cbb4ecba965b4de02b5bd7ed3dba33d85a6f18fc8c2b154fcc357b97978b`. The save has 14 badges, 113:37 played. Continue starts in Rocket HQ, map 247 at (13,4).
