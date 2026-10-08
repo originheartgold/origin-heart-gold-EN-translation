@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "我最喜欢有很多{NEWLINE}大楼的地方了！{SCROLL}彩虹市、金黄市都是这种{NEWLINE}让人着迷的大城市。{CLEAR}我还听说城都地区有一个{CLEAR}叫满金市的城市,{CLEAR}是不输给这关东两大城市的豪华城市,{CLEAR}真想去那里看看呢。",
-   "en": "I love places with lots of tall buildings!{NEWLINE}Celadon and Saffron are both big cities{CLEAR}like that.{SCROLL}I heard there’s a city in Johto called{NEWLINE}Goldenrod that’s just as grand as{CLEAR}these two.{SCROLL}I’d love to go and see it.",
+   "en": "I love places with lots of tall buildings!{NEWLINE}Celadon and Saffron are both big cities{CLEAR}like that.{SCROLL}I heard there’s a city in Johto called{NEWLINE}Goldenrod that’s just as grand as{CLEAR}these two big Kanto cities.{SCROLL}I’d love to go and see it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV022: omission: restored 关东 (these two big Kanto cities)"
   },
   {
    "id": 9,
@@ -957,10 +957,10 @@
   {
    "id": 118,
    "zh": "谢谢你的资助！！！{SCROLL}有了这5万元,{NEWLINE}我就能还清欠款重新做人了！{CLEAR}呜呜呜呜……{CLEAR}真是没想到我还有上岸的一天！{SCROLL}我曾经把所有的家财{NEWLINE}都换成了代币盒里的筹码,{CLEAR}希望能通过赌博赚大钱。{CLEAR}哪知道赌博机就像老虎一样{CLEAR}吃光了我所有的积蓄,{CLEAR}到头来我手里就只剩下{CLEAR}这个空荡荡的盒子了。{SCROLL}谢谢你给了我重获新生的机会,{NEWLINE}这个代表了我不堪往事的盒子{CLEAR}就送给你吧。",
-   "en": "Thank you for your help!!!{SCROLL}With this $50,000, I can pay off my{NEWLINE}debts and start over! Boo hoo hoo... I{CLEAR}never thought I’d get back on my feet!{SCROLL}I once traded my entire fortune for{NEWLINE}coins in this Coin Case, hoping to strike{CLEAR}it rich by gambling.{SCROLL}But the machines ate up all my savings{NEWLINE}like a hungry beast. In the end, all I{CLEAR}had left was this empty case.{SCROLL}Thank you for giving me a new start.{NEWLINE}This case is a reminder of my shameful{CLEAR}past. Please take it.",
+   "en": "Thank you for your help!!!{SCROLL}With this $50,000, I can pay off my{NEWLINE}debts and start over! Boo hoo hoo... I{CLEAR}never thought I’d get back on my feet!{SCROLL}I once traded my entire fortune for{NEWLINE}coins in this Coin Case, hoping to strike{CLEAR}it rich by gambling.{SCROLL}But the machines ate up all my savings{NEWLINE}like a hungry tiger. In the end, all I{CLEAR}had left was this empty case.{SCROLL}Thank you for giving me a new start.{NEWLINE}This case is a reminder of my shameful{CLEAR}past. Please take it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV022: meaning: 像老虎一样 kept as tiger (slot-machine 老虎机 image)"
   },
   {
    "id": 119,

@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "莉佳『真是出色的比赛。{NEWLINE}我太感动了。{SCROLL}特别为你奉上{NEWLINE}技能机１９,终极吸取……{SCROLL}这是能将吸收到的伤害的一半{NEWLINE}转化为自己的体力的{CLEAR}恐怖技能。！{SCROLL}",
-   "en": "Erika: That was a delightful match.{NEWLINE}I felt inspired.{SCROLL}Please, I wish you to have this TM19{NEWLINE}as a special token.{SCROLL}It is Giga Drain.{NEWLINE}It is a wonderful move that drains{CLEAR}half the damage it inflicts to heal{CLEAR}your Pokémon.{SCROLL}It is indeed a horrifying move.{SCROLL}",
+   "en": "Erika: That was a delightful match. I{NEWLINE}felt inspired.{SCROLL}Please, I wish you to have this TM19 as{NEWLINE}a special token.{SCROLL}It is Giga Drain... a frightening move{NEWLINE}that restores the user’s HP by half the{CLEAR}damage it drains!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0492/3"
+   "origin": "agent",
+   "notes": "US 0492/3 | RV022: addition: dropped US ‘wonderful move’; zh only calls it 恐怖技能 (D-1854)"
   },
   {
    "id": 4,
