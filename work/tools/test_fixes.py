@@ -597,7 +597,7 @@ class AsmLint(unittest.TestCase):
     def test_write_outside_an_area_in_a_macro(self):
         mac = ".macro put, v\n    .halfword v\n.endmacro\n"
         probs = self.lint(mac + ".org 0x02000010\n    expect16 0x2305\n    put 7\n")
-        self.assertProblem(probs, "t/t.asm:11 (via t.asm:7): write outside an .area")
+        self.assertProblem(probs, "t/t.asm:11 (macro line t.asm:7): write outside an .area")
         self.assertEqual(self.lint(mac + ".org 0x02000010\n.area 2\n    expect16 0x2305\n    put 7\n.endarea\n"), [])
 
     def test_area_rules(self):
@@ -672,6 +672,21 @@ class AsmLint(unittest.TestCase):
     def test_read_only_block_may_be_anywhere(self):
         self.assertEqual(self.lint(".org 0x02000100\n    expect16_at 0, 0x1234\n    expect16_at 2, 0x5678\n"
                                    + self.GOOD), [])
+
+    def test_comments_and_quotes(self):
+        self.assertEqual(F._strip_comment('.string "a;b\\"c;d" ; x'), '.string "a;b\\"c;d" ')
+        self.assertEqual(F._strip_comment("mov r0, #1 // x"), "mov r0, #1 ")
+        self.assertEqual(F._split_args('a, f(b, c), "d,e"'), ["a", "f(b, c)", '"d,e"'])
+        self.assertEqual(F.eval_asm_expr("BASE + 4 * (2 << 1) - 0x10 / 4", {"base": "0x100"}), 0x100 + 16 - 4)
+        self.assertIsNone(F.eval_asm_expr("org() + 2", {}))
+
+    def test_real_source_without_its_guard(self):
+        fx = {f["id"]: f for f in F.load_all()}["namelen"]
+        src = F.asm_path(fx).read_text(encoding="utf-8")
+        probs = F.lint_asm(src.replace("    expect16 0x2305             ; mov r3, #5\n", "", 1), fx,
+                           F.load_overlays(), name="namelen.asm")
+        self.assertEqual(len(probs), 1, probs)
+        self.assertIn("namelen/namelen.asm:23: the .area's first write (line 24) has no guard", probs[0])
 
     def test_real_sources_are_clean(self):
         bases = F.load_overlays()

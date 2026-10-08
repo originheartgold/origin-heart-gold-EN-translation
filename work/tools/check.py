@@ -236,7 +236,9 @@ def compare_expected(got: dict, want: dict) -> list:
             why = ("the translation text changed since the hashes were recorded (text_sha1 "
                    f"{got['text_sha1']}, recorded {want.get('text_sha1')}), so the ROM and the patch moved"
                    + ("; the bytes outside the text are unchanged" if nontext_same else "")
-                   ) if text_changed else "the message text is the recorded one, so this is unexpected"
+                   ) if text_changed else ("it follows from the change outside the text (above)" if not nontext_same
+                                           else "the message text and everything outside it are the recorded "
+                                                "ones, so this is unexpected (the container or the patch tool?)")
             probs.append(f"{k} {got[k]}, expected {want.get(k)}: {why}. Record the new hashes after reviewing "
                          f"the build: python3 work/tools/check.py --full --update-expected")
     return probs
