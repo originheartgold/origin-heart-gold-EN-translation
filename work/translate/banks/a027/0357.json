@@ -38,18 +38,18 @@
   {
    "id": 4,
    "zh": "不是有种非常有人气的精灵吗！{SCROLL}就是那个！黄色的身体、{NEWLINE}大红色的脸蛋的精灵！{SCROLL}真想看看它进化之前的样子啊。{SCROLL}",
-   "en": "Do you know that hugely popular{NEWLINE}Pokémon?{SCROLL}The Pokémon that has a yellow body{NEWLINE}and bright red cheeks...{SCROLL}I would love to see what it looks{NEWLINE}like before it evolves.{SCROLL}",
+   "en": "Isn’t there a really popular Pokémon?{NEWLINE}That one! The one with a yellow body{CLEAR}and bright red cheeks! I’d love to see{CLEAR}what it looks like before it evolves.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0364/4"
+   "origin": "agent",
+   "notes": "US 0364/4 | RV014: omission: exclamations/tone of the Chinese"
   },
   {
    "id": 5,
    "zh": "听说城都地区有种{NEWLINE}蓝色的圆滚滚的精灵。{SCROLL}据正辉说,{NEWLINE}尾巴顶端就像个救生圈~{SCROLL}据说还有个{NEWLINE}只有腹部是白色的特征呢。{SCROLL}嗯~嗯,真想看看啊！{NEWLINE}你是不是也想看看？{SCROLL}",
-   "en": "I heard that there is a blue and round{NEWLINE}Pokémon in Johto.{SCROLL}Bill told me that the end of its tail{NEWLINE}works like a float.{SCROLL}Its belly is white. Just the belly.{NEWLINE}I would love to see what it looks like.{SCROLL}",
+   "en": "I heard there’s a round, blue Pokémon{NEWLINE}in Johto. According to Bill, the tip of{CLEAR}its tail looks like a float ring~ And{CLEAR}apparently only its belly is white.{CLEAR}Mm-hmm, I’d love to see it! Don’t you{CLEAR}want to see it too?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0364/5"
+   "origin": "agent",
+   "notes": "US 0364/5 | RV014: omission: closing question; meaning: tail looks like a float ring"
   },
   {
    "id": 6,
@@ -86,10 +86,10 @@
   {
    "id": 10,
    "zh": "不是有种非常有人气的精灵吗！{SCROLL}就是那个！黄色的身体、{NEWLINE}大红色的脸蛋的精灵！{SCROLL}真想看看它进化之前的样子啊~{SCROLL}",
-   "en": "Do you know that hugely popular{NEWLINE}Pokémon?{SCROLL}The Pokémon that has a yellow body{NEWLINE}and bright red cheeks...{SCROLL}I would love to see what it looks{NEWLINE}like before it evolves.{SCROLL}",
+   "en": "Isn’t there a really popular Pokémon?{NEWLINE}That one! The one with a yellow body{CLEAR}and bright red cheeks! I’d love to see{CLEAR}what it looks like before it evolves~{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0364/10"
+   "origin": "agent",
+   "notes": "US 0364/10 | RV014: omission: exclamations/tone of the Chinese"
   },
   {
    "id": 11,

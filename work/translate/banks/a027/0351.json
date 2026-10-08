@@ -277,10 +277,10 @@
   {
    "id": 33,
    "zh": "富子『肯泰罗现在正处在发情期,{NEWLINE}可能会比平时更有攻击性。{CLEAR}不过你却能轻松压制住肯泰罗,{CLEAR}真的是非常厉害呢。{SCROLL}富子『我是拉拉美族的作富子,{NEWLINE}你叫什么名字呢？",
-   "en": "Lara: The Tauros are in heat right{NEWLINE}now, so they can be more aggressive{CLEAR}than usual. But you held it off with{CLEAR}ease. That’s really impressive.{SCROLL}Lara: I’m Lara of the Laramie tribe.{NEWLINE}What’s your name?",
+   "en": "Lara: The Tauros are in heat right now,{NEWLINE}so they can be more aggressive than{CLEAR}usual. But you brought it under control{CLEAR}with ease. That’s really impressive.{SCROLL}Lara: I’m Lara of the Laramie tribe.{NEWLINE}What’s your name?",
    "status": "draft",
    "origin": "agent",
-   "notes": "发情期 → in heat (faithful). | [D-0634 rename 2026-09-29: the Larami tribe → the Laramie tribe] | [D-0633 rename 2026-09-29: Tomiko → Lara]; ext-review RV-002"
+   "notes": "发情期 → in heat (faithful). | [D-0634 rename 2026-09-29: the Larami tribe → the Laramie tribe] | [D-0633 rename 2026-09-29: Tomiko → Lara]; ext-review RV-002 | RV014: meaning: 压制住 = subdued, not 'held off'"
   },
   {
    "id": 34,

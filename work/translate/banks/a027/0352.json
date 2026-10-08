@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "从这边走{NEWLINE}自行车道的话,{CLEAR}是一段艰苦的上坡路哦。{CLEAR}这下有你好受的了~{SCROLL}不过喜欢自行车的话,{NEWLINE}唉嘿呀,唉嘿呀的{CLEAR}蹬一回也不错呢。",
-   "en": "Cycling Road is all uphill from this end.{NEWLINE}It’s really challenging.{SCROLL}Although, it may be interesting to go up{NEWLINE}once pushing really hard on the pedals.",
+   "en": "Taking Cycling Road from this end means{NEWLINE}a tough uphill climb. You’re in for a{CLEAR}rough ride~{SCROLL}But if you love bikes, huffing and{NEWLINE}puffing up it once isn’t so bad either.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0359/0"
+   "origin": "agent",
+   "notes": "US 0359/0 | RV014: omission: restored 这下有你好受的了 and the heave-ho pedalling"
   },
   {
    "id": 1,

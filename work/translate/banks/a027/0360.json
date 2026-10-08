@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "……能协助精灵训练师{CLEAR}是我们兄弟的荣幸,{SCROLL}训练师来搭话时,{NEWLINE}会送上实用的道具！{SCROLL}致　弟弟、妹妹们{NEWLINE}长女　月子　……{SCROLL}要读下一页吗？{VAR:0200:0}",
-   "en": "To my brothers and sisters:{SCROLL}We take pride in serving{NEWLINE}Pokémon Trainers.{SCROLL}When Trainers talk to you, give them{NEWLINE}something useful.{SCROLL}Love,{NEWLINE}Monica{SCROLL}Keep reading? {VAR:0200:0}",
+   "en": "To my brothers and sisters:{SCROLL}We take pride in serving{NEWLINE}Pokémon Trainers.{SCROLL}When Trainers talk to you, give them{NEWLINE}something useful.{SCROLL}Monica,{NEWLINE}eldest daughter{SCROLL}Keep reading? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0367/1"
+   "origin": "agent",
+   "notes": "US 0367/1 | RV014: omission: 长女 (eldest daughter) instead of invented 'Love,'"
   },
   {
    "id": 2,

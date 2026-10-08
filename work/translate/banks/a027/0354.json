@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "前面是……白银山哦,{NEWLINE}强得令人害怕的精灵{CLEAR}栖息在这里。{SCROLL}你还是……{NEWLINE}不要去比较好。",
-   "en": "This way leads to{NEWLINE}Mt. Silver.{SCROLL}You’ll see scary-strong Pokémon{NEWLINE}out there.{CLEAR}You’re not ready for it.",
+   "en": "This way leads to... Mt. Silver.{NEWLINE}Terrifyingly strong Pokémon live out{CLEAR}there. You’d better... not go.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0361/1"
+   "origin": "agent",
+   "notes": "US 0361/1 | RV014: meaning: 你还是不要去比较好 is advice, not 'You’re not ready'"
   },
   {
    "id": 2,
@@ -374,18 +374,18 @@
   {
    "id": 46,
    "zh": "哦哦,是{VAR:0103:0}先生啊！{NEWLINE}我已经接到通知了,您是来养伤的吧？{CLEAR}精灵联盟专门为您安排了康复师,{CLEAR}她已经在山脚下的小屋等着您了,{CLEAR}您过去找她就可以了。",
-   "en": "Oh! It’s you, {VAR:0103:0}! I’ve been{NEWLINE}notified. You’re here to recover from{CLEAR}your injuries, right?{SCROLL}The Pokémon League has arranged a{NEWLINE}physical therapist just for you.{SCROLL}She’s waiting for you in the cabin at the{NEWLINE}foot of the mountain. Just go see her{CLEAR}there.",
+   "en": "Oh! It’s Mr. {VAR:0103:0}! I’ve been{NEWLINE}notified. You’re here to recover from{CLEAR}your injuries, right?{SCROLL}The Pokémon League has arranged a{NEWLINE}physical therapist just for you. She’s{CLEAR}waiting for you in the cabin at the foot{CLEAR}of the mountain. Just go see her there.",
    "status": "draft",
    "origin": "agent",
-   "notes": "#46 (male player, 先生) / #47 (female player, 小姐): same English."
+   "notes": "#46 (male player, 先生) / #47 (female player, 小姐): same English. | RV014: omission: honorific 先生"
   },
   {
    "id": 47,
    "zh": "哦哦,是{VAR:0103:0}小姐呀！{NEWLINE}我已经接到通知了,您是来养伤的吧？{CLEAR}精灵联盟专门为您安排了康复师,{CLEAR}她已经在山脚下的小屋等着您了,{CLEAR}您过去找她就可以了。",
-   "en": "Oh! It’s you, {VAR:0103:0}! I’ve been{NEWLINE}notified. You’re here to recover from{CLEAR}your injuries, right?{SCROLL}The Pokémon League has arranged a{NEWLINE}physical therapist just for you.{SCROLL}She’s waiting for you in the cabin at the{NEWLINE}foot of the mountain. Just go see her{CLEAR}there.",
+   "en": "Oh! It’s Ms. {VAR:0103:0}! I’ve been{NEWLINE}notified. You’re here to recover from{CLEAR}your injuries, right?{SCROLL}The Pokémon League has arranged a{NEWLINE}physical therapist just for you. She’s{CLEAR}waiting for you in the cabin at the foot{CLEAR}of the mountain. Just go see her there.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV014: omission: honorific 小姐"
   },
   {
    "id": 48,

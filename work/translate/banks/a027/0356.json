@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "{VAR:0103:0}『啊……我起跑时冲得太猛,{NEWLINE}不小心就往前撞上去了……",
-   "en": "{VAR:0103:0}: Ah... Sorry, I took off too{NEWLINE}fast and ran right into you...",
+   "en": "{VAR:0103:0}: Ah... I took off too fast at{NEWLINE}the start and bumped right into you...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV014: addition: removed apology not in the Chinese"
   },
   {
    "id": 13,
@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "切！你这走路不长眼的小鬼。{NEWLINE}就让我在这对战庆典上,{CLEAR}好好教教你怎么看路吧！",
-   "en": "Tch! You don’t even look where you’re{NEWLINE}going, brat.{SCROLL}I’ll teach you some manners right here{NEWLINE}at the festival!",
+   "en": "Tch! You don’t even look where you’re{NEWLINE}going, brat.{SCROLL}Right here at the festival, I’ll teach{NEWLINE}you to watch where you’re going!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV014: meaning: 教教你怎么看路, not 'manners'"
   },
   {
    "id": 15,
@@ -466,18 +466,18 @@
   {
    "id": 55,
    "zh": "啊——弟弟你好厉害！{NEWLINE}姐姐我喜欢上你啦！{CLEAR}怎么样啊,{CLEAR}要不要考虑跟姐姐交往看看呢？{SCROLL}呵呵呵,开玩笑啦。{NEWLINE}请继续加油喔！",
-   "en": "Ah, you’re amazing, little guy! I think{NEWLINE}I’m falling for you!{SCROLL}How about it? Want to go out with me?{SCROLL}Hee hee, just kidding. Keep it up!",
+   "en": "Ahh, you’re amazing, little bro! Big Sis{NEWLINE}has fallen for you! How about it? Want{CLEAR}to think about going out with Big Sis?{SCROLL}Hee hee, just kidding. Keep it up!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV014: voice: 姐姐 self-reference and 喜欢上你啦 kept"
   },
   {
    "id": 56,
    "zh": "妹妹你的身手也很厉害嘛。{NEWLINE}如果你是个男孩子的话,{CLEAR}姐姐我可能会喜欢上你呢！{SCROLL}那么接下来的比赛{NEWLINE}请继续加油咯！",
-   "en": "You’ve got some moves too, girl. If you{NEWLINE}were a boy, I might fall for you!{SCROLL}Well, keep it up for the rest of the{NEWLINE}race!",
+   "en": "You’ve got some moves too, little sis.{NEWLINE}If you were a boy, Big Sis might’ve{CLEAR}fallen for you!{SCROLL}Well, keep it up for the rest{NEWLINE}of the race!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV014: voice: 姐姐 self-reference kept"
   },
   {
    "id": 57,
@@ -858,10 +858,10 @@
   {
    "id": 104,
    "zh": "{VAR:0103:0}感觉非常疲惫！",
-   "en": "{VAR:0103:0} suddenly feels very drowsy!",
+   "en": "{VAR:0103:0} feels completely exhausted!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV014: meaning: 感觉非常疲惫 = exhausted; 'suddenly' and 'drowsy' not in Chinese"
   },
   {
    "id": 105,
@@ -1450,10 +1450,10 @@
   {
    "id": 178,
    "zh": "小霞『切~那算了。",
-   "en": "Misty: What a letdown...",
+   "en": "Misty: Tch~ Forget it, then.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US kept."
+   "origin": "agent",
+   "notes": "US kept. | RV014: meaning: 切~那算了"
   },
   {
    "id": 179,
@@ -1474,10 +1474,10 @@
   {
    "id": 181,
    "zh": "小霞『嘿嘿,不愧是我,拍得真不错！",
-   "en": "Misty: Heh heh, that came out great. Of{NEWLINE}course it did, I’m in it!",
+   "en": "Misty: Heh heh, that’s me for you. It{NEWLINE}came out great!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV014: meaning: 不愧是我 has no 'I’m in it' reason (D-1764)"
   },
   {
    "id": 182,
@@ -1490,10 +1490,10 @@
   {
    "id": 183,
    "zh": "小霞『让我看看啊……{NEWLINE}嗯,拍的很不错嘛,真不愧是我。{CLEAR}不过……我觉得……{CLEAR}我们两个可以站得更近一点……",
-   "en": "Misty: Let me see... Mm, it came out{NEWLINE}really nice. Well, I am in it, after all.{SCROLL}But... I think... we could stand a little{NEWLINE}closer...",
+   "en": "Misty: Let me see... Mm, it came out{NEWLINE}really nice. That’s me for you.{SCROLL}But... I think... we could{NEWLINE}stand a little closer...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV014: meaning: 真不愧是我 has no 'I’m in it' reason (D-1764)"
   },
   {
    "id": 184,

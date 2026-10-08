@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "你跟其他训练家不一样,{NEWLINE}愿意花钱在我这休息,{CLEAR}那大爷我就好心给你点建议。{SCROLL}这石英大会可不是闹着玩的,{NEWLINE}去那里参赛的训练家可都特别厉害。{CLEAR}你要是没有充足的准备,{CLEAR}在大会上肯定会被修理得很惨,{CLEAR}甚至从此失去作为训练家的自信。{SCROLL}为了保证你和你的精灵{NEWLINE}在石英大会上一切平安,{CLEAR}在我这里买份保险怎么样？",
-   "en": "Unlike the other Trainers, you’re willing{NEWLINE}to pay to rest here, so this old man will{CLEAR}kindly give you some advice.{SCROLL}The Indigo Conference is no joke.{SCROLL}The Trainers competing there are all{NEWLINE}seriously tough.{SCROLL}If you’re not fully prepared, you’re{NEWLINE}sure to get thrashed, and you might{CLEAR}even lose your confidence as a Trainer{CLEAR}for good.{SCROLL}To keep you and your Pokémon safe at{NEWLINE}the Indigo Conference, how about taking{CLEAR}out a policy with me?",
+   "en": "Unlike the other Trainers, you’re willing{NEWLINE}to pay to rest here, so yours truly will{CLEAR}be kind and give you some advice.{SCROLL}The Indigo Conference is no joke. The{NEWLINE}Trainers competing there are all{CLEAR}seriously tough.{SCROLL}If you’re not fully prepared, you’re{NEWLINE}sure to get thrashed, and you might{CLEAR}even lose your confidence as a Trainer{CLEAR}for good.{SCROLL}To keep you and your Pokémon safe at{NEWLINE}the Indigo Conference, how about taking{CLEAR}out a policy with me?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV014: voice: 大爷我 is swagger, not 'this old man'"
   },
   {
    "id": 7,
@@ -189,10 +189,10 @@
   {
    "id": 22,
    "zh": "你跟其他训练家不一样,{NEWLINE}愿意花钱在我这休息,{CLEAR}那大爷我就好心给你点建议。{SCROLL}这石英大会可不是闹着玩的,{NEWLINE}去那里参赛的训练家可都特别厉害。{CLEAR}你要是没有充足的准备,{CLEAR}在大会上肯定会被修理得很惨,{CLEAR}甚至从此失去作为训练家的自信。{SCROLL}为了保证你和你的精灵{NEWLINE}即使被揍得很惨也能剩一口气,{CLEAR}我可以把气息腰带这个道具卖给你。{CLEAR}怎么样,要买吗？",
-   "en": "Unlike the other Trainers, you’re willing{NEWLINE}to pay to rest here, so this old man will{CLEAR}kindly give you some advice.{SCROLL}The Indigo Conference is no joke.{SCROLL}The Trainers competing there are all{NEWLINE}seriously tough.{SCROLL}If you’re not fully prepared, you’re{NEWLINE}sure to get thrashed, and you might{CLEAR}even lose your confidence as a Trainer{CLEAR}for good.{SCROLL}So you and your Pokémon have at least{NEWLINE}one breath left, even when you get{CLEAR}beaten to a pulp at the Indigo{CLEAR}Conference, I can sell you an item{CLEAR}called a Focus Sash.{SCROLL}Well? Want to buy one?",
+   "en": "Unlike the other Trainers, you’re willing{NEWLINE}to pay to rest here, so yours truly will{CLEAR}be kind and give you some advice.{SCROLL}The Indigo Conference is no joke. The{NEWLINE}Trainers competing there are all{CLEAR}seriously tough.{SCROLL}If you’re not fully prepared, you’re{NEWLINE}sure to get thrashed, and you might{CLEAR}even lose your confidence as a Trainer{CLEAR}for good.{SCROLL}So that you and your Pokémon still have{NEWLINE}one breath left even if you get beaten{CLEAR}to a pulp at the Indigo Conference,{CLEAR}I can sell you a Focus Sash.{SCROLL}Well? Want to buy one?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV014: voice: 大爷我 swagger; grammar of the Focus Sash sentence"
   },
   {
    "id": 23,

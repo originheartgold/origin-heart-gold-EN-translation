@@ -131,34 +131,34 @@
   {
    "id": 15,
    "zh": "好奇怪啊,{VAR:0103:0}！{SCROLL}打开手机的收音机后,{NEWLINE}广播说了３年前的日期！{SCROLL}",
-   "en": "{VAR:0103:0}, something is strange!{SCROLL}I heard the radio mentioning{NEWLINE}the date from three years ago!{SCROLL}",
+   "en": "This is so weird, {VAR:0103:0}! I turned on{NEWLINE}the radio on my phone, and it gave a{CLEAR}date from three years ago!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0360/15"
+   "origin": "agent",
+   "notes": "US 0360/15 | RV014: omission: phone radio; US wording replaced"
   },
   {
    "id": 16,
    "zh": "好奇怪啊,{VAR:0103:0}！{SCROLL}打开手机的收音机后,{NEWLINE}广播说了３年前的日期！{SCROLL}",
-   "en": "{VAR:0103:0}, something is strange!{SCROLL}I heard the radio mentioning{NEWLINE}the date from three years ago!{SCROLL}",
+   "en": "This is so weird, {VAR:0103:0}! I turned on{NEWLINE}the radio on my phone, and it gave a{CLEAR}date from three years ago!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0360/16"
+   "origin": "agent",
+   "notes": "US 0360/16 | RV014: omission: phone radio; US wording replaced"
   },
   {
    "id": 17,
    "zh": "难不成……那个精灵……{NEWLINE}雪拉比？{SCROLL}噢！{NEWLINE}原因在雪拉比呀！{SCROLL}我爷爷说过的哦{NEWLINE}说雪拉比具有{VAR:FF00:1}穿越时空{VAR:FF00:0},{CLEAR}这是种奇异的力量,{CLEAR}能够自由在时空中穿梭！{SCROLL}肯定是我们被雪拉比{NEWLINE}带回到过去的时代了！{SCROLL}",
-   "en": "Is that...am I looking at...{NEWLINE}Celebi?{SCROLL}That explains it!{NEWLINE}Celebi must have caused all this!{SCROLL}My grandpa once told me that{NEWLINE}Celebi can travel through time using{CLEAR}its mystic power called {VAR:FF00:1}Time Travel{VAR:FF00:0}!{SCROLL}Celebi must have taken us back in time!{NEWLINE}Literally!{SCROLL}",
+   "en": "Could it be... that Pokémon... Celebi?{NEWLINE}Oh! Celebi is behind this!{SCROLL}My grandpa told me Celebi has a{NEWLINE}mysterious power called {VAR:FF00:1}Time Travel{VAR:FF00:0}{CLEAR}that lets it move freely through time!{SCROLL}Celebi must have taken us back in time!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0360/17; modernised from US 0360#17"
+   "origin": "agent",
+   "notes": "US 0360/17; modernised from US 0360#17 | RV014: addition: dropped invented 'Literally!'; follows hack Chinese"
   },
   {
    "id": 18,
    "zh": "难不成……那个精灵……{NEWLINE}雪拉比？{SCROLL}一定是！{NEWLINE}原因在雪拉比哦！{SCROLL}我爷爷说过的哦{NEWLINE}说雪拉比具有{VAR:FF00:1}穿越时空{VAR:FF00:0},{CLEAR}这是种奇异的力量,{CLEAR}能够自由在时空中穿梭！{SCROLL}肯定是咱们被雪拉比{NEWLINE}带回到过去的时代了！{SCROLL}",
-   "en": "Is that...am I looking at...{NEWLINE}Celebi?{SCROLL}That explains it!{NEWLINE}Celebi must have caused all this!{SCROLL}My grandpa once told me that{NEWLINE}Celebi can travel through time using{CLEAR}its mystic power called {VAR:FF00:1}Time Travel{VAR:FF00:0}!{SCROLL}Celebi must have taken us back in time!{NEWLINE}Literally!{SCROLL}",
+   "en": "Could it be... that Pokémon... Celebi?{NEWLINE}It has to be! Celebi is behind this!{SCROLL}My grandpa told me Celebi has a{NEWLINE}mysterious power called {VAR:FF00:1}Time Travel{VAR:FF00:0}{CLEAR}that lets it move freely through time!{SCROLL}Celebi must have taken us back in time!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0360/18; modernised from US 0360#18"
+   "origin": "agent",
+   "notes": "US 0360/18; modernised from US 0360#18 | RV014: addition: dropped invented 'Literally!'; restored 一定是"
   },
   {
    "id": 19,
@@ -179,18 +179,18 @@
   {
    "id": 21,
    "zh": "阿响『什么呀,那家伙！{NEWLINE}好过分啊！{SCROLL}但是那两个人的对话……{NEWLINE}到底什么意思？{SCROLL}{VAR:FF00:1}火箭队{VAR:FF00:0}复活？{SCROLL}我记得火箭队３年前{NEWLINE}被关东地区的孩子们{CLEAR}消灭了啊……{SCROLL}这么说的话,{NEWLINE}这里果然是３年前啊！{SCROLL}",
-   "en": "Ethan: Who does he think he is?{NEWLINE}That was unnecessary!{SCROLL}But what were they talking about?{NEWLINE}The revival of {VAR:FF00:1}Team Rocket{VAR:FF00:0}...?{SCROLL}They say that Team Rocket was{NEWLINE}removed from the Kanto region{CLEAR}by a child three years ago.{SCROLL}So this really is three years ago!{SCROLL}",
+   "en": "Ethan: What’s with that guy?! That was{NEWLINE}so mean!{SCROLL}But what were they talking about?{NEWLINE}The revival of {VAR:FF00:1}Team Rocket{VAR:FF00:0}...?{SCROLL}I remember Team Rocket being wiped out{NEWLINE}three years ago by some kids in the{CLEAR}Kanto region...{SCROLL}So this really is three years ago!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0360/21"
+   "origin": "agent",
+   "notes": "US 0360/21 | RV014: meaning: 我记得 / 孩子们 (plural kids), not 'they say ... a child'"
   },
   {
    "id": 22,
    "zh": "琴音『什么嘛,那家伙！{NEWLINE}真过分啊~！{SCROLL}但是那两个人的对话……{NEWLINE}到底什么意思？{SCROLL}{VAR:FF00:1}火箭队{VAR:FF00:0}复活？{SCROLL}我记得火箭队３年前{NEWLINE}被关东地区的孩子们{CLEAR}消灭了啊……{SCROLL}这么说的话,{NEWLINE}这里果然是３年前呀！{SCROLL}",
-   "en": "Lyra: Who does he think he is?{NEWLINE}That was unnecessary!{SCROLL}But what were they talking about?{NEWLINE}The revival of {VAR:FF00:1}Team Rocket{VAR:FF00:0}...?{SCROLL}They say that Team Rocket was{NEWLINE}removed from the Kanto region{CLEAR}by a child three years ago.{SCROLL}So this really is three years ago!{SCROLL}",
+   "en": "Lyra: What’s with that guy?! That was{NEWLINE}so mean~!{SCROLL}But what were they talking about?{NEWLINE}The revival of {VAR:FF00:1}Team Rocket{VAR:FF00:0}...?{SCROLL}I remember Team Rocket being wiped out{NEWLINE}three years ago by some kids in the{CLEAR}Kanto region...{SCROLL}So this really is three years ago!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0360/22"
+   "origin": "agent",
+   "notes": "US 0360/22 | RV014: meaning: 我记得 / 孩子们 (plural kids), not 'they say ... a child'"
   },
   {
    "id": 23,
@@ -283,10 +283,10 @@
   {
    "id": 34,
    "zh": "火箭队正在执行任务,{NEWLINE}闲杂人让开！",
-   "en": "Team Rocket is on a mission. Out of the{NEWLINE}way, nobody!",
+   "en": "Team Rocket is on a mission.{NEWLINE}Bystanders, clear off!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV014: grammar: 'Out of the way, nobody!' unclear; 闲杂人让开"
   },
   {
    "id": 35,
