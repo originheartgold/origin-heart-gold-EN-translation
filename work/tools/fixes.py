@@ -448,12 +448,14 @@ _LINT_READ_RE = re.compile(r"\breadu?(?:8|16|32|64)\s*\(", re.I)
 
 def _strip_comment(line: str) -> str:
     """The line without its `;` or `//` comment (quotes respected)."""
-    quote = None
+    quote, escaped = None, False
     for i, ch in enumerate(line):
         if quote:
-            if ch == "\\":
-                continue
-            if ch == quote:
+            if escaped:
+                escaped = False
+            elif ch == "\\":
+                escaped = True
+            elif ch == quote:
                 quote = None
         elif ch in "\"'":
             quote = ch
@@ -628,7 +630,7 @@ def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_ro
     state = {"file": None, "base": None, "block": None, "depth": 0, "area": None}
 
     def loc(stack):
-        return " (" + ", ".join(f"via {s}:{n}" for s, n in stack) + ")" if stack else ""
+        return " (" + ", ".join(f"macro line {s}:{n}" for s, n in stack) + ")" if stack else ""
 
     def ranges_for(key, base):
         if key not in regions:

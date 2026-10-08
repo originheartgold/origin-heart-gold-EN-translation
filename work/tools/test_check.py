@@ -46,11 +46,13 @@ class Expected(unittest.TestCase):
         probs = C.compare_expected(GOT, want)
         self.assertIn("the ROM outside the message text changed", probs[0])
         self.assertNotIn("the bytes outside the text are unchanged", "".join(probs))
+        probs = C.compare_expected(GOT, dict(GOT, nontext_sha1="N" * 40, rom_sha1="R" * 40))
+        self.assertIn("it follows from the change outside the text (above)", probs[1])
 
     def test_same_text_other_rom_is_unexpected(self):
         probs = C.compare_expected(GOT, dict(GOT, rom_sha1="R" * 40))
         self.assertEqual(len(probs), 1)
-        self.assertIn("the message text is the recorded one, so this is unexpected", probs[0])
+        self.assertIn("are the recorded ones, so this is unexpected", probs[0])
 
 
 class Runner(unittest.TestCase):
