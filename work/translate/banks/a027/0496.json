@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "要把图鉴全部填满{NEWLINE}是件很累人的事情吧？{SCROLL}但是真正宝贵的是,{NEWLINE}为了集齐图鉴{CLEAR}而周游全国{CLEAR}所花费的时间。{SCROLL}你真的是个人才！{SCROLL}没有骗你哦！",
-   "en": "I bet it was a long way to complete{NEWLINE}the Pokédex.{SCROLL}Remember, the most precious thing of{NEWLINE}all was the time you’ve worked hard{CLEAR}going everywhere to complete{CLEAR}the Pokédex.{SCROLL}I just said something deep! Seriously!",
+   "en": "Filling the whole Pokédex must have been{NEWLINE}exhausting, right? But what’s truly{CLEAR}precious is the time you spent traveling{CLEAR}all over the country to complete it. You{CLEAR}really are something! I’m not kidding!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0503/3"
+   "origin": "agent",
+   "notes": "US 0503/3 | RV023: meaning: praise is of the player, not the speaker (D-1856)"
   },
   {
    "id": 4,
@@ -62,18 +62,18 @@
   {
    "id": 7,
    "zh": "我是音像设计师,{SCROLL}是为游戏音乐作曲的工作。{SCROLL}要是你把关东的8个{NEWLINE}道馆徽章都集齐的话,{CLEAR}我会给你样好东西哦。",
-   "en": "I am the Sound Designer!{NEWLINE}I compose music.{SCROLL}I’ll give you something cool if you{NEWLINE}manage to collect all eight{CLEAR}Kanto Badges and show them to me.",
+   "en": "I am the Sound Designer!{NEWLINE}I compose music for games.{SCROLL}I’ll give you something cool if you{NEWLINE}manage to collect all eight{CLEAR}Kanto Badges and show them to me.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0503/7"
+   "origin": "agent",
+   "notes": "US 0503/7 | RV023: omission: 为游戏音乐作曲 = music for games"
   },
   {
    "id": 8,
    "zh": "我是音像设计师,{SCROLL}是为游戏音乐作曲的工作。{SCROLL}什么,你！{NEWLINE}把关东道馆徽章{CLEAR}都收集齐了！？{SCROLL}真是了不起啊,{NEWLINE}作为奖励,给你样好东西。{SCROLL}",
-   "en": "I am the Sound Designer!{NEWLINE}I compose music.{SCROLL}Wow, you have collected{NEWLINE}all the Kanto Badges already!{CLEAR}That’s great!{SCROLL}I’ll give you something cool{NEWLINE}for that.{SCROLL}",
+   "en": "I am the Sound Designer!{NEWLINE}I compose music for games.{SCROLL}Wow, you have collected{NEWLINE}all the Kanto Badges already!{CLEAR}That’s great!{SCROLL}I’ll give you something cool{NEWLINE}for that.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0503/8"
+   "origin": "agent",
+   "notes": "US 0503/8 | RV023: omission: 为游戏音乐作曲 = music for games"
   },
   {
    "id": 9,

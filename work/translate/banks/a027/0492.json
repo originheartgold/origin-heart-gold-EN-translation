@@ -198,10 +198,10 @@
   {
    "id": 24,
    "zh": "我男朋友还真是没用,{NEWLINE}才逛一会儿商场就累得要休息,{CLEAR}老娘我可是精力十足呢！",
-   "en": "My boyfriend is so useless. We’ve barely{NEWLINE}shopped at all and he’s already worn{CLEAR}out and needs a rest. I’ve got energy{CLEAR}to spare!",
+   "en": "My boyfriend is so useless. We’ve barely{NEWLINE}shopped at all and he’s already worn{CLEAR}out and needs a rest. Me, though? This{CLEAR}girl’s got energy to burn!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV023: voice: carry 老娘 swagger"
   },
   {
    "id": 25,
@@ -502,10 +502,10 @@
   {
    "id": 62,
    "zh": "武藏『哼,想知道吗？{NEWLINE}那就用你的实力来问吧！",
-   "en": "Jessie: Hmph! Want to know? Then make{NEWLINE}us tell you with your strength!",
+   "en": "Jessie: Hmph! Want to know? Then make{NEWLINE}us talk, if you’re strong enough!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV023: grammar: unnatural phrasing of 用你的实力来问"
   },
   {
    "id": 63,

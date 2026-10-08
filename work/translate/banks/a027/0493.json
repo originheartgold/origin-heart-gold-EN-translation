@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "已经到达{NEWLINE}您要前往的楼层了。",
-   "en": "Uh... We are already on that floor?",
+   "en": "We have already arrived at your floor.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0500/4"
+   "origin": "agent",
+   "notes": "US 0500/4 | RV023: meaning: plain statement, not a confused question"
   },
   {
    "id": 5,

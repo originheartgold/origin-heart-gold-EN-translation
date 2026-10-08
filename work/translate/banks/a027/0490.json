@@ -94,18 +94,18 @@
   {
    "id": 11,
    "zh": "阿速『谢谢！{NEWLINE}那我拍了哦……{SCROLL}",
-   "en": "Falkner: All right!{NEWLINE}Are you ready?{SCROLL}",
+   "en": "Falkner: Thank you! I’ll take it,{NEWLINE}then...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0497/11"
+   "origin": "agent",
+   "notes": "US 0497/11 | RV023: meaning: 谢谢！那我拍了哦 (US line said something else)"
   },
   {
    "id": 12,
    "zh": "阿速『嗯！{NEWLINE}拍的真好。",
-   "en": "Falkner: Yes!{NEWLINE}We look good.",
+   "en": "Falkner: Yes! That came out really well.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0497/12"
+   "origin": "agent",
+   "notes": "US 0497/12 | RV023: meaning: 拍的真好 = the photo came out well"
   },
   {
    "id": 13,
@@ -142,10 +142,10 @@
   {
    "id": 17,
    "zh": "你！听我说！{SCROLL}以前只有在城都地区的桔梗市{NEWLINE}才能买到隧道信纸,{SCROLL}现在,这家店{NEWLINE}也终于进货了！",
-   "en": "You know what?{SCROLL}Tunnel Mail is finally available{NEWLINE}at this department store!{SCROLL}Previously, it was only sold{NEWLINE}in Violet City.",
+   "en": "Hey, you! Listen! Tunnel Mail used to be{NEWLINE}sold only in Violet City in Johto. Now{CLEAR}this store finally stocks it too!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0497/17"
+   "origin": "agent",
+   "notes": "US 0497/17 | RV023: omission: restored 你！听我说！ and 城都地区"
   },
   {
    "id": 18,
@@ -198,18 +198,18 @@
   {
    "id": 24,
    "zh": "阿速『谢谢！{NEWLINE}那我拍了哦……{SCROLL}",
-   "en": "Falkner: All right!{NEWLINE}Are you ready?{SCROLL}",
+   "en": "Falkner: Thank you! I’ll take it,{NEWLINE}then...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0497/11"
+   "origin": "agent",
+   "notes": "US 0497/11 | RV023: meaning: 谢谢！那我拍了哦 (US line said something else)"
   },
   {
    "id": 25,
    "zh": "阿速『嗯！{NEWLINE}拍的真好。",
-   "en": "Falkner: Yes!{NEWLINE}We look good.",
+   "en": "Falkner: Yes! That came out really well.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0497/12"
+   "origin": "agent",
+   "notes": "US 0497/12 | RV023: meaning: 拍的真好 = the photo came out well"
   },
   {
    "id": 26,

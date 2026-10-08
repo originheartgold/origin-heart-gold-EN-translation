@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "技能机专柜{NEWLINE}有卖稀有物品哦。",
-   "en": "The TM Shop sells{NEWLINE}some rare moves.",
+   "en": "The TM Shop sells some rare items.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0496/3"
+   "origin": "agent",
+   "notes": "US 0496/3 | RV023: meaning: 稀有物品 = rare items, not moves"
   },
   {
    "id": 4,
