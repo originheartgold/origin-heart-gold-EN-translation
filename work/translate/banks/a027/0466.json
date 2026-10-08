@@ -229,10 +229,10 @@
   {
    "id": 26,
    "zh": "恭喜诸位能集齐8枚徽章{NEWLINE}来到这里参加石英大会。{SCROLL}在此,精灵联盟对诸位{NEWLINE}出众的实力和辛苦的旅程{CLEAR}致以真诚的赞赏和深切的慰问。",
-   "en": "Congratulations on collecting eight{NEWLINE}Badges and making it here to compete in{CLEAR}the Indigo Conference.{SCROLL}The Pokémon League salutes your{NEWLINE}outstanding skill...{SCROLL}And offers its heartfelt thanks for all{NEWLINE}the hardships of your long journeys.",
+   "en": "Congratulations on collecting eight{NEWLINE}Badges and making it here to compete in{CLEAR}the Indigo Conference.{SCROLL}The Pokémon League offers its sincere{NEWLINE}admiration for your outstanding skill...{SCROLL}And its heartfelt sympathy for the{NEWLINE}hardships of your long journeys.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV020: meaning: 慰问 is sympathy for hardship, not thanks"
   },
   {
    "id": 27,
@@ -373,10 +373,10 @@
   {
    "id": 44,
    "zh": "小绿『{VAR:0103:0},你这次没有迟到啊。{NEWLINE}不过想要在石英大会上取得成绩,{CLEAR}可不是来得早就行的。{CLEAR}来参加比赛的可都是{CLEAR}至少拥有8枚徽章的高手,{CLEAR}你可要当心一不小心被干掉哦。",
-   "en": "Blue: {VAR:0103:0}, you’re not late for{NEWLINE}once.{SCROLL}But doing well at the Indigo Conference{NEWLINE}takes more than showing up early.{SCROLL}Everyone here is a pro with at least{NEWLINE}eight Badges.{SCROLL}Watch out you don’t get knocked out{NEWLINE}when you least expect it.",
+   "en": "Blue: {VAR:0103:0}, you’re not late for{NEWLINE}once.{SCROLL}But doing well at the Indigo Conference{NEWLINE}takes more than showing up early.{SCROLL}Everyone here is a pro with at least{NEWLINE}eight Badges.{SCROLL}Watch out you don’t get taken out when{NEWLINE}you least expect it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "#44 (teasing) / #45 (friendly) are Blue's two tones; the friendly one is probably the female-player (Blue romance) route."
+   "notes": "#44 (teasing) / #45 (friendly) are Blue's two tones; the friendly one is probably the female-player (Blue romance) route. | RV020: softened: 被干掉 'taken out', not 'knocked out'"
   },
   {
    "id": 45,
@@ -1493,10 +1493,10 @@
   {
    "id": 184,
    "zh": "小绿『在出发旅行之前,{NEWLINE}咱们一起在真新镇长大,{CLEAR}那时候我每天都能看到你。{CLEAR}自从出发旅行之后,{CLEAR}跟你见面的次数越来越少。{CLEAR}但是我对你的思念却越来越重。{CLEAR}虽然我经常争强好胜,{CLEAR}想要在训练家这条路上快你一步,{CLEAR}但是当我看到你的进步时,{CLEAR}我也是打从心底里替你高兴的。{SCROLL}小绿『正是因为你的存在,{NEWLINE}让我体会到了什么叫做{CLEAR}高兴了你的高兴,{CLEAR}悲伤了你的悲伤。{CLEAR}这可能就是喜欢一个人的感觉吧。",
-   "en": "Blue: Before our journey, we grew up{NEWLINE}together in Pallet Town,{SCROLL}and I saw you every day.{SCROLL}After we set out, I saw you less and{NEWLINE}less...{SCROLL}But I missed you more and more.{SCROLL}I always try to stay one step ahead of{NEWLINE}you as a Trainer...{SCROLL}But whenever I saw how much you’d{NEWLINE}grown,{SCROLL}I was truly happy for you, deep down.{SCROLL}Blue: Because of you, I learned what it{NEWLINE}means to be happy when you’re happy,{CLEAR}and sad when you’re sad.{SCROLL}Maybe that’s what it feels like to love{NEWLINE}someone.",
+   "en": "Blue: Before our journey, we grew up{NEWLINE}together in Pallet Town,{SCROLL}and I saw you every day.{SCROLL}After we set out, I saw you less and{NEWLINE}less...{SCROLL}But I missed you more and more.{SCROLL}I’m always so competitive,{SCROLL}trying to stay one step ahead of you as{NEWLINE}a Trainer...{SCROLL}But whenever I saw how much you’d{NEWLINE}grown,{SCROLL}I was truly happy for you, deep down.{SCROLL}Blue: Because of you, I learned what it{NEWLINE}means to be happy when you’re happy,{CLEAR}and sad when you’re sad.{SCROLL}Maybe that’s what it feels like to love{NEWLINE}someone.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV020: omission: 争强好胜 (competitive) restored"
   },
   {
    "id": 185,
@@ -1680,18 +1680,18 @@
   {
    "id": 207,
    "zh": "{VAR:0103:0}『怎么了小银？{NEWLINE}你这还是第一次叫我姐姐呢。{CLEAR}毕竟你以前都是叫我{CLEAR}混蛋冠军、笨蛋冠军什么的。",
-   "en": "{VAR:0103:0}: What’s wrong, Silver?{SCROLL}That’s the first time you’ve ever called{NEWLINE}me Big Sis.{SCROLL}You always used to call me stuff like{NEWLINE}jerk Champion or stupid Champion.",
+   "en": "{VAR:0103:0}: What’s wrong, Silver?{SCROLL}That’s the first time you’ve ever called{NEWLINE}me Big Sis.{SCROLL}You always used to call me stuff like{NEWLINE}bastard Champion or stupid Champion.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV020: softened: 混蛋冠军 'bastard Champion', as in a027/0126#80"
   },
   {
    "id": 208,
    "zh": "小银『那个……那个是我以前不懂事。{NEWLINE}刚才{VAR:0103:0}姐姐在小绿馆主面{CLEAR}前替我据理力争,{CLEAR}让我有了一种被拉到阳光下的感觉。{CLEAR}不、不只是这一次,{CLEAR}在阿鲁夫遗迹、在烧焦塔、在卡吉镇,{CLEAR}其实从那时候开始,{CLEAR}{VAR:0103:0}姐姐你就在努力{CLEAR}让我摆脱火箭队的阴影,{CLEAR}让我可以不用再东躲西藏,{CLEAR}让我不用再以生为坂木的儿子而自卑……",
-   "en": "Silver: That... That was me being{NEWLINE}immature.{SCROLL}Just now, when you stood up for me in{NEWLINE}front of Gym Leader Blue, {VAR:0103:0}...{SCROLL}It felt like I’d been pulled out into the{NEWLINE}sunlight.{SCROLL}N-not just this time. At the Ruins of{NEWLINE}Alph, the Burned Tower, Mahogany{CLEAR}Town... Ever since back then...{SCROLL}You’ve been working to free me from{NEWLINE}Team Rocket’s shadow, {VAR:0103:0}...{SCROLL}So I wouldn’t have to hide anymore, and{NEWLINE}wouldn’t have to feel ashamed of being{CLEAR}born Giovanni’s son...",
+   "en": "Silver: That... That was me being{NEWLINE}immature.{SCROLL}Just now, you stood up for me in front{NEWLINE}of Gym Leader Blue, Big Sis {VAR:0103:0}...{SCROLL}It felt like I’d been pulled out into the{NEWLINE}sunlight.{SCROLL}N-not just this time. At the Ruins of{NEWLINE}Alph, the Burned Tower, Mahogany{CLEAR}Town... Ever since back then...{SCROLL}You’ve worked to free me from Team{NEWLINE}Rocket’s shadow, Big Sis {VAR:0103:0}...{SCROLL}So I wouldn’t have to hide anymore, and{NEWLINE}wouldn’t have to feel ashamed of being{CLEAR}born Giovanni’s son...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV020: voice: 姐姐 kept as 'Big Sis ⟨player⟩' after #206/#207, as in a027/0126 (D-2099)"
   },
   {
    "id": 209,
@@ -1720,10 +1720,10 @@
   {
    "id": 212,
    "zh": "小银『谢、谢谢{VAR:0103:0}姐姐！{NEWLINE}我、我会用生命守护你的！",
-   "en": "Silver: Th-thank you, {VAR:0103:0}! I-I’ll{NEWLINE}protect you with my life!",
+   "en": "Silver: Th-thank you, Big Sis {VAR:0103:0}!{NEWLINE}I-I’ll protect you with my life!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV020: voice: 姐姐 kept as 'Big Sis ⟨player⟩' (D-2099)"
   },
   {
    "id": 213,
@@ -1736,10 +1736,10 @@
   {
    "id": 214,
    "zh": "小银『好的,{VAR:0103:0}姐姐！{NEWLINE}咱们出发！",
-   "en": "Silver: Right, {VAR:0103:0}! Let’s go!",
+   "en": "Silver: Right, Big Sis {VAR:0103:0}!{NEWLINE}Let’s go!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV020: voice: 姐姐 kept as 'Big Sis ⟨player⟩' (D-2099)"
   },
   {
    "id": 215,

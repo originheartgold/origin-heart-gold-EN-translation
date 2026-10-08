@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "听说在城都地区一个叫做{NEWLINE}桧皮镇的地方,有一位工匠{CLEAR}能用柑果制球！{SCROLL}我也想让他帮我做啊！",
-   "en": "I heard about a craftsman who{NEWLINE}makes custom Poké Balls in the{CLEAR}Johto town of Azalea.{SCROLL}I wish I had some.",
+   "en": "I heard there’s a craftsman in a place{NEWLINE}in Johto called Azalea Town who can{CLEAR}make Poké Balls out of Apricorns!{SCROLL}I want him to make some for me too!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0476/1"
+   "origin": "agent",
+   "notes": "US 0476/1 | RV020: omission: Apricorns and 'make some for me' restored (US line differs)"
   },
   {
    "id": 2,
