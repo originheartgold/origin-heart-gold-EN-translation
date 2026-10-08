@@ -39,6 +39,8 @@ These are settled. Don't reopen them without asking the user. Each one is record
 - Glossary: `work/glossary/*.json`.
 - Batches: `work/translate/manifest_playorder.json` → `batches[]`, ids R001–R069 in real play order. Each batch has `parts: [{bank: "a027/NNNN", ids: [first, last]}]`. The old `manifest.json` (B ids) is history only and isn't committed.
 - `work/translate/bank_maps.json` says which in-game maps really use each bank. Trust it over any map label, which is only a hint.
+- Scene context: `python3 work/tools/scene.py packet a027/NNNN --out work/build/scene/NNNN.md` gives the bank as scene transcripts (lines in script order, speakers, player-gender/menu/flag branches, map and NPC), plus the speakers' voice records, the names used, the bank's decisions and open questions. `scene.py show <ref>` prints the scene around one line. Read the packet before translating or reviewing a bank. Script order is static, not proven play order. Trainer lines (0718) are grouped by trainer with class, name and message type; description banks are labelled with the move, item, ability or species. Build the cache once with `work/.venv/bin/python work/tools/scene.py build` (needs the context index from `translation_context.py build`).
+- `python3 work/tools/omission_check.py a027/NNNN` flags lines that may drop, add or soften content (length, sentences, speaker labels, names, questions, strength markers). Every flag is a question for you, not a verdict: read each flagged line against its scene.
 
 ## Translating a batch
 
@@ -52,7 +54,7 @@ Go through every string in the batch's bank/id ranges in `work/translate/banks/<
 - `origin: "copy"` (English leftovers, dashes, empty strings) → leave it unless it is Chinese.
 - `zh` is `[zh redacted: song lyrics; sha256:…]` → a placeholder for song lyrics kept out of git (`work/tools/zh_redact.py`). Leave it as is; the tools fill in the real text from the local dump.
 
-Translate from the Chinese, in context: read the whole bank in order so you know the speakers and the scene. Search the workspace for the same Chinese before you translate a recurring line, and reuse the existing English for identical Chinese. Mark route, partner or gender branches in the string's `notes` and in one context-note decision.
+Translate from the Chinese, in context: read the bank's scene packet (`scene.py packet`) so you know the speakers, the scene and who is addressed. Search the workspace for the same Chinese before you translate a recurring line, and reuse the existing English for identical Chinese. Mark route, partner or gender branches in the string's `notes` and in one context-note decision.
 
 ### Editing bank files safely
 

@@ -42,6 +42,17 @@ VAR_RE = re.compile(r"\{VAR:([0-9A-F]{4}):(\d+)(?:,\d+)?\}")
 SPEAKER_RE = re.compile(r"(?:^|\{(?:SCROLL|CLEAR|NEWLINE)\})\s*([^\s『{}]{1,12}?)『")
 NAME_SUBTYPES = ("character", "place", "organisation", "item", "nickname", "trainer-class", "badge", "species",
                  "move", "location", "pokemon", "event")
+CN_ROM = WORK / "rom" / "origin_v4.0.3_cn.nds"
+TRAINER_BANK = "a027/0718"  # one line per entry of the ROM's trainer message table (a/0/5/7)
+TRMSG = {0: "intro", 1: "defeated", 2: "after battle", 3: "double intro (1st)", 4: "double defeated (1st)",
+         5: "double after (1st)", 6: "double, player has 1 Pokémon (1st)", 7: "double intro (2nd)",
+         8: "double defeated (2nd)", 9: "double after (2nd)", 10: "double, player has 1 Pokémon (2nd)",
+         15: "in battle (turning point)", 16: "in battle (remark)", 17: "rematch intro",
+         18: "rematch double (1st)", 19: "rematch double (2nd)", 20: "in battle (remark 2)"}
+# description banks numbered in step with a name bank: label each line with what it describes
+PAIRED = {"a027/0738": ("a027/0739", "move"), "a027/0218": ("a027/0219", "item"),
+          "a027/0712": ("a027/0711", "ability"), "a027/0791": ("a027/0232", "Pokédex entry"),
+          "a027/0792": ("a027/0232", "Pokédex entry"), "a027/0798": ("a027/0232", "Pokédex entry")}
 BUFFER_LABEL = {"player_name": "player", "rival_name": "rival"}
 
 
@@ -174,13 +185,44 @@ def build(index_path: Path = INDEX, out: Path = CACHE) -> dict:
             if rid not in ref2roots[m["ref"]]:
                 ref2roots[m["ref"]].append(rid)
     roots = {k: v for k, v in roots.items() if v["msgs"]}
+    trainers = trainer_table()
+    if trainers is None and out.exists():
+        try:
+            trainers = json.loads(out.read_text(encoding="utf-8")).get("trainers")
+        except (OSError, ValueError):
+            trainers = None
+    if trainers is None:
+        print("scene: ndspy or the Chinese ROM unavailable; trainer lines get no trainer context "
+              "(rebuild with work/.venv/bin/python)", file=sys.stderr)
     cache = {"index_sha256": hashlib.sha256(raw).hexdigest(), "index_mtime": index_path.stat().st_mtime,
-             "roots": roots, "ref2roots": ref2roots}
+             "roots": roots, "ref2roots": ref2roots, "trainers": trainers}
     out.parent.mkdir(parents=True, exist_ok=True)
     tmp = out.with_suffix(".tmp")
     tmp.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
     os.replace(tmp, out)
     return cache
+
+
+def trainer_table(rom_path: Path = CN_ROM) -> list[dict] | None:
+    """[{line, trainer, type, class}] from the untouched Chinese ROM; needs ndspy (work/.venv)."""
+    try:
+        import struct
+
+        import ndspy.narc
+        import ndspy.rom
+    except ImportError:
+        return None
+    if not rom_path.exists():
+        return None
+    rom = ndspy.rom.NintendoDSRom.fromFile(str(rom_path))
+    tbl = ndspy.narc.NARC(rom.getFileByName("a/0/5/7")).files[0]
+    trdata = ndspy.narc.NARC(rom.getFileByName("a/0/5/5")).files
+    out = []
+    for i in range(len(tbl) // 4):
+        tid, ty = struct.unpack_from("<HH", tbl, i * 4)
+        cls = trdata[tid][1] if tid < len(trdata) and len(trdata[tid]) > 1 else None
+        out.append({"line": i, "trainer": tid, "type": ty, "class": cls})
+    return out
 
 
 def load_cache(index_path: Path = INDEX, path: Path = CACHE) -> dict:
@@ -291,6 +333,38 @@ def render_root(cache: dict, rid: str, target: str | None, window: int, show_en:
     return lines
 
 
+def trainer_label(t: dict) -> str:
+    cls = bank("a027/0720").get(t["class"] or -1, {})
+    nm = bank("a027/0719").get(t["trainer"], {})
+    return "trainer %d: %s %s (%s %s)" % (t["trainer"], clean(cls.get("en")) or "?", clean(nm.get("en")) or "?",
+                                          clean(cls.get("zh")), clean(nm.get("zh")))
+
+
+def render_trainer(cache: dict, tid: int, target: str | None, show_en: bool, seen: set[str] | None = None) -> list[str]:
+    rows = [t for t in cache.get("trainers") or [] if t["trainer"] == tid]
+    if not rows:
+        return []
+    lines = ["### " + trainer_label(rows[0]) + "  (lines chosen by the trainer table, not a script)"]
+    for t in sorted(rows, key=lambda t: (t["type"], t["line"])):
+        ref = "%s#%d" % (TRAINER_BANK, t["line"])
+        e = entry(ref)
+        lines.append("%s 0718#%d  [%s]" % ("▶" if ref == target else " ", t["line"], TRMSG.get(t["type"], "type %d" % t["type"])))
+        lines.append("    zh: " + clean(e.get("zh")))
+        if show_en:
+            lines.append("    en: " + clean(e.get("en")))
+        if seen is not None:
+            seen.add(ref)
+    return lines
+
+
+def paired(key: str, i: int) -> str:
+    if key not in PAIRED:
+        return ""
+    nb, kind = PAIRED[key]
+    n = bank(nb).get(i, {})
+    return "  [%s: %s / %s]" % (kind, clean(n.get("en")) or "?", clean(n.get("zh")) or "?")
+
+
 def bank_order(ref: str, window: int, show_en: bool) -> list[str]:
     b, i = ref.split("#")
     i = int(i)
@@ -299,7 +373,7 @@ def bank_order(ref: str, window: int, show_en: bool) -> list[str]:
         e = bank(b).get(j)
         if not e:
             continue
-        lines.append("%s %s#%d" % ("▶" if j == i else " ", b.split("/")[1], j))
+        lines.append("%s %s#%d%s" % ("▶" if j == i else " ", b.split("/")[1], j, paired(b, j)))
         lines.append("    zh: " + clean(e.get("zh")))
         if show_en:
             lines.append("    en: " + clean(e.get("en")))
@@ -308,6 +382,10 @@ def bank_order(ref: str, window: int, show_en: bool) -> list[str]:
 
 def show(cache: dict, ref: str, window: int, show_en: bool, max_scenes: int) -> str:
     rids = cache["ref2roots"].get(ref, [])
+    if ref.startswith(TRAINER_BANK + "#") and cache.get("trainers"):
+        i = int(ref.split("#")[1])
+        if i < len(cache["trainers"]):
+            return "\n".join(render_trainer(cache, cache["trainers"][i]["trainer"], ref, show_en))
     if not rids:
         return "\n".join(bank_order(ref, window or 6, show_en))
     # smallest scenes first: they are the most specific context
@@ -323,7 +401,7 @@ def show(cache: dict, ref: str, window: int, show_en: bool, max_scenes: int) -> 
 # ------------------------------------------------------------------ packet
 
 def _register() -> list[dict]:
-    recs = [json.loads(l) for l in REGISTER.read_text(encoding="utf-8").splitlines() if l.strip()]
+    recs = [json.loads(x) for x in REGISTER.read_text(encoding="utf-8").splitlines() if x.strip()]
     return [r for r in recs if r.get("status") not in ("superseded",)]
 
 
@@ -348,12 +426,15 @@ def packet(cache: dict, key: str, show_en: bool) -> str:
     seen: set[str] = set()
     for rid in rids:
         out += render_root(cache, rid, None, 0, show_en, seen) + [""]
+    if key == TRAINER_BANK and cache.get("trainers"):
+        for tid in dict.fromkeys(t["trainer"] for t in cache["trainers"]):
+            out += render_trainer(cache, tid, None, show_en, seen) + [""]
     rest = [i for i in sorted(strings) if "%s#%d" % (key, i) not in seen]
     if rest:
         out.append("### strings with no script path (bank order; menus, signs, std scripts or unused)")
         for i in rest:
             e = strings[i]
-            out.append("  %s#%d" % (key.split("/")[1], i))
+            out.append("  %s#%d%s" % (key.split("/")[1], i, paired(key, i)))
             out.append("    zh: " + clean(e.get("zh")))
             if show_en:
                 out.append("    en: " + clean(e.get("en")))
