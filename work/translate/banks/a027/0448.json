@@ -1,1402 +1,1402 @@
 {
- "narc": "a027",
- "bank": 448,
- "source": "work/extract/v4/a027/0448.json",
- "strings": [
-  {
-   "id": 0,
-   "zh": "在精灵中心的二楼{NEWLINE}可以跟朋友交换和对战哦,{CLEAR}如果能几个人一起玩的话{CLEAR}会很有意思吧！",
-   "en": "On the Pokémon Center’s second floor,{NEWLINE}you can trade and battle with friends.{SCROLL}It’s a lot of fun when a bunch of people{NEWLINE}play together!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
-  },
-  {
-   "id": 1,
-   "zh": "我只有两枚徽章,{NEWLINE}距离获得8枚徽章去参加石英大会{CLEAR}还早得很呢……",
-   "en": "I’ve only got 2 Badges. I’ve still got a{NEWLINE}long way to go before I have 8 and can{CLEAR}enter the Indigo Conference...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
-  },
-  {
-   "id": 2,
-   "zh": "能够凑齐8个徽章{NEWLINE}参加石英大会的训练家,{CLEAR}都是让人仰望的存在啊。",
-   "en": "Trainers who collect 8 Badges and enter{NEWLINE}the Indigo Conference... Everyone{CLEAR}looks up to them.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
-  },
-  {
-   "id": 3,
-   "zh": "身上携带的精灵超过6只时,{NEWLINE}多出的精灵就会被传送进寄存系统,{CLEAR}使用精灵中心柜台旁的电脑,{CLEAR}就可以把寄存系统中的精灵取出来。",
-   "en": "When you have more than 6 Pokémon with{NEWLINE}you, the extras are sent to the{CLEAR}storage system.{SCROLL}Use the PC next to the Pokémon Center{NEWLINE}counter to take Pokémon out of{CLEAR}storage.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
-  },
-  {
-   "id": 4,
-   "zh": "啊呀,在前往石英高原之前,{NEWLINE}还是先享受一下精灵中心的空调吧！{CLEAR}我的隆隆岩也很喜欢这里呢！",
-   "en": "Ahh, before heading to Indigo Plateau,{NEWLINE}I’m going to enjoy the Pokémon Center’s{CLEAR}air conditioning!{SCROLL}My Golem loves it here too!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
-  },
-  {
-   "id": 5,
-   "zh": "隆隆岩『Go！le！Go！em！",
-   "en": "Golem: Go! le! Go! em!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags fullwidth_chars"
-  },
-  {
-   "id": 6,
-   "zh": "吉利蛋『Chee——",
-   "en": "Chansey: Chee-",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
-  },
-  {
-   "id": 7,
-   "zh": "玛丽露『Mari……",
-   "en": "Marill: Mari...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
-  },
-  {
-   "id": 8,
-   "zh": "乔伊『哇,你的眼神！{NEWLINE}跟普通的训练家眼神大不一样呢！{CLEAR}虽然你暂时还没有徽章,{CLEAR}但将来一定会成为强大的训练家。{CLEAR}这个送给你,就当是见面礼吧。",
-   "en": "Nurse Joy: Wow, look at those eyes!{NEWLINE}They’re nothing like an ordinary{CLEAR}Trainer’s!{SCROLL}You don’t have any Badges yet, but{NEWLINE}you’re sure to be a strong Trainer{CLEAR}someday.{SCROLL}Please take this as a little welcome{NEWLINE}gift.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
-  },
-  {
-   "id": 9,
-   "zh": "小蓝『你好啊训练家,{NEWLINE}我叫作小蓝,{CLEAR}我有注意到你在1号路偷看我哟。{SCROLL}{VAR:0103:0}『……{SCROLL}{VAR:0103:0}『不是偷看啦,只是刚好路过。{SCROLL}小蓝『哈哈不要害羞嘛。{NEWLINE}看到像我这样漂亮的女孩子,{CLEAR}你要勇敢搭话才有机会呀。{SCROLL}小蓝『话说你有没有注意到{CLEAR}电梯那边的乔伊小姐？{SCROLL}好像跟其他的乔伊小姐{NEWLINE}有些不太一样……",
-   "en": "Green: Hello there, Trainer! My name’s{NEWLINE}Green. I noticed you peeking at me on{CLEAR}Route 1.{SCROLL}{VAR:0103:0}: ...{SCROLL}{VAR:0103:0}: I wasn’t peeking. I was just{NEWLINE}passing by.{SCROLL}Green: Ha ha, don’t be shy. When you{NEWLINE}see a pretty girl like me...{SCROLL}you have to be brave and talk to her,{NEWLINE}or you’ll never get a chance.{SCROLL}Green: By the way, have you noticed the{NEWLINE}Nurse Joy over by the elevator?{SCROLL}She seems a little different from the{NEWLINE}other Nurse Joys...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Male player meets Green (#9); female player meets Red (#10). Viridian Pokémon Center."
-  },
-  {
-   "id": 10,
-   "zh": "小赤『你好啊,{NEWLINE}我叫作小赤,{CLEAR}总觉得以前在哪见过你。{SCROLL}{VAR:0103:0}『你在1号路抓精灵的样子很不错呢。{SCROLL}小赤『啊！原来在1号路{NEWLINE}没怎么看清的那个人是你呀。{SCROLL}小赤『话说你有没有发现{NEWLINE}这家精灵中心哪里怪怪的？",
-   "en": "Red: Hi. My name’s Red. I feel like I’ve{NEWLINE}seen you somewhere before.{SCROLL}{VAR:0103:0}: You looked pretty good{NEWLINE}catching Pokémon on Route 1.{SCROLL}Red: Oh! So you’re the one I couldn’t{NEWLINE}quite see on Route 1.{SCROLL}Red: By the way, have you noticed{NEWLINE}anything weird about this{CLEAR}Pokémon Center?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 11,
-   "zh": "乔伊『希望你变强之后,{NEWLINE}不要忘记曾经给你道具的我哟。",
-   "en": "Nurse Joy: Once you’ve gotten{NEWLINE}stronger, I hope you won’t forget me,{CLEAR}the one who gave you that item.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
-  },
-  {
-   "id": 12,
-   "zh": "乔伊『我一直想有一个{NEWLINE}属于自己的搭档,{CLEAR}如果你将来成长得够强了,{CLEAR}或许咱们可以组一对呢。",
-   "en": "Nurse Joy: I’ve always wanted a{NEWLINE}partner of my own.{SCROLL}If you grow strong enough someday,{NEWLINE}maybe we could team up.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
-  },
-  {
-   "id": 13,
-   "zh": "艾路雷朵『EeeeeRu！",
-   "en": "Gallade: Eeeee-ru!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags fullwidth_chars"
-  },
-  {
-   "id": 14,
-   "zh": "我只跟凑齐了8枚徽章的{NEWLINE}高级训练家战斗,{CLEAR}你这种低等级的训练家{CLEAR}还是离我原点吧。",
-   "en": "I only battle Senior Trainers with all 8{NEWLINE}Badges. A low-ranked Trainer like you{CLEAR}should keep away from me.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
-  },
-  {
-   "id": 15,
-   "zh": "小蓝『想三个人一起上？{NEWLINE}这样倒是给我省了时间。{CLEAR}亮出你们的精灵吧！",
-   "en": "Green: Want all three of you to come at{NEWLINE}me at once? Saves me some time. Show me{CLEAR}your Pokémon!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "#15–120: final Rocket cave. Green (male-player romance route) / Red (female-player romance route) variants alternate (odd/even ids). Green's fear of birds and Rocket boot camp past: Adventures references."
-  },
-  {
-   "id": 16,
-   "zh": "小赤『想三个人一起上？{NEWLINE}这样倒是给我省了时间。{CLEAR}亮出你们的精灵吧！",
-   "en": "Red: Want all three of you to come at me{NEWLINE}at once? Saves me some time. Show me{CLEAR}your Pokémon!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 17,
-   "zh": "前尖兵训练营队员小蓝,{NEWLINE}五岁时被带到卡吉镇基地接受训练,{CLEAR}但因为惧怕鸟形态精灵{CLEAR}在战斗中存在明显缺陷。",
-   "en": "Former boot camp trainee Green. Taken{NEWLINE}to the Mahogany Town base at age five{CLEAR}for training.{SCROLL}Has a clear weakness in battle due to a{NEWLINE}fear of bird Pokémon.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 18,
-   "zh": "小蓝『没想到我逃出来这么久,{NEWLINE}你们火箭队还留着我的资料啊。{CLEAR}是准备给我们做同学录吗？",
-   "en": "Green: I escaped ages ago, and you{NEWLINE}Rockets still kept my file? What, are{CLEAR}you making us a class yearbook?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 19,
-   "zh": "小赤『没想到我逃出来这么久,{NEWLINE}你们火箭队还留着我的资料。{CLEAR}是准备把我抓回去再为你们工作吗？{CLEAR}真遗憾啊,我早就不是当时那个{CLEAR}任你们摆布的孩子了。",
-   "en": "Red: I escaped ages ago, and you{NEWLINE}Rockets still kept my file?{SCROLL}Planning to drag me back to work for{NEWLINE}you again?{SCROLL}Sorry, but I’m not the kid you could{NEWLINE}push around anymore.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 20,
-   "zh": "人家都说童年的阴影{NEWLINE}要用一生来治愈,{CLEAR}不知道你这个惧怕鸟精灵的毛病{CLEAR}治愈到什么程度了呢？{SCROLL}出来吧大嘴雀！",
-   "en": "They say childhood scars take a lifetime{NEWLINE}to heal.{SCROLL}I wonder how well your fear of bird{NEWLINE}Pokémon has healed?{SCROLL}Come on out, Fearow!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 21,
-   "zh": "大嘴雀『Feaaaa——ro！",
-   "en": "Fearow: Feaaaa-ro!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 22,
-   "zh": "盔甲鸟！",
-   "en": "Skarmory!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 23,
-   "zh": "盔甲鸟『Skaaaa——mo！",
-   "en": "Skarmory: Skaaaa-mo!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 24,
-   "zh": "绅士鸦！",
-   "en": "Honchkrow!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 25,
-   "zh": "绅士鸦『Hoooo——cro！",
-   "en": "Honchkrow: Hoooo-cro!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 26,
-   "zh": "看到这些鸟精灵,你连路都走不动了吧？{SCROLL}给我上！",
-   "en": "Seeing all these bird Pokémon, you can’t{NEWLINE}even move, can you?{SCROLL}Get ’em!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 27,
-   "zh": "小蓝『妙蛙花,使出污泥炸弹！",
-   "en": "Green: Venusaur, use Sludge Bomb!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 28,
-   "zh": "小赤『妙蛙花,使出污泥炸弹！",
-   "en": "Red: Venusaur, use Sludge Bomb!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 29,
-   "zh": "完全不怕！？你已经克服对鸟类的恐惧了？",
-   "en": "Not scared at all!? You’ve gotten over{NEWLINE}your fear of birds?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 30,
-   "zh": "小蓝『哼,这些年来{NEWLINE}我也经历了不少磨练,{CLEAR}早就不是那个胆小的姑娘了。",
-   "en": "Green: Hmph. I’ve been through a lot{NEWLINE}these past years. I’m not that timid{CLEAR}little girl anymore.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 31,
-   "zh": "小赤『没错,这些年来{NEWLINE}我也经历了不少磨练,{CLEAR}对鸟类的恐惧早就已经克服掉了。",
-   "en": "Red: That’s right. I’ve been through a{NEWLINE}lot these past years. I got over my{CLEAR}fear of birds long ago.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 32,
-   "zh": "嘻嘻,长大后的你{NEWLINE}或许已经克服了鸟类恐惧。{CLEAR}但如果是小时候的你呢？",
-   "en": "Hee hee. The grown-up you may have{NEWLINE}gotten over your fear of birds. But{CLEAR}what about the little you?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 33,
-   "zh": "小蓝『你什么意思？",
-   "en": "Green: What do you mean?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 34,
-   "zh": "小赤『你什么意思？",
-   "en": "Red: What do you mean?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 35,
-   "zh": "老大他们在这个洞穴里{NEWLINE}灌注了一部分传说中精灵的力量{CLEAR}用来帮助我们战斗。{CLEAR}像是帕路奇亚的屏障力量、{CLEAR}噩梦与美梦的力量以及……{CLEAR}帝牙卢卡的时间力量！",
-   "en": "The Boss and the others poured some of{NEWLINE}the legendary Pokémon’s power into this{CLEAR}cave to help us fight.{SCROLL}Like Palkia’s barrier power, the power{NEWLINE}of nightmares and sweet dreams, and...{SCROLL}Dialga’s power over time!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 36,
-   "zh": "小蓝『时间力量！？喂喂喂,你该不会……",
-   "en": "Green: Power over time!? Hey, hey, hey,{NEWLINE}you’re not going to...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 37,
-   "zh": "小赤『时间力量！？难道你想……",
-   "en": "Red: Power over time!? Don’t tell me{NEWLINE}you’re going to...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 38,
-   "zh": "城都地区冰之通路的最底层{NEWLINE}有一个能把人变老的隧道,{CLEAR}那就是帝牙卢卡时间之力的效果。{CLEAR}跟苍老隧道同样的道理,{CLEAR}只要我调动洞穴里的帝牙卢卡能量,{CLEAR}就能让你返老还童！{CLEAR}哈哈哈哈！",
-   "en": "At the very bottom of Johto’s Ice{NEWLINE}Path, there’s a tunnel that turns{CLEAR}people old.{SCROLL}That’s the work of Dialga’s power over{NEWLINE}time.{SCROLL}It works the same way as the Aging{NEWLINE}Tunnel. Once I call up the Dialga energy{CLEAR}in this cave...{SCROLL}I can make you young again! Ha ha ha{NEWLINE}ha!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 39,
-   "zh": "小蓝『不好……！",
-   "en": "Green: Oh no...!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 40,
-   "zh": "小赤『不好……！",
-   "en": "Red: Oh no...!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 41,
-   "zh": "小蓝『啊……这……我变小了！？怎么可能！？",
-   "en": "Green: Wha... I got smaller!? How is{NEWLINE}that possible!?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 42,
-   "zh": "小赤『啊……这……我变小了！？怎么可能！？",
-   "en": "Red: Wha... I got smaller!? How is that{NEWLINE}possible!?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 43,
-   "zh": "哈哈哈,好好回忆一下童年时期{NEWLINE}对鸟精灵的恐惧吧！{SCROLL}大嘴雀攻击！",
-   "en": "Ha ha ha! Go on, remember how scared of{NEWLINE}bird Pokémon you were as a kid!{SCROLL}Fearow, attack!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 44,
-   "zh": "小蓝『呀呀呀……讨厌！妙蛙花,快……呀……！",
-   "en": "Green: Eek! No! Venusaur, quick...{NEWLINE}Aaah...!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 45,
-   "zh": "小赤『啊啊啊……可恶！妙蛙花,快……啊……！",
-   "en": "Red: Aaagh... Damn it! Venusaur,{NEWLINE}quick... Argh...!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 46,
-   "zh": "小蓝『咳咳……{NEWLINE}居然对我这么漂亮的小女孩下手,{CLEAR}你们火箭队还真是没人性。",
-   "en": "Green: *cough*... Attacking a pretty{NEWLINE}little girl like me... You Rockets are{CLEAR}heartless.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 47,
-   "zh": "小赤『咳咳……{NEWLINE}居然对小孩子模样的人也能下手,{CLEAR}你们火箭队还真是没人性。",
-   "en": "Red: *cough*... Attacking someone who{NEWLINE}looks like a little kid... You Rockets{CLEAR}are heartless.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 48,
-   "zh": "死到临头还在耍嘴皮子,{NEWLINE}都给我上,杀了她！",
-   "en": "Still running your mouth at death’s{NEWLINE}door? Everyone, get her! Kill her!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 49,
-   "zh": "死到临头还在耍嘴皮子,{NEWLINE}都给我上,杀了他！",
-   "en": "Still running your mouth at death’s{NEWLINE}door? Everyone, get him! Kill him!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 50,
-   "zh": "{VAR:0103:0}『到此为止了,{NEWLINE}你们谁也休想动小蓝一下！",
-   "en": "{VAR:0103:0}: That’s far enough! None of{NEWLINE}you are laying a finger on Green!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 51,
-   "zh": "{VAR:0103:0}『到此为止了,{NEWLINE}你们谁也休想动小赤一下！",
-   "en": "{VAR:0103:0}: That’s far enough! None of{NEWLINE}you are laying a finger on Red!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 52,
-   "zh": "联盟冠军？！{NEWLINE}真是的,偏偏在收割胜利成果的时候……",
-   "en": "The League Champion?! Of all the times,{NEWLINE}right when we’re about to claim our{CLEAR}victory...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 53,
-   "zh": "你们两个拖住他,{NEWLINE}我去拿下那个臭丫头的人头。",
-   "en": "You two, hold him off. I’ll go take that{NEWLINE}little brat’s head.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 54,
-   "zh": "你们两个拖住她,{NEWLINE}我去拿下那个混小子的人头。",
-   "en": "You two, hold her off. I’ll go take that{NEWLINE}little punk’s head.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 55,
-   "zh": "是。",
-   "en": "Yes, sir.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 56,
-   "zh": "战斗！",
-   "en": "Battle!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 57,
-   "zh": "你在看哪啊冠军大人,{NEWLINE}你的对手可是我们！",
-   "en": "Where are you looking, Champion? We’re{NEWLINE}your opponents!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 58,
-   "zh": "大嘴雀给这个菜花王八最后一击！",
-   "en": "Fearow, finish off this{NEWLINE}cauliflower-backed bastard!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "zh 菜花王八 (cauliflower turtle/bastard) at Venusaur."
-  },
-  {
-   "id": 59,
-   "zh": "小蓝『不要啊,妙蛙花！",
-   "en": "Green: No! Venusaur!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 60,
-   "zh": "小赤『妙蛙花……！",
-   "en": "Red: Venusaur...!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 61,
-   "zh": "哈哈哈,你去死吧！",
-   "en": "Ha ha ha! Now die!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 62,
-   "zh": "{VAR:0103:0}『住手！！！",
-   "en": "{VAR:0103:0}: Stop!!!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 63,
-   "zh": "可恶,就差一点！",
-   "en": "Damn it, so close!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 64,
-   "zh": "小蓝『谢谢你,{VAR:0103:0}……",
-   "en": "Green: Thank you, {VAR:0103:0}...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 65,
-   "zh": "小赤『谢谢你,{VAR:0103:0}……",
-   "en": "Red: Thank you, {VAR:0103:0}...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 66,
-   "zh": "空",
-   "en": "---",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 138 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 67,
-   "zh": "{VAR:0103:0}『你们还有什么卑鄙的招式{NEWLINE}统统使出来吧,我可不怕你们！",
-   "en": "{VAR:0103:0}: Got any more dirty tricks?{NEWLINE}Bring them all on. I’m not afraid of you!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 68,
-   "zh": "你等着,就算我收拾不掉你,{NEWLINE}坂木老大早晚也会杀了你的。",
-   "en": "Just you wait. Even if I can’t finish you{NEWLINE}off, Boss Giovanni will kill you sooner or{CLEAR}later.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 69,
-   "zh": "小蓝『{VAR:0103:0}！",
-   "en": "Green: {VAR:0103:0}!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 70,
-   "zh": "小赤『{VAR:0103:0}！",
-   "en": "Red: {VAR:0103:0}!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 71,
-   "zh": "{VAR:0103:0}『总算是撤退了……",
-   "en": "{VAR:0103:0}: They finally retreated...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 72,
-   "zh": "{VAR:0103:0}『你没事吧小蓝,刚刚有受伤吗？",
-   "en": "{VAR:0103:0}: Are you okay, Green? Did you{NEWLINE}get hurt just now?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 73,
-   "zh": "{VAR:0103:0}『你没事吧小赤,刚刚有受伤吗？",
-   "en": "{VAR:0103:0}: Are you okay, Red? Did you get{NEWLINE}hurt just now?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 74,
-   "zh": "小蓝『多亏妙蛙花拼死保护,{NEWLINE}我只是受了轻伤。{SCROLL}小蓝『真没想到火箭队{NEWLINE}居然能用传说中精灵的力量把人变小。{CLEAR}虽然永远年轻是每个女人的心愿,{CLEAR}但是这个样子也有点年轻过头了,{CLEAR}我的好身材都完全不见了,{CLEAR}唔……不知道有没有什么办法能复原呢。",
-   "en": "Green: Venusaur protected me with{NEWLINE}everything it had, so I only got a few{CLEAR}scrapes.{SCROLL}Green: I never thought Team Rocket{NEWLINE}could use a legendary Pokémon’s power{CLEAR}to shrink people.{SCROLL}Staying young forever is every woman’s{NEWLINE}dream, but this is a bit too young.{SCROLL}My great figure is completely gone!{NEWLINE}Hmm... I wonder if there’s any way to{CLEAR}change back.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 75,
-   "zh": "小赤『多亏妙蛙花拼死保护,{NEWLINE}我只是受了轻伤。{SCROLL}小蓝『真没想到火箭队{NEWLINE}居然能用传说中精灵的力量把人变小,{CLEAR}我现在这个样子,{CLEAR}恐怕没有办法继续战斗了,{CLEAR}不知道有没有什么办法能复原啊。",
-   "en": "Red: Venusaur protected me with{NEWLINE}everything it had, so I only got a few{CLEAR}scrapes.{SCROLL}Red: I never thought Team Rocket{NEWLINE}could use a legendary Pokémon’s power{CLEAR}to shrink people.{SCROLL}Like this, I probably can’t keep{NEWLINE}fighting. I wonder if there’s any way to{CLEAR}change back.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (Second page of Red’s line is labelled 小蓝 (Green)); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-0532, D-1496)."
-  },
-  {
-   "id": 76,
-   "zh": "{VAR:0103:0}『刚刚那个火箭队的人说,{NEWLINE}你的年龄变化{CLEAR}与冰之通路底层的老化诅咒{CLEAR}都是受帝牙卢卡能力的影响。{CLEAR}正好我在通过那里的时候,{CLEAR}拜托一位老爷爷做了一瓶抗老喷雾。{CLEAR}这个喷雾能抵消冰之通路的老化效果,{CLEAR}或许也能抵消你身上的年轻化效果。{CLEAR}你要试试吗？",
-   "en": "{VAR:0103:0}: That Rocket said your age{NEWLINE}change and the aging curse at the{CLEAR}bottom of the Ice Path...{SCROLL}both come from Dialga’s power.{SCROLL}As it happens, when I went through{NEWLINE}there, I had an old man make me an{CLEAR}Anti-Age Spray.{SCROLL}The spray cancels out the Ice Path’s{NEWLINE}aging effect. Maybe it can cancel out{CLEAR}your de-aging too.{SCROLL}Want to give it a try?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 77,
-   "zh": "小蓝『抗老喷雾？{NEWLINE}不会把我变回小宝宝吧？{CLEAR}不过眼下也没有别的办法了,{CLEAR}你就对我用一下试试吧,{CLEAR}如果我变成了小宝宝,{CLEAR}你可要把我养大,知道吗？",
-   "en": "Green: Anti-Age Spray? It won’t turn{NEWLINE}me into a baby, will it?{SCROLL}Well, there’s nothing else we can do{NEWLINE}right now. Go ahead, try it on me.{SCROLL}But if I turn into a baby, you’ll have to{NEWLINE}raise me. Got it?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 78,
-   "zh": "小赤『抗老喷雾？{NEWLINE}不会把我变回小宝宝吧？{CLEAR}不过眼下也没有别的办法了,{CLEAR}死马当作活马医吧,{CLEAR}你对我使用一下这个喷雾试试吧。",
-   "en": "Red: Anti-Age Spray? It won’t turn me{NEWLINE}into a baby, will it?{SCROLL}Well, there’s nothing else we can do{NEWLINE}right now. It’s worth a shot.{SCROLL}Go ahead, try the spray on me.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 79,
-   "zh": "{VAR:0103:0}『哈哈,如果你变成了宝宝,{NEWLINE}我就带你去冰之通路让你再变回来。{SCROLL}{VAR:0103:0}『那么我现在{NEWLINE}要把喷雾喷到你身上了,{CLEAR}但愿能够奏效吧……",
-   "en": "{VAR:0103:0}: Ha ha. If you turn into a{NEWLINE}baby, I’ll take you to the Ice Path to{CLEAR}change you back.{SCROLL}{VAR:0103:0}: Okay, I’m going to spray you{NEWLINE}now. I hope it works...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 80,
-   "zh": "{VAR:0103:0}『那么我现在{NEWLINE}要把喷雾喷到你身上了,{CLEAR}但愿能够奏效吧……",
-   "en": "{VAR:0103:0}: Okay, I’m going to spray you{NEWLINE}now. I hope it works...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 81,
-   "zh": "小蓝『哇,好神奇！真的变回来了！{NEWLINE}果然还是前凸后翘的身材更适合我。",
-   "en": "Green: Wow, amazing! I really changed{NEWLINE}back! A curvy figure suits me much{CLEAR}better after all.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 82,
-   "zh": "小赤『太好了！真的变回来了！{NEWLINE}还是现在的体格更适合战斗。",
-   "en": "Red: Great! I really changed back! This{NEWLINE}body’s much better for battling.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 83,
-   "zh": "{VAR:0103:0}『小蓝,你和妙蛙花的伤怎么样？{NEWLINE}还能继续战斗吗？",
-   "en": "{VAR:0103:0}: Green, how are you and{NEWLINE}Venusaur? Can you keep fighting?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 84,
-   "zh": "{VAR:0103:0}『小赤,你和妙蛙花都受了伤,{NEWLINE}确定要马上投入战斗吗？",
-   "en": "{VAR:0103:0}: Red, you and Venusaur are{NEWLINE}both hurt. Are you sure you want to{CLEAR}jump right back into battle?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 85,
-   "zh": "小蓝『妙蛙花为了保护我伤得很重,{NEWLINE}好在我这里有些急救药,{CLEAR}等我给它治疗一下后,{CLEAR}就可以继续战斗了。{CLEAR}不过这个治疗可能花些时间,{CLEAR}{VAR:0103:0}你不用在这里等我,{CLEAR}继续前进就好。{CLEAR}等妙蛙花恢复之后,我会追上去的。",
-   "en": "Green: Venusaur got hurt badly{NEWLINE}protecting me, but luckily I have some{CLEAR}first-aid medicine.{SCROLL}Once I’ve treated it, we can keep{NEWLINE}fighting.{SCROLL}But it might take a while. {VAR:0103:0}, you{NEWLINE}don’t have to wait here. Keep going.{SCROLL}Once Venusaur’s better, I’ll catch up.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 86,
-   "zh": "小赤『妙蛙花为了保护我伤得很重,{NEWLINE}好在我这里有些急救药,{CLEAR}等我给它治疗一下后,{CLEAR}就可以继续战斗了。{CLEAR}不过这个治疗可能花些时间,{CLEAR}{VAR:0103:0}你不用在这里等我,{CLEAR}继续前进就好。{CLEAR}等妙蛙花恢复之后,我会追上去的。",
-   "en": "Red: Venusaur got hurt badly{NEWLINE}protecting me, but luckily I have some{CLEAR}first-aid medicine.{SCROLL}Once I’ve treated it, we can keep{NEWLINE}fighting.{SCROLL}But it might take a while. {VAR:0103:0}, you{NEWLINE}don’t have to wait here. Keep going.{SCROLL}Once Venusaur’s better, I’ll catch up.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 87,
-   "zh": "{VAR:0103:0}『好,那我先走了。{NEWLINE}你自己多加小心。",
-   "en": "{VAR:0103:0}: Okay, I’ll go on ahead. Be{NEWLINE}careful.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 88,
-   "zh": "小蓝『{VAR:0103:0}……你有没有觉得{NEWLINE}这次你挺身而出救我的景象{CLEAR}像极了浅红森林那次呢？",
-   "en": "Green: {VAR:0103:0}... Don’t you think the{NEWLINE}way you jumped in to save me just now...{SCROLL}was just like that time in Fuchsia{NEWLINE}Forest?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 89,
-   "zh": "{VAR:0103:0}『这么一说还真是有些像。{NEWLINE}我记得那次你也是被鸟精灵围,{CLEAR}然后因为惊慌无法指挥精灵战斗。",
-   "en": "{VAR:0103:0}: Now that you mention it, it is{NEWLINE}kind of similar.{SCROLL}I remember that time you were{NEWLINE}surrounded by bird Pokémon too, and{CLEAR}you panicked and couldn’t command your{CLEAR}Pokémon.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 90,
-   "zh": "小蓝『没想到你记得蛮清楚嘛。{SCROLL}小蓝『我跟你说啊,{NEWLINE}虽然咱们在很小的时候经常一起玩,{CLEAR}但那时候你长什么样子{CLEAR}我已经完全不记得了。{CLEAR}我对你的第一印象就是在1号路时{CLEAR}看到你在远处看着我时的样子。{CLEAR}当时觉得这个训练家长得很普通,{CLEAR}丢到人堆里都找不到的那种。",
-   "en": "Green: Huh, you remember it pretty{NEWLINE}well.{SCROLL}Green: You know what? We played{NEWLINE}together a lot when we were really{CLEAR}little...{SCROLL}but I don’t remember what you looked{NEWLINE}like back then at all.{SCROLL}My first impression of you was on Route{NEWLINE}1, when I saw you watching me from far{CLEAR}away.{SCROLL}I thought you looked pretty ordinary.{NEWLINE}The kind of guy you’d lose in a crowd.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 91,
-   "zh": "{VAR:0103:0}『喂,也没有你说的那么差吧？",
-   "en": "{VAR:0103:0}: Hey, I’m not that bad, am I?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 92,
-   "zh": "小蓝『哈哈,听我说完嘛。{NEWLINE}在以后月见山、圣安努号、紫苑镇{CLEAR}的一系列事件中,{CLEAR}我逐渐被你那{CLEAR}正直、阳光、温柔的内心所吸引。{CLEAR}之后在浅红森林你帮我赶跑了鸟群,{CLEAR}我突然就觉得{VAR:0103:0}你好帅啊。{SCROLL}小蓝『石英大会之后{NEWLINE}我为了跟爸妈团聚,{CLEAR}跟你分开了好久。{CLEAR}在没有你陪伴的这段时间里,{CLEAR}我常常想起咱们在关东旅行的日子。{CLEAR}有时候想着想着就会情不自禁地微笑,{CLEAR}妈妈还怀疑我是不是生病了……",
-   "en": "Green: Ha ha, let me finish. Later,{NEWLINE}through everything at Mt. Moon, the{CLEAR}S.S. Anne and Lavender Town...{SCROLL}I slowly fell for your honest, sunny,{NEWLINE}gentle heart.{SCROLL}Then in Fuchsia Forest you chased off{NEWLINE}those birds for me...{SCROLL}and suddenly I thought, wow, {VAR:0103:0} is{NEWLINE}so cool.{SCROLL}Green: After the Indigo Conference, I{NEWLINE}went to be with my mom and dad, and we{CLEAR}were apart for a long time.{SCROLL}While you weren’t around, I kept{NEWLINE}thinking about our days traveling{CLEAR}through Kanto.{SCROLL}Sometimes I’d smile without even{NEWLINE}noticing. My mom even wondered if I was{CLEAR}sick...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 93,
-   "zh": "小蓝『如今火箭队大敌当前,{NEWLINE}我说这些话可能有些多余,{CLEAR}但我还是忍不住想告诉你,{CLEAR}我现在满眼看到的、{CLEAR}满脑子想到的都是你。{CLEAR}我喜欢你,{VAR:0103:0}。",
-   "en": "Green: With Team Rocket right in front{NEWLINE}of us, maybe this is a bad time to say{CLEAR}this...{SCROLL}but I can’t help wanting to tell you.{NEWLINE}Everything I see...{SCROLL}everything I think about... it’s all you.{NEWLINE}I love you, {VAR:0103:0}.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 94,
-   "zh": "{VAR:0103:0}『小蓝……",
-   "en": "{VAR:0103:0}: Green...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 95,
-   "zh": "小蓝『进山洞前作动员的时候{NEWLINE}你不是挺能说的吗？{CLEAR}现在怎么又变哑巴了？{CLEAR}人家都跟你表白了,{CLEAR}你就没有什么对我说的吗？",
-   "en": "Green: You gave such a great pep talk{NEWLINE}before we went into the cave.{SCROLL}Why are you all tongue-tied now?{SCROLL}A girl just confessed to you. Don’t you{NEWLINE}have anything to say to me?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 96,
-   "zh": "{VAR:0103:0}『啊,不好意思……{NEWLINE}我……我突然听到{CLEAR}自己喜欢的女孩子向我表白,{CLEAR}有点不知所措了。{CLEAR}那个……小蓝……我也喜欢你……",
-   "en": "{VAR:0103:0}: Ah, sorry... I... The girl I{NEWLINE}like just told me she loves me...{SCROLL}and I don’t know what to do with myself.{SCROLL}Um... Green... I love you too...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 97,
-   "zh": "小蓝『嗯……嘿嘿,那你现在闭上眼。",
-   "en": "Green: Mm... hee hee. Then close your{NEWLINE}eyes.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 98,
-   "zh": "{VAR:0103:0}『小蓝……？",
-   "en": "{VAR:0103:0}: Green...?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 99,
-   "zh": "小蓝『唉……这是多么幸福的一刻啊,{NEWLINE}我好希望时间能停留在这一刻,{CLEAR}这样你就只属于我了。{CLEAR}但我知道你是联盟冠军,{CLEAR}职责是守护整个地区,{CLEAR}在接下来的战斗中即使遇到生命危险,{CLEAR}你也会像个英雄一样绝不退缩。{SCROLL}小蓝『我这次亲身体会到了{NEWLINE}火箭队的传说中精灵的力量,{CLEAR}真的是深不可测非常危险,{CLEAR}我不会要求你为了我惜身保命,{CLEAR}但战斗时你至少要处处小心,知道吗？",
-   "en": "Green: Sigh... What a happy moment this{NEWLINE}is. I wish time would stop right here...{SCROLL}so you’d be mine alone. But I know{NEWLINE}you’re the League Champion.{SCROLL}Your duty is to protect the whole{NEWLINE}region.{SCROLL}In the battle ahead, even if your life is{NEWLINE}in danger, you’ll never back down, just{CLEAR}like a hero.{SCROLL}Green: This time, I saw for myself Team{NEWLINE}Rocket’s legendary Pokémon power.{SCROLL}It’s unfathomable and really{NEWLINE}dangerous.{SCROLL}I won’t ask you to hold back and play it{NEWLINE}safe for my sake...{SCROLL}but at least be careful out there,{NEWLINE}okay?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 100,
-   "zh": "{VAR:0103:0}『好的小蓝,我一定小心应对。",
-   "en": "{VAR:0103:0}: Okay, Green. I promise I’ll be{NEWLINE}careful.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 101,
-   "zh": "小蓝『你是联盟冠军,最强训练家,{NEWLINE}相信你一定可以战胜坂木。{SCROLL}小蓝『我还要在这里为妙蛙花治疗一下,{NEWLINE}{VAR:0103:0}你先继续前进吧,{CLEAR}等等妙蛙花恢复之后,{CLEAR}我就去找你汇合。{CLEAR}到时候咱们再一起痛扁火箭队。",
-   "en": "Green: You’re the League Champion, the{NEWLINE}strongest Trainer. I know you can beat{CLEAR}Giovanni.{SCROLL}Green: I still need to treat Venusaur{NEWLINE}here. {VAR:0103:0}, you go on ahead.{SCROLL}Once Venusaur’s better, I’ll come find{NEWLINE}you.{SCROLL}Then we’ll clobber Team Rocket{NEWLINE}together.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 102,
-   "zh": "小赤『{VAR:0103:0}……你有没有觉得{NEWLINE}这次你挺身而出救我的景象{CLEAR}像极了浅红森林那次？",
-   "en": "Red: {VAR:0103:0}... Don’t you think the way{NEWLINE}you jumped in to save me just now...{SCROLL}was just like that time in Fuchsia{NEWLINE}Forest?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 103,
-   "zh": "小赤『没想到你记得还挺清楚。{SCROLL}小赤『虽然咱们在很小的时候{NEWLINE}经常一起玩,{CLEAR}但那时候你长什么样子{CLEAR}我已经完全不记得了。{CLEAR}我对你的第一印象就是在1号路时{CLEAR}看到你在远处看着我时的样子。{CLEAR}当时觉得这个女训练家长得真漂亮,{CLEAR}你的脸庞从那时候起{CLEAR}就深深地印在了我的脑海里。",
-   "en": "Red: I didn’t think you’d remember it so{NEWLINE}well.{SCROLL}Red: We played together a lot when we{NEWLINE}were really little...{SCROLL}but I don’t remember what you looked{NEWLINE}like back then at all.{SCROLL}My first impression of you was on Route{NEWLINE}1, when I saw you watching me from far{CLEAR}away.{SCROLL}I thought, wow, that girl Trainer is{NEWLINE}really pretty.{SCROLL}From then on, your face was burned into{NEWLINE}my memory.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 104,
-   "zh": "{VAR:0103:0}『嘿嘿,我这真新镇第一美女{NEWLINE}可不是吹的。",
-   "en": "{VAR:0103:0}: Heh heh. They don’t call me{NEWLINE}Pallet Town’s prettiest girl for{CLEAR}nothing.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 105,
-   "zh": "小赤『在以后月见山、圣安努号、{NEWLINE}紫苑镇的一系列事件中,{NEWLINE}我发现你不仅仅是外貌美丽,{CLEAR}你的内心也非常正直、阳光、温柔。{CLEAR}之后在浅红森林你帮我赶跑了鸟群,{CLEAR}我对你的感觉就又不一样了……{SCROLL}小赤『石英大会之后{NEWLINE}我为了跟爸妈团聚,{CLEAR}跟你分开了好久。{CLEAR}在没有你陪伴的这段时间里,{CLEAR}我常常想起咱们在关东旅行的日子。{CLEAR}有时候想着想着就会情不自禁地微笑,{CLEAR}妈妈还怀疑我是不是生病了……",
-   "en": "Red: Later, through everything at{NEWLINE}Mt. Moon, the S.S. Anne and{CLEAR}Lavender Town...{SCROLL}I found out you weren’t just pretty.{NEWLINE}You had an honest, sunny, gentle{CLEAR}heart too.{SCROLL}Then in Fuchsia Forest you chased off{NEWLINE}those birds for me...{SCROLL}and after that, I started to feel{NEWLINE}differently about you...{SCROLL}Red: After the Indigo Conference, I{NEWLINE}went to be with my mom and dad, and we{CLEAR}were apart for a long time.{SCROLL}While you weren’t around, I kept{NEWLINE}thinking about our days traveling{CLEAR}through Kanto.{SCROLL}Sometimes I’d smile without even{NEWLINE}noticing. My mom even wondered if I{CLEAR}was sick...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "ext-review RV-019"
-  },
-  {
-   "id": 106,
-   "zh": "小赤『如今火箭队大敌当前,{NEWLINE}我说这些话可能有些多余,{CLEAR}但我还是忍不住想告诉你,{CLEAR}我现在满眼看到的、{CLEAR}满脑子想到的都是你。{CLEAR}我喜欢你,{VAR:0103:0}。",
-   "en": "Red: With Team Rocket right in front of{NEWLINE}us, maybe this is a bad time to say{CLEAR}this...{SCROLL}but I can’t help wanting to tell you.{NEWLINE}Everything I see...{SCROLL}everything I think about... it’s all you.{NEWLINE}I love you, {VAR:0103:0}.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 107,
-   "zh": "{VAR:0103:0}『小赤……",
-   "en": "{VAR:0103:0}: Red...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 108,
-   "zh": "小赤『请原谅我这样冒失地吐露心声,{NEWLINE}但我此刻非常想得到你的回应,{CLEAR}不知道你……有什么想对我说的吗？",
-   "en": "Red: Forgive me for blurting out my{NEWLINE}feelings like this.{SCROLL}But right now, I really want to hear{NEWLINE}your answer. Is there... anything you{CLEAR}want to say to me?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 109,
-   "zh": "{VAR:0103:0}『啊,不好意思……{NEWLINE}我……我突然听到{CLEAR}自己喜欢的男孩子向我表白,{CLEAR}有点不知所措了。{CLEAR}那个……小赤……我也喜欢你……",
-   "en": "{VAR:0103:0}: Ah, sorry... I... The boy I{NEWLINE}like just told me he loves me...{SCROLL}and I don’t know what to do with myself.{SCROLL}Um... Red... I love you too...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 110,
-   "zh": "{VAR:0103:0}『那个……你现在闭上眼。",
-   "en": "{VAR:0103:0}: Um... Close your eyes.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 111,
-   "zh": "小赤『{VAR:0103:0}……？",
-   "en": "Red: {VAR:0103:0}...?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 112,
-   "zh": "小赤『唉……这是多么幸福的一刻啊,{NEWLINE}我好希望时间能停留在这一刻,{CLEAR}这样你就只属于我了。{CLEAR}但我知道你是联盟冠军,{CLEAR}职责是守护整个地区,{CLEAR}在接下来的战斗中即使遇到生命危险,{CLEAR}你也会像个英雄一样绝不退缩。{SCROLL}小赤『我这次亲身体会到了{NEWLINE}火箭队的传说中精灵的力量,{CLEAR}真的是深不可测非常危险,{CLEAR}我不会要求你为了我惜身保命,{CLEAR}但战斗时你至少要处处小心,可以吗？",
-   "en": "Red: Sigh... What a happy moment this{NEWLINE}is. I wish time would stop right here...{SCROLL}so you’d be mine alone. But I know{NEWLINE}you’re the League Champion.{SCROLL}Your duty is to protect the whole{NEWLINE}region.{SCROLL}In the battle ahead, even if your life is{NEWLINE}in danger, you’ll never back down, just{CLEAR}like a hero.{SCROLL}Red: This time, I saw for myself Team{NEWLINE}Rocket’s legendary Pokémon power.{SCROLL}It’s unfathomable and really{NEWLINE}dangerous.{SCROLL}I won’t ask you to hold back and play it{NEWLINE}safe for my sake...{SCROLL}but at least be careful out there. Will{NEWLINE}you?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 113,
-   "zh": "{VAR:0103:0}『好的小赤,我一定小心应对。",
-   "en": "{VAR:0103:0}: Okay, Red. I promise I’ll be{NEWLINE}careful.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 114,
-   "zh": "小赤『你是联盟冠军,最强训练家,{NEWLINE}相信你一定可以战胜坂木。{SCROLL}小赤『我还要在这里为妙蛙花治疗一下,{NEWLINE}{VAR:0103:0}你先继续前进吧,{CLEAR}等等妙蛙花恢复之后,{CLEAR}我就去找你汇合。{CLEAR}到时候咱们再一起痛扁火箭队。",
-   "en": "Red: You’re the League Champion, the{NEWLINE}strongest Trainer. I know you can beat{CLEAR}Giovanni.{SCROLL}Red: I still need to treat Venusaur{NEWLINE}here. {VAR:0103:0}, you go on ahead.{SCROLL}Once Venusaur’s better, I’ll come find{NEWLINE}you.{SCROLL}Then we’ll clobber Team Rocket{NEWLINE}together.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 115,
-   "zh": "小蓝『你是联盟冠军,最强训练家,{NEWLINE}相信你一定可以战胜坂木。{SCROLL}小蓝『我还要在这里为妙蛙花治疗一下,{NEWLINE}{VAR:0103:0}你先继续前进吧,{CLEAR}等等妙蛙花恢复之后,{CLEAR}我就去找你汇合。{CLEAR}到时候咱们再一起痛扁火箭队。",
-   "en": "Green: You’re the League Champion, the{NEWLINE}strongest Trainer. I know you can beat{CLEAR}Giovanni.{SCROLL}Green: I still need to treat Venusaur{NEWLINE}here. {VAR:0103:0}, you go on ahead.{SCROLL}Once Venusaur’s better, I’ll come find{NEWLINE}you.{SCROLL}Then we’ll clobber Team Rocket{NEWLINE}together.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 116,
-   "zh": "小赤『你是联盟冠军,最强训练家,{NEWLINE}相信你一定可以战胜坂木。{SCROLL}小赤『我还要在这里为妙蛙花治疗一下,{NEWLINE}{VAR:0103:0}你先继续前进吧,{CLEAR}等等妙蛙花恢复之后,{CLEAR}我就去找你汇合。{CLEAR}到时候咱们再一起痛扁火箭队。",
-   "en": "Red: You’re the League Champion, the{NEWLINE}strongest Trainer. I know you can beat{CLEAR}Giovanni.{SCROLL}Red: I still need to treat Venusaur{NEWLINE}here. {VAR:0103:0}, you go on ahead.{SCROLL}Once Venusaur’s better, I’ll come find{NEWLINE}you.{SCROLL}Then we’ll clobber Team Rocket{NEWLINE}together.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 117,
-   "zh": "小蓝『{VAR:0103:0}你怎么还在这儿啊,{NEWLINE}前面还有火箭队等着你去解决呢。",
-   "en": "Green: {VAR:0103:0}, why are you still here?{NEWLINE}There’s more of Team Rocket up ahead{CLEAR}for you to deal with.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 118,
-   "zh": "小赤『{VAR:0103:0}你怎么还在这儿啊,{NEWLINE}前面还有火箭队等着你去解决呢。",
-   "en": "Red: {VAR:0103:0}, why are you still here?{NEWLINE}There’s more of Team Rocket up ahead{CLEAR}for you to deal with.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 119,
-   "zh": "{VAR:0103:0}『我看刚才那些鸟精灵{NEWLINE}对你攻击得很凶,{CLEAR}有点担心你的伤势。",
-   "en": "{VAR:0103:0}: Those bird Pokémon hit you{NEWLINE}pretty hard just now. I’m a little{CLEAR}worried about your injuries.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 120,
-   "zh": "妙蛙花『Veeee——nu！",
-   "en": "Venusaur: Veeee-nu!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 121,
-   "zh": "阿金『就凭你们也想挡住我,{NEWLINE}上啊爆太郎、尾太郎、波克太郎。",
-   "en": "Gold: You think you lot can stop me? Go{NEWLINE}get ’em, Exbo, Aibo, Togebo!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "#121–173: Gold (female-player romance route). Adventures nicknames: 爆太郎 Exbo (Typhlosion), 尾太郎 Aibo (Ambipom), 波克太郎 Togebo (Togepi line; cry 468 Togekiss in this scene; #127's copied 'Ammm' corrected per D-0533). Gold calls the player 偶像 → 'Idol' / 'my idol'."
-  },
-  {
-   "id": 122,
-   "zh": "阿金『嘿嘿,知道厉害了吧？{NEWLINE}还不赶紧把路让开。",
-   "en": "Gold: Heh heh, now you know who you’re{NEWLINE}dealing with! Out of my way!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 123,
-   "zh": "我的这些精灵确实不足以{NEWLINE}威胁到你这样的训练家,{CLEAR}但它们都是经过特殊调整,{CLEAR}跟传说中的精灵骑拉帝纳{CLEAR}高度同步的精灵。",
-   "en": "My Pokémon aren’t much of a threat to a{NEWLINE}Trainer like you.{SCROLL}But they’ve all been specially tuned...{SCROLL}to sync closely with the legendary{NEWLINE}Pokémon Giratina.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 124,
-   "zh": "阿金『我不管什么骑拉帝纳、步推民这的,{NEWLINE}我现在要过去了,{CLEAR}不想再被揍就乖乖……",
-   "en": "Gold: I don’t care about Giratina or{NEWLINE}Gira-whatever. I’m going through now.{SCROLL}If you don’t want another beating, just{NEWLINE}be good and...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "步推民 is Gold's nonsense mangling of legendary names → Gira-whatever."
-  },
-  {
-   "id": 125,
-   "zh": "爆太郎『Tyyyy……",
-   "en": "Exbo: Tyyyy...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 126,
-   "zh": "尾太郎『Ammm……",
-   "en": "Aibo: Ammm...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 127,
-   "zh": "波克太郎『Ammm……",
-   "en": "Togebo: Tooo...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "D-0533 (D-1496/D-1572, approved by the user 2026-10-06): zh repeats Aibo's 'Ammm'; script 109 plays cry 468 (Togekiss) with this line, so it uses Togebo's own cry (cf. 0620#6 Toooo-ge)."
-  },
-  {
-   "id": 128,
-   "zh": "阿金的精灵们似乎受了很重的伤！",
-   "en": "Gold’s Pokémon seem badly hurt!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 129,
-   "zh": "阿金『爆太郎、尾太郎、波克太郎！{NEWLINE}这是怎么回事啊！",
-   "en": "Gold: Exbo! Aibo! Togebo! What’s going{NEWLINE}on!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 130,
-   "zh": "拥有反转之力的传说中精灵骑拉帝纳,{NEWLINE}可以将作用在精灵身上的效果反转。{CLEAR}你打败的这三只精灵,{CLEAR}都被骑拉帝纳灌注过能量。{CLEAR}刚刚你给它们造成的那些伤害,{CLEAR}全都反转到你自己精灵的身上了,{CLEAR}哈哈哈哈哈！",
-   "en": "Giratina, the legendary Pokémon with{NEWLINE}the power of reversal, can reverse the{CLEAR}effects that act on Pokémon.{SCROLL}The three Pokémon you just beat were{NEWLINE}all charged with Giratina’s energy.{SCROLL}All the damage you did to them just got{NEWLINE}reversed onto your own Pokémon!{SCROLL}Ha ha ha ha ha!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 131,
-   "zh": "阿金『看来你们火箭队长进不小哇,{NEWLINE}这可就有点麻烦了。{CLEAR}接下来准备打我屁屁吗？",
-   "en": "Gold: Looks like you Rockets have{NEWLINE}leveled up. This is kind of a pain.{SCROLL}What’s next, you gonna spank me?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 132,
-   "zh": "我没时间跟你废话,你去死就好了。{SCROLL}你们两个去干掉这个小鬼。",
-   "en": "I’ve got no time for your jokes. Just{NEWLINE}die.{SCROLL}You two, go finish off this brat.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 133,
-   "zh": "阿金『哎呀呀,我好怕怕呀……",
-   "en": "Gold: Oh nooo, I’m sooo scared...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 134,
-   "zh": "{VAR:0103:0}『阿金别怕,我来了！",
-   "en": "{VAR:0103:0}: Don’t worry, Gold, I’m here!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 135,
-   "zh": "阿金『偶像！？",
-   "en": "Gold: My idol!?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 136,
-   "zh": "联盟冠军{VAR:0103:0}？{SCROLL}真是的,前面的队员{NEWLINE}就不能把他拖久一点么！",
-   "en": "The League Champion, {VAR:0103:0}?{SCROLL}Jeez, couldn’t the guys up front hold{NEWLINE}him off a little longer!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 137,
-   "zh": "联盟冠军{VAR:0103:0}？{SCROLL}真是的,前面的队员{NEWLINE}就不能把她拖久一点么！",
-   "en": "The League Champion, {VAR:0103:0}?{SCROLL}Jeez, couldn’t the guys up front hold{NEWLINE}her off a little longer!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 138,
-   "zh": "{VAR:0103:0}『这些传说中精灵的力量{NEWLINE}都很神奇,{CLEAR}你这样横冲直撞{CLEAR}很容易就着了他们的道儿。{CLEAR}接下来交给我吧。",
-   "en": "{VAR:0103:0}: These legendary Pokémon{NEWLINE}powers are really strange.{SCROLL}If you just charge in like that, you’ll{NEWLINE}fall right into their traps.{SCROLL}Leave the rest to me.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 139,
-   "zh": "阿金『我是很开心偶像能来帮忙啦,{NEWLINE}但其实我还藏了底牌哦。{CLEAR}出来吧雷公！",
-   "en": "Gold: I’m really happy my idol came to{NEWLINE}help...{SCROLL}but actually, I’ve still got an ace up{NEWLINE}my sleeve. Come on out, Raikou!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 140,
-   "zh": "雷公『Raiiiii——ko！",
-   "en": "Raikou: Raiiiii-ko!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 141,
-   "zh": "那是传说中的精灵雷公！？{NEWLINE}原来是被这小子给捉走了吗……",
-   "en": "That’s the legendary Raikou!? So this{NEWLINE}kid is the one who caught it...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 142,
-   "zh": "{VAR:0103:0}『原来你还藏了这个后手,{NEWLINE}难怪刚才还有闲心说什么打屁屁。",
-   "en": "{VAR:0103:0}: So you had this trick up your{NEWLINE}sleeve. No wonder you had time to joke{CLEAR}about spankings.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 143,
-   "zh": "阿金『哈哈,我怎么可能{NEWLINE}被区区几个火箭队打败。{SCROLL}阿金『咱们一起上,偶像,{NEWLINE}好好教训一下这帮耍阴招的家伙。",
-   "en": "Gold: Ha ha, like I’d ever lose to a few{NEWLINE}Rocket grunts.{SCROLL}Gold: Let’s take ’em on together, Idol.{NEWLINE}Let’s teach these cheaters a lesson!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 144,
-   "zh": "计划失败……骑拉帝纳的能量也用完了。{NEWLINE}只能先撤退了,快走！",
-   "en": "The plan failed... and Giratina’s energy{NEWLINE}is used up too. We’ll have to retreat{CLEAR}for now. Move!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 145,
-   "zh": "阿金『做的很棒哦雷公,{NEWLINE}先假装败逃然后突然把你放出来,{CLEAR}任谁都会下一大跳。",
-   "en": "Gold: Nice work, Raikou! Pretend to{NEWLINE}run, then suddenly bring you out...{SCROLL}That’d shock anybody.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 146,
-   "zh": "{VAR:0103:0}『所以刚才爆太郎它们受伤,{NEWLINE}也都是假装的吗？",
-   "en": "{VAR:0103:0}: So were Exbo and the others{NEWLINE}faking their injuries too?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 147,
-   "zh": "阿金『不……爆太郎他们确实受了重伤。{NEWLINE}火箭队这招反转之力确实厉害,{CLEAR}我已经有一半精灵不能再战斗了……",
-   "en": "Gold: No... Exbo and the others really{NEWLINE}are badly hurt.{SCROLL}Team Rocket’s reversal trick is no{NEWLINE}joke. Half my Pokémon can’t battle{CLEAR}anymore...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 148,
-   "zh": "{VAR:0103:0}『需要我把你送出洞穴{NEWLINE}到外面治疗吗？",
-   "en": "{VAR:0103:0}: Should I take you out of the{NEWLINE}cave so you can get them treated?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 149,
-   "zh": "阿金『那怎么行啊,偶像。{NEWLINE}我带了一些应急药,{CLEAR}可以给爆太郎它们简单治疗一下。{CLEAR}你不能因为我拖慢前进的脚步,{CLEAR}请继续前进吧,{CLEAR}打败火箭队还要靠你呢。",
-   "en": "Gold: No way, Idol. I brought some{NEWLINE}emergency medicine. I can patch up Exbo{CLEAR}and the others.{SCROLL}You can’t let me slow you down. Please,{NEWLINE}keep going.{SCROLL}We’re counting on you to beat Team{NEWLINE}Rocket.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 150,
-   "zh": "{VAR:0103:0}『我知道了。{NEWLINE}那你也尽快治好精灵赶上来,{CLEAR}到时候咱们再一起并肩作战。",
-   "en": "{VAR:0103:0}: All right. Then heal your{NEWLINE}Pokémon fast and catch up.{SCROLL}Then we’ll fight side by side again.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 151,
-   "zh": "阿金『嘿嘿,好的偶像。",
-   "en": "Gold: Heh heh. Okay, Idol.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 152,
-   "zh": "壶壶『Shuuu……{NEWLINE}晃晃斑『Spiii……",
-   "en": "Shuckle: Shuuu...{NEWLINE}Spinda: Spiii...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 153,
-   "zh": "联盟冠军再加上雷公……",
-   "en": "The League Champion, plus Raikou...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 154,
-   "zh": "完全不是对手啊……",
-   "en": "We’re no match at all...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 155,
-   "zh": "阿金『偶像怎么还在这里,{NEWLINE}前面的战斗有什么困难吗？",
-   "en": "Gold: Idol, why are you still here? Is{NEWLINE}something giving you trouble up ahead?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 156,
-   "zh": "{VAR:0103:0}『还好,目前遇到的困难{NEWLINE}都顺利解决了,{CLEAR}伙伴们也都平安无事。",
-   "en": "{VAR:0103:0}: It’s fine. I’ve handled{NEWLINE}everything so far, and my partners are{CLEAR}all safe.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 157,
-   "zh": "阿金『哎呀,该说不说,{NEWLINE}我这里倒是有一点点小困难……",
-   "en": "Gold: Well, I gotta say, I’ve got a{NEWLINE}teeny little problem of my own...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 158,
-   "zh": "{VAR:0103:0}『什么困难？{NEWLINE}爆太郎它们的治疗不顺利吗？",
-   "en": "{VAR:0103:0}: What problem? Is Exbo’s{NEWLINE}treatment not going well?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 159,
-   "zh": "阿金『那倒不是……{NEWLINE}我所说的困难,其实是我想告诉偶像{CLEAR}那个……我……吸……一",
-   "en": "Gold: It’s not that... The problem is,{NEWLINE}there’s something I want to tell you,{CLEAR}Idol...{SCROLL}Um... I... l-lo...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 160,
-   "zh": "{VAR:0103:0}『怎么说话突然吞吞吐吐的,{NEWLINE}这可一点都不像你啊,阿金。{CLEAR}有什么话就直说嘛。",
-   "en": "{VAR:0103:0}: Why are you suddenly{NEWLINE}stammering? That’s not like you at all,{CLEAR}Gold.{SCROLL}If you’ve got something to say, just{NEWLINE}say it.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 161,
-   "zh": "阿金『我小的时候,{NEWLINE}就是在这里举办的石英大会上{CLEAR}认识偶像的。{CLEAR}当时我就觉得怎么会有{CLEAR}这么英姿飒爽的训练家姐姐。{CLEAR}我当时还把偶像的夺冠海报{CLEAR}贴在家里看了好几个月……",
-   "en": "Gold: When I was little, I first saw you{NEWLINE}at the Indigo Conference held right{CLEAR}here, Idol.{SCROLL}I thought, how can a Trainer girl be so{NEWLINE}cool and confident?{SCROLL}I stuck your winning poster up at home{NEWLINE}and stared at it for months...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 162,
-   "zh": "{VAR:0103:0}『哎呀,我都被你说的{NEWLINE}有点不好意思了。",
-   "en": "{VAR:0103:0}: Oh my, you’re making me a{NEWLINE}little embarrassed.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 163,
-   "zh": "阿金『当我在空木博士研究所{NEWLINE}见到偶像的时候,{CLEAR}我感觉自己的心{CLEAR}都快从喉咙眼跳出来了。{CLEAR}一直以来朝思暮想的女神姐{CLEAR}姐就这样出现在眼前{CLEAR}真是太不可思议了。{CLEAR}后来咱们一起在城都地区旅行,{CLEAR}我对偶像的实力越来越钦佩,{CLEAR}对偶像的人格越来越欣赏……{CLEAR}后来咱们在烟墨市道别,{CLEAR}我独自一人回到若叶镇,{CLEAR}心中就像有一个巨大的空洞。{CLEAR}直到咱们在白银大会重逢,{CLEAR}我心中的空洞才突然被填满。{CLEAR}那时候我就明白,{CLEAR}我的心里已经不能没有偶像你了。{SCROLL}{VAR:0103:0}『我真的非常非常喜欢偶像,{NEWLINE}请你做我女朋友好吗！",
-   "en": "Gold: When I met you at Professor Elm’s{NEWLINE}lab, Idol...{SCROLL}I felt like my heart was about to jump{NEWLINE}out of my throat.{SCROLL}The goddess I’d dreamed about day and{NEWLINE}night was standing right in front of me.{CLEAR}It was unreal.{SCROLL}Then we traveled through Johto{NEWLINE}together...{SCROLL}and I admired your strength and your{NEWLINE}character more and more...{SCROLL}Then we said goodbye in Blackthorn City,{NEWLINE}and I went back to New Bark Town alone.{SCROLL}It felt like there was a huge hole in my{NEWLINE}heart.{SCROLL}When we met again at the Silver{NEWLINE}Conference, the hole suddenly filled up.{SCROLL}That’s when I knew I couldn’t live{NEWLINE}without you anymore, Idol.{SCROLL}Gold: I really, really like you, Idol!{NEWLINE}Will you be my girlfriend?!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (The last page of Gold’s confession is labelled with the player’s name); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-0532, D-1496).",
-   "qa_ignore": [
-    "tag_mismatch"
-   ]
-  },
-  {
-   "id": 164,
-   "zh": "{VAR:0103:0}『阿金……",
-   "en": "{VAR:0103:0}: Gold...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 165,
-   "zh": "阿金『不、不行吗偶像？",
-   "en": "Gold: C-can’t I, Idol?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 166,
-   "zh": "{VAR:0103:0}『不是的,其实我非常欣赏{NEWLINE}你那种勇往直前的乐观精神,{CLEAR}也非常享受身边有一个{CLEAR}你这样充满活力的男孩。{CLEAR}嘛,如果以后能够跟你{CLEAR}以男女朋友的身份,{CLEAR}继续过以前那种无忧无虑的快乐生活,{CLEAR}我一点也不介意哦。",
-   "en": "{VAR:0103:0}: That’s not it. I really admire{NEWLINE}your fearless, never-give-up optimism.{SCROLL}And I really love having a lively boy like{NEWLINE}you around.{SCROLL}Well... if we can keep living that{NEWLINE}carefree, happy life as boyfriend and{CLEAR}girlfriend...{SCROLL}I wouldn’t mind at all.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 167,
-   "zh": "阿金『哇哇哇哇！偶像答应我的告白了！{NEWLINE}好耶！！！{CLEAR}从今往后偶像就是我的女朋友了！",
-   "en": "Gold: Waaah! My idol said yes!{NEWLINE}Woo-hoo!!!{SCROLL}From now on, my idol is my girlfriend!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 168,
-   "zh": "{VAR:0103:0}『先不要急着高兴,阿金。{NEWLINE}如果不在这里打倒坂木,{CLEAR}那么咱们的未来生活就只是一个幻想。",
-   "en": "{VAR:0103:0}: Don’t celebrate just yet,{NEWLINE}Gold.{SCROLL}If we don’t beat Giovanni here, our{NEWLINE}future together is just a fantasy.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 169,
-   "zh": "阿金『我明白,万恶之源火箭队嘛。{NEWLINE}偶像你先继续前进,{CLEAR}我抓紧给爆太郎它们治疗,{CLEAR}等伙伴们都康复后,{CLEAR}我就跟你一起去修理坂木那个老混蛋。",
-   "en": "Gold: I know. Team Rocket, root of all{NEWLINE}evil.{SCROLL}You go on ahead, Idol. I’ll hurry and{NEWLINE}heal Exbo and the others.{SCROLL}Once everyone’s better, I’ll come with{NEWLINE}you to teach that old bastard Giovanni{CLEAR}a lesson.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 170,
-   "zh": "{VAR:0103:0}『好的,我先去前面等你,{NEWLINE}你要尽快赶上来啊。",
-   "en": "{VAR:0103:0}: Okay. I’ll go on ahead and wait{NEWLINE}for you. Hurry and catch up.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 171,
-   "zh": "阿金『嘿嘿,放心吧,{NEWLINE}我亲爱的偶像女朋友！",
-   "en": "Gold: Heh heh, don’t worry, my dear idol{NEWLINE}girlfriend!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 172,
-   "zh": "阿金『我带了一些应急药,{NEWLINE}可以给爆太郎它们简单治疗一下。{CLEAR}偶像你不能因为我拖慢前进的脚步,{CLEAR}请继续前进吧,{CLEAR}打败火箭队还要靠你呢。",
-   "en": "Gold: I brought some emergency{NEWLINE}medicine. I can patch up Exbo and the{CLEAR}others.{SCROLL}Idol, you can’t let me slow you down.{NEWLINE}Please, keep going.{SCROLL}We’re counting on you to beat Team{NEWLINE}Rocket.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 173,
-   "zh": "阿金『偶像你先继续前进,{NEWLINE}我抓紧给爆太郎它们治疗,{CLEAR}等伙伴们都康复后,{CLEAR}我就跟你一起去修理坂木那个老混蛋。",
-   "en": "Gold: You go on ahead, Idol. I’ll hurry{NEWLINE}and heal Exbo and the others.{SCROLL}Once everyone’s better, I’ll come with{NEWLINE}you to teach that old bastard Giovanni{CLEAR}a lesson.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  }
- ]
+  "narc": "a027",
+  "bank": 448,
+  "source": "work/extract/v4/a027/0448.json",
+  "strings": [
+    {
+      "id": 0,
+      "zh": "在精灵中心的二楼{NEWLINE}可以跟朋友交换和对战哦,{CLEAR}如果能几个人一起玩的话{CLEAR}会很有意思吧！",
+      "en": "On the Pokémon Center’s second floor,{NEWLINE}you can trade and battle with friends.{SCROLL}It’s a lot of fun when a bunch of people{NEWLINE}play together!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), same position"
+    },
+    {
+      "id": 1,
+      "zh": "我只有两枚徽章,{NEWLINE}距离获得8枚徽章去参加石英大会{CLEAR}还早得很呢……",
+      "en": "I’ve only got 2 Badges. I’ve still got a{NEWLINE}long way to go before I have 8 and can{CLEAR}enter the Indigo Conference...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), same position"
+    },
+    {
+      "id": 2,
+      "zh": "能够凑齐8个徽章{NEWLINE}参加石英大会的训练家,{CLEAR}都是让人仰望的存在啊。",
+      "en": "Trainers who collect 8 Badges and enter{NEWLINE}the Indigo Conference... Everyone{CLEAR}looks up to them.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), same position"
+    },
+    {
+      "id": 3,
+      "zh": "身上携带的精灵超过6只时,{NEWLINE}多出的精灵就会被传送进寄存系统,{CLEAR}使用精灵中心柜台旁的电脑,{CLEAR}就可以把寄存系统中的精灵取出来。",
+      "en": "When you have more than 6 Pokémon with{NEWLINE}you, the extras are sent to the{CLEAR}storage system.{SCROLL}Use the PC next to the Pokémon Center{NEWLINE}counter to take Pokémon out of{CLEAR}storage.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), same position"
+    },
+    {
+      "id": 4,
+      "zh": "啊呀,在前往石英高原之前,{NEWLINE}还是先享受一下精灵中心的空调吧！{CLEAR}我的隆隆岩也很喜欢这里呢！",
+      "en": "Ahh, before heading to Indigo Plateau,{NEWLINE}I’m going to enjoy the Pokémon Center’s{CLEAR}air conditioning!{SCROLL}My Golem loves it here too!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), same position"
+    },
+    {
+      "id": 5,
+      "zh": "隆隆岩『Go！le！Go！em！",
+      "en": "Golem: Go! le! Go! em!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), same position, flags fullwidth_chars"
+    },
+    {
+      "id": 6,
+      "zh": "吉利蛋『Chee——",
+      "en": "Chansey: Chee-",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), same position"
+    },
+    {
+      "id": 7,
+      "zh": "玛丽露『Mari……",
+      "en": "Marill: Mari...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), same position"
+    },
+    {
+      "id": 8,
+      "zh": "乔伊『哇,你的眼神！{NEWLINE}跟普通的训练家眼神大不一样呢！{CLEAR}虽然你暂时还没有徽章,{CLEAR}但将来一定会成为强大的训练家。{CLEAR}这个送给你,就当是见面礼吧。",
+      "en": "Nurse Joy: Wow, look at those eyes!{NEWLINE}They’re nothing like an ordinary{CLEAR}Trainer’s!{SCROLL}You don’t have any Badges yet, but{NEWLINE}you’re sure to be a strong Trainer{CLEAR}someday.{SCROLL}Please take this as a little welcome{NEWLINE}gift.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), same position"
+    },
+    {
+      "id": 9,
+      "zh": "小蓝『你好啊训练家,{NEWLINE}我叫作小蓝,{CLEAR}我有注意到你在1号路偷看我哟。{SCROLL}{VAR:0103:0}『……{SCROLL}{VAR:0103:0}『不是偷看啦,只是刚好路过。{SCROLL}小蓝『哈哈不要害羞嘛。{NEWLINE}看到像我这样漂亮的女孩子,{CLEAR}你要勇敢搭话才有机会呀。{SCROLL}小蓝『话说你有没有注意到{CLEAR}电梯那边的乔伊小姐？{SCROLL}好像跟其他的乔伊小姐{NEWLINE}有些不太一样……",
+      "en": "Green: Hello there, Trainer! My name’s{NEWLINE}Green. I noticed you peeking at me on{CLEAR}Route 1.{SCROLL}{VAR:0103:0}: ...{SCROLL}{VAR:0103:0}: I wasn’t peeking. I was just{NEWLINE}passing by.{SCROLL}Green: Ha ha, don’t be shy. When you{NEWLINE}see a pretty girl like me...{SCROLL}you have to be brave and talk to her,{NEWLINE}or you’ll never get a chance.{SCROLL}Green: By the way, have you noticed the{NEWLINE}Nurse Joy over by the elevator?{SCROLL}She seems a little different from the{NEWLINE}other Nurse Joys...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Male player meets Green (#9); female player meets Red (#10). Viridian Pokémon Center."
+    },
+    {
+      "id": 10,
+      "zh": "小赤『你好啊,{NEWLINE}我叫作小赤,{CLEAR}总觉得以前在哪见过你。{SCROLL}{VAR:0103:0}『你在1号路抓精灵的样子很不错呢。{SCROLL}小赤『啊！原来在1号路{NEWLINE}没怎么看清的那个人是你呀。{SCROLL}小赤『话说你有没有发现{NEWLINE}这家精灵中心哪里怪怪的？",
+      "en": "Red: Hi. My name’s Red. I feel like I’ve{NEWLINE}seen you somewhere before.{SCROLL}{VAR:0103:0}: You looked pretty good{NEWLINE}catching Pokémon on Route 1.{SCROLL}Red: Oh! So you’re the one I couldn’t{NEWLINE}quite see on Route 1.{SCROLL}Red: By the way, have you noticed{NEWLINE}anything weird about this{CLEAR}Pokémon Center?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "zh": "乔伊『希望你变强之后,{NEWLINE}不要忘记曾经给你道具的我哟。",
+      "en": "Nurse Joy: Once you’ve gotten{NEWLINE}stronger, I hope you won’t forget me,{CLEAR}the one who gave you that item.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), same position"
+    },
+    {
+      "id": 12,
+      "zh": "乔伊『我一直想有一个{NEWLINE}属于自己的搭档,{CLEAR}如果你将来成长得够强了,{CLEAR}或许咱们可以组一对呢。",
+      "en": "Nurse Joy: I’ve always wanted a{NEWLINE}partner of my own.{SCROLL}If you grow strong enough someday,{NEWLINE}maybe we could team up.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), same position"
+    },
+    {
+      "id": 13,
+      "zh": "艾路雷朵『EeeeeRu！",
+      "en": "Gallade: Eeeee-ru!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), same position, flags fullwidth_chars"
+    },
+    {
+      "id": 14,
+      "zh": "我只跟凑齐了8枚徽章的{NEWLINE}高级训练家战斗,{CLEAR}你这种低等级的训练家{CLEAR}还是离我原点吧。",
+      "en": "I only battle Senior Trainers with all 8{NEWLINE}Badges. A low-ranked Trainer like you{CLEAR}should keep away from me.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), same position"
+    },
+    {
+      "id": 15,
+      "zh": "小蓝『想三个人一起上？{NEWLINE}这样倒是给我省了时间。{CLEAR}亮出你们的精灵吧！",
+      "en": "Green: Want all three of you to come at{NEWLINE}me at once? Saves me some time. Show me{CLEAR}your Pokémon!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "#15–120: final Rocket cave. Green (male-player romance route) / Red (female-player romance route) variants alternate (odd/even ids). Green's fear of birds and Rocket boot camp past: Adventures references."
+    },
+    {
+      "id": 16,
+      "zh": "小赤『想三个人一起上？{NEWLINE}这样倒是给我省了时间。{CLEAR}亮出你们的精灵吧！",
+      "en": "Red: Want all three of you to come at me{NEWLINE}at once? Saves me some time. Show me{CLEAR}your Pokémon!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "zh": "前尖兵训练营队员小蓝,{NEWLINE}五岁时被带到卡吉镇基地接受训练,{CLEAR}但因为惧怕鸟形态精灵{CLEAR}在战斗中存在明显缺陷。",
+      "en": "Former boot camp trainee Green. Taken{NEWLINE}to the Mahogany Town base at age five{CLEAR}for training.{SCROLL}Has a clear weakness in battle due to a{NEWLINE}fear of bird Pokémon.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "zh": "小蓝『没想到我逃出来这么久,{NEWLINE}你们火箭队还留着我的资料啊。{CLEAR}是准备给我们做同学录吗？",
+      "en": "Green: I escaped ages ago, and you{NEWLINE}Rockets still kept my file? What, are{CLEAR}you making us a class yearbook?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "zh": "小赤『没想到我逃出来这么久,{NEWLINE}你们火箭队还留着我的资料。{CLEAR}是准备把我抓回去再为你们工作吗？{CLEAR}真遗憾啊,我早就不是当时那个{CLEAR}任你们摆布的孩子了。",
+      "en": "Red: I escaped ages ago, and you{NEWLINE}Rockets still kept my file?{SCROLL}Planning to drag me back to work for{NEWLINE}you again?{SCROLL}Sorry, but I’m not the kid you could{NEWLINE}push around anymore.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "zh": "人家都说童年的阴影{NEWLINE}要用一生来治愈,{CLEAR}不知道你这个惧怕鸟精灵的毛病{CLEAR}治愈到什么程度了呢？{SCROLL}出来吧大嘴雀！",
+      "en": "They say childhood scars take a lifetime{NEWLINE}to heal.{SCROLL}I wonder how well your fear of bird{NEWLINE}Pokémon has healed?{SCROLL}Come on out, Fearow!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "zh": "大嘴雀『Feaaaa——ro！",
+      "en": "Fearow: Feaaaa-ro!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "zh": "盔甲鸟！",
+      "en": "Skarmory!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "zh": "盔甲鸟『Skaaaa——mo！",
+      "en": "Skarmory: Skaaaa-mo!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "zh": "绅士鸦！",
+      "en": "Honchkrow!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "zh": "绅士鸦『Hoooo——cro！",
+      "en": "Honchkrow: Hoooo-cro!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "zh": "看到这些鸟精灵,你连路都走不动了吧？{SCROLL}给我上！",
+      "en": "Seeing all these bird Pokémon, you can’t{NEWLINE}even move, can you?{SCROLL}Get ’em!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "zh": "小蓝『妙蛙花,使出污泥炸弹！",
+      "en": "Green: Venusaur, use Sludge Bomb!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "zh": "小赤『妙蛙花,使出污泥炸弹！",
+      "en": "Red: Venusaur, use Sludge Bomb!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "zh": "完全不怕！？你已经克服对鸟类的恐惧了？",
+      "en": "Not scared at all!? You’ve gotten over{NEWLINE}your fear of birds?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "zh": "小蓝『哼,这些年来{NEWLINE}我也经历了不少磨练,{CLEAR}早就不是那个胆小的姑娘了。",
+      "en": "Green: Hmph. I’ve been through a lot{NEWLINE}these past years. I’m not that timid{CLEAR}little girl anymore.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "zh": "小赤『没错,这些年来{NEWLINE}我也经历了不少磨练,{CLEAR}对鸟类的恐惧早就已经克服掉了。",
+      "en": "Red: That’s right. I’ve been through a{NEWLINE}lot these past years. I got over my{CLEAR}fear of birds long ago.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "zh": "嘻嘻,长大后的你{NEWLINE}或许已经克服了鸟类恐惧。{CLEAR}但如果是小时候的你呢？",
+      "en": "Hee hee. The grown-up you may have{NEWLINE}gotten over your fear of birds. But{CLEAR}what about the little you?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "zh": "小蓝『你什么意思？",
+      "en": "Green: What do you mean?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "zh": "小赤『你什么意思？",
+      "en": "Red: What do you mean?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "zh": "老大他们在这个洞穴里{NEWLINE}灌注了一部分传说中精灵的力量{CLEAR}用来帮助我们战斗。{CLEAR}像是帕路奇亚的屏障力量、{CLEAR}噩梦与美梦的力量以及……{CLEAR}帝牙卢卡的时间力量！",
+      "en": "The Boss and the others poured some of{NEWLINE}the legendary Pokémon’s power into this{CLEAR}cave to help us fight.{SCROLL}Like Palkia’s barrier power, the power{NEWLINE}of nightmares and sweet dreams, and...{SCROLL}Dialga’s power over time!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "zh": "小蓝『时间力量！？喂喂喂,你该不会……",
+      "en": "Green: Power over time!? Hey, hey, hey,{NEWLINE}you’re not going to...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "zh": "小赤『时间力量！？难道你想……",
+      "en": "Red: Power over time!? Don’t tell me{NEWLINE}you’re going to...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "zh": "城都地区冰之通路的最底层{NEWLINE}有一个能把人变老的隧道,{CLEAR}那就是帝牙卢卡时间之力的效果。{CLEAR}跟苍老隧道同样的道理,{CLEAR}只要我调动洞穴里的帝牙卢卡能量,{CLEAR}就能让你返老还童！{CLEAR}哈哈哈哈！",
+      "en": "At the very bottom of Johto’s Ice{NEWLINE}Path, there’s a tunnel that turns{CLEAR}people old.{SCROLL}That’s the work of Dialga’s power over{NEWLINE}time.{SCROLL}It works the same way as the Aging{NEWLINE}Tunnel. Once I call up the Dialga energy{CLEAR}in this cave...{SCROLL}I can make you young again! Ha ha ha{NEWLINE}ha!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "zh": "小蓝『不好……！",
+      "en": "Green: Oh no...!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "zh": "小赤『不好……！",
+      "en": "Red: Oh no...!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "zh": "小蓝『啊……这……我变小了！？怎么可能！？",
+      "en": "Green: Wha... I got smaller!? How is{NEWLINE}that possible!?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "zh": "小赤『啊……这……我变小了！？怎么可能！？",
+      "en": "Red: Wha... I got smaller!? How is that{NEWLINE}possible!?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 43,
+      "zh": "哈哈哈,好好回忆一下童年时期{NEWLINE}对鸟精灵的恐惧吧！{SCROLL}大嘴雀攻击！",
+      "en": "Ha ha ha! Go on, remember how scared of{NEWLINE}bird Pokémon you were as a kid!{SCROLL}Fearow, attack!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "zh": "小蓝『呀呀呀……讨厌！妙蛙花,快……呀……！",
+      "en": "Green: Eek! No! Venusaur, quick...{NEWLINE}Aaah...!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "zh": "小赤『啊啊啊……可恶！妙蛙花,快……啊……！",
+      "en": "Red: Aaagh... Damn it! Venusaur,{NEWLINE}quick... Argh...!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 46,
+      "zh": "小蓝『咳咳……{NEWLINE}居然对我这么漂亮的小女孩下手,{CLEAR}你们火箭队还真是没人性。",
+      "en": "Green: *cough*... Attacking a pretty{NEWLINE}little girl like me... You Rockets are{CLEAR}heartless.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 47,
+      "zh": "小赤『咳咳……{NEWLINE}居然对小孩子模样的人也能下手,{CLEAR}你们火箭队还真是没人性。",
+      "en": "Red: *cough*... Attacking someone who{NEWLINE}looks like a little kid... You Rockets{CLEAR}are heartless.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "zh": "死到临头还在耍嘴皮子,{NEWLINE}都给我上,杀了她！",
+      "en": "Still running your mouth at death’s{NEWLINE}door? Everyone, get her! Kill her!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 49,
+      "zh": "死到临头还在耍嘴皮子,{NEWLINE}都给我上,杀了他！",
+      "en": "Still running your mouth at death’s{NEWLINE}door? Everyone, get him! Kill him!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "zh": "{VAR:0103:0}『到此为止了,{NEWLINE}你们谁也休想动小蓝一下！",
+      "en": "{VAR:0103:0}: That’s far enough! None of{NEWLINE}you are laying a finger on Green!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 51,
+      "zh": "{VAR:0103:0}『到此为止了,{NEWLINE}你们谁也休想动小赤一下！",
+      "en": "{VAR:0103:0}: That’s far enough! None of{NEWLINE}you are laying a finger on Red!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 52,
+      "zh": "联盟冠军？！{NEWLINE}真是的,偏偏在收割胜利成果的时候……",
+      "en": "The League Champion?! Of all the times,{NEWLINE}right when we’re about to claim our{CLEAR}victory...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 53,
+      "zh": "你们两个拖住他,{NEWLINE}我去拿下那个臭丫头的人头。",
+      "en": "You two, hold him off. I’ll go take that{NEWLINE}little brat’s head.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 54,
+      "zh": "你们两个拖住她,{NEWLINE}我去拿下那个混小子的人头。",
+      "en": "You two, hold her off. I’ll go take that{NEWLINE}little punk’s head.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 55,
+      "zh": "是。",
+      "en": "Yes, sir.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 56,
+      "zh": "战斗！",
+      "en": "Battle!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 57,
+      "zh": "你在看哪啊冠军大人,{NEWLINE}你的对手可是我们！",
+      "en": "Where are you looking, Champion? We’re{NEWLINE}your opponents!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 58,
+      "zh": "大嘴雀给这个菜花王八最后一击！",
+      "en": "Fearow, finish off this{NEWLINE}cauliflower-backed bastard!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "zh 菜花王八 (cauliflower turtle/bastard) at Venusaur."
+    },
+    {
+      "id": 59,
+      "zh": "小蓝『不要啊,妙蛙花！",
+      "en": "Green: No! Venusaur!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 60,
+      "zh": "小赤『妙蛙花……！",
+      "en": "Red: Venusaur...!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 61,
+      "zh": "哈哈哈,你去死吧！",
+      "en": "Ha ha ha! Now die!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 62,
+      "zh": "{VAR:0103:0}『住手！！！",
+      "en": "{VAR:0103:0}: Stop!!!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 63,
+      "zh": "可恶,就差一点！",
+      "en": "Damn it, so close!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 64,
+      "zh": "小蓝『谢谢你,{VAR:0103:0}……",
+      "en": "Green: Thank you, {VAR:0103:0}...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 65,
+      "zh": "小赤『谢谢你,{VAR:0103:0}……",
+      "en": "Red: Thank you, {VAR:0103:0}...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 66,
+      "zh": "空",
+      "en": "---",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 138 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 67,
+      "zh": "{VAR:0103:0}『你们还有什么卑鄙的招式{NEWLINE}统统使出来吧,我可不怕你们！",
+      "en": "{VAR:0103:0}: Got any more dirty tricks?{NEWLINE}Bring them all on. I’m not afraid of you!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 68,
+      "zh": "你等着,就算我收拾不掉你,{NEWLINE}坂木老大早晚也会杀了你的。",
+      "en": "Just you wait. Even if I can’t finish you{NEWLINE}off, Boss Giovanni will kill you sooner or{CLEAR}later.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 69,
+      "zh": "小蓝『{VAR:0103:0}！",
+      "en": "Green: {VAR:0103:0}!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 70,
+      "zh": "小赤『{VAR:0103:0}！",
+      "en": "Red: {VAR:0103:0}!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 71,
+      "zh": "{VAR:0103:0}『总算是撤退了……",
+      "en": "{VAR:0103:0}: They finally retreated...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 72,
+      "zh": "{VAR:0103:0}『你没事吧小蓝,刚刚有受伤吗？",
+      "en": "{VAR:0103:0}: Are you okay, Green? Did you{NEWLINE}get hurt just now?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 73,
+      "zh": "{VAR:0103:0}『你没事吧小赤,刚刚有受伤吗？",
+      "en": "{VAR:0103:0}: Are you okay, Red? Did you get{NEWLINE}hurt just now?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 74,
+      "zh": "小蓝『多亏妙蛙花拼死保护,{NEWLINE}我只是受了轻伤。{SCROLL}小蓝『真没想到火箭队{NEWLINE}居然能用传说中精灵的力量把人变小。{CLEAR}虽然永远年轻是每个女人的心愿,{CLEAR}但是这个样子也有点年轻过头了,{CLEAR}我的好身材都完全不见了,{CLEAR}唔……不知道有没有什么办法能复原呢。",
+      "en": "Green: Venusaur risked its life to{NEWLINE}protect me, so I only got a{CLEAR}few scrapes.{SCROLL}Green: I never thought Team Rocket{NEWLINE}could use a legendary Pokémon’s power{CLEAR}to shrink people.{SCROLL}Staying young forever is every woman’s{NEWLINE}dream, but this is a bit too young.{SCROLL}My great figure is completely gone!{NEWLINE}Hmm... I wonder if there’s any way to{CLEAR}change back.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "[D-2072 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
+    },
+    {
+      "id": 75,
+      "zh": "小赤『多亏妙蛙花拼死保护,{NEWLINE}我只是受了轻伤。{SCROLL}小蓝『真没想到火箭队{NEWLINE}居然能用传说中精灵的力量把人变小,{CLEAR}我现在这个样子,{CLEAR}恐怕没有办法继续战斗了,{CLEAR}不知道有没有什么办法能复原啊。",
+      "en": "Red: Venusaur risked its life to protect{NEWLINE}me, so I only got a few scrapes.{SCROLL}Red: I never thought Team Rocket could{CLEAR}use a legendary Pokémon’s power to{CLEAR}shrink people.{SCROLL}Like this, I probably can’t keep{CLEAR}fighting. I wonder if there’s any way to{CLEAR}change back.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "D-1195: reverted to match the zh (Second page of Red’s line is labelled 小蓝 (Green)); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-0532, D-1496). [D-2076 meaning-review-followup: source/context correction; agent-reviewed, not new human approval. Red partner branch; keep D-0532 approved speaker label.]"
+    },
+    {
+      "id": 76,
+      "zh": "{VAR:0103:0}『刚刚那个火箭队的人说,{NEWLINE}你的年龄变化{CLEAR}与冰之通路底层的老化诅咒{CLEAR}都是受帝牙卢卡能力的影响。{CLEAR}正好我在通过那里的时候,{CLEAR}拜托一位老爷爷做了一瓶抗老喷雾。{CLEAR}这个喷雾能抵消冰之通路的老化效果,{CLEAR}或许也能抵消你身上的年轻化效果。{CLEAR}你要试试吗？",
+      "en": "{VAR:0103:0}: That Rocket said your age{NEWLINE}change and the aging curse at the{CLEAR}bottom of the Ice Path...{SCROLL}both come from Dialga’s power.{SCROLL}As it happens, when I went through{NEWLINE}there, I had an old man make me an{CLEAR}Anti-Age Spray.{SCROLL}The spray cancels out the Ice Path’s{NEWLINE}aging effect. Maybe it can cancel out{CLEAR}your de-aging too.{SCROLL}Want to give it a try?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 77,
+      "zh": "小蓝『抗老喷雾？{NEWLINE}不会把我变回小宝宝吧？{CLEAR}不过眼下也没有别的办法了,{CLEAR}你就对我用一下试试吧,{CLEAR}如果我变成了小宝宝,{CLEAR}你可要把我养大,知道吗？",
+      "en": "Green: Anti-Age Spray? It won’t turn{NEWLINE}me into a baby, will it?{SCROLL}Well, there’s nothing else we can do{NEWLINE}right now. Go ahead, try it on me.{SCROLL}But if I turn into a baby, you’ll have to{NEWLINE}raise me. Got it?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 78,
+      "zh": "小赤『抗老喷雾？{NEWLINE}不会把我变回小宝宝吧？{CLEAR}不过眼下也没有别的办法了,{CLEAR}死马当作活马医吧,{CLEAR}你对我使用一下这个喷雾试试吧。",
+      "en": "Red: Anti-Age Spray? It won’t turn me{NEWLINE}into a baby, will it?{SCROLL}Well, there’s nothing else we can do{NEWLINE}right now. It’s worth a shot.{SCROLL}Go ahead, try the spray on me.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 79,
+      "zh": "{VAR:0103:0}『哈哈,如果你变成了宝宝,{NEWLINE}我就带你去冰之通路让你再变回来。{SCROLL}{VAR:0103:0}『那么我现在{NEWLINE}要把喷雾喷到你身上了,{CLEAR}但愿能够奏效吧……",
+      "en": "{VAR:0103:0}: Ha ha. If you turn into a{NEWLINE}baby, I’ll take you to the Ice Path to{CLEAR}change you back.{SCROLL}{VAR:0103:0}: Okay, I’m going to spray you{NEWLINE}now. I hope it works...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 80,
+      "zh": "{VAR:0103:0}『那么我现在{NEWLINE}要把喷雾喷到你身上了,{CLEAR}但愿能够奏效吧……",
+      "en": "{VAR:0103:0}: Okay, I’m going to spray you{NEWLINE}now. I hope it works...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 81,
+      "zh": "小蓝『哇,好神奇！真的变回来了！{NEWLINE}果然还是前凸后翘的身材更适合我。",
+      "en": "Green: Wow, amazing! I really changed{NEWLINE}back! A curvy figure suits me much{CLEAR}better after all.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 82,
+      "zh": "小赤『太好了！真的变回来了！{NEWLINE}还是现在的体格更适合战斗。",
+      "en": "Red: Great! I really changed back! This{NEWLINE}body’s much better for battling.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 83,
+      "zh": "{VAR:0103:0}『小蓝,你和妙蛙花的伤怎么样？{NEWLINE}还能继续战斗吗？",
+      "en": "{VAR:0103:0}: Green, how are you and{NEWLINE}Venusaur? Can you keep fighting?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 84,
+      "zh": "{VAR:0103:0}『小赤,你和妙蛙花都受了伤,{NEWLINE}确定要马上投入战斗吗？",
+      "en": "{VAR:0103:0}: Red, you and Venusaur are{NEWLINE}both hurt. Are you sure you want to{CLEAR}jump right back into battle?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 85,
+      "zh": "小蓝『妙蛙花为了保护我伤得很重,{NEWLINE}好在我这里有些急救药,{CLEAR}等我给它治疗一下后,{CLEAR}就可以继续战斗了。{CLEAR}不过这个治疗可能花些时间,{CLEAR}{VAR:0103:0}你不用在这里等我,{CLEAR}继续前进就好。{CLEAR}等妙蛙花恢复之后,我会追上去的。",
+      "en": "Green: Venusaur got hurt badly{NEWLINE}protecting me, but luckily I have some{CLEAR}first-aid medicine.{SCROLL}Once I’ve treated it, we can keep{NEWLINE}fighting.{SCROLL}But it might take a while. {VAR:0103:0}, you{NEWLINE}don’t have to wait here. Keep going.{SCROLL}Once Venusaur’s better, I’ll catch up.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 86,
+      "zh": "小赤『妙蛙花为了保护我伤得很重,{NEWLINE}好在我这里有些急救药,{CLEAR}等我给它治疗一下后,{CLEAR}就可以继续战斗了。{CLEAR}不过这个治疗可能花些时间,{CLEAR}{VAR:0103:0}你不用在这里等我,{CLEAR}继续前进就好。{CLEAR}等妙蛙花恢复之后,我会追上去的。",
+      "en": "Red: Venusaur got hurt badly{NEWLINE}protecting me, but luckily I have some{CLEAR}first-aid medicine.{SCROLL}Once I’ve treated it, we can keep{NEWLINE}fighting.{SCROLL}But it might take a while. {VAR:0103:0}, you{NEWLINE}don’t have to wait here. Keep going.{SCROLL}Once Venusaur’s better, I’ll catch up.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 87,
+      "zh": "{VAR:0103:0}『好,那我先走了。{NEWLINE}你自己多加小心。",
+      "en": "{VAR:0103:0}: Okay, I’ll go on ahead. Be{NEWLINE}careful.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 88,
+      "zh": "小蓝『{VAR:0103:0}……你有没有觉得{NEWLINE}这次你挺身而出救我的景象{CLEAR}像极了浅红森林那次呢？",
+      "en": "Green: {VAR:0103:0}... Don’t you think the{NEWLINE}way you jumped in to save me just now...{SCROLL}was just like that time in Fuchsia{NEWLINE}Forest?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 89,
+      "zh": "{VAR:0103:0}『这么一说还真是有些像。{NEWLINE}我记得那次你也是被鸟精灵围,{CLEAR}然后因为惊慌无法指挥精灵战斗。",
+      "en": "{VAR:0103:0}: Now that you mention it, it is{NEWLINE}kind of similar.{SCROLL}I remember that time you were{NEWLINE}surrounded by bird Pokémon too, and{CLEAR}you panicked and couldn’t command your{CLEAR}Pokémon.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 90,
+      "zh": "小蓝『没想到你记得蛮清楚嘛。{SCROLL}小蓝『我跟你说啊,{NEWLINE}虽然咱们在很小的时候经常一起玩,{CLEAR}但那时候你长什么样子{CLEAR}我已经完全不记得了。{CLEAR}我对你的第一印象就是在1号路时{CLEAR}看到你在远处看着我时的样子。{CLEAR}当时觉得这个训练家长得很普通,{CLEAR}丢到人堆里都找不到的那种。",
+      "en": "Green: Huh, you remember it pretty{NEWLINE}well.{SCROLL}Green: You know what? We played{NEWLINE}together a lot when we were really{CLEAR}little...{SCROLL}but I don’t remember what you looked{NEWLINE}like back then at all.{SCROLL}My first impression of you was on Route{NEWLINE}1, when I saw you watching me from far{CLEAR}away.{SCROLL}I thought you looked pretty ordinary.{NEWLINE}The kind of guy you’d lose in a crowd.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 91,
+      "zh": "{VAR:0103:0}『喂,也没有你说的那么差吧？",
+      "en": "{VAR:0103:0}: Hey, I’m not that bad, am I?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 92,
+      "zh": "小蓝『哈哈,听我说完嘛。{NEWLINE}在以后月见山、圣安努号、紫苑镇{CLEAR}的一系列事件中,{CLEAR}我逐渐被你那{CLEAR}正直、阳光、温柔的内心所吸引。{CLEAR}之后在浅红森林你帮我赶跑了鸟群,{CLEAR}我突然就觉得{VAR:0103:0}你好帅啊。{SCROLL}小蓝『石英大会之后{NEWLINE}我为了跟爸妈团聚,{CLEAR}跟你分开了好久。{CLEAR}在没有你陪伴的这段时间里,{CLEAR}我常常想起咱们在关东旅行的日子。{CLEAR}有时候想着想着就会情不自禁地微笑,{CLEAR}妈妈还怀疑我是不是生病了……",
+      "en": "Green: Ha ha, let me finish. Later,{NEWLINE}through everything at Mt. Moon, the{CLEAR}S.S. Anne and Lavender Town...{SCROLL}I slowly fell for your honest, sunny,{NEWLINE}gentle heart.{SCROLL}Then in Fuchsia Forest you chased off{NEWLINE}those birds for me...{SCROLL}and suddenly I thought, wow, {VAR:0103:0} is{NEWLINE}so cool.{SCROLL}Green: After the Indigo Conference, I{NEWLINE}went to be with my mom and dad, and we{CLEAR}were apart for a long time.{SCROLL}While you weren’t around, I kept{NEWLINE}thinking about our days traveling{CLEAR}through Kanto.{SCROLL}Sometimes I’d smile without even{NEWLINE}noticing. My mom even wondered if I was{CLEAR}sick...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 93,
+      "zh": "小蓝『如今火箭队大敌当前,{NEWLINE}我说这些话可能有些多余,{CLEAR}但我还是忍不住想告诉你,{CLEAR}我现在满眼看到的、{CLEAR}满脑子想到的都是你。{CLEAR}我喜欢你,{VAR:0103:0}。",
+      "en": "Green: With Team Rocket right in front{NEWLINE}of us, maybe this is a bad time to say{CLEAR}this...{SCROLL}but I can’t help wanting to tell you.{NEWLINE}Everything I see...{SCROLL}everything I think about... it’s all you.{NEWLINE}I love you, {VAR:0103:0}.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 94,
+      "zh": "{VAR:0103:0}『小蓝……",
+      "en": "{VAR:0103:0}: Green...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 95,
+      "zh": "小蓝『进山洞前作动员的时候{NEWLINE}你不是挺能说的吗？{CLEAR}现在怎么又变哑巴了？{CLEAR}人家都跟你表白了,{CLEAR}你就没有什么对我说的吗？",
+      "en": "Green: You gave such a great pep talk{NEWLINE}before we went into the cave.{SCROLL}Why are you all tongue-tied now?{SCROLL}A girl just confessed to you. Don’t you{NEWLINE}have anything to say to me?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 96,
+      "zh": "{VAR:0103:0}『啊,不好意思……{NEWLINE}我……我突然听到{CLEAR}自己喜欢的女孩子向我表白,{CLEAR}有点不知所措了。{CLEAR}那个……小蓝……我也喜欢你……",
+      "en": "{VAR:0103:0}: Ah, sorry... I... The girl I{NEWLINE}like just told me she loves me...{SCROLL}and I don’t know what to do with myself.{SCROLL}Um... Green... I love you too...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 97,
+      "zh": "小蓝『嗯……嘿嘿,那你现在闭上眼。",
+      "en": "Green: Mm... hee hee. Then close your{NEWLINE}eyes.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 98,
+      "zh": "{VAR:0103:0}『小蓝……？",
+      "en": "{VAR:0103:0}: Green...?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 99,
+      "zh": "小蓝『唉……这是多么幸福的一刻啊,{NEWLINE}我好希望时间能停留在这一刻,{CLEAR}这样你就只属于我了。{CLEAR}但我知道你是联盟冠军,{CLEAR}职责是守护整个地区,{CLEAR}在接下来的战斗中即使遇到生命危险,{CLEAR}你也会像个英雄一样绝不退缩。{SCROLL}小蓝『我这次亲身体会到了{NEWLINE}火箭队的传说中精灵的力量,{CLEAR}真的是深不可测非常危险,{CLEAR}我不会要求你为了我惜身保命,{CLEAR}但战斗时你至少要处处小心,知道吗？",
+      "en": "Green: Sigh... What a happy moment this{NEWLINE}is. I wish time would stop right here...{SCROLL}so you’d be mine alone. But I know{NEWLINE}you’re the League Champion.{SCROLL}Your duty is to protect the whole{NEWLINE}region.{SCROLL}In the battle ahead, even if your life is{NEWLINE}in danger, you’ll never back down, just{CLEAR}like a hero.{SCROLL}Green: This time, I saw for myself Team{NEWLINE}Rocket’s legendary Pokémon power.{SCROLL}It’s unfathomable and really{NEWLINE}dangerous.{SCROLL}I won’t ask you to hold back and play it{NEWLINE}safe for my sake...{SCROLL}but at least be careful out there,{NEWLINE}okay?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 100,
+      "zh": "{VAR:0103:0}『好的小蓝,我一定小心应对。",
+      "en": "{VAR:0103:0}: Okay, Green. I promise I’ll be{NEWLINE}careful.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 101,
+      "zh": "小蓝『你是联盟冠军,最强训练家,{NEWLINE}相信你一定可以战胜坂木。{SCROLL}小蓝『我还要在这里为妙蛙花治疗一下,{NEWLINE}{VAR:0103:0}你先继续前进吧,{CLEAR}等等妙蛙花恢复之后,{CLEAR}我就去找你汇合。{CLEAR}到时候咱们再一起痛扁火箭队。",
+      "en": "Green: You’re the League Champion, the{NEWLINE}strongest Trainer. I know you can beat{CLEAR}Giovanni.{SCROLL}Green: I still need to treat Venusaur{NEWLINE}here. {VAR:0103:0}, you go on ahead.{SCROLL}Once Venusaur’s better, I’ll come find{NEWLINE}you.{SCROLL}Then we’ll clobber Team Rocket{NEWLINE}together.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 102,
+      "zh": "小赤『{VAR:0103:0}……你有没有觉得{NEWLINE}这次你挺身而出救我的景象{CLEAR}像极了浅红森林那次？",
+      "en": "Red: {VAR:0103:0}... Don’t you think the way{NEWLINE}you jumped in to save me just now...{SCROLL}was just like that time in Fuchsia{NEWLINE}Forest?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 103,
+      "zh": "小赤『没想到你记得还挺清楚。{SCROLL}小赤『虽然咱们在很小的时候{NEWLINE}经常一起玩,{CLEAR}但那时候你长什么样子{CLEAR}我已经完全不记得了。{CLEAR}我对你的第一印象就是在1号路时{CLEAR}看到你在远处看着我时的样子。{CLEAR}当时觉得这个女训练家长得真漂亮,{CLEAR}你的脸庞从那时候起{CLEAR}就深深地印在了我的脑海里。",
+      "en": "Red: I didn’t think you’d remember it so{NEWLINE}well.{SCROLL}Red: We played together a lot when we{NEWLINE}were really little...{SCROLL}but I don’t remember what you looked{NEWLINE}like back then at all.{SCROLL}My first impression of you was on Route{NEWLINE}1, when I saw you watching me from far{CLEAR}away.{SCROLL}I thought, wow, that girl Trainer is{NEWLINE}really pretty.{SCROLL}From then on, your face was burned into{NEWLINE}my memory.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 104,
+      "zh": "{VAR:0103:0}『嘿嘿,我这真新镇第一美女{NEWLINE}可不是吹的。",
+      "en": "{VAR:0103:0}: Heh heh. They don’t call me{NEWLINE}Pallet Town’s prettiest girl for{CLEAR}nothing.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 105,
+      "zh": "小赤『在以后月见山、圣安努号、{NEWLINE}紫苑镇的一系列事件中,{NEWLINE}我发现你不仅仅是外貌美丽,{CLEAR}你的内心也非常正直、阳光、温柔。{CLEAR}之后在浅红森林你帮我赶跑了鸟群,{CLEAR}我对你的感觉就又不一样了……{SCROLL}小赤『石英大会之后{NEWLINE}我为了跟爸妈团聚,{CLEAR}跟你分开了好久。{CLEAR}在没有你陪伴的这段时间里,{CLEAR}我常常想起咱们在关东旅行的日子。{CLEAR}有时候想着想着就会情不自禁地微笑,{CLEAR}妈妈还怀疑我是不是生病了……",
+      "en": "Red: Later, through everything at{NEWLINE}Mt. Moon, the S.S. Anne and{CLEAR}Lavender Town...{SCROLL}I found out you weren’t just pretty.{NEWLINE}You had an honest, sunny, gentle{CLEAR}heart too.{SCROLL}Then in Fuchsia Forest you chased off{NEWLINE}those birds for me...{SCROLL}and after that, I started to feel{NEWLINE}differently about you...{SCROLL}Red: After the Indigo Conference, I{NEWLINE}went to be with my mom and dad, and we{CLEAR}were apart for a long time.{SCROLL}While you weren’t around, I kept{NEWLINE}thinking about our days traveling{CLEAR}through Kanto.{SCROLL}Sometimes I’d smile without even{NEWLINE}noticing. My mom even wondered if I{CLEAR}was sick...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "ext-review RV-019"
+    },
+    {
+      "id": 106,
+      "zh": "小赤『如今火箭队大敌当前,{NEWLINE}我说这些话可能有些多余,{CLEAR}但我还是忍不住想告诉你,{CLEAR}我现在满眼看到的、{CLEAR}满脑子想到的都是你。{CLEAR}我喜欢你,{VAR:0103:0}。",
+      "en": "Red: With Team Rocket right in front of{NEWLINE}us, maybe this is a bad time to say{CLEAR}this...{SCROLL}but I can’t help wanting to tell you.{NEWLINE}Everything I see...{SCROLL}everything I think about... it’s all you.{NEWLINE}I love you, {VAR:0103:0}.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 107,
+      "zh": "{VAR:0103:0}『小赤……",
+      "en": "{VAR:0103:0}: Red...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 108,
+      "zh": "小赤『请原谅我这样冒失地吐露心声,{NEWLINE}但我此刻非常想得到你的回应,{CLEAR}不知道你……有什么想对我说的吗？",
+      "en": "Red: Forgive me for blurting out my{NEWLINE}feelings like this.{SCROLL}But right now, I really want to hear{NEWLINE}your answer. Is there... anything you{CLEAR}want to say to me?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 109,
+      "zh": "{VAR:0103:0}『啊,不好意思……{NEWLINE}我……我突然听到{CLEAR}自己喜欢的男孩子向我表白,{CLEAR}有点不知所措了。{CLEAR}那个……小赤……我也喜欢你……",
+      "en": "{VAR:0103:0}: Ah, sorry... I... The boy I{NEWLINE}like just told me he loves me...{SCROLL}and I don’t know what to do with myself.{SCROLL}Um... Red... I love you too...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 110,
+      "zh": "{VAR:0103:0}『那个……你现在闭上眼。",
+      "en": "{VAR:0103:0}: Um... Close your eyes.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 111,
+      "zh": "小赤『{VAR:0103:0}……？",
+      "en": "Red: {VAR:0103:0}...?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 112,
+      "zh": "小赤『唉……这是多么幸福的一刻啊,{NEWLINE}我好希望时间能停留在这一刻,{CLEAR}这样你就只属于我了。{CLEAR}但我知道你是联盟冠军,{CLEAR}职责是守护整个地区,{CLEAR}在接下来的战斗中即使遇到生命危险,{CLEAR}你也会像个英雄一样绝不退缩。{SCROLL}小赤『我这次亲身体会到了{NEWLINE}火箭队的传说中精灵的力量,{CLEAR}真的是深不可测非常危险,{CLEAR}我不会要求你为了我惜身保命,{CLEAR}但战斗时你至少要处处小心,可以吗？",
+      "en": "Red: Sigh... What a happy moment this{NEWLINE}is. I wish time would stop right here...{SCROLL}so you’d be mine alone. But I know{NEWLINE}you’re the League Champion.{SCROLL}Your duty is to protect the whole{NEWLINE}region.{SCROLL}In the battle ahead, even if your life is{NEWLINE}in danger, you’ll never back down, just{CLEAR}like a hero.{SCROLL}Red: This time, I saw for myself Team{NEWLINE}Rocket’s legendary Pokémon power.{SCROLL}It’s unfathomable and really{NEWLINE}dangerous.{SCROLL}I won’t ask you to hold back and play it{NEWLINE}safe for my sake...{SCROLL}but at least be careful out there. Will{NEWLINE}you?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 113,
+      "zh": "{VAR:0103:0}『好的小赤,我一定小心应对。",
+      "en": "{VAR:0103:0}: Okay, Red. I promise I’ll be{NEWLINE}careful.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 114,
+      "zh": "小赤『你是联盟冠军,最强训练家,{NEWLINE}相信你一定可以战胜坂木。{SCROLL}小赤『我还要在这里为妙蛙花治疗一下,{NEWLINE}{VAR:0103:0}你先继续前进吧,{CLEAR}等等妙蛙花恢复之后,{CLEAR}我就去找你汇合。{CLEAR}到时候咱们再一起痛扁火箭队。",
+      "en": "Red: You’re the League Champion, the{NEWLINE}strongest Trainer. I know you can beat{CLEAR}Giovanni.{SCROLL}Red: I still need to treat Venusaur{NEWLINE}here. {VAR:0103:0}, you go on ahead.{SCROLL}Once Venusaur’s better, I’ll come find{NEWLINE}you.{SCROLL}Then we’ll clobber Team Rocket{NEWLINE}together.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 115,
+      "zh": "小蓝『你是联盟冠军,最强训练家,{NEWLINE}相信你一定可以战胜坂木。{SCROLL}小蓝『我还要在这里为妙蛙花治疗一下,{NEWLINE}{VAR:0103:0}你先继续前进吧,{CLEAR}等等妙蛙花恢复之后,{CLEAR}我就去找你汇合。{CLEAR}到时候咱们再一起痛扁火箭队。",
+      "en": "Green: You’re the League Champion, the{NEWLINE}strongest Trainer. I know you can beat{CLEAR}Giovanni.{SCROLL}Green: I still need to treat Venusaur{NEWLINE}here. {VAR:0103:0}, you go on ahead.{SCROLL}Once Venusaur’s better, I’ll come find{NEWLINE}you.{SCROLL}Then we’ll clobber Team Rocket{NEWLINE}together.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 116,
+      "zh": "小赤『你是联盟冠军,最强训练家,{NEWLINE}相信你一定可以战胜坂木。{SCROLL}小赤『我还要在这里为妙蛙花治疗一下,{NEWLINE}{VAR:0103:0}你先继续前进吧,{CLEAR}等等妙蛙花恢复之后,{CLEAR}我就去找你汇合。{CLEAR}到时候咱们再一起痛扁火箭队。",
+      "en": "Red: You’re the League Champion, the{NEWLINE}strongest Trainer. I know you can beat{CLEAR}Giovanni.{SCROLL}Red: I still need to treat Venusaur{NEWLINE}here. {VAR:0103:0}, you go on ahead.{SCROLL}Once Venusaur’s better, I’ll come find{NEWLINE}you.{SCROLL}Then we’ll clobber Team Rocket{NEWLINE}together.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 117,
+      "zh": "小蓝『{VAR:0103:0}你怎么还在这儿啊,{NEWLINE}前面还有火箭队等着你去解决呢。",
+      "en": "Green: {VAR:0103:0}, why are you still here?{NEWLINE}There’s more of Team Rocket up ahead{CLEAR}for you to deal with.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 118,
+      "zh": "小赤『{VAR:0103:0}你怎么还在这儿啊,{NEWLINE}前面还有火箭队等着你去解决呢。",
+      "en": "Red: {VAR:0103:0}, why are you still here?{NEWLINE}There’s more of Team Rocket up ahead{CLEAR}for you to deal with.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 119,
+      "zh": "{VAR:0103:0}『我看刚才那些鸟精灵{NEWLINE}对你攻击得很凶,{CLEAR}有点担心你的伤势。",
+      "en": "{VAR:0103:0}: Those bird Pokémon hit you{NEWLINE}pretty hard just now. I’m a little{CLEAR}worried about your injuries.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 120,
+      "zh": "妙蛙花『Veeee——nu！",
+      "en": "Venusaur: Veeee-nu!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 121,
+      "zh": "阿金『就凭你们也想挡住我,{NEWLINE}上啊爆太郎、尾太郎、波克太郎。",
+      "en": "Gold: You think you lot can stop me? Go{NEWLINE}get ’em, Exbo, Aibo, Togebo!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "#121–173: Gold (female-player romance route). Adventures nicknames: 爆太郎 Exbo (Typhlosion), 尾太郎 Aibo (Ambipom), 波克太郎 Togebo (Togepi line; cry 468 Togekiss in this scene; #127's copied 'Ammm' corrected per D-0533). Gold calls the player 偶像 → 'Idol' / 'my idol'."
+    },
+    {
+      "id": 122,
+      "zh": "阿金『嘿嘿,知道厉害了吧？{NEWLINE}还不赶紧把路让开。",
+      "en": "Gold: Heh heh, now you know who you’re{NEWLINE}dealing with! Out of my way!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 123,
+      "zh": "我的这些精灵确实不足以{NEWLINE}威胁到你这样的训练家,{CLEAR}但它们都是经过特殊调整,{CLEAR}跟传说中的精灵骑拉帝纳{CLEAR}高度同步的精灵。",
+      "en": "My Pokémon aren’t much of a threat to a{NEWLINE}Trainer like you.{SCROLL}But they’ve all been specially tuned...{SCROLL}to sync closely with the legendary{NEWLINE}Pokémon Giratina.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 124,
+      "zh": "阿金『我不管什么骑拉帝纳、步推民这的,{NEWLINE}我现在要过去了,{CLEAR}不想再被揍就乖乖……",
+      "en": "Gold: I don’t care about Giratina or{NEWLINE}Gira-whatever. I’m going through now.{SCROLL}If you don’t want another beating, just{NEWLINE}be good and...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "步推民 is Gold's nonsense mangling of legendary names → Gira-whatever."
+    },
+    {
+      "id": 125,
+      "zh": "爆太郎『Tyyyy……",
+      "en": "Exbo: Tyyyy...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 126,
+      "zh": "尾太郎『Ammm……",
+      "en": "Aibo: Ammm...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 127,
+      "zh": "波克太郎『Ammm……",
+      "en": "Togebo: Tooo...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "D-0533 (D-1496/D-1572, approved by the user 2026-10-06): zh repeats Aibo's 'Ammm'; script 109 plays cry 468 (Togekiss) with this line, so it uses Togebo's own cry (cf. 0620#6 Toooo-ge)."
+    },
+    {
+      "id": 128,
+      "zh": "阿金的精灵们似乎受了很重的伤！",
+      "en": "Gold’s Pokémon seem badly hurt!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 129,
+      "zh": "阿金『爆太郎、尾太郎、波克太郎！{NEWLINE}这是怎么回事啊！",
+      "en": "Gold: Exbo! Aibo! Togebo! What’s going{NEWLINE}on!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 130,
+      "zh": "拥有反转之力的传说中精灵骑拉帝纳,{NEWLINE}可以将作用在精灵身上的效果反转。{CLEAR}你打败的这三只精灵,{CLEAR}都被骑拉帝纳灌注过能量。{CLEAR}刚刚你给它们造成的那些伤害,{CLEAR}全都反转到你自己精灵的身上了,{CLEAR}哈哈哈哈哈！",
+      "en": "Giratina, the legendary Pokémon with{NEWLINE}the power of reversal, can reverse the{CLEAR}effects that act on Pokémon.{SCROLL}The three Pokémon you just beat were{NEWLINE}all charged with Giratina’s energy.{SCROLL}All the damage you did to them just got{NEWLINE}reversed onto your own Pokémon!{SCROLL}Ha ha ha ha ha!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 131,
+      "zh": "阿金『看来你们火箭队长进不小哇,{NEWLINE}这可就有点麻烦了。{CLEAR}接下来准备打我屁屁吗？",
+      "en": "Gold: Looks like you Rockets have{NEWLINE}leveled up. This is kind of a pain.{SCROLL}What’s next, you gonna spank me?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 132,
+      "zh": "我没时间跟你废话,你去死就好了。{SCROLL}你们两个去干掉这个小鬼。",
+      "en": "I’ve got no time for your jokes. Just{NEWLINE}die.{SCROLL}You two, go finish off this brat.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 133,
+      "zh": "阿金『哎呀呀,我好怕怕呀……",
+      "en": "Gold: Oh nooo, I’m sooo scared...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 134,
+      "zh": "{VAR:0103:0}『阿金别怕,我来了！",
+      "en": "{VAR:0103:0}: Don’t worry, Gold, I’m here!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 135,
+      "zh": "阿金『偶像！？",
+      "en": "Gold: My idol!?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 136,
+      "zh": "联盟冠军{VAR:0103:0}？{SCROLL}真是的,前面的队员{NEWLINE}就不能把他拖久一点么！",
+      "en": "The League Champion, {VAR:0103:0}?{SCROLL}Jeez, couldn’t the guys up front hold{NEWLINE}him off a little longer!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 137,
+      "zh": "联盟冠军{VAR:0103:0}？{SCROLL}真是的,前面的队员{NEWLINE}就不能把她拖久一点么！",
+      "en": "The League Champion, {VAR:0103:0}?{SCROLL}Jeez, couldn’t the guys up front hold{NEWLINE}her off a little longer!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 138,
+      "zh": "{VAR:0103:0}『这些传说中精灵的力量{NEWLINE}都很神奇,{CLEAR}你这样横冲直撞{CLEAR}很容易就着了他们的道儿。{CLEAR}接下来交给我吧。",
+      "en": "{VAR:0103:0}: These legendary Pokémon{NEWLINE}powers are really strange.{SCROLL}If you just charge in like that, you’ll{NEWLINE}fall right into their traps.{SCROLL}Leave the rest to me.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 139,
+      "zh": "阿金『我是很开心偶像能来帮忙啦,{NEWLINE}但其实我还藏了底牌哦。{CLEAR}出来吧雷公！",
+      "en": "Gold: I’m really happy my idol came to{NEWLINE}help...{SCROLL}but actually, I’ve still got an ace up{NEWLINE}my sleeve. Come on out, Raikou!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 140,
+      "zh": "雷公『Raiiiii——ko！",
+      "en": "Raikou: Raiiiii-ko!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 141,
+      "zh": "那是传说中的精灵雷公！？{NEWLINE}原来是被这小子给捉走了吗……",
+      "en": "That’s the legendary Raikou!? So this{NEWLINE}kid is the one who caught it...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 142,
+      "zh": "{VAR:0103:0}『原来你还藏了这个后手,{NEWLINE}难怪刚才还有闲心说什么打屁屁。",
+      "en": "{VAR:0103:0}: So you had this trick up your{NEWLINE}sleeve. No wonder you had time to joke{CLEAR}about spankings.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 143,
+      "zh": "阿金『哈哈,我怎么可能{NEWLINE}被区区几个火箭队打败。{SCROLL}阿金『咱们一起上,偶像,{NEWLINE}好好教训一下这帮耍阴招的家伙。",
+      "en": "Gold: Ha ha, like I’d ever lose to a few{NEWLINE}Rocket grunts.{SCROLL}Gold: Let’s take ’em on together, Idol.{NEWLINE}Let’s teach these cheaters a lesson!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 144,
+      "zh": "计划失败……骑拉帝纳的能量也用完了。{NEWLINE}只能先撤退了,快走！",
+      "en": "The plan failed... and Giratina’s energy{NEWLINE}is used up too. We’ll have to retreat{CLEAR}for now. Move!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 145,
+      "zh": "阿金『做的很棒哦雷公,{NEWLINE}先假装败逃然后突然把你放出来,{CLEAR}任谁都会下一大跳。",
+      "en": "Gold: Nice work, Raikou! Pretend to{NEWLINE}run, then suddenly bring you out...{SCROLL}That’d shock anybody.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 146,
+      "zh": "{VAR:0103:0}『所以刚才爆太郎它们受伤,{NEWLINE}也都是假装的吗？",
+      "en": "{VAR:0103:0}: So were Exbo and the others{NEWLINE}faking their injuries too?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 147,
+      "zh": "阿金『不……爆太郎他们确实受了重伤。{NEWLINE}火箭队这招反转之力确实厉害,{CLEAR}我已经有一半精灵不能再战斗了……",
+      "en": "Gold: No... Exbo and the others really{NEWLINE}are badly hurt.{SCROLL}Team Rocket’s reversal trick is no{NEWLINE}joke. Half my Pokémon can’t battle{CLEAR}anymore...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 148,
+      "zh": "{VAR:0103:0}『需要我把你送出洞穴{NEWLINE}到外面治疗吗？",
+      "en": "{VAR:0103:0}: Should I take you out of the{NEWLINE}cave so you can get them treated?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 149,
+      "zh": "阿金『那怎么行啊,偶像。{NEWLINE}我带了一些应急药,{CLEAR}可以给爆太郎它们简单治疗一下。{CLEAR}你不能因为我拖慢前进的脚步,{CLEAR}请继续前进吧,{CLEAR}打败火箭队还要靠你呢。",
+      "en": "Gold: No way, Idol. I brought some{NEWLINE}emergency medicine. I can patch up Exbo{CLEAR}and the others.{SCROLL}You can’t let me slow you down. Please,{NEWLINE}keep going.{SCROLL}We’re counting on you to beat Team{NEWLINE}Rocket.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 150,
+      "zh": "{VAR:0103:0}『我知道了。{NEWLINE}那你也尽快治好精灵赶上来,{CLEAR}到时候咱们再一起并肩作战。",
+      "en": "{VAR:0103:0}: All right. Then heal your{NEWLINE}Pokémon fast and catch up.{SCROLL}Then we’ll fight side by side again.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 151,
+      "zh": "阿金『嘿嘿,好的偶像。",
+      "en": "Gold: Heh heh. Okay, Idol.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 152,
+      "zh": "壶壶『Shuuu……{NEWLINE}晃晃斑『Spiii……",
+      "en": "Shuckle: Shuuu...{NEWLINE}Spinda: Spiii...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 153,
+      "zh": "联盟冠军再加上雷公……",
+      "en": "The League Champion, plus Raikou...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 154,
+      "zh": "完全不是对手啊……",
+      "en": "We’re no match at all...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 155,
+      "zh": "阿金『偶像怎么还在这里,{NEWLINE}前面的战斗有什么困难吗？",
+      "en": "Gold: Idol, why are you still here? Is{NEWLINE}something giving you trouble up ahead?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 156,
+      "zh": "{VAR:0103:0}『还好,目前遇到的困难{NEWLINE}都顺利解决了,{CLEAR}伙伴们也都平安无事。",
+      "en": "{VAR:0103:0}: It’s fine. I’ve handled{NEWLINE}everything so far, and my partners are{CLEAR}all safe.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 157,
+      "zh": "阿金『哎呀,该说不说,{NEWLINE}我这里倒是有一点点小困难……",
+      "en": "Gold: Well, I gotta say, I’ve got a{NEWLINE}teeny little problem of my own...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 158,
+      "zh": "{VAR:0103:0}『什么困难？{NEWLINE}爆太郎它们的治疗不顺利吗？",
+      "en": "{VAR:0103:0}: What problem? Is Exbo’s{NEWLINE}treatment not going well?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 159,
+      "zh": "阿金『那倒不是……{NEWLINE}我所说的困难,其实是我想告诉偶像{CLEAR}那个……我……吸……一",
+      "en": "Gold: It’s not that... The problem is,{NEWLINE}there’s something I want to tell you,{CLEAR}Idol...{SCROLL}Um... I... l-lo...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 160,
+      "zh": "{VAR:0103:0}『怎么说话突然吞吞吐吐的,{NEWLINE}这可一点都不像你啊,阿金。{CLEAR}有什么话就直说嘛。",
+      "en": "{VAR:0103:0}: Why are you suddenly{NEWLINE}stammering? That’s not like you at all,{CLEAR}Gold.{SCROLL}If you’ve got something to say, just{NEWLINE}say it.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 161,
+      "zh": "阿金『我小的时候,{NEWLINE}就是在这里举办的石英大会上{CLEAR}认识偶像的。{CLEAR}当时我就觉得怎么会有{CLEAR}这么英姿飒爽的训练家姐姐。{CLEAR}我当时还把偶像的夺冠海报{CLEAR}贴在家里看了好几个月……",
+      "en": "Gold: When I was little, I first saw you{NEWLINE}at the Indigo Conference held right{CLEAR}here, Idol.{SCROLL}I thought, how can a Trainer girl be so{NEWLINE}cool and confident?{SCROLL}I stuck your winning poster up at home{NEWLINE}and stared at it for months...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 162,
+      "zh": "{VAR:0103:0}『哎呀,我都被你说的{NEWLINE}有点不好意思了。",
+      "en": "{VAR:0103:0}: Oh my, you’re making me a{NEWLINE}little embarrassed.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 163,
+      "zh": "阿金『当我在空木博士研究所{NEWLINE}见到偶像的时候,{CLEAR}我感觉自己的心{CLEAR}都快从喉咙眼跳出来了。{CLEAR}一直以来朝思暮想的女神姐{CLEAR}姐就这样出现在眼前{CLEAR}真是太不可思议了。{CLEAR}后来咱们一起在城都地区旅行,{CLEAR}我对偶像的实力越来越钦佩,{CLEAR}对偶像的人格越来越欣赏……{CLEAR}后来咱们在烟墨市道别,{CLEAR}我独自一人回到若叶镇,{CLEAR}心中就像有一个巨大的空洞。{CLEAR}直到咱们在白银大会重逢,{CLEAR}我心中的空洞才突然被填满。{CLEAR}那时候我就明白,{CLEAR}我的心里已经不能没有偶像你了。{SCROLL}{VAR:0103:0}『我真的非常非常喜欢偶像,{NEWLINE}请你做我女朋友好吗！",
+      "en": "Gold: When I met you at Professor Elm’s{NEWLINE}lab, Idol...{SCROLL}I felt like my heart was about to jump{NEWLINE}out of my throat.{SCROLL}The goddess I’d dreamed about day and{NEWLINE}night was standing right in front of me.{CLEAR}It was unreal.{SCROLL}Then we traveled through Johto{NEWLINE}together...{SCROLL}and I admired your strength and your{NEWLINE}character more and more...{SCROLL}Then we said goodbye in Blackthorn City,{NEWLINE}and I went back to New Bark Town alone.{SCROLL}It felt like there was a huge hole in my{NEWLINE}heart.{SCROLL}When we met again at the Silver{NEWLINE}Conference, the hole suddenly filled up.{SCROLL}That’s when I knew I couldn’t live{NEWLINE}without you anymore, Idol.{SCROLL}Gold: I really, really like you, Idol!{NEWLINE}Will you be my girlfriend?!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "D-1195: reverted to match the zh (The last page of Gold’s confession is labelled with the player’s name); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-0532, D-1496).",
+      "qa_ignore": [
+        "tag_mismatch"
+      ]
+    },
+    {
+      "id": 164,
+      "zh": "{VAR:0103:0}『阿金……",
+      "en": "{VAR:0103:0}: Gold...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 165,
+      "zh": "阿金『不、不行吗偶像？",
+      "en": "Gold: C-can’t I, Idol?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 166,
+      "zh": "{VAR:0103:0}『不是的,其实我非常欣赏{NEWLINE}你那种勇往直前的乐观精神,{CLEAR}也非常享受身边有一个{CLEAR}你这样充满活力的男孩。{CLEAR}嘛,如果以后能够跟你{CLEAR}以男女朋友的身份,{CLEAR}继续过以前那种无忧无虑的快乐生活,{CLEAR}我一点也不介意哦。",
+      "en": "{VAR:0103:0}: That’s not it. I really admire{NEWLINE}your fearless, never-give-up optimism.{SCROLL}And I really love having a lively boy like{NEWLINE}you around.{SCROLL}Well... if we can keep living that{NEWLINE}carefree, happy life as boyfriend and{CLEAR}girlfriend...{SCROLL}I wouldn’t mind at all.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 167,
+      "zh": "阿金『哇哇哇哇！偶像答应我的告白了！{NEWLINE}好耶！！！{CLEAR}从今往后偶像就是我的女朋友了！",
+      "en": "Gold: Waaah! My idol said yes!{NEWLINE}Woo-hoo!!!{SCROLL}From now on, my idol is my girlfriend!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 168,
+      "zh": "{VAR:0103:0}『先不要急着高兴,阿金。{NEWLINE}如果不在这里打倒坂木,{CLEAR}那么咱们的未来生活就只是一个幻想。",
+      "en": "{VAR:0103:0}: Don’t celebrate just yet,{NEWLINE}Gold.{SCROLL}If we don’t beat Giovanni here, our{NEWLINE}future together is just a fantasy.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 169,
+      "zh": "阿金『我明白,万恶之源火箭队嘛。{NEWLINE}偶像你先继续前进,{CLEAR}我抓紧给爆太郎它们治疗,{CLEAR}等伙伴们都康复后,{CLEAR}我就跟你一起去修理坂木那个老混蛋。",
+      "en": "Gold: I know. Team Rocket, root of all{NEWLINE}evil.{SCROLL}You go on ahead, Idol. I’ll hurry and{NEWLINE}heal Exbo and the others.{SCROLL}Once everyone’s better, I’ll come with{NEWLINE}you to teach that old bastard Giovanni{CLEAR}a lesson.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 170,
+      "zh": "{VAR:0103:0}『好的,我先去前面等你,{NEWLINE}你要尽快赶上来啊。",
+      "en": "{VAR:0103:0}: Okay. I’ll go on ahead and wait{NEWLINE}for you. Hurry and catch up.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 171,
+      "zh": "阿金『嘿嘿,放心吧,{NEWLINE}我亲爱的偶像女朋友！",
+      "en": "Gold: Heh heh, don’t worry, my dear idol{NEWLINE}girlfriend!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 172,
+      "zh": "阿金『我带了一些应急药,{NEWLINE}可以给爆太郎它们简单治疗一下。{CLEAR}偶像你不能因为我拖慢前进的脚步,{CLEAR}请继续前进吧,{CLEAR}打败火箭队还要靠你呢。",
+      "en": "Gold: I brought some emergency{NEWLINE}medicine. I can patch up Exbo and the{CLEAR}others.{SCROLL}Idol, you can’t let me slow you down.{NEWLINE}Please, keep going.{SCROLL}We’re counting on you to beat Team{NEWLINE}Rocket.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 173,
+      "zh": "阿金『偶像你先继续前进,{NEWLINE}我抓紧给爆太郎它们治疗,{CLEAR}等伙伴们都康复后,{CLEAR}我就跟你一起去修理坂木那个老混蛋。",
+      "en": "Gold: You go on ahead, Idol. I’ll hurry{NEWLINE}and heal Exbo and the others.{SCROLL}Once everyone’s better, I’ll come with{NEWLINE}you to teach that old bastard Giovanni{CLEAR}a lesson.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    }
+  ]
 }

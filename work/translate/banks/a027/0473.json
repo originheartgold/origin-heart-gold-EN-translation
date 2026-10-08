@@ -134,10 +134,10 @@
   {
    "id": 16,
    "zh": "大胆妖孽,竟敢到我这里来作妖！",
-   "en": "Insolent spirit! How dare you work your{NEWLINE}mischief on my turf!",
+   "en": "Insolent fiend! How dare you work your{NEWLINE}mischief on my turf!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 妖孽 = archaic 'fiend/evil creature', an exorcist's insult; kept hostile (D-0627)"
   },
   {
    "id": 17,
@@ -302,10 +302,10 @@
   {
    "id": 37,
    "zh": "鬼斯『啊！！！{NEWLINE}可恶啊…………{CLEAR}紫苑…………",
-   "en": "Gastly: Argh!!! Curses... Lavender...",
+   "en": "Gastly: Argh!!! Damn... Lavender...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 可恶啊 from the dead soldier's ghost = 'Damn...' (D-0627)"
   },
   {
    "id": 38,

@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "欢迎来到遗迹小屋！{SCROLL}这里是对在遗迹出土的{NEWLINE}远古精灵石版{CLEAR}进行复原作业的地方。{SCROLL}触摸四个边角{NEWLINE}石版碎片会旋转,{SCROLL}按住移动{NEWLINE}可以移到其他地方,{SCROLL}这样进行操作{NEWLINE}应该能够将其复原到{CLEAR}原来的状态……",
-   "en": "Welcome to this chamber!{SCROLL}We are reconstructing ancient Pokémon{NEWLINE}stone panels.{SCROLL}You can rotate stone-panel pieces by{NEWLINE}touching them for a short time.{SCROLL}If you touch a piece and slide it,{NEWLINE}you can move it around.{SCROLL}We think we should be able to put them{NEWLINE}back to where they were...",
+   "en": "Welcome to the ruins hut!{SCROLL}We are reconstructing ancient Pokémon{NEWLINE}stone panels excavated from the ruins.{SCROLL}Touch at the four corners to rotate{NEWLINE}the stone-panel pieces.{SCROLL}Press and hold a piece, then drag it to{NEWLINE}move it around.{SCROLL}We think we should be able to restore{NEWLINE}them to their original state...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0074/0"
+   "origin": "agent",
+   "notes": "US 0074/0 [D-2053 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
   },
   {
    "id": 1,

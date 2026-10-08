@@ -175,10 +175,10 @@
   {
    "id": 21,
    "zh": "阿金『虽说偶像你能来这里,{NEWLINE}肯定会对调查洞穴帮上大忙啦。{CLEAR}可是被那个学习委员{CLEAR}轻易得到了闪光技能机,{CLEAR}这样就让我显得很傻了……{SCROLL}阿金『可恶啊,得想个帅气的方式{NEWLINE}追上去才行。",
-   "en": "Gold: With you here, Idol, the cave{NEWLINE}investigation’s sure to go great. But{CLEAR}the Class Rep got a Flash TM just like{CLEAR}that, and now I look like an idiot...{SCROLL}Gold: Dang it! I gotta find a{NEWLINE}cool way to catch up with them.",
+   "en": "Gold: With you here, Idol, the cave{NEWLINE}investigation’s sure to go great. But{CLEAR}the Class Rep got a Flash TM just like{CLEAR}that, and now I look like an idiot...{SCROLL}Gold: Dammit! I gotta find a{NEWLINE}cool way to catch up with them.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: Gold's 可恶 = 'Dammit', as in 0054#47 (D-0627)"
   },
   {
    "id": 22,

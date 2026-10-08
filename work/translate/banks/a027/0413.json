@@ -134,10 +134,10 @@
   {
    "id": 16,
    "zh": "在船上是暴徒,{NEWLINE}乘风破浪,{NEWLINE}疯狂欢闹,{NEWLINE}到了陆地就乖了。{NEWLINE}他就是这样的船员ｚ！",
-   "en": "A strong guy on a boat, plunging on{NEWLINE}through the waves. Dancing and singing{NEWLINE}and having a merry old time. But gentle{NEWLINE}as kittens once they get back on land.{NEWLINE}That’s a Sailor!",
+   "en": "A thug on a boat, plunging on{NEWLINE}through the waves. Dancing and singing{NEWLINE}and having a merry old time. But gentle{NEWLINE}as kittens once they get back on land.{NEWLINE}That’s a Sailor!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0420/16"
+   "origin": "agent",
+   "notes": "US 0420/16 | tone review: 在船上是暴徒 = a thug on the boat, contrasted with tame on land; kept (D-0627)"
   },
   {
    "id": 17,
@@ -150,10 +150,10 @@
   {
    "id": 18,
    "zh": "小屁孩！给我滚远点！{NEWLINE}要是再让我看到,小心我揍你{NEWLINE}他一骑绝尘,{NEWLINE}和同伙在街上发出噪音,{NEWLINE}人们不得不塞住自己的耳朵,{NEWLINE}当他被打败了才会停车！{NEWLINE}他就是这样的暴走族ｚ！",
-   "en": "Brat! Get lost! If I see you again,{NEWLINE}I’ll smack you! He leaves everyone in{NEWLINE}the dust, making such a racket in the{NEWLINE}streets with his gang that people have{NEWLINE}to plug their ears, and he only stops{NEWLINE}when he’s beaten! That’s a Biker!",
+   "en": "Brat! Get lost! If I see you again,{NEWLINE}I’ll beat you up! He leaves everyone in{NEWLINE}the dust, making such a racket in the{NEWLINE}streets with his gang that people have{NEWLINE}to plug their ears, and he only stops{NEWLINE}when he’s beaten! That’s a Biker!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0420/18"
+   "notes": "US 0420/18 | tone review: 小心我揍你 is a threat to beat someone up; kept at full strength (D-0627)"
   },
   {
    "id": 19,

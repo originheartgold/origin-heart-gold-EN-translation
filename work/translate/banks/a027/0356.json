@@ -150,10 +150,10 @@
   {
    "id": 18,
    "zh": "可恶啊,{NEWLINE}没想到会输给你这样的小鬼。",
-   "en": "Dang it... I never thought I’d lose to a{NEWLINE}kid like you.",
+   "en": "Damn it... I never thought I’d lose to a{NEWLINE}brat like you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 可恶 = 'Damn it', 小鬼 contemptuous 'brat' (adult opponent) (D-0627)"
   },
   {
    "id": 19,
@@ -730,10 +730,10 @@
   {
    "id": 88,
    "zh": "切,忽悠不住,{NEWLINE}只能用抢的了吗？",
-   "en": "Tch, you didn’t fall for it. Guess I’ll{NEWLINE}just have to take what I want!",
+   "en": "Tch, you didn’t fall for it. Do I have to{NEWLINE}take it by force, then?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "[D-2070 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
   },
   {
    "id": 89,
@@ -938,10 +938,10 @@
   {
    "id": 114,
    "zh": "可恶啊,{NEWLINE}没想到会输给你这样的小鬼。",
-   "en": "Dang it... I never thought I’d lose to a{NEWLINE}kid like you.",
+   "en": "Damn it... I never thought I’d lose to a{NEWLINE}brat like you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 可恶 = 'Damn it', 小鬼 contemptuous 'brat' (adult opponent) (D-0627)"
   },
   {
    "id": 115,

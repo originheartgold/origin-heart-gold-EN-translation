@@ -402,10 +402,10 @@
   {
    "id": 48,
    "zh": "你们突然冲进来,{NEWLINE}很影响我们做生意的,{CLEAR}赶紧出去好不？",
-   "en": "You barging in like this is bad for{NEWLINE}business. Would you please get out?",
+   "en": "You barging in like this is bad for{NEWLINE}business. Get out already, would you?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 赶紧出去好不？ is an impatient 'get out already'; kept brusque (D-0627)"
   },
   {
    "id": 49,

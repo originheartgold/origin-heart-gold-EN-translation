@@ -322,10 +322,10 @@
   {
    "id": 38,
    "zh": "住嘴吧！不准再没事找事了！{SCROLL}其他同学还有要向冠军大人请教的吗？",
-   "en": "That’s enough out of you!{NEWLINE}No more stirring up trouble!{SCROLL}Does anyone else have a{NEWLINE}question for the Champion?",
+   "en": "Shut your mouth!{NEWLINE}No more stirring up trouble!{SCROLL}Does anyone else have a{NEWLINE}question for the Champion?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 住嘴吧 is a blunt 'shut your mouth'; kept (D-0627)"
   },
   {
    "id": 39,

@@ -321,10 +321,10 @@
   {
    "id": 39,
    "zh": "你说什么？把四叶草让给你？{NEWLINE}我真是从没见过你这么厚颜无耻的。{CLEAR}这四叶草多么难找你知道吗？{CLEAR}我为了找到它{CLEAR}付出了多少心血你知道吗？{CLEAR}我还指望把它卖了致富呢,{CLEAR}你居然想直接从我这拿走四叶草？",
-   "en": "What? Let you have it? I’ve never seen{NEWLINE}anyone with such a thick skin. Do you{CLEAR}know how hard these are to find?{SCROLL}Do you know how much blood, sweat and{NEWLINE}tears I put into finding it? I’m counting{CLEAR}on selling it to get rich, and you want{CLEAR}to just take it off my hands?",
+   "en": "What? Let you have it? I’ve never seen{NEWLINE}anyone as shameless as you. Do you{CLEAR}know how hard these are to find?{SCROLL}Do you know how much blood, sweat and{NEWLINE}tears I put into finding it? I’m counting{CLEAR}on selling it to get rich, and you want{CLEAR}to just take it off my hands?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 厚颜无耻 is a harsh 'shameless' insult; kept at full strength (D-0627)"
   },
   {
    "id": 40,
@@ -424,10 +424,10 @@
   {
    "id": 50,
    "zh": "那就有多远滚多远吧。",
-   "en": "Then get as far away from me as{NEWLINE}you can.",
+   "en": "Then get lost. The farther, the better.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 有多远滚多远 uses the rude 滚; kept rude as 'get lost', matching 滚远点 in #43 (D-0627)"
   },
   {
    "id": 51,

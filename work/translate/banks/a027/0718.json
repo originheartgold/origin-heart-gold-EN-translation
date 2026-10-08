@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "小东西{NEWLINE}还要垂死挣扎啊。{NEWLINE}",
-   "en": "Still putting up a{NEWLINE}desperate fight, little one?{NEWLINE}",
+   "en": "Still putting up a dying{NEWLINE}struggle, you little runt?{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0728/25",
+   "notes": "US 0728/25 | tone review: 小东西 contemptuous 'little runt'; 垂死挣扎 'dying struggle' (D-0627)",
    "qa_ignore": [
     "glossary:挣扎"
    ]
@@ -241,10 +241,10 @@
   {
    "id": 29,
    "zh": "小东西{NEWLINE}还要垂死挣扎啊。{NEWLINE}",
-   "en": "Still putting up a{NEWLINE}desperate fight, little one?{NEWLINE}",
+   "en": "Still putting up a dying{NEWLINE}struggle, you little runt?{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0728/29",
+   "notes": "US 0728/29 | tone review: 小东西 contemptuous 'little runt'; 垂死挣扎 'dying struggle' (D-0627)",
    "qa_ignore": [
     "glossary:挣扎"
    ]
@@ -2083,10 +2083,10 @@
   {
    "id": 257,
    "zh": "你看来不只是一个{NEWLINE}讨厌鬼啊⋯⋯{NEWLINE}",
-   "en": "Looks like you’re not just someone who{NEWLINE}gets in the way...{NEWLINE}",
+   "en": "Looks like you’re not just{NEWLINE}some pest...{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/257"
+   "origin": "agent",
+   "notes": "US 0728/257 | tone review: 讨厌鬼 = 'pest' (D-0627)"
   },
   {
    "id": 258,
@@ -7144,10 +7144,10 @@
   {
    "id": 873,
    "zh": "妈的,你是来给我们火箭队{NEWLINE}捣乱的吧？{CLEAR}看老娘弄死你！{SCROLL}",
-   "en": "Dammit, you’re here to cause trouble{NEWLINE}for Team Rocket, aren’t you?{CLEAR}This lady’s gonna kill you!{SCROLL}",
+   "en": "Dammit, you’re here to cause trouble{NEWLINE}for Team Rocket, aren’t you?{CLEAR}I’m gonna kill you!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | tone review: 老娘 swagger carried by a blunt threat instead of stilted 'This lady' (D-0627)"
   },
   {
    "id": 874,
@@ -9045,10 +9045,10 @@
   {
    "id": 1105,
    "zh": "哎？本大爷要输了？{NEWLINE}",
-   "en": "What? Am I losing?{NEWLINE}",
+   "en": "What? Me, losing?!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1105"
+   "origin": "agent",
+   "notes": "US 0728/1105 | tone review: 本大爷 swagger carried by wording (D-0627)"
   },
   {
    "id": 1106,
@@ -13127,10 +13127,10 @@
   {
    "id": 1607,
    "zh": "老娘我绝不原谅你！{NEWLINE}",
-   "en": "This lady will never forgive you!{NEWLINE}",
+   "en": "I’m never forgiving you{NEWLINE}for this, you hear me?!{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position; v3 read 老娘 as 'Mom'"
+   "notes": "v3 TM: 1 source(s), same position; v3 read 老娘 as 'Mom' | tone review: 老娘 brash voice instead of stilted 'This lady' (D-0627)"
   },
   {
    "id": 1608,

@@ -286,10 +286,10 @@
   {
    "id": 35,
    "zh": "一树『这不是当年{NEWLINE}石英大会上的两个废物么,{CLEAR}成为地区冠军之后好神气啊。",
-   "en": "Will: Well, if it isn’t the two losers from{NEWLINE}the Indigo Conference back then.{SCROLL}Becoming regional Champions sure has{NEWLINE}gone to your heads.",
+   "en": "Will: Well, well. The two useless losers{NEWLINE}from the Indigo Conference back then.{SCROLL}Becoming regional Champions sure has{NEWLINE}gone to your heads.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 废物 = 'useless losers' (D-0627)"
   },
   {
    "id": 36,

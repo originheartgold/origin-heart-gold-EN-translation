@@ -230,10 +230,10 @@
   {
    "id": 28,
    "zh": "精灵联盟派人把白金宝珠送回来了。{NEWLINE}原来我一直以为的不祥之物,{CLEAR}竟然是去另一个世界{CLEAR}召唤传说中口袋妖怪的信物。{SCROLL}你的英雄事迹我都听联盟的人说了,{NEWLINE}我觉得你有资格成为{CLEAR}传说中精灵的训练家。{CLEAR}如果你需要洞穴深处的那颗白金宝珠,{CLEAR}就请取走使用吧。",
-   "en": "The Pokémon League sent someone{NEWLINE}to bring the Griseous Orb back. All this{CLEAR}time, I thought it was an ominous thing,{CLEAR}but it’s actually a token for calling a{CLEAR}legendary Pokémon from another world.{SCROLL}The League people told me all{NEWLINE}about your heroic deeds. I think{CLEAR}you’re worthy of being a legendary{CLEAR}Pokémon’s Trainer. If you need{CLEAR}the Griseous Orb deep in the{CLEAR}cave, please take it and use it.",
+   "en": "The Pokémon League sent someone to{NEWLINE}bring the Griseous Orb back. All this{CLEAR}time, I thought it was an ominous thing,{CLEAR}but it’s actually a token for going to{CLEAR}another world to summon a{CLEAR}legendary Pokémon.{SCROLL}The League people told me all about{NEWLINE}your heroic deeds. I think you’re{CLEAR}worthy of being a legendary Pokémon’s{CLEAR}Trainer. If you need the Griseous Orb{CLEAR}deep in the cave, please take it and{CLEAR}use it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "[D-2059 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
   },
   {
    "id": 29,

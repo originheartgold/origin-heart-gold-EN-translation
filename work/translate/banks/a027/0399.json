@@ -732,10 +732,10 @@
   {
    "id": 90,
    "zh": "冥王『可恶……{SCROLL}冥王『三地鼠,用沙穴困住他们！",
-   "en": "Charon: Blast it...{SCROLL}Charon: Dugtrio, trap{NEWLINE}them with Arena Trap!",
+   "en": "Charon: Damn it...{SCROLL}Charon: Dugtrio, trap{NEWLINE}them with Arena Trap!",
    "status": "draft",
    "origin": "agent",
-   "notes": "沙穴 = Arena Trap (ability glossary)"
+   "notes": "沙穴 = Arena Trap (ability glossary) | tone review: 可恶 is 'damn it'; Charon's curse kept (D-0627)"
   },
   {
    "id": 91,

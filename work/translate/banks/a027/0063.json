@@ -1128,10 +1128,10 @@
   {
    "id": 134,
    "zh": "野生精灵们{NEWLINE}听了精灵摇篮曲{CLEAR}也会想睡觉,{SCROLL}所以开着收音机{NEWLINE}播放精灵摇篮曲,{CLEAR}这样走在草丛中{CLEAR}就不用提心吊胆了。",
-   "en": "Lullabies on the radio make wild{NEWLINE}Pokémon sleepy.{SCROLL}That’s why you don’t see many Pokémon{NEWLINE}when the radio plays lullabies in the{CLEAR}tall grass.",
+   "en": "Pokémon Lullaby on the radio makes wild{NEWLINE}Pokémon sleepy.{SCROLL}So keep the radio on and play Pokémon{NEWLINE}Lullaby. Then you can walk through the{CLEAR}tall grass without worrying.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "[D-2066 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
   },
   {
    "id": 135,

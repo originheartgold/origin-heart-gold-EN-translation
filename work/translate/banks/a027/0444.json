@@ -717,10 +717,10 @@
   {
    "id": 87,
    "zh": "书架上有一本很旧的{NEWLINE}蔓藤怪研究记录。{SCROLL}记录上写着:{NEWLINE}昨天真新镇一个四岁的孩子{CLEAR}被镇南草丛的蔓藤怪拖走了。{CLEAR}虽然已经组织了搜救工作,{CLEAR}但根据目前的情况{CLEAR}几乎不可能生还了。{SCROLL}我作为口袋妖怪博士{NEWLINE}没能对镇子潜在的危机预判,{CLEAR}进而造成这种悲剧后果,{CLEAR}深感自责和悲伤。",
-   "en": "On the shelf is a very old research log{NEWLINE}about Tangela.{SCROLL}It reads: Yesterday, a four-year-old{NEWLINE}child from Pallet Town was dragged off{SCROLL}by a Tangela from the grass south of{NEWLINE}town.{SCROLL}A search is underway, but there is{NEWLINE}almost no hope.{SCROLL}As a Pokémon professor, I failed to{NEWLINE}foresee this danger to our town.{SCROLL}I blame myself for this tragedy, and I{NEWLINE}am filled with grief.",
+   "en": "On the shelf is a very old research log{NEWLINE}about Tangela.{SCROLL}It reads: Yesterday, a four-year-old{NEWLINE}child from Pallet Town was dragged off{SCROLL}by a Tangela from the grass south of{NEWLINE}town.{SCROLL}A search is underway, but there is{NEWLINE}almost no chance the child is alive.{SCROLL}As a Pokémon professor, I failed to{NEWLINE}foresee this danger to our town.{SCROLL}I blame myself for this tragedy, and I{NEWLINE}am filled with grief.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Tangela incident; see 0439 #19."
+   "notes": "Tangela incident; see 0439 #19. | tone review: 几乎不可能生还 states the child almost certainly did not survive; kept explicit (D-0627)"
   },
   {
    "id": 88,

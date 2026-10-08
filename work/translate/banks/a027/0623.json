@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "我为了寻找龙系精灵而来到烟墨市,{NEWLINE}但是却被禁止进入龙之洞穴。{CLEAR}可恶啊,好像要一只哈克龙啊。{CLEAR}如果你有哈克龙的话{CLEAR}能跟我的3D龙2交换吗？",
-   "en": "I came to Blackthorn City looking{NEWLINE}for Dragon-type Pokémon, but they{CLEAR}won’t let me into the Dragon’s Den.{CLEAR}Dang it, I really want a Dragonair!{SCROLL}If you have a Dragonair, would{NEWLINE}you trade it for my Porygon2?",
+   "en": "I came to Blackthorn City looking{NEWLINE}for Dragon-type Pokémon, but they{CLEAR}won’t let me into the Dragon’s Den.{CLEAR}Damn it, I really want a Dragonair!{SCROLL}If you have a Dragonair, would{NEWLINE}you trade it for my Porygon2?",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh typo 好像要 read as 好想要 (really want)"
+   "notes": "zh typo 好像要 read as 好想要 (really want) | tone review: 可恶啊 = 'Damn it' for an adult trader (D-0627)"
   },
   {
    "id": 4,

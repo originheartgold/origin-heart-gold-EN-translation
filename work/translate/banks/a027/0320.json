@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "原来那个秘密的犯罪组织{NEWLINE}就是火箭队啊。{CLEAR}幸好有精灵联盟的训练家保护我们,{CLEAR}不然鬼知道他们要干出什么事来。",
-   "en": "So that secret criminal organization was{NEWLINE}Team Rocket.{SCROLL}Good thing the Pokémon League’s{NEWLINE}Trainers were there to protect us. Who{CLEAR}knows what those crooks would have{CLEAR}done otherwise.",
+   "en": "So that secret criminal organization was{NEWLINE}Team Rocket.{SCROLL}Good thing the Pokémon League’s{NEWLINE}Trainers were there to protect us.{SCROLL}God knows what those crooks would have{NEWLINE}done otherwise.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | tone review: 鬼知道 is a colloquial 'God knows'; kept its edge (D-0627)"
   },
   {
    "id": 6,

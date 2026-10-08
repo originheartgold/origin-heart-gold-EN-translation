@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "可恶啊,我的格斗精灵{NEWLINE}三两下就被那个凯西给干掉了。",
-   "en": "Dang it. My Fighting-type got taken out{NEWLINE}by that Abra in two moves.",
+   "en": "Damn it. My Fighting-type got taken out{NEWLINE}by that Abra in no time.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 可恶 is 'damn it' from an adult underground fighter; not minced (D-0627) [D-2068 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
   },
   {
    "id": 7,
@@ -142,10 +142,10 @@
   {
    "id": 17,
    "zh": "可恶啊！{NEWLINE}太古盔甲,掀起沙暴！{CLEAR}我看它还怎么保护。",
-   "en": "Grr! Armaldo, whip up a Sandstorm!{NEWLINE}Let’s see it protect itself from that!",
+   "en": "Damn it! Armaldo, whip up a Sandstorm!{NEWLINE}Let’s see it protect itself from that!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 可恶啊 is an angry 'damn it!' from an underground fighter (D-0627)"
   },
   {
    "id": 18,
@@ -406,10 +406,10 @@
   {
    "id": 50,
    "zh": "别那么多废话！{SCROLL}我是来打架的,{NEWLINE}不是来听主持人逼逼的！",
-   "en": "Cut the chatter!{SCROLL}I came here to fight, not to listen to{NEWLINE}the MC run his mouth!",
+   "en": "Cut the crap!{SCROLL}I came here to fight, not to listen to{NEWLINE}the MC run his damn mouth!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 废话 is a rude 'crap' and 逼逼 crude slang for yapping; kept crude (D-0627)"
   },
   {
    "id": 51,

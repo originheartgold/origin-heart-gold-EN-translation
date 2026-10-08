@@ -174,10 +174,10 @@
   {
    "id": 21,
    "zh": "{VAR:0103:0}『你们这样去收服口袋妖怪{NEWLINE}根本就是围殴虐杀！{SCROLL}{VAR:0103:0}『这种卑鄙的做法{NEWLINE}不配称为训练家！{CLEAR}还不快住手！",
-   "en": "{VAR:0103:0}: Ganging up on a Pokémon like{NEWLINE}that isn’t catching it, it’s torturing{CLEAR}it!{SCROLL}{VAR:0103:0}: People who pull dirty tricks{NEWLINE}like that don’t deserve to be called{CLEAR}Trainers! Stop it right now!",
+   "en": "{VAR:0103:0}: Ganging up on a Pokémon like{NEWLINE}that isn’t catching it, it’s torturing it{CLEAR}to death!{SCROLL}{VAR:0103:0}: People who pull dirty tricks{NEWLINE}like that don’t deserve to be called{CLEAR}Trainers! Stop it right now!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | Full fidelity review: user approved explicit threat wording (D-1620, 2026-10-07)."
   },
   {
    "id": 22,
@@ -214,10 +214,10 @@
   {
    "id": 26,
    "zh": "希罗娜『如果想收服传说中的精灵,{NEWLINE}那就堂堂正正地决斗啊！{CLEAR}围殴虐杀还算训练家吗！！！",
-   "en": "Cynthia: If you want to catch a{NEWLINE}Legendary Pokémon, then battle it fair{CLEAR}and square!{SCROLL}Ganging up to torture it... Do you even{NEWLINE}call yourselves Trainers?!",
+   "en": "Cynthia: If you want to catch a{NEWLINE}Legendary Pokémon, then battle it fair{CLEAR}and square!{SCROLL}Ganging up on it and torturing it to{NEWLINE}death... Do you even call{CLEAR}yourselves Trainers?!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | Full fidelity review: user approved explicit threat wording (D-1620, 2026-10-07)."
   },
   {
    "id": 27,

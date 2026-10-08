@@ -421,10 +421,10 @@
   {
    "id": 51,
    "zh": "哈哈哈,蠢货。{NEWLINE}几乎所有的传说中精灵{CLEAR}都被我们火箭队掌握了,{CLEAR}你如果不想做无谓的牺牲,{CLEAR}就乖乖交出精灵投降！",
-   "en": "Hah hah hah, you fool.{NEWLINE}Team Rocket controls nearly every{CLEAR}Legendary Pokémon.{SCROLL}If you don’t want any pointless{NEWLINE}sacrifices, hand over your Pokémon and{CLEAR}surrender quietly!",
+   "en": "Hah hah hah, you idiot.{NEWLINE}Team Rocket controls nearly every{CLEAR}Legendary Pokémon.{SCROLL}If you don’t want any pointless{NEWLINE}sacrifices, hand over your Pokémon and{CLEAR}surrender quietly!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 蠢货 = 'idiot' (D-0627)"
   },
   {
    "id": 52,

@@ -126,10 +126,10 @@
   {
    "id": 15,
    "zh": "水吾桐『可恶的臭小鬼们！{NEWLINE}居然敢坏本大爷的事！{CLEAR}我绝对饶不了你们！{CLEAR}你们就跟圣安努号一起{CLEAR}沉没在这片大海里吧！",
-   "en": "Archie: Rotten brats! How dare you ruin{NEWLINE}my plans! I’ll never forgive you!{SCROLL}You can sink to the bottom of this sea{NEWLINE}along with the S.S. Anne!",
+   "en": "Archie: Damned brats! How dare you ruin{NEWLINE}my plans! I’ll never forgive you!{SCROLL}You can sink to the bottom of this sea{NEWLINE}along with the S.S. Anne!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 可恶的臭小鬼们 = 'Damned brats' for the villain (D-0627)"
   },
   {
    "id": 16,
@@ -574,18 +574,18 @@
   {
    "id": 71,
    "zh": "{VAR:0103:0}『可恶,等级差太多了……",
-   "en": "{VAR:0103:0}: Blast it, the level gap is too{NEWLINE}big...",
+   "en": "{VAR:0103:0}: Damn it, the level gap is too{NEWLINE}big...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 可恶 = 'damn it' (D-0627)"
   },
   {
    "id": 72,
    "zh": "水吾桐『哈哈哈,自寻死路的家伙。{NEWLINE}铁螯龙虾,给我剪断这个小鬼的脖子！",
-   "en": "Archie: Ha ha ha! You asked for it.{NEWLINE}Crawdaunt, snip this brat’s neck!",
+   "en": "Archie: Ha ha ha! You asked for it.{NEWLINE}Crawdaunt, snip this brat’s head off!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Faithful: zh 剪断这个小鬼的脖子 ('snip this brat's neck')."
+   "notes": "Faithful: zh 剪断这个小鬼的脖子 ('snip this brat's neck'). | Full fidelity review: specific wording approved by user (D-1724, 2026-10-07)."
   },
   {
    "id": 73,

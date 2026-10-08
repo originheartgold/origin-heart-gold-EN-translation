@@ -959,10 +959,10 @@
   {
    "id": 119,
    "zh": "你这种连新人训练家{NEWLINE}都算不上的菜鸟,{CLEAR}给你一年都收服不了尼多兰,{CLEAR}还在这逼逼这些没用的干啥。",
-   "en": "You’re such a greenhorn you don’t even{NEWLINE}count as a Rookie Trainer. You couldn’t{CLEAR}catch Nidoran♀ in a whole year.{SCROLL}So why are you still yapping about this{NEWLINE}useless stuff?",
+   "en": "You’re such a greenhorn you don’t even{NEWLINE}count as a Rookie Trainer. You couldn’t{CLEAR}catch Nidoran♀ in a whole year.{SCROLL}So why are you still bitching about this{NEWLINE}useless stuff?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position; ext-review RB-D01"
+   "notes": "v3 TM: 1 source(s), same position; ext-review RB-D01 | tone review: 逼逼 is vulgar slang for running your mouth; rendered 'bitching' (D-0627)"
   },
   {
    "id": 120,
@@ -1055,10 +1055,10 @@
   {
    "id": 131,
    "zh": "让开啊！{NEWLINE}不知道好狗不挡道吗？",
-   "en": "Get out of my way! Don’t you know{NEWLINE}better than to stand in my path?",
+   "en": "Get out of my way! Don’t you know a{NEWLINE}good dog doesn’t block the road?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | tone review: 好狗不挡道 is the set insult 'a good dog doesn't block the road'; kept the dog insult (D-0627)"
   },
   {
    "id": 132,

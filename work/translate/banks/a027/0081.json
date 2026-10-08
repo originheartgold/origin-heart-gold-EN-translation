@@ -318,10 +318,10 @@
   {
    "id": 39,
    "zh": "比夏斯『本大爷可不怕你。{NEWLINE}出来吧,班吉拉！",
-   "en": "Marauder: I’m not scared of{NEWLINE}you. Come on out, Tyranitar!",
+   "en": "Marauder: Like I’d ever be scared of{NEWLINE}you. Come on out, Tyranitar!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 本大爷 is arrogant self-reference; swagger carried by 'Like I'd ever...' (D-0627)"
   },
   {
    "id": 40,
@@ -622,10 +622,10 @@
   {
    "id": 77,
    "zh": "雪城……呜……已经断气了……",
-   "en": "Sammy... *sob*... He’s already gone...",
+   "en": "Sammy... *sob*... He’s already dead...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 已经断气了 bluntly says he has died; no euphemism (D-0627)"
   },
   {
    "id": 78,
@@ -710,10 +710,10 @@
   {
    "id": 88,
    "zh": "比夏斯『看你一脸疲惫的样子,{NEWLINE}好像刚才经历了一番苦战啊。{CLEAR}嘿嘿,这可是我杀了你{CLEAR}立大功的好机会！{SCROLL}比夏斯『受死吧！",
-   "en": "Marauder: You look exhausted.{NEWLINE}Seems you just came out of a tough{CLEAR}fight. Heh heh, this is my big chance{CLEAR}to kill you and earn a promotion!{SCROLL}Marauder: Die!",
+   "en": "Marauder: You look exhausted. Seems{NEWLINE}you just came out of a tough fight. Heh{CLEAR}heh, this is my big chance to kill you{CLEAR}and cover myself in glory!{SCROLL}Marauder: Die!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "[D-2054 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
   },
   {
    "id": 89,

@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "你是不是觉得{NEWLINE}我的{VAR:0100:10}很可爱啊？{SCROLL}我们一直睡在一起,{NEWLINE}软绵绵的,好暖和！{SCROLL}还有,{NEWLINE}前段时间我和{VAR:0100:11}{CLEAR}大战了一场⋯⋯{SCROLL}结果我的小皮皮{NEWLINE}差一点就挂掉了！{SCROLL}太过分了！{NEWLINE}{VAR:0100:11}什么的,人家最讨厌了！{SCROLL}这次就聊这些了,拜拜！",
-   "en": "My {VAR:0100:10}’s adorable, don’t you{NEWLINE}think so?{SCROLL}I always sleep next to it--it’s so{NEWLINE}fluffy and warm!{SCROLL}Oh, and we had to battle a wild{NEWLINE}{VAR:0100:11} a while ago...{SCROLL}My Clefairy came close to fainting!{NEWLINE}Isn’t that awful?{SCROLL}I hate those nasty {VAR:0100:11}!{NEWLINE}Bye-bye!",
+   "en": "My {VAR:0100:10}’s adorable, don’t you{NEWLINE}think so?{SCROLL}I always sleep next to it--it’s so{NEWLINE}fluffy and warm!{SCROLL}Oh, and we had to battle a wild{NEWLINE}{VAR:0100:11} a while ago...{SCROLL}My Clefairy nearly croaked!{NEWLINE}Isn’t that awful?{SCROLL}I hate those nasty {VAR:0100:11}!{NEWLINE}Bye-bye!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0669/9; modernised from US 0669#9"
+   "origin": "agent",
+   "notes": "US 0669/9; modernised from US 0669#9 | tone review: 挂掉 is slang for dying: 'nearly croaked' (D-0627)"
   },
   {
    "id": 10,

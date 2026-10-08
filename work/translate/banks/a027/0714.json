@@ -406,10 +406,10 @@
   {
    "id": 50,
    "zh": "可恶！！我绝对不会{NEWLINE}忘记今天的屈辱！{SCROLL}",
-   "en": "Curses!!{NEWLINE}I’ll never forget today’s humiliation!{SCROLL}",
+   "en": "Damn it!!{NEWLINE}I’ll never forget today’s humiliation!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 可恶！！ = 'Damn it!!' for an adult rich lady (D-0627)"
   },
   {
    "id": 51,
@@ -958,10 +958,10 @@
   {
    "id": 119,
    "zh": "可恶！！部长会为我{NEWLINE}报仇的⋯⋯{SCROLL}",
-   "en": "Curses!! The department head will{NEWLINE}avenge me...{SCROLL}",
+   "en": "Damn it!! The department head will{NEWLINE}avenge me...{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 可恶！！ = 'Damn it!!' for the adult Fan Club section chief (D-0627)"
   },
   {
    "id": 120,
@@ -1486,10 +1486,10 @@
   {
    "id": 185,
    "zh": "可恶,竟然输了！！{NEWLINE}赶紧向网友报告！{SCROLL}",
-   "en": "Darn, I lost!! I’ll report it to my{NEWLINE}online friends right away!{SCROLL}",
+   "en": "Damn, I lost!! I’ll report it to my{NEWLINE}online friends right away!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0724/185"
+   "notes": "US 0724/185 | tone review: 可恶 = 'Damn' for an adult Frontier trainer (D-0627)"
   },
   {
    "id": 186,
@@ -5454,10 +5454,10 @@
   {
    "id": 681,
    "zh": "你赶紧回去吧,{NEWLINE}我不想看到你失败的样子。",
-   "en": "I wish you’d leave.{NEWLINE}I don’t want to see you lose.",
+   "en": "Just go home already.{NEWLINE}I don’t want to see you lose.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/681"
+   "origin": "agent",
+   "notes": "US 0724/681 | tone review: 你赶紧回去吧 blunt 'just go home'; US line followed the Chinese (D-0627)"
   },
   {
    "id": 682,

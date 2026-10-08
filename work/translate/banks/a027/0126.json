@@ -286,10 +286,10 @@
   {
    "id": 35,
    "zh": "可恶……输了吗……",
-   "en": "Dang... We lost...?",
+   "en": "Damn... We lost...?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 可恶 = 'Damn' for adult League competitors (D-0627)"
   },
   {
    "id": 36,
@@ -646,10 +646,10 @@
   {
    "id": 80,
    "zh": "{VAR:0103:0}『怎么了小银？{NEWLINE}你这还是第一次叫我姐姐呢。{CLEAR}毕竟你以前都是叫我{CLEAR}混蛋冠军、笨蛋冠军什么的。",
-   "en": "{VAR:0103:0}: What’s wrong, Silver?{SCROLL}That’s the first time you’ve ever called{NEWLINE}me Big Sis.{SCROLL}You always used to call me stuff like{NEWLINE}jerk Champion or stupid Champion.",
+   "en": "{VAR:0103:0}: What’s wrong, Silver?{SCROLL}That’s the first time you’ve ever called{NEWLINE}me Big Sis.{SCROLL}You always used to call me stuff like{NEWLINE}bastard Champion or stupid Champion.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 混蛋冠军 = 'bastard Champion', as in #128 (D-0627)"
   },
   {
    "id": 81,

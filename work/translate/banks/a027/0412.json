@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "这座森林比想象中的要明亮得多。{NEWLINE}在这里能见到{NEWLINE}许多的训练师们。{NEWLINE}「看,是捉虫少年！」{NEWLINE}「怎么了？」{NEWLINE}「他来向我挑战！」{NEWLINE}「那就和他打呗！」{NEWLINE}「但我没有能战斗的精灵⋯⋯」{NEWLINE}「你个笨蛋！」{NEWLINE}以上就是本期特别节目{NEWLINE}「常磐森林的搜查队」{NEWLINE}我们下期再见！",
-   "en": "The forest was brighter than they{NEWLINE}thought it would be.{NEWLINE}And they saw so many Trainers there.{NEWLINE}“Hey, a Bug Catcher!”{NEWLINE}“What?”{NEWLINE}“He’s challenged us to a battle!”{NEWLINE}“Then accept his challenge!”{NEWLINE}“But we don’t have any Pokémon...”{NEWLINE}“Simpleton!”{NEWLINE}That was this week’s special,{NEWLINE}“The Viridian Forest Search Party!”{NEWLINE}See you next time!",
+   "en": "The forest was brighter than they{NEWLINE}thought it would be.{NEWLINE}And they saw so many Trainers there.{NEWLINE}“Hey, a Bug Catcher!”{NEWLINE}“What?”{NEWLINE}“He’s challenged us to a battle!”{NEWLINE}“Then accept his challenge!”{NEWLINE}“But we don’t have any Pokémon...”{NEWLINE}“You idiot!”{NEWLINE}That was this week’s special,{NEWLINE}“The Viridian Forest Search Party!”{NEWLINE}See you next time!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0419/11; ext-review B-022"
+   "notes": "US 0419/11; ext-review B-022 | tone review: 你个笨蛋 is a blunt 'you idiot!'; kept blunt (D-0627)"
   },
   {
    "id": 12,

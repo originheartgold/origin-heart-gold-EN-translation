@@ -14,18 +14,18 @@
   {
    "id": 1,
    "zh": "你想干什么？{NEWLINE}今天不出航！",
-   "en": "Huh?{NEWLINE}Doesn’t seem like the ship will be moving{CLEAR}anytime soon.",
+   "en": "What do you want?{NEWLINE}We’re not sailing today!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0256/1"
+   "origin": "agent",
+   "notes": "US 0256/1 | tone review: 你想干什么？今天不出航！ is a curt brush-off; US line replaced to match the Chinese tone"
   },
   {
    "id": 2,
    "zh": "如若这次旅行后,{NEWLINE}我能活着归来,再度踏上{CLEAR}浅葱的土地的话,{CLEAR}请和我一起生活吧！{SCROLL}嗯？好不好？",
-   "en": "If I manage to come back safely from{NEWLINE}this journey and take my first steps in{CLEAR}Olivine City, will you live there with me?{SCROLL}Please! I beg you!",
+   "en": "If I make it back alive from this{NEWLINE}journey and set foot in Olivine City{CLEAR}again, will you live there with me?{SCROLL}Well? How about it?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0256/2"
+   "origin": "agent",
+   "notes": "US 0256/2 | tone review: 活着归来 = come back alive; US 'safely' dropped the death stakes #3 mocks. Retranslated from the Chinese (再度踏上 = set foot again; 嗯？好不好？ = 'Well? How about it?')"
   },
   {
    "id": 3,

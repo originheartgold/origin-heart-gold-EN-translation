@@ -196,10 +196,10 @@
   {
    "id": 23,
    "zh": "你不想给死去的伙伴报仇了吗？",
-   "en": "Don’t you want revenge?",
+   "en": "Won’t you avenge your dead team?",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "tone review: Menu option (224 px); 死去的伙伴 kept as 'dead team' to fit width (D-0627)",
    "category": "menu_touch_1line"
   },
   {

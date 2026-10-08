@@ -1,1604 +1,1604 @@
 {
- "narc": "a027",
- "bank": 252,
- "source": "work/extract/v4/a027/0252.json",
- "strings": [
-  {
-   "id": 0,
-   "zh": "豪华游轮圣安努号{NEWLINE}正前往枯叶市。{SCROLL}到达枯叶码头的时候,{NEWLINE}会用广播通知各位。",
-   "en": "The luxury liner S.S. Anne is bound for{NEWLINE}Vermilion City.{SCROLL}We will make an announcement when we{NEWLINE}arrive at Vermilion Harbor.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "The hack's ship is the S.S. Anne (圣安努号), not the S.S. Aqua."
-  },
-  {
-   "id": 1,
-   "zh": "豪华游轮圣安努号{NEWLINE}正前往浅葱市。{SCROLL}到达浅葱码头的时候,{NEWLINE}会用广播通知各位。",
-   "en": "The luxury liner S.S. Anne is bound for{NEWLINE}Olivine City.{SCROLL}We will make an announcement when we{NEWLINE}arrive at Olivine Harbor.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "US 0259/1"
-  },
-  {
-   "id": 2,
-   "zh": "豪华游轮圣安努号{NEWLINE}已经抵达枯叶码头了！{SCROLL}",
-   "en": "The luxury liner S.S. Anne has arrived{NEWLINE}at Vermilion Harbor!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "US 0259/2"
-  },
-  {
-   "id": 3,
-   "zh": "豪华游轮圣安努号{NEWLINE}已经抵达枯叶码头了！",
-   "en": "The luxury liner S.S. Anne has arrived{NEWLINE}at Vermilion Harbor!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "US 0259/3"
-  },
-  {
-   "id": 4,
-   "zh": "哎？已经到达{NEWLINE}枯叶了呢！{SCROLL}",
-   "en": "Huh?{NEWLINE}It’s already arrived in Vermilion City.{SCROLL}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0259/4"
-  },
-  {
-   "id": 5,
-   "zh": "豪华游轮圣安努号{NEWLINE}已经抵达浅葱码头了！{SCROLL}",
-   "en": "The luxury liner S.S. Anne has arrived{NEWLINE}at Olivine Harbor!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "US 0259/5"
-  },
-  {
-   "id": 6,
-   "zh": "豪华游轮圣安努号{NEWLINE}已经抵达浅葱码头了！",
-   "en": "The luxury liner S.S. Anne has arrived{NEWLINE}at Olivine Harbor!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "US 0259/6"
-  },
-  {
-   "id": 7,
-   "zh": "啊,真抱歉！{NEWLINE}是老爷爷我太急了！{SCROLL}我家的孙女不见了,{NEWLINE}我正在找她呢！{CLEAR}是个很娇小的女孩子！{CLEAR}你若看到她,请务必告诉我！{SCROLL}",
-   "en": "Whoa! Excuse me. I was in a hurry!{SCROLL}My granddaughter is missing!{SCROLL}She’s just a wee girl. If you see{NEWLINE}her, please let me know!{SCROLL}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0259/7"
-  },
-  {
-   "id": 8,
-   "zh": "旁边的房间里,{NEWLINE}住着乔伊小姐哟。{SCROLL}如果你的精灵受了伤的话,{NEWLINE}可以去找乔伊小姐帮你看看。",
-   "en": "Nurse Joy is staying in the room next{NEWLINE}door.{SCROLL}If your Pokémon get hurt, you can ask{NEWLINE}Nurse Joy to take a look at them.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 9,
-   "zh": "你的房间在这里。{SCROLL}在床上休息的话,{NEWLINE}精灵也会恢复精神的。{SCROLL}在睡觉的期间,{NEWLINE}船会抵达目的地码头。",
-   "en": "Here’s your cabin.{SCROLL}You can heal your Pokémon{NEWLINE}by taking a nap in the bed.{SCROLL}The ship will arrive while{NEWLINE}you’re sleeping.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0259/9"
-  },
-  {
-   "id": 10,
-   "zh": "看来船员们已经在为派对{NEWLINE}开始忙碌了呢。{CLEAR}期待这场派对能值回票价吧。",
-   "en": "Looks like the crew’s already busy{NEWLINE}getting ready for the party. I hope{CLEAR}it’s worth the ticket price.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 11,
-   "zh": "船长『最后一批上船的客人们,{NEWLINE}我是圣安努号的船长,{CLEAR}我旁边这位是副船长水吾桐。{CLEAR}我们二人诚挚地欢迎各位乘坐本游轮。{SCROLL}在船只抵达城都浅葱市之前,{NEWLINE}我们为各位安排了{CLEAR}口袋妖怪训练家交流派对。{SCROLL}船长『届时将会有美味的食物、{NEWLINE}精彩的对战、稀有的商品为大家奉上。{CLEAR}在派对开始前,我……{CLEAR}唔……{CLEAR}我先回船长室吐一会儿……{SCROLL}船长『各位乘客如有问题{NEWLINE}可以找水吾桐副船长。{CLEAR}唔呕……那么各位,{CLEAR}派对时再见啦！",
-   "en": "Captain: To our last passengers to{NEWLINE}board: I’m the captain of the{CLEAR}S.S. Anne...{SCROLL}...and beside me is First Mate Archie. We{NEWLINE}both warmly welcome you aboard.{SCROLL}Before we reach Olivine City in Johto,{NEWLINE}we’ve arranged a Pokémon Trainer social{CLEAR}party for you.{SCROLL}Captain: There will be delicious food,{NEWLINE}exciting battles and rare goods for all.{SCROLL}Before the party starts, I... Urk...{NEWLINE}I’m going back to my cabin to throw up{CLEAR}for a bit...{SCROLL}Captain: If you have any questions,{NEWLINE}please ask First Mate Archie.{SCROLL}Urp... Well then, everyone, see you at{NEWLINE}the party!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "副船长 → First Mate (Archie = 水吾桐)."
-  },
-  {
-   "id": 12,
-   "zh": "妙蛙草『Ivy——saur！",
-   "en": "Ivysaur: Ivy-saur!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s); other variants: 3 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 13,
-   "zh": "小绿『{VAR:0103:0}你这个总是慢半拍的家伙,{NEWLINE}我还以为你赶不上游轮开船了呢。{CLEAR}刚刚那个副船长的话你也听到了吧,{CLEAR}一会儿的派对中会有精灵对战{CLEAR}到时我可不会让着你的。",
-   "en": "Blue: {VAR:0103:0}, you slowpoke. I thought{NEWLINE}you were going to miss the boat.{SCROLL}You heard what the first mate said,{NEWLINE}right? There’ll be Pokémon battles at{CLEAR}the party...{SCROLL}...and I won’t go easy on you.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 14,
-   "zh": "小绿『{VAR:0103:0}你终于来了,{NEWLINE}我还担心你赶不上开船呢。{CLEAR}刚刚那个副船长的话你也听到了吧,{CLEAR}看来过会儿要举行很特别的派对呢。",
-   "en": "Blue: You finally made it, {VAR:0103:0}. I was{NEWLINE}worried you’d miss the boat.{SCROLL}You heard what the first mate said,{NEWLINE}right? Looks like there’s a really{CLEAR}special party coming up.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 15,
-   "zh": "卡咪龟『War——toooo！",
-   "en": "Wartortle: War-toooo!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 16,
-   "zh": "小蓝『{VAR:0103:0}你有没有发现{NEWLINE}这游轮上的客人除了那些有钱人{CLEAR}就剩手握精灵的训练家了。{SCROLL}小蓝『也就是说圣安努号现在是{NEWLINE}一个钱和精灵都很集中的海上孤岛。{SCROLL}小蓝『为了保存体力以防万一,{NEWLINE}我就先不跟你对战了。",
-   "en": "Green: {VAR:0103:0}, have you noticed?{NEWLINE}Besides the rich folks, all the{CLEAR}passengers are Trainers with Pokémon.{SCROLL}Green: That means the S.S. Anne is an{NEWLINE}island at sea packed with money and{CLEAR}Pokémon.{SCROLL}Green: I’ll save my strength just in{NEWLINE}case, so no battle with you for now.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Green = male-player route (Red alternate)."
-  },
-  {
-   "id": 17,
-   "zh": "小赤『{VAR:0103:0}你有没有发现{NEWLINE}这游轮上的客人除了有钱人{CLEAR}就是手握精灵的训练家了。{SCROLL}小赤『也就是说圣安努号现在是{NEWLINE}一个钱和精灵都很集中的海上孤岛。{SCROLL}小赤『为了保存体力以防万一,{NEWLINE}我就先不跟你对战了。",
-   "en": "Red: {VAR:0103:0}, have you noticed? Besides{NEWLINE}the rich folks, all the passengers are{CLEAR}Trainers with Pokémon.{SCROLL}Red: That means the S.S. Anne is an{NEWLINE}island at sea packed with money and{CLEAR}Pokémon.{SCROLL}Red: I’ll save my strength just in case,{NEWLINE}so no battle with you for now.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Red = female-player route (Green alternate)."
-  },
-  {
-   "id": 18,
-   "zh": "为了弄到圣安努号游轮的船票{NEWLINE}我可是花了不少钱呢。",
-   "en": "I spent a fortune getting a ticket for{NEWLINE}the S.S. Anne.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 19,
-   "zh": "哈哈,有精灵对战的派对！{NEWLINE}洒家这次可以放开手脚大干一场了。",
-   "en": "Ha ha, a party with Pokémon battles!{NEWLINE}This time this old boy can cut loose and{CLEAR}go all out!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 20,
-   "zh": "过会儿在派对中对战,{NEWLINE}真是让人兴奋不已！",
-   "en": "Battling at the party later... I can’t{NEWLINE}wait!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 21,
-   "zh": "水吾桐『欢迎光临,{NEWLINE}请随意参观。",
-   "en": "Archie: Welcome aboard. Please feel{NEWLINE}free to look around.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 22,
-   "zh": "水吾桐『各位客人请随意参观,{NEWLINE}不必拘束。",
-   "en": "Archie: Everyone, please feel free to{NEWLINE}look around. Make yourselves at home.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 23,
-   "zh": "水吾桐『各位乘客,欢迎参加{NEWLINE}圣安努号的交流派对。{SCROLL}水吾桐『在派对期间{NEWLINE}诸位可以自由交流、尽情对战。{SCROLL}水吾桐『稍后大家可以从我旁边{NEWLINE}这位服务员小姐这里{CLEAR}领取美味的食物和特制的精灵食品,{CLEAR}欢迎各位品鉴。",
-   "en": "Archie: Passengers, welcome to the{NEWLINE}S.S. Anne’s social party.{SCROLL}Archie: During the party, you’re free{NEWLINE}to mingle and battle to your heart’s{CLEAR}content.{SCROLL}Archie: Shortly, you may collect{NEWLINE}delicious food and special Pokémon food{CLEAR}from the young lady beside me.{SCROLL}Please enjoy.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 24,
-   "zh": "水吾桐『请愉快地享受{NEWLINE}大海上的派对时光吧！{SCROLL}……{SCROLL}水吾桐『（小声）你们最后的时光……",
-   "en": "Archie: Enjoy your party time out on{NEWLINE}the open sea!{SCROLL}...{SCROLL}Archie: (quietly) Your final hours...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 25,
-   "zh": "小蓝『游轮上的客人们{NEWLINE}看起来都挺有钱的嘛。{CLEAR}真该早准备点商品拿来卖的！",
-   "en": "Green: The passengers on this ship all{NEWLINE}look pretty rich. I should’ve brought{CLEAR}some goods to sell!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Green = male-player route (Red alternate)."
-  },
-  {
-   "id": 26,
-   "zh": "小赤『游轮上的训练家们{NEWLINE}看起来都蛮有实力的。{CLEAR}确实想让人在派对上跟他们较量一番。",
-   "en": "Red: The Trainers on this ship all look{NEWLINE}pretty strong. Makes me want to test{CLEAR}myself against them at the party.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Red = female-player route (Green alternate)."
-  },
-  {
-   "id": 27,
-   "zh": "小伙子,我的鲤鱼王可是稀世珍品,{NEWLINE}想买的话请到后面排队。",
-   "en": "Young man, my Magikarp is a rare{NEWLINE}treasure. If you want to buy one, get{CLEAR}in line at the back.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 28,
-   "zh": "哟呵,尊贵的客人！{NEWLINE}在大海上购物绝对是一种浪漫。{CLEAR}相信小店一定有您喜欢的商品。{SCROLL}",
-   "en": "Well, hello, honored guest! Shopping on{NEWLINE}the high seas is simply romantic.{SCROLL}I’m sure my little shop has something{NEWLINE}you’ll like.{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 29,
-   "zh": "浅水盐{NEWLINE}1500元",
-   "en": "Shoal Salt{NEWLINE}$1500",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "menu width fix (follow-up 1): was 'Shoal Salt, $1500'",
-   "category": "menu_touch_col5"
-  },
-  {
-   "id": 30,
-   "zh": "大珍珠{NEWLINE}3000元",
-   "en": "Big Pearl, $3000",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 31,
-   "zh": "TM63 迁怒{NEWLINE}4000元",
-   "en": "Frustration{NEWLINE}TM63, $4000",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "menu width fix (follow-up 1): was 'TM63 Frustration, $4000'",
-   "category": "menu_touch_col5"
-  },
-  {
-   "id": 32,
-   "zh": "专爱头巾{NEWLINE}9000元",
-   "en": "Choice Band, $9000",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 33,
-   "zh": "物攻果{NEWLINE}800元",
-   "en": "Liechi Berry{NEWLINE}$800",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "menu width fix (follow-up 1): was 'Liechi Berry, $800'",
-   "category": "menu_touch_col5"
-  },
-  {
-   "id": 34,
-   "zh": "物防果{NEWLINE}800元",
-   "en": "Ganlon Berry{NEWLINE}$800",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "menu width fix (follow-up 1): was 'Ganlon Berry, $800'",
-   "category": "menu_touch_col5"
-  },
-  {
-   "id": 35,
-   "zh": "不买了",
-   "en": "Nothing, thanks",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 8 source(s)",
-   "category": "menu_touch_col5"
-  },
-  {
-   "id": 36,
-   "zh": "欢迎您再来！",
-   "en": "Please come again!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 37,
-   "zh": "请拿好您的商品。",
-   "en": "Here you are. Thank you!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 38,
-   "zh": "您身上的钱似乎不太够啊……",
-   "en": "You don’t seem to have enough money...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 39,
-   "zh": "欢迎光临圣安努号,{NEWLINE}祝您旅途愉快。",
-   "en": "Welcome aboard the S.S. Anne. Have a{NEWLINE}pleasant voyage.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 40,
-   "zh": "小绿『过会儿你要是{NEWLINE}在派对的对战中输给我的话,{CLEAR}可别哭鼻子啊。",
-   "en": "Blue: If you lose to me in the party{NEWLINE}battles later, don’t go crying about it.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 41,
-   "zh": "小绿『{VAR:0103:0}的图鉴{NEWLINE}收集的怎么样了？{CLEAR}过会儿要不要在派对上{CLEAR}跟我来场对战呢？",
-   "en": "Blue: How’s your Pokédex coming along,{NEWLINE}{VAR:0103:0}? Want to battle me at the{CLEAR}party later?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 42,
-   "zh": "小绿『派对已经开始了,{NEWLINE}{VAR:0103:0}你这时候凑上来{CLEAR}是想跟我来场对战吗？",
-   "en": "Blue: The party’s already started.{NEWLINE}{VAR:0103:0}, you came over now because you{CLEAR}want to battle me?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 43,
-   "zh": "小绿『派对已经开始了,{NEWLINE}{VAR:0103:0}果然也觉得{CLEAR}是时候来一场对战了。",
-   "en": "Blue: The party’s already started.{NEWLINE}{VAR:0103:0}, so you also think it’s time for{CLEAR}a battle.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 44,
-   "zh": "小绿『哼,你还真是在不断变强啊。",
-   "en": "Blue: Hmph. You really do keep getting{NEWLINE}stronger.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 45,
-   "zh": "小绿『{VAR:0103:0}的配招又变丰富了啊,{NEWLINE}真是让我大开眼界。",
-   "en": "Blue: Your moves have gotten even more{NEWLINE}varied, {VAR:0103:0}. That was an{CLEAR}eye-opener.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 46,
-   "zh": "小绿『你知道吗{VAR:0103:0},{NEWLINE}以你这种实力能在地下决斗时赢我{CLEAR}纯粹只是撞大运而已。",
-   "en": "Blue: You know, {VAR:0103:0}, with skills like{NEWLINE}yours, beating me in the underground{CLEAR}battles was pure dumb luck.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 47,
-   "zh": "小绿『真是场精彩的战斗。",
-   "en": "Blue: That was a great battle.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 48,
-   "zh": "小绿『什么？{NEWLINE}船上的厨房需要盐？{CLEAR}我倒是在枯叶码头买了一些浅水盐,{CLEAR}你如果需要的话就拿去吧。",
-   "en": "Blue: What? The ship’s kitchen needs{NEWLINE}salt? I bought some Shoal Salt at{CLEAR}Vermilion Harbor.{SCROLL}Take it if you need it.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 49,
-   "zh": "小绿『虽说就这么坐船去城都地区{NEWLINE}有点打乱计划,{CLEAR}不过只要能收集到8个徽章{CLEAR}怎么样都行啦。",
-   "en": "Blue: Taking a boat to Johto kind of{NEWLINE}throws off my plans...{SCROLL}But as long as I collect 8 Badges, I{NEWLINE}don’t care how.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 50,
-   "zh": "哈哈,来了来了,{NEWLINE}向洒家发起挑战的训练家！",
-   "en": "Ha ha, here it comes! A Trainer who{NEWLINE}dares to challenge this old boy!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 51,
-   "zh": "跟你的对战很有意思,{NEWLINE}如果你哪天去城都的喇叭芽之塔{CLEAR}我们再来比试！",
-   "en": "Battling you was a blast. If you ever go{NEWLINE}to Sprout Tower in Johto, let’s have a{CLEAR}rematch!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 52,
-   "zh": "小蓝『仔细看了船上的乘客后{NEWLINE}总觉得哪里有些违和感。{CLEAR}到底是什么呢……",
-   "en": "Green: After a good look at the{NEWLINE}passengers, something feels off. What{CLEAR}is it...?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Green = male-player route (Red alternate)."
-  },
-  {
-   "id": 53,
-   "zh": "小赤『总感觉这船上的舒适感{NEWLINE}有些过于刻意了,{CLEAR}是我想太多了吗？",
-   "en": "Red: This ship feels a little too{NEWLINE}comfortable, like it’s on purpose. Am I{CLEAR}overthinking it?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Red = female-player route (Green alternate)."
-  },
-  {
-   "id": 54,
-   "zh": "小蓝『喔？想要盐？{NEWLINE}我这里是没有盐啦。{CLEAR}要不你去问问小绿？{CLEAR}或许他那就有呢。",
-   "en": "Green: Oh? You want salt? I don’t have{NEWLINE}any, sorry.{SCROLL}Why not ask Blue? Maybe he has some.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Green = male-player route (Red alternate)."
-  },
-  {
-   "id": 55,
-   "zh": "小赤『喔？想要盐？{NEWLINE}我这里是没有盐啦。{CLEAR}要不你去问问小绿？{CLEAR}或许他那就有呢。",
-   "en": "Red: Oh? You want salt? I don’t have{NEWLINE}any, sorry.{SCROLL}Why not ask Blue? Maybe he has some.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Red = female-player route (Green alternate)."
-  },
-  {
-   "id": 56,
-   "zh": "哟咿呵！{NEWLINE}超级吐火艺人就是我啦！",
-   "en": "Yo-ho! I’m the super fire-breathing{NEWLINE}performer!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 57,
-   "zh": "以我多年的考古经验,{NEWLINE}这位先生所卖的应该都是真品。",
-   "en": "With my many years in archaeology, I’d{NEWLINE}say everything this gentleman sells is{CLEAR}genuine.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 58,
-   "zh": "怎么样,我今天很漂亮吧？{NEWLINE}来,给你个机会夸夸我。{SCROLL}{VAR:0103:0}『……{SCROLL}你真是个典型的直男。",
-   "en": "Well? Don’t I look pretty today? Come{NEWLINE}on, here’s your chance to compliment{CLEAR}me.{SCROLL}{VAR:0103:0}: ...{SCROLL}You really are a typical clueless guy.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 59,
-   "zh": "一个女人说话有趣很重要,{NEWLINE}会调戏男人更重要。",
-   "en": "For a woman, being fun to talk to{NEWLINE}matters. Knowing how to tease men{CLEAR}matters even more.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 60,
-   "zh": "小妹妹,要不要跟我学学{NEWLINE}如何让男人给你花钱呐？{CLEAR}我可是个精通人性的女讲师哟。",
-   "en": "Little miss, want me to teach you how to{NEWLINE}get men to spend money on you?{SCROLL}I’m a lecturer who’s an expert on human{NEWLINE}nature, you know.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 61,
-   "zh": "服务生『什么啊,{NEWLINE}这不就是普通的鲤鱼王嘛,大叔。",
-   "en": "Waiter: What? This is just a regular{NEWLINE}Magikarp, mister.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 62,
-   "zh": "它可是鲤鱼中的鲤鱼{NEWLINE}鲤鱼之王,{CLEAR}鲤鱼王！",
-   "en": "It’s the carp of all carp, the king of{NEWLINE}carp... Magikarp!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 63,
-   "zh": "服务生『看起来不怎么样啊。",
-   "en": "Waiter: Doesn’t look like much.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 64,
-   "zh": "你看它多健康,你看！",
-   "en": "Look how healthy it is! Just look!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 65,
-   "zh": "服务生『是挺有活力的。",
-   "en": "Waiter: It is pretty lively.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 66,
-   "zh": "顺便告诉你一个秘密,{NEWLINE}这个鲤鱼它会产黄金啊。",
-   "en": "And here’s a little secret for you: this{NEWLINE}Magikarp makes gold.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 67,
-   "zh": "服务生『黄金？",
-   "en": "Waiter: Gold?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 68,
-   "zh": "对,鲤鱼王一次产一千个卵。{NEWLINE}你想想看,{CLEAR}一千只鲤鱼王再产一千个卵,{CLEAR}一千的一千倍是百万啊！{SCROLL}你想想百万再产卵的话,{NEWLINE}这可就是天文数字了！",
-   "en": "That’s right. A Magikarp lays a{NEWLINE}thousand eggs at a time. Think about it!{SCROLL}A thousand Magikarp each lay a{NEWLINE}thousand eggs. A thousand thousands is{CLEAR}a million!{SCROLL}And if that million lay eggs, you’re{NEWLINE}looking at an astronomical number!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 69,
-   "zh": "服务生『好厉害！",
-   "en": "Waiter: Amazing!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 70,
-   "zh": "这个鲤鱼王一万块一条,{NEWLINE}只要产三次卵,{CLEAR}你就赚大钱了！{SCROLL}上亿！上亿哟！",
-   "en": "This Magikarp is ten thousand a fish.{NEWLINE}After just three rounds of eggs, you’ll{CLEAR}be rich!{SCROLL}Hundreds of millions! Hundreds of{NEWLINE}millions, I tell you!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 71,
-   "zh": "服务生『上亿……",
-   "en": "Waiter: Hundreds of millions...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 72,
-   "zh": "富可敌国哦！{NEWLINE}到时候你想买多少口袋妖怪都行！",
-   "en": "Richer than a king! You can buy as many{NEWLINE}Pokémon as you want!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 73,
-   "zh": "服务生『太棒了！",
-   "en": "Waiter: Awesome!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 74,
-   "zh": "平时的卖价是一万块。{NEWLINE}这个鲤鱼王呢,加上产卵装置、{CLEAR}培育装置、还有教育装置,{CLEAR}总共算你三万块。",
-   "en": "Normally it sells for ten thousand. But{NEWLINE}this Magikarp, plus the egg-laying kit...{SCROLL}...the raising kit and the education{NEWLINE}kit... thirty thousand for the lot!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 75,
-   "zh": "服务生『我买！我买！",
-   "en": "Waiter: I’ll take it! I’ll take it!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 76,
-   "zh": "客人呐,{NEWLINE}我看到你背后发出黄金的光芒啊！{CLEAR}恭喜发财咯！",
-   "en": "Sir, I see a golden glow shining behind{NEWLINE}you! Wishing you great fortune!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 77,
-   "zh": "服务生『噫嘿嘿嘿嘿！",
-   "en": "Waiter: Hee hee hee hee!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 78,
-   "zh": "前边的,买东西能不能快点啊！{NEWLINE}我还要买呢！",
-   "en": "Hey, you up front! Hurry up with your{NEWLINE}shopping! I want to buy one too!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 79,
-   "zh": "服务生『走开走开,{NEWLINE}今天这个发财的机会我包圆了！",
-   "en": "Waiter: Beat it, beat it! Today’s chance{NEWLINE}to get rich is all mine!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 80,
-   "zh": "服务生『那家伙居然在排队买东西,{NEWLINE}不知道有任务么！",
-   "en": "Waiter: That guy’s standing in line to go{NEWLINE}shopping? Doesn’t he know we’ve got a{CLEAR}mission?!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 81,
-   "zh": "服务生『哟呵呵……{NEWLINE}顾客您好！",
-   "en": "Waiter: Ho ho ho... Hello, valued{NEWLINE}customer!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 82,
-   "zh": "喵喵『船……{SCROLL}喵喵『Meo！",
-   "en": "Meowth: Ship...{SCROLL}Meowth: Meo!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 83,
-   "zh": "顾客您好！稍后可以在我这里{NEWLINE}领取特制的精灵食品。{SCROLL}您现在可以先让口袋妖怪们{NEWLINE}通过对战活动下筋骨,{CLEAR}这样一会儿品尝食物的时候{CLEAR}口感会更好的。",
-   "en": "Hello, valued customer! Shortly, you{NEWLINE}can collect special Pokémon food from{CLEAR}me.{SCROLL}For now, why not let your Pokémon{NEWLINE}stretch their legs with a few battles?{SCROLL}Then the food will taste even better.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 84,
-   "zh": "唔呵呵,我的拉达可是很强的,{NEWLINE}你已经鼓足勇气来挑战了吗？",
-   "en": "Oh ho ho, my Raticate is very strong.{NEWLINE}Have you worked up the courage to{CLEAR}challenge me?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 85,
-   "zh": "嗯,算是平手了。",
-   "en": "Hmm, let’s call it a draw.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 86,
-   "zh": "从你的眼神里我就能看到{NEWLINE}你对对战的渴望,{CLEAR}来吧！",
-   "en": "I can see in your eyes how hungry you{NEWLINE}are for battle. Come on!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 87,
-   "zh": "能跟你对战真是不虚此行。",
-   "en": "Battling you made this trip worth it.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 88,
-   "zh": "此时此刻此地,人们和口袋妖怪{NEWLINE}其乐融融地享受派对的欢乐,{CLEAR}又是一个值得用画笔记录的时刻啊。",
-   "en": "Here and now, people and Pokémon{NEWLINE}enjoying the party together in{CLEAR}harmony...{SCROLL}Another moment worth capturing with my{NEWLINE}brush.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 89,
-   "zh": "我注意你好久了,{NEWLINE}跟我来场对战如何？",
-   "en": "I’ve had my eye on you for a while. How{NEWLINE}about a battle?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 90,
-   "zh": "果然身手不凡！",
-   "en": "You’re as good as I thought!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 91,
-   "zh": "我孙女似乎很喜欢{NEWLINE}这样热闹的派对呢。",
-   "en": "My granddaughter seems to love lively{NEWLINE}parties like this.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 92,
-   "zh": "大哥哥,你的精灵也很厉害吧？{NEWLINE}你也要参加口袋妖怪对战吗？",
-   "en": "Big brother, your Pokémon are strong{NEWLINE}too, right? Are you going to join the{CLEAR}Pokémon battles?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: male-player variant."
-  },
-  {
-   "id": 93,
-   "zh": "大姐姐,你的精灵也很厉害吧？{NEWLINE}你也要参加口袋妖怪对战吗？",
-   "en": "Big sister, your Pokémon are strong{NEWLINE}too, right? Are you going to join the{CLEAR}Pokémon battles?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: female-player variant."
-  },
-  {
-   "id": 94,
-   "zh": "熊宝宝『Teddi,Teddi！",
-   "en": "Teddiursa: Teddi, Teddi!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 95,
-   "zh": "哇,我今天真的好漂亮。{NEWLINE}来,给你个机会夸夸我。",
-   "en": "Wow, I look so pretty today. Come on,{NEWLINE}here’s your chance to compliment me.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 96,
-   "zh": "啊哈哈哈。",
-   "en": "Ah ha ha ha.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 97,
-   "zh": "你可真是个典型的直男。",
-   "en": "You really are a typical clueless guy.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 98,
-   "zh": "我们玩个问答游戏吧？",
-   "en": "Want to play a quiz game?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 99,
-   "zh": "好啊,你问我答。",
-   "en": "Sure. You ask, I answer.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 100,
-   "zh": "你知道在我眼里{NEWLINE}你什么时候最帅吗？",
-   "en": "Do you know when you look most{NEWLINE}handsome to me?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 101,
-   "zh": "我不知道啊……",
-   "en": "I don’t know...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 102,
-   "zh": "你们这些直男还真是无趣。",
-   "en": "You clueless guys are so boring.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 103,
-   "zh": "我前边这人迟迟不走开,{NEWLINE}是想独吞这么珍贵的鲤鱼王么？",
-   "en": "The guy in front of me won’t budge.{NEWLINE}Does he want that precious Magikarp all{CLEAR}to himself?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 104,
-   "zh": "我在金黄市的娜姿小姐那里{NEWLINE}学到了新的超能系技能,{CLEAR}你要来试试吗？",
-   "en": "I learned a new Psychic-type move from{NEWLINE}Miss Sabrina in Saffron City. Want to{CLEAR}try it out?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 105,
-   "zh": "虽然你能凭蛮力战胜我,{NEWLINE}但是你绝对赢不了娜姿小姐。",
-   "en": "You may beat me with brute force, but{NEWLINE}you’ll never beat Miss Sabrina.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 106,
-   "zh": "说实在的,{NEWLINE}你的精灵们都太厉害了。{CLEAR}不过我的拉达也挺不错的。{SCROLL}如果你有巴大蝴的话,{NEWLINE}跟我的拉达交换一下如何啊？",
-   "en": "Honestly, your Pokémon are all really{NEWLINE}strong. But my Raticate’s pretty good{CLEAR}too.{SCROLL}If you have a Butterfree, how about{NEWLINE}trading it for my Raticate?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 107,
-   "zh": "那你真是错失了一只强大的拉达。",
-   "en": "Then you’ve missed out on a strong{NEWLINE}Raticate.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 108,
-   "zh": "你这只不是巴大蝴嘛。",
-   "en": "That’s not a Butterfree.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 109,
-   "zh": "这样就交换完毕了,{NEWLINE}从此以后拉达就是你的了。",
-   "en": "The trade’s done. From now on, Raticate{NEWLINE}is yours.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 110,
-   "zh": "能够跟不同的伙伴一起冒险,{NEWLINE}这感觉不错吧？",
-   "en": "Adventuring with all kinds of partners{NEWLINE}feels good, doesn’t it?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 111,
-   "zh": "我决定到城都地区的卡吉镇,{NEWLINE}跟随柳伯先生修行。",
-   "en": "I’ve decided to go to Mahogany Town in{NEWLINE}Johto and train under Mr. Pryce.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 112,
-   "zh": "我最佩服的就是你这种{NEWLINE}既有实力又低调的训练家了。",
-   "en": "The Trainers I admire most are ones like{NEWLINE}you, who are strong but humble.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 113,
-   "zh": "看来我的超能力还不够强,{NEWLINE}去城都地区的缘朱道馆锻炼一下吧。",
-   "en": "Looks like my psychic powers still{NEWLINE}aren’t strong enough. I’ll go train at{CLEAR}the Ecruteak Gym in Johto.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 114,
-   "zh": "水吾桐『嘿嘿……{NEWLINE}请好好享受这场派对吧。",
-   "en": "Archie: Heh heh... Please enjoy the{NEWLINE}party.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 115,
-   "zh": "看您大汗淋漓的样子,{NEWLINE}想必已经已经好好享受过对战了吧。{SCROLL}那么请您的口袋妖怪们{NEWLINE}品尝一下我们特制的食物吧,{CLEAR}口感绝佳哟。",
-   "en": "You’re dripping with sweat. You must{NEWLINE}have really enjoyed your battles.{SCROLL}Then please let your Pokémon try our{NEWLINE}special food. It’s absolutely delicious.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 116,
-   "zh": "这就是我们的食物,请您收……",
-   "en": "Here’s our food. Please take-",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 117,
-   "zh": "大哥哥,大哥哥！",
-   "en": "Big brother! Big brother!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: male-player variant."
-  },
-  {
-   "id": 118,
-   "zh": "大姐姐,大姐姐！",
-   "en": "Big sister! Big sister!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: female-player variant."
-  },
-  {
-   "id": 119,
-   "zh": "我的熊宝宝不知道跑哪里去了,{NEWLINE}拜托你帮我找一找吧！",
-   "en": "My Teddiursa ran off somewhere! Please{NEWLINE}help me find it!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 120,
-   "zh": "各位乘客,各位来宾,{NEWLINE}女士们,先生们！",
-   "en": "Passengers, guests, ladies and{NEWLINE}gentlemen!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 121,
-   "zh": "我们爷孙俩的这次旅行{NEWLINE}多亏遇到你才能这么顺利,{CLEAR}真是太感谢了。",
-   "en": "Our trip went so smoothly thanks to{NEWLINE}you. Thank you so much.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 122,
-   "zh": "谢谢大哥哥帮我找回熊宝宝！{SCROLL}我将来也要成为像你一样{NEWLINE}乐于助人的训练家！",
-   "en": "Thank you for finding my Teddiursa, big{NEWLINE}brother!{SCROLL}When I grow up, I want to be a Trainer{NEWLINE}who helps people, just like you!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 123,
-   "zh": "谢谢大姐姐帮我找回熊宝宝！{SCROLL}我将来也要成为像你一样{NEWLINE}乐于助人的训练家！",
-   "en": "Thank you for finding my Teddiursa, big{NEWLINE}sister!{SCROLL}When I grow up, I want to be a Trainer{NEWLINE}who helps people, just like you!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 124,
-   "zh": "又要麻烦你去找熊宝宝,{NEWLINE}真是太不好意思了。",
-   "en": "I’m so sorry to trouble you with finding{NEWLINE}Teddiursa again.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 125,
-   "zh": "呜……熊宝宝是去找蜂蜜吃了吗？",
-   "en": "Sniff... Did Teddiursa go looking for{NEWLINE}honey?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 126,
-   "zh": "服务生『我跟你们说哦,{NEWLINE}我买到了不得了的鲤鱼王呢！",
-   "en": "Waiter: Hey, listen! I bought an{NEWLINE}incredible Magikarp!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 127,
-   "zh": "女服务员『你这个笨蛋！{NEWLINE}执行完这次任务之后,{CLEAR}船上的东西不是随便我们挑么,{CLEAR}还需要买吗？",
-   "en": "Waitress: You idiot! Once this mission’s{NEWLINE}done, we can take whatever we want{CLEAR}from the ship!{SCROLL}Why would you need to buy anything?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 128,
-   "zh": "服务生『好……好像是这样啊……",
-   "en": "Waiter: Oh... I-I guess you’re right...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 129,
-   "zh": "喂,怎么搞的？{NEWLINE}发生什么事了吗？",
-   "en": "Hey, what’s going on? Did something{NEWLINE}happen?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 130,
-   "zh": "怎么突然停电了？",
-   "en": "Why did the power suddenly go out?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 131,
-   "zh": "女服务员『水吾桐大人已经去船长室了,{NEWLINE}我们也赶紧开始工作吧！",
-   "en": "Waitress: Master Archie has gone to the{NEWLINE}captain’s cabin. Let’s get to work too!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 132,
-   "zh": "火箭队？！{NEWLINE}我看过最近精灵联盟的通报,{CLEAR}好像是一伙很恶劣的犯罪组织。",
-   "en": "Team Rocket?! I read the{NEWLINE}Pokémon League’s latest bulletin.{CLEAR}They’re a vicious criminal gang!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 133,
-   "zh": "你们就是那个犯罪组织火箭队？{SCROLL}你们出现在这里的目的是什么？",
-   "en": "So you’re that criminal gang, Team{NEWLINE}Rocket?{SCROLL}What are you doing here?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 134,
-   "zh": "武藏『目的？当然是为了{NEWLINE}你们的钱财和口袋妖怪咯。",
-   "en": "Jessie: What are we doing? Why, we’re{NEWLINE}after your money and your Pokémon, of{CLEAR}course.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 135,
-   "zh": "小次郎『顺带警告一下精灵联盟,{NEWLINE}我们火箭队可不是好惹的！",
-   "en": "James: And while we’re at it, a word of{NEWLINE}warning to the Pokémon League: don’t{CLEAR}mess with Team Rocket!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 136,
-   "zh": "小绿『哼,就凭你们几个{NEWLINE}也想抢劫我们？{SCROLL}小绿『上啊卡咪龟,{NEWLINE}让他们看看你的厉害！",
-   "en": "Blue: Hmph. You think a handful of you{NEWLINE}can rob us?{SCROLL}Blue: Go, Wartortle! Show them what{NEWLINE}you’ve got!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 137,
-   "zh": "卡咪龟『War？toooo——",
-   "en": "Wartortle: War? Toooo...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 138,
-   "zh": "既然你诚心诚意地发问了！",
-   "en": "Prepare for trouble!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Canon English dub motto (user decision, D-1437)."
-  },
-  {
-   "id": 139,
-   "zh": "我们就大发慈悲地告诉你！",
-   "en": "Make it double!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Canon English dub motto (user decision, D-1437)."
-  },
-  {
-   "id": 140,
-   "zh": "为了防止世界被破坏,",
-   "en": "To protect the world from devastation!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Canon English dub motto (user decision, D-1437)."
-  },
-  {
-   "id": 141,
-   "zh": "为了守护世界的和平。",
-   "en": "To unite all peoples within our nation!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Canon English dub motto (user decision, D-1437)."
-  },
-  {
-   "id": 142,
-   "zh": "贯彻爱与真实的邪恶,",
-   "en": "To denounce the evils of truth{NEWLINE}and love!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Canon English dub motto (user decision, D-1437)."
-  },
-  {
-   "id": 143,
-   "zh": "可爱又迷人的反派角色。",
-   "en": "To extend our reach to the{NEWLINE}stars above!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Canon English dub motto (user decision, D-1437)."
-  },
-  {
-   "id": 144,
-   "zh": "武藏『我是武藏！",
-   "en": "Jessie: Jessie!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s)"
-  },
-  {
-   "id": 145,
-   "zh": "小次郎『我是小次郎！",
-   "en": "James: James!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), flags suspiciously_short"
-  },
-  {
-   "id": 146,
-   "zh": "武藏『我们是穿梭在银河的火箭队,",
-   "en": "Jessie: Team Rocket, blast off at the{NEWLINE}speed of light!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Canon English dub motto (user decision, D-1437)."
-  },
-  {
-   "id": 147,
-   "zh": "小次郎『白洞,白色的明天在等着我们！",
-   "en": "James: Surrender now, or prepare{NEWLINE}to fight!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Canon English dub motto (user decision, D-1437)."
-  },
-  {
-   "id": 148,
-   "zh": "喵喵『就是这样喵！",
-   "en": "Meowth: Meowth! That’s right!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Canon English dub motto (user decision, D-1437)."
-  },
-  {
-   "id": 149,
-   "zh": "小绿『真是好笑,{NEWLINE}就凭你们两个也想抢我们？",
-   "en": "Blue: What a joke. The two of you think{NEWLINE}you can rob us?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 150,
-   "zh": "小次郎『哈哈,{NEWLINE}你以为我们只有两个？",
-   "en": "James: Ha ha! You think there are only{NEWLINE}two of us?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 151,
-   "zh": "武藏『好了,任务开始了,{NEWLINE}都行动起来吧！",
-   "en": "Jessie: All right, the mission’s on.{NEWLINE}Everyone, move!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 152,
-   "zh": "卡咪龟晕头转向的。",
-   "en": "Wartortle is reeling in confusion!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 153,
-   "zh": "小绿『卡咪龟？你怎么了！？",
-   "en": "Blue: Wartortle? What’s wrong?!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 154,
-   "zh": "武藏『呀哈哈哈！{NEWLINE}你们刚才都给精灵吃了{CLEAR}派对上提供的食物了吧？",
-   "en": "Jessie: Ya-ha-ha-ha! You all fed your{NEWLINE}Pokémon the food from the party, didn’t{CLEAR}you?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 155,
-   "zh": "小次郎『那可是能让{NEWLINE}精灵产生混乱的特制食品哟。",
-   "en": "James: That was special food that makes{NEWLINE}Pokémon confused.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 156,
-   "zh": "喵喵『既然知道已经无力反抗,{NEWLINE}就赶紧把精灵和钱财交出来吧喵！",
-   "en": "Meowth: Now that ya know ya can’t fight{NEWLINE}back, hand over your Pokémon and your{CLEAR}cash, meow!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 157,
-   "zh": "这么说,我们的精灵也……{SCROLL}可恶啊,真卑鄙！{SCROLL}这可怎么跟火箭队作战啊！",
-   "en": "So our Pokémon too...{SCROLL}Curses, how dirty!{SCROLL}How are we supposed to fight Team{NEWLINE}Rocket now?!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 158,
-   "zh": "{VAR:0103:0}『那可未必！",
-   "en": "{VAR:0103:0}: Not so fast!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 159,
-   "zh": "{VAR:0103:0}『想得倒美！",
-   "en": "{VAR:0103:0}: Dream on!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 160,
-   "zh": "{VAR:0103:0}『我的精灵可没吃你们的食物！{NEWLINE}你们火箭队想干坏事,{CLEAR}先过我这一关再说！",
-   "en": "{VAR:0103:0}: My Pokémon didn’t eat your{NEWLINE}food!{SCROLL}If Team Rocket wants to cause trouble,{NEWLINE}you’ll have to get through me first!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 161,
-   "zh": "小蓝『他可不是一个人哟！",
-   "en": "Green: He’s not alone!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Green = male-player route (Red alternate)."
-  },
-  {
-   "id": 162,
-   "zh": "小赤『她可不是一个人！",
-   "en": "Red: She’s not alone!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Red = female-player route (Green alternate)."
-  },
-  {
-   "id": 163,
-   "zh": "武藏『又是你这个碍事的小鬼头！",
-   "en": "Jessie: You again, you meddling brat!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 164,
-   "zh": "小次郎『哼,就凭你一个人,{NEWLINE}也想阻止我们？",
-   "en": "James: Hmph. You think you can stop us{NEWLINE}all by yourself?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 165,
-   "zh": "小蓝『抱歉啦火箭队,{NEWLINE}我的精灵也没吃派对上的食物呢！",
-   "en": "Green: Sorry, Team Rocket. My Pokémon{NEWLINE}didn’t eat the party food either!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Green = male-player route (Red alternate)."
-  },
-  {
-   "id": 166,
-   "zh": "小赤『火箭队你们休想得逞！{NEWLINE}我的精灵也没吃派对上的食物！",
-   "en": "Red: You won’t get away with this, Team{NEWLINE}Rocket! My Pokémon didn’t eat the{CLEAR}party food either!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Red = female-player route (Green alternate)."
-  },
-  {
-   "id": 167,
-   "zh": "喵喵『这不是常磐森林里那对{NEWLINE}坏我们好事的小鬼头么?{CLEAR}真是仇家路窄啊喵。",
-   "en": "Meowth: Ain’t these the twerps who{NEWLINE}wrecked our plans in Viridian Forest?{CLEAR}Small world, meow.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 168,
-   "zh": "小次郎『正好就在这里{NEWLINE}把过去的账跟你们算一算！",
-   "en": "James: Perfect. We’ll settle our old{NEWLINE}score with you right here!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 169,
-   "zh": "武藏『你们四个先上！{NEWLINE}让他们见识一下火箭队的厉害！",
-   "en": "Jessie: You four go first! Show them{NEWLINE}what Team Rocket can do!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 170,
-   "zh": "胆敢挑战我们火箭队,{NEWLINE}真是不知好歹！",
-   "en": "You dare challenge Team Rocket? You{NEWLINE}don’t know what’s good for you!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 171,
-   "zh": "是！！！！！",
-   "en": "Yes, ma’am!!!!!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 172,
-   "zh": "臭小鬼们还挺难对付的……",
-   "en": "These brats are tougher than they{NEWLINE}look...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 173,
-   "zh": "真是没用,看我们的！",
-   "en": "Useless! Leave it to us!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 174,
-   "zh": "比想象的要厉害啊……",
-   "en": "They’re stronger than I thought...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 175,
-   "zh": "武藏『可以了,{NEWLINE}你们已经消磨了他们的体力,{CLEAR}剩下就看我们的吧！",
-   "en": "Jessie: That’s enough. You’ve worn{NEWLINE}them down. Leave the rest to us!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 176,
-   "zh": "武藏『气死我了,{NEWLINE}这么多人都拿不下这俩臭小鬼。",
-   "en": "Jessie: This is infuriating! All these{NEWLINE}people and we still can’t beat two{CLEAR}brats!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 177,
-   "zh": "小次郎『情况有变……{NEWLINE}咱们还是先撤吧。",
-   "en": "James: Things have changed... We’d{NEWLINE}better pull back for now.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 178,
-   "zh": "武藏『臭小鬼们别高兴的太早,{NEWLINE}水吾桐大人现在应该{CLEAR}已经夺取了游轮的控制权。{CLEAR}等着你们的就只有{CLEAR}和这船一起沉没的命运！{SCROLL}武藏『咱们撤！",
-   "en": "Jessie: Don’t celebrate too soon,{NEWLINE}brats. Master Archie should have taken{CLEAR}over the ship by now.{SCROLL}All that’s waiting for you is going down{NEWLINE}with this ship!{SCROLL}Jessie: Let’s go!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 179,
-   "zh": "小蓝『刚才火箭队的人说{NEWLINE}游轮已经被他们控制了……{CLEAR}如果是真的,那可是件危险的事。",
-   "en": "Green: Team Rocket just said they’ve{NEWLINE}taken over the ship...{SCROLL}If that’s true, we’re in real danger.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Green = male-player route (Red alternate)."
-  },
-  {
-   "id": 180,
-   "zh": "小赤『刚才火箭队的人说{NEWLINE}游轮已经被他们控制了……{CLEAR}如果是真的,那可是件危险的事。",
-   "en": "Red: Team Rocket just said they’ve{NEWLINE}taken over the ship...{SCROLL}If that’s true, we’re in real danger.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Red = female-player route (Green alternate)."
-  },
-  {
-   "id": 181,
-   "zh": "小蓝『{VAR:0103:0},现在情况很危急,{NEWLINE}你一定要按我说的去做。",
-   "en": "Green: {VAR:0103:0}, this is an emergency.{NEWLINE}You have to do exactly as I say.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Green = male-player route (Red alternate)."
-  },
-  {
-   "id": 182,
-   "zh": "小赤『{VAR:0103:0},现在请况危急,{NEWLINE}请你务必按我说的去做。",
-   "en": "Red: {VAR:0103:0}, this is an emergency.{NEWLINE}Please do exactly as I say.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Red = female-player route (Green alternate)."
-  },
-  {
-   "id": 183,
-   "zh": "小蓝『各位乘客,目前状况紧急,{NEWLINE}请各位立即跟我到这边暂避一下！",
-   "en": "Green: Everyone, this is an emergency!{NEWLINE}Please follow me over here and take{CLEAR}shelter right away!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Green = male-player route (Red alternate)."
-  },
-  {
-   "id": 184,
-   "zh": "小赤『各位乘客,目前状况紧急,{NEWLINE}请各位立即跟我到这边暂避一下！",
-   "en": "Red: Everyone, this is an emergency!{NEWLINE}Please follow me over here and take{CLEAR}shelter right away!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Red = female-player route (Green alternate)."
-  },
-  {
-   "id": 185,
-   "zh": "{VAR:0103:0}『你的意思是？",
-   "en": "{VAR:0103:0}: What do you mean?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 186,
-   "zh": "{VAR:0103:0}『没问题,你已经有计划了？",
-   "en": "{VAR:0103:0}: Sure. You already have a plan?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 187,
-   "zh": "小蓝『我先组织乘客们{NEWLINE}到安全的地方躲避。{SCROLL}小蓝『{VAR:0103:0}你就赶去船长室{NEWLINE}确认游轮的控制权。{CLEAR}等我确认乘客们安全后就去支援你！",
-   "en": "Green: I’ll get the passengers{NEWLINE}somewhere safe.{SCROLL}Green: {VAR:0103:0}, you hurry to the{NEWLINE}captain’s cabin and find out who’s{CLEAR}controlling the ship.{SCROLL}Once I know the passengers are safe,{NEWLINE}I’ll come back you up!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Green = male-player route (Red alternate)."
-  },
-  {
-   "id": 188,
-   "zh": "小赤『你现在赶去船长室{NEWLINE}确认游轮的控制权。{SCROLL}小赤『我和小绿在这里{NEWLINE}组织乘客们到安全的地方躲避,{CLEAR}我会尽快治好大伙的精灵去支援你的。",
-   "en": "Red: You hurry to the captain’s cabin{NEWLINE}and find out who’s controlling the ship.{SCROLL}Red: Blue and I will get the passengers{NEWLINE}somewhere safe.{SCROLL}I’ll heal everyone’s Pokémon as fast as{NEWLINE}I can and come back you up.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Branch: Red = female-player route (Green alternate)."
-  },
-  {
-   "id": 189,
-   "zh": "小绿『真是没想到{NEWLINE}会在这里被火箭队暗算,{CLEAR}目前只能先靠你去跟火箭队周旋了。{SCROLL}小绿『等我想办法{NEWLINE}解除精灵的混乱后就去帮你,{CLEAR}你要是在那之前挂掉可就太没用了啊！",
-   "en": "Blue: Can’t believe Team Rocket got the{NEWLINE}jump on us here. For now, it’s up to you{CLEAR}to handle them.{SCROLL}Blue: Once I figure out how to snap{NEWLINE}my Pokémon out of confusion, I’ll{CLEAR}come help.{SCROLL}If you croak before then, you’re{NEWLINE}totally useless!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "ext-review B-004"
-  },
-  {
-   "id": 190,
-   "zh": "小绿『火箭队这招下毒可真够阴的,{NEWLINE}{VAR:0103:0}你独自去跟火箭队周旋{CLEAR}可一定要小心啊！{SCROLL}小绿『等我想办法{NEWLINE}解除精灵的混乱后就去帮你。",
-   "en": "Blue: Poisoning the food... that’s a low{NEWLINE}trick, even for Team Rocket.{SCROLL}{VAR:0103:0}, you’re taking them on alone,{NEWLINE}so be careful!{SCROLL}Blue: Once I figure out how to snap my{NEWLINE}Pokémon out of confusion, I’ll come{CLEAR}help.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 191,
-   "zh": "目前船上的救生艇都在我的掌控之中。{SCROLL}万一有意外{NEWLINE}乘客们也可以乘救生艇逃走。",
-   "en": "All the lifeboats on this ship are under{NEWLINE}my control.{SCROLL}If anything happens, the passengers{NEWLINE}can still escape in them.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 192,
-   "zh": "就凭你也想救出船长？",
-   "en": "You think you can rescue the captain?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 193,
-   "zh": "任何人不准靠近船长室！",
-   "en": "Nobody goes near the captain’s cabin!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 194,
-   "zh": "这么想被水吾桐大人杀死的话{NEWLINE}你就继续往前走吧。",
-   "en": "If you want Master Archie to kill you{NEWLINE}that badly, go right ahead.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 195,
-   "zh": "每天每天打扫卫生,{NEWLINE}我早就受够了。",
-   "en": "Cleaning, cleaning, every single day...{NEWLINE}I’ve had it up to here.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 196,
-   "zh": "我旁边就是你的房间了。{SCROLL}在房间的床上休息的话,{NEWLINE}精灵也会恢复精神的。{SCROLL}在睡觉的期间,{NEWLINE}船会抵达目的地码头。",
-   "en": "Your cabin is right next to me.{SCROLL}Rest in the bed in your cabin, and your{NEWLINE}Pokémon will feel refreshed too.{SCROLL}The ship will arrive at its destination{NEWLINE}while you sleep.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "US 0259/9 | seed rejected us [ambiguous US match] (candidate US 0259#9; text not kept)"
-  },
-  {
-   "id": 197,
-   "zh": "豪华游轮圣安努号{NEWLINE}正前往水都群岛。{SCROLL}到达水都群岛码头的时候,{NEWLINE}会用广播通知各位。",
-   "en": "The luxury liner S.S. Anne is bound for{NEWLINE}the Alto Mare Islands.{SCROLL}We will make an announcement when we{NEWLINE}arrive at Alto Mare Harbor.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "US 0259/1 | seed rejected us [ambiguous US match] (candidate US 0259#1; text not kept)"
-  },
-  {
-   "id": 198,
-   "zh": "豪华游轮圣安努号{NEWLINE}已经抵达水都群岛码头了！",
-   "en": "The luxury liner S.S. Anne has arrived{NEWLINE}at Alto Mare Harbor!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  }
- ]
+  "narc": "a027",
+  "bank": 252,
+  "source": "work/extract/v4/a027/0252.json",
+  "strings": [
+    {
+      "id": 0,
+      "zh": "豪华游轮圣安努号{NEWLINE}正前往枯叶市。{SCROLL}到达枯叶码头的时候,{NEWLINE}会用广播通知各位。",
+      "en": "The luxury liner S.S. Anne is bound for{NEWLINE}Vermilion City.{SCROLL}We will make an announcement when we{NEWLINE}arrive at Vermilion Harbor.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "The hack's ship is the S.S. Anne (圣安努号), not the S.S. Aqua."
+    },
+    {
+      "id": 1,
+      "zh": "豪华游轮圣安努号{NEWLINE}正前往浅葱市。{SCROLL}到达浅葱码头的时候,{NEWLINE}会用广播通知各位。",
+      "en": "The luxury liner S.S. Anne is bound for{NEWLINE}Olivine City.{SCROLL}We will make an announcement when we{NEWLINE}arrive at Olivine Harbor.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "US 0259/1"
+    },
+    {
+      "id": 2,
+      "zh": "豪华游轮圣安努号{NEWLINE}已经抵达枯叶码头了！{SCROLL}",
+      "en": "The luxury liner S.S. Anne has arrived{NEWLINE}at Vermilion Harbor!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "US 0259/2"
+    },
+    {
+      "id": 3,
+      "zh": "豪华游轮圣安努号{NEWLINE}已经抵达枯叶码头了！",
+      "en": "The luxury liner S.S. Anne has arrived{NEWLINE}at Vermilion Harbor!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "US 0259/3"
+    },
+    {
+      "id": 4,
+      "zh": "哎？已经到达{NEWLINE}枯叶了呢！{SCROLL}",
+      "en": "Huh?{NEWLINE}It’s already arrived in Vermilion City.{SCROLL}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0259/4"
+    },
+    {
+      "id": 5,
+      "zh": "豪华游轮圣安努号{NEWLINE}已经抵达浅葱码头了！{SCROLL}",
+      "en": "The luxury liner S.S. Anne has arrived{NEWLINE}at Olivine Harbor!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "US 0259/5"
+    },
+    {
+      "id": 6,
+      "zh": "豪华游轮圣安努号{NEWLINE}已经抵达浅葱码头了！",
+      "en": "The luxury liner S.S. Anne has arrived{NEWLINE}at Olivine Harbor!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "US 0259/6"
+    },
+    {
+      "id": 7,
+      "zh": "啊,真抱歉！{NEWLINE}是老爷爷我太急了！{SCROLL}我家的孙女不见了,{NEWLINE}我正在找她呢！{CLEAR}是个很娇小的女孩子！{CLEAR}你若看到她,请务必告诉我！{SCROLL}",
+      "en": "Whoa! Excuse me. I was in a hurry!{SCROLL}My granddaughter is missing!{SCROLL}She’s just a wee girl. If you see{NEWLINE}her, please let me know!{SCROLL}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0259/7"
+    },
+    {
+      "id": 8,
+      "zh": "旁边的房间里,{NEWLINE}住着乔伊小姐哟。{SCROLL}如果你的精灵受了伤的话,{NEWLINE}可以去找乔伊小姐帮你看看。",
+      "en": "Nurse Joy is staying in the room next{NEWLINE}door.{SCROLL}If your Pokémon get hurt, you can ask{NEWLINE}Nurse Joy to take a look at them.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "zh": "你的房间在这里。{SCROLL}在床上休息的话,{NEWLINE}精灵也会恢复精神的。{SCROLL}在睡觉的期间,{NEWLINE}船会抵达目的地码头。",
+      "en": "Here’s your cabin.{SCROLL}You can heal your Pokémon{NEWLINE}by taking a nap in the bed.{SCROLL}The ship will arrive while{NEWLINE}you’re sleeping.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0259/9"
+    },
+    {
+      "id": 10,
+      "zh": "看来船员们已经在为派对{NEWLINE}开始忙碌了呢。{CLEAR}期待这场派对能值回票价吧。",
+      "en": "Looks like the crew’s already busy{NEWLINE}getting ready for the party. I hope{CLEAR}it’s worth the ticket price.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "zh": "船长『最后一批上船的客人们,{NEWLINE}我是圣安努号的船长,{CLEAR}我旁边这位是副船长水吾桐。{CLEAR}我们二人诚挚地欢迎各位乘坐本游轮。{SCROLL}在船只抵达城都浅葱市之前,{NEWLINE}我们为各位安排了{CLEAR}口袋妖怪训练家交流派对。{SCROLL}船长『届时将会有美味的食物、{NEWLINE}精彩的对战、稀有的商品为大家奉上。{CLEAR}在派对开始前,我……{CLEAR}唔……{CLEAR}我先回船长室吐一会儿……{SCROLL}船长『各位乘客如有问题{NEWLINE}可以找水吾桐副船长。{CLEAR}唔呕……那么各位,{CLEAR}派对时再见啦！",
+      "en": "Captain: To our last passengers to{NEWLINE}board: I’m the captain of the{CLEAR}S.S. Anne...{SCROLL}...and beside me is First Mate Archie. We{NEWLINE}both warmly welcome you aboard.{SCROLL}Before we reach Olivine City in Johto,{NEWLINE}we’ve arranged a Pokémon Trainer social{CLEAR}party for you.{SCROLL}Captain: There will be delicious food,{NEWLINE}exciting battles and rare goods for all.{SCROLL}Before the party starts, I... Urk...{NEWLINE}I’m going back to my cabin to throw up{CLEAR}for a bit...{SCROLL}Captain: If you have any questions,{NEWLINE}please ask First Mate Archie.{SCROLL}Urp... Well then, everyone, see you at{NEWLINE}the party!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "副船长 → First Mate (Archie = 水吾桐)."
+    },
+    {
+      "id": 12,
+      "zh": "妙蛙草『Ivy——saur！",
+      "en": "Ivysaur: Ivy-saur!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s); other variants: 3 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 13,
+      "zh": "小绿『{VAR:0103:0}你这个总是慢半拍的家伙,{NEWLINE}我还以为你赶不上游轮开船了呢。{CLEAR}刚刚那个副船长的话你也听到了吧,{CLEAR}一会儿的派对中会有精灵对战{CLEAR}到时我可不会让着你的。",
+      "en": "Blue: {VAR:0103:0}, you slowpoke. I thought{NEWLINE}you were going to miss the boat.{SCROLL}You heard what the first mate said,{NEWLINE}right? There’ll be Pokémon battles at{CLEAR}the party...{SCROLL}...and I won’t go easy on you.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "zh": "小绿『{VAR:0103:0}你终于来了,{NEWLINE}我还担心你赶不上开船呢。{CLEAR}刚刚那个副船长的话你也听到了吧,{CLEAR}看来过会儿要举行很特别的派对呢。",
+      "en": "Blue: You finally made it, {VAR:0103:0}. I was{NEWLINE}worried you’d miss the boat.{SCROLL}You heard what the first mate said,{NEWLINE}right? Looks like there’s a really{CLEAR}special party coming up.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "zh": "卡咪龟『War——toooo！",
+      "en": "Wartortle: War-toooo!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "zh": "小蓝『{VAR:0103:0}你有没有发现{NEWLINE}这游轮上的客人除了那些有钱人{CLEAR}就剩手握精灵的训练家了。{SCROLL}小蓝『也就是说圣安努号现在是{NEWLINE}一个钱和精灵都很集中的海上孤岛。{SCROLL}小蓝『为了保存体力以防万一,{NEWLINE}我就先不跟你对战了。",
+      "en": "Green: {VAR:0103:0}, have you noticed?{NEWLINE}Besides the rich folks, all the{CLEAR}passengers are Trainers with Pokémon.{SCROLL}Green: That means the S.S. Anne is an{NEWLINE}island at sea packed with money and{CLEAR}Pokémon.{SCROLL}Green: I’ll save my strength just in{NEWLINE}case, so no battle with you for now.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Green = male-player route (Red alternate)."
+    },
+    {
+      "id": 17,
+      "zh": "小赤『{VAR:0103:0}你有没有发现{NEWLINE}这游轮上的客人除了有钱人{CLEAR}就是手握精灵的训练家了。{SCROLL}小赤『也就是说圣安努号现在是{NEWLINE}一个钱和精灵都很集中的海上孤岛。{SCROLL}小赤『为了保存体力以防万一,{NEWLINE}我就先不跟你对战了。",
+      "en": "Red: {VAR:0103:0}, have you noticed? Besides{NEWLINE}the rich folks, all the passengers are{CLEAR}Trainers with Pokémon.{SCROLL}Red: That means the S.S. Anne is an{NEWLINE}island at sea packed with money and{CLEAR}Pokémon.{SCROLL}Red: I’ll save my strength just in case,{NEWLINE}so no battle with you for now.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Red = female-player route (Green alternate)."
+    },
+    {
+      "id": 18,
+      "zh": "为了弄到圣安努号游轮的船票{NEWLINE}我可是花了不少钱呢。",
+      "en": "I spent a fortune getting a ticket for{NEWLINE}the S.S. Anne.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "zh": "哈哈,有精灵对战的派对！{NEWLINE}洒家这次可以放开手脚大干一场了。",
+      "en": "Ha ha, a party with Pokémon battles!{NEWLINE}This time this old boy can cut loose and{CLEAR}go all out!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "zh": "过会儿在派对中对战,{NEWLINE}真是让人兴奋不已！",
+      "en": "Battling at the party later... I can’t{NEWLINE}wait!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "zh": "水吾桐『欢迎光临,{NEWLINE}请随意参观。",
+      "en": "Archie: Welcome aboard. Please feel{NEWLINE}free to look around.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "zh": "水吾桐『各位客人请随意参观,{NEWLINE}不必拘束。",
+      "en": "Archie: Everyone, please feel free to{NEWLINE}look around. Make yourselves at home.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "zh": "水吾桐『各位乘客,欢迎参加{NEWLINE}圣安努号的交流派对。{SCROLL}水吾桐『在派对期间{NEWLINE}诸位可以自由交流、尽情对战。{SCROLL}水吾桐『稍后大家可以从我旁边{NEWLINE}这位服务员小姐这里{CLEAR}领取美味的食物和特制的精灵食品,{CLEAR}欢迎各位品鉴。",
+      "en": "Archie: Passengers, welcome to the{NEWLINE}S.S. Anne’s social party.{SCROLL}Archie: During the party, you’re free{NEWLINE}to mingle and battle to your heart’s{CLEAR}content.{SCROLL}Archie: Shortly, you may collect{NEWLINE}delicious food and special Pokémon food{CLEAR}from the young lady beside me.{SCROLL}Please enjoy.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "zh": "水吾桐『请愉快地享受{NEWLINE}大海上的派对时光吧！{SCROLL}……{SCROLL}水吾桐『（小声）你们最后的时光……",
+      "en": "Archie: Enjoy your party time out on{NEWLINE}the open sea!{SCROLL}...{SCROLL}Archie: (quietly) Your final hours...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "zh": "小蓝『游轮上的客人们{NEWLINE}看起来都挺有钱的嘛。{CLEAR}真该早准备点商品拿来卖的！",
+      "en": "Green: The passengers on this ship all{NEWLINE}look pretty rich. I should’ve brought{CLEAR}some goods to sell!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Green = male-player route (Red alternate)."
+    },
+    {
+      "id": 26,
+      "zh": "小赤『游轮上的训练家们{NEWLINE}看起来都蛮有实力的。{CLEAR}确实想让人在派对上跟他们较量一番。",
+      "en": "Red: The Trainers on this ship all look{NEWLINE}pretty strong. Makes me want to test{CLEAR}myself against them at the party.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Red = female-player route (Green alternate)."
+    },
+    {
+      "id": 27,
+      "zh": "小伙子,我的鲤鱼王可是稀世珍品,{NEWLINE}想买的话请到后面排队。",
+      "en": "Young man, my Magikarp is a rare{NEWLINE}treasure. If you want to buy one, get{CLEAR}in line at the back.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "zh": "哟呵,尊贵的客人！{NEWLINE}在大海上购物绝对是一种浪漫。{CLEAR}相信小店一定有您喜欢的商品。{SCROLL}",
+      "en": "Well, hello, honored guest! Shopping on{NEWLINE}the high seas is simply romantic.{SCROLL}I’m sure my little shop has something{NEWLINE}you’ll like.{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "zh": "浅水盐{NEWLINE}1500元",
+      "en": "Shoal Salt{NEWLINE}$1500",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "menu width fix (follow-up 1): was 'Shoal Salt, $1500'",
+      "category": "menu_touch_col5"
+    },
+    {
+      "id": 30,
+      "zh": "大珍珠{NEWLINE}3000元",
+      "en": "Big Pearl, $3000",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "zh": "TM63 迁怒{NEWLINE}4000元",
+      "en": "Frustration{NEWLINE}TM63, $4000",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "menu width fix (follow-up 1): was 'TM63 Frustration, $4000'",
+      "category": "menu_touch_col5"
+    },
+    {
+      "id": 32,
+      "zh": "专爱头巾{NEWLINE}9000元",
+      "en": "Choice Band, $9000",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "zh": "物攻果{NEWLINE}800元",
+      "en": "Liechi Berry{NEWLINE}$800",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "menu width fix (follow-up 1): was 'Liechi Berry, $800'",
+      "category": "menu_touch_col5"
+    },
+    {
+      "id": 34,
+      "zh": "物防果{NEWLINE}800元",
+      "en": "Ganlon Berry{NEWLINE}$800",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "menu width fix (follow-up 1): was 'Ganlon Berry, $800'",
+      "category": "menu_touch_col5"
+    },
+    {
+      "id": 35,
+      "zh": "不买了",
+      "en": "Nothing, thanks",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 8 source(s)",
+      "category": "menu_touch_col5"
+    },
+    {
+      "id": 36,
+      "zh": "欢迎您再来！",
+      "en": "Please come again!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "zh": "请拿好您的商品。",
+      "en": "Here you are. Thank you!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "zh": "您身上的钱似乎不太够啊……",
+      "en": "You don’t seem to have enough money...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "zh": "欢迎光临圣安努号,{NEWLINE}祝您旅途愉快。",
+      "en": "Welcome aboard the S.S. Anne. Have a{NEWLINE}pleasant voyage.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "zh": "小绿『过会儿你要是{NEWLINE}在派对的对战中输给我的话,{CLEAR}可别哭鼻子啊。",
+      "en": "Blue: If you lose to me in the party{NEWLINE}battles later, don’t go crying about it.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "zh": "小绿『{VAR:0103:0}的图鉴{NEWLINE}收集的怎么样了？{CLEAR}过会儿要不要在派对上{CLEAR}跟我来场对战呢？",
+      "en": "Blue: How’s your Pokédex coming along,{NEWLINE}{VAR:0103:0}? Want to battle me at the{CLEAR}party later?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "zh": "小绿『派对已经开始了,{NEWLINE}{VAR:0103:0}你这时候凑上来{CLEAR}是想跟我来场对战吗？",
+      "en": "Blue: The party’s already started.{NEWLINE}{VAR:0103:0}, you came over now because you{CLEAR}want to battle me?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 43,
+      "zh": "小绿『派对已经开始了,{NEWLINE}{VAR:0103:0}果然也觉得{CLEAR}是时候来一场对战了。",
+      "en": "Blue: The party’s already started.{NEWLINE}{VAR:0103:0}, so you also think it’s time for{CLEAR}a battle.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "zh": "小绿『哼,你还真是在不断变强啊。",
+      "en": "Blue: Hmph. You really do keep getting{NEWLINE}stronger.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "zh": "小绿『{VAR:0103:0}的配招又变丰富了啊,{NEWLINE}真是让我大开眼界。",
+      "en": "Blue: Your moves have gotten even more{NEWLINE}varied, {VAR:0103:0}. That was an{CLEAR}eye-opener.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 46,
+      "zh": "小绿『你知道吗{VAR:0103:0},{NEWLINE}以你这种实力能在地下决斗时赢我{CLEAR}纯粹只是撞大运而已。",
+      "en": "Blue: You know, {VAR:0103:0}, with skills like{NEWLINE}yours, beating me in the underground{CLEAR}battles was pure dumb luck.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 47,
+      "zh": "小绿『真是场精彩的战斗。",
+      "en": "Blue: That was a great battle.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "zh": "小绿『什么？{NEWLINE}船上的厨房需要盐？{CLEAR}我倒是在枯叶码头买了一些浅水盐,{CLEAR}你如果需要的话就拿去吧。",
+      "en": "Blue: What? The ship’s kitchen needs{NEWLINE}salt? I bought some Shoal Salt at{CLEAR}Vermilion Harbor.{SCROLL}Take it if you need it.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 49,
+      "zh": "小绿『虽说就这么坐船去城都地区{NEWLINE}有点打乱计划,{CLEAR}不过只要能收集到8个徽章{CLEAR}怎么样都行啦。",
+      "en": "Blue: Taking a boat to Johto kind of{NEWLINE}throws off my plans...{SCROLL}But as long as I collect 8 Badges, I{NEWLINE}don’t care how.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "zh": "哈哈,来了来了,{NEWLINE}向洒家发起挑战的训练家！",
+      "en": "Ha ha, here it comes! A Trainer who{NEWLINE}dares to challenge this old boy!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 51,
+      "zh": "跟你的对战很有意思,{NEWLINE}如果你哪天去城都的喇叭芽之塔{CLEAR}我们再来比试！",
+      "en": "Battling you was a blast. If you ever go{NEWLINE}to Sprout Tower in Johto, let’s have a{CLEAR}rematch!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 52,
+      "zh": "小蓝『仔细看了船上的乘客后{NEWLINE}总觉得哪里有些违和感。{CLEAR}到底是什么呢……",
+      "en": "Green: After a good look at the{NEWLINE}passengers, something feels off. What{CLEAR}is it...?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Green = male-player route (Red alternate)."
+    },
+    {
+      "id": 53,
+      "zh": "小赤『总感觉这船上的舒适感{NEWLINE}有些过于刻意了,{CLEAR}是我想太多了吗？",
+      "en": "Red: This ship feels a little too{NEWLINE}comfortable, like it’s on purpose. Am I{CLEAR}overthinking it?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Red = female-player route (Green alternate)."
+    },
+    {
+      "id": 54,
+      "zh": "小蓝『喔？想要盐？{NEWLINE}我这里是没有盐啦。{CLEAR}要不你去问问小绿？{CLEAR}或许他那就有呢。",
+      "en": "Green: Oh? You want salt? I don’t have{NEWLINE}any, sorry.{SCROLL}Why not ask Blue? Maybe he has some.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Green = male-player route (Red alternate)."
+    },
+    {
+      "id": 55,
+      "zh": "小赤『喔？想要盐？{NEWLINE}我这里是没有盐啦。{CLEAR}要不你去问问小绿？{CLEAR}或许他那就有呢。",
+      "en": "Red: Oh? You want salt? I don’t have{NEWLINE}any, sorry.{SCROLL}Why not ask Blue? Maybe he has some.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Red = female-player route (Green alternate)."
+    },
+    {
+      "id": 56,
+      "zh": "哟咿呵！{NEWLINE}超级吐火艺人就是我啦！",
+      "en": "Yo-ho! I’m the super fire-breathing{NEWLINE}performer!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 57,
+      "zh": "以我多年的考古经验,{NEWLINE}这位先生所卖的应该都是真品。",
+      "en": "With my many years in archaeology, I’d{NEWLINE}say everything this gentleman sells is{CLEAR}genuine.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 58,
+      "zh": "怎么样,我今天很漂亮吧？{NEWLINE}来,给你个机会夸夸我。{SCROLL}{VAR:0103:0}『……{SCROLL}你真是个典型的直男。",
+      "en": "Well? Don’t I look pretty today? Come{NEWLINE}on, here’s your chance to compliment{CLEAR}me.{SCROLL}{VAR:0103:0}: ...{SCROLL}You really are a typical clueless guy.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 59,
+      "zh": "一个女人说话有趣很重要,{NEWLINE}会调戏男人更重要。",
+      "en": "For a woman, being fun to talk to{NEWLINE}matters. Knowing how to tease men{CLEAR}matters even more.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 60,
+      "zh": "小妹妹,要不要跟我学学{NEWLINE}如何让男人给你花钱呐？{CLEAR}我可是个精通人性的女讲师哟。",
+      "en": "Little miss, want me to teach you how to{NEWLINE}get men to spend money on you?{SCROLL}I’m a lecturer who’s an expert on human{NEWLINE}nature, you know.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 61,
+      "zh": "服务生『什么啊,{NEWLINE}这不就是普通的鲤鱼王嘛,大叔。",
+      "en": "Waiter: What? This is just a regular{NEWLINE}Magikarp, mister.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 62,
+      "zh": "它可是鲤鱼中的鲤鱼{NEWLINE}鲤鱼之王,{CLEAR}鲤鱼王！",
+      "en": "The king of all carp. A Magikarp.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": " | D-1765 / D-1756: user-approved dub treatment; short canon anchor corroborated by Pokémon Wiki and Forever Dreaming EP015 transcripts; Chinese numeric and hack-original dialogue retained."
+    },
+    {
+      "id": 63,
+      "zh": "服务生『看起来不怎么样啊。",
+      "en": "Waiter: Doesn’t look like much.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 64,
+      "zh": "你看它多健康,你看！",
+      "en": "Look how healthy it is! Just look!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 65,
+      "zh": "服务生『是挺有活力的。",
+      "en": "Waiter: It is pretty lively.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 66,
+      "zh": "顺便告诉你一个秘密,{NEWLINE}这个鲤鱼它会产黄金啊。",
+      "en": "Just between you and me, this Magikarp{NEWLINE}is like a Pokémon gold mine.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": " | D-1765 / D-1756: user-approved dub treatment; short canon anchor corroborated by Pokémon Wiki and Forever Dreaming EP015 transcripts; Chinese numeric and hack-original dialogue retained."
+    },
+    {
+      "id": 67,
+      "zh": "服务生『黄金？",
+      "en": "Waiter: Gold mine?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": " | D-1765 / D-1756: user-approved dub treatment; short canon anchor corroborated by Pokémon Wiki and Forever Dreaming EP015 transcripts; Chinese numeric and hack-original dialogue retained."
+    },
+    {
+      "id": 68,
+      "zh": "对,鲤鱼王一次产一千个卵。{NEWLINE}你想想看,{CLEAR}一千只鲤鱼王再产一千个卵,{CLEAR}一千的一千倍是百万啊！{SCROLL}你想想百万再产卵的话,{NEWLINE}这可就是天文数字了！",
+      "en": "That’s right. A Magikarp lays a{NEWLINE}thousand eggs at a time. Think about it!{SCROLL}A thousand Magikarp each lay a{NEWLINE}thousand eggs. A thousand thousands is{CLEAR}a million!{SCROLL}And if that million lay eggs, you’re{NEWLINE}looking at an astronomical number!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 69,
+      "zh": "服务生『好厉害！",
+      "en": "Waiter: Amazing!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 70,
+      "zh": "这个鲤鱼王一万块一条,{NEWLINE}只要产三次卵,{CLEAR}你就赚大钱了！{SCROLL}上亿！上亿哟！",
+      "en": "This Magikarp is ten thousand a fish.{NEWLINE}After just three rounds of eggs, you’ll{CLEAR}be rich!{SCROLL}Hundreds of millions! Hundreds of{NEWLINE}millions, I tell you!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 71,
+      "zh": "服务生『上亿……",
+      "en": "Waiter: Hundreds of millions...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 72,
+      "zh": "富可敌国哦！{NEWLINE}到时候你想买多少口袋妖怪都行！",
+      "en": "Richer than a king! You can buy as many{NEWLINE}Pokémon as you want!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 73,
+      "zh": "服务生『太棒了！",
+      "en": "Waiter: Awesome!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 74,
+      "zh": "平时的卖价是一万块。{NEWLINE}这个鲤鱼王呢,加上产卵装置、{CLEAR}培育装置、还有教育装置,{CLEAR}总共算你三万块。",
+      "en": "Normally it sells for ten thousand. But{NEWLINE}this Magikarp, plus the egg-laying kit...{SCROLL}...the raising kit and the education{NEWLINE}kit... thirty thousand for the lot!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 75,
+      "zh": "服务生『我买！我买！",
+      "en": "Waiter: I’ll take it! I’ll take it!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 76,
+      "zh": "客人呐,{NEWLINE}我看到你背后发出黄金的光芒啊！{CLEAR}恭喜发财咯！",
+      "en": "Sir, I see a golden glow shining behind{NEWLINE}you! Wishing you great fortune!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 77,
+      "zh": "服务生『噫嘿嘿嘿嘿！",
+      "en": "Waiter: Hee hee hee hee!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 78,
+      "zh": "前边的,买东西能不能快点啊！{NEWLINE}我还要买呢！",
+      "en": "Hey, you up front! Hurry up with your{NEWLINE}shopping! I want to buy one too!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 79,
+      "zh": "服务生『走开走开,{NEWLINE}今天这个发财的机会我包圆了！",
+      "en": "Waiter: Beat it, beat it! Today’s chance{NEWLINE}to get rich is all mine!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 80,
+      "zh": "服务生『那家伙居然在排队买东西,{NEWLINE}不知道有任务么！",
+      "en": "Waiter: That guy’s standing in line to go{NEWLINE}shopping? Doesn’t he know we’ve got a{CLEAR}mission?!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 81,
+      "zh": "服务生『哟呵呵……{NEWLINE}顾客您好！",
+      "en": "Waiter: Ho ho ho... Hello, valued{NEWLINE}customer!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 82,
+      "zh": "喵喵『船……{SCROLL}喵喵『Meo！",
+      "en": "Meowth: Ship...{SCROLL}Meowth: Meo!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 83,
+      "zh": "顾客您好！稍后可以在我这里{NEWLINE}领取特制的精灵食品。{SCROLL}您现在可以先让口袋妖怪们{NEWLINE}通过对战活动下筋骨,{CLEAR}这样一会儿品尝食物的时候{CLEAR}口感会更好的。",
+      "en": "Hello, valued customer! Shortly, you{NEWLINE}can collect special Pokémon food from{CLEAR}me.{SCROLL}For now, why not let your Pokémon{NEWLINE}stretch their legs with a few battles?{SCROLL}Then the food will taste even better.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 84,
+      "zh": "唔呵呵,我的拉达可是很强的,{NEWLINE}你已经鼓足勇气来挑战了吗？",
+      "en": "Oh ho ho, my Raticate is very strong.{NEWLINE}Have you worked up the courage to{CLEAR}challenge me?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 85,
+      "zh": "嗯,算是平手了。",
+      "en": "Hmm, let’s call it a draw.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 86,
+      "zh": "从你的眼神里我就能看到{NEWLINE}你对对战的渴望,{CLEAR}来吧！",
+      "en": "I can see in your eyes how hungry you{NEWLINE}are for battle. Come on!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 87,
+      "zh": "能跟你对战真是不虚此行。",
+      "en": "Battling you made this trip worth it.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 88,
+      "zh": "此时此刻此地,人们和口袋妖怪{NEWLINE}其乐融融地享受派对的欢乐,{CLEAR}又是一个值得用画笔记录的时刻啊。",
+      "en": "Here and now, people and Pokémon{NEWLINE}enjoying the party together in{CLEAR}harmony...{SCROLL}Another moment worth capturing with my{NEWLINE}brush.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 89,
+      "zh": "我注意你好久了,{NEWLINE}跟我来场对战如何？",
+      "en": "I’ve had my eye on you for a while. How{NEWLINE}about a battle?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 90,
+      "zh": "果然身手不凡！",
+      "en": "You’re as good as I thought!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 91,
+      "zh": "我孙女似乎很喜欢{NEWLINE}这样热闹的派对呢。",
+      "en": "My granddaughter seems to love lively{NEWLINE}parties like this.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 92,
+      "zh": "大哥哥,你的精灵也很厉害吧？{NEWLINE}你也要参加口袋妖怪对战吗？",
+      "en": "Big brother, your Pokémon are strong{NEWLINE}too, right? Are you going to join the{CLEAR}Pokémon battles?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: male-player variant."
+    },
+    {
+      "id": 93,
+      "zh": "大姐姐,你的精灵也很厉害吧？{NEWLINE}你也要参加口袋妖怪对战吗？",
+      "en": "Big sister, your Pokémon are strong{NEWLINE}too, right? Are you going to join the{CLEAR}Pokémon battles?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: female-player variant."
+    },
+    {
+      "id": 94,
+      "zh": "熊宝宝『Teddi,Teddi！",
+      "en": "Teddiursa: Teddi, Teddi!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 95,
+      "zh": "哇,我今天真的好漂亮。{NEWLINE}来,给你个机会夸夸我。",
+      "en": "Wow, I look so pretty today. Come on,{NEWLINE}here’s your chance to compliment me.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 96,
+      "zh": "啊哈哈哈。",
+      "en": "Ah ha ha ha.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 97,
+      "zh": "你可真是个典型的直男。",
+      "en": "You really are a typical clueless guy.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 98,
+      "zh": "我们玩个问答游戏吧？",
+      "en": "Want to play a quiz game?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 99,
+      "zh": "好啊,你问我答。",
+      "en": "Sure. You ask, I answer.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 100,
+      "zh": "你知道在我眼里{NEWLINE}你什么时候最帅吗？",
+      "en": "Do you know when you look most{NEWLINE}handsome to me?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 101,
+      "zh": "我不知道啊……",
+      "en": "I don’t know...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 102,
+      "zh": "你们这些直男还真是无趣。",
+      "en": "You clueless guys are so boring.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 103,
+      "zh": "我前边这人迟迟不走开,{NEWLINE}是想独吞这么珍贵的鲤鱼王么？",
+      "en": "The guy in front of me won’t budge.{NEWLINE}Does he want that precious Magikarp all{CLEAR}to himself?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 104,
+      "zh": "我在金黄市的娜姿小姐那里{NEWLINE}学到了新的超能系技能,{CLEAR}你要来试试吗？",
+      "en": "I learned a new Psychic-type move from{NEWLINE}Miss Sabrina in Saffron City. Want to{CLEAR}try it out?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 105,
+      "zh": "虽然你能凭蛮力战胜我,{NEWLINE}但是你绝对赢不了娜姿小姐。",
+      "en": "You may beat me with brute force, but{NEWLINE}you’ll never beat Miss Sabrina.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 106,
+      "zh": "说实在的,{NEWLINE}你的精灵们都太厉害了。{CLEAR}不过我的拉达也挺不错的。{SCROLL}如果你有巴大蝴的话,{NEWLINE}跟我的拉达交换一下如何啊？",
+      "en": "Honestly, your Pokémon are all really{NEWLINE}strong. But my Raticate’s pretty good{CLEAR}too.{SCROLL}If you have a Butterfree, how about{NEWLINE}trading it for my Raticate?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 107,
+      "zh": "那你真是错失了一只强大的拉达。",
+      "en": "Then you’ve missed out on a strong{NEWLINE}Raticate.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 108,
+      "zh": "你这只不是巴大蝴嘛。",
+      "en": "That’s not a Butterfree.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 109,
+      "zh": "这样就交换完毕了,{NEWLINE}从此以后拉达就是你的了。",
+      "en": "The trade’s done. From now on, Raticate{NEWLINE}is yours.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 110,
+      "zh": "能够跟不同的伙伴一起冒险,{NEWLINE}这感觉不错吧？",
+      "en": "Adventuring with all kinds of partners{NEWLINE}feels good, doesn’t it?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 111,
+      "zh": "我决定到城都地区的卡吉镇,{NEWLINE}跟随柳伯先生修行。",
+      "en": "I’ve decided to go to Mahogany Town in{NEWLINE}Johto and train under Mr. Pryce.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 112,
+      "zh": "我最佩服的就是你这种{NEWLINE}既有实力又低调的训练家了。",
+      "en": "The Trainers I admire most are ones like{NEWLINE}you, who are strong but humble.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 113,
+      "zh": "看来我的超能力还不够强,{NEWLINE}去城都地区的缘朱道馆锻炼一下吧。",
+      "en": "Looks like my psychic powers still{NEWLINE}aren’t strong enough. I’ll go train at{CLEAR}the Ecruteak Gym in Johto.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 114,
+      "zh": "水吾桐『嘿嘿……{NEWLINE}请好好享受这场派对吧。",
+      "en": "Archie: Heh heh... Please enjoy the{NEWLINE}party.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 115,
+      "zh": "看您大汗淋漓的样子,{NEWLINE}想必已经已经好好享受过对战了吧。{SCROLL}那么请您的口袋妖怪们{NEWLINE}品尝一下我们特制的食物吧,{CLEAR}口感绝佳哟。",
+      "en": "You’re dripping with sweat. You must{NEWLINE}have really enjoyed your battles.{SCROLL}Then please let your Pokémon try our{NEWLINE}special food. It’s absolutely delicious.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 116,
+      "zh": "这就是我们的食物,请您收……",
+      "en": "Here’s our food. Please take-",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 117,
+      "zh": "大哥哥,大哥哥！",
+      "en": "Big brother! Big brother!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: male-player variant."
+    },
+    {
+      "id": 118,
+      "zh": "大姐姐,大姐姐！",
+      "en": "Big sister! Big sister!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: female-player variant."
+    },
+    {
+      "id": 119,
+      "zh": "我的熊宝宝不知道跑哪里去了,{NEWLINE}拜托你帮我找一找吧！",
+      "en": "My Teddiursa ran off somewhere! Please{NEWLINE}help me find it!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 120,
+      "zh": "各位乘客,各位来宾,{NEWLINE}女士们,先生们！",
+      "en": "Passengers, guests, ladies and{NEWLINE}gentlemen!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 121,
+      "zh": "我们爷孙俩的这次旅行{NEWLINE}多亏遇到你才能这么顺利,{CLEAR}真是太感谢了。",
+      "en": "Our trip went so smoothly thanks to{NEWLINE}you. Thank you so much.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 122,
+      "zh": "谢谢大哥哥帮我找回熊宝宝！{SCROLL}我将来也要成为像你一样{NEWLINE}乐于助人的训练家！",
+      "en": "Thank you for finding my Teddiursa, big{NEWLINE}brother!{SCROLL}When I grow up, I want to be a Trainer{NEWLINE}who helps people, just like you!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 123,
+      "zh": "谢谢大姐姐帮我找回熊宝宝！{SCROLL}我将来也要成为像你一样{NEWLINE}乐于助人的训练家！",
+      "en": "Thank you for finding my Teddiursa, big{NEWLINE}sister!{SCROLL}When I grow up, I want to be a Trainer{NEWLINE}who helps people, just like you!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 124,
+      "zh": "又要麻烦你去找熊宝宝,{NEWLINE}真是太不好意思了。",
+      "en": "I’m so sorry to trouble you with finding{NEWLINE}Teddiursa again.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 125,
+      "zh": "呜……熊宝宝是去找蜂蜜吃了吗？",
+      "en": "Sniff... Did Teddiursa go looking for{NEWLINE}honey?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 126,
+      "zh": "服务生『我跟你们说哦,{NEWLINE}我买到了不得了的鲤鱼王呢！",
+      "en": "Waiter: Hey, listen! I bought an{NEWLINE}incredible Magikarp!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 127,
+      "zh": "女服务员『你这个笨蛋！{NEWLINE}执行完这次任务之后,{CLEAR}船上的东西不是随便我们挑么,{CLEAR}还需要买吗？",
+      "en": "Waitress: You idiot! Once this mission’s{NEWLINE}done, we can take whatever we want{CLEAR}from the ship!{SCROLL}Why would you need to buy anything?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 128,
+      "zh": "服务生『好……好像是这样啊……",
+      "en": "Waiter: Oh... I-I guess you’re right...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 129,
+      "zh": "喂,怎么搞的？{NEWLINE}发生什么事了吗？",
+      "en": "Hey, what’s going on? Did something{NEWLINE}happen?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 130,
+      "zh": "怎么突然停电了？",
+      "en": "Why did the power suddenly go out?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 131,
+      "zh": "女服务员『水吾桐大人已经去船长室了,{NEWLINE}我们也赶紧开始工作吧！",
+      "en": "Waitress: Master Archie has gone to the{NEWLINE}captain’s cabin. Let’s get to work too!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 132,
+      "zh": "火箭队？！{NEWLINE}我看过最近精灵联盟的通报,{CLEAR}好像是一伙很恶劣的犯罪组织。",
+      "en": "Team Rocket?! I read the{NEWLINE}Pokémon League’s latest bulletin.{CLEAR}They’re a vicious criminal gang!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 133,
+      "zh": "你们就是那个犯罪组织火箭队？{SCROLL}你们出现在这里的目的是什么？",
+      "en": "So you’re that criminal gang, Team{NEWLINE}Rocket?{SCROLL}What are you doing here?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 134,
+      "zh": "武藏『目的？当然是为了{NEWLINE}你们的钱财和口袋妖怪咯。",
+      "en": "Jessie: What are we doing? Why, we’re{NEWLINE}after your money and your Pokémon, of{CLEAR}course.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 135,
+      "zh": "小次郎『顺带警告一下精灵联盟,{NEWLINE}我们火箭队可不是好惹的！",
+      "en": "James: And while we’re at it, a word of{NEWLINE}warning to the Pokémon League: don’t{CLEAR}mess with Team Rocket!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 136,
+      "zh": "小绿『哼,就凭你们几个{NEWLINE}也想抢劫我们？{SCROLL}小绿『上啊卡咪龟,{NEWLINE}让他们看看你的厉害！",
+      "en": "Blue: Hmph. You think a handful of you{NEWLINE}can rob us?{SCROLL}Blue: Go, Wartortle! Show them what{NEWLINE}you’ve got!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 137,
+      "zh": "卡咪龟『War？toooo——",
+      "en": "Wartortle: War? Toooo...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 138,
+      "zh": "既然你诚心诚意地发问了！",
+      "en": "Prepare for trouble!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Canon English dub motto (user decision, D-1437)."
+    },
+    {
+      "id": 139,
+      "zh": "我们就大发慈悲地告诉你！",
+      "en": "Make it double!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Canon English dub motto (user decision, D-1437)."
+    },
+    {
+      "id": 140,
+      "zh": "为了防止世界被破坏,",
+      "en": "To protect the world from devastation!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Canon English dub motto (user decision, D-1437)."
+    },
+    {
+      "id": 141,
+      "zh": "为了守护世界的和平。",
+      "en": "To unite all peoples within our nation!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Canon English dub motto (user decision, D-1437)."
+    },
+    {
+      "id": 142,
+      "zh": "贯彻爱与真实的邪恶,",
+      "en": "To denounce the evils of truth{NEWLINE}and love!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Canon English dub motto (user decision, D-1437)."
+    },
+    {
+      "id": 143,
+      "zh": "可爱又迷人的反派角色。",
+      "en": "To extend our reach to the{NEWLINE}stars above!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Canon English dub motto (user decision, D-1437)."
+    },
+    {
+      "id": 144,
+      "zh": "武藏『我是武藏！",
+      "en": "Jessie: Jessie!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s)"
+    },
+    {
+      "id": 145,
+      "zh": "小次郎『我是小次郎！",
+      "en": "James: James!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), flags suspiciously_short"
+    },
+    {
+      "id": 146,
+      "zh": "武藏『我们是穿梭在银河的火箭队,",
+      "en": "Jessie: Team Rocket, blast off at the{NEWLINE}speed of light!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Canon English dub motto (user decision, D-1437)."
+    },
+    {
+      "id": 147,
+      "zh": "小次郎『白洞,白色的明天在等着我们！",
+      "en": "James: Surrender now, or prepare{NEWLINE}to fight!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Canon English dub motto (user decision, D-1437)."
+    },
+    {
+      "id": 148,
+      "zh": "喵喵『就是这样喵！",
+      "en": "Meowth: Meowth! That’s right!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Canon English dub motto (user decision, D-1437)."
+    },
+    {
+      "id": 149,
+      "zh": "小绿『真是好笑,{NEWLINE}就凭你们两个也想抢我们？",
+      "en": "Blue: What a joke. The two of you think{NEWLINE}you can rob us?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 150,
+      "zh": "小次郎『哈哈,{NEWLINE}你以为我们只有两个？",
+      "en": "James: Ha ha! You think there are only{NEWLINE}two of us?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 151,
+      "zh": "武藏『好了,任务开始了,{NEWLINE}都行动起来吧！",
+      "en": "Jessie: All right, the mission’s on.{NEWLINE}Everyone, move!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 152,
+      "zh": "卡咪龟晕头转向的。",
+      "en": "Wartortle is reeling in confusion!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 153,
+      "zh": "小绿『卡咪龟？你怎么了！？",
+      "en": "Blue: Wartortle? What’s wrong?!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 154,
+      "zh": "武藏『呀哈哈哈！{NEWLINE}你们刚才都给精灵吃了{CLEAR}派对上提供的食物了吧？",
+      "en": "Jessie: Ya-ha-ha-ha! You all fed your{NEWLINE}Pokémon the food from the party, didn’t{CLEAR}you?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 155,
+      "zh": "小次郎『那可是能让{NEWLINE}精灵产生混乱的特制食品哟。",
+      "en": "James: That was special food that makes{NEWLINE}Pokémon confused.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 156,
+      "zh": "喵喵『既然知道已经无力反抗,{NEWLINE}就赶紧把精灵和钱财交出来吧喵！",
+      "en": "Meowth: Now that ya know ya can’t fight{NEWLINE}back, hand over your Pokémon and your{CLEAR}cash, meow!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 157,
+      "zh": "这么说,我们的精灵也……{SCROLL}可恶啊,真卑鄙！{SCROLL}这可怎么跟火箭队作战啊！",
+      "en": "So our Pokémon too...{SCROLL}Damn it, that’s low!{SCROLL}How are we supposed to fight Team{NEWLINE}Rocket now?!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "tone review: 可恶 is an angry 'damn it' outburst; kept at full strength (D-0627)"
+    },
+    {
+      "id": 158,
+      "zh": "{VAR:0103:0}『那可未必！",
+      "en": "{VAR:0103:0}: Not so fast!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 159,
+      "zh": "{VAR:0103:0}『想得倒美！",
+      "en": "{VAR:0103:0}: Dream on!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 160,
+      "zh": "{VAR:0103:0}『我的精灵可没吃你们的食物！{NEWLINE}你们火箭队想干坏事,{CLEAR}先过我这一关再说！",
+      "en": "{VAR:0103:0}: My Pokémon didn’t eat your{NEWLINE}food!{SCROLL}If Team Rocket wants to cause trouble,{NEWLINE}you’ll have to get through me first!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 161,
+      "zh": "小蓝『他可不是一个人哟！",
+      "en": "Green: He’s not alone!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Green = male-player route (Red alternate)."
+    },
+    {
+      "id": 162,
+      "zh": "小赤『她可不是一个人！",
+      "en": "Red: She’s not alone!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Red = female-player route (Green alternate)."
+    },
+    {
+      "id": 163,
+      "zh": "武藏『又是你这个碍事的小鬼头！",
+      "en": "Jessie: You again, you meddling brat!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 164,
+      "zh": "小次郎『哼,就凭你一个人,{NEWLINE}也想阻止我们？",
+      "en": "James: Hmph. You think you can stop us{NEWLINE}all by yourself?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 165,
+      "zh": "小蓝『抱歉啦火箭队,{NEWLINE}我的精灵也没吃派对上的食物呢！",
+      "en": "Green: Sorry, Team Rocket. My Pokémon{NEWLINE}didn’t eat the party food either!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Green = male-player route (Red alternate)."
+    },
+    {
+      "id": 166,
+      "zh": "小赤『火箭队你们休想得逞！{NEWLINE}我的精灵也没吃派对上的食物！",
+      "en": "Red: You won’t get away with this, Team{NEWLINE}Rocket! My Pokémon didn’t eat the{CLEAR}party food either!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Red = female-player route (Green alternate)."
+    },
+    {
+      "id": 167,
+      "zh": "喵喵『这不是常磐森林里那对{NEWLINE}坏我们好事的小鬼头么?{CLEAR}真是仇家路窄啊喵。",
+      "en": "Meowth: Ain’t these the twerps who{NEWLINE}wrecked our plans in Viridian Forest?{CLEAR}Small world, meow.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 168,
+      "zh": "小次郎『正好就在这里{NEWLINE}把过去的账跟你们算一算！",
+      "en": "James: Perfect. We’ll settle our old{NEWLINE}score with you right here!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 169,
+      "zh": "武藏『你们四个先上！{NEWLINE}让他们见识一下火箭队的厉害！",
+      "en": "Jessie: You four go first! Show them{NEWLINE}what Team Rocket can do!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 170,
+      "zh": "胆敢挑战我们火箭队,{NEWLINE}真是不知好歹！",
+      "en": "You dare challenge Team Rocket? You{NEWLINE}don’t know what’s good for you!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 171,
+      "zh": "是！！！！！",
+      "en": "Yes, ma’am!!!!!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 172,
+      "zh": "臭小鬼们还挺难对付的……",
+      "en": "These brats are tougher than they{NEWLINE}look...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 173,
+      "zh": "真是没用,看我们的！",
+      "en": "Useless! Leave it to us!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 174,
+      "zh": "比想象的要厉害啊……",
+      "en": "They’re stronger than I thought...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 175,
+      "zh": "武藏『可以了,{NEWLINE}你们已经消磨了他们的体力,{CLEAR}剩下就看我们的吧！",
+      "en": "Jessie: That’s enough. You’ve worn{NEWLINE}them down. Leave the rest to us!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 176,
+      "zh": "武藏『气死我了,{NEWLINE}这么多人都拿不下这俩臭小鬼。",
+      "en": "Jessie: This is infuriating! All these{NEWLINE}people and we still can’t beat two{CLEAR}brats!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 177,
+      "zh": "小次郎『情况有变……{NEWLINE}咱们还是先撤吧。",
+      "en": "James: Things have changed... We’d{NEWLINE}better pull back for now.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 178,
+      "zh": "武藏『臭小鬼们别高兴的太早,{NEWLINE}水吾桐大人现在应该{CLEAR}已经夺取了游轮的控制权。{CLEAR}等着你们的就只有{CLEAR}和这船一起沉没的命运！{SCROLL}武藏『咱们撤！",
+      "en": "Jessie: Don’t celebrate too soon,{NEWLINE}brats. Master Archie should have taken{CLEAR}over the ship by now.{SCROLL}All that’s waiting for you is going down{NEWLINE}with this ship!{SCROLL}Jessie: Let’s go!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 179,
+      "zh": "小蓝『刚才火箭队的人说{NEWLINE}游轮已经被他们控制了……{CLEAR}如果是真的,那可是件危险的事。",
+      "en": "Green: Team Rocket just said they’ve{NEWLINE}taken over the ship...{SCROLL}If that’s true, we’re in real danger.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Green = male-player route (Red alternate)."
+    },
+    {
+      "id": 180,
+      "zh": "小赤『刚才火箭队的人说{NEWLINE}游轮已经被他们控制了……{CLEAR}如果是真的,那可是件危险的事。",
+      "en": "Red: Team Rocket just said they’ve{NEWLINE}taken over the ship...{SCROLL}If that’s true, we’re in real danger.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Red = female-player route (Green alternate)."
+    },
+    {
+      "id": 181,
+      "zh": "小蓝『{VAR:0103:0},现在情况很危急,{NEWLINE}你一定要按我说的去做。",
+      "en": "Green: {VAR:0103:0}, this is an emergency.{NEWLINE}You have to do exactly as I say.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Green = male-player route (Red alternate)."
+    },
+    {
+      "id": 182,
+      "zh": "小赤『{VAR:0103:0},现在请况危急,{NEWLINE}请你务必按我说的去做。",
+      "en": "Red: {VAR:0103:0}, this is an emergency.{NEWLINE}Please do exactly as I say.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Red = female-player route (Green alternate)."
+    },
+    {
+      "id": 183,
+      "zh": "小蓝『各位乘客,目前状况紧急,{NEWLINE}请各位立即跟我到这边暂避一下！",
+      "en": "Green: Everyone, this is an emergency!{NEWLINE}Please follow me over here and take{CLEAR}shelter right away!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Green = male-player route (Red alternate)."
+    },
+    {
+      "id": 184,
+      "zh": "小赤『各位乘客,目前状况紧急,{NEWLINE}请各位立即跟我到这边暂避一下！",
+      "en": "Red: Everyone, this is an emergency!{NEWLINE}Please follow me over here and take{CLEAR}shelter right away!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Red = female-player route (Green alternate)."
+    },
+    {
+      "id": 185,
+      "zh": "{VAR:0103:0}『你的意思是？",
+      "en": "{VAR:0103:0}: What do you mean?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 186,
+      "zh": "{VAR:0103:0}『没问题,你已经有计划了？",
+      "en": "{VAR:0103:0}: Sure. You already have a plan?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 187,
+      "zh": "小蓝『我先组织乘客们{NEWLINE}到安全的地方躲避。{SCROLL}小蓝『{VAR:0103:0}你就赶去船长室{NEWLINE}确认游轮的控制权。{CLEAR}等我确认乘客们安全后就去支援你！",
+      "en": "Green: I’ll get the passengers{NEWLINE}somewhere safe.{SCROLL}Green: {VAR:0103:0}, you hurry to the{NEWLINE}captain’s cabin and find out who’s{CLEAR}controlling the ship.{SCROLL}Once I know the passengers are safe,{NEWLINE}I’ll come back you up!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Green = male-player route (Red alternate)."
+    },
+    {
+      "id": 188,
+      "zh": "小赤『你现在赶去船长室{NEWLINE}确认游轮的控制权。{SCROLL}小赤『我和小绿在这里{NEWLINE}组织乘客们到安全的地方躲避,{CLEAR}我会尽快治好大伙的精灵去支援你的。",
+      "en": "Red: You hurry to the captain’s cabin{NEWLINE}and find out who’s controlling the ship.{SCROLL}Red: Blue and I will get the passengers{NEWLINE}somewhere safe.{SCROLL}I’ll heal everyone’s Pokémon as fast as{NEWLINE}I can and come back you up.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Branch: Red = female-player route (Green alternate)."
+    },
+    {
+      "id": 189,
+      "zh": "小绿『真是没想到{NEWLINE}会在这里被火箭队暗算,{CLEAR}目前只能先靠你去跟火箭队周旋了。{SCROLL}小绿『等我想办法{NEWLINE}解除精灵的混乱后就去帮你,{CLEAR}你要是在那之前挂掉可就太没用了啊！",
+      "en": "Blue: Can’t believe Team Rocket got the{NEWLINE}jump on us here. For now, it’s up to you{CLEAR}to handle them.{SCROLL}Blue: Once I figure out how to snap{NEWLINE}my Pokémon out of confusion, I’ll{CLEAR}come help.{SCROLL}If you croak before then, you’re{NEWLINE}totally useless!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "ext-review B-004"
+    },
+    {
+      "id": 190,
+      "zh": "小绿『火箭队这招下毒可真够阴的,{NEWLINE}{VAR:0103:0}你独自去跟火箭队周旋{CLEAR}可一定要小心啊！{SCROLL}小绿『等我想办法{NEWLINE}解除精灵的混乱后就去帮你。",
+      "en": "Blue: Poisoning the food... that’s a low{NEWLINE}trick, even for Team Rocket.{SCROLL}{VAR:0103:0}, you’re taking them on alone,{NEWLINE}so be careful!{SCROLL}Blue: Once I figure out how to snap my{NEWLINE}Pokémon out of confusion, I’ll come{CLEAR}help.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 191,
+      "zh": "目前船上的救生艇都在我的掌控之中。{SCROLL}万一有意外{NEWLINE}乘客们也可以乘救生艇逃走。",
+      "en": "All the lifeboats on this ship are under{NEWLINE}my control.{SCROLL}If anything happens, the passengers{NEWLINE}can still escape in them.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 192,
+      "zh": "就凭你也想救出船长？",
+      "en": "You think you can rescue the captain?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 193,
+      "zh": "任何人不准靠近船长室！",
+      "en": "Nobody goes near the captain’s cabin!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 194,
+      "zh": "这么想被水吾桐大人杀死的话{NEWLINE}你就继续往前走吧。",
+      "en": "If you want Master Archie to kill you{NEWLINE}that badly, go right ahead.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 195,
+      "zh": "每天每天打扫卫生,{NEWLINE}我早就受够了。",
+      "en": "Cleaning, cleaning, every single day...{NEWLINE}I’ve had it up to here.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 196,
+      "zh": "我旁边就是你的房间了。{SCROLL}在房间的床上休息的话,{NEWLINE}精灵也会恢复精神的。{SCROLL}在睡觉的期间,{NEWLINE}船会抵达目的地码头。",
+      "en": "Your cabin is right next to me.{SCROLL}Rest in the bed in your cabin, and your{NEWLINE}Pokémon will feel refreshed too.{SCROLL}The ship will arrive at its destination{NEWLINE}while you sleep.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "US 0259/9 | seed rejected us [ambiguous US match] (candidate US 0259#9; text not kept)"
+    },
+    {
+      "id": 197,
+      "zh": "豪华游轮圣安努号{NEWLINE}正前往水都群岛。{SCROLL}到达水都群岛码头的时候,{NEWLINE}会用广播通知各位。",
+      "en": "The luxury liner S.S. Anne is bound for{NEWLINE}the Alto Mare Islands.{SCROLL}We will make an announcement when we{NEWLINE}arrive at Alto Mare Harbor.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "US 0259/1 | seed rejected us [ambiguous US match] (candidate US 0259#1; text not kept)"
+    },
+    {
+      "id": 198,
+      "zh": "豪华游轮圣安努号{NEWLINE}已经抵达水都群岛码头了！",
+      "en": "The luxury liner S.S. Anne has arrived{NEWLINE}at Alto Mare Harbor!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    }
+  ]
 }

@@ -1,159 +1,159 @@
 {
- "narc": "a027",
- "bank": 55,
- "source": "work/extract/v4/a027/0055.json",
- "strings": [
-  {
-   "id": 0,
-   "zh": "施主请留步,{NEWLINE}游客参观到此结束。{CLEAR}再往前走就是供奉凤王的圣地了。{CLEAR}只有获得缘朱市道馆馆主的允许,{CLEAR}才能继续向上攀登。",
-   "en": "Please stop, traveler. The visitors’{NEWLINE}tour ends here. Beyond lies the sacred{CLEAR}ground where Ho-Oh is enshrined.{SCROLL}Only with the permission of Ecruteak{NEWLINE}City’s Gym Leader may you climb{CLEAR}any higher.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 1,
-   "zh": "这座塔里的精灵,{NEWLINE}也就是凤王,{CLEAR}一飞冲天后{CLEAR}就再也没有回来。{SCROLL}如果出现了能够和精灵{NEWLINE}建起深厚羁绊的训练师,{CLEAR}拿着和凤王有关联的物品,{SCROLL}凤王就有可能被吸引{NEWLINE}而再次降临……{SCROLL}",
-   "en": "A long time ago, there used to be a{NEWLINE}Pokémon at the top of this tower,{CLEAR}namely Ho-Oh.{SCROLL}But it flew away, and no one has seen it{NEWLINE}since...{SCROLL}If anyone who could restore deep trust{NEWLINE}between people and Pokémon were to{CLEAR}come here with something linked to{CLEAR}Ho-Oh... It may come down for such{CLEAR}a person...{SCROLL}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0057/1; modernised from US 0057#1"
-  },
-  {
-   "id": 2,
-   "zh": "那、那、那是……",
-   "en": "Th-th-that’s...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "US 0057/2 | rewritten from zh (was us) | US line rewritten to match the zh stammer (no trailing page break in zh)"
-  },
-  {
-   "id": 3,
-   "zh": "啊！原来小松馆主说的那位{NEWLINE}带着彩虹羽毛的人就是你啊。{CLEAR}小松馆主已经跟我说过允许你上塔了。{CLEAR}请从这里通过吧！",
-   "en": "Ah! So you’re the one with the{NEWLINE}Rainbow Wing that Morty told me about.{CLEAR}Morty has already said you may go{CLEAR}up the tower.{SCROLL}Please, go on through!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 4,
-   "zh": "获得彩虹羽毛{NEWLINE}只是召唤凤王的第一步。{SCROLL}据说要让凤王现身,{NEWLINE}不仅需要彩虹羽毛和透明铃铛,{CLEAR}还要举行一个复杂的仪式。",
-   "en": "Obtaining the Rainbow Wing is only the{NEWLINE}first step to summoning Ho-Oh.{SCROLL}They say that to make Ho-Oh appear,{NEWLINE}you need not only the Rainbow{CLEAR}Wing and the Clear Bell, but also a{CLEAR}complicated ritual.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 5,
-   "zh": "原来如此,原来如此！{SCROLL}一切都是因为你和铃声吧！",
-   "en": "Hmmm.{SCROLL}So it was you and the Bell!",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0057/5"
-  },
-  {
-   "id": 6,
-   "zh": "施主年纪轻轻{NEWLINE}已有这种造化了啊……",
-   "en": "You are quite a remarkable Trainer{NEWLINE}for your age...",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0057/6"
-  },
-  {
-   "id": 7,
-   "zh": "小松『铃铛塔是确认人类和精灵{CLEAR}羁绊的地方。{SCROLL}你可能天生具有那种素质……{SCROLL}能和我互换一下电话号码吗？{SCROLL}我想多看看你和精灵{NEWLINE}之间的羁绊。{VAR:0200:0}",
-   "en": "Morty: Bell Tower is where{NEWLINE}people and Pokémon test their trust.{SCROLL}You may be born with some talent...{CLEAR}Can we exchange numbers?{SCROLL}I would love to examine the trust{NEWLINE}you have with your Pokémon. {VAR:0200:0}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0057/7"
-  },
-  {
-   "id": 8,
-   "zh": "{VAR:0103:0}将小松登陆进了手机！",
-   "en": "{VAR:0103:0} registered Morty{NEWLINE}in the Pokégear!",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0057/8"
-  },
-  {
-   "id": 9,
-   "zh": "小松『能在周二的晚上{NEWLINE}给我打电话吗？{SCROLL}那时候我可以再和你比试。",
-   "en": "Morty: Give me a call on Tuesday nights.{NEWLINE}I should be free and ready.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0057/9"
-  },
-  {
-   "id": 10,
-   "zh": "小松『我想多看看你和精灵{NEWLINE}之间的羁绊……",
-   "en": "Morty: I really wanted to see the{NEWLINE}trust you have with your Pokémon...",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0057/10"
-  },
-  {
-   "id": 11,
-   "zh": "小松『要和我互换一下{NEWLINE}电话号码吗？{VAR:0200:0}",
-   "en": "Morty: Do you want to exchange{NEWLINE}numbers? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0057/11"
-  },
-  {
-   "id": 12,
-   "zh": "这个铃铛塔中心{NEWLINE}也有根防震的大柱子,{CLEAR}跟桔梗市的喇叭芽之塔很像嘛。",
-   "en": "The Bell Tower has a big{NEWLINE}earthquake-proof pillar in the middle{CLEAR}too. It’s a lot like Sprout Tower in{CLEAR}Violet City.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 13,
-   "zh": "我每年都会带老婆孩子{NEWLINE}来铃铛塔祭拜凤王,{CLEAR}祈祷全家人健康平安。",
-   "en": "Every year I bring my wife and kids to{NEWLINE}the Bell Tower to worship Ho-Oh and{CLEAR}pray for the whole family’s health{CLEAR}and safety.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 14,
-   "zh": "我长大之后,{NEWLINE}也要成为凤王的训练家！",
-   "en": "When I grow up, I’m going to be Ho-Oh’s{NEWLINE}Trainer too!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 15,
-   "zh": "铃铛塔里有一股香气,{NEWLINE}是那种非常高雅清新的香味。",
-   "en": "There’s a fragrance in the Bell Tower.{NEWLINE}A really elegant, fresh scent.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 16,
-   "zh": "我专程从关东的枯叶市{NEWLINE}赶到这里来旅游。{CLEAR}可是管理塔的和尚们{CLEAR}却不让我上二层参观,{CLEAR}真是太小气了。",
-   "en": "I came all the way from Vermilion City in{NEWLINE}Kanto to see the sights here.{SCROLL}But the monks who run the tower{NEWLINE}won’t let me up to the second floor.{CLEAR}How stingy.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 17,
-   "zh": "凤王居然被火箭队抓走了！？{NEWLINE}守护城都的传说中精灵{CLEAR}竟然成了犯罪组织的打手！？{CLEAR}啊……难道这一切都是天意吗……",
-   "en": "Ho-Oh was captured by Team Rocket?!{NEWLINE}The legendary Pokémon that{CLEAR}protects Johto has become a criminal{CLEAR}gang’s muscle?!{SCROLL}Ah... Could all of this be the will{NEWLINE}of heaven...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 18,
-   "zh": "阿弥陀佛,多亏冠军大人{NEWLINE}带领我们击败了火箭队,{CLEAR}凤王才能重获自由。",
-   "en": "Amitabha. Thanks to you leading us to{NEWLINE}victory over Team Rocket, Champion,{CLEAR}Ho-Oh has regained its freedom.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  }
- ]
+  "narc": "a027",
+  "bank": 55,
+  "source": "work/extract/v4/a027/0055.json",
+  "strings": [
+    {
+      "id": 0,
+      "zh": "施主请留步,{NEWLINE}游客参观到此结束。{CLEAR}再往前走就是供奉凤王的圣地了。{CLEAR}只有获得缘朱市道馆馆主的允许,{CLEAR}才能继续向上攀登。",
+      "en": "Please stop, traveler. The visitors’{NEWLINE}tour ends here. Beyond lies the sacred{CLEAR}ground where Ho-Oh is enshrined.{SCROLL}Only with the permission of Ecruteak{NEWLINE}City’s Gym Leader may you climb{CLEAR}any higher.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 1,
+      "zh": "这座塔里的精灵,{NEWLINE}也就是凤王,{CLEAR}一飞冲天后{CLEAR}就再也没有回来。{SCROLL}如果出现了能够和精灵{NEWLINE}建起深厚羁绊的训练师,{CLEAR}拿着和凤王有关联的物品,{SCROLL}凤王就有可能被吸引{NEWLINE}而再次降临……{SCROLL}",
+      "en": "Ho-Oh, the Pokémon that lived in this{NEWLINE}tower, soared into the sky{CLEAR}and never returned.{SCROLL}If a Trainer who can form deep bonds{CLEAR}with Pokémon comes here with something{CLEAR}linked to Ho-Oh, it may{CLEAR}be drawn back here...{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "US 0057/1; modernised from US 0057#1 [D-2075 meaning-review-followup: source/context correction; agent-reviewed, not new human approval. ]"
+    },
+    {
+      "id": 2,
+      "zh": "那、那、那是……",
+      "en": "Th-th-that’s...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "US 0057/2 | rewritten from zh (was us) | US line rewritten to match the zh stammer (no trailing page break in zh)"
+    },
+    {
+      "id": 3,
+      "zh": "啊！原来小松馆主说的那位{NEWLINE}带着彩虹羽毛的人就是你啊。{CLEAR}小松馆主已经跟我说过允许你上塔了。{CLEAR}请从这里通过吧！",
+      "en": "Ah! So you’re the one with the{NEWLINE}Rainbow Wing that Morty told me about.{CLEAR}Morty has already said you may go{CLEAR}up the tower.{SCROLL}Please, go on through!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "zh": "获得彩虹羽毛{NEWLINE}只是召唤凤王的第一步。{SCROLL}据说要让凤王现身,{NEWLINE}不仅需要彩虹羽毛和透明铃铛,{CLEAR}还要举行一个复杂的仪式。",
+      "en": "Obtaining the Rainbow Wing is only the{NEWLINE}first step to summoning Ho-Oh.{SCROLL}They say that to make Ho-Oh appear,{NEWLINE}you need not only the Rainbow{CLEAR}Wing and the Clear Bell, but also a{CLEAR}complicated ritual.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "zh": "原来如此,原来如此！{SCROLL}一切都是因为你和铃声吧！",
+      "en": "Hmmm.{SCROLL}So it was you and the Bell!",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0057/5"
+    },
+    {
+      "id": 6,
+      "zh": "施主年纪轻轻{NEWLINE}已有这种造化了啊……",
+      "en": "You are quite a remarkable Trainer{NEWLINE}for your age...",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0057/6"
+    },
+    {
+      "id": 7,
+      "zh": "小松『铃铛塔是确认人类和精灵{CLEAR}羁绊的地方。{SCROLL}你可能天生具有那种素质……{SCROLL}能和我互换一下电话号码吗？{SCROLL}我想多看看你和精灵{NEWLINE}之间的羁绊。{VAR:0200:0}",
+      "en": "Morty: Bell Tower is where{NEWLINE}people and Pokémon test their trust.{SCROLL}You may be born with some talent...{CLEAR}Can we exchange numbers?{SCROLL}I would love to examine the trust{NEWLINE}you have with your Pokémon. {VAR:0200:0}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0057/7"
+    },
+    {
+      "id": 8,
+      "zh": "{VAR:0103:0}将小松登陆进了手机！",
+      "en": "{VAR:0103:0} registered Morty{NEWLINE}in the Pokégear!",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0057/8"
+    },
+    {
+      "id": 9,
+      "zh": "小松『能在周二的晚上{NEWLINE}给我打电话吗？{SCROLL}那时候我可以再和你比试。",
+      "en": "Morty: Give me a call on Tuesday nights.{NEWLINE}I can battle you again then.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "US 0057/9 [D-2064 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
+    },
+    {
+      "id": 10,
+      "zh": "小松『我想多看看你和精灵{NEWLINE}之间的羁绊……",
+      "en": "Morty: I really wanted to see the{NEWLINE}trust you have with your Pokémon...",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0057/10"
+    },
+    {
+      "id": 11,
+      "zh": "小松『要和我互换一下{NEWLINE}电话号码吗？{VAR:0200:0}",
+      "en": "Morty: Do you want to exchange{NEWLINE}numbers? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0057/11"
+    },
+    {
+      "id": 12,
+      "zh": "这个铃铛塔中心{NEWLINE}也有根防震的大柱子,{CLEAR}跟桔梗市的喇叭芽之塔很像嘛。",
+      "en": "The Bell Tower has a big{NEWLINE}earthquake-proof pillar in the middle{CLEAR}too. It’s a lot like Sprout Tower in{CLEAR}Violet City.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "zh": "我每年都会带老婆孩子{NEWLINE}来铃铛塔祭拜凤王,{CLEAR}祈祷全家人健康平安。",
+      "en": "Every year I bring my wife and kids to{NEWLINE}the Bell Tower to worship Ho-Oh and{CLEAR}pray for the whole family’s health{CLEAR}and safety.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "zh": "我长大之后,{NEWLINE}也要成为凤王的训练家！",
+      "en": "When I grow up, I’m going to be Ho-Oh’s{NEWLINE}Trainer too!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "zh": "铃铛塔里有一股香气,{NEWLINE}是那种非常高雅清新的香味。",
+      "en": "There’s a fragrance in the Bell Tower.{NEWLINE}A really elegant, fresh scent.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "zh": "我专程从关东的枯叶市{NEWLINE}赶到这里来旅游。{CLEAR}可是管理塔的和尚们{CLEAR}却不让我上二层参观,{CLEAR}真是太小气了。",
+      "en": "I came all the way from Vermilion City in{NEWLINE}Kanto to see the sights here.{SCROLL}But the monks who run the tower{NEWLINE}won’t let me up to the second floor.{CLEAR}How stingy.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "zh": "凤王居然被火箭队抓走了！？{NEWLINE}守护城都的传说中精灵{CLEAR}竟然成了犯罪组织的打手！？{CLEAR}啊……难道这一切都是天意吗……",
+      "en": "Ho-Oh was captured by Team Rocket?!{NEWLINE}The legendary Pokémon that{CLEAR}protects Johto has become a criminal{CLEAR}gang’s muscle?!{SCROLL}Ah... Could all of this be the will{NEWLINE}of heaven...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "zh": "阿弥陀佛,多亏冠军大人{NEWLINE}带领我们击败了火箭队,{CLEAR}凤王才能重获自由。",
+      "en": "Amitabha. Thanks to you leading us to{NEWLINE}victory over Team Rocket, Champion,{CLEAR}Ho-Oh has regained its freedom.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    }
+  ]
 }

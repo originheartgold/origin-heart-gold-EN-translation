@@ -142,10 +142,10 @@
   {
    "id": 17,
    "zh": "坂木『他怎么来的并不重要,{NEWLINE}我现在需要时间召唤骑拉帝纳,{CLEAR}你给我拖住这个家伙。",
-   "en": "Giovanni: How he got here doesn’t{NEWLINE}matter. I need time to summon{CLEAR}Giratina. Hold this one off for me.",
+   "en": "Giovanni: How they got here doesn’t{NEWLINE}matter. I need time to summon Giratina.{CLEAR}Hold this one off for me.",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 他 (him) only; no female-player variant"
+   "notes": "zh 他 (him) only; no female-player variant [D-2062 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
   },
   {
    "id": 18,

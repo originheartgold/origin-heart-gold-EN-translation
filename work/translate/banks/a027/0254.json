@@ -166,10 +166,10 @@
   {
    "id": 20,
    "zh": "因为以前发生过{NEWLINE}火箭队劫持游轮的恐怖袭击事件,{CLEAR}所以精灵联盟特地派我{CLEAR}来做这里的保安队长。{SCROLL}我是拥有10枚徽章的高级训练家哦,{NEWLINE}如果你在旅途中无聊的话,{CLEAR}可以来找我锻炼一下。{SCROLL}要与保安队长较量吗？",
-   "en": "Because of the Team Rocket hijacking{NEWLINE}that happened on this ship...{SCROLL}...the Pokémon League sent me here as{NEWLINE}head of security.{SCROLL}I’m a Senior Trainer with 10 Badges. If{NEWLINE}you get bored on your trip, come train{CLEAR}with me.{SCROLL}Want to take on the head of security?",
+   "en": "Because of the terrorist attack when{NEWLINE}Team Rocket hijacked this ship...{SCROLL}...the Pokémon League sent me here as{NEWLINE}head of security.{SCROLL}I’m a Senior Trainer with 10 Badges. If{NEWLINE}you get bored on your trip, come train{CLEAR}with me.{SCROLL}Want to take on the head of security?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | Full fidelity review: specific wording approved by user (D-1731, 2026-10-07)."
   },
   {
    "id": 21,

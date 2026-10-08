@@ -842,10 +842,10 @@
   {
    "id": 104,
    "zh": "火箭队首领『罢了,竖子不足与谋。{SCROLL}火箭队首领『你既然不肯跟我合作,{NEWLINE}那就乖乖交出你们公司研发的那个{CLEAR}任何精灵都能一球捕捉的大师球吧。{SCROLL}火箭队首领『我有只非常珍贵的精灵{NEWLINE}最近从实验室逃走了,{CLEAR}现在急需这个大师球一用。",
-   "en": "Rocket Boss: Enough. The boy is not{NEWLINE}worth scheming with.{SCROLL}Rocket Boss: Since you refuse to work{NEWLINE}with me, just hand over the Master Ball{CLEAR}your company developed. The one that{CLEAR}can catch any Pokémon with a single{CLEAR}throw.{SCROLL}Rocket Boss: A very precious Pokémon{NEWLINE}of mine recently escaped from the lab. I{CLEAR}need this Master Ball urgently.",
+   "en": "Rocket Boss: Enough. The whelp is not{NEWLINE}worth scheming with.{SCROLL}Rocket Boss: Since you refuse to work{NEWLINE}with me, just hand over the Master Ball{CLEAR}your company developed. The one that{CLEAR}catches any Pokémon in a single throw.{SCROLL}Rocket Boss: A very precious Pokémon{NEWLINE}of mine recently escaped from the lab. I{CLEAR}need this Master Ball urgently.",
    "status": "draft",
    "origin": "agent",
-   "notes": "竖子不足与谋: classical quote (Fan Zeng), rendered plainly"
+   "notes": "竖子不足与谋: classical quote (Fan Zeng), rendered plainly | tone review: 竖子不足与谋: classical quote (Fan Zeng); 竖子 is contempt, 'whelp' (D-0627)"
   },
   {
    "id": 105,

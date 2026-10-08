@@ -1,1397 +1,1397 @@
 {
- "narc": "a027",
- "bank": 44,
- "source": "work/extract/v4/a027/0044.json",
- "strings": [
-  {
-   "id": 0,
-   "zh": "欢迎光临精灵通信俱乐部{NEWLINE}圆形剧场！{SCROLL}在这里您能享受{NEWLINE}与好友对战的乐趣。{SCROLL}",
-   "en": "Welcome to the Pokémon Communication{NEWLINE}Club Colosseum.{SCROLL}You may battle with your friends{NEWLINE}here.{SCROLL}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "R001: official US text (US 0046/0) | R001: Most of this bank is DP-era link text that the US HGSS blanks (unused); translated anyway."
-  },
-  {
-   "id": 1,
-   "zh": "选择哪种对战？{VAR:0200:0}",
-   "en": "Which Battle Mode would you like{NEWLINE}to play? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/1"
-  },
-  {
-   "id": 2,
-   "zh": "几个人对战？{VAR:0200:0}",
-   "en": "Battle with how many players? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/2"
-  },
-  {
-   "id": 3,
-   "zh": "４人联机对战吗？{VAR:0200:0}",
-   "en": "Do a four-player Multi Battle? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/3"
-  },
-  {
-   "id": 4,
-   "zh": "联机对战",
-   "en": "JOIN A MULTI BATTLE",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/4",
-   "category": "menu_touch_1line"
-  },
-  {
-   "id": 5,
-   "zh": "返回",
-   "en": "CANCEL",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/5",
-   "category": "menu_touch_1line"
-  },
-  {
-   "id": 6,
-   "zh": "对战共有５种模式。{SCROLL}单人战斗的时候{NEWLINE}就是拿出一只精灵{CLEAR}进行两人对战。{SCROLL}双人战斗的时候{NEWLINE}就是拿出两只精灵{CLEAR}进行两人对战。{SCROLL}混合战斗的时候{NEWLINE}要各自挑选{CLEAR}３只精灵,并选择对方的{CLEAR}一只精灵与自己交换对战。{SCROLL}平等战斗能让５０级{NEWLINE}以上的精灵回归５０级{CLEAR}进行战斗。{SCROLL}多人战斗战斗的时候{NEWLINE}由４人各拿出{CLEAR}１只进行{CLEAR}２对２的对战。{SCROLL}",
-   "en": "There are five Battle Modes.{SCROLL}Single Battle is for two Trainers{NEWLINE}with one or more Pokémon each.{SCROLL}Each Trainer can have one Pokémon{NEWLINE}in battle at a time.{SCROLL}Double Battle is for two Trainers{NEWLINE}with two or more Pokémon each.{SCROLL}Each Trainer will send out two{NEWLINE}Pokémon to battle at a time.{SCROLL}Mix Battle is for two Trainers{NEWLINE}with three Pokémon each.{SCROLL}Each Trainer chooses one of the{NEWLINE}opponent’s Pokémon, mixes them{CLEAR}with their own party, and then{CLEAR}battles the other Trainer.{SCROLL}Flat Battle is for Pokémon over Lv. 50.{SCROLL}All Pokémon will become Lv. 50 for{NEWLINE}the battle.{SCROLL}Multi Battle is for four Trainers{NEWLINE}with one or more Pokémon each.{SCROLL}Each Trainer can have one Pokémon{NEWLINE}in battle at a time.{SCROLL}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "R001: official US text (US 0046/6)"
-  },
-  {
-   "id": 7,
-   "zh": "一定要和对战{NEWLINE}对手选择相同的东西。{SCROLL}一般对战{SCROLL}没有特殊的规则,{NEWLINE}可以用喜欢的精灵战斗。{SCROLL}空想杯{NEWLINE}可爱精灵专用{SCROLL}黄色杯{NEWLINE}黄色精灵专用{SCROLL}珍珠杯{SCROLL}白色和水系精灵{NEWLINE}专用{SCROLL}钻石杯{SCROLL}钢系精灵专用{SCROLL}规则：{NEWLINE}能够以自己制定的{CLEAR}规则进行对战。{SCROLL}不过{SCROLL}必须要对战对手{NEWLINE}也确认相同的{CLEAR}规则。{SCROLL}",
-   "en": "You and your opponent must both choose{NEWLINE}the same thing.{SCROLL}Standard Battle:{SCROLL}No special rules. Battle with any{NEWLINE}Pokémon you like.{SCROLL}Fancy Cup: cute Pokémon only.{SCROLL}Pika Cup: yellow Pokémon only.{SCROLL}Pearl Cup:{SCROLL}White and Water-type Pokémon only.{SCROLL}Diamond Cup:{SCROLL}Steel-type Pokémon only.{SCROLL}Rules: battle under rules you set{NEWLINE}yourself.{SCROLL}However...{SCROLL}your opponent must confirm the same{NEWLINE}rules.{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "R001: Cup names follow D-0507 (空想杯 FANCY, 黄色杯 PIKA); 珍珠杯/钻石杯 = Pearl/Diamond Cup (DP leftovers)."
-  },
-  {
-   "id": 8,
-   "zh": "进行一般对战吗？{SCROLL}还是说要{NEWLINE}选择规则进行对战呢？{VAR:0200:0}",
-   "en": "Would you like a Standard Battle?{SCROLL}Or would you like to battle under set{NEWLINE}rules? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 9,
-   "zh": "以规则中的{NEWLINE}哪个来对战呢？{VAR:0200:0}",
-   "en": "Which rules would you like to battle{NEWLINE}under? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 10,
-   "zh": "双人战需要两只以上的精灵",
-   "en": "For a Double Battle, you must{NEWLINE}have at least two Pokémon.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/10"
-  },
-  {
-   "id": 11,
-   "zh": "混合战需要六只精灵",
-   "en": "For a Mix Battle, you must have six{NEWLINE}Pokémon.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 12,
-   "zh": "空想杯无法使用{CLEAR}３０级以上的精灵",
-   "en": "Pokémon above Lv. 30 can’t enter the{NEWLINE}Fancy Cup.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 13,
-   "zh": "要将至今为止的{NEWLINE}活跃写入记录吗？{VAR:0200:0}",
-   "en": "Would you like to save your activity so{NEWLINE}far to your record? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 14,
-   "zh": "存在有之前的记录,{NEWLINE}要覆盖吗？{VAR:0200:0}",
-   "en": "There is already a saved record.{NEWLINE}Overwrite it? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 15,
-   "zh": "精灵记录保存中⋯⋯{NEWLINE}请不要切断电源。",
-   "en": "Saving the Pokémon record... Please{NEWLINE}don’t turn off the power.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 16,
-   "zh": "{VAR:0103:0}{NEWLINE}写好了记录！　",
-   "en": "{VAR:0103:0}{NEWLINE}saved the record!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 17,
-   "zh": "对战规则怎么弄呢？{VAR:0200:0}",
-   "en": "Which battle rules would you like? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 18,
-   "zh": "那么请选择和对手{NEWLINE}一样的规则。",
-   "en": "Then please choose the same rules as{NEWLINE}your opponent.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 19,
-   "zh": "{VAR:011A:0}{NEWLINE}杯",
-   "en": "{VAR:011A:0}{NEWLINE}CUP",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/19",
-   "category": "menu_touch_col"
-  },
-  {
-   "id": 20,
-   "zh": "无限制",
-   "en": "NO{NEWLINE}RESTRICTIONS",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/20",
-   "category": "menu_touch_col"
-  },
-  {
-   "id": 21,
-   "zh": "放弃",
-   "en": "QUIT",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 17 source(s); other variants: 9 more v3 TM candidates (tm_v4_matches.jsonl) | R001: 放弃 menu option → QUIT (CANCEL/RETURN are taken by #5/#22)."
-  },
-  {
-   "id": 22,
-   "zh": "返回",
-   "en": "RETURN",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/22",
-   "category": "menu_touch_col"
-  },
-  {
-   "id": 23,
-   "zh": "双人{NEWLINE}无限制",
-   "en": "DOUBLE, NO{NEWLINE}RESTRICTIONS",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "US 0046/23 | menu width fix (follow-up 1): was 'DOUBLE{NEWLINE}NO RESTRICTION'",
-   "category": "menu_touch_col"
-  },
-  {
-   "id": 24,
-   "zh": "检查特别的精灵",
-   "en": "CHECK SPECIAL POKéMON",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "US 0046/24; modernised from US 0046#24 | R001: Caps label keeps POKéMON (D-0009)."
-  },
-  {
-   "id": 25,
-   "zh": "能够参加基艾斯杯的{NEWLINE}特殊精灵{SCROLL}{VAR:0103:0}{NEWLINE}找到的精灵中⋯{SCROLL}",
-   "en": "You need a special Pokémon to enter the{NEWLINE}GS Cup.{SCROLL}{VAR:0103:0}, out of the Pokémon{NEWLINE}you’ve found...{SCROLL}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/25"
-  },
-  {
-   "id": 26,
-   "zh": "{VAR:0100:0}{SCROLL}",
-   "en": "{VAR:0100:0}{SCROLL}",
-   "status": "reviewed",
-   "origin": "copy",
-   "notes": ""
-  },
-  {
-   "id": 27,
-   "zh": "能够参加。{SCROLL}",
-   "en": "can be entered in the competition.{SCROLL}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/27"
-  },
-  {
-   "id": 28,
-   "zh": "好像是没有。{SCROLL}",
-   "en": "none are eligible.{SCROLL}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/28"
-  },
-  {
-   "id": 29,
-   "zh": "那么请下次再来吧。",
-   "en": "Please do visit again.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "R001: official US text (US 0046/29)"
-  },
-  {
-   "id": 30,
-   "zh": "通信错误。{SCROLL}请继续从最开始{NEWLINE}重新来过吧。",
-   "en": "Communication error.{SCROLL}Please start over from the beginning.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 31,
-   "zh": "通信似乎不稳⋯⋯",
-   "en": "The connection seems unstable...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 32,
-   "zh": "对手的{NEWLINE}通信似乎不好⋯⋯",
-   "en": "Your opponent’s connection seems{NEWLINE}poor...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 33,
-   "zh": "有个通信不好的{NEWLINE}成员。",
-   "en": "One of the members has a poor{NEWLINE}connection.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 34,
-   "zh": "要让该成员离队吗？{VAR:0200:0}",
-   "en": "Remove that member from the group? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 35,
-   "zh": "该成员离队。",
-   "en": "The member has left the group.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 36,
-   "zh": "选择两人中的一个{NEWLINE}成为队长,{SCROLL}另一个选择加入{NEWLINE}队伍{VAR:0200:0}",
-   "en": "Please decide which of you two{NEWLINE}will become the leader.{SCROLL}The other player must then choose{NEWLINE}“JOIN GROUP.”{VAR:0200:0}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/36"
-  },
-  {
-   "id": 37,
-   "zh": "单人战！{NEWLINE}请选择队长　",
-   "en": "Single Battle!{NEWLINE}Please choose the leader.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 38,
-   "zh": "等待{VAR:0103:0}的{NEWLINE}回应",
-   "en": "Waiting for {VAR:0103:0}{NEWLINE}to respond.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 39,
-   "zh": "{VAR:0103:0}回应{NEWLINE}ＮＧ⋯⋯{VAR:0201:120}",
-   "en": "{VAR:0103:0} replied:{NEWLINE}No...{VAR:0201:120}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 40,
-   "zh": "{VAR:0103:0}回应{NEWLINE}ＯＫ！{VAR:0201:120}",
-   "en": "{VAR:0103:0} replied:{NEWLINE}OK!{VAR:0201:120}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 41,
-   "zh": "单人战！等待朋友的{NEWLINE}联络。",
-   "en": "Single Battle! Waiting for a friend to{NEWLINE}get in touch.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 42,
-   "zh": "{VAR:0103:0}{NEWLINE}有联络！{SCROLL}进行单人战吗？{VAR:0200:0}",
-   "en": "{VAR:0103:0}{NEWLINE}got in touch!{SCROLL}Start a Single Battle? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 43,
-   "zh": "{VAR:0103:0}回应{NEWLINE}ＯＫ！{VAR:0201:120}",
-   "en": "{VAR:0103:0} replied:{NEWLINE}OK!{VAR:0201:120}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 44,
-   "zh": "那么请到房间里去！",
-   "en": "Then please enter the room!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 45,
-   "zh": "请选择进行单人战的{NEWLINE}朋友{VAR:0200:0}",
-   "en": "Please choose a friend for a Single{NEWLINE}Battle. {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 46,
-   "zh": "请选择进行双人战的{NEWLINE}朋友{VAR:0200:0}",
-   "en": "Please choose a friend for a Double{NEWLINE}Battle. {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 47,
-   "zh": "请选择进行混合战的{NEWLINE}朋友{VAR:0200:0}",
-   "en": "Please choose a friend for a Mix Battle.{NEWLINE}{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 48,
-   "zh": "单人战！等待朋友的{NEWLINE}联络",
-   "en": "Single Battle! Waiting for a friend to{NEWLINE}get in touch.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 49,
-   "zh": "双人战！等待朋友的{NEWLINE}联络",
-   "en": "Double Battle! Waiting for a friend to{NEWLINE}get in touch.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 50,
-   "zh": "混合战！等待朋友的{NEWLINE}联络",
-   "en": "Mix Battle! Waiting for a friend to get{NEWLINE}in touch.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 51,
-   "zh": "{VAR:0103:0}有联络！{NEWLINE}要开始单人战吗？{VAR:0200:0}",
-   "en": "{VAR:0103:0} got in touch!{NEWLINE}Start a Single Battle? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 52,
-   "zh": "{VAR:0103:0}有联络！{NEWLINE}要开始双人战吗？{VAR:0200:0}",
-   "en": "{VAR:0103:0} got in touch!{NEWLINE}Start a Double Battle? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 53,
-   "zh": "{VAR:0103:0}有联络！{NEWLINE}要开始混合战吗？{VAR:0200:0}",
-   "en": "{VAR:0103:0} got in touch!{NEWLINE}Start a Mix Battle? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 54,
-   "zh": "请选择参加战斗的{NEWLINE}精灵",
-   "en": "Please choose the Pokémon that will{NEWLINE}battle.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 55,
-   "zh": "等待{VAR:0103}の的{NEWLINE}选择",
-   "en": "Waiting for {VAR:0103}{NEWLINE}to choose.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "R001: zh tag {VAR:0103} (no :0) kept as is; zh has a stray Japanese の."
-  },
-  {
-   "id": 56,
-   "zh": "对战取消了",
-   "en": "The battle was canceled.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 57,
-   "zh": "请４人商量一下{NEWLINE}选择一个出来{CLEAR}当队长{SCROLL}其他人请选择{NEWLINE}加入队伍{VAR:0200:0}",
-   "en": "Please decide which of you four{NEWLINE}will become the group leader.{SCROLL}The other players must then choose{NEWLINE}“JOIN GROUP.”{VAR:0200:0}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "R001: official US text (US 0046/57)"
-  },
-  {
-   "id": 58,
-   "zh": "多人战！{NEWLINE}请选择队长　{VAR:0200:0}",
-   "en": "Multi Battle!{NEWLINE}Please choose the leader. {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 59,
-   "zh": "{VAR:0103:0}正在申请{NEWLINE}登陆成员！　请稍等。",
-   "en": "{VAR:0103:0} is asking to join! Please wait.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 60,
-   "zh": "{VAR:0103:0}回应{NEWLINE}ＮＧ{VAR:0201:120}",
-   "en": "{VAR:0103:0} replied:{NEWLINE}No{VAR:0201:120}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 61,
-   "zh": "{VAR:0103:0}联络{NEWLINE}成员登陆ＯＫ！",
-   "en": "{VAR:0103:0} has joined{NEWLINE}the group!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 62,
-   "zh": "多人战！　{NEWLINE}等待其他的成员！",
-   "en": "Multi Battle!{NEWLINE}Waiting for the other members!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 63,
-   "zh": "多人战！等待朋友的{NEWLINE}联络。",
-   "en": "Multi Battle! Waiting for a friend to get{NEWLINE}in touch.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 64,
-   "zh": "不让该成员参加{NEWLINE}多人战吗？{VAR:0200:0}",
-   "en": "Keep this member out of the Multi{NEWLINE}Battle? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 65,
-   "zh": "{VAR:0103:0}{NEWLINE}有联络！",
-   "en": "{VAR:0103:0}{NEWLINE}got in touch!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 66,
-   "zh": "成员到齐！{NEWLINE}那么请到房间里去吧！",
-   "en": "The members have gathered.{NEWLINE}Please enter the room.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/66"
-  },
-  {
-   "id": 67,
-   "zh": "成员到齐！{SCROLL}那么请选择参加战斗的{NEWLINE}精灵。",
-   "en": "The members have gathered!{SCROLL}Please choose the Pokémon that will{NEWLINE}battle.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 68,
-   "zh": "等待其他成员的{NEWLINE}选择！",
-   "en": "Waiting for the other members to{NEWLINE}choose!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 69,
-   "zh": "对战取消。",
-   "en": "The battle was canceled.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 70,
-   "zh": "那么请进房间！",
-   "en": "Then please enter the room!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 71,
-   "zh": "欢迎来到精灵无线俱乐部{NEWLINE}联机房间！{SCROLL}在这能与许多的朋友{NEWLINE}进行互动。{SCROLL}要进房间吗？{VAR:0200:0}",
-   "en": "Welcome to the Pokémon Wireless{NEWLINE}Club Union Room.{SCROLL}You may interact directly with{NEWLINE}many Trainers here.{SCROLL}Would you like to enter the room? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/71 | seed rejected us [tag_mismatch] (candidate US 0046#71; text not kept) | R001: official US text (US 0046/71)"
-  },
-  {
-   "id": 72,
-   "zh": "联机房间中会出现{NEWLINE}在你附近进入{CLEAR}联盟房间的人。{SCROLL}能进行两只等级３０以下的{NEWLINE}精灵１对１的对战,{SCROLL}精灵的交换,{SCROLL}大家一起记录,{SCROLL}画画{NEWLINE}一起开心地进行游戏。{SCROLL}另外通过对话还能和{NEWLINE}大家进行沟通,{SCROLL}还能触摸说过的话{NEWLINE}找寻朋友。{SCROLL}要进房间吗？{VAR:0200:0}",
-   "en": "The Trainers in the Union Room{NEWLINE}will be those players around you{CLEAR}who have also entered the room.{SCROLL}You may enter two Pokémon up to{NEWLINE}Lv. 30 for a one-on-one battle.{SCROLL}Or, you may trade your Pokémon here{NEWLINE}with another Trainer.{SCROLL}You may also mix records or draw{NEWLINE}with other players.{SCROLL}You may also chat with other{NEWLINE}players in the room.{SCROLL}...Or find friends by touching{NEWLINE}the spoken words.{SCROLL}Would you like to enter the room? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "R001: official US text (US 0046/72)"
-  },
-  {
-   "id": 73,
-   "zh": "要将至今为止的活跃{NEWLINE}写入记录中吗？{VAR:0200:0}",
-   "en": "Would you like to save your activity so{NEWLINE}far to your record? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 74,
-   "zh": "已存在有精灵记录,{NEWLINE}要覆盖吗？{VAR:0200:0}",
-   "en": "A Pokémon record already exists.{NEWLINE}Overwrite it? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 75,
-   "zh": "记录保存中⋯⋯{NEWLINE}请不要切断电源。",
-   "en": "Saving the record... Please don’t turn{NEWLINE}off the power.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 76,
-   "zh": "{VAR:0103:0}{NEWLINE}写好了记录！　",
-   "en": "{VAR:0103:0}{NEWLINE}saved the record!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 77,
-   "zh": "那么请好好享受{NEWLINE}联盟房间的乐趣吧。{SCROLL}",
-   "en": "I hope you enjoy your time in{NEWLINE}the Union Room.{SCROLL}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "R001: official US text (US 0046/77)"
-  },
-  {
-   "id": 78,
-   "zh": "欢迎光临精灵通信俱乐部{NEWLINE}记录角！{SCROLL}这儿能与朋友{NEWLINE}进行各种混合{CLEAR}让冒险变得{CLEAR}更加有意思{SCROLL}要进房间吗？{VAR:0200:0}",
-   "en": "Welcome to the Pokémon Communication{NEWLINE}Club Record Corner!{SCROLL}Here, you can mix all sorts of things{NEWLINE}with your friends to make your{CLEAR}adventure even more fun!{SCROLL}Would you like to enter the room? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 79,
-   "zh": "记录角能与朋友{NEWLINE}混合各种东西{CLEAR}进行交换,{SCROLL}让冒险{NEWLINE}变得更加的{CLEAR}有意思。{SCROLL}不断地进行混合吧！{SCROLL}能２人到１６人{NEWLINE}进行游戏。",
-   "en": "At the Record Corner, you can mix and{NEWLINE}swap all sorts of things with friends.{SCROLL}It makes your adventure even more fun.{SCROLL}Mix away!{SCROLL}From 2 up to 16 people can play.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 80,
-   "zh": "要将至今为止的活跃{NEWLINE}写入记录吗？{VAR:0200:0}",
-   "en": "Would you like to save your activity so{NEWLINE}far to your record? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 81,
-   "zh": "存在有之前的记录,{NEWLINE}要覆盖吗？{VAR:0200:0}",
-   "en": "There is already a saved record.{NEWLINE}Overwrite it? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 82,
-   "zh": "记录保存中⋯⋯{NEWLINE}请不要切断电源。",
-   "en": "Saving the record... Please don’t turn{NEWLINE}off the power.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 83,
-   "zh": "{VAR:0103:0}{NEWLINE}写好了记录！　",
-   "en": "{VAR:0103:0}{NEWLINE}saved the record!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 84,
-   "zh": "请选一个当记录交换的{NEWLINE}队长。{SCROLL}其他人请选择{NEWLINE}加入队伍。{VAR:0200:0}",
-   "en": "Please choose one person to lead the{NEWLINE}record mixing.{SCROLL}Everyone else, please choose to join{NEWLINE}the group. {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 85,
-   "zh": "记录交换！{NEWLINE}请选择队长　{VAR:0200:0}",
-   "en": "Record Mixing!{NEWLINE}Please choose the leader. {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 86,
-   "zh": "{VAR:0103:0}联络{NEWLINE}成员登陆ＯＫ！",
-   "en": "{VAR:0103:0} has joined{NEWLINE}the group!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 87,
-   "zh": "记录角！　{NEWLINE}等待其他的成员！",
-   "en": "Record Corner!{NEWLINE}Waiting for the other members!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 88,
-   "zh": "记录角！等待朋友的{NEWLINE}联络",
-   "en": "Record Corner! Waiting for a friend to{NEWLINE}get in touch.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 89,
-   "zh": "请继续等到{NEWLINE}人数到齐。",
-   "en": "Please keep waiting until everyone has{NEWLINE}gathered.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 90,
-   "zh": "退出{NEWLINE}记录交换吗？{VAR:0200:0}",
-   "en": "Quit record mixing? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 91,
-   "zh": "已集合了１６人,{NEWLINE}可以开始了吗？{VAR:0200:0}",
-   "en": "16 people have gathered. Is it OK to{NEWLINE}start? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 92,
-   "zh": "成员到齐！{NEWLINE}那么请进房间！",
-   "en": "The members have gathered!{NEWLINE}Please enter the room!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 93,
-   "zh": "您好！{SCROLL}第一次进行{NEWLINE}无线通信吗？{SCROLL}我是向导员{NEWLINE}青菜。{SCROLL}我带您去精灵中心的{NEWLINE}２楼,{CLEAR}请这边走！{SCROLL}",
-   "en": "Hello!{SCROLL}Is this your first time using wireless{NEWLINE}communication?{SCROLL}I’m Aona, your guide.{SCROLL}I’ll show you around the{NEWLINE}Pokémon Center’s 2nd floor. This{CLEAR}way, please!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "R001: 向导员青菜: 青菜 read in Japanese as ‘aona’ → guide name Aona (low confidence)."
-  },
-  {
-   "id": 94,
-   "zh": "２楼有{NEWLINE}３个房间。{SCROLL}第一个是左边的房间,{NEWLINE}联机房间！{SCROLL}在那里你能与附近{NEWLINE}同样进入该房间的{CLEAR}人们进行{SCROLL}交换画画等{NEWLINE}各种各样的{CLEAR}互动！{SCROLL}那么继续介绍{NEWLINE}下一个房间！",
-   "en": "There are 3 rooms here on the 2nd{NEWLINE}floor.{SCROLL}The first is the room on the left, the{NEWLINE}Union Room!{SCROLL}There, you can interact with people{NEWLINE}nearby who have also entered the room.{SCROLL}You can trade, draw pictures and do all{NEWLINE}sorts of other things!{SCROLL}Now, on to the next room!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 95,
-   "zh": "第二个是中间的房间,{NEWLINE}圆形剧场！{SCROLL}能与你的朋友{NEWLINE}在此享受{CLEAR}精灵对战的乐趣！{SCROLL}那么继续介绍{NEWLINE}下一个房间！",
-   "en": "The second is the middle room, the{NEWLINE}Colosseum!{SCROLL}You can enjoy Pokémon battles with your{NEWLINE}friends there!{SCROLL}Now, on to the next room!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 96,
-   "zh": "第三个是右边的房间,{NEWLINE}记录角！{SCROLL}能与朋友将{NEWLINE}各种东西混在一起！{SCROLL}那么{SCROLL}请好好享受{NEWLINE}无线通信的乐趣吧！",
-   "en": "The third is the room on the right, the{NEWLINE}Record Corner!{SCROLL}You can mix all sorts of things with your{NEWLINE}friends there!{SCROLL}And so...{SCROLL}please enjoy wireless communication!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 97,
-   "zh": "您好！　{VAR:0103:0}！{SCROLL}我是精灵中心２楼的{NEWLINE}向导员青菜。{SCROLL}在通信上有什么问题吗？",
-   "en": "Hello, {VAR:0103:0}!{SCROLL}I’m Aona, the guide on the{NEWLINE}Pokémon Center’s 2nd floor.{SCROLL}Do you have any questions about{NEWLINE}communication?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 98,
-   "zh": "让我来介绍一下无线通信{NEWLINE}俱乐部的游戏说明！{SCROLL}２楼这里有{NEWLINE}３个房间。{SCROLL}您想先听哪个房间的{NEWLINE}介绍呢？",
-   "en": "Let me explain the games at the Wireless{NEWLINE}Club!{SCROLL}There are 3 rooms here on the 2nd{NEWLINE}floor.{SCROLL}Which room would you like to hear about{NEWLINE}first?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 99,
-   "zh": "左边的房间是{NEWLINE}联机房间！{SCROLL}能与现在您附近{NEWLINE}同样进入该房间的{CLEAR}许许多多的人进行{SCROLL}交换画画等{NEWLINE}各种各样的{CLEAR}互动！",
-   "en": "The room on the left is the Union Room!{SCROLL}You can interact with lots of people{NEWLINE}nearby who have also entered the room.{SCROLL}You can trade, draw pictures and do all{NEWLINE}sorts of other things!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 100,
-   "zh": "第二个是中间的房间,{NEWLINE}圆形剧场！{SCROLL}在此您能与您的朋友{NEWLINE}享受精灵对战的{CLEAR}乐趣！",
-   "en": "The second is the middle room, the{NEWLINE}Colosseum!{SCROLL}There, you can enjoy Pokémon battles{NEWLINE}with your friends!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 101,
-   "zh": "第３个是右边的房间,{NEWLINE}记录角！{SCROLL}能与朋友进行{NEWLINE}各种东西的混合！",
-   "en": "The third is the room on the right, the{NEWLINE}Record Corner!{SCROLL}You can mix all sorts of things with your{NEWLINE}friends there!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 102,
-   "zh": "还想再听{NEWLINE}其他房间的说明吗？{VAR:0200:0}",
-   "en": "Would you like to hear about another{NEWLINE}room? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 103,
-   "zh": "要是{NEWLINE}找不到朋友的话{SCROLL}就稍微跟{NEWLINE}朋友靠近些试试。{SCROLL}那么{SCROLL}请尽情享受{NEWLINE}无线通信的乐趣吧！",
-   "en": "If you can’t find your friend,{SCROLL}try moving a little closer to them.{SCROLL}And so...{SCROLL}please enjoy wireless communication!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 104,
-   "zh": "请好好享受{NEWLINE}无线通信俱乐部的乐趣吧。",
-   "en": "Please enjoy the Wireless Club!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 105,
-   "zh": "比赛接待处欢迎你！{SCROLL}在这里和朋友愉快的比赛吧！{SCROLL}要跟什么类型的比赛呢？",
-   "en": "Welcome to the Contest reception!{SCROLL}Enjoy contests with your friends here!{SCROLL}What type of contest would you like to{NEWLINE}enter?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 106,
-   "zh": "帅气度",
-   "en": "Coolness",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 2 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl) | R001: Contest condition names (Gen 3 style): Coolness/Beauty/Cuteness/Toughness/Smartness; ranks Normal/Super/Hyper/Master."
-  },
-  {
-   "id": 107,
-   "zh": "美丽度",
-   "en": "Beauty",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 3 source(s)"
-  },
-  {
-   "id": 108,
-   "zh": "可爱度",
-   "en": "Cuteness",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 3 source(s)"
-  },
-  {
-   "id": 109,
-   "zh": "强壮度",
-   "en": "Toughness",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s)"
-  },
-  {
-   "id": 110,
-   "zh": "聪明度",
-   "en": "Smartness",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 2 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 111,
-   "zh": "要选择哪个等级的比赛呢？",
-   "en": "Which rank of contest would you like to{NEWLINE}enter?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 112,
-   "zh": "普通",
-   "en": "Normal",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 6 source(s)"
-  },
-  {
-   "id": 113,
-   "zh": "超级",
-   "en": "Super",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 114,
-   "zh": "困难",
-   "en": "Hyper",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 115,
-   "zh": "大师",
-   "en": "Master",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 116,
-   "zh": "在此能在你的训练师卡片{NEWLINE}背后签上名字。{SCROLL}",
-   "en": "Here, you can sign your name on the{NEWLINE}back of your Trainer Card.{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 117,
-   "zh": "要在训练师卡片上签名吗？",
-   "en": "Sign your Trainer Card?",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
-  },
-  {
-   "id": 118,
-   "zh": "那么请下次再来吧。",
-   "en": "Please do visit again.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 119,
-   "zh": "在这里能够在你的{NEWLINE}训练师卡片背后{CLEAR}签上你的名字。{SCROLL}你的好友将在联机大厅{NEWLINE}中看到这个签名！{SCROLL}另外,要写新的签名{NEWLINE}就会自动删除旧的那个,{CLEAR}请小心！{SCROLL}",
-   "en": "Here, you can sign your name on the{NEWLINE}back of your Trainer Card.{SCROLL}Your friends will see your signature in{NEWLINE}the Union Room!{SCROLL}But writing a new signature erases the{NEWLINE}old one automatically, so be careful!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 120,
-   "zh": "战斗规则怎么样？{VAR:0200:0}",
-   "en": "Which set of rules would you like{NEWLINE}to use? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "R001: official US text (US 0046/120)"
-  },
-  {
-   "id": 121,
-   "zh": "挑战{VAR:011A:0}杯吗？{VAR:0200:0}",
-   "en": "Battle in {VAR:011A:0} Cup?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/121"
-  },
-  {
-   "id": 122,
-   "zh": "满足{VAR:011A:0}杯规则的{NEWLINE}精灵不够{CLEAR}{VAR:0132:1}只！",
-   "en": "You need at least {VAR:0132:1} Pokémon{NEWLINE}that qualify under the{CLEAR}{VAR:011A:0} Cup rules.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/122"
-  },
-  {
-   "id": 123,
-   "zh": "空想杯",
-   "en": "FANCY CUP",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s) | R001: Cup labels: 小杯/中杯/大杯 → LITTLE/MIDDLE/BIG CUP (literal; US blank)."
-  },
-  {
-   "id": 124,
-   "zh": "黄色杯",
-   "en": "PIKA CUP",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s)"
-  },
-  {
-   "id": 125,
-   "zh": "小杯",
-   "en": "LITTLE CUP",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 126,
-   "zh": "中杯",
-   "en": "MIDDLE CUP",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 127,
-   "zh": "大杯",
-   "en": "BIG CUP",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 128,
-   "zh": "{VAR:011A:0}杯",
-   "en": "{VAR:011A:0}{NEWLINE}CUP",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/128"
-  },
-  {
-   "id": 129,
-   "zh": "取消",
-   "en": "CANCEL",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/129"
-  },
-  {
-   "id": 130,
-   "zh": "确定",
-   "en": "CONFIRM",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/130"
-  },
-  {
-   "id": 131,
-   "zh": "查看规则",
-   "en": "RULES",
-   "status": "draft",
-   "origin": "us",
-   "notes": "R001: official US text (US 0046/131)"
-  },
-  {
-   "id": 132,
-   "zh": "各自选择的规则{NEWLINE}不同！",
-   "en": "You each chose different rules!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 133,
-   "zh": "请选择要参加的{NEWLINE}精灵。",
-   "en": "Please choose the Pokémon that will{NEWLINE}take part.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 134,
-   "zh": "请稍等{NEWLINE}⋯⋯Ｂ键取消",
-   "en": "Please wait...{NEWLINE}Press B to cancel.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 135,
-   "zh": "对战被取消。",
-   "en": "The battle was canceled.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 136,
-   "zh": "无法组成满足{VAR:011A:0}杯{NEWLINE}规则的{CLEAR}精灵等级合计{VAR:0134:1}的{CLEAR}队伍！",
-   "en": "It’s impossible to form a team of{NEWLINE}Pokémon that qualify under the{CLEAR}{VAR:011A:0} Cup rules with a{CLEAR}total level limit of {VAR:0134:1}.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "R001: official US text (US 0046/136)"
-  },
-  {
-   "id": 137,
-   "zh": "战斗规则怎么样？{VAR:0200:0}",
-   "en": "Which set of rules would you like{NEWLINE}to use? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "R001: official US text (US 0046/120)"
-  },
-  {
-   "id": 138,
-   "zh": "无限制条件",
-   "en": "NO RESTRICTIONS",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/138"
-  },
-  {
-   "id": 139,
-   "zh": "开始ＤＳ{NEWLINE}无线通信{VAR:0200:0}",
-   "en": "DS Wireless Communications will be{NEWLINE}launched. {VAR:0200:0}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/139"
-  },
-  {
-   "id": 140,
-   "zh": "多人战需要3只{NEWLINE}以上的精灵。",
-   "en": "For a Multi Battle, you must have{NEWLINE}at least three Pokémon.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "R001: official US text (US 0046/140)"
-  },
-  {
-   "id": 141,
-   "zh": "混合战需要3只{NEWLINE}以上的精灵。",
-   "en": "For a Mix Battle, you must have{NEWLINE}at least three Pokémon.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "R001: official US text (US 0046/141)"
-  },
-  {
-   "id": 142,
-   "zh": "您手上有不能{NEWLINE}带去的精灵。",
-   "en": "You have at least one Pokémon{NEWLINE}that can’t be taken.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "R001: official US text (US 0046/142)"
-  },
-  {
-   "id": 143,
-   "zh": "很遗憾,{NEWLINE}这边还在准备中。",
-   "en": "Sorry, this service is still being{NEWLINE}prepared.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 144,
-   "zh": "非常抱歉⋯⋯{NEWLINE}等您消灭了火箭队{CLEAR}再来吧⋯⋯",
-   "en": "Pardon us for the inconvenience...{NEWLINE}Please come back once you’ve wiped out{CLEAR}Team Rocket...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "US 0046/144 | R001: zh (等您消灭了火箭队再来吧) differs from the US (‘once you have stopped being a member of Team Rocket’); follows the zh."
-  },
-  {
-   "id": 145,
-   "zh": "基艾斯杯不能带{NEWLINE}３只以上的传说中的精灵。",
-   "en": "You cannot have more than two{NEWLINE}legendary Pokémon in the GS Cup.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/145"
-  },
-  {
-   "id": 146,
-   "zh": "非常抱歉⋯⋯{NEWLINE}我们不为穿黑衣服的人,{CLEAR}做坏事的人,{CLEAR}加入火箭队的人{SCROLL}提供服务。",
-   "en": "Pardon us for the inconvenience...{NEWLINE}but people wearing black clothing,{CLEAR}people who engage in unlawful{CLEAR}activities, and people who are{CLEAR}members of Team Rocket{CLEAR}are barred from participating.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/146"
-  },
-  {
-   "id": 147,
-   "zh": "非常抱歉,{SCROLL}若叶镇的空木博士{NEWLINE}给您的{CLEAR}锯齿耳朵皮丘无法{CLEAR}通过这里,{SCROLL}请把它寄存到电脑后{NEWLINE}再来吧。",
-   "en": "Pardon us for the inconvenience.{SCROLL}We have received word from Professor{NEWLINE}Elm in New Bark Town that a Pichu{SCROLL}with spiky ears cannot be allowed{NEWLINE}to enter.{SCROLL}Please place it in your PC Box and{NEWLINE}enter again.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/147; modernised from US 0046#147"
-  },
-  {
-   "id": 148,
-   "zh": "我已经知道了⋯⋯{CLEAR}你不是火箭队的人。{SCROLL}我帮不上你什么忙,{NEWLINE}不过会为你加油的⋯⋯",
-   "en": "I already know... that you’re not with{NEWLINE}Team Rocket.{SCROLL}I can’t do anything to help you, but{NEWLINE}I’ll be cheering you on...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "R001: US blank; translated from the zh."
-  },
-  {
-   "id": 149,
-   "zh": "你好！{NEWLINE}我将为你说明一下{CLEAR}训练师卡片的事。{SCROLL}训练是卡片是{NEWLINE}与精灵一同冒险的{CLEAR}训练师的证明,{SCROLL}上面会自动登录{NEWLINE}各种各样的情报。{SCROLL}触摸卡片就能够查看反面,{SCROLL}反面还能写上你的签名。{SCROLL}你的朋友能够在联机大厅内{CLEAR}看到你的签名！{SCROLL}另外,要写新的签名,{NEWLINE}旧的就会自动删除,{SCROLL}请一定要注意！",
-   "en": "Hello! Here I’ll explain to you about{NEWLINE}the Trainer Card.{SCROLL}Your Trainer Card, with your Pokémon of{NEWLINE}course, is proof of your status as a{CLEAR}Pokémon Trainer while you’re out{CLEAR}adventuring.{SCROLL}It keeps automatic records of all kinds{NEWLINE}of information.{SCROLL}If you touch the card, you can view the{NEWLINE}reverse side.{SCROLL}You can sign the back of your card.{SCROLL}You can show off your signature to{NEWLINE}anyone you meet in the Union Room!{SCROLL}But your signature will be erased if you{NEWLINE}decide to sign your card again, so{CLEAR}be careful!",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/149"
-  },
-  {
-   "id": 150,
-   "zh": "您能参加的精灵数量不足！",
-   "en": "You don’t have enough Pokémon that can{NEWLINE}take part!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 151,
-   "zh": "等级超过限制！",
-   "en": "Over the level limit!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 152,
-   "zh": "欢迎来到狩猎区！{SCROLL}你要接受{NEWLINE}好友的狩猎吗？{VAR:0200:0}",
-   "en": "Welcome to the Safari Zone!{SCROLL}Would you like to receive a friend’s{NEWLINE}Safari Zone? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 153,
-   "zh": "要将目前为止的活跃{NEWLINE}写进精灵记录里吗？{VAR:0200:0}",
-   "en": "Would you like to write your activity so{NEWLINE}far to your Pokémon record? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 154,
-   "zh": "之前的记录将被覆盖,{NEWLINE}可以吗？{VAR:0200:0}",
-   "en": "Your previous record will be{NEWLINE}overwritten. Is that OK? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 155,
-   "zh": "精灵记录写入中,{NEWLINE}请不要切断电源。",
-   "en": "Writing the Pokémon record... Please{NEWLINE}don’t turn off the power.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 156,
-   "zh": "{VAR:0103:0}{NEWLINE}记录完毕！　",
-   "en": "{VAR:0103:0}{NEWLINE}finished the record!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 157,
-   "zh": "请从两个人中{NEWLINE}选出一个当队长,{CLEAR}另一个人选择{NEWLINE}加入队伍。{VAR:0200:0}",
-   "en": "Please decide which of you two will be{NEWLINE}the leader. The other player must then{CLEAR}choose to join the group. {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 158,
-   "zh": "请选择交换狩猎的{NEWLINE}对象。{VAR:0200:0}",
-   "en": "Please choose who to swap Safari Zones{NEWLINE}with. {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 159,
-   "zh": "等待{VAR:0103:0}的{NEWLINE}回应。",
-   "en": "Waiting for {VAR:0103:0}{NEWLINE}to respond.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 160,
-   "zh": "{VAR:0103:0}的OK{NEWLINE}有回应了。",
-   "en": "{VAR:0103:0} replied:{NEWLINE}OK.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 161,
-   "zh": "{VAR:0103:0}的NG{NEWLINE}有回应了⋯⋯{VAR:0201:120}",
-   "en": "{VAR:0103:0} replied:{NEWLINE}No...{VAR:0201:120}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 162,
-   "zh": "要离队吗？{VAR:0200:0}",
-   "en": "Leave the group? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 163,
-   "zh": "离开了队伍",
-   "en": "You left the group.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 164,
-   "zh": "等待好友的联络。",
-   "en": "Waiting for a friend to get in touch.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 165,
-   "zh": "{VAR:0103:0}发来联络！{SCROLL}要与{VAR:0103:0}{NEWLINE}交换狩猎吗？{VAR:0200:0}",
-   "en": "{VAR:0103:0} got in touch!{SCROLL}Swap Safari Zones with {VAR:0103:0}? {VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 166,
-   "zh": "{VAR:0103:0}的OK{NEWLINE}有回应了。",
-   "en": "{VAR:0103:0} replied:{NEWLINE}OK.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 167,
-   "zh": "狩猎接受中,{NEWLINE}请稍等。{VAR:0201:60}",
-   "en": "Receiving the Safari Zone. Please wait. {VAR:0201:60}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 168,
-   "zh": "{VAR:0103:0}的狩猎{NEWLINE}接收完毕。{SCROLL}",
-   "en": "Received {VAR:0103:0}’s Safari Zone.{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 169,
-   "zh": "狩猎交换结束！{SCROLL}那么请从旁边的{NEWLINE}接待处进入吧！",
-   "en": "The Safari Zone swap is complete!{SCROLL}Please go in through the reception next{NEWLINE}door!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 170,
-   "zh": "非常抱歉,{NEWLINE}这边还在准备中。",
-   "en": "Sorry, this service is still being{NEWLINE}prepared.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 171,
-   "zh": "那么请下次再来。",
-   "en": "Please do visit again.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 172,
-   "zh": "非常抱歉,{SCROLL}您带着的这只锯耳精灵⋯⋯{CLEAR}在精灵中心的基础资料中{CLEAR}还没有登录,{CLEAR}所以不能过去。{SCROLL}请将它存到电脑上后再来吧。",
-   "en": "Pardon us for the inconvenience.{SCROLL}The Spiky-eared Pokémon you are{NEWLINE}traveling with...{CLEAR}It’s a kind that doesn’t appear in the{CLEAR}Pokémon Center’s database, so we{CLEAR}unfortunately cannot allow it to pass.{SCROLL}Please place it in a PC Box and{NEWLINE}come back.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0046/172"
-  }
- ]
+  "narc": "a027",
+  "bank": 44,
+  "source": "work/extract/v4/a027/0044.json",
+  "strings": [
+    {
+      "id": 0,
+      "zh": "欢迎光临精灵通信俱乐部{NEWLINE}圆形剧场！{SCROLL}在这里您能享受{NEWLINE}与好友对战的乐趣。{SCROLL}",
+      "en": "Welcome to the Pokémon Communication{NEWLINE}Club Colosseum.{SCROLL}You may battle with your friends{NEWLINE}here.{SCROLL}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "R001: official US text (US 0046/0) | R001: Most of this bank is DP-era link text that the US HGSS blanks (unused); translated anyway."
+    },
+    {
+      "id": 1,
+      "zh": "选择哪种对战？{VAR:0200:0}",
+      "en": "Which Battle Mode would you like{NEWLINE}to play? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/1"
+    },
+    {
+      "id": 2,
+      "zh": "几个人对战？{VAR:0200:0}",
+      "en": "Battle with how many players? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/2"
+    },
+    {
+      "id": 3,
+      "zh": "４人联机对战吗？{VAR:0200:0}",
+      "en": "Do a four-player Multi Battle? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/3"
+    },
+    {
+      "id": 4,
+      "zh": "联机对战",
+      "en": "JOIN A MULTI BATTLE",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/4",
+      "category": "menu_touch_1line"
+    },
+    {
+      "id": 5,
+      "zh": "返回",
+      "en": "CANCEL",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/5",
+      "category": "menu_touch_1line"
+    },
+    {
+      "id": 6,
+      "zh": "对战共有５种模式。{SCROLL}单人战斗的时候{NEWLINE}就是拿出一只精灵{CLEAR}进行两人对战。{SCROLL}双人战斗的时候{NEWLINE}就是拿出两只精灵{CLEAR}进行两人对战。{SCROLL}混合战斗的时候{NEWLINE}要各自挑选{CLEAR}３只精灵,并选择对方的{CLEAR}一只精灵与自己交换对战。{SCROLL}平等战斗能让５０级{NEWLINE}以上的精灵回归５０级{CLEAR}进行战斗。{SCROLL}多人战斗战斗的时候{NEWLINE}由４人各拿出{CLEAR}１只进行{CLEAR}２对２的对战。{SCROLL}",
+      "en": "There are five Battle Modes.{SCROLL}Single Battle is for two Trainers{NEWLINE}with one or more Pokémon each.{SCROLL}Each Trainer can have one Pokémon{NEWLINE}in battle at a time.{SCROLL}Double Battle is for two Trainers{NEWLINE}with two or more Pokémon each.{SCROLL}Each Trainer will send out two{NEWLINE}Pokémon to battle at a time.{SCROLL}Mix Battle is for two Trainers{NEWLINE}with three Pokémon each.{SCROLL}Each Trainer chooses one of the{NEWLINE}opponent’s Pokémon, mixes them{CLEAR}with their own party, and then{CLEAR}battles the other Trainer.{SCROLL}Flat Battle is for Pokémon over Lv. 50.{SCROLL}All Pokémon will become Lv. 50 for{NEWLINE}the battle.{SCROLL}Multi Battle is for four Trainers{NEWLINE}with one or more Pokémon each.{SCROLL}Each Trainer can have one Pokémon{NEWLINE}in battle at a time.{SCROLL}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "R001: official US text (US 0046/6)"
+    },
+    {
+      "id": 7,
+      "zh": "一定要和对战{NEWLINE}对手选择相同的东西。{SCROLL}一般对战{SCROLL}没有特殊的规则,{NEWLINE}可以用喜欢的精灵战斗。{SCROLL}空想杯{NEWLINE}可爱精灵专用{SCROLL}黄色杯{NEWLINE}黄色精灵专用{SCROLL}珍珠杯{SCROLL}白色和水系精灵{NEWLINE}专用{SCROLL}钻石杯{SCROLL}钢系精灵专用{SCROLL}规则：{NEWLINE}能够以自己制定的{CLEAR}规则进行对战。{SCROLL}不过{SCROLL}必须要对战对手{NEWLINE}也确认相同的{CLEAR}规则。{SCROLL}",
+      "en": "You and your opponent must both choose{NEWLINE}the same thing.{SCROLL}Standard Battle:{SCROLL}No special rules. Battle with any{NEWLINE}Pokémon you like.{SCROLL}Fancy Cup: cute Pokémon only.{SCROLL}Pika Cup: yellow Pokémon only.{SCROLL}Pearl Cup:{SCROLL}White and Water-type Pokémon only.{SCROLL}Diamond Cup:{SCROLL}Steel-type Pokémon only.{SCROLL}Rules: battle under rules you set{NEWLINE}yourself.{SCROLL}However...{SCROLL}your opponent must confirm the same{NEWLINE}rules.{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "R001: Cup names follow D-0507 (空想杯 FANCY, 黄色杯 PIKA); 珍珠杯/钻石杯 = Pearl/Diamond Cup (DP leftovers)."
+    },
+    {
+      "id": 8,
+      "zh": "进行一般对战吗？{SCROLL}还是说要{NEWLINE}选择规则进行对战呢？{VAR:0200:0}",
+      "en": "Would you like a Standard Battle?{SCROLL}Or would you like to battle under set{NEWLINE}rules? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "zh": "以规则中的{NEWLINE}哪个来对战呢？{VAR:0200:0}",
+      "en": "Which rules would you like to battle{NEWLINE}under? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "zh": "双人战需要两只以上的精灵",
+      "en": "For a Double Battle, you must{NEWLINE}have at least two Pokémon.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/10"
+    },
+    {
+      "id": 11,
+      "zh": "混合战需要六只精灵",
+      "en": "For a Mix Battle, you must have six{NEWLINE}Pokémon.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "zh": "空想杯无法使用{CLEAR}３０级以上的精灵",
+      "en": "Pokémon above Lv. 30 can’t enter the{NEWLINE}Fancy Cup.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "zh": "要将至今为止的{NEWLINE}活跃写入记录吗？{VAR:0200:0}",
+      "en": "Would you like to save your activity so{NEWLINE}far to your record? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "zh": "存在有之前的记录,{NEWLINE}要覆盖吗？{VAR:0200:0}",
+      "en": "There is already a saved record.{NEWLINE}Overwrite it? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "zh": "精灵记录保存中⋯⋯{NEWLINE}请不要切断电源。",
+      "en": "Saving the Pokémon record... Please{NEWLINE}don’t turn off the power.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "zh": "{VAR:0103:0}{NEWLINE}写好了记录！　",
+      "en": "{VAR:0103:0}{NEWLINE}saved the record!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "zh": "对战规则怎么弄呢？{VAR:0200:0}",
+      "en": "Which battle rules would you like? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "zh": "那么请选择和对手{NEWLINE}一样的规则。",
+      "en": "Then please choose the same rules as{NEWLINE}your opponent.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "zh": "{VAR:011A:0}{NEWLINE}杯",
+      "en": "{VAR:011A:0}{NEWLINE}CUP",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/19",
+      "category": "menu_touch_col"
+    },
+    {
+      "id": 20,
+      "zh": "无限制",
+      "en": "NO{NEWLINE}RESTRICTIONS",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/20",
+      "category": "menu_touch_col"
+    },
+    {
+      "id": 21,
+      "zh": "放弃",
+      "en": "QUIT",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 17 source(s); other variants: 9 more v3 TM candidates (tm_v4_matches.jsonl) | R001: 放弃 menu option → QUIT (CANCEL/RETURN are taken by #5/#22)."
+    },
+    {
+      "id": 22,
+      "zh": "返回",
+      "en": "RETURN",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/22",
+      "category": "menu_touch_col"
+    },
+    {
+      "id": 23,
+      "zh": "双人{NEWLINE}无限制",
+      "en": "DOUBLE, NO{NEWLINE}RESTRICTIONS",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "US 0046/23 | menu width fix (follow-up 1): was 'DOUBLE{NEWLINE}NO RESTRICTION'",
+      "category": "menu_touch_col"
+    },
+    {
+      "id": 24,
+      "zh": "检查特别的精灵",
+      "en": "CHECK SPECIAL POKéMON",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "US 0046/24; modernised from US 0046#24 | R001: Caps label keeps POKéMON (D-0009)."
+    },
+    {
+      "id": 25,
+      "zh": "能够参加基艾斯杯的{NEWLINE}特殊精灵{SCROLL}{VAR:0103:0}{NEWLINE}找到的精灵中⋯{SCROLL}",
+      "en": "You need a special Pokémon to enter the{NEWLINE}GS Cup.{SCROLL}{VAR:0103:0}, out of the Pokémon{NEWLINE}you’ve found...{SCROLL}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/25"
+    },
+    {
+      "id": 26,
+      "zh": "{VAR:0100:0}{SCROLL}",
+      "en": "{VAR:0100:0}{SCROLL}",
+      "status": "reviewed",
+      "origin": "copy",
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "zh": "能够参加。{SCROLL}",
+      "en": "can be entered in the competition.{SCROLL}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/27"
+    },
+    {
+      "id": 28,
+      "zh": "好像是没有。{SCROLL}",
+      "en": "none are eligible.{SCROLL}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/28"
+    },
+    {
+      "id": 29,
+      "zh": "那么请下次再来吧。",
+      "en": "Please do visit again.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "R001: official US text (US 0046/29)"
+    },
+    {
+      "id": 30,
+      "zh": "通信错误。{SCROLL}请继续从最开始{NEWLINE}重新来过吧。",
+      "en": "Communication error.{SCROLL}Please start over from the beginning.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "zh": "通信似乎不稳⋯⋯",
+      "en": "The connection seems unstable...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "zh": "对手的{NEWLINE}通信似乎不好⋯⋯",
+      "en": "Your opponent’s connection seems{NEWLINE}poor...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "zh": "有个通信不好的{NEWLINE}成员。",
+      "en": "One of the members has a poor{NEWLINE}connection.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "zh": "要让该成员离队吗？{VAR:0200:0}",
+      "en": "Remove that member from the group? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "zh": "该成员离队。",
+      "en": "The member has left the group.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "zh": "选择两人中的一个{NEWLINE}成为队长,{SCROLL}另一个选择加入{NEWLINE}队伍{VAR:0200:0}",
+      "en": "Please decide which of you two{NEWLINE}will become the leader.{SCROLL}The other player must then choose{NEWLINE}“JOIN GROUP.”{VAR:0200:0}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/36"
+    },
+    {
+      "id": 37,
+      "zh": "单人战！{NEWLINE}请选择队长　",
+      "en": "Single Battle!{NEWLINE}Please choose the leader.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "zh": "等待{VAR:0103:0}的{NEWLINE}回应",
+      "en": "Waiting for {VAR:0103:0}{NEWLINE}to respond.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "zh": "{VAR:0103:0}回应{NEWLINE}ＮＧ⋯⋯{VAR:0201:120}",
+      "en": "{VAR:0103:0} replied:{NEWLINE}No...{VAR:0201:120}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "zh": "{VAR:0103:0}回应{NEWLINE}ＯＫ！{VAR:0201:120}",
+      "en": "{VAR:0103:0} replied:{NEWLINE}OK!{VAR:0201:120}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "zh": "单人战！等待朋友的{NEWLINE}联络。",
+      "en": "Single Battle! Waiting for a friend to{NEWLINE}get in touch.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "zh": "{VAR:0103:0}{NEWLINE}有联络！{SCROLL}进行单人战吗？{VAR:0200:0}",
+      "en": "{VAR:0103:0}{NEWLINE}got in touch!{SCROLL}Start a Single Battle? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 43,
+      "zh": "{VAR:0103:0}回应{NEWLINE}ＯＫ！{VAR:0201:120}",
+      "en": "{VAR:0103:0} replied:{NEWLINE}OK!{VAR:0201:120}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "zh": "那么请到房间里去！",
+      "en": "Then please enter the room!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "zh": "请选择进行单人战的{NEWLINE}朋友{VAR:0200:0}",
+      "en": "Please choose a friend for a Single{NEWLINE}Battle. {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 46,
+      "zh": "请选择进行双人战的{NEWLINE}朋友{VAR:0200:0}",
+      "en": "Please choose a friend for a Double{NEWLINE}Battle. {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 47,
+      "zh": "请选择进行混合战的{NEWLINE}朋友{VAR:0200:0}",
+      "en": "Please choose a friend for a Mix Battle.{NEWLINE}{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "zh": "单人战！等待朋友的{NEWLINE}联络",
+      "en": "Single Battle! Waiting for a friend to{NEWLINE}get in touch.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 49,
+      "zh": "双人战！等待朋友的{NEWLINE}联络",
+      "en": "Double Battle! Waiting for a friend to{NEWLINE}get in touch.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "zh": "混合战！等待朋友的{NEWLINE}联络",
+      "en": "Mix Battle! Waiting for a friend to get{NEWLINE}in touch.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 51,
+      "zh": "{VAR:0103:0}有联络！{NEWLINE}要开始单人战吗？{VAR:0200:0}",
+      "en": "{VAR:0103:0} got in touch!{NEWLINE}Start a Single Battle? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 52,
+      "zh": "{VAR:0103:0}有联络！{NEWLINE}要开始双人战吗？{VAR:0200:0}",
+      "en": "{VAR:0103:0} got in touch!{NEWLINE}Start a Double Battle? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 53,
+      "zh": "{VAR:0103:0}有联络！{NEWLINE}要开始混合战吗？{VAR:0200:0}",
+      "en": "{VAR:0103:0} got in touch!{NEWLINE}Start a Mix Battle? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 54,
+      "zh": "请选择参加战斗的{NEWLINE}精灵",
+      "en": "Please choose the Pokémon that will{NEWLINE}battle.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 55,
+      "zh": "等待{VAR:0103}の的{NEWLINE}选择",
+      "en": "Waiting for {VAR:0103}{NEWLINE}to choose.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "R001: zh tag {VAR:0103} (no :0) kept as is; zh has a stray Japanese の."
+    },
+    {
+      "id": 56,
+      "zh": "对战取消了",
+      "en": "The battle was canceled.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 57,
+      "zh": "请４人商量一下{NEWLINE}选择一个出来{CLEAR}当队长{SCROLL}其他人请选择{NEWLINE}加入队伍{VAR:0200:0}",
+      "en": "Please decide which of you four{NEWLINE}will become the group leader.{SCROLL}The other players must then choose{NEWLINE}“JOIN GROUP.”{VAR:0200:0}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "R001: official US text (US 0046/57)"
+    },
+    {
+      "id": 58,
+      "zh": "多人战！{NEWLINE}请选择队长　{VAR:0200:0}",
+      "en": "Multi Battle!{NEWLINE}Please choose the leader. {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 59,
+      "zh": "{VAR:0103:0}正在申请{NEWLINE}登陆成员！　请稍等。",
+      "en": "{VAR:0103:0} is asking to join! Please wait.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 60,
+      "zh": "{VAR:0103:0}回应{NEWLINE}ＮＧ{VAR:0201:120}",
+      "en": "{VAR:0103:0} replied:{NEWLINE}No{VAR:0201:120}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 61,
+      "zh": "{VAR:0103:0}联络{NEWLINE}成员登陆ＯＫ！",
+      "en": "{VAR:0103:0} has joined{NEWLINE}the group!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 62,
+      "zh": "多人战！　{NEWLINE}等待其他的成员！",
+      "en": "Multi Battle!{NEWLINE}Waiting for the other members!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 63,
+      "zh": "多人战！等待朋友的{NEWLINE}联络。",
+      "en": "Multi Battle! Waiting for a friend to get{NEWLINE}in touch.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 64,
+      "zh": "不让该成员参加{NEWLINE}多人战吗？{VAR:0200:0}",
+      "en": "Keep this member out of the Multi{NEWLINE}Battle? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 65,
+      "zh": "{VAR:0103:0}{NEWLINE}有联络！",
+      "en": "{VAR:0103:0}{NEWLINE}got in touch!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 66,
+      "zh": "成员到齐！{NEWLINE}那么请到房间里去吧！",
+      "en": "The members have gathered.{NEWLINE}Please enter the room.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/66"
+    },
+    {
+      "id": 67,
+      "zh": "成员到齐！{SCROLL}那么请选择参加战斗的{NEWLINE}精灵。",
+      "en": "The members have gathered!{SCROLL}Please choose the Pokémon that will{NEWLINE}battle.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 68,
+      "zh": "等待其他成员的{NEWLINE}选择！",
+      "en": "Waiting for the other members to{NEWLINE}choose!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 69,
+      "zh": "对战取消。",
+      "en": "The battle was canceled.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 70,
+      "zh": "那么请进房间！",
+      "en": "Then please enter the room!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 71,
+      "zh": "欢迎来到精灵无线俱乐部{NEWLINE}联机房间！{SCROLL}在这能与许多的朋友{NEWLINE}进行互动。{SCROLL}要进房间吗？{VAR:0200:0}",
+      "en": "Welcome to the Pokémon Wireless{NEWLINE}Club Union Room.{SCROLL}You may interact directly with{NEWLINE}many Trainers here.{SCROLL}Would you like to enter the room? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/71 | seed rejected us [tag_mismatch] (candidate US 0046#71; text not kept) | R001: official US text (US 0046/71)"
+    },
+    {
+      "id": 72,
+      "zh": "联机房间中会出现{NEWLINE}在你附近进入{CLEAR}联盟房间的人。{SCROLL}能进行两只等级３０以下的{NEWLINE}精灵１对１的对战,{SCROLL}精灵的交换,{SCROLL}大家一起记录,{SCROLL}画画{NEWLINE}一起开心地进行游戏。{SCROLL}另外通过对话还能和{NEWLINE}大家进行沟通,{SCROLL}还能触摸说过的话{NEWLINE}找寻朋友。{SCROLL}要进房间吗？{VAR:0200:0}",
+      "en": "The Trainers in the Union Room{NEWLINE}will be those players around you{CLEAR}who have also entered the room.{SCROLL}You may enter two Pokémon up to{NEWLINE}Lv. 30 for a one-on-one battle.{SCROLL}Or, you may trade your Pokémon here{NEWLINE}with another Trainer.{SCROLL}You may also mix records or draw{NEWLINE}with other players.{SCROLL}You may also chat with other{NEWLINE}players in the room.{SCROLL}...Or find friends by touching{NEWLINE}the spoken words.{SCROLL}Would you like to enter the room? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "R001: official US text (US 0046/72)"
+    },
+    {
+      "id": 73,
+      "zh": "要将至今为止的活跃{NEWLINE}写入记录中吗？{VAR:0200:0}",
+      "en": "Would you like to save your activity so{NEWLINE}far to your record? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 74,
+      "zh": "已存在有精灵记录,{NEWLINE}要覆盖吗？{VAR:0200:0}",
+      "en": "A Pokémon record already exists.{NEWLINE}Overwrite it? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 75,
+      "zh": "记录保存中⋯⋯{NEWLINE}请不要切断电源。",
+      "en": "Saving the record... Please don’t turn{NEWLINE}off the power.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 76,
+      "zh": "{VAR:0103:0}{NEWLINE}写好了记录！　",
+      "en": "{VAR:0103:0}{NEWLINE}saved the record!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 77,
+      "zh": "那么请好好享受{NEWLINE}联盟房间的乐趣吧。{SCROLL}",
+      "en": "I hope you enjoy your time in{NEWLINE}the Union Room.{SCROLL}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "R001: official US text (US 0046/77)"
+    },
+    {
+      "id": 78,
+      "zh": "欢迎光临精灵通信俱乐部{NEWLINE}记录角！{SCROLL}这儿能与朋友{NEWLINE}进行各种混合{CLEAR}让冒险变得{CLEAR}更加有意思{SCROLL}要进房间吗？{VAR:0200:0}",
+      "en": "Welcome to the Pokémon Communication{NEWLINE}Club Record Corner!{SCROLL}Here, you can mix all sorts of things{NEWLINE}with your friends to make your{CLEAR}adventure even more fun!{SCROLL}Would you like to enter the room? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 79,
+      "zh": "记录角能与朋友{NEWLINE}混合各种东西{CLEAR}进行交换,{SCROLL}让冒险{NEWLINE}变得更加的{CLEAR}有意思。{SCROLL}不断地进行混合吧！{SCROLL}能２人到１６人{NEWLINE}进行游戏。",
+      "en": "At the Record Corner, you can mix and{NEWLINE}swap all sorts of things with friends.{SCROLL}It makes your adventure even more fun.{SCROLL}Mix away!{SCROLL}From 2 up to 16 people can play.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 80,
+      "zh": "要将至今为止的活跃{NEWLINE}写入记录吗？{VAR:0200:0}",
+      "en": "Would you like to save your activity so{NEWLINE}far to your record? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 81,
+      "zh": "存在有之前的记录,{NEWLINE}要覆盖吗？{VAR:0200:0}",
+      "en": "There is already a saved record.{NEWLINE}Overwrite it? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 82,
+      "zh": "记录保存中⋯⋯{NEWLINE}请不要切断电源。",
+      "en": "Saving the record... Please don’t turn{NEWLINE}off the power.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 83,
+      "zh": "{VAR:0103:0}{NEWLINE}写好了记录！　",
+      "en": "{VAR:0103:0}{NEWLINE}saved the record!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 84,
+      "zh": "请选一个当记录交换的{NEWLINE}队长。{SCROLL}其他人请选择{NEWLINE}加入队伍。{VAR:0200:0}",
+      "en": "Please choose one person to lead the{NEWLINE}record mixing.{SCROLL}Everyone else, please choose to join{NEWLINE}the group. {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 85,
+      "zh": "记录交换！{NEWLINE}请选择队长　{VAR:0200:0}",
+      "en": "Record Mixing!{NEWLINE}Please choose the leader. {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 86,
+      "zh": "{VAR:0103:0}联络{NEWLINE}成员登陆ＯＫ！",
+      "en": "{VAR:0103:0} has joined{NEWLINE}the group!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 87,
+      "zh": "记录角！　{NEWLINE}等待其他的成员！",
+      "en": "Record Corner!{NEWLINE}Waiting for the other members!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 88,
+      "zh": "记录角！等待朋友的{NEWLINE}联络",
+      "en": "Record Corner! Waiting for a friend to{NEWLINE}get in touch.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 89,
+      "zh": "请继续等到{NEWLINE}人数到齐。",
+      "en": "Please keep waiting until everyone has{NEWLINE}gathered.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 90,
+      "zh": "退出{NEWLINE}记录交换吗？{VAR:0200:0}",
+      "en": "Quit record mixing? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 91,
+      "zh": "已集合了１６人,{NEWLINE}可以开始了吗？{VAR:0200:0}",
+      "en": "16 people have gathered. Is it OK to{NEWLINE}start? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 92,
+      "zh": "成员到齐！{NEWLINE}那么请进房间！",
+      "en": "The members have gathered!{NEWLINE}Please enter the room!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 93,
+      "zh": "您好！{SCROLL}第一次进行{NEWLINE}无线通信吗？{SCROLL}我是向导员{NEWLINE}青菜。{SCROLL}我带您去精灵中心的{NEWLINE}２楼,{CLEAR}请这边走！{SCROLL}",
+      "en": "Hello!{SCROLL}Is this your first time using wireless{NEWLINE}communication?{SCROLL}I’m Aona, your guide.{SCROLL}I’ll show you around the{NEWLINE}Pokémon Center’s 2nd floor. This{CLEAR}way, please!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "R001: 向导员青菜: 青菜 read in Japanese as ‘aona’ → guide name Aona (low confidence)."
+    },
+    {
+      "id": 94,
+      "zh": "２楼有{NEWLINE}３个房间。{SCROLL}第一个是左边的房间,{NEWLINE}联机房间！{SCROLL}在那里你能与附近{NEWLINE}同样进入该房间的{CLEAR}人们进行{SCROLL}交换画画等{NEWLINE}各种各样的{CLEAR}互动！{SCROLL}那么继续介绍{NEWLINE}下一个房间！",
+      "en": "There are 3 rooms here on the 2nd{NEWLINE}floor.{SCROLL}The first is the room on the left, the{NEWLINE}Union Room!{SCROLL}There, you can interact with people{NEWLINE}nearby who have also entered the room.{SCROLL}You can trade, draw pictures and do all{NEWLINE}sorts of other things!{SCROLL}Now, on to the next room!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 95,
+      "zh": "第二个是中间的房间,{NEWLINE}圆形剧场！{SCROLL}能与你的朋友{NEWLINE}在此享受{CLEAR}精灵对战的乐趣！{SCROLL}那么继续介绍{NEWLINE}下一个房间！",
+      "en": "The second is the middle room, the{NEWLINE}Colosseum!{SCROLL}You can enjoy Pokémon battles with your{NEWLINE}friends there!{SCROLL}Now, on to the next room!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 96,
+      "zh": "第三个是右边的房间,{NEWLINE}记录角！{SCROLL}能与朋友将{NEWLINE}各种东西混在一起！{SCROLL}那么{SCROLL}请好好享受{NEWLINE}无线通信的乐趣吧！",
+      "en": "The third is the room on the right, the{NEWLINE}Record Corner!{SCROLL}You can mix all sorts of things with your{NEWLINE}friends there!{SCROLL}And so...{SCROLL}please enjoy wireless communication!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 97,
+      "zh": "您好！　{VAR:0103:0}！{SCROLL}我是精灵中心２楼的{NEWLINE}向导员青菜。{SCROLL}在通信上有什么问题吗？",
+      "en": "Hello, {VAR:0103:0}!{SCROLL}I’m Aona, the guide on the{NEWLINE}Pokémon Center’s 2nd floor.{SCROLL}Do you have any questions about{NEWLINE}communication?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 98,
+      "zh": "让我来介绍一下无线通信{NEWLINE}俱乐部的游戏说明！{SCROLL}２楼这里有{NEWLINE}３个房间。{SCROLL}您想先听哪个房间的{NEWLINE}介绍呢？",
+      "en": "Let me explain the games at the Wireless{NEWLINE}Club!{SCROLL}There are 3 rooms here on the 2nd{NEWLINE}floor.{SCROLL}Which room would you like to hear about{NEWLINE}first?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 99,
+      "zh": "左边的房间是{NEWLINE}联机房间！{SCROLL}能与现在您附近{NEWLINE}同样进入该房间的{CLEAR}许许多多的人进行{SCROLL}交换画画等{NEWLINE}各种各样的{CLEAR}互动！",
+      "en": "The room on the left is the Union Room!{SCROLL}You can interact with lots of people{NEWLINE}nearby who have also entered the room.{SCROLL}You can trade, draw pictures and do all{NEWLINE}sorts of other things!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 100,
+      "zh": "第二个是中间的房间,{NEWLINE}圆形剧场！{SCROLL}在此您能与您的朋友{NEWLINE}享受精灵对战的{CLEAR}乐趣！",
+      "en": "The second is the middle room, the{NEWLINE}Colosseum!{SCROLL}There, you can enjoy Pokémon battles{NEWLINE}with your friends!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 101,
+      "zh": "第３个是右边的房间,{NEWLINE}记录角！{SCROLL}能与朋友进行{NEWLINE}各种东西的混合！",
+      "en": "The third is the room on the right, the{NEWLINE}Record Corner!{SCROLL}You can mix all sorts of things with your{NEWLINE}friends there!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 102,
+      "zh": "还想再听{NEWLINE}其他房间的说明吗？{VAR:0200:0}",
+      "en": "Would you like to hear about another{NEWLINE}room? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 103,
+      "zh": "要是{NEWLINE}找不到朋友的话{SCROLL}就稍微跟{NEWLINE}朋友靠近些试试。{SCROLL}那么{SCROLL}请尽情享受{NEWLINE}无线通信的乐趣吧！",
+      "en": "If you can’t find your friend,{SCROLL}try moving a little closer to them.{SCROLL}And so...{SCROLL}please enjoy wireless communication!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 104,
+      "zh": "请好好享受{NEWLINE}无线通信俱乐部的乐趣吧。",
+      "en": "Please enjoy the Wireless Club!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 105,
+      "zh": "比赛接待处欢迎你！{SCROLL}在这里和朋友愉快的比赛吧！{SCROLL}要跟什么类型的比赛呢？",
+      "en": "Welcome to the Contest reception!{SCROLL}Enjoy contests with your friends here!{SCROLL}What type of contest would you like to{NEWLINE}enter?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 106,
+      "zh": "帅气度",
+      "en": "Coolness",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 2 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl) | R001: Contest condition names (Gen 3 style): Coolness/Beauty/Cuteness/Toughness/Smartness; ranks Normal/Super/Hyper/Master."
+    },
+    {
+      "id": 107,
+      "zh": "美丽度",
+      "en": "Beauty",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 3 source(s)"
+    },
+    {
+      "id": 108,
+      "zh": "可爱度",
+      "en": "Cuteness",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 3 source(s)"
+    },
+    {
+      "id": 109,
+      "zh": "强壮度",
+      "en": "Toughness",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s)"
+    },
+    {
+      "id": 110,
+      "zh": "聪明度",
+      "en": "Smartness",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 2 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 111,
+      "zh": "要选择哪个等级的比赛呢？",
+      "en": "Which rank of contest would you like to{NEWLINE}enter?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 112,
+      "zh": "普通",
+      "en": "Normal",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 6 source(s)"
+    },
+    {
+      "id": 113,
+      "zh": "超级",
+      "en": "Super",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 114,
+      "zh": "困难",
+      "en": "Hyper",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 115,
+      "zh": "大师",
+      "en": "Master",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 116,
+      "zh": "在此能在你的训练师卡片{NEWLINE}背后签上名字。{SCROLL}",
+      "en": "Here, you can sign your name on the{NEWLINE}back of your Trainer Card.{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 117,
+      "zh": "要在训练师卡片上签名吗？",
+      "en": "Sign your Trainer Card?",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 1 source(s)"
+    },
+    {
+      "id": 118,
+      "zh": "那么请下次再来吧。",
+      "en": "Please do visit again.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 119,
+      "zh": "在这里能够在你的{NEWLINE}训练师卡片背后{CLEAR}签上你的名字。{SCROLL}你的好友将在联机大厅{NEWLINE}中看到这个签名！{SCROLL}另外,要写新的签名{NEWLINE}就会自动删除旧的那个,{CLEAR}请小心！{SCROLL}",
+      "en": "Here, you can sign your name on the{NEWLINE}back of your Trainer Card.{SCROLL}Your friends will see your signature in{NEWLINE}the Union Room!{SCROLL}But writing a new signature erases the{NEWLINE}old one automatically, so be careful!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 120,
+      "zh": "战斗规则怎么样？{VAR:0200:0}",
+      "en": "Which set of rules would you like{NEWLINE}to use? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "R001: official US text (US 0046/120)"
+    },
+    {
+      "id": 121,
+      "zh": "挑战{VAR:011A:0}杯吗？{VAR:0200:0}",
+      "en": "Battle in {VAR:011A:0} Cup?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/121"
+    },
+    {
+      "id": 122,
+      "zh": "满足{VAR:011A:0}杯规则的{NEWLINE}精灵不够{CLEAR}{VAR:0132:1}只！",
+      "en": "You need at least {VAR:0132:1} Pokémon{NEWLINE}that qualify under the{CLEAR}{VAR:011A:0} Cup rules.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/122"
+    },
+    {
+      "id": 123,
+      "zh": "空想杯",
+      "en": "FANCY CUP",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s) | R001: Cup labels: 小杯/中杯/大杯 → LITTLE/MIDDLE/BIG CUP (literal; US blank)."
+    },
+    {
+      "id": 124,
+      "zh": "黄色杯",
+      "en": "PIKA CUP",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s)"
+    },
+    {
+      "id": 125,
+      "zh": "小杯",
+      "en": "LITTLE CUP",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 126,
+      "zh": "中杯",
+      "en": "MIDDLE CUP",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 127,
+      "zh": "大杯",
+      "en": "BIG CUP",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 128,
+      "zh": "{VAR:011A:0}杯",
+      "en": "{VAR:011A:0}{NEWLINE}CUP",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/128"
+    },
+    {
+      "id": 129,
+      "zh": "取消",
+      "en": "CANCEL",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/129"
+    },
+    {
+      "id": 130,
+      "zh": "确定",
+      "en": "CONFIRM",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/130"
+    },
+    {
+      "id": 131,
+      "zh": "查看规则",
+      "en": "RULES",
+      "status": "draft",
+      "origin": "us",
+      "notes": "R001: official US text (US 0046/131)"
+    },
+    {
+      "id": 132,
+      "zh": "各自选择的规则{NEWLINE}不同！",
+      "en": "You each chose different rules!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 133,
+      "zh": "请选择要参加的{NEWLINE}精灵。",
+      "en": "Please choose the Pokémon that will{NEWLINE}take part.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 134,
+      "zh": "请稍等{NEWLINE}⋯⋯Ｂ键取消",
+      "en": "Please wait...{NEWLINE}Press B to cancel.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 135,
+      "zh": "对战被取消。",
+      "en": "The battle was canceled.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 136,
+      "zh": "无法组成满足{VAR:011A:0}杯{NEWLINE}规则的{CLEAR}精灵等级合计{VAR:0134:1}的{CLEAR}队伍！",
+      "en": "It’s impossible to form a team of{NEWLINE}Pokémon that qualify under the{CLEAR}{VAR:011A:0} Cup rules with a{CLEAR}total level limit of {VAR:0134:1}.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "R001: official US text (US 0046/136)"
+    },
+    {
+      "id": 137,
+      "zh": "战斗规则怎么样？{VAR:0200:0}",
+      "en": "Which set of rules would you like{NEWLINE}to use? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "R001: official US text (US 0046/120)"
+    },
+    {
+      "id": 138,
+      "zh": "无限制条件",
+      "en": "NO RESTRICTIONS",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/138"
+    },
+    {
+      "id": 139,
+      "zh": "开始ＤＳ{NEWLINE}无线通信{VAR:0200:0}",
+      "en": "DS Wireless Communications will be{NEWLINE}launched. {VAR:0200:0}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/139"
+    },
+    {
+      "id": 140,
+      "zh": "多人战需要3只{NEWLINE}以上的精灵。",
+      "en": "For a Multi Battle, you must have{NEWLINE}at least three Pokémon.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "R001: official US text (US 0046/140)"
+    },
+    {
+      "id": 141,
+      "zh": "混合战需要3只{NEWLINE}以上的精灵。",
+      "en": "For a Mix Battle, you must have{NEWLINE}at least three Pokémon.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "R001: official US text (US 0046/141)"
+    },
+    {
+      "id": 142,
+      "zh": "您手上有不能{NEWLINE}带去的精灵。",
+      "en": "You have at least one Pokémon{NEWLINE}that can’t be taken.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "R001: official US text (US 0046/142)"
+    },
+    {
+      "id": 143,
+      "zh": "很遗憾,{NEWLINE}这边还在准备中。",
+      "en": "Sorry, this service is still being{NEWLINE}prepared.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 144,
+      "zh": "非常抱歉⋯⋯{NEWLINE}等您消灭了火箭队{CLEAR}再来吧⋯⋯",
+      "en": "Pardon us for the inconvenience...{NEWLINE}Please come back once you’ve wiped out{CLEAR}Team Rocket...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "US 0046/144 | R001: zh (等您消灭了火箭队再来吧) differs from the US (‘once you have stopped being a member of Team Rocket’); follows the zh."
+    },
+    {
+      "id": 145,
+      "zh": "基艾斯杯不能带{NEWLINE}３只以上的传说中的精灵。",
+      "en": "You cannot have more than two{NEWLINE}legendary Pokémon in the GS Cup.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/145"
+    },
+    {
+      "id": 146,
+      "zh": "非常抱歉⋯⋯{NEWLINE}我们不为穿黑衣服的人,{CLEAR}做坏事的人,{CLEAR}加入火箭队的人{SCROLL}提供服务。",
+      "en": "Pardon us for the inconvenience...{NEWLINE}but people wearing black clothing,{CLEAR}people who engage in unlawful{CLEAR}activities, and people who are{CLEAR}members of Team Rocket{CLEAR}are barred from participating.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/146"
+    },
+    {
+      "id": 147,
+      "zh": "非常抱歉,{SCROLL}若叶镇的空木博士{NEWLINE}给您的{CLEAR}锯齿耳朵皮丘无法{CLEAR}通过这里,{SCROLL}请把它寄存到电脑后{NEWLINE}再来吧。",
+      "en": "Pardon us for the inconvenience.{SCROLL}The Spiky-eared Pichu Professor Elm{NEWLINE}in New Bark Town gave you cannot{CLEAR}enter here.{SCROLL}Please place it in your PC Box{NEWLINE}and come back.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "US 0046/147; modernised from US 0046#147 [User-approved source-faithful attribution, D-2080/D-1648, 2026-10-08: Elm gave you the Pichu; replaces US attribution without changing Chinese or gameplay.]"
+    },
+    {
+      "id": 148,
+      "zh": "我已经知道了⋯⋯{CLEAR}你不是火箭队的人。{SCROLL}我帮不上你什么忙,{NEWLINE}不过会为你加油的⋯⋯",
+      "en": "I already know... that you’re not with{NEWLINE}Team Rocket.{SCROLL}I can’t do anything to help you, but{NEWLINE}I’ll be cheering you on...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "R001: US blank; translated from the zh."
+    },
+    {
+      "id": 149,
+      "zh": "你好！{NEWLINE}我将为你说明一下{CLEAR}训练师卡片的事。{SCROLL}训练是卡片是{NEWLINE}与精灵一同冒险的{CLEAR}训练师的证明,{SCROLL}上面会自动登录{NEWLINE}各种各样的情报。{SCROLL}触摸卡片就能够查看反面,{SCROLL}反面还能写上你的签名。{SCROLL}你的朋友能够在联机大厅内{CLEAR}看到你的签名！{SCROLL}另外,要写新的签名,{NEWLINE}旧的就会自动删除,{SCROLL}请一定要注意！",
+      "en": "Hello! Here I’ll explain to you about{NEWLINE}the Trainer Card.{SCROLL}Your Trainer Card, with your Pokémon of{NEWLINE}course, is proof of your status as a{CLEAR}Pokémon Trainer while you’re out{CLEAR}adventuring.{SCROLL}It keeps automatic records of all kinds{NEWLINE}of information.{SCROLL}If you touch the card, you can view the{NEWLINE}reverse side.{SCROLL}You can sign the back of your card.{SCROLL}You can show off your signature to{NEWLINE}anyone you meet in the Union Room!{SCROLL}But your signature will be erased if you{NEWLINE}decide to sign your card again, so{CLEAR}be careful!",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/149"
+    },
+    {
+      "id": 150,
+      "zh": "您能参加的精灵数量不足！",
+      "en": "You don’t have enough Pokémon that can{NEWLINE}take part!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 151,
+      "zh": "等级超过限制！",
+      "en": "Over the level limit!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 152,
+      "zh": "欢迎来到狩猎区！{SCROLL}你要接受{NEWLINE}好友的狩猎吗？{VAR:0200:0}",
+      "en": "Welcome to the Safari Zone!{SCROLL}Would you like to receive a friend’s{NEWLINE}Safari Zone? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 153,
+      "zh": "要将目前为止的活跃{NEWLINE}写进精灵记录里吗？{VAR:0200:0}",
+      "en": "Would you like to write your activity so{NEWLINE}far to your Pokémon record? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 154,
+      "zh": "之前的记录将被覆盖,{NEWLINE}可以吗？{VAR:0200:0}",
+      "en": "Your previous record will be{NEWLINE}overwritten. Is that OK? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 155,
+      "zh": "精灵记录写入中,{NEWLINE}请不要切断电源。",
+      "en": "Writing the Pokémon record... Please{NEWLINE}don’t turn off the power.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 156,
+      "zh": "{VAR:0103:0}{NEWLINE}记录完毕！　",
+      "en": "{VAR:0103:0}{NEWLINE}finished the record!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 157,
+      "zh": "请从两个人中{NEWLINE}选出一个当队长,{CLEAR}另一个人选择{NEWLINE}加入队伍。{VAR:0200:0}",
+      "en": "Please decide which of you two will be{NEWLINE}the leader. The other player must then{CLEAR}choose to join the group. {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 158,
+      "zh": "请选择交换狩猎的{NEWLINE}对象。{VAR:0200:0}",
+      "en": "Please choose who to swap Safari Zones{NEWLINE}with. {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 159,
+      "zh": "等待{VAR:0103:0}的{NEWLINE}回应。",
+      "en": "Waiting for {VAR:0103:0}{NEWLINE}to respond.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 160,
+      "zh": "{VAR:0103:0}的OK{NEWLINE}有回应了。",
+      "en": "{VAR:0103:0} replied:{NEWLINE}OK.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 161,
+      "zh": "{VAR:0103:0}的NG{NEWLINE}有回应了⋯⋯{VAR:0201:120}",
+      "en": "{VAR:0103:0} replied:{NEWLINE}No...{VAR:0201:120}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 162,
+      "zh": "要离队吗？{VAR:0200:0}",
+      "en": "Leave the group? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 163,
+      "zh": "离开了队伍",
+      "en": "You left the group.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 164,
+      "zh": "等待好友的联络。",
+      "en": "Waiting for a friend to get in touch.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 165,
+      "zh": "{VAR:0103:0}发来联络！{SCROLL}要与{VAR:0103:0}{NEWLINE}交换狩猎吗？{VAR:0200:0}",
+      "en": "{VAR:0103:0} got in touch!{SCROLL}Swap Safari Zones with {VAR:0103:0}? {VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 166,
+      "zh": "{VAR:0103:0}的OK{NEWLINE}有回应了。",
+      "en": "{VAR:0103:0} replied:{NEWLINE}OK.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 167,
+      "zh": "狩猎接受中,{NEWLINE}请稍等。{VAR:0201:60}",
+      "en": "Receiving the Safari Zone. Please wait. {VAR:0201:60}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 168,
+      "zh": "{VAR:0103:0}的狩猎{NEWLINE}接收完毕。{SCROLL}",
+      "en": "Received {VAR:0103:0}’s Safari Zone.{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 169,
+      "zh": "狩猎交换结束！{SCROLL}那么请从旁边的{NEWLINE}接待处进入吧！",
+      "en": "The Safari Zone swap is complete!{SCROLL}Please go in through the reception next{NEWLINE}door!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 170,
+      "zh": "非常抱歉,{NEWLINE}这边还在准备中。",
+      "en": "Sorry, this service is still being{NEWLINE}prepared.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 171,
+      "zh": "那么请下次再来。",
+      "en": "Please do visit again.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 172,
+      "zh": "非常抱歉,{SCROLL}您带着的这只锯耳精灵⋯⋯{CLEAR}在精灵中心的基础资料中{CLEAR}还没有登录,{CLEAR}所以不能过去。{SCROLL}请将它存到电脑上后再来吧。",
+      "en": "Pardon us for the inconvenience.{SCROLL}The Spiky-eared Pokémon you are{NEWLINE}traveling with...{CLEAR}It’s a kind that doesn’t appear in the{CLEAR}Pokémon Center’s database, so we{CLEAR}unfortunately cannot allow it to pass.{SCROLL}Please place it in a PC Box and{NEWLINE}come back.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0046/172"
+    }
+  ]
 }

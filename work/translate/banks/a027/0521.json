@@ -791,18 +791,18 @@
   {
    "id": 97,
    "zh": "你们这些不请自来的暴徒,{NEWLINE}赶紧滚出金黄市！",
-   "en": "You uninvited thugs, get out of Saffron{NEWLINE}City this instant!",
+   "en": "You uninvited thugs, get the hell out of{NEWLINE}Saffron City, now!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 滚出 is a rude 'get the hell out'; kept rude (D-0627)"
   },
   {
    "id": 98,
    "zh": "妈的,废话真多！",
-   "en": "Dammit, you talk too much!",
+   "en": "Damn it, enough of your crap!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 妈的 'damn it' + 废话真多 rude brush-off 'crap' (D-0627)"
   },
   {
    "id": 99,
@@ -879,10 +879,10 @@
   {
    "id": 108,
    "zh": "金黄车站已经被我们火箭队占领了,{NEWLINE}要坐车滚去别的地方坐！",
-   "en": "Team Rocket has taken over Saffron{NEWLINE}Station! If you want a train, go catch{CLEAR}one somewhere else!",
+   "en": "Team Rocket has taken over Saffron{NEWLINE}Station! If you want a train, get lost{CLEAR}and catch one somewhere else!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 滚去 is a rude 'get lost'; kept rude (D-0627)"
   },
   {
    "id": 109,
@@ -895,10 +895,10 @@
   {
    "id": 110,
    "zh": "这商店里的东西都是我们火箭队的,{NEWLINE}你滚一边去！",
-   "en": "Everything in this shop belongs to Team{NEWLINE}Rocket. Get out of the way!",
+   "en": "Everything in this shop belongs to Team{NEWLINE}Rocket. Now get lost!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 你滚一边去 is a rude 'get lost'; kept rude (D-0627)"
   },
   {
    "id": 111,

@@ -1,1285 +1,1285 @@
 {
- "narc": "a027",
- "bank": 625,
- "source": "work/extract/v4/a027/0625.json",
- "strings": [
-  {
-   "id": 0,
-   "zh": "您好,需要我送您回一之岛吗？{NEWLINE}每人次服务费500元。",
-   "en": "Hello. Would you like me to take you{NEWLINE}back to One Island? The fare is $500{CLEAR}per person.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Six Island. Branches: Crawdaunt wallet thief #16 fight / #22 accept duel (#26-#27) / #23 threaten (#36-#39) / #24 walk away; Rocket raid on the Fallen Red Star (Deoxys) #82-#129; post-raid chief (#140-#152) demands a Lucky Meowth God (continues in 0582); #100 male / #101 female."
-  },
-  {
-   "id": 1,
-   "zh": "随时恭候您的光临。",
-   "en": "We’re always at your service.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 2,
-   "zh": "好的,请跟我来吧。",
-   "en": "Very well. Please follow me.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 3,
-   "zh": "抱歉,您身上的钱不够支付服务费。",
-   "en": "Sorry, you don’t have enough money to{NEWLINE}pay the fare.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 4,
-   "zh": "换给你的美纳斯精神么？{NEWLINE}哈克龙非常可爱呢！",
-   "en": "How’s that Milotic I traded you doing?{SCROLL}Your Dragonair’s so cute!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "US 0634/4; modernised from US 0634#4"
-  },
-  {
-   "id": 5,
-   "zh": "这里是六之岛。{NEWLINE}天降红星的神秘之岛。",
-   "en": "This is Six Island. The mysterious island{NEWLINE}of the Fallen Red Star.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 6,
-   "zh": "这里是六之岛。{NEWLINE}想要获得幸福的话,{CLEAR}就来这里参拜喵喵神吧！",
-   "en": "This is Six Island. If you want good{NEWLINE}fortune, come here and pay your{CLEAR}respects to the Meowth God!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 7,
-   "zh": "我们六之岛的人世代抢劫、打渔为生,{NEWLINE}根本没有做生意的天赋,{CLEAR}精灵联盟却偏要强制我们{CLEAR}开发什么旅游业的生意,{CLEAR}结果就是游客越来越少,{CLEAR}岛上越来越穷。{SCROLL}看来只有找来幸福的喵喵神{NEWLINE}赐给我们财富,{CLEAR}才能让六之岛的人们重新富裕起来了。",
-   "en": "For generations, we folks on Six Island{NEWLINE}lived by robbery and fishing. We’ve got{CLEAR}no talent for business at all. But the{CLEAR}Pokémon League insisted on forcing us{CLEAR}into the tourism business. So tourists{CLEAR}keep dwindling, and the island keeps{CLEAR}getting poorer.{SCROLL}Looks like the only way for the people{NEWLINE}of Six Island to get rich again is to find{CLEAR}the Lucky Meowth God and have it grant{CLEAR}us wealth.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 8,
-   "zh": "哇,这只铁螯龙虾好强壮啊,{NEWLINE}我还是第一次见到这么漂亮的……",
-   "en": "Wow, this Crawdaunt is so{NEWLINE}strong-looking. This is the first time{CLEAR}I’ve seen one this beautiful...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 9,
-   "zh": "铁螯龙虾『Craaa——dau！",
-   "en": "Crawdaunt: Craaa-dau!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 10,
-   "zh": "呀！铁螯龙虾你干什么！{NEWLINE}那是我的钱包啊！",
-   "en": "Hey! Crawdaunt, what are you doing?!{NEWLINE}That’s my wallet!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 11,
-   "zh": "喂,铁螯龙虾你回来呀！{NEWLINE}钱包里还有我的证件和钱啊！",
-   "en": "Hey, Crawdaunt, come back! My ID and{NEWLINE}money are in that wallet!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 12,
-   "zh": "路过的训练家你好,{NEWLINE}我的钱包被铁螯龙虾抢走了,{CLEAR}但是我不会冲浪术,{CLEAR}能请你帮我把钱包给找回来吗？{CLEAR}里面有我的证件和这次旅游的钱,{CLEAR}这些对我来说非常重要,拜托你了！",
-   "en": "Hello, passing Trainer. A Crawdaunt{NEWLINE}snatched my wallet! But my Pokémon{CLEAR}don’t know Surf. Could you please get{CLEAR}my wallet back for me? My ID and the{CLEAR}money for this trip are inside. They’re{CLEAR}really important to me. Please!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 13,
-   "zh": "唉,早知道六之岛这么危险,{NEWLINE}我就不来这旅游了。",
-   "en": "Sigh... If I’d known Six Island was this{NEWLINE}dangerous, I’d never have come here{CLEAR}on vacation.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 14,
-   "zh": "感觉最近岛上的人变得温和了,{NEWLINE}来这里的游客也变多了。{CLEAR}难道真的是幸福的喵喵神{CLEAR}让这座岛产生了变化吗？",
-   "en": "The people on the island seem gentler{NEWLINE}lately, and more tourists are coming.{CLEAR}Did the Lucky Meowth God really change{CLEAR}this island?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 15,
-   "zh": "嘿嘿,干的不错啊铁螯龙虾。{NEWLINE}这次的笨蛋游客{CLEAR}居然带了这么多钱来,{CLEAR}看来又能去一之岛的餐厅{CLEAR}好好喝一顿了。{SCROLL}哦！美味的朗姆酒我来了！",
-   "en": "Heh heh, nice work, Crawdaunt. This{NEWLINE}dumb tourist brought so much money!{CLEAR}Looks like I can go to the restaurant{CLEAR}on One Island and drink my fill again.{SCROLL}Oh! Sweet, delicious rum, here I come!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 16,
-   "zh": "把钱包还给游客",
-   "en": "Give the tourist’s wallet back",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "",
-   "category": "menu_touch_1line"
-  },
-  {
-   "id": 17,
-   "zh": "不关我事",
-   "en": "Not my business",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "",
-   "category": "menu_touch_1line"
-  },
-  {
-   "id": 18,
-   "zh": "{VAR:0103:0}『居然命令口袋妖怪去抢钱包,{NEWLINE}你这样的人实在是太可恶了,{CLEAR}赶紧把钱包还给人家！",
-   "en": "{VAR:0103:0}: Ordering a Pokémon to steal{NEWLINE}someone’s wallet? People like you are{CLEAR}just rotten. Give that wallet{CLEAR}back, now!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 19,
-   "zh": "嘿,我祖上世代在这片海域{NEWLINE}骑着巨牙鲨抢劫为生,{CLEAR}可从来没听说过{CLEAR}把抢来的钱还回去的道理。",
-   "en": "Heh. For generations, my ancestors{NEWLINE}lived by riding Sharpedo across these{CLEAR}waters and robbing folks. Never once{CLEAR}heard of giving back what you stole.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 20,
-   "zh": "{VAR:0103:0}『时代早就变了,{NEWLINE}你们那种海盗行为已经被禁止了,{CLEAR}现在抢别人的东西就是不对,{CLEAR}快点把钱包交出来！",
-   "en": "{VAR:0103:0}: Times have changed. Piracy{NEWLINE}like yours has been banned. Taking{CLEAR}other people’s things is just wrong{CLEAR}now. Hand over that wallet!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 21,
-   "zh": "你如果想要回钱包,{NEWLINE}就得按我们岛上的传统来——{CLEAR}用你的口袋妖怪跟我决斗,{CLEAR}你如果能赢了我,{CLEAR}我就承认你是勇敢的海上战士,{CLEAR}就把钱包还给你。{SCROLL}怎么样,你这个臭矮子敢跟我打吗？",
-   "en": "If you want the wallet back, you gotta{NEWLINE}do it by our island tradition: duel me{CLEAR}with your Pokémon. Beat me, and I’ll{CLEAR}accept you as a brave warrior of the{CLEAR}sea and give you the wallet.{SCROLL}Well? Do you dare fight me, you stinking{NEWLINE}little shrimp?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 22,
-   "zh": "打就打,我才不怕你呢",
-   "en": "Bring it. I’m not scared of you",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "",
-   "category": "menu_touch_1line"
-  },
-  {
-   "id": 23,
-   "zh": "你如果不还,我可要动手了",
-   "en": "Give it back, or I’ll make you",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "",
-   "category": "menu_touch_1line"
-  },
-  {
-   "id": 24,
-   "zh": "算了,我不管了",
-   "en": "Forget it. I’m staying out of it",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "menu width fix (follow-up 1): was 'Forget it. I’m staying out of this'",
-   "category": "menu_touch_1line"
-  },
-  {
-   "id": 25,
-   "zh": "哈哈哈,真是个没用的矮个子胆小鬼。",
-   "en": "Ha ha ha! What a useless little shrimp{NEWLINE}of a coward.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 26,
-   "zh": "哟呵,还挺有勇气,{NEWLINE}我对你有点刮目相看了。{CLEAR}那么赌上钱包和海上战士荣誉的决斗,{CLEAR}现在开始！",
-   "en": "Whoa-ho, you’ve got guts. I’m starting{NEWLINE}to see you in a new light. Then the duel{CLEAR}for the wallet and the honor of a sea{CLEAR}warrior begins now!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 27,
-   "zh": "你有种,小矮子你有种！{NEWLINE}我输得心服口服。{CLEAR}这个钱包是你的战利品,拿去吧！",
-   "en": "You’ve got guts, little shrimp. You’ve{NEWLINE}got guts! I lost fair and square. This{CLEAR}wallet is your spoils. Take it!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 28,
-   "zh": "{VAR:0103:0}得到了游客的钱包！",
-   "en": "{VAR:0103:0} got the tourist’s wallet!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 29,
-   "zh": "嘿嘿,真高兴认识你这样的强者,{NEWLINE}什么时候有时间了,{CLEAR}咱们一起喝一杯啊！",
-   "en": "Heh heh. I’m glad to meet someone as{NEWLINE}strong as you. When you’ve got time,{CLEAR}let’s grab a drink together!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 30,
-   "zh": "{VAR:0103:0}『好的,不过我还要{NEWLINE}把钱包还给施主,{CLEAR}回头见了！",
-   "en": "{VAR:0103:0}: Sure. But first I’ve got to{NEWLINE}return this wallet to its owner. See{CLEAR}you later!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "zh 施主 here means the wallet's owner (the tourist)."
-  },
-  {
-   "id": 31,
-   "zh": "{VAR:0103:0}『这是你的钱包,{NEWLINE}快看看里面的东西少没少吧。",
-   "en": "{VAR:0103:0}: Here’s your wallet. Take a{NEWLINE}look and see if anything’s missing.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 32,
-   "zh": "哇,你真的把我的钱包给找回来了！？{NEWLINE}谢谢,真的非常感谢,{CLEAR}我看看里面的东西啊……",
-   "en": "Wow, you really got my wallet back?!{NEWLINE}Thank you, thank you so much! Let me{CLEAR}check what’s inside...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 33,
-   "zh": "没错,证件和钱都在,{NEWLINE}真的是太谢谢你了。{CLEAR}这两万块钱请你收下吧,{CLEAR}就当作是对你的报答了,{CLEAR}真的非常感谢！",
-   "en": "Yes, my ID and money are all here.{NEWLINE}Thank you so much. Please take this{CLEAR}$20,000 as a reward. Thank you, really!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "",
-   "qa_ignore": [
-    "number_missing"
-   ]
-  },
-  {
-   "id": 34,
-   "zh": "{VAR:0103:0}得到了20000元！",
-   "en": "{VAR:0103:0} received $20,000!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "",
-   "qa_ignore": [
-    "number_missing"
-   ]
-  },
-  {
-   "id": 35,
-   "zh": "{VAR:0103:0}『好,我就用你们的规矩,{NEWLINE}让你输得心服口服！",
-   "en": "{VAR:0103:0}: Fine. I’ll play by your rules{NEWLINE}and beat you fair and square!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 36,
-   "zh": "{VAR:0103:0}『你如果执意不还钱包,{NEWLINE}还要继续扯什么海盗的规矩,{CLEAR}那就别怪我不客气了！",
-   "en": "{VAR:0103:0}: If you insist on keeping the{NEWLINE}wallet and keep dragging in your pirate{CLEAR}rules, don’t blame me for what{CLEAR}happens next!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 37,
-   "zh": "妈的,你这个死矮子,{NEWLINE}海盗是这个世界上最光荣的职业！{CLEAR}我要让你知道我的厉害！",
-   "en": "Dammit, you lousy little shrimp! Piracy{NEWLINE}is the most glorious profession in the{CLEAR}world! I’ll show you what I’m made of!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 38,
-   "zh": "为什么……我输掉了决斗,{NEWLINE}输掉了海上战士的荣耀,我……",
-   "en": "Why... I lost the duel... I lost the{NEWLINE}honor of a sea warrior. I...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 39,
-   "zh": "{VAR:0103:0}『不要说废话了,{NEWLINE}把钱包拿来吧！",
-   "en": "{VAR:0103:0}: Cut the nonsense. Hand over{NEWLINE}the wallet!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 40,
-   "zh": "{VAR:0103:0}『我现在要把钱包还给失主去,{NEWLINE}你在这好好反思一下自己的{CLEAR}那些错误思想和行为吧！",
-   "en": "{VAR:0103:0}: I’m going to return this wallet{NEWLINE}to its owner now. You stay here and{CLEAR}have a good think about all your wrong{CLEAR}ideas and actions!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 41,
-   "zh": "大海就是我们祖传的牧场,{NEWLINE}我们的传统就是{CLEAR}想要什么就去牧场里拿,{CLEAR}对六之岛的人来说,{CLEAR}这就是天经地义的！",
-   "en": "The sea is the pasture our ancestors{NEWLINE}left us. Our tradition is that if you{CLEAR}want something, you go take it from the{CLEAR}pasture. To Six Island folks, that’s{CLEAR}just the natural order of things!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 42,
-   "zh": "六之岛周围有许多水系精灵,{NEWLINE}它们都非常喜欢跟人类玩,{CLEAR}如果你看到想跟你玩的精灵,{CLEAR}不要拒绝它们哦。",
-   "en": "There are lots of Water-type Pokémon{NEWLINE}around Six Island. They love playing{CLEAR}with people. If you see one that wants{CLEAR}to play with you, don’t turn it down.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 43,
-   "zh": "多亏了幸福的喵喵神指引,{NEWLINE}六之岛的游客渐渐多起来了,{CLEAR}我现在用铁螯龙虾给游客们表演节目,{CLEAR}也能赚到不少钱呢。",
-   "en": "Thanks to the guidance of the Lucky{NEWLINE}Meowth God, more and more tourists are{CLEAR}coming to Six Island. I put on shows for{CLEAR}them with my Crawdaunt now, and I make{CLEAR}pretty good money.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 44,
-   "zh": "我在这一带打渔为生,{NEWLINE}有时候会钓上一些奇怪的东西,{CLEAR}你是训练家的话或许能用得着,{CLEAR}要买点带回去吗？",
-   "en": "I fish around here for a living.{NEWLINE}Sometimes I reel in some strange things.{CLEAR}If you’re a Trainer, maybe you can use{CLEAR}them. Want to buy some?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 45,
-   "zh": "深海之牙{NEWLINE}1000元",
-   "en": "Deep Sea Tooth{NEWLINE}$1000",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "",
-   "category": "menu_touch_col5"
-  },
-  {
-   "id": 46,
-   "zh": "深海之鳞{NEWLINE}1000元",
-   "en": "Deep Sea Scale{NEWLINE}$1000",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "",
-   "category": "menu_touch_col5"
-  },
-  {
-   "id": 47,
-   "zh": "浅水贝{NEWLINE}200元",
-   "en": "Shoal Shell{NEWLINE}$200",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "",
-   "category": "menu_touch_col5"
-  },
-  {
-   "id": 48,
-   "zh": "空贝铃{NEWLINE}5000元",
-   "en": "Shell Bell{NEWLINE}$5000",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "",
-   "category": "menu_touch_col5"
-  },
-  {
-   "id": 49,
-   "zh": "不买了",
-   "en": "Nothing, thanks",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 8 source(s)",
-   "category": "menu_touch_col5"
-  },
-  {
-   "id": 50,
-   "zh": "我每天都会在这垂钓,{NEWLINE}欢迎你随时再来。",
-   "en": "I fish here every day. Come{NEWLINE}back anytime.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 51,
-   "zh": "你身上的钱不够啊！",
-   "en": "You don’t have enough money!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 52,
-   "zh": "这是您买的东西,请拿好。",
-   "en": "Here’s what you bought. Take good care{NEWLINE}of it.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 53,
-   "zh": "你看还需要再来点什么？{SCROLL}",
-   "en": "Anything else you’d like?{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), flags page_breaks_lost"
-  },
-  {
-   "id": 54,
-   "zh": "多亏幸福的喵喵神,{NEWLINE}现在岛民们都过上了富足的生活！",
-   "en": "Thanks to the Lucky Meowth God, all the{NEWLINE}islanders live in comfort now!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 55,
-   "zh": "六之岛的岛主{NEWLINE}请我到岛上来当保安,{CLEAR}说是遇到闹事的游客就出手制止他们。{CLEAR}可是我来六之岛这么久了,{CLEAR}也没见到几个游客,{CLEAR}简直无聊死了。{CLEAR}你能跟我来场精灵对战解解闷吗？",
-   "en": "The chief of Six Island hired me to work{NEWLINE}security on the island. He said to stop{CLEAR}any tourists who make trouble. But I’ve{CLEAR}been on Six Island all this time and{CLEAR}barely seen any tourists. I’m bored to{CLEAR}death. Will you have a Pokémon battle{CLEAR}with me to kill some time?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 56,
-   "zh": "你是喜欢单打还是双打？",
-   "en": "Do you like Singles or Doubles?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 57,
-   "zh": "单打",
-   "en": "Singles",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 6 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)",
-   "category": "menu_touch_1line"
-  },
-  {
-   "id": 58,
-   "zh": "双打",
-   "en": "Doubles",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 5 source(s); other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl)",
-   "category": "menu_touch_1line"
-  },
-  {
-   "id": 59,
-   "zh": "先不打了",
-   "en": "Not now",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 3 source(s); other variants: 3 more v3 TM candidates (tm_v4_matches.jsonl)",
-   "category": "menu_touch_1line"
-  },
-  {
-   "id": 60,
-   "zh": "嘿嘿,那我可要上了！",
-   "en": "Heh heh, here I come!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 61,
-   "zh": "厉害厉害！{NEWLINE}你不是一般的训练家吧？{CLEAR}能跟你这样的训练家交手{CLEAR}实在是有趣。{SCROLL}我还会在这担任{NEWLINE}好长一段时间的保安,{CLEAR}如果你愿意的话,{CLEAR}随时可以再来找我对战。",
-   "en": "Amazing! You’re no ordinary Trainer,{NEWLINE}are you? Battling a Trainer like you is{CLEAR}really fun.{SCROLL}I’ll be working security here for a good{NEWLINE}while yet. If you like, come battle me{CLEAR}again anytime.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 62,
-   "zh": "你的精灵不够,没法进行双打。",
-   "en": "You don’t have enough Pokémon for a{NEWLINE}Double Battle.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 63,
-   "zh": "我和搭档在这里{NEWLINE}研究神秘三角好多年了,{CLEAR}虽然在神秘三角的研究方面{CLEAR}没有太大突破,{CLEAR}但是却意外研究出了一个{CLEAR}叫做「三重攻击」的精灵招式。{SCROLL}这是个很实用的招式,{NEWLINE}你如果给我一个诱饵球,{CLEAR}我就可以教给你的精灵,{CLEAR}怎么样,要学吗？",
-   "en": "My partner and I have studied the{NEWLINE}Mystery Triangle here for years. We{CLEAR}haven’t made much of a breakthrough on{CLEAR}the Mystery Triangle itself, but by{CLEAR}accident we came up with a Pokémon move{CLEAR}called Tri Attack.{SCROLL}It’s a very useful move. If you give me{NEWLINE}a Lure Ball, I can teach it to your{CLEAR}Pokémon. How about it? Want to{CLEAR}learn it?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "#63 (before Deoxys wakes, fee: Lure Ball) / #77 (after, fee: Heavy Ball)."
-  },
-  {
-   "id": 64,
-   "zh": "要让哪个精灵学呢？{SCROLL}",
-   "en": "Which Pokémon should learn it?{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 3 source(s), flags page_breaks_lost; other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 65,
-   "zh": "想学的话随时再来找我。",
-   "en": "Come see me anytime you want to{NEWLINE}learn it.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 2 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 66,
-   "zh": "你并没有诱饵球啊,{NEWLINE}等有球了再来找我吧。",
-   "en": "You don’t have a Lure Ball. Come back{NEWLINE}when you have one.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s)"
-  },
-  {
-   "id": 67,
-   "zh": "抱歉……这个精灵{NEWLINE}没法记住三重攻击。{SCROLL}",
-   "en": "Sorry... This Pokémon can’t learn{NEWLINE}Tri Attack.{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 68,
-   "zh": "还没出生的精灵{NEWLINE}恐怕学不会这个技能……{SCROLL}",
-   "en": "I’m afraid a Pokémon that hasn’t{NEWLINE}hatched yet can’t learn this move...{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 3 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 69,
-   "zh": "这只{VAR:0100:0}{NEWLINE}已经会三重攻击了！{SCROLL}",
-   "en": "This {VAR:0100:0} already knows{NEWLINE}Tri Attack!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 70,
-   "zh": "１{VAR:0201:20}　２{VAR:0201:20}　…{VAR:0201:20}…{VAR:0201:20}完成！",
-   "en": "1{VAR:0201:20} 2{VAR:0201:20} ...{VAR:0201:20}...{VAR:0201:20}Done!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), flags fullwidth_chars; other variants: 6 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 71,
-   "zh": "{VAR:0101:0}学会了三重攻击！",
-   "en": "{VAR:0101:0} learned Tri Attack!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 72,
-   "zh": "这样一来{NEWLINE}你的{VAR:0100:0}{CLEAR}已经学会三重攻击了！{SCROLL}那么按照约定,{NEWLINE}1个诱饵球我拿走了。",
-   "en": "And with that, your {VAR:0100:0} has{NEWLINE}learned Tri Attack!{SCROLL}Now, as we agreed, I’ll take 1{NEWLINE}Lure Ball.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 73,
-   "zh": "{VAR:0101:0}想要记住{NEWLINE}新的三重攻击……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习三重攻击{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn{NEWLINE}Tri Attack...!{SCROLL}But {VAR:0101:0} already knows{NEWLINE}four moves!{SCROLL}Should it forget a move to learn{NEWLINE}Tri Attack?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 74,
-   "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
-   "en": "Forget {VAR:0106:1}. Is that OK?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 75,
-   "zh": "{VAR:0101:0}完全忘了{NEWLINE}{VAR:0106:1}的用法！{SCROLL}然后……！",
-   "en": "{VAR:0101:0} forgot all{NEWLINE}about {VAR:0106:1}!{SCROLL}And...!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 4 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 76,
-   "zh": "你是要放弃{NEWLINE}让它记住三重攻击吗？{VAR:0200:0}",
-   "en": "Give up on teaching it Tri Attack?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 77,
-   "zh": "研究了那么久的神秘三角,{NEWLINE}竟然是来自外太空的精灵代欧奇希斯。{CLEAR}虽说这个发现很有科研价值,{CLEAR}但是耗费在这上面的时间{CLEAR}确实有点太多了。{CLEAR}好在我们在研究神秘三角的时候,{CLEAR}还意外研究出了一个{CLEAR}叫做「三重攻击」的精灵招式。{SCROLL}这是个很实用的招式,{NEWLINE}你如果给我一个重量球,{CLEAR}我就可以教给你的精灵,{CLEAR}怎么样,要学吗？",
-   "en": "All that time studying the Mystery{NEWLINE}Triangle, and it turned out to be{CLEAR}Deoxys, a Pokémon from outer space.{CLEAR}The discovery has real scientific value,{CLEAR}but we did spend an awful lot of time on{CLEAR}it. Luckily, while studying the Mystery{CLEAR}Triangle, we came up with a Pokémon{CLEAR}move called Tri Attack by accident.{SCROLL}It’s a very useful move. If you give me{NEWLINE}a Heavy Ball, I can teach it to your{CLEAR}Pokémon. How about it? Want to{CLEAR}learn it?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 78,
-   "zh": "非常坚硬的红色三棱锥,{NEWLINE}把手放上去似乎能感受到心跳。",
-   "en": "A very hard red pyramid. When you put{NEWLINE}your hand on it, you can almost feel{CLEAR}a heartbeat.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 79,
-   "zh": "这个红色的神秘三角,{NEWLINE}六之岛当地人称呼它为天降红星,{CLEAR}据说是从天而降的一颗红色流星。{CLEAR}但根据我们的仪器检测,{CLEAR}神秘三角不是无机物陨石,{CLEAR}而是有机生命体。{CLEAR}我和搭档在这里研究了数年,{CLEAR}为的就是弄清楚为什么{CLEAR}有机生命体会以这种形式存在。",
-   "en": "This red Mystery Triangle is what the{NEWLINE}locals of Six Island call the Fallen Red{CLEAR}Star. They say it’s a red meteor that{CLEAR}fell from the sky.{SCROLL}But according to our instruments, the{NEWLINE}Mystery Triangle isn’t an inorganic{CLEAR}meteorite. It’s an organic life-form. My{CLEAR}partner and I have studied it here for{CLEAR}years to find out why a living thing{CLEAR}would exist in this form.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 80,
-   "zh": "我为了孵化精灵蛋来到了六之岛,{NEWLINE}但这里总给我一种危险的感觉,{CLEAR}我还是带着蛋去别的地方看看吧。",
-   "en": "I came to Six Island to hatch my{NEWLINE}Pokémon Egg, but this place always{CLEAR}gives me a sense of danger. I think I’ll{CLEAR}take the Egg somewhere else.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 81,
-   "zh": "一颗精灵蛋,{NEWLINE}看起来没什么特别的。",
-   "en": "A Pokémon Egg. It doesn’t look like{NEWLINE}anything special.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 82,
-   "zh": "我不管你们是什么火箭队、水箭队,{NEWLINE}敢来我六之岛的地盘撒野,{CLEAR}你们就必须给我吃点苦头。",
-   "en": "I don’t care if you’re Team Rocket,{NEWLINE}Team Rocket-Shmocket or whatever.{CLEAR}Anyone who dares run wild on my Six{CLEAR}Island turf is gonna get a taste{CLEAR}of pain.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 83,
-   "zh": "比夏斯『老东西,{NEWLINE}无知可是会招来杀身之祸的。",
-   "en": "Marauder: Old man, ignorance can get{NEWLINE}you killed.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 84,
-   "zh": "老朋友,咱们上！",
-   "en": "Old friend, let’s go!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 85,
-   "zh": "好！",
-   "en": "Right!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 86,
-   "zh": "帝牙海狮,冲浪术！{NEWLINE}快唦蛙,使用攀瀑！",
-   "en": "Walrein, use Surf! Poliwrath,{NEWLINE}use Waterfall!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "zh 快唦蛙 read as 快泳蛙 (Poliwrath, see 0443 #108)."
-  },
-  {
-   "id": 87,
-   "zh": "明明属性相克却没有倒下？！",
-   "en": "It had the type advantage, and it{NEWLINE}didn’t go down?!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 88,
-   "zh": "伦达『操你妈了个逼的,{NEWLINE}真是烦人的苍蝇。{CLEAR}尼多王,给我干死它们！",
-   "en": "Petrel: Fuck you, you motherfucking{NEWLINE}flies! What a pain in the ass. Nidoking,{CLEAR}fucking kill ’em!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 89,
-   "zh": "尼多王『Niiii——do！",
-   "en": "Nidoking: Niiii-do!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 90,
-   "zh": "不……怎么……怎么会这样,{NEWLINE}居然这么轻易就被打败了……",
-   "en": "No... How... How could this happen? We{NEWLINE}were beaten so easily...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 91,
-   "zh": "这两个人好厉害……{NEWLINE}只以咱们的力量恐怕……",
-   "en": "These two are too strong... With just{NEWLINE}our strength, I’m afraid...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 92,
-   "zh": "{VAR:0103:0}『让我来对付他们吧！",
-   "en": "{VAR:0103:0}: Leave them to me!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 93,
-   "zh": "来参加巡礼的年轻人……",
-   "en": "The young one who came for{NEWLINE}the pilgrimage...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 94,
-   "zh": "{VAR:0103:0}『火箭队虽然无恶不作,{NEWLINE}但论实力还是很强的,{CLEAR}我来这里就是为了阻止他们的行动。",
-   "en": "{VAR:0103:0}: Team Rocket may be evil to the{NEWLINE}core, but they’re strong. I came here{CLEAR}to stop them.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 95,
-   "zh": "比夏斯『跟情报说的一样,{NEWLINE}你这家伙果然也在群岛。",
-   "en": "Marauder: Just like the intel said.{NEWLINE}You’re in the islands too.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 96,
-   "zh": "伦达『狗娘养的,又跑来坏事是吧？{NEWLINE}我跟你说,我们这次来了四个干部,{CLEAR}代欧奇希斯我们要定了！",
-   "en": "Petrel: You son of a bitch, here to{NEWLINE}screw things up again, huh? Listen up.{CLEAR}We brought four Executives this time.{CLEAR}Deoxys is ours, no matter what!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 97,
-   "zh": "{VAR:0103:0}『代欧奇希斯？",
-   "en": "{VAR:0103:0}: Deoxys?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 98,
-   "zh": "比夏斯『看来你这个混蛋{NEWLINE}还什么都不知道啊。",
-   "en": "Marauder: Looks like you don’t know a{NEWLINE}thing, you bastard.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 99,
-   "zh": "{VAR:0103:0}『无所谓,只要在这里{NEWLINE}打倒你们就好了。",
-   "en": "{VAR:0103:0}: Doesn’t matter. All I have to{NEWLINE}do is beat you here.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 100,
-   "zh": "伦达『狂妄的小子,你蹦达不了几天了,{NEWLINE}拿命来吧！",
-   "en": "Petrel: You cocky little punk, you don’t{NEWLINE}have many days left to jump around.{CLEAR}Now die!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 101,
-   "zh": "伦达『狂妄的丫头,你蹦达不了几天了,{NEWLINE}拿命来吧！",
-   "en": "Petrel: You cocky little girl, you don’t{NEWLINE}have many days left to jump around.{CLEAR}Now die!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 102,
-   "zh": "哼,我活了这么大年纪,{NEWLINE}虚张声势的人见得多了。",
-   "en": "Hmph. I’ve lived a long life, and I’ve{NEWLINE}seen plenty of people who were{CLEAR}all bluster.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 103,
-   "zh": "赤焰松『快看,石头有反应了！",
-   "en": "Maxie: Look, the stone is reacting!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 104,
-   "zh": "水吾桐『跟老大说的一样,{NEWLINE}只要持续用红蓝宝珠照射石头,{CLEAR}代欧奇希斯就能苏醒过来。",
-   "en": "Archie: Just like the boss said. Keep{NEWLINE}shining the Red and Blue Orbs on the{CLEAR}stone, and Deoxys will wake up.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 105,
-   "zh": "赤焰松『集中注意力快点弄,{NEWLINE}不要在这里拖得太久。",
-   "en": "Maxie: Focus and hurry up. We can’t{NEWLINE}drag this out here.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 106,
-   "zh": "水吾桐『闭嘴吧,轮不到你指挥我。",
-   "en": "Archie: Shut it. You don’t get to give{NEWLINE}me orders.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 107,
-   "zh": "进入战斗！{SCROLL}战斗结束。",
-   "en": "Battle start!{SCROLL}Battle over.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 108,
-   "zh": "比夏斯『混蛋……又一次被打败了……",
-   "en": "Marauder: Damn it... Beaten again...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 109,
-   "zh": "伦达『妈的,等我们完成{NEWLINE}对传说精灵的洗脑,{CLEAR}第一个被猎杀的目标就是你！",
-   "en": "Petrel: Shit! Once we finish{NEWLINE}brainwashing those legendary Pokémon,{CLEAR}you’re the first one we hunt down!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 110,
-   "zh": "{VAR:0103:0}『我的目标可从来不是{NEWLINE}你们这些不堪一击的家伙,{CLEAR}不要挡路！",
-   "en": "{VAR:0103:0}: My target was never{NEWLINE}pushovers like you. Out of my way!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 111,
-   "zh": "赤焰松『联盟冠军{VAR:0103:0}！？",
-   "en": "Maxie: League Champion {VAR:0103:0}?!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 112,
-   "zh": "水吾桐『该死的玩意儿,{NEWLINE}偏偏这个时候跑出来……",
-   "en": "Archie: Damn pest, showing up right now{NEWLINE}of all times...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 113,
-   "zh": "赤焰松『太好了！代欧奇希斯感受到{NEWLINE}红蓝宝珠的力量,{CLEAR}终于苏醒过来了！",
-   "en": "Maxie: Excellent! Deoxys sensed the{NEWLINE}power of the Red and Blue Orbs and has{CLEAR}finally awakened!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 114,
-   "zh": "{VAR:0103:0}『没事了,代欧奇希斯。{NEWLINE}有我在这里,不会让火箭队把你抓走的。",
-   "en": "{VAR:0103:0}: It’s all right, Deoxys. As long{NEWLINE}as I’m here, I won’t let Team Rocket{CLEAR}take you.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 115,
-   "zh": "代欧奇希斯『Deooo——xy！",
-   "en": "Deoxys: Deooo-xy!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 116,
-   "zh": "水吾桐『好一个天真的小鬼。",
-   "en": "Archie: What a naive little brat.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 117,
-   "zh": "赤焰松『连红蓝宝珠可以吸引{NEWLINE}代欧奇希斯都不知道。",
-   "en": "Maxie: You didn’t even know the Red and{NEWLINE}Blue Orbs could lure Deoxys.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 118,
-   "zh": "赤焰松『来吧代欧奇希斯！{NEWLINE}水吾桐『感受红蓝宝珠的召唤吧！",
-   "en": "Maxie: Come, Deoxys!{NEWLINE}Archie: Feel the call of the Red and{CLEAR}Blue Orbs!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 119,
-   "zh": "{VAR:0103:0}『代欧奇希斯,不要离开我身边……",
-   "en": "{VAR:0103:0}: Deoxys, don’t leave my side...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 120,
-   "zh": "伦达『哈哈哈哈！机会来了！{NEWLINE}去吧,特制球！",
-   "en": "Petrel: Ha ha ha ha! Here’s our chance!{NEWLINE}Go, Special Ball!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 121,
-   "zh": "伦达『哈哈哈哈！你个臭傻逼！{NEWLINE}这下没辙了吧！",
-   "en": "Petrel: Ha ha ha ha! You stupid fucking{NEWLINE}moron! Nothing you can do now, huh?!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 122,
-   "zh": "{VAR:0103:0}『可恶……怎么会这样……",
-   "en": "{VAR:0103:0}: Dammit... How could{NEWLINE}this happen...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 123,
-   "zh": "比夏斯『任务完成了,{NEWLINE}不要多逞口舌之快,{CLEAR}马上撤退！",
-   "en": "Marauder: Mission complete. Quit running{NEWLINE}your mouth and retreat, now!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 124,
-   "zh": "{VAR:0103:0}『唉,没想到这次占了先机,{NEWLINE}却还是被火箭队算计了。",
-   "en": "{VAR:0103:0}: Sigh... I got here first this{NEWLINE}time, and Team Rocket still{CLEAR}outsmarted me.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 125,
-   "zh": "年轻人,刚才那伙人中{NEWLINE}有人叫你联盟冠军,{CLEAR}你真的是联盟冠军{VAR:0103:0}吗？",
-   "en": "Young one, someone in that gang just{NEWLINE}called you League Champion. Are you{CLEAR}really League Champion {VAR:0103:0}?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 126,
-   "zh": "{VAR:0103:0}『是的……{NEWLINE}真对不起,我没能保护好代欧奇希斯……",
-   "en": "{VAR:0103:0}: Yes... I’m so sorry. I{NEWLINE}couldn’t protect Deoxys...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 127,
-   "zh": "六之岛没了天降红星,{NEWLINE}今后的财路怕是要断了,{CLEAR}为了六之岛岛民的生活,{CLEAR}拜托冠军大人{CLEAR}去把代欧奇希斯带回来吧！",
-   "en": "Without the Fallen Red Star, Six{NEWLINE}Island’s source of income will dry up.{CLEAR}For the sake of the people of Six{CLEAR}Island, please, Champion, go and bring{CLEAR}Deoxys back!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 128,
-   "zh": "{VAR:0103:0}『您放心,打败火箭队、{NEWLINE}拯救传说中的精灵是我的责任。",
-   "en": "{VAR:0103:0}: Don’t worry. Beating Team{NEWLINE}Rocket and saving legendary Pokémon is{CLEAR}my duty.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 129,
-   "zh": "好、好,有了冠军大人的承诺,{NEWLINE}相信代欧奇希斯一定可以回来。{SCROLL}至于冠军大人参加诸岛巡礼的事,{NEWLINE}我认可您通过了六之岛的考验,{CLEAR}请冠军大人尽快完成其他巡礼,{CLEAR}早日把代欧奇希斯带回来。",
-   "en": "Good, good. With the Champion’s{NEWLINE}promise, I’m sure Deoxys will come back.{SCROLL}As for your Island Pilgrimage, Champion,{NEWLINE}I recognize that you’ve passed the Six{CLEAR}Island trial. Please finish the rest of{CLEAR}the pilgrimage quickly and bring Deoxys{CLEAR}back soon.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 130,
-   "zh": "太不可思议了,{NEWLINE}代欧奇希斯竟然变化成了{CLEAR}天降红星沉睡在六之岛。{CLEAR}这么说来,其他口袋妖怪{CLEAR}也有可能变化成某种形态{CLEAR}隐藏在这个世界的某个角落。",
-   "en": "Unbelievable. Deoxys turned into the{NEWLINE}Fallen Red Star and slept here on Six{CLEAR}Island. That means other Pokémon may{CLEAR}also be hiding in some corner of the{CLEAR}world in some other form.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 131,
-   "zh": "我认得这伙人,{NEWLINE}他们是恶名昭彰的火箭队,{CLEAR}他们来六之岛要干什么？",
-   "en": "I recognize that gang. They’re the{NEWLINE}notorious Team Rocket. What are they{CLEAR}doing on Six Island?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 132,
-   "zh": "我刚才正在做研究,{NEWLINE}这些家伙突然出现{CLEAR}不由分说地就把我给赶下来了,{CLEAR}真是蛮不讲理！",
-   "en": "I was in the middle of my research when{NEWLINE}those guys suddenly showed up and{CLEAR}threw me down here without a word of{CLEAR}explanation. Totally unreasonable!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 133,
-   "zh": "我已经尽力了,但完全不是对手。{NEWLINE}这些人究竟是什么来头……",
-   "en": "I did my best, but I was no match for{NEWLINE}them at all. Who on earth are{CLEAR}these people...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 134,
-   "zh": "看了冠军大人与火箭队的战斗后{NEWLINE}我大受鼓舞,{CLEAR}如果能跟您交手一次,{CLEAR}一定能学到不少东西。{CLEAR}您能跟我来场精灵对战指点一下我吗？",
-   "en": "Watching you battle Team Rocket really{NEWLINE}inspired me, Champion. If I could battle{CLEAR}you once, I’m sure I’d learn a lot. Will{CLEAR}you have a Pokémon battle with me and{CLEAR}give me some pointers?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 135,
-   "zh": "您是喜欢单打还是双打？",
-   "en": "Do you prefer Singles or Doubles?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 136,
-   "zh": "厉害厉害,真不愧是冠军大人。{NEWLINE}能跟您这样的训练家交手{CLEAR}确实让我受益良多。{SCROLL}我还会在这担任一段时间的保安,{NEWLINE}如果您有空的话,{CLEAR}随时欢迎再来指点一二。",
-   "en": "Amazing. Just what I’d expect from the{NEWLINE}Champion. Battling a Trainer like you{CLEAR}has really taught me a lot.{SCROLL}I’ll be working security here for a while{NEWLINE}yet. If you’re free, come give me some{CLEAR}more pointers anytime.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 137,
-   "zh": "天降红星对红蓝宝珠产生了反应！",
-   "en": "The Fallen Red Star reacted to the Red{NEWLINE}and Blue Orbs!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 138,
-   "zh": "代欧奇希斯『Deooo——xy！{SCROLL}代欧奇希斯感应到了红蓝宝珠的力量,{NEWLINE}冲了过来！",
-   "en": "Deoxys: Deooo-xy!{SCROLL}Deoxys sensed the power of the Red and{NEWLINE}Blue Orbs and charged in!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 139,
-   "zh": "天降红星突然动了起来！",
-   "en": "The Fallen Red Star suddenly{NEWLINE}started moving!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 140,
-   "zh": "喂喂喂！年轻人！你干什么呢！",
-   "en": "Hey, hey, hey! Young one! What do you{NEWLINE}think you’re doing?!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "#140-#152: path where the player catches Deoxys at the Fallen Red Star; the chief demands the Lucky Meowth God (see 0582 #99)."
-  },
-  {
-   "id": 141,
-   "zh": "{VAR:0103:0}『你好岛主先生,{NEWLINE}我刚才在收服代欧奇希斯。{CLEAR}请问有什么事吗？",
-   "en": "{VAR:0103:0}: Hello, chief. I was just{NEWLINE}catching Deoxys. Is something wrong?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 142,
-   "zh": "我不管你要收服什么,{NEWLINE}但是好不容易回到六之岛的天降红星,{CLEAR}是我们岛上唯一的旅游财路！{CLEAR}你现在把它弄没了,{CLEAR}就是要我们全岛老小的命！",
-   "en": "I don’t care what you’re catching. But{NEWLINE}that Fallen Red Star finally came back{CLEAR}to Six Island, and it’s our island’s only{CLEAR}source of tourist money! Now you’ve{CLEAR}made it vanish. You’re taking the{CLEAR}livelihood of every man, woman and child{CLEAR}on this island!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 143,
-   "zh": "{VAR:0103:0}『对不起啊岛主先生,{NEWLINE}没想到事情这么严重。{CLEAR}我要做些什么才能补偿你们的损失呢？",
-   "en": "{VAR:0103:0}: I’m so sorry, chief. I didn’t{NEWLINE}realize it was this serious. What can I{CLEAR}do to make up for your loss?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 144,
-   "zh": "钱！给钱就行。{NEWLINE}天降红星每年能给六之岛{CLEAR}带来上千万的旅游业收入。{CLEAR}按每年一千万,连续营收十年算,{CLEAR}你给我一个亿,这事就算过去了。",
-   "en": "Money! Just pay up. The Fallen Red Star{NEWLINE}brings Six Island tens of millions in{CLEAR}tourism every year. Call it ten million a{CLEAR}year, for ten years. Give me a hundred{CLEAR}million, and we’ll call it even.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "",
-   "qa_ignore": [
-    "number_missing"
-   ]
-  },
-  {
-   "id": 145,
-   "zh": "{VAR:0103:0}『开什么玩笑啊岛主先生,{NEWLINE}我哪里拿的出一个亿来……",
-   "en": "{VAR:0103:0}: You’ve got to be kidding,{NEWLINE}chief. Where would I get a{CLEAR}hundred million...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 146,
-   "zh": "不给我一个亿赔偿,{NEWLINE}我就去精灵联盟告你！{CLEAR}告得你倾家荡产！",
-   "en": "If you don’t pay me a hundred million in{NEWLINE}damages, I’ll sue you at the{CLEAR}Pokémon League! I’ll sue you for every{CLEAR}penny you’ve got!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 147,
-   "zh": "{VAR:0103:0}『你别着急啊岛主先生,{NEWLINE}除了钱之外,就没别的解决方法了吗？",
-   "en": "{VAR:0103:0}: Calm down, chief. Isn’t there{NEWLINE}any way to settle this besides money?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 148,
-   "zh": "嗯……倒也不是没有……",
-   "en": "Hmm... Well, there might be one...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 149,
-   "zh": "{VAR:0103:0}『哦？是什么方法？",
-   "en": "{VAR:0103:0}: Oh? What is it?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 150,
-   "zh": "水都群岛曾经有这样的传说,{NEWLINE}幸福的喵喵神,{CLEAR}会给供奉它的人带来幸福。{CLEAR}如今没有了天降红星,{CLEAR}我们六之岛的人想要过上幸福的生活,{CLEAR}只能指望幸福的喵喵神保佑了。{SCROLL}你不是爱收服精灵吗？{NEWLINE}把幸福的喵喵神抓来给我,{CLEAR}你偷走天降红星的事就算过去了。",
-   "en": "There’s an old legend in the Alto Mare{NEWLINE}Islands. They say the Lucky Meowth God{CLEAR}brings good fortune to those who{CLEAR}worship it. Now that the Fallen Red Star{CLEAR}is gone, the only hope we folks on Six{CLEAR}Island have for a happy life is the{CLEAR}blessing of the Lucky Meowth God.{SCROLL}You like catching Pokémon, don’t you?{NEWLINE}Catch the Lucky Meowth God and bring it{CLEAR}to me, and we’ll forget you stole the{CLEAR}Fallen Red Star.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 151,
-   "zh": "{VAR:0103:0}『这个喵喵神{NEWLINE}跟普通的喵喵比有什么不同吗？{CLEAR}该去哪里找呢？",
-   "en": "{VAR:0103:0}: How is this Meowth God{NEWLINE}different from an ordinary Meowth?{CLEAR}Where should I look for it?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 152,
-   "zh": "根据传说,喵喵神就生活在水都群岛,{NEWLINE}而且既然是神,{CLEAR}肯定跟普通的喵喵有区别,{CLEAR}你见到之后一眼就能看出来。{SCROLL}你要尽快把喵喵神带来啊,{NEWLINE}不然就等着吃官司吧！",
-   "en": "According to the legend, the Meowth God{NEWLINE}lives in the Alto Mare Islands. And since{CLEAR}it’s a god, it must be different from an{CLEAR}ordinary Meowth. You’ll know it the{CLEAR}moment you see it.{SCROLL}Bring the Meowth God here as soon as{NEWLINE}you can, or get ready to be sued!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 153,
-   "zh": "武藏『幸好我从小就有种地的经验,{NEWLINE}才能发现岛上的土壤{CLEAR}适合种植各种经济作物。",
-   "en": "Jessie: Good thing I’ve had farming{NEWLINE}experience since I was little. That’s{CLEAR}how I found out the island’s soil is{CLEAR}perfect for all kinds of cash crops.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 154,
-   "zh": "小次郎『凭着以前攒下的人脉,{NEWLINE}岛上的农作物都找到了不错的销路,{CLEAR}这下子发财咯。",
-   "en": "James: Thanks to the connections I{NEWLINE}built up in the old days, we found good{CLEAR}buyers for all the island’s crops. Now{CLEAR}we’re rolling in money!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 155,
-   "zh": "喵喵『在我们的带领下,{NEWLINE}六之岛现在成了{CLEAR}出口农产品的基地了喵,{CLEAR}我们三个还真是有经商头脑啊喵。",
-   "en": "Meowth: Under our leadership, Six{NEWLINE}Island’s become a base for exportin’{CLEAR}farm goods, meow. We three sure got a{CLEAR}head for business, meow.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 156,
-   "zh": "自从幸福的喵喵神来岛上之后,{NEWLINE}我们这里的农业和旅游业{CLEAR}发展的越来越好了,{CLEAR}岛民们的钱包也越来越鼓了。{CLEAR}真不愧是带来幸福的喵喵神啊！",
-   "en": "Ever since the Lucky Meowth God came{NEWLINE}to the island, our farming and tourism{CLEAR}have been doing better and better, and{CLEAR}the islanders’ wallets keep getting{CLEAR}fatter. It really is the Meowth God{CLEAR}that brings good fortune!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  }
- ]
+  "narc": "a027",
+  "bank": 625,
+  "source": "work/extract/v4/a027/0625.json",
+  "strings": [
+    {
+      "id": 0,
+      "zh": "您好,需要我送您回一之岛吗？{NEWLINE}每人次服务费500元。",
+      "en": "Hello. Would you like me to take you{NEWLINE}back to One Island? The fare is $500{CLEAR}per person.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Six Island. Branches: Crawdaunt wallet thief #16 fight / #22 accept duel (#26-#27) / #23 threaten (#36-#39) / #24 walk away; Rocket raid on the Fallen Red Star (Deoxys) #82-#129; post-raid chief (#140-#152) demands a Lucky Meowth God (continues in 0582); #100 male / #101 female."
+    },
+    {
+      "id": 1,
+      "zh": "随时恭候您的光临。",
+      "en": "We’re always at your service.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "zh": "好的,请跟我来吧。",
+      "en": "Very well. Please follow me.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "zh": "抱歉,您身上的钱不够支付服务费。",
+      "en": "Sorry, you don’t have enough money to{NEWLINE}pay the fare.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "zh": "换给你的美纳斯精神么？{NEWLINE}哈克龙非常可爱呢！",
+      "en": "How’s that Milotic I traded you doing?{SCROLL}Your Dragonair’s so cute!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "US 0634/4; modernised from US 0634#4"
+    },
+    {
+      "id": 5,
+      "zh": "这里是六之岛。{NEWLINE}天降红星的神秘之岛。",
+      "en": "This is Six Island. The mysterious island{NEWLINE}of the Fallen Red Star.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "zh": "这里是六之岛。{NEWLINE}想要获得幸福的话,{CLEAR}就来这里参拜喵喵神吧！",
+      "en": "This is Six Island. If you want good{NEWLINE}fortune, come here and pay your{CLEAR}respects to the Meowth God!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "zh": "我们六之岛的人世代抢劫、打渔为生,{NEWLINE}根本没有做生意的天赋,{CLEAR}精灵联盟却偏要强制我们{CLEAR}开发什么旅游业的生意,{CLEAR}结果就是游客越来越少,{CLEAR}岛上越来越穷。{SCROLL}看来只有找来幸福的喵喵神{NEWLINE}赐给我们财富,{CLEAR}才能让六之岛的人们重新富裕起来了。",
+      "en": "For generations, we folks on Six Island{NEWLINE}lived by robbery and fishing. We’ve got{CLEAR}no talent for business at all. But the{CLEAR}Pokémon League insisted on forcing us{CLEAR}into the tourism business. So tourists{CLEAR}keep dwindling, and the island keeps{CLEAR}getting poorer.{SCROLL}Looks like the only way for the people{NEWLINE}of Six Island to get rich again is to find{CLEAR}the Lucky Meowth God and have it grant{CLEAR}us wealth.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "zh": "哇,这只铁螯龙虾好强壮啊,{NEWLINE}我还是第一次见到这么漂亮的……",
+      "en": "Wow, this Crawdaunt is so{NEWLINE}strong-looking. This is the first time{CLEAR}I’ve seen one this beautiful...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "zh": "铁螯龙虾『Craaa——dau！",
+      "en": "Crawdaunt: Craaa-dau!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "zh": "呀！铁螯龙虾你干什么！{NEWLINE}那是我的钱包啊！",
+      "en": "Hey! Crawdaunt, what are you doing?!{NEWLINE}That’s my wallet!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "zh": "喂,铁螯龙虾你回来呀！{NEWLINE}钱包里还有我的证件和钱啊！",
+      "en": "Hey, Crawdaunt, come back! My ID and{NEWLINE}money are in that wallet!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "zh": "路过的训练家你好,{NEWLINE}我的钱包被铁螯龙虾抢走了,{CLEAR}但是我不会冲浪术,{CLEAR}能请你帮我把钱包给找回来吗？{CLEAR}里面有我的证件和这次旅游的钱,{CLEAR}这些对我来说非常重要,拜托你了！",
+      "en": "Hello, passing Trainer. A Crawdaunt{NEWLINE}snatched my wallet! But my Pokémon{CLEAR}don’t know Surf. Could you please get{CLEAR}my wallet back for me? My ID and the{CLEAR}money for this trip are inside. They’re{CLEAR}really important to me. Please!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "zh": "唉,早知道六之岛这么危险,{NEWLINE}我就不来这旅游了。",
+      "en": "Sigh... If I’d known Six Island was this{NEWLINE}dangerous, I’d never have come here{CLEAR}on vacation.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "zh": "感觉最近岛上的人变得温和了,{NEWLINE}来这里的游客也变多了。{CLEAR}难道真的是幸福的喵喵神{CLEAR}让这座岛产生了变化吗？",
+      "en": "The people on the island seem gentler{NEWLINE}lately, and more tourists are coming.{CLEAR}Did the Lucky Meowth God really change{CLEAR}this island?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "zh": "嘿嘿,干的不错啊铁螯龙虾。{NEWLINE}这次的笨蛋游客{CLEAR}居然带了这么多钱来,{CLEAR}看来又能去一之岛的餐厅{CLEAR}好好喝一顿了。{SCROLL}哦！美味的朗姆酒我来了！",
+      "en": "Heh heh, nice work, Crawdaunt. This{NEWLINE}dumb tourist brought so much money!{CLEAR}Looks like I can go to the restaurant{CLEAR}on One Island and drink my fill again.{SCROLL}Oh! Sweet, delicious rum, here I come!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "zh": "把钱包还给游客",
+      "en": "Give the tourist’s wallet back",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "",
+      "category": "menu_touch_1line"
+    },
+    {
+      "id": 17,
+      "zh": "不关我事",
+      "en": "Not my business",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "",
+      "category": "menu_touch_1line"
+    },
+    {
+      "id": 18,
+      "zh": "{VAR:0103:0}『居然命令口袋妖怪去抢钱包,{NEWLINE}你这样的人实在是太可恶了,{CLEAR}赶紧把钱包还给人家！",
+      "en": "{VAR:0103:0}: Ordering a Pokémon to steal{NEWLINE}someone’s wallet? People like you are{CLEAR}just rotten. Give that wallet{CLEAR}back, now!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "zh": "嘿,我祖上世代在这片海域{NEWLINE}骑着巨牙鲨抢劫为生,{CLEAR}可从来没听说过{CLEAR}把抢来的钱还回去的道理。",
+      "en": "Heh. For generations, my ancestors{NEWLINE}lived by riding Sharpedo across these{CLEAR}waters and robbing folks. Never once{CLEAR}heard of giving back what you stole.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "zh": "{VAR:0103:0}『时代早就变了,{NEWLINE}你们那种海盗行为已经被禁止了,{CLEAR}现在抢别人的东西就是不对,{CLEAR}快点把钱包交出来！",
+      "en": "{VAR:0103:0}: Times have changed. Piracy{NEWLINE}like yours has been banned. Taking{CLEAR}other people’s things is just wrong{CLEAR}now. Hand over that wallet!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "zh": "你如果想要回钱包,{NEWLINE}就得按我们岛上的传统来——{CLEAR}用你的口袋妖怪跟我决斗,{CLEAR}你如果能赢了我,{CLEAR}我就承认你是勇敢的海上战士,{CLEAR}就把钱包还给你。{SCROLL}怎么样,你这个臭矮子敢跟我打吗？",
+      "en": "If you want the wallet back, you gotta{NEWLINE}do it by our island tradition: duel me{CLEAR}with your Pokémon. Beat me, and I’ll{CLEAR}accept you as a brave warrior of the{CLEAR}sea and give you the wallet.{SCROLL}Well? Do you dare fight me, you stinking{NEWLINE}little shrimp?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "zh": "打就打,我才不怕你呢",
+      "en": "Bring it. I’m not scared of you",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "",
+      "category": "menu_touch_1line"
+    },
+    {
+      "id": 23,
+      "zh": "你如果不还,我可要动手了",
+      "en": "Give it back, or I’ll make you",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "",
+      "category": "menu_touch_1line"
+    },
+    {
+      "id": 24,
+      "zh": "算了,我不管了",
+      "en": "Forget it. I’m staying out of it",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "menu width fix (follow-up 1): was 'Forget it. I’m staying out of this'",
+      "category": "menu_touch_1line"
+    },
+    {
+      "id": 25,
+      "zh": "哈哈哈,真是个没用的矮个子胆小鬼。",
+      "en": "Ha ha ha! What a useless little shrimp{NEWLINE}of a coward.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "zh": "哟呵,还挺有勇气,{NEWLINE}我对你有点刮目相看了。{CLEAR}那么赌上钱包和海上战士荣誉的决斗,{CLEAR}现在开始！",
+      "en": "Whoa-ho, you’ve got guts. I’m starting{NEWLINE}to see you in a new light. Then the duel{CLEAR}for the wallet and the honor of a sea{CLEAR}warrior begins now!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "zh": "你有种,小矮子你有种！{NEWLINE}我输得心服口服。{CLEAR}这个钱包是你的战利品,拿去吧！",
+      "en": "You’ve got guts, little shrimp. You’ve{NEWLINE}got guts! I lost fair and square. This{CLEAR}wallet is your spoils. Take it!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "zh": "{VAR:0103:0}得到了游客的钱包！",
+      "en": "{VAR:0103:0} got the tourist’s wallet!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "zh": "嘿嘿,真高兴认识你这样的强者,{NEWLINE}什么时候有时间了,{CLEAR}咱们一起喝一杯啊！",
+      "en": "Heh heh. I’m glad to meet someone as{NEWLINE}strong as you. When you’ve got time,{CLEAR}let’s grab a drink together!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "zh": "{VAR:0103:0}『好的,不过我还要{NEWLINE}把钱包还给施主,{CLEAR}回头见了！",
+      "en": "{VAR:0103:0}: Sure. But first I’ve got to{NEWLINE}return this wallet to its owner. See{CLEAR}you later!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "zh 施主 here means the wallet's owner (the tourist)."
+    },
+    {
+      "id": 31,
+      "zh": "{VAR:0103:0}『这是你的钱包,{NEWLINE}快看看里面的东西少没少吧。",
+      "en": "{VAR:0103:0}: Here’s your wallet. Take a{NEWLINE}look and see if anything’s missing.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "zh": "哇,你真的把我的钱包给找回来了！？{NEWLINE}谢谢,真的非常感谢,{CLEAR}我看看里面的东西啊……",
+      "en": "Wow, you really got my wallet back?!{NEWLINE}Thank you, thank you so much! Let me{CLEAR}check what’s inside...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "zh": "没错,证件和钱都在,{NEWLINE}真的是太谢谢你了。{CLEAR}这两万块钱请你收下吧,{CLEAR}就当作是对你的报答了,{CLEAR}真的非常感谢！",
+      "en": "Yes, my ID and money are all here.{NEWLINE}Thank you so much. Please take this{CLEAR}$20,000 as a reward. Thank you, really!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "",
+      "qa_ignore": [
+        "number_missing"
+      ]
+    },
+    {
+      "id": 34,
+      "zh": "{VAR:0103:0}得到了20000元！",
+      "en": "{VAR:0103:0} received $20,000!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "",
+      "qa_ignore": [
+        "number_missing"
+      ]
+    },
+    {
+      "id": 35,
+      "zh": "{VAR:0103:0}『好,我就用你们的规矩,{NEWLINE}让你输得心服口服！",
+      "en": "{VAR:0103:0}: Fine. I’ll play by your rules{NEWLINE}and beat you fair and square!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "zh": "{VAR:0103:0}『你如果执意不还钱包,{NEWLINE}还要继续扯什么海盗的规矩,{CLEAR}那就别怪我不客气了！",
+      "en": "{VAR:0103:0}: If you insist on keeping the{NEWLINE}wallet and keep dragging in your pirate{CLEAR}rules, don’t blame me for what{CLEAR}happens next!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "zh": "妈的,你这个死矮子,{NEWLINE}海盗是这个世界上最光荣的职业！{CLEAR}我要让你知道我的厉害！",
+      "en": "Dammit, you lousy little shrimp! Piracy{NEWLINE}is the most glorious profession in the{CLEAR}world! I’ll show you what I’m made of!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "zh": "为什么……我输掉了决斗,{NEWLINE}输掉了海上战士的荣耀,我……",
+      "en": "Why... I lost the duel... I lost the{NEWLINE}honor of a sea warrior. I...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "zh": "{VAR:0103:0}『不要说废话了,{NEWLINE}把钱包拿来吧！",
+      "en": "{VAR:0103:0}: Cut the nonsense. Hand over{NEWLINE}the wallet!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "zh": "{VAR:0103:0}『我现在要把钱包还给失主去,{NEWLINE}你在这好好反思一下自己的{CLEAR}那些错误思想和行为吧！",
+      "en": "{VAR:0103:0}: I’m going to return this wallet{NEWLINE}to its owner now. You stay here and{CLEAR}have a good think about all your wrong{CLEAR}ideas and actions!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "zh": "大海就是我们祖传的牧场,{NEWLINE}我们的传统就是{CLEAR}想要什么就去牧场里拿,{CLEAR}对六之岛的人来说,{CLEAR}这就是天经地义的！",
+      "en": "The sea is the pasture our ancestors{NEWLINE}left us. Our tradition is that if you{CLEAR}want something, you go take it from the{CLEAR}pasture. To Six Island folks, that’s{CLEAR}just the natural order of things!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "zh": "六之岛周围有许多水系精灵,{NEWLINE}它们都非常喜欢跟人类玩,{CLEAR}如果你看到想跟你玩的精灵,{CLEAR}不要拒绝它们哦。",
+      "en": "There are lots of Water-type Pokémon{NEWLINE}around Six Island. They love playing{CLEAR}with people. If you see one that wants{CLEAR}to play with you, don’t turn it down.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 43,
+      "zh": "多亏了幸福的喵喵神指引,{NEWLINE}六之岛的游客渐渐多起来了,{CLEAR}我现在用铁螯龙虾给游客们表演节目,{CLEAR}也能赚到不少钱呢。",
+      "en": "Thanks to the guidance of the Lucky{NEWLINE}Meowth God, more and more tourists are{CLEAR}coming to Six Island. I put on shows for{CLEAR}them with my Crawdaunt now, and I make{CLEAR}pretty good money.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "zh": "我在这一带打渔为生,{NEWLINE}有时候会钓上一些奇怪的东西,{CLEAR}你是训练家的话或许能用得着,{CLEAR}要买点带回去吗？",
+      "en": "I fish around here for a living.{NEWLINE}Sometimes I reel in some strange things.{CLEAR}If you’re a Trainer, maybe you can use{CLEAR}them. Want to buy some?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "zh": "深海之牙{NEWLINE}1000元",
+      "en": "Deep Sea Tooth{NEWLINE}$1000",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "",
+      "category": "menu_touch_col5"
+    },
+    {
+      "id": 46,
+      "zh": "深海之鳞{NEWLINE}1000元",
+      "en": "Deep Sea Scale{NEWLINE}$1000",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "",
+      "category": "menu_touch_col5"
+    },
+    {
+      "id": 47,
+      "zh": "浅水贝{NEWLINE}200元",
+      "en": "Shoal Shell{NEWLINE}$200",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "",
+      "category": "menu_touch_col5"
+    },
+    {
+      "id": 48,
+      "zh": "空贝铃{NEWLINE}5000元",
+      "en": "Shell Bell{NEWLINE}$5000",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "",
+      "category": "menu_touch_col5"
+    },
+    {
+      "id": 49,
+      "zh": "不买了",
+      "en": "Nothing, thanks",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 8 source(s)",
+      "category": "menu_touch_col5"
+    },
+    {
+      "id": 50,
+      "zh": "我每天都会在这垂钓,{NEWLINE}欢迎你随时再来。",
+      "en": "I fish here every day. Come{NEWLINE}back anytime.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 51,
+      "zh": "你身上的钱不够啊！",
+      "en": "You don’t have enough money!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 52,
+      "zh": "这是您买的东西,请拿好。",
+      "en": "Here’s what you bought. Take good care{NEWLINE}of it.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 53,
+      "zh": "你看还需要再来点什么？{SCROLL}",
+      "en": "Anything else you’d like?{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), flags page_breaks_lost"
+    },
+    {
+      "id": 54,
+      "zh": "多亏幸福的喵喵神,{NEWLINE}现在岛民们都过上了富足的生活！",
+      "en": "Thanks to the Lucky Meowth God, all the{NEWLINE}islanders live in comfort now!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 55,
+      "zh": "六之岛的岛主{NEWLINE}请我到岛上来当保安,{CLEAR}说是遇到闹事的游客就出手制止他们。{CLEAR}可是我来六之岛这么久了,{CLEAR}也没见到几个游客,{CLEAR}简直无聊死了。{CLEAR}你能跟我来场精灵对战解解闷吗？",
+      "en": "The chief of Six Island hired me to work{NEWLINE}security on the island. He said to stop{CLEAR}any tourists who make trouble. But I’ve{CLEAR}been on Six Island all this time and{CLEAR}barely seen any tourists. I’m bored to{CLEAR}death. Will you have a Pokémon battle{CLEAR}with me to kill some time?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 56,
+      "zh": "你是喜欢单打还是双打？",
+      "en": "Do you like Singles or Doubles?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 57,
+      "zh": "单打",
+      "en": "Singles",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 6 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)",
+      "category": "menu_touch_1line"
+    },
+    {
+      "id": 58,
+      "zh": "双打",
+      "en": "Doubles",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 5 source(s); other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl)",
+      "category": "menu_touch_1line"
+    },
+    {
+      "id": 59,
+      "zh": "先不打了",
+      "en": "Not now",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 3 source(s); other variants: 3 more v3 TM candidates (tm_v4_matches.jsonl)",
+      "category": "menu_touch_1line"
+    },
+    {
+      "id": 60,
+      "zh": "嘿嘿,那我可要上了！",
+      "en": "Heh heh, here I come!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 61,
+      "zh": "厉害厉害！{NEWLINE}你不是一般的训练家吧？{CLEAR}能跟你这样的训练家交手{CLEAR}实在是有趣。{SCROLL}我还会在这担任{NEWLINE}好长一段时间的保安,{CLEAR}如果你愿意的话,{CLEAR}随时可以再来找我对战。",
+      "en": "Amazing! You’re no ordinary Trainer,{NEWLINE}are you? Battling a Trainer like you is{CLEAR}really fun.{SCROLL}I’ll be working security here for a good{NEWLINE}while yet. If you like, come battle me{CLEAR}again anytime.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 62,
+      "zh": "你的精灵不够,没法进行双打。",
+      "en": "You don’t have enough Pokémon for a{NEWLINE}Double Battle.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 63,
+      "zh": "我和搭档在这里{NEWLINE}研究神秘三角好多年了,{CLEAR}虽然在神秘三角的研究方面{CLEAR}没有太大突破,{CLEAR}但是却意外研究出了一个{CLEAR}叫做「三重攻击」的精灵招式。{SCROLL}这是个很实用的招式,{NEWLINE}你如果给我一个诱饵球,{CLEAR}我就可以教给你的精灵,{CLEAR}怎么样,要学吗？",
+      "en": "My partner and I have studied the{NEWLINE}Mystery Triangle here for years. We{CLEAR}haven’t made much of a breakthrough on{CLEAR}the Mystery Triangle itself, but by{CLEAR}accident we came up with a Pokémon move{CLEAR}called Tri Attack.{SCROLL}It’s a very useful move. If you give me{NEWLINE}a Lure Ball, I can teach it to your{CLEAR}Pokémon. How about it? Want to{CLEAR}learn it?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "#63 (before Deoxys wakes, fee: Lure Ball) / #77 (after, fee: Heavy Ball)."
+    },
+    {
+      "id": 64,
+      "zh": "要让哪个精灵学呢？{SCROLL}",
+      "en": "Which Pokémon should learn it?{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 3 source(s), flags page_breaks_lost; other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 65,
+      "zh": "想学的话随时再来找我。",
+      "en": "Come see me anytime you want to{NEWLINE}learn it.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 2 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 66,
+      "zh": "你并没有诱饵球啊,{NEWLINE}等有球了再来找我吧。",
+      "en": "You don’t have a Lure Ball. Come back{NEWLINE}when you have one.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s)"
+    },
+    {
+      "id": 67,
+      "zh": "抱歉……这个精灵{NEWLINE}没法记住三重攻击。{SCROLL}",
+      "en": "Sorry... This Pokémon can’t learn{NEWLINE}Tri Attack.{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 68,
+      "zh": "还没出生的精灵{NEWLINE}恐怕学不会这个技能……{SCROLL}",
+      "en": "I’m afraid a Pokémon that hasn’t{NEWLINE}hatched yet can’t learn this move...{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 3 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 69,
+      "zh": "这只{VAR:0100:0}{NEWLINE}已经会三重攻击了！{SCROLL}",
+      "en": "This {VAR:0100:0} already knows{NEWLINE}Tri Attack!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 70,
+      "zh": "１{VAR:0201:20}　２{VAR:0201:20}　…{VAR:0201:20}…{VAR:0201:20}完成！",
+      "en": "1{VAR:0201:20} 2{VAR:0201:20} ...{VAR:0201:20}...{VAR:0201:20}Done!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), flags fullwidth_chars; other variants: 6 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 71,
+      "zh": "{VAR:0101:0}学会了三重攻击！",
+      "en": "{VAR:0101:0} learned Tri Attack!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 72,
+      "zh": "这样一来{NEWLINE}你的{VAR:0100:0}{CLEAR}已经学会三重攻击了！{SCROLL}那么按照约定,{NEWLINE}1个诱饵球我拿走了。",
+      "en": "And with that, your {VAR:0100:0} has{NEWLINE}learned Tri Attack!{SCROLL}Now, as we agreed, I’ll take 1{NEWLINE}Lure Ball.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 73,
+      "zh": "{VAR:0101:0}想要记住{NEWLINE}新的三重攻击……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习三重攻击{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
+      "en": "{VAR:0101:0} wants to learn{NEWLINE}Tri Attack...!{SCROLL}But {VAR:0101:0} already knows{NEWLINE}four moves!{SCROLL}Should it forget a move to learn{NEWLINE}Tri Attack?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 74,
+      "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
+      "en": "Forget {VAR:0106:1}. Is that OK?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 75,
+      "zh": "{VAR:0101:0}完全忘了{NEWLINE}{VAR:0106:1}的用法！{SCROLL}然后……！",
+      "en": "{VAR:0101:0} forgot all{NEWLINE}about {VAR:0106:1}!{SCROLL}And...!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 4 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 76,
+      "zh": "你是要放弃{NEWLINE}让它记住三重攻击吗？{VAR:0200:0}",
+      "en": "Give up on teaching it Tri Attack?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 77,
+      "zh": "研究了那么久的神秘三角,{NEWLINE}竟然是来自外太空的精灵代欧奇希斯。{CLEAR}虽说这个发现很有科研价值,{CLEAR}但是耗费在这上面的时间{CLEAR}确实有点太多了。{CLEAR}好在我们在研究神秘三角的时候,{CLEAR}还意外研究出了一个{CLEAR}叫做「三重攻击」的精灵招式。{SCROLL}这是个很实用的招式,{NEWLINE}你如果给我一个重量球,{CLEAR}我就可以教给你的精灵,{CLEAR}怎么样,要学吗？",
+      "en": "All that time studying the Mystery{NEWLINE}Triangle, and it turned out to be{CLEAR}Deoxys, a Pokémon from outer space.{CLEAR}The discovery has real scientific value,{CLEAR}but we did spend an awful lot of time on{CLEAR}it. Luckily, while studying the Mystery{CLEAR}Triangle, we came up with a Pokémon{CLEAR}move called Tri Attack by accident.{SCROLL}It’s a very useful move. If you give me{NEWLINE}a Heavy Ball, I can teach it to your{CLEAR}Pokémon. How about it? Want to{CLEAR}learn it?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 78,
+      "zh": "非常坚硬的红色三棱锥,{NEWLINE}把手放上去似乎能感受到心跳。",
+      "en": "A very hard red pyramid. When you put{NEWLINE}your hand on it, you can almost feel{CLEAR}a heartbeat.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 79,
+      "zh": "这个红色的神秘三角,{NEWLINE}六之岛当地人称呼它为天降红星,{CLEAR}据说是从天而降的一颗红色流星。{CLEAR}但根据我们的仪器检测,{CLEAR}神秘三角不是无机物陨石,{CLEAR}而是有机生命体。{CLEAR}我和搭档在这里研究了数年,{CLEAR}为的就是弄清楚为什么{CLEAR}有机生命体会以这种形式存在。",
+      "en": "This red Mystery Triangle is what the{NEWLINE}locals of Six Island call the Fallen Red{CLEAR}Star. They say it’s a red meteor that{CLEAR}fell from the sky.{SCROLL}But according to our instruments, the{NEWLINE}Mystery Triangle isn’t an inorganic{CLEAR}meteorite. It’s an organic life-form. My{CLEAR}partner and I have studied it here for{CLEAR}years to find out why a living thing{CLEAR}would exist in this form.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 80,
+      "zh": "我为了孵化精灵蛋来到了六之岛,{NEWLINE}但这里总给我一种危险的感觉,{CLEAR}我还是带着蛋去别的地方看看吧。",
+      "en": "I came to Six Island to hatch my{NEWLINE}Pokémon Egg, but this place always{CLEAR}gives me a sense of danger. I think I’ll{CLEAR}take the Egg somewhere else.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 81,
+      "zh": "一颗精灵蛋,{NEWLINE}看起来没什么特别的。",
+      "en": "A Pokémon Egg. It doesn’t look like{NEWLINE}anything special.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 82,
+      "zh": "我不管你们是什么火箭队、水箭队,{NEWLINE}敢来我六之岛的地盘撒野,{CLEAR}你们就必须给我吃点苦头。",
+      "en": "I don’t care if you’re Team Rocket,{NEWLINE}Team Rocket-Shmocket or whatever.{CLEAR}Anyone who dares run wild on my Six{CLEAR}Island turf is gonna get a taste{CLEAR}of pain.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 83,
+      "zh": "比夏斯『老东西,{NEWLINE}无知可是会招来杀身之祸的。",
+      "en": "Marauder: You old fart, ignorance can{NEWLINE}get you killed.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "tone review: 老东西 contemptuous 'old fart' (D-0627)"
+    },
+    {
+      "id": 84,
+      "zh": "老朋友,咱们上！",
+      "en": "Old friend, let’s go!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 85,
+      "zh": "好！",
+      "en": "Right!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 86,
+      "zh": "帝牙海狮,冲浪术！{NEWLINE}快唦蛙,使用攀瀑！",
+      "en": "Walrein, use Surf! Poliwrath,{NEWLINE}use Waterfall!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "zh 快唦蛙 read as 快泳蛙 (Poliwrath, see 0443 #108)."
+    },
+    {
+      "id": 87,
+      "zh": "明明属性相克却没有倒下？！",
+      "en": "It had the type advantage, and it{NEWLINE}didn’t go down?!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 88,
+      "zh": "伦达『操你妈了个逼的,{NEWLINE}真是烦人的苍蝇。{CLEAR}尼多王,给我干死它们！",
+      "en": "Petrel: Fuck you, you motherfucking{NEWLINE}flies! What a pain in the ass. Nidoking,{CLEAR}fucking kill ’em!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 89,
+      "zh": "尼多王『Niiii——do！",
+      "en": "Nidoking: Niiii-do!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 90,
+      "zh": "不……怎么……怎么会这样,{NEWLINE}居然这么轻易就被打败了……",
+      "en": "No... How... How could this happen? We{NEWLINE}were beaten so easily...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 91,
+      "zh": "这两个人好厉害……{NEWLINE}只以咱们的力量恐怕……",
+      "en": "These two are too strong... With just{NEWLINE}our strength, I’m afraid...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 92,
+      "zh": "{VAR:0103:0}『让我来对付他们吧！",
+      "en": "{VAR:0103:0}: Leave them to me!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 93,
+      "zh": "来参加巡礼的年轻人……",
+      "en": "The young one who came for{NEWLINE}the pilgrimage...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 94,
+      "zh": "{VAR:0103:0}『火箭队虽然无恶不作,{NEWLINE}但论实力还是很强的,{CLEAR}我来这里就是为了阻止他们的行动。",
+      "en": "{VAR:0103:0}: Team Rocket may be evil to the{NEWLINE}core, but they’re strong. I came here{CLEAR}to stop them.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 95,
+      "zh": "比夏斯『跟情报说的一样,{NEWLINE}你这家伙果然也在群岛。",
+      "en": "Marauder: Just like the intel said.{NEWLINE}You’re in the islands too.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 96,
+      "zh": "伦达『狗娘养的,又跑来坏事是吧？{NEWLINE}我跟你说,我们这次来了四个干部,{CLEAR}代欧奇希斯我们要定了！",
+      "en": "Petrel: You son of a bitch, here to{NEWLINE}screw things up again, huh? Listen up.{CLEAR}We brought four Executives this time.{CLEAR}Deoxys is ours, no matter what!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 97,
+      "zh": "{VAR:0103:0}『代欧奇希斯？",
+      "en": "{VAR:0103:0}: Deoxys?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 98,
+      "zh": "比夏斯『看来你这个混蛋{NEWLINE}还什么都不知道啊。",
+      "en": "Marauder: Looks like you don’t know a{NEWLINE}thing, you bastard.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 99,
+      "zh": "{VAR:0103:0}『无所谓,只要在这里{NEWLINE}打倒你们就好了。",
+      "en": "{VAR:0103:0}: Doesn’t matter. All I have to{NEWLINE}do is beat you here.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 100,
+      "zh": "伦达『狂妄的小子,你蹦达不了几天了,{NEWLINE}拿命来吧！",
+      "en": "Petrel: You cocky little punk, you don’t{NEWLINE}have many days left to jump around.{CLEAR}Now die!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 101,
+      "zh": "伦达『狂妄的丫头,你蹦达不了几天了,{NEWLINE}拿命来吧！",
+      "en": "Petrel: You cocky little girl, you don’t{NEWLINE}have many days left to jump around.{CLEAR}Now die!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 102,
+      "zh": "哼,我活了这么大年纪,{NEWLINE}虚张声势的人见得多了。",
+      "en": "Hmph. I’ve lived a long life, and I’ve{NEWLINE}seen plenty of people who were{CLEAR}all bluster.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 103,
+      "zh": "赤焰松『快看,石头有反应了！",
+      "en": "Maxie: Look, the stone is reacting!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 104,
+      "zh": "水吾桐『跟老大说的一样,{NEWLINE}只要持续用红蓝宝珠照射石头,{CLEAR}代欧奇希斯就能苏醒过来。",
+      "en": "Archie: Just like the boss said. Keep{NEWLINE}shining the Red and Blue Orbs on the{CLEAR}stone, and Deoxys will wake up.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 105,
+      "zh": "赤焰松『集中注意力快点弄,{NEWLINE}不要在这里拖得太久。",
+      "en": "Maxie: Focus and hurry up. We can’t{NEWLINE}drag this out here.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 106,
+      "zh": "水吾桐『闭嘴吧,轮不到你指挥我。",
+      "en": "Archie: Shut it. You don’t get to give{NEWLINE}me orders.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 107,
+      "zh": "进入战斗！{SCROLL}战斗结束。",
+      "en": "Battle start!{SCROLL}Battle over.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 108,
+      "zh": "比夏斯『混蛋……又一次被打败了……",
+      "en": "Marauder: Damn it... Beaten again...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 109,
+      "zh": "伦达『妈的,等我们完成{NEWLINE}对传说精灵的洗脑,{CLEAR}第一个被猎杀的目标就是你！",
+      "en": "Petrel: Shit! Once we finish{NEWLINE}brainwashing those legendary Pokémon,{CLEAR}you’re the first one we’ll{CLEAR}hunt down and kill!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": " | D-1891: user approved hunt down and kill for 猎杀; profanity and brainwashing context retained."
+    },
+    {
+      "id": 110,
+      "zh": "{VAR:0103:0}『我的目标可从来不是{NEWLINE}你们这些不堪一击的家伙,{CLEAR}不要挡路！",
+      "en": "{VAR:0103:0}: My target was never{NEWLINE}pushovers like you. Out of my way!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 111,
+      "zh": "赤焰松『联盟冠军{VAR:0103:0}！？",
+      "en": "Maxie: League Champion {VAR:0103:0}?!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 112,
+      "zh": "水吾桐『该死的玩意儿,{NEWLINE}偏偏这个时候跑出来……",
+      "en": "Archie: Damn pest, showing up right now{NEWLINE}of all times...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 113,
+      "zh": "赤焰松『太好了！代欧奇希斯感受到{NEWLINE}红蓝宝珠的力量,{CLEAR}终于苏醒过来了！",
+      "en": "Maxie: Excellent! Deoxys sensed the{NEWLINE}power of the Red and Blue Orbs and has{CLEAR}finally awakened!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 114,
+      "zh": "{VAR:0103:0}『没事了,代欧奇希斯。{NEWLINE}有我在这里,不会让火箭队把你抓走的。",
+      "en": "{VAR:0103:0}: It’s all right, Deoxys. As long{NEWLINE}as I’m here, I won’t let Team Rocket{CLEAR}take you.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 115,
+      "zh": "代欧奇希斯『Deooo——xy！",
+      "en": "Deoxys: Deooo-xy!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 116,
+      "zh": "水吾桐『好一个天真的小鬼。",
+      "en": "Archie: What a naive little brat.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 117,
+      "zh": "赤焰松『连红蓝宝珠可以吸引{NEWLINE}代欧奇希斯都不知道。",
+      "en": "Maxie: You didn’t even know the Red and{NEWLINE}Blue Orbs could lure Deoxys.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 118,
+      "zh": "赤焰松『来吧代欧奇希斯！{NEWLINE}水吾桐『感受红蓝宝珠的召唤吧！",
+      "en": "Maxie: Come, Deoxys!{NEWLINE}Archie: Feel the call of the Red and{CLEAR}Blue Orbs!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 119,
+      "zh": "{VAR:0103:0}『代欧奇希斯,不要离开我身边……",
+      "en": "{VAR:0103:0}: Deoxys, don’t leave my side...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 120,
+      "zh": "伦达『哈哈哈哈！机会来了！{NEWLINE}去吧,特制球！",
+      "en": "Petrel: Ha ha ha ha! Here’s our chance!{NEWLINE}Go, Special Ball!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 121,
+      "zh": "伦达『哈哈哈哈！你个臭傻逼！{NEWLINE}这下没辙了吧！",
+      "en": "Petrel: Ha ha ha ha! You stupid fucking{NEWLINE}moron! Nothing you can do now, huh?!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 122,
+      "zh": "{VAR:0103:0}『可恶……怎么会这样……",
+      "en": "{VAR:0103:0}: Dammit... How could{NEWLINE}this happen...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 123,
+      "zh": "比夏斯『任务完成了,{NEWLINE}不要多逞口舌之快,{CLEAR}马上撤退！",
+      "en": "Marauder: Mission complete. Quit running{NEWLINE}your mouth and retreat, now!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 124,
+      "zh": "{VAR:0103:0}『唉,没想到这次占了先机,{NEWLINE}却还是被火箭队算计了。",
+      "en": "{VAR:0103:0}: Sigh... I got here first this{NEWLINE}time, and Team Rocket still{CLEAR}outsmarted me.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 125,
+      "zh": "年轻人,刚才那伙人中{NEWLINE}有人叫你联盟冠军,{CLEAR}你真的是联盟冠军{VAR:0103:0}吗？",
+      "en": "Young one, someone in that gang just{NEWLINE}called you League Champion. Are you{CLEAR}really League Champion {VAR:0103:0}?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 126,
+      "zh": "{VAR:0103:0}『是的……{NEWLINE}真对不起,我没能保护好代欧奇希斯……",
+      "en": "{VAR:0103:0}: Yes... I’m so sorry. I{NEWLINE}couldn’t protect Deoxys...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 127,
+      "zh": "六之岛没了天降红星,{NEWLINE}今后的财路怕是要断了,{CLEAR}为了六之岛岛民的生活,{CLEAR}拜托冠军大人{CLEAR}去把代欧奇希斯带回来吧！",
+      "en": "Without the Fallen Red Star, Six{NEWLINE}Island’s source of income will dry up.{CLEAR}For the sake of the people of Six{CLEAR}Island, please, Champion, go and bring{CLEAR}Deoxys back!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 128,
+      "zh": "{VAR:0103:0}『您放心,打败火箭队、{NEWLINE}拯救传说中的精灵是我的责任。",
+      "en": "{VAR:0103:0}: Don’t worry. Beating Team{NEWLINE}Rocket and saving legendary Pokémon is{CLEAR}my duty.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 129,
+      "zh": "好、好,有了冠军大人的承诺,{NEWLINE}相信代欧奇希斯一定可以回来。{SCROLL}至于冠军大人参加诸岛巡礼的事,{NEWLINE}我认可您通过了六之岛的考验,{CLEAR}请冠军大人尽快完成其他巡礼,{CLEAR}早日把代欧奇希斯带回来。",
+      "en": "Good, good. With the Champion’s{NEWLINE}promise, I’m sure Deoxys will come back.{SCROLL}As for your Island Pilgrimage, Champion,{NEWLINE}I recognize that you’ve passed the Six{CLEAR}Island trial. Please finish the rest of{CLEAR}the pilgrimage quickly and bring Deoxys{CLEAR}back soon.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 130,
+      "zh": "太不可思议了,{NEWLINE}代欧奇希斯竟然变化成了{CLEAR}天降红星沉睡在六之岛。{CLEAR}这么说来,其他口袋妖怪{CLEAR}也有可能变化成某种形态{CLEAR}隐藏在这个世界的某个角落。",
+      "en": "Unbelievable. Deoxys turned into the{NEWLINE}Fallen Red Star and slept here on Six{CLEAR}Island. That means other Pokémon may{CLEAR}also be hiding in some corner of the{CLEAR}world in some other form.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 131,
+      "zh": "我认得这伙人,{NEWLINE}他们是恶名昭彰的火箭队,{CLEAR}他们来六之岛要干什么？",
+      "en": "I recognize that gang. They’re the{NEWLINE}notorious Team Rocket. What are they{CLEAR}doing on Six Island?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 132,
+      "zh": "我刚才正在做研究,{NEWLINE}这些家伙突然出现{CLEAR}不由分说地就把我给赶下来了,{CLEAR}真是蛮不讲理！",
+      "en": "I was in the middle of my research when{NEWLINE}those guys suddenly showed up and{CLEAR}threw me down here without a word of{CLEAR}explanation. Totally unreasonable!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 133,
+      "zh": "我已经尽力了,但完全不是对手。{NEWLINE}这些人究竟是什么来头……",
+      "en": "I did my best, but I was no match for{NEWLINE}them at all. Who on earth are{CLEAR}these people...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 134,
+      "zh": "看了冠军大人与火箭队的战斗后{NEWLINE}我大受鼓舞,{CLEAR}如果能跟您交手一次,{CLEAR}一定能学到不少东西。{CLEAR}您能跟我来场精灵对战指点一下我吗？",
+      "en": "Watching you battle Team Rocket really{NEWLINE}inspired me, Champion. If I could battle{CLEAR}you once, I’m sure I’d learn a lot. Will{CLEAR}you have a Pokémon battle with me and{CLEAR}give me some pointers?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 135,
+      "zh": "您是喜欢单打还是双打？",
+      "en": "Do you prefer Singles or Doubles?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 136,
+      "zh": "厉害厉害,真不愧是冠军大人。{NEWLINE}能跟您这样的训练家交手{CLEAR}确实让我受益良多。{SCROLL}我还会在这担任一段时间的保安,{NEWLINE}如果您有空的话,{CLEAR}随时欢迎再来指点一二。",
+      "en": "Amazing. Just what I’d expect from the{NEWLINE}Champion. Battling a Trainer like you{CLEAR}has really taught me a lot.{SCROLL}I’ll be working security here for a while{NEWLINE}yet. If you’re free, come give me some{CLEAR}more pointers anytime.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 137,
+      "zh": "天降红星对红蓝宝珠产生了反应！",
+      "en": "The Fallen Red Star reacted to the Red{NEWLINE}and Blue Orbs!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 138,
+      "zh": "代欧奇希斯『Deooo——xy！{SCROLL}代欧奇希斯感应到了红蓝宝珠的力量,{NEWLINE}冲了过来！",
+      "en": "Deoxys: Deooo-xy!{SCROLL}Deoxys sensed the power of the Red and{NEWLINE}Blue Orbs and charged in!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 139,
+      "zh": "天降红星突然动了起来！",
+      "en": "The Fallen Red Star suddenly{NEWLINE}started moving!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 140,
+      "zh": "喂喂喂！年轻人！你干什么呢！",
+      "en": "Hey, hey, hey! Young one! What do you{NEWLINE}think you’re doing?!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "#140-#152: path where the player catches Deoxys at the Fallen Red Star; the chief demands the Lucky Meowth God (see 0582 #99)."
+    },
+    {
+      "id": 141,
+      "zh": "{VAR:0103:0}『你好岛主先生,{NEWLINE}我刚才在收服代欧奇希斯。{CLEAR}请问有什么事吗？",
+      "en": "{VAR:0103:0}: Hello, chief. I was just{NEWLINE}catching Deoxys. Is something wrong?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 142,
+      "zh": "我不管你要收服什么,{NEWLINE}但是好不容易回到六之岛的天降红星,{CLEAR}是我们岛上唯一的旅游财路！{CLEAR}你现在把它弄没了,{CLEAR}就是要我们全岛老小的命！",
+      "en": "I don’t care what you’re catching. But{NEWLINE}that Fallen Red Star finally came back{CLEAR}to Six Island, and it’s our island’s only{CLEAR}source of tourist money! Now you’ve{CLEAR}made it vanish. You’re killing every man,{CLEAR}woman and child on this island!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": " | D-1892: user approved killing every man, woman and child; chief’s hyperbole about lost tourism, not a literal report of deaths."
+    },
+    {
+      "id": 143,
+      "zh": "{VAR:0103:0}『对不起啊岛主先生,{NEWLINE}没想到事情这么严重。{CLEAR}我要做些什么才能补偿你们的损失呢？",
+      "en": "{VAR:0103:0}: I’m so sorry, chief. I didn’t{NEWLINE}realize it was this serious. What can I{CLEAR}do to make up for your loss?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 144,
+      "zh": "钱！给钱就行。{NEWLINE}天降红星每年能给六之岛{CLEAR}带来上千万的旅游业收入。{CLEAR}按每年一千万,连续营收十年算,{CLEAR}你给我一个亿,这事就算过去了。",
+      "en": "Money! Just pay up. The Fallen Red Star{NEWLINE}brings Six Island tens of millions in{CLEAR}tourism every year. Call it ten million a{CLEAR}year, for ten years. Give me a hundred{CLEAR}million, and we’ll call it even.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "",
+      "qa_ignore": [
+        "number_missing"
+      ]
+    },
+    {
+      "id": 145,
+      "zh": "{VAR:0103:0}『开什么玩笑啊岛主先生,{NEWLINE}我哪里拿的出一个亿来……",
+      "en": "{VAR:0103:0}: You’ve got to be kidding,{NEWLINE}chief. Where would I get a{CLEAR}hundred million...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 146,
+      "zh": "不给我一个亿赔偿,{NEWLINE}我就去精灵联盟告你！{CLEAR}告得你倾家荡产！",
+      "en": "If you don’t pay me a hundred million in{NEWLINE}damages, I’ll sue you at the{CLEAR}Pokémon League! I’ll sue you for every{CLEAR}penny you’ve got!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 147,
+      "zh": "{VAR:0103:0}『你别着急啊岛主先生,{NEWLINE}除了钱之外,就没别的解决方法了吗？",
+      "en": "{VAR:0103:0}: Calm down, chief. Isn’t there{NEWLINE}any way to settle this besides money?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 148,
+      "zh": "嗯……倒也不是没有……",
+      "en": "Hmm... Well, there might be one...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 149,
+      "zh": "{VAR:0103:0}『哦？是什么方法？",
+      "en": "{VAR:0103:0}: Oh? What is it?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 150,
+      "zh": "水都群岛曾经有这样的传说,{NEWLINE}幸福的喵喵神,{CLEAR}会给供奉它的人带来幸福。{CLEAR}如今没有了天降红星,{CLEAR}我们六之岛的人想要过上幸福的生活,{CLEAR}只能指望幸福的喵喵神保佑了。{SCROLL}你不是爱收服精灵吗？{NEWLINE}把幸福的喵喵神抓来给我,{CLEAR}你偷走天降红星的事就算过去了。",
+      "en": "There’s an old legend in the Alto Mare{NEWLINE}Islands. They say the Lucky Meowth God{CLEAR}brings good fortune to those who{CLEAR}worship it. Now that the Fallen Red Star{CLEAR}is gone, the only hope we folks on Six{CLEAR}Island have for a happy life is the{CLEAR}blessing of the Lucky Meowth God.{SCROLL}You like catching Pokémon, don’t you?{NEWLINE}Catch the Lucky Meowth God and bring it{CLEAR}to me, and we’ll forget you stole the{CLEAR}Fallen Red Star.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 151,
+      "zh": "{VAR:0103:0}『这个喵喵神{NEWLINE}跟普通的喵喵比有什么不同吗？{CLEAR}该去哪里找呢？",
+      "en": "{VAR:0103:0}: How is this Meowth God{NEWLINE}different from an ordinary Meowth?{CLEAR}Where should I look for it?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 152,
+      "zh": "根据传说,喵喵神就生活在水都群岛,{NEWLINE}而且既然是神,{CLEAR}肯定跟普通的喵喵有区别,{CLEAR}你见到之后一眼就能看出来。{SCROLL}你要尽快把喵喵神带来啊,{NEWLINE}不然就等着吃官司吧！",
+      "en": "According to the legend, the Meowth God{NEWLINE}lives in the Alto Mare Islands. And since{CLEAR}it’s a god, it must be different from an{CLEAR}ordinary Meowth. You’ll know it the{CLEAR}moment you see it.{SCROLL}Bring the Meowth God here as soon as{NEWLINE}you can, or get ready to be sued!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 153,
+      "zh": "武藏『幸好我从小就有种地的经验,{NEWLINE}才能发现岛上的土壤{CLEAR}适合种植各种经济作物。",
+      "en": "Jessie: Good thing I’ve had farming{NEWLINE}experience since I was little. That’s{CLEAR}how I found out the island’s soil is{CLEAR}perfect for all kinds of cash crops.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 154,
+      "zh": "小次郎『凭着以前攒下的人脉,{NEWLINE}岛上的农作物都找到了不错的销路,{CLEAR}这下子发财咯。",
+      "en": "James: Thanks to the connections I{NEWLINE}built up in the old days, we found good{CLEAR}buyers for all the island’s crops. Now{CLEAR}we’re rolling in money!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 155,
+      "zh": "喵喵『在我们的带领下,{NEWLINE}六之岛现在成了{CLEAR}出口农产品的基地了喵,{CLEAR}我们三个还真是有经商头脑啊喵。",
+      "en": "Meowth: Under our leadership, Six{NEWLINE}Island’s become a base for exportin’{CLEAR}farm goods, meow. We three sure got a{CLEAR}head for business, meow.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 156,
+      "zh": "自从幸福的喵喵神来岛上之后,{NEWLINE}我们这里的农业和旅游业{CLEAR}发展的越来越好了,{CLEAR}岛民们的钱包也越来越鼓了。{CLEAR}真不愧是带来幸福的喵喵神啊！",
+      "en": "Ever since the Lucky Meowth God came{NEWLINE}to the island, our farming and tourism{CLEAR}have been doing better and better, and{CLEAR}the islanders’ wallets keep getting{CLEAR}fatter. It really is the Meowth God{CLEAR}that brings good fortune!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    }
+  ]
 }

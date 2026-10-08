@@ -287,10 +287,10 @@
   {
    "id": 34,
    "zh": "可恶啊,如果平时有好好种树果,{NEWLINE}就不需要跑到百货商店来买了。",
-   "en": "Dang it. If I’d been growing{NEWLINE}Berries properly, I wouldn’t{CLEAR}have to come all the way to the{CLEAR}department store to buy them.",
+   "en": "Damn it. If I’d been growing{NEWLINE}Berries properly, I wouldn’t{CLEAR}have to come all the way to the{CLEAR}department store to buy them.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 可恶啊 = 'Damn it' for an adult shopper (D-0627)"
   },
   {
    "id": 35,

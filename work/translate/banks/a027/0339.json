@@ -127,10 +127,10 @@
   {
    "id": 15,
    "zh": "真是个无聊的小鬼,滚开滚开！",
-   "en": "What a tiresome kid. Scram, scram!",
+   "en": "Annoying brat. Get lost, get lost!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 小鬼 contemptuous 'brat', 滚开 rude 'get lost'; kept rude (D-0627)"
   },
   {
    "id": 16,
@@ -191,10 +191,10 @@
   {
    "id": 23,
    "zh": "哼！挡人财路如杀人父母,{NEWLINE}今天就让你知道多管闲事的下场！",
-   "en": "Hmph! Getting between a man and his{NEWLINE}money is unforgivable! Today you’ll see{CLEAR}what happens to busybodies!",
+   "en": "Hmph! Getting between a man and his{NEWLINE}money is as bad as killing his parents!{CLEAR}Today you’ll see what busybodies get!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 挡人财路如杀人父母 is a set idiom: blocking a man's money is like killing his parents; idiom kept (D-0627)"
   },
   {
    "id": 24,

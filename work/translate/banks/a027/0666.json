@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "前段时间我打败了{VAR:0100:11}！{NEWLINE}打得它满地找牙,{SCROLL}哎,没办法啊,{NEWLINE}谁叫我这么强呢！{SCROLL}下次再聊了！",
-   "en": "Oh yeah, I took down a {VAR:0100:11}{NEWLINE}in the wild the other day.{SCROLL}It was a cakewalk. Well, I guess it{NEWLINE}can’t be helped, us being so tough.{SCROLL}All right. Later!",
+   "en": "Oh yeah, I took down a wild{NEWLINE}{VAR:0100:11} the other day.{CLEAR}Beat it so bad it was spitting teeth!{SCROLL}Oh well, what can you do?{NEWLINE}I’m just that tough!{SCROLL}All right. Later!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0675/8"
+   "origin": "agent",
+   "notes": "US 0675/8 | tone review: 打得它满地找牙 kept as a violent brag (D-0627)"
   },
   {
    "id": 9,

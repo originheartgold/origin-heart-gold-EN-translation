@@ -86,10 +86,10 @@
   {
    "id": 10,
    "zh": "我在这里{NEWLINE}观察着那些认真地和{CLEAR}精灵在一起的人们,{CLEAR}就觉得自己一个人生活{CLEAR}实在是太傻了！{SCROLL}我也要再次认真地{NEWLINE}和精灵交心！",
-   "en": "Watching these people who care so much{NEWLINE}about Pokémon makes me feel ashamed{CLEAR}of my selfishness.{SCROLL}I’ll try and face my Pokémon for real!",
+   "en": "Watching these people who care so much{NEWLINE}about Pokémon makes me feel foolish for{CLEAR}living all alone.{SCROLL}I’ll open my heart to Pokémon{NEWLINE}again, too!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0100/10"
+   "origin": "agent",
+   "notes": "US 0100/10 [D-2055 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
   },
   {
    "id": 11,
@@ -150,10 +150,10 @@
   {
    "id": 18,
    "zh": "用租借的精灵对战的战斗工厂{CLEAR}这是个很需要精灵知识的地方,{SCROLL}在其他地方完全没有胜算的我{NEWLINE}在战斗工厂或许能行！",
-   "en": "At the Battle Factory, you have to{NEWLINE}keep winning with rental Pokémon.{SCROLL}I may not stand a chance at other{NEWLINE}facilities, but I may go all the{CLEAR}way here!",
+   "en": "At the Battle Factory, you battle with{NEWLINE}rental Pokémon, so you really need to{CLEAR}know a lot about Pokémon.{SCROLL}I don’t stand a chance at the other{NEWLINE}facilities, but I might do well here!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0100/18"
+   "origin": "agent",
+   "notes": "US 0100/18 [D-2056 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
   },
   {
    "id": 19,

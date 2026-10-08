@@ -1678,10 +1678,10 @@
   {
    "id": 209,
    "zh": "呼哧、呼哧⋯⋯{NEWLINE}便秘⋯⋯{SCROLL}",
-   "en": "Sniff, sniff... My nose is all stuffed{NEWLINE}up...{SCROLL}",
+   "en": "Sniff, sniff...{NEWLINE}I’m constipated...{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 便秘 (constipation) kept literally; US has a blocked nose | Hack text error fixed with user approval (D-1264, D-1496)."
+   "notes": "zh 便秘 (constipation) kept literally; US has a blocked nose | Hack text error fixed with user approval (D-1264, D-1496). | tone review: 便秘 is 'constipated', the bodily punchline after 208's cold; kept (D-0627)"
   },
   {
    "id": 210,
@@ -4998,26 +4998,26 @@
   {
    "id": 624,
    "zh": "来做个了断吧！{NEWLINE}就用本大爷最中意的精灵！",
-   "en": "Let’s settle this! With yours truly’s{NEWLINE}favorite Pokémon!",
+   "en": "Let’s settle this!{NEWLINE}Behold my very favorite Pokémon!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 本大爷 swagger carried by 'Behold', no stilted pronoun (D-0627)"
   },
   {
    "id": 625,
    "zh": "本大爷对精灵的爱{NEWLINE}绝对无人能比⋯⋯{SCROLL}",
-   "en": "No one can match{NEWLINE}yours truly’s love for Pokémon...{SCROLL}",
+   "en": "No one alive can match{NEWLINE}my love for Pokémon...{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0723/625"
+   "notes": "US 0723/625 | tone review: 本大爷 swagger carried by emphatic 'MY', no stilted pronoun (D-0627)"
   },
   {
    "id": 626,
    "zh": "为何！为何啊！！{NEWLINE}为何本大爷居然会输！！{SCROLL}",
-   "en": "Why?! Why?! Why did yours truly lose?!{SCROLL}",
+   "en": "Why?! Why?!!{NEWLINE}How could someone like me lose?!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 本大爷 swagger carried by 'someone like ME', no stilted pronoun (D-0627)"
   },
   {
    "id": 627,
@@ -5550,10 +5550,10 @@
   {
    "id": 693,
    "zh": "和我对战？{NEWLINE}真不知死活啊！",
-   "en": "Battle me? You really don’t know what’s{NEWLINE}good for you!",
+   "en": "Battle me?{NEWLINE}You must have a death wish!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 不知死活 is a menacing 'you have a death wish'; kept at strength (D-0627)"
   },
   {
    "id": 694,

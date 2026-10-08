@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "阿金『你这家伙,就只想着自己,{NEWLINE}我们怎么能把一个小女孩{CLEAR}丢在这种鬼地方呢。",
-   "en": "Gold: You jerk, you only ever{NEWLINE}think about yourself! How could{CLEAR}we leave a little girl behind{CLEAR}in a creepy place like this?",
+   "en": "Gold: You jerk, you only ever think{NEWLINE}about yourself! How could we leave{CLEAR}a little girl behind in a godforsaken{CLEAR}place like this?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 鬼地方 is a contemptuous 'godforsaken place', not 'creepy' (D-0627)"
   },
   {
    "id": 6,
@@ -622,10 +622,10 @@
   {
    "id": 77,
    "zh": "阿金『啊呀,终于能离开这个鬼地方了。",
-   "en": "Gold: Phew, finally we can{NEWLINE}get out of this creepy place.",
+   "en": "Gold: Phew, finally we can get out of{NEWLINE}this godforsaken place.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 鬼地方 is a contemptuous 'godforsaken place' (D-0627); same as #5"
   },
   {
    "id": 78,

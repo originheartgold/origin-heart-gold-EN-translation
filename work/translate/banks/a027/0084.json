@@ -97,10 +97,10 @@
   {
    "id": 11,
    "zh": "少拿精灵联盟的规定唬人,{NEWLINE}老子生在这里、长在这里,{CLEAR}就吃定这里了,{CLEAR}没有钱谁也别想从我这过去。",
-   "en": "Don’t try to scare me with{NEWLINE}Pokémon League rules. I was born here,{CLEAR}raised here, and this place is mine. No{CLEAR}money, no way past me.",
+   "en": "Don’t try to scare me with{NEWLINE}Pokémon League rules. I was born here,{CLEAR}I grew up here, and I run this place.{CLEAR}No money, nobody gets past me.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 老子 is thuggish self-reference and 吃定这里 is 'I own/run this place'; thug tone kept (D-0627)"
   },
   {
    "id": 12,

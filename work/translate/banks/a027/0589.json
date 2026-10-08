@@ -590,10 +590,10 @@
   {
    "id": 73,
    "zh": "哎哟,狗儿子打人了。",
-   "en": "Ow! The mutt’s little{NEWLINE}son is hitting people!",
+   "en": "Ow! The son of a bitch{NEWLINE}is hitting people!",
    "status": "draft",
    "origin": "agent",
-   "notes": "狗儿子 (‘dog's son’, jab at the dog lover) → ‘The mutt’s little son’."
+   "notes": "狗儿子 (‘dog's son’, jab at the dog lover) → ‘The mutt’s little son’. | tone review: 狗儿子 insult ('dog's son', setting up the rabies jab in #74) = 'son of a bitch' (D-0627)"
   },
   {
    "id": 74,

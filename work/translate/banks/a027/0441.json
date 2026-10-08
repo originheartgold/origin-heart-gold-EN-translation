@@ -86,10 +86,10 @@
   {
    "id": 10,
    "zh": "可恶,我们还是没有能力守住这里吗……",
-   "en": "Dang it... We still can’t hold this{NEWLINE}place...",
+   "en": "Damn it... We still can’t hold this{NEWLINE}place...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 可恶 = 'Damn it' for the adult biker gang (D-0627)"
   },
   {
    "id": 11,
@@ -782,10 +782,10 @@
   {
    "id": 97,
    "zh": "喵喵『她说会说人话的喵喵{NEWLINE}实在是太恶心了！",
-   "en": "Meowth: She says a Meowth that talks{NEWLINE}like a human is just too creepy!",
+   "en": "Meowth: She says a Meowth that talks{NEWLINE}like a human is just too gross!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 恶心 = 'gross/disgusting' (D-0627)"
   },
   {
    "id": 98,

@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "巧言令色！{NEWLINE}我们才不上你的当呢！{CLEAR}赶紧带着你那值钱的资产滚出枯叶市！",
-   "en": "Sweet talk! We’re not falling for it!{SCROLL}Take your precious property and get{NEWLINE}out of Vermilion City!",
+   "en": "Sweet talk! We’re not falling for it!{SCROLL}Take your precious property and get{NEWLINE}the hell out of Vermilion City!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | tone review: 滚出枯叶市 is a rude 'get lost, out of Vermilion'; kept rude (D-0627)"
   },
   {
    "id": 10,
@@ -119,10 +119,10 @@
   {
    "id": 14,
    "zh": "{VAR:FF01:200}众人『对！滚出去！滚出去！{VAR:FF01:100}",
-   "en": "{VAR:FF01:200}Crowd: Yeah! Get out!{VAR:FF01:100}",
+   "en": "{VAR:FF01:200}Crowd: Yeah! Get lost!{VAR:FF01:100}",
    "status": "draft",
    "origin": "agent",
-   "notes": "SIZE-200% crowd shouts (#14, #19, #69, #74, #85, #102) split over two lines with {NEWLINE} to fit at 2x; check in game. Double-size shout: one line per page (a line break inside {VAR:FF01:200} overflows the box and corrupts memory; heap_audit.md)."
+   "notes": "SIZE-200% crowd shouts (#14, #19, #69, #74, #85, #102) split over two lines with {NEWLINE} to fit at 2x; check in game. Double-size shout: one line per page (a line break inside {VAR:FF01:200} overflows the box and corrupts memory; heap_audit.md). | tone review: 滚出去 chant = rude 'get lost' (D-0627)"
   },
   {
    "id": 15,
@@ -487,10 +487,10 @@
   {
    "id": 60,
    "zh": "滚出枯叶市！",
-   "en": "Get out of Vermilion City!",
+   "en": "Get the hell out of Vermilion City!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | tone review: 滚出枯叶市 is a rude 'get lost, out of Vermilion'; kept rude (D-0627)"
   },
   {
    "id": 61,
@@ -615,10 +615,10 @@
   {
    "id": 76,
    "zh": "可恶啊……",
-   "en": "Dang it...",
+   "en": "Damn it...",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | tone review: 可恶 from an adult protester: 'Damn it' (D-0627)"
   },
   {
    "id": 77,
@@ -767,10 +767,10 @@
   {
    "id": 95,
    "zh": "马志士『把嘴闭上！{NEWLINE}服从和执行是你唯一的选择！",
-   "en": "Lt. Surge: Zip it! Your only option is to{NEWLINE}obey and comply!",
+   "en": "Lt. Surge: Shut your mouth! Your only{NEWLINE}option is to obey and comply!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | tone review: 把嘴闭上 is a blunt 'shut your mouth' (D-0627)"
   },
   {
    "id": 96,
@@ -951,10 +951,10 @@
   {
    "id": 118,
    "zh": "可……可恶啊！",
-   "en": "D-dang it!",
+   "en": "D-damn it!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | tone review: 可恶 from an adult protester: 'Damn it' (D-0627)"
   },
   {
    "id": 119,
@@ -1628,10 +1628,10 @@
   {
    "id": 202,
    "zh": "可……可恶啊……{NEWLINE}马志士还是太强了！",
-   "en": "D-dang it... Surge is just too strong!",
+   "en": "D-damn it... Surge is just too strong!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | tone review: 可恶 from an adult protester: 'Damn it' (D-0627)"
   },
   {
    "id": 203,

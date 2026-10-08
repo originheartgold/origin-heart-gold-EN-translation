@@ -158,10 +158,10 @@
   {
    "id": 19,
    "zh": "{VAR:0103:0}『我要是听你的就见鬼了,{NEWLINE}赶紧给我让开！",
-   "en": "{VAR:0103:0}: Like I’d ever listen to you.{NEWLINE}Now get out of my way!",
+   "en": "{VAR:0103:0}: Like hell I’ll listen to you.{NEWLINE}Now get out of my way!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 见鬼 is a mild curse ('I'd be damned'); kept as 'Like hell' (D-0627)"
   },
   {
    "id": 20,
@@ -286,10 +286,10 @@
   {
    "id": 35,
    "zh": "{VAR:0103:0}『这一路上碍事的火箭队{NEWLINE}都被我打败了,{CLEAR}我也不介意再多揍你一个。",
-   "en": "{VAR:0103:0}: I beat every Team Rocket{NEWLINE}member who got in my way on the way{CLEAR}here. One more won’t bother me.",
+   "en": "{VAR:0103:0}: I beat every Team Rocket{NEWLINE}member who got in my way on the way{CLEAR}here. I don’t mind beating you up too.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 揍你 is a direct 'beat you up' taunt at Maxie; kept (D-0627)"
   },
   {
    "id": 36,
@@ -622,10 +622,10 @@
   {
    "id": 77,
    "zh": "我长得这么漂亮,{NEWLINE}好担心火箭队的人会见色起意,{CLEAR}你一定要留下来保护我啊！",
-   "en": "I’m so pretty, I’m worried the Team{NEWLINE}Rocket guys will get ideas. You have to{CLEAR}stay and protect me!",
+   "en": "I’m so pretty, I’m worried the Team{NEWLINE}Rocket guys will start lusting after me.{CLEAR}You have to stay and protect me!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 见色起意 = lusting after a pretty woman; kept explicit (D-0627)"
   },
   {
    "id": 78,

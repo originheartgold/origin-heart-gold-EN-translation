@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "看来你就是个{NEWLINE}窝囊废⋯⋯",
-   "en": "Looks like you’re just a big wimp...",
+   "en": "Looks like you’re just{NEWLINE}a spineless loser...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 窝囊废 is a contemptuous 'spineless loser'; kept full strength (D-0627)"
   },
   {
    "id": 4,
@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "可恶！{NEWLINE}你还是那么强⋯⋯{SCROLL}和{VAR:0103:0}{NEWLINE}进行了这么多场对战,{CLEAR}可一点胜算都没有⋯⋯{SCROLL}我买了那么多的药,{NEWLINE}经历了那么多的磨练,为什么？{SCROLL}难道说⋯⋯{NEWLINE}药的多少不代表一切⋯⋯{SCROLL}{VAR:0103:0}！这个给你！{NEWLINE}它对我来说已经没用了！",
-   "en": "Dang it! You’re as strong as ever...{SCROLL}I’ve had so many battles with you,{NEWLINE}{VAR:0103:0}, and never stood a chance...{SCROLL}I bought so much medicine and went{NEWLINE}through so much training. Why?{SCROLL}Could it be... that medicine{NEWLINE}isn’t everything...?{SCROLL}{VAR:0103:0}! Take this! It’s{NEWLINE}no use to me anymore!",
+   "en": "Damn it! You’re as strong as ever...{SCROLL}I’ve had so many battles with you,{NEWLINE}{VAR:0103:0}, and never stood a chance...{SCROLL}I bought so much medicine and went{NEWLINE}through so much training. Why?{SCROLL}Could it be... that medicine{NEWLINE}isn’t everything...?{SCROLL}{VAR:0103:0}! Take this! It’s{NEWLINE}no use to me anymore!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 可恶 as an adult's 'Damn it!' (D-0627)"
   },
   {
    "id": 6,

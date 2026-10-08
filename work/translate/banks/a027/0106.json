@@ -710,10 +710,10 @@
   {
    "id": 88,
    "zh": "Ｌ『啊,那个⋯⋯{SCROLL}我会尽全力支持您的{SCROLL}我自己虽然不能和精灵{NEWLINE}一起登上舞台⋯⋯{SCROLL}所以希望能够帮到您！",
-   "en": "Serena: Um... Excuse me?{SCROLL}I cheer for you the best I can.{SCROLL}I can’t get up on stage with you, but{NEWLINE}I want to lend my support to your{CLEAR}Pokémon and you for trying so hard.",
+   "en": "Serena: Um... Excuse me?{SCROLL}I’ll support you with everything{NEWLINE}I’ve got.{SCROLL}I can’t get up on stage with Pokémon{NEWLINE}myself, so I want to lend you{CLEAR}my support!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0108/88"
+   "origin": "agent",
+   "notes": "US 0108/88 [D-2057 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
   },
   {
    "id": 89,

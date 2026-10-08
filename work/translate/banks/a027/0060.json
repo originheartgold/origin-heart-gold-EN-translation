@@ -1,1561 +1,1561 @@
 {
- "narc": "a027",
- "bank": 60,
- "source": "work/extract/v4/a027/0060.json",
- "strings": [
-  {
-   "id": 0,
-   "zh": "太好了,口呆花。{NEWLINE}美丽花终于接受你了哦。",
-   "en": "Great job, Weepinbell.{NEWLINE}Bellossom finally accepted you!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 1,
-   "zh": "口呆花『Weee——pin！",
-   "en": "Weepinbell: Weee-pin!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 2,
-   "zh": "美丽花你不可以欺负口呆花哦,{NEWLINE}你们两个要相亲相爱知道吗？",
-   "en": "Bellossom, don’t you pick on Weepinbell,{NEWLINE}OK? You two need to love each other,{CLEAR}got it?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 3,
-   "zh": "美丽花『Belloooo——som！",
-   "en": "Bellossom: Belloooo-som!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 4,
-   "zh": "这两个小学生像是在约会,{NEWLINE}要抓他们现行吗？",
-   "en": "These two grade-schoolers{NEWLINE}look like they’re on a date.{CLEAR}Catch them in the act?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 5,
-   "zh": "{VAR:0103:0}『你们两个是在约会吗？{NEWLINE}对你们来说是不是早了点啊。",
-   "en": "{VAR:0103:0}: Are you two on a date?{NEWLINE}Isn’t it a little early for that?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 6,
-   "zh": "{VAR:0103:0}『小小年纪就在这里{NEWLINE}谈情说爱不太好吧,{CLEAR}我都还是单身呢！",
-   "en": "{VAR:0103:0}: Kids your age shouldn’t be{NEWLINE}out here getting all lovey-dovey.{CLEAR}I’m still single myself!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 7,
-   "zh": "你好啊哥哥。{NEWLINE}你怎么会到这个角落来的？",
-   "en": "Hi, mister.{NEWLINE}What brings you to this corner?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 8,
-   "zh": "你好啊姐姐。{NEWLINE}你怎么会到这个角落来的？",
-   "en": "Hi, miss.{NEWLINE}What brings you to this corner?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 9,
-   "zh": "{VAR:0103:0}『你妈妈看到你{NEWLINE}带着小姑娘来自然公园,{CLEAR}就拜托我来确认一下{CLEAR}你们是不是早恋了。",
-   "en": "{VAR:0103:0}: Your mom saw you bring a girl{NEWLINE}to the National Park,{SCROLL}so she asked me to come check whether{NEWLINE}you two have a case of puppy love.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 10,
-   "zh": "早恋？？？",
-   "en": "Puppy love???",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 11,
-   "zh": "两只精灵非常开心！",
-   "en": "The two Pokémon look very happy!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 12,
-   "zh": "我们两个？？",
-   "en": "The two of us??",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 13,
-   "zh": "不不不……我想我妈妈可能是误会了。{NEWLINE}其实是我的口呆花{CLEAR}喜欢我同学的美丽花,{CLEAR}所以我就带着口呆花{CLEAR}来这里跟美丽花表白。",
-   "en": "No, no, no... I think my mom got the{NEWLINE}wrong idea.{SCROLL}Actually, my Weepinbell likes my{NEWLINE}classmate’s Bellossom,{SCROLL}so I brought Weepinbell here to confess{NEWLINE}its feelings to Bellossom.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 14,
-   "zh": "就是嘛,让心爱的精灵得到幸福,{NEWLINE}这也是身为训练家的责任呀。",
-   "en": "That’s right! Making your beloved{NEWLINE}Pokémon happy is part of being a{CLEAR}Trainer too.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 15,
-   "zh": "你们会成为很棒的训练家",
-   "en": "You’ll be great Trainers",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "",
-   "category": "menu_touch_1line"
-  },
-  {
-   "id": 16,
-   "zh": "解释就是掩饰,掩饰就是事实",
-   "en": "Excuses mean it’s true",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "",
-   "category": "menu_touch_1line"
-  },
-  {
-   "id": 17,
-   "zh": "{VAR:0103:0}『你们对自己的精灵很用心,{NEWLINE}相信你们将来一定能{CLEAR}成长为优秀的训练家。",
-   "en": "{VAR:0103:0}: You both really care about{NEWLINE}your Pokémon. I’m sure you’ll grow up{CLEAR}to be great Trainers.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 18,
-   "zh": "嘿嘿,谢谢哥哥的夸奖。{SCROLL}只是我妈妈一旦开始怀疑,{NEWLINE}就会接二连三地胡思乱想。{CLEAR}真不知道该怎么跟她解释……",
-   "en": "Hee hee, thanks, mister.{SCROLL}But once my mom starts getting{NEWLINE}suspicious, she imagines all kinds{CLEAR}of things.{SCROLL}I don’t know how to explain it to her...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 19,
-   "zh": "对呀,万一阿姨想太多,{NEWLINE}不让我们两个一起玩了,{CLEAR}那口呆花和美丽花{CLEAR}岂不是就见不到面了。",
-   "en": "Yeah. If your mom thinks too much and{NEWLINE}won’t let us play together anymore,{SCROLL}then Weepinbell and Bellossom won’t get{NEWLINE}to see each other.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 20,
-   "zh": "{VAR:0103:0}『你们放心好了,{NEWLINE}就冲你们对精灵的这份心意,{CLEAR}家长那边我替你们应付。",
-   "en": "{VAR:0103:0}: Don’t worry.{NEWLINE}You care so much about your Pokémon,{CLEAR}I’ll handle the grown-ups for you.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 21,
-   "zh": "哇！真的吗？{NEWLINE}那就拜托哥哥了！",
-   "en": "Wow! Really?{NEWLINE}Thanks, mister!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 22,
-   "zh": "大家的休憩广场{NEWLINE}自然公园",
-   "en": "Relaxation Square for Everyone{NEWLINE}National Park",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/22"
-  },
-  {
-   "id": 23,
-   "zh": "这儿贴着告示！{SCROLL}与爱人并肩作战{NEWLINE}能够让感情迅速升温,{CLEAR}情侣们请在自然公园{CLEAR}释放你们的热情吧。{CLEAR}　　　　　……管理处启",
-   "en": "There’s a notice here!{SCROLL}Battling side by side with your beloved{NEWLINE}makes feelings heat up fast.{SCROLL}Couples, let your passion loose in the{NEWLINE}National Park!{CLEAR}-The Park Office",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 24,
-   "zh": "这儿贴着告示！{SCROLL}在捕虫大会上{NEWLINE}竞赛球以外的精灵球都是禁止的。{CLEAR}　　　　　……管理处启",
-   "en": "There’s a notice here!{SCROLL}During the Bug-Catching Contest,{NEWLINE}all Poké Balls other than Sport Balls{CLEAR}are prohibited.{CLEAR}-The Park Office",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 25,
-   "zh": "大家捉到的精灵{NEWLINE}在这里进行评定！{SCROLL}……　……　……{NEWLINE}……　……　……{SCROLL}要公布结果了！！{NEWLINE}啦啦啦啦！！{SCROLL}",
-   "en": "Everyone’s Pokémon will now be judged!{SCROLL}... ... ...{NEWLINE}... ... ...{SCROLL}Here are the results!!{NEWLINE}Ta-da-da-da!!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 26,
-   "zh": "第３名是捉到了{VAR:0100:1}的{NEWLINE}{VAR:0103:0}。{SCROLL}",
-   "en": "Third place goes to {VAR:0103:0},{NEWLINE}who caught a {VAR:0100:1}!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 27,
-   "zh": "第３名是捉到了{VAR:0100:1}的{NEWLINE}来自{VAR:010E:2}的{CLEAR}{VAR:0103:0}。{SCROLL}",
-   "en": "Third place goes to{NEWLINE}{VAR:010E:2} {VAR:0103:0},{CLEAR}who caught a {VAR:0100:1}!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 28,
-   "zh": "得分是{NEWLINE}{VAR:0134:3}分！{SCROLL}",
-   "en": "The score was {VAR:0134:3} points!{SCROLL}",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
-  },
-  {
-   "id": 29,
-   "zh": "第２名是捉到了{VAR:0100:1}的{NEWLINE}{VAR:0103:0}。{SCROLL}",
-   "en": "Second place goes to {VAR:0103:0},{NEWLINE}who caught a {VAR:0100:1}!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 30,
-   "zh": "第２名是捉到了{VAR:0100:1}的{NEWLINE}来自{VAR:010E:2}的{CLEAR}{VAR:0103:0}。{SCROLL}",
-   "en": "Second place goes to{NEWLINE}{VAR:010E:2} {VAR:0103:0},{CLEAR}who caught a {VAR:0100:1}!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 31,
-   "zh": "那么！本次大赛{NEWLINE}的第１名,也就是冠军是……{SCROLL}捉到了{VAR:0100:1}的{NEWLINE}{VAR:0103:0}！{SCROLL}",
-   "en": "And now! The first-place winner,{NEWLINE}the champion of this Contest, is...{SCROLL}{VAR:0103:0}, who caught{NEWLINE}a {VAR:0100:1}!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 32,
-   "zh": "那么！本次大赛{NEWLINE}的第１名,也就是冠军是……{SCROLL}捉到了{VAR:0100:1}的{NEWLINE}来自{VAR:010E:2}的{CLEAR}{VAR:0103:0}！{SCROLL}",
-   "en": "And now! The first-place winner,{NEWLINE}the champion of this Contest, is...{SCROLL}{VAR:010E:2} {VAR:0103:0},{NEWLINE}who caught a {VAR:0100:1}!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 33,
-   "zh": "送给胜利者{VAR:0103:0}的是{NEWLINE}{VAR:0108:3}！{SCROLL}",
-   "en": "First prize for {VAR:0103:0}:{NEWLINE}{VAR:0108:3}!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 34,
-   "zh": "送给第２名{VAR:0103:0}的是{NEWLINE}{VAR:0108:3}。{SCROLL}",
-   "en": "Second prize for {VAR:0103:0}:{NEWLINE}{VAR:0108:3}.{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 35,
-   "zh": "送给第３名{VAR:0103:0}的是{NEWLINE}{VAR:0108:3}。{SCROLL}",
-   "en": "Third prize for {VAR:0103:0}:{NEWLINE}{VAR:0108:3}.{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 36,
-   "zh": "另外,{NEWLINE}对于未能获奖的人们,{CLEAR}送给你们{VAR:0108:3}。{SCROLL}",
-   "en": "And for everyone who didn’t place,{NEWLINE}here’s {VAR:0108:3}.{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 37,
-   "zh": "哎？{SCROLL}{VAR:0103:0}的背包{NEWLINE}好像已经装不下了……{SCROLL}我先给你存着,{NEWLINE}等你的行李整理好过后再来吧。{SCROLL}",
-   "en": "Huh?{SCROLL}{VAR:0103:0}’s Bag seems to be full...{SCROLL}I’ll hold on to it for you. Come back{NEWLINE}once you’ve sorted out your things.{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 38,
-   "zh": "下一次捉虫大会{NEWLINE}也请大家踊跃参加！",
-   "en": "Please join us for the next{NEWLINE}Bug-Catching Contest too!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 39,
-   "zh": "要给得到的{VAR:0100:1}{NEWLINE}取个昵称吗？",
-   "en": "Give a nickname to the {VAR:0100:1}{NEWLINE}you caught?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 40,
-   "zh": "{VAR:0103:0}是吧？{NEWLINE}这是帮你保留的奖品。{SCROLL}",
-   "en": "{VAR:0103:0}, right? Here’s the prize we{NEWLINE}kept for you.{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 41,
-   "zh": "哎？{SCROLL}{VAR:0103:0}的背包{NEWLINE}好像已经装不下了……{SCROLL}我先给你存着{NEWLINE}等你的行李整理好过后再来吧。",
-   "en": "Huh?{SCROLL}{VAR:0103:0}’s Bag seems to be full...{SCROLL}I’ll hold on to it for you. Come back{NEWLINE}once you’ve sorted out your things.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 42,
-   "zh": "下一次捉虫大会{NEWLINE}也请大家踊跃参加！",
-   "en": "Please join us in the next{NEWLINE}Bug-Catching Contest, too!",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/42"
-  },
-  {
-   "id": 43,
-   "zh": "你已经拿不下了,{NEWLINE}{VAR:0101:5}被{CLEAR}传送到电脑里去了！{SCROLL}",
-   "en": "You can’t carry any more,{NEWLINE}so {VAR:0101:5} was sent to the PC!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 44,
-   "zh": "干安『听好了,{NEWLINE}冠军是我的！{CLEAR}所以不要妨碍我！",
-   "en": "Don: Listen up! The title is mine!{NEWLINE}So don’t get in my way!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 45,
-   "zh": "干安『能不能碰上{NEWLINE}好的精灵,{CLEAR}也是要看人品的。",
-   "en": "Don: Whether you get the right Pokémon{NEWLINE}or not is half luck.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/45"
-  },
-  {
-   "id": 46,
-   "zh": "干安『你获得了冠军！？{SCROLL}真好啊,获得冠军{NEWLINE}一定很爽吧？",
-   "en": "Don: You won?!{SCROLL}Lucky you. Winning must feel{NEWLINE}awesome, huh?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 47,
-   "zh": "洋二『我的派拉斯特{NEWLINE}能用蘑菇孢子{CLEAR}催眠对手！",
-   "en": "Ed: My Parasect can put foes to sleep{NEWLINE}with Spore!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 48,
-   "zh": "洋二『要想取得胜利,{NEWLINE}仅凭捉到的精灵的{CLEAR}大小是不行的。",
-   "en": "Ed: The size of the Pokémon is not the{NEWLINE}only thing to compare when trying to{CLEAR}decide the winner.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/48"
-  },
-  {
-   "id": 49,
-   "zh": "洋二『嗯~真羡慕啊~{NEWLINE}这次我状态不好。",
-   "en": "Ed: Mm... I’m so jealous...{NEWLINE}I was off my game this time.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 50,
-   "zh": "绘里『为了参加大会{NEWLINE}我还培养了一只速度快的精灵。",
-   "en": "Abby: I even raised a fast Pokémon just{NEWLINE}for the Contest.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 51,
-   "zh": "绘里『听说颜色漂亮的{NEWLINE}精灵容易拿到第一,{CLEAR}这是真的吗？",
-   "en": "Abby: Somebody told me that colorful{NEWLINE}Pokémon are more likely to win.{CLEAR}I wonder if it’s true...",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/51"
-  },
-  {
-   "id": 52,
-   "zh": "绘里『太棒了！现在的你{NEWLINE}可是万人瞩目啊！",
-   "en": "Abby: Amazing! Everyone’s eyes are{NEWLINE}on you now!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 53,
-   "zh": "明仁『冠军？{NEWLINE}比起获得冠军来我更想得到{CLEAR}稀有的精灵。",
-   "en": "William: The title?{NEWLINE}I’d rather get a rare Pokémon than win.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 54,
-   "zh": "明仁『我已经找到我要的{NEWLINE}精灵了,所以已经很满足了。",
-   "en": "William: I got the Pokémon I wanted,{NEWLINE}so I’m very happy.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/54"
-  },
-  {
-   "id": 55,
-   "zh": "明仁『你获得胜利了吗！{NEWLINE}捉到什么样的精灵了,{CLEAR}让我看看吧！",
-   "en": "William: You won! What kind of Pokémon{NEWLINE}did you catch? Let me see!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 56,
-   "zh": "贞夫『……　……　……{NEWLINE}……　……　……　嘘！{SCROLL}精灵会跑掉的,{NEWLINE}一会儿再说。",
-   "en": "Benny: ... ... ...{NEWLINE}... ... ... Shh!{SCROLL}You’ll scare the Pokémon away.{NEWLINE}Talk later.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 57,
-   "zh": "贞夫『听我说啊,之前{NEWLINE}我以前捉到过飞天螳螂,{CLEAR}但最后还是没赢……",
-   "en": "Benny: You know what?{NEWLINE}I caught a Scyther the other day,{CLEAR}and I still didn’t win...",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/57; modernised from US 0062#57"
-  },
-  {
-   "id": 58,
-   "zh": "贞夫『不过今天我只是过来{NEWLINE}瞧瞧情况的！{SCROLL}下次我会认真对付！",
-   "en": "Benny: Today I only came to check{NEWLINE}things out, though!{SCROLL}Next time, I’ll get serious!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 59,
-   "zh": "佑一『在捉虫精灵的时候{NEWLINE}也要先削减它的体力{CLEAR}再扔出球,这很重要。",
-   "en": "Barry: When you catch Bug Pokémon,{NEWLINE}it’s important to wear down their HP{CLEAR}before you throw a Ball.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 60,
-   "zh": "佑一『等级越高{NEWLINE}越容易得到第一……{CLEAR}不过也好像还有别的诀窍。",
-   "en": "Barry: You have a better chance to win{NEWLINE}when your Pokémon is at a high level.{CLEAR}But it seems that there is more{CLEAR}to winning.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/60"
-  },
-  {
-   "id": 61,
-   "zh": "佑一『你捉到的精灵很好看呢！",
-   "en": "Barry: The Pokémon you caught is{NEWLINE}so pretty!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 62,
-   "zh": "里见『我最喜欢虫精灵了。",
-   "en": "Cindy: I love Bug-type Pokémon.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s) | rewritten from zh (was tm_v3)"
-  },
-  {
-   "id": 63,
-   "zh": "里见『我说过我最喜欢{SCROLL}虫精灵了吗？",
-   "en": "Cindy: I love Bug-type Pokémon.{SCROLL}Am I repeating myself?",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/63"
-  },
-  {
-   "id": 64,
-   "zh": "里见『恭喜你！{NEWLINE}对了……{SCROLL}我最喜欢虫精灵了。",
-   "en": "Cindy: Congratulations!{NEWLINE}Oh, and...{SCROLL}I love Bug-type Pokémon.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 65,
-   "zh": "智道『 自出生起{NEWLINE}就只抓虫精灵的我{SCROLL}怎么可能会输！",
-   "en": "Josh: I’ve caught nothing but Bug{NEWLINE}Pokémon since the day I was born.{SCROLL}There’s no way I’m going to lose!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s) | rewritten from zh (was tm_v3)"
-  },
-  {
-   "id": 66,
-   "zh": "智道『听说有人抓到{NEWLINE}绿毛虫就拿了冠军！",
-   "en": "Josh: Somebody won the Contest{NEWLINE}with a Caterpie!",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/66; modernised from US 0062#66"
-  },
-  {
-   "id": 67,
-   "zh": "智道『捕虫大会{NEWLINE}不是抓草啊鸟什么的,{CLEAR}而是要抓虫子！{SCROLL}拿到了冠军的你{NEWLINE}应该是知道的吧？",
-   "en": "Josh: The Bug-Catching Contest isn’t{NEWLINE}about catching grass types or birds or{CLEAR}whatever. It’s about bugs!{SCROLL}You won, so you know that, right?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 68,
-   "zh": "库塔『什么？{NEWLINE}有说话的闲工夫{CLEAR}就再多找找虫子吧？",
-   "en": "Samuel: What?{NEWLINE}If you’ve got time to chat,{CLEAR}go find some more bugs, why don’t you?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s) | rewritten from zh (was tm_v3)"
-  },
-  {
-   "id": 69,
-   "zh": "库塔『唔……{NEWLINE}还以为分数能更高点的。",
-   "en": "Samuel: Arrgh! I thought it would{NEWLINE}score higher.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "US 0062/69 | rewritten from zh (was us)"
-  },
-  {
-   "id": 70,
-   "zh": "库塔『不甘心……{NEWLINE}这次的失败我要当作教训……",
-   "en": "Samuel: So frustrating...{NEWLINE}I’ll learn from this loss...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 71,
-   "zh": "知之『精灵的事{NEWLINE}我已经充~分学习过了。{CLEAR}一定能拿到第一的！",
-   "en": "Kipp: I’ve studied Pokémon inside and{NEWLINE}out. I’m sure to take first place!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 72,
-   "zh": "知之『就是学习了也赢不了啊。",
-   "en": "Kipp: Studying hard on Bug-type{NEWLINE}Pokémon doesn’t ensure you’ll win here.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/72"
-  },
-  {
-   "id": 73,
-   "zh": "知之『告诉我秘诀吧！{NEWLINE}我想赢啊！",
-   "en": "Kipp: Could you give me some tips?{NEWLINE}I want to win!",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
-  },
-  {
-   "id": 74,
-   "zh": "干安",
-   "en": "Don",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
-  },
-  {
-   "id": 75,
-   "zh": "洋二",
-   "en": "Ed",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
-  },
-  {
-   "id": 76,
-   "zh": "绘里",
-   "en": "Abby",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
-  },
-  {
-   "id": 77,
-   "zh": "明仁",
-   "en": "William",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
-  },
-  {
-   "id": 78,
-   "zh": "贞夫",
-   "en": "Benny",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
-  },
-  {
-   "id": 79,
-   "zh": "洋川",
-   "en": "Todd",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (Name slot 洋川 (Todd, D-1180) sits where the vanilla list has Barry; English had Barry); logged in hack_findings_import.jsonl"
-  },
-  {
-   "id": 80,
-   "zh": "里见",
-   "en": "Cindy",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
-  },
-  {
-   "id": 81,
-   "zh": "智道",
-   "en": "Josh",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
-  },
-  {
-   "id": 82,
-   "zh": "库塔",
-   "en": "Samuel",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
-  },
-  {
-   "id": 83,
-   "zh": "知之",
-   "en": "Kipp",
-   "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
-  },
-  {
-   "id": 84,
-   "zh": "阿笔『{VAR:0103:0}先生是来参加{NEWLINE}捕虫大会的吗？{CLEAR}我已经拿过很多次大会冠军,{CLEAR}所以就不参加了。{SCROLL}阿笔『大会要明天才能开始,{NEWLINE}咱们趁今天有时间{CLEAR}先在这里合张影怎么样？",
-   "en": "Bugsy: Mr. {VAR:0103:0}, are you here for{NEWLINE}the Bug-Catching Contest?{SCROLL}I’ve won it many times, so I won’t{NEWLINE}take part.{SCROLL}Bugsy: The Contest doesn’t start until{NEWLINE}tomorrow. Since we have time today,{CLEAR}how about a picture together here?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 85,
-   "zh": "阿笔『{VAR:0103:0}小姐是来参加{NEWLINE}捕虫大会的吗？{CLEAR}我已经拿过很多次大会冠军,{CLEAR}所以就不参加了。{SCROLL}阿笔『大会要明天才能开始,{NEWLINE}咱们趁今天有时间{CLEAR}先在这里合张影怎么样？",
-   "en": "Bugsy: Miss {VAR:0103:0}, are you here for{NEWLINE}the Bug-Catching Contest?{SCROLL}I’ve won it many times, so I won’t{NEWLINE}take part.{SCROLL}Bugsy: The Contest doesn’t start until{NEWLINE}tomorrow. Since we have time today,{CLEAR}how about a picture together here?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 86,
-   "zh": "阿笔『那么,要拍了！{NEWLINE}一起微笑吧！{SCROLL}",
-   "en": "Bugsy: OK! Let’s take one.{NEWLINE}Smile!{SCROLL}",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/86"
-  },
-  {
-   "id": 87,
-   "zh": "阿笔『太好了！{NEWLINE}拍到好照片了！",
-   "en": "Bugsy: Yay! This is a good one!",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/87"
-  },
-  {
-   "id": 88,
-   "zh": "阿笔『是吗……{NEWLINE}没事！我完全没往心里去。",
-   "en": "Bugsy: Oh, I see...{NEWLINE}That’s OK. I’m not sad.",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0062/88"
-  },
-  {
-   "id": 89,
-   "zh": "相册好像已经满了,{SCROLL}请在电脑上整理一下{NEWLINE}照片吧。",
-   "en": "Your Photo Album seems to be full.{SCROLL}Please sort out your photos on a PC.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 90,
-   "zh": "嘿嘿,谢谢姐姐的夸奖。{SCROLL}只是我妈妈一旦开始怀疑,{NEWLINE}就会接二连三地胡思乱想。{CLEAR}真不知道该怎么跟她解释……",
-   "en": "Hee hee, thanks, miss.{SCROLL}But once my mom starts getting{NEWLINE}suspicious, she imagines all kinds{CLEAR}of things.{SCROLL}I don’t know how to explain it to her...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 91,
-   "zh": "哇！真的吗？{NEWLINE}那就拜托姐姐了！",
-   "en": "Wow! Really?{NEWLINE}Thanks, miss!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 92,
-   "zh": "{VAR:0103:0}『一男一女两个小学生{NEWLINE}相约来到自然公园的无人角落,{CLEAR}任你们怎么解释这都是早恋的迹象。{SCROLL}{VAR:0103:0}『你现在马上{NEWLINE}跟我回去见你母亲,{CLEAR}向她当面承认错误。",
-   "en": "{VAR:0103:0}: A boy and a girl,{NEWLINE}two grade-schoolers, meeting up in a{CLEAR}deserted corner of the National Park...{SCROLL}Explain all you like, it’s a sure sign of{NEWLINE}puppy love.{SCROLL}{VAR:0103:0}: You’re coming back with{NEWLINE}me right now to see your mother,{CLEAR}and you’re going to admit what you did{CLEAR}to her face.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 93,
-   "zh": "你不要胡乱猜测{NEWLINE}我们的关系好不好。{CLEAR}我们就是想让精灵们{CLEAR}到一个环境优美的地方见面。{CLEAR}根本就不是什么早恋啊！",
-   "en": "Stop making wild guesses about us, OK?{SCROLL}We just wanted our Pokémon to meet{NEWLINE}somewhere nice.{SCROLL}It’s not puppy love at all!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 94,
-   "zh": "就是嘛就是嘛！{NEWLINE}我们就是普通的同学关系。{CLEAR}口呆花和美丽花才是恋人呢。",
-   "en": "Exactly, exactly!{NEWLINE}We’re just classmates.{SCROLL}Weepinbell and Bellossom are the ones{NEWLINE}in love.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 95,
-   "zh": "{VAR:0103:0}『早恋往往就是这样{NEWLINE}以精灵为契慢慢机开始的。{CLEAR}为了防止精灵交流引发你们早恋,{CLEAR}口呆花和美丽花不要再见面了。{CLEAR}你也快跟我去见你妈妈吧。",
-   "en": "{VAR:0103:0}: Puppy love always starts{NEWLINE}slowly like this, with Pokémon as{CLEAR}the excuse.{SCROLL}To stop your Pokémon from leading you{NEWLINE}two into puppy love, Weepinbell and{CLEAR}Bellossom won’t see each other again.{SCROLL}Now hurry up and come see your mom{NEWLINE}with me.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 96,
-   "zh": "你是谁啊！就让我跟你走。{NEWLINE}我才不听你的呢。",
-   "en": "Who even are you? Telling me to go with{NEWLINE}you... I’m not listening to you!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 97,
-   "zh": "口呆花,有人要来强行分开你们,{NEWLINE}现在需要你保护自己的爱情了。",
-   "en": "Weepinbell, someone wants to force you{NEWLINE}two apart. Now you have to protect{CLEAR}your love!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 98,
-   "zh": "我不知道你是不是{NEWLINE}真的是我妈妈派来的,{CLEAR}但如果你想让口呆花和美丽花分开,{CLEAR}我就要把你赶跑！",
-   "en": "I don’t know if my mom really sent you,{SCROLL}but if you want to split up Weepinbell{NEWLINE}and Bellossom, I’ll chase you away!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 99,
-   "zh": "呜……你欺负人！",
-   "en": "Waah... You’re a bully!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 100,
-   "zh": "美丽花,为了你能{NEWLINE}继续跟口呆花见面,{CLEAR}咱们也来帮忙。",
-   "en": "Bellossom, we’ll help too, so you can{NEWLINE}keep seeing Weepinbell.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 101,
-   "zh": "{VAR:0103:0}『你放心吧,{NEWLINE}我不是拐卖小孩的坏人。{CLEAR}现在带上你的精灵{CLEAR}跟我去见你妈妈吧。",
-   "en": "{VAR:0103:0}: Relax. I’m not some creep who{NEWLINE}kidnaps kids.{SCROLL}Now take your Pokémon and come see{NEWLINE}your mom with me.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 102,
-   "zh": "你这么小就不学好,{NEWLINE}居然还搞早恋。{CLEAR}我就是平时揍你揍得太轻了！",
-   "en": "So young and already going bad...{NEWLINE}dating at your age!{SCROLL}I clearly haven’t been beating you{NEWLINE}hard enough!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 103,
-   "zh": "不是啊妈,我只是想让口呆花{NEWLINE}跟同学的美丽花凑一对……",
-   "en": "No, Mom, I just wanted to{NEWLINE}pair up Weepinbell with my{CLEAR}classmate’s Bellossom...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 104,
-   "zh": "住嘴！你还跟我狡辨！{NEWLINE}这位路过的训练家都跟我说了,{CLEAR}你们私下单独交流精灵的事{CLEAR}这就是早恋的苗头。{SCROLL}以后不许再跟你那个女同学玩了,{NEWLINE}听到了没有！",
-   "en": "Shut it! Still talking back?!{SCROLL}This passing Trainer told me everything.{NEWLINE}Swapping Pokémon stories in secret,{CLEAR}just the two of you...{CLEAR}That’s how puppy love starts.{SCROLL}You’re not playing with that girl from{NEWLINE}your class anymore. Do you hear me?!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 105,
-   "zh": "我……哦……唉……",
-   "en": "I... OK... *sigh*...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 106,
-   "zh": "谢谢你帮我纠正儿子的早恋,{NEWLINE}请收下我的这份谢礼。",
-   "en": "Thank you for setting my son{NEWLINE}straight about his puppy love.{CLEAR}Please accept this as thanks.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 107,
-   "zh": "哥哥你已经跟妈妈解释过了吗？{NEWLINE}真的是太谢谢你了。{CLEAR}这是我在自然公园捡到的{CLEAR}外面买不到的那种精灵球哦,{CLEAR}送给你吧！",
-   "en": "Mister, did you explain things to my{NEWLINE}mom? Thank you so much!{SCROLL}I found this Poké Ball in the National{NEWLINE}Park. It’s the kind you can’t buy in{CLEAR}stores. You can have it!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 108,
-   "zh": "姐姐你已经跟妈妈解释过了吗？{NEWLINE}真的是太谢谢你了。{CLEAR}这是我在自然公园捡到的{CLEAR}外面买不到的那种精灵球哦,{CLEAR}送给你吧！",
-   "en": "Miss, did you explain things to my mom?{NEWLINE}Thank you so much!{SCROLL}I found this Poké Ball in the National{NEWLINE}Park. It’s the kind you can’t buy in{CLEAR}stores. You can have it!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 109,
-   "zh": "拜托你去跟妈妈解释一下吧,{NEWLINE}如果我去解释的话,{CLEAR}妈妈肯定不会听的。",
-   "en": "Please go explain things to my mom.{SCROLL}If I try to explain, she’ll never listen.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 110,
-   "zh": "看到口呆花开心的样子,{NEWLINE}我也很开心！",
-   "en": "Seeing Weepinbell so happy makes me{NEWLINE}happy too!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 111,
-   "zh": "我的美丽花跟它的追求者相爱了哦。",
-   "en": "My Bellossom fell in love with{NEWLINE}its admirer!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 112,
-   "zh": "呜呜呜……口呆花不在了,{NEWLINE}美丽花也变得没有精神了。",
-   "en": "*sob*... Weepinbell’s gone,{NEWLINE}and now Bellossom has no energy either.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 113,
-   "zh": "美丽花『Be……",
-   "en": "Bellossom: Be...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 114,
-   "zh": "一树『呀,这不是联盟冠军{VAR:0103:0}吗？{NEWLINE}你这种人也会到自然公园来吗？",
-   "en": "Will: Well, if it isn’t League Champion{NEWLINE}{VAR:0103:0}. Even someone like you comes to{CLEAR}the National Park?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 115,
-   "zh": "梨花『你是一个人来的耶。{NEWLINE}居然一个人来约会圣地,{CLEAR}也是够可怜的。",
-   "en": "Karen: And you came alone.{NEWLINE}All by yourself, to the number one date{CLEAR}spot... How pathetic.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 116,
-   "zh": "{VAR:0103:0}『你们是火箭队的人吧？{NEWLINE}居然敢正大光明地出现在这里,{CLEAR}我现在就抓你们回去！",
-   "en": "{VAR:0103:0}: You’re Team Rocket,{NEWLINE}aren’t you? How dare you show{CLEAR}your faces here in broad daylight!{CLEAR}I’m taking you in right now!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 117,
-   "zh": "一树『火箭队？你在说什么啊？{NEWLINE}我怎么听不懂呢。",
-   "en": "Will: Team Rocket? What are you talking{NEWLINE}about? I don’t understand a word.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 118,
-   "zh": "梨花『我们只记得{NEWLINE}好像跟你的哪个同伴{CLEAR}在一起共事过呢。",
-   "en": "Karen: All we remember is that we used{NEWLINE}to work alongside one of your friends.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 119,
-   "zh": "{VAR:0103:0}『可恶……",
-   "en": "{VAR:0103:0}: Dammit...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 120,
-   "zh": "一树『原来联盟冠军{NEWLINE}也会感到无能为力啊。",
-   "en": "Will: So even the League Champion can{NEWLINE}feel helpless.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 121,
-   "zh": "梨花『看你这个样子,{NEWLINE}我的心情舒畅极了。",
-   "en": "Karen: Seeing you like this puts me in a{NEWLINE}wonderful mood.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 122,
-   "zh": "{VAR:0103:0}『今天就算不抓你们,{NEWLINE}也要让你们尝尝正义的铁拳！",
-   "en": "{VAR:0103:0}: Even if I can’t arrest{NEWLINE}you today, I’ll give you a taste of{CLEAR}justice’s iron fist!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 123,
-   "zh": "一树『赢了我们你很得意吗？",
-   "en": "Will: Beating us makes you feel pretty{NEWLINE}good about yourself, huh?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 124,
-   "zh": "梨花『你等着吧,{NEWLINE}很快你就得意不起来了！",
-   "en": "Karen: Just you wait.{NEWLINE}You won’t be so smug for long!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 125,
-   "zh": "一树『走了走了,夹着尾巴逃走了。",
-   "en": "Will: Let’s go, let’s go. Time to tuck{NEWLINE}our tails between our legs and run.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 126,
-   "zh": "梨花『就像一条狗一样,{NEWLINE}嗯哼,还是单身的。",
-   "en": "Karen: Just like a dog. Mm-hmm...{NEWLINE}a lonely single dog, like you.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 127,
-   "zh": "要教训一下他们吗？",
-   "en": "Teach them a lesson?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 128,
-   "zh": "梨花『快看啊一树,有位老熟人呢。",
-   "en": "Karen: Look, Will. It’s an old friend.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 129,
-   "zh": "一树『我说冠军大人啊,{NEWLINE}我们可是联盟认定的精英训练家,{CLEAR}想抓我们是要有证据的。",
-   "en": "Will: Come now, Champion.{NEWLINE}We are League-certified Ace Trainers.{CLEAR}If you want to arrest us,{CLEAR}you’ll need evidence.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 130,
-   "zh": "梨花『我就喜欢看你明明很生气,{NEWLINE}却又拿我们无可奈何的样子。",
-   "en": "Karen: I just love the look on{NEWLINE}your face when you’re so angry,{CLEAR}yet can’t do a thing to us.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 131,
-   "zh": "我和我亲爱的女友心意相通,{NEWLINE}如果进行双打对战的话,{CLEAR}没有人是我们的对手。{SCROLL}你想看看我们的双打对战技巧吗？",
-   "en": "My darling girlfriend and I are totally{NEWLINE}in sync. Nobody can beat us in a{CLEAR}Double Battle.{SCROLL}Want to see our Double Battle skills?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 132,
-   "zh": "嘿嘿,那我们要上咯。",
-   "en": "Heh heh. Here we come, then.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 133,
-   "zh": "虽说是我们输了,{NEWLINE}但是经过这次战斗,{CLEAR}我们之间的感情又加深了。",
-   "en": "We lost, but this battle brought us{NEWLINE}even closer together.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 134,
-   "zh": "我的女朋友保养的非常好,{NEWLINE}肤白貌美长发飘飘,{CLEAR}能跟这样的女孩交往我可真是走运。",
-   "en": "My girlfriend takes such good care{NEWLINE}of herself. Fair skin, pretty face,{CLEAR}long flowing hair...{SCROLL}I’m so lucky to be dating a girl{NEWLINE}like her.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 135,
-   "zh": "只要男友在我身边,{NEWLINE}我就感觉自己能战胜一切,{CLEAR}就算是精灵对战也能战胜联盟冠军。{SCROLL}你想感受一下这份爱情的力量吗？",
-   "en": "As long as my boyfriend’s by my side, I{NEWLINE}feel like I can beat anything. Even the{CLEAR}League Champion in a Pokémon battle.{SCROLL}Want to feel the power of our love?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 136,
-   "zh": "我男朋友在战斗中{NEWLINE}保护我的样子好帅啊！",
-   "en": "My boyfriend looked so cool protecting{NEWLINE}me in that battle!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 137,
-   "zh": "我听说关东地区有放生巴大蝴{NEWLINE}让它们去寻找伴侣的习俗。{CLEAR}其实只要联系到{CLEAR}养异性巴大蝴的训练家,{CLEAR}就能为巴大蝴找到伴侣,{CLEAR}完全没必要放生啊！",
-   "en": "I heard that in Kanto, there’s a custom{NEWLINE}of releasing Butterfree so they can{CLEAR}find mates.{SCROLL}But if you just contact a Trainer with{NEWLINE}a Butterfree of the opposite gender,{CLEAR}you can find it a mate.{CLEAR}There’s no need to let it go at all!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 138,
-   "zh": "巴大蝴『Buuu——ter！",
-   "en": "Butterfree: Buuu-ter!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 139,
-   "zh": "一来到自然公园{NEWLINE}我就会觉得身心放松。{CLEAR}就算没有恋人陪着,{CLEAR}我也愿意来这里散步。",
-   "en": "Whenever I come to the National Park,{NEWLINE}I feel totally relaxed.{SCROLL}Even without a sweetheart,{NEWLINE}I like taking walks here.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 140,
-   "zh": "我们是来这里约会的训练家情侣,{NEWLINE}你应该也是很厉害的训练家吧？{CLEAR}愿意与我们来一场精灵对战吗？",
-   "en": "We’re a Trainer couple here on a date.{NEWLINE}You must be a pretty strong Trainer{CLEAR}too, right?{SCROLL}Will you have a Pokémon battle with us?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 141,
-   "zh": "这可是双打哦,你小心了。",
-   "en": "It’s a Double Battle, so watch out.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 142,
-   "zh": "你很行嘛,{NEWLINE}我们两个人都不是你的对手。",
-   "en": "You’re good! Even the two of us{NEWLINE}together are no match for you.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 143,
-   "zh": "能跟心爱的人一起培养精灵,{NEWLINE}这就是幸福吧。",
-   "en": "Raising Pokémon together with the one{NEWLINE}you love... I guess that’s happiness.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 144,
-   "zh": "只是看风景的约会有点单调,{NEWLINE}这时候能来场精灵对战就好了。{CLEAR}我看你很厉害的样子,{CLEAR}能跟我们来一场精灵对战吗？",
-   "en": "A date that’s just looking at the{NEWLINE}scenery is a little boring. A Pokémon{CLEAR}battle would be perfect right now.{SCROLL}You look pretty strong.{NEWLINE}Will you battle us?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 145,
-   "zh": "我跟女朋友是通过精灵对战认识的,{NEWLINE}一开始我们只是讨论{CLEAR}关于精灵培养的事,{CLEAR}后来一点一点就发展成情侣关系了。",
-   "en": "My girlfriend and I met through{NEWLINE}Pokémon battles.{SCROLL}At first we only talked about{NEWLINE}raising Pokémon, but little by little,{CLEAR}we became a couple.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 146,
-   "zh": "嘿,我刚让精灵学了一招{NEWLINE}厉害的双打技能。{CLEAR}要不要跟我们来场双打对战{CLEAR}见识一下这个新技能？",
-   "en": "Hey, I just taught my Pokémon an{NEWLINE}awesome Double Battle move.{SCROLL}Want to see it in a Double Battle{NEWLINE}with us?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 147,
-   "zh": "我是不会输的铁血硬汉！",
-   "en": "I’m an iron-willed tough guy who{NEWLINE}never loses!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 148,
-   "zh": "啊……最终还是我输了。",
-   "en": "Ah... I lost in the end.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 149,
-   "zh": "不能再提对战的事了,{NEWLINE}再提女朋友就要生气了。",
-   "en": "I can’t bring up battling again,{NEWLINE}or my girlfriend will get mad.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 150,
-   "zh": "我男朋友在约会的时候,{NEWLINE}总是想着精灵对战的事。{CLEAR}你能跟我们来场对战,{CLEAR}之后好让他安心约会吗？",
-   "en": "Whenever we’re on a date,{NEWLINE}my boyfriend’s always thinking about{CLEAR}Pokémon battles.{SCROLL}Would you battle us, so he can relax{NEWLINE}and enjoy our date afterward?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 151,
-   "zh": "谢谢你,那咱们开始吧。",
-   "en": "Thank you! Let’s get started.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 152,
-   "zh": "呼,总算结束了。{NEWLINE}现在我男朋友应该能专心约会了吧。",
-   "en": "Whew, it’s finally over. Now my boyfriend{NEWLINE}should be able to focus on our date.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 153,
-   "zh": "我也不反对男朋友{NEWLINE}以精英训练家为目标努力,{CLEAR}但是为了实现目标太过于执着痴迷,{CLEAR}反而会影响生活。",
-   "en": "I don’t mind my boyfriend working hard{NEWLINE}to become an Ace Trainer.{SCROLL}But being too obsessed with a goal can{NEWLINE}get in the way of life.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 154,
-   "zh": "我希望能在这里{NEWLINE}与一位美丽的姑娘偶遇。{SCROLL}啊！上天啊！赐我一个女朋友吧！",
-   "en": "I’m hoping to bump into a beautiful{NEWLINE}girl here.{SCROLL}Oh, heavens! Please, grant me{NEWLINE}a girlfriend!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 155,
-   "zh": "空",
-   "en": "---",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 138 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl) | rewritten from zh (was tm_v3)"
-  },
-  {
-   "id": 156,
-   "zh": "在捕虫大会休会期间,{NEWLINE}陪我来场一对一的精灵对战吧！",
-   "en": "While the Bug-Catching Contest is{NEWLINE}on break, have a one-on-one battle{CLEAR}with me!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 157,
-   "zh": "你身上的压迫感好强啊,{NEWLINE}我还是不跟你打了。",
-   "en": "You give off such intense pressure...{NEWLINE}I think I’ll pass on battling you.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 158,
-   "zh": "我们是这个公园里{NEWLINE}最强的训练家情侣,{CLEAR}你想向我们两个人挑战吗？",
-   "en": "We’re the strongest Trainer couple{NEWLINE}in this park. Want to challenge the{CLEAR}two of us?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 159,
-   "zh": "按理说以我们这样的水准{NEWLINE}不应该以多欺少,{CLEAR}但是我在你身上感受到了{CLEAR}不可名状的强大力量,{CLEAR}感觉我们两个更像是挑战者。{SCROLL}希望你能拿出全力,{NEWLINE}让我们印证一下自己的实力。",
-   "en": "Normally, at our level, we wouldn’t gang{NEWLINE}up two against one.{SCROLL}But I can feel some indescribable,{NEWLINE}overwhelming power from you. It feels{CLEAR}more like we’re the challengers.{SCROLL}Please give it everything you’ve got,{NEWLINE}so we can see where we really stand.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 160,
-   "zh": "仔细一看您不是{NEWLINE}联盟冠军{VAR:0103:0}大人吗？{CLEAR}刚刚能跟您交手,真是我们的荣幸。",
-   "en": "Wait, aren’t you League Champion{NEWLINE}{VAR:0103:0}? It was an honor to battle{CLEAR}you just now.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 161,
-   "zh": "通过跟您战斗,{NEWLINE}我们才发现自身其实还有很多不足。",
-   "en": "Battling you showed us we still have a{NEWLINE}lot to work on.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 162,
-   "zh": "我们两个跟常来这儿的人都交过手,{NEWLINE}几乎没有人是我们的对手。{CLEAR}你也想挑战我们试试吗？",
-   "en": "We’ve battled everyone who comes{NEWLINE}here regularly, and hardly anyone{CLEAR}can beat us.{SCROLL}Want to try challenging us too?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 163,
-   "zh": "看来我们的连胜纪录又要延长了。",
-   "en": "Looks like our winning streak just{NEWLINE}got longer.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 164,
-   "zh": "仔细一看您不是{NEWLINE}联盟冠军{VAR:0103:0}大人吗？{CLEAR}我和男朋友都是你的粉丝哦！",
-   "en": "Wait, aren’t you League Champion{NEWLINE}{VAR:0103:0}? My boyfriend and I are both{CLEAR}fans of yours!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 165,
-   "zh": "没想到能跟您交手,{NEWLINE}这真是我们的荣幸。",
-   "en": "We never dreamed we’d get to battle{NEWLINE}you. What an honor.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 166,
-   "zh": "太阳精灵『Eeeee——peo！",
-   "en": "Espeon: Eeeee-peo!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 167,
-   "zh": "你看大叔我的小女朋友{NEWLINE}是不是年轻又漂亮啊？",
-   "en": "Hey, take a look at Uncle’s little{NEWLINE}girlfriend here. Young and pretty,{CLEAR}isn’t she?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 168,
-   "zh": "哈哈哈,只要你像我一样开宾士,{NEWLINE}你也会有这么漂亮的女朋友。",
-   "en": "Hah hah hah! Drive a Benz like me,{NEWLINE}and you’ll get a pretty girlfriend{CLEAR}like this too.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 169,
-   "zh": "敢说我女朋友不漂亮？讨打！",
-   "en": "You saying my girlfriend isn’t pretty?{NEWLINE}You’re asking for it!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 170,
-   "zh": "哎哟,你还挺厉害……",
-   "en": "Ouch, you’re pretty tough...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 171,
-   "zh": "能打有什么用,{NEWLINE}你还能当联盟冠军不成？{CLEAR}我跟你说真正成熟的女孩子{CLEAR}是不会喜欢你这种人的。",
-   "en": "What good is being able to fight? What,{NEWLINE}you think you’re the League Champion?{SCROLL}Let me tell you, a truly mature girl{NEWLINE}won’t go for a guy like you.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 172,
-   "zh": "这位是我的叔叔,{NEWLINE}我爸爸去世以后{CLEAR}他真的帮了我和妈妈很多忙呢。",
-   "en": "This is my uncle. After my dad passed{NEWLINE}away, he helped my mom and me a lot.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 173,
-   "zh": "叔叔虽然没有认出你,{NEWLINE}但是我认出来了哦。{CLEAR}你就是联盟冠军{VAR:0103:0}大人吧？{SCROLL}有时间的话带我去海边游唦呗,{NEWLINE}我买了件很性感的唦衣哦。",
-   "en": "Uncle didn’t recognize you, but I did.{NEWLINE}You’re League Champion {VAR:0103:0}, right?{SCROLL}If you have time, take me to{NEWLINE}the beach for a swim sometime.{CLEAR}I bought a really sexy swimsuit.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 174,
-   "zh": "哈哈哈,你也要跟她学着点,{NEWLINE}将来找一个开宾士的男朋友。",
-   "en": "Hah hah hah! You should learn from{NEWLINE}her and find yourself a boyfriend who{CLEAR}drives a Benz.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 175,
-   "zh": "能打有什么用,{NEWLINE}你还能当联盟冠军不成？{CLEAR}我跟你说真正成熟的男人{CLEAR}是不会喜欢你这种暴力婆的。",
-   "en": "What good is being able to fight? What,{NEWLINE}you think you’re the League Champion?{SCROLL}Let me tell you, a truly mature man{NEWLINE}won’t go for a violent shrew like you.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 176,
-   "zh": "叔叔虽然没有认出你,{NEWLINE}但是我认出来了哦。{CLEAR}你就是联盟冠军{VAR:0103:0}大人吧？{SCROLL}只可惜你是个女生,{NEWLINE}不然的话我还很想追你呢。",
-   "en": "Uncle didn’t recognize you, but I did.{NEWLINE}You’re League Champion {VAR:0103:0}, right?{SCROLL}Too bad you’re a girl.{NEWLINE}Otherwise I’d totally go after you.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 177,
-   "zh": "恋爱中最重要的就是会撒娇,{NEWLINE}口袋妖怪对战中也是一样,{CLEAR}试想一下你的精灵{CLEAR}在战斗中突然撒娇,{CLEAR}对方是不是瞬间就丧失攻击力了？{SCROLL}所以说撒娇是个很有用的技能,{NEWLINE}如果你想学的话,{CLEAR}只要给我一个金珠我就教你。{SCROLL}怎么样,要学吗？",
-   "en": "In love, the most important{NEWLINE}thing is knowing how to act cute.{CLEAR}Pokémon battles are the same.{SCROLL}Imagine your Pokémon suddenly{NEWLINE}acting all cute in battle.{CLEAR}Wouldn’t the foe lose its will to attack?{SCROLL}That’s why Charm is such a useful move.{NEWLINE}If you want to learn it, just give me a{CLEAR}Nugget and I’ll teach you.{SCROLL}So, want to learn it?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 178,
-   "zh": "要让哪个精灵学呢？{SCROLL}",
-   "en": "Which Pokémon should learn it?{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 3 source(s), flags page_breaks_lost; other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl) | rewritten from zh (was tm_v3)"
-  },
-  {
-   "id": 179,
-   "zh": "想学的话随时再来找我。",
-   "en": "If you want to learn it, come find me{NEWLINE}anytime.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 2 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl) | rewritten from zh (was tm_v3)"
-  },
-  {
-   "id": 180,
-   "zh": "你身上并没有金珠,{NEWLINE}等有了再来找我吧。",
-   "en": "You don’t have a Nugget.{NEWLINE}Come back when you do.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 181,
-   "zh": "抱歉……这个精灵{NEWLINE}没法记住撒娇。{SCROLL}",
-   "en": "Sorry... This Pokémon can’t{NEWLINE}learn Charm.{SCROLL}{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 182,
-   "zh": "还没出生的精灵{NEWLINE}恐怕学不会这个技能……{SCROLL}",
-   "en": "I’m afraid a Pokémon that hasn’t{NEWLINE}hatched yet can’t learn this move...{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 3 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl) | rewritten from zh (was tm_v3)"
-  },
-  {
-   "id": 183,
-   "zh": "这只{VAR:0100:0}{NEWLINE}已经会撒娇了！{SCROLL}",
-   "en": "This {VAR:0100:0} already knows Charm!{SCROLL}{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 184,
-   "zh": "１{VAR:0201:20}　２{VAR:0201:20}　…{VAR:0201:20}…{VAR:0201:20}完成！",
-   "en": "1{VAR:0201:20} 2{VAR:0201:20} ...{VAR:0201:20}...{VAR:0201:20}Done!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), flags fullwidth_chars; other variants: 6 more v3 TM candidates (tm_v4_matches.jsonl) | rewritten from zh (was tm_v3)"
-  },
-  {
-   "id": 185,
-   "zh": "{VAR:0101:0}学会了撒娇！",
-   "en": "{VAR:0101:0} learned Charm!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 186,
-   "zh": "这样一来{NEWLINE}你的{VAR:0100:0}{CLEAR}已经学会撒娇了！{SCROLL}那么按照约定,{NEWLINE}你的金珠我拿走了。",
-   "en": "And with that, your {VAR:0100:0} has{NEWLINE}learned Charm!{SCROLL}As we agreed, I’ll take your Nugget.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 187,
-   "zh": "{VAR:0101:0}想要记住{NEWLINE}新的撒娇……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习撒娇{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Charm...!{SCROLL}But {VAR:0101:0} already knows{NEWLINE}four moves!{SCROLL}Should it forget a move to learn Charm?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 188,
-   "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
-   "en": "Forget {VAR:0106:1}. Is that OK?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl) | rewritten from zh (was tm_v3)"
-  },
-  {
-   "id": 189,
-   "zh": "{VAR:0101:0}完全忘了{NEWLINE}{VAR:0106:1}的用法！{SCROLL}然后……！",
-   "en": "{VAR:0101:0} forgot all about{NEWLINE}{VAR:0106:1}!{SCROLL}And...!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 4 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl) | rewritten from zh (was tm_v3)"
-  },
-  {
-   "id": 190,
-   "zh": "你是要放弃{NEWLINE}让它记住撒娇吗？{VAR:0200:0}",
-   "en": "Give up on teaching it Charm?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 191,
-   "zh": "我跟我的妻子{NEWLINE}是在这个自然公园认识的,{CLEAR}当时我的太阳精灵还是只伊布呢。",
-   "en": "My wife and I met in this National Park.{NEWLINE}Back then, my Espeon was still{CLEAR}an Eevee.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 192,
-   "zh": "呀……就决定是你啦！",
-   "en": "Hyah... I choose you!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 193,
-   "zh": "嘿嘿,这孩子扔精灵球的样子{NEWLINE}真像他爸爸。",
-   "en": "Heh heh. The way this kid throws a Poké{NEWLINE}Ball is just like his dad.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  }
- ]
+  "narc": "a027",
+  "bank": 60,
+  "source": "work/extract/v4/a027/0060.json",
+  "strings": [
+    {
+      "id": 0,
+      "zh": "太好了,口呆花。{NEWLINE}美丽花终于接受你了哦。",
+      "en": "Great job, Weepinbell.{NEWLINE}Bellossom finally accepted you!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 1,
+      "zh": "口呆花『Weee——pin！",
+      "en": "Weepinbell: Weee-pin!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "zh": "美丽花你不可以欺负口呆花哦,{NEWLINE}你们两个要相亲相爱知道吗？",
+      "en": "Bellossom, don’t you pick on Weepinbell,{NEWLINE}OK? You two need to love each other,{CLEAR}got it?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "zh": "美丽花『Belloooo——som！",
+      "en": "Bellossom: Belloooo-som!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "zh": "这两个小学生像是在约会,{NEWLINE}要抓他们现行吗？",
+      "en": "These two grade-schoolers{NEWLINE}look like they’re on a date.{CLEAR}Catch them in the act?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "zh": "{VAR:0103:0}『你们两个是在约会吗？{NEWLINE}对你们来说是不是早了点啊。",
+      "en": "{VAR:0103:0}: Are you two on a date?{NEWLINE}Isn’t it a little early for that?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "zh": "{VAR:0103:0}『小小年纪就在这里{NEWLINE}谈情说爱不太好吧,{CLEAR}我都还是单身呢！",
+      "en": "{VAR:0103:0}: Kids your age shouldn’t be{NEWLINE}out here getting all lovey-dovey.{CLEAR}I’m still single myself!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "zh": "你好啊哥哥。{NEWLINE}你怎么会到这个角落来的？",
+      "en": "Hi, mister.{NEWLINE}What brings you to this corner?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "zh": "你好啊姐姐。{NEWLINE}你怎么会到这个角落来的？",
+      "en": "Hi, miss.{NEWLINE}What brings you to this corner?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "zh": "{VAR:0103:0}『你妈妈看到你{NEWLINE}带着小姑娘来自然公园,{CLEAR}就拜托我来确认一下{CLEAR}你们是不是早恋了。",
+      "en": "{VAR:0103:0}: Your mom saw you bring a girl{NEWLINE}to the National Park,{SCROLL}so she asked me to come check whether{NEWLINE}you two have a case of puppy love.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "zh": "早恋？？？",
+      "en": "Puppy love???",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "zh": "两只精灵非常开心！",
+      "en": "The two Pokémon look very happy!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "zh": "我们两个？？",
+      "en": "The two of us??",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "zh": "不不不……我想我妈妈可能是误会了。{NEWLINE}其实是我的口呆花{CLEAR}喜欢我同学的美丽花,{CLEAR}所以我就带着口呆花{CLEAR}来这里跟美丽花表白。",
+      "en": "No, no, no... I think my mom got the{NEWLINE}wrong idea.{SCROLL}Actually, my Weepinbell likes my{NEWLINE}classmate’s Bellossom,{SCROLL}so I brought Weepinbell here to confess{NEWLINE}its feelings to Bellossom.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "zh": "就是嘛,让心爱的精灵得到幸福,{NEWLINE}这也是身为训练家的责任呀。",
+      "en": "That’s right! Making your beloved{NEWLINE}Pokémon happy is part of being a{CLEAR}Trainer too.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "zh": "你们会成为很棒的训练家",
+      "en": "You’ll be great Trainers",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "",
+      "category": "menu_touch_1line"
+    },
+    {
+      "id": 16,
+      "zh": "解释就是掩饰,掩饰就是事实",
+      "en": "Excuses mean it’s true",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "",
+      "category": "menu_touch_1line"
+    },
+    {
+      "id": 17,
+      "zh": "{VAR:0103:0}『你们对自己的精灵很用心,{NEWLINE}相信你们将来一定能{CLEAR}成长为优秀的训练家。",
+      "en": "{VAR:0103:0}: You both really care about{NEWLINE}your Pokémon. I’m sure you’ll grow up{CLEAR}to be great Trainers.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "zh": "嘿嘿,谢谢哥哥的夸奖。{SCROLL}只是我妈妈一旦开始怀疑,{NEWLINE}就会接二连三地胡思乱想。{CLEAR}真不知道该怎么跟她解释……",
+      "en": "Hee hee, thanks, mister.{SCROLL}But once my mom starts getting{NEWLINE}suspicious, she imagines all kinds{CLEAR}of things.{SCROLL}I don’t know how to explain it to her...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "zh": "对呀,万一阿姨想太多,{NEWLINE}不让我们两个一起玩了,{CLEAR}那口呆花和美丽花{CLEAR}岂不是就见不到面了。",
+      "en": "Yeah. If your mom thinks too much and{NEWLINE}won’t let us play together anymore,{SCROLL}then Weepinbell and Bellossom won’t get{NEWLINE}to see each other.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "zh": "{VAR:0103:0}『你们放心好了,{NEWLINE}就冲你们对精灵的这份心意,{CLEAR}家长那边我替你们应付。",
+      "en": "{VAR:0103:0}: Don’t worry.{NEWLINE}You care so much about your Pokémon,{CLEAR}I’ll handle the grown-ups for you.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "zh": "哇！真的吗？{NEWLINE}那就拜托哥哥了！",
+      "en": "Wow! Really?{NEWLINE}Thanks, mister!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "zh": "大家的休憩广场{NEWLINE}自然公园",
+      "en": "Relaxation Square for Everyone{NEWLINE}National Park",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0062/22"
+    },
+    {
+      "id": 23,
+      "zh": "这儿贴着告示！{SCROLL}与爱人并肩作战{NEWLINE}能够让感情迅速升温,{CLEAR}情侣们请在自然公园{CLEAR}释放你们的热情吧。{CLEAR}　　　　　……管理处启",
+      "en": "There’s a notice here!{SCROLL}Battling side by side with your beloved{NEWLINE}makes feelings heat up fast.{SCROLL}Couples, let your passion loose in the{NEWLINE}National Park!{CLEAR}-The Park Office",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "zh": "这儿贴着告示！{SCROLL}在捕虫大会上{NEWLINE}竞赛球以外的精灵球都是禁止的。{CLEAR}　　　　　……管理处启",
+      "en": "There’s a notice here!{SCROLL}During the Bug-Catching Contest,{NEWLINE}all Poké Balls other than Sport Balls{CLEAR}are prohibited.{CLEAR}-The Park Office",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "zh": "大家捉到的精灵{NEWLINE}在这里进行评定！{SCROLL}……　……　……{NEWLINE}……　……　……{SCROLL}要公布结果了！！{NEWLINE}啦啦啦啦！！{SCROLL}",
+      "en": "Everyone’s Pokémon will now be judged!{SCROLL}... ... ...{NEWLINE}... ... ...{SCROLL}Here are the results!!{NEWLINE}Ta-da-da-da!!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "zh": "第３名是捉到了{VAR:0100:1}的{NEWLINE}{VAR:0103:0}。{SCROLL}",
+      "en": "Third place goes to {VAR:0103:0},{NEWLINE}who caught a {VAR:0100:1}!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "zh": "第３名是捉到了{VAR:0100:1}的{NEWLINE}来自{VAR:010E:2}的{CLEAR}{VAR:0103:0}。{SCROLL}",
+      "en": "Third place goes to{NEWLINE}{VAR:010E:2} {VAR:0103:0},{CLEAR}who caught a {VAR:0100:1}!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "zh": "得分是{NEWLINE}{VAR:0134:3}分！{SCROLL}",
+      "en": "The score was {VAR:0134:3} points!{SCROLL}",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 1 source(s)"
+    },
+    {
+      "id": 29,
+      "zh": "第２名是捉到了{VAR:0100:1}的{NEWLINE}{VAR:0103:0}。{SCROLL}",
+      "en": "Second place goes to {VAR:0103:0},{NEWLINE}who caught a {VAR:0100:1}!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "zh": "第２名是捉到了{VAR:0100:1}的{NEWLINE}来自{VAR:010E:2}的{CLEAR}{VAR:0103:0}。{SCROLL}",
+      "en": "Second place goes to{NEWLINE}{VAR:010E:2} {VAR:0103:0},{CLEAR}who caught a {VAR:0100:1}!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "zh": "那么！本次大赛{NEWLINE}的第１名,也就是冠军是……{SCROLL}捉到了{VAR:0100:1}的{NEWLINE}{VAR:0103:0}！{SCROLL}",
+      "en": "And now! The first-place winner,{NEWLINE}the champion of this Contest, is...{SCROLL}{VAR:0103:0}, who caught{NEWLINE}a {VAR:0100:1}!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "zh": "那么！本次大赛{NEWLINE}的第１名,也就是冠军是……{SCROLL}捉到了{VAR:0100:1}的{NEWLINE}来自{VAR:010E:2}的{CLEAR}{VAR:0103:0}！{SCROLL}",
+      "en": "And now! The first-place winner,{NEWLINE}the champion of this Contest, is...{SCROLL}{VAR:010E:2} {VAR:0103:0},{NEWLINE}who caught a {VAR:0100:1}!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "zh": "送给胜利者{VAR:0103:0}的是{NEWLINE}{VAR:0108:3}！{SCROLL}",
+      "en": "First prize for {VAR:0103:0}:{NEWLINE}{VAR:0108:3}!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "zh": "送给第２名{VAR:0103:0}的是{NEWLINE}{VAR:0108:3}。{SCROLL}",
+      "en": "Second prize for {VAR:0103:0}:{NEWLINE}{VAR:0108:3}.{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "zh": "送给第３名{VAR:0103:0}的是{NEWLINE}{VAR:0108:3}。{SCROLL}",
+      "en": "Third prize for {VAR:0103:0}:{NEWLINE}{VAR:0108:3}.{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "zh": "另外,{NEWLINE}对于未能获奖的人们,{CLEAR}送给你们{VAR:0108:3}。{SCROLL}",
+      "en": "And for everyone who didn’t place,{NEWLINE}here’s {VAR:0108:3}.{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "zh": "哎？{SCROLL}{VAR:0103:0}的背包{NEWLINE}好像已经装不下了……{SCROLL}我先给你存着,{NEWLINE}等你的行李整理好过后再来吧。{SCROLL}",
+      "en": "Huh?{SCROLL}{VAR:0103:0}’s Bag seems to be full...{SCROLL}I’ll hold on to it for you. Come back{NEWLINE}once you’ve sorted out your things.{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "zh": "下一次捉虫大会{NEWLINE}也请大家踊跃参加！",
+      "en": "Please join us for the next{NEWLINE}Bug-Catching Contest too!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "zh": "要给得到的{VAR:0100:1}{NEWLINE}取个昵称吗？",
+      "en": "Give a nickname to the {VAR:0100:1}{NEWLINE}you caught?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "zh": "{VAR:0103:0}是吧？{NEWLINE}这是帮你保留的奖品。{SCROLL}",
+      "en": "{VAR:0103:0}, right? Here’s the prize we{NEWLINE}kept for you.{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "zh": "哎？{SCROLL}{VAR:0103:0}的背包{NEWLINE}好像已经装不下了……{SCROLL}我先给你存着{NEWLINE}等你的行李整理好过后再来吧。",
+      "en": "Huh?{SCROLL}{VAR:0103:0}’s Bag seems to be full...{SCROLL}I’ll hold on to it for you. Come back{NEWLINE}once you’ve sorted out your things.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "zh": "下一次捉虫大会{NEWLINE}也请大家踊跃参加！",
+      "en": "Please join us in the next{NEWLINE}Bug-Catching Contest, too!",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0062/42"
+    },
+    {
+      "id": 43,
+      "zh": "你已经拿不下了,{NEWLINE}{VAR:0101:5}被{CLEAR}传送到电脑里去了！{SCROLL}",
+      "en": "You can’t carry any more,{NEWLINE}so {VAR:0101:5} was sent to the PC!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "zh": "干安『听好了,{NEWLINE}冠军是我的！{CLEAR}所以不要妨碍我！",
+      "en": "Don: Listen up! The title is mine!{NEWLINE}So don’t get in my way!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "zh": "干安『能不能碰上{NEWLINE}好的精灵,{CLEAR}也是要看人品的。",
+      "en": "Don: Whether you get the right Pokémon{NEWLINE}or not is half luck.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0062/45"
+    },
+    {
+      "id": 46,
+      "zh": "干安『你获得了冠军！？{SCROLL}真好啊,获得冠军{NEWLINE}一定很爽吧？",
+      "en": "Don: You won?!{SCROLL}Lucky you. Winning must feel{NEWLINE}awesome, huh?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 47,
+      "zh": "洋二『我的派拉斯特{NEWLINE}能用蘑菇孢子{CLEAR}催眠对手！",
+      "en": "Ed: My Parasect can put foes to sleep{NEWLINE}with Spore!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "zh": "洋二『要想取得胜利,{NEWLINE}仅凭捉到的精灵的{CLEAR}大小是不行的。",
+      "en": "Ed: The size of the Pokémon is not the{NEWLINE}only thing to compare when trying to{CLEAR}decide the winner.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0062/48"
+    },
+    {
+      "id": 49,
+      "zh": "洋二『嗯~真羡慕啊~{NEWLINE}这次我状态不好。",
+      "en": "Ed: Mm... I’m so jealous...{NEWLINE}I was off my game this time.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "zh": "绘里『为了参加大会{NEWLINE}我还培养了一只速度快的精灵。",
+      "en": "Abby: I even raised a fast Pokémon just{NEWLINE}for the Contest.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 51,
+      "zh": "绘里『听说颜色漂亮的{NEWLINE}精灵容易拿到第一,{CLEAR}这是真的吗？",
+      "en": "Abby: Somebody told me that colorful{NEWLINE}Pokémon are more likely to win.{CLEAR}I wonder if it’s true...",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0062/51"
+    },
+    {
+      "id": 52,
+      "zh": "绘里『太棒了！现在的你{NEWLINE}可是万人瞩目啊！",
+      "en": "Abby: Amazing! Everyone’s eyes are{NEWLINE}on you now!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 53,
+      "zh": "明仁『冠军？{NEWLINE}比起获得冠军来我更想得到{CLEAR}稀有的精灵。",
+      "en": "William: The title?{NEWLINE}I’d rather get a rare Pokémon than win.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 54,
+      "zh": "明仁『我已经找到我要的{NEWLINE}精灵了,所以已经很满足了。",
+      "en": "William: I got the Pokémon I wanted,{NEWLINE}so I’m very happy.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0062/54"
+    },
+    {
+      "id": 55,
+      "zh": "明仁『你获得胜利了吗！{NEWLINE}捉到什么样的精灵了,{CLEAR}让我看看吧！",
+      "en": "William: You won! What kind of Pokémon{NEWLINE}did you catch? Let me see!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 56,
+      "zh": "贞夫『……　……　……{NEWLINE}……　……　……　嘘！{SCROLL}精灵会跑掉的,{NEWLINE}一会儿再说。",
+      "en": "Benny: ... ... ...{NEWLINE}... ... ... Shh!{SCROLL}You’ll scare the Pokémon away.{NEWLINE}Talk later.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 57,
+      "zh": "贞夫『听我说啊,之前{NEWLINE}我以前捉到过飞天螳螂,{CLEAR}但最后还是没赢……",
+      "en": "Benny: You know what?{NEWLINE}I caught a Scyther the other day,{CLEAR}and I still didn’t win...",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0062/57; modernised from US 0062#57"
+    },
+    {
+      "id": 58,
+      "zh": "贞夫『不过今天我只是过来{NEWLINE}瞧瞧情况的！{SCROLL}下次我会认真对付！",
+      "en": "Benny: Today I only came to check{NEWLINE}things out, though!{SCROLL}Next time, I’ll get serious!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 59,
+      "zh": "佑一『在捉虫精灵的时候{NEWLINE}也要先削减它的体力{CLEAR}再扔出球,这很重要。",
+      "en": "Barry: When you catch Bug Pokémon,{NEWLINE}it’s important to wear down their HP{CLEAR}before you throw a Ball.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 60,
+      "zh": "佑一『等级越高{NEWLINE}越容易得到第一……{CLEAR}不过也好像还有别的诀窍。",
+      "en": "Barry: You have a better chance to win{NEWLINE}when your Pokémon is at a high level.{CLEAR}But it seems that there is more{CLEAR}to winning.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0062/60"
+    },
+    {
+      "id": 61,
+      "zh": "佑一『你捉到的精灵很好看呢！",
+      "en": "Barry: The Pokémon you caught is{NEWLINE}so pretty!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 62,
+      "zh": "里见『我最喜欢虫精灵了。",
+      "en": "Cindy: I love Bug-type Pokémon.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s) | rewritten from zh (was tm_v3)"
+    },
+    {
+      "id": 63,
+      "zh": "里见『我说过我最喜欢{SCROLL}虫精灵了吗？",
+      "en": "Cindy: I love Bug-type Pokémon.{SCROLL}Am I repeating myself?",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0062/63"
+    },
+    {
+      "id": 64,
+      "zh": "里见『恭喜你！{NEWLINE}对了……{SCROLL}我最喜欢虫精灵了。",
+      "en": "Cindy: Congratulations!{NEWLINE}Oh, and...{SCROLL}I love Bug-type Pokémon.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 65,
+      "zh": "智道『 自出生起{NEWLINE}就只抓虫精灵的我{SCROLL}怎么可能会输！",
+      "en": "Josh: I’ve caught nothing but Bug{NEWLINE}Pokémon since the day I was born.{SCROLL}There’s no way I’m going to lose!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s) | rewritten from zh (was tm_v3)"
+    },
+    {
+      "id": 66,
+      "zh": "智道『听说有人抓到{NEWLINE}绿毛虫就拿了冠军！",
+      "en": "Josh: Somebody won the Contest{NEWLINE}with a Caterpie!",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0062/66; modernised from US 0062#66"
+    },
+    {
+      "id": 67,
+      "zh": "智道『捕虫大会{NEWLINE}不是抓草啊鸟什么的,{CLEAR}而是要抓虫子！{SCROLL}拿到了冠军的你{NEWLINE}应该是知道的吧？",
+      "en": "Josh: The Bug-Catching Contest isn’t{NEWLINE}about catching grass types or birds or{CLEAR}whatever. It’s about bugs!{SCROLL}You won, so you know that, right?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 68,
+      "zh": "库塔『什么？{NEWLINE}有说话的闲工夫{CLEAR}就再多找找虫子吧？",
+      "en": "Samuel: What?{NEWLINE}If you’ve got time to chat,{CLEAR}go find some more bugs, why don’t you?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s) | rewritten from zh (was tm_v3)"
+    },
+    {
+      "id": 69,
+      "zh": "库塔『唔……{NEWLINE}还以为分数能更高点的。",
+      "en": "Samuel: Arrgh! I thought it would{NEWLINE}score higher.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "US 0062/69 | rewritten from zh (was us)"
+    },
+    {
+      "id": 70,
+      "zh": "库塔『不甘心……{NEWLINE}这次的失败我要当作教训……",
+      "en": "Samuel: So frustrating...{NEWLINE}I’ll learn from this loss...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 71,
+      "zh": "知之『精灵的事{NEWLINE}我已经充~分学习过了。{CLEAR}一定能拿到第一的！",
+      "en": "Kipp: I’ve studied Pokémon inside and{NEWLINE}out. I’m sure to take first place!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 72,
+      "zh": "知之『就是学习了也赢不了啊。",
+      "en": "Kipp: Studying hard on Bug-type{NEWLINE}Pokémon doesn’t ensure you’ll win here.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0062/72"
+    },
+    {
+      "id": 73,
+      "zh": "知之『告诉我秘诀吧！{NEWLINE}我想赢啊！",
+      "en": "Kipp: Could you give me some tips?{NEWLINE}I want to win!",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 1 source(s)"
+    },
+    {
+      "id": 74,
+      "zh": "干安",
+      "en": "Don",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 1 source(s)"
+    },
+    {
+      "id": 75,
+      "zh": "洋二",
+      "en": "Ed",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 1 source(s)"
+    },
+    {
+      "id": 76,
+      "zh": "绘里",
+      "en": "Abby",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 1 source(s)"
+    },
+    {
+      "id": 77,
+      "zh": "明仁",
+      "en": "William",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 1 source(s)"
+    },
+    {
+      "id": 78,
+      "zh": "贞夫",
+      "en": "Benny",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 1 source(s)"
+    },
+    {
+      "id": 79,
+      "zh": "洋川",
+      "en": "Todd",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "D-1195: reverted to match the zh (Name slot 洋川 (Todd, D-1180) sits where the vanilla list has Barry; English had Barry); logged in hack_findings_import.jsonl"
+    },
+    {
+      "id": 80,
+      "zh": "里见",
+      "en": "Cindy",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 1 source(s)"
+    },
+    {
+      "id": 81,
+      "zh": "智道",
+      "en": "Josh",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 1 source(s)"
+    },
+    {
+      "id": 82,
+      "zh": "库塔",
+      "en": "Samuel",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 1 source(s)"
+    },
+    {
+      "id": 83,
+      "zh": "知之",
+      "en": "Kipp",
+      "status": "draft",
+      "origin": "tm_v3",
+      "notes": "v3 TM: 1 source(s)"
+    },
+    {
+      "id": 84,
+      "zh": "阿笔『{VAR:0103:0}先生是来参加{NEWLINE}捕虫大会的吗？{CLEAR}我已经拿过很多次大会冠军,{CLEAR}所以就不参加了。{SCROLL}阿笔『大会要明天才能开始,{NEWLINE}咱们趁今天有时间{CLEAR}先在这里合张影怎么样？",
+      "en": "Bugsy: Mr. {VAR:0103:0}, are you here for{NEWLINE}the Bug-Catching Contest?{SCROLL}I’ve won it many times, so I won’t{NEWLINE}take part.{SCROLL}Bugsy: The Contest doesn’t start until{NEWLINE}tomorrow. Since we have time today,{CLEAR}how about a picture together here?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 85,
+      "zh": "阿笔『{VAR:0103:0}小姐是来参加{NEWLINE}捕虫大会的吗？{CLEAR}我已经拿过很多次大会冠军,{CLEAR}所以就不参加了。{SCROLL}阿笔『大会要明天才能开始,{NEWLINE}咱们趁今天有时间{CLEAR}先在这里合张影怎么样？",
+      "en": "Bugsy: Miss {VAR:0103:0}, are you here for{NEWLINE}the Bug-Catching Contest?{SCROLL}I’ve won it many times, so I won’t{NEWLINE}take part.{SCROLL}Bugsy: The Contest doesn’t start until{NEWLINE}tomorrow. Since we have time today,{CLEAR}how about a picture together here?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 86,
+      "zh": "阿笔『那么,要拍了！{NEWLINE}一起微笑吧！{SCROLL}",
+      "en": "Bugsy: OK! Let’s take one.{NEWLINE}Smile!{SCROLL}",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0062/86"
+    },
+    {
+      "id": 87,
+      "zh": "阿笔『太好了！{NEWLINE}拍到好照片了！",
+      "en": "Bugsy: Yay! This is a good one!",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0062/87"
+    },
+    {
+      "id": 88,
+      "zh": "阿笔『是吗……{NEWLINE}没事！我完全没往心里去。",
+      "en": "Bugsy: Oh, I see...{NEWLINE}That’s OK. I’m not sad.",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0062/88"
+    },
+    {
+      "id": 89,
+      "zh": "相册好像已经满了,{SCROLL}请在电脑上整理一下{NEWLINE}照片吧。",
+      "en": "Your Photo Album seems to be full.{SCROLL}Please sort out your photos on a PC.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 90,
+      "zh": "嘿嘿,谢谢姐姐的夸奖。{SCROLL}只是我妈妈一旦开始怀疑,{NEWLINE}就会接二连三地胡思乱想。{CLEAR}真不知道该怎么跟她解释……",
+      "en": "Hee hee, thanks, miss.{SCROLL}But once my mom starts getting{NEWLINE}suspicious, she imagines all kinds{CLEAR}of things.{SCROLL}I don’t know how to explain it to her...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 91,
+      "zh": "哇！真的吗？{NEWLINE}那就拜托姐姐了！",
+      "en": "Wow! Really?{NEWLINE}Thanks, miss!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 92,
+      "zh": "{VAR:0103:0}『一男一女两个小学生{NEWLINE}相约来到自然公园的无人角落,{CLEAR}任你们怎么解释这都是早恋的迹象。{SCROLL}{VAR:0103:0}『你现在马上{NEWLINE}跟我回去见你母亲,{CLEAR}向她当面承认错误。",
+      "en": "{VAR:0103:0}: A boy and a girl,{NEWLINE}two grade-schoolers, meeting up in a{CLEAR}deserted corner of the National Park...{SCROLL}Explain all you like, it’s a sure sign of{NEWLINE}puppy love.{SCROLL}{VAR:0103:0}: You’re coming back with{NEWLINE}me right now to see your mother,{CLEAR}and you’re going to admit what you did{CLEAR}to her face.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 93,
+      "zh": "你不要胡乱猜测{NEWLINE}我们的关系好不好。{CLEAR}我们就是想让精灵们{CLEAR}到一个环境优美的地方见面。{CLEAR}根本就不是什么早恋啊！",
+      "en": "Stop making wild guesses about us, OK?{SCROLL}We just wanted our Pokémon to meet{NEWLINE}somewhere nice.{SCROLL}It’s not puppy love at all!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 94,
+      "zh": "就是嘛就是嘛！{NEWLINE}我们就是普通的同学关系。{CLEAR}口呆花和美丽花才是恋人呢。",
+      "en": "Exactly, exactly!{NEWLINE}We’re just classmates.{SCROLL}Weepinbell and Bellossom are the ones{NEWLINE}in love.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 95,
+      "zh": "{VAR:0103:0}『早恋往往就是这样{NEWLINE}以精灵为契慢慢机开始的。{CLEAR}为了防止精灵交流引发你们早恋,{CLEAR}口呆花和美丽花不要再见面了。{CLEAR}你也快跟我去见你妈妈吧。",
+      "en": "{VAR:0103:0}: Puppy love always starts{NEWLINE}slowly like this, with Pokémon as{CLEAR}the excuse.{SCROLL}To stop your Pokémon from leading you{NEWLINE}two into puppy love, Weepinbell and{CLEAR}Bellossom won’t see each other again.{SCROLL}Now hurry up and come see your mom{NEWLINE}with me.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 96,
+      "zh": "你是谁啊！就让我跟你走。{NEWLINE}我才不听你的呢。",
+      "en": "Who even are you? Telling me to go with{NEWLINE}you... I’m not listening to you!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 97,
+      "zh": "口呆花,有人要来强行分开你们,{NEWLINE}现在需要你保护自己的爱情了。",
+      "en": "Weepinbell, someone wants to force you{NEWLINE}two apart. Now you have to protect{CLEAR}your love!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 98,
+      "zh": "我不知道你是不是{NEWLINE}真的是我妈妈派来的,{CLEAR}但如果你想让口呆花和美丽花分开,{CLEAR}我就要把你赶跑！",
+      "en": "I don’t know if my mom really sent you,{SCROLL}but if you want to split up Weepinbell{NEWLINE}and Bellossom, I’ll chase you away!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 99,
+      "zh": "呜……你欺负人！",
+      "en": "Waah... You’re a bully!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 100,
+      "zh": "美丽花,为了你能{NEWLINE}继续跟口呆花见面,{CLEAR}咱们也来帮忙。",
+      "en": "Bellossom, we’ll help too, so you can{NEWLINE}keep seeing Weepinbell.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 101,
+      "zh": "{VAR:0103:0}『你放心吧,{NEWLINE}我不是拐卖小孩的坏人。{CLEAR}现在带上你的精灵{CLEAR}跟我去见你妈妈吧。",
+      "en": "{VAR:0103:0}: Relax. I’m not some creep who{NEWLINE}kidnaps and sells kids.{SCROLL}Now take your Pokémon and come see{NEWLINE}your mom with me.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": " | User approved restoring child-trafficking meaning, including selling children (D-1622, 2026-10-07)."
+    },
+    {
+      "id": 102,
+      "zh": "你这么小就不学好,{NEWLINE}居然还搞早恋。{CLEAR}我就是平时揍你揍得太轻了！",
+      "en": "So young and already going bad...{NEWLINE}dating at your age!{SCROLL}I clearly haven’t been beating you{NEWLINE}hard enough!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 103,
+      "zh": "不是啊妈,我只是想让口呆花{NEWLINE}跟同学的美丽花凑一对……",
+      "en": "No, Mom, I just wanted to{NEWLINE}pair up Weepinbell with my{CLEAR}classmate’s Bellossom...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 104,
+      "zh": "住嘴！你还跟我狡辨！{NEWLINE}这位路过的训练家都跟我说了,{CLEAR}你们私下单独交流精灵的事{CLEAR}这就是早恋的苗头。{SCROLL}以后不许再跟你那个女同学玩了,{NEWLINE}听到了没有！",
+      "en": "Shut it! Still talking back?!{SCROLL}This passing Trainer told me everything.{NEWLINE}Swapping Pokémon stories in secret,{CLEAR}just the two of you...{CLEAR}That’s how puppy love starts.{SCROLL}You’re not playing with that girl from{NEWLINE}your class anymore. Do you hear me?!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 105,
+      "zh": "我……哦……唉……",
+      "en": "I... OK... *sigh*...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 106,
+      "zh": "谢谢你帮我纠正儿子的早恋,{NEWLINE}请收下我的这份谢礼。",
+      "en": "Thank you for setting my son{NEWLINE}straight about his puppy love.{CLEAR}Please accept this as thanks.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 107,
+      "zh": "哥哥你已经跟妈妈解释过了吗？{NEWLINE}真的是太谢谢你了。{CLEAR}这是我在自然公园捡到的{CLEAR}外面买不到的那种精灵球哦,{CLEAR}送给你吧！",
+      "en": "Mister, did you explain things to my{NEWLINE}mom? Thank you so much!{SCROLL}I found this Poké Ball in the National{NEWLINE}Park. It’s the kind you can’t buy in{CLEAR}stores. You can have it!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 108,
+      "zh": "姐姐你已经跟妈妈解释过了吗？{NEWLINE}真的是太谢谢你了。{CLEAR}这是我在自然公园捡到的{CLEAR}外面买不到的那种精灵球哦,{CLEAR}送给你吧！",
+      "en": "Miss, did you explain things to my mom?{NEWLINE}Thank you so much!{SCROLL}I found this Poké Ball in the National{NEWLINE}Park. It’s the kind you can’t buy in{CLEAR}stores. You can have it!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 109,
+      "zh": "拜托你去跟妈妈解释一下吧,{NEWLINE}如果我去解释的话,{CLEAR}妈妈肯定不会听的。",
+      "en": "Please go explain things to my mom.{SCROLL}If I try to explain, she’ll never listen.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 110,
+      "zh": "看到口呆花开心的样子,{NEWLINE}我也很开心！",
+      "en": "Seeing Weepinbell so happy makes me{NEWLINE}happy too!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 111,
+      "zh": "我的美丽花跟它的追求者相爱了哦。",
+      "en": "My Bellossom fell in love with{NEWLINE}its admirer!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 112,
+      "zh": "呜呜呜……口呆花不在了,{NEWLINE}美丽花也变得没有精神了。",
+      "en": "*sob*... Weepinbell’s gone,{NEWLINE}and now Bellossom has no energy either.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 113,
+      "zh": "美丽花『Be……",
+      "en": "Bellossom: Be...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 114,
+      "zh": "一树『呀,这不是联盟冠军{VAR:0103:0}吗？{NEWLINE}你这种人也会到自然公园来吗？",
+      "en": "Will: Well, if it isn’t League Champion{NEWLINE}{VAR:0103:0}. Even someone like you comes to{CLEAR}the National Park?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 115,
+      "zh": "梨花『你是一个人来的耶。{NEWLINE}居然一个人来约会圣地,{CLEAR}也是够可怜的。",
+      "en": "Karen: And you came alone.{NEWLINE}All by yourself, to the number one date{CLEAR}spot... How pathetic.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 116,
+      "zh": "{VAR:0103:0}『你们是火箭队的人吧？{NEWLINE}居然敢正大光明地出现在这里,{CLEAR}我现在就抓你们回去！",
+      "en": "{VAR:0103:0}: You’re Team Rocket,{NEWLINE}aren’t you? How dare you show{CLEAR}your faces here in broad daylight!{CLEAR}I’m taking you in right now!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 117,
+      "zh": "一树『火箭队？你在说什么啊？{NEWLINE}我怎么听不懂呢。",
+      "en": "Will: Team Rocket? What are you talking{NEWLINE}about? I don’t understand a word.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 118,
+      "zh": "梨花『我们只记得{NEWLINE}好像跟你的哪个同伴{CLEAR}在一起共事过呢。",
+      "en": "Karen: All we remember is that we used{NEWLINE}to work alongside one of your friends.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 119,
+      "zh": "{VAR:0103:0}『可恶……",
+      "en": "{VAR:0103:0}: Dammit...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 120,
+      "zh": "一树『原来联盟冠军{NEWLINE}也会感到无能为力啊。",
+      "en": "Will: So even the League Champion can{NEWLINE}feel helpless.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 121,
+      "zh": "梨花『看你这个样子,{NEWLINE}我的心情舒畅极了。",
+      "en": "Karen: Seeing you like this puts me in a{NEWLINE}wonderful mood.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 122,
+      "zh": "{VAR:0103:0}『今天就算不抓你们,{NEWLINE}也要让你们尝尝正义的铁拳！",
+      "en": "{VAR:0103:0}: Even if I can’t arrest{NEWLINE}you today, I’ll give you a taste of{CLEAR}justice’s iron fist!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 123,
+      "zh": "一树『赢了我们你很得意吗？",
+      "en": "Will: Beating us makes you feel pretty{NEWLINE}good about yourself, huh?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 124,
+      "zh": "梨花『你等着吧,{NEWLINE}很快你就得意不起来了！",
+      "en": "Karen: Just you wait.{NEWLINE}You won’t be so smug for long!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 125,
+      "zh": "一树『走了走了,夹着尾巴逃走了。",
+      "en": "Will: There you go, there you go,{NEWLINE}running away with your tail between{CLEAR}your legs.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "[D-2077 meaning-review-followup: source/context correction; agent-reviewed, not new human approval. Player declines confrontation, script25 branch2620.]"
+    },
+    {
+      "id": 126,
+      "zh": "梨花『就像一条狗一样,{NEWLINE}嗯哼,还是单身的。",
+      "en": "Karen: Just like a dog. Mm-hmm... a{NEWLINE}single one, too.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "[D-2078 meaning-review-followup: source/context correction; agent-reviewed, not new human approval. Player declines confrontation, script25 branch2620.]"
+    },
+    {
+      "id": 127,
+      "zh": "要教训一下他们吗？",
+      "en": "Teach them a lesson?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 128,
+      "zh": "梨花『快看啊一树,有位老熟人呢。",
+      "en": "Karen: Look, Will. It’s an old friend.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 129,
+      "zh": "一树『我说冠军大人啊,{NEWLINE}我们可是联盟认定的精英训练家,{CLEAR}想抓我们是要有证据的。",
+      "en": "Will: Come now, Champion.{NEWLINE}We are League-certified Ace Trainers.{CLEAR}If you want to arrest us,{CLEAR}you’ll need evidence.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 130,
+      "zh": "梨花『我就喜欢看你明明很生气,{NEWLINE}却又拿我们无可奈何的样子。",
+      "en": "Karen: I just love the look on{NEWLINE}your face when you’re so angry,{CLEAR}yet can’t do a thing to us.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 131,
+      "zh": "我和我亲爱的女友心意相通,{NEWLINE}如果进行双打对战的话,{CLEAR}没有人是我们的对手。{SCROLL}你想看看我们的双打对战技巧吗？",
+      "en": "My darling girlfriend and I are totally{NEWLINE}in sync. Nobody can beat us in a{CLEAR}Double Battle.{SCROLL}Want to see our Double Battle skills?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 132,
+      "zh": "嘿嘿,那我们要上咯。",
+      "en": "Heh heh. Here we come, then.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 133,
+      "zh": "虽说是我们输了,{NEWLINE}但是经过这次战斗,{CLEAR}我们之间的感情又加深了。",
+      "en": "We lost, but this battle brought us{NEWLINE}even closer together.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 134,
+      "zh": "我的女朋友保养的非常好,{NEWLINE}肤白貌美长发飘飘,{CLEAR}能跟这样的女孩交往我可真是走运。",
+      "en": "My girlfriend takes such good care{NEWLINE}of herself. Fair skin, pretty face,{CLEAR}long flowing hair...{SCROLL}I’m so lucky to be dating a girl{NEWLINE}like her.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 135,
+      "zh": "只要男友在我身边,{NEWLINE}我就感觉自己能战胜一切,{CLEAR}就算是精灵对战也能战胜联盟冠军。{SCROLL}你想感受一下这份爱情的力量吗？",
+      "en": "As long as my boyfriend’s by my side, I{NEWLINE}feel like I can beat anything. Even the{CLEAR}League Champion in a Pokémon battle.{SCROLL}Want to feel the power of our love?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 136,
+      "zh": "我男朋友在战斗中{NEWLINE}保护我的样子好帅啊！",
+      "en": "My boyfriend looked so cool protecting{NEWLINE}me in that battle!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 137,
+      "zh": "我听说关东地区有放生巴大蝴{NEWLINE}让它们去寻找伴侣的习俗。{CLEAR}其实只要联系到{CLEAR}养异性巴大蝴的训练家,{CLEAR}就能为巴大蝴找到伴侣,{CLEAR}完全没必要放生啊！",
+      "en": "I heard that in Kanto, there’s a custom{NEWLINE}of releasing Butterfree so they can{CLEAR}find mates.{SCROLL}But if you just contact a Trainer with{NEWLINE}a Butterfree of the opposite gender,{CLEAR}you can find it a mate.{CLEAR}There’s no need to let it go at all!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 138,
+      "zh": "巴大蝴『Buuu——ter！",
+      "en": "Butterfree: Buuu-ter!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 139,
+      "zh": "一来到自然公园{NEWLINE}我就会觉得身心放松。{CLEAR}就算没有恋人陪着,{CLEAR}我也愿意来这里散步。",
+      "en": "Whenever I come to the National Park,{NEWLINE}I feel totally relaxed.{SCROLL}Even without a sweetheart,{NEWLINE}I like taking walks here.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 140,
+      "zh": "我们是来这里约会的训练家情侣,{NEWLINE}你应该也是很厉害的训练家吧？{CLEAR}愿意与我们来一场精灵对战吗？",
+      "en": "We’re a Trainer couple here on a date.{NEWLINE}You must be a pretty strong Trainer{CLEAR}too, right?{SCROLL}Will you have a Pokémon battle with us?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 141,
+      "zh": "这可是双打哦,你小心了。",
+      "en": "It’s a Double Battle, so watch out.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 142,
+      "zh": "你很行嘛,{NEWLINE}我们两个人都不是你的对手。",
+      "en": "You’re good! Even the two of us{NEWLINE}together are no match for you.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 143,
+      "zh": "能跟心爱的人一起培养精灵,{NEWLINE}这就是幸福吧。",
+      "en": "Raising Pokémon together with the one{NEWLINE}you love... I guess that’s happiness.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 144,
+      "zh": "只是看风景的约会有点单调,{NEWLINE}这时候能来场精灵对战就好了。{CLEAR}我看你很厉害的样子,{CLEAR}能跟我们来一场精灵对战吗？",
+      "en": "A date that’s just looking at the{NEWLINE}scenery is a little boring. A Pokémon{CLEAR}battle would be perfect right now.{SCROLL}You look pretty strong.{NEWLINE}Will you battle us?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 145,
+      "zh": "我跟女朋友是通过精灵对战认识的,{NEWLINE}一开始我们只是讨论{CLEAR}关于精灵培养的事,{CLEAR}后来一点一点就发展成情侣关系了。",
+      "en": "My girlfriend and I met through{NEWLINE}Pokémon battles.{SCROLL}At first we only talked about{NEWLINE}raising Pokémon, but little by little,{CLEAR}we became a couple.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 146,
+      "zh": "嘿,我刚让精灵学了一招{NEWLINE}厉害的双打技能。{CLEAR}要不要跟我们来场双打对战{CLEAR}见识一下这个新技能？",
+      "en": "Hey, I just taught my Pokémon an{NEWLINE}awesome Double Battle move.{SCROLL}Want to see it in a Double Battle{NEWLINE}with us?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 147,
+      "zh": "我是不会输的铁血硬汉！",
+      "en": "I’m an iron-willed tough guy who{NEWLINE}never loses!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 148,
+      "zh": "啊……最终还是我输了。",
+      "en": "Ah... I lost in the end.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 149,
+      "zh": "不能再提对战的事了,{NEWLINE}再提女朋友就要生气了。",
+      "en": "I can’t bring up battling again,{NEWLINE}or my girlfriend will get mad.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 150,
+      "zh": "我男朋友在约会的时候,{NEWLINE}总是想着精灵对战的事。{CLEAR}你能跟我们来场对战,{CLEAR}之后好让他安心约会吗？",
+      "en": "Whenever we’re on a date,{NEWLINE}my boyfriend’s always thinking about{CLEAR}Pokémon battles.{SCROLL}Would you battle us, so he can relax{NEWLINE}and enjoy our date afterward?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 151,
+      "zh": "谢谢你,那咱们开始吧。",
+      "en": "Thank you! Let’s get started.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 152,
+      "zh": "呼,总算结束了。{NEWLINE}现在我男朋友应该能专心约会了吧。",
+      "en": "Whew, it’s finally over. Now my boyfriend{NEWLINE}should be able to focus on our date.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 153,
+      "zh": "我也不反对男朋友{NEWLINE}以精英训练家为目标努力,{CLEAR}但是为了实现目标太过于执着痴迷,{CLEAR}反而会影响生活。",
+      "en": "I don’t mind my boyfriend working hard{NEWLINE}to become an Ace Trainer.{SCROLL}But being too obsessed with a goal can{NEWLINE}get in the way of life.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 154,
+      "zh": "我希望能在这里{NEWLINE}与一位美丽的姑娘偶遇。{SCROLL}啊！上天啊！赐我一个女朋友吧！",
+      "en": "I’m hoping to bump into a beautiful{NEWLINE}girl here.{SCROLL}Oh, heavens! Please, grant me{NEWLINE}a girlfriend!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 155,
+      "zh": "空",
+      "en": "---",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 138 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl) | rewritten from zh (was tm_v3)"
+    },
+    {
+      "id": 156,
+      "zh": "在捕虫大会休会期间,{NEWLINE}陪我来场一对一的精灵对战吧！",
+      "en": "While the Bug-Catching Contest is{NEWLINE}on break, have a one-on-one battle{CLEAR}with me!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 157,
+      "zh": "你身上的压迫感好强啊,{NEWLINE}我还是不跟你打了。",
+      "en": "You give off such intense pressure...{NEWLINE}I think I’ll pass on battling you.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 158,
+      "zh": "我们是这个公园里{NEWLINE}最强的训练家情侣,{CLEAR}你想向我们两个人挑战吗？",
+      "en": "We’re the strongest Trainer couple{NEWLINE}in this park. Want to challenge the{CLEAR}two of us?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 159,
+      "zh": "按理说以我们这样的水准{NEWLINE}不应该以多欺少,{CLEAR}但是我在你身上感受到了{CLEAR}不可名状的强大力量,{CLEAR}感觉我们两个更像是挑战者。{SCROLL}希望你能拿出全力,{NEWLINE}让我们印证一下自己的实力。",
+      "en": "Normally, at our level, we wouldn’t gang{NEWLINE}up two against one.{SCROLL}But I can feel some indescribable,{NEWLINE}overwhelming power from you. It feels{CLEAR}more like we’re the challengers.{SCROLL}Please give it everything you’ve got,{NEWLINE}so we can see where we really stand.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 160,
+      "zh": "仔细一看您不是{NEWLINE}联盟冠军{VAR:0103:0}大人吗？{CLEAR}刚刚能跟您交手,真是我们的荣幸。",
+      "en": "Wait, aren’t you League Champion{NEWLINE}{VAR:0103:0}? It was an honor to battle{CLEAR}you just now.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 161,
+      "zh": "通过跟您战斗,{NEWLINE}我们才发现自身其实还有很多不足。",
+      "en": "Battling you showed us we still have a{NEWLINE}lot to work on.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 162,
+      "zh": "我们两个跟常来这儿的人都交过手,{NEWLINE}几乎没有人是我们的对手。{CLEAR}你也想挑战我们试试吗？",
+      "en": "We’ve battled everyone who comes{NEWLINE}here regularly, and hardly anyone{CLEAR}can beat us.{SCROLL}Want to try challenging us too?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 163,
+      "zh": "看来我们的连胜纪录又要延长了。",
+      "en": "Looks like our winning streak just{NEWLINE}got longer.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 164,
+      "zh": "仔细一看您不是{NEWLINE}联盟冠军{VAR:0103:0}大人吗？{CLEAR}我和男朋友都是你的粉丝哦！",
+      "en": "Wait, aren’t you League Champion{NEWLINE}{VAR:0103:0}? My boyfriend and I are both{CLEAR}fans of yours!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 165,
+      "zh": "没想到能跟您交手,{NEWLINE}这真是我们的荣幸。",
+      "en": "We never dreamed we’d get to battle{NEWLINE}you. What an honor.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 166,
+      "zh": "太阳精灵『Eeeee——peo！",
+      "en": "Espeon: Eeeee-peo!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 167,
+      "zh": "你看大叔我的小女朋友{NEWLINE}是不是年轻又漂亮啊？",
+      "en": "Hey, take a look at Uncle’s little{NEWLINE}girlfriend here. Young and pretty,{CLEAR}isn’t she?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 168,
+      "zh": "哈哈哈,只要你像我一样开宾士,{NEWLINE}你也会有这么漂亮的女朋友。",
+      "en": "Hah hah hah! Drive a Benz like me,{NEWLINE}and you’ll get a pretty girlfriend{CLEAR}like this too.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 169,
+      "zh": "敢说我女朋友不漂亮？讨打！",
+      "en": "You saying my girlfriend isn’t pretty?{NEWLINE}You’re asking for it!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 170,
+      "zh": "哎哟,你还挺厉害……",
+      "en": "Ouch, you’re pretty tough...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 171,
+      "zh": "能打有什么用,{NEWLINE}你还能当联盟冠军不成？{CLEAR}我跟你说真正成熟的女孩子{CLEAR}是不会喜欢你这种人的。",
+      "en": "What good is being able to fight? What,{NEWLINE}you think you’re the League Champion?{SCROLL}Let me tell you, a truly mature girl{NEWLINE}won’t go for a guy like you.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 172,
+      "zh": "这位是我的叔叔,{NEWLINE}我爸爸去世以后{CLEAR}他真的帮了我和妈妈很多忙呢。",
+      "en": "This is my uncle. After my dad passed{NEWLINE}away, he helped my mom and me a lot.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 173,
+      "zh": "叔叔虽然没有认出你,{NEWLINE}但是我认出来了哦。{CLEAR}你就是联盟冠军{VAR:0103:0}大人吧？{SCROLL}有时间的话带我去海边游唦呗,{NEWLINE}我买了件很性感的唦衣哦。",
+      "en": "Uncle didn’t recognize you, but I did.{NEWLINE}You’re League Champion {VAR:0103:0}, right?{SCROLL}If you have time, take me to{NEWLINE}the beach for a swim sometime.{CLEAR}I bought a really sexy swimsuit.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 174,
+      "zh": "哈哈哈,你也要跟她学着点,{NEWLINE}将来找一个开宾士的男朋友。",
+      "en": "Hah hah hah! You should learn from{NEWLINE}her and find yourself a boyfriend who{CLEAR}drives a Benz.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 175,
+      "zh": "能打有什么用,{NEWLINE}你还能当联盟冠军不成？{CLEAR}我跟你说真正成熟的男人{CLEAR}是不会喜欢你这种暴力婆的。",
+      "en": "What good is being able to fight? What,{NEWLINE}you think you’re the League Champion?{SCROLL}Let me tell you, a truly mature man{NEWLINE}won’t go for a violent shrew like you.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 176,
+      "zh": "叔叔虽然没有认出你,{NEWLINE}但是我认出来了哦。{CLEAR}你就是联盟冠军{VAR:0103:0}大人吧？{SCROLL}只可惜你是个女生,{NEWLINE}不然的话我还很想追你呢。",
+      "en": "Uncle didn’t recognize you, but I did.{NEWLINE}You’re League Champion {VAR:0103:0}, right?{SCROLL}Too bad you’re a girl.{NEWLINE}Otherwise I’d totally go after you.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 177,
+      "zh": "恋爱中最重要的就是会撒娇,{NEWLINE}口袋妖怪对战中也是一样,{CLEAR}试想一下你的精灵{CLEAR}在战斗中突然撒娇,{CLEAR}对方是不是瞬间就丧失攻击力了？{SCROLL}所以说撒娇是个很有用的技能,{NEWLINE}如果你想学的话,{CLEAR}只要给我一个金珠我就教你。{SCROLL}怎么样,要学吗？",
+      "en": "In love, the most important thing is{NEWLINE}knowing how to act cute. Pokémon{CLEAR}battles are the same.{SCROLL}Imagine your Pokémon suddenly acting{NEWLINE}all cute in battle. Wouldn’t the foe{CLEAR}instantly lose its attack power?{SCROLL}That’s why Charm is such a useful move.{NEWLINE}If you want to learn it, just give me a{CLEAR}Nugget and I’ll teach you.{SCROLL}So, want to learn it?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "[D-2065 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
+    },
+    {
+      "id": 178,
+      "zh": "要让哪个精灵学呢？{SCROLL}",
+      "en": "Which Pokémon should learn it?{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 3 source(s), flags page_breaks_lost; other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl) | rewritten from zh (was tm_v3)"
+    },
+    {
+      "id": 179,
+      "zh": "想学的话随时再来找我。",
+      "en": "If you want to learn it, come find me{NEWLINE}anytime.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 2 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl) | rewritten from zh (was tm_v3)"
+    },
+    {
+      "id": 180,
+      "zh": "你身上并没有金珠,{NEWLINE}等有了再来找我吧。",
+      "en": "You don’t have a Nugget.{NEWLINE}Come back when you do.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 181,
+      "zh": "抱歉……这个精灵{NEWLINE}没法记住撒娇。{SCROLL}",
+      "en": "Sorry... This Pokémon can’t{NEWLINE}learn Charm.{SCROLL}{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 182,
+      "zh": "还没出生的精灵{NEWLINE}恐怕学不会这个技能……{SCROLL}",
+      "en": "I’m afraid a Pokémon that hasn’t{NEWLINE}hatched yet can’t learn this move...{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 3 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl) | rewritten from zh (was tm_v3)"
+    },
+    {
+      "id": 183,
+      "zh": "这只{VAR:0100:0}{NEWLINE}已经会撒娇了！{SCROLL}",
+      "en": "This {VAR:0100:0} already knows Charm!{SCROLL}{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 184,
+      "zh": "１{VAR:0201:20}　２{VAR:0201:20}　…{VAR:0201:20}…{VAR:0201:20}完成！",
+      "en": "1{VAR:0201:20} 2{VAR:0201:20} ...{VAR:0201:20}...{VAR:0201:20}Done!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), flags fullwidth_chars; other variants: 6 more v3 TM candidates (tm_v4_matches.jsonl) | rewritten from zh (was tm_v3)"
+    },
+    {
+      "id": 185,
+      "zh": "{VAR:0101:0}学会了撒娇！",
+      "en": "{VAR:0101:0} learned Charm!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 186,
+      "zh": "这样一来{NEWLINE}你的{VAR:0100:0}{CLEAR}已经学会撒娇了！{SCROLL}那么按照约定,{NEWLINE}你的金珠我拿走了。",
+      "en": "And with that, your {VAR:0100:0} has{NEWLINE}learned Charm!{SCROLL}As we agreed, I’ll take your Nugget.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 187,
+      "zh": "{VAR:0101:0}想要记住{NEWLINE}新的撒娇……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习撒娇{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
+      "en": "{VAR:0101:0} wants to learn Charm...!{SCROLL}But {VAR:0101:0} already knows{NEWLINE}four moves!{SCROLL}Should it forget a move to learn Charm?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 188,
+      "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
+      "en": "Forget {VAR:0106:1}. Is that OK?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl) | rewritten from zh (was tm_v3)"
+    },
+    {
+      "id": 189,
+      "zh": "{VAR:0101:0}完全忘了{NEWLINE}{VAR:0106:1}的用法！{SCROLL}然后……！",
+      "en": "{VAR:0101:0} forgot all about{NEWLINE}{VAR:0106:1}!{SCROLL}And...!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 4 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl) | rewritten from zh (was tm_v3)"
+    },
+    {
+      "id": 190,
+      "zh": "你是要放弃{NEWLINE}让它记住撒娇吗？{VAR:0200:0}",
+      "en": "Give up on teaching it Charm?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 191,
+      "zh": "我跟我的妻子{NEWLINE}是在这个自然公园认识的,{CLEAR}当时我的太阳精灵还是只伊布呢。",
+      "en": "My wife and I met in this National Park.{NEWLINE}Back then, my Espeon was still{CLEAR}an Eevee.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 192,
+      "zh": "呀……就决定是你啦！",
+      "en": "Hyah... I choose you!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 193,
+      "zh": "嘿嘿,这孩子扔精灵球的样子{NEWLINE}真像他爸爸。",
+      "en": "Heh heh. The way this kid throws a Poké{NEWLINE}Ball is just like his dad.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    }
+  ]
 }

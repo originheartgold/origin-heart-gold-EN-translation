@@ -755,10 +755,10 @@
   {
    "id": 93,
    "zh": "你们水平太菜,别在这丢人现眼了",
-   "en": "You’re too weak to battle",
+   "en": "You suck. This is embarrassing",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "tone review: Menu option: 水平太菜 is slangy 'you suck', 丢人现眼 'embarrassing yourselves'; kept the jab (D-0627); trimmed to fit the 224 px touch button",
    "category": "menu_touch_1line"
   },
   {
@@ -1036,10 +1036,10 @@
   {
    "id": 128,
    "zh": "行,你有种。{NEWLINE}那我们就各让一步。{CLEAR}你和这个小丫头组队{CLEAR}对抗我们这边6人。{CLEAR}进行三轮2对2的双打比赛。{CLEAR}你们必须连续战斗中间不许休息。{CLEAR}连胜3轮之后才算战胜我们。{SCROLL}如果你们还不满意的话,{NEWLINE}那就有多远滚多远吧。",
-   "en": "Fine, you’ve got guts. We’ll each give{NEWLINE}a little. You team up with this little{CLEAR}girl against our 6. Three rounds of{CLEAR}2-on-2 Double Battles. You fight{CLEAR}straight through, no rest. Win all 3{CLEAR}rounds in a row, and you’ve beaten us.{SCROLL}If that’s still not good enough{NEWLINE}for you, then get as far{CLEAR}away from here as you can.",
+   "en": "Fine, you’ve got guts. We’ll each give{NEWLINE}a little. You team up with this little{CLEAR}girl against our 6. Three rounds of{CLEAR}2-on-2 Double Battles. You fight{CLEAR}straight through, no rest. Win all 3{CLEAR}rounds in a row, and you’ve beaten us.{SCROLL}If that’s still not good enough for you,{NEWLINE}then get lost. The farther, the better.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 有多远滚多远 is a rude 'get lost'; same wording as 0087#50 (D-0627)"
   },
   {
    "id": 129,

@@ -712,10 +712,10 @@
   {
    "id": 88,
    "zh": "小绿『只要除掉了你们,{NEWLINE}我就是这个世界上最强的训练家了,{CLEAR}哈哈哈哈！",
-   "en": "Blue: Once you’re both gone, I’ll be the{NEWLINE}strongest Trainer in the world! Ha ha{CLEAR}ha ha!",
+   "en": "Blue: Once I’ve gotten rid of you both,{NEWLINE}I’ll be the strongest Trainer in the{CLEAR}world! Ha ha ha ha!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 除掉 is an active 'get rid of you'; kept as the fake Blue's threat (D-0627)"
   },
   {
    "id": 89,
@@ -1040,10 +1040,10 @@
   {
    "id": 129,
    "zh": "{VAR:0103:0}『消失了？{NEWLINE}这次不是用活人做媒介,{CLEAR}只是单纯的幻象吗？",
-   "en": "{VAR:0103:0}: It vanished? So this time it{NEWLINE}wasn’t a real person, just an illusion?",
+   "en": "{VAR:0103:0}: It vanished? So this time it{NEWLINE}was just an illusion, without using a{CLEAR}living person as a medium?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "[D-2071 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
   },
   {
    "id": 130,

@@ -1,1075 +1,1075 @@
 {
- "narc": "a027",
- "bank": 343,
- "source": "work/extract/v4/a027/0343.json",
- "strings": [
-  {
-   "id": 0,
-   "zh": "贴心的告示牌！{SCROLL}我们东南联盟,{NEWLINE}因平凡的你而伟大！",
-   "en": "Trainer Tips!{SCROLL}The Southeast League: great because of{NEWLINE}ordinary folks like you!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "东南联盟 → the Southeast League: an amateur battle club on Route 13 (1 Champion + 8 type representatives), cf. open question on 0453 #44."
-  },
-  {
-   "id": 1,
-   "zh": "这里是１３号道路{NEWLINE}北　寂静之桥",
-   "en": "Rt. 13{NEWLINE}North to Silence Bridge",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0350/1",
-   "category": "sign"
-  },
-  {
-   "id": 2,
-   "zh": "北　紫苑镇{NEWLINE}西　浅红市",
-   "en": "North to Lavender Town{NEWLINE}West to Fuchsia City",
-   "status": "draft",
-   "origin": "us",
-   "notes": "US 0350/2",
-   "category": "sign"
-  },
-  {
-   "id": 3,
-   "zh": "力量就是真理,{NEWLINE}我的精灵都格外擅长物理型攻击,{CLEAR}你要跟我比试比试吗？{SCROLL}",
-   "en": "Strength is truth! My Pokémon are{NEWLINE}especially good at physical attacks.{CLEAR}Want to have a match with me?{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 4,
-   "zh": "你会害怕也是应该的,{NEWLINE}毕竟我的实力在东南联盟里{CLEAR}可是数一数二的。",
-   "en": "It’s only natural you’re scared. After{NEWLINE}all, I’m one of the strongest in the{CLEAR}Southeast League.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 5,
-   "zh": "好,你就好好感受一下{NEWLINE}我这爆炸性的力量吧！",
-   "en": "All right, feel the full force of my{NEWLINE}explosive power!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 6,
-   "zh": "在力量上完全输给你了,{NEWLINE}跟你的这场战斗让我学到了很多啊,{CLEAR}这个送给你作为谢礼吧。",
-   "en": "You beat me completely on strength. I{NEWLINE}learned a lot from this battle. Take{CLEAR}this as thanks.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 7,
-   "zh": "我拿到6枚徽章之后,{NEWLINE}就再也无法通过第7枚徽章的测试了。{CLEAR}可能我人生的极限就到这里了吧。",
-   "en": "After I got my sixth Badge, I could{NEWLINE}never pass the test for the seventh.{CLEAR}Maybe that’s as far as I go in life.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 8,
-   "zh": "我特别喜欢{NEWLINE}水系精灵的那种温柔可爱,{CLEAR}以及它们可爱外表下的坚强勇敢。{CLEAR}你要感受下我的水系精灵的魅力吗？",
-   "en": "I just love how gentle and cute{NEWLINE}Water-type Pokémon are, and how{CLEAR}strong and brave they are under those{CLEAR}cute looks. Want to feel the charm of{CLEAR}my Water types?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 9,
-   "zh": "咦？你不喜欢水系精灵啊。",
-   "en": "Huh? You don’t like Water types?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 10,
-   "zh": "看我和我的精灵们{NEWLINE}一起跳起水之舞！",
-   "en": "Watch me and my Pokémon perform the{NEWLINE}Water Dance together!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 11,
-   "zh": "你还真是厉害呢。{NEWLINE}我得向你好好学习呀。{CLEAR}作为咱们两个这场比试的纪念,{CLEAR}请你收下这个吧。",
-   "en": "You’re really good! I should learn from{NEWLINE}you. Please take this as a keepsake of{CLEAR}our match.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 12,
-   "zh": "我的职业是一名救生员,{NEWLINE}所以我的对战水平挺有限的。{CLEAR}如果你想了解更多水系口袋妖怪的事,{CLEAR}华蓝道馆应该是个不错的去处。",
-   "en": "I’m a lifeguard by trade, so my battling{NEWLINE}skills are pretty limited. If you want to{CLEAR}learn more about Water-type Pokémon,{CLEAR}the Cerulean Gym would be a good place{CLEAR}to go.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 13,
-   "zh": "我这快如闪电的招式{NEWLINE}可是在枯叶市跟马志士大人学的,{CLEAR}你有办法战胜我吗？",
-   "en": "I learned my lightning-fast moves from{NEWLINE}the great Lt. Surge himself in Vermilion{CLEAR}City. Think you can beat me?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 14,
-   "zh": "别害羞嘛,来这里就是要体验{NEWLINE}挑战道馆的那种氛围才有意思啊。",
-   "en": "Don’t be shy! The fun of coming here is{NEWLINE}getting a taste of what a Gym challenge{CLEAR}feels like!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 15,
-   "zh": "来吧,让你看看海上男儿的志气！",
-   "en": "Come on, I’ll show you the grit of a man{NEWLINE}of the sea!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 16,
-   "zh": "谢谢你能给我上了一课,{NEWLINE}让我学到了很多东西。{CLEAR}作为交换,{CLEAR}我可以把我的绝招闪电拳{CLEAR}教给你的精灵。{CLEAR}你如果想学的话随时可以来找我。",
-   "en": "Thanks for teaching me a lesson. I{NEWLINE}learned a lot. In return, I can teach{CLEAR}your Pokémon my specialty, Thunder{CLEAR}Punch. Come find me anytime if you want{CLEAR}to learn it.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 17,
-   "zh": "哦？想让你的精灵学习闪电拳吗？",
-   "en": "Oh? Want your Pokémon to learn Thunder{NEWLINE}Punch?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 18,
-   "zh": "赌桌上我是常胜将军,{NEWLINE}精灵对战中我亦是常胜将军,{CLEAR}你有信心能战胜我吗？",
-   "en": "At the gambling table I never lose, and{NEWLINE}in Pokémon battles I never lose either.{CLEAR}Think you can beat me?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 19,
-   "zh": "怕什么呀,{NEWLINE}你是没见过超能力者吗？",
-   "en": "What’s there to be scared of? Never{NEWLINE}seen a psychic before?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 20,
-   "zh": "我曾经在彩虹市游戏厅出老千,{NEWLINE}结果被游戏厅的主管发现了,{CLEAR}他们当时直接就砍掉了我的右手。{CLEAR}我现在的右手其实是义肢。",
-   "en": "I once cheated at the Celadon Game{NEWLINE}Corner, and the manager caught me.{SCROLL}They chopped off my right hand on the{NEWLINE}spot.{SCROLL}My right hand is actually a prosthetic{NEWLINE}now.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "Cheater’s hand cut off by the Game Corner manager; kept faithful."
-  },
-  {
-   "id": 21,
-   "zh": "跟我战斗是你的不幸！",
-   "en": "Battling me is your bad luck!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 22,
-   "zh": "赢得漂亮,{NEWLINE}你的战斗可真是让我大开眼界。{CLEAR}这份礼物代表我的敬佩之情,{CLEAR}请收下吧。",
-   "en": "Beautifully won! Your battling really{NEWLINE}opened my eyes. Please accept this gift{CLEAR}as a sign of my admiration.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 23,
-   "zh": "大叔我啊,{NEWLINE}可是个精灵对战的痴迷者呢,{CLEAR}有信心能战胜我吗？",
-   "en": "This old guy here is crazy about{NEWLINE}Pokémon battles. Think you can beat me?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 24,
-   "zh": "是嫌弃大叔我么……",
-   "en": "Too good for an old guy like me, huh...",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 25,
-   "zh": "大叔我啊,{NEWLINE}人到中年、妻离子散一事无成,{CLEAR}这辈子唯一的美好回忆{CLEAR}就是年轻时候周游各地时{CLEAR}赢得的这4枚徽章了。",
-   "en": "This old guy is middle-aged, his wife left{NEWLINE}him and took the kids, and he’s got{CLEAR}nothing to show for his life.{SCROLL}My only good memories are these four{NEWLINE}Badges I won traveling around when I{CLEAR}was young.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 26,
-   "zh": "嘿嘿,让你看看{NEWLINE}我想破脑袋想出来的战术！",
-   "en": "Heh heh, let me show you the strategy I{NEWLINE}racked my brains to come up with!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 27,
-   "zh": "虽然输了,{NEWLINE}但是大叔我玩得很开心呢。{CLEAR}谢谢你愿意跟我对战,{CLEAR}这个送给你吧。",
-   "en": "I lost, but this old guy had a lot of{NEWLINE}fun.{SCROLL}Thanks for battling me. Here, take this.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 28,
-   "zh": "是不是因为闻到我身上的香气{NEWLINE}才在这里驻足的？",
-   "en": "Did you stop here because you caught{NEWLINE}the scent of my perfume?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 29,
-   "zh": "嘻嘻,看不出来你还挺有品味嘛。",
-   "en": "Tee-hee, you’ve got better taste than{NEWLINE}you look.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 30,
-   "zh": "我在香水店当学徒的时候,{NEWLINE}经常因为调出来的味道奇怪而被骂。{SCROLL}不过现在我终于可以{NEWLINE}按我的思路调制香水了,{CLEAR}想调什么气味都可以的感觉{CLEAR}真是太好啦！",
-   "en": "When I was an apprentice at a perfume{NEWLINE}shop, I always got chewed out for mixing{CLEAR}weird scents.{SCROLL}But now I can finally make perfume my{NEWLINE}own way. Being free to mix any scent I{CLEAR}want feels so great!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 31,
-   "zh": "什么嘛,那你就是想跟我对战咯！",
-   "en": "What? So you just want to battle me,{NEWLINE}then!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 32,
-   "zh": "你的精灵虽然强大,{NEWLINE}但是因为经常战斗身上都臭臭的呢。{SCROLL}给你这个熏香{NEWLINE}改善一下你的精灵们的气味吧！",
-   "en": "Your Pokémon are strong, but all that{NEWLINE}battling has left them kind of stinky.{SCROLL}Here, take this incense to freshen them{NEWLINE}up!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 33,
-   "zh": "来吧,来一场青春热血{NEWLINE}充满活力的对战吧！",
-   "en": "Come on, let’s have a young,{NEWLINE}hot-blooded, energetic battle!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 34,
-   "zh": "你明明看起来那么年轻,{NEWLINE}却毫无身为训练家的斗志呢。",
-   "en": "You look so young, but you have none of{NEWLINE}a Trainer’s fighting spirit.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 35,
-   "zh": "在红莲道馆的时候{NEWLINE}我只是个打杂跑腿的小角色,{CLEAR}但是来到东南联盟之后,{CLEAR}我就成了众人仰望的火系大师了。{CLEAR}果然是树挪死、人挪活啊！",
-   "en": "At the Cinnabar Gym, I was just a lowly{NEWLINE}errand boy. But since coming to the{CLEAR}Southeast League, I’ve become a{CLEAR}Fire-type master everyone looks up to.{SCROLL}Move a tree and it dies; move a man and{NEWLINE}he thrives!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 36,
-   "zh": "哈哈哈,{NEWLINE}我的小宇宙燃烧起来了！",
-   "en": "Ha ha ha! My Cosmo is burning!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 37,
-   "zh": "你这看似冷静的外表下,{NEWLINE}有颗火热的心呢！{CLEAR}来吧,你配得上这个深红徽章……{SCROLL}…… ……{SCROLL}…… ……{SCROLL}哈哈哈,开玩笑的,{NEWLINE}我哪里有徽章啊,{CLEAR}送你块珍惜的石头吧！",
-   "en": "Beneath that cool exterior beats a{NEWLINE}fiery heart! Come, you are worthy of{CLEAR}this Volcano Badge...{SCROLL}... ...{SCROLL}... ...{SCROLL}Ha ha ha, just kidding. I don’t have any{NEWLINE}Badges!{SCROLL}Here, have a rare stone instead!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 38,
-   "zh": "我的化石翼龙可是这世界上最快的{NEWLINE}岩石系口袋妖怪,{CLEAR}你想感受一下我这化石翼龙的速度吗？",
-   "en": "My Aerodactyl is the fastest Rock-type{NEWLINE}Pokémon in the world. Want to feel that{CLEAR}speed for yourself?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 39,
-   "zh": "嘿嘿,被我给吓到了吗？",
-   "en": "Heh heh, did I scare you?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 40,
-   "zh": "我年轻的时候{NEWLINE}因为痴迷于美丽的女性,{CLEAR}于是四处留情沾花惹草。{CLEAR}最终无颜回家的我流浪到了这里,{CLEAR}才算是过上了稍微安稳点的生活。",
-   "en": "When I was young, I was so crazy about{NEWLINE}beautiful women that I left a trail of{CLEAR}flings and affairs everywhere I went.{SCROLL}In the end, too ashamed to go home, I{NEWLINE}drifted here, and only then did I settle{CLEAR}into a halfway quiet life.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 41,
-   "zh": "来吧,好好感受飞速岩石的冲击！",
-   "en": "Come on, feel the impact of flying rock!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 42,
-   "zh": "想不到小伙子你比我还快嘛,{NEWLINE}将来你一定会大受女孩子们欢迎的。{CLEAR}这个头盔送给你,{CLEAR}就当是我对你的祝福吧。",
-   "en": "Didn’t think you’d be even faster than{NEWLINE}me, young man. You’re going to be a big{CLEAR}hit with the girls someday. Take this{CLEAR}helmet as my blessing.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 43,
-   "zh": "哟,这位美女训练家,{NEWLINE}要通过一场精灵对战{CLEAR}开始我们的缘分吗？",
-   "en": "Well, hello there, pretty Trainer. Shall{NEWLINE}we start our destiny together with a{CLEAR}Pokémon battle?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "#43–#47: old man hitting on a female player (#42 is the male-player version); kept faithful."
-  },
-  {
-   "id": 44,
-   "zh": "何必这么害羞嘛。",
-   "en": "No need to be so shy.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 45,
-   "zh": "我感觉我们之间,{NEWLINE}会有产生刻骨铭心的爱情呢！",
-   "en": "I have a feeling something{NEWLINE}unforgettable will bloom between us!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 46,
-   "zh": "我被美女你那迷人的战斗身姿所吸引,{NEWLINE}已经无法自拔了。{CLEAR}这个坚硬的头盔作为我们的定情信物,{CLEAR}请你务必收下！",
-   "en": "Your charming battle style has{NEWLINE}captivated me completely. I can’t help{CLEAR}myself. Please accept this hard helmet{CLEAR}as a token of our love!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 47,
-   "zh": "虽然我儿子年龄比你还大,{NEWLINE}但我觉得只要咱们之间有爱情{CLEAR}年龄就不是障碍。",
-   "en": "My son may be older than you, but as{NEWLINE}long as there’s love between us, age is{CLEAR}no barrier.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 48,
-   "zh": "铁甲暴龙『Rhy——don！",
-   "en": "Rhydon: Rhy-don!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 49,
-   "zh": "玛力露丽『Azu——mari！",
-   "en": "Azumarill: Azu-mari!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 50,
-   "zh": "电栗鼠『Pachi——riz！",
-   "en": "Pachirisu: Pachi-riz!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 51,
-   "zh": "恰雷姆『Mediii——cham！",
-   "en": "Medicham: Mediii-cham!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 52,
-   "zh": "吞食兽『Swaaaa——lo！",
-   "en": "Swalot: Swaaaa-lo!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 53,
-   "zh": "沙漠蜻蜓『Fly——gon！",
-   "en": "Flygon: Fly-gon!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 54,
-   "zh": "大食花『Vic——Tree！",
-   "en": "Victreebel: Vic-Tree!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 55,
-   "zh": "虽然我们东南联盟的训练家们{NEWLINE}都不是职业的高级训练家,{CLEAR}但是连续跟他们战斗也并不容易呢。{SCROLL}您需要在我这里恢复一下精灵吗？",
-   "en": "Our Southeast League Trainers aren’t{NEWLINE}professional Senior Trainers, but{CLEAR}battling them one after another still{CLEAR}isn’t easy.{SCROLL}Would you like me to heal your Pokémon?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 56,
-   "zh": "精灵都恢复好了,{NEWLINE}祝您的训练家征程一路顺利！",
-   "en": "Your Pokémon are fully healed. Best of{NEWLINE}luck on your Trainer journey!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 57,
-   "zh": "煤炭龟『Tor——koal！",
-   "en": "Torkoal: Tor-koal!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 58,
-   "zh": "化石翼龙『Aeee——roda！",
-   "en": "Aerodactyl: Aeee-roda!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 59,
-   "zh": "我是东南联盟的最强训练家,{NEWLINE}东南联盟的冠军——阿故。{CLEAR}你如果想找我挑战的话,{CLEAR}就得先击败我们东南联盟的{CLEAR}8位代表训练家。",
-   "en": "I’m the strongest Trainer in the{NEWLINE}Southeast League, its Champion: Gus.{SCROLL}To challenge me, you’ll first have to{NEWLINE}beat the Southeast League’s eight{CLEAR}representative Trainers.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "阿故 (Southeast League Champion) → Kurt, per trainer table 0719 #532 (authority rule); collides with Kurt the Ball maker (岩铁). Flagged as a question. | [D-0637 rename 2026-09-28: Kurt → Gus]"
-  },
-  {
-   "id": 60,
-   "zh": "我都听说了,你已经击败了{NEWLINE}我们东南联盟的8位代表训练家,{CLEAR}如果你能够再击败我,{CLEAR}那么这个东南联盟的冠军名号{CLEAR}就是你的了！",
-   "en": "I heard all about it. You’ve beaten the{NEWLINE}Southeast League’s eight{CLEAR}representative Trainers.{SCROLL}If you can beat me too, the title of{NEWLINE}Southeast League Champion is yours!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 61,
-   "zh": "我是四天王渡先生的粉丝,{NEWLINE}就是因为崇拜他我才专练龙精灵的。{CLEAR}奈何我天赋不够,{CLEAR}都没有资格去参加石英大会。{CLEAR}好在有东南联盟这个组织,{CLEAR}才让我过了一把当冠军的瘾。",
-   "en": "I’m a fan of Lance of the Elite Four. I{NEWLINE}specialize in Dragon types because I{CLEAR}idolize him. But I don’t have the talent,{CLEAR}and I never even qualified for the{CLEAR}Indigo Conference.{SCROLL}Luckily there’s the Southeast League,{NEWLINE}so I got a taste of being Champion.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 62,
-   "zh": "你赢了,恭喜你成为{NEWLINE}我们东南联盟的新任冠军。{CLEAR}这是成为冠军的纪念。",
-   "en": "You win. Congratulations on becoming{NEWLINE}the new Champion of the Southeast{CLEAR}League. Here’s a memento of your win.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 63,
-   "zh": "祝你在今后的旅行中{NEWLINE}能够一直获胜下去！",
-   "en": "May you keep on winning throughout your{NEWLINE}travels!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 64,
-   "zh": "嘿嘿,年轻的训练家,{NEWLINE}欢迎来到东南联盟！{SCROLL}需要我给你介绍一下东南联盟吗？",
-   "en": "Heh heh, young Trainer, welcome to the{NEWLINE}Southeast League!{SCROLL}Would you like me to tell you about it?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 65,
-   "zh": "那么祝您在我们东南联盟玩得愉快！",
-   "en": "Then enjoy your time in the Southeast{NEWLINE}League!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 66,
-   "zh": "我们东南联盟,{NEWLINE}是由一批业余训练家{CLEAR}组成的一个对战同好会。{SCROLL}联盟现在有1位冠军{NEWLINE}和8位代表训练家,{CLEAR}冠军象征着我们东南联盟的最强实力,{CLEAR}而8位代表训练家则是{CLEAR}代表着8种不同属性的训练家。{SCROLL}联盟成立的初衷就是为了给那些{NEWLINE}没有资格参加石英大会的训练家们,{CLEAR}提供一个更轻松的挑战舞台。{SCROLL}如果你想体验对战的乐趣,{NEWLINE}学习不同属性的对战技巧,{CLEAR}来我们东南联盟就对了。",
-   "en": "The Southeast League is a battle club{NEWLINE}made up of amateur Trainers.{SCROLL}Right now the League has one Champion{NEWLINE}and eight representative Trainers. The{CLEAR}Champion stands for the League’s{CLEAR}greatest strength, and the eight{CLEAR}representatives each stand for a{CLEAR}different type.{SCROLL}The League was founded to give Trainers{NEWLINE}who don’t qualify for the Indigo{CLEAR}Conference a more relaxed stage to{CLEAR}compete on.{SCROLL}If you want to enjoy battling and learn{NEWLINE}how to battle with different types, the{CLEAR}Southeast League is the place for you.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 67,
-   "zh": "口袋妖怪研究员的工作{NEWLINE}实在是太累了,{CLEAR}自从从事研究工作之后,{CLEAR}我的头发一天比一天少,{CLEAR}现在出门都只能带假发了。{CLEAR}好在还有东南联盟这个地方{CLEAR}可以放松一下。{CLEAR}这里的训练家都不是太强,{CLEAR}像我这样的弱者{CLEAR}在这里也有能取胜的机会。",
-   "en": "Working as a Pokémon researcher is just{NEWLINE}exhausting. Ever since I started doing{CLEAR}research, I’ve had less hair every day.{CLEAR}Now I have to wear a wig to go out.{SCROLL}Luckily, I can unwind here at the{NEWLINE}Southeast League. The Trainers here{CLEAR}aren’t too strong, so even a weakling{CLEAR}like me has a chance to win.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 68,
-   "zh": "我是个天文爱好者,{NEWLINE}根据我的观察,{CLEAR}传说中千年一遇的许愿之星{CLEAR}很可能在不久之后从天而降！",
-   "en": "I’m an amateur astronomer. According{NEWLINE}to my observations, the legendary{CLEAR}wishing star that comes only once in a{CLEAR}thousand years may fall from the sky{CLEAR}before long!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 69,
-   "zh": "东南联盟现任冠军——阿故！",
-   "en": "Southeast League Champion: Gus!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "[D-0637 rename 2026-09-28: Kurt → Gus]"
-  },
-  {
-   "id": 70,
-   "zh": "东南联盟前任冠军——阿故！{SCROLL}东南联盟现任冠军——{VAR:0103:0}！",
-   "en": "Former Southeast League Champion:{NEWLINE}Gus!{SCROLL}Current Southeast League Champion:{NEWLINE}{VAR:0103:0}!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "[D-0637 rename 2026-09-28: Kurt → Gus]"
-  },
-  {
-   "id": 71,
-   "zh": "请等一下！{SCROLL}南边的14号路正在进行{NEWLINE}口袋妖怪马拉松赛跑的准备工作。{SCROLL}那里的工作人员{NEWLINE}特意跟我们东南联盟打了招呼,{CLEAR}说是暂时请先不要过去。{CLEAR}所以这边暂时不能走哟。",
-   "en": "Please wait!{SCROLL}Route 14 to the south is getting ready{NEWLINE}for the Pokémon marathon race.{SCROLL}The staff there asked us at the{NEWLINE}Southeast League to keep people from{CLEAR}heading over for now. So you can’t go{CLEAR}this way for the time being.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 72,
-   "zh": "哇,你竟然能打败阿故！{NEWLINE}简直是我的偶像！{SCROLL}偶像,请收下来自你粉丝的礼物！",
-   "en": "Wow, you actually beat Gus! You’re my{NEWLINE}idol!{SCROLL}Idol, please accept this gift from your{NEWLINE}fan!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "[D-0637 rename 2026-09-28: Kurt → Gus]"
-  },
-  {
-   "id": 73,
-   "zh": "偶像我跟你说哦,{NEWLINE}彩虹市的莉佳小姐{CLEAR}她对香水的品质要求太严格了,{CLEAR}我每天在店里996加班{CLEAR}都做不出她满意的香水。",
-   "en": "Hey, Idol, listen to this. Miss Erika in{NEWLINE}Celadon City is so strict about perfume{CLEAR}quality! I work 9-9-6 overtime at the{CLEAR}shop every day, and I still can’t make a{CLEAR}perfume she’s happy with.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "996 = the ‘9 a.m. to 9 p.m., six days a week’ overtime culture; kept as ‘9-9-6’."
-  },
-  {
-   "id": 74,
-   "zh": "哇哈哈,你已经获得了{NEWLINE}咱们东南联盟的冠军了啊！{CLEAR}了不起了不起！{SCROLL}我这里有一只非常珍贵的尤基拉,{NEWLINE}因为太珍贵了{CLEAR}我都不不知道该怎么培养它,{CLEAR}但如果是获得冠军的你的话,{CLEAR}一定能发挥出这孩子的潜能。{CLEAR}就是不知道你是否愿意{CLEAR}带着我的小尤基拉一起旅行呢？",
-   "en": "Wa ha ha! You’ve become Champion of our{NEWLINE}Southeast League! Amazing, amazing!{SCROLL}I have a very precious Larvitar. It’s{NEWLINE}so precious that I don’t even know how{CLEAR}to raise it.{SCROLL}But a Champion like you could surely{NEWLINE}bring out this little one’s potential.{SCROLL}Would you be willing to take my little{NEWLINE}Larvitar along on your journey?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 75,
-   "zh": "连身为冠军的你也不知道{NEWLINE}该怎么培养尤基拉才好吗？",
-   "en": "Even a Champion like you doesn’t know{NEWLINE}how to raise Larvitar?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 76,
-   "zh": "你身上已经带满6只精灵了,{NEWLINE}要是没有空位的话{CLEAR}我是没法把尤基拉给你的。",
-   "en": "You already have six Pokémon with you.{NEWLINE}If you don’t have room, I can’t give{CLEAR}you Larvitar.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 77,
-   "zh": "{VAR:0103:0}得到了尤基拉！",
-   "en": "{VAR:0103:0} received Larvitar!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 78,
-   "zh": "对持有的尤基拉起昵称吗？{VAR:0200:0}",
-   "en": "Give a nickname to the Larvitar you{NEWLINE}received?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 79,
-   "zh": "昵称叫{VAR:0101:1}{NEWLINE}可以吗？{VAR:0200:0}",
-   "en": "Is {VAR:0101:1} the nickname you want to{NEWLINE}give?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 80,
-   "zh": "感觉尤基拉会跟着你{NEWLINE}成就一番大事业呢！",
-   "en": "I have a feeling Larvitar will do great{NEWLINE}things with you!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 81,
-   "zh": "尤基拉可是最有魅力的岩石系精灵了,{NEWLINE}希望你能把它的强大发挥出来。",
-   "en": "Larvitar is the most charming Rock-type{NEWLINE}Pokémon there is. I hope you’ll bring{CLEAR}out its full strength.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 82,
-   "zh": "哦呼,我们的新任冠军你好啊！{NEWLINE}我的精灵最近学会了一个{CLEAR}非常实用的火系技能「火焰轮」,{CLEAR}你有没有兴趣学啊？",
-   "en": "Oh ho, hello there, our new Champion!{NEWLINE}My Pokémon recently learned a really{CLEAR}handy Fire-type move, Flame Wheel.{CLEAR}Interested in learning it?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 83,
-   "zh": "不学了吗？{NEWLINE}就算是石英大会级别的战斗{CLEAR}这个技能应该也能帮上忙的啊！",
-   "en": "You don’t want it? It could come in{NEWLINE}handy even in battles at the Indigo{CLEAR}Conference level!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 84,
-   "zh": "要让哪个精灵学呢？{SCROLL}",
-   "en": "Which Pokémon should learn it?{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 3 source(s), flags page_breaks_lost; other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 85,
-   "zh": "不行啊……这个精灵{NEWLINE}没法记住火焰轮。{SCROLL}",
-   "en": "No good... This Pokémon can’t learn{NEWLINE}Flame Wheel.{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 86,
-   "zh": "不要拿我开玩笑啊{NEWLINE}蛋怎么学技能呢？",
-   "en": "Don’t pull my leg. How’s an Egg{NEWLINE}supposed to learn a move?",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 87,
-   "zh": "这只{VAR:0100:0}{NEWLINE}已经会火焰轮了！{SCROLL}",
-   "en": "This {VAR:0100:0} already knows Flame{NEWLINE}Wheel!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 88,
-   "zh": "{VAR:0101:0}想要记住{NEWLINE}新的火焰轮……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习火焰轮{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Flame{NEWLINE}Wheel...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Flame{NEWLINE}Wheel?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 89,
-   "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
-   "en": "Forget {VAR:0106:1}. Is that OK?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 90,
-   "zh": "１{VAR:0201:20}　２{VAR:0201:20}　…{VAR:0201:20}…{VAR:0201:20}完成！",
-   "en": "1{VAR:0201:20} 2{VAR:0201:20} ...{VAR:0201:20}...{VAR:0201:20}Done!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), flags fullwidth_chars; other variants: 6 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 91,
-   "zh": "{VAR:0101:0}完全忘了{NEWLINE}{VAR:0106:1}的用法！{SCROLL}然后……！",
-   "en": "{VAR:0101:0} forgot all about{NEWLINE}{VAR:0106:1}!{SCROLL}And...!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 4 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 92,
-   "zh": "{VAR:0101:0}学会了火焰轮！",
-   "en": "{VAR:0101:0} learned Flame Wheel!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 93,
-   "zh": "对走物攻流的火系精灵来说,{NEWLINE}这招火焰轮可是兼顾了{CLEAR}威力、命中、续航的最佳之选了！",
-   "en": "For physical Fire types, Flame Wheel is{NEWLINE}the best pick, with power, accuracy and{CLEAR}staying power all in one!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 94,
-   "zh": "你是要放弃{NEWLINE}让它记住火焰轮吗？{VAR:0200:0}",
-   "en": "Give up on teaching it Flame Wheel?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 95,
-   "zh": "恭喜你成为了我们东南联盟的冠军,{NEWLINE}祝你在更高水平的舞台上{CLEAR}也能一展身手！",
-   "en": "Congratulations on becoming Champion of{NEWLINE}our Southeast League! May you shine on{CLEAR}even bigger stages too!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 96,
-   "zh": "哇,想不到你这么轻松地{NEWLINE}就拿到了我们东南联盟的冠军头衔。{CLEAR}作为你成为冠军的贺礼,{CLEAR}这个送给你吧！",
-   "en": "Wow, you took the Southeast League{NEWLINE}Champion title so easily! Please take{CLEAR}this as a gift to celebrate!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 97,
-   "zh": "我每次遇到烦心事的时候,{NEWLINE}都会来东南联盟放松一下。{CLEAR}然后那些烦恼就瞬间都忘掉了。{SCROLL}你的精灵如果也有{NEWLINE}什么需要忘记的东西,{CLEAR}我可以帮你哦。{SCROLL}",
-   "en": "Whenever something’s bugging me, I come{NEWLINE}to the Southeast League to unwind, and{CLEAR}all my worries vanish in an instant.{SCROLL}If your Pokémon have anything they{NEWLINE}need to forget, I can help.{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 98,
-   "zh": "请帮我的精灵忘掉技能",
-   "en": "Help it forget a move",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "",
-   "category": "menu_touch_1line"
-  },
-  {
-   "id": 99,
-   "zh": "不用了,谢谢",
-   "en": "No, thanks",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "",
-   "category": "menu_touch_1line"
-  },
-  {
-   "id": 100,
-   "zh": "要选择哪个精灵呢？{SCROLL}",
-   "en": "Which Pokémon?{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 101,
-   "zh": "嗯……那么{NEWLINE}你想要忘记哪个技能呢？{SCROLL}",
-   "en": "Hmm... Then which move should it forget?{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 102,
-   "zh": "忘记{NEWLINE}{VAR:0106:0},是吧？{VAR:0200:0}",
-   "en": "Forget {VAR:0106:0}, right?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 103,
-   "zh": "想要忘记技能的时候{NEWLINE}就来找我吧！",
-   "en": "Come see me whenever you want a move{NEWLINE}forgotten!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 104,
-   "zh": "什么？这个是蛋啊！{NEWLINE}什么技能也没学会……{SCROLL}",
-   "en": "What? This is an Egg! It hasn’t learned{NEWLINE}any moves...{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 105,
-   "zh": "什么？这只精灵可只{NEWLINE}记得一个技能啊。{SCROLL}",
-   "en": "What? This Pokémon only knows one move.{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 106,
-   "zh": "遗忘成功！{SCROLL}你的精灵{NEWLINE}忘记了{VAR:0106:0}！",
-   "en": "All done!{SCROLL}Your Pokémon forgot {VAR:0106:0}!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 107,
-   "zh": "要让哪个精灵学呢？{SCROLL}",
-   "en": "Which Pokémon should learn it?{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 3 source(s), flags page_breaks_lost; other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 108,
-   "zh": "想学的话随时再来找我。",
-   "en": "If you want to learn it, come find me{NEWLINE}anytime.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 2 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 109,
-   "zh": "抱歉……这个精灵{NEWLINE}没法记住闪电拳。{SCROLL}",
-   "en": "Sorry... This Pokémon can’t learn{NEWLINE}Thunder Punch.{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 110,
-   "zh": "还没出生的精灵{NEWLINE}恐怕学不会这个技能……{SCROLL}",
-   "en": "I’m afraid a Pokémon that hasn’t{NEWLINE}hatched yet can’t learn this move...{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 3 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 111,
-   "zh": "这只{VAR:0100:0}{NEWLINE}已经会闪电拳了！{SCROLL}",
-   "en": "This {VAR:0100:0} already knows Thunder{NEWLINE}Punch!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 112,
-   "zh": "１{VAR:0201:20}　２{VAR:0201:20}　…{VAR:0201:20}…{VAR:0201:20}完成！",
-   "en": "1{VAR:0201:20} 2{VAR:0201:20} ...{VAR:0201:20}...{VAR:0201:20}Done!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), flags fullwidth_chars; other variants: 6 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 113,
-   "zh": "{VAR:0101:0}学会了闪电拳！",
-   "en": "{VAR:0101:0} learned Thunder Punch!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 114,
-   "zh": "这样一来{NEWLINE}你的{VAR:0100:0}{CLEAR}已经学会闪电拳了！",
-   "en": "And with that, your {VAR:0100:0} has{NEWLINE}learned Thunder Punch!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 115,
-   "zh": "{VAR:0101:0}想要记住{NEWLINE}新的闪电拳……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习闪电拳{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Thunder{NEWLINE}Punch...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn{NEWLINE}Thunder Punch?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 116,
-   "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
-   "en": "Forget {VAR:0106:1}. Is that OK?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 117,
-   "zh": "{VAR:0101:0}完全忘了{NEWLINE}{VAR:0106:1}的用法！{SCROLL}然后……！",
-   "en": "{VAR:0101:0} forgot all about{NEWLINE}{VAR:0106:1}!{SCROLL}And...!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 4 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 118,
-   "zh": "你是要放弃{NEWLINE}让它记住闪电拳吗？{VAR:0200:0}",
-   "en": "Give up on teaching it Thunder Punch?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 119,
-   "zh": "恭喜你成为了我们东南联盟的冠军,{NEWLINE}我这里有一招珍藏多年的技能,{CLEAR}叫作「大声咆哮」。{CLEAR}它可以让对手因为惊吓而降低特攻。{CLEAR}你如果有精灵想学的话,{CLEAR}我随时可以教你。",
-   "en": "Congratulations on becoming Champion of{NEWLINE}our Southeast League! I have a move{CLEAR}I’ve kept for years, called Snarl. It{CLEAR}startles the foe and lowers its Sp. Atk.{SCROLL}If any of your Pokémon want to learn it,{NEWLINE}I can teach it anytime.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 120,
-   "zh": "要让精灵学习大声咆哮吗？{SCROLL}",
-   "en": "Teach a Pokémon Snarl?{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 121,
-   "zh": "想学的话随时再来找我。",
-   "en": "If you want to learn it, come find me{NEWLINE}anytime.",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 2 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 122,
-   "zh": "要让哪个精灵学呢？{SCROLL}",
-   "en": "Which Pokémon should learn it?{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 3 source(s), flags page_breaks_lost; other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 123,
-   "zh": "抱歉……这个精灵{NEWLINE}没法记住大声咆哮。{SCROLL}",
-   "en": "Sorry... This Pokémon can’t learn{NEWLINE}Snarl.{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 124,
-   "zh": "还没出生的精灵{NEWLINE}恐怕学不会这个技能……{SCROLL}",
-   "en": "I’m afraid a Pokémon that hasn’t{NEWLINE}hatched yet can’t learn this move...{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 3 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 125,
-   "zh": "这只{VAR:0100:0}{NEWLINE}已经会大声咆哮了！{SCROLL}",
-   "en": "This {VAR:0100:0} already knows Snarl!{SCROLL}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 126,
-   "zh": "１{VAR:0201:20}　２{VAR:0201:20}　…{VAR:0201:20}…{VAR:0201:20}完成！",
-   "en": "1{VAR:0201:20} 2{VAR:0201:20} ...{VAR:0201:20}...{VAR:0201:20}Done!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s), flags fullwidth_chars; other variants: 6 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 127,
-   "zh": "{VAR:0101:0}学会了大声咆哮！",
-   "en": "{VAR:0101:0} learned Snarl!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 128,
-   "zh": "这样一来{NEWLINE}你的{VAR:0100:0}{CLEAR}已经学会大声咆哮了！{SCROLL}祝你在更高水平的舞台上{NEWLINE}也能一展身手、再放光芒！",
-   "en": "And with that, your {VAR:0100:0} has{NEWLINE}learned Snarl!{SCROLL}May you shine even brighter on bigger{NEWLINE}stages!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 129,
-   "zh": "{VAR:0101:0}想要记住{NEWLINE}新的大声咆哮……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习大声咆哮{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Snarl...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Snarl?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  },
-  {
-   "id": 130,
-   "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
-   "en": "Forget {VAR:0106:1}. Is that OK?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 131,
-   "zh": "{VAR:0101:0}完全忘了{NEWLINE}{VAR:0106:1}的用法！{SCROLL}然后……！",
-   "en": "{VAR:0101:0} forgot all about{NEWLINE}{VAR:0106:1}!{SCROLL}And...!",
-   "status": "draft",
-   "origin": "agent",
-   "notes": "v3 TM: 4 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-  },
-  {
-   "id": 132,
-   "zh": "你是要放弃{NEWLINE}让它记住大声咆哮吗？{VAR:0200:0}",
-   "en": "Give up on teaching it Snarl?{VAR:0200:0}",
-   "status": "draft",
-   "origin": "agent",
-   "notes": ""
-  }
- ]
+  "narc": "a027",
+  "bank": 343,
+  "source": "work/extract/v4/a027/0343.json",
+  "strings": [
+    {
+      "id": 0,
+      "zh": "贴心的告示牌！{SCROLL}我们东南联盟,{NEWLINE}因平凡的你而伟大！",
+      "en": "Trainer Tips!{SCROLL}The Southeast League: great because of{NEWLINE}ordinary folks like you!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "东南联盟 → the Southeast League: an amateur battle club on Route 13 (1 Champion + 8 type representatives), cf. open question on 0453 #44."
+    },
+    {
+      "id": 1,
+      "zh": "这里是１３号道路{NEWLINE}北　寂静之桥",
+      "en": "Rt. 13{NEWLINE}North to Silence Bridge",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0350/1",
+      "category": "sign"
+    },
+    {
+      "id": 2,
+      "zh": "北　紫苑镇{NEWLINE}西　浅红市",
+      "en": "North to Lavender Town{NEWLINE}West to Fuchsia City",
+      "status": "draft",
+      "origin": "us",
+      "notes": "US 0350/2",
+      "category": "sign"
+    },
+    {
+      "id": 3,
+      "zh": "力量就是真理,{NEWLINE}我的精灵都格外擅长物理型攻击,{CLEAR}你要跟我比试比试吗？{SCROLL}",
+      "en": "Strength is truth! My Pokémon are{NEWLINE}especially good at physical attacks.{CLEAR}Want to have a match with me?{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "zh": "你会害怕也是应该的,{NEWLINE}毕竟我的实力在东南联盟里{CLEAR}可是数一数二的。",
+      "en": "It’s only natural you’re scared. After{NEWLINE}all, I’m one of the strongest in the{CLEAR}Southeast League.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "zh": "好,你就好好感受一下{NEWLINE}我这爆炸性的力量吧！",
+      "en": "All right, feel the full force of my{NEWLINE}explosive power!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "zh": "在力量上完全输给你了,{NEWLINE}跟你的这场战斗让我学到了很多啊,{CLEAR}这个送给你作为谢礼吧。",
+      "en": "You beat me completely on strength. I{NEWLINE}learned a lot from this battle. Take{CLEAR}this as thanks.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "zh": "我拿到6枚徽章之后,{NEWLINE}就再也无法通过第7枚徽章的测试了。{CLEAR}可能我人生的极限就到这里了吧。",
+      "en": "After I got my sixth Badge, I could{NEWLINE}never pass the test for the seventh.{CLEAR}Maybe that’s as far as I go in life.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "zh": "我特别喜欢{NEWLINE}水系精灵的那种温柔可爱,{CLEAR}以及它们可爱外表下的坚强勇敢。{CLEAR}你要感受下我的水系精灵的魅力吗？",
+      "en": "I just love how gentle and cute{NEWLINE}Water-type Pokémon are, and how{CLEAR}strong and brave they are under those{CLEAR}cute looks. Want to feel the charm of{CLEAR}my Water types?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "zh": "咦？你不喜欢水系精灵啊。",
+      "en": "Huh? You don’t like Water types?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "zh": "看我和我的精灵们{NEWLINE}一起跳起水之舞！",
+      "en": "Watch me and my Pokémon perform the{NEWLINE}Water Dance together!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "zh": "你还真是厉害呢。{NEWLINE}我得向你好好学习呀。{CLEAR}作为咱们两个这场比试的纪念,{CLEAR}请你收下这个吧。",
+      "en": "You’re really good! I should learn from{NEWLINE}you. Please take this as a keepsake of{CLEAR}our match.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "zh": "我的职业是一名救生员,{NEWLINE}所以我的对战水平挺有限的。{CLEAR}如果你想了解更多水系口袋妖怪的事,{CLEAR}华蓝道馆应该是个不错的去处。",
+      "en": "I’m a lifeguard by trade, so my battling{NEWLINE}skills are pretty limited. If you want to{CLEAR}learn more about Water-type Pokémon,{CLEAR}the Cerulean Gym would be a good place{CLEAR}to go.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "zh": "我这快如闪电的招式{NEWLINE}可是在枯叶市跟马志士大人学的,{CLEAR}你有办法战胜我吗？",
+      "en": "I learned my lightning-fast moves from{NEWLINE}the great Lt. Surge himself in Vermilion{CLEAR}City. Think you can beat me?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "zh": "别害羞嘛,来这里就是要体验{NEWLINE}挑战道馆的那种氛围才有意思啊。",
+      "en": "Don’t be shy! The fun of coming here is{NEWLINE}getting a taste of what a Gym challenge{CLEAR}feels like!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "zh": "来吧,让你看看海上男儿的志气！",
+      "en": "Come on, I’ll show you the grit of a man{NEWLINE}of the sea!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "zh": "谢谢你能给我上了一课,{NEWLINE}让我学到了很多东西。{CLEAR}作为交换,{CLEAR}我可以把我的绝招闪电拳{CLEAR}教给你的精灵。{CLEAR}你如果想学的话随时可以来找我。",
+      "en": "Thanks for teaching me a lesson. I{NEWLINE}learned a lot. In return, I can teach{CLEAR}your Pokémon my specialty, Thunder{CLEAR}Punch. Come find me anytime if you want{CLEAR}to learn it.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "zh": "哦？想让你的精灵学习闪电拳吗？",
+      "en": "Oh? Want your Pokémon to learn Thunder{NEWLINE}Punch?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "zh": "赌桌上我是常胜将军,{NEWLINE}精灵对战中我亦是常胜将军,{CLEAR}你有信心能战胜我吗？",
+      "en": "At the gambling table I never lose, and{NEWLINE}in Pokémon battles I never lose either.{CLEAR}Think you can beat me?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "zh": "怕什么呀,{NEWLINE}你是没见过超能力者吗？",
+      "en": "What’s there to be scared of? Never{NEWLINE}seen a psychic before?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "zh": "我曾经在彩虹市游戏厅出老千,{NEWLINE}结果被游戏厅的主管发现了,{CLEAR}他们当时直接就砍掉了我的右手。{CLEAR}我现在的右手其实是义肢。",
+      "en": "I once cheated at the Celadon Game{NEWLINE}Corner, and the manager caught me.{SCROLL}They chopped off my right hand on the{NEWLINE}spot.{SCROLL}My right hand is actually a prosthetic{NEWLINE}now.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "Cheater’s hand cut off by the Game Corner manager; kept faithful."
+    },
+    {
+      "id": 21,
+      "zh": "跟我战斗是你的不幸！",
+      "en": "Battling me is your bad luck!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "zh": "赢得漂亮,{NEWLINE}你的战斗可真是让我大开眼界。{CLEAR}这份礼物代表我的敬佩之情,{CLEAR}请收下吧。",
+      "en": "Beautifully won! Your battling really{NEWLINE}opened my eyes. Please accept this gift{CLEAR}as a sign of my admiration.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "zh": "大叔我啊,{NEWLINE}可是个精灵对战的痴迷者呢,{CLEAR}有信心能战胜我吗？",
+      "en": "This old guy here is crazy about{NEWLINE}Pokémon battles. Think you can beat me?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "zh": "是嫌弃大叔我么……",
+      "en": "Too good for an old guy like me, huh...",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "zh": "大叔我啊,{NEWLINE}人到中年、妻离子散一事无成,{CLEAR}这辈子唯一的美好回忆{CLEAR}就是年轻时候周游各地时{CLEAR}赢得的这4枚徽章了。",
+      "en": "This old guy is middle-aged, separated{NEWLINE}from his wife and kids, and has nothing{CLEAR}to show for his life. My only good{CLEAR}memories are these four Badges I won{CLEAR}traveling around when I was young.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": " | D-1771: user approved source-faithful wording during full English review."
+    },
+    {
+      "id": 26,
+      "zh": "嘿嘿,让你看看{NEWLINE}我想破脑袋想出来的战术！",
+      "en": "Heh heh, let me show you the strategy I{NEWLINE}racked my brains to come up with!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "zh": "虽然输了,{NEWLINE}但是大叔我玩得很开心呢。{CLEAR}谢谢你愿意跟我对战,{CLEAR}这个送给你吧。",
+      "en": "I lost, but this old guy had a lot of{NEWLINE}fun.{SCROLL}Thanks for battling me. Here, take this.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "zh": "是不是因为闻到我身上的香气{NEWLINE}才在这里驻足的？",
+      "en": "Did you stop here because you caught{NEWLINE}the scent of my perfume?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "zh": "嘻嘻,看不出来你还挺有品味嘛。",
+      "en": "Tee-hee, you’ve got better taste than{NEWLINE}you look.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "zh": "我在香水店当学徒的时候,{NEWLINE}经常因为调出来的味道奇怪而被骂。{SCROLL}不过现在我终于可以{NEWLINE}按我的思路调制香水了,{CLEAR}想调什么气味都可以的感觉{CLEAR}真是太好啦！",
+      "en": "When I was an apprentice at a perfume{NEWLINE}shop, I always got chewed out for mixing{CLEAR}weird scents.{SCROLL}But now I can finally make perfume my{NEWLINE}own way. Being free to mix any scent I{CLEAR}want feels so great!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "zh": "什么嘛,那你就是想跟我对战咯！",
+      "en": "What? So you just want to battle me,{NEWLINE}then!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "zh": "你的精灵虽然强大,{NEWLINE}但是因为经常战斗身上都臭臭的呢。{SCROLL}给你这个熏香{NEWLINE}改善一下你的精灵们的气味吧！",
+      "en": "Your Pokémon are strong, but all that{NEWLINE}battling has left them kind of stinky.{SCROLL}Here, take this incense to freshen them{NEWLINE}up!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "zh": "来吧,来一场青春热血{NEWLINE}充满活力的对战吧！",
+      "en": "Come on, let’s have a young,{NEWLINE}hot-blooded, energetic battle!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "zh": "你明明看起来那么年轻,{NEWLINE}却毫无身为训练家的斗志呢。",
+      "en": "You look so young, but you have none of{NEWLINE}a Trainer’s fighting spirit.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "zh": "在红莲道馆的时候{NEWLINE}我只是个打杂跑腿的小角色,{CLEAR}但是来到东南联盟之后,{CLEAR}我就成了众人仰望的火系大师了。{CLEAR}果然是树挪死、人挪活啊！",
+      "en": "At the Cinnabar Gym, I was just a lowly{NEWLINE}errand boy. But since coming to the{CLEAR}Southeast League, I’ve become a{CLEAR}Fire-type master everyone looks up to.{SCROLL}Move a tree and it dies; move a man and{NEWLINE}he thrives!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "zh": "哈哈哈,{NEWLINE}我的小宇宙燃烧起来了！",
+      "en": "Ha ha ha! My Cosmo is burning!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "zh": "你这看似冷静的外表下,{NEWLINE}有颗火热的心呢！{CLEAR}来吧,你配得上这个深红徽章……{SCROLL}…… ……{SCROLL}…… ……{SCROLL}哈哈哈,开玩笑的,{NEWLINE}我哪里有徽章啊,{CLEAR}送你块珍惜的石头吧！",
+      "en": "Beneath that cool exterior beats a{NEWLINE}fiery heart! Come, you are worthy of{CLEAR}this Volcano Badge...{SCROLL}... ...{SCROLL}... ...{SCROLL}Ha ha ha, just kidding. I don’t have any{NEWLINE}Badges!{SCROLL}Here, have a rare stone instead!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "zh": "我的化石翼龙可是这世界上最快的{NEWLINE}岩石系口袋妖怪,{CLEAR}你想感受一下我这化石翼龙的速度吗？",
+      "en": "My Aerodactyl is the fastest Rock-type{NEWLINE}Pokémon in the world. Want to feel that{CLEAR}speed for yourself?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "zh": "嘿嘿,被我给吓到了吗？",
+      "en": "Heh heh, did I scare you?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "zh": "我年轻的时候{NEWLINE}因为痴迷于美丽的女性,{CLEAR}于是四处留情沾花惹草。{CLEAR}最终无颜回家的我流浪到了这里,{CLEAR}才算是过上了稍微安稳点的生活。",
+      "en": "When I was young, I was so crazy about{NEWLINE}beautiful women that I left a trail of{CLEAR}flings and affairs everywhere I went.{SCROLL}In the end, too ashamed to go home, I{NEWLINE}drifted here, and only then did I settle{CLEAR}into a halfway quiet life.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "zh": "来吧,好好感受飞速岩石的冲击！",
+      "en": "Come on, feel the impact of flying rock!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "zh": "想不到小伙子你比我还快嘛,{NEWLINE}将来你一定会大受女孩子们欢迎的。{CLEAR}这个头盔送给你,{CLEAR}就当是我对你的祝福吧。",
+      "en": "Didn’t think you’d be even faster than{NEWLINE}me, young man. You’re going to be a big{CLEAR}hit with the girls someday. Take this{CLEAR}helmet as my blessing.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 43,
+      "zh": "哟,这位美女训练家,{NEWLINE}要通过一场精灵对战{CLEAR}开始我们的缘分吗？",
+      "en": "Well, hello there, pretty Trainer. Shall{NEWLINE}we start our destiny together with a{CLEAR}Pokémon battle?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "#43–#47: old man hitting on a female player (#42 is the male-player version); kept faithful."
+    },
+    {
+      "id": 44,
+      "zh": "何必这么害羞嘛。",
+      "en": "No need to be so shy.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "zh": "我感觉我们之间,{NEWLINE}会有产生刻骨铭心的爱情呢！",
+      "en": "I have a feeling a love we’ll never{NEWLINE}forget will bloom between us!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "tone review: 刻骨铭心的爱情 = unforgettable love; 'love' kept to match #46/#47"
+    },
+    {
+      "id": 46,
+      "zh": "我被美女你那迷人的战斗身姿所吸引,{NEWLINE}已经无法自拔了。{CLEAR}这个坚硬的头盔作为我们的定情信物,{CLEAR}请你务必收下！",
+      "en": "Your charming battle style has{NEWLINE}captivated me completely. I can’t help{CLEAR}myself. Please accept this hard helmet{CLEAR}as a token of our love!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 47,
+      "zh": "虽然我儿子年龄比你还大,{NEWLINE}但我觉得只要咱们之间有爱情{CLEAR}年龄就不是障碍。",
+      "en": "My son may be older than you, but as{NEWLINE}long as there’s love between us, age is{CLEAR}no barrier.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "zh": "铁甲暴龙『Rhy——don！",
+      "en": "Rhydon: Rhy-don!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 49,
+      "zh": "玛力露丽『Azu——mari！",
+      "en": "Azumarill: Azu-mari!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "zh": "电栗鼠『Pachi——riz！",
+      "en": "Pachirisu: Pachi-riz!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 51,
+      "zh": "恰雷姆『Mediii——cham！",
+      "en": "Medicham: Mediii-cham!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 52,
+      "zh": "吞食兽『Swaaaa——lo！",
+      "en": "Swalot: Swaaaa-lo!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 53,
+      "zh": "沙漠蜻蜓『Fly——gon！",
+      "en": "Flygon: Fly-gon!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 54,
+      "zh": "大食花『Vic——Tree！",
+      "en": "Victreebel: Vic-Tree!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 55,
+      "zh": "虽然我们东南联盟的训练家们{NEWLINE}都不是职业的高级训练家,{CLEAR}但是连续跟他们战斗也并不容易呢。{SCROLL}您需要在我这里恢复一下精灵吗？",
+      "en": "Our Southeast League Trainers aren’t{NEWLINE}professional Senior Trainers, but{CLEAR}battling them one after another still{CLEAR}isn’t easy.{SCROLL}Would you like me to heal your Pokémon?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 56,
+      "zh": "精灵都恢复好了,{NEWLINE}祝您的训练家征程一路顺利！",
+      "en": "Your Pokémon are fully healed. Best of{NEWLINE}luck on your Trainer journey!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 57,
+      "zh": "煤炭龟『Tor——koal！",
+      "en": "Torkoal: Tor-koal!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 58,
+      "zh": "化石翼龙『Aeee——roda！",
+      "en": "Aerodactyl: Aeee-roda!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 59,
+      "zh": "我是东南联盟的最强训练家,{NEWLINE}东南联盟的冠军——阿故。{CLEAR}你如果想找我挑战的话,{CLEAR}就得先击败我们东南联盟的{CLEAR}8位代表训练家。",
+      "en": "I’m the strongest Trainer in the{NEWLINE}Southeast League, its Champion: Gus.{SCROLL}To challenge me, you’ll first have to{NEWLINE}beat the Southeast League’s eight{CLEAR}representative Trainers.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "阿故 (Southeast League Champion) → Kurt, per trainer table 0719 #532 (authority rule); collides with Kurt the Ball maker (岩铁). Flagged as a question. | [D-0637 rename 2026-09-28: Kurt → Gus]"
+    },
+    {
+      "id": 60,
+      "zh": "我都听说了,你已经击败了{NEWLINE}我们东南联盟的8位代表训练家,{CLEAR}如果你能够再击败我,{CLEAR}那么这个东南联盟的冠军名号{CLEAR}就是你的了！",
+      "en": "I heard all about it. You’ve beaten the{NEWLINE}Southeast League’s eight{CLEAR}representative Trainers.{SCROLL}If you can beat me too, the title of{NEWLINE}Southeast League Champion is yours!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 61,
+      "zh": "我是四天王渡先生的粉丝,{NEWLINE}就是因为崇拜他我才专练龙精灵的。{CLEAR}奈何我天赋不够,{CLEAR}都没有资格去参加石英大会。{CLEAR}好在有东南联盟这个组织,{CLEAR}才让我过了一把当冠军的瘾。",
+      "en": "I’m a fan of Lance of the Elite Four. I{NEWLINE}specialize in Dragon types because I{CLEAR}idolize him. But I don’t have the talent,{CLEAR}and I never even qualified for the{CLEAR}Indigo Conference.{SCROLL}Luckily there’s the Southeast League,{NEWLINE}so I got a taste of being Champion.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 62,
+      "zh": "你赢了,恭喜你成为{NEWLINE}我们东南联盟的新任冠军。{CLEAR}这是成为冠军的纪念。",
+      "en": "You win. Congratulations on becoming{NEWLINE}the new Champion of the Southeast{CLEAR}League. Here’s a memento of your win.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 63,
+      "zh": "祝你在今后的旅行中{NEWLINE}能够一直获胜下去！",
+      "en": "May you keep on winning throughout your{NEWLINE}travels!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 64,
+      "zh": "嘿嘿,年轻的训练家,{NEWLINE}欢迎来到东南联盟！{SCROLL}需要我给你介绍一下东南联盟吗？",
+      "en": "Heh heh, young Trainer, welcome to the{NEWLINE}Southeast League!{SCROLL}Would you like me to tell you about it?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 65,
+      "zh": "那么祝您在我们东南联盟玩得愉快！",
+      "en": "Then enjoy your time in the Southeast{NEWLINE}League!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 66,
+      "zh": "我们东南联盟,{NEWLINE}是由一批业余训练家{CLEAR}组成的一个对战同好会。{SCROLL}联盟现在有1位冠军{NEWLINE}和8位代表训练家,{CLEAR}冠军象征着我们东南联盟的最强实力,{CLEAR}而8位代表训练家则是{CLEAR}代表着8种不同属性的训练家。{SCROLL}联盟成立的初衷就是为了给那些{NEWLINE}没有资格参加石英大会的训练家们,{CLEAR}提供一个更轻松的挑战舞台。{SCROLL}如果你想体验对战的乐趣,{NEWLINE}学习不同属性的对战技巧,{CLEAR}来我们东南联盟就对了。",
+      "en": "The Southeast League is a battle club{NEWLINE}made up of amateur Trainers.{SCROLL}Right now the League has one Champion{NEWLINE}and eight representative Trainers. The{CLEAR}Champion stands for the League’s{CLEAR}greatest strength, and the eight{CLEAR}representatives each stand for a{CLEAR}different type.{SCROLL}The League was founded to give Trainers{NEWLINE}who don’t qualify for the Indigo{CLEAR}Conference a more relaxed stage to{CLEAR}compete on.{SCROLL}If you want to enjoy battling and learn{NEWLINE}how to battle with different types, the{CLEAR}Southeast League is the place for you.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 67,
+      "zh": "口袋妖怪研究员的工作{NEWLINE}实在是太累了,{CLEAR}自从从事研究工作之后,{CLEAR}我的头发一天比一天少,{CLEAR}现在出门都只能带假发了。{CLEAR}好在还有东南联盟这个地方{CLEAR}可以放松一下。{CLEAR}这里的训练家都不是太强,{CLEAR}像我这样的弱者{CLEAR}在这里也有能取胜的机会。",
+      "en": "Working as a Pokémon researcher is just{NEWLINE}exhausting. Ever since I started doing{CLEAR}research, I’ve had less hair every day.{CLEAR}Now I have to wear a wig to go out.{SCROLL}Luckily, I can unwind here at the{NEWLINE}Southeast League. The Trainers here{CLEAR}aren’t too strong, so even a weakling{CLEAR}like me has a chance to win.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 68,
+      "zh": "我是个天文爱好者,{NEWLINE}根据我的观察,{CLEAR}传说中千年一遇的许愿之星{CLEAR}很可能在不久之后从天而降！",
+      "en": "I’m an amateur astronomer. According{NEWLINE}to my observations, the legendary{CLEAR}wishing star that comes only once in a{CLEAR}thousand years may fall from the sky{CLEAR}before long!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 69,
+      "zh": "东南联盟现任冠军——阿故！",
+      "en": "Southeast League Champion: Gus!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "[D-0637 rename 2026-09-28: Kurt → Gus]"
+    },
+    {
+      "id": 70,
+      "zh": "东南联盟前任冠军——阿故！{SCROLL}东南联盟现任冠军——{VAR:0103:0}！",
+      "en": "Former Southeast League Champion:{NEWLINE}Gus!{SCROLL}Current Southeast League Champion:{NEWLINE}{VAR:0103:0}!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "[D-0637 rename 2026-09-28: Kurt → Gus]"
+    },
+    {
+      "id": 71,
+      "zh": "请等一下！{SCROLL}南边的14号路正在进行{NEWLINE}口袋妖怪马拉松赛跑的准备工作。{SCROLL}那里的工作人员{NEWLINE}特意跟我们东南联盟打了招呼,{CLEAR}说是暂时请先不要过去。{CLEAR}所以这边暂时不能走哟。",
+      "en": "Please wait!{SCROLL}Route 14 to the south is getting ready{NEWLINE}for the Pokémon marathon race.{SCROLL}The staff there asked us at the{NEWLINE}Southeast League to keep people from{CLEAR}heading over for now. So you can’t go{CLEAR}this way for the time being.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 72,
+      "zh": "哇,你竟然能打败阿故！{NEWLINE}简直是我的偶像！{SCROLL}偶像,请收下来自你粉丝的礼物！",
+      "en": "Wow, you actually beat Gus! You’re my{NEWLINE}idol!{SCROLL}Idol, please accept this gift from your{NEWLINE}fan!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "[D-0637 rename 2026-09-28: Kurt → Gus]"
+    },
+    {
+      "id": 73,
+      "zh": "偶像我跟你说哦,{NEWLINE}彩虹市的莉佳小姐{CLEAR}她对香水的品质要求太严格了,{CLEAR}我每天在店里996加班{CLEAR}都做不出她满意的香水。",
+      "en": "Hey, Idol, listen to this. Miss Erika in{NEWLINE}Celadon City is so strict about perfume{CLEAR}quality! I work 9-9-6 overtime at the{CLEAR}shop every day, and I still can’t make a{CLEAR}perfume she’s happy with.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "996 = the ‘9 a.m. to 9 p.m., six days a week’ overtime culture; kept as ‘9-9-6’."
+    },
+    {
+      "id": 74,
+      "zh": "哇哈哈,你已经获得了{NEWLINE}咱们东南联盟的冠军了啊！{CLEAR}了不起了不起！{SCROLL}我这里有一只非常珍贵的尤基拉,{NEWLINE}因为太珍贵了{CLEAR}我都不不知道该怎么培养它,{CLEAR}但如果是获得冠军的你的话,{CLEAR}一定能发挥出这孩子的潜能。{CLEAR}就是不知道你是否愿意{CLEAR}带着我的小尤基拉一起旅行呢？",
+      "en": "Wa ha ha! You’ve become Champion of our{NEWLINE}Southeast League! Amazing, amazing!{SCROLL}I have a very precious Larvitar. It’s{NEWLINE}so precious that I don’t even know how{CLEAR}to raise it.{SCROLL}But a Champion like you could surely{NEWLINE}bring out this little one’s potential.{SCROLL}Would you be willing to take my little{NEWLINE}Larvitar along on your journey?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 75,
+      "zh": "连身为冠军的你也不知道{NEWLINE}该怎么培养尤基拉才好吗？",
+      "en": "Even a Champion like you doesn’t know{NEWLINE}how to raise Larvitar?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 76,
+      "zh": "你身上已经带满6只精灵了,{NEWLINE}要是没有空位的话{CLEAR}我是没法把尤基拉给你的。",
+      "en": "You already have six Pokémon with you.{NEWLINE}If you don’t have room, I can’t give{CLEAR}you Larvitar.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 77,
+      "zh": "{VAR:0103:0}得到了尤基拉！",
+      "en": "{VAR:0103:0} received Larvitar!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 78,
+      "zh": "对持有的尤基拉起昵称吗？{VAR:0200:0}",
+      "en": "Give a nickname to the Larvitar you{NEWLINE}received?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 79,
+      "zh": "昵称叫{VAR:0101:1}{NEWLINE}可以吗？{VAR:0200:0}",
+      "en": "Is {VAR:0101:1} the nickname you want to{NEWLINE}give?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 80,
+      "zh": "感觉尤基拉会跟着你{NEWLINE}成就一番大事业呢！",
+      "en": "I have a feeling Larvitar will do great{NEWLINE}things with you!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 81,
+      "zh": "尤基拉可是最有魅力的岩石系精灵了,{NEWLINE}希望你能把它的强大发挥出来。",
+      "en": "Larvitar is the most charming Rock-type{NEWLINE}Pokémon there is. I hope you’ll bring{CLEAR}out its full strength.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 82,
+      "zh": "哦呼,我们的新任冠军你好啊！{NEWLINE}我的精灵最近学会了一个{CLEAR}非常实用的火系技能「火焰轮」,{CLEAR}你有没有兴趣学啊？",
+      "en": "Oh ho, hello there, our new Champion!{NEWLINE}My Pokémon recently learned a really{CLEAR}handy Fire-type move, Flame Wheel.{CLEAR}Interested in learning it?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 83,
+      "zh": "不学了吗？{NEWLINE}就算是石英大会级别的战斗{CLEAR}这个技能应该也能帮上忙的啊！",
+      "en": "You don’t want it? It could come in{NEWLINE}handy even in battles at the Indigo{CLEAR}Conference level!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 84,
+      "zh": "要让哪个精灵学呢？{SCROLL}",
+      "en": "Which Pokémon should learn it?{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 3 source(s), flags page_breaks_lost; other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 85,
+      "zh": "不行啊……这个精灵{NEWLINE}没法记住火焰轮。{SCROLL}",
+      "en": "No good... This Pokémon can’t learn{NEWLINE}Flame Wheel.{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 86,
+      "zh": "不要拿我开玩笑啊{NEWLINE}蛋怎么学技能呢？",
+      "en": "Don’t pull my leg. How’s an Egg{NEWLINE}supposed to learn a move?",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 87,
+      "zh": "这只{VAR:0100:0}{NEWLINE}已经会火焰轮了！{SCROLL}",
+      "en": "This {VAR:0100:0} already knows Flame{NEWLINE}Wheel!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 88,
+      "zh": "{VAR:0101:0}想要记住{NEWLINE}新的火焰轮……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习火焰轮{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
+      "en": "{VAR:0101:0} wants to learn Flame{NEWLINE}Wheel...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Flame{NEWLINE}Wheel?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 89,
+      "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
+      "en": "Forget {VAR:0106:1}. Is that OK?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 90,
+      "zh": "１{VAR:0201:20}　２{VAR:0201:20}　…{VAR:0201:20}…{VAR:0201:20}完成！",
+      "en": "1{VAR:0201:20} 2{VAR:0201:20} ...{VAR:0201:20}...{VAR:0201:20}Done!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), flags fullwidth_chars; other variants: 6 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 91,
+      "zh": "{VAR:0101:0}完全忘了{NEWLINE}{VAR:0106:1}的用法！{SCROLL}然后……！",
+      "en": "{VAR:0101:0} forgot all about{NEWLINE}{VAR:0106:1}!{SCROLL}And...!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 4 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 92,
+      "zh": "{VAR:0101:0}学会了火焰轮！",
+      "en": "{VAR:0101:0} learned Flame Wheel!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 93,
+      "zh": "对走物攻流的火系精灵来说,{NEWLINE}这招火焰轮可是兼顾了{CLEAR}威力、命中、续航的最佳之选了！",
+      "en": "For physical Fire types, Flame Wheel is{NEWLINE}the best pick, with power, accuracy and{CLEAR}staying power all in one!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 94,
+      "zh": "你是要放弃{NEWLINE}让它记住火焰轮吗？{VAR:0200:0}",
+      "en": "Give up on teaching it Flame Wheel?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 95,
+      "zh": "恭喜你成为了我们东南联盟的冠军,{NEWLINE}祝你在更高水平的舞台上{CLEAR}也能一展身手！",
+      "en": "Congratulations on becoming Champion of{NEWLINE}our Southeast League! May you shine on{CLEAR}even bigger stages too!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 96,
+      "zh": "哇,想不到你这么轻松地{NEWLINE}就拿到了我们东南联盟的冠军头衔。{CLEAR}作为你成为冠军的贺礼,{CLEAR}这个送给你吧！",
+      "en": "Wow, you took the Southeast League{NEWLINE}Champion title so easily! Please take{CLEAR}this as a gift to celebrate!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 97,
+      "zh": "我每次遇到烦心事的时候,{NEWLINE}都会来东南联盟放松一下。{CLEAR}然后那些烦恼就瞬间都忘掉了。{SCROLL}你的精灵如果也有{NEWLINE}什么需要忘记的东西,{CLEAR}我可以帮你哦。{SCROLL}",
+      "en": "Whenever something’s bugging me, I come{NEWLINE}to the Southeast League to unwind, and{CLEAR}all my worries vanish in an instant.{SCROLL}If your Pokémon have anything they{NEWLINE}need to forget, I can help.{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 98,
+      "zh": "请帮我的精灵忘掉技能",
+      "en": "Help it forget a move",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "",
+      "category": "menu_touch_1line"
+    },
+    {
+      "id": 99,
+      "zh": "不用了,谢谢",
+      "en": "No, thanks",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "",
+      "category": "menu_touch_1line"
+    },
+    {
+      "id": 100,
+      "zh": "要选择哪个精灵呢？{SCROLL}",
+      "en": "Which Pokémon?{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 101,
+      "zh": "嗯……那么{NEWLINE}你想要忘记哪个技能呢？{SCROLL}",
+      "en": "Hmm... Then which move should it forget?{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 102,
+      "zh": "忘记{NEWLINE}{VAR:0106:0},是吧？{VAR:0200:0}",
+      "en": "Forget {VAR:0106:0}, right?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 103,
+      "zh": "想要忘记技能的时候{NEWLINE}就来找我吧！",
+      "en": "Come see me whenever you want a move{NEWLINE}forgotten!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 104,
+      "zh": "什么？这个是蛋啊！{NEWLINE}什么技能也没学会……{SCROLL}",
+      "en": "What? This is an Egg! It hasn’t learned{NEWLINE}any moves...{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 105,
+      "zh": "什么？这只精灵可只{NEWLINE}记得一个技能啊。{SCROLL}",
+      "en": "What? This Pokémon only knows one move.{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 106,
+      "zh": "遗忘成功！{SCROLL}你的精灵{NEWLINE}忘记了{VAR:0106:0}！",
+      "en": "All done!{SCROLL}Your Pokémon forgot {VAR:0106:0}!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 107,
+      "zh": "要让哪个精灵学呢？{SCROLL}",
+      "en": "Which Pokémon should learn it?{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 3 source(s), flags page_breaks_lost; other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 108,
+      "zh": "想学的话随时再来找我。",
+      "en": "If you want to learn it, come find me{NEWLINE}anytime.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 2 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 109,
+      "zh": "抱歉……这个精灵{NEWLINE}没法记住闪电拳。{SCROLL}",
+      "en": "Sorry... This Pokémon can’t learn{NEWLINE}Thunder Punch.{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 110,
+      "zh": "还没出生的精灵{NEWLINE}恐怕学不会这个技能……{SCROLL}",
+      "en": "I’m afraid a Pokémon that hasn’t{NEWLINE}hatched yet can’t learn this move...{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 3 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 111,
+      "zh": "这只{VAR:0100:0}{NEWLINE}已经会闪电拳了！{SCROLL}",
+      "en": "This {VAR:0100:0} already knows Thunder{NEWLINE}Punch!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 112,
+      "zh": "１{VAR:0201:20}　２{VAR:0201:20}　…{VAR:0201:20}…{VAR:0201:20}完成！",
+      "en": "1{VAR:0201:20} 2{VAR:0201:20} ...{VAR:0201:20}...{VAR:0201:20}Done!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), flags fullwidth_chars; other variants: 6 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 113,
+      "zh": "{VAR:0101:0}学会了闪电拳！",
+      "en": "{VAR:0101:0} learned Thunder Punch!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 114,
+      "zh": "这样一来{NEWLINE}你的{VAR:0100:0}{CLEAR}已经学会闪电拳了！",
+      "en": "And with that, your {VAR:0100:0} has{NEWLINE}learned Thunder Punch!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 115,
+      "zh": "{VAR:0101:0}想要记住{NEWLINE}新的闪电拳……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习闪电拳{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
+      "en": "{VAR:0101:0} wants to learn Thunder{NEWLINE}Punch...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn{NEWLINE}Thunder Punch?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 116,
+      "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
+      "en": "Forget {VAR:0106:1}. Is that OK?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 117,
+      "zh": "{VAR:0101:0}完全忘了{NEWLINE}{VAR:0106:1}的用法！{SCROLL}然后……！",
+      "en": "{VAR:0101:0} forgot all about{NEWLINE}{VAR:0106:1}!{SCROLL}And...!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 4 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 118,
+      "zh": "你是要放弃{NEWLINE}让它记住闪电拳吗？{VAR:0200:0}",
+      "en": "Give up on teaching it Thunder Punch?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 119,
+      "zh": "恭喜你成为了我们东南联盟的冠军,{NEWLINE}我这里有一招珍藏多年的技能,{CLEAR}叫作「大声咆哮」。{CLEAR}它可以让对手因为惊吓而降低特攻。{CLEAR}你如果有精灵想学的话,{CLEAR}我随时可以教你。",
+      "en": "Congratulations on becoming Champion of{NEWLINE}our Southeast League! I have a move{CLEAR}I’ve kept for years, called Snarl. It{CLEAR}startles the foe and lowers its Sp. Atk.{SCROLL}If any of your Pokémon want to learn it,{NEWLINE}I can teach it anytime.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 120,
+      "zh": "要让精灵学习大声咆哮吗？{SCROLL}",
+      "en": "Teach a Pokémon Snarl?{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 121,
+      "zh": "想学的话随时再来找我。",
+      "en": "If you want to learn it, come find me{NEWLINE}anytime.",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 2 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 122,
+      "zh": "要让哪个精灵学呢？{SCROLL}",
+      "en": "Which Pokémon should learn it?{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 3 source(s), flags page_breaks_lost; other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 123,
+      "zh": "抱歉……这个精灵{NEWLINE}没法记住大声咆哮。{SCROLL}",
+      "en": "Sorry... This Pokémon can’t learn{NEWLINE}Snarl.{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 124,
+      "zh": "还没出生的精灵{NEWLINE}恐怕学不会这个技能……{SCROLL}",
+      "en": "I’m afraid a Pokémon that hasn’t{NEWLINE}hatched yet can’t learn this move...{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 3 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 125,
+      "zh": "这只{VAR:0100:0}{NEWLINE}已经会大声咆哮了！{SCROLL}",
+      "en": "This {VAR:0100:0} already knows Snarl!{SCROLL}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 126,
+      "zh": "１{VAR:0201:20}　２{VAR:0201:20}　…{VAR:0201:20}…{VAR:0201:20}完成！",
+      "en": "1{VAR:0201:20} 2{VAR:0201:20} ...{VAR:0201:20}...{VAR:0201:20}Done!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s), flags fullwidth_chars; other variants: 6 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 127,
+      "zh": "{VAR:0101:0}学会了大声咆哮！",
+      "en": "{VAR:0101:0} learned Snarl!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 128,
+      "zh": "这样一来{NEWLINE}你的{VAR:0100:0}{CLEAR}已经学会大声咆哮了！{SCROLL}祝你在更高水平的舞台上{NEWLINE}也能一展身手、再放光芒！",
+      "en": "And with that, your {VAR:0100:0} has{NEWLINE}learned Snarl!{SCROLL}May you shine even brighter on bigger{NEWLINE}stages!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 129,
+      "zh": "{VAR:0101:0}想要记住{NEWLINE}新的大声咆哮……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习大声咆哮{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
+      "en": "{VAR:0101:0} wants to learn Snarl...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Snarl?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    },
+    {
+      "id": 130,
+      "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
+      "en": "Forget {VAR:0106:1}. Is that OK?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 131,
+      "zh": "{VAR:0101:0}完全忘了{NEWLINE}{VAR:0106:1}的用法！{SCROLL}然后……！",
+      "en": "{VAR:0101:0} forgot all about{NEWLINE}{VAR:0106:1}!{SCROLL}And...!",
+      "status": "draft",
+      "origin": "agent",
+      "notes": "v3 TM: 4 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+    },
+    {
+      "id": 132,
+      "zh": "你是要放弃{NEWLINE}让它记住大声咆哮吗？{VAR:0200:0}",
+      "en": "Give up on teaching it Snarl?{VAR:0200:0}",
+      "status": "draft",
+      "origin": "agent",
+      "notes": ""
+    }
+  ]
 }

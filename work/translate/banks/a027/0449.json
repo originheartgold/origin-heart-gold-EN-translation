@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "有好好考虑过{NEWLINE}再给精灵起昵称吗？{SCROLL}起个好名字的话,{NEWLINE}会让人印象深刻的！{SCROLL}我可是想出过不少优秀的昵称喔,{NEWLINE}比如我的烈雀叫空鬼,{CLEAR}我的小拉达叫大板牙。{CLEAR}我还给别人的妙蛙种子取名叫算头王八,{CLEAR}给别人的杰尼龟取名滋水光头,{CLEAR}给别人的小火龙取名吐火蜥蜴。{CLEAR}哈哈,常磐市是取名鬼才就是我啦。{SCROLL}怎么样,{NEWLINE}要不要我帮你的精灵{CLEAR}取个好听的名字呢？{SCROLL}",
-   "en": "Have you really thought about your{NEWLINE}Pokémon’s nicknames?{SCROLL}A good name makes a lasting impression!{SCROLL}I’ve come up with plenty of great{NEWLINE}nicknames. My Spearow is Skyfiend...{SCROLL}and my Rattata is Bucktooth.{SCROLL}I named someone’s Bulbasaur Garlic{NEWLINE}Turtle, someone’s Squirtle Squirt{CLEAR}Baldy...{SCROLL}and someone’s Charmander Firespit{NEWLINE}Lizard.{SCROLL}Ha ha! Viridian City’s naming genius,{NEWLINE}that’s me!{SCROLL}So, how about it? Want me to give your{NEWLINE}Pokémon a nice name?{SCROLL}",
+   "en": "Have you really thought about your{NEWLINE}Pokémon’s nicknames?{SCROLL}A good name makes a lasting impression!{SCROLL}I’ve come up with plenty of great{NEWLINE}nicknames. My Spearow is Skyfiend...{SCROLL}and my Rattata is Bucktooth.{SCROLL}I named someone’s Bulbasaur Garlic{NEWLINE}Turtle Bastard, someone’s Squirtle{CLEAR}Squirt Baldy...{SCROLL}and someone’s Charmander Firespit{NEWLINE}Lizard.{SCROLL}Ha ha! Viridian City’s naming genius,{NEWLINE}that’s me!{SCROLL}So, how about it? Want me to give your{NEWLINE}Pokémon a nice name?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "Viridian Name Rater. Joke nicknames: 空鬼 Skyfiend, 大板牙 Bucktooth, 算(蒜)头王八 Garlic Turtle, 滋水光头 Squirt Baldy, 吐火蜥蜴 Firespit Lizard."
+   "notes": "Viridian Name Rater. Joke nicknames: 空鬼 Skyfiend, 大板牙 Bucktooth, 算(蒜)头王八 Garlic Turtle, 滋水光头 Squirt Baldy, 吐火蜥蜴 Firespit Lizard. | tone review: 算(蒜)头王八: keeps D-0351 'Garlic Turtle' and adds D-0629 'bastard' so both the turtle pun and the insult survive (D-0627)"
   },
   {
    "id": 2,

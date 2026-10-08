@@ -383,10 +383,10 @@
   {
    "id": 47,
    "zh": "{VAR:0103:0}『哼！你又是个什么东西,{NEWLINE}凭什么在这里随便捉精灵！",
-   "en": "{VAR:0103:0}: Hmph! Who are you to catch{NEWLINE}Pokémon here as you please?",
+   "en": "{VAR:0103:0}: Hmph! Who the hell do you{NEWLINE}think you are, catching Pokémon here as{CLEAR}you please?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 你又是个什么东西 = contemptuous 'who the hell do you think you are' (D-0627)"
   },
   {
    "id": 48,

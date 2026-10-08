@@ -534,10 +534,10 @@
   {
    "id": 66,
    "zh": "喵喵『小次郎你这蠢货,{NEWLINE}你已经泄露出去了喵！",
-   "en": "Meowth: James, ya dope! Ya just leaked{NEWLINE}it, meow!",
+   "en": "Meowth: James, ya moron! Ya just{NEWLINE}leaked it, meow!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 蠢货 = 'moron', as at 0484#160 (D-0627)"
   },
   {
    "id": 67,

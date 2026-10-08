@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "{VAR:0103:0}『我有急事要去浅红市,{NEWLINE}要是耽误了,你可付不起责任,{CLEAR}赶紧让开！",
-   "en": "{VAR:0103:0}: I have urgent business in{NEWLINE}Fuchsia City. If you hold me up, you’ll{CLEAR}pay for it. Get out of the way!",
+   "en": "{VAR:0103:0}: I have urgent business in{NEWLINE}Fuchsia City. If you hold me up, you{CLEAR}can’t afford the consequences. Get out{CLEAR}of the way!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "[D-2069 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
   },
   {
    "id": 6,

@@ -182,10 +182,10 @@
   {
    "id": 22,
    "zh": "红莲岛的前３名{NEWLINE}公布！{NEWLINE}第３名ｚ,锵锵锵！{NEWLINE}「火山的山口！」{NEWLINE}那场灾难性的火山爆发{NEWLINE}毁灭了这座小镇,{NEWLINE}至今,那座火山的山口{NEWLINE}依然敞开着。{NEWLINE}然后第２名ｚ{NEWLINE}锵锵锵！！{NEWLINE}⋯⋯　⋯⋯　⋯⋯{NEWLINE}⋯⋯　⋯⋯　⋯⋯{NEWLINE}⋯⋯咦？{NEWLINE}没有第２名么？{NEWLINE}⋯⋯啊{NEWLINE}第１名也没有？{NEWLINE}不过这也难怪,{NEWLINE}小镇感刚刚开始重建,{NEWLINE}大家一起期待红莲岛{NEWLINE}出现新的名胜地点,{NEWLINE}让我们一起{NEWLINE}守护红莲岛ｚ！",
-   "en": "Announcing the top 3 in Cinnabar!{NEWLINE}Number three is... Ta-da!{NEWLINE}The volcano!{NEWLINE}Since that day when the volcano erupted{NEWLINE}and washed away the town, the mouth of{NEWLINE}the volcano is still open.{NEWLINE}Moving on, number two is... Ta-da!{NEWLINE}...{NEWLINE}...{NEWLINE}...Huh?{NEWLINE}There’s no number two?{NEWLINE}...What?{NEWLINE}There’s no number one either?{NEWLINE}Well, I guess that makes sense. I expect{NEWLINE}as they rebuild the town, new popular{NEWLINE}places will pop up. We’ll be watching over{NEWLINE}Cinnabar, just waiting to see what{NEWLINE}will happen!",
+   "en": "Announcing the top 3 in Cinnabar!{NEWLINE}Number three is... Ta-da!{NEWLINE}The volcano!{NEWLINE}That catastrophic eruption destroyed{NEWLINE}the town, and the mouth of the{NEWLINE}volcano is still open to this day.{NEWLINE}Moving on, number two is... Ta-da!{NEWLINE}...{NEWLINE}...{NEWLINE}...Huh?{NEWLINE}There’s no number two?{NEWLINE}...What?{NEWLINE}There’s no number one either?{NEWLINE}Well, I guess that makes sense. I expect{NEWLINE}as they rebuild the town, new popular{NEWLINE}places will pop up. We’ll be watching over{NEWLINE}Cinnabar, just waiting to see what{NEWLINE}will happen!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0415/22"
+   "origin": "agent",
+   "notes": "US 0415/22 | tone review: 灾难性的火山爆发毁灭了这座小镇 = a catastrophic eruption destroyed the town; kept (D-0627)"
   },
   {
    "id": 23,

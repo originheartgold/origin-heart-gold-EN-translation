@@ -382,10 +382,10 @@
   {
    "id": 47,
    "zh": "富士博士『对呀,你和小爱对我来说{NEWLINE}都是自己的孩子！{CLEAR}所以不要再闹了,{CLEAR}乖乖听话进到精灵球里吧。",
-   "en": "Dr. Fuji: That’s right. You and Amber{NEWLINE}are both my own children!{SCROLL}So stop this nonsense and get into your{NEWLINE}Poké Ball like a good boy.",
+   "en": "Dr. Fuji: That’s right. To me, you and{NEWLINE}Amber are both my own children!{SCROLL}So stop this nonsense. Be good and get{NEWLINE}into your Poké Ball.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "[D-2067 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
   },
   {
    "id": 48,

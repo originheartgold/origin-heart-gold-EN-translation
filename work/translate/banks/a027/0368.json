@@ -200,10 +200,10 @@
   {
    "id": 24,
    "zh": "我被一个来自吉野市的新人给打败了,{NEWLINE}可恶啊,明明是新人却那么强。",
-   "en": "I lost to a rookie from{NEWLINE}Cherrygrove City. Dang it! How{CLEAR}can a rookie be that strong?",
+   "en": "I lost to a rookie from{NEWLINE}Cherrygrove City. Dammit! How{CLEAR}can a rookie be that strong?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 可恶 = 'Dammit' (D-0627)"
   },
   {
    "id": 25,

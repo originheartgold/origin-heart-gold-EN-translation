@@ -1656,10 +1656,10 @@
   {
    "id": 202,
    "zh": "雅典娜『真是群啰嗦的家伙,{NEWLINE}不想死就滚远点,{CLEAR}哪来那么多废话！",
-   "en": "Ariana: What a noisy bunch.{NEWLINE}If you don’t want to die, get{CLEAR}lost. Enough of your drivel!",
+   "en": "Ariana: What a noisy bunch. If you don’t{NEWLINE}want to die, get lost. Cut the crap!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 滚远点 + 哪来那么多废话 after a death threat is a rude brush-off; kept rude as in 0047#78 (D-0627)"
   },
   {
    "id": 203,

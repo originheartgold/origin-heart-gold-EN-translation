@@ -97,10 +97,10 @@
   {
    "id": 11,
    "zh": "现在月见山上全是我们火箭队的人,{NEWLINE}你们敢来找麻烦真是自寻死路。",
-   "en": "Mt. Moon is crawling with Team Rocket{NEWLINE}right now. Coming here to make trouble{CLEAR}is just asking to get crushed.",
+   "en": "Mt. Moon is crawling with Team Rocket{NEWLINE}right now. Coming here to make trouble{CLEAR}is a death wish.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | tone review: 自寻死路 'courting your own death'; kept as 'death wish' (D-0627)"
   },
   {
    "id": 12,
@@ -177,10 +177,10 @@
   {
    "id": 21,
    "zh": "臭丫头,让你看看火箭队姐姐{NEWLINE}最喜欢的以多欺少战术。",
-   "en": "Listen, girlie. Let big sis show you Team{NEWLINE}Rocket’s favorite tactic: ganging up on{CLEAR}you!",
+   "en": "Listen, you little brat. Let big sis show{NEWLINE}you Team Rocket’s favorite tactic:{CLEAR}ganging up on you!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | tone review: 臭丫头 is a contemptuous insult for a girl; kept as 'you little brat' (D-0627)"
   },
   {
    "id": 22,
@@ -257,10 +257,10 @@
   {
    "id": 31,
    "zh": "确实是厉害的小鬼……",
-   "en": "You really are a tough kid...",
+   "en": "You really are a tough brat...",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | tone review: 小鬼 rendered 'brat' as in #19/#34 of this scene (D-0627)"
   },
   {
    "id": 32,
@@ -633,15 +633,15 @@
   {
    "id": 78,
    "zh": "滚边儿去！{NEWLINE}哪那么多废话！",
-   "en": "Beat it! Quit your yapping!",
+   "en": "Get lost! Cut the crap!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | 滚边儿去 is a rude 'get lost', 废话 'crap/nonsense'; Blue's 张口骂人 (#79) calls it swearing at people, so kept rude (D-0627)."
   },
   {
    "id": 79,
    "zh": "小绿『有没有搞错！{NEWLINE}不仅不公布通行时间,{CLEAR}还张口骂人！{SCROLL}小绿『你们这算哪门子警卫！",
-   "en": "Blue: You’ve got to be kidding! You{NEWLINE}won’t say when it’ll open, and now{CLEAR}you’re insulting people?!{SCROLL}Blue: What kind of guards are you?!",
+   "en": "Blue: You’ve got to be kidding! You{NEWLINE}won’t say when it’ll open, and now{CLEAR}you’re swearing at people?!{SCROLL}Blue: What kind of guards are you?!",
    "status": "draft",
    "origin": "agent",
    "notes": "v3 TM: 1 source(s), same position"
@@ -1057,10 +1057,10 @@
   {
    "id": 131,
    "zh": "喵喵『你要是识相的话,{NEWLINE}就磕头认错吧喵！",
-   "en": "Meowth: If ya know what’s good for ya,{NEWLINE}ya’ll get down on your knees and say{CLEAR}sorry, meow!",
+   "en": "Meowth: If ya know what’s good for ya,{NEWLINE}ya’ll get on your knees, bow to the{CLEAR}ground and say sorry, meow!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position [D-2063 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
   },
   {
    "id": 132,

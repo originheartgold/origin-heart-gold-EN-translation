@@ -541,10 +541,10 @@
   {
    "id": 66,
    "zh": "你这个声音体态……{NEWLINE}你是冒犯莉佳大小姐的那个家伙！{SCROLL}可恶,绝不能让你{NEWLINE}再跑到莉佳大小姐面前去惹她心烦！{CLEAR}给我滚出去！",
-   "en": "That voice, that build... You’re the one{NEWLINE}who insulted Lady Erika!{SCROLL}How dare you!{SCROLL}I won’t let you anywhere near Lady{NEWLINE}Erika to upset her again! Get out!",
+   "en": "That voice, that build... You’re the one{NEWLINE}who insulted Lady Erika!{SCROLL}How dare you!{SCROLL}I won’t let you anywhere near Lady{NEWLINE}Erika to upset her again! Get lost!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 给我滚出去 = rude 'get lost' (D-0627)"
   },
   {
    "id": 67,

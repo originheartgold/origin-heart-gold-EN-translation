@@ -246,10 +246,10 @@
   {
    "id": 30,
    "zh": "吉尔露太『自己不抓也不让别人去抓,{NEWLINE}你们这些精灵联盟的人可真够坏的。",
-   "en": "Lawrence: You won’t catch it, and you{NEWLINE}won’t let anyone else catch it either.{SCROLL}You Pokémon League people are really{NEWLINE}something.",
+   "en": "Lawrence: You won’t catch it, and you{NEWLINE}won’t let anyone else catch it either.{SCROLL}You Pokémon League people are really{NEWLINE}rotten.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 真够坏的 is an open insult ('really rotten'), kept (D-0627)"
   },
   {
    "id": 31,

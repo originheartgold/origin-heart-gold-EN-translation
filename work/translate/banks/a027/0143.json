@@ -462,10 +462,10 @@
   {
    "id": 57,
    "zh": "坂木『帕路奇亚,即使强大如你,{NEWLINE}战斗到现在也没体力了吧？{CLEAR}给我乖乖滚到特制球里来！",
-   "en": "Giovanni: Palkia, even one as mighty as{NEWLINE}you must be out of strength after all{CLEAR}this fighting. Now get into the Special{CLEAR}Ball like a good little Pokémon!",
+   "en": "Giovanni: Palkia, even one as mighty as{NEWLINE}you must be out of strength after all{CLEAR}this fighting. Now crawl into the Special{CLEAR}Ball like a good little Pokémon!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 滚 is contemptuous; 'crawl into' keeps the contempt, 乖乖 = 'like a good little Pokémon' (D-0627)"
   },
   {
    "id": 58,

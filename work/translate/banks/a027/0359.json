@@ -80,10 +80,10 @@
   {
    "id": 9,
    "zh": "你是联盟冠军{VAR:0103:0}？{NEWLINE}少在那说笑了！{CLEAR}我听说联盟冠军{VAR:0103:0}{CLEAR}是能跟怪力掰手腕、{CLEAR}跑得比嘟嘟利还快、{CLEAR}脑筋比胡地还聪明的最强训练家。{CLEAR}怎么可能是你这种小鬼嘛。{SCROLL}我的保险也不贵,500块钱一份,{NEWLINE}你不要为了省钱就吹这种大牛好吧？",
-   "en": "You’re League Champion {VAR:0103:0}? Quit{NEWLINE}joking around!{SCROLL}I heard League Champion {VAR:0103:0} is the{NEWLINE}strongest Trainer around.{SCROLL}They can arm-wrestle a Machamp, outrun{NEWLINE}a Dodrio, and outthink an Alakazam.{SCROLL}No way that’s a little kid like you.{SCROLL}My policies aren’t expensive.{SCROLL}Just $500 each. Don’t go telling tall{NEWLINE}tales just to save money, OK?",
+   "en": "You’re League Champion {VAR:0103:0}? Quit{NEWLINE}joking around!{SCROLL}I heard League Champion {VAR:0103:0} is the{NEWLINE}strongest Trainer around.{SCROLL}They can arm-wrestle a Machamp, outrun{NEWLINE}a Dodrio, and outthink an Alakazam.{SCROLL}No way that’s some brat like you.{SCROLL}My policies aren’t expensive.{SCROLL}Just $500 each. Don’t go telling tall{NEWLINE}tales just to save money, OK?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 小鬼 contemptuous 'brat' (D-0627)"
   },
   {
    "id": 10,
@@ -215,10 +215,10 @@
   {
    "id": 25,
    "zh": "你是联盟冠军{VAR:0103:0}？{NEWLINE}少在那说笑了！{CLEAR}我听说联盟冠军{VAR:0103:0}{CLEAR}是能跟怪力掰手腕、{CLEAR}跑得比嘟嘟利还快、{CLEAR}脑筋比胡地还聪明的最强训练家。{CLEAR}怎么可能是你这种小鬼嘛。{SCROLL}我的气息腰带也不贵,500块钱一条,{NEWLINE}你不要为了省钱就吹这种大牛好吧？",
-   "en": "You’re League Champion {VAR:0103:0}? Quit{NEWLINE}joking around!{SCROLL}I heard League Champion {VAR:0103:0} is the{NEWLINE}strongest Trainer around.{SCROLL}They can arm-wrestle a Machamp, outrun{NEWLINE}a Dodrio, and outthink an Alakazam.{SCROLL}No way that’s a little kid like you.{SCROLL}My Focus Sashes aren’t expensive{NEWLINE}either.{SCROLL}Just $500 each. Don’t go telling tall{NEWLINE}tales just to save money, OK?",
+   "en": "You’re League Champion {VAR:0103:0}? Quit{NEWLINE}joking around!{SCROLL}I heard League Champion {VAR:0103:0} is the{NEWLINE}strongest Trainer around.{SCROLL}They can arm-wrestle a Machamp, outrun{NEWLINE}a Dodrio, and outthink an Alakazam.{SCROLL}No way that’s some brat like you.{SCROLL}My Focus Sashes aren’t expensive{NEWLINE}either.{SCROLL}Just $500 each. Don’t go telling tall{NEWLINE}tales just to save money, OK?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 小鬼 contemptuous 'brat' (D-0627)"
   },
   {
    "id": 26,

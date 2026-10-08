@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "收音机连续剧{NEWLINE}「口袋故事少年　奇志」{NEWLINE}第１话「狂暴的奇志」{NEWLINE}⋯⋯切！烦死了！{NEWLINE}我讨厌这一切！{NEWLINE}旁白『他的名字是奇志,{NEWLINE}是镇子上{NEWLINE}最不良的组织{NEWLINE}「朝仓部落」的头领。{NEWLINE}奇志『每天都无聊！{NEWLINE}精灵决斗也无聊！{NEWLINE}看着眼烦,{NEWLINE}就把这岩石⋯⋯嘿！{NEWLINE}旁白『咚！啪！{NEWLINE}奇志『该死的！{NEWLINE}果然打不碎！{NEWLINE}旁白『这时从背后{NEWLINE}传来了谜样的声音{NEWLINE}？？？『你⋯⋯{NEWLINE}别再做坏事了⋯⋯{NEWLINE}旁白『奇志被谜样的老人{NEWLINE}抓住了手腕,{NEWLINE}老人究竟是⋯⋯？{NEWLINE}次回　第２话{NEWLINE}「大叫的老爷爷」待续！",
-   "en": "Serial Radio Drama:{NEWLINE}The Young Pokéathlete Maximo{NEWLINE}Episode 1: “Angry Maximo”{NEWLINE}...Argh! I hate that! I really hate all{NEWLINE}of that!{NEWLINE}Narrator: This is Maximo.{NEWLINE}He’s the leader of this town’s toughest{NEWLINE}group of guys, the “Hard Punch.”{NEWLINE}Maximo: Every day is so boring!{NEWLINE}Pokémon battles are so boring!{NEWLINE}It makes me so mad, I’m going to throw{NEWLINE}this rock! Haraaagh!!{NEWLINE}Narrator: Clunk, clink!{NEWLINE}Maximo: Argh! That makes me so angry!{NEWLINE}Narrator: Just then he heard a strange{NEWLINE}voice from behind him...{NEWLINE}???: Hey you. Knock it off.{NEWLINE}Narrator: It was a mysterious old man.{NEWLINE}He grabbed Maximo by the arm. Just who is{NEWLINE}this old man anyway...?{NEWLINE}Tune in next time for Episode 2,{NEWLINE}“The Screaming Old Man”!",
+   "en": "Serial Radio Drama:{NEWLINE}The Young Pokéathlete Maximo{NEWLINE}Episode 1: “Angry Maximo”{NEWLINE}...Argh! I hate that! I really hate all{NEWLINE}of that!{NEWLINE}Narrator: This is Maximo.{NEWLINE}He’s the leader of this town’s toughest{NEWLINE}group of guys, the “Hard Punch.”{NEWLINE}Maximo: Every day is so boring!{NEWLINE}Pokémon battles are so boring!{NEWLINE}It makes me so mad, I’m going to throw{NEWLINE}this rock! Haraaagh!!{NEWLINE}Narrator: Clunk, clink!{NEWLINE}Maximo: Damn it! It just won’t break!{NEWLINE}Narrator: Just then he heard a strange{NEWLINE}voice from behind him...{NEWLINE}???: Hey you. Knock it off.{NEWLINE}Narrator: It was a mysterious old man.{NEWLINE}He grabbed Maximo by the arm. Just who is{NEWLINE}this old man anyway...?{NEWLINE}Tune in next time for Episode 2,{NEWLINE}“The Screaming Old Man”!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0413/4"
+   "origin": "agent",
+   "notes": "US 0413/4 | tone review: 该死的！果然打不碎！ is a curse and 'won't break'; US line followed the Chinese (D-0627)"
   },
   {
    "id": 5,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "收音机连续剧{NEWLINE}「口袋故事少年　奇志」{NEWLINE}第３话「忘不掉的感情」{NEWLINE}老人『⋯⋯你好像有{NEWLINE}口袋竞技的才能⋯⋯{NEWLINE}好吧,跟我一起{NEWLINE}夺取天下吧！{NEWLINE}旁白『从胡闹的老人那{NEWLINE}逃跑的奇志,{NEWLINE}却忘不掉{NEWLINE}老人说过的话,{NEWLINE}一个人在镇子里走来走去。{NEWLINE}奇志『可恶！{NEWLINE}为什么要听{NEWLINE}那种老头子的话？{NEWLINE}而且说起来{NEWLINE}口袋竞技是啥！？{NEWLINE}旁白『落下的收音机{NEWLINE}被奇志少年踢飞了！{NEWLINE}广播『⋯⋯哔ー喀喀喀{NEWLINE}哦,这是⋯⋯上周{NEWLINE}第一⋯⋯冲线了！{NEWLINE}世界纪录更新了！{NEWLINE}奇志『什、什么啊这是！？{NEWLINE}旁白『开始着迷地{NEWLINE}听着收音机的{NEWLINE}奇志少年⋯⋯{NEWLINE}次回　第４话{NEWLINE}「翻涌的热情」待续！",
-   "en": "Serial Radio Drama:{NEWLINE}The Young Pokéathlete Maximo{NEWLINE}Episode 3: “Unforgettable Emotions”{NEWLINE}Old man: You’ve got the talent to{NEWLINE}compete in the Pokéathlon! You should{NEWLINE}train with me, and I’ll show you!{NEWLINE}Narrator: Even though the young Maximo{NEWLINE}ran away from the difficult old man,{NEWLINE}he couldn’t shake those words.{NEWLINE}He walked alone around the town{NEWLINE}contemplating.{NEWLINE}Maximo: Aw, man! Why does it bother me{NEWLINE}what that old guy says anyway?{NEWLINE}And what in the world is a “Pokéathlon”?{NEWLINE}Narrator: Maximo kicked a radio someone{NEWLINE}dropped in the street.{NEWLINE}Radio: ...Piii... Gagagagaga...{NEWLINE}Here’s... Player arrived... Goal!{NEWLINE}...It’s a new world record!{NEWLINE}Maximo: Wh-what in the world is that?{NEWLINE}Narrator: Maximo suddenly found himself{NEWLINE}entranced in the broadcast...{NEWLINE}Tune in next time for Episode 4,{NEWLINE}“Hot Blooded”!",
+   "en": "Serial Radio Drama:{NEWLINE}The Young Pokéathlete Maximo{NEWLINE}Episode 3: “Unforgettable Emotions”{NEWLINE}Old man: You’ve got the talent to{NEWLINE}compete in the Pokéathlon! You should{NEWLINE}train with me, and I’ll show you!{NEWLINE}Narrator: Even though the young Maximo{NEWLINE}ran away from the difficult old man,{NEWLINE}he couldn’t shake those words.{NEWLINE}He walked alone around the town{NEWLINE}contemplating.{NEWLINE}Maximo: Damn it! Why does it bother me{NEWLINE}what that old guy says anyway?{NEWLINE}And what in the world is a “Pokéathlon”?{NEWLINE}Narrator: Maximo kicked a radio someone{NEWLINE}dropped in the street.{NEWLINE}Radio: ...Piii... Gagagagaga...{NEWLINE}Here’s... Player arrived... Goal!{NEWLINE}...It’s a new world record!{NEWLINE}Maximo: Wh-what in the world is that?{NEWLINE}Narrator: Maximo suddenly found himself{NEWLINE}entranced in the broadcast...{NEWLINE}Tune in next time for Episode 4,{NEWLINE}“Hot Blooded”!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0413/6"
+   "origin": "agent",
+   "notes": "US 0413/6 | tone review: 可恶 is 'damn it' from the delinquent leader; kept (D-0627)"
   },
   {
    "id": 7,

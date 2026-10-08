@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "据说最近精灵之塔上{NEWLINE}时常会发生灵异事件呢。{CLEAR}大家都不敢上塔扫墓了。{SCROLL}该不会是前段时间{NEWLINE}被火箭队残害的精灵变成了恶鬼吧！",
-   "en": "They say strange, ghostly things have{NEWLINE}been happening up in Pokémon Tower{CLEAR}lately. Nobody dares go up to visit the{CLEAR}graves anymore.{SCROLL}You don’t think the Pokémon Team{NEWLINE}Rocket hurt a while back have turned{CLEAR}into vengeful spirits, do you?",
+   "en": "They say strange, ghostly things have{NEWLINE}been happening in Pokémon Tower lately.{CLEAR}Nobody dares visit the graves anymore.{SCROLL}You don’t think the Pokémon Team{NEWLINE}Rocket cruelly killed a while back have{CLEAR}turned into vengeful spirits, do you?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 残害 = cruelly harm; these Pokémon died and became 恶鬼, so 'cruelly killed' (D-0627)"
   },
   {
    "id": 4,

@@ -161,10 +161,10 @@
   {
    "id": 19,
    "zh": "你抓到的精灵{NEWLINE}和遗迹墙壁上的图案{CLEAR}很像啊。{SCROLL}……呼,{SCROLL}如果这样的话在遗迹里{NEWLINE}应该还有很多种类……",
-   "en": "The strange Pokémon you saw in{NEWLINE}the ruins?{SCROLL}They appear to be very much like the{NEWLINE}drawings on the walls there.{SCROLL}Hmm...{SCROLL}That must mean there are many{NEWLINE}different kinds of them...",
+   "en": "The Pokémon you caught looks very much{NEWLINE}like the drawings on the ruins’ walls.{SCROLL}Hmm... If that’s so, there should be{NEWLINE}many more kinds in the ruins...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0073/19"
+   "origin": "agent",
+   "notes": "US 0073/19 [D-2052 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
   },
   {
    "id": 20,

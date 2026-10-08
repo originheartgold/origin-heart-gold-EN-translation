@@ -745,7 +745,7 @@
    "en": "Your Bag is full.{SCROLL}The Griseous Orb can’t be taken off,{NEWLINE}so you can’t go inside.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | User approved entry-refusal meaning against actual facility script (D-1623, 2026-10-07); English retained."
   },
   {
    "id": 93,

@@ -339,15 +339,15 @@
    "en": "Archie: Proton, don’t waste words{NEWLINE}on this little bastard. While he’s on{CLEAR}his own, let’s team up and kill him!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Male-player variant (他); #42 female (她). 小杂种 → little bastard / little bitch."
+   "notes": "Male-player variant (他); #42 female (她). 小杂种 → little bastard in both branches (user approval D-1701, 2026-10-07)."
   },
   {
    "id": 42,
    "zh": "水吾桐『兰斯,不用跟这个小杂种废话,{NEWLINE}趁她现在只有一个人,{CLEAR}咱们合力弄死她！",
-   "en": "Archie: Proton, don’t waste words{NEWLINE}on this little bitch. While she’s on{CLEAR}her own, let’s team up and kill her!",
+   "en": "Archie: Proton, don’t waste words on{NEWLINE}this little bastard. While she’s on her{CLEAR}own, let’s team up and kill her!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | Full fidelity review: specific wording approved by user (D-1701, 2026-10-07)."
   },
   {
    "id": 43,

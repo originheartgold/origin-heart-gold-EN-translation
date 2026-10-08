@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "我们研发部的那个小美,{NEWLINE}真是个中看不中用的花瓶。{CLEAR}连树果的有效成分分离{CLEAR}这种基本的操作都不会。",
-   "en": "That Mei in our R&D department is all{NEWLINE}looks and no substance.{SCROLL}She can’t even do basic stuff like{NEWLINE}isolating the active compounds in{CLEAR}Berries.",
+   "en": "That Mei in our R&D department is just a{NEWLINE}pretty face. All looks, totally useless.{SCROLL}She can’t even do basic stuff like{NEWLINE}isolating the active compounds in{CLEAR}Berries.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 中看不中用的花瓶 = sexist 'just a pretty face… useless'; kept (D-0627)"
   },
   {
    "id": 4,

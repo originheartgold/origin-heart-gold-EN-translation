@@ -414,10 +414,10 @@
   {
    "id": 51,
    "zh": "火箭队要是敢闯进来,{NEWLINE}洒家就手撕了这帮贼搓鸟！",
-   "en": "If Team Rocket dares barge in here,{NEWLINE}this old boy will tear those lowlife{CLEAR}thugs apart with his bare hands!",
+   "en": "If Team Rocket dares barge in here,{NEWLINE}this old boy will tear those thieving{CLEAR}bastards apart with his bare hands!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 贼搓鸟 (Water Margin 撮鸟) is a crude Water Margin curse (鸟 oath); kept crude as 'thieving bastards' (D-0627); supersedes provisional D-0460"
   },
   {
    "id": 52,

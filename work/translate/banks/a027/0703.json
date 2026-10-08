@@ -86,10 +86,10 @@
   {
    "id": 10,
    "zh": "喂喂,你现在在哪儿？{NEWLINE}我们要在{VAR:0104:3}对战的！{SCROLL}让年纪大的人等你{NEWLINE}不觉得很羞耻么？",
-   "en": "So where are you? I’m waiting for you{NEWLINE}to show up on {VAR:0104:3}.{SCROLL}You shouldn’t make your elders wait!",
+   "en": "So where are you? I’m waiting for you{NEWLINE}to show up on {VAR:0104:3}.{SCROLL}Making your elders wait like this...{NEWLINE}Aren’t you ashamed of yourself?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0712/10"
+   "origin": "agent",
+   "notes": "US 0712/10 | tone review: 不觉得很羞耻么 = 'aren't you ashamed'; US line followed the Chinese (D-0627)"
   },
   {
    "id": 11,

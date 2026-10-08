@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "我的口袋妖怪……{NEWLINE}我的口袋妖怪就这么死了……{CLEAR}呜呜呜……",
-   "en": "My Pokémon... My Pokémon is gone, just{NEWLINE}like that... Boo hoo hoo...",
+   "en": "My Pokémon... My Pokémon died, just{NEWLINE}like that... Boo hoo hoo...",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | tone review: 就这么死了 = 'just died like that'; kept the blunt 'died' (D-0627)"
   },
   {
    "id": 10,

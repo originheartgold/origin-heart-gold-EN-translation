@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "不跟我交换？{NEWLINE}切,真扫兴哪……",
-   "en": "You don’t want to trade? Aww...",
+   "en": "You don’t want to trade?{NEWLINE}Tch, what a buzzkill...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0562/4"
+   "origin": "agent",
+   "notes": "US 0562/4 | tone review: 切,真扫兴 = annoyed scoff; US 'Aww...' replaced to follow the Chinese (D-0627)"
   },
   {
    "id": 5,

@@ -182,10 +182,10 @@
   {
    "id": 22,
    "zh": "这是从哪又冒出来一个捣乱的？！{NEWLINE}快给我干掉他们！",
-   "en": "Where did this troublemaker spring{NEWLINE}from?! Get rid of them, now!",
+   "en": "Where did this troublemaker spring{NEWLINE}from?! Take them out, now!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "tone review: 干掉 is a violent 'take out'; kept (D-0627)"
   },
   {
    "id": 23,
