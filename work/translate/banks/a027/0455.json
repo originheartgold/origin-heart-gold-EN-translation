@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "小刚『哦！？{NEWLINE}发生了这种事……{CLEAR}谢谢你带来的信息,{CLEAR}我这就过去看看。",
-   "en": "Brock: Oh?! That’s happened...? Thanks{NEWLINE}for letting me know. I’ll go have a look{CLEAR}right away.",
+   "en": "Brock: Oh?! Something like that{NEWLINE}happened...? Thanks for letting me{CLEAR}know. I’ll go have a look right away.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV017: grammar: unclear 'That’s happened'"
   },
   {
    "id": 13,

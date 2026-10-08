@@ -430,10 +430,10 @@
   {
    "id": 53,
    "zh": "你们两个拖住他,{NEWLINE}我去拿下那个臭丫头的人头。",
-   "en": "You two, hold him off. I’ll go take that{NEWLINE}little brat’s head.",
+   "en": "You two, hold him off. I’ll go take that{NEWLINE}snotty girl’s head.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV017: addressee: 臭丫头 targets Green, keep the insult gendered"
   },
   {
    "id": 54,
@@ -470,10 +470,10 @@
   {
    "id": 58,
    "zh": "大嘴雀给这个菜花王八最后一击！",
-   "en": "Fearow, finish off this{NEWLINE}cauliflower-backed bastard!",
+   "en": "Fearow, finish off this cauliflower{NEWLINE}turtle bastard!",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 菜花王八 (cauliflower turtle/bastard) at Venusaur."
+   "notes": "zh 菜花王八 (cauliflower turtle/bastard) at Venusaur. | RV017: omission: keep the 王八 turtle image with the curse (settles D-1805)"
   },
   {
    "id": 59,
@@ -606,10 +606,10 @@
   {
    "id": 75,
    "zh": "小赤『多亏妙蛙花拼死保护,{NEWLINE}我只是受了轻伤。{SCROLL}小蓝『真没想到火箭队{NEWLINE}居然能用传说中精灵的力量把人变小,{CLEAR}我现在这个样子,{CLEAR}恐怕没有办法继续战斗了,{CLEAR}不知道有没有什么办法能复原啊。",
-   "en": "Red: Venusaur risked its life to protect{NEWLINE}me, so I only got a few scrapes.{SCROLL}Red: I never thought Team Rocket could{CLEAR}use a legendary Pokémon’s power to{CLEAR}shrink people.{SCROLL}Like this, I probably can’t keep{CLEAR}fighting. I wonder if there’s any way to{CLEAR}change back.",
+   "en": "Red: Venusaur risked its life to protect{NEWLINE}me, so I only got a few scrapes.{SCROLL}Red: I never thought Team Rocket could{NEWLINE}use a legendary Pokémon’s power to{CLEAR}shrink people.{SCROLL}Like this, I probably can’t keep{NEWLINE}fighting. I wonder if there’s any way to{CLEAR}change back.",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (Second page of Red’s line is labelled 小蓝 (Green)); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-0532, D-1496). [D-2076 meaning-review-followup: source/context correction; agent-reviewed, not new human approval. Red partner branch; keep D-0532 approved speaker label.]"
+   "notes": "D-1195: reverted to match the zh (Second page of Red’s line is labelled 小蓝 (Green)); logged in hack_findings_import.jsonl | Hack text error fixed with user approval (D-0532, D-1496). [D-2076 meaning-review-followup: source/context correction; agent-reviewed, not new human approval. Red partner branch; keep D-0532 approved speaker label.] | RV017: layout: rewrapped stray {CLEAR} breaks"
   },
   {
    "id": 76,
@@ -998,10 +998,10 @@
   {
    "id": 124,
    "zh": "阿金『我不管什么骑拉帝纳、步推民这的,{NEWLINE}我现在要过去了,{CLEAR}不想再被揍就乖乖……",
-   "en": "Gold: I don’t care about Giratina or{NEWLINE}Gira-whatever. I’m going through now.{SCROLL}If you don’t want another beating, just{NEWLINE}be good and...",
+   "en": "Gold: I don’t care about Giratina or{NEWLINE}Shmiratina. I’m going through now.{SCROLL}If you don’t want another beating, just{NEWLINE}be good and...",
    "status": "draft",
    "origin": "agent",
-   "notes": "步推民 is Gold's nonsense mangling of legendary names → Gira-whatever."
+   "notes": "步推民 is Gold's nonsense mangling of legendary names → Gira-whatever. | RV017: voice: Gold's mangled mock-name for 步推民这 (settles D-1806)"
   },
   {
    "id": 125,
@@ -1062,10 +1062,10 @@
   {
    "id": 132,
    "zh": "我没时间跟你废话,你去死就好了。{SCROLL}你们两个去干掉这个小鬼。",
-   "en": "I’ve got no time for your jokes. Just{NEWLINE}die.{SCROLL}You two, go finish off this brat.",
+   "en": "I’ve got no time for your nonsense.{NEWLINE}Just die.{SCROLL}You two, go finish off this brat.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV017: meaning: 废话 is nonsense/idle talk, not jokes"
   },
   {
    "id": 133,
@@ -1294,10 +1294,10 @@
   {
    "id": 161,
    "zh": "阿金『我小的时候,{NEWLINE}就是在这里举办的石英大会上{CLEAR}认识偶像的。{CLEAR}当时我就觉得怎么会有{CLEAR}这么英姿飒爽的训练家姐姐。{CLEAR}我当时还把偶像的夺冠海报{CLEAR}贴在家里看了好几个月……",
-   "en": "Gold: When I was little, I first saw you{NEWLINE}at the Indigo Conference held right{CLEAR}here, Idol.{SCROLL}I thought, how can a Trainer girl be so{NEWLINE}cool and confident?{SCROLL}I stuck your winning poster up at home{NEWLINE}and stared at it for months...",
+   "en": "Gold: When I was little, I first saw you{NEWLINE}at the Indigo Conference held right{CLEAR}here, Idol. I thought, how could an{CLEAR}older Trainer girl be so dashing and{CLEAR}cool? I stuck your winning poster up at{CLEAR}home and stared at it for months...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV017: omission: 姐姐 (older girl) and 英姿飒爽 (dashing)"
   },
   {
    "id": 162,

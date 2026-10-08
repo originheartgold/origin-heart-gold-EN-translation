@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "从前这有个强行推销精灵的{NEWLINE}奇怪大叔。{SCROLL}那个孩子从他那买了{NEWLINE}鲤鱼王后,就一直{CLEAR}很细心地照料着！",
-   "en": "There once was a weird old man who{NEWLINE}sold Magikarp.{SCROLL}That boy got one and kept it for{NEWLINE}a long time!",
+   "en": "There used to be a weird old man here{NEWLINE}who pushed Pokémon on people. That boy{CLEAR}bought a Magikarp from him and has{CLEAR}taken really good care of it ever since!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0461/1; modernised from US 0461#1"
+   "origin": "agent",
+   "notes": "US 0461/1; modernised from US 0461#1 | RV017: omission: 强行推销 (pushy selling) and 细心地照料 (careful care) (settles D-1874)"
   },
   {
    "id": 2,

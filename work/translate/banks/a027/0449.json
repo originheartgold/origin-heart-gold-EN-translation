@@ -346,10 +346,10 @@
   {
    "id": 40,
    "zh": "我既没有什么身世背景,{NEWLINE}也没有成为训练家的天赋,{CLEAR}更不愿与某些人狼狈为间赚黑心钱。{CLEAR}所以我只能靠努力读书{CLEAR}去获得更多的知识,{CLEAR}以此来追求理想中的生活。",
-   "en": "I don’t have a famous family, and I{NEWLINE}don’t have a talent for being a Trainer.{SCROLL}And I won’t team up with certain people{NEWLINE}to make dirty money.{SCROLL}So all I can do is study hard and learn{NEWLINE}more...{SCROLL}and chase the life I dream of that way.",
+   "en": "I don’t have a famous family, and I{NEWLINE}don’t have a talent for being a Trainer.{CLEAR}And I won’t collude with certain people{CLEAR}to make dirty money. So all I can do is{CLEAR}study hard and learn more... and chase{CLEAR}the life I dream of that way.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV017: softened: 狼狈为奸 is colluding in wrongdoing, not teaming up"
   },
   {
    "id": 41,

@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "太棒了！{SCROLL}多亏了你,{NEWLINE}我长久以来寻找的精灵{CLEAR}终于到手了！",
-   "en": "How wonderful! You made my day!{SCROLL}Thanks to you, I have finally got the{NEWLINE}Pokémon I’ve been looking for...{CLEAR}since forever!",
+   "en": "How wonderful! Thanks to you, I’ve{NEWLINE}finally got the Pokémon I’ve been{CLEAR}looking for all this time!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0463/4"
+   "origin": "agent",
+   "notes": "US 0463/4 | RV017: addition: dropped US 'You made my day!' not in the hack's zh"
   },
   {
    "id": 5,

@@ -567,10 +567,10 @@
   {
    "id": 70,
    "zh": "小刚『人人都说尼比市是{NEWLINE}刚毅的石头城市,{CLEAR}但是我知道,{CLEAR}在这座坚强的城市里,{CLEAR}还有您这样温柔美丽的花朵在开放。",
-   "en": "Brock: Everyone says Pewter is a hard{NEWLINE}city of stone.{SCROLL}Brock: But I know that in this rugged{NEWLINE}city blooms a flower as gentle and{CLEAR}lovely as you.",
+   "en": "Brock: Everyone says Pewter is a hard{NEWLINE}city of stone. But I know that in this{CLEAR}rugged city blooms a flower as gentle{CLEAR}and lovely as you.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost"
+   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost | RV017: addition: removed second Brock label not in zh"
   },
   {
    "id": 71,
@@ -583,10 +583,10 @@
   {
    "id": 72,
    "zh": "小刚『如果以口袋妖怪作比较,{NEWLINE}我想您就是人类世界的沙奈朵,{CLEAR}是我心目中{CLEAR}最高贵、美丽、典雅的女神！",
-   "en": "Brock: If I compared you to a Pokémon,{NEWLINE}you’d be the Gardevoir of the human{CLEAR}world.{SCROLL}Brock: The most noble, beautiful and{NEWLINE}graceful goddess in my heart!",
+   "en": "Brock: If I compared you to a Pokémon,{NEWLINE}you’d be the Gardevoir of the human{CLEAR}world. The most noble, beautiful and{CLEAR}graceful goddess in my heart!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost"
+   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost | RV017: addition: removed second Brock label not in zh"
   },
   {
    "id": 73,
@@ -599,10 +599,10 @@
   {
    "id": 74,
    "zh": "小刚『我是尼多王的话,{NEWLINE}风华小姐您就是我的尼多后。{CLEAR}如果我们牵手,{CLEAR}那就是王与后的美丽邂逅！",
-   "en": "Brock: If I’m a Nidoking, then you, Miss{NEWLINE}Anemone, are my Nidoqueen.{SCROLL}Brock: If we held hands, it would be a{NEWLINE}beautiful meeting of king and queen!",
+   "en": "Brock: If I’m a Nidoking, then you, Miss{NEWLINE}Anemone, are my Nidoqueen. If we held{CLEAR}hands, it would be a beautiful meeting of{CLEAR}king and queen!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost"
+   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost | RV017: addition: removed second Brock label not in zh"
   },
   {
    "id": 75,
@@ -655,18 +655,18 @@
   {
    "id": 81,
    "zh": "小刚『对不起啊风花小姐,{NEWLINE}我这样贸然前来给您增添烦恼了。{CLEAR}恕我暂且告辞回去,{CLEAR}等我想到更好的表达方式之后{CLEAR}再来欣赏和歌颂{CLEAR}尼比市的高岭之花！",
-   "en": "Brock: I’m sorry, Miss Anemone. Barging{NEWLINE}in like this, I’ve only troubled you.{SCROLL}Brock: I’ll take my leave for now. Once{NEWLINE}I think of a better way to express{CLEAR}myself, I’ll return to admire and praise{CLEAR}the lofty flower of Pewter City!",
+   "en": "Brock: I’m sorry, Miss Anemone. Barging{NEWLINE}in like this, I’ve only troubled you. I’ll{CLEAR}take my leave for now. Once I think of a{CLEAR}better way to express myself, I’ll{CLEAR}return to admire and praise the lofty{CLEAR}flower of Pewter City!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost"
+   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost | RV017: addition: removed second Brock label not in zh"
   },
   {
    "id": 82,
    "zh": "小刚『扰了您了风花小姐,{NEWLINE}实在对不起……{CLEAR}恕我暂且告辞回去,{CLEAR}等我想到不那么土的情话之后,{CLEAR}再来欣赏和歌颂{CLEAR}尼比市的高岭之花！",
-   "en": "Brock: Miss Anemone, I’m truly sorry{NEWLINE}for bothering you...{SCROLL}Brock: I’ll take my leave for now. Once{NEWLINE}I think of lines that aren’t so cheesy,{CLEAR}I’ll return to admire and praise the{CLEAR}lofty flower of Pewter City!",
+   "en": "Brock: Miss Anemone, I’m truly sorry{NEWLINE}for bothering you... I’ll take my leave{CLEAR}for now. Once I think of lines that{CLEAR}aren’t so cheesy, I’ll return to admire{CLEAR}and praise the lofty flower of Pewter{CLEAR}City!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost"
+   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost | RV017: addition: removed second Brock label not in zh"
   },
   {
    "id": 83,
@@ -679,10 +679,10 @@
   {
    "id": 84,
    "zh": "小刚『风花小姐！{NEWLINE}我想跟你一起养一只雪笠怪,{CLEAR}只要把它放出来{CLEAR}我们就可以一起到白头！",
-   "en": "Brock: Miss Anemone! I want to raise a{NEWLINE}Snover with you!{SCROLL}Brock: Its snow will turn our hair{NEWLINE}white, and we’ll grow old together!",
+   "en": "Brock: Miss Anemone! I want to raise a{NEWLINE}Snover with you! Its snow will turn our{CLEAR}hair white, and we’ll grow old together!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost"
+   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost | RV017: addition: removed second Brock label not in zh"
   },
   {
    "id": 85,
@@ -783,10 +783,10 @@
   {
    "id": 97,
    "zh": "风花『其实小刚先生{NEWLINE}是个坚强又温柔的人,{CLEAR}我本来对他还是蛮有好感的。{CLEAR}只是他那种表白方式……{CLEAR}我真的不想回应。",
-   "en": "Anemone: Mr. Brock is actually a{NEWLINE}strong, kind man. I used to like him{CLEAR}quite a bit.{SCROLL}Anemone: It’s just that way he{NEWLINE}confesses his feelings... I really don’t{CLEAR}want to answer that.",
+   "en": "Anemone: Mr. Brock is actually a{NEWLINE}strong, kind man. I really did like him{CLEAR}quite a bit. It’s just that way he{CLEAR}confesses his feelings... I really don’t{CLEAR}want to answer that.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV017: meaning: 本来还是蛮有好感的 is not past-only (settles D-1836); removed added second label"
   },
   {
    "id": 98,
@@ -1119,10 +1119,10 @@
   {
    "id": 139,
    "zh": "小绿『我现在要前往月见山了,{NEWLINE}你好好加油吧！",
-   "en": "Blue: I’m heading to Mt. Moon now. Try{NEWLINE}not to fall too far behind!",
+   "en": "Blue: I’m heading to Mt. Moon now. Do{NEWLINE}your best!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV017: meaning: 你好好加油吧 is encouragement, not a taunt (settles D-1837)"
   },
   {
    "id": 140,
