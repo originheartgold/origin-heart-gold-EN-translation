@@ -276,6 +276,15 @@ class Judges(unittest.TestCase):
         self.assertEqual(F.judge_texture_bounds("texture-bounds",
                                                 {"expect": "fixed", "passed": False, "rc": 1})[0], "unclear")
 
+    def test_reflection(self):
+        self.assertEqual(F.judge_reflection("reflection", {"expect": "fixed", "passed": True, "rc": 0})[0], "fixed")
+        self.assertEqual(F.judge_reflection("reflection", {"expect": "original", "passed": True, "rc": 0})[0],
+                         "original")
+        self.assertEqual(F.judge_reflection("reflection", {"expect": "fixed", "passed": False, "rc": 1})[0],
+                         "unclear")
+        self.assertEqual(F.COVERAGE["bulbasaur-reflection-boundary"], ("reflection",))
+        self.assertIn("reflection", F.EXTERNAL)
+
     def test_judge_rows(self):
         selection = {"pcbox": ["pcbox-name-width"]}
         results = {("pcbox", "fixed"): PCBOX_FIXED, ("pcbox", "no-pcbox-name-width"): PCBOX_ORIGINAL}

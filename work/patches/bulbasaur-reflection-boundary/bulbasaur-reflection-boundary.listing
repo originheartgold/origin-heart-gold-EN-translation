@@ -1,0 +1,78 @@
+; bulbasaur-reflection-boundary - disassembly snapshot of bulbasaur-reflection-boundary.asm: every edit, old -> new. Generated; do not edit.
+; Regenerate: python3 work/tools/asmpatch.py listing --write bulbasaur-reflection-boundary   (check.py --full fails when it is stale)
+; Old: the Chinese ROM. New: bulbasaur-reflection-boundary.asm assembled alone over it by armips v0.11.0.
+; Disassembly: capstone 5.0.9 (UAL syntax). '  ' unchanged context, '- ' old, '+ ' new;
+; addresses are RAM addresses, Thumb bytes are halfwords, ARM bytes words; data rows are what one
+; statement writes (u16 rows of a string or key row with their characters, '|' = 0xFFFF end).
+
+== overlay1+0x11868 (RAM 0x021F61E8), 12 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
+  021F61E8  B510       push {r4, lr}
+  021F61EA  1C04       adds r4, r0, #0
+  021F61EC  F668 F8F4  bl #0x205e3d8  ; MapObject_GetSpriteId
+  021F61F0  28F8       cmp r0, #0xf8
+  021F61F2  DC36       bgt #0x21f6262  ; ReflectionGfx_Above0xF8
+
+== overlay1+0x118E2 (RAM 0x021F6262), 118 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
+  021F6262  4A1A       ldr r2, [pc, #0x68]
+  021F6264  4290       cmp r0, r2
+  021F6266  DC08       bgt #0x21f627a
+  021F6268  DA0F       bge #0x21f628a
+  021F626A  28F9       cmp r0, #0xf9
+  021F626C  DC01       bgt #0x21f6272
+  021F626E  D00C       beq #0x21f628a
+  021F6270  E010       b #0x21f6294  ; ReflectionGfx_FollowerRange
+  021F6272  1E51       subs r1, r2, #1
+  021F6274  4288       cmp r0, r1
+  021F6276  D008       beq #0x21f628a
+  021F6278  E00C       b #0x21f6294  ; ReflectionGfx_FollowerRange
+  021F627A  1C51       adds r1, r2, #1
+  021F627C  4288       cmp r0, r1
+  021F627E  DC01       bgt #0x21f6284
+  021F6280  D003       beq #0x21f628a
+  021F6282  E007       b #0x21f6294  ; ReflectionGfx_FollowerRange
+  021F6284  1C91       adds r1, r2, #2
+  021F6286  4288       cmp r0, r1
+  021F6288  D104       bne #0x21f6294  ; ReflectionGfx_FollowerRange
+  021F628A  1C20       adds r0, r4, #0
+  021F628C  F668 F97C  bl #0x205e588  ; MapObject_GetGfxFields
+  021F6290  6840       ldr r0, [r0, #4]
+  021F6292  BD10       pop {r4, pc}
+  021F6294  216B       movs r1, #0x6b
+  021F6296  0089       lsls r1, r1, #2
+  021F6298  4288       cmp r0, r1
+  021F629A  DD07       ble #0x21f62ac  ; ReflectionGfx_NotFollower
+  021F629C  490C       ldr r1, [pc, #0x30]
+  021F629E  4288       cmp r0, r1
+  021F62A0  DC04       bgt #0x21f62ac  ; ReflectionGfx_NotFollower
+  021F62A2  1C20       adds r0, r4, #0
+  021F62A4  F668 F970  bl #0x205e588  ; MapObject_GetGfxFields
+  021F62A8  6800       ldr r0, [r0]
+  021F62AA  BD10       pop {r4, pc}
+  021F62AC  4909       ldr r1, [pc, #0x24]
+  021F62AE  4288       cmp r0, r1
+  021F62B0  DB06       blt #0x21f62c0
+  021F62B2  1DC9       adds r1, r1, #7
+  021F62B4  4288       cmp r0, r1
+  021F62B6  DC03       bgt #0x21f62c0
+  021F62B8  1C20       adds r0, r4, #0
+  021F62BA  F66C FFBF  bl #0x206323c
+  021F62BE  BD10       pop {r4, pc}
+  021F62C0  1C20       adds r0, r4, #0
+  021F62C2  F668 F961  bl #0x205e588  ; MapObject_GetGfxFields
+  021F62C6  6840       ldr r0, [r0, #4]
+  021F62C8  BD10       pop {r4, pc}
+  021F62CA  46C0       mov r8, r8
+  021F62CC  0103       lsls r3, r0, #4
+  021F62CE  0000       movs r0, r0
+  021F62D0  0766       lsls r6, r4, #0x1d
+  021F62D2  0000       movs r0, r0
+  021F62D4  0106       lsls r6, r0, #4
+  021F62D6  0000       movs r0, r0
+
+== overlay1+0x1191A (RAM 0x021F629A), 2 bytes, thumb: bulbasaur-reflection-boundary-branch
+  021F6296  0089       lsls r1, r1, #2
+  021F6298  4288       cmp r0, r1
+- 021F629A  DD07       ble #0x21f62ac  ; ReflectionGfx_NotFollower
++ 021F629A  DB07       blt #0x21f62ac  ; ReflectionGfx_NotFollower
+  021F629C  490C       ldr r1, [pc, #0x30]
+  021F629E  4288       cmp r0, r1
