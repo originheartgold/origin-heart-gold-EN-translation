@@ -6962,7 +6962,7 @@
   {
    "id": "RV116",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 493,
    "labels": [
     "a027/0798 pokedex_entries_platinum + link_wifi"
