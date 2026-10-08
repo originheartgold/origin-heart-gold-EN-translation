@@ -6636,7 +6636,7 @@
   {
    "id": "RV101",
    "group": "7-battle",
-   "status": "todo",
+   "status": "done",
    "strings": 442,
    "labels": [
     "battle_string/0001 battle text [part 1/5]"
