@@ -2,7 +2,7 @@
 
 Side quests, puzzles and easy-to-miss events in Origin HeartGold (起源心金 v4.0.3), region by region in rough play order.
 
-Everything here was read from the game's own data, not from play-testing. The English patch doesn't change what happens in quests, so what's described is how the original Chinese hack behaves. Directions are approximate, and steps marked "not confirmed in game" have not been checked by playing. The game starts in Pallet Town in Kanto. Johto opens up after you become Kanto Champion and finish the story scenes that follow (see [Pokémon League, Mt. Silver and New Bark Town](07-league-to-cherrygrove.md)).
+Everything here was read from the game's own data (event scripts, maps, trainers and wild Pokémon tables). Steps that were checked in an emulator say so; most others have not been played through. The English patch doesn't change what happens in quests, so what's described is how the original Chinese hack behaves. Directions are approximate, and steps marked "not confirmed in game" have not been checked by playing. The game starts in Pallet Town in Kanto. Johto opens up after you become Kanto Champion and finish the story scenes that follow (see [Pokémon League, Mt. Silver and New Bark Town](07-league-to-cherrygrove.md)).
 
 Several quests depend on your **starter** (Charmander, Pikachu or Bulbasaur), gender, the weekday, or earlier choices. Each entry says so in its title or under **Who gets it**. "Post-game" in this guide means after your **final** Hall of Fame entry; things that open after your first one say so.
 

@@ -33,8 +33,13 @@ export interface ItemSource {
 	kind: string; area: string | null; place: string; tech?: string; qty?: number; pay?: string; price?: number;
 	near?: string | null; quests?: Quest[]; note?: string;
 }
+export interface WildHeldSource {
+	species: number; chance: number;
+	locations: { area: string; place: string; method: string; level: string; encounterRate: number | null }[];
+}
 export interface Item {
 	id: number; name: string; slug: string; pocket: string; price: number; sources: ItemSource[];
+	wildHeld?: WildHeldSource[];
 	neededBy: { place: string; area: string | null }[]; game?: string | null; note?: string | null;
 }
 export interface ContestRow { id: number; name: string; level: string; rate: number; score: number }

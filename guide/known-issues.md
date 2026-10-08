@@ -11,11 +11,11 @@ Each entry says what you would do in game, what goes wrong, and how to avoid it 
 These entries can freeze the game, cost you something, or close a quest or battle for good. Everything else on this page is cosmetic, in your favour, or can't happen in normal play.
 
 - **Can freeze the game:** [Rock Tunnel corner kid loss](#rock-tunnel-corner-kid-loss), [Pokémon Tower Magcargo loss](#pokémon-tower-magcargo-loss), [Department Store Double Battle with one Pokémon](#department-store-double-battle-with-one-pokémon), [Safari Zone Double Battle freeze](#safari-zone-double-battle-freeze), [Goldenrod City crash on entry](#goldenrod-city-crash-on-entry).
-- **Can leave you stuck:** [S.S. Anne party never starts](#ss-anne-party-never-starts).
+- **Can leave you stuck:** [S.S. Anne party never starts](#ss-anne-party-never-starts), [No Struggle when a Pokémon runs out of PP](#no-struggle-when-a-pokémon-runs-out-of-pp).
 - **Writes to your Pokédex data:** [Out-of-range story records (save data)](#out-of-range-story-records-save-data).
 - **Can take more money or items than it should:** [S.S. Anne TM price](#ss-anne-tm-price), [Sprout Tower offerings](#sprout-tower-offerings), [Fortune-teller's price](#fortune-tellers-price), [Game Corner 500-coin option](#game-corner-500-coin-option), [Charcoal Kiln HM01](#charcoal-kiln-hm01), [Pidgeot loan returns a different Pidgeot](#pidgeot-loan-returns-a-different-pidgeot), [Lightning Whip lesson teaches Charge](#lightning-whip-lesson-teaches-charge).
-- **Lost for good unless you act first:** [Bruno's Pewter City challenge](#brunos-pewter-city-challenge), [Pikachu starters' Charmander quest](#pikachu-starters-charmander-quest), [Virtue trial and the four-leaf clover](#virtue-trial-and-the-four-leaf-clover), [Cerulean burglary deadline](#cerulean-burglary-deadline), [Route 5 shelter raid](#route-5-shelter-raid), [Pokémon Tower Magcargo is missable](#pokémon-tower-magcargo-is-missable), [Misty's Gyarados and the Viridian Gym trials](#mistys-gyarados-and-the-viridian-gym-trials), [Switching sides at the construction clash](#switching-sides-at-the-construction-clash), [Swimmer Marina and the Dragonair delivery](#swimmer-marina-and-the-dragonair-delivery), [Losing on the Celadon roof](#losing-on-the-celadon-roof), [Sitrus Berries and the eating contest](#sitrus-berries-and-the-eating-contest), [Grandma's treats deadlines](#grandmas-treats-deadlines), [Cynthia and Steven in Fuchsia City](#cynthia-and-steven-in-fuchsia-city), [Misty missing from Cerulean Gym](#misty-missing-from-cerulean-gym), [TM14 Blizzard](#tm14-blizzard), [Crystal Onix](#crystal-onix), [Cinnabar graffiti couple](#cinnabar-graffiti-couple), [TM86 Grass Knot](#tm86-grass-knot), [Bikers' red envelope and Big Sis](#bikers-red-envelope-and-big-sis), [Cherrygrove Wooper boy and the clover hunter](#cherrygrove-wooper-boy-and-the-clover-hunter), [Pokémon Academy class and Youngster Ward](#pokémon-academy-class-and-youngster-ward), [Losing to Goh in Union Cave](#losing-to-goh-in-union-cave), [HM08 and Mr. Pokémon's quiz](#hm08-and-mr-pokémons-quiz), [Pewter Museum Brock and the Route 30 Chikorita](#pewter-museum-brock-and-the-route-30-chikorita), [Koume, Sakura and the bug hunt](#koume-sakura-and-the-bug-hunt), [Rocky Helmet and the bug hunt](#rocky-helmet-and-the-bug-hunt), [Purugly quest and the bug hunt](#purugly-quest-and-the-bug-hunt), [Forest of Time during the bug hunt](#forest-of-time-during-the-bug-hunt), [Dream World battles before the old man](#dream-world-battles-before-the-old-man), [Pokéathlon Dome and the Route 36 tree](#pokéathlon-dome-and-the-route-36-tree), [MooMoo Farm Miltank fall sick again](#moomoo-farm-miltank-fall-sick-again), [Burned Tower beasts scene and the expedition leader](#burned-tower-beasts-scene-and-the-expedition-leader), [Jirachi stone and the story counter](#jirachi-stone-and-the-story-counter), [Durin Berries for the Anti-Age Spray](#durin-berries-for-the-anti-age-spray), [Blackthorn Gym Trainers](#blackthorn-gym-trainers).
-- **One chance only (save first):** [Lugia: one chance](#lugia-one-chance), [Uxie, Mesprit and Azelf: one chance](#uxie-mesprit-and-azelf-one-chance), [Raikou: one chance](#raikou-one-chance), [Dialga and Palkia: one chance](#dialga-and-palkia-one-chance), [Giratina after Lance's visit](#giratina-after-lances-visit), [Arceus and Regigigas out of reach](#arceus-and-regigigas-out-of-reach).
+- **Lost for good unless you act first:** [Bruno's Pewter City challenge](#brunos-pewter-city-challenge), [Pikachu starters' Charmander quest](#pikachu-starters-charmander-quest), [Virtue trial and the four-leaf clover](#virtue-trial-and-the-four-leaf-clover), [Cerulean burglary deadline](#cerulean-burglary-deadline), [Route 5 shelter raid](#route-5-shelter-raid), [Pokémon Tower Magcargo is missable](#pokémon-tower-magcargo-is-missable), [Skipped Pokémon Tower Trainers vanish](#skipped-pokémon-tower-trainers-vanish), [Misty's Gyarados and the Viridian Gym trials](#mistys-gyarados-and-the-viridian-gym-trials), [Switching sides at the construction clash](#switching-sides-at-the-construction-clash), [Swimmer Marina and the Dragonair delivery](#swimmer-marina-and-the-dragonair-delivery), [Losing on the Celadon roof](#losing-on-the-celadon-roof), [Sitrus Berries and the eating contest](#sitrus-berries-and-the-eating-contest), [Grandma's treats deadlines](#grandmas-treats-deadlines), [Cynthia and Steven in Fuchsia City](#cynthia-and-steven-in-fuchsia-city), [Misty missing from Cerulean Gym](#misty-missing-from-cerulean-gym), [TM14 Blizzard](#tm14-blizzard), [Crystal Onix](#crystal-onix), [Cinnabar graffiti couple](#cinnabar-graffiti-couple), [TM86 Grass Knot](#tm86-grass-knot), [Losing to Deoxys](#losing-to-deoxys), [Bikers' red envelope and Big Sis](#bikers-red-envelope-and-big-sis), [Cherrygrove Wooper boy and the clover hunter](#cherrygrove-wooper-boy-and-the-clover-hunter), [Pokémon Academy class and Youngster Ward](#pokémon-academy-class-and-youngster-ward), [Losing to Goh in Union Cave](#losing-to-goh-in-union-cave), [HM08 and Mr. Pokémon's quiz](#hm08-and-mr-pokémons-quiz), [Pewter Museum Brock and the Route 30 Chikorita](#pewter-museum-brock-and-the-route-30-chikorita), [Koume, Sakura and the bug hunt](#koume-sakura-and-the-bug-hunt), [Rocky Helmet and the bug hunt](#rocky-helmet-and-the-bug-hunt), [Purugly quest and the bug hunt](#purugly-quest-and-the-bug-hunt), [Forest of Time during the bug hunt](#forest-of-time-during-the-bug-hunt), [Dream World battles before the old man](#dream-world-battles-before-the-old-man), [Burned Tower beasts scene and the expedition leader](#burned-tower-beasts-scene-and-the-expedition-leader) (and the three beasts), [Jirachi stone and the story counter](#jirachi-stone-and-the-story-counter), [Durin Berries for the Anti-Age Spray](#durin-berries-for-the-anti-age-spray), [Blackthorn Gym Trainers](#blackthorn-gym-trainers).
+- **One chance only (save first):** [Lugia: one chance](#lugia-one-chance), [Uxie, Mesprit and Azelf: one chance](#uxie-mesprit-and-azelf-one-chance), [Petrel's Chatot: one chance](#petrels-chatot-one-chance), [Raikou: one chance](#raikou-one-chance), [Dialga and Palkia: one chance](#dialga-and-palkia-one-chance), [Giratina after Lance's visit](#giratina-after-lances-visit), [Arceus and Regigigas out of reach](#arceus-and-regigigas-out-of-reach).
 
 ## Pallet Town to Pewter City
 
@@ -23,9 +23,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Mankey thief quest and Blue's Viridian scene
 
-**Blue's scene in Viridian City could end the Mankey thief quest, but in practice it can't.** If Blue's farewell scene in Viridian City played while the Mankey quest was still open, the Mankey would vanish and the Fast Ball would be lost. In normal play Blue's scene always comes first: it blocks the only way north from the Route 1 gatehouse, before you can reach the street-light keeper. The Route 1 tutorial has also already closed the same step, so nothing changes. Harmless. Not confirmed in game.
+**Blue's scene in Viridian City could end the Mankey thief quest, but in practice it can't.** If Blue's farewell scene in Viridian City played while the Mankey quest was still open, the Mankey would vanish and the Fast Ball would be lost. In normal play Blue's scene always comes first: it blocks the only way north from the Route 1 gatehouse, before you can reach the street-light keeper. The Route 1 tutorial has also already closed the same step, so nothing changes. Harmless. Tested in an emulator (English build): you can't walk around Blue, because the way round is a pond, and stepping on the spot plays his scene.
 
-*Source:* file 739 script 14 (block L3274, `SetFlag 1330` at @3339). Step trigger at ≈1023–1026,266 (var 0x4075 == 0) across the only path north from the Route 1 gatehouse; the keeper stands at ≈1019,255. The quest's other flags (1335/1336) aren't touched by the scene. Path read from the map's collision data (ledges and HM obstacles not modelled).
+*Source:* file 739 script 14 (block L3274, `SetFlag 1330` at @3339). Step trigger at ≈1023–1026,266 (var 0x4075 == 0) across the only path north from the Route 1 gatehouse; the keeper stands at ≈1019,255. The quest's other flags (1335/1336) aren't touched by the scene. Path read from the map's collision data (ledges and HM obstacles not modelled). Emulator (work/build/harness/guide-review-20261006/ch01/mankey_blue_en/): the walk around Blue's objects (≈1027–1028,266) stops at the pond; the trigger plays 445#13/14/16/69/17.
 
 ### Unused thief-quest version
 
@@ -41,9 +41,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Pidgeotto or Pidgeot request
 
-**The same request names a Pidgeotto, then a Pidgeot.** The flower keeper says she needs "a Pidgeotto", then asks "If you have a Pidgeot...". Only a Pidgeot is accepted. The Chinese says the same. Cosmetic.
+**In the Chinese hack, the same request names a Pidgeotto, then a Pidgeot.** The flower keeper first says she needs a Pidgeotto, then asks for a Pidgeot, and only a Pidgeot is accepted. This English translation asks for a Pidgeot both times. Cosmetic.
 
-*Source:* bank 0130#149 (比比鸟 Pidgeotto, then 比雕 Pidgeot); D-1195.
+*Source:* bank 0130#149 (比比鸟 Pidgeotto, then 比雕 Pidgeot); file 115 L4877 accepts only species 18 (Pidgeot), else msg 153. English fixed with user approval (D-0540, D-1496).
 
 ### Poliwag nickname prompt says Poliwhirl
 
@@ -101,9 +101,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Pokémon Academy resets after the Apricorn quest
 
-**Finishing the Apricorn Ball maker's quest turns the Pokémon Academy back to its early state.** After the quest, the teacher (Earl) goes back to asking you to beat the two exchange students, although Steven and Cynthia have left (so players who never did that challenge can't finish it now), and two pupils go back to their lines from before Cynthia left. Cosmetic.
+**Finishing the Apricorn Ball maker's quest turns the Pokémon Academy back to its early state.** For Pikachu starters, who have no Apricorn quest, the Viridian Forest Team Rocket scene does the same. Afterwards, the teacher (Earl) goes back to asking you to beat the two exchange students, although Steven and Cynthia have left (so players who never did that challenge can't finish it now), and two pupils go back to their lines from before Cynthia left. Cosmetic.
 
-*Source:* flag 1057 is both the "Parcel + Route 22 done" flag (set by file 738 @1651 / file 212 @1931 / file 739 @985, together with the students' hide flag 1244) and the Apricorn man's hide flag (Pewter Northeast house, file 754 object 3). His quest clears it (file 170 @3782/@4355). The Academy (file 859) checks 1057: script 1 L111 (set → lessons menu; clear → exchange-student challenge, students hidden by 1244 which stays set), script 4 L222 and script 8 L455 (pupils' lines).
+*Source:* flag 1057 is both the "Parcel + Route 22 done" flag (set by file 738 @1651 / file 212 @1931 / file 739 @985, together with the students' hide flag 1244) and the Apricorn man's hide flag (Pewter Northeast house, file 754 object 3). His quest clears it on either outcome (file 170 @3782 refusal, @4355 success), and so does the Pikachu-starter branch of the Viridian Forest scene (file 115 L5748 → L6969, @6973). The Academy (file 859) checks 1057: script 1 L111 (set → lessons menu; clear → exchange-student challenge, students hidden by 1244 which stays set), script 4 L222 and script 8 L455 (pupils' lines).
 
 ## Pewter City to Vermilion City
 
@@ -147,15 +147,15 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Cerulean burglary deadline
 
-**The Cerulean burglary can't be finished after Sabrina's scene in Lavender Town.** If you haven't beaten the Team Rocket grunt on Route 24 by then, the TM Case and TM28 ×5 are lost. If you beat him but didn't go back to the officer, only the 2 Cheri Berries are lost. Finish the burglary before you go to Lavender Town.
+**The Cerulean burglary can't be finished after Sabrina's scene in Pokémon Tower.** If you haven't beaten the Team Rocket grunt on Route 24 by then, the TM Case and TM28 ×5 are lost. If you beat him but didn't go back to the officer, only the 2 Cheri Berries are lost. Finish the burglary before you make Sabrina laugh in Pokémon Tower.
 
 *Source:* the takeover scene sets 1024 ("case closed", file 17 @12111) and hides the grunt (1033, @12115). The dizzy man (file 756 script 16) checks 1039 and 1024 first, so the only code that brings the grunt back (756 @2131, `ClearFlag 1033`) is never reached again.
 
 ### Route 5 shelter raid
 
-**The Route 5 shelter raid can be walked around, and it closes at the same Sabrina scene.** The raid starts when you cross one spot about 11 steps north of the shelter's door; walking down either side lane skips it. If the raid hasn't happened by Sabrina's scene in Lavender Town, it's lost: the Bulbasaur and Growlithe on Route 5 disappear and there's no reward.
+**The Route 5 shelter raid can be walked around, and it closes at the same Sabrina scene.** The raid starts when you cross one spot about 11 steps north of the shelter's door; walking down either side lane skips it. It can only start after Misty's Cascade Badge. If the raid hasn't happened by Sabrina's scene in Pokémon Tower, it's lost: the Bulbasaur and Growlithe on Route 5 disappear and there's no reward.
 
-*Source:* Route 5 coord trigger script 3 at x 1297–1302, z 160 (var 0x409E == 0), 11 steps north of the Route 5 House door (1297,171); side lanes x≈1291–1293 and x≈1306–1308 (from the earlier collision read, not re-checked). At the takeover, file 17 L12165 tests 0x409E ≠ 1, then sets 1043, clears 1045 and 305, sets 0x409E = 1 and sets 1037/1038 (the Bulbasaur and Growlithe, Route 5 objects 0/3).
+*Source:* Route 5 coord trigger script 3 at x 1297–1302, z 160 (var 0x409E == 0), 11 steps north of the Route 5 House door (1297,171); side lanes x 1291–1293 and x 1306–1308; from the north the middle path drops down a ledge (z 159) onto the trigger row (collision re-checked 2026-10-06). The Mt. Moon Square scene sets 0x409E = 1 (file 9 @5616) and the Cascade Badge scene sets it back to 0 (file 758 L8030, @8044), so the trigger is armed only after the badge. At the takeover, file 17 L12165 tests 0x409E ≠ 1, then sets 1043, clears 1045 and 305, sets 0x409E = 1 and sets 1037/1038 (the Bulbasaur and Growlithe, Route 5 objects 0/3).
 
 ### Misty's Cerulean Cape photo
 
@@ -199,9 +199,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### S.S. Anne records reused
 
-**Several S.S. Anne records are reused elsewhere, probably harmlessly.** They are reset when the S.S. Anne party starts, and the other places that use them come later in the story, so nothing you'd notice was found. One possible side effect: if the grandfather's Water Stone gift or the Raticate gentleman's battle on the ship happened after the Route 7 scene, the Flareon Trainer and his Flareon on Route 7 would vanish. Not confirmed in game.
+**Several S.S. Anne records are reused elsewhere, harmlessly.** They are reset when the S.S. Anne party starts, and the other places that use them come later in the story, so nothing you'd notice was found. The Raticate gentleman's party battle also keeps the Flareon Trainer and his Flareon on Route 7 out of sight until Misty's sparring match there, which is the intended order. The grandfather's Water Stone gift and that battle both happen on the ship before you can leave it, so they can't come after the Route 7 scene.
 
-*Source:* 1516 is the grandfather's Water Stone flag (file 161 L1235–L1269, item 84) and Gentleman Norris's battle flag (file 156 script 31, L1816/L1866, trainer 156); it is cleared when the party starts (file 157 L582, file 161 L1933) and by the Route 7 scene (file 186 L1799), and it is also the hide flag of Route 7 objects 6/7 (Flareon man and Flareon, scripts 5/7). 1421–1425 are cleared at the party start (157 L562–L578, 161 L1913–L1929) and reused by Victory Road 3F (file 110 L5256/L5260), the Indigo Plateau maps that use the vanilla Goldenrod Dept. Store 5F and Ecruteak Southwest House slots (files 900, 923; 1421/1422 are hide flags there); 1423 also by Celadon City (file 783, hide flag of Green and Ivysaur, objects 35/36) and Victory Road (file 109 L201); 1424 also by the Saffron takeover (file 17 L12081), Route 8 gatehouse (file 189 L107), Saffron City (file 824 L6985, hide flag of object 3) and Silph Co. (file 834 L6052); 1425 (bomb defused, file 162 L2154) is read by the Ilex Forest Celebi scene (file 52 L4247).
+*Source:* 1516 is the grandfather's Water Stone flag (file 161 L1235–L1269, item 84) and Gentleman Norris's battle flag (file 156 script 31, L1816/L1866, trainer 156); it is cleared when the party starts (file 157 L582, file 161 L1933) and by the Route 7 scene (file 186 L1799), and it is also the hide flag of Route 7 objects 6/7 (Flareon man and Flareon, scripts 5/7). 1421–1425 are cleared at the party start (157 L562–L578, 161 L1913–L1929) and reused by Victory Road 3F (file 110 L5256/L5260), the Indigo Plateau maps that use the vanilla Goldenrod Dept. Store 5F and Ecruteak Southwest House slots (files 900, 923; 1421/1422 are hide flags there); 1423 also by Celadon City (file 783, hide flag of Green and Ivysaur, objects 35/36) and Victory Road (file 109 L201); 1424 also by the Saffron takeover (file 17 L12081), Route 8 gatehouse (file 189 L107), Saffron City (file 824 L6985, hide flag of object 3) and Silph Co. (file 834 L6052); 1425 (bomb defused, file 162 L2154) is read by the Ilex Forest Celebi scene (file 52 L4247). The grandfather (file 161 object 0, hide flag 534) is hidden from the party start on (157 @546, 161 @1897; 534 is never cleared); Norris (156 object 35, hide flag 1440) from the hijack on (156 @6350; 1440 is cleared only at the party start). The waiter (156 script 30, L1602–L1661) needs 1423, 1424 and 1516–1519, so Norris's party battle is required and 1516 stays set until the Route 7 scene (186 L1799).
 
 ### Unused Regice scene copy
 
@@ -243,7 +243,13 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 **The Pokémon Tower Magcargo is easy to miss.** Knocking it out, catching it or running away removes it for good, and so does leaving the floor by any staircase before you deal with it. Answering No to "Catch it?" is safe while you stay on the floor. The prompt doesn't warn you. Catch it on your first try.
 
-*Source:* file 17: the Team Magma scene that reveals it (script 31 branch, L2459–L2517) sets its hide flag 1155 at L2493 but only `ShowPerson`s it, so any reload hides it; the Magcargo is object 8 (script 10, catch prompt L671 → L2519). A knockout, catch or flee sets 1155 again and hides it (L2553); only a loss restarts the fight. 1155 is otherwise only set by the Rock Tunnel rescue (file 129 L1109) and cleared by Mr. Fuji's house (file 769 L2399), both earlier.
+*Source:* file 17: the Team Magma scene that reveals it (script 31 branch, L2459–L2517) sets its hide flag 1155 at L2493 without hiding it (it has been visible since Mr. Fuji's Cubone scene cleared 1155, file 769 L2399), so any reload hides it; the Magcargo is object 8 (script 10, catch prompt L671 → L2519). A knockout, catch or flee sets 1155 again and hides it (L2553); only a loss restarts the fight. 1155 is otherwise only set by the Rock Tunnel rescue (file 129 L1109) and cleared by Mr. Fuji's house (file 769 L2399), both earlier.
+
+### Skipped Pokémon Tower Trainers vanish
+
+**Pokémon Tower Trainers you haven't battled disappear once you beat the two illusion grunts.** Medium Colette (on Blue's floor) and the illusion "Prof. Oak", "Archie" and "Petrel" are gone the next time a floor loads, for example after a staircase, and their battles are lost. None of them has an item. Battle them on the way up. "Mom" blocks the way, so you've always beaten her by then. Tested in an emulator (Chinese ROM and English build).
+
+*Source:* flag 1155 is the hide flag of tower objects 3 (Colette, trainer 220), 5 ("Prof. Oak", 232), 9 ("Mom", 207), 10, 12 ("Archie", 231) and 13 ("Petrel", 230), and of the Magcargo; the illusion grunts' scene sets it at file 17 L2493 (see the entry above). Emulator: work/build/harness/guide-review-20261006/pass2-B/tower_{cn,en}_set (objects 3, 5, 9, 10, 12, 13 hidden, 11 shown) and tower_en_clear (all shown).
 
 ### Romance and Pokémon Tower counter
 
@@ -253,9 +259,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Sabrina's tower task record reset
 
-**Two later scenes reset the record of Sabrina's Pokémon Tower task, probably harmlessly.** Answering No to Sabrina's plan on Route 8 during the Team Rocket takeover, and the post-game Route 25 scene with Misty, Brock and Curtis, both reset it. By the time either can happen Sabrina has left the tower, so the task is over, and her own scene in the Saffron Gym after Saffron is freed resets it anyway. Not confirmed in game.
+**Two later scenes reset the record of Sabrina's Pokémon Tower task, probably harmlessly.** Answering No to Sabrina's plan on Route 8 during the Team Rocket takeover, and the post-game Route 25 scene with Misty, Brock and Curtis, both reset it. By the time either can happen Sabrina has left the tower, so the task is over, and her own scene in the Saffron Gym after Saffron is freed resets it anyway.
 
-*Source:* flag 1504 is set when she gives the task (file 17 L7426) and checked by her and the tower Ghosts (L1372, L1487, L1563, L1612). It is cleared on Route 8 (file 188 script 16, both "No" answers → L1957; the plan only proceeds with 1504 set, L626), on Route 25 (file 216 script 41 L11142, set again at L11203), in the Saffron Gym (file 826 L920) and in file 912 L3775 (zone 228, Cerulean Cave). The takeover hides the tower Sabrina (file 17 L12069, object 38, hide flag 1100).
+*Source:* flag 1504 is set when she gives the task (file 17 L7426) and checked by her and the tower Ghosts (L1372, L1487, L1563, L1612). It is cleared on Route 8 (file 188 script 16, both "No" answers → L1957; with 1504 clear her next talk only repeats the question, L626 → L1792, and Yes still proceeds), on Route 25 (file 216 script 41 L11142, set again at L11203; there the flag is reused as the Curtis record, file 216 L2497, L2533, L2603), in the Saffron Gym (file 826 L920) and in file 912 L3775 (zone 228, Cerulean Cave). The takeover hides the tower Sabrina (file 17 L12069, object 38, hide flag 1100).
 
 ### Route 11 girl and Swablu
 
@@ -267,13 +273,13 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 **Two unused scenes are left in the files.** A wild Zapdos (Lv. 50) on Route 10 and a Lum Berry from the Route 9 Squirtle for non-Pikachu players can't be reached; the Squirtle only appears for Pikachu starters. Harmless.
 
-*Source:* Route 10 (file 191) script 4 (`WildBattle 145, 50`) isn't used by any object or sign. Route 9 (file 190) script 6 L656 → L3284 gives item 157 only when flag 1288 (Pikachu starter, set in file 738 L3891) is clear, but the Squirtle (object 10, hide flag 1096, set by Mt. Moon Square file 9 @5550) is only shown by the Pikachu-only trap scene (script 3, L164/L230) and its follow-up (script 20 L4624).
+*Source:* Route 10 (file 191) script 4 (`WildBattle 145, 50`) isn't used by any object or sign. Route 9 (file 190) script 6 L656 → L3284 gives item 157 only when flag 1288 (Pikachu starter, set in file 738 L3891) is clear, but the Squirtle (object 10, hide flag 1096, set by Mt. Moon Square file 9 @5550) is only shown by the Pikachu-only trap scene (script 3, L164/L230) and its follow-up (coord script 5, the Team Rocket rescue, L4060 → L4624; it only fires after the trap scene resets var 0x40B0 to 0, L2459).
 
 ### Early Lavender curse
 
-**Reaching Lavender Town before Prof. Hale's Rock Tunnel scene would start the Lavender curse early.** Every exit on foot would pull you back ("A mysterious force pulled you closer!"), as in the curse side quest, but without its normal setup. Fly still gets you out. Probably impossible in normal play, since the way in from Route 10 runs through Rock Tunnel. Not confirmed in game.
+**Reaching Lavender Town before Prof. Hale's Rock Tunnel scene would start the Lavender curse early.** Every exit on foot would pull you back ("A mysterious force pulled you closer!"), as in the curse side quest, but without its normal setup. Fly still gets you out. It can't happen in normal play: before that scene the only way into Lavender Town is through Rock Tunnel. The sleeping Snorlax closes Route 12, Saffron City's gates are shut, and you can't reach Celadon City or Route 8 yet.
 
-*Source:* file 765 script 10 coord triggers (north, west and south exits) fire on var 0x40BA == 0, its value from new game. The Rock Tunnel rescue sets it to 1 (file 129 L1189); the fortune-teller's reading sets it back to 0 to start the curse (file 771 L1082/L1386) and lifting the curse sets 1 (file 771 L1208). With 10 Cleanse Tags bought (flag 2003) the trap still pulls you back (765 L547–L592). The curse quest is described in 03-vermilion-to-celadon.md.
+*Source:* file 765 script 10 coord triggers (north, west and south exits) fire on var 0x40BA == 0, its value from new game. The Rock Tunnel rescue sets it to 1 (file 129 L1189); the fortune-teller's reading sets it back to 0 to start the curse (file 771 L1082/L1386) and lifting the curse sets 1 (file 771 L1208). With 10 Cleanse Tags bought (flag 2003) the trap still pulls you back (765 L547–L592). The curse quest is described in 03-vermilion-to-celadon.md. Reachability (read from scripts and map collision, not tried in game): the Route 5/6 gates (files 182, 185, coord script 2) block while var 0x409F == 0, set to 1 only by the Route 8 gate pass (189 L97); the Route 7 gate (187) blocks while 0x40B9 == 0 (set only by 795 L960); the Route 8 gate (189 script 2) is reached only from Route 8; the Route 12 Snorlax group (hide flag 1158, set only at 199 L1464) seals the Route 11 gatehouse exit (collision flood fill); Route 10 north and south join only through Rock Tunnel or by water, and Surf needs the Rainbow Badge (D-1428).
 
 ### Misty's Gyarados and the Viridian Gym trials
 
@@ -297,7 +303,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 **On your first try to sneak into Celadon Gym, the friend at the door is always Misty, even for Charmander starters.** Charmander players see Green only after a failed attempt. Cosmetic.
 
-*Source:* both branches on Department Store 5F clear Misty's hide flag 1174 (file 791 script 7: L983 → L1546 for flag 1287 = Charmander, else L994), and Green's hide flag 1423 stays set from the earlier Celadon scene (file 783 L3547). After a failed attempt file 783 L8258 clears 1423 for Charmander players instead (L8277); L7414 also clears it.
+*Source:* both branches on Department Store 5F clear Misty's hide flag 1174 (file 791 script 7: L983 → L1546 for flag 1287 = Charmander, else L994), and Green's hide flag 1423 is still set from the S.S. Anne party battle with Blue (file 156 @4524; required by the waiter, 156 L1602). After a failed attempt file 783 L8258 clears 1423 for Charmander players instead (L8277); L7414 also clears it.
 
 ### Waiter Grant's Gloom leads
 
@@ -339,7 +345,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 **Losing to the corner kid in Rock Tunnel freezes the game.** His battle doesn't send you to a Pokémon Center: the game goes on with the disguised "Pikachu" kid's dialogue before the field has come back, and the screen stays black. Save before you talk to him and make sure you can win. Tested in an emulator (Chinese ROM and English build).
 
-*Source:* file 129 script 25: Youngster Willy (trainer 606, L2879); on a loss L2897 jumps to L3782 (Poké Kid Ernie's "Don't throw Poké Balls at people!" menu, trainer 194). Yes → L4368, Yes → L5166 sets Ernie's flag 1554 without a battle; Willy's flag 1966 stays clear (D-1395). Observed instead: the `TrainerBattle 606 0 0 0` loss doesn't restore the field before L3782, msg 46 is never printed and the CPU ends up running in heap memory (black screen). Controls: `TrainerBattle 606 0 1 0` returns to Rock Tunnel; with `WhiteOut` after it the player wakes in the Pokémon Center. `emu_harness.py guide0107 --case corner_kid`; D-1548.
+*Source:* file 129 script 18 (object 17, → L2872): Youngster Willy (trainer 606, L2879); on a loss L2897 jumps to L3782 (Poké Kid Ernie's "Don't throw Poké Balls at people!" menu, trainer 194). Yes → L4368, Yes → L5166 sets Ernie's flag 1554 without a battle; Willy's flag 1966 stays clear (D-1395). Observed instead: the `TrainerBattle 606 0 0 0` loss doesn't restore the field before L3782, msg 46 is never printed and the CPU ends up running in heap memory (black screen). Controls: `TrainerBattle 606 0 1 0` returns to Rock Tunnel; with `WhiteOut` after it the player wakes in the Pokémon Center. `emu_harness.py guide0107 --case corner_kid`; D-1548.
 
 ### Switching sides at the construction clash
 
@@ -353,7 +359,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Swimmer Marina and the Dragonair delivery
 
-**Beating Swimmer Marina on Route 41 before the Secret Potion delivery kills the Dragonair.** The Cycling Road "too late" check looks at whether you've beaten Marina, probably by mistake, instead of a Cycling Road biker. If you have beaten her, the delivery fails. Do the Secret Potion delivery before you battle her.
+**Beating Swimmer Marina on Route 41 before the Secret Potion delivery kills the Dragonair.** The Cycling Road "too late" check looks at whether you've beaten Marina, probably by mistake, instead of a Cycling Road biker. If you have beaten her, the delivery fails. Route 41 is in Johto, so this only matters if you leave the delivery open that long. Do the Secret Potion delivery before you battle her.
 
 *Source:* file 211 L530 checks flag 1689 (trainer 329, Swimmer Marina, Route 41), not a Cycling Road biker (1674–1682, 1687, 1692, 1693).
 
@@ -377,9 +383,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Celadon roof scene before Route 7
 
-**You might reach the Celadon roof scene before its Route 7 scene, but only in a short window.** The roof scene is meant to come after the Route 7 scene and Suzie's free massage, but nothing stops it from playing earlier if you reach the roof first. The Underground Path lets you skip the Route 7 scene, but its doors are only open between the Rock Tunnel rescue and Sabrina's call. If it happens, the later Route 7 scene and Suzie's massage set the roof scene up again, so it may try to replay with Tony and Mary already gone. Other ways to the roof weren't checked. Not confirmed in game.
+**You might reach the Celadon roof scene before its Route 7 scene, but only in a short window.** The roof scene is meant to come after the Route 7 scene and Suzie's free massage, but nothing stops it from playing earlier if you reach the roof first. The Underground Path lets you skip the Route 7 scene, but its doors are only open from the Mt. Moon roadblock until Prof. Hale's Rock Tunnel rescue (when you can't reach Route 8 yet), and again from Team Rocket's Saffron takeover. If it happens, the later Route 7 scene and Suzie's massage set the roof scene up again, so it may try to replay with Tony and Mary already gone. Other ways to the roof weren't checked. Not confirmed in game.
 
-*Source:* the roof's coord trigger (file 792 script 21, at 4,5, var 0x40D0 == 0) can fire while the var is still at its starting value 0. The Route 7 scene sets it to 1 (file 186 L1819, coord trigger at x 1271), Suzie's massage sets it back to 0 (file 794 L1402, only while flag 1535 is set), the roof sets 2 (file 792 @1530). The Underground Path exit on Route 7 (warp at 1261,247) lies west of the Route 7 trigger, but every Underground Path door is blocked by flag 1226 (set at file 9 @5598, cleared by the Rock Tunnel rescue, file 129 L1141, set again at the Saffron takeover, file 17 @12023). Erika's perfume scene in Celadon (file 783 L4521–L4612) closes the quest: it hides Tony and Mary (1544/1545), clears 1535 and sets the var to 1 unless it is already 2.
+*Source:* the roof's coord trigger (file 792 script 21, at 4,5, var 0x40D0 == 0) can fire while the var is still at its starting value 0. The Route 7 scene sets it to 1 (file 186 L1819, coord trigger at x 1271), Suzie's massage sets it back to 0 (file 794 L1402, only while flag 1535 is set), the roof sets 2 (file 792 @1530). The Underground Path exit on Route 7 (warp at 1261,247) lies west of the Route 7 trigger, but a blocker object stands in every Underground Path doorway while flag 1226 is clear (its hide flag: Route 5 object 22, Route 6 objects 10/20, Route 7 object 22 at 1261,248, Route 8 object 9). 1226 is set (doors open) by the Mt. Moon roadblock scene (file 9 @5598) and the Saffron takeover (file 17 @12023), and cleared (doors shut) by the Rock Tunnel rescue (file 129 @1141). Route 8 can't be reached before the rescue (see Early Lavender curse). Emulator (Chinese ROM): on Route 7 with 1226 clear the player stops below the blocker; with it set the same walk enters the gatehouse (work/build/harness/guide-review-20261006/known-issues/C/). Erika's perfume scene in Celadon (file 783 L4521–L4612) closes the quest: it hides Tony and Mary (1544/1545), clears 1535 and sets the var to 1 unless it is already 2.
 
 ### Sitrus Berries and the eating contest
 
@@ -391,7 +397,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 **Grandma's treats for Shota have deadlines nobody mentions.** The delivery closes when Team Rocket takes over Saffron City, because Shota disappears. Grandma's reward (the Master Ball, or 2 Rare Candies if you keep the truth from her) is lost if you haven't reported back to her before Saffron is freed. Do both right away.
 
-*Source:* Shota (file 762 object 6) is hidden by flag 1226 (set at the takeover, file 17 @12023). Grandma is file 794 script 13: at var 0x40CF = 2 her menu gives the Master Ball (item 1, L1108) or 2 Rare Candies (item 50, L948). The liberation (file 834 @5994) sets the var to 5, which only gives a closing line (L861).
+*Source:* Shota (file 762 object 6) is hidden by flag 1226 (set at the takeover, file 17 @12023; also set by the Mt. Moon roadblock scene, file 9 @5598, and cleared by the Rock Tunnel rescue, file 129 @1141, so he stands there from the rescue until the takeover). Grandma is file 794 script 13: at var 0x40CF = 2 her menu gives the Master Ball (item 1, L1108) or 2 Rare Candies (item 50, L948). The liberation (file 834 @5994) sets the var to 5, which only gives a closing line (L861).
 
 ### Lass Eve's incense
 
@@ -407,15 +413,15 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Cynthia and Steven in Fuchsia City
 
-**Cynthia and Steven leave Fuchsia City when Team Rocket takes over Saffron City, and in the usual order they don't come back.** They appear when you get the Soul Badge, and the takeover removes them. Only the Soul Badge scene brings them back, so if you already have the badge when the takeover starts (the usual order), they're gone for good. Battle them before Sabrina's call in Pokémon Tower. The Secret Potion hand-over at the Cycling Road gate also removes them, so if you deliver it after the Soul Badge they're gone too (not confirmed in game).
+**Cynthia and Steven leave Fuchsia City when Team Rocket takes over Saffron City, and in the usual order they don't come back.** They appear when you get the Soul Badge, and the takeover removes them. Only the Soul Badge scene brings them back, so if you already have the badge when the takeover starts (the usual order), they're gone for good. Battle them before Sabrina's call in Pokémon Tower.
 
-*Source:* flag 1207 hides both (Cynthia: file 804 object 34; Steven: file 119 object 8, Safari Zone entrance building). It's set at file 17 L12127 (takeover), file 9 L5586 (Mt. Moon) and file 211 L201 (Secret Potion hand-over), and its only clear is Koga's Soul Badge scene (file 806 @1981; the badge is `GiveBadge 5` at L407).
+*Source:* flag 1207 hides both (Cynthia: file 804 object 34; Steven: file 119 object 8, Safari Zone entrance building). It's set at file 17 L12127 (takeover), file 9 L5586 (Mt. Moon) and file 211 @201 (Secret Potion hand-over, part of Fuchsia's one-time setup, Route 18 gatehouse coord script 5 on var 0x40D4 == 0, which always runs before your first visit to Fuchsia and so before the Soul Badge), and its only clear is Koga's Soul Badge scene (file 806 @1981; the badge is `GiveBadge 5` at L407).
 
 ### Unreachable second Silph Co. ending
 
 **A second Silph Co. ending with extra rewards can't be reached.** In it Lance would give you an **Exp. Share and 10 Rare Candies**. You get the Vs. Recorder instead. In normal play it can't start: during the takeover you only enter the president's office as part of the finale, which marks it done before you can move again.
 
-*Source:* file 795 script 7 (coord trigger at 9,11–13 in the president's office, zone 377, on var 0x40A6 == 0; Rocket Boss trainer 402 at L1530, then item 216 ×1 and item 50 ×10 at L2549/L2565). During the takeover the office door (Silph Co. HQ warp at 1,41) is blocked by Ariana (object 22, hide flag 1208, cleared at the takeover, file 17 L11991). Her battle (file 834 L1401) warps you into the office inside the finale script, which sets 0x40A6 = 1 (L5074/L5215) before the warp to the Pokémon Center. Before the takeover the door is open (1208 set at file 9 L5590) and 0x40A6 is 1 (file 9 L5634); the S.S. Anne B1F Teddiursa scene sets it to 0 (file 162 L1658), whose order relative to the takeover wasn't traced.
+*Source:* file 795 script 7 (coord trigger at 9,11–13 in the president's office, zone 377, on var 0x40A6 == 0; Rocket Boss trainer 402 at L1530, then item 216 ×1 and item 50 ×10 at L2549/L2565). During the takeover the office door (Silph Co. HQ warp at 1,41) is blocked by Ariana (object 22, hide flag 1208, cleared at the takeover, file 17 L11991). Her battle (file 834 L1401) warps you into the office inside the finale script, which sets 0x40A6 = 1 (L5074/L5215) before the warp to the Pokémon Center. Before the takeover the door is open (1208 set at file 9 L5590) and 0x40A6 is 1 (file 9 L5634); the S.S. Anne B1F honey trade sets it to 0 (file 162 @1658), but the B1F coord trigger next to it (script 6, 29–31,4–6, var == 0) sets it back to 1 (@459), as do Archie's party start (file 156 @426) and file 157 @1512. While it is 0, invisible barriers also block Saffron's gates on Routes 5, 7 and 8 (file 179 script 18, 186 script 16, 188 script 20). The takeover itself sets it to 0 (file 17 @12045). Not traced: leaving B1F right after the honey trade without stepping on that trigger, then going through Route 6.
 
 ### Sub. Doll not checked
 
@@ -437,9 +443,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Colette and the Cycling Road record
 
-**The people who show up after the Cycling Road gang leaves share a record with Medium Colette in Pokémon Tower.** These are the Route 16 Quick Ball kid, the Route 18 Air Slash tutor and the ordinary Route 17 cyclists. If you haven't beaten Colette, they already stand there before the gang is driven off. If you beat her later, they disappear, and they come back when the gang is driven off or after Sabrina's Marsh Badge. In the usual order (Colette first) it works as intended. If they're there and you haven't beaten Colette yet, talk to them first. Low impact.
+**The people who show up after the Cycling Road gang leaves share a record with Medium Colette in Pokémon Tower.** These are the Route 16 Quick Ball kid, the Route 18 Air Slash tutor and the ordinary Route 17 cyclists. If you haven't beaten Colette, they already stand there before the gang is driven off. If you beat her later, they disappear, and they come back when the gang is driven off or after Sabrina's Marsh Badge. In the usual order (Colette first) it works as intended. If they're there and you haven't beaten Colette yet, talk to them first. If Colette has vanished unbeaten (see [Skipped Pokémon Tower Trainers vanish](#skipped-pokémon-tower-trainers-vanish)), the record is never set, so these people simply stay. Low impact.
 
-*Source:* flag 1580 is trainer 220's (Colette's) defeat flag (Pokémon Tower object 3, script 3219) and the hide flag of Route 16 object 0, Route 17 objects 22–27 and Route 18 object 3 (D-1401). It is cleared by beating Roughneck Paxton (file 210 L1625), by the Saffron Gym (file 826 L1003/L1406) and by the leftover Route 38 test character (file 248 L204/L277).
+*Source:* flag 1580 is trainer 220's (Colette's) defeat flag (Pokémon Tower object 3, script 3219) and the hide flag of Route 16 object 0, Route 17 objects 22–27 and Route 18 object 3 (D-1401). Colette (tower object 3) is also hidden by flag 1155 once the illusion grunts are beaten, so an unbeaten Colette never sets 1580. It is cleared by beating Roughneck Paxton (file 210 L1625), by the Saffron Gym (file 826 L1003/L1406) and by the leftover Route 38 test character (file 248 L204/L277).
 
 ### Misty missing from Cerulean Gym
 
@@ -507,9 +513,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Island Forest wish
 
-**The Island Forest wish undoes romance choices that other scenes treat as final.** Wishing "I want to be more attractive" reopens every partner, including Blue's Victory Road lock and the Vermilion construction-site locks, as long as you haven't talked to the Dream World old man. It works once. It may be an intended second chance.
+**The Island Forest wish undoes romance choices that other scenes treat as final.** Wishing "I want to be more attractive" reopens every partner, including Blue's Victory Road lock and the Vermilion construction-site locks, as long as you haven't talked to the Dream World old man or fought Will or Karen there, and haven't entered the dream at MooMoo Farm without the fortune-teller's "near future" love reading. It works once. It may be an intended second chance.
 
-*Source:* file 55 L3017–L3075 clears 2141–2145 and 2153–2157, unless flag 2300 is set (the old man sets it on your first talk, file 898 L59; MooMoo Farm's dream scene can clear it again, file 251 L872). Any wish sets flag 0x892 (2194) at L3094, so it works once.
+*Source:* file 55 L3017–L3075 clears 2141–2145 and 2153–2157, unless flag 2300 is set (set by the old man on your first talk, file 898 @59, by the Will/Karen battle ending, 898 @2325, and by MooMoo Farm's dream entry when flag 1619 is clear, file 251 @1283; cleared only by that entry when 1619 is set, 251 @872). Any wish sets flag 0x892 (2194) at L3094, so it works once.
 
 ### Crystal Onix
 
@@ -556,6 +562,12 @@ These entries can freeze the game, cost you something, or close a quest or battl
 **The Six Island Shell Bell costs $200, not the $5,000 the menu says.** In your favour.
 
 *Source:* file 943 L3288 checks and L3314 takes $200; menu bank 625#48.
+
+### Losing to Deoxys
+
+**Losing to Deoxys on Six Island loses Deoxys and the whole Lucky Meowth God story after it.** The Fallen Red Star vanishes for good the moment the post-game Deoxys battle starts. If you lose, you white out, and the chief's claim, Jessie, James and Meowth at the One Island restaurant, the Lucky Meowth God and the Island Forest change never happen. Running away or knocking Deoxys out also loses Deoxys, but the story then goes on as normal. Save before you check the Red Star, and reload if you lose (see [Six Island: Deoxys and the Lucky Meowth God](06-sevii-islands-indigo.md#six-island-deoxys-and-the-lucky-meowth-god-post-game)). Tested in an emulator (Chinese ROM and English build): after a loss the Red Star is gone, and the switch that brings Jessie, James and Meowth to the restaurant is still off.
+
+*Source:* file 943 script 11: `HidePerson 4` (L3623) sets the Red Star's hide flag 2188 before `WildBattle 386` (Lv. 95, L5002); `CheckBattleWon` false (a loss) → L3755 `WhiteOut`, skipping the chief's scene (L5026–L6407), which holds the only reachable clear of flag 1331 (L6397), the hide flag of Jessie, James and Meowth in the One Island restaurant. 2188 is cleared only by Lance's one-time visit home (file 842 L2205). Emulator: work/build/harness/guide-review-20261006/ch06/deoxys_{cn,en} (2188 set at battle start and after the white-out, 1331 still set, Red Star gone on return).
 
 ### Four Island chief's Doubles
 
@@ -663,9 +675,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Marill owner's Azumarill
 
-**The Marill owner mourns "my Azumarill".** Her Pokémon is a Marill everywhere else. You only see this line if you never met her Marill in Union Cave. Cosmetic.
+**In the Chinese hack, the Marill owner mourns "my Azumarill".** Her Pokémon is a Marill everywhere else. This English translation says Marill. The line only shows if you never met her Marill in Union Cave. Cosmetic.
 
-*Source:* bank 548#114 (玛力露丽), shown by file 854 L3837 when flag 1528 is set (set by the Ilex Forest Crystal scene, file 92 L10528–L10534, when the quest var isn't 8); 548#113 also misspells it (玛丽露).
+*Source:* bank 548#114 (玛力露丽), shown by file 854 L3837 when flag 1528 is set (set by the Ilex Forest Crystal scene, file 92 L10528–L10534, when the quest var isn't 8); 548#113 also misspells it (玛丽露). English fixed with user approval (D-0934, D-1496).
 
 ### Pokémon Academy class and Youngster Ward
 
@@ -679,11 +691,11 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 *Source:* file 16 L1022, L1110, L1216 use `SubMoneyImmediate` ($3,000 / $5,000 / $10,000) with no money check (Yes paths L973/L1053/L1167; No starts `TrainerBattle 747` etc.). 3F (file 18 L2384/L2480) uses `HasEnoughMoneyImmediate 5000`.
 
-### Ruins of Alph Potion girl
+### Ruins of Alph Potion girl (not a bug)
 
-**The Ruins of Alph Potion girl thanks you for a Potion you never gave.** Her request, and her "Liar. You don't even have a Potion." line, can't be seen. The statue quest itself still works. Cosmetic.
+**The Ruins of Alph Potion girl's quest works.** She asks "Do you have a Potion I could borrow?", takes a Potion if you have one ("Liar. You don't even have a Potion." if you say Yes without one), and then tells you about her face on the statue. An earlier version of this page said she skips the request and thanks you for a Potion you never gave; that rested on a Prof. Elm's Lab scene that never plays. Tested in an emulator (Chinese ROM and English build): she asked for the Potion, took one and moved on to the statue step.
 
-*Source:* file 37 script 19 (bank 70#50–#54) runs on var 0x4079, an earlier story counter (set to 0/1/2 in Kanto by files 739, 212, 115): Prof. Elm's Lab (file 840 L3184/L3314) sets it to 3 before you reach Johto, so she always starts at stage 3 (#54).
+*Source:* file 37 script 19 (object 1, no hide flag) asks for the Potion while var 0x4079 is 0–2 (L1271; `HasItem 17` at L1859 → L3312 takes it and sets 3 at @3364, else msg 52), shows the thanks at 3 (L1308) and the statue question at 4 (L1319); the statue (file 42 L236) needs 3. Kanto sets the var to 0/1/2 only (files 739 @965, 212 @3120, 115 @5535). The lab's `SetVar 0x4079 3` (file 840 @3184/@3314) is in lab script 15, which never runs (it needs var 0x4108 = 8, which no script sets; emulator: work/build/harness/bugreports-20261006/miltank/). Emulator: var 0x4079 = 2, script 19 → msgs 50, 53, 54, Potion −1, var → 3 (work/build/harness/guide-review-20261006/known-issues/potion_cn|en/).
 
 ### Route 32 Igglybuff counter
 
@@ -799,9 +811,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Radio Tower grunt and the old man
 
-**One Radio Tower takeover conversation may jump into the wrong scene.** In Goldenrod City during the takeover, a Team Rocket grunt is bullying an old man at his barricade. If you answer Yes to "Teach this Team Rocket grunt a lesson?" while standing in the gap between the two of them, the game would start the Extreme Speed tutor's Lemonade lesson instead of the battle. Whether you can step into that gap wasn't checked. Not confirmed in game.
+**A leftover branch in one Radio Tower takeover conversation can't be reached.** In Goldenrod City during the takeover, a Team Rocket grunt is bullying an old man at his barricade. If you answered Yes to "Teach this Team Rocket grunt a lesson?" while standing between the two of them, the game would start the Extreme Speed tutor's Lemonade lesson instead of the battle. You can't stand there: a barricade fills that spot, so you always talk to them from another side. Harmless.
 
-*Source:* file 882 script 38 (grunt object 36 at 369,355 and old man object 39 at 369,357, hide flag 441; barricade object 37 at 368,356): L1659 → L2572 `GetPlayerCoords`; at player Y = 356 it jumps to L2193, the Extreme Speed tutor's Lemonade check (`HasItem 32`). The earlier note said someone stands on that row; only the barricade does, west of the gap.
+*Source:* file 882 script 38 (grunt object 36 at 369,355 and old man object 39 at 369,357, hide flag 441): L1659 → L2572 `GetPlayerCoords`; at player Y = 356 it jumps to L2193, the Extreme Speed tutor's Lemonade check (`HasItem 32`). Barricade objects 37 (368,356) and 38 (369,356) share hide flag 441, so every tile from which you can talk to the grunt or the old man has Y = 354, 355, 357 or 358. Earlier versions named only object 37 and left this as unconfirmed. Read from the event data, not tried in game.
 
 ### Radio quiz B button
 
@@ -915,11 +927,11 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 [Quests on this page](10-ecruteak-olivine.md)
 
-### Pokéathlon Dome and the Route 36 tree
+### Pokéathlon Dome and the Route 36 tree (not a bug)
 
-**Visiting the Pokéathlon Dome at the wrong moment could block the road to Ecruteak City.** If your first trip into the Dome falls between the Plain Badge and the odd-tree scene on Route 36, Crystal disappears from the tree. Only her scene moves the tree, so the road west stays blocked. Do the Route 36 tree scene before you enter the Pokéathlon Dome. Not confirmed in game.
+**Visiting the Pokéathlon Dome doesn't affect the Route 36 tree.** An earlier version of this page warned that a first visit to the Dome between the Plain Badge and the odd-tree scene would make Crystal vanish from the tree and block the road to Ecruteak City. The Dome's first-visit cutscene from the original game never plays in this hack, so nothing in the Dome touches Crystal. Tested in an emulator (Chinese ROM and English build): walking in from the Dome's entrance after the Plain Badge played no scene, and Crystal's group stayed switched on.
 
-*Source:* flag 551 hides Crystal, Gold, Bayleef and Quilava at the tree (file 243 objects 3, 11–13; set at new game, file 149 L178; cleared by the Plain Badge, file 883 L621; set by the tree scene, file 243 L1179). The unchanged vanilla Dome 1F first-visit scene (file 123 script 1 → L981/L1046, var 0x40E2 = 0) clears 551 for its own cutscene and sets it again at the end (L3276/L3679). The tree (object 4, script 1) is hidden only by flag 463, set only by the tree scene (file 243 L1175); talking to the tree itself never moves it (L1541 only reacts to the Rock Incense).
+*Source:* flag 551 hides Crystal, Gold, Bayleef and Quilava at the tree (file 243 objects 3, 11–13; set at new game, file 149 L178; cleared by the Plain Badge, file 883 L621; set by the tree scene, file 243 L1179). The vanilla Dome 1F first-visit scene (file 123 script 1 → L981/L1046, which clears and re-sets 551) was started by a coord trigger at ≈23,10; the hack's Dome events (events 252, zone 281) have no coord triggers, and its map-script header (file 384) only runs script 24 on load (`SetFlag 2515`). The US ROM has the trigger. Emulator: flags 551/463 clear, var 0x40E2 = 0, walked from the entrance (≈23,22) to ≈23,10: only script 24 ran, no message, 551 still clear (work/build/harness/guide-review-20261006/known-issues/dome_cn|en/).
 
 ### Puppy-love quest counter
 
@@ -935,9 +947,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Prof. Birch and the unmasked Sudowoodo
 
-**Players who didn't save Prof. Birch on Route 12 see the unmasked Sudowoodo early, and Birch's memory of the rescue follows the Sudowoodo instead.** If you didn't save him, the Sudowoodo stands near the National Park gatehouse even before the odd-tree scene. After the Plain Badge, Birch in the Goldenrod friendship checker's house no longer "remembers" being rescued, even if you did save him. Finishing the Route 36 Sudowoodo story makes him "remember" it again, even if you never saved him. Cosmetic.
+**The unmasked Sudowoodo stands on Route 36 before the odd-tree scene, and Birch's memory of the rescue follows the Sudowoodo instead.** Every player finds the Sudowoodo near the National Park gatehouse as soon as they reach that part of Route 36, before the odd-tree scene, whether or not they saved Prof. Birch on Route 12. After the Plain Badge, Birch in the Goldenrod friendship checker's house no longer "remembers" being rescued, even if you did save him. Finishing the Route 36 Sudowoodo story makes him "remember" it again, even if you never saved him. Cosmetic.
 
-*Source:* flag 111 is the unmasked Sudowoodo's hide flag (file 243 object 20) and "saved Prof. Birch" (set at file 199 L2249; read at file 888 L272). The Plain Badge clears it (file 883 L617), and the end of the Route 36 Sudowoodo story sets it again (file 243 L3814).
+*Source:* flag 111 is the unmasked Sudowoodo's hide flag (file 243 object 20) and "saved Prof. Birch" (set at file 199 L2249; read at file 888 L272). The Plain Badge clears it (file 883 L617), and the end of the Route 36 Sudowoodo story sets it again (file 243 L3814); no other script touches it. The Sudowoodo (≈392,235) stands west of the odd tree (object 4, ≈415,246), on the part of Route 36 you reach from the National Park gatehouse, which opens only after the Plain Badge, so 111 is already clear for everyone when you get there. Earlier text said only players who hadn't saved Birch see it early.
 
 ### Will and Karen's National Park challenge
 
@@ -974,12 +986,6 @@ These entries can freeze the game, cost you something, or close a quest or battl
 **Lantern riddle 2's answer is correct.** This isn't a bug. The clue "Round head, round hands, a body round too, round eyes, and antennae poking through" fits Ledyba, No. 165, so the answer is 5.
 
 *Source:* file 916 L6188 (bank 603#126); menu index 4 ("5") is the only option that doesn't jump to the failure chain (L7067). Ledyba is #165. Earlier versions of this page listed it as unconfirmed.
-
-### MooMoo Farm Miltank fall sick again
-
-**If you finish the Dream World before the League HQ's third order, the MooMoo Farm Miltank fall sick again for good.** The third order at the League HQ makes them sick again, but the farmer only asks you to investigate once, and the Dream World is the only cure. Afterwards the milk stall, the farm's Seal girl and the Sunflora lady stay closed. If you can, do the MooMoo Farm investigation after that third order. Suspected hack bug. The farmer's side was tested in an emulator: with the Miltank sick and the Dream World done he only greets you; before the Dream World he offers the investigation.
-
-*Source:* flag 744 (Miltank healthy) is set at new game (file 149 @492) and by the Dream World cure (file 898 @2329, with 2289 at @2321), cleared on arrival in Johto (file 840 @3194/@3324) and by the League HQ round-3 order (file 31 @4666) with no condition. The farmer skips the investigation once 2289 is set (file 251 @106 → L903); the stall, Seal girl and Sunflora lady check 744 (file 251 @117/@147/@214; file 249).
 
 ### Dozen Moomoo Milk
 
@@ -1105,11 +1111,11 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 *Source:* file 78 L1033 shows msg 32 ("the Single Battle in your memories") before `TrainerBattle x, x` (Double); msg 33 ("Double Battle") is unused.
 
-### Cianwood Pharmacy after the Amphy crisis
+### Secret Potion handed out again
 
-**Gold and Crystal stay in the Cianwood Pharmacy for good and keep handing out Secret Potions.** Once the Olivine Lighthouse emergency starts, the pharmacist never sells his Energy Powder, Energy Root, Heal Powder or Revival Herbs again. Talking to Gold or Crystal without a Secret Potion replays the scene and gives you another one.
+**During the Amphy crisis, Gold and Crystal hand you another Secret Potion every time you talk to them without one.** The scene in the Cianwood Pharmacy replays and the pharmacist gives you a new one, so you can end up with several. In your favour. Curing Amphy takes one; Gold and Crystal then leave the pharmacy, and the pharmacist's herbal-medicine counter (closed while they're there) opens again. Tested in an emulator (Chinese ROM and English build): after the cure the counter sells again. The repeat hand-over is read from the script.
 
-*Source:* file 878: the shop (script 1) only opens while flag 471 is set; Gold, Crystal and their Pokémon (objects 1–4) are hidden by 471. It is set by the Route 39 Gold scene (file 249 L4118), cleared when the Amphy crisis starts (file 66 L2507) and never set again. The gift (item 464, L1170) has no flag; scripts 2/3 only test `HasItem 464`.
+*Source:* file 878: scripts 2/3 (Gold, Crystal) only test `HasItem 464` (L187/L351) before replaying the scene and giving item 464 at L1170, with no flag. The counter (script 1) opens only while flag 471 is set; Gold, Crystal and their Pokémon (objects 1–4) use 471 as their hide flag. 471 is set by the Route 39 Gold scene (file 249 L4118) and cleared when the crisis starts (file 66 L2507); the cure (file 66 script 16) runs `HidePerson 0` on Jasmine, whose hide flag is 471, so it sets 471 again. Emulator: work/build/harness/guide-review-20261006/ch11/ (cure_{cn,en}: 471 clear → set, one Secret Potion taken; after_{cn,en}: counter menu shown). Corrected: this entry used to say the counter never reopens and Gold and Crystal stay for good.
 
 ### Lure Ball kept
 
@@ -1129,11 +1135,11 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 *Source:* file 881 objects 10–13 (zone 385) use hide flag 2235, which no `SetFlag` touches, but script 13 ends with `HidePerson 10–13` (L1317–L1329), and `HidePerson` sets the object's hide flag permanently (engine note in work/notes/guide_errata.md).
 
-### Petrel's Chatot
+### Petrel's Chatot: one chance
 
-**Petrel's Chatot can never be caught.** The Chatot, Lance, Pryce and the others nearby stay on Team Rocket HQ B2F for good. Tested in an emulator: once they're there, talking to the Chatot never offers the catch.
+**Petrel's Chatot can be caught only once, straight after the radio-room scene, and only before you leave Team Rocket HQ B2F.** When the scene ends, everyone leaves except the Chatot. Talk to it: "Petrel's Chatot. Nobody wants it anymore. Catch it?" → Yes starts a wild battle with a Chatot (Lv. 10). Catching it, knocking it out, running away or losing all remove it for good, and so does leaving the floor without talking to it. Answering No is safe while you stay on the floor. Possibly intended. Tested in an emulator (Chinese ROM and English build): after the scene the Chatot offers the battle.
 
-*Source:* file 90 script 6 (L888 / L2874–L3674) offers the catch (bank 111#99, wild Chatot Lv. 10) only if flag 500 is **set**, but the Chatot (B2F object 31) is hidden while 500 is set. 500 is set at new game (file 149 L320), cleared in Archer's room (file 933 L2062) and set again only after the catch (L3674); objects 29–41 share it.
+*Source:* file 90 script 6 (L888 `CheckFlag 500` → L2874, msg 111#99; `WildBattle 441` at L3650). The Chatot is B2F object 31 with hide flag 500. The radio-room ending (script 5) runs `HidePerson` on objects 29, 30, 32–41 (L2582–L2813), which share hide flag 500, so 500 is set while the Chatot is still on screen; any later load of the floor hides it. After the battle L3674 sets 500 and hides it; a loss goes to `WhiteOut` (L3629), with 500 already set. Emulator: work/build/harness/guide-review-20261006/ch11/chatot_{cn,en}. Corrected: this entry used to say the Chatot can never be caught.
 
 ### Unused Mahogany Silver Wing gift
 
@@ -1149,9 +1155,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Burned Tower beasts scene and the expedition leader
 
-**The Entei, Raikou and Suicune scene in the Burned Tower can be lost.** After [Lance visits your house](01-pallet-to-pewter.md#pallet-town-lances-visit-home-after-the-final-hall-of-fame), see the [Burned Tower release scene](10-ecruteak-olivine.md#burned-tower-prof-hale-molly-and-the-three-beasts-post-game-frees-entei-suicune-raikou) before you rematch the [Mt. Mortar expedition leader](11-cianwood-mahogany.md#mt-mortar-the-five-member-expedition-the-way-to-the-altar-needed-in-the-final-chapter). If you beat him in that window, his "Please join my expedition" resets the expedition, and the release scene doesn't play. To avoid the battle, answer No when he asks "Are you a really strong Trainer?". Not confirmed in game.
+**The Entei, Raikou and Suicune scene in the Burned Tower can be lost, and the three beasts with it.** After [Lance visits your house](01-pallet-to-pewter.md#pallet-town-lances-visit-home-after-the-final-hall-of-fame), see the [Burned Tower release scene](10-ecruteak-olivine.md#burned-tower-prof-hale-molly-and-the-three-beasts-post-game-frees-entei-suicune-raikou) before you talk to the [Mt. Mortar expedition leader](11-cianwood-mahogany.md#mt-mortar-the-five-member-expedition-the-way-to-the-altar-needed-in-the-final-chapter) again. In that window he greets you as if you'd never met. If you say Yes to "Are you a really strong Trainer?" and beat him, his "Please join my expedition" resets the expedition. The release scene then never plays, so Entei (Ruins of Alph), Suicune (Route 25) and Raikou (Route 47) never appear. Answer No to avoid the battle. Tested in an emulator (Chinese ROM and English build): after the win the Burned Tower basement stays quiet; after No the scene plays.
 
-*Source:* var 0x409F: Lance's visit (file 842 @2223) sets 11, the Burned Tower scene (file 23 script 14) needs 11 and sets 12 (file 23 L6953). The leader (file 962 script 2) runs his first-meeting path for any value other than 3, 5 or 10; winning `TrainerBattle 897` (Psychic Hewitt, L2706) leads to the join, and either answer ends at L3482 `SetVar 0x409F, 3` (D-1406).
+*Source:* var 0x409F: Lance's visit (file 842 @2223) sets 11; the Burned Tower scene (file 23 script 14, coord trigger 12–18,18–20 on 0x409F = 11) sets 12 (L6953) and clears the beasts' hide flags 2318/2319/2320 (L6941–L6949; set at new game by file 842 @484–@492; objects: Ruins of Alph zone 326 obj 22, Route 25 obj 34, Route 47 obj 33). The leader (file 962 script 2, object 4, hide flag 461 never set) runs his first-meeting path for any value other than 3, 5 or 10; winning `TrainerBattle 897` (Psychic Hewitt, L2706) leads to the join, which ends at L3482 `SetVar 0x409F, 3` (D-1406). Emulator: var 0x409F = 11, leader → Yes, win → var 3, no scene on the trigger; → No → var 11, scene plays (msg 136) (work/build/harness/guide-review-20261006/known-issues/F/).
 
 ### Satsuki's Lugia option
 
@@ -1207,9 +1213,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Blackthorn Gym Trainers
 
-**The Blackthorn Gym Trainers may never battle you.** If you accept the MooMoo Farm farmer's request to look into his sick Miltank (the request that leads into the Dream World) before you reach Blackthorn City, the four Gym Trainers are skipped and the entrance Trainer just says "Welcome to the Blackthorn Gym, Champion." Clair can still be challenged. To get the Gym Trainer battles, do Blackthorn City before helping MooMoo Farm. The Gym side was tested in an emulator: after the farmer's Yes the entrance Trainer only says his line; before it he battles you.
+**The Blackthorn Gym Trainers may never battle you.** If you accept the MooMoo Farm farmer's request to look into his sick Miltank (the request that leads into the Dream World; he makes it once the League HQ's third order has made the Miltank sick) before you reach Blackthorn City, the four Gym Trainers are skipped and the entrance Trainer just says "Welcome to the Blackthorn Gym, Champion." Clair can still be challenged. To get the Gym Trainer battles, do Blackthorn City before helping MooMoo Farm. The Gym side was tested in an emulator: after the farmer's Yes the entrance Trainer only says his line; before it he battles you.
 
-*Source:* file 939 coord triggers (scripts 7, 8, 10) need var 0x40A3 = 1, 2, 3 in turn (script 7 L346 falls back to msg 13 at L14262); trainers 932–935. The var is set to 1 only at the end of the Vermilion construction clash (file 774 L1161), to 5 when you answer Yes to the MooMoo farmer (file 251 L1423, offered whenever flag 744 is clear, i.e. from your arrival in Johto) and to 6 in the Dream World (file 898 L2307). Earlier text named only the Dream World.
+*Source:* file 939 coord triggers (scripts 7, 8, 10) need var 0x40A3 = 1, 2, 3 in turn (script 7 L346 falls back to msg 13 at L14262); trainers 932–935. The var is set to 1 only at the end of the Vermilion construction clash (file 774 L1161), to 5 when you answer Yes to the MooMoo farmer (file 251 L1423, offered while flag 744 is clear, i.e. from the League HQ round-3 order, file 31 @4666; the `ClearFlag 744` in Prof. Elm's Lab, file 840 @3194/@3324, is in lab script 15, which never runs) and to 6 in the Dream World (file 898 L2307). Earlier text named only the Dream World.
 
 ### Clair's Dragon rule
 
@@ -1263,7 +1269,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 **Dialga and Palkia are gone for good once you catch them, knock them out or run away.** Only a loss lets you try again. Save before each battle.
 
-*Source:* file 130 scripts 10/11: `WildBattle 483` at L2706 sets flag 2342 and `WildBattle 484` at L2748 sets 2343 on any result but a loss or draw. Lance's post-League visit (file 842 L2193/L2197) is the only clear, and it plays once (after the final Hall of Fame).
+*Source:* file 130 scripts 10/11: `WildBattle 483` at L2706 sets flag 2342 and `WildBattle 484` at L2748 sets 2343 on any result but a loss or draw. Lance's post-League visit (file 842 L2193/L2197) is the only clear after the battle, and it plays once (after the final Hall of Fame). The final-chapter Cyrus scene (file 130 L1667) also clears 2342 for the battle and sets it again after a win (L1951). Palkia doesn't come back after the story: Giovanni's capture scene removes it with `HidePerson 6` (L2381), which sets its hide flag 2343 permanently (emulator CN and EN: the command sets 2343 and Palkia is gone after a reload, work/build/harness/guide-review-20261006/pass2-A/palkia_hide_{cn,en}); only Lance's visit clears 2343 (file 842 L2197).
 
 ### Route 45 Senior Trainer's line
 
@@ -1293,7 +1299,7 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 **Lance's visit could allow a second Giratina, but probably can't in practice.** Lance's visit brings Giratina back. It plays only once, as soon as you get home after the final Hall of Fame, and Giratina can only be summoned after that same Hall of Fame entry, so there's no chance to fight it in between. Not confirmed in game.
 
-*Source:* file 135 L2400–L2528 needs flag 2261 and sets Giratina's "done" flag 2340 on any result but a loss or draw (catch, knockout or flee); Lance's visit (file 842 script 7 → L1083, `ClearFlag 2340` at L2201) clears it. The visit runs from the home map's frame script on var 0x4106 = 3, which only the first Hall of Fame (file 822 L175, before 2261 is set) and the final one (L2558, same block that sets 2261) set; later Hall of Fame entries (L322 path) don't. Earlier text said 2340 is set "only on a catch or win".
+*Source:* file 135 L2400–L2528 needs flag 2261 and sets Giratina's "done" flag 2340 on any result but a loss or draw (catch, knockout or flee); Lance's visit (file 842 script 7 → L1083, `ClearFlag 2340` at L2201) clears it. The visit runs from the home map's frame script on var 0x4106 = 3, which the first Hall of Fame (file 822 L175) and the final one (L2558, same block that sets 2261) set; later Hall of Fame entries (L322 path) don't. Its other setters (Silver Conference closing, file 107 @9512; Sabrina's Mt. Silver scene, file 844 @3224; the 2F bed rest at var 0x40A2 = 20, file 843 @1031) all run before the final Hall of Fame, while 2261 is clear, so they take script 7's other branch. Earlier text said 2340 is set "only on a catch or win".
 
 ### Route 45 Dragonite counter
 
@@ -1319,9 +1325,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Ho-Oh panel and Silver's battle
 
-**Solving the Ho-Oh panel early might make the Molly chapter's dream world skip Silver's battle.** Solving the stone panel in the Ho-Oh chamber (north-west) is treated as "Silver's battle done" in that dream world. It depends on whether the Ho-Oh chamber can be reached before the Molly chapter. If you want to be safe, leave the Ho-Oh panel until after the Molly chapter. Not confirmed in game.
+**Solving the Ho-Oh panel before the Molly chapter's dream world makes that dream world treat Silver's part as already done.** The panel and Silver's part of the dream world share one record. The Ho-Oh chamber (north-west) is open from your first visit to the Ruins of Alph, and its panel has no story condition, so you can solve it first. Then, when you arrive in the dream world, Silver and his Croconaw already stand by the steps into the sky instead of arriving with you, and Gold and Crystal aren't gathered round you either. The opening scene would then move them from the wrong places, and Silver's battle in the dream world is skipped; whether the rest of the chapter then plays correctly wasn't tried. To be safe, leave the Ho-Oh panel until after the Molly chapter. Tested in an emulator (Chinese ROM and English build), arrival only: with the panel solved, Silver and Croconaw stand by the steps and the group isn't gathered; without it, all three wait next to you.
 
-*Source:* file 45 L182 (panel solved, after `AlphPuzzle 3` and flag 2426) clears flag 565, which is set at new game (file 149 L190) and which the dream world (file 50) uses to mark Silver as finished: objects 14/15, checks at L2556, L2686, L2745, L2944, L3486; cleared at L3224 after his Multi Battle.
+*Source:* file 45 script 1: after `AlphPuzzle 3`, flag 2426 (panel solved) → L134, which clears flag 565 (L182; with 273 cleared, 546 set). 565 is set at new game (file 149 L190) and otherwise only cleared in the dream world (file 50 L3224, after Silver's Multi Battle; objects 14/15 then shown). In the dream world (map 325, file 50) 565 is the hide flag of Silver and Croconaw by the steps (objects 14/15, 18–19,48); the map-load positioning tests it before the arrival check (L2686 → L3305: Silver's group objects 0/1/8/10 moved away, then `End` before the var 0x40AB = 3 arrival placement at L2719); the steps gate "Let's wait until everyone's here" (L2556 → L3272) waits on 565, 1980 and 1981, and the other done-checks are at L2745, L2944, L3486, L3684, L3827. The chamber (zone 318) is entered from the Ruins of Alph exterior (warp at ≈425,289, no object or flag in the way). Emulator: work/build/harness/guide-review-20261006/pass2-A/hooh_{early,normal}_en and hooh_arrive_{early,normal}_cn (var 0x40AB = 3, 1980/1981 set; with 565 clear objects 0 at 38,3, 2 at 43,50, 4 at 47,64, 14 at 18,48; with 565 set 0/2/4 at 57,49 / 56,50 / 57,52, 14 hidden). Driving the opening scene's battle failed in the harness, so the rest is read only.
 
 ### Field moves without the move
 
@@ -1331,9 +1337,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Forest of Time during the bug hunt
 
-**Entering the Forest of Time during the Ilex Forest bug hunt may play the wrong scene.** The two share a progress counter: the Sammy arrival scene could play with its actors missing, the maze traps could apply, or the Marauder scene could start early. Finish the bug hunt first. Not confirmed in game.
+**Entering the Forest of Time in the middle of the Ilex Forest bug hunt plays scenes from the later Sammy chapter.** The two share a progress record. Depending on how far the hunt has got, stepping into the forest's entrance clearing plays the Sammy and Celebi arrival scene with Sammy, Celebi and the ranger missing, or the maze lets you through to the upper forest, where the Marauder scene starts at once and leads into his battle. Either one also changes the hunt's own progress, so the hunt may not carry on normally afterwards (not tried). Finish the bug hunt before you go into the Forest of Time. From the moment Bugsy gives you the Honey, and after the hunt until the old ranger in Ilex Forest starts the Sammy chapter, the maze's last exit just sends you back to the entrance clearing, which is harmless. Tested in an emulator (Chinese ROM and English build): with the hunt's values, the empty arrival scene plays in full and the Marauder scene runs into the battle; the maze test is in [Forest of Time: the maze of clearings](13-dungeons-and-common.md#forest-of-time-the-maze-of-clearings-continues-ilex-forest-and-goldenrod-citys-forest-of-time-entries).
 
-*Source:* var 0x4099 is set to 3/4/5 by the hunt (file 92 @10693/@10735/@2209; reset to 2 at the hunt end, L5713) and also drives the Celebi story (L5372 = 3). The Forest of Time (map 327, file 52) has coord triggers on 0x4099 = 3 (script 1) and = 5 (script 3); the other Ilex Forest copy (map 462, file 106) triggers on 2 and 4 (D-1429).
+*Source:* var 0x4099: Bugsy's Honey hand-over sets 2 (file 92 L6516); the hunt sets 3 (L10693), 4 (L10735) and 5 (L2209, L2398 and others) and resets it to 2 at the reward (L5713); only the ranger's Sammy scene (script 16 on var 0x40A2 = 17) sets 3 (L5372) and clears the actors' hide flag 1120 (L5378; set at new game, file 842 L292). The Forest of Time (map 327, file 52) has coord triggers on 0x4099 = 3 (script 1, entrance clearing 16–18,81–82; ends with 0x4099 = 4 at L2875) and = 5 (script 3, upper-forest arrival 15,38; Marauder, Sammy and Celebi are objects 7–11, hide flag 2110, set only at the end of that scene, L2397; the scene goes on to set 6, L2405); the maze copy of Ilex Forest (map 462, file 106) sends you back from its last exit on 2 and 4 (D-1429). The forest door in Ilex Forest has no condition. Emulator: work/build/harness/guide-review-20261006/pass2-A/fot_{v3,v5}_{cn,en} (0x4099 = 3: arrival scene, bank 81 #0–16, actors absent, 0x4099 → 4; 0x4099 = 5: Marauder lines bank 81 #59–73, then `TrainerBattle`); maze: ch13/maze_*.
 
 ### Island Forest wild Pokémon
 
@@ -1360,6 +1366,12 @@ These entries can freeze the game, cost you something, or close a quest or battl
 - When a wild Pokémon's **Future Sight** hits your Pokémon, the message says "The wild …took the Future Sight attack!" with your Pokémon's name; when yours hits the wild one, it leaves out "The wild". The message follows the side of the Pokémon that used the move.
 
 *Source:* D-1461 (battle_string 1#1212–1215), D-1568 (1#1464–1467). Emulator (`emu_harness.py vqueue --case probe`, both ROMs): Soak on a wild Geodude printed 1#1213 with 浸水 / Soak in the type slot; a Greninja with Protean using Quick Attack printed 1#1212 with the move name; a wild Mewtwo's Future Sight on the player's Chansey printed 1#1465, the player's on a wild Shuckle 1#1464.
+
+### No Struggle when a Pokémon runs out of PP
+
+**A Pokémon with no PP left never uses Struggle.** Choosing FIGHT opens the move list, and every move says it is out of PP, so you can't pick an attack. Switch to another Pokémon or use a Leppa Berry from the Bag (Ethers and Elixirs can't be used in battle, see [Status medicine in battle](#status-medicine-in-battle)). If your only Pokémon that can still battle has no PP left and you have no Leppa Berry, a Trainer battle can't go on and you have to reset. Watch out in the Route 12 battle against the boyfriend (Ace Trainer Newt): his Rattata knows only Normal-type moves, so a team of Ghost types can neither lose nor win there. Bring a Pokémon that isn't Ghost type. Suspected hack bug; the Chinese game does the same. Tested in an emulator (Chinese ROM and English build).
+
+*Source:* with all four moves at 0 PP, FIGHT opens the move list and each move prints its "out of PP" message; the turn can't be submitted (no Struggle). Seen against trainer 185 (Route 12 Ace Trainer Newt, file 199 `TrainerBattle 185, 0, 1, 0`; Lv. 13 Rattata with Tail Whip, Focus Energy, Quick Attack, Tackle) and trainer 5. Emulator evidence: work/build/harness/bugreports-20261006/struggle/. Leppa Berry is in the battle Bag's HP/PP Restore pocket; Ether, Max Ether, Elixir and Max Elixir aren't (D-1495, work/notes/status_healers_rc5.md).
 
 ### Traded Pokémon get no Exp. boost
 

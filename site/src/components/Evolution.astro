@@ -1,21 +1,19 @@
 ---
-// One "Evolves from" / "Evolves into" line on a Pokémon page. A single evolution with a single condition stays on
-// one line ("Evolves from Haunter holding Spell Tag."); more conditions or more evolutions become a list.
+// Keep each evolution and its conditions together in one sentence.
 import Mon from './Mon.astro';
 import { speciesById, itemById, itemUrl, moveById, moveUrl, type EvoLink, type EvoCond } from '../lib/data';
 const { label, entries } = Astro.props as { label: string; entries: EvoLink[] };
 const name = (id: number, fallback?: string) => speciesById.get(id)?.name ?? fallback ?? '?';
-const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 /** A condition split around its link: [text before, link, text after]. */
-function parts(c: EvoCond, first: boolean) {
-	const [pre, post = ''] = (first ? cap(c.text) : c.text).split('{}');
+function parts(c: EvoCond) {
+	const text = c.text.startsWith('holding ') ? `while ${c.text}` : c.text;
+	const [pre, post = ''] = text.split('{}');
 	if (!c.text.includes('{}')) return { pre, post: '' };
 	if (c.species !== undefined) return { pre, post, mon: c.species };
 	const it = c.item !== undefined ? itemById.get(c.item) : undefined;
 	const mv = c.move !== undefined ? moveById.get(c.move) : undefined;
 	return { pre, post, href: it ? itemUrl(it) : moveUrl(mv), text: it?.name ?? mv?.name ?? '?' };
 }
-const extra = (e: EvoLink) => (e.original === undefined ? '' : e.original === null ? ' (new in this hack)' : ` (HeartGold: ${e.original})`);
 const single = entries.length === 1;
 ---
 {single ? (
@@ -24,17 +22,12 @@ const single = entries.length === 1;
 			entries[0].blocked
 				? <>: <strong>not possible in this game</strong>: {entries[0].blocked}.</>
 				: <>: <strong>not possible in this game</strong>. The game never checks the method its data gives (in the official games: {entries[0].official}).</>
-		) : entries[0].conds.length === 1 ? (
-			<> {(() => { const p = parts(entries[0].conds[0], false); return <>{p.pre}{p.mon !== undefined ? <Mon id={p.mon} name={name(p.mon)} /> : p.href ? <a href={p.href}>{p.text}</a> : p.text}{p.post}</>; })()}<span class="small muted">{extra(entries[0])}</span>.</>
 		) : (
-			<>:<span class="small muted">{extra(entries[0])}</span></>
+			<>{entries[0].conds.map((c) => { const p = parts(c); return <> {p.pre}{p.mon !== undefined ? <Mon id={p.mon} name={name(p.mon)} /> : p.href ? <a href={p.href}>{p.text}</a> : p.text}{p.post}</>; })}.</>
 		)}
 	</p>
 ) : (
 	<p>{label}:</p>
-)}
-{single && !entries[0].never && entries[0].conds.length > 1 && (
-	<ul>{entries[0].conds.map((c) => { const p = parts(c, true); return <li>{p.pre}{p.mon !== undefined ? <Mon id={p.mon} name={name(p.mon)} /> : p.href ? <a href={p.href}>{p.text}</a> : p.text}{p.post}</li>; })}</ul>
 )}
 {!single && (
 	<ul>
@@ -45,12 +38,8 @@ const single = entries.length === 1;
 					e.blocked
 						? <>: <strong>not possible in this game</strong> ({e.blocked})</>
 						: <>: <strong>not possible in this game</strong> (in the official games: {e.official})</>
-				) : e.conds.length === 1 ? (
-					<> {(() => { const p = parts(e.conds[0], false); return <>{p.pre}{p.mon !== undefined ? <Mon id={p.mon} name={name(p.mon)} /> : p.href ? <a href={p.href}>{p.text}</a> : p.text}{p.post}</>; })()}<span class="small muted">{extra(e)}</span></>
 				) : (
-					<>:<span class="small muted">{extra(e)}</span>
-						<ul>{e.conds.map((c) => { const p = parts(c, true); return <li>{p.pre}{p.mon !== undefined ? <Mon id={p.mon} name={name(p.mon)} /> : p.href ? <a href={p.href}>{p.text}</a> : p.text}{p.post}</li>; })}</ul>
-					</>
+					<>{e.conds.map((c) => { const p = parts(c); return <> {p.pre}{p.mon !== undefined ? <Mon id={p.mon} name={name(p.mon)} /> : p.href ? <a href={p.href}>{p.text}</a> : p.text}{p.post}</>; })}.</>
 				)}
 			</li>
 		))}

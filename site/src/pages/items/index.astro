@@ -2,10 +2,17 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { items, url } from '../../lib/data';
 const pockets = [...new Set(items.map((i) => i.pocket))];
-const kinds = (i: typeof items[number]) => [...new Set(i.sources.map((s) => s.kind))].join(', ');
+const kinds = (i: typeof items[number]) => [...new Set([
+	...i.sources.map((s) => s.kind), ...((i.wildHeld?.length ?? 0) ? ['held by wild Pokémon'] : []),
+])].join(', ');
+const hasSource = (i: typeof items[number]) => !!(i.sources.length || i.wildHeld?.length);
+const places = (i: typeof items[number]) => new Set([
+	...i.sources.map((s) => s.area ?? s.place),
+	...(i.wildHeld ?? []).flatMap((holder) => holder.locations.map((location) => location.area)),
+]).size;
 ---
-<StarlightPage frontmatter={{ title: 'Items', description: 'Every item in Origin HeartGold and where to get it: item balls, hidden items, gifts and shops.', tableOfContents: false }}>
-	<p>Every item you can get in the game, with its sources from the game's maps, scripts and verified rewards. Items that are only in the game's data files and can't be obtained in normal play are left out.
+<StarlightPage frontmatter={{ title: 'Items', description: 'Every item in Origin HeartGold and where to get it: wild Pokémon, item balls, hidden items, gifts and shops.', tableOfContents: false }}>
+	<p>Every item you can get in the game, with its sources from the game's maps, scripts, wild Pokémon and verified rewards. Items that are only in the game's data files and can't be obtained in normal play are left out.
 	A few items with no confirmed source (only on trainers' Pokémon, or only through wireless play) are hidden by default. "Shop price" is only shown for items a shop sells.</p>
 	<div class="table-filter" data-table="item-table">
 		<input type="search" placeholder="Search items…" aria-label="Search items" />
@@ -20,12 +27,12 @@ const kinds = (i: typeof items[number]) => [...new Set(i.sources.map((s) => s.ki
 		<thead><tr><th>Item</th><th>Pocket</th><th>Shop price</th><th>How to get it</th><th>Places</th></tr></thead>
 		<tbody>
 			{items.map((i) => (
-				<tr data-pocket={i.pocket} data-found={i.sources.length ? 'yes' : 'no'} hidden={!i.sources.length}>
+				<tr data-pocket={i.pocket} data-found={hasSource(i) ? 'yes' : 'no'} hidden={!hasSource(i)}>
 					<td><a href={url(`/items/${i.slug}/`)}>{i.name}</a>{i.game && <span class="sr-only"> {i.game}</span>}</td>
 					<td>{i.pocket}</td>
 					<td>{i.price && i.sources.some((s) => s.kind === 'shop') ? `$${i.price.toLocaleString('en-US')}` : '—'}</td>
 					<td>{kinds(i) || '—'}</td>
-					<td>{new Set(i.sources.map((s) => s.place)).size || ''}</td>
+					<td>{places(i) || ''}</td>
 				</tr>
 			))}
 		</tbody>

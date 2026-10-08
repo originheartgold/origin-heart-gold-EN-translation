@@ -8,10 +8,13 @@ Reads the untouched CN ROM through romdata.Rom (cached in work/build/docs_cache.
 """
 import argparse
 import collections
+import calendar
 import json
+import itertools
 import os
 import re
 import sys
+import struct
 import unicodedata
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -19,6 +22,7 @@ sys.path.insert(0, os.path.join(HERE, '..', 'docs'))
 import gen_docs as G      # noqa: E402
 import romdata as R       # noqa: E402
 import landmarks as LM    # noqa: E402
+import safari_held as SH  # noqa: E402
 
 OUT = os.path.join(R.REPO, 'site', 'src', 'data')
 # reviewed lists, shared with the docs (see gen_docs.reviewed and each file's _about): species, forms and items a
@@ -270,6 +274,116 @@ def export_evolutions(ctx, sp_slug):
                     row['original'] = '; '.join(old) if old else None
             rows.append(row)
     return rows
+
+
+def held_item_chances(items):
+    """Ordinary wild held-item rolls; identical slots guarantee that item.
+
+    Verified in the untouched CN v4.0.3 ARM9 roller at 0x0207138C:
+    thresholds 45/95 at 0x020FE716 give 50%/5%. The roller reads form-aware
+    personal fields 0x10/0x11. Compound Eyes' separate 20/80 thresholds are
+    deliberately not used here: source pages show the unmodified chances.
+    """
+    common, rare = items
+    if common == rare:
+        return [(common, 100)] if common else []
+    return [(item, chance) for item, chance in ((common, 50), (rare, 5)) if item]
+
+
+def calendar_wild_rows(ctx, zone_area):
+    """Actual date-locked slot-11 replacements from the CN encounter loader.
+
+    See emu_calendar.py and chinese_source_rom_verify_calendar.md. Only maps
+    with walk encounters are reachable (the Volcanion entry has no walk rate).
+    """
+    enc = ctx.enc_by_file[0]
+    for month, day, zid, sp, form, period in struct.iter_unpack('<BBHHBB', ctx.rom.a9(0x020F6A64, 64)):
+        area = zone_area.get(zid)
+        if not area:
+            continue
+        bank = ctx.zones[zid]['wild_encounter_bank']
+        if not 0 <= bank < len(enc) or not enc[bank]['rates']['walk']:
+            continue
+        idx = species_index(ctx, sp, form)
+        when = 'any time' if period == 0 else 'morning' if period == 1 else 'night'
+        method = 'Calendar encounter: %s %d, %s (replaces the 1%% grass/cave slot)' % (
+            calendar.month_name[month], day, when)
+        row = dict(id=idx, name=ctx.sp(idx), level=G.lvl(enc[bank]['levels'][11], enc[bank]['levels'][11]), pct=1)
+        yield area, ctx.zname(zid), method, row
+
+
+def safari_wild_rows(ctx, zone_area):
+    """Candidate species with the selected area/object conditions kept explicit."""
+    area = zone_area.get(357)
+    if not area:
+        return
+    grouped = collections.OrderedDict()
+    for source in SH.safari_rows(ctx.rom.path):
+        key = tuple(source[k] for k in ('species', 'level', 'area', 'method', 'conditional'))
+        times = grouped.setdefault(key, [])
+        if source['time'] not in times:
+            times.append(source['time'])
+    for (species, level, safari_area, safari_method, conditional), times in grouped.items():
+        sp, form = R.split_species(species)
+        idx = species_index(ctx, sp, form)
+        condition = '; object requirements vary' if conditional else ''
+        when = 'all day' if len(times) == 3 else ' and '.join(times)
+        method = 'Safari Zone: %s area selected, %s, %s%s' % (
+            safari_area, safari_method, when, condition)
+        row = dict(id=idx, name=ctx.sp(idx), level=G.lvl(level, level), pct=None)
+        yield area, 'Safari Zone: ' + safari_area, method, row
+
+
+def wild_held_sources(ctx, areas, species_ids, extra_rows=()):
+    """Join actual encounter rows to form-aware personal data, never gift/trade availability.
+
+    Reuse the displayed encounter tables so time, weekday, radio and tree conditions
+    remain attached to their percentages. A percentage is conditional on its method,
+    not the chance of finding that item on every step.
+    """
+    locations = collections.defaultdict(list)
+
+    def add(area, place, method, row, rate):
+        sp = row['id']
+        if sp not in species_ids:
+            return
+        # Night fishing rows encode the applicable rod in their display name.
+        name = ctx.sp(sp)
+        detail = row.get('name', '')
+        if detail.startswith(name + ' ('):
+            method += ': ' + detail[len(name) + 1:]
+        source = dict(area=area['slug'], place=place, method=method,
+                      level=row['level'], encounterRate=rate)
+        if source not in locations[sp]:
+            locations[sp].append(source)
+
+    for area in areas.values():
+        for block in area['encounters']:
+            for section in block['sections']:
+                for row in section['rows']:
+                    add(area, block['label'], section['title'], row, row['pct'])
+        for block in area['headbutt']:
+            for section in block['sections']:
+                for row in section['rows']:
+                    add(area, block['label'], 'Headbutt: ' + section['title'], row, row['pct'])
+        if area['contest']:
+            for group in area['contest']['sets']:
+                for row in group['rows']:
+                    add(area, area['name'], 'Bug-Catching Contest: ' + group['title'], row, row['rate'])
+        for row in area.get('statics', []):
+            if row['kind'] == 'static':
+                # WildBattle rolls held items too, but these sources are not
+                # random encounter tables and are not necessarily repeatable.
+                add(area, area['name'], 'Scripted wild battle (may be one-time)', row, None)
+
+    for area, place, method, row in extra_rows:
+        add(area, place, method, row, row['pct'])
+
+    sources = collections.defaultdict(list)
+    for sp in sorted(locations):
+        for item, chance in held_item_chances(ctx.personal[sp]['items']):
+            sources[item].append(dict(species=sp, chance=chance, locations=locations[sp]))
+    return sources
 
 
 def export(ctx):
@@ -532,6 +646,8 @@ def export(ctx):
                 seen[sh['room']] += 1
                 sh['room'] = '%s, counter %d' % (sh['room'], seen[sh['room']])
     need = ctx.item_need
+    wild_held = wild_held_sources(ctx, areas, set(sp_ids), itertools.chain(
+        calendar_wild_rows(ctx, zone_area), safari_wild_rows(ctx, zone_area)))
     items = []
     for i in range(1, len(ctx.items)):
         name = ctx.it(i)
@@ -547,7 +663,7 @@ def export(ctx):
                 needed.setdefault(ctx.zname(zid), a['slug'] if a else None)
         items.append(dict(id=i, name=name, slug=slugs.make('item', name, i),
                           pocket=R.POCKETS[d['pocket']] if d['pocket'] < 8 else '?', price=d['price'],
-                          sources=srcs, game=game_alias(ctx, ctx.IT.get(i)),
+                          sources=srcs, wildHeld=wild_held.get(i, []), game=game_alias(ctx, ctx.IT.get(i)),
                           neededBy=[dict(place=k, area=needed[k]) for k in sorted(needed)],
                           note=ITEMS_EXTRA.get(i, {}).get('note')))
 
