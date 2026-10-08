@@ -37,6 +37,15 @@ of the main checkout (also when run from an agent worktree).
     .venv/bin/python work/tools/emu_harness.py cleanup [--kill [--all]]                   # leftover harness processes
     python3 -m unittest discover -s work/tools -p test_emu_harness.py      # pure parts, no ROM needed
 
+**Second backend: melonDS 1.1** (`--emulator melonds` before the subcommand, or `Harness(..., emulator="melonds")`).
+It emulates the ARM9 protection unit, so NULL reads that DeSmuME tolerates freeze the game as on hardware (Rocket HQ,
+the Bulbasaur follower). It has no execution hooks, but it has data watchpoints and an ARM9 abort record. The `hang`
+subcommand walks from a save and judges hang/pass. Build, API, results and limits:
+[melonds_backend.md](melonds_backend.md).
+
+    .venv/bin/python work/tools/emu_harness.py hang --case rocket_hq --rom R --sav S --expect hang|pass   # melonDS
+    .venv/bin/python work/tools/emu_harness.py --emulator melonds info --sav S
+
 A boot plus teleport takes about 15 s; 20 Unown encounters take about 2–3 minutes (headless, ~300 fps).
 `--state FILE` writes a DeSmuME savestate right after the teleport; `Harness(rom, savestate=FILE)` then
 starts there in under a second.
