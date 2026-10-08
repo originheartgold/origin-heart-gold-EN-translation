@@ -86,10 +86,10 @@
   {
    "id": 10,
    "zh": "太棒了！赢了！{SCROLL}",
-   "en": "I did it!{NEWLINE}I won somehow!{SCROLL}",
+   "en": "I did it! I won!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/10"
+   "origin": "agent",
+   "notes": "US 0724/10 | RV083: addition: US 'somehow' not in zh (D-2009)"
   },
   {
    "id": 11,
@@ -134,10 +134,10 @@
   {
    "id": 16,
    "zh": "少女的欲望{NEWLINE}永无止境！{SCROLL}",
-   "en": "The greed of today’s girls knows{NEWLINE}no bounds!{SCROLL}",
+   "en": "A girl’s desires know no bounds!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/16"
+   "origin": "agent",
+   "notes": "US 0724/16 | RV083: addition: 'today's' not in zh"
   },
   {
    "id": 17,
@@ -190,10 +190,10 @@
   {
    "id": 23,
    "zh": "太勉强了么？我⋯⋯{NEWLINE}明明成绩一直是最好的⋯⋯{SCROLL}",
-   "en": "Was it too much? For me... And my{NEWLINE}grades are always the best...{SCROLL}",
+   "en": "Did I push myself too hard? I... But my{NEWLINE}grades have always been the best...{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV083: grammar: garbled clause order"
   },
   {
    "id": 24,
@@ -278,10 +278,10 @@
   {
    "id": 34,
    "zh": "太棒了！！赢了！！　{NEWLINE}这样我也成为明星了！{SCROLL}",
-   "en": "Yes! I won!{NEWLINE}I’m going to be a star!{SCROLL}",
+   "en": "Yes! I won!! Now I’m a star, too!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/34"
+   "origin": "agent",
+   "notes": "US 0724/34 | RV083: omission: zh 这样我也成为明星了: now a star too"
   },
   {
    "id": 35,
@@ -326,10 +326,10 @@
   {
    "id": 40,
    "zh": "这个精灵也是老爸{NEWLINE}花钱给我买的⋯⋯{SCROLL}",
-   "en": "My father’s money bought my Pokémon.{SCROLL}",
+   "en": "My father’s money bought me these{NEWLINE}Pokémon, too...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/40"
+   "origin": "agent",
+   "notes": "US 0724/40 | RV083: omission: dropped 也 and trailing ⋯⋯"
   },
   {
    "id": 41,
@@ -342,10 +342,10 @@
   {
    "id": 42,
    "zh": "那么我们赶快开始吧？{NEWLINE}我赶时间。",
-   "en": "Well, let’s get started right away. I’m{NEWLINE}in a hurry.",
+   "en": "Shall we get started right away, then?{NEWLINE}I’m in a hurry.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV083: omission: zh is a question"
   },
   {
    "id": 43,
@@ -758,18 +758,18 @@
   {
    "id": 94,
    "zh": "ｂａｂｙ们,我赢了哦！{NEWLINE}爱就是力量！{SCROLL}",
-   "en": "My ladies, my babes, I won for you.{NEWLINE}Your love is my power, right?{SCROLL}",
+   "en": "My babes, I won! Love is power!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/94"
+   "origin": "agent",
+   "notes": "US 0724/94 | RV083: addition: US 'right?' adds doubt; 爱就是力量"
   },
   {
    "id": 95,
    "zh": "虽然输了,但是我对ｂａｂｙ们的{NEWLINE}爱不会输。{SCROLL}",
-   "en": "I lost, but my love for the babes can’t{NEWLINE}be beat...maybe.{SCROLL}",
+   "en": "I lost, but my love for the{NEWLINE}babes can’t be beat.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/95"
+   "origin": "agent",
+   "notes": "US 0724/95 | RV083: addition: US 'maybe' not in zh (D-2009)"
   },
   {
    "id": 96,
@@ -814,10 +814,10 @@
   {
    "id": 101,
    "zh": "比如偶像即使输了{NEWLINE}也不能生气。{SCROLL}",
-   "en": "If an Idol loses, she must never act{NEWLINE}angry. That’s a big no-no.{SCROLL}",
+   "en": "For example, even when an Idol loses,{NEWLINE}she must never get angry.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/101"
+   "origin": "agent",
+   "notes": "US 0724/101 | RV083: addition: US 'big no-no' not in zh; restored 比如"
   },
   {
    "id": 102,
@@ -1070,10 +1070,10 @@
   {
    "id": 133,
    "zh": "比赛也强,受欢迎也是{NEWLINE}没办法的啊⋯⋯{SCROLL}",
-   "en": "I’m a good battler, too. I can’t help it{NEWLINE}that the ladies fall for me.{SCROLL}",
+   "en": "I’m a good battler, too. I can’t help{NEWLINE}being popular...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/133"
+   "origin": "agent",
+   "notes": "US 0724/133 | RV083: meaning: zh says popular, not ladies falling (D-2009)"
   },
   {
    "id": 134,
@@ -1214,10 +1214,10 @@
   {
    "id": 151,
    "zh": "真的就好像长出了翅膀一样！{NEWLINE}噼啪！！全新的自己！！{SCROLL}",
-   "en": "It’s like I’ve sprouted wings!{NEWLINE}Viva to the new me!{SCROLL}",
+   "en": "It’s like I’ve sprouted wings! Pop!! A{NEWLINE}whole new me!!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/151"
+   "origin": "agent",
+   "notes": "US 0724/151 | RV083: omission: 噼啪 dropped"
   },
   {
    "id": 152,
@@ -1454,10 +1454,10 @@
   {
    "id": 181,
    "zh": "对旧东西感兴趣的人有{NEWLINE}成为遗迹迷的潜质。",
-   "en": "People interested in old architecture{NEWLINE}are potential Ruin Maniacs.",
+   "en": "People interested in old things are{NEWLINE}potential Ruin Maniacs.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/181"
+   "origin": "agent",
+   "notes": "US 0724/181 | RV083: meaning: 旧东西 = old things, not architecture"
   },
   {
    "id": 182,
@@ -1750,10 +1750,10 @@
   {
    "id": 218,
    "zh": "啊哦！这真是最恶心{NEWLINE}的旋律啊！{SCROLL}",
-   "en": "Ow!{NEWLINE}That was the most disgusting melody!{SCROLL}",
+   "en": "Uh-oh!{NEWLINE}That was the most disgusting melody!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV083: meaning: 啊哦 = uh-oh"
   },
   {
    "id": 219,
@@ -1894,10 +1894,10 @@
   {
    "id": 236,
    "zh": "去吧！我会在此{NEWLINE}等待你的归来！{SCROLL}",
-   "en": "Go on, kid! Take on the world!{NEWLINE}I’ll look forward to your return!{SCROLL}",
+   "en": "Go on! I’ll wait here for your return!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/236"
+   "origin": "agent",
+   "notes": "US 0724/236 | RV083: addition: US 'kid, take on the world' not in zh"
   },
   {
    "id": 237,
@@ -1966,18 +1966,18 @@
   {
    "id": 245,
    "zh": "偶像也是普通的女孩子啊,{NEWLINE}也会想和精灵玩啊。{SCROLL}",
-   "en": "Pop stars are ordinary girls at heart.{NEWLINE}We want to enjoy our Pokémon, too!{SCROLL}",
+   "en": "Idols are ordinary girls at heart. We{NEWLINE}want to play with our Pokémon, too!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/245"
+   "origin": "agent",
+   "notes": "US 0724/245 | RV083: name: 偶像 = Idol (D-0343)"
   },
   {
    "id": 246,
    "zh": "我是自封的偶像,{NEWLINE}有什么不对的么？",
-   "en": "I’m a self-proclaimed idol. Got a{NEWLINE}problem with that?",
+   "en": "I’m a self-proclaimed Idol. Got a{NEWLINE}problem with that?",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0724/246; ext-review RB-002"
+   "notes": "US 0724/246; ext-review RB-002 | RV083: name: Idol capitalised (D-0343)"
   },
   {
    "id": 247,
@@ -2318,10 +2318,10 @@
   {
    "id": 289,
    "zh": "喀嚓！喀嚓！！{NEWLINE}决定性的瞬间！！{SCROLL}",
-   "en": "There! And there again!{NEWLINE}Decisive moments in time!{SCROLL}",
+   "en": "Click! Click!! The decisive moment!!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/289"
+   "origin": "agent",
+   "notes": "US 0724/289 | RV083: omission: shutter sound 喀嚓 dropped"
   },
   {
    "id": 290,
@@ -2758,18 +2758,18 @@
   {
    "id": 344,
    "zh": "对不起,小精灵⋯⋯{NEWLINE}我太轻敌了⋯⋯{SCROLL}",
-   "en": "I apologize, my dear Pokémon...{NEWLINE}I was caught unprepared...{SCROLL}",
+   "en": "Sorry, my little Pokémon...{NEWLINE}I underestimated my opponent...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/344"
+   "origin": "agent",
+   "notes": "US 0724/344 | RV083: meaning: 轻敌 = underestimated the foe (D-2010)"
   },
   {
    "id": 345,
    "zh": "呼,呼,呼,最重要的是{NEWLINE}决不放弃。",
-   "en": "Fwo-fwo-fwo. Youngster, what’s most{NEWLINE}important is to never give up.",
+   "en": "Fwo-fwo-fwo. The most important thing{NEWLINE}is to never give up.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/345"
+   "origin": "agent",
+   "notes": "US 0724/345 | RV083: addition: 'Youngster' not in zh"
   },
   {
    "id": 346,
@@ -2822,10 +2822,10 @@
   {
    "id": 352,
    "zh": "好了好了,不要哭了,{NEWLINE}你已经尽力了。{SCROLL}",
-   "en": "Oh, now, please don’t cry.{NEWLINE}You should be proud of yourself, dear.{SCROLL}",
+   "en": "Now, now, don’t cry. You did your best.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/352"
+   "origin": "agent",
+   "notes": "US 0724/352 | RV083: meaning: 你已经尽力了 = you did your best"
   },
   {
    "id": 353,
@@ -3038,10 +3038,10 @@
   {
    "id": 379,
    "zh": "不觉得我说的话{NEWLINE}很酷么！{SCROLL}",
-   "en": "Don’t you think what I said was cool!{SCROLL}",
+   "en": "Wasn’t what I just said cool?!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV083: grammar: statement with question form"
   },
   {
    "id": 380,
@@ -3134,10 +3134,10 @@
   {
    "id": 391,
    "zh": "为了饲养强大的精灵,{NEWLINE}我要多多学习。{SCROLL}",
-   "en": "You can’t overlook the role of{NEWLINE}knowledge in raising tough Pokémon.{SCROLL}",
+   "en": "I need to study a lot{NEWLINE}to raise strong Pokémon.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/391"
+   "origin": "agent",
+   "notes": "US 0724/391 | RV083: meaning: speaker must study, not generic advice (D-2010)"
   },
   {
    "id": 392,
@@ -3206,10 +3206,10 @@
   {
    "id": 400,
    "zh": "一看见你我就想起我年轻的时候,{NEWLINE}啊,那时啊⋯⋯{SCROLL}",
-   "en": "Seeing you brings back a flood of{NEWLINE}memories. Ah, yes, indeed...{SCROLL}",
+   "en": "Seeing you reminds me of my youth. Ah,{NEWLINE}back then...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/400"
+   "origin": "agent",
+   "notes": "US 0724/400 | RV083: omission: youth/back then dropped"
   },
   {
    "id": 401,
@@ -3254,10 +3254,10 @@
   {
    "id": 406,
    "zh": "爹地⋯⋯妈咪⋯⋯你们在看么？{NEWLINE}我⋯⋯赢了⋯⋯{SCROLL}",
-   "en": "Daddy... Mommy... Did you see?{NEWLINE}I won, and it’s all for you...{SCROLL}",
+   "en": "Daddy... Mommy... Are you watching?{NEWLINE}I... won...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/406"
+   "origin": "agent",
+   "notes": "US 0724/406 | RV083: addition: 'it's all for you' not in zh; 在看 = watching"
   },
   {
    "id": 407,
@@ -3310,10 +3310,10 @@
   {
    "id": 413,
    "zh": "精灵汁的成分中{NEWLINE}不含有任何精灵。{SCROLL}",
-   "en": "My Pokémon drink contains no actual{NEWLINE}Pokémon or their byproducts.{SCROLL}",
+   "en": "My Pokémon drink doesn’t contain any{NEWLINE}Pokémon at all.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/413"
+   "origin": "agent",
+   "notes": "US 0724/413 | RV083: addition: 'byproducts' not in zh (D-2009)"
   },
   {
    "id": 414,
@@ -3326,18 +3326,18 @@
   {
    "id": 415,
    "zh": "嗯⋯⋯你明白么？{NEWLINE}你不明白吧⋯⋯{SCROLL}",
-   "en": "Heheh, do you get it?{NEWLINE}I doubt you’d get it. No one does.{SCROLL}",
+   "en": "Hmm... Do you get it?{NEWLINE}You don’t, do you...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/415"
+   "origin": "agent",
+   "notes": "US 0724/415 | RV083: addition: 'No one does' not in zh (D-2009)"
   },
   {
    "id": 416,
    "zh": "你能明白么？{NEWLINE}不明白吧⋯⋯{SCROLL}",
-   "en": "Do you get what I’m saying?{NEWLINE}I doubt you’d get it. No one ever does.{SCROLL}",
+   "en": "Do you understand?{NEWLINE}You don’t, do you...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0724/416"
+   "origin": "agent",
+   "notes": "US 0724/416 | RV083: addition: 'No one ever does' not in zh (D-2009)"
   },
   {
    "id": 417,
