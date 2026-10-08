@@ -112,8 +112,17 @@ notes = "Page 2 row 5: full-width 0-9 . , -> ZXCVBNM , ."
 
 [[us_ref]]
 id = "naming-keyboard-us-handler"
-claim = "US arm9 0x02084884 is the USA key handler (pret NamingScreen_HandleCharacterInput), hack 0x02083814: same prologue"
+claim = "US arm9 0x02084884 starts the USA key handler (pret NamingScreen_HandleCharacterInput): push {r4-r6, lr}, sub sp, #0x10, adds r4, r0, #0, ldr r0 (unique)"
 file = "arm9"
 address = "0x02084884"
-hack = "arm9 0x02083814"
-length = 6
+expect = "B570 B084 1C04 48CC"
+unique = true
+
+[[us_ref]]
+id = "naming-keyboard-us-handler-body"
+claim = "The next 22 bytes (US arm9 0x0208488C) are the hack's 0x0208381C: the same handler, before the hack's pinyin IME"
+file = "arm9"
+address = "0x0208488C"
+hack = "arm9 0x0208381C"
+length = 22
+unique = true

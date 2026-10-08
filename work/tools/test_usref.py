@@ -20,28 +20,48 @@ def hw(*units):
 
 
 class Citations(unittest.TestCase):
-    CITED = {("arm9", "ram", 0x020830D8), ("overlay14", "off", 0x12BB4)}
+    CITED = {("arm9", "ram", 0x020830D8), ("arm9", "ram", 0x020431D6), ("overlay14", "off", 0x12BB4)}
 
-    def probs(self, text):
-        return F.us_citation_problems(text, "t.asm", self.CITED)
+    def probs(self, text, label="t.asm"):
+        return F.us_citation_problems(text, label, self.CITED)
+
+    def assertRefused(self, text, num, label="t.asm"):
+        probs = self.probs(text, label)
+        self.assertTrue(any(f"{num} follows" in p and "write a USA address as `US <file> 0x<RAM address>`" in p
+                            for p in probs), (text, probs))
 
     def test_cited_and_backed(self):
         self.assertEqual(self.probs("; CreateArgs (hack 0x02081DA4, US arm9 0x020830D8) in Oak's speech\n"), [])
         self.assertEqual(self.probs("the USA table (US overlay14+0x12BB4).\n"), [])
-        self.assertEqual(self.probs("; US limits, the US sizes; USA ROM. 0x1234 is the hack's\n"), [])
+        self.assertEqual(self.probs("; US limits, the US sizes; USA ROM. 0x02001234 is the hack's\n"), [])
+
+    def test_prose_around_a_citation_is_not_refused(self):
+        for text in ("; US arm9 0x020431D6 and the hack 0x02081DA4 match\n",
+                     "; US arm9 0x020431D6, value 0x0BB809B9\n",
+                     "# USA: 0xFFFF terminates\n",
+                     "; the USA key handler, hack 0x02083814\n",
+                     "; the US version, Chinese arm9 0x02083814\n",
+                     "; let us see: 0x1234\n"):
+            with self.subTest(text=text):
+                self.assertEqual(self.probs(text), [])
 
     def test_citation_without_us_ref(self):
-        probs = self.probs("x\n; script (US arm9 0x020431D6)\n")
+        probs = self.probs("x\n; script (US arm9 0x02043292)\n")
         self.assertEqual(len(probs), 1)
-        self.assertIn("t.asm:2: 'US arm9 0x020431D6' has no [[us_ref]]", probs[0])
+        self.assertIn("t.asm:2: 'US arm9 0x02043292' has no [[us_ref]]", probs[0])
 
     def test_free_form_addresses_are_refused(self):
-        for text in ("; kind 7 (US overlay 43 0x0222CD5C; pret NAME_SCREEN_UNK7)",
-                     "(US ov14 0x12BB4)", "the USA overlay 14 table (0x12BB4, 0x12C3C)",
-                     "(US 0x020431D6)", "US overlay14+0x12BB4 for [0]-[8], 0x12C3C for [17]-[19]"):
+        cases = [("; kind 7 (US overlay 43 0x0222CD5C; pret NAME_SCREEN_UNK7)", "0x0222CD5C"),
+                 ("(US ov14 0x12BB4)", "0x12BB4"), ("(US 0x02043292)", "0x02043292"),
+                 ("US overlay14+0x12BB4 for [0]-[8], overlay14+0x12C3C for [17]-[19]", "0x12C3C"),
+                 ("; as in us 0x02043292\n", "0x02043292"), ("; the U.S. 0x02043292 has it\n", "0x02043292"),
+                 ("; USA: arm9 2084884\n", "2084884"), ("; see the USA key handler at\n; 0x02084884\n", "0x02084884")]
+        for text, num in cases:
             with self.subTest(text=text):
-                probs = self.probs(text)
-                self.assertTrue(probs and "write a USA address as `US <file> 0x<RAM address>`" in probs[0], probs)
+                self.assertRefused(text, num)
+        # fix.toml prose continues on the next line; an asm code line does not continue a comment
+        self.assertRefused("as in the USA ROM at\n0x02084884, too", "0x02084884", label="t/fix.toml")
+        self.assertEqual(self.probs("; the USA ROM has it\n.org 0x02084884\n"), [])
 
 
 class Schema(unittest.TestCase):
@@ -107,7 +127,23 @@ class CheckRef(unittest.TestCase):
         # the address cited before it was corrected (0x0222CD5A) holds another instruction
         with self.assertRaises(U.UsRefError) as cm:
             U.check_ref({}, dict(e, address="0x0222CD5A"), self.us)
-        self.assertIn("US overlay43 0x0222CD5A holds 1C20, not 1C0B (fix.toml expect)", str(cm.exception))
+        self.assertIn("US overlay43 0x0222CD5A holds 0x1c20, not 0x1c0b (fix.toml expect)", str(cm.exception))
+
+    def test_calls_and_unique(self):
+        # mov r3, #7 at 0x02000000, then bl 0x02000100 (bl at +4: 0x100 - 8 = 0xF8: halfwords F000 F87C)
+        us = FakeImages({"arm9": hw(0x2307, 0x2000, 0xF000, 0xF87C, 0x2307)})
+        e = {"id": "r", "claim": "c", "file": "arm9", "address": "0x02000000", "expect": "0x2307"}
+        self.assertIn("then bl 0x02000100", U.check_ref({}, dict(e, calls="0x02000100"), us))
+        with self.assertRaises(U.UsRefError) as cm:
+            U.check_ref({}, dict(e, calls="0x02000200"), us)
+        self.assertIn("the bl after it goes to 0x02000100, not 0x02000200", str(cm.exception))
+        with self.assertRaises(U.UsRefError) as cm:                # mov r3, #7 is there twice
+            U.check_ref({}, dict(e, unique=True), us)
+        self.assertIn("occur 2 times", str(cm.exception))
+        far = FakeImages({"arm9": hw(0x2307, 0x2000, 0x2000, 0x2000, 0x2000, 0xF000, 0xF87C)})
+        with self.assertRaises(U.UsRefError) as cm:                # the bl is more than 8 bytes away
+            U.check_ref({}, dict(e, calls="0x02000100"), far)
+        self.assertIn("no Thumb bl within 8 bytes", str(cm.exception))
 
     def test_hack_and_narc(self):
         e = {"id": "r", "claim": "c", "file": "arm9", "offset": "0x2", "hack": "arm9+0x2", "length": 4}
@@ -148,7 +184,7 @@ class RealClaims(unittest.TestCase):
     def test_the_two_corrected_citations_are_caught(self):
         us, cn = U.CodeImages(self.us), U.CodeImages(self.cn)
         kind7 = next(e for e in self.fixes["namelen"]["us_ref"] if e["id"] == "namelen-us-kind7")
-        self.assertIn("6 bytes", U.check_ref(self.fixes["namelen"], kind7, us, cn))
+        self.assertIn("then bl 0x020830D8", U.check_ref(self.fixes["namelen"], kind7, us, cn))
         with self.assertRaises(U.UsRefError):                     # the earlier citation 0x0222CD5A
             U.check_ref(self.fixes["namelen"], dict(kind7, address="0x0222CD5A"), us, cn)
         # pcbox [17]-[19]: the USA table at 0x12C3C equals the fix's new bytes; the earlier 0x12C42 does not.

@@ -17,8 +17,12 @@ A fix's source or fix.toml that cites the USA ROM writes the address as `US arm9
     # a NARC reference instead: members = [2, 3], lz10 = true (compare decompressed): the same members of the
     # Chinese ROM
 
-`fixes.py check` (the fast registry step) refuses a citation without its [[us_ref]] and a hex number after
-'US'/'USA' that is not written as a citation. This module checks each claim against the bytes:
+Optional: calls = "0x020830D8" (the Thumb bl within 8 bytes after the compared bytes goes there: the same
+call, not only the same immediate) and unique = true (the compared bytes occur once in the USA file).
+
+`fixes.py check` (the fast registry step) refuses a citation without its [[us_ref]] and an address-looking
+number after a mention of the USA ROM that is not written as a citation (fixes.us_citation_problems). This
+module checks each claim against the bytes:
 
     python3 work/tools/usref.py [--us ROM] [--rom CN] [--armips PATH]     (check.py --full: the us-refs step)
 
@@ -45,29 +49,28 @@ class UsRefError(Exception):
 
 
 class CodeImages:
-    """Decompressed arm9 (main section) and overlay images of an ndspy ROM, with their load addresses."""
+    """Read-only RAM images of an ndspy ROM's arm9 and overlays (decompressed: the USA ROM's code is), its NARC
+    members and the load addresses: hardcoded.RomView.code / narc / base, with the images kept."""
 
     def __init__(self, rom):
-        import gfx
-        self.rom = rom
-        self.code = gfx.CodeView(rom)
-        self._arm9 = None
+        import hardcoded
+        self.view = hardcoded.RomView(rom)
+        self._img = {}
 
     def base(self, key) -> int:
-        return fixreg.ARM9_BASE if key == "arm9" else self.code.ovs[int(key[7:])].ramAddress
+        return self.view.base(key)
 
     def get(self, key) -> bytes:
-        if key == "arm9":
-            if self._arm9 is None:
-                self._arm9 = bytes(self.rom.loadArm9().sections[0].data)
-            return self._arm9
-        if int(key[7:]) not in self.code.ovs:
-            raise UsRefError(f"{key} does not exist")
-        return self.code.get(key)
+        import hardcoded
+        if key not in self._img:
+            try:
+                self._img[key] = self.view.code(key)
+            except hardcoded.HardcodedError as ex:
+                raise UsRefError(str(ex)) from None
+        return self._img[key]
 
     def narc_members(self, path) -> list:
-        import msgtool as m
-        return m.Narc.parse(m.get_file(self.rom, path)).files
+        return self.view.narc(path)
 
 
 def _offset(images, key, e) -> int:
@@ -82,13 +85,10 @@ def _where(e) -> str:
     return f"US {e['file']} {e['address']}" if "address" in e else f"US {e['file']}+{e['offset']}"
 
 
-def _hw(data: bytes) -> str:
-    return " ".join(f"{data[i] | data[i + 1] << 8:04X}" for i in range(0, len(data) - 1, 2)) or "(nothing)"
-
-
 def check_ref(fx, e, us, cn=None, assembled=None) -> str:
     """Check one [[us_ref]]; returns a short 'ok' detail, raises UsRefError with what is wrong.
     us, cn: CodeImages of the USA and the Chinese ROM; assembled: asmlisting.Assembled of the fix (new)."""
+    import asmpatch
     import ndspy.lz10
     if "members" in e:
         if cn is None:
@@ -130,7 +130,6 @@ def check_ref(fx, e, us, cn=None, assembled=None) -> str:
     else:
         if assembled is None:
             raise UsRefError("needs the fix assembled (armips and the Chinese ROM)")
-        import asmpatch
         reg = next(r for r in asmpatch.regions(fx, assembled.bases) if r.id == e["new"])
         want = assembled.new[reg.file][reg.start:reg.end]
         what = f"the bytes {fx['id']} writes in {e['new']}"
@@ -138,8 +137,36 @@ def check_ref(fx, e, us, cn=None, assembled=None) -> str:
         raise UsRefError(f"{_where(e)} is outside US {key} ({len(data):#x} bytes)")
     got = data[off:off + len(want)]
     if got != want:
-        raise UsRefError(f"{_where(e)} holds {_hw(got)}, not {_hw(want)} ({what})")
-    return f"{len(want)} bytes = {what}"
+        raise UsRefError(f"{_where(e)} holds {asmpatch.hw_str(got)}, not {asmpatch.hw_str(want)} ({what})")
+    done = f"{len(want)} bytes = {what}"
+    if e.get("unique"):
+        n = data.count(want)
+        if n != 1:
+            raise UsRefError(f"{_where(e)}: its {len(want)} bytes occur {n} times in US {key}, so they do not "
+                             f"identify this place (compare a longer span)")
+        done += ", unique in the file"
+    if "calls" in e:
+        base = us.base(key)
+        target = bl_target_after(data, off + len(want), base)
+        if target is None:
+            raise UsRefError(f"{_where(e)}: no Thumb bl within 8 bytes after the compared bytes")
+        if target != fixreg._int(e["calls"]):
+            raise UsRefError(f"{_where(e)}: the bl after it goes to 0x{target:08X}, not {e['calls']}")
+        done += f", then bl {e['calls']}"
+    return done
+
+
+def bl_target_after(data: bytes, off: int, base: int, window=8):
+    """The target of the first Thumb bl / blx pair that starts within `window` bytes at `off`, or None."""
+    for i in range(off, min(off + window, len(data) - 3), 2):
+        hi, lo = data[i] | data[i + 1] << 8, data[i + 2] | data[i + 3] << 8
+        if hi >> 11 == 0x1E and lo >> 11 in (0x1F, 0x1D):
+            disp = (hi & 0x7FF) << 12 | (lo & 0x7FF) << 1
+            if disp & 0x400000:
+                disp -= 0x800000
+            target = base + i + 4 + disp
+            return target & ~3 if lo >> 11 == 0x1D else target
+    return None
 
 
 def check_all(fixes, us_rom, cn_rom=None, assembled=None) -> tuple:
@@ -166,9 +193,11 @@ def main(argv=None) -> int:
     import asmlisting
     import asmpatch
     import msgtool as m
-    if not Path(a.us).is_file():
-        print(f"skipped: the USA ROM {a.us} is missing")
-        return 0
+    for what, path in (("the USA ROM", a.us), ("the Chinese ROM", a.rom)):
+        if not Path(path).is_file():
+            print(f"{what} {path} is missing; nothing was checked (CONTRIBUTING.md: Building the ROM)",
+                  file=sys.stderr)
+            return 2
     try:
         all_fixes = fixreg.load_all()
         cn = m.load_rom(a.rom)

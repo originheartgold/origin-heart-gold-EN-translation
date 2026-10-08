@@ -54,10 +54,10 @@ text box.
 
 Technical: the hack redrew the ellipsis (code 0x01AF) and the curly double quotes (0x01B4, 0x01B5) of the
 font NARC a/0/1/6 as CJK-width glyphs: 12 px wide in fonts 0, 1 and 2 and 13 px in font 4 (the hack's
-redrawn Latin font), where the USA fonts have 6-7 px. In fonts 0-2 the letters, digits and common
-punctuation are byte-identical to the USA ROM; besides these three, the hack also changed 《 》 (0x01B7,
-0x01B8: 12 px in fonts 0-2), ~ (0x01C3, fonts 1-2: another glyph, same width), Ø ø (font 0) and, in font 1,
-Æ Ð Ø Þ æ ð ø þ ° _ ＿ (width 0), Œ œ and Ş ş. This fix leaves those as they are.
+redrawn Latin font), where the USA fonts have 6-7 px. In fonts 0-2 the half-width Latin range (0-9, A-Z,
+a-z, 0x0121-0x015E, and the ASCII punctuation but ~) is byte-identical to the USA ROM. Every other code that differs
+(《 》, some full-width punctuation, a few accented letters, spacing codes, the hack's added 0x01F0-0x01FD) is
+listed in work/notes/text_metrics.md; this fix leaves them as they are.
 QA lays out the English against the vanilla widths and flags lines that only fit with them
 (needs_vanilla_glyphs).
 
@@ -73,7 +73,7 @@ glyph changes. build.py --glyph-fonts can narrow the font list; the verify step 
 
 - D-2082: the user confirmed the glyph restore (the question D-2042, resolved)
 - Related: D-0028 (quote-style rule, provisional) cites the hack's 12 px widths of “ ”
-- work/notes/text_metrics.md: 'The hack's Latin is the vanilla Latin' (width table, recommendation)
+- work/notes/text_metrics.md: 'The hack's half-width Latin is the vanilla Latin' (width table of every differing code, recommendation)
 - work/notes/integrity_audit_text.md: fonts row (only 01AF/01B4/01B5 differ from the hack)
 - work/tools/qa.py: needs_vanilla_glyphs warning
 - CHANGELOG.md v1.0.0: 'Restored the US glyphs for … “ ”, which the hack had widened to 12 px.'
@@ -1308,16 +1308,17 @@ the hack removed that prompt (D-1040). Default names (bank 0247) are 5 character
 
 **USA cross-checks** (`[[us_ref]]`, each checked against the USA ROM by `usref.py`, `check.py --full`):
 
-- `US arm9 0x020830D8` = `B5F8 1C0D 2154 9000`: US arm9 0x020830D8 is NamingScreen_CreateArgs; push {r3-r7, lr}, alloc 0x54 bytes, as at hack 0x02081DA4
-- `US overlay53 0x021E594E` = the new bytes of `namelen-player-intro`: US overlay53 0x021E594E: Oak's speech, player name, the same call with mov r3, #7
-- `US overlay53 0x021E5966` = the new bytes of `namelen-rival-intro`: US overlay53 0x021E5966: Oak's speech, rival name, the same call with mov r3, #7
-- `US arm9 0x020431D6` = the new bytes of `namelen-player-script`: US arm9 0x020431D6: script 'name player', the same call with mov r3, #7
-- `US arm9 0x02043206` = the new bytes of `namelen-rival-script`: US arm9 0x02043206: script 'name rival', the same call with mov r3, #7
-- `US arm9 0x02043292` = the new bytes of `namelen-nickname-script`: US arm9 0x02043292: script 'nickname Pokémon', the same call with mov r3, #10
-- `US arm9 0x02049BBE` = the new bytes of `namelen-group-script`: US arm9 0x02049BBE: script 'name group', mov r3, #7 (the hack passes r1 = 5)
-- `US arm9 0x020911C4` = `230A F7F1 FF87`: US arm9 0x020911C4: egg hatch, mov r3, #10, then bl NamingScreen_CreateArgs (US arm9 0x020830D8)
+- `US arm9 0x020830D8` = `B5F8 1C0D 2154 9000` (unique in the file): US arm9 0x020830D8 is NamingScreen_CreateArgs: push {r3-r7, lr}, alloc 0x54 bytes; equivalent to the hack's 0x02081DA4 (register allocation differs)
+- `US arm9 0x0203F6E0` = the Chinese ROM's 16 bytes at `arm9 0x0203EDEC` (unique in the file): US arm9 0x0203F6E0 is CallTask_NamingScreen: its first 16 bytes are the hack's 0x0203EDEC
+- `US overlay53 0x021E594E` = the new bytes of `namelen-player-intro`, then `bl 0x020830D8`: US overlay53 0x021E594E: Oak's speech, player name: mov r3, #7, then bl NamingScreen_CreateArgs
+- `US overlay53 0x021E5966` = the new bytes of `namelen-rival-intro`, then `bl 0x020830D8`: US overlay53 0x021E5966: Oak's speech, rival name: mov r3, #7, then bl NamingScreen_CreateArgs
+- `US arm9 0x020431D6` = the new bytes of `namelen-player-script`, then `bl 0x0203F6E0`: US arm9 0x020431D6: script 'name player': mov r3, #7, then bl CallTask_NamingScreen
+- `US arm9 0x02043206` = the new bytes of `namelen-rival-script`, then `bl 0x0203F6E0`: US arm9 0x02043206: script 'name rival': mov r3, #7, then bl CallTask_NamingScreen
+- `US arm9 0x02043292` = the new bytes of `namelen-nickname-script`, then `bl 0x0203F6E0`: US arm9 0x02043292: script 'nickname Pokémon': mov r3, #10, then bl CallTask_NamingScreen
+- `US arm9 0x02049BBE` = the new bytes of `namelen-group-script`, then `bl 0x0203F6E0`: US arm9 0x02049BBE: script 'name group': mov r3, #7 (the hack passes r1 = 5), then bl CallTask_NamingScreen
+- `US arm9 0x020911C4` = the new bytes of `namelen-nickname-egg`, then `bl 0x020830D8`: US arm9 0x020911C4: egg hatch: mov r3, #10, then bl NamingScreen_CreateArgs
 - `US overlay43 0x0222CD56` = `0x2107`: US overlay43 0x0222CD56: naming kind 7 sets r1 = 7 (mov r1, #7) for maxLen
-- `US overlay43 0x0222CD5C` = `1C0B F656 F9BB`: US overlay43 0x0222CD5C: naming kind 7 passes maxLen = r1 (add r3, r1, #0), then bl NamingScreen_CreateArgs
+- `US overlay43 0x0222CD5C` = `0x1C0B`, then `bl 0x020830D8`: US overlay43 0x0222CD5C: naming kind 7 passes maxLen = r1 (add r3, r1, #0), then bl NamingScreen_CreateArgs
 
 **Disassembly snapshot:** [`namelen.listing`](namelen/namelen.listing) (every edit, old → new; `python3 work/tools/asmpatch.py listing --write namelen`)
 
@@ -1477,7 +1478,8 @@ the ABC page and ＡＢＣ over the QWE page.
 
 **USA cross-checks** (`[[us_ref]]`, each checked against the USA ROM by `usref.py`, `check.py --full`):
 
-- `US arm9 0x02084884` = the Chinese ROM's 6 bytes at `arm9 0x02083814`: US arm9 0x02084884 is the USA key handler (pret NamingScreen_HandleCharacterInput), hack 0x02083814: same prologue
+- `US arm9 0x02084884` = `B570 B084 1C04 48CC` (unique in the file): US arm9 0x02084884 starts the USA key handler (pret NamingScreen_HandleCharacterInput): push {r4-r6, lr}, sub sp, #0x10, adds r4, r0, #0, ldr r0 (unique)
+- `US arm9 0x0208488C` = the Chinese ROM's 22 bytes at `arm9 0x0208381C` (unique in the file): The next 22 bytes (US arm9 0x0208488C) are the hack's 0x0208381C: the same handler, before the hack's pinyin IME
 
 **Disassembly snapshot:** [`naming-keyboard.listing`](naming-keyboard/naming-keyboard.listing) (every edit, old → new; `python3 work/tools/asmpatch.py listing --write naming-keyboard`)
 

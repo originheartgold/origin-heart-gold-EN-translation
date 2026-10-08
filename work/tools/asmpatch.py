@@ -178,7 +178,8 @@ def charmap_tbl(tsv=CHARMAP_TSV) -> str:
 Region = namedtuple("Region", "file start end id expect required sha1", defaults=(None,))
 
 
-def _base(key, bases):
+def base_of(key, bases):
+    """The RAM load address of a staged file: arm9, itcm, or an overlay from `bases` (None when unknown)."""
     if key == "itcm":
         return fixreg.ITCM_BASE
     return fixreg.ARM9_BASE if key == "arm9" else (bases or {}).get(key)
@@ -219,7 +220,7 @@ def regions(fx, bases=None) -> list:
             raise AsmError(f"fix {fx['id']}: {e['id']}: zh is {len(zh)} code units with its end, the slot "
                            f"max_units + 1 is {slot}")
         out.append(Region(e["file"], off, off + 2 * slot, e["id"], _pack_units(zh), True))
-        base = _base(e["file"], bases)
+        base = base_of(e["file"], bases)
         for ptr in e.get("pointers", []):
             p = fixreg._int(ptr)
             out.append(Region(e["file"], p, p + 4, f"{e['id']} pointer {ptr}",
@@ -232,7 +233,8 @@ def grows(fx) -> dict:
     return {g["file"]: g["max"] for g in fx.get("grow", [])}
 
 
-def _hw_str(data: bytes) -> str:
+def hw_str(data: bytes) -> str:
+    """Halfwords as fix.toml writes them: one as 0xNNNN, several as 'NNNN NNNN ...'."""
     units = [int.from_bytes(data[i:i + 2], "little") for i in range(0, len(data), 2)]
     return hex(units[0]) if len(units) == 1 else " ".join(f"{u:04X}" for u in units)
 
@@ -371,7 +373,7 @@ def check_strings(fx, images: dict, orig_lens: dict, bases) -> tuple:
         if not e.get("en"):
             continue
         key, off = e["file"], fixreg._int(e["offset"])
-        data, base = images[key], _base(key, bases)
+        data, base = images[key], base_of(key, bases)
         ptrs = [fixreg._int(p) for p in e.get("pointers", [])]
         try:
             want = _encode(e["en"], f"fix {fx['id']}: {e['id']} en")
@@ -444,7 +446,7 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
                                     f"{got}, expected {r.sha1} (fix.toml expect_sha1)")
             elif r.expect is not None and binaries[r.file][r.start:r.end] != r.expect:
                 problems.append(f"fix {fx['id']}: region {r.id}: {r.file}+{r.start:#x} is "
-                                f"{_hw_str(binaries[r.file][r.start:r.end])}, expected {_hw_str(r.expect)} "
+                                f"{hw_str(binaries[r.file][r.start:r.end])}, expected {hw_str(r.expect)} "
                                 f"(fix.toml {'expect' if r.required and fx.get('code') else 'zh / pointer'})")
         for key in grows(fx):
             if key not in binaries:
@@ -504,7 +506,7 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
                                         f"{'' if k in may_grow else ' (no [[grow]] for it in fix.toml)'}")
                         continue
                     problems += growth_problems(fx["id"], k, len(binaries[k]), len(data), may_grow[k],
-                                                _base(k, bases), layout)
+                                                base_of(k, bases), layout)
                 if data == old:
                     continue
                 mine = [r_ for r_ in regs if r_.file == k]
@@ -537,7 +539,7 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
                     if r_.sha1 is not None:                         # a large region: its SHA-1 before and after
                         old, now = f"sha1:{r_.sha1}", f"sha1:{hashlib.sha1(data[r_.start:r_.end]).hexdigest()}"
                     else:
-                        old, now = _hw_str(r_.expect), _hw_str(data[r_.start:r_.end])
+                        old, now = hw_str(r_.expect), hw_str(data[r_.start:r_.end])
                     row = {"id": r_.id, "file": r_.file, "offset": hex(r_.start), "old": old, "new": now,
                            "fix": fx["id"], "engine": "armips"}
                     if r_.sha1 is not None:
