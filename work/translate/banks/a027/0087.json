@@ -273,10 +273,10 @@
   {
    "id": 33,
    "zh": "啊！那可草！{NEWLINE}那棵草不正是四叶草吗！",
-   "en": "Ah! That’s it! Isn’t that a{NEWLINE}four-leaf clover?!",
+   "en": "Ah! That plant! Isn’t that plant a{NEWLINE}four-leaf clover?!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV004: meaning: 那可草 (typo for 那棵草) is 'that plant', not 'that's it'"
   },
   {
    "id": 34,
@@ -337,10 +337,10 @@
   {
    "id": 41,
    "zh": "这还像句人话。{NEWLINE}这四叶草按照市场价一棵200万,{CLEAR}拿钱来吧。",
-   "en": "Now you’re talking sense. At market{NEWLINE}price, one four-leaf clover goes for{CLEAR}$2,000,000. Pay up.",
+   "en": "Now that sounds more like human talk.{NEWLINE}At market price, one four-leaf clover{CLEAR}goes for $2,000,000. Pay up.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV004: softened: 这还像句人话 keeps its sneer ('finally sounds human')",
    "qa_ignore": [
     "number_missing"
    ]

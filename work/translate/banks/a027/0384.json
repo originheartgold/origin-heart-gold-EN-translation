@@ -338,10 +338,10 @@
   {
    "id": 39,
    "zh": "五之岛是一座{NEWLINE}能同时展现四季的梦幻小岛,{CLEAR}上面栖息的精灵也极为特殊,{CLEAR}据说拥有全部精灵基因的……{CLEAR}后面的几页被撕掉了。{SCROLL}书末的借阅卡上写着：富士。",
-   "en": "Five Island is a dreamlike little island{NEWLINE}that shows all four seasons at once.{CLEAR}The Pokémon that live there are also{CLEAR}very special. It is said that one of{CLEAR}them carries the genes of every{CLEAR}Pokémon... The next few pages have{CLEAR}been torn out.{SCROLL}The library card at the back of the{NEWLINE}book reads: Fuji.",
+   "en": "Five Island is a dreamlike little island{NEWLINE}that shows all four seasons at once.{CLEAR}The Pokémon that live there are also{CLEAR}very special. It is said that the one{CLEAR}possessing the genes of every{CLEAR}Pokémon... The next few pages have{CLEAR}been torn out.{SCROLL}The library card at the back of the{NEWLINE}book reads: Fuji.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV004: addition: zh breaks off mid-sentence (torn pages); English no longer completes it"
   },
   {
    "id": 40,
@@ -472,10 +472,10 @@
   {
    "id": 55,
    "zh": "我要将传说故事中真实的部分{NEWLINE}转化为有用的情报,{CLEAR}然后卖给愿意出价的人大赚一笔。",
-   "en": "I’m going to turn the true parts of{NEWLINE}these legends into useful intel, then{CLEAR}sell it to whoever pays the most and{CLEAR}make a killing.",
+   "en": "I’m going to turn the true parts of{NEWLINE}these legends into useful intel, then{CLEAR}sell it to anyone willing to pay and make{CLEAR}a killing.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV004: meaning: 愿意出价的人 is anyone willing to pay, not the highest bidder (D-1792)"
   },
   {
    "id": 56,

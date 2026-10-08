@@ -65,10 +65,10 @@
   {
    "id": 7,
    "zh": "一个人3000块啊,{NEWLINE}我看你身上这点钱不够付门票吧！",
-   "en": "It’s $3000 a head! You don’t have{NEWLINE}enough money on you to pay admission!",
+   "en": "It’s $3000 a head! I bet that little bit{NEWLINE}of cash on you won’t cover it!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV004: omission: 我看/这点钱 (I bet, that little bit of money) restored"
   },
   {
    "id": 8,
@@ -113,10 +113,10 @@
   {
    "id": 13,
    "zh": "哈哈哈,就凭你？这是不自量力。{NEWLINE}看来我得好好教教你这岛上的规矩了！",
-   "en": "Ha ha ha! You? Don’t make me laugh.{NEWLINE}Looks like I’ll have to teach you the{CLEAR}rules of this island!",
+   "en": "Ha ha ha! You? You don’t know your own{NEWLINE}limits. Looks like I’ll have to teach you{CLEAR}the rules of this island properly!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV004: meaning: 不自量力 is 'overrating yourself', not 'don't make me laugh'; 好好 restored"
   },
   {
    "id": 14,
@@ -185,10 +185,10 @@
   {
    "id": 22,
    "zh": "真是个没激情的年轻人！",
-   "en": "What a spineless youngster!",
+   "en": "What a youngster with no fire in them!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV004: meaning: 没激情 is lack of passion, not cowardice (D-1695)"
   },
   {
    "id": 23,

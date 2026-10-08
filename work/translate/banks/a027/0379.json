@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "卡侬『哎呀,这个也不怪你啦。{NEWLINE}如果不是爷爷跟我说,{CLEAR}我也没有哦认出来呢。",
-   "en": "Bianca: Oh, don’t blame yourself. If{NEWLINE}Grandpa hadn’t told me, I wouldn’t have{CLEAR}recognized you either.",
+   "en": "Bianca: Oh, it’s not your fault. If{NEWLINE}Grandpa hadn’t told me, I wouldn’t have{CLEAR}recognized the Champion either.",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 我也没有哦认出来 read as 我也没有认出来 (typo)."
+   "notes": "zh 我也没有哦认出来 read as 我也没有认出来 (typo). | RV004: addressee: Bianca reassures Latios; the one not recognized is the player, not Latios"
   },
   {
    "id": 13,
