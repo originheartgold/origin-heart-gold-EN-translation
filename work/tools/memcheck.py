@@ -56,6 +56,10 @@ from pathlib import Path
 import runtime_reproducibility as reproducibility
 import runtime_rendering as rendering
 
+# No sound from any emulator this process starts: SDL's dummy audio driver opens no output device
+# (the emulated sound chip still runs, so game timing is unchanged).
+os.environ["SDL_AUDIODRIVER"] = "dummy"
+
 WORK = Path(__file__).resolve().parent.parent
 DEF_ROM = WORK / "build" / "origin_hg_v4.0.3_en_wip.nds"
 DEF_REF = WORK / "rom" / "origin_v4.0.3_cn.nds"

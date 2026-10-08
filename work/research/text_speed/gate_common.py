@@ -14,6 +14,10 @@ import hashlib
 import json
 from pathlib import Path
 import sys
+import os
+# No sound from any emulator this process starts: SDL's dummy audio driver opens no output device
+# (the emulated sound chip still runs, so game timing is unchanged).
+os.environ["SDL_AUDIODRIVER"] = "dummy"
 
 if sys.flags.optimize:
     # Gate checks must never be stripped: refuse to run under python -O.

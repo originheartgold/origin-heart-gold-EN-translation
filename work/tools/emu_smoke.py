@@ -23,6 +23,10 @@ import sys
 import tempfile
 from pathlib import Path
 
+# No sound from any emulator this process starts: SDL's dummy audio driver opens no output device
+# (the emulated sound chip still runs, so game timing is unchanged).
+os.environ["SDL_AUDIODRIVER"] = "dummy"
+
 WORK = Path(__file__).resolve().parent.parent
 DEFAULT_SCRIPT = (
     "wait 2400; press START; wait 90; shot 01_title; press START; wait 400; shot 02_hack_notice_zh;"
