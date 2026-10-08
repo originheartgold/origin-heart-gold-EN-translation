@@ -15,10 +15,10 @@
   {
    "id": 1,
    "zh": "这里是钓鱼的胜地,{SCROLL}为了不惊吓到水中的精灵。{CLEAR}大家走路时都留意{CLEAR}不发出声音,因此得名{CLEAR}寂静之桥。{NEWLINE}",
-   "en": "Fishing Spot{SCROLL}It’s called the Silence Bridge, because{NEWLINE}everyone walks on tiptoe to avoid{CLEAR}scaring the Water-type Pokémon.{NEWLINE}{NEWLINE}",
+   "en": "Fishing Spot{SCROLL}It’s called the Silence Bridge, because{NEWLINE}everyone walks on tiptoe to avoid{CLEAR}scaring the Pokémon in the water.{NEWLINE}{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0348/1"
+   "origin": "agent",
+   "notes": "US 0348/1 | RV013: meaning: 水中的精灵 is any Pokémon in the water, not Water types"
   },
   {
    "id": 2,
@@ -156,10 +156,10 @@
   {
    "id": 18,
    "zh": "树果只吃不种的话,{NEWLINE}很快就会坐吃山空。{CLEAR}据说尼比市有一位擅长种植的女士,{CLEAR}她有一套可以随身携带的树果培养皿,{CLEAR}想必能对你这样四处旅行的训练家{CLEAR}带来很多帮助吧！",
-   "en": "If you only eat Berries and never plant{NEWLINE}any, you’ll run out soon enough.{SCROLL}I hear there’s a lady in Pewter City{NEWLINE}who’s great at growing them. She has a{CLEAR}portable Berry-growing kit, which would{CLEAR}really help a traveling Trainer like you!",
+   "en": "If you only eat Berries and never plant{NEWLINE}any, you’ll run out soon enough.{SCROLL}I hear there’s a lady in Pewter City{NEWLINE}who’s great at growing them. She has a{CLEAR}set of Berry Pots you can carry{CLEAR}around. They’d really help a traveling{CLEAR}Trainer like you!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV013: name: 树果培养皿 is the Berry Pots key item (glossary)"
   },
   {
    "id": 19,
@@ -223,10 +223,10 @@
   {
    "id": 26,
    "zh": "你还有女朋友呢,你不是一个人。",
-   "en": "You’ve got a girlfriend!",
+   "en": "You’re not alone. You have her!",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV013: omission: 你不是一个人 restored (answered by #30); fits 224 px menu",
    "category": "menu_touch_1line"
   },
   {
@@ -264,10 +264,10 @@
   {
    "id": 31,
    "zh": "果然还是不行……{NEWLINE}我这糟糕的指挥{CLEAR}导致了伙伴们失败,被杀……{SCROLL}啊啊啊啊啊！我是个无能之人啊。",
-   "en": "I knew it, I still can’t... My lousy calls{NEWLINE}got my partners beaten, and killed...{SCROLL}Aaaaargh! I’m worthless!",
+   "en": "I knew it, I still can’t... My lousy calls{NEWLINE}got my partners beaten, and killed...{SCROLL}Aaaaargh! I’m so incompetent!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV013: meaning: 无能之人 = incompetent, not worthless"
   },
   {
    "id": 32,
@@ -288,10 +288,10 @@
   {
    "id": 34,
    "zh": "我男朋友曾经像个英雄一样{NEWLINE}与做坏事的火箭队战斗。{CLEAR}但也就是在那一场战斗中,{CLEAR}他的精灵被火箭队给杀害了……{CLEAR}从那以后他就无精打采自暴自弃。{SCROLL}我看到他这个样子真的好心疼,{NEWLINE}如果可以的话,{CLEAR}请你跟我男朋友进行一场精灵对战{CLEAR}帮他重拾信心好吗？拜托了！",
-   "en": "My boyfriend once fought the evil Team{NEWLINE}Rocket like a hero. But in that battle,{CLEAR}Team Rocket killed his Pokémon... Ever{CLEAR}since then, he’s been listless and has{CLEAR}given up on himself.{SCROLL}It breaks my heart to see him like this.{NEWLINE}If you can, please have a Pokémon{CLEAR}battle with my boyfriend and help him{CLEAR}get his confidence back. Please!",
+   "en": "My boyfriend once fought the evil Team{NEWLINE}Rocket like a hero. But in that battle,{CLEAR}Team Rocket killed his Pokémon... Ever{CLEAR}since then, he’s been listless and has{CLEAR}given up on himself.{SCROLL}It breaks my heart to see him like this.{NEWLINE}If you can, would you have a Pokémon{CLEAR}battle with my boyfriend and help him{CLEAR}get his confidence back? Please!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV013: omission: request 好吗 kept as a question"
   },
   {
    "id": 35,
@@ -320,10 +320,10 @@
   {
    "id": 38,
    "zh": "我来这里本来是想{NEWLINE}静静地钓个鱼的。{CLEAR}结果那边那个黄毛小子{CLEAR}带着个雷电球来轰隆隆地电鱼！{SCROLL}这家伙难道不知道{NEWLINE}这里是钓鱼圣地寂静之桥吗？{CLEAR}真是个没素质的家伙。{SCROLL}可惜我的水系精灵打不过他的雷电球,{NEWLINE}不然我肯定好好教育教育他！",
-   "en": "I came here hoping to do some quiet{NEWLINE}fishing. But that blond punk over there{CLEAR}brought a Voltorb and is zapping the{CLEAR}fish with a big boom!{SCROLL}Doesn’t he know this is Silence Bridge, a{NEWLINE}sacred fishing spot? What a lowlife.{SCROLL}Too bad my Water types are no match{NEWLINE}for his Voltorb, or I’d teach that brat{CLEAR}a real lesson!",
+   "en": "I came here hoping to do some quiet{NEWLINE}fishing. But that blond punk over there{CLEAR}brought a Voltorb and is zapping the{CLEAR}fish with a big boom!{SCROLL}Doesn’t he know this is Silence Bridge,{NEWLINE}a sacred fishing spot? He has no class.{SCROLL}Too bad my Water types can’t match his{NEWLINE}Voltorb, or I’d teach him a real lesson!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV013: addition: 没素质 = no class (not lowlife); 'brat' not in zh"
   },
   {
    "id": 39,
@@ -480,10 +480,10 @@
   {
    "id": 58,
    "zh": "{VAR:0103:0}『你也太没有公德心了！{NEWLINE}像你这种自私的人,{CLEAR}根本就不配成为口袋妖怪训练家！",
-   "en": "{VAR:0103:0}: You have no public decency at{NEWLINE}all! A selfish jerk like you doesn’t{CLEAR}deserve to be a Pokémon Trainer!",
+   "en": "{VAR:0103:0}: You have no public decency at{NEWLINE}all! Someone as selfish as you doesn’t{CLEAR}deserve to be a Pokémon Trainer!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV013: addition: 自私的人 has no 'jerk'"
   },
   {
    "id": 59,
@@ -712,19 +712,19 @@
   {
    "id": 87,
    "zh": "巴大蝴是去南方交配的,请放了它们",
-   "en": "Free them. They’re off to mate",
+   "en": "Let them go south to mate!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Butterfree debate (as 0333): #87/#91 release arguments, #88/#92/#93 let him keep them.",
+   "notes": "Butterfree debate (as 0333): #87/#91 release arguments, #88/#92/#93 let him keep them. | RV013: omission: south (南方) restored; fits 224 px menu",
    "category": "menu_touch_1line"
   },
   {
    "id": 88,
    "zh": "那你就好好照顾被遗弃的巴大蝴吧",
-   "en": "Then take good care of them",
+   "en": "Then care for the abandoned ones",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV013: omission: 被遗弃的 restored (distinct from #92); fits 224 px menu",
    "category": "menu_touch_1line"
   },
   {

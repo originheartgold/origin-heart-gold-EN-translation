@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "啊呀？{NEWLINE}我看走眼了啊……",
-   "en": "Huh?{NEWLINE}My own eyes deceived me?",
+   "en": "Huh?{NEWLINE}Looks like I misjudged you...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0349/3"
+   "origin": "agent",
+   "notes": "US 0349/3 | RV013: meaning: 我看走眼了 is a statement (misjudged), not a question"
   },
   {
    "id": 4,

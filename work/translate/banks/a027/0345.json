@@ -327,10 +327,10 @@
   {
    "id": 40,
    "zh": "可恶啊,这个臭丫头{NEWLINE}居然敢坏我的好事！",
-   "en": "Grr! That little brat has the nerve to{NEWLINE}ruin my plans!",
+   "en": "Grr! That snotty little girl has the{NEWLINE}nerve to ruin my plans!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV013: addressee: 臭丫头 is gendered (Lara)"
   },
   {
    "id": 41,
@@ -359,10 +359,10 @@
   {
    "id": 44,
    "zh": "本来想通过这次比赛赚点钱的,{NEWLINE}结果却输给了那个黄毛丫头！{CLEAR}哼,坏我好事的人可不会有好下场。",
-   "en": "I was hoping to make some money off this{NEWLINE}race, and then I lost to that little{CLEAR}brat! Hmph. Whoever ruins my plans is{CLEAR}going to regret it.",
+   "en": "I was hoping to make some money off this{NEWLINE}race, and then I lost to that{CLEAR}snot-nosed little girl! Hmph. Whoever{CLEAR}ruins my plans is going to regret it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV013: addressee: 黄毛丫头 is gendered (idiom for an immature girl)"
   },
   {
    "id": 45,
@@ -552,10 +552,10 @@
   {
    "id": 68,
    "zh": "哪有什么魔术表演,你用催眠术骗谁呢。",
-   "en": "What magic show? You hypnotized me!",
+   "en": "What magic show? Who are you trying to{NEWLINE}fool with that hypnosis?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV013: omission: 骗谁呢 (who are you fooling) restored"
   },
   {
    "id": 69,

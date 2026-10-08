@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "嗯……{SCROLL}以现在的趋势来说,{NEWLINE}这句话很适合你。{SCROLL}{VAR:011C:0}！{SCROLL}在适当的时候用上吧。",
-   "en": "Very well...{SCROLL}The trendy thing for you to say{NEWLINE}would be...{SCROLL}{VAR:011C:0}!{SCROLL}That’s a trendy sort of thing{NEWLINE}to say.",
+   "en": "Very well...{SCROLL}The trendy thing for you to say{NEWLINE}would be...{SCROLL}{VAR:011C:0}!{SCROLL}Use it when the time is right.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0355/2"
+   "origin": "agent",
+   "notes": "US 0355/2 | RV013: meaning: zh says use it at the right time (hack text differs from US)"
   },
   {
    "id": 3,
