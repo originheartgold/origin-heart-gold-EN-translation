@@ -103,18 +103,18 @@
   {
    "id": 12,
    "zh": "这是个做工不错的玩偶……{SCROLL}呜哇！动了！{NEWLINE}这是真的诅咒鬼！",
-   "en": "This Poké Doll looks just like the{NEWLINE}real thing...{SCROLL}Aw! It moved!{NEWLINE}It’s a real Banette!",
+   "en": "This is a well-made doll...{SCROLL}Whoa! It moved!{NEWLINE}It’s a real Banette!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0541/12; modernised from US 0541#12"
+   "origin": "agent",
+   "notes": "US 0541/12; modernised from US 0541#12 | RV027: meaning: 做工不错 well-made; 呜哇 is Whoa, not Aw"
   },
   {
    "id": 13,
    "zh": "诅咒鬼『咳啦咳啦咳啦咳啦！",
-   "en": "Banette: Giggle!",
+   "en": "Banette: Cackle-cackle-cackle-cackle!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0541/13; modernised from US 0541#13"
+   "origin": "agent",
+   "notes": "US 0541/13; modernised from US 0541#13 | RV027: omission: 咳啦×4 is a repeated cackle"
   },
   {
    "id": 14,
@@ -143,10 +143,10 @@
   {
    "id": 17,
    "zh": "皮皮玩偶！{SCROLL}右手上有很小的伤！",
-   "en": "It’s a Clefairy Poké Doll.{SCROLL}It has a tear where the right arm{NEWLINE}was sewn on.",
+   "en": "A Clefairy Poké Doll!{SCROLL}There’s a tiny tear on its right hand!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0541/17; modernised from US 0541#17"
+   "origin": "agent",
+   "notes": "US 0541/17; modernised from US 0541#17 | RV027: meaning: 右手上有很小的伤: small tear on the right hand"
   }
  ]
 }

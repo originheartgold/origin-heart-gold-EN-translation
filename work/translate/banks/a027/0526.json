@@ -218,10 +218,10 @@
   {
    "id": 26,
    "zh": "娜姿『你已经感受到{NEWLINE}超能力的强大了吧？{CLEAR}凭你现在的意志力{CLEAR}距离完全抵抗住我的超能力,{CLEAR}还有一点点差距。{SCROLL}娜姿『正好我现在要去{NEWLINE}紫苑镇的精灵之塔修行。{CLEAR}你如果也想锻炼一下自己的意志力,{CLEAR}就来精灵之塔找我吧。",
-   "en": "Sabrina: Now you have felt how powerful{NEWLINE}psychic power is. With the will you have{CLEAR}now, you are still a little short of fully{CLEAR}resisting my powers.{SCROLL}Sabrina: As it happens, I am about to go{NEWLINE}train at the Pokémon Tower in Lavender{CLEAR}Town. If you also wish to train your{CLEAR}will, come find me at the Pokémon Tower.",
+   "en": "Sabrina: You have felt how powerful{NEWLINE}psychic power is, have you not? With the{CLEAR}will you have now, you are still a little{CLEAR}short of fully resisting my powers.{SCROLL}Sabrina: As it happens, I am about to go{NEWLINE}train at the Pokémon Tower in Lavender{CLEAR}Town. If you also wish to train your{CLEAR}will, come find me at the Pokémon Tower.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV027: omission: 吧？ question restored"
   },
   {
    "id": 27,
@@ -234,10 +234,10 @@
   {
    "id": 28,
    "zh": "这是娜姿耗费一年时间,{NEWLINE}用超能力制造出来的替身玩偶。{CLEAR}遇到危急时刻你把玩偶扔出去,{CLEAR}玩偶落地的瞬间,你和你的精灵{CLEAR}与玩偶之间的位置会互换。{CLEAR}这是只能使用一次的保命道具,{CLEAR}使用的时机你自己要考虑好。{SCROLL}需要叮嘱你的就这么多,{NEWLINE}我现在就把你传送回金黄道馆。{CLEAR}你放松精神不要想事情,{CLEAR}不然我可传送不动你。",
-   "en": "This is a Substitute Doll that Sabrina{NEWLINE}spent a whole year making with her{CLEAR}psychic powers. In a pinch, throw the{CLEAR}doll. The moment it hits the ground, you{CLEAR}and your Pokémon swap places with it.{CLEAR}It can only be used once, so it’s a real{CLEAR}lifesaver. Think carefully about when to{CLEAR}use it.{SCROLL}That’s all I need to tell you. I’ll{NEWLINE}teleport you back to the Saffron Gym{CLEAR}now. Relax your mind and don’t think{CLEAR}about anything, or I won’t be able to{CLEAR}move you.",
+   "en": "This is a Substitute Doll that Sabrina{NEWLINE}spent a whole year making with her{CLEAR}psychic powers. In a pinch, throw the{CLEAR}doll. The moment it hits the ground, you{CLEAR}and your Pokémon swap places with it.{CLEAR}It’s a lifesaver that can only be used{CLEAR}once, so think carefully about when{CLEAR}to use it.{SCROLL}That’s all I need to tell you. I’ll{NEWLINE}teleport you back to the Saffron Gym{CLEAR}now. Relax your mind and don’t think{CLEAR}about anything, or I won’t be able to{CLEAR}move you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV027: meaning: one-use lifesaver; removed invented causal link"
   },
   {
    "id": 29,

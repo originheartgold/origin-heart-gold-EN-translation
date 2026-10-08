@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "什么？我的朋友已经催问{NEWLINE}什么时候能看表演了？{CLEAR}可恶啊,{CLEAR}我和百变怪还没做好准备呢。{CLEAR}如果能有一个厉害的人教教我的话……",
-   "en": "What? My friends are already asking{NEWLINE}when the show starts? Oh no! Ditto and{CLEAR}I aren’t ready yet. If only someone{CLEAR}really good could teach me...",
+   "en": "What? My friends are already asking{NEWLINE}when the show starts? Darn it! Ditto{CLEAR}and I aren’t ready yet. If only someone{CLEAR}really good could teach me...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV027: softened: 可恶 from a young girl: Darn it, not Oh no"
   },
   {
    "id": 7,

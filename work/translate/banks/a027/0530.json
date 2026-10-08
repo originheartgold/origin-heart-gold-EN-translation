@@ -186,10 +186,10 @@
   {
    "id": 22,
    "zh": "洛托姆{NEWLINE}放弃了钻进{CLEAR}微波炉的马达……",
-   "en": "Rotom reluctantly gave up on entering{NEWLINE}the microwave oven’s motor...",
+   "en": "Rotom gave up on entering the microwave{NEWLINE}oven’s motor...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0538/22; modernised from US 0538#22"
+   "origin": "agent",
+   "notes": "US 0538/22; modernised from US 0538#22 | RV027: addition: 放弃了 has no reluctance (D-1884)"
   },
   {
    "id": 23,
@@ -210,10 +210,10 @@
   {
    "id": 25,
    "zh": "洛托姆{NEWLINE}放弃了钻进{CLEAR}冰箱的马达……",
-   "en": "Rotom reluctantly gave up on entering{NEWLINE}the refrigerator’s motor...",
+   "en": "Rotom gave up on entering the{NEWLINE}refrigerator’s motor...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0538/25; modernised from US 0538#25"
+   "origin": "agent",
+   "notes": "US 0538/25; modernised from US 0538#25 | RV027: addition: 放弃了 has no reluctance (D-1884)"
   },
   {
    "id": 26,
@@ -234,10 +234,10 @@
   {
    "id": 28,
    "zh": "洛托姆{NEWLINE}放弃了钻进{CLEAR}洗衣机的马达……",
-   "en": "Rotom reluctantly gave up on entering{NEWLINE}the washing machine’s motor...",
+   "en": "Rotom gave up on entering the washing{NEWLINE}machine’s motor...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0538/28; modernised from US 0538#28"
+   "origin": "agent",
+   "notes": "US 0538/28; modernised from US 0538#28 | RV027: addition: 放弃了 has no reluctance (D-1884)"
   },
   {
    "id": 29,
@@ -258,10 +258,10 @@
   {
    "id": 31,
    "zh": "洛托姆{NEWLINE}放弃了钻进{CLEAR}电风扇的马达……",
-   "en": "Rotom reluctantly gave up on entering{NEWLINE}the rotary fan’s motor...",
+   "en": "Rotom gave up on entering the rotary{NEWLINE}fan’s motor...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0538/31; modernised from US 0538#31"
+   "origin": "agent",
+   "notes": "US 0538/31; modernised from US 0538#31 | RV027: addition: 放弃了 has no reluctance (D-1884)"
   },
   {
    "id": 32,
@@ -282,10 +282,10 @@
   {
    "id": 34,
    "zh": "洛托姆{NEWLINE}放弃了钻进{CLEAR}割草机的马达……",
-   "en": "Rotom reluctantly gave up on entering{NEWLINE}the lawn mower’s motor...",
+   "en": "Rotom gave up on entering the lawn{NEWLINE}mower’s motor...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0538/34; modernised from US 0538#34"
+   "origin": "agent",
+   "notes": "US 0538/34; modernised from US 0538#34 | RV027: addition: 放弃了 has no reluctance (D-1884)"
   },
   {
    "id": 35,

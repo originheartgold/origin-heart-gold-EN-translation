@@ -142,10 +142,10 @@
   {
    "id": 17,
    "zh": "菊子『所以说训练家的心境{NEWLINE}也是决定其上限的……",
-   "en": "Agatha: That’s why a Trainer’s state of{NEWLINE}mind decides how far they can go...",
+   "en": "Agatha: That’s why a Trainer’s state of{NEWLINE}mind also decides how far they can go...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV027: omission: 也 restored"
   },
   {
    "id": 18,
@@ -730,10 +730,10 @@
   {
    "id": 90,
    "zh": "妈的,这个社长真会享受。{NEWLINE}弄了这么一大帮美女给他当秘书。",
-   "en": "Damn, this president really knows how{NEWLINE}to live. He’s got a whole bunch of babes{CLEAR}working as his secretaries.",
+   "en": "Fuck, this president really knows how{NEWLINE}to live. He’s got a whole bunch of babes{CLEAR}working as his secretaries.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV027: softened: 妈的 at full strength (D-2034)"
   },
   {
    "id": 91,
@@ -954,18 +954,18 @@
   {
    "id": 118,
    "zh": "火箭队首领『原来是你这个小子。{NEWLINE}我看过雅典娜他们的报告,{CLEAR}你坏了我们火箭队不少事啊。",
-   "en": "Rocket Boss: So it’s you, boy. I’ve{NEWLINE}read Ariana’s reports. You’ve spoiled{CLEAR}quite a few of Team Rocket’s plans.",
+   "en": "Rocket Boss: So it’s you, boy. I’ve{NEWLINE}read the reports from Ariana and the{CLEAR}others. You’ve spoiled quite a few of{CLEAR}Team Rocket’s plans.",
    "status": "draft",
    "origin": "agent",
-   "notes": "reused a027/0495#50"
+   "notes": "reused a027/0495#50 | RV027: omission: 雅典娜他们: Ariana and the others"
   },
   {
    "id": 119,
    "zh": "火箭队首领『原来是你这个丫头。{NEWLINE}我看过雅典娜他们的报告,{CLEAR}你坏了我们火箭队不少事啊。",
-   "en": "Rocket Boss: So it’s you, girl. I’ve{NEWLINE}read Ariana’s reports. You’ve spoiled{CLEAR}quite a few of Team Rocket’s plans.",
+   "en": "Rocket Boss: So it’s you, girl. I’ve{NEWLINE}read the reports from Ariana and the{CLEAR}others. You’ve spoiled quite a few of{CLEAR}Team Rocket’s plans.",
    "status": "draft",
    "origin": "agent",
-   "notes": "reused a027/0495#51"
+   "notes": "reused a027/0495#51 | RV027: omission: 雅典娜他们: Ariana and the others"
   },
   {
    "id": 120,
@@ -1042,10 +1042,10 @@
   {
    "id": 129,
    "zh": "火箭队首领『你是说那些{NEWLINE}连金黄市都进不来的废物吗？",
-   "en": "Rocket Boss: You mean those losers who{NEWLINE}can’t even get into Saffron City?",
+   "en": "Rocket Boss: You mean that useless{NEWLINE}trash who can’t even get into Saffron{CLEAR}City?",
    "status": "draft",
    "origin": "agent",
-   "notes": "reused a027/0495#59"
+   "notes": "reused a027/0495#59 | RV027: softened: 废物 is useless trash, not losers"
   },
   {
    "id": 130,
@@ -1476,10 +1476,10 @@
   {
    "id": 183,
    "zh": "{VAR:0103:0}『咳咳……{NEWLINE}好难对付……",
-   "en": "{VAR:0103:0}: Cough, cough... He’s so{NEWLINE}tough...",
+   "en": "{VAR:0103:0}: Cough, cough... So hard to{NEWLINE}deal with...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV027: addition: no referent in 好难对付; removed added he (D-1877)"
   },
   {
    "id": 184,

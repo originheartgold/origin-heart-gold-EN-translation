@@ -30,18 +30,18 @@
   {
    "id": 3,
    "zh": "『重度骨折』",
-   "en": "“A complicated fracture”",
+   "en": "“A severe fracture”",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0533/3"
+   "origin": "agent",
+   "notes": "US 0533/3 | RV027: meaning: 重度骨折 is a severe fracture, not a complicated one (D-1882)"
   },
   {
    "id": 4,
    "zh": "你在健身房练死级不好用,{NEWLINE}今天给你看看{CLEAR}我的口袋妖怪练的混元功法,{CLEAR}这个绝对好用。",
-   "en": "Grinding dead strength at the gym is no{NEWLINE}use. Today I’ll show you the Hunyuan{CLEAR}kung fu my Pokémon trains. Now that is{CLEAR}definitely useful.",
+   "en": "Brute-force level grinding at the gym is{NEWLINE}no use. Today I’ll show you the Hunyuan{CLEAR}kung fu my Pokémon trains. Now that is{CLEAR}definitely useful.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV027: meaning: 练死级 puns on 死劲: keep the level-grinding joke (D-1882)"
   },
   {
    "id": 5,
@@ -158,10 +158,10 @@
   {
    "id": 19,
    "zh": "居然被你先打到了我面部……",
-   "en": "You got the first hit on my face...",
+   "en": "You actually landed the first hit on my{NEWLINE}face...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV027: omission: 居然 surprise restored"
   },
   {
    "id": 20,
@@ -230,10 +230,10 @@
   {
    "id": 28,
    "zh": "看来你是有备而来啊,{NEWLINE}真是不讲武德！{CLEAR}来,骗！{CLEAR}来,偷袭！{CLEAR}我这69级的老怪力。{CLEAR}这好吗？{CLEAR}这不好！{CLEAR}我劝你这位年轻人好自为之,{CLEAR}好好反思,{CLEAR}以后不要再犯这样的聪明,{CLEAR}小聪明啊。{SCROLL}口袋妖怪训练家要以和为贵,{NEWLINE}要讲武德,不要搞窝里斗。",
-   "en": "So you came prepared. You have no{NEWLINE}martial ethics! Come on, deceive! Come{CLEAR}on, sneak attack! My old Lv. 69{CLEAR}Machamp! Is this good? This is not{CLEAR}good! I advise this young man to behave{CLEAR}himself, reflect carefully, and never{CLEAR}again commit such cleverness... petty{CLEAR}cleverness.{SCROLL}Pokémon Trainers should value harmony,{NEWLINE}uphold martial ethics, and not fight{CLEAR}among themselves.",
+   "en": "So you came prepared. You really have{NEWLINE}no martial ethics! You came to deceive!{CLEAR}You came to sneak-attack my old Lv. 69{CLEAR}Machamp! Is this good? This is not{CLEAR}good! I advise you, young man, to{CLEAR}behave yourself and reflect carefully.{CLEAR}Never again commit such cleverness...{CLEAR}petty cleverness.{SCROLL}Pokémon Trainers should value harmony,{NEWLINE}uphold martial ethics, and not fight{CLEAR}among themselves.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV027: meaning: 来,骗！来,偷袭！ accuses the youth of coming to deceive/ambush, not imperatives; 你这位年轻人 addresses him (D-1882)"
   },
   {
    "id": 29,
@@ -318,10 +318,10 @@
   {
    "id": 39,
    "zh": "马老师虽然没杀过人,{NEWLINE}但他当年可是一周杀一头小山猪的,{CLEAR}你想看看我从马老师那学来的{CLEAR}杀猪神技吗？{SCROLL}",
-   "en": "Master Ma may never have killed a man,{NEWLINE}but in his day he killed a Swinub a week.{CLEAR}Want to see the pig-killing technique I{CLEAR}learned from Master Ma?{SCROLL}",
+   "en": "Master Ma may never have killed a man,{NEWLINE}but in his day he killed a Swinub a week.{CLEAR}Want to see the godlike pig-killing{CLEAR}technique I learned from Master Ma?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV027: omission: 神技 godlike technique restored"
   },
   {
    "id": 40,
