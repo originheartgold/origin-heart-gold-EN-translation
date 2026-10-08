@@ -45,7 +45,18 @@ Pipeline
               every hardcoded string/pointer/overlay size and code region is what stage 3c wrote;
               text speed: payload, ITCM layout, overlays 50/92 and its runtime contract (text_speed_patch.verify)
   6. patch    xdelta3 -e -9 -S lzma -s BASE TARGET work/build/Origin_HeartGold_v4.0.3_EN_wip.xdelta,
-              then re-apply it to BASE and compare SHA-1 with TARGET
+              then re-apply it to BASE and compare SHA-1 with TARGET. xdelta3 writes the two file names into
+              the patch (its VCDIFF application header), so it is run on links under the standard names
+              (PATCH_SOURCE_NAME, PATCH_TARGET_NAME): the patch does not depend on what the base dump is
+              called or on --out. xdelta3 is pinned (XDELTA3_VERSION, checked in stage 0 unless --no-patch;
+              other versions write other bytes): another version builds with a warning and is recorded as
+              "xdelta3_pinned": false, which check.py --strict-release and artifact_check.py refuse
+
+Toolchain: armips (stage 0, asmpatch.PINNED_VERSION) is refused at any other version; another xdelta3, Python
+(VALIDATED_PYTHON) or ndspy / pillow (work/tools/requirements-runtime.txt) only warns; all of them are recorded
+in the report ("toolchain"), and the release paths refuse an unpinned xdelta3. The build reads no clock, locale or
+time zone and lists no folder unsorted, so two builds of the same tree give the same ROM, patch and report
+(but its paths): check.py --full --repro builds twice, in different folders and environments, and compares.
 
 Usage
   python3 work/tools/build.py [--status tm,draft,reviewed] [--no-patch] [--lenient]
@@ -64,6 +75,9 @@ import argparse
 import functools
 import hashlib
 import json
+import os
+import platform
+import re
 import shutil
 import struct
 import subprocess
@@ -92,10 +106,122 @@ OUT_PATCH = BUILD / "Origin_HeartGold_v4.0.3_EN_wip.xdelta"
 CHARMAPS = [str(TOOLS / "charmap_en.tsv"), str(TOOLS / "charmaps" / "charmap_zh_xzonn_gen4.tsv")]
 NARCS = {"a027": m.MSG_NARC_PATH, "battle_string": "battle/string/battle_string.narc"}
 US_SHA1 = "4fcded0e2713dc03929845de631d0932ea2b5a37"
+# the names xdelta3 records in the patch's application header (the default --out and base names); see stage 6
+PATCH_TARGET_NAME = OUT_ROM.name
+PATCH_SOURCE_NAME = ROM_US.name
+# xdelta3 3.2.0 (Homebrew, macOS arm64, liblzma 5.x) made the recorded xdelta_sha1. Other versions encode other
+# bytes (3.0.x/3.1.0 write another application header), so it is a pin, like armips (work/notes/toolchain.md)
+XDELTA3_VERSION = "3.2.0"
+VALIDATED_PYTHON = (3, 14)          # the Python the recorded hashes were built with; others only warn
+RUNTIME_REQUIREMENTS = TOOLS / "requirements-runtime.txt"
+WARN_PACKAGES = ("ndspy", "pillow")  # write or read the ROM's bytes: another version only warns, the hashes decide
+
+
+class ToolchainError(Exception):
+    pass
 
 
 def log(msg):
     print(f"[build {time.strftime('%H:%M:%S')}] {msg}", flush=True)
+
+
+def xdelta3_version(exe="xdelta3") -> str:
+    """The version `xdelta3 -V` prints ("Xdelta version 3.2.0, ...")."""
+    try:
+        r = subprocess.run([exe, "-V"], capture_output=True, text=True, timeout=30)
+    except OSError as ex:
+        raise ToolchainError(f"cannot run xdelta3 ({exe}): {ex}") from None
+    except subprocess.TimeoutExpired:
+        raise ToolchainError(f"{exe} -V did not finish within 30 s") from None
+    mo = re.search(r"Xdelta version (\d+(?:\.\d+)+)", r.stdout + r.stderr)
+    if not mo:
+        raise ToolchainError(f"{exe} does not look like xdelta3 (no 'Xdelta version X.Y.Z' in `{exe} -V`)")
+    return mo.group(1)
+
+
+def check_xdelta3(exe="xdelta3") -> tuple:
+    """(version, pinned) of xdelta3; raises ToolchainError when it is missing or not xdelta3. Another version
+    than XDELTA3_VERSION is not an error here (see xdelta3_warning); the release paths refuse it."""
+    if shutil.which(exe) is None:
+        raise ToolchainError("xdelta3 is not on PATH (needed for the patch; --no-patch builds without it)")
+    v = xdelta3_version(exe)
+    return v, v == XDELTA3_VERSION
+
+
+def xdelta3_warning(version) -> str:
+    return (f"xdelta3 {version}: the patch is pinned to xdelta3 {XDELTA3_VERSION} (other versions write other "
+            f"bytes, work/notes/toolchain.md); this patch's xdelta_sha1 will differ and it is not a release "
+            f"(check.py --strict-release and artifact_check.py refuse it)")
+
+
+def pinned_requirements(path=RUNTIME_REQUIREMENTS) -> dict:
+    """{package: version} of the `name==version` lines of requirements-runtime.txt."""
+    out = {}
+    for line in Path(path).read_text(encoding="utf-8").splitlines():
+        mo = re.match(r"^\s*([A-Za-z0-9_.-]+)==(\S+)", line)
+        if mo:
+            out[mo.group(1).lower()] = mo.group(2)
+    return out
+
+
+def python_warnings(version_info=None, installed=None, pins=None) -> list:
+    """Warnings (not errors) for a Python other than VALIDATED_PYTHON and for ndspy / pillow versions other than
+    requirements-runtime.txt's: the build still runs; the expected hashes (check.py --full) catch other bytes."""
+    vi = tuple(version_info or sys.version_info)[:2]
+    pins = pinned_requirements() if pins is None else pins
+    if installed is None:
+        from importlib import metadata
+        installed = {}
+        for name in WARN_PACKAGES:
+            try:
+                installed[name] = metadata.version(name)
+            except metadata.PackageNotFoundError:
+                installed[name] = None
+    out = []
+    if vi != VALIDATED_PYTHON:
+        out.append(f"Python {vi[0]}.{vi[1]}: the recorded hashes were built with Python "
+                   f"{VALIDATED_PYTHON[0]}.{VALIDATED_PYTHON[1]} (work/notes/toolchain.md); check the build against "
+                   f"work/patches/expected.toml (check.py --full)")
+    for name in WARN_PACKAGES:
+        want, have = pins.get(name), installed.get(name)
+        if want and have != want:
+            out.append(f"{name} {have or 'not installed'}: work/tools/requirements-runtime.txt pins {want}")
+    return out
+
+
+def toolchain_record(armips_version=None, xdelta=None) -> dict:
+    """The versions this build ran with (the report's "toolchain"; no paths)."""
+    from importlib import metadata
+    rec = {"python": platform.python_version(), "platform": f"{platform.system()} {platform.machine()}"}
+    for name in WARN_PACKAGES:
+        try:
+            rec[name] = metadata.version(name)
+        except metadata.PackageNotFoundError:
+            rec[name] = None
+    if armips_version:
+        rec["armips"] = armips_version
+    if xdelta:
+        rec["xdelta3"] = xdelta[0]
+        rec["xdelta3_pinned"] = xdelta[1]
+    return rec
+
+
+def link_as(src: Path, dst: Path):
+    """dst: a symbolic link to src (a copy where links are not allowed)."""
+    try:
+        os.symlink(Path(src).resolve(), dst)
+    except OSError:
+        shutil.copyfile(src, dst)
+
+
+def make_patch(base: Path, target: Path, patch: Path, scratch: Path):
+    """xdelta3 -e -9 -S lzma under the standard names: the application header xdelta3 writes holds the file
+    names, so base and target are linked as PATCH_SOURCE_NAME / PATCH_TARGET_NAME in a folder of their own."""
+    with tempfile.TemporaryDirectory(dir=scratch, prefix="xdelta-") as td:
+        src, tgt = Path(td) / PATCH_SOURCE_NAME, Path(td) / PATCH_TARGET_NAME
+        link_as(base, src)
+        link_as(target, tgt)
+        subprocess.run(["xdelta3", "-e", "-9", "-S", "lzma", "-s", str(src), str(tgt), str(patch)], check=True)
 
 
 def sha1(path: Path) -> str:
@@ -315,6 +441,10 @@ def main(argv=None):
     ap.add_argument("--lenient", action="store_true", help="unencodable en falls back to zh instead of failing")
     ap.add_argument("--keep-export", action="store_true")
     a = ap.parse_args(argv)
+    # the log may print Chinese (problems, verify results): never fail on a narrow locale encoding
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(errors="backslashreplace")
 
     paths = build_paths(a.work_dir, a.out, a.patch)
     out_rom, patch, base = paths["rom"], paths["patch"], Path(a.base)
@@ -346,6 +476,21 @@ def main(argv=None):
         except asmpatch.AsmError as ex:
             sys.exit(str(ex))
         log(f"armips {version}: {armips}")
+    # xdelta3 for the patch (stage 6): checked now as well
+    xdelta = None
+    if not a.no_patch:
+        try:
+            xdelta = check_xdelta3()
+        except ToolchainError as ex:
+            sys.exit(str(ex))
+        log(f"xdelta3 {xdelta[0]}" if xdelta[1] else f"WARNING: {xdelta3_warning(xdelta[0])}")
+    for w in python_warnings():
+        log(f"WARNING: {w}")
+    report["toolchain"] = toolchain_record(version if armips is not None else None, xdelta)
+    if any(f["id"] == text_speed_patch.FIX_ID for f in active):
+        # the build places the reviewed payload (payload.json, sha256 pinned) and never compiles native.c;
+        # clang runs only in text_speed_patch.py --check-payload / --compile and check.py --repro, pinned there
+        report["toolchain"]["text_speed_compiler_pin"] = text_speed_patch.pinned_compiler()
 
     # 1. export
     export_dir = paths["export"]
@@ -456,8 +601,8 @@ def main(argv=None):
     if not a.no_patch:
         if patch.exists():
             patch.unlink()
-        log(f"xdelta3 -e -9 -S lzma -s BASE TARGET {patch}")
-        subprocess.run(["xdelta3", "-e", "-9", "-S", "lzma", "-s", str(base), str(out_rom), str(patch)], check=True)
+        log(f"xdelta3 -e -9 -S lzma -s BASE TARGET {patch} (as {PATCH_SOURCE_NAME!r} -> {PATCH_TARGET_NAME!r})")
+        make_patch(base, out_rom, patch, paths["work"])
         with tempfile.TemporaryDirectory(dir=paths["work"]) as td:
             back = Path(td) / "reapplied.nds"
             subprocess.run(["xdelta3", "-d", "-s", str(base), str(patch), str(back)], check=True)
@@ -470,7 +615,7 @@ def main(argv=None):
 
     if not a.keep_export:
         shutil.rmtree(export_dir, ignore_errors=True)
-    paths["report"].write_text(json.dumps(report, indent=1, ensure_ascii=False))
+    paths["report"].write_text(json.dumps(report, indent=1, ensure_ascii=False), encoding="utf-8")
     log(f"done; report {paths['report']}")
 
 

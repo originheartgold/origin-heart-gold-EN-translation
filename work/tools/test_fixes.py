@@ -140,7 +140,8 @@ class Registry(unittest.TestCase):
     def test_sha1_region_native_payload_and_itcm(self):
         sha = 'length = 64\nexpect_sha1 = "' + "0" * 40 + '"'
         region = code_entry("t-1", file="overlay50", offset="0x0").replace('expect = "0x2305"', sha)
-        native = '[native]\nsource = "n.c"\npayload = "p.json"\nmodule = "text_speed_patch"\n'
+        native = ('[native]\nsource = "n.c"\npayload = "p.json"\nmodule = "text_speed_patch"\n'
+                  'compiler = "clang version 1.0.0"\n')
         grow = '\n[[grow]]\nfile = "itcm"\nmax = 6624\n'
         self.write("t", fix_toml("t", extra=native, entries=region + grow))
         (self.root / "t" / "n.c").write_text("int x;\n")

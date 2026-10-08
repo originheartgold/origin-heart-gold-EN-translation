@@ -11,6 +11,57 @@ import text_speed_patch as speed
 try:import capstone
 except ImportError:capstone=None
 
+def pinned_clang():
+    if not shutil.which('clang'):return False
+    try:speed.check_clang()
+    except (OSError,ValueError):return False
+    return True
+
+def fake_clang(first_line,returncode=0):
+    return patch.object(speed.subprocess,'run',return_value=speed.subprocess.CompletedProcess(
+        ['clang','--version'],returncode,stdout=first_line+'\nTarget: arm64-apple-darwin\n',stderr=''))
+
+class CompilerPinTests(unittest.TestCase):
+    def test_pin_is_recorded_in_the_registry(self):
+        self.assertRegex(speed.pinned_compiler(),r'^Apple clang version 21\.\d+\.\d+')
+        self.assertEqual(speed.clang_family(speed.pinned_compiler()),('Apple clang',21))
+
+    def test_pinned_version_accepted_without_warning(self):
+        with fake_clang(speed.pinned_compiler()):
+            self.assertEqual(speed.check_clang(),(speed.pinned_compiler(),None))
+
+    def test_same_major_other_build_warns(self):
+        with fake_clang('Apple clang version 21.0.1 (clang-2100.1.5.2)'):
+            have,warning=speed.check_clang()
+        self.assertEqual(have,'Apple clang version 21.0.1 (clang-2100.1.5.2)')
+        self.assertIn('payload comparison decides',warning)
+
+    def test_other_vendor_or_major_refused_before_compiling(self):
+        for line in ('Ubuntu clang version 21.1.0 (1ubuntu1)','Apple clang version 17.0.0 (clang-1700.0.13.3)',
+                     'clang version 21.0.0','gcc (GCC) 14.2.0'):
+            with self.subTest(line=line),fake_clang(line) as run:
+                with self.assertRaisesRegex(ValueError,'same vendor and major version are required'):
+                    speed.check_clang()
+                with tempfile.TemporaryDirectory() as directory:
+                    with self.assertRaises(ValueError):speed.compile_payload(Path(directory)/'native.o')
+                self.assertEqual([c.args[0][1] for c in run.call_args_list],['--version','--version'])  # never compiled
+
+    def test_reproduction_checks_the_compiler_first(self):
+        with fake_clang('Ubuntu clang version 18.1.3 (1ubuntu1)'),patch.object(speed,'compile_payload') as comp:
+            with self.assertRaisesRegex(ValueError,'pinned to'):speed.verify_reproducible_payload()
+        comp.assert_not_called()
+
+    def test_missing_or_broken_clang_is_an_error_not_a_skip(self):
+        with patch.object(speed.subprocess,'run',side_effect=FileNotFoundError('clang')):
+            with self.assertRaises(FileNotFoundError):speed.check_clang()
+        with fake_clang('',returncode=1):
+            with self.assertRaisesRegex(ValueError,'--version failed'):speed.check_clang()
+
+    def test_missing_pin_refused(self):
+        fx={'id':speed.FIX_ID,'native':{'source':'native.c'}}
+        with patch('fixes.load_all',return_value=[fx]):
+            with self.assertRaisesRegex(ValueError,'no \\[native\\] compiler pin'):speed.pinned_compiler()
+
 class PayloadTests(unittest.TestCase):
     def test_payload_is_current_and_entries_are_in_reserved_code(self):
         p=speed.load_payload();code=bytes.fromhex(p['code'])
@@ -48,7 +99,8 @@ class PayloadTests(unittest.TestCase):
         src=Path(speed.__file__).read_text()
         self.assertIn("if kind not in (2,10):raise ValueError",src)
 
-    @unittest.skipUnless(shutil.which('clang'), 'ARM clang is required to reproduce the native payload')
+    @unittest.skipUnless(pinned_clang(), 'the pinned clang (fix.toml [native] compiler) reproduces the payload; '
+                         'the release gate text_speed_patch.py --check-payload never skips')
     def test_cached_payload_reproduces_from_source(self):
         with tempfile.TemporaryDirectory() as directory:
             self.assertEqual(speed.compile_payload(Path(directory)/'native.o'), speed.load_payload())
@@ -103,7 +155,8 @@ class PayloadTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'independently reviewed digest'):
             speed.validate_payload(payload)
 
-    def test_release_reproduction_never_skips_missing_compiler_or_changed_output(self):
+    @patch.object(speed,'check_clang',return_value=('Apple clang version 21.0.0',None))
+    def test_release_reproduction_never_skips_missing_compiler_or_changed_output(self,_clang):
         with patch.object(speed,'compile_payload',side_effect=FileNotFoundError('clang')):
             with self.assertRaises(FileNotFoundError):speed.verify_reproducible_payload()
         rebuilt=speed.load_payload();rebuilt['code']='fee7'+rebuilt['code'][4:]

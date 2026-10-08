@@ -15,7 +15,7 @@ Native payload is original project code, not extracted ROM data.
   python3 work/tools/text_speed_patch.py --compile work/build/text-speed/payload.json
 """
 from pathlib import Path
-import hashlib,json,struct,subprocess,tempfile
+import hashlib,json,re,struct,subprocess,tempfile
 
 WORK=Path(__file__).resolve().parents[1]
 ASSETS=WORK/'patches/text-speed'  # the fix folder: fix.toml, native.c, labels.h, payload.json
@@ -138,7 +138,7 @@ DEPENDENCIES=CALLED_ROUTINES+DEPENDENT_CODE
 def native_call_targets():
     """Every FN(address, ...) call target in native.c (source pinned via the payload)."""
     import re
-    return sorted({int(x,16) for x in re.findall(r'FN\((0x[0-9a-fA-F]+)\s*,',(ASSETS/'native.c').read_text())})
+    return sorted({int(x,16) for x in re.findall(r'FN\((0x[0-9a-fA-F]+)\s*,',(ASSETS/'native.c').read_text(encoding='utf-8'))})
 
 def dependency_ranges(main_size):
     """Reviewed dependency ranges as ARM9 offsets; fail closed on an unreviewed call target."""
@@ -154,10 +154,56 @@ def digest(b):return hashlib.sha256(b).hexdigest()
 
 def source_digest():return digest((ASSETS/'native.c').read_bytes()+(ASSETS/'labels.h').read_bytes())
 
-def compile_payload(out):
-    """Compile the self-contained C section; refuse unresolved text relocations."""
+CLANG='clang'
+
+def pinned_compiler():
+    """The reviewed compiler: the text-speed fix's [native] compiler (the fix registry), the first line of
+    `clang --version` that compiled payload.json."""
+    import fixes as fixreg
+    fx=next((f for f in fixreg.load_all() if f['id']==FIX_ID),None)
+    pin=((fx or {}).get('native') or {}).get('compiler')
+    if not isinstance(pin,str) or not pin.strip():
+        raise ValueError(f'fix {FIX_ID} has no [native] compiler pin (work/patches/{FIX_ID}/fix.toml)')
+    return pin.strip()
+
+def clang_version(clang=None):
+    """The first line of `clang --version` (e.g. 'Apple clang version 21.0.0 (clang-2100.0.123.102)')."""
+    clang=clang or CLANG
+    try:r=subprocess.run([clang,'--version'],capture_output=True,text=True,timeout=60)
+    except OSError as error:raise FileNotFoundError(f'cannot run {clang}: {error}') from None
+    except subprocess.TimeoutExpired:raise ValueError(f'{clang} --version did not finish') from None
+    lines=(r.stdout or r.stderr).splitlines()
+    if r.returncode or not lines:raise ValueError(f'{clang} --version failed (exit {r.returncode})')
+    return lines[0].strip()
+
+def clang_family(line):
+    """(vendor, major) of a `clang --version` first line: ('Apple clang', 21); (None, None) when unreadable."""
+    mo=re.match(r'^(.*?clang) version (\d+)\.',line)
+    return (mo.group(1),int(mo.group(2))) if mo else (None,None)
+
+def check_clang(clang=None):
+    """(version line, warning or None). Refused (ValueError) unless clang is the pinned vendor and major
+    version (fix.toml [native] compiler, 'Apple clang' 21): other compilers lay the code out differently. The
+    same major with another minor or build only warns: the payload comparison (verify_reproducible_payload,
+    the reviewed digest) decides whether its bytes are the reviewed ones."""
+    have,want=clang_version(clang),pinned_compiler()
+    if have==want:return have,None
+    if clang_family(have)!=clang_family(want) or None in clang_family(want):
+        raise ValueError(f'{clang or CLANG} is "{have}"; the text-speed payload is pinned to "{want}" '
+                         f'(fix.toml [native] compiler; the same vendor and major version are required). Use that '
+                         f'clang, or review a new payload compiled by this one (work/notes/toolchain.md: Native code)')
+    return have,(f'{clang or CLANG} is "{have}", not the pinned "{want}": the same vendor and major version, so it '
+                 f'runs; the payload comparison decides whether it emits the reviewed bytes')
+
+def compile_payload(out,enforce=True):
+    """Compile the self-contained C section; refuse unresolved text relocations. enforce: refuse a clang
+    check_clang() refuses (the default; --compile of a new payload passes False and reports the version)."""
+    import sys
     out=Path(out);out.parent.mkdir(parents=True,exist_ok=True)
-    subprocess.run(['clang','-target','arm-none-eabi','-march=armv5te','-mthumb','-Os','-Wall','-Werror','-ffreestanding','-fno-builtin','-fno-unwind-tables','-fno-asynchronous-unwind-tables','-c',str(ASSETS/'native.c'),'-o',str(out)],check=True)
+    if enforce:
+        _,warning=check_clang()
+        if warning:print(f'warning: {warning}',file=sys.stderr)
+    subprocess.run([CLANG,'-target','arm-none-eabi','-march=armv5te','-mthumb','-Os','-Wall','-Werror','-ffreestanding','-fno-builtin','-fno-unwind-tables','-fno-asynchronous-unwind-tables','-c',str(ASSETS/'native.c'),'-o',str(out)],check=True)
     b=out.read_bytes();h=struct.unpack_from('<16sHHIIIIIHHHHHH',b)
     if h[0][:7]!=b'\x7fELF\x01\x01\x01' or h[2]!=40:raise ValueError('Not ARM ELF32')
     sections=[struct.unpack_from('<10I',b,h[6]+i*h[11]) for i in range(h[12])]
@@ -252,7 +298,7 @@ def validate_payload(payload):
     return payload
 
 def load_payload():
-    return validate_payload(json.loads((ASSETS/'payload.json').read_text()))
+    return validate_payload(json.loads((ASSETS/'payload.json').read_text(encoding='utf-8')))
 
 def verify_reproducible_payload():
     """Mandatory RC gate; compilation failure/missing clang is never a skip.
@@ -261,10 +307,15 @@ def verify_reproducible_payload():
     reviewed compiler output to match both cached bytes and every symbol exactly.
     """
     payload=load_payload()
+    have,warning=check_clang()
     with tempfile.TemporaryDirectory(prefix='text-speed-reproduce-') as directory:
-        rebuilt=compile_payload(Path(directory)/'native.o')
-    if rebuilt!=payload:raise ValueError('Native payload does not reproduce from current source')
-    return {'status':'passed','reviewed_payload_digest':payload_digest(payload),'native_bytes':len(bytes.fromhex(payload['code']))}
+        rebuilt=compile_payload(Path(directory)/'native.o',enforce=False)
+    if rebuilt!=payload:
+        raise ValueError('Native payload does not reproduce from current source'+(f' ({warning})' if warning else ''))
+    out={'status':'passed','reviewed_payload_digest':payload_digest(payload),'native_bytes':len(bytes.fromhex(payload['code'])),
+         'compiler':have,'compiler_pin':pinned_compiler()}
+    if warning:out['compiler_warning']=warning
+    return out
 
 FIX_ID='text-speed'
 
@@ -474,7 +525,11 @@ if __name__=='__main__':
     if args.check_payload:print(json.dumps(verify_reproducible_payload()));raise SystemExit(0)
     if not args.compile.resolve().is_relative_to((WORK/'build').resolve()):ap.error('Output must be in this worktree work/build')
     args.compile.parent.mkdir(parents=True,exist_ok=True)
-    payload=compile_payload(args.compile.parent/'native.o');args.compile.write_text(json.dumps(payload,indent=2))
+    have,pin=clang_version(),pinned_compiler()
+    print(f'compiler: {have}')
+    if have!=pin:print(f'note: the pin is "{pin}"; if this payload is reviewed and adopted, set fix.toml [native] '
+                       f'compiler = "{have}" with it')
+    payload=compile_payload(args.compile.parent/'native.o',enforce=False);args.compile.write_text(json.dumps(payload,indent=2),encoding='utf-8')
     print(f'payload digest {payload_digest(payload)}, {len(payload["code"])//2} bytes')
     for name,address in sorted(payload['symbols'].items(),key=lambda kv:kv[1]):
         print(f'.definelabel {name+",":18s} 0x{address&~1:08X}')

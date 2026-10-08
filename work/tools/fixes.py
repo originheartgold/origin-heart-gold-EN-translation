@@ -28,7 +28,9 @@ fix.toml
                 headers = ["labels.h"]      `.incbin "../native/<fix-id>.bin"`. payload: the reviewed compiler
                 payload = "payload.json"    output in the fix's folder ({source_sha256, base, code (hex), symbols});
                 module = "text_speed_patch" module (one of NATIVE_MODULES) validates it (schema, source digest,
-                                            the reviewed sha256 pin) and reproduces it with clang. The asm names
+                compiler = "Apple clang ..." the reviewed sha256 pin) and reproduces it with clang; compiler: the
+                                            first line of `clang --version` the payload was reviewed with, the
+                                            only compiler the module runs (another one is refused). The asm names
                                             every symbol with `.definelabel <name>, <address>` (Thumb bit clear);
                                             `check` compares them with payload.json.
 
@@ -149,8 +151,8 @@ REQUIRED_TOP = ("id", "title", "kind", "enabled", "decisions", "requires", "why"
 ASM_KINDS = ("strings", "data", "code")  # kinds whose new bytes come from an armips source
 # Python modules (work/tools/<name>.py) that validate a fix's native payload ([native] module = ...)
 NATIVE_MODULES = ("text_speed_patch",)
-NATIVE_KEYS = {"source": str, "headers": STRS, "payload": str, "module": str}
-NATIVE_REQUIRED = ("source", "payload", "module")
+NATIVE_KEYS = {"source": str, "headers": STRS, "payload": str, "module": str, "compiler": str}
+NATIVE_REQUIRED = ("source", "payload", "module", "compiler")
 ASM_DEFINELABEL_RE = re.compile(r"^\s*\.definelabel\s+(\w+)\s*,\s*(0x[0-9A-Fa-f]+)\s*(?:;.*)?$", re.I)
 ASM_INCBIN_RE = re.compile(r'^\s*(?:\w+:\s*)?\.incbin\s+"([^"]+)"', re.I)
 # The ARM9 ITCM autoload block (file key "itcm", staged as itcm.bin): its RAM address, and how far a fix may
@@ -1731,8 +1733,8 @@ def render_docs(fixes, overlay_bases=None) -> str:
         if fx.get("native"):
             nat = fx["native"]
             files = ", ".join(f"`{x}`" for x in [nat["source"]] + nat.get("headers", []))
-            out.append(f"- Native code: {files}, compiled into `{nat['payload']}` (reviewed, checked by "
-                       f"`work/tools/{nat['module']}.py`); the asm places it with `.incbin`")
+            out.append(f"- Native code: {files}, compiled by {nat['compiler']} into `{nat['payload']}` (reviewed, "
+                       f"checked by `work/tools/{nat['module']}.py`); the asm places it with `.incbin`")
         out += ["", "**Why (the Chinese hack):**", "", _paragraphs(fx["why"]), "",
                 "**What (old → new):**", "", _paragraphs(fx["what"]), "", "**Evidence:**", ""]
         out += [f"- {ev}" for ev in fx["evidence"]]

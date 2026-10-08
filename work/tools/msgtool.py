@@ -499,7 +499,7 @@ def cmd_extract(a):
             json.dump(obj, f, ensure_ascii=False, indent=1)
     meta = {"rom": str(a.rom), "narc": a.narc or MSG_NARC_PATH, "banks": len(narc.files),
             "narc_btnf_hex": narc.btnf.hex(), "pad_last": narc.pad_last, "charmaps": a.charmap}
-    (out / "_meta.json").write_text(json.dumps(meta, indent=1))
+    (out / "_meta.json").write_text(json.dumps(meta, indent=1), encoding="utf-8")
     print(f"extracted {len(narc.files)} banks to {out}; strings needing raw_hex: {nraw}; unknown-code tags: {nunk}")
 
 

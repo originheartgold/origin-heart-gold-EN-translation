@@ -28,7 +28,8 @@ class ArtifactTests(unittest.TestCase):
         self.prior = {"rom": {"sha1": A.hashes(self.a.rom)["sha1"]},
                       "base": {"sha1": A.hashes(self.a.base)["sha1"]},
                       "statuses": ["draft"], "glyphs": [{"font": 0}],
-                      "graphics": [{"synthetic": True}], "hardcoded": {"synthetic": True}}
+                      "graphics": [{"synthetic": True}], "hardcoded": {"synthetic": True},
+                      "toolchain": {"python": "3.14.7", "xdelta3": A.build.XDELTA3_VERSION, "xdelta3_pinned": True}}
         self.save_report()
 
     def save_report(self):
@@ -60,6 +61,20 @@ class ArtifactTests(unittest.TestCase):
         self.assertEqual(result["status"], "passed")
         self.assertEqual(self.a.rom.read_bytes(), before)
         self.assertEqual(len(result["inputs"]["ws"]["sha256"]), 64)
+
+    def test_report_without_toolchain_or_with_unpinned_xdelta3_fails(self):
+        for toolchain, why in ((None, "no toolchain record"),
+                               ({"xdelta3": "3.0.11", "xdelta3_pinned": False}, "xdelta3 3.0.11 is not the pinned"),
+                               ({"python": "3.14.7"}, "or the build made no patch")):
+            with self.subTest(toolchain=toolchain):
+                if toolchain is None:
+                    self.prior.pop("toolchain")
+                else:
+                    self.prior["toolchain"] = toolchain
+                self.save_report()
+                result = self.run_check()
+                self.assertEqual(result["status"], "failed")
+                self.assertIn(why, result["reason"])
 
     def test_feature_verifier_rejection_is_release_failure(self):
         self.prior["text_speed"] = {"enabled": True, "source_code_sha256": "synthetic"}

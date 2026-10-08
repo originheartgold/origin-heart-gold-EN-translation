@@ -67,6 +67,16 @@ def check(a, export_fn=None, verify_fn=None):
             if key not in prior:
                 report.update(status="incomplete", reason=f"build report missing {key} verification metadata")
                 return report
+        # a release patch is made by the pinned xdelta3 (build.XDELTA3_VERSION); older reports have no toolchain
+        toolchain = prior.get("toolchain")
+        if not isinstance(toolchain, dict):
+            report["reason"] = "build report has no toolchain record (built before the toolchain pins); rebuild"
+            return report
+        if toolchain.get("xdelta3_pinned") is not True:
+            report["reason"] = (f"build report: xdelta3 {toolchain.get('xdelta3')} is not the pinned "
+                                f"{build.XDELTA3_VERSION} (or the build made no patch); not a release")
+            return report
+        report["checks"]["toolchain"] = "passed"
         report["checks"]["identity"] = "passed"
         report["verification_inputs"] = {
             str(path.relative_to(build.WORK)): hashes(path)
