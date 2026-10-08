@@ -9204,10 +9204,10 @@
   {
    "id": 971,
    "zh": "爱亲近人，害怕寂寞。{NEWLINE}即使只和它玩了一小会儿，{NEWLINE}它也会一直跟在身后。",
-   "en": "Friendly, and afraid of being lonely.{NEWLINE}Play with it for even a little while,{NEWLINE}and it will follow you forever.",
+   "en": "Friendly, and afraid of being lonely.{NEWLINE}Play with it for even a little while,{NEWLINE}and it will keep following you around.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV093: addition: 一直跟在身后 = keeps following you; 'forever' overstated"
   },
   {
    "id": 972,
@@ -9277,10 +9277,10 @@
   {
    "id": 979,
    "zh": "会将隐藏在心里的{NEWLINE}愤怒之情凝聚在拳头里，{NEWLINE}其威力能深入对手骨髓，使其粉碎。",
-   "en": "It concentrates the anger hidden in its{NEWLINE}heart into its fists. Their power{NEWLINE}reaches a foe’s marrow and shatters it.",
+   "en": "It packs the anger hidden in its heart{NEWLINE}into its fists. Their power sinks into{NEWLINE}a foe’s marrow and shatters the foe.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV093: meaning: 使其粉碎: the foe is shattered; old 'it' read as the marrow (D-1945)",
    "qa_ignore": [
     "glossary:愤怒"
    ]
@@ -9447,10 +9447,10 @@
   {
    "id": 998,
    "zh": "会倒转身体并从口中吐出冷气，{NEWLINE}然后靠吐气的作用力猛冲，{NEWLINE}用背鳍的剑给予敌人致命一击。",
-   "en": "It spins upside down and breathes cold{NEWLINE}air, riding the thrust to charge and{NEWLINE}deliver a deadly blow with its fin blade.",
+   "en": "It turns upside down and breathes cold{NEWLINE}air, riding the thrust to charge and{NEWLINE}deliver a deadly blow with its fin blade.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV093: meaning: 倒转身体 = turns upside down, not spins"
   },
   {
    "id": 999,
@@ -9582,10 +9582,10 @@
   {
    "id": 1013,
    "zh": "喜欢待在民宅的地板下{NEWLINE}和架子深处等阴凉的地方。{NEWLINE}日落后会四处徘徊寻找猎物。",
-   "en": "It likes cool spots, like under floors{NEWLINE}or at the back of shelves. After{NEWLINE}sunset, it roams in search of prey.",
+   "en": "It likes cool spots in homes, like{NEWLINE}under floors or deep in shelves. After{NEWLINE}sunset, it roams in search of prey.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV093: omission: restored 民宅 (in homes)"
   },
   {
    "id": 1014,
@@ -9782,10 +9782,10 @@
   {
    "id": 1035,
    "zh": "让穿山鼠在冰上滑行，{NEWLINE}比赛滑行的距离。{NEWLINE}这是自古就有的阿罗拉的庆典之一。",
-   "en": "Racing Sandshrew by sliding them{NEWLINE}across ice is one of Alola’s age-old{NEWLINE}festivals.",
+   "en": "Sliding Sandshrew across ice to{NEWLINE}see whose slide goes farthest is{NEWLINE}one of Alola’s age-old festivals.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV093: meaning: 比赛滑行的距离 = contest of sliding distance, not racing (D-1946)"
   },
   {
    "id": 1036,
@@ -10561,10 +10561,10 @@
   {
    "id": 1124,
    "zh": "超级进化的力量过强，{NEWLINE}颚部都碎掉了。{NEWLINE}因没法好好吃东西而焦躁。",
-   "en": "Mega Evolution’s power was so strong{NEWLINE}it shattered its jaws. Unable to eat{NEWLINE}properly, it is always irritable.",
+   "en": "Mega Evolution’s power was so{NEWLINE}strong it shattered its jaws. Unable{NEWLINE}to eat properly, it is irritable.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV093: addition: dropped added 'always'"
   },
   {
    "id": 1125,
@@ -11144,10 +11144,10 @@
   {
    "id": 1185,
    "zh": "此乃被称为形态变化的现象。据考察，{NEWLINE}此一形同怪鸟的姿态才是其真正样貌。{NEWLINE}曾被目击以此姿态横越大海。",
-   "en": "This is called a change of form. This{NEWLINE}strange birdlike form is thought to be{NEWLINE}its true one. It has crossed the sea.",
+   "en": "This is a change of form. This strange{NEWLINE}birdlike form is thought to be its true{NEWLINE}one. It was seen crossing the sea in it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV093: omission: 曾被目击以此姿态横越大海: restored 'seen' and 'in this form'",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -12754,10 +12754,10 @@
   {
    "id": 1354,
    "zh": "据说它是受到洗翠的灵山之气影响，{NEWLINE}才形成了现在的模样。{NEWLINE}据说会用火焰净化并超渡灵魂。",
-   "en": "The air of Hisui’s sacred mountains is{NEWLINE}said to have shaped it. It purifies{NEWLINE}souls with fire and lays them to rest.",
+   "en": "Hisui’s sacred mountain air is said to{NEWLINE}have shaped it. It is said to purify{NEWLINE}souls with fire and lay them to rest.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV093: omission: restored second 据说 (said to)"
   },
   {
    "id": 1355,
@@ -12833,10 +12833,10 @@
   {
    "id": 1362,
    "zh": "与野蛮鲈鱼的生态相差甚远，{NEWLINE}因此它们是不同种类的{NEWLINE}说法在近年以来备受支持。",
-   "en": "Its habits differ so much from{NEWLINE}Basculin’s that the theory that it is a{NEWLINE}separate species has gained support.",
+   "en": "Its habits are so unlike Basculin’s{NEWLINE}that the theory that it’s a separate{NEWLINE}species has recently gained support.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV093: omission: restored 近年以来 (recently)"
   },
   {
    "id": 1363,
@@ -12852,10 +12852,10 @@
   {
    "id": 1364,
    "zh": "疯狂舞动白发的姿态如同死神。{NEWLINE}在足以撕裂自身的深刻仇怨驱使下，{NEWLINE}抱定同归于尽之心袭杀仇敌。",
-   "en": "Tossing its white mane, it looks like{NEWLINE}death itself. Driven by deep hatred,{NEWLINE}it attacks, willing to die with its foe.",
+   "en": "Its wild white mane makes it look like{NEWLINE}death. Self-rending hatred drives it{NEWLINE}to kill foes, ready to die with them.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV093: softened: restored 足以撕裂自身 and 袭杀 = kill (D-1947, D-0627)"
   },
   {
    "id": 1365,
@@ -12887,10 +12887,10 @@
   {
    "id": 1368,
    "zh": "包覆下颚的冰块装甲硬度更胜钢铁，{NEWLINE}能轻易地击碎岩石。它会借此铲开{NEWLINE}厚重积雪，在险峻的山路上猛冲。",
-   "en": "Its ice armor is harder than steel and{NEWLINE}smashes rock. It plows through deep{NEWLINE}snow on steep mountain paths with it.",
+   "en": "Its jaw’s ice armor, harder than steel,{NEWLINE}easily smashes rock. With it, it rams{NEWLINE}through deep snow on steep paths.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV093: omission: restored 下颚 (jaw), 轻易 (easily), 猛冲 (rams)",
    "qa_ignore": [
     "glossary:碎岩"
    ]
