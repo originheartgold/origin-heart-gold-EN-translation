@@ -7146,7 +7146,7 @@
   {
    "id": "RV120",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 468,
    "labels": [
     "a027/0754 link_wifi [part 2/2]",

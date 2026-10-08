@@ -3798,26 +3798,26 @@
   {
    "id": 474,
    "zh": "{VAR:0103:0}{NEWLINE}「时髦的洋服啊{CLEAR}唔原来如此{SCROLL}",
-   "en": "{VAR:0103:0}:{NEWLINE}Fashionable clothes interest you the{CLEAR}most? That’s interesting.{SCROLL}",
+   "en": "{VAR:0103:0}:{NEWLINE}Fashionable clothes interest you the{CLEAR}most? I see.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/474"
+   "origin": "agent",
+   "notes": "US 0766/474 | RV120: meaning: tail 唔原来如此 = 'I see', not 'That’s interesting.'"
   },
   {
    "id": 475,
    "zh": "{VAR:0103:0}{NEWLINE}「明天的天气啊{CLEAR}唔原来如此{SCROLL}",
-   "en": "{VAR:0103:0}:{NEWLINE}Tomorrow’s weather concerns you the{CLEAR}most? OK.{SCROLL}",
+   "en": "{VAR:0103:0}:{NEWLINE}Tomorrow’s weather concerns you the{CLEAR}most? I see.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/475"
+   "origin": "agent",
+   "notes": "US 0766/475 | RV120: meaning: tail 唔原来如此 = 'I see', not 'OK.'"
   },
   {
    "id": 476,
    "zh": "{VAR:0103:0}{NEWLINE}「新的偶像啊{CLEAR}唔原来如此{SCROLL}",
-   "en": "{VAR:0103:0}:{NEWLINE}New pop stars are what interest you{CLEAR}most? Nice.{SCROLL}",
+   "en": "{VAR:0103:0}:{NEWLINE}New pop stars are what interest you{CLEAR}most? I see.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/476"
+   "origin": "agent",
+   "notes": "US 0766/476 | RV120: meaning: tail 唔原来如此 = 'I see', not 'Nice.'"
   },
   {
    "id": 477,
@@ -4078,10 +4078,10 @@
   {
    "id": 509,
    "zh": "{VAR:0103:0}{NEWLINE}「请收下！{CLEAR}要好好珍惜哦！{SCROLL}",
-   "en": "{VAR:0103:0}:{NEWLINE}There you go!{CLEAR}Have fun with it!{SCROLL}",
+   "en": "{VAR:0103:0}:{NEWLINE}There you go!{CLEAR}Take good care of it!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/509"
+   "origin": "agent",
+   "notes": "US 0766/509 | RV120: meaning: 要好好珍惜 = take good care of it, not 'Have fun with it!' (D-1980)"
   },
   {
    "id": 510,
@@ -4334,10 +4334,10 @@
   {
    "id": 541,
    "zh": "有曾经努力过吗？",
-   "en": "What are you working hard at?",
+   "en": "Ever worked hard at something?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/541"
+   "origin": "agent",
+   "notes": "US 0766/541 | RV120: meaning: 有曾经努力过吗 asks if you have ever worked hard (D-1981)"
   },
   {
    "id": 542,
@@ -4358,10 +4358,10 @@
   {
    "id": 544,
    "zh": "自己住的地方{NEWLINE}有让你觉得自豪的吗？",
-   "en": "What’s special there?",
+   "en": "Proud of where you live?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/544"
+   "origin": "agent",
+   "notes": "US 0766/544 | RV120: omission: 有让你觉得自豪的 = proud of, not just special (D-1981)"
   },
   {
    "id": 545,
@@ -4846,18 +4846,18 @@
   {
    "id": 605,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「人多的{CLEAR}地方真好！{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}I’d like to go where there are lots of{CLEAR}people.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}I’d like to go where there are{CLEAR}lots of people.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/605"
+   "origin": "agent",
+   "notes": "US 0766/605 | RV120: layout: one-word {CLEAR} orphan"
   },
   {
    "id": 606,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「没人的{CLEAR}地方真好！{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}I’d like to go where there aren’t any{CLEAR}people.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}I’d like to go where there aren’t{CLEAR}any people.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/606"
+   "origin": "agent",
+   "notes": "US 0766/606 | RV120: layout: one-word {CLEAR} orphan"
   },
   {
    "id": 607,
@@ -5294,26 +5294,26 @@
   {
    "id": 661,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「唔！{CLEAR}超市啊！{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}A supermarket?{CLEAR}You must like shopping.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, a supermarket!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0766/661 | zh 下雪/超市 differs from US (hail/department store); retranslated"
+   "notes": "US 0766/661 | zh 下雪/超市 differs from US (hail/department store); retranslated | RV120: addition: zh 唔！超市啊！ has no 'You must like shopping'"
   },
   {
    "id": 662,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「唔！{CLEAR}游乐园啊！{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}An amusement park! Of course!{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, an amusement park!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/662"
+   "origin": "agent",
+   "notes": "US 0766/662 | RV120: addition: dropped added 'Of course!'"
   },
   {
    "id": 663,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「唔！{CLEAR}戏院啊！{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}A theater sounds entertaining!{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, a theater!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/663"
+   "origin": "agent",
+   "notes": "US 0766/663 | RV120: addition: zh 唔！戏院啊！; dropped added 'sounds entertaining'"
   },
   {
    "id": 664,
@@ -5414,10 +5414,10 @@
   {
    "id": 676,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「请收下！{CLEAR}要珍惜哦！{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}There you go!{CLEAR}Have fun with it!{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}There you go!{CLEAR}Take good care of it!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/676"
+   "origin": "agent",
+   "notes": "US 0766/676 | RV120: meaning: 要珍惜 = take good care of it, not 'Have fun with it!' (D-1980)"
   },
   {
    "id": 677,
@@ -5614,10 +5614,10 @@
   {
    "id": 701,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「有努力过吗？{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}What are you working hard at?{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Ever worked hard at something?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/701"
+   "origin": "agent",
+   "notes": "US 0766/701 | RV120: meaning: 有努力过吗 asks if you have ever worked hard (D-1981)"
   },
   {
    "id": 702,
@@ -5638,10 +5638,10 @@
   {
    "id": 704,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「现在住的地方{NEWLINE}有什么令你自豪的吗？{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}What makes where you live special?{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}What makes you proud of where you live?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/704"
+   "origin": "agent",
+   "notes": "US 0766/704 | RV120: omission: 令你自豪 = proud, not just special (D-1981)"
   },
   {
    "id": 705,
@@ -6342,10 +6342,10 @@
   {
    "id": 792,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「应该有珍惜的东西吧！{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}There are rare things and events here.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}There must be precious things here.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/792"
+   "origin": "agent",
+   "notes": "US 0766/792 | RV120: addition: 应该有珍惜的东西 = there must be precious things; dropped added 'events' (D-1978)"
   },
   {
    "id": 793,
@@ -6558,10 +6558,10 @@
   {
    "id": 819,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「总之要显眼啊！{CLEAR}真让人感到意外啊{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Standing out, anyway, huh!{CLEAR}That’s a surprise.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Standing out above all, huh!{CLEAR}That’s a surprise.{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0766/819; ext-review RB-009"
+   "notes": "US 0766/819; ext-review RB-009 | RV120: grammar: 'Standing out, anyway, huh!' was unclear; 总之 = above all"
   },
   {
    "id": 820,
@@ -6638,34 +6638,34 @@
   {
    "id": 829,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「广场游戏啊{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}You’re off to play a Plaza Game.{CLEAR}Have fun!{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}You’re off to play a Plaza Game.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/829"
+   "origin": "agent",
+   "notes": "US 0766/829 | RV120: addition: dropped added 'Have fun!'"
   },
   {
    "id": 830,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「脚印板啊{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}You’re going to play with the Footprint{CLEAR}Stamp. That’s neat.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}You’re going to play with{CLEAR}the Footprint Stamp.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/830"
+   "origin": "agent",
+   "notes": "US 0766/830 | RV120: addition: dropped added 'That’s neat.'; name no longer split across boxes"
   },
   {
    "id": 831,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「客人观点啊{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Visitor Profiles?{CLEAR}You can see where people are from.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Visitor Profiles, huh?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/831"
+   "origin": "agent",
+   "notes": "US 0766/831 | RV120: addition: zh 客人观点啊; dropped added 'You can see where people are from.'"
   },
   {
    "id": 832,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「广场新闻啊{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}You’re going to check out the Plaza{CLEAR}News? It’s informative.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}You’re going to check out{CLEAR}the Plaza News?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/832"
+   "origin": "agent",
+   "notes": "US 0766/832 | RV120: addition: dropped added 'It’s informative.'"
   },
   {
    "id": 833,
@@ -6702,10 +6702,10 @@
   {
    "id": 837,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「唔！运动啊{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, so you play sports with your{CLEAR}friends.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, so you play sports{CLEAR}with your friends.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/837"
+   "origin": "agent",
+   "notes": "US 0766/837 | RV120: layout: one-word {CLEAR} orphan"
   },
   {
    "id": 838,
@@ -6718,18 +6718,18 @@
   {
    "id": 839,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「唔！说话啊！{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, chatting is what you do with your{CLEAR}friends.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, chatting is what you do{CLEAR}with your friends.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/839"
+   "origin": "agent",
+   "notes": "US 0766/839 | RV120: layout: one-word {CLEAR} orphan"
   },
   {
    "id": 840,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「唔！买东西啊！{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, so you like to shop with your{CLEAR}friends.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, so you shop with your friends.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/840"
+   "origin": "agent",
+   "notes": "US 0766/840 | RV120: addition: dropped added 'like to'; fixed one-word orphan"
   },
   {
    "id": 841,
@@ -6750,18 +6750,18 @@
   {
    "id": 843,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「自己吗⋯⋯{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Yourself, huh? It’s only natural.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Yourself, huh...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/843"
+   "origin": "agent",
+   "notes": "US 0766/843 | RV120: addition: zh 自己吗⋯⋯; dropped added 'It’s only natural.'"
   },
   {
    "id": 844,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「秘密吗⋯⋯{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}A secret? That’s intriguing.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}A secret, huh...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/844"
+   "origin": "agent",
+   "notes": "US 0766/844 | RV120: addition: zh 秘密吗⋯⋯; dropped added 'That’s intriguing.'"
   },
   {
    "id": 845,
@@ -6806,26 +6806,26 @@
   {
    "id": 850,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「努力的时候吗{CLEAR}嗯嗯原来如此⋯⋯{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}You’re happy when you’re working hard.{CLEAR}You’re a go-getter!{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}You’re happy when you’re working hard.{CLEAR}That makes sense.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/850"
+   "origin": "agent",
+   "notes": "US 0766/850 | RV120: meaning: tail 嗯嗯原来如此 = 'I see', not 'You’re a go-getter!'"
   },
   {
    "id": 851,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「睡觉的时候吗{CLEAR}嗯嗯原来如此⋯⋯{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}You’re happy when you’re sleeping.{CLEAR}That’s nice.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}You’re happy when you’re sleeping.{CLEAR}That makes sense.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/851"
+   "origin": "agent",
+   "notes": "US 0766/851 | RV120: meaning: tail 嗯嗯原来如此 = 'I see', not 'That’s nice.'"
   },
   {
    "id": 852,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「吃东西的时候吗{CLEAR}嗯嗯原来如此⋯⋯{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}You’re happy when you’re eating.{CLEAR}That’s nice.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}You’re happy when you’re eating.{CLEAR}That makes sense.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/852"
+   "origin": "agent",
+   "notes": "US 0766/852 | RV120: meaning: tail 嗯嗯原来如此 = 'I see', not 'That’s nice.'"
   },
   {
    "id": 853,
@@ -6870,26 +6870,26 @@
   {
    "id": 858,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「哇,真厉害！{CLEAR}减肥吗！{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}You’re working hard on your diet?{CLEAR}Be good to yourself.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}You’re working hard on your diet?{CLEAR}Good for you!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/858"
+   "origin": "agent",
+   "notes": "US 0766/858 | RV120: meaning: 哇,真厉害 = 'impressive', not 'Be good to yourself.'"
   },
   {
    "id": 859,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「哇,真厉害！{CLEAR}恋爱吗！！{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Ooh, you’re working hard on romance?{CLEAR}That must be nice!{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Ooh, you’re working hard on romance?{CLEAR}Good for you!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/859"
+   "origin": "agent",
+   "notes": "US 0766/859 | RV120: meaning: 哇,真厉害 = 'impressive', not 'That must be nice!'"
   },
   {
    "id": 860,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「哇,真厉害！{CLEAR}修行吗！！{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}You’re working hard on your training?{CLEAR}Good luck with that!{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}You’re working hard on your training?{CLEAR}Good for you!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/860"
+   "origin": "agent",
+   "notes": "US 0766/860 | RV120: meaning: 哇,真厉害 = 'impressive', not 'Good luck with that!'"
   },
   {
    "id": 861,
@@ -6982,10 +6982,10 @@
   {
    "id": 872,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「有着珍贵物品的地方{CLEAR}啊！哇真好！{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}A place with rare things and events?{CLEAR}That must be cool.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}A place with precious things?{CLEAR}That must be cool.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/872"
+   "origin": "agent",
+   "notes": "US 0766/872 | RV120: addition: 有着珍贵物品 = precious things; dropped added 'events' (D-1978)"
   },
   {
    "id": 873,
@@ -7046,34 +7046,34 @@
   {
    "id": 880,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「是吗,什么都听不见吗{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, so you don’t hear very much.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, so you can’t hear anything?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/880"
+   "origin": "agent",
+   "notes": "US 0766/880 | RV120: meaning: 什么都听不见 = can’t hear anything, not 'not very much' (D-1979)"
   },
   {
    "id": 881,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「唔那里有着吃饭的{CLEAR}气味哦{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, you smell something cooking?{CLEAR}Sounds nice!{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, you smell something cooking there?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/881"
+   "origin": "agent",
+   "notes": "US 0766/881 | RV120: addition: dropped added 'Sounds nice!'"
   },
   {
    "id": 882,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「唔那里有着人的{CLEAR}气味哦{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, you smell other people? OK.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, you smell other people there?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/882"
+   "origin": "agent",
+   "notes": "US 0766/882 | RV120: addition: dropped added 'OK.'"
   },
   {
    "id": 883,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「唔那里有着季节的{CLEAR}气味哦{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, you smell the season, huh?{CLEAR}That’s neat.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Oh, you smell the scents of the season.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/883"
+   "origin": "agent",
+   "notes": "US 0766/883 | RV120: addition: dropped added 'That’s neat.'"
   },
   {
    "id": 884,
@@ -7086,34 +7086,34 @@
   {
    "id": 885,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「最新的玩具啊{CLEAR}唔原来如此啊{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}The latest toys interest you the most?{CLEAR}That’s interesting.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}The latest toys interest you the most?{CLEAR}I see.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/885"
+   "origin": "agent",
+   "notes": "US 0766/885 | RV120: meaning: tail 唔原来如此啊 = 'I see', not 'That’s interesting.'"
   },
   {
    "id": 886,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「时髦的洋服啊{CLEAR}唔原来如此{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Fashionable clothes interest you the{CLEAR}most? That’s interesting.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Fashionable clothes interest you the{CLEAR}most? I see.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/886"
+   "origin": "agent",
+   "notes": "US 0766/886 | RV120: meaning: tail 唔原来如此 = 'I see', not 'That’s interesting.'"
   },
   {
    "id": 887,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「明天的天气啊{CLEAR}唔原来如此{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Tomorrow’s weather concerns you the{CLEAR}most? OK.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}Tomorrow’s weather concerns you the{CLEAR}most? I see.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/887"
+   "origin": "agent",
+   "notes": "US 0766/887 | RV120: meaning: tail 唔原来如此 = 'I see', not 'OK.'"
   },
   {
    "id": 888,
    "zh": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}{NEWLINE}「新的偶像啊{CLEAR}唔原来如此{SCROLL}",
-   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}New pop stars are what interest you{CLEAR}most? Neat.{SCROLL}",
+   "en": "{VAR:FF00:2}{VAR:0103:0}{VAR:FF00:0}:{NEWLINE}New pop stars are what interest you{CLEAR}most? I see.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0766/888"
+   "origin": "agent",
+   "notes": "US 0766/888 | RV120: meaning: tail 唔原来如此 = 'I see', not 'Neat.'"
   },
   {
    "id": 889,

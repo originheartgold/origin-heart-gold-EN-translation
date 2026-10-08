@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "请输入{NEWLINE}战斗房间的排名（０１ー１０）{VAR:0200:0}",
-   "en": "Enter the Rank of the Battle Room{NEWLINE}(01-10) to check your records.{VAR:0200:0}",
+   "en": "Enter the Rank of the Battle Room{NEWLINE}(01-10).{VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0774/5"
+   "origin": "agent",
+   "notes": "US 0774/5 | RV120: addition: zh 请输入战斗房间的排名（01-10） has no 'to check your records'"
   },
   {
    "id": 6,
