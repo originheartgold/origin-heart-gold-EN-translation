@@ -6600,7 +6600,7 @@
   {
    "id": "RV099",
    "group": "7-battle",
-   "status": "todo",
+   "status": "done",
    "strings": 425,
    "labels": [
     "a027/0195 battle text [part 3/3]"
