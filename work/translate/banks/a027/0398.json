@@ -205,10 +205,10 @@
   {
    "id": 24,
    "zh": "你喜欢满金市的游戏厅吗",
-   "en": "Like the Game Corner?",
+   "en": "Like Goldenrod’s Game Corner?",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV049: omission: 满金市 restored",
    "category": "menu_touch_1line"
   },
   {

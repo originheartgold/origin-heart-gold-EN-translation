@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "虽然在商店里买不到,{NEWLINE}但元气块可以使{CLEAR}濒死的精灵完全复活！{SCROLL}不过ＰＰ点{NEWLINE}不会回复,这点要注意！",
-   "en": "You can’t buy a Max Revive, but it fully{NEWLINE}restores a fainted Pokémon.{SCROLL}Beware--it won’t restore PP, the{NEWLINE}Power Points needed for moves.",
+   "en": "You can’t buy a Max Revive in stores,{NEWLINE}but it fully revives a fainted Pokémon!{SCROLL}It won’t restore PP, though,{NEWLINE}so be careful!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0630/0"
+   "origin": "agent",
+   "notes": "US 0630/0 | RV049: addition: US gloss of PP not in zh; 注意 kept"
   },
   {
    "id": 1,
@@ -38,18 +38,18 @@
   {
    "id": 4,
    "zh": "最近我们商店经{NEWLINE}常有一只野生的皮卡丘光顾,{CLEAR}它今天又来我们店里偷东西了。{CLEAR}再这样下去,{CLEAR}店里的生意就不好做了。{SCROLL}看您是很厉害的训练家的样子,{NEWLINE}拜托您把它收服或赶走吧。{SCROLL}据我所知它总是出现在常磐市周边,{NEWLINE}只要你找找应该能找到。",
-   "en": "Lately a wild Pikachu keeps{NEWLINE}dropping by our store.{SCROLL}It came in and stole from us{NEWLINE}again today. If this keeps{CLEAR}up, we’ll go out of business.{SCROLL}You look like a strong Trainer. Could{NEWLINE}you please catch it or chase it off?{SCROLL}As far as I know, it’s always{NEWLINE}around Viridian City. If you{CLEAR}look, you should find it.",
+   "en": "Lately a wild Pikachu keeps dropping by{NEWLINE}our store. It came in and stole from us{CLEAR}again today. If this keeps up, business{CLEAR}is going to suffer. You look like a{CLEAR}strong Trainer. Could you please catch{CLEAR}it or chase it off? As far as I know,{CLEAR}it’s always around Viridian City. If you{CLEAR}look, you should find it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s)"
+   "notes": "v3 TM: 1 source(s) | RV049: meaning: 生意就不好做了 = business will suffer, not go out of business"
   },
   {
    "id": 5,
    "zh": "最近我们商店经{NEWLINE}常有一只野生的精灵光顾,{CLEAR}它今天又来我们店里偷东西了。{CLEAR}再这样下去,{CLEAR}店里的生意就不好做了。{SCROLL}看您是很厉害的训练家的样子,{NEWLINE}拜托您把它收服或赶走吧。{SCROLL}据我所知它总是出现在常磐市周边,{NEWLINE}只要你找找应该能找到。",
-   "en": "Lately a wild Pokémon keeps{NEWLINE}dropping by our store.{SCROLL}It came in and stole from us{NEWLINE}again today. If this keeps{CLEAR}up, we’ll go out of business.{SCROLL}You look like a strong Trainer. Could{NEWLINE}you please catch it or chase it off?{SCROLL}As far as I know, it’s always{NEWLINE}around Viridian City. If you{CLEAR}look, you should find it.",
+   "en": "Lately a wild Pokémon keeps dropping by{NEWLINE}our store. It came in and stole from us{CLEAR}again today. If this keeps up, business{CLEAR}is going to suffer. You look like a{CLEAR}strong Trainer. Could you please catch{CLEAR}it or chase it off? As far as I know,{CLEAR}it’s always around Viridian City. If you{CLEAR}look, you should find it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s)"
+   "notes": "v3 TM: 1 source(s) | RV049: meaning: 生意就不好做了 = business will suffer, not go out of business"
   },
   {
    "id": 6,

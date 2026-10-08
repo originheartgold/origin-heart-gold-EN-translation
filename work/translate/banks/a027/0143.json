@@ -6,26 +6,26 @@
   {
    "id": 0,
    "zh": "啊,你好！{SCROLL}还真是冷呐~{NEWLINE}冻死人啦~{SCROLL}听说你对神都遗迹感兴趣？{NEWLINE}年纪轻轻,还真了不起啊！{SCROLL}新奥地区和城都地区的{NEWLINE}文明相互融合于这点,{CLEAR}从神都遗迹里石柱的设计上,{CLEAR}也可见一斑呢~{SCROLL}",
-   "en": "Well, hello!{SCROLL}It’s so freezing, isn’t it?{SCROLL}For a youngster like you to be{NEWLINE}interested in the Sinjoh Ruins is{CLEAR}not something we see every day.{SCROLL}Take a look at them.{SCROLL}From the design of the pillars at the{NEWLINE}Sinjoh Ruins, you can see that the{CLEAR}cultures of Sinnoh and Johto{CLEAR}have blended.{SCROLL}",
+   "en": "Ah, hello! It sure is cold, isn’t it?{NEWLINE}I’m freezing to death!{SCROLL}I hear you’re interested in the{NEWLINE}Sinjoh Ruins? So young, and already{CLEAR}so impressive!{SCROLL}You can see how the cultures of Sinnoh{NEWLINE}and Johto blended together just from{CLEAR}the design of the Sinjoh Ruins’ pillars!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0145/0"
+   "origin": "agent",
+   "notes": "US 0145/0 | RV049: omission: US dropped 冻死人啦, 听说 and 年纪轻轻,还真了不起; added 'Take a look'"
   },
   {
    "id": 1,
    "zh": "哦呀哦呀！我怎么会这么失礼！{SCROLL}站着说话也不太方便吧？{NEWLINE}随我一起去前面的山间小屋里,{CLEAR}慢慢地详谈吧！{SCROLL}",
-   "en": "What was I thinking?{SCROLL}We don’t need to be standing here.{NEWLINE}Why don’t you come to the cabin{CLEAR}around the corner for more discussion?{SCROLL}",
+   "en": "Oh my, oh my! How rude of me!{SCROLL}It’s not easy to talk standing around{NEWLINE}like this, is it? Come with me to the{CLEAR}mountain cabin up ahead, and we can{CLEAR}talk it over properly!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0145/1"
+   "origin": "agent",
+   "notes": "US 0145/1 | RV049: omission: US dropped 我怎么会这么失礼"
   },
   {
    "id": 2,
    "zh": "啊,对了！{NEWLINE}山间小屋里来了一位稀客哦！{SCROLL}训练师界里众所周知的新奥名人！{SCROLL}他好像是边在各地旅行,{NEWLINE}边调查神话和古代的遗迹~{CLEAR}真是厉害呢！{SCROLL}",
-   "en": "By the way, we happen to have a person{NEWLINE}at the cabin.{SCROLL}Any Trainer should know who she is.{NEWLINE}The famous Trainer from Sinnoh!{SCROLL}She is traveling around to study{NEWLINE}myths and ancient ruins.{CLEAR}Isn’t that something?{SCROLL}",
+   "en": "Oh, that’s right! We have a rare guest{NEWLINE}at the mountain cabin!{SCROLL}A famous Sinnoh celebrity{NEWLINE}every Trainer knows!{SCROLL}Word is, this person is traveling all{NEWLINE}over, investigating myths and ancient{CLEAR}ruins. Amazing, isn’t it?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0145/2"
+   "origin": "agent",
+   "notes": "US 0145/2 | RV049: omission: US dropped 稀客 and 名人; pronoun kept neutral as zh 他 for the guest"
   },
   {
    "id": 3,
@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "茜罗娜『你的阿尔宙斯也{NEWLINE}与遗迹产生共鸣了？{SCROLL}如果我的判断没错的话,{NEWLINE}这里充斥着强大的力量。{SCROLL}答案就在遗迹里,{NEWLINE}等着与主人见面。{CLEAR}就在{VAR:FF00:1}光之舞台{VAR:FF00:0}……{SCROLL}",
-   "en": "Cynthia: It seems your Arceus is{NEWLINE}resonating in harmony with the Ruins.{SCROLL}It might just be me but I can{NEWLINE}feel that...{CLEAR}we are surrounded by strong power.{SCROLL}The answer lies inside the ruins.{SCROLL}The place that has been waiting for{NEWLINE}its rightful owner, the {VAR:FF00:1}Mystri Stage{VAR:FF00:0}...{SCROLL}",
+   "en": "Cynthia: Is your Arceus resonating{NEWLINE}with the ruins too?{SCROLL}If I’m right, this place is filled{NEWLINE}with powerful energy.{SCROLL}The answer lies inside the ruins,{NEWLINE}waiting to meet its master.{SCROLL}At the {VAR:FF00:1}Mystri Stage{VAR:FF00:0}...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0145/5; modernised from US 0145#5"
+   "origin": "agent",
+   "notes": "US 0145/5; modernised from US 0145#5 | RV049: meaning: US 'it might just be me' = 如果我的判断没错 reversed; question restored"
   },
   {
    "id": 6,
@@ -158,10 +158,10 @@
   {
    "id": 19,
    "zh": "赤日『坂木老大还有事要忙,{NEWLINE}就让我陪你玩玩吧！",
-   "en": "Cyrus: Boss Giovanni still has{NEWLINE}business to attend to. I’ll{CLEAR}be your playmate for now!",
+   "en": "Cyrus: Boss Giovanni still has{NEWLINE}business to attend to, so I’ll play{CLEAR}with you for a while!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV049: grammar: 'be your playmate' unnatural"
   },
   {
    "id": 20,

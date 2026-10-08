@@ -6,18 +6,18 @@
   {
    "id": 0,
    "zh": "那个……{NEWLINE}你是谁来着？{SCROLL}……　……　……{NEWLINE}……　……　……{SCROLL}我？{NEWLINE}我是遗忘大叔！{SCROLL}",
-   "en": "Um...{NEWLINE}Who did you say I was again?{SCROLL}...{NEWLINE}...{SCROLL}Oh, yes, I remember now!{NEWLINE}I’m the Move Deleter!{SCROLL}",
+   "en": "Um...{NEWLINE}Who are you again?{SCROLL}... ... ...{NEWLINE}... ... ...{SCROLL}Me?{NEWLINE}I’m the Move Deleter!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0635/0"
+   "origin": "agent",
+   "notes": "US 0635/0 | RV049: meaning: zh asks who the player is, then 'Me?' (D-1893)"
   },
   {
    "id": 1,
    "zh": "你是来让精灵{NEWLINE}忘记技能的吗？{VAR:0200:0}",
-   "en": "You’ve come to make me force your{NEWLINE}Pokémon to forget some moves? {VAR:0200:0}",
+   "en": "Have you come to make your Pokémon{NEWLINE}forget some moves?{VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0635/1"
+   "origin": "agent",
+   "notes": "US 0635/1 | RV049: meaning: US 'make me force' not in zh (D-1893)"
   },
   {
    "id": 2,
@@ -30,18 +30,18 @@
   {
    "id": 3,
    "zh": "想要忘记技能的时候{NEWLINE}就来找我吧！",
-   "en": "Remember me if there are moves that{NEWLINE}need to be forgotten.",
+   "en": "Come see me whenever you want{NEWLINE}a move forgotten!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0635/3"
+   "origin": "agent",
+   "notes": "US 0635/3 | RV049: addition: US 'Remember me' pun not in zh"
   },
   {
    "id": 4,
    "zh": "什么？这只精灵可只{NEWLINE}记得一个技能啊。{SCROLL}",
-   "en": "That Pokémon knows only one move,{NEWLINE}so it can’t be forgotten...{SCROLL}",
+   "en": "What? That Pokémon only{NEWLINE}knows one move!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0635/4"
+   "origin": "agent",
+   "notes": "US 0635/4 | RV049: addition: US 'so it can’t be forgotten' not in zh"
   },
   {
    "id": 5,
@@ -78,26 +78,26 @@
   {
    "id": 9,
    "zh": "我？{NEWLINE}我是技能爱好者。{SCROLL}精灵在成长过程中记住的{NEWLINE}技能我全部都知道,{SCROLL}所以我可以让你的精灵{NEWLINE}回忆起已经忘掉的{CLEAR}技能哦,嘿嘿！{SCROLL}但是我也不白干,{SCROLL}给我一枚心之鳞片的话,{NEWLINE}我就帮你想起一个技能！",
-   "en": "Me?{NEWLINE}I’m the Pokémon Move Maniac.{SCROLL}I know every move that Pokémon learn{NEWLINE}while they’re leveling up, and I can{CLEAR}make Pokémon remember those moves.{SCROLL}I can make a Pokémon of yours remember{NEWLINE}a move if you’d like.{SCROLL}But...ahem! It’ll cost you.{SCROLL}I’ll make a Pokémon remember a move{NEWLINE}if you’ll trade me a Heart Scale.",
+   "en": "Me?{NEWLINE}I’m the Move Maniac.{SCROLL}I know every move Pokémon learn as{NEWLINE}they grow, so I can make your Pokémon{CLEAR}remember moves they’ve forgotten.{SCROLL}Heh heh! But I don’t work for free.{NEWLINE}Give me a Heart Scale, and I’ll{CLEAR}help you remember one move!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0635/9"
+   "origin": "agent",
+   "notes": "US 0635/9 | RV049: omission: US dropped 已经忘掉的, 嘿嘿 and 不白干; repeated lines not in zh"
   },
   {
    "id": 10,
    "zh": "没错！{NEWLINE}就是这个心之鳞片！{SCROLL}可以帮你回忆起一个技能！{SCROLL}",
-   "en": "Ha! That’s it! That’s an honest-to-{NEWLINE}goodness Heart Scale!{SCROLL}Let me guess, you want me to teach{NEWLINE}one of your Pokémon a move?{SCROLL}",
+   "en": "That’s it! That’s a Heart Scale!{SCROLL}With it, I can help you{NEWLINE}remember one move!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0635/10"
+   "origin": "agent",
+   "notes": "US 0635/10 | RV049: meaning: US asked about teaching a move; zh says it helps remember one move"
   },
   {
    "id": 11,
    "zh": "有想要回忆起的技能的话,{NEWLINE}就拿来心之鳞片吧！",
-   "en": "If any of your Pokémon needs to learn a{NEWLINE}move, come back with a Heart Scale.",
+   "en": "If there’s a move you want to{NEWLINE}remember, bring me a Heart Scale!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0635/11"
+   "origin": "agent",
+   "notes": "US 0635/11 | RV049: meaning: US 'learn'; zh 回忆 = remember"
   },
   {
    "id": 12,
@@ -198,10 +198,10 @@
   {
    "id": 24,
    "zh": "１　２　……完成！{SCROLL}{VAR:0100:0}完全忘记了{NEWLINE}{VAR:0106:1}的使用方法！{SCROLL}然后……{SCROLL}{VAR:0100:0}想起了{NEWLINE}遗忘的{VAR:0106:2}！",
-   "en": "1, 2 and... Poof!{SCROLL}{VAR:0100:0} forgot all{NEWLINE}about {VAR:0106:1}!{SCROLL}And...{SCROLL}{VAR:0100:0} remembered {VAR:0106:2}!",
+   "en": "1, 2 and... Done! {VAR:0100:0} forgot all{NEWLINE}about {VAR:0106:1}! And... {VAR:0100:0}{CLEAR}remembered {VAR:0106:2}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV049: meaning: 完成 = Done, as elsewhere"
   },
   {
    "id": 25,
@@ -238,10 +238,10 @@
   {
    "id": 29,
    "zh": "原来如此……{NEWLINE}有这份心意不错！{SCROLL}不过你带着的精灵{NEWLINE}好像无法学习这个技能啊。",
-   "en": "I see...{NEWLINE}I like your sense of adventure.{SCROLL}However, none of the Pokémon with{NEWLINE}you now can learn the move.",
+   "en": "I see... Good of you to want that! But{NEWLINE}it looks like none of the Pokémon with{CLEAR}you can learn this move.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0635/29"
+   "origin": "agent",
+   "notes": "US 0635/29 | RV049: meaning: 有这份心意不错 is not 'sense of adventure'"
   },
   {
    "id": 30,
@@ -270,10 +270,10 @@
   {
    "id": 33,
    "zh": "唔……{SCROLL}让蛋学习这个技能{NEWLINE}有点太苛刻了……",
-   "en": "Hmm...{SCROLL}Teaching a move to an Egg is{NEWLINE}a challenge that’s beyond me.",
+   "en": "Hmm... Asking an Egg to learn this move{NEWLINE}is a bit much...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0635/33"
+   "origin": "agent",
+   "notes": "US 0635/33 | RV049: meaning: zh says it is too demanding for the Egg, not beyond the tutor (D-1893)"
   },
   {
    "id": 34,
@@ -334,18 +334,18 @@
   {
    "id": 41,
    "zh": "１　２　……完成！{SCROLL}{VAR:0100:0}完全忘记了{NEWLINE}{VAR:0106:1}的使用方法！{SCROLL}然后……{SCROLL}{VAR:0100:0}记住了{NEWLINE}新技能{VAR:0106:2}！",
-   "en": "1, 2 and... Poof!{SCROLL}{VAR:0100:0} forgot all{NEWLINE}about {VAR:0106:1}!{SCROLL}And...{SCROLL}{VAR:0100:0} learned the{NEWLINE}new move {VAR:0106:2}!",
+   "en": "1, 2 and... Done! {VAR:0100:0} forgot all{NEWLINE}about {VAR:0106:1}! And... {VAR:0100:0}{CLEAR}learned the new move {VAR:0106:2}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV049: meaning: 完成 = Done, as elsewhere"
   },
   {
    "id": 42,
    "zh": "流星群的威力{NEWLINE}相当强劲的！{SCROLL}不过使用了之后{NEWLINE}也会降低自己的特攻！",
-   "en": "Draco Meteor’s destructive power{NEWLINE}is awe inspiring.{SCROLL}However, using it will also lower{NEWLINE}the user’s Special Attack.",
+   "en": "Draco Meteor is extremely powerful! But{NEWLINE}using it also lowers the user’s Sp. Atk!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0635/42"
+   "origin": "agent",
+   "notes": "US 0635/42 | RV049: addition: 'awe inspiring' overstated; matches #36"
   },
   {
    "id": 43,
