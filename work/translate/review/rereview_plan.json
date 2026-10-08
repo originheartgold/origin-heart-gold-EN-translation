@@ -7416,7 +7416,7 @@
   {
    "id": "RV123",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 529,
    "labels": [
     "a027/0785 link_wifi + debug_unused + debug_or_unlisted",
