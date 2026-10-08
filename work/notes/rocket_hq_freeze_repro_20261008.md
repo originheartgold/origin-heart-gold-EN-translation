@@ -2,13 +2,13 @@
 
 > **Status (2026-10-08, later):** "Preserve it under D-1002/D-1337" below was written before the fix was requested. The fix is now `work/patches/overworld-texture-frame-bounds/` and is in normal builds (see "Ported to the per-fix format" in [rocket_hq_freeze_fix_20261008.md](rocket_hq_freeze_fix_20261008.md)). The user requested the fix and approved it as an exception to D-1337 (D-2083, which answers D-2043).
 
-The reported Rocket HQ freeze reproduces in melonDS 1.1 on macOS ARM64 with Abdil's correct battery save. Released English rc5, current English WIP, and untouched Chinese v4.0.3 all enter the same ARM9 data-abort loop at map 247, position (17,4), before the camera ambush at (23,4). This is an original-hack failure exposed by this emulator configuration, not an English translation regression. Preserve it under D-1002/D-1337.
+The reported Rocket HQ freeze reproduces in melonDS 1.1 on macOS ARM64 with player A's corrected battery save. Released English rc5, current English WIP, and untouched Chinese v4.0.3 all enter the same ARM9 data-abort loop at map 247, position (17,4), before the camera ambush at (23,4). This is an original-hack failure exposed by this emulator configuration, not an English translation regression. Preserve it under D-1002/D-1337.
 
 ## Correct input and reproduction
 
-Use `Downloads/Origin_HeartGold_v4.0.3_EN_v1.0.0-rc5.sav` (524288 bytes), SHA-256 `ee32cbb4ecba965b4de02b5bd7ed3dba33d85a6f18fc8c2b154fcc357b97978b`. The trainer is Abdi (with a smile glyph), 14 badges, 113:37 played. Continue starts in Rocket HQ, map 247 at (13,4).
+Use `Downloads/Origin_HeartGold_v4.0.3_EN_v1.0.0-rc5.sav` (524288 bytes), SHA-256 `ee32cbb4ecba965b4de02b5bd7ed3dba33d85a6f18fc8c2b154fcc357b97978b`. The save has 14 badges, 113:37 played. Continue starts in Rocket HQ, map 247 at (13,4).
 
-The previously supplied `Origin_HeartGold_v4.0.3_EN_v1.0.0-rc55.dsv` is a different save: Yuri in a Pokémon Center, map 246 at (8,14). It is excluded from this comparison.
+The previously supplied `Origin_HeartGold_v4.0.3_EN_v1.0.0-rc55.dsv` is a different save: a trainer in a Pokémon Center, map 246 at (8,14). It is excluded from this comparison.
 
 1. Copy the correct battery save alongside the test ROM with the same basename and `.sav` extension.
 2. Open the ROM in melonDS 1.1; use Continue from a fresh boot.
@@ -25,7 +25,7 @@ Test configuration: DS mode, direct boot, built-in BIOS, JIT disabled, software 
 | English WIP | Freeze at (17,4), same abort signature | Passes the position and reaches an interactive battle menu |
 | Released English rc5 | Freeze at (17,4), same abort signature | Not tested in this run |
 
-Luke's named `.dsv` also starts at (13,4) and passed into the camera battle in English WIP on DeSmuME. The other hash-named save was inspected but not runtime-tested. Earlier DeSmuME-only attempts therefore did not exercise the emulator that exposes the crash. Neither completing the battle nor saving after it was verified; the user-reported transfer-save workaround is not independently confirmed here. Five Island and other reported locations remain untested.
+Player B's named `.dsv` also starts at (13,4) and passed into the camera battle in English WIP on DeSmuME. The other hash-named save was inspected but not runtime-tested. Earlier DeSmuME-only attempts therefore did not exercise the emulator that exposes the crash. Neither completing the battle nor saving after it was verified; the user-reported transfer-save workaround is not independently confirmed here. Five Island and other reported locations remain untested.
 
 ROM identity:
 
@@ -56,10 +56,10 @@ The preceding code appears to look up a texture dictionary entry: R1 points to a
 Ignored directory: `work/build/rocket-repro-20261008/`.
 
 - `inputs.json`, `roms.json`: original-save and ROM identities.
-- `abdi_correct_en.ml1`, `abdi_correct_en.ml2`, `abdi_correct_cn.ml1`, `abdi_rc5.ml1`: melonDS crash states.
+- `playera_correct_en.ml1`, `playera_correct_en.ml2`, `playera_correct_cn.ml1`, `playera_rc5.ml1`: melonDS crash states.
 - `inspect_states.py`, `state_report.json`: state parser and decoded CPU/location evidence.
-- `abdi_correct_en_desmume/` and `abdi_correct_cn_desmume/`: screenshots, camera/battle states, and read-only register observations (`null_reads.json` / `low_reads.json`).
-- `luke_named_en_desmume/`: comparison screenshots and states.
+- `playera_correct_en_desmume/` and `playera_correct_cn_desmume/`: screenshots, camera/battle states, and read-only register observations (`null_reads.json` / `low_reads.json`).
+- `playerb_named_en_desmume/`: comparison screenshots and states.
 
 Game data and emulator states remain local and ignored. No game logic or translation changes were made.
 

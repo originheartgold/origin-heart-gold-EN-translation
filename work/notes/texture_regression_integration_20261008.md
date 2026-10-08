@@ -27,7 +27,7 @@ Unit checks:38 existing harness tests,13 focused texture tests (6 regression ora
 
 ## Running
 
-Run from this worktree root with a local raw battery save (tested with Luke's HQ save):
+Run from this worktree root with a local raw battery save (tested with player B's HQ save):
 
 ```sh
 <primary-checkout>/.venv/bin/python work/tools/emu_harness.py texture-bounds --rom ORIGINAL.nds --sav INPUT.sav --out work/build/check-original --expect original

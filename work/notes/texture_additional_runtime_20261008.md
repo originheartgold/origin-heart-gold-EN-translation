@@ -1,13 +1,13 @@
 # Additional texture-bound failures: runtime tests (2026-10-08)
 
-User requested broader binary investigation and reproduction. Tests use untouched Chinese v4.0.3, existing guard-patched Chinese ROM, read-only texture hooks at0202467C/02024696, and disposable copies/imports of Luke's supplied HQ battery save. No original save or ROM is modified. A normal harness scripted warp initializes each map; direct location-only Continue fixtures are not used.
+User requested broader binary investigation and reproduction. Tests use untouched Chinese v4.0.3, existing guard-patched Chinese ROM, read-only texture hooks at0202467C/02024696, and disposable copies/imports of player B's supplied HQ battery save. No original save or ROM is modified. A normal harness scripted warp initializes each map; direct location-only Continue fixtures are not used.
 
 ## Positive cases
 
-- **Seven Island map163(245,104):** hide flag2198 is naturally clear in Luke's input; no story flags changed. Original code records293 invalid texture requests(index11,count1),293 null loads and3823 valid updates. This is the barrier at(245,103), with movement15 in the event data. UP inputs are blocked by the object north; the test proves rendering failure, not traversal of the broader map.
+- **Seven Island map163(245,104):** hide flag2198 is naturally clear in player B's input; no story flags changed. Original code records293 invalid texture requests(index11,count1),293 null loads and3823 valid updates. This is the barrier at(245,103), with movement15 in the event data. UP inputs are blocked by the object north; the test proves rendering failure, not traversal of the broader map.
 - **Bell Tower map340(15,17):** diagnostic copy clears hide flag1140 only; the original input has this flag set. Original code records1174 invalid requests(index15,count1),1174 null loads and4119 valid updates. This exercises two barriers at(14,16)/(16,16), movement16. It establishes a reachable renderer failure under constructed visibility, not the original save's natural quest route.
 
-Initial planned RadioTower112, Mahogany116 and Whirl244 probes were canceled while waiting for emulator slots to prioritize naturally visible candidates. Luke's input hides their candidate objects(flags441,1366,579 all set); no runtime conclusion is drawn for those maps. Bell's probe completed before cancellation. Separate visibility diagnostic save copies exist but were not executed for the canceled candidates.
+Initial planned RadioTower112, Mahogany116 and Whirl244 probes were canceled while waiting for emulator slots to prioritize naturally visible candidates. Player B's input hides their candidate objects(flags441,1366,579 all set); no runtime conclusion is drawn for those maps. Bell's probe completed before cancellation. Separate visibility diagnostic save copies exist but were not executed for the canceled candidates.
 
 ## Evidence
 
@@ -17,7 +17,7 @@ Cross-emulator melonDS observations belong to the coordinating agent's report. E
 
 ## Completed Seven Island battery fixture
 
-`work/build/additional-runtime/luke_seven_complete.sav` is produced through normal in-game Save, with5000 frames after confirmation and successful export. SHA256 `0f3dfe918d3ef5c7bbf8d3d199558e1af55cbe9a497a313701e09d3fdb95adb3`. Active general/storage blocks both have counter4 and valid CRC24701/53238. The previous general/storage pair remains valid counter3. Location163(245,104), original input's story flags preserved except normal game activity associated with map entry/save. Root uses this fixture for melonDS validation.
+`work/build/additional-runtime/playerb_seven_complete.sav` is produced through normal in-game Save, with5000 frames after confirmation and successful export. SHA256 `0f3dfe918d3ef5c7bbf8d3d199558e1af55cbe9a497a313701e09d3fdb95adb3`. Active general/storage blocks both have counter4 and valid CRC24701/53238. The previous general/storage pair remains valid counter3. Location163(245,104), original input's story flags preserved except normal game activity associated with map entry/save. Root uses this fixture for melonDS validation.
 
 ## Runtime limits and cleanup
 

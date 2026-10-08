@@ -12,7 +12,7 @@ See [binary audit](texture_additional_code_20261008.md), [event/script audit](te
 
 | Location | Setup | Texture index / count | Invalid requests / null loads |
 |---|---|---|---|
-| Seven Island, zone163 at(245,104) | Scripted warp from copied Luke HQ save; story flags unchanged |11 /1|293 /293|
+| Seven Island, zone163 at(245,104) | Scripted warp from copied player B HQ save; story flags unchanged |11 /1|293 /293|
 | Bell Tower, zone340 at(15,17) | Disposable diagnostic copy with barrier hideflag1140 cleared |15 /1|1174 /1174|
 
 Seven Island object16 is sprite349/movement15 at(245,103), hideflag2198. Bell Tower objects23–24 are sprite349/movement16 at(14,16)/(16,16), hideflag1140. These confirm additional failing directions beyond the previous right-facing frame4 case. DeSmuME tolerates the invalid load, so these numbers alone establish the invalid access, not a visible emulator hang. The original Chinese ROM was used. Natural story progression to these setups was not played through.
@@ -27,7 +27,7 @@ No input saves/ROMs, production build scripts, or patch implementation were chan
 
 ## Completed Seven Island fixture
 
-`work/build/additional-runtime/luke_seven_complete.sav` is524288 bytes, SHA256 `0f3dfe918d3ef5c7bbf8d3d199558e1af55cbe9a497a313701e09d3fdb95adb3`. It was made using a normal scripted warp and in-game save, waiting5000 frames after confirmation. Both active blocks have counter4, with general/storage CRC24701/53238; both older blocks remain valid atcounter3. Root independently verified all four CRCs and matching block-pair counters before preparing identical original/fixed copies.
+`work/build/additional-runtime/playerb_seven_complete.sav` is524288 bytes, SHA256 `0f3dfe918d3ef5c7bbf8d3d199558e1af55cbe9a497a313701e09d3fdb95adb3`. It was made using a normal scripted warp and in-game save, waiting5000 frames after confirmation. Both active blocks have counter4, with general/storage CRC24701/53238; both older blocks remain valid atcounter3. Root independently verified all four CRCs and matching block-pair counters before preparing identical original/fixed copies.
 
 ## Seven Island melonDS reproduction
 

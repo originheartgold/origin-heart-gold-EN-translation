@@ -4,9 +4,9 @@ Investigated 2026-10-07. **Reproduced in both the untouched Chinese v4.0.3 and t
 
 ## Player report
 
-The supplied Discord export reports Crobat missing Cross Poison, Charizard missing Air Slash, and the same problem with Gyarados. It does not name Gyarados's missing move, identify the patch/emulator, supply a save, or say whether evolution followed a battle or a Rare Candy. Bite is the Gyarados evolution entry found in the ROM and tested here, not a move named by the reporter.
+A player report on Discord (2026-10-07) reports Crobat missing Cross Poison, Charizard missing Air Slash, and the same problem with Gyarados. It does not name Gyarados's missing move, identify the patch/emulator, supply a save, or say whether evolution followed a battle or a Rare Candy. Bite is the Gyarados evolution entry found in the ROM and tested here, not a move named by the reporter.
 
-Source: [Discord report, 2026-10-07](https://discord.com/channels/1554815898848731217/1557353656016314390/1557353656016314390).
+Source: a player report on Discord, 2026-10-07.
 
 ## Reproduction
 

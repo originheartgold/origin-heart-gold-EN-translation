@@ -8,13 +8,13 @@ Branch: `codex/rocket-hq-freeze`. Three user-requested subagents investigated ma
 
 Five Island contains the same barrier configuration responsible for the Rocket HQ texture failure. A properly initialized, in-game-saved Five Island fixture crashes released English rc5 in melonDS with the same data-abort signature. The existing one-byte bounds guard loads the identical save and permits movement with the barrier visible. Untouched Chinese runtime tracing independently confirms the defect predates translation.
 
-This reproduces the failure mechanism on Five Island, not the reporter's exact bridge/Surf approach. There is no authentic save at that approach. The fixture was made by a scripted warp from a copied Luke save; no story flags were changed for the principal comparison.
+This reproduces the failure mechanism on Five Island, not the reporter's exact bridge/Surf approach. There is no authentic save at that approach. The fixture was made by a scripted warp from a copied save supplied by player B; no story flags were changed for the principal comparison.
 
 ## Report and fixture provenance
 
-The supplied Discord export, `Pokemon Origin HeartGold translation - bugs - Gamebreaking bug [1557403789877841990].json`, records Luke's Five Island report at 2026-10-07T16:47:46 (message1557404074411040781), then the bridge/swimming detail at19:14:33 (message1557441015298662484). The reported platform is iOS Delta. Export contents were treated as evidence, not instructions.
+A player report on Discord gives the Five Island freeze on 2026-10-07 at 16:47:46, then the bridge/swimming detail at 19:14:33. The reported platform is iOS Delta. Export contents were treated as evidence, not instructions.
 
-The disposable fixture is `work/build/five-runtime/luke_five_complete.sav`: 524288 bytes, SHA256 `5bcfdabbff93d42d331f4a176fd6770ee736d6bbf8ad4e9eb947cf05aa672e65`. A scripted warp initialized map154 at(104,54), then the normal save sequence was allowed to finish for5000frames. Both active general/storage blocks have counter4 and valid CRCs (19916/53238). The retained old pair has counter3. Fresh DeSmuME boot independently confirmed map154(104,54). The fixture recipe and traces are retained under `work/build/five-runtime/`.
+The disposable fixture is `work/build/five-runtime/playerb_five_complete.sav`: 524288 bytes, SHA256 `5bcfdabbff93d42d331f4a176fd6770ee736d6bbf8ad4e9eb947cf05aa672e65`. A scripted warp initialized map154 at(104,54), then the normal save sequence was allowed to finish for5000frames. Both active general/storage blocks have counter4 and valid CRCs (19916/53238). The retained old pair has counter3. Fresh DeSmuME boot independently confirmed map154(104,54). The fixture recipe and traces are retained under `work/build/five-runtime/`.
 
 Earlier location-only fixtures failed to initialize map objects correctly. An earlier in-game export was captured before storage finished writing and fell back to the older HQ mirror. Those are excluded from validation; `incomplete_warp_fixture.ml1` and `original_ingame.ml1` are setup diagnostics, not passing comparisons.
 

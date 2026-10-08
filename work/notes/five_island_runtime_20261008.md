@@ -4,7 +4,7 @@ Worktree: `codex/rocket-hq-freeze`. Disposable save warps and isolated investiga
 
 ## Established findings
 
-A normal scripted warp to Five Island (map154,104,54), using Luke's supplied HQ save with its existing story flags, loads the Snorlax-area barrier and reproduces the exact invalid texture lookup seen in Rocket HQ in untouched Chinese v4.0.3. DeSmuME continues despite the null load; melonDS validation is recorded separately by the coordinating agent.
+A normal scripted warp to Five Island (map154,104,54), using player B's supplied HQ save with its existing story flags, loads the Snorlax-area barrier and reproduces the exact invalid texture lookup seen in Rocket HQ in untouched Chinese v4.0.3. DeSmuME continues despite the null load; melonDS validation is recorded separately by the coordinating agent.
 
 Read-only hooks at `0202467C` and `02024696` record requested texture index4, dictionary count1, and NULL loads. Live material bytes include `sppoke4.1`, matching the Rocket HQ barrier resource. A separate matched control sets only hide flag2173 in the disposable save: after the same scripted warp there are zero invalid requests/null loads. This flag hides both the barrier and Snorlax, so by itself it isolates the pair; static resource/event evidence identifies the barrier.
 
@@ -14,13 +14,13 @@ The existing guard-patched Chinese ROM has305 invalid requests safely skipped an
 
 The stock `SaveFile.place_player` location-only fixture is unsuitable here: removing old saved map objects does not construct the new map objects on Continue, and the player cannot move normally. Those initial tests and JSONs (`visible_original`, `visible_patched`, `hidden_original`, `bridge_original`) are setup failures, **not** evidence of a passing map or patch.
 
-A first normal-save export (`luke_five_ingame.sav`) happened before all storage writes finished: mirror0 general counter4 is valid but storage remains counter2 with an invalid CRC; the game falls back to the old mirror3 HQ save. That fixture is **invalid**. It is retained only as a diagnostic and must not be distributed or used for testing. The replacement `luke_five_complete.sav` waits5000 frames and has valid general/storage mirror0 blocks both at counter4, CRC19916/53238. Old mirror1 blocks both remain valid counter3. SHA256: `5bcfdabbff93d42d331f4a176fd6770ee736d6bbf8ad4e9eb947cf05aa672e65`. This is the usable fixture.
+A first normal-save export (`playerb_five_ingame.sav`) happened before all storage writes finished: mirror0 general counter4 is valid but storage remains counter2 with an invalid CRC; the game falls back to the old mirror3 HQ save. That fixture is **invalid**. It is retained only as a diagnostic and must not be distributed or used for testing. The replacement `playerb_five_complete.sav` waits5000 frames and has valid general/storage mirror0 blocks both at counter4, CRC19916/53238. Old mirror1 blocks both remain valid counter3. SHA256: `5bcfdabbff93d42d331f4a176fd6770ee736d6bbf8ad4e9eb947cf05aa672e65`. This is the usable fixture.
 
 ## Scope
 
 The report mentions crossing a bridge or Surfing across a river but does not specify coordinates. We identified a visible bridge at(122,62), east of the Snorlax barrier, and traversed nearby positions under DeSmuME after a scripted warp; the barrier remained active and invalid requests occurred. We have not reconstructed the reporter's exact approach, proved which bridge they meant, or tested Surf input. A successful near-barrier reproduction establishes the same failure class on Five Island; it does not prove the report's complete route.
 
-All three supplied save states inspected (Luke named HQ, Luke hash save, correct Abdi) have flag2173 clear naturally. Hash save begins at map29(1357,48), not Five Island. Original flags remain unchanged in the main fixture; setting2173 is explicitly a separate diagnostic control.
+All three supplied save states inspected (player B's named HQ save, player B's hash-named save, player A's corrected save) have flag2173 clear naturally. Hash save begins at map29(1357,48), not Five Island. Original flags remain unchanged in the main fixture; setting2173 is explicitly a separate diagnostic control.
 
 ## Local evidence
 
