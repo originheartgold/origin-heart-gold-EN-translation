@@ -6618,7 +6618,7 @@
   {
    "id": "RV100",
    "group": "7-battle",
-   "status": "todo",
+   "status": "done",
    "strings": 164,
    "labels": [
     "battle_string/0000 battle text"
