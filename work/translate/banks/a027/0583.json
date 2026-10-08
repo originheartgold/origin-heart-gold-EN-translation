@@ -32,10 +32,10 @@
   {
    "id": 3,
    "zh": "你这是封建迷信",
-   "en": "That’s superstition!",
+   "en": "That’s feudal superstition!",
    "status": "draft",
    "origin": "agent",
-   "notes": "你这是封建迷信 (‘that’s feudal superstition’); #44 echoes it as the ‘feudal superstition’ label.",
+   "notes": "你这是封建迷信 (‘that’s feudal superstition’); #44 echoes it as the ‘feudal superstition’ label. | RV035: omission: 封建 kept; #44 echoes ‘feudal superstition’",
    "category": "menu_touch_1line"
   },
   {
@@ -258,10 +258,10 @@
   {
    "id": 30,
    "zh": "可以啊,越乱越好玩",
-   "en": "The messier the better",
+   "en": "Sure, the messier the better",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV035: omission: 可以啊 (yes) kept",
    "category": "menu_touch_1line"
   },
   {
@@ -342,10 +342,10 @@
   {
    "id": 40,
    "zh": "共同的经历和回忆",
-   "en": "Shared memories",
+   "en": "Shared experiences, memories",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV035: omission: 共同的经历 (experiences) dropped",
    "category": "menu_touch_1line"
   },
   {
@@ -360,10 +360,10 @@
   {
    "id": 42,
    "zh": "相互吸引的人格",
-   "en": "Mutual attraction",
+   "en": "Compatible personalities",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV035: omission: 人格 (personality) contrast kept; settles D-1872",
    "category": "menu_touch_1line"
   },
   {

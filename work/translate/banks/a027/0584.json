@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "嘛,今天也要{NEWLINE}买好多东西哦！",
-   "en": "I’m raring to shop again today!",
+   "en": "Well, I’m going to buy loads of stuff{NEWLINE}again today!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0592/3"
+   "origin": "agent",
+   "notes": "US 0592/3 | RV035: omission: 好多东西 (lots of things) and 嘛 kept"
   },
   {
    "id": 4,
@@ -287,10 +287,10 @@
   {
    "id": 34,
    "zh": "可恶啊,如果平时有好好种树果,{NEWLINE}就不需要跑到百货商店来买了。",
-   "en": "Damn it. If I’d been growing{NEWLINE}Berries properly, I wouldn’t{CLEAR}have to come all the way to the{CLEAR}department store to buy them.",
+   "en": "Darn it. If I’d been growing Berries{NEWLINE}properly, I wouldn’t have to come{CLEAR}all the way to the department store{CLEAR}to buy them.",
    "status": "draft",
    "origin": "agent",
-   "notes": "tone review: 可恶啊 = 'Damn it' for an adult shopper (D-0627)"
+   "notes": "tone review: 可恶啊 = 'Damn it' for an adult shopper (D-0627) | RV035: voice: 可恶啊 is mild self-annoyance from a shopper; per-line choice (D-2081)"
   },
   {
    "id": 35,

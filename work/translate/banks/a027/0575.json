@@ -30,18 +30,18 @@
   {
    "id": 3,
    "zh": "啊,火箭队……",
-   "en": "Team Rocket...!",
+   "en": "Ah, Team Rocket...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0583/3"
+   "origin": "agent",
+   "notes": "US 0583/3 | RV035: omission: 啊 interjection kept; no added '!'"
   },
   {
    "id": 4,
    "zh": "不管级别有多高,{NEWLINE}因为有属性相克,{SCROLL}绝对强的精灵总是{NEWLINE}不存在的哦。",
-   "en": "A higher level Pokémon doesn’t{NEWLINE}always win.{SCROLL}After all, it may have a type{NEWLINE}disadvantage.{SCROLL}I don’t think there is a single{NEWLINE}Pokémon that is the toughest.",
+   "en": "No matter how high a Pokémon’s level is,{NEWLINE}type matchups mean there’s never{CLEAR}one Pokémon that’s absolutely{CLEAR}the strongest.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0583/4"
+   "origin": "agent",
+   "notes": "US 0583/4 | RV035: meaning: Chinese states it flatly (绝对强的精灵总是不存在); US 'I don’t think' hedge removed"
   },
   {
    "id": 5,
@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "我会好好培养含羞苞的,{NEWLINE}但是希望它不要进化,{CLEAR}不然就不是含羞苞了。",
-   "en": "I’ll raise my Budew with lots of{NEWLINE}love. But I hope it never evolves,{CLEAR}or it won’t be a Budew anymore.",
+   "en": "I’ll take good care raising my Budew.{NEWLINE}But I hope it never evolves, or it won’t{CLEAR}be a Budew anymore.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV035: addition: 'with lots of love' not in 好好培养"
   },
   {
    "id": 12,

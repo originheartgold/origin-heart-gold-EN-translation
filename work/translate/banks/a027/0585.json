@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "武藏『明明咱们手里{NEWLINE}都没有能战斗的精灵了,{CLEAR}却还命令火岩鼠攻击,{CLEAR}把老娘的头发都烧掉了一块。",
-   "en": "Jessie: We didn’t have a single{NEWLINE}Pokémon left that could fight,{CLEAR}and he still ordered his Quilava to{CLEAR}attack! It burned a whole chunk{CLEAR}of my hair clean off!",
+   "en": "Jessie: We didn’t have a single Pokémon{NEWLINE}left that could fight, and he still{CLEAR}ordered his Quilava to attack!{SCROLL}It burned a whole chunk of MY hair{NEWLINE}clean off!",
    "status": "draft",
    "origin": "agent",
-   "notes": "老娘 → ‘this lady’ (D-0911). | tone review: 老娘 is Jessie's crude self-swagger; stilted 'this lady' replaced by stressed 'MY' (D-0627)"
+   "notes": "老娘 → ‘this lady’ (D-0911). | tone review: 老娘 is Jessie's crude self-swagger; stilted 'this lady' replaced by stressed 'MY' (D-0627) | RV035: voice: 老娘 swagger carried by stressed ‘MY’ (D-2081)"
   },
   {
    "id": 2,
@@ -120,10 +120,10 @@
   {
    "id": 14,
    "zh": "武藏『居然真的大发慈悲了。",
-   "en": "Jessie: Well, well. The brat’s{NEWLINE}actually being gracious.",
+   "en": "Jessie: Well, well.{NEWLINE}Actually showing us mercy.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV035: addition: ‘The brat’s’ not in 居然真的大发慈悲了"
   },
   {
    "id": 15,
@@ -176,10 +176,10 @@
   {
    "id": 21,
    "zh": "小次郎『面对我们三个受伤的人{NEWLINE}也要赶尽杀绝。",
-   "en": "James: Showing no mercy even to{NEWLINE}the three of us, hurt as we are.",
+   "en": "James: Going in for the kill even against{NEWLINE}the three of us, hurt as we are.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV035: softened: 赶尽杀绝 = finish off, stronger than ‘no mercy’"
   },
   {
    "id": 22,
@@ -264,10 +264,10 @@
   {
    "id": 32,
    "zh": "武藏『上次执行任务时{NEWLINE}那个带着火岩鼠的小鬼好狠啊。{CLEAR}把老娘的头发都烧掉了一块。",
-   "en": "Jessie: That brat with the{NEWLINE}Quilava on our last mission was{CLEAR}vicious. It burned a whole chunk{CLEAR}of my hair clean off!",
+   "en": "Jessie: That brat with the Quilava on{NEWLINE}our last mission was vicious. Burned a{CLEAR}whole chunk of MY hair clean off!",
    "status": "draft",
    "origin": "agent",
-   "notes": "tone review: 老娘 is Jessie's crude self-swagger; stilted 'this lady' replaced by stressed 'MY' (D-0627)"
+   "notes": "tone review: 老娘 is Jessie's crude self-swagger; stilted 'this lady' replaced by stressed 'MY' (D-0627) | RV035: voice: 老娘 swagger as stressed ‘MY’ (D-2081); brat, not ‘It’, did the burning"
   },
   {
    "id": 33,
@@ -716,10 +716,10 @@
   {
    "id": 88,
    "zh": "武藏『你要是不听话,{NEWLINE}就别怪我们使用暴力了哦。",
-   "en": "Jessie: If you don’t do as you’re told,{NEWLINE}don’t blame us for getting rough.",
+   "en": "Jessie: If you don’t do as you’re told,{NEWLINE}don’t blame us if things get violent.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV035: softened: 使用暴力 = violence, not ‘getting rough’"
   },
   {
    "id": 89,
@@ -884,10 +884,10 @@
   {
    "id": 109,
    "zh": "武藏『闪开啦！别妨碍我办事。",
-   "en": "Jessie: Out of the way!{NEWLINE}Don’t get in my way.",
+   "en": "Jessie: Out of the way!{NEWLINE}Don’t interfere with my work.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV035: grammar: ‘Out of the way… get in my way’ repetition; 别妨碍我办事"
   },
   {
    "id": 110,

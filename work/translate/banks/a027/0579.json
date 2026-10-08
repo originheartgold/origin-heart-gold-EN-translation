@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "请您期待充满磁力与魅力{NEWLINE}的旅程吧！{SCROLL}",
-   "en": "Enjoy the attractive and magnetic{NEWLINE}journey!{SCROLL}",
+   "en": "Enjoy the magnetic and attractive{NEWLINE}journey!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0587/7"
+   "origin": "agent",
+   "notes": "US 0587/7 | RV035: meaning: zh order 磁力与魅力 (mirror of #5) kept"
   },
   {
    "id": 8,
