@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "这、这张卡是！？{SCROLL}这颜色！！{NEWLINE}星星的数量！！{SCROLL}我之前也见过很多{NEWLINE}高级的训练师,{SCROLL}但有这么厉害的{NEWLINE}黑色卡片的,{CLEAR}{VAR:0103:0}还是第一个啊！{SCROLL}好了,让{VAR:0103:0}的{NEWLINE}精灵好好休息吧！{VAR:0200:0}",
-   "en": "Th-that Trainer Card!{SCROLL}That color! And all those stars!{SCROLL}I’ve seen plenty of high-ranking{NEWLINE}Trainers before...{SCROLL}But you’re the first, {VAR:0103:0},{NEWLINE}with a card as amazing{CLEAR}as that Black Card!{SCROLL}Now, let’s give your Pokémon,{NEWLINE}{VAR:0103:0}, a good rest! {VAR:0200:0}",
+   "en": "Th-that Trainer Card!{SCROLL}That color! And all those stars!{SCROLL}I’ve seen plenty of high-ranking{NEWLINE}Trainers before...{SCROLL}But you’re the first, {VAR:0103:0},{NEWLINE}with a card as amazing{CLEAR}as that Black Card!{SCROLL}Now, let’s give {VAR:0103:0}’s{NEWLINE}Pokémon a good rest! {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "Hack zh: Black Card (JP: first Black Card after Gray Cards)."
+   "notes": "Hack zh: Black Card (JP: first Black Card after Gray Cards). | RV056: grammar: zh 让{player}的精灵好好休息 = let the player's Pokémon rest; name was misplaced as a vocative"
   },
   {
    "id": 6,
@@ -174,10 +174,10 @@
   {
    "id": 21,
    "zh": "记录写入中⋯⋯{NEWLINE}请不要切断电源。",
-   "en": "Saving a lot of data...{NEWLINE}Don’t turn off the power.",
+   "en": "Saving...{NEWLINE}Don’t turn off the power.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0040/21"
+   "origin": "agent",
+   "notes": "US 0040/21 | RV056: addition: zh 记录写入中 = saving; US 'a lot of data' not in the zh"
   },
   {
    "id": 22,
@@ -326,26 +326,26 @@
   {
    "id": 40,
    "zh": "妈妈『{VAR:0103:0}！{NEWLINE}欢迎回来。{SCROLL}看起来很累了吧,{SCROLL}稍微休息一下{NEWLINE}怎么样？{SCROLL}⋯⋯　⋯⋯　⋯⋯{NEWLINE}⋯⋯　⋯⋯　⋯⋯",
-   "en": "Mom: {VAR:0103:0}!{NEWLINE}Welcome home.{SCROLL}It sounds like you had quite the{NEWLINE}experience out there.{SCROLL}Maybe you should take a quick{NEWLINE}rest so you can relax.{SCROLL}...{NEWLINE}...",
+   "en": "Mom: {VAR:0103:0}!{NEWLINE}Welcome home.{SCROLL}You look really tired.{SCROLL}Why don’t you rest a little?{SCROLL}... ... ...{NEWLINE}... ... ...",
    "status": "draft",
-   "origin": "us",
-   "notes": "v3 TM: 1 source(s), same position"
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position | RV056: meaning: zh 看起来很累了吧 = you look tired, 稍微休息一下怎么样 = how about a short rest; US said 'quite the experience'"
   },
   {
    "id": 41,
    "zh": "妈妈『哎呀呀！{NEWLINE}你和精灵们{CLEAR}都很精神呢！{SCROLL}对了！刚才我听博士说了⋯⋯{SCROLL}精灵的体力⋯⋯{NEWLINE}唔⋯就是那个ＨＰ没了的话{SCROLL}就要去精灵中心恢复一下,{SCROLL}要是要到很远的地方冒险{NEWLINE}就最好在商店里{CLEAR}买好伤药,{CLEAR}这样比较保险。{SCROLL}那么,我会帮你加油的！{SCROLL}要小心！{NEWLINE}一路走好！",
-   "en": "Mom: Oh, good! You and your{NEWLINE}Pokémon are looking great.{SCROLL}Oh, yes, I heard from the Professor.{SCROLL}He said that a Pokémon’s energy is{NEWLINE}measured in HP (Hit Points).{SCROLL}If your Pokémon lose their HP,{NEWLINE}you can restore it at any{CLEAR}Pokémon Center.{SCROLL}If you’re going to travel far away,{NEWLINE}the smart Trainer stocks up on{CLEAR}Potions at the Pokémon Mart.{SCROLL}Make me proud, honey!{NEWLINE}Take care!",
+   "en": "Mom: Oh my! You and your{NEWLINE}Pokémon are full of energy!{SCROLL}Oh, right! I just heard from the{NEWLINE}Professor...{SCROLL}A Pokémon’s stamina... Um, that HP{NEWLINE}thing... If it runs out,{SCROLL}you need to go to a{NEWLINE}Pokémon Center to restore it.{SCROLL}And if you’re adventuring somewhere{NEWLINE}far away, it’s safest to{CLEAR}buy Potions at a Poké Mart first.{SCROLL}Well, I’ll be cheering for you!{SCROLL}Be careful!{NEWLINE}Have a good trip!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV056: meaning: v3/US-style line added HP explanation, 'smart Trainer', 'make me proud, honey'; retranslated clause by clause (Mom's hesitant 唔⋯就是那个 kept, 我会帮你加油的 = I'll cheer for you)"
   },
   {
    "id": 42,
    "zh": "妈妈『哎呀呀！{NEWLINE}你和精灵们{CLEAR}都很精神呢！{SCROLL}对了{VAR:0103:0},{NEWLINE}精灵的体力耗尽{CLEAR}就不能战斗了,{CLEAR}所以在那之前一定要回来哦,{SCROLL}在家里休息一下{NEWLINE}就又能精力十足了！{CLEAR}那么,我会帮你加油的！{SCROLL}要小心！{NEWLINE}一路走好！",
-   "en": "Mom: Oh, good! You and your{NEWLINE}Pokémon are looking great.{SCROLL}Oh yes, {VAR:0103:0}, your Pokémon{NEWLINE}will faint if it runs out of HP.{SCROLL}If your Pokémon loses its HP, come{NEWLINE}home before it faints.{SCROLL}It will be healed to full health by{NEWLINE}taking a rest.{SCROLL}Well, honey, make me proud!{NEWLINE}Take care!",
+   "en": "Mom: Oh my! You and your{NEWLINE}Pokémon are full of energy!{SCROLL}Oh, right, {VAR:0103:0}. When a{NEWLINE}Pokémon’s HP runs out,{CLEAR}it can’t battle anymore,{CLEAR}so be sure to come home before that.{SCROLL}A little rest at home and you’ll{NEWLINE}be full of energy again!{CLEAR}Well, I’ll be cheering for you!{SCROLL}Be careful!{NEWLINE}Have a good trip!",
    "status": "draft",
-   "origin": "us",
-   "notes": "v3 TM: 1 source(s), same position"
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position | RV056: meaning: US-style line added fainting and 'make me proud, honey'; zh: HP gone = can't battle, come home first, rest restores energy, I'll cheer for you"
   },
   {
    "id": 43,
@@ -366,10 +366,10 @@
   {
    "id": 45,
    "zh": "精灵的体力ＨＰ{NEWLINE}要是没了的话,{CLEAR}就请到这里来吧。{SCROLL}要是稍微要去远一点的地方,{SCROLL}那建议你最好去商店里{NEWLINE}备一些伤药。{SCROLL}那么,请努力吧！",
-   "en": "Please visit a Pokémon Center when{NEWLINE}your Pokémon’s HP goes down.{SCROLL}If you’re planning to travel any{NEWLINE}distance, you should stock up on{CLEAR}Potions at a Pokémon Mart.{SCROLL}Good luck, Trainer!",
+   "en": "If your Pokémon’s HP runs out,{NEWLINE}please come here.{SCROLL}If you’re traveling any distance,{NEWLINE}you should stock up on{CLEAR}Potions at a Poké Mart.{SCROLL}Well then, good luck!",
    "status": "draft",
-   "origin": "us",
-   "notes": "v3 TM: 1 source(s), same position"
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position | RV056: meaning: zh HP 没了 = runs out (not 'goes down'); 那么,请努力吧 has no 'Trainer'"
   },
   {
    "id": 46,
@@ -550,18 +550,18 @@
   {
    "id": 68,
    "zh": "欢迎来到精灵无线俱乐部{NEWLINE}联机房间！{SCROLL}⋯⋯这段话你姑且先记下吧。{SCROLL}联机房间的开放{NEWLINE}还请再等一会儿吧！",
-   "en": "Welcome to the Pokémon Wireless Club{NEWLINE}Union Room!{SCROLL}...That’s the line I’m practicing.{SCROLL}The Union Room will open{NEWLINE}very soon, so please wait a little!",
+   "en": "Welcome to the Pokémon Wireless Club{NEWLINE}Union Room!{SCROLL}...Just remember that line for now.{SCROLL}The Union Room will open{NEWLINE}very soon, so please wait a little!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0040/68"
+   "notes": "US 0040/68 | RV056: meaning: zh 这段话你姑且先记下吧 = just remember this line for now; English had followed JP 'I'm practicing'"
   },
   {
    "id": 69,
    "zh": "精灵通信俱乐部{NEWLINE}圆形剧场！{SCROLL}⋯⋯这段话你姑且先记下吧。{SCROLL}圆形剧场的开放{NEWLINE}还请再等一会儿吧！",
-   "en": "Welcome to the Pokémon Comm. Club{NEWLINE}Colosseum!{SCROLL}...That’s the line I’m practicing.{SCROLL}The Colosseum will open very{NEWLINE}soon, so please wait a little!",
+   "en": "The Pokémon Comm. Club{NEWLINE}Colosseum!{SCROLL}...Just remember that line for now.{SCROLL}The Colosseum will open very{NEWLINE}soon, so please wait a little!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV056: meaning: same as #68; zh has no 'Welcome to' here"
   },
   {
    "id": 70,
@@ -814,18 +814,18 @@
   {
    "id": 101,
    "zh": "{VAR:0100:0}恢复精神,{NEWLINE}{VAR:0100:0}又能跟在后面走了！{SCROLL}",
-   "en": "{VAR:0100:0} is feeling better, so you{NEWLINE}decided to take {VAR:0100:0} with you!{SCROLL}",
+   "en": "{VAR:0100:0} is feeling better, so{NEWLINE}{VAR:0100:0} can follow you again!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "v3 TM: 1 source(s), same position"
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position | RV056: meaning: zh 又能跟在后面走了 = can walk behind you again; US 'you decided to take it with you'"
   },
   {
    "id": 102,
    "zh": "我说我说！{SCROLL}战斗前或不小心{NEWLINE}输掉时的心情什么的,{SCROLL}你最习惯的心情{NEWLINE}能告诉我听吗？{VAR:0200:0}",
-   "en": "Hey!{SCROLL}Can you tell me how you feel right{NEWLINE}before a match? How you feel when you{CLEAR}win or lose? What it would be{CLEAR}like to be number one? {VAR:0200:0}",
+   "en": "Hey, hey!{SCROLL}How you feel before a battle,{NEWLINE}or when you happen to lose...{SCROLL}Could you tell me about the feeling{NEWLINE}you know best? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0040/102 | seed rejected us [tag_mismatch] (candidate US 0040#102; text not kept) | v3 TM: 1 source(s), same position"
+   "origin": "agent",
+   "notes": "US 0040/102 | seed rejected us [tag_mismatch] (candidate US 0040#102; text not kept) | v3 TM: 1 source(s), same position | RV056: meaning: zh asks for the feeling you're most used to (before battle / when you lose); US listed win and number one, which the zh doesn't say"
   },
   {
    "id": 103,
@@ -862,10 +862,10 @@
   {
    "id": 107,
    "zh": "哎？不告诉我吗？{NEWLINE}真遗憾⋯⋯",
-   "en": "Excuse me? You won’t say?{NEWLINE}That’s too bad...",
+   "en": "Huh? You won’t tell me?{NEWLINE}That’s too bad...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0040/107"
+   "origin": "agent",
+   "notes": "US 0040/107 | RV056: meaning: zh 哎？ = Huh?, not 'Excuse me?'"
   },
   {
    "id": 108,

@@ -486,10 +486,10 @@
   {
    "id": 60,
    "zh": "这是很重要的技能,{NEWLINE}不能遗忘！",
-   "en": "HM moves can’t be{NEWLINE}forgotten now.",
+   "en": "This is an important move.{NEWLINE}It can’t be forgotten!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0006/60"
+   "origin": "agent",
+   "notes": "US 0006/60 | RV056: addition: zh says an important move can't be forgotten; US named HM moves and added 'now'"
   },
   {
    "id": 61,

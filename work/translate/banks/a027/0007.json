@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "正在删除⋯⋯{NEWLINE}请稍等。",
-   "en": "Deleting all data.{NEWLINE}Don’t turn off the power.",
+   "en": "Deleting...{NEWLINE}Please wait.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0007/2"
+   "origin": "agent",
+   "notes": "US 0007/2 | RV056: meaning: zh 正在删除⋯⋯请稍等 = deleting, please wait; US line said don't turn off the power"
   }
  ]
 }
