@@ -71,6 +71,30 @@ def completed(out="", err="", code=0):
     return B.subprocess.CompletedProcess(["x"], code, stdout=out, stderr=err)
 
 
+class FixSelectionArgsTests(unittest.TestCase):
+    """--only / --without may be repeated; every occurrence counts (they used to keep only the last one)."""
+
+    def test_repeated_without_drops_both(self):
+        import fixes as fixreg
+        seen = {}
+
+        def capture(only, without, kinds):
+            seen["active"] = fixreg.select(fixreg.load_all(), only, without, kinds)
+            raise StopBeforeRomLoad
+        with tempfile.TemporaryDirectory() as directory, \
+                patch.object(B.fixreg, "active_fixes", side_effect=capture):
+            with self.assertRaises(StopBeforeRomLoad):
+                B.main(["--work-dir", directory, "--without", "namelen", "--without", "ivev-panel,pcbox-name-width"])
+        ids = {f["id"] for f in seen["active"]}
+        self.assertFalse({"namelen", "ivev-panel", "pcbox-name-width"} & ids)
+        self.assertIn("msgload", ids)
+
+    def test_repeated_only(self):
+        import fixes as fixreg
+        fixes = fixreg.load_all()
+        self.assertEqual({f["id"] for f in fixreg.select(fixes, only=["namelen", "msgload"])}, {"namelen", "msgload"})
+
+
 class ToolchainPinTests(unittest.TestCase):
     """xdelta3 is pinned (refused at another version), Python / ndspy / pillow only warn."""
 
