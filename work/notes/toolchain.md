@@ -161,4 +161,13 @@ Then the text-speed release candidate (`codex/text-speed-research` fb5fa7e, with
 | `--without text-speed --no-patch` (= the RC's `--no-text-speed`) | `139e252258bd41bb31fae4ebbc2515fd365130e1` |
 | `--only antipiracy --no-patch` | `64dfa83282456548d11d3a3c16f703bf88900558` |
 
+Fixes added after these runs were written as armips sources from the start; each was proven against a build of its original form:
+
+| Build (2026-10-08) | ROM SHA-1 |
+|---|---|
+| `overworld-texture-frame-bounds` (Rocket HQ freeze): full, = develop `dfe8ba2` + its `code_patches.json` entry (worktree `codex/rocket-hq-freeze`); xdelta `427c0ec160187cdb28a9c30353d47ba9f9b51691` | `df28a14ff92de9169bf5d4b8613136ab1207cf72` |
+| `--without overworld-texture-frame-bounds` (= the develop full build above, xdelta `0241fd9f…`) | `2a052d2f2d78f04596352797fd501cdad4c6381e` |
+| `refactor/patches-rc` full, with `overworld-texture-frame-bounds` (xdelta `71d44f915f8a4a11863ceb43e703fd32914bb45a`): the RC's ROM with only the one arm9 byte changed | `fa34e72444401d7a966cc751cdbab0e54dad8d7c` |
+| `refactor/patches-rc` `--without overworld-texture-frame-bounds` (= the RC's, xdelta `588b931f…`) | `35e67a5f53b9a05e62ea8b38d2c73a4268001102` |
+
 These depend on the workspace text at the time (2026-10-08, branches `refactor/fix-format` and `refactor/patches-rc`); a translation change moves them. The per-binary golden SHA-1s in `test_asmpatch.py` (`GOLDEN`: every binary each fix changes, alone and all together, plus the y9 overlay table) do not depend on the text, so the test suite checks them on every run that has armips and the Chinese ROM. A change to a fix source that changes its bytes must update `GOLDEN` and say why.
