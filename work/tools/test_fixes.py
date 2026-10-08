@@ -743,18 +743,38 @@ class AsmLint(unittest.TestCase):
         self.assertIn("inc:7: an include file may only define macros, equ constants and .definelabel labels "
                       "(found: .org 0x02000010)", probs[1])
         self.assertIn("inc:9: /* */ block comments", probs[0])
-        with tempfile.TemporaryDirectory() as td:          # a fix-local include is checked with the fix
-            d = Path(td) / "t"
-            d.mkdir()
-            (d / "local.inc").write_text(bad, encoding="utf-8")
-            fx = dict(self.fx(), _path=d / "fix.toml")
-            text = self.HEAD + '.include "local.inc"\n' + self.GOOD + ".close\n"
-            probs = F.lint_asm(text, fx, name="t.asm")
-            self.assertTrue(any(p.startswith("t/local.inc:7: an include file may only define") for p in probs),
+        with tempfile.TemporaryDirectory() as td:          # a shared include: every file of include/ is checked
+            (Path(td) / F.INCLUDE_DIR).mkdir()
+            (Path(td) / F.INCLUDE_DIR / "local.inc").write_text(bad, encoding="utf-8")
+            probs = F.lint_includes(td)
+            self.assertTrue(any(p.startswith("include/local.inc:7: an include file may only define") for p in probs),
                             probs)
-            probs = F.lint_asm(text.replace("local.inc", "missing.inc"), fx, name="t.asm")
-            self.assertIn("t/t.asm: .include 'missing.inc' not found", probs)
-        self.assertEqual(F.lint_includes(), [])            # guards.inc, charmap.inc: definitions only
+        probs = self.lint('.include "../include/missing.inc"\n' + self.GOOD)
+        self.assertIn("t/t.asm: .include '../include/missing.inc' not found", probs)
+        self.assertEqual(F.lint_includes(), [])            # guards.inc, charmap.inc, charmap.tbl
+
+    def test_include_only_in_its_canonical_form(self):
+        # armips resolves includes against its working directory (<stage>/rom): only ../include/<name>.inc
+        # is staged and linted; any other form could pull in a file nobody checked
+        for line in ('.include "local.inc"\n', '.include "../include/helper.s"\n', 'lbl: .include "../include/x.inc"\n',
+                     'F equ "../include/x.inc"\n.include F\n', '.include "../include/guards.inc", "UTF-8"\n',
+                     '.INCLUDE "../t/other.inc"\n'):
+            probs = self.lint(line + self.GOOD)
+            self.assertProblem(probs, "write includes as `.include \"../include/<name>.inc\"`")
+        self.assertEqual(self.lint('.include "../include/charmap.inc" ; ok\n' + self.GOOD), [])
+
+    def test_include_folder_holds_only_checked_files(self):
+        with tempfile.TemporaryDirectory() as td:
+            inc = Path(td) / F.INCLUDE_DIR
+            inc.mkdir()
+            (inc / "helper.s").write_text(".definelabel GUARDS_OFF, 1\n")
+            (inc / "sub").mkdir()
+            (inc / "t.tbl").write_text("2B01=A\n/FFFF\n.definelabel X, 1\n")
+            (inc / "a.inc").write_text('X equ 1\n.include "../include/b.s"\n')
+            probs = F.lint_includes(td)
+            for want in ("include/helper.s: only .inc includes and .tbl table files", "include/sub: only .inc",
+                         "include/t.tbl:3: not an armips table line", "include/a.inc:2: write includes as"):
+                self.assertTrue(any(p.startswith(want) for p in probs), (want, probs))
 
     # -- guards off ---------------------------------------------------------------------------------
     def test_guards_off_name_is_reserved(self):
@@ -851,7 +871,7 @@ class RealRegistry(unittest.TestCase):
             (Path(td) / "sizes.toml").write_text("[overlay58]\nsize = 0x7E4\nbss = 0\n")
             with self.assertRaises(F.FixError) as cm:
                 F.check_overlay_bases(rom, td)
-            self.assertIn("overlay58: sizes.toml {'size': 2020, 'bss': 0}, ROM {'size': 2016, 'bss': 0}",
+            self.assertIn("overlay58: sizes.toml size 0x7e4, bss 0x0, ROM size 0x7e0, bss 0x0",
                           str(cm.exception))
 
     def test_default_selection(self):

@@ -11,9 +11,10 @@
 ;
 ; Synthetic assembly: `asmpatch.py synthetic` (check.py, CI) assembles every source without the ROM, over
 ; zero-filled stand-ins of the right sizes (work/patches/sizes.toml), and passes `-definelabel GUARDS_OFF 1`
-; so these guards check nothing there: it catches syntax errors and .area overflows, not wrong bytes. Nothing
-; else may define GUARDS_OFF (fixes.py check refuses the name in every source and include, and asmpatch.py
-; refuses it in a real build); the build never passes it, so its guards are always on.
+; so these guards check nothing there (any value: they test defined(); their reads are still evaluated): it
+; catches syntax errors and .area overflows, not wrong bytes. Nothing else may define GUARDS_OFF: fixes.py
+; check and asmpatch.py refuse the name in every source and include and any non-canonical .include, and a
+; real build refuses a symbol file that defines it. The build never passes it, so its guards are always on.
 
 ; Stop the build: the bytes at `addr` are `found` (hex text), not `want` (hex text).
 .macro guard_failed, addr, want, found

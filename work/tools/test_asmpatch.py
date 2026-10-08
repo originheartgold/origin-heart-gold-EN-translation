@@ -462,11 +462,37 @@ class Synthetic(unittest.TestCase):
             with self.assertRaises(A.AsmError) as cm:
                 A.assemble([fx], data, "/nonexistent/armips")
             self.assertIn("t/t.asm:5: GUARDS_OFF is reserved", str(cm.exception))
-        (self.dir / "local.inc").write_text("GUARDS_OFF equ 1\n")
-        fx = self.fix(".org 0x02000010\n.area 2\nexpect16 0\nmov r3, #7\n.endarea")
-        with self.assertRaises(A.AsmError) as cm:
-            A.assemble([fx], {"arm9": bytes(64)}, "/nonexistent/armips")
-        self.assertIn("t/local.inc:1: GUARDS_OFF is reserved", str(cm.exception))
+
+    def test_obfuscated_includes_refused_before_armips(self):
+        # the review's bypasses: a non-.inc file in include/, reached through a labelled or equ-named include
+        good = ".org 0x02000010\n.area 2\nexpect16 0\nmov r3, #7\n.endarea"
+        with tempfile.TemporaryDirectory() as td:
+            inc = Path(td) / "include"
+            shutil.copytree(A.INCLUDE_DIR, inc)
+            for line in ('lbl: .include "../include/helper.s"', 'F equ "../include/helper.s"\n.include F',
+                         '.include"../include/helper.s"', '.include "local.inc"'):
+                with self.assertRaises(A.AsmError, msg=line) as cm:
+                    A.assemble([self.fix(line + "\n" + good)], {"arm9": bytes(64)}, "/nonexistent/armips",
+                               include_dir=inc)
+                self.assertIn("write includes as", str(cm.exception))
+            (inc / "helper.s").write_text(".definelabel GUARDS_OFF, 1\n")
+            with self.assertRaises(A.AsmError) as cm:
+                A.assemble([self.fix(good)], {"arm9": bytes(64)}, "/nonexistent/armips", include_dir=inc)
+            msg = str(cm.exception)
+            self.assertIn("include/helper.s: only .inc includes and .tbl table files", msg)
+
+    @needs_armips
+    def test_real_run_refuses_guards_off_in_the_symbol_file(self):
+        # the last line of defence: whatever slipped past the static checks, armips's symbol file shows it
+        from unittest import mock
+        fx = self.fix(".definelabel GUARDS_OFF, 1\n.org 0x02000010\n.area 2\nexpect16 0x2305\nmov r3, #7\n.endarea")
+        with mock.patch.object(A, "guards_live_problems", return_value=[]):
+            with self.assertRaises(A.AsmError) as cm:
+                self.run_fix(fx)
+            self.assertIn("GUARDS_OFF was defined while assembling against the ROM", str(cm.exception))
+            self.assertIn("guards_off", str(cm.exception))
+        self.assertEqual(A.guards_off_symbols("02000000 0\n00000001 guards_off\n00000001 guards_off_x\n"),
+                         ["00000001 guards_off"])
 
     @needs_armips
     def test_guards_are_off_only_for_synthetic_images(self):

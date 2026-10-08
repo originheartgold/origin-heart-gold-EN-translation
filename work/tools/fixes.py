@@ -751,6 +751,26 @@ def guards_off_problems(lines, label, allow_defined=False) -> list:
     return out
 
 
+# The one form of .include: a shared include, alone on its line. armips resolves `.include` against its
+# working directory (<stage>/rom), so only ../include/ (the staged copy of work/patches/include) is reachable.
+_INCLUDE_CANON_RE = re.compile(r'^\s*\.include\s+"\.\./include/([A-Za-z0-9_-]+\.inc)"\s*$', re.I)
+_INCLUDE_ANY_RE = re.compile(r"\.include\b", re.I)
+_TBL_LINE_RE = re.compile(r"^(?:[0-9A-F]+=.+|/[0-9A-F]+)$")
+
+
+def include_form_problems(lines, label) -> list:
+    """Every statement that names `.include` must be exactly `.include "../include/<name>.inc"` (a shared include,
+    alone on its line): no label before it, no other folder, no name built from an equ. Anything else could
+    pull in a file the lint never read."""
+    out = []
+    for n, line in enumerate(lines, 1):
+        code = _strip_comment(line)
+        if _INCLUDE_ANY_RE.search(code) and not _INCLUDE_CANON_RE.match(code):
+            out.append(f'{label}:{n}: write includes as `.include "../include/<name>.inc"` alone on the line (a '
+                       f'shared include in work/patches/include; found: {code.strip()})')
+    return out
+
+
 def include_problems(lines, label) -> list:
     """An include file may only define: macros, `equ` constants and `.definelabel` labels (and include other
     files). The lint reads includes for these definitions only, so any other statement (a write, an .org, a
@@ -804,6 +824,7 @@ def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_ro
                         f"decision (a D-NNNN id)")
     problems += _block_comments(lines, where)
     problems += guards_off_problems(lines, where)
+    problems += include_form_problems(lines, where)
     # -- line length ----------------------------------------------------------------------------------
     for n, line in enumerate(lines, 1):
         if len(line) > ASM_MAX_LINE:
@@ -817,17 +838,13 @@ def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_ro
         while i < len(src_lines):
             code = _strip_comment(src_lines[i])
             mo = _LINT_INCLUDE_RE.match(code)
-            if mo:
+            if mo and _INCLUDE_CANON_RE.match(code):          # other forms: include_form_problems
                 inc = _resolve_include(src_dir, mo.group(1))
                 if inc is None:
                     problems.append(f"{where}: .include {mo.group(1)!r} not found")
                 elif inc not in seen:
-                    seen.add(inc)
-                    inc_lines = inc.read_text(encoding="utf-8").splitlines()
-                    if not inc.is_relative_to((PATCHES_DIR / INCLUDE_DIR).resolve()):
-                        problems.extend(include_problems(inc_lines, f"{fid}/{inc.name}"))   # shared: lint_includes
-                        problems.extend(guards_off_problems(inc_lines, f"{fid}/{inc.name}"))
-                    collect(inc_lines, inc.name, inc.parent, seen)
+                    seen.add(inc)                               # a shared include: lint_includes checks it
+                    collect(inc.read_text(encoding="utf-8").splitlines(), inc.name, inc.parent, seen)
             i = _define(src_lines, i, src_name) + 1
 
     def _define(src_lines, i, src_name):
@@ -1058,28 +1075,41 @@ def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_ro
 
 
 def _resolve_include(src_dir: Path, rel: str):
-    """An `.include` path: relative to the including file's folder (armips runs in <stage>/rom, next to
-    <stage>/include, and the sources live one folder below work/patches, so `../include/x` resolves the same
-    way); falls back to work/patches/include for synthetic test registries."""
-    p = (Path(src_dir) / rel).resolve()
-    if p.is_file():
-        return p
-    alt = PATCHES_DIR / INCLUDE_DIR / Path(rel).name
-    return alt if rel.replace("\\", "/").startswith("../include/") and alt.is_file() else None
+    """A canonical `.include "../include/<name>.inc"`: the file in work/patches/include, the folder the build
+    stages as <stage>/include next to armips's working directory <stage>/rom (None when it is not there).
+    src_dir is unused: armips resolves includes against its working directory, not the including file."""
+    del src_dir
+    p = PATCHES_DIR / INCLUDE_DIR / Path(rel.replace("\\", "/")).name
+    return p if rel.replace("\\", "/").startswith("../include/") and p.is_file() else None
+
+
+def lint_include_dir(inc_dir: Path) -> list:
+    """Every file in an include folder (work/patches/include, or the copy asmpatch stages): *.inc are definitions
+    only (include_problems), with canonical includes, no block comments, lines of at most 120 characters;
+    *.tbl are armips table lines only (`XXXX=c`, `/FFFF`); GUARDS_OFF nowhere except guards.inc's
+    `defined(GUARDS_OFF)`; any other file or folder is refused (asmpatch stages only these, after this check)."""
+    out = []
+    for p in sorted(Path(inc_dir).iterdir()):
+        label = f"{INCLUDE_DIR}/{p.name}"
+        if p.is_dir() or p.suffix not in (".inc", ".tbl"):
+            out.append(f"{label}: only .inc includes and .tbl table files belong in {INCLUDE_DIR}/")
+            continue
+        lines = p.read_text(encoding="utf-8").splitlines()
+        out += guards_off_problems(lines, label, allow_defined=p.name == GUARDS_INC)
+        if p.suffix == ".tbl":
+            out += [f"{label}:{n}: not an armips table line (XXXX=c or /XXXX)" for n, line in enumerate(lines, 1)
+                    if not _TBL_LINE_RE.match(line)]
+            continue
+        out += include_problems(lines, label) + include_form_problems(lines, label)
+        out += [f"{label}:{n}: line is {len(line)} characters, more than {ASM_MAX_LINE}"
+                for n, line in enumerate(lines, 1) if len(line) > ASM_MAX_LINE]
+    return out
 
 
 def lint_includes(root: Path = PATCHES_DIR) -> list:
-    """The shared armips includes (work/patches/include/*.inc): definitions only (include_problems), no block
-    comments, line length, GUARDS_OFF only as guards.inc's `defined(GUARDS_OFF)`."""
-    out = []
-    for p in sorted((Path(root) / INCLUDE_DIR).glob("*.inc")):
-        out += include_problems(p.read_text(encoding="utf-8").splitlines(), f"{INCLUDE_DIR}/{p.name}")
-        out += guards_off_problems(p.read_text(encoding="utf-8").splitlines(), f"{INCLUDE_DIR}/{p.name}",
-                                   allow_defined=p.name == GUARDS_INC)
-        for n, line in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
-            if len(line) > ASM_MAX_LINE:
-                out.append(f"{INCLUDE_DIR}/{p.name}:{n}: line is {len(line)} characters, more than {ASM_MAX_LINE}")
-    return out
+    """The shared armips includes, <root>/include (lint_include_dir)."""
+    d = Path(root) / INCLUDE_DIR
+    return lint_include_dir(d) if d.is_dir() else []
 
 
 def _validate_asm(fx, where, problems, overlay_bases):
@@ -1315,7 +1345,10 @@ def check_overlay_bases(rom, root: Path = PATCHES_DIR):
            for k, v in sorted(load_overlays(root).items()) if rom_bases.get(k) != v]
     sizes = load_sizes(root)
     have = rom_sizes(rom, sizes)
-    bad += [f"{k}: sizes.toml {v}, ROM {have.get(k)}" for k, v in sorted(sizes.items()) if have.get(k) != v]
+    def fmt(v):
+        return "missing" if v is None else ", ".join(f"{n} {x:#x}" for n, x in v.items())
+    bad += [f"{k}: sizes.toml {fmt(v)}, ROM {fmt(have.get(k))}" for k, v in sorted(sizes.items())
+            if have.get(k) != v]
     if bad:
         raise FixError("work/patches/overlays.toml or sizes.toml does not match the ROM (python3 "
                        "work/tools/fixes.py overlays):\n  " + "\n  ".join(bad))

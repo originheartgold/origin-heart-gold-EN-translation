@@ -435,17 +435,23 @@ class SyntheticImages(dict):
 
 
 def guards_live_problems(fixes, include_dir=INCLUDE_DIR) -> list:
-    """GUARDS_OFF named in a fix's source, an include in its folder or a shared include (other than guards.inc's
-    `defined(GUARDS_OFF)`): such a file could switch the guards off in a real build (fixes.guards_off_problems)."""
-    out = []
-    for p in sorted(Path(include_dir).glob("*.inc")):
-        out += fixreg.guards_off_problems(p.read_text(encoding="utf-8").splitlines(), f"include/{p.name}",
-                                          allow_defined=p.name == fixreg.GUARDS_INC)
+    """What could switch the guards off in a real build, checked before armips runs: GUARDS_OFF named in a fix's
+    source, an `.include` that is not `.include "../include/<name>.inc"` (fixes.include_form_problems), and every
+    file of the include folder (fixes.lint_include_dir: .inc and .tbl only, GUARDS_OFF only in guards.inc's
+    `defined(GUARDS_OFF)`). The armips symbol file is checked after each real run as well (assemble)."""
+    out = fixreg.lint_include_dir(include_dir)
     for fx in fixes:
         src = _asm(fx)
-        for p in [src] + sorted(src.parent.glob("*.inc")):
-            out += fixreg.guards_off_problems(p.read_text(encoding="utf-8").splitlines(), f"{fx['id']}/{p.name}")
+        lines = src.read_text(encoding="utf-8").splitlines()
+        out += fixreg.guards_off_problems(lines, f"{fx['id']}/{src.name}")
+        out += fixreg.include_form_problems(lines, f"{fx['id']}/{src.name}")
     return out
+
+
+def guards_off_symbols(sym_text: str) -> list:
+    """Lines of an armips -sym file that define GUARDS_OFF (armips writes labels lower-case, includes too)."""
+    return [ln for ln in sym_text.splitlines()
+            if len(ln.split()) >= 2 and ln.split()[1].lower() == fixreg.GUARDS_OFF.lower()]
 
 
 def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE_DIR, layout=None, listings=None):
@@ -462,7 +468,8 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
     guards_args = list(GUARDS_OFF_ARGS) if synthetic else []
     live = guards_live_problems(todo, include_dir)
     if live:
-        raise AsmError("refused: a source or include names GUARDS_OFF, which would switch the guards off:\n  "
+        raise AsmError("refused: a source or include could switch the guards off (GUARDS_OFF, an include "
+                       "outside work/patches/include, or a file there the lint does not accept):\n  "
                        + "\n  ".join(live))
     problems = []
     regs_of = {}
@@ -495,7 +502,10 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
     rows, srows = [], []
     with tempfile.TemporaryDirectory(prefix="asmpatch-") as td:
         stage = Path(td)
-        shutil.copytree(include_dir, stage / "include")
+        (stage / "include").mkdir()
+        for p in Path(include_dir).iterdir():                # what lint_include_dir accepted, nothing else
+            if p.is_file() and p.suffix in (".inc", ".tbl"):
+                shutil.copyfile(p, stage / "include" / p.name)
         if natives:
             (stage / "native").mkdir()
             for fid, blob in natives.items():
@@ -506,10 +516,11 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
             (romdir / _bin(k)).write_bytes(v)
         for fx in todo:
             src = _asm(fx)
-            listing = stage / "listing.txt"
+            listing, syms = stage / "listing.txt", stage / "syms.txt"
+            sym_args = [] if synthetic else ["-sym", str(syms)]   # real run: prove GUARDS_OFF stayed undefined
             try:
-                r = subprocess.run([armips, "-erroronwarning", *guards_args, "-temp", str(listing), str(src)],
-                                   cwd=romdir, capture_output=True, text=True, timeout=TIMEOUT)
+                r = subprocess.run([armips, "-erroronwarning", *guards_args, *sym_args, "-temp", str(listing),
+                                    str(src)], cwd=romdir, capture_output=True, text=True, timeout=TIMEOUT)
             except subprocess.TimeoutExpired:
                 raise AsmError(f"fix {fx['id']}: armips did not finish within {TIMEOUT} s") from None
             except OSError as ex:
@@ -519,6 +530,13 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
                 shown = src.relative_to(fixreg.REPO) if src.is_relative_to(fixreg.REPO) else src
                 raise AsmError(f"fix {fx['id']}: armips failed on {shown} (exit {r.returncode}); nothing was "
                                f"written:\n" + "\n".join("  " + line for line in out.splitlines()))
+            if not synthetic:
+                if not syms.is_file():
+                    raise AsmError(f"fix {fx['id']}: armips wrote no symbol file; cannot prove the guards were on")
+                bad = guards_off_symbols(syms.read_text(encoding="utf-8", errors="replace"))
+                if bad:
+                    raise AsmError(f"fix {fx['id']}: {fixreg.GUARDS_OFF} was defined while assembling against the "
+                                   f"ROM, so the guards were off; refused, nothing written: {'; '.join(bad)}")
             listing_text = listing.read_text(encoding="utf-8-sig", errors="replace")
             if listings is not None:
                 listings[fx["id"]] = listing_text
