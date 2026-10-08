@@ -72,6 +72,7 @@ If you need to see how the same Chinese is translated elsewhere: `grep -rl '<zh>
   number or speaker than the Chinese says) and no user approval is cited in its notes or the register, make the
   English say what the Chinese says and log the suspected hack error as a hack-finding with the evidence and
   the proposed corrected line. Lines with a cited user approval (D-1496 fixes) stay as they are.
+- **Font stand-ins, not typos:** this hack's font uses 唦 for 泳 (游唦 = swim) and 吔 for 樱 (吔花 = Gorebyss/Cherrim names).
 - **Song lyrics (D-0368):** never translate or quote lyrics. Redacted `[zh redacted: ...]` strings stay as they are.
 - **No new rules.** Don't add `style`, `term` or `voice` decisions and don't change existing ones. Everything
   you would want to make general goes in a question: `python3 work/tools/decisions.py add --type question
