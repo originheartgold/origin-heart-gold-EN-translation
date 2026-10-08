@@ -7604,7 +7604,7 @@
   {
    "id": "RV125",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 70,
    "labels": [
     "a027/0176 debug_or_unlisted + debug_unused",
