@@ -150,10 +150,10 @@
   {
    "id": 18,
    "zh": "喂喂⋯⋯{SCROLL}{VAR:0103:0}啊！{NEWLINE}你现在在哪儿努力呢？{SCROLL}看来你很辛苦啊,{SCROLL}不过{VAR:0103:0}是个{NEWLINE}很用功的人,{CLEAR}所以肯定能扛得住！{SCROLL}",
-   "en": "Hello?{SCROLL}Oh, hi, {VAR:0103:0}! Working hard?{NEWLINE}That sounds really tough.{SCROLL}But, {VAR:0103:0}, I know you’re really{NEWLINE}determined. You’ll be OK, right?{SCROLL}",
+   "en": "Hello?{SCROLL}Oh, hi, {VAR:0103:0}! Working hard?{NEWLINE}That sounds really tough.{SCROLL}But {VAR:0103:0}, you’re such a{NEWLINE}hard worker. You’ll pull through!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0664/18"
+   "origin": "agent",
+   "notes": "US 0664/18 | RV071: meaning: 肯定能扛得住 is certain, not a question"
   },
   {
    "id": 19,

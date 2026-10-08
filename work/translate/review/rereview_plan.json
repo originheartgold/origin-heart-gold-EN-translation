@@ -4784,7 +4784,7 @@
   {
    "id": "RV071",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 535,
    "labels": [
     "a027/0641 pokegear_phone",

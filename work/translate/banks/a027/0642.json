@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "红莲岛一直笼罩在{NEWLINE}被火山爆发吞噬的危机中,{CLEAR}即使这样岛上的居民{CLEAR}都没有离开自己的家乡。{SCROLL}安土重迁只有四个字,{NEWLINE}但里面的感情却是很深很深的。",
-   "en": "Cinnabar Island has always lived in{NEWLINE}the shadow of the volcano, and yet{CLEAR}not one islander ever left their home.{SCROLL}Love of one’s homeland is easy to{NEWLINE}put into words, but the feeling{CLEAR}behind it runs very, very deep.",
+   "en": "Cinnabar Island has always lived under{NEWLINE}the threat of being swallowed by an{CLEAR}eruption, and yet not one islander ever{CLEAR}left their home.{SCROLL}Love of one’s homeland is easy to put{NEWLINE}into words, but the feeling behind it{CLEAR}runs very, very deep.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV071: omission: threat of being swallowed by an eruption restored"
   },
   {
    "id": 13,

@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "最近发生了一场{NEWLINE}很大的地震。{CLEAR}我们道馆墙壁{CLEAR}都有点损坏了。{SCROLL}不过,{NEWLINE}我们道馆{SCROLL}就算墙壁有一点点损坏{NEWLINE}也没人会注意到的！",
-   "en": "A large earthquake struck recently.{NEWLINE}Some of the walls in my Gym{CLEAR}crumbled a bit.{SCROLL}Well, I guess that’s just the kind of{NEWLINE}thing my Gym’s known for.{SCROLL}So even if the walls crumbled a bit,{NEWLINE}nobody would really notice!",
+   "en": "There was a big earthquake recently.{NEWLINE}The walls of my Gym got a little{CLEAR}damaged. But hey, even if our Gym’s{CLEAR}walls are a bit damaged, nobody would{CLEAR}ever notice!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0657/12"
+   "origin": "agent",
+   "notes": "US 0657/12 | RV071: addition: removed added 'kind of thing my Gym's known for'"
   },
   {
    "id": 13,

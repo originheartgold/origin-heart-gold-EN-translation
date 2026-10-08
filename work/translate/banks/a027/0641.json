@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "什么？{NEWLINE}你预约的只有我吗？{SCROLL}你不是还和其他人也有预约吗？",
-   "en": "I’m not sure... Are you making plans{NEWLINE}just with me?{SCROLL}Didn’t you make some plans with{NEWLINE}someone else already?",
+   "en": "What? Am I the only one you’ve{NEWLINE}made plans with?{SCROLL}Don’t you have plans with{NEWLINE}someone else too?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0650/8"
+   "origin": "agent",
+   "notes": "US 0650/8 | RV071: meaning: 什么？ is 'What?', not 'I'm not sure'"
   },
   {
    "id": 9,

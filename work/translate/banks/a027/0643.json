@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "我在枯叶市{NEWLINE}当道馆馆主期间,{CLEAR}学习了这个国家的语言。{SCROLL}但是我还有好多话听不懂。{SCROLL}嗨！你以后能和我多说话吗？{SCROLL}我们来相互学习{NEWLINE}对方的语言吧！",
-   "en": "I’ve been studying this region’s{NEWLINE}dialect during my time as Gym Leader{CLEAR}here in Vermilion.{SCROLL}But there’s still so many sayings that{NEWLINE}I don’t understand.{SCROLL}Hey, will you talk with me some more?{NEWLINE}We could teach each other some{CLEAR}new things to say!",
+   "en": "I’ve been learning this country’s{NEWLINE}language during my time as Vermilion Gym{CLEAR}Leader. But there’s still a lot I don’t{CLEAR}understand. Hey! Will you talk with me{CLEAR}more from now on? Let’s teach each{CLEAR}other our languages!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0652/14"
+   "origin": "agent",
+   "notes": "US 0652/14 | RV071: meaning: country's language / each other's languages, not regional dialect (D-1995)"
   }
  ]
 }

@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "除了我之外还有许多{NEWLINE}厉害的馆主吧。{CLEAR}你可不要输给他们啊,{CLEAR}加油吧⋯⋯",
-   "en": "You know, there are Gym Leaders out{NEWLINE}there who are stronger than me.{CLEAR}You should try battling them.{CLEAR}I don’t think you’d lose.",
+   "en": "There are many other strong Gym{NEWLINE}Leaders besides me. Do not lose to{CLEAR}them. Give it your best...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0659/3"
+   "origin": "agent",
+   "notes": "US 0659/3 | RV071: meaning: no 'stronger than me' / 'I don't think you'd lose' (D-1896)"
   },
   {
    "id": 4,
@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "话说,你好像阻止了{NEWLINE}火箭队的阴谋。{SCROLL}嗯⋯⋯{NEWLINE}不愧是将我打败的人,{CLEAR}这就是你的实力,{CLEAR}太精彩了。{SCROLL}看来你有很多东西{NEWLINE}值得我学习,{SCROLL}还请多多指教了⋯⋯",
-   "en": "That reminds me, you kept Team{NEWLINE}Rocket’s treachery in check, right?{SCROLL}Humph...{NEWLINE}That’s a praiseworthy deed and an{CLEAR}appropriate responsibility for a Trainer{CLEAR}who could defeat me.{SCROLL}I think there’s still several things I{NEWLINE}could stand to learn from you.{SCROLL}I’m looking forward to it.",
+   "en": "That reminds me, I hear you foiled Team{NEWLINE}Rocket’s scheme. Hmm... As expected of{CLEAR}the one who defeated me. Such is your{CLEAR}strength. Splendid. It seems there is{CLEAR}much I could learn from you. I look{CLEAR}forward to learning from you...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0659/14"
+   "origin": "agent",
+   "notes": "US 0659/14 | RV071: meaning: praise and 'much to learn from you' restored"
   }
  ]
 }
