@@ -30,6 +30,10 @@ import tempfile
 import time
 from pathlib import Path
 
+# No sound from any emulator this process starts: SDL's dummy audio driver opens no output device
+# (the emulated sound chip still runs, so game timing is unchanged).
+os.environ["SDL_AUDIODRIVER"] = "dummy"
+
 if __name__ == "__main__":
     # run as a script, the recipe modules' `import emu_harness` must get this module, not a second copy: the
     # child-process registry (stop_children, the signal handlers) has to be one and the same
