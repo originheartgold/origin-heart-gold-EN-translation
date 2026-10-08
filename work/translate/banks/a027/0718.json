@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "⋯⋯切,{NEWLINE}想不到你还挺强的。{NEWLINE} ",
-   "en": "...Humph!{NEWLINE}You’re doing OK for someone weak.{NEWLINE}",
+   "en": "...Tch. Didn’t think you’d{NEWLINE}actually be this strong.{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/0"
+   "origin": "agent",
+   "notes": "US 0728/0 | RV063: meaning: zh admits surprise at player's strength; US 'for someone weak' insult not in zh (D-1953)"
   },
   {
    "id": 1,
@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "⋯⋯切,{NEWLINE}想不到你还挺强的。{NEWLINE}",
-   "en": "...Humph!{NEWLINE}You’re doing OK for someone weak.{NEWLINE}",
+   "en": "...Tch. Didn’t think you’d{NEWLINE}actually be this strong.{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/3"
+   "origin": "agent",
+   "notes": "US 0728/3 | RV063: meaning: zh admits surprise at player's strength; US 'for someone weak' insult not in zh (D-1953)"
   },
   {
    "id": 4,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "⋯⋯切,{NEWLINE}想不到你还挺强的。{NEWLINE}",
-   "en": "...Humph!{NEWLINE}You’re doing OK for someone weak.{NEWLINE}",
+   "en": "...Tch. Didn’t think you’d{NEWLINE}actually be this strong.{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/6"
+   "origin": "agent",
+   "notes": "US 0728/6 | RV063: meaning: zh admits surprise at player's strength; US 'for someone weak' insult not in zh (D-1953)"
   },
   {
    "id": 7,
@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "银『居然让我稍微提起点精神来了。{NEWLINE}",
-   "en": "Silver: Tch. You actually{NEWLINE}got me a little fired up.{NEWLINE}",
+   "en": "Silver: You actually got me a little{NEWLINE}fired up.{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV063: addition: dropped 'Tch.' not in zh"
   },
   {
    "id": 10,
@@ -567,10 +567,10 @@
   {
    "id": 69,
    "zh": "怎么啦！{NEWLINE}我还有一只啊！{NEWLINE}",
-   "en": "Why?!{NEWLINE}I’ve still got one left!{NEWLINE}",
+   "en": "So what?! I’ve still got one left!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/69"
+   "origin": "agent",
+   "notes": "US 0728/69 | RV063: meaning: 怎么啦 = so what/what of it, not 'Why?!'"
   },
   {
    "id": 70,
@@ -583,26 +583,26 @@
   {
    "id": 71,
    "zh": "⋯⋯ ⋯⋯ ⋯⋯{SCROLL}我认输⋯⋯{NEWLINE}",
-   "en": "...{SCROLL}OK. I lost...{NEWLINE}",
+   "en": "...{SCROLL}I give up...{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/71"
+   "origin": "agent",
+   "notes": "US 0728/71 | RV063: addition: 我认输 = I give up; 'OK.' not in zh"
   },
   {
    "id": 72,
    "zh": "⋯⋯ ⋯⋯ ⋯⋯{SCROLL}呼⋯⋯{NEWLINE}接下来我就要和他们{CLEAR}一起成为冠军！{NEWLINE}",
-   "en": "...{SCROLL}Whew...{NEWLINE}With my partners,{CLEAR}I’m going to be the Champion!{NEWLINE}",
+   "en": "...{SCROLL}Whew... Next, I’m going to become{NEWLINE}Champion together with them!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/72"
+   "origin": "agent",
+   "notes": "US 0728/72 | RV063: omission: 接下来 (next) dropped; 他们 kept as 'them'"
   },
   {
    "id": 73,
    "zh": "怎么啦！{NEWLINE}我还有一只啊！{NEWLINE}",
-   "en": "Why?!{NEWLINE}I’ve still got one left!{NEWLINE}",
+   "en": "So what?! I’ve still got one left!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/73"
+   "origin": "agent",
+   "notes": "US 0728/73 | RV063: meaning: 怎么啦 = so what/what of it, not 'Why?!'"
   },
   {
    "id": 74,
@@ -615,26 +615,26 @@
   {
    "id": 75,
    "zh": "⋯⋯ ⋯⋯ ⋯⋯{SCROLL}我认输⋯⋯{NEWLINE}",
-   "en": "...{SCROLL}OK. I lost...{NEWLINE}",
+   "en": "...{SCROLL}I give up...{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/75"
+   "origin": "agent",
+   "notes": "US 0728/75 | RV063: addition: 我认输 = I give up; 'OK.' not in zh"
   },
   {
    "id": 76,
    "zh": "⋯⋯ ⋯⋯ ⋯⋯{SCROLL}呼⋯⋯{NEWLINE}接下来我就要和他们{CLEAR}一起成为冠军！{NEWLINE}",
-   "en": "...{SCROLL}Whew...{NEWLINE}With my partners,{CLEAR}I’m going to be the Champion!{NEWLINE}",
+   "en": "...{SCROLL}Whew... Next, I’m going to become{NEWLINE}Champion together with them!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/76"
+   "origin": "agent",
+   "notes": "US 0728/76 | RV063: omission: 接下来 (next) dropped; 他们 kept as 'them'"
   },
   {
    "id": 77,
    "zh": "怎么啦！{NEWLINE}我还有一只啊！{NEWLINE}",
-   "en": "Why?!{NEWLINE}I’ve still got one left!{NEWLINE}",
+   "en": "So what?! I’ve still got one left!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/77"
+   "origin": "agent",
+   "notes": "US 0728/77 | RV063: meaning: 怎么啦 = so what/what of it, not 'Why?!'"
   },
   {
    "id": 78,
@@ -647,18 +647,18 @@
   {
    "id": 79,
    "zh": "⋯⋯ ⋯⋯ ⋯⋯{SCROLL}我认输⋯⋯{NEWLINE}",
-   "en": "...{SCROLL}OK. I lost...{NEWLINE}",
+   "en": "...{SCROLL}I give up...{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/79"
+   "origin": "agent",
+   "notes": "US 0728/79 | RV063: addition: 我认输 = I give up; 'OK.' not in zh"
   },
   {
    "id": 80,
    "zh": "⋯⋯ ⋯⋯ ⋯⋯{SCROLL}呼⋯⋯{NEWLINE}接下来我就要和他们{CLEAR}一起成为冠军！{NEWLINE}",
-   "en": "...{SCROLL}Whew...{NEWLINE}With my partners,{CLEAR}I’m going to be the Champion!{NEWLINE}",
+   "en": "...{SCROLL}Whew... Next, I’m going to become{NEWLINE}Champion together with them!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/80"
+   "origin": "agent",
+   "notes": "US 0728/80 | RV063: omission: 接下来 (next) dropped; 他们 kept as 'them'"
   },
   {
    "id": 81,
@@ -695,10 +695,10 @@
   {
    "id": 85,
    "zh": "好了⋯⋯{NEWLINE}我会痛痛快快降落的。{NEWLINE}",
-   "en": "I understand...{NEWLINE}I’ll bow out gracefully.{NEWLINE}",
+   "en": "All right...{NEWLINE}I’ll make a clean landing.{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/85"
+   "origin": "agent",
+   "notes": "US 0728/85 | RV063: meaning: 降落 = land (flying pun); US 'bow out' lost it"
   },
   {
    "id": 86,
@@ -743,26 +743,26 @@
   {
    "id": 91,
    "zh": "呜呜⋯⋯{NEWLINE}",
-   "en": "Ugh...{NEWLINE}",
+   "en": "Waaah...{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/91"
+   "origin": "agent",
+   "notes": "US 0728/91 | RV063: meaning: 呜呜 = sobbing (Whitney cries), not 'Ugh'"
   },
   {
    "id": 92,
    "zh": "不不不,还早着呢！{NEWLINE}我坚信！！{NEWLINE}",
-   "en": "No, it’s not over yet--not yet!{NEWLINE}I still believe we can do it!{NEWLINE}",
+   "en": "No, no, no, it’s not over yet!{NEWLINE}I still believe!!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/92"
+   "origin": "agent",
+   "notes": "US 0728/92 | RV063: addition: 'we can do it' not in zh; 不不不 kept"
   },
   {
    "id": 93,
    "zh": "为什么,我比任何人都要刻苦的！{NEWLINE}",
-   "en": "We’ve got more discipline than{NEWLINE}anyone else!{NEWLINE}",
+   "en": "Why?! I’ve trained harder than anyone!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/93"
+   "origin": "agent",
+   "notes": "US 0728/93 | RV063: meaning: 为什么 dropped; 刻苦 = worked/trained hard, not 'discipline'"
   },
   {
    "id": 94,
@@ -783,10 +783,10 @@
   {
    "id": 96,
    "zh": "不到最后决不放弃,{NEWLINE}凭我的这颗钢铁之心！{NEWLINE}",
-   "en": "Steel will hang on to the very last!{NEWLINE}",
+   "en": "I won’t give up until the very end,{NEWLINE}not with this heart of steel!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/96"
+   "origin": "agent",
+   "notes": "US 0728/96 | RV063: omission: 凭我的这颗钢铁之心 (her own heart of steel) restored (D-1954)"
   },
   {
    "id": 97,
@@ -831,18 +831,18 @@
   {
    "id": 102,
    "zh": "韧柳不易折,{NEWLINE}我还没放弃的。{NEWLINE}",
-   "en": "Willow is my middle name.{NEWLINE}Willow is flexible and not easily broken.{CLEAR}I’m not giving up yet.{NEWLINE}",
+   "en": "A tough willow doesn’t break easily.{NEWLINE}I haven’t given up yet.{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/102"
+   "origin": "agent",
+   "notes": "US 0728/102 | RV063: addition: US invented 'Willow is my middle name' (D-1955)"
   },
   {
    "id": 103,
    "zh": "智穷策尽⋯⋯了吗。{NEWLINE}",
-   "en": "Hmm. Seems as if my luck has run out.{NEWLINE}",
+   "en": "Out of wits and out of plans... am I?{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/103"
+   "origin": "agent",
+   "notes": "US 0728/103 | RV063: meaning: 智穷策尽 = wits and plans exhausted, not luck (D-1955)"
   },
   {
    "id": 104,
@@ -855,10 +855,10 @@
   {
    "id": 105,
    "zh": "不是吧~！？是我赢了！{NEWLINE}肯定是我赢了！{NEWLINE}",
-   "en": "You’re kidding, right?{NEWLINE}I’m supposed to win! I already decided!{NEWLINE}",
+   "en": "No way?! I’m winning this!{NEWLINE}I’m definitely winning!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/105"
+   "origin": "agent",
+   "notes": "US 0728/105 | RV063: meaning: 是我赢了 = I win (denial); US 'I already decided' not in zh (D-1956)"
   },
   {
    "id": 106,
@@ -887,10 +887,10 @@
   {
    "id": 109,
    "zh": "好了⋯⋯{NEWLINE}我会痛痛快快降落的。{NEWLINE}",
-   "en": "I understand...{NEWLINE}I’ll bow out gracefully.{NEWLINE}",
+   "en": "All right...{NEWLINE}I’ll make a clean landing.{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/109"
+   "origin": "agent",
+   "notes": "US 0728/109 | RV063: meaning: 降落 = land (flying pun); US 'bow out' lost it"
   },
   {
    "id": 110,
@@ -919,10 +919,10 @@
   {
    "id": 113,
    "zh": "等,等等！就剩一只了？{NEWLINE}但是⋯⋯我是不会输的！{NEWLINE}",
-   "en": "H-hey! Just one left?{NEWLINE}But... I ain’t losin’, you hear?{NEWLINE}",
+   "en": "H-hey! Just one left?{NEWLINE}But... I’m not gonna lose!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/113"
+   "origin": "agent",
+   "notes": "US 0728/113 | RV063: voice: rematch zh uses plain 我 (not dialect 俺) and has no 'you hear?'"
   },
   {
    "id": 114,
@@ -935,10 +935,10 @@
   {
    "id": 115,
    "zh": "呜呜⋯⋯{NEWLINE}",
-   "en": "Ugh...{NEWLINE}",
+   "en": "Waaah...{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/115"
+   "origin": "agent",
+   "notes": "US 0728/115 | RV063: meaning: 呜呜 = sobbing (Whitney cries), not 'Ugh'"
   },
   {
    "id": 116,
@@ -951,10 +951,10 @@
   {
    "id": 117,
    "zh": "怎么会,我比任何人都要刻苦啊！{NEWLINE}",
-   "en": "We’ve got more discipline than{NEWLINE}anyone else!{NEWLINE}",
+   "en": "How can this be?!{NEWLINE}I’ve trained harder than anyone!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/117"
+   "origin": "agent",
+   "notes": "US 0728/117 | RV063: meaning: 怎么会 dropped; 刻苦 = trained hard"
   },
   {
    "id": 118,
@@ -975,10 +975,10 @@
   {
    "id": 120,
    "zh": "不到最后决不放弃,{NEWLINE}凭着我的一颗钢铁之心！{NEWLINE}",
-   "en": "Steel will hang on to the very last!{NEWLINE}",
+   "en": "I won’t give up until the very end,{NEWLINE}not with this heart of steel!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/120"
+   "origin": "agent",
+   "notes": "US 0728/120 | RV063: omission: 凭我的这颗钢铁之心 (her own heart of steel) restored (D-1954)"
   },
   {
    "id": 121,
@@ -1023,18 +1023,18 @@
   {
    "id": 126,
    "zh": "韧柳不易折,{NEWLINE}我还没放弃的。{NEWLINE}",
-   "en": "Willow is my middle name.{NEWLINE}Willow is flexible and not easily broken.{CLEAR}I’m not giving up yet.{NEWLINE}",
+   "en": "A tough willow doesn’t break easily.{NEWLINE}I haven’t given up yet.{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/126"
+   "origin": "agent",
+   "notes": "US 0728/126 | RV063: addition: US invented 'Willow is my middle name' (D-1955)"
   },
   {
    "id": 127,
    "zh": "智穷策尽⋯⋯了吗。{NEWLINE}",
-   "en": "Hmm. Seems as if my luck has run out.{NEWLINE}",
+   "en": "Out of wits and out of plans... am I?{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/127"
+   "origin": "agent",
+   "notes": "US 0728/127 | RV063: meaning: 智穷策尽 = wits and plans exhausted, not luck (D-1955)"
   },
   {
    "id": 128,
@@ -1047,18 +1047,18 @@
   {
    "id": 129,
    "zh": "假的吧！？赢的是我！{NEWLINE}肯定是我！{NEWLINE}",
-   "en": "You’re kidding, right?{NEWLINE}I’m supposed to win! I already decided!{NEWLINE}",
+   "en": "You’re kidding?! I’m the winner!{NEWLINE}It has to be me!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/129"
+   "origin": "agent",
+   "notes": "US 0728/129 | RV063: meaning: 赢的是我 = I'm the winner; US 'I already decided' not in zh (D-1956)"
   },
   {
    "id": 130,
    "zh": "竟然又是我输了⋯⋯{SCROLL}真是难以置信。{NEWLINE}肯定是哪儿搞错了⋯⋯{NEWLINE}",
-   "en": "I lost? ...{SCROLL}I don’t believe it.{NEWLINE}There must be some mistake...{NEWLINE}",
+   "en": "I lost again...?{SCROLL}I don’t believe it. Something must have{NEWLINE}gone wrong somewhere...{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/130"
+   "origin": "agent",
+   "notes": "US 0728/130 | RV063: omission: 又 (again) and 哪儿 (somewhere) dropped (D-1956)"
   },
   {
    "id": 131,
@@ -1357,10 +1357,10 @@
   {
    "id": 167,
    "zh": "我特么连小鬼都不如了！{NEWLINE}",
-   "en": "Dammit, I can’t even beat a brat!{NEWLINE}",
+   "en": "Dammit, I’m even worse than a brat!{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV063: meaning: 连小鬼都不如 = worse than a brat, not 'can't beat a brat'"
   },
   {
    "id": 168,
@@ -1453,10 +1453,10 @@
   {
    "id": 179,
    "zh": "真的假的啊~！？{NEWLINE}",
-   "en": "This isn’t real!{NEWLINE}",
+   "en": "No way?! Is this for real?!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/179"
+   "origin": "agent",
+   "notes": "US 0728/179 | RV063: meaning: 真的假的 = for real?; question restored"
   },
   {
    "id": 180,
@@ -1533,10 +1533,10 @@
   {
    "id": 189,
    "zh": "我引以为傲的精灵竟然输了,{NEWLINE}我的自尊心被击成碎屑了⋯⋯{NEWLINE}",
-   "en": "My Pokémon lost...{NEWLINE}My...my pride is shattered...{NEWLINE}",
+   "en": "The Pokémon I was so proud of lost...{NEWLINE}My pride’s been smashed to bits...{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/189"
+   "origin": "agent",
+   "notes": "US 0728/189 | RV063: omission: 引以为傲的 and 击成碎屑 (echo of intro) restored"
   },
   {
    "id": 190,
@@ -1787,10 +1787,10 @@
   {
    "id": 220,
    "zh": "还剩一只了,但我不会放弃。{NEWLINE}这就是超能力的恐怖之处！{NEWLINE}",
-   "en": "We Psychics don’t give up even when{NEWLINE}we’re down to the last Pokémon.{SCROLL}That’s what makes us so formidable!{NEWLINE}",
+   "en": "One left, but I won’t give up!{NEWLINE}That’s the terror of psychic power!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/220"
+   "origin": "agent",
+   "notes": "US 0728/220 | RV063: meaning: US 'We Psychics...formidable' reworded; 恐怖 = terrifying"
   },
   {
    "id": 221,
@@ -1875,10 +1875,10 @@
   {
    "id": 231,
    "zh": "嗯,还不错嘛。{NEWLINE}挺帅的。{NEWLINE}",
-   "en": "Well, aren’t you good.{NEWLINE}I like that in a Trainer.{NEWLINE}",
+   "en": "Hmm, not bad at all. Pretty cool.{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/231"
+   "origin": "agent",
+   "notes": "US 0728/231 | RV063: meaning: 挺帅的 = pretty cool; US 'I like that in a Trainer' not in zh"
   },
   {
    "id": 232,
@@ -1907,10 +1907,10 @@
   {
    "id": 235,
    "zh": "就算只剩一只也不放弃。{NEWLINE}这就是超能力的恐怖之处！{NEWLINE}",
-   "en": "We Psychics don’t give up even when{NEWLINE}we’re down to the last Pokémon.{SCROLL}That’s what makes us so formidable!{NEWLINE}",
+   "en": "Even down to one, I won’t give up!{NEWLINE}That’s the terror of psychic power!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/235"
+   "origin": "agent",
+   "notes": "US 0728/235 | RV063: meaning: US 'We Psychics...formidable' reworded; 恐怖 = terrifying"
   },
   {
    "id": 236,
@@ -1995,10 +1995,10 @@
   {
    "id": 246,
    "zh": "嗯,还不错嘛。{NEWLINE}挺帅的。{NEWLINE}",
-   "en": "Well, aren’t you good.{NEWLINE}I like that in a Trainer.{NEWLINE}",
+   "en": "Hmm, not bad at all. Pretty cool.{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/246"
+   "origin": "agent",
+   "notes": "US 0728/246 | RV063: meaning: 挺帅的 = pretty cool; US 'I like that in a Trainer' not in zh"
   },
   {
    "id": 247,
@@ -2203,10 +2203,10 @@
   {
    "id": 272,
    "zh": "我还没输呢！{NEWLINE}",
-   "en": "We can still do it!{NEWLINE}",
+   "en": "I haven’t lost yet!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/272"
+   "origin": "agent",
+   "notes": "US 0728/272 | RV063: meaning: 我还没输呢 = I haven't lost yet"
   },
   {
    "id": 273,
@@ -2395,10 +2395,10 @@
   {
    "id": 296,
    "zh": "我还没有输！{NEWLINE}",
-   "en": "We can still do it!{NEWLINE}",
+   "en": "I haven’t lost yet!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/296"
+   "origin": "agent",
+   "notes": "US 0728/296 | RV063: meaning: 我还没有输 = I haven't lost yet"
   },
   {
    "id": 297,
@@ -2467,10 +2467,10 @@
   {
    "id": 305,
    "zh": "我的精灵{NEWLINE}都站不稳了⋯⋯{NEWLINE}",
-   "en": "All of my Pokémon...{NEWLINE}All dizzy and fainting...{NEWLINE}",
+   "en": "My Pokémon can’t even{NEWLINE}stay on their feet...{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/305"
+   "origin": "agent",
+   "notes": "US 0728/305 | RV063: addition: 站不稳 = can't stand steady; 'fainting' not in zh (D-1957)"
   },
   {
    "id": 306,
@@ -2563,10 +2563,10 @@
   {
    "id": 317,
    "zh": "我们火箭队干部很强的,{NEWLINE}你的胜利就到我这里为止了。{NEWLINE}",
-   "en": "Our Team Rocket Executives are{NEWLINE}strong. Your lucky streak ends there.{NEWLINE}",
+   "en": "Our Team Rocket Executives are strong.{NEWLINE}Your winning streak ends with me.{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV063: meaning: 到我这里为止 = ends with me; 'lucky' not in zh (D-1957)"
   },
   {
    "id": 318,
@@ -2627,10 +2627,10 @@
   {
    "id": 325,
    "zh": "看来仅凭精力无法取胜啊。{NEWLINE}",
-   "en": "You can’t win with strength alone.{NEWLINE}",
+   "en": "Looks like energy alone won’t win it.{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/325"
+   "origin": "agent",
+   "notes": "US 0728/325 | RV063: meaning: 精力 = energy (echoes intro), not strength (D-1957)"
   },
   {
    "id": 326,
@@ -2793,10 +2793,10 @@
   {
    "id": 345,
    "zh": "美纪『莉佳姐姐{NEWLINE}由我们来保护！{SCROLL}",
-   "en": "Miki: We’ll protect Erika!{SCROLL}",
+   "en": "Miki: We’ll protect Sis Erika!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0728/345; labels 美纪 Miki (0719 #326), 阿牧 Maki (romanised); US had Jo/Zoe"
+   "notes": "US 0728/345; labels 美纪 Miki (0719 #326), 阿牧 Maki (romanised); US had Jo/Zoe | RV063: omission: 莉佳姐姐 = Sis Erika (as in 0485/0501)"
   },
   {
    "id": 346,
@@ -2809,10 +2809,10 @@
   {
    "id": 347,
    "zh": "美纪『你和莉佳姐姐{NEWLINE}一样强呢。{NEWLINE}",
-   "en": "Miki: You’re as strong as Erika!{NEWLINE}",
+   "en": "Miki: You’re as strong as Sis Erika!{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0728/347"
+   "notes": "US 0728/347 | RV063: omission: 莉佳姐姐 = Sis Erika (as in 0485/0501)"
   },
   {
    "id": 348,
@@ -2825,10 +2825,10 @@
   {
    "id": 349,
    "zh": "阿牧『莉佳姐姐{NEWLINE}由我们来保护！！{SCROLL}",
-   "en": "Maki: We’ll protect Erika!!{SCROLL}",
+   "en": "Maki: We’ll protect Sis Erika!!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0728/349"
+   "notes": "US 0728/349 | RV063: omission: 莉佳姐姐 = Sis Erika (as in 0485/0501)"
   },
   {
    "id": 350,
@@ -2873,10 +2873,10 @@
   {
    "id": 355,
    "zh": "没脸见{NEWLINE}莉佳姐姐了！{NEWLINE}",
-   "en": "I’m too ashamed to face Erika!{NEWLINE}",
+   "en": "I’m too ashamed to face Sis Erika!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/355"
+   "origin": "agent",
+   "notes": "US 0728/355 | RV063: omission: 莉佳姐姐 = Sis Erika (as in 0485/0501)"
   },
   {
    "id": 356,
@@ -2905,10 +2905,10 @@
   {
    "id": 359,
    "zh": "我的兴趣{NEWLINE}你能理解吗？{CLEAR}那就是⋯⋯{SCROLL}做一个声音豪迈的女人！{SCROLL}",
-   "en": "How can I get you to understand my{NEWLINE}hobby? Which is...{CLEAR}talking in a deep voice!{SCROLL}",
+   "en": "Can you understand my hobby?{NEWLINE}It’s...{SCROLL}being a woman with a big, bold voice!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/359"
+   "origin": "agent",
+   "notes": "US 0728/359 | RV063: meaning: 做一个声音豪迈的女人 = be a woman with a bold voice; US 'How can I get you...deep voice' drifted"
   },
   {
    "id": 360,
@@ -2929,10 +2929,10 @@
   {
    "id": 362,
    "zh": "妈了个巴子的臭小鬼,{NEWLINE}居然连续打败我两只精灵！{NEWLINE}",
-   "en": "You goddamn brat! You beat{NEWLINE}two of my Pokémon in a row!{NEWLINE}",
+   "en": "You goddamn stinking brat! You beat two{NEWLINE}of my Pokémon in a row!{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV063: omission: 臭 (stinking) restored"
   },
   {
    "id": 363,
@@ -3009,10 +3009,10 @@
   {
    "id": 372,
    "zh": "你打倒的{NEWLINE}精灵们的力量{CLEAR}都会汇入我的体内！{SCROLL}",
-   "en": "The power of all those you defeated{NEWLINE}comes to me!{SCROLL}",
+   "en": "The power of every Pokémon you’ve{NEWLINE}defeated flows into my body!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/372",
+   "origin": "agent",
+   "notes": "US 0728/372 | RV063: omission: 精灵们 and 汇入我的体内 restored",
    "qa_ignore": [
     "glossary:精灵"
    ]
@@ -3119,10 +3119,10 @@
   {
    "id": 385,
    "zh": "被干掉了~！{NEWLINE}",
-   "en": "I was whipped...{NEWLINE}",
+   "en": "I got taken out!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/385"
+   "origin": "agent",
+   "notes": "US 0728/385 | RV063: meaning: 被干掉了 = taken out, as elsewhere in bank"
   },
   {
    "id": 386,
@@ -3183,10 +3183,10 @@
   {
    "id": 393,
    "zh": "抓住虫精灵{NEWLINE}肚子时的那种{CLEAR}软软的手感{CLEAR}多棒啊！{NEWLINE}",
-   "en": "Bug Pokémon squish like soft, toy{NEWLINE}Pokémon when you squeeze their bellies.{SCROLL}I love how they feel!{NEWLINE}",
+   "en": "That squishy feel when you grab a bug{NEWLINE}Pokémon by the belly... It’s the best!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/393"
+   "origin": "agent",
+   "notes": "US 0728/393 | RV063: addition: US 'like soft, toy Pokémon' not in zh"
   },
   {
    "id": 394,
@@ -3303,10 +3303,10 @@
   {
    "id": 408,
    "zh": "切,输了啊⋯⋯{NEWLINE}",
-   "en": "Aw, I can’t believe I lost...{NEWLINE}",
+   "en": "Tch, I lost, huh...{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/408"
+   "origin": "agent",
+   "notes": "US 0728/408 | RV063: meaning: 切 = Tch; 'can't believe' not in zh"
   },
   {
    "id": 409,
