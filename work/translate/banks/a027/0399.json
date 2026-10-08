@@ -396,10 +396,10 @@
   {
    "id": 48,
    "zh": "冥王『嘿嘿嘿,吉尔露太老弟,{NEWLINE}你慌张个什么劲啊。{CLEAR}有咱们两个在,就算是联盟冠军,{CLEAR}也叫他有来无回。",
-   "en": "Charon: Heh heh heh. Lawrence, my boy,{NEWLINE}what are you so flustered about? With{CLEAR}the two of us here, even the League{CLEAR}Champion won’t leave in one piece.",
+   "en": "Charon: Heh heh heh. Lawrence, my boy,{NEWLINE}what are you so flustered about? With{CLEAR}the two of us here, even the League{CLEAR}Champion won’t be leaving this place.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV050: softened: 有来无回 = comes but never returns; 'in one piece' allowed survival (D-1773)"
   },
   {
    "id": 49,
@@ -412,10 +412,10 @@
   {
    "id": 50,
    "zh": "冥王『华蓝洞穴战况的传闻{NEWLINE}都是精灵联盟给这个冠军造势罢了。{CLEAR}坂木首领才不会输给这样的小鬼呢。",
-   "en": "Charon: The rumors about the battle{NEWLINE}in Cerulean Cave are just the{CLEAR}Pokémon League hyping up its Champion.{CLEAR}The boss would never lose to a brat{CLEAR}like that.",
+   "en": "Charon: The rumors about the battle in{NEWLINE}Cerulean Cave are just the{CLEAR}Pokémon League hyping up its Champion.{CLEAR}Boss Giovanni would never lose to a{CLEAR}brat like that.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV050: omission: 坂木首领 named; restored Giovanni"
   },
   {
    "id": 51,
@@ -516,10 +516,10 @@
   {
    "id": 63,
    "zh": "水晶『你们休想以多欺少,{NEWLINE}{VAR:0103:0}前辈,这次也让我来帮你吧。",
-   "en": "Crystal: You won’t gang up{NEWLINE}on us like that! {VAR:0103:0}, let{CLEAR}me help you this time too.",
+   "en": "Crystal: Don’t think you can gang up{NEWLINE}two on one! {VAR:0103:0}, let me help you{CLEAR}this time too.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV050: meaning: 以多欺少 = the two Executives ganging up on the player, not on 'us'"
   },
   {
    "id": 64,
