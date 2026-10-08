@@ -6438,7 +6438,7 @@
   {
    "id": "RV090",
    "group": "6-desc",
-   "status": "todo",
+   "status": "done",
    "strings": 327,
    "labels": [
     "a027/0712 item_descriptions + ability_descriptions + berry_descriptions"

@@ -122,10 +122,10 @@
   {
    "id": 13,
    "zh": "不受天气影响。",
-   "en": "Eliminates the effects of{NEWLINE}weather.",
+   "en": "Not affected by weather.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0722/13"
+   "origin": "agent",
+   "notes": "US 0722/13 | RV090: meaning: zh 不受天气影响 says it is unaffected by weather, not that it eliminates weather"
   },
   {
    "id": 14,
@@ -496,10 +496,10 @@
   {
    "id": 55,
    "zh": "物攻技能威力上升,{NEWLINE}但命中下降。",
-   "en": "Boosts the Attack stat,{NEWLINE}but lowers accuracy.",
+   "en": "Powers up physical moves{NEWLINE}but lowers accuracy.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0722/55",
+   "origin": "agent",
+   "notes": "US 0722/55 | RV090: meaning: zh boosts physical move power, not the Attack stat",
    "qa_ignore": [
     "glossary:威力"
    ]
@@ -539,10 +539,10 @@
   {
    "id": 60,
    "zh": "不会失去道具。",
-   "en": "Protects the Pokémon{NEWLINE}from item theft.",
+   "en": "Prevents the loss of its{NEWLINE}held item.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0722/60"
+   "origin": "agent",
+   "notes": "US 0722/60 | RV090: meaning: zh 不会失去道具 is any item loss, not only theft"
   },
   {
    "id": 61,
@@ -909,10 +909,10 @@
   {
    "id": 102,
    "zh": "晴天不会陷入异常状态{NEWLINE}且队友提升物防特攻。",
-   "en": "Sun: no status. Allies’{NEWLINE}Defense, Sp. Atk rise.",
+   "en": "Sun: no status; allies’{NEWLINE}Defense, Sp. Atk rise.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV090: meaning: keep ally boost under the sun condition (且)",
    "qa_ignore": [
     "glossary:异常状态",
     "glossary:晴天"
@@ -1857,10 +1857,10 @@
   {
    "id": 208,
    "zh": "HP多的时候会聚起来变强。{NEWLINE}HP剩余量变少时，群体会分崩离析。",
-   "en": "Schools at high HP; the{NEWLINE}school splits at low HP.",
+   "en": "High HP: schools, grows{NEWLINE}strong. Low HP: splits.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV090: omission: restored 变强 (grows strong)"
   },
   {
    "id": 209,
@@ -2330,10 +2330,10 @@
   {
    "id": 261,
    "zh": "出场时会从贝壳撒药，{NEWLINE}将我方的能力变化复原。",
-   "en": "Its shell medicine resets{NEWLINE}allies’ stat changes.",
+   "en": "On entry, shell medicine{NEWLINE}resets allies’ stats.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV090: omission: restored on-entry trigger (出场时)",
    "qa_ignore": [
     "glossary:变化"
    ]
@@ -2486,10 +2486,10 @@
   {
    "id": 279,
    "zh": "出场时，若我方当中有吃吼霸，{NEWLINE}就会进入其口中，并从其口中发出指令。",
-   "en": "Jumps into an ally{NEWLINE}Dondozo to give orders.",
+   "en": "On entry, hops into ally{NEWLINE}Dondozo to give orders.",
    "status": "draft",
    "origin": "agent",
-   "notes": "‘On entry’ dropped for space."
+   "notes": "‘On entry’ dropped for space. | RV090: omission: restored on-entry trigger (出场时)"
   },
   {
    "id": 280,
@@ -2577,10 +2577,10 @@
   {
    "id": 288,
    "zh": "出场时，会将天气变为晴朗。{NEWLINE}日照强烈时，会通过古代的脉动升高攻击。",
-   "en": "Brings sun on entry.{NEWLINE}Harsh sun ups Attack.",
+   "en": "Sun on entry; ancient{NEWLINE}pulse ups Attack in sun.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV090: omission: restored ancient pulse (古代的脉动)",
    "qa_ignore": [
     "glossary:天气",
     "glossary:日照"
@@ -2624,10 +2624,10 @@
   {
    "id": 293,
    "zh": "出场时，攻击和特攻{NEWLINE}会按照目前被打倒的{NEWLINE}同伴数量逐渐提升，{NEWLINE}被打倒越多，提升越{NEWLINE}多。",
-   "en": "Ups Attack and Sp. Atk{NEWLINE}for each fainted ally.",
+   "en": "On entry, ups Attack and{NEWLINE}Sp. Atk per fainted ally.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV090: omission: restored on-entry trigger (出场时)"
   },
   {
    "id": 294,
