@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "闪耀着五彩颜色的翅膀,{NEWLINE}优雅地在苍穹飞舞的精灵。",
-   "en": "A Pokémon that soared the heavens{NEWLINE}on wings shining in many colors.",
+   "en": "A Pokémon that dances gracefully in the{NEWLINE}heavens on wings shining in many colors.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US slot is blank; Ho-Oh style description, probably unused"
+   "notes": "US slot is blank; Ho-Oh style description, probably unused | RV084: omission: 优雅地 dropped; 飞舞 = dances, present tense"
   }
  ]
 }

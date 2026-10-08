@@ -134,10 +134,10 @@
   {
    "id": 16,
    "zh": "遗忘{VAR:0106:1},{NEWLINE}可以吗？{VAR:0200:0}",
-   "en": "Forget {VAR:0106:1}, am I right? {VAR:0200:0}",
+   "en": "Forget {VAR:0106:1}. Is that OK? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV084: meaning: 可以吗 asks permission (as 0450#15)"
   },
   {
    "id": 17,
