@@ -145,7 +145,7 @@ TEXT_SPEED_FRAMES = 400
 # crop is the approved one (and not the Chinese ROM's), 'original' when it equals the Chinese ROM's crop.
 CROPS = {
     "naming-tabs": (20, 246, 240, 276),          # naming screen: the four tabs and the BACK / OK buttons
-    "type-icon-summary": (8, 203, 38, 216),      # summary skills page: the first move's type icon
+    "type-icon-summary": (7, 201, 41, 215),      # summary skills page: the first move's type icon
     "type-icon-battle": (16, 247, 49, 261),      # battle FIGHT menu: the first move's type icon
     "title-subtitle": (96, 98, 250, 128),        # title screen under the 起源心金 logo: 'Origin HeartGold'
 }
@@ -155,7 +155,7 @@ APPROVAL_IMAGES = "work/build/hard4/approve/ (in the poke-patches worktree): <cr
 APPROVED = {   # taken from run work/build/hard4/run3 (2026-10-08), the build of develop aab6efb
     "naming-tabs": {"digest": "037dab60bd0a6a0ac04d497fdd82463dd679ac22c72ba558c188d501f0e991b1",
                     "approved_by": "pending user review", "images": APPROVAL_IMAGES},
-    "type-icon-summary": {"digest": "434ab3127e3d835d3927e94f9d973d18954fe6795cb2ebcfe03dccdb1e19d904",
+    "type-icon-summary": {"digest": "dea47b53d48bb954194db1cc0b0c219395697b40a966ee4e43035809464aa85b",
                           "approved_by": "pending user review", "images": APPROVAL_IMAGES},
     "type-icon-battle": {"digest": "cdd429d35e5f48a50c0a98fa4b68a55cd2a289675c582ffb1278364b8cdff89b",
                          "approved_by": "pending user review", "images": APPROVAL_IMAGES},
