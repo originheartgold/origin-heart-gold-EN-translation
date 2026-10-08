@@ -45,7 +45,7 @@ STRENGTH = [
     ("death/kill", r"弄死|杀了|杀死|宰了|去死|受死|找死|死定|死路|送你上西天|干掉|偿命|毙命|灭口",
      r"\b(die|dies|dying|dead|death|kill|killed|killing|grave|murder|end you|finish(ed)? (you|them|off)|"
      r"done for|six feet|take (you|them|him|her|it) (out|down)|rub (you|them) out|wipe(d)? out|suicide|life|lives)\b"),
-    ("swear", r"(?<!妈)妈的|他妈|特么|尼玛|卧槽|我操|操你|日你|狗日",
+    ("swear", r"(?<!妈)妈的|他妈|特么|尼玛|卧槽|我操|操你|(?<![一今明昨每生节])日你|狗日",
      r"(damn|dammit|\bhell\b|shit|fuck|goddamn|crap|bloody|bitch)"),
     ("insult", r"混蛋|王八|杂种|混账|狗东西|畜生|贱人|婊子|废物|蠢货|傻[逼瓜]|笨蛋|白痴|垃圾(?![喷桶箱堆场袋])|窝囊废|人渣|狗娘|兔崽子|臭小鬼|臭丫头",
      r"\b(bastard|asshole|son of a bitch|scum|bitch|jerk|prick|swine|animal|beast|trash|garbage|loser|idiot|"
