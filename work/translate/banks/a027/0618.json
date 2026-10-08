@@ -426,18 +426,18 @@
   {
    "id": 50,
    "zh": "伦达『妈的,你这狗冠军鼻子挺灵啊,{NEWLINE}这么快就跟来了。",
-   "en": "Petrel: Dammit, you damn{NEWLINE}Champion have a good nose.{CLEAR}Tracked me down that fast.",
+   "en": "Petrel: Dammit, you Champion dog,{NEWLINE}you’ve got a good nose. Tracked me{CLEAR}down that fast.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV048: name: 狗冠军 dog insult restored to match the good-nose taunt (D-1914)"
   },
   {
    "id": 51,
    "zh": "{VAR:0103:0}『我懒得跟你废话,{NEWLINE}今天既然让我在这里遇到了,{CLEAR}你们就束手就禽吧！",
-   "en": "{VAR:0103:0}: I’m not wasting words{NEWLINE}on you. Now that I’ve run into you{CLEAR}here, you’re all going down quietly!",
+   "en": "{VAR:0103:0}: I’m not wasting words on you.{NEWLINE}Now that I’ve run into you here, you’d{CLEAR}all better come quietly!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV048: meaning: 束手就擒 = give up and be taken"
   },
   {
    "id": 52,

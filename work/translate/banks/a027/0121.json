@@ -350,10 +350,10 @@
   {
    "id": 43,
    "zh": "为了我的乔伊小姐！",
-   "en": "For my lovely Joy!",
+   "en": "For my Miss Joy!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV048: addition: 'lovely' not in zh; 我的乔伊小姐"
   },
   {
    "id": 44,
@@ -382,10 +382,10 @@
   {
    "id": 47,
    "zh": "对不起啊乔伊小姐,{NEWLINE}我无法继续战斗了。",
-   "en": "Sorry, Joy... I can’t keep fighting.",
+   "en": "Sorry, Miss Joy...{NEWLINE}I can’t keep fighting.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV048: omission: 小姐 kept, as the grunts address her"
   },
   {
    "id": 48,
@@ -406,10 +406,10 @@
   {
    "id": 50,
    "zh": "只要有乔伊小姐在,{NEWLINE}我们就是无敌的！",
-   "en": "As long as we’ve got{NEWLINE}Joy, we’re invincible!",
+   "en": "As long as we’ve got Miss Joy,{NEWLINE}we’re invincible!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV048: omission: 小姐 kept"
   },
   {
    "id": 51,
@@ -422,10 +422,10 @@
   {
    "id": 52,
    "zh": "米那君『可恶,这样下去就没完了。",
-   "en": "Eusine: Damn it, this could go on{NEWLINE}forever.",
+   "en": "Eusine: Curses,{NEWLINE}this could go on forever.",
    "status": "draft",
    "origin": "agent",
-   "notes": "tone review: 可恶 = 'Damn it' for an adult (D-0627)"
+   "notes": "tone review: 可恶 = 'Damn it' for an adult (D-0627) | RV048: voice: 可恶 chosen per line for theatrical, polite Eusine (D-2081)"
   },
   {
    "id": 53,
@@ -718,10 +718,10 @@
   {
    "id": 89,
    "zh": "乔伊『不,为了坂木大人,{NEWLINE}我不能在这倒下。",
-   "en": "Joy: No... For the boss’s{NEWLINE}sake, I can’t fall here.",
+   "en": "Joy: No... For Master Giovanni’s{NEWLINE}sake, I can’t fall here.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV048: name: 坂木大人 named"
   },
   {
    "id": 90,
@@ -814,10 +814,10 @@
   {
    "id": 101,
    "zh": "小豪『喂喂喂,我明明抓住了水君,{NEWLINE}它为什么会自己跑掉啊！",
-   "en": "Goh: Hey, hey, hey! I caught{NEWLINE}Suicune fair and square! Why{CLEAR}did it run off on its own?!",
+   "en": "Goh: Hey, hey, hey! I definitely caught{NEWLINE}Suicune! Why did it run off on its own?!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV048: addition: 'fair and square' not in zh (D-1660)"
   },
   {
    "id": 102,
@@ -926,10 +926,10 @@
   {
    "id": 115,
    "zh": "看到那边的白发老头了吗？{NEWLINE}我亲眼看到他在试图穿过{CLEAR}前面这条隧道时,{CLEAR}从一个黄毛小孩变成了一个白发老头！{SCROLL}这条隧道一定是被下了诅咒,{NEWLINE}任何试图穿过它的人{CLEAR}身上的时间都会被无情地夺走。{CLEAR}你如果不想死的话就离隧道远点。",
-   "en": "See that white-haired old man over{NEWLINE}there? I saw it with my own eyes. When{CLEAR}he tried to go through the tunnel up{CLEAR}ahead, he turned from a little blond{CLEAR}kid into a white-haired old man!{SCROLL}That tunnel must be cursed.{NEWLINE}It mercilessly steals the time of{CLEAR}anyone who tries to go through it.{SCROLL}If you don’t want to{NEWLINE}die, stay away from it.",
+   "en": "See that white-haired old man over{NEWLINE}there? I saw it with my own eyes. When{CLEAR}he tried to go through the tunnel up{CLEAR}ahead, he turned from a young{CLEAR}kid into a white-haired old man!{SCROLL}That tunnel must be cursed.{NEWLINE}It mercilessly steals the time of{CLEAR}anyone who tries to go through it.{SCROLL}If you don’t want to{NEWLINE}die, stay away from it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV048: meaning: 黄毛小孩 = young kid, not blond"
   },
   {
    "id": 116,
@@ -1120,10 +1120,10 @@
   {
    "id": 139,
    "zh": "根据我无数次的尝试,{NEWLINE}多利果这种树果里面有种成分{CLEAR}可以抵抗隧道诅咒对身体的伤害。{CLEAR}但天然的多利果有效成分含量太低,{CLEAR}必须要用大量多利果{CLEAR}提取出足够多的有效成分,{CLEAR}然后加上辅助原料{CLEAR}制成抗老化的喷雾喷遍全身,{CLEAR}才能在短时间内保证{CLEAR}不被隧道的老化诅咒影响。",
-   "en": "After countless attempts,{NEWLINE}I found that the Durin Berry{CLEAR}contains something that protects{CLEAR}the body from the tunnel’s curse.{SCROLL}But wild Durin Berries contain too{NEWLINE}little of it. You need a lot of Durin{CLEAR}Berries to extract enough of it.{SCROLL}Then you add other ingredients{NEWLINE}and make an anti-aging spray{CLEAR}to cover your whole body.{SCROLL}Only then are you safe from{NEWLINE}the tunnel’s aging curse,{CLEAR}and only for a short time.",
+   "en": "After countless attempts,{NEWLINE}I found that the Durin Berry{CLEAR}contains something that protects{CLEAR}the body from the tunnel’s curse.{SCROLL}But natural Durin Berries contain too{NEWLINE}little of it. You need a lot of Durin{CLEAR}Berries to extract enough of it.{SCROLL}Then you add other ingredients{NEWLINE}and make an anti-aging spray{CLEAR}to cover your whole body.{SCROLL}Only then are you safe from{NEWLINE}the tunnel’s aging curse,{CLEAR}and only for a short time.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV048: meaning: 天然 = natural, not wild (D-1661)"
   },
   {
    "id": 140,
@@ -1233,10 +1233,10 @@
   {
    "id": 153,
    "zh": "陷进冰里了,{NEWLINE}没法推……",
-   "en": "It has sunk in and cannot be moved.",
+   "en": "It’s sunk into the ice.{NEWLINE}It can’t be pushed...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0123/0"
+   "origin": "agent",
+   "notes": "US 0123/0 | RV048: omission: ice and push restored"
   },
   {
    "id": 154,
@@ -1345,10 +1345,10 @@
   {
    "id": 167,
    "zh": "喂！我说你们……{SCROLL}就这么过去了！？",
-   "en": "Hey! I said, you guys...{SCROLL}They just walked right through?!",
+   "en": "Hey! Hey, you guys...{SCROLL}You just walked right through?!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV048: meaning: 我说 is an interjection; he addresses them"
   },
   {
    "id": 168,
