@@ -1,8 +1,70 @@
-# Native text speed release candidate — 2026-10-05
+# Native text speed: release notes
+
+Status: final review of d115c71 passed. Gates and fault matrix are in [text_speed_release_checks.md](text_speed_release_checks.md); the frame rule is in [text_speed_vcount.md](text_speed_vcount.md). Everything below the "History (superseded)" heading describes earlier candidates and is kept as a record only.
+
+## What ships
+
+- **TEXT SPEED row.** Options gets a seventh row with NORMAL and FAST (D-1604). Stored value 1 is FAST; 0, 2 and 3 all read as NORMAL. Confirm writes 0 or 1. Existing saves read as NORMAL; new games start on FAST.
+
+  | Stored | Shown | Where it comes from |
+  | --- | --- | --- |
+  | 0 | NORMAL | every existing save, choosing NORMAL |
+  | 1 | FAST | new games, choosing FAST |
+  | 2, 3 | NORMAL | unreleased test saves, corrupt data |
+
+  Before the save is published (title screen, new-game intro) the payload has no Options record and uses NORMAL. Cancel keeps the stored value. Labels are project-authored in the existing English font (NORMAL at x 108, FAST at x 188).
+- **NORMAL** is the hack's original printer. **FAST** prints up to three letters per frame when the frame has room, never slower than NORMAL and never dropping more frames (measured frame rule, D-1601). Callback printers and printers with an explicit glyph delay keep their original pacing per task.
+- **30 fps printer catch-up (D-1603), at every setting.** In maps where the hack's game loop runs at 30 fps (most towns and routes), text printers get one extra turn per missed screen refresh. Text prints at vanilla FAST's one letter per frame instead of one per two frames (measured about 2.0 to about 1.0 frames per letter in Viridian, Route 30, Cherrygrove and Violet; vanilla US FAST 0.98). Side effect: pauses counted in printer turns (callback and explicit-delay printers, auto-advance waits) last vanilla length in those scenes, about half the hack's.
+- **Pokégear calls wait for A/B on every page**, also right after a battle (D-1600). The hack's battle code leaves auto-advance on (D-1599). Other text shown right after a battle may still auto-advance; D-1599 stays open for those.
+- **Anti-piracy bypass for real hardware (D-1616, D-1617).** Six overlay114 checks return the genuine-cartridge result. No change on emulators or genuine cartridges. Not tested on any real console or flashcart.
+- **Payload.** Native payload 1466 bytes, ITCM end `01FF8BE0`. The checked-in `payload.json` is compiled project code; Apple clang reproduces it, normal builds use the cached payload. Text speed is an optional English-community feature, a deliberate exception to D-1002 (D-1575).
+
+## Changes from the Chinese hack
+
+1. TEXT SPEED option (NORMAL / FAST) with FAST as the default for new games.
+2. 30 fps printer catch-up, and the shortened printer-turn pauses that come with it.
+3. Pokégear calls wait for A/B on every page, including right after a battle.
+4. Anti-piracy bypass (six overlay114 checks) for real hardware.
+
+## Downgrade warning
+
+Text speed shares the old 4-bit options field (bit 2; MUSIC SPEED keeps bits 0-1). A save made with this version and taken back to the Chinese hack or an older English patch may carry an unusual MUSIC SPEED value. Before downgrading, set TEXT SPEED to NORMAL and save. Old-save to new-ROM upgrades are the supported direction.
+
+## Known gaps and risks
+
+- Automated emulator gates ran in DeSmuME only for this build. The melonDS check could not run (macOS permissions), so there is no second-emulator pass.
+- No hardware test, of the text speed or of the anti-piracy bypass.
+- Not covered by gates: cutscenes, intro and credits, radio and TV, mail, the naming screen.
+- The frame rule was calibrated in DeSmuME only.
+- The short-history floor of the frame rule is verified by code path only, not by a run.
+- Other text right after a battle may still auto-advance (D-1599).
+
+## Evidence
+
+Final run at d115c71: `work/build/text-speed/rc4`. Full suite releasable; 664 unit tests; 25 faults detected; 1 dead-code finding. Details per gate are in [text_speed_release_checks.md](text_speed_release_checks.md).
+
+## Reproduce
+
+Run commands from the worktree root, with the existing Python environment that provides ndspy and py-desmume. No downloads are needed.
+
+```sh
+TEXT_SPEED_TEST_ROM=/path/to/existing-demand-loaded-English.nds python -m unittest work/tools/test_text_speed_patch.py work/tools/test_hardcoded.py work/tools/test_build_paths.py -v
+python work/tools/build.py --rom /path/to/origin_v4.0.3_cn.nds --base /path/to/HeartGold-USA.nds --extract /path/to/extract/v4 --work-dir work/build/text-speed/full-build --keep-export
+python work/research/text_speed/control_fixture.py work/build/text-speed/full-build/origin_hg_v4.0.3_en_wip.nds work/build/text-speed/control-fixture/game.nds
+```
+
+`native_probe.py OUT ROM SAVE 'commands'` runs an isolated emulator with screenshots and `report.json`; all output must be under this worktree's `work/build`. Useful commands are `fieldboot`, `boot`, `press A 1`, `wait 239`, `touch X Y`, `shot NAME`, `reset`. Use pauses between repeated key presses. The fixture replaces only bank 718 entry 160 in an ignored candidate, never a translation source. The saved trainer checkpoint faces that trainer. On this machine DeSmuME requires macOS app initialization outside the restricted sandbox.
+
+
+## History (superseded)
+
+Everything below is the record of earlier candidates (NORMAL / FAST / INSTANT, SLOW / MEDIUM / FAST, RC6) and is out of date where it disagrees with the sections above. The payload sizes and ITCM addresses in it are stale (current: 1466 bytes, ITCM end `01FF8BE0`). The guard rules under "Implementation and compatibility" still apply. The worktree it names, `/private/tmp/poke-text-speed-research`, no longer exists.
+
+## Native text speed release candidate — 2026-10-05
 
 Current revision: **NORMAL / FAST** (D-1604, 2026-10-07): see "Current design" below; gates and fault matrix in [text_speed_release_checks.md](text_speed_release_checks.md), frame rule in [text_speed_vcount.md](text_speed_vcount.md). The SLOW / MEDIUM / FAST revision ([text_speed_readable_rc6.md](text_speed_readable_rc6.md)) and the NORMAL / FAST / INSTANT candidate recorded further down are historical.
 
-## Current design (D-1604)
+### Current design (D-1604)
 
 - **TEXT SPEED** has two choices, **NORMAL** and **FAST**. NORMAL is the hack's original printer task (one glyph per printer turn, no batching) plus the 30 fps printer catch-up (D-1603), so text prints at the vanilla FAST rate (about one glyph per frame) in 60 fps and 30 fps maps. FAST batches up to three glyphs per printer task under the measured frame rule (D-1601), plus the catch-up. Callback-driven printers and printers with an explicit glyph delay use the original task at both speeds.
 - **Stored value** (bits 2-3 of the two-byte Options record; music speed keeps bits 0-1):
@@ -22,7 +84,7 @@ Current revision: **NORMAL / FAST** (D-1604, 2026-10-07): see "Current design" b
 
 Worktree: `/private/tmp/poke-text-speed-research`, branch `codex/text-speed-research`, base `0121c30`. This implements the earlier [feasibility research](text_speed_research.md). All ROMs, saves, screenshots, traces and patches remain ignored under `work/build/text-speed/`. Nothing was merged or published.
 
-## Player behavior
+### Player behavior
 
 Options has a seventh row: **TEXT SPEED — NORMAL / FAST / INSTANT**. NORMAL is the default for existing valid saves and new games and calls the original Chinese printer task. FAST batches up to three glyphs per task; INSTANT batches up to 128. Page prompts, scrolling and explicit timing controls still use the original renderer. INSTANT reveals a page promptly; it does not advance pages automatically. Callback-driven printers and printers with a nonzero explicit glyph delay keep original pacing in every mode.
 
@@ -30,7 +92,7 @@ The native menu supports buttons and touch, Confirm and Cancel. Existing font, p
 
 The RC4 demand-loading instruction at `0200BA9A` stays `0125`. Loading one requested message and rendering glyphs are separate operations; the feature does not restore whole-bank loading.
 
-## Implementation and compatibility
+### Implementation and compatibility
 
 Historical: the first three bullets were updated on 2026-10-06 to match the SLOW / MEDIUM / FAST code of that day (superseded by D-1604, see "Current design" above; the guard rules they describe still apply). The rest of this document, including the validation evidence, describes the superseded NORMAL / FAST / INSTANT candidate.
 
@@ -51,7 +113,7 @@ Historical: the first three bullets were updated on 2026-10-06 to match the SLOW
 
 `build.py` enables the feature after hardcoded patches; `--no-text-speed` omits it. `--no-hardcoded` also omits it because demand loading is a prerequisite. The build verifies hardcoded edits before composing the patch, retains that stage's hashes, then checks all hardcoded strings/pointers/instructions and final hashes after writing. Native payload, final ARM9, Options data/layout and the demand-loading instruction are checked separately. Xdelta is reapplied and compared byte-for-byte through the build's hash check.
 
-## Validation completed
+### Validation completed
 
 Artifact: `work/build/text-speed/full-build/origin_hg_v4.0.3_en_wip.nds`
 
@@ -74,18 +136,8 @@ Distribution candidate: `work/build/text-speed/full-build/Origin_HeartGold_v4.0.
 
 Runtime instrumentation is read-only: it records constructors, glyphs, menu state and heap checks. The native tests do not use register-changing acceleration hooks. Earlier native-v1/v3 experiments found menu pointer/metadata mistakes; they were corrected before native-v5 and are not release evidence. The exploratory `probe.py` remains historical only.
 
-## Reproduce
 
-Run commands from the worktree root, with the existing Python environment that provides ndspy and py-desmume. No downloads are needed.
-
-```sh
-TEXT_SPEED_TEST_ROM=/path/to/existing-demand-loaded-English.nds python -m unittest work/tools/test_text_speed_patch.py work/tools/test_hardcoded.py work/tools/test_build_paths.py -v
-python work/tools/build.py --rom /path/to/origin_v4.0.3_cn.nds --base /path/to/HeartGold-USA.nds --extract /path/to/extract/v4 --work-dir work/build/text-speed/full-build --keep-export
-python work/research/text_speed/control_fixture.py work/build/text-speed/full-build/origin_hg_v4.0.3_en_wip.nds work/build/text-speed/control-fixture/game.nds
-```
-
-`native_probe.py OUT ROM SAVE 'commands'` runs an isolated emulator with screenshots and `report.json`; all output must be under this worktree's `work/build`. Useful commands are `fieldboot`, `boot`, `press A 1`, `wait 239`, `touch X Y`, `shot NAME`, `reset`. Use pauses between repeated key presses. The fixture replaces only bank 718 entry 160 in an ignored candidate, never a translation source. The saved trainer checkpoint faces that trainer. On this machine DeSmuME requires macOS app initialization outside the restricted sandbox.
-
-## Release sign-off still required
+### Release sign-off still required
 
 This is a tested native release candidate, not a claim of universal hardware validation. Before publishing, play-test on the target DS/flashcart and a second emulator, including held A/B, long sessions, wild/double battles, battle endings and unusual sound/callback-driven dialogue. Callback and explicit-delay text deliberately retains original timing. Save downgrade compatibility has the limitation above. No hardware or second-emulator result is implied by the DeSmuME checks. melonDS is installed locally, but its independent UI check could not proceed: computer-use reported pending macOS Accessibility/Screen Recording permissions, and the retry timed out. No second-emulator pass is claimed.
+

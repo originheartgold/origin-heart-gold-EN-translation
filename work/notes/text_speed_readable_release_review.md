@@ -1,3 +1,5 @@
+> Superseded — historical record; see text_speed_release.md
+
 # Independent high-effort review: readable text speeds
 
 Reviewed 2026-10-06 in `/private/tmp/poke-text-speed-research`, branch

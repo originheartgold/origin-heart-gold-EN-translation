@@ -1,3 +1,5 @@
+> Superseded — historical record; see text_speed_release.md
+
 # Readable text speeds — RC6 WIP revision, 2026-10-06
 
 This revision supersedes NORMAL / FAST / INSTANT from the previous RC6 WIP.

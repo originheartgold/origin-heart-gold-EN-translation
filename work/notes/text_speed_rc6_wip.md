@@ -1,3 +1,5 @@
+> Superseded — historical record; see text_speed_release.md
+
 # WIP RC6 device/playthrough candidate — 2026-10-05
 
 Current revision: [SLOW / MEDIUM / FAST](text_speed_readable_rc6.md). This document records the earlier candidate.

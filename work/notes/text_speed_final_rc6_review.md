@@ -1,3 +1,5 @@
+> Superseded — historical record; see text_speed_release.md
+
 # Final independent high-effort review for WIP RC6
 
 Reviewed 2026-10-05 in `/private/tmp/poke-text-speed-research`.
