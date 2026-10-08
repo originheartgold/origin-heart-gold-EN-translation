@@ -30,6 +30,7 @@ evidence = [
   "In-game: work/build/screens/hardcoded_*.png (local): English labels, cursor works, OK leads to the naming screen",
   "work/tools/test_hardcoded.py: the scan finds exactly these 4 strings; test_asmpatch.py: the assembled overlay (golden SHA-1) and verify",
   "CHANGELOG.md v1.0.0: 'Hardcoded text outside the archives (the outfit chooser in overlay 58) is translated.'",
+  "Runtime: emu_harness.py fixes --case outfit-chooser-strings (scenario newgame: the list strings the outfit chooser reads; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[grow]]

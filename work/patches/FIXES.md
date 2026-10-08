@@ -77,6 +77,7 @@ glyph changes. build.py --glyph-fonts can narrow the font list; the verify step 
 - work/notes/integrity_audit_text.md: fonts row (only 01AF/01B4/01B5 differ from the hack)
 - work/tools/qa.py: needs_vanilla_glyphs warning
 - CHANGELOG.md v1.0.0: 'Restored the US glyphs for … “ ”, which the hack had widened to 12 px.'
+- Runtime: emu_harness.py fixes --case font-glyphs (scenario font: the widths of … “ ” in the font width tables the game holds in RAM; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -397,6 +398,7 @@ leaves the Japanese かな tab label over the ABC page and ＡＢＣ over QWE.
 - work/notes/graphics_inventory.md: row 14
 - work/notes/hardcoded_text.md: 'Naming keyboard (English)'
 - work/build/screens/naming_fix_*.png (local)
+- Runtime: emu_harness.py fixes --case gfx-naming-tabs (scenario naming: the keyboard tabs crop differs from the Chinese ROM's; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -536,6 +538,7 @@ slots 150/240, which no title or intro graphic uses (gfx.py make-title-subtitle)
 
 - work/notes/graphics_inventory.md: row 11
 - CHANGELOG.md v1.0.0: 'Bilingual title screen: the original 起源心金 logo with an "Origin HeartGold" subtitle in the game's own font.'
+- Runtime: emu_harness.py fixes --case gfx-title-subtitle (scenario newgame: the title screen crop under the logo differs from the Chinese ROM's; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -606,6 +609,7 @@ pink palette row (#74 row 2, idx 10-12) and takes the tiles of hg-engine's FAIRY
 - work/notes/graphics_inventory.md: rows 1-2
 - work/graphics/CREDITS.md: hg-engine source, commit and licence
 - CHANGELOG.md v1.0.0: 'English type icons for battle, the summary screen and the move relearner. The FAIRY icon comes from hg-engine.'
+- Runtime: emu_harness.py fixes --case gfx-type-icons (scenario ivev: the summary type icon crop differs from the Chinese ROM's; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -727,6 +731,7 @@ in the grown range.
 - In-game: work/build/screens/hardcoded_*.png (local): English labels, cursor works, OK leads to the naming screen
 - work/tools/test_hardcoded.py: the scan finds exactly these 4 strings; test_asmpatch.py: the assembled overlay (golden SHA-1) and verify
 - CHANGELOG.md v1.0.0: 'Hardcoded text outside the archives (the outfit chooser in overlay 58) is translated.'
+- Runtime: emu_harness.py fixes --case outfit-chooser-strings (scenario newgame: the list strings the outfit chooser reads; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -852,6 +857,7 @@ Nothing else on the screen changes.
 
 - D-1511 (emulator, 2026-10-05): 'Charmeleon' in full before the gender icon, rest of the box screen unchanged; screens work/build/harness/hunt_ui/box_party_pair.png (local)
 - git e18d0f9 'Fix increment 4: Pokédex button/header graphics pipeline, PC box name window'
+- Runtime: emu_harness.py fixes --case pcbox-name-width (scenario pcbox: the name window template and the text pixels of its 8th tile; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -980,6 +986,7 @@ of the Bradams 'Speedoption' build, which runs on New 2DS XL.
 - D-1616 (real-hardware support built into the single English patch) and D-1617 (bypass vs fidelity, D-1002/D-1337), both accepted
 - work/notes/hardware_support.md: checks, the six entry points and their genuine-cart values (DeSmuME), the 18 call sites, the punishments, why loaders do not fix it
 - git 177cffe 'Code: built-in anti-piracy bypass for real hardware (D-1616, D-1617)': reviewed statically and in DeSmuME (polarity measured, emulator-check failure simulated); not yet run on real hardware
+- Runtime: emu_harness.py fixes --case antipiracy (scenario antipiracy: the six entries' calls, return values and whether the check bodies run; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -1079,6 +1086,7 @@ New: 'movs r2, #0x1A' -> 'movs r2, #0x20' at 0x0208C262 moves the IV column 6 px
 
 - D-1574: emu_harness.py vqueue --case buttons, work/build/harness/verifyqueue/en/buttons_m*_L.png (local)
 - git c7d2c29 'Code: summary IV/EV panel IV column clears the English stat labels (D-1574)'
+- Runtime: emu_harness.py fixes --case ivev-panel (scenario ivev: the x of the IV numbers and header, and the IV/EV column distance on screen; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -1167,6 +1175,7 @@ Spare room: summary 208 -> 10,376 bytes, bag 108 -> 55,540.
 - work/notes/heap_audit.md: crash class, fix and results table
 - work/tools/memcheck.py run, scenarios summary, summary_full, bag, bag_full (work/tools/memcheck_scenarios.json): no failed allocation, no heap below 4 KB more than 256 bytes under the Chinese figure
 - CHANGELOG.md v1.0.0-rc4: 'Crash when switching Pokémon on the summary screen's skills page, and a bag that was 108 bytes from the same crash.'
+- Runtime: emu_harness.py fixes --case msgload (scenario msgload: memcheck.py's summary scenario; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -1294,6 +1303,7 @@ the hack removed that prompt (D-1040). Default names (bank 0247) are 5 character
 - work/notes/hardcoded_text.md: 'Name lengths' (call-site table, default names)
 - In-game check by the user in melonDS: 7-character trainer names, 10-character nicknames (D-0858)
 - CHANGELOG.md v1.0.0: 'Name lengths restored to US limits: 7 characters for trainers, 10 for Pokémon'
+- Runtime: emu_harness.py fixes --case namelen (scenario naming: maxLen of the script naming calls and the length of a typed player name and nickname; scenario newgame: maxLen of Oak's speech calls; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -1461,6 +1471,7 @@ the ABC page and ＡＢＣ over the QWE page.
 - work/notes/hardcoded_text.md: 'Naming keyboard (English)'
 - DeSmuME check: work/build/screens/naming_fix_*.png (local): opens on ABC, every tab types, the dialogue shows 'Your name is An1zQ5!?'
 - CHANGELOG.md v1.0.0: 'Naming keyboard: the Chinese pinyin input is removed, and the keyboard opens on ABC. The tabs are ABC / abc / QWE / 1♪.'
+- Runtime: emu_harness.py fixes --case naming-keyboard (scenario naming: the first key types 'A' and the pinyin IME path never runs; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -1715,6 +1726,7 @@ being bound to texture parameters read from address 0.
 - work/notes/rocket_hq_freeze_fix_20261008.md: the resources, the branch, its semantics and the before/after runs
 - work/notes/five_island_freeze_20261008.md, texture_additional_repro_20261008.md: the same abort at Five Island and Seven Island, fixed by the same byte
 - work/notes/texture_regression_integration_20261008.md: emu_harness.py texture-bounds, 4 cases x original/fixed x Chinese/rc5, all 16 pass; Bell Tower is a forced state (hide flag 1140 cleared), reachability in normal play unproven
+- Runtime: emu_harness.py fixes --case overworld-texture-frame-bounds (scenario texture-bounds: the four texture-bounds cases; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -1898,6 +1910,7 @@ writing, text_speed_patch.verify checks the runtime contract again.
 - work/notes/text_speed_vcount.md: the frame rule
 - release candidate codex/text-speed-research fb5fa7e: full gate suite releasable and 25 faults detected (run rc4, ROM sha256 91cc299e...)
 - CHANGELOG.md [Unreleased]: TEXT SPEED row, 30 fps catch-up, Pokégear calls wait for A or B
+- Runtime: emu_harness.py fixes --case text-speed (scenario textspeed: frames until a field message page is complete at NORMAL and FAST; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 

@@ -29,6 +29,7 @@ evidence = [
   "work/notes/heap_audit.md: crash class, fix and results table",
   "work/tools/memcheck.py run, scenarios summary, summary_full, bag, bag_full (work/tools/memcheck_scenarios.json): no failed allocation, no heap below 4 KB more than 256 bytes under the Chinese figure",
   "CHANGELOG.md v1.0.0-rc4: 'Crash when switching Pokémon on the summary screen's skills page, and a bag that was 108 bytes from the same crash.'",
+  "Runtime: emu_harness.py fixes --case msgload (scenario msgload: memcheck.py's summary scenario; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[code]]

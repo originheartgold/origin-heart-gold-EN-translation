@@ -40,6 +40,7 @@ evidence = [
   "work/notes/text_speed_vcount.md: the frame rule",
   "release candidate codex/text-speed-research fb5fa7e: full gate suite releasable and 25 faults detected (run rc4, ROM sha256 91cc299e...)",
   "CHANGELOG.md [Unreleased]: TEXT SPEED row, 30 fps catch-up, Pokégear calls wait for A or B",
+  "Runtime: emu_harness.py fixes --case text-speed (scenario textspeed: frames until a field message page is complete at NORMAL and FAST; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [native]

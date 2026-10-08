@@ -33,6 +33,7 @@ of the main checkout (also when run from an agent worktree).
     .venv/bin/python work/tools/emu_harness.py sweeps --sweep trainers|desc|battle [--ids ...] [--lang cn|en|both] [--jobs 6] [--rejudge]   # text read-back, see 12
     .venv/bin/python work/tools/emu_harness.py open [--case arceus,thief,rockruff,primal,palpark[:variant+...]] [--lang cn|en|both]   # open points, see 13
     .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty,guide0107,guide0813,calendar,hackbugs,verify,sweeps,open] [--jobs 4]
+    .venv/bin/python work/tools/emu_harness.py fixes --rom EN.nds --controls DIR --build-controls [--case all]   # one scenario per fix, see 'Fix scenarios'
     .venv/bin/python work/tools/emu_harness.py cleanup [--kill [--all]]                   # leftover harness processes
     python3 -m unittest discover -s work/tools -p test_emu_harness.py      # pure parts, no ROM needed
 
@@ -1031,3 +1032,73 @@ cases; it does not claim to complete each location's story prerequisite. Bell To
 visibility setup for the supplied saves. The ROM and original battery file are never intentionally
 edited or exported over. This checks the shared bounds guard across four known failing resources;
 it does not replace end-to-end story playthroughs or reproduce the full reporter's travel route.
+
+## Fix scenarios (`emu_harness.py fixes`, `emu_fixes.py`, 2026-10-08)
+
+One scenario per fix in `work/patches`: it plays the screen the fix changes and records what the game did
+there. A fix counts as proven only by a pair of runs: on a normal build the scenario must classify the fix as
+`fixed`, and on a control build without it (`build.py --no-patch --without <fix>[,<fixes that require it>]`)
+as `original`, the Chinese hack's behaviour. A scenario that passes on both builds proves nothing, so the
+control is part of every check. Graphics fixes are judged against the untouched Chinese ROM (an extra
+`cn` run): the crop must differ from the Chinese ROM's on the build and equal it on the control.
+
+    .venv/bin/python work/tools/emu_harness.py fixes --rom work/build/check/origin_hg_v4.0.3_en_wip.nds \
+        --controls work/build/fixes-controls --build-controls [--case all|<scenario>|<fix id>,...] \
+        [--sav-dir work/build/memcheck] [--out DIR] [--jobs 3]
+    .venv/bin/python work/tools/check.py --full --emu [--emu-saves DIR]   # the same after the full build, controls rebuilt
+    python3 -m unittest work/tools/test_emu_fixes.py                     # coverage, addresses, judges; no emulator
+
+`--build-controls` builds the missing control ROMs (about 7 s each), `--rebuild-controls` all of them: a
+control from an older tree proves nothing. A control drops the fix and every fix that `requires` it, in one
+comma-separated `--without` (build.py keeps only the last of repeated `--without` options). The report
+(`fixes_report.json`) has one row per fix with the state and the evidence on both ROMs, every observation, the
+ROM hashes and what each control left out. Each fix's fix.toml evidence points at its scenario
+(`Runtime: emu_harness.py fixes --case <fix>`); `test_emu_fixes.py` keeps that, the coverage list and the
+hooked addresses (checked against each fix's `[[code]]` regions and `overlays.toml`) in step.
+
+| Fix | Scenario | What is observed | Build (fixed) | Control (original) |
+|---|---|---|---|---|
+| namelen | naming | Script commands NamePlayer, NameRival and NicknameInput (party slot 0) in the field; maxLen (r3) of each naming call by call site; A until the screen closes, then the stored name | maxLen 7 / 7 / 10; 'AAAAAAA', 'AAAAAAAAAA' | maxLen 5 / 5 / 5; 'AAAAA', 'AAAAA' |
+| namelen | newgame | Blank battery, New Game: maxLen of Oak's speech calls (player, rival) | 7 / 7 | 5 / 5 |
+| naming-keyboard | naming | Runs of the pinyin IME path (the instruction after the patched branch); the code the first key types | 0 runs, 0x012B 'A' | 24 runs, 0x01DE (blank candidate key) |
+| gfx-naming-tabs | naming | Keyboard tabs crop vs the Chinese ROM | differs | identical |
+| outfit-chooser-strings | newgame | Overlay 58's list pointers and the strings the game reads while building the list (read watch) | Outfit 1 / 2 / 3, OK | the four Chinese strings in their original slots |
+| gfx-title-subtitle | newgame | Title screen crop under the logo vs the Chinese ROM | differs | identical |
+| pcbox-name-width | pcbox | Cherrygrove Pokémon Center PC (std script 2010) → box screen: the name window template and text pixels in its 8th tile (Charmeleon) | width 8, text in x 120-127 | width 7, none |
+| ivev-panel | ivev | Summary skills page, L: x of the IV numbers and header (hooked), the IV/EV right-edge distance per stat row on screen | 0x20 / 0x28; 31-33 px | 0x1A / 0x22; 37-39 px |
+| gfx-type-icons | ivev | First move's type icon crop vs the Chinese ROM | differs | identical |
+| antipiracy | antipiracy | Continue, field, bag, party: every call of the six DS Protect entries, the bytes there, whether the check body runs, the value returned | all six reached, stubs, bodies never run, genuine values | bodies run on every call, the same values (DeSmuME passes the checks) |
+| font-glyphs | font | Widths of … “ ” in the font width tables the field holds in RAM (fonts 0, 1, 4) | 6 / 6 / 7 | 12 / 12 / 13 |
+| text-speed | textspeed | Message 457#123 at NORMAL and FAST (Options bits 2-3): frames until the window's text stops changing | 28 / 8 frames | 29 / 30 frames (the setting does nothing) |
+| msgload | msgload | memcheck.py's `summary` scenario (switch Pokémon on every summary page) | passed | allocation failure on heap 19 (6448 bytes), null write: the rc3 crash |
+| overworld-texture-frame-bounds | texture-bounds | The four `texture-bounds` cases, `--expect fixed` on the build, `--expect original` on the control | all 4 pass | all 4 reproduce the null load |
+
+Result (observed 2026-10-08, branch hardening/emu, build of `develop` aab6efb plus this work, saves copied from
+`work/build/memcheck/`): all 14 fix/scenario pairs pass (also through `check.py --full --emu`: the emu step
+took 268 s with the 13 control builds). 26 runs (22 scenario sessions, 2 memcheck runs, which
+also run the Chinese ROM, and 2 texture-bounds runs) took 2 min 47 s with `--jobs 3`: a session 12-25 s,
+memcheck 40-45 s. The 13 control builds took about 7 s each.
+
+Not covered (`emu_fixes.UNCOVERED`): the graphics fixes gfx-bag-labels, gfx-battle-panel-labels,
+gfx-battle-result-labels, gfx-battle-status-icons, gfx-dex-header, gfx-dex-type-badges, gfx-jp-buttons,
+gfx-linkcapture-bar, gfx-pokeathlon, gfx-pokegear-calendar, gfx-summary-labels, gfx-trainer-card,
+gfx-weather-banners and gfx-yes-no-buttons. Each would be one more crop against the Chinese ROM on a screen a
+recipe already reaches (bag, Pokégear, trainer card, summary pages, a battle in weather); the battle result
+labels, the Chain Logger bar and the Pokéathlon need recipes that do not exist.
+
+Limits:
+
+- A crop that differs from the Chinese ROM's shows that the fix's graphic is on screen, not that it looks
+  right; that stays a human review of the saved crops (`*_crop.png`).
+- namelen: five of the eight call sites run (the script player, rival and nickname calls, Oak's player and
+  rival). The egg hatch, group name and naming kind 7 sites are not reached.
+- antipiracy: DeSmuME passes the checks, so both builds return the genuine values; the scenario proves that the
+  stubs replace the check bodies, not the effect on a flashcart (work/notes/hardware_support.md).
+- font-glyphs: the glyph bitmaps are streamed from the ROM and not checked here; the widths are what the
+  printer advances by.
+- text-speed: one message at 60 fps, a smoke check. The release evidence stays the text-speed gate suite
+  (work/notes/text_speed_harness.md, text_speed_release_checks.md).
+- msgload: only the summary crash. The bag scenarios do not fail on the control (memcheck `bag`, `bag_full` on
+  the build without msgload: passed, heap 6 with 112 and 2984 bytes to spare, warnings only), so the bag half
+  of the fix is shown by memcheck's headroom figures, not by a crash.
+

@@ -17,6 +17,8 @@
                                                (a release)
     python3 work/tools/check.py --full --update-expected
                                                record the full build's hashes in work/patches/expected.toml
+    python3 work/tools/check.py --full --emu   also: one emulator scenario per fix on the build and on a control
+                                               build without that fix (emu_harness.py fixes; about 4 min)
 
 Fast (the default, also the pre-commit hook and CI; about 6 s) needs no ROM, and armips only for asm-synth:
   registry   fixes.py check: fix.toml schema, regions, overlaps, `.open` lines, `.string` = en, and the asm
@@ -53,6 +55,13 @@ Full adds (and fails when armips v0.11.0, the two ROMs or xdelta3 are missing; a
              (without its paths) must be byte-identical; a ROM difference is listed by NDS part (arm9, overlay
              N, file path). When the second build's Python does not get a non-UTF-8 encoding (the locale is not
              installed), a note says the locale axis was not tested.
+
+--emu adds (needs py-desmume in this Python, i.e. the harness venv, and the battery saves of --emu-saves):
+  emu        emu_harness.py fixes (emu_fixes.py) on the build's ROM: each covered fix's scenario must show the
+             fix ('fixed') on it and the hack's behaviour ('original') on a control ROM built here without that
+             fix (build.py --no-patch --without <fix>[,<fixes that require it>], rebuilt every run into
+             <work-dir>-emu/controls). The fixes without a scenario are listed in emu_fixes.UNCOVERED. Not part of
+             --full by default: it runs 26 emulator runs (3 at a time) plus 13 control builds, about 4-5 min.
 
 Exit status 0 only when no step failed. Each step prints PASS / FAIL / SKIP with its time.
 """
@@ -480,6 +489,42 @@ def locale_note(env) -> str:
     return ""
 
 
+EMU_SAVES = ("full_bag_6mons.sav", "route1_path_2mons.sav")     # what emu_fixes' scenarios import
+
+
+def step_emu(armips, first: dict, work_dir, saves) -> str:
+    """emu_harness.py fixes on the full build's ROM, with every control ROM rebuilt from this tree."""
+    if "report" not in first:
+        raise Skip("no build to test (the build step failed)", fail=True)
+    probe = subprocess.run([sys.executable, "-c", "import desmume.emulator, PIL"], capture_output=True, text=True)
+    if probe.returncode:
+        raise Skip(f"--emu needs py-desmume and pillow in {sys.executable} (the emulator harness's venv)", fail=True)
+    missing = [n for n in EMU_SAVES if not (Path(saves) / n).is_file()]
+    if missing:
+        raise Skip(f"--emu needs the battery saves {', '.join(missing)} in {saves} (--emu-saves)", fail=True)
+    emu_dir = Path(work_dir).with_name(Path(work_dir).name + "-emu")
+    out = emu_dir / time.strftime("run-%Y%m%dT%H%M%S")
+    log = emu_dir / "emu.log"
+    emu_dir.mkdir(parents=True, exist_ok=True)
+    with open(log, "w", encoding="utf-8") as f:
+        r = subprocess.run([sys.executable, str(TOOLS / "emu_harness.py"), "fixes",
+                            "--rom", first["report"]["rom"]["path"], "--controls", str(emu_dir / "controls"),
+                            "--rebuild-controls", "--armips", armips, "--sav-dir", str(saves), "--out", str(out)],
+                           cwd=REPO, stdout=f, stderr=subprocess.STDOUT)
+    try:
+        report = json.loads((out / "fixes_report.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        raise Failed(f"emu_harness.py fixes failed (exit {r.returncode}) without a report; log: {log}") from None
+    lines = [f"{'ok  ' if row['pass'] else 'FAIL'} {row['fix']} ({row['scenario']}): fixed ROM "
+             f"{row['fixed_rom'].get('state')}, control {row['control'].get('state')}" for row in report["fixes"]]
+    lines.append(f"no scenario: {', '.join(sorted(report['uncovered']))}")
+    passed = sum(row["pass"] for row in report["fixes"])
+    head = f"{passed}/{len(report['fixes'])} fix scenarios in {report['seconds']:.0f} s"
+    if r.returncode or not report["pass"]:
+        raise Failed("\n".join([head + f"; report {out / 'fixes_report.json'}"] + lines))
+    return "\n".join([head + f"; report {out / 'fixes_report.json'}"] + lines)
+
+
 def step_repro(armips, first: dict, work_dir, env=None) -> str:
     """The native payload from source with the pinned clang, then a second build in another folder, under other
     file names, working directory and environment: the ROM, xdelta and report must equal the first build's."""
@@ -598,9 +643,14 @@ def main(argv=None) -> int:
     ap.add_argument("--repro", action="store_true",
                     help="with --full: recompile the native payload with the pinned clang and build a second time "
                          "(another folder, names, cwd and environment); both builds must be byte-identical")
+    ap.add_argument("--emu", action="store_true",
+                    help="with --full: one emulator scenario per fix on the build and on control builds without "
+                         "it (emu_harness.py fixes; needs py-desmume; about 4 min)")
+    ap.add_argument("--emu-saves", default=str(WORK / "build" / "memcheck"),
+                    help="folder with the battery saves the --emu scenarios import (read only)")
     a = ap.parse_args(argv)
-    if (a.update_expected or a.strict_release or a.repro) and not a.full:
-        ap.error("--update-expected, --strict-release and --repro need --full")
+    if (a.update_expected or a.strict_release or a.repro or a.emu) and not a.full:
+        ap.error("--update-expected, --strict-release, --repro and --emu need --full")
     repro = a.repro or a.strict_release
     # build.py runs with cwd=REPO (the repro build elsewhere): a relative --work-dir is relative to the repo root
     work_dir = Path(a.work_dir) if Path(a.work_dir).is_absolute() else REPO / a.work_dir
@@ -643,6 +693,8 @@ def main(argv=None) -> int:
     if repro:
         steps.append(("repro", need(lambda p: step_repro(p, first, work_dir.with_name(work_dir.name + "-repro"),
                                                          env=REPRO_ENVS[1]))))
+    if a.emu:
+        steps.append(("emu", need(lambda p: step_emu(p, first, work_dir, a.emu_saves))))
     return run(steps)
 
 
