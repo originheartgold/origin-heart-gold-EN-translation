@@ -1510,10 +1510,10 @@
   {
    "id": 188,
    "zh": "小赤『看到{VAR:0103:0}你和小绿{NEWLINE}都要在决赛加油啊,{CLEAR}好不负咱们真新镇训练家之名！",
-   "en": "Red: {VAR:0103:0}, you and Blue had both{NEWLINE}better give it your all in the finals!{SCROLL}Do our Pallet Town name proud!",
+   "en": "Red: {VAR:0103:0}, you and Blue had both{NEWLINE}better give it your all in the finals!{SCROLL}Do us Pallet Town Trainers proud!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV025: omission: 真新镇训练家之名: ‘Trainers’ restored"
   },
   {
    "id": 189,

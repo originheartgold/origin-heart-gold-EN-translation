@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "{VAR:0103:0}『等等{SCROLL}你现在是要去挑战精灵联盟？{SCROLL}但是……{NEWLINE}你还是放弃吧。{SCROLL}那是因为我培育变强的精灵,{CLEAR}这次会将你们打倒的！{SCROLL}来吧,就在这里！{NEWLINE}和我一决胜负吧！{SCROLL}",
-   "en": "{VAR:0103:0}: Hold it.{SCROLL}You’re going to take the{NEWLINE}Pokémon League challenge now?{SCROLL}You’ll have to give up on that.{SCROLL}My well-trained-beyond-recognition{NEWLINE}Pokémon are going to pound you.{SCROLL}Right now, right here!{NEWLINE}I challenge you!{SCROLL}",
+   "en": "{VAR:0103:0}: Hold it.{SCROLL}You’re going to take on the{NEWLINE}Pokémon League now?{SCROLL}But... you’d better give up.{SCROLL}Because the Pokémon I’ve trained to be{NEWLINE}stronger will beat you all this time!{SCROLL}Come on, right here!{NEWLINE}Let’s settle this!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0522/3"
+   "origin": "agent",
+   "notes": "US 0522/3 | RV025: meaning: US line replaced: zh says trained-stronger Pokémon, no ‘beyond recognition’ (D-1881)"
   },
   {
    "id": 4,
@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "平均胜利数",
-   "en": "AVG WIN{NEWLINE}STREAK",
+   "en": "AVG WINS",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0522/25"
+   "origin": "agent",
+   "notes": "US 0522/25 | RV025: meaning: 平均胜利数 = average wins, not streak (D-1881)"
   },
   {
    "id": 26,
@@ -286,10 +286,10 @@
   {
    "id": 35,
    "zh": "小豪『哟,这不那个卑鄙的冠军吗？{NEWLINE}真没想到你居然能{CLEAR}穿过层层阻碍来到这里。",
-   "en": "Goh: Yo, if it isn’t that dirty, cheating{NEWLINE}Champion.{SCROLL}Never thought you’d actually make it{NEWLINE}past all those obstacles.",
+   "en": "Goh: Yo, if it isn’t that{NEWLINE}despicable Champion.{SCROLL}Never thought you’d actually make it{NEWLINE}past all those obstacles.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV025: addition: 卑鄙 = despicable; ‘cheating’ was added (D-1881)"
   },
   {
    "id": 36,

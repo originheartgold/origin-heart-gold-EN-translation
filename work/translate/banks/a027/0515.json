@@ -238,10 +238,10 @@
   {
    "id": 28,
    "zh": "水吾桐『骑拉帝纳在山洞布置陷阱{NEWLINE}已经出了不少力,{CLEAR}现在没有力气也很正常。{CLEAR}看我用体力充沛的盖欧卡,{CLEAR}让这个该死之人淹没在永恒的暴雨中！",
-   "en": "Archie: Giratina used up a lot of its{NEWLINE}strength setting traps in the cave.{SCROLL}No wonder it’s spent now.{SCROLL}Watch me use Kyogre, still full of{NEWLINE}energy, to drown this damned brat in an{CLEAR}eternal downpour!",
+   "en": "Archie: Giratina used up a lot of its{NEWLINE}strength setting traps in the cave.{SCROLL}No wonder it’s spent now.{SCROLL}Watch me use Kyogre, still full of{NEWLINE}energy, to drown this damned wretch{CLEAR}in an eternal downpour!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV025: addition: 该死之人: ‘brat’ added a youth jab; ‘wretch’"
   },
   {
    "id": 29,
@@ -294,10 +294,10 @@
   {
    "id": 35,
    "zh": "水吾桐『让你看看盖欧卡{NEWLINE}永恒之雨的恐怖！",
-   "en": "Archie: Behold the terror of Kyogre’s{NEWLINE}eternal rain!",
+   "en": "Archie: Behold the terror of Kyogre’s{NEWLINE}Endless Rain!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV025: name: 永恒之雨 is the glossary ability Endless Rain"
   },
   {
    "id": 36,
