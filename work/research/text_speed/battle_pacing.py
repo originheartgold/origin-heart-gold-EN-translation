@@ -292,7 +292,7 @@ def child(args, trainer):
                         warm = checks.warm_costs(tasks)
                         row['record'] = checks.speed_record(
                             tasks, [(row['glyphs'][0][1], last)],
-                            sorted(warm)[len(warm) // 2] if warm else checks.GLYPH_SEED)
+                            sorted(warm)[len(warm) // 2] if warm else checks.GLYPH_SEED * 34)
                         tag = f"segment {segment} {checks.NAMES[mode]} {row['text'][:30]!r}"
                         errors.extend(f'{tag}: {e}' for e in cadence_errors + stop_errors)
                         if row.get('pixels') is None:

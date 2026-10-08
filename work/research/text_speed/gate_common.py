@@ -200,7 +200,7 @@ def judge_message(trace, mode, mark, task_mark, pages=None):
     pages = pages or page_ranges([f for _, f in glyphs])
     warm = checks.warm_costs(tasks)
     cost = statistics.median(warm) if warm else None
-    record = checks.speed_record(tasks, pages, cost if cost is not None else checks.GLYPH_SEED)
+    record = checks.speed_record(tasks, pages, cost if cost is not None else checks.GLYPH_SEED * 34)
     record.update(warm_cost=cost, glyphs=len(glyphs), page_spans=[b - a for a, b in pages])
     return record, summary, errors
 
@@ -306,6 +306,8 @@ FRAME_END_CALL = 0x02000DE0    # the game loop's 'bl' that the payload redirects
 FRAME_END_RETURN = 0x02000DE4  # the instruction after it
 TICK_TIMER = 0x04000100        # timer 0 counter: the SDK's OS tick timer (OS_InitTick: prescaler 64, running)
 TICK_TIMER_CONTROL = 0x04000102
+VISIBLE_LINE = 192
+IRQ_ENABLE, IRQ_FLAGS = 0x04000210, 0x04000214
 IRQ_VECTOR = 0x027E3FFC        # DTCM + 0x3FFC: the interrupt handler the BIOS calls (the SDK's OS_IrqHandler)
 
 
@@ -334,13 +336,23 @@ class PrinterTrace:
     Printer catch-up (D-1603): pass_end's own reading after frame_end gives the model's
     (late, catch_up) decision, recorded in catchups as [frame, line, late, catch_up, tasks
     run, ticks, irqs]: ticks is the time from that reading to pass_end's return in ticks of
-    the SDK's tick timer (timer 0, 33.5 MHz / 64: about 33 ticks per display line; D-2175),
-    the cost of pass_end's own decision and catch-up plus any interrupt handled meanwhile;
-    irqs counts those interrupts when the gate passed irqs (a callable returning a running
-    count of interrupt handler entries), else None. Tasks that start inside pass_end are catch-up tasks ('catchup': True); they are
-    allowed only after a catch_up decision, and their pass ends when pass_end returns
-    (the gate's own reading there). catchup_overruns counts catch-ups during which the
-    VBlank counter moved (the catch-up itself pushed the pass past a VBlank).
+    the SDK's tick timer (timer 0, bus clock / 64: about 33 ticks per display line), irqs
+    the interrupts handled meanwhile. Tasks that start inside pass_end are catch-up tasks
+    ('catchup': True); they are allowed only after a catch_up decision, and their pass ends
+    when pass_end returns (the gate's own reading there). catchup_overruns counts catch-ups
+    during which the VBlank counter moved (the catch-up itself pushed the pass past a VBlank).
+
+    Sub-line timing (D-2269): a reading after a render is VCOUNT and TM0; a batch end,
+    frame_end and pass_end also read the VBlank counter first. When the model's decision at
+    a decision point depends on how far into the line the task is ('wait'), the task must
+    wait for VCOUNT to change; the VCOUNT reads of that wait and the TM0 reading at the new
+    line start resolve the decision (FrameModel.waited), recorded in place of the check's
+    decision with 'waited': (line, tick). The gate times each task's frame itself: the
+    interrupt handler entry of the VBlank interrupt gives the deadline ('deadline_tick',
+    ticks since the task's 'start_tick'), and the median of VBlank-to-VBlank intervals the
+    ticks per display line ('line_ticks'); 'end_tick' is the pass end in ticks since
+    'start_tick', 'b_ticks' the TM0 readings after each glyph. irq_count counts every
+    interrupt handler entry.
 
     A glyph belongs to the printer's most recent native task. The entry is dropped
     when the printer is (re)initialised or freed, so a synchronous print or a
@@ -349,12 +361,11 @@ class PrinterTrace:
     tasks: one record per native task for text_speed_checks.task_errors()."""
 
     def __init__(self, h, payload, font=None, probe=None, on_task=None, on_glyph=None, on_destroy=None,
-                 on_original=None, on_render=None, irqs=None):
+                 on_original=None, on_render=None):
         import text_speed_checks as checks
         self._checks = checks
         self.h, self.font, self._probe = h, font, probe
         self._on_render = on_render
-        self._irqs = irqs or (lambda: None)
         self._on_task, self._on_glyph, self._on_destroy, self._on_original = on_task, on_glyph, on_destroy, on_original
         self.task = 0
         self.current = {}
@@ -377,6 +388,11 @@ class PrinterTrace:
         h.on_exec(FREE_TO_HEAP, self._free, exclusive=True)
         h.on_exec(PRINTER_DESTROY, self._destroy, exclusive=True)
         h.on_exec(FRAME_END_RETURN, self._pass_return, exclusive=True)
+        self.irq_count, self.frame_ticks, self._last_vblank = 0, [], None
+        irq = h.u32(IRQ_VECTOR)
+        if not ITCM_START <= irq < ITCM_END:
+            raise GateError(f'interrupt handler {irq:#x} is not in ITCM')
+        h.on_exec(irq & ~1, self._irq, exclusive=True)
         for where, loads in self.reads.items():
             for address, mnemonic, base_reg, index_reg, offset in loads:
                 h.on_exec(address, self._load(where, mnemonic, base_reg, index_reg, offset), exclusive=True)
@@ -388,9 +404,10 @@ class PrinterTrace:
         self.state_errors = []
         self.frame_ends = []
         self.catchups, self.catchup_overruns = [], 0
-        self._catching = None      # (catch_up decision, VBlank count) from pass_end's reading to its return
+        self._catching = None      # (catch_up decision, VBlank count, tick, irqs) from pass_end's reading to its return
         self._open = []            # tasks whose loop pass has not ended yet
-        self._vblanks = None       # VBlank counter value just read, waiting for its VCOUNT reading
+        self._await = []           # tasks waiting for the VBlank that ends their frame (deadline)
+        self._reading = {}         # the reading in progress: 'vblanks', 'line' (TM0 completes it)
 
     def resync(self):
         """After loading a savestate without reset(): restart the frame model from RAM (the
@@ -408,56 +425,108 @@ class PrinterTrace:
             self.model = self._checks.FrameModel(ram)   # resynchronise; the error stays
 
     def _load(self, where, mnemonic, base_reg, index_reg, offset):
-        """Hook on a load instruction about to run: if it reads VCOUNT or the VBlank counter,
+        """Hook on a load instruction about to run: if it reads VCOUNT, TM0 or the VBlank counter,
         record the value it is going to load (no emulated time passes before it runs)."""
         size = {'ldrb': 1, 'ldrsb': 1, 'ldrh': 2, 'ldrsh': 2}.get(mnemonic, 4)
         io = self._io(where)
 
         def hook(h):
             address = (getattr(h.reg, base_reg) + (getattr(h.reg, index_reg) if index_reg else offset)) & 0xFFFFFFFF
-            if address == VCOUNT:
+            if address in (VCOUNT, TICK_TIMER):
                 if size != 2:
-                    self.state_errors.append(f'frame {h.frame}: {mnemonic} of VCOUNT in {where}')
-                io(h, 'vcount', h.u16(VCOUNT))
+                    self.state_errors.append(f'frame {h.frame}: {mnemonic} of {address:#x} in {where}')
+                io(h, 'vcount' if address == VCOUNT else 'tick', h.u16(address))
             elif address == VBLANKS:
                 io(h, 'vblanks', h.u8(VBLANKS) if size == 1 else h.u32(VBLANKS))
         return hook
 
+    def _irq(self, h):
+        """Interrupt handler entry: count it; at the VBlank interrupt keep the tick as the deadline of
+        every task that started before it (the gate's own timing of the frame, D-2269)."""
+        self.irq_count += 1
+        line = h.u16(VCOUNT)
+        if not h.u32(IRQ_FLAGS) & h.u32(IRQ_ENABLE) & 1 or line < VISIBLE_LINE:
+            return
+        # Taken later than the start of line 192 (interrupts were disabled): count back whole lines; the
+        # rest of the line stays in, so the deadline can only come out late (a stricter judgement).
+        tick = h.u16(TICK_TIMER)
+        late = line - VISIBLE_LINE
+        if self._last_vblank is not None:
+            period = (tick - self._last_vblank) & 0xFFFF
+            if 8000 <= period <= 9600:
+                self.frame_ticks.append(period)
+        self._last_vblank = tick
+        per_line = None
+        if self.frame_ticks:
+            ordered = sorted(self.frame_ticks[-64:])
+            per_line = ordered[len(ordered) // 2] / self._checks.TOTAL_LINES
+        start = tick - (round(late * per_line) if late and per_line else 0)
+        for rec in self._await:
+            rec['deadline_tick'] = (start - rec['start_tick']) & 0xFFFF
+            rec['line_ticks'] = per_line
+        self._await = []
+
     def _io(self, where):
+        checks = self._checks
+
         def hook(h, what, value):
+            r = self._reading
+            rec = self.active if where == 'print_task' else None
             if what == 'vblanks':
                 # mark() stores the counter before it reads VCOUNT: compare here, before that store.
                 self._compare(f'{where} reading')
-                self._vblanks = value & 255
+                self._reading = {'vblanks': value & 255}
                 return
-            line = value
-            vblanks, self._vblanks = self._vblanks, None
-            if vblanks is None:
-                self._compare(f'{where} reading')
-            if where == 'pass_end':
-                if vblanks is None:
-                    self.state_errors.append(f'frame {h.frame}: pass_end read VCOUNT without the VBlank counter')
+            if what == 'vcount':
+                if rec is not None and rec.get('_wait') is not None:
+                    rec['_wait'].append(value)          # the task waits for the next line start
                     return
-                late, catch = self.model.pass_end(vblanks, line)
-                self.catchups.append([h.frame, line, late, catch, 0, None, None])
-                self._catching = (catch, h.u32(VBLANKS), h.u16(TICK_TIMER), self._irqs())
+                if 'vblanks' not in r:
+                    self._compare(f'{where} reading')
+                r['line'] = value
+                if where == 'pass_end':
+                    self._reading = {}
+                    if r.get('vblanks') is None:
+                        self.state_errors.append(f'frame {h.frame}: pass_end read VCOUNT without the VBlank counter')
+                        return
+                    late, catch = self.model.pass_end(r['vblanks'], value)
+                    self.catchups.append([h.frame, value, late, catch, 0, None, None])
+                    self._catching = (catch, h.u32(VBLANKS), h.u16(TICK_TIMER), self.irq_count)
                 return
+            tick = value
+            self._reading = {}
+            if rec is not None and rec.get('_wait') is not None:
+                wait, rec['_wait'] = rec['_wait'], None
+                event = rec['events'][-1]
+                if event[0] != 'check' or wait[-1] == event[1] or any(x != event[1] for x in wait[:-1]):
+                    self.state_errors.append(f'frame {h.frame}: task {rec["id"]} waited for a line start without '
+                                             f'a line change from line {event[1]}: {wait[:3]}..{wait[-2:]}')
+                    return
+                decision = checks.FrameModel.waited(event[2], rec['_place'], wait[-1], tick)
+                rec['events'][-1] = ('check', event[1], decision)
+                rec['_before'] = (wait[-1], tick)
+                return
+            if 'line' not in r:
+                self.state_errors.append(f'frame {h.frame}: {where} read TM0 without VCOUNT')
+                return
+            line, vblanks = r['line'], r.get('vblanks')
             if where == 'frame_end':
                 if vblanks is None:
                     self.state_errors.append(f'frame {h.frame}: frame_end read VCOUNT without the VBlank counter')
                     return
-                self.model.frame_end(vblanks, line)
+                self.model.frame_end(vblanks, line, tick)
                 full = h.u32(VBLANKS)
                 end = (full - ((full - vblanks) & 255), line)
                 self.frame_ends.append((h.frame, line, end[0]))
                 for rec in self._open:
                     rec['pass_end'] = end
+                    rec['end_tick'] = (tick - rec['start_tick']) & 0xFFFF
                     rec['pass_end_frame'] = h.frame
                 self._open = []
                 return
             rec = self.active
-            if vblanks is not None:                      # mark(): VBlank counter, then VCOUNT
-                self.model.mark(vblanks, line)
+            if vblanks is not None:                      # mark(): VBlank counter, VCOUNT, TM0
+                self.model.mark(vblanks, line, tick)
                 if rec is not None:
                     rec['events'].append(('mark', line))
                 return
@@ -467,9 +536,18 @@ class PrinterTrace:
             drew = rec['_since_render'] == 'glyph'
             if drew:
                 if rec['b_lines']:
-                    self.model.glyph_cost(rec['b_lines'][-1], line)
+                    self.model.glyph_cost(*rec['_before'], line, tick)
                 rec['b_lines'].append(line)
-            rec['events'].append(('check', line, self.model.decide(line)))
+                rec['b_ticks'].append(tick)
+            place = rec['_place']
+            checks.task_place(place, line)
+            glyphs = [e for e in rec['events'] if e[0] == 'glyph']
+            point = drew and len(glyphs) < checks.FAST_BUDGET and glyphs[-1][1] not in checks.CONTROLS
+            decision = self.model.decide(line, tick, place if point else dict(place))
+            rec['events'].append(('check', line, decision))
+            rec['_before'] = (line, tick)
+            if point and decision['kind'] == 'wait':
+                rec['_wait'] = []
         return hook
 
     def _pass_return(self, h):
@@ -478,15 +556,16 @@ class PrinterTrace:
             return
         catch, vblanks, ticks, irqs = self._catching
         self._catching = None
-        self.catchups[-1][5] = (h.u16(TICK_TIMER) - ticks) & 0xFFFF
-        if irqs is not None:
-            self.catchups[-1][6] = self._irqs() - irqs
+        tick = h.u16(TICK_TIMER)
+        self.catchups[-1][5] = (tick - ticks) & 0xFFFF
+        self.catchups[-1][6] = self.irq_count - irqs
         self.model.catch_up_done()
         self._compare('pass_end return')
         ran = [rec for rec in self._open if rec.get('catchup')]
         end = (h.u32(VBLANKS), h.u16(VCOUNT))
         for rec in ran:
             rec['pass_end'] = end
+            rec['end_tick'] = (tick - rec['start_tick']) & 0xFFFF
             rec['pass_end_frame'] = h.frame
         self._open = [rec for rec in self._open if not rec.get('catchup')]
         if ran and end[0] != vblanks:
@@ -502,8 +581,9 @@ class PrinterTrace:
         rec = {'id': self.task, 'printer': ptr, 'frame': h.frame, 'font': h.u8(ptr + 9),
                'printer_id': h.u8(ptr + 0x2C), 'paused': h.u8(PRINT_PAUSED) != 0, 'delegated': False,
                'special': h.u32(ptr + 0x1C) != 0 or (h.u8(ptr + 0x29) & 127) != 0,
-               'events': [], 'start': (h.u32(VBLANKS), h.u16(VCOUNT)), 'b_lines': [],
-               'pass_end': None, '_since_render': None}
+               'events': [], 'start': (h.u32(VBLANKS), h.u16(VCOUNT)), 'b_lines': [], 'b_ticks': [],
+               'start_tick': h.u16(TICK_TIMER), 'pass_end': None, '_since_render': None,
+               '_place': {'from': self._checks.NO_LINE, 'at': 0}, '_wait': None, '_before': None}
         if self._catching is not None:
             rec['catchup'] = True
             self.catchups[-1][4] += 1
@@ -514,6 +594,7 @@ class PrinterTrace:
         self.active = rec
         self.tasks.append(rec)
         self._open.append(rec)
+        self._await.append(rec)
         self.current[ptr] = self.task
         self.task_frames.setdefault(ptr, set()).add(h.frame)
         if self._on_task is not None:
@@ -531,6 +612,8 @@ class PrinterTrace:
         if self._on_render is not None:
             self._on_render(h)
         rec = self.active
+        if rec is not None and rec.get('_wait') is not None:
+            rec['_wait'] = None                 # the model expected a wait that did not happen (task_errors reports it)
         lr = h.reg.lr & ~1
         if rec is not None and rec['printer'] == h.reg.r0 and (
                 self._from_payload(h) or PRINTER_TASK <= lr < RENDER):

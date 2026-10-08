@@ -23,14 +23,14 @@ BASE=0x01ff8620
 OVBASE=0x021e4980
 # This reviewed pin lives in patcher source, never in the mutable cache. Updating
 # native code requires review of its reproducible payload and this separate pin.
-REVIEWED_PAYLOAD_SHA256='e4aabb93fbdd9a9804c713d4430146e0e08a7836dbbba3e4ab37fb04e07b1f23'
+REVIEWED_PAYLOAD_SHA256='fb4856be90d49eb2b6dd4b13be1e76f61414224821bf2e670b4046cc12532078'
 REQUIRED_SYMBOLS=frozenset(('print_task','load_rows','load_choice','load_label',
                             'commit_speed','exit_free','draw_label','setup_sprites',
                             'frame_end','pass_end','text_speed_state','call_print'))
 # The one data symbol: the runtime frame state (zero at boot), the last
 # STATE_SIZE bytes of the block. Every other symbol is a Thumb entry point.
 STATE_SYMBOL='text_speed_state'
-STATE_SIZE=26
+STATE_SIZE=44
 # The game loop's last call before its wait for VBlank (NitroMain, 0x02000C88):
 # 'bl 0x020272d4' at this address is redirected to the payload's pass_end, which
 # calls frame_end (that call first, then the frame measurement) and then the

@@ -45,7 +45,7 @@ import subprocess
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from gate_common import (CLOCK, GLYPH, IRQ_VECTOR, ROOT, TICK_TIMER_CONTROL, input_delay, PrinterTrace, add_arguments, attach_probe, digest, identity,  # noqa: E402
+from gate_common import (CLOCK, GLYPH, ROOT, TICK_TIMER_CONTROL, input_delay, PrinterTrace, add_arguments, attach_probe, digest, identity,  # noqa: E402
                          inputs_unchanged, itcm_errors, judge_message, load_expected_payload, memory_errors,
                          memory_summary, require, resolve)
 import text_speed_checks as checks  # noqa: E402
@@ -209,11 +209,7 @@ def child(args, name):
             h.on_exec(GLYPH, None)
             h.load_state(checkpoint)
             probe = attach_probe(h)
-            irq = h.u32(IRQ_VECTOR)
-            require(0x01FF8000 <= irq < 0x02000000, f'interrupt handler {irq:#x} is not in ITCM')
-            irqs = [0]
-            h.on_exec(irq & ~1, lambda h: irqs.__setitem__(0, irqs[0] + 1), exclusive=True)
-            trace = PrinterTrace(h, payload, font=1, probe=probe, irqs=lambda: irqs[0],
+            trace = PrinterTrace(h, payload, font=1, probe=probe,
                                  on_glyph=lambda h, ptr, info: glyphs.append((h.frame, h.u16(ptr + 12),
                                                                               h.u16(ptr + 14))))
             timer = h.u16(TICK_TIMER_CONTROL)
