@@ -183,10 +183,10 @@
   {
    "id": 22,
    "zh": "不必管那种路人甲。{SCROLL}使用武藏和小次郎前辈的突袭作战{NEWLINE}最重要的就是速度！{SCROLL}冲啊！",
-   "en": "Never mind some random nobody.{SCROLL}In Jessie and James’s surprise-attack{NEWLINE}strategy, speed is everything!{SCROLL}Charge!",
+   "en": "Never mind some random nobody.{SCROLL}In the surprise attacks our seniors{NEWLINE}Jessie and James use, speed is key!{SCROLL}Charge!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV012: omission: 前辈 (our seniors) restored"
   },
   {
    "id": 23,
@@ -399,18 +399,18 @@
   {
    "id": 49,
    "zh": "前辈,要不要教训教训他！",
-   "en": "Boss, should we teach him a lesson?",
+   "en": "Boss, should we teach this kid a lesson?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV012: addressee: player of either gender (D-1224, D-1769)"
   },
   {
    "id": 50,
    "zh": "咳咳,虽说只是个小鬼,{NEWLINE}但是看起来很厉害的样子,{CLEAR}咱们一起上吧！",
-   "en": "Ahem. He may just be a kid, but he looks{NEWLINE}pretty tough.{SCROLL}Let’s take him on together!",
+   "en": "Ahem. It’s just a kid, but a tough one.{SCROLL}Let’s both go at once!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV012: addressee: no pronoun in zh, player of either gender (D-1224, D-1769)"
   },
   {
    "id": 51,
@@ -759,10 +759,10 @@
   {
    "id": 93,
    "zh": "你可以带巴大蝴去饲育屋试试。",
-   "en": "You could try the Day Care.",
+   "en": "You could try the Day-Care.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV012: name: Day-Care (D-0966)",
    "category": "menu_touch_1line"
   },
   {
@@ -820,10 +820,10 @@
   {
    "id": 100,
    "zh": "可是在饲育屋里,我能给巴大蝴{NEWLINE}找到合适的交配对象吗？{CLEAR}会有人愿意用它的巴大蝴{CLEAR}或者百变怪跟我的巴大蝴交配吗？",
-   "en": "But could I really find Butterfree a{NEWLINE}partner at the Day Care?{SCROLL}Would anyone let their Butterfree or{NEWLINE}Ditto breed with mine?",
+   "en": "But could I really find Butterfree a{NEWLINE}partner at the Day-Care?{SCROLL}Would anyone let their Butterfree or{NEWLINE}Ditto breed with mine?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV012: name: Day-Care (D-0966)"
   },
   {
    "id": 101,
@@ -906,10 +906,10 @@
   {
    "id": 110,
    "zh": "也对哦,{NEWLINE}那么多训练家都去饲育屋寄养精灵,{CLEAR}我的巴大蝴一定能在那里{CLEAR}找到心仪的男朋友！{SCROLL}明明有饲育屋这么好的地方,{NEWLINE}我却这么轻易地就跟巴大蝴说再见,{CLEAR}真是太不应该了！",
-   "en": "That’s true! So many Trainers leave{NEWLINE}their Pokémon at the Day Care. My{CLEAR}Butterfree is sure to find a boyfriend{CLEAR}it likes there!{SCROLL}There’s a perfectly good place like the{NEWLINE}Day Care, and I almost said goodbye to{CLEAR}Butterfree just like that. I should{CLEAR}know better!",
+   "en": "That’s true! So many Trainers leave{NEWLINE}their Pokémon at the Day-Care. My{CLEAR}Butterfree is sure to find a boyfriend{CLEAR}it likes there!{SCROLL}There’s a perfectly good place like the{NEWLINE}Day-Care, and I almost said goodbye to{CLEAR}Butterfree just like that. I should{CLEAR}know better!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV012: name: Day-Care (D-0966)"
   },
   {
    "id": 111,

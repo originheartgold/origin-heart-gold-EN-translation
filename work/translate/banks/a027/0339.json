@@ -183,10 +183,10 @@
   {
    "id": 22,
    "zh": "{VAR:0103:0}『哪那么多歇后语,{NEWLINE}赶紧给本姑娘消失！",
-   "en": "{VAR:0103:0}: Enough with the folksy{NEWLINE}sayings! Just get lost already!",
+   "en": "{VAR:0103:0}: Enough with the folksy{NEWLINE}sayings! Now get out of this lady’s{CLEAR}sight!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV012: voice: 本姑娘 self-reference kept"
   },
   {
    "id": 23,
@@ -399,10 +399,10 @@
   {
    "id": 49,
    "zh": "哼,我是不会屈服于你的暴力的,{NEWLINE}想打的话就来吧！",
-   "en": "Hmph! I won’t give in to your bullying.{NEWLINE}If you want a fight, bring it on!",
+   "en": "Hmph! I won’t give in to your violence.{NEWLINE}If you want a fight, bring it on!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV012: softened: 暴力 = violence, not bullying (D-1785)"
   },
   {
    "id": 50,
@@ -535,10 +535,10 @@
   {
    "id": 66,
    "zh": "{VAR:0103:0}『小妹妹,{NEWLINE}跟你商量个事吧？",
-   "en": "{VAR:0103:0}: Hey there. Can I talk{NEWLINE}something over with you?",
+   "en": "{VAR:0103:0}: Hey there, little girl. Can I{NEWLINE}talk something over with you?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV012: omission: 小妹妹 address"
   },
   {
    "id": 67,
@@ -591,10 +591,10 @@
   {
    "id": 73,
    "zh": "{VAR:0103:0}『对不起啊小妹妹,{NEWLINE}青绵鸟毕竟是人家的,{CLEAR}我既然答应了人家,{CLEAR}现在就必须把青绵鸟带回去了。",
-   "en": "{VAR:0103:0}: I’m sorry. Swablu belongs to{NEWLINE}someone else, and I made her a promise.{CLEAR}I have to take it back now.",
+   "en": "{VAR:0103:0}: I’m sorry, little girl. Swablu{NEWLINE}belongs to someone else, and I made her{CLEAR}a promise. I have to take it back now.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV012: omission: 小妹妹 address"
   },
   {
    "id": 74,

@@ -65,10 +65,10 @@
   {
    "id": 7,
    "zh": "喂喂喂！猫老大,{NEWLINE}你这是发情之后饥不择食了吗？{CLEAR}赶紧离那种母猫远一点！",
-   "en": "Hey, hey, hey! Persian, are you so hard{NEWLINE}up in heat you’ll go for anything? Get{CLEAR}away from a cat like that!",
+   "en": "Hey, hey, hey! Persian, are you so hard{NEWLINE}up in heat you’ll go for anything? Get{CLEAR}away from a she-cat like that, now!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Faithful: zh 发情之后饥不择食 (in heat, so desperate it’ll take anything)."
+   "notes": "Faithful: zh 发情之后饥不择食 (in heat, so desperate it’ll take anything). | RV012: omission: 那种母猫 (female cat) and 赶紧 restored"
   },
   {
    "id": 8,
@@ -121,10 +121,10 @@
   {
    "id": 14,
    "zh": "你这么漠视与精灵之间的感情,{NEWLINE}是不可能成为强大训练家的！",
-   "en": "Ignoring the bond with your Pokémon{NEWLINE}like that, you’ll never be strong!",
+   "en": "Ignoring the bond with your Pokémon{NEWLINE}like that, you’ll never be a strong{CLEAR}Trainer!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV012: omission: 强大训练家 (strong Trainer)"
   },
   {
    "id": 15,
@@ -324,10 +324,10 @@
   {
    "id": 39,
    "zh": "柑果有着特殊的香味儿,{NEWLINE}对口袋妖怪来说这种味道{CLEAR}有镇静安神的作用,{CLEAR}比起新型机械构造的球,{CLEAR}口袋妖怪们更适合待在柑果球里。{SCROLL}所以我觉得愿意用柑果球{NEWLINE}来容纳口袋妖怪的训练家,{CLEAR}才是对口袋妖怪足够有爱的训练家。{SCROLL}我曾经的一位朋友{NEWLINE}就过于追求所谓的效率,{CLEAR}而过于忽视了精灵的感受。",
-   "en": "Apricorns have a special fragrance.{SCROLL}For Pokémon, that scent is calming and{NEWLINE}soothing.{SCROLL}Pokémon are much happier in Apricorn{NEWLINE}Balls than in Balls with fancy new{CLEAR}mechanical parts.{SCROLL}So I believe that only Trainers who keep{NEWLINE}their Pokémon in Apricorn Balls truly{CLEAR}love their Pokémon enough.{SCROLL}A friend of mine was so obsessed with{NEWLINE}so-called efficiency that he ignored how{CLEAR}his Pokémon felt.",
+   "en": "Apricorns have a special fragrance.{SCROLL}For Pokémon, that scent is calming and{NEWLINE}soothing.{SCROLL}Pokémon are much happier in Apricorn{NEWLINE}Balls than in Balls with fancy new{CLEAR}mechanical parts.{SCROLL}So I believe that only Trainers who keep{NEWLINE}their Pokémon in Apricorn Balls truly{CLEAR}love their Pokémon enough.{SCROLL}Someone who used to be my friend was so{NEWLINE}obsessed with so-called efficiency that{CLEAR}he ignored how his Pokémon felt.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV012: meaning: 曾经的一位朋友 = a former friend"
   },
   {
    "id": 40,
@@ -407,10 +407,10 @@
   {
    "id": 49,
    "zh": "爷爷我这么大岁数了{NEWLINE}还能保持身体健康,{CLEAR}靠的就是平时多吃营养保健品。{CLEAR}你虽然年轻,但是也要注意保健啊,{CLEAR}要来点营养品补补吗？{SCROLL}",
-   "en": "At my age, I’m still in good health. The{NEWLINE}secret is eating lots of health foods.{SCROLL}You may be young, but you should take{NEWLINE}care of your health too. Want some{CLEAR}health food to build you up?{SCROLL}",
+   "en": "Look at Gramps here: still in good{NEWLINE}health at my age! The secret is eating{CLEAR}lots of health foods.{SCROLL}You may be young, but you should take{NEWLINE}care of your health too. Want some{CLEAR}health food to build you up?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV012: voice: 爷爷我 self-reference kept"
   },
   {
    "id": 50,
@@ -498,10 +498,10 @@
   {
    "id": 60,
    "zh": "菊子『得到金黄市{NEWLINE}被火箭队袭击的消息后,{CLEAR}我们四天王便火速赶来解围。{CLEAR}但却被眼前这道看不见的屏障{CLEAR}阻挡在了城市外面。{CLEAR}我的耿鬼就算幻化成气体、影子{CLEAR}都无法穿过去。{CLEAR}唉,年纪大了,{CLEAR}连这道小小的透明墙都能把我难住。",
-   "en": "Agatha: When we heard Team Rocket had{NEWLINE}attacked Saffron City, we Elite Four{CLEAR}rushed over to help.{SCROLL}But this invisible barrier has kept us{NEWLINE}out of the city.{SCROLL}Even when my Gengar turns into gas or a{NEWLINE}shadow, it can’t get through.{SCROLL}Hmph. I’m getting old, when a little{NEWLINE}see-through wall like this can stump me.",
+   "en": "Agatha: When we heard Team Rocket had{NEWLINE}attacked Saffron City, we Elite Four{CLEAR}rushed over to help.{SCROLL}But this invisible barrier has kept us{NEWLINE}out of the city.{SCROLL}Even when my Gengar turns into gas or a{NEWLINE}shadow, it can’t get through.{SCROLL}Ugh. I must be getting old if a little{NEWLINE}see-through wall like this can stump me.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV012: meaning: 唉 is a sigh, not hmph; grammar"
   },
   {
    "id": 61,

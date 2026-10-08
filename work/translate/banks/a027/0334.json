@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "马志士『哦,耶！{NEWLINE}你的精灵不就是{CLEAR}我最喜欢的皮卡丘吗~！{SCROLL}太棒了！{SCROLL}就把我的电话号码告诉你吧！{CLEAR}你当然想知道吧？{VAR:0200:0}",
-   "en": "Lt. Surge: Oh, yay!{NEWLINE}You have the Pokémon I love best:{CLEAR}Pikachu!{SCROLL}Excellent!{NEWLINE}I’ll give you my telephone number! {VAR:0200:0}",
+   "en": "Lt. Surge: Oh, yay! You have the{NEWLINE}Pokémon I love best: Pikachu!{SCROLL}Excellent! I’ll give you my telephone{NEWLINE}number! Of course you want it, right?{VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0341/0; modernised from US 0341#0"
+   "origin": "agent",
+   "notes": "US 0341/0; modernised from US 0341#0 | RV012: omission: 你当然想知道吧 (yes/no question) restored"
   },
   {
    "id": 1,

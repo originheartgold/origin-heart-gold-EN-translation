@@ -126,10 +126,10 @@
   {
    "id": 15,
    "zh": "你在发电厂越努力,{NEWLINE}这个世界就越光明。{CLEAR}——火箭动力发电厂",
-   "en": "Work harder for a brighter world!{NEWLINE}-Rocket Power Plant",
+   "en": "The harder you work at the power{NEWLINE}plant, the brighter the world gets!{SCROLL}-Rocket Power Plant",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV012: omission: 在发电厂 (at the power plant)"
   },
   {
    "id": 16,
@@ -150,10 +150,10 @@
   {
    "id": 18,
    "zh": "火箭队的这场动乱让我明白了,{NEWLINE}造成天灾的从来都不是口袋妖怪,{CLEAR}而是滥用精灵力量的坏人。",
-   "en": "All this chaos with Team Rocket taught{NEWLINE}me something. It’s never Pokémon that{CLEAR}cause disasters. It’s bad people who{CLEAR}abuse their power.",
+   "en": "All this chaos with Team Rocket taught{NEWLINE}me something. It’s never Pokémon that{CLEAR}cause disasters. It’s bad people who{CLEAR}abuse the power of Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV012: meaning: 滥用精灵力量 = abuse Pokémon’s power"
   },
   {
    "id": 19,
