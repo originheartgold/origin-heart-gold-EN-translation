@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "是吗⋯⋯好可惜啊⋯⋯{NEWLINE}我真想见见大木博士博士啊。",
-   "en": "Oh... I wish I had a chance to meet{NEWLINE}Professor Oak...",
+   "en": "Oh... What a shame... I really want to{NEWLINE}meet Professor Oak...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0685/3"
+   "origin": "agent",
+   "notes": "US 0685/3 | RV072: omission: restored 好可惜"
   },
   {
    "id": 4,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "最近,我开始了对{NEWLINE}{VAR:0100:10}的观察⋯⋯{SCROLL}通过仔细观察,{NEWLINE}以前一些很纠结的疑问{CLEAR}都能得到答案！{SCROLL}真想快点成为像大木博士{NEWLINE}那样的精灵博士啊。{SCROLL}下次再聊吧！",
-   "en": "I recently began observing wild{NEWLINE}{VAR:0100:10}.{SCROLL}I’ve been learning all sorts of new{NEWLINE}things through my observations.{SCROLL}I wish I could become a Pokémon{NEWLINE}researcher like Professor Oak soon.{SCROLL}See you later!",
+   "en": "Recently, I’ve started observing{NEWLINE}{VAR:0100:10}...{SCROLL}By watching it closely, I’ve found{NEWLINE}answers to questions that used to{CLEAR}puzzle me!{SCROLL}I wish I could become a Pokémon{NEWLINE}professor like Professor Oak soon.{SCROLL}See you later!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0685/6"
+   "origin": "agent",
+   "notes": "US 0685/6 | RV072: meaning: no 'wild'; answered puzzling questions"
   },
   {
    "id": 7,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "对了,{NEWLINE}前段时间我在最后让{CLEAR}{VAR:0100:11}给逃掉了⋯⋯{SCROLL}我好想从正面去对{NEWLINE}{VAR:0100:11}进行观察啊,{CLEAR}真是太可惜了⋯⋯{SCROLL}下次再见吧！",
-   "en": "Oh yes, I came close to catching{NEWLINE}a wild {VAR:0100:11}, but it got away.{SCROLL}For the longest time, I’ve been wanting{NEWLINE}to observe {VAR:0100:11}. Man...{SCROLL}See you later!{NEWLINE}",
+   "en": "Oh yes, a {VAR:0100:11} got away from me{NEWLINE}at the last moment a while back...{SCROLL}I really wanted to observe {VAR:0100:11}{NEWLINE}up close. What a shame...{SCROLL}See you later!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0685/8"
+   "origin": "agent",
+   "notes": "US 0685/8 | RV072: meaning: matched zh; removed 'for the longest time'"
   },
   {
    "id": 9,
@@ -126,10 +126,10 @@
   {
    "id": 15,
    "zh": "大木博士的精灵讲座{NEWLINE}是一档非常具有人气的广播节目！{SCROLL}但大木博士{NEWLINE}一开始是准备回绝的！{SCROLL}不过各地纷纷发来请求,{NEWLINE}胡桃小姐也是不依不饶,{CLEAR}所以博士才上了节目！{CLEAR}真得好好谢谢胡桃小姐啊！{SCROLL}再见啦。",
-   "en": "Professor Oak’s Pokémon Talk is a{NEWLINE}popular radio show, right?{SCROLL}Did you know that he was going to turn{NEWLINE}down the show at first?{SCROLL}But Mary’s energy and persistence wore{NEWLINE}him down.{CLEAR}So we have Mary to thank for it!{SCROLL}See you later!",
+   "en": "Professor Oak’s Pokémon Talk is a{NEWLINE}really popular radio show!{SCROLL}But at first, Professor Oak was going{NEWLINE}to turn it down!{SCROLL}Requests poured in from everywhere,{NEWLINE}though, and Mary wouldn’t take no for{CLEAR}an answer, so the Professor went on{CLEAR}the show!{SCROLL}We really have Mary to thank! See you{NEWLINE}later!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0685/15"
+   "origin": "agent",
+   "notes": "US 0685/15 | RV072: omission: restored requests from everywhere"
   },
   {
    "id": 16,
@@ -166,10 +166,10 @@
   {
    "id": 20,
    "zh": "喂,和我来场对战怎么样？{NEWLINE}长时间不进行对战的话,{CLEAR}对战的感觉会慢慢变迟钝的！{SCROLL}我在{VAR:0104:3}等你,{NEWLINE}到了就直接来找我吧。",
-   "en": "Want to battle?{SCROLL}I have to battle every so often to{NEWLINE}avoid getting rusty.{SCROLL}I’ll be on {VAR:0104:3}!",
+   "en": "Hey, how about a battle?{SCROLL}If you go too long without battling,{NEWLINE}your instincts slowly get dull!{SCROLL}I’ll be waiting on {VAR:0104:3}.{NEWLINE}Come find me when you get there.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0685/20"
+   "origin": "agent",
+   "notes": "US 0685/20 | RV072: omission: restored 'come find me'"
   },
   {
    "id": 21,

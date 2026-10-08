@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "我的爸爸是{NEWLINE}虫精灵领域的研究人员。{SCROLL}所以我很小的时候开始{NEWLINE}家里就全部都是虫精灵。{SCROLL}正因为如此{NEWLINE}我也喜欢上了虫精灵。{SCROLL}可我妈⋯⋯{NEWLINE}天天都能听到她的尖叫。",
-   "en": "You know, my dad was a researcher{NEWLINE}studying Bug-type Pokémon.{SCROLL}Ever since I was young, there’s{NEWLINE}always been Bug-type Pokémon{CLEAR}scattered all over the house.{SCROLL}That’s why I started to like Bug-type{NEWLINE}Pokémon so much myself.{SCROLL}My mom...{NEWLINE}Well, she screamed a lot.",
+   "en": "You know, my dad is a researcher in the{NEWLINE}field of Bug-type Pokémon.{SCROLL}So ever since I was little, our house{NEWLINE}has been full of Bug-type Pokémon.{SCROLL}That’s why I came to love Bug-type{NEWLINE}Pokémon, too. But my mom...{SCROLL}I hear her screaming every single day.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0692/12"
+   "origin": "agent",
+   "notes": "US 0692/12 | RV072: omission: daily screaming; dad still a researcher"
   },
   {
    "id": 13,

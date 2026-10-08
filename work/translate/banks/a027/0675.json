@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "我进入草丛后,{NEWLINE}偶尔能找到果实⋯⋯{SCROLL}我会分给你一点的,{NEWLINE}所以把你电话号码给我吧！{VAR:0200:0}",
-   "en": "When I’m in the tall grass, I find all{NEWLINE}kinds of Berries.{SCROLL}If you’d like, I’ll share some.{NEWLINE}Could I get your phone number? {VAR:0200:0}",
+   "en": "When I go into the grass, I sometimes{NEWLINE}find Berries...{SCROLL}I’ll share some with you, so give me{NEWLINE}your phone number! {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0684/4"
+   "origin": "agent",
+   "notes": "US 0684/4 | RV072: meaning: 偶尔 = sometimes; removed 'all kinds'"
   },
   {
    "id": 5,

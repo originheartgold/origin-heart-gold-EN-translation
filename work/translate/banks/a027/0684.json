@@ -22,18 +22,18 @@
   {
    "id": 2,
    "zh": "好！以后就多聊聊{NEWLINE}关于精灵的话题吧！",
-   "en": "Sure thing! If anything{NEWLINE}Pokémon-related comes up, I’ll call!",
+   "en": "Great! Let’s chat lots about Pokémon{NEWLINE}from now on!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0693/2"
+   "origin": "agent",
+   "notes": "US 0693/2 | RV072: meaning: matched zh"
   },
   {
    "id": 3,
    "zh": "你⋯⋯{NEWLINE}讨厌精灵吗？",
-   "en": "You...{NEWLINE}I bet you don’t even like Pokémon...",
+   "en": "You... do you hate Pokémon?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0693/3"
+   "origin": "agent",
+   "notes": "US 0693/3 | RV072: meaning: question restored"
   },
   {
    "id": 4,
@@ -62,26 +62,26 @@
   {
    "id": 7,
    "zh": "听我说,{NEWLINE}我的{VAR:0100:10}{CLEAR}只要我轻轻捏一下它脸蛋,{CLEAR}就会开心地笑起来！{SCROLL}但要是别人去捏的话{NEWLINE}它就不会笑了⋯⋯{CLEAR}是不是我的很特别　啊？{SCROLL}啊！对了,{NEWLINE}前几天皮卡丘打败了{VAR:0100:11}！{SCROLL}是{VAR:0100:11}哦！{SCROLL}是不是很厉害啊！！{SCROLL}我的皮卡丘好厉害！{SCROLL}我的皮卡丘天下第一！{SCROLL}再见啦。",
-   "en": "Hey, listen to this.{NEWLINE}My {VAR:0100:10} totally grins when{CLEAR}I pinch its cheek.{SCROLL}But it never grins like that for{NEWLINE}anyone else. I must be special.{SCROLL}Oh, and just now, my Pikachu beat a{NEWLINE}wild {VAR:0100:11}!{CLEAR}A wild {VAR:0100:11}, I’m sayin’!{SCROLL}Yeah, amazing, isn’t it?{SCROLL}My Pikachu is awesome!{SCROLL}My Pikachu is the greatest!{NEWLINE}Talk to you later.",
+   "en": "Hey, listen to this.{SCROLL}My {VAR:0100:10} smiles happily whenever I{NEWLINE}gently pinch its cheek.{SCROLL}But if anyone else pinches it, it won’t{NEWLINE}smile... Doesn’t that make mine special?{SCROLL}Oh, yeah! The other day, my Pikachu{NEWLINE}beat a {VAR:0100:11}! A {VAR:0100:11}!{SCROLL}Isn’t that amazing?! My Pikachu is{NEWLINE}awesome!{SCROLL}My Pikachu is the greatest in the world!{NEWLINE}Bye now.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0693/7; modernised from US 0693#7"
+   "origin": "agent",
+   "notes": "US 0693/7; modernised from US 0693#7 | RV072: meaning: the Pokémon is special; timing (D-2018)"
   },
   {
    "id": 8,
    "zh": "听我说,{NEWLINE}我的{VAR:0100:10}{CLEAR}只要我轻轻捏一下它脸蛋,{CLEAR}就会开心地笑起来！{SCROLL}但要是别人去捏的话{NEWLINE}它就不会笑了⋯⋯{CLEAR}是不是我的很特别　啊？{SCROLL}啊！对了,{NEWLINE}之前我看到了{CLEAR}一只{VAR:0100:11}⋯⋯{SCROLL}但因为不怎么可爱{NEWLINE}所以放它走了⋯⋯{SCROLL}果然精灵一定要可爱才有人气啊。{SCROLL}再见啦。",
-   "en": "Hey, listen to this.{NEWLINE}My {VAR:0100:10} totally grins when{CLEAR}I pinch its cheek.{SCROLL}But it never grins like that for{NEWLINE}anyone else. I must be special.{SCROLL}Oh, and I saw a wild {VAR:0100:11} a{NEWLINE}little while ago. But it wasn’t very{CLEAR}cute, so I left it...{SCROLL}Pokémon have to be cute. They’re no{NEWLINE}good otherwise.{SCROLL}Talk to you later.",
+   "en": "Hey, listen to this.{SCROLL}My {VAR:0100:10} smiles happily whenever I{NEWLINE}gently pinch its cheek.{SCROLL}But if anyone else pinches it, it won’t{NEWLINE}smile... Doesn’t that make mine special?{SCROLL}Oh, yeah! A while ago I saw a{NEWLINE}{VAR:0100:11}...{SCROLL}But it wasn’t very cute, so I let it{NEWLINE}go...{SCROLL}Pokémon really have to be cute to be{NEWLINE}popular. Bye now.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0693/8"
+   "origin": "agent",
+   "notes": "US 0693/8 | RV072: meaning: cute to be popular (D-2018)"
   },
   {
    "id": 9,
    "zh": "你的精灵们最近还好吗？{SCROLL}下次我们好好聊聊{NEWLINE}一些精灵的话题吧！",
-   "en": "How are your Pokémon doing?{SCROLL}Let’s get together and{NEWLINE}brag about our Pokémon!",
+   "en": "How are your Pokémon doing lately?{SCROLL}Next time, let’s have a good chat about{NEWLINE}Pokémon!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0693/9"
+   "origin": "agent",
+   "notes": "US 0693/9 | RV072: addition: no bragging (D-2018)"
   },
   {
    "id": 10,
@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "你怎么了？{NEWLINE}我在{VAR:0104:3},{CLEAR}你快来吧。",
-   "en": "What’s wrong?{NEWLINE}I’m waiting on {VAR:0104:3}.{CLEAR}Come and pick this up anytime.",
+   "en": "What’s wrong? I’m on{NEWLINE}{VAR:0104:3}, so hurry over.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0693/11"
+   "origin": "agent",
+   "notes": "US 0693/11 | RV072: meaning: 快来 = hurry, not 'anytime'"
   },
   {
    "id": 12,

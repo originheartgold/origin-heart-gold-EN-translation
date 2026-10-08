@@ -4922,7 +4922,7 @@
   {
    "id": "RV072",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 546,
    "labels": [
     "a027/0658 pokegear_phone",

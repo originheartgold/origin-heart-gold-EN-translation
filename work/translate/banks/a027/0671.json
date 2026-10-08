@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "听我说听我说！{SCROLL}我的{VAR:0100:10}{NEWLINE}老是用水汪汪的大眼睛{CLEAR}盯着我看！{CLEAR}可爱到不行了！{SCROLL}还有还有！{SCROLL}前段时间我发现了一只{NEWLINE}很漂亮的{VAR:0100:11}⋯⋯{SCROLL}不过那时候我正好在打电话,{NEWLINE}给它给跑掉了⋯⋯人家悔死了！{SCROLL}好了,下次再聊吧。",
-   "en": "Oh, you have to hear this.{SCROLL}My {VAR:0100:10} is so adorable!{NEWLINE}It’s always giving me cute looks!{SCROLL}And, and! Uh...{SCROLL}We just saw a really gorgeous{NEWLINE}{VAR:0100:11}.{SCROLL}But I was on the phone, so it got away.{NEWLINE}It made us really angry!{SCROLL}OK, I’ll call you later!",
+   "en": "Listen, listen! My {VAR:0100:10} always{NEWLINE}gazes at me with its big, watery eyes!{SCROLL}It’s too cute! And, and! A while ago I{NEWLINE}found a really pretty {VAR:0100:11}...{SCROLL}But I was on the phone right then, so it{NEWLINE}got away... I regret it so much!{SCROLL}OK, talk to you later.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0680/7"
+   "origin": "agent",
+   "notes": "US 0680/7 | RV072: meaning: 人家悔死了 = I regret it; watery eyes (D-2005)"
   },
   {
    "id": 8,
@@ -110,10 +110,10 @@
   {
    "id": 13,
    "zh": "听我说听我说！{SCROLL}满金市{NEWLINE}不是有一对美容师兄弟么？{SCROLL}哥哥非常熟练,{NEWLINE}可弟弟就有点糟糕了。{SCROLL}不过弟弟比他哥哥{NEWLINE}便宜多了,{CLEAR}而且有时候{CLEAR}手法也挺不错的。{SCROLL}我一直都在为{NEWLINE}去哪边划算而犹豫不决。{SCROLL}再见了,下次再聊。",
-   "en": "Listen, listen!{SCROLL}There’s a Pokémon Salon in Goldenrod{NEWLINE}that’s run by two brothers.{SCROLL}The older brother is good, but the{NEWLINE}younger one really isn’t.{SCROLL}But the younger one charges less, and{NEWLINE}sometimes does a better job than{CLEAR}his brother.{SCROLL}Every time I go, I have a hard time{NEWLINE}trying to decide whom I should use...{SCROLL}OK, I’ll call you later!",
+   "en": "Listen, listen!{SCROLL}Aren’t there two brothers in Goldenrod{NEWLINE}who run a Pokémon salon?{SCROLL}The older brother is really skilled, but{NEWLINE}the younger one is kind of bad.{SCROLL}But the younger one is way cheaper, and{NEWLINE}sometimes he does pretty well, too.{SCROLL}I can never decide which one is the{NEWLINE}better deal. OK, I’ll call you later!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0680/13"
+   "origin": "agent",
+   "notes": "US 0680/13 | RV072: meaning: no 'better than his brother'; deciding on value (D-2005)"
   },
   {
    "id": 14,
