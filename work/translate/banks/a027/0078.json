@@ -402,10 +402,10 @@
   {
    "id": 49,
    "zh": "小银『你这个联盟冠军是捡来的吗？{NEWLINE}要是能用穿洞绳,{CLEAR}我还至于被你们堵到这里？{SCROLL}小银『真不明白火箭队怎么会{NEWLINE}几次栽在你这种人手里。",
-   "en": "Silver: Did you find that Champion{NEWLINE}title in a gutter somewhere? If{CLEAR}an Escape Rope worked, would{CLEAR}you have me cornered in here?{SCROLL}Silver: I really don’t get how Team{NEWLINE}Rocket kept losing to someone like you.",
+   "en": "Silver: Did you find that League{NEWLINE}Champion title in a gutter somewhere? If{CLEAR}I could use an Escape Rope, would I{CLEAR}have let you corner me in here?{SCROLL}Silver: I really don’t get how Team{NEWLINE}Rocket kept losing to someone like you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV032: meaning: 要是能用穿洞绳我还至于被你们堵到这里 = if I could, I wouldn't have let you corner me; 联盟冠军 restored"
   },
   {
    "id": 50,
@@ -842,10 +842,10 @@
   {
    "id": 104,
    "zh": "{VAR:0103:0}『阿尔宙斯,这个人无恶不作,{NEWLINE}你不可以成为他的伙伴啊！",
-   "en": "{VAR:0103:0}: Arceus, this man will stop at{NEWLINE}nothing! You can’t become his partner!",
+   "en": "{VAR:0103:0}: Arceus, there’s no evil this{NEWLINE}man won’t commit!{CLEAR}You can’t become his partner!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV032: softened: 无恶不作 = commits every evil, not 'will stop at nothing'"
   },
   {
    "id": 105,

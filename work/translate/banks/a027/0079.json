@@ -134,10 +134,10 @@
   {
    "id": 16,
    "zh": "小银『傻子才会在意这些分身,{NEWLINE}我只要找出那个小鬼,{CLEAR}把她揍到愿意带我们出去就行了！",
-   "en": "Silver: Only an idiot would care{NEWLINE}about these clones. All I have to{CLEAR}do is find that brat and beat her{CLEAR}until she agrees to take us out!",
+   "en": "Silver: Only an idiot would care about{NEWLINE}these clones. All I have to do is find{CLEAR}that brat and beat her up until she{CLEAR}agrees to take us out!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV032: softened: 揍 = beat up (physical), not a battle"
   },
   {
    "id": 17,
@@ -166,10 +166,10 @@
   {
    "id": 20,
    "zh": "小银『哼,我可不敢保证{NEWLINE}不会揍那个小鬼。",
-   "en": "Silver: Hmph. I’m not promising{NEWLINE}I won’t smack that brat.",
+   "en": "Silver: Hmph. I’m not promising I won’t{NEWLINE}beat up that brat.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV032: softened: 揍 = beat up, stronger than 'smack'"
   },
   {
    "id": 21,

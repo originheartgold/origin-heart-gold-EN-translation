@@ -22,26 +22,26 @@
   {
    "id": 2,
    "zh": "喔喔！{SCROLL}墙壁上画着的{NEWLINE}未知图腾⋯⋯！{SCROLL}未知图腾的眼珠子{NEWLINE}好像在盯着我看⋯⋯！{SCROLL}",
-   "en": "Wow!{SCROLL}The Unown pictures on the wall...{SCROLL}It feels like they’re staring at me!{SCROLL}",
+   "en": "Wow!{SCROLL}The Unown pictures on the wall...{SCROLL}The Unown’s eyes seem to be{NEWLINE}staring at me!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0084/2; modernised from US 0084#2"
+   "origin": "agent",
+   "notes": "US 0084/2; modernised from US 0084#2 | RV032: omission: 未知图腾的眼珠子 (the Unown's eyes) restored"
   },
   {
    "id": 3,
    "zh": "什、什、什么⋯⋯！？{NEWLINE}不祥的气息！{CLEAR}我止不住⋯⋯{CLEAR}脚{CLEAR}脚上的颤抖！！{SCROLL}",
-   "en": "What is this?{NEWLINE}There is something eerie that is making{CLEAR}my legs shiver.{CLEAR}I can’t stop them!{SCROLL}",
+   "en": "Wh-wh-what...?! An ominous presence! I{NEWLINE}can’t stop... my l-legs from shaking!!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0084/3"
+   "origin": "agent",
+   "notes": "US 0084/3 | RV032: voice: stutter 什、什、什么 and 脚 脚 restored; 不祥的气息 = ominous presence"
   },
   {
    "id": 4,
    "zh": "哈哈,你没事吧！？{NEWLINE}你突然就从我的眼前{CLEAR}消失了,{CLEAR}吓死我了！{SCROLL}",
-   "en": "Oh, are you all right?{NEWLINE}You disappeared right in front of me,{CLEAR}and that made me so surprised!{SCROLL}",
+   "en": "Ha ha, are you all right?! You suddenly{NEWLINE}vanished right in front of me. You{CLEAR}scared me half to death!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0084/4"
+   "origin": "agent",
+   "notes": "US 0084/4 | RV032: softened: 吓死我了 = scared me to death, not 'made me so surprised'; 哈哈 kept"
   },
   {
    "id": 5,

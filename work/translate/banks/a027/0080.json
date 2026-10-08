@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "阿金『喂喂,你这样老是扮人家爸爸{NEWLINE}占人家口头便宜可不好啊！{CLEAR}差不多就得了。",
-   "en": "Gold: Hey, hey, it’s not cool to keep{NEWLINE}playing her dad and lording it over{CLEAR}her like that! Give it a rest already.",
+   "en": "Gold: Hey, hey, it’s not cool to keep{NEWLINE}playing her dad and getting one over on{CLEAR}her like that! Give it a rest already.",
    "status": "draft",
    "origin": "agent",
-   "notes": "扮人家爸爸占人家口头便宜: claiming to be someone's father is a Chinese verbal put-down; Gold teases Entei for it."
+   "notes": "扮人家爸爸占人家口头便宜: claiming to be someone's father is a Chinese verbal put-down; Gold teases Entei for it. | RV032: meaning: 占人家口头便宜 = getting one over on her verbally, not lording it over her"
   },
   {
    "id": 3,
@@ -310,10 +310,10 @@
   {
    "id": 38,
    "zh": "阿金『别被人看扁了啊,爆太郎！{NEWLINE}水晶『拿出骨气来,菊草蹦！",
-   "en": "Gold: Don’t back down, Exbo!{NEWLINE}Crystal: Show some grit, Chikoree!",
+   "en": "Gold: Don’t let them look down on you,{NEWLINE}Exbo!{SCROLL}Crystal: Show some grit, Chikoree!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV032: meaning: 别被人看扁了 = don't let them look down on you"
   },
   {
    "id": 39,
@@ -806,10 +806,10 @@
   {
    "id": 100,
    "zh": "炎帝『Eeen——tei！{SCROLL}炎帝『居然在这时候进化了,{NEWLINE}不过依然差得远呢！",
-   "en": "Entei: Eeen-tei!{SCROLL}Entei: Evolving at a time like this...{NEWLINE}But you are still far from enough!",
+   "en": "Entei: Eeen-tei!{SCROLL}Entei: Evolving at a time like this...{NEWLINE}But you are still nowhere near{CLEAR}strong enough!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV032: grammar: 'far from enough' unidiomatic"
   },
   {
    "id": 101,
