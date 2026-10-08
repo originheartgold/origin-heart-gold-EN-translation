@@ -182,18 +182,18 @@
   {
    "id": 22,
    "zh": "产生怪电波的装置{NEWLINE}不停在工作。",
-   "en": "It’s the radio transmitter that’s{NEWLINE}sending the sinister signal.{SCROLL}It’s working at full capacity.",
+   "en": "The device that makes the strange radio{NEWLINE}waves is working nonstop.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0113/22"
+   "origin": "agent",
+   "notes": "US 0113/22 | RV047: addition: US line added 'sinister signal'/'full capacity'; zh only says it keeps working"
   },
   {
    "id": 23,
    "zh": "产生怪电波的装置{NEWLINE}好像停了。",
-   "en": "The radio transmitter has finally{NEWLINE}stopped its evil broadcast.",
+   "en": "The device that makes the strange radio{NEWLINE}waves seems to have stopped.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0113/23"
+   "origin": "agent",
+   "notes": "US 0113/23 | RV047: addition: US line added 'finally'/'evil broadcast' and dropped 好像 (seems)"
   },
   {
    "id": 24,
@@ -494,10 +494,10 @@
   {
    "id": 61,
    "zh": "水晶『前辈,我也有跟阿金类似的感受。{NEWLINE}这次来到火箭队基地,{CLEAR}确实有被他们的体量震惊到。{CLEAR}原本我以为只要大家齐心协力,{CLEAR}就能轻松打败火箭队,{CLEAR}现在看来事情不会那么简单。{CLEAR}为了不让火箭队{CLEAR}再在这片土地上制造悲剧,{CLEAR}我今后必须要有拼死一战的觉悟了。{SCROLL}水晶『听说卡吉镇东边的冰之通路{NEWLINE}既有少见的冰系精灵,{CLEAR}又有高手在那里修行,{CLEAR}我准备去那里一边抓精灵一边锻炼,{CLEAR}咱们回头见啦前辈。",
-   "en": "Crystal: I feel the same way Gold does.{NEWLINE}Coming to this Team Rocket base, I was{CLEAR}honestly shocked by how big they are.{SCROLL}I used to think that if we all worked{NEWLINE}together, we could easily beat Team{CLEAR}Rocket. Now it doesn’t look that simple.{SCROLL}To stop Team Rocket from{NEWLINE}causing any more tragedies in{CLEAR}this land, I have to be ready to{CLEAR}fight with everything I’ve got.{SCROLL}Crystal: I hear the Ice Path{NEWLINE}east of Mahogany Town has rare{CLEAR}Ice-type Pokémon and strong{CLEAR}Trainers training there.{SCROLL}I’m going to go there to catch{NEWLINE}Pokémon and train. See you later!",
+   "en": "Crystal: I feel the same way Gold does.{NEWLINE}Coming to this Team Rocket base, I was{CLEAR}honestly shocked by how big they are.{SCROLL}I used to think that if we all worked{NEWLINE}together, we could easily beat Team{CLEAR}Rocket. Now it doesn’t look that simple.{SCROLL}To stop Team Rocket from causing any{NEWLINE}more tragedies in this land, I have to{CLEAR}be ready to fight to the death.{SCROLL}Crystal: I hear the Ice Path{NEWLINE}east of Mahogany Town has rare{CLEAR}Ice-type Pokémon and strong{CLEAR}Trainers training there.{SCROLL}I’m going to go there to catch{NEWLINE}Pokémon and train. See you later!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV047: softened: 拼死一战的觉悟 is readiness to fight to the death (D-1658)"
   },
   {
    "id": 62,
@@ -662,10 +662,10 @@
   {
    "id": 82,
    "zh": "小蓝『嗯、嗯,可靠的联盟冠军。{NEWLINE}我现在要回家啦,{CLEAR}以后有空记得来找我玩啊！",
-   "en": "Green: Mm-hmm, my reliable League{NEWLINE}Champion. I’m heading home now.{CLEAR}Come visit me when you’re free!",
+   "en": "Green: Mm-hmm, such a reliable League{NEWLINE}Champion. I’m heading home now. Come{CLEAR}visit me when you’re free!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV047: addition: 'my' not in zh"
   },
   {
    "id": 83,

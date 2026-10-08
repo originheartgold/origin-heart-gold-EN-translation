@@ -363,10 +363,10 @@
   {
    "id": 44,
    "zh": "{VAR:0103:0}『我的比雕和猫头夜鹰,{NEWLINE}它们是可以成为朋友的。{CLEAR}所以也请你们放下斗争心做朋友吧！",
-   "en": "{VAR:0103:0}: My Pidgeot and Noctowl{NEWLINE}can be friends. So please drop your{CLEAR}fighting spirit and be friends too!",
+   "en": "{VAR:0103:0}: My Pidgeot and Noctowl can be{NEWLINE}friends. So please set aside your{CLEAR}rivalry and be friends too!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV047: meaning: 斗争心 here is the urge to fight each other, not 'fighting spirit'"
   },
   {
    "id": 45,

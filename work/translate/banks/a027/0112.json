@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "赤日『混蛋,正要得手的时候,{NEWLINE}偏偏跑出来一个扫把星冠军。",
-   "en": "Cyrus: Damn it. Just as we had him,{NEWLINE}this jinx of a Champion shows up.",
+   "en": "Cyrus: Bastard. Just as we had him,{NEWLINE}this jinx of a Champion shows up.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV047: softened: 混蛋 is 'bastard', not 'damn it'"
   },
   {
    "id": 12,
@@ -134,10 +134,10 @@
   {
    "id": 16,
    "zh": "赤日『混蛋,真强啊……",
-   "en": "Cyrus: Damn it... So strong...",
+   "en": "Cyrus: Bastard... So strong...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV047: softened: 混蛋 is 'bastard', not 'damn it'"
   },
   {
    "id": 17,
@@ -574,10 +574,10 @@
   {
    "id": 71,
    "zh": "赤焰松『上啊,喷火驼！{NEWLINE}水吾桐『冻碎它,帝牙海狮！",
-   "en": "Maxie: Go, Camerupt!{NEWLINE}Archie: Crush it with ice, Walrein!",
+   "en": "Maxie: Go, Camerupt!{NEWLINE}Archie: Freeze it to bits, Walrein!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV047: meaning: 冻碎 is freeze-and-shatter (D-1659)"
   },
   {
    "id": 72,
