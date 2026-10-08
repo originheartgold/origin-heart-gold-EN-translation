@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "{VAR:0100:0}被打倒了！{SCROLL}{VAR:0103:1}身上{NEWLINE}已经没有可以战斗的精灵！{SCROLL}{VAR:0103:2}在和短裤小子的{NEWLINE}战斗中失败了⋯⋯{SCROLL}{VAR:0103:1}作为奖励送给{NEWLINE}{VAR:0137:3}¥{SCROLL}⋯⋯　⋯⋯　⋯⋯　⋯⋯{SCROLL}{VAR:0103:1}{NEWLINE}眼前一片漆黑！",
-   "en": "{VAR:0100:0} fainted!{SCROLL}{VAR:0103:1} has no more Pokémon{NEWLINE}that can fight!{SCROLL}Lost the battle against{NEWLINE}Youngster {VAR:0103:2}...{SCROLL}{VAR:0103:1} paid out{NEWLINE}${VAR:0137:3} as prize money.{SCROLL}... ... ... ...{SCROLL}{VAR:0103:1}{NEWLINE}blacked out!",
+   "en": "{VAR:0100:0} fainted!{SCROLL}{VAR:0103:1} has no more Pokémon{NEWLINE}that can fight!{SCROLL}{VAR:0103:2} lost the battle{NEWLINE}against the Youngster...{SCROLL}{VAR:0103:1} paid out{NEWLINE}${VAR:0137:3} as prize money.{SCROLL}... ... ... ...{SCROLL}{VAR:0103:1}{NEWLINE}blacked out!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags fullwidth_chars,var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0201#0; text not kept)"
+   "notes": "v3 TM: 1 source(s), same position, flags fullwidth_chars,var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0201#0; text not kept) | RV057: meaning: zh says {VAR:0103:2} lost against the Youngster; English had silently followed the JP (Youngster {2}); logged as hack-finding, settles D-1727"
   },
   {
    "id": 1,
