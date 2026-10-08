@@ -1457,11 +1457,17 @@ the ABC page and ＡＢＣ over the QWE page.
 **Why (the Chinese hack):**
 
 Players: the game freezes when certain overworld objects come on screen: in the Team Rocket hideout under
-Mahogany Town, walking right on B1F towards the camera ambush (melonDS, Delta); also at Five Island and
-Seven Island, and with a Bell Tower object made visible. DeSmuME happens to read address 0 without trapping
-and keeps going, so the same save passes there. The untouched Chinese ROM freezes in the same place, so this
-is a bug of the hack (D-1337 says such bugs are reported, not fixed; the user asked for this fix on
-2026-10-08, see the evidence).
+Mahogany Town, walking right on B1F towards the camera ambush (reproduced on melonDS 1.1); also at Five
+Island (reported on iOS Delta, reproduced on melonDS 1.1) and Seven Island (melonDS 1.1). A Bell Tower
+object hits the same code only in a forced state (the harness clears its hide flag 1140); whether normal
+play reaches it is unproven. DeSmuME happens to read address 0 without trapping and keeps going, so the
+same save passes there. Real hardware is untested. The untouched Chinese ROM freezes in the same place,
+so this is a bug of the hack.
+
+Status: D-1337 says hack bugs are reported, not fixed. The user requested this fix on 2026-10-08 ('we need
+to build 4 fixes so they now work', see the evidence) but did not mention D-1337, and the exception is not
+yet recorded in the register: D-2043 (open, in the main checkout's uncommitted register) still says
+'preserve under D-1337'. The user must record the exception before release.
 
 Technical: an object's texture animation picks a texture frame each frame, and the hack's arm9 routine
 0x02024654 (called from 0x02024604) binds that frame's texture to the object's model. Some objects get an
@@ -1469,7 +1475,8 @@ animation whose frames run past the textures they have: the Rocket HQ barrier (m
 #243 'stop', one texture) gets animation #280/#286, frames 0, 8-15, 1-7, and asks for frame 4. The routine
 checks the frame against the texture count (cmp/bhs at 0x0202467A), but the out-of-range branch goes to
 'movs r0, #0' and then into the unconditional 'ldr r0, [r0]' at 0x02024696: a NULL read, which on melonDS
-and hardware-accurate emulators is a data abort (CPSR 0x97, abort LR 0x0202469E), and the game hangs.
+1.1 is a data abort (CPSR 0x97, abort LR 0x0202469E), and the game hangs. Hardware would presumably abort the
+same way (address 0 is not readable there either), but that is inferred, not tested.
 
 **What (old → new):**
 
@@ -1482,15 +1489,17 @@ routine does before the branch writes memory, and the pop matches its push, so r
 caller ignores the return value and still updates the palette (index 0, valid here). Not fixed: the
 animation assignment itself, a NULL model or texture pointer (0x0202466C, 0x02024672), invalid palette
 indices.
+On DeSmuME, which never crashed, the visible difference is that the barrier keeps its texture instead of
+being bound to texture parameters read from address 0.
 
 **Evidence:**
 
-- Decision pending: D-2043 (hack-finding, Rocket HQ B1F renderer data abort) is in the main checkout's register; it is not yet in this branch's register, so this fix lists no decision of its own
-- User request 2026-10-08 (Codex session, codex/rocket-hq-freeze): 'When you are done reproducing collect all information you can and try to create a fix in a worktree', then 'Okay, so all 4 reproducers should live in the harness and we need to build 4 fixes so they now work.' (exception to D-1337 for this crash)
+- Decision pending: D-2043 (hack-finding, Rocket HQ B1F renderer data abort) is in the main checkout's register; it is not yet in this branch's register, so this fix lists no decision of its own; it still says 'preserve under D-1337' and the exception for this fix is not yet recorded (the user must record it before release)
+- User request 2026-10-08 (Codex session, codex/rocket-hq-freeze): 'When you are done reproducing collect all information you can and try to create a fix in a worktree', then 'Okay, so all 4 reproducers should live in the harness and we need to build 4 fixes so they now work.'; D-1337 was not mentioned
 - work/notes/rocket_hq_freeze_repro_20261008.md: reproduction on melonDS 1.1 (Chinese ROM, rc5, WIP), crash registers
 - work/notes/rocket_hq_freeze_fix_20261008.md: the resources, the branch, its semantics and the before/after runs
 - work/notes/five_island_freeze_20261008.md, texture_additional_repro_20261008.md: the same abort at Five Island and Seven Island, fixed by the same byte
-- work/notes/texture_regression_integration_20261008.md: emu_harness.py texture-bounds, 4 cases x original/fixed x Chinese/rc5, all 16 pass
+- work/notes/texture_regression_integration_20261008.md: emu_harness.py texture-bounds, 4 cases x original/fixed x Chinese/rc5, all 16 pass; Bell Tower is a forced state (hide flag 1140 cleared), reachability in normal play unproven
 
 **Touches:**
 
@@ -1503,7 +1512,9 @@ indices.
 
 ```asm
 ; overworld-texture-frame-bounds - Overworld objects: a texture frame the texture does not have no longer
-; crashes (Rocket HQ freeze). D-2043 (main checkout's register); a user-requested exception to D-1337.
+; crashes (Rocket HQ freeze). D-2043 (open, main checkout's register). The user requested this fix on
+; 2026-10-08; the exception to D-1337 is not yet recorded in the register (D-2043 still says 'preserve
+; under D-1337'), and the user must record it before release.
 ; Why and what: fix.toml next to this file; overview work/patches/FIXES.md;
 ; work/notes/rocket_hq_freeze_fix_20261008.md.
 ;
@@ -1515,9 +1526,10 @@ indices.
 ; u8 count, ..., u16 entry offset at +6) and binds it to every material of the model that uses it.
 ; It does check the number against the dictionary's count, but the out-of-range branch goes to the same
 ; 'no texture' path as a NULL block, r0 = 0, and the unconditional 'ldr r0, [r0]' after it reads address 0:
-; a data abort on melonDS and hardware-accurate emulators (DeSmuME reads it and goes on). Objects whose
-; animation has more frames than their texture has textures hit it: the Rocket HQ B1F barrier (one texture,
-; frames up to 15) asks for frame 4; Five Island 4, Seven Island 11, Bell Tower 15.
+; a data abort on melonDS 1.1 (hardware presumably too, untested; DeSmuME reads it and goes on). Objects
+; whose animation has more frames than their texture has textures hit it: the Rocket HQ B1F barrier (one
+; texture, frames up to 15) asks for frame 4; Five Island 4, Seven Island 11; Bell Tower 15 only in a forced
+; state (hide flag 1140 cleared), not shown to be reachable in normal play.
 ;
 ; The fix sends that branch to the routine's own return instead: an out-of-range frame keeps the texture
 ; that is already bound, a valid one takes the old path. Safe because everything before the branch only

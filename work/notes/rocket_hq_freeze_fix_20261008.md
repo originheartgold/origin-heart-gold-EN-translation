@@ -1,5 +1,7 @@
 # Rocket HQ texture-frame fix experiment (D-2043)
 
+> **Status (2026-10-08, later):** The "opt-in" wording below describes the first experiment. The fix is now `work/patches/overworld-texture-frame-bounds/` and is in normal builds (see "Ported to the per-fix format" in [rocket_hq_freeze_fix_20261008.md](rocket_hq_freeze_fix_20261008.md)). The user requested the fix; the exception to D-1337 is not yet recorded in the register (D-2043 still says "preserve under D-1337") and must be recorded by the user before release.
+
 Branch: `codex/rocket-hq-freeze`. The user explicitly requested an attempted fix in a worktree after reproduction on 2026-10-08. This authorizes this isolated experiment despite the standing D-1337 policy; it does not change that policy for other hack bugs or publish a release.
 
 ## Result

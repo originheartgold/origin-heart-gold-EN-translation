@@ -1,5 +1,7 @@
 ; overworld-texture-frame-bounds - Overworld objects: a texture frame the texture does not have no longer
-; crashes (Rocket HQ freeze). D-2043 (main checkout's register); a user-requested exception to D-1337.
+; crashes (Rocket HQ freeze). D-2043 (open, main checkout's register). The user requested this fix on
+; 2026-10-08; the exception to D-1337 is not yet recorded in the register (D-2043 still says 'preserve
+; under D-1337'), and the user must record it before release.
 ; Why and what: fix.toml next to this file; overview work/patches/FIXES.md;
 ; work/notes/rocket_hq_freeze_fix_20261008.md.
 ;
@@ -11,9 +13,10 @@
 ; u8 count, ..., u16 entry offset at +6) and binds it to every material of the model that uses it.
 ; It does check the number against the dictionary's count, but the out-of-range branch goes to the same
 ; 'no texture' path as a NULL block, r0 = 0, and the unconditional 'ldr r0, [r0]' after it reads address 0:
-; a data abort on melonDS and hardware-accurate emulators (DeSmuME reads it and goes on). Objects whose
-; animation has more frames than their texture has textures hit it: the Rocket HQ B1F barrier (one texture,
-; frames up to 15) asks for frame 4; Five Island 4, Seven Island 11, Bell Tower 15.
+; a data abort on melonDS 1.1 (hardware presumably too, untested; DeSmuME reads it and goes on). Objects
+; whose animation has more frames than their texture has textures hit it: the Rocket HQ B1F barrier (one
+; texture, frames up to 15) asks for frame 4; Five Island 4, Seven Island 11; Bell Tower 15 only in a forced
+; state (hide flag 1140 cleared), not shown to be reachable in normal play.
 ;
 ; The fix sends that branch to the routine's own return instead: an out-of-range frame keeps the texture
 ; that is already bound, a valid one takes the old path. Safe because everything before the branch only
