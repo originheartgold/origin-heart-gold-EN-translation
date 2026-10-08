@@ -49,11 +49,12 @@ Pipeline
               the patch (its VCDIFF application header), so it is run on links under the standard names
               (PATCH_SOURCE_NAME, PATCH_TARGET_NAME): the patch does not depend on what the base dump is
               called or on --out. xdelta3 is pinned (XDELTA3_VERSION, checked in stage 0 unless --no-patch;
-              other versions write other bytes): --unpinned-xdelta3 builds with another one, not for a release
+              other versions write other bytes): another version builds with a warning and is recorded as
+              "xdelta3_pinned": false, which check.py --strict-release and artifact_check.py refuse
 
-Toolchain: armips (stage 0, asmpatch.PINNED_VERSION) and xdelta3 are refused at any other version; the Python
-version and the ndspy / pillow versions of work/tools/requirements-runtime.txt are checked with a warning only
-(VALIDATED_PYTHON); all of them are recorded in the report ("toolchain"). The build reads no clock, locale or
+Toolchain: armips (stage 0, asmpatch.PINNED_VERSION) is refused at any other version; another xdelta3, Python
+(VALIDATED_PYTHON) or ndspy / pillow (work/tools/requirements-runtime.txt) only warns; all of them are recorded
+in the report ("toolchain"), and the release paths refuse an unpinned xdelta3. The build reads no clock, locale or
 time zone and lists no folder unsorted, so two builds of the same tree give the same ROM, patch and report
 (but its paths): check.py --full --repro builds twice, in different folders and environments, and compares.
 
@@ -138,17 +139,19 @@ def xdelta3_version(exe="xdelta3") -> str:
     return mo.group(1)
 
 
-def check_xdelta3(exe="xdelta3", allow_other=False) -> tuple:
-    """(version, pinned) of xdelta3; raises ToolchainError when it is missing, or another version than
-    XDELTA3_VERSION and not allow_other."""
+def check_xdelta3(exe="xdelta3") -> tuple:
+    """(version, pinned) of xdelta3; raises ToolchainError when it is missing or not xdelta3. Another version
+    than XDELTA3_VERSION is not an error here (see xdelta3_warning); the release paths refuse it."""
     if shutil.which(exe) is None:
         raise ToolchainError("xdelta3 is not on PATH (needed for the patch; --no-patch builds without it)")
     v = xdelta3_version(exe)
-    if v != XDELTA3_VERSION and not allow_other:
-        raise ToolchainError(f"xdelta3 {v} at {shutil.which(exe)}; the patch is pinned to xdelta3 {XDELTA3_VERSION} "
-                             f"(other versions write other bytes, work/notes/toolchain.md). Use it, or pass "
-                             f"--unpinned-xdelta3 for a patch that is not a release (its xdelta_sha1 will differ)")
     return v, v == XDELTA3_VERSION
+
+
+def xdelta3_warning(version) -> str:
+    return (f"xdelta3 {version}: the patch is pinned to xdelta3 {XDELTA3_VERSION} (other versions write other "
+            f"bytes, work/notes/toolchain.md); this patch's xdelta_sha1 will differ and it is not a release "
+            f"(check.py --strict-release and artifact_check.py refuse it)")
 
 
 def pinned_requirements(path=RUNTIME_REQUIREMENTS) -> dict:
@@ -434,9 +437,6 @@ def main(argv=None):
     ap.add_argument("--armips", help=f"armips executable (default: ${asmpatch.ENV_VAR}, then PATH); must be "
                                      f"{asmpatch.PINNED_VERSION}")
     ap.add_argument("--no-patch", action="store_true")
-    ap.add_argument("--unpinned-xdelta3", action="store_true",
-                    help=f"build the patch with an xdelta3 other than {XDELTA3_VERSION} (its bytes differ from the "
-                         f"recorded ones; not for a release)")
     ap.add_argument("--no-verify", action="store_true")
     ap.add_argument("--lenient", action="store_true", help="unencodable en falls back to zh instead of failing")
     ap.add_argument("--keep-export", action="store_true")
@@ -480,17 +480,17 @@ def main(argv=None):
     xdelta = None
     if not a.no_patch:
         try:
-            xdelta = check_xdelta3(allow_other=a.unpinned_xdelta3)
+            xdelta = check_xdelta3()
         except ToolchainError as ex:
             sys.exit(str(ex))
-        log(f"xdelta3 {xdelta[0]}" + ("" if xdelta[1] else f" (UNPINNED: not {XDELTA3_VERSION}; not for a release)"))
+        log(f"xdelta3 {xdelta[0]}" if xdelta[1] else f"WARNING: {xdelta3_warning(xdelta[0])}")
     for w in python_warnings():
         log(f"WARNING: {w}")
     report["toolchain"] = toolchain_record(version if armips is not None else None, xdelta)
     if any(f["id"] == text_speed_patch.FIX_ID for f in active):
         # the build places the reviewed payload (payload.json, sha256 pinned) and never compiles native.c;
         # clang runs only in text_speed_patch.py --check-payload / --compile and check.py --repro, pinned there
-        report["toolchain"]["text_speed_compiler"] = text_speed_patch.pinned_compiler()
+        report["toolchain"]["text_speed_compiler_pin"] = text_speed_patch.pinned_compiler()
 
     # 1. export
     export_dir = paths["export"]

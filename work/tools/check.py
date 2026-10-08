@@ -41,15 +41,18 @@ Full adds (and fails when armips v0.11.0, the two ROMs or xdelta3 are missing; a
              depend on the translation text;
   build      build.py into --work-dir (default work/build/check), then its hashes against
              work/patches/expected.toml (see EXPECTED_HELP below): nontext_sha1 must match; the text, ROM and
-             xdelta hashes are reported, and fail the step only with --strict-release. prereq also requires
-             xdelta3 at build.XDELTA3_VERSION and warns about another Python / ndspy / pillow.
+             xdelta hashes are reported, and fail the step only with --strict-release. prereq warns about an
+             xdelta3 other than build.XDELTA3_VERSION (--strict-release: a failure, and the build report must
+             record the pinned one) and about another Python / ndspy / pillow.
 --repro (and --strict-release) adds:
   repro      text_speed_patch.verify_reproducible_payload() (native.c recompiled by the pinned clang, fix.toml
-             [native] compiler: the same bytes and symbols as payload.json), then build.py again into
-             <work-dir>-repro, with the base ROM linked under another name, other --out / --patch names, that
-             folder as the working directory and other TZ, LC_ALL/LANG and PYTHONHASHSEED (REPRO_ENVS; the
-             first build runs with the other set): the ROM, the xdelta and build_report.json (without its paths)
-             must be byte-identical; a ROM difference is listed by NDS part (arm9, overlay N, file path).
+             [native] compiler, vendor and major enforced: the same bytes and symbols as payload.json), then
+             build.py again into <work-dir>-repro, with the base ROM linked under another name, other --out /
+             --patch names, that folder as the working directory and other TZ, LC_ALL/LANG and PYTHONHASHSEED
+             (REPRO_ENVS; the first build runs with the other set): the ROM, the xdelta and build_report.json
+             (without its paths) must be byte-identical; a ROM difference is listed by NDS part (arm9, overlay
+             N, file path). When the second build's Python does not get a non-UTF-8 encoding (the locale is not
+             installed), a note says the locale axis was not tested.
 
 Exit status 0 only when no step failed. Each step prints PASS / FAIL / SKIP with its time.
 """
@@ -205,8 +208,9 @@ def step_tests_fast():
     return run_tests(NO_ARMIPS) + "; armips hidden"
 
 
-def full_prerequisites(armips_arg):
-    """armips (pinned), both ROMs and xdelta3; raises Skip(fail=True) naming what is missing."""
+def full_prerequisites(armips_arg, release=False):
+    """(armips, warnings): armips (pinned), both ROMs and xdelta3; raises Skip(fail=True) naming what is missing.
+    An xdelta3 other than build.XDELTA3_VERSION is a warning, and missing for a release (--strict-release)."""
     import asmpatch
     import build
     missing = []
@@ -219,13 +223,16 @@ def full_prerequisites(armips_arg):
     for p in (build.ROM_CN, build.ROM_US):
         if not p.is_file():
             missing.append(f"{p.relative_to(REPO)} is missing (CONTRIBUTING.md: Building the ROM)")
+    warnings = []
     try:
-        build.check_xdelta3()
+        version, pinned = build.check_xdelta3()
+        if not pinned:
+            (missing if release else warnings).append(build.xdelta3_warning(version))
     except build.ToolchainError as ex:
         missing.append(str(ex))
     if missing:
-        raise Skip("--full needs: " + "; ".join(missing), fail=True)
-    return armips
+        raise Skip(("--strict-release" if release else "--full") + " needs: " + "; ".join(missing), fail=True)
+    return armips, warnings
 
 
 def step_asmpatch(armips):
@@ -289,22 +296,45 @@ def step_tests_full(armips):
     return run_tests(armips) + "; with armips (GOLDEN)"
 
 
+ROM_SECTIONS = ("arm9", "arm7", "arm9OverlayTable", "arm7OverlayTable", "iconBanner")
+
+
+def rom_blobs(rom):
+    """(key, label, bytes) of every part of an ndspy ROM: the sections (ROM_SECTIONS), then every file in id
+    order (key "file<i>", label its path or the overlay it is). rom_hashes and rom_parts read the same list."""
+    names = {}
+    for which, loader in (("arm9", "loadArm9Overlays"), ("arm7", "loadArm7Overlays")):
+        try:
+            for ov_id, ov in getattr(rom, loader)().items():
+                names[ov.fileID] = f"{which} overlay {ov_id}"
+        except Exception:                                   # noqa: BLE001 - a broken table: files by number
+            pass
+    for name in ROM_SECTIONS:
+        yield name, name, bytes(getattr(rom, name, None) or b"")
+    for i, data in enumerate(rom.files):
+        label = names.get(i)
+        if label is None:
+            try:
+                label = rom.filenames.filenameOf(i)
+            except Exception:                               # noqa: BLE001
+                label = None
+        yield f"file{i}", f"{label} (file {i})" if label else f"file {i}", bytes(data)
+
+
 def rom_hashes(rom_path) -> dict:
     """text_sha1 (the message NARCs) and nontext_sha1 (every other part of the ROM: arm9, arm7, overlay
-    tables, banner and every other file, by id) of a built ROM."""
+    tables, banner and every other file, by id) of a built ROM. The byte format of nontext_sha1 is what
+    expected.toml records: per part "<key>:<length>:" + its SHA-1 digest."""
     import msgtool
     rom = msgtool.load_rom(str(rom_path))
-    text_ids = {rom.filenames.idOf(p) for p in TEXT_NARCS}
+    text_keys = {f"file{rom.filenames.idOf(p)}" for p in TEXT_NARCS}
     text = hashlib.sha1()
     for p in TEXT_NARCS:
         text.update(hashlib.sha1(bytes(rom.files[rom.filenames.idOf(p)])).digest())
     nontext = hashlib.sha1()
-    for name in ("arm9", "arm7", "arm9OverlayTable", "arm7OverlayTable", "iconBanner"):
-        data = bytes(getattr(rom, name) or b"")
-        nontext.update(f"{name}:{len(data)}:".encode() + hashlib.sha1(data).digest())
-    for i, data in enumerate(rom.files):
-        if i not in text_ids:
-            nontext.update(f"file{i}:{len(data)}:".encode() + hashlib.sha1(bytes(data)).digest())
+    for key, _label, data in rom_blobs(rom):
+        if key not in text_keys:
+            nontext.update(f"{key}:{len(data)}:".encode() + hashlib.sha1(data).digest())
     return {"text_sha1": text.hexdigest(), "nontext_sha1": nontext.hexdigest()}
 
 
@@ -377,6 +407,9 @@ def step_build(armips, work_dir, update, strict=False, env=None, out=None):
     if out is not None:
         out.update(report=report, work_dir=Path(work_dir))
     log = Path(work_dir) / "build.log"
+    if strict and not report.get("toolchain", {}).get("xdelta3_pinned"):
+        raise Failed(f"the build report does not record the pinned xdelta3 ({report.get('toolchain')}); "
+                     f"a release needs it (log: {log})")
     got = {"rom_sha1": report["rom"]["sha1"], "xdelta_sha1": report["patch"]["sha1"],
            **rom_hashes(report["rom"]["path"])}
     if update:
@@ -406,32 +439,13 @@ def normalized_report(report: dict, work_dir) -> str:
 
 
 def rom_parts(rom) -> dict:
-    """{part name: sha1} of an ndspy ROM: the header fields ndspy keeps, arm9, arm7, the overlay tables, the
-    banner and every file, named by its path (or as the ARM9 / ARM7 overlay it is)."""
-    names = {}
-    for which, loader in (("arm9", "loadArm9Overlays"), ("arm7", "loadArm7Overlays")):
-        try:
-            for ov_id, ov in getattr(rom, loader)().items():
-                names[ov.fileID] = f"{which} overlay {ov_id} (file {ov.fileID})"
-        except Exception:                                   # noqa: BLE001 - a broken table: files by number
-            pass
-    out = {}
-    for name in ("arm9", "arm7", "arm9OverlayTable", "arm7OverlayTable", "iconBanner", "debugRom"):
-        data = getattr(rom, name, None)
-        if data is not None:
-            out[name] = hashlib.sha1(bytes(data)).hexdigest()
+    """{label: sha1} of an ndspy ROM (rom_blobs), plus the debug ROM and the header fields ndspy keeps."""
+    out = {label: hashlib.sha1(data).hexdigest() for _key, label, data in rom_blobs(rom)}
+    if getattr(rom, "debugRom", None) is not None:
+        out["debugRom"] = hashlib.sha1(bytes(rom.debugRom)).hexdigest()
     header = {k: v for k, v in vars(rom).items()
               if isinstance(v, (int, str, bytes, bool)) and not k.startswith("_") and k not in out}
     out["header fields"] = hashlib.sha1(repr(sorted(header.items())).encode()).hexdigest()
-    for i, data in enumerate(rom.files):
-        name = names.get(i)
-        if name is None:
-            try:
-                name = rom.filenames.filenameOf(i)
-            except Exception:                               # noqa: BLE001
-                name = None
-            name = f"{name} (file {i})" if name else f"file {i}"
-        out[name] = hashlib.sha1(bytes(data)).hexdigest()
     return out
 
 
@@ -448,6 +462,22 @@ def rom_part_diff(path_a, path_b) -> list:
 def same_bytes(a, b) -> bool:
     import filecmp
     return Path(a).stat().st_size == Path(b).stat().st_size and filecmp.cmp(a, b, shallow=False)
+
+
+def preferred_encoding(env) -> str:
+    """The preferred encoding a Python started with `env` over os.environ gets (locale.getpreferredencoding)."""
+    r = subprocess.run([sys.executable, "-c", "import locale; print(locale.getpreferredencoding(False))"],
+                       env=dict(os.environ, **(env or {})), capture_output=True, text=True)
+    return r.stdout.strip() or "?"
+
+
+def locale_note(env) -> str:
+    """'' when env gives Python a non-UTF-8 encoding (the locale axis is tested), else a note saying it is not."""
+    enc = preferred_encoding(env)
+    if enc.lower().replace("-", "").replace("_", "") in ("utf8", "?"):
+        return (f"note: LC_ALL={(env or {}).get('LC_ALL')} gives Python {enc}, not a non-UTF-8 encoding (the locale "
+                f"is not installed here?): the locale axis was not tested")
+    return ""
 
 
 def step_repro(armips, first: dict, work_dir, env=None) -> str:
@@ -488,8 +518,13 @@ def step_repro(armips, first: dict, work_dir, env=None) -> str:
         fails.append("build_report.json differs (paths left out):\n" + "\n".join(d[:40]))
     if fails:
         raise Failed("\n".join(fails) + f"\n(builds: {first['work_dir']}, {work_dir})")
-    return (f"payload reproduced by {payload['compiler']} ({t_payload:.1f} s); second build in {work_dir.name} "
-            f"(renamed base, other names, cwd, TZ, locale, hash seed): ROM, xdelta and report identical")
+    enc = preferred_encoding(env)
+    lines = [f"payload reproduced by {payload['compiler']} ({t_payload:.1f} s); second build in {work_dir.name} "
+             f"(renamed base, other names, cwd, TZ, locale {enc}, hash seed): ROM, xdelta and report identical"]
+    if payload.get("compiler_warning"):
+        lines.append(f"note: {payload['compiler_warning']}")
+    note = locale_note(env)
+    return "\n".join(lines + ([note] if note else []))
 
 
 # --------------------------------------------------------------------------------------
@@ -585,11 +620,10 @@ def main(argv=None) -> int:
     armips = {}
 
     def prereq():
-        armips["path"] = full_prerequisites(a.armips)
+        armips["path"], warn = full_prerequisites(a.armips, release=a.strict_release)
         import build
-        warn = build.python_warnings()
-        return "\n".join([f"armips {armips['path']}, both ROMs, xdelta3 {build.XDELTA3_VERSION}"]
-                         + [f"warning: {w}" for w in warn])
+        warn += build.python_warnings()
+        return "\n".join([f"armips {armips['path']}, both ROMs, xdelta3"] + [f"warning: {w}" for w in warn])
 
     def need(fn):
         def go():

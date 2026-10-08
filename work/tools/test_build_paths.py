@@ -80,12 +80,11 @@ class ToolchainPinTests(unittest.TestCase):
             self.assertEqual(B.xdelta3_version(), "3.2.0")
             self.assertEqual(B.check_xdelta3(), (B.XDELTA3_VERSION, True))
 
-    def test_other_xdelta3_refused_unless_unpinned(self):
+    def test_other_xdelta3_is_reported_unpinned(self):
         with patch.object(B.subprocess, "run", return_value=completed(err="Xdelta version 3.0.11, Copyright")), \
                 patch.object(B.shutil, "which", return_value="/usr/bin/xdelta3"):
-            with self.assertRaisesRegex(B.ToolchainError, "3.0.11 .* pinned to xdelta3 3.2.0.*--unpinned-xdelta3"):
-                B.check_xdelta3()
-            self.assertEqual(B.check_xdelta3(allow_other=True), ("3.0.11", False))
+            self.assertEqual(B.check_xdelta3(), ("3.0.11", False))
+        self.assertRegex(B.xdelta3_warning("3.0.11"), "3.0.11: the patch is pinned to xdelta3 3.2.0.*not a release")
 
     def test_missing_or_foreign_xdelta3(self):
         with patch.object(B.shutil, "which", return_value=None):
@@ -96,16 +95,30 @@ class ToolchainPinTests(unittest.TestCase):
             with self.assertRaisesRegex(B.ToolchainError, "does not look like xdelta3"):
                 B.check_xdelta3()
 
-    def test_build_stops_on_unpinned_xdelta3_before_export(self):
-        with patch.object(B, "check_xdelta3", side_effect=B.ToolchainError("xdelta3 3.0.11 ... pinned")), \
+    def run_main_until_export(self, xdelta):
+        logged = []
+        with patch.object(B, "check_xdelta3", **xdelta), \
                 patch.object(B.asmpatch, "find_armips", return_value="/armips"), \
                 patch.object(B.asmpatch, "check_armips", return_value=B.asmpatch.PINNED_VERSION), \
-                patch.object(B.ws, "export") as export, patch.object(B, "log"), \
-                tempfile.TemporaryDirectory() as td:
-            with self.assertRaises(SystemExit) as cm:
+                patch.object(B.ws, "export", side_effect=StopBeforeRomLoad) as export, \
+                patch.object(B, "log", side_effect=logged.append), tempfile.TemporaryDirectory() as td:
+            with self.assertRaises(StopBeforeRomLoad):
                 B.main(["--work-dir", td])
-            self.assertIn("pinned", str(cm.exception.code))
-            export.assert_not_called()
+            export.assert_called_once()
+        return logged
+
+    def test_unpinned_xdelta3_warns_and_is_recorded(self):
+        logged = self.run_main_until_export({"return_value": ("3.0.11", False)})
+        self.assertTrue(any(ln.startswith("WARNING: xdelta3 3.0.11") for ln in logged), logged)
+        logged = self.run_main_until_export({"return_value": (B.XDELTA3_VERSION, True)})
+        self.assertIn(f"xdelta3 {B.XDELTA3_VERSION}", logged)
+        rec = B.toolchain_record("v0.11.0", ("3.0.11", False))
+        self.assertEqual((rec["xdelta3"], rec["xdelta3_pinned"]), ("3.0.11", False))
+
+    def test_missing_xdelta3_stops_before_export(self):
+        with self.assertRaises(SystemExit) as cm:
+            self.run_main_until_export({"side_effect": B.ToolchainError("xdelta3 is not on PATH")})
+        self.assertIn("not on PATH", str(cm.exception.code))
 
     def test_python_and_package_versions_only_warn(self):
         pins = {"ndspy": "4.2.0", "pillow": "12.3.0"}

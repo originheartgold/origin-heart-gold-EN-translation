@@ -142,6 +142,7 @@ class Repro(unittest.TestCase):
         self.root = Path(self.td.name)
         self.base = self.root / "usa.nds"
         self.base.write_bytes(b"usa")
+        self.encoding = "ISO8859-1"
 
     def tearDown(self):
         self.td.cleanup()
@@ -169,6 +170,7 @@ class Repro(unittest.TestCase):
         import text_speed_patch
         pay = payload or {"return_value": {"status": "passed", "compiler": "clang version 1"}}
         with patch.object(C, "run_build", side_effect=run_build), \
+                patch.object(C, "preferred_encoding", return_value=self.encoding), \
                 patch.object(text_speed_patch, "verify_reproducible_payload", **pay), \
                 patch.object(C, "rom_part_diff", return_value=["arm9 overlay 50 (file 50)"]):
             out = C.step_repro("armips", first, self.root / "check-repro", env=C.REPRO_ENVS[1])
@@ -189,6 +191,19 @@ class Repro(unittest.TestCase):
         self.assertEqual(base_arg.resolve(), self.base.resolve())
         self.assertIn("--out", call["extra"])
         self.assertIn("--patch", call["extra"])
+
+    def test_locale_axis_not_tested_is_a_note(self):
+        out, _ = self.run_repro()
+        self.assertIn("locale ISO8859-1", out)
+        self.assertNotIn("not tested", out)
+        self.encoding = "UTF-8"                                             # the locale is not installed here
+        out, _ = self.run_repro()
+        self.assertIn("the locale axis was not tested", out)
+
+    def test_compiler_warning_is_a_note(self):
+        out, _ = self.run_repro(payload={"return_value": {"compiler": "Apple clang version 21.0.1",
+                                                          "compiler_warning": "not the pinned one"}})
+        self.assertIn("note: not the pinned one", out)
 
     def test_rom_difference_names_the_nds_parts(self):
         with self.assertRaises(C.Failed) as cm:
@@ -247,16 +262,58 @@ class Repro(unittest.TestCase):
         self.assertEqual(seen[0][-2:], ["build", "repro"])                 # a release always checks it
         self.assertEqual(seen[1][-1], "build")
 
-    def test_prereq_refuses_other_xdelta3(self):
+    def test_prereq_other_xdelta3_warns_unless_release(self):
         import asmpatch
         import build
         with patch.object(asmpatch, "find_armips", return_value="armips"), \
                 patch.object(asmpatch, "check_armips", return_value="v0.11.0"), \
-                patch.object(build, "check_xdelta3", side_effect=build.ToolchainError("xdelta3 3.0.11 ...")):
+                patch.object(build, "check_xdelta3", return_value=("3.0.11", False)), \
+                patch.object(build, "ROM_CN", self.base), patch.object(build, "ROM_US", self.base):
+            armips, warn = C.full_prerequisites(None)
+            self.assertEqual(armips, "armips")
+            self.assertIn("xdelta3 3.0.11", warn[0])
+            with self.assertRaises(C.Skip) as cm:
+                C.full_prerequisites(None, release=True)
+        self.assertTrue(cm.exception.fail)
+        self.assertIn("--strict-release needs: xdelta3 3.0.11", str(cm.exception))
+        with patch.object(asmpatch, "find_armips", return_value="armips"), \
+                patch.object(asmpatch, "check_armips", return_value="v0.11.0"), \
+                patch.object(build, "check_xdelta3", side_effect=build.ToolchainError("xdelta3 is not on PATH")):
             with self.assertRaises(C.Skip) as cm:
                 C.full_prerequisites(None)
-        self.assertTrue(cm.exception.fail)
-        self.assertIn("xdelta3 3.0.11", str(cm.exception))
+        self.assertIn("not on PATH", str(cm.exception))
+
+    def test_strict_build_needs_the_pinned_xdelta3_in_the_report(self):
+        rep = self.fake_build(self.root / "w", extra={"toolchain": {"xdelta3": "3.0.11", "xdelta3_pinned": False}})
+        with patch.object(C, "run_build", return_value=rep):
+            with self.assertRaises(C.Failed) as cm:
+                C.step_build("armips", self.root / "w", update=False, strict=True)
+        self.assertIn("pinned xdelta3", str(cm.exception))
+
+    def test_rom_hashes_and_parts_share_one_part_list(self):
+        from types import SimpleNamespace as NS
+
+        class Names:
+            def idOf(self, p):
+                return {"a/0/2/7": 1, "battle/string/battle_string.narc": 2}[p]
+
+            def filenameOf(self, i):
+                return None
+        rom = NS(files=[b"a", b"t1", b"t2", b"z"], filenames=Names(), arm9=b"9", arm7=b"7", arm9OverlayTable=b"",
+                 arm7OverlayTable=b"", iconBanner=b"b", loadArm9Overlays=dict, loadArm7Overlays=dict)
+        import msgtool
+        with patch.object(msgtool, "load_rom", return_value=rom):
+            got = C.rom_hashes("x.nds")
+        want = hashlib.sha1()                       # the byte format expected.toml was recorded with
+        for name in C.ROM_SECTIONS:
+            data = getattr(rom, name)
+            want.update(f"{name}:{len(data)}:".encode() + hashlib.sha1(data).digest())
+        for i in (0, 3):
+            want.update(f"file{i}:{len(rom.files[i])}:".encode() + hashlib.sha1(rom.files[i]).digest())
+        self.assertEqual(got["nontext_sha1"], want.hexdigest())
+        self.assertEqual(sorted(C.rom_parts(rom)), sorted(["arm9", "arm7", "arm9OverlayTable", "arm7OverlayTable",
+                                                           "iconBanner", "file 0", "file 1", "file 2", "file 3",
+                                                           "header fields"]))
 
 
 if __name__ == "__main__":
