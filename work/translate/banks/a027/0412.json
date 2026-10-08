@@ -54,18 +54,18 @@
   {
    "id": 6,
    "zh": "搜查队的队长在{NEWLINE}城都向天起誓{NEWLINE}「下次不会再失败了！」{NEWLINE}与呆呆兽分别的时候,{NEWLINE}它悲伤的叫声{NEWLINE}我至今还记得{NEWLINE}嘎⋯⋯嘎⋯⋯{NEWLINE}以上就是本期特别节目{NEWLINE}「夺走呆呆兽的黑影」{NEWLINE}我们下期再见！",
-   "en": "The search-party leader looked up at{NEWLINE}the Johto sky and shouted a promise.{NEWLINE}“We won’t fail again!”{NEWLINE}It mixed with the sad cries of the{NEWLINE}Slowpoke that echoed continuously...{NEWLINE}Yawn... Yaaawn...{NEWLINE}That was this week’s special,{NEWLINE}“The Dark Shadow that Kidnapped{NEWLINE}Slowpoke!”{NEWLINE}See you next time!",
+   "en": "The search-party leader swore to the{NEWLINE}Johto sky, “We won’t fail next time!”{NEWLINE}When we parted from the Slowpoke, its{NEWLINE}sad cry... I still remember it now.{NEWLINE}Gaa... Gaa...{NEWLINE}That was this week’s special, “The Dark{NEWLINE}Shadow That Stole the Slowpoke”! See{NEWLINE}you next time!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0419/6; modernised from US 0419#6"
+   "notes": "US 0419/6; modernised from US 0419#6 | RV070: meaning: zh: leader swore; narrator still remembers the cry; US yawns (D-1795)"
   },
   {
    "id": 7,
    "zh": "在这片昏暗的森林中{NEWLINE}你只能听到{NEWLINE}踩在落叶上的沙响声。{NEWLINE}「队长,前面没路了！」{NEWLINE}「别慌！冷静一点！」{NEWLINE}「出口在哪里啊！」{NEWLINE}「拿出勇气继续前进！」{NEWLINE}「我们回去吧。」{NEWLINE}「你还算不算男人！」{NEWLINE}「啊！队长的背上⋯⋯」{NEWLINE}「怎么了！」{NEWLINE}「有虫精灵⋯⋯」{NEWLINE}「妈妈呀！」{NEWLINE}以上就是本期特别节目{NEWLINE}「桐树林大作战」{NEWLINE}我们下期再见！",
-   "en": "The forest was dark and gloomy. We could{NEWLINE}hear the crunching of fallen leaves under{NEWLINE}our feet.{NEWLINE}“Leader, this is a dead end!”{NEWLINE}“Don’t worry, let’s retrace our steps.”{NEWLINE}“Where’s the exit?”{NEWLINE}“Come on, we can do it!”{NEWLINE}“Let’s just go back already...”{NEWLINE}“You’re a guy, aren’t you? Quit whining!”{NEWLINE}“Leader, your back...”{NEWLINE}“What?!”{NEWLINE}“On your back, a Bug-type Pokémon...”{NEWLINE}“Eeeeek!”{NEWLINE}That was this week’s special,{NEWLINE}“Great Strategy in Ilex Forest!”{NEWLINE}See you next time!",
+   "en": "In this gloomy forest, all you could{NEWLINE}hear was the rustle of fallen{NEWLINE}leaves underfoot.{NEWLINE}“Leader, it’s a dead end!”{NEWLINE}“Don’t panic! Calm down!”{NEWLINE}“Where’s the exit?!”{NEWLINE}“Gather your courage and keep going!”{NEWLINE}“Let’s go back.”{NEWLINE}“Call yourself a man?!”{NEWLINE}“Ah! On the leader’s back...”{NEWLINE}“What?!”{NEWLINE}“There’s a Bug-type Pokémon...”{NEWLINE}“Mommyyy!”{NEWLINE}That was this week’s special, “Great{NEWLINE}Operation in Ilex Forest”! See you{NEWLINE}next time!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0419/7; ext-review B-022"
+   "notes": "US 0419/7; ext-review B-022 | RV070: meaning: zh: don’t panic, courage, call yourself a man, Mommy; US retrace steps, Eeeek (D-1795)"
   },
   {
    "id": 8,
@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "这个洞窟里被{NEWLINE}厚重的冰所覆盖,{NEWLINE}简直就像冷库一样。{NEWLINE}「阿嚏！」{NEWLINE}冷得发抖的队员们{NEWLINE}围绕着{NEWLINE}熊熊燃烧的小火马,{NEWLINE}祈求一丁点的温暖⋯⋯{NEWLINE}以上就是本期特别节目{NEWLINE}「让人发抖的冰上小道」{NEWLINE}我们下期再见！",
-   "en": "The inside of the cave was covered{NEWLINE}in thick ice, just like a freezer.{NEWLINE}“Aaaahchoooo!”{NEWLINE}The shivering search party{NEWLINE}huddled around a blazing Ponyta,{NEWLINE}praying for even a little warmth...{NEWLINE}That was this week’s special,{NEWLINE}“The Shivering Path Out of Ice!”{NEWLINE}See you next time!",
+   "en": "The inside of the cave was covered in{NEWLINE}thick ice, just like a freezer.{NEWLINE}“Aaaahchoooo!” The shivering search{NEWLINE}party huddled around a blazing Ponyta,{NEWLINE}praying for even a little warmth... That{NEWLINE}was this week’s special, “The Shivering{NEWLINE}Ice Path!” See you next time!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0419/9; modernised from US 0419#9"
+   "notes": "US 0419/9; modernised from US 0419#9 | RV070: grammar: title wording: Ice Path"
   },
   {
    "id": 10,
@@ -94,34 +94,34 @@
   {
    "id": 11,
    "zh": "这座森林比想象中的要明亮得多。{NEWLINE}在这里能见到{NEWLINE}许多的训练师们。{NEWLINE}「看,是捉虫少年！」{NEWLINE}「怎么了？」{NEWLINE}「他来向我挑战！」{NEWLINE}「那就和他打呗！」{NEWLINE}「但我没有能战斗的精灵⋯⋯」{NEWLINE}「你个笨蛋！」{NEWLINE}以上就是本期特别节目{NEWLINE}「常磐森林的搜查队」{NEWLINE}我们下期再见！",
-   "en": "The forest was brighter than they{NEWLINE}thought it would be.{NEWLINE}And they saw so many Trainers there.{NEWLINE}“Hey, a Bug Catcher!”{NEWLINE}“What?”{NEWLINE}“He’s challenged us to a battle!”{NEWLINE}“Then accept his challenge!”{NEWLINE}“But we don’t have any Pokémon...”{NEWLINE}“You idiot!”{NEWLINE}That was this week’s special,{NEWLINE}“The Viridian Forest Search Party!”{NEWLINE}See you next time!",
+   "en": "This forest was much brighter than they{NEWLINE}had imagined. Lots of Trainers could be{NEWLINE}seen here.{NEWLINE}“Look, it’s a Bug Catcher!”{NEWLINE}“What’s up?”{NEWLINE}“He’s challenging me!”{NEWLINE}“Then just fight him!”{NEWLINE}“But I don’t have any Pokémon that{NEWLINE}can battle...”{NEWLINE}“You idiot!”{NEWLINE}That was this week’s special, “The{NEWLINE}Viridian Forest Search Party”! See you{NEWLINE}next time!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0419/11; ext-review B-022 | tone review: 你个笨蛋 is a blunt 'you idiot!'; kept blunt (D-0627)"
+   "notes": "US 0419/11; ext-review B-022 | tone review: 你个笨蛋 is a blunt 'you idiot!'; kept blunt (D-0627) | RV070: meaning: zh: no Pokémon that can battle; US no Pokémon at all (D-1795)"
   },
   {
    "id": 12,
    "zh": "听说有平时很难遇到的{NEWLINE}精灵出现,{NEWLINE}搜查队来到了{NEWLINE}月见山。{NEWLINE}可他很等了好久,{NEWLINE}也没能见到{NEWLINE}精灵的身影⋯⋯{NEWLINE}不知道来到月见山的{NEWLINE}会是什么样的精灵？{NEWLINE}究竟什么时候会来呢？{NEWLINE}以上就是本期特别节目{NEWLINE}「月见山的传说」{NEWLINE}我们下期再见！",
-   "en": "We heard that there were Pokémon here,{NEWLINE}but we haven’t seen any yet.{NEWLINE}We’ve come all the way here to Mt. Moon,{NEWLINE}as a search party looking for Pokémon.{NEWLINE}We’ve been waiting, spending time here,{NEWLINE}and yet the day that we see a Pokémon{NEWLINE}hasn’t come yet...{NEWLINE}When will we see one? What kind of{NEWLINE}Pokémon will come to Mt. Moon?{NEWLINE}That was this week’s special,{NEWLINE}“Rumors on Mt. Moon!”{NEWLINE}See you next time!",
+   "en": "Hearing that a rarely seen Pokémon had{NEWLINE}appeared, the search party came to{NEWLINE}Mt. Moon. But though he waited and{NEWLINE}waited, he never saw a trace of it...{NEWLINE}What kind of Pokémon comes to Mt. Moon?{NEWLINE}And when will it come?{NEWLINE}That was this week’s special, “The{NEWLINE}Legend of Mt. Moon”! See you next time!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0419/12; ext-review B-022"
+   "notes": "US 0419/12; ext-review B-022 | RV070: meaning: zh: rare Pokémon reported; US any Pokémon, rumors (D-1795)"
   },
   {
    "id": 13,
    "zh": "搜查队的一位成员骑着自行车{NEWLINE}哼着小调,{NEWLINE}疾驰在１７号道路上。{NEWLINE}但他的脸上一本正经,{NEWLINE}看上去像是悠闲地{NEWLINE}进行自行车旅行,{NEWLINE}但这或许是他搜索{NEWLINE}精灵的活动之一。{NEWLINE}以上就是本期特别节目{NEWLINE}「炫目的自行车旅行！」{NEWLINE}我们下期再见！",
-   "en": "The members of the Pokémon search{NEWLINE}party are riding their Bicycles on{NEWLINE}Route 17 and singing.{NEWLINE}Looking at their faces, they seem to be{NEWLINE}relaxing and cycling along as{NEWLINE}they please.{NEWLINE}But they’re actually doing this to search{NEWLINE}for the Pokémon along the route.{NEWLINE}That was this week’s special,{NEWLINE}“Illusion Cycling!”{NEWLINE}See you next time!",
+   "en": "One member of the search party sped{NEWLINE}along Route 17 on a Bicycle, humming a{NEWLINE}tune. But his face was dead serious. It{NEWLINE}looks like a leisurely Bicycle trip, but{NEWLINE}maybe it’s part of his search{NEWLINE}for Pokémon.{NEWLINE}That was this week’s special, “The{NEWLINE}Dazzling Bicycle Trip”! See you{NEWLINE}next time!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0419/13; ext-review B-022"
+   "notes": "US 0419/13; ext-review B-022 | RV070: meaning: zh: one member, serious face, maybe searching; US several, relaxed, certainly (D-1795)"
   },
   {
    "id": 14,
    "zh": "令搜查队员{NEWLINE}感到麻烦的是{NEWLINE}这个世界,{NEWLINE}它的上下左右都是颠倒的,{NEWLINE}非常诡异⋯⋯{NEWLINE}在混乱的队员面前{NEWLINE}突然出现了⋯⋯{NEWLINE}什么！{NEWLINE}居然是骑拉帝纳！{NEWLINE}可是⋯⋯{NEWLINE}关于骑拉帝纳的资料非常少,{NEWLINE}只有一些目击记录,{NEWLINE}但这只骑拉帝纳{NEWLINE}和以往在资料上所见到的{NEWLINE}形状完全不同⋯⋯{NEWLINE}以上就是本期特别节目{NEWLINE}「怪异的骑拉帝纳！」{NEWLINE}我们下期再见！",
-   "en": "The search party has become lost!{NEWLINE}In this strange world, up has become{NEWLINE}down, and left has become right!{NEWLINE}Then suddenly, right before the confused{NEWLINE}search party’s eyes, it appears!{NEWLINE}Giratina!{NEWLINE}There’re so few accounts of anyone ever{NEWLINE}meeting this Pokémon. It rarely appears.{NEWLINE}But comparing Giratina to the few{NEWLINE}records that exist, it’s appearance{NEWLINE}is different...{NEWLINE}That was this week’s special,{NEWLINE}“The Strange Giratina!”{NEWLINE}See you next time!",
+   "en": "The search party has become lost! In{NEWLINE}this strange world, up has become down,{NEWLINE}and left has become right! Then{NEWLINE}suddenly, right before the confused{NEWLINE}search party’s eyes, it appears!{NEWLINE}Giratina! There’re so few accounts of{NEWLINE}anyone ever meeting this Pokémon. It{NEWLINE}rarely appears. But comparing Giratina{NEWLINE}to the few records that exist, its{NEWLINE}appearance is different... That was this{NEWLINE}week’s special, “The Strange Giratina!”{NEWLINE}See you next time!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0419/14; modernised from US 0419#14"
+   "notes": "US 0419/14; modernised from US 0419#14 | RV070: grammar: it’s → its"
   },
   {
    "id": 15,
@@ -134,10 +134,10 @@
   {
    "id": 16,
    "zh": "此时的搜查队已经{NEWLINE}已经累得筋疲力尽,{NEWLINE}为了调整状态,{NEWLINE}他们来到了华蓝市的小镇。{NEWLINE}「看,多么美丽的夕阳⋯⋯」{NEWLINE}「队长！看那⋯⋯」{NEWLINE}顺着队员手指指的地方,{NEWLINE}有一个很可疑的洞窟！{NEWLINE}接着,在进去探险的{NEWLINE}搜查队面前出现一个{NEWLINE}忽隐忽现的奇怪影子⋯⋯{NEWLINE}以上就是本期特别节目{NEWLINE}「洞窟主人」{NEWLINE}我们下期再见！",
-   "en": "The search party had just about{NEWLINE}reached the limits of its physical{NEWLINE}strength, when it came to Cerulean{NEWLINE}City to rest.{NEWLINE}“Look, such a beautiful sunset...”{NEWLINE}“Leader! Look over there!”{NEWLINE}The member was pointing at a{NEWLINE}suspicious-looking cave!{NEWLINE}The search party went to explore, and{NEWLINE}found a strange flickering shadow...{NEWLINE}That was this week’s special,{NEWLINE}“The True Shape of the Cave’s Owner!”{NEWLINE}See you next time!",
+   "en": "The search party had just about{NEWLINE}reached the limits of its physical{NEWLINE}strength, when it came to Cerulean City{NEWLINE}to rest. “Look, such a beautiful{NEWLINE}sunset...” “Leader! Look over there!”{NEWLINE}The member was pointing at a{NEWLINE}suspicious-looking cave! The search{NEWLINE}party went to explore, and found a{NEWLINE}strange flickering shadow... That was{NEWLINE}this week’s special, “The Master of the{NEWLINE}Cave!” See you next time!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0419/16; ext-review B-022"
+   "notes": "US 0419/16; ext-review B-022 | RV070: addition: title: zh 洞窟主人 = the Cave’s Master"
   }
  ]
 }

@@ -54,74 +54,74 @@
   {
    "id": 6,
    "zh": "兴奋地冲向天空,{NEWLINE}突破大地翱翔天际,{NEWLINE}振翅高飞,{NEWLINE}乘风远行,{NEWLINE}飞往自己想去的地方！{NEWLINE}他就是这样的驯鸟师ｚ！",
-   "en": "Flying majestically through the sky.{NEWLINE}Rejecting the land for the open air.{NEWLINE}Gracefully flapping its wings. Riding the{NEWLINE}wind to soar high into the sky.{NEWLINE}I want to fly there, too, sometime!{NEWLINE}The Bird Keeper!",
+   "en": "Excitedly dashing for the sky, breaking{NEWLINE}away from the earth to soar, flapping{NEWLINE}up high, riding the wind far away, flying{NEWLINE}wherever he wants to go! That’s the{NEWLINE}Bird Keeper!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0420/6"
+   "origin": "agent",
+   "notes": "US 0420/6 | RV070: meaning: zh: flies where he wants; US I want to fly too"
   },
   {
    "id": 7,
    "zh": "在客舱内唱歌,{NEWLINE}嗯ｚ,嗯ｚ,嗯ｚ嗯ｚ嗯ｚ{NEWLINE}计划是四天三夜的假期,{NEWLINE}划船、垂钓、登山、散步,{NEWLINE}一路搜寻着伊布。{NEWLINE}他就是这样的旅行者ｚ！　",
-   "en": "Singing in the cabin.{NEWLINE}Laa... Laa... La la la la...{NEWLINE}The plan is to take a three-night, four-{NEWLINE}day holiday. To fish off the boat, hike{NEWLINE}in the mountains, and look for Eevee to{NEWLINE}the east and west. That’s the Camper!",
+   "en": "Singing in the cabin. Hmm... hmm...{NEWLINE}hmm-hmm-hmm... The plan is a four-day,{NEWLINE}three-night holiday. Rowing, fishing,{NEWLINE}climbing, strolling, and searching for{NEWLINE}Eevee all the way. That’s the Camper!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0420/7; modernised from US 0420#7"
+   "origin": "agent",
+   "notes": "US 0420/7; modernised from US 0420#7 | RV070: omission: US dropped rowing and walking"
   },
   {
    "id": 8,
    "zh": "伸出胜利的手势跟人打招呼,{NEWLINE}冷藏箱里塞满了饮料,{NEWLINE}哼着小调在山间行走,{NEWLINE}清晰可见的水平线。{NEWLINE}不好！忘了拿盒饭了！{NEWLINE}她就是热爱大自然的{NEWLINE}郊游少女ｚ！",
-   "en": "Greeting you with a peace sign, stuffing{NEWLINE}drinks into a cooler, smiling brightly{NEWLINE}while hiking through the mountains, you{NEWLINE}can see her clearly on the horizon.{NEWLINE}Oh no! Forgot the lunchbox! The number{NEWLINE}one rule is to protect nature.{NEWLINE}The Picnicker!",
+   "en": "Greeting you with a peace sign, a cooler{NEWLINE}stuffed with drinks, humming a tune{NEWLINE}while hiking in the mountains, the{NEWLINE}horizon clear in view. Oh no! Forgot the{NEWLINE}lunchbox! That’s the{NEWLINE}nature-loving Picnicker!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0420/8"
+   "origin": "agent",
+   "notes": "US 0420/8 | RV070: addition: US added protecting nature rule; horizon detail changed (D-1820)"
   },
   {
    "id": 9,
    "zh": "被海水呛得流鼻涕,{NEWLINE}在岩石的附近游唦,{NEWLINE}娴熟的蛙唦,{NEWLINE}一直游个不停,结果脚抽筋了,{NEWLINE}被大浪冲刷后的健壮身体,{NEWLINE}今天真倒霉,居然下雨。{NEWLINE}他就是这样的唦裤男ｚ！",
-   "en": "Accidentally inhaling a little ocean{NEWLINE}water, he now has a sore nose. Swimming{NEWLINE}around the rocks, pushing ahead with a{NEWLINE}breaststroke, tirelessly swimming along,{NEWLINE}and getting a leg cramp! His lungs{NEWLINE}expand easily but it’s an unlucky day--{NEWLINE}it’s raining! That poor Swimmer!",
+   "en": "A runny nose from swallowing seawater,{NEWLINE}swimming near the rocks, a skillful{NEWLINE}breaststroke, swimming nonstop until{NEWLINE}his leg cramps, a sturdy body pounded{NEWLINE}by big waves. What bad luck today: it’s{NEWLINE}raining! That’s the Swimmer!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0420/9"
+   "origin": "agent",
+   "notes": "US 0420/9 | RV070: meaning: zh: skillful breaststroke, sturdy body; US lungs (D-1820)"
   },
   {
    "id": 10,
    "zh": "拥有如维纳斯般的曲线,{NEWLINE}以及美丽的脸庞。{NEWLINE}昵称叫做美人鱼,{NEWLINE}她每天都在水中度过,{NEWLINE}肚子饿了也当做是减肥,{NEWLINE}有着大量的狂热追随者,{NEWLINE}酒窝中还残留着水滴,{NEWLINE}散着步也会想去游唦。{NEWLINE}她就是这样的比基尼大姐ｚ！",
-   "en": "A silhouette like that of Venus. An{NEWLINE}adorably dazzling smile. A nickname of{NEWLINE}“Mermaid.” Swimming around carefree in{NEWLINE}the early afternoon. Feeling hungry but{NEWLINE}on a diet. The number of enthusiastic{NEWLINE}fans. Droplets of water in her dimples.{NEWLINE}Playing in the water rather than taking{NEWLINE}a walk, this Swimmer!",
+   "en": "Curves like Venus and a beautiful face.{NEWLINE}Nicknamed “Mermaid,” she spends every{NEWLINE}day in the water, and when she’s{NEWLINE}hungry, she calls it a diet. Tons of{NEWLINE}devoted fans, drops of water still in{NEWLINE}her dimples, wanting to swim even while{NEWLINE}out on a walk. That’s the Swimmer!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0420/10"
+   "origin": "agent",
+   "notes": "US 0420/10 | RV070: meaning: zh: every day in water, hunger as diet, wants to swim on walks; US early afternoon"
   },
   {
    "id": 11,
    "zh": "在冰冷的水面上垂竿钓鱼,{NEWLINE}他的理想是能钓上一条大家伙,{NEWLINE}看到浮子沉了下去,他一收线,{NEWLINE}发现是只破鞋子！{NEWLINE}他就是这样的钓鱼者ｚ！",
-   "en": "Dropping a line in the cold water, in{NEWLINE}the hopes of catching something big.{NEWLINE}The line is yanked. The float drops{NEWLINE}underwater. What was caught? Some lively{NEWLINE}rubber boots! This poor Fisherman!",
+   "en": "Casting a line into icy water, dreaming{NEWLINE}of landing a big one. The float sinks, he{NEWLINE}reels it in, and it’s a worn-out shoe!{NEWLINE}That’s the Fisherman!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0420/11"
+   "origin": "agent",
+   "notes": "US 0420/11 | RV070: meaning: zh: worn-out shoe; US lively rubber boots"
   },
   {
    "id": 12,
    "zh": "天黑了,但周围还是那么明亮,{NEWLINE}让人觉得非常不可思议。{NEWLINE}他能燃烧熊熊烈焰,{NEWLINE}感觉能让人烧起来的热血青年。{NEWLINE}不需要蜡烛的人间喷火泵,{NEWLINE}一不小心就容易酿成火灾。{NEWLINE}他就是这样的喷火男ｚ！",
-   "en": "The day has come to an end, but it’s still{NEWLINE}bright. That’s strange, you’d think.{NEWLINE}There’s an intense fire burning, and it{NEWLINE}looks like it’s going to burn them.{NEWLINE}He doesn’t need a candle. He’s a human{NEWLINE}ablaze, carelessly playing with fire.{NEWLINE}The Firebreather!",
+   "en": "Night has fallen, but it’s still bright{NEWLINE}around him. How strange. He burns with{NEWLINE}roaring flames, a hot-blooded youth who{NEWLINE}looks like he could set you alight. A{NEWLINE}human fire pump who needs no candle,{NEWLINE}and one slip could start a fire. That’s{NEWLINE}the Firebreather!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0420/12"
+   "origin": "agent",
+   "notes": "US 0420/12 | RV070: meaning: zh: bright around him, hot-blooded youth, could cause fires; US muddled"
   },
   {
    "id": 13,
    "zh": "这只精灵好帅啊,{NEWLINE}它尾巴的形状很特别啊,{NEWLINE}能不能和我的珍品交换呢？{NEWLINE}想不想看看我的收藏么？{NEWLINE}那个标志不一样。{NEWLINE}抓到了个冒牌货⋯⋯{NEWLINE}这个就是艺术！{NEWLINE}它就是这样的精灵狂热者ｚ！",
-   "en": "This is so cool isn’t it, this Pokémon?{NEWLINE}The tail is such a great shape.{NEWLINE}Want to trade figurines? Want to come{NEWLINE}over and see my collection?{NEWLINE}Oh hey! This mark is in the wrong place.{NEWLINE}Looks like I fell for a counterfeit...{NEWLINE}But it’s art anyway!{NEWLINE}That’s a Poké Maniac!",
+   "en": "This Pokémon is so cool! The shape of{NEWLINE}its tail is so special! Will you trade it{NEWLINE}for one of my rare pieces? Want to see{NEWLINE}my collection? That mark is different. I{NEWLINE}got a fake... This is art! That’s the{NEWLINE}Poké Maniac!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0420/13"
+   "origin": "agent",
+   "notes": "US 0420/13 | RV070: meaning: zh: trade for my rare piece, mark is different; US figurines (D-1820)"
   },
   {
    "id": 14,
    "zh": "空手劈开１０块砖！{NEWLINE}他和暴徒不同,{NEWLINE}手上满是水泡,{NEWLINE}但他不会忘记行礼。{NEWLINE}运气的时候会喊“我打！”{NEWLINE}他就是这样的空手道达人ｚ！",
-   "en": "I can break ten roof tiles in one chop!{NEWLINE}Some people think I’m just a hooligan.{NEWLINE}The palm of my hand becomes covered{NEWLINE}in blisters. I never forget to bow, and{NEWLINE}I shout out to psych myself up!{NEWLINE}I’m the Black Belt!",
+   "en": "Splits ten bricks with his bare hand!{NEWLINE}Unlike a thug, his hands are covered in{NEWLINE}blisters, but he never forgets to bow.{NEWLINE}He shouts “Hiyah!” as he focuses his{NEWLINE}power. That’s the Black Belt!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0420/14"
+   "origin": "agent",
+   "notes": "US 0420/14 | RV070: meaning: zh: third person, unlike a thug; US first person, people think I am a hooligan (D-1820)"
   },
   {
    "id": 15,
@@ -142,18 +142,18 @@
   {
    "id": 17,
    "zh": "在没有取得高分之前,{NEWLINE}他都会不厌其烦地背书,{NEWLINE}做很多的笔记。{NEWLINE}由于接受了很高端的教育,{NEWLINE}所以是名出色的精灵训练师。{NEWLINE}他就是这样的小学生ｚ！",
-   "en": "Had plenty of success. Learning through{NEWLINE}constant repetition. Recklessly carrying{NEWLINE}around notebooks. Attending classes{NEWLINE}for gifted kids.{NEWLINE}A wonderful Pokémon Trainer, that{NEWLINE}School Kid!",
+   "en": "Until he gets top marks, he never tires{NEWLINE}of memorizing his books and taking tons{NEWLINE}of notes. Thanks to his top-notch{NEWLINE}education, he’s an excellent Pokémon{NEWLINE}Trainer. That’s the School Kid!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0420/17"
+   "origin": "agent",
+   "notes": "US 0420/17 | RV070: meaning: zh: studies until top marks, elite education; US success, reckless (D-1820)"
   },
   {
    "id": 18,
    "zh": "小屁孩！给我滚远点！{NEWLINE}要是再让我看到,小心我揍你{NEWLINE}他一骑绝尘,{NEWLINE}和同伙在街上发出噪音,{NEWLINE}人们不得不塞住自己的耳朵,{NEWLINE}当他被打败了才会停车！{NEWLINE}他就是这样的暴走族ｚ！",
-   "en": "Brat! Get lost! If I see you again,{NEWLINE}I’ll beat you up! He leaves everyone in{NEWLINE}the dust, making such a racket in the{NEWLINE}streets with his gang that people have{NEWLINE}to plug their ears, and he only stops{NEWLINE}when he’s beaten! That’s a Biker!",
+   "en": "You little brat! Get lost! If I see you{NEWLINE}again, I’ll beat you up! He leaves{NEWLINE}everyone in the dust, making such a{NEWLINE}racket in the streets with his gang{NEWLINE}that people have to plug their ears,{NEWLINE}and he only stops when he’s beaten!{NEWLINE}That’s a Biker!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0420/18 | tone review: 小心我揍你 is a threat to beat someone up; kept at full strength (D-0627)"
+   "notes": "US 0420/18 | tone review: 小心我揍你 is a threat to beat someone up; kept at full strength (D-0627) | RV070: voice: 小屁孩: you little brat"
   },
   {
    "id": 19,

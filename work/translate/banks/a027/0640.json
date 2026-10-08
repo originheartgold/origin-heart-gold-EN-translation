@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "对了⋯⋯{NEWLINE}想要和我再战斗的话,{CLEAR}可以在星期五的晚上{SCROLL}打电话给我！",
-   "en": "What’s your point?{NEWLINE}If you want to battle me again, fine.{CLEAR}Friday nights, take it or leave it.{SCROLL}Call me then... Maybe I’ll answer...",
+   "en": "Oh, right...{SCROLL}If you want to battle me again, you can{NEWLINE}call me on Friday nights!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0649/4"
+   "origin": "agent",
+   "notes": "US 0649/4 | RV070: addition: US added reluctance and maybe I will answer (D-1915)"
   },
   {
    "id": 5,
@@ -62,18 +62,18 @@
   {
    "id": 7,
    "zh": "搞什么啊！{NEWLINE}你还想让我出丑吗？",
-   "en": "What in the world?{NEWLINE}Are you trying to make fun of me?!",
+   "en": "What’s the big idea?! You want to make{NEWLINE}me look like a fool again?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0649/7"
+   "origin": "agent",
+   "notes": "US 0649/7 | RV070: meaning: zh: make me lose face again"
   },
   {
    "id": 8,
    "zh": "这么想和我对战吗？{SCROLL}可是⋯⋯你现在{NEWLINE}有着闲工夫吗？{SCROLL}先去完成其他的人的预约吧。",
-   "en": "You figure you want to battle me?{SCROLL}I’m wondering if you have time enough{NEWLINE}to do me justice.{SCROLL}I hear you made promises to meet some{NEWLINE}other people. You should respect those{CLEAR}first, is what I think.",
+   "en": "You want to battle me that badly?{SCROLL}But... do you even have the free time{NEWLINE}right now?{SCROLL}Go take care of your appointments with{NEWLINE}other people first.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0649/8"
+   "origin": "agent",
+   "notes": "US 0649/8 | RV070: meaning: zh: plain challenge; US verbose additions"
   },
   {
    "id": 9,
@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "这几天电台的人来我这{NEWLINE}说是要采访我做一个{CLEAR}专题⋯⋯{SCROLL}这个世界上,{NEWLINE}美人就是给人看的。{SCROLL}啊！可是广播的话{NEWLINE}不就不能看到{CLEAR}我的美貌了！{SCROLL}电视台是怎么了啊！{NEWLINE}电视台的人怎么不来啊！",
-   "en": "Lately some people from the{NEWLINE}Radio Station came around, wanting to{CLEAR}do a piece on me, or something.{SCROLL}My fans definitely won’t want to{NEWLINE}miss watching that!{SCROLL}Oh, no! I was confused! It’s radio!{NEWLINE}All those people tuning in, and they{CLEAR}won’t be able to see my glorious face!{SCROLL}What about TV?{NEWLINE}Why hasn’t a TV crew come to do a piece{CLEAR}on me?!",
+   "en": "Lately some people from the radio{NEWLINE}station came by, saying they want to{CLEAR}interview me for a special feature...{SCROLL}In this world, beauty is meant to{NEWLINE}be seen.{SCROLL}Oh! But on the radio, nobody will be{NEWLINE}able to see my gorgeous looks!{SCROLL}What’s wrong with the TV stations?! Why{NEWLINE}haven’t the TV people come?!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0649/12"
+   "origin": "agent",
+   "notes": "US 0649/12 | RV070: meaning: zh: beauty is to be seen; US fans watching, confused"
   },
   {
    "id": 13,
@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "看来你现在也是非常忙啊。{CLEAR}我这边也是。{SCROLL}又要忙道馆的工作,{NEWLINE}龙之使者们{CLEAR}还都想来祠堂的长老那里{CLEAR}露露脸。{SCROLL}你怎么样？{NEWLINE}既然你有实力,{CLEAR}那也向着龙之使者前进吧？",
-   "en": "Wow, you seem like you’re a pretty busy{NEWLINE}person, aren’t you? Even more than{CLEAR}I am, if that could possibly be.{SCROLL}I mean, I’ve got my Gym work, and I’ve{NEWLINE}got to go see the Elder at the{CLEAR}Dragon Tamer’s shrine, too.{SCROLL}What do you think?{NEWLINE}You’ve got talent--you could become{CLEAR}a Dragon Tamer, too. Think so?",
+   "en": "Looks like you’re really busy these{NEWLINE}days too. So am I.{SCROLL}On top of my Gym work, the Dragon{NEWLINE}Tamers all want to come and show their{CLEAR}faces to the Elder at the shrine.{SCROLL}What about you?{SCROLL}You’ve got the skill, so why not aim to{NEWLINE}become a Dragon Tamer too?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0649/14"
+   "origin": "agent",
+   "notes": "US 0649/14 | RV070: meaning: zh: Dragon Tamers visit the Elder; US Clair visits; even busier (D-1915)"
   }
  ]
 }

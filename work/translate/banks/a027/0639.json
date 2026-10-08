@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "你和浅红市的阿杏　{NEWLINE}聊过了吧？{SCROLL}无论和她聊什么,{NEWLINE}她都会讲自己{CLEAR}父亲的故事。{SCROLL}真是的⋯⋯{SCROLL}虽然尊敬自己的父亲{NEWLINE}不失为一件好事啦。{CLEAR}不过我还是很想和她说,{CLEAR}要对自己有自信啊！{SCROLL}你对自己的实力{NEWLINE}有自信吗？",
-   "en": "You’ve chatted with Janine in{NEWLINE}Fuchsia City, haven’t you?{SCROLL}All she ever talks about is her dad,{NEWLINE}you know? Endlessly.{SCROLL}I mean, it’s good to have a healthy{NEWLINE}respect for your dad, but it’s{CLEAR}better to have some self-confidence!{SCROLL}Don’t you have faith in your{NEWLINE}own abilities?",
+   "en": "You’ve chatted with Janine in Fuchsia{NEWLINE}City, haven’t you?{SCROLL}No matter what you talk to her about,{NEWLINE}she ends up telling stories about{CLEAR}her father.{SCROLL}Honestly... I mean, respecting your{NEWLINE}father is a fine thing.{SCROLL}But I still want to tell her to have{NEWLINE}some confidence in herself!{SCROLL}Do you have confidence in your{NEWLINE}own strength?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0648/14"
+   "origin": "agent",
+   "notes": "US 0648/14 | RV070: meaning: zh: tells stories of her father; final question neutral"
   }
  ]
 }

@@ -4582,7 +4582,7 @@
   {
    "id": "RV070",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 554,
    "labels": [
     "a027/0264 tv_news + pokegear_radio_map + pokegear_phone",
