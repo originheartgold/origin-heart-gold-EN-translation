@@ -558,10 +558,10 @@
   {
    "id": 69,
    "zh": "坂木『真是熟悉的面孔,{NEWLINE}我儿子能有今天这么叛逆,{CLEAR}你的功劳一定不小吧？",
-   "en": "Giovanni: What a familiar face.{SCROLL}I’m sure you deserve no small share of{NEWLINE}the credit for how rebellious my son{CLEAR}has become.",
+   "en": "Giovanni: What a familiar face.{SCROLL}My son is this rebellious now... No small{NEWLINE}thanks to you, I take it?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV009: meaning: zh is a (rhetorical) question 你的功劳一定不小吧？"
   },
   {
    "id": 70,
@@ -654,10 +654,10 @@
   {
    "id": 81,
    "zh": "小银『那个……那个是我以前不懂事。{NEWLINE}刚才{VAR:0103:0}姐姐在小绿馆主面{CLEAR}前替我据理力争,{CLEAR}让我有了一种被拉到阳光下的感觉。{CLEAR}不、不只是这一次,{CLEAR}在阿鲁夫遗迹、在烧焦塔、在卡吉镇,{CLEAR}其实从那时候开始,{CLEAR}{VAR:0103:0}姐姐你就在努力{CLEAR}让我摆脱火箭队的阴影,{CLEAR}让我可以不用再东躲西藏,{CLEAR}让我不用再以生为坂木的儿子而自卑……",
-   "en": "Silver: That... That was me being{NEWLINE}immature.{SCROLL}Just now, when you stood up for me in{NEWLINE}front of Gym Leader Blue, {VAR:0103:0}...{SCROLL}It felt like I’d been pulled out into the{NEWLINE}sunlight.{SCROLL}N-not just this time. At the Ruins of{NEWLINE}Alph, the Burned Tower, Mahogany{CLEAR}Town... Ever since back then...{SCROLL}You’ve been working to free me from{NEWLINE}Team Rocket’s shadow, {VAR:0103:0}...{SCROLL}So I wouldn’t have to hide anymore, and{NEWLINE}wouldn’t have to feel ashamed of being{CLEAR}born Giovanni’s son...",
+   "en": "Silver: That... That was me being{NEWLINE}immature.{SCROLL}Just now, you stood up for me in front{NEWLINE}of Gym Leader Blue, Big Sis {VAR:0103:0}...{SCROLL}It felt like I’d been pulled out into the{NEWLINE}sunlight.{SCROLL}N-not just this time. At the Ruins of{NEWLINE}Alph, the Burned Tower, Mahogany{CLEAR}Town... Ever since back then...{SCROLL}You’ve worked to free me from Team{NEWLINE}Rocket’s shadow, Big Sis {VAR:0103:0}...{SCROLL}So I wouldn’t have to hide anymore, and{NEWLINE}wouldn’t have to feel ashamed of being{CLEAR}born Giovanni’s son...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV009: voice: restore 姐姐 (Big Sis, D-0427); #79/#80 make his first 'Big Sis' the point of the scene"
   },
   {
    "id": 82,
@@ -686,10 +686,10 @@
   {
    "id": 85,
    "zh": "小银『谢、谢谢{VAR:0103:0}姐姐！{NEWLINE}我、我会用生命守护你的！",
-   "en": "Silver: Th-thank you, {VAR:0103:0}! I-I’ll{NEWLINE}protect you with my life!",
+   "en": "Silver: Th-thank you, Big Sis {VAR:0103:0}!{NEWLINE}I-I’ll protect you with my life!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV009: voice: restore 姐姐 (Big Sis, D-0427), set up by #79/#80"
   },
   {
    "id": 86,
@@ -702,10 +702,10 @@
   {
    "id": 87,
    "zh": "小银『好的,{VAR:0103:0}姐姐！{NEWLINE}我这就抓紧治疗大力鳄和炎帝,{CLEAR}等精灵们都恢复了,{CLEAR}就跟你一起去打败火箭队！",
-   "en": "Silver: Right, {VAR:0103:0}! I’ll hurry and{NEWLINE}treat Feraligatr and Entei.{SCROLL}Once my Pokémon have recovered, I’ll{NEWLINE}come with you, and we’ll beat{CLEAR}Team Rocket!",
+   "en": "Silver: Right, Big Sis {VAR:0103:0}! I’ll{NEWLINE}hurry and treat Feraligatr and Entei.{SCROLL}Once my Pokémon recover, I’ll come with{NEWLINE}you, and we’ll beat Team Rocket!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV009: voice: restore 姐姐 (Big Sis, D-0427), set up by #79/#80"
   },
   {
    "id": 88,
@@ -718,10 +718,10 @@
   {
    "id": 89,
    "zh": "小银『{VAR:0103:0}姐姐,{NEWLINE}我这就抓紧治疗大力鳄和炎帝,{CLEAR}等精灵们都恢复了,{CLEAR}就跟你一起去打败火箭队！",
-   "en": "Silver: {VAR:0103:0}, I’ll hurry and treat{NEWLINE}Feraligatr and Entei.{SCROLL}Once my Pokémon have recovered, I’ll{NEWLINE}come with you, and we’ll beat{CLEAR}Team Rocket!",
+   "en": "Silver: Big Sis {VAR:0103:0}, I’ll hurry and{NEWLINE}treat Feraligatr and Entei.{SCROLL}Once my Pokémon recover, I’ll come with{NEWLINE}you, and we’ll beat Team Rocket!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV009: voice: restore 姐姐 (Big Sis, D-0427), set up by #79/#80"
   },
   {
    "id": 90,
@@ -942,10 +942,10 @@
   {
    "id": 117,
    "zh": "火箭队大人,我的精灵属性不占优势。{NEWLINE}咱们一起上,干掉这个小丫头！",
-   "en": "Team Rocket sirs, my Pokémon has a type{NEWLINE}disadvantage. Let’s all take down this{CLEAR}little brat together!",
+   "en": "Team Rocket sirs, my Pokémon has a type{NEWLINE}disadvantage.{SCROLL}Let’s all go at her together and finish{NEWLINE}off this little brat!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV009: softened: 干掉 right after 'burn her to death' (#108) = finish off, not 'take down'; 小丫头 kept female (D-1663)"
   },
   {
    "id": 118,
@@ -1078,10 +1078,10 @@
   {
    "id": 134,
    "zh": "{VAR:0103:0}『我可不是你这种{NEWLINE}畏强怕死、屈膝投降的软骨头。",
-   "en": "{VAR:0103:0}: I’m not a spineless coward like{NEWLINE}you, cowering before the strong and{CLEAR}begging on your knees.",
+   "en": "{VAR:0103:0}: I’m not a spineless coward like{NEWLINE}you, cowering before the strong,{CLEAR}scared to die, and dropping to your{CLEAR}knees to surrender.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV009: omission: 怕死 (fear of death) and 投降 (surrender) were missing (D-1664)"
   },
   {
    "id": 135,
@@ -1294,10 +1294,10 @@
   {
    "id": 161,
    "zh": "{VAR:0103:0}『我现在必须去继续前进了,{NEWLINE}等水晶你治好大竹蹦后{CLEAR}也要尽快追上来哦,{CLEAR}咱们一起并肩作战打败火箭队。",
-   "en": "{VAR:0103:0}: I have to keep moving now.{SCROLL}Once Megaree is better, catch up as{NEWLINE}fast as you can, OK? We’ll fight side by{CLEAR}side and beat Team Rocket.",
+   "en": "{VAR:0103:0}: I have to keep moving now.{SCROLL}Once you’ve healed Megaree, Crystal,{NEWLINE}catch up as fast as you can, OK?{SCROLL}We’ll fight side by side and beat Team{NEWLINE}Rocket.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV009: omission: addressee 水晶 and 治好 dropped"
   },
   {
    "id": 162,

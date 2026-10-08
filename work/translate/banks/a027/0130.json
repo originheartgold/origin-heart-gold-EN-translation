@@ -598,10 +598,10 @@
   {
    "id": 74,
    "zh": "乔伊『这个火箭队听起来就很厉害,{NEWLINE}为了你的安全,还是离他们远点吧。",
-   "en": "Nurse Joy: This Team Rocket sounds{NEWLINE}very dangerous.{SCROLL}For your own safety, you should stay{NEWLINE}away from them.",
+   "en": "Nurse Joy: This Team Rocket sounds{NEWLINE}really formidable.{SCROLL}For your own safety, you should stay{NEWLINE}away from them.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV009: meaning: 听起来就很厉害 = sounds formidable (Rocket Joy's sly praise), not 'dangerous'"
   },
   {
    "id": 75,

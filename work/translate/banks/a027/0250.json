@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "船如果每天航行的话,{NEWLINE}也是会累的哦！{CLEAR}今天是停航的日子。{SCROLL}往浅葱市的航班{NEWLINE}是在星期三和星期日{CLEAR}请按时前来！",
-   "en": "Operating a ship every day can wear{NEWLINE}you out! It’s not running today.{SCROLL}It leaves for Olivine City on Wednesdays{NEWLINE}and Sundays!",
+   "en": "Operating a ship every day can wear you{NEWLINE}out! It’s not running today.{SCROLL}It leaves for Olivine City on Wednesdays{NEWLINE}and Sundays. Please be on time!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0257/1"
+   "origin": "agent",
+   "notes": "US 0257/1 | RV009: omission: zh 请按时前来 (please be on time) was dropped"
   },
   {
    "id": 2,

@@ -30,18 +30,18 @@
   {
    "id": 3,
    "zh": "不愧是{VAR:0103:0}！{NEWLINE}别放弃,继续努力！",
-   "en": "That’s the spirit, {VAR:0103:0}!{NEWLINE}I like how you don’t give up!",
+   "en": "That’s the spirit, {VAR:0103:0}! Don’t give{NEWLINE}up. Keep at it!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0052/3"
+   "origin": "agent",
+   "notes": "US 0052/3 | RV009: meaning: female branch said 'I like how you don't give up'; zh = 别放弃,继续努力 as in #2"
   },
   {
    "id": 4,
    "zh": "叮咚！{NEWLINE}恭喜！{SCROLL}{VAR:0103:0}{NEWLINE}成功捕获了{CLEAR}全部的精灵！{SCROLL}",
-   "en": "Ding-dong!{NEWLINE}Congratulations!{SCROLL}{VAR:0103:0} has successfully{NEWLINE}caught the stocked Pokémon!{SCROLL}",
+   "en": "Ding-dong! Congratulations!{SCROLL}{VAR:0103:0} has successfully caught all the{NEWLINE}Pokémon!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0052/4"
+   "origin": "agent",
+   "notes": "US 0052/4 | RV009: meaning: zh 全部的精灵 = all the Pokémon, not 'the stocked Pokémon'"
   },
   {
    "id": 5,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "那么开始！",
-   "en": "Let the countdown begin!",
+   "en": "Let’s begin, then!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0052/10 | seed rejected us [ambiguous US match] (candidate US 0052#10; text not kept)"
+   "notes": "US 0052/10 | seed rejected us [ambiguous US match] (candidate US 0052#10; text not kept) | RV009: addition: zh 那么开始 has no 'countdown'"
   },
   {
    "id": 7,

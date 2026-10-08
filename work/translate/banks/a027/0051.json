@@ -198,10 +198,10 @@
   {
    "id": 24,
    "zh": "你好！{NEWLINE}未来的传说！{SCROLL}这儿会有因施工而形成的岩石{NEWLINE}以及训练师们阻挡你{CLEAR}去到道馆的面前！{SCROLL}但是不要慌张,{NEWLINE}只要打倒训练师们,{CLEAR}就一定能打开前进的道路！",
-   "en": "Yo! Legend in the making!{SCROLL}This Gym has many Trainers and rocks{NEWLINE}in the way from the rebuilding.{CLEAR}It sure won’t be easy to get to Blaine!{SCROLL}But keep your cool and defeat the{NEWLINE}Trainers one by one, and you will surely{CLEAR}find the path!",
+   "en": "Yo! Legend in the making!{SCROLL}Trainers and rocks from the rebuilding{NEWLINE}stand between you and the Gym Leader!{SCROLL}But don’t panic! Defeat the Trainers,{NEWLINE}and you’re sure to open a way forward!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0053/24"
+   "origin": "agent",
+   "notes": "US 0053/24 | RV009: addition: US line added 'It sure won't be easy to get to Blaine' and 'one by one'; retranslated from zh"
   },
   {
    "id": 25,
@@ -334,10 +334,10 @@
   {
    "id": 41,
    "zh": "妙蛙花『Venu——sau！",
-   "en": "Venusaur: Venu--sau!",
+   "en": "Venusaur: Venu-sau!",
    "status": "draft",
-   "origin": "tm_v3",
-   "notes": "v3 TM: 1 source(s)"
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s) | RV009: layout: double hyphen in cry, match other cries"
   },
   {
    "id": 42,
