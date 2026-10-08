@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "什么？我才是第一个到的！{SCROLL}为了能在战斗前线排在第一位,{CLEAR}我连觉也没睡就排在这儿了。{SCROLL}你要是愿意排到第２的话{NEWLINE}就排在我的后面吧！{SCROLL}",
-   "en": "What? I’m the first to arrive!{SCROLL}There will soon be a Battle Frontier{NEWLINE}past here.{SCROLL}I’m in line to be the first one there.{NEWLINE}I haven’t slept for days.{SCROLL}Get in line if you want to be the second{NEWLINE}one in!{SCROLL}",
+   "en": "What? I’m the one who got here first!{SCROLL}To be first in line at the Battle{NEWLINE}Frontier, I didn’t even sleep. I’ve been{CLEAR}standing in line right here.{SCROLL}If you don’t mind being second, get in{NEWLINE}line behind me!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0745/0"
+   "origin": "agent",
+   "notes": "US 0745/0 | RV043: addition: dropped US 'days' and the unopened-Frontier line (D-2024)"
   },
   {
    "id": 1,
@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "呼……呼……{NEWLINE}……　……　……{SCROLL}完全叫不醒啊！",
-   "en": "Zzz... Zzz...{NEWLINE}...{SCROLL}He doesn’t seem like he’ll wake up{NEWLINE}anytime soon!",
+   "en": "Zzz... Zzz...{NEWLINE}...{SCROLL}You can’t wake him up at all!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0745/2"
+   "origin": "agent",
+   "notes": "US 0745/2 | RV043: meaning: 完全叫不醒 (D-2024)"
   },
   {
    "id": 3,

@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "卟噜卟噜卟噜！{SCROLL}我要称霸战斗前线！{NEWLINE}我曾经对家人{CLEAR}夸下了这样的海口,{CLEAR}谈后离家来到了这里……{SCROLL}现在到了这个地步{NEWLINE}我的腿止不住地发抖！{SCROLL}啊……要是被{NEWLINE}干掉了怎么办……",
-   "en": "I can’t stop shivering!{SCROLL}I told my family that I would conquer{NEWLINE}the Battle Frontier when I left home...{SCROLL}But now I’m here, and somehow I{NEWLINE}can’t stop shivering!{SCROLL}What am I gonna do if I get beaten{NEWLINE}to a pulp?{SCROLL}",
+   "en": "Brrr-rr-rr!{SCROLL}‘I’m going to rule the Battle Frontier!’{NEWLINE}I boasted that to my family, then left{CLEAR}home and came here...{SCROLL}But now that it’s come to this, my legs{NEWLINE}won’t stop shaking!{SCROLL}Ah... What if I get taken out...?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0104/4"
+   "origin": "agent",
+   "notes": "US 0104/4 | RV043: omission: restored the boast to family and shaking legs; 干掉 'taken out'"
   },
   {
    "id": 2,
@@ -62,18 +62,18 @@
   {
    "id": 7,
    "zh": "终于到了！{NEWLINE}我到了战斗前线！{SCROLL}如果觉得路上的精灵决斗{NEWLINE}还不过瘾,{CLEAR}那就不要犹豫,到战斗前线来吧！{SCROLL}是吧？是吧？",
-   "en": "Finally!{NEWLINE}I’m here at the Battle Frontier!{SCROLL}When a Pokémon battle on the road{NEWLINE}doesn’t satisfy you any longer, you{CLEAR}have to come to the Battle Frontier!{SCROLL}Wouldn’t you agree?",
+   "en": "Finally! I’ve made it to the Battle{NEWLINE}Frontier!{SCROLL}If Pokémon battles out on the road{NEWLINE}aren’t enough for you, don’t hesitate,{CLEAR}come to the Battle Frontier!{SCROLL}Right? Right?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0104/7"
+   "origin": "agent",
+   "notes": "US 0104/7 | RV043: voice: restored 'don't hesitate' and 是吧？是吧？"
   },
   {
    "id": 8,
    "zh": "所谓精灵对战,{NEWLINE}通常是拿手头的{CLEAR}精灵进行战斗,{SCROLL}但是稍微改变一下规则{NEWLINE}添加一些限制的话,{CLEAR}就会变得更有意思了,{SCROLL}而能够进行这种体验的,{NEWLINE}就是在战斗前线了！",
-   "en": "Normally, choosing which Pokémon is all{NEWLINE}there is to a Pokémon battle.{SCROLL}But when you change certain rules or{NEWLINE}limitations, the battle suddenly{CLEAR}becomes even more fun.{SCROLL}And this place you can have such fun...{NEWLINE}is called the Battle Frontier!",
+   "en": "Normally, Pokémon battles mean fighting{NEWLINE}with the Pokémon you have on hand.{SCROLL}But change the rules a little and add{NEWLINE}some restrictions, and they become{CLEAR}even more fun.{SCROLL}The Battle Frontier is where you can{NEWLINE}experience that!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0104/8"
+   "origin": "agent",
+   "notes": "US 0104/8 | RV043: meaning: battling with the Pokémon on hand (D-1654)"
   },
   {
    "id": 9,

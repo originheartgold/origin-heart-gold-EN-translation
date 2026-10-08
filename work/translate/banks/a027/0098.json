@@ -22,18 +22,18 @@
   {
    "id": 2,
    "zh": "我是城都最有名的{NEWLINE}超级偶像！{SCROLL}为了宣传新歌的活动而{NEWLINE}来到战斗前线的！{SCROLL}但是……{NEWLINE}聚集在这里的人们{CLEAR}大家都热衷于精灵！",
-   "en": "I am the super Idol in Johto!{SCROLL}I’ve come all the way to the{NEWLINE}Battle Frontier to promote my{CLEAR}latest song!{SCROLL}But...{SCROLL}Everybody seems to be a{NEWLINE}Poké Maniac here!",
+   "en": "I’m the most famous super Idol in{NEWLINE}Johto!{SCROLL}I came to the Battle Frontier for an{NEWLINE}event promoting my new song!{SCROLL}But... everyone gathered here is crazy{NEWLINE}about Pokémon!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0100/2"
+   "origin": "agent",
+   "notes": "US 0100/2 | RV043: omission: restored 'most famous' and the promo event"
   },
   {
    "id": 3,
    "zh": "是这样的,{NEWLINE}当我听说了战斗前线的事情后,{CLEAR}虽然当时是在钓鱼,{CLEAR}心里也平静不下来,{CLEAR}所以赶紧收好钓竿{CLEAR}跑这里来了……",
-   "en": "Fishing won’t keep me calm since I came{NEWLINE}to know about the Battle Frontier.{CLEAR}When I go fishing, I find myself quitting{CLEAR}early and coming here.",
+   "en": "You see, when I heard about the Battle{NEWLINE}Frontier, I was out fishing, but I just{CLEAR}couldn’t calm down. So I hurried to{CLEAR}pack up my rod and rushed over here...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0100/3"
+   "origin": "agent",
+   "notes": "US 0100/3 | RV043: meaning: stale US; he packed up his rod mid-fishing and came"
   },
   {
    "id": 4,
@@ -54,18 +54,18 @@
   {
    "id": 6,
    "zh": "和人活着会积累各种经验一样,{SCROLL}精灵经过不断战斗{CLEAR}会获得各种经验,{SCROLL}单单所经历的事情的数量{NEWLINE}就能成为故事了,老太婆。",
-   "en": "Just like people go through different{NEWLINE}things they can learn from, Pokémon{CLEAR}learn different things from battles.{SCROLL}Behind every experience, there is a{NEWLINE}story. Isn’t that right, dear?",
+   "en": "Just as people pile up all kinds of{NEWLINE}experience as they live,{SCROLL}Pokémon gain all kinds of experience by{NEWLINE}battling again and again.{SCROLL}The sheer number of things they’ve{NEWLINE}been through could make a{CLEAR}story, old girl.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0100/6"
+   "origin": "agent",
+   "notes": "US 0100/6 | RV043: voice: 老太婆 is the husband's address to his wife; US 'dear' and 'behind every experience' changed it"
   },
   {
    "id": 7,
    "zh": "我能够遇见你,{NEWLINE}是我人生中{CLEAR}最美好的故事,老头子。",
-   "en": "Meeting you is the most{NEWLINE}beautiful story of my life, dear.",
+   "en": "Meeting you is the most beautiful story{NEWLINE}of my life, old man.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US line rewritten: the zh is the old woman's reply to her husband (#6)."
+   "notes": "US line rewritten: the zh is the old woman's reply to her husband (#6). | RV043: voice: 老头子 is the wife's address to her husband"
   },
   {
    "id": 8,
@@ -94,26 +94,26 @@
   {
    "id": 11,
    "zh": "大叔和精灵相遇{NEWLINE}已经过去４９年了……{SCROLL}啊！{SCROLL}几年几月几日{NEWLINE}都有记录在记事本上的,{CLEAR}但其中的页面撕破找不到了！{SCROLL}莫非是精灵给咬坏的？",
-   "en": "I wonder how many years it’s been since{NEWLINE}I first met a Pokémon? ...Forty-nine!{SCROLL}Oh, I lost the page that kept track of{NEWLINE}how many years, days, and hours...{SCROLL}Could it be my Pokémon nibbling on it?",
+   "en": "It’s been 49 years since this old guy{NEWLINE}first met Pokémon...{SCROLL}Oh!{SCROLL}I wrote down the exact date in my{NEWLINE}notebook, but that page got torn out,{CLEAR}and I can’t find it!{SCROLL}Could a Pokémon have chewed it up?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0100/11"
+   "origin": "agent",
+   "notes": "US 0100/11 | RV043: meaning: stale US; the notebook page with the date was torn out"
   },
   {
    "id": 12,
    "zh": "训练家要在关爱精灵的同时{CLEAR}让它进行战斗,{SCROLL}精灵就会信赖训练家,{CLEAR}全力以赴为你战斗。{SCROLL}这就是人类和精灵之间的信任。{SCROLL}这看上去虽然是理所当然的,{NEWLINE}却也是非常激动人心的事情！！",
-   "en": "Trainers care about Pokémon{NEWLINE}as the battle progresses.{SCROLL}In return, Pokémon repay that trust{NEWLINE}by using moves the best they can.{SCROLL}What you see in a battle is the trust{NEWLINE}between people and Pokémon.{SCROLL}This may seem obvious, but it’s actually{NEWLINE}incredibly amazing!",
+   "en": "If you care for your Pokémon while{NEWLINE}having it battle,{SCROLL}it will trust you and fight its hardest{NEWLINE}for you.{SCROLL}That’s the trust between people and{NEWLINE}Pokémon.{SCROLL}It may look like a given, but it’s{NEWLINE}actually really thrilling!!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0100/12"
+   "origin": "agent",
+   "notes": "US 0100/12 | RV043: meaning: stale US; Trainer cares for Pokémon while it battles, Pokémon then trusts and fights hard"
   },
   {
    "id": 13,
    "zh": "害怕失败,{NEWLINE}我们就将一无所成。{SCROLL}但是！{SCROLL}明明不可能赢的战斗,{NEWLINE}勉强让精灵们参加,{CLEAR}也说不上是勇气。{SCROLL}真正强大的训练家{NEWLINE}会平衡把握{CLEAR}这两者间的关系。",
-   "en": "You cannot try anything if you are{NEWLINE}afraid of losing battles.{SCROLL}But!{SCROLL}Getting into a battle knowing you have{NEWLINE}no chance of winning will only make your{CLEAR}Pokémon suffer.{SCROLL}That’s not courage!{NEWLINE}Truly good Trainers know the balance{CLEAR}between courage and cautiousness.",
+   "en": "If we fear failure, we’ll never{NEWLINE}accomplish anything.{SCROLL}But!{SCROLL}Forcing your Pokémon into a battle you{NEWLINE}can’t possibly win can’t be called{CLEAR}courage either.{SCROLL}Truly strong Trainers know how to{NEWLINE}balance the two.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0100/13"
+   "origin": "agent",
+   "notes": "US 0100/13 | RV043: addition: dropped US 'only make your Pokémon suffer'"
   },
   {
    "id": 14,
@@ -126,26 +126,26 @@
   {
    "id": 15,
    "zh": "赢了之后……{SCROLL}有的人会嘲笑失败的对手,{NEWLINE}有的人自满于自己的强大,{CLEAR}也有的人认为自己是世界第一,~{CLEAR}得意地手舞足蹈,{CLEAR}各种各样的人都有。{SCROLL}但我喜欢友善地对待失败的对手,{CLEAR}细心激励他的人！",
-   "en": "When people win a battle, some laugh{NEWLINE}at their opponent.{SCROLL}Some brag about his or her strengths.{SCROLL}Some even start to dance around{NEWLINE}claiming he or she is number one{CLEAR}in the world.{SCROLL}I respect people who win and then{NEWLINE}care about their opponent.",
+   "en": "After a win...{SCROLL}some people laugh at the opponent they{NEWLINE}beat, some get smug about their own{CLEAR}strength, and some think they’re{CLEAR}number one in the world and dance{CLEAR}around in glee. There are all sorts.{SCROLL}But I like people who treat the{NEWLINE}opponent they beat kindly and take{CLEAR}care to encourage them!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0100/15"
+   "origin": "agent",
+   "notes": "US 0100/15 | RV043: omission: restored smugness and encouraging the loser"
   },
   {
    "id": 16,
    "zh": "你知道战斗前线的首领吗？{SCROLL}这战斗前线有５座设施,{CLEAR}你只要不断胜利,{CLEAR}首领训练家{CLEAR}就会现身！",
-   "en": "Have you heard of the Brains of the{NEWLINE}Battle Frontier?{SCROLL}There are five facilities in the{NEWLINE}Battle Frontier.{SCROLL}At every one, you can win your way{NEWLINE}through to challenge the bosses{CLEAR}called the Frontier Brains.{CLEAR}They’re out-of-this-world tough!",
+   "en": "Do you know about the Frontier Brains?{SCROLL}The Battle Frontier has five facilities.{NEWLINE}As long as you keep winning, the Brains{CLEAR}will show up!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0100/16"
+   "origin": "agent",
+   "notes": "US 0100/16 | RV043: addition: dropped US 'They're out-of-this-world tough!'"
   },
   {
    "id": 17,
    "zh": "享受对战,{NEWLINE}互相帮助,{CLEAR}成为自己的朋友,{CLEAR}带着它去远方,{SCROLL}你不觉得精灵是种很奇妙的{CLEAR}生物吗？{SCROLL}我也想成为精灵啊！",
-   "en": "Allowing us to enjoy battles,{NEWLINE}helping us work,{CLEAR}taking us to places far away,{CLEAR}or just being good friends...{SCROLL}Pokémon are so deep.{NEWLINE}I wanna be like Pokémon.",
+   "en": "They let us enjoy battles, they help us{NEWLINE}out, they become our friends, and we{CLEAR}take them to faraway places...{SCROLL}Don’t you think Pokémon are amazing{NEWLINE}creatures?{SCROLL}I want to be a Pokémon too!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0100/17"
+   "origin": "agent",
+   "notes": "US 0100/17 | RV043: meaning: zh 'I want to become a Pokémon', not 'be like'; restored the question"
   },
   {
    "id": 18,
@@ -158,18 +158,18 @@
   {
    "id": 19,
    "zh": "用喜欢的精灵以１ｖｓ１的形式{NEWLINE}进行战斗看看能打到什么地步。{CLEAR}这就是战斗舞台的规则,{CLEAR}在那里我的鲤鱼王{CLEAR}也有可能得第一呢！{SCROLL}喔！{NEWLINE}我突然充满干劲！",
-   "en": "The Battle Hall is where Pokémon battle{NEWLINE}one-on-one for as long as they can.{SCROLL}Even my Magikarp has a shot at{NEWLINE}number one!{SCROLL}Wow!{SCROLL}Just the thought of it makes{NEWLINE}me excited!",
+   "en": "Battle with your favorite Pokémon{NEWLINE}one-on-one and see how far you can{CLEAR}get. That’s the rule at the Battle Hall,{CLEAR}and there, even my Magikarp could take{CLEAR}first place!{SCROLL}Whoa! I’m suddenly all fired up!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0100/19; modernised from US 0100#19"
+   "origin": "agent",
+   "notes": "US 0100/19; modernised from US 0100#19 | RV043: omission: restored 'favorite Pokémon' and 'see how far you get'"
   },
   {
    "id": 20,
    "zh": "人生多是沉浮不定,{NEWLINE}为以防万一{CLEAR}要随时带着救生圈。{SCROLL}这是我这５年来的人生中{NEWLINE}发现的{CLEAR}生存智慧！",
-   "en": "Life is full of ebbs and flows.{NEWLINE}I’ll keep my inflatable tube close.{SCROLL}I could call it the wisdom I gained{NEWLINE}in the last five years of my life.",
+   "en": "Life is full of ups and downs, so always{NEWLINE}keep a float ring with you, just in case.{SCROLL}That’s the survival wisdom I’ve found in{NEWLINE}these five years of my life!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0100/20"
+   "origin": "agent",
+   "notes": "US 0100/20 | RV043: omission: restored the advice and 'survival wisdom'"
   },
   {
    "id": 21,

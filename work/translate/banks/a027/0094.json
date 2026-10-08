@@ -278,10 +278,10 @@
   {
    "id": 34,
    "zh": "您和朋友选择了一样的{NEWLINE}{VAR:0100:0}或{CLEAR}{VAR:0100:1}！{SCROLL}请和朋友商量一下{NEWLINE}再来吧。{SCROLL}",
-   "en": "Both Trainers have chosen the Pokémon{NEWLINE}{VAR:0100:0} and {VAR:0100:1}.{SCROLL}Please confer with the other Trainer{NEWLINE}and choose different Pokémon.{SCROLL}",
+   "en": "Both Trainers have chosen {VAR:0100:0}{NEWLINE}or {VAR:0100:1}.{SCROLL}Please confer with the other Trainer{NEWLINE}and choose different Pokémon.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0096/34"
+   "origin": "agent",
+   "notes": "US 0096/34 | RV043: meaning: 或 is 'or', not 'and' (D-1627)"
   },
   {
    "id": 35,
@@ -494,10 +494,10 @@
   {
    "id": 61,
    "zh": "久等了！{SCROLL}上次的成绩没有{NEWLINE}传送到{CLEAR}ＷｉーＦｉ上,{CLEAR}要现在传送吗？{VAR:0200:0}",
-   "en": "It’s good to see you back.{SCROLL}Your previous results were not sent{NEWLINE}out using Nintendo WFC.{SCROLL}Would you like to send them now? {VAR:0200:0}",
+   "en": "Thank you for waiting!{SCROLL}Your previous results were not sent{NEWLINE}out using Nintendo WFC.{SCROLL}Would you like to send them now? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0096/61"
+   "origin": "agent",
+   "notes": "US 0096/61 | RV043: meaning: 久等了 is 'thank you for waiting', not 'good to see you back'"
   },
   {
    "id": 62,
@@ -606,26 +606,26 @@
   {
    "id": 75,
    "zh": "辛苦了！由我来{NEWLINE}恢复精灵的体力⋯⋯{CLEAR}哎呀,不行！{SCROLL}今天我不是来工作,{NEWLINE}是来办点私事的。",
-   "en": "Thank you for playing!{SCROLL}Your Pokémon will be restored to{NEWLINE}full...{CLEAR}Oh my!{SCROLL}I’m not on duty today.{NEWLINE}I’m just here to enjoy myself.",
+   "en": "You must be tired! Let me restore your{NEWLINE}Pokémon to full health... Oh, wait, no!{SCROLL}I’m not here to work today. I’m here on{NEWLINE}some personal business.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0096/75"
+   "origin": "agent",
+   "notes": "US 0096/75 | RV043: meaning: stale US; she came on personal business, not to enjoy herself; restored 'Oh, wait, no'"
   },
   {
    "id": 76,
    "zh": "我？{NEWLINE}我可是已经出道了的偶像哦。{SCROLL}不过工作还不是很多,{NEWLINE}所以有空的时候,{CLEAR}就来这里玩玩了⋯⋯",
-   "en": "Me?{SCROLL}I just made a debut as an Idol!{CLEAR}I haven’t gotten much work yet.{SCROLL}So whenever I have time, I come here{NEWLINE}to battle Pokémon.",
+   "en": "Me?{SCROLL}I’m an Idol who’s already made my{NEWLINE}debut, you know!{SCROLL}But I don’t get much work yet, so{NEWLINE}whenever I have free time, I come here{CLEAR}to have some fun...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0096/76"
+   "origin": "agent",
+   "notes": "US 0096/76 | RV043: addition: US 'to battle Pokémon' not in zh; restored 'already debuted' and 'have fun'"
   },
   {
    "id": 77,
    "zh": "经过无数磨练的它们{NEWLINE}应该能５０连胜的⋯⋯{CLEAR}的吧？皮卡丘？",
-   "en": "I trained my little guy till we{NEWLINE}couldn’t take any more.{SCROLL}He’s going to do a 50-win streak{NEWLINE}for sure...{SCROLL}Right, Pikachu?",
+   "en": "They’ve been through countless rounds{NEWLINE}of training, so they should be able to{CLEAR}get a 50-win streak...{SCROLL}Right? Right, Pikachu?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0096/77; modernised from US 0096#77"
+   "origin": "agent",
+   "notes": "US 0096/77; modernised from US 0096#77 | RV043: meaning: zh 它们 (they), trained through countless trials; US 'my little guy/He'"
   },
   {
    "id": 78,
@@ -638,18 +638,18 @@
   {
    "id": 79,
    "zh": "大叔我啊,{NEWLINE}从小就超喜欢{CLEAR}这种透明的电梯了。{SCROLL}啊,骗人的骗人的！{SCROLL}大叔小时候{NEWLINE}怎么可能会有{CLEAR}这么帅气的电梯呢？",
-   "en": "I’ve always loved this kind of{NEWLINE}see-through elevator since I{CLEAR}was young.{SCROLL}Or not!{SCROLL}When I was young, this kind of{NEWLINE}elevator was unheard of!",
+   "en": "Ever since I was a kid, this old guy has{NEWLINE}loved see-through elevators like this.{SCROLL}Ha, just kidding, just kidding!{SCROLL}How could there have been an elevator{NEWLINE}this cool back when I was a kid?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0096/79"
+   "origin": "agent",
+   "notes": "US 0096/79 | RV043: voice: restored 大叔 self-reference, 'cool' and the rhetorical question"
   },
   {
    "id": 80,
    "zh": "嘿嘿嘿！{NEWLINE}周围的人似乎都很弱！{SCROLL}⋯⋯你要这么想的话{NEWLINE}就会大意失荆州了,{CLEAR}一定要小心啊！皮卡丘！",
-   "en": "Tee hee!{NEWLINE}All the Trainers around us look{CLEAR}so pathetic!{SCROLL}...Actually, that’s the kind of mind-set{NEWLINE}that makes you lose with one hit!{SCROLL}Don’t let your guard down, Pikachu!",
+   "en": "Heh heh heh! Everyone around here{NEWLINE}seems so weak!{SCROLL}...If you think like that, you’ll get{NEWLINE}careless and lose it all, so be really{CLEAR}careful, Pikachu!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0096/80; modernised from US 0096#80"
+   "origin": "agent",
+   "notes": "US 0096/80; modernised from US 0096#80 | RV043: meaning: zh says 'weak', not 'pathetic'; 大意失荆州 is losing through carelessness"
   },
   {
    "id": 81,
@@ -710,10 +710,10 @@
   {
    "id": 88,
    "zh": "恭喜！{NEWLINE}{VAR:0134:0}连胜达成,{CLEAR}特此奖励{CLEAR}纪念奖杯！{SCROLL}这个我们会送到{NEWLINE}您府上的！{SCROLL}",
-   "en": "Congratulations on achieving your{NEWLINE}{VAR:0134:0}-win streak!{SCROLL}Please accept this trophy for your{NEWLINE}fantastic achievement!{CLEAR}We’ll send it to your home.{SCROLL}",
+   "en": "Congratulations on achieving your{NEWLINE}{VAR:0134:0}-win streak!{SCROLL}We present you with a{NEWLINE}commemorative trophy!{SCROLL}We’ll send it to your home!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0096/88"
+   "origin": "agent",
+   "notes": "US 0096/88 | RV043: addition: dropped US 'for your fantastic achievement'"
   },
   {
    "id": 89,
@@ -726,10 +726,10 @@
   {
    "id": 90,
    "zh": "和朋友一样选择了{NEWLINE}{VAR:0100:0}或{CLEAR}{VAR:0100:1}！{SCROLL}请和朋友商量后{NEWLINE}再来吧。",
-   "en": "Both Trainers have chosen the Pokémon{NEWLINE}{VAR:0100:0} and {VAR:0100:1}.{SCROLL}Please confer with the other Trainer{NEWLINE}and choose different Pokémon.",
+   "en": "Both Trainers have chosen {VAR:0100:0}{NEWLINE}or {VAR:0100:1}.{SCROLL}Please confer with the other Trainer{NEWLINE}and choose different Pokémon.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0096/90"
+   "origin": "agent",
+   "notes": "US 0096/90 | RV043: meaning: 或 is 'or', not 'and' (D-1627)"
   },
   {
    "id": 91,
@@ -950,34 +950,34 @@
   {
    "id": 118,
    "zh": "原来如此原来如此⋯⋯{SCROLL}我的判定告诉我,{NEWLINE}这只精灵拥有的能力{SCROLL}还算过得去。{SCROLL}",
-   "en": "I see, I see...{SCROLL}This Pokémon’s potential{NEWLINE}is decent overall.{SCROLL}That’s my determination, and it’s final.{SCROLL}",
+   "en": "I see, I see...{SCROLL}My judgment tells me this Pokémon’s{NEWLINE}potential is...{SCROLL}decent enough.{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV043: addition: dropped US 'That's my determination, and it's final' (not in zh); restored 'my judgment tells me'"
   },
   {
    "id": 119,
    "zh": "原来如此原来如此⋯⋯{SCROLL}我的判定告诉我,{NEWLINE}这只精灵拥有{SCROLL}超过平均值的能力。{SCROLL}",
-   "en": "I see, I see...{SCROLL}This Pokémon’s potential is above{NEWLINE}average overall.{SCROLL}That’s my determination, and it’s final.{SCROLL}",
+   "en": "I see, I see...{SCROLL}My judgment tells me this Pokémon{NEWLINE}has...{SCROLL}above-average potential.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0096/119"
+   "origin": "agent",
+   "notes": "US 0096/119 | RV043: addition: dropped US 'That's my determination, and it's final' (not in zh)"
   },
   {
    "id": 120,
    "zh": "原来如此原来如此⋯⋯{SCROLL}我的判定告诉我,{NEWLINE}这只精灵拥有{SCROLL}优秀的能力。{SCROLL}",
-   "en": "I see, I see...{SCROLL}This Pokémon has relatively superior{NEWLINE}potential overall.{SCROLL}That’s my determination, and it’s final.{SCROLL}",
+   "en": "I see, I see...{SCROLL}My judgment tells me this Pokémon{NEWLINE}has...{SCROLL}excellent potential.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0096/120"
+   "origin": "agent",
+   "notes": "US 0096/120 | RV043: addition: dropped US 'That's my determination, and it's final' and 'relatively' (not in zh)"
   },
   {
    "id": 121,
    "zh": "原来如此原来如此⋯⋯{SCROLL}我的判定告诉我,{NEWLINE}这只精灵拥有{SCROLL}超高的能力。{SCROLL}",
-   "en": "I see, I see...{SCROLL}This Pokémon has outstanding potential{NEWLINE}overall.{SCROLL}That’s my determination, and it’s final.{SCROLL}",
+   "en": "I see, I see...{SCROLL}My judgment tells me this Pokémon{NEWLINE}has...{SCROLL}outstanding potential.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0096/121"
+   "origin": "agent",
+   "notes": "US 0096/121 | RV043: addition: dropped US 'That's my determination, and it's final' (not in zh)"
   },
   {
    "id": 122,

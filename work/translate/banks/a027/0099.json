@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "无论是爬山还是精灵对战,{NEWLINE}最后决定一切的因素都是{CLEAR}天生的素质！{SCROLL}我不依赖药物或者道具,{NEWLINE}只凭着才能和训练{CLEAR}来应对决斗！",
-   "en": "Mountain climbing and Pokémon are{NEWLINE}similar in a sense.{SCROLL}They both come down to potential!{SCROLL}I do not rely on items or medicines{NEWLINE}but rather potential and training{CLEAR}for battle!",
+   "en": "Whether it’s mountain climbing or{NEWLINE}Pokémon battles, in the end, what{CLEAR}decides everything is natural potential!{SCROLL}I don’t rely on medicine or items. I{NEWLINE}take on battles with nothing but talent{CLEAR}and training!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0101/1"
+   "origin": "agent",
+   "notes": "US 0101/1 | RV043: addition: dropped US 'similar in a sense'"
   }
  ]
 }

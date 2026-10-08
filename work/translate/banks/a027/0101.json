@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "战斗前线{NEWLINE}共有５间设施。{SCROLL}车轮战７组训练员的{NEWLINE}战斗塔。{SCROLL}留下精灵的记录的{NEWLINE}战斗舞台。{SCROLL}用租借到的精灵{NEWLINE}进行战斗的战斗工厂。{SCROLL}用积攒到的点数{NEWLINE}进行攻克的战斗城堡。{SCROLL}根据状况不同会出现{NEWLINE}各种戏剧性场面的战斗轮盘。{SCROLL}总有一个{NEWLINE}你会喜欢的！{SCROLL}",
-   "en": "The Battle Frontier has five facilities{NEWLINE}dedicated to battling.{SCROLL}At the Battle Tower, the objective is{NEWLINE}to beat seven Trainers in a row.{SCROLL}At the Battle Hall, you may keep battle{NEWLINE}records of individual Pokémon.{SCROLL}At the Battle Factory, you must win{NEWLINE}consecutive battles with rentals.{SCROLL}The Battle Castle forces Trainers to{NEWLINE}manage Castle Points to advance.{SCROLL}And finally, the Battle Arcade is where{NEWLINE}random luck triggers events.{SCROLL}You can try any of these facilities!{SCROLL}",
+   "en": "The Battle Frontier has five facilities.{SCROLL}The Battle Tower, where you battle{NEWLINE}seven Trainers one after another.{SCROLL}The Battle Hall, where your Pokémon{NEWLINE}leave their records.{SCROLL}The Battle Factory, where you battle{NEWLINE}with rental Pokémon.{SCROLL}The Battle Castle, which you conquer{NEWLINE}with the points you build up.{SCROLL}And the Battle Arcade, where all kinds{NEWLINE}of dramatic twists happen depending on{CLEAR}the situation.{SCROLL}There’s bound to be one you’ll like!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0103/5"
+   "origin": "agent",
+   "notes": "US 0103/5 | RV043: meaning: stale US facility summaries; 'there's bound to be one you'll like'"
   },
   {
    "id": 6,
@@ -174,10 +174,10 @@
   {
    "id": 21,
    "zh": "战斗工厂就是{NEWLINE}进入战斗前线后{CLEAR}右前方的建筑。{SCROLL}战斗工厂{NEWLINE}是用租借来的精灵们{CLEAR}进行车轮战的地方。{SCROLL}赢了就用自己的{NEWLINE}一只精灵与对方{CLEAR}交换。{SCROLL}",
-   "en": "The Battle Factory is at the upper-{NEWLINE}right corner of the Battle Frontier.{SCROLL}There, you engage in a knockout{NEWLINE}tournament with rented Pokémon.{SCROLL}The goal is to keep winning for{NEWLINE}as long as possible.{SCROLL}Every time you win a match, you may{NEWLINE}trade one of your Pokémon for one of{CLEAR}the opponent’s Pokémon.{SCROLL}",
+   "en": "The Battle Factory is the building{NEWLINE}ahead on the right as you{CLEAR}enter the Battle Frontier.{SCROLL}At the Battle Factory, you battle{NEWLINE}opponent after opponent{CLEAR}with rental Pokémon.{SCROLL}When you win, you can trade one of your{NEWLINE}Pokémon for one of your opponent’s.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0103/21"
+   "origin": "agent",
+   "notes": "US 0103/21 | RV043: addition: dropped US 'knockout tournament' and 'keep winning as long as possible' page"
   },
   {
    "id": 22,

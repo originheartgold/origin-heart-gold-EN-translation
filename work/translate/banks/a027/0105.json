@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "欢迎来到战斗工厂！{SCROLL}这里向您介绍可以和{NEWLINE}朋友一起玩的多人战！{SCROLL}",
-   "en": "Welcome to the Battle Factory!{SCROLL}I am your guide to the Multi Battle{NEWLINE}challenge.{SCROLL}Please be aware that this challenge{NEWLINE}requires two Trainers.{SCROLL}",
+   "en": "Welcome to the Battle Factory!{SCROLL}I am your guide to the Multi{NEWLINE}Battle challenge, which you can{CLEAR}take on with a friend!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0107/3"
+   "origin": "agent",
+   "notes": "US 0107/3 | RV043: meaning: zh 'can play with a friend', not 'requires two Trainers'"
   },
   {
    "id": 4,
@@ -225,10 +225,10 @@
   {
    "id": 27,
    "zh": "工作人员会在这为我们{NEWLINE}介绍下一位{CLEAR}上场的训练家的信息。{SCROLL}那些说明{NEWLINE}将会非常有用！",
-   "en": "The staff tell you about the next{NEWLINE}Trainer you’ll face.{SCROLL}They’re very helpful here.{NEWLINE}Don’t you think?{NEWLINE}",
+   "en": "The staff here tell us about the next{NEWLINE}Trainer who’ll come out.{SCROLL}That information will be really useful!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0107/27"
+   "origin": "agent",
+   "notes": "US 0107/27 | RV043: addition: dropped US 'Don't you think?'"
   },
   {
    "id": 28,
@@ -241,42 +241,42 @@
   {
    "id": 29,
    "zh": "如果能知晓{NEWLINE}对方训练家{CLEAR}带着哪几只精灵,{CLEAR}会使用哪几种技能,{CLEAR}那这将在我们选取精灵时{CLEAR}提供巨大的方便！",
-   "en": "It’ll help you choose a Pokémon when{NEWLINE}you remember what kind of Pokémon{CLEAR}the other Trainer had and what moves{CLEAR}they used.",
+   "en": "Knowing which Pokémon the other Trainer{NEWLINE}has and which moves they use makes{CLEAR}choosing our Pokémon much easier!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0107/29"
+   "origin": "agent",
+   "notes": "US 0107/29 | RV043: meaning: knowing in advance, not remembering (D-1702)"
   },
   {
    "id": 30,
    "zh": "这里不是能租借精灵{NEWLINE}和别人进行对战么？{SCROLL}那也就是说{NEWLINE}这将是我们{CLEAR}尝试新精灵的好机会,{SCROLL}它可以让我们在实际战斗中{NEWLINE}增加对精灵的了解。{SCROLL}这世界上{NEWLINE}怎么会有这么好的地方！",
-   "en": "This is a place to battle with rental{NEWLINE}Pokémon, right?{SCROLL}It is a good chance to try Pokémon{NEWLINE}you’ve never trained.{SCROLL}You’ll learn about new Pokémon{NEWLINE}while having exciting battles!{SCROLL}What more could you want?",
+   "en": "This place lets you battle with rental{NEWLINE}Pokémon, right?{SCROLL}That means it’s a great chance for us{NEWLINE}to try out new Pokémon,{SCROLL}and it lets us learn more about them in{NEWLINE}real battles.{SCROLL}How can there be such a great place in{NEWLINE}this world!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0107/30"
+   "origin": "agent",
+   "notes": "US 0107/30 | RV043: meaning: stale US paraphrase; restored closing exclamation"
   },
   {
    "id": 31,
    "zh": "我看你带着{NEWLINE}一打以上的精灵,{SCROLL}不是我吹牛啊,{NEWLINE}其实我身上一个精灵都没有！{SCROLL}不过这没什么,{NEWLINE}因为这座{CLEAR}战斗工厂{CLEAR}向我们提供了{CLEAR}用租借来的精灵{CLEAR}进行战斗的系统！",
-   "en": "Do you have a lot of Pokémon?{SCROLL}I’m not too proud to say this, but...{NEWLINE}I have only a few!{SCROLL}But there is nothing to worry about.{NEWLINE}Do you know why?{SCROLL}This facility, the Battle Factory, has{NEWLINE}you use rental Pokémon for battles!",
+   "en": "Looks like you’ve got more than a dozen{NEWLINE}Pokémon with you.{SCROLL}Not to brag, but I don’t have a single{NEWLINE}Pokémon on me!{SCROLL}But that’s no problem, because the{NEWLINE}Battle Factory lets us battle with{CLEAR}rental Pokémon!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0107/31"
+   "origin": "agent",
+   "notes": "US 0107/31 | RV043: meaning: more than a dozen vs not a single one (D-1703)"
   },
   {
    "id": 32,
    "zh": "我要在这{NEWLINE}去用那些{SCROLL}平时未曾{NEWLINE}接触过的精灵吗？{SCROLL}它们会听话吗？{NEWLINE}它们能和搞好关系吗？{CLEAR}说实话,我心里还真没个准谱。",
-   "en": "So you have to battle with Pokémon{NEWLINE}you just met instead of with your{CLEAR}cherished Pokémon you’ve always{CLEAR}battled with?{SCROLL}Oh, I don’t know if I could...{NEWLINE}Will they be nice to me...?{CLEAR}I’m a little worried.",
+   "en": "So here I’m supposed to use Pokémon{NEWLINE}I’ve never handled before?{SCROLL}Will they listen to me? Will I get along{NEWLINE}with them? To be honest, I really have{CLEAR}no idea.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0107/32"
+   "origin": "agent",
+   "notes": "US 0107/32 | RV043: meaning: stale US; restored 'listen to me' and honest uncertainty"
   },
   {
    "id": 33,
    "zh": "来到战斗前线的训练师们{NEWLINE}个个都是{CLEAR}身手矫健的高手！{SCROLL}要不是我有工作在身{NEWLINE}得在这执行巡逻任务,{SCROLL}不然,{NEWLINE}我早就和你们{CLEAR}打成一片了！",
-   "en": "All the Trainers gathered at the{NEWLINE}Battle Frontier are nice,{CLEAR}pleasant people!{SCROLL}I’m patrolling here on duty, but{NEWLINE}otherwise I would love to change{CLEAR}my uniform to participate!",
+   "en": "All the Trainers who come to the{NEWLINE}Battle Frontier are agile, highly{CLEAR}skilled experts!{SCROLL}If I weren’t stuck here on patrol duty,{SCROLL}I’d have joined in with you all long ago!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0107/33"
+   "origin": "agent",
+   "notes": "US 0107/33 | RV043: meaning: skilled experts, not pleasant people (D-1704)"
   }
  ]
 }

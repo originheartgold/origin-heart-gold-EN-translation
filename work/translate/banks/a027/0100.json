@@ -14,18 +14,18 @@
   {
    "id": 1,
    "zh": "我这样的小女孩一个人{CLEAR}在战斗前线的话,{CLEAR}大家都会吃惊的,{SCROLL}虽然我并不是去战斗的。",
-   "en": "Some people are surprised to see a{NEWLINE}small girl like me at the Battle Frontier{CLEAR}all by herself.{SCROLL}It’s not like I have to battle myself,{NEWLINE}you know?{NEWLINE}",
+   "en": "Everyone’s surprised to see a little{NEWLINE}girl like me at the Battle Frontier all{CLEAR}by herself,{SCROLL}though I’m not here to battle.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0102/1"
+   "origin": "agent",
+   "notes": "US 0102/1 | RV043: meaning: she is not here to battle (D-1653)"
   },
   {
    "id": 2,
    "zh": "我从年轻时候开始{NEWLINE}就喜欢精灵对战。{CLEAR}我是这么决定的,{SCROLL}早饭之后来场决斗,{NEWLINE}午饭之后来场决斗,{CLEAR}晚饭之后……{CLEAR}洗个澡睡觉,真爽！",
-   "en": "My lifelong hobby has been{NEWLINE}battling using Pokémon.{SCROLL}A battle after breakfast,{NEWLINE}a battle after lunch,{CLEAR}and after dinner...{CLEAR}I just take a bath and go to bed.",
+   "en": "I’ve loved Pokémon battles since I was{NEWLINE}young. So I decided on this:{SCROLL}a battle after breakfast, a battle{NEWLINE}after lunch, and after dinner... a bath{CLEAR}and then bed. Feels great!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0102/2"
+   "origin": "agent",
+   "notes": "US 0102/2 | RV043: omission: restored 'I decided' and 真爽"
   },
   {
    "id": 3,

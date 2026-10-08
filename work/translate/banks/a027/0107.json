@@ -22,18 +22,18 @@
   {
    "id": 2,
    "zh": "在这个战斗城堡里{NEWLINE}灵活使用城堡点数,{CLEAR}看看能够撑到什么地步。{CLEAR}城堡点数⋯⋯{SCROLL}也就是ＣＰ会根据你的{NEWLINE}胜利方式和内容发生变化！{SCROLL}推荐用这些ＣＰ{NEWLINE}回复精灵的体力,{SCROLL}或者租借道具来进行战斗。{SCROLL}成功取得７连胜之后{NEWLINE}将获赠ＢＰ值！{SCROLL}另外,如果要临时中断挑战,{SCROLL}必须保存好进度,不然{NEWLINE}就不能从上次的{SCROLL}中断点接着玩了！{NEWLINE}一定要注意这一点！{SCROLL}",
-   "en": "At the Battle Castle, you may take a{NEWLINE}Single or Double Battle challenge.{SCROLL}Here, you are provided with Castle{NEWLINE}Points (CP) that you must manage.{SCROLL}The CP are used for healing Pokémon,{NEWLINE}renting items or Berries, and so on.{SCROLL}CP are earned by winning matches.{NEWLINE}The amount varies by how you win.{SCROLL}The objective is to keep a winning{NEWLINE}streak alive while managing your CP.{SCROLL}If you manage to win seven matches in{NEWLINE}a row, you will earn Battle Points (BP).{SCROLL}If you want to interrupt your{NEWLINE}challenge, please save the game.{SCROLL}If you don’t save, you will be{NEWLINE}disqualified from your challenge.{SCROLL}Please be aware of that!{SCROLL}",
+   "en": "At the Battle Castle, you make clever{NEWLINE}use of Castle Points and see how far{CLEAR}you can last.{SCROLL}Castle Points... that is, CP, change{NEWLINE}depending on how you win and how the{CLEAR}battle goes!{SCROLL}We recommend using CP to restore your{NEWLINE}Pokémon’s HP,{SCROLL}or to rent items for battle.{SCROLL}Win 7 battles in a row to earn BP!{SCROLL}Also, if you want to take a break from{NEWLINE}your challenge,{SCROLL}be sure to save, or you won’t be able{NEWLINE}to pick up where you left off!{SCROLL}Please keep that in mind!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0109/2"
+   "origin": "agent",
+   "notes": "US 0109/2 | RV043: addition: stale US rules text replaced with what the hack says"
   },
   {
    "id": 3,
    "zh": "欢迎来到战斗城堡！{SCROLL}这儿向您介绍可以和{NEWLINE}朋友一起玩的多人战！{SCROLL}",
-   "en": "Welcome to the Battle Castle!{SCROLL}I am your guide to the Multi Battle{NEWLINE}challenge.{SCROLL}Please be aware that this challenge{NEWLINE}requires two Trainers.{SCROLL}",
+   "en": "Welcome to the Battle Castle!{SCROLL}I am your guide to the Multi{NEWLINE}Battle challenge, which you can{CLEAR}take on with a friend!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0109/3"
+   "origin": "agent",
+   "notes": "US 0109/3 | RV043: meaning: zh 'can play with a friend', not 'requires two Trainers'"
   },
   {
    "id": 4,
@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "这儿可以两个人合作{NEWLINE}与训练师进行多人战！{SCROLL}战胜了的话每人都能得到ＣＰ！{SCROLL}ＣＰ不但可以用于自己的精灵{NEWLINE}也可以用于朋友的精灵。{SCROLL}不断征战当成功实现{NEWLINE}７连胜之后,{CLEAR}会获赠ＢＰ值！{SCROLL}另外,在进行多人战的时候{NEWLINE}不能临时中断！{SCROLL}",
-   "en": "You may team up with a friend for a{NEWLINE}Multi Battle challenge.{SCROLL}Both Trainers are provided with Castle{NEWLINE}Points (CP) that must be managed.{SCROLL}The CP is used for healing Pokémon,{NEWLINE}renting items or Berries, and so on.{SCROLL}Trainers can use their CP on not only{NEWLINE}their own Pokémon, but also their{CLEAR}partner’s.{SCROLL}Both Trainers earn CP by winning{NEWLINE}matches.{SCROLL}The objective is to keep a winning{NEWLINE}streak alive while managing your CP.{SCROLL}If you manage to win seven matches in{NEWLINE}a row, you will earn Battle Points (BP).{SCROLL}Please note: a Battle Castle Multi{NEWLINE}Battle challenge can’t be interrupted.{SCROLL}",
+   "en": "Here, two of you can team up for Multi{NEWLINE}Battles against Trainers!{SCROLL}Each of you earns CP when you win!{SCROLL}You can use CP not only on your own{NEWLINE}Pokémon, but also on your friend’s.{SCROLL}Keep battling, and if you win 7 in a row,{NEWLINE}you’ll earn BP!{SCROLL}Also, Multi Battles{NEWLINE}can’t be interrupted!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0109/5"
+   "origin": "agent",
+   "notes": "US 0109/5 | RV043: addition: stale US rules text replaced with what the hack says"
   },
   {
    "id": 6,
@@ -246,10 +246,10 @@
   {
    "id": 30,
    "zh": "您和朋友选择了同样的{VAR:0100:0}或者{VAR:0100:1}！{SCROLL}请和朋友商量好之后再来。{SCROLL}",
-   "en": "Both Trainers have chosen the Pokémon{NEWLINE}{VAR:0100:0} and {VAR:0100:1}.{SCROLL}Please confer with the other Trainer{NEWLINE}and choose different Pokémon.{SCROLL}",
+   "en": "Both Trainers have chosen {VAR:0100:0}{NEWLINE}or {VAR:0100:1}.{SCROLL}Please confer with the other Trainer{NEWLINE}and choose different Pokémon.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0109/30"
+   "origin": "agent",
+   "notes": "US 0109/30 | RV043: meaning: 或者 is 'or', not 'and' (as 0094#34, D-1627)"
   },
   {
    "id": 31,
@@ -358,74 +358,74 @@
   {
    "id": 44,
    "zh": "开始进行ＤＳ无线通信吗？{VAR:0200:0}",
-   "en": "We need to launch DS Wireless{NEWLINE}Communications. {VAR:0200:0}",
+   "en": "Launch DS Wireless Communications? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0109/44"
+   "origin": "agent",
+   "notes": "US 0109/44 | RV043: meaning: zh is a yes/no question"
   },
   {
    "id": 45,
    "zh": "开始介绍之前保存进度！",
-   "en": "You must save the game before{NEWLINE}I show you in. Please wait.",
+   "en": "Your progress must be{NEWLINE}saved before I explain!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0109/45"
+   "origin": "agent",
+   "notes": "US 0109/45 | RV043: meaning: zh 'before I explain', not 'before I show you in'"
   },
   {
    "id": 46,
    "zh": "竖起耳朵给我听好了！{NEWLINE}如果能让精灵无伤获胜,{CLEAR}那你将能得到{CLEAR}大量的城堡点数！{SCROLL}这东西是多多益善,{NEWLINE}你看大叔我{CLEAR}一个子儿都摸不出来,真丢人啊。",
-   "en": "Listen carefully!{SCROLL}If your Pokémon win without taking{NEWLINE}damage, you earn more CP.{CLEAR}The more, the merrier!{CLEAR}Look at me. I don’t have much...",
+   "en": "Prick up your ears and listen good!{SCROLL}If your Pokémon win without taking{NEWLINE}any damage, you’ll earn a ton{CLEAR}of Castle Points!{SCROLL}The more of these, the better. Look at{NEWLINE}this old guy, can’t scrape together a{CLEAR}single point. How embarrassing.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0109/46"
+   "origin": "agent",
+   "notes": "US 0109/46 | RV043: omission: not a single point, 真丢人 and 大叔 self-reference (D-1655)"
   },
   {
    "id": 47,
    "zh": "如果你提升了对手的{NEWLINE}等级并取得胜利,{CLEAR}那你获得的{CLEAR}城堡点数也就是ＣＰ{CLEAR}将会有所增加。{SCROLL}这也就是{NEWLINE}所谓的{CLEAR}风险与机遇并存。",
-   "en": "Listen!{SCROLL}You can earn more Castle Points or CP{NEWLINE}by facing higher-level opponents.{SCROLL}This is what they call high risk,{NEWLINE}high return!",
+   "en": "If you raise your opponent’s level and{NEWLINE}still win, you’ll earn more Castle{CLEAR}Points, or CP.{SCROLL}That’s what they call{NEWLINE}high risk, high return.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0109/47"
+   "origin": "agent",
+   "notes": "US 0109/47 | RV043: meaning: raise the opponent's level and win (D-1655)"
   },
   {
    "id": 48,
    "zh": "在开战之前,{NEWLINE}你别吝啬自己的ＣＰ,{CLEAR}应该在这好好对对手调查一番！{SCROLL}俗话说的好,{SCROLL}不入虎穴{NEWLINE}焉得虎子{NEWLINE}⋯⋯　⋯⋯　⋯⋯{SCROLL}呀,貌似不是这么用的！",
-   "en": "Before every battle, you should check{NEWLINE}the opponent’s lineup.{SCROLL}Don’t be cheap with your CP.{NEWLINE}It’s like that old saying goes about{CLEAR}knowing your enemy.{SCROLL}“Unless you enter the enemy’s lair,{NEWLINE}you cannot take their prize.”{SCROLL}...{CLEAR}That’s not the right old saying!",
+   "en": "Before a battle, don’t be stingy with{NEWLINE}your CP. You should look into your{CLEAR}opponent thoroughly here!{SCROLL}As the old saying goes,{SCROLL}‘If you don’t enter the tiger’s den,{NEWLINE}how can you catch the tiger’s cub?’ ...{SCROLL}Huh, guess that’s not how you use it!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0109/48"
+   "origin": "agent",
+   "notes": "US 0109/48 | RV043: meaning: restored the tiger proverb and the speaker's self-correction"
   },
   {
    "id": 49,
    "zh": "石兰{SCROLL}能舍身为嘉德丽雅⋯⋯{CLEAR}这年头,{SCROLL}还能找到这么好的人吗？",
-   "en": "Darach, ready to give{NEWLINE}his all for Caitlin...{SCROLL}Where can you find a man{NEWLINE}that good these days?",
+   "en": "Darach, willing to sacrifice himself for{NEWLINE}Caitlin...{SCROLL}Where can you find a man that good{NEWLINE}these days?",
    "status": "draft",
    "origin": "agent",
-   "notes": "石兰 Darach / 嘉德丽雅 Caitlin."
+   "notes": "石兰 Darach / 嘉德丽雅 Caitlin. | RV043: softened: 舍身 is self-sacrifice (D-1656)"
   },
   {
    "id": 50,
    "zh": "刚开始的时候{NEWLINE}只能回复精灵的ＨＰ,{SCROLL}但随着ＣＰ的增加和{NEWLINE}等级的提升,{SCROLL}就算是ＰＰ{NEWLINE}也是可以回复的！",
-   "en": "At first, you can only use CP for{NEWLINE}restoring HP.{SCROLL}But you can spend CP to rank up.{NEWLINE}Then, you can even restore PP!",
+   "en": "At first, you can only restore your{NEWLINE}Pokémon’s HP,{SCROLL}but as your CP grows and your rank{NEWLINE}goes up,{SCROLL}you can even restore PP!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0109/50"
+   "origin": "agent",
+   "notes": "US 0109/50 | RV043: meaning: rank rises as CP grows; US 'spend CP to rank up'"
   },
   {
    "id": 51,
    "zh": "在这座城堡中,{NEWLINE}你要意识到因为一个失败{SCROLL}而让你辛苦积攒的ＣＰ{NEWLINE}付诸东流就和家常便饭一样。",
-   "en": "If you lose, your entire stock of CP{NEWLINE}is cleaned out to zero!{SCROLL}This is the rule at the Battle Castle.",
+   "en": "In this castle, you have to accept{SCROLL}that a single loss wiping out all the CP{NEWLINE}you worked so hard to save is an{CLEAR}everyday thing.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0109/51"
+   "origin": "agent",
+   "notes": "US 0109/51 | RV043: meaning: stale US rule text; zh says losing hard-earned CP to one loss is commonplace"
   },
   {
    "id": 52,
    "zh": "我将来的愿望就是{NEWLINE}穿上漂亮的礼服,{CLEAR}住在城堡中！{SCROLL}⋯⋯错了错了！{SCROLL}是和穿着漂亮的礼服的人{NEWLINE}共塌堡中！",
-   "en": "My dream is to wear a beautiful dress{NEWLINE}and live in a castle!{SCROLL}That’s not what I meant to say...{SCROLL}My dream is to live in a castle with{NEWLINE}someone who wears a beautiful dress!",
+   "en": "My dream is to wear a beautiful dress{NEWLINE}and live in a castle!{SCROLL}...No, no, wrong!{SCROLL}To share a bed in a castle with someone{NEWLINE}wearing a beautiful dress!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0109/52"
+   "origin": "agent",
+   "notes": "US 0109/52 | RV043: omission: typo 共塌 read as 共榻 (share a bed) per D-1657; innuendo restored"
   }
  ]
 }
