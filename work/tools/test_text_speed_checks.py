@@ -343,6 +343,10 @@ class Product(unittest.TestCase):
         coarse = C.pass_info(ptask(1, (5, 171), (6, 208), b_lines=(185, 197, 208),
                                    ticks=(1453, 688, (44970 & 0xFFFF, 45347, 45706))), 330)
         self.assertTrue(coarse["overran"] and not coarse["unforced"])
+        # started on line 192 after the VBlank interrupt, before the game counted it (718#1093): the counts
+        # say a frame late, the gate's ticks say the pass ended 8600 ticks before its deadline
+        counted = C.pass_info(ptask(1, (18963, 192), (18964, 196), ticks=(125, 8725, ())), 352)
+        self.assertEqual((counted["overran"], counted["unforced"]), (False, False))
         battle = C.pass_info(ptask(1, (6, 230), (6, 40)), 330)          # VBlank task: next VBlank far away
         self.assertFalse(battle["overran"])
         stop = C.pass_info(ptask(1, (5, 160), (5, 184), reason="frame", ticks=(800, 1065, ())), 330)

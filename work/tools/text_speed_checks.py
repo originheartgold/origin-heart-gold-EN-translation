@@ -466,6 +466,9 @@ def pass_info(task, warm_cost):
         bt = task.get("b_ticks") or []
         extra_ticks = sum((y - x) & 0xFFFF for x, y in zip(bt, bt[1:]))
         info["extra_ticks"] = extra_ticks
+        # The gate's own frame timing decides (D-2269): a task that starts after the VBlank interrupt
+        # but before the game counts that VBlank (line 192) looks a frame late in VBlank-count terms.
+        info["overran"] = info["tick_slack"] <= 0
         # in ticks (D-2271): without the extra glyphs' time the pass would have ended before VBlank
         info["unforced"] = info["overran"] and info["tick_slack"] + extra_ticks > 0
     stop = task.get("stop") or {}

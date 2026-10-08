@@ -422,6 +422,9 @@ def main():
                 errors.append(f'trainer {trainer}: wrong candidate executed')
             report['battles'][trainer] = {'segments': r['segments'], 'memory': r.get('memory'),
                                           'rng_seed': r.get('rng_seed'), 'rng_pins': r.get('rng_pins')}
+            for k, v in (r.get('overrun_budget') or {}).items():     # D-2276: the run-wide count
+                budget = report.setdefault('overrun_budget', {'fast_frames': 0, 'unforced_overruns': 0})
+                budget[k] += v
             if args.no_rng_pin:
                 errors.append(f'trainer {trainer}: run without the battle RNG pin (diagnosis only, never evidence)')
             if code or r['status'] != 'passed':
