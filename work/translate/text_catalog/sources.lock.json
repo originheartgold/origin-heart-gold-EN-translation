@@ -1,0 +1,17 @@
+{
+  "cc-cedict": {
+    "version": "2026-10-07T03:26:22Z",
+    "format": "CC-CEDICT v1 UTF-8 traditional/simplified",
+    "url": "https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz",
+    "sha256": "00e6c188df0056c42c0448386d0b4f532aa805d9fdd87aef139f72b421ace2f4",
+    "license": "CC-BY-SA-4.0",
+    "entries": 125215
+  },
+  "pypinyin": {
+    "version": "0.55.0",
+    "url": "https://pypi.org/project/pypinyin/0.55.0/",
+    "license": "MIT",
+    "installed_record_sha256": "6d4734e38cb29cd0416c202a374dba6024da5bd45e37aa9c4b58a15f89e5be56",
+    "upstream": "https://github.com/mozillazg/python-pinyin/tree/v0.55.0"
+  }
+}

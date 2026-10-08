@@ -1,0 +1,54 @@
+{
+  "status": "prioritized investigation queue; no bulk change authorization implied",
+  "items": [
+    {
+      "priority": 1,
+      "refs": [
+        "a027/0616#9",
+        "a027/0379#39",
+        "a027/0529#90",
+        "a027/0529#93"
+      ],
+      "focus": "threats and insults; full source strength and separate targets",
+      "gate": "resolve tone judgments using existing voice decisions"
+    },
+    {
+      "priority": 1,
+      "refs": [
+        "a027/0066#87",
+        "a027/0123#31",
+        "a027/0123#33",
+        "a027/0587#94"
+      ],
+      "focus": "ambiguous subjects and omitted objects",
+      "gate": "retain three revisions (0066#87, 0123#31 and adjacent 0123#33) as provisional regression candidates; independent LLM agent review passed, human ground truth pending; resolve D-2032/D-2033 before expansion"
+    },
+    {
+      "priority": 2,
+      "refs": [
+        "a027/0535#61",
+        "a027/0462#142",
+        "a027/0593#4"
+      ],
+      "focus": "branch-aware labels and variable producers",
+      "gate": "verify all occurrences and predicates, not bank adjacency"
+    },
+    {
+      "priority": 2,
+      "refs": [
+        "a027/0462#76",
+        "a027/0406#25",
+        "a027/0690#11",
+        "a027/0542#14"
+      ],
+      "focus": "names, canon, source typo and class mapping",
+      "gate": "retain existing names; require verified canon and specific source-fix approval"
+    },
+    {
+      "priority": 3,
+      "refs": [],
+      "focus": "remaining development cases then untouched heldout; menus and dex separate context",
+      "gate": "fresh snapshot and provider candidates before quantitative scaling"
+    }
+  ]
+}

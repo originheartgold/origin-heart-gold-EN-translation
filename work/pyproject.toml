@@ -1,0 +1,35 @@
+[project]
+name = "origin-heartgold-translation-tools"
+version = "0.1.0"
+description = "Local evidence packages and checks for the English translation"
+requires-python = ">=3.14,<3.15"
+dependencies = ["ndspy==4.2.0"]
+
+[dependency-groups]
+dev = ["mypy==2.4.0", "ruff==0.16.10"]
+
+[tool.uv]
+package = false
+required-version = "==0.12.23"
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+cache-dir = "build/ruff"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.14"
+strict = true
+cache_dir = "work/build/mypy"
+show_error_codes = true
+pretty = true
+
+# These existing tools remain outside this focused migration. Their untyped
+# APIs are explicit compatibility boundaries; new modules still get strict checks.
+[[tool.mypy.overrides]]
+module = ["qa", "text_catalog", "docs", "docs.*", "ndspy", "ndspy.*"]
+follow_imports = "skip"
+ignore_missing_imports = true

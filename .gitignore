@@ -50,6 +50,8 @@
 /work/translate/banks/a027/081[0-3].json
 # PokéAPI CSVs; build_glossary.py downloads them again when missing.
 /work/glossary/src/
+# Licensed dictionary downloads used by the local text catalogue; provenance is tracked separately.
+/work/translate/text_catalog/vendor/
 # ACG character table (GPL-3.0, from Xzonn's repo); only for reading the old v3 patches.
 /work/tools/charmaps/charmap_zh_acg_hgss.tsv
 
@@ -68,6 +70,8 @@
 # ROM caches (pickled game code/scripts, e.g. work/tools/audit/raw.pkl): game data, never publish.
 *.pkl
 *.lock
+# Reproducible Python tool dependencies are source configuration, not runtime locks.
+!/work/uv.lock
 __pycache__/
 *.py[cod]
 .venv/
