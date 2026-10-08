@@ -38,26 +38,26 @@
   {
    "id": 4,
    "zh": "呀,呀,{VAR:0103:0}！{SCROLL}又来听我引以为傲的{NEWLINE}精灵的故事了吧！{SCROLL}……唉？不是吗？{NEWLINE}什么啊……真没劲。",
-   "en": "Hello, {VAR:0103:0}!{SCROLL}Did you come see me about my{NEWLINE}Pokémon again?{SCROLL}No? Oh... I had more tales to tell...",
+   "en": "Hi, hi, {VAR:0103:0}!{SCROLL}You came to hear about my{NEWLINE}pride-and-joy Pokémon again, right?{SCROLL}...Huh? You didn’t? Aww... How boring.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0488/4"
+   "origin": "agent",
+   "notes": "US 0488/4 | RV021: meaning: US line replaced; 真没劲 (how boring) and the 'pride and joy' stories restored"
   },
   {
    "id": 5,
    "zh": "呀,呀,{VAR:0103:0}！{SCROLL}又来听我引以为傲的{NEWLINE}精灵的故事了吧！{SCROLL}……唉？不是吗？{NEWLINE}什么啊……真没劲。",
-   "en": "Hello, {VAR:0103:0}!{SCROLL}Did you come see me about my{NEWLINE}Pokémon again?{SCROLL}No? Oh... I had more tales to tell...",
+   "en": "Hi, hi, {VAR:0103:0}!{SCROLL}You came to hear about my{NEWLINE}pride-and-joy Pokémon again, right?{SCROLL}...Huh? You didn’t? Aww... How boring.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0488/5"
+   "origin": "agent",
+   "notes": "US 0488/5 | RV021: meaning: US line replaced; 真没劲 (how boring) and the 'pride and joy' stories restored"
   },
   {
    "id": 6,
    "zh": "真没劲……{SCROLL}不想听我的故事啊,{NEWLINE}下次再来啊！",
-   "en": "How disappointing...{SCROLL}Come back if you want to listen{NEWLINE}to me again!",
+   "en": "How boring...{SCROLL}You don’t want to hear my stories? Come{NEWLINE}back next time!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0488/6"
+   "origin": "agent",
+   "notes": "US 0488/6 | RV021: meaning: US line replaced; 不想听我的故事啊 restored"
   },
   {
    "id": 7,
@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "说到双手展开ＰＯＳＥ时的{NEWLINE}那种可爱模样……{SCROLL}呒唔！{NEWLINE}皮皮太可爱了！",
-   "en": "I love the way Clefairy opens up{NEWLINE}its arms!{SCROLL}It’s so adorable!",
+   "en": "When it spreads its arms out in a pose,{NEWLINE}it’s so cute...{SCROLL}Mmmh! Clefairy is just too adorable!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0488/9; modernised from US 0488#9"
+   "origin": "agent",
+   "notes": "US 0488/9; modernised from US 0488#9 | RV021: omission: POSE image and interjection 呒唔 restored"
   },
   {
    "id": 10,
@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "我超喜欢皮皮的说,{NEWLINE}但是怎么也捕捉不到。{SCROLL}没有办法,{NEWLINE}就拿着捡到的皮皮玩偶{CLEAR}凑合着……{SCROLL}唉？{NEWLINE}遗失这只玩偶的{CLEAR}女孩很伤心？{SCROLL}……我知道了！{NEWLINE}把这只皮皮玩偶{CLEAR}还给那个女孩吧！{SCROLL}我会用自己的力量{NEWLINE}与皮皮成为伙伴的！{SCROLL}",
-   "en": "I love Clefairy, but I could never{NEWLINE}catch one. So I’m making do with a{CLEAR}Poké Doll that I found.{SCROLL}What?{NEWLINE}The girl who lost this Poké Doll{CLEAR}is sad...!{SCROLL}OK. Could you take this Poké Doll{NEWLINE}back to that poor little girl?{SCROLL}I’ll befriend a real Clefairy on{NEWLINE}my own one day!{SCROLL}",
+   "en": "I love Clefairy, but I could never catch{NEWLINE}one. So I’m making do with a Poké Doll{CLEAR}that I found...{SCROLL}Huh? The girl who lost this doll is sad?{SCROLL}...I get it! Give this Poké Doll back to{NEWLINE}that girl!{SCROLL}I’ll become partners with Clefairy{NEWLINE}through my own strength!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0488/11; modernised from US 0488#11"
+   "origin": "agent",
+   "notes": "US 0488/11; modernised from US 0488#11 | RV021: addition: invented 'poor little' and 'one day' removed; 用自己的力量 restored"
   },
   {
    "id": 12,
@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "你看,你看！{NEWLINE}我的月桂叶！{SCROLL}头上的叶子{NEWLINE}又可爱又时尚吧！",
-   "en": "Look at my darling Bayleef!{SCROLL}The leaf on its head is so cute{NEWLINE}and fashionable!",
+   "en": "Look, look! My Bayleef!{SCROLL}Isn’t the leaf on its head cute and{NEWLINE}stylish?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0488/14; modernised from US 0488#14"
+   "origin": "agent",
+   "notes": "US 0488/14; modernised from US 0488#14 | RV021: omission: 你看,你看 restored, invented 'darling' removed"
   },
   {
    "id": 15,

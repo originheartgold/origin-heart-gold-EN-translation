@@ -78,34 +78,34 @@
   {
    "id": 9,
    "zh": "吱吱喳喳……{NEWLINE}哎呀！垃圾箱那边{CLEAR}居然有个开关！{CLEAR}我来按一下……我按！",
-   "en": "...{NEWLINE}Oh, you found a secret switch at the{CLEAR}bottom of the trash can!{CLEAR}Better press it.",
+   "en": "Scrabble scrabble...{SCROLL}Whoa! There’s actually a switch over by{NEWLINE}the trash can!{SCROLL}I’ll press it... Here goes!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0485/9"
+   "origin": "agent",
+   "notes": "US 0485/9 | RV021: meaning: US line replaced; switch is by the can, first-person pressing and 我按 restored (D-1853)"
   },
   {
    "id": 10,
    "zh": "吱吱喳喳……{NEWLINE}里面都是垃圾！{CLEAR}啊！电击屏障的{CLEAR}锁复原了！",
-   "en": "Nope! Nothing here but trash.{NEWLINE}Oh no, the electric fence is{CLEAR}locked again!",
+   "en": "Scrabble scrabble... Nothing but trash{NEWLINE}in here!{SCROLL}Ah! The electric fence’s locks have{NEWLINE}been reset!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0485/10"
+   "origin": "agent",
+   "notes": "US 0485/10 | RV021: omission: rummaging sound restored; 锁复原了 = the locks reset"
   },
   {
    "id": 11,
    "zh": "电击屏障的{NEWLINE}第１道锁解除了！",
-   "en": "The first electric fence is unlocked!",
+   "en": "The electric fence’s first lock is{NEWLINE}released!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0485/11"
+   "origin": "agent",
+   "notes": "US 0485/11 | RV021: meaning: one fence with two locks, not two fences (D-1853)"
   },
   {
    "id": 12,
    "zh": "电击屏障的{NEWLINE}第２道锁解除了！{SCROLL}通向馆主的电击屏障{NEWLINE}完全打开了！",
-   "en": "The second electric fence is unlocked!{SCROLL}Now the electric fences are gone, and{NEWLINE}the path to the Leader is clear!",
+   "en": "The electric fence’s second lock is{NEWLINE}released!{SCROLL}The electric fence blocking the way to{NEWLINE}the Leader is fully open!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0485/12"
+   "origin": "agent",
+   "notes": "US 0485/12 | RV021: meaning: one fence with two locks, not two fences (D-1853)"
   },
   {
    "id": 13,
@@ -126,10 +126,10 @@
   {
    "id": 15,
    "zh": "马志士馆主其实也不想{NEWLINE}让金婆婆在这里盖楼的,{CLEAR}但是金婆婆有那块地的所有权,{CLEAR}所以馆主他也拿金婆婆没办法。{SCROLL}强制停工30天{NEWLINE}已经是马志士馆主的最大权限了。{SCROLL}如今停工期限已到{NEWLINE}而联盟的禁令还没来,{CLEAR}所以焦急的市民们就开始坐不住了,{CLEAR}甚至有人指责馆主收了金婆婆的钱。{SCROLL}馆主为了防止我们沉不住气{NEWLINE}与市民发生冲突,{CLEAR}严令禁止我们离开道馆……{SCROLL}呜呜呜,马志士大人{NEWLINE}真是个坚强的男人啊！",
-   "en": "Lt. Surge never wanted Granny Kin to{NEWLINE}build here either.{SCROLL}But Granny Kin owns that land, so there{NEWLINE}was nothing he could do about her.{SCROLL}A 30-day forced work stoppage was the{NEWLINE}most he had the power to order.{SCROLL}Now the stoppage is over, and the{NEWLINE}League’s ban still hasn’t come.{SCROLL}The townsfolk are getting restless.{SCROLL}Some even accuse him of taking Granny{NEWLINE}Kin’s money.{SCROLL}So we don’t clash with them, he’s{NEWLINE}ordered us to stay in the Gym...{SCROLL}Sniff... Lt. Surge is such a tough man!",
+   "en": "Lt. Surge never wanted Granny Kin to{NEWLINE}build here either.{SCROLL}But Granny Kin owns that land, so there{NEWLINE}was nothing he could do about her.{SCROLL}A 30-day forced work stoppage was the{NEWLINE}most he had the power to order.{SCROLL}Now the stoppage is over, and the{NEWLINE}League’s ban still hasn’t come.{SCROLL}The townsfolk are getting restless.{SCROLL}Some even accuse him of taking Granny{NEWLINE}Kin’s money.{SCROLL}To keep us from losing our cool and{NEWLINE}clashing with the townsfolk, he’s{CLEAR}flatly forbidden us to leave the Gym...{SCROLL}Sniff... Lt. Surge is such a tough man!",
    "status": "draft",
    "origin": "agent",
-   "notes": "金婆婆 = Granny Kin (Rocket backer, landowner)."
+   "notes": "金婆婆 = Granny Kin (Rocket backer, landowner). | RV021: omission: 沉不住气 and 严令禁止 restored"
   },
   {
    "id": 16,

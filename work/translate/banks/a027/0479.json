@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "小绿『嗯,说的没错。{NEWLINE}如果明天发生冲突,{CLEAR}我们就从马志士的两侧进行协助,{CLEAR}帮他彻底封住工地入口、阻止市民暴动,{CLEAR}保卫法律和私人财产的神圣。",
-   "en": "Blue: Yeah, that’s right. If there’s a{NEWLINE}clash tomorrow, we’ll back up Lt. Surge{CLEAR}from both sides.{SCROLL}We’ll seal off the site entrance and{NEWLINE}keep the townsfolk from rioting.{SCROLL}We’ll defend the law and people’s{NEWLINE}property!",
+   "en": "Blue: Yeah, that’s right.{SCROLL}If there’s a clash tomorrow, we’ll back{NEWLINE}up Lt. Surge from both sides.{SCROLL}We’ll seal off the site entrance{NEWLINE}for good and keep the{CLEAR}townsfolk from rioting.{SCROLL}We’ll defend the sanctity of the law and{NEWLINE}private property!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV021: omission: 神圣 (sanctity), 私人 (private) and 彻底 restored (D-1841)"
   },
   {
    "id": 10,
@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "小绿『既然已经明确了计划,{NEWLINE}今晚就在精灵中心好好养精蓄锐吧,{CLEAR}争取明天能让事情顺利结束。",
-   "en": "Blue: Now that we have a plan, let’s{NEWLINE}rest up at the Pokémon Center{CLEAR}tonight...{SCROLL}...so things go smoothly tomorrow.",
+   "en": "Blue: Now that we have a plan, let’s{NEWLINE}rest up at the Pokémon Center tonight,{SCROLL}so we can bring this to a smooth end{NEWLINE}tomorrow.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV021: omission: 结束 (bring it to an end) restored"
   },
   {
    "id": 15,

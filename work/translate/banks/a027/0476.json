@@ -119,10 +119,10 @@
   {
    "id": 14,
    "zh": "{VAR:FF01:200}众人『对！滚出去！滚出去！{VAR:FF01:100}",
-   "en": "{VAR:FF01:200}Crowd: Yeah! Get lost!{VAR:FF01:100}",
+   "en": "{VAR:FF01:200}Crowd: Yeah! Get out!{VAR:FF01:100}{SCROLL}{VAR:FF01:200}Get out!{VAR:FF01:100}",
    "status": "draft",
    "origin": "agent",
-   "notes": "SIZE-200% crowd shouts (#14, #19, #69, #74, #85, #102) split over two lines with {NEWLINE} to fit at 2x; check in game. Double-size shout: one line per page (a line break inside {VAR:FF01:200} overflows the box and corrupts memory; heap_audit.md). | tone review: 滚出去 chant = rude 'get lost' (D-0627)"
+   "notes": "SIZE-200% crowd shouts (#14, #19, #69, #74, #85, #102) split over two lines with {NEWLINE} to fit at 2x; check in game. Double-size shout: one line per page (a line break inside {VAR:FF01:200} overflows the box and corrupts memory; heap_audit.md). | tone review: 滚出去 chant = rude 'get lost' (D-0627) | RV021: omission: repeated 滚出去 chant restored; 'get out' fits the crowd ordering her out (D-2081)"
   },
   {
    "id": 15,
@@ -159,10 +159,10 @@
   {
    "id": 19,
    "zh": "{VAR:FF01:200}众人『推平它！推平它！{VAR:FF01:100}",
-   "en": "{VAR:FF01:200}Crowd: Tear it down!{VAR:FF01:100}",
+   "en": "{VAR:FF01:200}Crowd: Tear it down!{VAR:FF01:100}{SCROLL}{VAR:FF01:200}Tear it down!{VAR:FF01:100}",
    "status": "draft",
    "origin": "agent",
-   "notes": "Double-size shout: one line per page (a line break inside {VAR:FF01:200} overflows the box and corrupts memory; heap_audit.md)."
+   "notes": "Double-size shout: one line per page (a line break inside {VAR:FF01:200} overflows the box and corrupts memory; heap_audit.md). | RV021: omission: repeated chant 推平它！推平它！ restored"
   },
   {
    "id": 20,
@@ -223,10 +223,10 @@
   {
    "id": 27,
    "zh": "金婆婆『我就是全关东最有钱的{NEWLINE}地产开发商金婆婆！{CLEAR}在枯叶市还是个小渔村的时候{CLEAR}我就买下来了这块地婆婆。{SCROLL}金婆婆『如今我想把我自己的地{NEWLINE}开发成一片综合性商业区,{CLEAR}却被这里的居民阻止了婆婆。{SCROLL}金婆婆『根据精灵联盟的法律,{NEWLINE}谁都无权阻止我开发自己的土地,婆婆。{CLEAR}而且枯叶市能有今天的样子,{CLEAR}全靠我这样伟大的商人来投资婆婆。{CLEAR}这群愚民居然还要来阻挠我,{CLEAR}真是忘恩负义之极啊婆婆。",
-   "en": "Granny Kin: I’m Granny Kin, the richest{NEWLINE}land developer in all of Kanto!{SCROLL}I bought this land back when Vermilion{NEWLINE}was a little fishing village, dearie.{SCROLL}Granny Kin: Now I want to build a grand{NEWLINE}shopping district on my own land...{SCROLL}And the locals are trying to stop me,{NEWLINE}dearie!{SCROLL}Granny Kin: Under League law, nobody{NEWLINE}can stop me developing my land, dearie.{SCROLL}Vermilion City only got where it is today{NEWLINE}thanks to investors like me, dearie.{SCROLL}And these ignorant rabble still try to{NEWLINE}stand in my way!{SCROLL}The ingratitude, dearie!",
+   "en": "Granny Kin: I’m Granny Kin, the richest{NEWLINE}land developer in all of Kanto!{SCROLL}I bought this land back when Vermilion{NEWLINE}was a little fishing village, dearie.{SCROLL}Granny Kin: Now I want to develop my{NEWLINE}own land into a mixed-use{CLEAR}shopping district...{SCROLL}And the locals are trying to stop me,{NEWLINE}dearie!{SCROLL}Granny Kin: Under League law, nobody{NEWLINE}can stop me developing my land, dearie.{SCROLL}Vermilion City only got where it is{NEWLINE}today thanks to great{CLEAR}investors like me, dearie.{SCROLL}And this ignorant rabble still tries to{NEWLINE}stand in my way!{SCROLL}The ingratitude, dearie!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV021: grammar: 'these rabble' fixed; 综合性 (mixed-use) for invented 'grand'; 伟大的 (great) restored"
   },
   {
    "id": 28,
@@ -407,10 +407,10 @@
   {
    "id": 50,
    "zh": "每天都有无数的货物{NEWLINE}从枯叶港进出,{CLEAR}所以大叔我在这里搞到了很多{CLEAR}别处不易得到的珍贵商品,{CLEAR}你看有你需要的吗？{SCROLL}",
-   "en": "Countless goods pass through Vermilion{NEWLINE}Port every day.{SCROLL}So this old guy’s picked up all kinds of{NEWLINE}rare wares you won’t find elsewhere.{SCROLL}See anything you need?{SCROLL}",
+   "en": "Countless goods pass through Vermilion{NEWLINE}Port every day.{SCROLL}So this old guy’s picked up all kinds{NEWLINE}of rare wares that are hard{CLEAR}to come by elsewhere.{SCROLL}See anything you need?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV021: meaning: 别处不易得到 is 'hard to get', not 'won't find' (D-1850)"
   },
   {
    "id": 51,
@@ -479,10 +479,10 @@
   {
    "id": 59,
    "zh": "没人期待你开工！",
-   "en": "Nobody’s expecting anything from you!",
+   "en": "Nobody wants you to start building!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV021: meaning: 没人期待你开工 targets the groundbreaking, not 'expecting anything' (D-1850)"
   },
   {
    "id": 60,
@@ -527,10 +527,10 @@
   {
    "id": 65,
    "zh": "你们是金婆婆顾来的专业打手吗！",
-   "en": "Are you Granny Kin’s hired muscle or{NEWLINE}what!",
+   "en": "Are you professional muscle Granny Kin{NEWLINE}hired or what!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV021: omission: 专业 (professional) restored"
   },
   {
    "id": 66,
@@ -631,10 +631,10 @@
   {
    "id": 78,
    "zh": "小绿『可以了{VAR:0103:0}！{NEWLINE}该咱们上了！",
-   "en": "Blue: That’s enough, {VAR:0103:0}! It’s our{NEWLINE}turn!",
+   "en": "Blue: Now, {VAR:0103:0}! It’s our turn!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV021: meaning: 可以了 is the go signal, not 'that's enough'"
   },
   {
    "id": 79,
@@ -655,10 +655,10 @@
   {
    "id": 81,
    "zh": "{VAR:0103:0}『我们不敢搞什么破坏,{NEWLINE}只是想帮枯叶市的居民保护这里！",
-   "en": "{VAR:0103:0}: We’re not here to wreck{NEWLINE}anything.{SCROLL}We just want to help the people of{NEWLINE}Vermilion City protect their home!",
+   "en": "{VAR:0103:0}: We wouldn’t dare wreck{NEWLINE}anything.{SCROLL}We just want to help the people of{NEWLINE}Vermilion City protect their home!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 2 source(s), same position"
+   "notes": "v3 TM: 2 source(s), same position | RV021: omission: 不敢 (wouldn't dare) restored; same zh as #206"
   },
   {
    "id": 82,
@@ -735,10 +735,10 @@
   {
    "id": 91,
    "zh": "科拿『明知故问,{NEWLINE}还不是为了你们枯叶市{CLEAR}最近闹得很凶的工程事件。{CLEAR}达马兰奇主席特地派我来这里{CLEAR}宣布精灵联盟的裁定。",
-   "en": "Lorelei: You know perfectly well.{SCROLL}It’s about the construction dispute{NEWLINE}here in Vermilion City.{SCROLL}President Goodshow sent me personally{NEWLINE}to announce the League’s ruling.",
+   "en": "Lorelei: You know perfectly well.{SCROLL}It’s about the construction dispute{NEWLINE}that’s been causing such an uproar in{CLEAR}Vermilion City lately.{SCROLL}President Goodshow sent me personally{NEWLINE}to announce the League’s ruling.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV021: omission: 最近闹得很凶 (raging lately) restored"
   },
   {
    "id": 92,
@@ -1007,10 +1007,10 @@
   {
    "id": 125,
    "zh": "说实话这种破坏环境{NEWLINE}伤天害理的工程,{CLEAR}我实在是不愿意干,{CLEAR}但是为了家人能过上好的生活……{CLEAR}唉……",
-   "en": "Honestly, I don’t want any part of a{NEWLINE}project this harmful to the{CLEAR}environment.{SCROLL}But so my family can have a good life...{SCROLL}Sigh...",
+   "en": "Honestly, I really don’t want to work{NEWLINE}on a wicked project like this that{CLEAR}wrecks the environment.{SCROLL}But so my family can have a good life...{SCROLL}Sigh...",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV021: omission: 伤天害理 (wicked) restored (D-1851)"
   },
   {
    "id": 126,
@@ -1564,18 +1564,18 @@
   {
    "id": 194,
    "zh": "小蓝『原来马志士馆主{NEWLINE}竭力阻止市民冲进工地,{CLEAR}也是在保护他们啊。{CLEAR}看来是我做事欠考虑了,{CLEAR}不然真的会被金婆婆给反咬一口。{SCROLL}小蓝『我现在准备去{CLEAR}港口的圣安努号游轮上逛逛,{CLEAR}{VAR:0103:0}你拿到徽章后也一起来吧。",
-   "en": "Green: So Lt. Surge was trying so hard{NEWLINE}to stop the townsfolk from storming the{CLEAR}site to protect them too.{SCROLL}I guess I didn’t think it through.{SCROLL}Granny Kin would have turned it right{NEWLINE}back on them.{SCROLL}Green: I’m going to go look around the{NEWLINE}S.S. Anne in the harbor.{SCROLL}Come join me after you get your Badge,{NEWLINE}{VAR:0103:0}.",
+   "en": "Green: So when Lt. Surge tried so hard{NEWLINE}to stop the townsfolk from storming the{CLEAR}site, he was protecting them too.{SCROLL}I guess I didn’t think it through.{NEWLINE}Otherwise, Granny Kin really would have{CLEAR}turned it back on us.{SCROLL}Green: I’m going to go look around the{NEWLINE}S.S. Anne in the harbor.{SCROLL}Come join me after you get your Badge,{NEWLINE}{VAR:0103:0}.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV021: meaning: 被金婆婆反咬一口 hits the speaker's side ('us'), and the sentence now says Surge was protecting them"
   },
   {
    "id": 195,
    "zh": "小赤『原来马志士馆主{NEWLINE}竭力阻止市民冲进工地,{CLEAR}也是在保护他们啊。{CLEAR}看来是我做事欠考虑了,{CLEAR}不然真的会被金婆婆给反咬一口。{SCROLL}小赤『我现在准备去{CLEAR}港口的圣安努号游轮上逛逛,{CLEAR}{VAR:0103:0}你拿到徽章后也一起来吧。",
-   "en": "Red: So Lt. Surge was trying so hard to{NEWLINE}stop the townsfolk from storming the{CLEAR}site to protect them too.{SCROLL}I guess I didn’t think it through.{SCROLL}Granny Kin would have turned it right{NEWLINE}back on them.{SCROLL}Red: I’m going to go look around the{NEWLINE}S.S. Anne in the harbor.{SCROLL}Come join me after you get your Badge,{NEWLINE}{VAR:0103:0}.",
+   "en": "Red: So when Lt. Surge tried so hard to{NEWLINE}stop the townsfolk from storming the{CLEAR}site, he was protecting them too.{SCROLL}I guess I didn’t think it through.{NEWLINE}Otherwise, Granny Kin really would have{CLEAR}turned it back on us.{SCROLL}Red: I’m going to go look around the{NEWLINE}S.S. Anne in the harbor.{SCROLL}Come join me after you get your Badge,{NEWLINE}{VAR:0103:0}.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV021: meaning: 被金婆婆反咬一口 hits the speaker's side ('us'), and the sentence now says Surge was protecting them"
   },
   {
    "id": 196,
@@ -1660,10 +1660,10 @@
   {
    "id": 206,
    "zh": "{VAR:0103:0}『我们不敢搞什么破坏,{NEWLINE}只是想帮枯叶市的居民保护这里！",
-   "en": "{VAR:0103:0}: We’re not here to wreck{NEWLINE}anything.{SCROLL}We just want to help the people of{NEWLINE}Vermilion City protect their home!",
+   "en": "{VAR:0103:0}: We wouldn’t dare wreck{NEWLINE}anything.{SCROLL}We just want to help the people of{NEWLINE}Vermilion City protect their home!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 2 source(s), same position"
+   "notes": "v3 TM: 2 source(s), same position | RV021: omission: 不敢 (wouldn't dare) restored"
   },
   {
    "id": 207,
