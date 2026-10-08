@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "小霞不在,{NEWLINE}我去玩了。{CLEAR}　　　　道馆训练师　宋兵乙",
-   "en": "Since Misty’s out, we’ll be away, too.{NEWLINE}Gym Trainers",
+   "en": "Misty’s out, so I’m off to have fun.{NEWLINE}Gym Trainer Extra B",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0469/5"
+   "origin": "agent",
+   "notes": "US 0469/5 | RV019: omission: 我去玩了 and the singular joke signature 宋兵乙 (stock 'Extra B') restored; settles D-1838"
   },
   {
    "id": 6,
@@ -1281,10 +1281,10 @@
   {
    "id": 159,
    "zh": "那可不行,我混进华蓝道馆{NEWLINE}陪你练了这么久无聊的水上芭蕾,{CLEAR}就是等着见到蓝色宝珠的这一刻。{CLEAR}现在宝珠已经到手了,{CLEAR}那咱们就再见啦,吔花小姐。",
-   "en": "No can do. I snuck into the Cerulean{NEWLINE}Gym and sat through all that boring{CLEAR}water ballet with you...{SCROLL}All just to wait for the moment I’d lay{NEWLINE}eyes on the Blue Orb.{SCROLL}Now that it’s mine, it’s goodbye, Miss{NEWLINE}Daisy.",
+   "en": "No can do. I snuck into the Cerulean{NEWLINE}Gym and rehearsed all that boring water{CLEAR}ballet with you for ages...{SCROLL}All just to wait for the moment I’d lay{NEWLINE}eyes on the Blue Orb.{SCROLL}Now that it’s mine, it’s goodbye, Miss{NEWLINE}Daisy.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV019: meaning: 陪你练了这么久 = practiced with you, not sat through; settles D-1839"
   },
   {
    "id": 160,

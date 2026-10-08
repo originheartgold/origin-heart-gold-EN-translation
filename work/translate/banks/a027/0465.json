@@ -134,10 +134,10 @@
   {
    "id": 16,
    "zh": "什么？你问我这里有没有{NEWLINE}一个叫翔太的员工？{CLEAR}有是有啦,不过他前段时间{CLEAR}因为自身原因死在公司了。{SCROLL}这家伙死的真不是时候,{NEWLINE}彻底拖慢了我们重大科研项目的进度。{CLEAR}为此社长都亲自发话了,{CLEAR}说这样不负责任的员工,{CLEAR}必须要让他的家属赔偿公司损失。",
-   "en": "What? You’re asking if we had an{NEWLINE}employee named Shota?{SCROLL}Yeah, we did. But a while back, he died{NEWLINE}at the office, for personal reasons.{SCROLL}The guy picked a terrible time to die.{SCROLL}It set our big research project way{NEWLINE}behind schedule.{SCROLL}The president himself said an{NEWLINE}irresponsible employee like that...{SCROLL}His family must pay the company back for{NEWLINE}its losses.",
+   "en": "What? You’re asking if we had an{NEWLINE}employee named Shota?{SCROLL}Yeah, we did. But a while back, he died{NEWLINE}at the office, for personal reasons.{SCROLL}The guy picked a terrible time to die.{SCROLL}It set our big research project way{NEWLINE}behind schedule.{SCROLL}The president himself weighed in: with an{NEWLINE}irresponsible employee like that, his{CLEAR}family has to pay the company back for{CLEAR}its losses.",
    "status": "draft",
    "origin": "agent",
-   "notes": "翔太 → Shota (invented; coworker who died of overwork)."
+   "notes": "翔太 → Shota (invented; coworker who died of overwork). | RV019: grammar: reported speech made a full sentence"
   },
   {
    "id": 17,
@@ -198,10 +198,10 @@
   {
    "id": 24,
    "zh": "精灵联盟居然把我们这些知识分子{NEWLINE}定义成跟修水管、扫大街的普通人{CLEAR}同样类型的工人,{CLEAR}简直是对我们所学知识的污辱！",
-   "en": "The Pokémon League lumped intellectuals{NEWLINE}like us in with plumbers and street{CLEAR}sweepers!{SCROLL}It’s an insult to everything we studied!",
+   "en": "The Pokémon League classified{NEWLINE}intellectuals like us as the same kind of{CLEAR}workers as ordinary folks who fix pipes{CLEAR}and sweep streets!{SCROLL}It’s an insult to everything we studied!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV019: omission: 定义成…同样类型的工人 (classified as workers) restored; settles D-1875"
   },
   {
    "id": 25,
@@ -214,10 +214,10 @@
   {
    "id": 26,
    "zh": "自从精灵联盟接管公司后,{NEWLINE}高管的收入大幅度缩水,{CLEAR}而我们这些普通员工的收入{CLEAR}却增长了不少呢。",
-   "en": "Since the Pokémon League took over the{NEWLINE}company,{SCROLL}executive pay has shrunk a lot...{SCROLL}While us regular employees are earning{NEWLINE}quite a bit more.",
+   "en": "Since the Pokémon League took over the{NEWLINE}company, executive pay has shrunk a{CLEAR}lot, while we regular employees are{CLEAR}earning quite a bit more.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV019: grammar: fragment joined"
   },
   {
    "id": 27,

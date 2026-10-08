@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "华蓝海角的正辉是个{NEWLINE}十足的口袋妖怪迷,{CLEAR}为了能见到各种各样的口袋妖怪,{CLEAR}他就做出了用于寄存精灵的传送系统。",
-   "en": "Bill of Cerulean Cape is a total Pokémon{NEWLINE}maniac.{SCROLL}He wanted to see every kind of Pokémon,{NEWLINE}so he built a system to store them.",
+   "en": "Bill of Cerulean Cape is a total{NEWLINE}Pokémon maniac.{SCROLL}He wanted to see every kind of Pokémon,{NEWLINE}so he built a transfer system for{CLEAR}storing them.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV019: omission: 传送系统 = transfer system restored"
   },
   {
    "id": 5,
