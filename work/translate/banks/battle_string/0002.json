@@ -678,10 +678,10 @@
   {
    "id": 84,
    "zh": "开始起雾了！",
-   "en": "The fog is deep...",
+   "en": "It started to get foggy!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV106: meaning: 开始起雾了 is a hack-added 'fog started' line; 'The fog is deep...' is the vanilla line for 好浓的雾 (bank 195#813)"
   },
   {
    "id": 85,
@@ -1062,10 +1062,10 @@
   {
    "id": 132,
    "zh": "极光幕使对手的{NEWLINE}物理和特殊抗性提高了！",
-   "en": "Aurora Veil made the foe’s team{NEWLINE}stronger against physical and special{CLEAR}moves!",
+   "en": "Aurora Veil made the foe’s team{NEWLINE}stronger against{CLEAR}physical and special moves!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV106: layout: no one-word orphan after {CLEAR}"
   },
   {
    "id": 133,
@@ -1470,10 +1470,10 @@
   {
    "id": 183,
    "zh": "凭空制造出了会让持有道具的{NEWLINE}效果消失的空间！",
-   "en": "It created a bizarre area in which{NEWLINE}Pokémon’s held items lose their{CLEAR}effects!",
+   "en": "It created a bizarre area in which{NEWLINE}Pokémon’s held items{CLEAR}lose their effects!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV106: layout: no one-word orphan after {CLEAR}"
   },
   {
    "id": 184,
@@ -2550,10 +2550,10 @@
   {
    "id": 318,
    "zh": "战胜了{VAR:010E:0,0}{VAR:0100:1,0}和{NEWLINE}{VAR:0100:2,0}！",
-   "en": "You defeated{NEWLINE}{VAR:010E:0,0} {VAR:0100:1,0} and{CLEAR}{VAR:0100:2,0}!",
+   "en": "You defeated {VAR:010E:0,0}{NEWLINE}{VAR:0100:1,0} and {VAR:0100:2,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV106: layout: no lone name after {CLEAR}"
   },
   {
    "id": 319,
@@ -2630,10 +2630,10 @@
   {
    "id": 328,
    "zh": "{VAR:0102:0,0}周围汇聚了神秘障壁，{NEWLINE}帮它抵御一切攻击！",
-   "en": "A mysterious barrier appeared around{NEWLINE}{VAR:0102:0,0} to protect it from all{CLEAR}attacks!",
+   "en": "A mysterious barrier appeared around{NEWLINE}{VAR:0102:0,0} to protect it{CLEAR}from all attacks!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV106: layout: no one-word orphan after {CLEAR}"
   },
   {
    "id": 329,
@@ -3542,18 +3542,18 @@
   {
    "id": 442,
    "zh": "啊！相当强劲的{NEWLINE}{VAR:0101:0,0}扑了过来！",
-   "en": "Oh! A wild {VAR:0101:0,0} that looks very{NEWLINE}strong leaped out!",
+   "en": "Oh! A very strong-looking {VAR:0101:0,0}{NEWLINE}leaped out!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV106: addition: zh has no 'wild' (相当强劲的), matches #444-447"
   },
   {
    "id": 443,
    "zh": "呜哇！相当强劲的{NEWLINE}{VAR:0101:0,0}猛扑了过来！",
-   "en": "Whoa! A wild {VAR:0101:0,0} that looks very{NEWLINE}strong lunged at you!",
+   "en": "Whoa! A very strong-looking {VAR:0101:0,0}{NEWLINE}lunged at you!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV106: addition: zh has no 'wild' (相当强劲的), matches #444-447"
   },
   {
    "id": 444,
