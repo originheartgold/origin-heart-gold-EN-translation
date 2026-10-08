@@ -4710,10 +4710,10 @@
   {
    "id": 573,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}猛地向{NEWLINE}{VAR:0100:11,0}的{VAR:0102:1,0}出示了红牌！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} held up its{NEWLINE}Red Card against {VAR:0100:11,0}’s{CLEAR}{VAR:0102:1,0}!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} held up its{NEWLINE}Red Card against{CLEAR}{VAR:0100:11,0}’s {VAR:0102:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV102: layout: one-word {CLEAR} orphan rebalanced"
   },
   {
    "id": 574,
@@ -6398,18 +6398,18 @@
   {
    "id": 784,
    "zh": "对手的{VAR:0102:0,0}遭到了无理取闹，{NEWLINE}因此无法继续使出相同的招式！",
-   "en": "The foe’s {VAR:0102:0,0} can’t use the{NEWLINE}same move twice in a row due to the{CLEAR}torment!",
+   "en": "The foe’s {VAR:0102:0,0} can’t use the{NEWLINE}same move twice in a row{CLEAR}due to the torment!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV102: layout: one-word {CLEAR} orphan rebalanced"
   },
   {
    "id": 785,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}遭到了无理取闹，{NEWLINE}因此无法继续使出相同的招式！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} can’t use{NEWLINE}the same move twice in a row due to the{CLEAR}torment!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} can’t use{NEWLINE}the same move twice in a row{CLEAR}due to the torment!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV102: layout: one-word {CLEAR} orphan rebalanced"
   },
   {
    "id": 786,
@@ -6870,10 +6870,10 @@
   {
    "id": 843,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}复制了{NEWLINE}{VAR:0100:11,0}的{VAR:0102:1,0}的{SCROLL}{NEWLINE}{VAR:0106:2,0}！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} copied{NEWLINE}{VAR:0100:11,0}’s {VAR:0102:1,0}’s{CLEAR}{VAR:0106:2,0}{CLEAR}Ability!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} copied{NEWLINE}{VAR:0100:11,0}’s {VAR:0102:1,0}’s{CLEAR}{VAR:0106:2,0} Ability!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV102: layout: stray {CLEAR} left \"Ability!\" alone on its own line"
   },
   {
    "id": 844,
@@ -7142,10 +7142,10 @@
   {
    "id": 877,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}{NEWLINE}变身成了{VAR:0100:11,0}的{VAR:0102:1,0}！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}{NEWLINE}transformed into {VAR:0100:11,0}’s{CLEAR}{VAR:0102:1,0}!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}{NEWLINE}transformed into{CLEAR}{VAR:0100:11,0}’s {VAR:0102:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV102: layout: one-word {CLEAR} orphan rebalanced"
   },
   {
    "id": 878,
