@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "去遗迹玩的时候{NEWLINE}打开收音机发现能{CLEAR}收听到以前没听过的电台节目。",
-   "en": "I listened to the radio while I was at{NEWLINE}the ruins.{SCROLL}I heard a strange broadcast there.",
+   "en": "When I went to the ruins, I turned on{NEWLINE}the radio and picked up a show I’d{CLEAR}never heard before.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0068/0"
+   "origin": "agent",
+   "notes": "US 0068/0 | RV037: meaning: not ‘strange’; 以前没听过的电台节目"
   },
   {
    "id": 1,
@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "哎呀,你的背包装不下了！",
-   "en": "Nooo! Your Bag is full!",
+   "en": "Oh dear, your Bag is full!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0068/5"
+   "origin": "agent",
+   "notes": "US 0068/5 | RV037: addition: 哎呀 is mild; ‘Nooo!’ overdone"
   },
   {
    "id": 6,
@@ -86,34 +86,34 @@
   {
    "id": 10,
    "zh": "世治『火箭队吗……{NEWLINE}他们有一样是欠缺的,{CLEAR}那就是音乐！{SCROLL}音乐能治愈人们的心灵,{SCROLL}喜欢音乐的人是不可能在广播塔上{CLEAR}做出这种坏事的……！",
-   "en": "Ben: Team Rocket... There is something{NEWLINE}they lack. It is music!{SCROLL}Music enriches people’s heart and soul.{SCROLL}Music lovers would never do such{NEWLINE}horrible things at a place like the{CLEAR}Radio Tower!",
+   "en": "Ben: Team Rocket... There is something{NEWLINE}they lack. It is music! Music heals{CLEAR}people’s hearts. Music lovers would{CLEAR}never do such horrible things at a place{CLEAR}like the Radio Tower!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0068/10"
+   "origin": "agent",
+   "notes": "US 0068/10 | RV037: meaning: 治愈 = heals"
   },
   {
    "id": 11,
    "zh": "世治『你要听音乐吗？",
-   "en": "Ben: Do you listen to our music?",
+   "en": "Ben: Do you want to listen to some{NEWLINE}music?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0068/11"
+   "origin": "agent",
+   "notes": "US 0068/11 | RV037: meaning: 你要听音乐吗 is an offer; settles D-1692"
   },
   {
    "id": 12,
    "zh": "负责广播塔作战的干部名叫兰斯,{CLEAR}真帅啊……{SCROLL}",
-   "en": "Proton, the leader of this Radio Tower{NEWLINE}mission... He is so cool.{SCROLL}",
+   "en": "The Executive in charge of the Radio{NEWLINE}Tower operation is called Proton... He’s{CLEAR}so cool...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0068/12"
+   "origin": "agent",
+   "notes": "US 0068/12 | RV037: omission: restore 干部 / 作战"
   },
   {
    "id": 13,
    "zh": "你、你是什么人！{SCROLL}阻碍兰斯……不,{NEWLINE}阻碍火箭队的人{CLEAR}我是不会放过的！{SCROLL}",
-   "en": "Who are you?{SCROLL}If you are in the way of Proton...{NEWLINE}I mean Team Rocket. I won’t allow that!{SCROLL}",
+   "en": "W-who are you?! Anyone who gets in{NEWLINE}Proton’s way... I mean, Team Rocket’s{CLEAR}way... I won’t let them off!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0068/13"
+   "origin": "agent",
+   "notes": "US 0068/13 | RV037: softened: 不会放过 = won’t let off; settles D-1693"
   },
   {
    "id": 14,
@@ -262,10 +262,10 @@
   {
    "id": 32,
    "zh": "小茜『喂,我说你这个冠军啊,{NEWLINE}觉得自己天下无敌{CLEAR}就到处欺负人是吧？{CLEAR}你这样跟那些{CLEAR}被你打败的箭队有什么分别？{CLEAR}真是让人不齿！",
-   "en": "Whitney: Hey, you! Champion!{SCROLL}You think you’re unbeatable,{NEWLINE}so you get to go around pushing people{CLEAR}around, huh?{SCROLL}How are you any different from the{NEWLINE}Rockets you beat? Disgraceful!",
+   "en": "Whitney: Hey, you! Champion! You think{NEWLINE}you’re unbeatable, so you can push{CLEAR}people around wherever you go, huh?{CLEAR}How are you any different from the{CLEAR}Rockets you beat? Disgraceful!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV037: grammar: ‘go around pushing people around’"
   },
   {
    "id": 33,
@@ -287,10 +287,10 @@
   {
    "id": 35,
    "zh": "这个嘉宾还是由小茜来当吧",
-   "en": "Let Whitney do it",
+   "en": "Whitney should be the guest",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV037: omission: zh: let Whitney be the guest",
    "category": "menu_touch_1line"
   },
   {
@@ -536,26 +536,26 @@
   {
    "id": 66,
    "zh": "{VAR:0103:0}『我当时从真新镇出发,{NEWLINE}在大木博士那里{CLEAR}选了第一个伙伴小火龙。{CLEAR}然后我们一起前往常磐市。{CLEAR}当时什么都不知道,{CLEAR}小绿还约我直接去挑战精灵联盟,{CLEAR}结果被人家门卫给赶回来了。",
-   "en": "{VAR:0103:0}: I set out from Pallet Town,{NEWLINE}and at Prof. Oak’s lab I chose my first{CLEAR}partner, Charmander.{SCROLL}Then we headed to Viridian{NEWLINE}City together.{SCROLL}I didn’t know anything back then.{NEWLINE}Blue even talked me into going straight{CLEAR}to challenge the Pokémon League,{SCROLL}and the guard sent us right back home.",
+   "en": "{VAR:0103:0}: I set out from Pallet Town,{NEWLINE}and at Prof. Oak’s lab I chose my first{CLEAR}partner, Charmander. Then we headed to{CLEAR}Viridian City together.{SCROLL}I didn’t know anything back then.{NEWLINE}Blue even invited me to go straight{CLEAR}to challenge the Pokémon League, and{CLEAR}the guard chased us back.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV037: addition: 赶回来 = chased back; no ‘home’; 约 = invited; settles D-1694"
   },
   {
    "id": 67,
    "zh": "{VAR:0103:0}『我当时从真新镇出发,{NEWLINE}在大木博士那里{CLEAR}选了第一个伙伴皮卡丘。{CLEAR}然后我们一起前往常磐市。{CLEAR}当时什么都不知道,{CLEAR}小绿还约我直接去挑战精灵联盟,{CLEAR}结果被人家门卫给赶回来了。",
-   "en": "{VAR:0103:0}: I set out from Pallet Town,{NEWLINE}and at Prof. Oak’s lab I chose my first{CLEAR}partner, Pikachu.{SCROLL}Then we headed to Viridian{NEWLINE}City together.{SCROLL}I didn’t know anything back then.{NEWLINE}Blue even talked me into going straight{CLEAR}to challenge the Pokémon League,{SCROLL}and the guard sent us right back home.",
+   "en": "{VAR:0103:0}: I set out from Pallet Town,{NEWLINE}and at Prof. Oak’s lab I chose my first{CLEAR}partner, Pikachu. Then we headed to{CLEAR}Viridian City together.{SCROLL}I didn’t know anything back then.{NEWLINE}Blue even invited me to go straight{CLEAR}to challenge the Pokémon League, and{CLEAR}the guard chased us back.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV037: addition: 赶回来 = chased back; no ‘home’; 约 = invited; settles D-1694"
   },
   {
    "id": 68,
    "zh": "{VAR:0103:0}『我当时从真新镇出发,{NEWLINE}在大木博士那里{CLEAR}选了第一个伙伴妙蛙种子。{CLEAR}然后我们一起前往常磐市。{CLEAR}当时什么都不知道,{CLEAR}小绿还约我直接去挑战精灵联盟,{CLEAR}结果被人家门卫给赶回来了。",
-   "en": "{VAR:0103:0}: I set out from Pallet Town,{NEWLINE}and at Prof. Oak’s lab I chose my first{CLEAR}partner, Bulbasaur.{SCROLL}Then we headed to Viridian{NEWLINE}City together.{SCROLL}I didn’t know anything back then.{NEWLINE}Blue even talked me into going straight{CLEAR}to challenge the Pokémon League,{SCROLL}and the guard sent us right back home.",
+   "en": "{VAR:0103:0}: I set out from Pallet Town,{NEWLINE}and at Prof. Oak’s lab I chose my first{CLEAR}partner, Bulbasaur. Then we headed to{CLEAR}Viridian City together.{SCROLL}I didn’t know anything back then.{NEWLINE}Blue even invited me to go straight{CLEAR}to challenge the Pokémon League, and{CLEAR}the guard chased us back.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV037: addition: 赶回来 = chased back; no ‘home’; 约 = invited; settles D-1694"
   },
   {
    "id": 69,

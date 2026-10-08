@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "是、是,我马上照你说的{NEWLINE}让参观者回去……",
-   "en": "Um, yes. I have been telling visitors{NEWLINE}to go home as you instructed...",
+   "en": "Y-yes, I’ll send the visitors home right{NEWLINE}away, just as you said...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0065/2"
+   "origin": "agent",
+   "notes": "US 0065/2 | RV037: meaning: zh is a promise to act now, not past habit"
   },
   {
    "id": 3,
@@ -143,10 +143,10 @@
   {
    "id": 16,
    "zh": "说起ＤＪ那就要数世治了！{NEWLINE}一想起那甜美的声音……{SCROLL}我就心动不已啊。",
-   "en": "Ben is a fabulous DJ!{NEWLINE}His sweet voice just makes me melt!",
+   "en": "When it comes to DJs, Ben’s the best!{SCROLL}Just thinking of that sweet voice of{NEWLINE}his... My heart skips a beat!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0065/16"
+   "origin": "agent",
+   "notes": "US 0065/16 | RV037: omission: restore 说起DJ就要数 / 一想起"
   },
   {
    "id": 17,
@@ -238,10 +238,10 @@
   {
    "id": 27,
    "zh": "大受欢迎的精灵抽奖！{NEWLINE}你的精灵是几号呢？{SCROLL}不断交换精灵{NEWLINE}收集各种号码吧！",
-   "en": "Lucky Channel!{NEWLINE}Win with Pokémon ID numbers!{SCROLL}Trade your Pokémon to collect different{NEWLINE}ID numbers!",
+   "en": "The hugely popular Pokémon Lottery!{NEWLINE}What are your Pokémon’s ID numbers?{CLEAR}Keep trading Pokémon to collect all{CLEAR}kinds of numbers!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0065/27"
+   "origin": "agent",
+   "notes": "US 0065/27 | RV037: omission: US ‘Lucky Channel’ line dropped the question and 大受欢迎"
   },
   {
    "id": 28,
@@ -620,26 +620,26 @@
   {
    "id": 71,
    "zh": "小葵『来啦,我是小葵！{SCROLL}知道一档叫“暗语”的{NEWLINE}电台节目吗？{SCROLL}只要你告诉我{NEWLINE}这个节目里播出的暗语{CLEAR}就能得到点数,{SCROLL}积累了这些点数,{NEWLINE}去那边那个姐姐那儿{CLEAR}就能得到{CLEAR}精美的礼品！{SCROLL}给！{SCROLL}这是存点数的卡！{NEWLINE}送给你！{SCROLL}",
-   "en": "Buena: Hi! I’m Buena!{SCROLL}Do you know about the radio show{NEWLINE}called Buena’s Password?{SCROLL}If you can tell me the password from{NEWLINE}the program, you will earn points.{SCROLL}Save up those points and trade them{NEWLINE}with that sweet young lady over there{CLEAR}for some choice prizes!{SCROLL}Here you go!{NEWLINE}It’s your very own point card!{SCROLL}",
+   "en": "Buena: Hi! I’m Buena! Do you know about{NEWLINE}the radio show called Buena’s Password?{CLEAR}If you can tell me the password from{CLEAR}the program, you will earn points. Save{CLEAR}up those points and trade them with{CLEAR}that young lady over there for some{CLEAR}choice prizes! Here you go! It’s your{CLEAR}very own point card!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV037: addition: drop ‘sweet’ (zh just 那个姐姐)"
   },
   {
    "id": 72,
    "zh": "小葵『{VAR:0103:0}！{NEWLINE}谢谢你{CLEAR}经常收听我们的节目！{SCROLL}",
-   "en": "Buena: {VAR:0103:0}!{NEWLINE}Thank you for listening to my show!{SCROLL}",
+   "en": "Buena: {VAR:0103:0}! Thanks for tuning in to{NEWLINE}our show so often!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV037: omission: restore 经常 / 我们的节目"
   },
   {
    "id": 73,
    "zh": "小葵『谢谢你{NEWLINE}经常收听我们的节目！{SCROLL}",
-   "en": "Buena: Thank you for listening in{NEWLINE}every day!{SCROLL}",
+   "en": "Buena: Thanks for tuning in to our show{NEWLINE}so often!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV037: meaning: 经常 = often, not every day"
   },
   {
    "id": 74,
@@ -676,10 +676,10 @@
   {
    "id": 78,
    "zh": "小葵『那么,{NEWLINE}收听节目后{CLEAR}再来吧！",
-   "en": "Buena: Come back after you listen to{NEWLINE}my show, OK? Catch ya later!",
+   "en": "Buena: Well then, come back after you{NEWLINE}listen to the show!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV037: addition: drop added ‘Catch ya later!’"
   },
   {
    "id": 79,
@@ -692,10 +692,10 @@
   {
    "id": 80,
    "zh": "小葵『大家,开始啦！{SCROLL}{VAR:0103:0}回答的{NEWLINE}今天的暗语{CLEAR}已经说啦！{SCROLL}",
-   "en": "Buena: Everyone ready?{SCROLL}I want to hear you shout out today’s{NEWLINE}password for {VAR:0103:0}!{SCROLL}",
+   "en": "Buena: Everyone, here we go! {VAR:0103:0}{NEWLINE}has said today’s password!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV037: meaning: zh says the player’s password has been said, not a call to shout it; settles D-1651"
   },
   {
    "id": 81,
@@ -708,10 +708,10 @@
   {
    "id": 82,
    "zh": "小葵『啊！蓝卡{NEWLINE}积攒了３０点了！{CLEAR}厉害,厉害！{SCROLL}……对了,{NEWLINE}{VAR:0103:0}已经{CLEAR}来过很多次了,所以我要特别{SCROLL}告诉你我的{NEWLINE}电话号码！{SCROLL}",
-   "en": "Buena: Oh! Your Blue Card reached 30{NEWLINE}points today! That’s so wild!{SCROLL}Hmm... You came by so often,{NEWLINE}{VAR:0103:0}, I’ll make you a{CLEAR}special deal!{SCROLL}How would you like my phone number?{SCROLL}",
+   "en": "Buena: Oh! Your Blue Card has reached{NEWLINE}30 points! Wow, wow! ...Oh, right!{CLEAR}{VAR:0103:0}, you’ve come by so many times,{CLEAR}so I’m going to tell you my phone{CLEAR}number, just for you!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV037: meaning: zh: tells the number specially; no ‘today’ or ‘special deal’"
   },
   {
    "id": 83,
@@ -1216,10 +1216,10 @@
   {
    "id": 145,
    "zh": "阿波罗『哈哈哈,你们这些{NEWLINE}即将变成废人的家伙口气倒是不小。{CLEAR}有本事的话就来广播塔顶吧,{CLEAR}坂木老大会让你们好好体会一下{CLEAR}什么叫做真正的绝望。",
-   "en": "Archer: Hah hah hah!{NEWLINE}Big talk from people who are about to be{CLEAR}broken for good.{SCROLL}Come to the top of the Radio Tower,{NEWLINE}if you’ve got what it takes.{SCROLL}Boss Giovanni will show you what true{NEWLINE}despair feels like.",
+   "en": "Archer: Hah hah hah! Big talk from{NEWLINE}people who are about to be left{CLEAR}crippled! Come to the top of the Radio{CLEAR}Tower, if you’ve got what it takes. Boss{CLEAR}Giovanni will show you what true despair{CLEAR}feels like.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV037: softened: 变成废人 = left crippled; settles D-1652"
   },
   {
    "id": 146,

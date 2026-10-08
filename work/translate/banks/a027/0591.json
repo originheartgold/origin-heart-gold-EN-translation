@@ -627,10 +627,10 @@
   {
    "id": 75,
    "zh": "我要举报你用磁铁作弊",
-   "en": "I’ll report you for cheating",
+   "en": "I’ll report the magnet cheat",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV037: omission: keep 用磁铁 (magnet)",
    "category": "menu_touch_1line"
   },
   {
@@ -732,10 +732,10 @@
   {
    "id": 88,
    "zh": "{VAR:0103:0}『看在代币的份上,{NEWLINE}磁铁还给你吧。",
-   "en": "{VAR:0103:0}: For the coins’ sake,{NEWLINE}here’s your magnet back.",
+   "en": "{VAR:0103:0}: Seeing as there are coins in it{NEWLINE}for me, here’s your magnet back.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV037: grammar: ‘For the coins’ sake’ unclear; 看在代币的份上"
   },
   {
    "id": 89,
@@ -814,10 +814,10 @@
   {
    "id": 98,
    "zh": "我看到有的人能疯狂地中奖,{NEWLINE}就觉得这里中奖励应该很高,{CLEAR}于是就把全部身家压在了老虎机上,{CLEAR}可事实却是我根本中不了将,{CLEAR}现在都快赔得倾家荡产了……",
-   "en": "I saw some people winning like crazy,{NEWLINE}so I figured the payouts here must{CLEAR}be big. I bet everything I owned on{CLEAR}the slots, but I can’t win at all.{CLEAR}Now I’ve lost nearly everything...",
+   "en": "I saw some people winning like crazy, so{NEWLINE}I figured the chances of winning here{CLEAR}must be high. I bet everything I owned{CLEAR}on the slots, but I can’t win at all. Now{CLEAR}I’ve lost nearly everything...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV037: meaning: 中奖励 read as typo for 中奖率 (win rate), not payout size; settles D-1873"
   },
   {
    "id": 99,
