@@ -15,9 +15,10 @@ Native payload is original project code, not extracted ROM data.
   python3 work/tools/text_speed_patch.py --compile work/build/text-speed/payload.json
 """
 from pathlib import Path
-import hashlib,json,re,struct,subprocess,tempfile
+import hashlib,json,re,struct,subprocess,sys,tempfile
 
 WORK=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(WORK/'tools'))  # fixes.py, also under python -I (the release gates run it so)
 ASSETS=WORK/'patches/text-speed'  # the fix folder: fix.toml, native.c, labels.h, payload.json
 BASE=0x01ff8620
 OVBASE=0x021e4980
