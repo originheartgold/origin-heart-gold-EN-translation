@@ -11,11 +11,17 @@ Patches apply to **Pokémon HeartGold (USA)**, CRC32 `C180A0E9`.
 ### Changed
 - Text prints faster in towns and routes at both settings (D-1603). In maps where the hack's game loop runs at 30 fps, text used to print one letter every two frames; it now prints one per frame, as in the US game on FAST. Pauses counted in text printer turns, including auto-advance waits, are about half as long in those scenes.
 - Pokégear calls wait for A or B on every page, also right after a battle (D-1600). The hack's battle code leaves auto-advance on (D-1599). Other text shown right after a battle may still advance by itself.
-- Real DS, DSi and 3DS hardware support is being tested: six anti-piracy checks in overlay 114 now return the genuine-cartridge result (D-1616, D-1617). Nothing changes on emulators. Not yet tested on any real console or flashcart.
+- Real DS, DSi and 3DS hardware support is being tested: six of the hack's anti-piracy checks now return the genuine-cartridge result (D-1616, D-1617). Nothing changes on emulators. Not yet tested on any real console or flashcart.
+
+### Fixed
+- Overworld freeze when certain objects come on screen: in the Team Rocket hideout under Mahogany Town (walking towards the camera ambush), on Five Island and on Seven Island. An object asked for an animation frame its texture doesn't have, and the game crashed (seen on melonDS and reported on iOS Delta; DeSmuME happened to keep going). Such an object now keeps the texture it already shows. A Bell Tower object can hit the same problem, but only in a state forced during testing. The untouched Chinese hack freezes in the same places, so this is a bug of the original hack; fixing it is a user-approved exception to "hack bugs are reported, not fixed" (D-2083, D-1337).
+
+### Added (tools)
+- New patch format: every ROM change (code, data, strings and graphics fixes) lives in its own folder `work/patches/<id>/` with a `fix.toml` (why, what, decisions) and, for code, data and strings, an armips source and its disassembly snapshot. `work/patches/FIXES.md` lists them all, generated from the registry. `work/tools/check.py` is the one check entry point (registry and asm lint, ruff, unit tests; `--full` also builds the ROM and compares hashes).
 
 ### Known issues
 - Downgrade: a save made with this version and then used in the Chinese hack or an older English patch may show an unusual MUSIC SPEED value, because text speed shares the old 4-bit options field. Set TEXT SPEED to NORMAL and save before downgrading.
-- Tested with automated checks in DeSmuME only. Not covered: cutscenes, intro and credits, radio and TV, mail, the naming screen. No second-emulator pass and no hardware test.
+- Tested with automated checks in DeSmuME; the overworld freeze and its fix were also checked in melonDS 1.1. Not covered: cutscenes, intro and credits, radio and TV, mail, the naming screen. No full second-emulator pass and no hardware test.
 
 ### Known issues in the original hack (reported, not fixed; D-1337)
 
