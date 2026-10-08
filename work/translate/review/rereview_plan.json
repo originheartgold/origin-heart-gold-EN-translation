@@ -7482,7 +7482,7 @@
   {
    "id": "RV124",
    "group": "9-unused",
-   "status": "todo",
+   "status": "done",
    "strings": 514,
    "labels": [
     "a027/0156 debug_or_unlisted",
