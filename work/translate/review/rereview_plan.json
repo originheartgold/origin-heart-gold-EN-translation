@@ -6050,7 +6050,7 @@
   {
    "id": "RV080",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 549,
    "labels": [
     "a027/0307 pokeathlon + side_features_minigames",
