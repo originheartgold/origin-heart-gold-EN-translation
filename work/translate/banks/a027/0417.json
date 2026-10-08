@@ -646,10 +646,10 @@
   {
    "id": 80,
    "zh": "在其他地区联盟的淘汰赛{NEWLINE}上获得的纪念缎带",
-   "en": "Ribbon for clearing the Pokémon League and{NEWLINE}entering the Hall of Fame in another region.",
+   "en": "A commemorative Ribbon won in another{NEWLINE}region’s Pokémon League tournament.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0424/80"
+   "origin": "agent",
+   "notes": "US 0424/80 | RV061: addition: zh only says won in another region's League tournament; US added Hall of Fame (D-1821)"
   },
   {
    "id": 81,
@@ -846,10 +846,10 @@
   {
    "id": 105,
    "zh": "在新奥赢了冠军后{NEWLINE}入手的纪念缎带。",
-   "en": "Ribbon awarded for beating the Sinnoh{NEWLINE}Champion and entering the Hall of Fame.",
+   "en": "A commemorative Ribbon obtained for{NEWLINE}beating the Champion in Sinnoh.",
    "status": "draft",
-   "origin": "us",
-   "notes": ""
+   "origin": "agent",
+   "notes": " | RV061: addition: zh says obtained after beating the Champion in Sinnoh; US added Hall of Fame (D-1821)"
   },
   {
    "id": 106,
@@ -1030,42 +1030,42 @@
   {
    "id": 128,
    "zh": "在新奥战斗塔胜出{NEWLINE}双打后的纪念缎带",
-   "en": "A Ribbon awarded for completing the{NEWLINE}Battle Tower Double challenge.",
+   "en": "A Ribbon awarded for completing the Sinnoh{NEWLINE}Battle Tower Double challenge.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0424/128"
+   "origin": "agent",
+   "notes": "US 0424/128 | RV061: omission: zh 新奥战斗塔; US dropped Sinnoh (D-1821)"
   },
   {
    "id": 129,
    "zh": "在新奥战斗塔胜出{NEWLINE}组队对战的纪念缎带",
-   "en": "A Ribbon awarded for completing the{NEWLINE}Battle Tower Multi challenge.",
+   "en": "A Ribbon awarded for completing the Sinnoh{NEWLINE}Battle Tower Multi challenge.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0424/129"
+   "origin": "agent",
+   "notes": "US 0424/129 | RV061: omission: zh 新奥战斗塔; US dropped Sinnoh (D-1821)"
   },
   {
    "id": 130,
    "zh": "在新奥战斗塔胜出组队{NEWLINE}通信对战的纪念缎带",
-   "en": "A Ribbon awarded for completing the{NEWLINE}Battle Tower Link Multi challenge.",
+   "en": "A Ribbon awarded for completing the Sinnoh{NEWLINE}Battle Tower Link Multi challenge.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0424/130"
+   "origin": "agent",
+   "notes": "US 0424/130 | RV061: omission: zh 新奥战斗塔; US dropped Sinnoh (D-1821)"
   },
   {
    "id": 131,
    "zh": "在新奥ＷｉーＦｉ战斗塔{NEWLINE}胜出后的纪念缎带",
-   "en": "A Ribbon awarded for completing the{NEWLINE}Wi-Fi Battle Tower challenge.",
+   "en": "A Ribbon awarded for completing the Sinnoh{NEWLINE}Wi-Fi Battle Tower challenge.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0424/131"
+   "origin": "agent",
+   "notes": "US 0424/131 | RV061: omission: zh 新奥ＷｉーＦｉ战斗塔; US dropped Sinnoh (D-1821)"
   },
   {
    "id": 132,
    "zh": "让人想起自己能做到的事,{NEWLINE}可成为人生能量的缎带",
-   "en": "A Ribbon for recalling an invigorating{NEWLINE}event that created life energy.",
+   "en": "A Ribbon for recalling what you can do,{NEWLINE}which becomes energy for life.",
    "status": "draft",
-   "origin": "us",
-   "notes": ""
+   "origin": "agent",
+   "notes": " | RV061: meaning: zh 想起自己能做到的事 = recalling what you can do; US 'invigorating event' (D-1822)"
   },
   {
    "id": 133,
@@ -1086,18 +1086,18 @@
   {
    "id": 135,
    "zh": "让人想起失败的事,{NEWLINE}作为人生精英的缎带",
-   "en": "A Ribbon for recalling a careless error{NEWLINE}that helped steer life decisions.",
+   "en": "A Ribbon for recalling a failure that{NEWLINE}became experience for life.",
    "status": "draft",
-   "origin": "us",
-   "notes": ""
+   "origin": "agent",
+   "notes": " | RV061: meaning: zh failure as life experience (精英 read as typo for 经验, hack-finding logged); US 'careless error that steered decisions' (D-1822)"
   },
   {
    "id": 136,
    "zh": "让人想起过去的经历,{NEWLINE}使人生振作的缎带",
-   "en": "A Ribbon for recalling a refreshing{NEWLINE}event that added sparkle to life.",
+   "en": "A Ribbon for recalling past experiences{NEWLINE}that lift you up in life.",
    "status": "draft",
-   "origin": "us",
-   "notes": ""
+   "origin": "agent",
+   "notes": " | RV061: meaning: zh 过去的经历 使人生振作 = past experiences that lift life up; US 'refreshing event, sparkle' (D-1822)"
   },
   {
    "id": 137,
@@ -1126,10 +1126,10 @@
   {
    "id": 140,
    "zh": "皇室专用的,{NEWLINE}使人感到高贵的缎带",
-   "en": "An incredibly regal Ribbon with an{NEWLINE}air of nobility.",
+   "en": "A Ribbon reserved for royalty, with an{NEWLINE}air of nobility.",
    "status": "draft",
-   "origin": "us",
-   "notes": ""
+   "origin": "agent",
+   "notes": " | RV061: omission: zh 皇室专用 = for royal use only; US dropped it (D-1822)"
   },
   {
    "id": 141,
@@ -1534,10 +1534,10 @@
   {
    "id": 191,
    "zh": "超过１００人对战后的{NEWLINE}纪念缎带",
-   "en": "A Ribbon awarded for winning 100{NEWLINE}matches in a row.",
+   "en": "A commemorative Ribbon for battling{NEWLINE}more than 100 opponents.",
    "status": "draft",
-   "origin": "us",
-   "notes": ""
+   "origin": "agent",
+   "notes": " | RV061: meaning: zh 超过100人对战 = battled over 100 people; US 'winning 100 in a row' (D-1821)"
   },
   {
    "id": 192,
@@ -1574,10 +1574,10 @@
   {
    "id": 196,
    "zh": "触及传说{NEWLINE}纪念缎带",
-   "en": "A Ribbon awarded for creating{NEWLINE}a new legend.",
+   "en": "A commemorative Ribbon for an{NEWLINE}encounter with a legend.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0424/196"
+   "origin": "agent",
+   "notes": "US 0424/196 | RV061: meaning: zh 触及传说 = touching/encountering a legend; US 'creating a new legend' (D-1821)"
   },
   {
    "id": 197,
@@ -1606,10 +1606,10 @@
   {
    "id": 200,
    "zh": "精灵中心纽约{NEWLINE}纪念缎带",
-   "en": "Nintendo World NY{NEWLINE}Commemorative Ribbon",
+   "en": "Pokémon Center New York{NEWLINE}Commemorative Ribbon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0424/200"
+   "origin": "agent",
+   "notes": "US 0424/200 | RV061: name: zh 精灵中心纽约 = Pokémon Center New York; US renamed it Nintendo World NY (D-1824)"
   },
   {
    "id": 201,
@@ -1638,10 +1638,10 @@
   {
    "id": 204,
    "zh": "圣诞节纪念缎带",
-   "en": "Evergreen Ribbon",
+   "en": "Christmas Ribbon",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0424/204"
+   "origin": "agent",
+   "notes": "US 0424/204 | RV061: meaning: zh 圣诞节纪念缎带 = Christmas commemorative ribbon; US 'Evergreen' (D-1824)"
   },
   {
    "id": 205,
