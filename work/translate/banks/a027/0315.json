@@ -1,329 +1,329 @@
 {
-  "narc": "a027",
-  "bank": 315,
-  "source": "work/extract/v4/a027/0315.json",
-  "strings": [
-    {
-      "id": 0,
-      "zh": "一个精灵球,{NEWLINE}里面装着精灵。",
-      "en": "A Poké Ball with a Pokémon inside.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "Bank 0315: Team Rocket's hidden warehouse off Route 2 (Ariana); the player can claim a dropped Doduo or Barboach."
-    },
-    {
-      "id": 1,
-      "zh": "唔……上边这一批清点无误,{NEWLINE}这是关东分部的补给。",
-      "en": "Hmm... This batch up top checks out.{SCROLL}These are the supplies for the Kanto{NEWLINE}branch.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 2,
-      "zh": "左边这一批是城都分……",
-      "en": "The batch on the left is for the Johto{NEWLINE}bran...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 3,
-      "zh": "你、你、你……{NEWLINE}你是什么人！{CLEAR}来到我们火箭队仓库干什么！？",
-      "en": "Wh-wh-who are you?!{SCROLL}What are you doing in Team Rocket’s{NEWLINE}warehouse?!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 4,
-      "zh": "我是来收拾火箭队的",
-      "en": "I came to take down Team Rocket",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "Choice #4/#5 → responses #6/#7 (male/female player) or #8/#9. | menu width fix (follow-up 1): was 'I’m here to take down Team Rocket'",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 5,
-      "zh": "我迷路了,误闯进来的",
-      "en": "I got lost and wandered in",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 6,
-      "zh": "狂妄的小子,{NEWLINE}我看你是来找死的！",
-      "en": "Cocky little punk! You must have a{NEWLINE}death wish!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 7,
-      "zh": "狂妄的丫头,{NEWLINE}我看你是来找死的！",
-      "en": "Cocky little girl! You must have a death{NEWLINE}wish!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 8,
-      "zh": "既然这样那你快走吧！",
-      "en": "Well, then hurry up and leave!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 9,
-      "zh": "这里北边是尼比市和地鼠洞穴,{NEWLINE}南边是常磐市,{CLEAR}想去哪里赶紧去,{CLEAR}别在我这待着！",
-      "en": "North of here are Pewter City and{NEWLINE}Diglett’s Cave. South is Viridian City.{SCROLL}Wherever you’re going, get going. Don’t{NEWLINE}hang around here!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 10,
-      "zh": "可恶啊……{NEWLINE}这下可怎么办才好……",
-      "en": "Dammit...{SCROLL}What am I supposed to do now...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 11,
-      "zh": "班吉拉『Tyran！！！",
-      "en": "Tyranitar: Tyran!!!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 12,
-      "zh": "雅典娜『哪里来的臭小鬼,{NEWLINE}敢到我们火箭队的仓库来撒野！",
-      "en": "Ariana: Where did this brat come from,{NEWLINE}daring to make trouble in Team Rocket’s{CLEAR}warehouse!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 13,
-      "zh": "雅典娜大人您来啦！{NEWLINE}这下有救了！",
-      "en": "Master Ariana, you’re here!{NEWLINE}We’re saved!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "consistency fix (follow-up 4)"
-    },
-    {
-      "id": 14,
-      "zh": "雅典娜『既然你已经{NEWLINE}知道了我们的秘密,{CLEAR}那就留你不得了！",
-      "en": "Ariana: Now that you know our secret...{SCROLL}...I can’t let you live!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": " | D-1768: user approved explicit lethal meaning of 留你不得 in the witness-killing scene."
-    },
-    {
-      "id": 15,
-      "zh": "雅典娜『哼,可别以为{NEWLINE}我只有这两只精灵！",
-      "en": "Ariana: Hmph. Don’t think these two are{NEWLINE}the only Pokémon I have!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 16,
-      "zh": "不好了,雅典娜大人,{NEWLINE}尼比市的馆主小刚过来了！",
-      "en": "Bad news, Master Ariana! Brock, the{NEWLINE}Pewter City Gym Leader, is on his way!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "consistency fix (follow-up 4)"
-    },
-    {
-      "id": 17,
-      "zh": "雅典娜『切,这时候硬碰硬的话……",
-      "en": "Ariana: Tch. If we go head-to-head{NEWLINE}right now...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 18,
-      "zh": "{VAR:0103:0}『你们火箭队{NEWLINE}假扮警察封锁2号路,{CLEAR}原来是因为这里有你们的仓库啊。",
-      "en": "{VAR:0103:0}: So you Team Rocket goons{NEWLINE}dressed up as police and blocked Route{CLEAR}2...{SCROLL}...because your warehouse is here.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 19,
-      "zh": "{VAR:0103:0}『这里的精灵球{NEWLINE}都装着精灵吧？{CLEAR}你们火箭队是要用这些精灵{CLEAR}去做坏事咯？",
-      "en": "{VAR:0103:0}: All these Poké Balls have{NEWLINE}Pokémon in them, right?{SCROLL}So Team Rocket is going to use these{NEWLINE}Pokémon to do something evil?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 20,
-      "zh": "雅典娜『你这黄毛丫头是记者吗？{NEWLINE}还问东问西的。{CLEAR}乖乖给我去死就好了！",
-      "en": "Ariana: What are you, some brat{NEWLINE}reporter? Asking all these questions...{SCROLL}Just be a good little brat and die!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "zh 黄毛丫头 (little girl) but there's no male variant; kept gender-neutral 'brat'."
-    },
-    {
-      "id": 21,
-      "zh": "雅典娜『你赶紧把这里的精灵球{NEWLINE}都收起来！",
-      "en": "Ariana: Hurry up and pack away all the{NEWLINE}Poké Balls in here!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 22,
-      "zh": "是,雅典娜大人。",
-      "en": "Yes, Master Ariana.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "consistency fix (follow-up 4)"
-    },
-    {
-      "id": 23,
-      "zh": "雅典娜大人,都收好了。",
-      "en": "Master Ariana, everything’s packed.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "consistency fix (follow-up 4)"
-    },
-    {
-      "id": 24,
-      "zh": "雅典娜『好,现在撤退！",
-      "en": "Ariana: Good. Now, retreat!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 25,
-      "zh": "雅典娜『哼,今天的帐我先记下了！",
-      "en": "Ariana: Hmph! I won’t forget this!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 26,
-      "zh": "小刚『原来你在这里啊,{VAR:0103:0}。{NEWLINE}我听市民说2号路这边有打斗的声音{CLEAR}就过来看看。{CLEAR}刚刚这附近发生什么事了吗？",
-      "en": "Brock: So this is where you were,{NEWLINE}{VAR:0103:0}.{SCROLL}People in town said they heard fighting{NEWLINE}over on Route 2, so I came to check it{CLEAR}out.{SCROLL}Did something happen around here just{NEWLINE}now?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 27,
-      "zh": "{VAR:0103:0}『其实是这样的……",
-      "en": "{VAR:0103:0}: Well, here’s what happened...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 28,
-      "zh": "小刚『火箭队假扮警察封锁2号路,{NEWLINE}还把这里当成仓库！？{CLEAR}这伙人真是太嚣张了,{CLEAR}我这就去跟精灵联盟联系一下,{CLEAR}必须要尽快铲除这个组织了。{SCROLL}小刚『{VAR:0103:0}你在旅行中{NEWLINE}也要多小心啊,{CLEAR}有空欢迎再来我们尼比市玩。",
-      "en": "Brock: Team Rocket dressed up as police{NEWLINE}to block Route 2, and used this place as{CLEAR}a warehouse!?{SCROLL}These guys are way too brazen. I’ll get{NEWLINE}in touch with the Pokémon League right{CLEAR}away.{SCROLL}We have to root out that organization{NEWLINE}as soon as possible.{SCROLL}Brock: Be careful on your journey too,{NEWLINE}{VAR:0103:0}. Come visit us in Pewter City{CLEAR}again anytime.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 29,
-      "zh": "火箭队落下了一个精灵球,{NEWLINE}这里面装着一只精灵,{CLEAR}要拿走吗？{SCROLL}",
-      "en": "Team Rocket dropped a Poké Ball.{NEWLINE}There’s a Pokémon inside.{SCROLL}Take it?{SCROLL}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 30,
-      "zh": "你身上的精灵带满了！",
-      "en": "You can’t carry any more Pokémon!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 31,
-      "zh": "{VAR:0103:0}得到了嘟嘟！",
-      "en": "{VAR:0103:0} obtained Doduo!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 32,
-      "zh": "要给嘟嘟起昵称吗？",
-      "en": "Give Doduo a nickname?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 33,
-      "zh": "昵称叫{VAR:0101:1}{NEWLINE}可以吗？{VAR:0200:0}",
-      "en": "Is {VAR:0101:1} the nickname you want to{NEWLINE}give? {VAR:0200:0}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl)"
-    },
-    {
-      "id": 34,
-      "zh": "雅典娜『嘿嘿,就这点本事？{NEWLINE}看来你的死期就是今天了！",
-      "en": "Ariana: Heh heh, is that all you’ve got?{SCROLL}Looks like today’s the day you die!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 35,
-      "zh": "{VAR:0103:0}『那个……我……{NEWLINE}我迷路了！",
-      "en": "{VAR:0103:0}: Um... I... I got lost!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 36,
-      "zh": "{VAR:0103:0}『哎呀,我是不小心迷路{NEWLINE}才走到这里来的。",
-      "en": "{VAR:0103:0}: Oh dear, I got lost and ended{NEWLINE}up here by accident.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 37,
-      "zh": "{VAR:0103:0}『我来看看你们火箭队{NEWLINE}到底在搞什么阴谋！",
-      "en": "{VAR:0103:0}: I came to see what scheme{NEWLINE}Team Rocket is cooking up!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 38,
-      "zh": "{VAR:0103:0}得到了土泥鳅！",
-      "en": "{VAR:0103:0} obtained Barboach!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 39,
-      "zh": "要给土泥鳅起昵称吗？",
-      "en": "Give Barboach a nickname?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    }
-  ]
+ "narc": "a027",
+ "bank": 315,
+ "source": "work/extract/v4/a027/0315.json",
+ "strings": [
+  {
+   "id": 0,
+   "zh": "一个精灵球,{NEWLINE}里面装着精灵。",
+   "en": "A Poké Ball with a Pokémon inside.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "Bank 0315: Team Rocket's hidden warehouse off Route 2 (Ariana); the player can claim a dropped Doduo or Barboach."
+  },
+  {
+   "id": 1,
+   "zh": "唔……上边这一批清点无误,{NEWLINE}这是关东分部的补给。",
+   "en": "Hmm... This batch up top checks out.{SCROLL}These are the supplies for the Kanto{NEWLINE}branch.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 2,
+   "zh": "左边这一批是城都分……",
+   "en": "The batch on the left is for the Johto{NEWLINE}bran...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 3,
+   "zh": "你、你、你……{NEWLINE}你是什么人！{CLEAR}来到我们火箭队仓库干什么！？",
+   "en": "Wh-wh-who are you?!{SCROLL}What are you doing in Team Rocket’s{NEWLINE}warehouse?!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 4,
+   "zh": "我是来收拾火箭队的",
+   "en": "I came to take down Team Rocket",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "Choice #4/#5 → responses #6/#7 (male/female player) or #8/#9. | menu width fix (follow-up 1): was 'I’m here to take down Team Rocket'",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 5,
+   "zh": "我迷路了,误闯进来的",
+   "en": "I got lost and wandered in",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 6,
+   "zh": "狂妄的小子,{NEWLINE}我看你是来找死的！",
+   "en": "Cocky little punk! You must have a{NEWLINE}death wish!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 7,
+   "zh": "狂妄的丫头,{NEWLINE}我看你是来找死的！",
+   "en": "Cocky little girl! You must have a death{NEWLINE}wish!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 8,
+   "zh": "既然这样那你快走吧！",
+   "en": "Well, then hurry up and leave!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 9,
+   "zh": "这里北边是尼比市和地鼠洞穴,{NEWLINE}南边是常磐市,{CLEAR}想去哪里赶紧去,{CLEAR}别在我这待着！",
+   "en": "North of here are Pewter City and{NEWLINE}Diglett’s Cave. South is Viridian City.{SCROLL}Wherever you’re going, get going. Don’t{NEWLINE}hang around here!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 10,
+   "zh": "可恶啊……{NEWLINE}这下可怎么办才好……",
+   "en": "Dammit...{SCROLL}What am I supposed to do now...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 11,
+   "zh": "班吉拉『Tyran！！！",
+   "en": "Tyranitar: Tyran!!!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 12,
+   "zh": "雅典娜『哪里来的臭小鬼,{NEWLINE}敢到我们火箭队的仓库来撒野！",
+   "en": "Ariana: Where did this brat come from,{NEWLINE}daring to make trouble in Team Rocket’s{CLEAR}warehouse!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 13,
+   "zh": "雅典娜大人您来啦！{NEWLINE}这下有救了！",
+   "en": "Master Ariana, you’re here!{NEWLINE}We’re saved!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "consistency fix (follow-up 4)"
+  },
+  {
+   "id": 14,
+   "zh": "雅典娜『既然你已经{NEWLINE}知道了我们的秘密,{CLEAR}那就留你不得了！",
+   "en": "Ariana: Now that you know our secret...{SCROLL}...I can’t let you live!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": " | D-1768: user approved explicit lethal meaning of 留你不得 in the witness-killing scene."
+  },
+  {
+   "id": 15,
+   "zh": "雅典娜『哼,可别以为{NEWLINE}我只有这两只精灵！",
+   "en": "Ariana: Hmph. Don’t think these two are{NEWLINE}the only Pokémon I have!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 16,
+   "zh": "不好了,雅典娜大人,{NEWLINE}尼比市的馆主小刚过来了！",
+   "en": "Bad news, Master Ariana! Brock, the{NEWLINE}Pewter City Gym Leader, is on his way!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "consistency fix (follow-up 4)"
+  },
+  {
+   "id": 17,
+   "zh": "雅典娜『切,这时候硬碰硬的话……",
+   "en": "Ariana: Tch. If we go head-to-head{NEWLINE}right now...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 18,
+   "zh": "{VAR:0103:0}『你们火箭队{NEWLINE}假扮警察封锁2号路,{CLEAR}原来是因为这里有你们的仓库啊。",
+   "en": "{VAR:0103:0}: So you Team Rocket goons{NEWLINE}dressed up as police and blocked Route{CLEAR}2...{SCROLL}...because your warehouse is here.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 19,
+   "zh": "{VAR:0103:0}『这里的精灵球{NEWLINE}都装着精灵吧？{CLEAR}你们火箭队是要用这些精灵{CLEAR}去做坏事咯？",
+   "en": "{VAR:0103:0}: All these Poké Balls have{NEWLINE}Pokémon in them, right?{SCROLL}So Team Rocket is going to use these{NEWLINE}Pokémon to do something evil?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 20,
+   "zh": "雅典娜『你这黄毛丫头是记者吗？{NEWLINE}还问东问西的。{CLEAR}乖乖给我去死就好了！",
+   "en": "Ariana: What are you, some brat{NEWLINE}reporter? Asking all these questions...{SCROLL}Just be a good little brat and die!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "zh 黄毛丫头 (little girl) but there's no male variant; kept gender-neutral 'brat'."
+  },
+  {
+   "id": 21,
+   "zh": "雅典娜『你赶紧把这里的精灵球{NEWLINE}都收起来！",
+   "en": "Ariana: Hurry up and pack away all the{NEWLINE}Poké Balls in here!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 22,
+   "zh": "是,雅典娜大人。",
+   "en": "Yes, Master Ariana.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "consistency fix (follow-up 4)"
+  },
+  {
+   "id": 23,
+   "zh": "雅典娜大人,都收好了。",
+   "en": "Master Ariana, everything’s packed.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "consistency fix (follow-up 4)"
+  },
+  {
+   "id": 24,
+   "zh": "雅典娜『好,现在撤退！",
+   "en": "Ariana: Good. Now, retreat!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 25,
+   "zh": "雅典娜『哼,今天的帐我先记下了！",
+   "en": "Ariana: Hmph! I won’t forget this!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 26,
+   "zh": "小刚『原来你在这里啊,{VAR:0103:0}。{NEWLINE}我听市民说2号路这边有打斗的声音{CLEAR}就过来看看。{CLEAR}刚刚这附近发生什么事了吗？",
+   "en": "Brock: So this is where you were,{NEWLINE}{VAR:0103:0}.{SCROLL}People in town said they heard fighting{NEWLINE}over on Route 2, so I came to check it{CLEAR}out.{SCROLL}Did something happen around here just{NEWLINE}now?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 27,
+   "zh": "{VAR:0103:0}『其实是这样的……",
+   "en": "{VAR:0103:0}: Well, here’s what happened...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 28,
+   "zh": "小刚『火箭队假扮警察封锁2号路,{NEWLINE}还把这里当成仓库！？{CLEAR}这伙人真是太嚣张了,{CLEAR}我这就去跟精灵联盟联系一下,{CLEAR}必须要尽快铲除这个组织了。{SCROLL}小刚『{VAR:0103:0}你在旅行中{NEWLINE}也要多小心啊,{CLEAR}有空欢迎再来我们尼比市玩。",
+   "en": "Brock: Team Rocket dressed up as police{NEWLINE}to block Route 2, and used this place as{CLEAR}a warehouse!?{SCROLL}These guys are way too brazen. I’ll get{NEWLINE}in touch with the Pokémon League right{CLEAR}away.{SCROLL}We have to root out that organization{NEWLINE}as soon as possible.{SCROLL}Brock: Be careful on your journey too,{NEWLINE}{VAR:0103:0}. Come visit us in Pewter City{CLEAR}again anytime.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 29,
+   "zh": "火箭队落下了一个精灵球,{NEWLINE}这里面装着一只精灵,{CLEAR}要拿走吗？{SCROLL}",
+   "en": "Team Rocket dropped a Poké Ball.{NEWLINE}There’s a Pokémon inside.{SCROLL}Take it?{SCROLL}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 30,
+   "zh": "你身上的精灵带满了！",
+   "en": "You can’t carry any more Pokémon!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 31,
+   "zh": "{VAR:0103:0}得到了嘟嘟！",
+   "en": "{VAR:0103:0} obtained Doduo!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 32,
+   "zh": "要给嘟嘟起昵称吗？",
+   "en": "Give Doduo a nickname?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 33,
+   "zh": "昵称叫{VAR:0101:1}{NEWLINE}可以吗？{VAR:0200:0}",
+   "en": "Is {VAR:0101:1} the nickname you want to{NEWLINE}give? {VAR:0200:0}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl)"
+  },
+  {
+   "id": 34,
+   "zh": "雅典娜『嘿嘿,就这点本事？{NEWLINE}看来你的死期就是今天了！",
+   "en": "Ariana: Heh heh, is that all you’ve got?{SCROLL}Looks like today’s the day you die!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 35,
+   "zh": "{VAR:0103:0}『那个……我……{NEWLINE}我迷路了！",
+   "en": "{VAR:0103:0}: Um... I... I got lost!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 36,
+   "zh": "{VAR:0103:0}『哎呀,我是不小心迷路{NEWLINE}才走到这里来的。",
+   "en": "{VAR:0103:0}: Oh dear, I got lost and ended{NEWLINE}up here by accident.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 37,
+   "zh": "{VAR:0103:0}『我来看看你们火箭队{NEWLINE}到底在搞什么阴谋！",
+   "en": "{VAR:0103:0}: I came to see what scheme{NEWLINE}Team Rocket is cooking up!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 38,
+   "zh": "{VAR:0103:0}得到了土泥鳅！",
+   "en": "{VAR:0103:0} obtained Barboach!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 39,
+   "zh": "要给土泥鳅起昵称吗？",
+   "en": "Give Barboach a nickname?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  }
+ ]
 }

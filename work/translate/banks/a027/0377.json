@@ -1,1366 +1,1366 @@
 {
-  "narc": "a027",
-  "bank": 377,
-  "source": "work/extract/v4/a027/0377.json",
-  "strings": [
-    {
-      "id": 0,
-      "zh": "你身上带着的那个蛋,{NEWLINE}看起来快要孵化了。",
-      "en": "That Egg you’re carrying{NEWLINE}looks like it’s about to hatch.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 1,
-      "zh": "阿金『哦？要孵化了吗？{NEWLINE}其实这个蛋是空木博士送给我的,{CLEAR}我带着它走了这么久都没反应,{CLEAR}还以为它是颗坏蛋,不会孵化了呢。",
-      "en": "Gold: Oh? It’s going to hatch? Actually,{NEWLINE}Professor Elm gave me this Egg. I’ve{CLEAR}carried it around for so long without{CLEAR}anything happening, I figured it{CLEAR}was a dud that would never hatch.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 2,
-      "zh": "哈哈,不会是坏蛋的。{NEWLINE}以我多年的经验,{CLEAR}你再带它多走几步{CLEAR}就差不多能孵化出精灵宝宝了。",
-      "en": "Ha ha, it’s no dud. From my{NEWLINE}years of experience, if you walk{CLEAR}with it a few more steps, a baby{CLEAR}Pokémon should hatch out soon.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 3,
-      "zh": "阿金『那可真是太好了,{NEWLINE}我这就跑起来,Go,Go,Go！",
-      "en": "Gold: That’s awesome! I’ll start{NEWLINE}running right now. Go, go, go!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 4,
-      "zh": "水晶『当心一点！{NEWLINE}你这样横冲直撞地到处乱跑{CLEAR}把蛋给摔了可怎么办！",
-      "en": "Crystal: Be careful! If you{NEWLINE}go charging around like that{CLEAR}and drop the Egg, what then?!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 5,
-      "zh": "阿金『哎呀,学习委员就是啰嗦啦。{NEWLINE}我保证这颗蛋不会有事的。",
-      "en": "Gold: Ugh, the Class Rep is such a{NEWLINE}nag. I promise the Egg will be fine.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 6,
-      "zh": "水晶『那可不行,很多危险都是{NEWLINE}因为麻痹大意才会发生的。{CLEAR}在孵化精灵的关键时刻,你更要……",
-      "en": "Crystal: That’s not good enough.{NEWLINE}Lots of accidents happen because{CLEAR}people get careless. At the crucial{CLEAR}moment of hatching a Pokémon,{CLEAR}you need to be even more...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 7,
-      "zh": "阿金『不听不听,王八念经。{NEWLINE}我要用最快的方式孵化这颗蛋,{CLEAR}才不听你的呢。拜拜咯！",
-      "en": "Gold: La la la, not listening!{NEWLINE}You sound like a turtle chanting{CLEAR}sutras! I’m hatching this Egg{CLEAR}the fastest way there is, and I’m{CLEAR}not listening to you. Bye-bye!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "不听不听,王八念经 (childish taunt) → ‘La la la, not listening! You sound like a turtle chanting sutras!’"
-    },
-    {
-      "id": 8,
-      "zh": "水晶『希望阿金孵化出的精灵{NEWLINE}性格不要像他这么冒失吧。",
-      "en": "Crystal: I hope the Pokémon{NEWLINE}Gold hatches doesn’t end{CLEAR}up as reckless as he is.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 9,
-      "zh": "水晶『{VAR:0103:0}前辈,你也来啦！",
-      "en": "Crystal: {VAR:0103:0}, you’re here too!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 10,
-      "zh": "哦哦！真的是冠军大人！{NEWLINE}瞧我这老眼昏花的,{CLEAR}明明感觉很像却又不敢认。",
-      "en": "Oh ho! It really is the Champion! Look{NEWLINE}at me with my old eyes. You looked so{CLEAR}familiar, but I didn’t dare say so.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 11,
-      "zh": "水晶,这位是……？",
-      "en": "Crystal, and who is this...?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 12,
-      "zh": "水晶『咦？爷爷,你没有认出来吗？{NEWLINE}这位就是联盟冠军{VAR:0103:0}呀！",
-      "en": "Crystal: Huh? Grandpa, didn’t{NEWLINE}you recognize them? This is{CLEAR}League Champion {VAR:0103:0}!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 13,
-      "zh": "水晶『爷爷,{VAR:0103:0}前辈跟我和阿金{NEWLINE}一起在城都地区旅行锻炼呢。",
-      "en": "Crystal: Grandpa, {VAR:0103:0} is traveling{NEWLINE}around Johto with Gold and me to train.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 14,
-      "zh": "嗯嗯,能跟打倒火箭队的英雄一起旅行,{NEWLINE}你可要把握住机会好好向人家学习。",
-      "en": "Mm-hmm. Traveling with the hero{NEWLINE}who defeated Team Rocket...{CLEAR}Make the most of this chance{CLEAR}and learn all you can from them.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 15,
-      "zh": "水晶『那当然,您就放心吧。",
-      "en": "Crystal: Of course. Don’t you worry.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 16,
-      "zh": "水晶『{VAR:0103:0}前辈,这位是我爷爷,{NEWLINE}和我奶奶一起在这里经营饲育屋。",
-      "en": "Crystal: {VAR:0103:0}, this is{NEWLINE}my grandpa. He runs the{CLEAR}Day-Care here with my grandma.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 17,
-      "zh": "水晶『{VAR:0103:0}前辈,跟我来,{NEWLINE}我带你参观一下爷爷奶奶的饲育屋。",
-      "en": "Crystal: {VAR:0103:0}, come with me.{NEWLINE}I’ll show you around Grandpa{CLEAR}and Grandma’s Day-Care.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 18,
-      "zh": "{VAR:0103:0}『我正要去满金市,刚好路过。",
-      "en": "{VAR:0103:0}: I’m on my way to Goldenrod{NEWLINE}City. I was just passing through.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 19,
-      "zh": "{VAR:0103:0}『从桐树林去满金市,{NEWLINE}这里是必经之路嘛。",
-      "en": "{VAR:0103:0}: You have to come{NEWLINE}through here to get from Ilex{CLEAR}Forest to Goldenrod City.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 20,
-      "zh": "您是冠军大人吧？{NEWLINE}我是负责这一带治安的警察。{CLEAR}您如果有时间的话{CLEAR}能指导我一下对战技巧吗？",
-      "en": "You’re the Champion, aren’t you?{NEWLINE}I’m the police officer in charge{CLEAR}of keeping the peace around{CLEAR}here. If you have time, could you{CLEAR}give me some battle pointers?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 21,
-      "zh": "您是想要单打还是双打？",
-      "en": "Would you like singles or doubles?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 22,
-      "zh": "单打",
-      "en": "Singles",
-      "status": "draft",
-      "origin": "tm_v3",
-      "notes": "v3 TM: 6 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 23,
-      "zh": "双打",
-      "en": "Doubles",
-      "status": "draft",
-      "origin": "tm_v3",
-      "notes": "v3 TM: 5 source(s); other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl)",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 24,
-      "zh": "先不打了",
-      "en": "Not now",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 3 source(s); other variants: 3 more v3 TM candidates (tm_v4_matches.jsonl)",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 25,
-      "zh": "身为警察的我每天都有刻苦训练,{NEWLINE}您可不要大意了。",
-      "en": "As a police officer, I train hard{NEWLINE}every day. Don’t let your guard down!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 26,
-      "zh": "双打要有两只精灵才行,{NEWLINE}你只带着1只精灵怎么打啊。",
-      "en": "You need two Pokémon for a{NEWLINE}double battle. How are you{CLEAR}going to battle with only one?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 27,
-      "zh": "皮宝宝『Clee——fa！",
-      "en": "Cleffa: Clee-fa!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 28,
-      "zh": "风速狗『Ar——caaa！",
-      "en": "Arcanine: Ar-caaa!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 29,
-      "zh": "哎哟,我从那边的台阶上{NEWLINE}跳下来的时候不小心扭到了脚,{CLEAR}请问你能帮我带一瓶伤药来吗？",
-      "en": "Ouch, I twisted my ankle jumping{NEWLINE}down from those steps over there.{CLEAR}Could you bring me a Potion?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 30,
-      "zh": "把身上的伤药给他吗？",
-      "en": "Give him your Potion?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 31,
-      "zh": "呀,谢谢你的伤药。{NEWLINE}用过之后脚终于不那么疼了。{SCROLL}其实我是为了跟舞蹈大师斗舞{NEWLINE}才会在这里蹦来跳去练习的。{CLEAR}但以我现在这个样子{CLEAR}短时间内应该是没法再跳舞了。{SCROLL}如果你对舞蹈感兴趣{NEWLINE}可以沿着34号路的水路往南走,{CLEAR}水路尽头有一片隐秘的树林,{CLEAR}经常会有训练家去那里{CLEAR}跟舞蹈大师斗舞。",
-      "en": "Oh, thanks for the Potion. My{NEWLINE}ankle finally doesn’t hurt so much.{SCROLL}Actually, I was hopping around here{NEWLINE}practicing for a dance-off with the{CLEAR}dance master. But the way I am now,{CLEAR}I won’t be dancing again for a while.{SCROLL}If you’re into dancing, follow{NEWLINE}the water on Route 34 south. At{CLEAR}the end of it there’s a hidden{CLEAR}grove where Trainers often go for{CLEAR}dance-offs with the dance master.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 32,
-      "zh": "我要是也能像舞蹈大师那样{NEWLINE}跳出跃动感十足的舞步就好了。",
-      "en": "If only I could dance with steps{NEWLINE}as bouncy as the dance master’s.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 33,
-      "zh": "这里是３４号道路{NEWLINE}南　桧皮镇",
-      "en": "Rt. 34{NEWLINE}South to Azalea Town",
-      "status": "draft",
-      "origin": "us",
-      "notes": "US 0384/33",
-      "category": "sign"
-    },
-    {
-      "id": 34,
-      "zh": "贴心的告示牌！{SCROLL}在由此向北的{NEWLINE}满金市广播塔{CLEAR}正在进行礼物馈赠活动！{SCROLL}回答问题{NEWLINE}赢收音机！",
-      "en": "Trainer Tips{SCROLL}North to Goldenrod City{NEWLINE}The Radio Tower at Goldenrod is giving{CLEAR}away Radio Cards.{SCROLL}Answer their questions and receive a{NEWLINE}Radio Card!",
-      "status": "draft",
-      "origin": "us",
-      "notes": "US 0384/34"
-    },
-    {
-      "id": 35,
-      "zh": "这里是培育屋{NEWLINE}培育你的精灵",
-      "en": "Pokémon Day Care{NEWLINE}Let us raise your Pokémon for you!",
-      "status": "draft",
-      "origin": "us",
-      "notes": "US 0384/35"
-    },
-    {
-      "id": 36,
-      "zh": "您好,舞蹈大师小锯鳄。{NEWLINE}我是练习过两年半舞蹈的练习生,{CLEAR}下面我将表演一段原创舞蹈,{CLEAR}来跟您的跳跃舞步一较高低。",
-      "en": "Hello, Dance Master Totodile. I’m a{NEWLINE}trainee who has practiced dancing{CLEAR}for two and a half years. I will now{CLEAR}perform an original dance and see how it{CLEAR}stacks up against your jumping steps.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "Cai Xukun meme scene: #36 ‘trainee who practiced for two and a half years’ and #37 ‘Music!’ translated; #38/#39 (a lyric of the song 只因你太美) replaced with hum lines per the song rule D-0368; #40/#42 keep the chicken→Torchic pun."
-    },
-    {
-      "id": 37,
-      "zh": "Music！",
-      "en": "Music!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 38,
-      "zh": "[zh redacted: song lyrics; sha256:3dc5bc68c9831d03b91bae5b4792fb9e51fd6ccc3f4cb70884635a9c2cb4c077]",
-      "en": "♪ (belts out a viral idol hit,{NEWLINE}flapping like a chicken!) ♪",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "zh redacted: song lyrics (zh_redact.py)"
-    },
-    {
-      "id": 39,
-      "zh": "[zh redacted: song lyrics; sha256:e6bf4c2a01f2921a8007d8724069bc2dfdf1dcec0394f4b21a6629b93c600361]",
-      "en": "♪ (hits the chorus again,{NEWLINE}even more chicken!) ♪",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "zh redacted: song lyrics (zh_redact.py)"
-    },
-    {
-      "id": 40,
-      "zh": "怎么样,舞蹈大师,{NEWLINE}我这支为火稚鸡编排的舞蹈{CLEAR}有没有惊艳到你啊？",
-      "en": "So how about it, Dance Master?{NEWLINE}Did this dance I choreographed{CLEAR}for Torchic blow you away?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 41,
-      "zh": "小锯鳄『Tooo——to！{SCROLL}小锯鳄摇了摇头。",
-      "en": "Totodile: Tooo-to!{SCROLL}Totodile shook its head.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 42,
-      "zh": "哎？不满意吗？{NEWLINE}可我明明跳出了火稚鸡的感觉。",
-      "en": "Huh? Not good enough? But I totally{NEWLINE}captured the essence of Torchic.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 43,
-      "zh": "舞蹈大师对你这样{NEWLINE}低端的表演没兴趣啦,{CLEAR}往后退,来看我的舞蹈吧。",
-      "en": "The dance master has no interest in{NEWLINE}a low-rent performance like yours.{CLEAR}Step back and watch my dance.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 44,
-      "zh": "行,你有本事你就试试。{NEWLINE}我就不信你能跳出什么花来。",
-      "en": "Fine, show me what you’ve got. I{NEWLINE}doubt you can pull off anything fancy.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 45,
-      "zh": "小锯鳄大师,我可是在{NEWLINE}缘朱市的歌舞连乘学习过,{CLEAR}我的舞蹈风格是传统的慢节奏舞,{CLEAR}跟你的活泼风格完全不同哦。{SCROLL}音乐起！",
-      "en": "Master Totodile, I studied at the{NEWLINE}Ecruteak Dance Theater. My style{CLEAR}is slow, traditional dance, totally{CLEAR}different from your lively style.{SCROLL}Cue the music!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 46,
-      "zh": "哦哦,冠军大人！{NEWLINE}告诉你{CLEAR}我和老婆子的电话号码吧。{SCROLL}这样就能随时通知你{NEWLINE}寄养在这的精灵的近况了。{SCROLL}",
-      "en": "Oh ho, Champion! Let me give{NEWLINE}you my number and the missus’s.{SCROLL}That way we can let you know how the{NEWLINE}Pokémon you leave with us are doing.{SCROLL}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "US 0384/46"
-    },
-    {
-      "id": 47,
-      "zh": "{VAR:0103:0}把培育屋夫妇{NEWLINE}登录到了手机中！",
-      "en": "{VAR:0103:0} registered the Day-Care Couple{NEWLINE}in the Pokégear!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "US 0384/47; ext-review RB-D08"
-    },
-    {
-      "id": 48,
-      "zh": "{VAR:0103:0}把培育屋夫妇{NEWLINE}登录到了手机中！",
-      "en": "{VAR:0103:0} registered the Day-Care Couple{NEWLINE}in the Pokégear!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "US 0384/48; ext-review RB-D08"
-    },
-    {
-      "id": 49,
-      "zh": "把精灵寄养在我们这,{NEWLINE}你可以随时来个电话。{SCROLL}孙女送的手机{NEWLINE}终于派上用场,{CLEAR}我很开心呢。",
-      "en": "Call us from time to time when you{NEWLINE}give us your Pokémon to raise.{SCROLL}I’ll be happy to have a use for this{NEWLINE}Pokégear my grandchild gave me.{SCROLL}",
-      "status": "draft",
-      "origin": "us",
-      "notes": "US 0384/49"
-    },
-    {
-      "id": 50,
-      "zh": "嘿嘿,有没有被我的舞姿给惊艳到啊？",
-      "en": "Heh heh, weren’t you{NEWLINE}blown away by my dancing?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 51,
-      "zh": "什么嘛,这么挑剔。{NEWLINE}那你跳一段舞给我们看看啊。",
-      "en": "What, you’re so picky! Then{NEWLINE}why don’t you dance for us?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 52,
-      "zh": "小锯鳄『Tooo——to！",
-      "en": "Totodile: Tooo-to!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 53,
-      "zh": "啊——这……！{NEWLINE}这欢快的舞步,{CLEAR}敏捷的身手,{CLEAR}可爱的叫声……",
-      "en": "Whoa... This...! Those{NEWLINE}cheerful steps, those nimble{CLEAR}moves, that adorable cry...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 54,
-      "zh": "真是让人大开眼界的舞姿。{NEWLINE}我练了两年半舞蹈,{CLEAR}却没想到被小锯鳄大师给秒杀了。",
-      "en": "What an eye-opening dance. I{NEWLINE}practiced dancing for two and a{CLEAR}half years, and Master Totodile{CLEAR}wiped the floor with me in seconds.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 55,
-      "zh": "小锯鳄大师,我们服了,{NEWLINE}你是真正的舞蹈大师！",
-      "en": "Master Totodile, we give up!{NEWLINE}You’re a true dance master!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 56,
-      "zh": "要去跟小锯鳄斗舞试试吗？",
-      "en": "Go have a dance-off with Totodile?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 57,
-      "zh": "{VAR:0103:0}『请让一下,{NEWLINE}我也想跟小锯鳄斗舞试试。",
-      "en": "{VAR:0103:0}: Excuse me. I’d like to{NEWLINE}have a dance-off with Totodile too.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 58,
-      "zh": "{VAR:0103:0}『这只小锯鳄很厉害嘛,{NEWLINE}不过我的舞姿肯定也不输它！",
-      "en": "{VAR:0103:0}: This Totodile is pretty{NEWLINE}good. But my dancing won’t lose to it!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 59,
-      "zh": "你也是舞蹈爱好者？",
-      "en": "You’re a dance lover too?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 60,
-      "zh": "你能跳出比小锯鳄更好的舞步？",
-      "en": "You think you can outdance Totodile?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 61,
-      "zh": "{VAR:0103:0}『我就是好奇想来试试。",
-      "en": "{VAR:0103:0}: I was just curious{NEWLINE}and wanted to give it a try.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 62,
-      "zh": "{VAR:0103:0}『放心吧,我的舞蹈{NEWLINE}肯定能打动小锯鳄！",
-      "en": "{VAR:0103:0}: Don’t worry, my dancing{NEWLINE}will definitely impress Totodile!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 63,
-      "zh": "行啊,既然你不怕被大师嫌弃,{NEWLINE}那就跳一段给我们看看吧。",
-      "en": "Fine. If you’re not afraid of the{NEWLINE}master turning its nose up at{CLEAR}you, go ahead and dance for us.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 64,
-      "zh": "你很有信心嘛,{NEWLINE}那就来跳一段给我们看看吧。",
-      "en": "You sure are confident. Then{NEWLINE}go ahead and dance for us.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 65,
-      "zh": "表演什么样的舞蹈呢？",
-      "en": "What kind of dance will you perform?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "Dance menu #66-#69 → copy (#73-#77) / moonwalk (#79-#83) / battle poses (#84-#95, catch Totodile) / give up (#70-#72). #88/#89 echo the player's own lines from earlier scenes."
-    },
-    {
-      "id": 66,
-      "zh": "模仿小锯鳄刚才的舞步",
-      "en": "Copy Totodile’s dance",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 67,
-      "zh": "来一段危险的太空步",
-      "en": "A daring moonwalk",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 68,
-      "zh": "摆对战时的指挥姿势",
-      "en": "Strike a battle-command pose",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 69,
-      "zh": "放弃吧",
-      "en": "Give up",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 70,
-      "zh": "{VAR:0103:0}『唉,算了。{NEWLINE}其实我根本不会跳舞……",
-      "en": "{VAR:0103:0}: Sigh, forget it.{NEWLINE}Actually, I can’t dance at all...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 71,
-      "zh": "什么嘛,就是个大骗子啊,{NEWLINE}亏我还有点期待。",
-      "en": "What, you’re just a big faker! And{NEWLINE}I was kind of looking forward to it.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 72,
-      "zh": "真是的,我还以为能看到{NEWLINE}好看的舞蹈呢。",
-      "en": "Seriously, I thought we’d get{NEWLINE}to see some good dancing.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 73,
-      "zh": "{VAR:0103:0}『小锯鳄,我要模仿{NEWLINE}你刚才的舞蹈,{CLEAR}你可看仔细了。",
-      "en": "{VAR:0103:0}: Totodile, I’m going to copy{NEWLINE}the dance you just did. Watch closely.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 74,
-      "zh": "{VAR:0103:0}『我跳完了,你感觉怎么样呢？",
-      "en": "{VAR:0103:0}: I’m done. What did you think?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 75,
-      "zh": "{VAR:0103:0}『哈哈,你的舞步也不怎么样嘛。{NEWLINE}我随随便便就能复刻了。",
-      "en": "{VAR:0103:0}: Ha ha, your steps{NEWLINE}aren’t that great either. I can{CLEAR}copy them without even trying.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 76,
-      "zh": "这也叫舞步复刻？你在糊弄鬼呢？",
-      "en": "You call that copying the steps?{NEWLINE}Who are you trying to fool?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 77,
-      "zh": "像你这种外行,就别来丢人现眼了。",
-      "en": "Amateurs like you shouldn’t come{NEWLINE}here and embarrass yourselves.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 78,
-      "zh": "{VAR:0103:0}『……",
-      "en": "{VAR:0103:0}: ...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "Same zh as 0484 #46; English copied."
-    },
-    {
-      "id": 79,
-      "zh": "{VAR:0103:0}『小锯鳄,我要来一段{NEWLINE}风靡一时的太空步舞蹈,{CLEAR}让你开开眼界！",
-      "en": "{VAR:0103:0}: Totodile, I’m going to do the{NEWLINE}moonwalk that once took the world{CLEAR}by storm. Prepare to be amazed!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 80,
-      "zh": "{VAR:0103:0}『等着若斯！",
-      "en": "{VAR:0103:0}: Just you watch!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "等着若斯: unclear (typo for 等着瞧?); written ‘Just you watch!’."
-    },
-    {
-      "id": 81,
-      "zh": "{VAR:0103:0}『看到了吗？{NEWLINE}我的太空步还不错吧？",
-      "en": "{VAR:0103:0}: See that? My{NEWLINE}moonwalk’s not bad, right?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 82,
-      "zh": "你当我们傻是不是？{NEWLINE}哪有往前走的太空步啊！",
-      "en": "Do you think we’re stupid?{NEWLINE}Who moonwalks forward?!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 83,
-      "zh": "你要是不会跳舞的话,{NEWLINE}就不要硬装好不好？",
-      "en": "If you can’t dance, then{NEWLINE}don’t pretend you can, okay?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 84,
-      "zh": "{VAR:0103:0}『其实我不怎么会跳舞,{NEWLINE}就展示一下平时经常摆的姿势吧。",
-      "en": "{VAR:0103:0}: Actually, I can’t{NEWLINE}really dance. I’ll just show you{CLEAR}the poses I strike all the time.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 85,
-      "zh": "{VAR:0103:0}『就决定是你了,{VAR:0100:1}！",
-      "en": "{VAR:0103:0}: I choose you, {VAR:0100:1}!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 86,
-      "zh": "{VAR:0103:0}『危险,快避开！",
-      "en": "{VAR:0103:0}: Look out, dodge it!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 87,
-      "zh": "{VAR:0103:0}『好机会,趁现在！",
-      "en": "{VAR:0103:0}: Here’s our chance, now!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 88,
-      "zh": "{VAR:0103:0}『我会在这里打倒你,{NEWLINE}不是打倒身为道馆馆主的你,{CLEAR}而是为了全地区的人们和精灵{CLEAR}打倒身为火箭队首领的你！",
-      "en": "{VAR:0103:0}: I’ll defeat you here. Not you{NEWLINE}as a Gym Leader, but you as the boss{CLEAR}of Team Rocket, for the sake of the{CLEAR}people and Pokémon of every region!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 89,
-      "zh": "{VAR:0103:0}『我是最强的训练家,{NEWLINE}所以绝不能在这里倒下,{CLEAR}不然这里的人们该去依靠谁呢！",
-      "en": "{VAR:0103:0}: I’m the strongest Trainer,{NEWLINE}so I can never fall here. Otherwise{CLEAR}who would the people here rely on?!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 90,
-      "zh": "{VAR:0103:0}『这就是我平时的样子,{NEWLINE}小锯鳄你觉得怎么样呢？",
-      "en": "{VAR:0103:0}: That’s what I’m like every{NEWLINE}day. What do you think, Totodile?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 91,
-      "zh": "小锯鳄『Tooo——to……",
-      "en": "Totodile: Tooo-to...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 92,
-      "zh": "虽然刚才那几下{NEWLINE}根本称不得是舞蹈……",
-      "en": "Those moves just now could{NEWLINE}hardly be called dancing...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 93,
-      "zh": "但最后那几句话{NEWLINE}却说的非常有气势……",
-      "en": "But those last few lines{NEWLINE}had real presence...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 94,
-      "zh": "简直就像是联盟冠军一样！",
-      "en": "Just like a League Champion!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 95,
-      "zh": "小锯鳄『Tooo——to！{SCROLL}小锯鳄非常喜欢你！{NEWLINE}要收服小锯鳄作为同伴吗？",
-      "en": "Totodile: Tooo-to!{SCROLL}Totodile really likes you! Take{NEWLINE}Totodile as your partner?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 96,
-      "zh": "队伍已满,整理出空位再来吧。",
-      "en": "Your party is full. Make{NEWLINE}some room and come back.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 97,
-      "zh": "小锯鳄加入了队伍！",
-      "en": "Totodile joined your party!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 98,
-      "zh": "要给小锯鳄起昵称吗？{VAR:0200:0}",
-      "en": "Give Totodile a nickname?{VAR:0200:0}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 99,
-      "zh": "昵称叫{VAR:0101:1}{NEWLINE}可以吗？{VAR:0200:0}",
-      "en": "Name it {VAR:0101:1}. Is that OK?{VAR:0200:0}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl); Same zh as 0459 #89; English copied."
-    },
-    {
-      "id": 100,
-      "zh": "你等一下！",
-      "en": "Hold it right there!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 101,
-      "zh": "{VAR:0103:0}『怎么了吗？",
-      "en": "{VAR:0103:0}: What’s wrong?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "Same zh as 0541 #66; English copied."
-    },
-    {
-      "id": 102,
-      "zh": "小锯鳄大师是属于大家的舞蹈大师。",
-      "en": "Master Totodile is{NEWLINE}everybody’s dance master.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 103,
-      "zh": "你如果把舞蹈大师带走了,{NEWLINE}以后谁来指导我们跳舞啊。",
-      "en": "If you take the dance master away,{NEWLINE}who’s going to teach us to dance?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 104,
-      "zh": "{VAR:0103:0}『可是小锯鳄它{NEWLINE}愿意成为我的同伴,{CLEAR}而且我也想收服它。{CLEAR}希望你们不要阻止。",
-      "en": "{VAR:0103:0}: But Totodile wants to be{NEWLINE}my partner, and I want to catch{CLEAR}it too. I hope you won’t stop us.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "#104 polite / #105 blunt variant."
-    },
-    {
-      "id": 105,
-      "zh": "{VAR:0103:0}『可是小锯鳄它{NEWLINE}愿意成为我的同伴,{CLEAR}而且我也想收服它。{CLEAR}你们这样阻止不好吧？",
-      "en": "{VAR:0103:0}: But Totodile wants to{NEWLINE}be my partner, and I want to{CLEAR}catch it too. It’s not right for{CLEAR}you to stop us like this, is it?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 106,
-      "zh": "并不是只有不你一个人{NEWLINE}想成为舞蹈大师的训练家,{CLEAR}来这里跳舞的人们都有这个想法。",
-      "en": "You’re not the only Trainer who{NEWLINE}wants to make the dance master{CLEAR}their own. Everyone who comes{CLEAR}here to dance feels the same way.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 107,
-      "zh": "但是并没有人能拿出{NEWLINE}足够的实力让其他人信服。{CLEAR}所以即使你跟小锯鳄大师互相欣赏,{CLEAR}你身为训练家的实力也得足够强{CLEAR}我们才能允许你带走小锯鳄大师。",
-      "en": "But nobody has shown enough{NEWLINE}strength to convince the others.{CLEAR}So even if you and Master Totodile{CLEAR}admire each other, you have to be{CLEAR}a strong enough Trainer before we{CLEAR}let you take Master Totodile away.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 108,
-      "zh": "向我们展示实力的方法也很简单。",
-      "en": "Showing us your strength is simple.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 109,
-      "zh": "你能1对2击败我们两个就可以了！",
-      "en": "Just beat both of us, one against two!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 110,
-      "zh": "厉害……实在是太厉害了……",
-      "en": "Amazing... That was just too amazing...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 111,
-      "zh": "我从来没见过你这么厉害的训练家。",
-      "en": "I’ve never seen a{NEWLINE}Trainer as strong as you.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 112,
-      "zh": "我们认可你了,{NEWLINE}你有资格成为舞蹈大师的主人。",
-      "en": "We accept you. You’re worthy of{NEWLINE}being the dance master’s Trainer.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 113,
-      "zh": "请照顾好舞蹈大师,{NEWLINE}带它一起变强吧。",
-      "en": "Please take good care of the dance{NEWLINE}master, and grow strong together.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 114,
-      "zh": "跳舞的小锯鳄大师才是真正的快乐,{NEWLINE}你要经常放他出来跳跳舞啊！",
-      "en": "Master Totodile is only truly{NEWLINE}happy when it’s dancing. Let{CLEAR}it out to dance often, okay?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 115,
-      "zh": "小锯鳄非常喜欢你！{NEWLINE}要收服小锯鳄作为同伴吗？",
-      "en": "Totodile really likes you! Take{NEWLINE}Totodile as your partner?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 116,
-      "zh": "那个满金市道馆的小茜,{NEWLINE}用大奶罐把我打得一败涂地。{CLEAR}可恶啊……真是噩梦一样的战斗。{SCROLL}",
-      "en": "Whitney of the Goldenrod Gym crushed{NEWLINE}me with her Miltank. Dammit...{CLEAR}That battle was a nightmare.{SCROLL}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 117,
-      "zh": "其实你可以这样对付大奶罐",
-      "en": "Here’s how to beat Miltank",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "Menu #117 tactics → #120/#121/#124; #118 encouragement → #122/#123/#125; #119 not my problem.",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 118,
-      "zh": "别灰心,继续努力总会赢的",
-      "en": "Keep trying, you’ll win",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 119,
-      "zh": "不关我事",
-      "en": "Not my problem",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 120,
-      "zh": "{VAR:0103:0}『你如果无法正面击败大奶罐,{NEWLINE}可以换个战术试试。{CLEAR}比如剧毒保护拖回合、{CLEAR}睡眠加种子吸血、{CLEAR}沙穴灭歌或者气腰返拳,{CLEAR}其实对战中有很多以弱胜强的打法。",
-      "en": "{VAR:0103:0}: If you can’t beat Miltank{NEWLINE}head-on, try a different strategy.{CLEAR}Stall with Toxic and Protect, Sleep{CLEAR}plus Leech Seed, Arena Trap with{CLEAR}Perish Song, or Focus Sash with{CLEAR}Counter. There are lots of ways{CLEAR}for the weak to beat the strong.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "Tactics: 剧毒保护 Toxic+Protect, 睡眠加种子 Sleep+Leech Seed, 沙穴灭歌 Arena Trap+Perish Song, 气腰返拳 Focus Sash+Counter."
-    },
-    {
-      "id": 121,
-      "zh": "你说这么多,{NEWLINE}不过都是纸上谈兵罢了。{CLEAR}我可是拥有徽章的训练家,{CLEAR}你要是想教我对战的话,{CLEAR}等拿到正式徽章再说吧。",
-      "en": "That’s all just talk on paper. I’m a{NEWLINE}Trainer who actually has Badges. If{CLEAR}you want to teach me about battling,{CLEAR}wait until you’ve got the Plain Badge.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 122,
-      "zh": "{VAR:0103:0}『不要因为一时的挫败{NEWLINE}就产生恐惧感,{CLEAR}你要相信通过自己的不断努力,{CLEAR}终能翻过那些曾经阻在面前的高山。",
-      "en": "{VAR:0103:0}: Don’t let one setback{NEWLINE}make you afraid. Believe that with{CLEAR}steady effort, you can climb over the{CLEAR}mountains that once stood in your way.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 123,
-      "zh": "虽然你说了这么多鼓励我的话,{NEWLINE}但是仔细一想,{CLEAR}这些都是没有内容的空话,{CLEAR}对我打败小茜并没有什么帮助。",
-      "en": "You said all those encouraging{NEWLINE}things, but thinking it over,{CLEAR}they’re just empty words. They{CLEAR}don’t help me beat Whitney at all.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 124,
-      "zh": "你拿着的那个,{NEWLINE}不是满金道馆的正式徽章吗！？{CLEAR}你居然能打败那个大魔王小茜。{SCROLL}谢谢你刚才给我提出的战术建议,{NEWLINE}我会仔细研究这些战术,{CLEAR}争取找出打败小茜的方法。{CLEAR}作为给我建议的谢礼,{CLEAR}这个你就收下吧。",
-      "en": "That thing you’re holding... Isn’t that{NEWLINE}the Goldenrod Gym’s Plain Badge?! You{CLEAR}actually beat that demon queen Whitney.{SCROLL}Thanks for the strategy tips{NEWLINE}earlier. I’ll study them carefully{CLEAR}and find a way to beat Whitney.{CLEAR}Take this as thanks for the advice.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 125,
-      "zh": "你拿着的那个,{NEWLINE}不是满金道馆的正式徽章吗！？{CLEAR}你居然能打败那个大魔王小茜。{SCROLL}多亏你这样的过来人给我鼓励,{NEWLINE}我确实是因为一次失败{CLEAR}而反应过头了。{SCROLL}仔细想想只要我再把{NEWLINE}精灵的等级锻炼得高一点,{CLEAR}完全有可能战胜大奶罐。{CLEAR}作为让我重拾信心的谢礼,{CLEAR}这个你就收下吧。",
-      "en": "That thing you’re holding... Isn’t that{NEWLINE}the Goldenrod Gym’s Plain Badge?! You{CLEAR}actually beat that demon queen Whitney.{SCROLL}Thanks to someone who’s been{NEWLINE}there cheering me on, I see I{CLEAR}overreacted to a single loss.{SCROLL}If I just train my Pokémon to a{NEWLINE}higher level, I can totally beat{CLEAR}Miltank. Take this as thanks for{CLEAR}giving me my confidence back.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 126,
-      "zh": "我一定能找到{NEWLINE}打败小茜大奶罐的办法！",
-      "en": "I’ll find a way to beat{NEWLINE}Whitney’s Miltank for sure!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 127,
-      "zh": "哈哈,经过我的不懈努力,{NEWLINE}终于拿到正式徽章了！",
-      "en": "Ha ha, thanks to my hard work,{NEWLINE}I finally got the Plain Badge!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 128,
-      "zh": "向日种子『Suuu——ker！",
-      "en": "Sunkern: Suuu-ker!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 129,
-      "zh": "虽然我跳舞的才能很一般,{NEWLINE}但如果整一张网红锥子脸,{CLEAR}再通过媒体吹捧一下,{CLEAR}应该也能出道当明星吧？",
-      "en": "My dancing talent is pretty average.{NEWLINE}But if I got one of those influencer{CLEAR}V-line faces and had the media hype me{CLEAR}up, I could still debut as a star, right?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "网红锥子脸 → ‘influencer V-line face’."
-    },
-    {
-      "id": 130,
-      "zh": "我的梦想是开一间舞蹈学校。{NEWLINE}为此我到处拜师学习跳舞,{CLEAR}希望将来有一天,{CLEAR}我的努力能有所回报。",
-      "en": "My dream is to open a dance school.{NEWLINE}So I go everywhere learning{CLEAR}dance from masters. I hope{CLEAR}someday all my hard work pays off.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 131,
-      "zh": "暴飞龙『Saaa——la！",
-      "en": "Salamence: Saaa-la!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "Ruby & Sapphire childhood Salamence incident (Pokémon Adventures). 路比 = Ruby, 沙菲雅 = Sapphire, Ruby's father 千里 = Norman."
-    },
-    {
-      "id": 132,
-      "zh": "路比『凶什么凶！{NEWLINE}你要是敢再靠近一步,{CLEAR}当心我揍你啊！",
-      "en": "Ruby: What are you growling at?! Come{NEWLINE}one step closer and I’ll punch you!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 133,
-      "zh": "沙菲雅『我觉得还是{NEWLINE}不要激怒它比较好吧……",
-      "en": "Sapphire: I think we’d{NEWLINE}better not make it angry...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 134,
-      "zh": "路比『不用担心,{NEWLINE}对付这种凶暴的精灵,{CLEAR}只要比它更凶就可以了。",
-      "en": "Ruby: Don’t worry. With a vicious{NEWLINE}Pokémon like this, you just{CLEAR}have to be even more vicious.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 135,
-      "zh": "路比『可恶啊,居然真的攻击我。{NEWLINE}不过我才不怕你呢！{CLEAR}看招！",
-      "en": "Ruby: Dammit, it actually attacked me.{NEWLINE}But I’m not scared of you! Take this!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 136,
-      "zh": "{VAR:FF01:200}暴飞龙『Saaa——la！！！{VAR:FF01:100}{SCROLL}暴飞龙更加生气了！",
-      "en": "{VAR:FF01:200}Salamence: Saaa-la!!!{VAR:FF01:100}{SCROLL}Salamence got even angrier!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "SIZE-200% cry split with {NEWLINE} to fit at 2x. Double-size shout: one line per page (a line break inside {VAR:FF01:200} overflows the box and corrupts memory; heap_audit.md)."
-    },
-    {
-      "id": 137,
-      "zh": "沙菲雅『呀——！好可怕啊……",
-      "en": "Sapphire: Eeek! It’s so scary...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 138,
-      "zh": "路比『别害怕,我会保护你的。",
-      "en": "Ruby: Don’t be scared.{NEWLINE}I’ll protect you.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 139,
-      "zh": "路比『咳咳……这家伙力气好大……",
-      "en": "Ruby: *cough* *cough*...{NEWLINE}This thing is so strong...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 140,
-      "zh": "沙菲雅『呜呜呜……都怪我,{NEWLINE}非要到草丛里玩才会弄成这样。",
-      "en": "Sapphire: *sob*... It’s all my fault{NEWLINE}for wanting to play in the tall grass.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 141,
-      "zh": "{VAR:0103:0}『暴飞龙！看这边！",
-      "en": "{VAR:0103:0}: Salamence! Over here!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 142,
-      "zh": "{VAR:0103:0}『不要欺负小孩子,{NEWLINE}有什么冲我来吧。",
-      "en": "{VAR:0103:0}: Don’t pick on little kids.{NEWLINE}If you want a fight, come at me.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 143,
-      "zh": "{VAR:0103:0}『你们没事吧？",
-      "en": "{VAR:0103:0}: Are you two all right?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 144,
-      "zh": "路比『嘿嘿……小小的暴飞龙{NEWLINE}奈何不了我的……",
-      "en": "Ruby: Heh heh... A tiny Salamence{NEWLINE}like that can’t do anything to me...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 145,
-      "zh": "沙菲雅『可是……你的额头都流血了,{NEWLINE}呜呜呜……都是我不好……",
-      "en": "Sapphire: But... your forehead is{NEWLINE}bleeding. *sob*... It’s all my fault...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 146,
-      "zh": "路比『啊,不。{NEWLINE}这点伤对于我来说很稀松平常啦。{CLEAR}你不用放在心上。",
-      "en": "Ruby: Ah, no. A scratch like this is{NEWLINE}nothing for me. Don’t worry about it.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 147,
-      "zh": "{VAR:0103:0}『沙菲雅的父亲{NEWLINE}正准备带沙菲雅赶火车,{CLEAR}你的父亲千里先生{CLEAR}也说要你们快点回去,{CLEAR}所以还是别再外面继续逛了。",
-      "en": "{VAR:0103:0}: Sapphire’s dad is getting{NEWLINE}ready to take her to catch a train, and{CLEAR}your dad, Norman, says you both need{CLEAR}to come back quickly. So you’d better{CLEAR}not keep wandering around out here.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 148,
-      "zh": "{VAR:0103:0}『你的头确实受伤了,{NEWLINE}还是快回家包扎一下比较好。",
-      "en": "{VAR:0103:0}: Your head really{NEWLINE}is hurt. You’d better hurry{CLEAR}home and get it bandaged.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 149,
-      "zh": "路比『呀,爸爸催的话可就不好了……{NEWLINE}说不定还会被揍一顿。",
-      "en": "Ruby: Uh-oh, it’s bad if Dad’s calling{NEWLINE}for us... I might even get a beating.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": " | D-1789: user approved source-faithful wording during full English review."
-    },
-    {
-      "id": 150,
-      "zh": "路比『沙菲雅,咱们还是快点回去吧！",
-      "en": "Ruby: Sapphire, we’d{NEWLINE}better hurry back!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 151,
-      "zh": "我经常在饲育屋寄养精灵,{NEWLINE}对于精灵们在饲育屋{CLEAR}生蛋繁衍的事很有心得。{CLEAR}如果你在这方面有什么困惑,{CLEAR}我都可以帮你解答哦。",
-      "en": "I leave Pokémon at the Day-Care{NEWLINE}all the time, so I know a lot{CLEAR}about Pokémon laying Eggs there.{CLEAR}If you have any questions about{CLEAR}that, I can answer them for you.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 152,
-      "zh": "如何让精灵在饲育屋生蛋",
-      "en": "How to get an Egg",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 153,
-      "zh": "蛋里精灵的形态和能力",
-      "en": "Form and stats of the baby",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 154,
-      "zh": "哪些道具对生蛋有影响",
-      "en": "Items that affect Eggs",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 155,
-      "zh": "我没有什么要问的了",
-      "en": "No more questions",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 156,
-      "zh": "将性别不同、蛋组相同的两只精灵{NEWLINE}同时寄养在饲育屋,{CLEAR}过段时间之后{CLEAR}就有可能会生出一个蛋哦！{SCROLL}至于什么是蛋组嘛……{NEWLINE}这个就很复杂了,我知道的也很有限。{CLEAR}据说若叶镇有一位空木博士{CLEAR}对这方面挺有研究,{CLEAR}你可以找他去问问。",
-      "en": "Leave two Pokémon of different{NEWLINE}genders from the same Egg Group{CLEAR}at the Day-Care together, and{CLEAR}after a while an Egg might appear!{SCROLL}As for what an Egg Group is... That’s{NEWLINE}really complicated, and I don’t know{CLEAR}much. They say a Professor Elm in{CLEAR}New Bark Town has done a lot of{CLEAR}research on it. You could go ask him.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 157,
-      "zh": "蛋里精灵的形态会与母亲一致,{NEWLINE}如果蛋里精灵的父亲{CLEAR}有能够遗传给子代的招式,{CLEAR}那么蛋里精灵在孵化时{CLEAR}就可以遗传到父亲的招式。{SCROLL}此外子代的3项个体值遗传自亲代,{NEWLINE}从父母中随机选择。{CLEAR}另外3项则是随机的。",
-      "en": "The Pokémon in the Egg will take{NEWLINE}its mother’s form. If the father{CLEAR}knows moves that can be passed{CLEAR}down, the baby can inherit the{CLEAR}father’s moves when it hatches.{SCROLL}Also, the baby inherits 3 of its IVs{NEWLINE}from its parents, chosen at random from{CLEAR}either one. The other 3 are random.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "个体值 = IVs; 3 inherited from parents (hack text)."
-    },
-    {
-      "id": 158,
-      "zh": "我所知道的能影响生蛋的道具有{NEWLINE}不变石和红线。{CLEAR}携带不变石的精灵生蛋时,{CLEAR}子代的性格有一半概率{CLEAR}会遗传自携带者。{CLEAR}携带红线的精灵生蛋时,{CLEAR}子代有5项个体值会遗传自双亲。",
-      "en": "The items I know of that affect Eggs{NEWLINE}are the Everstone and the Destiny{CLEAR}Knot. If a parent holds an Everstone,{CLEAR}there’s a 50% chance the baby gets{CLEAR}that parent’s Nature. If a parent{CLEAR}holds a Destiny Knot, the baby{CLEAR}inherits 5 IVs from the two parents.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 159,
-      "zh": "路比『哎呀,没事啦。{NEWLINE}我还有好多好玩的地方{CLEAR}想带沙菲雅去看看呢。",
-      "en": "Ruby: Aw, it’s nothing. There{NEWLINE}are still lots of fun places{CLEAR}I want to show Sapphire.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 160,
-      "zh": "沙菲雅『嗯,我也觉得快回去{NEWLINE}给你包扎一下伤口比较要紧。",
-      "en": "Sapphire: Mm, I think it’s{NEWLINE}more important to go back{CLEAR}and get your wound bandaged.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 161,
-      "zh": "路比『那我们先走啦大哥哥,{NEWLINE}刚才谢谢你出手帮忙啊。",
-      "en": "Ruby: We’re heading off now, mister.{NEWLINE}Thanks for helping us out back there!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "Male-player variant (大哥哥); #162 female (大姐姐)."
-    },
-    {
-      "id": 162,
-      "zh": "路比『那我们先走啦大姐姐,{NEWLINE}刚才谢谢你出手帮忙啊。",
-      "en": "Ruby: We’re heading off now, miss.{NEWLINE}Thanks for helping us out back there!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 163,
-      "zh": "不要让任何人靠近满金市,{NEWLINE}兄弟们给我冲啊！",
-      "en": "Don’t let anyone near{NEWLINE}Goldenrod City! Charge, boys!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "#163-#167 Radio Tower takeover (Team Rocket blockade on Route 34, Bugsy holds them off)."
-    },
-    {
-      "id": 164,
-      "zh": "哦——！！！",
-      "en": "Yeaaah!!!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 165,
-      "zh": "阿笔『大家挺住！{NEWLINE}不要放跑任何一个火箭队！",
-      "en": "Bugsy: Hold on, everyone! Don’t let a{NEWLINE}single Team Rocket member get away!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 166,
-      "zh": "{VAR:0103:0}『这里就交给阿笔馆主吧,{NEWLINE}我还是先去广播塔找到坂木要紧。",
-      "en": "{VAR:0103:0}: I’ll leave this to{NEWLINE}Bugsy. Finding Giovanni at{CLEAR}the Radio Tower comes first.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 167,
-      "zh": "我正在跟向日种子训练呢,{NEWLINE}突然就冲出来一大帮火箭队,{CLEAR}真是吓死个人。{CLEAR}还好阿笔馆主带人即时赶到,{CLEAR}不然我的向日种子可能就被抢走了。",
-      "en": "I was training with my Sunkern when a{NEWLINE}whole gang of Team Rocket burst out.{CLEAR}It scared me half to death. Luckily{CLEAR}Bugsy and his people got here in time,{CLEAR}or my Sunkern might have been stolen.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    }
-  ]
+ "narc": "a027",
+ "bank": 377,
+ "source": "work/extract/v4/a027/0377.json",
+ "strings": [
+  {
+   "id": 0,
+   "zh": "你身上带着的那个蛋,{NEWLINE}看起来快要孵化了。",
+   "en": "That Egg you’re carrying{NEWLINE}looks like it’s about to hatch.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 1,
+   "zh": "阿金『哦？要孵化了吗？{NEWLINE}其实这个蛋是空木博士送给我的,{CLEAR}我带着它走了这么久都没反应,{CLEAR}还以为它是颗坏蛋,不会孵化了呢。",
+   "en": "Gold: Oh? It’s going to hatch? Actually,{NEWLINE}Professor Elm gave me this Egg. I’ve{CLEAR}carried it around for so long without{CLEAR}anything happening, I figured it{CLEAR}was a dud that would never hatch.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 2,
+   "zh": "哈哈,不会是坏蛋的。{NEWLINE}以我多年的经验,{CLEAR}你再带它多走几步{CLEAR}就差不多能孵化出精灵宝宝了。",
+   "en": "Ha ha, it’s no dud. From my{NEWLINE}years of experience, if you walk{CLEAR}with it a few more steps, a baby{CLEAR}Pokémon should hatch out soon.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 3,
+   "zh": "阿金『那可真是太好了,{NEWLINE}我这就跑起来,Go,Go,Go！",
+   "en": "Gold: That’s awesome! I’ll start{NEWLINE}running right now. Go, go, go!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 4,
+   "zh": "水晶『当心一点！{NEWLINE}你这样横冲直撞地到处乱跑{CLEAR}把蛋给摔了可怎么办！",
+   "en": "Crystal: Be careful! If you{NEWLINE}go charging around like that{CLEAR}and drop the Egg, what then?!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 5,
+   "zh": "阿金『哎呀,学习委员就是啰嗦啦。{NEWLINE}我保证这颗蛋不会有事的。",
+   "en": "Gold: Ugh, the Class Rep is such a{NEWLINE}nag. I promise the Egg will be fine.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 6,
+   "zh": "水晶『那可不行,很多危险都是{NEWLINE}因为麻痹大意才会发生的。{CLEAR}在孵化精灵的关键时刻,你更要……",
+   "en": "Crystal: That’s not good enough.{NEWLINE}Lots of accidents happen because{CLEAR}people get careless. At the crucial{CLEAR}moment of hatching a Pokémon,{CLEAR}you need to be even more...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 7,
+   "zh": "阿金『不听不听,王八念经。{NEWLINE}我要用最快的方式孵化这颗蛋,{CLEAR}才不听你的呢。拜拜咯！",
+   "en": "Gold: La la la, not listening!{NEWLINE}You sound like a turtle chanting{CLEAR}sutras! I’m hatching this Egg{CLEAR}the fastest way there is, and I’m{CLEAR}not listening to you. Bye-bye!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "不听不听,王八念经 (childish taunt) → ‘La la la, not listening! You sound like a turtle chanting sutras!’"
+  },
+  {
+   "id": 8,
+   "zh": "水晶『希望阿金孵化出的精灵{NEWLINE}性格不要像他这么冒失吧。",
+   "en": "Crystal: I hope the Pokémon{NEWLINE}Gold hatches doesn’t end{CLEAR}up as reckless as he is.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 9,
+   "zh": "水晶『{VAR:0103:0}前辈,你也来啦！",
+   "en": "Crystal: {VAR:0103:0}, you’re here too!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 10,
+   "zh": "哦哦！真的是冠军大人！{NEWLINE}瞧我这老眼昏花的,{CLEAR}明明感觉很像却又不敢认。",
+   "en": "Oh ho! It really is the Champion! Look{NEWLINE}at me with my old eyes. You looked so{CLEAR}familiar, but I didn’t dare say so.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 11,
+   "zh": "水晶,这位是……？",
+   "en": "Crystal, and who is this...?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 12,
+   "zh": "水晶『咦？爷爷,你没有认出来吗？{NEWLINE}这位就是联盟冠军{VAR:0103:0}呀！",
+   "en": "Crystal: Huh? Grandpa, didn’t{NEWLINE}you recognize them? This is{CLEAR}League Champion {VAR:0103:0}!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 13,
+   "zh": "水晶『爷爷,{VAR:0103:0}前辈跟我和阿金{NEWLINE}一起在城都地区旅行锻炼呢。",
+   "en": "Crystal: Grandpa, {VAR:0103:0} is traveling{NEWLINE}around Johto with Gold and me to train.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 14,
+   "zh": "嗯嗯,能跟打倒火箭队的英雄一起旅行,{NEWLINE}你可要把握住机会好好向人家学习。",
+   "en": "Mm-hmm. Traveling with the hero{NEWLINE}who defeated Team Rocket...{CLEAR}Make the most of this chance{CLEAR}and learn all you can from them.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 15,
+   "zh": "水晶『那当然,您就放心吧。",
+   "en": "Crystal: Of course. Don’t you worry.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 16,
+   "zh": "水晶『{VAR:0103:0}前辈,这位是我爷爷,{NEWLINE}和我奶奶一起在这里经营饲育屋。",
+   "en": "Crystal: {VAR:0103:0}, this is{NEWLINE}my grandpa. He runs the{CLEAR}Day-Care here with my grandma.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 17,
+   "zh": "水晶『{VAR:0103:0}前辈,跟我来,{NEWLINE}我带你参观一下爷爷奶奶的饲育屋。",
+   "en": "Crystal: {VAR:0103:0}, come with me.{NEWLINE}I’ll show you around Grandpa{CLEAR}and Grandma’s Day-Care.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 18,
+   "zh": "{VAR:0103:0}『我正要去满金市,刚好路过。",
+   "en": "{VAR:0103:0}: I’m on my way to Goldenrod{NEWLINE}City. I was just passing through.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 19,
+   "zh": "{VAR:0103:0}『从桐树林去满金市,{NEWLINE}这里是必经之路嘛。",
+   "en": "{VAR:0103:0}: You have to come{NEWLINE}through here to get from Ilex{CLEAR}Forest to Goldenrod City.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 20,
+   "zh": "您是冠军大人吧？{NEWLINE}我是负责这一带治安的警察。{CLEAR}您如果有时间的话{CLEAR}能指导我一下对战技巧吗？",
+   "en": "You’re the Champion, aren’t you?{NEWLINE}I’m the police officer in charge{CLEAR}of keeping the peace around{CLEAR}here. If you have time, could you{CLEAR}give me some battle pointers?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 21,
+   "zh": "您是想要单打还是双打？",
+   "en": "Would you like singles or doubles?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 22,
+   "zh": "单打",
+   "en": "Singles",
+   "status": "draft",
+   "origin": "tm_v3",
+   "notes": "v3 TM: 6 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 23,
+   "zh": "双打",
+   "en": "Doubles",
+   "status": "draft",
+   "origin": "tm_v3",
+   "notes": "v3 TM: 5 source(s); other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl)",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 24,
+   "zh": "先不打了",
+   "en": "Not now",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 3 source(s); other variants: 3 more v3 TM candidates (tm_v4_matches.jsonl)",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 25,
+   "zh": "身为警察的我每天都有刻苦训练,{NEWLINE}您可不要大意了。",
+   "en": "As a police officer, I train hard{NEWLINE}every day. Don’t let your guard down!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 26,
+   "zh": "双打要有两只精灵才行,{NEWLINE}你只带着1只精灵怎么打啊。",
+   "en": "You need two Pokémon for a{NEWLINE}double battle. How are you{CLEAR}going to battle with only one?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 27,
+   "zh": "皮宝宝『Clee——fa！",
+   "en": "Cleffa: Clee-fa!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 28,
+   "zh": "风速狗『Ar——caaa！",
+   "en": "Arcanine: Ar-caaa!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 29,
+   "zh": "哎哟,我从那边的台阶上{NEWLINE}跳下来的时候不小心扭到了脚,{CLEAR}请问你能帮我带一瓶伤药来吗？",
+   "en": "Ouch, I twisted my ankle jumping{NEWLINE}down from those steps over there.{CLEAR}Could you bring me a Potion?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 30,
+   "zh": "把身上的伤药给他吗？",
+   "en": "Give him your Potion?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 31,
+   "zh": "呀,谢谢你的伤药。{NEWLINE}用过之后脚终于不那么疼了。{SCROLL}其实我是为了跟舞蹈大师斗舞{NEWLINE}才会在这里蹦来跳去练习的。{CLEAR}但以我现在这个样子{CLEAR}短时间内应该是没法再跳舞了。{SCROLL}如果你对舞蹈感兴趣{NEWLINE}可以沿着34号路的水路往南走,{CLEAR}水路尽头有一片隐秘的树林,{CLEAR}经常会有训练家去那里{CLEAR}跟舞蹈大师斗舞。",
+   "en": "Oh, thanks for the Potion. My{NEWLINE}ankle finally doesn’t hurt so much.{SCROLL}Actually, I was hopping around here{NEWLINE}practicing for a dance-off with the{CLEAR}dance master. But the way I am now,{CLEAR}I won’t be dancing again for a while.{SCROLL}If you’re into dancing, follow{NEWLINE}the water on Route 34 south. At{CLEAR}the end of it there’s a hidden{CLEAR}grove where Trainers often go for{CLEAR}dance-offs with the dance master.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 32,
+   "zh": "我要是也能像舞蹈大师那样{NEWLINE}跳出跃动感十足的舞步就好了。",
+   "en": "If only I could dance with steps{NEWLINE}as bouncy as the dance master’s.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 33,
+   "zh": "这里是３４号道路{NEWLINE}南　桧皮镇",
+   "en": "Rt. 34{NEWLINE}South to Azalea Town",
+   "status": "draft",
+   "origin": "us",
+   "notes": "US 0384/33",
+   "category": "sign"
+  },
+  {
+   "id": 34,
+   "zh": "贴心的告示牌！{SCROLL}在由此向北的{NEWLINE}满金市广播塔{CLEAR}正在进行礼物馈赠活动！{SCROLL}回答问题{NEWLINE}赢收音机！",
+   "en": "Trainer Tips{SCROLL}North to Goldenrod City{NEWLINE}The Radio Tower at Goldenrod is giving{CLEAR}away Radio Cards.{SCROLL}Answer their questions and receive a{NEWLINE}Radio Card!",
+   "status": "draft",
+   "origin": "us",
+   "notes": "US 0384/34"
+  },
+  {
+   "id": 35,
+   "zh": "这里是培育屋{NEWLINE}培育你的精灵",
+   "en": "Pokémon Day Care{NEWLINE}Let us raise your Pokémon for you!",
+   "status": "draft",
+   "origin": "us",
+   "notes": "US 0384/35"
+  },
+  {
+   "id": 36,
+   "zh": "您好,舞蹈大师小锯鳄。{NEWLINE}我是练习过两年半舞蹈的练习生,{CLEAR}下面我将表演一段原创舞蹈,{CLEAR}来跟您的跳跃舞步一较高低。",
+   "en": "Hello, Dance Master Totodile. I’m a{NEWLINE}trainee who has practiced dancing{CLEAR}for two and a half years. I will now{CLEAR}perform an original dance and see how it{CLEAR}stacks up against your jumping steps.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "Cai Xukun meme scene: #36 ‘trainee who practiced for two and a half years’ and #37 ‘Music!’ translated; #38/#39 (a lyric of the song 只因你太美) replaced with hum lines per the song rule D-0368; #40/#42 keep the chicken→Torchic pun."
+  },
+  {
+   "id": 37,
+   "zh": "Music！",
+   "en": "Music!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 38,
+   "zh": "[zh redacted: song lyrics; sha256:3dc5bc68c9831d03b91bae5b4792fb9e51fd6ccc3f4cb70884635a9c2cb4c077]",
+   "en": "♪ (belts out a viral idol hit,{NEWLINE}flapping like a chicken!) ♪",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "zh redacted: song lyrics (zh_redact.py)"
+  },
+  {
+   "id": 39,
+   "zh": "[zh redacted: song lyrics; sha256:e6bf4c2a01f2921a8007d8724069bc2dfdf1dcec0394f4b21a6629b93c600361]",
+   "en": "♪ (hits the chorus again,{NEWLINE}even more chicken!) ♪",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "zh redacted: song lyrics (zh_redact.py)"
+  },
+  {
+   "id": 40,
+   "zh": "怎么样,舞蹈大师,{NEWLINE}我这支为火稚鸡编排的舞蹈{CLEAR}有没有惊艳到你啊？",
+   "en": "So how about it, Dance Master?{NEWLINE}Did this dance I choreographed{CLEAR}for Torchic blow you away?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 41,
+   "zh": "小锯鳄『Tooo——to！{SCROLL}小锯鳄摇了摇头。",
+   "en": "Totodile: Tooo-to!{SCROLL}Totodile shook its head.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 42,
+   "zh": "哎？不满意吗？{NEWLINE}可我明明跳出了火稚鸡的感觉。",
+   "en": "Huh? Not good enough? But I totally{NEWLINE}captured the essence of Torchic.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 43,
+   "zh": "舞蹈大师对你这样{NEWLINE}低端的表演没兴趣啦,{CLEAR}往后退,来看我的舞蹈吧。",
+   "en": "The dance master has no interest in{NEWLINE}a low-rent performance like yours.{CLEAR}Step back and watch my dance.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 44,
+   "zh": "行,你有本事你就试试。{NEWLINE}我就不信你能跳出什么花来。",
+   "en": "Fine, show me what you’ve got. I{NEWLINE}doubt you can pull off anything fancy.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 45,
+   "zh": "小锯鳄大师,我可是在{NEWLINE}缘朱市的歌舞连乘学习过,{CLEAR}我的舞蹈风格是传统的慢节奏舞,{CLEAR}跟你的活泼风格完全不同哦。{SCROLL}音乐起！",
+   "en": "Master Totodile, I studied at the{NEWLINE}Ecruteak Dance Theater. My style{CLEAR}is slow, traditional dance, totally{CLEAR}different from your lively style.{SCROLL}Cue the music!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 46,
+   "zh": "哦哦,冠军大人！{NEWLINE}告诉你{CLEAR}我和老婆子的电话号码吧。{SCROLL}这样就能随时通知你{NEWLINE}寄养在这的精灵的近况了。{SCROLL}",
+   "en": "Oh ho, Champion! Let me give{NEWLINE}you my number and the missus’s.{SCROLL}That way we can let you know how the{NEWLINE}Pokémon you leave with us are doing.{SCROLL}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "US 0384/46"
+  },
+  {
+   "id": 47,
+   "zh": "{VAR:0103:0}把培育屋夫妇{NEWLINE}登录到了手机中！",
+   "en": "{VAR:0103:0} registered the Day-Care Couple{NEWLINE}in the Pokégear!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "US 0384/47; ext-review RB-D08"
+  },
+  {
+   "id": 48,
+   "zh": "{VAR:0103:0}把培育屋夫妇{NEWLINE}登录到了手机中！",
+   "en": "{VAR:0103:0} registered the Day-Care Couple{NEWLINE}in the Pokégear!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "US 0384/48; ext-review RB-D08"
+  },
+  {
+   "id": 49,
+   "zh": "把精灵寄养在我们这,{NEWLINE}你可以随时来个电话。{SCROLL}孙女送的手机{NEWLINE}终于派上用场,{CLEAR}我很开心呢。",
+   "en": "Call us from time to time when you{NEWLINE}give us your Pokémon to raise.{SCROLL}I’ll be happy to have a use for this{NEWLINE}Pokégear my grandchild gave me.{SCROLL}",
+   "status": "draft",
+   "origin": "us",
+   "notes": "US 0384/49"
+  },
+  {
+   "id": 50,
+   "zh": "嘿嘿,有没有被我的舞姿给惊艳到啊？",
+   "en": "Heh heh, weren’t you{NEWLINE}blown away by my dancing?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 51,
+   "zh": "什么嘛,这么挑剔。{NEWLINE}那你跳一段舞给我们看看啊。",
+   "en": "What, you’re so picky! Then{NEWLINE}why don’t you dance for us?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 52,
+   "zh": "小锯鳄『Tooo——to！",
+   "en": "Totodile: Tooo-to!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 53,
+   "zh": "啊——这……！{NEWLINE}这欢快的舞步,{CLEAR}敏捷的身手,{CLEAR}可爱的叫声……",
+   "en": "Whoa... This...! Those{NEWLINE}cheerful steps, those nimble{CLEAR}moves, that adorable cry...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 54,
+   "zh": "真是让人大开眼界的舞姿。{NEWLINE}我练了两年半舞蹈,{CLEAR}却没想到被小锯鳄大师给秒杀了。",
+   "en": "What an eye-opening dance. I{NEWLINE}practiced dancing for two and a{CLEAR}half years, and Master Totodile{CLEAR}wiped the floor with me in seconds.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 55,
+   "zh": "小锯鳄大师,我们服了,{NEWLINE}你是真正的舞蹈大师！",
+   "en": "Master Totodile, we give up!{NEWLINE}You’re a true dance master!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 56,
+   "zh": "要去跟小锯鳄斗舞试试吗？",
+   "en": "Go have a dance-off with Totodile?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 57,
+   "zh": "{VAR:0103:0}『请让一下,{NEWLINE}我也想跟小锯鳄斗舞试试。",
+   "en": "{VAR:0103:0}: Excuse me. I’d like to{NEWLINE}have a dance-off with Totodile too.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 58,
+   "zh": "{VAR:0103:0}『这只小锯鳄很厉害嘛,{NEWLINE}不过我的舞姿肯定也不输它！",
+   "en": "{VAR:0103:0}: This Totodile is pretty{NEWLINE}good. But my dancing won’t lose to it!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 59,
+   "zh": "你也是舞蹈爱好者？",
+   "en": "You’re a dance lover too?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 60,
+   "zh": "你能跳出比小锯鳄更好的舞步？",
+   "en": "You think you can outdance Totodile?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 61,
+   "zh": "{VAR:0103:0}『我就是好奇想来试试。",
+   "en": "{VAR:0103:0}: I was just curious{NEWLINE}and wanted to give it a try.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 62,
+   "zh": "{VAR:0103:0}『放心吧,我的舞蹈{NEWLINE}肯定能打动小锯鳄！",
+   "en": "{VAR:0103:0}: Don’t worry, my dancing{NEWLINE}will definitely impress Totodile!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 63,
+   "zh": "行啊,既然你不怕被大师嫌弃,{NEWLINE}那就跳一段给我们看看吧。",
+   "en": "Fine. If you’re not afraid of the{NEWLINE}master turning its nose up at{CLEAR}you, go ahead and dance for us.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 64,
+   "zh": "你很有信心嘛,{NEWLINE}那就来跳一段给我们看看吧。",
+   "en": "You sure are confident. Then{NEWLINE}go ahead and dance for us.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 65,
+   "zh": "表演什么样的舞蹈呢？",
+   "en": "What kind of dance will you perform?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "Dance menu #66-#69 → copy (#73-#77) / moonwalk (#79-#83) / battle poses (#84-#95, catch Totodile) / give up (#70-#72). #88/#89 echo the player's own lines from earlier scenes."
+  },
+  {
+   "id": 66,
+   "zh": "模仿小锯鳄刚才的舞步",
+   "en": "Copy Totodile’s dance",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 67,
+   "zh": "来一段危险的太空步",
+   "en": "A daring moonwalk",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 68,
+   "zh": "摆对战时的指挥姿势",
+   "en": "Strike a battle-command pose",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 69,
+   "zh": "放弃吧",
+   "en": "Give up",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 70,
+   "zh": "{VAR:0103:0}『唉,算了。{NEWLINE}其实我根本不会跳舞……",
+   "en": "{VAR:0103:0}: Sigh, forget it.{NEWLINE}Actually, I can’t dance at all...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 71,
+   "zh": "什么嘛,就是个大骗子啊,{NEWLINE}亏我还有点期待。",
+   "en": "What, you’re just a big faker! And{NEWLINE}I was kind of looking forward to it.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 72,
+   "zh": "真是的,我还以为能看到{NEWLINE}好看的舞蹈呢。",
+   "en": "Seriously, I thought we’d get{NEWLINE}to see some good dancing.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 73,
+   "zh": "{VAR:0103:0}『小锯鳄,我要模仿{NEWLINE}你刚才的舞蹈,{CLEAR}你可看仔细了。",
+   "en": "{VAR:0103:0}: Totodile, I’m going to copy{NEWLINE}the dance you just did. Watch closely.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 74,
+   "zh": "{VAR:0103:0}『我跳完了,你感觉怎么样呢？",
+   "en": "{VAR:0103:0}: I’m done. What did you think?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 75,
+   "zh": "{VAR:0103:0}『哈哈,你的舞步也不怎么样嘛。{NEWLINE}我随随便便就能复刻了。",
+   "en": "{VAR:0103:0}: Ha ha, your steps{NEWLINE}aren’t that great either. I can{CLEAR}copy them without even trying.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 76,
+   "zh": "这也叫舞步复刻？你在糊弄鬼呢？",
+   "en": "You call that copying the steps?{NEWLINE}Who are you trying to fool?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 77,
+   "zh": "像你这种外行,就别来丢人现眼了。",
+   "en": "Amateurs like you shouldn’t come{NEWLINE}here and embarrass yourselves.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 78,
+   "zh": "{VAR:0103:0}『……",
+   "en": "{VAR:0103:0}: ...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "Same zh as 0484 #46; English copied."
+  },
+  {
+   "id": 79,
+   "zh": "{VAR:0103:0}『小锯鳄,我要来一段{NEWLINE}风靡一时的太空步舞蹈,{CLEAR}让你开开眼界！",
+   "en": "{VAR:0103:0}: Totodile, I’m going to do the{NEWLINE}moonwalk that once took the world{CLEAR}by storm. Prepare to be amazed!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 80,
+   "zh": "{VAR:0103:0}『等着若斯！",
+   "en": "{VAR:0103:0}: Just you watch!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "等着若斯: unclear (typo for 等着瞧?); written ‘Just you watch!’."
+  },
+  {
+   "id": 81,
+   "zh": "{VAR:0103:0}『看到了吗？{NEWLINE}我的太空步还不错吧？",
+   "en": "{VAR:0103:0}: See that? My{NEWLINE}moonwalk’s not bad, right?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 82,
+   "zh": "你当我们傻是不是？{NEWLINE}哪有往前走的太空步啊！",
+   "en": "Do you think we’re stupid?{NEWLINE}Who moonwalks forward?!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 83,
+   "zh": "你要是不会跳舞的话,{NEWLINE}就不要硬装好不好？",
+   "en": "If you can’t dance, then{NEWLINE}don’t pretend you can, okay?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 84,
+   "zh": "{VAR:0103:0}『其实我不怎么会跳舞,{NEWLINE}就展示一下平时经常摆的姿势吧。",
+   "en": "{VAR:0103:0}: Actually, I can’t{NEWLINE}really dance. I’ll just show you{CLEAR}the poses I strike all the time.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 85,
+   "zh": "{VAR:0103:0}『就决定是你了,{VAR:0100:1}！",
+   "en": "{VAR:0103:0}: I choose you, {VAR:0100:1}!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 86,
+   "zh": "{VAR:0103:0}『危险,快避开！",
+   "en": "{VAR:0103:0}: Look out, dodge it!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 87,
+   "zh": "{VAR:0103:0}『好机会,趁现在！",
+   "en": "{VAR:0103:0}: Here’s our chance, now!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 88,
+   "zh": "{VAR:0103:0}『我会在这里打倒你,{NEWLINE}不是打倒身为道馆馆主的你,{CLEAR}而是为了全地区的人们和精灵{CLEAR}打倒身为火箭队首领的你！",
+   "en": "{VAR:0103:0}: I’ll defeat you here. Not you{NEWLINE}as a Gym Leader, but you as the boss{CLEAR}of Team Rocket, for the sake of the{CLEAR}people and Pokémon of every region!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 89,
+   "zh": "{VAR:0103:0}『我是最强的训练家,{NEWLINE}所以绝不能在这里倒下,{CLEAR}不然这里的人们该去依靠谁呢！",
+   "en": "{VAR:0103:0}: I’m the strongest Trainer,{NEWLINE}so I can never fall here. Otherwise{CLEAR}who would the people here rely on?!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 90,
+   "zh": "{VAR:0103:0}『这就是我平时的样子,{NEWLINE}小锯鳄你觉得怎么样呢？",
+   "en": "{VAR:0103:0}: That’s what I’m like every{NEWLINE}day. What do you think, Totodile?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 91,
+   "zh": "小锯鳄『Tooo——to……",
+   "en": "Totodile: Tooo-to...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 92,
+   "zh": "虽然刚才那几下{NEWLINE}根本称不得是舞蹈……",
+   "en": "Those moves just now could{NEWLINE}hardly be called dancing...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 93,
+   "zh": "但最后那几句话{NEWLINE}却说的非常有气势……",
+   "en": "But those last few lines{NEWLINE}had real presence...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 94,
+   "zh": "简直就像是联盟冠军一样！",
+   "en": "Just like a League Champion!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 95,
+   "zh": "小锯鳄『Tooo——to！{SCROLL}小锯鳄非常喜欢你！{NEWLINE}要收服小锯鳄作为同伴吗？",
+   "en": "Totodile: Tooo-to!{SCROLL}Totodile really likes you! Take{NEWLINE}Totodile as your partner?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 96,
+   "zh": "队伍已满,整理出空位再来吧。",
+   "en": "Your party is full. Make{NEWLINE}some room and come back.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 97,
+   "zh": "小锯鳄加入了队伍！",
+   "en": "Totodile joined your party!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 98,
+   "zh": "要给小锯鳄起昵称吗？{VAR:0200:0}",
+   "en": "Give Totodile a nickname?{VAR:0200:0}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 99,
+   "zh": "昵称叫{VAR:0101:1}{NEWLINE}可以吗？{VAR:0200:0}",
+   "en": "Name it {VAR:0101:1}. Is that OK?{VAR:0200:0}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl); Same zh as 0459 #89; English copied."
+  },
+  {
+   "id": 100,
+   "zh": "你等一下！",
+   "en": "Hold it right there!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 101,
+   "zh": "{VAR:0103:0}『怎么了吗？",
+   "en": "{VAR:0103:0}: What’s wrong?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "Same zh as 0541 #66; English copied."
+  },
+  {
+   "id": 102,
+   "zh": "小锯鳄大师是属于大家的舞蹈大师。",
+   "en": "Master Totodile is{NEWLINE}everybody’s dance master.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 103,
+   "zh": "你如果把舞蹈大师带走了,{NEWLINE}以后谁来指导我们跳舞啊。",
+   "en": "If you take the dance master away,{NEWLINE}who’s going to teach us to dance?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 104,
+   "zh": "{VAR:0103:0}『可是小锯鳄它{NEWLINE}愿意成为我的同伴,{CLEAR}而且我也想收服它。{CLEAR}希望你们不要阻止。",
+   "en": "{VAR:0103:0}: But Totodile wants to be{NEWLINE}my partner, and I want to catch{CLEAR}it too. I hope you won’t stop us.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "#104 polite / #105 blunt variant."
+  },
+  {
+   "id": 105,
+   "zh": "{VAR:0103:0}『可是小锯鳄它{NEWLINE}愿意成为我的同伴,{CLEAR}而且我也想收服它。{CLEAR}你们这样阻止不好吧？",
+   "en": "{VAR:0103:0}: But Totodile wants to{NEWLINE}be my partner, and I want to{CLEAR}catch it too. It’s not right for{CLEAR}you to stop us like this, is it?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 106,
+   "zh": "并不是只有不你一个人{NEWLINE}想成为舞蹈大师的训练家,{CLEAR}来这里跳舞的人们都有这个想法。",
+   "en": "You’re not the only Trainer who{NEWLINE}wants to make the dance master{CLEAR}their own. Everyone who comes{CLEAR}here to dance feels the same way.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 107,
+   "zh": "但是并没有人能拿出{NEWLINE}足够的实力让其他人信服。{CLEAR}所以即使你跟小锯鳄大师互相欣赏,{CLEAR}你身为训练家的实力也得足够强{CLEAR}我们才能允许你带走小锯鳄大师。",
+   "en": "But nobody has shown enough{NEWLINE}strength to convince the others.{CLEAR}So even if you and Master Totodile{CLEAR}admire each other, you have to be{CLEAR}a strong enough Trainer before we{CLEAR}let you take Master Totodile away.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 108,
+   "zh": "向我们展示实力的方法也很简单。",
+   "en": "Showing us your strength is simple.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 109,
+   "zh": "你能1对2击败我们两个就可以了！",
+   "en": "Just beat both of us, one against two!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 110,
+   "zh": "厉害……实在是太厉害了……",
+   "en": "Amazing... That was just too amazing...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 111,
+   "zh": "我从来没见过你这么厉害的训练家。",
+   "en": "I’ve never seen a{NEWLINE}Trainer as strong as you.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 112,
+   "zh": "我们认可你了,{NEWLINE}你有资格成为舞蹈大师的主人。",
+   "en": "We accept you. You’re worthy of{NEWLINE}being the dance master’s Trainer.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 113,
+   "zh": "请照顾好舞蹈大师,{NEWLINE}带它一起变强吧。",
+   "en": "Please take good care of the dance{NEWLINE}master, and grow strong together.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 114,
+   "zh": "跳舞的小锯鳄大师才是真正的快乐,{NEWLINE}你要经常放他出来跳跳舞啊！",
+   "en": "Master Totodile is only truly{NEWLINE}happy when it’s dancing. Let{CLEAR}it out to dance often, okay?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 115,
+   "zh": "小锯鳄非常喜欢你！{NEWLINE}要收服小锯鳄作为同伴吗？",
+   "en": "Totodile really likes you! Take{NEWLINE}Totodile as your partner?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 116,
+   "zh": "那个满金市道馆的小茜,{NEWLINE}用大奶罐把我打得一败涂地。{CLEAR}可恶啊……真是噩梦一样的战斗。{SCROLL}",
+   "en": "Whitney of the Goldenrod Gym crushed{NEWLINE}me with her Miltank. Dammit...{CLEAR}That battle was a nightmare.{SCROLL}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 117,
+   "zh": "其实你可以这样对付大奶罐",
+   "en": "Here’s how to beat Miltank",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "Menu #117 tactics → #120/#121/#124; #118 encouragement → #122/#123/#125; #119 not my problem.",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 118,
+   "zh": "别灰心,继续努力总会赢的",
+   "en": "Keep trying, you’ll win",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 119,
+   "zh": "不关我事",
+   "en": "Not my problem",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 120,
+   "zh": "{VAR:0103:0}『你如果无法正面击败大奶罐,{NEWLINE}可以换个战术试试。{CLEAR}比如剧毒保护拖回合、{CLEAR}睡眠加种子吸血、{CLEAR}沙穴灭歌或者气腰返拳,{CLEAR}其实对战中有很多以弱胜强的打法。",
+   "en": "{VAR:0103:0}: If you can’t beat Miltank{NEWLINE}head-on, try a different strategy.{CLEAR}Stall with Toxic and Protect, Sleep{CLEAR}plus Leech Seed, Arena Trap with{CLEAR}Perish Song, or Focus Sash with{CLEAR}Counter. There are lots of ways{CLEAR}for the weak to beat the strong.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "Tactics: 剧毒保护 Toxic+Protect, 睡眠加种子 Sleep+Leech Seed, 沙穴灭歌 Arena Trap+Perish Song, 气腰返拳 Focus Sash+Counter."
+  },
+  {
+   "id": 121,
+   "zh": "你说这么多,{NEWLINE}不过都是纸上谈兵罢了。{CLEAR}我可是拥有徽章的训练家,{CLEAR}你要是想教我对战的话,{CLEAR}等拿到正式徽章再说吧。",
+   "en": "That’s all just talk on paper. I’m a{NEWLINE}Trainer who actually has Badges. If{CLEAR}you want to teach me about battling,{CLEAR}wait until you’ve got the Plain Badge.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 122,
+   "zh": "{VAR:0103:0}『不要因为一时的挫败{NEWLINE}就产生恐惧感,{CLEAR}你要相信通过自己的不断努力,{CLEAR}终能翻过那些曾经阻在面前的高山。",
+   "en": "{VAR:0103:0}: Don’t let one setback{NEWLINE}make you afraid. Believe that with{CLEAR}steady effort, you can climb over the{CLEAR}mountains that once stood in your way.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 123,
+   "zh": "虽然你说了这么多鼓励我的话,{NEWLINE}但是仔细一想,{CLEAR}这些都是没有内容的空话,{CLEAR}对我打败小茜并没有什么帮助。",
+   "en": "You said all those encouraging{NEWLINE}things, but thinking it over,{CLEAR}they’re just empty words. They{CLEAR}don’t help me beat Whitney at all.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 124,
+   "zh": "你拿着的那个,{NEWLINE}不是满金道馆的正式徽章吗！？{CLEAR}你居然能打败那个大魔王小茜。{SCROLL}谢谢你刚才给我提出的战术建议,{NEWLINE}我会仔细研究这些战术,{CLEAR}争取找出打败小茜的方法。{CLEAR}作为给我建议的谢礼,{CLEAR}这个你就收下吧。",
+   "en": "That thing you’re holding... Isn’t that{NEWLINE}the Goldenrod Gym’s Plain Badge?! You{CLEAR}actually beat that demon queen Whitney.{SCROLL}Thanks for the strategy tips{NEWLINE}earlier. I’ll study them carefully{CLEAR}and find a way to beat Whitney.{CLEAR}Take this as thanks for the advice.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 125,
+   "zh": "你拿着的那个,{NEWLINE}不是满金道馆的正式徽章吗！？{CLEAR}你居然能打败那个大魔王小茜。{SCROLL}多亏你这样的过来人给我鼓励,{NEWLINE}我确实是因为一次失败{CLEAR}而反应过头了。{SCROLL}仔细想想只要我再把{NEWLINE}精灵的等级锻炼得高一点,{CLEAR}完全有可能战胜大奶罐。{CLEAR}作为让我重拾信心的谢礼,{CLEAR}这个你就收下吧。",
+   "en": "That thing you’re holding... Isn’t that{NEWLINE}the Goldenrod Gym’s Plain Badge?! You{CLEAR}actually beat that demon queen Whitney.{SCROLL}Thanks to someone who’s been{NEWLINE}there cheering me on, I see I{CLEAR}overreacted to a single loss.{SCROLL}If I just train my Pokémon to a{NEWLINE}higher level, I can totally beat{CLEAR}Miltank. Take this as thanks for{CLEAR}giving me my confidence back.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 126,
+   "zh": "我一定能找到{NEWLINE}打败小茜大奶罐的办法！",
+   "en": "I’ll find a way to beat{NEWLINE}Whitney’s Miltank for sure!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 127,
+   "zh": "哈哈,经过我的不懈努力,{NEWLINE}终于拿到正式徽章了！",
+   "en": "Ha ha, thanks to my hard work,{NEWLINE}I finally got the Plain Badge!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 128,
+   "zh": "向日种子『Suuu——ker！",
+   "en": "Sunkern: Suuu-ker!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 129,
+   "zh": "虽然我跳舞的才能很一般,{NEWLINE}但如果整一张网红锥子脸,{CLEAR}再通过媒体吹捧一下,{CLEAR}应该也能出道当明星吧？",
+   "en": "My dancing talent is pretty average.{NEWLINE}But if I got one of those influencer{CLEAR}V-line faces and had the media hype me{CLEAR}up, I could still debut as a star, right?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "网红锥子脸 → ‘influencer V-line face’."
+  },
+  {
+   "id": 130,
+   "zh": "我的梦想是开一间舞蹈学校。{NEWLINE}为此我到处拜师学习跳舞,{CLEAR}希望将来有一天,{CLEAR}我的努力能有所回报。",
+   "en": "My dream is to open a dance school.{NEWLINE}So I go everywhere learning{CLEAR}dance from masters. I hope{CLEAR}someday all my hard work pays off.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 131,
+   "zh": "暴飞龙『Saaa——la！",
+   "en": "Salamence: Saaa-la!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "Ruby & Sapphire childhood Salamence incident (Pokémon Adventures). 路比 = Ruby, 沙菲雅 = Sapphire, Ruby's father 千里 = Norman."
+  },
+  {
+   "id": 132,
+   "zh": "路比『凶什么凶！{NEWLINE}你要是敢再靠近一步,{CLEAR}当心我揍你啊！",
+   "en": "Ruby: What are you growling at?! Come{NEWLINE}one step closer and I’ll punch you!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 133,
+   "zh": "沙菲雅『我觉得还是{NEWLINE}不要激怒它比较好吧……",
+   "en": "Sapphire: I think we’d{NEWLINE}better not make it angry...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 134,
+   "zh": "路比『不用担心,{NEWLINE}对付这种凶暴的精灵,{CLEAR}只要比它更凶就可以了。",
+   "en": "Ruby: Don’t worry. With a vicious{NEWLINE}Pokémon like this, you just{CLEAR}have to be even more vicious.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 135,
+   "zh": "路比『可恶啊,居然真的攻击我。{NEWLINE}不过我才不怕你呢！{CLEAR}看招！",
+   "en": "Ruby: Dammit, it actually attacked me.{NEWLINE}But I’m not scared of you! Take this!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 136,
+   "zh": "{VAR:FF01:200}暴飞龙『Saaa——la！！！{VAR:FF01:100}{SCROLL}暴飞龙更加生气了！",
+   "en": "{VAR:FF01:200}Salamence: Saaa-la!!!{VAR:FF01:100}{SCROLL}Salamence got even angrier!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "SIZE-200% cry split with {NEWLINE} to fit at 2x. Double-size shout: one line per page (a line break inside {VAR:FF01:200} overflows the box and corrupts memory; heap_audit.md)."
+  },
+  {
+   "id": 137,
+   "zh": "沙菲雅『呀——！好可怕啊……",
+   "en": "Sapphire: Eeek! It’s so scary...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 138,
+   "zh": "路比『别害怕,我会保护你的。",
+   "en": "Ruby: Don’t be scared.{NEWLINE}I’ll protect you.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 139,
+   "zh": "路比『咳咳……这家伙力气好大……",
+   "en": "Ruby: *cough* *cough*...{NEWLINE}This thing is so strong...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 140,
+   "zh": "沙菲雅『呜呜呜……都怪我,{NEWLINE}非要到草丛里玩才会弄成这样。",
+   "en": "Sapphire: *sob*... It’s all my fault{NEWLINE}for wanting to play in the tall grass.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 141,
+   "zh": "{VAR:0103:0}『暴飞龙！看这边！",
+   "en": "{VAR:0103:0}: Salamence! Over here!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 142,
+   "zh": "{VAR:0103:0}『不要欺负小孩子,{NEWLINE}有什么冲我来吧。",
+   "en": "{VAR:0103:0}: Don’t pick on little kids.{NEWLINE}If you want a fight, come at me.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 143,
+   "zh": "{VAR:0103:0}『你们没事吧？",
+   "en": "{VAR:0103:0}: Are you two all right?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 144,
+   "zh": "路比『嘿嘿……小小的暴飞龙{NEWLINE}奈何不了我的……",
+   "en": "Ruby: Heh heh... A tiny Salamence{NEWLINE}like that can’t do anything to me...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 145,
+   "zh": "沙菲雅『可是……你的额头都流血了,{NEWLINE}呜呜呜……都是我不好……",
+   "en": "Sapphire: But... your forehead is{NEWLINE}bleeding. *sob*... It’s all my fault...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 146,
+   "zh": "路比『啊,不。{NEWLINE}这点伤对于我来说很稀松平常啦。{CLEAR}你不用放在心上。",
+   "en": "Ruby: Ah, no. A scratch like this is{NEWLINE}nothing for me. Don’t worry about it.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 147,
+   "zh": "{VAR:0103:0}『沙菲雅的父亲{NEWLINE}正准备带沙菲雅赶火车,{CLEAR}你的父亲千里先生{CLEAR}也说要你们快点回去,{CLEAR}所以还是别再外面继续逛了。",
+   "en": "{VAR:0103:0}: Sapphire’s dad is getting{NEWLINE}ready to take her to catch a train, and{CLEAR}your dad, Norman, says you both need{CLEAR}to come back quickly. So you’d better{CLEAR}not keep wandering around out here.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 148,
+   "zh": "{VAR:0103:0}『你的头确实受伤了,{NEWLINE}还是快回家包扎一下比较好。",
+   "en": "{VAR:0103:0}: Your head really{NEWLINE}is hurt. You’d better hurry{CLEAR}home and get it bandaged.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 149,
+   "zh": "路比『呀,爸爸催的话可就不好了……{NEWLINE}说不定还会被揍一顿。",
+   "en": "Ruby: Uh-oh, it’s bad if Dad’s calling{NEWLINE}for us... I might even get a beating.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": " | D-1789: user approved source-faithful wording during full English review."
+  },
+  {
+   "id": 150,
+   "zh": "路比『沙菲雅,咱们还是快点回去吧！",
+   "en": "Ruby: Sapphire, we’d{NEWLINE}better hurry back!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 151,
+   "zh": "我经常在饲育屋寄养精灵,{NEWLINE}对于精灵们在饲育屋{CLEAR}生蛋繁衍的事很有心得。{CLEAR}如果你在这方面有什么困惑,{CLEAR}我都可以帮你解答哦。",
+   "en": "I leave Pokémon at the Day-Care{NEWLINE}all the time, so I know a lot{CLEAR}about Pokémon laying Eggs there.{CLEAR}If you have any questions about{CLEAR}that, I can answer them for you.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 152,
+   "zh": "如何让精灵在饲育屋生蛋",
+   "en": "How to get an Egg",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 153,
+   "zh": "蛋里精灵的形态和能力",
+   "en": "Form and stats of the baby",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 154,
+   "zh": "哪些道具对生蛋有影响",
+   "en": "Items that affect Eggs",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 155,
+   "zh": "我没有什么要问的了",
+   "en": "No more questions",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 156,
+   "zh": "将性别不同、蛋组相同的两只精灵{NEWLINE}同时寄养在饲育屋,{CLEAR}过段时间之后{CLEAR}就有可能会生出一个蛋哦！{SCROLL}至于什么是蛋组嘛……{NEWLINE}这个就很复杂了,我知道的也很有限。{CLEAR}据说若叶镇有一位空木博士{CLEAR}对这方面挺有研究,{CLEAR}你可以找他去问问。",
+   "en": "Leave two Pokémon of different{NEWLINE}genders from the same Egg Group{CLEAR}at the Day-Care together, and{CLEAR}after a while an Egg might appear!{SCROLL}As for what an Egg Group is... That’s{NEWLINE}really complicated, and I don’t know{CLEAR}much. They say a Professor Elm in{CLEAR}New Bark Town has done a lot of{CLEAR}research on it. You could go ask him.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 157,
+   "zh": "蛋里精灵的形态会与母亲一致,{NEWLINE}如果蛋里精灵的父亲{CLEAR}有能够遗传给子代的招式,{CLEAR}那么蛋里精灵在孵化时{CLEAR}就可以遗传到父亲的招式。{SCROLL}此外子代的3项个体值遗传自亲代,{NEWLINE}从父母中随机选择。{CLEAR}另外3项则是随机的。",
+   "en": "The Pokémon in the Egg will take{NEWLINE}its mother’s form. If the father{CLEAR}knows moves that can be passed{CLEAR}down, the baby can inherit the{CLEAR}father’s moves when it hatches.{SCROLL}Also, the baby inherits 3 of its IVs{NEWLINE}from its parents, chosen at random from{CLEAR}either one. The other 3 are random.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "个体值 = IVs; 3 inherited from parents (hack text)."
+  },
+  {
+   "id": 158,
+   "zh": "我所知道的能影响生蛋的道具有{NEWLINE}不变石和红线。{CLEAR}携带不变石的精灵生蛋时,{CLEAR}子代的性格有一半概率{CLEAR}会遗传自携带者。{CLEAR}携带红线的精灵生蛋时,{CLEAR}子代有5项个体值会遗传自双亲。",
+   "en": "The items I know of that affect Eggs{NEWLINE}are the Everstone and the Destiny{CLEAR}Knot. If a parent holds an Everstone,{CLEAR}there’s a 50% chance the baby gets{CLEAR}that parent’s Nature. If a parent{CLEAR}holds a Destiny Knot, the baby{CLEAR}inherits 5 IVs from the two parents.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 159,
+   "zh": "路比『哎呀,没事啦。{NEWLINE}我还有好多好玩的地方{CLEAR}想带沙菲雅去看看呢。",
+   "en": "Ruby: Aw, it’s nothing. There{NEWLINE}are still lots of fun places{CLEAR}I want to show Sapphire.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 160,
+   "zh": "沙菲雅『嗯,我也觉得快回去{NEWLINE}给你包扎一下伤口比较要紧。",
+   "en": "Sapphire: Mm, I think it’s{NEWLINE}more important to go back{CLEAR}and get your wound bandaged.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 161,
+   "zh": "路比『那我们先走啦大哥哥,{NEWLINE}刚才谢谢你出手帮忙啊。",
+   "en": "Ruby: We’re heading off now, mister.{NEWLINE}Thanks for helping us out back there!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "Male-player variant (大哥哥); #162 female (大姐姐)."
+  },
+  {
+   "id": 162,
+   "zh": "路比『那我们先走啦大姐姐,{NEWLINE}刚才谢谢你出手帮忙啊。",
+   "en": "Ruby: We’re heading off now, miss.{NEWLINE}Thanks for helping us out back there!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 163,
+   "zh": "不要让任何人靠近满金市,{NEWLINE}兄弟们给我冲啊！",
+   "en": "Don’t let anyone near{NEWLINE}Goldenrod City! Charge, boys!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "#163-#167 Radio Tower takeover (Team Rocket blockade on Route 34, Bugsy holds them off)."
+  },
+  {
+   "id": 164,
+   "zh": "哦——！！！",
+   "en": "Yeaaah!!!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 165,
+   "zh": "阿笔『大家挺住！{NEWLINE}不要放跑任何一个火箭队！",
+   "en": "Bugsy: Hold on, everyone! Don’t let a{NEWLINE}single Team Rocket member get away!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 166,
+   "zh": "{VAR:0103:0}『这里就交给阿笔馆主吧,{NEWLINE}我还是先去广播塔找到坂木要紧。",
+   "en": "{VAR:0103:0}: I’ll leave this to{NEWLINE}Bugsy. Finding Giovanni at{CLEAR}the Radio Tower comes first.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 167,
+   "zh": "我正在跟向日种子训练呢,{NEWLINE}突然就冲出来一大帮火箭队,{CLEAR}真是吓死个人。{CLEAR}还好阿笔馆主带人即时赶到,{CLEAR}不然我的向日种子可能就被抢走了。",
+   "en": "I was training with my Sunkern when a{NEWLINE}whole gang of Team Rocket burst out.{CLEAR}It scared me half to death. Luckily{CLEAR}Bugsy and his people got here in time,{CLEAR}or my Sunkern might have been stolen.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  }
+ ]
 }

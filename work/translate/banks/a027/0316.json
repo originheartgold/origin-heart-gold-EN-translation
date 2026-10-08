@@ -1,1437 +1,1437 @@
 {
-  "narc": "a027",
-  "bank": 316,
-  "source": "work/extract/v4/a027/0316.json",
-  "strings": [
-    {
-      "id": 0,
-      "zh": "您好,这里是私人仓库,{NEWLINE}未经允许禁止进入,您请回吧！",
-      "en": "Hello. This is a private warehouse. No{NEWLINE}entry without permission.{SCROLL}Please leave!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "Bank 0316 (reused map): Lawrence's private warehouse and the Team Rocket Kanto Base below it; Misty and the player rescue Erika and her attendant."
-    },
-    {
-      "id": 1,
-      "zh": "小霞『你们的仓库到底有多大,{NEWLINE}莉佳进去这么久了怎么还没出来？",
-      "en": "Misty: Just how big is this warehouse of{NEWLINE}yours?{SCROLL}Erika went in ages ago. Why hasn’t she{NEWLINE}come out yet?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 2,
-      "zh": "想必吉尔露太大人{NEWLINE}正在给她介绍我们仓库里的{CLEAR}各种珍惜收藏品吧。",
-      "en": "I’m sure Master Lawrence is showing{NEWLINE}her all the rare treasures in our{CLEAR}collection.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "consistency fix (follow-up 4)"
-    },
-    {
-      "id": 3,
-      "zh": "小霞『收藏品……{SCROLL}小霞『果然吉尔露太就是那个{NEWLINE}传闻中的「收藏家」吧！{CLEAR}这么说来莉佳现在很危险！",
-      "en": "Misty: Treasures...{SCROLL}Misty: So Lawrence really is that{NEWLINE}‘Collector’ everyone’s been whispering{CLEAR}about!{SCROLL}Then Erika’s in danger right now!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 4,
-      "zh": "站住！这里禁止通行！",
-      "en": "Halt! No entry!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 5,
-      "zh": "小霞『哼,那我要是非过去不可呢？",
-      "en": "Misty: Hmph. And what if I insist on{NEWLINE}getting through?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 6,
-      "zh": "你这臭丫头可真够烦的。{NEWLINE}你要是敢硬闯的话,{CLEAR}就做好死在这的觉悟吧！",
-      "en": "You’re a real pain, you little brat.{SCROLL}If you try to force your way in, you’d{NEWLINE}better be ready to die here!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "tone review: 臭丫头 is a contemptuous insult for a girl; kept as 'little brat' (D-0627)"
-    },
-    {
-      "id": 7,
-      "zh": "小霞『果然,你们不是什么善类。{NEWLINE}既然这样那我们更是非过去不可了！",
-      "en": "Misty: I knew it. You’re no honest{NEWLINE}folks.{SCROLL}Then we’ve got even more reason to get{NEWLINE}through!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 8,
-      "zh": "真是越无知越勇敢,{NEWLINE}居然敢在这里跟我们撒野,{CLEAR}今天就叫你有来无回！",
-      "en": "The less you know, the braver you are,{NEWLINE}huh? Daring to make trouble here...{SCROLL}You’re not leaving this place today!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 9,
-      "zh": "小霞『{VAR:0103:0},{NEWLINE}莉佳她们两个人在里面{CLEAR}很可能会遇到什么危险,{CLEAR}咱们不要管这两个门卫了,{CLEAR}直接冲进去！",
-      "en": "Misty: {VAR:0103:0}, Erika and her companion{NEWLINE}could be in danger in there.{SCROLL}Forget these two guards. Let’s charge{NEWLINE}straight in!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "莉佳她们(两个人) = Erika and her attendant (#75/#99) → 'Erika and her companion'."
-    },
-    {
-      "id": 10,
-      "zh": "{VAR:0103:0}『好！",
-      "en": "{VAR:0103:0}: Right!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 11,
-      "zh": "我们居然挡不住这两个小鬼吗？！",
-      "en": "We couldn’t even stop a couple of{NEWLINE}kids?!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 12,
-      "zh": "小霞『我有很不好的预感,{NEWLINE}咱们快去仓库跟莉佳汇合吧！",
-      "en": "Misty: I’ve got a really bad feeling.{NEWLINE}Let’s hurry to the warehouse and find{CLEAR}Erika!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 13,
-      "zh": "你们两个居然敢闯到这里来,{NEWLINE}好大的胆子。",
-      "en": "You two have some nerve, barging in{NEWLINE}here.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 14,
-      "zh": "小霞『你们两个{NEWLINE}居然敢挡着我们不让过去,{CLEAR}好大的胆子！",
-      "en": "Misty: And you two have some nerve,{NEWLINE}trying to block our way!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 15,
-      "zh": "她妈的你这娘们废话真多！",
-      "en": "For fuck’s sake, woman, you just don’t{NEWLINE}shut up!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "zh 她妈的你这娘们 kept at strength."
-    },
-    {
-      "id": 16,
-      "zh": "冷静！不要跟他们啰嗦,{NEWLINE}直接弄死他们。",
-      "en": "Calm down! Don’t waste words on them.{NEWLINE}Just kill them.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "tone review: 弄死 = kill; kept literal (D-0627)"
-    },
-    {
-      "id": 17,
-      "zh": "小霞『宝石海星,给他最后一击！",
-      "en": "Misty: Starmie, finish him off!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 18,
-      "zh": "啊……{NEWLINE}这下要向吉尔露太大人谢罪了……",
-      "en": "Ahh...{SCROLL}Now I’ll have to go beg Master{NEWLINE}Lawrence’s forgiveness...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "consistency fix (follow-up 4)"
-    },
-    {
-      "id": 19,
-      "zh": "小霞『{VAR:0103:0},仓库就在前面,{NEWLINE}咱们快进去吧！",
-      "en": "Misty: {VAR:0103:0}, the warehouse is just{NEWLINE}ahead. Let’s hurry in!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 20,
-      "zh": "你干什么？{NEWLINE}这里的仓库重地禁止通行,{CLEAR}你给我滚回去！",
-      "en": "What do you think you’re doing? The{NEWLINE}warehouse area is off-limits.{SCROLL}Now get lost!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "tone review: 滚回去 is a rude 'get lost'; kept rude (D-0627)"
-    },
-    {
-      "id": 21,
-      "zh": "滴——{SCROLL}电脑似乎还开着。{SCROLL}桌面上有一个启动程序,{NEWLINE}要运行试试看吗？",
-      "en": "Beep...{SCROLL}The computer seems to still be on.{SCROLL}There’s a launcher program on the{NEWLINE}desktop. Try running it?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 22,
-      "zh": "{VAR:0103:0}运行了启动程序——{SCROLL}{VAR:0103:0}『……",
-      "en": "{VAR:0103:0} ran the launcher program...{SCROLL}{VAR:0103:0}: ...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 23,
-      "zh": "{VAR:FF01:200}小霞『{VAR:0103:0}！！！{VAR:FF01:100}",
-      "en": "{VAR:FF01:200}Misty: {VAR:0103:0}!!!{VAR:FF01:100}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 24,
-      "zh": "小霞『{VAR:0103:0}！！！{NEWLINE}那边有个柜子突然自己挪动了位置,{CLEAR}然后露出了一个通向下面的楼梯！{CLEAR}你快来看看！",
-      "en": "Misty: {VAR:0103:0}!!! A cabinet over there{NEWLINE}just moved all by itself...{SCROLL}...and there’s a staircase leading{NEWLINE}down! Come look!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 25,
-      "zh": "小霞『这就是那个隐藏的通道,{NEWLINE}莉佳很有可能被他们带到下面去了。",
-      "en": "Misty: This must be the hidden passage.{NEWLINE}They’ve probably taken Erika down{CLEAR}there.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 26,
-      "zh": "小霞『{VAR:0103:0},{NEWLINE}咱们一起下去看个究竟吧！",
-      "en": "Misty: {VAR:0103:0}, let’s go down together{NEWLINE}and find out what’s going on!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 27,
-      "zh": "密道的启动程序已经执行,{NEWLINE}现在密道是开启状态。",
-      "en": "The launcher program for the secret{NEWLINE}passage has been run. The passage is{CLEAR}now open.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 28,
-      "zh": "小霞『好啊,原来这里{NEWLINE}是你们火箭队的基地！",
-      "en": "Misty: I knew it! So this is Team{NEWLINE}Rocket’s base!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 29,
-      "zh": "上面那群人是吃干饭的吗？{NEWLINE}居然能让你跑到这里来,{CLEAR}不过你也就到此为止了,{CLEAR}老娘这就送你上西天！",
-      "en": "Are those fools upstairs good for{NEWLINE}nothing? Letting you get all the way{CLEAR}down here...{SCROLL}But this is where it ends. I’m gonna{NEWLINE}send you straight to your grave myself!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "tone review: 老娘 is a swaggering female 'me'; carried by tone, not a pronoun substitute; 上西天 = kill (D-0627)"
-    },
-    {
-      "id": 30,
-      "zh": "{VAR:0103:0}『小霞！",
-      "en": "{VAR:0103:0}: Misty!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 31,
-      "zh": "小霞『哼,你们这些火箭队的{NEWLINE}从来都是口气不小,本事不大。",
-      "en": "Misty: Hmph. You Team Rocket types are{NEWLINE}always all talk and no skill.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 32,
-      "zh": "{VAR:0103:0}『火箭队的人还是很危险的,{NEWLINE}不可以掉以轻心,{CLEAR}咱们还是一起战斗吧！",
-      "en": "{VAR:0103:0}: Team Rocket is still{NEWLINE}dangerous. We can’t let our guard{CLEAR}down.{SCROLL}Let’s fight together!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 33,
-      "zh": "小霞『嘿嘿,能跟你并肩作战,{NEWLINE}谁来我都不会怕的！",
-      "en": "Misty: Heh heh! Fighting side by side{NEWLINE}with you, I’m not scared of anyone!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 34,
-      "zh": "妈的,少目中无人了,{NEWLINE}让你们知道我们火箭队的手段！",
-      "en": "Dammit, quit looking down on us! We’ll{NEWLINE}show you what Team Rocket can do!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 35,
-      "zh": "{VAR:0103:0}『我来帮你{NEWLINE}一起教训这些饭桶。",
-      "en": "{VAR:0103:0}: I’ll help you teach these{NEWLINE}losers a lesson.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 36,
-      "zh": "小霞『太好了,有你在的话,{NEWLINE}咱们一定能赢！",
-      "en": "Misty: Great! With you here, we’re sure{NEWLINE}to win!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 37,
-      "zh": "这次的入侵者……{NEWLINE}有些难缠啊……",
-      "en": "These intruders... are tougher than{NEWLINE}they look...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 38,
-      "zh": "我怎么能输呢……",
-      "en": "How could I lose...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 39,
-      "zh": "小霞『{VAR:0103:0},{NEWLINE}这里是火箭队基地,{CLEAR}而莉佳又不见了踪影,{CLEAR}我担心……",
-      "en": "Misty: {VAR:0103:0}, this is Team Rocket’s{NEWLINE}base...{SCROLL}...and there’s no sign of Erika{NEWLINE}anywhere. I’m worried...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 40,
-      "zh": "玛狃拉,暗袭要害！",
-      "en": "Weavile, Night Slash!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 41,
-      "zh": "小霞『宝石海星！！！",
-      "en": "Misty: Starmie!!!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 42,
-      "zh": "{VAR:0103:0}『{VAR:0100:1}！{NEWLINE}保护小霞！",
-      "en": "{VAR:0103:0}: {VAR:0100:1}! Protect Misty!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 43,
-      "zh": "{VAR:0103:0}『你们这些卑鄙的家伙,{NEWLINE}休想再伤害小霞！",
-      "en": "{VAR:0103:0}: You cowards! I won’t let you{NEWLINE}hurt Misty again!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 44,
-      "zh": "{VAR:0103:0}『你们这些卑鄙的家伙,{NEWLINE}做事真是没有底线！",
-      "en": "{VAR:0103:0}: You cowards! Is there{NEWLINE}anything you won’t stoop to?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 45,
-      "zh": "哟呵呵呵,偷袭得手,{NEWLINE}老娘就不跟你继续纠缠了,扯呼！",
-      "en": "Oh ho ho ho! Sneak attack, nailed it!{SCROLL}I can’t be bothered with you any{NEWLINE}longer. I’m outta here!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "tone review: 老娘 is a swaggering female 'me'; carried by tone, not a pronoun substitute (D-0627)"
-    },
-    {
-      "id": 46,
-      "zh": "{VAR:0103:0}『怎么样,小霞,{NEWLINE}你没有受伤吧？",
-      "en": "{VAR:0103:0}: Misty, are you okay? You’re{NEWLINE}not hurt?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 47,
-      "zh": "小霞『我没有什么事,{NEWLINE}多亏宝石海星帮我挡下了攻击。{CLEAR}不过宝石海星似乎伤得不轻,{CLEAR}我得赶紧给它做一下治疗。",
-      "en": "Misty: I’m fine. Starmie took the hit for{NEWLINE}me.{SCROLL}But Starmie looks pretty badly hurt. I{NEWLINE}have to treat it right away.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 48,
-      "zh": "小霞『好了,快点去找莉佳吧,{NEWLINE}我给宝石海星稍做治疗后就去找你。",
-      "en": "Misty: Okay, hurry and go find Erika.{SCROLL}I’ll patch Starmie up a bit and then{NEWLINE}come find you.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 49,
-      "zh": "{VAR:0103:0}『嗯,你在这里{NEWLINE}也要多加小心啊！",
-      "en": "{VAR:0103:0}: Right. You be careful here{NEWLINE}too!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 50,
-      "zh": "{VAR:0103:0}『嗯,交给我吧！",
-      "en": "{VAR:0103:0}: Right, leave it to me!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 51,
-      "zh": "滴——{SCROLL}电脑桌面上有一个打开的文档,{NEWLINE}上面写着：{CLEAR}用五台仪器分别存储,{CLEAR}以从下至上、{CLEAR}从右至左的顺序排列{CLEAR}即可移动雕像。",
-      "en": "Beep...{SCROLL}There’s an open document on the{NEWLINE}computer desktop. It reads:{CLEAR}Stored separately on five devices.{CLEAR}Arrange them from bottom to top{CLEAR}and from right to left{CLEAR}to move the statue.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 52,
-      "zh": "一台精密的仪器,{NEWLINE}上面的灯有规律地闪烁着：{CLEAR}. - .{CLEAR}.{CLEAR}- . .",
-      "en": "A precision device. Its lights are{NEWLINE}blinking in a regular pattern:{CLEAR}. - .{CLEAR}.{CLEAR}- . .",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "Morse puzzle kept as in zh (it spells English): #52 RED, #53 GRE, #54 YEL, #55 BLU, #56 ORA, #151 PUR; #57 colour order = digits 1–6."
-    },
-    {
-      "id": 53,
-      "zh": "一台精密的仪器,{NEWLINE}上面的灯有规律地闪烁着：{CLEAR}- - .{CLEAR}. -.{CLEAR}.",
-      "en": "A precision device. Its lights are{NEWLINE}blinking in a regular pattern:{CLEAR}- - .{CLEAR}. -.{CLEAR}.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 54,
-      "zh": "一台精密的仪器,{NEWLINE}上面的灯有规律地闪烁着：{CLEAR}- . - -{CLEAR}.{CLEAR}. - . .",
-      "en": "A precision device. Its lights are{NEWLINE}blinking in a regular pattern:{CLEAR}- . - -{CLEAR}.{CLEAR}. - . .",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 55,
-      "zh": "一台精密的仪器,{NEWLINE}上面的灯有规律地闪烁着：{CLEAR}- . . .{CLEAR}. - . .{CLEAR}. . -",
-      "en": "A precision device. Its lights are{NEWLINE}blinking in a regular pattern:{CLEAR}- . . .{CLEAR}. - . .{CLEAR}. . -",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 56,
-      "zh": "一台精密的仪器,{NEWLINE}上面的灯有规律地闪烁着：{CLEAR}- - -{CLEAR}. - .{CLEAR}. -",
-      "en": "A precision device. Its lights are{NEWLINE}blinking in a regular pattern:{CLEAR}- - -{CLEAR}. - .{CLEAR}. -",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 57,
-      "zh": "一台精密的仪器,{NEWLINE}上面交灯替闪烁着：{CLEAR}赤、橙、黄、绿、蓝、紫,6种颜色。",
-      "en": "A precision device. Its lights are{NEWLINE}flashing in turn:{CLEAR}red, orange, yellow, green, blue and{CLEAR}purple. Six colors.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 58,
-      "zh": "一台精密的仪器,{NEWLINE}不断发出摩斯摩斯的声音。",
-      "en": "A precision device. It keeps making{NEWLINE}a sound like ‘Morse... Morse...’",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "摩斯摩斯 = 'Morse Morse' pun hint."
-    },
-    {
-      "id": 59,
-      "zh": "滴——{SCROLL}电脑似乎还开着。{SCROLL}桌面上有一个控制程序,{NEWLINE}需要输入密码才能操作,{CLEAR}要输入密码试试看吗？{SCROLL}",
-      "en": "Beep...{SCROLL}The computer seems to still be on.{SCROLL}There’s a control program on the{NEWLINE}desktop, but it needs a password. Try{CLEAR}entering a password?{SCROLL}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 60,
-      "zh": "请输入第一位密码：",
-      "en": "Enter the first digit of the password:",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 61,
-      "zh": "1",
-      "en": "1",
-      "status": "reviewed",
-      "origin": "copy",
-      "notes": "",
-      "category": "menu_touch_col"
-    },
-    {
-      "id": 62,
-      "zh": "2",
-      "en": "2",
-      "status": "reviewed",
-      "origin": "copy",
-      "notes": "",
-      "category": "menu_touch_col"
-    },
-    {
-      "id": 63,
-      "zh": "3",
-      "en": "3",
-      "status": "reviewed",
-      "origin": "copy",
-      "notes": "",
-      "category": "menu_touch_col"
-    },
-    {
-      "id": 64,
-      "zh": "4",
-      "en": "4",
-      "status": "reviewed",
-      "origin": "copy",
-      "notes": "",
-      "category": "menu_touch_col"
-    },
-    {
-      "id": 65,
-      "zh": "5",
-      "en": "5",
-      "status": "reviewed",
-      "origin": "copy",
-      "notes": "",
-      "category": "menu_touch_col"
-    },
-    {
-      "id": 66,
-      "zh": "6",
-      "en": "6",
-      "status": "reviewed",
-      "origin": "copy",
-      "notes": "",
-      "category": "menu_touch_col"
-    },
-    {
-      "id": 67,
-      "zh": "请输入第二位密码：",
-      "en": "Enter the second digit of the password:",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 68,
-      "zh": "请输入第三位密码：",
-      "en": "Enter the third digit of the password:",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 69,
-      "zh": "请输入第四位密码：",
-      "en": "Enter the fourth digit of the password:",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 70,
-      "zh": "请输入第五位密码：",
-      "en": "Enter the fifth digit of the password:",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 71,
-      "zh": "密码错误,无法启动控制程序！",
-      "en": "Incorrect password. The control{NEWLINE}program can’t be started!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 72,
-      "zh": "密码正确,{NEWLINE}启动猫老大石像控制程序。{SCROLL}滴——{SCROLL}猫老大石像已移位,{NEWLINE}限制通道已可以通过。",
-      "en": "Password accepted. Starting the{NEWLINE}Persian statue control program.{SCROLL}Beep...{SCROLL}The Persian statue has moved. The{NEWLINE}restricted passage is now open.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 73,
-      "zh": "猫老大石像已移位,{NEWLINE}限制通道已可以通过。",
-      "en": "The Persian statue has moved. The{NEWLINE}restricted passage is now open.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 74,
-      "zh": "我说这位小姐,{NEWLINE}你就赶紧放弃挣扎吧,{CLEAR}在我们火箭队的基地里,{CLEAR}你还想反了天不成？",
-      "en": "Listen, miss, just give up already.{SCROLL}You think you can turn the tables inside{NEWLINE}Team Rocket’s base?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 75,
-      "zh": "你们这帮歹徒,{NEWLINE}休想让我屈服！{CLEAR}我一定会保护莉佳大小姐出去的！",
-      "en": "You thugs will never make me give in!{SCROLL}I’ll get Lady Erika out of here safely,{NEWLINE}no matter what!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 76,
-      "zh": "你那个莉佳馆主{NEWLINE}现在正被我们火箭队的干部招呼呢,{CLEAR}估计很快就抵挡不住了吧。{CLEAR}你要是现在投降让我们省点精力,{CLEAR}等我拿你身体做实验的时候{CLEAR}还可以考虑给你上点麻药。",
-      "en": "That Gym Leader Erika of yours is being{NEWLINE}‘entertained’ by one of our Executives{CLEAR}right now.{SCROLL}She probably can’t hold out much{NEWLINE}longer.{SCROLL}If you surrender now and save us some{NEWLINE}trouble, then when I use your body for{CLEAR}my experiments...{SCROLL}...maybe I’ll consider giving you some{NEWLINE}anesthetic.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 77,
-      "zh": "居然还想拿活人做实验,{NEWLINE}你们简直不是人！",
-      "en": "Experimenting on living people? You’re{NEWLINE}not human!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 78,
-      "zh": "哈哈哈哈哈,我们火箭队都是{NEWLINE}将来要君临天下的神,{CLEAR}当然跟你们这些凡人不同。",
-      "en": "Hahahaha! We of Team Rocket are gods{NEWLINE}destined to rule the world!{SCROLL}Of course we’re different from you mere{NEWLINE}mortals.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 79,
-      "zh": "{VAR:0103:0}『少在那里自以为是了！",
-      "en": "{VAR:0103:0}: Quit acting so full of{NEWLINE}yourself!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 80,
-      "zh": "{VAR:0103:0}『你们这些神也不怎么样啊！",
-      "en": "{VAR:0103:0}: You ‘gods’ aren’t much to{NEWLINE}write home about!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 81,
-      "zh": "{VAR:0103:0}『你们这帮坏事做绝的家伙！",
-      "en": "{VAR:0103:0}: You lowlifes will stop at{NEWLINE}nothing!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 82,
-      "zh": "{VAR:0103:0}『被我这个凡人偷家了{NEWLINE}都还不知道。",
-      "en": "{VAR:0103:0}: A mere mortal like me raided{NEWLINE}your base, and you didn’t even notice.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 83,
-      "zh": "这这这……{NEWLINE}怎么会有外人来到这里！？",
-      "en": "Wh-wh-what...{SCROLL}How did an outsider get in here!?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 84,
-      "zh": "{VAR:0103:0}『莉佳馆主去哪了？{NEWLINE}赶紧把人交出来！",
-      "en": "{VAR:0103:0}: Where’s Gym Leader Erika?{NEWLINE}Hand her over, now!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 85,
-      "zh": "{VAR:0103:0}『嘿嘿,你这种惊讶的表情,{NEWLINE}我这一路上可见了好几次呢。",
-      "en": "{VAR:0103:0}: Heh heh. I’ve seen that{NEWLINE}surprised look plenty of times on my way{CLEAR}here.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 86,
-      "zh": "真是个碍眼的小鬼。",
-      "en": "What an annoying brat.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 87,
-      "zh": "来人啊,把这个小鬼给我解决掉！",
-      "en": "Somebody! Get rid of this brat for me!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 88,
-      "zh": "是！",
-      "en": "Yes, sir!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s); other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl)"
-    },
-    {
-      "id": 89,
-      "zh": "敢独自闯进我们火箭队的秘密基地,{NEWLINE}胆子不小啊你！",
-      "en": "You’ve got guts, barging into Team{NEWLINE}Rocket’s secret base all alone!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 90,
-      "zh": "这小鬼好厉害……",
-      "en": "This brat’s really strong...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 91,
-      "zh": "真是没用！",
-      "en": "Useless!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 92,
-      "zh": "用你的余生来后悔闯入这里吧！",
-      "en": "You’ll spend the rest of your life{NEWLINE}regretting you ever came here!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 93,
-      "zh": "我们的精灵已经无法再战斗了,{NEWLINE}快来支援！",
-      "en": "Our Pokémon can’t battle anymore. Send{NEWLINE}backup!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 94,
-      "zh": "战斗到这里,你已经很疲惫了吧？",
-      "en": "After all that battling, you must be{NEWLINE}pretty worn out by now, huh?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 95,
-      "zh": "趁虚而入失败了……",
-      "en": "So much for catching you worn out...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 96,
-      "zh": "安吉丽娜,你跟我一起上！",
-      "en": "Angelina, you’re with me!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "安吉丽娜 → Angelina (unclear if a partner grunt or a Pokémon nickname; double battle with the lab deputy chief #97)."
-    },
-    {
-      "id": 97,
-      "zh": "让你看看我这个实验室副主管的实力！",
-      "en": "I’ll show you what the lab’s deputy{NEWLINE}chief can do!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 98,
-      "zh": "难以置信,{NEWLINE}连我都无法阻挡你吗？{SCROLL}行,那你就到下面一层{NEWLINE}去会会我们的干部大人吧！{CLEAR}他们会教你怎么重新做人的。",
-      "en": "Unbelievable. Even I couldn’t stop you?{SCROLL}Fine. Go down to the next floor and{NEWLINE}meet our Executives!{SCROLL}They’ll teach you a lesson you’ll never{NEWLINE}forget.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 99,
-      "zh": "你是小霞的朋友吧？{NEWLINE}谢谢你能来到这里救我们。{SCROLL}莉佳大小姐被吉尔露太{NEWLINE}带到下面一层去了,{CLEAR}现在她的处境非常危险。{CLEAR}我的精灵在刚刚跟火箭队的战斗中{CLEAR}受伤非常严重,{CLEAR}已经无法再战斗了。{CLEAR}所以拜托你去帮帮莉佳大小姐吧！{CLEAR}拜托你了！",
-      "en": "You’re Misty’s friend, aren’t you?{NEWLINE}Thank you for coming all this way to{CLEAR}save us.{SCROLL}Lawrence took Lady Erika down to the{NEWLINE}floor below. She’s in grave danger right{CLEAR}now.{SCROLL}My Pokémon were badly hurt in the{NEWLINE}battle with Team Rocket just now. They{CLEAR}can’t battle anymore.{SCROLL}So please, go help Lady Erika! I’m{NEWLINE}begging you!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 100,
-      "zh": "{VAR:0103:0}『嗯,我这就去！",
-      "en": "{VAR:0103:0}: Right, I’m on my way!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 101,
-      "zh": "{VAR:0103:0}『放心吧,不会有事的。",
-      "en": "{VAR:0103:0}: Don’t worry. Everything will{NEWLINE}be fine.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 102,
-      "zh": "谢谢你。",
-      "en": "Thank you.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 103,
-      "zh": "一个厚重的大柜子。",
-      "en": "A big, heavy cabinet.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 104,
-      "zh": "宝石海星『Sta——mi！",
-      "en": "Starmie: Sta-mi!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s); other variants: 3 more v3 TM candidates (tm_v4_matches.jsonl)"
-    },
-    {
-      "id": 105,
-      "zh": "吉尔露太大人不是你们能得罪的,{NEWLINE}识相的赶紧离开仓库。",
-      "en": "Master Lawrence isn’t someone you can{NEWLINE}afford to cross.{SCROLL}If you know what’s good for you, you’ll{NEWLINE}leave the warehouse now.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "consistency fix (follow-up 4)"
-    },
-    {
-      "id": 106,
-      "zh": "哼,敢探究这里的事,{NEWLINE}你还真是找死。",
-      "en": "Hmph. Poking around in our business?{NEWLINE}You must have a death wish.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 107,
-      "zh": "妈的,我记得你！你在月……{SCROLL}呸,你这个臭小鬼！",
-      "en": "Dammit, I remember you! You were at{NEWLINE}Mt. Moo...{SCROLL}Bah! You rotten brat!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "ext-review RV-019"
-    },
-    {
-      "id": 108,
-      "zh": "在我们的地盘上,看你能得意多久！",
-      "en": "On our turf! Let’s see how long you can{NEWLINE}keep that smug look!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 109,
-      "zh": "小霞『{VAR:0103:0},{NEWLINE}这两个门卫堵在这里不让进,{CLEAR}看来不硬闯是不行了。",
-      "en": "Misty: {VAR:0103:0}, these two guards won’t{NEWLINE}let us in.{SCROLL}Looks like we’ll have to force our way{NEWLINE}through.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 110,
-      "zh": "吉尔露太私人仓库,{NEWLINE}未经允许严禁擅自入内。",
-      "en": "Lawrence’s Private Warehouse.{SCROLL}Strictly no entry without permission.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 111,
-      "zh": "小霞『{VAR:0103:0},{NEWLINE}这里就是仓库的尽头了吧？{CLEAR}莉佳她们居然没在这里！{CLEAR}会不会在仓库的哪个地方{CLEAR}有什么机关暗门呢？",
-      "en": "Misty: {VAR:0103:0}, this must be the far{NEWLINE}end of the warehouse, right?{SCROLL}But Erika and her companion aren’t{NEWLINE}here!{SCROLL}Could there be some hidden mechanism or{NEWLINE}secret door somewhere in the{CLEAR}warehouse?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 112,
-      "zh": "火箭队关东基地,{NEWLINE}出入人员注意不要被跟踪！",
-      "en": "Team Rocket Kanto Base.{SCROLL}All personnel: make sure you are not{NEWLINE}followed when entering or leaving!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 113,
-      "zh": "武藏『居然是你这个小鬼头！",
-      "en": "Jessie: Well, if it isn’t you, you little{NEWLINE}brat!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 114,
-      "zh": "火箭队近期战报1：{NEWLINE}追捕逃脱的梦幻行动中,{CLEAR}因为5个年轻训练家插手{CLEAR}导致梦幻逃脱。{CLEAR}现需要对这5人的底细进行调查。{CLEAR}——伦达",
-      "en": "Team Rocket Battle Report 1:{SCROLL}During the operation to recapture the{NEWLINE}escaped Mew, five young Trainers{CLEAR}interfered, and Mew got away.{SCROLL}The backgrounds of these five must be{NEWLINE}investigated.{SCROLL}-Petrel",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 115,
-      "zh": "要继续看吗？",
-      "en": "Keep reading?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 116,
-      "zh": "火箭队近期战报2：{NEWLINE}圣安努号劫持行动发生意外,{CLEAR}未能按计划劫走圣安努号。{CLEAR}原因是有一名训练家的精灵{CLEAR}未食用特制的迷幻食品。{CLEAR}——水吾桐。",
-      "en": "Team Rocket Battle Report 2:{SCROLL}The S.S. Anne hijacking went wrong, and{NEWLINE}we failed to seize the ship as planned.{SCROLL}The cause: one Trainer’s Pokémon did{NEWLINE}not eat the specially made{CLEAR}hallucinogenic food.{SCROLL}-Archie",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 117,
-      "zh": "火箭队近期战报3：{NEWLINE}虽然找到了富士博士的哥哥,{CLEAR}但是因为3名训练家{CLEAR}和四天王菊子的出现,{CLEAR}讯问被迫中断。{CLEAR}——赤焰松。",
-      "en": "Team Rocket Battle Report 3:{SCROLL}We found Dr. Fuji’s brother, but the{NEWLINE}interrogation had to be cut short...{SCROLL}...when three Trainers and Agatha of{NEWLINE}the Elite Four showed up.{SCROLL}-Maxie",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "富士博士 → Dr. Fuji (Mewtwo's creator, Movie 1)."
-    },
-    {
-      "id": 118,
-      "zh": "火箭队近期战报4：{NEWLINE}近期多次阻碍火箭队行动的{CLEAR}几名训练家的情报调查如下：{CLEAR}其中两人来自真新镇,{CLEAR}分别叫{VAR:0103:0}、小绿。{CLEAR}华蓝馆主的女儿小霞{CLEAR}和两名其他地区的训练家{CLEAR}也阻碍过月见山的行动。{CLEAR}还有一人身份不明,{CLEAR}但似乎对我们火箭队的底细有所掌握。{CLEAR}应尽快派出暗杀部队消灭这些人。{CLEAR}——吉尔露太。",
-      "en": "Team Rocket Battle Report 4:{SCROLL}Intelligence on the Trainers who have{NEWLINE}repeatedly obstructed Team Rocket’s{CLEAR}recent operations:{SCROLL}Two of them are from Pallet Town, named{NEWLINE}{VAR:0103:0} and Blue.{SCROLL}Misty, the Cerulean Gym Leader’s{NEWLINE}daughter, and two Trainers from other{CLEAR}regions also obstructed the Mt. Moon{CLEAR}operation.{SCROLL}One more is of unknown identity, but{NEWLINE}seems to know a great deal about Team{CLEAR}Rocket.{SCROLL}An assassination squad should be sent{NEWLINE}to eliminate them as soon as possible.{SCROLL}-Lawrence",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 119,
-      "zh": "火箭队近期战报5：{NEWLINE}冥王送来的精灵强化剂副作用明显,{CLEAR}被强化剂强化过的精灵{CLEAR}虽然力量会显著增强,{CLEAR}但会陷入狂暴状态。{CLEAR}所以目前的首要任务是完善强化剂。{CLEAR}——雅典娜。",
-      "en": "Team Rocket Battle Report 5:{SCROLL}The Pokémon Enhancer sent by Charon{NEWLINE}has serious side effects.{SCROLL}Enhanced Pokémon grow dramatically{NEWLINE}stronger, but they go berserk.{SCROLL}Our top priority now is perfecting the{NEWLINE}Enhancer.{SCROLL}-Ariana",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "精灵强化剂 → Pokémon Enhancer (Charon's drug that makes Pokémon berserk)."
-    },
-    {
-      "id": 120,
-      "zh": "武藏『有入侵者！",
-      "en": "Jessie: Intruder!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 121,
-      "zh": "关于精灵强化剂的最新研究报告：{NEWLINE}根据近期的一项意外发现,{CLEAR}彩虹道馆馆主饲养的那只臭臭花{CLEAR}所发出的特殊香气,{CLEAR}可以显著抑制因强化剂而狂暴的精灵。{CLEAR}消除强化剂副作用的关键,{CLEAR}可能就在这只臭臭花身上。",
-      "en": "Latest research report on the Pokémon{NEWLINE}Enhancer:{SCROLL}According to a recent accidental{NEWLINE}discovery, the special scent given off{CLEAR}by the Celadon Gym Leader’s Gloom...{SCROLL}...can markedly calm Pokémon that have{NEWLINE}gone berserk from the Enhancer.{SCROLL}The key to eliminating the Enhancer’s{NEWLINE}side effects may lie with this Gloom.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 122,
-      "zh": "武藏『小次郎,喵喵！{NEWLINE}快来看看这是谁来了。",
-      "en": "Jessie: James, Meowth! Come see who’s{NEWLINE}here.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 123,
-      "zh": "武藏『真是没想到,{NEWLINE}会在这里见到你这个碍事的臭小鬼。",
-      "en": "Jessie: Who’d have thought we’d run{NEWLINE}into you here, you meddling little brat.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 124,
-      "zh": "小次郎『居然敢独自{NEWLINE}闯进我们火箭队基地,{CLEAR}你还真是目中无人啊。",
-      "en": "James: Barging into our base all by{NEWLINE}yourself? You really think you’re{CLEAR}something.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 125,
-      "zh": "喵喵『这里可是我们的主场喵,{NEWLINE}也该轮到我们出出气了喵！",
-      "en": "Meowth: This is our home turf, meow.{NEWLINE}Time we got some payback, meow!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 126,
-      "zh": "武藏『没错,要把以前的账{NEWLINE}跟你好好算一算！",
-      "en": "Jessie: That’s right. We’re settling all{NEWLINE}our old scores with you!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 127,
-      "zh": "武藏『可恶……{NEWLINE}竟然又输给了这个臭小鬼。",
-      "en": "Jessie: Damn it...{SCROLL}We lost to this brat again.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "tone review: 可恶 = 'Damn it'; no voice record for 'Curses' (D-0058, D-0627)"
-    },
-    {
-      "id": 128,
-      "zh": "小次郎『让上头知道又要扣奖金了……",
-      "en": "James: If the higher-ups hear about{NEWLINE}this, they’ll dock our bonus again...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 129,
-      "zh": "喵喵『又要出去打工赚钱了吗喵？",
-      "en": "Meowth: Does this mean we gotta go get{NEWLINE}part-time jobs again, meow?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 130,
-      "zh": "武藏、小次郎、喵喵『{NEWLINE}好讨厌的感觉啊……",
-      "en": "Jessie, James & Meowth: Looks like Team{NEWLINE}Rocket’s blasting off again...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 131,
-      "zh": "小次郎『没奖金就没钱买酒,{NEWLINE}没酒就没瓶盖了……{CLEAR}真是的,都怪你这个小鬼！",
-      "en": "James: No bonus means no money for{NEWLINE}booze, and no booze means no bottle{CLEAR}caps...{SCROLL}Honestly, this is all your fault, you{NEWLINE}brat!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": " | D-1782: user approved booze for 酒, explicitly alcoholic drinks; following insult retained."
-    },
-    {
-      "id": 132,
-      "zh": "武藏『小鬼头,{NEWLINE}我们基地里有的是厉害干部,{CLEAR}你就等着被揍吧。",
-      "en": "Jessie: Listen, brat, our base is full of{NEWLINE}tough Executives.{SCROLL}Just you wait. You’re going to get{NEWLINE}pummeled.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 133,
-      "zh": "喵喵『你可不要乱动{NEWLINE}这个房间里的东西啊喵。",
-      "en": "Meowth: Don’t you go messin’ with the{NEWLINE}stuff in this room, meow.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 134,
-      "zh": "莉佳大小姐被吉尔露太{NEWLINE}带到下面一层去了,{CLEAR}现在她的处境非常危险。{CLEAR}我的精灵在刚刚跟火箭队的战斗中{CLEAR}受伤非常严重,{CLEAR}已经无法再战斗了。{CLEAR}所以拜托你去帮帮莉佳大小姐吧！{CLEAR}拜托你了！",
-      "en": "Lawrence took Lady Erika down to the{NEWLINE}floor below. She’s in grave danger right{CLEAR}now.{SCROLL}My Pokémon were badly hurt in the{NEWLINE}battle with Team Rocket just now. They{CLEAR}can’t battle anymore.{SCROLL}So please, go help Lady Erika! I’m{NEWLINE}begging you!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 135,
-      "zh": "最讨厌你这种自{NEWLINE}以为是的正义使者了,{CLEAR}我们火箭队君临天下{CLEAR}才是最大的正义。",
-      "en": "I can’t stand self-righteous heroes of{NEWLINE}justice like you.{SCROLL}Team Rocket ruling the world is the{NEWLINE}greatest justice of all.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 136,
-      "zh": "保卫实验室是我的职责,{NEWLINE}然而我却输给了你,{CLEAR}真是太气人了。",
-      "en": "Guarding the lab is my job, and yet I{NEWLINE}lost to you.{SCROLL}How infuriating.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 137,
-      "zh": "你不要打我啊！{NEWLINE}我只是个研究员没有战斗力的。",
-      "en": "Don’t hit me! I’m just a researcher. I{NEWLINE}can’t fight!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 138,
-      "zh": "我记得你这臭小鬼,{NEWLINE}你在圣安努号上捣乱来着吧？",
-      "en": "I remember you, you brat. You were the{NEWLINE}one making trouble on the S.S. Anne,{CLEAR}weren’t you?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 139,
-      "zh": "有你这样的身手,{NEWLINE}加入我们火箭队一起发大财不好吗。",
-      "en": "With moves like yours, why not join Team{NEWLINE}Rocket and get rich with us?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 140,
-      "zh": "就你这两把刷子{NEWLINE}是打不赢我们火箭队干部的,{CLEAR}你就等着被抓起虐待吧。",
-      "en": "With skills as feeble as yours, you’ll{NEWLINE}never beat Team Rocket’s Executives.{SCROLL}Just wait until you get caught and they{NEWLINE}make you suffer.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 141,
-      "zh": "莉佳馆主的臭臭花{NEWLINE}对我们的精灵强化实验非常重要,{CLEAR}如果不是因为这个,{CLEAR}我们也不会轻易去招惹一位馆主的。",
-      "en": "Gym Leader Erika’s Gloom is extremely{NEWLINE}important to our Pokémon enhancement{CLEAR}experiments.{SCROLL}If it weren’t for that, we’d never go{NEWLINE}out of our way to provoke a Gym Leader.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 142,
-      "zh": "这里以前是火箭队的窝点,{NEWLINE}现在被精灵联盟查封了。{SCROLL}我在这里看到了很多{NEWLINE}火箭队搞阴谋诡计的证据,{CLEAR}如果口袋妖怪们能在战斗中{CLEAR}像火箭队那样活用各种阴谋,{CLEAR}那它们的招式威力一定能得到提升。{CLEAR}如果你有精灵想学习阴谋的话,{CLEAR}我可以把火箭队{CLEAR}搞阴谋诡计的那些套路教给它们。{SCROLL}怎么样,要让精灵学习阴谋吗？",
-      "en": "This used to be a Team Rocket hideout,{NEWLINE}but the Pokémon League has sealed it{CLEAR}off.{SCROLL}I’ve seen lots of evidence of Team{NEWLINE}Rocket’s schemes and plots here.{SCROLL}If Pokémon could make use of all kinds{NEWLINE}of schemes in battle like Team Rocket{CLEAR}does...{SCROLL}...their moves would surely hit harder.{SCROLL}If you have a Pokémon that wants to{NEWLINE}learn Nasty Plot, I can teach it all of{CLEAR}Team Rocket’s scheming tricks.{SCROLL}So, want your Pokémon to learn Nasty{NEWLINE}Plot?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 143,
-      "zh": "猫老大的石像一动不动。",
-      "en": "The Persian statue won’t budge.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 144,
-      "zh": "精灵联盟——封。",
-      "en": "Sealed by the Pokémon League.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 145,
-      "zh": "小霞『我这里还有一只暴鲤龙,{NEWLINE}它可是非常有战斗天赋的精灵,{CLEAR}你也把它带上吧！",
-      "en": "Misty: I’ve got a Gyarados here too. It{NEWLINE}has a real talent for battle.{SCROLL}Take it with you!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 146,
-      "zh": "小霞『你的队伍满了呀,{NEWLINE}那就等你空出位置后{CLEAR}再来找我拿吧！",
-      "en": "Misty: Oh, your party’s full.{SCROLL}Then come get it from me once you’ve{NEWLINE}made room!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 147,
-      "zh": "{VAR:0103:0}『谢谢你啊小霞,{NEWLINE}那我去找莉佳了。{CLEAR}你在这里也要多加小心！",
-      "en": "{VAR:0103:0}: Thanks, Misty. I’ll go find{NEWLINE}Erika.{SCROLL}Be careful here too!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 148,
-      "zh": "{VAR:0103:0}从小霞那得到了暴鲤龙！",
-      "en": "{VAR:0103:0} received Gyarados from Misty!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 149,
-      "zh": "小霞『一定要救出莉佳她们啊！",
-      "en": "Misty: Make sure you rescue Erika and{NEWLINE}her companion!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 150,
-      "zh": "前面好像有很多火箭队,{NEWLINE}还是多带几只精灵再来吧。",
-      "en": "There seem to be lots of Team Rocket{NEWLINE}members ahead. Better bring more{CLEAR}Pokémon with you.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 151,
-      "zh": "一台精密的仪器,{NEWLINE}上面的灯有规律地闪烁着：{CLEAR}.- -.{CLEAR}..-{CLEAR}.-.",
-      "en": "A precision device. Its lights are{NEWLINE}blinking in a regular pattern:{CLEAR}.- -.{CLEAR}..-{CLEAR}.-.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 152,
-      "zh": "机器故障了。",
-      "en": "The machine is broken.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 153,
-      "zh": "测试,请输入第一位密码：",
-      "en": "Test. Enter the first digit of the{NEWLINE}password:",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 154,
-      "zh": "上一位正确,{NEWLINE}请输入第二位密码：",
-      "en": "Previous digit correct. Enter the{NEWLINE}second digit:",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 155,
-      "zh": "上一位正确,{NEWLINE}请输入第三位密码：",
-      "en": "Previous digit correct. Enter the third{NEWLINE}digit:",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 156,
-      "zh": "上一位正确,{NEWLINE}请输入第四位密码：",
-      "en": "Previous digit correct. Enter the{NEWLINE}fourth digit:",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 157,
-      "zh": "上一位正确,{NEWLINE}请输入第五位密码：",
-      "en": "Previous digit correct. Enter the fifth{NEWLINE}digit:",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 158,
-      "zh": "比较前,4000=2,下面开始比较。",
-      "en": "Before comparison, 4000=2. Starting{NEWLINE}comparison.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "Debug/test string (password check), translated literally."
-    },
-    {
-      "id": 159,
-      "zh": "小霞『{VAR:0103:0},{NEWLINE}莉佳她们现在身陷火箭队基地,{CLEAR}处境一定很危险。{SCROLL}小霞『你先不用管我了,{NEWLINE}去找莉佳她们要紧。{CLEAR}我这里有一个攀瀑的技能机,{CLEAR}你拿去用吧,应该可以帮得上你。",
-      "en": "Misty: {VAR:0103:0}, Erika and her companion{NEWLINE}are trapped in Team Rocket’s base.{SCROLL}They must be in real danger.{SCROLL}Misty: Don’t worry about me. Finding{NEWLINE}Erika is what matters.{SCROLL}I’ve got a TM for Waterfall here. Take{NEWLINE}it. It should help you out.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 160,
-      "zh": "小霞『嘿嘿,放心吧。",
-      "en": "Misty: Heh heh, don’t worry.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 161,
-      "zh": "空",
-      "en": "---",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 138 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl) | 空 = empty slot → '---' (as 0446)."
-    },
-    {
-      "id": 162,
-      "zh": "空",
-      "en": "---",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 138 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
-    },
-    {
-      "id": 163,
-      "zh": "要让哪个精灵学呢？{SCROLL}",
-      "en": "Which Pokémon should learn it?{SCROLL}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 3 source(s), flags page_breaks_lost; other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-    },
-    {
-      "id": 164,
-      "zh": "想学的话随时再来找我。",
-      "en": "If you ever want to learn it, come see{NEWLINE}me anytime.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-    },
-    {
-      "id": 165,
-      "zh": "空。",
-      "en": "---",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
-    },
-    {
-      "id": 166,
-      "zh": "抱歉……这个精灵{NEWLINE}没法记住阴谋。{SCROLL}",
-      "en": "Sorry... This Pokémon can’t learn Nasty{NEWLINE}Plot.{SCROLL}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 167,
-      "zh": "还没出生的精灵{NEWLINE}恐怕学不会这个技能……{SCROLL}",
-      "en": "A Pokémon that hasn’t hatched yet{NEWLINE}can’t learn this move...{SCROLL}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 3 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-    },
-    {
-      "id": 168,
-      "zh": "这只{VAR:0100:0}{NEWLINE}已经会阴谋了！{SCROLL}",
-      "en": "This {VAR:0100:0} already knows Nasty{NEWLINE}Plot!{SCROLL}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 169,
-      "zh": "１{VAR:0201:20}　２{VAR:0201:20}　…{VAR:0201:20}…{VAR:0201:20}完成！",
-      "en": "1{VAR:0201:20}, 2{VAR:0201:20}, and{VAR:0201:20}... {VAR:0201:20}... Done!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), flags fullwidth_chars; other variants: 6 more v3 TM candidates (tm_v4_matches.jsonl)"
-    },
-    {
-      "id": 170,
-      "zh": "{VAR:0101:0}学会了阴谋！",
-      "en": "{VAR:0101:0} learned Nasty Plot!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 171,
-      "zh": "这样一来{NEWLINE}你的{VAR:0100:0}{CLEAR}已经学会阴谋了。",
-      "en": "There! Your {VAR:0100:0} has learned{NEWLINE}Nasty Plot.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 172,
-      "zh": "{VAR:0101:0}想要记住{NEWLINE}新的阴谋……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习阴谋{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-      "en": "{VAR:0101:0} wants to learn the move{NEWLINE}Nasty Plot...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Forget a move to make room for Nasty{NEWLINE}Plot?{VAR:0200:0}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 173,
-      "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
-      "en": "{VAR:0106:1} will be forgotten. Is that{NEWLINE}OK? {VAR:0200:0}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl)"
-    },
-    {
-      "id": 174,
-      "zh": "１{VAR:0201:20}　２{VAR:0201:20}　…{VAR:0201:20}…{VAR:0201:20}完成！",
-      "en": "1{VAR:0201:20}, 2{VAR:0201:20}, and{VAR:0201:20}... {VAR:0201:20}... Done!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), flags fullwidth_chars; other variants: 6 more v3 TM candidates (tm_v4_matches.jsonl)"
-    },
-    {
-      "id": 175,
-      "zh": "{VAR:0101:0}完全忘了{NEWLINE}{VAR:0106:1}的用法！{SCROLL}然后……！",
-      "en": "{VAR:0101:0} forgot how to use{NEWLINE}{VAR:0106:1}!{SCROLL}And...!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 4 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
-    },
-    {
-      "id": 176,
-      "zh": "{VAR:0101:0}学会了阴谋！",
-      "en": "{VAR:0101:0} learned Nasty Plot!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 177,
-      "zh": "你是要放弃{NEWLINE}让它记住阴谋吗？{VAR:0200:0}",
-      "en": "Give up on teaching it Nasty Plot? {VAR:0200:0}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    }
-  ]
+ "narc": "a027",
+ "bank": 316,
+ "source": "work/extract/v4/a027/0316.json",
+ "strings": [
+  {
+   "id": 0,
+   "zh": "您好,这里是私人仓库,{NEWLINE}未经允许禁止进入,您请回吧！",
+   "en": "Hello. This is a private warehouse. No{NEWLINE}entry without permission.{SCROLL}Please leave!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "Bank 0316 (reused map): Lawrence's private warehouse and the Team Rocket Kanto Base below it; Misty and the player rescue Erika and her attendant."
+  },
+  {
+   "id": 1,
+   "zh": "小霞『你们的仓库到底有多大,{NEWLINE}莉佳进去这么久了怎么还没出来？",
+   "en": "Misty: Just how big is this warehouse of{NEWLINE}yours?{SCROLL}Erika went in ages ago. Why hasn’t she{NEWLINE}come out yet?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 2,
+   "zh": "想必吉尔露太大人{NEWLINE}正在给她介绍我们仓库里的{CLEAR}各种珍惜收藏品吧。",
+   "en": "I’m sure Master Lawrence is showing{NEWLINE}her all the rare treasures in our{CLEAR}collection.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "consistency fix (follow-up 4)"
+  },
+  {
+   "id": 3,
+   "zh": "小霞『收藏品……{SCROLL}小霞『果然吉尔露太就是那个{NEWLINE}传闻中的「收藏家」吧！{CLEAR}这么说来莉佳现在很危险！",
+   "en": "Misty: Treasures...{SCROLL}Misty: So Lawrence really is that{NEWLINE}‘Collector’ everyone’s been whispering{CLEAR}about!{SCROLL}Then Erika’s in danger right now!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 4,
+   "zh": "站住！这里禁止通行！",
+   "en": "Halt! No entry!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 5,
+   "zh": "小霞『哼,那我要是非过去不可呢？",
+   "en": "Misty: Hmph. And what if I insist on{NEWLINE}getting through?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 6,
+   "zh": "你这臭丫头可真够烦的。{NEWLINE}你要是敢硬闯的话,{CLEAR}就做好死在这的觉悟吧！",
+   "en": "You’re a real pain, you little brat.{SCROLL}If you try to force your way in, you’d{NEWLINE}better be ready to die here!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "tone review: 臭丫头 is a contemptuous insult for a girl; kept as 'little brat' (D-0627)"
+  },
+  {
+   "id": 7,
+   "zh": "小霞『果然,你们不是什么善类。{NEWLINE}既然这样那我们更是非过去不可了！",
+   "en": "Misty: I knew it. You’re no honest{NEWLINE}folks.{SCROLL}Then we’ve got even more reason to get{NEWLINE}through!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 8,
+   "zh": "真是越无知越勇敢,{NEWLINE}居然敢在这里跟我们撒野,{CLEAR}今天就叫你有来无回！",
+   "en": "The less you know, the braver you are,{NEWLINE}huh? Daring to make trouble here...{SCROLL}You’re not leaving this place today!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 9,
+   "zh": "小霞『{VAR:0103:0},{NEWLINE}莉佳她们两个人在里面{CLEAR}很可能会遇到什么危险,{CLEAR}咱们不要管这两个门卫了,{CLEAR}直接冲进去！",
+   "en": "Misty: {VAR:0103:0}, Erika and her companion{NEWLINE}could be in danger in there.{SCROLL}Forget these two guards. Let’s charge{NEWLINE}straight in!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "莉佳她们(两个人) = Erika and her attendant (#75/#99) → 'Erika and her companion'."
+  },
+  {
+   "id": 10,
+   "zh": "{VAR:0103:0}『好！",
+   "en": "{VAR:0103:0}: Right!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 11,
+   "zh": "我们居然挡不住这两个小鬼吗？！",
+   "en": "We couldn’t even stop a couple of{NEWLINE}kids?!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 12,
+   "zh": "小霞『我有很不好的预感,{NEWLINE}咱们快去仓库跟莉佳汇合吧！",
+   "en": "Misty: I’ve got a really bad feeling.{NEWLINE}Let’s hurry to the warehouse and find{CLEAR}Erika!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 13,
+   "zh": "你们两个居然敢闯到这里来,{NEWLINE}好大的胆子。",
+   "en": "You two have some nerve, barging in{NEWLINE}here.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 14,
+   "zh": "小霞『你们两个{NEWLINE}居然敢挡着我们不让过去,{CLEAR}好大的胆子！",
+   "en": "Misty: And you two have some nerve,{NEWLINE}trying to block our way!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 15,
+   "zh": "她妈的你这娘们废话真多！",
+   "en": "For fuck’s sake, woman, you just don’t{NEWLINE}shut up!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "zh 她妈的你这娘们 kept at strength."
+  },
+  {
+   "id": 16,
+   "zh": "冷静！不要跟他们啰嗦,{NEWLINE}直接弄死他们。",
+   "en": "Calm down! Don’t waste words on them.{NEWLINE}Just kill them.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "tone review: 弄死 = kill; kept literal (D-0627)"
+  },
+  {
+   "id": 17,
+   "zh": "小霞『宝石海星,给他最后一击！",
+   "en": "Misty: Starmie, finish him off!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 18,
+   "zh": "啊……{NEWLINE}这下要向吉尔露太大人谢罪了……",
+   "en": "Ahh...{SCROLL}Now I’ll have to go beg Master{NEWLINE}Lawrence’s forgiveness...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "consistency fix (follow-up 4)"
+  },
+  {
+   "id": 19,
+   "zh": "小霞『{VAR:0103:0},仓库就在前面,{NEWLINE}咱们快进去吧！",
+   "en": "Misty: {VAR:0103:0}, the warehouse is just{NEWLINE}ahead. Let’s hurry in!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 20,
+   "zh": "你干什么？{NEWLINE}这里的仓库重地禁止通行,{CLEAR}你给我滚回去！",
+   "en": "What do you think you’re doing? The{NEWLINE}warehouse area is off-limits.{SCROLL}Now get lost!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "tone review: 滚回去 is a rude 'get lost'; kept rude (D-0627)"
+  },
+  {
+   "id": 21,
+   "zh": "滴——{SCROLL}电脑似乎还开着。{SCROLL}桌面上有一个启动程序,{NEWLINE}要运行试试看吗？",
+   "en": "Beep...{SCROLL}The computer seems to still be on.{SCROLL}There’s a launcher program on the{NEWLINE}desktop. Try running it?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 22,
+   "zh": "{VAR:0103:0}运行了启动程序——{SCROLL}{VAR:0103:0}『……",
+   "en": "{VAR:0103:0} ran the launcher program...{SCROLL}{VAR:0103:0}: ...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 23,
+   "zh": "{VAR:FF01:200}小霞『{VAR:0103:0}！！！{VAR:FF01:100}",
+   "en": "{VAR:FF01:200}Misty: {VAR:0103:0}!!!{VAR:FF01:100}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 24,
+   "zh": "小霞『{VAR:0103:0}！！！{NEWLINE}那边有个柜子突然自己挪动了位置,{CLEAR}然后露出了一个通向下面的楼梯！{CLEAR}你快来看看！",
+   "en": "Misty: {VAR:0103:0}!!! A cabinet over there{NEWLINE}just moved all by itself...{SCROLL}...and there’s a staircase leading{NEWLINE}down! Come look!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 25,
+   "zh": "小霞『这就是那个隐藏的通道,{NEWLINE}莉佳很有可能被他们带到下面去了。",
+   "en": "Misty: This must be the hidden passage.{NEWLINE}They’ve probably taken Erika down{CLEAR}there.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 26,
+   "zh": "小霞『{VAR:0103:0},{NEWLINE}咱们一起下去看个究竟吧！",
+   "en": "Misty: {VAR:0103:0}, let’s go down together{NEWLINE}and find out what’s going on!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 27,
+   "zh": "密道的启动程序已经执行,{NEWLINE}现在密道是开启状态。",
+   "en": "The launcher program for the secret{NEWLINE}passage has been run. The passage is{CLEAR}now open.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 28,
+   "zh": "小霞『好啊,原来这里{NEWLINE}是你们火箭队的基地！",
+   "en": "Misty: I knew it! So this is Team{NEWLINE}Rocket’s base!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 29,
+   "zh": "上面那群人是吃干饭的吗？{NEWLINE}居然能让你跑到这里来,{CLEAR}不过你也就到此为止了,{CLEAR}老娘这就送你上西天！",
+   "en": "Are those fools upstairs good for{NEWLINE}nothing? Letting you get all the way{CLEAR}down here...{SCROLL}But this is where it ends. I’m gonna{NEWLINE}send you straight to your grave myself!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "tone review: 老娘 is a swaggering female 'me'; carried by tone, not a pronoun substitute; 上西天 = kill (D-0627)"
+  },
+  {
+   "id": 30,
+   "zh": "{VAR:0103:0}『小霞！",
+   "en": "{VAR:0103:0}: Misty!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 31,
+   "zh": "小霞『哼,你们这些火箭队的{NEWLINE}从来都是口气不小,本事不大。",
+   "en": "Misty: Hmph. You Team Rocket types are{NEWLINE}always all talk and no skill.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 32,
+   "zh": "{VAR:0103:0}『火箭队的人还是很危险的,{NEWLINE}不可以掉以轻心,{CLEAR}咱们还是一起战斗吧！",
+   "en": "{VAR:0103:0}: Team Rocket is still{NEWLINE}dangerous. We can’t let our guard{CLEAR}down.{SCROLL}Let’s fight together!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 33,
+   "zh": "小霞『嘿嘿,能跟你并肩作战,{NEWLINE}谁来我都不会怕的！",
+   "en": "Misty: Heh heh! Fighting side by side{NEWLINE}with you, I’m not scared of anyone!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 34,
+   "zh": "妈的,少目中无人了,{NEWLINE}让你们知道我们火箭队的手段！",
+   "en": "Dammit, quit looking down on us! We’ll{NEWLINE}show you what Team Rocket can do!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 35,
+   "zh": "{VAR:0103:0}『我来帮你{NEWLINE}一起教训这些饭桶。",
+   "en": "{VAR:0103:0}: I’ll help you teach these{NEWLINE}losers a lesson.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 36,
+   "zh": "小霞『太好了,有你在的话,{NEWLINE}咱们一定能赢！",
+   "en": "Misty: Great! With you here, we’re sure{NEWLINE}to win!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 37,
+   "zh": "这次的入侵者……{NEWLINE}有些难缠啊……",
+   "en": "These intruders... are tougher than{NEWLINE}they look...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 38,
+   "zh": "我怎么能输呢……",
+   "en": "How could I lose...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 39,
+   "zh": "小霞『{VAR:0103:0},{NEWLINE}这里是火箭队基地,{CLEAR}而莉佳又不见了踪影,{CLEAR}我担心……",
+   "en": "Misty: {VAR:0103:0}, this is Team Rocket’s{NEWLINE}base...{SCROLL}...and there’s no sign of Erika{NEWLINE}anywhere. I’m worried...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 40,
+   "zh": "玛狃拉,暗袭要害！",
+   "en": "Weavile, Night Slash!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 41,
+   "zh": "小霞『宝石海星！！！",
+   "en": "Misty: Starmie!!!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 42,
+   "zh": "{VAR:0103:0}『{VAR:0100:1}！{NEWLINE}保护小霞！",
+   "en": "{VAR:0103:0}: {VAR:0100:1}! Protect Misty!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 43,
+   "zh": "{VAR:0103:0}『你们这些卑鄙的家伙,{NEWLINE}休想再伤害小霞！",
+   "en": "{VAR:0103:0}: You cowards! I won’t let you{NEWLINE}hurt Misty again!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 44,
+   "zh": "{VAR:0103:0}『你们这些卑鄙的家伙,{NEWLINE}做事真是没有底线！",
+   "en": "{VAR:0103:0}: You cowards! Is there{NEWLINE}anything you won’t stoop to?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 45,
+   "zh": "哟呵呵呵,偷袭得手,{NEWLINE}老娘就不跟你继续纠缠了,扯呼！",
+   "en": "Oh ho ho ho! Sneak attack, nailed it!{SCROLL}I can’t be bothered with you any{NEWLINE}longer. I’m outta here!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "tone review: 老娘 is a swaggering female 'me'; carried by tone, not a pronoun substitute (D-0627)"
+  },
+  {
+   "id": 46,
+   "zh": "{VAR:0103:0}『怎么样,小霞,{NEWLINE}你没有受伤吧？",
+   "en": "{VAR:0103:0}: Misty, are you okay? You’re{NEWLINE}not hurt?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 47,
+   "zh": "小霞『我没有什么事,{NEWLINE}多亏宝石海星帮我挡下了攻击。{CLEAR}不过宝石海星似乎伤得不轻,{CLEAR}我得赶紧给它做一下治疗。",
+   "en": "Misty: I’m fine. Starmie took the hit for{NEWLINE}me.{SCROLL}But Starmie looks pretty badly hurt. I{NEWLINE}have to treat it right away.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 48,
+   "zh": "小霞『好了,快点去找莉佳吧,{NEWLINE}我给宝石海星稍做治疗后就去找你。",
+   "en": "Misty: Okay, hurry and go find Erika.{SCROLL}I’ll patch Starmie up a bit and then{NEWLINE}come find you.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 49,
+   "zh": "{VAR:0103:0}『嗯,你在这里{NEWLINE}也要多加小心啊！",
+   "en": "{VAR:0103:0}: Right. You be careful here{NEWLINE}too!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 50,
+   "zh": "{VAR:0103:0}『嗯,交给我吧！",
+   "en": "{VAR:0103:0}: Right, leave it to me!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 51,
+   "zh": "滴——{SCROLL}电脑桌面上有一个打开的文档,{NEWLINE}上面写着：{CLEAR}用五台仪器分别存储,{CLEAR}以从下至上、{CLEAR}从右至左的顺序排列{CLEAR}即可移动雕像。",
+   "en": "Beep...{SCROLL}There’s an open document on the{NEWLINE}computer desktop. It reads:{CLEAR}Stored separately on five devices.{CLEAR}Arrange them from bottom to top{CLEAR}and from right to left{CLEAR}to move the statue.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 52,
+   "zh": "一台精密的仪器,{NEWLINE}上面的灯有规律地闪烁着：{CLEAR}. - .{CLEAR}.{CLEAR}- . .",
+   "en": "A precision device. Its lights are{NEWLINE}blinking in a regular pattern:{CLEAR}. - .{CLEAR}.{CLEAR}- . .",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "Morse puzzle kept as in zh (it spells English): #52 RED, #53 GRE, #54 YEL, #55 BLU, #56 ORA, #151 PUR; #57 colour order = digits 1–6."
+  },
+  {
+   "id": 53,
+   "zh": "一台精密的仪器,{NEWLINE}上面的灯有规律地闪烁着：{CLEAR}- - .{CLEAR}. -.{CLEAR}.",
+   "en": "A precision device. Its lights are{NEWLINE}blinking in a regular pattern:{CLEAR}- - .{CLEAR}. -.{CLEAR}.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 54,
+   "zh": "一台精密的仪器,{NEWLINE}上面的灯有规律地闪烁着：{CLEAR}- . - -{CLEAR}.{CLEAR}. - . .",
+   "en": "A precision device. Its lights are{NEWLINE}blinking in a regular pattern:{CLEAR}- . - -{CLEAR}.{CLEAR}. - . .",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 55,
+   "zh": "一台精密的仪器,{NEWLINE}上面的灯有规律地闪烁着：{CLEAR}- . . .{CLEAR}. - . .{CLEAR}. . -",
+   "en": "A precision device. Its lights are{NEWLINE}blinking in a regular pattern:{CLEAR}- . . .{CLEAR}. - . .{CLEAR}. . -",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 56,
+   "zh": "一台精密的仪器,{NEWLINE}上面的灯有规律地闪烁着：{CLEAR}- - -{CLEAR}. - .{CLEAR}. -",
+   "en": "A precision device. Its lights are{NEWLINE}blinking in a regular pattern:{CLEAR}- - -{CLEAR}. - .{CLEAR}. -",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 57,
+   "zh": "一台精密的仪器,{NEWLINE}上面交灯替闪烁着：{CLEAR}赤、橙、黄、绿、蓝、紫,6种颜色。",
+   "en": "A precision device. Its lights are{NEWLINE}flashing in turn:{CLEAR}red, orange, yellow, green, blue and{CLEAR}purple. Six colors.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 58,
+   "zh": "一台精密的仪器,{NEWLINE}不断发出摩斯摩斯的声音。",
+   "en": "A precision device. It keeps making{NEWLINE}a sound like ‘Morse... Morse...’",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "摩斯摩斯 = 'Morse Morse' pun hint."
+  },
+  {
+   "id": 59,
+   "zh": "滴——{SCROLL}电脑似乎还开着。{SCROLL}桌面上有一个控制程序,{NEWLINE}需要输入密码才能操作,{CLEAR}要输入密码试试看吗？{SCROLL}",
+   "en": "Beep...{SCROLL}The computer seems to still be on.{SCROLL}There’s a control program on the{NEWLINE}desktop, but it needs a password. Try{CLEAR}entering a password?{SCROLL}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 60,
+   "zh": "请输入第一位密码：",
+   "en": "Enter the first digit of the password:",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 61,
+   "zh": "1",
+   "en": "1",
+   "status": "reviewed",
+   "origin": "copy",
+   "notes": "",
+   "category": "menu_touch_col"
+  },
+  {
+   "id": 62,
+   "zh": "2",
+   "en": "2",
+   "status": "reviewed",
+   "origin": "copy",
+   "notes": "",
+   "category": "menu_touch_col"
+  },
+  {
+   "id": 63,
+   "zh": "3",
+   "en": "3",
+   "status": "reviewed",
+   "origin": "copy",
+   "notes": "",
+   "category": "menu_touch_col"
+  },
+  {
+   "id": 64,
+   "zh": "4",
+   "en": "4",
+   "status": "reviewed",
+   "origin": "copy",
+   "notes": "",
+   "category": "menu_touch_col"
+  },
+  {
+   "id": 65,
+   "zh": "5",
+   "en": "5",
+   "status": "reviewed",
+   "origin": "copy",
+   "notes": "",
+   "category": "menu_touch_col"
+  },
+  {
+   "id": 66,
+   "zh": "6",
+   "en": "6",
+   "status": "reviewed",
+   "origin": "copy",
+   "notes": "",
+   "category": "menu_touch_col"
+  },
+  {
+   "id": 67,
+   "zh": "请输入第二位密码：",
+   "en": "Enter the second digit of the password:",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 68,
+   "zh": "请输入第三位密码：",
+   "en": "Enter the third digit of the password:",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 69,
+   "zh": "请输入第四位密码：",
+   "en": "Enter the fourth digit of the password:",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 70,
+   "zh": "请输入第五位密码：",
+   "en": "Enter the fifth digit of the password:",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 71,
+   "zh": "密码错误,无法启动控制程序！",
+   "en": "Incorrect password. The control{NEWLINE}program can’t be started!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 72,
+   "zh": "密码正确,{NEWLINE}启动猫老大石像控制程序。{SCROLL}滴——{SCROLL}猫老大石像已移位,{NEWLINE}限制通道已可以通过。",
+   "en": "Password accepted. Starting the{NEWLINE}Persian statue control program.{SCROLL}Beep...{SCROLL}The Persian statue has moved. The{NEWLINE}restricted passage is now open.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 73,
+   "zh": "猫老大石像已移位,{NEWLINE}限制通道已可以通过。",
+   "en": "The Persian statue has moved. The{NEWLINE}restricted passage is now open.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 74,
+   "zh": "我说这位小姐,{NEWLINE}你就赶紧放弃挣扎吧,{CLEAR}在我们火箭队的基地里,{CLEAR}你还想反了天不成？",
+   "en": "Listen, miss, just give up already.{SCROLL}You think you can turn the tables inside{NEWLINE}Team Rocket’s base?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 75,
+   "zh": "你们这帮歹徒,{NEWLINE}休想让我屈服！{CLEAR}我一定会保护莉佳大小姐出去的！",
+   "en": "You thugs will never make me give in!{SCROLL}I’ll get Lady Erika out of here safely,{NEWLINE}no matter what!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 76,
+   "zh": "你那个莉佳馆主{NEWLINE}现在正被我们火箭队的干部招呼呢,{CLEAR}估计很快就抵挡不住了吧。{CLEAR}你要是现在投降让我们省点精力,{CLEAR}等我拿你身体做实验的时候{CLEAR}还可以考虑给你上点麻药。",
+   "en": "That Gym Leader Erika of yours is being{NEWLINE}‘entertained’ by one of our Executives{CLEAR}right now.{SCROLL}She probably can’t hold out much{NEWLINE}longer.{SCROLL}If you surrender now and save us some{NEWLINE}trouble, then when I use your body for{CLEAR}my experiments...{SCROLL}...maybe I’ll consider giving you some{NEWLINE}anesthetic.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 77,
+   "zh": "居然还想拿活人做实验,{NEWLINE}你们简直不是人！",
+   "en": "Experimenting on living people? You’re{NEWLINE}not human!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 78,
+   "zh": "哈哈哈哈哈,我们火箭队都是{NEWLINE}将来要君临天下的神,{CLEAR}当然跟你们这些凡人不同。",
+   "en": "Hahahaha! We of Team Rocket are gods{NEWLINE}destined to rule the world!{SCROLL}Of course we’re different from you mere{NEWLINE}mortals.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 79,
+   "zh": "{VAR:0103:0}『少在那里自以为是了！",
+   "en": "{VAR:0103:0}: Quit acting so full of{NEWLINE}yourself!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 80,
+   "zh": "{VAR:0103:0}『你们这些神也不怎么样啊！",
+   "en": "{VAR:0103:0}: You ‘gods’ aren’t much to{NEWLINE}write home about!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 81,
+   "zh": "{VAR:0103:0}『你们这帮坏事做绝的家伙！",
+   "en": "{VAR:0103:0}: You lowlifes will stop at{NEWLINE}nothing!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 82,
+   "zh": "{VAR:0103:0}『被我这个凡人偷家了{NEWLINE}都还不知道。",
+   "en": "{VAR:0103:0}: A mere mortal like me raided{NEWLINE}your base, and you didn’t even notice.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 83,
+   "zh": "这这这……{NEWLINE}怎么会有外人来到这里！？",
+   "en": "Wh-wh-what...{SCROLL}How did an outsider get in here!?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 84,
+   "zh": "{VAR:0103:0}『莉佳馆主去哪了？{NEWLINE}赶紧把人交出来！",
+   "en": "{VAR:0103:0}: Where’s Gym Leader Erika?{NEWLINE}Hand her over, now!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 85,
+   "zh": "{VAR:0103:0}『嘿嘿,你这种惊讶的表情,{NEWLINE}我这一路上可见了好几次呢。",
+   "en": "{VAR:0103:0}: Heh heh. I’ve seen that{NEWLINE}surprised look plenty of times on my way{CLEAR}here.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 86,
+   "zh": "真是个碍眼的小鬼。",
+   "en": "What an annoying brat.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 87,
+   "zh": "来人啊,把这个小鬼给我解决掉！",
+   "en": "Somebody! Get rid of this brat for me!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 88,
+   "zh": "是！",
+   "en": "Yes, sir!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s); other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl)"
+  },
+  {
+   "id": 89,
+   "zh": "敢独自闯进我们火箭队的秘密基地,{NEWLINE}胆子不小啊你！",
+   "en": "You’ve got guts, barging into Team{NEWLINE}Rocket’s secret base all alone!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 90,
+   "zh": "这小鬼好厉害……",
+   "en": "This brat’s really strong...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 91,
+   "zh": "真是没用！",
+   "en": "Useless!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 92,
+   "zh": "用你的余生来后悔闯入这里吧！",
+   "en": "You’ll spend the rest of your life{NEWLINE}regretting you ever came here!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 93,
+   "zh": "我们的精灵已经无法再战斗了,{NEWLINE}快来支援！",
+   "en": "Our Pokémon can’t battle anymore. Send{NEWLINE}backup!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 94,
+   "zh": "战斗到这里,你已经很疲惫了吧？",
+   "en": "After all that battling, you must be{NEWLINE}pretty worn out by now, huh?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 95,
+   "zh": "趁虚而入失败了……",
+   "en": "So much for catching you worn out...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 96,
+   "zh": "安吉丽娜,你跟我一起上！",
+   "en": "Angelina, you’re with me!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "安吉丽娜 → Angelina (unclear if a partner grunt or a Pokémon nickname; double battle with the lab deputy chief #97)."
+  },
+  {
+   "id": 97,
+   "zh": "让你看看我这个实验室副主管的实力！",
+   "en": "I’ll show you what the lab’s deputy{NEWLINE}chief can do!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 98,
+   "zh": "难以置信,{NEWLINE}连我都无法阻挡你吗？{SCROLL}行,那你就到下面一层{NEWLINE}去会会我们的干部大人吧！{CLEAR}他们会教你怎么重新做人的。",
+   "en": "Unbelievable. Even I couldn’t stop you?{SCROLL}Fine. Go down to the next floor and{NEWLINE}meet our Executives!{SCROLL}They’ll teach you a lesson you’ll never{NEWLINE}forget.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 99,
+   "zh": "你是小霞的朋友吧？{NEWLINE}谢谢你能来到这里救我们。{SCROLL}莉佳大小姐被吉尔露太{NEWLINE}带到下面一层去了,{CLEAR}现在她的处境非常危险。{CLEAR}我的精灵在刚刚跟火箭队的战斗中{CLEAR}受伤非常严重,{CLEAR}已经无法再战斗了。{CLEAR}所以拜托你去帮帮莉佳大小姐吧！{CLEAR}拜托你了！",
+   "en": "You’re Misty’s friend, aren’t you?{NEWLINE}Thank you for coming all this way to{CLEAR}save us.{SCROLL}Lawrence took Lady Erika down to the{NEWLINE}floor below. She’s in grave danger right{CLEAR}now.{SCROLL}My Pokémon were badly hurt in the{NEWLINE}battle with Team Rocket just now. They{CLEAR}can’t battle anymore.{SCROLL}So please, go help Lady Erika! I’m{NEWLINE}begging you!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 100,
+   "zh": "{VAR:0103:0}『嗯,我这就去！",
+   "en": "{VAR:0103:0}: Right, I’m on my way!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 101,
+   "zh": "{VAR:0103:0}『放心吧,不会有事的。",
+   "en": "{VAR:0103:0}: Don’t worry. Everything will{NEWLINE}be fine.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 102,
+   "zh": "谢谢你。",
+   "en": "Thank you.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 103,
+   "zh": "一个厚重的大柜子。",
+   "en": "A big, heavy cabinet.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 104,
+   "zh": "宝石海星『Sta——mi！",
+   "en": "Starmie: Sta-mi!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s); other variants: 3 more v3 TM candidates (tm_v4_matches.jsonl)"
+  },
+  {
+   "id": 105,
+   "zh": "吉尔露太大人不是你们能得罪的,{NEWLINE}识相的赶紧离开仓库。",
+   "en": "Master Lawrence isn’t someone you can{NEWLINE}afford to cross.{SCROLL}If you know what’s good for you, you’ll{NEWLINE}leave the warehouse now.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "consistency fix (follow-up 4)"
+  },
+  {
+   "id": 106,
+   "zh": "哼,敢探究这里的事,{NEWLINE}你还真是找死。",
+   "en": "Hmph. Poking around in our business?{NEWLINE}You must have a death wish.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 107,
+   "zh": "妈的,我记得你！你在月……{SCROLL}呸,你这个臭小鬼！",
+   "en": "Dammit, I remember you! You were at{NEWLINE}Mt. Moo...{SCROLL}Bah! You rotten brat!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "ext-review RV-019"
+  },
+  {
+   "id": 108,
+   "zh": "在我们的地盘上,看你能得意多久！",
+   "en": "On our turf! Let’s see how long you can{NEWLINE}keep that smug look!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 109,
+   "zh": "小霞『{VAR:0103:0},{NEWLINE}这两个门卫堵在这里不让进,{CLEAR}看来不硬闯是不行了。",
+   "en": "Misty: {VAR:0103:0}, these two guards won’t{NEWLINE}let us in.{SCROLL}Looks like we’ll have to force our way{NEWLINE}through.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 110,
+   "zh": "吉尔露太私人仓库,{NEWLINE}未经允许严禁擅自入内。",
+   "en": "Lawrence’s Private Warehouse.{SCROLL}Strictly no entry without permission.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 111,
+   "zh": "小霞『{VAR:0103:0},{NEWLINE}这里就是仓库的尽头了吧？{CLEAR}莉佳她们居然没在这里！{CLEAR}会不会在仓库的哪个地方{CLEAR}有什么机关暗门呢？",
+   "en": "Misty: {VAR:0103:0}, this must be the far{NEWLINE}end of the warehouse, right?{SCROLL}But Erika and her companion aren’t{NEWLINE}here!{SCROLL}Could there be some hidden mechanism or{NEWLINE}secret door somewhere in the{CLEAR}warehouse?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 112,
+   "zh": "火箭队关东基地,{NEWLINE}出入人员注意不要被跟踪！",
+   "en": "Team Rocket Kanto Base.{SCROLL}All personnel: make sure you are not{NEWLINE}followed when entering or leaving!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 113,
+   "zh": "武藏『居然是你这个小鬼头！",
+   "en": "Jessie: Well, if it isn’t you, you little{NEWLINE}brat!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 114,
+   "zh": "火箭队近期战报1：{NEWLINE}追捕逃脱的梦幻行动中,{CLEAR}因为5个年轻训练家插手{CLEAR}导致梦幻逃脱。{CLEAR}现需要对这5人的底细进行调查。{CLEAR}——伦达",
+   "en": "Team Rocket Battle Report 1:{SCROLL}During the operation to recapture the{NEWLINE}escaped Mew, five young Trainers{CLEAR}interfered, and Mew got away.{SCROLL}The backgrounds of these five must be{NEWLINE}investigated.{SCROLL}-Petrel",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 115,
+   "zh": "要继续看吗？",
+   "en": "Keep reading?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 116,
+   "zh": "火箭队近期战报2：{NEWLINE}圣安努号劫持行动发生意外,{CLEAR}未能按计划劫走圣安努号。{CLEAR}原因是有一名训练家的精灵{CLEAR}未食用特制的迷幻食品。{CLEAR}——水吾桐。",
+   "en": "Team Rocket Battle Report 2:{SCROLL}The S.S. Anne hijacking went wrong, and{NEWLINE}we failed to seize the ship as planned.{SCROLL}The cause: one Trainer’s Pokémon did{NEWLINE}not eat the specially made{CLEAR}hallucinogenic food.{SCROLL}-Archie",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 117,
+   "zh": "火箭队近期战报3：{NEWLINE}虽然找到了富士博士的哥哥,{CLEAR}但是因为3名训练家{CLEAR}和四天王菊子的出现,{CLEAR}讯问被迫中断。{CLEAR}——赤焰松。",
+   "en": "Team Rocket Battle Report 3:{SCROLL}We found Dr. Fuji’s brother, but the{NEWLINE}interrogation had to be cut short...{SCROLL}...when three Trainers and Agatha of{NEWLINE}the Elite Four showed up.{SCROLL}-Maxie",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "富士博士 → Dr. Fuji (Mewtwo's creator, Movie 1)."
+  },
+  {
+   "id": 118,
+   "zh": "火箭队近期战报4：{NEWLINE}近期多次阻碍火箭队行动的{CLEAR}几名训练家的情报调查如下：{CLEAR}其中两人来自真新镇,{CLEAR}分别叫{VAR:0103:0}、小绿。{CLEAR}华蓝馆主的女儿小霞{CLEAR}和两名其他地区的训练家{CLEAR}也阻碍过月见山的行动。{CLEAR}还有一人身份不明,{CLEAR}但似乎对我们火箭队的底细有所掌握。{CLEAR}应尽快派出暗杀部队消灭这些人。{CLEAR}——吉尔露太。",
+   "en": "Team Rocket Battle Report 4:{SCROLL}Intelligence on the Trainers who have{NEWLINE}repeatedly obstructed Team Rocket’s{CLEAR}recent operations:{SCROLL}Two of them are from Pallet Town, named{NEWLINE}{VAR:0103:0} and Blue.{SCROLL}Misty, the Cerulean Gym Leader’s{NEWLINE}daughter, and two Trainers from other{CLEAR}regions also obstructed the Mt. Moon{CLEAR}operation.{SCROLL}One more is of unknown identity, but{NEWLINE}seems to know a great deal about Team{CLEAR}Rocket.{SCROLL}An assassination squad should be sent{NEWLINE}to eliminate them as soon as possible.{SCROLL}-Lawrence",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 119,
+   "zh": "火箭队近期战报5：{NEWLINE}冥王送来的精灵强化剂副作用明显,{CLEAR}被强化剂强化过的精灵{CLEAR}虽然力量会显著增强,{CLEAR}但会陷入狂暴状态。{CLEAR}所以目前的首要任务是完善强化剂。{CLEAR}——雅典娜。",
+   "en": "Team Rocket Battle Report 5:{SCROLL}The Pokémon Enhancer sent by Charon{NEWLINE}has serious side effects.{SCROLL}Enhanced Pokémon grow dramatically{NEWLINE}stronger, but they go berserk.{SCROLL}Our top priority now is perfecting the{NEWLINE}Enhancer.{SCROLL}-Ariana",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "精灵强化剂 → Pokémon Enhancer (Charon's drug that makes Pokémon berserk)."
+  },
+  {
+   "id": 120,
+   "zh": "武藏『有入侵者！",
+   "en": "Jessie: Intruder!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 121,
+   "zh": "关于精灵强化剂的最新研究报告：{NEWLINE}根据近期的一项意外发现,{CLEAR}彩虹道馆馆主饲养的那只臭臭花{CLEAR}所发出的特殊香气,{CLEAR}可以显著抑制因强化剂而狂暴的精灵。{CLEAR}消除强化剂副作用的关键,{CLEAR}可能就在这只臭臭花身上。",
+   "en": "Latest research report on the Pokémon{NEWLINE}Enhancer:{SCROLL}According to a recent accidental{NEWLINE}discovery, the special scent given off{CLEAR}by the Celadon Gym Leader’s Gloom...{SCROLL}...can markedly calm Pokémon that have{NEWLINE}gone berserk from the Enhancer.{SCROLL}The key to eliminating the Enhancer’s{NEWLINE}side effects may lie with this Gloom.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 122,
+   "zh": "武藏『小次郎,喵喵！{NEWLINE}快来看看这是谁来了。",
+   "en": "Jessie: James, Meowth! Come see who’s{NEWLINE}here.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 123,
+   "zh": "武藏『真是没想到,{NEWLINE}会在这里见到你这个碍事的臭小鬼。",
+   "en": "Jessie: Who’d have thought we’d run{NEWLINE}into you here, you meddling little brat.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 124,
+   "zh": "小次郎『居然敢独自{NEWLINE}闯进我们火箭队基地,{CLEAR}你还真是目中无人啊。",
+   "en": "James: Barging into our base all by{NEWLINE}yourself? You really think you’re{CLEAR}something.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 125,
+   "zh": "喵喵『这里可是我们的主场喵,{NEWLINE}也该轮到我们出出气了喵！",
+   "en": "Meowth: This is our home turf, meow.{NEWLINE}Time we got some payback, meow!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 126,
+   "zh": "武藏『没错,要把以前的账{NEWLINE}跟你好好算一算！",
+   "en": "Jessie: That’s right. We’re settling all{NEWLINE}our old scores with you!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 127,
+   "zh": "武藏『可恶……{NEWLINE}竟然又输给了这个臭小鬼。",
+   "en": "Jessie: Damn it...{SCROLL}We lost to this brat again.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "tone review: 可恶 = 'Damn it'; no voice record for 'Curses' (D-0058, D-0627)"
+  },
+  {
+   "id": 128,
+   "zh": "小次郎『让上头知道又要扣奖金了……",
+   "en": "James: If the higher-ups hear about{NEWLINE}this, they’ll dock our bonus again...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 129,
+   "zh": "喵喵『又要出去打工赚钱了吗喵？",
+   "en": "Meowth: Does this mean we gotta go get{NEWLINE}part-time jobs again, meow?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 130,
+   "zh": "武藏、小次郎、喵喵『{NEWLINE}好讨厌的感觉啊……",
+   "en": "Jessie, James & Meowth: Looks like Team{NEWLINE}Rocket’s blasting off again...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 131,
+   "zh": "小次郎『没奖金就没钱买酒,{NEWLINE}没酒就没瓶盖了……{CLEAR}真是的,都怪你这个小鬼！",
+   "en": "James: No bonus means no money for{NEWLINE}booze, and no booze means no bottle{CLEAR}caps...{SCROLL}Honestly, this is all your fault, you{NEWLINE}brat!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": " | D-1782: user approved booze for 酒, explicitly alcoholic drinks; following insult retained."
+  },
+  {
+   "id": 132,
+   "zh": "武藏『小鬼头,{NEWLINE}我们基地里有的是厉害干部,{CLEAR}你就等着被揍吧。",
+   "en": "Jessie: Listen, brat, our base is full of{NEWLINE}tough Executives.{SCROLL}Just you wait. You’re going to get{NEWLINE}pummeled.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 133,
+   "zh": "喵喵『你可不要乱动{NEWLINE}这个房间里的东西啊喵。",
+   "en": "Meowth: Don’t you go messin’ with the{NEWLINE}stuff in this room, meow.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 134,
+   "zh": "莉佳大小姐被吉尔露太{NEWLINE}带到下面一层去了,{CLEAR}现在她的处境非常危险。{CLEAR}我的精灵在刚刚跟火箭队的战斗中{CLEAR}受伤非常严重,{CLEAR}已经无法再战斗了。{CLEAR}所以拜托你去帮帮莉佳大小姐吧！{CLEAR}拜托你了！",
+   "en": "Lawrence took Lady Erika down to the{NEWLINE}floor below. She’s in grave danger right{CLEAR}now.{SCROLL}My Pokémon were badly hurt in the{NEWLINE}battle with Team Rocket just now. They{CLEAR}can’t battle anymore.{SCROLL}So please, go help Lady Erika! I’m{NEWLINE}begging you!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 135,
+   "zh": "最讨厌你这种自{NEWLINE}以为是的正义使者了,{CLEAR}我们火箭队君临天下{CLEAR}才是最大的正义。",
+   "en": "I can’t stand self-righteous heroes of{NEWLINE}justice like you.{SCROLL}Team Rocket ruling the world is the{NEWLINE}greatest justice of all.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 136,
+   "zh": "保卫实验室是我的职责,{NEWLINE}然而我却输给了你,{CLEAR}真是太气人了。",
+   "en": "Guarding the lab is my job, and yet I{NEWLINE}lost to you.{SCROLL}How infuriating.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 137,
+   "zh": "你不要打我啊！{NEWLINE}我只是个研究员没有战斗力的。",
+   "en": "Don’t hit me! I’m just a researcher. I{NEWLINE}can’t fight!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 138,
+   "zh": "我记得你这臭小鬼,{NEWLINE}你在圣安努号上捣乱来着吧？",
+   "en": "I remember you, you brat. You were the{NEWLINE}one making trouble on the S.S. Anne,{CLEAR}weren’t you?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 139,
+   "zh": "有你这样的身手,{NEWLINE}加入我们火箭队一起发大财不好吗。",
+   "en": "With moves like yours, why not join Team{NEWLINE}Rocket and get rich with us?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 140,
+   "zh": "就你这两把刷子{NEWLINE}是打不赢我们火箭队干部的,{CLEAR}你就等着被抓起虐待吧。",
+   "en": "With skills as feeble as yours, you’ll{NEWLINE}never beat Team Rocket’s Executives.{SCROLL}Just wait until you get caught and they{NEWLINE}make you suffer.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 141,
+   "zh": "莉佳馆主的臭臭花{NEWLINE}对我们的精灵强化实验非常重要,{CLEAR}如果不是因为这个,{CLEAR}我们也不会轻易去招惹一位馆主的。",
+   "en": "Gym Leader Erika’s Gloom is extremely{NEWLINE}important to our Pokémon enhancement{CLEAR}experiments.{SCROLL}If it weren’t for that, we’d never go{NEWLINE}out of our way to provoke a Gym Leader.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 142,
+   "zh": "这里以前是火箭队的窝点,{NEWLINE}现在被精灵联盟查封了。{SCROLL}我在这里看到了很多{NEWLINE}火箭队搞阴谋诡计的证据,{CLEAR}如果口袋妖怪们能在战斗中{CLEAR}像火箭队那样活用各种阴谋,{CLEAR}那它们的招式威力一定能得到提升。{CLEAR}如果你有精灵想学习阴谋的话,{CLEAR}我可以把火箭队{CLEAR}搞阴谋诡计的那些套路教给它们。{SCROLL}怎么样,要让精灵学习阴谋吗？",
+   "en": "This used to be a Team Rocket hideout,{NEWLINE}but the Pokémon League has sealed it{CLEAR}off.{SCROLL}I’ve seen lots of evidence of Team{NEWLINE}Rocket’s schemes and plots here.{SCROLL}If Pokémon could make use of all kinds{NEWLINE}of schemes in battle like Team Rocket{CLEAR}does...{SCROLL}...their moves would surely hit harder.{SCROLL}If you have a Pokémon that wants to{NEWLINE}learn Nasty Plot, I can teach it all of{CLEAR}Team Rocket’s scheming tricks.{SCROLL}So, want your Pokémon to learn Nasty{NEWLINE}Plot?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 143,
+   "zh": "猫老大的石像一动不动。",
+   "en": "The Persian statue won’t budge.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 144,
+   "zh": "精灵联盟——封。",
+   "en": "Sealed by the Pokémon League.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 145,
+   "zh": "小霞『我这里还有一只暴鲤龙,{NEWLINE}它可是非常有战斗天赋的精灵,{CLEAR}你也把它带上吧！",
+   "en": "Misty: I’ve got a Gyarados here too. It{NEWLINE}has a real talent for battle.{SCROLL}Take it with you!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 146,
+   "zh": "小霞『你的队伍满了呀,{NEWLINE}那就等你空出位置后{CLEAR}再来找我拿吧！",
+   "en": "Misty: Oh, your party’s full.{SCROLL}Then come get it from me once you’ve{NEWLINE}made room!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 147,
+   "zh": "{VAR:0103:0}『谢谢你啊小霞,{NEWLINE}那我去找莉佳了。{CLEAR}你在这里也要多加小心！",
+   "en": "{VAR:0103:0}: Thanks, Misty. I’ll go find{NEWLINE}Erika.{SCROLL}Be careful here too!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 148,
+   "zh": "{VAR:0103:0}从小霞那得到了暴鲤龙！",
+   "en": "{VAR:0103:0} received Gyarados from Misty!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 149,
+   "zh": "小霞『一定要救出莉佳她们啊！",
+   "en": "Misty: Make sure you rescue Erika and{NEWLINE}her companion!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 150,
+   "zh": "前面好像有很多火箭队,{NEWLINE}还是多带几只精灵再来吧。",
+   "en": "There seem to be lots of Team Rocket{NEWLINE}members ahead. Better bring more{CLEAR}Pokémon with you.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 151,
+   "zh": "一台精密的仪器,{NEWLINE}上面的灯有规律地闪烁着：{CLEAR}.- -.{CLEAR}..-{CLEAR}.-.",
+   "en": "A precision device. Its lights are{NEWLINE}blinking in a regular pattern:{CLEAR}.- -.{CLEAR}..-{CLEAR}.-.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 152,
+   "zh": "机器故障了。",
+   "en": "The machine is broken.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 153,
+   "zh": "测试,请输入第一位密码：",
+   "en": "Test. Enter the first digit of the{NEWLINE}password:",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 154,
+   "zh": "上一位正确,{NEWLINE}请输入第二位密码：",
+   "en": "Previous digit correct. Enter the{NEWLINE}second digit:",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 155,
+   "zh": "上一位正确,{NEWLINE}请输入第三位密码：",
+   "en": "Previous digit correct. Enter the third{NEWLINE}digit:",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 156,
+   "zh": "上一位正确,{NEWLINE}请输入第四位密码：",
+   "en": "Previous digit correct. Enter the{NEWLINE}fourth digit:",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 157,
+   "zh": "上一位正确,{NEWLINE}请输入第五位密码：",
+   "en": "Previous digit correct. Enter the fifth{NEWLINE}digit:",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 158,
+   "zh": "比较前,4000=2,下面开始比较。",
+   "en": "Before comparison, 4000=2. Starting{NEWLINE}comparison.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "Debug/test string (password check), translated literally."
+  },
+  {
+   "id": 159,
+   "zh": "小霞『{VAR:0103:0},{NEWLINE}莉佳她们现在身陷火箭队基地,{CLEAR}处境一定很危险。{SCROLL}小霞『你先不用管我了,{NEWLINE}去找莉佳她们要紧。{CLEAR}我这里有一个攀瀑的技能机,{CLEAR}你拿去用吧,应该可以帮得上你。",
+   "en": "Misty: {VAR:0103:0}, Erika and her companion{NEWLINE}are trapped in Team Rocket’s base.{SCROLL}They must be in real danger.{SCROLL}Misty: Don’t worry about me. Finding{NEWLINE}Erika is what matters.{SCROLL}I’ve got a TM for Waterfall here. Take{NEWLINE}it. It should help you out.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 160,
+   "zh": "小霞『嘿嘿,放心吧。",
+   "en": "Misty: Heh heh, don’t worry.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 161,
+   "zh": "空",
+   "en": "---",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 138 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl) | 空 = empty slot → '---' (as 0446)."
+  },
+  {
+   "id": 162,
+   "zh": "空",
+   "en": "---",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 138 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
+  },
+  {
+   "id": 163,
+   "zh": "要让哪个精灵学呢？{SCROLL}",
+   "en": "Which Pokémon should learn it?{SCROLL}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 3 source(s), flags page_breaks_lost; other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+  },
+  {
+   "id": 164,
+   "zh": "想学的话随时再来找我。",
+   "en": "If you ever want to learn it, come see{NEWLINE}me anytime.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+  },
+  {
+   "id": 165,
+   "zh": "空。",
+   "en": "---",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
+  },
+  {
+   "id": 166,
+   "zh": "抱歉……这个精灵{NEWLINE}没法记住阴谋。{SCROLL}",
+   "en": "Sorry... This Pokémon can’t learn Nasty{NEWLINE}Plot.{SCROLL}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 167,
+   "zh": "还没出生的精灵{NEWLINE}恐怕学不会这个技能……{SCROLL}",
+   "en": "A Pokémon that hasn’t hatched yet{NEWLINE}can’t learn this move...{SCROLL}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 3 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+  },
+  {
+   "id": 168,
+   "zh": "这只{VAR:0100:0}{NEWLINE}已经会阴谋了！{SCROLL}",
+   "en": "This {VAR:0100:0} already knows Nasty{NEWLINE}Plot!{SCROLL}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 169,
+   "zh": "１{VAR:0201:20}　２{VAR:0201:20}　…{VAR:0201:20}…{VAR:0201:20}完成！",
+   "en": "1{VAR:0201:20}, 2{VAR:0201:20}, and{VAR:0201:20}... {VAR:0201:20}... Done!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), flags fullwidth_chars; other variants: 6 more v3 TM candidates (tm_v4_matches.jsonl)"
+  },
+  {
+   "id": 170,
+   "zh": "{VAR:0101:0}学会了阴谋！",
+   "en": "{VAR:0101:0} learned Nasty Plot!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 171,
+   "zh": "这样一来{NEWLINE}你的{VAR:0100:0}{CLEAR}已经学会阴谋了。",
+   "en": "There! Your {VAR:0100:0} has learned{NEWLINE}Nasty Plot.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 172,
+   "zh": "{VAR:0101:0}想要记住{NEWLINE}新的阴谋……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习阴谋{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn the move{NEWLINE}Nasty Plot...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Forget a move to make room for Nasty{NEWLINE}Plot?{VAR:0200:0}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 173,
+   "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
+   "en": "{VAR:0106:1} will be forgotten. Is that{NEWLINE}OK? {VAR:0200:0}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl)"
+  },
+  {
+   "id": 174,
+   "zh": "１{VAR:0201:20}　２{VAR:0201:20}　…{VAR:0201:20}…{VAR:0201:20}完成！",
+   "en": "1{VAR:0201:20}, 2{VAR:0201:20}, and{VAR:0201:20}... {VAR:0201:20}... Done!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), flags fullwidth_chars; other variants: 6 more v3 TM candidates (tm_v4_matches.jsonl)"
+  },
+  {
+   "id": 175,
+   "zh": "{VAR:0101:0}完全忘了{NEWLINE}{VAR:0106:1}的用法！{SCROLL}然后……！",
+   "en": "{VAR:0101:0} forgot how to use{NEWLINE}{VAR:0106:1}!{SCROLL}And...!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 4 source(s); other variants: 7 more v3 TM candidates (tm_v4_matches.jsonl)"
+  },
+  {
+   "id": 176,
+   "zh": "{VAR:0101:0}学会了阴谋！",
+   "en": "{VAR:0101:0} learned Nasty Plot!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 177,
+   "zh": "你是要放弃{NEWLINE}让它记住阴谋吗？{VAR:0200:0}",
+   "en": "Give up on teaching it Nasty Plot? {VAR:0200:0}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  }
+ ]
 }

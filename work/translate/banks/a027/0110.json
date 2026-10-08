@@ -1,775 +1,775 @@
 {
-  "narc": "a027",
-  "bank": 110,
-  "source": "work/extract/v4/a027/0110.json",
-  "strings": [
-    {
-      "id": 0,
-      "zh": "噢！{NEWLINE}发现入侵者！",
-      "en": "Hey!{NEWLINE}Intruder alert!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "US ‘Intruder alert!’ kept, trailing {SCROLL} dropped to match zh."
-    },
-    {
-      "id": 1,
-      "zh": "不要让这家伙跑掉,一起上！",
-      "en": "Don’t let this one get{NEWLINE}away! All together!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 2,
-      "zh": "猫老大的精灵像{NEWLINE}眼睛闪出红光……！{SCROLL}感觉好像被谁{NEWLINE}在哪里盯着一样……",
-      "en": "It’s a Persian statue...{NEWLINE}Its eyes are glowing red...{SCROLL}You feel that somebody may be{NEWLINE}watching...",
-      "status": "draft",
-      "origin": "us",
-      "notes": "US 0112/2; modernised from US 0112#2"
-    },
-    {
-      "id": 3,
-      "zh": "猫老大的精灵像{NEWLINE}眼睛闪着蓝光……{SCROLL}没有被人盯上的感觉了……",
-      "en": "It’s a Persian statue...{NEWLINE}Its eyes are glowing blue...{SCROLL}You don’t feel anyone watching you...",
-      "status": "draft",
-      "origin": "us",
-      "notes": "US 0112/3; modernised from US 0112#3"
-    },
-    {
-      "id": 4,
-      "zh": "猫老大的精灵像{NEWLINE}眼睛不闪光了……",
-      "en": "The eyes of the Persian statue{NEWLINE}are no longer glowing...",
-      "status": "draft",
-      "origin": "us",
-      "notes": "US 0112/4; modernised from US 0112#4"
-    },
-    {
-      "id": 5,
-      "zh": "发现秘密按钮！{SCROLL}闪着红色的灯,{CLEAR}要试着按一下吗？{VAR:0200:0}",
-      "en": "A secret switch!{SCROLL}The red switch is flashing in a{NEWLINE}suspicious manner.{CLEAR}Will you press it? {VAR:0200:0}",
-      "status": "draft",
-      "origin": "us",
-      "notes": "US 0112/5"
-    },
-    {
-      "id": 6,
-      "zh": "发现秘密按钮！{SCROLL}闪着蓝色的灯,{CLEAR}要试着按一下吗？{VAR:0200:0}",
-      "en": "A secret switch!{SCROLL}The blue switch is lit.{CLEAR}Will you press it? {VAR:0200:0}",
-      "status": "draft",
-      "origin": "us",
-      "notes": "US 0112/6"
-    },
-    {
-      "id": 7,
-      "zh": "……啪嗒！{SCROLL}",
-      "en": "...Click!{SCROLL}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "US 0112/7"
-    },
-    {
-      "id": 8,
-      "zh": "秘密开关的灯灭了……",
-      "en": "The secret switch is not lit anymore...",
-      "status": "draft",
-      "origin": "us",
-      "notes": "US 0112/8"
-    },
-    {
-      "id": 9,
-      "zh": "监视系统解除了！",
-      "en": "The surveillance system is off!",
-      "status": "draft",
-      "origin": "us",
-      "notes": "US 0112/9"
-    },
-    {
-      "id": 10,
-      "zh": "监视系统启动了！",
-      "en": "The surveillance system is on!",
-      "status": "draft",
-      "origin": "us",
-      "notes": "US 0112/10"
-    },
-    {
-      "id": 11,
-      "zh": "小蓝『妙蛙花,使用疯狂植物！",
-      "en": "Green: Venusaur, use Frenzy Plant!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 12,
-      "zh": "小赤『妙蛙花,使用疯狂植物！",
-      "en": "Red: Venusaur, use Frenzy Plant!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 13,
-      "zh": "妙蛙花『Veee——nu！",
-      "en": "Venusaur: Veee-nu!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 14,
-      "zh": "可恶啊,被压制了。",
-      "en": "Dammit, we’re being overpowered.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 15,
-      "zh": "又有不怕死的入侵者出现,{NEWLINE}拿命来吧！",
-      "en": "Another intruder with a{NEWLINE}death wish? Your life is mine!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 16,
-      "zh": "你、你、你……{NEWLINE}你不是联盟冠军{VAR:0103:0}吗！？{CLEAR}这下事情可糟糕了。",
-      "en": "Y-y-you... Aren’t you League{NEWLINE}Champion {VAR:0103:0}?! This is bad.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 17,
-      "zh": "啊！打了药的精灵也不行吗？",
-      "en": "Ah! Even drugged-up Pokémon can’t win?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 18,
-      "zh": "小银『大力鳄,用水流尾抽它！",
-      "en": "Silver: Feraligatr,{NEWLINE}lash it with Aqua Tail!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 19,
-      "zh": "大力鳄『Feee——ra！",
-      "en": "Feraligatr: Feee-ra!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 20,
-      "zh": "为什么啊小银大人,{NEWLINE}为什么你要帮外人。",
-      "en": "Why, Master Silver? Why{NEWLINE}are you helping outsiders?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 21,
-      "zh": "不行,实力差距太大了,先撤退！",
-      "en": "No good, they’re way{NEWLINE}too strong. Fall back!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 22,
-      "zh": "小蓝『火箭队的戒备还是森严啊,{NEWLINE}咱们这样突然闯进来,{CLEAR}他们都能迅速派出队员防卫。",
-      "en": "Green: Team Rocket’s security is{NEWLINE}still tight. Even when we barge{CLEAR}in out of nowhere, they send out{CLEAR}members to defend right away.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 23,
-      "zh": "小赤『火箭队的戒备还是森严啊,{NEWLINE}咱们这样突然闯进来,{CLEAR}他们都能迅速派出队员防卫。",
-      "en": "Red: Team Rocket’s security is{NEWLINE}still tight. Even when we barge{CLEAR}in out of nowhere, they send out{CLEAR}members to defend right away.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 24,
-      "zh": "小银『火箭队不过是乌合之众罢了,{NEWLINE}没什么好怕的。",
-      "en": "Silver: Team Rocket is{NEWLINE}nothing but a rabble. There’s{CLEAR}nothing to be scared of.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 25,
-      "zh": "{VAR:0103:0}『小蓝、小银,{NEWLINE}卡吉镇商店的出口那边{CLEAR}还有渡先生、柳伯等好几个伙伴,{CLEAR}咱们先想办法打开出口让他们进来吧。",
-      "en": "{VAR:0103:0}: Green, Silver! Mr. Lance,{NEWLINE}Pryce and a few other friends are{CLEAR}waiting at the Mahogany Town shop exit.{SCROLL}Let’s find a way to open it and let them{NEWLINE}in first.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "[D-2058 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
-    },
-    {
-      "id": 26,
-      "zh": "{VAR:0103:0}『小赤、小银,{NEWLINE}卡吉镇商店的出口那边{CLEAR}还有渡先生、柳伯等好几个伙伴,{CLEAR}咱们先想办法打开出口让他们进来吧。",
-      "en": "{VAR:0103:0}: Red, Silver! Mr. Lance, Pryce{NEWLINE}and a few other friends are waiting at{CLEAR}the Mahogany Town shop exit.{SCROLL}Let’s find a way to open it and let them{CLEAR}in first.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "[D-2073 meaning-review-followup: source/context correction; agent-reviewed, not new human approval. Red/Silver partner branch of #25.]"
-    },
-    {
-      "id": 27,
-      "zh": "小蓝『哦？原来你说的伙伴{NEWLINE}还包括四天王和馆主呀。",
-      "en": "Green: Oh? So your ‘friends’ include{NEWLINE}one of the Elite Four and a Gym Leader.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 28,
-      "zh": "小赤『原来你说的伙伴{NEWLINE}还包括四天王和馆主啊。",
-      "en": "Red: So your ‘friends’ include one{NEWLINE}of the Elite Four and a Gym Leader.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 29,
-      "zh": "小银『打败火箭队有我就够了,{NEWLINE}才不需要什么冠军、四天王帮忙！",
-      "en": "Silver: I’m all it takes to beat{NEWLINE}Team Rocket. I don’t need help{CLEAR}from any Champion or Elite Four!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 30,
-      "zh": "小蓝『这孩子还是很执着于{NEWLINE}靠自己的力量超越他父亲呢。",
-      "en": "Green: This kid is still so{NEWLINE}set on surpassing his father{CLEAR}with his own strength.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 31,
-      "zh": "小赤『这孩子还是很执着于{NEWLINE}靠自己的力量超越他父亲啊。",
-      "en": "Red: This kid is still so set{NEWLINE}on surpassing his father{CLEAR}with his own strength.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 32,
-      "zh": "居然被打败了,好讨厌的感觉。",
-      "en": "Beaten, just like that?{NEWLINE}What a rotten feeling.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 33,
-      "zh": "既然这样就先撤退吧。",
-      "en": "In that case, let’s fall back for now.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 34,
-      "zh": "小蓝『{VAR:0103:0},今天你和渡先生都在,{NEWLINE}加上我们几个伙伴帮忙,{CLEAR}或许可以就此消灭火箭队。{CLEAR}为了实现这个目标,咱们一起努力吧！",
-      "en": "Green: {VAR:0103:0}, with you and Mr. Lance{NEWLINE}both here today, plus all of us helping,{CLEAR}we might wipe out Team Rocket for good.{SCROLL}Let’s all give it our best{NEWLINE}to make that happen!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 35,
-      "zh": "小赤『{VAR:0103:0},今天你和渡先生都在,{NEWLINE}加上我们几个伙伴帮忙,{CLEAR}或许可以就此消灭火箭队。{CLEAR}为了实现这个目标,咱们一起努力吧！",
-      "en": "Red: {VAR:0103:0}, with you and Mr. Lance{NEWLINE}both here today, plus all of us helping,{CLEAR}we might wipe out Team Rocket for good.{SCROLL}Let’s all give it our best{NEWLINE}to make that happen!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 36,
-      "zh": "守卫！！！守卫在哪里啊！！！",
-      "en": "Guards!!! Where are the guards!!!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 37,
-      "zh": "小蓝『这个基地的入口确实很隐蔽,{NEWLINE}但要想进来也不并是什么难事。",
-      "en": "Green: The entrance to this{NEWLINE}base is well hidden, sure. But{CLEAR}getting in wasn’t hard at all.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 38,
-      "zh": "小赤『这个基地的入口确实很隐蔽,{NEWLINE}但要想进来也不并是什么难事。",
-      "en": "Red: The entrance to this{NEWLINE}base is well hidden, sure. But{CLEAR}getting in wasn’t hard at all.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 39,
-      "zh": "小蓝『前面的守卫都被我们打败了,{NEWLINE}没有人会来支援你的。{SCROLL}小蓝『我看你面前这台电脑{NEWLINE}像是控制装置,{CLEAR}用它应该能开启{CLEAR}基地里这些封闭的通道吧？",
-      "en": "Green: We beat all the guards up{NEWLINE}front. Nobody’s coming to help you.{SCROLL}Green: That PC in front of you{NEWLINE}looks like a control unit. You{CLEAR}can use it to open the sealed{CLEAR}passages in the base, right?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 40,
-      "zh": "小赤『前面的守卫都被我们打败了,{NEWLINE}没有人会来支援你的。{SCROLL}小赤『我看你面前这台电脑{NEWLINE}像是控制装置,{CLEAR}用它应该能开启{CLEAR}基地里这些封闭的通道吧？",
-      "en": "Red: We beat all the guards up{NEWLINE}front. Nobody’s coming to help you.{SCROLL}Red: That PC in front of you looks like{NEWLINE}a control unit. You can use it to open{CLEAR}the sealed passages in the base, right?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 41,
-      "zh": "你们是精灵联盟的人吧,{NEWLINE}我不听你们的顶多就是坐牢。{CLEAR}要是不听阿波罗大人的命令{CLEAR}擅自打开通道,{CLEAR}我可是会被杀的。",
-      "en": "You’re from the Pokémon League,{NEWLINE}right? If I don’t listen to{CLEAR}you, the worst I get is prison.{SCROLL}But if I open the passages without{NEWLINE}Master Archer’s orders, I’ll be killed.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 42,
-      "zh": "小蓝『不想喝的话就按我们说的做,{NEWLINE}打开这一层所有封闭的通道。",
-      "en": "Green: If you don’t want to drink{NEWLINE}it, do as we say and open every{CLEAR}sealed passage on this floor.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 43,
-      "zh": "小赤『不想喝的话就按我们说的做,{NEWLINE}打开这一层所有封闭的通道。",
-      "en": "Red: If you don’t want to drink{NEWLINE}it, do as we say and open every{CLEAR}sealed passage on this floor.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 44,
-      "zh": "呕……别说了,光是听着就想吐。",
-      "en": "Urp... Stop it. Just hearing{NEWLINE}about it makes me want to puke.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 45,
-      "zh": "那边那位是联盟冠军{VAR:0103:0}吧！{NEWLINE}这里有人要滥用私刑折磨人。{CLEAR}你管不管啊！",
-      "en": "Hey, you over there, you’re{NEWLINE}League Champion {VAR:0103:0}, right?!{CLEAR}These people want to torture{CLEAR}me with vigilante justice! Aren’t{CLEAR}you going to do something?!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 46,
-      "zh": "{VAR:0103:0}『啊……？嗯……？",
-      "en": "{VAR:0103:0}: Huh...? Hmm...?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 47,
-      "zh": "{VAR:0103:0}『啊？你说什么？{NEWLINE}通道没打开我听不见！",
-      "en": "{VAR:0103:0}: Huh? What was that? I can’t{NEWLINE}hear you while the passages are closed!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 48,
-      "zh": "小蓝『哎呀呀,我们的联盟冠军{NEWLINE}耳朵好像不太好使,{CLEAR}你得把通道打开他才能听得见。",
-      "en": "Green: Oh dear, our League{NEWLINE}Champion seems to be a bit hard of{CLEAR}hearing. You’ll have to open the{CLEAR}passages before he can hear you.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 49,
-      "zh": "小赤『如你所见,我们的联盟冠军{NEWLINE}耳朵好像不太好使,{CLEAR}你得把通道打开她才能听得见。",
-      "en": "Red: As you can see, our League{NEWLINE}Champion seems to be a bit hard of{CLEAR}hearing. You’ll have to open the{CLEAR}passages before she can hear you.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 50,
-      "zh": "你们蛇鼠一窝暴力执法,{NEWLINE}真是比我们火箭队还坏！",
-      "en": "You’re a pack of rats, all in it{NEWLINE}together, enforcing the law with{CLEAR}violence! You’re even worse{CLEAR}than Team Rocket!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "tone review: 蛇鼠一窝 is an insult (a nest of snakes and rats); kept as 'pack of rats' (D-0627)"
-    },
-    {
-      "id": 51,
-      "zh": "小蓝『你就别老想着火箭队啦,{NEWLINE}趁现在我们给你机会,{CLEAR}赶紧戴罪立功吧。{CLEAR}等我们抓了阿波罗这些干部,{CLEAR}自然就没人会伤害你了,你说对吧？",
-      "en": "Green: Stop thinking about Team Rocket{NEWLINE}already. We’re giving you a chance{CLEAR}right now, so hurry up and make amends.{SCROLL}Once we catch Archer and the{NEWLINE}other Executives, nobody will{CLEAR}be around to hurt you. Right?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 52,
-      "zh": "小赤『你就别老想着火箭队啦,{NEWLINE}趁现在我们给你机会,{CLEAR}赶紧戴罪立功吧。{CLEAR}等我们抓了阿波罗这些干部,{CLEAR}自然就没人会伤害你了,你说对吧？",
-      "en": "Red: Stop thinking about Team Rocket{NEWLINE}already. We’re giving you a chance{CLEAR}right now, so hurry up and make amends.{SCROLL}Once we catch Archer and the{NEWLINE}other Executives, nobody will{CLEAR}be around to hurt you. Right?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 53,
-      "zh": "这……",
-      "en": "Well...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 54,
-      "zh": "好吧,我帮你们打开所有通道。",
-      "en": "Fine. I’ll open all the{NEWLINE}passages for you.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 55,
-      "zh": "首先要核对人脸、指纹、指静脉和虹膜……{SCROLL}然后输入密码……",
-      "en": "First it checks face, fingerprints,{NEWLINE}finger veins and iris...{SCROLL}Then I enter the password...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 56,
-      "zh": "好,系统登录成功了。{NEWLINE}我现在解除所有通道的闭锁装置……{SCROLL}你们可一定要打败火箭队啊,{NEWLINE}输了的话我可就惨了。",
-      "en": "OK, I’m logged in. Now I’ll release{NEWLINE}the locks on all the passages...{SCROLL}You’d better beat Team Rocket.{NEWLINE}If you lose, I’m done for.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 57,
-      "zh": "小蓝『你面前的这台电脑,{NEWLINE}应该能控制开启这些封闭的通道吧？",
-      "en": "Green: That PC in front of you can{NEWLINE}open these sealed passages, right?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 58,
-      "zh": "小赤『你面前的这台电脑,{NEWLINE}应该能控制开启这些封闭的通道吧？",
-      "en": "Red: That PC in front of you can{NEWLINE}open these sealed passages, right?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 59,
-      "zh": "能又怎么样？{NEWLINE}这台电脑加了身份认证,{CLEAR}除了我谁也别想开启控制系统。",
-      "en": "So what if it can? This PC has{NEWLINE}identity verification. Nobody but me{CLEAR}can get into the control system.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 60,
-      "zh": "你们是什么人,怎么到这来的！？",
-      "en": "Who are you people? How{NEWLINE}did you get in here?!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 61,
-      "zh": "小蓝『这里已经被我们的伙伴包围了,{NEWLINE}你最好不要反抗,{CLEAR}乖乖配合我们哦。",
-      "en": "Green: Our friends have this place{NEWLINE}surrounded. You’d better not resist.{CLEAR}Just cooperate like a good boy.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 62,
-      "zh": "小赤『这里已经被我们的伙伴包围了,{NEWLINE}你最好不要反抗,{CLEAR}乖乖配合我们哦。",
-      "en": "Red: Our friends have this place{NEWLINE}surrounded. You’d better not resist.{CLEAR}Just cooperate like a good boy.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 63,
-      "zh": "小银『那边那个联盟冠军{VAR:0103:0}{NEWLINE}确实是精灵联盟的人,{CLEAR}但我可不是。{CLEAR}所以我也不会跟你讲什么法律、规矩。{CLEAR}你要是不照小蓝姐说的做,{CLEAR}我就喂你喝臭臭泥的泥浆！",
-      "en": "Silver: That League Champion over{NEWLINE}there, {VAR:0103:0}, really is with the{CLEAR}Pokémon League. But I’m not.{SCROLL}So I won’t bother with laws or rules. If{NEWLINE}you don’t do what my sis says, I’ll make{CLEAR}you drink Muk sludge!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "ext-review RA-007"
-    },
-    {
-      "id": 64,
-      "zh": "小银『那边那个联盟冠军{VAR:0103:0}{NEWLINE}确实是精灵联盟的人,{CLEAR}但我可不是。{CLEAR}所以我也不会跟你讲什么法律、规矩。{CLEAR}你要是不照小赤哥说的做,{CLEAR}我就喂你喝臭臭泥的泥浆！",
-      "en": "Silver: That League Champion over{NEWLINE}there, {VAR:0103:0}, really is with the{CLEAR}Pokémon League. But I’m not.{SCROLL}So I won’t bother with laws or rules. If{NEWLINE}you don’t do what Red says, I’ll make{CLEAR}you drink Muk sludge!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "ext-review RA-007"
-    },
-    {
-      "id": 65,
-      "zh": "你、你是小银大人！？{NEWLINE}你怎么会跟这伙人一起？{CLEAR}这到底是怎么回事啊。",
-      "en": "Y-you’re Master Silver?! Why{NEWLINE}are you with these people?{CLEAR}What’s going on here?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 66,
-      "zh": "小蓝『不瞒你说,我小时候在尖兵训练营{NEWLINE}学过一个臭臭泥浆配臭臭花粉的配方,{CLEAR}给你热乎乎地冲一杯可好？",
-      "en": "Green: To be honest, back at the boot{NEWLINE}camp as a kid, I learned a recipe: Muk{CLEAR}sludge mixed with Gloom pollen. How{CLEAR}about I brew you a nice hot cup?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "ext-review RA-007"
-    },
-    {
-      "id": 67,
-      "zh": "小赤『不瞒你说,我小时候在尖兵训练营{NEWLINE}学过一个臭臭泥浆配臭臭花粉的配方,{CLEAR}你如果喜欢我可以给你冲一杯。",
-      "en": "Red: To be honest, back at the boot{NEWLINE}camp as a kid, I learned a recipe: Muk{CLEAR}sludge mixed with Gloom pollen. If you{CLEAR}like, I can make you a cup.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "ext-review RA-007"
-    },
-    {
-      "id": 68,
-      "zh": "怎么会！？{NEWLINE}通道怎么会打开了呢！",
-      "en": "What?! How did the passage open?!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 69,
-      "zh": "渡『你们店里果然是有密道啊。{NEWLINE}现在铁证如山,赶紧老实交代{CLEAR}你们和火箭队是什么关系吧。",
-      "en": "Lance: So your shop does have{NEWLINE}a secret passage. The evidence{CLEAR}is undeniable. Now come clean{CLEAR}about your ties to Team Rocket.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 70,
-      "zh": "不、我、我什么都不知道。{NEWLINE}店里怎么会突然出现一个通道呢！？",
-      "en": "N-no, I-I don’t know{NEWLINE}anything! How did a passage{CLEAR}suddenly appear in the shop?!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 71,
-      "zh": "渡『真是顽固。{NEWLINE}快龙用龙之俯冲警告他一下！",
-      "en": "Lance: How stubborn. Dragonite,{NEWLINE}give him a warning with Dragon Rush!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 72,
-      "zh": "快龙『Draaa——gon！",
-      "en": "Dragonite: Draaa-gon!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 73,
-      "zh": "别、别、别,有话好好说别动手。",
-      "en": "D-d-don’t! Let’s talk this{NEWLINE}over! No need for violence!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 74,
-      "zh": "渡『那就说说这条密道的事吧,{NEWLINE}那三个研究员打扮的人{CLEAR}是不是从这里下去的？{CLEAR}这下面是不是火箭队的基地？",
-      "en": "Lance: Then talk about this secret{NEWLINE}passage. Did those three people{CLEAR}dressed as researchers go down here?{SCROLL}Is Team Rocket’s base down below?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 75,
-      "zh": "是、是的,下面是火箭队秘密基地。{NEWLINE}我们也是被火箭队威逼利诱{CLEAR}才在这里帮他们看门的,{CLEAR}至于火箭队做了什么,{CLEAR}真的不关我们的事啊！",
-      "en": "Y-yes. Down there is Team{NEWLINE}Rocket’s secret base. Team{CLEAR}Rocket bribed and threatened us{CLEAR}into guarding the door for them.{SCROLL}As for what Team Rocket does, it{NEWLINE}really has nothing to do with us!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 76,
-      "zh": "渡『不关你们的事？{NEWLINE}真是狡辨的鬼话。",
-      "en": "Lance: Nothing to do with you? What a{NEWLINE}load of weaselly lies.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "tone review: 狡辩的鬼话 = slippery lies/sophistry; kept the accusation of lying (D-0627)"
-    },
-    {
-      "id": 77,
-      "zh": "渡『柳伯前辈、阿金、水晶,{NEWLINE}刚才的话你们应该都听见了,{CLEAR}这下面就是火箭队的秘密基地。{CLEAR}虽说{VAR:0103:0}现在不在,{CLEAR}但为了防止通道再次关闭,{CLEAR}咱们必须抓住机会,马上进入基地。",
-      "en": "Lance: Mr. Pryce, Gold, Crystal,{NEWLINE}you all heard that. Team Rocket’s{CLEAR}secret base is down here.{SCROLL}{VAR:0103:0} isn’t here right now, but{NEWLINE}the passage might close again,{CLEAR}so we must seize this chance{CLEAR}and go into the base at once.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 78,
-      "zh": "柳伯『机不可失时不再来,{NEWLINE}勇往直前就对了。",
-      "en": "Pryce: Opportunity knocks{NEWLINE}but once. Forward, then.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 79,
-      "zh": "阿金『没错,就算偶像不在,{NEWLINE}火箭队这帮人也不是咱们对手。",
-      "en": "Gold: Right. Even without my idol, those{NEWLINE}Team Rocket guys are no match for us.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 80,
-      "zh": "水晶『既然知道这里是火箭队基地,{NEWLINE}那就没什么好犹豫的。",
-      "en": "Crystal: Now that we know this{NEWLINE}is a Team Rocket base, there’s{CLEAR}nothing to hesitate about.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 81,
-      "zh": "渡『把路让开。",
-      "en": "Lance: Out of the way.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 82,
-      "zh": "{VAR:0103:0}『渡先生！{NEWLINE}渡『{VAR:0103:0}！",
-      "en": "{VAR:0103:0}: Mr. Lance!{NEWLINE}Lance: {VAR:0103:0}!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 83,
-      "zh": "柳伯『竟然在这里碰头了,真是意外。",
-      "en": "Pryce: Well, what a{NEWLINE}surprise to meet here.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 84,
-      "zh": "阿金『啊！吊眼红毛跟偶像在一起。",
-      "en": "Gold: Ah! The scowling{NEWLINE}redhead is with my idol.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 85,
-      "zh": "水晶『小银……是在帮助前辈吗？",
-      "en": "Crystal: Silver... Is he helping you?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 86,
-      "zh": "小蓝『小银,那位应该就是{NEWLINE}你说的阿金吧。",
-      "en": "Green: Silver, that must be{NEWLINE}the Gold you told me about.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 87,
-      "zh": "小银『切,这家伙怎么也来了。",
-      "en": "Silver: Tch. Why’s he here too?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 88,
-      "zh": "{VAR:0103:0}『渡先生你们是从{NEWLINE}商店的入口通道进来的吗？",
-      "en": "{VAR:0103:0}: Mr. Lance, did you all come{NEWLINE}in through the passage from the shop?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 89,
-      "zh": "渡『没错,火箭队突然打开了通道,{NEWLINE}我们就趁机下来了。{CLEAR}你们是从哪进来的？",
-      "en": "Lance: That’s right. Team Rocket{NEWLINE}suddenly opened the passage,{CLEAR}so we took the chance and came{CLEAR}down. Where did you come in from?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 90,
-      "zh": "{VAR:0103:0}『研钵山的火箭队基地里{NEWLINE}有条隐藏的密道能通到这儿。{CLEAR}我们是从那边进来的。{CLEAR}不过卡吉镇商店的入口开启,{CLEAR}应该不是火箭队故意为之,{CLEAR}而是因为我们刚才逼火箭队员{CLEAR}打开了基地里所有封闭的通道。",
-      "en": "{VAR:0103:0}: There’s a hidden passage from{NEWLINE}the Team Rocket base in Mt. Mortar{CLEAR}that leads here. That’s how we came in.{SCROLL}But the Mahogany Town shop entrance{NEWLINE}opening wasn’t Team Rocket’s doing.{SCROLL}It’s because we just made a{NEWLINE}Team Rocket member open every{CLEAR}sealed passage in the base.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 91,
-      "zh": "渡『真不愧是联盟冠军。{NEWLINE}那你们找到电波发射装置了吗？",
-      "en": "Lance: That’s the League{NEWLINE}Champion for you. Have you found{CLEAR}the radio transmitter yet?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 92,
-      "zh": "{VAR:0103:0}『还没有呢,{NEWLINE}我们只是刚打开通道,{CLEAR}现在正准备往更里面走。",
-      "en": "{VAR:0103:0}: Not yet. We only{NEWLINE}just opened the passages.{CLEAR}We’re about to head deeper in.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 93,
-      "zh": "渡『既然如此,那大家一起{NEWLINE}深入基地调查看看吧。",
-      "en": "Lance: In that case, let’s{NEWLINE}all go deeper into the base{CLEAR}together and investigate.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 94,
-      "zh": "渡『好,咱们走！",
-      "en": "Lance: All right, let’s go!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 95,
-      "zh": "你是联盟冠军吧？{NEWLINE}拜托你一定要打败火箭队啊,{CLEAR}不然我会死的很惨的。",
-      "en": "You’re the League Champion, right?{NEWLINE}Please, you have to beat Team Rocket.{CLEAR}Otherwise I’m in for a horrible death.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    }
-  ]
+ "narc": "a027",
+ "bank": 110,
+ "source": "work/extract/v4/a027/0110.json",
+ "strings": [
+  {
+   "id": 0,
+   "zh": "噢！{NEWLINE}发现入侵者！",
+   "en": "Hey!{NEWLINE}Intruder alert!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "US ‘Intruder alert!’ kept, trailing {SCROLL} dropped to match zh."
+  },
+  {
+   "id": 1,
+   "zh": "不要让这家伙跑掉,一起上！",
+   "en": "Don’t let this one get{NEWLINE}away! All together!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 2,
+   "zh": "猫老大的精灵像{NEWLINE}眼睛闪出红光……！{SCROLL}感觉好像被谁{NEWLINE}在哪里盯着一样……",
+   "en": "It’s a Persian statue...{NEWLINE}Its eyes are glowing red...{SCROLL}You feel that somebody may be{NEWLINE}watching...",
+   "status": "draft",
+   "origin": "us",
+   "notes": "US 0112/2; modernised from US 0112#2"
+  },
+  {
+   "id": 3,
+   "zh": "猫老大的精灵像{NEWLINE}眼睛闪着蓝光……{SCROLL}没有被人盯上的感觉了……",
+   "en": "It’s a Persian statue...{NEWLINE}Its eyes are glowing blue...{SCROLL}You don’t feel anyone watching you...",
+   "status": "draft",
+   "origin": "us",
+   "notes": "US 0112/3; modernised from US 0112#3"
+  },
+  {
+   "id": 4,
+   "zh": "猫老大的精灵像{NEWLINE}眼睛不闪光了……",
+   "en": "The eyes of the Persian statue{NEWLINE}are no longer glowing...",
+   "status": "draft",
+   "origin": "us",
+   "notes": "US 0112/4; modernised from US 0112#4"
+  },
+  {
+   "id": 5,
+   "zh": "发现秘密按钮！{SCROLL}闪着红色的灯,{CLEAR}要试着按一下吗？{VAR:0200:0}",
+   "en": "A secret switch!{SCROLL}The red switch is flashing in a{NEWLINE}suspicious manner.{CLEAR}Will you press it? {VAR:0200:0}",
+   "status": "draft",
+   "origin": "us",
+   "notes": "US 0112/5"
+  },
+  {
+   "id": 6,
+   "zh": "发现秘密按钮！{SCROLL}闪着蓝色的灯,{CLEAR}要试着按一下吗？{VAR:0200:0}",
+   "en": "A secret switch!{SCROLL}The blue switch is lit.{CLEAR}Will you press it? {VAR:0200:0}",
+   "status": "draft",
+   "origin": "us",
+   "notes": "US 0112/6"
+  },
+  {
+   "id": 7,
+   "zh": "……啪嗒！{SCROLL}",
+   "en": "...Click!{SCROLL}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "US 0112/7"
+  },
+  {
+   "id": 8,
+   "zh": "秘密开关的灯灭了……",
+   "en": "The secret switch is not lit anymore...",
+   "status": "draft",
+   "origin": "us",
+   "notes": "US 0112/8"
+  },
+  {
+   "id": 9,
+   "zh": "监视系统解除了！",
+   "en": "The surveillance system is off!",
+   "status": "draft",
+   "origin": "us",
+   "notes": "US 0112/9"
+  },
+  {
+   "id": 10,
+   "zh": "监视系统启动了！",
+   "en": "The surveillance system is on!",
+   "status": "draft",
+   "origin": "us",
+   "notes": "US 0112/10"
+  },
+  {
+   "id": 11,
+   "zh": "小蓝『妙蛙花,使用疯狂植物！",
+   "en": "Green: Venusaur, use Frenzy Plant!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 12,
+   "zh": "小赤『妙蛙花,使用疯狂植物！",
+   "en": "Red: Venusaur, use Frenzy Plant!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 13,
+   "zh": "妙蛙花『Veee——nu！",
+   "en": "Venusaur: Veee-nu!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 14,
+   "zh": "可恶啊,被压制了。",
+   "en": "Dammit, we’re being overpowered.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 15,
+   "zh": "又有不怕死的入侵者出现,{NEWLINE}拿命来吧！",
+   "en": "Another intruder with a{NEWLINE}death wish? Your life is mine!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 16,
+   "zh": "你、你、你……{NEWLINE}你不是联盟冠军{VAR:0103:0}吗！？{CLEAR}这下事情可糟糕了。",
+   "en": "Y-y-you... Aren’t you League{NEWLINE}Champion {VAR:0103:0}?! This is bad.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 17,
+   "zh": "啊！打了药的精灵也不行吗？",
+   "en": "Ah! Even drugged-up Pokémon can’t win?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 18,
+   "zh": "小银『大力鳄,用水流尾抽它！",
+   "en": "Silver: Feraligatr,{NEWLINE}lash it with Aqua Tail!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 19,
+   "zh": "大力鳄『Feee——ra！",
+   "en": "Feraligatr: Feee-ra!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 20,
+   "zh": "为什么啊小银大人,{NEWLINE}为什么你要帮外人。",
+   "en": "Why, Master Silver? Why{NEWLINE}are you helping outsiders?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 21,
+   "zh": "不行,实力差距太大了,先撤退！",
+   "en": "No good, they’re way{NEWLINE}too strong. Fall back!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 22,
+   "zh": "小蓝『火箭队的戒备还是森严啊,{NEWLINE}咱们这样突然闯进来,{CLEAR}他们都能迅速派出队员防卫。",
+   "en": "Green: Team Rocket’s security is{NEWLINE}still tight. Even when we barge{CLEAR}in out of nowhere, they send out{CLEAR}members to defend right away.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 23,
+   "zh": "小赤『火箭队的戒备还是森严啊,{NEWLINE}咱们这样突然闯进来,{CLEAR}他们都能迅速派出队员防卫。",
+   "en": "Red: Team Rocket’s security is{NEWLINE}still tight. Even when we barge{CLEAR}in out of nowhere, they send out{CLEAR}members to defend right away.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 24,
+   "zh": "小银『火箭队不过是乌合之众罢了,{NEWLINE}没什么好怕的。",
+   "en": "Silver: Team Rocket is{NEWLINE}nothing but a rabble. There’s{CLEAR}nothing to be scared of.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 25,
+   "zh": "{VAR:0103:0}『小蓝、小银,{NEWLINE}卡吉镇商店的出口那边{CLEAR}还有渡先生、柳伯等好几个伙伴,{CLEAR}咱们先想办法打开出口让他们进来吧。",
+   "en": "{VAR:0103:0}: Green, Silver! Mr. Lance,{NEWLINE}Pryce and a few other friends are{CLEAR}waiting at the Mahogany Town shop exit.{SCROLL}Let’s find a way to open it and let them{NEWLINE}in first.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "[D-2058 meaning-review-30: independently LLM-reviewed source-faithful correction; not human-approved.]"
+  },
+  {
+   "id": 26,
+   "zh": "{VAR:0103:0}『小赤、小银,{NEWLINE}卡吉镇商店的出口那边{CLEAR}还有渡先生、柳伯等好几个伙伴,{CLEAR}咱们先想办法打开出口让他们进来吧。",
+   "en": "{VAR:0103:0}: Red, Silver! Mr. Lance, Pryce{NEWLINE}and a few other friends are waiting at{CLEAR}the Mahogany Town shop exit.{SCROLL}Let’s find a way to open it and let them{CLEAR}in first.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "[D-2073 meaning-review-followup: source/context correction; agent-reviewed, not new human approval. Red/Silver partner branch of #25.]"
+  },
+  {
+   "id": 27,
+   "zh": "小蓝『哦？原来你说的伙伴{NEWLINE}还包括四天王和馆主呀。",
+   "en": "Green: Oh? So your ‘friends’ include{NEWLINE}one of the Elite Four and a Gym Leader.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 28,
+   "zh": "小赤『原来你说的伙伴{NEWLINE}还包括四天王和馆主啊。",
+   "en": "Red: So your ‘friends’ include one{NEWLINE}of the Elite Four and a Gym Leader.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 29,
+   "zh": "小银『打败火箭队有我就够了,{NEWLINE}才不需要什么冠军、四天王帮忙！",
+   "en": "Silver: I’m all it takes to beat{NEWLINE}Team Rocket. I don’t need help{CLEAR}from any Champion or Elite Four!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 30,
+   "zh": "小蓝『这孩子还是很执着于{NEWLINE}靠自己的力量超越他父亲呢。",
+   "en": "Green: This kid is still so{NEWLINE}set on surpassing his father{CLEAR}with his own strength.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 31,
+   "zh": "小赤『这孩子还是很执着于{NEWLINE}靠自己的力量超越他父亲啊。",
+   "en": "Red: This kid is still so set{NEWLINE}on surpassing his father{CLEAR}with his own strength.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 32,
+   "zh": "居然被打败了,好讨厌的感觉。",
+   "en": "Beaten, just like that?{NEWLINE}What a rotten feeling.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 33,
+   "zh": "既然这样就先撤退吧。",
+   "en": "In that case, let’s fall back for now.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 34,
+   "zh": "小蓝『{VAR:0103:0},今天你和渡先生都在,{NEWLINE}加上我们几个伙伴帮忙,{CLEAR}或许可以就此消灭火箭队。{CLEAR}为了实现这个目标,咱们一起努力吧！",
+   "en": "Green: {VAR:0103:0}, with you and Mr. Lance{NEWLINE}both here today, plus all of us helping,{CLEAR}we might wipe out Team Rocket for good.{SCROLL}Let’s all give it our best{NEWLINE}to make that happen!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 35,
+   "zh": "小赤『{VAR:0103:0},今天你和渡先生都在,{NEWLINE}加上我们几个伙伴帮忙,{CLEAR}或许可以就此消灭火箭队。{CLEAR}为了实现这个目标,咱们一起努力吧！",
+   "en": "Red: {VAR:0103:0}, with you and Mr. Lance{NEWLINE}both here today, plus all of us helping,{CLEAR}we might wipe out Team Rocket for good.{SCROLL}Let’s all give it our best{NEWLINE}to make that happen!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 36,
+   "zh": "守卫！！！守卫在哪里啊！！！",
+   "en": "Guards!!! Where are the guards!!!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 37,
+   "zh": "小蓝『这个基地的入口确实很隐蔽,{NEWLINE}但要想进来也不并是什么难事。",
+   "en": "Green: The entrance to this{NEWLINE}base is well hidden, sure. But{CLEAR}getting in wasn’t hard at all.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 38,
+   "zh": "小赤『这个基地的入口确实很隐蔽,{NEWLINE}但要想进来也不并是什么难事。",
+   "en": "Red: The entrance to this{NEWLINE}base is well hidden, sure. But{CLEAR}getting in wasn’t hard at all.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 39,
+   "zh": "小蓝『前面的守卫都被我们打败了,{NEWLINE}没有人会来支援你的。{SCROLL}小蓝『我看你面前这台电脑{NEWLINE}像是控制装置,{CLEAR}用它应该能开启{CLEAR}基地里这些封闭的通道吧？",
+   "en": "Green: We beat all the guards up{NEWLINE}front. Nobody’s coming to help you.{SCROLL}Green: That PC in front of you{NEWLINE}looks like a control unit. You{CLEAR}can use it to open the sealed{CLEAR}passages in the base, right?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 40,
+   "zh": "小赤『前面的守卫都被我们打败了,{NEWLINE}没有人会来支援你的。{SCROLL}小赤『我看你面前这台电脑{NEWLINE}像是控制装置,{CLEAR}用它应该能开启{CLEAR}基地里这些封闭的通道吧？",
+   "en": "Red: We beat all the guards up{NEWLINE}front. Nobody’s coming to help you.{SCROLL}Red: That PC in front of you looks like{NEWLINE}a control unit. You can use it to open{CLEAR}the sealed passages in the base, right?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 41,
+   "zh": "你们是精灵联盟的人吧,{NEWLINE}我不听你们的顶多就是坐牢。{CLEAR}要是不听阿波罗大人的命令{CLEAR}擅自打开通道,{CLEAR}我可是会被杀的。",
+   "en": "You’re from the Pokémon League,{NEWLINE}right? If I don’t listen to{CLEAR}you, the worst I get is prison.{SCROLL}But if I open the passages without{NEWLINE}Master Archer’s orders, I’ll be killed.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 42,
+   "zh": "小蓝『不想喝的话就按我们说的做,{NEWLINE}打开这一层所有封闭的通道。",
+   "en": "Green: If you don’t want to drink{NEWLINE}it, do as we say and open every{CLEAR}sealed passage on this floor.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 43,
+   "zh": "小赤『不想喝的话就按我们说的做,{NEWLINE}打开这一层所有封闭的通道。",
+   "en": "Red: If you don’t want to drink{NEWLINE}it, do as we say and open every{CLEAR}sealed passage on this floor.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 44,
+   "zh": "呕……别说了,光是听着就想吐。",
+   "en": "Urp... Stop it. Just hearing{NEWLINE}about it makes me want to puke.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 45,
+   "zh": "那边那位是联盟冠军{VAR:0103:0}吧！{NEWLINE}这里有人要滥用私刑折磨人。{CLEAR}你管不管啊！",
+   "en": "Hey, you over there, you’re{NEWLINE}League Champion {VAR:0103:0}, right?!{CLEAR}These people want to torture{CLEAR}me with vigilante justice! Aren’t{CLEAR}you going to do something?!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 46,
+   "zh": "{VAR:0103:0}『啊……？嗯……？",
+   "en": "{VAR:0103:0}: Huh...? Hmm...?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 47,
+   "zh": "{VAR:0103:0}『啊？你说什么？{NEWLINE}通道没打开我听不见！",
+   "en": "{VAR:0103:0}: Huh? What was that? I can’t{NEWLINE}hear you while the passages are closed!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 48,
+   "zh": "小蓝『哎呀呀,我们的联盟冠军{NEWLINE}耳朵好像不太好使,{CLEAR}你得把通道打开他才能听得见。",
+   "en": "Green: Oh dear, our League{NEWLINE}Champion seems to be a bit hard of{CLEAR}hearing. You’ll have to open the{CLEAR}passages before he can hear you.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 49,
+   "zh": "小赤『如你所见,我们的联盟冠军{NEWLINE}耳朵好像不太好使,{CLEAR}你得把通道打开她才能听得见。",
+   "en": "Red: As you can see, our League{NEWLINE}Champion seems to be a bit hard of{CLEAR}hearing. You’ll have to open the{CLEAR}passages before she can hear you.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 50,
+   "zh": "你们蛇鼠一窝暴力执法,{NEWLINE}真是比我们火箭队还坏！",
+   "en": "You’re a pack of rats, all in it{NEWLINE}together, enforcing the law with{CLEAR}violence! You’re even worse{CLEAR}than Team Rocket!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "tone review: 蛇鼠一窝 is an insult (a nest of snakes and rats); kept as 'pack of rats' (D-0627)"
+  },
+  {
+   "id": 51,
+   "zh": "小蓝『你就别老想着火箭队啦,{NEWLINE}趁现在我们给你机会,{CLEAR}赶紧戴罪立功吧。{CLEAR}等我们抓了阿波罗这些干部,{CLEAR}自然就没人会伤害你了,你说对吧？",
+   "en": "Green: Stop thinking about Team Rocket{NEWLINE}already. We’re giving you a chance{CLEAR}right now, so hurry up and make amends.{SCROLL}Once we catch Archer and the{NEWLINE}other Executives, nobody will{CLEAR}be around to hurt you. Right?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 52,
+   "zh": "小赤『你就别老想着火箭队啦,{NEWLINE}趁现在我们给你机会,{CLEAR}赶紧戴罪立功吧。{CLEAR}等我们抓了阿波罗这些干部,{CLEAR}自然就没人会伤害你了,你说对吧？",
+   "en": "Red: Stop thinking about Team Rocket{NEWLINE}already. We’re giving you a chance{CLEAR}right now, so hurry up and make amends.{SCROLL}Once we catch Archer and the{NEWLINE}other Executives, nobody will{CLEAR}be around to hurt you. Right?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 53,
+   "zh": "这……",
+   "en": "Well...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 54,
+   "zh": "好吧,我帮你们打开所有通道。",
+   "en": "Fine. I’ll open all the{NEWLINE}passages for you.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 55,
+   "zh": "首先要核对人脸、指纹、指静脉和虹膜……{SCROLL}然后输入密码……",
+   "en": "First it checks face, fingerprints,{NEWLINE}finger veins and iris...{SCROLL}Then I enter the password...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 56,
+   "zh": "好,系统登录成功了。{NEWLINE}我现在解除所有通道的闭锁装置……{SCROLL}你们可一定要打败火箭队啊,{NEWLINE}输了的话我可就惨了。",
+   "en": "OK, I’m logged in. Now I’ll release{NEWLINE}the locks on all the passages...{SCROLL}You’d better beat Team Rocket.{NEWLINE}If you lose, I’m done for.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 57,
+   "zh": "小蓝『你面前的这台电脑,{NEWLINE}应该能控制开启这些封闭的通道吧？",
+   "en": "Green: That PC in front of you can{NEWLINE}open these sealed passages, right?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 58,
+   "zh": "小赤『你面前的这台电脑,{NEWLINE}应该能控制开启这些封闭的通道吧？",
+   "en": "Red: That PC in front of you can{NEWLINE}open these sealed passages, right?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 59,
+   "zh": "能又怎么样？{NEWLINE}这台电脑加了身份认证,{CLEAR}除了我谁也别想开启控制系统。",
+   "en": "So what if it can? This PC has{NEWLINE}identity verification. Nobody but me{CLEAR}can get into the control system.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 60,
+   "zh": "你们是什么人,怎么到这来的！？",
+   "en": "Who are you people? How{NEWLINE}did you get in here?!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 61,
+   "zh": "小蓝『这里已经被我们的伙伴包围了,{NEWLINE}你最好不要反抗,{CLEAR}乖乖配合我们哦。",
+   "en": "Green: Our friends have this place{NEWLINE}surrounded. You’d better not resist.{CLEAR}Just cooperate like a good boy.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 62,
+   "zh": "小赤『这里已经被我们的伙伴包围了,{NEWLINE}你最好不要反抗,{CLEAR}乖乖配合我们哦。",
+   "en": "Red: Our friends have this place{NEWLINE}surrounded. You’d better not resist.{CLEAR}Just cooperate like a good boy.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 63,
+   "zh": "小银『那边那个联盟冠军{VAR:0103:0}{NEWLINE}确实是精灵联盟的人,{CLEAR}但我可不是。{CLEAR}所以我也不会跟你讲什么法律、规矩。{CLEAR}你要是不照小蓝姐说的做,{CLEAR}我就喂你喝臭臭泥的泥浆！",
+   "en": "Silver: That League Champion over{NEWLINE}there, {VAR:0103:0}, really is with the{CLEAR}Pokémon League. But I’m not.{SCROLL}So I won’t bother with laws or rules. If{NEWLINE}you don’t do what my sis says, I’ll make{CLEAR}you drink Muk sludge!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "ext-review RA-007"
+  },
+  {
+   "id": 64,
+   "zh": "小银『那边那个联盟冠军{VAR:0103:0}{NEWLINE}确实是精灵联盟的人,{CLEAR}但我可不是。{CLEAR}所以我也不会跟你讲什么法律、规矩。{CLEAR}你要是不照小赤哥说的做,{CLEAR}我就喂你喝臭臭泥的泥浆！",
+   "en": "Silver: That League Champion over{NEWLINE}there, {VAR:0103:0}, really is with the{CLEAR}Pokémon League. But I’m not.{SCROLL}So I won’t bother with laws or rules. If{NEWLINE}you don’t do what Red says, I’ll make{CLEAR}you drink Muk sludge!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "ext-review RA-007"
+  },
+  {
+   "id": 65,
+   "zh": "你、你是小银大人！？{NEWLINE}你怎么会跟这伙人一起？{CLEAR}这到底是怎么回事啊。",
+   "en": "Y-you’re Master Silver?! Why{NEWLINE}are you with these people?{CLEAR}What’s going on here?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 66,
+   "zh": "小蓝『不瞒你说,我小时候在尖兵训练营{NEWLINE}学过一个臭臭泥浆配臭臭花粉的配方,{CLEAR}给你热乎乎地冲一杯可好？",
+   "en": "Green: To be honest, back at the boot{NEWLINE}camp as a kid, I learned a recipe: Muk{CLEAR}sludge mixed with Gloom pollen. How{CLEAR}about I brew you a nice hot cup?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "ext-review RA-007"
+  },
+  {
+   "id": 67,
+   "zh": "小赤『不瞒你说,我小时候在尖兵训练营{NEWLINE}学过一个臭臭泥浆配臭臭花粉的配方,{CLEAR}你如果喜欢我可以给你冲一杯。",
+   "en": "Red: To be honest, back at the boot{NEWLINE}camp as a kid, I learned a recipe: Muk{CLEAR}sludge mixed with Gloom pollen. If you{CLEAR}like, I can make you a cup.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "ext-review RA-007"
+  },
+  {
+   "id": 68,
+   "zh": "怎么会！？{NEWLINE}通道怎么会打开了呢！",
+   "en": "What?! How did the passage open?!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 69,
+   "zh": "渡『你们店里果然是有密道啊。{NEWLINE}现在铁证如山,赶紧老实交代{CLEAR}你们和火箭队是什么关系吧。",
+   "en": "Lance: So your shop does have{NEWLINE}a secret passage. The evidence{CLEAR}is undeniable. Now come clean{CLEAR}about your ties to Team Rocket.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 70,
+   "zh": "不、我、我什么都不知道。{NEWLINE}店里怎么会突然出现一个通道呢！？",
+   "en": "N-no, I-I don’t know{NEWLINE}anything! How did a passage{CLEAR}suddenly appear in the shop?!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 71,
+   "zh": "渡『真是顽固。{NEWLINE}快龙用龙之俯冲警告他一下！",
+   "en": "Lance: How stubborn. Dragonite,{NEWLINE}give him a warning with Dragon Rush!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 72,
+   "zh": "快龙『Draaa——gon！",
+   "en": "Dragonite: Draaa-gon!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 73,
+   "zh": "别、别、别,有话好好说别动手。",
+   "en": "D-d-don’t! Let’s talk this{NEWLINE}over! No need for violence!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 74,
+   "zh": "渡『那就说说这条密道的事吧,{NEWLINE}那三个研究员打扮的人{CLEAR}是不是从这里下去的？{CLEAR}这下面是不是火箭队的基地？",
+   "en": "Lance: Then talk about this secret{NEWLINE}passage. Did those three people{CLEAR}dressed as researchers go down here?{SCROLL}Is Team Rocket’s base down below?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 75,
+   "zh": "是、是的,下面是火箭队秘密基地。{NEWLINE}我们也是被火箭队威逼利诱{CLEAR}才在这里帮他们看门的,{CLEAR}至于火箭队做了什么,{CLEAR}真的不关我们的事啊！",
+   "en": "Y-yes. Down there is Team{NEWLINE}Rocket’s secret base. Team{CLEAR}Rocket bribed and threatened us{CLEAR}into guarding the door for them.{SCROLL}As for what Team Rocket does, it{NEWLINE}really has nothing to do with us!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 76,
+   "zh": "渡『不关你们的事？{NEWLINE}真是狡辨的鬼话。",
+   "en": "Lance: Nothing to do with you? What a{NEWLINE}load of weaselly lies.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "tone review: 狡辩的鬼话 = slippery lies/sophistry; kept the accusation of lying (D-0627)"
+  },
+  {
+   "id": 77,
+   "zh": "渡『柳伯前辈、阿金、水晶,{NEWLINE}刚才的话你们应该都听见了,{CLEAR}这下面就是火箭队的秘密基地。{CLEAR}虽说{VAR:0103:0}现在不在,{CLEAR}但为了防止通道再次关闭,{CLEAR}咱们必须抓住机会,马上进入基地。",
+   "en": "Lance: Mr. Pryce, Gold, Crystal,{NEWLINE}you all heard that. Team Rocket’s{CLEAR}secret base is down here.{SCROLL}{VAR:0103:0} isn’t here right now, but{NEWLINE}the passage might close again,{CLEAR}so we must seize this chance{CLEAR}and go into the base at once.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 78,
+   "zh": "柳伯『机不可失时不再来,{NEWLINE}勇往直前就对了。",
+   "en": "Pryce: Opportunity knocks{NEWLINE}but once. Forward, then.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 79,
+   "zh": "阿金『没错,就算偶像不在,{NEWLINE}火箭队这帮人也不是咱们对手。",
+   "en": "Gold: Right. Even without my idol, those{NEWLINE}Team Rocket guys are no match for us.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 80,
+   "zh": "水晶『既然知道这里是火箭队基地,{NEWLINE}那就没什么好犹豫的。",
+   "en": "Crystal: Now that we know this{NEWLINE}is a Team Rocket base, there’s{CLEAR}nothing to hesitate about.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 81,
+   "zh": "渡『把路让开。",
+   "en": "Lance: Out of the way.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 82,
+   "zh": "{VAR:0103:0}『渡先生！{NEWLINE}渡『{VAR:0103:0}！",
+   "en": "{VAR:0103:0}: Mr. Lance!{NEWLINE}Lance: {VAR:0103:0}!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 83,
+   "zh": "柳伯『竟然在这里碰头了,真是意外。",
+   "en": "Pryce: Well, what a{NEWLINE}surprise to meet here.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 84,
+   "zh": "阿金『啊！吊眼红毛跟偶像在一起。",
+   "en": "Gold: Ah! The scowling{NEWLINE}redhead is with my idol.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 85,
+   "zh": "水晶『小银……是在帮助前辈吗？",
+   "en": "Crystal: Silver... Is he helping you?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 86,
+   "zh": "小蓝『小银,那位应该就是{NEWLINE}你说的阿金吧。",
+   "en": "Green: Silver, that must be{NEWLINE}the Gold you told me about.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 87,
+   "zh": "小银『切,这家伙怎么也来了。",
+   "en": "Silver: Tch. Why’s he here too?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 88,
+   "zh": "{VAR:0103:0}『渡先生你们是从{NEWLINE}商店的入口通道进来的吗？",
+   "en": "{VAR:0103:0}: Mr. Lance, did you all come{NEWLINE}in through the passage from the shop?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 89,
+   "zh": "渡『没错,火箭队突然打开了通道,{NEWLINE}我们就趁机下来了。{CLEAR}你们是从哪进来的？",
+   "en": "Lance: That’s right. Team Rocket{NEWLINE}suddenly opened the passage,{CLEAR}so we took the chance and came{CLEAR}down. Where did you come in from?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 90,
+   "zh": "{VAR:0103:0}『研钵山的火箭队基地里{NEWLINE}有条隐藏的密道能通到这儿。{CLEAR}我们是从那边进来的。{CLEAR}不过卡吉镇商店的入口开启,{CLEAR}应该不是火箭队故意为之,{CLEAR}而是因为我们刚才逼火箭队员{CLEAR}打开了基地里所有封闭的通道。",
+   "en": "{VAR:0103:0}: There’s a hidden passage from{NEWLINE}the Team Rocket base in Mt. Mortar{CLEAR}that leads here. That’s how we came in.{SCROLL}But the Mahogany Town shop entrance{NEWLINE}opening wasn’t Team Rocket’s doing.{SCROLL}It’s because we just made a{NEWLINE}Team Rocket member open every{CLEAR}sealed passage in the base.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 91,
+   "zh": "渡『真不愧是联盟冠军。{NEWLINE}那你们找到电波发射装置了吗？",
+   "en": "Lance: That’s the League{NEWLINE}Champion for you. Have you found{CLEAR}the radio transmitter yet?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 92,
+   "zh": "{VAR:0103:0}『还没有呢,{NEWLINE}我们只是刚打开通道,{CLEAR}现在正准备往更里面走。",
+   "en": "{VAR:0103:0}: Not yet. We only{NEWLINE}just opened the passages.{CLEAR}We’re about to head deeper in.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 93,
+   "zh": "渡『既然如此,那大家一起{NEWLINE}深入基地调查看看吧。",
+   "en": "Lance: In that case, let’s{NEWLINE}all go deeper into the base{CLEAR}together and investigate.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 94,
+   "zh": "渡『好,咱们走！",
+   "en": "Lance: All right, let’s go!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 95,
+   "zh": "你是联盟冠军吧？{NEWLINE}拜托你一定要打败火箭队啊,{CLEAR}不然我会死的很惨的。",
+   "en": "You’re the League Champion, right?{NEWLINE}Please, you have to beat Team Rocket.{CLEAR}Otherwise I’m in for a horrible death.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  }
+ ]
 }

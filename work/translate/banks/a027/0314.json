@@ -1,850 +1,850 @@
 {
-  "narc": "a027",
-  "bank": 314,
-  "source": "work/extract/v4/a027/0314.json",
-  "strings": [
-    {
-      "id": 0,
-      "zh": "这里是地鼠洞穴",
-      "en": "This is Diglett’s Cave.",
-      "status": "draft",
-      "origin": "us",
-      "notes": "US 0321/0; modernised from US 0321#0"
-    },
-    {
-      "id": 1,
-      "zh": "滚开,我们火……{SCROLL}啊不是,现在地鼠洞穴有些异样。{NEWLINE}为了您的安全禁止通行。",
-      "en": "Get lost, we’re Team Ro...{SCROLL}Er, I mean, something strange is going{NEWLINE}on in Diglett’s Cave right now. For your{CLEAR}safety, no one may pass.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 2,
-      "zh": "小火龙『Cha……",
-      "en": "Charmander: Cha...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 3,
-      "zh": "小蓝『火箭队大规模向月见山集结……{NEWLINE}一定有什么阴谋！",
-      "en": "Green: Team Rocket is gathering at{NEWLINE}Mt. Moon in huge numbers...{SCROLL}They must be up to something!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position; ext-review RV-019"
-    },
-    {
-      "id": 4,
-      "zh": "尼多兰『Ni……ran……{SCROLL}尼多兰凝视着道路一动不动。",
-      "en": "Nidoran♀: Ni... ran...{SCROLL}Nidoran♀ is staring down the road,{NEWLINE}perfectly still.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position | 尼多兰 = Nidoran♀ (glossary; #64 confirms female). Nidoran sidequest: #5–13 man persuades it, #55–57 Friend Ball fetch; #58–90 its original owner returns."
-    },
-    {
-      "id": 5,
-      "zh": "尼多兰,你已经等你原来的{NEWLINE}训练家够久了。{CLEAR}你还记得咱们的约定吗？{CLEAR}如果实在等不到你原来的训练家,{CLEAR}以后就由我来照顾你！",
-      "en": "Nidoran♀, you’ve waited long enough for{NEWLINE}your old Trainer.{SCROLL}Remember our promise? If your old{NEWLINE}Trainer never comes back, I’ll take{CLEAR}care of you from now on!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 6,
-      "zh": "尼多兰『Ni……ran……{SCROLL}尼多兰在犹豫。",
-      "en": "Nidoran♀: Ni... ran...{SCROLL}Nidoran♀ is hesitating.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 7,
-      "zh": "我明白你的心情,{NEWLINE}过去的记忆确实很美好,{CLEAR}你忠诚的品格也让人很钦佩。{CLEAR}可是……{CLEAR}总不能在这里等到死吧！{CLEAR}人类的离去和决绝{CLEAR}是你们口袋妖怪无法想象的,{CLEAR}不要再像个小丑一样{CLEAR}在这里傻等了,{CLEAR}跟我走吧,{CLEAR}前方有更美好的生活{CLEAR}在等着你呢！",
-      "en": "I know how you feel. Your old memories{NEWLINE}really are wonderful, and your loyalty{CLEAR}is admirable.{SCROLL}But... you can’t just wait here until{NEWLINE}you die!{SCROLL}You Pokémon can’t imagine how coldly{NEWLINE}people can walk away and cut all ties.{SCROLL}Stop waiting here like a fool. Come with{NEWLINE}me. A better life is waiting for you out{CLEAR}there!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 8,
-      "zh": "尼多兰『……{SCROLL}尼多兰沉默了……",
-      "en": "Nidoran♀: ...{SCROLL}Nidoran♀ fell silent...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 9,
-      "zh": "尼多兰,到我的朋友球里来吧。{NEWLINE}我绝对不会辜负你的忠诚,{CLEAR}会永远对你好的。{SCROLL}请成为我的精灵吧,尼多兰！",
-      "en": "Nidoran♀, come into my Friend Ball. I’ll{NEWLINE}never betray your loyalty. I’ll always{CLEAR}treat you well.{SCROLL}Please be my Pokémon, Nidoran♀!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 10,
-      "zh": "尼多兰『Ni……ran……",
-      "en": "Nidoran♀: Ni... ran...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 11,
-      "zh": "太好了,你终于想通了！{SCROLL}那我们走吧！",
-      "en": "Great, you finally came around!{SCROLL}Then let’s go!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 12,
-      "zh": "要尝试捕捉尼多兰吗？",
-      "en": "Try to catch Nidoran♀?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 13,
-      "zh": "尼多兰『Ni！ran！",
-      "en": "Nidoran♀: Ni! Ran!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 14,
-      "zh": "{VAR:FF01:200}喂！不要强迫尼多兰！{VAR:FF01:100}",
-      "en": "{VAR:FF01:200}Hey! Stop that!{VAR:FF01:100}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "Big text (SIZE 200%); shortened to fit."
-    },
-    {
-      "id": 15,
-      "zh": "看你兴冲冲的样子,{NEWLINE}是来找我挑战的吧！",
-      "en": "I can tell by how fired up you look.{NEWLINE}You’re here to challenge me!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 16,
-      "zh": "那边有只精灵在那待了好久了,{NEWLINE}也不知道是不是野生的。",
-      "en": "There’s a Pokémon over there that’s{NEWLINE}been sitting there for ages. I wonder if{CLEAR}it’s wild.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 17,
-      "zh": "你知道吗？即使是同一片草地,{NEWLINE}在清晨、白天、夜晚,{CLEAR}出现的精灵会有所不同哦。{SCROLL}所以多在草地里转一转{NEWLINE}或许会有意外收获！",
-      "en": "Did you know? Even in the same patch of{NEWLINE}grass, different Pokémon appear in the{CLEAR}morning, during the day, and at night.{SCROLL}So wander around the grass a lot. You{NEWLINE}might find something unexpected!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 18,
-      "zh": "尼比市三面环山,{NEWLINE}我不喜欢这种有幽闭感。{CLEAR}还是在宽阔的",
-      "en": "Pewter City is surrounded by mountains{NEWLINE}on three sides. I don’t like how{CLEAR}closed-in it feels.{SCROLL}I’d much rather be somewhere wide and{NEWLINE}open...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position | zh is cut off mid-sentence (还是在宽阔的…); completed naturally."
-    },
-    {
-      "id": 19,
-      "zh": "站岗站这么久,{NEWLINE}真是累死我了。{CLEAR}你还有华子吗？来根。",
-      "en": "Standing guard this long is wearing me{NEWLINE}out.{SCROLL}Got any more smokes? Gimme one.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position | 华子 (Zhonghua cigarettes, slang) → smokes. #19–29: Rockets disguised as police at Diglett's Cave."
-    },
-    {
-      "id": 20,
-      "zh": "给。",
-      "en": "Here.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 21,
-      "zh": "呼,舒服！放松！",
-      "en": "Ahh, that hits the spot! So relaxing!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 22,
-      "zh": "有人！",
-      "en": "Someone’s coming!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 23,
-      "zh": "那必须的,{NEWLINE}干活抽根烟,赛过活神仙啊！",
-      "en": "You bet. A smoke on the job, and life{NEWLINE}doesn’t get any better!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 24,
-      "zh": "喂喂！说你呢！{NEWLINE}现在地鼠洞穴有些异样,{CLEAR}这里禁止通行！",
-      "en": "Hey, hey! I’m talking to you! Something{NEWLINE}strange is going on in Diglett’s Cave{CLEAR}right now.{SCROLL}No one’s allowed through!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 25,
-      "zh": "笨蛋！你现在没穿警服！",
-      "en": "Idiot! You’re not wearing your police{NEWLINE}uniform!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 26,
-      "zh": "靠,暴露了！",
-      "en": "Crap, we’re busted!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 27,
-      "zh": "算了,既然这样,{NEWLINE}那就灭口吧！",
-      "en": "Oh well. If that’s how it is, we’ll just{NEWLINE}have to silence the kid for good!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 28,
-      "zh": "真是麻烦啊,但也只能这样了。",
-      "en": "What a pain. But I guess there’s no{NEWLINE}other way.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 29,
-      "zh": "臭小鬼,天堂有路你不走,{NEWLINE}地狱无门你自来投,{CLEAR}发现了我们的秘密可留你不得！",
-      "en": "You brat! There was a road to heaven{NEWLINE}and you didn’t take it. There’s no door{CLEAR}to hell, but you barged right in!{SCROLL}Now that you’ve found out our secret,{NEWLINE}we can’t let you live!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position | D-1768: user approved explicit lethal meaning of 留你不得 in the witness-killing scene."
-    },
-    {
-      "id": 30,
-      "zh": "这小鬼怎么这么厉害！？",
-      "en": "How is this brat so strong!?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 31,
-      "zh": "被打败了……{NEWLINE}得赶紧通知雅典娜大人才行！",
-      "en": "We lost...{SCROLL}I have to report to Master Ariana{NEWLINE}right away!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position | consistency fix (follow-up 4)"
-    },
-    {
-      "id": 32,
-      "zh": "原本这条路是{NEWLINE}连接常磐市和尼比市的重要通道,{CLEAR}走这里就能绕开常磐森林{CLEAR}直接到达尼比市,{CLEAR}但是最近不知道为什么居然封闭了。",
-      "en": "This road used to be the main route{NEWLINE}between Viridian City and Pewter City.{SCROLL}It let you skip Viridian Forest and go{NEWLINE}straight to Pewter City. But lately it’s{CLEAR}been closed off for some reason.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 33,
-      "zh": "好像已经没有警察在这里封路了呢,{NEWLINE}这样一来{CLEAR}往返常磐市和尼比市就方便多了！",
-      "en": "Looks like the police aren’t blocking{NEWLINE}the road anymore.{SCROLL}Now it’s much easier to travel between{NEWLINE}Viridian City and Pewter City!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 34,
-      "zh": "要得意你就趁现在吧,{NEWLINE}一会儿等我们雅典娜大人过来了,{CLEAR}有你好受的！",
-      "en": "Gloat while you can. Once Master Ariana{NEWLINE}gets here, you’ll be sorry!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position | consistency fix (follow-up 4)"
-    },
-    {
-      "id": 35,
-      "zh": "你这家伙什么来头？{NEWLINE}敢打我们火箭队仓库的主意。",
-      "en": "Who do you think you are? Messing with{NEWLINE}Team Rocket’s warehouse?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 36,
-      "zh": "小火龙很看起来很虚弱,{NEWLINE}要尝试捕捉吗？",
-      "en": "Charmander looks very weak. Try to{NEWLINE}catch it?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position | Charmander sidequest: #36–54 (abusive owner in the Pokémon Center)."
-    },
-    {
-      "id": 37,
-      "zh": "小火龙好像并不愿意被捕捉。",
-      "en": "Charmander doesn’t seem to want to be{NEWLINE}caught.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 38,
-      "zh": "{VAR:0103:0}『小火龙,{NEWLINE}我知道你在等你的主人,可是……{CLEAR}你的主人应该不会回来了。{CLEAR}你现在这么虚弱,{CLEAR}还是先跟我去精灵中心治疗一下吧！",
-      "en": "{VAR:0103:0}: Charmander, I know you’re{NEWLINE}waiting for your Trainer, but... they’re{CLEAR}probably not coming back.{SCROLL}You’re so weak right now. Come with me{NEWLINE}to the Pokémon Center and get treated{CLEAR}first!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 39,
-      "zh": "小火龙已经彻底没力气了……",
-      "en": "Charmander has no strength left at{NEWLINE}all...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 40,
-      "zh": "{VAR:0103:0}『情况紧急,顾不了那么多了。{NEWLINE}你跟我来吧,小火龙！",
-      "en": "{VAR:0103:0}: This is an emergency. No time{NEWLINE}to worry about that.{SCROLL}Come with me, Charmander!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 41,
-      "zh": "{VAR:0103:0}『呼……呼……乔伊小姐,{NEWLINE}这只小火龙虚弱到生命垂危了！{CLEAR}请你快要救救它！",
-      "en": "{VAR:0103:0}: *pant* *pant*... Nurse Joy,{NEWLINE}this Charmander is so weak it’s close to{CLEAR}dying!{SCROLL}Please save it, quick!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 42,
-      "zh": "嗯？小火龙？{NEWLINE}我不是让你在2号路等我吗？{CLEAR}你怎么敢私自跑来这里！{CLEAR}你这个垃圾,道馆对战打不赢、{CLEAR}还这么不听话,{CLEAR}我不要你了！滚吧！",
-      "en": "Huh? Charmander? Didn’t I tell you to{NEWLINE}wait for me on Route 2?{SCROLL}How dare you run off here on your own!{SCROLL}You worthless piece of trash. You can’t{NEWLINE}win a Gym battle, and you won’t even{CLEAR}listen.{SCROLL}I don’t want you anymore! Get lost!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 43,
-      "zh": "{VAR:0103:0}『喂！小火龙可是{NEWLINE}一直在2号路等你啊！{CLEAR}你不想要小火龙了就好好跟它说,{CLEAR}这样折磨它算什么！",
-      "en": "{VAR:0103:0}: Hey! Charmander has been{NEWLINE}waiting for you on Route 2 this whole{CLEAR}time!{SCROLL}If you don’t want Charmander anymore,{NEWLINE}then tell it properly. Why torment it{CLEAR}like this!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 44,
-      "zh": "你是哪冒出来的垃圾训练家,{NEWLINE}敢多管我的闲事。找揍！",
-      "en": "Where’d a trash Trainer like you pop up{NEWLINE}from? Butting into my business? You’re{CLEAR}asking for a beating!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 45,
-      "zh": "哼,你赢了我又怎样！{NEWLINE}小火龙还不是得听我的话！{SCROLL}小火龙,现在乖乖去2号路等我,{NEWLINE}我不去你不许走,明白吗！",
-      "en": "Hmph, so you beat me. So what!{NEWLINE}Charmander still has to do what I say!{SCROLL}Charmander, go back to Route 2 and wait{NEWLINE}for me like a good boy. You don’t leave{CLEAR}until I come, got it!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 46,
-      "zh": "{VAR:0103:0}『小火龙！{NEWLINE}你还看不出他的心思吗？{CLEAR}这个人压根就不想要你了！{CLEAR}不要再为他坚守什么了！",
-      "en": "{VAR:0103:0}: Charmander! Can’t you see{NEWLINE}what he’s thinking?{SCROLL}He doesn’t want you at all! Stop{NEWLINE}staying loyal to him!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 47,
-      "zh": "妈的,小火龙。{NEWLINE}我的话你敢不听是吗！",
-      "en": "Dammit, Charmander. You dare disobey{NEWLINE}me?!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 48,
-      "zh": "混账！竟然敢攻击我！{NEWLINE}你这个垃圾精灵给我死……",
-      "en": "You bastard! You dare attack me!{SCROLL}You trash Pokémon, I’ll kill y...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position | tone review: 混账 is a curse ('bastard'); kept (D-0627)"
-    },
-    {
-      "id": 49,
-      "zh": "可恶！你这个垃圾！{NEWLINE}早晚有一天我要弄死你！",
-      "en": "Dammit! You piece of trash!{SCROLL}One of these days I’ll kill you!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 50,
-      "zh": "{VAR:0103:0}『太好了,小火龙。{NEWLINE}你现在自由了！",
-      "en": "{VAR:0103:0}: Great, Charmander. You’re{NEWLINE}free now!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 51,
-      "zh": "情况真的很严重,{NEWLINE}我现在就为它治疗！",
-      "en": "This really is serious. I’ll treat it{NEWLINE}right away!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 52,
-      "zh": "好了,这孩子已经没有问题了。",
-      "en": "There. This little one will be just fine{NEWLINE}now.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 53,
-      "zh": "小火龙『Cha——man！{SCROLL}小火龙非常高兴！",
-      "en": "Charmander: Cha-man!{SCROLL}Charmander is overjoyed!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 54,
-      "zh": "{VAR:0103:0}『不错嘛,{NEWLINE}你看起来已经完全恢复了。",
-      "en": "{VAR:0103:0}: Not bad. You look like you’ve{NEWLINE}fully recovered.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 55,
-      "zh": "这只尼多兰不知道被谁遗弃了,{NEWLINE}似乎在等它的主人回来。{CLEAR}我在看到尼多兰第一眼的时候{CLEAR}就被它坚守的执着所打动,{CLEAR}所以就下定决心要收留它、照顾它！{SCROLL}为了给尼多兰舒适的收纳环境,{NEWLINE}我特意去到城都地区{CLEAR}向岩铁先生学习了如何做柑果球。{SCROLL}如今学成归来,{NEWLINE}本该做一个崭新的柑果球{CLEAR}来收服尼多兰。{CLEAR}可事到临头我才发现,{CLEAR}尼比市附近的柑果做出的球{CLEAR}似乎都不太适合收纳尼多兰……{SCROLL}要是能有绿柑果做出的朋友球就好了……",
-      "en": "Someone abandoned this Nidoran♀. It{NEWLINE}seems to be waiting for its Trainer to{CLEAR}come back.{SCROLL}The first time I saw it, I was so moved{NEWLINE}by its devotion that I made up my mind{CLEAR}to take it in and look after it!{SCROLL}To give it a comfortable ball to live in,{NEWLINE}I went all the way to Johto to learn to{CLEAR}make Apricorn Balls from Kurt.{SCROLL}Now that I’m back, I ought to make a{NEWLINE}brand-new Apricorn Ball to catch it{CLEAR}with.{SCROLL}But now that the time’s come, I’ve{NEWLINE}realized the balls made from Apricorns{CLEAR}around Pewter City don’t really suit{CLEAR}Nidoran♀...{SCROLL}If only I had a Friend Ball made from a{NEWLINE}Green Apricorn...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 56,
-      "zh": "要把朋友球送给他吗？{SCROLL}",
-      "en": "Give him a Friend Ball?{SCROLL}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost"
-    },
-    {
-      "id": 57,
-      "zh": "你有朋友球,还要送给我？！{SCROLL}真的非常感谢！{NEWLINE}这样一来我就能收服尼多兰了。",
-      "en": "You have a Friend Ball, and you’re{NEWLINE}giving it to me?!{SCROLL}Thank you so much! Now I can catch{NEWLINE}Nidoran♀.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 58,
-      "zh": "真是的,每次穿过常磐森林{NEWLINE}都有够麻烦。",
-      "en": "Honestly, cutting through Viridian{NEWLINE}Forest every time is such a pain.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 59,
-      "zh": "嗯？怎么冒出一只尼多兰来？",
-      "en": "Hm? Where’d this Nidoran♀ come from?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 60,
-      "zh": "看尼多兰这么热情……{NEWLINE}莫非是它的训练家！？{CLEAR}不,应该不是,{CLEAR}看这个训练家的样子,{CLEAR}好像根本不认识尼多兰。",
-      "en": "Nidoran♀ is so excited... Could he be its{NEWLINE}Trainer!?{SCROLL}No, can’t be. From the look of this{NEWLINE}Trainer, he doesn’t seem to know{CLEAR}Nidoran♀ at all.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s), same position"
-    },
-    {
-      "id": 61,
-      "zh": "你好。这只尼多兰{NEWLINE}好像是被谁遗弃在这里的。{CLEAR}今天是我第一次{CLEAR}见到它对路过的人这么热情,{CLEAR}莫非你是像小刚先生那样{CLEAR}天生会让精灵产生安全感的饲育家？",
-      "en": "Hello. Someone seems to have abandoned{NEWLINE}this Nidoran♀ here.{SCROLL}Today’s the first time I’ve seen it this{NEWLINE}excited about someone passing by.{SCROLL}Could you be a born Breeder who puts{NEWLINE}Pokémon at ease, like Brock?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 62,
-      "zh": "我才不是什么饲育家呢,{NEWLINE}我是专攻精灵对战的训练家。",
-      "en": "I’m no Breeder. I’m a Trainer who{NEWLINE}specializes in Pokémon battles.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 63,
-      "zh": "哦哦,看来你接触过很多精灵啊,{NEWLINE}难怪尼多兰会对你这么热情,哈哈。{SCROLL}我还担心万一是它原来那个{NEWLINE}不负责任的主人回来了{CLEAR}该如何是好呢,哈哈。",
-      "en": "Oh, so you’ve been around lots of{NEWLINE}Pokémon! No wonder Nidoran♀ is so{CLEAR}friendly toward you, ha ha.{SCROLL}I was worried about what I’d do if its{NEWLINE}irresponsible old owner came back, ha{CLEAR}ha.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 64,
-      "zh": "等等！{SCROLL}我在得到6v百变怪之后,{NEWLINE}确实放生了一批{CLEAR}个体值很差的雌性精灵……",
-      "en": "Wait!{SCROLL}After I got a 6IV Ditto, I did release a{NEWLINE}batch of female Pokémon with bad IVs...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 65,
-      "zh": "看你这个样子{NEWLINE}应该是我那时候放生的精灵了。",
-      "en": "Look at you. You must be one of the{NEWLINE}ones I released back then.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s), same position"
-    },
-    {
-      "id": 66,
-      "zh": "想不到你还挺忠诚的。{NEWLINE}那好吧,你再成为我的精灵吧,{CLEAR}跟我去商店买个精灵球装你。",
-      "en": "Didn’t expect you to be so loyal. Fine,{NEWLINE}you can be my Pokémon again.{SCROLL}Come with me to the store, and I’ll buy{NEWLINE}a Poké Ball to put you in.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s), same position"
-    },
-    {
-      "id": 67,
-      "zh": "哟,{NEWLINE}我的尼多兰对你还恋恋不舍呢。",
-      "en": "Heh. Looks like my Nidoran♀ still{NEWLINE}doesn’t want to leave you.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s), same position"
-    },
-    {
-      "id": 68,
-      "zh": "……",
-      "en": "...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    },
-    {
-      "id": 69,
-      "zh": "我……{NEWLINE}那……",
-      "en": "I... Well...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s), same position"
-    },
-    {
-      "id": 70,
-      "zh": "那是当然的好吧！{SCROLL}我不管你是放生还是遗弃,{NEWLINE}但是尼多兰在2号路{CLEAR}等了你整整一年啊！{CLEAR}在这一年里,如果没有我和母亲{CLEAR}轮流给它送食物送水,{CLEAR}它早就死在那里了！{SCROLL}而且我还为了给尼多兰一个{NEWLINE}舒适的被收服体验,{CLEAR}特地跑到城都地区学做柑果球……",
-      "en": "Of course it doesn’t!{SCROLL}I don’t care whether you released it or{NEWLINE}abandoned it, but Nidoran♀ waited for{CLEAR}you on Route 2 for a whole year!{SCROLL}If my mother and I hadn’t taken turns{NEWLINE}bringing it food and water all year, it{CLEAR}would have died there long ago!{SCROLL}And I even went all the way to Johto to{NEWLINE}learn to make Apricorn Balls, just so{CLEAR}being caught would be comfortable for{CLEAR}it...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s), same position"
-    },
-    {
-      "id": 71,
-      "zh": "哦,那真是多谢了。",
-      "en": "Oh. Well, thanks a lot.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s), same position"
-    },
-    {
-      "id": 72,
-      "zh": "不要说得那么轻巧啊！{SCROLL}你一点都不了解尼多兰的痛苦。{NEWLINE}对你来说它只不过是{CLEAR}不合格的生蛋工具。{CLEAR}但对我来说它可是{CLEAR}一份心灵的寄托啊！",
-      "en": "Don’t brush it off like that!{SCROLL}You don’t understand Nidoran♀’s pain at{NEWLINE}all. To you, it’s just a reject{CLEAR}egg-making tool.{SCROLL}But to me, it’s what my heart has come{NEWLINE}to lean on!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s), same position"
-    },
-    {
-      "id": 73,
-      "zh": "把这么低个体值的精灵当成心灵寄托,{NEWLINE}你也是够没品味的。",
-      "en": "Leaning on a Pokémon with IVs that bad?{NEWLINE}You’ve got no taste.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 74,
-      "zh": "尼多兰,对他使用撞击,{NEWLINE}让他感受下心灵寄托破碎的滋味。",
-      "en": "Nidoran♀, use Tackle on him. Let him see{NEWLINE}how it feels when the thing his heart{CLEAR}leans on breaks.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 75,
-      "zh": "尼多兰『Ni——ran——{SCROLL}尼多兰并不是很想执行命令。",
-      "en": "Nidoran♀: Ni-ran-{SCROLL}Nidoran♀ doesn’t really want to obey.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
-    },
-    {
-      "id": 76,
-      "zh": "真是没用的精灵,{NEWLINE}给我回去沉睡在电脑箱子里吧。",
-      "en": "What a useless Pokémon. Go back to{NEWLINE}sleep in a PC Box.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
-    },
-    {
-      "id": 77,
-      "zh": "呵呵,{NEWLINE}到头来小丑竟然是我自己。",
-      "en": "Heh... So in the end, the fool was me.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s), same position"
-    },
-    {
-      "id": 78,
-      "zh": "为什么……{NEWLINE}为什么你这样的职业训练家{CLEAR}却偏偏不懂得珍惜和尊重精灵……",
-      "en": "Why... Why doesn’t a pro Trainer like{NEWLINE}you know how to cherish and respect{CLEAR}Pokémon...",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s), same position"
-    },
-    {
-      "id": 79,
-      "zh": "要去阻止尼多兰被带走吗？{SCROLL}",
-      "en": "Stop Nidoran♀ from being taken away?{SCROLL}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s), same position, flags page_breaks_lost"
-    },
-    {
-      "id": 80,
-      "zh": "{VAR:0103:0}『等一下！{SCROLL}{VAR:0103:0}『这位先生已经和尼多兰{NEWLINE}建立了深厚的感情。{CLEAR}而且尼多兰现在是放生状态,{CLEAR}你也不算是尼多兰的正式训练家。{CLEAR}你就这样把尼多兰带走,{CLEAR}是不是有些说不过去啊。",
-      "en": "{VAR:0103:0}: Hold on!{SCROLL}{VAR:0103:0}: This man has already formed a{NEWLINE}deep bond with Nidoran♀.{SCROLL}And Nidoran♀ was released, so you’re{NEWLINE}not really its official Trainer.{SCROLL}Taking Nidoran♀ away just like that{NEWLINE}isn’t very fair, is it?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl) | Player-gender branch: #80/#83 male player (polite), #81/#84 female player (本姑娘 'this girl')."
-    },
-    {
-      "id": 81,
-      "zh": "{VAR:0103:0}『给我站住！{SCROLL}{VAR:0103:0}『没看到人家和尼多兰{NEWLINE}已经情深义重了吗？{CLEAR}况且你现在又没重新收服尼多兰,{CLEAR}根本就不算它的正式训练家！{CLEAR}你想这样把尼多兰带走,{CLEAR}简直就是小偷！强盗！",
-      "en": "{VAR:0103:0}: Stop right there!{SCROLL}{VAR:0103:0}: Can’t you see how close he and{NEWLINE}Nidoran♀ are?{SCROLL}Besides, you haven’t caught Nidoran♀{NEWLINE}again, so you’re not its official Trainer{CLEAR}at all!{SCROLL}Taking Nidoran♀ away like this makes you{NEWLINE}nothing but a thief! A robber!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
-    },
-    {
-      "id": 82,
-      "zh": "你又是从哪冒出来的家伙？{NEWLINE}我想怎么处置我的精灵跟你无关。{CLEAR}少多管闲事！",
-      "en": "And where did you come from? What I do{NEWLINE}with my Pokémon is none of your{CLEAR}business.{SCROLL}Butt out!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 83,
-      "zh": "{VAR:0103:0}『请不要自认为{NEWLINE}尼多兰现在属于你,{CLEAR}你无权决定它的未来。",
-      "en": "{VAR:0103:0}: Please don’t assume Nidoran♀{NEWLINE}belongs to you now.{SCROLL}You have no right to decide its future.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 84,
-      "zh": "{VAR:0103:0}『本姑娘今天还就{NEWLINE}一定要管你的闲事了！",
-      "en": "{VAR:0103:0}: Well, today this girl is butting{NEWLINE}in whether you like it or not!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 85,
-      "zh": "你这么不知死活的话,{NEWLINE}就让你尝尝我的厉害！",
-      "en": "If you’ve got that much of a death{NEWLINE}wish, I’ll show you what I can do!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position | tone review: 不知死活 = courting death; 'death wish' keeps it (D-0627)"
-    },
-    {
-      "id": 86,
-      "zh": "好家伙,{NEWLINE}居然栽在你这种人手里！",
-      "en": "Unbelievable. Beaten by someone like{NEWLINE}you!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s), same position"
-    },
-    {
-      "id": 87,
-      "zh": "行吧,你要是喜欢这种{NEWLINE}垃圾个体值的尼多兰,{CLEAR}你就抱回家去跟它生蛋吧！",
-      "en": "Fine. If you like a Nidoran♀ with garbage{NEWLINE}IVs that much...{SCROLL}...take it home and breed with it{NEWLINE}yourself!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position | Faithful: 跟它生蛋 (breed with it), crude jab kept."
-    },
-    {
-      "id": 88,
-      "zh": "谢谢你帮我留住了尼多兰。{SCROLL}我除了会做柑果球,{NEWLINE}没什么能报答你的。{CLEAR}如果你想把采集的柑果做成球,{CLEAR}尽管来尼比市找我就好！",
-      "en": "Thank you for helping me keep Nidoran♀.{SCROLL}All I know how to do is make Apricorn{NEWLINE}Balls. I don’t have anything else to{CLEAR}repay you with.{SCROLL}If you want the Apricorns you collect{NEWLINE}made into balls, just come find me in{CLEAR}Pewter City!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 89,
-      "zh": "尼多兰『Ni……ran……{SCROLL}尼多兰点了点头。",
-      "en": "Nidoran♀: Ni... ran...{SCROLL}Nidoran♀ nodded.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 90,
-      "zh": "尼多兰！{NEWLINE}谢谢你选择留下来！",
-      "en": "Nidoran♀! Thank you for choosing to{NEWLINE}stay!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 2 source(s), same position"
-    },
-    {
-      "id": 91,
-      "zh": "我刚在尼比道馆锻炼完努力值,{NEWLINE}你愿意跟我来场对战帮我检验一下{CLEAR}努力值的加成效果吗？",
-      "en": "I just finished EV training at the{NEWLINE}Pewter Gym.{SCROLL}Will you battle me to help test how well{NEWLINE}my EVs are working?",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 92,
-      "zh": "谢谢,请尽全力攻过来吧！",
-      "en": "Thanks! Come at me with everything{NEWLINE}you’ve got!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 93,
-      "zh": "虽然刚刚是我输了,{NEWLINE}但我能感觉到我的精灵的物防水平{CLEAR}已经有所提升了。{SCROLL}果然精灵能力值的强弱{NEWLINE}不是只由种族值决定的,{CLEAR}后天的努力值培养也非常重要。{SCROLL}关东地区的大多数道馆{NEWLINE}都设有锻炼努力值的陪练,{CLEAR}你如果想通过锻炼努力值{CLEAR}提升精灵能力,{CLEAR}找道馆里的陪练准没错。",
-      "en": "I lost just now, but I can feel my{NEWLINE}Pokémon’s Defense has gone up.{SCROLL}A Pokémon’s stats really aren’t decided{NEWLINE}by base stats alone. The EVs you train{CLEAR}afterward matter a lot too.{SCROLL}Most Gyms in Kanto have sparring{NEWLINE}partners for EV training.{SCROLL}If you want to raise your Pokémon’s{NEWLINE}stats with EV training, you can’t go{CLEAR}wrong with a Gym’s sparring partners.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 94,
-      "zh": "精灵能力值的强弱{NEWLINE}不是只由种族值决定的,{CLEAR}后天的努力值培养也非常重要。{SCROLL}关东地区的大多数道馆{NEWLINE}都设有锻炼努力值的陪练,{CLEAR}你如果想通过锻炼努力值{CLEAR}提升精灵能力,{CLEAR}找道馆里的陪练准没错。",
-      "en": "A Pokémon’s stats aren’t decided by{NEWLINE}base stats alone. The EVs you train{CLEAR}afterward matter a lot too.{SCROLL}Most Gyms in Kanto have sparring{NEWLINE}partners for EV training.{SCROLL}If you want to raise your Pokémon’s{NEWLINE}stats with EV training, you can’t go{CLEAR}wrong with a Gym’s sparring partners.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 95,
-      "zh": "我在等一个{NEWLINE}能让我提起兴趣的对手,{CLEAR}很显然你不是。",
-      "en": "I’m waiting for an opponent who can{NEWLINE}actually hold my interest.{SCROLL}You’re clearly not it.",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost"
-    },
-    {
-      "id": 96,
-      "zh": "你看起来很厉害啊,{NEWLINE}我对你很感兴趣,{CLEAR}要不要跟我来场对战？{SCROLL}",
-      "en": "You look strong. You’ve got my{NEWLINE}interest.{SCROLL}How about a battle?{SCROLL}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 97,
-      "zh": "你想单打还是双打？{SCROLL}",
-      "en": "Single or Double Battle?{SCROLL}",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost; other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl)"
-    },
-    {
-      "id": 98,
-      "zh": "单打",
-      "en": "Single",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 6 source(s), same position; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 99,
-      "zh": "双打",
-      "en": "Double",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 5 source(s), same position; other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl)",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 100,
-      "zh": "先不打了",
-      "en": "Not now",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 3 source(s), same position; other variants: 3 more v3 TM candidates (tm_v4_matches.jsonl)",
-      "category": "menu_touch_1line"
-    },
-    {
-      "id": 101,
-      "zh": "你身上带的精灵不够进行双打！",
-      "en": "You don’t have enough Pokémon with you{NEWLINE}for a Double Battle!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 102,
-      "zh": "来吧,我浑身的热血都沸腾起来了！",
-      "en": "Bring it on! My blood’s boiling!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 103,
-      "zh": "你可真厉害啊！",
-      "en": "You’re really something!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": "v3 TM: 1 source(s), same position"
-    },
-    {
-      "id": 104,
-      "zh": "路卡利欧『Luuu——ca！",
-      "en": "Lucario: Luuu-ca!",
-      "status": "draft",
-      "origin": "agent",
-      "notes": ""
-    }
-  ]
+ "narc": "a027",
+ "bank": 314,
+ "source": "work/extract/v4/a027/0314.json",
+ "strings": [
+  {
+   "id": 0,
+   "zh": "这里是地鼠洞穴",
+   "en": "This is Diglett’s Cave.",
+   "status": "draft",
+   "origin": "us",
+   "notes": "US 0321/0; modernised from US 0321#0"
+  },
+  {
+   "id": 1,
+   "zh": "滚开,我们火……{SCROLL}啊不是,现在地鼠洞穴有些异样。{NEWLINE}为了您的安全禁止通行。",
+   "en": "Get lost, we’re Team Ro...{SCROLL}Er, I mean, something strange is going{NEWLINE}on in Diglett’s Cave right now. For your{CLEAR}safety, no one may pass.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 2,
+   "zh": "小火龙『Cha……",
+   "en": "Charmander: Cha...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 3,
+   "zh": "小蓝『火箭队大规模向月见山集结……{NEWLINE}一定有什么阴谋！",
+   "en": "Green: Team Rocket is gathering at{NEWLINE}Mt. Moon in huge numbers...{SCROLL}They must be up to something!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position; ext-review RV-019"
+  },
+  {
+   "id": 4,
+   "zh": "尼多兰『Ni……ran……{SCROLL}尼多兰凝视着道路一动不动。",
+   "en": "Nidoran♀: Ni... ran...{SCROLL}Nidoran♀ is staring down the road,{NEWLINE}perfectly still.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position | 尼多兰 = Nidoran♀ (glossary; #64 confirms female). Nidoran sidequest: #5–13 man persuades it, #55–57 Friend Ball fetch; #58–90 its original owner returns."
+  },
+  {
+   "id": 5,
+   "zh": "尼多兰,你已经等你原来的{NEWLINE}训练家够久了。{CLEAR}你还记得咱们的约定吗？{CLEAR}如果实在等不到你原来的训练家,{CLEAR}以后就由我来照顾你！",
+   "en": "Nidoran♀, you’ve waited long enough for{NEWLINE}your old Trainer.{SCROLL}Remember our promise? If your old{NEWLINE}Trainer never comes back, I’ll take{CLEAR}care of you from now on!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 6,
+   "zh": "尼多兰『Ni……ran……{SCROLL}尼多兰在犹豫。",
+   "en": "Nidoran♀: Ni... ran...{SCROLL}Nidoran♀ is hesitating.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 7,
+   "zh": "我明白你的心情,{NEWLINE}过去的记忆确实很美好,{CLEAR}你忠诚的品格也让人很钦佩。{CLEAR}可是……{CLEAR}总不能在这里等到死吧！{CLEAR}人类的离去和决绝{CLEAR}是你们口袋妖怪无法想象的,{CLEAR}不要再像个小丑一样{CLEAR}在这里傻等了,{CLEAR}跟我走吧,{CLEAR}前方有更美好的生活{CLEAR}在等着你呢！",
+   "en": "I know how you feel. Your old memories{NEWLINE}really are wonderful, and your loyalty{CLEAR}is admirable.{SCROLL}But... you can’t just wait here until{NEWLINE}you die!{SCROLL}You Pokémon can’t imagine how coldly{NEWLINE}people can walk away and cut all ties.{SCROLL}Stop waiting here like a fool. Come with{NEWLINE}me. A better life is waiting for you out{CLEAR}there!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 8,
+   "zh": "尼多兰『……{SCROLL}尼多兰沉默了……",
+   "en": "Nidoran♀: ...{SCROLL}Nidoran♀ fell silent...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 9,
+   "zh": "尼多兰,到我的朋友球里来吧。{NEWLINE}我绝对不会辜负你的忠诚,{CLEAR}会永远对你好的。{SCROLL}请成为我的精灵吧,尼多兰！",
+   "en": "Nidoran♀, come into my Friend Ball. I’ll{NEWLINE}never betray your loyalty. I’ll always{CLEAR}treat you well.{SCROLL}Please be my Pokémon, Nidoran♀!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 10,
+   "zh": "尼多兰『Ni……ran……",
+   "en": "Nidoran♀: Ni... ran...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 11,
+   "zh": "太好了,你终于想通了！{SCROLL}那我们走吧！",
+   "en": "Great, you finally came around!{SCROLL}Then let’s go!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 12,
+   "zh": "要尝试捕捉尼多兰吗？",
+   "en": "Try to catch Nidoran♀?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 13,
+   "zh": "尼多兰『Ni！ran！",
+   "en": "Nidoran♀: Ni! Ran!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 14,
+   "zh": "{VAR:FF01:200}喂！不要强迫尼多兰！{VAR:FF01:100}",
+   "en": "{VAR:FF01:200}Hey! Stop that!{VAR:FF01:100}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "Big text (SIZE 200%); shortened to fit."
+  },
+  {
+   "id": 15,
+   "zh": "看你兴冲冲的样子,{NEWLINE}是来找我挑战的吧！",
+   "en": "I can tell by how fired up you look.{NEWLINE}You’re here to challenge me!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 16,
+   "zh": "那边有只精灵在那待了好久了,{NEWLINE}也不知道是不是野生的。",
+   "en": "There’s a Pokémon over there that’s{NEWLINE}been sitting there for ages. I wonder if{CLEAR}it’s wild.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 17,
+   "zh": "你知道吗？即使是同一片草地,{NEWLINE}在清晨、白天、夜晚,{CLEAR}出现的精灵会有所不同哦。{SCROLL}所以多在草地里转一转{NEWLINE}或许会有意外收获！",
+   "en": "Did you know? Even in the same patch of{NEWLINE}grass, different Pokémon appear in the{CLEAR}morning, during the day, and at night.{SCROLL}So wander around the grass a lot. You{NEWLINE}might find something unexpected!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 18,
+   "zh": "尼比市三面环山,{NEWLINE}我不喜欢这种有幽闭感。{CLEAR}还是在宽阔的",
+   "en": "Pewter City is surrounded by mountains{NEWLINE}on three sides. I don’t like how{CLEAR}closed-in it feels.{SCROLL}I’d much rather be somewhere wide and{NEWLINE}open...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position | zh is cut off mid-sentence (还是在宽阔的…); completed naturally."
+  },
+  {
+   "id": 19,
+   "zh": "站岗站这么久,{NEWLINE}真是累死我了。{CLEAR}你还有华子吗？来根。",
+   "en": "Standing guard this long is wearing me{NEWLINE}out.{SCROLL}Got any more smokes? Gimme one.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position | 华子 (Zhonghua cigarettes, slang) → smokes. #19–29: Rockets disguised as police at Diglett's Cave."
+  },
+  {
+   "id": 20,
+   "zh": "给。",
+   "en": "Here.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 21,
+   "zh": "呼,舒服！放松！",
+   "en": "Ahh, that hits the spot! So relaxing!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 22,
+   "zh": "有人！",
+   "en": "Someone’s coming!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 23,
+   "zh": "那必须的,{NEWLINE}干活抽根烟,赛过活神仙啊！",
+   "en": "You bet. A smoke on the job, and life{NEWLINE}doesn’t get any better!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 24,
+   "zh": "喂喂！说你呢！{NEWLINE}现在地鼠洞穴有些异样,{CLEAR}这里禁止通行！",
+   "en": "Hey, hey! I’m talking to you! Something{NEWLINE}strange is going on in Diglett’s Cave{CLEAR}right now.{SCROLL}No one’s allowed through!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 25,
+   "zh": "笨蛋！你现在没穿警服！",
+   "en": "Idiot! You’re not wearing your police{NEWLINE}uniform!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 26,
+   "zh": "靠,暴露了！",
+   "en": "Crap, we’re busted!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 27,
+   "zh": "算了,既然这样,{NEWLINE}那就灭口吧！",
+   "en": "Oh well. If that’s how it is, we’ll just{NEWLINE}have to silence the kid for good!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 28,
+   "zh": "真是麻烦啊,但也只能这样了。",
+   "en": "What a pain. But I guess there’s no{NEWLINE}other way.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 29,
+   "zh": "臭小鬼,天堂有路你不走,{NEWLINE}地狱无门你自来投,{CLEAR}发现了我们的秘密可留你不得！",
+   "en": "You brat! There was a road to heaven{NEWLINE}and you didn’t take it. There’s no door{CLEAR}to hell, but you barged right in!{SCROLL}Now that you’ve found out our secret,{NEWLINE}we can’t let you live!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position | D-1768: user approved explicit lethal meaning of 留你不得 in the witness-killing scene."
+  },
+  {
+   "id": 30,
+   "zh": "这小鬼怎么这么厉害！？",
+   "en": "How is this brat so strong!?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 31,
+   "zh": "被打败了……{NEWLINE}得赶紧通知雅典娜大人才行！",
+   "en": "We lost...{SCROLL}I have to report to Master Ariana{NEWLINE}right away!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position | consistency fix (follow-up 4)"
+  },
+  {
+   "id": 32,
+   "zh": "原本这条路是{NEWLINE}连接常磐市和尼比市的重要通道,{CLEAR}走这里就能绕开常磐森林{CLEAR}直接到达尼比市,{CLEAR}但是最近不知道为什么居然封闭了。",
+   "en": "This road used to be the main route{NEWLINE}between Viridian City and Pewter City.{SCROLL}It let you skip Viridian Forest and go{NEWLINE}straight to Pewter City. But lately it’s{CLEAR}been closed off for some reason.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 33,
+   "zh": "好像已经没有警察在这里封路了呢,{NEWLINE}这样一来{CLEAR}往返常磐市和尼比市就方便多了！",
+   "en": "Looks like the police aren’t blocking{NEWLINE}the road anymore.{SCROLL}Now it’s much easier to travel between{NEWLINE}Viridian City and Pewter City!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 34,
+   "zh": "要得意你就趁现在吧,{NEWLINE}一会儿等我们雅典娜大人过来了,{CLEAR}有你好受的！",
+   "en": "Gloat while you can. Once Master Ariana{NEWLINE}gets here, you’ll be sorry!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position | consistency fix (follow-up 4)"
+  },
+  {
+   "id": 35,
+   "zh": "你这家伙什么来头？{NEWLINE}敢打我们火箭队仓库的主意。",
+   "en": "Who do you think you are? Messing with{NEWLINE}Team Rocket’s warehouse?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 36,
+   "zh": "小火龙很看起来很虚弱,{NEWLINE}要尝试捕捉吗？",
+   "en": "Charmander looks very weak. Try to{NEWLINE}catch it?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position | Charmander sidequest: #36–54 (abusive owner in the Pokémon Center)."
+  },
+  {
+   "id": 37,
+   "zh": "小火龙好像并不愿意被捕捉。",
+   "en": "Charmander doesn’t seem to want to be{NEWLINE}caught.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 38,
+   "zh": "{VAR:0103:0}『小火龙,{NEWLINE}我知道你在等你的主人,可是……{CLEAR}你的主人应该不会回来了。{CLEAR}你现在这么虚弱,{CLEAR}还是先跟我去精灵中心治疗一下吧！",
+   "en": "{VAR:0103:0}: Charmander, I know you’re{NEWLINE}waiting for your Trainer, but... they’re{CLEAR}probably not coming back.{SCROLL}You’re so weak right now. Come with me{NEWLINE}to the Pokémon Center and get treated{CLEAR}first!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 39,
+   "zh": "小火龙已经彻底没力气了……",
+   "en": "Charmander has no strength left at{NEWLINE}all...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 40,
+   "zh": "{VAR:0103:0}『情况紧急,顾不了那么多了。{NEWLINE}你跟我来吧,小火龙！",
+   "en": "{VAR:0103:0}: This is an emergency. No time{NEWLINE}to worry about that.{SCROLL}Come with me, Charmander!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 41,
+   "zh": "{VAR:0103:0}『呼……呼……乔伊小姐,{NEWLINE}这只小火龙虚弱到生命垂危了！{CLEAR}请你快要救救它！",
+   "en": "{VAR:0103:0}: *pant* *pant*... Nurse Joy,{NEWLINE}this Charmander is so weak it’s close to{CLEAR}dying!{SCROLL}Please save it, quick!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 42,
+   "zh": "嗯？小火龙？{NEWLINE}我不是让你在2号路等我吗？{CLEAR}你怎么敢私自跑来这里！{CLEAR}你这个垃圾,道馆对战打不赢、{CLEAR}还这么不听话,{CLEAR}我不要你了！滚吧！",
+   "en": "Huh? Charmander? Didn’t I tell you to{NEWLINE}wait for me on Route 2?{SCROLL}How dare you run off here on your own!{SCROLL}You worthless piece of trash. You can’t{NEWLINE}win a Gym battle, and you won’t even{CLEAR}listen.{SCROLL}I don’t want you anymore! Get lost!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 43,
+   "zh": "{VAR:0103:0}『喂！小火龙可是{NEWLINE}一直在2号路等你啊！{CLEAR}你不想要小火龙了就好好跟它说,{CLEAR}这样折磨它算什么！",
+   "en": "{VAR:0103:0}: Hey! Charmander has been{NEWLINE}waiting for you on Route 2 this whole{CLEAR}time!{SCROLL}If you don’t want Charmander anymore,{NEWLINE}then tell it properly. Why torment it{CLEAR}like this!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 44,
+   "zh": "你是哪冒出来的垃圾训练家,{NEWLINE}敢多管我的闲事。找揍！",
+   "en": "Where’d a trash Trainer like you pop up{NEWLINE}from? Butting into my business? You’re{CLEAR}asking for a beating!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 45,
+   "zh": "哼,你赢了我又怎样！{NEWLINE}小火龙还不是得听我的话！{SCROLL}小火龙,现在乖乖去2号路等我,{NEWLINE}我不去你不许走,明白吗！",
+   "en": "Hmph, so you beat me. So what!{NEWLINE}Charmander still has to do what I say!{SCROLL}Charmander, go back to Route 2 and wait{NEWLINE}for me like a good boy. You don’t leave{CLEAR}until I come, got it!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 46,
+   "zh": "{VAR:0103:0}『小火龙！{NEWLINE}你还看不出他的心思吗？{CLEAR}这个人压根就不想要你了！{CLEAR}不要再为他坚守什么了！",
+   "en": "{VAR:0103:0}: Charmander! Can’t you see{NEWLINE}what he’s thinking?{SCROLL}He doesn’t want you at all! Stop{NEWLINE}staying loyal to him!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 47,
+   "zh": "妈的,小火龙。{NEWLINE}我的话你敢不听是吗！",
+   "en": "Dammit, Charmander. You dare disobey{NEWLINE}me?!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 48,
+   "zh": "混账！竟然敢攻击我！{NEWLINE}你这个垃圾精灵给我死……",
+   "en": "You bastard! You dare attack me!{SCROLL}You trash Pokémon, I’ll kill y...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position | tone review: 混账 is a curse ('bastard'); kept (D-0627)"
+  },
+  {
+   "id": 49,
+   "zh": "可恶！你这个垃圾！{NEWLINE}早晚有一天我要弄死你！",
+   "en": "Dammit! You piece of trash!{SCROLL}One of these days I’ll kill you!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 50,
+   "zh": "{VAR:0103:0}『太好了,小火龙。{NEWLINE}你现在自由了！",
+   "en": "{VAR:0103:0}: Great, Charmander. You’re{NEWLINE}free now!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 51,
+   "zh": "情况真的很严重,{NEWLINE}我现在就为它治疗！",
+   "en": "This really is serious. I’ll treat it{NEWLINE}right away!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 52,
+   "zh": "好了,这孩子已经没有问题了。",
+   "en": "There. This little one will be just fine{NEWLINE}now.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 53,
+   "zh": "小火龙『Cha——man！{SCROLL}小火龙非常高兴！",
+   "en": "Charmander: Cha-man!{SCROLL}Charmander is overjoyed!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 54,
+   "zh": "{VAR:0103:0}『不错嘛,{NEWLINE}你看起来已经完全恢复了。",
+   "en": "{VAR:0103:0}: Not bad. You look like you’ve{NEWLINE}fully recovered.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 55,
+   "zh": "这只尼多兰不知道被谁遗弃了,{NEWLINE}似乎在等它的主人回来。{CLEAR}我在看到尼多兰第一眼的时候{CLEAR}就被它坚守的执着所打动,{CLEAR}所以就下定决心要收留它、照顾它！{SCROLL}为了给尼多兰舒适的收纳环境,{NEWLINE}我特意去到城都地区{CLEAR}向岩铁先生学习了如何做柑果球。{SCROLL}如今学成归来,{NEWLINE}本该做一个崭新的柑果球{CLEAR}来收服尼多兰。{CLEAR}可事到临头我才发现,{CLEAR}尼比市附近的柑果做出的球{CLEAR}似乎都不太适合收纳尼多兰……{SCROLL}要是能有绿柑果做出的朋友球就好了……",
+   "en": "Someone abandoned this Nidoran♀. It{NEWLINE}seems to be waiting for its Trainer to{CLEAR}come back.{SCROLL}The first time I saw it, I was so moved{NEWLINE}by its devotion that I made up my mind{CLEAR}to take it in and look after it!{SCROLL}To give it a comfortable ball to live in,{NEWLINE}I went all the way to Johto to learn to{CLEAR}make Apricorn Balls from Kurt.{SCROLL}Now that I’m back, I ought to make a{NEWLINE}brand-new Apricorn Ball to catch it{CLEAR}with.{SCROLL}But now that the time’s come, I’ve{NEWLINE}realized the balls made from Apricorns{CLEAR}around Pewter City don’t really suit{CLEAR}Nidoran♀...{SCROLL}If only I had a Friend Ball made from a{NEWLINE}Green Apricorn...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 56,
+   "zh": "要把朋友球送给他吗？{SCROLL}",
+   "en": "Give him a Friend Ball?{SCROLL}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost"
+  },
+  {
+   "id": 57,
+   "zh": "你有朋友球,还要送给我？！{SCROLL}真的非常感谢！{NEWLINE}这样一来我就能收服尼多兰了。",
+   "en": "You have a Friend Ball, and you’re{NEWLINE}giving it to me?!{SCROLL}Thank you so much! Now I can catch{NEWLINE}Nidoran♀.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 58,
+   "zh": "真是的,每次穿过常磐森林{NEWLINE}都有够麻烦。",
+   "en": "Honestly, cutting through Viridian{NEWLINE}Forest every time is such a pain.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 59,
+   "zh": "嗯？怎么冒出一只尼多兰来？",
+   "en": "Hm? Where’d this Nidoran♀ come from?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 60,
+   "zh": "看尼多兰这么热情……{NEWLINE}莫非是它的训练家！？{CLEAR}不,应该不是,{CLEAR}看这个训练家的样子,{CLEAR}好像根本不认识尼多兰。",
+   "en": "Nidoran♀ is so excited... Could he be its{NEWLINE}Trainer!?{SCROLL}No, can’t be. From the look of this{NEWLINE}Trainer, he doesn’t seem to know{CLEAR}Nidoran♀ at all.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s), same position"
+  },
+  {
+   "id": 61,
+   "zh": "你好。这只尼多兰{NEWLINE}好像是被谁遗弃在这里的。{CLEAR}今天是我第一次{CLEAR}见到它对路过的人这么热情,{CLEAR}莫非你是像小刚先生那样{CLEAR}天生会让精灵产生安全感的饲育家？",
+   "en": "Hello. Someone seems to have abandoned{NEWLINE}this Nidoran♀ here.{SCROLL}Today’s the first time I’ve seen it this{NEWLINE}excited about someone passing by.{SCROLL}Could you be a born Breeder who puts{NEWLINE}Pokémon at ease, like Brock?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 62,
+   "zh": "我才不是什么饲育家呢,{NEWLINE}我是专攻精灵对战的训练家。",
+   "en": "I’m no Breeder. I’m a Trainer who{NEWLINE}specializes in Pokémon battles.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 63,
+   "zh": "哦哦,看来你接触过很多精灵啊,{NEWLINE}难怪尼多兰会对你这么热情,哈哈。{SCROLL}我还担心万一是它原来那个{NEWLINE}不负责任的主人回来了{CLEAR}该如何是好呢,哈哈。",
+   "en": "Oh, so you’ve been around lots of{NEWLINE}Pokémon! No wonder Nidoran♀ is so{CLEAR}friendly toward you, ha ha.{SCROLL}I was worried about what I’d do if its{NEWLINE}irresponsible old owner came back, ha{CLEAR}ha.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 64,
+   "zh": "等等！{SCROLL}我在得到6v百变怪之后,{NEWLINE}确实放生了一批{CLEAR}个体值很差的雌性精灵……",
+   "en": "Wait!{SCROLL}After I got a 6IV Ditto, I did release a{NEWLINE}batch of female Pokémon with bad IVs...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 65,
+   "zh": "看你这个样子{NEWLINE}应该是我那时候放生的精灵了。",
+   "en": "Look at you. You must be one of the{NEWLINE}ones I released back then.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s), same position"
+  },
+  {
+   "id": 66,
+   "zh": "想不到你还挺忠诚的。{NEWLINE}那好吧,你再成为我的精灵吧,{CLEAR}跟我去商店买个精灵球装你。",
+   "en": "Didn’t expect you to be so loyal. Fine,{NEWLINE}you can be my Pokémon again.{SCROLL}Come with me to the store, and I’ll buy{NEWLINE}a Poké Ball to put you in.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s), same position"
+  },
+  {
+   "id": 67,
+   "zh": "哟,{NEWLINE}我的尼多兰对你还恋恋不舍呢。",
+   "en": "Heh. Looks like my Nidoran♀ still{NEWLINE}doesn’t want to leave you.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s), same position"
+  },
+  {
+   "id": 68,
+   "zh": "……",
+   "en": "...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  },
+  {
+   "id": 69,
+   "zh": "我……{NEWLINE}那……",
+   "en": "I... Well...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s), same position"
+  },
+  {
+   "id": 70,
+   "zh": "那是当然的好吧！{SCROLL}我不管你是放生还是遗弃,{NEWLINE}但是尼多兰在2号路{CLEAR}等了你整整一年啊！{CLEAR}在这一年里,如果没有我和母亲{CLEAR}轮流给它送食物送水,{CLEAR}它早就死在那里了！{SCROLL}而且我还为了给尼多兰一个{NEWLINE}舒适的被收服体验,{CLEAR}特地跑到城都地区学做柑果球……",
+   "en": "Of course it doesn’t!{SCROLL}I don’t care whether you released it or{NEWLINE}abandoned it, but Nidoran♀ waited for{CLEAR}you on Route 2 for a whole year!{SCROLL}If my mother and I hadn’t taken turns{NEWLINE}bringing it food and water all year, it{CLEAR}would have died there long ago!{SCROLL}And I even went all the way to Johto to{NEWLINE}learn to make Apricorn Balls, just so{CLEAR}being caught would be comfortable for{CLEAR}it...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s), same position"
+  },
+  {
+   "id": 71,
+   "zh": "哦,那真是多谢了。",
+   "en": "Oh. Well, thanks a lot.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s), same position"
+  },
+  {
+   "id": 72,
+   "zh": "不要说得那么轻巧啊！{SCROLL}你一点都不了解尼多兰的痛苦。{NEWLINE}对你来说它只不过是{CLEAR}不合格的生蛋工具。{CLEAR}但对我来说它可是{CLEAR}一份心灵的寄托啊！",
+   "en": "Don’t brush it off like that!{SCROLL}You don’t understand Nidoran♀’s pain at{NEWLINE}all. To you, it’s just a reject{CLEAR}egg-making tool.{SCROLL}But to me, it’s what my heart has come{NEWLINE}to lean on!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s), same position"
+  },
+  {
+   "id": 73,
+   "zh": "把这么低个体值的精灵当成心灵寄托,{NEWLINE}你也是够没品味的。",
+   "en": "Leaning on a Pokémon with IVs that bad?{NEWLINE}You’ve got no taste.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 74,
+   "zh": "尼多兰,对他使用撞击,{NEWLINE}让他感受下心灵寄托破碎的滋味。",
+   "en": "Nidoran♀, use Tackle on him. Let him see{NEWLINE}how it feels when the thing his heart{CLEAR}leans on breaks.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 75,
+   "zh": "尼多兰『Ni——ran——{SCROLL}尼多兰并不是很想执行命令。",
+   "en": "Nidoran♀: Ni-ran-{SCROLL}Nidoran♀ doesn’t really want to obey.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s); other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
+  },
+  {
+   "id": 76,
+   "zh": "真是没用的精灵,{NEWLINE}给我回去沉睡在电脑箱子里吧。",
+   "en": "What a useless Pokémon. Go back to{NEWLINE}sleep in a PC Box.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
+  },
+  {
+   "id": 77,
+   "zh": "呵呵,{NEWLINE}到头来小丑竟然是我自己。",
+   "en": "Heh... So in the end, the fool was me.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s), same position"
+  },
+  {
+   "id": 78,
+   "zh": "为什么……{NEWLINE}为什么你这样的职业训练家{CLEAR}却偏偏不懂得珍惜和尊重精灵……",
+   "en": "Why... Why doesn’t a pro Trainer like{NEWLINE}you know how to cherish and respect{CLEAR}Pokémon...",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s), same position"
+  },
+  {
+   "id": 79,
+   "zh": "要去阻止尼多兰被带走吗？{SCROLL}",
+   "en": "Stop Nidoran♀ from being taken away?{SCROLL}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s), same position, flags page_breaks_lost"
+  },
+  {
+   "id": 80,
+   "zh": "{VAR:0103:0}『等一下！{SCROLL}{VAR:0103:0}『这位先生已经和尼多兰{NEWLINE}建立了深厚的感情。{CLEAR}而且尼多兰现在是放生状态,{CLEAR}你也不算是尼多兰的正式训练家。{CLEAR}你就这样把尼多兰带走,{CLEAR}是不是有些说不过去啊。",
+   "en": "{VAR:0103:0}: Hold on!{SCROLL}{VAR:0103:0}: This man has already formed a{NEWLINE}deep bond with Nidoran♀.{SCROLL}And Nidoran♀ was released, so you’re{NEWLINE}not really its official Trainer.{SCROLL}Taking Nidoran♀ away just like that{NEWLINE}isn’t very fair, is it?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl) | Player-gender branch: #80/#83 male player (polite), #81/#84 female player (本姑娘 'this girl')."
+  },
+  {
+   "id": 81,
+   "zh": "{VAR:0103:0}『给我站住！{SCROLL}{VAR:0103:0}『没看到人家和尼多兰{NEWLINE}已经情深义重了吗？{CLEAR}况且你现在又没重新收服尼多兰,{CLEAR}根本就不算它的正式训练家！{CLEAR}你想这样把尼多兰带走,{CLEAR}简直就是小偷！强盗！",
+   "en": "{VAR:0103:0}: Stop right there!{SCROLL}{VAR:0103:0}: Can’t you see how close he and{NEWLINE}Nidoran♀ are?{SCROLL}Besides, you haven’t caught Nidoran♀{NEWLINE}again, so you’re not its official Trainer{CLEAR}at all!{SCROLL}Taking Nidoran♀ away like this makes you{NEWLINE}nothing but a thief! A robber!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
+  },
+  {
+   "id": 82,
+   "zh": "你又是从哪冒出来的家伙？{NEWLINE}我想怎么处置我的精灵跟你无关。{CLEAR}少多管闲事！",
+   "en": "And where did you come from? What I do{NEWLINE}with my Pokémon is none of your{CLEAR}business.{SCROLL}Butt out!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 83,
+   "zh": "{VAR:0103:0}『请不要自认为{NEWLINE}尼多兰现在属于你,{CLEAR}你无权决定它的未来。",
+   "en": "{VAR:0103:0}: Please don’t assume Nidoran♀{NEWLINE}belongs to you now.{SCROLL}You have no right to decide its future.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 84,
+   "zh": "{VAR:0103:0}『本姑娘今天还就{NEWLINE}一定要管你的闲事了！",
+   "en": "{VAR:0103:0}: Well, today this girl is butting{NEWLINE}in whether you like it or not!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 85,
+   "zh": "你这么不知死活的话,{NEWLINE}就让你尝尝我的厉害！",
+   "en": "If you’ve got that much of a death{NEWLINE}wish, I’ll show you what I can do!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position | tone review: 不知死活 = courting death; 'death wish' keeps it (D-0627)"
+  },
+  {
+   "id": 86,
+   "zh": "好家伙,{NEWLINE}居然栽在你这种人手里！",
+   "en": "Unbelievable. Beaten by someone like{NEWLINE}you!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s), same position"
+  },
+  {
+   "id": 87,
+   "zh": "行吧,你要是喜欢这种{NEWLINE}垃圾个体值的尼多兰,{CLEAR}你就抱回家去跟它生蛋吧！",
+   "en": "Fine. If you like a Nidoran♀ with garbage{NEWLINE}IVs that much...{SCROLL}...take it home and breed with it{NEWLINE}yourself!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position | Faithful: 跟它生蛋 (breed with it), crude jab kept."
+  },
+  {
+   "id": 88,
+   "zh": "谢谢你帮我留住了尼多兰。{SCROLL}我除了会做柑果球,{NEWLINE}没什么能报答你的。{CLEAR}如果你想把采集的柑果做成球,{CLEAR}尽管来尼比市找我就好！",
+   "en": "Thank you for helping me keep Nidoran♀.{SCROLL}All I know how to do is make Apricorn{NEWLINE}Balls. I don’t have anything else to{CLEAR}repay you with.{SCROLL}If you want the Apricorns you collect{NEWLINE}made into balls, just come find me in{CLEAR}Pewter City!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 89,
+   "zh": "尼多兰『Ni……ran……{SCROLL}尼多兰点了点头。",
+   "en": "Nidoran♀: Ni... ran...{SCROLL}Nidoran♀ nodded.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 90,
+   "zh": "尼多兰！{NEWLINE}谢谢你选择留下来！",
+   "en": "Nidoran♀! Thank you for choosing to{NEWLINE}stay!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 2 source(s), same position"
+  },
+  {
+   "id": 91,
+   "zh": "我刚在尼比道馆锻炼完努力值,{NEWLINE}你愿意跟我来场对战帮我检验一下{CLEAR}努力值的加成效果吗？",
+   "en": "I just finished EV training at the{NEWLINE}Pewter Gym.{SCROLL}Will you battle me to help test how well{NEWLINE}my EVs are working?",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 92,
+   "zh": "谢谢,请尽全力攻过来吧！",
+   "en": "Thanks! Come at me with everything{NEWLINE}you’ve got!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 93,
+   "zh": "虽然刚刚是我输了,{NEWLINE}但我能感觉到我的精灵的物防水平{CLEAR}已经有所提升了。{SCROLL}果然精灵能力值的强弱{NEWLINE}不是只由种族值决定的,{CLEAR}后天的努力值培养也非常重要。{SCROLL}关东地区的大多数道馆{NEWLINE}都设有锻炼努力值的陪练,{CLEAR}你如果想通过锻炼努力值{CLEAR}提升精灵能力,{CLEAR}找道馆里的陪练准没错。",
+   "en": "I lost just now, but I can feel my{NEWLINE}Pokémon’s Defense has gone up.{SCROLL}A Pokémon’s stats really aren’t decided{NEWLINE}by base stats alone. The EVs you train{CLEAR}afterward matter a lot too.{SCROLL}Most Gyms in Kanto have sparring{NEWLINE}partners for EV training.{SCROLL}If you want to raise your Pokémon’s{NEWLINE}stats with EV training, you can’t go{CLEAR}wrong with a Gym’s sparring partners.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 94,
+   "zh": "精灵能力值的强弱{NEWLINE}不是只由种族值决定的,{CLEAR}后天的努力值培养也非常重要。{SCROLL}关东地区的大多数道馆{NEWLINE}都设有锻炼努力值的陪练,{CLEAR}你如果想通过锻炼努力值{CLEAR}提升精灵能力,{CLEAR}找道馆里的陪练准没错。",
+   "en": "A Pokémon’s stats aren’t decided by{NEWLINE}base stats alone. The EVs you train{CLEAR}afterward matter a lot too.{SCROLL}Most Gyms in Kanto have sparring{NEWLINE}partners for EV training.{SCROLL}If you want to raise your Pokémon’s{NEWLINE}stats with EV training, you can’t go{CLEAR}wrong with a Gym’s sparring partners.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 95,
+   "zh": "我在等一个{NEWLINE}能让我提起兴趣的对手,{CLEAR}很显然你不是。",
+   "en": "I’m waiting for an opponent who can{NEWLINE}actually hold my interest.{SCROLL}You’re clearly not it.",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost"
+  },
+  {
+   "id": 96,
+   "zh": "你看起来很厉害啊,{NEWLINE}我对你很感兴趣,{CLEAR}要不要跟我来场对战？{SCROLL}",
+   "en": "You look strong. You’ve got my{NEWLINE}interest.{SCROLL}How about a battle?{SCROLL}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 97,
+   "zh": "你想单打还是双打？{SCROLL}",
+   "en": "Single or Double Battle?{SCROLL}",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost; other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl)"
+  },
+  {
+   "id": 98,
+   "zh": "单打",
+   "en": "Single",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 6 source(s), same position; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 99,
+   "zh": "双打",
+   "en": "Double",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 5 source(s), same position; other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl)",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 100,
+   "zh": "先不打了",
+   "en": "Not now",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 3 source(s), same position; other variants: 3 more v3 TM candidates (tm_v4_matches.jsonl)",
+   "category": "menu_touch_1line"
+  },
+  {
+   "id": 101,
+   "zh": "你身上带的精灵不够进行双打！",
+   "en": "You don’t have enough Pokémon with you{NEWLINE}for a Double Battle!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 102,
+   "zh": "来吧,我浑身的热血都沸腾起来了！",
+   "en": "Bring it on! My blood’s boiling!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 103,
+   "zh": "你可真厉害啊！",
+   "en": "You’re really something!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": "v3 TM: 1 source(s), same position"
+  },
+  {
+   "id": 104,
+   "zh": "路卡利欧『Luuu——ca！",
+   "en": "Lucario: Luuu-ca!",
+   "status": "draft",
+   "origin": "agent",
+   "notes": ""
+  }
+ ]
 }
