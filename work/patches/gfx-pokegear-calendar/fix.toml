@@ -1,0 +1,30 @@
+id = "gfx-pokegear-calendar"
+title = "Pokégear clock and calendar labels"
+kind = "graphics"
+enabled = true
+decisions = ["D-0768", "D-1041"]
+requires = []
+why = """
+Players: the Pokégear top screen shows the weekday as 星期一 ... 日 and dates with 年 月 日.
+
+Technical: a/1/4/3 #6-11 (OBJ sheets); their cells (NCER) are identical to the USA ones.
+"""
+what = """
+Old: Chinese weekday and date sheets.
+New: the USA members (MONDAY ...).
+"""
+evidence = [
+  "work/notes/graphics_inventory.md: row 17 (pass2_pokegear.png shows MONDAY)",
+]
+
+[[graphics]]
+op = "copy_us"
+narc = "a/1/4/3"
+members = [6, 7, 8, 9, 10, 11]
+notes = "Pokegear clock/calendar weekday and date sheets (OBJ); cells (NCER) unchanged vs USA"
+
+[[us_ref]]
+id = "pokegear-calendar-us-cells"
+claim = "The cells and animations of a/1/4/3 (#12-23, NCER / NANR) are the USA ones"
+file = "a/1/4/3"
+members = [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]

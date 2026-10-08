@@ -36,6 +36,8 @@ class BuildPathsTests(unittest.TestCase):
             args = ["--work-dir", str(chosen)] if explicit else []
             with patch.object(B, "BUILD", legacy), patch.object(B.ws, "export", side_effect=export), \
                  patch.object(B, "sha1", return_value=B.US_SHA1), \
+                 patch.object(B.asmpatch, "find_armips", return_value="/armips"), \
+                 patch.object(B.asmpatch, "check_armips", return_value=B.asmpatch.PINNED_VERSION), \
                  patch.object(B.m, "load_rom", side_effect=StopBeforeRomLoad) as load, \
                  patch.object(B, "log"):
                 with self.assertRaises(StopBeforeRomLoad):

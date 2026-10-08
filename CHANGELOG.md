@@ -3,7 +3,19 @@
 All notable changes to the English translation of 起源心金 (Pokémon Origin HeartGold) v4.0.3.
 Patches apply to **Pokémon HeartGold (USA)**, CRC32 `C180A0E9`.
 
-## Unreleased
+## [Unreleased]
+
+### Added
+- Options has a seventh row, TEXT SPEED: NORMAL or FAST (D-1604). NORMAL is the hack's original text speed. FAST prints up to three letters per frame when the frame has room and is never slower than NORMAL (D-1601). New games start on FAST; existing saves read as NORMAL. Text speed is an optional addition to the Chinese hack, so it is an exception to D-1002 (D-1575).
+
+### Changed
+- Text prints faster in towns and routes at both settings (D-1603). In maps where the hack's game loop runs at 30 fps, text used to print one letter every two frames; it now prints one per frame, as in the US game on FAST. Pauses counted in text printer turns, including auto-advance waits, are about half as long in those scenes.
+- Pokégear calls wait for A or B on every page, also right after a battle (D-1600). The hack's battle code leaves auto-advance on (D-1599). Other text shown right after a battle may still advance by itself.
+- Real DS, DSi and 3DS hardware support is being tested: six anti-piracy checks in overlay 114 now return the genuine-cartridge result (D-1616, D-1617). Nothing changes on emulators. Not yet tested on any real console or flashcart.
+
+### Known issues
+- Downgrade: a save made with this version and then used in the Chinese hack or an older English patch may show an unusual MUSIC SPEED value, because text speed shares the old 4-bit options field. Set TEXT SPEED to NORMAL and save before downgrading.
+- Tested with automated checks in DeSmuME only. Not covered: cutscenes, intro and credits, radio and TV, mail, the naming screen. No second-emulator pass and no hardware test.
 
 ### Known issues in the original hack (reported, not fixed; D-1337)
 

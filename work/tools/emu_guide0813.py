@@ -368,7 +368,7 @@ def case_ribbon(rom, out, variant):
         res["shot_x"] = str(h.screenshot(f"ribbon_{variant}_x"))
         res["x_menu_opens"] = not window_open(h) and E.screen_diff(Image_open(res["shot_walk"]), h.emu.screenshot())[0] > 0.02
         if res["x_menu_opens"]:                    # SAVE in the menu: does the save question appear?
-            m3 = tr.mark()
+            tr.mark()
             h.touch(*E.FIELD_MENU["save"], frames=8, after=200)
             res["shot_save"] = str(h.screenshot(f"ribbon_{variant}_save"))
             res["save_prompt"] = save_prompt(h)

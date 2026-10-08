@@ -5,7 +5,7 @@ An English fan translation of **起源心金 (Pokémon Origin HeartGold) v4.0.3*
 ## Play it
 
 [Patch your game here](https://originheartgold.github.io/origin-heart-gold-EN-translation/patch/) and play it in an emulator. It is tested in melonDS.
-Real Nintendo hardware is **not** supported and might result in strange and unexpected behavior.
+Real DS, DSi and 3DS hardware is being tested: the patch switches off the hack's anti-piracy checks, so don't add another anti-piracy patch. See the [FAQ](https://originheartgold.github.io/origin-heart-gold-EN-translation/faq/#can-i-play-on-a-real-ds-dsi-or-3ds) for setup and how to report problems.
 
 Stuck on a quest? The [quest guide](https://originheartgold.github.io/origin-heart-gold-EN-translation/guide/) ([source](guide/README.md)) covers side quests, puzzles and easy-to-miss events, region by region.
 
@@ -15,7 +15,7 @@ Can't find a Pokémon? The [Pokédex](https://originheartgold.github.io/origin-h
 
 ## How it works
 
-The translation lives as JSON files in `work/translate/banks/`: one file per message bank, holding the Chinese source and the English for each string. Python tools in `work/tools/` check the text against the DS text boxes, wrap lines, record naming decisions, and build the ROM and patch. See [CONTRIBUTING.md](CONTRIBUTING.md) to help out.
+The translation lives as JSON files in `work/translate/banks/`: one file per message bank, holding the Chinese source and the English for each string. Python tools in `work/tools/` check the text against the DS text boxes, wrap lines, record naming decisions, and build the ROM and patch. Every other change to the Chinese ROM (graphics, font glyphs, code patches, the few strings outside the message archives) is a documented fix in `work/patches/` ([FIXES.md](work/patches/FIXES.md)); the code, data and hardcoded-string patches are [armips](https://github.com/Kingcom/armips) sources ([toolchain](work/notes/toolchain.md)). See [CONTRIBUTING.md](CONTRIBUTING.md) to help out.
 
 Most of the first-draft English was written by AI agents working from the Chinese, following [the style guide](work/translate/STYLE.md) and [AGENTS.md](AGENTS.md). Humans review it. Official US HeartGold text is reused wherever the hack didn't change a line.
 

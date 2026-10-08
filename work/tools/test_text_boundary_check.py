@@ -111,5 +111,20 @@ class BoundaryTests(unittest.TestCase):
         self.assertEqual(result["status"], "failed")
 
 
+    def test_armips_missing_is_a_gap_wrong_version_fails(self):
+        with patch.object(B.asmpatch, "find_armips", side_effect=B.asmpatch.AsmError("armips not found")):
+            with self.assertRaises(FileNotFoundError):
+                B._armips()
+        with patch.object(B.asmpatch, "find_armips", return_value="/x/armips"), \
+                patch.object(B.asmpatch, "check_armips", side_effect=B.asmpatch.AsmError("is armips v0.10.0")):
+            with self.assertRaises(B.ToolchainError):
+                B._armips()
+            with patch.object(B, "_expected_rom", side_effect=lambda *a: B._armips()):
+                result = B.check_boundary(self.path, self.path, self.path)
+        self.assertEqual(result["status"], "failed")
+        self.assertEqual(result["errors"], ["wrong toolchain, cannot derive declared translation boundary: "
+                                            "is armips v0.10.0"])
+
+
 if __name__ == "__main__":
     unittest.main()

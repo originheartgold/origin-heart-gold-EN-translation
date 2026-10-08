@@ -29,8 +29,6 @@ class TextBufferTests(unittest.TestCase):
         for units in ([],[1],[0xf100,1,0xffff]):
             with self.assertRaises(ValueError): checker.check_lengths([units],114)
 
-if __name__ == '__main__': unittest.main()
-
 
 def thumb_bl(address, target):
     delta = (target-address-4) & 0x7fffff
@@ -69,3 +67,6 @@ class ConsumerGuardTests(unittest.TestCase):
         for spec in checker.CONSUMERS:
             data,base=consumer_fixture(spec,0)
             with self.assertRaises(ValueError): checker.consumer_capacity(data,base,spec)
+
+
+if __name__ == '__main__': unittest.main()

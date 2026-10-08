@@ -1,0 +1,28 @@
+id = "gfx-summary-labels"
+title = "Summary screen: condition labels, status icons, POKéRUS badge"
+kind = "graphics"
+enabled = true
+decisions = ["D-0768", "D-1041"]
+requires = []
+why = """
+Players: the party screen and the summary show Chinese status icons (中毒 麻痹 冰冻 睡眠 烧伤 濒死); the summary's
+condition page has Chinese contest-condition labels and the POKéRUS badge says 病毒.
+
+Technical: a/0/3/9 #0 (summary sheet), #64 (status icons) and #135 (POKéRUS) are redrawn by the hack with
+the USA layout.
+"""
+what = """
+Old: Chinese labels and icons.
+New: the three members are the USA ones (PSN PAR SLP FRZ BRN FNT, POKéRUS, the condition labels). Only label
+tiles differ; the hack's NSCR #3 change is untouched.
+"""
+evidence = [
+  "work/notes/graphics_inventory.md: rows 8-10 and 'Status-condition icon sets'",
+  "CHANGELOG.md v1.0.0: 'Status icons (PAR/FRZ/SLP/PSN/BRN) on the battle HP box, party and summary screens.'",
+]
+
+[[graphics]]
+op = "copy_us"
+narc = "a/0/3/9"
+members = [0, 64, 135]
+notes = "summary screen: contest condition labels (#0), status-condition icons (#64), POKeRUS (#135)"

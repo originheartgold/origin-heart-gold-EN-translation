@@ -8,7 +8,7 @@ res=[]
 for f,d in A.items():
     if d['kind']!='script': continue
     zs=fz.get(f)
-    if not zs: 
+    if not zs:
         b=DU.msgbank_of(f); zs=[dict(zone_id=None,msg_bank=b,events_bank=None)] if b is not None else []
     for z in zs:
         b=z['msg_bank']; n=len(DU.bank(b))

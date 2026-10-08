@@ -41,7 +41,7 @@ Our build `work/build/origin_hg_v4.0.3_en_wip.nds` (16:42) is newer than the new
   - encounters `a/0/3/7`, `a/2/5/2` and `data/mushi/mushi_encount.bin`;
   - trainers `a/0/5/5` and `a/0/5/6`, trades `a/1/1/2`;
   - scripts `a/0/1/2`, events `a/0/3/2`, items `a/0/1/7`.
-- **arm9:** the size is unchanged (1,117,496 bytes). There are 75 differing byte runs, spanning `0x42862`–`0x100EBE`. Every run lies inside one of the 16 arm9 entries of `code_patches.json`. The data tables are therefore untouched:
+- **arm9:** the size is unchanged (1,117,496 bytes). There are 75 differing byte runs, spanning `0x42862`–`0x100EBE`. Every run lies inside one of the 16 arm9 entries of `code_patches.json` (now the `[[code]]` entries of `work/patches/namelen` and `work/patches/naming-keyboard`). The data tables are therefore untouched:
   - shops `0x0210EAEC` and `0x020F8B3E`;
   - badge list `0x020F8D3A`;
   - hidden items `0x020F7194`;

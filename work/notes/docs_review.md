@@ -16,7 +16,7 @@
 | Generated docs | 18 pages up to date (`gen_docs.py --check --refresh`) | run |
 | Base ROM | USA `IPKE`, CRC32 `C180A0E9`, SHA-1 `4fcded0e…` | `msgtool.py check-base` |
 
-Commands run from the docs (all worked): `ws.py stats [--by-bank]`, `qa.py check` (bank and workspace), `qa.py --help`, `qa.py wrap --help`, `decisions.py list --search 金婆婆`, `decisions.py report`, `decisions.py render-progress --out …/DIGEST.md`, `findings_report.py`, `gen_docs.py --check [--refresh]`, `gfx.py check` (166 members OK), `hardcoded.py check` (4 strings OK), `msgtool.py check-base`, `textmetrics.py width`, `--help` of `build.py`, `gfx.py`, `hardcoded.py`, `msgtool.py`, `emu_smoke.py`, `fill_names.py`, `textmetrics.py`, and both test commands.
+Commands run from the docs (all worked): `ws.py stats [--by-bank]`, `qa.py check` (bank and workspace), `qa.py --help`, `qa.py wrap --help`, `decisions.py list --search 金婆婆`, `decisions.py report`, `decisions.py render-progress --out …/DIGEST.md`, `findings_report.py`, `gen_docs.py --check [--refresh]`, `gfx.py check` (166 members OK), `hardcoded.py check` (4 strings OK; that command is removed, now `asmpatch.py check`), `msgtool.py check-base`, `textmetrics.py width`, `--help` of `build.py`, `gfx.py`, `hardcoded.py`, `msgtool.py`, `emu_smoke.py`, `fill_names.py`, `textmetrics.py`, and both test commands.
 
 ## Per page
 
@@ -52,7 +52,7 @@ Each file now opens with a "Status (reviewed 2026-09-29)" line (`docs_crossref.m
 | `decisions_workflow.md` | current | Question subtypes now include hack-finding and integrity; `HACK_FINDINGS.md` added to the file table; the DIGEST command spelled out; `rewrap/` is created on demand (none yet). The cut-over sections are marked historical. | – |
 | `credits_and_sources.md` | current | The saved Reddit thread path was wrong (`../`); it's in the repo root and local-only. Added that the hack ROM itself is `IPKJ` with the Japanese overlay layout, which reconciles it with `hardcoded_text.md`. | Needs attention 8 (u/Shake69's permission record). |
 | `graphics_inventory.md` | current | Status line only. | P2 #21 and #31 are still open (probably unused title strips). |
-| `hardcoded_text.md` | current | Status line only. | Checked against `code_patches.json` (19 patches, all enabled) and `hardcoded.py check`. |
+| `hardcoded_text.md` | current | Status line only. | Checked against `code_patches.json` (19 patches, all enabled; since moved to `work/patches/*/fix.toml`) and `hardcoded.py check` (removed since; now `asmpatch.py check`). |
 | `move_data_audit.md` | current | Status line only. | Its proposals are registered (D-1305–D-1317). |
 | `integrity_audit_text.md` | current | "Trade #6 and #19 OT" mixed a trade number and a string id: it is the OT of trades 1 and 6 (bank strings #14 and #19). The arm9 row said "19 patches (6 namelen + IME + 10 keyboard rows)", which doesn't add up: the 75 arm9 byte runs (re-counted) fall in the 16 arm9 patches (5 namelen + IME + 10 rows); the other 3 of the 19 are in overlays 44 and 49. §6 marked as added to the checklist. | – |
 | `softlock_audit.md` | current | Status line only. | Consistent with CHANGELOG rc2 and the checklist. |

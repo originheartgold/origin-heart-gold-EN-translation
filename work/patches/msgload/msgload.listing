@@ -1,0 +1,54 @@
+; msgload - disassembly snapshot of msgload.asm: every edit, old -> new. Generated; do not edit.
+; Regenerate: python3 work/tools/asmpatch.py listing --write msgload   (check.py --full fails when it is stale)
+; Old: the Chinese ROM. New: msgload.asm assembled alone over it by armips v0.11.0.
+; Disassembly: capstone 5.0.9 (UAL syntax). '  ' unchanged context, '- ' old, '+ ' new;
+; addresses are RAM addresses, Thumb bytes are halfwords, ARM bytes words; data rows are what one
+; statement writes (u16 rows of a string or key row with their characters, '|' = 0xFFFF end).
+
+== arm9+0xBA9A (RAM 0x0200BA9A), 2 bytes, thumb: msgload-all
+  0200BA96  0000       movs r0, r0
+  0200BA98  B5F8       push {r3, r4, r5, r6, r7, lr}
+- 0200BA9A  1C05       adds r5, r0, #0
++ 0200BA9A  2501       movs r5, #1
+  0200BA9C  1C0E       adds r6, r1, #0
+  0200BA9E  1C18       adds r0, r3, #0
+
+== arm9+0x8799A (RAM 0x0208799A), 2 bytes, thumb: msgload-summary-0295
+  02087996  4A29       ldr r2, [pc, #0xa4]
+  02087998  1C04       adds r4, r0, #0
+- 0208799A  2000       movs r0, #0
++ 0208799A  2001       movs r0, #1
+  0208799C  211B       movs r1, #0x1b
+  0208799E  2313       movs r3, #0x13
+
+== arm9+0x87A0C (RAM 0x02087A0C), 2 bytes, thumb: msgload-summary-0739
+  02087A08  4A12       ldr r2, [pc, #0x48]
+  02087A0A  5060       str r0, [r4, r1]
+- 02087A0C  2000       movs r0, #0
++ 02087A0C  2001       movs r0, #1
+  02087A0E  211B       movs r1, #0x1b
+  02087A10  2313       movs r3, #0x13
+
+== overlay17+0x940 (RAM 0x021F9020), 2 bytes, thumb: msgload-bag-0010
+  021F901C  B510       push {r4, lr}
+  021F901E  1C04       adds r4, r0, #0
+- 021F9020  2000       movs r0, #0
++ 021F9020  2001       movs r0, #1
+  021F9022  211B       movs r1, #0x1b
+  021F9024  220A       movs r2, #0xa
+
+== overlay17+0x970 (RAM 0x021F9050), 2 bytes, thumb: msgload-bag-0219
+  021F904C  0089       lsls r1, r1, #2
+  021F904E  5060       str r0, [r4, r1]
+- 021F9050  2000       movs r0, #0
++ 021F9050  2001       movs r0, #1
+  021F9052  211B       movs r1, #0x1b
+  021F9054  22DB       movs r2, #0xdb
+
+== overlay17+0x982 (RAM 0x021F9062), 2 bytes, thumb: msgload-bag-0739
+  021F905E  0092       lsls r2, r2, #2
+  021F9060  50A0       str r0, [r4, r2]
+- 021F9062  2000       movs r0, #0
++ 021F9062  2001       movs r0, #1
+  021F9064  211B       movs r1, #0x1b
+  021F9066  3A15       subs r2, #0x15

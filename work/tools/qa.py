@@ -369,7 +369,7 @@ def check_misc(zh, en, add):
     if tm.visible_text(zh).strip() and not en.strip():
         add("error", "empty", "en is empty")
         return
-    zv, ev = tm.visible_text(zh), tm.visible_text(en)
+    ev = tm.visible_text(en)
     # Removing tags concatenates unrelated runs (e.g. TM14{NEWLINE}5500).
     # Match within literal text tokens; never interpret digits in VAR payloads.
     znums = [n for kind, value in tm.tokenize(zh) if kind == "text"
@@ -800,7 +800,6 @@ def bank_context(bank: dict, cat: dict, cfg: dict, fset: dict) -> dict:
 
 def check_bank(bank: dict, cfg: dict | None = None, fset_name: str | None = None, statuses=None,
                glossary=True) -> list:
-    import msgtool as m
     cfg = cfg or tm.load_config()
     fset = tm.font_set(fset_name)
     full = tm.load_widths()

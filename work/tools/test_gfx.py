@@ -82,7 +82,7 @@ class CodeOp(unittest.TestCase):
 
     def _op(self, cn, us, **kw):
         import hashlib
-        op = {"op": "code_from_us", "file": "overlay14", "offset": 4, "us_file": "overlay12", "us_offset": 2,
+        op = {"op": "code_from_us", "file": "overlay14", "offset": "0x4", "us_file": "overlay12", "us_offset": "0x2",
               "length": 3, "expect_sha1": hashlib.sha1(cn[4:7]).hexdigest()[:12],
               "us_sha1": hashlib.sha1(us[2:5]).hexdigest()[:12]}
         op.update(kw)

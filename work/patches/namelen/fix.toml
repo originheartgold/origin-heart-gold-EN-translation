@@ -1,0 +1,158 @@
+id = "namelen"
+title = "Name lengths: US limits (7 characters for trainers, 10 for Pokémon)"
+kind = "code"
+enabled = true
+decisions = ["D-0858"]
+requires = []
+asm = "namelen.asm"
+why = """
+Players: the naming screen stops after 5 characters, so most English names and nicknames do not fit
+("Charlie", "Charmeleon").
+
+Technical: the hack is built on the Japanese HeartGold (game code IPKJ). Every naming-screen call passes
+maxLen = 5: the direct calls of NamingScreen_CreateArgs (hack 0x02081DA4) for the player and rival in Oak's
+speech (overlay 49), the egg hatch nickname and naming kind 7, and the script commands' calls of
+CallTask_NamingScreen (hack 0x0203EDEC) for the player, rival, nickname (gift Pokémon, Name Rater) and group
+name. The save buffers already have the US sizes, so only the limit is Japanese.
+"""
+what = """
+Old: maxLen 5 at all 8 call sites: seven pass the literal 5 ('movs r3, #5'), the group-name site passes
+r1, which holds 5 there ('adds r3, r1, #0').
+New: the USA values: 7 for the player, rival, group name and kind 7; 10 for the two Pokémon nickname
+call sites. Each patch changes one immediate ('movs r3, #5' -> '#7' / '#10'; the group-name site
+'adds r3, r1, #0' -> 'movs r3, #7'). Box names (8) are unchanged. There is no battle-capture nickname call:
+the hack removed that prompt (D-1040). Default names (bank 0247) are 5 characters or fewer and need no change.
+"""
+evidence = [
+  "work/notes/hardcoded_text.md: 'Name lengths' (call-site table, default names)",
+  "In-game check by the user in melonDS: 7-character trainer names, 10-character nicknames (D-0858)",
+  "CHANGELOG.md v1.0.0: 'Name lengths restored to US limits: 7 characters for trainers, 10 for Pokémon'",
+]
+
+[[code]]
+id = "namelen-player-intro"
+file = "overlay49"
+offset = "0x4E"
+expect = "0x2305"
+notes = "Oak's speech, player name: maxLen 5 -> 7."
+
+[[code]]
+id = "namelen-rival-intro"
+file = "overlay49"
+offset = "0x66"
+expect = "0x2305"
+notes = "Oak's speech, rival name: maxLen 5 -> 7."
+
+[[code]]
+id = "namelen-player-script"
+file = "arm9"
+offset = "0x42862"
+expect = "0x2305"
+notes = "Script command 'name player': maxLen 5 -> 7."
+
+[[code]]
+id = "namelen-rival-script"
+file = "arm9"
+offset = "0x42892"
+expect = "0x2305"
+notes = "Script command 'name rival': maxLen 5 -> 7."
+
+[[code]]
+id = "namelen-nickname-script"
+file = "arm9"
+offset = "0x4291E"
+expect = "0x2305"
+notes = "Script command 'nickname Pokemon' (gift Pokemon, Name Rater): maxLen 5 -> 10."
+
+[[code]]
+id = "namelen-nickname-egg"
+file = "arm9"
+offset = "0x90944"
+expect = "0x2305"
+notes = "Egg hatch nickname: maxLen 5 -> 10."
+
+[[code]]
+id = "namelen-group-script"
+file = "arm9"
+offset = "0x490DA"
+expect = "0x1C0B"
+notes = "Script command 'name group': maxLen r1 (= 5) -> 7."
+
+[[code]]
+id = "namelen-kind7"
+file = "overlay44"
+offset = "0x2E6C"
+expect = "0x2305"
+notes = "Naming kind 7 (pret NAME_SCREEN_UNK7; US overlay43 0x0222CD5C): maxLen 5 -> 7."
+
+# USA cross-checks (usref.py, check.py --full): the USA ROM has these limits at the same call sites.
+
+[[us_ref]]
+id = "namelen-us-createargs"
+claim = "US arm9 0x020830D8 is NamingScreen_CreateArgs; push {r3-r7, lr}, alloc 0x54 bytes, as at hack 0x02081DA4"
+file = "arm9"
+address = "0x020830D8"
+expect = "B5F8 1C0D 2154 9000"
+
+[[us_ref]]
+id = "namelen-us-player-intro"
+claim = "US overlay53 0x021E594E: Oak's speech, player name, the same call with mov r3, #7"
+file = "overlay53"
+address = "0x021E594E"
+new = "namelen-player-intro"
+
+[[us_ref]]
+id = "namelen-us-rival-intro"
+claim = "US overlay53 0x021E5966: Oak's speech, rival name, the same call with mov r3, #7"
+file = "overlay53"
+address = "0x021E5966"
+new = "namelen-rival-intro"
+
+[[us_ref]]
+id = "namelen-us-player-script"
+claim = "US arm9 0x020431D6: script 'name player', the same call with mov r3, #7"
+file = "arm9"
+address = "0x020431D6"
+new = "namelen-player-script"
+
+[[us_ref]]
+id = "namelen-us-rival-script"
+claim = "US arm9 0x02043206: script 'name rival', the same call with mov r3, #7"
+file = "arm9"
+address = "0x02043206"
+new = "namelen-rival-script"
+
+[[us_ref]]
+id = "namelen-us-nickname-script"
+claim = "US arm9 0x02043292: script 'nickname Pokémon', the same call with mov r3, #10"
+file = "arm9"
+address = "0x02043292"
+new = "namelen-nickname-script"
+
+[[us_ref]]
+id = "namelen-us-group-script"
+claim = "US arm9 0x02049BBE: script 'name group', mov r3, #7 (the hack passes r1 = 5)"
+file = "arm9"
+address = "0x02049BBE"
+new = "namelen-group-script"
+
+[[us_ref]]
+id = "namelen-us-nickname-egg"
+claim = "US arm9 0x020911C4: egg hatch, mov r3, #10, then bl NamingScreen_CreateArgs (US arm9 0x020830D8)"
+file = "arm9"
+address = "0x020911C4"
+expect = "230A F7F1 FF87"
+
+[[us_ref]]
+id = "namelen-us-kind7-len"
+claim = "US overlay43 0x0222CD56: naming kind 7 sets r1 = 7 (mov r1, #7) for maxLen"
+file = "overlay43"
+address = "0x0222CD56"
+expect = "0x2107"
+
+[[us_ref]]
+id = "namelen-us-kind7"
+claim = "US overlay43 0x0222CD5C: naming kind 7 passes maxLen = r1 (add r3, r1, #0), then bl NamingScreen_CreateArgs"
+file = "overlay43"
+address = "0x0222CD5C"
+expect = "1C0B F656 F9BB"

@@ -101,9 +101,12 @@ class CatalogueTests(unittest.TestCase):
         self.assertEqual(catalog.tone_marks('Ni3 hao3'), 'Nǐ hǎo')
 
     def test_hardcoded_and_passthrough(self):
-        hardcoded = self.root / 'work/translate/hardcoded/strings.json'
+        hardcoded = self.root / 'work/patches/labels/fix.toml'
         hardcoded.parent.mkdir(parents=True)
-        hardcoded.write_text(json.dumps(dict(strings=[dict(id='overlay:0x12', zh='行', en='Go', pointers=['0x4'])])))
+        hardcoded.write_text('id = "labels"\nkind = "strings"\n\n[[string]]\nid = "overlay:0x12"\n'
+                             'zh = "行"\nen = "Go"\npointers = ["0x4"]\n', encoding='utf-8')
+        (self.root / 'work/patches/code-fix').mkdir()
+        (self.root / 'work/patches/code-fix/fix.toml').write_text('id = "code-fix"\nkind = "code"\n')
         config = self.root / 'work/tools/qa_config.json'
         config.parent.mkdir(parents=True)
         config.write_text(json.dumps(dict(passthrough_banks={'a027/0001': 'English'})))

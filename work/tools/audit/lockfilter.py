@@ -1,4 +1,4 @@
-import json, collections, pickle
+import json, collections
 import sdis as dis
 A=dis.all_files()
 L=json.load(open('lockcheck.json'))

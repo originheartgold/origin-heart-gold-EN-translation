@@ -47,7 +47,6 @@ import json
 import os
 import pickle
 import struct
-import sys
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 CHARMAP = os.path.join(REPO, 'work', 'tools', 'charmaps', 'charmap_zh_xzonn_gen4.tsv')

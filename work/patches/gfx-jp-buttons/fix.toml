@@ -1,0 +1,31 @@
+id = "gfx-jp-buttons"
+title = "CANCEL and START buttons (Japanese leftovers)"
+kind = "graphics"
+enabled = true
+decisions = ["D-1106", "D-0768", "D-1041"]
+requires = []
+why = """
+Players: the main menu / Mystery Gift CANCEL buttons show やめる and the minigame START button スタート.
+
+Technical: the hack is built on the Japanese ROM and did not redraw a/1/1/3 #30 and a/2/1/5 #16, so they are
+the Japanese art where the USA ROM has English in the same slot.
+"""
+what = """
+Old: Japanese やめる / スタート.
+New: the USA members: CANCEL / START (only the label tiles differ).
+"""
+evidence = [
+  "work/notes/graphics_inventory.md: rows 28-29 (pass3_restores.png)",
+]
+
+[[graphics]]
+op = "copy_us"
+narc = "a/1/1/3"
+members = [30]
+notes = "main menu / Mystery Gift CANCEL buttons: the hack ships the Japanese やめる art -> USA CANCEL"
+
+[[graphics]]
+op = "copy_us"
+narc = "a/2/1/5"
+members = [16]
+notes = "START button: the hack ships the Japanese スタート art -> USA START"

@@ -1,0 +1,31 @@
+id = "gfx-yes-no-buttons"
+title = "Touch-screen YES/NO buttons"
+kind = "graphics"
+enabled = true
+decisions = ["D-0768", "D-1041"]
+requires = []
+why = """
+Players: the touch-screen yes/no buttons (Poké Mart buy confirmation and many other prompts) say 是 / 否.
+
+Technical: a/1/5/2 #1 is the button sheet; screens #2-9 have the USA tile maps.
+"""
+what = """
+Old: 是 / 否.
+New: the USA member: YES / NO.
+"""
+evidence = [
+  "work/notes/graphics_inventory.md: row 7",
+]
+
+[[graphics]]
+op = "copy_us"
+narc = "a/1/5/2"
+members = [1]
+notes = "touch-screen YES/NO buttons (Poke Mart buy confirmation etc.); screens #2-9 have identical tile maps"
+
+[[us_ref]]
+id = "yes-no-buttons-us-screens"
+claim = "Screens #2-9 of a/1/5/2 (LZ10) decompress to the USA ones, so the USA sheet #1 fits them"
+file = "a/1/5/2"
+members = [2, 3, 4, 5, 6, 7, 8, 9]
+lz10 = true

@@ -1,0 +1,85 @@
+id = "gfx-weather-banners"
+title = "Battle weather banners"
+kind = "graphics"
+enabled = true
+decisions = ["D-0821", "D-1110", "D-0768", "D-1041"]
+requires = []
+why = """
+Players: while a weather is active in battle, its banner says 晴天 雨天 沙暴 冰雹 雾天 雪景 始源之海 终结之地 德尔塔气流.
+
+Technical: battle/battle_graphics.narc #33-49 (odd members) are hack-added, hg-engine-style banners with
+the label baked in; the label band is at most ~50 px wide.
+"""
+what = """
+Old: Chinese labels.
+New: the hack's art and colours with an English label band (gfx.py make-weather-banners): SUN, RAIN, SAND,
+HAIL, FOG in hg-engine's English letters; SNOW, DOWNPOUR (Primordial Sea), HARSH SUN (Desolate Land) and
+WINDS (Delta Stream) in font-0 lettering (composed, kept by D-1110), because no sourced art exists.
+"""
+evidence = [
+  "work/notes/graphics_inventory.md: row 15 (not yet seen in the emulator: needs a weather battle)",
+  "work/graphics/CREDITS.md",
+]
+
+[[graphics]]
+op = "tiles_from_png"
+narc = "battle/battle_graphics.narc"
+member = 33
+src = "weather_en/battle_graphics_0033.png"
+notes = "battle weather banner SUN: hack art, hg-engine English letters; gfx.py make-weather-banners"
+
+[[graphics]]
+op = "tiles_from_png"
+narc = "battle/battle_graphics.narc"
+member = 35
+src = "weather_en/battle_graphics_0035.png"
+notes = "battle weather banner RAIN: hack art, hg-engine English letters; gfx.py make-weather-banners"
+
+[[graphics]]
+op = "tiles_from_png"
+narc = "battle/battle_graphics.narc"
+member = 37
+src = "weather_en/battle_graphics_0037.png"
+notes = "battle weather banner SAND: hack art, hg-engine English letters; gfx.py make-weather-banners"
+
+[[graphics]]
+op = "tiles_from_png"
+narc = "battle/battle_graphics.narc"
+member = 39
+src = "weather_en/battle_graphics_0039.png"
+notes = "battle weather banner HAIL: hack art, hg-engine English letters; gfx.py make-weather-banners"
+
+[[graphics]]
+op = "tiles_from_png"
+narc = "battle/battle_graphics.narc"
+member = 41
+src = "weather_en/battle_graphics_0041.png"
+notes = "battle weather banner FOG: hack art, hg-engine English letters; gfx.py make-weather-banners"
+
+[[graphics]]
+op = "tiles_from_png"
+narc = "battle/battle_graphics.narc"
+member = 43
+src = "weather_en/battle_graphics_0043.png"
+notes = "battle weather banner SNOW: hack art, font-0 lettering; gfx.py make-weather-banners"
+
+[[graphics]]
+op = "tiles_from_png"
+narc = "battle/battle_graphics.narc"
+member = 45
+src = "weather_en/battle_graphics_0045.png"
+notes = "battle weather banner DOWNPOUR (Primordial Sea): hack art, font-0 lettering; gfx.py make-weather-banners"
+
+[[graphics]]
+op = "tiles_from_png"
+narc = "battle/battle_graphics.narc"
+member = 47
+src = "weather_en/battle_graphics_0047.png"
+notes = "battle weather banner HARSH SUN (Desolate Land): hack art, font-0 lettering; gfx.py make-weather-banners"
+
+[[graphics]]
+op = "tiles_from_png"
+narc = "battle/battle_graphics.narc"
+member = 49
+src = "weather_en/battle_graphics_0049.png"
+notes = "battle weather banner WINDS (Delta Stream): hack art, font-0 lettering; gfx.py make-weather-banners"

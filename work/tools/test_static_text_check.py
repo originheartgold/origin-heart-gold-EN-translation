@@ -2,14 +2,13 @@ import copy
 from pathlib import Path
 import tempfile
 import unittest
-from unittest.mock import patch
 
 import static_text_check as check
 
 
 class StaticTextTests(unittest.TestCase):
     def payload(self):
-        snapshots = {label: {'files': {'.': {'size': 1, 'sha256': 'a'*64}}} for label in ('source', 'candidate', 'us', 'workspace', 'extract', 'tools', 'graphics', 'hardcoded', 'reference_mapping')}
+        snapshots = {label: {'files': {'.': {'size': 1, 'sha256': 'a'*64}}} for label in ('source', 'candidate', 'us', 'workspace', 'extract', 'tools', 'graphics', 'patches', 'reference_mapping')}
         return {'status': 'passed', 'inputs_before': snapshots, 'inputs_after': copy.deepcopy(snapshots),
                 'checks': {**{key: {'status': 'passed', 'counts': {'banks': 1, 'strings': 1, 'records': 1, 'files_compared': 1, 'attributes_compared': 1, 'message_payloads_deferred': 2}, 'findings': {'child': {'status': 'passed'}}} for key in ('inventory', 'binary', 'boundary', 'safety')},
                            'input_stability': {'status': 'passed', 'unchanged': True}}}

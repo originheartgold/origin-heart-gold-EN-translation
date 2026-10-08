@@ -517,7 +517,7 @@ def case_pidgeot(rom, out):
     set and the woman returns 'your' Pidgeot (L4805 -> L5794 GiveLoanMon 6, 20, 75). The two are compared."""
     with E.start_at(None, rom=rom, out=out, verbose=False, clock=CLOCK, flags=[1288, 410],
                     edit=lambda sf: sf.set_flag(2404, False)) as h:
-        mon = h.generate_pokemon(18, level=60, item=234)
+        h.generate_pokemon(18, level=60, item=234)
         h.edit_party_mon(h.generated_slot, moves=[19, 98, 17, 129], pp=[15, 30, 35, 20])
         slot = h.generated_slot
         lent = party_details(h)[slot]

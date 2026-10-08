@@ -1,0 +1,21 @@
+# What `python3 work/tools/check.py --full` expects from the default full build of this branch
+# (python3 work/tools/build.py: every enabled fix, the workspace text). Recorded by
+# `check.py --full --update-expected`.
+#
+# work/patches/expected.toml records four SHA-1s of the default full build (`build.py`, every enabled fix):
+#   nontext_sha1  every part of the ROM except the two message NARCs (arm9, arm7, overlay tables, banner and
+#                 every other file): what the fixes, graphics and code produce. It does not depend on the
+#                 message banks, but it does hold the English of the hardcoded strings: outfit-chooser-strings
+#                 writes its [[string]] en into overlay 58, so changing that English moves it too;
+#   text_sha1     the two message NARCs (a/0/2/7, battle_string.narc): the message-bank text;
+#   rom_sha1, xdelta_sha1  the ROM and the release patch: they move with any text.
+# `check.py --full` fails when nontext_sha1 differs; the other three are reported and fail only with
+# --strict-release (a translation change moves them). After a change to a fix, the graphics, the code or a
+# hardcoded string, review the build and record the new hashes in the same commit:
+#   python3 work/tools/check.py --full --update-expected
+
+[build]
+nontext_sha1 = "403226ffd4d983dac6a704d93d46864e8c84de43"
+text_sha1 = "1d37e7eb9e744719a25a3f3028fbe9821c889047"
+rom_sha1 = "8c0ff1227e42b58eefada2c7e71cf277485c788f"
+xdelta_sha1 = "376526e0d59a99ae7b55ed9f3a83362f5fae8ccf"

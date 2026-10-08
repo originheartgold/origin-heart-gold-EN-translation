@@ -160,7 +160,7 @@ units = []   # (sort_key, group_label, [parts]) ; part = (key, id_from, id_to, n
 
 def split_bank(e, strings):
     """split one bank into parts that respect the limits (by id range)."""
-    parts, cur, cn, cc, start = [], 0, 0, 0, 0
+    parts, cn, cc, start = [], 0, 0, 0
     ids = [i for i, s in enumerate(strings) if has_cjk(s)]
     if not ids:
         return []

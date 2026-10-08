@@ -60,6 +60,8 @@
 *.xdelta
 /work/build/
 /work/release/
+# Decompressed arm9/overlay images staged for armips by hand (work/notes/toolchain.md): game data.
+/work/patches/**/*.bin
 
 # --- Local snapshots ---------------------------------------------------------
 # Tarballs of translate/banks at checkpoints. Git history replaces these.

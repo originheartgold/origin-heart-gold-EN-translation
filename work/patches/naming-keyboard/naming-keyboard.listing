@@ -1,0 +1,86 @@
+; naming-keyboard - disassembly snapshot of naming-keyboard.asm: every edit, old -> new. Generated; do not edit.
+; Regenerate: python3 work/tools/asmpatch.py listing --write naming-keyboard   (check.py --full fails when it is stale)
+; Old: the Chinese ROM. New: naming-keyboard.asm assembled alone over it by armips v0.11.0.
+; Disassembly: capstone 5.0.9 (UAL syntax). '  ' unchanged context, '- ' old, '+ ' new;
+; addresses are RAM addresses, Thumb bytes are halfwords, ARM bytes words; data rows are what one
+; statement writes (u16 rows of a string or key row with their characters, '|' = 0xFFFF end).
+
+== arm9+0x83C24 (RAM 0x02083C24), 2 bytes, thumb: naming-ime-off
+  02083C20  BD70       pop {r4, r5, r6, pc}
+  02083C22  2800       cmp r0, #0
+- 02083C24  D168       bne #0x2083cf8  ; NamingScreen_InsertKey
++ 02083C24  E068       b #0x2083cf8  ; NamingScreen_InsertKey
+  02083C26  2D01       cmp r5, #1
+  02083C28  D066       beq #0x2083cf8  ; NamingScreen_InsertKey
+
+== arm9+0x100C90 (RAM 0x02100C90), 26 bytes, data: naming-abc-row4
+- 02100C90  01DE 012B 013D 012E 0130 0131 0132  " ASDFGH"
++ 02100C90  0152 0153 0154 0155 0156 0157 0158  "nopqrst"
+- 02100C9E  0134 0135 0136 01DE 011B 011E  "JKL ←→"
++ 02100C9E  0159 015A 015B 015C 015D 015E  "uvwxyz"
+
+== arm9+0x100CC8 (RAM 0x02100CC8), 26 bytes, data: naming-abc-row5
+- 02100CC8  01DE 01DE 0144 0142 012D 0140 012C  "  ZXCVB"
++ 02100CC8  0121 0122 0123 0124 0125 0126 0127  "0123456"
+- 02100CD6  0138 0137 01DE 01DE 01DE 01DE  "NM    "
++ 02100CD6  0128 0129 012A 01AE 01AD 01DE  "789., "
+
+== arm9+0x100CE4 (RAM 0x02100CE4), 26 bytes, data: naming-abc-row1
+- 02100CE4  01DE 01DE 01DE 01DE 01DE 01DE 01DE  "       "
++ 02100CE4  012B 012C 012D 012E 012F 0130 0131  "ABCDEFG"
+- 02100CF2  01DE 01DE 01DE 01DE 01DE 01DE  "      "
++ 02100CF2  0132 0133 0134 0135 0136 0137  "HIJKLM"
+
+== arm9+0x100D00 (RAM 0x02100D00), 26 bytes, data: naming-abc-row2
+- 02100D00  01DE 01DE 01DE 01DE 01DE 01DE 01DE  "       "
++ 02100D00  0138 0139 013A 013B 013C 013D 013E  "NOPQRST"
+- 02100D0E  01DE 01DE 01DE 01DE 01DE 01DE  "      "
++ 02100D0E  013F 0140 0141 0142 0143 0144  "UVWXYZ"
+
+== arm9+0x100D1C (RAM 0x02100D1C), 26 bytes, data: naming-abc-row3
+- 02100D1C  013B 0141 012F 013C 013E 0143 013F  "QWERTYU"
++ 02100D1C  0145 0146 0147 0148 0149 014A 014B  "abcdefg"
+- 02100D2A  0133 0139 013A 01DE 01DE 01DE  "IOP   "
++ 02100D2A  014C 014D 014E 014F 0150 0151  "hijklm"
+
+== arm9+0x100DFC (RAM 0x02100DFC), 26 bytes, data: naming-qwe-row1
+- 02100DFC  00AC 00AD 00AE 00AF 00B0 00B1 00B2  "ＡＢＣＤＥＦＧ"
++ 02100DFC  01DE 01DE 01DE 01DE 01DE 01DE 01DE  "       "
+- 02100E0A  00B3 00B4 00B5 00B6 00B7 00B8  "ＨＩＪＫＬＭ"
++ 02100E0A  01DE 01DE 01DE 01DE 01DE 01DE  "      "
+
+== arm9+0x100E34 (RAM 0x02100E34), 26 bytes, data: naming-qwe-row2
+- 02100E34  00B9 00BA 00BB 00BC 00BD 00BE 00BF  "ＮＯＰＱＲＳＴ"
++ 02100E34  0122 0123 0124 0125 0126 0127 0128  "1234567"
+- 02100E42  00C0 00C1 00C2 00C3 00C4 00C5  "ＵＶＷＸＹＺ"
++ 02100E42  0129 012A 0121 01DE 01DE 01DE  "890   "
+
+== arm9+0x100E50 (RAM 0x02100E50), 26 bytes, data: naming-qwe-row3
+- 02100E50  00C6 00C7 00C8 00C9 00CA 00CB 00CC  "ａｂｃｄｅｆｇ"
++ 02100E50  013B 0141 012F 013C 013E 0143 013F  "QWERTYU"
+- 02100E5E  00CD 00CE 00CF 00D0 00D1 00D2  "ｈｉｊｋｌｍ"
++ 02100E5E  0133 0139 013A 01DE 01DE 01DE  "IOP   "
+
+== arm9+0x100E6C (RAM 0x02100E6C), 26 bytes, data: naming-qwe-row4
+- 02100E6C  00D3 00D4 00D5 00D6 00D7 00D8 00D9  "ｎｏｐｑｒｓｔ"
++ 02100E6C  01DE 012B 013D 012E 0130 0131 0132  " ASDFGH"
+- 02100E7A  00DA 00DB 00DC 00DD 00DE 00DF  "ｕｖｗｘｙｚ"
++ 02100E7A  0134 0135 0136 01DE 01B3 01BE  "JKL ’-"
+
+== arm9+0x100EA4 (RAM 0x02100EA4), 26 bytes, data: naming-qwe-row5
+- 02100EA4  00A2 00A3 00A4 00A5 00A6 00A7 00A8  "０１２３４５６"
++ 02100EA4  01DE 01DE 0144 0142 012D 0140 012C  "  ZXCVB"
+- 02100EB2  00A9 00AA 00AB 00F8 00F9 0001  "７８９．， "
++ 02100EB2  0138 0137 01DE 01DE 01AD 01AE  "NM  ,."
+
+== read-only checks at absolute addresses (expect32_abs): the bytes there, unchanged
+  0210F688  02100CE4
+  0210F68C  02100D00
+  0210F690  02100D1C
+  0210F694  02100C90
+  0210F698  02100CC8
+  0210F6B0  02100DFC
+  0210F6B4  02100E34
+  0210F6B8  02100E50
+  0210F6BC  02100E6C
+  0210F6C0  02100EA4

@@ -40,19 +40,21 @@ How the chooser uses these strings:
 ## Pipeline
 
 The pipeline has four parts:
-- **Data:** `work/translate/hardcoded/strings.json`. Its `files.overlay58.grow_max` is 64.
-- **Code:** `work/tools/hardcoded.py`.
-- **Build:** stage 3c in `build.py`, with its checks in `verify_rom`.
-- **Tests:** `work/tools/test_hardcoded.py`.
+- **Data:** the fix `work/patches/outfit-chooser-strings/fix.toml`: one `[[string]]` entry per label (zh, en, slot size, pointers, relocation limit; translators edit `en` here, and `text_consumer_check.py` / `text_safety_check.py` read it through `hardcoded.load()`), and `[[grow]]` with `max = 64` for overlay 58.
+- **Code:** the armips source `outfit-chooser-strings.asm` in the same folder writes the bytes; `work/tools/asmpatch.py` assembles it like every code and data fix (see `toolchain.md`). `work/tools/hardcoded.py` keeps the entry view, `RomView` and the survey `scan`.
+- **Build:** stage 3c in `build.py` (`asmpatch.apply`), with its checks in `verify_rom` (`asmpatch.verify`).
+- **Tests:** `work/tools/test_asmpatch.py` (the assembled overlay against golden SHA-1s, growth and string checks) and `work/tools/test_hardcoded.py` (the entries, the scan).
 
-How the build writes each string:
-- **Fits in place:** the build writes it there and fills the rest of the slot with `0xFFFF`.
-- **Too long for the slot:** the build appends it to overlay 58, updates the y9 `ramSize`, repoints the pointers, and blanks the old slot.
+How the source writes each string:
+- **Fits in place:** `.string` at the slot, the rest of the slot filled with `0xFFFF` (`OK`).
+- **Too long for the slot:** appended to overlay 58 at its old end (`.org`, guard `expect_end`), the pointers repointed (`.word` behind a guard on the old target), the old slot blanked. The build updates the y9 `ramSize`.
+- **Length class:** fitting in place or being relocated is written in the asm, not decided by the build. A new `en` that moves a label from one class to the other (longer than its slot, or short enough to fit it again) needs the matching change in `outfit-chooser-strings.asm`; with only fix.toml changed, the build refuses.
 - **Refusals.** The build stops with an error when:
-  - the ROM no longer holds the `zh` text;
-  - the English does not encode;
-  - the English is longer than `reloc_max_units`;
-  - the growth is larger than `grow_max`;
+  - the ROM no longer holds the `zh` text, or a pointer no longer points at its slot (fix.toml and the asm's guards);
+  - the asm's `.string` literals differ from the `en` values (`fixes.py check`), or the bytes read back are not `en`;
+  - the English does not encode (armips: `Failed to encode`);
+  - the English is longer than the slot in place, or than `reloc_max_units` relocated;
+  - the growth is larger than the `[[grow]]` max, or leaves the overlay a size that is not a multiple of 4;
   - the overlay has .bss;
   - another overlay starts inside the grown range.
 
@@ -80,7 +82,7 @@ These are **not** cut to `maxLen`. They are copied into `nameInputFlat[10]` and 
 
 "Silver" (#37–49) and "NEW NAME" (#36, #78) are DP-era leftovers. No code reads them (the only load of bank 0xF7 is in the naming screen). Even if the game read them, 6 characters fit the 7-character buffer. **No default name needs shortening.**
 
-The patches that raise the limits to the USA values are in `work/translate/hardcoded/code_patches.json` (`namelen-*`). They are **enabled**: the user checked in melonDS that trainer names take 7 characters and nicknames 10.
+The patches that raise the limits to the USA values are the fix `work/patches/namelen/` (`namelen.asm`, regions `namelen-*` in `fix.toml`; armips, see `toolchain.md`). They are **enabled**: the user checked in melonDS that trainer names take 7 characters and nicknames 10.
 
 ## Naming keyboard (English)
 
@@ -88,9 +90,9 @@ The hack's keyboard (Japanese base) has four tabs. Page N uses the rows `sKeyboa
 
 | Tab | Hack | Now | How |
 |---|---|---|---|
-| 1 (page 0, opens first) | かな: pinyin IME. QWERTY letters go into a pinyin buffer (`data+0x5E4`); candidates from `a/0/3/1` #19/#20 fill rows 1–2 (lookup `0x020835E4`); picking one commits hanzi | **ABC**: the hack's ABC layout (A–M, N–Z, a–m, n–z, 0–9 . ,) in Western codes `0x0121–0x015E` | `naming-abc-row1..5`; tab art = the hack's own "ABC" label |
+| 1 (page 0, opens first) | かな: pinyin IME. QWERTY letters go into a pinyin buffer (`data+0x5E4`); candidates from `a/0/3/1` #19/#20 fill rows 1–2 (lookup `0x020835E4`); picking one commits hanzi | **ABC**: the hack's ABC layout (A–M, N–Z, a–m, n–z, 0–9 . ,) in Western codes `0x0121–0x015E` | `naming-abc-row1..5` (`naming-keyboard.asm`); tab art = the hack's own "ABC" label |
 | 2 (page 1) | カナ → a–z, A–Z, 0–9 (Western) | unchanged (**abc**) | – |
-| 3 (page 2) | full-width ＡＢＣ (`0x00AC–0x00DF`, ０–９) | **QWE**: blank row, 1–0, QWERTYUIOP, ASDFGHJKL ' -, ZXCVBNM , . (Western) | `naming-qwe-row1..5`; tab art "QWE" |
+| 3 (page 2) | full-width ＡＢＣ (`0x00AC–0x00DF`, ０–９) | **QWE**: blank row, 1–0, QWERTYUIOP, ASDFGHJKL ’ -, ZXCVBNM , . (Western; ’ is 0x01B3) | `naming-qwe-row1..5`; tab art "QWE" |
 | 4 (page 3) | 1/♪ full-width symbols | unchanged | – |
 
 - **IME off:** `naming-ime-off` changes `bne 0x02083CF8` at `0x02083C24` (in the key handler `0x02083814`, the hack's `NamingScreen_HandleCharacterInput`) to `b`. Every key now takes the normal insert path, so the pinyin buffer stays empty and the candidate rows, ← → paging and the pinyin BACK path never run.

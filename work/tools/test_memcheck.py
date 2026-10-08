@@ -324,8 +324,6 @@ class MemcheckTests(unittest.TestCase):
             self.assertEqual(memcheck.cmd_run(args), 2)
             self.assertTrue(json.loads((Path(tmp) / "report.json").read_text())["errors"])
 
-if __name__ == "__main__":
-    unittest.main()
 
 class SparseMemory:
     def __init__(self):
@@ -620,3 +618,7 @@ class PartyStateTests(unittest.TestCase):
 
     def test_unconfigured_explicit(self):
         self.assertEqual(memcheck.compare_party_runs({}, {}, {}), ('not_configured', [], {}))
+
+
+if __name__ == "__main__":
+    unittest.main()

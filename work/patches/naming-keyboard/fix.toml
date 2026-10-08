@@ -1,0 +1,119 @@
+id = "naming-keyboard"
+title = "English naming keyboard: ABC page first, pinyin IME off"
+kind = "code"
+enabled = true
+decisions = ["D-1039", "D-1002"]
+requires = []
+asm = "naming-keyboard.asm"
+why = """
+Players: the naming screen opens on a pinyin input page: typed letters turn into Chinese character
+candidates, so an English name cannot be typed there. The hack's ＡＢＣ page types full-width letters that
+look spaced out in every dialogue that shows the name.
+
+Technical: the hack's keyboard (Japanese base) has four tabs; page N uses the rows sKeyboardLayoutPtrs[N]
+(arm9 0x0210F688, 13 keys + 0xFFFF per row). Page 0 (the page the screen opens on) runs the hack's pinyin
+IME from the key handler at 0x02083814 ('cmp r0, #0; bne 0x02083CF8' at 0x02083C22: keys on page 0 go into
+the pinyin buffer at data+0x5E4, candidates from a/0/3/1 #19/#20). Page 2 holds the full-width codes
+0x00AC-0x00DF, whose glyphs are 9-11 px wide in message fonts 1/2/4 (Western letters 6-7 px).
+"""
+what = """
+Old: tab 1 (page 0) = pinyin IME, tab 2 = a-z/A-Z/0-9 (Western), tab 3 = full-width ＡＢＣ, tab 4 = 1/♪.
+New: 'bne' -> 'b' at 0x02083C24, so every page inserts keys directly and the IME never starts.
+Tab 1 (page 0, still the default) = ABC: the hack's own ABC layout (A-M, N-Z, a-m, n-z, 0-9 . , space) in
+Western codes 0x0121-0x015E. Tab 3 (page 2) = QWE: blank row, 1-0, QWERTYUIOP, ASDFGHJKL ’ -, ZXCVBNM , .
+(’ is the apostrophe of the game font, 0x01B3; there is no straight ' key.)
+Tabs 2 and 4 are the hack's. Putting ABC on page 0 makes it the default without touching the init code
+(changing the default page would need 5+ patches). The tab labels are fix gfx-naming-tabs, which requires
+this fix; building --without gfx-naming-tabs keeps the hack's Japanese tab art, so the かな label sits over
+the ABC page and ＡＢＣ over the QWE page.
+"""
+evidence = [
+  "work/notes/hardcoded_text.md: 'Naming keyboard (English)'",
+  "DeSmuME check: work/build/screens/naming_fix_*.png (local): opens on ABC, every tab types, the dialogue shows 'Your name is An1zQ5!?'",
+  "CHANGELOG.md v1.0.0: 'Naming keyboard: the Chinese pinyin input is removed, and the keyboard opens on ABC. The tabs are ABC / abc / QWE / 1♪.'",
+]
+
+[[code]]
+id = "naming-ime-off"
+file = "arm9"
+offset = "0x83C24"
+expect = "0xD168"
+notes = "Naming key handler: the page-0 branch into the pinyin IME becomes unconditional, so every page inserts keys directly."
+
+[[code]]
+id = "naming-abc-row1"
+file = "arm9"
+offset = "0x100CE4"
+expect = "01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE"
+notes = "Page 0 (tab 1, ABC) row 1: blank pinyin candidate row -> A-M."
+
+[[code]]
+id = "naming-abc-row2"
+file = "arm9"
+offset = "0x100D00"
+expect = "01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE 01DE"
+notes = "Page 0 row 2: blank pinyin candidate row -> N-Z."
+
+[[code]]
+id = "naming-abc-row3"
+file = "arm9"
+offset = "0x100D1C"
+expect = "013B 0141 012F 013C 013E 0143 013F 0133 0139 013A 01DE 01DE 01DE"
+notes = "Page 0 row 3: QWERTYUIOP -> a-m."
+
+[[code]]
+id = "naming-abc-row4"
+file = "arm9"
+offset = "0x100C90"
+expect = "01DE 012B 013D 012E 0130 0131 0132 0134 0135 0136 01DE 011B 011E"
+notes = "Page 0 row 4: ASDFGHJKL and the candidate arrows -> n-z."
+
+[[code]]
+id = "naming-abc-row5"
+file = "arm9"
+offset = "0x100CC8"
+expect = "01DE 01DE 0144 0142 012D 0140 012C 0138 0137 01DE 01DE 01DE 01DE"
+notes = "Page 0 row 5: ZXCVBNM -> 0-9 . , space."
+
+[[code]]
+id = "naming-qwe-row1"
+file = "arm9"
+offset = "0x100DFC"
+expect = "00AC 00AD 00AE 00AF 00B0 00B1 00B2 00B3 00B4 00B5 00B6 00B7 00B8"
+notes = "Page 2 (tab 3, QWE) row 1: full-width A-M -> blank."
+
+[[code]]
+id = "naming-qwe-row2"
+file = "arm9"
+offset = "0x100E34"
+expect = "00B9 00BA 00BB 00BC 00BD 00BE 00BF 00C0 00C1 00C2 00C3 00C4 00C5"
+notes = "Page 2 row 2: full-width N-Z -> 1234567890."
+
+[[code]]
+id = "naming-qwe-row3"
+file = "arm9"
+offset = "0x100E50"
+expect = "00C6 00C7 00C8 00C9 00CA 00CB 00CC 00CD 00CE 00CF 00D0 00D1 00D2"
+notes = "Page 2 row 3: full-width a-m -> QWERTYUIOP."
+
+[[code]]
+id = "naming-qwe-row4"
+file = "arm9"
+offset = "0x100E6C"
+expect = "00D3 00D4 00D5 00D6 00D7 00D8 00D9 00DA 00DB 00DC 00DD 00DE 00DF"
+notes = "Page 2 row 4: full-width n-z -> ASDFGHJKL ’ - (’ = 0x01B3, the font's apostrophe)."
+
+[[code]]
+id = "naming-qwe-row5"
+file = "arm9"
+offset = "0x100EA4"
+expect = "00A2 00A3 00A4 00A5 00A6 00A7 00A8 00A9 00AA 00AB 00F8 00F9 0001"
+notes = "Page 2 row 5: full-width 0-9 . , -> ZXCVBNM , ."
+
+[[us_ref]]
+id = "naming-keyboard-us-handler"
+claim = "US arm9 0x02084884 is the USA key handler (pret NamingScreen_HandleCharacterInput), hack 0x02083814: same prologue"
+file = "arm9"
+address = "0x02084884"
+hack = "arm9 0x02083814"
+length = 6

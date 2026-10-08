@@ -1,0 +1,76 @@
+id = "antipiracy"
+title = "Real hardware: the six DS Protect entry points return the genuine-cart values"
+kind = "code"
+enabled = true
+decisions = []
+requires = []
+asm = "antipiracy.asm"
+why = """
+Players: on flashcarts and loaders (TWiLight Menu++ / nds-bootstrap, R4 kernels) the game boots and plays,
+then freezes after some minutes at a menu, a map change or a battle start, sooner with more badges.
+Emulators (melonDS, DeSmuME) and genuine carts never show it.
+
+Technical: the hack keeps Nintendo's DS Protect library in overlay 114 (RAM 0x02263200). Its card-mirror
+check fails on flashcarts that return real data below 0x8000, and its emulator check on loaders with an
+all-zero MAC. A failed check does not stop the game: the consumers (overlays 1, 5, 28, 31, 115) leak heap-3
+blocks (two of 20,000 bytes at Continue, 1,000 bytes per menu) and start endless RNG tasks until the
+160-slot task queue is full and the game freezes. Loaders key their own anti-piracy fixes on game code and
+header CRC16; the hack's CRC is in no list.
+"""
+what = """
+Old: the six entry points (overlay114+0x864, 0x94C, 0xA34, 0xB1C, 0xC04, 0xCCC) run their checks and,
+on a failure, the callback that leaks or starts tasks.
+New: each entry's first 8 bytes ('push {r4-r10,lr}; sub sp,sp,#0x80') become 'mov r0,#imm; bx lr' with imm
+the value the untouched hack returns on a genuine cart or an emulator: 0, 1, 0, 1, 0, 1. Every consumer
+checksum stays zero and no leak or task is created; the callbacks the stubs skip are a bare 'bx lr' on the
+genuine path. The check bodies stay in the file. On emulators and genuine carts the game behaves exactly like
+the untouched Chinese hack (D-1002); this is not a hack-bug fix (D-1337). The same 8 bytes as the overlay 114
+of the Bradams 'Speedoption' build, which runs on New 2DS XL.
+"""
+evidence = [
+  "Decision pending: D-1616 (real-hardware support built into the single English patch) and D-1617 (bypass vs fidelity, D-1002/D-1337) are in the main checkout's register, not yet in this branch's register, so this fix lists no decision of its own",
+  "work/notes/hardware_support.md: checks, the six entry points and their genuine-cart values (DeSmuME), the 18 call sites, the punishments, why loaders do not fix it",
+  "git 177cffe 'Code: built-in anti-piracy bypass for real hardware (D-1616, D-1617)': reviewed statically and in DeSmuME (polarity measured, emulator-check failure simulated); not yet run on real hardware",
+]
+
+[[code]]
+id = "antipiracy-ov114-0x864"
+file = "overlay114"
+offset = "0x864"
+expect = "47F0 E92D D080 E24D"
+notes = "Card-mirror + integrity 'any bad' entry -> 0. Called by overlay 1 field start, overlays 28 and 5."
+
+[[code]]
+id = "antipiracy-ov114-0x94C"
+file = "overlay114"
+offset = "0x94C"
+expect = "47F0 E92D D080 E24D"
+notes = "Card-mirror + integrity 'all good' entry -> 1. Called by overlay 115 (Continue), overlay 1 field exit, overlay 31."
+
+[[code]]
+id = "antipiracy-ov114-0xA34"
+file = "overlay114"
+offset = "0xA34"
+expect = "47F0 E92D D080 E24D"
+notes = "Emulator + integrity 'any bad' entry -> 0. Called by overlay 115 (Continue), overlays 5 and 31."
+
+[[code]]
+id = "antipiracy-ov114-0xB1C"
+file = "overlay114"
+offset = "0xB1C"
+expect = "47F0 E92D D080 E24D"
+notes = "Emulator + integrity 'all good' entry -> 1. Called by overlay 1 field start and exit, overlay 28."
+
+[[code]]
+id = "antipiracy-ov114-0xC04"
+file = "overlay114"
+offset = "0xC04"
+expect = "47F0 E92D D080 E24D"
+notes = "'Any bad' entry with an empty check list (already always 0) -> 0, for parity with Speedoption. Called by overlay 1 field start and exit, overlay 31."
+
+[[code]]
+id = "antipiracy-ov114-0xCCC"
+file = "overlay114"
+offset = "0xCCC"
+expect = "47F0 E92D D080 E24D"
+notes = "'All good' entry with an empty check list (already always 1) -> 1, for parity with Speedoption. Called by overlays 115, 28 and 5."

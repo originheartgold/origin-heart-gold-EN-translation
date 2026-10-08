@@ -347,11 +347,24 @@ Running the scenes themselves was skipped: each needs its story state (flags, pe
 scripts, the right map) and most are long chains of movements. Instead `emu_harness.py messages` prints
 every referenced line with a one-off script in the field's normal message window, on the Chinese ROM and
 the English WIP build: `show_message(bank, id)` loads the message bank through the script-file override
-and runs `SetVar 0x8000 id; NonNPCMsgVar 0x8000; WaitButton; CloseMsg; SetVar 0x40FE 0x5A5A; …` (the
+and runs `SetVar 0x8000 id; MsgBoxExtern bank 0x8000; WaitButton; CloseMsg; SetVar 0x40FE 0x5A5A; …` (the
 sentinel var tells the harness the window has closed; it is restored afterwards). The text's own control
 codes (the 200 % size, colours, page breaks) render exactly as in a scene. What is not reproduced: the
 scene's buffers (speaker names stored in {VAR} buffers are empty, so lines that start with a buffered
 name show ": …" in English and "『…" in Chinese), the camera and any special window.
+`show_message` and the reusable `message_script(bank, msg_id)` builder support unsigned 16-bit message IDs. The older implementation used
+`NonNPCMsgVar`, whose Chinese-native handler truncates the resolved ID to eight bits
+(`021EE2E4` / `021EE2EA`); IDs above 255 silently rendered a different record. Its
+screenshots cannot establish coverage of the requested high IDs and must be rerun.
+`MsgBoxExtern` (opcode 440, handler `021EE05C`) preserves the resolved ID through
+`021EE09E` into the same field renderer `021EE448`, then the message reader at
+`021EE662`. The bank operand must be an immediate below `0x4000`; message IDs are
+passed via a variable to avoid native variable-reference interpretation. Neither
+numeric range check proves that a particular bank/record exists. `show_message`
+requires a positive `max_pages` and raises when the script has not reached its
+completion sentinel after the final allowed page press. It restores the sentinel
+even when injection or capture fails; a failed run must be reset before reuse.
+
 46 lines, both ROMs, about 4 minutes; pairs in `work/build/harness/messages/` (`sheet_*.png` overview).
 
 | decision | lines | result (English WIP build of Sep 30) |
@@ -962,3 +975,59 @@ process, the Mac has the cores), writes one JSON report and exits non-zero on a 
 run would take about 5 minutes in parallel, about 10 minutes sequentially. Saves stay in
 `work/build/memcheck/`; outputs in `work/build/harness/`; nothing goes into git except the recipes and
 expected values.
+
+## Text-speed release regression
+
+The native text-speed feature has a cold-boot corpus comparison, native Options
+input matrix, and controlled fallback suite using this harness. Commands, exact
+candidate identity, results and limits are in [text_speed_harness.md](text_speed_harness.md).
+
+## Texture bounds regressions: Rocket HQ, Five Island, Seven Island and Bell Tower
+
+`texture-bounds` runs four permanent checks for the invalid overworld texture-frame lookup at
+ARM9 `0202467C` / `02024696`. DeSmuME tolerates the original null read, so these tests use read-only
+instruction hooks to prove that the failing path was exercised. They do not infer safety from a
+responsive screenshot alone. The original behavior must produce the expected out-of-range request
+and a null load; the fixed behavior must still exercise that request, retain valid texture updates,
+and produce **zero** null loads. Unexpected locations, branch bytes or hook failures fail the run.
+
+The fix is `work/patches/overworld-texture-frame-bounds` (one byte, `08 D2` -> `2C D2`); a normal build has it,
+`build.py --without overworld-texture-frame-bounds` does not. Run from the repository root. The primary checkout supplies the existing virtualenv,
+ROM and raw 512 KiB battery save; use absolute input paths because the emulator uses a private working
+directory. No downloads are needed. Substitute your local paths below, and choose new output folders:
+
+```sh
+<primary-checkout>/.venv/bin/python work/tools/emu_harness.py texture-bounds \
+  --rom <primary-checkout>/work/rom/origin_v4.0.3_cn.nds \
+  --sav <absolute-path-to-raw-save.sav> \
+  --out work/build/texture-bounds-original --case all --expect original
+
+<primary-checkout>/.venv/bin/python work/tools/emu_harness.py texture-bounds \
+  --rom <absolute-path-to-fixed-build.nds> \
+  --sav <absolute-path-to-the-same-raw-save.sav> \
+  --out work/build/texture-bounds-fixed --case all --expect fixed
+```
+
+`--case` accepts `all` or a comma-separated subset of `rocket_hq,five_island,seven_island,bell_tower`.
+Both commands return zero only when every requested expectation passes. `--expect original` means
+successful reproduction of the defect, not that the original ROM is safe. A fresh `report.json`
+contains input SHA-256 hashes, setup flag values, target and observed positions, bounded register
+samples, request/null-load counters, screenshot paths, pass/fail reasons and an input-unchanged check.
+Existing reports are not overwritten. Screenshots, reports and any emulator states stay in ignored
+`work/build/`; do not commit input ROMs or saves.
+
+| Case | Map and position | Explicit RAM setup | Expected bad texture index/count |
+|---|---|---|---|
+| `rocket_hq` | 247 (17,4) | Clear hide flag355 | 4 / 1 |
+| `five_island` | 154 (104,54) | Clear hide flag2173 | 4 / 1 |
+| `seven_island` | 163 (245,104) | Clear hide flag2198 | 11 / 1 |
+| `bell_tower` | 340 (15,17) | Clear hide flag1140 | 15 / 1 |
+
+These are deterministic synthetic visibility fixtures. They import an existing save, capture a
+private baseline state from the ROM under test, and restore that same baseline before every case.
+Each case changes the listed visibility flag in disposable emulator RAM and uses the game's
+scripted map warp. This prevents earlier cases' flag or map-script changes carrying into later
+cases; it does not claim to complete each location's story prerequisite. Bell Tower in particular requires the
+visibility setup for the supplied saves. The ROM and original battery file are never intentionally
+edited or exported over. This checks the shared bounds guard across four known failing resources;
+it does not replace end-to-end story playthroughs or reproduce the full reporter's travel route.

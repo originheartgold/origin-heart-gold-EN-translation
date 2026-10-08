@@ -17,6 +17,7 @@ import re
 import sqlite3
 import sys
 import tempfile
+import tomllib
 import unicodedata
 import zlib
 
@@ -349,6 +350,24 @@ def validate_annotation(annotation, zh, lexicon):
             raise ValueError('annotation needs a reading, custom pinyin, or a note')
 
 
+def hardcoded_paths(root):
+    """fix.toml of each strings fix (work/patches/<fix>/): their [[string]] entries are the hardcoded labels."""
+    paths = []
+    for path in sorted((root / 'work/patches').glob('*/fix.toml')):
+        if tomllib.loads(path.read_text(encoding='utf-8')).get('kind') == 'strings':
+            paths.append(path)
+    return paths
+
+
+def read_source(path, raw):
+    """A bank JSON, or a strings fix.toml with its [[string]] entries as 'strings'."""
+    if Path(path).suffix == '.toml':
+        data = tomllib.loads(raw.decode('utf-8') if isinstance(raw, bytes) else raw)
+        data['strings'] = data.pop('string', [])
+        return data
+    return json.loads(raw)
+
+
 def build(root, destination, cedict=None, annotations=None, pypinyin_path=None):
     root, destination = Path(root), Path(destination)
     lexicon = Lexicon()
@@ -380,15 +399,14 @@ def build(root, destination, cedict=None, annotations=None, pypinyin_path=None):
             for part in batch['parts']:
                 batches[part['bank']].append(dict(batch=batch['batch'], label=batch['label'], ids=part['ids']))
         paths = sorted((root / 'work/translate/banks').glob('*/*.json'))
-        hardcoded = root / 'work/translate/hardcoded/strings.json'
-        if hardcoded.exists():
-            paths.append(hardcoded)
+        hardcoded = hardcoded_paths(root)
+        paths.extend(hardcoded)
         source_ids, counter, chars = {}, collections.Counter(), collections.Counter()
         for path in paths:
             relative = str(path.relative_to(root))
             raw = path.read_bytes()
-            data = json.loads(raw)
-            is_bank = path != hardcoded
+            data = read_source(path, raw)
+            is_bank = path not in hardcoded
             bank = f"{data['narc']}/{data['bank']:04d}" if is_bank else 'hardcoded'
             file_context = dict(maps=maps.get(f"{data['bank']:04d}", []) if is_bank and data['narc'] == 'a027' else [],
                                 bank_metadata={k: v for k, v in data.items() if k != 'strings'})
@@ -529,16 +547,14 @@ def verify(db, root):
     problems = []
     expected = {row[0] for row in db.execute('SELECT path FROM files')}
     current = {str(path.relative_to(root)) for path in (root / 'work/translate/banks').glob('*/*.json')}
-    hardcoded = root / 'work/translate/hardcoded/strings.json'
-    if hardcoded.exists():
-        current.add(str(hardcoded.relative_to(root)))
+    current.update(str(path.relative_to(root)) for path in hardcoded_paths(root))
     problems.extend(sorted(current - expected))
     for row in db.execute('SELECT * FROM files'):
         path = root / row['path']
         if not path.exists() or digest(path.read_bytes()) != row['sha256']:
             problems.append(row['path'])
         entries = db.execute('SELECT payload FROM entries WHERE file_path=? ORDER BY ordinal', (row['path'],)).fetchall()
-        if [json.loads(e['payload']) for e in entries] != json.loads(row['content'])['strings']:
+        if [json.loads(e['payload']) for e in entries] != read_source(path, row['content'])['strings']:
             raise ValueError('entry round-trip mismatch: ' + row['path'])
     if db.execute('PRAGMA integrity_check').fetchone()[0] != 'ok' or db.execute('PRAGMA foreign_key_check').fetchall():
         raise ValueError('database integrity check failed')
@@ -789,4 +805,4 @@ if __name__ == '__main__':
     try:
         raise SystemExit(main())
     except (ValueError, sqlite3.Error, OSError) as error:
-        raise SystemExit(str(error))
+        raise SystemExit(str(error)) from None

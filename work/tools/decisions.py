@@ -1452,7 +1452,7 @@ def print_usages(res, show_all=False, out=None):
         for ref, en in res["consistent"]:
             print(f"    ok {ref}: {short(LAYOUT_TAG_RE.sub(' ', en), 110)}", file=out)
     if res["shadowed"]:
-        print(f"  also inside longer registered terms (counted there): "
+        print("  also inside longer registered terms (counted there): "
               + ", ".join(f"{k}×{v}" for k, v in res["shadowed"].most_common(8)), file=out)
 
 

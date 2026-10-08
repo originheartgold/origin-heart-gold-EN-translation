@@ -1,0 +1,38 @@
+id = "gfx-trainer-card"
+title = "Trainer card units and win/loss labels"
+kind = "graphics"
+enabled = true
+decisions = ["D-0823", "D-1110", "D-1540", "D-0768"]
+requires = []
+why = """
+Players: the trainer card shows the Chinese units 元 只 年 月 日 回 and 胜 / 负 next to the numbers.
+
+Technical: the hack (Japanese base) prints money, Pokédex count and dates as bare numbers and bakes the units
+into a/0/4/9 #41 (+ screens #47/#48, + costume copies); the USA code uses format strings that bank 0717 does
+not have, so a plain USA restore would lose the units.
+"""
+what = """
+Old: Chinese units.
+New: gfx.py make-trainer-card gives each unit box the USA background: 元 只 回 -> blank, 年 / 月 -> '/',
+日 -> blank (dates read 26/09/28), 胜 / 负 -> W / L. The hack's TRAINER'S CARD header stays. No currency sign
+and yy/mm/dd dates are accepted for now (D-1540).
+"""
+evidence = [
+  "work/notes/graphics_inventory.md: row 16",
+  "D-1513 / D-1540: emulator screen work/build/harness/hunt_ui/card_pair.png (local)",
+]
+
+[[graphics]]
+op = "member_from_file"
+narc = "a/0/4/9"
+notes = "trainer card: baked units 元 只 年月日 回 胜负 -> blank / '/' / W L; gfx.py make-trainer-card"
+also = ["data/clothes1/a049.narc", "data/clothes2/a049.narc"]
+[graphics.files.41]
+src = "generated/a049_0041.bin"
+expect_sha1 = "a2f553c27e47"
+[graphics.files.47]
+src = "generated/a049_0047.bin"
+expect_sha1 = "7260a4193abe"
+[graphics.files.48]
+src = "generated/a049_0048.bin"
+expect_sha1 = "8495efa30839"

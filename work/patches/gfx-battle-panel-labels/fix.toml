@@ -1,0 +1,30 @@
+id = "gfx-battle-panel-labels"
+title = "Battle info panel labels Ⓑ EXIT / ✚✚ SWAP"
+kind = "graphics"
+enabled = true
+decisions = ["D-1109", "D-1108", "D-0768"]
+requires = []
+why = """
+Players: the hack's in-battle field/status info panel shows the key hints Ⓑ退出 (B: exit) and ✚✚切换
+(switch).
+
+Technical: battle/battle_graphics.narc #18 (cells NCER #19.0/#19.1, palette #17) is hack-added. Neither the
+USA ROM nor hg-engine has English art for it.
+"""
+what = """
+Old: Ⓑ退出 / ✚✚切换.
+New: gfx.py make-battle-panel-labels keeps the hack's Ⓑ and ✚ icons, palette, tiles and cells, and replaces
+only the Chinese with font-0 letter pixels: Ⓑ EXIT and ✚✚ SWAP ('SWITCH' needs 34 px, the space is 24 px).
+A user-approved exception to 'sourced, never generated' (D-1109).
+"""
+evidence = [
+  "work/notes/graphics_inventory.md: row 26 (battle_panel_labels.png; not seen in the emulator)",
+]
+
+[[graphics]]
+op = "member_from_file"
+narc = "battle/battle_graphics.narc"
+notes = "hack's battle info panel labels (B)退出 (+)(+)切换 -> (B)EXIT (+)(+)SWAP (NCER #19 cells 0/1); font-0 letter pixels, the hack's symbols, palette #17, tiles and cells kept (user-approved exception); gfx.py make-battle-panel-labels"
+[graphics.files.18]
+src = "generated/battle_graphics_0018.bin"
+expect_sha1 = "6fb04ac3cc53"

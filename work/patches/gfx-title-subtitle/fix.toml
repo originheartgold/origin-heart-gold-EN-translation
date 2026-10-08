@@ -1,0 +1,36 @@
+id = "gfx-title-subtitle"
+title = "Bilingual title screen: 'Origin HeartGold' under the Chinese logo"
+kind = "graphics"
+enabled = true
+decisions = ["D-0767", "D-0768"]
+requires = []
+why = """
+Players: the title screen shows only the hack's Chinese logo 口袋妖怪 起源心金.
+
+Technical: the logo is the hack-added a/2/6/4: 8bpp NCGR #8 through screen #3 with palette #0.
+"""
+what = """
+Old: Chinese-only logo.
+New: the logo stays (user decision D-0767: homage to the original hack) and gets a small 'Origin HeartGold'
+subtitle in font-0 glyphs (gold, dark-brown shadow) at screen x 146, y 118; the two colours go into palette
+slots 150/240, which no title or intro graphic uses (gfx.py make-title-subtitle). Optional: disable this fix
+(enabled = false or build.py --without gfx-title-subtitle) to keep the Chinese-only logo.
+"""
+evidence = [
+  "work/notes/graphics_inventory.md: row 11",
+  "CHANGELOG.md v1.0.0: 'Bilingual title screen: the original 起源心金 logo with an \"Origin HeartGold\" subtitle in the game's own font.'",
+]
+
+[[graphics]]
+op = "member_from_file"
+narc = "a/2/6/4"
+notes = "OPTIONAL bilingual title: 'Origin HeartGold' under the logo; disable the fix (--without gfx-title-subtitle) to keep the Chinese-only logo; gfx.py make-title-subtitle"
+[graphics.files.0]
+src = "generated/a264_0000.bin"
+expect_sha1 = "bf02687c695d"
+[graphics.files.3]
+src = "generated/a264_0003.bin"
+expect_sha1 = "60e4474aec3e"
+[graphics.files.8]
+src = "generated/a264_0008.bin"
+expect_sha1 = "0e71c3279f71"

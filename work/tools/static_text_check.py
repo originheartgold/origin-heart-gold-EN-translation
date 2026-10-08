@@ -61,7 +61,7 @@ def aggregate_report(report):
     if checks['input_stability'].get('unchanged') is not True:
         return 'incomplete'
     before, after = report.get('inputs_before'), report.get('inputs_after')
-    labels = {'source', 'candidate', 'us', 'workspace', 'extract', 'tools', 'graphics', 'hardcoded', 'reference_mapping'}
+    labels = {'source', 'candidate', 'us', 'workspace', 'extract', 'tools', 'graphics', 'patches', 'reference_mapping'}
     if not isinstance(before, dict) or set(before) != labels or before != after:
         return 'incomplete'
     for snapshot in before.values():
@@ -133,7 +133,7 @@ def run(source, candidate, us, workspace, extract, output, statuses=('tm', 'draf
     if not output.is_relative_to(build) or output == build:
         raise ValueError('output must be a new directory beneath work/build')
     output.mkdir(parents=True, exist_ok=False)
-    inputs = dict(source=source, candidate=candidate, us=us, workspace=workspace, extract=extract, tools=WORK/'tools', graphics=WORK/'graphics', hardcoded=WORK/'translate/hardcoded', reference_mapping=WORK/'translate/scripts/build_bank_maps.py')
+    inputs = dict(source=source, candidate=candidate, us=us, workspace=workspace, extract=extract, tools=WORK/'tools', graphics=WORK/'graphics', patches=WORK/'patches', reference_mapping=WORK/'translate/scripts/build_bank_maps.py')
     report = {'schema': 1, 'statuses': list(statuses), 'checks': {}, 'scope': 'existing artifacts; no ROM built or repaired'}
     try:
         report['inputs_before'] = capture_inputs(inputs)

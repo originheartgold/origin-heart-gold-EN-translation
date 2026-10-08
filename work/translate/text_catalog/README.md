@@ -2,8 +2,8 @@
 
 The catalogue brings the bank text, its existing English, Mandarin pronunciation,
 word meanings, character meanings, and game context into one local SQLite database.
-It imports every bank under `work/translate/banks/` plus the four labels in
-`work/translate/hardcoded/strings.json`.
+It imports every bank under `work/translate/banks/` plus the four outfit-chooser labels, the `[[string]]`
+entries of `work/patches/outfit-chooser-strings/fix.toml` (any fix of kind `strings`).
 
 **Existing bank JSON remains the build input.** The catalogue is a lossless,
 rebuildable index and an annotation workspace. This first migration does not switch

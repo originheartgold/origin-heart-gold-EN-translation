@@ -1,0 +1,123 @@
+id = "text-speed"
+title = "Options TEXT SPEED: NORMAL / FAST, 30 fps printer catch-up, Pokégear calls wait for A/B"
+kind = "code"
+enabled = true
+decisions = []
+requires = ["msgload"]
+asm = "text-speed.asm"
+why = """
+Players: the hack's Options menu has no text speed; text prints at the hack's one fixed speed, and in the
+many towns and routes where the hack's game loop runs at 30 fps it prints one letter every two frames (half
+the US game's FAST). Pokégear calls made right after a battle advance by themselves, page after page (the
+hack's battle code leaves auto-advance on, D-1599).
+
+Technical: text is drawn by the printer task (arm9 0x02020A1C), one turn per game-loop pass; the Options
+menu is overlay 50 (six rows); the Pokégear phone-call page printer is overlay 92 (0x021F11E8), whose one
+AddTextPrinterParameterized call (0x021F1228) inherits the auto-advance flag. Text speed is an optional
+English-community feature, a deliberate exception to D-1002 (D-1575).
+"""
+what = """
+Old: six Options rows; one printer speed; at 30 fps one letter per two frames; calls after a battle
+auto-advance.
+New: native Thumb code (native.c, compiled by clang into the reviewed payload.json, sha256 pinned in
+text_speed_patch.py) is appended to the ARM9 ITCM autoload block by the armips source (.incbin; 0x01FF8620-
+0x01FF8BE0; the SDK's ITCM arena start at 0x020D1A28 moves past it). Options gets a seventh row TEXT SPEED with NORMAL / FAST (overlay 50
+grows by 284 bytes for the new row tables; 40 field offsets, row counts, touch boxes, button positions and
+six calls are rewritten). NORMAL is the hack's printer; FAST prints up to three letters per frame when the
+frame has room (frame-bounded, D-1601). The game loop's last call before its VBlank wait (0x02000DE0) goes
+through pass_end, which gives every printer one extra turn per missed refresh (30 fps catch-up, D-1603).
+Overlay 92's call printer goes through call_print, so every call page waits for A/B (D-1600). New games start
+on FAST (Options init 0x0202B176); existing saves read as NORMAL; MUSIC SPEED keeps bits 0-1 (0x0202B1C6-
+0x0202B1DA). Every edit in text-speed.asm is guarded by its original bytes. Before assembling, the build
+(text_speed_patch.precheck) pins the hack's base ARM9, the ITCM image and both overlays by hash and refuses
+any other fix that touches its edits, overlays 50/92 or the original routines the payload calls; after
+writing, text_speed_patch.verify checks the runtime contract again.
+"""
+evidence = [
+  "Decision pending: D-1604 (NORMAL / FAST), D-1601 (frame-bounded batches), D-1603 (30 fps catch-up), D-1600 (calls wait for A/B; hack finding D-1599) and D-1575 (exception to D-1002) are in the main checkout's register, not yet in this branch's register, so this fix lists no decision of its own",
+  "work/notes/text_speed_release.md: what ships, changes from the Chinese hack, downgrade warning, known gaps",
+  "work/notes/text_speed_release_checks.md: release gates and fault matrix; work/notes/text_speed_RUNBOOK.md: how to rerun them",
+  "work/notes/text_speed_vcount.md: the frame rule",
+  "release candidate codex/text-speed-research fb5fa7e: full gate suite releasable and 25 faults detected (run rc4, ROM sha256 91cc299e...)",
+  "CHANGELOG.md [Unreleased]: TEXT SPEED row, 30 fps catch-up, Pokégear calls wait for A or B",
+]
+
+[native]
+source = "native.c"
+headers = ["labels.h"]
+payload = "payload.json"
+module = "text_speed_patch"
+
+[[code]]
+id = "text-speed-itcm-arena"
+file = "arm9"
+offset = "0xD1A28"
+expect = "8620 01FF"
+notes = "SDK arena bounds table: the ITCM arena starts after the payload (0x01FF8620 -> 0x01FF8BE0)."
+
+[[code]]
+id = "text-speed-print-task"
+file = "arm9"
+offset = "0x20A18"
+expect = "0A1D 0202"
+notes = "Printer constructor's task pointer: 0x02020A1D (original print task) -> print_task."
+
+[[code]]
+id = "text-speed-frame-end"
+file = "arm9"
+offset = "0xDE0"
+expect = "F026 FA78"
+notes = "Game loop NitroMain: 'bl 0x020272D4' before the VBlank wait -> 'bl pass_end' (frame measurement, then the printer catch-up)."
+
+[[code]]
+id = "text-speed-new-game-default"
+file = "arm9"
+offset = "0x2B176"
+expect = "200F 4381"
+notes = "Options init: clear the 4-bit field -> set FAST (bits 2-3 = 1); music speed stays 0."
+
+[[code]]
+id = "text-speed-music-getter"
+file = "arm9"
+offset = "0x2B1C6"
+expect = "0700 0F00"
+notes = "Music speed getter: mask the low two bits only (shifts 0x0700/0x0F00 -> 0x0780/0x0F80)."
+
+[[code]]
+id = "text-speed-music-setter-mask"
+file = "arm9"
+offset = "0x2B1D2"
+expect = "0x220F"
+notes = "Music speed setter: clear only bits 0-1 (mov r2, #0xF -> #3), so the text speed bits survive."
+
+[[code]]
+id = "text-speed-music-setter-value"
+file = "arm9"
+offset = "0x2B1DA"
+expect = "0x210F"
+notes = "Music speed setter: keep the value to bits 0-1 (mov r1, #0xF -> #3)."
+
+[[code]]
+id = "text-speed-options-menu"
+file = "overlay50"
+offset = "0x0"
+length = 5632
+expect_sha1 = "7a5702807e1e0af947cf61227f0a6d7fec38cf7a"
+notes = "The Options menu overlay as a whole (pinned by hash): seven rows instead of six, its tables appended (see [[grow]])."
+
+[[code]]
+id = "text-speed-call-print"
+file = "overlay92"
+offset = "0xAA68"
+expect = "F62F FB04"
+notes = "Pokégear phone-call page printer: 'bl AddTextPrinterParameterized' -> 'bl call_print' (waits for A/B, D-1600)."
+
+[[grow]]
+file = "overlay50"
+max = 512
+notes = "The seventh row's tables (choices per row, label offsets, touch boxes, row/choice mapping): 284 bytes."
+
+[[grow]]
+file = "itcm"
+max = 6624
+notes = "The native payload (1466 bytes) and its 32-byte alignment, appended to the ITCM autoload block: 0x620 -> 0xBE0 bytes. The block may end at 0x01FFA000 at most."

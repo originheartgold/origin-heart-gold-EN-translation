@@ -1,0 +1,27 @@
+; outfit-chooser-strings - disassembly snapshot of outfit-chooser-strings.asm: every edit, old -> new. Generated; do not edit.
+; Regenerate: python3 work/tools/asmpatch.py listing --write outfit-chooser-strings   (check.py --full fails when it is stale)
+; Old: the Chinese ROM. New: outfit-chooser-strings.asm assembled alone over it by armips v0.11.0.
+; Disassembly: capstone 5.0.9 (UAL syntax). '  ' unchanged context, '- ' old, '+ ' new;
+; addresses are RAM addresses, Thumb bytes are halfwords, ARM bytes words; data rows are what one
+; statement writes (u16 rows of a string or key row with their characters, '|' = 0xFFFF end).
+
+== overlay58+0x6F0 (RAM 0x021E8AB0), 6 bytes, data: overlay58:0x6F0
+- 021E8AB0  09B9 0BB8 FFFF  "确认|"
++ 021E8AB0  0139 0135 FFFF  "OK|"
+
+== overlay58+0x6F6 (RAM 0x021E8AB6), 24 bytes, data: overlay58:0x6F6
+- 021E8AB6  C5 05 FB 0B 22 01 FF FF C5 05 FB 0B 24 01 FF FF C5 05 FB 0B 23 01 FF FF
++ 021E8AB6  FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+
+== overlay58+0x7C0 (RAM 0x021E8B80), 12 bytes, data: overlay58:0x6F6 pointer 0x7C0
+- 021E8B80  021E8AB6 (OutfitChooser_Outfit1Label) 021E8AC6 (OutfitChooser_Outfit2Label) 021E8ABE (OutfitChooser_Outfit3Label)
++ 021E8B80  021E8BA0 (Overlay58_End) 021E8BC4 (Outfit2Label_EN) 021E8BB2 (Outfit3Label_EN)
+
+== overlay58+0x7E0 (RAM 0x021E8BA0), appended 56 bytes (overlay58 0x7E0 -> 0x818 bytes), data: [[grow]] overlay58
++ 021E8BA0  0139 0159 0158 014A 014D 0158 01DE 0122 FFFF  "Outfit 1|"
++ 021E8BB2  0139 0159 0158 014A 014D 0158 01DE 0124 FFFF  "Outfit 3|"
++ 021E8BC4  0139 0159 0158 014A 014D 0158 01DE 0123 FFFF  "Outfit 2|"
++ 021E8BD6  2 bytes of 0xFF (.align)
+
+== read-only checks at absolute addresses (expect32_abs): the bytes there, unchanged
+  021E88A4  021E8AB0 (OutfitChooser_ConfirmLabel)

@@ -1,0 +1,6 @@
+# armips sources, includes and the generated table file: LF line endings everywhere, so the table file's
+# bytes match `asmpatch.py tbl` (test_asmpatch.py compares them byte for byte).
+work/patches/include/charmap.tbl text eol=lf
+work/patches/**/*.asm text eol=lf
+work/patches/**/*.inc text eol=lf
+work/patches/**/*.listing text eol=lf

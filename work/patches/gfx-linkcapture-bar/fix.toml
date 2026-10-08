@@ -1,0 +1,33 @@
+id = "gfx-linkcapture-bar"
+title = "Chain Logger (link-capture) menu bar"
+kind = "graphics"
+enabled = true
+decisions = ["D-1110", "D-0768"]
+requires = []
+why = """
+Players: the hack's link/capture (Chain Logger) screen has a Chinese menu bar: 详细说明 (X):信息 (Y):退出.
+
+Technical: data/linkcapture.narc #25/#26 are hack-added. Only 48 of the 96 tiles are loaded at run time
+(ov28 0x0225FE30 loads 0x600 bytes).
+"""
+what = """
+Old: Chinese bar.
+New: gfx.py make-linkcapture: DETAILS, (X):INFO, (Y):EXIT in font-0 letters, using tiles 0-47 only (an
+earlier version used unloaded tiles and drew garbage, F002). Composed, kept by D-1110.
+"""
+evidence = [
+  "work/notes/graphics_inventory.md: row 20",
+  "work/notes/graphics_layout_audit.md; work/graphics/layout_checks.json",
+  "CHANGELOG.md v1.0.0-rc5: 'Chain Logger (link-capture) bar: the English graphic used tiles the screen never loads, so it drew garbage.'",
+]
+
+[[graphics]]
+op = "member_from_file"
+narc = "data/linkcapture.narc"
+notes = "hack's link/capture menu bar: 详细说明 (X):信息 (Y):退出 -> DETAILS INFO EXIT; gfx.py make-linkcapture"
+[graphics.files.25]
+src = "generated/linkcapture_0025.bin"
+expect_sha1 = "eb5845d92e8f"
+[graphics.files.26]
+src = "generated/linkcapture_0026.bin"
+expect_sha1 = "270b54a5e667"

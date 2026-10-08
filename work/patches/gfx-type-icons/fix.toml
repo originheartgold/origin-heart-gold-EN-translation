@@ -1,0 +1,36 @@
+id = "gfx-type-icons"
+title = "Type and contest icons (USA art; FAIRY from hg-engine)"
+kind = "graphics"
+enabled = true
+decisions = ["D-0768", "D-1041"]
+requires = []
+why = """
+Players: the type icons on the battle move menu, the summary moves page and the move relearner, and the
+contest-type icons, show Chinese characters (火, 水 ...); the hack's Fairy type shows 妖.
+
+Technical: a/0/0/8 #219-241 (LZ10 NCGR, 32x16) are the hack's redrawn icons. The hack's type 9 (FAIRY,
+hg-engine TYPE_FAIRY) uses the vanilla ??? slot #236.
+"""
+what = """
+Old: Chinese type and contest icons.
+New: #219-235 and #237-241 are the USA members (palette #74 unchanged). #236 keeps the hack's container and
+pink palette row (#74 row 2, idx 10-12) and takes the tiles of hg-engine's FAIRY icon.
+"""
+evidence = [
+  "work/notes/graphics_inventory.md: rows 1-2",
+  "work/graphics/CREDITS.md: hg-engine source, commit and licence",
+  "CHANGELOG.md v1.0.0: 'English type icons for battle, the summary screen and the move relearner. The FAIRY icon comes from hg-engine.'",
+]
+
+[[graphics]]
+op = "copy_us"
+narc = "a/0/0/8"
+members = [219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 237, 238, 239, 240, 241]
+notes = "battle move-select / summary / move relearner type + contest icons (32x16, LZ10); palette a/0/0/8 #74 unchanged"
+
+[[graphics]]
+op = "tiles_from_file"
+narc = "a/0/0/8"
+member = 236
+src = "vendor/hg-engine/battle_gfx_8_236.NCGR"
+notes = "FAIRY type icon (vanilla ??? slot = hack type 9); hg-engine art, hack's pink palette #74 row 2 idx 10-12"

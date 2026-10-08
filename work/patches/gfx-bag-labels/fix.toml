@@ -1,0 +1,24 @@
+id = "gfx-bag-labels"
+title = "Bag labels HM / 1 SET / 2 SET"
+kind = "graphics"
+enabled = true
+decisions = ["D-0768", "D-1041"]
+requires = []
+why = """
+Players: the bag's HM pocket and registered items show 秘传 and ①登录 ②登录.
+
+Technical: a/0/1/5 #37 has the same 26-tile layout as the USA member.
+"""
+what = """
+Old: Chinese labels.
+New: the USA member: HM, 1 SET, 2 SET.
+"""
+evidence = [
+  "work/notes/graphics_inventory.md: row 18",
+]
+
+[[graphics]]
+op = "copy_us"
+narc = "a/0/1/5"
+members = [37]
+notes = "bag labels HM / 1 SET / 2 SET (same 26-tile layout as USA)"

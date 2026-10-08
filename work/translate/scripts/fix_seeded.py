@@ -20,7 +20,7 @@ import json
 import os
 import re
 import sys
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 
 HERE = os.path.dirname(os.path.abspath(__file__))

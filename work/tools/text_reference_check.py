@@ -1,7 +1,6 @@
 """Prove text reference inventories were preserved; do not assume dynamic targets resolve."""
 import importlib.util
 from pathlib import Path
-import struct
 
 import msgtool as m
 

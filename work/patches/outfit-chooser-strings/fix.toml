@@ -1,0 +1,86 @@
+id = "outfit-chooser-strings"
+title = "Outfit chooser labels (hardcoded in overlay 58)"
+kind = "strings"
+enabled = true
+decisions = ["D-0830", "D-0831"]
+requires = []
+asm = "outfit-chooser-strings.asm"
+why = """
+Players: in Oak's speech, after 'boy or girl', the outfit chooser lists 形象1 形象2 形象3 确认 in Chinese even
+though all message text is English.
+
+Technical: the hack's chooser (overlay 58, RAM 0x021E83C0, 0x7E0 bytes, no .bss) keeps its four labels as
+0xFFFF-terminated strings inside the overlay, outside the message NARCs, packed back to back. The slots hold
+2-3 characters. A ROM-wide scan (hardcoded.py scan) found no other player-facing Chinese outside the
+message NARCs.
+"""
+what = """
+Old: 确认 / 形象1 / 形象3 / 形象2 in overlay 58.
+New: 'OK' is written in place. 'Outfit 1/2/3' do not fit their 3-character slots, so the armips source
+(outfit-chooser-strings.asm) appends them to the end of overlay 58 (the overlay grows by 56 bytes, at most the
+[[grow]] max of 64; the build updates its y9 ramSize), repoints the pointer words at +0x7C0/+0x7C4/+0x7C8 and
+fills the old slots with 0xFFFF. The code copies each label into a String of capacity 16, so up to 15
+characters are safe. The English lives in the asm and in the [[string]] `en` below (translators and the text
+checks read it here); fixes.py check and the build refuse if they differ. The build also refuses if the ROM
+no longer holds the Chinese, the growth passes the [[grow]] max, the overlay has .bss or another overlay starts
+in the grown range.
+"""
+evidence = [
+  "work/notes/hardcoded_text.md: 'Survey' and 'Pipeline'",
+  "In-game: work/build/screens/hardcoded_*.png (local): English labels, cursor works, OK leads to the naming screen",
+  "work/tools/test_hardcoded.py: the scan finds exactly these 4 strings; test_asmpatch.py: the assembled overlay (golden SHA-1) and verify",
+  "CHANGELOG.md v1.0.0: 'Hardcoded text outside the archives (the outfit chooser in overlay 58) is translated.'",
+]
+
+[[grow]]
+file = "overlay58"
+max = 64
+notes = "Hack-rewritten overlay 58 (RAM 0x021E83C0, 0x7E0 bytes, no .bss): the outfit chooser shown in Oak's speech before the naming screen. Loaded right after overlay 49 (0x021E4980-0x021E83C0). No other overlay starts inside 0x021E83C0-0x021E93C0, so growing it by up to 64 bytes cannot collide with a co-loaded overlay; the build re-checks this."
+
+[[string]]
+id = "overlay58:0x6F0"
+file = "overlay58"
+offset = "0x6F0"
+zh = "确认"
+en = "OK"
+max_units = 2
+pointers = ["0x4E4"]
+reloc_max_units = 15
+context = "Outfit chooser (Oak's speech, before naming): last list item, confirms the highlighted outfit"
+notes = "List menu in an 11x10-tile window, text from x=8 (about 80 px). Copied into a String of capacity 16, so a relocated label can be up to 15 characters. 'OK' fits in place. Other banks use CONFIRM (0044/130, 0194/19) and OK (0790/39) for 确定."
+
+[[string]]
+id = "overlay58:0x6F6"
+file = "overlay58"
+offset = "0x6F6"
+zh = "形象1"
+en = "Outfit 1"
+max_units = 3
+pointers = ["0x7C0"]
+reloc_max_units = 15
+context = "Outfit chooser: first outfit (list item 1)"
+notes = "Pointer table at overlay58+0x7C0 (items 1,2,3). The chooser shows 3 outfits, or 2 when a save flag is set. 3 characters in place, so 'Outfit 1' is relocated to the end of the overlay. Lead-in text: a027/0216#40 'Now, choose how you look...'."
+
+[[string]]
+id = "overlay58:0x6FE"
+file = "overlay58"
+offset = "0x6FE"
+zh = "形象3"
+en = "Outfit 3"
+max_units = 3
+pointers = ["0x7C8"]
+reloc_max_units = 15
+context = "Outfit chooser: third outfit (list item 3; stored before item 2 in the ROM)"
+notes = "See overlay58:0x6F6."
+
+[[string]]
+id = "overlay58:0x706"
+file = "overlay58"
+offset = "0x706"
+zh = "形象2"
+en = "Outfit 2"
+max_units = 3
+pointers = ["0x7C4"]
+reloc_max_units = 15
+context = "Outfit chooser: second outfit (list item 2)"
+notes = "See overlay58:0x6F6."

@@ -1,0 +1,54 @@
+; antipiracy - disassembly snapshot of antipiracy.asm: every edit, old -> new. Generated; do not edit.
+; Regenerate: python3 work/tools/asmpatch.py listing --write antipiracy   (check.py --full fails when it is stale)
+; Old: the Chinese ROM. New: antipiracy.asm assembled alone over it by armips v0.11.0.
+; Disassembly: capstone 5.0.9 (UAL syntax). '  ' unchanged context, '- ' old, '+ ' new;
+; addresses are RAM addresses, Thumb bytes are halfwords, ARM bytes words; data rows are what one
+; statement writes (u16 rows of a string or key row with their characters, '|' = 0xFFFF end).
+
+== overlay114+0x864 (RAM 0x02263A64), 8 bytes, arm: antipiracy-ov114-0x864
+  02263A60  E8BD8FF8   pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+- 02263A64  E92D47F0   push {r4, r5, r6, r7, r8, sb, sl, lr}
+- 02263A68  E24DD080   sub sp, sp, #0x80
++ 02263A64  E3A00000   mov r0, #0
++ 02263A68  E12FFF1E   bx lr
+  02263A6C  E1A0A000   mov sl, r0
+
+== overlay114+0x94C (RAM 0x02263B4C), 8 bytes, arm: antipiracy-ov114-0x94C
+  02263B48  02264114   .word 0x02264114
+- 02263B4C  E92D47F0   push {r4, r5, r6, r7, r8, sb, sl, lr}
+- 02263B50  E24DD080   sub sp, sp, #0x80
++ 02263B4C  E3A00001   mov r0, #1
++ 02263B50  E12FFF1E   bx lr
+  02263B54  E1A0A000   mov sl, r0
+
+== overlay114+0xA34 (RAM 0x02263C34), 8 bytes, arm: antipiracy-ov114-0xA34
+  02263C30  022641EC   .word 0x022641EC
+- 02263C34  E92D47F0   push {r4, r5, r6, r7, r8, sb, sl, lr}
+- 02263C38  E24DD080   sub sp, sp, #0x80
++ 02263C34  E3A00000   mov r0, #0
++ 02263C38  E12FFF1E   bx lr
+  02263C3C  E1A0A000   mov sl, r0
+
+== overlay114+0xB1C (RAM 0x02263D1C), 8 bytes, arm: antipiracy-ov114-0xB1C
+  02263D18  02263F94   .word 0x02263F94
+- 02263D1C  E92D47F0   push {r4, r5, r6, r7, r8, sb, sl, lr}
+- 02263D20  E24DD080   sub sp, sp, #0x80
++ 02263D1C  E3A00001   mov r0, #1
++ 02263D20  E12FFF1E   bx lr
+  02263D24  E1A0A000   mov sl, r0
+
+== overlay114+0xC04 (RAM 0x02263E04), 8 bytes, arm: antipiracy-ov114-0xC04
+  02263E00  02264054   .word 0x02264054
+- 02263E04  E92D47F0   push {r4, r5, r6, r7, r8, sb, sl, lr}
+- 02263E08  E24DD080   sub sp, sp, #0x80
++ 02263E04  E3A00000   mov r0, #0
++ 02263E08  E12FFF1E   bx lr
+  02263E0C  E1A0A000   mov sl, r0
+
+== overlay114+0xCCC (RAM 0x02263ECC), 8 bytes, arm: antipiracy-ov114-0xCCC
+  02263EC8  E8BD87F0   pop {r4, r5, r6, r7, r8, sb, sl, pc}
+- 02263ECC  E92D47F0   push {r4, r5, r6, r7, r8, sb, sl, lr}
+- 02263ED0  E24DD080   sub sp, sp, #0x80
++ 02263ECC  E3A00001   mov r0, #1
++ 02263ED0  E12FFF1E   bx lr
+  02263ED4  E1A0A000   mov sl, r0
