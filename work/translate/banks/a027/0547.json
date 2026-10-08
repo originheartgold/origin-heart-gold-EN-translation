@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "水吾桐『还在圣安努号上{NEWLINE}胆敢反抗本大爷！",
-   "en": "Archie: And you had the nerve to defy{NEWLINE}me on the S.S. Anne!",
+   "en": "Archie: And you had the nerve to defy{NEWLINE}the mighty Archie on the S.S. Anne!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV002: voice: 本大爷 swagger restored"
   },
   {
    "id": 26,
@@ -270,10 +270,10 @@
   {
    "id": 33,
    "zh": "吉尔露太『您请放宽心,雅典娜大人。{NEWLINE}咱们的柜子里还有备用的精灵。{CLEAR}而且这小鬼虽然够厉害,{CLEAR}但终究只有一个人而已,{CLEAR}咱们这么多人还怕干不掉他吗？",
-   "en": "Lawrence: Please rest easy, Master{NEWLINE}Ariana.{SCROLL}We have spare Pokémon in the cabinets.{SCROLL}And this brat may be strong, but in the{NEWLINE}end he’s only one person.{SCROLL}With this many of us, we can surely{NEWLINE}finish him off.",
+   "en": "Lawrence: Please rest easy, Master{NEWLINE}Ariana.{SCROLL}We have spare Pokémon in the cabinets.{SCROLL}And this brat may be strong, but in the{NEWLINE}end it’s only one kid.{SCROLL}With this many of us, how could we fail{NEWLINE}to finish the brat off?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV002: addressee: 他 for a player of either gender; neutral (D-1224, D-1925); rhetorical 还怕干不掉 kept as a question"
   },
   {
    "id": 34,
@@ -326,10 +326,10 @@
   {
    "id": 40,
    "zh": "雅典娜『居然被几个臭小鬼{NEWLINE}闯进来砸场子,{CLEAR}传到阿波罗那帮人耳朵里{CLEAR}还不得被笑死。{CLEAR}赶紧把他们给收拾掉,{CLEAR}一个活口也不留！",
-   "en": "Ariana: A few rotten brats barged in{NEWLINE}and trashed the place... If Archer’s{CLEAR}lot hear about this, they’ll laugh{CLEAR}themselves to death.{SCROLL}Finish them off, now. Leave no one{NEWLINE}alive!",
+   "en": "Ariana: A few rotten brats barged in{NEWLINE}and trashed the place...{SCROLL}If Archer’s lot hear about this, they’ll{NEWLINE}laugh us to death.{SCROLL}Finish them off, now. Leave no one{NEWLINE}alive!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV002: meaning: 还不得被笑死 = we'd be laughed at to death, not they laugh themselves to death"
   },
   {
    "id": 41,
@@ -470,10 +470,10 @@
   {
    "id": 58,
    "zh": "伦达『我日你娘了个逼的臭杂种！",
-   "en": "Petrel: I’ll fuck your mother, you{NEWLINE}stinking motherfucking bastard!",
+   "en": "Petrel: Fuck your mother, you stinking{NEWLINE}motherfucking bastard!",
    "status": "draft",
    "origin": "agent",
-   "notes": "我日你娘了个逼的臭杂种: full strength (D-0627; 妈了个逼 → motherfucking)."
+   "notes": "我日你娘了个逼的臭杂种: full strength (D-0627; 妈了个逼 → motherfucking). | RV002: meaning: 我日你娘 is a curse, not a stated future act (D-1925); full strength kept"
   },
   {
    "id": 59,

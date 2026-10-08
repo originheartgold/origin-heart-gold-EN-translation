@@ -198,10 +198,10 @@
   {
    "id": 24,
    "zh": "大吾『传说在很久以前,{NEWLINE}有一群坏人在这片地区{CLEAR}干着烧光、杀光、抢光这样的恶行。{CLEAR}不堪暴行的人们指挥自己的精灵,{CLEAR}向坏人发起了保卫家园的正义战争。{SCROLL}大吾『当战争陷入胶着的时候,{NEWLINE}有三只柱型精灵{CLEAR}对坏人们使出了「大爆炸」招式,{CLEAR}以牺牲自己为代价{CLEAR}重创了坏人的大本营。{SCROLL}大吾『多亏了那场大爆炸{NEWLINE}关东的人们获得了宝贵的战略优势,{CLEAR}并最终赢得了战争、赶跑了坏人。{CLEAR}为了纪念这三只柱型精灵的牺牲,{CLEAR}人们从此尊称它们为{CLEAR}岩神柱、冰神柱、钢神柱。{CLEAR}并将它们的残躯埋在这座岩山隧道中。",
-   "en": "Steven: Legend has it that long ago, a{NEWLINE}band of villains ran riot here, burning{CLEAR}all, killing all and looting all.{SCROLL}Unable to bear their atrocities any{NEWLINE}longer, the people led their Pokémon in{CLEAR}a just war to defend their homes.{SCROLL}Steven: When the war reached a{NEWLINE}stalemate, three pillar-shaped Pokémon{CLEAR}used Explosion on the villains.{SCROLL}At the cost of their own lives, they{NEWLINE}crushed the villains’ stronghold.{SCROLL}Steven: Thanks to that great{NEWLINE}explosion, the people of Kanto gained a{CLEAR}precious strategic advantage.{SCROLL}In the end, they won the war and drove{NEWLINE}the villains out.{SCROLL}To honor the sacrifice of the three{NEWLINE}pillar-shaped Pokémon, the people have{CLEAR}revered them ever since as Regirock,{CLEAR}Regice and Registeel.{SCROLL}And they buried their remains here in{NEWLINE}Rock Tunnel.",
+   "en": "Steven: Legend has it that long ago, a{NEWLINE}band of villains ran riot here, burning{CLEAR}all, killing all and looting all.{SCROLL}Unable to bear their atrocities any{NEWLINE}longer, the people led their Pokémon in{CLEAR}a just war to defend their homes.{SCROLL}Steven: When the war reached a{NEWLINE}stalemate, three pillar-shaped Pokémon{CLEAR}used Explosion on the villains.{SCROLL}At the cost of their own lives, they{NEWLINE}crushed the villains’ stronghold.{SCROLL}Steven: Thanks to that great{NEWLINE}explosion, the people of Kanto gained a{CLEAR}precious strategic advantage.{SCROLL}In the end, they won the war and drove{NEWLINE}the villains out.{SCROLL}To honor the sacrifice of the three{NEWLINE}pillar-shaped Pokémon, the people have{CLEAR}revered them ever since as the Rock,{CLEAR}Ice and Steel God Pillars: Regirock,{CLEAR}Regice and Registeel.{SCROLL}And they buried their remains here in{NEWLINE}Rock Tunnel.",
    "status": "draft",
    "origin": "agent",
-   "notes": "烧光、杀光、抢光 echoes the WWII 'Three Alls' policy; kept at full strength (D-0627). Scene is an anti-war allegory (Regi legend); faithful."
+   "notes": "烧光、杀光、抢光 echoes the WWII 'Three Alls' policy; kept at full strength (D-0627). Scene is an anti-war allegory (Regi legend); faithful. | RV002: name: 尊称它们为岩神柱、冰神柱、钢神柱 is a naming; honorific God Pillar titles kept beside the species names (D-1674)"
   },
   {
    "id": 25,
@@ -662,10 +662,10 @@
   {
    "id": 82,
    "zh": "十四年以来,{NEWLINE}强盗闯我家园、夺我精灵、杀我同胞,{CLEAR}关东大地几无宁日。{CLEAR}万幸吾辈宁死不屈,{CLEAR}集万千训练家与精灵伙伴之力,{CLEAR}与强盗艰难周旋。{CLEAR}后有岩、冰、钢三神柱漂洋而至,{CLEAR}以牺牲自身之伟大爆炸,{CLEAR}将罪恶强盗扫灭大半。{CLEAR}至此强盗终作鸟兽散,{CLEAR}关东亦重归安宁。{CLEAR}今将三位伟大神柱之残躯埋藏于此,{CLEAR}立碑以纪念在对抗强盗战争中{CLEAR}牺牲的正义战士。",
-   "en": "For fourteen years, bandits invaded our{NEWLINE}homeland, seized our Pokémon and{CLEAR}slaughtered our people.{SCROLL}Kanto scarcely knew a day of peace.{SCROLL}By fortune, we would rather die than{NEWLINE}yield.{SCROLL}Gathering the strength of countless{NEWLINE}Trainers and their Pokémon partners,{CLEAR}we struggled hard against the bandits.{SCROLL}Then Regirock, Regice and Registeel,{NEWLINE}the three God Pillars, came from across{CLEAR}the sea.{SCROLL}With the great explosion that took{NEWLINE}their own lives, they wiped out most of{CLEAR}the wicked bandits.{SCROLL}At last the bandits scattered like birds{NEWLINE}and beasts, and Kanto was at peace{CLEAR}once more.{SCROLL}Here we lay to rest the remains of the{NEWLINE}three great God Pillars.{SCROLL}This stone stands in memory of the{NEWLINE}righteous warriors who gave their lives{CLEAR}in the war against the bandits.",
+   "en": "For fourteen years, bandits invaded our{NEWLINE}homeland, seized our Pokémon and{CLEAR}slaughtered our people.{SCROLL}Kanto scarcely knew a day of peace.{SCROLL}Fortunately, our people would rather{NEWLINE}die than yield.{SCROLL}Gathering the strength of countless{NEWLINE}Trainers and their Pokémon partners,{CLEAR}we struggled hard against the bandits.{SCROLL}Then Regirock, Regice and Registeel,{NEWLINE}the three God Pillars, came from across{CLEAR}the sea.{SCROLL}With the great explosion that took{NEWLINE}their own lives, they wiped out most of{CLEAR}the wicked bandits.{SCROLL}At last the bandits scattered like birds{NEWLINE}and beasts, and Kanto was at peace{CLEAR}once more.{SCROLL}Here we lay to rest the remains of the{NEWLINE}three great God Pillars.{SCROLL}This stone stands in memory of the{NEWLINE}righteous warriors who gave their lives{CLEAR}in the war against the bandits.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Stone tablet (read aloud by the grunt). '十四年' = fourteen years (WWII allegory), kept literally."
+   "notes": "Stone tablet (read aloud by the grunt). '十四年' = fourteen years (WWII allegory), kept literally. | RV002: grammar: 万幸吾辈宁死不屈 'By fortune' → 'Fortunately, our people'"
   },
   {
    "id": 83,
@@ -726,10 +726,10 @@
   {
    "id": 90,
    "zh": "小豪『切,都是些不知道{NEWLINE}多少年前的死人和精灵了,{CLEAR}有什么值得默哀的。",
-   "en": "Goh: Tch. They’re people and Pokémon{NEWLINE}who died who knows how many years ago.{CLEAR}What’s there to mourn?",
+   "en": "Goh: Tch. They’re just dead people and{NEWLINE}Pokémon from who knows how many years{CLEAR}ago. What’s there to mourn?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV002: softened: Goh's blunt 死人 (dead people) restored"
   },
   {
    "id": 91,
@@ -886,10 +886,10 @@
   {
    "id": 110,
    "zh": "十四年以来,{NEWLINE}强盗闯我家园、夺我精灵、杀我同胞,{CLEAR}关东大地几无宁日。{CLEAR}万幸吾辈宁死不屈,{CLEAR}集万千训练家与精灵伙伴之力,{CLEAR}与强盗艰难周旋。{CLEAR}后有岩、冰、钢三神柱漂洋而至,{CLEAR}以牺牲自身之伟大爆炸,{CLEAR}将罪恶强盗扫灭大半。{CLEAR}至此强盗终作鸟兽散,{CLEAR}关东亦重归安宁。{CLEAR}今将三位伟大神柱之残躯埋藏于此,{CLEAR}立碑以纪念在对抗强盗战争中{CLEAR}牺牲的正义战士。{SCROLL}请来此碑前缅怀英雄的后人默哀静思。{SCROLL}要默哀吗？",
-   "en": "For fourteen years, bandits invaded our{NEWLINE}homeland, seized our Pokémon and{CLEAR}slaughtered our people.{SCROLL}Kanto scarcely knew a day of peace.{SCROLL}By fortune, we would rather die than{NEWLINE}yield.{SCROLL}Gathering the strength of countless{NEWLINE}Trainers and their Pokémon partners,{CLEAR}we struggled hard against the bandits.{SCROLL}Then Regirock, Regice and Registeel,{NEWLINE}the three God Pillars, came from across{CLEAR}the sea.{SCROLL}With the great explosion that took{NEWLINE}their own lives, they wiped out most of{CLEAR}the wicked bandits.{SCROLL}At last the bandits scattered like birds{NEWLINE}and beasts, and Kanto was at peace{CLEAR}once more.{SCROLL}Here we lay to rest the remains of the{NEWLINE}three great God Pillars.{SCROLL}This stone stands in memory of the{NEWLINE}righteous warriors who gave their lives{CLEAR}in the war against the bandits.{SCROLL}Descendants of the heroes who come{NEWLINE}before this stone are asked to pause in{CLEAR}silent tribute.{SCROLL}Observe a moment of silence?",
+   "en": "For fourteen years, bandits invaded our{NEWLINE}homeland, seized our Pokémon and{CLEAR}slaughtered our people.{SCROLL}Kanto scarcely knew a day of peace.{SCROLL}Fortunately, our people would rather{NEWLINE}die than yield.{SCROLL}Gathering the strength of countless{NEWLINE}Trainers and their Pokémon partners,{CLEAR}we struggled hard against the bandits.{SCROLL}Then Regirock, Regice and Registeel,{NEWLINE}the three God Pillars, came from across{CLEAR}the sea.{SCROLL}With the great explosion that took{NEWLINE}their own lives, they wiped out most of{CLEAR}the wicked bandits.{SCROLL}At last the bandits scattered like birds{NEWLINE}and beasts, and Kanto was at peace{CLEAR}once more.{SCROLL}Here we lay to rest the remains of the{NEWLINE}three great God Pillars.{SCROLL}This stone stands in memory of the{NEWLINE}righteous warriors who gave their lives{CLEAR}in the war against the bandits.{SCROLL}Those of later generations who come{NEWLINE}before this stone to honor the heroes{CLEAR}are asked to pause in silent tribute.{SCROLL}Observe a moment of silence?",
    "status": "draft",
    "origin": "agent",
-   "notes": "Same tablet as #82 + #85 + prompt."
+   "notes": "Same tablet as #82 + #85 + prompt. | RV002: meaning: 后人 = later generations who come to honor the heroes, as #85 (D-1673); 'By fortune' grammar fixed as #82"
   },
   {
    "id": 111,

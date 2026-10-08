@@ -238,10 +238,10 @@
   {
    "id": 29,
    "zh": "怕什么！让他见识一下{NEWLINE}有迷雾加成的精灵是多么恐怖！",
-   "en": "What are you scared of?!{SCROLL}Let’s show him how terrifying{NEWLINE}mist-boosted Pokémon are!",
+   "en": "What are you scared of?!{SCROLL}Let’s show this brat how terrifying{NEWLINE}mist-boosted Pokémon are!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV002: addressee: 他 for a player of either gender; neutral (D-1224, D-1688)"
   },
   {
    "id": 30,
@@ -422,18 +422,18 @@
   {
    "id": 52,
    "zh": "就是这个小鬼！{NEWLINE}他上来啦！",
-   "en": "It’s that brat! He’s coming up!",
+   "en": "It’s that brat! Coming up here!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV002: addressee: 他 for a player of either gender; neutral (D-1224, D-1688)"
   },
   {
    "id": 53,
    "zh": "慌张什么！{NEWLINE}干掉他就是了！",
-   "en": "What are you panicking for?! Just take{NEWLINE}him out!",
+   "en": "What are you panicking for?! Just take{NEWLINE}the brat out!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV002: addressee: 他 for a player of either gender; neutral (D-1224, D-1688)"
   },
   {
    "id": 54,
@@ -542,10 +542,10 @@
   {
    "id": 67,
    "zh": "富士老人『既然这样,{NEWLINE}你们去跟他合作好了,抓我干什么。",
-   "en": "Mr. Fuji: Then go and work with him. Why{NEWLINE}drag me into it?",
+   "en": "Mr. Fuji: Then go and work with him. Why{NEWLINE}capture me?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV002: meaning: 抓我 = seize/capture; he is being held and interrogated (D-1689)"
   },
   {
    "id": 68,
@@ -590,10 +590,10 @@
   {
    "id": 73,
    "zh": "赤焰松『哼,有勇无谋,{NEWLINE}真是不知天高地厚的小鬼。",
-   "en": "Maxie: Hmph. All guts and no brains. A{NEWLINE}brat who doesn’t know his place.",
+   "en": "Maxie: Hmph. All guts and no brains.{NEWLINE}Brats who don’t know their place.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV002: addressee: 小鬼 aimed at the group incl. the player; neutral (D-1224, D-1688)"
   },
   {
    "id": 74,
@@ -622,10 +622,10 @@
   {
    "id": 77,
    "zh": "赤焰松『你认识我！？{NEWLINE}看来留你们不得。{SCROLL}赤焰松『你们几个给我上,{NEWLINE}把他们统统杀掉！",
-   "en": "Maxie: You know who I am?! Then I can’t{NEWLINE}let you leave.{SCROLL}Maxie: You lot, get them! Kill every last{NEWLINE}one of them!",
+   "en": "Maxie: You know who I am?! Then I can’t{NEWLINE}let you live.{SCROLL}Maxie: You lot, get them! Kill every last{NEWLINE}one of them!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV002: softened: 留你们不得 = can't let you live, not 'leave'"
   },
   {
    "id": 78,
@@ -1046,10 +1046,10 @@
   {
    "id": 130,
    "zh": "最近搬来的鬼斯通先生很热情呢,{NEWLINE}我终于不再孤单了！",
-   "en": "The Haunter who moved in recently is{NEWLINE}really friendly. I’m not lonely anymore!",
+   "en": "Mr. Haunter, who moved in recently, is{NEWLINE}really friendly. I’m not lonely anymore!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV002: voice: little girl's 鬼斯通先生 (Mr. Haunter) restored"
   },
   {
    "id": 131,
@@ -1222,10 +1222,10 @@
   {
    "id": 152,
    "zh": "娜姿『你那是什么表情！{SCROLL}娜姿『不要觉得逗笑我这种事很简单。{NEWLINE}你要锻炼的是精神力量,{CLEAR}而影响别人的情绪{CLEAR}恰恰是精神力量的体现。{CLEAR}如果你觉得自己做得到{CLEAR}就试试看吧。",
-   "en": "Sabrina: What is that look on your face?{SCROLL}Sabrina: Don’t think making me laugh is{NEWLINE}easy. What you’re training is your{CLEAR}mental strength.{SCROLL}And influencing other people’s emotions{NEWLINE}is exactly what mental strength is for.{SCROLL}If you think you can do it, go ahead and{NEWLINE}try.",
+   "en": "Sabrina: What is that look on your face?{SCROLL}Sabrina: Don’t think making me laugh is{NEWLINE}easy. What you’re training is your{CLEAR}mental strength.{SCROLL}And influencing others’ emotions is{NEWLINE}precisely a sign of mental strength.{SCROLL}If you think you can, go ahead and try.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV002: meaning: 精神力量的体现 = a sign/expression of mental strength, not its purpose (D-1690)"
   },
   {
    "id": 153,
