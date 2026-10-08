@@ -124,4 +124,4 @@ notes = "The seventh row's tables (choices per row, label offsets, touch boxes, 
 [[grow]]
 file = "itcm"
 max = 6624
-notes = "The native payload (2416 bytes) and its 32-byte alignment, appended to the ITCM autoload block: 0x620 -> 0xFA0 bytes. The block may end at 0x01FFA000 at most."
+notes = "The native payload (2428 bytes) and its 32-byte alignment, appended to the ITCM autoload block: 0x620 -> 0xFA0 bytes. The block may end at 0x01FFA000 at most."

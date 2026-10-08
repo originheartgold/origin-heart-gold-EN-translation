@@ -178,6 +178,12 @@ def lower_median(values, floor=1):
     return filled[(len(filled) - 1) // 2] if len(filled) >= SHORT else 0
 
 
+def upper_median(values, floor=1):
+    """native median(..., upper=1): the upper median of the slots at or above floor, 0 when fewer than SHORT."""
+    filled = sorted(v for v in values if v and v >= floor)
+    return filled[len(filled) // 2] if len(filled) >= SHORT else 0
+
+
 class FrameModel:
     """Line-for-line mirror of the payload's frame state (struct frame_state, 52 bytes).
 
@@ -265,12 +271,12 @@ class FrameModel:
     def costs(self):
         """(glyph, rest, low, samples) in ticks (native costs()): the typical glyph cost among the
         glyphs that read their font data (at least half the seed; with fewer than SHORT, the
-        largest recent cost, at least the seed), the typical rest (with fewer than SHORT rests the
+        largest recent cost, at least the seed), the typical rest (the upper median, D-2277; with fewer than SHORT rests the
         largest, with none the seed), the shortest recent rest (0: none) and the number of rests."""
         seed = (GLYPH_SEED * RHO) >> 8
         glyph = lower_median(self.glyph, seed // 2) or max(max(self.glyph), seed)
         samples = sum(1 for r in self.rest if r)
-        rest = lower_median(self.rest) or max(self.rest)
+        rest = upper_median(self.rest) or max(self.rest)
         low = min((r for r in self.rest if r), default=0)
         if not rest:
             rest, low = (REST_SEED * RHO) >> 8, 0

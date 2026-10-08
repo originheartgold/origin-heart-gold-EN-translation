@@ -44,8 +44,8 @@ def nop(address, original):
 # that the gates' frame model matches the broken payload: such a fault can only be
 # caught by the product checks (frames, drops, frame stops), not by the model check.
 B = bytes.fromhex
-# Addresses are those of the reviewed payload of D-2269/D-2271 (tick-timer timing: 2416 bytes,
-# print_task 0x01FF874C, pass_end 0x01FF8B5C, call_print 0x01FF8E00, frame state 0x01FF8F5C).
+# Addresses are those of the reviewed payload of D-2269/D-2271/D-2277 (tick-timer timing, upper-median rest:
+# 2428 bytes, print_task 0x01FF874C, pass_end 0x01FF8B5C, call_print 0x01FF8E04, frame state 0x01FF8F68).
 # Removed with SLOW (D-1604): 'slow-flat' (SLOW's phase: there is no SLOW and no phase)
 # and 'no-phase-reset' (init_printer and the private +0x34 phase byte no longer exist).
 FAULTS = {
@@ -77,7 +77,7 @@ FAULTS = {
     'label-overflow': {
         'description': 'FAST label replaced by a ten-letter label',
         # labels[2] is u16[11]: FAST, terminator, six zero units.
-        'edits': [(0x01FF8F44, units('FAST') + bytes(12), units('FASTFASTFA'))],
+        'edits': [(0x01FF8F50, units('FAST') + bytes(12), units('FASTFASTFA'))],
         'gates': {'options': 'label', 'save': 'label'}},
     'new-game-normal': {
         'description': 'new-game Options initialiser sets NORMAL instead of FAST (main ARM9)',
@@ -90,11 +90,11 @@ FAULTS = {
     # Phone-call wait (D-1600, bug D-1599).
     'no-call-redirect': {
         'description': 'Pokégear call printer calls AddTextPrinterParameterized directly again (overlay 92)',
-        'edits': [(0x021F1228, bl(0x021F1228, 0x01FF8E01), bl(0x021F1228, 0x02020834), GEAR)],
+        'edits': [(0x021F1228, bl(0x021F1228, 0x01FF8E05), bl(0x021F1228, 0x02020834), GEAR)],
         'gates': {'phone-call': 'advanced without input'}},
     'call-clear-noop': {
         'description': 'call_print no longer clears auto-scroll (blx SetAutoScrollParam -> nop)',
-        'edits': [nop(0x01FF8E10, '8847')],
+        'edits': [nop(0x01FF8E14, '8847')],
         'gates': {'phone-call': 'advanced without input'}},
     'no-control-stop': {
         'description': 'batching no longer stops before control codes',
@@ -139,7 +139,7 @@ FAULTS = {
                   'scenes': 'no native tasks observed', 'battle': 'stuck without A/B input'}},
     'frame-rule-ignored': {
         'description': 'the frame decision always draws (the batch always uses its whole budget)',
-        'edits': [(0x01FF88D0, B('00f062fa'), B('01200004'))],
+        'edits': [(0x01FF88D0, B('00f064fa'), B('01200004'))],
         'gates': {'natural-dialogue': 'after a frame stop', 'fallbacks': 'after a frame stop',
                   'callbacks': 'after a frame stop', 'scenes': 'after a frame stop'}},
     'rest-not-stored': {

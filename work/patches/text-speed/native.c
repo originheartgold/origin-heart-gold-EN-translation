@@ -181,12 +181,14 @@ void frame_end(void) {
         for(unsigned i=0;i<SLOTS;i++) s->rest[i]=0;
     s->ran=0;
 }
-/* The lower median of the slots at or above floor (0 when fewer than SHORT). */
-static unsigned median(const u16 *v,unsigned floor,unsigned *count) {
+/* The lower (upper: the upper) median of the slots at or above floor (0 when
+ * fewer than SHORT). */
+static unsigned median(const u16 *v,unsigned floor,unsigned *count,unsigned upper) {
     unsigned n=0;
     for(unsigned i=0;i<SLOTS;i++) n+=v[i] && v[i]>=floor;
     *count=n;
     if(n<SHORT) return 0;
+    unsigned k=upper?n/2:(n-1)/2;
     for(unsigned i=0;i<SLOTS;i++) {
         unsigned x=v[i],below=0,same=0;
         if(!x || x<floor) continue;
@@ -195,19 +197,21 @@ static unsigned median(const u16 *v,unsigned floor,unsigned *count) {
             below+=v[j]<x;
             same+=v[j]==x;
         }
-        if(below<=(n-1)/2 && (n-1)/2<below+same) return x;
+        if(below<=k && k<below+same) return x;
     }
     return 0;
 }
 /* The typical recent glyph cost and rest in ticks, and the shortest recent rest
  * (0: none). A glyph cost is typical among the glyphs that read their font data
  * (at least half the seed, GLYPH_SEED / 2 lines; a glyph whose data was just read
- * costs about half as much). With fewer than SHORT such samples the glyph counts
+ * costs about half as much). The rest is the upper median: the game's own work
+ * after the batch varies from frame to frame in busy scenes, and the lower median
+ * ran 28 ticks short there on average (Route 1, D-2277). With fewer than SHORT such samples the glyph counts
  * as the largest recent cost, at least the seed; with fewer than SHORT rests the
  * rest counts as the largest recent rest (then at least SHORT_REST lines, below),
  * with none as the seed. */
 static unsigned costs(struct frame_state *s,unsigned *rest,unsigned *low,unsigned *samples) {
-    unsigned n,seed=(GLYPH_SEED*RHO)>>8,glyph=median(s->glyph,seed/2,&n),r=median(s->rest,1,samples);
+    unsigned n,seed=(GLYPH_SEED*RHO)>>8,glyph=median(s->glyph,seed/2,&n,0),r=median(s->rest,1,samples,1);
     unsigned top=0,l=0xffff,big=0;
     for(unsigned i=0;i<SLOTS;i++) {
         if(s->glyph[i]>top) top=s->glyph[i];

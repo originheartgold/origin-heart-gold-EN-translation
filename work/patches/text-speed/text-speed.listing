@@ -52,7 +52,7 @@
 + 020D1A28  01FF8FA0 (TextSpeed_ItcmEnd)
 
 == itcm+0x620 (RAM 0x01FF8620), appended 2432 bytes (itcm 0x620 -> 0xFA0 bytes), data: [[grow]] itcm
-+ 01FF8620  .incbin text-speed.bin: 2416 bytes, sha256 85ea58fe25b96bc787190340df3f88f5263ff6438878eec6005a3c74beebe200; its labels:
++ 01FF8620  .incbin text-speed.bin: 2428 bytes, sha256 d6d5d59d2c2943257de073653d39e848af258c903e74055b2cba5dab2fc45dee; its labels:
 +   01FF8620  frame_end, TextSpeed_Payload
 +   01FF874C  print_task
 +   01FF89E0  load_rows
@@ -63,9 +63,9 @@
 +   01FF8AE4  draw_label
 +   01FF8B08  setup_sprites
 +   01FF8B5C  pass_end
-+   01FF8E00  call_print
-+   01FF8F5C  text_speed_state
-+ 01FF8F90  16 bytes of 0x00 (.align)
++   01FF8E04  call_print
++   01FF8F68  text_speed_state
++ 01FF8F9C  4 bytes of 0x00 (.align)
 
 == overlay50+0x14 (RAM 0x021E4994), 2 bytes, thumb: text-speed-options-menu
   021E4990  F636 FBCE  bl #0x201b130
@@ -668,6 +668,6 @@
   021F1224  68E0       ldr r0, [r4, #0xc]
   021F1226  6D62       ldr r2, [r4, #0x54]
 - 021F1228  F62F FB04  bl #0x2020834
-+ 021F1228  F607 FDEA  bl #0x1ff8e00  ; call_print
++ 021F1228  F607 FDEC  bl #0x1ff8e04  ; call_print
   021F122C  3435       adds r4, #0x35
   021F122E  7020       strb r0, [r4]

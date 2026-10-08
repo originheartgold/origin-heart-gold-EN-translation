@@ -189,7 +189,8 @@ class FrameModelTests(unittest.TestCase):
     def test_costs_are_typical_and_spike_robust(self):
         m = state(glyph=(330, 331, 160, 329, 362, 332, 161, 333), rest=(229, 230, 255, 228))
         glyph, rest, low, samples = m.costs()
-        self.assertEqual((glyph, rest, low, samples), (331, 229, 228, 4))   # cheap glyphs and the spike left out
+        self.assertEqual((glyph, rest, low, samples), (331, 230, 228, 4))   # cheap glyphs and the spike left out;
+        # the rest is the upper median (D-2277): 230 of 228, 229, 230, 255 (the lower median would be 229)
         few = state(glyph=(160, 330), rest=(229,))
         self.assertEqual(few.costs()[0], (C.GLYPH_SEED * C.RHO) >> 8)       # fewer than 3: the largest, at least the seed
         self.assertTrue(few.estimates()[3])                                 # seeded

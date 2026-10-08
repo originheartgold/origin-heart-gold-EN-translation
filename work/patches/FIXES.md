@@ -2139,8 +2139,8 @@ writing, text_speed_patch.verify checks the runtime contract again.
 .definelabel draw_label,        0x01FF8AE4
 .definelabel setup_sprites,     0x01FF8B08
 .definelabel pass_end,          0x01FF8B5C
-.definelabel call_print,        0x01FF8E00
-.definelabel text_speed_state,  0x01FF8F5C
+.definelabel call_print,        0x01FF8E04
+.definelabel text_speed_state,  0x01FF8F68
 
 THUMB equ 1                     ; bit 0 of a code pointer: Thumb
 

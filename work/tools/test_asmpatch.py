@@ -12,7 +12,8 @@ day, when its armips source replaced text_speed_patch.apply(): arm9 (with the gr
 was added later from a build equal to its code_patches.json original (same note); bulbasaur-reflection-boundary
 on 2026-10-08 (D-2270): its overlay1 is the Chinese overlay 1 with the one byte 0x1191B changed 0xDD -> 0xDB,
 checked independently of armips. text-speed's arm9, overlay50 and overlay92 (and "all") were re-pinned on
-2026-10-08 for the 2416-byte tick-timer payload (D-2271): the payload moves the symbols those overlays call."""
+2026-10-08 for the 2416-byte tick-timer payload (D-2271): the payload moves the symbols those overlays call; arm9 and
+overlay92 again on 2026-10-09 for the 2428-byte upper-median payload (D-2277: call_print moved by 4)."""
 import hashlib
 import os
 import re
@@ -74,13 +75,13 @@ GOLDEN = {
         "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
     },
     "text-speed": {
-        "arm9": "95b49fde23bb4fa7559783a851585a2ad6fb8e22",
+        "arm9": "781738084d77467331ada1da45a8d39a3108fa47",
         "overlay50": "c6ac52693077547c08747154fff88c16b90ea2b4",
-        "overlay92": "ced2529f1df4734e499c02b84e08d0752d489217",
+        "overlay92": "c45126239d255791fa1575f9fb878ffbc4cace68",
         "y9": "25d4a33a740ce2bb960ed27a8afa1a0d3b56208f"
     },
     "all": {
-        "arm9": "b3e615538fdc7720cee856d067d2dedf8acfeae5",
+        "arm9": "849313398b69a640676efdee4699d7d2e7e9b882",
         "overlay1": "e47febed127e898212e32db2d91b577e7ff6106c",
         "overlay16": "87cd982681b4164781e92a68994d6190c54d7a35",
         "overlay17": "5015627c82275c7836897b67dfec73c662015635",
@@ -88,7 +89,7 @@ GOLDEN = {
         "overlay49": "dc255061037a45f36d47c7698418f70874c7a035",
         "overlay50": "c6ac52693077547c08747154fff88c16b90ea2b4",
         "overlay58": "8fb5f17c824265a0e8da07803410d5d4999b84a4",
-        "overlay92": "ced2529f1df4734e499c02b84e08d0752d489217",
+        "overlay92": "c45126239d255791fa1575f9fb878ffbc4cace68",
         "overlay114": "2ab9890fab31a6b5fa4e432652ffb1a5b5d40a3c",
         "y9": "3483751df97682d807071808d46d411fd316a428"
     }

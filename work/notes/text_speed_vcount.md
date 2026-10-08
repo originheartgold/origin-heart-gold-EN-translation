@@ -124,6 +124,13 @@ new scene's loop may be heavier; a printer waiting for a button still runs its t
 and keeps the history. Neither VCOUNT nor the VBlank counter is ARM9 code, so neither
 has a reviewed dependency range.
 
+The prediction uses the **upper** median of the stored rests (D-2277, 2026-10-09; the glyph
+cost stays the lower median). In busy overworld scenes the game's own work after the batch
+varies from frame to frame: on Route 1 the anchored time-left estimate was exact (0-1 ticks
+off), but the lower-median rest ran 28 ticks short on average and 80 at worst, which caused
+the one real self-caused FAST frame drop of the D-2276 run (diagnosis: a wrapper around
+`gate_common.judge_message` dumping every FAST task's decisions and timing).
+
 ### State and RAM
 
 One global `struct frame_state` of 24 bytes (glyph[8], rest[8], two ring indexes,
