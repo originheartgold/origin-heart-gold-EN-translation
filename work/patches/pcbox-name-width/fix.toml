@@ -23,6 +23,7 @@ Nothing else on the screen changes.
 evidence = [
   "D-1511 (emulator, 2026-10-05): 'Charmeleon' in full before the gender icon, rest of the box screen unchanged; screens work/build/harness/hunt_ui/box_party_pair.png (local)",
   "git e18d0f9 'Fix increment 4: Pokédex button/header graphics pipeline, PC box name window'",
+  "Runtime: emu_harness.py fixes --case pcbox-name-width (scenario pcbox: the name window template and the text pixels of its 8th tile; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[code]]

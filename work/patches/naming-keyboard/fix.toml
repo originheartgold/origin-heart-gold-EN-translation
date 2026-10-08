@@ -31,6 +31,7 @@ evidence = [
   "work/notes/hardcoded_text.md: 'Naming keyboard (English)'",
   "DeSmuME check: work/build/screens/naming_fix_*.png (local): opens on ABC, every tab types, the dialogue shows 'Your name is An1zQ5!?'",
   "CHANGELOG.md v1.0.0: 'Naming keyboard: the Chinese pinyin input is removed, and the keyboard opens on ABC. The tabs are ABC / abc / QWE / 1♪.'",
+  "Runtime: emu_harness.py fixes --case naming-keyboard (scenario naming: the first key types 'A' and the pinyin IME path never runs; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[code]]

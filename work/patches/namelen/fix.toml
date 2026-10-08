@@ -27,6 +27,7 @@ evidence = [
   "work/notes/hardcoded_text.md: 'Name lengths' (call-site table, default names)",
   "In-game check by the user in melonDS: 7-character trainer names, 10-character nicknames (D-0858)",
   "CHANGELOG.md v1.0.0: 'Name lengths restored to US limits: 7 characters for trainers, 10 for Pokémon'",
+  "Runtime: emu_harness.py fixes --case namelen (scenario naming: maxLen of the script naming calls and the length of a typed player name and nickname; scenario newgame: maxLen of Oak's speech calls; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[code]]

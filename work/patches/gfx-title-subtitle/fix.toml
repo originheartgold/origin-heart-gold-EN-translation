@@ -19,6 +19,7 @@ slots 150/240, which no title or intro graphic uses (gfx.py make-title-subtitle)
 evidence = [
   "work/notes/graphics_inventory.md: row 11",
   "CHANGELOG.md v1.0.0: 'Bilingual title screen: the original 起源心金 logo with an \"Origin HeartGold\" subtitle in the game's own font.'",
+  "Runtime: emu_harness.py fixes --case gfx-title-subtitle (scenario newgame: the title screen crop under the logo equals the approved one; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[graphics]]

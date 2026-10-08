@@ -23,6 +23,7 @@ New: 'movs r2, #0x1A' -> 'movs r2, #0x20' at 0x0208C262 moves the IV column 6 px
 evidence = [
   "D-1574: emu_harness.py vqueue --case buttons, work/build/harness/verifyqueue/en/buttons_m*_L.png (local)",
   "git c7d2c29 'Code: summary IV/EV panel IV column clears the English stat labels (D-1574)'",
+  "Runtime: emu_harness.py fixes --case ivev-panel (scenario ivev: the x of the IV numbers and header, and the IV/EV column distance on screen; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[code]]
