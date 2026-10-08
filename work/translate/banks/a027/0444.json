@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "大木博士『那个被称为埋没之塔的{NEWLINE}古旧遗迹,{CLEAR}真的跟芳缘地区的神话{CLEAR}有关啊！{SCROLL}这样的话{NEWLINE}应该不止一只精灵！{SCROLL}据说盖欧卡和固拉多是{NEWLINE}掌司大海与陆地的{CLEAR}的两位好友！{SCROLL}然后那２只都在的话{NEWLINE}那个精灵也会{CLEAR}现身……{CLEAR}很有这个可能！{SCROLL}",
-   "en": "Prof. Oak: So the Embedded Tower really{NEWLINE}is tied to the Hoenn myths!{SCROLL}In that case, there should be more{NEWLINE}than one Pokémon!{SCROLL}Kyogre and Groudon are said to rule{NEWLINE}over the sea and the land!{SCROLL}And if both are there, that other{NEWLINE}Pokémon might appear too...{SCROLL}It’s quite possible!{SCROLL}",
+   "en": "Prof. Oak: So the Embedded Tower really{NEWLINE}is tied to the Hoenn myths! In that{CLEAR}case, there should be more than one{CLEAR}Pokémon! Kyogre and Groudon are said{CLEAR}to be two good friends who rule over{CLEAR}the sea and the land! And if both are{CLEAR}there, that other Pokémon might appear{CLEAR}too... It’s quite possible!{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "埋没之塔 = Embedded Tower (US).",
+   "notes": "埋没之塔 = Embedded Tower (US). | RV016: omission: 两位好友 (two good friends) restored; settles D-1831",
    "qa_ignore": [
     "number_missing"
    ]
@@ -129,10 +129,10 @@
   {
    "id": 15,
    "zh": "大木博士『有红色宝玉的话{NEWLINE}可以料想到古拉顿{CLEAR}会在埋没之塔出现……{SCROLL}但是精灵爷爷{NEWLINE}还说了这样的话{CLEAR}「好像只有拥有闪耀着{CLEAR}银色光辉的灵魂的训练师{SCROLL}才能遇到古拉顿」{SCROLL}嗯嗯,只有{VAR:0103:0}{NEWLINE}一个人好像有点难……{SCROLL}但是！在你漂亮地{NEWLINE}抓住埋没之塔里的古拉顿{CLEAR}的时候,{CLEAR}捕获这２只精灵{CLEAR}给我看看吧！{SCROLL}那时再给我听芳缘神话{NEWLINE}的后续吧！{SCROLL}",
-   "en": "Prof. Oak: With the Red Orb, Groudon{NEWLINE}should appear at the Embedded Tower...{SCROLL}But Mr. Pokémon also said this:{SCROLL}Only Trainers whose souls shine silver{NEWLINE}can meet Groudon.{SCROLL}Hmm... That may be hard for you alone,{NEWLINE}{VAR:0103:0}...{SCROLL}But once you’ve caught the Embedded{NEWLINE}Tower’s Groudon, show me both of them!{SCROLL}Then I’ll tell you the rest of the Hoenn{NEWLINE}myth!{SCROLL}",
+   "en": "Prof. Oak: With the Red Orb, Groudon{NEWLINE}should appear at the Embedded Tower...{CLEAR}But Mr. Pokémon also said this: Only{CLEAR}Trainers whose souls shine silver can{CLEAR}meet Groudon. Hmm... That may be hard{CLEAR}for you alone, {VAR:0103:0}... But once{CLEAR}you’ve caught the Embedded Tower’s{CLEAR}Groudon, show me both of them! Then let{CLEAR}me hear the rest of the Hoenn myth!{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh says ‘silver light’ for both Groudon and Kyogre (US HG text contrasts golden hearts / silver spirits); followed the zh.",
+   "notes": "zh says ‘silver light’ for both Groudon and Kyogre (US HG text contrasts golden hearts / silver spirits); followed the zh. | RV016: meaning: 再给我听 = let me hear; narrator/listener was reversed (D-1832)",
    "qa_ignore": [
     "number_missing"
    ]
@@ -140,10 +140,10 @@
   {
    "id": 16,
    "zh": "大木博士『有红色宝玉的话{NEWLINE}可以料想到古拉顿{CLEAR}会在埋没之塔出现……{SCROLL}但是精灵爷爷{NEWLINE}还说了这样的话{CLEAR}「好像只有拥有闪耀着{CLEAR}银色光辉的灵魂的训练师{SCROLL}才能遇到古拉顿」{SCROLL}嗯嗯,只有{VAR:0103:0}{NEWLINE}一个人好像有点难……{SCROLL}但是！在你漂亮地{NEWLINE}抓住埋没之塔里的古拉顿{CLEAR}的时候,{CLEAR}捕获这２只精灵{CLEAR}给我看看吧！{SCROLL}那时再给我听芳缘神话{NEWLINE}的后续吧！{SCROLL}",
-   "en": "Prof. Oak: With the Red Orb, Groudon{NEWLINE}should appear at the Embedded Tower...{SCROLL}But Mr. Pokémon also said this:{SCROLL}Only Trainers whose souls shine silver{NEWLINE}can meet Groudon.{SCROLL}Hmm... That may be hard for you alone,{NEWLINE}{VAR:0103:0}...{SCROLL}But once you’ve caught the Embedded{NEWLINE}Tower’s Groudon, show me both of them!{SCROLL}Then I’ll tell you the rest of the Hoenn{NEWLINE}myth!{SCROLL}",
+   "en": "Prof. Oak: With the Red Orb, Groudon{NEWLINE}should appear at the Embedded Tower...{CLEAR}But Mr. Pokémon also said this: Only{CLEAR}Trainers whose souls shine silver can{CLEAR}meet Groudon. Hmm... That may be hard{CLEAR}for you alone, {VAR:0103:0}... But once{CLEAR}you’ve caught the Embedded Tower’s{CLEAR}Groudon, show me both of them! Then let{CLEAR}me hear the rest of the Hoenn myth!{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh says ‘silver light’ for both Groudon and Kyogre (US HG text contrasts golden hearts / silver spirits); followed the zh.",
+   "notes": "zh says ‘silver light’ for both Groudon and Kyogre (US HG text contrasts golden hearts / silver spirits); followed the zh. | RV016: meaning: 再给我听 = let me hear; narrator/listener was reversed (D-1832)",
    "qa_ignore": [
     "number_missing"
    ]
@@ -151,10 +151,10 @@
   {
    "id": 17,
    "zh": "大木博士『有蓝色宝玉的话{NEWLINE}可以料想到海皇牙{CLEAR}会在埋没之塔出现……{SCROLL}但是精灵爷爷还说了这样的话{CLEAR}「好像只有拥有闪耀着{CLEAR}银色光辉的灵魂的训练师{SCROLL}才能遇到海皇牙」{SCROLL}嗯嗯,只有{VAR:0103:0}{NEWLINE}一个人好像有点难……{SCROLL}但是！在你漂亮地{NEWLINE}抓住埋没之塔里的海皇牙{CLEAR}的时候,{CLEAR}捕获这２只精灵{CLEAR}给我看看吧！{SCROLL}那时再给我听芳缘神话{NEWLINE}的后续吧！{SCROLL}",
-   "en": "Prof. Oak: With the Blue Orb, Kyogre{NEWLINE}should appear at the Embedded Tower...{SCROLL}But Mr. Pokémon also said this:{SCROLL}Only Trainers whose souls shine silver{NEWLINE}can meet Kyogre.{SCROLL}Hmm... That may be hard for you alone,{NEWLINE}{VAR:0103:0}...{SCROLL}But once you’ve caught the Embedded{NEWLINE}Tower’s Kyogre, show me both of them!{SCROLL}Then I’ll tell you the rest of the Hoenn{NEWLINE}myth!{SCROLL}",
+   "en": "Prof. Oak: With the Blue Orb, Kyogre{NEWLINE}should appear at the Embedded Tower...{CLEAR}But Mr. Pokémon also said this: Only{CLEAR}Trainers whose souls shine silver can{CLEAR}meet Kyogre. Hmm... That may be hard{CLEAR}for you alone, {VAR:0103:0}... But once{CLEAR}you’ve caught the Embedded Tower’s{CLEAR}Kyogre, show me both of them! Then let{CLEAR}me hear the rest of the Hoenn myth!{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh says ‘silver light’ for both Groudon and Kyogre (US HG text contrasts golden hearts / silver spirits); followed the zh.",
+   "notes": "zh says ‘silver light’ for both Groudon and Kyogre (US HG text contrasts golden hearts / silver spirits); followed the zh. | RV016: meaning: 再给我听 = let me hear; narrator/listener was reversed (D-1832)",
    "qa_ignore": [
     "number_missing"
    ]
@@ -162,10 +162,10 @@
   {
    "id": 18,
    "zh": "大木博士『有蓝色宝玉的话{NEWLINE}可以料想到海皇牙{CLEAR}会在埋没之塔出现……{SCROLL}但是精灵爷爷还说了这样的话{CLEAR}「好像只有拥有闪耀着{CLEAR}银色光辉的灵魂的训练师{SCROLL}才能遇到海皇牙」{SCROLL}嗯嗯,只有{VAR:0103:0}{NEWLINE}一个人好像有点难……{SCROLL}但是！在你漂亮地{NEWLINE}抓住埋没之塔里的海皇牙{CLEAR}的时候,{CLEAR}捕获这２只精灵{CLEAR}给我看看吧！{SCROLL}那时再给我听芳缘神话{NEWLINE}的后续吧！{SCROLL}",
-   "en": "Prof. Oak: With the Blue Orb, Kyogre{NEWLINE}should appear at the Embedded Tower...{SCROLL}But Mr. Pokémon also said this:{SCROLL}Only Trainers whose souls shine silver{NEWLINE}can meet Kyogre.{SCROLL}Hmm... That may be hard for you alone,{NEWLINE}{VAR:0103:0}...{SCROLL}But once you’ve caught the Embedded{NEWLINE}Tower’s Kyogre, show me both of them!{SCROLL}Then I’ll tell you the rest of the Hoenn{NEWLINE}myth!{SCROLL}",
+   "en": "Prof. Oak: With the Blue Orb, Kyogre{NEWLINE}should appear at the Embedded Tower...{CLEAR}But Mr. Pokémon also said this: Only{CLEAR}Trainers whose souls shine silver can{CLEAR}meet Kyogre. Hmm... That may be hard{CLEAR}for you alone, {VAR:0103:0}... But once{CLEAR}you’ve caught the Embedded Tower’s{CLEAR}Kyogre, show me both of them! Then let{CLEAR}me hear the rest of the Hoenn myth!{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh says ‘silver light’ for both Groudon and Kyogre (US HG text contrasts golden hearts / silver spirits); followed the zh.",
+   "notes": "zh says ‘silver light’ for both Groudon and Kyogre (US HG text contrasts golden hearts / silver spirits); followed the zh. | RV016: meaning: 再给我听 = let me hear; narrator/listener was reversed (D-1832)",
    "qa_ignore": [
     "number_missing"
    ]
@@ -189,10 +189,10 @@
   {
    "id": 21,
    "zh": "大木博士『跟精灵爷爷那拿来的{NEWLINE}玉很像吧。{SCROLL}那是浅绿色的珠子{NEWLINE}与烈空座的联系很深。{SCROLL}在芳缘地区的神话里,{NEWLINE}说古拉顿和海皇牙的争斗,{CLEAR}搅乱了陆地与大海,{SCROLL}火山喷发,{NEWLINE}巨浪汹涌,{CLEAR}天地变异不断持续着,{SCROLL}让这一切平定下来的是烈空座！{NEWLINE}是支配宇宙的精灵,{SCROLL}埋没之塔是海皇牙和古拉顿{CLEAR}深有渊源的地方的话,{CLEAR}带着那个绿色宝玉{CLEAR}到埋没之塔去的话,{CLEAR}一定会发生什么的！{SCROLL}",
-   "en": "Prof. Oak: It looks a lot like the orbs{NEWLINE}you got from Mr. Pokémon, doesn’t it?{SCROLL}It’s a pale-green orb with deep ties to{NEWLINE}Rayquaza.{SCROLL}In the Hoenn myths, Groudon and Kyogre{NEWLINE}fought a great battle...{SCROLL}...and their clash threw land and sea{NEWLINE}into chaos.{SCROLL}Volcanoes erupted, giant waves raged,{NEWLINE}and the upheaval went on and on.{SCROLL}The one that calmed it all was Rayquaza,{NEWLINE}the Pokémon that rules the heavens!{SCROLL}If the Embedded Tower is deeply tied to{NEWLINE}Kyogre and Groudon...{SCROLL}then taking that Jade Orb there is sure{NEWLINE}to make something happen!{SCROLL}",
+   "en": "Prof. Oak: It looks a lot like the orbs{NEWLINE}you got from Mr. Pokémon, doesn’t it?{CLEAR}It’s a pale-green orb with deep ties to{CLEAR}Rayquaza. In the Hoenn myths, Groudon{CLEAR}and Kyogre fought a great battle...{CLEAR}...and their clash threw land and sea{CLEAR}into chaos. Volcanoes erupted, giant{CLEAR}waves raged, and the upheaval went on{CLEAR}and on. The one that calmed it all was{CLEAR}Rayquaza, the Pokémon that rules the{CLEAR}universe! If the Embedded Tower is{CLEAR}deeply tied to Kyogre and Groudon...{CLEAR}then taking that Jade Orb there is sure{CLEAR}to make something happen!{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0451/21; modernised from US 0451#21"
+   "notes": "US 0451/21; modernised from US 0451#21 | RV016: meaning: 支配宇宙 = rules the universe, not the heavens (D-1833)"
   },
   {
    "id": 22,
@@ -213,18 +213,18 @@
   {
    "id": 24,
    "zh": "大木博士『哦哦,{VAR:0103:0}{NEWLINE}精灵研究没有尽头,{CLEAR}快乐也没有尽头！{SCROLL}说起来……{SCROLL}哦哦！这是……！！！{SCROLL}我看看……{NEWLINE}在埋没之塔里发现的？{SCROLL}这两只精灵确实是{NEWLINE}海皇牙和古拉顿！！{CLEAR}在芳缘地区的传说里{CLEAR}出现的精灵！{SCROLL}没想到你居然{NEWLINE}能抓住这种精灵……{CLEAR}厉害！真是后生可畏呀！{SCROLL}好！{NEWLINE}这个交给{VAR:0103:0}！{SCROLL}",
-   "en": "Prof. Oak: Ah, {VAR:0103:0}! The joys of{NEWLINE}Pokémon research never end!{SCROLL}By the way...{SCROLL}Oh! Wh-what’s this?!{SCROLL}Let me see... You found them in the{NEWLINE}Embedded Tower?{SCROLL}They’re Kyogre and Groudon, all right!{NEWLINE}From the Hoenn legends!{SCROLL}I never dreamed you’d catch Pokémon{NEWLINE}like these... Amazing! The young really{SCROLL}do surpass the old!{SCROLL}Right! I’d like you to have this,{NEWLINE}{VAR:0103:0}!{SCROLL}",
+   "en": "Prof. Oak: Ah, {VAR:0103:0}! Pokémon{NEWLINE}research never ends, and neither does{CLEAR}the fun! By the way... Oh! Wh-what’s{CLEAR}this?! Let me see... You found them in{CLEAR}the Embedded Tower? They’re Kyogre{CLEAR}and Groudon, all right! From the Hoenn{CLEAR}legends! I never dreamed you’d catch{CLEAR}Pokémon like these... Amazing! The{CLEAR}young really do surpass the old! Right!{CLEAR}I’d like you to have this, {VAR:0103:0}!{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0451/24; modernised from US 0451#24"
+   "notes": "US 0451/24; modernised from US 0451#24 | RV016: omission: two clauses (research has no end / fun has no end) had been merged"
   },
   {
    "id": 25,
    "zh": "大木博士『哦哦,{VAR:0103:0}{NEWLINE}精灵研究没有尽头{CLEAR}快乐也没有尽头！{SCROLL}说起来……{SCROLL}哦哦！这是……！！！{SCROLL}我看看……{NEWLINE}在埋没之塔里发现的？{SCROLL}这两只精灵确实是{NEWLINE}海皇牙和古拉顿！！{CLEAR}在芳缘地区的传说里{CLEAR}出现的精灵！{SCROLL}没想到你居然{NEWLINE}能抓住这种精灵……{CLEAR}厉害！真是后生可畏呀！{SCROLL}好！{NEWLINE}这个交给{VAR:0103:0}！",
-   "en": "Prof. Oak: Ah, {VAR:0103:0}! The joys of{NEWLINE}Pokémon research never end!{SCROLL}By the way...{SCROLL}Oh! Wh-what’s this?!{SCROLL}Let me see... You found them in the{NEWLINE}Embedded Tower?{SCROLL}They’re Kyogre and Groudon, all right!{NEWLINE}From the Hoenn legends!{SCROLL}I never dreamed you’d catch Pokémon{NEWLINE}like these... Amazing! The young really{SCROLL}do surpass the old!{SCROLL}Right! I’d like you to have this,{NEWLINE}{VAR:0103:0}!",
+   "en": "Prof. Oak: Ah, {VAR:0103:0}! Pokémon{NEWLINE}research never ends, and neither does{CLEAR}the fun! By the way... Oh! Wh-what’s{CLEAR}this?! Let me see... You found them in{CLEAR}the Embedded Tower? They’re Kyogre{CLEAR}and Groudon, all right! From the Hoenn{CLEAR}legends! I never dreamed you’d catch{CLEAR}Pokémon like these... Amazing! The{CLEAR}young really do surpass the old! Right!{CLEAR}I’d like you to have this, {VAR:0103:0}!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0451/25; modernised from US 0451#25"
+   "notes": "US 0451/25; modernised from US 0451#25 | RV016: omission: two clauses (research has no end / fun has no end) had been merged"
   },
   {
    "id": 26,
@@ -533,10 +533,10 @@
   {
    "id": 64,
    "zh": "大木博士『在精灵球被发明出来之前,{CLEAR}大家都把精灵{CLEAR}放出来一起旅行。{SCROLL}大木博士『打开你的精灵列表看一下,{NEWLINE}第一只精灵是会跟随在你身后的。{SCROLL}当然,用精灵球{NEWLINE}来携带精灵很方便,{CLEAR}这是优点。{SCROLL}但我认为放出来带着走{CLEAR}是具有某种意义的,{SCROLL}这对精灵成长或是进化{CLEAR}都会产生一定影响……{SCROLL}大木博士『那么{VAR:0103:0}{NEWLINE}你现在拿到了自己的第一只精灵{CLEAR}并即将踏上精灵训练家之旅{CLEAR}在你的冒险开始之前{CLEAR}我还有一个重要的东西给你……",
-   "en": "Prof. Oak: Before Poké Balls, people{NEWLINE}traveled with Pokémon at their side.{SCROLL}Prof. Oak: Look at your party. Its{NEWLINE}first Pokémon will follow behind you.{SCROLL}Of course, keeping Pokémon in Poké Balls{NEWLINE}is convenient.{SCROLL}But I believe walking side by side means{NEWLINE}something too.{SCROLL}It may even affect how Pokémon grow or{NEWLINE}evolve...{SCROLL}Prof. Oak: Now then, {VAR:0103:0}. You have{NEWLINE}your first Pokémon, and you’re about to{SCROLL}set out as a Trainer.{SCROLL}Before your adventure begins, I have{NEWLINE}one more important thing for you...",
+   "en": "Prof. Oak: Before Poké Balls, people{NEWLINE}traveled with Pokémon at their side.{SCROLL}Prof. Oak: Look at your party. Its{NEWLINE}first Pokémon will follow behind you. Of{CLEAR}course, keeping Pokémon in Poké Balls is{CLEAR}convenient. But I believe walking side{CLEAR}by side means something too.{SCROLL}It has some effect on how they grow or{NEWLINE}evolve...{SCROLL}Prof. Oak: Now then, {VAR:0103:0}. You have{NEWLINE}your first Pokémon, and you’re about to{CLEAR}set out as a Trainer. Before your{CLEAR}adventure begins, I have one more{CLEAR}important thing for you...",
    "status": "draft",
    "origin": "agent",
-   "notes": "Following-Pokémon tutorial."
+   "notes": "Following-Pokémon tutorial. | RV016: meaning: 会产生一定影响 states an effect; 'may even' had hedged it"
   },
   {
    "id": 65,
@@ -949,10 +949,10 @@
   {
    "id": 116,
    "zh": "{VAR:0103:0}『是啊,就连出门旅行的目的,{NEWLINE}都跟新人训练家时不一样了。",
-   "en": "{VAR:0103:0}: Yes. Even my reason for{NEWLINE}traveling isn’t what it was back then.",
+   "en": "{VAR:0103:0}: Yes. Even my reason for{NEWLINE}traveling isn’t what it was when I was a{CLEAR}rookie Trainer.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV016: omission: 跟新人训练家时 (as when I was a rookie) restored"
   },
   {
    "id": 117,
@@ -1109,18 +1109,18 @@
   {
    "id": 136,
    "zh": "达马兰奇『不过{VAR:0103:0}啊,{NEWLINE}当你在华蓝洞穴跟坂木激战的时候,{CLEAR}城都地区的火箭队{CLEAR}集结力量攻击了多个城市,{CLEAR}虽说在精灵联盟的反击下{CLEAR}火箭队最终撤退了,{CLEAR}但那一场战斗{CLEAR}已经深深地伤害了周围的居民。{SCROLL}达马兰奇『后来你去白银山{NEWLINE}疗伤的这段时间,{CLEAR}有人匿名举报了{CLEAR}火箭队的基地在研钵山。{CLEAR}但渡率领的突袭部队抵达研钵山时,{CLEAR}只在那里发现了{CLEAR}人去楼空的火箭队基地遗址。{CLEAR}火箭队的有生力量目前仍然不知所踪。",
-   "en": "Goodshow: But {VAR:0103:0}...{SCROLL}While you were locked in battle with{NEWLINE}Giovanni in Cerulean Cave, Team Rocket{SCROLL}in Johto gathered its forces and{NEWLINE}attacked several cities.{SCROLL}The Pokémon League struck back, and{NEWLINE}Team Rocket finally retreated.{SCROLL}But that battle deeply hurt the people{NEWLINE}living nearby.{SCROLL}Goodshow: While you were recovering, we{NEWLINE}got an anonymous tip.{SCROLL}It said Team Rocket was hiding out in{NEWLINE}Mt. Mortar.{SCROLL}But Lance’s strike team found only an{NEWLINE}abandoned base there.{SCROLL}No one knows where Team Rocket’s{NEWLINE}remaining forces went.",
+   "en": "Goodshow: But {VAR:0103:0}... While you were{NEWLINE}locked in battle with Giovanni in{CLEAR}Cerulean Cave, Team Rocket in Johto{CLEAR}gathered its forces and attacked{CLEAR}several cities. The Pokémon League{CLEAR}struck back, and Team Rocket finally{CLEAR}retreated. But that battle deeply hurt{CLEAR}the people living nearby.{SCROLL}Goodshow: Later, while you were{NEWLINE}recovering on Mt. Silver, we got an{CLEAR}anonymous tip. It said Team Rocket’s{CLEAR}base was in Mt. Mortar. But when{CLEAR}Lance’s strike team got there, all they{CLEAR}found was the empty remains of the{CLEAR}base. No one knows where Team Rocket’s{CLEAR}remaining forces went.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV016: omission: 后来/去白银山疗伤 and 人去楼空 restored"
   },
   {
    "id": 137,
    "zh": "达马兰奇『虽然{VAR:0103:0}你击败了坂木、{NEWLINE}并多次粉碎了火箭队的阴谋,{CLEAR}但火箭队的威胁却没有根除。{CLEAR}他们只是把作乱的地点{CLEAR}从关东转移到了城都。{SCROLL}达马兰奇『所以我现在需要派人{NEWLINE}去一趟城都地区,{CLEAR}明面上是在城都各地旅行,{CLEAR}实际上暗中收集火箭队的情报,{CLEAR}尽可能地查明他们的藏身地、{CLEAR}阻止他们下一步的行动。{CLEAR}我觉得最适合这个任务的人选{CLEAR}就是{VAR:0103:0}你了。{CLEAR}不知道你愿意接受这个任务吗？",
-   "en": "Goodshow: {VAR:0103:0}, you defeated{NEWLINE}Giovanni and foiled Team Rocket’s{SCROLL}schemes time and again.{SCROLL}But the threat of Team Rocket hasn’t{NEWLINE}been wiped out. They’ve simply moved{SCROLL}from Kanto to Johto.{SCROLL}Goodshow: So I need to send someone to{NEWLINE}Johto.{SCROLL}On the surface, they’ll be traveling{NEWLINE}around Johto. In secret, they’ll{SCROLL}gather intel on Team Rocket.{SCROLL}They’ll find out where Team Rocket is{NEWLINE}hiding, and stop their next move.{SCROLL}I believe the best person for the job is{NEWLINE}you, {VAR:0103:0}.{SCROLL}Will you take on this mission?",
+   "en": "Goodshow: {VAR:0103:0}, you defeated{NEWLINE}Giovanni and foiled Team Rocket’s{CLEAR}schemes time and again. But the threat{CLEAR}of Team Rocket hasn’t been wiped out.{CLEAR}They’ve simply moved their trouble from{CLEAR}Kanto to Johto.{SCROLL}Goodshow: So I need to send someone to{NEWLINE}Johto. On the surface, they’ll be{CLEAR}traveling around Johto. In secret,{CLEAR}they’ll gather intel on Team Rocket.{CLEAR}They’ll do all they can to find out{CLEAR}where Team Rocket is hiding, and stop{CLEAR}their next move. I believe the best{CLEAR}person for the job is you, {VAR:0103:0}. Will{CLEAR}you take on this mission?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV016: omission: 尽可能地 (do all they can) and 作乱 (trouble) restored"
   },
   {
    "id": 138,

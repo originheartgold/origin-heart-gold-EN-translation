@@ -38,18 +38,18 @@
   {
    "id": 4,
    "zh": "最近我们商店经{NEWLINE}常有一只野生的皮卡丘光顾,{CLEAR}它今天又来我们店里偷东西了。{CLEAR}再这样下去,{CLEAR}店里的生意就不好做了。{SCROLL}看您是很厉害的训练家的样子,{NEWLINE}拜托您把它收服或赶走吧。{SCROLL}据我所知它总是出现在常磐市周边,{NEWLINE}只要你找找应该能找到。",
-   "en": "Lately a wild Pikachu keeps dropping by{NEWLINE}our store.{SCROLL}It came in and stole from us again{NEWLINE}today. If this keeps up, we’ll go out of{CLEAR}business.{SCROLL}You look like a strong Trainer. Could{NEWLINE}you please catch it or chase it off?{SCROLL}As far as I know, it’s always around{NEWLINE}Viridian City. If you look, you should{CLEAR}find it.",
+   "en": "Lately a wild Pikachu keeps dropping by{NEWLINE}our store. It came in and stole from us{CLEAR}again today. If this keeps up, it’ll be{CLEAR}hard to keep the business going. You{CLEAR}look like a strong Trainer. Could you{CLEAR}please catch it or chase it off? As far{CLEAR}as I know, it’s always around Viridian{CLEAR}City. If you look, you should find it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV016: meaning: 生意就不好做了 = business gets hard, not closure (D-1802)"
   },
   {
    "id": 5,
    "zh": "最近我们商店经{NEWLINE}常有一只野生的精灵光顾,{CLEAR}它今天又来我们店里偷东西了。{CLEAR}再这样下去,{CLEAR}店里的生意就不好做了。{SCROLL}看您是很厉害的训练家的样子,{NEWLINE}拜托您把它收服或赶走吧。{SCROLL}据我所知它总是出现在常磐市周边,{NEWLINE}只要你找找应该能找到。",
-   "en": "Lately a wild Pokémon keeps dropping by{NEWLINE}our store.{SCROLL}It came in and stole from us again{NEWLINE}today. If this keeps up, we’ll go out of{CLEAR}business.{SCROLL}You look like a strong Trainer. Could{NEWLINE}you please catch it or chase it off?{SCROLL}As far as I know, it’s always around{NEWLINE}Viridian City. If you look, you should{CLEAR}find it.",
+   "en": "Lately a wild Pokémon keeps dropping by{NEWLINE}our store. It came in and stole from us{CLEAR}again today. If this keeps up, it’ll be{CLEAR}hard to keep the business going. You{CLEAR}look like a strong Trainer. Could you{CLEAR}please catch it or chase it off? As far{CLEAR}as I know, it’s always around Viridian{CLEAR}City. If you look, you should find it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV016: meaning: 生意就不好做了 = business gets hard, not closure (D-1802)"
   },
   {
    "id": 6,
@@ -358,10 +358,10 @@
   {
    "id": 44,
    "zh": "小绿『你在说什么傻话,{NEWLINE}本大爷可是常磐道馆馆主小绿,{CLEAR}会极梅婆婆的绝招那是理所当然的。",
-   "en": "Blue: What kind of stupid question is{NEWLINE}that? I’m Blue, the Viridian Gym Leader!{SCROLL}Of course I know Granny Mae’s ultimate{NEWLINE}move.",
+   "en": "Blue: What kind of stupid question is{NEWLINE}that? I’m the great Blue, the Viridian{CLEAR}Gym Leader! Of course I know Granny{CLEAR}Mae’s ultimate move.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV016: voice: 本大爷 swagger kept"
   },
   {
    "id": 45,
@@ -398,10 +398,10 @@
   {
    "id": 49,
    "zh": "小绿『咳咳……！混蛋！{NEWLINE}水箭龟不要放弃,反攻回去！",
-   "en": "Blue: *cough* ...! Damn it! Don’t give{NEWLINE}up, Blastoise! Hit him back!",
+   "en": "Blue: *cough* ...! Bastard! Don’t give{NEWLINE}up, Blastoise! Hit him back!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV016: softened: 混蛋 is an insult at the other Blue, not 'Damn it'"
   },
   {
    "id": 50,
@@ -784,10 +784,10 @@
   {
    "id": 97,
    "zh": "这个小丫头好像拿过石英大会的冠军,{NEWLINE}有这种稀有精灵也不奇怪。{CLEAR}不过咱们在属性上还是有优势的。{SCROLL}不要怕尼多王,{NEWLINE}使用大地之力！",
-   "en": "This girl won the Indigo Conference{NEWLINE}once, I hear. No surprise she’s got a{CLEAR}rare Pokémon like that.{SCROLL}But we’ve still got the type advantage!{SCROLL}Don’t be scared, Nidoking! Use Earth{NEWLINE}Power!",
+   "en": "This little girl won the Indigo{NEWLINE}Conference once, I hear. No surprise{CLEAR}she’s got a rare Pokémon like that. But{CLEAR}we’ve still got the type advantage!{SCROLL}Nidoking, don’t be afraid! Use Earth{NEWLINE}Power!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV016: voice: 小丫头 dismissive 'little girl' kept"
   },
   {
    "id": 98,

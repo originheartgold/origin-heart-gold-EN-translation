@@ -613,10 +613,10 @@
   {
    "id": 75,
    "zh": "{VAR:0103:0}『小妹妹你好呀,{NEWLINE}我是训练家{VAR:0103:0}。{CLEAR}你如果喜欢口袋妖怪的话,{CLEAR}我可以帮你们成为朋友哦。",
-   "en": "{VAR:0103:0}: Hi there! I’m {VAR:0103:0}, a{NEWLINE}Trainer.{SCROLL}If you like Pokémon, I can help you make{NEWLINE}friends with one.",
+   "en": "{VAR:0103:0}: Hi there, little one! I’m{NEWLINE}{VAR:0103:0}, a Trainer. If you like Pokémon,{CLEAR}I can help you make friends with one.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV016: omission: 小妹妹 address restored"
   },
   {
    "id": 76,
@@ -893,10 +893,10 @@
   {
    "id": 110,
    "zh": "小绿『哼哼哈嘿,本大爷可是天才。{NEWLINE}虽然见到馆主前的考验非常麻烦,{CLEAR}跟馆主的战斗也很困难,{CLEAR}可是这都难不倒我。{CLEAR}不过{VAR:0103:0}你嘛,{CLEAR}就不一定办得到了。{SCROLL}小绿『石英大会的报名就要开始了,{NEWLINE}你如果想赶上参加大会,{CLEAR}就别再像以前那么磨蹭啦。",
-   "en": "Blue: Heh heh heh. What can I say? I’m{NEWLINE}a genius.{SCROLL}The trials before you even meet the{NEWLINE}Leader are a real pain, and the{CLEAR}Leader’s tough too...{SCROLL}but none of it could stop me. As for{NEWLINE}you, {VAR:0103:0}... we’ll see.{SCROLL}Blue: Sign-ups for the Indigo{NEWLINE}Conference start soon. If you want to{CLEAR}make it, quit dawdling like you always{CLEAR}do.",
+   "en": "Blue: Heh heh heh. The great Blue is a{NEWLINE}genius, after all. The trials before you{CLEAR}even meet the Leader are a real pain,{CLEAR}and the Leader’s tough too... but none{CLEAR}of it could stop me. As for you,{CLEAR}{VAR:0103:0}... I’m not so sure you could{CLEAR}pull it off.{SCROLL}Blue: Sign-ups for the Indigo{NEWLINE}Conference start soon. If you want in,{CLEAR}quit dawdling like always.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV016: voice: 本大爷 swagger kept; meaning: 就不一定办得到了 = may not manage it"
   },
   {
    "id": 111,
@@ -1085,10 +1085,10 @@
   {
    "id": 134,
    "zh": "我们家柔弱的小黄{NEWLINE}居然成长为了精英训练家。{CLEAR}看来外出旅行真的是非常锻炼人啊。",
-   "en": "My shy little Yellow has become an Ace{NEWLINE}Trainer! Traveling really does toughen{CLEAR}a person up.",
+   "en": "My frail little Yellow has become an Ace{NEWLINE}Trainer! Traveling really does toughen{CLEAR}a person up.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV016: meaning: 柔弱 = frail/delicate, not shy"
   },
   {
    "id": 135,
