@@ -27,7 +27,14 @@ The core builds with Apple clang and CMake 4 alone: the configuration (no Qt/SDL
 
 **Configuration.** DS mode, direct boot, melonDS's built-in **FreeBIOS** and generated firmware (no BIOS or firmware dump anywhere), interpreter (no JIT), software 3D renderer, unthreaded, audio drained and dropped. The notes' manual repro used the same except a threaded renderer, which only changes speed. Speed: about 500–600 frames/s on an M-series Mac, about twice DeSmuME's. Booting a save to the field takes about 11 s.
 
-**Determinism.** melonDS's RTC runs on emulated time. The harness sets it before boot (`rtc=`; `Harness` defaults to now, `start_at(clock=...)` and `emu_hang` use a fixed date), so two runs of the same inputs agree frame for frame. A savestate reloaded and run for the same frames gives the same RAM (tested).
+**Determinism.** melonDS's RTC runs on emulated time. The harness sets it before boot (`rtc=`; `Harness` defaults to now, `start_at(clock=...)` and `emu_hang` use a fixed date). The core leaves some members of the console object uninitialised (RTC I/O state, Wifi, GPU2D and ARM fields), so a console used to start from whatever the heap held. The shim's `HookedNDS` zeroes the object before construction. What is proven (2026-10-08):
+
+- Two consoles in one process, on a heap first filled with garbage and with a destroyed console's state, give byte-identical savestates at frames 0 and 200 (`test_melonds.Determinism`; the test fails without the zeroing).
+- Two processes booting player A's save give identical savestate hashes at frames 0, 200, 1300 and 3000.
+- Two processes running `hang --case rocket_hq` abort at the same frame (4283) with the same R1–R15, CPSR and abort LR.
+- A savestate reloaded and run for the same frames gives the same RAM.
+
+Not deterministic: **R0 after the Rocket HQ abort** (seen as `0x5`, `0xB`, `0xC`). The faulting `ldr r0,[r0]` is melonDS's `T_LDR_IMM`, which writes an uninitialised local variable into R0 when the read aborts. That is stack garbage inside the core, which the shim cannot reach without changing melonDS. The game never uses that R0 (the handler spins), but do not compare it.
 
 ## Shim C API (`melonds_shim.cpp`, ABI 1)
 
@@ -40,7 +47,7 @@ There is **no per-instruction or PC hook.** The interpreter loop (`ARMv5::Execut
 What melonDS offers in their place, with no core change:
 
 - **ARM9 exception record.** The core logs `ARM9: data abort (R15)`, prefetch aborts and undefined instructions through `Platform::Log`. The shim counts them, keeps the first and last R15 and the frame of the first abort. After a data abort the hack's handler spins in abort mode (CPSR mode `0x17`). Its LR minus 8 is the faulting instruction, in Thumb and ARM state alike (`ARMv5::DataAbort`: `R14 = R15 + (Thumb ? 4 : 0)`).
-- **Data watchpoints.** The `NDS` subclass overrides the virtual `ARM9Read8/16/32` and `ARM9Write8/16/32`, so every ARM9 access that leaves the TCMs (CPU loads and stores, ARM9 DMA) is checked against the watch ranges. A hit records address, size, value, read/write, R15, CPSR and frame into a buffer (4096 by default, overflow counted). `pc` in the Python hit is the instruction's address (R15 − 4 in Thumb, − 8 in ARM). The hits are buffered, not called back, so the game cannot be changed at the moment of the access. Accesses served by DTCM (the stack, in this game) are never seen.
+- **Data watchpoints.** The `NDS` subclass overrides the virtual `ARM9Read8/16/32` and `ARM9Write8/16/32`, so every ARM9 access that leaves the TCMs (CPU loads and stores, ARM9 DMA) is checked against the watch ranges. A hit records address, size, value, read/write, R15, CPSR and frame into a buffer (4096 by default, overflow counted). `pc` in the Python hit is the instruction's address (R15 − 4 in Thumb, − 8 in ARM). The hits are buffered, not called back, so the game cannot be changed at the moment of the access. A hit caused by ARM9 DMA carries the CPU's R15 and CPSR at the time of the transfer, not the code that started the DMA. Accesses served by DTCM (the stack, in this game) are never seen.
 
 ## Harness API for scenarios
 
@@ -80,9 +87,12 @@ From the command line, `--emulator melonds` comes before the subcommand and sets
 .venv/bin/python work/tools/emu_harness.py --emulator melonds info --sav S
 .venv/bin/python work/tools/emu_harness.py hang --case rocket_hq --rom R --sav S --expect hang|pass
 .venv/bin/python work/tools/emu_harness.py hang --case follower_viridian --rom R --sav S [--species 4] --expect hang|pass
+.venv/bin/python work/tools/emu_harness.py hang --case save --rom R --sav S [--walk LEFT,RIGHT] [--goal X,Y] --expect hang|pass
 ```
 
-`hang` runs on melonDS unless `--emulator desmume` is given. It checks the save by SHA-256 and writes `report.json` and screenshots to `work/build/harness/hang/<case>_<rom>_<emulator>/`. Exit 0 when the judgement matches `--expect`.
+`hang` runs on melonDS unless `--emulator desmume` is given. `fixes` (emu_fixes.py) and `check.py --full --emu` always run on DeSmuME: their scenarios use execution hooks and DeSmuME-approved crop digests. They ignore a stray `$EMU_HARNESS_EMULATOR` with a note and record `"emulator": "desmume"` in `fixes_report.json`.
+
+`MelonDS` objects are not thread-safe: use each console from one thread. Calls after `close()` raise `RuntimeError`. The library exports only the `mds_*` C API. It checks the save by SHA-256 and writes `report.json` and screenshots to `work/build/harness/hang/<case>_<rom>_<emulator>/`. Exit 0 when the judgement matches `--expect`.
 
 **Teleporting outdoors.** `start_at`/`SaveFile.place_player` from the default `memcheck/full_bag_6mons.sav` (saved indoors, map 500) to an outdoor map leaves the player invisible and unable to move, on DeSmuME as well. From a save made outdoors it works (player B's hash-named save, map 29, SHA-256 `0886514d…ebc9eb`, used by `follower_viridian`). Which LocalFieldData field makes the difference is not established. Indoor targets (Rocket HQ from `full_bag_6mons.sav`) work.
 
@@ -100,7 +110,38 @@ Builds from this branch (develop `172dbc0`): `develop.nds` = `build.py --no-patc
 | follower_viridian, Bulbasaur | develop (no reflection fix yet) | hang | **hang**, the same signature |
 | follower_viridian, Charmander (species 4) | Chinese and develop | pass | **pass**: all four steps, no abort |
 
+Bulbasaur fixture saves, `hang --case save`, run 2026-10-08 after the determinism fix. ROMs were reused read-only from the reflection fix's branch: full build `c72ad376…` and `--without bulbasaur-reflection-boundary` `acd75bfe…`.
+
+| Save | ROM | Expect | Result |
+|---|---|---|---|
+| Viridian pond, Bulbasaur | without the fix | hang | **hang** while Continue loads the map (frame 3475), fault `0x02024528`, both screens black |
+| Viridian pond, Bulbasaur | full build | pass | **pass**: four steps, ends at (1018,261) |
+| Route 22 pond, Bulbasaur | without the fix | hang | **hang** while Continue loads the map (frame 3468), fault `0x02024528`, both screens black |
+| Route 22 pond, Bulbasaur | full build | pass | **pass**: four steps, ends at (967,270) |
+| Viridian / Route 22, Charmander | without the fix | pass | **pass** |
+
 These match the manual melonDS 1.1 reproduction in [rocket_hq_freeze_repro_20261008.md](rocket_hq_freeze_repro_20261008.md) exactly: same CPSR, abort LR and faulting instruction. Loading the manual `.ml1` crash states in the shim also gives the same registers. The Bulbasaur freeze is a static, not a black, screen: the last frame stays up while the ARM9 spins in the abort handler.
+
+### The Bulbasaur reflection fixture saves (`hang --case save`)
+
+`--case save` boots any save as it is, picks Continue and walks `--walk` (one tile per direction). The goal is `--goal x,y` after the last step, or every step moving. `--fault-pc` checks where the abort is. An abort while Continue loads the map counts as a hang, and nothing is walked. It does not check the save's hash; the report records it.
+
+The four in-game saves of the reflection fix (work/notes/bulbasaur_reflection_fix.md, SHA-256s there) were made on the untouched Chinese ROM with one Pokémon in the party. Copy them into a git-ignored folder (here `work/build/reflection-fixtures/`). Then:
+
+```sh
+# Viridian City, north shore of the pond (Bulbasaur / Charmander following)
+.venv/bin/python work/tools/emu_harness.py hang --case save --rom WITHOUT.nds --sav viridian_bulbasaur.sav \
+    --walk LEFT,RIGHT,LEFT,RIGHT --goal 1018,261 --fault-pc 0x02024528 --expect hang
+.venv/bin/python work/tools/emu_harness.py hang --case save --rom FIXED.nds --sav viridian_bulbasaur.sav \
+    --walk LEFT,RIGHT,LEFT,RIGHT --goal 1018,261 --expect pass
+# Route 22, north shore of the pond beside Misty
+.venv/bin/python work/tools/emu_harness.py hang --case save --rom WITHOUT.nds --sav route22_bulbasaur.sav \
+    --walk LEFT,LEFT,RIGHT,RIGHT --goal 967,270 --fault-pc 0x02024528 --expect hang
+.venv/bin/python work/tools/emu_harness.py hang --case save --rom FIXED.nds --sav route22_bulbasaur.sav \
+    --walk LEFT,LEFT,RIGHT,RIGHT --goal 967,270 --expect pass
+```
+
+`FIXED.nds` is a full build (`build.py --no-patch`); `WITHOUT.nds` is `build.py --no-patch --without bulbasaur-reflection-boundary`. Use the Charmander saves with `--expect pass` on either ROM.
 
 ## Limits
 

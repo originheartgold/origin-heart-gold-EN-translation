@@ -79,6 +79,68 @@ class Boot(unittest.TestCase):
             self.assertFalse(m.in_abort_mode())
 
 
+@unittest.skipUnless(HAVE_LIB and ROM_CN.is_file(), "needs libmelonds_shim and work/rom/origin_v4.0.3_cn.nds")
+class Determinism(unittest.TestCase):
+    def test_two_consoles_on_a_dirty_heap_agree(self):
+        """The core leaves some members uninitialised; the shim zeroes the console before construction, so a
+        console made on a heap full of garbage (and of a destroyed console's state) runs like any other."""
+        import ctypes
+        import hashlib
+        libc = ctypes.CDLL(None)
+        libc.malloc.restype = ctypes.c_void_p
+        libc.malloc.argtypes = [ctypes.c_size_t]
+        libc.free.argtypes = [ctypes.c_void_p]
+        blocks = []
+        for n in (1 << 20, 4 << 20, 16 << 20) * 3:
+            p = libc.malloc(n)
+            ctypes.memset(p, 0xA5, n)
+            blocks.append(p)
+        with melonds.MelonDS() as old:
+            old.load_rom(ROM_CN)
+            old.run(60)
+        for p in blocks:
+            libc.free(p)
+        runs = []
+        consoles = [melonds.MelonDS(), melonds.MelonDS()]
+        try:
+            for m in consoles:
+                m.load_rom(ROM_CN, rtc=datetime.datetime(2026, 10, 9, 12))
+                first = hashlib.sha256(m.save_state()).hexdigest()
+                m.run(200)
+                runs.append((first, hashlib.sha256(m.save_state()).hexdigest()))
+        finally:
+            for m in consoles:
+                m.close()
+        self.assertEqual(runs[0], runs[1])
+
+    def test_closed_console_refuses_calls(self):
+        m = melonds.MelonDS()
+        m.close()
+        with self.assertRaisesRegex(RuntimeError, "closed"):
+            m.run(1)
+
+
+class HangCases(unittest.TestCase):
+    def test_save_case_arguments(self):
+        import argparse
+
+        import emu_hang
+        a = argparse.Namespace(walk="left, RIGHT", goal="967,270", fault_pc=0x02024528)
+        self.assertEqual(emu_hang.save_case(a), {"steps": ("LEFT", "RIGHT"), "goal": (967, 270),
+                                                 "fault_pc": 0x02024528})
+        with self.assertRaises(SystemExit):
+            emu_hang.save_case(argparse.Namespace(walk="NORTH", goal=None, fault_pc=None))
+
+    def test_judge_without_goal(self):
+        import emu_hang
+        case = {"steps": (), "goal": None, "fault_pc": None}
+        hung = {"hung": True, "reached_goal": False, "abort": None}
+        self.assertEqual(emu_hang.judge(hung, "hang", case), [])
+        alive = {"hung": False, "reached_goal": True, "screen_changed": True, "exceptions": {"data_aborts": 0}}
+        self.assertEqual(emu_hang.judge(alive, "pass", case), [])
+        self.assertTrue(emu_hang.judge(alive, "hang", case))
+
+
 class FakeMelon:
     """Just enough of melonds.MelonDS for the Harness adapter."""
 

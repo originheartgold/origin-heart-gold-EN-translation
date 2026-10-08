@@ -2,6 +2,8 @@
 
     <venv>/bin/python work/tools/emu_harness.py [--emulator melonds] hang --case CASE \
         --rom R --sav S --expect hang|pass [--species N] [--out DIR]
+    <venv>/bin/python work/tools/emu_harness.py hang --case save --rom R --sav S --walk LEFT,RIGHT,... \
+        [--goal X,Y] [--fault-pc 0x...] --expect hang|pass
 
 melonDS 1.1 emulates the ARM9 protection unit, so a NULL read the hack makes is a data abort there (and on
 hardware) and the game hangs in the abort handler; DeSmuME reads address 0 and goes on. A case may first edit a
@@ -14,6 +16,10 @@ Cases:
     rocket_hq          D-2043: player A's save, Rocket HQ B1F, east from (13,4) to the camera ambush at (23,4)
     follower_viridian  the lead Pokemon (--species, default 1 Bulbasaur) follows the player along the Viridian City
                        pond (the Bulbasaur reflection scene); player B's outdoor save, teleported for Continue
+    save               any save as it is: Continue, then the --walk steps (none: only watch the field). The goal
+                       is --goal (x,y after the last step) or, without it, every step moving. An abort while
+                       Continue loads the map counts as a hang (no step is walked). Reproductions of the
+                       Bulbasaur fixture saves: work/notes/melonds_backend.md
 The input ROM and save are never written. Evidence: <out>/<case>_<rom>_<emulator>/report.json and screenshots.
 """
 from __future__ import annotations
@@ -44,9 +50,12 @@ RTC = datetime.datetime(2026, 10, 9, 12, 0, 0)
 
 
 def add_arguments(p):
-    p.add_argument("--case", default="rocket_hq", choices=sorted(CASES))
+    p.add_argument("--case", default="rocket_hq", choices=sorted(CASES) + ["save"])
     p.add_argument("--rom", required=True)
-    p.add_argument("--sav", required=True, help="the case's battery save (checked by SHA-256, never written)")
+    p.add_argument("--sav", required=True, help="the battery save (never written); the named cases check its SHA-256")
+    p.add_argument("--walk", default="", help="case save: comma list of UP/DOWN/LEFT/RIGHT, one tile each")
+    p.add_argument("--goal", help="case save: x,y the last step must reach (default: every step moves)")
+    p.add_argument("--fault-pc", type=lambda v: int(v, 0), help="case save, expect hang: the faulting instruction")
     p.add_argument("--expect", choices=("hang", "pass"), required=True)
     p.add_argument("--species", type=int, help="party lead species for cases that set one (follower_viridian)")
     p.add_argument("--out", default=None, help="evidence folder (default <work>/build/harness/hang)")
@@ -75,12 +84,25 @@ def prepare_save(eh, sav, case, species, folder):
     return sf.write(Path(folder) / "edited.sav")
 
 
+def save_case(a):
+    """The `save` case from --walk / --goal / --fault-pc."""
+    steps = tuple(d.strip().upper() for d in a.walk.split(",") if d.strip())
+    bad = [d for d in steps if d not in ("UP", "DOWN", "LEFT", "RIGHT")]
+    if bad:
+        raise SystemExit(f"--walk: unknown direction(s) {bad}")
+    goal = tuple(int(v) for v in a.goal.split(",")) if a.goal else None
+    if goal is not None and len(goal) != 2:
+        raise SystemExit("--goal takes x,y")
+    return {"steps": steps, "goal": goal, "fault_pc": a.fault_pc}
+
+
 def walk_case(h, case, watch_frames=240):
     """Run one case on a booted Harness standing in the field; returns the report dict (no judgement)."""
     steps = []
-    if h.position() != tuple(case["start"]):
+    if case.get("start") and h.position() != tuple(case["start"]):
         raise RuntimeError(f"the field starts at {h.position()}, the case expects {tuple(case['start'])}")
-    for d in case["steps"]:
+    early = h.arm9_abort() if h.emulator == "melonds" else None     # e.g. while Continue loaded the map
+    for d in case["steps"] if not early else ():
         ok = h.step_dir(d)
         pos = h.position()
         abort = h.arm9_abort() if h.emulator == "melonds" else None
@@ -91,8 +113,12 @@ def walk_case(h, case, watch_frames=240):
     rep = h.hang_report(watch_frames, probe_key="B")
     h.screenshot("after_watch")
     rep["steps"] = steps
-    rep["reached_goal"] = (len(steps) == len(case["steps"]) and steps[-1]["moved"]
-                           and tuple(steps[-1]["position"][1:]) == tuple(case["goal"]))
+    rep["abort_before_walking"] = early is not None
+    done = not early and len(steps) == len(case["steps"]) and all(s["moved"] for s in steps)
+    if case.get("goal") is None:
+        rep["reached_goal"] = done
+    else:
+        rep["reached_goal"] = bool(done and steps and tuple(steps[-1]["position"][1:]) == tuple(case["goal"]))
     return rep
 
 
@@ -100,14 +126,14 @@ def judge(rep, expect, case):
     ab = rep.get("abort")
     if expect == "hang":
         problems = [] if rep["hung"] else ["the game did not hang"]
-        if rep["reached_goal"]:
-            problems.append(f"reached the goal {case['goal']}")
+        if rep["reached_goal"] and case["steps"]:
+            problems.append(f"reached the goal {case.get('goal') or 'after every step'}")
         if ab and case.get("fault_pc") and ab["fault_pc"] != case["fault_pc"]:
             problems.append(f"aborted at {ab['fault_pc']:#010x}, not {case['fault_pc']:#010x}")
     else:
         problems = []
         if not rep["reached_goal"]:
-            problems.append(f"did not reach {case['goal']}")
+            problems.append(f"did not reach {case.get('goal') or 'the end of the walk'}")
         if rep["hung"]:
             problems.append("the game hung")
         if rep.get("exceptions", {}).get("data_aborts"):
@@ -119,15 +145,15 @@ def judge(rep, expect, case):
 
 def run(a):
     import emu_harness as eh
-    case = CASES[a.case]
+    case = CASES[a.case] if a.case != "save" else save_case(a)
     emulator = os.environ.get("EMU_HARNESS_EMULATOR") or "melonds"
     rom, sav = Path(a.rom).resolve(), Path(a.sav).resolve()
     have = sha256(sav)
-    if have != case["sav_sha256"]:
+    if case.get("sav_sha256") and have != case["sav_sha256"]:
         raise SystemExit(f"{sav}: SHA-256 {have}, the case needs {case['sav_sha256']}")
-    species = a.species if a.species is not None else case.get("species")
-    tag = f"{a.case}" + (f"_sp{species}" if species is not None else "")
-    out = Path(a.out or eh.DEF_OUT / "hang") / f"{tag}_{rom.stem}_{emulator}"
+    species = (a.species if a.species is not None else case.get("species")) if "species" in case else None
+    tag = (f"{a.case}" if a.case != "save" else f"save_{sav.stem}") + (f"_sp{species}" if species is not None else "")
+    out = (Path(a.out or eh.DEF_OUT / "hang") / f"{tag}_{rom.stem}_{emulator}").resolve()
     tmp = tempfile.mkdtemp(prefix="emu_hang_")
     try:
         boot_sav = prepare_save(eh, sav, case, species, tmp)

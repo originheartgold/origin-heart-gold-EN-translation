@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 // melonds_shim - a small C API over the melonDS 1.1 core for the emulator harness (work/tools/melonds.py).
 //
 // Copyright (C) 2026 the Origin HeartGold English translation project.
@@ -49,7 +50,7 @@ struct Hit {
 };
 
 struct Watch {
-    uint32_t start, end;   // [start, end)
+    uint64_t start, end;   // [start, end), 64-bit so start + length cannot wrap
     uint32_t kinds;        // bit 0 read, bit 1 write
 };
 
@@ -85,11 +86,21 @@ class HookedNDS final : public NDS {
 public:
     HookedNDS(NDSArgs&& args, Instance* inst) : NDS(std::move(args), inst), Inst(inst) {}
 
+    // The core leaves some members uninitialised (RTC I/O state, Wifi, GPU2D and ARM fields), so a fresh console
+    // would start from whatever the heap held and two instances or processes could diverge. Zero the object
+    // before construction so every run starts from the same bytes.
+    static void* operator new(size_t n) {
+        void* p = ::operator new(n);
+        std::memset(p, 0, n);
+        return p;
+    }
+    static void operator delete(void* p) { ::operator delete(p); }
+
     void Record(uint32_t addr, uint32_t size, uint32_t value, bool write) {
         Instance* in = Inst;
         uint32_t kind = write ? 2u : 1u;
         for (const Watch& w : in->watches) {
-            if ((w.kinds & kind) && addr < w.end && addr + size > w.start) {
+            if ((w.kinds & kind) && addr < w.end && (uint64_t)addr + size > w.start) {
                 if (in->hits.size() < in->hit_capacity)
                     in->hits.push_back({addr, size, value, write ? 1u : 0u, ARM9.R[15], ARM9.CPSR, in->frame, 0});
                 else
@@ -334,8 +345,9 @@ int Net_RecvPacket(u8*, void*) { return 0; }
 
 void Camera_Start(int, void*) {}
 void Camera_Stop(int, void*) {}
-void Camera_CaptureFrame(int, u32* frame, int width, int height, bool, void*) {
-    std::memset(frame, 0, (size_t)width * height * 4);
+void Camera_CaptureFrame(int, u32* frame, int width, int height, bool yuv, void*) {
+    // YUV frames pack two pixels per u32
+    std::memset(frame, 0, (size_t)(yuv ? width / 2 : width) * height * 4);
 }
 void Mic_Start(void*) {}
 void Mic_Stop(void*) {}
@@ -576,10 +588,11 @@ MDS_API uint32_t mds_log_drain(Instance* in, char* buf, uint32_t cap) {
 }
 
 // Data watchpoints on the ARM9 bus. kinds: 1 read, 2 write, 3 both. Accesses served by ITCM/DTCM never reach
-// the bus and are not seen.
+// the bus and are not seen. ARM9 DMA transfers are seen too; their hits carry the CPU's R15/CPSR at the time of
+// the transfer, not the code that started it.
 MDS_API int mds_watch_add(Instance* in, uint32_t start, uint32_t length, uint32_t kinds) {
     if (!length || !(kinds & 3)) return 0;
-    in->watches.push_back({start, start + length, kinds & 3});
+    in->watches.push_back({start, (uint64_t)start + length, kinds & 3});
     return (int)in->watches.size();
 }
 MDS_API void mds_watch_clear(Instance* in) { in->watches.clear(); }

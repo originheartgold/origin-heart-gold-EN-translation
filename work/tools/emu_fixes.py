@@ -991,8 +991,20 @@ def judge(selection, results):
     return rows
 
 
+BACKEND = "desmume"       # the scenarios use execution hooks and DeSmuME-approved crop digests (APPROVED)
+
+
+def pin_backend():
+    """Run every Harness of this process and its children on DeSmuME, whatever $EMU_HARNESS_EMULATOR says."""
+    was = os.environ.get("EMU_HARNESS_EMULATOR")
+    if was and was != BACKEND:
+        print(f"note: fix scenarios run on {BACKEND}; ignoring EMU_HARNESS_EMULATOR={was}", file=sys.stderr)
+    os.environ["EMU_HARNESS_EMULATOR"] = BACKEND
+
+
 def run(a):
     from concurrent.futures import ThreadPoolExecutor
+    pin_backend()
     out = Path(a.out).resolve()
     if (out / "fixes_report.json").exists() and not a.overwrite:
         raise ValueError(f"{out}/fixes_report.json exists; choose a new --out or pass --overwrite")
@@ -1033,7 +1045,7 @@ def run(a):
         results = {(job[0], job[1]): obs for job, obs in ex.map(go, jobs)}
     rows = judge(selection, results)
     inputs["fixed_applied_from"] = applied_from
-    report = {"schema": 1, "inputs": inputs, "controls_built": built, "controls_provenance": provenance, "seconds": round(time.time() - t0, 1),
+    report = {"schema": 1, "emulator": BACKEND, "inputs": inputs, "controls_built": built, "controls_provenance": provenance, "seconds": round(time.time() - t0, 1),
               "pass": all(r["pass"] for r in rows), "fixes": rows,
               "uncovered": {fx: why for fx, why in UNCOVERED.items()},
               "observations": {f"{sc}/{label}": obs for (sc, label), obs in results.items()}}
@@ -1047,6 +1059,7 @@ def run(a):
 
 
 def cmd_child(a):
+    pin_backend()
     obs = observe(a.scenario, a.rom, a.sav_dir, a.out)
     print("RESULT " + json.dumps(obs, default=str), flush=True)
     return 0

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: GPL-3.0-or-later
 """build - build libmelonds_shim (the headless melonDS 1.1 backend of the emulator harness).
 
     python3 work/tools/melonds_shim/build.py [--src DIR] [--out DIR] [--fetch] [--jobs N]
@@ -29,7 +30,8 @@ PIN_URL = "https://github.com/melonDS-emu/melonDS"
 PIN_TAG = "1.1"
 PIN_COMMIT = "b86390e4428bf38ce4c1ce0e9ca446d6d25955e8"   # tag 1.1 is a lightweight tag: no tag object
 CMAKE_OPTIONS = [
-    "-DCMAKE_BUILD_TYPE=Release", "-DBUILD_QT_SDL=OFF", "-DENABLE_OGLRENDERER=OFF", "-DENABLE_GDBSTUB=OFF",
+    "-DCMAKE_BUILD_TYPE=Release", "-DUSE_VCPKG=OFF", "-DBUILD_QT_SDL=OFF", "-DENABLE_OGLRENDERER=OFF",
+    "-DENABLE_GDBSTUB=OFF",
     "-DENABLE_JIT=OFF", "-DENABLE_LTO_RELEASE=OFF", "-DCMAKE_POSITION_INDEPENDENT_CODE=ON",
     "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",           # CMake 4 refuses the policy level teakra asks for
 ]
@@ -89,7 +91,8 @@ def main(argv=None):
     if arch_define():
         flags.append(f"-DARCHITECTURE_{arch_define()}=1")
     if sys.platform == "darwin":
-        flags += ["-mmacosx-version-min=10.15", "-install_name", "@rpath/" + LIB]
+        flags += ["-mmacosx-version-min=10.15", "-install_name", "@rpath/" + LIB,
+                  "-Wl,-exported_symbol,_mds_*"]           # only the C API, not the melonDS/C++ symbols
     run([a.cxx, *flags, f"-I{src / 'src'}", f"-I{core / 'src'}", "-o", out / LIB, HERE / "melonds_shim.cpp",
          *libs, "-lpthread"])
     (out / "BUILD_INFO.txt").write_text(

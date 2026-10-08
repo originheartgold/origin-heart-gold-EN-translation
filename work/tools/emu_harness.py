@@ -605,8 +605,9 @@ class Harness:
 
         emulator: "desmume" (py-desmume, the default) or "melonds" (the melonDS 1.1 shim,
         work/tools/melonds.py); None reads $EMU_HARNESS_EMULATOR. On melonDS the console clock starts
-        at rtc (default: now) and advances with emulated time only, so runs are always repeatable;
-        there are no execution hooks (on_exec raises), but data watchpoints and the ARM9 exception
+        at rtc (default: now) and advances with emulated time only; with a fixed rtc, runs of the same
+        inputs give the same savestates across instances and processes (work/notes/melonds_backend.md,
+        Determinism: one exception, R0 after a data abort). There are no execution hooks (on_exec raises), but data watchpoints and the ARM9 exception
         record are available (watch, watch_hits, cpu_exceptions, hang_report)."""
         self.emulator = emulator or default_emulator()
         if self.emulator not in EMULATORS:
@@ -620,7 +621,7 @@ class Harness:
         self._keys = {k: getattr(Keys, "KEY_" + k) for k in KEYS}
         self._slot = _EmulatorSlot()       # waits while MAX_EMULATORS emulators run on this machine
         self.rom = Path(rom).resolve()
-        self.out = Path(out)
+        self.out = Path(out).resolve()      # the DeSmuME backend chdirs into a temp folder
         self.out.mkdir(parents=True, exist_ok=True)
         self.verbose = verbose
         self._tmp = Path(tempfile.mkdtemp(prefix="emu_harness_"))
@@ -661,7 +662,7 @@ class Harness:
         self._keys = {k: k for k in KEYS}
         self._slot = _EmulatorSlot()
         self.rom = Path(rom).resolve()
-        self.out = Path(out)
+        self.out = Path(out).resolve()      # the DeSmuME backend chdirs into a temp folder
         self.out.mkdir(parents=True, exist_ok=True)
         self.verbose = verbose
         self._tmp = None                        # melonDS reads ROM and save from memory: no temp dir, no chdir
@@ -1430,7 +1431,7 @@ class start_at:
         self.h = Harness(rom, self._dir / "edited.sav", out=out, verbose=verbose, emulator=self.emulator,
                          rtc=clock if (self.emulator or default_emulator()) == "melonds" else None)
         try:
-            if clock:
+            if clock and self.h.emulator != "melonds":     # melonDS: the console RTC was set to clock before boot
                 self.h.set_clock(clock)
             if hooks:
                 hooks(self.h)          # installed before boot: sees calls made while the map loads

@@ -105,7 +105,8 @@ def _buf(data):
 
 
 class MelonDS:
-    """One melonDS console. Several may live in one process (unlike py-desmume), each on its own thread."""
+    """One melonDS console. Several may live in one process (unlike py-desmume). Not thread-safe: use each console
+    from one thread only (the shim keeps per-call state for the core's log callback in a thread-local)."""
 
     def __init__(self, library=None, log_echo=False):
         self.lib = load_library(library)
@@ -117,6 +118,12 @@ class MelonDS:
         self.direct_boot = True
 
     # ---------------------------------------------------------------- lifecycle
+    @property
+    def _h(self):
+        if not self.h:
+            raise RuntimeError("this MelonDS console is closed")
+        return self.h
+
     def close(self):
         if self.h:
             self.lib.mds_destroy(self.h)
@@ -132,7 +139,7 @@ class MelonDS:
         """Insert the ROM (a path) with an optional battery save (bytes) and boot. rtc: a datetime for the
         console clock, which then advances with emulated time only (runs are repeatable)."""
         b, n = _buf(sav or b"")
-        if not self.lib.mds_load_rom(self.h, str(Path(rom)).encode(), b if sav else None, n if sav else 0,
+        if not self.lib.mds_load_rom(self._h, str(Path(rom)).encode(), b if sav else None, n if sav else 0,
                                      1 if direct_boot else 0):
             raise RuntimeError(f"melonDS could not load {rom}")
         self.direct_boot = direct_boot
@@ -140,23 +147,23 @@ class MelonDS:
             self.set_rtc(rtc)
 
     def reset(self):
-        self.lib.mds_reset(self.h, 1 if self.direct_boot else 0)
+        self.lib.mds_reset(self._h, 1 if self.direct_boot else 0)
 
     def set_rtc(self, when):
-        self.lib.mds_set_rtc(self.h, when.year, when.month, when.day, when.hour, when.minute, when.second)
+        self.lib.mds_set_rtc(self._h, when.year, when.month, when.day, when.hour, when.minute, when.second)
 
     # ---------------------------------------------------------------- running and input
     @property
     def frame(self):
-        return self.lib.mds_frame(self.h)
+        return self.lib.mds_frame(self._h)
 
     def run(self, frames=1):
         for _ in range(frames):
-            self.lib.mds_run_frame(self.h)
+            self.lib.mds_run_frame(self._h)
 
     def stopped(self):
         """0 while running, else 1 + melonDS's Platform::StopReason."""
-        return self.lib.mds_stopped(self.h)
+        return self.lib.mds_stopped(self._h)
 
     @property
     def keys(self):
@@ -166,7 +173,7 @@ class MelonDS:
         self._keys = 0
         for k in keys:
             self._keys |= KEY_BITS[k]
-        self.lib.mds_set_keys(self.h, self._keys)
+        self.lib.mds_set_keys(self._h, self._keys)
 
     def hold(self, *keys):
         self.set_keys(self.keys | set(keys))
@@ -181,16 +188,16 @@ class MelonDS:
         self.run(after)
 
     def touch(self, x, y):
-        self.lib.mds_touch(self.h, x, y)
+        self.lib.mds_touch(self._h, x, y)
 
     def release_touch(self):
-        self.lib.mds_release_touch(self.h)
+        self.lib.mds_release_touch(self._h)
 
     # ---------------------------------------------------------------- screen
     def screen_rgb(self):
         """Raw 256x384 RGB bytes (top screen rows first)."""
         out = (ctypes.c_uint8 * (256 * 384 * 3))()
-        self.lib.mds_screenshot_rgb(self.h, out)
+        self.lib.mds_screenshot_rgb(self._h, out)
         return bytes(out)
 
     def screenshot(self):
@@ -202,21 +209,21 @@ class MelonDS:
         """Bytes as the ARM9 sees them: ITCM, DTCM, then the bus (main RAM, WRAM, VRAM, ...). Reading I/O
         registers goes through the core's register reads, which may have side effects."""
         out = (ctypes.c_uint8 * max(1, n))()
-        self.lib.mds_read(self.h, addr, out, n)
+        self.lib.mds_read(self._h, addr, out, n)
         return bytes(out[:n])
 
     def write(self, addr, data):
         b, n = _buf(data)
-        self.lib.mds_write(self.h, addr, b, n)
+        self.lib.mds_write(self._h, addr, b, n)
 
     def read_main_ram(self, offset, n):
         out = (ctypes.c_uint8 * max(1, n))()
-        self.lib.mds_read_main_ram(self.h, offset, out, n)
+        self.lib.mds_read_main_ram(self._h, offset, out, n)
         return bytes(out[:n])
 
     def write_main_ram(self, offset, data):
         b, n = _buf(data)
-        self.lib.mds_write_main_ram(self.h, offset, b, n)
+        self.lib.mds_write_main_ram(self._h, offset, b, n)
 
     def u8(self, a):
         return self.read(a, 1)[0]
@@ -241,19 +248,19 @@ class MelonDS:
         """dict: r (R0-R15), cpsr, mode, thumb, abt/svc/irq/und banked (sp, lr, spsr), cur_instr, halted.
         Between frames R15 is the next instruction + 8 (ARM) / + 4 (Thumb)."""
         out = (ctypes.c_uint32 * REGS)()
-        self.lib.mds_cpu_regs(self.h, 0 if cpu == 9 else 1, out)
+        self.lib.mds_cpu_regs(self._h, 0 if cpu == 9 else 1, out)
         v = list(out)
         return {"r": v[:16], "cpsr": v[16], "mode": v[16] & 0x1F, "thumb": bool(v[16] & 0x20),
                 "abt": v[17:20], "svc": v[20:23], "irq": v[23:26], "und": v[26:29],
                 "cur_instr": v[29], "halted": v[30]}
 
     def set_reg(self, reg, value, cpu=9):
-        self.lib.mds_set_cpu_reg(self.h, 0 if cpu == 9 else 1, reg, value)
+        self.lib.mds_set_cpu_reg(self._h, 0 if cpu == 9 else 1, reg, value)
 
     def exceptions(self):
         """ARM9 exceptions the core logged since boot (or clear_exceptions), and battery save writes."""
         out = (ctypes.c_uint32 * 10)()
-        self.lib.mds_exceptions(self.h, out)
+        self.lib.mds_exceptions(self._h, out)
         v = list(out)
         return {"data_aborts": v[0], "first_data_abort_r15": v[1], "first_data_abort_frame": v[2],
                 "last_data_abort_r15": v[3], "prefetch_aborts": v[4], "first_prefetch_abort_r15": v[5],
@@ -261,7 +268,7 @@ class MelonDS:
                 "last_save_write_frame": v[9]}
 
     def clear_exceptions(self):
-        self.lib.mds_clear_exceptions(self.h)
+        self.lib.mds_clear_exceptions(self._h)
 
     def in_abort_mode(self):
         return self.regs()["mode"] == MODE_ABORT
@@ -271,7 +278,7 @@ class MelonDS:
         lines = []
         buf = ctypes.create_string_buffer(65536)
         while True:
-            n = self.lib.mds_log_drain(self.h, buf, len(buf))
+            n = self.lib.mds_log_drain(self._h, buf, len(buf))
             if not n:
                 return lines
             lines += buf.raw[:n].decode("utf-8", "replace").splitlines()
@@ -280,18 +287,18 @@ class MelonDS:
     def watch(self, start, length, read=False, write=True):
         """Record ARM9 bus accesses (CPU loads/stores outside the TCMs, ARM9 DMA) touching [start, start+length)."""
         kinds = (1 if read else 0) | (2 if write else 0)
-        if not self.lib.mds_watch_add(self.h, start, length, kinds):
+        if not self.lib.mds_watch_add(self._h, start, length, kinds):
             raise ValueError("watch needs a length and read and/or write")
 
     def clear_watches(self):
-        self.lib.mds_watch_clear(self.h)
+        self.lib.mds_watch_clear(self._h)
 
     def watch_hits(self, max_hits=4096):
         """Hits since the last call: dicts addr, size, value, write, pc (instruction address), thumb, frame.
         The list's .dropped attribute counts hits lost to the shim's buffer (default 4096)."""
         out = (ctypes.c_uint32 * (8 * max_hits))()
         dropped = ctypes.c_uint32(0)
-        n = self.lib.mds_watch_hits(self.h, out, max_hits, ctypes.byref(dropped))
+        n = self.lib.mds_watch_hits(self._h, out, max_hits, ctypes.byref(dropped))
         hits = _Hits()
         for i in range(n):
             addr, size, value, wr, r15, cpsr, frame, _ = out[8 * i:8 * i + 8]
@@ -303,16 +310,16 @@ class MelonDS:
 
     # ---------------------------------------------------------------- savestates and battery
     def save_state(self):
-        n = self.lib.mds_savestate_save(self.h)
+        n = self.lib.mds_savestate_save(self._h)
         if not n:
             raise RuntimeError("melonDS savestate failed")
         out = (ctypes.c_uint8 * n)()
-        self.lib.mds_savestate_copy(self.h, out, n)
+        self.lib.mds_savestate_copy(self._h, out, n)
         return bytes(out)
 
     def load_state(self, data):
         b, n = _buf(data)
-        if not self.lib.mds_savestate_load(self.h, b, n):
+        if not self.lib.mds_savestate_load(self._h, b, n):
             raise RuntimeError("melonDS could not load the savestate (other version or ROM?)")
 
     def save_state_file(self, path):
@@ -322,14 +329,14 @@ class MelonDS:
         self.load_state(Path(path).read_bytes())
 
     def battery(self):
-        n = self.lib.mds_save_length(self.h)
+        n = self.lib.mds_save_length(self._h)
         out = (ctypes.c_uint8 * max(1, n))()
-        got = self.lib.mds_save_read(self.h, out, n)
+        got = self.lib.mds_save_read(self._h, out, n)
         return bytes(out[:got])
 
     def set_battery(self, data):
         b, n = _buf(data)
-        self.lib.mds_save_write(self.h, b, n)
+        self.lib.mds_save_write(self._h, b, n)
 
 
 class _Hits(list):
