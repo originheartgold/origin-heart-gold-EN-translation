@@ -751,6 +751,11 @@ class PrinterTrace:
         from text_speed_checks import unfreed
         return unfreed(self.allocations, self.frees)
 
+    def unfinished(self):
+        """Ids of the tasks whose loop pass had not ended when the recording stopped (a recording
+        that ends inside a task saw only part of it)."""
+        return {rec['id'] for rec in self._open}
+
 def io_reads(payload):
     """{routine: [(address, mnemonic, base register, offset register or None, offset)]}: every
     byte, halfword or word load in print_task, frame_end and pass_end (from each entry to the next

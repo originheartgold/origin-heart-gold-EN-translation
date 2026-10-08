@@ -138,7 +138,10 @@ def main():
                         press = h.frame
                         h.press('A', after=120)
                         rows = list(tracer.glyphs)
-                    tasks = [t for t in tracer.tasks if t['font'] == 1]
+                    # a task still running when the case stopped recording is not judged: its
+                    # reading after the render falls after the recording (phase 1, tap-1)
+                    cut = tracer.unfinished()
+                    tasks = [t for t in tracer.tasks if t['font'] == 1 and t['id'] not in cut]
                     native, original = len(tasks), sum(1 for t in tasks if t['delegated'])
                     require(native > 0 and len(page1) == PAGE1, f'{tag}: page 1 incomplete ({len(rows)} glyphs)')
                     require(h.u16(opts) == value, f'{tag}: Options changed')
