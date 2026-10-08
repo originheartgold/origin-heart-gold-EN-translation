@@ -1130,3 +1130,37 @@ Limits:
 - msgload: only the summary crash. The bag scenarios do not fail on the control (memcheck `bag`, `bag_full` on
   the build without msgload: passed, heap 6 with 112 and 2984 bytes to spare, warnings only), so the bag half
   of the fix is shown by memcheck's headroom figures, not by a crash.
+
+## Following-Pokémon water reflection: Bulbasaur NULL pointer
+
+`reflection` (`work/tools/emu_reflection.py`) checks the fix `work/patches/bulbasaur-reflection-boundary`
+(overlay 1, one byte at `021F629A`, `07 DD` -> `07 DB`, D-2270). With Bulbasaur following (sprite 428) the
+water-reflection resolver `021F61E8` picks the generic field object+0x10C, which is NULL for a follower,
+and the two reflection callbacks hand it to the graphics getters `0202451C` / `02024558`, which assert and
+read address 0xB6 / 0xB8. DeSmuME reads it and continues, so the test follows the call chain with read-only
+hooks (resolver entry for the follower's sprite and a reflection caller, the pointer load and its field,
+the return, both getters, their assertions) instead of waiting for a freeze.
+
+Each case restores one baseline state (Continue from the save), makes the species the only party Pokémon
+in RAM, warps with the game's Warp command and walks four steps along a pond shore. Scenes (`--scene`):
+`viridian` (the dry strip north of the Viridian City pond) and `route22` (the north shore of the Route 22
+pond, west of Misty and her Pokémon). Cases (`--case`): `bulbasaur`, `charmander`, `onix`.
+`--expect original`: Bulbasaur must show the NULL chain on every reflection call (field +0x10C, a NULL
+return, two NULL getter arguments, two assertions) and the others none; `--expect fixed`: no case may.
+Wrong branch bytes, a resolver that differs from the expected one (checked in the ROM before booting), a
+step that ends on the wrong tile, a hook error or no reflection call at all fail the run.
+
+```sh
+<primary-checkout>/.venv/bin/python work/tools/emu_harness.py reflection \
+  --rom <absolute-path-to-build-without-the-fix.nds> --sav <abs>/work/build/memcheck/market.sav \
+  --out work/build/reflection/without --expect original
+<primary-checkout>/.venv/bin/python work/tools/emu_harness.py reflection \
+  --rom <absolute-path-to-full-build.nds> --sav <abs>/work/build/memcheck/market.sav \
+  --out work/build/reflection/fixed --expect fixed
+```
+
+The untouched Chinese ROM passes `--expect original`. A fresh `report.json` per run holds the input hashes,
+per case the party, the steps, the branch bytes, counters, bounded samples (object, field, returned
+pointer, the follower's own pointer) and screenshots; existing reports are not overwritten. One emulator
+per run, about 40 s. Results of 2026-10-08 and the melonDS check still to do:
+[bulbasaur_reflection_fix.md](bulbasaur_reflection_fix.md).

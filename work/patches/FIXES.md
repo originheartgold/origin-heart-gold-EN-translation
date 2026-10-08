@@ -29,6 +29,7 @@ Stages (and the order of this list): font → graphics → hardcoded strings →
 | [`outfit-chooser-strings`](#outfit-chooser-strings) | strings | yes | – | Outfit chooser labels (hardcoded in overlay 58) |
 | [`pcbox-name-width`](#pcbox-name-width) | data | yes | – | PC box header: species-name window wide enough for 10 characters |
 | [`antipiracy`](#antipiracy) | code | yes | – | Real hardware: the six DS Protect entry points return the genuine-cart values |
+| [`bulbasaur-reflection-boundary`](#bulbasaur-reflection-boundary) | code | yes | – | Following Pokémon: Bulbasaur's reflection in water no longer reads a NULL graphics pointer (black screen over water) |
 | [`ivev-panel`](#ivev-panel) | code | yes | – | Summary IV/EV panel: the IV column clears the English stat labels |
 | [`msgload`](#msgload) | code | yes | – | Text banks are read line by line (fixes the summary and bag memory crashes) |
 | [`namelen`](#namelen) | code | yes | – | Name lengths: US limits (7 characters for trainers, 10 for Pokémon) |
@@ -1048,6 +1049,184 @@ GENUINE_ALL_GOOD equ 1          ; "all checks pass":   1 on a genuine cart
     stub GENUINE_ANY_BAD
 .org 0x02263ECC                 ; +0xCCC: empty check list, all good (already always 1)
     stub GENUINE_ALL_GOOD
+
+.close
+```
+
+</details>
+
+## bulbasaur-reflection-boundary
+
+**Following Pokémon: Bulbasaur's reflection in water no longer reads a NULL graphics pointer (black screen over water)**
+
+- Kind: code
+- Enabled: yes
+- Requires: nothing
+- Decisions: D-2270
+- Source: `work/patches/bulbasaur-reflection-boundary/fix.toml`
+
+**Why (the Chinese hack):**
+
+Players: with Bulbasaur as the following Pokémon, the game can black-screen or freeze when Bulbasaur walks next
+to water that shows reflections. A player on Delta (iOS) reported a black screen in Viridian City when
+switching the lead to Bulbasaur while standing above the pond; a separate bug report (Delta and melonDS)
+describes a freeze on Route 22 'next to Misty' when walking away from one spot, which the user links to this
+bug. In DeSmuME the faulty lookup shows at both ponds (Viridian City; Route 22 next to Misty) with Bulbasaur
+and never with Charmander or Onix; DeSmuME itself keeps running, and the black screen has not yet been
+reproduced on melonDS or hardware. The untouched Chinese ROM does the same, so this is a bug of the hack.
+
+Status: D-1337 says hack bugs are reported, not fixed. This fix is a user-approved exception to it
+(D-2270, 2026-10-08); other hack bugs stay report-only.
+
+Technical: the water reflection of a map object draws with the graphics object that overlay 1's
+ReflectionGfx_Get (0x021F61E8) returns. For sprite ids 428..1894, the following Pokémon, that is the follower's
+own graphics pointer at object+0x108; for most other ids the generic field at object+0x10C. The lower bound
+is 'cmp r0, #428; ble' (0x021F6298), so 428 itself, Bulbasaur, the first follower sprite, takes the generic
+field, which is NULL for a follower. Both reflection callbacks (0x021FCC88, 0x021FD19A) hand the result to
+the graphics getters 0x0202451C / 0x02024558 without a check: they call the assertion handler, which
+returns in this build, and then read address 0xB6 / 0xB8. On hardware and melonDS address 0 is not mapped
+(the ARM9 protection unit), so that read is a data abort; DeSmuME reads it and goes on, which is why the bug
+does not show there.
+
+**What (old → new):**
+
+Old: sprite 428 (Bulbasaur following) -> generic field object+0x10C = NULL -> the reflection reads address
+0xB6/0xB8 every frame it is drawn.
+
+New: the lower bound is 'blt' (0x021F629A, '07 DD' -> '07 DB', one byte), the same target for ids < 428
+instead of <= 428. A signed ble and blt differ only when the values are equal, so 428 is the only sprite id
+whose path changes: it now reads the follower's own pointer at object+0x108, like 429..1894. Not changed:
+the other listed ids, the upper bound, the special range 0x106..0x10D, the callbacks and the getters (they
+still have no NULL check of their own). The same one-byte change was made independently in a community fork
+of the hack; this port was reproduced and verified here, not copied.
+
+**Evidence:**
+
+- D-2270: the user-approved exception to D-1337 for this fix (re-creates a fix investigated 2026-10-05/06 and never committed)
+- work/notes/bulbasaur_reflection_fix.md: the routine, why only sprite 428 changes, the emulator runs before and after
+- Runtime: emu_harness.py reflection (work/tools/emu_reflection.py; work/notes/emu_harness.md 'Following-Pokémon water reflection'): Bulbasaur, Charmander and Onix along the Viridian City and Route 22 ponds; 2026-10-08 the untouched Chinese ROM and the --without bulbasaur-reflection-boundary build pass --expect original (Bulbasaur: every reflection call NULL, 63 and 18-36 per scene), the full build passes --expect fixed (0 NULL)
+- melonDS: not run yet (headless backend pending); the saves, inputs and abort signature it needs are in work/notes/bulbasaur_reflection_fix.md 'melonDS: not run yet'
+
+**Touches:**
+
+- `overlay1+0x1191A` (RAM 0x021F629A) `bulbasaur-reflection-boundary-branch`: 2 bytes, was `DD07`
+
+**Disassembly snapshot:** [`bulbasaur-reflection-boundary.listing`](bulbasaur-reflection-boundary/bulbasaur-reflection-boundary.listing) (every edit, old → new; `python3 work/tools/asmpatch.py listing --write bulbasaur-reflection-boundary`)
+
+**Source** (`work/patches/bulbasaur-reflection-boundary/bulbasaur-reflection-boundary.asm`, armips; the new bytes):
+
+<details>
+<summary>bulbasaur-reflection-boundary.asm</summary>
+
+```asm
+; bulbasaur-reflection-boundary - Following Pokemon: Bulbasaur's reflection in water no longer reads a NULL
+; graphics pointer (black screen / freeze over water). D-2270 (user-approved exception to D-1337).
+; Why and what: fix.toml next to this file; overview work/patches/FIXES.md;
+; work/notes/bulbasaur_reflection_fix.md.
+;
+; ReflectionGfx_Get (overlay 1, 0x021F61E8) returns the graphics object a map object's water reflection
+; draws with. Its two callers, the reflection callbacks (bl at 0x021FCC88 and 0x021FD19A), pass the result
+; straight to the graphics getters 0x0202451C / 0x02024558 without a NULL check; those assert (the handler
+; returns in this build) and then read address 0xB6 / 0xB8.
+; It reads the object's sprite id (0x0205E3D8: [object+0x10]); a few listed ids (0, 0x15, 0x61, 0x62, 0xB0,
+; 0xB1-0xC9 by table, 0xF8, 0xF9, 0x102-0x106) take the generic field [object+0x10C]; every other id goes to
+; ReflectionGfx_FollowerRange: 428..1894 (0x766), the following Pokemon, take the follower's own graphics
+; pointer [object+0x108] (0x0205E588 returns object + 0x42 * 4); 0x106..0x10D a special case (0x0206323C);
+; the rest the generic field. The lower bound is 'ble' after 'cmp r0, #428', so 428 itself, Bulbasaur, the
+; first follower sprite, is left out and reads the generic field, which is NULL for a follower.
+;
+; The fix makes that bound 'blt' (07 DD -> 07 DB, one byte): the same target, taken for ids < 428 instead
+; of <= 428. A signed ble and blt differ only when the two values are equal, so 428 is the only id whose
+; path changes; it now reads [object+0x108] like every other follower. The guards below check the code
+; 428 runs through: the entry, the dispatch for ids > 0xF8, the range check, both loads and the literals.
+
+.nds
+.thumb
+.include "../include/guards.inc"
+
+.definelabel ReflectionGfx_Get,            0x021F61E8   ; r0 = map object -> graphics object
+.definelabel ReflectionGfx_Above0xF8,      0x021F6262   ; dispatch of sprite ids > 0xF8
+.definelabel ReflectionGfx_FollowerRange,  0x021F6294   ; ids not listed: 428..1894 are followers
+.definelabel ReflectionGfx_LowerBound,     0x021F629A   ; ble: id <= 428 is not a follower  <- the edit
+.definelabel ReflectionGfx_NotFollower,    0x021F62AC   ; special case 0x106..0x10D, else generic field
+.definelabel MapObject_GetSpriteId,        0x0205E3D8   ; arm9: [object+0x10]
+.definelabel MapObject_GetGfxFields,       0x0205E588   ; arm9: object + 0x108
+
+.open "overlay1.bin", 0x021E4980
+
+; Read-only guards: the code a sprite id > 0xF8 runs through (nothing is written here).
+.org ReflectionGfx_Get
+    expect16_at 0x00, 0xB510    ; push  {r4, lr}
+    expect16_at 0x02, 0x1C04    ; add   r4, r0, #0              r4 = map object
+    expect16_at 0x04, 0xF668    ; bl    MapObject_GetSpriteId  (1/2)
+    expect16_at 0x06, 0xF8F4    ;                               (2/2)   r0 = sprite id
+    expect16_at 0x08, 0x28F8    ; cmp   r0, #0xF8
+    expect16_at 0x0A, 0xDC36    ; bgt   ReflectionGfx_Above0xF8
+
+.org ReflectionGfx_Above0xF8
+    expect16_at 0x00, 0x4A1A    ; ldr   r2, =0x103
+    expect16_at 0x02, 0x4290    ; cmp   r0, r2
+    expect16_at 0x04, 0xDC08    ; bgt   0x021F627A
+    expect16_at 0x06, 0xDA0F    ; bge   0x021F628A              0x103: generic field
+    expect16_at 0x08, 0x28F9    ; cmp   r0, #0xF9
+    expect16_at 0x0A, 0xDC01    ; bgt   0x021F6272
+    expect16_at 0x0C, 0xD00C    ; beq   0x021F628A              0xF9: generic field
+    expect16_at 0x0E, 0xE010    ; b     ReflectionGfx_FollowerRange
+    expect16_at 0x10, 0x1E51    ; sub   r1, r2, #1
+    expect16_at 0x12, 0x4288    ; cmp   r0, r1
+    expect16_at 0x14, 0xD008    ; beq   0x021F628A              0x102: generic field
+    expect16_at 0x16, 0xE00C    ; b     ReflectionGfx_FollowerRange
+    expect16_at 0x18, 0x1C51    ; add   r1, r2, #1              0x021F627A
+    expect16_at 0x1A, 0x4288    ; cmp   r0, r1
+    expect16_at 0x1C, 0xDC01    ; bgt   0x021F6284
+    expect16_at 0x1E, 0xD003    ; beq   0x021F628A              0x104: generic field
+    expect16_at 0x20, 0xE007    ; b     ReflectionGfx_FollowerRange
+    expect16_at 0x22, 0x1C91    ; add   r1, r2, #2              0x021F6284
+    expect16_at 0x24, 0x4288    ; cmp   r0, r1
+    expect16_at 0x26, 0xD104    ; bne   ReflectionGfx_FollowerRange   (428 goes here)
+    expect16_at 0x28, 0x1C20    ; add   r0, r4, #0              0x021F628A: listed ids
+    expect16_at 0x2A, 0xF668    ; bl    MapObject_GetGfxFields  (1/2)
+    expect16_at 0x2C, 0xF97C    ;                               (2/2)
+    expect16_at 0x2E, 0x6840    ; ldr   r0, [r0, #4]            generic field [object+0x10C]
+    expect16_at 0x30, 0xBD10    ; pop   {r4, pc}
+    expect16_at 0x32, 0x216B    ; mov   r1, #0x6B               ReflectionGfx_FollowerRange
+    expect16_at 0x34, 0x0089    ; lsl   r1, r1, #2              r1 = 428
+    expect16_at 0x36, 0x4288    ; cmp   r0, r1
+    expect16_at 0x38, 0xDD07    ; ble   ReflectionGfx_NotFollower       <- the edit below
+    expect16_at 0x3A, 0x490C    ; ldr   r1, =0x766              1894
+    expect16_at 0x3C, 0x4288    ; cmp   r0, r1
+    expect16_at 0x3E, 0xDC04    ; bgt   ReflectionGfx_NotFollower
+    expect16_at 0x40, 0x1C20    ; add   r0, r4, #0
+    expect16_at 0x42, 0xF668    ; bl    MapObject_GetGfxFields  (1/2)
+    expect16_at 0x44, 0xF970    ;                               (2/2)
+    expect16_at 0x46, 0x6800    ; ldr   r0, [r0]                follower graphics [object+0x108]
+    expect16_at 0x48, 0xBD10    ; pop   {r4, pc}
+    expect16_at 0x4A, 0x4909    ; ldr   r1, =0x106              ReflectionGfx_NotFollower
+    expect16_at 0x4C, 0x4288    ; cmp   r0, r1
+    expect16_at 0x4E, 0xDB06    ; blt   0x021F62C0
+    expect16_at 0x50, 0x1DC9    ; add   r1, r1, #7
+    expect16_at 0x52, 0x4288    ; cmp   r0, r1
+    expect16_at 0x54, 0xDC03    ; bgt   0x021F62C0
+    expect16_at 0x56, 0x1C20    ; add   r0, r4, #0              0x106..0x10D
+    expect16_at 0x58, 0xF66C    ; bl    0x0206323C              (1/2)
+    expect16_at 0x5A, 0xFFBF    ;                               (2/2)
+    expect16_at 0x5C, 0xBD10    ; pop   {r4, pc}
+    expect16_at 0x5E, 0x1C20    ; add   r0, r4, #0              0x021F62C0
+    expect16_at 0x60, 0xF668    ; bl    MapObject_GetGfxFields  (1/2)
+    expect16_at 0x62, 0xF961    ;                               (2/2)
+    expect16_at 0x64, 0x6840    ; ldr   r0, [r0, #4]            generic field [object+0x10C]: NULL for a follower
+    expect16_at 0x66, 0xBD10    ; pop   {r4, pc}
+    expect16_at 0x68, 0x46C0    ; nop                           (padding)
+    expect32_at 0x6A, 0x00000103    ; literal pool
+    expect32_at 0x6E, 0x00000766
+    expect32_at 0x72, 0x00000106
+
+; The edit: 428 (Bulbasaur) is inside the follower range, like 429..1894.
+.org ReflectionGfx_LowerBound
+.area 2
+    expect16 0xDD07             ; ble ReflectionGfx_NotFollower
+    blt     ReflectionGfx_NotFollower
+.endarea
 
 .close
 ```
