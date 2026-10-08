@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "水晶『嘿嘿,{VAR:0103:0}前辈也是{NEWLINE}我在旅行中的伙伴哦。{CLEAR}从他那里我学了很多东西呢。",
-   "en": "Crystal: Heh heh, {VAR:0103:0} is one of{NEWLINE}my traveling companions too. I’ve{CLEAR}learned so much on this journey.",
+   "en": "Crystal: Heh heh, {VAR:0103:0} is one of my{NEWLINE}traveling companions too. I’ve learned{CLEAR}so much from them.",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 从他那里 (male pronoun); English repeats the name to stay gender-neutral."
+   "notes": "zh 从他那里 (male pronoun); English repeats the name to stay gender-neutral. | RV034: omission: 从他那里 (from the player) restored, gender-neutral per D-1224 (D-1811)"
   },
   {
    "id": 12,

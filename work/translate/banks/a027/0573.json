@@ -759,10 +759,10 @@
   {
    "id": 94,
    "zh": "我想调查胡桃小姐照片的事",
-   "en": "About Mary’s photos...",
+   "en": "Look into Mary’s photos",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV034: omission: 调查 (investigate) restored",
    "category": "menu_touch_1line"
   },
   {
@@ -857,10 +857,10 @@
   {
    "id": 106,
    "zh": "妈的,等我们火箭队统治世界的时候,{NEWLINE}老子第一个杀了你。",
-   "en": "Dammit, once Team Rocket rules the{NEWLINE}world, you’re the first one I kill.",
+   "en": "Fuck! Once Team Rocket rules the{NEWLINE}world, you’re the first one I kill.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV034: softened: 妈的 at full strength (D-0627, D-2034 precedent)"
   },
   {
    "id": 107,
@@ -1017,10 +1017,10 @@
   {
    "id": 126,
    "zh": "亚玛多『切！真是个难缠的女人。",
-   "en": "Cassidy: Tch! What a pain of a woman.",
+   "en": "Cassidy: Tch! This woman is a real pain.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV034: grammar: unnatural ‘a pain of a woman’"
   },
   {
    "id": 127,

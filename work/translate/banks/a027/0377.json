@@ -402,10 +402,10 @@
   {
    "id": 49,
    "zh": "把精灵寄养在我们这,{NEWLINE}你可以随时来个电话。{SCROLL}孙女送的手机{NEWLINE}终于派上用场,{CLEAR}我很开心呢。",
-   "en": "Call us from time to time when you{NEWLINE}give us your Pokémon to raise.{SCROLL}I’ll be happy to have a use for this{NEWLINE}Pokégear my grandchild gave me.{SCROLL}",
+   "en": "When you leave your Pokémon with us,{NEWLINE}feel free to call anytime.{SCROLL}I’m so happy this Pokégear my{NEWLINE}granddaughter gave me is finally{CLEAR}coming in handy.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0384/49"
+   "origin": "agent",
+   "notes": "US 0384/49 | RV034: meaning: US line reworded to the hack’s Chinese; 孙女 = granddaughter (D-1789)"
   },
   {
    "id": 50,
@@ -1049,10 +1049,10 @@
   {
    "id": 129,
    "zh": "虽然我跳舞的才能很一般,{NEWLINE}但如果整一张网红锥子脸,{CLEAR}再通过媒体吹捧一下,{CLEAR}应该也能出道当明星吧？",
-   "en": "My dancing talent is pretty average.{NEWLINE}But if I got one of those influencer{CLEAR}V-line faces and had the media hype me{CLEAR}up, I could still debut as a star, right?",
+   "en": "My dancing talent is pretty average.{NEWLINE}But if I got surgery for one of those{CLEAR}influencer V-line faces and had the{CLEAR}media hype me up, I could still debut as{CLEAR}a star, right?",
    "status": "draft",
    "origin": "agent",
-   "notes": "网红锥子脸 → ‘influencer V-line face’."
+   "notes": "网红锥子脸 → ‘influencer V-line face’. | RV034: omission: 整 (cosmetic surgery) restored"
   },
   {
    "id": 130,
@@ -1233,10 +1233,10 @@
   {
    "id": 152,
    "zh": "如何让精灵在饲育屋生蛋",
-   "en": "How to get an Egg",
+   "en": "How to get Day-Care Eggs",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV034: omission: 在饲育屋 (at the Day-Care) restored",
    "category": "menu_touch_1line"
   },
   {

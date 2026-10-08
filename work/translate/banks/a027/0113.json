@@ -342,10 +342,10 @@
   {
    "id": 42,
    "zh": "阿笔『您先是机智地引诱精灵,{NEWLINE}然后趁其不备攻陷它们,{CLEAR}这种熟练的身手{CLEAR}连我这个昆虫专家都自叹不如。{CLEAR}真不愧是我们的冠军啊！{CLEAR}为了表达我的敬意,{CLEAR}这个送给您吧。",
-   "en": "Bugsy: First you cleverly lured{NEWLINE}the Pokémon, then you caught them{CLEAR}off guard. Even I, a Bug expert,{CLEAR}can’t match skills like that. You{CLEAR}really are our Champion! As a mark{CLEAR}of my respect, please take this.",
+   "en": "Bugsy: First you cleverly lured the{NEWLINE}Pokémon, then you took them down while{CLEAR}they were off guard. Even I, a Bug{CLEAR}expert, can’t match skills like that.{CLEAR}You really are our Champion! As a mark{CLEAR}of my respect, please take this.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV034: omission: 攻陷 (took them down) was dropped"
   },
   {
    "id": 43,
@@ -523,34 +523,34 @@
   {
    "id": 64,
    "zh": "我还当再也没办法见面了呢！{SCROLL}那也就是说{NEWLINE}我们回到了原来的时代了！{SCROLL}",
-   "en": "I thought I would never see you again!{SCROLL}Wait a sec...{NEWLINE}So we must be back to our time!{SCROLL}",
+   "en": "I thought I’d never see you again!{SCROLL}That means we’re back in our own time!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0115/64"
+   "origin": "agent",
+   "notes": "US 0115/64 | RV034: addition: US ‘Wait a sec...’ not in the hack’s Chinese"
   },
   {
    "id": 65,
    "zh": "我好想见你啊！{SCROLL}也就是说{NEWLINE}我们回到了原来的时代！{SCROLL}",
-   "en": "I missed you so much!{SCROLL}Wait a sec...{NEWLINE}So we must be back to our time!{SCROLL}",
+   "en": "I missed you so much!{SCROLL}That means we’re back in our own time!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0115/65"
+   "origin": "agent",
+   "notes": "US 0115/65 | RV034: addition: US ‘Wait a sec...’ not in the hack’s Chinese"
   },
   {
    "id": 66,
    "zh": "真是不可思议的体验啊,{NEWLINE}我们回到了原来的时代,{CLEAR}也阻止了火箭队的阴谋,{CLEAR}只要结局好就什么都无所谓了！{CLEAR}对吧？{SCROLL}跟{VAR:0103:0}一起{NEWLINE}开始一段大冒险,{CLEAR}还是蛮有趣的！{CLEAR}但是今天我是真累了,{SCROLL}我要回去了。{NEWLINE}再见！{SCROLL}",
-   "en": "It was all so bizarre.{NEWLINE}But now that we are safely back to our{CLEAR}time and Team Rocket’s terrible design{CLEAR}fell through, we can say...{CLEAR}all’s well that ends well, right?{SCROLL}{VAR:0103:0}, you never cease to{NEWLINE}inspire great adventures!{SCROLL}It sure was an exhausting day, though.{NEWLINE}I better get going.{SCROLL}See you!{SCROLL}",
+   "en": "What an incredible experience. We made{NEWLINE}it back to our own time and stopped{CLEAR}Team Rocket’s scheme too. All’s well{CLEAR}that ends well, right?{SCROLL}Going on a big adventure with{NEWLINE}{VAR:0103:0} was pretty fun! But I’m{CLEAR}really tired today.{SCROLL}I’m heading home. See you!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0115/66"
+   "origin": "agent",
+   "notes": "US 0115/66 | RV034: meaning: US line differs from the hack’s Chinese (adventure with the player was fun; going home)"
   },
   {
    "id": 67,
    "zh": "真是不可思议的体验啊,{NEWLINE}我们回到了原来的时代,{CLEAR}也阻止了火箭队的阴谋,{CLEAR}只要结局好就什么都无所谓了！{CLEAR}对吧？{SCROLL}跟{VAR:0103:0}一起{NEWLINE}开始一段大冒险,{CLEAR}还是蛮有趣的！{CLEAR}但是今天我是真累了,{SCROLL}我要回去了。{NEWLINE}再见！{SCROLL}",
-   "en": "It was all so bizarre.{NEWLINE}But now that we are safely back to our{CLEAR}time and Team Rocket’s terrible design{CLEAR}fell through, we can say...{CLEAR}all’s well that ends well, right?{SCROLL}{VAR:0103:0}, you never cease to{NEWLINE}inspire great adventures!{SCROLL}It sure was an exhausting day, though.{NEWLINE}I better get going.{SCROLL}See you!{SCROLL}",
+   "en": "What an incredible experience. We made{NEWLINE}it back to our own time and stopped{CLEAR}Team Rocket’s scheme too. All’s well{CLEAR}that ends well, right?{SCROLL}Going on a big adventure with{NEWLINE}{VAR:0103:0} was pretty fun! But I’m{CLEAR}really tired today.{SCROLL}I’m heading home. See you!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0115/67"
+   "origin": "agent",
+   "notes": "US 0115/67 | RV034: meaning: US line differs from the hack’s Chinese (adventure with the player was fun; going home)"
   },
   {
    "id": 68,
@@ -773,10 +773,10 @@
   {
    "id": 95,
    "zh": "我路不熟,别问我",
-   "en": "I don’t know the way",
+   "en": "Don’t know the way, don’t ask",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": " | RV034: omission: 别问我 (don’t ask me) restored",
    "category": "menu_touch_1line"
   },
   {

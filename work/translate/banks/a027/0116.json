@@ -215,10 +215,10 @@
   {
    "id": 25,
    "zh": "唉,腕力换成豪力,{NEWLINE}每个月净利润得少5个百分点。",
-   "en": "Sigh. Swapping Machop for{NEWLINE}Machoke is going to cut my{CLEAR}monthly net profit by 5 percent.",
+   "en": "Sigh. Swapping Machop for Machoke is{NEWLINE}going to take 5 percentage points off{CLEAR}my monthly net profit.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV034: meaning: 5个百分点 = five percentage points (D-1710)"
   },
   {
    "id": 26,
