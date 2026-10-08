@@ -83,6 +83,8 @@ class OracleTests(unittest.TestCase):
         self.assertEqual(rep['counts']['assertion'], 6)
         self.assertEqual(R.failures('bulbasaur', 'original', rep, moves_ok(), '07dd'), [])
         self.assertTrue(R.failures('bulbasaur', 'fixed', rep, moves_ok(), '07dd'))
+        partial = dict(rep, counts=dict(rep['counts'], reflection_return=4, getter=8))   # one healthy call too
+        self.assertTrue(R.failures('bulbasaur', 'original', partial, moves_ok(), '07dd'))
 
     def test_healthy_chain_passes_only_where_expected(self):
         fixed = self.traced(428, 0x108, branch=R.BRANCH_FIXED)

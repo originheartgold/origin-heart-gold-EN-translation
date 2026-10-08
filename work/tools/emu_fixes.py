@@ -59,6 +59,7 @@ COVERAGE = {
     "text-speed": ("textspeed",),
     "msgload": ("msgload",),
     "overworld-texture-frame-bounds": ("texture-bounds",),
+    "bulbasaur-reflection-boundary": ("reflection",),
 }
 # fix id -> why no scenario of this command covers it (honest gaps; see work/notes/emu_harness.md)
 UNCOVERED = {
@@ -548,7 +549,8 @@ SCENARIOS = {
     "textspeed": ("full_bag_6mons.sav", None, observe_textspeed, False),
     "battle": ("full_bag_6mons.sav", None, observe_battle, True),
 }
-EXTERNAL = {"msgload", "texture-bounds"}     # scenarios run by other tools (memcheck.py, emu_texture_bounds.py)
+EXTERNAL = {"msgload", "texture-bounds", "reflection"}  # scenarios run by other tools (memcheck.py,
+#                                                         emu_texture_bounds.py, emu_reflection.py)
 ALL_SCENARIOS = tuple(SCENARIOS) + tuple(sorted(EXTERNAL))
 
 
@@ -778,10 +780,39 @@ def judge_texture_bounds(scenario, obs, ref=None):
     return _state(ok and obs.get("expect") == "fixed", ok and obs.get("expect") == "original", why)
 
 
+def run_reflection(rom, expect, sav_dir, out):
+    """emu_reflection.py (Bulbasaur following next to water) on one ROM: --expect original on a control, fixed
+    on the ROM under test."""
+    import emu_harness as E
+    out = Path(out)
+    if (out / "report.json").exists():       # --overwrite: reflection refuses an existing report
+        os.replace(out / "report.json", out / "report.previous.json")
+    t0 = time.time()
+    rc, _, err = E.spawn(["reflection", "--rom", Path(rom).resolve(), "--sav",
+                          (Path(sav_dir) / "market.sav").resolve(), "--out", out.resolve(), "--case", "all",
+                          "--scene", "all", "--expect", expect], timeout=900)
+    try:
+        rep = json.loads((out / "report.json").read_text())
+    except (OSError, ValueError):
+        return {"error": f"reflection failed (rc {rc}): {err[-800:]}", "seconds": 0}
+    return {"expect": expect, "rc": rc, "passed": rep.get("passed"), "error": rep.get("error"),
+            "cases": [{"scene": c.get("scene"), "name": c["name"], "passed": c["passed"],
+                       "null_returns": c.get("trace", {}).get("counts", {}).get("null_return", 0),
+                       "failures": c.get("failures")} for c in rep.get("cases", [])],
+            "report": str(out / "report.json"), "seconds": round(time.time() - t0, 1)}
+
+
+def judge_reflection(scenario, obs, ref=None):
+    why = {k: obs.get(k) for k in ("expect", "passed", "cases", "error", "report")}
+    ok = bool(obs.get("passed")) and obs.get("rc") == 0
+    return _state(ok and obs.get("expect") == "fixed", ok and obs.get("expect") == "original", why)
+
+
 JUDGES[("msgload", "msgload")] = judge_msgload
 # checks across the two runs of a fix (fixed ROM, control), after both judged right
 PAIR_CHECKS = {("ivev", "ivev-panel"): pair_ivev, ("pcbox", "pcbox-name-width"): pair_pcbox}
 JUDGES[("texture-bounds", "overworld-texture-frame-bounds")] = judge_texture_bounds
+JUDGES[("reflection", "bulbasaur-reflection-boundary")] = judge_reflection
 
 
 # --------------------------------------------------------------------------------------------- runner
@@ -919,6 +950,8 @@ def run_job(job, cn, sav_dir, out):
             obs = run_msgload(rom, cn, sav_dir, d)
         elif sc == "texture-bounds":
             obs = run_texture_bounds(rom, "fixed" if label == "fixed" else "original", sav_dir, d)
+        elif sc == "reflection":
+            obs = run_reflection(rom, "fixed" if label == "fixed" else "original", sav_dir, d)
         else:
             obs = E.run_child(["fixes-child", "--scenario", sc, "--rom", Path(rom).resolve(), "--sav-dir",
                                Path(sav_dir).resolve(), "--out", d.resolve()], timeout=900)

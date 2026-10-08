@@ -269,8 +269,10 @@ def failures(name, expect, trace, moves, branch):
     if set(trace["fields"]) - {want_field}:
         reasons.append(f"fields read: {trace['fields']}, expected only {want_field}")
     if bad:
-        if not nulls or counts.get("null_getter", 0) != 2 * nulls or counts.get("assertion", 0) != 2 * nulls:
-            reasons.append("original defect not observed: NULL return, two NULL getter calls and two assertions each")
+        if (not nulls or nulls != returns or counts.get("null_getter", 0) != 2 * nulls
+                or counts.get("assertion", 0) != 2 * nulls):
+            reasons.append("original defect not observed: every reflection call a NULL return, with two NULL getter "
+                           "calls and two assertions each")
     elif nulls or counts.get("null_getter", 0) or counts.get("assertion", 0):
         reasons.append("NULL reflection pointer or assertion observed")
     return reasons

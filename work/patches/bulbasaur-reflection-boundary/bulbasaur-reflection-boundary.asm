@@ -8,8 +8,8 @@
 ; straight to the graphics getters 0x0202451C / 0x02024558 without a NULL check; those assert (the handler
 ; returns in this build) and then read address 0xB6 / 0xB8.
 ; It reads the object's sprite id (0x0205E3D8: [object+0x10]); a few listed ids (0, 0x15, 0x61, 0x62, 0xB0,
-; 0xB1-0xC9 by table, 0xF8, 0xF9, 0x102-0x106) take the generic field [object+0x10C]; every other id goes to
-; ReflectionGfx_FollowerRange: 428..1894 (0x766), the following Pokemon, take the follower's own graphics
+; some of 0xB1-0xC9 by a jump table, 0xF8, 0xF9, 0x102-0x105) take the generic field [object+0x10C]; every other
+; id goes to ReflectionGfx_FollowerRange: 428..1894 (0x766), the following Pokemon, take the follower's own graphics
 ; pointer [object+0x108] (0x0205E588 returns object + 0x42 * 4); 0x106..0x10D a special case (0x0206323C);
 ; the rest the generic field. The lower bound is 'ble' after 'cmp r0, #428', so 428 itself, Bulbasaur, the
 ; first follower sprite, is left out and reads the generic field, which is NULL for a follower.

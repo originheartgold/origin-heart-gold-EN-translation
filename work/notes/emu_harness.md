@@ -1095,6 +1095,7 @@ coverage list, the approved digests and the hooked addresses (checked against ea
 | text-speed | textspeed | Message 457#123 at NORMAL and FAST (Options bits 2-3): frames until the window's text stops changing; fixed needs NORMAL/FAST ≥ 2, original ≤ 1.25 | 28 / 8 frames | 29 / 29-30 frames (±1 between runs; the setting does nothing) |
 | msgload | msgload | memcheck.py's `summary` scenario (switch Pokémon on every summary page) | passed | allocation failure on heap 19 (6448 bytes), null write: the rc3 crash |
 | overworld-texture-frame-bounds | texture-bounds | The four `texture-bounds` cases, `--expect fixed` on the build, `--expect original` on the control | all 4 pass | all 4 reproduce the null load |
+| bulbasaur-reflection-boundary | reflection | `emu_reflection.py`, 2 scenes x Bulbasaur/Charmander/Onix (needs `market.sav` in `--sav-dir`), `--expect fixed` on the build, `--expect original` on the control (added 2026-10-08, run alone) | all 6 pass: no NULL lookup | all 6 pass: every Bulbasaur reflection call NULL, the others none |
 
 Result (observed 2026-10-08, branch hardening/emu, build of `develop` aab6efb plus this work, saves copied from
 `work/build/memcheck/`): `check.py --full --emu --emu-jobs 2` passes all 15 fix/scenario rows. The emu step took
