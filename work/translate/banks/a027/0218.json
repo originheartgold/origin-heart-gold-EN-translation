@@ -4016,10 +4016,10 @@
   {
    "id": 412,
    "zh": "吃掉睡眠中对手的梦。{NEWLINE}给予伤害的一半{NEWLINE}转为自己的ＨＰ。",
-   "en": "An attack that works only on a{NEWLINE}sleeping foe. It absorbs half the{NEWLINE}damage caused to heal the user’s HP.",
+   "en": "The user eats the dream of a{NEWLINE}sleeping foe. It absorbs half the{NEWLINE}damage caused to heal the user’s HP.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0221/412"
+   "origin": "agent",
+   "notes": "US 0221/412 | RV089: omission: zh 吃掉睡眠中对手的梦 (eats the sleeping foe's dream) was missing; D-1745"
   },
   {
    "id": 413,
@@ -6131,10 +6131,10 @@
   {
    "id": 653,
    "zh": "能让某些宝可梦进{NEWLINE}化的神奇铠甲。蕴{NEWLINE}含着诅咒的感情。",
-   "en": "Mysterious armor that makes certain{NEWLINE}Pokémon evolve. It is imbued with a{NEWLINE}curse.",
+   "en": "Mysterious armor that makes certain{NEWLINE}Pokémon evolve. It is imbued with{NEWLINE}cursed feelings.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV089: omission: zh 诅咒的感情 (feelings of a curse); 感情 was dropped, parallel to #646",
    "qa_ignore": [
     "glossary:进化"
    ]
