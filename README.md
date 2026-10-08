@@ -5,7 +5,7 @@ An English fan translation of **起源心金 (Pokémon Origin HeartGold) v4.0.3*
 ## Play it
 
 [Patch your game here](https://originheartgold.github.io/origin-heart-gold-EN-translation/patch/) and run on any emulator.
-Real Nintendo hardware is **not** supported and might result in strange and unexpected behavior.
+Real DS, DSi and 3DS hardware is being tested: the patch switches off the hack's anti-piracy checks, so don't add another anti-piracy patch. See the [FAQ](https://originheartgold.github.io/origin-heart-gold-EN-translation/faq/#can-i-play-on-a-real-ds-dsi-or-3ds) for setup and how to report problems.
 
 Stuck on a quest? The [quest guide](https://originheartgold.github.io/origin-heart-gold-EN-translation/guide/) ([source](guide/README.md)) covers side quests, puzzles and easy-to-miss events, region by region.
 

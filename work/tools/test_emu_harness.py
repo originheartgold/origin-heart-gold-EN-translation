@@ -48,6 +48,79 @@ class PokemonCodec(unittest.TestCase):
         self.assertEqual(after["fateful"], before["fateful"])
 
 
+class SlotWaits(unittest.TestCase):
+    def test_closed_and_open_waits(self):
+        with tempfile.TemporaryDirectory() as d:
+            log = Path(d) / 'waits'
+            self.assertEqual(E.slot_wait_seconds(log), 0.0)
+            log.write_text('wait 1 100.0\ngot 1 130.0\nwait 2 140.0\ngot 2 141.5\nwait 3 150.0\njunk\n')
+            self.assertAlmostEqual(E.slot_wait_seconds(log, now=160.0), 30.0 + 1.5 + 10.0)
+
+
+class MessageScript(unittest.TestCase):
+    def test_wide_message_ids_use_native_external_command(self):
+        from unittest.mock import Mock
+        for msg_id in (0, 255, 256, 1093, 0x4000, 0xFFFF):
+            with self.subTest(msg_id=msg_id):
+                h = Mock()
+                h.get_var.side_effect = [123, 0x5A5A]
+                self.assertEqual(E.Harness.show_message(h, 718, msg_id), [])
+                program = h.run_script.call_args.kwargs['program']
+                expected = E.script_bytes(('LockAll',), ('SetVar', 0x8000, msg_id),
+                                          ('MsgBoxExtern', 718, 0x8000), ('WaitButton',),
+                                          ('CloseMsg',), ('SetVar', E.SENTINEL_VAR, 0x5A5A),
+                                          ('ReleaseAll',), ('End',))
+                self.assertEqual(program, expected)
+                # Check the opcode/operands independently of script_bytes's
+                # command-name mapping: 440, bank718, variable0x8000.
+                self.assertEqual(program[8:14], struct.pack('<HHH', 440, 718, 0x8000))
+                h.set_var.assert_called_with(E.SENTINEL_VAR, 123)
+
+    def test_invalid_message_arguments_fail_before_emulator_mutation(self):
+        from unittest.mock import Mock
+        for bank, msg_id in ((718, -1), (718, 65536), (718, True),
+                             (718, 1.5), (-1, 0), (0x4000, 0), (True, 0)):
+            with self.subTest(bank=bank, msg_id=msg_id):
+                h = Mock()
+                with self.assertRaises(ValueError):
+                    E.Harness.show_message(h, bank, msg_id)
+                self.assertEqual(h.mock_calls, [])
+
+    def test_completion_on_last_allowed_press_is_accepted(self):
+        from unittest.mock import Mock
+        h = Mock()
+        h.get_var.side_effect = [123, 0, 0x5A5A]
+        h.screenshot.return_value = 'page1.png'
+        self.assertEqual(E.Harness.show_message(h, 718, 1093, max_pages=1), ['page1.png'])
+        h.press.assert_called_once_with('A', after=150)
+        h.set_var.assert_called_with(E.SENTINEL_VAR, 123)
+
+    def test_exhaustion_and_script_failure_restore_sentinel(self):
+        from unittest.mock import Mock
+        h = Mock()
+        h.get_var.side_effect = [123, 0, 0]
+        with self.assertRaisesRegex(RuntimeError, 'did not complete'):
+            E.Harness.show_message(h, 718, 1093, max_pages=1)
+        h.screenshot.assert_called_once()
+        h.press.assert_called_once_with('A', after=150)
+        h.set_var.assert_called_with(E.SENTINEL_VAR, 123)
+        h = Mock()
+        h.get_var.return_value = 456
+        h.run_script.side_effect = RuntimeError('injection failed')
+        with self.assertRaisesRegex(RuntimeError, 'injection failed'):
+            E.Harness.show_message(h, 718, 1093)
+        h.screenshot.assert_not_called()
+        h.set_var.assert_called_with(E.SENTINEL_VAR, 456)
+
+    def test_invalid_page_budget_fails_before_mutation(self):
+        from unittest.mock import Mock
+        for pages in (0, -1, True, 1.5):
+            h = Mock()
+            with self.assertRaises(ValueError):
+                E.Harness.show_message(h, 718, 1093, max_pages=pages)
+            self.assertEqual(h.mock_calls, [])
+
+
 class SaveFileEdits(unittest.TestCase):
     def _save(self, newest=0x40000):
         data = bytearray(524288)
@@ -197,8 +270,120 @@ class SkittyScene(unittest.TestCase):
         self.assertEqual(got[0]["addr"], hex(lo + a))
 
 
-if __name__ == "__main__":
-    unittest.main()
+class ExecutionHookFailures(unittest.TestCase):
+    def harness(self):
+        from unittest.mock import Mock
+        h = E.Harness.__new__(E.Harness)
+        h.emu = Mock()
+        h.frame = 0
+        h._per_frame = []
+        h._hook_error = None
+        return h
+
+    def test_callback_failure_is_raised_after_cycle_and_stays_fatal(self):
+        from unittest.mock import Mock
+        h = self.harness()
+        failure = AssertionError('bad printer state')
+        callback = Mock(side_effect=failure)
+        frame = Mock()
+        h.on_frame(frame)
+        h.on_exec(0x02020A1C, callback)
+        hook = h.emu.memory.register_exec.call_args.args[1]
+        h.emu.cycle.side_effect = lambda **kw: hook(0x02020A1C, 2)
+        with self.assertRaisesRegex(RuntimeError, '0x02020a1c') as caught:
+            h.step(3)
+        self.assertIs(caught.exception.__cause__, failure)
+        self.assertEqual(h.emu.cycle.call_count, 1)
+        frame.assert_not_called()
+        # A caller cannot accidentally continue from a failed measurement.
+        with self.assertRaises(RuntimeError):
+            h.step(1)
+        self.assertEqual(h.emu.cycle.call_count, 1)
+
+    def test_first_callback_failure_wins_and_later_hooks_do_not_mutate_state(self):
+        from unittest.mock import Mock
+        h = self.harness()
+        failure = ValueError('first failure')
+        h.on_exec(0x02020A1C, Mock(side_effect=failure))
+        first = h.emu.memory.register_exec.call_args.args[1]
+        second_fn = Mock()
+        h.on_exec(0x02002680, second_fn)
+        second = h.emu.memory.register_exec.call_args.args[1]
+        first(0, 2)  # must not throw across the C boundary
+        second(0, 2)
+        second_fn.assert_not_called()
+        with self.assertRaises(RuntimeError) as caught:
+            h.step()
+        self.assertIs(caught.exception.__cause__, failure)
+        h.emu.cycle.assert_not_called()
+
+    def test_success_and_unregister_keep_native_hook_api(self):
+        from unittest.mock import Mock
+        h = self.harness()
+        fn = Mock()
+        h.on_exec(0x02020A1C, fn)
+        hook = h.emu.memory.register_exec.call_args.args[1]
+        h.emu.cycle.side_effect = lambda **kw: hook(0, 2)
+        h.step(2)
+        self.assertEqual(h.frame, 2)
+        self.assertEqual(fn.call_count, 2)
+        fn.assert_called_with(h)
+        h.on_exec(0x02020A1C, None)
+        h.emu.memory.register_exec.assert_called_with(0x02020A1C, None)
+
+
+class HookOwnershipAndInput(unittest.TestCase):
+    """Measurement hooks cannot be replaced silently; every press() is a real press edge."""
+
+    def harness(self):
+        from unittest.mock import Mock
+        h = E.Harness.__new__(E.Harness)
+        h.emu = Mock()
+        h.frame = 0
+        h._per_frame = []
+        h._hook_error = None
+        h._held = set()
+        h._keys = {k: i for i, k in enumerate(E.KEYS)}
+        h._keymask = lambda k: 1 << k
+        h.emu.cycle.side_effect = lambda **kw: None
+        return h
+
+    def test_exclusive_hook_cannot_be_replaced_silently(self):
+        h = self.harness()
+        h.on_exec(0x02002680, lambda h: None, exclusive=True)
+        with self.assertRaisesRegex(ValueError, "0x02002680"):
+            h.on_exec(0x02002680, lambda h: None)
+        h.on_exec(0x02002680, lambda h: None, replace=True)
+        with self.assertRaises(ValueError):       # still exclusive after a deliberate replacement
+            h.on_exec(0x02002680, lambda h: None)
+        h.on_exec(0x02002680, None)                # unregistering releases the address
+        h.on_exec(0x02002680, lambda h: None)
+
+    def test_exclusive_registration_over_an_existing_hook_fails(self):
+        h = self.harness()
+        h.on_exec(0x0201B33C, lambda h: None)
+        with self.assertRaises(ValueError):
+            h.on_exec(0x0201B33C, lambda h: None, exclusive=True)
+        h.on_exec(0x0201B33C, lambda h: None)      # ordinary hooks keep the old replace behaviour
+
+    def test_press_after_release_in_the_same_frame_leaves_the_key_up_first(self):
+        h = self.harness()
+        h.hold("A")
+        h.step(5)
+        h.release()
+        events = []
+        h.emu.input.keypad_add_key.side_effect = lambda m: events.append(("down", h.frame))
+        h.emu.input.keypad_rm_key.side_effect = lambda m: events.append(("up", h.frame))
+        h.press("A", frames=2)
+        self.assertEqual(events, [("down", 6), ("up", 8)])
+
+    def test_pressing_a_held_key_is_an_error(self):
+        h = self.harness()
+        h.hold("A")
+        with self.assertRaisesRegex(ValueError, "held"):
+            h.press("A")
+        h.press("B", after=1)                      # other keys can still be pressed while A is held
+        self.assertEqual(h.frame, 7)
 
 
 class Guide0107(unittest.TestCase):
@@ -549,3 +734,7 @@ class OpenPoints(unittest.TestCase):
         self.assertEqual(O.judge_arceus(res), "plate_type")
         self.assertEqual(O.judge_rockruff({"after": {"species": 745, "form": 0}}), "midday")
         self.assertEqual(O.judge_rockruff({"after": {"species": 744, "form": 0}}), "no_evolution")
+
+
+if __name__ == "__main__":
+    unittest.main()

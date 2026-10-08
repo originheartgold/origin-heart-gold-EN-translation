@@ -34,12 +34,19 @@ Pipeline
               [[grow]], and strings that differ from their [[string]] en (overlay 58 outfit chooser: 'OK' in
               place, 'Outfit 1/2/3' appended to the overlay and repointed). armips v0.11.0 from --armips,
               $ARMIPS or PATH: work/notes/toolchain.md, work/notes/hardcoded_text.md
+  3d. applier  code fixes applied by a Python module (fix.toml `applier`): text-speed (text_speed_patch.py)
+              appends the native NORMAL/FAST code (work/patches/text-speed/payload.json, compiled from
+              native.c, sha256-pinned) to the ARM9 ITCM block, grows and rewrites the Options overlay 50
+              (seventh row TEXT SPEED), redirects the game loop's frame-end call and the Pokégear call
+              printer (overlay 92). It requires msgload, checks the armips stage first and refuses any other
+              fix touching its edits, overlays 50/92 or the routines it calls; --without text-speed leaves it out
   4. write    work/build/origin_hg_v4.0.3_en_wip.nds
   5. verify   re-open with ndspy; message NARCs parse and round-trip (container rebuild byte-identical,
               every bank decodes and re-encodes identically, the exported text is what the ROM holds);
               every compressed-bank name fits its buffer and decompresses to the English;
               glyphs/widths equal the US ones; every patched graphics member is what the stage wrote;
-              every hardcoded string/pointer/overlay size and code region is what stage 3c wrote
+              every hardcoded string/pointer/overlay size and code region is what stage 3c wrote;
+              text speed: payload, ITCM layout, overlays 50/92 and its runtime contract (text_speed_patch.verify)
   6. patch    xdelta3 -e -9 -S lzma -s BASE TARGET work/build/Origin_HeartGold_v4.0.3_EN_wip.xdelta,
               then re-apply it to BASE and compare SHA-1 with TARGET
 
@@ -74,8 +81,10 @@ sys.path.insert(0, str(TOOLS))
 import asmpatch  # noqa: E402
 import fixes as fixreg  # noqa: E402
 import gfx  # noqa: E402
+import hardcoded  # noqa: E402
 import msgtool as m  # noqa: E402
 import textmetrics as tm  # noqa: E402
+import text_speed_patch  # noqa: E402
 import ws  # noqa: E402
 
 ROM_CN = WORK / "rom" / "origin_v4.0.3_cn.nds"
@@ -173,6 +182,41 @@ def verify_name_bank(data: bytes, spec: dict) -> str:
         else:
             n_plain += 1
     return f"ok ({n_comp} compressed, {n_plain} plain, all fit u16[{spec['max_units']}])"
+
+
+def verify_text_speed(rom, speed_report=None):
+    """Verify enabled builds and reject native code without its build metadata.
+
+    Reports predating this feature remain valid only for ROMs without its
+    footprint. An explicit opt-out is recorded for new builds, never inferred
+    from a missing or empty enabled report.
+    """
+    sections = rom.loadArm9().sections
+    main = next((s for s in sections if s.ramAddress == 0x02000000), None)
+    if main is None or len(main.data) < 0x20a1c:
+        raise ValueError("Cannot establish text-speed status: ARM9 layout missing")
+    task = struct.unpack_from("<I", main.data, 0x20a18)[0]
+    native = any(s.ramAddress == 0x01ff8000 and len(s.data) > 0x620 for s in sections)
+    native = native or 0x01ff8620 <= (task & ~1) < 0x01ffa000
+    if speed_report is None:
+        if native:
+            raise ValueError("Native text-speed ROM missing text_speed verification metadata")
+        return {"status": "not-enabled", "metadata": "legacy"}
+    if not isinstance(speed_report, dict) or not speed_report:
+        raise ValueError("Invalid text_speed verification metadata")
+    if "enabled" in speed_report and not isinstance(speed_report["enabled"], bool):
+        raise ValueError("Invalid text_speed enabled flag")
+    if speed_report.get("enabled") is False:
+        if native:
+            raise ValueError("Native text-speed ROM conflicts with disabled metadata")
+        # "not-selected": text-speed left out by --without / --only / --no-hardcoded; the other two are the
+        # flags of build reports written before text speed became a fix (2026-10-08)
+        if speed_report.get("reason") not in ("not-selected", "--no-text-speed", "--no-hardcoded"):
+            raise ValueError("Missing explicit text-speed opt-out reason")
+        return {"status": "not-enabled", "metadata": "explicit-opt-out"}
+    if not native:
+        raise ValueError("Enabled text-speed metadata has no native ROM payload")
+    return text_speed_patch.verify(rom, speed_report)
 
 
 def verify_rom(out_rom: Path, export_dir: Path, us_font_narc: bytes, fonts, cm, gfx_report=(), hc_report=None,
@@ -380,6 +424,29 @@ def main(argv=None):
             f"({sum(r['mode'] == 'relocated' for r in hc_report['strings'])} relocated), "
             f"{hc_report['todo']} untranslated, {len(hc_report['code_regions'])} code/data regions (armips)")
 
+    # 3d. code fixes applied by a Python module (fix.toml `applier`): text-speed (text_speed_patch.py), after
+    # the armips fixes, whose arm9 regions it checks and leaves in place. text-speed requires msgload (the
+    # demand-loading heap fix), so hc_report exists whenever it is selected.
+    speed_report = {"enabled": False, "reason": "not-selected"}
+    report["text_speed"] = speed_report
+    for fx in fixreg.applier_fixes(active):
+        if fx["applier"] != "text_speed_patch" or hc_report is None:
+            sys.exit(f"fix {fx['id']}: applier {fx['applier']!r} is not supported here, or ran without its "
+                     f"required armips fixes")
+        # Verify the earlier stage before composing a second ARM9 patch. Keep
+        # its original hashes for audit; final verification still checks every
+        # hardcoded string, pointer and instruction plus the final file hashes.
+        asmpatch.verify(rom, hc_report)
+        try:
+            speed_report = dict(text_speed_patch.apply(
+                rom, code_patches=text_speed_patch.registry_code_patches(active, hc_report)), enabled=True)
+        except ValueError as ex:
+            sys.exit(f"fix {fx['id']}: {ex}")
+        hc_report["files_before_text_speed"] = dict(hc_report["files"])
+        hc_report["files"]["arm9"] = hashlib.sha1(hardcoded.RomView(rom).get("arm9")).hexdigest()[:12]
+        report["text_speed"] = speed_report
+        log("text speed: native NORMAL / FAST and seven-row Options menu")
+
     # 4. write
     log(f"write {out_rom}")
     rom.saveToFile(str(out_rom))
@@ -392,6 +459,8 @@ def main(argv=None):
         log("verify: ndspy parse, NARC round-trip, text == export, glyphs, graphics, hardcoded")
         report["verify"] = verify_rom(out_rom, export_dir, us_font, fonts, cm, gfx_report, hc_report,
                                       glyph_codes)
+        checked = m.load_rom(out_rom)
+        report["verify"]["text_speed"] = verify_text_speed(checked, speed_report)
         log(f"verify ok: {report['verify']}")
 
     # 6. patch

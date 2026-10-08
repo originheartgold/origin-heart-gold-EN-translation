@@ -110,6 +110,8 @@ Conventions:
 4. After each run, compares every staged file with its state before: a changed byte outside the fix's regions, a required region left unchanged, a size change other than `[[grow]]` growth (above), or a file created or removed stops the build. A strings fix is then read back against its `en`.
 5. Writes the changed images back through `RomView` (which updates a grown overlay's y9 `ramSize`); the verify stage (`asmpatch.verify`) re-reads the written ROM: file hashes, overlay sizes, strings and pointers, code regions.
 
+One code fix is not an armips source yet: `text-speed` names `applier = "text_speed_patch"` instead of `asm`. Its fix.toml declares the regions it changes (arm9 instructions and data words, overlay 50 as one SHA-1-pinned region with `length`/`expect_sha1`, the overlay 92 call, `[[grow]]` overlay 50), so the overlap checks and FIXES.md cover it; build.py runs it as stage 3d, after `asmpatch.apply()`, and `work/tools/text_speed_patch.py` pins the base ARM9 (after putting the other fixes' arm9 regions back to `expect`), the ITCM image and both overlays by hash before it writes. `antipiracy` is a regular armips fix in ARM mode (`.arm`).
+
 To assemble one fix by hand, copy the decompressed binaries into a folder next to a copy of `include/` and run armips from that folder. Keep that folder out of the repo: the binaries are game data (`*.bin` under `work/patches/` is git-ignored as a safety net).
 
 Commands:

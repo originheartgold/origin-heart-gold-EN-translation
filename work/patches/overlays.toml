@@ -16,5 +16,14 @@ ram = 0x02225F40
 [overlay49]
 ram = 0x021E4980
 
+[overlay50]
+ram = 0x021E4980
+
 [overlay58]
 ram = 0x021E83C0
+
+[overlay92]
+ram = 0x021E67C0
+
+[overlay114]
+ram = 0x02263200

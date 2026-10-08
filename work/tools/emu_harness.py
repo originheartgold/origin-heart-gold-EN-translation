@@ -145,6 +145,25 @@ def script_bytes(*cmds):
     return bytes(out)
 
 
+def message_script(bank, msg_id):
+    """Build a normal field-message script without truncating the record ID.
+
+    Its completion writes 0x5A5A to SENTINEL_VAR; callers must initialize and
+    restore that sentinel. The script also uses temporary variable 0x8000.
+    """
+    # NonNPCMsgVar truncates its resolved ID to u8 in the Chinese ROM
+    # (021EE2E4/021EE2EA). MsgBoxExtern preserves u16 IDs and calls the
+    # same field renderer. Pass the ID through a variable so IDs >= 0x4000
+    # cannot be interpreted as variable references by the native command.
+    if type(msg_id) is not int or not 0 <= msg_id <= 0xFFFF:
+        raise ValueError("message ID must be an unsigned 16-bit integer")
+    if type(bank) is not int or not 0 <= bank < 0x4000:
+        raise ValueError("message bank must be an immediate integer below 0x4000")
+    return script_bytes(("LockAll",), ("SetVar", 0x8000, msg_id), ("MsgBoxExtern", bank, 0x8000),
+                        ("WaitButton",), ("CloseMsg",), ("SetVar", SENTINEL_VAR, 0x5A5A), ("ReleaseAll",),
+                        ("End",))
+
+
 KEYS = ("A", "B", "SELECT", "START", "RIGHT", "LEFT", "UP", "DOWN", "R", "L", "X", "Y")
 DIRS = {"UP": 0, "DOWN": 1, "LEFT": 2, "RIGHT": 3}
 UNOWN = 201
@@ -416,7 +435,13 @@ class MapGrid:
 class Harness:
     """One emulator instance. Use as a context manager."""
 
-    def __init__(self, rom=DEF_ROM_CN, sav=None, savestate=None, out=DEF_OUT, verbose=True):
+    def __init__(self, rom=DEF_ROM_CN, sav=None, savestate=None, out=DEF_OUT, verbose=True, rtc=None):
+        """rtc: a datetime. DeSmuME's real-time clock otherwise follows the host clock, and the game
+        reads it at boot (and later), so two runs of the same inputs diverge with wall time. With rtc
+        the emulator records a throw-away movie that starts from the battery file (or a blank
+        battery) with its clock fixed at rtc and advanced by emulated frames: runs are repeatable.
+        Savestates still work; but emu.reset() during the movie restores the movie's starting
+        battery, so in-game saves do not survive a reset: leave rtc unset for save/reset tests."""
         from desmume.emulator import DeSmuME
         from desmume.controls import Keys, keymask
         self._keymask = keymask
@@ -442,12 +467,21 @@ class Harness:
             if not self.emu.backup.import_file(str(Path(sav).resolve()), 524288):
                 raise RuntimeError(f"could not import save {sav}")
             self.emu.reset()
+        if rtc is not None:
+            from desmume.emulator import DeSmuME_Date, StartFrom
+            date = DeSmuME_Date(rtc.year, rtc.month, rtc.day, rtc.hour, rtc.minute, rtc.second, 0)
+            self.emu.movie.record(str(self._tmp / "rtc.dsm"), "emu_harness",
+                                  StartFrom.START_SRAM if sav else StartFrom.START_BLANK,
+                                  str(Path(sav).resolve()) if sav else "", date)
+            if not self.emu.movie.is_recording():
+                raise RuntimeError("could not start the fixed-clock movie")
         if savestate:
             self.emu.savestate.load_file(str(Path(savestate).resolve()))
         self.mem = self.emu.memory.unsigned
         self.reg = self.emu.memory.register_arm9
         self.frame = 0
         self._per_frame = []
+        self._hook_error = None
         self._held = set()
 
     # ------------------------------------------------------------------ lifecycle
@@ -516,9 +550,37 @@ class Harness:
     def w32(self, a, v):
         self.emu.memory.write_long(a, v & 0xFFFFFFFF)
 
-    def on_exec(self, addr, fn):
-        """Call fn(harness) whenever the ARM9 executes addr (Thumb: even address). fn reads self.reg."""
-        self.emu.memory.register_exec(addr, (lambda a, s: fn(self)) if fn else None)
+    def on_exec(self, addr, fn, exclusive=False, replace=False):
+        """Call fn(harness) whenever the ARM9 executes addr (Thumb: even address). fn reads self.reg.
+
+        DeSmuME keeps one callback per address, so a second registration silently replaces
+        the first. exclusive=True marks a measurement hook: registering it over an existing
+        hook, or any later registration over it, raises unless replace=True. fn=None removes
+        the hook."""
+        hooks = self.__dict__.setdefault("_hooks", {})
+        if fn is None:
+            hooks.pop(addr, None)
+        else:
+            if addr in hooks and (exclusive or hooks[addr]) and not replace:
+                raise ValueError(f"ARM9 execution hook at {addr:#010x} is already registered "
+                                 "(DeSmuME would replace it silently)")
+            hooks[addr] = exclusive or (hooks.get(addr, False) and replace)
+        # ctypes callbacks cannot propagate Python exceptions through the emulator.
+        # Keep the first failure and raise it on the Python side of cycle(), so an
+        # assertion in instrumentation can never silently produce a passing run.
+        def checked(a, size):
+            if self._hook_error is not None:
+                return
+            try:
+                fn(self)
+            except BaseException as exc:
+                self._hook_error = (addr, exc)
+        self.emu.memory.register_exec(addr, checked if fn else None)
+
+    def _raise_hook_error(self):
+        if self._hook_error is not None:
+            addr, exc = self._hook_error
+            raise RuntimeError(f"ARM9 execution hook failed at {addr:#010x}") from exc
 
     def on_frame(self, fn):
         """Call fn(harness) after every emulated frame (e.g. to keep a RAM value forced)."""
@@ -526,8 +588,10 @@ class Harness:
 
     # ------------------------------------------------------------------ running and input
     def step(self, n=1):
+        self._raise_hook_error()
         for _ in range(n):
             self.emu.cycle(with_joystick=False)
+            self._raise_hook_error()
             self.frame += 1
             for fn in self._per_frame:
                 fn(self)
@@ -538,11 +602,20 @@ class Harness:
             self._held.add(k)
 
     def release(self, *keys):
+        released = self.__dict__.setdefault("_released", {})
         for k in keys or list(self._held):
             self.emu.input.keypad_rm_key(self._keymask(self._keys[k]))
             self._held.discard(k)
+            released[k] = self.frame
 
     def press(self, key, frames=6, after=0):
+        """A new press of `key`: the game must see it up, then down. Pressing a key that is
+        held cannot create a press edge, so it is an error; a key released in this same frame
+        is first left up for one frame."""
+        if key in self._held:
+            raise ValueError(f"{key} is held; release it before pressing it again")
+        if self.__dict__.get("_released", {}).get(key) == self.frame:
+            self.step(1)
         self.hold(key)
         self.step(frames)
         self.release(key)
@@ -911,23 +984,28 @@ class Harness:
 
     def show_message(self, bank, msg_id, name=None, max_pages=8, settle=150):
         """Print message <msg_id> of a027 bank <bank> in the field's normal message window with a one-off
-        script (NonNPCMsgVar via var 0x8000; any id), screenshot every page (A between pages), close it.
+        script (MsgBoxExtern via var 0x8000; unsigned 16-bit id), screenshot every page (A between pages), close it.
         The text and its control codes (sizes, colours, buffers) render as in a scene; the scene's own
         context (camera, speaker objects, a special window) is not reproduced."""
+        prog = message_script(bank, msg_id)
+        if type(max_pages) is not int or max_pages <= 0:
+            raise ValueError("max_pages must be a positive integer")
         saved = self.get_var(SENTINEL_VAR)
-        self.set_var(SENTINEL_VAR, 0)
-        prog = script_bytes(("LockAll",), ("SetVar", 0x8000, msg_id), ("NonNPCMsgVar", 0x8000),
-                            ("WaitButton",), ("CloseMsg",), ("SetVar", SENTINEL_VAR, 0x5A5A), ("ReleaseAll",),
-                            ("End",))
-        self.run_script(file=3, index=0, msg_bank=bank, program=prog, settle=settle)
-        shots = []
-        for page in range(max_pages):
-            if self.get_var(SENTINEL_VAR) == 0x5A5A:     # the script has closed the window
-                break
-            shots.append(self.screenshot(f"{name or f'msg_{bank:04d}_{msg_id}'}_p{page + 1}"))
-            self.press("A", after=settle)
-        self.set_var(SENTINEL_VAR, saved)
-        return shots
+        try:
+            self.set_var(SENTINEL_VAR, 0)
+            self.run_script(file=3, index=0, msg_bank=bank, program=prog, settle=settle)
+            shots = []
+            for page in range(max_pages):
+                if self.get_var(SENTINEL_VAR) == 0x5A5A:  # the script has closed the window
+                    return shots
+                shots.append(self.screenshot(f"{name or f'msg_{bank:04d}_{msg_id}'}_p{page + 1}"))
+                self.press("A", after=settle)
+            # The last allowed press may have completed the script.
+            if self.get_var(SENTINEL_VAR) != 0x5A5A:
+                raise RuntimeError(f"message {bank}#{msg_id} did not complete within {max_pages} pages")
+            return shots
+        finally:
+            self.set_var(SENTINEL_VAR, saved)
 
     def trainer_battle(self, trainer_id):
         """Start a battle against trainer_id (a/0/5/5) with the game's TrainerBattle command."""
@@ -1322,6 +1400,35 @@ def _parent_watchdog():
     threading.Thread(target=watch, daemon=True).start()
 
 
+def _log_slot_wait(event):
+    """Append 'wait <time>' / 'got <time>' to $EMU_HARNESS_WAIT_LOG (if set), so a supervising
+    runner can exclude time spent waiting for an emulator slot from its timeout."""
+    path = os.environ.get("EMU_HARNESS_WAIT_LOG")
+    if path:
+        with open(path, "a") as fh:
+            fh.write(f"{event} {os.getpid()} {time.time():.3f}\n")
+
+
+def slot_wait_seconds(path, now=None):
+    """Seconds processes logging to `path` spent waiting for a slot (open waits count up to now)."""
+    now = time.time() if now is None else now
+    total, open_waits = 0.0, {}
+    try:
+        lines = Path(path).read_text().splitlines()
+    except FileNotFoundError:
+        return 0.0
+    for line in lines:
+        parts = line.split()
+        if len(parts) != 3:
+            continue
+        event, pid, stamp = parts[0], parts[1], float(parts[2])
+        if event == "wait":
+            open_waits[pid] = stamp
+        elif event == "got" and pid in open_waits:
+            total += stamp - open_waits.pop(pid)
+    return total + sum(now - t for t in open_waits.values())
+
+
 class _EmulatorSlot:
     """A machine-wide cap on live emulators: one of MAX_EMULATORS lock files, held while the Harness lives."""
 
@@ -1329,6 +1436,13 @@ class _EmulatorSlot:
         import fcntl
         SLOT_DIR.mkdir(exist_ok=True)
         self.fh = None
+        _log_slot_wait("wait")
+        try:
+            self._acquire(fcntl)
+        finally:
+            _log_slot_wait("got")
+
+    def _acquire(self, fcntl):
         while self.fh is None:
             for k in range(MAX_EMULATORS):
                 fh = open(SLOT_DIR / f"slot{k}.lock", "w")

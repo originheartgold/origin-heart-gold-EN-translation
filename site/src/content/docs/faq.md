@@ -43,7 +43,26 @@ No. Sharing ROMs isn't allowed, here or on the Discord. The patch is all you nee
 
 ### Which emulator should I use?
 
-The translation is tested in [melonDS](https://melonds.kuribo64.net/) (automated tests also run in DeSmuME). Players also use DraStic, Lemuroid and others, but those aren't tested. Real DS and 3DS hardware isn't tested either. Players report extra crashes and speed problems there that don't happen on an emulator.
+The translation was tested in [melonDS](https://melonds.kuribo64.net/). The automated checks for this build, including the text speed setting, ran in DeSmuME only. There has been no second-emulator pass for this build. Players also use DraStic, Lemuroid and others, but those aren't tested. For a real DS, DSi or 3DS, see the next question.
+
+### Can I play on a real DS, DSi or 3DS?
+
+Yes, with a patch released after rc5, but it's still being tested. The original Chinese hack has anti-piracy checks that make the game freeze after a while when it runs from a flashcart or loader on a real console (often when you open a menu or start a battle), even when it boots fine. The English patch now switches those checks off. On emulators nothing changes.
+
+- **3DS and 2DS with TWiLight Menu++:** untested. Please try it and tell us how it goes. Update TWiLight Menu++ and nds-bootstrap to the newest versions. Select the game, press **Y** for its per-game settings and set **Run in: DSi mode** and **VRAM: DSi**.
+- **DSi with TWiLight Menu++, DSPico, and DS or DS Lite flashcarts (R4 with Wood R4, YSMenu, AKAIO…):** untested. Please try it and tell us how it goes.
+- **Don't add another anti-piracy patch.** The fix is built into the English patch. Don't apply a separate anti-piracy patch or an nds-bootstrap anti-piracy `.ips` file on top of it, and turn off your flashcart's own anti-piracy patching for this game if it has an option for that.
+
+If it freezes, report it on the Discord or on GitHub with:
+
+1. your console, and the loader or flashcart with its version (for TWiLight Menu++, also the nds-bootstrap version);
+2. the per-game settings you used (DS or DSi mode, CPU speed, VRAM);
+3. the patch version;
+4. where it froze and what you were doing, how long you had been playing since you switched it on, and how many Badges you have;
+5. whether the screen went black or the picture froze;
+6. if you use nds-bootstrap, a RAM dump: open its in-game menu with **L + Down + Select** and save a RAM dump (the [nds-bootstrap controls page](https://wiki.ds-homebrew.com/nds-bootstrap/controls) has the details), then attach `ramDump.bin` from the `_nds/nds-bootstrap` folder on your SD card.
+
+Crashes in a story scene that also happen on an emulator come from the original hack, not your console: check [Known issues](../guide/known-issues/) first.
 
 ### How do I update to a new version without losing my progress?
 
@@ -69,7 +88,15 @@ The original Chinese hack runs the overworld at a higher speed (a "60 fps" featu
 
 ### Is there a text speed setting?
 
-No. The hack replaced the TEXT SPEED option with MUSIC SPEED.
+Yes. The Options screen has a seventh row, **TEXT SPEED**, with **NORMAL** and **FAST**. NORMAL is the original hack's text speed. FAST prints up to three letters per frame when the frame has room, and is never slower than NORMAL. New games start on FAST. If you load a save made before this setting existed, it shows NORMAL; change it in Options and save. MUSIC SPEED is still a separate option.
+
+Text also prints faster in towns and on routes, at both settings. In those places the hack runs at 30 fps and used to print one letter every two frames; it now prints one letter per frame, as the original game does on FAST. A side effect is that some short pauses in those scenes are about half as long as in the Chinese hack.
+
+Phone calls now wait for you to press A or B on every page, including right after a battle. Some other text shown right after a battle may still advance by itself, as in the original hack.
+
+If you will go back to the Chinese hack or an older English patch with a save from this version, set TEXT SPEED to NORMAL and save first. Text speed shares a field that older versions use for MUSIC SPEED, and a FAST setting can show up there as an odd value.
+
+Not everything has been checked with the setting: cutscenes, the intro and credits, the radio and TV, mail and the naming screen were not covered by our tests.
 
 ### Why does Kanto play the Johto battle music?
 

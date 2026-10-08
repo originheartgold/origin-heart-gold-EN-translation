@@ -4,7 +4,9 @@
 Tests that assemble are skipped when armips v0.11.0 is not found ($ARMIPS, then PATH); the ROM tests are
 also skipped when work/rom/origin_v4.0.3_cn.nds is missing. The ROM tests compare the assembled binaries with
 golden SHA-1s (GOLDEN), recorded on 2026-10-08 from the run that proved the armips sources write exactly the
-bytes of the retired Python engine, per fix and all together (work/notes/toolchain.md)."""
+bytes of the retired Python engine, per fix and all together (work/notes/toolchain.md). The antipiracy entry
+was added on 2026-10-08 when the fix was ported from code_patches.json: its overlay114 equals the one of the
+text-speed release candidate (fb5fa7e), built by the retired Python engine."""
 import hashlib
 import os
 import re
@@ -22,7 +24,8 @@ import asmpatch as A  # noqa: E402
 import fixes as F  # noqa: E402
 
 ROM_CN = HERE.parent / "rom" / "origin_v4.0.3_cn.nds"
-ASM_FIXES = ("outfit-chooser-strings", "namelen", "naming-keyboard", "msgload", "pcbox-name-width", "ivev-panel")
+ASM_FIXES = ("outfit-chooser-strings", "namelen", "naming-keyboard", "msgload", "pcbox-name-width", "ivev-panel",
+             "antipiracy")
 # SHA-1 of every binary each fix changes (alone, and all together as "all") and of the y9 overlay table
 GOLDEN = {
     "outfit-chooser-strings": {
@@ -52,6 +55,10 @@ GOLDEN = {
         "arm9": "0c8fd98f8d8fc6e314892055612ebcbaa412f0eb",
         "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
     },
+    "antipiracy": {
+        "overlay114": "2ab9890fab31a6b5fa4e432652ffb1a5b5d40a3c",
+        "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
+    },
     "all": {
         "arm9": "3abf3d93ea5a9f1059dc722a67ba71e54b967c78",
         "overlay16": "87cd982681b4164781e92a68994d6190c54d7a35",
@@ -59,6 +66,7 @@ GOLDEN = {
         "overlay44": "bb8393e2d4c2cd05a094e984597a0de6ce0bd841",
         "overlay49": "dc255061037a45f36d47c7698418f70874c7a035",
         "overlay58": "8fb5f17c824265a0e8da07803410d5d4999b84a4",
+        "overlay114": "2ab9890fab31a6b5fa4e432652ffb1a5b5d40a3c",
         "y9": "90ebb4a7ba151c4e4d3ae19a06be6f06451dabb1"
     }
 }
@@ -440,6 +448,23 @@ class RealFixes(unittest.TestCase):
     def test_every_armips_fix_has_a_source(self):
         self.assertEqual(sorted(f["id"] for f in A.asm_fixes(self.fixes.values())), sorted(ASM_FIXES))
 
+    def test_antipiracy_stubs(self):
+        # the six DS Protect entries in overlay114 return the genuine-cart values 0,1,0,1,0,1 ('mov r0,#n;
+        # bx lr', ARM); nothing else in the overlay changes
+        fx = self.fixes["antipiracy"]
+        self.assertEqual([e["offset"] for e in fx["code"]], ["0x864", "0x94C", "0xA34", "0xB1C", "0xC04", "0xCCC"])
+        self.assertTrue(fx["enabled"] and all(e["file"] == "overlay114" for e in fx["code"]))
+        orig = self.hc.RomView(self.cn).get("overlay114")
+        rom, _ = self.assembled(["antipiracy"])
+        new = self.hc.RomView(rom).get("overlay114")
+        self.assertEqual(len(new), len(orig))
+        offs = [int(e["offset"], 16) for e in fx["code"]]
+        changed = {i for i in range(len(orig)) if orig[i] != new[i]}
+        self.assertTrue(changed <= {o + k for o in offs for k in range(8)})
+        for off, ret in zip(offs, (0, 1, 0, 1, 0, 1)):
+            self.assertEqual(orig[off:off + 8].hex(), "f0472de980d04de2")
+            self.assertEqual(struct.unpack_from("<2I", new, off), (0xE3A00000 | ret, 0xE12FFF1E))
+
     def test_each_fix_matches_golden(self):
         for fid in ASM_FIXES:
             with self.subTest(fix=fid):
@@ -448,12 +473,12 @@ class RealFixes(unittest.TestCase):
 
     def test_all_fixes_together_match_golden(self):
         rom, rep = self.check_golden("all", ASM_FIXES)
-        self.assertEqual(len(rep["code_regions"]), 29)
+        self.assertEqual(len(rep["code_regions"]), 35)
         self.assertEqual([(r["id"], r["mode"], r["en"]) for r in rep["strings"]],
                          [("overlay58:0x6F0", "in-place", "OK"), ("overlay58:0x6F6", "relocated", "Outfit 1"),
                           ("overlay58:0x6FE", "relocated", "Outfit 3"), ("overlay58:0x706", "relocated", "Outfit 2")])
         self.assertEqual(rep["armips"]["version"], A.PINNED_VERSION)
-        self.assertEqual(A.verify(rom, rep), "ok (4 strings, 29 code regions)")
+        self.assertEqual(A.verify(rom, rep), "ok (4 strings, 35 code regions)")
         view = self.hc.RomView(rom)
         self.assertEqual(view.table_ram_size(58), 0x818)
         self.assertEqual(rep["grown"], {"overlay58": {"from": 0x7E0, "to": 0x818}})
@@ -468,7 +493,7 @@ class RealFixes(unittest.TestCase):
         # a build report from before the rename ("code_patches") still verifies
         old = {k: v for k, v in rep.items() if k not in ("code_regions", "grown")}
         old["code_patches"] = rep["code_regions"]
-        self.assertEqual(A.verify(rom, old), "ok (4 strings, 29 code regions)")
+        self.assertEqual(A.verify(rom, old), "ok (4 strings, 35 code regions)")
         # no Chinese left in the chooser
         cm_zh = self.m.Charmap.load([self.hc.ZH_CHARMAP])
         self.assertEqual(list(self.hc.scan_blob(view.get("overlay58"), cm_zh, self.hc._bigrams())), [])

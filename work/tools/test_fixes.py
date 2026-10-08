@@ -123,6 +123,26 @@ class Registry(unittest.TestCase):
         self.assertTrue(any("differs from its folder name" in p for p in probs), probs)
         self.assertTrue(any("duplicate fix id 'a'" in p for p in probs), probs)
 
+    def test_applier_instead_of_asm(self):
+        sha = 'length = 64\nexpect_sha1 = "' + "0" * 40 + '"'
+        region = code_entry("t-1", file="overlay50", offset="0x0").replace('expect = "0x2305"', sha)
+        self.write("t", fix_toml("t", asm="", extra='applier = "text_speed_patch"\n', entries=region))
+        self.write("u", fix_toml("u", entries=code_entry("u-1", offset="0x20", file="overlay50")))
+        probs = self.problems()
+        self.assertTrue(any("overlap in overlay50" in p for p in probs), probs)   # the sha1 region is 64 bytes
+        fixes = F.load_all(self.root, validate_all=False)
+        self.assertEqual([f["id"] for f in F.applier_fixes(fixes)], ["t"])
+        self.assertEqual([f["id"] for f in F.code_entries_fixes(fixes)], ["u"])
+        self.assertIn("original SHA-1", F.render_docs(fixes, {"overlay50": 0x021E4980}))
+        # unknown applier, applier with asm, half a sha1 region
+        self.write("t", fix_toml("t", extra='applier = "evil"\n', entries=code_entry("t-1", offset="0x60")))
+        self.write("u", fix_toml("u", entries=code_entry("u-1", offset="0x20").replace('expect = "0x2305"',
+                                                                                      'length = 3')))
+        probs = self.problems()
+        for want in ("unknown applier 'evil'", "give asm or applier, not both", "length must be a positive even",
+                     "missing 'expect' (or 'length' + 'expect_sha1'"):
+            self.assertTrue(any(want in p for p in probs), (want, probs))
+
     def test_duplicate_entry_ids(self):
         self.write("a", fix_toml("a", entries=code_entry("x")))
         self.write("b", fix_toml("b", entries=code_entry("x", offset="0x40")))

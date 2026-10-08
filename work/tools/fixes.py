@@ -23,14 +23,20 @@ fix.toml
     evidence    = ["work/notes/....md: section", "CHANGELOG.md: ...", ...]
     asm         = "namelen.asm"             kinds code, data and strings only (required there): the armips source
                                             in the fix's folder that writes the new bytes (see asmpatch.py and
-                                            work/notes/toolchain.md)
+                                            work/notes/toolchain.md); not with `applier`
+    applier     = "text_speed_patch"        kind code only, instead of `asm`: a Python module (one of APPLIERS)
+                                            applies the fix, in build.py stage 3d after the armips fixes. Its
+                                            [[code]] / [[grow]] entries still declare what it changes (overlap
+                                            checks, docs); the module itself pins and checks the bytes.
 
   Entries (arrays of tables; a fix uses the ones of its kind):
     [[code]]      the regions a code/data fix may change (kinds code, data). Keys: id, file ("arm9" |
                   "overlayNN"), offset ("0x4E", file offset; arm9/overlays: offset in the RAM image), expect,
                   notes. expect: the original bytes of the region, as one halfword written 0x + 1-4 hex digits
                   ("0x2305") or a run of 2+ halfwords of exactly 4 hex digits each ("01DE 012B ..."); anything
-                  else is refused (a bare "2320" is ambiguous). The new bytes are not here: the fix's `asm`
+                  else is refused (a bare "2320" is ambiguous). A large region (an overlay a fix rewrites in
+                  many places) may give `length` (bytes) and `expect_sha1` (SHA-1 of its original bytes)
+                  instead of expect; its source still guards every edit. The new bytes are not here: the fix's `asm`
                   writes them. The build checks expect before it assembles, the asm guards the same bytes
                   itself, and after assembling the build refuses any changed byte outside the fix's regions
                   and any region the asm left unchanged.
@@ -110,13 +116,17 @@ ENTRY_TABLES = {"code": "code", "data": "code", "strings": "string", "graphics":
 STRS, INTS = ("list", str), ("list", int)       # list element types
 TABLES, TABLE_MAP = ("list", dict), ("dict", dict)   # [[entries]] and [name.<key>] sub-tables
 TOP_KEYS = {"id": str, "title": str, "kind": str, "enabled": bool, "decisions": STRS, "requires": STRS,
-            "why": str, "what": str, "evidence": STRS, "asm": str,
+            "why": str, "what": str, "evidence": STRS, "asm": str, "applier": str,
             "code": TABLES, "string": TABLES, "grow": TABLES, "graphics": TABLES, "font": TABLES}
 REQUIRED_TOP = ("id", "title", "kind", "enabled", "decisions", "requires", "why", "what", "evidence")
 ASM_KINDS = ("strings", "data", "code")  # kinds whose new bytes come from an armips source
+# Python modules (work/tools/<name>.py) that apply a code fix instead of an armips source (`applier`)
+APPLIERS = ("text_speed_patch",)
 
-CODE_KEYS = {"id": str, "file": str, "offset": str, "expect": str, "notes": str}
-CODE_REQUIRED = ("id", "file", "offset", "expect", "notes")
+CODE_KEYS = {"id": str, "file": str, "offset": str, "expect": str, "length": int, "expect_sha1": str,
+             "notes": str}
+CODE_REQUIRED = ("id", "file", "offset", "notes")         # plus expect, or length + expect_sha1
+SHA1_RE = re.compile(r"[0-9a-f]{40}")
 CODE_FILE_RE = re.compile(r"arm9|overlay\d+")
 # `.open "<file>.bin", 0x<load address>` in a fix's asm (comments allowed after it)
 ASM_OPEN_RE = re.compile(r'^\s*\.open\s+"([^"]+)"\s*,\s*(0x[0-9A-Fa-f]+)\s*(?:;.*)?$', re.I)
@@ -258,12 +268,20 @@ def _validate_entries(fx, where, problems):
             problems.append(f"{w}: offset must be hex like '0x4E'")
         if isinstance(e.get("file"), str) and not CODE_FILE_RE.fullmatch(e["file"]):
             problems.append(f"{w}: file must be 'arm9' or 'overlayNN'")
-        try:
-            halfwords(e["expect"])
-        except KeyError:
-            pass                                            # reported as missing above
-        except ValueError as ex:
-            problems.append(f"{w}: {ex}")
+        if "expect" in e and ("length" in e or "expect_sha1" in e):
+            problems.append(f"{w}: give expect, or length + expect_sha1, not both")
+        elif "expect" not in e:
+            if "length" not in e or "expect_sha1" not in e:
+                problems.append(f"{w}: missing 'expect' (or 'length' + 'expect_sha1' for a large region)")
+            if _is(e.get("length"), int) and (e["length"] <= 0 or e["length"] % 2):
+                problems.append(f"{w}: length must be a positive even number of bytes")
+            if isinstance(e.get("expect_sha1"), str) and not SHA1_RE.fullmatch(e["expect_sha1"]):
+                problems.append(f"{w}: expect_sha1 must be 40 lowercase hex digits")
+        else:
+            try:
+                halfwords(e["expect"])
+            except ValueError as ex:
+                problems.append(f"{w}: {ex}")
     for i, e in enumerate(_entries(fx, "string")):
         w = f"{where} [[string]] #{i} {e.get('id', '?')}"
         _types(w, e, STRING_KEYS, STRING_REQUIRED, problems)
@@ -375,6 +393,14 @@ def _validate_asm(fx, where, problems, overlay_bases):
     `.open` is '<file>.bin' of a file with a [[code]] region, [[string]] entry or [[grow]], at that file's load
     address; every such file is opened; a strings fix's `.string` literals are its [[string]] en values."""
     kind, asm = fx.get("kind"), fx.get("asm")
+    if "applier" in fx:
+        if kind != "code":
+            problems.append(f"{where}: 'applier' only belongs to kind 'code'")
+        if asm is not None:
+            problems.append(f"{where}: give asm or applier, not both")
+        if isinstance(fx["applier"], str) and fx["applier"] not in APPLIERS:
+            problems.append(f"{where}: unknown applier {fx['applier']!r} (known: {', '.join(APPLIERS)})")
+        return
     if kind not in ASM_KINDS:
         if asm is not None:
             problems.append(f"{where}: 'asm' only belongs to kinds {', '.join(ASM_KINDS)}")
@@ -573,12 +599,17 @@ def _int(v) -> int:
     return v if isinstance(v, int) else int(str(v), 0)
 
 
+def region_length(e) -> int:
+    """Bytes of a [[code]] region: its expect halfwords, or `length` for a SHA-1-pinned region."""
+    return 2 * len(halfwords(e["expect"])) if "expect" in e else e["length"]
+
+
 def footprint(fx) -> list:
     """(resource, start, end, label) rows: byte ranges in code files, whole NARC members, glyphs."""
     rows = []
     for e in fx.get("code", []):
         off = _int(e["offset"])
-        rows.append((e["file"], off, off + 2 * len(halfwords(e["expect"])), e["id"]))
+        rows.append((e["file"], off, off + region_length(e), e["id"]))
     for e in fx.get("string", []):
         off = _int(e["offset"])
         rows.append((e["file"], off, off + 2 * (e["max_units"] + 1), e["id"]))
@@ -692,8 +723,14 @@ def _staged(fixes):
 
 
 def code_entries_fixes(fixes) -> list:
-    """The fixes among `fixes` that have an armips source (kinds strings, data, code), in build order."""
-    return [fx for fx in _staged(fixes) if fx.get("kind") in ASM_KINDS]
+    """The fixes among `fixes` that have an armips source (kinds strings, data, code, without `applier`), in
+    build order."""
+    return [fx for fx in _staged(fixes) if fx.get("kind") in ASM_KINDS and "applier" not in fx]
+
+
+def applier_fixes(fixes) -> list:
+    """The fixes among `fixes` applied by a Python module (`applier`), in build order."""
+    return [fx for fx in _staged(fixes) if "applier" in fx]
 
 
 def code_entries(fixes, all_enabled=False) -> list:
@@ -751,8 +788,9 @@ def _touched(fx, bases=None) -> list:
     for e in fx.get("code", []):
         off = _int(e["offset"])
         ram = _ram_note(e["file"], off, bases)
-        n = 2 * len(halfwords(e["expect"]))
-        lines.append(f"`{e['file']}+{e['offset']}`{ram} `{e['id']}`: {n} bytes, was `{_hw_short(e['expect'])}`")
+        n = region_length(e)
+        was = f"was `{_hw_short(e['expect'])}`" if "expect" in e else f"original SHA-1 `{e['expect_sha1']}`"
+        lines.append(f"`{e['file']}+{e['offset']}`{ram} `{e['id']}`: {n} bytes, {was}")
     for e in fx.get("string", []):
         ptr = f", pointers {', '.join(e['pointers'])}" if e.get("pointers") else ""
         en = e.get("en")
@@ -800,7 +838,7 @@ def render_docs(fixes, overlay_bases=None) -> str:
         paths = [f["_path"] for f in fixes if f.get("_path")]
         overlay_bases = load_overlays(paths[0].parent.parent) if paths else {}
     order(fixes)                                  # raises on a cycle
-    fixes = sorted(fixes, key=lambda f: (KINDS.index(f["kind"]), f["id"]))   # by build stage, then id
+    fixes = sorted(fixes, key=lambda f: (KINDS.index(f["kind"]), "applier" in f, f["id"]))   # by build stage, then id
     out = ["# Fixes to the Chinese ROM", "",
            "<!-- Generated by `python3 work/tools/fixes.py docs --out work/patches/FIXES.md` from "
            "work/patches/*/fix.toml. Do not edit by hand. -->", "",
@@ -822,7 +860,8 @@ def render_docs(fixes, overlay_bases=None) -> str:
            "Chinese ROM are container bookkeeping: the ROM header's layout fields, the FAT and the offset at 0x1000 "
            "where the RSA signature is stored move because ndspy rebuilds the ROM container around the changed "
            "files, not because of a fix.", "",
-           "Stages (and the order of this list): font → graphics → hardcoded strings → data and code patches. "
+           "Stages (and the order of this list): font → graphics → hardcoded strings → data and code patches "
+           "(armips) → code fixes with their own applier (text speed). "
            "Offsets are file offsets; for arm9 "
            "and overlays that is the offset in the RAM image, so RAM = load address + offset (arm9 0x02000000; "
            "overlays from the y9 table, recorded in `work/patches/overlays.toml`). Decisions are ids in the "
@@ -844,6 +883,9 @@ def render_docs(fixes, overlay_bases=None) -> str:
         if fx.get("_path"):
             src = fx["_path"].resolve()
             out.append(f"- Source: `{src.relative_to(REPO).as_posix() if src.is_relative_to(REPO) else src}`")
+        if fx.get("applier"):
+            out.append(f"- Applied by: `work/tools/{fx['applier']}.py` (build stage 3d, after the armips fixes; "
+                       f"its [[code]] / [[grow]] entries declare what it changes)")
         out += ["", "**Why (the Chinese hack):**", "", _paragraphs(fx["why"]), "",
                 "**What (old → new):**", "", _paragraphs(fx["what"]), "", "**Evidence:**", ""]
         out += [f"- {ev}" for ev in fx["evidence"]]

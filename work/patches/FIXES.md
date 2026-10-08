@@ -4,7 +4,7 @@
 
 Besides the message text (`a/0/2/7`, `battle_string.narc`), the English build changes the untouched Chinese ROM (`origin_v4.0.3_cn.nds`) only through the fixes below. Each one lives in `work/patches/<id>/fix.toml`; a code, data or strings fix also has an armips source (`<id>.asm`, shown under the fix) that writes the new bytes, while fix.toml declares the regions it may change, their original bytes, the strings' Chinese and English and how far an overlay may grow, and the build refuses any other change (`work/notes/toolchain.md`). Each fix checks what it replaces before it writes: code, data, strings and `code_from_us`/`member_from_file` graphics check the exact bytes (or their SHA-1); `copy_us`, `tiles_from_file` and `tiles_from_us` check the bit depth and tile count; `tiles_from_png` checks that the image matches the sheet's tile grid, and `tile_range_from_png` that the range fits the sheet, both that every palette index is below the bit-depth limit; every replaced NARC member must keep its format, compression, bit depth, tile count and mapping; and the font fix checks the glyph size. Each fix can be left out of a build with `python3 work/tools/build.py --without <id>` (or built alone with `--only`). A fix whose `requires` names another fix only makes sense together with it; the build refuses to drop one without the other. Outside the message archives and these fixes, the only other bytes that differ from the Chinese ROM are container bookkeeping: the ROM header's layout fields, the FAT and the offset at 0x1000 where the RSA signature is stored move because ndspy rebuilds the ROM container around the changed files, not because of a fix.
 
-Stages (and the order of this list): font → graphics → hardcoded strings → data and code patches. Offsets are file offsets; for arm9 and overlays that is the offset in the RAM image, so RAM = load address + offset (arm9 0x02000000; overlays from the y9 table, recorded in `work/patches/overlays.toml`). Decisions are ids in the decision register: `python3 work/tools/decisions.py show <id>`.
+Stages (and the order of this list): font → graphics → hardcoded strings → data and code patches (armips) → code fixes with their own applier (text speed). Offsets are file offsets; for arm9 and overlays that is the offset in the RAM image, so RAM = load address + offset (arm9 0x02000000; overlays from the y9 table, recorded in `work/patches/overlays.toml`). Decisions are ids in the decision register: `python3 work/tools/decisions.py show <id>`.
 
 | Fix | Kind | Enabled | Requires | Title |
 |---|---|---|---|---|
@@ -28,10 +28,12 @@ Stages (and the order of this list): font → graphics → hardcoded strings →
 | [`gfx-yes-no-buttons`](#gfx-yes-no-buttons) | graphics | yes | – | Touch-screen YES/NO buttons |
 | [`outfit-chooser-strings`](#outfit-chooser-strings) | strings | yes | – | Outfit chooser labels (hardcoded in overlay 58) |
 | [`pcbox-name-width`](#pcbox-name-width) | data | yes | – | PC box header: species-name window wide enough for 10 characters |
+| [`antipiracy`](#antipiracy) | code | yes | – | Real hardware: the six DS Protect entry points return the genuine-cart values |
 | [`ivev-panel`](#ivev-panel) | code | yes | – | Summary IV/EV panel: the IV column clears the English stat labels |
 | [`msgload`](#msgload) | code | yes | – | Text banks are read line by line (fixes the summary and bag memory crashes) |
 | [`namelen`](#namelen) | code | yes | – | Name lengths: US limits (7 characters for trainers, 10 for Pokémon) |
 | [`naming-keyboard`](#naming-keyboard) | code | yes | – | English naming keyboard: ABC page first, pinyin IME off |
+| [`text-speed`](#text-speed) | code | yes | `msgload` | Options TEXT SPEED: NORMAL / FAST, 30 fps printer catch-up, Pokégear calls wait for A/B |
 
 ## font-glyphs
 
@@ -908,6 +910,111 @@ USA ROM. Templates [0]-[8] and [17]-[19] equal the USA overlay 14 table (0x12BB4
 
 </details>
 
+## antipiracy
+
+**Real hardware: the six DS Protect entry points return the genuine-cart values**
+
+- Kind: code
+- Enabled: yes
+- Requires: nothing
+- Decisions: none
+- Source: `work/patches/antipiracy/fix.toml`
+
+**Why (the Chinese hack):**
+
+Players: on flashcarts and loaders (TWiLight Menu++ / nds-bootstrap, R4 kernels) the game boots and plays,
+then freezes after some minutes at a menu, a map change or a battle start, sooner with more badges.
+Emulators (melonDS, DeSmuME) and genuine carts never show it.
+
+Technical: the hack keeps Nintendo's DS Protect library in overlay 114 (RAM 0x02263200). Its card-mirror
+check fails on flashcarts that return real data below 0x8000, and its emulator check on loaders with an
+all-zero MAC. A failed check does not stop the game: the consumers (overlays 1, 5, 28, 31, 115) leak heap-3
+blocks (two of 20,000 bytes at Continue, 1,000 bytes per menu) and start endless RNG tasks until the
+160-slot task queue is full and the game freezes. Loaders key their own anti-piracy fixes on game code and
+header CRC16; the hack's CRC is in no list.
+
+**What (old → new):**
+
+Old: the six entry points (overlay114+0x864, 0x94C, 0xA34, 0xB1C, 0xC04, 0xCCC) run their checks and,
+on a failure, the callback that leaks or starts tasks.
+
+New: each entry's first 8 bytes ('push {r4-r10,lr}; sub sp,sp,#0x80') become 'mov r0,#imm; bx lr' with imm
+the value the untouched hack returns on a genuine cart or an emulator: 0, 1, 0, 1, 0, 1. Every consumer
+checksum stays zero and no leak or task is created; the callbacks the stubs skip are a bare 'bx lr' on the
+genuine path. The check bodies stay in the file. On emulators and genuine carts the game behaves exactly like
+the untouched Chinese hack (D-1002); this is not a hack-bug fix (D-1337). The same 8 bytes as the overlay 114
+of the Bradams 'Speedoption' build, which runs on New 2DS XL.
+
+**Evidence:**
+
+- Decision pending: D-1616 (real-hardware support built into the single English patch) and D-1617 (bypass vs fidelity, D-1002/D-1337) are in the main checkout's register, not yet in this branch's register, so this fix lists no decision of its own
+- work/notes/hardware_support.md: checks, the six entry points and their genuine-cart values (DeSmuME), the 18 call sites, the punishments, why loaders do not fix it
+- git 177cffe 'Code: built-in anti-piracy bypass for real hardware (D-1616, D-1617)': reviewed statically and in DeSmuME (polarity measured, emulator-check failure simulated); not yet run on real hardware
+
+**Touches:**
+
+- `overlay114+0x864` (RAM 0x02263A64) `antipiracy-ov114-0x864`: 8 bytes, was `47F0 E92D D080 E24D`
+- `overlay114+0x94C` (RAM 0x02263B4C) `antipiracy-ov114-0x94C`: 8 bytes, was `47F0 E92D D080 E24D`
+- `overlay114+0xA34` (RAM 0x02263C34) `antipiracy-ov114-0xA34`: 8 bytes, was `47F0 E92D D080 E24D`
+- `overlay114+0xB1C` (RAM 0x02263D1C) `antipiracy-ov114-0xB1C`: 8 bytes, was `47F0 E92D D080 E24D`
+- `overlay114+0xC04` (RAM 0x02263E04) `antipiracy-ov114-0xC04`: 8 bytes, was `47F0 E92D D080 E24D`
+- `overlay114+0xCCC` (RAM 0x02263ECC) `antipiracy-ov114-0xCCC`: 8 bytes, was `47F0 E92D D080 E24D`
+
+**Source** (`work/patches/antipiracy/antipiracy.asm`, armips; the new bytes):
+
+<details>
+<summary>antipiracy.asm</summary>
+
+```asm
+; antipiracy - Real hardware: the six DS Protect entry points return the genuine-cart values. D-1616, D-1617
+; (main checkout's register). Why and what: fix.toml next to this file; work/notes/hardware_support.md.
+;
+; Overlay 114 is the hack's copy of Nintendo's DS Protect (card-mirror, emulator and integrity checks). Its six
+; entry points are ARM code, reached only by 18 Thumb `blx` calls from overlays 1, 5, 28, 31 and 115. Each takes
+; a callback in r0 and runs it when its result means "detected" (the bad entries) or "genuine" (the good ones);
+; the "detected" callbacks leak heap 3 and start endless tasks, the "genuine" ones are a bare `bx lr`.
+; Each stub returns what the untouched hack returns on a genuine cart or an emulator (DeSmuME: 0,1,0,1,0,1) and
+; skips the callback. The integrity checks cover the check bodies only, not these prologues.
+
+.nds
+.arm
+.include "../include/guards.inc"
+
+PROLOGUE_0 equ 0xE92D47F0       ; push {r4-r10, lr}
+PROLOGUE_1 equ 0xE24DD080       ; sub sp, sp, #0x80
+
+GENUINE_ANY_BAD  equ 0          ; "any check detects": 0 on a genuine cart
+GENUINE_ALL_GOOD equ 1          ; "all checks pass":   1 on a genuine cart
+
+.macro stub, value
+.area 8
+    expect32 PROLOGUE_0
+    expect32_at 4, PROLOGUE_1
+    mov     r0, #value
+    bx      lr
+.endarea
+.endmacro
+
+.open "overlay114.bin", 0x02263200
+
+.org 0x02263A64                 ; +0x864: card mirror + integrity, any bad
+    stub GENUINE_ANY_BAD
+.org 0x02263B4C                 ; +0x94C: card mirror + integrity, all good
+    stub GENUINE_ALL_GOOD
+.org 0x02263C34                 ; +0xA34: emulator + integrity, any bad
+    stub GENUINE_ANY_BAD
+.org 0x02263D1C                 ; +0xB1C: emulator + integrity, all good
+    stub GENUINE_ALL_GOOD
+.org 0x02263E04                 ; +0xC04: empty check list, any bad (already always 0)
+    stub GENUINE_ANY_BAD
+.org 0x02263ECC                 ; +0xCCC: empty check list, all good (already always 1)
+    stub GENUINE_ALL_GOOD
+
+.close
+```
+
+</details>
+
 ## ivev-panel
 
 **Summary IV/EV panel: the IV column clears the English stat labels**
@@ -994,6 +1101,7 @@ IV_SHIFT equ 6                  ; px: two-digit IVs clear 'Defense' by 3 px
 - Kind: code
 - Enabled: yes
 - Requires: nothing
+- Required by: `text-speed`
 - Decisions: D-1390, D-1002
 - Source: `work/patches/msgload/fix.toml`
 
@@ -1442,3 +1550,66 @@ the ABC page and ＡＢＣ over the QWE page.
 ```
 
 </details>
+
+## text-speed
+
+**Options TEXT SPEED: NORMAL / FAST, 30 fps printer catch-up, Pokégear calls wait for A/B**
+
+- Kind: code
+- Enabled: yes
+- Requires: `msgload`
+- Decisions: none
+- Source: `work/patches/text-speed/fix.toml`
+- Applied by: `work/tools/text_speed_patch.py` (build stage 3d, after the armips fixes; its [[code]] / [[grow]] entries declare what it changes)
+
+**Why (the Chinese hack):**
+
+Players: the hack's Options menu has no text speed; text prints at the hack's one fixed speed, and in the
+many towns and routes where the hack's game loop runs at 30 fps it prints one letter every two frames (half
+the US game's FAST). Pokégear calls made right after a battle advance by themselves, page after page (the
+hack's battle code leaves auto-advance on, D-1599).
+
+Technical: text is drawn by the printer task (arm9 0x02020A1C), one turn per game-loop pass; the Options
+menu is overlay 50 (six rows); the Pokégear phone-call page printer is overlay 92 (0x021F11E8), whose one
+AddTextPrinterParameterized call (0x021F1228) inherits the auto-advance flag. Text speed is an optional
+English-community feature, a deliberate exception to D-1002 (D-1575).
+
+**What (old → new):**
+
+Old: six Options rows; one printer speed; at 30 fps one letter per two frames; calls after a battle
+auto-advance.
+
+New: native Thumb code (native.c, compiled by clang into the reviewed payload.json, sha256 pinned in
+text_speed_patch.py) is appended to the ARM9 ITCM autoload block (0x01FF8620-0x01FF8BE0; the SDK's ITCM arena
+start at 0x020D1A28 moves past it). Options gets a seventh row TEXT SPEED with NORMAL / FAST (overlay 50
+grows by 284 bytes for the new row tables; 32 metadata offsets, row counts, touch boxes, button positions and
+six calls are rewritten). NORMAL is the hack's printer; FAST prints up to three letters per frame when the
+frame has room (frame-bounded, D-1601). The game loop's last call before its VBlank wait (0x02000DE0) goes
+through pass_end, which gives every printer one extra turn per missed refresh (30 fps catch-up, D-1603).
+Overlay 92's call printer goes through call_print, so every call page waits for A/B (D-1600). New games start
+on FAST (Options init 0x0202B176); existing saves read as NORMAL; MUSIC SPEED keeps bits 0-1 (0x0202B1C6-
+0x0202B1DA). Applied by work/tools/text_speed_patch.py (build stage 3d, after the armips fixes), which pins the
+base ARM9, the ITCM image and both overlays by hash before it writes and refuses any other fix that touches
+its edits, overlays 50/92 or the routines it calls.
+
+**Evidence:**
+
+- Decision pending: D-1604 (NORMAL / FAST), D-1601 (frame-bounded batches), D-1603 (30 fps catch-up), D-1600 (calls wait for A/B; hack finding D-1599) and D-1575 (exception to D-1002) are in the main checkout's register, not yet in this branch's register, so this fix lists no decision of its own
+- work/notes/text_speed_release.md: what ships, changes from the Chinese hack, downgrade warning, known gaps
+- work/notes/text_speed_release_checks.md: release gates and fault matrix; work/notes/text_speed_RUNBOOK.md: how to rerun them
+- work/notes/text_speed_vcount.md: the frame rule
+- release candidate codex/text-speed-research fb5fa7e: full gate suite releasable and 25 faults detected (run rc4, ROM sha256 91cc299e...)
+- CHANGELOG.md [Unreleased]: TEXT SPEED row, 30 fps catch-up, Pokégear calls wait for A or B
+
+**Touches:**
+
+- `arm9+0xD1A28` (RAM 0x020D1A28) `text-speed-itcm-arena`: 4 bytes, was `8620 01FF`
+- `arm9+0x20A18` (RAM 0x02020A18) `text-speed-print-task`: 4 bytes, was `0A1D 0202`
+- `arm9+0xDE0` (RAM 0x02000DE0) `text-speed-frame-end`: 4 bytes, was `F026 FA78`
+- `arm9+0x2B176` (RAM 0x0202B176) `text-speed-new-game-default`: 4 bytes, was `200F 4381`
+- `arm9+0x2B1C6` (RAM 0x0202B1C6) `text-speed-music-getter`: 4 bytes, was `0700 0F00`
+- `arm9+0x2B1D2` (RAM 0x0202B1D2) `text-speed-music-setter-mask`: 2 bytes, was `220F`
+- `arm9+0x2B1DA` (RAM 0x0202B1DA) `text-speed-music-setter-value`: 2 bytes, was `210F`
+- `overlay50+0x0` (RAM 0x021E4980) `text-speed-options-menu`: 5632 bytes, original SHA-1 `7a5702807e1e0af947cf61227f0a6d7fec38cf7a`
+- `overlay92+0xAA68` (RAM 0x021F1228) `text-speed-call-print`: 4 bytes, was `F62F FB04`
+- `overlay50`: may grow by up to 512 bytes (appended at its end)
