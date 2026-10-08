@@ -551,10 +551,10 @@
   {
    "id": 65,
    "zh": "您去雪山了啊……{SCROLL}其实在5年之前的某一天,{NEWLINE}我恰好有事不在五之岛,{CLEAR}这时候岛上来了一伙{CLEAR}自称是科考队的人。{SCROLL}他们通过各种欺骗的说辞,{NEWLINE}诱导我的一位弟子把这伙人带到了{CLEAR}五之岛北面的一个小岛上。{CLEAR}这伙人登岛后用特殊的方法{CLEAR}引出了藏在岛上的传说中的精灵梦幻,{CLEAR}并将梦幻抓走了。{CLEAR}通过后来您击溃火箭队,{CLEAR}我们才知道当时抓走梦幻的,{CLEAR}应该就是火箭队的人。",
-   "en": "You went up the snowy mountain...{SCROLL}Five years ago, I happened to be away{NEWLINE}from Five Island for a day.{SCROLL}While I was away, a group calling{NEWLINE}themselves researchers came here.{SCROLL}They lied their way into getting one of{NEWLINE}my disciples to guide them north.{SCROLL}On an islet there, they used a special{NEWLINE}trick to lure out Mew and took it.{SCROLL}Only after you crushed Team Rocket did{NEWLINE}we learn that it was most likely them.",
+   "en": "You went up the snowy mountain... Five{NEWLINE}years ago, I happened to be away from{CLEAR}Five Island on some business. While I{CLEAR}was away, a group calling themselves{CLEAR}researchers came here. They lied their{CLEAR}way into getting one of my disciples to{CLEAR}take them to a small island north of{CLEAR}Five Island. Once there, they used a{CLEAR}special trick to lure out Mew, the{CLEAR}legendary Pokémon hidden on that{CLEAR}island, and took it away. Only after you{CLEAR}crushed Team Rocket did we learn that{CLEAR}it was most likely them.",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV015: omission: restored 传说中的精灵 and 五之岛北面的一个小岛",
    "qa_ignore": [
     "number_missing"
    ]
@@ -884,18 +884,18 @@
   {
    "id": 105,
    "zh": "没错,对于初到这里的游客来说,{NEWLINE}岛民的这种习俗作风很难让人接受。{CLEAR}但是你知道吗,{CLEAR}在50年前我初次登岛的时候,{CLEAR}这里的人直接就上来抢我的财物。{CLEAR}幸好当时我和快唦蛙奋起反抗,{CLEAR}他们才给了我一个求生的机会,{CLEAR}让我选一个对手进行精灵对战,{CLEAR}赢了就能带着财物平安离开。{CLEAR}幸好我的对手故意让他的帝牙海狮{CLEAR}露出破绽输给了我。{CLEAR}我才得以平安离开六之岛。{SCROLL}现在的六之岛虽然也还有很多问题,{NEWLINE}可是已经比50年前文明太多了。{CLEAR}社会的变迁不是一朝一夕,{CLEAR}它往往是一个漫长的过程,{CLEAR}希望你也能对六之岛抱有信心。",
-   "en": "Right. For a newcomer, the islanders’{NEWLINE}customs and ways are hard to accept.{SCROLL}But you know what? When I first came{NEWLINE}here 50 years ago, the locals walked{SCROLL}right up and tried to rob me.{SCROLL}Luckily, Poliwrath and I fought back,{NEWLINE}and they gave me a way out.{SCROLL}If I won a Pokémon battle against an{NEWLINE}opponent of my choice, I could go free.{SCROLL}Turns out my opponent had his Walrein{NEWLINE}slip up on purpose and let me win.{SCROLL}That’s how I got off Six Island in one{NEWLINE}piece.{SCROLL}Six Island still has problems, but it’s{NEWLINE}far better than 50 years ago.{SCROLL}Society doesn’t change overnight. It’s{NEWLINE}often a long process.{SCROLL}I hope you’ll have faith in Six Island{NEWLINE}too.",
+   "en": "Right. For a newcomer, the islanders’{NEWLINE}customs and ways are hard to accept.{CLEAR}But you know what? When I first came{CLEAR}here 50 years ago, the locals walked{CLEAR}right up and tried to rob me. Luckily,{CLEAR}Poliwrath and I fought back, and they{CLEAR}gave me a chance to survive: I could{CLEAR}choose an opponent for a Pokémon{CLEAR}battle, and if I won, I could leave{CLEAR}safely with my belongings. Turns out my{CLEAR}opponent had his Walrein slip up on{CLEAR}purpose and let me win. That’s how I{CLEAR}got off Six Island in one piece. Six{CLEAR}Island still has plenty of problems, but{CLEAR}it’s far more civilized than it was 50{CLEAR}years ago. Society doesn’t change{CLEAR}overnight. It’s often a long process. I{CLEAR}hope you’ll have faith in Six Island too.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV015: omission: restored 求生机会, 带着财物, 文明 (D-1800)"
   },
   {
    "id": 106,
    "zh": "哈哈,那看来你应该{NEWLINE}是个很直爽的人。{CLEAR}其实对于初到这里的游客来说,{CLEAR}绝大多数人都不习惯岛上的习俗作风。{CLEAR}但是你知道吗,{CLEAR}在50年前我初次登岛的时候,{CLEAR}这里的人直接就上来抢我的财物。{CLEAR}幸好当时我和快唦蛙奋起反抗,{CLEAR}他们才给了我一个求生的机会,{CLEAR}让我选一个对手进行精灵对战,{CLEAR}赢了就能带着财物平安离开。{CLEAR}幸好我的对手故意让他的帝牙海狮{CLEAR}露出破绽输给了我。{CLEAR}我才得以平安离开六之岛。{SCROLL}现在的六之岛虽然也还有很多问题,{NEWLINE}可是已经比50年前文明太多了。{CLEAR}社会的变迁不是一朝一夕,{CLEAR}它往往是一个漫长的过程,{CLEAR}希望你也能对六之岛抱有信心。",
-   "en": "Ha ha, you must be a straight shooter,{NEWLINE}then. Actually, most newcomers aren’t{SCROLL}used to the island’s ways.{SCROLL}But you know what? When I first came{NEWLINE}here 50 years ago, the locals walked{SCROLL}right up and tried to rob me.{SCROLL}Luckily, Poliwrath and I fought back,{NEWLINE}and they gave me a way out.{SCROLL}If I won a Pokémon battle against an{NEWLINE}opponent of my choice, I could go free.{SCROLL}Turns out my opponent had his Walrein{NEWLINE}slip up on purpose and let me win.{SCROLL}That’s how I got off Six Island in one{NEWLINE}piece.{SCROLL}Six Island still has problems, but it’s{NEWLINE}far better than 50 years ago.{SCROLL}Society doesn’t change overnight. It’s{NEWLINE}often a long process.{SCROLL}I hope you’ll have faith in Six Island{NEWLINE}too.",
+   "en": "Ha ha, you must be a straight shooter,{NEWLINE}then. Actually, most newcomers aren’t{CLEAR}used to the island’s ways. But you know{CLEAR}what? When I first came here 50 years{CLEAR}ago, the locals walked right up and{CLEAR}tried to rob me. Luckily, Poliwrath and{CLEAR}I fought back, and they gave me a{CLEAR}chance to survive: I could choose an{CLEAR}opponent for a Pokémon battle, and if I{CLEAR}won, I could leave safely with my{CLEAR}belongings. Turns out my opponent had{CLEAR}his Walrein slip up on purpose and let me{CLEAR}win. That’s how I got off Six Island in{CLEAR}one piece. Six Island still has plenty of{CLEAR}problems, but it’s far more civilized{CLEAR}than it was 50 years ago. Society{CLEAR}doesn’t change overnight. It’s often a{CLEAR}long process. I hope you’ll have faith{CLEAR}in Six Island too.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV015: omission: restored 求生机会, 带着财物, 文明 (D-1800)"
   },
   {
    "id": 107,
@@ -1316,10 +1316,10 @@
   {
    "id": 158,
    "zh": "小次郎『我和武藏现在看到喵喵的心态,{NEWLINE}大概就是又怕兄弟苦,{CLEAR}又怕兄弟开路虎。",
-   "en": "James: How Jessie and I feel about{NEWLINE}Meowth right now...{CLEAR}We’d hate to see our pal go broke, but{CLEAR}we’d hate even more to see him strike it{CLEAR}rich.",
+   "en": "James: How Jessie and I feel about{NEWLINE}Meowth right now... We don’t want our{CLEAR}pal struggling, but we don’t want to{CLEAR}see him driving a Land Rover either.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Meme 又怕兄弟苦，又怕兄弟开路虎 adapted."
+   "notes": "Meme 又怕兄弟苦，又怕兄弟开路虎 adapted. | RV015: meaning: keep the meme's two parallel fears and its Land Rover image (D-1801)"
   },
   {
    "id": 159,

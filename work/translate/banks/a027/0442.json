@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "奈奈美『欢迎光临{NEWLINE}来得正好！{CLEAR}正是喝茶的时间,{SCROLL}哎呀？你的精灵{NEWLINE}好像有点脏！{SCROLL}给它梳毛的话{NEWLINE}它就会变漂亮,{CLEAR}而且有时还不会觉得热。{SCROLL}怎么样？让我{NEWLINE}来梳毛？{VAR:0200:0}",
-   "en": "Daisy: Hi! Good timing. I’m about{NEWLINE}to have some tea.{SCROLL}Would you like to join me?{SCROLL}Oh, you seem to keep your Pokémon{NEWLINE}a bit on the dirty side.{SCROLL}Grooming helps them become more{NEWLINE}beautiful and friendly.{SCROLL}Would you like me to groom one? {VAR:0200:0}",
+   "en": "Daisy: Welcome! You came at just the{NEWLINE}right time. It’s teatime. Oh? Your{CLEAR}Pokémon looks a little dirty! If I groom{CLEAR}it, it’ll look prettier, and sometimes it{CLEAR}won’t feel so hot, either. How about it?{CLEAR}Shall I groom one?{VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0449/1"
+   "origin": "agent",
+   "notes": "US 0449/1 | RV015: meaning: US line replaced; hack's Chinese has no invitation and says grooming sometimes keeps it from feeling hot (D-1849; hack-finding logged)"
   },
   {
    "id": 2,
@@ -30,26 +30,26 @@
   {
    "id": 3,
    "zh": "{VAR:0100:0}看起来{NEWLINE}非常舒服！",
-   "en": "{VAR:0100:0} looks content.",
+   "en": "{VAR:0100:0} looks very comfortable!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0449/3"
+   "origin": "agent",
+   "notes": "US 0449/3 | RV015: meaning: 非常舒服 = very comfortable"
   },
   {
    "id": 4,
    "zh": "奈奈美『好！{NEWLINE}变得很漂亮了！{SCROLL}哦呵呵{NEWLINE}好可爱的精灵！",
-   "en": "Daisy: There you go!{NEWLINE}All done.{SCROLL}See? Doesn’t it look nice?{NEWLINE}It’s such a cute Pokémon.",
+   "en": "Daisy: There! It looks so pretty now!{NEWLINE}Oh ho ho, what a cute Pokémon!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0449/4"
+   "origin": "agent",
+   "notes": "US 0449/4 | RV015: voice: restored 哦呵呵; dropped US padding"
   },
   {
    "id": 5,
    "zh": "奈奈美『这个时间{NEWLINE}每天都会备茶,{CLEAR}欢迎再来！",
-   "en": "Daisy: I always have tea around{NEWLINE}this time. Come join me.",
+   "en": "Daisy: I have tea ready at this time{NEWLINE}every day. Come again!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0449/5"
+   "origin": "agent",
+   "notes": "US 0449/5 | RV015: meaning: 欢迎再来 = come again"
   },
   {
    "id": 6,
@@ -62,18 +62,18 @@
   {
    "id": 7,
    "zh": "奈奈美『哦呵呵！{NEWLINE}蛋是不能梳毛的。",
-   "en": "Daisy: Oh, sorry. I honestly can’t{NEWLINE}groom an Egg.",
+   "en": "Daisy: Oh ho ho! I can’t groom an Egg.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0449/7"
+   "origin": "agent",
+   "notes": "US 0449/7 | RV015: voice: 哦呵呵 instead of US 'sorry'"
   },
   {
    "id": 8,
    "zh": "奈奈美『哦呵呵{NEWLINE}对精灵的护理{CLEAR}很热心呢！{SCROLL}对了！{NEWLINE}告诉你{CLEAR}我弟弟的电话号码吧。{SCROLL}他在常磐道馆当馆主{NEWLINE}已经挑战过了吗？{SCROLL}怎么样？{NEWLINE}要登录吗？{VAR:0200:0}",
-   "en": "Daisy: You are really into grooming!{NEWLINE}Say!{CLEAR}Would you like my kid brother’s number?{SCROLL}He is the Gym Leader at Viridian City.{NEWLINE}Have you challenged him?{SCROLL}Do you want to register him? {VAR:0200:0}",
+   "en": "Daisy: Oh ho ho, you really put your{NEWLINE}heart into caring for your Pokémon! Oh,{CLEAR}I know! I’ll give you my little brother’s{CLEAR}phone number. He’s the Gym Leader at{CLEAR}Viridian Gym. Have you challenged him{CLEAR}yet? So? Want to register him?{VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0449/8"
+   "origin": "agent",
+   "notes": "US 0449/8 | RV015: voice: restored 哦呵呵, 对精灵的护理很热心 (care, not only grooming)"
   },
   {
    "id": 9,

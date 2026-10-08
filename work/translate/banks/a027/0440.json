@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "我在海上航行了一辈子,{NEWLINE}见到过无数的水系口袋妖怪,{CLEAR}对这些水中的精灵可是了如指掌。{SCROLL}年轻人,我看你是非常厉害的训练家,{NEWLINE}你有信心能回答对我提出的{CLEAR}关于水系精灵的问题吗？{SCROLL}",
-   "en": "I’ve sailed the seas all my life. I know{NEWLINE}Water-type Pokémon inside and out.{SCROLL}You look like a mighty fine Trainer,{NEWLINE}youngster.{SCROLL}Think you can answer my questions about{NEWLINE}Water-type Pokémon?{SCROLL}",
+   "en": "I’ve sailed the seas all my life and seen{NEWLINE}countless Water-type Pokémon. I know{CLEAR}these creatures of the water inside and{CLEAR}out.{SCROLL}Youngster, you look like a mighty fine{NEWLINE}Trainer.{SCROLL}Are you confident you can answer my{NEWLINE}questions about Water-type Pokémon?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV015: omission: restored 见到过无数的水系口袋妖怪 and 有信心"
   },
   {
    "id": 1,
@@ -564,10 +564,10 @@
   {
    "id": 66,
    "zh": "嘿嘿,水都群岛有好多{NEWLINE}别处买不到的东西啊。",
-   "en": "Heh heh. These islands sell lots of{NEWLINE}stuff you can’t buy anywhere else.",
+   "en": "Heh heh.{SCROLL}The Alto Mare Islands have lots of{NEWLINE}stuff you can’t buy anywhere else.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV015: omission: restored 水都群岛"
   },
   {
    "id": 67,

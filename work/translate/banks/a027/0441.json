@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "妈的,外面怎么吵吵闹闹的,{NEWLINE}不知道我在睡觉吗？",
-   "en": "Dammit, what’s all that racket outside?{NEWLINE}Don’t they know I’m sleeping?",
+   "en": "Shit, what’s all that racket outside?{NEWLINE}Don’t they know I’m sleeping?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV015: softened: 妈的 is a real curse; Dammit too mild for the biker chief"
   },
   {
    "id": 12,
@@ -198,10 +198,10 @@
   {
    "id": 24,
    "zh": "我们原本只是遭人白眼的混混,{NEWLINE}好不容易在首领的带领下{CLEAR}成为了独占三之岛的「水都暴走族」,{CLEAR}绝不能让你破坏这份美好！",
-   "en": "We used to be nobodies everyone looked{NEWLINE}down on.{CLEAR}Under the Chief, we finally became the{CLEAR}Alto Mare Bikers, masters of Three{CLEAR}Island!{CLEAR}I won’t let you ruin that!",
+   "en": "We used to be punks everyone looked{NEWLINE}down on. Under the Chief, we finally{CLEAR}became the Alto Mare Bikers, masters of{CLEAR}Three Island!{SCROLL}I won’t let you ruin that!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV015: meaning: 混混 = punks/hoodlums, not nobodies (D-1829)"
   },
   {
    "id": 25,
@@ -230,10 +230,10 @@
   {
    "id": 28,
    "zh": "{VAR:0103:0}『住手！不许虐待口袋妖怪！",
-   "en": "{VAR:0103:0}: Stop! Leave that Pokémon{NEWLINE}alone!",
+   "en": "{VAR:0103:0}: Stop! Don’t abuse Pokémon!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV015: softened: 不许虐待口袋妖怪 accuses them of abuse (D-1829)"
   },
   {
    "id": 29,
@@ -1094,10 +1094,10 @@
   {
    "id": 136,
    "zh": "我们「水都暴走族」的首领{NEWLINE}好不容易才带领我们{CLEAR}建立了这个自由骑车的乐园,{CLEAR}我决不允许你这样的人出来搅局！",
-   "en": "Our Chief worked so hard to lead us{NEWLINE}here and build this paradise where we{CLEAR}can ride free.{CLEAR}I won’t let someone like you mess it up!",
+   "en": "The Chief of us Alto Mare Bikers worked{NEWLINE}so hard to lead us here and build this{CLEAR}paradise where we can ride free. I{CLEAR}won’t let someone like you mess it up!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV015: omission: restored 水都暴走族"
   },
   {
    "id": 137,

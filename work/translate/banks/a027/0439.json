@@ -159,10 +159,10 @@
   {
    "id": 19,
    "zh": "我记得十多年前,{NEWLINE}镇上有一个小孩子{CLEAR}被蔓藤怪拖到草丛里吃掉了。{SCROLL}所以从那以后{CLEAR}真新镇南边就修起了这条栅栏,{CLEAR}用来保证居民的安全。",
-   "en": "Over ten years ago, a little kid from{NEWLINE}town was dragged into the grass...{SCROLL}...and eaten by a Tangela.{SCROLL}So they built this fence on the south{NEWLINE}side of town to keep everyone safe.",
+   "en": "I remember that over ten years ago, a{NEWLINE}little kid from town was dragged into{CLEAR}the grass and eaten by a Tangela. So{CLEAR}after that, they built this fence on the{CLEAR}south side of Pallet Town to keep{CLEAR}everyone safe.",
    "status": "draft",
    "origin": "agent",
-   "notes": "蔓藤怪 = Tangela (glossary; its cry in 0053 is Taaa-gel). Story thread: the Tangela incident, see 0444 #87 and 0053 #212/213."
+   "notes": "蔓藤怪 = Tangela (glossary; its cry in 0053 is Taaa-gel). Story thread: the Tangela incident, see 0444 #87 and 0053 #212/213. | RV015: omission: restored 我记得 (I remember) and Pallet Town"
   },
   {
    "id": 20,
@@ -303,10 +303,10 @@
   {
    "id": 37,
    "zh": "哈哈,我上次偷偷跟光一去1号路,{NEWLINE}抓到了这只小烈雀哟！{SCROLL}这样我也终于有了{NEWLINE}属于自己的精灵了！",
-   "en": "Hee hee! I followed Wade to Route 1 and{NEWLINE}caught this Spearow!{SCROLL}Now I finally have a Pokémon of my own!",
+   "en": "Hee hee! Last time, I snuck after Wade{NEWLINE}to Route 1 and caught this little{CLEAR}Spearow! Now I finally have a Pokémon{CLEAR}of my own!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV015: omission: restored 上次偷偷 (last time, secretly) and 小"
   },
   {
    "id": 38,
