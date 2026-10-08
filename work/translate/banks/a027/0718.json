@@ -10670,10 +10670,10 @@
   {
    "id": 1304,
    "zh": "我输了⋯⋯{NEWLINE}",
-   "en": "I lost all the way out here...{NEWLINE}",
+   "en": "I lost...{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1304"
+   "origin": "agent",
+   "notes": "US 0728/1304 | RV066: addition: US 'all the way out here' not in zh"
   },
   {
    "id": 1305,
@@ -10862,10 +10862,10 @@
   {
    "id": 1328,
    "zh": "被击败了⋯⋯{NEWLINE}",
-   "en": "Looks like I’ve been beaten at my{NEWLINE}own game...{NEWLINE}",
+   "en": "I’ve been beaten...{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1328"
+   "origin": "agent",
+   "notes": "US 0728/1328 | RV066: addition: US 'at my own game' not in zh"
   },
   {
    "id": 1329,
@@ -10951,10 +10951,10 @@
   {
    "id": 1338,
    "zh": "等一下！{NEWLINE}和我对战吧！{SCROLL}",
-   "en": "Wait a moment! Come fight us!{SCROLL}",
+   "en": "Wait a moment! Battle me!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1338"
+   "origin": "agent",
+   "notes": "US 0728/1338 | RV066: meaning: zh 和我对战: one trainer, not 'us'"
   },
   {
    "id": 1339,
@@ -11290,10 +11290,10 @@
   {
    "id": 1380,
    "zh": "小胜『呀啊,你来了啊！{NEWLINE}在等你的这段时间里{CLEAR}她又变得{SCROLL}更强了。{SCROLL}",
-   "en": "Tim: Hey, you came back!{NEWLINE}While we were waiting for you, we became{CLEAR}much stronger!{SCROLL}Well, she did.{SCROLL}",
+   "en": "Tim: Hey, you came! While we were waiting{NEWLINE}for you, she got even stronger.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1380"
+   "origin": "agent",
+   "notes": "US 0728/1380 | RV066: addition: US 'we became stronger... Well, she did' joke not in zh"
   },
   {
    "id": 1381,
@@ -11472,10 +11472,10 @@
   {
    "id": 1402,
    "zh": "我的强大是羽量级的！{SCROLL}⋯⋯哎？{NEWLINE}听起来不怎么厉害？{SCROLL}",
-   "en": "My weight puts me in the{NEWLINE}featherweight class!{SCROLL}...Huh? What do you mean that{NEWLINE}doesn’t sound very strong?{SCROLL}",
+   "en": "My strength is in the{NEWLINE}featherweight class!{SCROLL}...Huh? That doesn’t{NEWLINE}sound very strong?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1402"
+   "origin": "agent",
+   "notes": "US 0728/1402 | RV066: meaning: zh 强大 is strength, not body weight (D-1964)"
   },
   {
    "id": 1403,
@@ -11488,18 +11488,18 @@
   {
    "id": 1404,
    "zh": "下次我就说是{NEWLINE}重量级的好了⋯⋯{NEWLINE}",
-   "en": "Maybe I should lie and say I’m in the{NEWLINE}heavyweight class...{NEWLINE}",
+   "en": "Next time, I’ll just say I’m in the{NEWLINE}heavyweight class...{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1404"
+   "origin": "agent",
+   "notes": "US 0728/1404 | RV066: addition: 'lie' not in zh (D-1964)"
   },
   {
    "id": 1405,
    "zh": "依然是羽量级的{NEWLINE}我等你好久了！{SCROLL}",
-   "en": "I’m a stubborn featherweight.{NEWLINE}I’ve been waiting here for you!{SCROLL}",
+   "en": "Still a featherweight! I’ve been waiting{NEWLINE}ages for you!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1405"
+   "origin": "agent",
+   "notes": "US 0728/1405 | RV066: meaning: 依然 = still, not 'stubborn' (D-1964)"
   },
   {
    "id": 1406,
@@ -11552,10 +11552,10 @@
   {
    "id": 1412,
    "zh": "在等你的时候{NEWLINE}我又学到了很多东西！{SCROLL}",
-   "en": "I’ve made good use of the time I’ve{NEWLINE}been waiting and done a review!{SCROLL}",
+   "en": "While I was waiting for you, I learned{NEWLINE}lots more!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1412"
+   "origin": "agent",
+   "notes": "US 0728/1412 | RV066: meaning: zh 学到了很多东西, not 'done a review'"
   },
   {
    "id": 1413,
@@ -11600,10 +11600,10 @@
   {
    "id": 1418,
    "zh": "就是这样,{NEWLINE}我是扎古！{NEWLINE}",
-   "en": "Absolute truth--I’m Kay! Maybe...{NEWLINE}",
+   "en": "That’s right, I’m Kay!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1418"
+   "origin": "agent",
+   "notes": "US 0728/1418 | RV066: addition: zh plain reveal; US doubt 'Maybe...' not in zh (D-1965)"
   },
   {
    "id": 1419,
@@ -11640,10 +11640,10 @@
   {
    "id": 1423,
    "zh": "就是这样,{NEWLINE}我是小古！{NEWLINE}",
-   "en": "Maybe truth--I’m Tia! Absolutely!{NEWLINE}",
+   "en": "That’s right, I’m Tia!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1423"
+   "origin": "agent",
+   "notes": "US 0728/1423 | RV066: addition: zh plain reveal; US doubt not in zh (D-1965)"
   },
   {
    "id": 1424,
@@ -11672,10 +11672,10 @@
   {
    "id": 1427,
    "zh": "切,没抢到。{NEWLINE}",
-   "en": "Tch, didn’t get any.{NEWLINE}",
+   "en": "Tch, couldn’t snatch any.{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV066: softened: 没抢到 = failed to rob, not just 'didn’t get'"
   },
   {
    "id": 1428,
@@ -12171,10 +12171,10 @@
   {
    "id": 1489,
    "zh": "我可不要捡了西瓜{NEWLINE}丢芝麻！{NEWLINE}",
-   "en": "If you try to chase two Pokémon,{NEWLINE}you won’t catch either one!{NEWLINE}",
+   "en": "I won’t go grabbing the watermelon and{NEWLINE}dropping the sesame seeds!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1489"
+   "origin": "agent",
+   "notes": "US 0728/1489 | RV066: meaning: zh inverts the proverb 捡了芝麻丢了西瓜; kept the inverted proverb instead of US 'chase two Pokémon' (D-1966)"
   },
   {
    "id": 1490,
@@ -12294,10 +12294,10 @@
   {
    "id": 1504,
    "zh": "我和精灵{NEWLINE}都没有体力了⋯⋯{NEWLINE}",
-   "en": "My Pokémon and I have no{NEWLINE}body strength...{NEWLINE}",
+   "en": "My Pokémon and I are{NEWLINE}both out of stamina...{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1504",
+   "origin": "agent",
+   "notes": "US 0728/1504 | RV066: grammar: 'have no body strength' unnatural",
    "qa_ignore": [
     "glossary:体力"
    ]
@@ -12396,10 +12396,10 @@
   {
    "id": 1516,
    "zh": "小奇『我们两个人{NEWLINE}会把你收拾得晕头转向的。{SCROLL}",
-   "en": "Dani: We’ll knock you flat!{SCROLL}",
+   "en": "Dani: The two of us will knock you silly!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1516"
+   "origin": "agent",
+   "notes": "US 0728/1516 | RV066: omission: 两个人 and 晕头转向 dropped"
   },
   {
    "id": 1517,
@@ -12492,10 +12492,10 @@
   {
    "id": 1528,
    "zh": "下次抢几只更强的精灵{NEWLINE}就能打败你了。{NEWLINE}",
-   "en": "Next time, I’ll grab some{NEWLINE}stronger Pokémon and beat you.{NEWLINE}",
+   "en": "Next time, I’ll steal some stronger{NEWLINE}Pokémon and beat you.{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV066: softened: 抢 = steal/rob, not 'grab' (D-1968)"
   },
   {
    "id": 1529,
@@ -12556,10 +12556,10 @@
   {
    "id": 1536,
    "zh": "大山『我会以{NEWLINE}高耸入云的{CLEAR}纯洁之心{CLEAR}守护她的！{SCROLL}",
-   "en": "Monte: Watching over my{NEWLINE}girlfriend makes my heart soar!{SCROLL}",
+   "en": "Monte: With a pure heart that soars to{NEWLINE}the clouds, I’ll protect her!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0728/1536; label 大山 = Monte (0719 #739); US had Duff"
+   "notes": "US 0728/1536; label 大山 = Monte (0719 #739); US had Duff | RV066: meaning: zh vows to protect her with a pure heart (D-1967)"
   },
   {
    "id": 1537,
@@ -12572,10 +12572,10 @@
   {
    "id": 1538,
    "zh": "大山『谢谢你,{NEWLINE}对决很精彩。{CLEAR}请一路保重！{NEWLINE}",
-   "en": "Monte: Thank you for the{NEWLINE}awe-inspiring battle! Bye!{NEWLINE}",
+   "en": "Monte: Thank you, that was a wonderful{NEWLINE}battle. Take care on your journey!{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0728/1538"
+   "notes": "US 0728/1538 | RV066: meaning: 一路保重 = take care on your journey, not 'Bye' (D-1967)"
   },
   {
    "id": 1539,
@@ -12588,10 +12588,10 @@
   {
    "id": 1540,
    "zh": "小海『我会以{NEWLINE}如海洋般{CLEAR}宽容的心{CLEAR}包容他的！{SCROLL}",
-   "en": "Eda: My heart’s feelings for my{NEWLINE}boyfriend are as wide and deep as{CLEAR}the ocean.{SCROLL}",
+   "en": "Eda: With a heart as forgiving as the{NEWLINE}ocean, I’ll embrace all of him!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1540"
+   "origin": "agent",
+   "notes": "US 0728/1540 | RV066: meaning: zh vows tolerance (宽容/包容), not romantic feelings (D-1967)"
   },
   {
    "id": 1541,
@@ -12620,10 +12620,10 @@
   {
    "id": 1544,
    "zh": "谭『虽然１＋１＝２,{NEWLINE}但我们两个人{CLEAR}加起来绝对超过２！{SCROLL}",
-   "en": "Thom: One plus one is two. But the two{NEWLINE}of us together is much stronger!{SCROLL}",
+   "en": "Thom: One plus one is two, but the two{NEWLINE}of us add up to way more than two!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1544",
+   "origin": "agent",
+   "notes": "US 0728/1544 | RV066: meaning: zh math joke 超过2 kept",
    "qa_ignore": [
     "number_missing"
    ]
@@ -12631,10 +12631,10 @@
   {
    "id": 1545,
    "zh": "谭『计算失误⋯⋯{NEWLINE}",
-   "en": "Thom: That wasn’t what I expected...{NEWLINE}",
+   "en": "Thom: Miscalculation...{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1545"
+   "origin": "agent",
+   "notes": "US 0728/1545 | RV066: meaning: 计算失误 keeps the math joke"
   },
   {
    "id": 1546,
@@ -13402,10 +13402,10 @@
   {
    "id": 1641,
    "zh": "玩过头了。{NEWLINE}",
-   "en": "I played too much!{NEWLINE}",
+   "en": "I got carried away.{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1641"
+   "origin": "agent",
+   "notes": "US 0728/1641 | RV066: meaning: 玩过头了 = went too far playing around"
   },
   {
    "id": 1642,
@@ -13770,10 +13770,10 @@
   {
    "id": 1687,
    "zh": "啊……不行了！{NEWLINE}",
-   "en": "Arrgh! This is NOT my day!{NEWLINE}",
+   "en": "Argh... I’m done for!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1687"
+   "origin": "agent",
+   "notes": "US 0728/1687 | RV066: addition: US 'NOT my day' not in zh; 不行了 = done for"
   },
   {
    "id": 1688,
@@ -14002,10 +14002,10 @@
   {
    "id": 1716,
    "zh": "好强⋯⋯！{NEWLINE}",
-   "en": "Whoa, you’re kickin’!{NEWLINE}",
+   "en": "So strong...!{NEWLINE}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0728/1716"
+   "origin": "agent",
+   "notes": "US 0728/1716 | RV066: grammar: 'you’re kickin’' unclear; zh 好强"
   }
  ]
 }
