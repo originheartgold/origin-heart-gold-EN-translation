@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "这样啊……{SCROLL}虽然想让您免费乘坐,{CLEAR}但规定就是规定,{CLEAR}还请您能够谅解。",
-   "en": "I’m sorry...{SCROLL}Another person without a Ticket{NEWLINE}wouldn’t make much of a difference,{CLEAR}I think.{SCROLL}But a rule is a rule.{NEWLINE}Sorry, kiddo.",
+   "en": "I see...{SCROLL}I’d love to let you ride for free, but a{NEWLINE}rule is a rule. I hope you understand.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0255/3"
+   "origin": "agent",
+   "notes": "US 0255/3 | RV051: meaning: US invented 'another person without a Ticket' (D-1730)"
   },
   {
    "id": 4,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "船如果每天航行的话,{NEWLINE}也是会累的哦！{CLEAR}今天是停航的日子。{SCROLL}往枯叶市的航次{NEWLINE}是在星期一和星期五{CLEAR}请按时前来！",
-   "en": "Operating a ship every day can wear{NEWLINE}you out!{CLEAR}It’s not running today.{SCROLL}It leaves for Vermilion City on Mondays{NEWLINE}and Fridays!",
+   "en": "Operating a ship every day can wear you{NEWLINE}out! It’s not running today.{SCROLL}It leaves for Vermilion City on Mondays{NEWLINE}and Fridays. Please be on time!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0255/8"
+   "origin": "agent",
+   "notes": "US 0255/8 | RV051: omission: zh 请按时前来"
   },
   {
    "id": 9,
@@ -102,18 +102,18 @@
   {
    "id": 12,
    "zh": "大木博士『要完成{NEWLINE}全国图鉴{CLEAR}估计不是件简单的事呢……{CLEAR}请继续努力！{SCROLL}",
-   "en": "Prof. Oak: It won’t be easy to{NEWLINE}complete the National Pokédex...{SCROLL}However, I’m sure you will make an{NEWLINE}honest attempt on our behalf!{SCROLL}",
+   "en": "Prof. Oak: It won’t be easy to complete{NEWLINE}the National Pokédex... Please keep up{CLEAR}the good work!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0255/12"
+   "notes": "US 0255/12 | RV051: meaning: zh 请继续努力, US 'on our behalf' not in zh"
   },
   {
    "id": 13,
    "zh": "哦呀！{NEWLINE}已经这么晚了！{SCROLL}我现在要去满金市的广播电台{NEWLINE}录节目去了！{SCROLL}你终于要向关东地区进发了吧？{SCROLL}我的研究所在一个叫真新镇的小镇里。{SCROLL}如果你到了那里附近的话,{NEWLINE}让我看看你的图鉴吧！{SCROLL}",
-   "en": "Oh, time flies!{SCROLL}I have a radio show to record{NEWLINE}at Goldenrod Radio Tower.{SCROLL}You must be heading for Kanto.{SCROLL}If you come near Pallet Town, do drop{NEWLINE}by my Pokémon Research Lab!{SCROLL}",
+   "en": "Oh my! Is it that late already?{SCROLL}I have a radio show to record at the{NEWLINE}radio station in Goldenrod City!{SCROLL}You’re finally heading for Kanto,{NEWLINE}aren’t you?{SCROLL}My lab is in a little town called Pallet{NEWLINE}Town. If you’re ever nearby, let me see{CLEAR}your Pokédex!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0255/13"
+   "origin": "agent",
+   "notes": "US 0255/13 | RV051: meaning: zh asks to see Pokédex, asks about Kanto (D-1730)"
   },
   {
    "id": 14,
@@ -126,10 +126,10 @@
   {
    "id": 15,
    "zh": "你是从关东来的？{SCROLL}貌似那里有着许多珍稀的精灵呢！{CLEAR}真好啊~我也想去呐~",
-   "en": "You’ve been to Kanto already?{SCROLL}I hear many rare Pokémon live{NEWLINE}over there.{SCROLL}Sounds exciting.{NEWLINE}I’d love to visit!",
+   "en": "You came from Kanto?{SCROLL}I hear there are lots of rare Pokémon{NEWLINE}over there!{SCROLL}Lucky you~ I want to go too~",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0255/15"
+   "origin": "agent",
+   "notes": "US 0255/15 | RV051: meaning: zh asks if player came from Kanto (D-1730)"
   },
   {
    "id": 16,

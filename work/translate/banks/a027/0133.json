@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "{VAR:0103:0}得到了{NEWLINE}{VAR:0133:1}个狩猎球。",
-   "en": "{VAR:0103:0} received {VAR:0133:1} Safari Balls{NEWLINE}from the attendant.",
+   "en": "{VAR:0103:0} received {VAR:0133:1} Safari Balls.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0135/5"
+   "origin": "agent",
+   "notes": "US 0135/5 | RV051: addition: US 'from the attendant' not in zh"
   },
   {
    "id": 6,
@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "非常抱歉,{NEWLINE}我们目前还在准备阶段。{SCROLL}巴奥巴园长貌似对这设备{CLEAR}有一个伟大的想法。{CLEAR}详细内容,{CLEAR}我们也不清楚。",
-   "en": "I am sorry, but this can’t be used yet.{NEWLINE}Warden Baoba has a great plan for this{CLEAR}machine...or so he says. But even we{CLEAR}don’t know what it is. It’s a secret.",
+   "en": "I am sorry, but this can’t be used yet.{SCROLL}Warden Baoba has a great plan for this{NEWLINE}machine...or so he says. But even we{CLEAR}don’t know the details.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0135/25"
+   "origin": "agent",
+   "notes": "US 0135/25 | RV051: addition: US 'It’s a secret.' not in zh"
   },
   {
    "id": 26,
@@ -246,10 +246,10 @@
   {
    "id": 30,
    "zh": "很好！{SCROLL}接下来我给你讲一些{NEWLINE}关于测试的说明,{SCROLL}别怕,这事没你想的那么难。{SCROLL}在狩猎场中抓一只小拳石,{CLEAR}让我看过之后就算合格。{SCROLL}进入狩猎场后,{NEWLINE}你能在附近的草丛里{CLEAR}找到小拳石。{SCROLL}走吧,{NEWLINE}祝你好运。",
-   "en": "Right on!{NEWLINE}Let me explain how the test works.{CLEAR}It’s very easy.{SCROLL}All you have to do is to catch one{NEWLINE}Geodude at the Safari and show it to me.{SCROLL}They are in the grass closest to the{NEWLINE}entrance. It shouldn’t take long{CLEAR}before you catch one.{SCROLL}Good luck!",
+   "en": "Right on! Let me explain how the test{NEWLINE}works. Don’t worry, it’s not as hard as{CLEAR}you think.{SCROLL}All you have to do is catch one Geodude{NEWLINE}in the Safari Zone and show it to me,{CLEAR}and you pass.{SCROLL}Once you’re inside, you’ll find Geodude{NEWLINE}in the grass near the entrance.{SCROLL}Off you go. Good luck!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0135/30; modernised from US 0135#30"
+   "origin": "agent",
+   "notes": "US 0135/30; modernised from US 0135#30 | RV051: meaning: zh 'not as hard as you think' and pass condition; dropped US 'It shouldn’t take long'"
   },
   {
    "id": 31,
@@ -270,18 +270,18 @@
   {
    "id": 33,
    "zh": "加油,{NEWLINE}快把小拳石抓来给我！{SCROLL}进入狩猎场后,{NEWLINE}你能在附近的草丛里{CLEAR}找到小拳石。{SCROLL}走吧,{NEWLINE}祝你好运。",
-   "en": "Show me the Geodude once you’ve{NEWLINE}caught one.{SCROLL}They are in the grass closest to the{NEWLINE}entrance. It shouldn’t take long.{SCROLL}Good luck!",
+   "en": "Come on, hurry and catch me a Geodude!{SCROLL}Once you’re inside the Safari Zone,{NEWLINE}you’ll find Geodude in the grass near{CLEAR}the entrance.{SCROLL}Off you go. Good luck!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0135/33; modernised from US 0135#33"
+   "origin": "agent",
+   "notes": "US 0135/33; modernised from US 0135#33 | RV051: meaning: zh urges player on; dropped US 'It shouldn’t take long'"
   },
   {
    "id": 34,
    "zh": "等很久了吧,{NEWLINE}我们的准备已经完毕了。{SCROLL}下一项测试是让你抓一只{CLEAR}穿山鼠给我看。{SCROLL}你是不是觉得这个和{NEWLINE}第一项测试没什么区别？{SCROLL}错！{SCROLL}就目前的情况,{NEWLINE}穿山鼠是不会出现的！{SCROLL}接下来,{NEWLINE}就该让这家伙上场了！{SCROLL}",
-   "en": "I’ve been waiting for you!{NEWLINE}The test is ready.{SCROLL}This time can you catch a Sandshrew{NEWLINE}and show it to me?{SCROLL}Sounds easy, right? Not really!{NEWLINE}Sandshrew will not appear with the{CLEAR}current Safari Zone setting.{SCROLL}And that’s where this comes in handy!{SCROLL}",
+   "en": "Sorry to keep you waiting!{NEWLINE}Everything’s ready.{SCROLL}For the next test, catch a Sandshrew{NEWLINE}and show it to me.{SCROLL}You think that’s no different from the{NEWLINE}first test? Wrong!{SCROLL}The way things are now, Sandshrew{NEWLINE}won’t appear!{SCROLL}And that’s where this baby comes in!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0135/34; modernised from US 0135#34"
+   "origin": "agent",
+   "notes": "US 0135/34; modernised from US 0135#34 | RV051: meaning: 等很久了吧 = sorry to keep you waiting, not 'I’ve been waiting for you'"
   },
   {
    "id": 35,
@@ -350,18 +350,18 @@
   {
    "id": 43,
    "zh": "久等了！{SCROLL}新玩法的灵感我终于找到了！{SCROLL}那个玩法就叫……{NEWLINE}放置区块！{SCROLL}我说出来肯定吓你一跳！{NEWLINE}在狩猎场游戏的同时,{CLEAR}还能在区域内{CLEAR}自由放置区块！{SCROLL}",
-   "en": "Hi, I have been waiting for you!{SCROLL}I had an epiphany!{NEWLINE}A new attraction!{SCROLL}I’ve decided to call it...{NEWLINE}Object Arrangement!{SCROLL}This is going to be fun!{NEWLINE}You can place objects on the field as{CLEAR}you play at the Safari Zone!{SCROLL}",
+   "en": "Sorry to keep you waiting!{SCROLL}I finally found the inspiration{NEWLINE}for a new attraction!{SCROLL}I call it... Object Arrangement!{SCROLL}I bet that surprises you! As you play{NEWLINE}at the Safari Zone, you can place{CLEAR}objects freely in the Areas!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0135/43"
+   "origin": "agent",
+   "notes": "US 0135/43 | RV051: meaning: 久等了 = sorry to keep you waiting; 吓你一跳 kept"
   },
   {
    "id": 44,
    "zh": "还有！{SCROLL}根据你放置的区块种类,{SCROLL}它还能改变该区域中{CLEAR}出现的精灵种类。{SCROLL}有新想法的话{NEWLINE}我会打手机给你的。{SCROLL}",
-   "en": "Not only that, but the types of{NEWLINE}Pokémon you see will change depending{CLEAR}on the types of objects you place.{SCROLL}Isn’t it amazing?{NEWLINE}I will call you using the Pokégear if{CLEAR}something else comes up!{SCROLL}",
+   "en": "Not only that, but the types of Pokémon{NEWLINE}you see in an Area will change depending{CLEAR}on the types of objects you place.{SCROLL}I will call you using the Pokégear if I{NEWLINE}come up with something new!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0135/44"
+   "origin": "agent",
+   "notes": "US 0135/44 | RV051: addition: US 'Isn’t it amazing?' not in zh"
   },
   {
    "id": 45,
@@ -382,10 +382,10 @@
   {
    "id": 47,
    "zh": "其实就是在狩猎场内行动的同时,{NEWLINE}自由地在场内进行设置。{SCROLL}有一点请注意,{NEWLINE}台阶的上方以及{CLEAR}会有精灵出现的草丛内{CLEAR}是无法进行设置的。{SCROLL}另外,一个区域内{NEWLINE}最多只能放置{CLEAR}３０个区块。{SCROLL}所以放的时候{NEWLINE}要好好计划一下。{SCROLL}有什么想问的吗？{VAR:0200:0}",
-   "en": "There are many objects you can place{NEWLINE}anywhere as you walk around the Safari{CLEAR}Zone, except on stairs and grass where{CLEAR}Pokémon appear!{SCROLL}You also want to remember that you can{NEWLINE}place up to 30 objects in an Area.{SCROLL}Would you like to know anything{NEWLINE}else? {VAR:0200:0}",
+   "en": "Basically, you can place objects freely{NEWLINE}as you walk around the Safari Zone.{SCROLL}You can’t place them on stairs, though,{NEWLINE}or in grass where Pokémon appear!{SCROLL}Also, you can place up to 30 objects in{NEWLINE}an Area, so plan carefully.{SCROLL}Would you like to know anything else? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0135/47"
+   "origin": "agent",
+   "notes": "US 0135/47 | RV051: omission: zh 'so plan carefully'"
   },
   {
    "id": 48,
@@ -406,10 +406,10 @@
   {
    "id": 50,
    "zh": "区块共分数个种类。{SCROLL}草类……{NEWLINE}树类……{CLEAR}岩类……{CLEAR}水类……{CLEAR}其他……{CLEAR}你可以多尝试几次,{SCROLL}在区域自定义设备上画面中,{NEWLINE}你可以查看到{CLEAR}自己在狩猎场中{CLEAR}放置过的区块种类。{SCROLL}种类也会慢慢增加。{SCROLL}有什么想问的吗？{VAR:0200:0}",
-   "en": "There are many different objects.{NEWLINE}Ones that look like grass, like trees,{CLEAR}like boulders, like water, and other{CLEAR}types of objects...{SCROLL}Try placing different objects. The{NEWLINE}number of objects placed in an Area{CLEAR}is shown in the Area Customizer{CLEAR}on the top screen.{SCROLL}There will be more objects to come,{NEWLINE}as I’ll keep adding more.{SCROLL}Would you like to know anything{NEWLINE}else? {VAR:0200:0}",
+   "en": "There are several kinds of objects.{NEWLINE}Grass... Trees... Rocks... Water...{CLEAR}And others...{SCROLL}Try placing different ones. On the Area{NEWLINE}Customizer screen, you can see the{CLEAR}kinds of objects you’ve placed in the{CLEAR}Safari Zone.{SCROLL}More kinds will be added over time.{SCROLL}Would you like to know anything else? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0135/50"
+   "origin": "agent",
+   "notes": "US 0135/50 | RV051: meaning: zh shows kinds placed, not the number; types increase over time"
   },
   {
    "id": 51,
