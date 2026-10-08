@@ -231,10 +231,10 @@
   {
    "id": 28,
    "zh": "{VAR:FF01:200}小次郎、喵喵『唔哦哦哦哦哦——！！！{VAR:FF01:100}",
-   "en": "{VAR:FF01:200}Whoooooa!!!{VAR:FF01:100}",
+   "en": "{VAR:FF01:200}James & Meowth: Whoooooa!!!{VAR:FF01:100}",
    "status": "draft",
    "origin": "agent",
-   "notes": "Big text; zh label 小次郎、喵喵 dropped so the 200% line fits (Jessie answers both in #29)."
+   "notes": "Big text; zh label 小次郎、喵喵 dropped so the 200% line fits (Jessie answers both in #29). | RV010: omission: speaker label 小次郎、喵喵 restored"
   },
   {
    "id": 29,
@@ -383,10 +383,10 @@
   {
    "id": 47,
    "zh": "小次郎『嘿嘿,被我们的气势吓到了吧？",
-   "en": "James: Heh heh! Awed by our presence,{NEWLINE}are you?",
+   "en": "James: Heh heh! Scared stiff by our{NEWLINE}presence, are you?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV010: meaning: 吓到 = scared, not awed"
   },
   {
    "id": 48,
@@ -439,10 +439,10 @@
   {
    "id": 54,
    "zh": "{VAR:0103:0}『现在不是感叹的时候,{NEWLINE}得去救小伊布才行！",
-   "en": "{VAR:0103:0}: This is no time to stand{NEWLINE}around. I’ve got to save little Eevee!",
+   "en": "{VAR:0103:0}: This is no time to be{NEWLINE}impressed.{SCROLL}I’ve got to save little Eevee!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV010: meaning: 感叹 = marvel at their speed"
   },
   {
    "id": 55,

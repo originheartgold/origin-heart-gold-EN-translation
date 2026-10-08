@@ -168,10 +168,10 @@
   {
    "id": 20,
    "zh": "雅典娜『你这黄毛丫头是记者吗？{NEWLINE}还问东问西的。{CLEAR}乖乖给我去死就好了！",
-   "en": "Ariana: What are you, some brat{NEWLINE}reporter? Asking all these questions...{SCROLL}Just be a good little brat and die!",
+   "en": "Ariana: What are you, some reporter,{NEWLINE}you snot-nosed little girl?{SCROLL}Asking all these questions...{NEWLINE}Just be a good girl and die!",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 黄毛丫头 (little girl) but there's no male variant; kept gender-neutral 'brat'."
+   "notes": "zh 黄毛丫头 (little girl) but there's no male variant; kept gender-neutral 'brat'. | RV010: addressee: 黄毛丫头 is a gendered insult to the female player"
   },
   {
    "id": 21,

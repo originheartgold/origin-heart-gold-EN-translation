@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "你这臭丫头可真够烦的。{NEWLINE}你要是敢硬闯的话,{CLEAR}就做好死在这的觉悟吧！",
-   "en": "You’re a real pain, you little brat.{SCROLL}If you try to force your way in, you’d{NEWLINE}better be ready to die here!",
+   "en": "You’re a real pain, you snotty girl.{SCROLL}If you try to force your way in, you’d{NEWLINE}better be ready to die here!",
    "status": "draft",
    "origin": "agent",
-   "notes": "tone review: 臭丫头 is a contemptuous insult for a girl; kept as 'little brat' (D-0627)"
+   "notes": "tone review: 臭丫头 is a contemptuous insult for a girl; kept as 'little brat' (D-0627) | RV010: addressee: snotty girl; 臭丫头 to Misty kept gendered"
   },
   {
    "id": 7,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "真是越无知越勇敢,{NEWLINE}居然敢在这里跟我们撒野,{CLEAR}今天就叫你有来无回！",
-   "en": "The less you know, the braver you are,{NEWLINE}huh? Daring to make trouble here...{SCROLL}You’re not leaving this place today!",
+   "en": "The less you know, the braver you are,{NEWLINE}huh? Daring to make trouble here...{SCROLL}You came here, but you’ll never leave!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV010: softened: 有来无回 = never get out; settles D-1783"
   },
   {
    "id": 9,
@@ -238,10 +238,10 @@
   {
    "id": 29,
    "zh": "上面那群人是吃干饭的吗？{NEWLINE}居然能让你跑到这里来,{CLEAR}不过你也就到此为止了,{CLEAR}老娘这就送你上西天！",
-   "en": "Are those fools upstairs good for{NEWLINE}nothing? Letting you get all the way{CLEAR}down here...{SCROLL}But this is where it ends. I’m gonna{NEWLINE}send you straight to your grave myself!",
+   "en": "Are those fools upstairs good for{NEWLINE}nothing? Letting you get all the way{CLEAR}down here...{SCROLL}But this is where it ends. Yours truly{NEWLINE}is sending you straight to the grave!",
    "status": "draft",
    "origin": "agent",
-   "notes": "tone review: 老娘 is a swaggering female 'me'; carried by tone, not a pronoun substitute; 上西天 = kill (D-0627)"
+   "notes": "tone review: 老娘 is a swaggering female 'me'; carried by tone, not a pronoun substitute; 上西天 = kill (D-0627) | RV010: voice: 老娘 swagger carried (D-2081)"
   },
   {
    "id": 30,
@@ -302,10 +302,10 @@
   {
    "id": 37,
    "zh": "这次的入侵者……{NEWLINE}有些难缠啊……",
-   "en": "These intruders... are tougher than{NEWLINE}they look...",
+   "en": "These intruders... are quite a{NEWLINE}handful...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV010: addition: 'than they look' not in zh"
   },
   {
    "id": 38,
@@ -350,26 +350,26 @@
   {
    "id": 43,
    "zh": "{VAR:0103:0}『你们这些卑鄙的家伙,{NEWLINE}休想再伤害小霞！",
-   "en": "{VAR:0103:0}: You cowards! I won’t let you{NEWLINE}hurt Misty again!",
+   "en": "{VAR:0103:0}: You despicable scum! I won’t{NEWLINE}let you hurt Misty again!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV010: meaning: 卑鄙 = despicable, not cowardly (D-1782)"
   },
   {
    "id": 44,
    "zh": "{VAR:0103:0}『你们这些卑鄙的家伙,{NEWLINE}做事真是没有底线！",
-   "en": "{VAR:0103:0}: You cowards! Is there{NEWLINE}anything you won’t stoop to?",
+   "en": "{VAR:0103:0}: You despicable scum! Is there{NEWLINE}anything you won’t stoop to?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV010: meaning: 卑鄙 = despicable, not cowardly (D-1782)"
   },
   {
    "id": 45,
    "zh": "哟呵呵呵,偷袭得手,{NEWLINE}老娘就不跟你继续纠缠了,扯呼！",
-   "en": "Oh ho ho ho! Sneak attack, nailed it!{SCROLL}I can’t be bothered with you any{NEWLINE}longer. I’m outta here!",
+   "en": "Oh ho ho ho! Sneak attack landed!{SCROLL}Yours truly won’t waste any more time{NEWLINE}on you. I’m outta here!",
    "status": "draft",
    "origin": "agent",
-   "notes": "tone review: 老娘 is a swaggering female 'me'; carried by tone, not a pronoun substitute (D-0627)"
+   "notes": "tone review: 老娘 is a swaggering female 'me'; carried by tone, not a pronoun substitute (D-0627) | RV010: voice: 老娘 swagger carried (D-2081)"
   },
   {
    "id": 46,
@@ -1132,10 +1132,10 @@
   {
    "id": 140,
    "zh": "就你这两把刷子{NEWLINE}是打不赢我们火箭队干部的,{CLEAR}你就等着被抓起虐待吧。",
-   "en": "With skills as feeble as yours, you’ll{NEWLINE}never beat Team Rocket’s Executives.{SCROLL}Just wait until you get caught and they{NEWLINE}make you suffer.",
+   "en": "With skills as feeble as yours, you’ll{NEWLINE}never beat Team Rocket’s Executives.{SCROLL}Just wait until they capture you and{NEWLINE}abuse you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV010: softened: 抓起虐待 = capture and abuse (D-1782)"
   },
   {
    "id": 141,

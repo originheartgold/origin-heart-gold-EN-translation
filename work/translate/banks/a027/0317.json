@@ -102,18 +102,18 @@
   {
    "id": 12,
    "zh": "哇！一次买这么多！{NEWLINE}那大叔给你打个9折。{SCROLL}球拿好,祝你抓虫成功！",
-   "en": "Whoa! Buying that many at once! I’ll{NEWLINE}give you 10% off.{SCROLL}Here are your balls. Good luck catching{NEWLINE}bugs!",
+   "en": "Whoa! Buying that many at once! Then{NEWLINE}this old guy’ll give you 10% off.{SCROLL}Here are your balls. Good luck catching{NEWLINE}bugs!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV010: voice: 大叔 self-reference kept"
   },
   {
    "id": 13,
    "zh": "没拿够钱的话,大叔可不卖啊！",
-   "en": "No money, no sale!",
+   "en": "If you didn’t bring enough money, this{NEWLINE}old guy isn’t selling!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV010: omission: 没拿够钱 and 大叔 kept"
   },
   {
    "id": 14,

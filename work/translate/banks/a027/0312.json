@@ -71,18 +71,18 @@
   {
    "id": 8,
    "zh": "啊！是镇上的{VAR:0103:0}哥！{NEWLINE}偷偷告诉你,{SCROLL}我有自己的精灵了！",
-   "en": "Oh! It’s {VAR:0103:0} from town!{SCROLL}Want to know a secret? I’ve got my own{NEWLINE}Pokémon now!",
+   "en": "Oh! It’s Big Bro {VAR:0103:0} from town!{SCROLL}Want to know a secret? I’ve got my own{NEWLINE}Pokémon now!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Wade (光一), male-player variant."
+   "notes": "Wade (光一), male-player variant. | RV010: omission: 哥 honorific kept"
   },
   {
    "id": 9,
    "zh": "啊！是镇上的{VAR:0103:0}姐！{NEWLINE}偷偷告诉你,{SCROLL}我有自己的精灵了！",
-   "en": "Oh! It’s {VAR:0103:0} from town!{SCROLL}Want to know a secret? I’ve got my own{NEWLINE}Pokémon now!",
+   "en": "Oh! It’s Big Sis {VAR:0103:0} from town!{SCROLL}Want to know a secret? I’ve got my own{NEWLINE}Pokémon now!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Wade (光一), female-player variant."
+   "notes": "Wade (光一), female-player variant. | RV010: omission: 姐 honorific kept"
   },
   {
    "id": 10,
@@ -167,18 +167,18 @@
   {
    "id": 20,
    "zh": "大哥哥就教教我如何抓精灵吧！{SCROLL}我也想跟精灵做朋友！",
-   "en": "Please teach me how to catch Pokémon!{SCROLL}I want to be friends with Pokémon too!",
+   "en": "Big Bro, please teach me how to catch{NEWLINE}Pokémon!{SCROLL}I want to be friends with Pokémon too!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV010: omission: 大哥哥 address kept"
   },
   {
    "id": 21,
    "zh": "小蓝『好嘞,{NEWLINE}姐姐这就给你示范一下！",
-   "en": "Green: Sure thing! Watch me, I’ll show{NEWLINE}you how!",
+   "en": "Green: Sure thing! Big Sis will show you{NEWLINE}how right now!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 had the wrong label (Blue)."
+   "notes": "v3 had the wrong label (Blue). | RV010: voice: 姐姐 self-reference kept"
   },
   {
    "id": 22,
@@ -215,10 +215,10 @@
   {
    "id": 26,
    "zh": "哇！大哥哥要把小拉达送给我吗？",
-   "en": "Wow! You’re giving me Rattata?",
+   "en": "Wow! Big Bro, you’re giving me Rattata?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV010: omission: 大哥哥 address kept"
   },
   {
    "id": 27,
@@ -239,18 +239,18 @@
   {
    "id": 29,
    "zh": "谢谢大姐姐！我们会是永远的好朋友！",
-   "en": "Thank you! We’ll be best friends{NEWLINE}forever!",
+   "en": "Thank you, Big Sis! We’ll be best friends{NEWLINE}forever!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV010: omission: 大姐姐 address kept"
   },
   {
    "id": 30,
    "zh": "谢谢大哥哥！我会好好照顾小拉的！",
-   "en": "Thank you! I’ll take good care of{NEWLINE}Rattata!",
+   "en": "Thank you, Big Bro! I’ll take good care{NEWLINE}of Ratty!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV010: omission: 大哥哥 address and nickname 小拉 (D-0336 Ratty) kept; settles D-1781"
   },
   {
    "id": 31,
@@ -271,18 +271,18 @@
   {
    "id": 33,
    "zh": "啊！大姐姐等等我啊",
-   "en": "Ah! Wait for me!",
+   "en": "Ah! Big Sis, wait for me!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV010: omission: 大姐姐 address kept"
   },
   {
    "id": 34,
    "zh": "啊！大哥哥等等我啊",
-   "en": "Ah! Wait for me!",
+   "en": "Ah! Big Bro, wait for me!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV010: omission: 大哥哥 address kept"
   },
   {
    "id": 35,
@@ -303,10 +303,10 @@
   {
    "id": 37,
    "zh": "妈的滚远点！{NEWLINE}别在这里碍事！",
-   "en": "Get lost, dammit! Quit getting in the{NEWLINE}way!",
+   "en": "Damn it, get the hell out of here! Quit{NEWLINE}getting in the way!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | RV010: softened: 妈的滚远点 at full strength"
   },
   {
    "id": 38,
