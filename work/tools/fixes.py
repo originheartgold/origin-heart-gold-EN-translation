@@ -47,6 +47,13 @@ fix.toml
     [[graphics]]  graphics operations (kind graphics). Keys: op plus that op's fields, see gfx.py and
                   GRAPHICS_OPS below; notes.
     [[font]]      glyph restores (kind font). Keys: narc, fonts, codes, source ("usa"), notes.
+    [[us_ref]]    a claim about the USA ROM (any kind): id, claim, file ("arm9" | "overlayNN" in USA numbering |
+                  a NARC path), address (RAM) or offset, and what is there: expect (the USA bytes, a few
+                  halfwords), new (a [[code]] region of this fix: the bytes the fix writes there) or hack +
+                  length (a Chinese-ROM location with the same bytes); a NARC reference has members (and lz10)
+                  and means the same members as the Chinese ROM. Every USA address the fix's fix.toml or source
+                  cites must be written `US <file> 0x<RAM>` / `US <file>+0x<offset>` and have a [[us_ref]];
+                  usref.py checks the claims against the USA ROM (check.py --full).
 
 work/patches/overlays.toml
     The RAM load address of every overlay a fix touches ([overlayNN] ram = 0x...), read from the y9 overlay
@@ -67,8 +74,9 @@ malformed halfwords, duplicate fix or entry ids, id != folder, folders without f
 missing requires, dependency cycles, overlays without a RAM base, a code/data fix without its asm file, an
 asm `.open` of a file the fix declares no region in or at the wrong load address, an asm `.create`/`.createfile`/
 `.headersize`, a strings fix whose asm `.string` literals differ from its [[string]] en values, a [[grow]] of
-a file the fix does not open, and two entries (in any fixes) touching the same bytes / NARC member / glyph /
-grown overlay.
+a file the fix does not open, a USA address in a fix.toml or source that is not a `US <file> 0x...` citation
+backed by a [[us_ref]], and two entries (in any fixes) touching the same bytes / NARC member / glyph / grown
+overlay.
 
 Blind spots of the overlap check: it compares entries only within one namespace and granularity:
   * code bytes are keyed by "arm9" / "overlayNN" (byte ranges);
@@ -111,7 +119,8 @@ STRS, INTS = ("list", str), ("list", int)       # list element types
 TABLES, TABLE_MAP = ("list", dict), ("dict", dict)   # [[entries]] and [name.<key>] sub-tables
 TOP_KEYS = {"id": str, "title": str, "kind": str, "enabled": bool, "decisions": STRS, "requires": STRS,
             "why": str, "what": str, "evidence": STRS, "asm": str,
-            "code": TABLES, "string": TABLES, "grow": TABLES, "graphics": TABLES, "font": TABLES}
+            "code": TABLES, "string": TABLES, "grow": TABLES, "graphics": TABLES, "font": TABLES,
+            "us_ref": TABLES}
 REQUIRED_TOP = ("id", "title", "kind", "enabled", "decisions", "requires", "why", "what", "evidence")
 ASM_KINDS = ("strings", "data", "code")  # kinds whose new bytes come from an armips source
 
@@ -125,6 +134,21 @@ STRING_KEYS = {"id": str, "file": str, "offset": str, "zh": str, "en": str, "max
 STRING_REQUIRED = ("id", "file", "offset", "zh", "max_units")
 GROW_KEYS = {"file": str, "max": int, "notes": str}
 GROW_REQUIRED = ("file", "max")
+# [[us_ref]]: a claim about the USA ROM that a source or fix.toml cites, checked by usref.py (check.py --full)
+US_REF_KEYS = {"id": str, "claim": str, "file": str, "address": str, "offset": str, "members": INTS, "lz10": bool,
+               "length": int, "expect": str, "new": str, "hack": str}
+US_REF_REQUIRED = ("id", "claim", "file")
+US_CODE_FILE_RE = re.compile(r"arm9|overlay\d+")
+US_NARC_RE = re.compile(r"[a-z0-9_]+(?:/[A-Za-z0-9_.]+)+")
+US_ADDR_RE = re.compile(r"0x[0-9A-Fa-f]{8}")
+# a hack location for `hack`: "<file> 0x<RAM address>" or "<file>+0x<file offset>"
+US_HACK_RE = re.compile(r"(arm9|overlay\d+)(?: (0x[0-9A-Fa-f]{8})|\+(0x[0-9A-Fa-f]+))")
+# a citation of the USA ROM in a source or fix.toml: "US arm9 0x020431D6", "US overlay14+0x12BB4"
+US_CITE_RE = re.compile(r"\bUS (arm9|overlay\d+)(?: (0x[0-9A-Fa-f]{8})|\+(0x[0-9A-Fa-f]+))\b")
+US_WORD_RE = re.compile(r"\bUSA?\b")
+US_HEX_RE = re.compile(r"\b0x[0-9A-Fa-f]{4,}\b")
+US_CITE_FORM = ("write a USA address as `US <file> 0x<RAM address>` or `US <file>+0x<file offset>` (USA "
+                "overlay numbers) and add a [[us_ref]] that states what is there")
 # `.string "..."` / `.stringn` / `.str` literals in an asm, optionally after a label (armips escapes: \\ \")
 ASM_STRING_RE = re.compile(r'^\s*(?:\w+:\s*)?\.(?:stringn|string|str)\s+"((?:[^"\\]|\\.)*)"\s*(?:;.*)?$', re.I)
 # any .string / .stringn / .str directive (to refuse the forms ASM_STRING_RE does not read)
@@ -317,6 +341,99 @@ def _validate_entries(fx, where, problems):
                 problems.append(f"{where} [[font]] #{i}: code {c!r} must be hex like '0x01AF'")
 
 
+def _validate_us_refs(fx, where, problems):
+    """[[us_ref]] entries (schema), and every USA address cited in the fix's fix.toml and source: in the form
+    `US <file> 0x<RAM>` / `US <file>+0x<offset>`, and backed by a [[us_ref]] of that address (or, for an offset,
+    by the USA source of a code_from_us graphics op, which the build checks by SHA-1)."""
+    code_ids = {e.get("id") for e in _entries(fx, "code") if isinstance(e.get("id"), str)}
+    refs = _entries(fx, "us_ref")
+    for i, e in enumerate(refs):
+        w = f"{where} [[us_ref]] #{i} {e.get('id', '?')}"
+        _types(w, e, US_REF_KEYS, US_REF_REQUIRED, problems)
+        f = e.get("file")
+        if not isinstance(f, str):
+            continue
+        if US_CODE_FILE_RE.fullmatch(f):
+            if ("address" in e) == ("offset" in e):
+                problems.append(f"{w}: give address (RAM) or offset (in the file), one of them")
+            if isinstance(e.get("address"), str) and not US_ADDR_RE.fullmatch(e["address"]):
+                problems.append(f"{w}: address must be a RAM address like '0x020431D6'")
+            if isinstance(e.get("offset"), str) and not HEX_RE.fullmatch(e["offset"]):
+                problems.append(f"{w}: offset must be hex like '0x12BB4'")
+            what = [k for k in ("expect", "new", "hack") if k in e]
+            if len(what) != 1:
+                problems.append(f"{w}: give one of expect (the USA bytes), new (a [[code]] region of this fix whose "
+                                f"new bytes the USA ROM has) or hack (a location in the Chinese ROM with the same "
+                                f"bytes)")
+            if "expect" in e:
+                try:
+                    halfwords(e["expect"])
+                except ValueError as ex:
+                    problems.append(f"{w}: {ex}")
+            if isinstance(e.get("new"), str) and e["new"] not in code_ids:
+                problems.append(f"{w}: new = {e['new']!r} is not a [[code]] region of this fix")
+            if "hack" in e and isinstance(e["hack"], str) and not US_HACK_RE.fullmatch(e["hack"]):
+                problems.append(f"{w}: hack must be '<file> 0x<RAM address>' or '<file>+0x<offset>'")
+            if ("hack" in e) != ("length" in e):
+                problems.append(f"{w}: length (bytes) goes with hack, and only there")
+            if _is(e.get("length"), int) and e["length"] <= 0:
+                problems.append(f"{w}: length must be positive")
+            for k in ("members", "lz10"):
+                if k in e:
+                    problems.append(f"{w}: {k} belongs to a NARC reference")
+        elif US_NARC_RE.fullmatch(f):
+            if not e.get("members"):
+                problems.append(f"{w}: a NARC reference needs members (compared with the same members of the "
+                                f"Chinese ROM)")
+            for k in ("address", "offset", "length", "expect", "new", "hack"):
+                if k in e:
+                    problems.append(f"{w}: {k} belongs to an arm9 / overlay reference")
+        else:
+            problems.append(f"{w}: file must be 'arm9', 'overlayNN' (USA numbering) or a NARC path")
+    cited = {(e.get("file"), "ram" if "address" in e else "off", _int(e.get("address") or e.get("offset")))
+             for e in refs if isinstance(e.get("address") or e.get("offset"), str)
+             and HEX_RE.fullmatch(e.get("address") or e.get("offset"))}
+    cited |= {(g["us_file"], "off", _int(g["us_offset"])) for g in _entries(fx, "graphics")
+              if g.get("op") == "code_from_us" and isinstance(g.get("us_file"), str)
+              and isinstance(g.get("us_offset"), str)
+              and HEX_RE.fullmatch(g["us_offset"])}
+    texts = []
+    if fx.get("_path"):
+        texts.append((f"{fx['_path'].parent.name}/fix.toml", fx["_path"].read_text(encoding="utf-8")))
+    src = asm_path(fx)
+    if src is not None and src.is_file():
+        texts.append((f"{fx['_path'].parent.name}/{src.name}", src.read_text(encoding="utf-8")))
+    for label, text in texts:
+        problems.extend(us_citation_problems(text, label, cited))
+
+
+def us_citation_problems(text: str, label: str, cited: set) -> list:
+    """USA citations in `text`: each `US <file> 0x<RAM>` / `US <file>+0x<offset>` must be in `cited` ({(file,
+    "ram" | "off", value)}), and a hex number of 4+ digits after a 'US'/'USA' in the same clause (up to the next
+    ';', ')', '. ' or line end) must be such a citation."""
+    probs = []
+
+    def line_of(pos):
+        return text.count("\n", 0, pos) + 1
+    spans = []
+    for mo in US_CITE_RE.finditer(text):
+        spans.append(mo.span())
+        key = (mo.group(1), "ram" if mo.group(2) else "off", int(mo.group(2) or mo.group(3), 16))
+        if key not in cited:
+            probs.append(f"{label}:{line_of(mo.start())}: '{mo.group(0)}' has no [[us_ref]] in fix.toml with that "
+                         f"{'address' if mo.group(2) else 'offset'} (usref.py checks each one against the USA ROM)")
+    for mo in US_WORD_RE.finditer(text):
+        end = len(text)
+        for stop in (";", ")", "\n", ". "):
+            k = text.find(stop, mo.end())
+            if k != -1:
+                end = min(end, k)
+        for hx in US_HEX_RE.finditer(text, mo.end(), end):
+            if not any(a <= hx.start() < b for a, b in spans):
+                probs.append(f"{label}:{line_of(hx.start())}: {hx.group(0)} follows '{mo.group(0)}': {US_CITE_FORM}")
+    return sorted(set(probs), key=lambda p: (int(p.split(":")[1]), p))
+
+
 def asm_path(fx):
     """The fix's armips source (Path), or None when it has none."""
     if not isinstance(fx.get("asm"), str) or not fx.get("_path"):
@@ -410,6 +527,11 @@ _LINT_EQU_RE = re.compile(r"^\s*([A-Za-z_]\w*)\s+equ\s+(.+?)\s*$", re.I)
 _LINT_DIRECTIVE_RE = re.compile(r"^\s*\.([A-Za-z][\w.]*)\b\s*(.*?)\s*$")
 _LINT_INCLUDE_RE = re.compile(r'^\s*\.include\s+"([^"]+)"', re.I)
 _LINT_READ_RE = re.compile(r"\breadu?(?:8|16|32|64)\s*\(", re.I)
+# guard reads after macro expansion: at the current address (+ offset), or at an absolute address
+_LINT_POS_READ_RE = re.compile(r"\breadu(8|16|32)\s*\(\s*outputname\(\)\s*,\s*org\(\)\s*(?:\+\s*\((.+?)\)\s*)?"
+                               r"-\s*headersize\(\)\s*\)", re.I)
+_LINT_ABS_READ_RE = re.compile(r"\breadu(8|16|32)\s*\(\s*outputname\(\)\s*,\s*\((.+?)\)\s*-\s*headersize\(\)\s*\)",
+                               re.I)
 
 
 def _strip_comment(line: str) -> str:
@@ -546,8 +668,14 @@ def include_problems(lines, label) -> list:
     return out
 
 
-def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_root=None) -> list:
-    """Static rules for one fix source (see above); problems as strings with file:line."""
+def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_root=None, found=None) -> list:
+    """Static rules for one fix source (see above); problems as strings with file:line.
+    found: a dict that receives what the walk found, for the disassembly snapshots (asmlisting.py):
+      "areas":    [{"file", "base", "start", "size", "mode" ("arm" | "thumb"), "appended", "writes"}] in source
+                  order; writes: "insn" or the directive name of every write in the area;
+      "readonly": [{"file", "base", "start", "mode", "reads": [(address, bytes)]}]: .org blocks that only guard
+                  (no .area), with the bytes their guards read;
+      "abs":      [(file, base, address, bytes)]: guards that read an absolute address (expect32_abs)."""
     problems = []
     fid = fx.get("id", "?")
     where = f"{fid}/{name}"
@@ -626,7 +754,17 @@ def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_ro
         rows = footprint(fx)
     except (KeyError, ValueError, TypeError):
         pass                            # malformed entries are reported by the schema checks
-    state = {"file": None, "base": None, "block": None, "depth": 0, "area": None}
+    state = {"file": None, "base": None, "block": None, "depth": 0, "area": None, "mode": "arm"}
+    if found is not None:
+        for k in ("areas", "readonly", "abs"):
+            found.setdefault(k, [])
+
+    def end_block():
+        blk = state["block"]
+        if found is not None and blk is not None and not blk["areas"] and blk["reads"] and \
+                blk["addr"] is not None and state["file"] is not None:
+            found["readonly"].append({"file": state["file"], "base": state["base"], "start": blk["addr"],
+                                        "mode": blk["mode"], "reads": blk["reads"]})
 
     def loc(stack):
         return " (" + ", ".join(f"macro line {s}:{n}" for s, n in stack) + ")" if stack else ""
@@ -655,18 +793,23 @@ def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_ro
                 args = _split_args(rest)
                 if len(args) == 2:
                     names[args[0].lower()] = args[1]
+            elif d in ("arm", "thumb", "nds"):
+                st["mode"] = "arm" if d == "nds" else d
             elif d == "open":
+                end_block()
                 mo2 = ASM_OPEN_RE.match(code)
                 st["file"] = mo2.group(1)[:-4] if mo2 and mo2.group(1).endswith(".bin") else None
                 st["base"] = int(mo2.group(2), 16) if mo2 else None
                 st["block"] = None
             elif d == "close":
+                end_block()
                 st["file"] = st["base"] = st["block"] = None
             elif d == "org":
                 if st["depth"]:
                     problems.append(f"{at}: .org inside an .area")
+                end_block()
                 st["block"] = {"addr": eval_asm_expr(rest, names), "expr": rest, "guarded": False,
-                               "appended": False, "areas": 0}
+                               "appended": False, "areas": 0, "reads": [], "mode": st["mode"]}
             elif d == "orga":
                 problems.append(f"{at}: .orga takes a file offset; write .org with the RAM address")
             elif d == "area":
@@ -687,6 +830,11 @@ def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_ro
                     if st["area"]["size"] is not None and st["area"]["size"] <= 0:
                         problems.append(f"{at}: .area {args[0]} is {st['area']['size']} bytes (must be positive)")
                         st["area"]["bad"] = True
+                    if found is not None and blk is not None:
+                        st["area"]["rec"] = {"file": st["file"], "base": st["base"], "start": blk["addr"],
+                                             "size": st["area"]["size"], "mode": st["mode"], "block": blk,
+                                             "writes": []}
+                        found["areas"].append(st["area"]["rec"])
             elif d == "endarea":
                 if st["depth"] == 0:
                     problems.append(f"{at}: .endarea without .area")
@@ -699,8 +847,10 @@ def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_ro
                 if kind in ("pos", "end") and st["block"] is not None:
                     st["block"]["guarded"] = True
                     st["block"]["appended"] |= kind == "end"
+                if found is not None:
+                    reads(rest)
             elif d in ASM_WRITE_DIRECTIVES:
-                write(at, n)
+                write(at, n, d)
             elif d not in ASM_NEUTRAL_DIRECTIVES:
                 problems.append(f"{at}: unknown directive .{d}: the lint does not know whether it writes "
                                 f"(add it to fixes.ASM_WRITE_DIRECTIVES or ASM_NEUTRAL_DIRECTIVES)")
@@ -720,14 +870,28 @@ def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_ro
                     b = subst.sub(lambda m: args[m.group(1).lower()], b)
                 statement(b, n, stack + [(src, bn)], depth + 1)
             return
-        write(at, n)                                     # an instruction
+        write(at, n, "insn")                             # an instruction
 
-    def write(at, n):
+    def reads(cond):
+        """Record the bytes a guard condition reads (found): at the current address, or absolute."""
+        st = state
+        for mo in _LINT_POS_READ_RE.finditer(cond):
+            off = eval_asm_expr(mo.group(2), names) if mo.group(2) else 0
+            if st["block"] is not None and off is not None:
+                st["block"]["reads"].append((off, int(mo.group(1)) // 8))
+        for mo in _LINT_ABS_READ_RE.finditer(cond):
+            addr = eval_asm_expr(mo.group(2), names)
+            if addr is not None and st["file"] is not None:
+                found["abs"].append((st["file"], st["base"], addr, int(mo.group(1)) // 8))
+
+    def write(at, n, what):
         st = state
         if st["depth"] == 0:
             problems.append(f"{at}: write outside an .area (wrap every edit in .area <size> / .endarea)")
             return
         area = st["area"]
+        if area.get("rec") is not None:
+            area["rec"]["writes"].append(what)
         if area["written"]:
             return
         area["written"] = True
@@ -775,6 +939,13 @@ def lint_asm(text: str, fx: dict, overlay_bases=None, name="fix.asm", include_ro
             continue
         statement(code, i + 1, [])
         i += 1
+    end_block()
+    if found is not None:
+        for a in found["areas"]:
+            blk = a.pop("block")
+            a["appended"] = blk["appended"]
+        for r in found["readonly"]:
+            r["reads"] = sorted({(r["start"] + off, size) for off, size in r["reads"]})
     if state["depth"]:
         problems.append(f"{where}: an .area is not closed (.endarea missing)")
     return problems
@@ -901,10 +1072,11 @@ def validate(fixes, decisions=None, overlay_bases=None) -> list:
             problems.append(f"{where}: evidence is empty")
         _validate_entries(fx, where, problems)
         _validate_asm(fx, where, problems, overlay_bases)
+        _validate_us_refs(fx, where, problems)
     # entry ids unique across all fixes
     seen = {}
     for fx in fixes:
-        for t in ("code", "string"):
+        for t in ("code", "string", "us_ref"):
             for e in _entries(fx, t):
                 if not isinstance(e.get("id"), str):
                     continue                                # reported by the type check
@@ -1284,8 +1456,25 @@ def render_docs(fixes, overlay_bases=None) -> str:
         out += [f"- {ev}" for ev in fx["evidence"]]
         out += ["", "**Touches:**", ""]
         out += [f"- {t}" for t in _touched(fx, overlay_bases)]
+        refs = fx.get("us_ref", [])
+        if refs:
+            out += ["", "**USA cross-checks** (`[[us_ref]]`, each checked against the USA ROM by `usref.py`, "
+                    "`check.py --full`):", ""]
+            for e in refs:
+                if "members" in e:
+                    where, what = f"`{e['file']}` #{', #'.join(map(str, e['members']))}", \
+                        "the same members as the Chinese ROM" + (" (decompressed)" if e.get("lz10") else "")
+                else:
+                    where = f"`US {e['file']} {e['address']}`" if "address" in e else f"`US {e['file']}+{e['offset']}`"
+                    what = (f"`{e['expect']}`" if "expect" in e else f"the new bytes of `{e['new']}`" if "new" in e
+                            else f"the Chinese ROM's {e['length']} bytes at `{e['hack']}`")
+                out.append(f"- {where} = {what}: {e['claim']}")
         src = asm_path(fx)
         if src is not None and src.is_file():
+            snap = src.parent / f"{fx['id']}.listing"
+            if snap.is_file():
+                out += ["", f"**Disassembly snapshot:** [`{snap.name}`]({src.parent.name}/{snap.name}) (every edit, "
+                        f"old → new; `python3 work/tools/asmpatch.py listing --write {fx['id']}`)"]
             rel = src.resolve()
             rel = rel.relative_to(REPO).as_posix() if rel.is_relative_to(REPO) else rel.name
             out += ["", f"**Source** (`{rel}`, armips; the new bytes):", "", "<details>",

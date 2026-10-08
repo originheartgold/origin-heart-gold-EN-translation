@@ -109,3 +109,11 @@ file = "arm9"
 offset = "0x100EA4"
 expect = "00A2 00A3 00A4 00A5 00A6 00A7 00A8 00A9 00AA 00AB 00F8 00F9 0001"
 notes = "Page 2 row 5: full-width 0-9 . , -> ZXCVBNM , ."
+
+[[us_ref]]
+id = "naming-keyboard-us-handler"
+claim = "US arm9 0x02084884 is the USA key handler (pret NamingScreen_HandleCharacterInput), hack 0x02083814: same prologue"
+file = "arm9"
+address = "0x02084884"
+hack = "arm9 0x02083814"
+length = 6

@@ -1,0 +1,82 @@
+; overworld-texture-frame-bounds - disassembly snapshot of overworld-texture-frame-bounds.asm: every edit, old -> new. Generated; do not edit.
+; Regenerate: python3 work/tools/asmpatch.py listing --write overworld-texture-frame-bounds   (check.py --full fails when it is stale)
+; Old: the Chinese ROM. New: overworld-texture-frame-bounds.asm assembled alone over it by armips v0.11.0.
+; Disassembly: capstone 5.0.9 (UAL syntax). '  ' unchanged context, '- ' old, '+ ' new;
+; addresses are RAM addresses, Thumb bytes are halfwords, ARM bytes words; data rows are what one
+; statement writes (u16 rows of a string or key row with their characters, '|' = 0xFFFF end).
+
+== arm9+0x24654 (RAM 0x02024654), 134 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
+  02024654  B5F8       push {r3, r4, r5, r6, r7, lr}
+  02024656  2800       cmp r0, #0
+  02024658  D004       beq #0x2024664
+  0202465A  6883       ldr r3, [r0, #8]
+  0202465C  2B00       cmp r3, #0
+  0202465E  D001       beq #0x2024664
+  02024660  18C6       adds r6, r0, r3
+  02024662  E000       b #0x2024666
+  02024664  2600       movs r6, #0
+  02024666  8830       ldrh r0, [r6]
+  02024668  1834       adds r4, r6, r0
+  0202466A  2900       cmp r1, #0
+  0202466C  D012       beq #0x2024694
+  0202466E  1C08       adds r0, r1, #0
+  02024670  303C       adds r0, #0x3c
+  02024672  D00D       beq #0x2024690  ; ObjTex_SetTexture_NoTexture
+  02024674  1C0B       adds r3, r1, #0
+  02024676  333D       adds r3, #0x3d
+  02024678  781B       ldrb r3, [r3]
+  0202467A  429A       cmp r2, r3
+  0202467C  D208       bhs #0x2024690  ; ObjTex_SetTexture_NoTexture
+  0202467E  3142       adds r1, #0x42
+  02024680  8809       ldrh r1, [r1]
+  02024682  1843       adds r3, r0, r1
+  02024684  5A40       ldrh r0, [r0, r1]
+  02024686  1D1B       adds r3, r3, #4
+  02024688  1C01       adds r1, r0, #0
+  0202468A  4351       muls r1, r2, r1
+  0202468C  1858       adds r0, r3, r1
+  0202468E  E002       b #0x2024696  ; ObjTex_SetTexture_Load
+  02024690  2000       movs r0, #0
+  02024692  E000       b #0x2024696  ; ObjTex_SetTexture_Load
+  02024694  2000       movs r0, #0
+  02024696  6800       ldr r0, [r0]
+  02024698  2500       movs r5, #0
+  0202469A  0400       lsls r0, r0, #0x10
+  0202469C  0C07       lsrs r7, r0, #0x10
+  0202469E  7860       ldrb r0, [r4, #1]
+  020246A0  2800       cmp r0, #0
+  020246A2  DD19       ble #0x20246d8  ; ObjTex_SetTexture_Return
+  020246A4  2C00       cmp r4, #0
+  020246A6  D00A       beq #0x20246be
+  020246A8  7860       ldrb r0, [r4, #1]
+  020246AA  4285       cmp r5, r0
+  020246AC  D207       bhs #0x20246be
+  020246AE  88E0       ldrh r0, [r4, #6]
+  020246B0  1821       adds r1, r4, r0
+  020246B2  5A20       ldrh r0, [r4, r0]
+  020246B4  1D0A       adds r2, r1, #4
+  020246B6  1C01       adds r1, r0, #0
+  020246B8  4369       muls r1, r5, r1
+  020246BA  1851       adds r1, r2, r1
+  020246BC  E000       b #0x20246c0
+  020246BE  2100       movs r1, #0
+  020246C0  78CA       ldrb r2, [r1, #3]
+  020246C2  2001       movs r0, #1
+  020246C4  4210       tst r0, r2
+  020246C6  D003       beq #0x20246d0
+  020246C8  1C30       adds r0, r6, #0
+  020246CA  1C3A       adds r2, r7, #0
+  020246CC  F000 F806  bl #0x20246dc
+  020246D0  7860       ldrb r0, [r4, #1]
+  020246D2  1C6D       adds r5, r5, #1
+  020246D4  4285       cmp r5, r0
+  020246D6  DBE5       blt #0x20246a4
+  020246D8  BDF8       pop {r3, r4, r5, r6, r7, pc}
+
+== arm9+0x2467C (RAM 0x0202467C), 2 bytes, thumb: overworld-texture-frame-bounds-branch
+  02024678  781B       ldrb r3, [r3]
+  0202467A  429A       cmp r2, r3
+- 0202467C  D208       bhs #0x2024690  ; ObjTex_SetTexture_NoTexture
++ 0202467C  D22C       bhs #0x20246d8  ; ObjTex_SetTexture_Return
+  0202467E  3142       adds r1, #0x42
+  02024680  8809       ldrh r1, [r1]

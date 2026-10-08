@@ -1,0 +1,45 @@
+; pcbox-name-width - disassembly snapshot of pcbox-name-width.asm: every edit, old -> new. Generated; do not edit.
+; Regenerate: python3 work/tools/asmpatch.py listing --write pcbox-name-width   (check.py --full fails when it is stale)
+; Old: the Chinese ROM. New: pcbox-name-width.asm assembled alone over it by armips v0.11.0.
+; Disassembly: capstone 5.0.9 (UAL syntax). '  ' unchanged context, '- ' old, '+ ' new;
+; addresses are RAM addresses, Thumb bytes are halfwords, ARM bytes words; data rows are what one
+; statement writes (u16 rows of a string or key row with their characters, '|' = 0xFFFF end).
+
+== overlay16+0x12E9C (RAM 0x021F781C), 72 bytes, data: pcbox-header-name-width
+- 021F781C  04 08 05 07 02 0F
++ 021F781C  04 08 05 08 02 0F
+  021F7822  0069
+  021F7824  04 01 07 08 02 0F
+- 021F782A  0077
++ 021F782A  0079
+  021F782C  04 04 09 06 02 0F
+- 021F7832  0087
++ 021F7832  0089
+  021F7834  04 01 00 1E 03 0F
+  021F783A  000F
+  021F783C  04 10 05 02 02 0F
+- 021F7842  0093
++ 021F7842  0095
+  021F7844  04 01 05 06 02 0F
+- 021F784A  0097
++ 021F784A  0099
+  021F784C  04 01 0D 08 02 0F
+- 021F7852  00A3
++ 021F7852  00A5
+  021F7854  04 01 11 0B 02 0F
+- 021F785A  00B3
++ 021F785A  00B5
+  021F785C  04 01 15 0C 02 0F
+- 021F7862  00C9
++ 021F7862  00CB
+
+== overlay16+0x12F24 (RAM 0x021F78A4), 24 bytes, data: pcbox-header-name-width-2
+  021F78A4  04 01 0B 08 02 0F
+- 021F78AA  00E1
++ 021F78AA  00E3
+  021F78AC  04 01 0F 0B 02 0F
+- 021F78B2  00F1
++ 021F78B2  00F3
+  021F78B4  04 01 13 0C 02 0F
+- 021F78BA  0107
++ 021F78BA  0109

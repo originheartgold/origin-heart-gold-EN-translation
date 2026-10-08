@@ -22,3 +22,9 @@ op = "copy_us"
 narc = "a/1/0/4"
 members = [5]
 notes = "battle result labels 胜 负 平 -> USA WIN / LOSE / DRAW (OBJ sheet; NCER #6 identical to USA)"
+
+[[us_ref]]
+id = "battle-result-labels-us-cells"
+claim = "The cells of the result sheet (a/1/0/4 #6, NCER) are the USA ones"
+file = "a/1/0/4"
+members = [6]

@@ -17,7 +17,8 @@ what = """
 Old: name window 04 08 05 07 (56 px); the following bg-4 windows start at base tiles 0x69, 0x77, ...
 New: the USA values: name window 04 08 05 08 (64 px, ending at the gender icon at x 128), and the base tiles
 of the later bg-4 windows move up by 2 (0x77 -> 0x79 ... 0x107 -> 0x109), so bg-4 tiles run to 288 as in the
-USA ROM. Templates [0]-[8] and [17]-[19] equal the USA overlay 14 table (0x12BB4, 0x12C3C). Nothing else on the screen changes.
+USA ROM. Templates [0]-[8] and [17]-[19] equal the USA table (US overlay14+0x12BB4, US overlay14+0x12C3C).
+Nothing else on the screen changes.
 """
 evidence = [
   "D-1511 (emulator, 2026-10-05): 'Charmeleon' in full before the gender icon, rest of the box screen unchanged; screens work/build/harness/hunt_ui/box_party_pair.png (local)",
@@ -29,11 +30,25 @@ id = "pcbox-header-name-width"
 file = "overlay16"
 offset = "0x12E9C"
 expect = "0804 0705 0F02 0069 0104 0807 0F02 0077 0404 0609 0F02 0087 0104 1E00 0F03 000F 1004 0205 0F02 0093 0104 0605 0F02 0097 0104 080D 0F02 00A3 0104 0B11 0F02 00B3 0104 0C15 0F02 00C9"
-notes = "PC box top-screen window templates [0]-[8]: name window 7 -> 8 tiles, later bg-4 base tiles +2 (US ov14 0x12BB4)."
+notes = "PC box top-screen window templates [0]-[8]: name window 7 -> 8 tiles, later bg-4 base tiles +2 (US overlay14+0x12BB4)."
 
 [[code]]
 id = "pcbox-header-name-width-2"
 file = "overlay16"
 offset = "0x12F24"
 expect = "0104 080B 0F02 00E1 0104 0B0F 0F02 00F1 0104 0C13 0F02 0107"
-notes = "Same table, templates [17]-[19]: bg-4 base tiles +2 (US ov14 0x12C3C)."
+notes = "Same table, templates [17]-[19]: bg-4 base tiles +2 (US overlay14+0x12C3C)."
+
+[[us_ref]]
+id = "pcbox-us-templates"
+claim = "US overlay14+0x12BB4: the USA window templates [0]-[8] are the ones this fix writes"
+file = "overlay14"
+offset = "0x12BB4"
+new = "pcbox-header-name-width"
+
+[[us_ref]]
+id = "pcbox-us-templates-2"
+claim = "US overlay14+0x12C3C: the USA window templates [17]-[19] are the ones this fix writes"
+file = "overlay14"
+offset = "0x12C3C"
+new = "pcbox-header-name-width-2"

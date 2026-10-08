@@ -4,7 +4,7 @@
 ; The PC box top screen builds its windows from a WindowTemplate table in overlay 16 (8 bytes each:
 ; bg, x, y, width, height, palette, base tile; all in tiles). The hack (Japanese base) makes the
 ; species-name window 7 tiles (56 px) wide, so 'Charmeleon' shows as 'Charmeleor'. The new values are
-; the USA ones (US overlay 14: 0x12BB4 for [0]-[8], 0x12C3C for [17]-[19]): the name window is 8 tiles
+; the USA ones (US overlay14+0x12BB4 for [0]-[8], US overlay14+0x12C3C for [17]-[19]): the name window is 8 tiles
 ; (64 px, ending at the gender icon at x 128), and the bg-4 windows after it move their first tile up
 ; by 2, so bg-4 tiles run to 288 as in the USA ROM. Nothing else on the screen changes.
 

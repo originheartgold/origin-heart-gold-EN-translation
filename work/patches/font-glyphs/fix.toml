@@ -11,8 +11,10 @@ text box.
 
 Technical: the hack redrew the ellipsis (code 0x01AF) and the curly double quotes (0x01B4, 0x01B5) of the
 font NARC a/0/1/6 as CJK-width glyphs: 12 px wide in fonts 0, 1 and 2 and 13 px in font 4 (the hack's
-redrawn Latin font), where the USA fonts have 6-7 px. In fonts 0-2 every other Latin glyph and width is
-byte-identical to the USA ROM.
+redrawn Latin font), where the USA fonts have 6-7 px. In fonts 0-2 the letters, digits and common
+punctuation are byte-identical to the USA ROM; besides these three, the hack also changed 《 》 (0x01B7,
+0x01B8: 12 px in fonts 0-2), ~ (0x01C3, fonts 1-2: another glyph, same width), Ø ø (font 0) and, in font 1,
+Æ Ð Ø Þ æ ð ø þ ° _ ＿ (width 0), Œ œ and Ş ş. This fix leaves those as they are.
 QA lays out the English against the vanilla widths and flags lines that only fit with them
 (needs_vanilla_glyphs).
 """

@@ -33,8 +33,9 @@ armips is not bundled. It is found as --armips PATH (build.py), else the ARMIPS 
 
     python3 work/tools/asmpatch.py [--rom ROM] [--armips PATH] check [--only IDS] [--without IDS]
                                          # assemble the selected fixes against the Chinese ROM (nothing written)
-    python3 work/tools/asmpatch.py [--rom ROM] [--armips PATH] listing <fix-id>
-                                         # each region of one fix: old bytes -> new bytes
+    python3 work/tools/asmpatch.py [--rom ROM] [--armips PATH] listing [--write | --check] [IDS...]
+                                         # the disassembly snapshots work/patches/<id>/<id>.listing
+                                         # (asmlisting.py): print, write, or check them (default: every fix)
     python3 work/tools/asmpatch.py tbl [--out work/patches/include/charmap.tbl]
                                          # the armips table file for `.string` (from charmap_en.tsv)
 """
@@ -390,10 +391,11 @@ def asm_fixes(fixes) -> list:
     return fixreg.code_entries_fixes(fixes)
 
 
-def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE_DIR, layout=None):
+def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE_DIR, layout=None, listings=None):
     """Assemble the armips fixes among `fixes` (build order) over `binaries` {"arm9": bytes, "overlayNN":
     bytes}. bases: {"overlayNN": load address} (string pointers and the report's RAM column); layout:
-    {"overlayNN": (ram, ramSize, bssSize)} of every overlay in the ROM, needed when a fix grows one.
+    {"overlayNN": (ram, ramSize, bssSize)} of every overlay in the ROM, needed when a fix grows one;
+    listings: a dict that receives each fix's armips -temp listing text by fix id (asmlisting.py).
     Returns (new binaries, code rows, string rows); raises AsmError listing every problem."""
     todo = asm_fixes(fixes)
     bases = bases or {}
@@ -437,7 +439,10 @@ def assemble(fixes, binaries: dict, armips: str, bases=None, include_dir=INCLUDE
                 shown = src.relative_to(fixreg.REPO) if src.is_relative_to(fixreg.REPO) else src
                 raise AsmError(f"fix {fx['id']}: armips failed on {shown} (exit {r.returncode}); nothing was "
                                f"written:\n" + "\n".join("  " + line for line in out.splitlines()))
-            twice = double_writes(listing.read_text(encoding="utf-8-sig", errors="replace"))
+            listing_text = listing.read_text(encoding="utf-8-sig", errors="replace")
+            if listings is not None:
+                listings[fx["id"]] = listing_text
+            twice = double_writes(listing_text)
             if twice:
                 raise AsmError(f"fix {fx['id']}: the asm writes the same bytes more than once (the later write "
                                f"wins silently):\n  " + "\n  ".join(twice))
@@ -504,9 +509,9 @@ def staged_keys(fixes) -> list:
     return sorted(keys, key=lambda k: (k != "arm9", int(k[7:]) if k.startswith("overlay") else 0))
 
 
-def apply(rom, fixes, armips: str, dry_run=False) -> dict:
-    """Assemble the armips fixes among `fixes` into an ndspy ROM. Returns {"code_regions": rows, "strings":
-    rows, "files": {key: sha1[:12]} of the changed files, "armips": {...}}; raises AsmError (nothing written)."""
+def stage_inputs(rom, fixes) -> tuple:
+    """(RomView, binaries, bases, layout) for assemble(): the images of the files the armips fixes among `fixes`
+    change (staged_keys), their load addresses and the overlay layout of the ROM."""
     import hardcoded
     view = hardcoded.RomView(rom)
     keys = staged_keys(fixes)
@@ -516,6 +521,13 @@ def apply(rom, fixes, armips: str, dry_run=False) -> dict:
         raise AsmError(str(ex)) from None
     bases = {k: view.base(k) for k in keys if k != "arm9"}
     layout = {f"overlay{i}": (o.ramAddress, o.ramSize, o.bssSize) for i, o in view.ovs.items()}
+    return view, binaries, bases, layout
+
+
+def apply(rom, fixes, armips: str, dry_run=False) -> dict:
+    """Assemble the armips fixes among `fixes` into an ndspy ROM. Returns {"code_regions": rows, "strings":
+    rows, "files": {key: sha1[:12]} of the changed files, "armips": {...}}; raises AsmError (nothing written)."""
+    view, binaries, bases, layout = stage_inputs(rom, fixes)
     new, rows, srows = assemble(fixes, binaries, armips, bases, layout=layout)
     changed = {k: v for k, v in new.items() if v != binaries[k]}
     if not dry_run:
@@ -567,6 +579,41 @@ def verify(rom, report) -> str:
 
 # --------------------------------------------------------------------------------------
 
+def listing_cli(a, armips):
+    """asmpatch.py listing: print, write or check the disassembly snapshots of the named fixes (default all)."""
+    import asmlisting
+    import msgtool as m
+    all_fixes = fixreg.load_all()
+    by_id = {f["id"]: f for f in all_fixes}
+    for fid in a.ids:
+        if fid not in by_id:
+            sys.exit(f"unknown fix {fid!r}")
+        if not asm_fixes([by_id[fid]]):
+            sys.exit(f"fix {fid!r} has no armips source")
+    chosen = [by_id[i] for i in a.ids] if a.ids else asm_fixes(all_fixes)
+    try:
+        asmlisting.capstone_version()
+        rom = m.load_rom(a.rom)
+        fixreg.check_overlay_bases(rom)
+        texts = asmlisting.snapshots(asmlisting.assemble_each(rom, chosen, armips), armips_version(armips))
+    except asmlisting.ListingError as ex:
+        sys.exit(str(ex))
+    if a.check:
+        probs = asmlisting.stale(chosen if a.ids else all_fixes, texts)
+        for p in probs:
+            print(p)
+        print(f"{'stale' if probs else 'ok'}: {len(texts)} snapshots" + (f", {len(probs)} problems" if probs else ""))
+        return 1 if probs else 0
+    for fid, text in texts.items():
+        if a.write:
+            path = asmlisting.listing_path(by_id[fid])
+            path.write_text(text, encoding="utf-8")
+            print(f"wrote {path.relative_to(fixreg.REPO)}")
+        else:
+            print(text)
+    return 0
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--armips", help=f"armips executable (default: ${ENV_VAR}, then PATH)")
@@ -575,8 +622,11 @@ def main(argv=None):
     p = sub.add_parser("check", help="assemble the selected armips fixes against the ROM (dry run)")
     p.add_argument("--only")
     p.add_argument("--without")
-    p = sub.add_parser("listing", help="old -> new bytes of one fix's regions")
-    p.add_argument("id")
+    p = sub.add_parser("listing", help="the disassembly snapshots (asmlisting.py): print, --write or --check")
+    p.add_argument("ids", nargs="*", help="fix ids (default: every armips fix)")
+    g = p.add_mutually_exclusive_group()
+    g.add_argument("--write", action="store_true", help="write work/patches/<id>/<id>.listing")
+    g.add_argument("--check", action="store_true", help="exit 1 when a committed snapshot is stale")
     p = sub.add_parser("tbl", help="write the armips table file (charmap.tbl) from charmap_en.tsv")
     p.add_argument("--out", default=str(CHARMAP_TBL))
     a = ap.parse_args(argv)
@@ -588,14 +638,9 @@ def main(argv=None):
     try:
         armips = find_armips(a.armips)
         check_armips(armips)
-        if a.cmd == "check":
-            act = fixreg.active_fixes(a.only, a.without)
-        else:
-            act = [f for f in fixreg.load_all() if f["id"] == a.id]
-            if not act:
-                sys.exit(f"unknown fix {a.id!r}")
-            if not asm_fixes(act):
-                sys.exit(f"fix {a.id!r} has no armips source")
+        if a.cmd == "listing":
+            return listing_cli(a, armips)
+        act = fixreg.active_fixes(a.only, a.without)
         rom = m.load_rom(a.rom)
         fixreg.check_overlay_bases(rom)
         rep = apply(rom, act, armips, dry_run=True)
@@ -611,4 +656,4 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

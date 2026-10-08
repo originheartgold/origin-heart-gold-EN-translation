@@ -2,8 +2,9 @@
 """check - one entry point for the patch toolchain's checks.
 
     python3 work/tools/check.py [--fast]       registry + asm lint, FIXES.md current, ruff, unit tests (no armips)
-    python3 work/tools/check.py --full         also: asmpatch.py check, the unit tests with armips (GOLDEN),
-                                               a full build compared with work/patches/expected.toml
+    python3 work/tools/check.py --full         also: asmpatch.py check, the disassembly snapshots, the USA
+                                               claims, the unit tests with armips (GOLDEN), a full build
+                                               compared with work/patches/expected.toml
     python3 work/tools/check.py --staged       the fast check on the staged files (the pre-commit hook)
     python3 work/tools/check.py --staged --registry-only
                                                only the registry step (the hook, for decision-register commits)
@@ -23,6 +24,10 @@ Fast (the default, also the pre-commit hook; about 6 s) needs neither armips nor
              Chinese ROM run when it is there and skip when it is not).
 Full adds (and fails when armips v0.11.0, the two ROMs or xdelta3 are missing):
   asmpatch   asmpatch.py check: every enabled armips fix assembled against the Chinese ROM;
+  listings   every armips fix assembled alone and disassembled (asmlisting.py, capstone pinned in
+             requirements-dev.txt): each work/patches/<id>/<id>.listing must equal it (a stale snapshot fails,
+             with the command that regenerates it);
+  us-refs    every [[us_ref]] claim checked against the USA ROM (usref.py; skipped with a note without it);
   tests      the unit tests again with armips: the per-binary GOLDEN SHA-1s of test_asmpatch.py, which do not
              depend on the translation text;
   build      build.py into --work-dir (default work/build/check), then its hashes against
@@ -184,6 +189,57 @@ def step_asmpatch(armips):
     if r.returncode:
         raise Failed((r.stdout + r.stderr).strip()[-4000:])
     return r.stdout.strip().splitlines()[-1]
+
+
+class Assembled:
+    """The Chinese ROM and every armips fix assembled alone over it, shared by the listings and us-refs steps."""
+
+    def __init__(self):
+        self._v = None
+
+    def get(self, armips):
+        if self._v is None:
+            import asmlisting
+            import asmpatch
+            import build
+            import fixes
+            import msgtool
+            all_fixes = fixes.load_all()
+            cn = msgtool.load_rom(str(build.ROM_CN))
+            try:
+                done = asmlisting.assemble_each(cn, asmpatch.asm_fixes(all_fixes), armips)
+            except (asmpatch.AsmError, fixes.FixError) as ex:
+                raise Failed(str(ex)) from None
+            self._v = (all_fixes, cn, done)
+        return self._v
+
+
+def step_listings(armips, cache):
+    import asmlisting
+    import asmpatch
+    try:
+        asmlisting.capstone_version()
+    except asmlisting.ListingError as ex:
+        raise Failed(str(ex)) from None
+    all_fixes, _cn, done = cache.get(armips)
+    texts = asmlisting.snapshots(done, asmpatch.armips_version(armips))
+    probs = asmlisting.stale(all_fixes, texts)
+    if probs:
+        raise Failed("\n".join(probs))
+    return f"{len(texts)} snapshots current (capstone {asmlisting.capstone_version()})"
+
+
+def step_us_refs(armips, cache):
+    import build
+    import msgtool
+    import usref
+    if not build.ROM_US.is_file():
+        raise Skip(f"{build.ROM_US.relative_to(REPO)} is missing: the USA claims are not checked")
+    all_fixes, cn, done = cache.get(armips)
+    rows, probs = usref.check_all(all_fixes, msgtool.load_rom(str(build.ROM_US)), cn, done)
+    if probs:
+        raise Failed("\n".join(probs + ["(python3 work/tools/usref.py lists every claim)"]))
+    return f"{len(rows)} USA claims verified"
 
 
 def step_tests_full(armips):
@@ -377,7 +433,11 @@ def main(argv=None) -> int:
             return fn(armips["path"])
         return go
 
-    steps += [("prereq", prereq), ("asmpatch", need(step_asmpatch)), ("tests", need(step_tests_full)),
+    cache = Assembled()
+    steps += [("prereq", prereq), ("asmpatch", need(step_asmpatch)),
+              ("listings", need(lambda p: step_listings(p, cache))),
+              ("us-refs", need(lambda p: step_us_refs(p, cache))),
+              ("tests", need(step_tests_full)),
               ("build", need(lambda p: step_build(p, a.work_dir, a.update_expected, a.strict_release)))]
     return run(steps)
 
