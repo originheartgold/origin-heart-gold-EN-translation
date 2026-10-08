@@ -86,18 +86,18 @@
   {
    "id": 10,
    "zh": "听说在尼比市的附近,{NEWLINE}有陨石坠落哦。{SCROLL}我真想把那么罕见的陨石{CLEAR}装饰在我的博物馆里啊……{SCROLL}但是里面好像释放出了奇怪的能量,{CLEAR}我不敢去动它……",
-   "en": "They say that meteorites struck{NEWLINE}somewhere near Pewter City.{SCROLL}We would love to display them here{NEWLINE}in our museum, but...{SCROLL}These meteorites are said to{NEWLINE}emit strange energy and cannot{CLEAR}be carried away...",
+   "en": "I heard a meteorite fell somewhere{NEWLINE}near Pewter City.{SCROLL}I’d really love to display such a rare{NEWLINE}meteorite in my museum...{SCROLL}But it seems to give off a strange{NEWLINE}energy, so I don’t dare touch it...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0464/10"
+   "origin": "agent",
+   "notes": "US 0464/10 | RV018: meaning: zh says he doesn’t dare touch it, not that it can’t be carried; restored ‘rare’"
   },
   {
    "id": 11,
    "zh": "我有两个{NEWLINE}最喜欢的地方！{SCROLL}一个是城都地区的{NEWLINE}阿鲁夫遗迹……{SCROLL}另一个是这里的尼比市博物馆！{SCROLL}这里让人心平气和,{NEWLINE}还能感受到历史的浪漫,对吧？",
-   "en": "There are two places that I love!{NEWLINE}One is the Ruins of Alph in Johto...{SCROLL}The other is the Pewter Museum!{NEWLINE}It’s so quiet and makes me feel calm.{SCROLL}Do you feel its admirable history{NEWLINE}silently creeping up on you?",
+   "en": "There are two places I love most!{CLEAR}One is the Ruins of Alph in Johto...{CLEAR}The other is the Pewter Museum, right{NEWLINE}here! It’s so calming, and you can feel{CLEAR}the romance of history, right?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0464/11"
+   "origin": "agent",
+   "notes": "US 0464/11 | RV018: meaning: US line drifted from the hack’s zh (romance of history)"
   },
   {
    "id": 12,
@@ -118,26 +118,26 @@
   {
    "id": 14,
    "zh": "大吾『为了自己的信念{NEWLINE}而穷极一生的人,{CLEAR}果然与众不同。{SCROLL}但要比热情的话,{NEWLINE}我也不会输的。{SCROLL}",
-   "en": "Steven: People who dedicate themselves{NEWLINE}to what they believe stand out in{CLEAR}a crowd.{SCROLL}But, my passion is no less than yours.{SCROLL}",
+   "en": "Steven: People who devote their whole{NEWLINE}lives to what they believe in truly{CLEAR}stand apart.{SCROLL}But when it comes to passion,{NEWLINE}I won’t lose either.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0464/14"
+   "origin": "agent",
+   "notes": "US 0464/14 | RV018: meaning: zh compares with the devoted people, not the player"
   },
   {
    "id": 15,
    "zh": "啊？{NEWLINE}你拿着的是……{SCROLL}",
-   "en": "Wow!{NEWLINE}The thing you have...{SCROLL}",
+   "en": "Huh? What you’re holding is...{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0464/15"
+   "origin": "agent",
+   "notes": "US 0464/15 | RV018: meaning: zh 啊？ is a question, not ‘Wow!’"
   },
   {
    "id": 16,
    "zh": "神奇的石头啊……{SCROLL}石头中好像有什么东西在发光……{SCROLL}蕴藏着神奇秘密的{NEWLINE}幽雅啊……！{SCROLL}这块石头应该给专家研究一下。{SCROLL}",
-   "en": "This stone is...so mysterious!{SCROLL}Something seems to be shining inside...{NEWLINE}The stone is modest...yet hiding{CLEAR}something wonderful!{SCROLL}You should have it studied{NEWLINE}by experts.{SCROLL}",
+   "en": "What a mysterious stone...{SCROLL}Something seems to be shining inside...{SCROLL}Such elegance, hiding a{NEWLINE}wondrous secret...!{SCROLL}This stone should be studied{NEWLINE}by an expert.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0464/16"
+   "origin": "agent",
+   "notes": "US 0464/16 | RV018: meaning: 幽雅 is elegance, not modesty"
   },
   {
    "id": 17,
@@ -158,10 +158,10 @@
   {
    "id": 19,
    "zh": "呀,呀,久等了！{NEWLINE}稍稍费了点时间,{CLEAR}但进行了一番彻底的研究！{SCROLL}这叫作{VAR:FF00:2}心之水滴{VAR:FF00:0},{NEWLINE}拥有神奇力量的水晶之玉。{SCROLL}",
-   "en": "Thank you for your patience!{NEWLINE}It took me a little while,{CLEAR}but I have confirmed it!{SCROLL}This is an Orb that contains{NEWLINE}what is called {VAR:FF00:2}Soul Dew{VAR:FF00:0}.{SCROLL}",
+   "en": "Thank you for waiting! It took a little{NEWLINE}time, but I studied it thoroughly!{CLEAR}This is called {VAR:FF00:2}Soul Dew{VAR:FF00:0}, a crystal orb{CLEAR}with mysterious powers.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0464/19"
+   "origin": "agent",
+   "notes": "US 0464/19 | RV018: omission: restored ‘thorough research’ and ‘crystal orb with mysterious powers’"
   },
   {
    "id": 20,
@@ -190,10 +190,10 @@
   {
    "id": 23,
    "zh": "尖尖细细的,看起来很疼的样子,{NEWLINE}这是……{CLEAR}狂暴者的化石吧？",
-   "en": "It’s a curving, sharp Fossil.{NEWLINE}This may be...{CLEAR}the Fossil of a carnivore?",
+   "en": "It’s thin and pointed, and looks like{NEWLINE}it would hurt.{SCROLL}This may be... the Fossil of{NEWLINE}some ferocious creature?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0464/23"
+   "origin": "agent",
+   "notes": "US 0464/23 | RV018: meaning: 狂暴者 is a ferocious creature; restored ‘looks like it would hurt’"
   },
   {
    "id": 24,
@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "茶色的树液里{NEWLINE}好像凝结着什么东西！{SCROLL}若能把它取出来复原,{NEWLINE}远古的生物就能……",
-   "en": "Solid amber tree sap has{NEWLINE}something inside!{SCROLL}If you can take it out, you can{NEWLINE}extract a Pokémon from{CLEAR}ancient times...?",
+   "en": "Something seems to be trapped in the{NEWLINE}brown tree sap!{SCROLL}If it could be taken out and restored,{NEWLINE}a creature from ancient times could...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0464/25"
+   "origin": "agent",
+   "notes": "US 0464/25 | RV018: meaning: zh speaks of restoring an ancient creature, as an unfinished thought"
   },
   {
    "id": 26,
@@ -238,10 +238,10 @@
   {
    "id": 29,
    "zh": "博物馆里主要展示{CLEAR}关东地区的化石和生物标本。{SCROLL}看着从地球上消失的精灵的遗物,{SCROLL}请大家缅怀一下{NEWLINE}远古时代的世界吧。",
-   "en": "Our museum mainly displays{NEWLINE}Fossils and specimens from Kanto.{SCROLL}Please enjoy the extinct Pokémon{NEWLINE}through their remembrance, and{CLEAR}step through time to the ancient world.",
+   "en": "Our museum mainly displays Fossils and{NEWLINE}specimens from the Kanto region.{SCROLL}As you view the remains of Pokémon that{NEWLINE}have vanished from the earth,{SCROLL}please take a moment to remember{NEWLINE}the world of ancient times.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0464/29"
+   "origin": "agent",
+   "notes": "US 0464/29 | RV018: meaning: US line garbled the zh invitation to reminisce"
   },
   {
    "id": 30,
@@ -611,19 +611,19 @@
   {
    "id": 73,
    "zh": "压力太大,放空自己",
-   "en": "Too much stress",
+   "en": "Too stressed, zoning out",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position",
+   "notes": "v3 TM: 1 source(s), same position | RV018: omission: 放空自己",
    "category": "menu_touch_1line"
   },
   {
    "id": 74,
    "zh": "坠入爱河,思念某人",
-   "en": "He’s in love",
+   "en": "In love, pining for someone",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position",
+   "notes": "v3 TM: 1 source(s), same position | RV018: omission: 思念某人",
    "category": "menu_touch_1line"
   },
   {
@@ -1006,10 +1006,10 @@
   {
    "id": 120,
    "zh": "{VAR:0103:0}『这么重要的东西{NEWLINE}在这个时候展出{CLEAR}是不是有点太冒险了。{CLEAR}能不能先把红色宝珠收起来,{CLEAR}等我们查明潜在的危险后{CLEAR}再考虑展出的事也不迟。",
-   "en": "{VAR:0103:0}: Isn’t it a bit risky to display{NEWLINE}something so important right now?{SCROLL}Could you put the Red Orb away until{NEWLINE}we’ve figured out what the danger is?",
+   "en": "{VAR:0103:0}: Isn’t it a bit risky to display{NEWLINE}something so important right now?{CLEAR}Could you put the Red Orb away for now?{CLEAR}It won’t be too late to display it again{CLEAR}once we’ve figured out the danger.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV018: omission: restored ‘not too late to display it after’"
   },
   {
    "id": 121,
