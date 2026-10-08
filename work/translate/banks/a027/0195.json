@@ -4661,7 +4661,7 @@
    "en": "{VAR:0101:0} anchored{NEWLINE}itself with its roots!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/542"
+   "notes": "US 0197/542 | RV098: kept (D-1682): zh 扎了根无法换人 = rooted and can't be switched out; US 'anchored itself with its roots' (Roar/Whirlwind fails vs Ingrain) says the same (D-2201)"
   },
   {
    "id": 543,
@@ -4669,7 +4669,7 @@
    "en": "The wild {VAR:0101:0} anchored{NEWLINE}itself with its roots!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/543"
+   "notes": "US 0197/543 | RV098: kept (D-1682): zh 扎了根无法换人 = rooted and can't be switched out; US 'anchored itself with its roots' (Roar/Whirlwind fails vs Ingrain) says the same (D-2201)"
   },
   {
    "id": 544,
@@ -4677,7 +4677,7 @@
    "en": "The foe’s {VAR:0101:0} anchored{NEWLINE}itself with its roots!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/544"
+   "notes": "US 0197/544 | RV098: kept (D-1682): zh 扎了根无法换人 = rooted and can't be switched out; US 'anchored itself with its roots' (Roar/Whirlwind fails vs Ingrain) says the same (D-2201)"
   },
   {
    "id": 545,
@@ -5645,7 +5645,7 @@
    "en": "{VAR:0101:0} anchors{NEWLINE}itself with {VAR:0105:1}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/659"
+   "notes": "US 0197/659 | RV098: kept (D-1684): zh 被针粘上了 = stuck fast by the ability (Suction Cups); US 'anchors itself with' says the same; 针 is odd wording, no meaning change (D-2201)"
   },
   {
    "id": 660,
@@ -5653,7 +5653,7 @@
    "en": "The wild {VAR:0101:0} anchors{NEWLINE}itself with {VAR:0105:1}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/660"
+   "notes": "US 0197/660 | RV098: kept (D-1684): zh 被针粘上了 = stuck fast by the ability (Suction Cups); US 'anchors itself with' says the same; 针 is odd wording, no meaning change (D-2201)"
   },
   {
    "id": 661,
@@ -5661,7 +5661,7 @@
    "en": "The foe’s {VAR:0101:0} anchors{NEWLINE}itself with {VAR:0105:1}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/661"
+   "notes": "US 0197/661 | RV098: kept (D-1684): zh 被针粘上了 = stuck fast by the ability (Suction Cups); US 'anchors itself with' says the same; 针 is odd wording, no meaning change (D-2201)"
   },
   {
    "id": 662,
