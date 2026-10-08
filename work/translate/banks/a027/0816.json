@@ -22,18 +22,18 @@
   {
    "id": 2,
    "zh": "本游戏是免费游戏，{NEWLINE}可免费在贴吧或QQ群获取！{NEWLINE}{NEWLINE}本改版{VAR:FF00:1}暂不支持{NEWLINE}大部分作弊器软件{VAR:FF00:0}，{NEWLINE}非作者分享资源出现任何BUG，{NEWLINE}与制作组无关。",
-   "en": "This game is free! Get it for free{NEWLINE}on Tieba or in our QQ group!{NEWLINE}{NEWLINE}This hack {VAR:FF00:1}doesn’t support most{NEWLINE}cheat tools{VAR:FF00:0}. The team is not{NEWLINE}responsible for bugs in copies{NEWLINE}not shared by the author.",
+   "en": "This game is free! Get it for free{NEWLINE}on Tieba or in our QQ group!{NEWLINE}{NEWLINE}For now, this hack {VAR:FF00:1}doesn’t{NEWLINE}support most cheat tools{VAR:FF00:0}.{NEWLINE}The team is not responsible{NEWLINE}for bugs in copies not shared{NEWLINE}by the author.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV062: omission: 暂 'for now' (D-1990)"
   },
   {
    "id": 3,
    "zh": "4.0作者：{VAR:FF00:1}Alex{VAR:FF00:0}{NEWLINE}{NEWLINE}特别鸣谢：{NEWLINE}雁南飞TB（原起源心金作者）{NEWLINE}耿耿耿耿鬼酱{NEWLINE}叶师傅{NEWLINE}呱呱",
-   "en": "v4.0 author: {VAR:FF00:1}Alex{VAR:FF00:0}{NEWLINE}{NEWLINE}Special thanks:{NEWLINE}Yannanfei TB (original author){NEWLINE}Genggenggenggenggui-jiang{NEWLINE}Ye Shifu{NEWLINE}Guagua",
+   "en": "v4.0 author: {VAR:FF00:1}Alex{VAR:FF00:0}{NEWLINE}{NEWLINE}Special thanks:{NEWLINE}Yannanfei TB (original Origin{NEWLINE}HeartGold author){NEWLINE}Genggenggenggenggui-jiang{NEWLINE}Ye Shifu{NEWLINE}Guagua",
    "status": "draft",
    "origin": "agent",
-   "notes": "CJK credit names romanised (no hanzi in the English font): 雁南飞TB = Yannanfei TB, 耿耿耿耿鬼酱 = Genggenggenggenggui-jiang (pun on 耿鬼 Gengar), 叶师傅 = Ye Shifu, 呱呱 = Guagua",
+   "notes": "CJK credit names romanised (no hanzi in the English font): 雁南飞TB = Yannanfei TB, 耿耿耿耿鬼酱 = Genggenggenggenggui-jiang (pun on 耿鬼 Gengar), 叶师傅 = Ye Shifu, 呱呱 = Guagua | RV062: omission: 原起源心金作者 'original Origin HeartGold author'",
    "qa_ignore": [
     "glossary"
    ]
@@ -76,10 +76,10 @@
   {
    "id": 8,
    "zh": "截图QQ扫码加入QQ群",
-   "en": "Scan the QR code in QQ to join",
+   "en": "Screenshot, scan in QQ to join",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV062: omission: 截图 'screenshot' step (D-1990)"
   }
  ]
 }
