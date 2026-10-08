@@ -56,6 +56,9 @@ All tools are Python scripts in the session scratchpad (`phaseA2/`). The scratch
 | 8 | Cosmetic | Dead flag checks: Route 36 gatehouse NPCs always say the odd tree still blocks the road (0x1C2); the Elite Four door operators never say "the door is already open" (0x211–0x214; the door still opens through `HidePerson`); a Route 4 line is gated on flag 2007, which is never set | Files 862 @33/@61, 817–820 @1623…, 178 @121 | D-1336 |
 | 9 | Latent, unreachable | The Route 39 barn (zone 214, script file 250 with 2 scripts) has objects 1 and 3–6 on scripts 3 and 4, which don't exist. No map warps into zone 214. | `bad_local_ref` | – |
 | 10 | Latent, unreachable | Dark Cave Route 31 side (zone 176, file 964): 34 `NPCMsg` ids past bank 0338 (49 strings). No map warps into zone 176. | – | – |
+| 11 | Gameplay bug (not a softlock) | Goldenrod fortune teller: the "ideal Pokémon" reading checks for $300 but takes $10000, so with $300–$9999 it is given and the money drops to $0. **Observed in the emulator.** | File 895 `HasEnoughMoneyImmediate 0x800C, 300` @228, `SubMoneyImmediate 10000` @313/@537/@589 | D-1545 |
+| 12 | Cosmetic | Goldenrod fortune teller: the "love fortune" choice without $10000 ends without `TouchscreenMenuShow`, so the bottom-screen menu stays hidden; walking and X still work. **Observed in the emulator.** | File 895 `TouchscreenMenuHide` @139, L323 → L484 | D-1546 |
+| 13 | **Crash** | Entering Goldenrod City with both hide flags 439 (townsfolk) and 441 (Team Rocket takeover NPCs) clear needs 33 overworld sprite graphics; the field's table holds 32, the 33rd write goes through NULL to the IRQ vectors and the game crashes. Either group alone fits. Scripts that change only one of the pair: file 822 @2482 (first Hall of Fame clears 439), file 34 @1195 and file 29 @3194/@3407 (clear 441). **Observed in the emulator** (both ROMs, all 8 flag combinations). | Events 73 (49 objects, 34 sprites); arm9 0x02025E38 / 0x02026104; ov1 0x021F9660 | D-1547 |
 | 14 | **Freeze** | Rock Tunnel hide-and-seek: losing to the corner kid (`TrainerBattle 606 0 0 0`, a loss not allowed) doesn't white out; the script goes on to the "Pikachu" kid's NPCMsg 46 (L3782) without the field being restored, the screen stays black and the CPU runs into heap memory. **Observed in the emulator** (both ROMs; controls: `606 0 1 0` returns to the field, `WhiteOut` after it to the Pokémon Center). The audit's lock detector couldn't see it: it is the battle's no-loss setting, not a lock. | File 129 @2879, @2897 → L3782; `emu_harness.py guide0107 --case corner_kid` | D-1548 (D-1395) |
 | 15 | **Freeze** | Pokémon Tower Magcargo: a loss jumps back to L2519 (`TouchscreenMenuShow`, `PlayCry`, `WildBattle 219`) with the field not restored; `TouchscreenMenuShow` never returns, the screen stays black. **Observed in the emulator** (both ROMs). Same mechanism as 14. | File 17 @2529, @2546 → L2519; `emu_harness.py guide0813 --case magcargo` | D-1560 |
 | 16 | **Freeze** | Department Store 6F blind man: `TrainerBattle 777 778 0 0` with no party-size check; with one Pokémon a broken second ally appears and the game hangs at FIGHT. **Observed in the emulator** (both ROMs; a six-Pokémon control plays the turn). | File 901 @3087; `emu_harness.py guide0813 --case white_flute` | D-1559 |
@@ -92,6 +95,10 @@ All tools are Python scripts in the session scratchpad (`phaseA2/`). The scratch
   - Unreachable scene values (e.g. `VAR_SCENE_ELMS_LAB` 8, `VAR_UNK_4116` 1) are unused vanilla scenes.
   - The Route 24 Rocket trigger (0x4087 == 1) can't fire; it is a leftover, and the hack's Route 24 flow uses other scripts.
 
+## Later gameplay finding: evolution moves (2026-10-07, D-1602)
+
+Rare Candy evolutions skip Crobat's Cross Poison, Charizard's Air Slash and Gyarados's Bite in both the untouched Chinese v4.0.3 and the English WIP, even with three empty move slots. The evolution learning routine accepts only entries matching the current level, so it ignores their level-0 entries. A delayed Charizard evolution at Lv39 correctly learns Scary Face in both ROMs, confirming the distinction. This is a move-learning defect, not a softlock. See [reproduction and binary evidence](evolution_moves_investigation.md). Preserve the original behavior under D-1002/D-1337.
+
 ## Limits
 
 - Story order is estimated: `play_order.json` ranks maps, not script states, so an "item needed earlier" hit only flags revisit quests (for example, Cerulean asks for the Slowpoketail given later in Vermilion).
@@ -99,3 +106,7 @@ All tools are Python scripts in the session scratchpad (`phaseA2/`). The scratch
 - Flags set by engine code (trainer flags after battles, system flags, the Alph puzzle flags) are treated as settable.
 - Vars written by commands other than `SetVar`/`AddVar`/`CopyVar` (e.g. native field code) may make some "never set" scene values reachable. Those were only reported after a manual check.
 - Nothing was confirmed in an emulator: every candidate needs hours of play to reach. See the "Softlock checks" section in `ingame_checklist.md`.
+
+## Rocket HQ runtime freeze (2026-10-08, D-2043)
+
+Abdil's corrected rc5 battery save reproduces a freeze in melonDS 1.1 at map 247 (17,4), before the camera ambush. Released English rc5, English WIP and untouched Chinese v4.0.3 share an ARM9 data-abort signature at `02024696`. DeSmuME passes this position in Chinese and English WIP. Preserve under D-1337; the exact model/texture asset remains unconfirmed. See [reproduction, ROM/save identities and CPU evidence](rocket_hq_freeze_repro_20261008.md).

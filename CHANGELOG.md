@@ -3,6 +3,12 @@
 All notable changes to the English translation of 起源心金 (Pokémon Origin HeartGold) v4.0.3.
 Patches apply to **Pokémon HeartGold (USA)**, CRC32 `C180A0E9`.
 
+## Unreleased
+
+### Known issues in the original hack (reported, not fixed; D-1337)
+
+- Evolution moves are skipped: reproduced Crobat missing Cross Poison, Charizard missing Air Slash and Gyarados missing Bite after Rare Candy evolution in both Chinese v4.0.3 and the English WIP. Their level-0 learnset entries are ignored by the evolution learning routine; ordinary current-level moves still work (D-1602; [investigation](work/notes/evolution_moves_investigation.md)).
+
 ## [1.0.0-rc5] - 2026-10-04
 
 Tester release. 233 strings in 62 banks and one graphic differ from rc4: no code, script, map or Pokémon data changed.

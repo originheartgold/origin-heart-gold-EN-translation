@@ -920,6 +920,14 @@ bugs. Both are visible in `work/build/harness/screens/`.
 
 ## Limits
 
+- **Goldenrod City with the test saves crashes (D-1547, a real hack bug, not the harness).** All saves in
+  `work/build/memcheck/` have hide flags 439 and 441 clear, so any map change into Goldenrod (door, `warp`)
+  loads both NPC groups, overflows the 32-slot overworld sprite table and crashes (PC at 0x5FFFFxxx or a hang;
+  writes to 0x0–0x16). Starting there through Continue does not crash only because the save teleport drops the
+  NPCs. For other Goldenrod tests pass `flags=[441]` (post-takeover state) or `[439]`. Found while
+  reproducing a player report from the fortune house (D-1545/D-1546).
+- After a door warp `position()` keeps the old map's Location until a later save write; use timed `walk()`
+  and screenshots there instead of `walk_to`.
 - `position()` also lags after `ScrCmd_723` (the ferry boarding); the S.S. Anne recipe uses timed walks.
 - A Multi Battle with an AI partner can't simply be lost with a weak party (the partner fights on); the
   clash recipe stops at the first battle.
