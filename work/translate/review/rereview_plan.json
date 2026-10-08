@@ -1,0 +1,7639 @@
+{
+ "about": "Full re-review plan (2026-10-08): every bank string with Chinese except origin copy. Refs only. A bank split into parts never runs in two batches at once. Status kept by the coordinator.",
+ "batches": [
+  {
+   "id": "RV001",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 518,
+   "labels": [
+    "a027/0044 Viridian City + Mt. Moon + std_tv + std_tv_interview + std_comm_reception + std_dex_evaluation",
+    "a027/0146 Viridian City + Mt. Moon + std_tv + std_tv_interview + std_comm_reception + std_dex_evaluation",
+    "a027/0552 Viridian City + Mt. Moon + std_tv + std_tv_interview + std_comm_reception + std_dex_evaluation",
+    "a027/0657 Viridian City + Mt. Moon + std_tv + std_tv_interview + std_comm_reception + std_dex_evaluation",
+    "a027/0721 Viridian City + Mt. Moon + std_tv + std_tv_interview + std_comm_reception + std_dex_evaluation"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0044",
+     "ids": [
+      0,
+      172
+     ]
+    },
+    {
+     "bank": "a027/0146",
+     "ids": [
+      0,
+      52
+     ]
+    },
+    {
+     "bank": "a027/0552",
+     "ids": [
+      0,
+      201
+     ]
+    },
+    {
+     "bank": "a027/0657",
+     "ids": [
+      0,
+      57
+     ]
+    },
+    {
+     "bank": "a027/0721",
+     "ids": [
+      0,
+      38
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV002",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 551,
+   "labels": [
+    "a027/0722 Viridian City + Mt. Moon + std_tv + std_tv_interview + std_comm_reception + std_dex_evaluation",
+    "a027/0053 Rock Tunnel + Lavender Town + Celadon City",
+    "a027/0142 Rock Tunnel + Lavender Town + Celadon City",
+    "a027/0547 Rock Tunnel + Lavender Town + Celadon City"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0722",
+     "ids": [
+      0,
+      62
+     ]
+    },
+    {
+     "bank": "a027/0053",
+     "ids": [
+      0,
+      229
+     ]
+    },
+    {
+     "bank": "a027/0142",
+     "ids": [
+      0,
+      146
+     ]
+    },
+    {
+     "bank": "a027/0547",
+     "ids": [
+      0,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV003",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 559,
+   "labels": [
+    "a027/0090 Fuchsia City + Cinnabar Island",
+    "a027/0546 Fuchsia City + Cinnabar Island",
+    "a027/0593 Fuchsia City + Cinnabar Island",
+    "a027/0594 Fuchsia City + Cinnabar Island",
+    "a027/0059 Island Cave + Island Forest + Five Island + Secret Forest + Alto Mare Library"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0090",
+     "ids": [
+      0,
+      215
+     ]
+    },
+    {
+     "bank": "a027/0546",
+     "ids": [
+      0,
+      69
+     ]
+    },
+    {
+     "bank": "a027/0593",
+     "ids": [
+      0,
+      118
+     ]
+    },
+    {
+     "bank": "a027/0594",
+     "ids": [
+      0,
+      17
+     ]
+    },
+    {
+     "bank": "a027/0059",
+     "ids": [
+      0,
+      136
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV004",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 401,
+   "labels": [
+    "a027/0084 Island Cave + Island Forest + Five Island + Secret Forest + Alto Mare Library",
+    "a027/0087 Island Cave + Island Forest + Five Island + Secret Forest + Alto Mare Library",
+    "a027/0379 Island Cave + Island Forest + Five Island + Secret Forest + Alto Mare Library",
+    "a027/0384 Island Cave + Island Forest + Five Island + Secret Forest + Alto Mare Library"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0084",
+     "ids": [
+      0,
+      89
+     ]
+    },
+    {
+     "bank": "a027/0087",
+     "ids": [
+      0,
+      157
+     ]
+    },
+    {
+     "bank": "a027/0379",
+     "ids": [
+      0,
+      89
+     ]
+    },
+    {
+     "bank": "a027/0384",
+     "ids": [
+      0,
+      62
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV005",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 524,
+   "labels": [
+    "a027/0393 Alto Mare Waters + Four Island + Seven Island + Shipyard Ruins + One Island + Islander’s House …",
+    "a027/0554 Alto Mare Waters + Four Island + Seven Island + Shipyard Ruins + One Island + Islander’s House …",
+    "a027/0562 Alto Mare Waters + Four Island + Seven Island + Shipyard Ruins + One Island + Islander’s House …",
+    "a027/0570 Alto Mare Waters + Four Island + Seven Island + Shipyard Ruins + One Island + Islander’s House …",
+    "a027/0578 Alto Mare Waters + Four Island + Seven Island + Shipyard Ruins + One Island + Islander’s House …",
+    "a027/0582 Alto Mare Waters + Four Island + Seven Island + Shipyard Ruins + One Island + Islander’s House …"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0393",
+     "ids": [
+      0,
+      163
+     ]
+    },
+    {
+     "bank": "a027/0554",
+     "ids": [
+      0,
+      73
+     ]
+    },
+    {
+     "bank": "a027/0562",
+     "ids": [
+      0,
+      64
+     ]
+    },
+    {
+     "bank": "a027/0570",
+     "ids": [
+      0,
+      74
+     ]
+    },
+    {
+     "bank": "a027/0578",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0582",
+     "ids": [
+      0,
+      126
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV006",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 506,
+   "labels": [
+    "a027/0601 Alto Mare Waters + Four Island + Seven Island + Shipyard Ruins + One Island + Islander’s House …",
+    "a027/0624 Ritual Shrine + Six Island",
+    "a027/0625 Ritual Shrine + Six Island",
+    "a027/0587 Indigo Plateau"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0601",
+     "ids": [
+      0,
+      47
+     ]
+    },
+    {
+     "bank": "a027/0624",
+     "ids": [
+      0,
+      47
+     ]
+    },
+    {
+     "bank": "a027/0625",
+     "ids": [
+      0,
+      156
+     ]
+    },
+    {
+     "bank": "a027/0587",
+     "ids": [
+      0,
+      252
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV007",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 480,
+   "labels": [
+    "a027/0588 Indigo Plateau",
+    "a027/0065 Indigo Plateau + Pokémon League + Tohjo Falls + Cerulean Cave",
+    "a027/0129 Indigo Plateau + Pokémon League + Tohjo Falls + Cerulean Cave",
+    "a027/0599 Indigo Plateau + Pokémon League + Tohjo Falls + Cerulean Cave"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0588",
+     "ids": [
+      0,
+      213
+     ]
+    },
+    {
+     "bank": "a027/0065",
+     "ids": [
+      0,
+      102
+     ]
+    },
+    {
+     "bank": "a027/0129",
+     "ids": [
+      0,
+      27
+     ]
+    },
+    {
+     "bank": "a027/0599",
+     "ids": [
+      0,
+      136
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV008",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 543,
+   "labels": [
+    "a027/0608 Indigo Plateau + Pokémon League + Tohjo Falls + Cerulean Cave",
+    "a027/0045 Diglett’s Cave",
+    "a027/0046 Mt. Moon",
+    "a027/0047 Mt. Moon",
+    "a027/0048 Mt. Moon",
+    "a027/0049 Mt. Moon"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0608",
+     "ids": [
+      0,
+      213
+     ]
+    },
+    {
+     "bank": "a027/0045",
+     "ids": [
+      0,
+      24
+     ]
+    },
+    {
+     "bank": "a027/0046",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0047",
+     "ids": [
+      0,
+      153
+     ]
+    },
+    {
+     "bank": "a027/0048",
+     "ids": [
+      0,
+      139
+     ]
+    },
+    {
+     "bank": "a027/0049",
+     "ids": [
+      0,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV009",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 521,
+   "labels": [
+    "a027/0050 Safari Zone Gate",
+    "a027/0051 Cinnabar Island",
+    "a027/0126 Victory Road",
+    "a027/0130 Viridian Forest",
+    "a027/0250 Vermilion City",
+    "a027/0251 Vermilion City"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0050",
+     "ids": [
+      0,
+      58
+     ]
+    },
+    {
+     "bank": "a027/0051",
+     "ids": [
+      0,
+      54
+     ]
+    },
+    {
+     "bank": "a027/0126",
+     "ids": [
+      0,
+      186
+     ]
+    },
+    {
+     "bank": "a027/0130",
+     "ids": [
+      0,
+      175
+     ]
+    },
+    {
+     "bank": "a027/0250",
+     "ids": [
+      0,
+      38
+     ]
+    },
+    {
+     "bank": "a027/0251",
+     "ids": [
+      0,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV010",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 488,
+   "labels": [
+    "a027/0312 Route 1",
+    "a027/0313 Route 2",
+    "a027/0314 Route 2",
+    "a027/0315 Route 2",
+    "a027/0316 Celadon City",
+    "a027/0317 Route 2",
+    "a027/0318 Route 2"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0312",
+     "ids": [
+      0,
+      54
+     ]
+    },
+    {
+     "bank": "a027/0313",
+     "ids": [
+      0,
+      73
+     ]
+    },
+    {
+     "bank": "a027/0314",
+     "ids": [
+      0,
+      104
+     ]
+    },
+    {
+     "bank": "a027/0315",
+     "ids": [
+      0,
+      39
+     ]
+    },
+    {
+     "bank": "a027/0316",
+     "ids": [
+      0,
+      177
+     ]
+    },
+    {
+     "bank": "a027/0317",
+     "ids": [
+      0,
+      22
+     ]
+    },
+    {
+     "bank": "a027/0318",
+     "ids": [
+      0,
+      19
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV011",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 558,
+   "labels": [
+    "a027/0319 Route 3",
+    "a027/0320 Route 3",
+    "a027/0321 Route 4",
+    "a027/0322 Route 5",
+    "a027/0323 Route 5",
+    "a027/0324 Route 5",
+    "a027/0325 Route 5",
+    "a027/0326 Route 5",
+    "a027/0327 Route 6",
+    "a027/0328 Route 6",
+    "a027/0329 Route 7",
+    "a027/0330 Route 7"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0319",
+     "ids": [
+      0,
+      106
+     ]
+    },
+    {
+     "bank": "a027/0320",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0321",
+     "ids": [
+      0,
+      118
+     ]
+    },
+    {
+     "bank": "a027/0322",
+     "ids": [
+      0,
+      50
+     ]
+    },
+    {
+     "bank": "a027/0323",
+     "ids": [
+      0,
+      1
+     ]
+    },
+    {
+     "bank": "a027/0324",
+     "ids": [
+      0,
+      95
+     ]
+    },
+    {
+     "bank": "a027/0325",
+     "ids": [
+      0,
+      1
+     ]
+    },
+    {
+     "bank": "a027/0326",
+     "ids": [
+      0,
+      49
+     ]
+    },
+    {
+     "bank": "a027/0327",
+     "ids": [
+      0,
+      58
+     ]
+    },
+    {
+     "bank": "a027/0328",
+     "ids": [
+      0,
+      2
+     ]
+    },
+    {
+     "bank": "a027/0329",
+     "ids": [
+      0,
+      48
+     ]
+    },
+    {
+     "bank": "a027/0330",
+     "ids": [
+      0,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV012",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 465,
+   "labels": [
+    "a027/0331 Route 8",
+    "a027/0332 Route 8",
+    "a027/0333 Route 9",
+    "a027/0334 Route 10",
+    "a027/0335 Route 10",
+    "a027/0336 Route 10",
+    "a027/0337 Seafoam Islands",
+    "a027/0339 Route 11",
+    "a027/0340 Route 11"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0331",
+     "ids": [
+      0,
+      88
+     ]
+    },
+    {
+     "bank": "a027/0332",
+     "ids": [
+      0,
+      3
+     ]
+    },
+    {
+     "bank": "a027/0333",
+     "ids": [
+      0,
+      145
+     ]
+    },
+    {
+     "bank": "a027/0334",
+     "ids": [
+      0,
+      23
+     ]
+    },
+    {
+     "bank": "a027/0335",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0336",
+     "ids": [
+      0,
+      1
+     ]
+    },
+    {
+     "bank": "a027/0337",
+     "ids": [
+      0,
+      77
+     ]
+    },
+    {
+     "bank": "a027/0339",
+     "ids": [
+      0,
+      106
+     ]
+    },
+    {
+     "bank": "a027/0340",
+     "ids": [
+      0,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV013",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 536,
+   "labels": [
+    "a027/0341 Route 12",
+    "a027/0342 Route 12",
+    "a027/0343 Route 13",
+    "a027/0344 Route 14",
+    "a027/0345 Route 15",
+    "a027/0346 Route 15",
+    "a027/0347 Route 16",
+    "a027/0348 Route 16",
+    "a027/0349 Route 16",
+    "a027/0350 Route 17"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0341",
+     "ids": [
+      0,
+      129
+     ]
+    },
+    {
+     "bank": "a027/0342",
+     "ids": [
+      0,
+      15
+     ]
+    },
+    {
+     "bank": "a027/0343",
+     "ids": [
+      0,
+      132
+     ]
+    },
+    {
+     "bank": "a027/0344",
+     "ids": [
+      0,
+      97
+     ]
+    },
+    {
+     "bank": "a027/0345",
+     "ids": [
+      0,
+      100
+     ]
+    },
+    {
+     "bank": "a027/0346",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0347",
+     "ids": [
+      0,
+      3
+     ]
+    },
+    {
+     "bank": "a027/0348",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0349",
+     "ids": [
+      0,
+      4
+     ]
+    },
+    {
+     "bank": "a027/0350",
+     "ids": [
+      0,
+      27
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV014",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 555,
+   "labels": [
+    "a027/0351 Route 18",
+    "a027/0352 Route 18",
+    "a027/0353 Route 22",
+    "a027/0354 Route 26",
+    "a027/0355 Route 24",
+    "a027/0356 Route 25",
+    "a027/0357 Route 25",
+    "a027/0358 Route 26",
+    "a027/0359 Route 26",
+    "a027/0360 Route 26",
+    "a027/0363 Route 27"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0351",
+     "ids": [
+      0,
+      60
+     ]
+    },
+    {
+     "bank": "a027/0352",
+     "ids": [
+      0,
+      5
+     ]
+    },
+    {
+     "bank": "a027/0353",
+     "ids": [
+      0,
+      74
+     ]
+    },
+    {
+     "bank": "a027/0354",
+     "ids": [
+      0,
+      50
+     ]
+    },
+    {
+     "bank": "a027/0355",
+     "ids": [
+      0,
+      16
+     ]
+    },
+    {
+     "bank": "a027/0356",
+     "ids": [
+      0,
+      197
+     ]
+    },
+    {
+     "bank": "a027/0357",
+     "ids": [
+      0,
+      52
+     ]
+    },
+    {
+     "bank": "a027/0358",
+     "ids": [
+      0,
+      24
+     ]
+    },
+    {
+     "bank": "a027/0359",
+     "ids": [
+      0,
+      32
+     ]
+    },
+    {
+     "bank": "a027/0360",
+     "ids": [
+      0,
+      31
+     ]
+    },
+    {
+     "bank": "a027/0363",
+     "ids": [
+      0,
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV015",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 543,
+   "labels": [
+    "a027/0364 Route 28, Mt. Silver Cave",
+    "a027/0365 Route 28",
+    "a027/0439 Pallet Town",
+    "a027/0440 Two Island",
+    "a027/0441 Three Island",
+    "a027/0442 Pallet Town",
+    "a027/0443 Islander’s House"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0364",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0365",
+     "ids": [
+      0,
+      20
+     ]
+    },
+    {
+     "bank": "a027/0439",
+     "ids": [
+      0,
+      43
+     ]
+    },
+    {
+     "bank": "a027/0440",
+     "ids": [
+      0,
+      84
+     ]
+    },
+    {
+     "bank": "a027/0441",
+     "ids": [
+      0,
+      156
+     ]
+    },
+    {
+     "bank": "a027/0442",
+     "ids": [
+      0,
+      65
+     ]
+    },
+    {
+     "bank": "a027/0443",
+     "ids": [
+      0,
+      159
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV016",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 521,
+   "labels": [
+    "a027/0444 Pallet Town",
+    "a027/0445 Viridian City",
+    "a027/0446 Victory Road, Viridian City"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0444",
+     "ids": [
+      0,
+      141
+     ]
+    },
+    {
+     "bank": "a027/0445",
+     "ids": [
+      0,
+      242
+     ]
+    },
+    {
+     "bank": "a027/0446",
+     "ids": [
+      0,
+      136
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV017",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 442,
+   "labels": [
+    "a027/0448 Victory Road, Viridian City",
+    "a027/0449 Viridian City",
+    "a027/0452 Route 1",
+    "a027/0453 Pewter City",
+    "a027/0454 Pewter City",
+    "a027/0455 Pewter City",
+    "a027/0456 Pewter City"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0448",
+     "ids": [
+      0,
+      173
+     ]
+    },
+    {
+     "bank": "a027/0449",
+     "ids": [
+      0,
+      41
+     ]
+    },
+    {
+     "bank": "a027/0452",
+     "ids": [
+      0,
+      6
+     ]
+    },
+    {
+     "bank": "a027/0453",
+     "ids": [
+      0,
+      150
+     ]
+    },
+    {
+     "bank": "a027/0454",
+     "ids": [
+      0,
+      18
+     ]
+    },
+    {
+     "bank": "a027/0455",
+     "ids": [
+      0,
+      34
+     ]
+    },
+    {
+     "bank": "a027/0456",
+     "ids": [
+      0,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV018",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 436,
+   "labels": [
+    "a027/0457 Pewter City",
+    "a027/0458 Pewter City",
+    "a027/0459 Saffron City",
+    "a027/0460 Cerulean City",
+    "a027/0461 Cerulean City"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0457",
+     "ids": [
+      0,
+      172
+     ]
+    },
+    {
+     "bank": "a027/0458",
+     "ids": [
+      0,
+      30
+     ]
+    },
+    {
+     "bank": "a027/0459",
+     "ids": [
+      0,
+      91
+     ]
+    },
+    {
+     "bank": "a027/0460",
+     "ids": [
+      0,
+      121
+     ]
+    },
+    {
+     "bank": "a027/0461",
+     "ids": [
+      0,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV019",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 349,
+   "labels": [
+    "a027/0462 Cerulean City",
+    "a027/0463 Cerulean City",
+    "a027/0464 Cerulean City",
+    "a027/0465 Saffron City"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0462",
+     "ids": [
+      0,
+      251
+     ]
+    },
+    {
+     "bank": "a027/0463",
+     "ids": [
+      0,
+      5
+     ]
+    },
+    {
+     "bank": "a027/0464",
+     "ids": [
+      0,
+      55
+     ]
+    },
+    {
+     "bank": "a027/0465",
+     "ids": [
+      0,
+      34
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV020",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 486,
+   "labels": [
+    "a027/0466 Victory Road",
+    "a027/0467 Cerulean City",
+    "a027/0468 Lavender Town",
+    "a027/0469 Lavender Town",
+    "a027/0470 Lavender Town",
+    "a027/0471 Lavender Town",
+    "a027/0472 Lavender Town",
+    "a027/0473 Lavender Town",
+    "a027/0474 Lavender Town",
+    "a027/0475 Lavender Town"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0466",
+     "ids": [
+      0,
+      255
+     ]
+    },
+    {
+     "bank": "a027/0467",
+     "ids": [
+      0,
+      7
+     ]
+    },
+    {
+     "bank": "a027/0468",
+     "ids": [
+      0,
+      18
+     ]
+    },
+    {
+     "bank": "a027/0469",
+     "ids": [
+      0,
+      18
+     ]
+    },
+    {
+     "bank": "a027/0470",
+     "ids": [
+      0,
+      18
+     ]
+    },
+    {
+     "bank": "a027/0471",
+     "ids": [
+      0,
+      47
+     ]
+    },
+    {
+     "bank": "a027/0472",
+     "ids": [
+      0,
+      6
+     ]
+    },
+    {
+     "bank": "a027/0473",
+     "ids": [
+      0,
+      50
+     ]
+    },
+    {
+     "bank": "a027/0474",
+     "ids": [
+      0,
+      35
+     ]
+    },
+    {
+     "bank": "a027/0475",
+     "ids": [
+      0,
+      23
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV021",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 397,
+   "labels": [
+    "a027/0476 Vermilion City",
+    "a027/0477 Vermilion City",
+    "a027/0478 Vermilion City",
+    "a027/0479 Vermilion City",
+    "a027/0480 Vermilion City",
+    "a027/0481 Vermilion City",
+    "a027/0482 Vermilion City"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0476",
+     "ids": [
+      0,
+      218
+     ]
+    },
+    {
+     "bank": "a027/0477",
+     "ids": [
+      0,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0478",
+     "ids": [
+      0,
+      38
+     ]
+    },
+    {
+     "bank": "a027/0479",
+     "ids": [
+      0,
+      34
+     ]
+    },
+    {
+     "bank": "a027/0480",
+     "ids": [
+      0,
+      7
+     ]
+    },
+    {
+     "bank": "a027/0481",
+     "ids": [
+      0,
+      81
+     ]
+    },
+    {
+     "bank": "a027/0482",
+     "ids": [
+      0,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV022",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 535,
+   "labels": [
+    "a027/0483 Islander’s House",
+    "a027/0484 Celadon City",
+    "a027/0485 Celadon City",
+    "a027/0486 Celadon City",
+    "a027/0487 Celadon City",
+    "a027/0488 Celadon City"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0483",
+     "ids": [
+      0,
+      215
+     ]
+    },
+    {
+     "bank": "a027/0484",
+     "ids": [
+      0,
+      175
+     ]
+    },
+    {
+     "bank": "a027/0485",
+     "ids": [
+      0,
+      81
+     ]
+    },
+    {
+     "bank": "a027/0486",
+     "ids": [
+      0,
+      27
+     ]
+    },
+    {
+     "bank": "a027/0487",
+     "ids": [
+      0,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0488",
+     "ids": [
+      0,
+      23
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV023",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 552,
+   "labels": [
+    "a027/0489 Celadon City",
+    "a027/0490 Celadon City",
+    "a027/0491 Celadon City",
+    "a027/0492 Celadon City",
+    "a027/0493 Celadon City",
+    "a027/0494 Celadon City",
+    "a027/0495 Saffron City",
+    "a027/0496 Celadon City",
+    "a027/0497 Celadon City",
+    "a027/0498 Celadon City",
+    "a027/0499 Celadon City",
+    "a027/0500 Celadon City",
+    "a027/0501 Celadon City"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0489",
+     "ids": [
+      0,
+      29
+     ]
+    },
+    {
+     "bank": "a027/0490",
+     "ids": [
+      0,
+      27
+     ]
+    },
+    {
+     "bank": "a027/0491",
+     "ids": [
+      0,
+      56
+     ]
+    },
+    {
+     "bank": "a027/0492",
+     "ids": [
+      0,
+      100
+     ]
+    },
+    {
+     "bank": "a027/0493",
+     "ids": [
+      0,
+      10
+     ]
+    },
+    {
+     "bank": "a027/0494",
+     "ids": [
+      0,
+      42
+     ]
+    },
+    {
+     "bank": "a027/0495",
+     "ids": [
+      0,
+      102
+     ]
+    },
+    {
+     "bank": "a027/0496",
+     "ids": [
+      0,
+      38
+     ]
+    },
+    {
+     "bank": "a027/0497",
+     "ids": [
+      0,
+      5
+     ]
+    },
+    {
+     "bank": "a027/0498",
+     "ids": [
+      0,
+      31
+     ]
+    },
+    {
+     "bank": "a027/0499",
+     "ids": [
+      0,
+      7
+     ]
+    },
+    {
+     "bank": "a027/0500",
+     "ids": [
+      0,
+      6
+     ]
+    },
+    {
+     "bank": "a027/0501",
+     "ids": [
+      0,
+      87
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV024",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 422,
+   "labels": [
+    "a027/0502 Celadon City",
+    "a027/0503 Celadon City",
+    "a027/0504 Fuchsia City",
+    "a027/0505 Fuchsia City",
+    "a027/0506 Fuchsia City",
+    "a027/0507 Fuchsia City",
+    "a027/0508 Safari Zone Gate",
+    "a027/0509 Fuchsia City",
+    "a027/0510 Fuchsia City"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0502",
+     "ids": [
+      0,
+      35
+     ]
+    },
+    {
+     "bank": "a027/0503",
+     "ids": [
+      0,
+      42
+     ]
+    },
+    {
+     "bank": "a027/0504",
+     "ids": [
+      0,
+      87
+     ]
+    },
+    {
+     "bank": "a027/0505",
+     "ids": [
+      0,
+      18
+     ]
+    },
+    {
+     "bank": "a027/0506",
+     "ids": [
+      0,
+      74
+     ]
+    },
+    {
+     "bank": "a027/0507",
+     "ids": [
+      0,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0508",
+     "ids": [
+      0,
+      129
+     ]
+    },
+    {
+     "bank": "a027/0509",
+     "ids": [
+      0,
+      17
+     ]
+    },
+    {
+     "bank": "a027/0510",
+     "ids": [
+      0,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV025",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 551,
+   "labels": [
+    "a027/0511 Cinnabar Island",
+    "a027/0512 Cinnabar Island",
+    "a027/0513 Indigo Plateau",
+    "a027/0514 Pokémon League",
+    "a027/0515 Pokémon League"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0511",
+     "ids": [
+      0,
+      177
+     ]
+    },
+    {
+     "bank": "a027/0512",
+     "ids": [
+      0,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0513",
+     "ids": [
+      0,
+      252
+     ]
+    },
+    {
+     "bank": "a027/0514",
+     "ids": [
+      0,
+      67
+     ]
+    },
+    {
+     "bank": "a027/0515",
+     "ids": [
+      0,
+      41
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV026",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 516,
+   "labels": [
+    "a027/0516 Pokémon League",
+    "a027/0517 Pokémon League",
+    "a027/0518 Pokémon League",
+    "a027/0519 Pokémon League",
+    "a027/0520 Pokémon League",
+    "a027/0521 Saffron City",
+    "a027/0522 Saffron City",
+    "a027/0523 Saffron City",
+    "a027/0524 Saffron City"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0516",
+     "ids": [
+      0,
+      43
+     ]
+    },
+    {
+     "bank": "a027/0517",
+     "ids": [
+      0,
+      42
+     ]
+    },
+    {
+     "bank": "a027/0518",
+     "ids": [
+      0,
+      43
+     ]
+    },
+    {
+     "bank": "a027/0519",
+     "ids": [
+      0,
+      72
+     ]
+    },
+    {
+     "bank": "a027/0520",
+     "ids": [
+      0,
+      57
+     ]
+    },
+    {
+     "bank": "a027/0521",
+     "ids": [
+      0,
+      127
+     ]
+    },
+    {
+     "bank": "a027/0522",
+     "ids": [
+      0,
+      21
+     ]
+    },
+    {
+     "bank": "a027/0523",
+     "ids": [
+      0,
+      50
+     ]
+    },
+    {
+     "bank": "a027/0524",
+     "ids": [
+      0,
+      52
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV027",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 516,
+   "labels": [
+    "a027/0525 Saffron City",
+    "a027/0526 Saffron City",
+    "a027/0527 Saffron City",
+    "a027/0528 Saffron City",
+    "a027/0529 Saffron City",
+    "a027/0530 Rotom’s Room",
+    "a027/0531 Saffron City",
+    "a027/0532 Saffron City",
+    "a027/0533 Saffron City"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0525",
+     "ids": [
+      0,
+      93
+     ]
+    },
+    {
+     "bank": "a027/0526",
+     "ids": [
+      0,
+      30
+     ]
+    },
+    {
+     "bank": "a027/0527",
+     "ids": [
+      0,
+      35
+     ]
+    },
+    {
+     "bank": "a027/0528",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0529",
+     "ids": [
+      0,
+      195
+     ]
+    },
+    {
+     "bank": "a027/0530",
+     "ids": [
+      0,
+      58
+     ]
+    },
+    {
+     "bank": "a027/0531",
+     "ids": [
+      0,
+      34
+     ]
+    },
+    {
+     "bank": "a027/0532",
+     "ids": [
+      0,
+      47
+     ]
+    },
+    {
+     "bank": "a027/0533",
+     "ids": [
+      0,
+      17
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV028",
+   "group": "1-kanto",
+   "status": "todo",
+   "strings": 140,
+   "labels": [
+    "a027/0540 One Island",
+    "a027/0729 Route 19",
+    "a027/0730 Route 19",
+    "a027/0731 Route 20",
+    "a027/0732 Route 21"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0540",
+     "ids": [
+      0,
+      62
+     ]
+    },
+    {
+     "bank": "a027/0729",
+     "ids": [
+      0,
+      29
+     ]
+    },
+    {
+     "bank": "a027/0730",
+     "ids": [
+      0,
+      3
+     ]
+    },
+    {
+     "bank": "a027/0731",
+     "ids": [
+      0,
+      17
+     ]
+    },
+    {
+     "bank": "a027/0732",
+     "ids": [
+      0,
+      24
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV029",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 489,
+   "labels": [
+    "a027/0368 Cherrygrove City + Route 30",
+    "a027/0369 Cherrygrove City + Route 30",
+    "a027/0542 Cherrygrove City + Route 30",
+    "a027/0543 Cherrygrove City + Route 30",
+    "a027/0544 Cherrygrove City + Route 30"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0368",
+     "ids": [
+      0,
+      74
+     ]
+    },
+    {
+     "bank": "a027/0369",
+     "ids": [
+      0,
+      185
+     ]
+    },
+    {
+     "bank": "a027/0542",
+     "ids": [
+      0,
+      198
+     ]
+    },
+    {
+     "bank": "a027/0543",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0544",
+     "ids": [
+      0,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV030",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 552,
+   "labels": [
+    "a027/0545 Cherrygrove City + Route 30",
+    "a027/0052 Route 30 + Route 31 + Dark Cave + Violet City + Sprout Tower",
+    "a027/0103 Route 30 + Route 31 + Dark Cave + Violet City + Sprout Tower",
+    "a027/0125 Route 30 + Route 31 + Dark Cave + Violet City + Sprout Tower",
+    "a027/0370 Route 30 + Route 31 + Dark Cave + Violet City + Sprout Tower",
+    "a027/0371 Route 30 + Route 31 + Dark Cave + Violet City + Sprout Tower",
+    "a027/0372 Route 30 + Route 31 + Dark Cave + Violet City + Sprout Tower",
+    "a027/0548 Route 30 + Route 31 + Dark Cave + Violet City + Sprout Tower",
+    "a027/0549 Route 30 + Route 31 + Dark Cave + Violet City + Sprout Tower",
+    "a027/0550 Route 30 + Route 31 + Dark Cave + Violet City + Sprout Tower"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0545",
+     "ids": [
+      0,
+      100
+     ]
+    },
+    {
+     "bank": "a027/0052",
+     "ids": [
+      0,
+      37
+     ]
+    },
+    {
+     "bank": "a027/0103",
+     "ids": [
+      0,
+      76
+     ]
+    },
+    {
+     "bank": "a027/0125",
+     "ids": [
+      0,
+      29
+     ]
+    },
+    {
+     "bank": "a027/0370",
+     "ids": [
+      0,
+      31
+     ]
+    },
+    {
+     "bank": "a027/0371",
+     "ids": [
+      0,
+      70
+     ]
+    },
+    {
+     "bank": "a027/0372",
+     "ids": [
+      0,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0548",
+     "ids": [
+      0,
+      114
+     ]
+    },
+    {
+     "bank": "a027/0549",
+     "ids": [
+      0,
+      17
+     ]
+    },
+    {
+     "bank": "a027/0550",
+     "ids": [
+      0,
+      63
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV031",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 538,
+   "labels": [
+    "a027/0551 Route 30 + Route 31 + Dark Cave + Violet City + Sprout Tower",
+    "a027/0553 Route 30 + Route 31 + Dark Cave + Violet City + Sprout Tower",
+    "a027/0054 Sprout Tower + Route 32 + Ruins of Alph",
+    "a027/0070 Sprout Tower + Route 32 + Ruins of Alph",
+    "a027/0071 Sprout Tower + Route 32 + Ruins of Alph",
+    "a027/0072 Sprout Tower + Route 32 + Ruins of Alph",
+    "a027/0073 Sprout Tower + Route 32 + Ruins of Alph",
+    "a027/0074 Sprout Tower + Route 32 + Ruins of Alph",
+    "a027/0075 Sprout Tower + Route 32 + Ruins of Alph",
+    "a027/0077 Sprout Tower + Route 32 + Ruins of Alph",
+    "a027/0373 Sprout Tower + Route 32 + Ruins of Alph",
+    "a027/0374 Sprout Tower + Route 32 + Ruins of Alph",
+    "a027/0375 Sprout Tower + Route 32 + Ruins of Alph"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0551",
+     "ids": [
+      0,
+      29
+     ]
+    },
+    {
+     "bank": "a027/0553",
+     "ids": [
+      0,
+      23
+     ]
+    },
+    {
+     "bank": "a027/0054",
+     "ids": [
+      0,
+      113
+     ]
+    },
+    {
+     "bank": "a027/0070",
+     "ids": [
+      0,
+      60
+     ]
+    },
+    {
+     "bank": "a027/0071",
+     "ids": [
+      0,
+      99
+     ]
+    },
+    {
+     "bank": "a027/0072",
+     "ids": [
+      0,
+      16
+     ]
+    },
+    {
+     "bank": "a027/0073",
+     "ids": [
+      0,
+      1
+     ]
+    },
+    {
+     "bank": "a027/0074",
+     "ids": [
+      0,
+      10
+     ]
+    },
+    {
+     "bank": "a027/0075",
+     "ids": [
+      0,
+      1
+     ]
+    },
+    {
+     "bank": "a027/0077",
+     "ids": [
+      0,
+      7
+     ]
+    },
+    {
+     "bank": "a027/0373",
+     "ids": [
+      0,
+      86
+     ]
+    },
+    {
+     "bank": "a027/0374",
+     "ids": [
+      0,
+      83
+     ]
+    },
+    {
+     "bank": "a027/0375",
+     "ids": [
+      0,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV032",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 537,
+   "labels": [
+    "a027/0078 Ruins of Alph + Union Cave + Route 33",
+    "a027/0079 Ruins of Alph + Union Cave + Route 33",
+    "a027/0080 Ruins of Alph + Union Cave + Route 33",
+    "a027/0082 Ruins of Alph + Union Cave + Route 33",
+    "a027/0083 Ruins of Alph + Union Cave + Route 33",
+    "a027/0085 Ruins of Alph + Union Cave + Route 33",
+    "a027/0086 Ruins of Alph + Union Cave + Route 33",
+    "a027/0376 Ruins of Alph + Union Cave + Route 33"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0078",
+     "ids": [
+      0,
+      116
+     ]
+    },
+    {
+     "bank": "a027/0079",
+     "ids": [
+      0,
+      77
+     ]
+    },
+    {
+     "bank": "a027/0080",
+     "ids": [
+      0,
+      122
+     ]
+    },
+    {
+     "bank": "a027/0082",
+     "ids": [
+      0,
+      5
+     ]
+    },
+    {
+     "bank": "a027/0083",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0085",
+     "ids": [
+      0,
+      104
+     ]
+    },
+    {
+     "bank": "a027/0086",
+     "ids": [
+      0,
+      47
+     ]
+    },
+    {
+     "bank": "a027/0376",
+     "ids": [
+      0,
+      58
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV033",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 506,
+   "labels": [
+    "a027/0081 Azalea Town + Slowpoke Well + Ilex Forest",
+    "a027/0088 Azalea Town + Slowpoke Well + Ilex Forest",
+    "a027/0089 Azalea Town + Slowpoke Well + Ilex Forest",
+    "a027/0556 Azalea Town + Slowpoke Well + Ilex Forest",
+    "a027/0557 Azalea Town + Slowpoke Well + Ilex Forest",
+    "a027/0558 Azalea Town + Slowpoke Well + Ilex Forest",
+    "a027/0559 Azalea Town + Slowpoke Well + Ilex Forest",
+    "a027/0560 Azalea Town + Slowpoke Well + Ilex Forest",
+    "a027/0561 Azalea Town + Slowpoke Well + Ilex Forest",
+    "a027/0563 Azalea Town + Slowpoke Well + Ilex Forest"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0081",
+     "ids": [
+      0,
+      136
+     ]
+    },
+    {
+     "bank": "a027/0088",
+     "ids": [
+      0,
+      1
+     ]
+    },
+    {
+     "bank": "a027/0089",
+     "ids": [
+      0,
+      124
+     ]
+    },
+    {
+     "bank": "a027/0556",
+     "ids": [
+      0,
+      95
+     ]
+    },
+    {
+     "bank": "a027/0557",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0558",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0559",
+     "ids": [
+      0,
+      24
+     ]
+    },
+    {
+     "bank": "a027/0560",
+     "ids": [
+      0,
+      10
+     ]
+    },
+    {
+     "bank": "a027/0561",
+     "ids": [
+      0,
+      5
+     ]
+    },
+    {
+     "bank": "a027/0563",
+     "ids": [
+      0,
+      72
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV034",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 540,
+   "labels": [
+    "a027/0113 Ilex Forest + Route 34 + Goldenrod City",
+    "a027/0116 Ilex Forest + Route 34 + Goldenrod City",
+    "a027/0117 Ilex Forest + Route 34 + Goldenrod City",
+    "a027/0118 Ilex Forest + Route 34 + Goldenrod City",
+    "a027/0377 Ilex Forest + Route 34 + Goldenrod City",
+    "a027/0378 Ilex Forest + Route 34 + Goldenrod City",
+    "a027/0573 Ilex Forest + Route 34 + Goldenrod City"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0113",
+     "ids": [
+      0,
+      169
+     ]
+    },
+    {
+     "bank": "a027/0116",
+     "ids": [
+      0,
+      29
+     ]
+    },
+    {
+     "bank": "a027/0117",
+     "ids": [
+      0,
+      2
+     ]
+    },
+    {
+     "bank": "a027/0118",
+     "ids": [
+      0,
+      26
+     ]
+    },
+    {
+     "bank": "a027/0377",
+     "ids": [
+      0,
+      167
+     ]
+    },
+    {
+     "bank": "a027/0378",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0573",
+     "ids": [
+      0,
+      127
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV035",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 488,
+   "labels": [
+    "a027/0574 Ilex Forest + Route 34 + Goldenrod City",
+    "a027/0575 Goldenrod City",
+    "a027/0576 Goldenrod City",
+    "a027/0577 Goldenrod City",
+    "a027/0579 Goldenrod City",
+    "a027/0580 Goldenrod City",
+    "a027/0581 Goldenrod City",
+    "a027/0583 Goldenrod City",
+    "a027/0584 Goldenrod City",
+    "a027/0585 Goldenrod City",
+    "a027/0114 Goldenrod City + Goldenrod Tunnel"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0574",
+     "ids": [
+      0,
+      49
+     ]
+    },
+    {
+     "bank": "a027/0575",
+     "ids": [
+      0,
+      18
+     ]
+    },
+    {
+     "bank": "a027/0576",
+     "ids": [
+      0,
+      5
+     ]
+    },
+    {
+     "bank": "a027/0577",
+     "ids": [
+      0,
+      78
+     ]
+    },
+    {
+     "bank": "a027/0579",
+     "ids": [
+      0,
+      49
+     ]
+    },
+    {
+     "bank": "a027/0580",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0581",
+     "ids": [
+      0,
+      21
+     ]
+    },
+    {
+     "bank": "a027/0583",
+     "ids": [
+      0,
+      71
+     ]
+    },
+    {
+     "bank": "a027/0584",
+     "ids": [
+      0,
+      45
+     ]
+    },
+    {
+     "bank": "a027/0585",
+     "ids": [
+      0,
+      130
+     ]
+    },
+    {
+     "bank": "a027/0114",
+     "ids": [
+      0,
+      11
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV036",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 460,
+   "labels": [
+    "a027/0115 Goldenrod City + Goldenrod Tunnel",
+    "a027/0589 Goldenrod City + Goldenrod Tunnel",
+    "a027/0590 Goldenrod City + Goldenrod Tunnel"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0115",
+     "ids": [
+      0,
+      187
+     ]
+    },
+    {
+     "bank": "a027/0589",
+     "ids": [
+      0,
+      252
+     ]
+    },
+    {
+     "bank": "a027/0590",
+     "ids": [
+      0,
+      18
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV037",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 459,
+   "labels": [
+    "a027/0591 Goldenrod City + Goldenrod Tunnel",
+    "a027/0063 Global Terminal + Dream World + Radio Tower",
+    "a027/0064 Global Terminal + Dream World + Radio Tower",
+    "a027/0066 Global Terminal + Dream World + Radio Tower",
+    "a027/0067 Global Terminal + Dream World + Radio Tower"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0591",
+     "ids": [
+      0,
+      103
+     ]
+    },
+    {
+     "bank": "a027/0063",
+     "ids": [
+      0,
+      170
+     ]
+    },
+    {
+     "bank": "a027/0064",
+     "ids": [
+      0,
+      69
+     ]
+    },
+    {
+     "bank": "a027/0066",
+     "ids": [
+      0,
+      91
+     ]
+    },
+    {
+     "bank": "a027/0067",
+     "ids": [
+      0,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV038",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 509,
+   "labels": [
+    "a027/0068 Global Terminal + Dream World + Radio Tower",
+    "a027/0069 Global Terminal + Dream World + Radio Tower",
+    "a027/0586 Global Terminal + Dream World + Radio Tower",
+    "a027/0592 Global Terminal + Dream World + Radio Tower",
+    "a027/0060 Route 35 + National Park + Pokéathlon Dome",
+    "a027/0061 Route 35 + National Park + Pokéathlon Dome",
+    "a027/0062 Route 35 + National Park + Pokéathlon Dome",
+    "a027/0135 Route 35 + National Park + Pokéathlon Dome"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0068",
+     "ids": [
+      0,
+      121
+     ]
+    },
+    {
+     "bank": "a027/0069",
+     "ids": [
+      0,
+      3
+     ]
+    },
+    {
+     "bank": "a027/0586",
+     "ids": [
+      0,
+      58
+     ]
+    },
+    {
+     "bank": "a027/0592",
+     "ids": [
+      0,
+      36
+     ]
+    },
+    {
+     "bank": "a027/0060",
+     "ids": [
+      0,
+      193
+     ]
+    },
+    {
+     "bank": "a027/0061",
+     "ids": [
+      0,
+      32
+     ]
+    },
+    {
+     "bank": "a027/0062",
+     "ids": [
+      0,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0135",
+     "ids": [
+      0,
+      49
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV039",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 477,
+   "labels": [
+    "a027/0136 Route 35 + National Park + Pokéathlon Dome",
+    "a027/0137 Route 35 + National Park + Pokéathlon Dome",
+    "a027/0138 Route 35 + National Park + Pokéathlon Dome",
+    "a027/0139 Route 35 + National Park + Pokéathlon Dome",
+    "a027/0380 Route 35 + National Park + Pokéathlon Dome",
+    "a027/0381 Route 35 + National Park + Pokéathlon Dome",
+    "a027/0382 Route 35 + National Park + Pokéathlon Dome",
+    "a027/0140 Pokéathlon Dome + Route 36 + Route 37 + Ecruteak City",
+    "a027/0141 Pokéathlon Dome + Route 36 + Route 37 + Ecruteak City",
+    "a027/0383 Pokéathlon Dome + Route 36 + Route 37 + Ecruteak City",
+    "a027/0385 Pokéathlon Dome + Route 36 + Route 37 + Ecruteak City",
+    "a027/0386 Pokéathlon Dome + Route 36 + Route 37 + Ecruteak City",
+    "a027/0555 Pokéathlon Dome + Route 36 + Route 37 + Ecruteak City"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0136",
+     "ids": [
+      0,
+      114
+     ]
+    },
+    {
+     "bank": "a027/0137",
+     "ids": [
+      0,
+      52
+     ]
+    },
+    {
+     "bank": "a027/0138",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0139",
+     "ids": [
+      0,
+      15
+     ]
+    },
+    {
+     "bank": "a027/0380",
+     "ids": [
+      0,
+      54
+     ]
+    },
+    {
+     "bank": "a027/0381",
+     "ids": [
+      0,
+      16
+     ]
+    },
+    {
+     "bank": "a027/0382",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0140",
+     "ids": [
+      0,
+      24
+     ]
+    },
+    {
+     "bank": "a027/0141",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0383",
+     "ids": [
+      0,
+      84
+     ]
+    },
+    {
+     "bank": "a027/0385",
+     "ids": [
+      0,
+      33
+     ]
+    },
+    {
+     "bank": "a027/0386",
+     "ids": [
+      0,
+      21
+     ]
+    },
+    {
+     "bank": "a027/0555",
+     "ids": [
+      0,
+      13
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV040",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 457,
+   "labels": [
+    "a027/0603 Pokéathlon Dome + Route 36 + Route 37 + Ecruteak City",
+    "a027/0604 Pokéathlon Dome + Route 36 + Route 37 + Ecruteak City",
+    "a027/0605 Pokéathlon Dome + Route 36 + Route 37 + Ecruteak City",
+    "a027/0606 Pokéathlon Dome + Route 36 + Route 37 + Ecruteak City",
+    "a027/0607 Pokéathlon Dome + Route 36 + Route 37 + Ecruteak City",
+    "a027/0055 Ecruteak City + Burned Tower + Bell Tower",
+    "a027/0056 Ecruteak City + Burned Tower + Bell Tower"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0603",
+     "ids": [
+      0,
+      132
+     ]
+    },
+    {
+     "bank": "a027/0604",
+     "ids": [
+      0,
+      18
+     ]
+    },
+    {
+     "bank": "a027/0605",
+     "ids": [
+      0,
+      79
+     ]
+    },
+    {
+     "bank": "a027/0606",
+     "ids": [
+      0,
+      32
+     ]
+    },
+    {
+     "bank": "a027/0607",
+     "ids": [
+      0,
+      60
+     ]
+    },
+    {
+     "bank": "a027/0055",
+     "ids": [
+      0,
+      18
+     ]
+    },
+    {
+     "bank": "a027/0056",
+     "ids": [
+      0,
+      119
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV041",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 474,
+   "labels": [
+    "a027/0058 Ecruteak City + Burned Tower + Bell Tower",
+    "a027/0609 Ecruteak City + Burned Tower + Bell Tower",
+    "a027/0610 Ecruteak City + Burned Tower + Bell Tower",
+    "a027/0057 Bellchime Trail + Route 38 + Route 39 + Olivine City + Lighthouse",
+    "a027/0091 Bellchime Trail + Route 38 + Route 39 + Olivine City + Lighthouse",
+    "a027/0387 Bellchime Trail + Route 38 + Route 39 + Olivine City + Lighthouse",
+    "a027/0388 Bellchime Trail + Route 38 + Route 39 + Olivine City + Lighthouse"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0058",
+     "ids": [
+      0,
+      162
+     ]
+    },
+    {
+     "bank": "a027/0609",
+     "ids": [
+      0,
+      92
+     ]
+    },
+    {
+     "bank": "a027/0610",
+     "ids": [
+      0,
+      72
+     ]
+    },
+    {
+     "bank": "a027/0057",
+     "ids": [
+      0,
+      51
+     ]
+    },
+    {
+     "bank": "a027/0091",
+     "ids": [
+      0,
+      33
+     ]
+    },
+    {
+     "bank": "a027/0387",
+     "ids": [
+      0,
+      50
+     ]
+    },
+    {
+     "bank": "a027/0388",
+     "ids": [
+      0,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV042",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 530,
+   "labels": [
+    "a027/0389 Bellchime Trail + Route 38 + Route 39 + Olivine City + Lighthouse",
+    "a027/0390 Bellchime Trail + Route 38 + Route 39 + Olivine City + Lighthouse",
+    "a027/0391 Bellchime Trail + Route 38 + Route 39 + Olivine City + Lighthouse",
+    "a027/0595 Bellchime Trail + Route 38 + Route 39 + Olivine City + Lighthouse",
+    "a027/0596 Bellchime Trail + Route 38 + Route 39 + Olivine City + Lighthouse",
+    "a027/0597 Bellchime Trail + Route 38 + Route 39 + Olivine City + Lighthouse",
+    "a027/0598 Bellchime Trail + Route 38 + Route 39 + Olivine City + Lighthouse",
+    "a027/0600 Bellchime Trail + Route 38 + Route 39 + Olivine City + Lighthouse",
+    "a027/0602 Bellchime Trail + Route 38 + Route 39 + Olivine City + Lighthouse",
+    "a027/0092 Lighthouse + Route 40 + Frontier Access + Battle Frontier + Battle Tower + Battle Factory …",
+    "a027/0093 Lighthouse + Route 40 + Frontier Access + Battle Frontier + Battle Tower + Battle Factory …"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0389",
+     "ids": [
+      0,
+      89
+     ]
+    },
+    {
+     "bank": "a027/0390",
+     "ids": [
+      0,
+      20
+     ]
+    },
+    {
+     "bank": "a027/0391",
+     "ids": [
+      0,
+      42
+     ]
+    },
+    {
+     "bank": "a027/0595",
+     "ids": [
+      0,
+      110
+     ]
+    },
+    {
+     "bank": "a027/0596",
+     "ids": [
+      0,
+      18
+     ]
+    },
+    {
+     "bank": "a027/0597",
+     "ids": [
+      0,
+      61
+     ]
+    },
+    {
+     "bank": "a027/0598",
+     "ids": [
+      0,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0600",
+     "ids": [
+      0,
+      40
+     ]
+    },
+    {
+     "bank": "a027/0602",
+     "ids": [
+      0,
+      44
+     ]
+    },
+    {
+     "bank": "a027/0092",
+     "ids": [
+      0,
+      82
+     ]
+    },
+    {
+     "bank": "a027/0093",
+     "ids": [
+      0,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV043",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 478,
+   "labels": [
+    "a027/0094 Lighthouse + Route 40 + Frontier Access + Battle Frontier + Battle Tower + Battle Factory …",
+    "a027/0097 Lighthouse + Route 40 + Frontier Access + Battle Frontier + Battle Tower + Battle Factory …",
+    "a027/0098 Lighthouse + Route 40 + Frontier Access + Battle Frontier + Battle Tower + Battle Factory …",
+    "a027/0099 Lighthouse + Route 40 + Frontier Access + Battle Frontier + Battle Tower + Battle Factory …",
+    "a027/0100 Lighthouse + Route 40 + Frontier Access + Battle Frontier + Battle Tower + Battle Factory …",
+    "a027/0101 Lighthouse + Route 40 + Frontier Access + Battle Frontier + Battle Tower + Battle Factory …",
+    "a027/0102 Lighthouse + Route 40 + Frontier Access + Battle Frontier + Battle Tower + Battle Factory …",
+    "a027/0105 Lighthouse + Route 40 + Frontier Access + Battle Frontier + Battle Tower + Battle Factory …",
+    "a027/0107 Lighthouse + Route 40 + Frontier Access + Battle Frontier + Battle Tower + Battle Factory …",
+    "a027/0733 Lighthouse + Route 40 + Frontier Access + Battle Frontier + Battle Tower + Battle Factory …",
+    "a027/0734 Lighthouse + Route 40 + Frontier Access + Battle Frontier + Battle Tower + Battle Factory …"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0094",
+     "ids": [
+      0,
+      132
+     ]
+    },
+    {
+     "bank": "a027/0097",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0098",
+     "ids": [
+      0,
+      41
+     ]
+    },
+    {
+     "bank": "a027/0099",
+     "ids": [
+      0,
+      1
+     ]
+    },
+    {
+     "bank": "a027/0100",
+     "ids": [
+      0,
+      34
+     ]
+    },
+    {
+     "bank": "a027/0101",
+     "ids": [
+      0,
+      36
+     ]
+    },
+    {
+     "bank": "a027/0102",
+     "ids": [
+      0,
+      73
+     ]
+    },
+    {
+     "bank": "a027/0105",
+     "ids": [
+      0,
+      33
+     ]
+    },
+    {
+     "bank": "a027/0107",
+     "ids": [
+      0,
+      52
+     ]
+    },
+    {
+     "bank": "a027/0733",
+     "ids": [
+      0,
+      41
+     ]
+    },
+    {
+     "bank": "a027/0734",
+     "ids": [
+      0,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV044",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 476,
+   "labels": [
+    "a027/0106 Battle Arcade + Battle Hall + Route 41 + Cianwood City",
+    "a027/0108 Battle Arcade + Battle Hall + Route 41 + Cianwood City",
+    "a027/0564 Battle Arcade + Battle Hall + Route 41 + Cianwood City",
+    "a027/0566 Battle Arcade + Battle Hall + Route 41 + Cianwood City",
+    "a027/0567 Battle Arcade + Battle Hall + Route 41 + Cianwood City",
+    "a027/0568 Battle Arcade + Battle Hall + Route 41 + Cianwood City",
+    "a027/0569 Battle Arcade + Battle Hall + Route 41 + Cianwood City"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0106",
+     "ids": [
+      0,
+      99
+     ]
+    },
+    {
+     "bank": "a027/0108",
+     "ids": [
+      0,
+      55
+     ]
+    },
+    {
+     "bank": "a027/0564",
+     "ids": [
+      0,
+      106
+     ]
+    },
+    {
+     "bank": "a027/0566",
+     "ids": [
+      0,
+      63
+     ]
+    },
+    {
+     "bank": "a027/0567",
+     "ids": [
+      0,
+      8
+     ]
+    },
+    {
+     "bank": "a027/0568",
+     "ids": [
+      0,
+      108
+     ]
+    },
+    {
+     "bank": "a027/0569",
+     "ids": [
+      0,
+      38
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV045",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 455,
+   "labels": [
+    "a027/0735 Battle Arcade + Battle Hall + Route 41 + Cianwood City",
+    "a027/0119 Cianwood Cave + Whirl Islands + Route 42 + Mt. Mortar",
+    "a027/0122 Cianwood Cave + Whirl Islands + Route 42 + Mt. Mortar",
+    "a027/0123 Cianwood Cave + Whirl Islands + Route 42 + Mt. Mortar",
+    "a027/0134 Cianwood Cave + Whirl Islands + Route 42 + Mt. Mortar"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0735",
+     "ids": [
+      0,
+      114
+     ]
+    },
+    {
+     "bank": "a027/0119",
+     "ids": [
+      0,
+      234
+     ]
+    },
+    {
+     "bank": "a027/0122",
+     "ids": [
+      0,
+      10
+     ]
+    },
+    {
+     "bank": "a027/0123",
+     "ids": [
+      0,
+      48
+     ]
+    },
+    {
+     "bank": "a027/0134",
+     "ids": [
+      0,
+      56
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV046",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 529,
+   "labels": [
+    "a027/0392 Cianwood Cave + Whirl Islands + Route 42 + Mt. Mortar",
+    "a027/0109 Boot Camp Ruins + Mahogany Town + Team Rocket HQ",
+    "a027/0110 Boot Camp Ruins + Mahogany Town + Team Rocket HQ",
+    "a027/0572 Boot Camp Ruins + Mahogany Town + Team Rocket HQ",
+    "a027/0611 Boot Camp Ruins + Mahogany Town + Team Rocket HQ",
+    "a027/0613 Boot Camp Ruins + Mahogany Town + Team Rocket HQ",
+    "a027/0614 Boot Camp Ruins + Mahogany Town + Team Rocket HQ",
+    "a027/0615 Boot Camp Ruins + Mahogany Town + Team Rocket HQ"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0392",
+     "ids": [
+      0,
+      131
+     ]
+    },
+    {
+     "bank": "a027/0109",
+     "ids": [
+      0,
+      57
+     ]
+    },
+    {
+     "bank": "a027/0110",
+     "ids": [
+      0,
+      95
+     ]
+    },
+    {
+     "bank": "a027/0572",
+     "ids": [
+      0,
+      125
+     ]
+    },
+    {
+     "bank": "a027/0611",
+     "ids": [
+      0,
+      61
+     ]
+    },
+    {
+     "bank": "a027/0613",
+     "ids": [
+      0,
+      38
+     ]
+    },
+    {
+     "bank": "a027/0614",
+     "ids": [
+      0,
+      6
+     ]
+    },
+    {
+     "bank": "a027/0615",
+     "ids": [
+      0,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV047",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 450,
+   "labels": [
+    "a027/0616 Boot Camp Ruins + Mahogany Town + Team Rocket HQ",
+    "a027/0111 Team Rocket HQ + Lake of Rage + Route 43 + Route 44",
+    "a027/0112 Team Rocket HQ + Lake of Rage + Route 43 + Route 44",
+    "a027/0394 Team Rocket HQ + Lake of Rage + Route 43 + Route 44",
+    "a027/0395 Team Rocket HQ + Lake of Rage + Route 43 + Route 44",
+    "a027/0396 Team Rocket HQ + Lake of Rage + Route 43 + Route 44",
+    "a027/0397 Team Rocket HQ + Lake of Rage + Route 43 + Route 44"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0616",
+     "ids": [
+      0,
+      107
+     ]
+    },
+    {
+     "bank": "a027/0111",
+     "ids": [
+      0,
+      102
+     ]
+    },
+    {
+     "bank": "a027/0112",
+     "ids": [
+      0,
+      77
+     ]
+    },
+    {
+     "bank": "a027/0394",
+     "ids": [
+      0,
+      50
+     ]
+    },
+    {
+     "bank": "a027/0395",
+     "ids": [
+      0,
+      4
+     ]
+    },
+    {
+     "bank": "a027/0396",
+     "ids": [
+      0,
+      7
+     ]
+    },
+    {
+     "bank": "a027/0397",
+     "ids": [
+      0,
+      96
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV048",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 516,
+   "labels": [
+    "a027/0617 Team Rocket HQ + Lake of Rage + Route 43 + Route 44",
+    "a027/0618 Team Rocket HQ + Lake of Rage + Route 43 + Route 44",
+    "a027/0619 Team Rocket HQ + Lake of Rage + Route 43 + Route 44",
+    "a027/0120 Ice Path + Blackthorn City + Dragon’s Den",
+    "a027/0121 Ice Path + Blackthorn City + Dragon’s Den",
+    "a027/0127 Ice Path + Blackthorn City + Dragon’s Den"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0617",
+     "ids": [
+      0,
+      150
+     ]
+    },
+    {
+     "bank": "a027/0618",
+     "ids": [
+      0,
+      57
+     ]
+    },
+    {
+     "bank": "a027/0619",
+     "ids": [
+      0,
+      10
+     ]
+    },
+    {
+     "bank": "a027/0120",
+     "ids": [
+      0,
+      87
+     ]
+    },
+    {
+     "bank": "a027/0121",
+     "ids": [
+      0,
+      170
+     ]
+    },
+    {
+     "bank": "a027/0127",
+     "ids": [
+      0,
+      48
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV049",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 482,
+   "labels": [
+    "a027/0620 Ice Path + Blackthorn City + Dragon’s Den",
+    "a027/0621 Ice Path + Blackthorn City + Dragon’s Den",
+    "a027/0622 Ice Path + Blackthorn City + Dragon’s Den",
+    "a027/0623 Ice Path + Blackthorn City + Dragon’s Den",
+    "a027/0626 Ice Path + Blackthorn City + Dragon’s Den",
+    "a027/0128 Dragon’s Den + Route 45 + Route 46 + Cliff Cave + Route 47 + Route 48 …",
+    "a027/0143 Dragon’s Den + Route 45 + Route 46 + Cliff Cave + Route 47 + Route 48 …",
+    "a027/0398 Dragon’s Den + Route 45 + Route 46 + Cliff Cave + Route 47 + Route 48 …"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0620",
+     "ids": [
+      0,
+      81
+     ]
+    },
+    {
+     "bank": "a027/0621",
+     "ids": [
+      0,
+      18
+     ]
+    },
+    {
+     "bank": "a027/0622",
+     "ids": [
+      0,
+      46
+     ]
+    },
+    {
+     "bank": "a027/0623",
+     "ids": [
+      0,
+      8
+     ]
+    },
+    {
+     "bank": "a027/0626",
+     "ids": [
+      0,
+      68
+     ]
+    },
+    {
+     "bank": "a027/0128",
+     "ids": [
+      0,
+      67
+     ]
+    },
+    {
+     "bank": "a027/0143",
+     "ids": [
+      0,
+      68
+     ]
+    },
+    {
+     "bank": "a027/0398",
+     "ids": [
+      0,
+      118
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV050",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 416,
+   "labels": [
+    "a027/0399 Dragon’s Den + Route 45 + Route 46 + Cliff Cave + Route 47 + Route 48 …",
+    "a027/0400 Dragon’s Den + Route 45 + Route 46 + Cliff Cave + Route 47 + Route 48 …",
+    "a027/0401 Dragon’s Den + Route 45 + Route 46 + Cliff Cave + Route 47 + Route 48 …",
+    "a027/0571 Dragon’s Den + Route 45 + Route 46 + Cliff Cave + Route 47 + Route 48 …",
+    "a027/0144 Sinjoh Ruins + Reversal Cave",
+    "a027/0145 Sinjoh Ruins + Reversal Cave",
+    "a027/0147 Sinjoh Ruins + Reversal Cave",
+    "a027/0148 Sinjoh Ruins + Reversal Cave"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0399",
+     "ids": [
+      0,
+      128
+     ]
+    },
+    {
+     "bank": "a027/0400",
+     "ids": [
+      0,
+      148
+     ]
+    },
+    {
+     "bank": "a027/0401",
+     "ids": [
+      0,
+      24
+     ]
+    },
+    {
+     "bank": "a027/0571",
+     "ids": [
+      0,
+      17
+     ]
+    },
+    {
+     "bank": "a027/0144",
+     "ids": [
+      0,
+      36
+     ]
+    },
+    {
+     "bank": "a027/0145",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0147",
+     "ids": [
+      0,
+      4
+     ]
+    },
+    {
+     "bank": "a027/0148",
+     "ids": [
+      0,
+      38
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV051",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 470,
+   "labels": [
+    "a027/0124 Mt. Silver",
+    "a027/0131 Resort Zone",
+    "a027/0132 Resort Zone",
+    "a027/0133 Resort Zone",
+    "a027/0248 Olivine City",
+    "a027/0249 Olivine City"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0124",
+     "ids": [
+      0,
+      213
+     ]
+    },
+    {
+     "bank": "a027/0131",
+     "ids": [
+      0,
+      44
+     ]
+    },
+    {
+     "bank": "a027/0132",
+     "ids": [
+      0,
+      58
+     ]
+    },
+    {
+     "bank": "a027/0133",
+     "ids": [
+      0,
+      114
+     ]
+    },
+    {
+     "bank": "a027/0248",
+     "ids": [
+      0,
+      16
+     ]
+    },
+    {
+     "bank": "a027/0249",
+     "ids": [
+      0,
+      19
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV052",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 521,
+   "labels": [
+    "a027/0252 S.S. Anne",
+    "a027/0253 S.S. Anne",
+    "a027/0254 S.S. Anne",
+    "a027/0255 S.S. Anne",
+    "a027/0256 S.S. Anne",
+    "a027/0338 Dark Cave, Power Plant",
+    "a027/0362 Route 27"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0252",
+     "ids": [
+      0,
+      198
+     ]
+    },
+    {
+     "bank": "a027/0253",
+     "ids": [
+      0,
+      75
+     ]
+    },
+    {
+     "bank": "a027/0254",
+     "ids": [
+      0,
+      25
+     ]
+    },
+    {
+     "bank": "a027/0255",
+     "ids": [
+      0,
+      65
+     ]
+    },
+    {
+     "bank": "a027/0256",
+     "ids": [
+      0,
+      61
+     ]
+    },
+    {
+     "bank": "a027/0338",
+     "ids": [
+      0,
+      48
+     ]
+    },
+    {
+     "bank": "a027/0362",
+     "ids": [
+      0,
+      43
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV053",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 527,
+   "labels": [
+    "a027/0366 Route 29",
+    "a027/0367 Route 29",
+    "a027/0447 Viridian City",
+    "a027/0450 Frontier Access",
+    "a027/0451 Frontier Access",
+    "a027/0534 New Bark Town",
+    "a027/0535 New Bark Town",
+    "a027/0536 New Bark Town"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0366",
+     "ids": [
+      0,
+      51
+     ]
+    },
+    {
+     "bank": "a027/0367",
+     "ids": [
+      0,
+      1
+     ]
+    },
+    {
+     "bank": "a027/0447",
+     "ids": [
+      0,
+      164
+     ]
+    },
+    {
+     "bank": "a027/0450",
+     "ids": [
+      0,
+      37
+     ]
+    },
+    {
+     "bank": "a027/0451",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0534",
+     "ids": [
+      0,
+      80
+     ]
+    },
+    {
+     "bank": "a027/0535",
+     "ids": [
+      0,
+      107
+     ]
+    },
+    {
+     "bank": "a027/0536",
+     "ids": [
+      0,
+      67
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV054",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 493,
+   "labels": [
+    "a027/0537 Pallet Town",
+    "a027/0538 Pallet Town",
+    "a027/0539 Mt. Silver",
+    "a027/0541 Mt. Silver"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0537",
+     "ids": [
+      0,
+      223
+     ]
+    },
+    {
+     "bank": "a027/0538",
+     "ids": [
+      0,
+      85
+     ]
+    },
+    {
+     "bank": "a027/0539",
+     "ids": [
+      0,
+      70
+     ]
+    },
+    {
+     "bank": "a027/0541",
+     "ids": [
+      0,
+      115
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV055",
+   "group": "2-johto",
+   "status": "todo",
+   "strings": 177,
+   "labels": [
+    "a027/0627 Mt. Silver",
+    "a027/0628 Mt. Silver"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0627",
+     "ids": [
+      0,
+      168
+     ]
+    },
+    {
+     "bank": "a027/0628",
+     "ids": [
+      0,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV056",
+   "group": "3-other",
+   "status": "todo",
+   "strings": 544,
+   "labels": [
+    "a027/0005 no map",
+    "a027/0006 no map",
+    "a027/0007 no map",
+    "a027/0008 no map",
+    "a027/0009 no map",
+    "a027/0010 no map",
+    "a027/0016 no map",
+    "a027/0023 no map",
+    "a027/0024 no map",
+    "a027/0038 no map",
+    "a027/0042 no map",
+    "a027/0043 no map",
+    "a027/0177 no map",
+    "a027/0178 no map",
+    "a027/0179 no map",
+    "a027/0185 no map",
+    "a027/0188 no map"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0005",
+     "ids": [
+      1,
+      48
+     ]
+    },
+    {
+     "bank": "a027/0006",
+     "ids": [
+      6,
+      95
+     ]
+    },
+    {
+     "bank": "a027/0007",
+     "ids": [
+      0,
+      2
+     ]
+    },
+    {
+     "bank": "a027/0008",
+     "ids": [
+      0,
+      1
+     ]
+    },
+    {
+     "bank": "a027/0009",
+     "ids": [
+      0,
+      1
+     ]
+    },
+    {
+     "bank": "a027/0010",
+     "ids": [
+      0,
+      128
+     ]
+    },
+    {
+     "bank": "a027/0016",
+     "ids": [
+      0,
+      7
+     ]
+    },
+    {
+     "bank": "a027/0023",
+     "ids": [
+      2,
+      99
+     ]
+    },
+    {
+     "bank": "a027/0024",
+     "ids": [
+      0,
+      60
+     ]
+    },
+    {
+     "bank": "a027/0038",
+     "ids": [
+      0,
+      115
+     ]
+    },
+    {
+     "bank": "a027/0042",
+     "ids": [
+      0,
+      6
+     ]
+    },
+    {
+     "bank": "a027/0043",
+     "ids": [
+      0,
+      60
+     ]
+    },
+    {
+     "bank": "a027/0177",
+     "ids": [
+      0,
+      5
+     ]
+    },
+    {
+     "bank": "a027/0178",
+     "ids": [
+      0,
+      17
+     ]
+    },
+    {
+     "bank": "a027/0179",
+     "ids": [
+      0,
+      6
+     ]
+    },
+    {
+     "bank": "a027/0185",
+     "ids": [
+      0,
+      3
+     ]
+    },
+    {
+     "bank": "a027/0188",
+     "ids": [
+      0,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV057",
+   "group": "3-other",
+   "status": "todo",
+   "strings": 559,
+   "labels": [
+    "a027/0189 no map",
+    "a027/0194 no map",
+    "a027/0197 no map",
+    "a027/0198 no map",
+    "a027/0199 no map",
+    "a027/0201 no map",
+    "a027/0206 no map"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0189",
+     "ids": [
+      0,
+      474
+     ]
+    },
+    {
+     "bank": "a027/0194",
+     "ids": [
+      0,
+      35
+     ]
+    },
+    {
+     "bank": "a027/0197",
+     "ids": [
+      0,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0198",
+     "ids": [
+      0,
+      25
+     ]
+    },
+    {
+     "bank": "a027/0199",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0201",
+     "ids": [
+      0,
+      4
+     ]
+    },
+    {
+     "bank": "a027/0206",
+     "ids": [
+      0,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV058",
+   "group": "3-other",
+   "status": "todo",
+   "strings": 534,
+   "labels": [
+    "a027/0207 no map",
+    "a027/0208 no map",
+    "a027/0209 no map",
+    "a027/0216 no map",
+    "a027/0217 no map",
+    "a027/0220 no map",
+    "a027/0221 no map",
+    "a027/0224 no map",
+    "a027/0242 no map",
+    "a027/0244 no map",
+    "a027/0246 no map",
+    "a027/0247 no map",
+    "a027/0259 no map",
+    "a027/0260 no map"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0207",
+     "ids": [
+      0,
+      31
+     ]
+    },
+    {
+     "bank": "a027/0208",
+     "ids": [
+      0,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0209",
+     "ids": [
+      0,
+      34
+     ]
+    },
+    {
+     "bank": "a027/0216",
+     "ids": [
+      0,
+      62
+     ]
+    },
+    {
+     "bank": "a027/0217",
+     "ids": [
+      328,
+      427
+     ]
+    },
+    {
+     "bank": "a027/0220",
+     "ids": [
+      0,
+      7
+     ]
+    },
+    {
+     "bank": "a027/0221",
+     "ids": [
+      0,
+      7
+     ]
+    },
+    {
+     "bank": "a027/0224",
+     "ids": [
+      0,
+      5
+     ]
+    },
+    {
+     "bank": "a027/0242",
+     "ids": [
+      0,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0244",
+     "ids": [
+      0,
+      63
+     ]
+    },
+    {
+     "bank": "a027/0246",
+     "ids": [
+      0,
+      32
+     ]
+    },
+    {
+     "bank": "a027/0247",
+     "ids": [
+      0,
+      85
+     ]
+    },
+    {
+     "bank": "a027/0259",
+     "ids": [
+      0,
+      49
+     ]
+    },
+    {
+     "bank": "a027/0260",
+     "ids": [
+      0,
+      29
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV059",
+   "group": "3-other",
+   "status": "todo",
+   "strings": 523,
+   "labels": [
+    "a027/0265 no map",
+    "a027/0272 no map",
+    "a027/0273 no map",
+    "a027/0274 no map",
+    "a027/0291 no map",
+    "a027/0293 no map"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0265",
+     "ids": [
+      0,
+      33
+     ]
+    },
+    {
+     "bank": "a027/0272",
+     "ids": [
+      1,
+      234
+     ]
+    },
+    {
+     "bank": "a027/0273",
+     "ids": [
+      0,
+      76
+     ]
+    },
+    {
+     "bank": "a027/0274",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0291",
+     "ids": [
+      0,
+      5
+     ]
+    },
+    {
+     "bank": "a027/0293",
+     "ids": [
+      0,
+      196
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV060",
+   "group": "3-other",
+   "status": "todo",
+   "strings": 162,
+   "labels": [
+    "a027/0295 no map",
+    "a027/0361 no map",
+    "a027/0416 no map"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0295",
+     "ids": [
+      4,
+      196
+     ]
+    },
+    {
+     "bank": "a027/0361",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0416",
+     "ids": [
+      1,
+      11
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV061",
+   "group": "3-other",
+   "status": "todo",
+   "strings": 554,
+   "labels": [
+    "a027/0417 no map",
+    "a027/0428 no map",
+    "a027/0432 no map",
+    "a027/0435 no map",
+    "a027/0436 no map",
+    "a027/0437 no map",
+    "a027/0438 no map",
+    "a027/0709 no map"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0417",
+     "ids": [
+      0,
+      402
+     ]
+    },
+    {
+     "bank": "a027/0428",
+     "ids": [
+      0,
+      49
+     ]
+    },
+    {
+     "bank": "a027/0432",
+     "ids": [
+      0,
+      50
+     ]
+    },
+    {
+     "bank": "a027/0435",
+     "ids": [
+      0,
+      20
+     ]
+    },
+    {
+     "bank": "a027/0436",
+     "ids": [
+      0,
+      8
+     ]
+    },
+    {
+     "bank": "a027/0437",
+     "ids": [
+      0,
+      27
+     ]
+    },
+    {
+     "bank": "a027/0438",
+     "ids": [
+      0,
+      1
+     ]
+    },
+    {
+     "bank": "a027/0709",
+     "ids": [
+      0,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV062",
+   "group": "3-other",
+   "status": "todo",
+   "strings": 404,
+   "labels": [
+    "a027/0715 no map",
+    "a027/0717 no map",
+    "a027/0736 no map",
+    "a027/0737 no map",
+    "a027/0790 no map",
+    "a027/0814 no map",
+    "a027/0815 no map",
+    "a027/0816 no map"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0715",
+     "ids": [
+      0,
+      129
+     ]
+    },
+    {
+     "bank": "a027/0717",
+     "ids": [
+      1,
+      18
+     ]
+    },
+    {
+     "bank": "a027/0736",
+     "ids": [
+      0,
+      39
+     ]
+    },
+    {
+     "bank": "a027/0737",
+     "ids": [
+      2,
+      40
+     ]
+    },
+    {
+     "bank": "a027/0790",
+     "ids": [
+      0,
+      211
+     ]
+    },
+    {
+     "bank": "a027/0814",
+     "ids": [
+      0,
+      30
+     ]
+    },
+    {
+     "bank": "a027/0815",
+     "ids": [
+      1,
+      16
+     ]
+    },
+    {
+     "bank": "a027/0816",
+     "ids": [
+      0,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV063",
+   "group": "4-trainer",
+   "status": "todo",
+   "strings": 427,
+   "labels": [
+    "a027/0718 trainer_battle_text [part 1/4]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0718",
+     "ids": [
+      0,
+      426
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV064",
+   "group": "4-trainer",
+   "status": "todo",
+   "strings": 427,
+   "labels": [
+    "a027/0718 trainer_battle_text [part 2/4]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0718",
+     "ids": [
+      427,
+      853
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV065",
+   "group": "4-trainer",
+   "status": "todo",
+   "strings": 427,
+   "labels": [
+    "a027/0718 trainer_battle_text [part 3/4]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0718",
+     "ids": [
+      854,
+      1282
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV066",
+   "group": "4-trainer",
+   "status": "todo",
+   "strings": 424,
+   "labels": [
+    "a027/0718 trainer_battle_text [part 4/4]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0718",
+     "ids": [
+      1283,
+      1716
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV067",
+   "group": "4-trainer",
+   "status": "todo",
+   "strings": 380,
+   "labels": [
+    "a027/0258 walking_pokemon_reactions [part 1/2]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0258",
+     "ids": [
+      0,
+      379
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV068",
+   "group": "4-trainer",
+   "status": "todo",
+   "strings": 379,
+   "labels": [
+    "a027/0258 walking_pokemon_reactions [part 2/2]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0258",
+     "ids": [
+      380,
+      758
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV069",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 550,
+   "labels": [
+    "a027/0014 std_script + tv_news",
+    "a027/0018 std_script + tv_news",
+    "a027/0019 std_script + tv_news",
+    "a027/0022 std_script + tv_news",
+    "a027/0029 std_script + tv_news",
+    "a027/0202 std_script + tv_news",
+    "a027/0233 std_script + tv_news",
+    "a027/0239 std_script + tv_news",
+    "a027/0261 std_script + tv_news",
+    "a027/0305 std_script + tv_news",
+    "a027/0420 std_script + tv_news",
+    "a027/0426 std_script + tv_news",
+    "a027/0716 std_script + tv_news",
+    "a027/0234 tv_news",
+    "a027/0235 tv_news",
+    "a027/0236 tv_news",
+    "a027/0237 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0238 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0262 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0263 tv_news + pokegear_radio_map + pokegear_phone"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0014",
+     "ids": [
+      0,
+      27
+     ]
+    },
+    {
+     "bank": "a027/0018",
+     "ids": [
+      0,
+      55
+     ]
+    },
+    {
+     "bank": "a027/0019",
+     "ids": [
+      0,
+      7
+     ]
+    },
+    {
+     "bank": "a027/0022",
+     "ids": [
+      0,
+      7
+     ]
+    },
+    {
+     "bank": "a027/0029",
+     "ids": [
+      0,
+      10
+     ]
+    },
+    {
+     "bank": "a027/0202",
+     "ids": [
+      0,
+      27
+     ]
+    },
+    {
+     "bank": "a027/0233",
+     "ids": [
+      0,
+      56
+     ]
+    },
+    {
+     "bank": "a027/0239",
+     "ids": [
+      0,
+      87
+     ]
+    },
+    {
+     "bank": "a027/0261",
+     "ids": [
+      0,
+      8
+     ]
+    },
+    {
+     "bank": "a027/0305",
+     "ids": [
+      0,
+      62
+     ]
+    },
+    {
+     "bank": "a027/0420",
+     "ids": [
+      0,
+      10
+     ]
+    },
+    {
+     "bank": "a027/0426",
+     "ids": [
+      0,
+      15
+     ]
+    },
+    {
+     "bank": "a027/0716",
+     "ids": [
+      0,
+      2
+     ]
+    },
+    {
+     "bank": "a027/0234",
+     "ids": [
+      0,
+      39
+     ]
+    },
+    {
+     "bank": "a027/0235",
+     "ids": [
+      0,
+      10
+     ]
+    },
+    {
+     "bank": "a027/0236",
+     "ids": [
+      0,
+      55
+     ]
+    },
+    {
+     "bank": "a027/0237",
+     "ids": [
+      0,
+      28
+     ]
+    },
+    {
+     "bank": "a027/0238",
+     "ids": [
+      0,
+      15
+     ]
+    },
+    {
+     "bank": "a027/0262",
+     "ids": [
+      0,
+      28
+     ]
+    },
+    {
+     "bank": "a027/0263",
+     "ids": [
+      0,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV070",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 554,
+   "labels": [
+    "a027/0264 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0266 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0402 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0403 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0404 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0405 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0406 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0407 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0408 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0409 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0410 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0411 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0412 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0413 tv_news + pokegear_radio_map + pokegear_phone",
+    "a027/0631 pokegear_phone",
+    "a027/0632 pokegear_phone",
+    "a027/0633 pokegear_phone",
+    "a027/0634 pokegear_phone",
+    "a027/0635 pokegear_phone",
+    "a027/0636 pokegear_phone",
+    "a027/0637 pokegear_phone",
+    "a027/0638 pokegear_phone",
+    "a027/0639 pokegear_phone",
+    "a027/0640 pokegear_phone"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0264",
+     "ids": [
+      0,
+      44
+     ]
+    },
+    {
+     "bank": "a027/0266",
+     "ids": [
+      0,
+      117
+     ]
+    },
+    {
+     "bank": "a027/0402",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0403",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0404",
+     "ids": [
+      0,
+      5
+     ]
+    },
+    {
+     "bank": "a027/0405",
+     "ids": [
+      0,
+      37
+     ]
+    },
+    {
+     "bank": "a027/0406",
+     "ids": [
+      0,
+      25
+     ]
+    },
+    {
+     "bank": "a027/0407",
+     "ids": [
+      0,
+      32
+     ]
+    },
+    {
+     "bank": "a027/0408",
+     "ids": [
+      0,
+      23
+     ]
+    },
+    {
+     "bank": "a027/0409",
+     "ids": [
+      0,
+      12
+     ]
+    },
+    {
+     "bank": "a027/0410",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0411",
+     "ids": [
+      0,
+      2
+     ]
+    },
+    {
+     "bank": "a027/0412",
+     "ids": [
+      0,
+      16
+     ]
+    },
+    {
+     "bank": "a027/0413",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0631",
+     "ids": [
+      0,
+      77
+     ]
+    },
+    {
+     "bank": "a027/0632",
+     "ids": [
+      0,
+      36
+     ]
+    },
+    {
+     "bank": "a027/0633",
+     "ids": [
+      0,
+      3
+     ]
+    },
+    {
+     "bank": "a027/0634",
+     "ids": [
+      0,
+      6
+     ]
+    },
+    {
+     "bank": "a027/0635",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0636",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0637",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0638",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0639",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0640",
+     "ids": [
+      0,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV071",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 535,
+   "labels": [
+    "a027/0641 pokegear_phone",
+    "a027/0642 pokegear_phone",
+    "a027/0643 pokegear_phone",
+    "a027/0644 pokegear_phone",
+    "a027/0645 pokegear_phone",
+    "a027/0646 pokegear_phone",
+    "a027/0647 pokegear_phone",
+    "a027/0648 pokegear_phone",
+    "a027/0649 pokegear_phone",
+    "a027/0650 pokegear_phone",
+    "a027/0651 pokegear_phone",
+    "a027/0652 pokegear_phone",
+    "a027/0653 pokegear_phone",
+    "a027/0654 pokegear_phone",
+    "a027/0655 pokegear_phone",
+    "a027/0656 pokegear_phone"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0641",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0642",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0643",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0644",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0645",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0646",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0647",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0648",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0649",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0650",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0651",
+     "ids": [
+      0,
+      10
+     ]
+    },
+    {
+     "bank": "a027/0652",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0653",
+     "ids": [
+      0,
+      158
+     ]
+    },
+    {
+     "bank": "a027/0654",
+     "ids": [
+      0,
+      158
+     ]
+    },
+    {
+     "bank": "a027/0655",
+     "ids": [
+      0,
+      29
+     ]
+    },
+    {
+     "bank": "a027/0656",
+     "ids": [
+      0,
+      11
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV072",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 546,
+   "labels": [
+    "a027/0658 pokegear_phone",
+    "a027/0659 pokegear_phone",
+    "a027/0660 pokegear_phone",
+    "a027/0661 pokegear_phone",
+    "a027/0662 pokegear_phone",
+    "a027/0663 pokegear_phone",
+    "a027/0664 pokegear_phone",
+    "a027/0665 pokegear_phone",
+    "a027/0666 pokegear_phone",
+    "a027/0667 pokegear_phone",
+    "a027/0668 pokegear_phone",
+    "a027/0669 pokegear_phone",
+    "a027/0670 pokegear_phone",
+    "a027/0671 pokegear_phone",
+    "a027/0672 pokegear_phone",
+    "a027/0673 pokegear_phone",
+    "a027/0674 pokegear_phone",
+    "a027/0675 pokegear_phone",
+    "a027/0676 pokegear_phone",
+    "a027/0677 pokegear_phone",
+    "a027/0678 pokegear_phone",
+    "a027/0679 pokegear_phone",
+    "a027/0680 pokegear_phone",
+    "a027/0681 pokegear_phone",
+    "a027/0682 pokegear_phone",
+    "a027/0000 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0001 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0002 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0004 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0011 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0012 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0683 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0684 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0685 pokegear_phone + tv_news + side_features_minigames"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0658",
+     "ids": [
+      0,
+      41
+     ]
+    },
+    {
+     "bank": "a027/0659",
+     "ids": [
+      0,
+      7
+     ]
+    },
+    {
+     "bank": "a027/0660",
+     "ids": [
+      0,
+      21
+     ]
+    },
+    {
+     "bank": "a027/0661",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0662",
+     "ids": [
+      0,
+      15
+     ]
+    },
+    {
+     "bank": "a027/0663",
+     "ids": [
+      0,
+      12
+     ]
+    },
+    {
+     "bank": "a027/0664",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0665",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0666",
+     "ids": [
+      0,
+      12
+     ]
+    },
+    {
+     "bank": "a027/0667",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0668",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0669",
+     "ids": [
+      0,
+      12
+     ]
+    },
+    {
+     "bank": "a027/0670",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0671",
+     "ids": [
+      0,
+      30
+     ]
+    },
+    {
+     "bank": "a027/0672",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0673",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0674",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0675",
+     "ids": [
+      0,
+      16
+     ]
+    },
+    {
+     "bank": "a027/0676",
+     "ids": [
+      0,
+      22
+     ]
+    },
+    {
+     "bank": "a027/0677",
+     "ids": [
+      0,
+      12
+     ]
+    },
+    {
+     "bank": "a027/0678",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0679",
+     "ids": [
+      0,
+      23
+     ]
+    },
+    {
+     "bank": "a027/0680",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0681",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0682",
+     "ids": [
+      0,
+      40
+     ]
+    },
+    {
+     "bank": "a027/0000",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0001",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0002",
+     "ids": [
+      0,
+      5
+     ]
+    },
+    {
+     "bank": "a027/0004",
+     "ids": [
+      0,
+      5
+     ]
+    },
+    {
+     "bank": "a027/0011",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0012",
+     "ids": [
+      3,
+      3
+     ]
+    },
+    {
+     "bank": "a027/0683",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0684",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0685",
+     "ids": [
+      0,
+      13
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV073",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 363,
+   "labels": [
+    "a027/0686 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0687 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0688 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0689 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0690 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0691 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0692 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0693 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0694 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0695 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0696 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0697 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0698 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0699 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0700 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0701 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0702 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0703 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0704 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0705 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0706 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0707 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0708 pokegear_phone + tv_news + side_features_minigames",
+    "a027/0723 pokegear_phone + tv_news + side_features_minigames"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0686",
+     "ids": [
+      0,
+      15
+     ]
+    },
+    {
+     "bank": "a027/0687",
+     "ids": [
+      0,
+      12
+     ]
+    },
+    {
+     "bank": "a027/0688",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0689",
+     "ids": [
+      0,
+      12
+     ]
+    },
+    {
+     "bank": "a027/0690",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0691",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0692",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0693",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0694",
+     "ids": [
+      0,
+      12
+     ]
+    },
+    {
+     "bank": "a027/0695",
+     "ids": [
+      0,
+      24
+     ]
+    },
+    {
+     "bank": "a027/0696",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0697",
+     "ids": [
+      0,
+      12
+     ]
+    },
+    {
+     "bank": "a027/0698",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0699",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0700",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0701",
+     "ids": [
+      0,
+      12
+     ]
+    },
+    {
+     "bank": "a027/0702",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0703",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0704",
+     "ids": [
+      0,
+      10
+     ]
+    },
+    {
+     "bank": "a027/0705",
+     "ids": [
+      0,
+      10
+     ]
+    },
+    {
+     "bank": "a027/0706",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0707",
+     "ids": [
+      0,
+      44
+     ]
+    },
+    {
+     "bank": "a027/0708",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0723",
+     "ids": [
+      0,
+      34
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV074",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 554,
+   "labels": [
+    "a027/0013 side_features_minigames + battle_frontier",
+    "a027/0015 side_features_minigames + battle_frontier",
+    "a027/0017 side_features_minigames + battle_frontier",
+    "a027/0020 side_features_minigames + battle_frontier",
+    "a027/0021 side_features_minigames + battle_frontier"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0013",
+     "ids": [
+      0,
+      332
+     ]
+    },
+    {
+     "bank": "a027/0015",
+     "ids": [
+      1,
+      80
+     ]
+    },
+    {
+     "bank": "a027/0017",
+     "ids": [
+      0,
+      34
+     ]
+    },
+    {
+     "bank": "a027/0020",
+     "ids": [
+      0,
+      133
+     ]
+    },
+    {
+     "bank": "a027/0021",
+     "ids": [
+      0,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV075",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 553,
+   "labels": [
+    "a027/0025 battle_frontier",
+    "a027/0026 battle_frontier",
+    "a027/0027 battle_frontier",
+    "a027/0028 battle_frontier",
+    "a027/0030 battle_frontier",
+    "a027/0031 battle_frontier"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0025",
+     "ids": [
+      0,
+      91
+     ]
+    },
+    {
+     "bank": "a027/0026",
+     "ids": [
+      0,
+      314
+     ]
+    },
+    {
+     "bank": "a027/0027",
+     "ids": [
+      0,
+      34
+     ]
+    },
+    {
+     "bank": "a027/0028",
+     "ids": [
+      0,
+      3
+     ]
+    },
+    {
+     "bank": "a027/0030",
+     "ids": [
+      5,
+      107
+     ]
+    },
+    {
+     "bank": "a027/0031",
+     "ids": [
+      0,
+      57
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV076",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 552,
+   "labels": [
+    "a027/0032 battle_frontier + side_features_minigames",
+    "a027/0036 battle_frontier + side_features_minigames",
+    "a027/0037 battle_frontier + side_features_minigames",
+    "a027/0040 battle_frontier + side_features_minigames",
+    "a027/0180 battle_frontier + side_features_minigames",
+    "a027/0181 battle_frontier + side_features_minigames",
+    "a027/0184 battle_frontier + side_features_minigames",
+    "a027/0186 battle_frontier + side_features_minigames",
+    "a027/0190 battle_frontier + side_features_minigames",
+    "a027/0192 battle_frontier + side_features_minigames",
+    "a027/0193 battle_frontier + side_features_minigames",
+    "a027/0200 battle_frontier + side_features_minigames",
+    "a027/0204 battle_frontier + side_features_minigames",
+    "a027/0205 battle_frontier + side_features_minigames",
+    "a027/0211 battle_frontier + side_features_minigames",
+    "a027/0212 battle_frontier + side_features_minigames",
+    "a027/0213 battle_frontier + side_features_minigames"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0032",
+     "ids": [
+      4,
+      95
+     ]
+    },
+    {
+     "bank": "a027/0036",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0037",
+     "ids": [
+      0,
+      3
+     ]
+    },
+    {
+     "bank": "a027/0040",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0180",
+     "ids": [
+      0,
+      165
+     ]
+    },
+    {
+     "bank": "a027/0181",
+     "ids": [
+      0,
+      49
+     ]
+    },
+    {
+     "bank": "a027/0184",
+     "ids": [
+      0,
+      16
+     ]
+    },
+    {
+     "bank": "a027/0186",
+     "ids": [
+      0,
+      58
+     ]
+    },
+    {
+     "bank": "a027/0190",
+     "ids": [
+      0,
+      24
+     ]
+    },
+    {
+     "bank": "a027/0192",
+     "ids": [
+      0,
+      25
+     ]
+    },
+    {
+     "bank": "a027/0193",
+     "ids": [
+      0,
+      39
+     ]
+    },
+    {
+     "bank": "a027/0200",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0204",
+     "ids": [
+      0,
+      12
+     ]
+    },
+    {
+     "bank": "a027/0205",
+     "ids": [
+      2,
+      20
+     ]
+    },
+    {
+     "bank": "a027/0211",
+     "ids": [
+      0,
+      41
+     ]
+    },
+    {
+     "bank": "a027/0212",
+     "ids": [
+      0,
+      3
+     ]
+    },
+    {
+     "bank": "a027/0213",
+     "ids": [
+      0,
+      47
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV077",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 488,
+   "labels": [
+    "a027/0214 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0215 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0222 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0223 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0225 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0226 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0227 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0228 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0229 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0230 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0231 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0240 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0241 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0245 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0257 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0269 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0270 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0271 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0275 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0276 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0277 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0278 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0279 side_features_minigames + mail + pokeathlon + easy_chat_words"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0214",
+     "ids": [
+      0,
+      99
+     ]
+    },
+    {
+     "bank": "a027/0215",
+     "ids": [
+      0,
+      17
+     ]
+    },
+    {
+     "bank": "a027/0222",
+     "ids": [
+      0,
+      34
+     ]
+    },
+    {
+     "bank": "a027/0223",
+     "ids": [
+      0,
+      15
+     ]
+    },
+    {
+     "bank": "a027/0225",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0226",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0227",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0228",
+     "ids": [
+      0,
+      3
+     ]
+    },
+    {
+     "bank": "a027/0229",
+     "ids": [
+      0,
+      2
+     ]
+    },
+    {
+     "bank": "a027/0230",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0231",
+     "ids": [
+      0,
+      23
+     ]
+    },
+    {
+     "bank": "a027/0240",
+     "ids": [
+      0,
+      82
+     ]
+    },
+    {
+     "bank": "a027/0241",
+     "ids": [
+      0,
+      28
+     ]
+    },
+    {
+     "bank": "a027/0245",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0257",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0269",
+     "ids": [
+      4,
+      4
+     ]
+    },
+    {
+     "bank": "a027/0270",
+     "ids": [
+      4,
+      32
+     ]
+    },
+    {
+     "bank": "a027/0271",
+     "ids": [
+      1,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0275",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0276",
+     "ids": [
+      0,
+      14
+     ]
+    },
+    {
+     "bank": "a027/0277",
+     "ids": [
+      0,
+      2
+     ]
+    },
+    {
+     "bank": "a027/0278",
+     "ids": [
+      0,
+      37
+     ]
+    },
+    {
+     "bank": "a027/0279",
+     "ids": [
+      0,
+      37
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV078",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 545,
+   "labels": [
+    "a027/0280 side_features_minigames + mail + pokeathlon + easy_chat_words",
+    "a027/0281 easy_chat_words + side_features_minigames",
+    "a027/0282 easy_chat_words + side_features_minigames",
+    "a027/0283 easy_chat_words + side_features_minigames",
+    "a027/0284 easy_chat_words + side_features_minigames",
+    "a027/0285 easy_chat_words + side_features_minigames",
+    "a027/0286 easy_chat_words + side_features_minigames",
+    "a027/0287 easy_chat_words + side_features_minigames",
+    "a027/0288 easy_chat_words + side_features_minigames",
+    "a027/0289 easy_chat_words + side_features_minigames",
+    "a027/0290 easy_chat_words + side_features_minigames"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0280",
+     "ids": [
+      0,
+      105
+     ]
+    },
+    {
+     "bank": "a027/0281",
+     "ids": [
+      0,
+      103
+     ]
+    },
+    {
+     "bank": "a027/0282",
+     "ids": [
+      0,
+      46
+     ]
+    },
+    {
+     "bank": "a027/0283",
+     "ids": [
+      0,
+      31
+     ]
+    },
+    {
+     "bank": "a027/0284",
+     "ids": [
+      0,
+      22
+     ]
+    },
+    {
+     "bank": "a027/0285",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0286",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0287",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0288",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0289",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0290",
+     "ids": [
+      0,
+      142
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV079",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 547,
+   "labels": [
+    "a027/0294 easy_chat_words + side_features_minigames",
+    "a027/0296 easy_chat_words + side_features_minigames",
+    "a027/0297 easy_chat_words + side_features_minigames",
+    "a027/0298 easy_chat_words + side_features_minigames",
+    "a027/0299 easy_chat_words + side_features_minigames",
+    "a027/0300 easy_chat_words + side_features_minigames",
+    "a027/0301 easy_chat_words + side_features_minigames",
+    "a027/0302 pokeathlon + side_features_minigames",
+    "a027/0303 pokeathlon + side_features_minigames",
+    "a027/0304 pokeathlon + side_features_minigames",
+    "a027/0306 pokeathlon + side_features_minigames"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0294",
+     "ids": [
+      0,
+      46
+     ]
+    },
+    {
+     "bank": "a027/0296",
+     "ids": [
+      0,
+      6
+     ]
+    },
+    {
+     "bank": "a027/0297",
+     "ids": [
+      0,
+      24
+     ]
+    },
+    {
+     "bank": "a027/0298",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0299",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0300",
+     "ids": [
+      0,
+      24
+     ]
+    },
+    {
+     "bank": "a027/0301",
+     "ids": [
+      0,
+      10
+     ]
+    },
+    {
+     "bank": "a027/0302",
+     "ids": [
+      0,
+      311
+     ]
+    },
+    {
+     "bank": "a027/0303",
+     "ids": [
+      0,
+      49
+     ]
+    },
+    {
+     "bank": "a027/0304",
+     "ids": [
+      0,
+      49
+     ]
+    },
+    {
+     "bank": "a027/0306",
+     "ids": [
+      0,
+      29
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV080",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 549,
+   "labels": [
+    "a027/0307 pokeathlon + side_features_minigames",
+    "a027/0308 pokeathlon + side_features_minigames",
+    "a027/0309 pokeathlon + side_features_minigames",
+    "a027/0310 pokeathlon + side_features_minigames",
+    "a027/0311 side_features_minigames + battle_frontier",
+    "a027/0414 side_features_minigames + battle_frontier",
+    "a027/0415 side_features_minigames + battle_frontier",
+    "a027/0418 side_features_minigames + battle_frontier",
+    "a027/0419 side_features_minigames + battle_frontier",
+    "a027/0421 side_features_minigames + battle_frontier",
+    "a027/0422 side_features_minigames + battle_frontier",
+    "a027/0423 side_features_minigames + battle_frontier",
+    "a027/0424 side_features_minigames + battle_frontier",
+    "a027/0425 side_features_minigames + battle_frontier",
+    "a027/0427 side_features_minigames + battle_frontier"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0307",
+     "ids": [
+      0,
+      128
+     ]
+    },
+    {
+     "bank": "a027/0308",
+     "ids": [
+      0,
+      2
+     ]
+    },
+    {
+     "bank": "a027/0309",
+     "ids": [
+      0,
+      21
+     ]
+    },
+    {
+     "bank": "a027/0310",
+     "ids": [
+      0,
+      25
+     ]
+    },
+    {
+     "bank": "a027/0311",
+     "ids": [
+      0,
+      28
+     ]
+    },
+    {
+     "bank": "a027/0414",
+     "ids": [
+      0,
+      72
+     ]
+    },
+    {
+     "bank": "a027/0415",
+     "ids": [
+      2,
+      22
+     ]
+    },
+    {
+     "bank": "a027/0418",
+     "ids": [
+      0,
+      22
+     ]
+    },
+    {
+     "bank": "a027/0419",
+     "ids": [
+      0,
+      80
+     ]
+    },
+    {
+     "bank": "a027/0421",
+     "ids": [
+      0,
+      11
+     ]
+    },
+    {
+     "bank": "a027/0422",
+     "ids": [
+      0,
+      27
+     ]
+    },
+    {
+     "bank": "a027/0423",
+     "ids": [
+      0,
+      61
+     ]
+    },
+    {
+     "bank": "a027/0424",
+     "ids": [
+      0,
+      2
+     ]
+    },
+    {
+     "bank": "a027/0425",
+     "ids": [
+      0,
+      12
+     ]
+    },
+    {
+     "bank": "a027/0427",
+     "ids": [
+      0,
+      51
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV081",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 522,
+   "labels": [
+    "a027/0429 side_features_minigames + battle_frontier",
+    "a027/0434 side_features_minigames + battle_frontier",
+    "a027/0629 side_features_minigames + battle_frontier",
+    "a027/0630 side_features_minigames + battle_frontier",
+    "a027/0713 battle_frontier_trainer_text [part 1/2]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0429",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0434",
+     "ids": [
+      0,
+      37
+     ]
+    },
+    {
+     "bank": "a027/0629",
+     "ids": [
+      0,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0630",
+     "ids": [
+      0,
+      4
+     ]
+    },
+    {
+     "bank": "a027/0713",
+     "ids": [
+      0,
+      461
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV082",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 457,
+   "labels": [
+    "a027/0713 battle_frontier_trainer_text [part 2/2]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0713",
+     "ids": [
+      462,
+      920
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV083",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 463,
+   "labels": [
+    "a027/0714 battle_frontier_trainer_text [part 1/2]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0714",
+     "ids": [
+      0,
+      462
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV084",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 539,
+   "labels": [
+    "a027/0714 battle_frontier_trainer_text [part 2/2]",
+    "a027/0076 battle_frontier_trainer_text + side_features_minigames + map_bank_unreferenced",
+    "a027/0095 battle_frontier_trainer_text + side_features_minigames + map_bank_unreferenced",
+    "a027/0096 battle_frontier_trainer_text + side_features_minigames + map_bank_unreferenced",
+    "a027/0104 battle_frontier_trainer_text + side_features_minigames + map_bank_unreferenced",
+    "a027/0565 battle_frontier_trainer_text + side_features_minigames + map_bank_unreferenced",
+    "a027/0612 battle_frontier_trainer_text + side_features_minigames + map_bank_unreferenced"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0714",
+     "ids": [
+      463,
+      944
+     ]
+    },
+    {
+     "bank": "a027/0076",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0095",
+     "ids": [
+      0,
+      22
+     ]
+    },
+    {
+     "bank": "a027/0096",
+     "ids": [
+      0,
+      16
+     ]
+    },
+    {
+     "bank": "a027/0104",
+     "ids": [
+      0,
+      32
+     ]
+    },
+    {
+     "bank": "a027/0565",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0612",
+     "ids": [
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV085",
+   "group": "5-nonmap",
+   "status": "todo",
+   "strings": 60,
+   "labels": [
+    "a027/0740 battle_frontier_trainer_text + side_features_minigames + map_bank_unreferenced",
+    "a027/0789 battle_frontier_trainer_text + side_features_minigames + map_bank_unreferenced"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0740",
+     "ids": [
+      0,
+      55
+     ]
+    },
+    {
+     "bank": "a027/0789",
+     "ids": [
+      0,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV086",
+   "group": "6-desc",
+   "status": "todo",
+   "strings": 451,
+   "labels": [
+    "a027/0738 move_descriptions [part 1/2]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0738",
+     "ids": [
+      1,
+      451
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV087",
+   "group": "6-desc",
+   "status": "todo",
+   "strings": 451,
+   "labels": [
+    "a027/0738 move_descriptions [part 2/2]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0738",
+     "ids": [
+      452,
+      920
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV088",
+   "group": "6-desc",
+   "status": "todo",
+   "strings": 378,
+   "labels": [
+    "a027/0218 item_descriptions [part 1/2]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0218",
+     "ids": [
+      1,
+      399
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV089",
+   "group": "6-desc",
+   "status": "todo",
+   "strings": 442,
+   "labels": [
+    "a027/0218 item_descriptions [part 2/2]",
+    "a027/0243 item_descriptions + ability_descriptions + berry_descriptions"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0218",
+     "ids": [
+      400,
+      790
+     ]
+    },
+    {
+     "bank": "a027/0243",
+     "ids": [
+      0,
+      63
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV090",
+   "group": "6-desc",
+   "status": "todo",
+   "strings": 327,
+   "labels": [
+    "a027/0712 item_descriptions + ability_descriptions + berry_descriptions"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0712",
+     "ids": [
+      1,
+      327
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV091",
+   "group": "6-desc",
+   "status": "todo",
+   "strings": 480,
+   "labels": [
+    "a027/0791 pokedex_entries_hg [part 1/3]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0791",
+     "ids": [
+      1,
+      480
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV092",
+   "group": "6-desc",
+   "status": "todo",
+   "strings": 480,
+   "labels": [
+    "a027/0791 pokedex_entries_hg [part 2/3]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0791",
+     "ids": [
+      481,
+      960
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV093",
+   "group": "6-desc",
+   "status": "todo",
+   "strings": 480,
+   "labels": [
+    "a027/0791 pokedex_entries_hg [part 3/3]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0791",
+     "ids": [
+      961,
+      1440
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV094",
+   "group": "7-battle",
+   "status": "todo",
+   "strings": 467,
+   "labels": [
+    "a027/0003 battle text [part 1/3]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0003",
+     "ids": [
+      3,
+      469
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV095",
+   "group": "7-battle",
+   "status": "todo",
+   "strings": 467,
+   "labels": [
+    "a027/0003 battle text [part 2/3]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0003",
+     "ids": [
+      470,
+      936
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV096",
+   "group": "7-battle",
+   "status": "todo",
+   "strings": 467,
+   "labels": [
+    "a027/0003 battle text [part 3/3]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0003",
+     "ids": [
+      937,
+      1403
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV097",
+   "group": "7-battle",
+   "status": "todo",
+   "strings": 425,
+   "labels": [
+    "a027/0195 battle text [part 1/3]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0195",
+     "ids": [
+      0,
+      425
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV098",
+   "group": "7-battle",
+   "status": "todo",
+   "strings": 425,
+   "labels": [
+    "a027/0195 battle text [part 2/3]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0195",
+     "ids": [
+      426,
+      850
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV099",
+   "group": "7-battle",
+   "status": "todo",
+   "strings": 425,
+   "labels": [
+    "a027/0195 battle text [part 3/3]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0195",
+     "ids": [
+      851,
+      1291
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV100",
+   "group": "7-battle",
+   "status": "todo",
+   "strings": 164,
+   "labels": [
+    "battle_string/0000 battle text"
+   ],
+   "parts": [
+    {
+     "bank": "battle_string/0000",
+     "ids": [
+      0,
+      163
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV101",
+   "group": "7-battle",
+   "status": "todo",
+   "strings": 442,
+   "labels": [
+    "battle_string/0001 battle text [part 1/5]"
+   ],
+   "parts": [
+    {
+     "bank": "battle_string/0001",
+     "ids": [
+      0,
+      441
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV102",
+   "group": "7-battle",
+   "status": "todo",
+   "strings": 442,
+   "labels": [
+    "battle_string/0001 battle text [part 2/5]"
+   ],
+   "parts": [
+    {
+     "bank": "battle_string/0001",
+     "ids": [
+      442,
+      883
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV103",
+   "group": "7-battle",
+   "status": "todo",
+   "strings": 442,
+   "labels": [
+    "battle_string/0001 battle text [part 3/5]"
+   ],
+   "parts": [
+    {
+     "bank": "battle_string/0001",
+     "ids": [
+      884,
+      1325
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV104",
+   "group": "7-battle",
+   "status": "todo",
+   "strings": 442,
+   "labels": [
+    "battle_string/0001 battle text [part 4/5]"
+   ],
+   "parts": [
+    {
+     "bank": "battle_string/0001",
+     "ids": [
+      1326,
+      1767
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV105",
+   "group": "7-battle",
+   "status": "todo",
+   "strings": 439,
+   "labels": [
+    "battle_string/0001 battle text [part 5/5]"
+   ],
+   "parts": [
+    {
+     "bank": "battle_string/0001",
+     "ids": [
+      1768,
+      2206
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV106",
+   "group": "7-battle",
+   "status": "todo",
+   "strings": 499,
+   "labels": [
+    "battle_string/0002 battle text",
+    "battle_string/0003 battle text"
+   ],
+   "parts": [
+    {
+     "bank": "battle_string/0002",
+     "ids": [
+      0,
+      486
+     ]
+    },
+    {
+     "bank": "battle_string/0003",
+     "ids": [
+      0,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV107",
+   "group": "8-names",
+   "status": "todo",
+   "strings": 49,
+   "labels": [
+    "a027/0033 names",
+    "a027/0183 names"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0033",
+     "ids": [
+      0,
+      24
+     ]
+    },
+    {
+     "bank": "a027/0183",
+     "ids": [
+      0,
+      23
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV108",
+   "group": "8-names",
+   "status": "todo",
+   "strings": 768,
+   "labels": [
+    "a027/0219 names"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0219",
+     "ids": [
+      0,
+      790
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV109",
+   "group": "8-names",
+   "status": "todo",
+   "strings": 1438,
+   "labels": [
+    "a027/0232 names"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0232",
+     "ids": [
+      1,
+      1438
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV110",
+   "group": "8-names",
+   "status": "todo",
+   "strings": 326,
+   "labels": [
+    "a027/0711 names"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0711",
+     "ids": [
+      1,
+      326
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV111",
+   "group": "8-names",
+   "status": "todo",
+   "strings": 1007,
+   "labels": [
+    "a027/0719 names"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0719",
+     "ids": [
+      1,
+      1023
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV112",
+   "group": "8-names",
+   "status": "todo",
+   "strings": 145,
+   "labels": [
+    "a027/0720 names",
+    "a027/0724 names"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0720",
+     "ids": [
+      0,
+      128
+     ]
+    },
+    {
+     "bank": "a027/0724",
+     "ids": [
+      0,
+      17
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV113",
+   "group": "8-names",
+   "status": "todo",
+   "strings": 902,
+   "labels": [
+    "a027/0739 names"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0739",
+     "ids": [
+      1,
+      920
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV114",
+   "group": "8-names",
+   "status": "todo",
+   "strings": 1441,
+   "labels": [
+    "a027/0803 names"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0803",
+     "ids": [
+      0,
+      1440
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV115",
+   "group": "9-unused",
+   "status": "todo",
+   "strings": 519,
+   "labels": [
+    "a027/0792 pokedex_entries_ss",
+    "a027/0039 pokedex_entries_platinum + link_wifi",
+    "a027/0203 pokedex_entries_platinum + link_wifi",
+    "a027/0210 pokedex_entries_platinum + link_wifi",
+    "a027/0725 pokedex_entries_platinum + link_wifi"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0792",
+     "ids": [
+      1,
+      493
+     ]
+    },
+    {
+     "bank": "a027/0039",
+     "ids": [
+      0,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0203",
+     "ids": [
+      0,
+      13
+     ]
+    },
+    {
+     "bank": "a027/0210",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0725",
+     "ids": [
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV116",
+   "group": "9-unused",
+   "status": "todo",
+   "strings": 493,
+   "labels": [
+    "a027/0798 pokedex_entries_platinum + link_wifi"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0798",
+     "ids": [
+      1,
+      493
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV117",
+   "group": "9-unused",
+   "status": "todo",
+   "strings": 544,
+   "labels": [
+    "a027/0726 link_wifi",
+    "a027/0727 link_wifi",
+    "a027/0728 link_wifi",
+    "a027/0741 link_wifi",
+    "a027/0742 link_wifi",
+    "a027/0743 link_wifi"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0726",
+     "ids": [
+      0,
+      278
+     ]
+    },
+    {
+     "bank": "a027/0727",
+     "ids": [
+      0,
+      219
+     ]
+    },
+    {
+     "bank": "a027/0728",
+     "ids": [
+      0,
+      45
+     ]
+    },
+    {
+     "bank": "a027/0741",
+     "ids": [
+      0,
+      2
+     ]
+    },
+    {
+     "bank": "a027/0742",
+     "ids": [
+      1,
+      3
+     ]
+    },
+    {
+     "bank": "a027/0743",
+     "ids": [
+      0,
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV118",
+   "group": "9-unused",
+   "status": "todo",
+   "strings": 294,
+   "labels": [
+    "a027/0744 link_wifi",
+    "a027/0745 link_wifi",
+    "a027/0746 link_wifi",
+    "a027/0747 link_wifi",
+    "a027/0748 link_wifi",
+    "a027/0749 link_wifi",
+    "a027/0750 link_wifi",
+    "a027/0751 link_wifi",
+    "a027/0752 link_wifi",
+    "a027/0753 link_wifi"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0744",
+     "ids": [
+      0,
+      26
+     ]
+    },
+    {
+     "bank": "a027/0745",
+     "ids": [
+      0,
+      28
+     ]
+    },
+    {
+     "bank": "a027/0746",
+     "ids": [
+      0,
+      49
+     ]
+    },
+    {
+     "bank": "a027/0747",
+     "ids": [
+      0,
+      49
+     ]
+    },
+    {
+     "bank": "a027/0748",
+     "ids": [
+      0,
+      49
+     ]
+    },
+    {
+     "bank": "a027/0749",
+     "ids": [
+      0,
+      49
+     ]
+    },
+    {
+     "bank": "a027/0750",
+     "ids": [
+      0,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0751",
+     "ids": [
+      0,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0752",
+     "ids": [
+      0,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0753",
+     "ids": [
+      0,
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV119",
+   "group": "9-unused",
+   "status": "todo",
+   "strings": 437,
+   "labels": [
+    "a027/0754 link_wifi [part 1/2]"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0754",
+     "ids": [
+      37,
+      473
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV120",
+   "group": "9-unused",
+   "status": "todo",
+   "strings": 468,
+   "labels": [
+    "a027/0754 link_wifi [part 2/2]",
+    "a027/0759 link_wifi",
+    "a027/0761 link_wifi",
+    "a027/0762 link_wifi"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0754",
+     "ids": [
+      474,
+      909
+     ]
+    },
+    {
+     "bank": "a027/0759",
+     "ids": [
+      0,
+      2
+     ]
+    },
+    {
+     "bank": "a027/0761",
+     "ids": [
+      0,
+      5
+     ]
+    },
+    {
+     "bank": "a027/0762",
+     "ids": [
+      0,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV121",
+   "group": "9-unused",
+   "status": "todo",
+   "strings": 559,
+   "labels": [
+    "a027/0763 link_wifi",
+    "a027/0764 link_wifi",
+    "a027/0765 link_wifi",
+    "a027/0766 link_wifi",
+    "a027/0767 link_wifi",
+    "a027/0768 link_wifi",
+    "a027/0769 link_wifi",
+    "a027/0770 link_wifi",
+    "a027/0771 link_wifi"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0763",
+     "ids": [
+      0,
+      234
+     ]
+    },
+    {
+     "bank": "a027/0764",
+     "ids": [
+      0,
+      36
+     ]
+    },
+    {
+     "bank": "a027/0765",
+     "ids": [
+      0,
+      124
+     ]
+    },
+    {
+     "bank": "a027/0766",
+     "ids": [
+      0,
+      145
+     ]
+    },
+    {
+     "bank": "a027/0767",
+     "ids": [
+      0,
+      66
+     ]
+    },
+    {
+     "bank": "a027/0768",
+     "ids": [
+      0,
+      24
+     ]
+    },
+    {
+     "bank": "a027/0769",
+     "ids": [
+      0,
+      7
+     ]
+    },
+    {
+     "bank": "a027/0770",
+     "ids": [
+      0,
+      27
+     ]
+    },
+    {
+     "bank": "a027/0771",
+     "ids": [
+      0,
+      13
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV122",
+   "group": "9-unused",
+   "status": "todo",
+   "strings": 524,
+   "labels": [
+    "a027/0772 link_wifi",
+    "a027/0773 link_wifi",
+    "a027/0774 link_wifi",
+    "a027/0775 link_wifi",
+    "a027/0776 link_wifi",
+    "a027/0777 link_wifi",
+    "a027/0778 link_wifi",
+    "a027/0779 link_wifi",
+    "a027/0780 link_wifi",
+    "a027/0781 link_wifi",
+    "a027/0782 link_wifi",
+    "a027/0783 link_wifi",
+    "a027/0784 link_wifi",
+    "a027/0149 link_wifi + debug_unused + debug_or_unlisted",
+    "a027/0150 link_wifi + debug_unused + debug_or_unlisted",
+    "a027/0151 link_wifi + debug_unused + debug_or_unlisted",
+    "a027/0152 link_wifi + debug_unused + debug_or_unlisted"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0772",
+     "ids": [
+      0,
+      31
+     ]
+    },
+    {
+     "bank": "a027/0773",
+     "ids": [
+      0,
+      16
+     ]
+    },
+    {
+     "bank": "a027/0774",
+     "ids": [
+      0,
+      17
+     ]
+    },
+    {
+     "bank": "a027/0775",
+     "ids": [
+      0,
+      6
+     ]
+    },
+    {
+     "bank": "a027/0776",
+     "ids": [
+      0,
+      22
+     ]
+    },
+    {
+     "bank": "a027/0777",
+     "ids": [
+      0,
+      12
+     ]
+    },
+    {
+     "bank": "a027/0778",
+     "ids": [
+      0,
+      35
+     ]
+    },
+    {
+     "bank": "a027/0779",
+     "ids": [
+      0,
+      20
+     ]
+    },
+    {
+     "bank": "a027/0780",
+     "ids": [
+      0,
+      50
+     ]
+    },
+    {
+     "bank": "a027/0781",
+     "ids": [
+      0,
+      20
+     ]
+    },
+    {
+     "bank": "a027/0782",
+     "ids": [
+      0,
+      16
+     ]
+    },
+    {
+     "bank": "a027/0783",
+     "ids": [
+      0,
+      7
+     ]
+    },
+    {
+     "bank": "a027/0784",
+     "ids": [
+      0,
+      24
+     ]
+    },
+    {
+     "bank": "a027/0149",
+     "ids": [
+      0,
+      46
+     ]
+    },
+    {
+     "bank": "a027/0150",
+     "ids": [
+      0,
+      3
+     ]
+    },
+    {
+     "bank": "a027/0151",
+     "ids": [
+      0,
+      20
+     ]
+    },
+    {
+     "bank": "a027/0152",
+     "ids": [
+      0,
+      235
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV123",
+   "group": "9-unused",
+   "status": "todo",
+   "strings": 529,
+   "labels": [
+    "a027/0785 link_wifi + debug_unused + debug_or_unlisted",
+    "a027/0786 link_wifi + debug_unused + debug_or_unlisted",
+    "a027/0787 link_wifi + debug_unused + debug_or_unlisted",
+    "a027/0788 link_wifi + debug_unused + debug_or_unlisted",
+    "a027/0153 debug_or_unlisted",
+    "a027/0154 debug_or_unlisted",
+    "a027/0155 debug_or_unlisted"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0785",
+     "ids": [
+      0,
+      51
+     ]
+    },
+    {
+     "bank": "a027/0786",
+     "ids": [
+      0,
+      233
+     ]
+    },
+    {
+     "bank": "a027/0787",
+     "ids": [
+      0,
+      17
+     ]
+    },
+    {
+     "bank": "a027/0788",
+     "ids": [
+      0,
+      32
+     ]
+    },
+    {
+     "bank": "a027/0153",
+     "ids": [
+      0,
+      31
+     ]
+    },
+    {
+     "bank": "a027/0154",
+     "ids": [
+      0,
+      107
+     ]
+    },
+    {
+     "bank": "a027/0155",
+     "ids": [
+      0,
+      67
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV124",
+   "group": "9-unused",
+   "status": "todo",
+   "strings": 514,
+   "labels": [
+    "a027/0156 debug_or_unlisted",
+    "a027/0157 debug_or_unlisted",
+    "a027/0158 debug_or_unlisted",
+    "a027/0159 debug_or_unlisted",
+    "a027/0160 debug_or_unlisted",
+    "a027/0162 debug_or_unlisted",
+    "a027/0164 debug_or_unlisted",
+    "a027/0165 debug_or_unlisted",
+    "a027/0167 debug_or_unlisted + debug_unused",
+    "a027/0168 debug_or_unlisted + debug_unused",
+    "a027/0170 debug_or_unlisted + debug_unused",
+    "a027/0171 debug_or_unlisted + debug_unused",
+    "a027/0174 debug_or_unlisted + debug_unused",
+    "a027/0175 debug_or_unlisted + debug_unused"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0156",
+     "ids": [
+      0,
+      68
+     ]
+    },
+    {
+     "bank": "a027/0157",
+     "ids": [
+      0,
+      19
+     ]
+    },
+    {
+     "bank": "a027/0158",
+     "ids": [
+      4,
+      153
+     ]
+    },
+    {
+     "bank": "a027/0159",
+     "ids": [
+      0,
+      67
+     ]
+    },
+    {
+     "bank": "a027/0160",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0162",
+     "ids": [
+      0,
+      30
+     ]
+    },
+    {
+     "bank": "a027/0164",
+     "ids": [
+      0,
+      143
+     ]
+    },
+    {
+     "bank": "a027/0165",
+     "ids": [
+      0,
+      78
+     ]
+    },
+    {
+     "bank": "a027/0167",
+     "ids": [
+      0,
+      54
+     ]
+    },
+    {
+     "bank": "a027/0168",
+     "ids": [
+      0,
+      9
+     ]
+    },
+    {
+     "bank": "a027/0170",
+     "ids": [
+      0,
+      23
+     ]
+    },
+    {
+     "bank": "a027/0171",
+     "ids": [
+      0,
+      12
+     ]
+    },
+    {
+     "bank": "a027/0174",
+     "ids": [
+      0,
+      21
+     ]
+    },
+    {
+     "bank": "a027/0175",
+     "ids": [
+      0,
+      21
+     ]
+    }
+   ]
+  },
+  {
+   "id": "RV125",
+   "group": "9-unused",
+   "status": "todo",
+   "strings": 70,
+   "labels": [
+    "a027/0176 debug_or_unlisted + debug_unused",
+    "a027/0182 debug_or_unlisted + debug_unused",
+    "a027/0292 debug_or_unlisted + debug_unused"
+   ],
+   "parts": [
+    {
+     "bank": "a027/0176",
+     "ids": [
+      0,
+      57
+     ]
+    },
+    {
+     "bank": "a027/0182",
+     "ids": [
+      0,
+      0
+     ]
+    },
+    {
+     "bank": "a027/0292",
+     "ids": [
+      1,
+      25
+     ]
+    }
+   ]
+  }
+ ]
+}
