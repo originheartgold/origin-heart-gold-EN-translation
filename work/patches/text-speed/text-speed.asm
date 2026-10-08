@@ -1,5 +1,5 @@
 ; text-speed - Options TEXT SPEED (NORMAL / FAST), 30 fps printer catch-up, Pokégear calls wait for A/B.
-; D-1604, D-1601, D-1603, D-1600 (hack finding D-1599), D-1575 (main checkout's register).
+; D-1604, D-1601, D-1603, D-1600 (hack finding D-1599), D-1575.
 ; Why and what: fix.toml next to this file; work/notes/text_speed_release.md; toolchain: work/notes/toolchain.md.
 ;
 ; The new code is native.c, compiled by clang into payload.json (the reviewed compiler output, pinned by

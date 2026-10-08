@@ -2,7 +2,7 @@ id = "text-speed"
 title = "Options TEXT SPEED: NORMAL / FAST, 30 fps printer catch-up, Pokégear calls wait for A/B"
 kind = "code"
 enabled = true
-decisions = []
+decisions = ["D-1604", "D-1601", "D-1603", "D-1600", "D-1575"]
 requires = ["msgload"]
 asm = "text-speed.asm"
 why = """
@@ -34,7 +34,7 @@ any other fix that touches its edits, overlays 50/92 or the original routines th
 writing, text_speed_patch.verify checks the runtime contract again.
 """
 evidence = [
-  "Decision pending: D-1604 (NORMAL / FAST), D-1601 (frame-bounded batches), D-1603 (30 fps catch-up), D-1600 (calls wait for A/B; hack finding D-1599) and D-1575 (exception to D-1002) are in the main checkout's register, not yet in this branch's register, so this fix lists no decision of its own",
+  "D-1604 (NORMAL / FAST), D-1601 (frame-bounded batches), D-1603 (30 fps catch-up), D-1600 (calls wait for A/B; answers the hack finding D-1599, resolved) and D-1575 (optional English-community features, exception to D-1002), all accepted",
   "work/notes/text_speed_release.md: what ships, changes from the Chinese hack, downgrade warning, known gaps",
   "work/notes/text_speed_release_checks.md: release gates and fault matrix; work/notes/text_speed_RUNBOOK.md: how to rerun them",
   "work/notes/text_speed_vcount.md: the frame rule",

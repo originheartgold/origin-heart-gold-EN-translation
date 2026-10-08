@@ -2,7 +2,7 @@ id = "font-glyphs"
 title = "Font: the USA … “ ” glyphs instead of the hack's 12-13 px ones"
 kind = "font"
 enabled = true
-decisions = []
+decisions = ["D-2082"]
 requires = []
 why = """
 Players: in English text an ellipsis or a pair of double quotes shows as a wide gap ("Wait…" has a
@@ -25,7 +25,7 @@ files 0, 1, 2 and 4, so they are the US glyphs again (6 px in fonts 0/1, 7 px in
 glyph changes. build.py --glyph-fonts can narrow the font list; the verify step checks every restored glyph against the USA font.
 """
 evidence = [
-  "Decision pending: the question to the user to confirm the glyph restore is D-2042 in the main checkout's register; it is not yet in this branch's register, so this fix lists no decision of its own",
+  "D-2082: the user confirmed the glyph restore (the question D-2042, resolved)",
   "Related: D-0028 (quote-style rule, provisional) cites the hack's 12 px widths of “ ”",
   "work/notes/text_metrics.md: 'The hack's Latin is the vanilla Latin' (width table, recommendation)",
   "work/notes/integrity_audit_text.md: fonts row (only 01AF/01B4/01B5 differ from the hack)",

@@ -2,7 +2,7 @@ id = "overworld-texture-frame-bounds"
 title = "Overworld objects: a texture frame the texture does not have no longer crashes (Rocket HQ freeze)"
 kind = "code"
 enabled = true
-decisions = []
+decisions = ["D-2083"]
 requires = []
 asm = "overworld-texture-frame-bounds.asm"
 why = """
@@ -14,10 +14,8 @@ play reaches it is unproven. DeSmuME happens to read address 0 without trapping 
 same save passes there. Real hardware is untested. The untouched Chinese ROM freezes in the same place,
 so this is a bug of the hack.
 
-Status: D-1337 says hack bugs are reported, not fixed. The user requested this fix on 2026-10-08 ('we need
-to build 4 fixes so they now work', see the evidence) but did not mention D-1337, and the exception is not
-yet recorded in the register: D-2043 (open, in the main checkout's uncommitted register) still says
-'preserve under D-1337'. The user must record the exception before release.
+Status: D-1337 says hack bugs are reported, not fixed. This fix is a user-approved exception to it
+(D-2083, 2026-10-08, the answer to the hack finding D-2043); other hack bugs stay report-only.
 
 Technical: an object's texture animation picks a texture frame each frame, and the hack's arm9 routine
 0x02024654 (called from 0x02024604) binds that frame's texture to the object's model. Some objects get an
@@ -41,8 +39,8 @@ On DeSmuME, which never crashed, the visible difference is that the barrier keep
 being bound to texture parameters read from address 0.
 """
 evidence = [
-  "Decision pending: D-2043 (hack-finding, Rocket HQ B1F renderer data abort) is in the main checkout's register; it is not yet in this branch's register, so this fix lists no decision of its own; it still says 'preserve under D-1337' and the exception for this fix is not yet recorded (the user must record it before release)",
-  "User request 2026-10-08 (Codex session, codex/rocket-hq-freeze): 'When you are done reproducing collect all information you can and try to create a fix in a worktree', then 'Okay, so all 4 reproducers should live in the harness and we need to build 4 fixes so they now work.'; D-1337 was not mentioned",
+  "D-2083: the user-approved exception to D-1337 for this fix; it answers the hack finding D-2043 (Rocket HQ B1F renderer data abort, resolved)",
+  "User request 2026-10-08 (Codex session, codex/rocket-hq-freeze): 'When you are done reproducing collect all information you can and try to create a fix in a worktree', then 'Okay, so all 4 reproducers should live in the harness and we need to build 4 fixes so they now work.'; the exception to D-1337 is recorded as D-2083",
   "work/notes/rocket_hq_freeze_repro_20261008.md: reproduction on melonDS 1.1 (Chinese ROM, rc5, WIP), crash registers",
   "work/notes/rocket_hq_freeze_fix_20261008.md: the resources, the branch, its semantics and the before/after runs",
   "work/notes/five_island_freeze_20261008.md, texture_additional_repro_20261008.md: the same abort at Five Island and Seven Island, fixed by the same byte",

@@ -1,5 +1,5 @@
-; antipiracy - Real hardware: the six DS Protect entry points return the genuine-cart values. D-1616, D-1617
-; (main checkout's register). Why and what: fix.toml next to this file; work/notes/hardware_support.md.
+; antipiracy - Real hardware: the six DS Protect entry points return the genuine-cart values. D-1616, D-1617.
+; Why and what: fix.toml next to this file; work/notes/hardware_support.md.
 ;
 ; Overlay 114 is the hack's copy of Nintendo's DS Protect (card-mirror, emulator and integrity checks). Its six
 ; entry points are ARM code, reached only by 18 Thumb `blx` calls from overlays 1, 5, 28, 31 and 115. Each takes

@@ -2,6 +2,7 @@
 """Unit tests for fixes.py (the work/patches registry). Run:  python3 -m unittest -v work/tools/test_fixes.py"""
 import contextlib
 import io
+import json
 import re
 import shutil
 import sys
@@ -784,9 +785,12 @@ class RealRegistry(unittest.TestCase):
         self.assertIn("naming-keyboard", {f["id"]: f for f in self.fixes}["gfx-naming-tabs"]["requires"])
 
     def test_every_fix_documents_itself(self):
+        register = F.WORK / "translate" / "decisions" / "decisions.jsonl"
+        known = {json.loads(line)["id"] for line in register.read_text(encoding="utf-8").splitlines() if line.strip()}
         for f in self.fixes:
-            # a fix without a decision must say in its evidence which decision is pending
-            self.assertTrue(f["decisions"] or any(e.startswith("Decision pending:") for e in f["evidence"]), f["id"])
+            # every fix names its decisions, and they are in the register
+            self.assertTrue(f["decisions"], f["id"])
+            self.assertLessEqual(set(f["decisions"]), known, f["id"])
             self.assertGreater(len(f["why"].strip()), 80, f["id"])
             self.assertGreater(len(f["what"].strip()), 30, f["id"])
 

@@ -2,7 +2,7 @@ id = "antipiracy"
 title = "Real hardware: the six DS Protect entry points return the genuine-cart values"
 kind = "code"
 enabled = true
-decisions = []
+decisions = ["D-1616", "D-1617"]
 requires = []
 asm = "antipiracy.asm"
 why = """
@@ -28,7 +28,7 @@ the untouched Chinese hack (D-1002); this is not a hack-bug fix (D-1337). The sa
 of the Bradams 'Speedoption' build, which runs on New 2DS XL.
 """
 evidence = [
-  "Decision pending: D-1616 (real-hardware support built into the single English patch) and D-1617 (bypass vs fidelity, D-1002/D-1337) are in the main checkout's register, not yet in this branch's register, so this fix lists no decision of its own",
+  "D-1616 (real-hardware support built into the single English patch) and D-1617 (bypass vs fidelity, D-1002/D-1337), both accepted",
   "work/notes/hardware_support.md: checks, the six entry points and their genuine-cart values (DeSmuME), the 18 call sites, the punishments, why loaders do not fix it",
   "git 177cffe 'Code: built-in anti-piracy bypass for real hardware (D-1616, D-1617)': reviewed statically and in DeSmuME (polarity measured, emulator-check failure simulated); not yet run on real hardware",
 ]

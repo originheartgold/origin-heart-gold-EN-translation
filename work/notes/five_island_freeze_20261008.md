@@ -1,6 +1,6 @@
 # Five Island freeze: reproduction and fix validation (2026-10-08)
 
-> **Status (2026-10-08, later):** The "opt-in `rocket_texture_fix.py`" wording below describes the first experiment; that tool was not carried over. The fix is now `work/patches/overworld-texture-frame-bounds/` and is in normal builds (see "Ported to the per-fix format" in [rocket_hq_freeze_fix_20261008.md](rocket_hq_freeze_fix_20261008.md)). The user requested the fix; the exception to D-1337 is not yet recorded in the register (D-2043 still says "preserve under D-1337") and must be recorded by the user before release.
+> **Status (2026-10-08, later):** The "opt-in `rocket_texture_fix.py`" wording below describes the first experiment; that tool was not carried over. The fix is now `work/patches/overworld-texture-frame-bounds/` and is in normal builds (see "Ported to the per-fix format" in [rocket_hq_freeze_fix_20261008.md](rocket_hq_freeze_fix_20261008.md)). The user requested the fix and approved it as an exception to D-1337 (D-2083, which answers D-2043).
 
 Branch: `codex/rocket-hq-freeze`. Three user-requested subagents investigated map data, renderer code, and runtime independently; the coordinating agent verified the before/after result in melonDS 1.1. This extends D-2043 and the explicitly authorized isolated fix experiment. No release or normal build integration is made.
 

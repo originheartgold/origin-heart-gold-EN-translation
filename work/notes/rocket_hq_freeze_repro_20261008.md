@@ -1,6 +1,6 @@
 # Rocket HQ freeze reproduced — 2026-10-08 (D-2043)
 
-> **Status (2026-10-08, later):** "Preserve it under D-1002/D-1337" below was written before the fix was requested. The fix is now `work/patches/overworld-texture-frame-bounds/` and is in normal builds (see "Ported to the per-fix format" in [rocket_hq_freeze_fix_20261008.md](rocket_hq_freeze_fix_20261008.md)). The user requested the fix; the exception to D-1337 is not yet recorded in the register (D-2043 still says "preserve under D-1337") and must be recorded by the user before release.
+> **Status (2026-10-08, later):** "Preserve it under D-1002/D-1337" below was written before the fix was requested. The fix is now `work/patches/overworld-texture-frame-bounds/` and is in normal builds (see "Ported to the per-fix format" in [rocket_hq_freeze_fix_20261008.md](rocket_hq_freeze_fix_20261008.md)). The user requested the fix and approved it as an exception to D-1337 (D-2083, which answers D-2043).
 
 The reported Rocket HQ freeze reproduces in melonDS 1.1 on macOS ARM64 with Abdil's correct battery save. Released English rc5, current English WIP, and untouched Chinese v4.0.3 all enter the same ARM9 data-abort loop at map 247, position (17,4), before the camera ambush at (23,4). This is an original-hack failure exposed by this emulator configuration, not an English translation regression. Preserve it under D-1002/D-1337.
 

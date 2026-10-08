@@ -43,7 +43,7 @@ Stages (and the order of this list): font → graphics → hardcoded strings →
 - Kind: font
 - Enabled: yes
 - Requires: nothing
-- Decisions: none
+- Decisions: D-2082
 - Source: `work/patches/font-glyphs/fix.toml`
 
 **Why (the Chinese hack):**
@@ -71,7 +71,7 @@ glyph changes. build.py --glyph-fonts can narrow the font list; the verify step 
 
 **Evidence:**
 
-- Decision pending: the question to the user to confirm the glyph restore is D-2042 in the main checkout's register; it is not yet in this branch's register, so this fix lists no decision of its own
+- D-2082: the user confirmed the glyph restore (the question D-2042, resolved)
 - Related: D-0028 (quote-style rule, provisional) cites the hack's 12 px widths of “ ”
 - work/notes/text_metrics.md: 'The hack's Latin is the vanilla Latin' (width table, recommendation)
 - work/notes/integrity_audit_text.md: fonts row (only 01AF/01B4/01B5 differ from the hack)
@@ -947,7 +947,7 @@ Nothing else on the screen changes.
 - Kind: code
 - Enabled: yes
 - Requires: nothing
-- Decisions: none
+- Decisions: D-1616, D-1617
 - Source: `work/patches/antipiracy/fix.toml`
 
 **Why (the Chinese hack):**
@@ -977,7 +977,7 @@ of the Bradams 'Speedoption' build, which runs on New 2DS XL.
 
 **Evidence:**
 
-- Decision pending: D-1616 (real-hardware support built into the single English patch) and D-1617 (bypass vs fidelity, D-1002/D-1337) are in the main checkout's register, not yet in this branch's register, so this fix lists no decision of its own
+- D-1616 (real-hardware support built into the single English patch) and D-1617 (bypass vs fidelity, D-1002/D-1337), both accepted
 - work/notes/hardware_support.md: checks, the six entry points and their genuine-cart values (DeSmuME), the 18 call sites, the punishments, why loaders do not fix it
 - git 177cffe 'Code: built-in anti-piracy bypass for real hardware (D-1616, D-1617)': reviewed statically and in DeSmuME (polarity measured, emulator-check failure simulated); not yet run on real hardware
 
@@ -998,8 +998,8 @@ of the Bradams 'Speedoption' build, which runs on New 2DS XL.
 <summary>antipiracy.asm</summary>
 
 ```asm
-; antipiracy - Real hardware: the six DS Protect entry points return the genuine-cart values. D-1616, D-1617
-; (main checkout's register). Why and what: fix.toml next to this file; work/notes/hardware_support.md.
+; antipiracy - Real hardware: the six DS Protect entry points return the genuine-cart values. D-1616, D-1617.
+; Why and what: fix.toml next to this file; work/notes/hardware_support.md.
 ;
 ; Overlay 114 is the hack's copy of Nintendo's DS Protect (card-mirror, emulator and integrity checks). Its six
 ; entry points are ARM code, reached only by 18 Thumb `blx` calls from overlays 1, 5, 28, 31 and 115. Each takes
@@ -1666,7 +1666,7 @@ the ABC page and ＡＢＣ over the QWE page.
 - Kind: code
 - Enabled: yes
 - Requires: nothing
-- Decisions: none
+- Decisions: D-2083
 - Source: `work/patches/overworld-texture-frame-bounds/fix.toml`
 
 **Why (the Chinese hack):**
@@ -1679,10 +1679,8 @@ play reaches it is unproven. DeSmuME happens to read address 0 without trapping 
 same save passes there. Real hardware is untested. The untouched Chinese ROM freezes in the same place,
 so this is a bug of the hack.
 
-Status: D-1337 says hack bugs are reported, not fixed. The user requested this fix on 2026-10-08 ('we need
-to build 4 fixes so they now work', see the evidence) but did not mention D-1337, and the exception is not
-yet recorded in the register: D-2043 (open, in the main checkout's uncommitted register) still says
-'preserve under D-1337'. The user must record the exception before release.
+Status: D-1337 says hack bugs are reported, not fixed. This fix is a user-approved exception to it
+(D-2083, 2026-10-08, the answer to the hack finding D-2043); other hack bugs stay report-only.
 
 Technical: an object's texture animation picks a texture frame each frame, and the hack's arm9 routine
 0x02024654 (called from 0x02024604) binds that frame's texture to the object's model. Some objects get an
@@ -1709,8 +1707,8 @@ being bound to texture parameters read from address 0.
 
 **Evidence:**
 
-- Decision pending: D-2043 (hack-finding, Rocket HQ B1F renderer data abort) is in the main checkout's register; it is not yet in this branch's register, so this fix lists no decision of its own; it still says 'preserve under D-1337' and the exception for this fix is not yet recorded (the user must record it before release)
-- User request 2026-10-08 (Codex session, codex/rocket-hq-freeze): 'When you are done reproducing collect all information you can and try to create a fix in a worktree', then 'Okay, so all 4 reproducers should live in the harness and we need to build 4 fixes so they now work.'; D-1337 was not mentioned
+- D-2083: the user-approved exception to D-1337 for this fix; it answers the hack finding D-2043 (Rocket HQ B1F renderer data abort, resolved)
+- User request 2026-10-08 (Codex session, codex/rocket-hq-freeze): 'When you are done reproducing collect all information you can and try to create a fix in a worktree', then 'Okay, so all 4 reproducers should live in the harness and we need to build 4 fixes so they now work.'; the exception to D-1337 is recorded as D-2083
 - work/notes/rocket_hq_freeze_repro_20261008.md: reproduction on melonDS 1.1 (Chinese ROM, rc5, WIP), crash registers
 - work/notes/rocket_hq_freeze_fix_20261008.md: the resources, the branch, its semantics and the before/after runs
 - work/notes/five_island_freeze_20261008.md, texture_additional_repro_20261008.md: the same abort at Five Island and Seven Island, fixed by the same byte
@@ -1729,9 +1727,7 @@ being bound to texture parameters read from address 0.
 
 ```asm
 ; overworld-texture-frame-bounds - Overworld objects: a texture frame the texture does not have no longer
-; crashes (Rocket HQ freeze). D-2043 (open, main checkout's register). The user requested this fix on
-; 2026-10-08; the exception to D-1337 is not yet recorded in the register (D-2043 still says 'preserve
-; under D-1337'), and the user must record it before release.
+; crashes (Rocket HQ freeze). D-2083 (user-approved exception to D-1337; answers the hack finding D-2043).
 ; Why and what: fix.toml next to this file; overview work/patches/FIXES.md;
 ; work/notes/rocket_hq_freeze_fix_20261008.md.
 ;
@@ -1857,7 +1853,7 @@ being bound to texture parameters read from address 0.
 - Kind: code
 - Enabled: yes
 - Requires: `msgload`
-- Decisions: none
+- Decisions: D-1604, D-1601, D-1603, D-1600, D-1575
 - Source: `work/patches/text-speed/fix.toml`
 - Native code: `native.c`, `labels.h`, compiled into `payload.json` (reviewed, checked by `work/tools/text_speed_patch.py`); the asm places it with `.incbin`
 
@@ -1894,7 +1890,7 @@ writing, text_speed_patch.verify checks the runtime contract again.
 
 **Evidence:**
 
-- Decision pending: D-1604 (NORMAL / FAST), D-1601 (frame-bounded batches), D-1603 (30 fps catch-up), D-1600 (calls wait for A/B; hack finding D-1599) and D-1575 (exception to D-1002) are in the main checkout's register, not yet in this branch's register, so this fix lists no decision of its own
+- D-1604 (NORMAL / FAST), D-1601 (frame-bounded batches), D-1603 (30 fps catch-up), D-1600 (calls wait for A/B; answers the hack finding D-1599, resolved) and D-1575 (optional English-community features, exception to D-1002), all accepted
 - work/notes/text_speed_release.md: what ships, changes from the Chinese hack, downgrade warning, known gaps
 - work/notes/text_speed_release_checks.md: release gates and fault matrix; work/notes/text_speed_RUNBOOK.md: how to rerun them
 - work/notes/text_speed_vcount.md: the frame rule
@@ -1924,7 +1920,7 @@ writing, text_speed_patch.verify checks the runtime contract again.
 
 ```asm
 ; text-speed - Options TEXT SPEED (NORMAL / FAST), 30 fps printer catch-up, Pokégear calls wait for A/B.
-; D-1604, D-1601, D-1603, D-1600 (hack finding D-1599), D-1575 (main checkout's register).
+; D-1604, D-1601, D-1603, D-1600 (hack finding D-1599), D-1575.
 ; Why and what: fix.toml next to this file; work/notes/text_speed_release.md; toolchain: work/notes/toolchain.md.
 ;
 ; The new code is native.c, compiled by clang into payload.json (the reviewed compiler output, pinned by

@@ -1,7 +1,5 @@
 ; overworld-texture-frame-bounds - Overworld objects: a texture frame the texture does not have no longer
-; crashes (Rocket HQ freeze). D-2043 (open, main checkout's register). The user requested this fix on
-; 2026-10-08; the exception to D-1337 is not yet recorded in the register (D-2043 still says 'preserve
-; under D-1337'), and the user must record it before release.
+; crashes (Rocket HQ freeze). D-2083 (user-approved exception to D-1337; answers the hack finding D-2043).
 ; Why and what: fix.toml next to this file; overview work/patches/FIXES.md;
 ; work/notes/rocket_hq_freeze_fix_20261008.md.
 ;
