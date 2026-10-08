@@ -433,10 +433,10 @@
   {
    "id": 53,
    "zh": "２０{VAR:0133:5}年{VAR:0133:6}月{VAR:0133:7}日在{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}{NEWLINE}得到的蛋于{NEWLINE}２０{VAR:0133:0}年{VAR:0133:1}月{VAR:0133:2}日{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}孵化。",
-   "en": "{VAR:0133:6}/{VAR:0133:7}/20{VAR:0133:5}{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}{NEWLINE}Egg obtained.{NEWLINE}{VAR:0133:1}/{VAR:0133:2}/20{VAR:0133:0}{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}{NEWLINE}Egg apparently hatched.",
+   "en": "{VAR:0133:6}/{VAR:0133:7}/20{VAR:0133:5}{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}{NEWLINE}Egg obtained.{NEWLINE}{VAR:0133:1}/{VAR:0133:2}/20{VAR:0133:0}{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}{NEWLINE}Egg hatched.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0302/53 | seed rejected us [tag_mismatch] (candidate US 0302#53; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#53; text not kept)"
+   "notes": "US 0302/53 | seed rejected us [tag_mismatch] (candidate US 0302#53; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#53; text not kept) | RV060: addition: Chinese has no 似乎 (apparently); vanilla trade distinction not in the hack's text, logged as hack-finding"
   },
   {
    "id": 54,
@@ -449,10 +449,10 @@
   {
    "id": 55,
    "zh": "２０{VAR:0133:5}年{VAR:0133:6}月{VAR:0133:7}日{NEWLINE}从{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}{NEWLINE}那里拿到的蛋于{NEWLINE}２０{VAR:0133:0}年{VAR:0133:1}月{VAR:0133:2}日{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}孵化出来的。",
-   "en": "{VAR:0133:6}/{VAR:0133:7}/20{VAR:0133:5}{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}{NEWLINE}Egg received.{NEWLINE}{VAR:0133:1}/{VAR:0133:2}/20{VAR:0133:0}{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}{NEWLINE}Egg apparently hatched.",
+   "en": "{VAR:0133:6}/{VAR:0133:7}/20{VAR:0133:5}{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}{NEWLINE}Egg received.{NEWLINE}{VAR:0133:1}/{VAR:0133:2}/20{VAR:0133:0}{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}{NEWLINE}Egg hatched.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0302/55 | seed rejected us [tag_mismatch] (candidate US 0302#55; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#55; text not kept)"
+   "notes": "US 0302/55 | seed rejected us [tag_mismatch] (candidate US 0302#55; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#55; text not kept) | RV060: addition: Chinese has no 似乎 (apparently); vanilla trade distinction not in the hack's text, logged as hack-finding"
   },
   {
    "id": 56,
@@ -465,10 +465,10 @@
   {
    "id": 57,
    "zh": "２０{VAR:0133:0}年{VAR:0133:1}月{VAR:0133:2}日{NEWLINE}在{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}{NEWLINE}Ｌｖ．{VAR:0134:3}的时候{NEWLINE}有如命运一般的相遇了。",
-   "en": "{VAR:0133:1}/{VAR:0133:2}/20{VAR:0133:0}{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}{NEWLINE}Apparently had a{NEWLINE}fateful encounter at{NEWLINE}Lv. {VAR:0134:3}.",
+   "en": "{VAR:0133:1}/{VAR:0133:2}/20{VAR:0133:0}{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}{NEWLINE}Had a fateful encounter{NEWLINE}at Lv. {VAR:0134:3}.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0302/49 | seed rejected us [tag_mismatch] (candidate US 0302#49; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl) | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#57; text not kept)"
+   "notes": "US 0302/49 | seed rejected us [tag_mismatch] (candidate US 0302#49; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl) | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#57; text not kept) | RV060: addition: Chinese identical to #56, no 似乎 (apparently) (hack-finding logged)"
   },
   {
    "id": 58,
@@ -481,10 +481,10 @@
   {
    "id": 59,
    "zh": "在２０{VAR:0133:5}年{VAR:0133:6}月{VAR:0133:7}日{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}{NEWLINE}拿到的蛋在{NEWLINE}２０{VAR:0133:0}年{VAR:0133:1}月{VAR:0133:2}日{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}孵化后{NEWLINE}有如命运般的相遇了。",
-   "en": "{VAR:0133:6}/{VAR:0133:7}/20{VAR:0133:5}{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}{NEWLINE}Egg obtained.{NEWLINE}{VAR:0133:1}/{VAR:0133:2}/20{VAR:0133:0}{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}{NEWLINE}Egg apparently hatched.{NEWLINE}Fateful encounter.",
+   "en": "{VAR:0133:6}/{VAR:0133:7}/20{VAR:0133:5}{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}{NEWLINE}Egg obtained.{NEWLINE}{VAR:0133:1}/{VAR:0133:2}/20{VAR:0133:0}{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}{NEWLINE}Egg hatched.{NEWLINE}Fateful encounter.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0302/59 | seed rejected us [tag_mismatch] (candidate US 0302#59; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl) | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#59; text not kept)"
+   "notes": "US 0302/59 | seed rejected us [tag_mismatch] (candidate US 0302#59; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl) | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#59; text not kept) | RV060: addition: Chinese has no 似乎 (apparently); vanilla trade distinction not in the hack's text, logged as hack-finding"
   },
   {
    "id": 60,
@@ -497,10 +497,10 @@
   {
    "id": 61,
    "zh": "２０{VAR:0133:5}年{VAR:0133:6}月{VAR:0133:7}日{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}{NEWLINE}得到的蛋在{NEWLINE}２０{VAR:0133:0}年{VAR:0133:1}月{VAR:0133:2}日{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}孵化后{NEWLINE}有如命运般的相遇了。",
-   "en": "{VAR:0133:6}/{VAR:0133:7}/20{VAR:0133:5}{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}{NEWLINE}Egg arrived.{NEWLINE}{VAR:0133:1}/{VAR:0133:2}/20{VAR:0133:0}{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}{NEWLINE}Egg apparently hatched.{NEWLINE}Fateful encounter.",
+   "en": "{VAR:0133:6}/{VAR:0133:7}/20{VAR:0133:5}{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}{NEWLINE}Egg obtained.{NEWLINE}{VAR:0133:1}/{VAR:0133:2}/20{VAR:0133:0}{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}{NEWLINE}Egg hatched.{NEWLINE}Fateful encounter.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0302/61 | seed rejected us [tag_mismatch] (candidate US 0302#61; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch; other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl) | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#61; text not kept)"
+   "notes": "US 0302/61 | seed rejected us [tag_mismatch] (candidate US 0302#61; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch; other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl) | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#61; text not kept) | RV060: addition: Chinese 得到的蛋…孵化 = egg obtained, hatched; no 'arrived' / 'apparently' (hack-finding logged)"
   },
   {
    "id": 62,
@@ -513,10 +513,10 @@
   {
    "id": 63,
    "zh": "２０{VAR:0133:5}年{VAR:0133:6}月{VAR:0133:7}日{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}{NEWLINE}得到的蛋在{NEWLINE}２０{VAR:0133:0}年{VAR:0133:1}月{VAR:0133:2}日{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}孵化后{NEWLINE}有如命运般的相遇了。",
-   "en": "{VAR:0133:6}/{VAR:0133:7}/20{VAR:0133:5}{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}{NEWLINE}Egg obtained.{NEWLINE}{VAR:0133:1}/{VAR:0133:2}/20{VAR:0133:0}{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}{NEWLINE}Egg apparently hatched.{NEWLINE}Fateful encounter.",
+   "en": "{VAR:0133:6}/{VAR:0133:7}/20{VAR:0133:5}{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}{NEWLINE}Egg obtained.{NEWLINE}{VAR:0133:1}/{VAR:0133:2}/20{VAR:0133:0}{NEWLINE}{VAR:FF00:2}{VAR:0104:4}{VAR:FF00:0}{NEWLINE}Egg hatched.{NEWLINE}Fateful encounter.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0302/63 | seed rejected us [tag_mismatch] (candidate US 0302#63; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch; other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl) | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#63; text not kept)"
+   "notes": "US 0302/63 | seed rejected us [tag_mismatch] (candidate US 0302#63; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch; other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl) | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#63; text not kept) | RV060: addition: Chinese has no 似乎 (apparently); vanilla trade distinction not in the hack's text, logged as hack-finding"
   },
   {
    "id": 64,
@@ -633,18 +633,18 @@
   {
    "id": 78,
    "zh": "看起来总是在生气。",
-   "en": "A little quick tempered.",
+   "en": "Always seems angry.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0302/78"
+   "origin": "agent",
+   "notes": "US 0302/78 | RV060: meaning: 看起来总是在生气 = always looks angry (D-2201)"
   },
   {
    "id": 79,
    "zh": "容易受伤。",
-   "en": "Likes to fight.",
+   "en": "Gets hurt easily.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0302/79"
+   "origin": "agent",
+   "notes": "US 0302/79 | RV060: meaning: 容易受伤 = gets hurt easily (D-2201; JP mismatch logged)"
   },
   {
    "id": 80,
@@ -657,10 +657,10 @@
   {
    "id": 81,
    "zh": "喜欢用身体力量决胜负。",
-   "en": "Sturdy body.",
+   "en": "Likes to win with brawn.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0302/81"
+   "origin": "agent",
+   "notes": "US 0302/81 | RV060: meaning: 喜欢用身体力量决胜负 = likes to settle contests with physical strength ; brawn = physical strength, fits the memo box (D-2201)"
   },
   {
    "id": 82,
@@ -697,10 +697,10 @@
   {
    "id": 86,
    "zh": "喜欢追逐。",
-   "en": "Likes to run.",
+   "en": "Likes to chase.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0302/86"
+   "origin": "agent",
+   "notes": "US 0302/86 | RV060: meaning: 喜欢追逐 = likes chasing (D-2201)"
   },
   {
    "id": 87,
@@ -713,18 +713,18 @@
   {
    "id": 88,
    "zh": "轻率行动。",
-   "en": "Impetuous and silly.",
+   "en": "Acts rashly.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0302/88"
+   "origin": "agent",
+   "notes": "US 0302/88 | RV060: addition: 轻率行动 = acts rashly; 'and silly' not in the Chinese (D-2201)"
   },
   {
    "id": 89,
    "zh": "有点会得意忘形。",
-   "en": "Somewhat of a clown.",
+   "en": "Gets a bit carried away.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0302/89"
+   "origin": "agent",
+   "notes": "US 0302/89 | RV060: meaning: 有点会得意忘形 = tends to get a bit carried away, not 'a clown' (D-2201)"
   },
   {
    "id": 90,
@@ -753,10 +753,10 @@
   {
    "id": 93,
    "zh": "小心谨慎。",
-   "en": "Thoroughly cunning.",
+   "en": "Careful and cautious.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0302/93"
+   "origin": "agent",
+   "notes": "US 0302/93 | RV060: meaning: 小心谨慎 = careful and cautious, not cunning (D-2201)"
   },
   {
    "id": 94,
@@ -769,18 +769,18 @@
   {
    "id": 95,
    "zh": "十分认真。",
-   "en": "Very finicky.",
+   "en": "Very earnest.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0302/95"
+   "origin": "agent",
+   "notes": "US 0302/95 | RV060: meaning: 十分认真 = very earnest/serious, not finicky (D-2201)"
   },
   {
    "id": 96,
    "zh": "暴躁。",
-   "en": "Strong willed.",
+   "en": "Short-tempered.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0302/96"
+   "origin": "agent",
+   "notes": "US 0302/96 | RV060: meaning: 暴躁 = irritable/short-tempered, not strong willed (D-2201)"
   },
   {
    "id": 97,
@@ -793,10 +793,10 @@
   {
    "id": 98,
    "zh": "决胜心很强。",
-   "en": "Strongly defiant.",
+   "en": "Has a strong will to win.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0302/98"
+   "origin": "agent",
+   "notes": "US 0302/98 | RV060: meaning: 决胜心很强 = strong will to win, not defiant (D-2201)"
   },
   {
    "id": 99,
@@ -809,10 +809,10 @@
   {
    "id": 100,
    "zh": "有些坚强。",
-   "en": "Somewhat stubborn.",
+   "en": "Somewhat resilient.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0302/100"
+   "origin": "agent",
+   "notes": "US 0302/100 | RV060: meaning: 有些坚强 = somewhat strong/resilient, not stubborn (D-2201)"
   },
   {
    "id": 101,
@@ -825,26 +825,26 @@
   {
    "id": 102,
    "zh": "２０{VAR:0133:5}年{VAR:0133:6}月{VAR:0133:7}日{NEWLINE}从{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}那里{NEWLINE}拿到的不可思议的{NEWLINE}精灵蛋。{NEWLINE}",
-   "en": "{VAR:0133:6}/{VAR:0133:7}/20{VAR:0133:5}{NEWLINE}A mysterious Pokémon{NEWLINE}Egg obtained in{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}.{NEWLINE}",
+   "en": "{VAR:0133:6}/{VAR:0133:7}/20{VAR:0133:5}{NEWLINE}A mysterious Pokémon{NEWLINE}Egg received from{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}.{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0302/102 | seed rejected us [tag_mismatch] (candidate US 0302#102; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch; other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl) | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#102; text not kept)"
+   "notes": "US 0302/102 | seed rejected us [tag_mismatch] (candidate US 0302#102; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch; other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl) | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#102; text not kept) | RV060: meaning: 从…那里拿到 = received from, same Chinese as #101 (hack-finding logged)"
   },
   {
    "id": 103,
    "zh": "２０{VAR:0133:5}年{VAR:0133:6}月{VAR:0133:7}日{NEWLINE}在{VAR:FF00:1}{VAR:0104:8}{VAR:FF00:0}那里{NEWLINE}拿到的不可思议的{NEWLINE}精灵蛋。{NEWLINE}",
-   "en": "{VAR:0133:6}/{VAR:0133:7}/20{VAR:0133:5}{NEWLINE}A very mysterious{NEWLINE}Pokémon Egg obtained{NEWLINE}at {VAR:FF00:1}{VAR:0104:8}{VAR:FF00:0}.{NEWLINE}",
+   "en": "{VAR:0133:6}/{VAR:0133:7}/20{VAR:0133:5}{NEWLINE}A mysterious Pokémon{NEWLINE}Egg obtained{NEWLINE}at {VAR:FF00:1}{VAR:0104:8}{VAR:FF00:0}.{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0302/103 | seed rejected us [tag_mismatch] (candidate US 0302#103; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#103; text not kept)"
+   "notes": "US 0302/103 | seed rejected us [tag_mismatch] (candidate US 0302#103; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#103; text not kept) | RV060: addition: 不可思议的 = mysterious; 'very' not in the Chinese"
   },
   {
    "id": 104,
    "zh": "２０{VAR:0133:5}年{VAR:0133:6}月{VAR:0133:7}日{NEWLINE}从{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}那里{NEWLINE}拿到的不可思议的{NEWLINE}精灵蛋。{NEWLINE}",
-   "en": "{VAR:0133:6}/{VAR:0133:7}/20{VAR:0133:5}{NEWLINE}A very mysterious{NEWLINE}Pokémon Egg that came{NEWLINE}from {VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}.{NEWLINE}",
+   "en": "{VAR:0133:6}/{VAR:0133:7}/20{VAR:0133:5}{NEWLINE}A mysterious Pokémon{NEWLINE}Egg received from{NEWLINE}{VAR:FF00:2}{VAR:0104:8}{VAR:FF00:0}.{NEWLINE}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0302/104 | seed rejected us [tag_mismatch] (candidate US 0302#104; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch; other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl) | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#104; text not kept)"
+   "notes": "US 0302/104 | seed rejected us [tag_mismatch] (candidate US 0302#104; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch; other variants: 2 more v3 TM candidates (tm_v4_matches.jsonl) | seed rejected tm_v3 [tag_mismatch] (candidate v3 0295#104; text not kept) | RV060: addition: 不可思议的 = mysterious, 从…那里拿到 = received from; 'very' not in the Chinese"
   },
   {
    "id": 105,
@@ -857,10 +857,10 @@
   {
    "id": 106,
    "zh": "「蛋的样子」{NEWLINE}经常在摇动着。　{NEWLINE}离诞生似乎还差一点？",
-   "en": "“The Egg Watch”{NEWLINE}It appears to move{NEWLINE}occasionally. It may{NEWLINE}be close to hatching.",
+   "en": "“The Egg Watch”{NEWLINE}It often shakes.{NEWLINE}Could it be close to{NEWLINE}hatching?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0302/106"
+   "origin": "agent",
+   "notes": "US 0302/106 | RV060: meaning: 经常在摇动着 = often shakes, not occasionally; Chinese asks a question (D-2201, D-1758)"
   },
   {
    "id": 107,
@@ -1257,10 +1257,10 @@
   {
    "id": 156,
    "zh": "这是很重要的技能。{NEWLINE}无法忘记！",
-   "en": "HM moves can’t be{NEWLINE}forgotten now.",
+   "en": "An important move!{NEWLINE}Can’t be forgotten!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0302/156"
+   "origin": "agent",
+   "notes": "US 0302/156 | RV060: meaning: 这是很重要的技能。无法忘记！ says 'important move', no HM / 'now' (D-2201)"
   },
   {
    "id": 157,
