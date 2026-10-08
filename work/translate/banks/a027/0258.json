@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "！！{NEWLINE}它很喜欢这东西,不肯放手！",
-   "en": "Oh!{NEWLINE}It seems just too important to let go!",
+   "en": "Oh!{NEWLINE}It likes it so much, it won’t let go!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/2"
+   "origin": "agent",
+   "notes": "US 0265/2 | RV067: meaning: zh: it likes it too much to let go"
   },
   {
    "id": 3,
@@ -134,10 +134,10 @@
   {
    "id": 16,
    "zh": "{VAR:0101:0}{NEWLINE}不知道叼着什么看着这边,{CLEAR}要把那东西拿出来吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} is heading this way with{NEWLINE}something in its mouth.{CLEAR}Take the item out of its mouth?{VAR:0200:0}",
+   "en": "{VAR:0101:0} is looking this way with{NEWLINE}something in its mouth.{CLEAR}Take the item out of its mouth?{VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/16"
+   "origin": "agent",
+   "notes": "US 0265/16 | RV067: meaning: zh 看着这边 = looking this way, not heading this way"
   },
   {
    "id": 17,
@@ -254,10 +254,10 @@
   {
    "id": 31,
    "zh": "{VAR:0101:0}看着这边,{NEWLINE}似乎是很想玩⋯⋯{CLEAR}稍微陪陪它吧？{VAR:0200:0}",
-   "en": "{VAR:0101:0} seems to want to play and{NEWLINE}is gazing at you expectantly.{CLEAR}Will you give in? {VAR:0200:0}",
+   "en": "{VAR:0101:0} seems to want to play and is{NEWLINE}gazing at you expectantly.{CLEAR}Play with it for a bit?{VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/31"
+   "origin": "agent",
+   "notes": "US 0265/31 | RV067: meaning: zh question 稍微陪陪它吧 = play with it a bit, not 'give in'"
   },
   {
    "id": 32,
@@ -302,10 +302,10 @@
   {
    "id": 37,
    "zh": "{VAR:0101:0}{NEWLINE}盯着这边看⋯⋯{CLEAR}要叫叫它吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} is blankly staring in this{NEWLINE}direction...{CLEAR}Want to call its name?{VAR:0200:0}",
+   "en": "{VAR:0101:0} is staring{NEWLINE}in this direction...{CLEAR}Want to call its name?{VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/37"
+   "origin": "agent",
+   "notes": "US 0265/37 | RV067: addition: 'blankly' not in zh"
   },
   {
    "id": 38,
@@ -390,18 +390,18 @@
   {
    "id": 48,
    "zh": "{VAR:0101:0}很开心地{NEWLINE}跟在身后！",
-   "en": "{VAR:0101:0} is steadily keeping up{NEWLINE}with you!",
+   "en": "{VAR:0101:0} is happily following{NEWLINE}behind you!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/48"
+   "origin": "agent",
+   "notes": "US 0265/48 | RV067: omission: zh 很开心地 happily"
   },
   {
    "id": 49,
    "zh": "{VAR:0101:0}似乎在和{VAR:0103:2}{NEWLINE}一起玩！",
-   "en": "{VAR:0101:0} seems to want to play with{NEWLINE}{VAR:0103:2}!",
+   "en": "{VAR:0101:0} seems to be playing with{NEWLINE}{VAR:0103:2}!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/49"
+   "origin": "agent",
+   "notes": "US 0265/49 | RV067: meaning: zh: is playing with, not wants to"
   },
   {
    "id": 50,
@@ -524,10 +524,10 @@
   {
    "id": 64,
    "zh": "{VAR:0101:0}{NEWLINE}精神满满地动来动去！",
-   "en": "{VAR:0101:0} is moving around happily!",
+   "en": "{VAR:0101:0} is energetically{NEWLINE}moving around!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/64"
+   "origin": "agent",
+   "notes": "US 0265/64 | RV067: meaning: zh 精神满满 = energetically"
   },
   {
    "id": 65,
@@ -655,10 +655,10 @@
   {
    "id": 80,
    "zh": "{VAR:0101:0}想打哈欠⋯⋯{NEWLINE}⋯⋯　⋯⋯　⋯⋯{CLEAR}但还是忍住了。",
-   "en": "{VAR:0101:0} started to yawn...{NEWLINE}...is almost yawning...almost...{CLEAR}Never mind.",
+   "en": "{VAR:0101:0} wants to yawn...{NEWLINE}...... ...... ......{CLEAR}But it held it in.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/80"
+   "origin": "agent",
+   "notes": "US 0265/80 | RV067: meaning: zh: wanted to yawn but held it in; US added text"
   },
   {
    "id": 81,
@@ -671,10 +671,10 @@
   {
    "id": 82,
    "zh": "{VAR:0101:0}{NEWLINE}咬着脚！",
-   "en": "{VAR:0101:0} snapped at your legs!",
+   "en": "{VAR:0101:0} is biting your feet!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/82"
+   "origin": "agent",
+   "notes": "US 0265/82 | RV067: meaning: zh 脚 feet, 咬着 biting"
   },
   {
    "id": 83,
@@ -706,10 +706,10 @@
   {
    "id": 86,
    "zh": "{VAR:0101:0}{NEWLINE}盯着你的头看⋯⋯",
-   "en": "{VAR:0101:0} is staring blankly{NEWLINE}at your head.",
+   "en": "{VAR:0101:0} is staring at your head...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/86"
+   "origin": "agent",
+   "notes": "US 0265/86 | RV067: addition: 'blankly' not in zh"
   },
   {
    "id": 87,
@@ -778,18 +778,18 @@
   {
    "id": 95,
    "zh": "{VAR:0101:0}{NEWLINE}差点就摔倒了！",
-   "en": "{VAR:0101:0} looks like it’s about to{NEWLINE}fall over!",
+   "en": "{VAR:0101:0} almost fell over!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/95"
+   "origin": "agent",
+   "notes": "US 0265/95 | RV067: meaning: zh 差点就摔倒了 = nearly fell"
   },
   {
    "id": 96,
    "zh": "{VAR:0101:0}突然{NEWLINE}发出了火！",
-   "en": "{VAR:0101:0} is vigorously producing{NEWLINE}fire!",
+   "en": "{VAR:0101:0} suddenly let out fire!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/96"
+   "origin": "agent",
+   "notes": "US 0265/96 | RV067: meaning: zh 突然发出了火 = suddenly let out fire"
   },
   {
    "id": 97,
@@ -875,26 +875,26 @@
   {
    "id": 106,
    "zh": "{VAR:0101:0}看着岩石{NEWLINE}吓了一跳！",
-   "en": "{VAR:0101:0} gazed surprisedly at{NEWLINE}the rock!",
+   "en": "{VAR:0101:0} looked at the rock{NEWLINE}and was startled!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/106"
+   "origin": "agent",
+   "notes": "US 0265/106 | RV067: grammar: unnatural 'gazed surprisedly'"
   },
   {
    "id": 107,
    "zh": "{VAR:0101:0}对着前面{NEWLINE}张大了嘴巴。",
-   "en": "{VAR:0101:0} is looking up with its{NEWLINE}mouth gaping open.",
+   "en": "{VAR:0101:0} is facing forward with its{NEWLINE}mouth gaping open.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/107"
+   "origin": "agent",
+   "notes": "US 0265/107 | RV067: meaning: zh 对着前面 = facing forward, not looking up"
   },
   {
    "id": 108,
    "zh": "{VAR:0101:0}对着前面{NEWLINE}张大了嘴巴。",
-   "en": "{VAR:0101:0} is looking up with its{NEWLINE}mouth wide open.",
+   "en": "{VAR:0101:0} is facing forward with its{NEWLINE}mouth wide open.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/108"
+   "origin": "agent",
+   "notes": "US 0265/108 | RV067: meaning: zh 对着前面 = facing forward, not looking up"
   },
   {
    "id": 109,
@@ -907,10 +907,10 @@
   {
    "id": 110,
    "zh": "{VAR:0101:0}{NEWLINE}转着手！",
-   "en": "{VAR:0101:0} is swinging its arms around{NEWLINE}and shouting!",
+   "en": "{VAR:0101:0} is whirling its arms around!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/110"
+   "origin": "agent",
+   "notes": "US 0265/110 | RV067: addition: zh 转着手; 'and shouting' not in zh"
   },
   {
    "id": 111,
@@ -969,10 +969,10 @@
   {
    "id": 117,
    "zh": "{VAR:0101:0}开心地{NEWLINE}问好！",
-   "en": "{VAR:0101:0} seems very happy to{NEWLINE}see you.",
+   "en": "{VAR:0101:0} is happily saying hello!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/117"
+   "origin": "agent",
+   "notes": "US 0265/117 | RV067: meaning: zh 开心地问好 = happily greets"
   },
   {
    "id": 118,
@@ -1145,10 +1145,10 @@
   {
    "id": 139,
    "zh": "{VAR:0101:0}鼓起干劲！",
-   "en": "{VAR:0101:0} let out a fighting cry!",
+   "en": "{VAR:0101:0} is getting fired up!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/139",
+   "origin": "agent",
+   "notes": "US 0265/139 | RV067: addition: zh 鼓起干劲 = psyched up; no cry",
    "qa_ignore": [
     "glossary:干劲"
    ]
@@ -1180,10 +1180,10 @@
   {
    "id": 143,
    "zh": "{VAR:0101:0}{NEWLINE}瞪着对方看！",
-   "en": "{VAR:0101:0} is glaring at the Team{NEWLINE}Rocket thug!",
+   "en": "{VAR:0101:0} is glaring at your foe!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/143"
+   "origin": "agent",
+   "notes": "US 0265/143 | RV067: meaning: zh 对方 only; 'Team Rocket thug' not in zh; same as #74"
   },
   {
    "id": 144,
@@ -1268,10 +1268,10 @@
   {
    "id": 154,
    "zh": "{VAR:0101:0}{NEWLINE}盯着树看。",
-   "en": "{VAR:0101:0} seems highly interested{NEWLINE}in the tree.",
+   "en": "{VAR:0101:0} is staring at the tree.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/154"
+   "origin": "agent",
+   "notes": "US 0265/154 | RV067: meaning: zh 盯着树看 = staring at the tree"
   },
   {
    "id": 155,
@@ -1284,18 +1284,18 @@
   {
    "id": 156,
    "zh": "{VAR:0101:0}{NEWLINE}紧张得有点僵硬。",
-   "en": "{VAR:0101:0} is getting tense with{NEWLINE}nervous energy.",
+   "en": "{VAR:0101:0} is so nervous it has gone a{NEWLINE}little stiff.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/156"
+   "origin": "agent",
+   "notes": "US 0265/156 | RV067: omission: zh 有点僵硬 stiff"
   },
   {
    "id": 157,
    "zh": "{VAR:0101:0}{NEWLINE}戳着草玩。",
-   "en": "{VAR:0101:0} is playing around, plucking{NEWLINE}bits of grass.",
+   "en": "{VAR:0101:0} is playfully poking{NEWLINE}at the grass.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/157"
+   "origin": "agent",
+   "notes": "US 0265/157 | RV067: meaning: zh 戳着草玩 = poking, not plucking"
   },
   {
    "id": 158,
@@ -1316,18 +1316,18 @@
   {
    "id": 160,
    "zh": "{VAR:0101:0}盯着{NEWLINE}快塌的地板看。",
-   "en": "{VAR:0101:0} is preoccupied by the{NEWLINE}floor, which seems like it may collapse.",
+   "en": "{VAR:0101:0} is staring at the floor,{NEWLINE}which looks like it may collapse.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/160"
+   "origin": "agent",
+   "notes": "US 0265/160 | RV067: meaning: zh 盯着 = staring"
   },
   {
    "id": 161,
    "zh": "{VAR:0101:0}盯着{NEWLINE}快塌的天花板看。",
-   "en": "{VAR:0101:0} is preoccupied by the{NEWLINE}ceiling, which seems like it may collapse.",
+   "en": "{VAR:0101:0} is staring at the ceiling,{NEWLINE}which looks like it may collapse.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/161"
+   "origin": "agent",
+   "notes": "US 0265/161 | RV067: meaning: zh 盯着 = staring"
   },
   {
    "id": 162,
@@ -1348,10 +1348,10 @@
   {
    "id": 164,
    "zh": "{VAR:0101:0}转动脖子{NEWLINE}气势汹汹！",
-   "en": "{VAR:0101:0} turned its head and let{NEWLINE}out a fighting yell!",
+   "en": "{VAR:0101:0} is swiveling its neck,{NEWLINE}looking fierce!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/164"
+   "origin": "agent",
+   "notes": "US 0265/164 | RV067: addition: zh 转动脖子气势汹汹; no yell"
   },
   {
    "id": 165,
@@ -1364,10 +1364,10 @@
   {
    "id": 166,
    "zh": "{VAR:0101:0}{NEWLINE}翻了个身！",
-   "en": "{VAR:0101:0} rolled around in circles!",
+   "en": "{VAR:0101:0} rolled over!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/166"
+   "origin": "agent",
+   "notes": "US 0265/166 | RV067: meaning: zh 翻了个身 = rolled over"
   },
   {
    "id": 167,
@@ -1407,18 +1407,18 @@
   {
    "id": 171,
    "zh": "{VAR:0101:0}{NEWLINE}精力十足地跳了起来！",
-   "en": "{VAR:0101:0} jumped happily into the{NEWLINE}air!",
+   "en": "{VAR:0101:0} jumped into the air,{NEWLINE}full of energy!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/171"
+   "origin": "agent",
+   "notes": "US 0265/171 | RV067: meaning: zh 精力十足 = full of energy"
   },
   {
    "id": 172,
    "zh": "{VAR:0101:0}{NEWLINE}玩着冰。",
-   "en": "{VAR:0101:0} is touching the ice.",
+   "en": "{VAR:0101:0} is playing with the ice.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/172"
+   "origin": "agent",
+   "notes": "US 0265/172 | RV067: meaning: zh 玩着冰 = playing with"
   },
   {
    "id": 173,
@@ -1442,10 +1442,10 @@
   {
    "id": 175,
    "zh": "{VAR:0101:0}{NEWLINE}盯着这边的脸看。",
-   "en": "{VAR:0101:0} has turned its face this{NEWLINE}way and is staring intently.",
+   "en": "{VAR:0101:0} is staring intently{NEWLINE}at your face.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/175"
+   "origin": "agent",
+   "notes": "US 0265/175 | RV067: meaning: zh 盯着这边的脸 = your face"
   },
   {
    "id": 176,
@@ -1554,10 +1554,10 @@
   {
    "id": 189,
    "zh": "{VAR:0101:0}{NEWLINE}尾巴上的火突然旺了起来！",
-   "en": "{VAR:0101:0} flared its fiery tail!",
+   "en": "{VAR:0101:0}’s tail flame{NEWLINE}suddenly flared up!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/189"
+   "origin": "agent",
+   "notes": "US 0265/189 | RV067: omission: zh 突然 suddenly"
   },
   {
    "id": 190,
@@ -1665,10 +1665,10 @@
   {
    "id": 201,
    "zh": "{VAR:0101:0}{NEWLINE}是在做准备运动吗？",
-   "en": "{VAR:0101:0} seems to be doing warm-up{NEWLINE}exercises...",
+   "en": "Is {VAR:0101:0} doing warm-up exercises?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/201"
+   "origin": "agent",
+   "notes": "US 0265/201 | RV067: meaning: zh is a question"
   },
   {
    "id": 202,
@@ -1681,10 +1681,10 @@
   {
    "id": 203,
    "zh": "{VAR:0101:0}很紧张地{NEWLINE}老实不动⋯⋯",
-   "en": "{VAR:0101:0} is being nervously quiet...",
+   "en": "{VAR:0101:0} is nervously keeping still...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/203"
+   "origin": "agent",
+   "notes": "US 0265/203 | RV067: meaning: zh 老实不动 = keeping still"
   },
   {
    "id": 204,
@@ -1737,26 +1737,26 @@
   {
    "id": 210,
    "zh": "{VAR:0101:0}{NEWLINE}稍微有点吃惊！",
-   "en": "{VAR:0101:0} seemed to tremble a little{NEWLINE}in surprise!",
+   "en": "{VAR:0101:0} was a little surprised!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/210"
+   "origin": "agent",
+   "notes": "US 0265/210 | RV067: addition: 'tremble' not in zh"
   },
   {
    "id": 211,
    "zh": "{VAR:0101:0}撞了上去！",
-   "en": "{VAR:0101:0} slipped and bumped into{NEWLINE}you!",
+   "en": "{VAR:0101:0} bumped into you!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/211"
+   "origin": "agent",
+   "notes": "US 0265/211 | RV067: addition: 'slipped' not in zh"
   },
   {
    "id": 212,
    "zh": "{VAR:0101:0}{NEWLINE}觉得太小太不舒服！",
-   "en": "{VAR:0101:0} is a bit nervous about the{NEWLINE}narrow space!",
+   "en": "{VAR:0101:0} finds it too cramped{NEWLINE}and uncomfortable!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/212"
+   "origin": "agent",
+   "notes": "US 0265/212 | RV067: meaning: zh 太小太不舒服 = cramped and uncomfortable"
   },
   {
    "id": 213,
@@ -1801,10 +1801,10 @@
   {
    "id": 218,
    "zh": "{VAR:0101:0}看着天空{NEWLINE}有点头晕！",
-   "en": "{VAR:0101:0} seems dazzled after{NEWLINE}seeing the sky!",
+   "en": "{VAR:0101:0} is a little dizzy from looking{NEWLINE}at the sky!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/218"
+   "origin": "agent",
+   "notes": "US 0265/218 | RV067: meaning: zh 头晕 = dizzy"
   },
   {
    "id": 219,
@@ -1841,18 +1841,18 @@
   {
    "id": 223,
    "zh": "{VAR:0101:0}似乎从{NEWLINE}瀑布中听到了什么！？",
-   "en": "{VAR:0101:0} seems to be hearing{NEWLINE}something from inside the waterfall...",
+   "en": "{VAR:0101:0} seems to hear something{NEWLINE}from the waterfall!?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/223"
+   "origin": "agent",
+   "notes": "US 0265/223 | RV067: meaning: zh ends !?; 'inside' not in zh"
   },
   {
    "id": 224,
    "zh": "{VAR:0101:0}似乎在{NEWLINE}瀑布中找到了什么！？",
-   "en": "{VAR:0101:0} seems to have found{NEWLINE}something inside the waterfall...?",
+   "en": "{VAR:0101:0} seems to have found{NEWLINE}something in the waterfall!?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/224"
+   "origin": "agent",
+   "notes": "US 0265/224 | RV067: meaning: zh ends !?"
   },
   {
    "id": 225,
@@ -1905,10 +1905,10 @@
   {
    "id": 231,
    "zh": "{VAR:0101:0}{NEWLINE}充满力量地大喊！",
-   "en": "{VAR:0101:0} is working hard to show{NEWLINE}off its mighty power!",
+   "en": "{VAR:0101:0} let out a mighty shout!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/231"
+   "origin": "agent",
+   "notes": "US 0265/231 | RV067: meaning: zh 充满力量地大喊 = shouted powerfully"
   },
   {
    "id": 232,
@@ -1945,10 +1945,10 @@
   {
    "id": 236,
    "zh": "{VAR:0101:0}{NEWLINE}似乎有点迷惑⋯⋯",
-   "en": "{VAR:0101:0} seems to be a little{NEWLINE}hesitant...",
+   "en": "{VAR:0101:0} seems a little confused...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/236"
+   "origin": "agent",
+   "notes": "US 0265/236 | RV067: meaning: zh 迷惑 = confused"
   },
   {
    "id": 237,
@@ -2073,10 +2073,10 @@
   {
    "id": 252,
    "zh": "{VAR:0101:0}陷进长草中{NEWLINE}非常烦躁！",
-   "en": "{VAR:0101:0} is tangled in the long{NEWLINE}grass!",
+   "en": "{VAR:0101:0} is stuck in the long grass{NEWLINE}and very irritated!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/252"
+   "origin": "agent",
+   "notes": "US 0265/252 | RV067: omission: zh 非常烦躁 very irritated"
   },
   {
    "id": 253,
@@ -2089,10 +2089,10 @@
   {
    "id": 254,
    "zh": "{VAR:0101:0}吃着{NEWLINE}长长的草。",
-   "en": "{VAR:0101:0} is biting at the tall{NEWLINE}grass!",
+   "en": "{VAR:0101:0} is munching on{NEWLINE}the long grass.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/254"
+   "origin": "agent",
+   "notes": "US 0265/254 | RV067: meaning: zh 吃着 = eating"
   },
   {
    "id": 255,
@@ -2169,10 +2169,10 @@
   {
    "id": 264,
    "zh": "{VAR:0101:0}不知怎么很开心！",
-   "en": "{VAR:0101:0} seems incredibly happy!",
+   "en": "{VAR:0101:0} is happy for some reason!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/264"
+   "origin": "agent",
+   "notes": "US 0265/264 | RV067: meaning: zh 不知怎么 = for some reason; no 'incredibly'"
   },
   {
    "id": 265,
@@ -2193,26 +2193,26 @@
   {
    "id": 267,
    "zh": "{VAR:0101:0}不知怎么{NEWLINE}很冷⋯⋯",
-   "en": "{VAR:0101:0} seems a little cold...",
+   "en": "{VAR:0101:0} feels cold{NEWLINE}for some reason...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/267"
+   "origin": "agent",
+   "notes": "US 0265/267 | RV067: meaning: zh 不知怎么很冷; no 'a little'"
   },
   {
    "id": 268,
    "zh": "{VAR:0101:0}不知怎么很高兴！",
-   "en": "{VAR:0101:0} seems to be enjoying this{NEWLINE}a little bit!",
+   "en": "{VAR:0101:0} is glad for some reason!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/268"
+   "origin": "agent",
+   "notes": "US 0265/268 | RV067: meaning: zh 不知怎么很高兴"
   },
   {
    "id": 269,
    "zh": "{VAR:0101:0}{NEWLINE}不知怎么很害羞。",
-   "en": "{VAR:0101:0} seems a little shy.",
+   "en": "{VAR:0101:0} is shy for some reason.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/269"
+   "origin": "agent",
+   "notes": "US 0265/269 | RV067: meaning: zh 不知怎么很害羞"
   },
   {
    "id": 270,
@@ -2249,10 +2249,10 @@
   {
    "id": 274,
    "zh": "{VAR:0101:0}被光{NEWLINE}晃到睁不开眼睛！",
-   "en": "{VAR:0101:0} is dazzled by the shiny{NEWLINE}brightness of the bridge!",
+   "en": "{VAR:0101:0} is so dazzled by the light,{NEWLINE}it can’t open its eyes!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/274"
+   "origin": "agent",
+   "notes": "US 0265/274 | RV067: addition: 'of the bridge' not in zh; eyes clause added"
   },
   {
    "id": 275,
@@ -2273,10 +2273,10 @@
   {
    "id": 277,
    "zh": "{VAR:0101:0}害羞地{NEWLINE}躲在了后面！",
-   "en": "{VAR:0101:0} hid behind you out of{NEWLINE}embarrassment, it seems!",
+   "en": "{VAR:0101:0} shyly hid behind you!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/277"
+   "origin": "agent",
+   "notes": "US 0265/277 | RV067: addition: 'it seems' not in zh"
   },
   {
    "id": 278,
@@ -2321,26 +2321,26 @@
   {
    "id": 283,
    "zh": "{VAR:0101:0}{NEWLINE}闭上了眼睛！",
-   "en": "{VAR:0101:0} shielded its vision{NEWLINE}against the sparkling light!",
+   "en": "{VAR:0101:0} closed its eyes!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/283"
+   "origin": "agent",
+   "notes": "US 0265/283 | RV067: addition: zh 闭上了眼睛 only"
   },
   {
    "id": 284,
    "zh": "{VAR:0101:0}{NEWLINE}跳着舞！",
-   "en": "{VAR:0101:0} is dancing and splashing{NEWLINE}around!",
+   "en": "{VAR:0101:0} is dancing!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/284"
+   "origin": "agent",
+   "notes": "US 0265/284 | RV067: addition: 'splashing' not in zh"
   },
   {
    "id": 285,
    "zh": "{VAR:0101:0}{NEWLINE}跳着舞！",
-   "en": "{VAR:0101:0} is dancing and splashing{NEWLINE}around!",
+   "en": "{VAR:0101:0} is dancing!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/285"
+   "origin": "agent",
+   "notes": "US 0265/285 | RV067: addition: 'splashing' not in zh"
   },
   {
    "id": 286,
@@ -2401,10 +2401,10 @@
   {
    "id": 293,
    "zh": "{VAR:0101:0}有点晕！",
-   "en": "{VAR:0101:0} is dizzy!",
+   "en": "{VAR:0101:0} is a little dizzy!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/293"
+   "origin": "agent",
+   "notes": "US 0265/293 | RV067: omission: zh 有点 a little"
   },
   {
    "id": 294,
@@ -2433,10 +2433,10 @@
   {
    "id": 297,
    "zh": "{VAR:0101:0}盯着{NEWLINE}猫老大像看！",
-   "en": "{VAR:0101:0} is glaring at the Persian{NEWLINE}statue!",
+   "en": "{VAR:0101:0} is staring at the{NEWLINE}Persian statue!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/297; modernised from US 0265#297"
+   "origin": "agent",
+   "notes": "US 0265/297; modernised from US 0265#297 | RV067: meaning: zh 盯着 = staring, not glaring"
   },
   {
    "id": 298,
@@ -2449,10 +2449,10 @@
   {
    "id": 299,
    "zh": "{VAR:0101:0}{NEWLINE}放出了孢子！",
-   "en": "{VAR:0101:0} sent a ring-shaped cloud{NEWLINE}of spores into the air!",
+   "en": "{VAR:0101:0} released spores!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/299",
+   "origin": "agent",
+   "notes": "US 0265/299 | RV067: addition: 'ring-shaped cloud' not in zh",
    "qa_ignore": [
     "glossary:孢子"
    ]
@@ -2484,10 +2484,10 @@
   {
    "id": 303,
    "zh": "{VAR:0101:0}放出火焰{NEWLINE}提高气势！",
-   "en": "{VAR:0101:0} emitted fire and shouted!",
+   "en": "{VAR:0101:0} breathed fire to psych{NEWLINE}itself up!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/303"
+   "origin": "agent",
+   "notes": "US 0265/303 | RV067: meaning: zh 提高气势 = psych up; no shout"
   },
   {
    "id": 304,
@@ -2588,10 +2588,10 @@
   {
    "id": 316,
    "zh": "{VAR:0101:0}{NEWLINE}在水上滑了一跤！",
-   "en": "{VAR:0101:0} is slipping in the water{NEWLINE}and almost fell over!",
+   "en": "{VAR:0101:0} slipped on the water!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/316"
+   "origin": "agent",
+   "notes": "US 0265/316 | RV067: meaning: zh 滑了一跤 = slipped (completed)"
   },
   {
    "id": 317,
@@ -2604,10 +2604,10 @@
   {
    "id": 318,
    "zh": "{VAR:0101:0}竖起耳朵{NEWLINE}聆听风的声音。",
-   "en": "{VAR:0101:0} is twitching its ears,{NEWLINE}listening to the sound of the wind.",
+   "en": "{VAR:0101:0} pricked up its ears,{NEWLINE}listening to the sound of the wind.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/318"
+   "origin": "agent",
+   "notes": "US 0265/318 | RV067: meaning: zh 竖起耳朵 = pricked up its ears"
   },
   {
    "id": 319,
@@ -2620,10 +2620,10 @@
   {
    "id": 320,
    "zh": "{VAR:0101:0}似乎对{NEWLINE}草帽很感兴趣。",
-   "en": "{VAR:0101:0} took notice of the straw{NEWLINE}hat.",
+   "en": "{VAR:0101:0} seems interested{NEWLINE}in the straw hat.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/320"
+   "origin": "agent",
+   "notes": "US 0265/320 | RV067: meaning: zh 似乎很感兴趣"
   },
   {
    "id": 321,
@@ -2636,10 +2636,10 @@
   {
    "id": 322,
    "zh": "{VAR:0101:0}闭上眼睛{NEWLINE}安静地呆着⋯⋯",
-   "en": "{VAR:0101:0} is being quiet, with a{NEWLINE}peaceful face...",
+   "en": "{VAR:0101:0} is staying quiet with its{NEWLINE}eyes closed...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/322"
+   "origin": "agent",
+   "notes": "US 0265/322 | RV067: omission: zh 闭上眼睛 eyes closed"
   },
   {
    "id": 323,
@@ -2668,10 +2668,10 @@
   {
    "id": 326,
    "zh": "{VAR:0101:0}盯着屏幕{NEWLINE}拿出气势！",
-   "en": "{VAR:0101:0} is crying out while looking{NEWLINE}at the monitors!",
+   "en": "{VAR:0101:0} is staring at the monitors,{NEWLINE}getting fired up!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/326"
+   "origin": "agent",
+   "notes": "US 0265/326 | RV067: meaning: zh 拿出气势 = psyching up; no cry"
   },
   {
    "id": 327,
@@ -2724,10 +2724,10 @@
   {
    "id": 333,
    "zh": "{VAR:0101:0}开心地{NEWLINE}盯着山看！",
-   "en": "{VAR:0101:0} is looking at the mountain{NEWLINE}as if anticipating climbing it.",
+   "en": "{VAR:0101:0} is happily staring{NEWLINE}at the mountain!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/333"
+   "origin": "agent",
+   "notes": "US 0265/333 | RV067: addition: 'anticipating climbing' not in zh; happily kept"
   },
   {
    "id": 334,
@@ -2778,10 +2778,10 @@
   {
    "id": 339,
    "zh": "{VAR:0101:0}在地板上{NEWLINE}滑了一跤！",
-   "en": "{VAR:0101:0} slipped on the floor and{NEWLINE}seems likely to fall!",
+   "en": "{VAR:0101:0} slipped on the floor!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/339"
+   "origin": "agent",
+   "notes": "US 0265/339 | RV067: meaning: zh 滑了一跤 = slipped (completed)"
   },
   {
    "id": 340,
@@ -2826,10 +2826,10 @@
   {
    "id": 345,
    "zh": "{VAR:0101:0}摇摇晃晃地{NEWLINE}摔了一跤！",
-   "en": "{VAR:0101:0} is wobbling and seems{NEWLINE}about to fall over.",
+   "en": "{VAR:0101:0} wobbled and fell over!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/345"
+   "origin": "agent",
+   "notes": "US 0265/345 | RV067: meaning: zh 摔了一跤 = fell (completed)"
   },
   {
    "id": 346,
@@ -2858,10 +2858,10 @@
   {
    "id": 349,
    "zh": "{VAR:0101:0}{NEWLINE}非常悠闲！",
-   "en": "{VAR:0101:0} is very composed and sure{NEWLINE}of itself.",
+   "en": "{VAR:0101:0} is very relaxed!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/349"
+   "origin": "agent",
+   "notes": "US 0265/349 | RV067: meaning: zh 非常悠闲 = very relaxed"
   },
   {
    "id": 350,
@@ -2930,10 +2930,10 @@
   {
    "id": 358,
    "zh": "{VAR:0101:0}{NEWLINE}突然放出了火焰！",
-   "en": "{VAR:0101:0} is vigorously breathing{NEWLINE}fire!",
+   "en": "{VAR:0101:0} suddenly breathed{NEWLINE}out flames!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/358"
+   "origin": "agent",
+   "notes": "US 0265/358 | RV067: meaning: zh 突然放出了火焰; no 'vigorously'"
   },
   {
    "id": 359,
@@ -3010,10 +3010,10 @@
   {
    "id": 368,
    "zh": "{VAR:0101:0}{NEWLINE}不安地看着高楼大厦。",
-   "en": "{VAR:0101:0} is gazing restlessly at{NEWLINE}the building.",
+   "en": "{VAR:0101:0} is uneasily looking at the{NEWLINE}tall buildings.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0265/368"
+   "origin": "agent",
+   "notes": "US 0265/368 | RV067: meaning: zh 不安地看着高楼大厦"
   },
   {
    "id": 369,

@@ -4376,7 +4376,7 @@
   {
    "id": "RV067",
    "group": "4-trainer",
-   "status": "todo",
+   "status": "done",
    "strings": 380,
    "labels": [
     "a027/0258 walking_pokemon_reactions [part 1/2]"
