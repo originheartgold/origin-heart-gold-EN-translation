@@ -211,6 +211,7 @@ def run_gate(name, command, report_path, log):
     from emu_harness import slot_wait_seconds
     if report_path.exists():
         report_path.unlink()
+    log.parent.mkdir(parents=True, exist_ok=True)
     waits = log.with_suffix('.slot-waits')
     waits.unlink(missing_ok=True)
     env = gate_env(waits)
