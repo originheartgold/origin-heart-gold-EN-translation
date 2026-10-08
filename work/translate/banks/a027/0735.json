@@ -696,10 +696,10 @@
   {
    "id": 80,
    "zh": "为了未来的战斗积蓄力量",
-   "en": "To save its power",
+   "en": "To save power for battles",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "RV045: omission: 为了未来的战斗 (for future battles) dropped",
    "category": "menu_touch_1line"
   },
   {

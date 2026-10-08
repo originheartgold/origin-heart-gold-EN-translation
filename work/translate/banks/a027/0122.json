@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "在这个岛上的精灵,{NEWLINE}也就是洛奇亚,{CLEAR}藏在瀑布深处{CLEAR}再没出现过。{SCROLL}如果有一名与{NEWLINE}精灵有着深刻羁绊的人{CLEAR}拿着某个与{CLEAR}洛奇亚相关的物品去那……{SCROLL}说不定洛奇亚{NEWLINE}会出现……",
-   "en": "Lugia, the Pokémon of the island, hid{NEWLINE}itself deep in the end of the waterfall{CLEAR}basin, and no one has seen it since...{SCROLL}If anyone who could restore deep trust{NEWLINE}between people and Pokémon were to{CLEAR}come here with something linked to{CLEAR}Lugia, it may show itself for such{CLEAR}a person...",
+   "en": "Lugia, the Pokémon of this island, hid{NEWLINE}deep behind the waterfall and has never{CLEAR}appeared since. If someone with a deep{CLEAR}bond with Pokémon went there carrying{CLEAR}something connected to Lugia... Lugia{CLEAR}might just appear...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0124/1; modernised from US 0124#1"
+   "origin": "agent",
+   "notes": "US 0124/1; modernised from US 0124#1 | RV045: meaning: US line changed the condition to restoring trust; zh is a person with deep bonds with Pokémon going there (D-1662)"
   },
   {
    "id": 2,

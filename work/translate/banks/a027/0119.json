@@ -332,10 +332,10 @@
   {
    "id": 38,
    "zh": "你刚刚的回答我不是很满意,{NEWLINE}加入探险队的事{CLEAR}我还是再考虑考虑吧。",
-   "en": "I’m not too happy with your answers.{NEWLINE}I think I’ll have to think it over some{CLEAR}more before joining an expedition.",
+   "en": "I’m not too happy with your answers.{NEWLINE}I think I’ll have to think it over some{CLEAR}more before joining the expedition.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV045: meaning: the specific expedition (加入探险队的事)"
   },
   {
    "id": 39,
@@ -1632,10 +1632,10 @@
   {
    "id": 199,
    "zh": "就是说啊,我们也是好不容易{NEWLINE}才来到这里的,{CLEAR}凭什么不让我们在这玩！",
-   "en": "Exactly! We worked hard to{NEWLINE}get here too. What gives you{CLEAR}the right to kick us out?!",
+   "en": "Exactly! We worked hard to get here{NEWLINE}too. What gives you the right to stop{CLEAR}us having fun here?!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV045: meaning: 凭什么不让我们在这玩 is barring them from playing here, not kicking them out"
   },
   {
    "id": 200,
@@ -1784,10 +1784,10 @@
   {
    "id": 218,
    "zh": "确实……我们的等级差太多,{NEWLINE}就不给伙伴你添麻烦了。{CLEAR}加油,收拾掉火箭队！",
-   "en": "True... Our levels are way{NEWLINE}too far apart. We won’t get{CLEAR}in your way, partner. Go get{CLEAR}‘em, take down Team Rocket!",
+   "en": "True... Our levels are way too far{NEWLINE}apart. We won’t get in your way,{CLEAR}partner. Go get ’em, take down{CLEAR}Team Rocket!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV045: grammar: apostrophe in ’em"
   },
   {
    "id": 219,
@@ -1832,10 +1832,10 @@
   {
    "id": 224,
    "zh": "{VAR:0103:0}『伙伴们,火箭队的首领坂木{NEWLINE}就在洞穴的另一个空间里,{CLEAR}我现在要赶去与他战斗,{CLEAR}为了大家的安全起见,{CLEAR}请先离开这里吧。",
-   "en": "{VAR:0103:0}: Everyone, Giovanni, the{NEWLINE}boss of Team Rocket, is in another{CLEAR}part of the cave. I’m going after{CLEAR}him to battle him now. For your own{CLEAR}safety, please leave this place.",
+   "en": "{VAR:0103:0}: Everyone, Giovanni, the boss{NEWLINE}of Team Rocket, is in another space{CLEAR}inside the cave. I’m going after him to{CLEAR}battle him now. For your own safety,{CLEAR}please leave this place.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV045: meaning: 另一个空间 kept as another space (spatial-distortion scene), D-1711"
   },
   {
    "id": 225,
@@ -1864,10 +1864,10 @@
   {
    "id": 228,
    "zh": "加油哦冠军伙伴！我们永远支持你！",
-   "en": "Go get ‘em, Champion partner!{NEWLINE}We’ll always be behind you!",
+   "en": "Go get ’em, Champion partner! We’ll{NEWLINE}always be behind you!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV045: grammar: apostrophe in ’em"
   },
   {
    "id": 229,

@@ -262,10 +262,10 @@
   {
    "id": 32,
    "zh": "不只是把洛奇亚召唤到了{NEWLINE}瀑布的前面,还成功地{CLEAR}让它收复成了自己的伙伴,{SCROLL}干得真是漂亮！{NEWLINE}我也已经{CLEAR}没有什么能说的了。{SCROLL}接下来的旅程,{NEWLINE}也要努力地继续走下去……",
-   "en": "You have not only made Lugia appear,{NEWLINE}but you also caught it...{SCROLL}You are so wonderful.{NEWLINE}There is nothing more for us to say.{SCROLL}Take good care of yourself in{NEWLINE}your journey...",
+   "en": "Not only did you summon Lugia before{NEWLINE}the waterfall, you also made it your{CLEAR}partner. Splendidly done! I have{CLEAR}nothing more to say. On the journey{CLEAR}ahead, keep pressing onward...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0125/6; modernised from US 0125#6"
+   "origin": "agent",
+   "notes": "US 0125/6; modernised from US 0125#6 | RV045: omission: US line dropped before the waterfall / made it your partner, changed 干得漂亮 and the closing wish"
   },
   {
    "id": 33,

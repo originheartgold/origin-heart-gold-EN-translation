@@ -446,10 +446,10 @@
   {
    "id": 55,
    "zh": "从这里到度假区还有很远吧？{NEWLINE}光是爬这个台阶我就要累死了。",
-   "en": "Is it still a long way from here{NEWLINE}to the Resort Zone? Just climbing{CLEAR}these stairs is wearing me out.",
+   "en": "Is it still a long way from here to the{NEWLINE}Resort Zone? Just climbing these stairs{CLEAR}is killing me.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV045: softened: 累死了 hyperbole kept"
   },
   {
    "id": 56,
