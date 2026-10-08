@@ -809,18 +809,18 @@
   {
    "id": 100,
    "zh": "{VAR:0103:0}说{NEWLINE}很想看看从蛋里{CLEAR}孵出的精灵喔！",
-   "en": "{VAR:0103:0} says they’d love to see the{NEWLINE}Pokémon that hatched from that Egg!",
+   "en": "I’d love to see the Pokémon that{NEWLINE}hatched from that Egg, {VAR:0103:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": " | RV053: meaning: zh ‘{player}说很想看看’; English had silently made Elm the speaker (D-1860; hack-finding logged)"
+   "notes": " | RV053: meaning: zh ‘{player}说很想看看’; English had silently made Elm the speaker (D-1860; hack-finding logged) | D-2272: fixed per D-2187 (user-approved hack slip)"
   },
   {
    "id": 101,
    "zh": "{VAR:0103:0}说{NEWLINE}很想看看从蛋里{CLEAR}孵出的精灵喔！",
-   "en": "{VAR:0103:0} says they’d love to see the{NEWLINE}Pokémon that hatched from that Egg!",
+   "en": "I’d love to see the Pokémon that{NEWLINE}hatched from that Egg, {VAR:0103:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": " | RV053: meaning: zh ‘{player}说很想看看’; English had silently made Elm the speaker (D-1860; hack-finding logged)"
+   "notes": " | RV053: meaning: zh ‘{player}说很想看看’; English had silently made Elm the speaker (D-1860; hack-finding logged) | D-2272: fixed per D-2187 (user-approved hack slip)"
   },
   {
    "id": 102,

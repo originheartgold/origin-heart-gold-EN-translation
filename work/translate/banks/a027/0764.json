@@ -150,18 +150,18 @@
   {
    "id": 18,
    "zh": "限制时间已确定,{NEWLINE}开始游戏！",
-   "en": "The time limit has been set.{NEWLINE}Let the game begin!",
+   "en": "The time limit has been reached.{NEWLINE}Let the game begin!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0776/18; ext-review RB-011 | Hack text error fixed with user approval (D-1373, D-1496). | RV121: meaning: 限制时间已确定 = the time limit is set, not reached (D-1922; hack-finding D-2268)"
+   "notes": "US 0776/18; ext-review RB-011 | Hack text error fixed with user approval (D-1373, D-1496). | RV121: meaning: 限制时间已确定 = the time limit is set, not reached (D-1922; hack-finding D-2268) | D-2272: fixed per D-2268 (user-approved hack slip)"
   },
   {
    "id": 19,
    "zh": "没有设定限制时间,{NEWLINE}人员没能集齐。{SCROLL}请从最初开始{NEWLINE}重新办理手续。{SCROLL}",
-   "en": "No time limit was set, and not{NEWLINE}enough members gathered.{SCROLL}Please register from the start again.{SCROLL}",
+   "en": "Not enough members gathered within{NEWLINE}the time limit.{SCROLL}Please register from the start again.{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0776/19; ext-review RB-011 | Hack text error fixed with user approval (D-1373, D-1496). | RV121: meaning: 没有设定限制时间 = no time limit was set; EN had silently repaired it (D-1922; hack-finding D-2268)"
+   "notes": "US 0776/19; ext-review RB-011 | Hack text error fixed with user approval (D-1373, D-1496). | RV121: meaning: 没有设定限制时间 = no time limit was set; EN had silently repaired it (D-1922; hack-finding D-2268) | D-2272: fixed per D-2268 (user-approved hack slip)"
   },
   {
    "id": 20,
@@ -174,10 +174,10 @@
   {
    "id": 21,
    "zh": "已经决定了限制时间,{NEWLINE}{VAR:0300:0}中止！{SCROLL}",
-   "en": "The time limit has been decided.{NEWLINE}The {VAR:0300:0} has been canceled!{SCROLL}",
+   "en": "The time limit has been reached.{NEWLINE}The {VAR:0300:0} has been canceled!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0776/21; ext-review RB-011 | Hack text error fixed with user approval (D-1373, D-1496). | RV121: meaning: 已经决定了限制时间 = the time limit has been decided; 中止 = canceled, as in #8 (D-1922; hack-finding D-2268)"
+   "notes": "US 0776/21; ext-review RB-011 | Hack text error fixed with user approval (D-1373, D-1496). | RV121: meaning: 已经决定了限制时间 = the time limit has been decided; 中止 = canceled, as in #8 (D-1922; hack-finding D-2268) | D-2272: fixed per D-2268 (user-approved hack slip)"
   },
   {
    "id": 22,

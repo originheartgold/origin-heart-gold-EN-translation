@@ -278,10 +278,10 @@
   {
    "id": 34,
    "zh": "小黄『{VAR:0103:0}哥哥,{NEWLINE}我能感觉得到阿姨真的非常热情好客,{CLEAR}来之前我心里还有点紧张和不安,{CLEAR}现在已经完全消失了。",
-   "en": "Yellow: {VAR:0103:0}, your mom is so warm{NEWLINE}and welcoming. I was a bit nervous{CLEAR}before I came, but now that’s all gone.",
+   "en": "Yellow: Big Bro {VAR:0103:0}, your mom is so{NEWLINE}warm and welcoming. I was a bit nervous{CLEAR}before I came, but now that’s all gone.",
    "status": "draft",
    "origin": "agent",
-   "notes": "ext-review RV-010"
+   "notes": "ext-review RV-010 | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 35,

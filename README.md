@@ -75,6 +75,7 @@ This is a free, non-commercial fan project and is not affiliated with or endorse
 
 - **Tools and scripts** (`work/tools/`, `work/translate/scripts/`, `work/glossary/*.py`): [Apache 2.0](LICENSE).
 - **Our own translation work and docs:** [CC0 1.0](LICENSE-CONTENT). Use them however you like, as far as the rights are ours to give.
+- **`work/tools/melonds_shim/`** (the emulator harness's melonDS shim and its build script): [GPL-3.0-or-later](work/tools/melonds_shim/LICENSE.md), because the shim links [melonDS](https://github.com/melonDS-emu/melonDS) (GPLv3). No melonDS source is in this repo. `work/tools/melonds.py` only loads the built library at run time and stays Apache 2.0.
 - **`work/tools/charmaps/charmap_zh_xzonn_gen4.tsv`:** [GPL-3.0](work/tools/charmaps/LICENSE-GPL-3.0.txt), from [Xzonn/PokemonChineseTranslationRevise](https://github.com/Xzonn/PokemonChineseTranslationRevise). `charmap_en.tsv` comes from pret's `charmap.txt`.
 - **Not covered by these licenses:** official Nintendo text and graphics, the hack's Chinese text, u/Shake69's v3 lines, the graphics in `work/graphics/` that are derived from the US ROM or from hg-engine (including the hg-engine assets in `work/graphics/vendor/`, free and non-commercial only, with credit), the vendored xdelta-wasm in `site/public/vendor/xdelta-wasm/` (Apache-2.0, see its `LICENSE.txt`; the Emscripten runtime inside it is MIT, see `LICENSE-emscripten.txt`) and the GPL-3.0 Chinese character table above. Each keeps its own owner's terms.
 

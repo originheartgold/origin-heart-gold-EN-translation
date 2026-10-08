@@ -202,7 +202,7 @@
    "en": "You’re carrying too many Pokémon.{NEWLINE}There’s no room for little Poliwag.{SCROLL}Sort out your party and come back.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | D-2272: 'party' for 背包 confirmed, same slip as D-2188 (user-approved hack slip)"
   },
   {
    "id": 25,

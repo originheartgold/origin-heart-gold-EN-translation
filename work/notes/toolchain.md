@@ -33,8 +33,20 @@ The build finds armips in this order: `build.py --armips PATH`, the `ARMIPS` env
 | Python | 3.14 | `build.VALIDATED_PYTHON` | warning only (build log, `check.py` prereq) |
 | ndspy, pillow | `work/tools/requirements-runtime.txt` (4.2.0, 12.3.0) | that file | warning only |
 | ruff, capstone | `work/tools/requirements-dev.txt` | that file | `check.py` (other findings / other listings) |
+| melonDS (harness backend only) | 1.1, commit `b86390e4428bf38ce4c1ce0e9ca446d6d25955e8` (below) | `work/tools/melonds_shim/build.py` `PIN_COMMIT` | `build.py` refuses another commit or modified tracked files; not used by the ROM build |
 
 Why xdelta3 is a pin: its output is not the same across versions. 3.2.0 writes an application header `<target name>#<hash>//<source name>#<hash>/` into the patch; 3.0.x and 3.1.0 write `<target>/<compression>/<source>/<compression>/`, and the lzma secondary compressor comes from the liblzma it is linked to. The patch is valid either way (the build re-applies it and compares the ROM), but its bytes, and so `xdelta_sha1`, differ. The names in that header are the base names of the files xdelta3 is given, so the build links the base and the ROM under the standard names (`Pokemon - HeartGold Version (USA).nds`, `origin_hg_v4.0.3_en_wip.nds`; `build.PATCH_SOURCE_NAME` / `PATCH_TARGET_NAME`) before encoding: a base dump saved under another name, or `--out`, no longer changes the patch. Python and the two packages only warn: nothing in the build is known to depend on them, and the expected hashes (`check.py --full`) and the repro check would show it if something did. The build report records every version it ran with (`"toolchain"`).
+
+### melonDS 1.1 (emulator harness backend)
+
+The emulator harness can run on melonDS instead of DeSmuME (`--emulator melonds`, [melonds_backend.md](melonds_backend.md)). This is a test tool only: the ROM build, the patch and `check.py` do not use it. Pin: the official release **melonDS 1.1** of <https://github.com/melonDS-emu/melonDS>, tag `1.1`, commit `b86390e4428bf38ce4c1ce0e9ca446d6d25955e8`. The tag is lightweight, so there is no tag object. melonDS is GPLv3. Our shim (`work/tools/melonds_shim/`) is GPLv3 too and keeps its own licence note; no melonDS source is in the repository.
+
+```sh
+git clone --depth 1 --branch 1.1 https://github.com/melonDS-emu/melonDS.git ../melonDS   # or build.py --fetch
+.venv/bin/python work/tools/melonds_shim/build.py      # --src (default ../melonDS or $MELONDS_SRC), --out (default work/build/melonds)
+```
+
+`build.py` checks the checkout's HEAD is the pinned commit and its tracked files are unmodified. It configures the core with `cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_QT_SDL=OFF -DENABLE_OGLRENDERER=OFF -DENABLE_GDBSTUB=OFF -DENABLE_JIT=OFF -DENABLE_LTO_RELEASE=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5` (the policy flag is for CMake 4) and builds the `core` target (`libcore.a`, `libteakra.a`). It then compiles `melonds_shim.cpp` with `clang++ -std=gnu++17 -O2 -fwrapv` against them into `work/build/melonds/libmelonds_shim.dylib` and records the versions and flags in `BUILD_INFO.txt` next to it. This configuration needs nothing beyond Apple clang and CMake: no Qt, SDL, libslirp, libarchive or zstd. Built and tested with Apple clang 21.0.0 and CMake 4.x on macOS arm64. The library is not reproducible byte for byte and is never committed or released, so no hash is recorded. The tag and commit are the pin. The built-in FreeBIOS is used, so no BIOS or firmware file is involved.
 
 ## Layout
 
@@ -199,6 +211,8 @@ Fixes added after these runs were written as armips sources from the start; each
 | `--without overworld-texture-frame-bounds` (= the develop full build above, xdelta `0241fd9f…`) | `2a052d2f2d78f04596352797fd501cdad4c6381e` |
 | `refactor/patches-rc` full, with `overworld-texture-frame-bounds` (xdelta `71d44f915f8a4a11863ceb43e703fd32914bb45a`): the RC's ROM with only the one arm9 byte changed | `fa34e72444401d7a966cc751cdbab0e54dad8d7c` |
 | `refactor/patches-rc` `--without overworld-texture-frame-bounds` (= the RC's, xdelta `588b931f…`) | `35e67a5f53b9a05e62ea8b38d2c73a4268001102` |
+| `bulbasaur-reflection-boundary` (D-2270; its first form was never committed, so there is no original build to compare): `--no-patch` full build on `fix/bulbasaur-reflection`; differs from the `--without bulbasaur-reflection-boundary` build below only in overlay 1, one byte at file offset 0x1191B (`DD` -> `DB`); arm9, arm7, y9 and every other file identical | `5d45d74b1a594d34582937f77287193377857291` |
+| `--without bulbasaur-reflection-boundary --no-patch` (same branch and workspace) | `75f83193df4629c34a9a78dcf1b52a5e1576f8c9` |
 
 These depend on the workspace text at the time (2026-10-08, branches `refactor/fix-format` and `refactor/patches-rc`); a translation change moves them. The per-binary golden SHA-1s in `test_asmpatch.py` (`GOLDEN`: every binary each fix changes, alone and all together, plus the y9 overlay table) do not depend on the text, so the test suite checks them on every run that has armips and the Chinese ROM. A change to a fix source that changes its bytes must update `GOLDEN` and say why.
 

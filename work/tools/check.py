@@ -517,7 +517,8 @@ def step_emu(armips, first: dict, work_dir, saves, jobs=3) -> str:
                             "--build-controls", "--jobs", str(jobs), "--armips", armips, "--sav-dir", str(saves),
                             "--out", str(out), "--overwrite",
                             "--rom-report", str(Path(work_dir) / "build_report.json")],
-                           cwd=REPO, stdout=f, stderr=subprocess.STDOUT)
+                           cwd=REPO, stdout=f, stderr=subprocess.STDOUT,
+                           env=dict(os.environ, EMU_HARNESS_EMULATOR="desmume"))   # approved digests are DeSmuME's
     try:
         report = json.loads((out / "fixes_report.json").read_text(encoding="utf-8"))
     except (OSError, ValueError):

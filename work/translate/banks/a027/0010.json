@@ -358,10 +358,10 @@
   {
    "id": 44,
    "zh": "在此无法获得信件！",
-   "en": "You can’t get Mail here!",
+   "en": "You can’t write Mail here!",
    "status": "draft",
    "origin": "agent",
-   "notes": "RV056: meaning: zh 获得 = get/obtain; English had silently followed JP 'write'; hack-finding logged"
+   "notes": "RV056: meaning: zh 获得 = get/obtain; English had silently followed JP 'write'; hack-finding logged | D-2272: fixed per D-2194 (user-approved hack slip)"
   },
   {
    "id": 45,

@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "柳伯『咱们的规则是你不能使用{NEWLINE}靠特性改变天气的精灵,{CLEAR}在这个条件下跟我来一场双打对战。{CLEAR}你现在的随身精灵不符合条件,{CLEAR}整理一下背包再来吧。",
-   "en": "Pryce: Our rule is that you may not use{NEWLINE}Pokémon whose Abilities change the{CLEAR}weather, and we fight a Double Battle.{SCROLL}The Pokémon you have with you{NEWLINE}do not meet that condition.{CLEAR}Sort out your Bag and come back.",
+   "en": "Pryce: Our rule is that you may not use{NEWLINE}Pokémon whose Abilities change the{CLEAR}weather, and we fight a Double Battle.{SCROLL}The Pokémon you have with you{NEWLINE}do not meet that condition.{CLEAR}Sort out your party and come back.",
    "status": "draft",
    "origin": "agent",
-   "notes": "RV046: meaning: zh says 背包 (Bag), not party; silent correction undone (D-1992), hack-finding logged (hack-finding D-2178)"
+   "notes": "RV046: meaning: zh says 背包 (Bag), not party; silent correction undone (D-1992), hack-finding logged (hack-finding D-2178) | D-2272: fixed per D-2178 (user-approved hack slip)"
   },
   {
    "id": 15,

@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "今天是星期一{NEWLINE}精灵们精力充沛的{NEWLINE}精灵比赛时间！",
-   "en": "Today’s Monday!{NEWLINE}It’s Pokémon Match time, when Pokémon{NEWLINE}are full of pep!",
+   "en": "Today’s Monday!{NEWLINE}It’s Pokémon March time, when Pokémon{NEWLINE}are full of pep!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0416/4 | RV070: meaning: zh says 比赛 (match/competition), not march (hack-finding logged; D-1819)"
+   "notes": "US 0416/4 | RV070: meaning: zh says 比赛 (match/competition), not march (hack-finding logged; D-1819) | D-2272: fixed per D-2236 (user-approved hack slip)"
   },
   {
    "id": 5,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "今天是星期三{NEWLINE}精灵们精力充沛的{NEWLINE}精灵比赛时间！",
-   "en": "Today’s Wednesday!{NEWLINE}It’s Pokémon Match time, when Pokémon{NEWLINE}are full of pep!",
+   "en": "Today’s Wednesday!{NEWLINE}It’s Pokémon March time, when Pokémon{NEWLINE}are full of pep!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0416/6 | RV070: meaning: zh says 比赛 (match/competition), not march (hack-finding logged; D-1819)"
+   "notes": "US 0416/6 | RV070: meaning: zh says 比赛 (match/competition), not march (hack-finding logged; D-1819) | D-2272: fixed per D-2236 (user-approved hack slip)"
   },
   {
    "id": 7,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "今天是星期五！{NEWLINE}精灵们精力充沛的{NEWLINE}精灵比赛时间！",
-   "en": "Today’s Friday!{NEWLINE}It’s Pokémon Match time, when Pokémon{NEWLINE}are full of pep!",
+   "en": "Today’s Friday!{NEWLINE}It’s Pokémon March time, when Pokémon{NEWLINE}are full of pep!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0416/8 | RV070: meaning: zh says 比赛 (match/competition), not march (hack-finding logged; D-1819)"
+   "notes": "US 0416/8 | RV070: meaning: zh says 比赛 (match/competition), not march (hack-finding logged; D-1819) | D-2272: fixed per D-2236 (user-approved hack slip)"
   },
   {
    "id": 9,
@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "今天是星期天！{NEWLINE}精灵们精力充沛的{NEWLINE}精灵比赛时间！",
-   "en": "Today’s Sunday!{NEWLINE}It’s Pokémon Match time, when Pokémon{NEWLINE}are full of pep!",
+   "en": "Today’s Sunday!{NEWLINE}It’s Pokémon March time, when Pokémon{NEWLINE}are full of pep!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0416/12 | RV070: meaning: zh says 比赛 (match/competition), not march (hack-finding logged; D-1819)"
+   "notes": "US 0416/12 | RV070: meaning: zh says 比赛 (match/competition), not march (hack-finding logged; D-1819) | D-2272: fixed per D-2236 (user-approved hack slip)"
   }
  ]
 }

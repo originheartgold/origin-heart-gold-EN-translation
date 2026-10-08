@@ -37,6 +37,15 @@ of the main checkout (also when run from an agent worktree).
     .venv/bin/python work/tools/emu_harness.py cleanup [--kill [--all]]                   # leftover harness processes
     python3 -m unittest discover -s work/tools -p test_emu_harness.py      # pure parts, no ROM needed
 
+**Second backend: melonDS 1.1** (`--emulator melonds` before the subcommand, or `Harness(..., emulator="melonds")`).
+It emulates the ARM9 protection unit, so NULL reads that DeSmuME tolerates freeze the game as on hardware (Rocket HQ,
+the Bulbasaur follower). It has no execution hooks, but it has data watchpoints and an ARM9 abort record. The `hang`
+subcommand walks from a save and judges hang/pass. Build, API, results and limits:
+[melonds_backend.md](melonds_backend.md).
+
+    .venv/bin/python work/tools/emu_harness.py hang --case rocket_hq --rom R --sav S --expect hang|pass   # melonDS
+    .venv/bin/python work/tools/emu_harness.py --emulator melonds info --sav S
+
 A boot plus teleport takes about 15 s; 20 Unown encounters take about 2–3 minutes (headless, ~300 fps).
 `--state FILE` writes a DeSmuME savestate right after the teleport; `Harness(rom, savestate=FILE)` then
 starts there in under a second.
@@ -1045,16 +1054,17 @@ exactly 6 px further right than on the control in every row; more name pixels th
 Graphics fixes are judged by screen crops: `fixed` only when the crop's digest (sha256 of its RGB pixels) is
 the approved one in `emu_fixes.APPROVED`, `original` when it equals the untouched Chinese ROM's crop (an extra
 `cn` run). Any other picture (a mirrored label, a wrong palette) is `unclear` and fails. Only the digests are in
-git; the crop images are game graphics. The approved digests were taken from run `work/build/hard4/run3` and
-are marked "approved by: pending user review"; the build and Chinese crops they come from are in
-`work/build/hard4/approve/` of the poke-patches worktree (`<crop>_build.png`, `<crop>_chinese.png`, git-ignored).
+git; the crop images are game graphics. The approved digests were taken from run `work/build/hard4/run3` (the summary
+type icon from a widened box, so the whole icon is in it) and approved by the user on 2026-10-08 after viewing
+the crops in `work/build/hard4/approve/` of the poke-patches worktree (`<crop>_build.png`, `<crop>_chinese.png`,
+git-ignored; `type-icon-summary_build_v2.png` is the widened crop).
 A crop change (another box, new art) needs a new approved digest.
 
 | Crop | Screen | Box (256x384 screenshot) |
 |---|---|---|
 | naming-tabs | naming screen: the four tabs and BACK / OK | 20,246 - 240,276 |
 | title-subtitle | title screen under the logo: 'Origin HeartGold' | 96,98 - 250,128 |
-| type-icon-summary | summary skills page: the first move's type icon | 8,203 - 38,216 |
+| type-icon-summary | summary skills page: the first move's type icon | 7,201 - 41,215 |
 | type-icon-battle | battle FIGHT menu: the first move's type icon | 16,247 - 49,261 |
 
     .venv/bin/python work/tools/emu_harness.py fixes --rom work/build/check/origin_hg_v4.0.3_en_wip.nds \
@@ -1095,6 +1105,7 @@ coverage list, the approved digests and the hooked addresses (checked against ea
 | text-speed | textspeed | Message 457#123 at NORMAL and FAST (Options bits 2-3): frames until the window's text stops changing; fixed needs NORMAL/FAST ≥ 2, original ≤ 1.25 | 28 / 8 frames | 29 / 29-30 frames (±1 between runs; the setting does nothing) |
 | msgload | msgload | memcheck.py's `summary` scenario (switch Pokémon on every summary page) | passed | allocation failure on heap 19 (6448 bytes), null write: the rc3 crash |
 | overworld-texture-frame-bounds | texture-bounds | The four `texture-bounds` cases, `--expect fixed` on the build, `--expect original` on the control | all 4 pass | all 4 reproduce the null load |
+| bulbasaur-reflection-boundary | reflection | `emu_reflection.py`, 2 scenes x Bulbasaur/Charmander/Onix (needs `market.sav` in `--sav-dir`), `--expect fixed` on the build, `--expect original` on the control (added 2026-10-08, run alone) | all 6 pass: no NULL lookup | all 6 pass: every Bulbasaur reflection call NULL, the others none |
 
 Result (observed 2026-10-08, branch hardening/emu, build of `develop` aab6efb plus this work, saves copied from
 `work/build/memcheck/`): `check.py --full --emu --emu-jobs 2` passes all 15 fix/scenario rows. The emu step took
@@ -1130,3 +1141,37 @@ Limits:
 - msgload: only the summary crash. The bag scenarios do not fail on the control (memcheck `bag`, `bag_full` on
   the build without msgload: passed, heap 6 with 112 and 2984 bytes to spare, warnings only), so the bag half
   of the fix is shown by memcheck's headroom figures, not by a crash.
+
+## Following-Pokémon water reflection: Bulbasaur NULL pointer
+
+`reflection` (`work/tools/emu_reflection.py`) checks the fix `work/patches/bulbasaur-reflection-boundary`
+(overlay 1, one byte at `021F629A`, `07 DD` -> `07 DB`, D-2270). With Bulbasaur following (sprite 428) the
+water-reflection resolver `021F61E8` picks the generic field object+0x10C, which is NULL for a follower,
+and the two reflection callbacks hand it to the graphics getters `0202451C` / `02024558`, which assert and
+read address 0xB6 / 0xB8. DeSmuME reads it and continues, so the test follows the call chain with read-only
+hooks (resolver entry for the follower's sprite and a reflection caller, the pointer load and its field,
+the return, both getters, their assertions) instead of waiting for a freeze.
+
+Each case restores one baseline state (Continue from the save), makes the species the only party Pokémon
+in RAM, warps with the game's Warp command and walks four steps along a pond shore. Scenes (`--scene`):
+`viridian` (the dry strip north of the Viridian City pond) and `route22` (the north shore of the Route 22
+pond, west of Misty and her Pokémon). Cases (`--case`): `bulbasaur`, `charmander`, `onix`.
+`--expect original`: Bulbasaur must show the NULL chain on every reflection call (field +0x10C, a NULL
+return, two NULL getter arguments, two assertions) and the others none; `--expect fixed`: no case may.
+Wrong branch bytes, a resolver that differs from the expected one (checked in the ROM before booting), a
+step that ends on the wrong tile, a hook error or no reflection call at all fail the run.
+
+```sh
+<primary-checkout>/.venv/bin/python work/tools/emu_harness.py reflection \
+  --rom <absolute-path-to-build-without-the-fix.nds> --sav <abs>/work/build/memcheck/market.sav \
+  --out work/build/reflection/without --expect original
+<primary-checkout>/.venv/bin/python work/tools/emu_harness.py reflection \
+  --rom <absolute-path-to-full-build.nds> --sav <abs>/work/build/memcheck/market.sav \
+  --out work/build/reflection/fixed --expect fixed
+```
+
+The untouched Chinese ROM passes `--expect original`. A fresh `report.json` per run holds the input hashes,
+per case the party, the steps, the branch bytes, counters, bounded samples (object, field, returned
+pointer, the follower's own pointer) and screenshots; existing reports are not overwritten. One emulator
+per run, about 40 s. Results of 2026-10-08 and the melonDS check still to do:
+[bulbasaur_reflection_fix.md](bulbasaur_reflection_fix.md).

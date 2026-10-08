@@ -6,18 +6,18 @@
   {
    "id": 0,
    "zh": "乔班尼！{NEWLINE}精灵学堂超棒呐！{SCROLL}当然了,不管是不是这里的正式学生,{NEWLINE}都可以从我这里学到{CLEAR}很多很多精灵知识。{SCROLL}那么你想知道什么？{NEWLINE}关于变强的秘诀,{CLEAR}想知道吗？{VAR:0200:0}",
-   "en": "Earl, I am! Wonderful is the Pokémon{NEWLINE}Academy, yes!{SCROLL}Of course, student or not, learn much{NEWLINE}about Pokémon from me you can!{SCROLL}So, what to know you want? The secret{NEWLINE}of getting stronger, hear it you want? {VAR:0200:0}",
+   "en": "I’m Earl! The Pokémon Academy is just{NEWLINE}the best!{SCROLL}Of course, regular student or not,{NEWLINE}anyone can learn lots and lots about{CLEAR}Pokémon from me.{SCROLL}So, what would you like to know? Want to{NEWLINE}hear the secret to getting stronger? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0560/0 | R001: Earl (乔班尼, US name) keeps the US inverted speech (D voice).; ext-review C012 | RV001: meaning: 'Want to be a winner is you?' was garbled; Chinese asks if you want the secret of getting stronger (voice kept pending D-1864)"
+   "notes": "US 0560/0 | R001: Earl (乔班尼, US name) keeps the US inverted speech (D voice).; ext-review C012 | RV001: meaning: 'Want to be a winner is you?' was garbled; Chinese asks if you want the secret of getting stronger (voice kept pending D-1864) | D-2273: Earl speaks plainly (no US Yoda-style order), retranslated from zh"
   },
   {
    "id": 1,
    "zh": "那么,我来教你吧！{SCROLL}精灵列表最左上,{NEWLINE}是首先出站的精灵,{CLEAR}如果能知道对方的精灵阵容,{CLEAR}根据实际情况更换首战精灵！{SCROLL}会在战斗一开始就{NEWLINE}就积累下很大优势！{SCROLL}还想知道什么？{VAR:0200:0}",
-   "en": "Good! Teach you, I will!{SCROLL}Top left of your party list, the Pokémon{NEWLINE}that battles first is.{SCROLL}Know the foe’s team, do you? Then{NEWLINE}switch your lead to match!{SCROLL}A big edge from the very start, that{NEWLINE}gives you!{SCROLL}More from me you want to hear? {VAR:0200:0}",
+   "en": "Then let me teach you!{SCROLL}The Pokémon at the top left of your{NEWLINE}party list is the one that battles{CLEAR}first. If you know the foe’s lineup,{CLEAR}switch your lead to suit the situation!{SCROLL}That gives you a big edge right from the{NEWLINE}start of the battle!{SCROLL}What else would you like to know? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0560/1 | R001: Hack rewrote Earl's lesson (lead Pokémon vs the foe's lineup); retranslated in Earl's US voice."
+   "notes": "US 0560/1 | R001: Hack rewrote Earl's lesson (lead Pokémon vs the foe's lineup); retranslated in Earl's US voice. | D-2273: Earl speaks plainly (no US Yoda-style order), retranslated from zh"
   },
   {
    "id": 2,
@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "那么,我来教你吧！{SCROLL}只要精灵出场战斗过,{NEWLINE}就能分得本次胜利的经验。{SCROLL}佩戴学习装置的精灵,{NEWLINE}不出场也能获得经验。{SCROLL}佩戴幸运蛋的精灵,{NEWLINE}因出场战斗而获得的经验{CLEAR}会提升很多！{SCROLL}活用这些方法{NEWLINE}让更多的精灵提高等级,{CLEAR}比只有一只强力精灵,{CLEAR}更容易在对战中取得优势{SCROLL}还想知道什么？{VAR:0200:0}",
-   "en": "Fine! Teach you, I will!{SCROLL}A Pokémon that comes out in battle, a{NEWLINE}share of the Exp. Points it gets.{SCROLL}Holding an Exp. Share, a Pokémon gets{NEWLINE}Exp. Points without even battling.{SCROLL}Holding a Lucky Egg, many more Exp.{NEWLINE}Points from battle it gets!{SCROLL}Use these to level up many Pokémon, you{NEWLINE}should. Better than one strong Pokémon{CLEAR}alone for winning battles, that is!{SCROLL}More from me you want to hear? {VAR:0200:0}",
+   "en": "Then let me teach you!{SCROLL}Any Pokémon that comes out in battle{NEWLINE}gets a share of the Exp. Points from{CLEAR}the win.{SCROLL}A Pokémon holding an Exp. Share gets{NEWLINE}Exp. Points even without battling.{SCROLL}A Pokémon holding a Lucky Egg gets a{NEWLINE}lot more Exp. Points from battling!{SCROLL}Use these to level up more of your{NEWLINE}Pokémon. That makes winning battles{CLEAR}easier than relying on just one{CLEAR}strong Pokémon!{SCROLL}What else would you like to know? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0560/3 | R001: Hack rewrote Earl's lesson (Exp. Share / Lucky Egg); retranslated in Earl's US voice."
+   "notes": "US 0560/3 | R001: Hack rewrote Earl's lesson (Exp. Share / Lucky Egg); retranslated in Earl's US voice. | D-2273: Earl speaks plainly (no US Yoda-style order), retranslated from zh"
   },
   {
    "id": 4,
@@ -46,18 +46,18 @@
   {
    "id": 5,
    "zh": "那么,我来教你吧！{SCROLL}这个世界没有逆属性大师！{SCROLL}属性相克在真正的战斗中至关重要,{NEWLINE}用克制对方的招式去攻击,{CLEAR}及时换上不易被克制的精灵,{CLEAR}多样化的对战才是聪明的！",
-   "en": "Fine! Teach you, I will!{SCROLL}In this world, flip type matchups{NEWLINE}around, no one can!{SCROLL}In real battles, type matchups{NEWLINE}everything are! Hit the foe with moves{CLEAR}it is weak to. Switch in Pokémon it{CLEAR}cannot hit well. Mix it up, and smart{CLEAR}battling it is!",
+   "en": "Then let me teach you!{SCROLL}No one in this world can turn type{NEWLINE}matchups upside down!{SCROLL}Type matchups are crucial in real{NEWLINE}battles! Attack with moves the foe is{CLEAR}weak to, and switch in time to Pokémon{CLEAR}it can’t easily counter. Mixing things up{CLEAR}is the smart way to battle!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0560/5 | R001: zh 这个世界没有逆属性大师 ('no inverse-type master in this world'): read as 'type matchups can't be flipped' (no Inverse Battles). Retranslated."
+   "notes": "US 0560/5 | R001: zh 这个世界没有逆属性大师 ('no inverse-type master in this world'): read as 'type matchups can't be flipped' (no Inverse Battles). Retranslated. | D-2273: Earl speaks plainly (no US Yoda-style order), retranslated from zh"
   },
   {
    "id": 6,
    "zh": "能在旅途中活用我刚刚所说的,{NEWLINE}你就已经足够厉害了。{SCROLL}要和抓到的精灵{NEWLINE}好好相处哦！",
-   "en": "Use what I taught on your journey, and{NEWLINE}strong enough you are!{SCROLL}Good friends with the Pokémon you{NEWLINE}catch, you must be!",
+   "en": "If you can put what I just told you to{NEWLINE}good use on your journey, you’re{CLEAR}already plenty strong!{SCROLL}And be sure to get along well with the{NEWLINE}Pokémon you catch!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0560/6 | R001: Hack-changed line; retranslated."
+   "notes": "US 0560/6 | R001: Hack-changed line; retranslated. | D-2273: Earl speaks plainly (no US Yoda-style order), retranslated from zh"
   },
   {
    "id": 7,
@@ -831,10 +831,10 @@
   {
    "id": 102,
    "zh": "乔班尼！{NEWLINE}精灵学堂超棒呐！{SCROLL}不管是不是这里的正式学生,{NEWLINE}都可以从我这里学到{CLEAR}很多很多精灵知识。{SCROLL}那么你想知道什么？{NEWLINE}关于变强的秘诀,{CLEAR}想知道吗？{VAR:0200:0}",
-   "en": "Earl, I am! Wonderful is the Pokémon{NEWLINE}Academy, yes!{SCROLL}Student or not, learn much about{NEWLINE}Pokémon from me you can!{SCROLL}So, what to know you want? The secret{NEWLINE}of getting stronger, hear it you want? {VAR:0200:0}",
+   "en": "I’m Earl! The Pokémon Academy is just{NEWLINE}the best!{SCROLL}Regular student or not, anyone can{NEWLINE}learn lots and lots about Pokémon{CLEAR}from me.{SCROLL}So, what would you like to know? Want to{NEWLINE}hear the secret to getting stronger? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "R001: Hack variant of #0 (drops 当然了); same US text.; ext-review C012 | RV001: meaning: same fix as #0 (voice kept pending D-1864)"
+   "notes": "R001: Hack variant of #0 (drops 当然了); same US text.; ext-review C012 | RV001: meaning: same fix as #0 (voice kept pending D-1864) | D-2273: Earl speaks plainly (no US Yoda-style order), retranslated from zh"
   },
   {
    "id": 103,

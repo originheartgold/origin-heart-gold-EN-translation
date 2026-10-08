@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "在这里两人可以联手合作与{NEWLINE}训练师进行多人战！{SCROLL}战斗之前要挑战轮盘,{SCROLL}轮盘停止后,{NEWLINE}会有很多各种活动发生。{SCROLL}活动会很大程度地改变{NEWLINE}战斗的走向！{SCROLL}当完成７个小游戏之后{NEWLINE}将获赠ＢＰ值！{SCROLL}而且,挑战之前可以在{NEWLINE}战斗轮盘寄存{CLEAR}精灵的道具。{CLEAR}另外,在多人战不能临时中断！{SCROLL}",
-   "en": "Here, two Trainers can team up for a{NEWLINE}Multi Battle against other Trainers!{SCROLL}Before each battle, you spin the game{NEWLINE}board.{SCROLL}When it stops, all sorts of events{NEWLINE}happen.{SCROLL}The events can greatly change how the{NEWLINE}battle goes!{SCROLL}When you complete seven mini-games, you{NEWLINE}will earn Battle Points (BP)!{SCROLL}Also, before your challenge, you may{NEWLINE}leave your Pokémon’s held items with{CLEAR}the Battle Arcade.{SCROLL}Please note: a Multi Battle challenge{NEWLINE}can’t be interrupted.{SCROLL}",
+   "en": "Here, two Trainers can team up for a{NEWLINE}Multi Battle against other Trainers!{SCROLL}Before each battle, you spin the game{NEWLINE}board.{SCROLL}When it stops, all sorts of events{NEWLINE}happen.{SCROLL}The events can greatly change how the{NEWLINE}battle goes!{SCROLL}When you complete seven matches, you{NEWLINE}will earn Battle Points (BP)!{SCROLL}Also, before your challenge, you may{NEWLINE}leave your Pokémon’s held items with{CLEAR}the Battle Arcade.{SCROLL}Please note: a Multi Battle challenge{NEWLINE}can’t be interrupted.{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0110/5 | RV044: meaning: US text restructured; zh says seven mini-games (hack-finding logged)"
+   "notes": "US 0110/5 | RV044: meaning: US text restructured; zh says seven mini-games (hack-finding logged) | D-2272: fixed per D-2177 (user-approved hack slip)"
   },
   {
    "id": 6,

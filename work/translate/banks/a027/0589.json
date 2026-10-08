@@ -1851,10 +1851,10 @@
   {
    "id": 230,
    "zh": "小蓝『妙蛙花,{NEWLINE}使用阳光烈焰终结呆河马！",
-   "en": "Green: Venusaur, finish off Slowbro with{NEWLINE}Solar Beam!",
+   "en": "Red: Venusaur, finish off Slowbro with{NEWLINE}Solar Beam!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Same zh as 0587 #62; English copied."
+   "notes": "Same zh as 0587 #62; English copied. | D-2272: fixed per D-2162 (user-approved hack slip)"
   },
   {
    "id": 231,

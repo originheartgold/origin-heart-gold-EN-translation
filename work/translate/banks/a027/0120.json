@@ -282,10 +282,10 @@
   {
    "id": 34,
    "zh": "冰冷岩石对冰系训练家来说{NEWLINE}是不可获取的道具,{CLEAR}我不会把它让给任何人的,{CLEAR}你接招吧！",
-   "en": "For an Ice-type Trainer, the Icy Rock{NEWLINE}is an item that’s impossible to come by.{CLEAR}I’m not handing it over to anyone.{CLEAR}Take this!",
+   "en": "For an Ice-type Trainer, the Icy Rock{NEWLINE}is an item you can’t do without.{CLEAR}I’m not handing it over to anyone.{CLEAR}Take this!",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 不可获取 read as typo for 不可或缺 (indispensable) | RV048: meaning: zh 不可获取 = unobtainable; silent typo-fix undone pending user approval (hack-finding logged; D-1714)"
+   "notes": "zh 不可获取 read as typo for 不可或缺 (indispensable) | RV048: meaning: zh 不可获取 = unobtainable; silent typo-fix undone pending user approval (hack-finding logged; D-1714) | D-2272: fixed per D-2183 (user-approved hack slip)"
   },
   {
    "id": 35,
@@ -389,10 +389,10 @@
   {
    "id": 47,
    "zh": "单打需要至少两只精灵,{NEWLINE}你身上的精灵数量不够！",
-   "en": "A Single Battle needs at least{NEWLINE}two Pokémon.{CLEAR}You don’t have enough with you!",
+   "en": "A Double Battle needs at least{NEWLINE}two Pokémon.{CLEAR}You don’t have enough with you!",
    "status": "draft",
    "origin": "agent",
-   "notes": "RV048: meaning: zh says 单打; silent fix to Double undone pending user approval (hack-finding logged; D-1715)"
+   "notes": "RV048: meaning: zh says 单打; silent fix to Double undone pending user approval (hack-finding logged; D-1715) | D-2272: fixed per D-2184 (user-approved hack slip)"
   },
   {
    "id": 48,

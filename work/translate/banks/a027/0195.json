@@ -671,26 +671,26 @@
   {
    "id": 79,
    "zh": "{VAR:0101:0}中毒了！",
-   "en": "{VAR:0101:0}{NEWLINE}was poisoned!",
+   "en": "{VAR:0101:0} was badly{NEWLINE}poisoned!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0197/79 | RV097: meaning: zh 中毒了 says only 'poisoned'; US 'badly' not in the Chinese (D-2201) (finding D-2254)"
+   "notes": "US 0197/79 | RV097: meaning: zh 中毒了 says only 'poisoned'; US 'badly' not in the Chinese (D-2201) (finding D-2254) | D-2272: fixed per D-2254 (user-approved hack slip)"
   },
   {
    "id": 80,
    "zh": "野生的{VAR:0101:0}中毒了！",
-   "en": "The wild {VAR:0101:0}{NEWLINE}was poisoned!",
+   "en": "The wild {VAR:0101:0} was badly{NEWLINE}poisoned!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0197/80 | RV097: meaning: zh 中毒了 says only 'poisoned'; US 'badly' not in the Chinese (D-2201) (finding D-2254)"
+   "notes": "US 0197/80 | RV097: meaning: zh 中毒了 says only 'poisoned'; US 'badly' not in the Chinese (D-2201) (finding D-2254) | D-2272: fixed per D-2254 (user-approved hack slip)"
   },
   {
    "id": 81,
    "zh": "对手的{VAR:0101:0}中毒了！",
-   "en": "The foe’s {VAR:0101:0}{NEWLINE}was poisoned!",
+   "en": "The foe’s {VAR:0101:0} was badly{NEWLINE}poisoned!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0197/81 | RV097: meaning: zh 中毒了 says only 'poisoned'; US 'badly' not in the Chinese (D-2201) (finding D-2254)"
+   "notes": "US 0197/81 | RV097: meaning: zh 中毒了 says only 'poisoned'; US 'badly' not in the Chinese (D-2201) (finding D-2254) | D-2272: fixed per D-2254 (user-approved hack slip)"
   },
   {
    "id": 82,
@@ -1283,18 +1283,18 @@
   {
    "id": 148,
    "zh": "我方的{VAR:0106:0}的攻击无效！",
-   "en": "The attack of your team’s{NEWLINE}{VAR:0106:0} had no effect!",
+   "en": "The effect of your team’s{NEWLINE}{VAR:0106:0} wore off!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0197/148 | RV097: meaning: zh 的攻击无效 = attack had no effect, not 'wore off'; suspected source mistranslation logged (finding D-2253)"
+   "notes": "US 0197/148 | RV097: meaning: zh 的攻击无效 = attack had no effect, not 'wore off'; suspected source mistranslation logged (finding D-2253) | D-2272: fixed per D-2253 (user-approved hack slip)"
   },
   {
    "id": 149,
    "zh": "对手的{VAR:0106:0}的攻击无效！",
-   "en": "The attack of the foe’s{NEWLINE}{VAR:0106:0} had no effect!",
+   "en": "The effect of the foe’s{NEWLINE}{VAR:0106:0} wore off!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0197/149 | RV097: meaning: zh 的攻击无效 = attack had no effect, not 'wore off'; suspected source mistranslation logged (finding D-2253)"
+   "notes": "US 0197/149 | RV097: meaning: zh 的攻击无效 = attack had no effect, not 'wore off'; suspected source mistranslation logged (finding D-2253) | D-2272: fixed per D-2253 (user-approved hack slip)"
   },
   {
    "id": 150,
@@ -1808,10 +1808,10 @@
   {
    "id": 208,
    "zh": "{VAR:0101:0}开始睡觉了！",
-   "en": "{VAR:0101:0} started{NEWLINE}sleeping!",
+   "en": "{VAR:0101:0} slept and{NEWLINE}became healthy!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0197/208 | RV097: addition: zh 开始睡觉了 = started sleeping; US 'became healthy' not in the Chinese (D-2201) (finding D-2254)",
+   "notes": "US 0197/208 | RV097: addition: zh 开始睡觉了 = started sleeping; US 'became healthy' not in the Chinese (D-2201) (finding D-2254) | D-2272: fixed per D-2254 (user-approved hack slip)",
    "qa_ignore": [
     "glossary:睡觉"
    ]
@@ -1819,10 +1819,10 @@
   {
    "id": 209,
    "zh": "野生的{VAR:0101:0}开始睡觉了！",
-   "en": "The wild {VAR:0101:0} started{NEWLINE}sleeping!",
+   "en": "The wild {VAR:0101:0} slept and{NEWLINE}became healthy!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0197/209 | RV097: addition: zh 开始睡觉了 = started sleeping; US 'became healthy' not in the Chinese (D-2201) (finding D-2254)",
+   "notes": "US 0197/209 | RV097: addition: zh 开始睡觉了 = started sleeping; US 'became healthy' not in the Chinese (D-2201) (finding D-2254) | D-2272: fixed per D-2254 (user-approved hack slip)",
    "qa_ignore": [
     "glossary:睡觉"
    ]
@@ -1830,10 +1830,10 @@
   {
    "id": 210,
    "zh": "对手的{VAR:0101:0}开始睡觉了！",
-   "en": "The foe’s {VAR:0101:0} started{NEWLINE}sleeping!",
+   "en": "The foe’s {VAR:0101:0} slept and{NEWLINE}became healthy!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0197/210 | RV097: addition: zh 开始睡觉了 = started sleeping; US 'became healthy' not in the Chinese (D-2201) (finding D-2254)",
+   "notes": "US 0197/210 | RV097: addition: zh 开始睡觉了 = started sleeping; US 'became healthy' not in the Chinese (D-2201) (finding D-2254) | D-2272: fixed per D-2254 (user-approved hack slip)",
    "qa_ignore": [
     "glossary:睡觉"
    ]
@@ -9905,26 +9905,26 @@
   {
    "id": 1168,
    "zh": "{VAR:0101:0}因为{VAR:0108:1}{NEWLINE}中毒了！",
-   "en": "{VAR:0101:0} was poisoned{NEWLINE}by the {VAR:0108:1}!",
+   "en": "{VAR:0101:0} was badly{NEWLINE}poisoned by the {VAR:0108:1}!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0197/1168 | RV099: meaning: zh 中毒了 says only \"poisoned\"; US \"badly\" not in the Chinese (D-2201), as RV097 #79-81 (finding D-2258)"
+   "notes": "US 0197/1168 | RV099: meaning: zh 中毒了 says only \"poisoned\"; US \"badly\" not in the Chinese (D-2201), as RV097 #79-81 (finding D-2258) | D-2272: fixed per D-2258 (user-approved hack slip)"
   },
   {
    "id": 1169,
    "zh": "野生的{VAR:0101:0}因为{VAR:0108:1}{NEWLINE}中毒了！",
-   "en": "The wild {VAR:0101:0} was poisoned{NEWLINE}by the {VAR:0108:1}!",
+   "en": "The wild {VAR:0101:0} was badly{NEWLINE}poisoned by the {VAR:0108:1}!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0197/1169 | RV099: meaning: zh 中毒了 says only \"poisoned\"; US \"badly\" not in the Chinese (D-2201), as RV097 #79-81 (finding D-2258)"
+   "notes": "US 0197/1169 | RV099: meaning: zh 中毒了 says only \"poisoned\"; US \"badly\" not in the Chinese (D-2201), as RV097 #79-81 (finding D-2258) | D-2272: fixed per D-2258 (user-approved hack slip)"
   },
   {
    "id": 1170,
    "zh": "对手的{VAR:0101:0}因为{VAR:0108:1}{NEWLINE}中毒了！",
-   "en": "The foe’s {VAR:0101:0} was poisoned{NEWLINE}by the {VAR:0108:1}!",
+   "en": "The foe’s {VAR:0101:0} was badly{NEWLINE}poisoned by the {VAR:0108:1}!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0197/1170 | RV099: meaning: zh 中毒了 says only \"poisoned\"; US \"badly\" not in the Chinese (D-2201), as RV097 #79-81 (finding D-2258)"
+   "notes": "US 0197/1170 | RV099: meaning: zh 中毒了 says only \"poisoned\"; US \"badly\" not in the Chinese (D-2201), as RV097 #79-81 (finding D-2258) | D-2272: fixed per D-2258 (user-approved hack slip)"
   },
   {
    "id": 1171,
@@ -10462,26 +10462,26 @@
   {
    "id": 1235,
    "zh": "{VAR:0101:0}{NEWLINE}没能使出技能！",
-   "en": "{VAR:0101:0} failed to{NEWLINE}use its move!",
+   "en": "It failed to affect{NEWLINE}{VAR:0101:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0197/1235 | RV099: meaning: zh 没能使出技能 = X failed to use its move; US \"It failed to affect X\" reverses the role (D-1681) (finding D-2258)"
+   "notes": "US 0197/1235 | RV099: meaning: zh 没能使出技能 = X failed to use its move; US \"It failed to affect X\" reverses the role (D-1681) (finding D-2258) | D-2272: fixed per D-2258 (user-approved hack slip)"
   },
   {
    "id": 1236,
    "zh": "野生的{VAR:0101:0}{NEWLINE}没能使出技能！",
-   "en": "The wild {VAR:0101:0} failed to{NEWLINE}use its move!",
+   "en": "It failed to affect{NEWLINE}the wild {VAR:0101:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0197/1236 | RV099: meaning: zh 没能使出技能 = X failed to use its move; US \"It failed to affect X\" reverses the role (D-1681) (finding D-2258)"
+   "notes": "US 0197/1236 | RV099: meaning: zh 没能使出技能 = X failed to use its move; US \"It failed to affect X\" reverses the role (D-1681) (finding D-2258) | D-2272: fixed per D-2258 (user-approved hack slip)"
   },
   {
    "id": 1237,
    "zh": "对手的{VAR:0101:0}{NEWLINE}没能使出技能！",
-   "en": "The foe’s {VAR:0101:0} failed to{NEWLINE}use its move!",
+   "en": "It failed to affect{NEWLINE}the foe’s {VAR:0101:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0197/1237 | RV099: meaning: zh 没能使出技能 = X failed to use its move; US \"It failed to affect X\" reverses the role (D-1681) (finding D-2258)"
+   "notes": "US 0197/1237 | RV099: meaning: zh 没能使出技能 = X failed to use its move; US \"It failed to affect X\" reverses the role (D-1681) (finding D-2258) | D-2272: fixed per D-2258 (user-approved hack slip)"
   },
   {
    "id": 1238,

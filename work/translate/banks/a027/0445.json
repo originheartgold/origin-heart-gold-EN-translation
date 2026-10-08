@@ -765,18 +765,18 @@
   {
    "id": 94,
    "zh": "小黄『谢谢{VAR:0103:0}哥哥！{NEWLINE}小拉拉是我的第一只口袋妖怪,{CLEAR}我会好好对它的！",
-   "en": "Yellow: Thank you, {VAR:0103:0}! Ratty is my{NEWLINE}very first Pokémon. I’ll take really{CLEAR}good care of it!",
+   "en": "Yellow: Thank you, Big Bro {VAR:0103:0}!{NEWLINE}Ratty is my very first Pokémon. I’ll{CLEAR}take really good care of it!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 95,
    "zh": "小黄『谢谢{VAR:0103:0}姐姐！{NEWLINE}小拉拉是我的第一只口袋妖怪,{CLEAR}我会好好对它的！",
-   "en": "Yellow: Thank you, {VAR:0103:0}! Ratty is my{NEWLINE}very first Pokémon. I’ll take really{CLEAR}good care of it!",
+   "en": "Yellow: Thank you, Big Sis {VAR:0103:0}!{NEWLINE}Ratty is my very first Pokémon. I’ll{CLEAR}take really good care of it!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 96,
@@ -813,18 +813,18 @@
   {
    "id": 100,
    "zh": "小黄『{VAR:0103:0}哥哥,{NEWLINE}我能跟小拉拉成为朋友多亏了你呢。{CLEAR}这是我以前钓到的珍珠,{CLEAR}送给你作为谢礼吧！",
-   "en": "Yellow: {VAR:0103:0}, I made friends with{NEWLINE}Ratty all thanks to you.{SCROLL}This is a Pearl I fished up a while ago.{NEWLINE}Please take it as thanks!",
+   "en": "Yellow: Big Bro {VAR:0103:0}, I made friends{NEWLINE}with Ratty all thanks to you.{SCROLL}This is a Pearl I fished up a while ago.{NEWLINE}Please take it as thanks!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 101,
    "zh": "小黄『{VAR:0103:0}姐姐,{NEWLINE}我能跟小拉拉成为朋友多亏了你呢。{CLEAR}这是我以前钓到的珍珠,{CLEAR}送给你作为谢礼吧！",
-   "en": "Yellow: {VAR:0103:0}, I made friends with{NEWLINE}Ratty all thanks to you.{SCROLL}This is a Pearl I fished up a while ago.{NEWLINE}Please take it as thanks!",
+   "en": "Yellow: Big Sis {VAR:0103:0}, I made friends{NEWLINE}with Ratty all thanks to you.{SCROLL}This is a Pearl I fished up a while ago.{NEWLINE}Please take it as thanks!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 102,
@@ -837,18 +837,18 @@
   {
    "id": 103,
    "zh": "小黄『{VAR:0103:0}哥哥,{NEWLINE}谢谢你帮我跟小拉拉成为了朋友。",
-   "en": "Yellow: {VAR:0103:0}, thank you for helping{NEWLINE}me make friends with Ratty.",
+   "en": "Yellow: Big Bro {VAR:0103:0}, thank you for{NEWLINE}helping me make friends with Ratty.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 104,
    "zh": "小黄『{VAR:0103:0}姐姐,{NEWLINE}谢谢你帮我跟小拉拉成为了朋友。",
-   "en": "Yellow: {VAR:0103:0}, thank you for helping{NEWLINE}me make friends with Ratty.",
+   "en": "Yellow: Big Sis {VAR:0103:0}, thank you for{NEWLINE}helping me make friends with Ratty.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 105,
@@ -1045,18 +1045,18 @@
   {
    "id": 129,
    "zh": "小黄『{VAR:0103:0}哥哥,我决定了。{NEWLINE}为了保护我的朋友们,{CLEAR}我也得不断变强才行,{CLEAR}所以我也会像你一样,{CLEAR}踏上走遍关东的修行之旅,{CLEAR}跟我的朋友们一起成长。",
-   "en": "Yellow: {VAR:0103:0}, I’ve made up my mind.{NEWLINE}To protect my friends, I need to keep{CLEAR}getting stronger.{SCROLL}So I’m going to do what you did: set off{NEWLINE}on a training journey all over Kanto...{SCROLL}and grow stronger together with my{NEWLINE}friends.",
+   "en": "Yellow: Big Bro {VAR:0103:0}, I’ve made up{NEWLINE}my mind. To protect my friends, I need{CLEAR}to keep getting stronger.{SCROLL}So I’m going to do what you did: set off{NEWLINE}on a training journey all over Kanto...{SCROLL}and grow stronger together with my{NEWLINE}friends.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 130,
    "zh": "小黄『{VAR:0103:0}姐姐,我决定了。{NEWLINE}为了保护我的朋友们,{CLEAR}我也得不断变强才行,{CLEAR}所以我也会像你一样,{CLEAR}踏上走遍关东的修行之旅,{CLEAR}跟我的朋友们一起成长。",
-   "en": "Yellow: {VAR:0103:0}, I’ve made up my mind.{NEWLINE}To protect my friends, I need to keep{CLEAR}getting stronger.{SCROLL}So I’m going to do what you did: set off{NEWLINE}on a training journey all over Kanto...{SCROLL}and grow stronger together with my{NEWLINE}friends.",
+   "en": "Yellow: Big Sis {VAR:0103:0}, I’ve made up{NEWLINE}my mind. To protect my friends, I need{CLEAR}to keep getting stronger.{SCROLL}So I’m going to do what you did: set off{NEWLINE}on a training journey all over Kanto...{SCROLL}and grow stronger together with my{NEWLINE}friends.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 131,
@@ -1093,18 +1093,18 @@
   {
    "id": 135,
    "zh": "小黄『啊！是{VAR:0103:0}哥哥啊！{NEWLINE}那个……我也通过石英大会的考验,{CLEAR}成为精英训练家了哦。{CLEAR}这都要多亏了{VAR:0103:0}哥哥{CLEAR}一直以来对我的鼓励和帮助。",
-   "en": "Yellow: Oh! It’s you, {VAR:0103:0}!{SCROLL}Um... I passed the Indigo Conference{NEWLINE}too. I’m an Ace Trainer now!{SCROLL}It’s all thanks to you, {VAR:0103:0}. You’ve{NEWLINE}always cheered me on and helped me.",
+   "en": "Yellow: Oh! It’s you, Big Bro {VAR:0103:0}!{SCROLL}Um... I passed the Indigo Conference{NEWLINE}too. I’m an Ace Trainer now!{SCROLL}It’s all thanks to you,{NEWLINE}Big Bro {VAR:0103:0}. You’ve always cheered{CLEAR}me on and helped me.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 136,
    "zh": "小黄『啊！是{VAR:0103:0}姐姐啊！{NEWLINE}那个……我也通过石英大会的考验,{CLEAR}成为精英训练家了哦。{CLEAR}这都要多亏了{VAR:0103:0}姐姐{CLEAR}一直以来对我的鼓励和帮助。",
-   "en": "Yellow: Oh! It’s you, {VAR:0103:0}!{SCROLL}Um... I passed the Indigo Conference{NEWLINE}too. I’m an Ace Trainer now!{SCROLL}It’s all thanks to you, {VAR:0103:0}. You’ve{NEWLINE}always cheered me on and helped me.",
+   "en": "Yellow: Oh! It’s you, Big Sis {VAR:0103:0}!{SCROLL}Um... I passed the Indigo Conference{NEWLINE}too. I’m an Ace Trainer now!{SCROLL}It’s all thanks to you,{NEWLINE}Big Sis {VAR:0103:0}. You’ve always cheered{CLEAR}me on and helped me.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 137,
@@ -1221,10 +1221,10 @@
   {
    "id": 151,
    "zh": "小黄『{VAR:0103:0}哥哥,最近还好吗？{NEWLINE}人家一直在这里等你哦。{CLEAR}能够在大战之后{CLEAR}享受跟你在一起的时光,{CLEAR}我感觉真的好幸福！",
-   "en": "Yellow: {VAR:0103:0}, how have you been?{NEWLINE}I’ve been waiting here for you.{SCROLL}Getting to spend time with you now that{NEWLINE}the big battle’s over... It makes me so{CLEAR}happy!",
+   "en": "Yellow: Big Bro {VAR:0103:0}, how have you{NEWLINE}been? I’ve been waiting here for you.{SCROLL}Getting to spend time with you now{NEWLINE}that the big battle’s over... It makes{CLEAR}me so happy!",
    "status": "draft",
    "origin": "agent",
-   "notes": "#151–242: Yellow romance route (male player), post-game dates: Mt. Silver, Resort Zone Couples Double Battle, meeting Mom (continues in 0442 #25+). | #151–242: Yellow romance route (male player), post-game dates: Mt. Silver, Resort Zone Couples Double Battle, meeting Mom (continues in 0442 #25+). | #151–242: Yellow romance route (male player), post-game dates: Mt. Silver, Resort Zone Couples Double Battle, meeting Mom (continues in 0442 #25+)."
+   "notes": "#151–242: Yellow romance route (male player), post-game dates: Mt. Silver, Resort Zone Couples Double Battle, meeting Mom (continues in 0442 #25+). | #151–242: Yellow romance route (male player), post-game dates: Mt. Silver, Resort Zone Couples Double Battle, meeting Mom (continues in 0442 #25+). | #151–242: Yellow romance route (male player), post-game dates: Mt. Silver, Resort Zone Couples Double Battle, meeting Mom (continues in 0442 #25+). | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 152,
@@ -1264,10 +1264,10 @@
   {
    "id": 156,
    "zh": "小黄『好啊好啊,{NEWLINE}我也想跟{VAR:0103:0}哥哥比试一下呢！{CLEAR}咱们这次是单打还是双打？",
-   "en": "Yellow: Yes, yes! I’ve wanted to battle{NEWLINE}you too, {VAR:0103:0}!{SCROLL}Single or Double Battle this time?",
+   "en": "Yellow: Yes, yes! I’ve wanted to battle{NEWLINE}you too, Big Bro {VAR:0103:0}!{SCROLL}Single or Double Battle this time?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 157,
@@ -1298,34 +1298,34 @@
   {
    "id": 160,
    "zh": "小黄『嗯,那等下次有机会{NEWLINE}咱们再对战吧,{CLEAR}{VAR:0103:0}哥哥你可不要让我等太久哦。",
-   "en": "Yellow: Okay. Let’s battle next time,{NEWLINE}then.{SCROLL}Don’t keep me waiting too long,{NEWLINE}{VAR:0103:0}!",
+   "en": "Yellow: Okay. Let’s battle next time,{NEWLINE}then.{SCROLL}Don’t keep me waiting too long,{NEWLINE}Big Bro {VAR:0103:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 161,
    "zh": "小黄『{VAR:0103:0}哥哥,{NEWLINE}这是我的最强伙伴,{CLEAR}请你看看我们之间的羁绊！",
-   "en": "Yellow: {VAR:0103:0}, this is my strongest{NEWLINE}partner. Look at the bond between us!",
+   "en": "Yellow: Big Bro {VAR:0103:0}, this is my{NEWLINE}strongest partner. Look at the bond{CLEAR}between us!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 162,
    "zh": "小黄『真不愧是{VAR:0103:0}哥哥,{NEWLINE}能够跟你在一起真是太好了。",
-   "en": "Yellow: You really are amazing, {VAR:0103:0}.{NEWLINE}I’m so glad I get to be with you.",
+   "en": "Yellow: You really are amazing,{NEWLINE}Big Bro {VAR:0103:0}. I’m so glad I get to{CLEAR}be with you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 163,
    "zh": "小黄『{VAR:0103:0}哥哥,{NEWLINE}你身上的精灵没有带够,{CLEAR}双打要至少两只精灵才行。",
-   "en": "Yellow: {VAR:0103:0}, you don’t have enough{NEWLINE}Pokémon with you. A Double Battle needs{CLEAR}at least two.",
+   "en": "Yellow: Big Bro {VAR:0103:0}, you don’t have{NEWLINE}enough Pokémon with you. A Double{CLEAR}Battle needs at least two.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 164,
@@ -1338,10 +1338,10 @@
   {
    "id": 165,
    "zh": "小黄『是啊,我担心如果跑远了,{NEWLINE}万一{VAR:0103:0}哥哥来常磐市{CLEAR}找不到我的话可就糟了。",
-   "en": "Yellow: Yeah. I was worried that if I{NEWLINE}went too far, you might come to Viridian{CLEAR}City and not find me, {VAR:0103:0}.",
+   "en": "Yellow: Yeah. I was worried that if I{NEWLINE}went too far, you might come to Viridian{CLEAR}City and not find me, Big Bro {VAR:0103:0}.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 166,
@@ -1354,10 +1354,10 @@
   {
    "id": 167,
    "zh": "小黄『好呀,{VAR:0103:0}哥哥想去哪？",
-   "en": "Yellow: Okay! Where do you want to go,{NEWLINE}{VAR:0103:0}?",
+   "en": "Yellow: Okay! Where do you want to go,{NEWLINE}Big Bro {VAR:0103:0}?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 168,
@@ -1370,10 +1370,10 @@
   {
    "id": 169,
    "zh": "小黄『嗯！上次在白银山{NEWLINE}只想着白银大会的战斗了,{CLEAR}都没有机会跟{VAR:0103:0}哥哥{CLEAR}一起欣赏山上的风景。",
-   "en": "Yellow: Yes! Last time on Mt. Silver, all{NEWLINE}I could think about was the Silver{CLEAR}Conference.{SCROLL}I never got the chance to enjoy the{NEWLINE}view with you, {VAR:0103:0}.",
+   "en": "Yellow: Yes! Last time on{NEWLINE}Mt. Silver, all I could think about{CLEAR}was the Silver Conference.{SCROLL}I never got the chance to enjoy the{NEWLINE}view with you, Big Bro {VAR:0103:0}.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 170,
@@ -1394,10 +1394,10 @@
   {
    "id": 172,
    "zh": "小黄『对啊,当时这里有好多人,{NEWLINE}我想跟{VAR:0103:0}哥哥{CLEAR}多说两句话都没有机会。{CLEAR}不过现在好了,{CLEAR}现在这里只有我们两个人,{CLEAR}只属于我们。{CLEAR}就像……{CLEAR}就像我只属于{VAR:0103:0}哥哥一样……",
-   "en": "Yellow: Right. There were so many{NEWLINE}people here back then...{SCROLL}I couldn’t even get a few words in with{NEWLINE}you, {VAR:0103:0}.{SCROLL}But it’s different now. It’s just the{NEWLINE}two of us here. Only us...{SCROLL}Just like... just like how I’m only{NEWLINE}yours, {VAR:0103:0}...",
+   "en": "Yellow: Right. There were so many{NEWLINE}people here back then...{SCROLL}I couldn’t even get a few words in with{NEWLINE}you, Big Bro {VAR:0103:0}.{SCROLL}But it’s different now. It’s just the{NEWLINE}two of us here. Only us...{SCROLL}Just like... just like how I’m only{NEWLINE}yours, Big Bro {VAR:0103:0}...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 173,
@@ -1442,10 +1442,10 @@
   {
    "id": 178,
    "zh": "小黄『当然啦,{NEWLINE}{VAR:0103:0}哥哥当时受伤在这儿疗养,{CLEAR}我为了见你一面,{CLEAR}费了好大功夫才找到这里。",
-   "en": "Yellow: Of course! You were recovering{NEWLINE}from your injuries here, {VAR:0103:0}.{SCROLL}I went to so much trouble to find this{NEWLINE}place, just so I could see you.",
+   "en": "Yellow: Of course! You were{NEWLINE}recovering from your injuries{CLEAR}here, Big Bro {VAR:0103:0}.{SCROLL}I went to so much trouble to find this{NEWLINE}place, just so I could see you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 179,
@@ -1458,10 +1458,10 @@
   {
    "id": 180,
    "zh": "小黄『我也觉得……{NEWLINE}能跟{VAR:0103:0}哥哥在一起真好……",
-   "en": "Yellow: I feel the same... I’m so glad{NEWLINE}I’m with you, {VAR:0103:0}...",
+   "en": "Yellow: I feel the same... I’m so glad{NEWLINE}I’m with you, Big Bro {VAR:0103:0}...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 181,
@@ -1474,10 +1474,10 @@
   {
    "id": 182,
    "zh": "小黄『啊！{VAR:0103:0}哥哥！",
-   "en": "Yellow: Ah! {VAR:0103:0}!",
+   "en": "Yellow: Ah! Big Bro {VAR:0103:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 183,
@@ -1506,10 +1506,10 @@
   {
    "id": 186,
    "zh": "小黄『嗯,我会一直在这儿{NEWLINE}等着{VAR:0103:0}哥哥的。",
-   "en": "Yellow: Mm-hmm. I’ll always be right{NEWLINE}here waiting for you, {VAR:0103:0}.",
+   "en": "Yellow: Mm-hmm. I’ll always be right{NEWLINE}here waiting for you, Big Bro {VAR:0103:0}.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 187,
@@ -1530,10 +1530,10 @@
   {
    "id": 189,
    "zh": "小黄『哇,{VAR:0103:0}哥哥,这里好热闹啊！{NEWLINE}我还是第一次来度假区这种地方呢。",
-   "en": "Yellow: Wow, {VAR:0103:0}, it’s so lively{NEWLINE}here! It’s my first time at a resort{CLEAR}like this.",
+   "en": "Yellow: Wow, Big Bro {VAR:0103:0}, it’s so{NEWLINE}lively here! It’s my first time at a{CLEAR}resort like this.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 190,
@@ -1562,10 +1562,10 @@
   {
    "id": 193,
    "zh": "小黄『{VAR:0103:0}哥哥,咱们过去看看吧！",
-   "en": "Yellow: {VAR:0103:0}, let’s go take a look!",
+   "en": "Yellow: Big Bro {VAR:0103:0}, let’s go take{NEWLINE}a look!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 194,
@@ -1642,10 +1642,10 @@
   {
    "id": 203,
    "zh": "小黄『只要跟{VAR:0103:0}哥哥一起,{NEWLINE}干什么我都愿意！",
-   "en": "Yellow: As long as it’s with you,{NEWLINE}{VAR:0103:0}, I’ll do anything!",
+   "en": "Yellow: As long as it’s with you,{NEWLINE}Big Bro {VAR:0103:0}, I’ll do anything!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 204,
@@ -1698,10 +1698,10 @@
   {
    "id": 210,
    "zh": "小黄『嗯,我要跟{VAR:0103:0}哥哥一起,{NEWLINE}获得大家的祝福！",
-   "en": "Yellow: Okay! I’m going to win{NEWLINE}everyone’s blessing together with you,{CLEAR}{VAR:0103:0}!",
+   "en": "Yellow: Okay! I’m going to win{NEWLINE}everyone’s blessing together with{CLEAR}you, Big Bro {VAR:0103:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 211,
@@ -1850,10 +1850,10 @@
   {
    "id": 229,
    "zh": "小黄『{VAR:0103:0}哥哥,{NEWLINE}你就像天上的太阳一样,{CLEAR}照亮了我生活中的每一个角落。{CLEAR}从今往后无论是富贵还是穷困、{CLEAR}健康还是疾病、顺境还是逆境,{CLEAR}我都将永远陪在你的身边,{CLEAR}直到永远……",
-   "en": "Yellow: {VAR:0103:0}, you’re like the sun in{NEWLINE}the sky. You light up every corner of{CLEAR}my life.{SCROLL}From now on, for richer or poorer, in{NEWLINE}sickness and in health, in good times{CLEAR}and in bad...{SCROLL}I’ll always be by your side. Forever and{NEWLINE}always...",
+   "en": "Yellow: Big Bro {VAR:0103:0}, you’re like{NEWLINE}the sun in the sky. You light up every{CLEAR}corner of my life.{SCROLL}From now on, for richer or poorer, in{NEWLINE}sickness and in health, in good times{CLEAR}and in bad...{SCROLL}I’ll always be by your side. Forever and{NEWLINE}always...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 230,
@@ -1874,10 +1874,10 @@
   {
    "id": 232,
    "zh": "小黄『{VAR:0103:0}哥哥……",
-   "en": "Yellow: {VAR:0103:0}...",
+   "en": "Yellow: Big Bro {VAR:0103:0}...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 233,
@@ -1890,10 +1890,10 @@
   {
    "id": 234,
    "zh": "小黄『但是今后我和{VAR:0103:0}哥哥{NEWLINE}再也不会走散……",
-   "en": "Yellow: But from now on, {VAR:0103:0}, you{NEWLINE}and I will never go our separate ways...",
+   "en": "Yellow: But from now on,{NEWLINE}Big Bro {VAR:0103:0}, you and I will never{CLEAR}go our separate ways...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 235,
@@ -1931,10 +1931,10 @@
   {
    "id": 239,
    "zh": "小黄『啊！要去见{VAR:0103:0}哥哥的妈妈！？{NEWLINE}这个我……感觉好害羞啊……",
-   "en": "Yellow: Ah! Meet your mom, {VAR:0103:0}!?{NEWLINE}I... That’s so embarrassing...",
+   "en": "Yellow: Ah! Meet your mom,{NEWLINE}Big Bro {VAR:0103:0}!? I... That’s{CLEAR}so embarrassing...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 240,
@@ -1947,10 +1947,10 @@
   {
    "id": 241,
    "zh": "小黄『这个……我……{NEWLINE}嗯……好吧……我跟{VAR:0103:0}哥哥回真新镇……",
-   "en": "Yellow: W-well... I... Um... Okay... I’ll{NEWLINE}go to Pallet Town with you, {VAR:0103:0}...",
+   "en": "Yellow: W-well... I... Um...{NEWLINE}Okay... I’ll go to Pallet Town with{CLEAR}you, Big Bro {VAR:0103:0}...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 242,

@@ -305,6 +305,24 @@ class SaveFile:
             else:
                 self.data[a:a + MAP_OBJECT_SIZE] = bytes(MAP_OBJECT_SIZE)
 
+    def party(self):
+        a = self._a(ARR_PARTY)
+        count, = struct.unpack_from("<I", self.data, a + 4)
+        return [decode_party_pokemon(bytes(self.data[a + 8 + 236 * i:a + 8 + 236 * (i + 1)]))
+                for i in range(min(count, 6))]
+
+    def edit_party_mon(self, slot, **fields):
+        """Boxed fields of a party Pokemon (species, item, form, moves, ability; see encode_pokemon), as
+        Harness.edit_party_mon does in RAM. With Continue the game builds the lead's follower from it."""
+        a = self._a(ARR_PARTY, 8 + 236 * slot)
+        self.data[a:a + 136] = encode_pokemon(bytes(self.data[a:a + 136]), **fields)
+
+    def set_party_count(self, n):
+        """Keep the first n party Pokemon (1..6); the others stay in the file but the game ignores them."""
+        if not 1 <= n <= 6:
+            raise ValueError("party count must be 1..6")
+        struct.pack_into("<I", self.data, self._a(ARR_PARTY, 4), n)
+
     def write(self, path):
         struct.pack_into("<H", self.data, self.base + GENERAL_SIZE - 2, self._crc(self.base))
         Path(path).write_bytes(bytes(self.data))
@@ -432,23 +450,178 @@ class MapGrid:
         return None
 
 
+EMULATORS = ("desmume", "melonds")
+
+
+def default_emulator():
+    """The backend a Harness uses when none is given: $EMU_HARNESS_EMULATOR (set by --emulator), else DeSmuME."""
+    name = os.environ.get("EMU_HARNESS_EMULATOR", "desmume")
+    if name not in EMULATORS:
+        raise ValueError(f"EMU_HARNESS_EMULATOR={name!r}; choose one of {', '.join(EMULATORS)}")
+    return name
+
+
+class _MelonMemory:
+    """The slice of py-desmume's memory API the Harness uses, over melonds.MelonDS."""
+
+    def __init__(self, m):
+        self.m = m
+
+    def __getitem__(self, s):
+        if isinstance(s, slice):
+            return self.m.read(s.start, s.stop - s.start)
+        return self.m.u8(s)
+
+    def read_byte(self, a):
+        return self.m.u8(a)
+
+    def read_short(self, a):
+        return self.m.u16(a)
+
+    def read_long(self, a):
+        return self.m.u32(a)
+
+    def write_byte(self, a, v):
+        self.m.w8(a, v)
+
+    def write_short(self, a, v):
+        self.m.w16(a, v)
+
+    def write_long(self, a, v):
+        self.m.w32(a, v)
+
+    def _no_hooks(self, *a, **k):
+        raise NotImplementedError("the melonDS backend has no execution or access callbacks: use "
+                                  "Harness.watch()/watch_hits() (buffered data watchpoints) and "
+                                  "Harness.cpu_exceptions(); see work/notes/melonds_backend.md")
+
+    register_exec = register_read = register_write = _no_hooks
+
+
+class _MelonRegs:
+    """Live ARM9 registers (py-desmume's register_arm9 shape: .r[i], .pc, .sp, .lr, .cpsr)."""
+
+    def __init__(self, m):
+        self.m = m
+
+    @property
+    def r(self):
+        return self.m.regs()["r"]
+
+    @property
+    def pc(self):
+        return self.r[15]
+
+    @property
+    def sp(self):
+        return self.r[13]
+
+    @property
+    def lr(self):
+        return self.r[14]
+
+    @property
+    def cpsr(self):
+        return self.m.regs()["cpsr"]
+
+
+class _MelonInput:
+    def __init__(self, m):
+        self.m = m
+
+    def keypad_add_key(self, key):
+        self.m.hold(key)
+
+    def keypad_rm_key(self, key):
+        self.m.release(key)
+
+    def touch_set_pos(self, x, y):
+        self.m.touch(x, y)
+
+    def touch_release(self):
+        self.m.release_touch()
+
+
+class _MelonStates:
+    def __init__(self, m):
+        self.m = m
+
+    def save_file(self, path):
+        self.m.save_state_file(path)
+
+    def load_file(self, path):
+        self.m.load_state_file(path)
+
+
+class _MelonEmu:
+    """melonds.MelonDS dressed as the part of py-desmume's DeSmuME object the Harness calls (emu.cycle,
+    emu.input, emu.memory, emu.savestate, emu.screenshot, emu.reset, emu.destroy). .melon is the full API."""
+
+    def __init__(self, rom, sav=None, rtc=None):
+        import melonds
+        self.melon = melonds.MelonDS()
+        try:
+            data = Path(sav).read_bytes() if sav else None
+            if data is not None and len(data) != 524288:
+                raise RuntimeError(f"expected a raw 524288-byte save: {sav}")
+            self.melon.load_rom(rom, sav=data, rtc=rtc or datetime.datetime.now())
+        except BaseException:
+            self.melon.close()
+            raise
+        self.memory = _MelonMemory(self.melon)
+        self.memory.register_arm9 = _MelonRegs(self.melon)
+        self.memory.unsigned = self.memory
+        self.input = _MelonInput(self.melon)
+        self.savestate = _MelonStates(self.melon)
+
+    def cycle(self, with_joystick=False):
+        self.melon.run(1)
+
+    def screenshot(self):
+        return self.melon.screenshot()
+
+    def reset(self):
+        self.melon.reset()
+
+    def destroy(self):
+        self.melon.close()
+
+
 class Harness:
     """One emulator instance. Use as a context manager."""
 
-    def __init__(self, rom=DEF_ROM_CN, sav=None, savestate=None, out=DEF_OUT, verbose=True, rtc=None):
+    emulator = "desmume"       # instance value set by __init__; the class value serves tests that skip __init__
+    melon = None               # melonds.MelonDS on the melonDS backend
+    _tmp = None
+
+    def __init__(self, rom=DEF_ROM_CN, sav=None, savestate=None, out=DEF_OUT, verbose=True, rtc=None,
+                 emulator=None):
         """rtc: a datetime. DeSmuME's real-time clock otherwise follows the host clock, and the game
         reads it at boot (and later), so two runs of the same inputs diverge with wall time. With rtc
         the emulator records a throw-away movie that starts from the battery file (or a blank
         battery) with its clock fixed at rtc and advanced by emulated frames: runs are repeatable.
         Savestates still work; but emu.reset() during the movie restores the movie's starting
-        battery, so in-game saves do not survive a reset: leave rtc unset for save/reset tests."""
+        battery, so in-game saves do not survive a reset: leave rtc unset for save/reset tests.
+
+        emulator: "desmume" (py-desmume, the default) or "melonds" (the melonDS 1.1 shim,
+        work/tools/melonds.py); None reads $EMU_HARNESS_EMULATOR. On melonDS the console clock starts
+        at rtc (default: now) and advances with emulated time only; with a fixed rtc, runs of the same
+        inputs give the same savestates across instances and processes (work/notes/melonds_backend.md,
+        Determinism: one exception, R0 after a data abort). There are no execution hooks (on_exec raises), but data watchpoints and the ARM9 exception
+        record are available (watch, watch_hits, cpu_exceptions, hang_report)."""
+        self.emulator = emulator or default_emulator()
+        if self.emulator not in EMULATORS:
+            raise ValueError(f"emulator {self.emulator!r}; choose one of {', '.join(EMULATORS)}")
+        if self.emulator == "melonds":
+            self._init_melonds(rom, sav, savestate, out, verbose, rtc)
+            return
         from desmume.emulator import DeSmuME
         from desmume.controls import Keys, keymask
         self._keymask = keymask
         self._keys = {k: getattr(Keys, "KEY_" + k) for k in KEYS}
         self._slot = _EmulatorSlot()       # waits while MAX_EMULATORS emulators run on this machine
         self.rom = Path(rom).resolve()
-        self.out = Path(out)
+        self.out = Path(out).resolve()      # the DeSmuME backend chdirs into a temp folder
         self.out.mkdir(parents=True, exist_ok=True)
         self.verbose = verbose
         self._tmp = Path(tempfile.mkdtemp(prefix="emu_harness_"))
@@ -484,13 +657,38 @@ class Harness:
         self._hook_error = None
         self._held = set()
 
+    def _init_melonds(self, rom, sav, savestate, out, verbose, rtc):
+        self._keymask = lambda k: k            # _MelonInput takes key names
+        self._keys = {k: k for k in KEYS}
+        self._slot = _EmulatorSlot()
+        self.rom = Path(rom).resolve()
+        self.out = Path(out).resolve()      # the DeSmuME backend chdirs into a temp folder
+        self.out.mkdir(parents=True, exist_ok=True)
+        self.verbose = verbose
+        self._tmp = None                        # melonDS reads ROM and save from memory: no temp dir, no chdir
+        try:
+            self.emu = _MelonEmu(self.rom, Path(sav).resolve() if sav else None, rtc)
+        except BaseException:
+            self._slot.release()
+            raise
+        self.melon = self.emu.melon
+        if savestate:
+            self.emu.savestate.load_file(str(Path(savestate).resolve()))
+        self.mem = self.emu.memory.unsigned
+        self.reg = self.emu.memory.register_arm9
+        self.frame = 0
+        self._per_frame = []
+        self._hook_error = None
+        self._held = set()
+
     # ------------------------------------------------------------------ lifecycle
     def close(self):
         try:
             self.emu.destroy()
         finally:
-            os.chdir(self._cwd)
-            shutil.rmtree(self._tmp, ignore_errors=True)
+            if self._tmp is not None:
+                os.chdir(self._cwd)
+                shutil.rmtree(self._tmp, ignore_errors=True)
             self._slot.release()
 
     def __enter__(self):
@@ -557,6 +755,8 @@ class Harness:
         the first. exclusive=True marks a measurement hook: registering it over an existing
         hook, or any later registration over it, raises unless replace=True. fn=None removes
         the hook."""
+        if self.emulator == "melonds":
+            self.emu.memory.register_exec(addr, fn)       # raises NotImplementedError with the alternatives
         hooks = self.__dict__.setdefault("_hooks", {})
         if fn is None:
             hooks.pop(addr, None)
@@ -641,6 +841,80 @@ class Harness:
         self.log("screenshot", path)
         return path
 
+    # ------------------------------------------------------------------ crash and hang detection
+    def _need_melonds(self, what):
+        if self.emulator != "melonds":
+            raise NotImplementedError(f"{what} needs the melonDS backend (--emulator melonds)")
+
+    def cpu_exceptions(self):
+        """melonDS: ARM9 data/prefetch aborts and undefined instructions logged by the core since boot."""
+        self._need_melonds("cpu_exceptions")
+        return self.melon.exceptions()
+
+    def arm9_abort(self):
+        """melonDS: None while the ARM9 runs normally; after a data abort (the console's protection unit
+        refused an access, e.g. a NULL read) a dict with the faulting instruction's address. The hack's
+        abort handler never returns: the ARM9 spins in abort mode, so this stays set (= the freeze)."""
+        self._need_melonds("arm9_abort")
+        r = self.melon.regs()
+        ex = self.melon.exceptions()
+        if r["mode"] != 0x17 and not ex["data_aborts"]:
+            return None
+        lr = r["r"][14] if r["mode"] == 0x17 else r["abt"][1]
+        return {"in_abort_mode": r["mode"] == 0x17, "cpsr": r["cpsr"], "abort_lr": lr,
+                "fault_pc": (lr - 8) & 0xFFFFFFFF, "r": r["r"], "data_aborts": ex["data_aborts"],
+                "first_abort_frame": ex["first_data_abort_frame"], "prefetch_aborts": ex["prefetch_aborts"],
+                "undefined": ex["undefined"]}
+
+    def screen_black(self, screen="both", threshold=8):
+        """True when every pixel of the top / bottom / both screens is at most `threshold` in each channel."""
+        img = self.emu.screenshot().convert("RGB")
+        box = {"top": (0, 0, 256, 192), "bottom": (0, 192, 256, 384), "both": (0, 0, 256, 384)}[screen]
+        return max(hi for lo, hi in img.crop(box).getextrema()) <= threshold
+
+    def hang_report(self, frames=120, probe_key=None):
+        """Run `frames` frames (pressing probe_key in the middle, if given) and describe whether the game
+        still lives: screen changes, black screens, the ARM9 abort state (melonDS), the field position.
+        hung = ARM9 in abort mode, or a black screen that did not change over the whole window."""
+        first = self.emu.screenshot().convert("RGB").tobytes()
+        changed = False
+        for i in range(frames):
+            if probe_key and i == frames // 2:
+                self.hold(probe_key)
+            if probe_key and i == frames // 2 + 6:
+                self.release(probe_key)
+            self.step(1)
+            if not changed and self.emu.screenshot().convert("RGB").tobytes() != first:
+                changed = True
+        if probe_key and probe_key in self._held:
+            self.release(probe_key)
+        rep = {"frame": self.frame, "frames": frames, "screen_changed": changed,
+               "black_top": self.screen_black("top"), "black_bottom": self.screen_black("bottom")}
+        try:
+            rep["position"] = self.position()
+        except RuntimeError:
+            rep["position"] = None
+        if self.emulator == "melonds":
+            rep["abort"] = self.arm9_abort()
+            rep["exceptions"] = self.cpu_exceptions()
+        abort = bool(rep.get("abort") and rep["abort"]["in_abort_mode"])
+        rep["hung"] = abort or (not changed and rep["black_top"] and rep["black_bottom"])
+        return rep
+
+    def watch(self, start, length, read=False, write=True):
+        """melonDS: record ARM9 bus accesses to [start, start+length) (CPU loads/stores that do not hit ITCM/
+        DTCM, and ARM9 DMA). Read the hits with watch_hits() after stepping; each has the instruction's pc."""
+        self._need_melonds("watch")
+        self.melon.watch(start, length, read=read, write=write)
+
+    def watch_hits(self):
+        self._need_melonds("watch_hits")
+        return self.melon.watch_hits()
+
+    def clear_watches(self):
+        self._need_melonds("clear_watches")
+        self.melon.clear_watches()
+
     # ------------------------------------------------------------------ save data in RAM
     @property
     def save(self):
@@ -685,10 +959,16 @@ class Harness:
     # ------------------------------------------------------------------ clock
     def set_clock(self, when):
         """Pin the game's clock (GF_RTC cache) to a datetime: rewritten every time the game re-reads the
-        RTC (about every 10 frames) and right now. DeSmuME itself keeps running on host time."""
+        RTC (about every 10 frames) and right now. DeSmuME itself keeps running on host time.
+        melonDS: its RTC runs on emulated time, so the console clock itself is set to `when` (and the cache
+        right now); the game then reads it as usual and the clock advances from `when` (not pinned)."""
         wd = (when.isoweekday()) % 7
         self._clock = (struct.pack("<4I", when.year - 2000, when.month, when.day, wd),
                        struct.pack("<3I", when.hour, when.minute, when.second))
+        if self.emulator == "melonds":
+            self.melon.set_rtc(when)
+            self._apply_clock()
+            return
         if not getattr(self, "_clock_hooked", False):
             self.on_exec(RTC_SYNC_DONE, lambda h: h._apply_clock())
             self._clock_hooked = True
@@ -1124,17 +1404,22 @@ class start_at:
         with start_at(109, 16, 14, clock=datetime.datetime(2026, 10, 9, 12)) as h: ..."""
 
     def __init__(self, map_id=None, x=None, y=None, rom=DEF_ROM_CN, sav=None, flags=(), vars=None,
-                 clock=None, out=DEF_OUT, verbose=True, hooks=None, edit=None, height=0):
-        """map_id None: stay where the save is. edit: fn(SaveFile) for further save edits (bag, ...)."""
+                 clock=None, out=DEF_OUT, verbose=True, hooks=None, edit=None, height=0, emulator=None,
+                 direction="DOWN"):
+        """map_id None: stay where the save is. edit: fn(SaveFile) for further save edits (bag, party, ...).
+        emulator: "desmume" / "melonds" / None ($EMU_HARNESS_EMULATOR). On melonDS the clock is the console's
+        RTC set before boot (repeatable), and hooks may not use on_exec."""
         self.args = (map_id, x, y, rom, sav or DEF_SAVES / "full_bag_6mons.sav", flags, vars or {}, clock,
                      out, verbose, hooks, edit)
         self.height = height
+        self.emulator = emulator
+        self.direction = direction
 
     def __enter__(self):
         map_id, x, y, rom, sav, flags, vars_, clock, out, verbose, hooks, edit = self.args
         sf = SaveFile(sav)
         if map_id is not None:
-            sf.place_player(map_id, x, y, "DOWN", height=self.height)
+            sf.place_player(map_id, x, y, self.direction, height=self.height)
         if edit:
             edit(sf)
         for f in flags:
@@ -1143,9 +1428,10 @@ class start_at:
             sf.set_var(v, val)
         self._dir = Path(tempfile.mkdtemp(prefix="emu_harness_sav_"))
         sf.write(self._dir / "edited.sav")
-        self.h = Harness(rom, self._dir / "edited.sav", out=out, verbose=verbose)
+        self.h = Harness(rom, self._dir / "edited.sav", out=out, verbose=verbose, emulator=self.emulator,
+                         rtc=clock if (self.emulator or default_emulator()) == "melonds" else None)
         try:
-            if clock:
+            if clock and self.h.emulator != "melonds":     # melonDS: the console RTC was set to clock before boot
                 self.h.set_clock(clock)
             if hooks:
                 hooks(self.h)          # installed before boot: sees calls made while the map loads
@@ -2222,6 +2508,9 @@ def main(argv=None):
     _parent_watchdog()
     _install_child_handlers()
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--emulator", choices=EMULATORS, help="backend for every Harness of this run and its child "
+                    "processes: desmume (py-desmume, the default) or melonds (work/tools/melonds.py); sets "
+                    "$EMU_HARNESS_EMULATOR")
     sub = ap.add_subparsers(dest="cmd", required=True)
     cl = sub.add_parser("cleanup", help="list leftover emu_harness processes; --kill stops orphans (--all: every one)")
     cl.add_argument("--kill", action="store_true")
@@ -2367,21 +2656,31 @@ def main(argv=None):
             p.add_argument("--tag", default="unown_cn" if unown else "wild")
             p.add_argument("--state", help="also write a DeSmuME savestate taken right after the teleport")
             p.add_argument("--json")
+    hg = sub.add_parser("hang", help="walk from a battery save and check for a freeze (ARM9 abort / dead screen); "
+                        "melonDS unless --emulator desmume (emu_hang.py)")
+    import emu_hang
+    emu_hang.add_arguments(hg)
     tx = sub.add_parser("texture-bounds", help="four overworld texture-bound reproducers; original/fixed assertions")
     import emu_texture_bounds
     emu_texture_bounds.add_arguments(tx)
+    rf = sub.add_parser("reflection", help="following-Pokemon water reflection (Bulbasaur NULL pointer); "
+                        "original/fixed assertions")
+    import emu_reflection
+    emu_reflection.add_arguments(rf)
     import emu_fixes
     fx = sub.add_parser("fixes", help="one scenario per fix in work/patches: the fixed ROM and each control build "
                                       "(build.py --without <fix>) (emu_fixes.py)")
     emu_fixes.add_arguments(fx, DATA)
     emu_fixes.add_child_arguments(sub.add_parser("fixes-child", help=argparse.SUPPRESS))
     a = ap.parse_args(argv)
+    if a.emulator:
+        os.environ["EMU_HARNESS_EMULATOR"] = a.emulator
     return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages, "suite": cmd_suite,
             "dexcapture": cmd_dexcapture, "skitty": _cmd_skitty, "guide0107": _cmd_guide0107,
             "guide0813": _cmd_guide0813, "calendar": _cmd_calendar, "hackbugs": _cmd_hackbugs,
             "verify": _cmd_verify, "sweeps": _cmd_sweeps, "open": _cmd_open, "vqueue": _cmd_vqueue,
-            "texture-bounds": emu_texture_bounds.run, "fixes": emu_fixes.run, "fixes-child": emu_fixes.cmd_child,
-            "cleanup": cmd_cleanup}[a.cmd](a)
+            "texture-bounds": emu_texture_bounds.run, "reflection": emu_reflection.run, "hang": emu_hang.run,
+            "fixes": emu_fixes.run, "fixes-child": emu_fixes.cmd_child, "cleanup": cmd_cleanup}[a.cmd](a)
 
 
 if __name__ == "__main__":

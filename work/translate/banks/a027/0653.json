@@ -166,10 +166,10 @@
   {
    "id": 20,
    "zh": "对了,在金黄市{NEWLINE}有个叫{CLEAR}超能力大叔的人。{SCROLL}把超能系的技能{NEWLINE}带去他那儿看看吧。",
-   "en": "You know how there’s a guy named{NEWLINE}Mr. Psychic in Saffron City? Try taking{CLEAR}some Psychic-type moves to him and see!",
+   "en": "You know how there’s a guy named{NEWLINE}Mr. Psychic in Saffron City?{SCROLL}Try taking some Psychic-type Pokémon{NEWLINE}to him and see!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0662/20 | RV071: meaning: zh says Psychic-type moves (D-1998/D-1916) (hack-finding D-2227)"
+   "notes": "US 0662/20 | RV071: meaning: zh says Psychic-type moves (D-1998/D-1916) (hack-finding D-2227) | D-2272: fixed per D-2227 (user-approved hack slip)"
   },
   {
    "id": 21,
@@ -518,18 +518,18 @@
   {
    "id": 64,
    "zh": "现在你到哪儿了？{NEWLINE}紫苑镇？{CLEAR}你已经到这么远的地方了啊！{SCROLL}那个小镇被称作{NEWLINE}灵魂之家。{CLEAR}那里有精灵的坟墓。{SCROLL}凡是训练师{NEWLINE}都要去那儿参拜一下。",
-   "en": "Where are you now? Lavender Town?{NEWLINE}You’ve gone pretty far, huh? That town{CLEAR}is called the House of Memories. There{CLEAR}are Pokémon graves there. Every{CLEAR}Trainer should go there to pay their{CLEAR}respects.",
+   "en": "Where are you now? Lavender Town?{NEWLINE}You’ve gone pretty far, huh?{SCROLL}In that town, there’s a place called{NEWLINE}the House of Memories. There are{CLEAR}Pokémon graves there.{SCROLL}Every Trainer should go there to pay{NEWLINE}their respects.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0662/64 | RV071: meaning: zh calls the town itself 灵魂之家; logged as hack-finding (D-2000/D-1916) (hack-finding D-2226)"
+   "notes": "US 0662/64 | RV071: meaning: zh calls the town itself 灵魂之家; logged as hack-finding (D-2000/D-1916) (hack-finding D-2226) | D-2272: fixed per D-2226 (user-approved hack slip)"
   },
   {
    "id": 65,
    "zh": "你现在在哪儿？枯叶市？{SCROLL}我记得那边有个叫{NEWLINE}超喜欢俱乐部的地方！{SCROLL}那儿还有月桂叶,{NEWLINE}过去打个招呼吧？",
-   "en": "Where are you now? Vermilion City?{NEWLINE}That’s where the Pokémon Fan Club is if{CLEAR}I recall correctly! There’s a Bayleef{CLEAR}there too, so why not go say hi?",
+   "en": "Where are you now? Vermilion City?{SCROLL}That’s where the Pokémon Fan Club is if{NEWLINE}I recall correctly!{SCROLL}If you’ve got a Bayleef, why not take{NEWLINE}it there and say hi?",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0662/65; modernised from US 0662#65 | RV071: meaning: zh says a Bayleef is there (D-1998/D-1916) (hack-finding D-2227)"
+   "notes": "US 0662/65; modernised from US 0662#65 | RV071: meaning: zh says a Bayleef is there (D-1998/D-1916) (hack-finding D-2227) | D-2272: fixed per D-2227 (user-approved hack slip)"
   },
   {
    "id": 66,

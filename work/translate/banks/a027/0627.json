@@ -1334,18 +1334,18 @@
   {
    "id": 166,
    "zh": "小黄『{VAR:0103:0}哥哥,{NEWLINE}去年的石英大会上{CLEAR}我没能向你挑战有些遗憾,{CLEAR}所以我想在今年的白银大会上{CLEAR}再努力一次试试！",
-   "en": "Yellow: {VAR:0103:0}, it was a bit of a shame{NEWLINE}that I didn’t get to challenge you at{CLEAR}last year’s Indigo Conference.{SCROLL}So I want to give it another try at this{NEWLINE}year’s Silver Conference!",
+   "en": "Yellow: Big Bro {VAR:0103:0}, it was a bit of{NEWLINE}a shame that I didn’t get to challenge{CLEAR}you at last year’s Indigo Conference.{SCROLL}So I want to give it another try at this{NEWLINE}year’s Silver Conference!",
    "status": "draft",
    "origin": "agent",
-   "notes": "RV055: addition: 有些遗憾 is 'a bit of a shame'; 'ever since' was added"
+   "notes": "RV055: addition: 有些遗憾 is 'a bit of a shame'; 'ever since' was added | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 167,
    "zh": "小黄『{VAR:0103:0}姐姐,{NEWLINE}去年的石英大会上{CLEAR}我没能向你挑战有些遗憾,{CLEAR}所以我想在今年的白银大会上{CLEAR}再努力一次试试！",
-   "en": "Yellow: {VAR:0103:0}, it was a bit of a shame{NEWLINE}that I didn’t get to challenge you at{CLEAR}last year’s Indigo Conference.{SCROLL}So I want to give it another try at this{NEWLINE}year’s Silver Conference!",
+   "en": "Yellow: Big Sis {VAR:0103:0}, it was a bit of{NEWLINE}a shame that I didn’t get to challenge{CLEAR}you at last year’s Indigo Conference.{SCROLL}So I want to give it another try at this{NEWLINE}year’s Silver Conference!",
    "status": "draft",
    "origin": "agent",
-   "notes": "RV055: addition: 有些遗憾 is 'a bit of a shame'; 'ever since' was added"
+   "notes": "RV055: addition: 有些遗憾 is 'a bit of a shame'; 'ever since' was added | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 168,

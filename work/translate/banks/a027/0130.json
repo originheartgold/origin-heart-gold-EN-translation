@@ -830,18 +830,18 @@
   {
    "id": 103,
    "zh": "小黄『{VAR:0103:0}哥哥！{NEWLINE}没想到你会来这里！{CLEAR}刚刚真是太谢谢你了。",
-   "en": "Yellow: {VAR:0103:0}! I never thought you’d{NEWLINE}come here!{SCROLL}Thank you so much for helping me just{NEWLINE}now.",
+   "en": "Yellow: Big Bro {VAR:0103:0}! I never{NEWLINE}thought you’d come here!{SCROLL}Thank you so much for helping me just{NEWLINE}now.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 104,
    "zh": "小黄『{VAR:0103:0}姐姐！{NEWLINE}没想到你会来这里！{CLEAR}刚刚真是太谢谢你了。",
-   "en": "Yellow: {VAR:0103:0}! I never thought you’d{NEWLINE}come here!{SCROLL}Thank you so much for helping me just{NEWLINE}now.",
+   "en": "Yellow: Big Sis {VAR:0103:0}! I never{NEWLINE}thought you’d come here!{SCROLL}Thank you so much for helping me just{NEWLINE}now.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 105,
@@ -886,18 +886,18 @@
   {
    "id": 110,
    "zh": "小黄『唔……为了守护人们和精灵{NEWLINE}而不断变强的训练家……{SCROLL}小黄『我明白了,{VAR:0103:0}哥哥！{NEWLINE}我会努力成为这样的训练家的！",
-   "en": "Yellow: Hmm... A Trainer who keeps{NEWLINE}getting stronger to protect people and{CLEAR}Pokémon...{SCROLL}Yellow: I get it, {VAR:0103:0}! I’ll work{NEWLINE}hard to become that kind of Trainer!",
+   "en": "Yellow: Hmm... A Trainer who keeps{NEWLINE}getting stronger to protect people{CLEAR}and Pokémon...{SCROLL}Yellow: I get it, Big Bro {VAR:0103:0}!{NEWLINE}I’ll work hard to become that kind{CLEAR}of Trainer!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [line_too_wide,tag_mismatch] (candidate v3 0130#110; text not kept)"
+   "notes": "v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [line_too_wide,tag_mismatch] (candidate v3 0130#110; text not kept) | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 111,
    "zh": "小黄『唔……为了守护人们和精灵{NEWLINE}而不断变强的训练家……{SCROLL}小黄『我明白了,{VAR:0103:0}姐姐！{NEWLINE}我会努力成为这样的训练家的！",
-   "en": "Yellow: Hmm... A Trainer who keeps{NEWLINE}getting stronger to protect people and{CLEAR}Pokémon...{SCROLL}Yellow: I get it, {VAR:0103:0}! I’ll work{NEWLINE}hard to become that kind of Trainer!",
+   "en": "Yellow: Hmm... A Trainer who keeps{NEWLINE}getting stronger to protect people{CLEAR}and Pokémon...{SCROLL}Yellow: I get it, Big Sis {VAR:0103:0}!{NEWLINE}I’ll work hard to become that kind{CLEAR}of Trainer!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position | D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 112,

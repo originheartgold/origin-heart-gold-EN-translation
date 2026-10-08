@@ -590,18 +590,18 @@
   {
    "id": 73,
    "zh": "小黄『啊！是{VAR:0103:0}哥哥！",
-   "en": "Yellow: Ah! It’s {VAR:0103:0}!",
+   "en": "Yellow: Ah! It’s Big Bro {VAR:0103:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 74,
    "zh": "小黄『啊！是{VAR:0103:0}姐姐！",
-   "en": "Yellow: Ah! It’s {VAR:0103:0}!",
+   "en": "Yellow: Ah! It’s Big Sis {VAR:0103:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 75,
@@ -686,18 +686,18 @@
   {
    "id": 85,
    "zh": "小黄『咦——！？{NEWLINE}要我跟{VAR:0103:0}哥哥战斗！？{CLEAR}可我哪里是{VAR:0103:0}哥哥的对手啊。",
-   "en": "Yellow: Wha-?! You want me to battle{NEWLINE}{VAR:0103:0}?!{SCROLL}But I’m no match for {VAR:0103:0}!",
+   "en": "Yellow: Wha-?! You want me to battle{NEWLINE}Big Bro {VAR:0103:0}?!{SCROLL}But I’m no match for Big Bro {VAR:0103:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 86,
    "zh": "小黄『咦——！？{NEWLINE}要我跟{VAR:0103:0}姐姐战斗！？{CLEAR}可我哪里是{VAR:0103:0}姐姐的对手啊。",
-   "en": "Yellow: Wha-?! You want me to battle{NEWLINE}{VAR:0103:0}?!{SCROLL}But I’m no match for {VAR:0103:0}!",
+   "en": "Yellow: Wha-?! You want me to battle{NEWLINE}Big Sis {VAR:0103:0}?!{SCROLL}But I’m no match for Big Sis {VAR:0103:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 87,
@@ -758,18 +758,18 @@
   {
    "id": 94,
    "zh": "小黄『哎呀,果然我和{VAR:0103:0}哥哥{NEWLINE}还差的很远啊！",
-   "en": "Yellow: Oh, I knew it. I’m still nowhere{NEWLINE}near as good as {VAR:0103:0}!",
+   "en": "Yellow: Oh, I knew it. I’m still nowhere{NEWLINE}near as good as Big Bro {VAR:0103:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 95,
    "zh": "小黄『哎呀,果然我和{VAR:0103:0}姐姐{NEWLINE}还差的很远啊！",
-   "en": "Yellow: Oh, I knew it. I’m still nowhere{NEWLINE}near as good as {VAR:0103:0}!",
+   "en": "Yellow: Oh, I knew it. I’m still nowhere{NEWLINE}near as good as Big Sis {VAR:0103:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 96,
@@ -830,18 +830,18 @@
   {
    "id": 103,
    "zh": "小黄『那个……没什么啦！{NEWLINE}能帮上{VAR:0103:0}哥哥的忙我也很开心。",
-   "en": "Yellow: Um... it’s nothing! I’m happy I{NEWLINE}could help you, {VAR:0103:0}.",
+   "en": "Yellow: Um... it’s nothing! I’m happy I{NEWLINE}could help you, Big Bro {VAR:0103:0}.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 104,
    "zh": "小黄『那个……没什么啦！{NEWLINE}能帮上{VAR:0103:0}姐姐的忙我也很开心。",
-   "en": "Yellow: Um... it’s nothing! I’m happy I{NEWLINE}could help you, {VAR:0103:0}.",
+   "en": "Yellow: Um... it’s nothing! I’m happy I{NEWLINE}could help you, Big Sis {VAR:0103:0}.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 105,
@@ -862,18 +862,18 @@
   {
    "id": 107,
    "zh": "小黄『对了,我得继续去收集徽章啦,{NEWLINE}不然就赶不上今年的石英大会了。{CLEAR}{VAR:0103:0}哥哥再见！",
-   "en": "Yellow: Oh, right, I need to keep{NEWLINE}collecting Badges, or I’ll miss this{CLEAR}year’s Indigo Conference.{SCROLL}Bye, {VAR:0103:0}!",
+   "en": "Yellow: Oh, right, I need to keep{NEWLINE}collecting Badges, or I’ll miss this{CLEAR}year’s Indigo Conference.{SCROLL}Bye, Big Bro {VAR:0103:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 108,
    "zh": "小黄『对了,我得继续去收集徽章啦,{NEWLINE}不然就赶不上今年的石英大会了。{CLEAR}{VAR:0103:0}姐姐再见！",
-   "en": "Yellow: Oh, right, I need to keep{NEWLINE}collecting Badges, or I’ll miss this{CLEAR}year’s Indigo Conference.{SCROLL}Bye, {VAR:0103:0}!",
+   "en": "Yellow: Oh, right, I need to keep{NEWLINE}collecting Badges, or I’ll miss this{CLEAR}year’s Indigo Conference.{SCROLL}Bye, Big Sis {VAR:0103:0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 109,

@@ -211,10 +211,10 @@
   {
    "id": 25,
    "zh": "小黄『{VAR:0103:0}哥哥在房间里吗？{NEWLINE}我能进来吗？",
-   "en": "Yellow: {VAR:0103:0}, are you in your room?{NEWLINE}Can I come in?",
+   "en": "Yellow: Big Bro {VAR:0103:0}, are you in{NEWLINE}your room? Can I come in?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 26,
@@ -227,10 +227,10 @@
   {
    "id": 27,
    "zh": "小黄『咦？{VAR:0103:0}哥哥在写东西？{NEWLINE}能给我看看吗？",
-   "en": "Yellow: Huh? Are you writing something,{NEWLINE}{VAR:0103:0}? Can I see?",
+   "en": "Yellow: Huh? Are you writing something,{NEWLINE}Big Bro {VAR:0103:0}? Can I see?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 28,
@@ -251,10 +251,10 @@
   {
    "id": 30,
    "zh": "小黄『{VAR:0103:0}哥哥写的好诗意,{NEWLINE}我都有点不好意思了。",
-   "en": "Yellow: That’s so poetic, {VAR:0103:0}...{NEWLINE}Now I’m kind of embarrassed.",
+   "en": "Yellow: That’s so poetic,{NEWLINE}Big Bro {VAR:0103:0}... Now I’m kind{CLEAR}of embarrassed.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 31,
@@ -267,10 +267,10 @@
   {
    "id": 32,
    "zh": "小黄『{VAR:0103:0}哥哥……我们……{NEWLINE}靠的好近……",
-   "en": "Yellow: {VAR:0103:0}... we’re... so close...",
+   "en": "Yellow: Big Bro {VAR:0103:0}... we’re... so{NEWLINE}close...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 33,
@@ -291,10 +291,10 @@
   {
    "id": 35,
    "zh": "小黄『{VAR:0103:0}哥哥,我们居然……{NEWLINE}我还是好害羞啊……",
-   "en": "Yellow: {VAR:0103:0}, we actually... I’m still{NEWLINE}so embarrassed...",
+   "en": "Yellow: Big Bro {VAR:0103:0}, we actually...{NEWLINE}I’m still so embarrassed...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "D-2274: Yellow's {player}哥哥/姐姐 kept as Big Bro/Big Sis"
   },
   {
    "id": 36,
