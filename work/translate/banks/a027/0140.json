@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "这里是以口袋竞技的未来{NEWLINE}以及精灵和人类的{CLEAR}无限之力为主题的{SCROLL}「可能性」房间。",
-   "en": "This is the “Potential” room.{NEWLINE}It is to show the infinite potential{CLEAR}of both Pokémon and people.",
+   "en": "This is the “Potential” room.{SCROLL}Its theme is the future of the{NEWLINE}Pokéathlon and the limitless power of{CLEAR}Pokémon and people.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0142/0"
+   "origin": "agent",
+   "notes": "US 0142/0 | RV039: omission: the future of the Pokéathlon dropped"
   },
   {
    "id": 1,
@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "前面是「友情」房间,{NEWLINE}请通过吧。",
-   "en": "This is the “Friendship” room.{NEWLINE}Please go ahead.",
+   "en": "Ahead is the “Friendship” room.{NEWLINE}Please go on through.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0142/2"
+   "origin": "agent",
+   "notes": "US 0142/2 | RV039: meaning: the room is ahead, not this one"
   },
   {
    "id": 3,
@@ -70,18 +70,18 @@
   {
    "id": 8,
    "zh": "跨栏中,跳跃的时机是关键！{SCROLL}靠近栏架后再起跳的话,{CLEAR}速度会“唰”地提升哦！{SCROLL}紧贴着栏架起跳,{NEWLINE}是得胜的要领哦！{SCROLL}",
-   "en": "In Hurdle Dash, timing is everything.{SCROLL}Your Pokémon will pick up speed{NEWLINE}if you let them wait until the last{CLEAR}moment before they jump the Hurdles.{SCROLL}",
+   "en": "In Hurdle Dash, the timing of the jump is{NEWLINE}key!{SCROLL}If you jump after getting close to the{NEWLINE}Hurdle, your speed shoots right up!{SCROLL}Jumping right up close to the Hurdle is{NEWLINE}the secret to winning!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0142/8"
+   "origin": "agent",
+   "notes": "US 0142/8 | RV039: omission: last tip dropped"
   },
   {
    "id": 9,
    "zh": "抢旗啊⋯⋯{SCROLL}这个比赛不仅可以夺取{NEWLINE}沙滩上的旗子,{CLEAR}也可以从对手那里{CLEAR}夺下旗子哦！{SCROLL}从对手的背后撞过去的话,{NEWLINE}会使其昏厥,{SCROLL}这样就可以从对手那里{NEWLINE}把旗子抢过来啦！{SCROLL}其实这才是这个比赛的精髓！{SCROLL}",
-   "en": "Pennant Capture...{SCROLL}This event is not only about the{NEWLINE}Pennants on the beach, but also{CLEAR}the ones other Pokémon have collected.{SCROLL}If you bump into them from behind,{NEWLINE}they will be knocked down and your{CLEAR}Pokémon will grab their Pennants.{SCROLL}That’s the way experts fight.{SCROLL}",
+   "en": "Pennant Capture...{SCROLL}This event is not only about the{NEWLINE}Pennants on the beach, but also the{CLEAR}ones other Pokémon have collected.{SCROLL}If you bump into them from behind, they{NEWLINE}will be knocked down and your Pokémon{CLEAR}will grab their Pennants.{SCROLL}That’s actually the real essence of{NEWLINE}this event!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0142/9"
+   "origin": "agent",
+   "notes": "US 0142/9 | RV039: meaning: essence of the event, not the way experts fight"
   },
   {
    "id": 10,
@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "劈石板,{NEWLINE}可不仅仅是劈开石板那么简单。{SCROLL}在石板上,有着细小的裂缝,{NEWLINE}你发现了吗？{SCROLL}准确地打中裂缝的话,{NEWLINE}刹那间就会粉碎了哇！{SCROLL}如果能连续劈中裂缝,{CLEAR}精灵的情绪会持续高涨,{CLEAR}似乎会爆发出更加巨大的力量！{SCROLL}另外还有一点⋯⋯{NEWLINE}想要替换精灵的时候,{SCROLL}把精灵往上移{NEWLINE}离开场地的话,{CLEAR}可以实现快速替换哦。{SCROLL}",
-   "en": "Block Smash is not just about smashing.{SCROLL}Did you ever notice that sometimes{NEWLINE}there are small cracks in the Blocks?{SCROLL}Well, if you can hit those cracks,{NEWLINE}they break real fast!{SCROLL}If you can aim at cracks in a row,{NEWLINE}your Pokémon will feel great and{CLEAR}they’ll show great potential.{SCROLL}One more thing...{SCROLL}When you make them switch,{NEWLINE}flick your Pokémon upwards{CLEAR}for a quicker switch.{SCROLL}",
+   "en": "Block Smash is not just about smashing.{SCROLL}Did you ever notice that sometimes{NEWLINE}there are small cracks in the Blocks?{SCROLL}Well, if you can hit those cracks, they{NEWLINE}break real fast!{SCROLL}If you can keep hitting the cracks,{NEWLINE}your Pokémon will stay fired up and seem{CLEAR}to unleash even greater power!{SCROLL}One more thing...{SCROLL}When you make them switch, flick your{NEWLINE}Pokémon upwards for a quicker switch.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0142/11"
+   "origin": "agent",
+   "notes": "US 0142/11 | RV039: meaning: greater power, not potential"
   },
   {
    "id": 12,
@@ -110,10 +110,10 @@
   {
    "id": 13,
    "zh": "蹦床的话,{NEWLINE}只是盲目地乱跳是不行的。{SCROLL}你看到床上那３只精灵了吗{SCROLL}精灵马上就要起飞了！{SCROLL}⋯⋯但！偶尔,{NEWLINE}一只精灵{CLEAR}掉下时撞到另一只,{CLEAR}撞晕了也就不能飞了呢。{SCROLL}让３只精灵有节奏地{NEWLINE}起跳是得胜的要领！{SCROLL}",
-   "en": "Lamp Jump is not only about jumping.{SCROLL}There are three Pokémon bouncing{NEWLINE}together, so one Pokémon can’t jump{CLEAR}well if another comes down right when{CLEAR}the other wants to go up in the air.{SCROLL}Letting them jump at the right time{NEWLINE}is the key.{SCROLL}",
+   "en": "Lamp Jump isn’t about jumping around{NEWLINE}blindly.{SCROLL}See the three Pokémon on the{NEWLINE}trampoline?{SCROLL}They’re about to take off!{SCROLL}...But! Sometimes one Pokémon comes{NEWLINE}down and bumps into another, and the{CLEAR}dazed one can’t fly anymore.{SCROLL}Getting all three to jump in rhythm is{NEWLINE}the secret to winning!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0142/13"
+   "origin": "agent",
+   "notes": "US 0142/13 | RV039: omission: clauses dropped by US"
   },
   {
    "id": 14,
@@ -126,10 +126,10 @@
   {
    "id": 15,
    "zh": "撞人中{NEWLINE}单单撞击的话,要对准{CLEAR}头顶是很难的呢⋯⋯{SCROLL}你知道俯冲推挤么？{CLEAR}我是这么称呼它的⋯⋯{SCROLL}向着对手轻轻地起跳,{CLEAR}移动中也是可以起跳的哦。{SCROLL}往精灵聚集的地方{NEWLINE}使用俯冲推挤的话,{CLEAR}能把它们都弄下去！{SCROLL}",
-   "en": "It’s not easy to aim for the top{NEWLINE}by just tackling a lot in Ring Drop.{CLEAR}Do you know what a “Body Attack” is?{SCROLL}I call it a Body Attack, anyway...{SCROLL}Your Pokémon can actually jump{NEWLINE}as it moves forward.{SCROLL}If you can let your Pokémon{NEWLINE}Body Attack others, you can drop{CLEAR}them off the Ring altogether!{SCROLL}",
+   "en": "In Ring Drop, just tackling makes it{NEWLINE}hard to aim for the top...{SCROLL}Do you know the Dive Push? That’s what{NEWLINE}I call it, anyway...{SCROLL}Jump lightly toward your opponent. You{NEWLINE}can jump while moving, too.{SCROLL}If you Dive Push where Pokémon are{NEWLINE}bunched up, you can knock them all off!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0142/15"
+   "origin": "agent",
+   "notes": "US 0142/15 | RV039: meaning: 俯冲推挤 = Dive Push; clauses aligned"
   },
   {
    "id": 16,
@@ -142,10 +142,10 @@
   {
    "id": 17,
    "zh": "足球中{NEWLINE}口袋竞技员的技巧{CLEAR}是十分重要的。{SCROLL}万一变成了眼花缭乱的情况,{SCROLL}最紧要的是冷静下来,{NEWLINE}给精灵做出指示。{SCROLL}也就是所谓的部署。{SCROLL}为了守住球门,{NEWLINE}在球门前放１只精灵。{SCROLL}为了对应各种突发状况,{NEWLINE}在正中间放１只精灵。{SCROLL}为了得分,{NEWLINE}在瞄准的球门前放１只精灵。{SCROLL}这是我的建议哦！{SCROLL}",
-   "en": "Goal Roll requires the skills of{NEWLINE}a Pokéathlete.{SCROLL}The situation changes every second,{NEWLINE}but stay calm as you instruct{CLEAR}your Pokémon.{SCROLL}Positioning is key.{SCROLL}I recommend keeping one at your own{NEWLINE}Goal to protect it--one in the middle of{CLEAR}the field for flexibility and one in{CLEAR}front of the Goal you want to{CLEAR}roll the ball into.{SCROLL}",
+   "en": "In Goal Roll, the Pokéathlete’s skill is{NEWLINE}very important.{SCROLL}If things ever get dizzyingly hectic,{SCROLL}the most important thing is to calm down{NEWLINE}and give your Pokémon instructions.{SCROLL}In other words, positioning.{SCROLL}Put one Pokémon in front of your Goal{NEWLINE}to defend it.{SCROLL}Put one Pokémon in the middle to handle{NEWLINE}anything that comes up.{SCROLL}Put one Pokémon in front of the Goal{NEWLINE}you’re aiming at to score.{SCROLL}That’s my advice!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0142/17"
+   "origin": "agent",
+   "notes": "US 0142/17 | RV039: omission: that is my advice dropped; clauses aligned"
   },
   {
    "id": 18,

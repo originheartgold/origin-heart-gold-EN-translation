@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "这里是以精灵竞技的现在以及{NEWLINE}精灵和人类的{CLEAR}信任之心为主题的,{SCROLL}被称为「信赖」的房间。",
-   "en": "This is the “Trust” room.{SCROLL}It is to show the mutual reliance{NEWLINE}between Pokémon and people.",
+   "en": "This is the room called “Trust.”{SCROLL}Its theme is the Pokéathlon of today{NEWLINE}and the trust between Pokémon and{CLEAR}people.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0141/0"
+   "origin": "agent",
+   "notes": "US 0141/0 | RV039: omission: the present of the Pokéathlon dropped"
   },
   {
    "id": 1,
@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "这前面是「可能性」的房间,{NEWLINE}请通过吧。",
-   "en": "This is the “Potential” room.{NEWLINE}Please go ahead.",
+   "en": "Ahead is the “Potential” room.{NEWLINE}Please go on through.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0141/2"
+   "origin": "agent",
+   "notes": "US 0141/2 | RV039: meaning: the room is ahead, not this one"
   },
   {
    "id": 3,
@@ -38,18 +38,18 @@
   {
    "id": 4,
    "zh": "我也想要努力,想在这里{NEWLINE}展示自己的鞋子！",
-   "en": "I would love to see my own shoes here!",
+   "en": "I want to work hard too, so I can have{NEWLINE}my own shoes displayed here!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0141/4"
+   "origin": "agent",
+   "notes": "US 0141/4 | RV039: omission: work hard dropped"
   },
   {
    "id": 5,
    "zh": "这个圆顶里,{NEWLINE}有着许多会场呢！",
-   "en": "This Dome contains so many{NEWLINE}other Domes...",
+   "en": "There are so many venues inside this{NEWLINE}Dome!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0141/5"
+   "origin": "agent",
+   "notes": "US 0141/5 | RV039: meaning: venues, not other Domes"
   },
   {
    "id": 6,
@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "交换次数达到２００次的人,{SCROLL}和朋友一起协力合作,{NEWLINE}在此为其深刻的羁绊鼓掌。",
-   "en": "Those who have switched 200 times{NEWLINE}are commemorated here for great{CLEAR}teamwork and their bond with{CLEAR}their Pokémon.",
+   "en": "Those who have switched 200 times,{NEWLINE}working together with their friends, are{CLEAR}commemorated here for their deep{CLEAR}bonds.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0141/11"
+   "origin": "agent",
+   "notes": "US 0141/11 | RV039: meaning: teamwork with friends"
   },
   {
    "id": 12,
@@ -110,18 +110,18 @@
   {
    "id": 13,
    "zh": "口袋竞技奖章⋯⋯{SCROLL}这是精灵和口袋竞技员{NEWLINE}共同努力的证明。{SCROLL}特别是收集到５个奖章的精灵,{SCROLL}为了表彰那只精灵和{NEWLINE}口袋竞技员的信赖,{CLEAR}授予其「最佳拍档」称号。",
-   "en": "Pokéathlon Medals...{SCROLL}Those are the proof of the hard work{NEWLINE}of both Pokéathletes and Pokémon.{SCROLL}Those Pokémon that have won all five{NEWLINE}Medals are called “Medalist Pokémon”{CLEAR}to commemorate the trust they’ve{CLEAR}earned from their Pokéathlete.",
+   "en": "Pokéathlon Medals...{SCROLL}They are proof of the hard work of{NEWLINE}Pokémon and Pokéathletes together.{SCROLL}In particular, Pokémon that have{NEWLINE}collected five Medals{SCROLL}are given the title “Best Partner” to{NEWLINE}honor the trust between that Pokémon{CLEAR}and its Pokéathlete.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0141/13"
+   "origin": "agent",
+   "notes": "US 0141/13 | RV039: name: 最佳拍档 = Best Partner title, not Medalist Pokémon"
   },
   {
    "id": 14,
    "zh": "凯西『嘶⋯⋯{NEWLINE}⋯⋯　⋯⋯{CLEAR}⋯⋯　⋯⋯{SCROLL}好想睡觉！",
-   "en": "Abra: ...{NEWLINE}...{CLEAR}...{SCROLL}It must be asleep!",
+   "en": "Abra: Sss...{NEWLINE}...{CLEAR}...{SCROLL}So sleepy!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0141/14; modernised from US 0141#14"
+   "origin": "agent",
+   "notes": "US 0141/14; modernised from US 0141#14 | RV039: meaning: wants to sleep, not already asleep (D-1672)"
   },
   {
    "id": 15,

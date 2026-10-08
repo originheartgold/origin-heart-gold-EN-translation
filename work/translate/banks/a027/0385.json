@@ -94,18 +94,18 @@
   {
    "id": 11,
    "zh": "这是大会中使用的公园球！{SCROLL}{VAR:0103:0}{NEWLINE}得到了２０个{VAR:0108:1}！{SCROLL}",
-   "en": "These are the Balls used in{NEWLINE}the Contest!{SCROLL}{VAR:0103:0} received 20 {VAR:0108:1}!{SCROLL}",
+   "en": "These are the Park Balls used in{NEWLINE}the Contest!{SCROLL}{VAR:0103:0} received 20 {VAR:0108:1}!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh 公园球 (Park Ball); the item name comes from {VAR:0108:1}, so the English just says ‘Balls’"
+   "notes": "zh 公园球 (Park Ball); the item name comes from {VAR:0108:1}, so the English just says ‘Balls’ | RV039: name: 公园球 = Park Ball"
   },
   {
    "id": 12,
    "zh": "抓到最强精灵的人即为胜利！{SCROLL}限制时间为２０分钟！{SCROLL}或者公园球用完即结束！{SCROLL}最后捉到的精灵{NEWLINE}归选手所有！{SCROLL}请大家加油捕捉最强的精灵！",
-   "en": "Whoever catches the strongest{NEWLINE}Pokémon wins!{SCROLL}The time limit is 20 minutes!{SCROLL}The Contest also ends if you run out{NEWLINE}of Balls!{SCROLL}You get to keep the last Pokémon{NEWLINE}you catch!{SCROLL}Everyone, do your best to catch the{NEWLINE}strongest Pokémon!",
+   "en": "Whoever catches the strongest{NEWLINE}Pokémon wins!{SCROLL}The time limit is 20 minutes!{SCROLL}The Contest also ends if you run out{NEWLINE}of Park Balls!{SCROLL}You get to keep the last Pokémon{NEWLINE}you catch!{SCROLL}Everyone, do your best to catch the{NEWLINE}strongest Pokémon!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV039: name: 公园球 = Park Ball"
   },
   {
    "id": 13,

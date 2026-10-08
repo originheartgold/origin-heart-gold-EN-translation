@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "好孩子的口袋竞技员{NEWLINE}你ー好ー！{SCROLL}⋯⋯　⋯⋯　⋯⋯{SCROLL}怎么了,看上去好像没什么精神？{NEWLINE}再一次,你好！{SCROLL}好了！{SCROLL}哥哥的名字是奇志！{NEWLINE}是口袋竞技的司会{CLEAR}请多关照！{SCROLL}若是在口袋竞技{NEWLINE}有什么不明白的事情！{CLEAR}我会从头到尾的告诉你哦！{SCROLL}",
-   "en": "Young Pokéathlete!{NEWLINE}Hello!{SCROLL}...{SCROLL}Running out of energy?{NEWLINE}Hello, again!{SCROLL}Good!{NEWLINE}My name is Maximo!{SCROLL}I am the Pokéathlon MC!{NEWLINE}Nice to meet you!{SCROLL}I’ll be there for you when you{NEWLINE}need to know anything about{CLEAR}the Pokéathlon.{SCROLL}",
+   "en": "Hellooo, good little Pokéathlete!{SCROLL}...{SCROLL}What’s wrong? You don’t look very{NEWLINE}lively. Once more, hello!{SCROLL}Good!{SCROLL}Big bro’s name is Maximo! I’m the{NEWLINE}Pokéathlon MC. Nice to meet you!{SCROLL}If there’s anything you don’t get about{NEWLINE}the Pokéathlon, I’ll tell you all about{CLEAR}it from start to finish!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/0"
+   "origin": "agent",
+   "notes": "US 0139/0 | RV039: voice: 哥哥 self-reference kept (as in #1, #17); clauses aligned"
   },
   {
    "id": 1,
@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "那我就口袋竞技的事情说明一下！{SCROLL}所谓口袋竞技,{NEWLINE}就是精灵和人类的友情！{SCROLL}⋯⋯嗯？{NEWLINE}很难懂？{CLEAR}嗯,详细来说就是{SCROLL}３只精灵组成一队,{CLEAR}进行１０个种类的比赛竞争！{SCROLL}跨越各种各样的障碍！{NEWLINE}从中考验精灵和人类的{CLEAR}友情！{SCROLL}对了,{NEWLINE}这个就代表了友情本身！{SCROLL}明白了吗？{NEWLINE}那么,还有什么吗？{SCROLL}",
-   "en": "Let me explain the Pokéathlon!{SCROLL}It’s the connection between Pokémon{NEWLINE}and Pokéathletes.{SCROLL}It is friendship itself!{NEWLINE}...What?{SCROLL}You don’t get it?{NEWLINE}OK. I won’t be as brief this time.{SCROLL}You are to form a team of three{NEWLINE}Pokémon to compete in ten{CLEAR}different events!{SCROLL}The friendship between Pokémon and{NEWLINE}Pokéathletes is tested!{SCROLL}That is what we call friendship!{NEWLINE}Do you understand what I mean?{SCROLL}",
+   "en": "Let me explain the Pokéathlon!{SCROLL}The Pokéathlon is the friendship{NEWLINE}between Pokémon and people!{SCROLL}...Hm? Hard to understand? Well, in{NEWLINE}more detail...{SCROLL}Three Pokémon form a team and compete{NEWLINE}in ten kinds of events!{SCROLL}They overcome all kinds of obstacles,{NEWLINE}and that tests the friendship between{CLEAR}Pokémon and people!{SCROLL}That’s right, this is friendship itself!{SCROLL}Do you understand what I mean? OK, do{NEWLINE}you have any more questions?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/5"
+   "origin": "agent",
+   "notes": "US 0139/5 | RV039: meaning: US reordered and added I won't be as brief; dropped closing question"
   },
   {
    "id": 6,
@@ -118,18 +118,18 @@
   {
    "id": 14,
    "zh": "那么我就来说明一下「扔雪球」！{SCROLL}扔雪球就是说可能你不明白⋯⋯{CLEAR}哎,就照字面意思理解了！{SCROLL}以击中对方的雪球的数量计分！{SCROLL}是像哥哥这样力量强大又有技术{CLEAR}的精灵所擅长的比赛！{SCROLL}明白了吗？{NEWLINE}那么,还有什么吗？{SCROLL}",
-   "en": "I’ll explain “Snow Throw” for you.{NEWLINE}Snow Throw may not ring a bell but...{CLEAR}how about a Snowball fight?{SCROLL}The more your Pokémon hit other{NEWLINE}Pokémon with Snow, the higher the{CLEAR}score will be.{SCROLL}This is an event for powerful and{NEWLINE}skillful Pokémon... Ones just like me!{SCROLL}Do you understand what I mean?{SCROLL}OK, do you have any more questions?{SCROLL}",
+   "en": "I’ll explain “Snow Throw” for you.{SCROLL}Snow Throw is... well, you might not get{NEWLINE}it... Ah, just take it literally!{SCROLL}The more Snowballs that hit the other{NEWLINE}Pokémon, the higher your score!{SCROLL}This is an event for powerful and{NEWLINE}skillful Pokémon... Ones just like me!{SCROLL}Do you understand what I mean?{SCROLL}OK, do you have any more questions?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/14"
+   "origin": "agent",
+   "notes": "US 0139/14 | RV039: addition: US added how about a Snowball fight"
   },
   {
    "id": 15,
    "zh": "那么我就来说明一下「足球」！{SCROLL}就是把球打到对手的球门里,{SCROLL}只要是对手的球门{NEWLINE}随便哪里都是１点,{CLEAR}黄金球的话就是２点,{SCROLL}以团队的进球数决定名次,{SCROLL}按名次得分。{SCROLL}是像哥哥那样有力量有技术的{CLEAR}精灵所擅长的比赛！{SCROLL}明白了吗？{NEWLINE}那么,还有什么吗？{SCROLL}",
-   "en": "I’ll explain “Goal Roll” for you.{NEWLINE}Your Pokémon try to roll the ball into{CLEAR}the Goals of the other Pokémon teams.{SCROLL}Most balls will give you one point.{SCROLL}Gold-colored balls will give you{NEWLINE}two points.{SCROLL}The number of points will decide{NEWLINE}your rank, and that decides the score.{SCROLL}This is an event for powerful and{NEWLINE}skillful Pokémon... Ones just like me!{SCROLL}Do you understand what I mean?{SCROLL}OK, do you have any more questions?{SCROLL}",
+   "en": "I’ll explain “Goal Roll” for you.{SCROLL}Your Pokémon hit the ball into the other{NEWLINE}teams’ Goals.{SCROLL}Anywhere in another team’s Goal is{NEWLINE}worth one point, and a gold ball is{CLEAR}worth two.{SCROLL}The number of goals a team scores{NEWLINE}decides its rank,{SCROLL}and the rank decides the score.{SCROLL}This is an event for powerful and{NEWLINE}skillful Pokémon... Ones just like me!{SCROLL}Do you understand what I mean?{SCROLL}OK, do you have any more questions?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/15"
+   "origin": "agent",
+   "notes": "US 0139/15 | RV039: meaning: most balls -> any part of an opponent Goal"
   },
   {
    "id": 16,
@@ -142,10 +142,10 @@
   {
    "id": 17,
    "zh": "你问哥哥吗？{NEWLINE}什么呀,你是{CLEAR}对哥哥有兴趣啊！{SCROLL}哈哈哈{NEWLINE}没有什么好害羞的！{SCROLL}哥哥我啊{NEWLINE}⋯⋯　⋯⋯　⋯⋯{CLEAR}⋯⋯　⋯⋯　⋯⋯{CLEAR}⋯⋯其实是双胞胎！{SCROLL}哥哥是双胞胎的弟弟,{NEWLINE}哥哥我{CLEAR}也有个哥哥！{SCROLL}嗯,听得懂我{NEWLINE}所说的意思吗？{CLEAR}那么,还有什么吗？{SCROLL}",
-   "en": "Me? Are you interested in me?{NEWLINE}Hahaha!{CLEAR}Oh, don’t be shy.{SCROLL}Some people call me the ‘big brother’!{SCROLL}But really, the big brother is...{NEWLINE}...{CLEAR}...{CLEAR}my twin brother!{SCROLL}The ‘big brother,’ as they say, is{NEWLINE}really the younger brother.{SCROLL}So this ‘big brother’ has a{NEWLINE}bigger brother...{SCROLL}Do you get what I mean?{SCROLL}",
+   "en": "Me? You’re asking about big bro? Oh, so{NEWLINE}you’re interested in big bro!{SCROLL}Hahaha! Nothing to be shy about!{SCROLL}Big bro is...{NEWLINE}...{CLEAR}...{CLEAR}...actually a twin!{SCROLL}Big bro is the younger twin. So big bro{NEWLINE}has a big bro too!{SCROLL}Do you get what I mean? OK, do you have{NEWLINE}any more questions?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0139/17 | “ ” → ‘ ’ (D-0028, width)"
+   "notes": "US 0139/17 | “ ” → ‘ ’ (D-0028, width) | RV039: addition: some people call me big brother was added; closing question restored"
   },
   {
    "id": 18,
@@ -198,10 +198,10 @@
   {
    "id": 24,
    "zh": "口袋竞技是以取得的得分决定胜负,{SCROLL}在最后还有反败为胜的机会{NEWLINE}根本移不开视线！",
-   "en": "The Pokéathlon is all about scores.{SCROLL}No one knows who’s going to win{NEWLINE}until the last moment!",
+   "en": "The Pokéathlon is decided by the scores{NEWLINE}you earn.{SCROLL}There’s a chance to turn it all around{NEWLINE}at the very end, so you can’t take your{CLEAR}eyes off it!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/24"
+   "origin": "agent",
+   "notes": "US 0139/24 | RV039: omission: comeback chance / cannot look away dropped"
   },
   {
    "id": 25,
@@ -214,18 +214,18 @@
   {
    "id": 26,
    "zh": "在竞技前先喝运动饮料！{SCROLL}把精灵的特性最大限度地引出来！",
-   "en": "Aprijuice for victory!{SCROLL}Your Pokémon can show their{NEWLINE}true Performance potential!",
+   "en": "Have some Aprijuice before you compete!{SCROLL}It brings out your Pokémon’s{NEWLINE}Performance to the fullest!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/26"
+   "origin": "agent",
+   "notes": "US 0139/26 | RV039: meaning: aligned to zh"
   },
   {
    "id": 27,
    "zh": "在竞技前先喝运动饮料！{SCROLL}{VAR:0103:0}选手{NEWLINE}是喝什么饮料啊？{SCROLL}若是在饮料店看见的话我一定买！{CLEAR}因为我是你的粉丝！！",
-   "en": "Aprijuice for victory!{SCROLL}What drink do you use,{NEWLINE}Pokéathlete {VAR:0103:0}?{SCROLL}I’ll buy what you buy!{CLEAR}I’m a big fan!",
+   "en": "Have some Aprijuice before you compete!{SCROLL}What do you drink, Pokéathlete{NEWLINE}{VAR:0103:0}?{SCROLL}If I see it at the juice shop, I’m buying{NEWLINE}it for sure! I’m your fan!!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/27"
+   "origin": "agent",
+   "notes": "US 0139/27 | RV039: meaning: aligned to zh"
   },
   {
    "id": 28,
@@ -238,10 +238,10 @@
   {
    "id": 29,
    "zh": "{VAR:0103:0}选手！{SCROLL}我、我的目标是用{NEWLINE}鲤鱼王来达成所有比赛的胜利！{SCROLL}该怎么做⋯⋯{SCROLL}该怎么才能用鲤鱼王来取得胜利呢！？",
-   "en": "Pokéathlete {VAR:0103:0}!{SCROLL}Er... How...how can I win at every{NEWLINE}course with Magikarp?",
+   "en": "Pokéathlete {VAR:0103:0}!{SCROLL}M-my goal is to win every course with{NEWLINE}Magikarp!{SCROLL}What should I do...{SCROLL}How can I win with Magikarp?!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/29; modernised from US 0139#29"
+   "origin": "agent",
+   "notes": "US 0139/29; modernised from US 0139#29 | RV039: omission: goal clause dropped"
   },
   {
    "id": 30,
@@ -254,10 +254,10 @@
   {
    "id": 31,
    "zh": "呀！吓了一跳{NEWLINE}{VAR:0103:0}选手是吧！{SCROLL}为了赶上你{NEWLINE}我没法判断该让哪只精灵出赛{CLEAR}比较好！{CLEAR}你就是口袋竞技的代表！",
-   "en": "Y-y-you’re Pokéathlete {VAR:0103:0}!{SCROLL}I have no clue how I could possibly{NEWLINE}reach where you are!{CLEAR}You are the Pokéathlon itself!",
+   "en": "Whoa! What a surprise! You’re{NEWLINE}Pokéathlete {VAR:0103:0}, right?{SCROLL}I’m trying to catch up to you, but I{NEWLINE}can’t decide which Pokémon to enter!{CLEAR}You’re the face of the Pokéathlon!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/31"
+   "origin": "agent",
+   "notes": "US 0139/31 | RV039: meaning: choosing which Pokémon to enter dropped"
   },
   {
    "id": 32,
@@ -318,18 +318,18 @@
   {
    "id": 39,
    "zh": "我的男朋友是口袋竞技员！{SCROLL}但是,他非常害羞,{SCROLL}就这样在柱子的影下{NEWLINE}默默地为你加油！",
-   "en": "My boyfriend’s a Pokéathlete.{SCROLL}But he’s so shy about it that I root{NEWLINE}for him behind a column so he won’t{CLEAR}spot me!",
+   "en": "My boyfriend’s a Pokéathlete!{SCROLL}But he’s really shy,{SCROLL}so I’m quietly cheering you on from the{NEWLINE}shadow of this pillar!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/39"
+   "origin": "agent",
+   "notes": "US 0139/39 | RV039: meaning: zh: cheering 你 from the pillar shadow; kept as zh (D-1671)"
   },
   {
    "id": 40,
    "zh": "跟精灵一起流汗的他　！{CLEAR}你们不觉得很帅吗？{SCROLL}啊啊,但是可能不如{NEWLINE}{VAR:0103:0}选手那么闪耀！",
-   "en": "Don’t you think he’s so cool dripping{NEWLINE}sweat just like his Pokémon?{SCROLL}Not that he even compares to the great{NEWLINE}Pokéathlete {VAR:0103:0}, though.",
+   "en": "Him, sweating it out with his Pokémon!{NEWLINE}Don’t you all think he’s so cool?{SCROLL}Ah, but maybe he doesn’t shine as{NEWLINE}bright as Pokéathlete {VAR:0103:0}!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/40"
+   "origin": "agent",
+   "notes": "US 0139/40 | RV039: meaning: sweating with, not like, his Pokémon"
   },
   {
    "id": 41,
@@ -342,10 +342,10 @@
   {
    "id": 42,
    "zh": "没那回事,{NEWLINE}认真的妈妈可是很厉害的！{SCROLL}要提起商店特卖的时候的表情呀⋯⋯{SCROLL}⋯⋯呀啊ー真可怕！{SCROLL}",
-   "en": "Don’t you dare underestimate your mom.{NEWLINE}The look on her face when she was{CLEAR}selling things at a bargain...{SCROLL}It still gives me shivers!{SCROLL}",
+   "en": "That’s not true! A mom who means{NEWLINE}business is a force to be reckoned with!{SCROLL}The look on her face during a store{NEWLINE}sale...{SCROLL}...Eek! Terrifying!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/42"
+   "origin": "agent",
+   "notes": "US 0139/42 | RV039: meaning: store sale, not her selling (D-1671)"
   },
   {
    "id": 43,
@@ -358,26 +358,26 @@
   {
    "id": 44,
    "zh": "儿子啊,{NEWLINE}爸爸好寂寞！{SCROLL}快说,{NEWLINE}想成为爸爸这样的人啊！{SCROLL}",
-   "en": "Ahh... My son!{NEWLINE}I’m so sad to hear that.{SCROLL}Let me hear you say you want to be{NEWLINE}like your dad...{SCROLL}",
+   "en": "Oh, Son... Dad’s so lonely!{SCROLL}Come on, say it! Say you want to be like{NEWLINE}your dad!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/44"
+   "origin": "agent",
+   "notes": "US 0139/44 | RV039: meaning: lonely, not sad to hear that"
   },
   {
    "id": 45,
    "zh": "妈妈会出场哦！{SCROLL}平时完全都不动的,{NEWLINE}真的没问题吗？{SCROLL}",
-   "en": "My mom will finally participate.{SCROLL}I was starting to worry because she{NEWLINE}never exercises.{SCROLL}",
+   "en": "Mom’s going to compete!{SCROLL}She never moves a muscle normally... Is{NEWLINE}she really going to be OK?{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/45"
+   "origin": "agent",
+   "notes": "US 0139/45 | RV039: meaning: worry question restored"
   },
   {
    "id": 46,
    "zh": "我长大了想成为像{NEWLINE}{VAR:0103:0}选手这样强的训练师！{SCROLL}",
-   "en": "I’ll grow up to be a great{NEWLINE}Pokéathlete like you, {VAR:0103:0}!{SCROLL}",
+   "en": "When I grow up, I want to be a Trainer{NEWLINE}as strong as Pokéathlete {VAR:0103:0}!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/46"
+   "origin": "agent",
+   "notes": "US 0139/46 | RV039: meaning: strong Trainer, not great Pokéathlete (D-1671)"
   },
   {
    "id": 47,
@@ -390,10 +390,10 @@
   {
    "id": 48,
    "zh": "哇、哇哇哇！！{NEWLINE}是{VAR:0103:0}选手！{SCROLL}是本人！{NEWLINE}看到本人了耶！",
-   "en": "Are you Pokéathlete {VAR:0103:0}?{SCROLL}For real?{NEWLINE}I can’t believe it!{NEWLINE}",
+   "en": "Wh-wh-whoa!! It’s Pokéathlete{NEWLINE}{VAR:0103:0}!{SCROLL}The real deal! I’m seeing the real deal!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/48"
+   "origin": "agent",
+   "notes": "US 0139/48 | RV039: meaning: US line differed; retranslated from zh"
   },
   {
    "id": 49,
@@ -406,26 +406,26 @@
   {
    "id": 50,
    "zh": "哇、哇哇哇！！{NEWLINE}是{VAR:0103:0}选手！{SCROLL}吧嗒吧嗒吧嗒吧嗒！{NEWLINE}摸到了！",
-   "en": "Are you Pokéathlete {VAR:0103:0}?{SCROLL}Tap... Tap... Tap...{SCROLL}I can’t believe it! I touched my hero!",
+   "en": "Wh-wh-whoa!! It’s Pokéathlete{NEWLINE}{VAR:0103:0}!{SCROLL}Pat pat pat pat! I touched you!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/50"
+   "origin": "agent",
+   "notes": "US 0139/50 | RV039: meaning: aligned to zh"
   },
   {
    "id": 51,
    "zh": "真意外,还有像我这样的{NEWLINE}欧巴桑啊！{CLEAR}我要不要也试着参加呢！{SCROLL}想接近崇拜的杰特选手！{CLEAR}开玩笑啦,啊哈哈！",
-   "en": "I didn’t expect so many rather old{NEWLINE}ladies like me participating.{CLEAR}Maybe I can join them.{SCROLL}It may be a chance to get close to{NEWLINE}my hero--Pokéathlete Jet!{CLEAR}Hahaha!",
+   "en": "What a surprise, there are other old{NEWLINE}ladies like me here! Maybe I should give{CLEAR}it a try too!{SCROLL}I want to get close to my idol,{NEWLINE}Pokéathlete Jet! Just kidding, ahaha!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/51"
+   "origin": "agent",
+   "notes": "US 0139/51 | RV039: omission: just kidding dropped"
   },
   {
    "id": 52,
    "zh": "呀啊！{VAR:0103:0}选手！{SCROLL}你若是出场的话{NEWLINE}女孩们的眼睛一定会发光的！{CLEAR}能不能得到签名啊⋯⋯{SCROLL}讨厌啦,{NEWLINE}不是我自己想要啦吼！",
-   "en": "Yeek!!{SCROLL}Pokéathlete {VAR:0103:0}!{NEWLINE}Every time you are in the game,{CLEAR}my daughters’ eyes stay wide open!{SCROLL}Could I ask for an autograph?{CLEAR}...No no!{SCROLL}Not for me. It’s for my daughters.{NEWLINE}Ha ha!",
+   "en": "Eek! Pokéathlete {VAR:0103:0}!{SCROLL}When you compete, the girls’ eyes are{NEWLINE}sure to light up!{SCROLL}Could I get an autograph...?{SCROLL}Oh, stop it! It’s not like I want it for{NEWLINE}myself!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0139/52"
+   "origin": "agent",
+   "notes": "US 0139/52 | RV039: addition: US added daughters (D-1671)"
   }
  ]
 }

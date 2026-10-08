@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "看你一脸路痴的样子,{NEWLINE}连桔梗市都没逛全吧。{SCROLL}桔梗市可是城都的几座{NEWLINE}保留了古代风格的城市之一,{CLEAR}城市北面的喇叭芽之塔对于游客来说{CLEAR}绝对是个不得不去的地方。",
-   "en": "From that lost look on your face,{NEWLINE}I bet you haven’t even seen all of{CLEAR}Violet City yet.{SCROLL}Violet City is one of the few cities{NEWLINE}in Johto that still keep their{CLEAR}ancient style.{SCROLL}For tourists, Sprout Tower on{NEWLINE}the north side of the city is an{CLEAR}absolute must-see.",
+   "en": "You look like you’ve got no sense of{NEWLINE}direction. I bet you haven’t even seen{CLEAR}all of Violet City yet.{SCROLL}Violet City is one of the few cities in{NEWLINE}Johto that still keep their ancient{CLEAR}style.{SCROLL}For tourists, Sprout Tower on the{NEWLINE}north side of the city is an absolute{CLEAR}must-see.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": " | RV039: softened: 路痴 jab kept"
   },
   {
    "id": 6,

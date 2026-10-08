@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "在这个前面就是「信赖」的房间{NEWLINE}请通过。",
-   "en": "This is the “Trust” room.{NEWLINE}Please go ahead.",
+   "en": "Ahead is the “Trust” room.{NEWLINE}Please go on through.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0140/2"
+   "origin": "agent",
+   "notes": "US 0140/2 | RV039: meaning: the room is ahead, not this one"
   },
   {
    "id": 3,
@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "取得了很好的记录,{NEWLINE}口袋竞技员会{SCROLL}在博物馆展示鞋子等物品！",
-   "en": "I heard that Pokéathletes with great{NEWLINE}records are going to have their shoes{CLEAR}displayed at the museum!",
+   "en": "Pokéathletes who set great records get{NEWLINE}their shoes and other things displayed{CLEAR}in the museum!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0140/5"
+   "origin": "agent",
+   "notes": "US 0140/5 | RV039: addition: I heard was added"
   },
   {
    "id": 6,
@@ -62,26 +62,26 @@
   {
    "id": 7,
    "zh": "非常陈旧的壁画{SCROLL}一个人类和３只精灵{CLEAR}正听着从天上{CLEAR}传来的什么指导。",
-   "en": "It is an old wall painting.{SCROLL}One person and three Pokémon{NEWLINE}seem to be learning something{CLEAR}from looking up at the sky.",
+   "en": "It’s a very old wall painting.{SCROLL}One person and three Pokémon are{NEWLINE}listening to some guidance coming from{CLEAR}the sky.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0140/7"
+   "origin": "agent",
+   "notes": "US 0140/7 | RV039: meaning: listening to guidance from the sky (D-1716)"
   },
   {
    "id": 8,
    "zh": "破烂的卷轴{SCROLL}「口袋竞技的传说{SCROLL}　一个人类和{NEWLINE}　３只精灵{CLEAR}　为了治愈在{CLEAR}　岛上扩散的病症,{CLEAR}　跨越了１０个障碍,{CLEAR}　到处传授治愈传染病{CLEAR}　的方法⋯⋯",
-   "en": "It is an old, worn scroll.{SCROLL}“Pokéathlon Myth{SCROLL}When a disease took over the entire{NEWLINE}island, one human and three Pokémon{CLEAR}overcame ten obstacles to spread the{CLEAR}word about the cure.”",
+   "en": "It’s a tattered scroll.{SCROLL}“Legend of the Pokéathlon{SCROLL}To cure a disease spreading across the{NEWLINE}island, one person and three Pokémon{CLEAR}overcame ten obstacles and taught the{CLEAR}cure for the plague far and wide...”",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0140/8"
+   "origin": "agent",
+   "notes": "US 0140/8 | RV039: meaning: aligned to zh (legend; taught the cure everywhere)"
   },
   {
    "id": 9,
    "zh": "古老的卷轴{SCROLL}「口袋竞技成立{SCROLL}　传授了治疗法{NEWLINE}　为了歌颂人类和３只精灵{CLEAR}　的友情,他们被作为{CLEAR}　英雄而被世代传颂{SCROLL}　⋯⋯　⋯⋯　⋯⋯{NEWLINE}　人人都歌颂英雄{SCROLL}　开始模仿英雄{NEWLINE}　走过的{CLEAR}　１０个障碍⋯⋯",
-   "en": "It’s an old scroll.{SCROLL}“The Beginning of Pokéathlon{SCROLL}To commemorate the friendship of the{NEWLINE}person and three Pokémon that{CLEAR}conveyed the words of the cure, people{CLEAR}started to tell of their achievement.”{SCROLL}...{NEWLINE}The commemorating eventually took the{CLEAR}form of ten games to compete in, just{CLEAR}like the obstacles in the legend...”",
+   "en": "It’s an old scroll.{SCROLL}“The Founding of the Pokéathlon{SCROLL}To celebrate the friendship of the{NEWLINE}person and three Pokémon who taught{CLEAR}the cure, they were praised as heroes{CLEAR}for generations.{SCROLL}... Everyone praised the heroes{SCROLL}and began to imitate the ten obstacles{NEWLINE}the heroes had overcome...”",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0140/9"
+   "origin": "agent",
+   "notes": "US 0140/9 | RV039: omission: heroes for generations dropped"
   },
   {
    "id": 10,

@@ -78,18 +78,18 @@
   {
    "id": 9,
    "zh": "诶！！{NEWLINE}邮件丢了？{CLEAR}是么？太遗憾了。{CLEAR}也没办法啊。",
-   "en": "What?!{NEWLINE}You lost the Mail?{CLEAR}Oh, well. That’s OK.{CLEAR}Don’t worry about it.",
+   "en": "What?!{NEWLINE}You lost the Mail?{CLEAR}Really? That’s too bad.{CLEAR}Oh well, it can’t be helped.",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0388/9"
+   "origin": "agent",
+   "notes": "US 0388/9 | RV039: meaning: pity/can't be helped, not don't worry"
   },
   {
    "id": 10,
    "zh": "今天也没有异常状况！",
-   "en": "Everything is fine!",
+   "en": "Nothing unusual today, either!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0388/10"
+   "origin": "agent",
+   "notes": "US 0388/10 | RV039: omission: today either dropped"
   },
   {
    "id": 11,
@@ -110,34 +110,34 @@
   {
    "id": 13,
    "zh": "咦呀~对了,{NEWLINE}只要这样手机{CLEAR}就变成广播了,{CLEAR}这真是跟做梦一样啊！{SCROLL}嗯？你的手机{NEWLINE}还没有变成广播？{CLEAR}那太浪费哩~{SCROLL}广播塔的１层前台{NEWLINE}现在在做测试吧？{CLEAR}全部答对了的话,{CLEAR}可以拿到收音机！{SCROLL}趁还没结束,{NEWLINE}你也赶紧去拿吧！",
-   "en": "I can’t believe such a tiny change{NEWLINE}turns the Pokégear into a radio!{SCROLL}Oh, your Pokégear doesn’t have{NEWLINE}that feature yet?{SCROLL}It’s a shame!{SCROLL}They happen to give quizzes at the{NEWLINE}Radio Tower reception on the{CLEAR}first floor.{SCROLL}If you can answer them correctly,{NEWLINE}they’ll give you the Radio Card!{SCROLL}You better try it while they{NEWLINE}have some left!",
+   "en": "Ooh~ That’s right, just like this, my{NEWLINE}Pokégear turns into a radio! It’s like a{CLEAR}dream!{SCROLL}Hm? Your Pokégear hasn’t turned into a{NEWLINE}radio yet? What a waste~{SCROLL}The reception desk on the first floor of{NEWLINE}the Radio Tower is giving a quiz right{CLEAR}now, isn’t it?{SCROLL}If you get every answer right, you can{NEWLINE}get the Radio Card!{SCROLL}Hurry and go get it before it’s over!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0388/13"
+   "origin": "agent",
+   "notes": "US 0388/13 | RV039: meaning: aligned to zh (before it ends; what a waste)"
   },
   {
    "id": 14,
    "zh": "别看我这样,大婶我{NEWLINE}对机械可是很精通哦。{SCROLL}要不要教给你{NEWLINE}广播的听法啊？{VAR:0200:0}",
-   "en": "I may not look it, but I’m pretty good{NEWLINE}at mechanics.{SCROLL}Do you want to know how to{NEWLINE}listen to the radio? {VAR:0200:0}",
+   "en": "I may not look it, but this auntie knows{NEWLINE}her machines inside out.{SCROLL}Want me to teach you how to listen to{NEWLINE}the radio? {VAR:0200:0}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0388/14"
+   "origin": "agent",
+   "notes": "US 0388/14 | RV039: voice: 大婶我 self-reference kept"
   },
   {
    "id": 15,
    "zh": "打开手机后,{NEWLINE}就要按下广播的按钮。{SCROLL}之后调频画面{NEWLINE}就会出现了。{SCROLL}画面正中有频道图,{CLEAR}去调上面一闪一闪的标记{CLEAR}来换频道,{CLEAR}就可以收听{CLEAR}各种节目了。{SCROLL}要是嫌麻烦,{NEWLINE}用频道图旁边的{CLEAR}４个按钮{CLEAR}也可以方便地选节目哦！",
-   "en": "You open your Pokégear and press the{NEWLINE}radio button. Then you see the screen{CLEAR}for tuning in a signal.{SCROLL}The middle of the screen is the{NEWLINE}radio-reception map.{SCROLL}You can move the blinking mark on the{NEWLINE}map around to tune in to different{CLEAR}radio shows.{SCROLL}For those who think this is a pain,{NEWLINE}there are four channels, two on each{CLEAR}side, for easy tuning.",
+   "en": "Open your Pokégear and press the radio{NEWLINE}button.{SCROLL}Then the tuning screen will come up.{SCROLL}There’s a channel map in the middle of{NEWLINE}the screen. Move the blinking mark on it{CLEAR}to change channels, and you can listen{CLEAR}to all kinds of shows.{SCROLL}If that’s too much trouble, you can{NEWLINE}also pick shows easily with the four{CLEAR}buttons next to the channel map!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0388/15"
+   "origin": "agent",
+   "notes": "US 0388/15 | RV039: addition: US added two on each side"
   },
   {
    "id": 16,
    "zh": "大婶我多事了么？",
-   "en": "Was I being a backseat driver?",
+   "en": "Was this auntie being a busybody?",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0388/16"
+   "origin": "agent",
+   "notes": "US 0388/16 | RV039: voice: 大婶我 kept; nosy, not backseat driver"
   }
  ]
 }
