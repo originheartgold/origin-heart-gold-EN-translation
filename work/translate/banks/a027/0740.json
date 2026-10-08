@@ -126,10 +126,10 @@
   {
    "id": 15,
    "zh": "木雄『你觉得一个星期的{NEWLINE}正中是星期三呢,{CLEAR}还是星期四呢？{SCROLL}不管怎么说,{NEWLINE}下个星期四再见吧！",
-   "en": "Arthur: Do you think that the middle of{NEWLINE}the week is Wednesday?{CLEAR}Or do you think it’s Thursday?{SCROLL}Go decide, and I’ll see you{NEWLINE}next Thursday!",
+   "en": "Arthur: Do you think that the middle of{NEWLINE}the week is Wednesday?{CLEAR}Or do you think it’s Thursday?{SCROLL}Either way, I’ll see you{NEWLINE}next Thursday!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0752/15"
+   "origin": "agent",
+   "notes": "US 0752/15 | RV085: addition: 不管怎么说 = either way; dropped invented 'Go decide'"
   },
   {
    "id": 16,
@@ -142,10 +142,10 @@
   {
    "id": 17,
    "zh": "金子『给会毒系技能的{NEWLINE}精灵带上吧！{SCROLL}你就会惊奇地发现{SCROLL}它的毒系技能威力提升了！",
-   "en": "Frieda: Give it to a Pokémon that knows{NEWLINE}Poison-type moves!{SCROLL}You’ll be amazed to find{SCROLL}its Poison-type moves got stronger!",
+   "en": "Frieda: Give it to a Pokémon that knows{NEWLINE}Poison-type moves!{SCROLL}You’ll be amazed to find its{NEWLINE}Poison-type moves got stronger!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV085: layout: removed mid-sentence {SCROLL}"
   },
   {
    "id": 18,
@@ -158,10 +158,10 @@
   {
    "id": 19,
    "zh": "金子『哎？{NEWLINE}今天不是星期五？{SCROLL}真希望每一天都是星期五啊！",
-   "en": "Frieda: Oh, today’s not Friday?{SCROLL}Man... I wish every day were Friday,{NEWLINE}that’d be so much fun!",
+   "en": "Frieda: Oh, today’s not Friday?{SCROLL}I really wish every day were Friday!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0752/19"
+   "origin": "agent",
+   "notes": "US 0752/19 | RV085: addition: dropped invented 'Man...' and 'that’d be so much fun'"
   },
   {
    "id": 20,
@@ -190,10 +190,10 @@
   {
    "id": 23,
    "zh": "土雄『今天是星期六⋯⋯{NEWLINE}才⋯⋯怪⋯⋯{SCROLL}那么下个星期六再见吧⋯⋯",
-   "en": "Santos: Today’s Saturday...{NEWLINE}No... Wait... Huh?{SCROLL}I’ll see you next Saturday then...",
+   "en": "Santos: Today’s Saturday...{NEWLINE}...Not...{SCROLL}I’ll see you next Saturday then...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0752/23"
+   "origin": "agent",
+   "notes": "US 0752/23 | RV085: meaning: 才怪 is a deadpan denial, not confusion (D-2026)"
   },
   {
    "id": 24,
@@ -230,10 +230,10 @@
   {
    "id": 28,
    "zh": "月子『哎呀,你就是{NEWLINE}找到了我们所有{CLEAR}兄弟姐妹的人吧！{SCROLL}我们已经完全成朋友了,{SCROLL}作为朋友的纪念给你{NEWLINE}惹事缎带吧！{SCROLL}",
-   "en": "Monica: Hey, you!{NEWLINE}The one who found all of my siblings!{CLEAR}Yeah, you!{SCROLL}We’re pretty good friends now, don’t{NEWLINE}you agree?{SCROLL}Since we’re such good friends, I’ll give{NEWLINE}you this Alert Ribbon!{SCROLL}",
+   "en": "Monica: Oh my, you’re the one who found{NEWLINE}all of my siblings, aren’t you!{SCROLL}We’re true friends now!{SCROLL}As a token of our friendship, I’ll give{NEWLINE}you this Alert Ribbon!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0752/28"
+   "origin": "agent",
+   "notes": "US 0752/28 | RV085: addition: dropped invented 'Yeah, you!' / 'don’t you agree?'; 哎呀 kept"
   },
   {
    "id": 29,
@@ -262,10 +262,10 @@
   {
    "id": 32,
    "zh": "火子『哎呀,你就是{NEWLINE}找到了我们所有{CLEAR}兄弟姐妹的人吧！{SCROLL}我们已经完全成朋友了,{SCROLL}作为朋友的纪念给你{NEWLINE}恶毒缎带吧！{SCROLL}",
-   "en": "Tuscany: Hey, you!{NEWLINE}The one who found all of my siblings!{CLEAR}Yeah, you!{SCROLL}We’re pretty good friends now, don’t{NEWLINE}you agree?{SCROLL}Since we’re such good friends, I’ll give{NEWLINE}you this Shock Ribbon!{SCROLL}",
+   "en": "Tuscany: Oh my, you are the one who{NEWLINE}found all of my siblings, are you not?{SCROLL}We are true friends now.{SCROLL}As a token of our friendship, I will{NEWLINE}give you this Shock Ribbon!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0752/32"
+   "origin": "agent",
+   "notes": "US 0752/32 | RV085: addition: dropped invented 'Yeah, you!' / 'don’t you agree?'; Tuscany’s formal voice kept"
   },
   {
    "id": 33,
@@ -294,10 +294,10 @@
   {
    "id": 36,
    "zh": "水雄『呀~你就是{NEWLINE}找到了我们所有{CLEAR}兄弟姐妹的人吧！{SCROLL}我们{NEWLINE}已经完全成朋友了,{SCROLL}作为朋友的纪念给你{NEWLINE}丧气缎带吧！{SCROLL}",
-   "en": "Wesley: Hey, you!{NEWLINE}The one who found all of my siblings!{CLEAR}Yeah, you!{SCROLL}We’re pretty good friends now, don’t{NEWLINE}you agree?{SCROLL}Since we’re such good friends, I’ll give{NEWLINE}you this Downcast Ribbon!{SCROLL}",
+   "en": "Wesley: Ooh! You’re the one who found{NEWLINE}all of my siblings, aren’t you!{SCROLL}We’re true friends now!{SCROLL}As a token of our friendship, I’ll give{NEWLINE}you this Downcast Ribbon!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0752/36"
+   "origin": "agent",
+   "notes": "US 0752/36 | RV085: addition: dropped invented 'Yeah, you!' / 'don’t you agree?'"
   },
   {
    "id": 37,
@@ -326,10 +326,10 @@
   {
    "id": 40,
    "zh": "木雄『哦！你就是{NEWLINE}找到了我们所有{CLEAR}兄弟姐妹的人吧！{SCROLL}我们已经完全成朋友了,{SCROLL}作为朋友的纪念给你{NEWLINE}马虎缎带吧！{SCROLL}",
-   "en": "Arthur: Hey, you found all of my{NEWLINE}siblings, didn’t you!{SCROLL}We’re pretty good friends now, don’t{NEWLINE}you agree?{SCROLL}Since we’re such good friends, I’ll give{NEWLINE}you this Careless Ribbon!{SCROLL}",
+   "en": "Arthur: Oh! You found all of my siblings,{NEWLINE}didn’t you!{SCROLL}We’re true friends now!{SCROLL}As a token of our friendship, I’ll give{NEWLINE}you this Careless Ribbon!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0752/40"
+   "origin": "agent",
+   "notes": "US 0752/40 | RV085: addition: dropped invented 'don’t you agree?'"
   },
   {
    "id": 41,
@@ -358,10 +358,10 @@
   {
    "id": 44,
    "zh": "金子『呀哈~！你就是{NEWLINE}找到了我们所有{CLEAR}兄弟姐妹的人吧！{SCROLL}我们已经完全成朋友了,{SCROLL}作为朋友的纪念给你{NEWLINE}舒畅缎带吧！{SCROLL}",
-   "en": "Frieda: Hey, you’re the one who found{NEWLINE}all of my siblings, aren’t you!{SCROLL}We’re pretty good friends now, don’t{NEWLINE}you agree?{SCROLL}Since we’re such good friends, I’ll give{NEWLINE}you this Relax Ribbon!{SCROLL}",
+   "en": "Frieda: Yahoo! You’re the one who found{NEWLINE}all of my siblings, aren’t you!{SCROLL}We’re true friends now!{SCROLL}As a token of our friendship, I’ll give{NEWLINE}you this Relax Ribbon!{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0752/44"
+   "origin": "agent",
+   "notes": "US 0752/44 | RV085: addition: dropped invented 'don’t you agree?'; restored 呀哈 Yahoo"
   },
   {
    "id": 45,
@@ -390,10 +390,10 @@
   {
    "id": 48,
    "zh": "土雄『⋯⋯　⋯⋯　⋯⋯{NEWLINE}你找到了我们{CLEAR}全部的兄弟姐妹⋯⋯{SCROLL}我们已经是⋯⋯朋友了。{SCROLL}作为纪念⋯⋯{NEWLINE}给你酣睡缎带吧。{SCROLL}",
-   "en": "Santos: ...{NEWLINE}You found all of my siblings...{SCROLL}We’re pretty good friends...{NEWLINE}...Right?{SCROLL}Here... Have this Snooze Ribbon...{SCROLL}",
+   "en": "Santos: ...{NEWLINE}You found all of my siblings...{SCROLL}We’re already... friends.{SCROLL}As a token...{NEWLINE}I’ll give you this Snooze Ribbon.{SCROLL}",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0752/48"
+   "origin": "agent",
+   "notes": "US 0752/48 | RV085: addition: dropped invented '...Right?'; 作为纪念 restored"
   },
   {
    "id": 49,
@@ -414,10 +414,10 @@
   {
    "id": 51,
    "zh": "缎带一个礼拜{NEWLINE}只能给你一个⋯⋯{SCROLL}要还想再要的话{NEWLINE}就下个礼拜再来吧⋯⋯",
-   "en": "You can only get one ribbon per week...{SCROLL}If you want another ribbon, come find{NEWLINE}me again next week!",
+   "en": "You can only get one ribbon per week...{SCROLL}If you want another ribbon, come find{NEWLINE}me again next week...",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0752/51"
+   "origin": "agent",
+   "notes": "US 0752/51 | RV085: voice: Santos’s version ends in ⋯⋯ not ！"
   },
   {
    "id": 52,

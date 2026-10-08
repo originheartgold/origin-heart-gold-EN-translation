@@ -6332,7 +6332,7 @@
   {
    "id": "RV085",
    "group": "5-nonmap",
-   "status": "todo",
+   "status": "done",
    "strings": 60,
    "labels": [
     "a027/0740 battle_frontier_trainer_text + side_features_minigames + map_bank_unreferenced",
