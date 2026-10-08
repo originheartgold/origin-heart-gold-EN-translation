@@ -126,18 +126,18 @@
   {
    "id": 15,
    "zh": "小蓝『可是,红莲岛不是没有道馆吗？",
-   "en": "Green: But doesn’t Cinnabar Island{NEWLINE}have no Gym?",
+   "en": "Green: But I thought Cinnabar Island{NEWLINE}didn’t have a Gym?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV003: grammar: 'doesn't ... have no Gym' was ungrammatical"
   },
   {
    "id": 16,
    "zh": "小赤『可是,红莲岛不是没有道馆吗？",
-   "en": "Red: But doesn’t Cinnabar Island have{NEWLINE}no Gym?",
+   "en": "Red: But I thought Cinnabar Island{NEWLINE}didn’t have a Gym?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV003: grammar: 'doesn't ... have no Gym' was ungrammatical"
   },
   {
    "id": 17,

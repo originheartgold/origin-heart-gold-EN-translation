@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "小赤『谢谢{VAR:0103:0}你的鼓励。{NEWLINE}但是就凭你出手帮我这一点,{CLEAR}我就已经没有资格再去跟你抢铃铛了。",
-   "en": "Red: Thanks for the encouragement,{NEWLINE}{VAR:0103:0}.{SCROLL}But since you stepped in to help me,{NEWLINE}I’ve lost the right to compete for it.",
+   "en": "Red: Thanks for the encouragement,{NEWLINE}{VAR:0103:0}.{SCROLL}But since you stepped in to help me,{NEWLINE}I’ve lost any right to fight you{CLEAR}for the bell.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV003: omission: restore 跟你抢铃铛 (fight you for the bell); 'it' was unclear"
   },
   {
    "id": 26,
@@ -726,10 +726,10 @@
   {
    "id": 90,
    "zh": "雅典娜『虽说不亲手杀了他们,{NEWLINE}确实难解心头之恨。{CLEAR}但阿桔馆主的投名状,{CLEAR}咱们还是不要抢了。{SCROLL}雅典娜『请动手吧,阿桔馆主。{NEWLINE}取下这三个小鬼的脑袋！",
-   "en": "Ariana: True, not killing them ourselves{NEWLINE}leaves a score unsettled.{SCROLL}But let’s not steal Gym Leader Koga’s{NEWLINE}proof of loyalty.{SCROLL}Ariana: Go ahead, Gym Leader Koga. Take{NEWLINE}these three brats’ heads!",
+   "en": "Ariana: True, unless we kill them{NEWLINE}with our own hands, our hatred{CLEAR}will never be sated.{SCROLL}But let’s not steal Gym Leader Koga’s{NEWLINE}proof of loyalty.{SCROLL}Ariana: Go ahead, Gym Leader Koga. Take{NEWLINE}these three brats’ heads!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV003: softened: 难解心头之恨 is burning hatred, not 'a score unsettled'"
   },
   {
    "id": 91,
@@ -830,10 +830,10 @@
   {
    "id": 103,
    "zh": "雅典娜『混蛋,就差一点点……",
-   "en": "Ariana: Damn it, so close...",
+   "en": "Ariana: Bastards... We were so close...",
    "status": "draft",
    "origin": "agent",
-   "notes": "Branch: #103/#104 Rockets retreat; #189-#210 alternative where Maxie sees through the clones, Koga fights with the player and whistles up the rangers."
+   "notes": "Branch: #103/#104 Rockets retreat; #189-#210 alternative where Maxie sees through the clones, Koga fights with the player and whistles up the rangers. | RV003: softened: 混蛋 is an insult at the foes, not just 'Damn it'"
   },
   {
    "id": 104,
@@ -1622,10 +1622,10 @@
   {
    "id": 202,
    "zh": "阿桔『我们？{NEWLINE}嘿嘿,我们可不只是这点人哦。",
-   "en": "Koga: All? Heh heh. There are more of{NEWLINE}us than this.",
+   "en": "Koga: Finished, are we? Heh heh. There{NEWLINE}are more of us than this.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "RV003: grammar: 我们？ echoes Ariana's 你们马上就要完蛋了; 'All?' did not read"
   },
   {
    "id": 203,
