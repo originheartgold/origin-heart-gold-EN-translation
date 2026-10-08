@@ -6474,7 +6474,7 @@
   {
    "id": "RV092",
    "group": "6-desc",
-   "status": "todo",
+   "status": "done",
    "strings": 480,
    "labels": [
     "a027/0791 pokedex_entries_hg [part 2/3]"
