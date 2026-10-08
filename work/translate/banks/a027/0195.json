@@ -671,26 +671,26 @@
   {
    "id": 79,
    "zh": "{VAR:0101:0}中毒了！",
-   "en": "{VAR:0101:0} was badly{NEWLINE}poisoned!",
+   "en": "{VAR:0101:0}{NEWLINE}was poisoned!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0197/79"
+   "origin": "agent",
+   "notes": "US 0197/79 | RV097: meaning: zh 中毒了 says only 'poisoned'; US 'badly' not in the Chinese (D-2201) (finding D-2254)"
   },
   {
    "id": 80,
    "zh": "野生的{VAR:0101:0}中毒了！",
-   "en": "The wild {VAR:0101:0} was badly{NEWLINE}poisoned!",
+   "en": "The wild {VAR:0101:0}{NEWLINE}was poisoned!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0197/80"
+   "origin": "agent",
+   "notes": "US 0197/80 | RV097: meaning: zh 中毒了 says only 'poisoned'; US 'badly' not in the Chinese (D-2201) (finding D-2254)"
   },
   {
    "id": 81,
    "zh": "对手的{VAR:0101:0}中毒了！",
-   "en": "The foe’s {VAR:0101:0} was badly{NEWLINE}poisoned!",
+   "en": "The foe’s {VAR:0101:0}{NEWLINE}was poisoned!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0197/81"
+   "origin": "agent",
+   "notes": "US 0197/81 | RV097: meaning: zh 中毒了 says only 'poisoned'; US 'badly' not in the Chinese (D-2201) (finding D-2254)"
   },
   {
    "id": 82,
@@ -1283,18 +1283,18 @@
   {
    "id": 148,
    "zh": "我方的{VAR:0106:0}的攻击无效！",
-   "en": "The effect of your team’s{NEWLINE}{VAR:0106:0} wore off!",
+   "en": "The attack of your team’s{NEWLINE}{VAR:0106:0} had no effect!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0197/148"
+   "origin": "agent",
+   "notes": "US 0197/148 | RV097: meaning: zh 的攻击无效 = attack had no effect, not 'wore off'; suspected source mistranslation logged (finding D-2253)"
   },
   {
    "id": 149,
    "zh": "对手的{VAR:0106:0}的攻击无效！",
-   "en": "The effect of the foe’s{NEWLINE}{VAR:0106:0} wore off!",
+   "en": "The attack of the foe’s{NEWLINE}{VAR:0106:0} had no effect!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0197/149"
+   "origin": "agent",
+   "notes": "US 0197/149 | RV097: meaning: zh 的攻击无效 = attack had no effect, not 'wore off'; suspected source mistranslation logged (finding D-2253)"
   },
   {
    "id": 150,
@@ -1808,10 +1808,10 @@
   {
    "id": 208,
    "zh": "{VAR:0101:0}开始睡觉了！",
-   "en": "{VAR:0101:0} slept and{NEWLINE}became healthy!",
+   "en": "{VAR:0101:0} started{NEWLINE}sleeping!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0197/208",
+   "origin": "agent",
+   "notes": "US 0197/208 | RV097: addition: zh 开始睡觉了 = started sleeping; US 'became healthy' not in the Chinese (D-2201) (finding D-2254)",
    "qa_ignore": [
     "glossary:睡觉"
    ]
@@ -1819,10 +1819,10 @@
   {
    "id": 209,
    "zh": "野生的{VAR:0101:0}开始睡觉了！",
-   "en": "The wild {VAR:0101:0} slept and{NEWLINE}became healthy!",
+   "en": "The wild {VAR:0101:0} started{NEWLINE}sleeping!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0197/209",
+   "origin": "agent",
+   "notes": "US 0197/209 | RV097: addition: zh 开始睡觉了 = started sleeping; US 'became healthy' not in the Chinese (D-2201) (finding D-2254)",
    "qa_ignore": [
     "glossary:睡觉"
    ]
@@ -1830,10 +1830,10 @@
   {
    "id": 210,
    "zh": "对手的{VAR:0101:0}开始睡觉了！",
-   "en": "The foe’s {VAR:0101:0} slept and{NEWLINE}became healthy!",
+   "en": "The foe’s {VAR:0101:0} started{NEWLINE}sleeping!",
    "status": "draft",
-   "origin": "us",
-   "notes": "US 0197/210",
+   "origin": "agent",
+   "notes": "US 0197/210 | RV097: addition: zh 开始睡觉了 = started sleeping; US 'became healthy' not in the Chinese (D-2201) (finding D-2254)",
    "qa_ignore": [
     "glossary:睡觉"
    ]
