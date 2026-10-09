@@ -989,7 +989,7 @@
    "en": "The wild {VAR:0102:0,0}’s{NEWLINE}accuracy rose drastically!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Wrapped so the line still fits when the hack's error marker '(Error) ' (D-2276, D-2277) prints before the Pokémon's name: Nature Power and the per-turn infatuation message reach it."
+   "notes": "Wrapped so the line still fits with the hack's error marker '(Error) ' (D-2276) before the Pokémon's name: Nature Power printed 1#120-123 with an invalid reference until battle-message-references (D-2278); kept as the marker's safety net."
   },
   {
    "id": 122,
@@ -997,7 +997,7 @@
    "en": "The foe’s {VAR:0102:0,0}’s{NEWLINE}accuracy rose drastically!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Wrapped so the line still fits when the hack's error marker '(Error) ' (D-2276, D-2277) prints before the Pokémon's name: Nature Power and the per-turn infatuation message reach it."
+   "notes": "Wrapped so the line still fits with the hack's error marker '(Error) ' (D-2276) before the Pokémon's name: Nature Power printed 1#120-123 with an invalid reference until battle-message-references (D-2278); kept as the marker's safety net."
   },
   {
    "id": 123,
@@ -1005,7 +1005,7 @@
    "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}’s{NEWLINE}accuracy rose drastically!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Wrapped so the line still fits when the hack's error marker '(Error) ' (D-2276, D-2277) prints before the Pokémon's name: Nature Power and the per-turn infatuation message reach it."
+   "notes": "Wrapped so the line still fits with the hack's error marker '(Error) ' (D-2276) before the Pokémon's name: Nature Power printed 1#120-123 with an invalid reference until battle-message-references (D-2278); kept as the marker's safety net."
   },
   {
    "id": 124,
@@ -3753,7 +3753,7 @@
    "en": "The wild {VAR:0102:0,0}{NEWLINE}fell in love with {VAR:0102:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Wrapped so the line still fits when the hack's error marker '(Error) ' (D-2276, D-2277) prints before the Pokémon's name: Nature Power and the per-turn infatuation message reach it."
+   "notes": "Wrapped so the line still fits with the hack's error marker '(Error) ' (D-2276) before the Pokémon's name: the per-turn infatuation check passed an invalid reference until battle-message-references (D-2278); kept as the marker's safety net."
   },
   {
    "id": 454,
@@ -3761,7 +3761,7 @@
    "en": "The foe’s {VAR:0102:0,0}{NEWLINE}fell in love with {VAR:0102:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Wrapped so the line still fits when the hack's error marker '(Error) ' (D-2276, D-2277) prints before the Pokémon's name: Nature Power and the per-turn infatuation message reach it."
+   "notes": "Wrapped so the line still fits with the hack's error marker '(Error) ' (D-2276) before the Pokémon's name: the per-turn infatuation check passed an invalid reference until battle-message-references (D-2278); kept as the marker's safety net."
   },
   {
    "id": 455,
@@ -3769,7 +3769,7 @@
    "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}{NEWLINE}fell in love with {VAR:0102:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Wrapped so the line still fits when the hack's error marker '(Error) ' (D-2276, D-2277) prints before the Pokémon's name: Nature Power and the per-turn infatuation message reach it."
+   "notes": "Wrapped so the line still fits with the hack's error marker '(Error) ' (D-2276) before the Pokémon's name: the per-turn infatuation check passed an invalid reference until battle-message-references (D-2278); kept as the marker's safety net."
   },
   {
    "id": 456,
