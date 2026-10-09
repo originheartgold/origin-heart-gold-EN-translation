@@ -228,6 +228,32 @@
 		window.addEventListener('popstate', () => states.forEach(s => s.restore()));
 	}
 
-	const init = () => { setupQuests(); setupFilters(); };
+	// Keep wide reference tables inside an accessible, independently scrollable panel.
+	function setupTableScroll() {
+		const updates = [];
+		document.querySelectorAll('.sl-markdown-content table').forEach(table => {
+			if (table.closest('.table-scroll, .save-editor')) return;
+			const panel = document.createElement('div');
+			panel.className = 'table-scroll';
+			const hint = document.createElement('p');
+			hint.className = 'table-scroll-hint';
+			hint.textContent = 'Scroll sideways to see all columns →';
+			hint.hidden = true;
+			panel.setAttribute('aria-label', `${table.caption?.textContent || table.querySelector('th')?.textContent || 'Reference'} table — scroll for more columns`);
+			table.before(panel); panel.append(table); panel.after(hint);
+			const update = () => {
+				const overflow = panel.scrollWidth > panel.clientWidth + 2;
+				hint.hidden = !overflow;
+				if (overflow) { panel.tabIndex = 0; panel.setAttribute('role', 'region'); }
+				else { panel.removeAttribute('tabindex'); panel.removeAttribute('role'); }
+			};
+			updates.push(update);
+			if (typeof ResizeObserver !== 'undefined') new ResizeObserver(update).observe(panel);
+			update();
+		});
+		if (typeof ResizeObserver === 'undefined') window.addEventListener('resize', () => updates.forEach(update => update()));
+	}
+
+	const init = () => { setupQuests(); setupFilters(); setupTableScroll(); };
 	document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
 })();

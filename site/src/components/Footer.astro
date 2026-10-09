@@ -12,6 +12,7 @@ const edit = source ? `${REPO_URL}/edit/main/${source}` : undefined;
 	<a href={issue} rel="noopener">Report a problem with this page</a>
 	{edit && <a href={edit} rel="noopener">Suggest an edit</a>}
 	<a href={`${REPO_URL}/issues/new?template=screenshot.yml&page=${encodeURIComponent(page)}`} rel="noopener">Send a screenshot</a>
+	<a href="https://github.com/PokeAPI/sprites">Pokémon artwork: PokéAPI</a>
 </div>
 <Default {...Astro.props}><slot /></Default>
 <p class="disclaimer">
