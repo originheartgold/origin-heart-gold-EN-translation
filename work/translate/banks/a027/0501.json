@@ -22,18 +22,18 @@
   {
    "id": 2,
    "zh": "需要游戏硬币吗？{SCROLL}每1枚硬币20元！{NEWLINE}要买吗？{VAR:0200:0}",
-   "en": "Do you need some game coins?{SCROLL}It’s $20 per coin! Would you like to buy{NEWLINE}some?{VAR:0200:0}",
+   "en": "Do you need some game coins?{SCROLL}It’s $20 per coin!{NEWLINE}Would you like to buy some?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 3,
    "zh": "是！谢谢光临！{NEWLINE}这是硬币！给！{VAR:0200:0}",
-   "en": "Yes! Thank you! Here are your coins!{VAR:0200:0}",
+   "en": "Yes! Thank you!{NEWLINE}Here are your coins!{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 4,

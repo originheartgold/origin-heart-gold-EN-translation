@@ -110,18 +110,18 @@
   {
    "id": 13,
    "zh": "咦呀~对了,{NEWLINE}只要这样手机{CLEAR}就变成广播了,{CLEAR}这真是跟做梦一样啊！{SCROLL}嗯？你的手机{NEWLINE}还没有变成广播？{CLEAR}那太浪费哩~{SCROLL}广播塔的１层前台{NEWLINE}现在在做测试吧？{CLEAR}全部答对了的话,{CLEAR}可以拿到收音机！{SCROLL}趁还没结束,{NEWLINE}你也赶紧去拿吧！",
-   "en": "Ooh~ That’s right, just like this, my{NEWLINE}Pokégear turns into a radio! It’s like a{CLEAR}dream!{SCROLL}Hm? Your Pokégear hasn’t turned into a{NEWLINE}radio yet? What a waste~{SCROLL}The reception desk on the first floor of{NEWLINE}the Radio Tower is giving a quiz right{CLEAR}now, isn’t it?{SCROLL}If you get every answer right, you can{NEWLINE}get the Radio Card!{SCROLL}Hurry and go get it before it’s over!",
+   "en": "Ooh~ That’s right, just like this,{NEWLINE}my Pokégear turns into a radio!{CLEAR}It’s like a dream!{SCROLL}Hm? Your Pokégear hasn’t turned into a{NEWLINE}radio yet? What a waste~{SCROLL}The reception desk on the first floor of{NEWLINE}the Radio Tower is giving a quiz right{CLEAR}now, isn’t it?{SCROLL}If you get every answer right, you can{NEWLINE}get the Radio Card!{SCROLL}Hurry and go get it before it’s over!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0388/13 | RV039: meaning: aligned to zh (before it ends; what a waste)"
+   "notes": "US 0388/13 | RV039: meaning: aligned to zh (before it ends; what a waste); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 14,
    "zh": "别看我这样,大婶我{NEWLINE}对机械可是很精通哦。{SCROLL}要不要教给你{NEWLINE}广播的听法啊？{VAR:0200:0}",
-   "en": "I may not look it, but this auntie knows{NEWLINE}her machines inside out.{SCROLL}Want me to teach you how to listen to{NEWLINE}the radio? {VAR:0200:0}",
+   "en": "I may not look it, but this auntie knows{NEWLINE}her machines inside out.{SCROLL}Want me to teach you how{NEWLINE}to listen to the radio? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0388/14 | RV039: voice: 大婶我 self-reference kept"
+   "notes": "US 0388/14 | RV039: voice: 大婶我 self-reference kept; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 15,

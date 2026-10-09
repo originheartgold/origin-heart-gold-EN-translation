@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "我们家孩子非要吵着来石英高原{NEWLINE}一睹大会选手的风采,{CLEAR}真是拿他没办法。",
-   "en": "Our kid kept pestering us to come to{NEWLINE}Indigo Plateau to see the Conference{CLEAR}competitors.{SCROLL}We just couldn’t say no to him.",
+   "en": "Our kid kept pestering us{NEWLINE}to come to Indigo Plateau to see{CLEAR}the Conference competitors.{SCROLL}We just couldn’t say no to him.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 8,
@@ -86,10 +86,10 @@
   {
    "id": 10,
    "zh": "我在缘朱市的烧焦塔辛苦练习喷火,{NEWLINE}就是为了能在石英大会上{CLEAR}释放出夺最目的火光。",
-   "en": "I practiced breathing fire like crazy at{NEWLINE}the Burned Tower in Ecruteak City...{SCROLL}...all so I could put on the most{NEWLINE}dazzling blaze at the Indigo{CLEAR}Conference.",
+   "en": "I practiced breathing fire like crazy at{NEWLINE}the Burned Tower in Ecruteak City...{SCROLL}...all so I could put{NEWLINE}on the most dazzling blaze{CLEAR}at the Indigo Conference.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 11,
@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "阿桔『为了进一步锻炼自己,{NEWLINE}我每天都会来白银山修行。{CLEAR}难得在这里遇见你,{CLEAR}要一起拍张照片吗？{VAR:0200:0}",
-   "en": "Koga: To train myself further, I come{NEWLINE}to Mt. Silver every day to hone my{CLEAR}skills.{SCROLL}It is rare to meet you here. Shall we{NEWLINE}take a photo together?{VAR:0200:0}",
+   "en": "Koga: To train myself further,{NEWLINE}I come to Mt. Silver every{CLEAR}day to hone my skills.{SCROLL}It is rare to meet you here.{NEWLINE}Shall we take a photo together?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "阿桔 = Koga (the US line #14 said Janine; retranslated)."
+   "notes": "阿桔 = Koga (the US line #14 said Janine; retranslated).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 13,

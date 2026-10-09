@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "前面有好多火箭队员,{NEWLINE}还是多带几只精灵再来吧！",
-   "en": "There are lots of Team Rocket members{NEWLINE}ahead. I should come back with more{CLEAR}Pokémon!",
+   "en": "There are lots of Team Rocket{NEWLINE}members ahead. I should{CLEAR}come back with more Pokémon!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 13,
@@ -430,10 +430,10 @@
   {
    "id": 53,
    "zh": "{VAR:0103:0}『可恶……{NEWLINE}精灵们已经很疲惫了,{CLEAR}敌人却这么多……",
-   "en": "{VAR:0103:0}: Dammit... Our Pokémon are{NEWLINE}worn out, and there are so many of{CLEAR}them...",
+   "en": "{VAR:0103:0}: Dammit...{NEWLINE}Our Pokémon are worn out,{CLEAR}and there are so many of them...",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 54,
@@ -630,18 +630,18 @@
   {
    "id": 78,
    "zh": "小绿『{VAR:0103:0}你听好了,{NEWLINE}如果连刚才那个火箭队的都赢不了,{CLEAR}那估计在石英大会上也拿不到名次,{CLEAR}所以我一定要变得更强才行！",
-   "en": "Blue: Listen up, {VAR:0103:0}. If I can’t{NEWLINE}even beat that Team Rocket guy, I{CLEAR}won’t place at the Indigo Conference{CLEAR}either.{SCROLL}So I have to get stronger!",
+   "en": "Blue: Listen up, {VAR:0103:0}.{NEWLINE}If I can’t even beat{CLEAR}that Team Rocket guy, I won’t place{CLEAR}at the Indigo Conference either.{SCROLL}So I have to get stronger!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 79,
    "zh": "小绿『{VAR:0103:0}我觉得啊,{NEWLINE}如果连刚才那个火箭队的都赢不了,{CLEAR}那估计在石英大会上也拿不到名次,{CLEAR}所以咱们要变得更强才行！",
-   "en": "Blue: You know, {VAR:0103:0}, if we can’t{NEWLINE}even beat that Team Rocket guy, we{CLEAR}won’t place at the Indigo Conference{CLEAR}either.{SCROLL}So we’ve got to get stronger!",
+   "en": "Blue: You know, {VAR:0103:0},{NEWLINE}if we can’t even beat that{CLEAR}Team Rocket guy, we won’t place{CLEAR}at the Indigo Conference either.{SCROLL}So we’ve got to get stronger!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 80,
@@ -710,18 +710,18 @@
   {
    "id": 88,
    "zh": "老头子每年都会带我{NEWLINE}来月见山泉这里旅行,{CLEAR}这里是我们整个人生的回忆啊！{SCROLL}如今这几个年轻人{NEWLINE}却要在泉水里洗澡,{CLEAR}真的非要破坏这份美好吗？",
-   "en": "Every year, my old man brings me here{NEWLINE}to the Mt. Moon Spring. It holds the{CLEAR}memories of our whole life together!{SCROLL}And now these young people want to{NEWLINE}take a bath in the spring. Do they{CLEAR}really have to ruin something so{CLEAR}special?",
+   "en": "Every year, my old man brings me here{NEWLINE}to the Mt. Moon Spring. It holds the{CLEAR}memories of our whole life together!{SCROLL}And now these young people want{NEWLINE}to take a bath in the spring.{CLEAR}Do they really have to ruin{CLEAR}something so special?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 89,
    "zh": "{VAR:0103:0}『月见山的泉水是给大家喝的,{NEWLINE}并不是你的洗澡水,{CLEAR}你们如果在里面洗澡{CLEAR}别人还怎么喝这水。",
-   "en": "{VAR:0103:0}: The Mt. Moon spring water is{NEWLINE}for everyone to drink. It’s not your{CLEAR}bathwater.{SCROLL}If you bathe in it, how is anyone else{NEWLINE}supposed to drink it?",
+   "en": "{VAR:0103:0}: The Mt. Moon spring{NEWLINE}water is for everyone to drink.{CLEAR}It’s not your bathwater.{SCROLL}If you bathe in it, how is anyone else{NEWLINE}supposed to drink it?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 90,
@@ -806,18 +806,18 @@
   {
    "id": 100,
    "zh": "这几个年轻人竟然要用{NEWLINE}珍贵美丽的月见山泉当浴池！{CLEAR}我要是再年轻二十岁{CLEAR}就能把他们赶跑了,唉……",
-   "en": "These young people want to use the{NEWLINE}beautiful, precious Mt. Moon Spring as a{CLEAR}bathtub!{SCROLL}If I were twenty years younger, I’d{NEWLINE}chase them off myself. Sigh...",
+   "en": "These young people want{NEWLINE}to use the beautiful, precious{CLEAR}Mt. Moon Spring as a bathtub!{SCROLL}If I were twenty years younger, I’d{NEWLINE}chase them off myself. Sigh...",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 101,
    "zh": "谢谢你赶走了麻生一伙,{NEWLINE}让这里重归平静。{CLEAR}作为感谢请收下这个！",
-   "en": "Thank you for driving off Asher and his{NEWLINE}crew and bringing peace back to this{CLEAR}place.{SCROLL}Please take this as thanks!",
+   "en": "Thank you for driving off{NEWLINE}Asher and his crew and bringing{CLEAR}peace back to this place.{SCROLL}Please take this as thanks!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 102,

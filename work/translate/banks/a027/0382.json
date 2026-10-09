@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "不好意思把你留下来。{SCROLL}那边是口袋竞技会场{NEWLINE}入口大门,{CLEAR}不过还没造好。{SCROLL}突击工程明白么？{NEWLINE}就是紧急进行施工啊。{SCROLL}马上就要开放了,{NEWLINE}敬请期待吧。",
-   "en": "Sorry to hold you up.{SCROLL}Over there is the entrance gate to the{NEWLINE}Pokéathlon Dome, but it isn’t finished{CLEAR}yet.{SCROLL}You know what a rush job is? It means{NEWLINE}urgent construction work.{SCROLL}It’ll be opening soon, so look forward{NEWLINE}to it.",
+   "en": "Sorry to hold you up.{SCROLL}Over there is the entrance{NEWLINE}gate to the Pokéathlon Dome,{CLEAR}but it isn’t finished yet.{SCROLL}You know what a rush job is? It means{NEWLINE}urgent construction work.{SCROLL}It’ll be opening soon, so look forward{NEWLINE}to it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0389/2 | RV039: meaning: aligned to zh"
+   "notes": "US 0389/2 | RV039: meaning: aligned to zh; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 3,

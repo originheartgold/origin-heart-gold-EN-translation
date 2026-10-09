@@ -30,18 +30,18 @@
   {
    "id": 3,
    "zh": "联动公园是{NEWLINE}用规定数量的球,{SCROLL}如何快速完全{NEWLINE}捕捉６只精灵的竞技场所。{SCROLL}可捕捉的精灵{NEWLINE}已经为参赛的训练师{CLEAR}准备好了。{SCROLL}如果没有预存好６只,{NEWLINE}我们就开启固定捕捉模式,{CLEAR}在这个模式下公园里会放入{CLEAR}芳缘地区或者神奥地区的精灵,{CLEAR}供游客捕捉。{SCROLL}……你还想听点什么？{VAR:0200:0}",
-   "en": "At the Pal Park, you compete to catch{NEWLINE}six Pokémon as quickly as possible with a{CLEAR}set number of Balls.{SCROLL}The Pokémon to be caught are provided{NEWLINE}in advance by the participating Trainer.{SCROLL}If you haven’t stocked six Pokémon, we{NEWLINE}switch on Fixed Catch mode.{SCROLL}In this mode, Pokémon from Hoenn or{NEWLINE}Sinnoh are released into the park for{CLEAR}visitors to catch.{SCROLL}...Would you like to know anything else?{VAR:0200:0}",
+   "en": "At the Pal Park, you compete to catch{NEWLINE}six Pokémon as quickly as possible with a{CLEAR}set number of Balls.{SCROLL}The Pokémon to be caught are provided{NEWLINE}in advance by the participating Trainer.{SCROLL}If you haven’t stocked six Pokémon, we{NEWLINE}switch on Fixed Catch mode.{SCROLL}In this mode, Pokémon from Hoenn or{NEWLINE}Sinnoh are released into the park for{CLEAR}visitors to catch.{SCROLL}...Would you like{NEWLINE}to know anything else?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 4,
    "zh": "捕捉秀开始时,{NEWLINE}会给你６个公园球。{SCROLL}请使用这些球,{NEWLINE}将６只精灵全部捕捉。{SCROLL}在固定捕捉模式下,{NEWLINE}则不再限制携带的精灵球。{SCROLL}……你还想听点什么？{VAR:0200:0}",
-   "en": "At the start of the Catching Show,{NEWLINE}you’ll be given six Park Balls.{SCROLL}Use them to catch all six Pokémon.{SCROLL}In Fixed Catch mode, there’s no limit on{NEWLINE}the Poké Balls you can use.{SCROLL}...Would you like to know anything else?{VAR:0200:0}",
+   "en": "At the start of the Catching Show,{NEWLINE}you’ll be given six Park Balls.{SCROLL}Use them to catch all six Pokémon.{SCROLL}In Fixed Catch mode, there’s no limit on{NEWLINE}the Poké Balls you can use.{SCROLL}...Would you like{NEWLINE}to know anything else?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 5,

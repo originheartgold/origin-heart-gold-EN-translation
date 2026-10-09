@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "混元国术馆的那个{NEWLINE}闪电五连鞭的舞蹈好好玩,{CLEAR}我也好想去跟着马大叔跳舞啊。",
-   "en": "That Lightning Five-Whip dance at the{NEWLINE}Hunyuan Dojo looks like so much fun. I{CLEAR}want to go dance along with old Mr. Ma{CLEAR}too.",
+   "en": "That Lightning Five-Whip dance{NEWLINE}at the Hunyuan Dojo looks{CLEAR}like so much fun. I want to go{CLEAR}dance along with old Mr. Ma too.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 5,

@@ -214,10 +214,10 @@
   {
    "id": 26,
    "zh": "赤焰松『队员们,{NEWLINE}给我拖住这几个家伙,{CLEAR}为回收三圣兽争取时间！",
-   "en": "Maxie: Troops! Hold these guys off and{NEWLINE}buy us time to recover the legendary{CLEAR}beasts!",
+   "en": "Maxie: Troops! Hold these guys{NEWLINE}off and buy us time to recover{CLEAR}the legendary beasts!",
    "status": "draft",
    "origin": "agent",
-   "notes": " | RV041: softened: 这几个家伙 = these guys, not 'these people'"
+   "notes": " | RV041: softened: 这几个家伙 = these guys, not 'these people'; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 27,

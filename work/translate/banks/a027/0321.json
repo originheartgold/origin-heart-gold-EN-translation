@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "月见山周围散落着不少星之碎片,{NEWLINE}据说这些小碎片能够用来{CLEAR}修补天上掉下的陨石。{CLEAR}虽然我没见过什么陨石,{CLEAR}但多收集一些总是没错的,{CLEAR}说不定以后就能用到。",
-   "en": "Lots of Star Pieces are scattered{NEWLINE}around Mt. Moon.{SCROLL}They say these little pieces can be used{NEWLINE}to repair meteorites that fall from the{CLEAR}sky.{SCROLL}I’ve never seen a meteorite myself, but{NEWLINE}it can’t hurt to collect a few. They{CLEAR}might come in handy someday.",
+   "en": "Lots of Star Pieces are scattered{NEWLINE}around Mt. Moon.{SCROLL}They say these little pieces can{NEWLINE}be used to repair meteorites{CLEAR}that fall from the sky.{SCROLL}I’ve never seen a meteorite myself, but{NEWLINE}it can’t hurt to collect a few. They{CLEAR}might come in handy someday.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,
@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "「增强拳」是最强的拳法,{NEWLINE}想让你的精灵学习吗？",
-   "en": "Power-Up Punch is the mightiest of{NEWLINE}punches! Want your Pokémon to learn{CLEAR}it?",
+   "en": "Power-Up Punch{NEWLINE}is the mightiest of punches!{CLEAR}Want your Pokémon to learn it?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 8,
@@ -230,10 +230,10 @@
   {
    "id": 28,
    "zh": "你好啊这位馆主先生,{NEWLINE}你好像对口袋妖怪的营养学{CLEAR}很有研究嘛。",
-   "en": "Why, hello there, Mr. Gym Leader! You{NEWLINE}seem to know a lot about Pokémon{CLEAR}nutrition.",
+   "en": "Why, hello there, Mr. Gym Leader!{NEWLINE}You seem to know a lot{CLEAR}about Pokémon nutrition.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 29,
@@ -670,10 +670,10 @@
   {
    "id": 83,
    "zh": "小明『我在每次战斗开始前{NEWLINE}都会提前收取你3000元作为激励金,{CLEAR}在你胜利之后再还给你一定金额。{CLEAR}不过你今天似乎没有带够钱啊。{CLEAR}为了保证每场对战的质量,{CLEAR}你还是准备好激励金再来吧！",
-   "en": "A.J.: Before every battle, I collect a{NEWLINE}$3000 incentive fee from you, and after{CLEAR}you win, I pay you back a certain{CLEAR}amount.{SCROLL}But it looks like you didn’t bring enough{NEWLINE}money today.{SCROLL}To keep every battle worthwhile, come{NEWLINE}back when you have the fee ready!",
+   "en": "A.J.: Before every battle,{NEWLINE}I collect a $3000 incentive fee{CLEAR}from you, and after you win,{CLEAR}I pay you back a certain amount.{SCROLL}But it looks like you didn’t bring enough{NEWLINE}money today.{SCROLL}To keep every battle worthwhile, come{NEWLINE}back when you have the fee ready!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position | [D-0383 rename 2026-09-29: Johnny → A.J.]; ext-review RV-002 | RV011: meaning: 再还给你一定金额 = a certain amount, not 'some of it' (D-1759)"
+   "notes": "v3 TM: 1 source(s), same position | [D-0383 rename 2026-09-29: Johnny → A.J.]; ext-review RV-002 | RV011: meaning: 再还给你一定金额 = a certain amount, not 'some of it' (D-1759); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 84,
@@ -830,10 +830,10 @@
   {
    "id": 103,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的「飞膝踢」……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习「飞膝踢」{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn High Jump{NEWLINE}Kick...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn High{NEWLINE}Jump Kick?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn High Jump{NEWLINE}Kick...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn High Jump Kick?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 104,
@@ -854,10 +854,10 @@
   {
    "id": 106,
    "zh": "你是要放弃{NEWLINE}让它记住「飞膝踢」吗？{VAR:0200:0}",
-   "en": "Give up on teaching it High Jump Kick?{VAR:0200:0}",
+   "en": "Give up on teaching it{NEWLINE}High Jump Kick?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 107,
@@ -902,10 +902,10 @@
   {
    "id": 112,
    "zh": "你是要放弃{NEWLINE}让它记住「增强拳」吗？{VAR:0200:0}",
-   "en": "Give up on teaching it Power-Up Punch?{VAR:0200:0}",
+   "en": "Give up on teaching it{NEWLINE}Power-Up Punch?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 113,

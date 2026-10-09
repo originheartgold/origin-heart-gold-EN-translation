@@ -74,10 +74,10 @@
   {
    "id": 8,
    "zh": "我既是娜姿也不是娜姿,{NEWLINE}我是这个异空间的管理员。",
-   "en": "I am Sabrina, and yet I am not Sabrina.{NEWLINE}I’m the caretaker of this pocket{CLEAR}dimension.",
+   "en": "I am Sabrina, and yet I am not Sabrina.{NEWLINE}I’m the caretaker{CLEAR}of this pocket dimension.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 9,
@@ -170,10 +170,10 @@
   {
    "id": 20,
    "zh": "娜姿都跟我说了,{NEWLINE}现在金黄市出事了对吧？{CLEAR}娜姿她可是个很自负的人,{CLEAR}她愿意耗尽体力把你传送进来,{CLEAR}说明她很看好你的实力哦。{SCROLL}在把你传送进金黄市之前,{NEWLINE}娜姿叮嘱我把这个交给你。",
-   "en": "Sabrina told me everything. Something’s{NEWLINE}happened in Saffron City, right? Sabrina{CLEAR}is a very proud person. If she’s willing{CLEAR}to wear herself out teleporting you in,{CLEAR}she must think very highly of your{CLEAR}abilities.{SCROLL}Before teleporting you into Saffron{NEWLINE}City, Sabrina told me to give you this.",
+   "en": "Sabrina told me everything.{NEWLINE}Something’s happened in Saffron City,{CLEAR}right? Sabrina is a very proud person.{CLEAR}If she’s willing to wear herself{CLEAR}out teleporting you in, she must{CLEAR}think very highly of your abilities.{SCROLL}Before teleporting you into Saffron{NEWLINE}City, Sabrina told me to give you this.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 21,

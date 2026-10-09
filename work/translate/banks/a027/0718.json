@@ -7296,10 +7296,10 @@
   {
    "id": 892,
    "zh": "精灵对战的时候{NEWLINE}你在想什么呢？{SCROLL}光是使用厉害的技能{NEWLINE}也不行。{SCROLL}",
-   "en": "What is your battle strategy?{NEWLINE}It is foolish to use strong moves{CLEAR}indiscriminately.{SCROLL}",
+   "en": "What is your battle strategy?{NEWLINE}It is foolish to use strong{CLEAR}moves indiscriminately.{SCROLL}",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0728/892",
+   "notes": "US 0728/892; layout rebalance 2026-10-09 (prompt icons / single-word page)",
    "qa_ignore": [
     "glossary:精灵"
    ]

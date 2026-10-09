@@ -110,10 +110,10 @@
   {
    "id": 13,
    "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
-   "en": "{VAR:0106:1} will be forgotten. Is that{NEWLINE}OK? {VAR:0200:0}",
+   "en": "{VAR:0106:1} will be forgotten.{NEWLINE}Is that OK? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl)"
+   "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 14,

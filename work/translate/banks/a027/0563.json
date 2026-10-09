@@ -129,10 +129,10 @@
   {
    "id": 15,
    "zh": "这样啊！{NEWLINE}要把爷爷的{CLEAR}电话号码告诉你吗？{VAR:0200:0}",
-   "en": "I see! Want me to give you Grandpa’s{NEWLINE}phone number?{VAR:0200:0}",
+   "en": "I see! Want me to give you{NEWLINE}Grandpa’s phone number?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0571/15 | RV033: meaning: Chinese is a yes/no question, US was a statement"
+   "notes": "US 0571/15 | RV033: meaning: Chinese is a yes/no question, US was a statement; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 16,

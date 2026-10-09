@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "想要和虫精灵{NEWLINE}搞好关系的话,{CLEAR}就和我交换下电话号码吧！{VAR:0200:0}",
-   "en": "If you want to get along with Bug-type{NEWLINE}Pokémon, trade phone numbers with me!{VAR:0200:0}",
+   "en": "If you want to get along{NEWLINE}with Bug-type Pokémon,{CLEAR}trade phone numbers with me!{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0692/1"
+   "notes": "US 0692/1; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,

@@ -22,18 +22,18 @@
   {
    "id": 2,
    "zh": "想必吉尔露太大人{NEWLINE}正在给她介绍我们仓库里的{CLEAR}各种珍惜收藏品吧。",
-   "en": "I’m sure Master Lawrence is showing{NEWLINE}her all the rare treasures in our{CLEAR}collection.",
+   "en": "I’m sure Master Lawrence{NEWLINE}is showing her all the rare{CLEAR}treasures in our collection.",
    "status": "draft",
    "origin": "agent",
-   "notes": "consistency fix (follow-up 4)"
+   "notes": "consistency fix (follow-up 4); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 3,
    "zh": "小霞『收藏品……{SCROLL}小霞『果然吉尔露太就是那个{NEWLINE}传闻中的「收藏家」吧！{CLEAR}这么说来莉佳现在很危险！",
-   "en": "Misty: Treasures...{SCROLL}Misty: So Lawrence really is that{NEWLINE}‘Collector’ everyone’s been whispering{CLEAR}about!{SCROLL}Then Erika’s in danger right now!",
+   "en": "Misty: Treasures...{SCROLL}Misty: So Lawrence really{NEWLINE}is that ‘Collector’ everyone’s{CLEAR}been whispering about!{SCROLL}Then Erika’s in danger right now!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 4,
@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "小霞『我有很不好的预感,{NEWLINE}咱们快去仓库跟莉佳汇合吧！",
-   "en": "Misty: I’ve got a really bad feeling.{NEWLINE}Let’s hurry to the warehouse and find{CLEAR}Erika!",
+   "en": "Misty: I’ve got a really bad feeling.{NEWLINE}Let’s hurry to the warehouse{CLEAR}and find Erika!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 13,
@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "小霞『这就是那个隐藏的通道,{NEWLINE}莉佳很有可能被他们带到下面去了。",
-   "en": "Misty: This must be the hidden passage.{NEWLINE}They’ve probably taken Erika down{CLEAR}there.",
+   "en": "Misty: This must be the hidden passage.{NEWLINE}They’ve probably taken{CLEAR}Erika down there.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 26,
@@ -262,10 +262,10 @@
   {
    "id": 32,
    "zh": "{VAR:0103:0}『火箭队的人还是很危险的,{NEWLINE}不可以掉以轻心,{CLEAR}咱们还是一起战斗吧！",
-   "en": "{VAR:0103:0}: Team Rocket is still{NEWLINE}dangerous. We can’t let our guard{CLEAR}down.{SCROLL}Let’s fight together!",
+   "en": "{VAR:0103:0}: Team Rocket{NEWLINE}is still dangerous.{CLEAR}We can’t let our guard down.{SCROLL}Let’s fight together!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 33,
@@ -692,10 +692,10 @@
   {
    "id": 85,
    "zh": "{VAR:0103:0}『嘿嘿,你这种惊讶的表情,{NEWLINE}我这一路上可见了好几次呢。",
-   "en": "{VAR:0103:0}: Heh heh. I’ve seen that{NEWLINE}surprised look plenty of times on my way{CLEAR}here.",
+   "en": "{VAR:0103:0}: Heh heh.{NEWLINE}I’ve seen that surprised look{CLEAR}plenty of times on my way here.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 86,
@@ -804,10 +804,10 @@
   {
    "id": 99,
    "zh": "你是小霞的朋友吧？{NEWLINE}谢谢你能来到这里救我们。{SCROLL}莉佳大小姐被吉尔露太{NEWLINE}带到下面一层去了,{CLEAR}现在她的处境非常危险。{CLEAR}我的精灵在刚刚跟火箭队的战斗中{CLEAR}受伤非常严重,{CLEAR}已经无法再战斗了。{CLEAR}所以拜托你去帮帮莉佳大小姐吧！{CLEAR}拜托你了！",
-   "en": "You’re Misty’s friend, aren’t you?{NEWLINE}Thank you for coming all this way to{CLEAR}save us.{SCROLL}Lawrence took Lady Erika down to the{NEWLINE}floor below. She’s in grave danger right{CLEAR}now.{SCROLL}My Pokémon were badly hurt in the{NEWLINE}battle with Team Rocket just now. They{CLEAR}can’t battle anymore.{SCROLL}So please, go help Lady Erika! I’m{NEWLINE}begging you!",
+   "en": "You’re Misty’s friend, aren’t you?{NEWLINE}Thank you for coming all this way to{CLEAR}save us.{SCROLL}Lawrence took Lady Erika{NEWLINE}down to the floor below.{CLEAR}She’s in grave danger right now.{SCROLL}My Pokémon were badly hurt in the{NEWLINE}battle with Team Rocket just now. They{CLEAR}can’t battle anymore.{SCROLL}So please, go help Lady Erika! I’m{NEWLINE}begging you!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 100,
@@ -900,10 +900,10 @@
   {
    "id": 111,
    "zh": "小霞『{VAR:0103:0},{NEWLINE}这里就是仓库的尽头了吧？{CLEAR}莉佳她们居然没在这里！{CLEAR}会不会在仓库的哪个地方{CLEAR}有什么机关暗门呢？",
-   "en": "Misty: {VAR:0103:0}, this must be the far{NEWLINE}end of the warehouse, right?{SCROLL}But Erika and her companion aren’t{NEWLINE}here!{SCROLL}Could there be some hidden mechanism or{NEWLINE}secret door somewhere in the{CLEAR}warehouse?",
+   "en": "Misty: {VAR:0103:0}, this must be the far{NEWLINE}end of the warehouse, right?{SCROLL}But Erika and her companion aren’t{NEWLINE}here!{SCROLL}Could there be some hidden{NEWLINE}mechanism or secret door{CLEAR}somewhere in the warehouse?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 112,
@@ -956,10 +956,10 @@
   {
    "id": 118,
    "zh": "火箭队近期战报4：{NEWLINE}近期多次阻碍火箭队行动的{CLEAR}几名训练家的情报调查如下：{CLEAR}其中两人来自真新镇,{CLEAR}分别叫{VAR:0103:0}、小绿。{CLEAR}华蓝馆主的女儿小霞{CLEAR}和两名其他地区的训练家{CLEAR}也阻碍过月见山的行动。{CLEAR}还有一人身份不明,{CLEAR}但似乎对我们火箭队的底细有所掌握。{CLEAR}应尽快派出暗杀部队消灭这些人。{CLEAR}——吉尔露太。",
-   "en": "Team Rocket Battle Report 4:{SCROLL}Intelligence on the Trainers who have{NEWLINE}repeatedly obstructed Team Rocket’s{CLEAR}recent operations:{SCROLL}Two of them are from Pallet Town, named{NEWLINE}{VAR:0103:0} and Blue.{SCROLL}Misty, the Cerulean Gym Leader’s{NEWLINE}daughter, and two Trainers from other{CLEAR}regions also obstructed the Mt. Moon{CLEAR}operation.{SCROLL}One more is of unknown identity, but{NEWLINE}seems to know a great deal about Team{CLEAR}Rocket.{SCROLL}An assassination squad should be sent{NEWLINE}to eliminate them as soon as possible.{SCROLL}-Lawrence",
+   "en": "Team Rocket Battle Report 4:{SCROLL}Intelligence on the Trainers who have{NEWLINE}repeatedly obstructed Team Rocket’s{CLEAR}recent operations:{SCROLL}Two of them are from Pallet Town, named{NEWLINE}{VAR:0103:0} and Blue.{SCROLL}Misty, the Cerulean Gym Leader’s{NEWLINE}daughter, and two Trainers{CLEAR}from other regions also obstructed{CLEAR}the Mt. Moon operation.{SCROLL}One more is of unknown identity,{NEWLINE}but seems to know a great{CLEAR}deal about Team Rocket.{SCROLL}An assassination squad should be sent{NEWLINE}to eliminate them as soon as possible.{SCROLL}-Lawrence",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 119,
@@ -1004,10 +1004,10 @@
   {
    "id": 124,
    "zh": "小次郎『居然敢独自{NEWLINE}闯进我们火箭队基地,{CLEAR}你还真是目中无人啊。",
-   "en": "James: Barging into our base all by{NEWLINE}yourself? You really think you’re{CLEAR}something.",
+   "en": "James: Barging into our base{NEWLINE}all by yourself?{CLEAR}You really think you’re something.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 125,
@@ -1060,10 +1060,10 @@
   {
    "id": 131,
    "zh": "小次郎『没奖金就没钱买酒,{NEWLINE}没酒就没瓶盖了……{CLEAR}真是的,都怪你这个小鬼！",
-   "en": "James: No bonus means no money for{NEWLINE}booze, and no booze means no bottle{CLEAR}caps...{SCROLL}Honestly, this is all your fault, you{NEWLINE}brat!",
+   "en": "James: No bonus means no{NEWLINE}money for booze, and no{CLEAR}booze means no bottle caps...{SCROLL}Honestly, this is all your fault, you{NEWLINE}brat!",
    "status": "draft",
    "origin": "agent",
-   "notes": " | D-1782: user approved booze for 酒, explicitly alcoholic drinks; following insult retained."
+   "notes": " | D-1782: user approved booze for 酒, explicitly alcoholic drinks; following insult retained.; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 132,
@@ -1084,10 +1084,10 @@
   {
    "id": 134,
    "zh": "莉佳大小姐被吉尔露太{NEWLINE}带到下面一层去了,{CLEAR}现在她的处境非常危险。{CLEAR}我的精灵在刚刚跟火箭队的战斗中{CLEAR}受伤非常严重,{CLEAR}已经无法再战斗了。{CLEAR}所以拜托你去帮帮莉佳大小姐吧！{CLEAR}拜托你了！",
-   "en": "Lawrence took Lady Erika down to the{NEWLINE}floor below. She’s in grave danger right{CLEAR}now.{SCROLL}My Pokémon were badly hurt in the{NEWLINE}battle with Team Rocket just now. They{CLEAR}can’t battle anymore.{SCROLL}So please, go help Lady Erika! I’m{NEWLINE}begging you!",
+   "en": "Lawrence took Lady Erika{NEWLINE}down to the floor below.{CLEAR}She’s in grave danger right now.{SCROLL}My Pokémon were badly hurt in the{NEWLINE}battle with Team Rocket just now. They{CLEAR}can’t battle anymore.{SCROLL}So please, go help Lady Erika! I’m{NEWLINE}begging you!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 135,
@@ -1140,18 +1140,18 @@
   {
    "id": 141,
    "zh": "莉佳馆主的臭臭花{NEWLINE}对我们的精灵强化实验非常重要,{CLEAR}如果不是因为这个,{CLEAR}我们也不会轻易去招惹一位馆主的。",
-   "en": "Gym Leader Erika’s Gloom is extremely{NEWLINE}important to our Pokémon enhancement{CLEAR}experiments.{SCROLL}If it weren’t for that, we’d never go{NEWLINE}out of our way to provoke a Gym Leader.",
+   "en": "Gym Leader Erika’s Gloom is extremely{NEWLINE}important to our Pokémon{CLEAR}enhancement experiments.{SCROLL}If it weren’t for that, we’d never go{NEWLINE}out of our way to provoke a Gym Leader.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 142,
    "zh": "这里以前是火箭队的窝点,{NEWLINE}现在被精灵联盟查封了。{SCROLL}我在这里看到了很多{NEWLINE}火箭队搞阴谋诡计的证据,{CLEAR}如果口袋妖怪们能在战斗中{CLEAR}像火箭队那样活用各种阴谋,{CLEAR}那它们的招式威力一定能得到提升。{CLEAR}如果你有精灵想学习阴谋的话,{CLEAR}我可以把火箭队{CLEAR}搞阴谋诡计的那些套路教给它们。{SCROLL}怎么样,要让精灵学习阴谋吗？",
-   "en": "This used to be a Team Rocket hideout,{NEWLINE}but the Pokémon League has sealed it{CLEAR}off.{SCROLL}I’ve seen lots of evidence of Team{NEWLINE}Rocket’s schemes and plots here.{SCROLL}If Pokémon could make use of all kinds{NEWLINE}of schemes in battle like Team Rocket{CLEAR}does...{SCROLL}...their moves would surely hit harder.{SCROLL}If you have a Pokémon that wants to{NEWLINE}learn Nasty Plot, I can teach it all of{CLEAR}Team Rocket’s scheming tricks.{SCROLL}So, want your Pokémon to learn Nasty{NEWLINE}Plot?",
+   "en": "This used to be a Team Rocket{NEWLINE}hideout, but the Pokémon League{CLEAR}has sealed it off.{SCROLL}I’ve seen lots of evidence of Team{NEWLINE}Rocket’s schemes and plots here.{SCROLL}If Pokémon could make use{NEWLINE}of all kinds of schemes in battle{CLEAR}like Team Rocket does...{SCROLL}...their moves would surely hit harder.{SCROLL}If you have a Pokémon that wants to{NEWLINE}learn Nasty Plot, I can teach it all of{CLEAR}Team Rocket’s scheming tricks.{SCROLL}So, want your Pokémon to learn Nasty{NEWLINE}Plot?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 143,
@@ -1388,18 +1388,18 @@
   {
    "id": 172,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的阴谋……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习阴谋{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn the move{NEWLINE}Nasty Plot...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Forget a move to make room for Nasty{NEWLINE}Plot?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn the move{NEWLINE}Nasty Plot...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Forget a move to make{NEWLINE}room for Nasty Plot?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 173,
    "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
-   "en": "{VAR:0106:1} will be forgotten. Is that{NEWLINE}OK? {VAR:0200:0}",
+   "en": "{VAR:0106:1} will be forgotten.{NEWLINE}Is that OK? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl)"
+   "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 174,

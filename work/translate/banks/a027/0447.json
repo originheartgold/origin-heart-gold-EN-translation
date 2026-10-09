@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "{VAR:0103:0}『地上似乎有些滑,{NEWLINE}还是把精灵收起来比较安全吧！",
-   "en": "{VAR:0103:0}: The floor looks kind of{NEWLINE}slippery. It’s safer to put my Pokémon{CLEAR}away.",
+   "en": "{VAR:0103:0}: The floor{NEWLINE}looks kind of slippery.{CLEAR}It’s safer to put my Pokémon away.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 12,
@@ -118,18 +118,18 @@
   {
    "id": 14,
    "zh": "{VAR:0103:0}『抱歉,{NEWLINE}我还是想挑战馆主,{CLEAR}请让我过去！",
-   "en": "{VAR:0103:0}: Sorry, but I still want to{NEWLINE}challenge the Gym Leader. Please let me{CLEAR}through!",
+   "en": "{VAR:0103:0}: Sorry, but I still want{NEWLINE}to challenge the Gym Leader.{CLEAR}Please let me through!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 15,
    "zh": "{VAR:0103:0}『喂！喂！{NEWLINE}你什么态度啊！{SCROLL}道馆不就让训练家来学习和挑战的吗？",
-   "en": "{VAR:0103:0}: Hey! Hey! What’s with that{NEWLINE}attitude!?{SCROLL}Aren’t Gyms supposed to be places{NEWLINE}where Trainers come to learn and{CLEAR}battle?",
+   "en": "{VAR:0103:0}: Hey! Hey! What’s with that{NEWLINE}attitude!?{SCROLL}Aren’t Gyms supposed{NEWLINE}to be places where Trainers{CLEAR}come to learn and battle?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 16,
@@ -198,10 +198,10 @@
   {
    "id": 24,
    "zh": "坂木『哈哈哈哈,真是有意思的训练家啊。{NEWLINE}看你这么拼命来到这里的份上,{CLEAR}我再拒绝你就太不体面了。{SCROLL}坂木『来吧,让你看看我作为「馆主」的实力。",
-   "en": "Giovanni: Ha ha ha ha! What an{NEWLINE}interesting Trainer.{SCROLL}You fought so hard to get here, it{NEWLINE}would be unseemly of me to turn you{CLEAR}away.{SCROLL}Giovanni: Come. I’ll show you my{NEWLINE}strength as a Gym Leader.",
+   "en": "Giovanni: Ha ha ha ha! What an{NEWLINE}interesting Trainer.{SCROLL}You fought so hard to get here,{NEWLINE}it would be unseemly{CLEAR}of me to turn you away.{SCROLL}Giovanni: Come. I’ll show you my{NEWLINE}strength as a Gym Leader.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 25,
@@ -222,42 +222,42 @@
   {
    "id": 27,
    "zh": "坂木『等等,好像有紧急信息传过来了。{SCROLL}……{SCROLL}……{SCROLL}坂木『逃跑了！？{NEWLINE}……{SCROLL}坂木『真遗憾啊年轻人,{NEWLINE}今天恐怕没法感受你的气魄了。{CLEAR}等你历练得更强大之后,{CLEAR}我们再战吧！",
-   "en": "Giovanni: Wait. An urgent message seems{NEWLINE}to be coming in.{SCROLL}...{SCROLL}...{SCROLL}Giovanni: It escaped!?{NEWLINE}...{SCROLL}Giovanni: A pity, young one. I’m afraid I{NEWLINE}won’t get to feel your fighting spirit{CLEAR}today.{SCROLL}Once you’ve grown stronger, we’ll{NEWLINE}battle again!",
+   "en": "Giovanni: Wait. An urgent message seems{NEWLINE}to be coming in.{SCROLL}...{SCROLL}...{SCROLL}Giovanni: It escaped!?{NEWLINE}...{SCROLL}Giovanni: A pity, young one.{NEWLINE}I’m afraid I won’t get to feel{CLEAR}your fighting spirit today.{SCROLL}Once you’ve grown stronger, we’ll{NEWLINE}battle again!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 28,
    "zh": "哦？你帮助一位小姑娘{NEWLINE}抓到了她人生的第一只精灵？{SCROLL}嗯,帮助他人实现小小的心愿,{NEWLINE}用举手之劳向他人传递温暖。{CLEAR}确实足以证明你的品德。{CLEAR}我认可你了,请通过吧。",
-   "en": "Oh? You helped a little girl catch the{NEWLINE}first Pokémon of her life?{SCROLL}Hmm. Helping others make small wishes{NEWLINE}come true, sharing warmth through small{CLEAR}kindnesses...{SCROLL}That’s proof enough of your virtue. I{NEWLINE}approve. You may pass.",
+   "en": "Oh? You helped a little girl catch the{NEWLINE}first Pokémon of her life?{SCROLL}Hmm. Helping others make small{NEWLINE}wishes come true, sharing warmth{CLEAR}through small kindnesses...{SCROLL}That’s proof enough of your virtue. I{NEWLINE}approve. You may pass.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 29,
    "zh": "你好挑战者,{NEWLINE}坂木馆主外出旅行归来,{CLEAR}现在常磐道馆重新对外开放挑战。{CLEAR}不过坂木馆主可是全地区最强的训练家,{CLEAR}一般人是没有资格跟他见面的。{CLEAR}想要见到里面的坂木馆主,{CLEAR}你必须要通过「德」、「智」、「技」{CLEAR}三个方面的考验。",
-   "en": "Hello, challenger. Gym Leader Giovanni{NEWLINE}is back from his travels, and the{CLEAR}Viridian Gym is open to challengers{CLEAR}again.{SCROLL}But Giovanni is the strongest Trainer in{NEWLINE}the region. Not just anyone gets to{CLEAR}meet him.{SCROLL}To see Giovanni inside, you must pass{NEWLINE}three trials: Virtue, Wisdom and Skill.",
+   "en": "Hello, challenger.{NEWLINE}Gym Leader Giovanni is back{CLEAR}from his travels, and the Viridian Gym{CLEAR}is open to challengers again.{SCROLL}But Giovanni is the strongest Trainer in{NEWLINE}the region. Not just anyone gets to{CLEAR}meet him.{SCROLL}To see Giovanni inside, you must pass{NEWLINE}three trials: Virtue, Wisdom and Skill.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 30,
    "zh": "我是负责品德考验的检定员。{NEWLINE}你必须在常磐市做一件帮助他人的事{CLEAR}以证明你的品德,{CLEAR}我才能允许你继续前进。{SCROLL}如果不知道要做什么的话,{NEWLINE}就去常磐市的街上转转看看吧。",
-   "en": "I’m the examiner for the Virtue trial.{SCROLL}To prove your virtue, you must do{NEWLINE}something to help someone in Viridian{CLEAR}City. Only then may you go on.{SCROLL}If you don’t know what to do, try{NEWLINE}walking around the streets of Viridian{CLEAR}City.",
+   "en": "I’m the examiner for the Virtue trial.{SCROLL}To prove your virtue, you must do{NEWLINE}something to help someone in Viridian{CLEAR}City. Only then may you go on.{SCROLL}If you don’t know what to do,{NEWLINE}try walking around{CLEAR}the streets of Viridian City.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 31,
    "zh": "以你的品德{NEWLINE}完全有资格去见坂木馆主,{CLEAR}请过去吧。",
-   "en": "Your virtue more than qualifies you to{NEWLINE}meet Gym Leader Giovanni. Please, go{CLEAR}ahead.",
+   "en": "Your virtue more than qualifies{NEWLINE}you to meet Gym Leader Giovanni.{CLEAR}Please, go ahead.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 32,
@@ -326,10 +326,10 @@
   {
    "id": 40,
    "zh": "{VAR:0103:0}『我在关东这一路的旅行,{NEWLINE}看到的是你们火箭队{CLEAR}围殴梦幻、抢劫游轮、{CLEAR}欺负老人、偷窃精灵、{CLEAR}暗杀报复、人体实验的罪行！{SCROLL}{VAR:0103:0}『你们这种毫无底线的行为,{NEWLINE}精灵联盟当然不会允许！",
-   "en": "{VAR:0103:0}: On my journey through Kanto,{NEWLINE}I’ve seen what Team Rocket does:{SCROLL}ganging up on Mew, robbing a cruise{NEWLINE}ship, bullying old people, stealing{CLEAR}Pokémon...{SCROLL}revenge killings, experiments on people!{SCROLL}{VAR:0103:0}: There’s no line you people{NEWLINE}won’t cross.{SCROLL}Of course the Pokémon League won’t{NEWLINE}allow that!",
+   "en": "{VAR:0103:0}: On my journey through Kanto,{NEWLINE}I’ve seen what Team Rocket does:{SCROLL}ganging up on Mew, robbing{NEWLINE}a cruise ship, bullying old{CLEAR}people, stealing Pokémon...{SCROLL}revenge killings, experiments on people!{SCROLL}{VAR:0103:0}: There’s no line you people{NEWLINE}won’t cross.{SCROLL}Of course the Pokémon League won’t{NEWLINE}allow that!",
    "status": "draft",
    "origin": "agent",
-   "notes": "#40–44 and #57 are alternative versions of the player's rebuttal. | #40–44 and #57 are alternative versions of the player's rebuttal. | RV053: omission: 毫无底线的行为"
+   "notes": "#40–44 and #57 are alternative versions of the player's rebuttal. | #40–44 and #57 are alternative versions of the player's rebuttal. | RV053: omission: 毫无底线的行为; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 41,
@@ -350,26 +350,26 @@
   {
    "id": 43,
    "zh": "坂木『你说我自私傲慢？{NEWLINE}这个世界理应由强者掌控！{CLEAR}我是「最强」的训练家,{CLEAR}我就有资格掌控一切！",
-   "en": "Giovanni: Greedy and arrogant, you say?{NEWLINE}The world should be ruled by the{CLEAR}strong!{SCROLL}I am the Strongest Trainer, so I have{NEWLINE}every right to rule it all!",
+   "en": "Giovanni: Greedy and arrogant, you say?{NEWLINE}The world should{CLEAR}be ruled by the strong!{SCROLL}I am the Strongest Trainer, so I have{NEWLINE}every right to rule it all!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 44,
    "zh": "{VAR:0103:0}『这个世界理应由强者守护！{NEWLINE}精灵联盟打压你,就是在守护我们！{SCROLL}{VAR:0103:0}『而且凭你傲慢自负的性格、{NEWLINE}对待精灵冷漠无情的态度,{CLEAR}你根本就不配称为「最强」训练家。{CLEAR}我所认识的那些朋友、馆主、四天王们,{CLEAR}都是比你强得多的训练家！",
-   "en": "{VAR:0103:0}: The world should be protected{NEWLINE}by the strong!{SCROLL}When the League keeps you down, it’s{NEWLINE}protecting all of us!{SCROLL}{VAR:0103:0}: And with your arrogance and{NEWLINE}your cold way of treating Pokémon...{SCROLL}you don’t deserve to be called the{NEWLINE}Strongest Trainer.{SCROLL}My friends, the Gym Leaders, the Elite{NEWLINE}Four... they’re all far stronger than{CLEAR}you!",
+   "en": "{VAR:0103:0}: The world should be protected{NEWLINE}by the strong!{SCROLL}When the League keeps you down, it’s{NEWLINE}protecting all of us!{SCROLL}{VAR:0103:0}: And with your arrogance and{NEWLINE}your cold way of treating Pokémon...{SCROLL}you don’t deserve to be called the{NEWLINE}Strongest Trainer.{SCROLL}My friends, the Gym Leaders,{NEWLINE}the Elite Four...{CLEAR}they’re all far stronger than you!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 45,
    "zh": "坂木『哈哈,我不是「最强」训练家？{NEWLINE}自从成为训练家以来,{CLEAR}我一场精灵对战都没输过,{CLEAR}所以才会被称为「最强」训练家。{SCROLL}坂木『我们火箭队敢向精灵联盟挑战,{NEWLINE}就是因为有我这个「最强」训练家在。{CLEAR}我要不是「最强」,{CLEAR}那火箭队干脆原地解散算了！",
-   "en": "Giovanni: Ha ha, I’m not the Strongest{NEWLINE}Trainer?{SCROLL}Since the day I became a Trainer, I{NEWLINE}have never lost a single Pokémon{CLEAR}battle.{SCROLL}That is why they call me the Strongest.{SCROLL}Giovanni: Team Rocket dares to{NEWLINE}challenge the League because I, the{CLEAR}Strongest, lead it.{SCROLL}If I weren’t the Strongest, Team{NEWLINE}Rocket might as well disband on the{CLEAR}spot!",
+   "en": "Giovanni: Ha ha, I’m not the Strongest{NEWLINE}Trainer?{SCROLL}Since the day I became{NEWLINE}a Trainer, I have never lost{CLEAR}a single Pokémon battle.{SCROLL}That is why they call me the Strongest.{SCROLL}Giovanni: Team Rocket dares to{NEWLINE}challenge the League because I, the{CLEAR}Strongest, lead it.{SCROLL}If I weren’t the Strongest,{NEWLINE}Team Rocket might as well{CLEAR}disband on the spot!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 46,
@@ -398,10 +398,10 @@
   {
    "id": 49,
    "zh": "坂木『其实归根结底,{NEWLINE}咱们并没有不同,{CLEAR}都只是达马兰奇的工具而已。",
-   "en": "Giovanni: In the end, you and I are no{NEWLINE}different. We’re both just Goodshow’s{CLEAR}tools.",
+   "en": "Giovanni: In the end,{NEWLINE}you and I are no different.{CLEAR}We’re both just Goodshow’s tools.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 50,
@@ -414,10 +414,10 @@
   {
    "id": 51,
    "zh": "坂木『你达马兰奇就是个不知感恩的白眼狼。达马兰奇借助我的武力清除反对者,建立了管理整个地区的精灵联盟。但是他却自己独享最高权力,把我排除在精灵联盟的管理机构之外,宁可培养渡这个后辈也不把权力交给我。",
-   "en": "Giovanni: Goodshow is an ungrateful{NEWLINE}snake. He used my strength to eliminate{CLEAR}his opponents and build the League that{CLEAR}runs this whole region.{SCROLL}Then he kept all the power for himself{NEWLINE}and shut me out of the League’s{CLEAR}leadership.{SCROLL}He’d sooner groom a junior like Lance{NEWLINE}than hand any power to me.",
+   "en": "Giovanni: Goodshow is an ungrateful{NEWLINE}snake. He used my strength to eliminate{CLEAR}his opponents and build the League that{CLEAR}runs this whole region.{SCROLL}Then he kept all the power{NEWLINE}for himself and shut me out{CLEAR}of the League’s leadership.{SCROLL}He’d sooner groom a junior like Lance{NEWLINE}than hand any power to me.",
    "status": "draft",
    "origin": "agent",
-   "notes": " | RV053: softened: 清除反对者 = eliminate, not crush"
+   "notes": " | RV053: softened: 清除反对者 = eliminate, not crush; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 52,
@@ -446,10 +446,10 @@
   {
    "id": 55,
    "zh": "坂木『我身为「最强」的训练家,{NEWLINE}都不能获得应有的待遇。{CLEAR}你就更不会有什么回报了。{CLEAR}还是加入我们火箭队吧！{CLEAR}我现在就任命你为干部。{CLEAR}到时候咱们一起掀翻精灵联盟,{CLEAR}一起坐享全天下的财富！",
-   "en": "Giovanni: Even I, the Strongest{NEWLINE}Trainer, never got the treatment I{CLEAR}deserved.{SCROLL}You’ll get even less in return. Why not{NEWLINE}join Team Rocket?{SCROLL}I’ll make you an Executive right now.{SCROLL}Then we’ll overthrow the{NEWLINE}Pokémon League together and share all{CLEAR}the riches in the world!",
+   "en": "Giovanni: Even I,{NEWLINE}the Strongest Trainer, never{CLEAR}got the treatment I deserved.{SCROLL}You’ll get even less in return. Why not{NEWLINE}join Team Rocket?{SCROLL}I’ll make you an Executive right now.{SCROLL}Then we’ll overthrow the{NEWLINE}Pokémon League together and share all{CLEAR}the riches in the world!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 56,
@@ -462,10 +462,10 @@
   {
    "id": 57,
    "zh": "{VAR:0103:0}『我在这一年的关东旅行中,{NEWLINE}看到的是火箭队围殴梦幻、抢劫游轮、{CLEAR}欺负老人、偷窃精灵、{CLEAR}暗杀报复、人体实验的罪行。{SCROLL}{VAR:0103:0}『我看到的是{NEWLINE}你们对生命的践踏、对他人的漠视,{CLEAR}看到了你心中无穷无尽的私欲{CLEAR}和自以为是的傲慢！{CLEAR}达马兰奇主席肯定早就看透了你。{CLEAR}你还能担任常磐市的馆主{CLEAR}就已经是最大的回报了！",
-   "en": "{VAR:0103:0}: On my journey through Kanto{NEWLINE}this past year, I’ve seen Team Rocket’s{CLEAR}crimes:{SCROLL}ganging up on Mew, robbing a cruise{NEWLINE}ship, bullying old people, stealing{CLEAR}Pokémon...{SCROLL}revenge killings, experiments on people.{SCROLL}{VAR:0103:0}: I’ve seen you trample on lives{NEWLINE}and not care about anyone else.{SCROLL}In your heart I’ve seen endless greed{NEWLINE}and self-righteous arrogance!{SCROLL}President Goodshow must have seen{NEWLINE}through you long ago.{SCROLL}Being allowed to stay on as Viridian’s{NEWLINE}Gym Leader is the biggest reward you’ll{CLEAR}ever get!",
+   "en": "{VAR:0103:0}: On my journey{NEWLINE}through Kanto this past year,{CLEAR}I’ve seen Team Rocket’s crimes:{SCROLL}ganging up on Mew, robbing{NEWLINE}a cruise ship, bullying old{CLEAR}people, stealing Pokémon...{SCROLL}revenge killings, experiments on people.{SCROLL}{VAR:0103:0}: I’ve seen you trample on lives{NEWLINE}and not care about anyone else.{SCROLL}In your heart I’ve seen endless greed{NEWLINE}and self-righteous arrogance!{SCROLL}President Goodshow must have seen{NEWLINE}through you long ago.{SCROLL}Being allowed to stay on as Viridian’s{NEWLINE}Gym Leader is the biggest reward you’ll{CLEAR}ever get!",
    "status": "draft",
    "origin": "agent",
-   "notes": " | RV053: omission: 自以为是"
+   "notes": " | RV053: omission: 自以为是; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 58,
@@ -478,18 +478,18 @@
   {
    "id": 59,
    "zh": "{VAR:0103:0}『除了你之外,{NEWLINE}这里所有人都是我的手下败将。{CLEAR}只要能在这里把你打败,{CLEAR}从世界上消失的就是你们火箭队！",
-   "en": "{VAR:0103:0}: Except for you, I’ve beaten{NEWLINE}everyone here.{SCROLL}If I beat you here and now, it’s Team{NEWLINE}Rocket that will disappear from this{CLEAR}world!",
+   "en": "{VAR:0103:0}: Except for you, I’ve beaten{NEWLINE}everyone here.{SCROLL}If I beat you here and now,{NEWLINE}it’s Team Rocket that will{CLEAR}disappear from this world!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 60,
    "zh": "坂木『论人数和财力,{NEWLINE}火箭队都不及精灵联盟。{CLEAR}但即便如此,{CLEAR}我们仍然敢站出来挑战精灵联盟,{CLEAR}就是因为有我这个{CLEAR}天下无敌的训练家在。{SCROLL}坂木『你如果能打败我,{NEWLINE}那我们火箭队干脆原地解散算了。",
-   "en": "Giovanni: In numbers and in money, Team{NEWLINE}Rocket can’t match the Pokémon League.{SCROLL}Even so, we dare to stand up and{NEWLINE}challenge the League...{SCROLL}because we have me, a Trainer no one{NEWLINE}can beat.{SCROLL}Giovanni: If you can beat me, Team{NEWLINE}Rocket might as well disband on the{CLEAR}spot.",
+   "en": "Giovanni: In numbers and in money, Team{NEWLINE}Rocket can’t match the Pokémon League.{SCROLL}Even so, we dare to stand up and{NEWLINE}challenge the League...{SCROLL}because we have me, a Trainer no one{NEWLINE}can beat.{SCROLL}Giovanni: If you can beat me,{NEWLINE}Team Rocket might as well{CLEAR}disband on the spot.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 61,
@@ -590,10 +590,10 @@
   {
    "id": 73,
    "zh": "阿波罗『老大！您这是干什么！{NEWLINE}现在火箭队声势正壮,{CLEAR}完全没必要紧急解散啊！",
-   "en": "Archer: Boss! What are you doing!{SCROLL}Team Rocket is stronger than ever right{NEWLINE}now. There’s no need to disband in a{CLEAR}hurry!",
+   "en": "Archer: Boss! What are you doing!{SCROLL}Team Rocket is stronger{NEWLINE}than ever right now.{CLEAR}There’s no need to disband in a hurry!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 74,
@@ -686,10 +686,10 @@
   {
    "id": 85,
    "zh": "坂木『你们就好好享受{NEWLINE}火箭队解散的这段时光吧,{CLEAR}总有一天我们会回来的。{SCROLL}坂木『期待下次再见面时,{NEWLINE}能跟你来一场赌上「最强」之名的战斗。",
-   "en": "Giovanni: Enjoy your time while Team{NEWLINE}Rocket is disbanded. One day, we will{CLEAR}return.{SCROLL}Giovanni: I look forward to our next{NEWLINE}meeting, and a battle with the title of{CLEAR}Strongest at stake.",
+   "en": "Giovanni: Enjoy your time while{NEWLINE}Team Rocket is disbanded.{CLEAR}One day, we will return.{SCROLL}Giovanni: I look forward to our next{NEWLINE}meeting, and a battle with the title of{CLEAR}Strongest at stake.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 86,
@@ -946,10 +946,10 @@
   {
    "id": 115,
    "zh": "你的答案让我感受到了{NEWLINE}你对精灵的喜爱{CLEAR}以及对这个世界的思考。{SCROLL}以你的智慧有资格去见坂木馆主。",
-   "en": "Your answers show me your love for{NEWLINE}Pokémon and how you think about the{CLEAR}world.{SCROLL}Your wisdom qualifies you to meet Gym{NEWLINE}Leader Giovanni.",
+   "en": "Your answers show me{NEWLINE}your love for Pokémon and how{CLEAR}you think about the world.{SCROLL}Your wisdom qualifies you to meet Gym{NEWLINE}Leader Giovanni.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 116,
@@ -1074,10 +1074,10 @@
   {
    "id": 131,
    "zh": "小刚『不过关东地区的馆主考核{NEWLINE}还没有结束,{CLEAR}我马上要去华蓝市{CLEAR}主持华蓝道馆的馆主考核。{SCROLL}小刚『你如果对这里的落选感到失望,{NEWLINE}去竞争华蓝道馆的馆主也不错。{CLEAR}以你的实力肯定是无人能挡。",
-   "en": "Brock: But the Gym Leader assessments{NEWLINE}in Kanto aren’t over yet.{SCROLL}I’m heading to Cerulean City right now{NEWLINE}to run the assessment for the Cerulean{CLEAR}Gym.{SCROLL}Brock: If you’re disappointed about{NEWLINE}missing out here, you could try for{CLEAR}Cerulean Gym Leader.{SCROLL}With your skills, nobody could stop you.",
+   "en": "Brock: But the Gym Leader assessments{NEWLINE}in Kanto aren’t over yet.{SCROLL}I’m heading to Cerulean City{NEWLINE}right now to run the assessment{CLEAR}for the Cerulean Gym.{SCROLL}Brock: If you’re disappointed about{NEWLINE}missing out here, you could try for{CLEAR}Cerulean Gym Leader.{SCROLL}With your skills, nobody could stop you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 132,
@@ -1154,10 +1154,10 @@
   {
    "id": 141,
    "zh": "小绿『我刚上任道馆馆主,{NEWLINE}常磐道馆也是百废待兴,{CLEAR}有很多工作还需要我去做,{CLEAR}所以这次就不陪你了。{SCROLL}小绿『你连我的份一起,{NEWLINE}去给小霞加油吧。",
-   "en": "Blue: I just took over as Gym Leader,{NEWLINE}and the Viridian Gym needs a lot of{CLEAR}work.{SCROLL}I’ve got tons to do, so I can’t come{NEWLINE}this time.{SCROLL}Blue: Go cheer Misty on for both of us.",
+   "en": "Blue: I just took over as Gym Leader,{NEWLINE}and the Viridian Gym{CLEAR}needs a lot of work.{SCROLL}I’ve got tons to do, so I can’t come{NEWLINE}this time.{SCROLL}Blue: Go cheer Misty on for both of us.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 142,

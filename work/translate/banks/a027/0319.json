@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "我的蛇纹熊是拾荒特性,{NEWLINE}战斗结束后有可能捡到各种道具。{CLEAR}如果你比较缺钱的话,{CLEAR}随身带一只拾荒特性的精灵,{CLEAR}是对旅行大有帮助的！",
-   "en": "My Zigzagoon has the Pickup Ability, so{NEWLINE}it may pick up all kinds of items after{CLEAR}battles.{SCROLL}If you’re short on money, bringing{NEWLINE}along a Pokémon with Pickup is a big help{CLEAR}on your travels!",
+   "en": "My Zigzagoon has the Pickup Ability,{NEWLINE}so it may pick up all kinds{CLEAR}of items after battles.{SCROLL}If you’re short on money, bringing{NEWLINE}along a Pokémon with Pickup is a big help{CLEAR}on your travels!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 7,
@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "这位来自芳缘地区的训练家,{NEWLINE}对化石与考古似乎很有心得呢。",
-   "en": "This Trainer from the Hoenn region{NEWLINE}seems to know a lot about fossils and{CLEAR}archaeology.",
+   "en": "This Trainer from the Hoenn{NEWLINE}region seems to know a lot{CLEAR}about fossils and archaeology.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 2 source(s), same position; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
+   "notes": "v3 TM: 2 source(s), same position; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 10,
@@ -110,10 +110,10 @@
   {
    "id": 13,
    "zh": "大吾『嗯,听完您的论述之后,{NEWLINE}我也觉得非常有可能！",
-   "en": "Steven: Hmm, after hearing your{NEWLINE}argument, I also think it’s very{CLEAR}possible!",
+   "en": "Steven: Hmm, after{NEWLINE}hearing your argument,{CLEAR}I also think it’s very possible!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 2 source(s), same position"
+   "notes": "v3 TM: 2 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 14,
@@ -150,10 +150,10 @@
   {
    "id": 18,
    "zh": "大吾『那真是太可惜了,{NEWLINE}月见山可是充满了未知的秘密。{CLEAR}我现在要进去调查研究了,{CLEAR}你有兴趣的话也进来看看吧。",
-   "en": "Steven: That’s a pity. Mt. Moon is full{NEWLINE}of unknown secrets.{SCROLL}I’m going inside to investigate now. If{NEWLINE}you’re interested, come in and take a{CLEAR}look.",
+   "en": "Steven: That’s a pity. Mt. Moon is full{NEWLINE}of unknown secrets.{SCROLL}I’m going inside to investigate now.{NEWLINE}If you’re interested,{CLEAR}come in and take a look.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
+   "notes": "v3 TM: 1 source(s), same position; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 19,
@@ -166,10 +166,10 @@
   {
    "id": 20,
    "zh": "不好意思啊,年轻人,{NEWLINE}这只拉鲁拉丝是我老伴亲手孵化的。{CLEAR}自从我老伴去世以后,{CLEAR}拉鲁拉丝每天都在盼着她回来。{SCROLL}所以一听到有人靠近,{NEWLINE}它就跑过来了。",
-   "en": "Sorry about that, youngster. My late{NEWLINE}wife hatched this Ralts herself.{SCROLL}Ever since she passed away, Ralts has{NEWLINE}been waiting every day for her to come{CLEAR}back.{SCROLL}So whenever it hears someone coming, it{NEWLINE}runs right over.",
+   "en": "Sorry about that, youngster. My late{NEWLINE}wife hatched this Ralts herself.{SCROLL}Ever since she passed away,{NEWLINE}Ralts has been waiting every{CLEAR}day for her to come back.{SCROLL}So whenever it hears someone coming, it{NEWLINE}runs right over.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 21,
@@ -294,10 +294,10 @@
   {
    "id": 36,
    "zh": "{VAR:0103:0}『嘿嘿。{NEWLINE}怎么样,要不要跟我来一场{CLEAR}锻炼实力的对决呢？",
-   "en": "{VAR:0103:0}: Heh heh. So how about it? Want{NEWLINE}to have a battle with me to hone our{CLEAR}skills?",
+   "en": "{VAR:0103:0}: Heh heh. So how about it?{NEWLINE}Want to have a battle{CLEAR}with me to hone our skills?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost"
+   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 37,
@@ -443,10 +443,10 @@
   {
    "id": 54,
    "zh": "善良的训练家啊,{NEWLINE}请听老头子一言。{SCROLL}这只拉鲁拉丝{NEWLINE}是我老伴临终前托付给我的,{CLEAR}对我而言它就像我家人一样。{SCROLL}可惜如今我也年老体弱,{NEWLINE}可能也没法长久地照顾它了。{CLEAR}实在不忍心当我去世之后{CLEAR}留它自己在这里伤心落寞。",
-   "en": "Kind Trainer, please hear an old man{NEWLINE}out.{SCROLL}My wife entrusted this Ralts to me{NEWLINE}before she passed away. To me, it’s like{CLEAR}family.{SCROLL}But I’m old and frail now, and I may not{NEWLINE}be able to look after it much longer.{SCROLL}I can’t bear the thought of leaving it{NEWLINE}here all sad and alone when I’m gone.",
+   "en": "Kind Trainer, please hear an old man{NEWLINE}out.{SCROLL}My wife entrusted this Ralts{NEWLINE}to me before she passed away.{CLEAR}To me, it’s like family.{SCROLL}But I’m old and frail now, and I may not{NEWLINE}be able to look after it much longer.{SCROLL}I can’t bear the thought of leaving it{NEWLINE}here all sad and alone when I’m gone.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 55,
@@ -507,10 +507,10 @@
   {
    "id": 62,
    "zh": "唉,我最近身体越来越差了,{NEWLINE}不知道还能陪伴拉鲁拉丝多久。{SCROLL}原本我是听说{NEWLINE}多喝月见山顶的泉水能够强身健体,{CLEAR}所以才搬到这里来住的,{CLEAR}奈何现在腿脚不行{CLEAR}根本爬不到山顶去。{SCROLL}所以能不能麻烦你{NEWLINE}帮我带一瓶月见山的泉水来呢？",
-   "en": "Sigh... My health keeps getting worse. I{NEWLINE}don’t know how much longer I can stay{CLEAR}with Ralts.{SCROLL}I moved here because I heard that{NEWLINE}drinking the spring water from the top{CLEAR}of Mt. Moon keeps you strong and{CLEAR}healthy.{SCROLL}But my legs are too weak now. I can’t{NEWLINE}make it up the mountain at all.{SCROLL}So could I trouble you to bring me a{NEWLINE}bottle of Mt. Moon spring water?",
+   "en": "Sigh... My health keeps getting worse. I{NEWLINE}don’t know how much longer I can stay{CLEAR}with Ralts.{SCROLL}I moved here because I heard{NEWLINE}that drinking the spring water{CLEAR}from the top of Mt. Moon{CLEAR}keeps you strong and healthy.{SCROLL}But my legs are too weak now. I can’t{NEWLINE}make it up the mountain at all.{SCROLL}So could I trouble you to bring me a{NEWLINE}bottle of Mt. Moon spring water?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 63,
@@ -635,10 +635,10 @@
   {
    "id": 78,
    "zh": "听话啊,拉鲁拉丝,{NEWLINE}我们不是已经说好了吗？{SCROLL}而且我想妈妈也一定非常希望{NEWLINE}你能四处旅行,{CLEAR}然后成长为一个强大的精灵呢。",
-   "en": "Be good now, Ralts. Didn’t we already{NEWLINE}agree?{SCROLL}And I’m sure Mama would want you to{NEWLINE}travel all over and grow into a strong{CLEAR}Pokémon.",
+   "en": "Be good now, Ralts. Didn’t we already{NEWLINE}agree?{SCROLL}And I’m sure Mama would{NEWLINE}want you to travel all over{CLEAR}and grow into a strong Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 79,
@@ -667,10 +667,10 @@
   {
    "id": 82,
    "zh": "听话啊,小火龙,{NEWLINE}我们不是已经说好了吗？{SCROLL}而且我想妈妈也一定非常希望{NEWLINE}你能四处旅行,{CLEAR}然后成长为一个强大的精灵呢。",
-   "en": "Be good now, Charmander. Didn’t we{NEWLINE}already agree?{SCROLL}And I’m sure Mama would want you to{NEWLINE}travel all over and grow into a strong{CLEAR}Pokémon.",
+   "en": "Be good now, Charmander. Didn’t we{NEWLINE}already agree?{SCROLL}And I’m sure Mama would{NEWLINE}want you to travel all over{CLEAR}and grow into a strong Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 83,
@@ -779,10 +779,10 @@
   {
    "id": 96,
    "zh": "我在常磐森林遇到了一只飞天螳螂,{NEWLINE}为了收服它我一路追到这里。{CLEAR}但是飞天螳螂实在是太强了,{CLEAR}我暂时还无法打败它……{SCROLL}现在飞天螳螂正在3号路这一带游荡,{NEWLINE}我一定要在它离开前把它收服！",
-   "en": "I ran into a Scyther in Viridian Forest{NEWLINE}and chased it all the way here to catch{CLEAR}it.{SCROLL}But that Scyther is way too strong. I{NEWLINE}can’t beat it yet...{SCROLL}Right now it’s roaming around Route 3. I{NEWLINE}have to catch it before it leaves!",
+   "en": "I ran into a Scyther{NEWLINE}in Viridian Forest and chased{CLEAR}it all the way here to catch it.{SCROLL}But that Scyther is way too strong. I{NEWLINE}can’t beat it yet...{SCROLL}Right now it’s roaming around Route 3. I{NEWLINE}have to catch it before it leaves!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 97,

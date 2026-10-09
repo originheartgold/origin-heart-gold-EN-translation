@@ -145,10 +145,10 @@
   {
    "id": 17,
    "zh": "哦哦~！！{NEWLINE}没有这个精灵能学的技能！{SCROLL}",
-   "en": "Oh no!{NEWLINE}There’s no move I can teach that{CLEAR}Pokémon!{SCROLL}",
+   "en": "Oh no!{NEWLINE}There’s no move I can{CLEAR}teach that Pokémon!{SCROLL}",
    "status": "draft",
    "origin": "us",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 18,
@@ -233,10 +233,10 @@
   {
    "id": 28,
    "zh": "我是将灵魂注入{NEWLINE}精灵对战的你的同伴,{CLEAR}技能大叔！{SCROLL}只要分给我一些战斗点数{NEWLINE}我就交给你一些{CLEAR}摇曳心灵的技能。{VAR:0200:0}",
-   "en": "I’m the move guy, your comrade who{NEWLINE}pours heart and soul into Pokémon{CLEAR}battles!{SCROLL}Share some BP with me, and I’ll teach{NEWLINE}you some heart-stirring moves. {VAR:0200:0}",
+   "en": "I’m the move guy,{NEWLINE}your comrade who pours heart{CLEAR}and soul into Pokémon battles!{SCROLL}Share some BP with me,{NEWLINE}and I’ll teach you some{CLEAR}heart-stirring moves. {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0748/28 | RV062: meaning: D-2201/D-2025: 将灵魂注入 and 摇曳心灵 'heart-stirring' specialty restored"
+   "notes": "US 0748/28 | RV062: meaning: D-2201/D-2025: 将灵魂注入 and 摇曳心灵 'heart-stirring' specialty restored; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 29,

@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "你能把电话号码{NEWLINE}告诉给我吗？{VAR:0200:0}",
-   "en": "Could you tell me your phone number?{VAR:0200:0}",
+   "en": "Could you tell me{NEWLINE}your phone number?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0691/4"
+   "notes": "US 0691/4; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 5,

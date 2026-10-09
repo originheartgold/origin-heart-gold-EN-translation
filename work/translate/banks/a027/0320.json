@@ -54,18 +54,18 @@
   {
    "id": 6,
    "zh": "我通过不断与岩石系精灵战斗,{NEWLINE}悟出了一招出拳速度非常快的{CLEAR}格斗系绝技「音速拳」。{CLEAR}如果你能取得尼比市的灰色徽章,{CLEAR}我就把这招音速拳交给你的精灵。",
-   "en": "By battling Rock-type Pokémon over and{NEWLINE}over, I mastered a lightning-fast{CLEAR}Fighting-type punch: Mach Punch.{SCROLL}If you earn Pewter City’s Boulder{NEWLINE}Badge, I’ll teach Mach Punch to your{CLEAR}Pokémon.",
+   "en": "By battling Rock-type Pokémon over and{NEWLINE}over, I mastered a lightning-fast{CLEAR}Fighting-type punch: Mach Punch.{SCROLL}If you earn Pewter City’s{NEWLINE}Boulder Badge, I’ll teach{CLEAR}Mach Punch to your Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 7,
    "zh": "你好像已经从小刚那{NEWLINE}赢得灰色徽章了,{CLEAR}那么你一定能够{CLEAR}很好地应用我这招「音速拳」。{SCROLL}怎么样,要让你的精灵学习音速拳吗？{SCROLL}",
-   "en": "Looks like you’ve already won the{NEWLINE}Boulder Badge from Brock. Then I’m{CLEAR}sure you can put my Mach Punch to good{CLEAR}use.{SCROLL}So, want your Pokémon to learn Mach{NEWLINE}Punch?{SCROLL}",
+   "en": "Looks like you’ve already won{NEWLINE}the Boulder Badge from Brock.{CLEAR}Then I’m sure you can put{CLEAR}my Mach Punch to good use.{SCROLL}So, want your Pokémon to learn Mach{NEWLINE}Punch?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 8,
@@ -142,10 +142,10 @@
   {
    "id": 17,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的音速拳……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习音速拳{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Mach{NEWLINE}Punch...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Mach{NEWLINE}Punch?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Mach{NEWLINE}Punch...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn Mach Punch?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 18,

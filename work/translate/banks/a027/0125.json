@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "黑眼镜……{NEWLINE}若是让精灵带着的话,{CLEAR}就能提升恶系技能的攻击力！",
-   "en": "Black Glasses... If a Pokémon holds{NEWLINE}them, its Dark-type moves get more{CLEAR}powerful!",
+   "en": "Black Glasses... If a Pokémon{NEWLINE}holds them, its Dark-type{CLEAR}moves get more powerful!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0127/2; modernised from US 0127#2 | RV030: omission: US line dropped the held-item clause"
+   "notes": "US 0127/2; modernised from US 0127#2 | RV030: omission: US line dropped the held-item clause; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 3,

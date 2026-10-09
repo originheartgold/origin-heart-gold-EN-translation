@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "啊啊……{NEWLINE}好想要大针蜂啊……{SCROLL}如果你有大针蜂的话{CLEAR}能不能和我的大岩蛇交换？{VAR:0200:0}",
-   "en": "Ahh... I really want a Beedrill...{SCROLL}If you have a Beedrill, would you trade{NEWLINE}it for my Onix?{VAR:0200:0}",
+   "en": "Ahh... I really want a Beedrill...{SCROLL}If you have a Beedrill,{NEWLINE}would you trade it for my Onix?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0456#3; text not kept)"
+   "notes": "v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0456#3; text not kept); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 4,
@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "志霸『哦？要向我挑战？{NEWLINE}嗯……{CLEAR}的确,我从你的身上能感受到{CLEAR}你对口袋妖怪的热情。{CLEAR}好的,我会认真应战的！",
-   "en": "Bruno: Oh? You wish to challenge me?{SCROLL}Hmm... Indeed, I can feel your passion{NEWLINE}for Pokémon. Very well. I’ll face you in{CLEAR}earnest!",
+   "en": "Bruno: Oh? You wish to challenge me?{SCROLL}Hmm... Indeed, I can feel{NEWLINE}your passion for Pokémon.{CLEAR}Very well. I’ll face you in earnest!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 15,
@@ -142,10 +142,10 @@
   {
    "id": 17,
    "zh": "我的小火龙真垃圾,{NEWLINE}面对岩系馆主毫无还手之力。{CLEAR}处理这种垃圾的最好方式{CLEAR}就是把它丢到路边{CLEAR}然后骗它我会回去找它,{CLEAR}让它在那里等我等到死,哈哈哈哈！",
-   "en": "My Charmander is garbage. It couldn’t{NEWLINE}do a thing against the Rock-type Gym{CLEAR}Leader.{SCROLL}The best way to deal with garbage like{NEWLINE}that is to dump it by the road...{SCROLL}...and trick it into thinking I’ll come{NEWLINE}back for it, so it waits there till it{CLEAR}dies. Ha ha ha ha!",
+   "en": "My Charmander is garbage.{NEWLINE}It couldn’t do a thing against{CLEAR}the Rock-type Gym Leader.{SCROLL}The best way to deal with garbage like{NEWLINE}that is to dump it by the road...{SCROLL}...and trick it into thinking I’ll come{NEWLINE}back for it, so it waits there till it{CLEAR}dies. Ha ha ha ha!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 18,

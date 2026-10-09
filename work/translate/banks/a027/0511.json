@@ -931,10 +931,10 @@
   {
    "id": 114,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的热风……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习热风{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Heat{NEWLINE}Wave...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Heat{NEWLINE}Wave?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Heat{NEWLINE}Wave...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn Heat Wave?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 115,
@@ -1203,10 +1203,10 @@
   {
    "id": 148,
    "zh": "夏伯『哦哦,是{VAR:0103:0}啊！{NEWLINE}怎么？来红莲岛度假吗？{CLEAR}要不要在这跟我拍张纪念照呢？{VAR:0200:0}",
-   "en": "Blaine: Whoa-ho, it’s {VAR:0103:0}! What’s{NEWLINE}this?{SCROLL}Here on Cinnabar Island for a vacation?{NEWLINE}How about a souvenir photo with me?{VAR:0200:0}",
+   "en": "Blaine: Whoa-ho, it’s {VAR:0103:0}! What’s{NEWLINE}this?{SCROLL}Here on Cinnabar Island{NEWLINE}for a vacation?{CLEAR}How about a souvenir photo with me?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 149,

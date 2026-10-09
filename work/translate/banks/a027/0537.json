@@ -132,18 +132,18 @@
   {
    "id": 15,
    "zh": "妈妈『旅途中是会遇到一些烦恼的,{SCROLL}不过没事的{NEWLINE}只要你坚定不放弃{NEWLINE}就一定可以成为优秀的训练家{SCROLL}所以妈妈也来帮忙吧！{CLEAR}不过我能做点什么呢？{SCROLL}对了！{SCROLL}你每次拿到奖金的时候{NEWLINE}都分给妈妈一点点{CLEAR}让我帮你存起来吧！{SCROLL}这旅途会很漫长,{NEWLINE}所以钱是很重要的！{SCROLL}怎么样,要存钱吗？{VAR:0200:0}",
-   "en": "Mom: You’re bound to run into some{NEWLINE}trouble on your journey.{SCROLL}But it’ll be fine.{SCROLL}Stay determined and never give up, and{NEWLINE}you’ll be a great Trainer.{SCROLL}So I want to help too! But what can I{NEWLINE}do?{SCROLL}I know!{SCROLL}Every time you win prize money, give Mom{NEWLINE}a little bit, and I’ll save it for you!{SCROLL}It’s a long journey, so money is{NEWLINE}important!{SCROLL}What do you say? Want me to save money{NEWLINE}for you?{VAR:0200:0}",
+   "en": "Mom: You’re bound to run into some{NEWLINE}trouble on your journey.{SCROLL}But it’ll be fine.{SCROLL}Stay determined and never give up, and{NEWLINE}you’ll be a great Trainer.{SCROLL}So I want to help too! But what can I{NEWLINE}do?{SCROLL}I know!{SCROLL}Every time you win prize money, give Mom{NEWLINE}a little bit, and I’ll save it for you!{SCROLL}It’s a long journey, so money is{NEWLINE}important!{SCROLL}What do you say?{NEWLINE}Want me to save money for you?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0545/15"
+   "notes": "US 0545/15; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 16,
    "zh": "妈妈『旅途中遇到什么烦恼了吗？{SCROLL}没事的{NEWLINE}只要你坚定不放弃{NEWLINE}就一定可以成为优秀的训练家{SCROLL}所以妈妈也来帮忙吧！{CLEAR}不过我能做点什么呢？{SCROLL}对了！{SCROLL}你每次拿到奖金的时候{NEWLINE}都分给妈妈一点点{CLEAR}让我帮你存起来吧！{SCROLL}这旅途会很漫长,{NEWLINE}所以钱是很重要的！{SCROLL}怎么样,要存钱吗？{VAR:0200:0}",
-   "en": "Mom: Did you run into some trouble on{NEWLINE}your journey?{SCROLL}It’ll be fine. Stay determined and never{NEWLINE}give up, and you’ll be a great Trainer.{SCROLL}So I want to help too! But what can I{NEWLINE}do?{SCROLL}I know!{SCROLL}Every time you win prize money, give Mom{NEWLINE}a little bit, and I’ll save it for you!{SCROLL}It’s a long journey, so money is{NEWLINE}important!{SCROLL}What do you say? Want me to save money{NEWLINE}for you?{VAR:0200:0}",
+   "en": "Mom: Did you run into some trouble on{NEWLINE}your journey?{SCROLL}It’ll be fine. Stay determined and never{NEWLINE}give up, and you’ll be a great Trainer.{SCROLL}So I want to help too! But what can I{NEWLINE}do?{SCROLL}I know!{SCROLL}Every time you win prize money, give Mom{NEWLINE}a little bit, and I’ll save it for you!{SCROLL}It’s a long journey, so money is{NEWLINE}important!{SCROLL}What do you say?{NEWLINE}Want me to save money for you?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0545/16 | seed rejected us [tag_mismatch] (candidate US 0545#16; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0537#16; text not kept)"
+   "notes": "US 0545/16 | seed rejected us [tag_mismatch] (candidate US 0545#16; text not kept) | v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0537#16; text not kept); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 17,
@@ -640,10 +640,10 @@
   {
    "id": 78,
    "zh": "昵称叫{VAR:0101:1}{NEWLINE}可以吗？{VAR:0200:0}",
-   "en": "Is {VAR:0101:1} the nickname you want to{NEWLINE}give? {VAR:0200:0}",
+   "en": "Is {VAR:0101:1} the nickname{NEWLINE}you want to give? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 2 source(s), same position; other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl)"
+   "notes": "v3 TM: 2 source(s), same position; other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 79,

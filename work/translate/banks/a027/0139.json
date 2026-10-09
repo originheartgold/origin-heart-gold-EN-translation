@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "这里是以精灵竞技的现在以及{NEWLINE}精灵和人类的{CLEAR}信任之心为主题的,{SCROLL}被称为「信赖」的房间。",
-   "en": "This is the room called “Trust.”{SCROLL}Its theme is the Pokéathlon of today{NEWLINE}and the trust between Pokémon and{CLEAR}people.",
+   "en": "This is the room called “Trust.”{SCROLL}Its theme is the Pokéathlon{NEWLINE}of today and the trust{CLEAR}between Pokémon and people.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0141/0 | RV039: omission: the present of the Pokéathlon dropped"
+   "notes": "US 0141/0 | RV039: omission: the present of the Pokéathlon dropped; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1,
@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "交换次数达到２００次的人,{SCROLL}和朋友一起协力合作,{NEWLINE}在此为其深刻的羁绊鼓掌。",
-   "en": "Those who have switched 200 times,{NEWLINE}working together with their friends, are{CLEAR}commemorated here for their deep{CLEAR}bonds.",
+   "en": "Those who have switched 200 times,{NEWLINE}working together with their friends,{CLEAR}are commemorated here{CLEAR}for their deep bonds.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0141/11 | RV039: meaning: teamwork with friends"
+   "notes": "US 0141/11 | RV039: meaning: teamwork with friends; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 12,

@@ -509,6 +509,49 @@ class TestLints(unittest.TestCase):
         self.assertNotIn("mid_sentence_page", codes(self.lint("你好。", "Hello there, my old,{SCROLL}old friend.")))
         self.assertIn("mid_sentence_page", codes(self.lint("你好。", "Hello there, my old{SCROLL}friend.")))
 
+    def test_single_word_view(self):
+        zh = "你好{NEWLINE}朋友{CLEAR}再见"
+        sw = lambda en, cat="dialogue": [i for i in self.lint(zh, en, cat) if i["code"] == "single_word_view"]
+        # the word after a {CLEAR} (new line scrolled in) or a {SCROLL} (new page) ends the previous line's sentence
+        for en in ("Ever since Team Rocket came to Saffron{NEWLINE}City, they’ve robbed everyone they{CLEAR}see.",
+                   "It’s so hot in this cave. I suspect{NEWLINE}something in here is giving off heat{SCROLL}nonstop.",
+                   "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} poisoned{CLEAR}{VAR:0101:2}!"):
+            hits = sw(en)
+            self.assertEqual(len(hits), 1, en)
+            self.assertEqual(hits[0]["level"], "warning")
+        for en in ("Ever since Team Rocket came to Saffron{NEWLINE}City, they’ve robbed everyone{CLEAR}they see.",
+                   "Then you open the lid.{SCROLL}Done!",              # an interjection starts its own sentence
+                   "Wait for it...{CLEAR}Done!",
+                   "Hello!{SCROLL}World",                               # first view is never reported
+                   "All right, we’re ready!{NEWLINE}Aim for the top! Let’s{CLEAR}...",   # no word in the view
+                   "Welcome!{NEWLINE}Here we go.{CLEAR}Bye{NEWLINE}now."):            # two words in the view
+            self.assertEqual(sw(en), [], en)
+        # not reported when only rewording could fix it: neither the word fits on the line before nor the two
+        # last words fit on one line
+        long = "Wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"                               # one 'word' of 216 px
+        self.assertEqual(sw("Hello.{NEWLINE}" + long + "{CLEAR}Wwwwwwwwwww!"), [])
+        # allow list (qa_config single_word_view_allow): the Pokéathlon host's 200 % shout page
+        cfg = dict(qa.tm.load_config(), single_word_view_allow=["a027/0999#0"])
+        b = bank([(zh, "Aim for the top! Let’s{SCROLL}Pokéathlon!")], "dialogue")
+        self.assertIn("single_word_view", codes(qa.check_bank(b, None, "vanilla_us")))
+        self.assertNotIn("single_word_view", codes(qa.check_bank(b, cfg, "vanilla_us")))
+
+    def test_field_prompt_icons(self):
+        # field message window: the last view of a string that waits with {VAR:0200:..} must end by 195 px
+        # (the prompt icons at x 211-228, emulator text-fit read-back 2026-10-09); trailing spaces leave no ink
+        zh = "要试试吗？{VAR:0200:0}"
+        wide = "Give up on teaching it High Jump Kick?{VAR:0200:0}"                  # 199 px
+        iss = self.lint(zh, wide)
+        self.assertIn("prompt_icon_overlap", codes(iss, "error"))
+        self.assertEqual(codes(self.lint(zh, "Give up on teaching it{NEWLINE}High Jump Kick?{VAR:0200:0}"), "error"),
+                         [])
+        self.assertNotIn("prompt_icon_overlap", codes(self.lint("要试试吗？", wide.replace("{VAR:0200:0}", ""))))
+        # an earlier page may use the full 216 px
+        self.assertNotIn("prompt_icon_overlap", codes(self.lint(
+            "要{SCROLL}吗？{VAR:0200:0}", "I lost to you, but I really enjoyed that{SCROLL}Shall we?{VAR:0200:0}")))
+        # a space before the prompt is not ink (196 px with it, 192 px without)
+        self.assertNotIn("prompt_icon_overlap", codes(self.lint(zh, "Do you want me to explain it to you? {VAR:0200:0}")))
+
     def test_glossary_name(self):
         def gn(en, zh="我的精灵"):
             return [(i["level"], i["msg"]) for i in self.lint(zh, en) if i["code"] == "glossary_name"]

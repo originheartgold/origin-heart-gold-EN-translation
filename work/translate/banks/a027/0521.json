@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "我一直都想给我的精灵{NEWLINE}买些提升努力值的补剂,{CLEAR}但是这些产品现在{CLEAR}都被西鲁夫公司掌控着,{CLEAR}他们把价格定的太贵了。{SCROLL}希望这次精灵联盟{NEWLINE}对西鲁夫公司的改革方案落地后,{CLEAR}能让这些补剂便宜一点吧！",
-   "en": "I’ve always wanted to buy my Pokémon{NEWLINE}some EV-boosting supplements, but Silph{CLEAR}Co. controls them all now, and they’ve{CLEAR}set the prices way too high.{SCROLL}I hope the Pokémon League’s reform{NEWLINE}plan for Silph Co. brings these{CLEAR}supplements down in price once it goes{CLEAR}through!",
+   "en": "I’ve always wanted to buy my Pokémon{NEWLINE}some EV-boosting supplements, but Silph{CLEAR}Co. controls them all now, and they’ve{CLEAR}set the prices way too high.{SCROLL}I hope the Pokémon League’s{NEWLINE}reform plan for Silph Co.{CLEAR}brings these supplements down{CLEAR}in price once it goes through!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 3,
@@ -151,10 +151,10 @@
   {
    "id": 18,
    "zh": "港口终于又通航了,{NEWLINE}我又可以进到货了。{CLEAR}你要看看我的商品吗？",
-   "en": "The port’s finally open again, so I can{NEWLINE}get stock again. Want to see what I’ve{CLEAR}got?",
+   "en": "The port’s finally open again,{NEWLINE}so I can get stock again.{CLEAR}Want to see what I’ve got?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 19,
@@ -259,10 +259,10 @@
   {
    "id": 31,
    "zh": "你知道吗？{NEWLINE}精灵联盟认定的特殊训练家{CLEAR}除了冠军、四天王、各大馆主之外,{CLEAR}还有6位。{CLEAR}据说这6位训练家的实力{CLEAR}仅次于四大天王,{CLEAR}不在各大馆主之下。{SCROLL}目前精灵联盟正安排这6位训练家{NEWLINE}负责城都地区的对战开拓区建设,{CLEAR}以这6位训练家的实力、眼光、见识,{CLEAR}一定能建造出{CLEAR}非常有吸引力的对战开拓区吧！",
-   "en": "Did you know? Besides the Champion, the{NEWLINE}Elite Four and the Gym Leaders, the{CLEAR}Pokémon League recognizes six other{CLEAR}special Trainers. They say these six are{CLEAR}second only to the Elite Four, and{CLEAR}every bit as strong as the Gym Leaders.{SCROLL}The Pokémon League has put these six{NEWLINE}Trainers in charge of building a Battle{CLEAR}Frontier in the Johto region. With their{CLEAR}skill, vision and experience, they’re{CLEAR}sure to build a really exciting Battle{CLEAR}Frontier!",
+   "en": "Did you know? Besides the Champion, the{NEWLINE}Elite Four and the Gym Leaders, the{CLEAR}Pokémon League recognizes six other{CLEAR}special Trainers. They say these six are{CLEAR}second only to the Elite Four, and{CLEAR}every bit as strong as the Gym Leaders.{SCROLL}The Pokémon League has put these{NEWLINE}six Trainers in charge of building{CLEAR}a Battle Frontier in the Johto region.{CLEAR}With their skill, vision and experience,{CLEAR}they’re sure to build a really{CLEAR}exciting Battle Frontier!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 32,
@@ -367,10 +367,10 @@
   {
    "id": 44,
    "zh": "精灵联盟为了践行{NEWLINE}「造福更多人」的理念,{CLEAR}正在对各个领域进行改革。{CLEAR}有为了防止资源滥用的所有制改革,{CLEAR}有为了防止拢断的经济改革,{CLEAR}有为了促进公平竞争的制度改革等等。{SCROLL}不过这样一连串激进的改革,{NEWLINE}也确实得罪了不少既得利益群体呢。",
-   "en": "To live up to its motto, ‘Benefit more{NEWLINE}people,’ the Pokémon League is{CLEAR}reforming every field. There’s{CLEAR}ownership reform to prevent resource{CLEAR}abuse, economic reform to prevent{CLEAR}monopolies, system reform to promote{CLEAR}fair competition, and so on.{SCROLL}But this string of radical reforms has{NEWLINE}also stepped on a lot of vested{CLEAR}interests.",
+   "en": "To live up to its motto, ‘Benefit more{NEWLINE}people,’ the Pokémon League is{CLEAR}reforming every field. There’s{CLEAR}ownership reform to prevent resource{CLEAR}abuse, economic reform to prevent{CLEAR}monopolies, system reform to promote{CLEAR}fair competition, and so on.{SCROLL}But this string of radical{NEWLINE}reforms has also stepped{CLEAR}on a lot of vested interests.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 45,
@@ -471,10 +471,10 @@
   {
    "id": 57,
    "zh": "你也想来挑战娜姿馆主吗？{NEWLINE}我劝你还是别白费功夫了,{CLEAR}娜姿馆主跟别的馆主不一样,{CLEAR}可不会因为你徽章数量少就放水。{CLEAR}你要想挑战娜姿馆主{CLEAR}先收集够6个徽章再说吧。{SCROLL}当然了,如果你不想白来一趟的话,{NEWLINE}只要给我一个抗恶果,{CLEAR}我就可以教你一个{CLEAR}超能系的物攻招式意念头槌。{SCROLL}怎么样,要学吗？{SCROLL}",
-   "en": "You’re here to challenge Sabrina too?{NEWLINE}Take my advice and don’t waste your{CLEAR}time. Sabrina isn’t like other Gym{CLEAR}Leaders. She won’t go easy on you just{CLEAR}because you have few Badges. If you{CLEAR}want to challenge her, get six Badges{CLEAR}first.{SCROLL}Of course, if you don’t want a wasted{NEWLINE}trip, give me a Colbur Berry and I’ll{CLEAR}teach you Zen Headbutt, a physical{CLEAR}Psychic-type move.{SCROLL}So, want to learn it?{SCROLL}",
+   "en": "You’re here to challenge Sabrina too?{NEWLINE}Take my advice and don’t{CLEAR}waste your time. Sabrina{CLEAR}isn’t like other Gym Leaders.{CLEAR}She won’t go easy on you just because{CLEAR}you have few Badges. If you want{CLEAR}to challenge her, get six Badges first.{SCROLL}Of course, if you don’t want a wasted{NEWLINE}trip, give me a Colbur Berry and I’ll{CLEAR}teach you Zen Headbutt, a physical{CLEAR}Psychic-type move.{SCROLL}So, want to learn it?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 58,
@@ -511,10 +511,10 @@
   {
    "id": 62,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的火焰拳……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习火焰拳{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Fire{NEWLINE}Punch...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Fire{NEWLINE}Punch?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Fire{NEWLINE}Punch...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn Fire Punch?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 63,
@@ -607,18 +607,18 @@
   {
    "id": 74,
    "zh": "你很行嘛,{NEWLINE}看来你的意志力要比我强不少。{CLEAR}这个技能机送给你吧,{CLEAR}希望能在你挑战娜姿小姐的时候{CLEAR}有所帮助。",
-   "en": "You’re good! Your will seems much{NEWLINE}stronger than mine. Take this TM. I{CLEAR}hope it helps when you challenge{CLEAR}Sabrina.",
+   "en": "You’re good! Your will seems{NEWLINE}much stronger than mine.{CLEAR}Take this TM. I hope it helps{CLEAR}when you challenge Sabrina.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 75,
    "zh": "每次跟你特训完我{NEWLINE}都感觉我的意志力都有所成长,{CLEAR}随时欢迎你再来找我训练。",
-   "en": "Every time I train with you, I feel my{NEWLINE}willpower grow. Come train with me again{CLEAR}anytime.",
+   "en": "Every time I train with you,{NEWLINE}I feel my willpower grow.{CLEAR}Come train with me again anytime.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 76,
@@ -671,10 +671,10 @@
   {
    "id": 82,
    "zh": "简直难以置信,{NEWLINE}我朋友变装成娜姿小姐时{CLEAR}看我的那个眼神,{CLEAR}简直就跟真正的娜姿小姐一模一样！",
-   "en": "I can’t believe it! When my friend{NEWLINE}dressed up as Sabrina, the look she{CLEAR}gave me was exactly like the real{CLEAR}Sabrina’s!",
+   "en": "I can’t believe it! When my friend{NEWLINE}dressed up as Sabrina,{CLEAR}the look she gave me was{CLEAR}exactly like the real Sabrina’s!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 83,
@@ -823,10 +823,10 @@
   {
    "id": 101,
    "zh": "就你这种糟老头子,{NEWLINE}不用精灵我都能打十个。{CLEAR}再不老实听话我就直接揍死你！",
-   "en": "A doddering old geezer like you? I could{NEWLINE}take ten of you without any Pokémon.{CLEAR}Keep mouthing off and I’ll beat you to{CLEAR}death!",
+   "en": "A doddering old geezer like you? I could{NEWLINE}take ten of you without any Pokémon.{CLEAR}Keep mouthing off{CLEAR}and I’ll beat you to death!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 102,
@@ -855,10 +855,10 @@
   {
    "id": 105,
    "zh": "又是个不自量力{NEWLINE}想跟我们火箭队叫板的。{CLEAR}我这就让你乖乖闭嘴！",
-   "en": "Another fool who thinks they can take{NEWLINE}on Team Rocket. I’ll shut you up right{CLEAR}now!",
+   "en": "Another fool who thinks{NEWLINE}they can take on Team Rocket.{CLEAR}I’ll shut you up right now!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 106,

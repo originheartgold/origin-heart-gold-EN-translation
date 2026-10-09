@@ -224,10 +224,10 @@
   {
    "id": 26,
    "zh": "大概是几年前{NEWLINE}有个红发的小男孩来到我们家,{CLEAR}用超音蝠换走了我老伴的纽拉。{CLEAR}从那之后我老伴就迷上跟人交换精灵。{SCROLL}对现在的他来说,{NEWLINE}能够跟别人交换精灵,就是幸福。{SCROLL}我啊,只要和那样的老头子{NEWLINE}一起生活下去,{CLEAR}就是我最大的幸福了……",
-   "en": "A few years ago, a little red-haired boy{NEWLINE}came to our house and traded a Zubat{CLEAR}for my husband’s Sneasel.{SCROLL}Ever since then, my husband has been{NEWLINE}hooked on trading Pokémon with people.{SCROLL}For him these days, getting to trade{NEWLINE}Pokémon is happiness itself.{SCROLL}As for me, just living out my days with{NEWLINE}that old man of mine is my greatest{CLEAR}happiness...",
+   "en": "A few years ago, a little red-haired boy{NEWLINE}came to our house and traded a Zubat{CLEAR}for my husband’s Sneasel.{SCROLL}Ever since then, my husband has been{NEWLINE}hooked on trading Pokémon with people.{SCROLL}For him these days, getting to trade{NEWLINE}Pokémon is happiness itself.{SCROLL}As for me, just living out{NEWLINE}my days with that old man of mine{CLEAR}is my greatest happiness...",
    "status": "draft",
    "origin": "agent",
-   "notes": "The red-haired boy = Silver (vanilla Sneasel trade lore)."
+   "notes": "The red-haired boy = Silver (vanilla Sneasel trade lore).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 27,
@@ -248,10 +248,10 @@
   {
    "id": 29,
    "zh": "啊啊……{NEWLINE}忍不住想要跟别人交换精灵啊……{SCROLL}如果你有大舌贝的话{CLEAR}能不能和我的水跃鱼交换？{VAR:0200:0}",
-   "en": "Ahh... I just can’t resist trading{NEWLINE}Pokémon...{SCROLL}If you have a Shellder, would you trade{NEWLINE}it for my Mudkip?{VAR:0200:0}",
+   "en": "Ahh... I just can’t resist trading{NEWLINE}Pokémon...{SCROLL}If you have a Shellder,{NEWLINE}would you trade it for my Mudkip?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0464#29; text not kept)"
+   "notes": "v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0464#29; text not kept); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 30,

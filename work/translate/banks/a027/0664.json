@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "下次见面{NEWLINE}我一定会报仇的。{CLEAR}一定要和我再对战一次！{SCROLL}对了！把你的{NEWLINE}电话号码告诉我吧！{VAR:0200:0}",
-   "en": "Next time we meet, I’m getting my{NEWLINE}revenge. You have to battle me again!{SCROLL}Oh, I know! Tell me your phone number!{VAR:0200:0}",
+   "en": "Next time we meet, I’m getting my{NEWLINE}revenge. You have to battle me again!{SCROLL}Oh, I know!{NEWLINE}Tell me your phone number!{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0673/1"
+   "notes": "US 0673/1; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,

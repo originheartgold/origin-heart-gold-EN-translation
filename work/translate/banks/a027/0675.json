@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "真羡慕你们这些离开镇子,{NEWLINE}到外面旅行的训练家啊！{SCROLL}我经常偷跑出镇子跟精灵玩,{NEWLINE}偶尔也会去草丛中捡点果实。{SCROLL}如果捡到好东西的话,{NEWLINE}我会分你一点的{SCROLL}相信会对你的旅行有帮助,{NEWLINE}所以把你电话号码告诉我吧！{VAR:0200:0}",
-   "en": "I really envy you Trainers who{NEWLINE}get to leave town and travel!{SCROLL}I often sneak out of town to play{NEWLINE}with my Pokémon, and sometimes I{CLEAR}pick Berries in the grass.{SCROLL}If I find anything good,{NEWLINE}I’ll share some with you.{SCROLL}I’m sure it’ll help you on your{NEWLINE}journey, so give me your phone number!{VAR:0200:0}",
+   "en": "I really envy you Trainers who{NEWLINE}get to leave town and travel!{SCROLL}I often sneak out of town to play{NEWLINE}with my Pokémon, and sometimes I{CLEAR}pick Berries in the grass.{SCROLL}If I find anything good,{NEWLINE}I’ll share some with you.{SCROLL}I’m sure it’ll help{NEWLINE}you on your journey,{CLEAR}so give me your phone number!{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,

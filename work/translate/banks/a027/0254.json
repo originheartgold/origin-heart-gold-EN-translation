@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "唔呕……{NEWLINE}大海上这轻飘飘的感觉{CLEAR}完全不如踩在石头上踏实啊。",
-   "en": "Urp... This floaty feeling out at sea is{NEWLINE}nothing like standing on good solid{CLEAR}rock.",
+   "en": "Urp... This floaty feeling{NEWLINE}out at sea is nothing like{CLEAR}standing on good solid rock.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 5,
@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "上次去常磐森林写生,{NEWLINE}遇到了一个很有素描才华的女孩呢。{SCROLL}不过她的兴趣似乎不只画画,{NEWLINE}对口袋妖怪的热爱{CLEAR}也牵扯了她很多精力。{SCROLL}如果她能把心思都放在画画上,{NEWLINE}将来一定能成为了不起的画家。",
-   "en": "When I went sketching in Viridian{NEWLINE}Forest, I met a girl with a real gift for{CLEAR}drawing.{SCROLL}But drawing isn’t her only passion. Her{NEWLINE}love of Pokémon takes up a lot of her{CLEAR}time too.{SCROLL}If she put her whole heart into drawing,{NEWLINE}she could become a great artist{CLEAR}someday.",
+   "en": "When I went sketching{NEWLINE}in Viridian Forest, I met a girl{CLEAR}with a real gift for drawing.{SCROLL}But drawing isn’t her only passion. Her{NEWLINE}love of Pokémon takes up a lot of her{CLEAR}time too.{SCROLL}If she put her whole heart{NEWLINE}into drawing, she could become{CLEAR}a great artist someday.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Probably a nod to Yellow (Adventures), who sketches."
+   "notes": "Probably a nod to Yellow (Adventures), who sketches.; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 8,

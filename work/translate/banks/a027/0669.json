@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "你的胆量可不小啊,{NEWLINE}我有点喜欢上你了！{CLEAR}和我做哥们吧！{SCROLL}我们交换一下电话号码,{NEWLINE}以后多多交流吧！{VAR:0200:0}",
-   "en": "You’ve got some guts! I’m kinda{NEWLINE}starting to like you! Let’s be bros!{SCROLL}Whadda ya say we trade phone numbers{NEWLINE}and keep in touch? {VAR:0200:0}",
+   "en": "You’ve got some guts! I’m kinda{NEWLINE}starting to like you! Let’s be bros!{SCROLL}Whadda ya say we trade phone{NEWLINE}numbers and keep in touch? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0678/1 | RV072: meaning: restored 'I like you'/bros; removed invented lines"
+   "notes": "US 0678/1 | RV072: meaning: restored 'I like you'/bros; removed invented lines; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,

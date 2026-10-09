@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "身上携带的精灵超过6只时,{NEWLINE}多出的精灵就会被传送进寄存系统,{CLEAR}使用精灵中心柜台旁的电脑,{CLEAR}就可以把寄存系统中的精灵取出来。",
-   "en": "When you have more than 6 Pokémon with{NEWLINE}you, the extras are sent to the{CLEAR}storage system.{SCROLL}Use the PC next to the Pokémon Center{NEWLINE}counter to take Pokémon out of{CLEAR}storage.",
+   "en": "When you have more than 6 Pokémon with{NEWLINE}you, the extras are sent to the{CLEAR}storage system.{SCROLL}Use the PC next{NEWLINE}to the Pokémon Center counter{CLEAR}to take Pokémon out of storage.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 4,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "乔伊『哇,你的眼神！{NEWLINE}跟普通的训练家眼神大不一样呢！{CLEAR}虽然你暂时还没有徽章,{CLEAR}但将来一定会成为强大的训练家。{CLEAR}这个送给你,就当是见面礼吧。",
-   "en": "Nurse Joy: Wow, look at those eyes!{NEWLINE}They’re nothing like an ordinary{CLEAR}Trainer’s!{SCROLL}You don’t have any Badges yet, but{NEWLINE}you’re sure to be a strong Trainer{CLEAR}someday.{SCROLL}Please take this as a little welcome{NEWLINE}gift.",
+   "en": "Nurse Joy: Wow, look at those eyes!{NEWLINE}They’re nothing like{CLEAR}an ordinary Trainer’s!{SCROLL}You don’t have any Badges yet,{NEWLINE}but you’re sure to be a strong{CLEAR}Trainer someday.{SCROLL}Please take this as a little welcome{NEWLINE}gift.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 9,
@@ -374,10 +374,10 @@
   {
    "id": 46,
    "zh": "小蓝『咳咳……{NEWLINE}居然对我这么漂亮的小女孩下手,{CLEAR}你们火箭队还真是没人性。",
-   "en": "Green: *cough*... Attacking a pretty{NEWLINE}little girl like me... You Rockets are{CLEAR}heartless.",
+   "en": "Green: *cough*... Attacking{NEWLINE}a pretty little girl like me...{CLEAR}You Rockets are heartless.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 47,
@@ -422,10 +422,10 @@
   {
    "id": 52,
    "zh": "联盟冠军？！{NEWLINE}真是的,偏偏在收割胜利成果的时候……",
-   "en": "The League Champion?! Of all the times,{NEWLINE}right when we’re about to claim our{CLEAR}victory...",
+   "en": "The League Champion?!{NEWLINE}Of all the times, right when we’re{CLEAR}about to claim our victory...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 53,
@@ -550,10 +550,10 @@
   {
    "id": 68,
    "zh": "你等着,就算我收拾不掉你,{NEWLINE}坂木老大早晚也会杀了你的。",
-   "en": "Just you wait. Even if I can’t finish you{NEWLINE}off, Boss Giovanni will kill you sooner or{CLEAR}later.",
+   "en": "Just you wait. Even if I can’t{NEWLINE}finish you off, Boss Giovanni{CLEAR}will kill you sooner or later.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 69,
@@ -718,18 +718,18 @@
   {
    "id": 89,
    "zh": "{VAR:0103:0}『这么一说还真是有些像。{NEWLINE}我记得那次你也是被鸟精灵围,{CLEAR}然后因为惊慌无法指挥精灵战斗。",
-   "en": "{VAR:0103:0}: Now that you mention it, it is{NEWLINE}kind of similar.{SCROLL}I remember that time you were{NEWLINE}surrounded by bird Pokémon too, and{CLEAR}you panicked and couldn’t command your{CLEAR}Pokémon.",
+   "en": "{VAR:0103:0}: Now that you mention it, it is{NEWLINE}kind of similar.{SCROLL}I remember that time you were{NEWLINE}surrounded by bird Pokémon too,{CLEAR}and you panicked and couldn’t{CLEAR}command your Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 90,
    "zh": "小蓝『没想到你记得蛮清楚嘛。{SCROLL}小蓝『我跟你说啊,{NEWLINE}虽然咱们在很小的时候经常一起玩,{CLEAR}但那时候你长什么样子{CLEAR}我已经完全不记得了。{CLEAR}我对你的第一印象就是在1号路时{CLEAR}看到你在远处看着我时的样子。{CLEAR}当时觉得这个训练家长得很普通,{CLEAR}丢到人堆里都找不到的那种。",
-   "en": "Green: Huh, you remember it pretty{NEWLINE}well.{SCROLL}Green: You know what? We played{NEWLINE}together a lot when we were really{CLEAR}little...{SCROLL}but I don’t remember what you looked{NEWLINE}like back then at all.{SCROLL}My first impression of you was on Route{NEWLINE}1, when I saw you watching me from far{CLEAR}away.{SCROLL}I thought you looked pretty ordinary.{NEWLINE}The kind of guy you’d lose in a crowd.",
+   "en": "Green: Huh, you remember it pretty{NEWLINE}well.{SCROLL}Green: You know what?{NEWLINE}We played together a lot{CLEAR}when we were really little...{SCROLL}but I don’t remember what you looked{NEWLINE}like back then at all.{SCROLL}My first impression of you was{NEWLINE}on Route 1, when I saw{CLEAR}you watching me from far away.{SCROLL}I thought you looked pretty ordinary.{NEWLINE}The kind of guy you’d lose in a crowd.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 91,
@@ -742,18 +742,18 @@
   {
    "id": 92,
    "zh": "小蓝『哈哈,听我说完嘛。{NEWLINE}在以后月见山、圣安努号、紫苑镇{CLEAR}的一系列事件中,{CLEAR}我逐渐被你那{CLEAR}正直、阳光、温柔的内心所吸引。{CLEAR}之后在浅红森林你帮我赶跑了鸟群,{CLEAR}我突然就觉得{VAR:0103:0}你好帅啊。{SCROLL}小蓝『石英大会之后{NEWLINE}我为了跟爸妈团聚,{CLEAR}跟你分开了好久。{CLEAR}在没有你陪伴的这段时间里,{CLEAR}我常常想起咱们在关东旅行的日子。{CLEAR}有时候想着想着就会情不自禁地微笑,{CLEAR}妈妈还怀疑我是不是生病了……",
-   "en": "Green: Ha ha, let me finish. Later,{NEWLINE}through everything at Mt. Moon, the{CLEAR}S.S. Anne and Lavender Town...{SCROLL}I slowly fell for your honest, sunny,{NEWLINE}gentle heart.{SCROLL}Then in Fuchsia Forest you chased off{NEWLINE}those birds for me...{SCROLL}and suddenly I thought, wow, {VAR:0103:0} is{NEWLINE}so cool.{SCROLL}Green: After the Indigo Conference, I{NEWLINE}went to be with my mom and dad, and we{CLEAR}were apart for a long time.{SCROLL}While you weren’t around, I kept{NEWLINE}thinking about our days traveling{CLEAR}through Kanto.{SCROLL}Sometimes I’d smile without even{NEWLINE}noticing. My mom even wondered if I was{CLEAR}sick...",
+   "en": "Green: Ha ha, let me finish. Later,{NEWLINE}through everything at Mt. Moon, the{CLEAR}S.S. Anne and Lavender Town...{SCROLL}I slowly fell for your honest, sunny,{NEWLINE}gentle heart.{SCROLL}Then in Fuchsia Forest you chased off{NEWLINE}those birds for me...{SCROLL}and suddenly I thought, wow, {VAR:0103:0} is{NEWLINE}so cool.{SCROLL}Green: After the Indigo Conference, I{NEWLINE}went to be with my mom and dad, and we{CLEAR}were apart for a long time.{SCROLL}While you weren’t around, I kept{NEWLINE}thinking about our days traveling{CLEAR}through Kanto.{SCROLL}Sometimes I’d smile without{NEWLINE}even noticing. My mom even{CLEAR}wondered if I was sick...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 93,
    "zh": "小蓝『如今火箭队大敌当前,{NEWLINE}我说这些话可能有些多余,{CLEAR}但我还是忍不住想告诉你,{CLEAR}我现在满眼看到的、{CLEAR}满脑子想到的都是你。{CLEAR}我喜欢你,{VAR:0103:0}。",
-   "en": "Green: With Team Rocket right in front{NEWLINE}of us, maybe this is a bad time to say{CLEAR}this...{SCROLL}but I can’t help wanting to tell you.{NEWLINE}Everything I see...{SCROLL}everything I think about... it’s all you.{NEWLINE}I love you, {VAR:0103:0}.",
+   "en": "Green: With Team Rocket{NEWLINE}right in front of us, maybe{CLEAR}this is a bad time to say this...{SCROLL}but I can’t help wanting to tell you.{NEWLINE}Everything I see...{SCROLL}everything I think about... it’s all you.{NEWLINE}I love you, {VAR:0103:0}.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 94,
@@ -814,10 +814,10 @@
   {
    "id": 101,
    "zh": "小蓝『你是联盟冠军,最强训练家,{NEWLINE}相信你一定可以战胜坂木。{SCROLL}小蓝『我还要在这里为妙蛙花治疗一下,{NEWLINE}{VAR:0103:0}你先继续前进吧,{CLEAR}等等妙蛙花恢复之后,{CLEAR}我就去找你汇合。{CLEAR}到时候咱们再一起痛扁火箭队。",
-   "en": "Green: You’re the League Champion, the{NEWLINE}strongest Trainer. I know you can beat{CLEAR}Giovanni.{SCROLL}Green: I still need to treat Venusaur{NEWLINE}here. {VAR:0103:0}, you go on ahead.{SCROLL}Once Venusaur’s better, I’ll come find{NEWLINE}you.{SCROLL}Then we’ll clobber Team Rocket{NEWLINE}together.",
+   "en": "Green: You’re the League Champion,{NEWLINE}the strongest Trainer.{CLEAR}I know you can beat Giovanni.{SCROLL}Green: I still need to treat Venusaur{NEWLINE}here. {VAR:0103:0}, you go on ahead.{SCROLL}Once Venusaur’s better, I’ll come find{NEWLINE}you.{SCROLL}Then we’ll clobber Team Rocket{NEWLINE}together.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 102,
@@ -830,18 +830,18 @@
   {
    "id": 103,
    "zh": "小赤『没想到你记得还挺清楚。{SCROLL}小赤『虽然咱们在很小的时候{NEWLINE}经常一起玩,{CLEAR}但那时候你长什么样子{CLEAR}我已经完全不记得了。{CLEAR}我对你的第一印象就是在1号路时{CLEAR}看到你在远处看着我时的样子。{CLEAR}当时觉得这个女训练家长得真漂亮,{CLEAR}你的脸庞从那时候起{CLEAR}就深深地印在了我的脑海里。",
-   "en": "Red: I didn’t think you’d remember it so{NEWLINE}well.{SCROLL}Red: We played together a lot when we{NEWLINE}were really little...{SCROLL}but I don’t remember what you looked{NEWLINE}like back then at all.{SCROLL}My first impression of you was on Route{NEWLINE}1, when I saw you watching me from far{CLEAR}away.{SCROLL}I thought, wow, that girl Trainer is{NEWLINE}really pretty.{SCROLL}From then on, your face was burned into{NEWLINE}my memory.",
+   "en": "Red: I didn’t think you’d remember it so{NEWLINE}well.{SCROLL}Red: We played together a lot when we{NEWLINE}were really little...{SCROLL}but I don’t remember what you looked{NEWLINE}like back then at all.{SCROLL}My first impression of you was{NEWLINE}on Route 1, when I saw{CLEAR}you watching me from far away.{SCROLL}I thought, wow, that girl Trainer is{NEWLINE}really pretty.{SCROLL}From then on, your face was burned into{NEWLINE}my memory.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 104,
    "zh": "{VAR:0103:0}『嘿嘿,我这真新镇第一美女{NEWLINE}可不是吹的。",
-   "en": "{VAR:0103:0}: Heh heh. They don’t call me{NEWLINE}Pallet Town’s prettiest girl for{CLEAR}nothing.",
+   "en": "{VAR:0103:0}: Heh heh.{NEWLINE}They don’t call me Pallet Town’s{CLEAR}prettiest girl for nothing.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 105,
@@ -854,10 +854,10 @@
   {
    "id": 106,
    "zh": "小赤『如今火箭队大敌当前,{NEWLINE}我说这些话可能有些多余,{CLEAR}但我还是忍不住想告诉你,{CLEAR}我现在满眼看到的、{CLEAR}满脑子想到的都是你。{CLEAR}我喜欢你,{VAR:0103:0}。",
-   "en": "Red: With Team Rocket right in front of{NEWLINE}us, maybe this is a bad time to say{CLEAR}this...{SCROLL}but I can’t help wanting to tell you.{NEWLINE}Everything I see...{SCROLL}everything I think about... it’s all you.{NEWLINE}I love you, {VAR:0103:0}.",
+   "en": "Red: With Team Rocket{NEWLINE}right in front of us, maybe{CLEAR}this is a bad time to say this...{SCROLL}but I can’t help wanting to tell you.{NEWLINE}Everything I see...{SCROLL}everything I think about... it’s all you.{NEWLINE}I love you, {VAR:0103:0}.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 107,
@@ -918,26 +918,26 @@
   {
    "id": 114,
    "zh": "小赤『你是联盟冠军,最强训练家,{NEWLINE}相信你一定可以战胜坂木。{SCROLL}小赤『我还要在这里为妙蛙花治疗一下,{NEWLINE}{VAR:0103:0}你先继续前进吧,{CLEAR}等等妙蛙花恢复之后,{CLEAR}我就去找你汇合。{CLEAR}到时候咱们再一起痛扁火箭队。",
-   "en": "Red: You’re the League Champion, the{NEWLINE}strongest Trainer. I know you can beat{CLEAR}Giovanni.{SCROLL}Red: I still need to treat Venusaur{NEWLINE}here. {VAR:0103:0}, you go on ahead.{SCROLL}Once Venusaur’s better, I’ll come find{NEWLINE}you.{SCROLL}Then we’ll clobber Team Rocket{NEWLINE}together.",
+   "en": "Red: You’re the League Champion,{NEWLINE}the strongest Trainer.{CLEAR}I know you can beat Giovanni.{SCROLL}Red: I still need to treat Venusaur{NEWLINE}here. {VAR:0103:0}, you go on ahead.{SCROLL}Once Venusaur’s better, I’ll come find{NEWLINE}you.{SCROLL}Then we’ll clobber Team Rocket{NEWLINE}together.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 115,
    "zh": "小蓝『你是联盟冠军,最强训练家,{NEWLINE}相信你一定可以战胜坂木。{SCROLL}小蓝『我还要在这里为妙蛙花治疗一下,{NEWLINE}{VAR:0103:0}你先继续前进吧,{CLEAR}等等妙蛙花恢复之后,{CLEAR}我就去找你汇合。{CLEAR}到时候咱们再一起痛扁火箭队。",
-   "en": "Green: You’re the League Champion, the{NEWLINE}strongest Trainer. I know you can beat{CLEAR}Giovanni.{SCROLL}Green: I still need to treat Venusaur{NEWLINE}here. {VAR:0103:0}, you go on ahead.{SCROLL}Once Venusaur’s better, I’ll come find{NEWLINE}you.{SCROLL}Then we’ll clobber Team Rocket{NEWLINE}together.",
+   "en": "Green: You’re the League Champion,{NEWLINE}the strongest Trainer.{CLEAR}I know you can beat Giovanni.{SCROLL}Green: I still need to treat Venusaur{NEWLINE}here. {VAR:0103:0}, you go on ahead.{SCROLL}Once Venusaur’s better, I’ll come find{NEWLINE}you.{SCROLL}Then we’ll clobber Team Rocket{NEWLINE}together.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 116,
    "zh": "小赤『你是联盟冠军,最强训练家,{NEWLINE}相信你一定可以战胜坂木。{SCROLL}小赤『我还要在这里为妙蛙花治疗一下,{NEWLINE}{VAR:0103:0}你先继续前进吧,{CLEAR}等等妙蛙花恢复之后,{CLEAR}我就去找你汇合。{CLEAR}到时候咱们再一起痛扁火箭队。",
-   "en": "Red: You’re the League Champion, the{NEWLINE}strongest Trainer. I know you can beat{CLEAR}Giovanni.{SCROLL}Red: I still need to treat Venusaur{NEWLINE}here. {VAR:0103:0}, you go on ahead.{SCROLL}Once Venusaur’s better, I’ll come find{NEWLINE}you.{SCROLL}Then we’ll clobber Team Rocket{NEWLINE}together.",
+   "en": "Red: You’re the League Champion,{NEWLINE}the strongest Trainer.{CLEAR}I know you can beat Giovanni.{SCROLL}Red: I still need to treat Venusaur{NEWLINE}here. {VAR:0103:0}, you go on ahead.{SCROLL}Once Venusaur’s better, I’ll come find{NEWLINE}you.{SCROLL}Then we’ll clobber Team Rocket{NEWLINE}together.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 117,
@@ -1182,10 +1182,10 @@
   {
    "id": 147,
    "zh": "阿金『不……爆太郎他们确实受了重伤。{NEWLINE}火箭队这招反转之力确实厉害,{CLEAR}我已经有一半精灵不能再战斗了……",
-   "en": "Gold: No... Exbo and the others really{NEWLINE}are badly hurt.{SCROLL}Team Rocket’s reversal trick is no{NEWLINE}joke. Half my Pokémon can’t battle{CLEAR}anymore...",
+   "en": "Gold: No... Exbo and the others really{NEWLINE}are badly hurt.{SCROLL}Team Rocket’s reversal trick{NEWLINE}is no joke. Half my Pokémon{CLEAR}can’t battle anymore...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 148,
@@ -1278,18 +1278,18 @@
   {
    "id": 159,
    "zh": "阿金『那倒不是……{NEWLINE}我所说的困难,其实是我想告诉偶像{CLEAR}那个……我……吸……一",
-   "en": "Gold: It’s not that... The problem is,{NEWLINE}there’s something I want to tell you,{CLEAR}Idol...{SCROLL}Um... I... l-lo...",
+   "en": "Gold: It’s not that...{NEWLINE}The problem is, there’s something{CLEAR}I want to tell you, Idol...{SCROLL}Um... I... l-lo...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 160,
    "zh": "{VAR:0103:0}『怎么说话突然吞吞吐吐的,{NEWLINE}这可一点都不像你啊,阿金。{CLEAR}有什么话就直说嘛。",
-   "en": "{VAR:0103:0}: Why are you suddenly{NEWLINE}stammering? That’s not like you at all,{CLEAR}Gold.{SCROLL}If you’ve got something to say, just{NEWLINE}say it.",
+   "en": "{VAR:0103:0}: Why are you suddenly{NEWLINE}stammering? That’s not{CLEAR}like you at all, Gold.{SCROLL}If you’ve got something to say, just{NEWLINE}say it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 161,
@@ -1337,10 +1337,10 @@
   {
    "id": 166,
    "zh": "{VAR:0103:0}『不是的,其实我非常欣赏{NEWLINE}你那种勇往直前的乐观精神,{CLEAR}也非常享受身边有一个{CLEAR}你这样充满活力的男孩。{CLEAR}嘛,如果以后能够跟你{CLEAR}以男女朋友的身份,{CLEAR}继续过以前那种无忧无虑的快乐生活,{CLEAR}我一点也不介意哦。",
-   "en": "{VAR:0103:0}: That’s not it. I really admire{NEWLINE}your fearless, never-give-up optimism.{SCROLL}And I really love having a lively boy like{NEWLINE}you around.{SCROLL}Well... if we can keep living that{NEWLINE}carefree, happy life as boyfriend and{CLEAR}girlfriend...{SCROLL}I wouldn’t mind at all.",
+   "en": "{VAR:0103:0}: That’s not it. I really admire{NEWLINE}your fearless, never-give-up optimism.{SCROLL}And I really love having a lively boy like{NEWLINE}you around.{SCROLL}Well... if we can keep living{NEWLINE}that carefree, happy life{CLEAR}as boyfriend and girlfriend...{SCROLL}I wouldn’t mind at all.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 167,
@@ -1385,10 +1385,10 @@
   {
    "id": 172,
    "zh": "阿金『我带了一些应急药,{NEWLINE}可以给爆太郎它们简单治疗一下。{CLEAR}偶像你不能因为我拖慢前进的脚步,{CLEAR}请继续前进吧,{CLEAR}打败火箭队还要靠你呢。",
-   "en": "Gold: I brought some emergency{NEWLINE}medicine. I can patch up Exbo and the{CLEAR}others.{SCROLL}Idol, you can’t let me slow you down.{NEWLINE}Please, keep going.{SCROLL}We’re counting on you to beat Team{NEWLINE}Rocket.",
+   "en": "Gold: I brought some{NEWLINE}emergency medicine.{CLEAR}I can patch up Exbo and the others.{SCROLL}Idol, you can’t let me slow you down.{NEWLINE}Please, keep going.{SCROLL}We’re counting on you to beat Team{NEWLINE}Rocket.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 173,

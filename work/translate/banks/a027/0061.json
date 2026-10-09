@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "干安『冠军是我的！{NEWLINE}不要妨碍我！",
-   "en": "Don: I’m going to{NEWLINE}win! Don’t bother{CLEAR}me.",
+   "en": "Don: I’m going{NEWLINE}to win!{CLEAR}Don’t bother me.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0063/3"
+   "notes": "US 0063/3; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 4,
@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "明仁『冠军什么的无所谓,{NEWLINE}我要的是少见的精灵。",
-   "en": "William: I’m not{NEWLINE}concerned about{CLEAR}winning.{SCROLL}I’m just looking{NEWLINE}for rare Pokémon.",
+   "en": "William: I’m{NEWLINE}not concerned{CLEAR}about winning.{SCROLL}I’m just looking{NEWLINE}for rare Pokémon.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0063/12"
+   "notes": "US 0063/12; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 13,

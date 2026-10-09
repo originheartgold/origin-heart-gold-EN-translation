@@ -374,10 +374,10 @@
   {
    "id": 46,
    "zh": "喂,那边那个人,{NEWLINE}谢谢你帮我打退了火箭队啊。{CLEAR}不过比赛场上就是要倾尽全力,{CLEAR}你们要是慢慢吞吞不走的话,{CLEAR}我可要去拿冠军了！",
-   "en": "Hey, you over there! Thanks for{NEWLINE}fighting off Team Rocket. But a race is{CLEAR}a race, and you give it everything. If{CLEAR}you two keep dawdling, I’m taking the{CLEAR}championship!",
+   "en": "Hey, you over there!{NEWLINE}Thanks for fighting off Team Rocket.{CLEAR}But a race is a race, and you give it{CLEAR}everything. If you two keep dawdling,{CLEAR}I’m taking the championship!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 47,

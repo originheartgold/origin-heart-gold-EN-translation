@@ -207,10 +207,10 @@
   {
    "id": 25,
    "zh": "风花『我总觉得{NEWLINE}尼比市的崇山峻岭太过肃杀,{CLEAR}所以我就在这山间{CLEAR}种上鲜花,建起了这个花圃。{CLEAR}你既然来到这里赏花,{CLEAR}也就是说你也喜欢种东西吗？",
-   "en": "Anemone: I always felt the rugged{NEWLINE}mountains around Pewter City looked too{CLEAR}harsh.{SCROLL}So I planted flowers here in the hills{NEWLINE}and made this garden.{SCROLL}You came here to see the flowers, so{NEWLINE}does that mean you like growing things,{CLEAR}too?",
+   "en": "Anemone: I always felt{NEWLINE}the rugged mountains around{CLEAR}Pewter City looked too harsh.{SCROLL}So I planted flowers here in the hills{NEWLINE}and made this garden.{SCROLL}You came here to see the flowers,{NEWLINE}so does that mean you like{CLEAR}growing things, too?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 26,
@@ -231,10 +231,10 @@
   {
    "id": 28,
    "zh": "风花『用这个杰尼龟喷壶,{NEWLINE}经常给植物们浇水,{CLEAR}它们会很开心的。",
-   "en": "Anemone: Water your plants often with{NEWLINE}this Squirt Bottle, and they’ll be very{CLEAR}happy.",
+   "en": "Anemone: Water your plants{NEWLINE}often with this Squirt Bottle,{CLEAR}and they’ll be very happy.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position; modernised from the v3 TM text"
+   "notes": "v3 TM: 1 source(s), same position; modernised from the v3 TM text; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 29,
@@ -311,10 +311,10 @@
   {
    "id": 38,
    "zh": "小刚馆主强大又温柔,{NEWLINE}还很会照顾人,{CLEAR}简直是完美好男人！",
-   "en": "Brock is strong and gentle, and he{NEWLINE}looks after everyone. He’s the perfect{CLEAR}man!",
+   "en": "Brock is strong and gentle,{NEWLINE}and he looks after everyone.{CLEAR}He’s the perfect man!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 39,
@@ -335,10 +335,10 @@
   {
    "id": 41,
    "zh": "你好,训练家,{NEWLINE}可以请你帮个忙{CLEAR}给我弄10个橘果来吗？",
-   "en": "Hello there, Trainer. Could I ask a{NEWLINE}favor? Would you get me ten Oran{CLEAR}Berries?",
+   "en": "Hello there, Trainer.{NEWLINE}Could I ask a favor?{CLEAR}Would you get me ten Oran Berries?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost"
+   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 42,
@@ -367,18 +367,18 @@
   {
    "id": 45,
    "zh": "有一些特殊的岩石系精灵,{NEWLINE}需要携带硬石升级才能进化。{CLEAR}你在旅行中{CLEAR}多收集些这样的道具没坏处的。",
-   "en": "Some special Rock-type Pokémon need to{NEWLINE}level up while holding a Hard Stone to{CLEAR}evolve.{SCROLL}It can’t hurt to collect items like that{NEWLINE}on your travels.",
+   "en": "Some special Rock-type Pokémon{NEWLINE}need to level up while holding{CLEAR}a Hard Stone to evolve.{SCROLL}It can’t hurt to collect items like that{NEWLINE}on your travels.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 46,
    "zh": "那个……,虽然有点难以启齿,{NEWLINE}可以送我3个大树果吗？",
-   "en": "Um... This is a little embarrassing to{NEWLINE}ask, but could you give me three Sitrus{CLEAR}Berries?",
+   "en": "Um... This is a little embarrassing{NEWLINE}to ask, but could you give{CLEAR}me three Sitrus Berries?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 47,
@@ -415,10 +415,10 @@
   {
    "id": 51,
    "zh": "你要是觉得树果不够吃,{NEWLINE}可以向风花小姐请教一下{CLEAR}怎么种出更多树果。",
-   "en": "If you feel like you don’t have enough{NEWLINE}Berries, ask Miss Anemone how to grow{CLEAR}more.",
+   "en": "If you feel like you don’t{NEWLINE}have enough Berries,{CLEAR}ask Miss Anemone how to grow more.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 52,
@@ -447,10 +447,10 @@
   {
    "id": 55,
    "zh": "我的胡说树身上有点脏了,{NEWLINE}要是能有块硬石头{CLEAR}给它打磨一下就好了！",
-   "en": "My Sudowoodo’s gotten a little dirty. If{NEWLINE}only I had a hard stone to polish it{CLEAR}with!",
+   "en": "My Sudowoodo’s gotten a little dirty.{NEWLINE}If only I had a hard{CLEAR}stone to polish it with!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 56,
@@ -487,10 +487,10 @@
   {
    "id": 60,
    "zh": "小绿『{VAR:0103:0}你也终于{NEWLINE}来到尼比市了啊。{SCROLL}不过我已经快你一步{NEWLINE}拿到尼比道馆的徽章了！{SCROLL}小绿『你现在来到这条路这里,{NEWLINE}也是想要挑战道馆吗？{CLEAR}既然如此,我就先测试一下{CLEAR}你有没有通过道馆战的实力吧！",
-   "en": "Blue: So you finally made it to Pewter{NEWLINE}City, {VAR:0103:0}.{SCROLL}Too bad I beat you to it. I’ve already{NEWLINE}got the Pewter Gym Badge!{SCROLL}Blue: You came this way to take on the{NEWLINE}Gym too, huh? Then let me test whether{CLEAR}you’ve got what it takes to win a Gym{CLEAR}battle!",
+   "en": "Blue: So you finally made it to Pewter{NEWLINE}City, {VAR:0103:0}.{SCROLL}Too bad I beat you to it. I’ve already{NEWLINE}got the Pewter Gym Badge!{SCROLL}Blue: You came this way{NEWLINE}to take on the Gym too, huh?{CLEAR}Then let me test whether you’ve got{CLEAR}what it takes to win a Gym battle!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 61,
@@ -503,18 +503,18 @@
   {
    "id": 62,
    "zh": "小绿『可恶啊,让你偷袭得逞了！{NEWLINE}如果{VAR:0103:0}你在挑战道馆的时候{CLEAR}也有这么好的运气,{CLEAR}应该有机会拿到徽章吧。",
-   "en": "Blue: Dammit, you caught me off guard!{SCROLL}If you’re this lucky in the Gym,{NEWLINE}{VAR:0103:0}, you might actually get the{CLEAR}Badge.",
+   "en": "Blue: Dammit, you caught me off guard!{SCROLL}If you’re this lucky in the Gym,{NEWLINE}{VAR:0103:0}, you might{CLEAR}actually get the Badge.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0453#62; text not kept)"
+   "notes": "v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0453#62; text not kept); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 63,
    "zh": "小绿『竟然可以让我倾尽全力！{NEWLINE}如果{VAR:0103:0}你在道馆战的时候{CLEAR}也能拿出这份实力,{CLEAR}相信拿到徽章不成问题。",
-   "en": "Blue: You made me go all out!{SCROLL}If you fight like that in the Gym,{NEWLINE}{VAR:0103:0}, getting the Badge should be no{CLEAR}problem.",
+   "en": "Blue: You made me go all out!{SCROLL}If you fight like that in the Gym,{NEWLINE}{VAR:0103:0}, getting the Badge{CLEAR}should be no problem.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0453#63; text not kept)"
+   "notes": "v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0453#63; text not kept); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 64,
@@ -551,10 +551,10 @@
   {
    "id": 68,
    "zh": "小刚『啊,风花小姐！{NEWLINE}我眺望月见山的每个夜晚,{CLEAR}脑海中浮现的都是{CLEAR}跟你一起手牵手{CLEAR}漫步在月见山广场上的样子。",
-   "en": "Brock: Ah, Miss Anemone! Every night as{NEWLINE}I gaze out at Mt. Moon, I picture us{CLEAR}walking hand in hand across Mt. Moon{CLEAR}Square.",
+   "en": "Brock: Ah, Miss Anemone!{NEWLINE}Every night as I gaze out at Mt. Moon,{CLEAR}I picture us walking hand{CLEAR}in hand across Mt. Moon Square.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 69,
@@ -607,10 +607,10 @@
   {
    "id": 75,
    "zh": "风花『其实真正能跟尼多王{NEWLINE}在一起的是尼多兰……",
-   "en": "Anemone: Actually, the one that can{NEWLINE}really pair up with Nidoking is{CLEAR}Nidoran♀...",
+   "en": "Anemone: Actually,{NEWLINE}the one that can really pair{CLEAR}up with Nidoking is Nidoran♀...",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 76,
@@ -663,10 +663,10 @@
   {
    "id": 82,
    "zh": "小刚『扰了您了风花小姐,{NEWLINE}实在对不起……{CLEAR}恕我暂且告辞回去,{CLEAR}等我想到不那么土的情话之后,{CLEAR}再来欣赏和歌颂{CLEAR}尼比市的高岭之花！",
-   "en": "Brock: Miss Anemone, I’m truly sorry{NEWLINE}for bothering you... I’ll take my leave{CLEAR}for now. Once I think of lines that{CLEAR}aren’t so cheesy, I’ll return to admire{CLEAR}and praise the lofty flower of Pewter{CLEAR}City!",
+   "en": "Brock: Miss Anemone, I’m truly{NEWLINE}sorry for bothering you...{CLEAR}I’ll take my leave for now. Once I think{CLEAR}of lines that aren’t so cheesy,{CLEAR}I’ll return to admire and praise{CLEAR}the lofty flower of Pewter City!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost | RV017: addition: removed second Brock label not in zh"
+   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost | RV017: addition: removed second Brock label not in zh; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 83,
@@ -791,10 +791,10 @@
   {
    "id": 98,
    "zh": "据说沙奈朵和七夕青鸟{NEWLINE}拥有妖精皮肤特性,{CLEAR}这让它们比别的妖精系精灵{CLEAR}拥有更多的妖精系技能可选择。",
-   "en": "They say Gardevoir and Altaria can have{NEWLINE}Pixilate.{SCROLL}That gives them more Fairy-type moves{NEWLINE}to choose from than other Fairy-type{CLEAR}Pokémon.",
+   "en": "They say Gardevoir and Altaria can have{NEWLINE}Pixilate.{SCROLL}That gives them more Fairy-type{NEWLINE}moves to choose from than other{CLEAR}Fairy-type Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 99,
@@ -887,10 +887,10 @@
   {
    "id": 110,
    "zh": "等等！{SCROLL}我在得到6v百变怪之后,{NEWLINE}确实放生了一批{CLEAR}性格不对的雌性精灵……",
-   "en": "Wait!{SCROLL}After I got my 6 IV Ditto, I did release{NEWLINE}a bunch of females with the wrong{CLEAR}Natures...",
+   "en": "Wait!{SCROLL}After I got my 6 IV Ditto,{NEWLINE}I did release a bunch of females{CLEAR}with the wrong Natures...",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 111,
@@ -991,10 +991,10 @@
   {
    "id": 123,
    "zh": "为什么……{NEWLINE}为什么你这样的职业训练家{CLEAR}却偏偏不懂得珍惜和尊重精灵……",
-   "en": "Why... Why don’t pro Trainers like you{NEWLINE}know how to cherish and respect{CLEAR}Pokémon...?",
+   "en": "Why... Why don’t pro Trainers{NEWLINE}like you know how to cherish{CLEAR}and respect Pokémon...?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 2 source(s), same position"
+   "notes": "v3 TM: 2 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 124,
@@ -1087,18 +1087,18 @@
   {
    "id": 135,
    "zh": "每天搬砖还是蛮辛苦的,{NEWLINE}如果搬的是月亮石的话,{CLEAR}那就发财了。{SCROLL}可惜据说只有月见山的皮皮身上{NEWLINE}才有可能携带这种贵重的石头。",
-   "en": "Hauling bricks all day is tough work. If{NEWLINE}I were hauling Moon Stones instead, I’d{CLEAR}be rich.{SCROLL}Too bad they say only the Clefairy on{NEWLINE}Mt. Moon ever carry such precious{CLEAR}stones.",
+   "en": "Hauling bricks all day is tough work. If{NEWLINE}I were hauling Moon Stones instead, I’d{CLEAR}be rich.{SCROLL}Too bad they say only{NEWLINE}the Clefairy on Mt. Moon ever{CLEAR}carry such precious stones.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 136,
    "zh": "小绿『对了,{NEWLINE}这是我爷爷的电话号码,你记一下吧。{SCROLL}旅途中遇到什么关于图鉴的问题,{NEWLINE}可以打给他问问。",
-   "en": "Blue: Oh yeah, here’s my gramps’s phone{NEWLINE}number. Write it down.{SCROLL}If you have any questions about the{NEWLINE}Pokédex on your journey, give him a{CLEAR}call.",
+   "en": "Blue: Oh yeah, here’s my gramps’s phone{NEWLINE}number. Write it down.{SCROLL}If you have any questions about{NEWLINE}the Pokédex on your journey,{CLEAR}give him a call.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 137,
@@ -1167,10 +1167,10 @@
   {
    "id": 145,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的合金爪……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习合金爪{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Metal{NEWLINE}Claw...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Metal{NEWLINE}Claw?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Metal{NEWLINE}Claw...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn Metal Claw?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 146,
@@ -1207,10 +1207,10 @@
   {
    "id": 150,
    "zh": "每一种精灵都有两个特性哦,{NEWLINE}有时候仅仅是特性不一样,{CLEAR}精灵的使用方法{CLEAR}就会发生翻天覆地的变化！{SCROLL}如果想成为更强的训练家,{NEWLINE}就试着多收服几只精灵吧！",
-   "en": "Every Pokémon species can have two{NEWLINE}Abilities!{SCROLL}Sometimes a different Ability alone can{NEWLINE}completely change how a Pokémon is{CLEAR}used!{SCROLL}If you want to become a stronger{NEWLINE}Trainer, try catching a few more{CLEAR}Pokémon!",
+   "en": "Every Pokémon species can have two{NEWLINE}Abilities!{SCROLL}Sometimes a different Ability{NEWLINE}alone can completely change{CLEAR}how a Pokémon is used!{SCROLL}If you want to become{NEWLINE}a stronger Trainer,{CLEAR}try catching a few more Pokémon!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   }
  ]
 }

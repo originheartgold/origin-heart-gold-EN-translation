@@ -214,10 +214,10 @@
   {
    "id": 26,
    "zh": "⋯⋯哎呀呀,{VAR:0103:0}。{NEWLINE}这线路图{SCROLL}{VAR:0104:1}{NEWLINE}已经有了啊。",
-   "en": "Oh no, {VAR:0103:0}!{NEWLINE}You already have this Route Map,{SCROLL}{VAR:0104:1}.",
+   "en": "Oh no, {VAR:0103:0}!{NEWLINE}You already have{SCROLL}this Route Map, {VAR:0104:1}.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0209/26 | RV058: meaning: zh = you already have this Route Map"
+   "notes": "US 0209/26 | RV058: meaning: zh = you already have this Route Map; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 27,

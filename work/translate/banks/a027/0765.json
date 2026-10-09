@@ -142,10 +142,10 @@
   {
    "id": 17,
    "zh": "ＷｉーＦｉ广场里为您准备了{NEWLINE}{VAR:0300:0}{CLEAR}{VAR:0300:1}{CLEAR}{VAR:0300:2}{CLEAR}３个广场游戏{SCROLL}不管哪一个游戏{NEWLINE}最多支持４个朋友{CLEAR}一同游玩！{SCROLL}",
-   "en": "The Wi-Fi Plaza has three Plaza Games:{NEWLINE}{VAR:0300:0},{CLEAR}{VAR:0300:1} and{CLEAR}{VAR:0300:2}.{SCROLL}Each game can be played by up to{NEWLINE}four friends together!{SCROLL}",
+   "en": "The Wi-Fi Plaza has{NEWLINE}three Plaza Games:{CLEAR}{VAR:0300:0}, {VAR:0300:1}{CLEAR}and {VAR:0300:2}.{SCROLL}Each game can be played by up to{NEWLINE}four friends together!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 18,
@@ -190,10 +190,10 @@
   {
    "id": 23,
    "zh": "触控玩具是{NEWLINE}只有在ＷｉーＦｉ广场{CLEAR}才能游玩的道具！{SCROLL}从朋友那里得到的{NEWLINE}赠予的。{SCROLL}在广场游戏中{NEWLINE}ｐｏｗｅｒ　ｕｐ{NEWLINE}的触控玩具{NEWLINE}有各种各样的游玩方法,{CLEAR}请好好享受快乐！{SCROLL}",
-   "en": "Tap Toys are toys that you can play{NEWLINE}with only in the Wi-Fi Plaza.{SCROLL}Besides playing with them on your own,{NEWLINE}you can also share Tap Toys with{CLEAR}friends.{SCROLL}The Tap Toys can be powered up{NEWLINE}playing Plaza Games, too.{SCROLL}We hope you’ll come up with your own{NEWLINE}ways of enjoying them!{SCROLL}",
+   "en": "Tap Toys are toys that you can play{NEWLINE}with only in the Wi-Fi Plaza.{SCROLL}Besides playing with them{NEWLINE}on your own, you can also{CLEAR}share Tap Toys with friends.{SCROLL}The Tap Toys can be powered up{NEWLINE}playing Plaza Games, too.{SCROLL}We hope you’ll come up with your own{NEWLINE}ways of enjoying them!{SCROLL}",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0777/23"
+   "notes": "US 0777/23; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 24,
@@ -214,10 +214,10 @@
   {
    "id": 26,
    "zh": "{VAR:0300:0}是最多{NEWLINE}四人同时游玩的{CLEAR}广场游戏之一！{SCROLL}规则很简单！{NEWLINE}只要不断的压泵{CLEAR}给气球充气！{SCROLL}把１０个以上的气球{NEWLINE}弄破的参加者们。{CLEAR}大家的触控玩具{CLEAR}将ｐｏｗｅｒ　ｕｐ！{SCROLL}",
-   "en": "{VAR:0300:0} is one of the{NEWLINE}Plaza Games.{SCROLL}Up to four players can take part.{SCROLL}The rule is simple: just pump up{NEWLINE}balloons until they pop.{SCROLL}Pop at least ten, and all participants{NEWLINE}will be rewarded with a Tap Toy{CLEAR}upgrade.{SCROLL}",
+   "en": "{VAR:0300:0} is one of the{NEWLINE}Plaza Games.{SCROLL}Up to four players can take part.{SCROLL}The rule is simple: just pump up{NEWLINE}balloons until they pop.{SCROLL}Pop at least ten, and all{NEWLINE}participants will be rewarded{CLEAR}with a Tap Toy upgrade.{SCROLL}",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0777/26"
+   "notes": "US 0777/26; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 27,

@@ -822,10 +822,10 @@
   {
    "id": 102,
    "zh": "冥王『啊啊啊！！！刚刚明明差一点{NEWLINE}就能团灭三个地区的冠军。{CLEAR}都怪富士那个老东西留下的祸害。",
-   "en": "Charon: Aaargh!!! We were this close to{NEWLINE}wiping out the Champions of three{CLEAR}regions!{SCROLL}It’s all because of that pest the old{NEWLINE}geezer Fuji left behind!",
+   "en": "Charon: Aaargh!!!{NEWLINE}We were this close to wiping out{CLEAR}the Champions of three regions!{SCROLL}It’s all because of that pest the old{NEWLINE}geezer Fuji left behind!",
    "status": "draft",
    "origin": "agent",
-   "notes": " | RV008: grammar: clumsy 'that menace that old geezer'; 祸害 = pest/scourge"
+   "notes": " | RV008: grammar: clumsy 'that menace that old geezer'; 祸害 = pest/scourge; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 103,
@@ -982,10 +982,10 @@
   {
    "id": 122,
    "zh": "昵称叫{VAR:0101:1}{NEWLINE}可以吗？{VAR:0200:0}",
-   "en": "Is {VAR:0101:1} the nickname you want{NEWLINE}to give?{VAR:0200:0}",
+   "en": "Is {VAR:0101:1} the nickname{NEWLINE}you want to give?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl) v3 TM line (asked about the speaker's own nickname) was wrong; standard nickname prompt reused. English copied from a027/0087 #151 (same zh)."
+   "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl) v3 TM line (asked about the speaker's own nickname) was wrong; standard nickname prompt reused. English copied from a027/0087 #151 (same zh).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 123,

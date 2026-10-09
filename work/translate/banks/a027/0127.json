@@ -238,10 +238,10 @@
   {
    "id": 29,
    "zh": "伊吹『哎呀,{VAR:0103:1},{NEWLINE}你也来龙之洞穴训练吗？{CLEAR}正好我也在这里训练,{CLEAR}要不要跟我来张合影{CLEAR}纪念一下这次巧遇啊？{VAR:0200:0}",
-   "en": "Clair: Oh, {VAR:0103:1}, did you come to the{NEWLINE}Dragon’s Den to train too? I’m training{CLEAR}here as well. Want to take a photo with{CLEAR}me to remember running into each other?{VAR:0200:0}",
+   "en": "Clair: Oh, {VAR:0103:1}, did you come{NEWLINE}to the Dragon’s Den to train too?{CLEAR}I’m training here as well. Want{CLEAR}to take a photo with me to remember{CLEAR}running into each other?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "zh uses {VAR:0103:1} here; kept"
+   "notes": "zh uses {VAR:0103:1} here; kept; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 30,

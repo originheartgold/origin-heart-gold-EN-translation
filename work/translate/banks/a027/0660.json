@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "你也喜欢皮皮吗？{SCROLL}皮皮非常可爱吧。{SCROLL}我们好像很合得来啊！{NEWLINE}我们做个朋友怎么样？{CLEAR}方便的话把你的电话号码{CLEAR}告诉给我好吗？{SCROLL}我们聊些关于皮皮的话题吧！{VAR:0200:0}",
-   "en": "You like Clefairy, too? Clefairy are so{NEWLINE}cute, aren’t they?{SCROLL}We really seem to hit it off! Why don’t{NEWLINE}we be friends?{SCROLL}If it’s OK, could you give me your phone{NEWLINE}number? Let’s talk about Clefairy! {VAR:0200:0}",
+   "en": "You like Clefairy, too? Clefairy are so{NEWLINE}cute, aren’t they?{SCROLL}We really seem to hit it off! Why don’t{NEWLINE}we be friends?{SCROLL}If it’s OK, could you give{NEWLINE}me your phone number?{CLEAR}Let’s talk about Clefairy! {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0669/1; modernised from US 0669#1 | RV072: omission: restored 'we get along' / 'be friends' clauses"
+   "notes": "US 0669/1; modernised from US 0669#1 | RV072: omission: restored 'we get along' / 'be friends' clauses; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,

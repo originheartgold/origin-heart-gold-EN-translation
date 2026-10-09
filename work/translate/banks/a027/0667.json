@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "输给你了,不过{NEWLINE}这场对战我觉得很开心⋯⋯{SCROLL}在这边钓鱼的时候,{NEWLINE}偶尔能钓到{CLEAR}别人掉在水里的道具,{CLEAR}到时候送给你吧⋯⋯{SCROLL}把你的电话号码{NEWLINE}告诉我怎样？{VAR:0200:0}",
-   "en": "I lost to you, but I really enjoyed that{NEWLINE}battle...{SCROLL}When I fish here, I sometimes hook items{NEWLINE}people dropped in the water.{SCROLL}When I do, I’ll give them to you... How{NEWLINE}about telling me your phone number? {VAR:0200:0}",
+   "en": "I lost to you, but I really enjoyed that{NEWLINE}battle...{SCROLL}When I fish here, I sometimes hook items{NEWLINE}people dropped in the water.{SCROLL}When I do, I’ll give them to you...{NEWLINE}How about telling me{CLEAR}your phone number? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0676/1 | RV072: omission: restored the loss"
+   "notes": "US 0676/1 | RV072: omission: restored the loss; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,

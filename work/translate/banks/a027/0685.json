@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "你也一定想{NEWLINE}成为最强的训练师吧？{CLEAR}那我们交个朋友吧！{SCROLL}对了！我有时会在岸边{NEWLINE}捡到好东西,{CLEAR}你也想不想要一个啊！{SCROLL}来,和我交换一下{NEWLINE}电话号码吧。{VAR:0200:0}",
-   "en": "You must want to be the strongest{NEWLINE}Trainer too, right?{SCROLL}Then let’s be friends! Oh, I know! I{NEWLINE}sometimes find good stuff on the shore.{SCROLL}Do you want one? Come on, let’s trade{NEWLINE}phone numbers. {VAR:0200:0}",
+   "en": "You must want to be the strongest{NEWLINE}Trainer too, right?{SCROLL}Then let’s be friends! Oh, I know! I{NEWLINE}sometimes find good stuff on the shore.{SCROLL}Do you want one? Come on,{NEWLINE}let’s trade phone numbers. {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0694/1 | RV072: omission: restored friends/offer clauses"
+   "notes": "US 0694/1 | RV072: omission: restored friends/offer clauses; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,
@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "我在岸边捡到什么{NEWLINE}好东西的话就给你吧！{SCROLL}要是你乐意的话,{NEWLINE}我们交换一下电话号码吧？{VAR:0200:0}",
-   "en": "If I find anything good on the shore,{NEWLINE}I’ll give it to you!{SCROLL}If you’re up for it, let’s trade phone{NEWLINE}numbers! {VAR:0200:0}",
+   "en": "If I find anything good on the shore,{NEWLINE}I’ll give it to you!{SCROLL}If you’re up for it,{NEWLINE}let’s trade phone numbers! {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0694/4 | RV072: softened: polite request restored"
+   "notes": "US 0694/4 | RV072: softened: polite request restored; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 5,

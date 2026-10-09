@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "你干什么？离我远点！{NEWLINE}不要打扰我跟凉叶小姐独处！",
-   "en": "What do you want? Get away from me!{NEWLINE}Don’t interrupt my time alone with Miss{CLEAR}Fern!",
+   "en": "What do you want? Get away from me!{NEWLINE}Don’t interrupt my time{CLEAR}alone with Miss Fern!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 3,
@@ -330,10 +330,10 @@
   {
    "id": 40,
    "zh": "夏希先生！！！{NEWLINE}我说怎么检查了这么久都没查出病因,{CLEAR}原来是你在让音符鹦鹉装病啊！",
-   "en": "Mr. Summers!!! No wonder I couldn’t{NEWLINE}find the cause no matter how long I{CLEAR}looked!{SCROLL}You were making Chatot pretend to be{NEWLINE}sick!",
+   "en": "Mr. Summers!!! No wonder{NEWLINE}I couldn’t find the cause no{CLEAR}matter how long I looked!{SCROLL}You were making Chatot pretend to be{NEWLINE}sick!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 41,
@@ -394,10 +394,10 @@
   {
    "id": 48,
    "zh": "呀,你身上带着的那个是高级钓竿！{NEWLINE}看来你也是一位资深的钓鱼达人。{SCROLL}我曾经走遍关东、城都、水都的水域,{NEWLINE}对整个地区的水系精灵分布了如指掌。{SCROLL}如果你想知道{NEWLINE}哪只珍稀水系精灵的分布,{CLEAR}我可以告诉你哦。{SCROLL}",
-   "en": "Oh, that’s a Super Rod you’ve got! You{NEWLINE}must be a seasoned angler too.{SCROLL}I’ve fished all the waters of Kanto,{NEWLINE}Johto and Alto Mare. I know where{CLEAR}every Water type lives.{SCROLL}If you want to know where to find a{NEWLINE}rare Water-type Pokémon, I can tell{CLEAR}you.{SCROLL}",
+   "en": "Oh, that’s a Super Rod you’ve got! You{NEWLINE}must be a seasoned angler too.{SCROLL}I’ve fished all the waters of Kanto,{NEWLINE}Johto and Alto Mare. I know where{CLEAR}every Water type lives.{SCROLL}If you want to know where to find{NEWLINE}a rare Water-type Pokémon,{CLEAR}I can tell you.{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 49,
@@ -533,10 +533,10 @@
   {
    "id": 64,
    "zh": "19号路周围的海面,{NEWLINE}经常会有墨海马浮上来{CLEAR}向路过的人讨要食物。",
-   "en": "In the sea around Route 19, Horsea{NEWLINE}often surface and beg passersby for{CLEAR}food.",
+   "en": "In the sea around Route 19,{NEWLINE}Horsea often surface{CLEAR}and beg passersby for food.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 65,
@@ -557,10 +557,10 @@
   {
    "id": 67,
    "zh": "我在双子岛最底层的洞穴,{NEWLINE}见到过一面石壁上{CLEAR}刻着关于盖欧卡的文字。{CLEAR}它很可能就沉睡在那里。{CLEAR}但是如何唤醒沉睡的盖欧卡{CLEAR}就不得而知了。",
-   "en": "In the deepest cave of the Seafoam{NEWLINE}Islands, I saw words about Kyogre{CLEAR}carved into a stone wall.{SCROLL}It may well be sleeping there. But how{NEWLINE}to wake the sleeping Kyogre, nobody{CLEAR}knows.",
+   "en": "In the deepest cave of the Seafoam{NEWLINE}Islands, I saw words about Kyogre{CLEAR}carved into a stone wall.{SCROLL}It may well be sleeping there.{NEWLINE}But how to wake the sleeping{CLEAR}Kyogre, nobody knows.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 68,
@@ -597,26 +597,26 @@
   {
    "id": 72,
    "zh": "你好,这里是极梅婆婆的道馆,{NEWLINE}看你这样子,也是来学习终极绝招的吧。{CLEAR}按照极梅婆婆定下的规矩,{CLEAR}要学习终极绝招{CLEAR}必须要通过道馆设下的试炼。{SCROLL}但这个试炼也不是随时开启的,{NEWLINE}而是每凑齐两位挑战者{CLEAR}才会开启一次试炼。{CLEAR}如果你想挑战学习终极绝招的试炼,{CLEAR}就去找一个伙伴跟你一起参加吧。",
-   "en": "Hello. This is Granny Mae’s Gym. You{NEWLINE}look like you’ve come to learn an{CLEAR}ultimate move too.{SCROLL}By Granny Mae’s rules, you must pass{NEWLINE}this Gym’s trial to learn an ultimate{CLEAR}move.{SCROLL}But the trial isn’t held at any time. It{NEWLINE}only begins once two challengers are{CLEAR}gathered.{SCROLL}If you want to take on the trial for the{NEWLINE}ultimate move, go find a partner to take{CLEAR}part with you.",
+   "en": "Hello. This is Granny Mae’s Gym. You{NEWLINE}look like you’ve come to learn an{CLEAR}ultimate move too.{SCROLL}By Granny Mae’s rules,{NEWLINE}you must pass this Gym’s trial{CLEAR}to learn an ultimate move.{SCROLL}But the trial isn’t held at any time.{NEWLINE}It only begins once two{CLEAR}challengers are gathered.{SCROLL}If you want to take on the trial for the{NEWLINE}ultimate move, go find a partner to take{CLEAR}part with you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 73,
    "zh": "现在请你站到南侧来,{NEWLINE}我要向你们正式宣读试炼规则了。",
-   "en": "Now, please stand on the south side. I{NEWLINE}will formally read out the rules of the{CLEAR}trial.",
+   "en": "Now, please stand on the south side.{NEWLINE}I will formally read out{CLEAR}the rules of the trial.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 74,
    "zh": "两位挑战者,非常欢迎你们来参加{NEWLINE}极梅婆婆道馆的终极绝招试炼。{CLEAR}这里的试炼共分四个阶段,{CLEAR}分别是：单打实力鉴定、精灵知识问答、{CLEAR}双打实力鉴定以及极梅婆婆的考核。{SCROLL}前三个阶段需要你们各自去完成,{NEWLINE}最后再由极梅婆婆对你们进行考核。{CLEAR}通过最终考核后,{CLEAR}你们将从极梅婆婆那里{CLEAR}学到无与伦比的终极绝招。{SCROLL}此外,本次试炼中途不允许退出,{NEWLINE}一旦有人失败你们就必须从头再来。",
-   "en": "Challengers, welcome to the{NEWLINE}ultimate-move trial of Granny Mae’s{CLEAR}Gym.{SCROLL}The trial has four stages: a Singles{NEWLINE}battle assessment, a Pokémon knowledge{CLEAR}quiz...{SCROLL}...a Doubles battle assessment, and{NEWLINE}finally Granny Mae’s own test.{SCROLL}You must each clear the first three{NEWLINE}stages alone. Then Granny Mae will test{CLEAR}you both.{SCROLL}Pass her final test, and you’ll learn a{NEWLINE}peerless ultimate move from Granny Mae{CLEAR}herself.{SCROLL}Also, there’s no quitting partway{NEWLINE}through this trial. If either of you{CLEAR}fails, you both start over.",
+   "en": "Challengers, welcome{NEWLINE}to the ultimate-move{CLEAR}trial of Granny Mae’s Gym.{SCROLL}The trial has four stages:{NEWLINE}a Singles battle assessment,{CLEAR}a Pokémon knowledge quiz...{SCROLL}...a Doubles battle assessment, and{NEWLINE}finally Granny Mae’s own test.{SCROLL}You must each clear the first three{NEWLINE}stages alone. Then Granny Mae will test{CLEAR}you both.{SCROLL}Pass her final test, and you’ll{NEWLINE}learn a peerless ultimate{CLEAR}move from Granny Mae herself.{SCROLL}Also, there’s no quitting partway{NEWLINE}through this trial. If either of you{CLEAR}fails, you both start over.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 75,
@@ -637,10 +637,10 @@
   {
    "id": 77,
    "zh": "在这里我将与你进行{NEWLINE}单打规则的实力鉴定,{CLEAR}请尽全力击败我吧！",
-   "en": "Here I will assess your strength under{NEWLINE}Singles rules. Give it your all and beat{CLEAR}me!",
+   "en": "Here I will assess your strength{NEWLINE}under Singles rules.{CLEAR}Give it your all and beat me!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 78,
@@ -685,10 +685,10 @@
   {
    "id": 83,
    "zh": "你就是这次的挑战者吧,{NEWLINE}要通过我这里,{CLEAR}得回答对我的问题才行,{CLEAR}下面我要出题咯。{SCROLL}第一题：下列哪个招式,{NEWLINE}威力的数学期望最高？{SCROLL}",
-   "en": "So you’re this round’s challenger. To{NEWLINE}get past me, you have to answer my{CLEAR}questions correctly.{SCROLL}Here comes the first one!{SCROLL}Question 1: Which of these moves has{NEWLINE}the highest expected power, counting{CLEAR}accuracy?{SCROLL}",
+   "en": "So you’re this round’s challenger. To{NEWLINE}get past me, you have to answer my{CLEAR}questions correctly.{SCROLL}Here comes the first one!{SCROLL}Question 1: Which of these{NEWLINE}moves has the highest expected{CLEAR}power, counting accuracy?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 84,
@@ -729,10 +729,10 @@
   {
    "id": 88,
    "zh": "下面请听第二题：{NEWLINE}下列招式在无天气影响下,{CLEAR}命中率最高的是？{SCROLL}",
-   "en": "Now for question 2: With no weather in{NEWLINE}effect, which of these moves is the most{CLEAR}accurate?{SCROLL}",
+   "en": "Now for question 2: With no{NEWLINE}weather in effect, which of these{CLEAR}moves is the most accurate?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 89,
@@ -773,10 +773,10 @@
   {
    "id": 93,
    "zh": "下面请听第三题：{NEWLINE}下列招式的附加效果,{CLEAR}触发几率最高的是？{SCROLL}",
-   "en": "Now for question 3: Which of these{NEWLINE}moves is most likely to trigger its added{CLEAR}effect?{SCROLL}",
+   "en": "Now for question 3: Which{NEWLINE}of these moves is most likely{CLEAR}to trigger its added effect?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 94,
@@ -945,18 +945,18 @@
   {
    "id": 113,
    "zh": "参加试炼的途中不能退出,{NEWLINE}请回去继续挑战吧。",
-   "en": "You can’t quit in the middle of the{NEWLINE}trial. Please go back and continue your{CLEAR}challenge.",
+   "en": "You can’t quit in the middle{NEWLINE}of the trial. Please go back{CLEAR}and continue your challenge.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 114,
    "zh": "这里是第三阶段的试炼,{NEWLINE}你需要在双打规则下{CLEAR}打败我才能继续前进。{CLEAR}让我瞧瞧你的实力吧。",
-   "en": "This is the third stage of the trial. You{NEWLINE}must beat me under Doubles rules to go{CLEAR}on.{SCROLL}Let me see what you’re made of.",
+   "en": "This is the third stage of the trial.{NEWLINE}You must beat me under{CLEAR}Doubles rules to go on.{SCROLL}Let me see what you’re made of.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 115,
@@ -1097,10 +1097,10 @@
   {
    "id": 132,
    "zh": "极梅婆婆『嗯,确实是不错的年轻人,{NEWLINE}蕴藏着无穷的潜力。{CLEAR}不过还需要激发一下。",
-   "en": "Granny Mae: Mm, fine young people{NEWLINE}indeed, with boundless potential hidden{CLEAR}inside.{SCROLL}But it still needs a little push to come{NEWLINE}out.",
+   "en": "Granny Mae: Mm, fine young{NEWLINE}people indeed, with boundless{CLEAR}potential hidden inside.{SCROLL}But it still needs a little push to come{NEWLINE}out.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 133,
@@ -1153,10 +1153,10 @@
   {
    "id": 139,
    "zh": "极梅婆婆『好的,我现在把{NEWLINE}水系的终极绝招教给水箭龟。",
-   "en": "Granny Mae: Very well. I’ll now teach{NEWLINE}the Water-type ultimate move to{CLEAR}Blastoise.",
+   "en": "Granny Mae: Very well.{NEWLINE}I’ll now teach the Water-type{CLEAR}ultimate move to Blastoise.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 140,
@@ -1193,10 +1193,10 @@
   {
    "id": 144,
    "zh": "小绿『{VAR:0103:0},{NEWLINE}极梅婆婆的终极绝招真不是盖的。{CLEAR}我现在要去常磐道馆,{CLEAR}用这招终极绝招{CLEAR}挑战传说中的最强训练家试试。",
-   "en": "Blue: {VAR:0103:0}, Granny Mae’s ultimate{NEWLINE}move is the real deal.{SCROLL}I’m heading to the Viridian Gym now to{NEWLINE}try it out on the legendary strongest{CLEAR}Trainer.",
+   "en": "Blue: {VAR:0103:0}, Granny Mae’s ultimate{NEWLINE}move is the real deal.{SCROLL}I’m heading to the Viridian Gym{NEWLINE}now to try it out on the legendary{CLEAR}strongest Trainer.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 145,
@@ -1249,10 +1249,10 @@
   {
    "id": 151,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的疯狂植物……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习疯狂植物{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Frenzy{NEWLINE}Plant...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Frenzy{NEWLINE}Plant?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Frenzy{NEWLINE}Plant...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn Frenzy Plant?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 152,
@@ -1281,10 +1281,10 @@
   {
    "id": 155,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的爆裂燃烧……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习爆裂燃烧{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Blast{NEWLINE}Burn...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Blast{NEWLINE}Burn?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Blast{NEWLINE}Burn...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn Blast Burn?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 156,
@@ -1305,10 +1305,10 @@
   {
    "id": 158,
    "zh": "极梅婆婆『这样一来{NEWLINE}你的{VAR:0100:0}{CLEAR}就掌握终极绝招了。{CLEAR}如果你还有其他精灵{CLEAR}想学习终极绝招的话,{CLEAR}随时可以来找我。",
-   "en": "Granny Mae: And with that, your{NEWLINE}{VAR:0100:0} has mastered an ultimate{CLEAR}move.{SCROLL}If you have other Pokémon that want to{NEWLINE}learn one, come see me anytime.",
+   "en": "Granny Mae: And with that,{NEWLINE}your {VAR:0100:0} has{CLEAR}mastered an ultimate move.{SCROLL}If you have other Pokémon that want to{NEWLINE}learn one, come see me anytime.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 159,
@@ -1541,10 +1541,10 @@
   {
    "id": 187,
    "zh": "我看出来了,你是来找麻烦的吧。{NEWLINE}那就让你见识一下本大姐的厉害！",
-   "en": "I get it. You’re here to make trouble.{NEWLINE}Then let me show you what Big Sis can{CLEAR}do!",
+   "en": "I get it. You’re here to make trouble.{NEWLINE}Then let me show{CLEAR}you what Big Sis can do!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 188,
@@ -1597,18 +1597,18 @@
   {
    "id": 194,
    "zh": "很感谢你帮我学会骑车,{NEWLINE}但这座岛是我们「水都暴走族」的首领{CLEAR}带我们一起建立的家园,{CLEAR}要让我们跟其他人共享,{CLEAR}你得自己去找首领谈才行。{SCROLL}这样吧,我先去找首领说明情况,{NEWLINE}你随后来跟首领谈这件事,{CLEAR}我就能在旁边帮你说说好话了。",
-   "en": "I’m really grateful you taught me to{NEWLINE}ride. But this island is the home our{CLEAR}Chief built for us...{SCROLL}...the Alto Mare Bikers. If you want us{NEWLINE}to share it, you’ll have to talk to the{CLEAR}Chief yourself.{SCROLL}Tell you what. I’ll go explain things to{NEWLINE}the Chief first. Then you come talk to{CLEAR}him...{SCROLL}...and I can put in a good word for you.",
+   "en": "I’m really grateful you taught me to{NEWLINE}ride. But this island is the home our{CLEAR}Chief built for us...{SCROLL}...the Alto Mare Bikers. If you want us{NEWLINE}to share it, you’ll have to talk to the{CLEAR}Chief yourself.{SCROLL}Tell you what. I’ll go explain{NEWLINE}things to the Chief first.{CLEAR}Then you come talk to him...{SCROLL}...and I can put in a good word for you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 195,
    "zh": "三之岛作为废弃的工业区,{NEWLINE}经过我的一番努力{CLEAR}终于被改造成了景区。{SCROLL}如今游客们陆续来到了这里,{NEWLINE}我总算是没有白忙一场啊。",
-   "en": "Three Island was an abandoned{NEWLINE}industrial zone. Thanks to all my hard{CLEAR}work, it’s finally a tourist spot.{SCROLL}Now tourists are coming here one after{NEWLINE}another. All that effort wasn’t for{CLEAR}nothing.",
+   "en": "Three Island was an abandoned{NEWLINE}industrial zone. Thanks to all my hard{CLEAR}work, it’s finally a tourist spot.{SCROLL}Now tourists are coming{NEWLINE}here one after another.{CLEAR}All that effort wasn’t for nothing.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 196,
@@ -1621,18 +1621,18 @@
   {
    "id": 197,
    "zh": "正是因为当年造船工业搬走后{NEWLINE}我选择了坚守在家乡三之岛,{CLEAR}才能亲身经历这里复苏的过程。{SCROLL}看到重新热闹起来的家乡,{NEWLINE}我心中当真是酸酸甜甜,难以言表。",
-   "en": "When the shipbuilding industry moved{NEWLINE}away, I chose to stay in my hometown,{CLEAR}Three Island.{SCROLL}That’s why I got to see it come back to{NEWLINE}life with my own eyes.{SCROLL}Seeing my hometown lively again gives me{NEWLINE}a bittersweet feeling I can’t put into{CLEAR}words.",
+   "en": "When the shipbuilding industry moved{NEWLINE}away, I chose to stay in my hometown,{CLEAR}Three Island.{SCROLL}That’s why I got to see it come back to{NEWLINE}life with my own eyes.{SCROLL}Seeing my hometown lively{NEWLINE}again gives me a bittersweet{CLEAR}feeling I can’t put into words.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 198,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的加农水炮……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习加农水炮{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Hydro{NEWLINE}Cannon...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Hydro{NEWLINE}Cannon?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Hydro{NEWLINE}Cannon...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn Hydro Cannon?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 199,
@@ -1733,10 +1733,10 @@
   {
    "id": 211,
    "zh": "面对冠军大人您,{NEWLINE}用对战的方式考验毫无意义,{CLEAR}咱们换种新的考验方式吧。{SCROLL}为了打造三之岛良好的旅游口碑,{NEWLINE}就麻烦冠军大人您去岛上看看{CLEAR}有没有游客需要帮忙的。{CLEAR}等您帮助完一名游客之后{CLEAR}回到这里来跟我说一声,{CLEAR}就算是您通过三之岛的考验了。",
-   "en": "Testing you with a battle would be{NEWLINE}pointless, Champion. Let’s try a new{CLEAR}kind of trial.{SCROLL}To build Three Island’s good name with{NEWLINE}tourists, please look around the{CLEAR}island...{SCROLL}...for any tourists who need help.{SCROLL}Once you’ve helped one tourist, come{NEWLINE}back and tell me, and you’ll have passed{CLEAR}the Three Island trial.",
+   "en": "Testing you with a battle would be{NEWLINE}pointless, Champion. Let’s try a new{CLEAR}kind of trial.{SCROLL}To build Three Island’s{NEWLINE}good name with tourists,{CLEAR}please look around the island...{SCROLL}...for any tourists who need help.{SCROLL}Once you’ve helped one tourist, come{NEWLINE}back and tell me, and you’ll have passed{CLEAR}the Three Island trial.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 212,
@@ -1767,10 +1767,10 @@
   {
    "id": 215,
    "zh": "既然你通过了极梅婆婆{NEWLINE}的试验，那么我相信你一定{CLEAR}能用好这个道具。{SCROLL}这是我在卡洛斯{NEWLINE}地区游历的时候，{CLEAR}有个甲贺忍蛙的训练师{CLEAR}给我的，可以提升甲贺忍蛙{CLEAR}的所有潜力。{CLEAR}我相信你有甲贺忍蛙的话，{CLEAR}一定能发挥他的最大潜力吧。{SCROLL}",
-   "en": "Since you passed Granny Mae’s trial,{NEWLINE}I’m sure you’ll make good use of this{CLEAR}item.{SCROLL}A Greninja Trainer gave it to me when I{NEWLINE}traveled in the Kalos region.{SCROLL}It can unlock all of Greninja’s{NEWLINE}potential.{SCROLL}If you have a Greninja, I’m sure you’ll{NEWLINE}bring out its full power.{SCROLL}",
+   "en": "Since you passed Granny Mae’s{NEWLINE}trial, I’m sure you’ll make{CLEAR}good use of this item.{SCROLL}A Greninja Trainer gave it to me when I{NEWLINE}traveled in the Kalos region.{SCROLL}It can unlock all of Greninja’s{NEWLINE}potential.{SCROLL}If you have a Greninja, I’m sure you’ll{NEWLINE}bring out its full power.{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   }
  ]
 }

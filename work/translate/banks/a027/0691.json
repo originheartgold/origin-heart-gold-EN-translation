@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "你的精灵还真是厉害啊！{SCROLL}⋯⋯对战后的男孩子{NEWLINE}有时会给我些道具什么的,{CLEAR}不过也不是每次都有的,{SCROLL}下次我有得到的话再给你吧,{NEWLINE}所以把你的电话号码给我吧！{VAR:0200:0}",
-   "en": "Your Pokémon are really strong!{SCROLL}...Boys sometimes give me items after{NEWLINE}our battles. Not every time, though.{SCROLL}Next time I get something, I’ll give it{NEWLINE}to you. So give me your phone number!{VAR:0200:0}",
+   "en": "Your Pokémon are really strong!{SCROLL}...Boys sometimes give me items after{NEWLINE}our battles. Not every time, though.{SCROLL}Next time I get something,{NEWLINE}I’ll give it to you.{CLEAR}So give me your phone number!{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0700/1"
+   "notes": "US 0700/1; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,

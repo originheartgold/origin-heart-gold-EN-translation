@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "话说,你能告诉我{NEWLINE}你的电话号码吗？{SCROLL}等我的精灵们锻炼得{NEWLINE}更为强大后再来找你对战！{VAR:0200:0}",
-   "en": "Say, could I get your phone number?{SCROLL}Once I’ve trained my Pokémon to be even{NEWLINE}stronger, I’ll come battle you again!{VAR:0200:0}",
+   "en": "Say, could I get your phone number?{SCROLL}Once I’ve trained my Pokémon{NEWLINE}to be even stronger,{CLEAR}I’ll come battle you again!{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0705/4"
+   "notes": "US 0705/4; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 5,

@@ -72,10 +72,10 @@
   {
    "id": 8,
    "zh": "进行一般对战吗？{SCROLL}还是说要{NEWLINE}选择规则进行对战呢？{VAR:0200:0}",
-   "en": "Would you like a Standard Battle?{SCROLL}Or would you like to battle under set{NEWLINE}rules? {VAR:0200:0}",
+   "en": "Would you like a Standard Battle?{SCROLL}Or would you like to battle{NEWLINE}under set rules? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 9,
@@ -112,10 +112,10 @@
   {
    "id": 13,
    "zh": "要将至今为止的{NEWLINE}活跃写入记录吗？{VAR:0200:0}",
-   "en": "Would you like to save your activity so{NEWLINE}far to your record? {VAR:0200:0}",
+   "en": "Would you like to save your activity{NEWLINE}so far to your record? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 14,
@@ -388,10 +388,10 @@
   {
    "id": 47,
    "zh": "请选择进行混合战的{NEWLINE}朋友{VAR:0200:0}",
-   "en": "Please choose a friend for a Mix Battle.{NEWLINE}{VAR:0200:0}",
+   "en": "Please choose a friend for{NEWLINE}a Mix Battle.{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 48,
@@ -596,10 +596,10 @@
   {
    "id": 73,
    "zh": "要将至今为止的活跃{NEWLINE}写入记录中吗？{VAR:0200:0}",
-   "en": "Would you like to save your activity so{NEWLINE}far to your record? {VAR:0200:0}",
+   "en": "Would you like to save your activity{NEWLINE}so far to your record? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 74,
@@ -652,10 +652,10 @@
   {
    "id": 80,
    "zh": "要将至今为止的活跃{NEWLINE}写入记录吗？{VAR:0200:0}",
-   "en": "Would you like to save your activity so{NEWLINE}far to your record? {VAR:0200:0}",
+   "en": "Would you like to save your activity{NEWLINE}so far to your record? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 81,
@@ -684,10 +684,10 @@
   {
    "id": 84,
    "zh": "请选一个当记录交换的{NEWLINE}队长。{SCROLL}其他人请选择{NEWLINE}加入队伍。{VAR:0200:0}",
-   "en": "Please choose one person to lead the{NEWLINE}record mixing.{SCROLL}Everyone else, please choose to join{NEWLINE}the group. {VAR:0200:0}",
+   "en": "Please choose one person to lead the{NEWLINE}record mixing.{SCROLL}Everyone else, please{NEWLINE}choose to join the group. {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 85,
@@ -740,10 +740,10 @@
   {
    "id": 91,
    "zh": "已集合了１６人,{NEWLINE}可以开始了吗？{VAR:0200:0}",
-   "en": "16 people have gathered. Is it OK to{NEWLINE}start? {VAR:0200:0}",
+   "en": "16 people have gathered.{NEWLINE}Is it OK to start? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 92,
@@ -828,10 +828,10 @@
   {
    "id": 102,
    "zh": "还想再听{NEWLINE}其他房间的说明吗？{VAR:0200:0}",
-   "en": "Would you like to hear about another{NEWLINE}room? {VAR:0200:0}",
+   "en": "Would you like to hear{NEWLINE}about another room? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 103,
@@ -1204,10 +1204,10 @@
   {
    "id": 149,
    "zh": "你好！{NEWLINE}我将为你说明一下{CLEAR}训练师卡片的事。{SCROLL}训练是卡片是{NEWLINE}与精灵一同冒险的{CLEAR}训练师的证明,{SCROLL}上面会自动登录{NEWLINE}各种各样的情报。{SCROLL}触摸卡片就能够查看反面,{SCROLL}反面还能写上你的签名。{SCROLL}你的朋友能够在联机大厅内{CLEAR}看到你的签名！{SCROLL}另外,要写新的签名,{NEWLINE}旧的就会自动删除,{SCROLL}请一定要注意！",
-   "en": "Hello! Here I’ll explain to you about{NEWLINE}the Trainer Card.{SCROLL}Your Trainer Card, with your Pokémon of{NEWLINE}course, is proof of your status as a{CLEAR}Pokémon Trainer while you’re out{CLEAR}adventuring.{SCROLL}It keeps automatic records of all kinds{NEWLINE}of information.{SCROLL}If you touch the card, you can view the{NEWLINE}reverse side.{SCROLL}You can sign the back of your card.{SCROLL}You can show off your signature to{NEWLINE}anyone you meet in the Union Room!{SCROLL}But your signature will be erased if you{NEWLINE}decide to sign your card again, so{CLEAR}be careful!",
+   "en": "Hello! Here I’ll explain to you about{NEWLINE}the Trainer Card.{SCROLL}Your Trainer Card, with your Pokémon{NEWLINE}of course, is proof of your status{CLEAR}as a Pokémon Trainer while{CLEAR}you’re out adventuring.{SCROLL}It keeps automatic records of all kinds{NEWLINE}of information.{SCROLL}If you touch the card, you can view the{NEWLINE}reverse side.{SCROLL}You can sign the back of your card.{SCROLL}You can show off your signature to{NEWLINE}anyone you meet in the Union Room!{SCROLL}But your signature will be erased if you{NEWLINE}decide to sign your card again, so{CLEAR}be careful!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0046/149"
+   "notes": "US 0046/149; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 150,
@@ -1236,10 +1236,10 @@
   {
    "id": 153,
    "zh": "要将目前为止的活跃{NEWLINE}写进精灵记录里吗？{VAR:0200:0}",
-   "en": "Would you like to write your activity so{NEWLINE}far to your Pokémon record? {VAR:0200:0}",
+   "en": "Would you like to write your activity{NEWLINE}so far to your Pokémon record? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 154,
@@ -1268,18 +1268,18 @@
   {
    "id": 157,
    "zh": "请从两个人中{NEWLINE}选出一个当队长,{CLEAR}另一个人选择{NEWLINE}加入队伍。{VAR:0200:0}",
-   "en": "Please decide which of you two will be{NEWLINE}the leader. The other player must then{CLEAR}choose to join the group. {VAR:0200:0}",
+   "en": "Please decide which of you two will{NEWLINE}be the leader. The other player{CLEAR}must then choose to join the group. {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 158,
    "zh": "请选择交换狩猎的{NEWLINE}对象。{VAR:0200:0}",
-   "en": "Please choose who to swap Safari Zones{NEWLINE}with. {VAR:0200:0}",
+   "en": "Please choose who{NEWLINE}to swap Safari Zones with. {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 159,

@@ -1001,10 +1001,10 @@
   {
    "id": 124,
    "zh": "昵称叫{VAR:0101:1}{NEWLINE}可以吗？{VAR:0200:0}",
-   "en": "Is {VAR:0101:1} the nickname you want to{NEWLINE}give?{VAR:0200:0}",
+   "en": "Is {VAR:0101:1} the nickname{NEWLINE}you want to give?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM retranslated"
+   "notes": "v3 TM retranslated; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 125,
@@ -1153,10 +1153,10 @@
   {
    "id": 143,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的信号光线……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习信号光线{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Signal{NEWLINE}Beam...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Signal{NEWLINE}Beam?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Signal{NEWLINE}Beam...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn Signal Beam?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 144,

@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "新圣安努号依靠{NEWLINE}喷射的能量,{SCROLL}得以在海面上{NEWLINE}高速地航行！",
-   "en": "The new S.S. Anne runs on jet power, so{NEWLINE}it can race across the sea at high{CLEAR}speed!",
+   "en": "The new S.S. Anne runs{NEWLINE}on jet power, so it can race{CLEAR}across the sea at high speed!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0255/14"
+   "notes": "US 0255/14; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 15,

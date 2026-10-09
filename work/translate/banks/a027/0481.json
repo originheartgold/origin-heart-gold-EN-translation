@@ -198,18 +198,18 @@
   {
    "id": 24,
    "zh": "小蓝『{VAR:0103:0}已经从会长那里{NEWLINE}拿到奖励了？{CLEAR}还挺快的嘛。{SCROLL}小蓝『听说枯叶码头的有条游轮{NEWLINE}马上就要开放观光了。{CLEAR}我一直都很期待能坐游轮旅行呢,{CLEAR}等会儿要不要一起去船上看看？",
-   "en": "Green: You already got the reward from{NEWLINE}the chairman, {VAR:0103:0}? That was fast.{SCROLL}Green: I heard a cruise ship at{NEWLINE}Vermilion Harbor is about to open for{CLEAR}sightseeing.{SCROLL}I’ve always wanted to travel on a{NEWLINE}cruise ship. Want to go take a look at it{CLEAR}with me later?",
+   "en": "Green: You already got the reward from{NEWLINE}the chairman, {VAR:0103:0}? That was fast.{SCROLL}Green: I heard a cruise ship{NEWLINE}at Vermilion Harbor is about{CLEAR}to open for sightseeing.{SCROLL}I’ve always wanted to travel on a{NEWLINE}cruise ship. Want to go take a look at it{CLEAR}with me later?",
    "status": "draft",
    "origin": "agent",
-   "notes": "Branch: Green = male-player route (Red alternate)."
+   "notes": "Branch: Green = male-player route (Red alternate).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 25,
    "zh": "小赤『{VAR:0103:0}已经从会长那里{NEWLINE}拿到奖励了？{CLEAR}挺厉害的嘛。{SCROLL}小赤『听说枯叶码头的有条游轮{NEWLINE}马上就要开放观光了,{CLEAR}去游轮上放松一下疲惫的身体,{CLEAR}应该是个不错的选择吧！",
-   "en": "Red: You already got the reward from{NEWLINE}the chairman, {VAR:0103:0}? Nice work.{SCROLL}Red: I heard a cruise ship at Vermilion{NEWLINE}Harbor is about to open for{CLEAR}sightseeing.{SCROLL}Relaxing your tired body on a cruise{NEWLINE}ship sounds like a pretty good idea!",
+   "en": "Red: You already got the reward from{NEWLINE}the chairman, {VAR:0103:0}? Nice work.{SCROLL}Red: I heard a cruise ship{NEWLINE}at Vermilion Harbor is about{CLEAR}to open for sightseeing.{SCROLL}Relaxing your tired body on a cruise{NEWLINE}ship sounds like a pretty good idea!",
    "status": "draft",
    "origin": "agent",
-   "notes": "Branch: Red = female-player route (Green alternate)."
+   "notes": "Branch: Red = female-player route (Green alternate).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 26,
@@ -310,10 +310,10 @@
   {
    "id": 37,
    "zh": "第三题：华丽大赛的第一个环节中{NEWLINE}是针对口袋妖怪的什么进行打分？{SCROLL}",
-   "en": "Question 3: In the first round of a{NEWLINE}Super Contest, what are Pokémon judged{CLEAR}on?{SCROLL}",
+   "en": "Question 3: In the first{NEWLINE}round of a Super Contest,{CLEAR}what are Pokémon judged on?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "华丽大赛 = the Sinnoh Super Contest."
+   "notes": "华丽大赛 = the Sinnoh Super Contest.; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 38,
@@ -670,18 +670,18 @@
   {
    "id": 79,
    "zh": "看起来你跟大家聊的很投缘嘛！{SCROLL}不错不错,我现在正式授予你{NEWLINE}口袋妖怪精灵同好会荣誉会员的称号。{CLEAR}作为加入我们这个大家庭的纪念,{CLEAR}这张自行车兑换券送给你！",
-   "en": "Looks like you really hit it off with{NEWLINE}everyone!{SCROLL}Splendid! I hereby name you an{NEWLINE}Honorary Member of the Pokémon Fan{CLEAR}Club.{SCROLL}To celebrate you joining our family, this{NEWLINE}Bike Voucher is yours!",
+   "en": "Looks like you really hit it off with{NEWLINE}everyone!{SCROLL}Splendid! I hereby name{NEWLINE}you an Honorary Member{CLEAR}of the Pokémon Fan Club.{SCROLL}To celebrate you joining our family, this{NEWLINE}Bike Voucher is yours!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 80,
    "zh": "有了自行车兑换券{NEWLINE}就能去华蓝市的自行车商店{CLEAR}兑换自行车了！{SCROLL}虽然那家店经常缺货,{NEWLINE}但是只要有兑换券的话{CLEAR}老板一定会想办法给你弄到自行车的。",
-   "en": "With the Bike Voucher, you can get a{NEWLINE}Bicycle at the Bike Shop in Cerulean{CLEAR}City!{SCROLL}That shop is often out of stock, but{NEWLINE}with a voucher, the owner will find a way{CLEAR}to get you a Bicycle.",
+   "en": "With the Bike Voucher,{NEWLINE}you can get a Bicycle{CLEAR}at the Bike Shop in Cerulean City!{SCROLL}That shop is often out of stock, but{NEWLINE}with a voucher, the owner will find a way{CLEAR}to get you a Bicycle.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 81,

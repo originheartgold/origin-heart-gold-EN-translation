@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "小霞『啊,{VAR:0103:0}！{NEWLINE}竟然在这时候又遇到你！{CLEAR}快,帮我个忙！{CLEAR}我因为遇到大针蜂慌了神,{CLEAR}就把爸爸送我的装着暴鲤龙的精灵球{CLEAR}落在那边的台阶上了。{CLEAR}你应该不会介意{CLEAR}帮我拿回暴鲤龙的吧。",
-   "en": "Misty: Ah, {VAR:0103:0}! Running into you{NEWLINE}again, now of all times! Quick, help me{CLEAR}out!{SCROLL}I panicked when I ran into some{NEWLINE}Beedrill...{SCROLL}...and dropped the Poké Ball with the{NEWLINE}Gyarados my dad gave me on the ledge{CLEAR}over there.{SCROLL}You wouldn’t mind getting Gyarados back{NEWLINE}for me, would you?",
+   "en": "Misty: Ah, {VAR:0103:0}! Running{NEWLINE}into you again, now of all times!{CLEAR}Quick, help me out!{SCROLL}I panicked when I ran into some{NEWLINE}Beedrill...{SCROLL}...and dropped the Poké Ball with the{NEWLINE}Gyarados my dad gave me on the ledge{CLEAR}over there.{SCROLL}You wouldn’t mind getting Gyarados back{NEWLINE}for me, would you?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "希罗娜『呀,{NEWLINE}是{VAR:0103:0}啊！{CLEAR}真高兴能在这见到你！{SCROLL}希罗娜『我跟常磐森林的捉虫少年们{NEWLINE}学了不少有趣的东西,{CLEAR}让你见识一下哟！",
-   "en": "Cynthia: Oh, it’s {VAR:0103:0}! I’m so glad{NEWLINE}to see you here!{SCROLL}Cynthia: I learned lots of interesting{NEWLINE}things from the Bug Catchers of Viridian{CLEAR}Forest.{SCROLL}Let me show you!",
+   "en": "Cynthia: Oh, it’s {VAR:0103:0}! I’m so glad{NEWLINE}to see you here!{SCROLL}Cynthia: I learned lots of interesting{NEWLINE}things from the Bug Catchers{CLEAR}of Viridian Forest.{SCROLL}Let me show you!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 7,
@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "希罗娜『果然在旅行中不断磨练,{NEWLINE}才能成长得更加迅速。{CLEAR}这是我跟捉虫少年们学的新技能,{CLEAR}对你应该也有帮助,{CLEAR}你拿着试试吧！",
-   "en": "Cynthia: It’s true. You grow fastest{NEWLINE}when you keep honing yourself on the{CLEAR}road.{SCROLL}This is a new move I learned from the{NEWLINE}Bug Catchers. It should help you too.{SCROLL}Take it and give it a try!",
+   "en": "Cynthia: It’s true.{NEWLINE}You grow fastest when you keep{CLEAR}honing yourself on the road.{SCROLL}This is a new move I learned from the{NEWLINE}Bug Catchers. It should help you too.{SCROLL}Take it and give it a try!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 9,
@@ -262,10 +262,10 @@
   {
    "id": 32,
    "zh": "{VAR:0103:0}『废话少说,快交出小伊布,{NEWLINE}我要带它去治疗！",
-   "en": "{VAR:0103:0}: Cut the chatter and hand over{NEWLINE}little Eevee. I’m taking it to get{CLEAR}treated!",
+   "en": "{VAR:0103:0}: Cut the chatter{NEWLINE}and hand over little Eevee.{CLEAR}I’m taking it to get treated!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 33,
@@ -358,10 +358,10 @@
   {
    "id": 44,
    "zh": "乔伊『你能见义勇为是好事,{NEWLINE}但是也要量力而行,{CLEAR}有时候审时度势也很重要。{CLEAR}希望你在以后的旅行中{CLEAR}能够多为自己想一想。",
-   "en": "Nurse Joy: It’s good that you stand up{NEWLINE}for others, but you should know your{CLEAR}limits.{SCROLL}Sometimes it’s important to read the{NEWLINE}situation.{SCROLL}I hope that from now on, you’ll think{NEWLINE}about yourself a little more on your{CLEAR}journey.",
+   "en": "Nurse Joy: It’s good{NEWLINE}that you stand up for others,{CLEAR}but you should know your limits.{SCROLL}Sometimes it’s important to read the{NEWLINE}situation.{SCROLL}I hope that from now on,{NEWLINE}you’ll think about yourself{CLEAR}a little more on your journey.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 45,
@@ -454,18 +454,18 @@
   {
    "id": 56,
    "zh": "小蓝『这个不重要啦,{NEWLINE}倒是你,居然主动找火箭队麻烦,{CLEAR}他们可是个很危险的犯罪组织,{CLEAR}你可算是惹火上身咯。",
-   "en": "Green: That’s not important. But you...{NEWLINE}picking a fight with Team Rocket on your{CLEAR}own?{SCROLL}They’re a really dangerous criminal{NEWLINE}organization. You’re just asking for{CLEAR}trouble.",
+   "en": "Green: That’s not important. But you...{NEWLINE}picking a fight{CLEAR}with Team Rocket on your own?{SCROLL}They’re a really dangerous{NEWLINE}criminal organization.{CLEAR}You’re just asking for trouble.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 57,
    "zh": "小赤『这个不重要,{NEWLINE}倒是你,居然主动找火箭队麻烦,{CLEAR}他们可是个很危险的犯罪组织,{CLEAR}跟他们扯上关系可不是好事。",
-   "en": "Red: That’s not important. But you...{NEWLINE}picking a fight with Team Rocket on your{CLEAR}own?{SCROLL}They’re a really dangerous criminal{NEWLINE}organization. Getting mixed up with them{CLEAR}is bad news.",
+   "en": "Red: That’s not important. But you...{NEWLINE}picking a fight{CLEAR}with Team Rocket on your own?{SCROLL}They’re a really dangerous criminal{NEWLINE}organization. Getting mixed up with them{CLEAR}is bad news.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 58,
@@ -486,10 +486,10 @@
   {
    "id": 60,
    "zh": "小蓝『真新镇的……{SCROLL}小蓝『看来你这个人很有正义感嘛,{NEWLINE}咱们交换下电话号码吧,{CLEAR}以后我遇到坏人就向你求救咯！",
-   "en": "Green: From Pallet Town...{SCROLL}Green: Looks like you’ve got a real{NEWLINE}sense of justice. Let’s trade phone{CLEAR}numbers.{SCROLL}Next time I run into bad guys, I’ll call{NEWLINE}you for help!",
+   "en": "Green: From Pallet Town...{SCROLL}Green: Looks like you’ve{NEWLINE}got a real sense of justice.{CLEAR}Let’s trade phone numbers.{SCROLL}Next time I run into bad guys, I’ll call{NEWLINE}you for help!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 61,
@@ -630,10 +630,10 @@
   {
    "id": 78,
    "zh": "乔伊『多亏你赶走碍事的烈雀,{NEWLINE}这样就能正常通行了。{SCROLL}乔伊『通过这件事你是否感觉到{NEWLINE}口袋妖怪有时并不友善,{CLEAR}如何看待口袋妖怪{CLEAR}还需要我们慎重思考。",
-   "en": "Nurse Joy: Thanks to you chasing off{NEWLINE}those pesky Spearow, people can get{CLEAR}through again.{SCROLL}Nurse Joy: Did this whole thing make you{NEWLINE}feel that Pokémon aren’t always{CLEAR}friendly?{SCROLL}How we should view Pokémon is something{NEWLINE}we all need to think about carefully.",
+   "en": "Nurse Joy: Thanks to you chasing off{NEWLINE}those pesky Spearow, people can get{CLEAR}through again.{SCROLL}Nurse Joy: Did this whole thing{NEWLINE}make you feel that Pokémon{CLEAR}aren’t always friendly?{SCROLL}How we should view Pokémon is something{NEWLINE}we all need to think about carefully.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 79,
@@ -646,10 +646,10 @@
   {
    "id": 80,
    "zh": "乔伊『嘻嘻,我好像说太多啦。{NEWLINE}总之今天多亏你的帮忙,{CLEAR}咱们以后有缘再见啦。{CLEAR}要成为强大的训练家哟。",
-   "en": "Nurse Joy: Tee hee, I think I’ve said{NEWLINE}too much. Anyway, thanks for your help{CLEAR}today.{SCROLL}Let’s meet again if fate allows. Become{NEWLINE}a strong Trainer, okay?",
+   "en": "Nurse Joy: Tee hee,{NEWLINE}I think I’ve said too much.{CLEAR}Anyway, thanks for your help today.{SCROLL}Let’s meet again if fate allows. Become{NEWLINE}a strong Trainer, okay?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 81,
@@ -774,18 +774,18 @@
   {
    "id": 96,
    "zh": "坂木老大确实是下达了{NEWLINE}解散火箭队的命令,{CLEAR}但是我们城都分部的首领阿波罗大人,{CLEAR}可不甘心就这样解散。{CLEAR}我们只是暂时转入地下暗中活动,{CLEAR}将来总有一天我们火箭队{CLEAR}会取代精灵联盟成为统治者。{CLEAR}你现在加入我们,{CLEAR}将来就是开国功臣了！{CLEAR}还犹豫什么呢,跟我走吧！",
-   "en": "Boss Giovanni did order Team Rocket to{NEWLINE}disband...{SCROLL}...but Lord Archer, leader of our Johto{NEWLINE}branch, isn’t about to let it end like{CLEAR}that.{SCROLL}We’ve only gone underground for now.{SCROLL}Someday, Team Rocket will replace the{NEWLINE}Pokémon League and rule over everyone.{SCROLL}Join us now, and you’ll be one of the{NEWLINE}founding heroes!{SCROLL}What are you waiting for? Come with me!",
+   "en": "Boss Giovanni did order Team Rocket to{NEWLINE}disband...{SCROLL}...but Lord Archer,{NEWLINE}leader of our Johto branch,{CLEAR}isn’t about to let it end like that.{SCROLL}We’ve only gone underground for now.{SCROLL}Someday, Team Rocket will replace the{NEWLINE}Pokémon League and rule over everyone.{SCROLL}Join us now, and you’ll be one of the{NEWLINE}founding heroes!{SCROLL}What are you waiting for? Come with me!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position | 阿波罗 = Archer (Johto branch leader)."
+   "notes": "v3 TM: 1 source(s), same position | 阿波罗 = Archer (Johto branch leader).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 97,
    "zh": "小黄『你们在关东做了那么多坏事,{NEWLINE}还想让我加入你们……{CLEAR}我才不去呢！",
-   "en": "Yellow: You did so many bad things in{NEWLINE}Kanto, and you still want me to join{CLEAR}you...{SCROLL}No way!",
+   "en": "Yellow: You did so many bad{NEWLINE}things in Kanto, and you still{CLEAR}want me to join you...{SCROLL}No way!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 98,
@@ -846,10 +846,10 @@
   {
    "id": 105,
    "zh": "{VAR:0103:0}『我在常磐市遇到你叔叔,{NEWLINE}他说你彻夜未归,{CLEAR}所以拜托我来找你。",
-   "en": "{VAR:0103:0}: I met your uncle in Viridian{NEWLINE}City. He said you didn’t come home last{CLEAR}night...{SCROLL}...so he asked me to look for you.",
+   "en": "{VAR:0103:0}: I met your uncle{NEWLINE}in Viridian City. He said you didn’t{CLEAR}come home last night...{SCROLL}...so he asked me to look for you.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 106,
@@ -998,10 +998,10 @@
   {
    "id": 124,
    "zh": "昵称叫{VAR:0101:1}{NEWLINE}可以吗？{VAR:0200:0}",
-   "en": "Is {VAR:0101:1} the nickname you want to{NEWLINE}give? {VAR:0200:0}",
+   "en": "Is {VAR:0101:1} the nickname{NEWLINE}you want to give? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position; other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl)"
+   "notes": "v3 TM: 1 source(s), same position; other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 125,
@@ -1046,10 +1046,10 @@
   {
    "id": 130,
    "zh": "没想到你把烈雀群的首领{NEWLINE}大嘴雀都打败了,{CLEAR}真是厉害啊！{SCROLL}这样一来烈雀们应该{NEWLINE}不敢再来破坏花朵了,{CLEAR}非常感谢你的帮忙,{CLEAR}这是用常磐森林的花粉酿成的花蜜,{CLEAR}送给你当作谢礼吧！",
-   "en": "You even beat Fearow, the leader of the{NEWLINE}Spearow flock! I never expected that.{CLEAR}Impressive!{SCROLL}Now the Spearow shouldn’t dare wreck{NEWLINE}my flowers anymore.{SCROLL}Thank you so much for your help. This is{NEWLINE}nectar made from Viridian Forest’s{CLEAR}pollen.{SCROLL}Please take it as thanks!",
+   "en": "You even beat Fearow, the leader of the{NEWLINE}Spearow flock! I never expected that.{CLEAR}Impressive!{SCROLL}Now the Spearow shouldn’t dare wreck{NEWLINE}my flowers anymore.{SCROLL}Thank you so much for your help.{NEWLINE}This is nectar made{CLEAR}from Viridian Forest’s pollen.{SCROLL}Please take it as thanks!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position | 花蜜 → nectar (the gift item itself is announced elsewhere)."
+   "notes": "v3 TM: 1 source(s), same position | 花蜜 → nectar (the gift item itself is announced elsewhere).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 131,
@@ -1134,10 +1134,10 @@
   {
    "id": 141,
    "zh": "据说在常磐森林只要有蜂蜜,{NEWLINE}就能吸引来珍贵的虫精灵,{CLEAR}可是到底该怎么做呢……？",
-   "en": "They say that if you have Honey, you{NEWLINE}can lure rare Bug Pokémon in Viridian{CLEAR}Forest.{SCROLL}But how exactly do you do it...?",
+   "en": "They say that if you have{NEWLINE}Honey, you can lure rare{CLEAR}Bug Pokémon in Viridian Forest.{SCROLL}But how exactly do you do it...?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 142,
@@ -1174,10 +1174,10 @@
   {
    "id": 146,
    "zh": "我朋友发现了一只{NEWLINE}堪称常磐森林虫王的飞天螳螂,{CLEAR}他一路追着那只飞天螳螂去3号路了。",
-   "en": "My friend found a Scyther that’s{NEWLINE}practically the Bug King of Viridian{CLEAR}Forest.{SCROLL}He chased that Scyther all the way to{NEWLINE}Route 3.",
+   "en": "My friend found a Scyther{NEWLINE}that’s practically the Bug King{CLEAR}of Viridian Forest.{SCROLL}He chased that Scyther all the way to{NEWLINE}Route 3.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 147,
@@ -1233,10 +1233,10 @@
   {
    "id": 153,
    "zh": "你这只精灵不是比雕啊。{NEWLINE}如果是用来压制烈雀的话,{CLEAR}果然还是比雕最合适吧？",
-   "en": "That Pokémon isn’t a Pidgeot.{SCROLL}If it’s to keep the Spearow in check, a{NEWLINE}Pidgeot really would be best, don’t you{CLEAR}think?",
+   "en": "That Pokémon isn’t a Pidgeot.{SCROLL}If it’s to keep the Spearow{NEWLINE}in check, a Pidgeot really{CLEAR}would be best, don’t you think?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost"
+   "notes": "v3 TM: 1 source(s), same position, flags page_breaks_lost; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 154,
@@ -1305,10 +1305,10 @@
   {
    "id": 162,
    "zh": "常磐森林里虫系精灵非常多,{NEWLINE}这对草系精灵来说很不利。{CLEAR}所以草系精灵{CLEAR}必须要时刻注意回复体力才行。{CLEAR}恰好超级吸取这个草系技能{CLEAR}就可以在造成伤害的同时回复体力。{CLEAR}如果你有精灵想学超级吸取的话,{CLEAR}只要给我一个蜂蜜我就可以交给它们。{SCROLL}怎么样,要学吗？{SCROLL}",
-   "en": "Viridian Forest is full of Bug-type{NEWLINE}Pokémon, which is bad news for Grass{CLEAR}types.{SCROLL}So Grass-type Pokémon always have to{NEWLINE}be careful to recover their HP.{SCROLL}And it just so happens that the{NEWLINE}Grass-type move Mega Drain restores HP{CLEAR}while dealing damage.{SCROLL}If you have a Pokémon that wants to{NEWLINE}learn Mega Drain, just give me one Honey{CLEAR}and I’ll teach it.{SCROLL}How about it? Want to learn it?{SCROLL}",
+   "en": "Viridian Forest is full{NEWLINE}of Bug-type Pokémon,{CLEAR}which is bad news for Grass types.{SCROLL}So Grass-type Pokémon always have to{NEWLINE}be careful to recover their HP.{SCROLL}And it just so happens that the{NEWLINE}Grass-type move Mega Drain restores HP{CLEAR}while dealing damage.{SCROLL}If you have a Pokémon that wants to{NEWLINE}learn Mega Drain, just give me one Honey{CLEAR}and I’ll teach it.{SCROLL}How about it? Want to learn it?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 163,
@@ -1393,10 +1393,10 @@
   {
    "id": 173,
    "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
-   "en": "{VAR:0106:1} will be forgotten. Is that{NEWLINE}OK? {VAR:0200:0}",
+   "en": "{VAR:0106:1} will be forgotten.{NEWLINE}Is that OK? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl)"
+   "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 174,

@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "口袋妖怪的努力值分配至关重要,{NEWLINE}合理的分配努力值{CLEAR}能让精灵在对战中有更好的发挥。{CLEAR}关于努力值的详细解释,{CLEAR}你想听听吗？",
-   "en": "How you distribute your Pokémon’s EVs{NEWLINE}is crucial. Distributing them well lets{CLEAR}your Pokémon perform better in battle.{CLEAR}Want to hear a detailed explanation of{CLEAR}EVs?",
+   "en": "How you distribute your Pokémon’s EVs{NEWLINE}is crucial. Distributing them well lets{CLEAR}your Pokémon perform better in battle.{CLEAR}Want to hear a detailed{CLEAR}explanation of EVs?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1,

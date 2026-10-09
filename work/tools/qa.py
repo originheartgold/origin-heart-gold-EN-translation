@@ -26,10 +26,11 @@ check validates every string that has an English text (en != null):
                          before a number, or Pokémon before Center/League (TMs./HMs. are not prefixes)
            glossary_name (species/moves) an old name (Faint Attack), a spelling variant or a misspelling of
                          a species or move name in prose (see glossary_name below)
+           prompt_icon_overlap (category severity; battle, dialogue) see the warning below, at typical widths
   warnings line_may_overflow  fits with typical placeholders, not with worst-case ones
-           prompt_icon_overlap (battle) a line of the view that ends with a prompt ({VAR:0200:..}) is wider
-                         than prompt_px (195): it runs under the prompt icons at x 211; warning with
-                         worst-case placeholders
+           prompt_icon_overlap (battle, dialogue) a line of the last view of a string that waits with a
+                         prompt ({VAR:0200:..}) is wider than prompt_px (195; trailing spaces not counted):
+                         its ink runs under the prompt icons at x 211-228; warning with worst-case placeholders
            line_past_frame a line is wider than the category's soft_line_px (fits the window, but runs into
                          the panel frame or a picture; item descriptions 200 px, D-1512)
            needs_vanilla_glyphs fits only with the vanilla US …/“/” widths (hack font has 12 px ones)
@@ -42,6 +43,11 @@ check validates every string that has an English text (en != null):
            trailing_layout zh ends with a layout tag that en does not
            zh_changed    the source text changed after this translation was made
            mid_sentence_page a {SCROLL} page ends mid-sentence where the Chinese page ends a sentence
+           single_word_view a view after {SCROLL} (new page) or {CLEAR} (new line scrolled in) shows one word
+                         that ends the previous line's sentence, and the paragraph can be rebalanced within
+                         the box (the word fits on the previous line, or with that line's last word);
+                         interjection views that start a sentence ('Done!') are not reported; unavoidable
+                         cases: qa_config.json single_word_view_allow ["a027/NNNN#id"] (check_single_word_view)
            glossary_name (items/abilities; name-bank abbreviations in prose) capitalised name spans compared
                          with the glossary, name banks 0232/0739/0219/0711 and register terms; reviewed
                          false positives: qa_config.json glossary_names.allow
@@ -270,7 +276,7 @@ def check_layout(zh, en, cat: dict, catname: str, narc: str, cfg: dict, fset: di
             if ln["px"] <= lim and ln["px"] > cat.get("soft_line_px", lim):
                 add(soft, "line_past_frame", "line %d is %d px > %d (%s): %s"
                     % (i + 1, ln["px"], cat["soft_line_px"], cat.get("soft_desc", "soft limit"), ln["text"]))
-        check_prompt_icon(en, lines, lines_max, cat, sev, soft, add)
+        check_prompt_icon(en, lines, lines_max, cat, sev, soft, add, fset)
     if cat.get("relative_to_zh"):
         zmax = bank_ctx.get("zh_max_px")
         zlines = tm.measure_lines(zh, font, cfg, narc, "typ", fset)
@@ -308,25 +314,37 @@ def check_layout(zh, en, cat: dict, catname: str, narc: str, cfg: dict, fset: di
                 % (n, cat["max_units"]))
 
 
-def check_prompt_icon(en, lines, lines_max, cat, sev, soft, add):
-    """Battle window: a string that waits with a prompt ({VAR:0200:..}, the command prompt and YES/NO) shows
-    two icons at the window's right edge (x 211-228, emulator 2026-10-06); text on the lines of that last
-    view must end before them (cat["prompt_px"] px from the text origin)."""
+def _trailing_space_px(text: str, font: int, fset: dict) -> int:
+    """Width of the spaces at the end of a line's printed text (nonprinting 02xx/FFxx tags ignored): they
+    leave no ink, so they cannot run under the prompt icons."""
+    t = re.sub(r"\{VAR:(?:02|FF)[0-9A-Fa-f]{2}[^}]*\}", "", text)
+    n = len(t) - len(t.rstrip(" "))
+    return n * (tm.char_width(" ", font, fset) or 4)
+
+
+def check_prompt_icon(en, lines, lines_max, cat, sev, soft, add, fset=None):
+    """A string that waits with a prompt ({VAR:0200:..}: YES/NO, the battle command prompt) shows two icons at
+    the window's right edge (x 211-228; battle: emulator 2026-10-06, field message window: emulator text-fit
+    read-back 2026-10-09); the ink on the lines of that last view must end before them (cat["prompt_px"] px
+    from the text origin). Trailing spaces leave no ink and are not counted. Categories: battle, dialogue."""
     lim = cat.get("prompt_px")
     if not lim or not any(t in en for t in cat.get("prompt_tags", ())):
         return
+    font = cat.get("font", 1)
+    fset = fset or tm.font_set()
     start = 0                                   # the prompt's view: lines after the last {SCROLL}
     for i, ln in enumerate(lines):
         if ln.get("brk") == "SCROLL":
             start = i + 1
     view = list(range(start, len(lines)))[-cat.get("lines", 2):]
     for i in view:
-        if lines[i]["px"] > lim:
+        sp = _trailing_space_px(lines[i]["text"], font, fset)
+        if lines[i]["px"] - sp > lim:
             add(sev, "prompt_icon_overlap", "line %d is %d px > %d: runs under the prompt icons: %s"
-                % (i + 1, lines[i]["px"], lim, lines[i]["text"]))
-        elif lines_max[i]["px"] > lim:
+                % (i + 1, lines[i]["px"] - sp, lim, lines[i]["text"]))
+        elif lines_max[i]["px"] - sp > lim:
             add(soft, "prompt_icon_overlap", "line %d is %d px with worst-case placeholders > %d (prompt icons): %s"
-                % (i + 1, lines_max[i]["px"], lim, lines[i]["text"]))
+                % (i + 1, lines_max[i]["px"] - sp, lim, lines[i]["text"]))
 
 
 def _spacing_text(text: str) -> str:
@@ -554,6 +572,70 @@ def check_mid_sentence_page(zh, en, add):
             continue
         add("warning", "mid_sentence_page", "page %d ends mid-sentence (‘…%s’) before {SCROLL}"
             % (i + 1, tm.visible_text(t)[-30:]))
+
+
+VIEW_SPLIT_RE = re.compile(r"\{(SCROLL|CLEAR)\}")
+LINE_SPLIT_RE = re.compile(r"\{NEWLINE\}|\n")
+NONPRINT_RE = re.compile(r"\{VAR:(?:02|FF)[0-9A-Fa-f]{2}[^}]*\}|\{COMPRESSED\}")
+# a view after one of these starts a new sentence (an interjection page such as 'Done!' is deliberate)
+VIEW_SENTENCE_END = set(".!?…”)~♪:")
+
+
+def _is_word(tok: str) -> bool:
+    """A space-separated token of a raw line prints a word: a letter or digit, or a name/number placeholder.
+    Punctuation alone ('...', '-') and nonprinting tags (prompt, colour, size) are not words."""
+    t = NONPRINT_RE.sub("", tok)
+    return bool(re.search(r"[0-9A-Za-zÀ-ÿ]|\{VAR:", t))
+
+
+def _views(en: str):
+    """-> [(break, [lines])]: the text the printer puts on screen at each wait. break is None for the first view,
+    'SCROLL' (new page: the box is cleared) or 'CLEAR' (the box scrolls up one line and the text continues on the
+    bottom line); lines are the raw lines ({NEWLINE}) of that view. Views without a printed word are dropped."""
+    parts = VIEW_SPLIT_RE.split(en)
+    out = [(None, parts[0])] + [(parts[i], parts[i + 1]) for i in range(1, len(parts) - 1, 2)]
+    views = []
+    for brk, text in out:
+        lines = [ln for ln in LINE_SPLIT_RE.split(text) if any(_is_word(t) for t in ln.split(" "))]
+        if lines:
+            views.append((brk, lines))
+    return views
+
+
+def check_single_word_view(en: str, cat: dict, cfg: dict, narc: str, fset: dict, add):
+    """single_word_view: a view after a {SCROLL} (a new page) or a {CLEAR} (a new line scrolled in) shows a
+    single word, and that word ends the sentence of the line before it (the previous line does not end with
+    . ! ? … ” ) ~ ♪ :), and the paragraph can be rebalanced within the box: the word fits at the end of the
+    previous line, or the previous line has two or more words and its last word fits together with the
+    orphan on one line (both measured with typical placeholders). A first view, an interjection that starts
+    its own sentence ('Done!'), and a string whose only fix would need rewording are not reported.
+    Warning: a rebalance can collide with other limits (the prompt icons, Mt./Prof. prefixes); genuinely
+    unavoidable cases go in qa_config.json "single_word_view_allow" (["a027/0135#29", ...])."""
+    if "{SCROLL}" not in en and "{CLEAR}" not in en:
+        return
+    lim, font = cat["line_px"], cat.get("font", 1)
+    sp = tm.char_width(" ", font, fset) or 4
+
+    def px(text):
+        return tm.measure_lines(NONPRINT_RE.sub("", text).strip(), font, cfg, narc, "typ", fset)[0]["px"]
+
+    views = _views(en)
+    for k in range(1, len(views)):
+        brk, lines = views[k]
+        words = [t for ln in lines for t in ln.split(" ") if _is_word(t)]
+        if len(words) != 1:
+            continue
+        prev = views[k - 1][1][-1]
+        tail = tm.visible_text(NONPRINT_RE.sub("", prev)).rstrip()
+        if not tail or tail[-1] in VIEW_SENTENCE_END:
+            continue
+        pw = [t for t in prev.split(" ") if t]
+        word = words[0]
+        up = px(prev) + sp + px(word) <= lim
+        down = len([t for t in pw if _is_word(t)]) >= 2 and px(pw[-1] + " " + word) <= lim
+        if up or down:
+            add("warning", "single_word_view", "view %d (after {%s}) shows only ‘%s’, the end of the line before"
+                " it (‘…%s’): rebalance the paragraph" % (k + 1, brk, tm.visible_text(word), tail[-25:]))
 
 
 # --------------------------------------------------------------------------------------
@@ -810,6 +892,7 @@ def check_bank(bank: dict, cfg: dict | None = None, fset_name: str | None = None
     ctx = bank_context(bank, cat_default, cfg, fset)
     cspec = tm.compressed_spec(bank["narc"], bank["bank"], cfg)
     scat = string_categories(bank, cfg)
+    sw_allow = set(cfg.get("single_word_view_allow", []))
     issues = []
     for e in bank["strings"]:
         en = e.get("en")
@@ -836,6 +919,8 @@ def check_bank(bank: dict, cfg: dict | None = None, fset_name: str | None = None
         check_prefix_split(en, add)
         if "line_px" in cat:
             check_mid_sentence_page(zh, en, add)
+            if cat.get("lines", 1) >= 2 and "%s/%04d#%d" % (bank["narc"], bank["bank"], e["id"]) not in sw_allow:
+                check_single_word_view(en, cat, cfg, bank["narc"], fset, add)
         if glossary:
             check_glossary(zh, en, cname, cfg, add)
             if "max_chars" not in cat:

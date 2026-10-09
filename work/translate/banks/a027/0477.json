@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "好想去金黄市的商店买东西啊。{SCROLL}毕竟那里可是坐落着{NEWLINE}最大的精灵道具生产商{CLEAR}西鲁夫公司的总部呢。",
-   "en": "I’d love to go shopping in Saffron City.{SCROLL}After all, that’s where Silph Co., the{NEWLINE}biggest maker of Pokémon items, has its{CLEAR}headquarters.",
+   "en": "I’d love to go shopping in Saffron City.{SCROLL}After all, that’s where Silph Co.,{NEWLINE}the biggest maker of Pokémon{CLEAR}items, has its headquarters.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,

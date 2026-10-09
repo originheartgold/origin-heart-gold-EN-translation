@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "前边那个小伙子嚷嚷着{NEWLINE}要让皮卡丘冲浪穿过大海。{CLEAR}真是好笑啊,皮卡丘这种电系精灵{CLEAR}怎么可能学会冲浪呢！",
-   "en": "That kid up ahead keeps shouting that{NEWLINE}he’s going to have his Pikachu surf{CLEAR}across the sea. What a joke! How could{CLEAR}an Electric type like Pikachu ever learn{CLEAR}Surf!",
+   "en": "That kid up ahead keeps shouting{NEWLINE}that he’s going to have his Pikachu{CLEAR}surf across the sea. What a joke!{CLEAR}How could an Electric type{CLEAR}like Pikachu ever learn Surf!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,
@@ -71,10 +71,10 @@
   {
    "id": 8,
    "zh": "现在正好带着比雕,{NEWLINE}要让比雕对着海面扇起暴风吗？",
-   "en": "You happen to have Pidgeot with you.{NEWLINE}Have Pidgeot whip up a gale over the{CLEAR}sea?",
+   "en": "You happen to have Pidgeot with you.{NEWLINE}Have Pidgeot whip up{CLEAR}a gale over the sea?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 9,
@@ -159,10 +159,10 @@
   {
    "id": 19,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的冲浪……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习冲浪{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Surf...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Surf?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Surf...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget{NEWLINE}a move to learn Surf?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 20,

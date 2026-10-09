@@ -166,34 +166,34 @@
   {
    "id": 20,
    "zh": "你好,{VAR:0103:0}！{NEWLINE}我是园长巴奥巴！{SCROLL}狩猎场的精灵{NEWLINE}最近发生了一些变化！{SCROLL}地点是{NEWLINE}{VAR:0104:10},{CLEAR}{VAR:0104:11},{CLEAR}{VAR:0104:12}还有{CLEAR}{VAR:0104:13}。{SCROLL}就算是在同样的地区和区域,{NEWLINE}等捕捉到一定数量的精灵后,{CLEAR}居住在那里的精灵的{CLEAR}种类就会发生变化。{SCROLL}即便你更换了地区,{NEWLINE}只要回到那个{CLEAR}地区或者区域{CLEAR}那些精灵还会出来的,{CLEAR}所以放心好了！",
-   "en": "Hello, {VAR:0103:0}! This is Warden Baoba!{SCROLL}There’s been a slight change in{NEWLINE}the Pokémon at the Safari Zone!{SCROLL}It’s in the {VAR:0104:10},{NEWLINE}the {VAR:0104:11}, the{CLEAR}{VAR:0104:12}, and the{CLEAR}{VAR:0104:13}.{SCROLL}Even in the same Area, once a{NEWLINE}certain number of Pokémon{CLEAR}have been caught, the kinds of{CLEAR}Pokémon living there change.{SCROLL}And even if you switch Areas,{NEWLINE}the Pokémon will come back{CLEAR}once you return to that Area,{CLEAR}so there’s no need to worry!",
+   "en": "Hello, {VAR:0103:0}! This is Warden Baoba!{SCROLL}There’s been a slight change in{NEWLINE}the Pokémon at the Safari Zone!{SCROLL}It’s in the {VAR:0104:10},{NEWLINE}the {VAR:0104:11},{CLEAR}the {VAR:0104:12},{CLEAR}and the {VAR:0104:13}.{SCROLL}Even in the same Area, once a{NEWLINE}certain number of Pokémon{CLEAR}have been caught, the kinds of{CLEAR}Pokémon living there change.{SCROLL}And even if you switch Areas,{NEWLINE}the Pokémon will come back{CLEAR}once you return to that Area,{CLEAR}so there’s no need to worry!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0667/20"
+   "notes": "US 0667/20; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 21,
    "zh": "你好,{VAR:0103:0}！{NEWLINE}我是园长巴奥巴！{SCROLL}狩猎场的精灵{NEWLINE}最近发生了一些变化！{SCROLL}地点是{NEWLINE}{VAR:0104:10},{CLEAR}{VAR:0104:11},{CLEAR}{VAR:0104:12}还有{CLEAR}{VAR:0104:13}。{SCROLL}就算是在同样的地区和区域,{NEWLINE}等捕捉到一定数量的精灵后,{CLEAR}居住在那里的精灵的{CLEAR}种类就会发生变化。{SCROLL}即便你更换了地区,{NEWLINE}只要回到那个{CLEAR}地区或者区域{CLEAR}那些精灵还会出来的,{CLEAR}所以放心好了！",
-   "en": "Hello, {VAR:0103:0}! This is Warden Baoba!{SCROLL}There’s been a slight change in{NEWLINE}the Pokémon at the Safari Zone!{SCROLL}It’s in the {VAR:0104:10},{NEWLINE}the {VAR:0104:11}, the{CLEAR}{VAR:0104:12}, and the{CLEAR}{VAR:0104:13}.{SCROLL}Even in the same Area, once a{NEWLINE}certain number of Pokémon{CLEAR}have been caught, the kinds of{CLEAR}Pokémon living there change.{SCROLL}And even if you switch Areas,{NEWLINE}the Pokémon will come back{CLEAR}once you return to that Area,{CLEAR}so there’s no need to worry!",
+   "en": "Hello, {VAR:0103:0}! This is Warden Baoba!{SCROLL}There’s been a slight change in{NEWLINE}the Pokémon at the Safari Zone!{SCROLL}It’s in the {VAR:0104:10},{NEWLINE}the {VAR:0104:11},{CLEAR}the {VAR:0104:12},{CLEAR}and the {VAR:0104:13}.{SCROLL}Even in the same Area, once a{NEWLINE}certain number of Pokémon{CLEAR}have been caught, the kinds of{CLEAR}Pokémon living there change.{SCROLL}And even if you switch Areas,{NEWLINE}the Pokémon will come back{CLEAR}once you return to that Area,{CLEAR}so there’s no need to worry!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0667/21"
+   "notes": "US 0667/21; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 22,
    "zh": "你好,{VAR:0103:0}！{NEWLINE}我是园长巴奥巴！{SCROLL}狩猎场的精灵{NEWLINE}最近发生了一些变化！{SCROLL}地点是{NEWLINE}{VAR:0104:10},{CLEAR}{VAR:0104:11},{CLEAR}{VAR:0104:12},{CLEAR}{VAR:0104:13}还有{CLEAR}{VAR:0104:14}。{SCROLL}就算是在同样的地区和区域,{NEWLINE}等捕捉到一定数量的精灵后,{CLEAR}居住在那里的精灵的{CLEAR}种类就会发生变化。{SCROLL}即便你更换了地区,{NEWLINE}只要回到那个{CLEAR}地区或者区域{CLEAR}那些精灵还会出来的,{CLEAR}所以放心好了！",
-   "en": "Hello, {VAR:0103:0}! This is Warden Baoba!{SCROLL}There’s been a slight change in{NEWLINE}the Pokémon at the Safari Zone!{SCROLL}It’s in the {VAR:0104:10},{NEWLINE}the {VAR:0104:11}, the{CLEAR}{VAR:0104:12}, the{CLEAR}{VAR:0104:13}, and the{CLEAR}{VAR:0104:14}.{SCROLL}Even in the same Area, once a{NEWLINE}certain number of Pokémon{CLEAR}have been caught, the kinds of{CLEAR}Pokémon living there change.{SCROLL}And even if you switch Areas,{NEWLINE}the Pokémon will come back{CLEAR}once you return to that Area,{CLEAR}so there’s no need to worry!",
+   "en": "Hello, {VAR:0103:0}! This is Warden Baoba!{SCROLL}There’s been a slight change in{NEWLINE}the Pokémon at the Safari Zone!{SCROLL}It’s in the {VAR:0104:10},{NEWLINE}the {VAR:0104:11},{CLEAR}the {VAR:0104:12},{CLEAR}the {VAR:0104:13},{CLEAR}and the {VAR:0104:14}.{SCROLL}Even in the same Area, once a{NEWLINE}certain number of Pokémon{CLEAR}have been caught, the kinds of{CLEAR}Pokémon living there change.{SCROLL}And even if you switch Areas,{NEWLINE}the Pokémon will come back{CLEAR}once you return to that Area,{CLEAR}so there’s no need to worry!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0667/22"
+   "notes": "US 0667/22; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 23,
    "zh": "你好,{VAR:0103:0}！{NEWLINE}我是园长巴奥巴！{SCROLL}狩猎场的精灵{NEWLINE}最近发生了一些变化！{SCROLL}地点是{NEWLINE}{VAR:0104:10},{CLEAR}{VAR:0104:11},{CLEAR}{VAR:0104:12},{CLEAR}{VAR:0104:13}还有{CLEAR}{VAR:0104:14}。{SCROLL}就算是在同样的地区和区域,{NEWLINE}等捕捉到一定数量的精灵后,{CLEAR}居住在那里的精灵的{CLEAR}种类就会发生变化。{SCROLL}即便你更换了地区,{NEWLINE}只要回到那个{CLEAR}地区或者区域{CLEAR}那些精灵还会出来的,{CLEAR}所以放心好了！",
-   "en": "Hello, {VAR:0103:0}! This is Warden Baoba!{SCROLL}There’s been a slight change in{NEWLINE}the Pokémon at the Safari Zone!{SCROLL}It’s in the {VAR:0104:10},{NEWLINE}the {VAR:0104:11}, the{CLEAR}{VAR:0104:12}, the{CLEAR}{VAR:0104:13}, and the{CLEAR}{VAR:0104:14}.{SCROLL}Even in the same Area, once a{NEWLINE}certain number of Pokémon{CLEAR}have been caught, the kinds of{CLEAR}Pokémon living there change.{SCROLL}And even if you switch Areas,{NEWLINE}the Pokémon will come back{CLEAR}once you return to that Area,{CLEAR}so there’s no need to worry!",
+   "en": "Hello, {VAR:0103:0}! This is Warden Baoba!{SCROLL}There’s been a slight change in{NEWLINE}the Pokémon at the Safari Zone!{SCROLL}It’s in the {VAR:0104:10},{NEWLINE}the {VAR:0104:11},{CLEAR}the {VAR:0104:12},{CLEAR}the {VAR:0104:13},{CLEAR}and the {VAR:0104:14}.{SCROLL}Even in the same Area, once a{NEWLINE}certain number of Pokémon{CLEAR}have been caught, the kinds of{CLEAR}Pokémon living there change.{SCROLL}And even if you switch Areas,{NEWLINE}the Pokémon will come back{CLEAR}once you return to that Area,{CLEAR}so there’s no need to worry!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0667/23"
+   "notes": "US 0667/23; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 24,

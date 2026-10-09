@@ -38,18 +38,18 @@
   {
    "id": 4,
    "zh": "这个洞穴的温度好高啊,{NEWLINE}我怀疑是有什么东西{CLEAR}在不停地散发热量。",
-   "en": "It’s so hot in this cave. I suspect{NEWLINE}something in here is giving off heat{CLEAR}nonstop.",
+   "en": "It’s so hot in this cave.{NEWLINE}I suspect something in here{CLEAR}is giving off heat nonstop.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 5,
    "zh": "原来我探测到的庞大能量{NEWLINE}是这块石头发出来的,{CLEAR}我调查了一下发现{CLEAR}这好像不是地球的物质。{SCROLL}太神奇了,这到底是什么呢？",
-   "en": "So the huge energy I detected was{NEWLINE}coming from this stone! I looked into{CLEAR}it...{SCROLL}...and it doesn’t seem to be made of{NEWLINE}anything from this planet.{SCROLL}Amazing... What on earth is it?",
+   "en": "So the huge energy I detected{NEWLINE}was coming from this stone!{CLEAR}I looked into it...{SCROLL}...and it doesn’t seem to be made of{NEWLINE}anything from this planet.{SCROLL}Amazing... What on earth is it?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 6,

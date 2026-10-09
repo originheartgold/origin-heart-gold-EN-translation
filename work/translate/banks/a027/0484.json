@@ -1221,10 +1221,10 @@
   {
    "id": 151,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的击掌奇袭……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习击掌奇袭{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Fake Out...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Fake{NEWLINE}Out?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Fake Out...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn Fake Out?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 152,
@@ -1309,10 +1309,10 @@
   {
    "id": 162,
    "zh": "莉佳『哎呀{VAR:0103:0}！{NEWLINE}你今天来彩虹市玩吗？{CLEAR}要不要跟我一起合张相？{VAR:0200:0}",
-   "en": "Erika: Oh my, {VAR:0103:0}! Are you visiting{NEWLINE}Celadon City today? Would you like to{CLEAR}take a picture with me?{VAR:0200:0}",
+   "en": "Erika: Oh my, {VAR:0103:0}! Are you visiting{NEWLINE}Celadon City today? Would you like{CLEAR}to take a picture with me?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 163,
@@ -1349,10 +1349,10 @@
   {
    "id": 167,
    "zh": "莉佳『哎呀{VAR:0103:0}！{NEWLINE}你今天来彩虹市玩吗？{CLEAR}要不要跟我一起合张相？{VAR:0200:0}",
-   "en": "Erika: Oh my, {VAR:0103:0}! Are you visiting{NEWLINE}Celadon City today? Would you like to{CLEAR}take a picture with me?{VAR:0200:0}",
+   "en": "Erika: Oh my, {VAR:0103:0}! Are you visiting{NEWLINE}Celadon City today? Would you like{CLEAR}to take a picture with me?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 168,
@@ -1381,10 +1381,10 @@
   {
    "id": 171,
    "zh": "莉佳『哎呀{VAR:0103:0}！{NEWLINE}你今天来彩虹市玩吗？{CLEAR}要不要跟我一起合张相？{VAR:0200:0}",
-   "en": "Erika: Oh my, {VAR:0103:0}! Are you visiting{NEWLINE}Celadon City today? Would you like to{CLEAR}take a picture with me?{VAR:0200:0}",
+   "en": "Erika: Oh my, {VAR:0103:0}! Are you visiting{NEWLINE}Celadon City today? Would you like{CLEAR}to take a picture with me?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 172,

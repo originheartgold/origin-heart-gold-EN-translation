@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "小豪『你有什么事吗？{SCROLL}小豪『什么？{NEWLINE}枯叶市工地的事件我怎么看？{CLEAR}我马上就出去旅行了,{CLEAR}想太多这种没用的事{CLEAR}只会成为梦想路上的绊脚石。",
-   "en": "Goh: Need something?{SCROLL}Goh: What? What do I think about the{NEWLINE}Vermilion construction site?{SCROLL}I’m about to set off on my journey.{NEWLINE}Overthinking pointless stuff like{CLEAR}that...{SCROLL}...only trips you up on the road to your{NEWLINE}dream.",
+   "en": "Goh: Need something?{SCROLL}Goh: What? What do I think about the{NEWLINE}Vermilion construction site?{SCROLL}I’m about to set off on my journey.{NEWLINE}Overthinking pointless{CLEAR}stuff like that...{SCROLL}...only trips you up on the road to your{NEWLINE}dream.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 4,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "真的很感谢你花了这么大力气{NEWLINE}找来这些原料。{CLEAR}作为感谢请收下这个。",
-   "en": "Thank you for going to so much trouble{NEWLINE}to find these. Please take this as{CLEAR}thanks.",
+   "en": "Thank you for going to so much{NEWLINE}trouble to find these.{CLEAR}Please take this as thanks.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 7,

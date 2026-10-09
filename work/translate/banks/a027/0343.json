@@ -640,10 +640,10 @@
   {
    "id": 79,
    "zh": "昵称叫{VAR:0101:1}{NEWLINE}可以吗？{VAR:0200:0}",
-   "en": "Is {VAR:0101:1} the nickname you want to{NEWLINE}give?{VAR:0200:0}",
+   "en": "Is {VAR:0101:1} the nickname{NEWLINE}you want to give?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl)"
+   "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 80,
@@ -712,10 +712,10 @@
   {
    "id": 88,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的火焰轮……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习火焰轮{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Flame{NEWLINE}Wheel...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Flame{NEWLINE}Wheel?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Flame{NEWLINE}Wheel...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn Flame Wheel?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 89,
@@ -954,10 +954,10 @@
   {
    "id": 118,
    "zh": "你是要放弃{NEWLINE}让它记住闪电拳吗？{VAR:0200:0}",
-   "en": "Give up on teaching it Thunder Punch?{VAR:0200:0}",
+   "en": "Give up on teaching it{NEWLINE}Thunder Punch?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 119,
@@ -1042,10 +1042,10 @@
   {
    "id": 129,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的大声咆哮……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习大声咆哮{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Snarl...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Snarl?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Snarl...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget{NEWLINE}a move to learn Snarl?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 130,

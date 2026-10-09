@@ -47,10 +47,10 @@
   {
    "id": 5,
    "zh": "武藏『嘿嘿,立下大功,{NEWLINE}从特别队员晋升为干部候补！",
-   "en": "Jessie: Heh heh! With credit like that,{NEWLINE}we’ll go from Rocket Elite to Executive{CLEAR}candidates!",
+   "en": "Jessie: Heh heh! With credit like that,{NEWLINE}we’ll go from Rocket Elite{CLEAR}to Executive candidates!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 6,
@@ -183,10 +183,10 @@
   {
    "id": 22,
    "zh": "喵喵『不,我们一定要立功的喵,{NEWLINE}但是我要做的聪明一点啊喵。",
-   "en": "Meowth: Nah, we gotta get the credit,{NEWLINE}meow. But we gotta be smart about it,{CLEAR}meow.",
+   "en": "Meowth: Nah, we gotta{NEWLINE}get the credit, meow.{CLEAR}But we gotta be smart about it, meow.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 23,
@@ -559,18 +559,18 @@
   {
    "id": 69,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的蝶舞……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习蝶舞{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn the move{NEWLINE}Quiver Dance...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Forget a move to make room for Quiver{NEWLINE}Dance?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn the move{NEWLINE}Quiver Dance...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Forget a move to make{NEWLINE}room for Quiver Dance?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 70,
    "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
-   "en": "{VAR:0106:1} will be forgotten. Is that{NEWLINE}OK? {VAR:0200:0}",
+   "en": "{VAR:0106:1} will be forgotten.{NEWLINE}Is that OK? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position; other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl)"
+   "notes": "v3 TM: 1 source(s), same position; other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 71,

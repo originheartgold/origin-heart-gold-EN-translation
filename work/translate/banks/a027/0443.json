@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "嗯,你很厉害。{NEWLINE}在你的身上我看到了{CLEAR}自己年轻时的影子。{CLEAR}祝你未来的训练家之路一路坦途。",
-   "en": "Mm, you’re very good. I see my younger{NEWLINE}self in you.{CLEAR}May your road as a Trainer be a smooth{CLEAR}one.",
+   "en": "Mm, you’re very good. I see my younger{NEWLINE}self in you.{CLEAR}May your road as a Trainer{CLEAR}be a smooth one.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 4,
@@ -113,10 +113,10 @@
   {
    "id": 13,
    "zh": "要不怎么说一刀穷、一刀富、{NEWLINE}一刀穿麻布呢。{CLEAR}既然选择了买这种未打开的原石,{CLEAR}你就得做好空手而归的准备。{CLEAR}学会接受现实吧,年轻人。",
-   "en": "You know what they say about rough{NEWLINE}stones: one cut, you’re rich; one cut,{CLEAR}you’re broke; one cut, you’re in rags.{CLEAR}If you buy an unopened stone, you’d{CLEAR}better be ready to walk away{CLEAR}empty-handed.{CLEAR}Learn to accept reality, youngster.",
+   "en": "You know what they say about rough{NEWLINE}stones: one cut, you’re rich; one cut,{CLEAR}you’re broke; one cut, you’re in rags.{CLEAR}If you buy an unopened stone,{CLEAR}you’d better be ready{CLEAR}to walk away empty-handed.{CLEAR}Learn to accept reality, youngster.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Stone-gambling proverb 一刀穷一刀富一刀穿麻布."
+   "notes": "Stone-gambling proverb 一刀穷一刀富一刀穿麻布.; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 14,
@@ -217,10 +217,10 @@
   {
    "id": 26,
    "zh": "多谢冠军大人相救,小僧感激不尽。{NEWLINE}从此之后小僧将在此专心研读佛经,{CLEAR}以洗刷曾经犯下的罪过。",
-   "en": "Thank you for saving me, Champion. I am{NEWLINE}deeply grateful.{CLEAR}From now on, I will devote myself to the{CLEAR}sutras here, to atone for my past{CLEAR}wrongs.",
+   "en": "Thank you for saving me, Champion. I am{NEWLINE}deeply grateful.{CLEAR}From now on, I will devote{CLEAR}myself to the sutras here,{CLEAR}to atone for my past wrongs.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 27,
@@ -493,10 +493,10 @@
   {
    "id": 58,
    "zh": "能在这里见证最强训练家的实力,{NEWLINE}是老身的荣幸。{CLEAR}咱们这就开始吧！",
-   "en": "It is my honor to witness the strength{NEWLINE}of the greatest Trainer here. Let us{CLEAR}begin!",
+   "en": "It is my honor to witness{NEWLINE}the strength of the greatest{CLEAR}Trainer here. Let us begin!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 59,
@@ -570,10 +570,10 @@
   {
    "id": 67,
    "zh": "{VAR:0103:0}『雪山上温度这么低,{NEWLINE}我看他又冻又饿非常虚弱。{CLEAR}请长老先放他下来吧,{CLEAR}找回梦幻的事我来帮你想办法。",
-   "en": "{VAR:0103:0}: It’s freezing up on that{NEWLINE}mountain. He’s cold, starving and very{CLEAR}weak.{CLEAR}Please let him come down, Elder. I’ll{CLEAR}help you find a way to bring Mew back.",
+   "en": "{VAR:0103:0}: It’s freezing up{NEWLINE}on that mountain. He’s cold,{CLEAR}starving and very weak.{CLEAR}Please let him come down, Elder. I’ll{CLEAR}help you find a way to bring Mew back.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 68,
@@ -610,10 +610,10 @@
   {
    "id": 72,
    "zh": "呜呜呜,梦幻终于回来了,{NEWLINE}还选择了您作为它的归宿。{CLEAR}这样一来我们的使命终于完成了,{CLEAR}谢谢冠军大人,谢谢您！",
-   "en": "Waaah... Mew has finally come back, and{NEWLINE}it chose you as its home.{CLEAR}Now our mission is finally complete.{CLEAR}Thank you, Champion! Thank you so{CLEAR}much!",
+   "en": "Waaah... Mew has finally come back, and{NEWLINE}it chose you as its home.{CLEAR}Now our mission is finally complete.{CLEAR}Thank you, Champion!{CLEAR}Thank you so much!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 73,
@@ -666,10 +666,10 @@
   {
    "id": 79,
    "zh": "我是这里的导游,{NEWLINE}你有什么想知道的吗,{CLEAR}只要给钱我什么都可以告诉你,{CLEAR}一次2000元,谢绝还价。",
-   "en": "I’m the tour guide here. Anything you{NEWLINE}want to know?{CLEAR}As long as you pay, I’ll tell you{CLEAR}anything. $2000 a question, no{CLEAR}haggling.",
+   "en": "I’m the tour guide here. Anything you{NEWLINE}want to know?{CLEAR}As long as you pay,{CLEAR}I’ll tell you anything.{CLEAR}$2000 a question, no haggling.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 80,
@@ -709,10 +709,10 @@
   {
    "id": 84,
    "zh": "六之岛虽然有群岛最肥沃的土壤,{NEWLINE}但百年以前六之岛的生存文化{CLEAR}却是以出海抢劫、打渔为生。{CLEAR}虽然随着精灵联盟的入主,{CLEAR}这里开始发展旅游业,{CLEAR}但受制于不事耕作的传统,{CLEAR}六之岛并没有什么拿得出手的特产。",
-   "en": "Six Island has the richest soil in the{NEWLINE}islands. But a hundred years ago, its{CLEAR}people lived by piracy and fishing.{CLEAR}When the Pokémon League came, tourism{CLEAR}began to grow here.{CLEAR}But with no tradition of farming, Six{CLEAR}Island has no specialties worth{CLEAR}mentioning.",
+   "en": "Six Island has the richest soil in the{NEWLINE}islands. But a hundred years ago, its{CLEAR}people lived by piracy and fishing.{CLEAR}When the Pokémon League came, tourism{CLEAR}began to grow here.{CLEAR}But with no tradition of farming,{CLEAR}Six Island has no specialties{CLEAR}worth mentioning.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 85,
@@ -774,10 +774,10 @@
   {
    "id": 92,
    "zh": "现在六之岛最出名的景点,{NEWLINE}当属幸福的喵喵神了。{CLEAR}许多游客慕名来到六之岛,{CLEAR}希望通过被喵喵神触摸,{CLEAR}实现自己的愿望。{CLEAR}并且许多游客为了让许愿更加灵验,{CLEAR}还会购买岛上生产的许愿金币。{CLEAR}这可是六之岛旅游业的收入支柱哦！",
-   "en": "These days, Six Island’s most famous{NEWLINE}attraction is the Lucky Meowth God.{CLEAR}Lots of tourists come hoping the Meowth{CLEAR}God’s touch will make their wishes come{CLEAR}true.{CLEAR}Many also buy the Wishing Coins made{CLEAR}here, to give their wishes more power.{CLEAR}They’re the backbone of Six Island’s{CLEAR}tourist trade!",
+   "en": "These days, Six Island’s most famous{NEWLINE}attraction is the Lucky Meowth God.{CLEAR}Lots of tourists come hoping{CLEAR}the Meowth God’s touch will{CLEAR}make their wishes come true.{CLEAR}Many also buy the Wishing Coins made{CLEAR}here, to give their wishes more power.{CLEAR}They’re the backbone of Six Island’s{CLEAR}tourist trade!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 93,
@@ -900,10 +900,10 @@
   {
    "id": 107,
    "zh": "幸福的喵喵神真是了不起啊,{NEWLINE}居然能在一夜之间{CLEAR}让六之岛发生这么大的变化。",
-   "en": "The Lucky Meowth God is amazing. It{NEWLINE}changed Six Island so much, practically{CLEAR}overnight.",
+   "en": "The Lucky Meowth God is amazing.{NEWLINE}It changed Six Island so much,{CLEAR}practically overnight.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 108,
@@ -956,10 +956,10 @@
   {
    "id": 114,
    "zh": "那么我现在向你{NEWLINE}说明六之岛巡礼的规则：{CLEAR}使用巨牙鲨、地震鲶鱼、铁螯龙虾{CLEAR}这三只精灵击败我,{CLEAR}就算你通过了六之岛的巡礼挑战。{CLEAR}或者你也可以直接给我5万块,{CLEAR}也算你通过挑战。{CLEAR}你想选哪个？",
-   "en": "Then let me explain the rules of the Six{NEWLINE}Island Pilgrimage.{CLEAR}Beat me using these three Pokémon:{CLEAR}Sharpedo, Whiscash and Crawdaunt.{CLEAR}Do that, and you pass the Six Island{CLEAR}trial.{CLEAR}Or you can just give me $50,000, and{CLEAR}that counts as passing too.{CLEAR}Which will it be?",
+   "en": "Then let me explain the rules of the Six{NEWLINE}Island Pilgrimage.{CLEAR}Beat me using these three Pokémon:{CLEAR}Sharpedo, Whiscash and Crawdaunt.{CLEAR}Do that, and you pass{CLEAR}the Six Island trial.{CLEAR}Or you can just give me $50,000, and{CLEAR}that counts as passing too.{CLEAR}Which will it be?",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)",
    "qa_ignore": [
     "number_missing"
    ]
@@ -1066,10 +1066,10 @@
   {
    "id": 127,
    "zh": "我曾经在阿鲁夫遗迹{NEWLINE}跟秀力博士学习过,{CLEAR}根据我从博士那学到的知识{CLEAR}和我在水都群岛了解的传说,{CLEAR}我拼凑出了一个更加完整的{CLEAR}关于圣柱王的传说。{CLEAR}你想听听吗？",
-   "en": "I once studied under Professor Hale at{NEWLINE}the Ruins of Alph.{CLEAR}I’ve pieced together what I learned{CLEAR}from him with the legends of the Alto{CLEAR}Mare Islands.{CLEAR}The result is a more complete version of{CLEAR}the legend of Regigigas. Want to hear{CLEAR}it?",
+   "en": "I once studied under Professor Hale at{NEWLINE}the Ruins of Alph.{CLEAR}I’ve pieced together what I learned{CLEAR}from him with the legends of the Alto{CLEAR}Mare Islands.{CLEAR}The result is a more complete{CLEAR}version of the legend of Regigigas.{CLEAR}Want to hear it?",
    "status": "draft",
    "origin": "agent",
-   "notes": "秀力博士 = Professor Hale (Spencer Hale, Movie 3; JP Shurī)."
+   "notes": "秀力博士 = Professor Hale (Spencer Hale, Movie 3; JP Shurī).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 128,
@@ -1098,10 +1098,10 @@
   {
    "id": 131,
    "zh": "老奶奶,我的珍珠贝{NEWLINE}贝壳里的珍珠不见了,{CLEAR}它现在因为壳里没有珍珠而非常焦虑。{CLEAR}我听说您这有一颗大珍珠,{CLEAR}我能借您的大珍珠{CLEAR}给我的珍珠贝用一下吗？",
-   "en": "Granny, the pearl in my Clamperl’s shell{NEWLINE}is gone. Without it, Clamperl is really{CLEAR}anxious.{CLEAR}I heard you have a Big Pearl.{CLEAR}Could I borrow it for my Clamperl?",
+   "en": "Granny, the pearl in my Clamperl’s{NEWLINE}shell is gone. Without it,{CLEAR}Clamperl is really anxious.{CLEAR}I heard you have a Big Pearl.{CLEAR}Could I borrow it for my Clamperl?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 132,
@@ -1130,10 +1130,10 @@
   {
    "id": 135,
    "zh": "我小时候啊,可是吃了不少苦。{NEWLINE}所以现在就见不得别人吃苦受罪,{CLEAR}如果谁有什么需要帮助的地方,{CLEAR}我是能帮就帮的。",
-   "en": "I had a hard time of it when I was{NEWLINE}little.{CLEAR}So now I can’t bear to see anyone else{CLEAR}suffer.{CLEAR}If someone needs help, I help however I{CLEAR}can.",
+   "en": "I had a hard time of it when I was{NEWLINE}little.{CLEAR}So now I can’t bear{CLEAR}to see anyone else suffer.{CLEAR}If someone needs help,{CLEAR}I help however I can.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 136,

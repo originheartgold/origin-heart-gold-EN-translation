@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "小绿『我去枯叶市道馆挑战,{NEWLINE}居然被告知馆主没时间,{CLEAR}{VAR:0103:0}你知道枯叶市发生了什么事,{CLEAR}让馆主这么忙吗？",
-   "en": "Blue: I went to challenge the Vermilion{NEWLINE}Gym, and they told me the Leader has no{CLEAR}time!{SCROLL}{VAR:0103:0}, do you know what’s going on in{NEWLINE}Vermilion City that’s keeping the Leader{CLEAR}so busy?",
+   "en": "Blue: I went to challenge{NEWLINE}the Vermilion Gym, and they told{CLEAR}me the Leader has no time!{SCROLL}{VAR:0103:0}, do you know what’s going on in{NEWLINE}Vermilion City that’s keeping the Leader{CLEAR}so busy?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1,
@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "小绿『{VAR:0103:0}真的知道吗？{NEWLINE}可是你说的这些信息并不全面,{CLEAR}再去街上问问如何？",
-   "en": "Blue: You really know, {VAR:0103:0}? What{NEWLINE}you’ve told me doesn’t cover{CLEAR}everything.{SCROLL}How about asking around town some{NEWLINE}more?",
+   "en": "Blue: You really know, {VAR:0103:0}?{NEWLINE}What you’ve told me{CLEAR}doesn’t cover everything.{SCROLL}How about asking around town some{NEWLINE}more?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 4,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "小绿『原来如此,{NEWLINE}金婆婆要把自己的土地拿来盖楼,{CLEAR}可是这样有挖塌地鼠洞穴{CLEAR}并导致地鼠灾害的可能。{CLEAR}所以枯叶市的居民{CLEAR}都极力反对工程的实施。{SCROLL}小绿『目前两方的冲突已经不可调和,{NEWLINE}如果明天精灵联盟的禁令再不来,{CLEAR}恐怕就会有暴力事件发生。{CLEAR}要是真走到那一步,{CLEAR}我打算帮马志士封住工地入口、{CLEAR}阻止市民暴动。{CLEAR}{VAR:0103:0}你要跟我一起来吗？{SCROLL}",
-   "en": "Blue: I see. Granny Kin wants to build{NEWLINE}on her own land...{SCROLL}But that could cave in the Diglett{NEWLINE}tunnels and set off a Diglett disaster.{SCROLL}That’s why the people of Vermilion are{NEWLINE}dead set against the project.{SCROLL}Blue: The two sides can’t be reconciled{NEWLINE}now. If the League’s ban doesn’t come{CLEAR}tomorrow...{SCROLL}I’m afraid it’ll turn violent. If it comes{NEWLINE}to that, I plan to help Lt. Surge seal{CLEAR}off the site entrance...{SCROLL}...and keep the townsfolk from rioting.{NEWLINE}{VAR:0103:0}, are you coming with me?{SCROLL}",
+   "en": "Blue: I see. Granny Kin wants to build{NEWLINE}on her own land...{SCROLL}But that could cave in the Diglett{NEWLINE}tunnels and set off a Diglett disaster.{SCROLL}That’s why the people of Vermilion are{NEWLINE}dead set against the project.{SCROLL}Blue: The two sides can’t{NEWLINE}be reconciled now. If the League’s{CLEAR}ban doesn’t come tomorrow...{SCROLL}I’m afraid it’ll turn violent. If it comes{NEWLINE}to that, I plan to help Lt. Surge seal{CLEAR}off the site entrance...{SCROLL}...and keep the townsfolk from rioting.{NEWLINE}{VAR:0103:0}, are you coming with me?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 7,
@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "小蓝『看来得去街上打听一下,{NEWLINE}才能知道发生了什么。",
-   "en": "Green: Looks like we’ll have to ask{NEWLINE}around town to find out what’s going{CLEAR}on.",
+   "en": "Green: Looks like we’ll{NEWLINE}have to ask around town{CLEAR}to find out what’s going on.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Branch: Green = male-player route (Red alternate)."
+   "notes": "Branch: Green = male-player route (Red alternate).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 26,
@@ -230,26 +230,26 @@
   {
    "id": 28,
    "zh": "小赤『{VAR:0103:0}真的知道吗？{NEWLINE}可是你说的这些信息并不全面,{CLEAR}再去街上问问如何？",
-   "en": "Red: You really know, {VAR:0103:0}? What{NEWLINE}you’ve told me doesn’t cover{CLEAR}everything.{SCROLL}How about asking around town some{NEWLINE}more?",
+   "en": "Red: You really know, {VAR:0103:0}?{NEWLINE}What you’ve told me{CLEAR}doesn’t cover everything.{SCROLL}How about asking around town some{NEWLINE}more?",
    "status": "draft",
    "origin": "agent",
-   "notes": "Branch: Red = female-player route (Green alternate)."
+   "notes": "Branch: Red = female-player route (Green alternate).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 29,
    "zh": "小蓝『原来如此,{NEWLINE}金婆婆要把枯叶市的土地拿来盖楼,{CLEAR}可是这样有挖塌地鼠洞穴{CLEAR}并导致地鼠灾害的可能。{CLEAR}所以枯叶市的居民{CLEAR}都极力反对工程的实施。{CLEAR}目前两方的冲突已经不可调和,{CLEAR}如果明天精灵联盟的禁令再不来,{CLEAR}恐怕就会有暴力事件发生。{SCROLL}小蓝『我虽然从小就离开了家乡,{NEWLINE}但我非常理解这里的居民们{CLEAR}对家乡的热爱和保护家乡的心情。{CLEAR}要是明天真的爆发冲突,{CLEAR}我想跟市民一起阻止施工。{CLEAR}{VAR:0103:0}你愿意帮我吗？",
-   "en": "Green: I see. Granny Kin wants to build{NEWLINE}on land in Vermilion City...{SCROLL}But that could cave in the Diglett{NEWLINE}tunnels and set off a Diglett disaster.{SCROLL}That’s why the people of Vermilion are{NEWLINE}dead set against the project.{SCROLL}The two sides can’t be reconciled now.{NEWLINE}If the League’s ban doesn’t come{CLEAR}tomorrow...{SCROLL}...I’m afraid it’ll turn violent.{SCROLL}Green: I left my hometown when I was{NEWLINE}little, but I really understand how the{CLEAR}people here feel.{SCROLL}They love their home and want to{NEWLINE}protect it.{SCROLL}If a clash really breaks out tomorrow,{NEWLINE}I want to help the townsfolk stop the{CLEAR}construction.{SCROLL}{VAR:0103:0}, will you help me?",
+   "en": "Green: I see. Granny Kin wants to build{NEWLINE}on land in Vermilion City...{SCROLL}But that could cave in the Diglett{NEWLINE}tunnels and set off a Diglett disaster.{SCROLL}That’s why the people of Vermilion are{NEWLINE}dead set against the project.{SCROLL}The two sides can’t be reconciled now.{NEWLINE}If the League’s ban{CLEAR}doesn’t come tomorrow...{SCROLL}...I’m afraid it’ll turn violent.{SCROLL}Green: I left my hometown when I was{NEWLINE}little, but I really understand how the{CLEAR}people here feel.{SCROLL}They love their home and want to{NEWLINE}protect it.{SCROLL}If a clash really breaks out tomorrow,{NEWLINE}I want to help the townsfolk{CLEAR}stop the construction.{SCROLL}{VAR:0103:0}, will you help me?",
    "status": "draft",
    "origin": "agent",
-   "notes": "Branch: Green = male-player route (Red alternate)."
+   "notes": "Branch: Green = male-player route (Red alternate).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 30,
    "zh": "小赤『原来如此,{NEWLINE}金婆婆要把枯叶市的土地拿来盖楼,{CLEAR}可是这样有挖塌地鼠洞穴{CLEAR}并导致地鼠灾害的可能。{CLEAR}所以枯叶市的居民{CLEAR}都极力反对工程的实施。{CLEAR}目前两方的冲突已经不可调和,{CLEAR}如果明天精灵联盟的禁令再不来,{CLEAR}恐怕就会有暴力事件发生。{SCROLL}小赤『我虽然从小就离开了家乡,{NEWLINE}但我非常理解这里的居民们{CLEAR}对家乡的热爱和保护家乡的心情。{CLEAR}要是明天真的爆发冲突,{CLEAR}我想跟市民一起阻止施工。{CLEAR}{VAR:0103:0}你愿意帮我吗？",
-   "en": "Red: I see. Granny Kin wants to build on{NEWLINE}land in Vermilion City...{SCROLL}But that could cave in the Diglett{NEWLINE}tunnels and set off a Diglett disaster.{SCROLL}That’s why the people of Vermilion are{NEWLINE}dead set against the project.{SCROLL}The two sides can’t be reconciled now.{NEWLINE}If the League’s ban doesn’t come{CLEAR}tomorrow...{SCROLL}...I’m afraid it’ll turn violent.{SCROLL}Red: I left my hometown when I was{NEWLINE}little, but I really understand how the{CLEAR}people here feel.{SCROLL}They love their home and want to{NEWLINE}protect it.{SCROLL}If a clash really breaks out tomorrow,{NEWLINE}I want to help the townsfolk stop the{CLEAR}construction.{SCROLL}{VAR:0103:0}, will you help me?",
+   "en": "Red: I see. Granny Kin wants to build on{NEWLINE}land in Vermilion City...{SCROLL}But that could cave in the Diglett{NEWLINE}tunnels and set off a Diglett disaster.{SCROLL}That’s why the people of Vermilion are{NEWLINE}dead set against the project.{SCROLL}The two sides can’t be reconciled now.{NEWLINE}If the League’s ban{CLEAR}doesn’t come tomorrow...{SCROLL}...I’m afraid it’ll turn violent.{SCROLL}Red: I left my hometown when I was{NEWLINE}little, but I really understand how the{CLEAR}people here feel.{SCROLL}They love their home and want to{NEWLINE}protect it.{SCROLL}If a clash really breaks out tomorrow,{NEWLINE}I want to help the townsfolk{CLEAR}stop the construction.{SCROLL}{VAR:0103:0}, will you help me?",
    "status": "draft",
    "origin": "agent",
-   "notes": "Branch: Red = female-player route (Green alternate)."
+   "notes": "Branch: Red = female-player route (Green alternate).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 31,

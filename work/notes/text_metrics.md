@@ -107,7 +107,7 @@ These come from the emulator harness on the English build, not from the US text,
 | Pokégear map card, place description (a027/0266 #9–117) | `gear_map` | 2 lines, **208 px** | Window 26×4 tiles at x=24 (hack overlay 92 template `05 03 0E 1A 04`). The hack is built on the Japanese ROM; US widened this window to 28 tiles at x=8 (`05 01 0E 1C 04`), so US lines up to 218 px no longer fit (D-1524). |
 | Pokégear map card, towns and cities (0266 #10–29, #31) | `gear_map_town` | **168 px** | The town picture starts at x=193; text starts at x=24. Picture seen on 14 towns in a cursor sweep over the map (the rest of #10–31 are assumed to have one too); routes, caves and Lake of Rage have none. |
 | Battle window, a string that waits with a prompt (`{VAR:0200:..}`: the command prompt, YES/NO; battle_string 2#32, #64, #73, #479) | `battle` + `prompt_px` | **195 px** on the lines of that view [`prompt_icon_overlap`] | Two prompt icons are drawn at x=211–228 of the battle window (text origin x=16). 2#32 'Should another move be forgotten to' (197 px) ran its 'o' under them (emulator sweep, `emu_sweeps.py battle`, 2026-10-06). |
-| Field message window, a string that waits with a prompt (`{VAR:0200:..}`, a027 dialogue) | `dialogue` (not checked by QA yet) | **195 px** on the lines of the last view | The field window draws the same two prompt icons at x 211-228 (text origin x 16) when the string ends with `{VAR:0200}`. Rendered with `emu_harness.py textfit` (2026-10-09): 26 changed strings run under them (197-216 px). The US text keeps all 738 of its field prompt strings within 195 px (QA typical buffer widths). Both windows: white panel x 10-234, y 150-185, text bitmap x 16-231, y 152-183. `{VAR:0207}` is a wait for A of its own (the view stays; 'The Bag is full...{VAR:0207}' shows two waits). |
+| Field message window, a string that waits with a prompt (`{VAR:0200:..}`: YES/NO and other questions) | `dialogue` + `prompt_px` | **195 px** on the lines of the last view, error [`prompt_icon_overlap`]; spaces before the prompt tag leave no ink and are not counted | The same two icons at x=211–228 as in battle. The emulator text-fit read-back (`emu_harness.py textfit`, 2026-10-09, 2297 strings rendered) failed 26 field strings, every one a question whose last line ran to 197–216 px. QA then found 156 such strings in all (148 errors, 8 more only with worst-case placeholders; the read-back only rendered strings changed since rc5); all were rebalanced on 2026-10-09. US text keeps all 738 of its field prompt strings within 195 px. Both windows: white panel x 10-234, y 150-185, text bitmap x 16-231, y 152-183. `{VAR:0207}` is a wait for A of its own (the view stays; 'The Bag is full...{VAR:0207}' shows two waits). |
 | Battle window buffers (battle_string) | `var_widths.by_narc` | move {VAR:0107} and ability {VAR:0106} 48/72 px (typ/max), nickname {VAR:010C} 54/60 | The battle's own buffer kinds differ from a027's (0107 is a move, not a 7-px-per-char stat). Seen cut at the window edge: 'Maximilian wants to learn DragonBreath..', 'The wild Kangarooey took the Future Sig'. Numbers print with the full-width digit codes (7–8 px each, as in the Chinese ROM; D-1567). |
 | Summary, skills page: move description (a027/0738) | `move_desc` | 5 lines, **120 px** | Read back on all 903 described moves (`emu_sweeps.py desc`): text starts at x=136 on the bottom screen's ruled panel and the panel ends at the screen edge (120 px). Agrees with QA. |
 | Summary, skills page: ability description (a027/0712) | `ability_desc` | 2 lines, **139 px** visible (QA keeps 136) | Text at x=8, y=152 and 168 on the top screen; the divider starts at x=147. All 327 descriptions read back; QA's 136 px (US maximum) stays the limit. |
@@ -160,6 +160,25 @@ The 216-px limit is therefore exact. The US localisers filled lines right up to 
 - **Larger source boxes:** if the zh string itself has a line wider than the box, the box is evidently larger, and an overflow up to that width is downgraded to a warning.
 
 For the list of error and warning codes, see the docstring of `work/tools/qa.py`.
+
+**Single-word views (`single_word_view`, warning, 2026-10-09).** A *view* is what the printer puts on screen at
+a wait: the first view is the text up to the first `{SCROLL}`/`{CLEAR}`; after a `{SCROLL}` the next view is the
+new page (the box is cleared), after a `{CLEAR}` it is the new line scrolled in at the bottom (§2). A `{NEWLINE}`
+does not start a view. QA reports a view after the first that shows exactly one word (a space-separated token with
+a letter, digit or name/number placeholder; punctuation such as `...` and prompt/colour/size tags are not words)
+when both hold:
+- the word ends the sentence of the line before it: that line does not end with `. ! ? … ” ) ~ ♪ :` (so an
+  interjection page such as `Done!` after a full stop is deliberate and not reported);
+- the paragraph can be rebalanced within the box: the word fits at the end of the previous line, or the previous
+  line has two or more words and its last word plus the orphan fit on one line (typical placeholder widths).
+
+It is a warning, not an error: a rebalance can collide with other limits (the prompt icons, `Mt.`/`Prof.`
+prefixes, worst-case placeholders), and some one-word pages are the hack's own staging. Those go in
+`qa_config.json` `single_word_view_allow` (`"a027/NNNN#id"`, with the reason in `single_word_view_allow_doc`):
+the announcer's `CHAM-`/`PI-`/`ON!!` pages (0062#7) and the Pokéathlon host's 200 % shouts (0302#2, #31).
+On 2026-10-09 the rule found 612 strings (579 a027, 33 battle_string); all were rebalanced by moving breaks only
+(no rewording): sentence-aligned spans re-split into the same number of lines with balanced widths, never across a
+`{SCROLL}` that follows a sentence end, never wider than the string's widest line.
 - **Exit status:** 1 if there are any errors.
 - **Output:** `--json FILE|-` writes a machine-readable report `{summary, issues:[{narc,bank,id,level,code,msg,category}]}`.
 - **Suppression:** per string with `"qa_ignore": ["glossary:术语", "number_missing", …]`.

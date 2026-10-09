@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "小刚『好了,这里的事情解决了。{NEWLINE}我先回道馆准备一下,{CLEAR}随时欢迎前来挑战。",
-   "en": "Brock: All right, that takes care of{NEWLINE}things here. I’ll head back to the Gym{CLEAR}and get ready. Come challenge me{CLEAR}anytime.",
+   "en": "Brock: All right, that takes{NEWLINE}care of things here. I’ll head{CLEAR}back to the Gym and get ready.{CLEAR}Come challenge me anytime.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 12,

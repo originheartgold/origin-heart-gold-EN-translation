@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "你来的正好,{NEWLINE}我正想验证上次的对战心得呢。{SCROLL}",
-   "en": "You’re just in time. I was hoping to{NEWLINE}test what I learned from our last{CLEAR}battle.{SCROLL}",
+   "en": "You’re just in time.{NEWLINE}I was hoping to test what{CLEAR}I learned from our last battle.{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 10,
@@ -182,18 +182,18 @@
   {
    "id": 22,
    "zh": "跟随夏伯先生隐居在这里,{NEWLINE}能避免很多毫无意义的打扰。",
-   "en": "Following Mr. Blaine into seclusion here{NEWLINE}spares us a lot of pointless{CLEAR}interruptions.",
+   "en": "Following Mr. Blaine into seclusion{NEWLINE}here spares us a lot{CLEAR}of pointless interruptions.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 23,
    "zh": "跟随夏伯先生隐居在这里,{NEWLINE}能避免很多毫无意义的打扰。",
-   "en": "Following Mr. Blaine into seclusion here{NEWLINE}spares us a lot of pointless{CLEAR}interruptions.",
+   "en": "Following Mr. Blaine into seclusion{NEWLINE}here spares us a lot{CLEAR}of pointless interruptions.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 24,
@@ -270,10 +270,10 @@
   {
    "id": 33,
    "zh": "你好,{NEWLINE}我是红莲道馆的陪练。{SCROLL}专为获得本道馆徽章的训练家{NEWLINE}提供针对性训练服务。",
-   "en": "Hello! I’m the Cinnabar Gym’s sparring{NEWLINE}partner.{SCROLL}I offer focused training exclusively for{NEWLINE}Trainers who have earned this Gym’s{CLEAR}Badge.",
+   "en": "Hello! I’m the Cinnabar Gym’s sparring{NEWLINE}partner.{SCROLL}I offer focused training{NEWLINE}exclusively for Trainers who{CLEAR}have earned this Gym’s Badge.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 34,
@@ -358,10 +358,10 @@
   {
    "id": 44,
    "zh": "夏伯『这是我的电话号码,{NEWLINE}你如果想出来新的谜语{CLEAR}记得打给我哟。",
-   "en": "Blaine: Here’s my phone number. If you{NEWLINE}come up with any new riddles, give me a{CLEAR}call!",
+   "en": "Blaine: Here’s my phone number.{NEWLINE}If you come up with any{CLEAR}new riddles, give me a call!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 45,
@@ -382,10 +382,10 @@
   {
    "id": 47,
    "zh": "夏伯『我都听说了,火箭队能解散{NEWLINE}都是你这位新任冠军的功劳。{CLEAR}我由衷地替小爱对你表示感谢。{SCROLL}夏伯『只是我这个地方{NEWLINE}没有拿得出手的东西送给你。{CLEAR}不过你需要进行对战训练的话{CLEAR}我倒是可以随时奉陪。{CLEAR}怎么样,现在要跟我进行对战练习吗？{SCROLL}",
-   "en": "Blaine: I heard all about it. Team{NEWLINE}Rocket disbanded thanks to you, our{CLEAR}new Champion. From the bottom of my{CLEAR}heart, I thank you on Amber’s behalf.{SCROLL}Blaine: I just don’t have anything{NEWLINE}worth giving you here. But if you need{CLEAR}battle training, I’m always up for it.{CLEAR}So, how about a practice battle with me{CLEAR}now?{SCROLL}",
+   "en": "Blaine: I heard all about it. Team{NEWLINE}Rocket disbanded thanks to you, our{CLEAR}new Champion. From the bottom of my{CLEAR}heart, I thank you on Amber’s behalf.{SCROLL}Blaine: I just don’t have anything{NEWLINE}worth giving you here. But if you need{CLEAR}battle training, I’m always up for it.{CLEAR}So, how about a practice{CLEAR}battle with me now?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 48,

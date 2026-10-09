@@ -486,10 +486,10 @@
   {
    "id": 60,
    "zh": "我真是爱死这地方了！{SCROLL}这里会根据精灵的不同种类,{NEWLINE}对其连胜纪录进行保存,{CLEAR}所以无论哪种精灵{CLEAR}都能登上那座舞台！{SCROLL}让自己的精灵{NEWLINE}不断刷新纪录,{CLEAR}这感觉真是妙不可言！",
-   "en": "I just love this place to death!{SCROLL}It keeps win-streak records for each{NEWLINE}kind of Pokémon, so any Pokémon at all{CLEAR}can get up on that stage!{SCROLL}Watching your own Pokémon keep{NEWLINE}breaking records... That feeling is just{CLEAR}wonderful!",
+   "en": "I just love this place to death!{SCROLL}It keeps win-streak records for each{NEWLINE}kind of Pokémon, so any Pokémon at all{CLEAR}can get up on that stage!{SCROLL}Watching your own Pokémon{NEWLINE}keep breaking records...{CLEAR}That feeling is just wonderful!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0108/60 | RV044: meaning: US 'opulent stage' line replaced; restored love of place and record-breaking feeling"
+   "notes": "US 0108/60 | RV044: meaning: US 'opulent stage' line replaced; restored love of place and record-breaking feeling; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 61,
