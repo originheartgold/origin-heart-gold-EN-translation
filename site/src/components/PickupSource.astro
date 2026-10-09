@@ -1,0 +1,13 @@
+---
+import { pickup, pickupBands } from '../lib/pickup';
+import { url } from '../lib/data';
+const { item } = Astro.props as { item: number };
+const bands = pickupBands(item);
+---
+<p>A Pokémon with <a href={url('/abilities/pickup/')}>Pickup</a> can find this item at the levels below. Items go straight into the Bag, even if it already holds an item.</p>
+<p class="small">Pickup has a {pickup.activationPercent}% activation chance per eligible check. The overall chance includes this check.</p>
+<table class="compact pickup-item-rates">
+	<thead><tr><th scope="col">Pokémon level</th><th scope="col">Chance after activation</th><th scope="col">Overall chance per eligible check</th></tr></thead>
+	<tbody>{bands.map(band => <tr><td>{band.min}–{band.max}</td><td>{band.rate}%</td><td>≈{band.rate * pickup.activationPercent / 100}%</td></tr>)}</tbody>
+</table>
+<p class="small"><a href={url('/mechanics/#pickup')}>Full Pickup chart and how the rates work</a></p>

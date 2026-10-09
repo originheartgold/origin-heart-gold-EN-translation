@@ -1,0 +1,26 @@
+---
+import { itemById, itemUrl } from '../lib/data';
+import { pickup } from '../lib/pickup';
+const rates = [...new Set(pickup.items.flatMap(row => row.rates))].filter(Boolean).sort((a, b) => b - a);
+---
+<p class="small">Each item has the chance shown at the top of its column, <strong>after Pickup activates</strong>. Use the level of the Pokémon with Pickup.</p>
+<div class="pickup-chart" tabindex="0" role="region" aria-label="Pickup items by Pokémon level">
+	<table>
+		<thead><tr><th scope="col">Level</th>{rates.map(rate => <th scope="col">{rate}%</th>)}</tr></thead>
+		<tbody>{pickup.bands.map((band, index) => <tr>
+			<th scope="row">{band.min}–{band.max}</th>
+			{rates.map(rate => <td>{pickup.items.filter(row => row.rates[index] === rate).map(row => {
+				const item = itemById.get(row.item);
+				return <div><a href={`${itemUrl(item)}#source-pickup`}>{item?.name}</a></div>;
+			})}</td>)}
+		</tr>)}</tbody>
+	</table>
+</div>
+<style>
+.pickup-chart { overflow-x: auto; }
+.pickup-chart table { display: table; width: 100%; }
+th, td { vertical-align: top; }
+th:first-child { white-space: nowrap; }
+td { min-width: 7rem; }
+td div + div { margin-top: 0.35rem; }
+</style>

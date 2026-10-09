@@ -30,7 +30,7 @@ class WildHeldTests(unittest.TestCase):
         self.assertEqual(result[5], [dict(species=1001, chance=5, locations=[dict(
             area='park', place='Park: Monday',
             method='Fishing at night: (Good Rod, replaces the 10% slot)',
-            level='5–7', encounterRate=10)])])
+            level='5–7', encounterRate=10, rateKind='percent')])])
 
     def test_headbutt_and_contest(self):
         ctx = SimpleNamespace(personal={1: {'items': [4, 4]}}, sp=lambda sp: 'Mon')

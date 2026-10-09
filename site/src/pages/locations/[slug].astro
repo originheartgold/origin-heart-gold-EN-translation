@@ -35,7 +35,7 @@ const localTutors = tutors.filter(t => t.places.some(p => p.area === a.slug));
 const trainers = a.trainers.map((id) => trainerById.get(id)).filter((t) => t !== undefined);
 const headings = [
 	quests.length && { depth: 2, slug: 'quests', text: 'Quests and events' },
-	(a.encounters.length || a.headbutt.length || a.encNotes.length || a.contest) && { depth: 2, slug: 'wild', text: 'Wild Pokémon' },
+	(a.encounters.length || a.headbutt.length || a.safari.length || a.encNotes.length || a.contest) && { depth: 2, slug: 'wild', text: 'Wild Pokémon' },
 	a.calendar.length && { depth: 2, slug: 'calendar', text: 'Calendar encounters' },
 	(a.statics.length || a.trades.length) && { depth: 2, slug: 'special', text: 'Gifts, trades and one-time battles' },
 	trainers.length && { depth: 2, slug: 'trainers', text: 'Trainers' },
@@ -59,7 +59,7 @@ const iu = (id: number) => itemUrl(itemById.get(id));
 		<ul>{quests.map((q) => <li><a href={q.href}>{q.title}</a></li>)}</ul>
 	</>}
 
-	{(a.encounters.length > 0 || a.headbutt.length > 0 || a.encNotes.length > 0 || a.contest) && <>
+	{(a.encounters.length > 0 || a.headbutt.length > 0 || a.safari.length > 0 || a.encNotes.length > 0 || a.contest) && <>
 		<h2 id="wild">Wild Pokémon</h2>
 		<details class="enc-help"><summary>How to read these tables</summary><p class="small">{(meta as { encExplainer: string }).encExplainer}</p><p>These are the ordinary encounter tables. <a href={url('/calendar/')}>Calendar encounters</a> can replace specific land slots. <a href={url('/mechanics/#visible-encounters-and-shinies')}>Visible spawns and capture-chain bonuses</a> use additional rules; table weights are not shiny odds.</p></details>
 		{a.encNotes.map((n) => <p class="small">{n}</p>)}
@@ -68,6 +68,11 @@ const iu = (id: number) => itemUrl(itemById.get(id));
 			<p class="small muted">Encounter rate: {rates(e.rates)}</p>
 			<EncTable sections={e.sections} />
 		</>)}
+		{a.safari.length > 0 && <>
+			<h3>Safari Zone areas</h3>
+			<p>These are the candidate Pokémon for each selected area, method and time. Additional species require placed objects and their development. A dash means the scan does not establish a fixed encounter percentage.</p>
+			{a.safari.map((section) => <details><summary>{section.title}</summary><EncTable sections={[section]} /></details>)}
+		</>}
 		{a.contest && <>
 			<h3>Bug-Catching Contest</h3>
 			<p class="small">{a.contest.note} Rate is the slot weight; score is the base points for the catch.</p>

@@ -46,6 +46,7 @@ export interface Species {
 	tutors: number[]; egg: number[]; foundIn: { area: string; methods: string[] }[];
 	game?: string | null; tmNote?: string | null; quests?: Quest[];
 	formChanges: FormChange[]; calendar: CalendarEncounter[]; referenceNotes: AuthorNote[];
+	wildEncounters: WildEncounter[]; acquisitions: PokemonAcquisition[]; otherSources: string;
 }
 /** One evolution as the game checks it; `never` marks a method the game's evolution code ignores. */
 export interface EvoCond { text: string; item?: number; move?: number; species?: number }
@@ -71,9 +72,18 @@ export interface ItemSource {
 	kind: string; area: string | null; place: string; tech?: string; qty?: number; pay?: string; price?: number;
 	near?: string | null; quests?: Quest[]; note?: string;
 }
+export interface PokemonAcquisition {
+	kind: 'gift' | 'egg' | 'trade' | 'loan' | 'loan-return' | 'starter' | 'prize';
+	area: string; place: string; level: number | null; offer: number | null;
+	conditions: string; quests: Quest[]; evidence: { file: number; pc: number }[];
+}
+export interface WildEncounter {
+	area: string; place: string; method: string; level: string | number | null;
+	encounterRate: number | null; rateKind: 'percent' | 'weight' | 'unknown';
+}
 export interface WildHeldSource {
 	species: number; chance: number;
-	locations: { area: string; place: string; method: string; level: string; encounterRate: number | null }[];
+	locations: WildEncounter[];
 }
 export interface ItemReferenceNote extends AuthorNote {
 	rarity?: string | null; acquisitionNote?: string | null; useNote?: string | null; configuredNote?: string; auditEvidence?: Evidence;
@@ -96,7 +106,7 @@ export interface Area {
 	name: string; slug: string; region: string; rank: number; zones: number[]; calendar: CalendarEncounter[];
 	referenceNotes: AuthorNote[]; maps: { zone: number; name: string; type: string; vanilla: string }[];
 	encounters: { label: string; rates: Record<string, number>; sections: EncSection[] }[];
-	encNotes: string[]; contest: { note: string; sets: { title: string; rows: ContestRow[] }[] } | null;
+	encNotes: string[]; safari: EncSection[]; contest: { note: string; sets: { title: string; rows: ContestRow[] }[] } | null;
 	headbutt: { label: string; trees: number; special: number; sections: EncSection[] }[];
 	trainers: number[];
 	items: { id: number; name: string; qty: number; kind: string; map: string; near?: string | null }[];

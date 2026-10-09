@@ -1,0 +1,16 @@
+---
+import { areaUrl, speciesById, url, type PokemonAcquisition } from '../lib/data';
+const { sources } = Astro.props as { sources: PokemonAcquisition[] };
+const labels = { gift: 'Gift', egg: 'Gift Egg', trade: 'Trade', loan: 'Loan', 'loan-return': 'Loan return', starter: 'Starter choice', prize: 'Prize' };
+---
+<ul class="pokemon-acquisitions">
+	{sources.map(source => {
+		const offer = source.offer == null ? null : speciesById.get(source.offer);
+		return <li>
+			<strong>{labels[source.kind]}</strong>{source.level != null && ` (Lv. ${source.level})`}: <a href={areaUrl(source.area)}>{source.place}</a>.
+			{offer && <> Give <a href={url(`/pokemon/${offer.slug}/`)}>{offer.name}</a> in exchange.</>}
+			{' '}{source.conditions}
+			{source.quests.map(quest => <> <a href={url(quest.href)} aria-label={`Guide: ${quest.title}`}>Quest guide</a>.</>)}
+		</li>;
+	})}
+</ul>
