@@ -147,6 +147,7 @@ class Worker:
                             allow_nan=False, separators=(",", ":")).encode() + b"\n"
         if len(packet) > MAX_MESSAGE:
             raise ValueError("save core request is too large")
+        packet_view = memoryview(packet)
         deadline = time.monotonic() + self.timeout
         received, sent = bytearray(), 0
         try:
@@ -159,7 +160,7 @@ class Worker:
                         raise WorkerError("save core request timed out")
                     for key, _ in poll.select(remaining):
                         if key.fileobj is self._proc.stdin:
-                            sent += os.write(key.fd, packet[sent:])
+                            sent += os.write(key.fd, packet_view[sent:])
                             if sent == len(packet):
                                 poll.unregister(self._proc.stdin)
                         else:

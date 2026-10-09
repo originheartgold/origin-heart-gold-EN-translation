@@ -20,6 +20,8 @@ worker retains its verified implementation until closed/restarted.
 
 ## Boundaries
 
+- `layout.ts` is the single definition of container/block offsets, party record sizes,
+  saved flag/variable bounds, locations, map-object strides, and inventory layout.
 - `save.ts` validates both general and storage copies and selects a valid,
   same-mirror, equal-counter generation. The native comparator handles the exact
   FFFFFFFF-to-zero rollover and selects mirror zero on ties. Damaged or mismatched
@@ -35,6 +37,10 @@ worker retains its verified implementation until closed/restarted.
   inspect open or corrupt RAM snapshots but cannot be passed to a permissive writer.
 - `transaction.ts` owns the common mutation engine. `applyEditorTransaction`
   accepts record replacement, money, and reference-validated pocket changes;
+  it rejects equal-counter coherent mirrors, including empty and no-op transactions,
+  with an instruction to save once in-game. This conservative editor policy also
+  covers every compatibility write helper. Read-only inspection and explicit
+  fixture transactions retain the proven native first-mirror tie selection;
   `applyFixtureTransaction` accepts the explicitly bounded scenario operations.
   Both copy source bytes, apply the whole list privately, update the selected CRC
   once, and return no partial result on failure. There is no public raw-offset
@@ -52,7 +58,7 @@ worker retains its verified implementation until closed/restarted.
   verified to have been recalculated.
 
 Unknown and unrelated bytes survive. Returned bytes never alias caller-owned
-Buffers or typed arrays. No-op transactions preserve original bytes, counters,
+Buffers or typed arrays. Accepted no-op transactions preserve original bytes, counters,
 checksums and mirrors. Array bounds come from the native getters: variables
 4000–416F, saved flags 1–C9F; flag zero is a non-writable sentinel. Review
 [the native evidence](../research/save_core/native_evidence.md) for exact addresses.
@@ -102,3 +108,8 @@ Run the Python and architecture gate with
 `--with-images` when the pinned Pillow dependency is present. Native CN/EN
 verification is a separate local gate with explicitly pinned private inputs;
 see [the native verification guide](../research/save_core/NATIVE_VERIFICATION.md).
+
+Editor `npm run typecheck` runs both core and editor with `tsc --noEmit`. A private
+source-only check tree resolves browser runtime imports to current core sources,
+so missing or stale `dist` files cannot affect the check. Live builds and running
+workers are never changed by typechecking.

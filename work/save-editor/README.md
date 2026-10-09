@@ -67,6 +67,8 @@ and harness runtime, never a browser backend.
 - TM/HM and berry insertion sorting matches the game. Removing a registered item
   clears its shortcut. Key-item edits do not change story flags. Coins, Battle Points,
   Apricorn-box counters and held mail contents are outside scope.
+- Equal-counter save mirrors can be inspected, but editing requires saving once
+  in-game first. Every edit entry point enforces this, including no-op writes.
 - Unrelated bytes, backup mirrors, counters and PC storage are preserved. Stat edits
   also recalculate encrypted party stats. Apply/discard drafts before switching party
   members or exporting edits. Export unchanged always returns the original bytes.

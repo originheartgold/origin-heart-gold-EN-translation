@@ -114,7 +114,7 @@ MOVE_NAME_BANK = 739
 
 
 def battle_parties_raw(h, lo=0x02200000, hi=0x02400000):
-    """Like emu_skitty.find_parties, but with mon() details of every member (moves, IVs, form, ability)."""
+    """Like find_parties, with effective Origin ability and a separate vanilla-byte diagnostic."""
     out = []
     for p in K.find_parties(h, lo, hi):
         a = int(p["addr"], 16)
@@ -123,8 +123,8 @@ def battle_parties_raw(h, lo=0x02200000, hi=0x02400000):
         for k in range(cnt):
             raw = h.read(a + 8 + 236 * k, 236)
             d = G.mon_details(raw)
-            d["ability"] = M.decrypted_blocks(raw)[0x0D]
-            mons.append({k_: d[k_] for k_ in ("species", "form", "level", "moves", "ivs", "ability", "item")})
+            d["vanilla_ability_byte"] = M.decrypted_blocks(raw)[0x0D]
+            mons.append({k_: d[k_] for k_ in ("species", "form", "level", "moves", "ivs", "ability", "vanilla_ability_byte", "item")})
         out.append({"addr": p["addr"], "mons": mons})
     return out
 
@@ -576,7 +576,8 @@ def judge_battle_type(res):
 def case_trainer(rom, out, variant):
     """D-1497 (IVs), D-1342 (duplicate moves), D-1498 (Deoxys form 4), D-1341 (stored ability): start
     `TrainerBattle <variant> 0 0 0` and read the foe party the battle built (RAM Party struct whose species
-    match the ROM team): IVs, moves, form, the block-A ability byte (0/1 here: not the ability id); INFO
+    match the ROM team): IVs, moves, form, effective ability and the separate block-A ability byte
+    (0/1 here: not the ability id); INFO
     screenshots (own lead, then RIGHT = the foe's lead; INFO shows no foe ability). For D-1341 the leads of
     trainers 146 (Glalie, stored Snow Warning) and 376 (Houndoom, stored Drought) announce their weather on
     entry only if the battle uses the stored ability: the command-menu and INFO screenshots show it."""
@@ -601,7 +602,7 @@ def case_trainer(rom, out, variant):
                                        for b, t in zip(parties[0]["mons"], team))
             res["moves_as_rom"] = all([m for m in b["moves"] if m] == t["moves"] for b, t in zip(parties[0]["mons"], team))
             res["forms"] = [b["form"] for b in parties[0]["mons"]]
-            res["ability_bytes"] = [b["ability"] for b in parties[0]["mons"]]
+            res["ability_bytes"] = [b["vanilla_ability_byte"] for b in parties[0]["mons"]]
     return res
 
 

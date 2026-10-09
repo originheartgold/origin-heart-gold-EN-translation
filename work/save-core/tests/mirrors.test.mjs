@@ -29,6 +29,7 @@ for(const [name,counters,storageCounters,corrupt,expected]of matrix)test(`mirror
  for(const block of corrupt)source[(block[1]==='1'?0x40000:0)+(block[0]==='s'?0xf800:0)+42]^=1;
  if(expected===null){assert.throws(()=>readSave(source),/coherent|intact|unsafe/);assert.throws(()=>patchMoney(source,1));return;}
  const original=source.slice(),save=readSave(source);assert.equal(save.generalOffset,expected*0x40000);
+ if(save.tied){assert.throws(()=>patchMoney(source,121),/Editing equal-counter mirrors is unsupported; save once in-game first/);assert.deepEqual(source,original);return;}
  const result=patchMoney(source,121);assert.equal(readSave(result).generalOffset,save.generalOffset);
  assert.equal(view(result).getUint32(save.generalOffset+0xf7bc,true),counters[expected]);
  assert.deepEqual(result.slice(save.generalOffset+0xf800,save.generalOffset+0xf800+0x18408),source.slice(save.generalOffset+0xf800,save.generalOffset+0xf800+0x18408));

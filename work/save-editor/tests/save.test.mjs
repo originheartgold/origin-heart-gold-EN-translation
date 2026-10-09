@@ -133,13 +133,12 @@ test('native selection uses mirror zero on ties and special rollover comparison'
   assert.equal(readSave(tiedDamaged).generalOffset, 0);
 });
 
-test('equal-counter mirrors support exact no-op and mutation of native-selected first mirror', () => {
+test('equal-counter mirrors are inspectable but editor writes and no-ops require an in-game save', () => {
   const tied = fixture([10, 10]), save = readSave(tied);
   assert.equal(save.tied, true);
-  assert.deepEqual(patchPartyRecord(tied, 0, save.party[0]), tied);
-  const record = changedBox(save.party[0]), edited = patchPartyRecord(tied, 0, record);
-  assert.deepEqual(readSave(edited).party[0], record);
-  assert.deepEqual(edited.slice(MIRROR), tied.slice(MIRROR));
+  for (const record of [save.party[0], changedBox(save.party[0])]) {
+    assert.throws(() => patchPartyRecord(tied, 0, record), /Editing equal-counter mirrors is unsupported; save once in-game first/);
+  }
 });
 
 test('validates active party header and patch arguments', () => {

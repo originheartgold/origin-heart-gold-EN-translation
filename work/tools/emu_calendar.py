@@ -173,8 +173,16 @@ def personal_fit(rom, mon):
     for idx, label in cands.items():
         p = d["personal"][idx]
         base = [p[0], p[1], p[2], p[3], p[4], p[5]]
-        fit[idx] = {"label": label, "types": [p[6], p[7]],
-                    "match": calc_stats(base, mon["level"], mon["ivs"], mon["evs"], mon["nature"], mon["species"]) == mon["stats"]}
+        row = {"label": label, "types": [p[6], p[7]], "match": False}
+        try:
+            row["match"] = calc_stats(base, mon["level"], mon["ivs"], mon["evs"], mon["nature"], mon["species"]) == mon["stats"]
+        except E._save_core.CoreError as exc:
+            if exc.code != "invalid-input":
+                raise
+            # A diagnostic candidate may be an unused form row or an invalid
+            # native record. Preserve the observation, not invented stat values.
+            row.update(reason=str(exc), error_code=exc.code)
+        fit[idx] = row
     return fit
 
 

@@ -1,3 +1,4 @@
+import { BOXED_SIZE, PARTY_STRIDE } from './layout.js';
 import { EditorError } from './errors.js';
 /** Origin v4.0.3 boxed Pokémon codec; see research-pokemon.md for native evidence. */
 export type PokerusStatus = 'none' | 'infected' | 'cured';
@@ -55,14 +56,14 @@ function checksum(payload: Uint8Array): number {
   return sum & 0xffff;
 }
 function unpack(record: Uint8Array, diagnostic = false) {
-  if (!(record instanceof Uint8Array) || (record.length !== 136 && record.length !== 236)) {
+  if (!(record instanceof Uint8Array) || (record.length !== BOXED_SIZE && record.length !== PARTY_STRIDE)) {
     throw new EditorError('invalid-pokemon', 'Expected a 136-byte boxed or 236-byte party Pokémon record.');
   }
   const header = view(record);
   const flags = header.getUint16(4, true);
   if (!diagnostic && flags !== 0) throw new EditorError('invalid-pokemon', 'Unsupported Pokémon flags: record may be open or corrupt.');
   const expected = header.getUint16(6, true);
-  const payload = diagnostic && (flags & 2) ? Uint8Array.from(record.subarray(8, 136)) : crypt(record.subarray(8, 136), expected);
+  const payload = diagnostic && (flags & 2) ? Uint8Array.from(record.subarray(8, BOXED_SIZE)) : crypt(record.subarray(8, BOXED_SIZE), expected);
   const checksumOk = checksum(payload) === expected;
   if (!diagnostic && !checksumOk) throw new EditorError('invalid-pokemon', 'Pokémon checksum mismatch.');
   const pid = header.getUint32(0, true);
@@ -86,7 +87,7 @@ function decodeRecord(record: Uint8Array, diagnostic: boolean): DetailedPokemon 
   const trainer = data.getUint32(a + 4, true);
   const naturalShiny = ((trainer >>> 16) ^ (trainer & 65535) ^ (pid >>> 16) ^ (pid & 65535)) < 8;
   const shinyOverride = (data.getUint32(b + 20, true) >>> 31) !== 0;
-  const tail = record.length === 236 ? view(diagnostic && (flags & 1) ? record.subarray(136) : crypt(record.subarray(136), pid)) : undefined;
+  const tail = record.length === PARTY_STRIDE ? view(diagnostic && (flags & 1) ? record.subarray(BOXED_SIZE) : crypt(record.subarray(BOXED_SIZE), pid)) : undefined;
   const blocks = new Uint8Array(128);
   [a,b,c,d].forEach((offset,index) => blocks.set(payload.subarray(offset,offset+32),index*32));
   return {
@@ -177,7 +178,7 @@ export function patchPokemonStats(
   }
   if (level !== decoded.party.level) data.setUint32(a + 8, experienceForLevel(level, personal.growthRate, growthThresholds), true);
   const stats = calculateStats(personal.baseStats, ivs, evs, level, nature, decoded.speciesId);
-  const tailBytes = crypt(record.subarray(136), pid);
+  const tailBytes = crypt(record.subarray(BOXED_SIZE), pid);
   const tail = view(tailBytes);
   tail.setUint8(4, level);
   tail.setUint16(6, adjustCurrentHp(decoded.party.currentHp, decoded.party.stats.hp, stats.hp, decoded.speciesId), true);
@@ -186,7 +187,7 @@ export function patchPokemonStats(
   const sum = checksum(payload);
   view(result).setUint16(6, sum, true);
   result.set(crypt(payload, sum), 8);
-  result.set(crypt(tailBytes, pid), 136);
+  result.set(crypt(tailBytes, pid), BOXED_SIZE);
   return result;
 }
 
@@ -270,8 +271,8 @@ export function patchPokemonFixture(record: Uint8Array, changes: PokemonFixtureC
   const result = Uint8Array.from(record);
   if (changes.currentHp !== undefined) {
     fixtureInteger(changes.currentHp,65535,'Current HP');
-    if (record.length !== 236) throw new EditorError('invalid-pokemon','HP requires a party record.');
-    const tail = crypt(record.subarray(136),pid); view(tail).setUint16(6,changes.currentHp,true); result.set(crypt(tail,pid),136);
+    if (record.length !== PARTY_STRIDE) throw new EditorError('invalid-pokemon','HP requires a party record.');
+    const tail = crypt(record.subarray(BOXED_SIZE),pid); view(tail).setUint16(6,changes.currentHp,true); result.set(crypt(tail,pid),BOXED_SIZE);
   }
   const sum = checksum(payload); view(result).setUint16(6,sum,true); result.set(crypt(payload,sum),8);
   return result;
@@ -279,8 +280,8 @@ export function patchPokemonFixture(record: Uint8Array, changes: PokemonFixtureC
 
 /** Native ZeroMonData-shaped empty slot. This is not a playable Pokémon constructor. */
 export function emptyPokemonFixture(): Uint8Array {
-  const record=new Uint8Array(236);
+  const record=new Uint8Array(PARTY_STRIDE);
   record.set(crypt(new Uint8Array(128),0),8);
-  record.set(crypt(new Uint8Array(100),0),136);
+  record.set(crypt(new Uint8Array(PARTY_STRIDE - BOXED_SIZE),0),BOXED_SIZE);
   return record;
 }

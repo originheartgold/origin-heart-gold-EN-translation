@@ -226,10 +226,10 @@ class SaveFile:
     def transaction(self, operations):
         result = _save_core.request("transactSave", self._data, operations=operations)
         candidate = _save_core.result_bytes(result)
-        inspection = _save_core.request("inspectSave", candidate)
+        inspection = result["inspection"]
+        base, report = inspection["base"], result.get("report", {})
         self._data, self._inspect = candidate, inspection
-        self.base = inspection["base"]
-        self.report = result.get("report", {})
+        self.base, self.report = base, report
 
     def set_location(self, map_id, x, y, direction="DOWN", warp=-1, which=0):
         self.transaction([dict(type="setLocation", map=map_id, x=x, y=y,
@@ -854,10 +854,18 @@ class Harness:
         return s + 0x10 + offset
 
     def get_flag(self, flag):
-        _integer("saved flag", flag, 0, SAVED_FLAGS_COUNT - 1)
+        """Read the native saved-flag address, including deliberate out-of-array probes.
+
+        Recipes inspect the hack's unchecked GetFlagAddr arithmetic up to 0x3FFF.
+        This diagnostic read range does not apply to writes or save-file edits.
+        """
+        _integer("live flag", flag, 0, 0x3FFF)
         if flag == 0:
             return False
-        return bool(self.u8(self.array(ARR_VARS_FLAGS) + FLAGS_OFFSET + flag // 8) >> (flag % 8) & 1)
+        address = self.array(ARR_VARS_FLAGS) + FLAGS_OFFSET + flag // 8
+        if not 0x02000000 <= address < 0x02400000:
+            raise RuntimeError("flag probe address is outside main RAM")
+        return bool(self.u8(address) >> (flag % 8) & 1)
 
     def set_flag(self, flag, value=True):
         _integer("saved flag", flag, 1, SAVED_FLAGS_COUNT - 1)
@@ -1401,14 +1409,21 @@ class start_at:
     def __enter__(self):
         map_id, x, y, rom, sav, flags, vars_, clock, out, verbose, hooks, edit = self.args
         sf = SaveFile(sav)
+        operations = []
         if map_id is not None:
-            sf.place_player(map_id, x, y, self.direction, height=self.height)
+            operations.append(dict(type="placePlayer", map=map_id, x=x, z=y,
+                                   direction=DIRS.get(self.direction, self.direction), height=self.height))
         if edit:
+            # Callbacks may inspect the teleported position or perform their own
+            # transactions; preserve their ordering before the requested flags.
+            if operations:
+                sf.transaction(operations)
+                operations = []
             edit(sf)
-        for f in flags:
-            sf.set_flag(f)
-        for v, val in vars_.items():
-            sf.set_var(v, val)
+        operations.extend(dict(type="setFlag", flag=f, value=True) for f in flags)
+        operations.extend(dict(type="setVar", var=v, value=val) for v, val in vars_.items())
+        if operations:
+            sf.transaction(operations)
         self._dir = Path(tempfile.mkdtemp(prefix="emu_harness_sav_"))
         sf.write(self._dir / "edited.sav")
         self.h = Harness(rom, self._dir / "edited.sav", out=out, verbose=verbose, emulator=self.emulator,
@@ -1444,9 +1459,8 @@ def cmd_wild(a):
     flags = [int(f) for f in a.flags.split(",") if f]
     sf = SaveFile(a.sav)
     before = sf.location()
-    sf.place_player(a.map, a.x, a.y, "DOWN")
-    for f in flags:
-        sf.set_flag(f)
+    sf.transaction([dict(type="placePlayer", map=a.map, x=a.x, z=a.y, direction=DIRS["DOWN"], height=0),
+                    *(dict(type="setFlag", flag=f, value=True) for f in flags)])
     tmp_sav = Path(tempfile.mkdtemp(prefix="emu_harness_sav_")) / "edited.sav"
     sf.write(tmp_sav)
     t0 = time.time()

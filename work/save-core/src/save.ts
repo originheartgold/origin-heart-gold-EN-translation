@@ -1,18 +1,10 @@
+import { SAVE_SIZE, MIRROR_OFFSET, GENERAL_SIZE, STORAGE_OFFSET, STORAGE_SIZE, FOOTER_SIZE, PARTY_OFFSET, PARTY_STRIDE, BOXED_SIZE, PARTY_CAPACITY_OFFSET, PARTY_COUNT_OFFSET } from './layout.js';
 import { applyEditorTransaction } from './transaction.js';
 import { EditorError } from './errors.js';
 /** Origin v4.0.3 raw save container. Native selection uses coherent general/storage
  * generations. Only the chosen general block is modified; storage stays byte-exact.
  * See work/research/save_core/native_evidence.md and the native boot matrix.
  */
-const SAVE_SIZE = 0x80000;
-const MIRROR_OFFSET = 0x40000;
-const GENERAL_SIZE = 0xf7cc;
-const STORAGE_OFFSET = 0xf800;
-const STORAGE_SIZE = 0x18408;
-const FOOTER_SIZE = 16;
-const PARTY_OFFSET = 0x98;
-const PARTY_STRIDE = 236;
-const BOXED_SIZE = 136;
 
 export interface OriginSave {
   bytes: Uint8Array;
@@ -109,8 +101,8 @@ export function readSave(input: Uint8Array): OriginSave {
     storage.get(intact[0]!.base) === intact[0]!.counter && storage.get(intact[1]!.base) === intact[1]!.counter;
   const generalOffset = selected.base;
   const data = view(bytes);
-  const capacity = data.getUint32(generalOffset + 0x90, true);
-  const partyCount = data.getUint32(generalOffset + 0x94, true);
+  const capacity = data.getUint32(generalOffset + PARTY_CAPACITY_OFFSET, true);
+  const partyCount = data.getUint32(generalOffset + PARTY_COUNT_OFFSET, true);
   if (capacity !== 6 || partyCount > 6) {
     throw new EditorError('invalid-save', 'Unsupported party header: expected capacity 6 and count 0–6.');
   }

@@ -263,16 +263,40 @@ def live_objects(h, map_id, lo=0x02200000, hi=0x02400000):
     return out
 
 
+def ram_pokemon_checksum_ok(raw):
+    """Cheap read-only scan filter; full field decoding stays in the shared core.
+
+    RAM may hold opened payloads (bit 1). Closed payloads reuse the independent
+    memcheck checksum oracle. Clear header flags only in its temporary copy:
+    this tests the checksum, not whether a record is safe to edit or persist.
+    """
+    if len(raw) not in (136, 236):
+        return False
+    flags, checksum = struct.unpack_from("<HH", raw, 4)
+    if flags & 2:
+        return sum(struct.unpack_from("<64H", raw, 8)) & 0xFFFF == checksum
+    from memcheck import decode_stored_moves
+    try:
+        decode_stored_moves(raw[:4] + b"\0\0" + raw[6:136])
+    except ValueError:
+        return False
+    return True
+
+
 def find_parties(h, lo=0x02200000, hi=0x02400000):
     """Party structs in RAM: {u32 max 6, u32 count 1-6, count x 236-byte Pokemon with valid checksums}."""
     ram = h.read(lo, hi - lo)
     out, i = [], ram.find(b"\x06\x00\x00\x00")
-    while 0 <= i < len(ram) - 8 - 236 * 6:
+    while 0 <= i <= len(ram) - 8:
         if i % 4 == 0:
             cnt = struct.unpack_from("<I", ram, i + 4)[0]
             mons = []
-            for k in range(cnt if 1 <= cnt <= 6 else 0):
-                m = E.decode_party_pokemon(ram[i + 8 + 236 * k:i + 8 + 236 * (k + 1)])
+            bounded = 1 <= cnt <= 6 and i + 8 + 236 * cnt <= len(ram)
+            for k in range(cnt if bounded else 0):
+                raw = ram[i + 8 + 236 * k:i + 8 + 236 * (k + 1)]
+                if not ram_pokemon_checksum_ok(raw):
+                    break
+                m = E.decode_party_pokemon(raw)
                 if not m["checksum_ok"] or not 0 < m["species"] < 1200 or m["bad_egg"]:
                     break
                 mons.append({"species": m["species"], "form": m["form"], "level": m.get("level"),

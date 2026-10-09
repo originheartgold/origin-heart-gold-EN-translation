@@ -91,7 +91,8 @@ def pid_copies(h, pid, lo=0x02200000, hi=0x02400000):
     key = struct.pack("<I", pid)
     out, i = [], ram.find(key)
     while i >= 0:
-        if i % 4 == 0 and E.decode_pokemon(ram[i:i + 136])["checksum_ok"]:
+        raw = ram[i:i + 136]
+        if i % 4 == 0 and K.ram_pokemon_checksum_ok(raw) and E.decode_pokemon(raw)["checksum_ok"]:
             out.append(lo + i)
         i = ram.find(key, i + 1)
     return out

@@ -142,7 +142,7 @@ The repository-wide lint pass required removal of one pre-existing unused
 `unicodedata` import in `work/tools/site/reconcile_references.py`, as well as
 obsolete imports left behind by the codec migration. No behavior was changed.
 
-The final native replay's startup handshake matches the current sealed core
+The pre-review native replay's startup handshake matched its sealed core
 build `38cde560ae6c63adcfce9e4eb33e98f247ee8de2b9d3d56add3a621d51f14823`.
 Its ignored report is
 `work/build/save-core-native-strengthened-final-20261009/report.json`; all four
@@ -156,6 +156,53 @@ The final runner separates successful free-slot generation from strict rejection
 in the six-member scenario; it does not suppress or reinterpret the earlier
 failure. Clearing the sixth slot was separately investigated without a production
 behavior change.
+
+## Review fixes, 2026-10-09
+
+All nine review items are addressed:
+
+- Live diagnostic flag reads again accept `0..0x3FFF`, including 7286 and 4461;
+  save-file operations and live writes retain their strict saved-array bounds.
+- Every editor transaction and compatibility writer refuses equal-counter mirrors,
+  including empty/no-op edits. Inspection and explicit fixture transactions retain
+  the native first-mirror tie selection established by the earlier loader probes.
+- Battle diagnostics expose the effective 16-bit `ability` and a distinct
+  `vanilla_ability_byte`; the existing `ability_bytes` report keeps its old meaning.
+- Invalid personal/stat candidates return `match: false` with a reason. Unexpected
+  core errors and worker failures still propagate; strict stat APIs remain strict.
+- Save transactions include their resulting inspection in one worker reply.
+  `start_at` and `cmd_wild` batch scenario operations while preserving callback order.
+- RAM scans reject bad checksums locally before shared-core decoding. Complete
+  active records at the scan boundary are supported, including opened RAM records.
+- Partial pipe writes share one memoryview rather than copying the unsent suffix.
+- Typechecking uses `tsc --noEmit` and an isolated source tree, preserving the live
+  core build even when it is absent or stale; current source signatures are checked.
+- Core save offsets and record strides are defined once in `layout.ts`; independent
+  test oracles retain literal layouts to detect mistakes in production constants.
+
+New deterministic regression tests verify one worker round trip per edit, one
+transaction for 1,003 setup operations, zero worker decodes for checksum-invalid
+candidates, partial-write buffer ownership, diagnostic failures, and tied-mirror
+refusals. A scan containing 1,500 invalid parties and one valid party makes one
+worker decode; a PID scan with 1,000 invalid and four valid records makes four.
+
+| Gate | Result |
+|---|---|
+| Editor/core typecheck, lint and tests | 404 tests: 403 pass, one optional ROM-provenance skip |
+| Semantic mutation gate | All eight compiled mutants caught |
+| Portable Python runner with images | 217 pass; four named ROM/armips checks explicitly excluded |
+| Repository `check.py --fast` | Pass; 1,106 tests, 100 optional skips; armips assembly unavailable |
+| Site build, compiled-site tests and static verifier | 4,636 pages; 66 tests pass; packaging/private-input checks pass |
+| Targeted native CN and EN smoke tests | Both pass, including flags 7286/4461, party/PID scans, battery/live edits, and valid fourth-member generation |
+
+The targeted native checks use sealed core build
+`798c33148769ed0629c2baaf259eaed303452fd6eb59e5f94cb75624e4b67bbd`.
+Reports remain ignored at `work/build/save-core-review-cn-20261009/report.json`
+and `work/build/save-core-review-en-20261009/report.json`. Both verify unchanged
+ROM/seed hashes. The full twelve-stage loader/save/reload matrix above is historical
+validation of the preceding build; this review reran the targeted smoke scenarios,
+not that entire matrix. Existing provenance and native-generator limitations below
+remain unchanged.
 
 ## Remaining limits
 

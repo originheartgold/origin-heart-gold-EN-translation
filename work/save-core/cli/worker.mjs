@@ -38,7 +38,7 @@ function handle(request) {
     case 'inspectSave':keys(args,[]);return inspectSaveFixture(input);
     case 'transactSave': {
       keys(args,['operations']);const result=applySaveTransaction(input,args.operations);
-      return {...result,report:{...result.report,sourceSha256:hash(input),outputSha256:hash(result.bytes)}};
+      return {...result,inspection:inspectSaveFixture(result.bytes),report:{...result.report,sourceSha256:hash(input),outputSha256:hash(result.bytes)}};
     }
     case 'emptyPokemon':keys(args,[]);if(input.length)fail('Empty fixture takes no input bytes.');return {bytes:emptyPokemonFixture()};
     case 'calculateStats': {

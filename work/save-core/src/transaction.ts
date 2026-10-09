@@ -1,3 +1,4 @@
+import { SAVED_FLAG_COUNT, SAVED_VAR_BASE, SAVED_VAR_COUNT, FLAGS_OFFSET as FLAGS, VARS_OFFSET as VARS, LOCATION_OFFSET as LOCATION, OBJECTS_OFFSET as OBJECTS, GENERAL_FOOTER, POCKET_NAMES, PARTY_OFFSET, PARTY_STRIDE, BOXED_SIZE, PARTY_COUNT_OFFSET, LOCATION_COUNT, LOCATION_STRIDE, OBJECT_COUNT, OBJECT_STRIDE } from './layout.js';
 import { EditorError } from './errors.js';
 import { readSave, crc16 } from './save.js';
 import { decodePokemon, patchPokemonFixture } from './pokemon.js';
@@ -5,13 +6,7 @@ import type { PokemonFixtureChanges } from './pokemon.js';
 import { POCKETS, MONEY_MAX, MONEY_OFFSET, REGISTERED_OFFSET } from './inventory.js';
 import type { PocketId, ItemStack, InventoryData } from './inventory.js';
 
-/** Native GetFlagAddr bounds: 0x194 bytes; four following padding bytes are not flags. */
-export const SAVED_FLAG_COUNT = 0xca0;
-export const SAVED_VAR_BASE = 0x4000;
-export const SAVED_VAR_COUNT = 0x170;
-const FLAGS = 0x118c, VARS = 0xeac, LOCATION = 0x1324, OBJECTS = 0x2480;
-const GENERAL_FOOTER = 0xf7bc;
-const POCKET_NAMES = ['items','key','tm','mail','medicine','berries','balls','battle'] as const;
+export { SAVED_FLAG_COUNT, SAVED_VAR_BASE, SAVED_VAR_COUNT } from './layout.js';
 export type FixtureOperation =
   | {type:'setFlag';flag:number;value:boolean}
   | {type:'setVar';var:number;value:number}
@@ -94,11 +89,12 @@ function replacePocket(bytes: Uint8Array, base: number, pocketId: PocketId, item
 function applyTransaction(input: Uint8Array, operations: readonly (FixtureOperation | EditorOperation)[], policy: 'fixture' | 'editor') {
   if(!Array.isArray(operations) || operations.length>10000) throw new EditorError('invalid-input','Expected at most 10000 save operations.');
   const save=readSave(input), bytes=save.bytes, base=save.generalOffset, data=new DataView(bytes.buffer);
+  if (policy === 'editor' && save.tied) throw new EditorError('invalid-save', 'Editing equal-counter mirrors is unsupported; save once in-game first');
   const source=Uint8Array.from(bytes);
   let partyCount=save.partyCount;
   function location(map:unknown,x:unknown,y:unknown,dir:unknown,warp:unknown,which:unknown) {
-    integer(map,0,65535,'Map');integer(x,-0x80000000,0x7fffffff,'X');integer(y,-0x80000000,0x7fffffff,'Y');integer(warp,-1,0x7fffffff,'Warp');integer(which,0,4,'Location index');
-    const at=base+LOCATION+20*which;
+    integer(map,0,65535,'Map');integer(x,-0x80000000,0x7fffffff,'X');integer(y,-0x80000000,0x7fffffff,'Y');integer(warp,-1,0x7fffffff,'Warp');integer(which,0,LOCATION_COUNT-1,'Location index');
+    const at=base+LOCATION+LOCATION_STRIDE*which;
     [map,warp,x,y,direction(dir)].forEach((n,i)=>data.setInt32(at+4*i,n,true));
   }
   Array.from(operations).forEach((op,index)=> {
@@ -108,9 +104,9 @@ function applyTransaction(input: Uint8Array, operations: readonly (FixtureOperat
       switch(op.type) {
         case 'replacePartyRecord': {
           if (!Number.isInteger(op.slot) || op.slot<0 || op.slot>=partyCount) throw new EditorError('invalid-save','Party slot is outside the current party.');
-          if (!(op.record instanceof Uint8Array) || (op.record.length !== 136 && op.record.length !== 236)) throw new EditorError('invalid-save','Expected a 136-byte boxed or 236-byte party Pokémon record.');
-          const at=base+0x98+op.slot*236, original=decodePokemon(bytes.subarray(at,at+236)), replacement=decodePokemon(op.record);
-          if (op.record.length===136 && replacement.pid!==original.pid) throw new EditorError('invalid-pokemon','A boxed replacement must preserve PID because the existing party tail uses it as its encryption key.');
+          if (!(op.record instanceof Uint8Array) || (op.record.length !== BOXED_SIZE && op.record.length !== PARTY_STRIDE)) throw new EditorError('invalid-save','Expected a 136-byte boxed or 236-byte party Pokémon record.');
+          const at=base+PARTY_OFFSET+op.slot*PARTY_STRIDE, original=decodePokemon(bytes.subarray(at,at+PARTY_STRIDE)), replacement=decodePokemon(op.record);
+          if (op.record.length===BOXED_SIZE && replacement.pid!==original.pid) throw new EditorError('invalid-pokemon','A boxed replacement must preserve PID because the existing party tail uses it as its encryption key.');
           bytes.set(op.record,at);break;
         }
         case 'setMoney': integer(op.money,0,MONEY_MAX,'Money');data.setUint32(base+MONEY_OFFSET,op.money,true);break;
@@ -124,10 +120,10 @@ function applyTransaction(input: Uint8Array, operations: readonly (FixtureOperat
         case 'placePlayer': {
           integer(op.x,-32768,32767,'Object X');integer(op.z,-32767,32767,'Object Z');const h=op.height??0;integer(h,-32768,32767,'Object height');
           location(op.map,op.x,op.z,op.direction,-1,0);
-          for(let slot=0;slot<64;slot++) {
-            const at=base+OBJECTS+80*slot;if(!data.getUint32(at,true))continue;const id=bytes[at+8];
+          for(let slot=0;slot<OBJECT_COUNT;slot++) {
+            const at=base+OBJECTS+OBJECT_STRIDE*slot;if(!data.getUint32(at,true))continue;const id=bytes[at+8];
             if(id===255||id===253) {const z=op.z-(id===253?1:0);[op.x,h,z,op.x,h,z].forEach((n,i)=>data.setInt16(at+32+i*2,n,true));}
-            else bytes.fill(0,at,at+80);
+            else bytes.fill(0,at,at+OBJECT_STRIDE);
           }break;
         }
         case 'setPocket': {
@@ -138,10 +134,10 @@ function applyTransaction(input: Uint8Array, operations: readonly (FixtureOperat
           bytes.set(replacement,base+pocket.offset);break;
         }
         case 'editPartyMon': {
-          integer(op.slot,0,partyCount-1,'Active party slot');const at=base+0x98+op.slot*236;
-          bytes.set(patchPokemonFixture(bytes.subarray(at,at+236),op.changes,{tailPolicy:op.tailPolicy}),at);break;
+          integer(op.slot,0,partyCount-1,'Active party slot');const at=base+PARTY_OFFSET+op.slot*PARTY_STRIDE;
+          bytes.set(patchPokemonFixture(bytes.subarray(at,at+PARTY_STRIDE),op.changes,{tailPolicy:op.tailPolicy}),at);break;
         }
-        case 'setPartyCount':integer(op.count,1,partyCount,'Shrunken party count');partyCount=op.count;data.setUint32(base+0x94,partyCount,true);break;
+        case 'setPartyCount':integer(op.count,1,partyCount,'Shrunken party count');partyCount=op.count;data.setUint32(base+PARTY_COUNT_OFFSET,partyCount,true);break;
       }
     } catch(error) {throw new SaveTransactionError(error instanceof Error?error.message:'Save operation failed.',index,{cause:error});}
   });

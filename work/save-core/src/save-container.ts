@@ -1,7 +1,8 @@
+import { SAVE_SIZE } from './layout.js';
 import { EditorError } from './errors.js';
 
 /** Raw battery data size for HeartGold/SoulSilver (512 KiB flash). */
-export const RAW_SAVE_SIZE = 524288;
+export const RAW_SAVE_SIZE = SAVE_SIZE;
 // DeSmuME appends: notice text, six little-endian u32 fields, then a 16-byte cookie.
 const DESMUME_NOTICE = '|<--Snip above here to create a raw sav by excluding this DeSmuME savedata footer:';
 const DESMUME_COOKIE = '|-DESMUME SAVE-|';

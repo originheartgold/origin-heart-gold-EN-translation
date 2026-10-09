@@ -98,3 +98,30 @@ test('sorted pockets reject malformed mixed entries before invoking sort compari
     assert.throws(()=>applyEditorTransaction(source,[{type:'replacePocket',pocket:'tmHm',items:entries,data:tmData}]),/Invalid item stack/);
   }
 });
+
+for (const divergent of [false, true]) test(`equal-counter ${divergent ? 'divergent' : 'identical'} mirrors require in-game save before every editor entry point`, () => {
+  const source=saveFixture({counters:[10,10]});
+  source.set(source.subarray(0,0x40000),0x40000);
+  if(divergent){source[0x40000+0x78]^=1;refreshBlock(source,0x40000);}
+  const before=source.slice(), save=readSave(source), inventory=readInventory(source);
+  assert.equal(save.tied,true);assert.equal(save.generalOffset,0);
+  const operations=[
+    {type:'setMoney',money:inventory.money},
+    {type:'setMoney',money:1},
+    {type:'replacePartyRecord',slot:0,record:save.partyRecords[0]},
+    {type:'replacePartyRecord',slot:0,record:save.party[0]},
+    {type:'replacePocket',pocket:'keyItems',items:[],data},
+  ];
+  const refusal=/Editing equal-counter mirrors is unsupported; save once in-game first/;
+  for(const ops of [[],...operations.map(op=>[op]),operations]) assert.throws(()=>applyEditorTransaction(source,ops),refusal);
+  assert.throws(()=>patchMoney(source,inventory.money),refusal);
+  assert.throws(()=>patchMoney(source,1),refusal);
+  assert.throws(()=>patchPartyRecord(source,0,save.partyRecords[0]),refusal);
+  assert.throws(()=>patchPartyRecord(source,0,save.party[0]),refusal);
+  assert.throws(()=>patchInventoryPocket(source,'keyItems',[],data),refusal);
+  const fixture=applyFixtureTransaction(source,[{type:'setVar',var:0x4000,value:17123}]);
+  assert.equal(view(fixture.bytes).getUint16(0xeac,true),17123);
+  assert.deepEqual(fixture.bytes.subarray(0x40000),source.subarray(0x40000));
+  assert.deepEqual(applyFixtureTransaction(source,[]).bytes,source);
+  assert.deepEqual(source,before);
+});

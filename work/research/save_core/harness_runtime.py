@@ -15,6 +15,8 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / 'work/tools'))
 import emu_harness as E
 import emu_guide0107 as G
+import emu_skitty as K
+import emu_open as O
 import memcheck
 
 spec = importlib.util.spec_from_file_location('independent_runtime', ROOT / 'work/save-editor/scripts/verify-runtime.py')
@@ -63,6 +65,17 @@ def main():
         assert h.u16(h.array(E.ARR_BAG) + E.POCKETS['medicine'][0]) == 50
         party = h.array(E.ARR_PARTY)
         assert h.u32(party + 4) == args.party_count
+        diagnostic_flags = {}
+        for flag in (7286, 4461):
+            address = h.array(E.ARR_VARS_FLAGS) + E.FLAGS_OFFSET + flag // 8
+            value = h.get_flag(flag)
+            assert value == bool(h.u8(address) & (1 << (flag % 8)))
+            diagnostic_flags[str(flag)] = {'address':hex(address), 'value':value}
+        parties = K.find_parties(h)
+        scanned_party = next(row for row in parties if row['addr'] == hex(party))
+        assert len(scanned_party['mons']) == args.party_count
+        lead_copies = O.pid_copies(h, h.u32(party + 8))
+        assert party + 8 in lead_copies
         if args.party_count == 3:
             assert h.u32(party + 4) == 3, 'Native load did not preserve shrunken party count'
             last_active = party + 8 + 2 * 236
@@ -119,10 +132,12 @@ def main():
             generator_result = {'status':'valid', 'species':generated['species'], 'level':generated['level']}
         h.screenshot('shared-core-field')
         result = {'status':'passed','emulator':args.emulator,'initial_party_count':args.party_count,'location':h.location(),
-                  'native_generator':generator_result,
+                  'native_generator':generator_result,'diagnostic_flags':diagnostic_flags,
+                  'scanned_parties':len(parties),'lead_pid_copies':len(lead_copies),
                   'fixture_report':sf.report,'checks':['battery transaction native load','saved variable','bag pocket',
                     'independent move decode','partial moves retain unused slots','boxed edits preserve native stats',
-                    'HP edit independent decode','inactive slot no mutation','native frames after edit','native generator']}
+                    'HP edit independent decode','inactive slot no mutation','native frames after edit','native generator',
+                    'out-of-array diagnostic flags','checksum-prefiltered party and PID scans']}
         if args.party_count == 3:
             result['checks'].extend(['three-member party native load','last-active-slot battery/live edits',
                                      'successful native generation checked by independent readers'])
