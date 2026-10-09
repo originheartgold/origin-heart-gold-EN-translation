@@ -104,6 +104,11 @@ class ExpectedViews(unittest.TestCase):
 
     def test_flags(self):
         self.assertTrue(T.expected_views("Quit?{VAR:0200:0}")["prompt"])
+        # the prompt icons sit on the view that waits with {VAR:0200}, also when a {SCROLL} follows it
+        self.assertEqual(T.expected_views("Quit?{VAR:0200:0}")["prompt_view"], 0)
+        e = T.expected_views("Give Poliwag a nickname?{VAR:0200:0}{SCROLL}")
+        self.assertEqual((e["prompt_view"], len(e["views"])), (0, 2))
+        self.assertEqual(T.expected_views("Hi!{SCROLL}Quit?{VAR:0200:0}")["prompt_view"], 1)
         self.assertTrue(T.expected_views("{VAR:FF01:200}BIG")["size"])
 
 

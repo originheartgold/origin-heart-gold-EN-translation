@@ -325,6 +325,7 @@ def expected_views(text, lines=2, battle=False):
     pending_clear = False
     views, vwidths, lost = [], [], []
     size = prompt = cursor = False
+    prompt_view = None
     waits = 0
     lost_row = {}
 
@@ -354,6 +355,8 @@ def expected_views(text, lines=2, battle=False):
                 size = True
             elif cmd == 0x0200:
                 prompt = True
+                prompt_view = len(views)           # the view open now shows the icons; they stay on every later
+                                                   # view (a trailing {SCROLL} prints nothing new: 0537#87)
             elif cmd == 0x0207:                    # waits for A like a page end, without clearing (seen in the
                 waits += 1                         # field: 'The Bag is full...{VAR:0207}' shows two waits)
                 snap()
@@ -386,8 +389,10 @@ def expected_views(text, lines=2, battle=False):
         while len(views) > 1 and not any(views[-1]):
             views.pop()
             vwidths.pop()
+    if battle or prompt_view is None or prompt_view >= len(views):
+        prompt_view = len(views) - 1               # battle views are merged above: the prompt is the last one
     return {"views": views, "widths": vwidths, "waits": waits, "lost": lost, "size": size, "prompt": prompt,
-            "cursor": cursor}
+            "prompt_view": prompt_view, "cursor": cursor}
 
 
 # ============================================================================= pixels: decoding a window
@@ -642,10 +647,11 @@ def judge(decoded, exp, box, readback=True, battle=False):
                                     "detail": "ink in the window's last column (cut at the edge?)"})
     if exp["prompt"] and box.get("prompt_px") and seen:
         p = box["prompt_px"]
-        for r, row in enumerate(seen[-1]["rows"]):
-            w = exp["widths"][-1][r] if r < len(exp["widths"][-1]) else 0
+        pv = min(exp.get("prompt_view", len(exp["widths"]) - 1), len(seen) - 1)
+        for r, row in enumerate(seen[pv]["rows"]):
+            w = exp["widths"][pv][r] if r < len(exp["widths"][pv]) else 0
             if w > p or row["right"] > p:
-                reasons.append({"code": "prompt", "view": len(seen), "row": r + 1,
+                reasons.append({"code": "prompt", "view": pv + 1, "row": r + 1,
                                 "detail": f"line is {max(w, row['right'])} px: runs under the prompt icons "
                                           f"(x {box['x0'] + p}-{box['x0'] + p + 17}; the line must end by {p} px)"})
     max_right = max((r["right"] for v in seen for r in v["rows"]), default=0)
@@ -898,7 +904,7 @@ def cmd_child(a):
                     else:
                         views, info = r.render(ref, plan["fill"], a.lang, max_views)
                     decoded = [decode_view(Pixels(v), box, font, limit=box["prompt_px"] if (
-                        exp["prompt"] and a.window == "field" and k == len(views) - 1) else None)
+                        exp["prompt"] and a.window == "field" and k >= exp.get("prompt_view", len(views) - 1)) else None)
                         for k, v in enumerate(views)]
                     res = judge(decoded, exp, box, readback=font is not None, battle=a.window == "battle")
                     if info.get("unfilled"):
@@ -1204,7 +1210,8 @@ def observe(h, ref, lang, mode="typ"):
         font = rom_font(str(h.rom)) if lang == "en" else None
         box = WINDOWS["field"]
         decoded = [decode_view(Pixels(v), box, font, limit=box["prompt_px"] if (
-            plan["exp"]["prompt"] and k == len(views) - 1) else None) for k, v in enumerate(views)]
+            plan["exp"]["prompt"] and k >= plan["exp"].get("prompt_view", len(views) - 1)) else None)
+            for k, v in enumerate(views)]
         res = judge(decoded, plan["exp"], WINDOWS["field"], readback=font is not None)
         h.on_exec(READ_INTO, None)
         h.on_exec(EXPAND, None)
