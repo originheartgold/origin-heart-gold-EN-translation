@@ -43,6 +43,9 @@ export interface Species {
 	eggGroups: string[]; growth: string; ev: number[]; held: string[];
 	evoFrom: EvoLink[]; evoTo: EvoLink[]; evoNotes: string[];
 	how: string; battleOnly?: string | null; note?: string | null; levelup: [number, number][]; tms: 'all' | [string, number][];
+	acquisition: { kind: string; text: string; conditions: string[] }[];
+	wildSources: { area: string; place: string; method: string; level: string | number; encounterRate: number | null }[];
+	wildNotes: string[];
 	tutors: number[]; egg: number[]; foundIn: { area: string; methods: string[] }[];
 	game?: string | null; tmNote?: string | null; quests?: Quest[];
 	formChanges: FormChange[]; calendar: CalendarEncounter[]; referenceNotes: AuthorNote[];
@@ -73,7 +76,7 @@ export interface ItemSource {
 	near?: string | null; quests?: Quest[]; note?: string;
 }
 export interface PokemonAcquisition {
-	kind: 'gift' | 'egg' | 'trade' | 'loan' | 'loan-return' | 'starter' | 'prize';
+	kind: 'gift' | 'egg' | 'trade' | 'loan' | 'loan-return' | 'starter' | 'prize' | 'static';
 	area: string; place: string; level: number | null; offer: number | null;
 	conditions: string; quests: Quest[]; evidence: { file: number; pc: number }[];
 }
@@ -112,8 +115,8 @@ export interface Area {
 	items: { id: number; name: string; qty: number; kind: string; map: string; near?: string | null }[];
 	gifts: { id: number; name: string; qty: number; pay: string; kind: string; quests: Quest[] }[];
 	shops: { list: number; room: string; stock: { id: number; name: string; price: number }[] }[];
-	trades: { give: number; giveName: string; get: number; getName: string; nickname: string; loan: boolean }[];
-	statics: { kind: string; id: number; name: string; level: number | null; quests: Quest[] }[];
+	trades: { give: number; giveName: string; get: number; getName: string; nickname: string; loan: boolean; retains: boolean; label: string | null; level: number | null; conditions: string[] }[];
+	statics: { kind: string; id: number; name: string; level: number | null; place: string; quests: Quest[]; conditions: string[] }[];
 }
 export interface TrainerMon {
 	abilityId: number | null; itemId: number | null; moveIds: number[];
@@ -176,7 +179,7 @@ export const trainerById = new Map(trainers.map((t) => [t.id, t]));
 
 // A documented route is not a promise of a completed capture test. Only configured calendar rows count.
 export function hasDocumentedSource(s: Species) {
-	return !s.unavailableReason && !!(s.how || s.formChanges.some((f) => f.result === s.id && speciesById.get(f.base)?.how) ||
+	return !s.unavailableReason && !!(s.how || s.wildSources.length || s.formChanges.some((f) => f.result === s.id && speciesById.get(f.base)?.how) ||
 		s.calendar.some((e) => e.pokemon === s.id && e.status === 'configured'));
 }
 

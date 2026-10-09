@@ -1,0 +1,1254 @@
+{
+  "_about": "Reviewed acquisition restrictions in untouched Chinese Origin HeartGold v4.0.3. Conditions are player-facing; excluded rows are unreachable remnants. Read-only script/event research; no gameplay changes.",
+  "scope": {
+    "files": [
+      169,
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
+      176,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      183,
+      184,
+      185,
+      186,
+      187,
+      188,
+      189,
+      190,
+      191,
+      192,
+      193,
+      194,
+      195,
+      196,
+      197,
+      198,
+      199,
+      733,
+      734,
+      735,
+      736,
+      737,
+      738,
+      739,
+      740,
+      741,
+      742,
+      743,
+      744,
+      745,
+      746,
+      747,
+      748,
+      749,
+      750,
+      751,
+      752,
+      753,
+      754,
+      755,
+      756,
+      757,
+      758,
+      759,
+      760,
+      761,
+      762,
+      763,
+      764,
+      765,
+      766,
+      767,
+      768,
+      769,
+      770,
+      771,
+      772,
+      773,
+      774,
+      775,
+      776,
+      777,
+      778,
+      779,
+      780,
+      781,
+      782,
+      783,
+      784,
+      785,
+      786,
+      787,
+      788,
+      789,
+      790,
+      791,
+      792,
+      793,
+      794,
+      795,
+      796,
+      797,
+      798,
+      799,
+      800,
+      801,
+      802,
+      803,
+      804,
+      805,
+      806,
+      807,
+      808,
+      809,
+      115,
+      842
+    ],
+    "rawRows": 50,
+    "uniqueRows": 47,
+    "excludedRows": 6,
+    "newFindings": [
+      "D-2292"
+    ]
+  },
+  "entries": [
+    {
+      "species": 22,
+      "file": 115,
+      "kind": "static",
+      "level": 20,
+      "conditions": [
+        "Before the Volcano Badge, help the woman protect her flower garden and beat the Spearow flock.",
+        "One encounter; catching, defeating or fleeing removes it."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file115 script11 @603 CheckBadge6 → post-badge branch; @2627 wild Fearow; no starter requirement on pre-badge path.",
+        "guide/01-pallet-to-pewter.md: flower garden."
+      ],
+      "offsets": [
+        2627
+      ],
+      "form": 0
+    },
+    {
+      "species": 123,
+      "file": 115,
+      "kind": "static",
+      "level": 15,
+      "conditions": [
+        "Use one Honey on the shining Honey tree on Sunday.",
+        "Repeatable with more Honey; the DS clock determines the weekday."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file115 script16 @5008, weekday branches @6074–6242.",
+        "guide/01-pallet-to-pewter.md: Honey tree."
+      ],
+      "offsets": [
+        6242
+      ],
+      "form": 0
+    },
+    {
+      "species": 127,
+      "file": 115,
+      "kind": "static",
+      "level": 15,
+      "conditions": [
+        "Use one Honey on the shining Honey tree on Tuesday.",
+        "Repeatable with more Honey; the DS clock determines the weekday."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file115 script16 @5008, weekday branches @6074–6242.",
+        "guide/01-pallet-to-pewter.md: Honey tree."
+      ],
+      "offsets": [
+        6102
+      ],
+      "form": 0
+    },
+    {
+      "species": 133,
+      "file": 115,
+      "kind": "gift",
+      "level": 5,
+      "conditions": [
+        "After the Route 2 and Viridian Forest Team Rocket rescue story, talk to the healed Eevee in the forest’s far northeast and accept it.",
+        "Leave a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file115 script10 @2181; flag411.",
+        "guide/01-pallet-to-pewter.md: rescued Eevee."
+      ],
+      "offsets": [
+        2181
+      ],
+      "form": 0
+    },
+    {
+      "species": 193,
+      "file": 115,
+      "kind": "static",
+      "level": 15,
+      "conditions": [
+        "Use one Honey on the shining Honey tree on Saturday.",
+        "Repeatable with more Honey; the DS clock determines the weekday."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file115 script16 @5008, weekday branches @6074–6242.",
+        "guide/01-pallet-to-pewter.md: Honey tree."
+      ],
+      "offsets": [
+        6214
+      ],
+      "form": 0
+    },
+    {
+      "species": 204,
+      "file": 115,
+      "kind": "static",
+      "level": 15,
+      "conditions": [
+        "Use one Honey on the shining Honey tree on Friday.",
+        "Repeatable with more Honey; the DS clock determines the weekday."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file115 script16 @5008, weekday branches @6074–6242.",
+        "guide/01-pallet-to-pewter.md: Honey tree."
+      ],
+      "offsets": [
+        6186
+      ],
+      "form": 0
+    },
+    {
+      "species": 214,
+      "file": 115,
+      "kind": "static",
+      "level": 15,
+      "conditions": [
+        "Use one Honey on the shining Honey tree on Monday.",
+        "Repeatable with more Honey; the DS clock determines the weekday."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file115 script16 @5008, weekday branches @6074–6242.",
+        "guide/01-pallet-to-pewter.md: Honey tree."
+      ],
+      "offsets": [
+        6074
+      ],
+      "form": 0
+    },
+    {
+      "species": 290,
+      "file": 115,
+      "kind": "static",
+      "level": 15,
+      "conditions": [
+        "Use one Honey on the shining Honey tree on Thursday.",
+        "Repeatable with more Honey; the DS clock determines the weekday."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file115 script16 @5008, weekday branches @6074–6242.",
+        "guide/01-pallet-to-pewter.md: Honey tree."
+      ],
+      "offsets": [
+        6158
+      ],
+      "form": 0
+    },
+    {
+      "species": 313,
+      "file": 115,
+      "kind": "static",
+      "level": 15,
+      "conditions": [
+        "Use one Honey on the shining Honey tree on Wednesday.",
+        "Repeatable with more Honey; the DS clock determines the weekday."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file115 script16 @5008, weekday branches @6074–6242.",
+        "guide/01-pallet-to-pewter.md: Honey tree."
+      ],
+      "offsets": [
+        6130
+      ],
+      "form": 0
+    },
+    {
+      "species": 84,
+      "file": 171,
+      "kind": "gift",
+      "level": 20,
+      "conditions": [
+        "Charmander starter only.",
+        "Take the live Poké Ball in the Rocket warehouse on Route 2 East before the Celadon Rocket hideout finale.",
+        "Leave a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file171 script3 @1300; guide/01-pallet-to-pewter.md: Rocket warehouse Poké Ball; file853 @3782 sets hide flag1473."
+      ],
+      "offsets": [
+        1300
+      ],
+      "form": 0
+    },
+    {
+      "species": 339,
+      "file": 171,
+      "kind": "gift",
+      "level": 20,
+      "conditions": [
+        "Bulbasaur or Pikachu starter only.",
+        "Take the live Poké Ball in the Rocket warehouse on Route 2 East before the Celadon Rocket hideout finale.",
+        "Leave a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file171 script3 @321; Charmander branch gives Doduo @1300.",
+        "guide/01-pallet-to-pewter.md: Rocket warehouse Poké Ball; file853 @3782 sets hide flag1473."
+      ],
+      "offsets": [
+        321
+      ],
+      "form": 0
+    },
+    {
+      "species": 4,
+      "file": 175,
+      "kind": "static",
+      "level": 15,
+      "conditions": [],
+      "excluded": true,
+      "reason": "Unused letter Charmander scene; it cannot appear in normal play.",
+      "evidence": [
+        "CN file175 script7 @2242; object4 hide flag1366 never cleared to expose this encounter.",
+        "guide/known-issues.md: Route 3 letter Charmander."
+      ],
+      "offsets": [
+        2242
+      ],
+      "form": 0
+    },
+    {
+      "species": 123,
+      "file": 175,
+      "kind": "static",
+      "level": 15,
+      "conditions": [
+        "Charmander starter only.",
+        "Talk to Bug Catcher Kenji to reveal the Scyther on the ledge, then challenge it.",
+        "One encounter; catching, defeating or fleeing removes it."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file175 scripts30/31 @3512, @3633; clears2268 to show Scyther.",
+        "guide/02-pewter-to-vermilion.md: Scyther chase."
+      ],
+      "offsets": [
+        3633
+      ],
+      "form": 0
+    },
+    {
+      "species": 280,
+      "file": 175,
+      "kind": "gift",
+      "level": 15,
+      "conditions": [
+        "Before the Cascade Badge, give the Route 3 painter one Fresh Water, then accept his Ralts.",
+        "Leave a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file175 script9 @2582; flag1390 redirects to the letter after the painter dies.",
+        "guide/02-pewter-to-vermilion.md: painter Ralts; file758 @3883 sets1390."
+      ],
+      "offsets": [
+        2582
+      ],
+      "form": 0
+    },
+    {
+      "species": 280,
+      "file": 175,
+      "kind": "static",
+      "level": 15,
+      "conditions": [
+        "After the Cascade Badge, if you did not accept the painter’s gift, read the letter beside Ralts and agree to take it.",
+        "One encounter; catching, defeating or fleeing removes it."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file175 @2278–2377; object3 flag1361 is live (unlike Charmander object4).",
+        "guide/02-pewter-to-vermilion.md: painter Ralts."
+      ],
+      "offsets": [
+        2360
+      ],
+      "form": 0
+    },
+    {
+      "species": 1,
+      "file": 183,
+      "kind": "gift",
+      "level": 15,
+      "conditions": [
+        "Pikachu starter only.",
+        "After the Cascade Badge, intervene in the Route 5 shelter raid and win, then accept the rescued Pokémon inside the house.",
+        "Refusing the rescue loses it. Complete the raid before making Sabrina laugh in Pokémon Tower.",
+        "Leave a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file179 raid outcome; file183 @268/@456.",
+        "guide/02-pewter-to-vermilion.md: Pokémon shelter raid; file17 @12165 closes unfinished raid."
+      ],
+      "offsets": [
+        268
+      ],
+      "form": 0
+    },
+    {
+      "species": 58,
+      "file": 183,
+      "kind": "gift",
+      "level": 15,
+      "conditions": [
+        "Bulbasaur or Charmander starter only.",
+        "After the Cascade Badge, intervene in the Route 5 shelter raid and win, then accept the rescued Pokémon inside the house.",
+        "Refusing the rescue loses it. Complete the raid before making Sabrina laugh in Pokémon Tower.",
+        "Leave a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file179 raid outcome; file183 @268/@456.",
+        "guide/02-pewter-to-vermilion.md: Pokémon shelter raid; file17 @12165 closes unfinished raid."
+      ],
+      "offsets": [
+        456
+      ],
+      "form": 0
+    },
+    {
+      "species": 7,
+      "file": 190,
+      "kind": "gift",
+      "level": 5,
+      "conditions": [
+        "Pikachu starter only.",
+        "Recover your stolen Pokédex from the Squirtle Squad, then choose to save them from Team Rocket and accept Squirtle.",
+        "Missable: advance through the grunt rescue before making Sabrina laugh in Pokémon Tower; refusing to help loses this gift.",
+        "Leave a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file190 @5762; file17 closes the Route9 quest at inactive stages.",
+        "guide/03-vermilion-to-celadon.md: Squirtle Squad."
+      ],
+      "offsets": [
+        5762
+      ],
+      "form": 0
+    },
+    {
+      "species": 145,
+      "file": 191,
+      "kind": "static",
+      "level": 50,
+      "conditions": [],
+      "excluded": true,
+      "reason": "Unused vanilla Route 10 encounter; the catchable Zapdos is inside the Power Plant at Lv. 90.",
+      "evidence": [
+        "CN Route10 zone18 has no object/background/coordinate calling script4; header436 calls only2/5.",
+        "guide/known-issues.md: unused Route10 Zapdos."
+      ],
+      "offsets": [
+        230
+      ],
+      "form": 0
+    },
+    {
+      "species": 69,
+      "file": 192,
+      "kind": "gift",
+      "level": 5,
+      "conditions": [
+        "Accept the Route 10 Pokémon Center seller’s offer.",
+        "Repeatable with a free party slot. Although he advertises $5,000, the original script does not charge money."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file192 script2 → @265–354: party check then GiveMon @312; no money check, deduction or one-time flag.",
+        "D-2292; script audit, not emulator-tested."
+      ],
+      "offsets": [
+        312
+      ],
+      "form": 0
+    },
+    {
+      "species": 144,
+      "file": 195,
+      "kind": "static",
+      "level": 90,
+      "conditions": [
+        "After the final Hall of Fame entry and Lance’s visit to your home in Pallet Town.",
+        "Melt the Seafoam Islands ice barriers to reach Articuno. Earlier trainer-style battles cannot catch it.",
+        "One encounter; catching, defeating or fleeing removes it."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file195 @2672 gated by2261; Rocket scene sets1368; file842 @2177 clears1368 during Lance visit.",
+        "guide/05-saffron-cinnabar.md: Articuno; guide/01-pallet-to-pewter.md: Lance visit."
+      ],
+      "offsets": [
+        2672
+      ],
+      "form": 0
+    },
+    {
+      "species": 382,
+      "file": 195,
+      "kind": "static",
+      "level": 95,
+      "conditions": [
+        "After the final Hall of Fame entry, bring the Blue Orb from Lance’s visit to the Seafoam Islands pedestal.",
+        "One encounter; catching, defeating or fleeing removes it."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file195 script14 @2851; final Hall of Fame2261, Blue Orb, flag2288.",
+        "guide/05-saffron-cinnabar.md: catching Kyogre."
+      ],
+      "offsets": [
+        2851
+      ],
+      "form": 0
+    },
+    {
+      "species": 82,
+      "file": 196,
+      "kind": "static",
+      "level": 55,
+      "conditions": [],
+      "excluded": true,
+      "reason": "Unused Power Plant encounter script; no event or map trigger starts it.",
+      "evidence": [
+        "CN file196 script5; zone489 event441 object/background/coordinate scripts omit2/4/5; header441 is empty (00000000).",
+        "Direct CN event/script inventory; no GoToStd/CallStd link to these map-local scripts."
+      ],
+      "offsets": [
+        378
+      ],
+      "form": 0
+    },
+    {
+      "species": 88,
+      "file": 196,
+      "kind": "static",
+      "level": 25,
+      "conditions": [],
+      "excluded": true,
+      "reason": "Unused Power Plant encounter script; no event or map trigger starts it.",
+      "evidence": [
+        "CN file196 script4; zone489 event441 object/background/coordinate scripts omit2/4/5; header441 is empty (00000000).",
+        "Direct CN event/script inventory; no GoToStd/CallStd link to these map-local scripts."
+      ],
+      "offsets": [
+        225
+      ],
+      "form": 0
+    },
+    {
+      "species": 101,
+      "file": 196,
+      "kind": "static",
+      "level": 55,
+      "conditions": [],
+      "excluded": true,
+      "reason": "Unused Power Plant encounter script; no event or map trigger starts it.",
+      "evidence": [
+        "CN file196 script2; zone489 event441 object/background/coordinate scripts omit2/4/5; header441 is empty (00000000).",
+        "Direct CN event/script inventory; no GoToStd/CallStd link to these map-local scripts."
+      ],
+      "offsets": [
+        288
+      ],
+      "form": 0
+    },
+    {
+      "species": 145,
+      "file": 196,
+      "kind": "static",
+      "level": 90,
+      "conditions": [
+        "After the final Hall of Fame entry following Giovanni’s defeat at League HQ.",
+        "Earlier Zapdos battles are trainer battles and cannot catch it.",
+        "One encounter; catching, defeating or fleeing removes it."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file196 @1693 requires2261; @1717 sets1786. Final-only file822 @2478 clears1786 once.",
+        "guide/07-league-to-cherrygrove.md: Hall of Fame distinguishes final vs first."
+      ],
+      "offsets": [
+        1693
+      ],
+      "form": 0
+    },
+    {
+      "species": 143,
+      "file": 199,
+      "kind": "static",
+      "level": 35,
+      "conditions": [
+        "Bring Mr. Fuji’s Poké Flute and wake the Snorlax blocking Silence Bridge on Route 12.",
+        "One encounter; catching, defeating or fleeing removes it."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file199 script6 @1440; guide/04-celadon-fuchsia-saffron.md: wake Snorlax."
+      ],
+      "offsets": [
+        1440
+      ],
+      "form": 0
+    },
+    {
+      "species": 255,
+      "file": 199,
+      "kind": "gift",
+      "level": 5,
+      "conditions": [
+        "Rescue Prof. Birch from Poochyena on Route 12, then accept Torchic.",
+        "Missable: collect it before the Rainbow Badge ceremony hides Birch. Wake the blocking Snorlax to reach him in time.",
+        "Leave a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file199 @2321; file853 @3790–3802 hides Birch/Poochyena.",
+        "guide/04-celadon-fuchsia-saffron.md: Prof. Birch Torchic."
+      ],
+      "offsets": [
+        2321
+      ],
+      "form": 0
+    },
+    {
+      "species": 261,
+      "file": 199,
+      "kind": "static",
+      "level": 5,
+      "conditions": [
+        "Before the Rainbow Badge ceremony, stop the Poochyena chasing Prof. Birch on Route 12.",
+        "Wake the blocking Snorlax to reach it in time.",
+        "One encounter; catching, defeating or fleeing removes it."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file199 script17 @2376; file853 @3790–3802.",
+        "guide/04-celadon-fuchsia-saffron.md: Prof. Birch Torchic."
+      ],
+      "offsets": [
+        2376
+      ],
+      "form": 0
+    },
+    {
+      "species": 350,
+      "file": 199,
+      "kind": "static",
+      "level": 40,
+      "conditions": [
+        "Talk to the fisherman about the fish-zapper, then refuse to battle Hugo. When shiny Milotic appears, choose to stop it.",
+        "Guaranteed shiny. One chance: refusing, catching, defeating, fleeing or losing ends its appearance."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file199 @4445 WildBattle [350,40,1]; hide flag1159 set before battle.",
+        "guide/04-celadon-fuchsia-saffron.md: shiny Milotic."
+      ],
+      "offsets": [
+        4445
+      ],
+      "form": 0
+    },
+    {
+      "species": 393,
+      "file": 734,
+      "kind": "gift",
+      "level": 5,
+      "conditions": [
+        "Earn the Mineral Badge, then pass the Two Island captain’s Water-type quiz.",
+        "Answers: 29; Quagsire; Marill; Gastrodon; Armaldo holding a Passho Berry. One gift per save.",
+        "Leave a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file734 script1 @905–2484, GiveMon @973; flags1119/1646.",
+        "guide/05-saffron-cinnabar.md: captain Water-type quiz."
+      ],
+      "offsets": [
+        973
+      ],
+      "form": 0
+    },
+    {
+      "species": 1,
+      "file": 738,
+      "kind": "gift",
+      "level": 5,
+      "conditions": [
+        "Choose this Pokémon as your initial starter at Professor Oak’s Lab. You receive only one of Bulbasaur, Charmander or Pikachu."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file738 starter variable controls GiveMon @3924/@4058; these are alternate dialogue branches, not additional gifts."
+      ],
+      "offsets": [
+        3924,
+        4058
+      ],
+      "form": 0,
+      "quests": []
+    },
+    {
+      "species": 4,
+      "file": 738,
+      "kind": "gift",
+      "level": 5,
+      "conditions": [
+        "Choose this Pokémon as your initial starter at Professor Oak’s Lab. You receive only one of Bulbasaur, Charmander or Pikachu."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file738 starter variable controls GiveMon @3924/@4058; these are alternate dialogue branches, not additional gifts."
+      ],
+      "offsets": [
+        3924,
+        4058
+      ],
+      "form": 0,
+      "quests": []
+    },
+    {
+      "species": 25,
+      "file": 738,
+      "kind": "gift",
+      "level": 5,
+      "conditions": [
+        "Choose this Pokémon as your initial starter at Professor Oak’s Lab. You receive only one of Bulbasaur, Charmander or Pikachu."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file738 starter variable controls GiveMon @3924/@4058; these are alternate dialogue branches, not additional gifts."
+      ],
+      "offsets": [
+        3924,
+        4058
+      ],
+      "form": 0,
+      "quests": []
+    },
+    {
+      "species": 25,
+      "file": 739,
+      "kind": "static",
+      "level": 5,
+      "conditions": [
+        "Bulbasaur starter only.",
+        "After the Route 1 tutorial, talk to the Viridian Mart clerk and follow the thief quest in Viridian City.",
+        "One encounter; catching, defeating or fleeing removes it."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file739 thief scripts and starter flags1287/1288/1289; Route1 file168 sets quest setup.",
+        "guide/01-pallet-to-pewter.md: Viridian thief quests."
+      ],
+      "offsets": [
+        4315
+      ],
+      "form": 0
+    },
+    {
+      "species": 52,
+      "file": 739,
+      "kind": "static",
+      "level": 5,
+      "conditions": [
+        "Charmander starter only.",
+        "After the Route 1 tutorial, talk to the resident who reports the Meowth thief and follow the thief quest in Viridian City.",
+        "One encounter; catching, defeating or fleeing removes it."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file739 thief scripts and starter flags1287/1288/1289; Route1 file168 sets quest setup.",
+        "guide/01-pallet-to-pewter.md: Viridian thief quests."
+      ],
+      "offsets": [
+        3762
+      ],
+      "form": 0
+    },
+    {
+      "species": 56,
+      "file": 739,
+      "kind": "static",
+      "level": 5,
+      "conditions": [
+        "Pikachu starter only.",
+        "After the Route 1 tutorial, talk to the street-light keeper and follow the thief quest in Viridian City.",
+        "One encounter; catching, defeating or fleeing removes it."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file739 thief scripts and starter flags1287/1288/1289; Route1 file168 sets quest setup.",
+        "guide/01-pallet-to-pewter.md: Viridian thief quests."
+      ],
+      "offsets": [
+        3087
+      ],
+      "form": 0
+    },
+    {
+      "species": 4,
+      "file": 751,
+      "kind": "gift",
+      "level": 10,
+      "conditions": [
+        "Pikachu starter only.",
+        "After the Viridian Forest Rocket scene, hear the Pewter Pokémon Center Trainer brag, rescue the abandoned Charmander on Route 2 East, and defeat its former Trainer.",
+        "Missable: rescue it before the Cascade Badge. Once in the Pokémon Center, Charmander waits for you.",
+        "Leave a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file751 @522, file170 @2290; file758 @3887 sets roadside/Trainer hide1367, but not Center Charmander hide1360.",
+        "guide/01-pallet-to-pewter.md: abandoned Charmander."
+      ],
+      "offsets": [
+        522
+      ],
+      "form": 0,
+      "quests": [
+        {
+          "title": "Route 2 East: the abandoned Charmander (Pikachu starters only)",
+          "href": "/guide/pallet-to-pewter/#route-2-east-the-abandoned-charmander-pikachu-starters-only"
+        }
+      ]
+    },
+    {
+      "species": 131,
+      "file": 755,
+      "kind": "gift",
+      "level": 70,
+      "conditions": [
+        "During the Saffron Rocket takeover, speak to the cafeteria hostage after Jessie, James and Maxie.",
+        "Missable: collect Lapras before the Rocket Boss battle; the hostages leave afterward, win or lose.",
+        "Leave a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file755 script28 @3245; file834 @5066/@5207 sets hostage hide1208.",
+        "guide/04-celadon-fuchsia-saffron.md: employee Lapras."
+      ],
+      "offsets": [
+        3245
+      ],
+      "form": 0,
+      "place": "Silph Co., staff cafeteria (hostages’ room)",
+      "zone": 477
+    },
+    {
+      "species": 104,
+      "file": 769,
+      "kind": "gift",
+      "level": 5,
+      "conditions": [
+        "After Agatha breaks up Team Rocket in Pokémon Tower, accept Cubone from Mr. Fuji’s Volunteer Pokémon House.",
+        "Leave a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file769 @657; file17 @8203 reveals Cubone.",
+        "guide/03-vermilion-to-celadon.md: Mr. Fuji gifts."
+      ],
+      "offsets": [
+        657
+      ],
+      "form": 0
+    },
+    {
+      "species": 116,
+      "file": 774,
+      "kind": "gift",
+      "level": 25,
+      "conditions": [
+        "Side with the townsfolk in the Vermilion construction-site clash, then have Ryochi ask you for Horsea.",
+        "Before obtaining the Good Rod, speak to the fisherman by the water without Oak’s Parcel. If the wild Horsea is already gone, he gives you one; otherwise he fishes up the wild encounter.",
+        "Leave a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file774 @7575; fisherman checks1056,1065,1419, no484 and1867 clear.",
+        "guide/02-pewter-to-vermilion.md: Horsea."
+      ],
+      "offsets": [
+        7575
+      ],
+      "form": 0
+    },
+    {
+      "species": 116,
+      "file": 774,
+      "kind": "static",
+      "level": 25,
+      "conditions": [
+        "Feed the waterfront Horsea five Yache Berries, then agree to catch it.",
+        "Alternatively, the fisherman can fish it up during Ryochi’s Good Rod quest if you sided with the townsfolk.",
+        "One encounter; catching, defeating or fleeing removes it."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file774 @7901; guide/02-pewter-to-vermilion.md: Horsea."
+      ],
+      "offsets": [
+        7901
+      ],
+      "form": 0
+    },
+    {
+      "species": 122,
+      "file": 802,
+      "kind": "gift",
+      "level": 15,
+      "conditions": [
+        "Exchange 3,333 Coins at the Celadon Prize Corner.",
+        "Repeatable with enough Coins and a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file802 script2 menu @2076–2092, GiveMon @2359; TakeCoins @2400/@2423/@2433 and loop to2068."
+      ],
+      "offsets": [
+        2359
+      ],
+      "form": 0
+    },
+    {
+      "species": 133,
+      "file": 802,
+      "kind": "gift",
+      "level": 15,
+      "conditions": [
+        "Exchange 6,666 Coins at the Celadon Prize Corner.",
+        "Repeatable with enough Coins and a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file802 script2 menu @2076–2092, GiveMon @2359; TakeCoins @2400/@2423/@2433 and loop to2068."
+      ],
+      "offsets": [
+        2359
+      ],
+      "form": 0
+    },
+    {
+      "species": 137,
+      "file": 802,
+      "kind": "gift",
+      "level": 15,
+      "conditions": [
+        "Exchange 9,999 Coins at the Celadon Prize Corner.",
+        "Repeatable with enough Coins and a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file802 script2 menu @2076–2092, GiveMon @2359; TakeCoins @2400/@2423/@2433 and loop to2068."
+      ],
+      "offsets": [
+        2359
+      ],
+      "form": 0
+    },
+    {
+      "species": 60,
+      "file": 842,
+      "kind": "gift",
+      "level": 5,
+      "conditions": [
+        "Bulbasaur starter only.",
+        "After talking to Mom following your starter choice, accept the Poliwag by the kitchen sink.",
+        "Missable: collect it before Blue’s farewell scene in Viridian City; take it before leaving Pallet Town.",
+        "Leave a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file842 script10 @6361; flags106,768,1088,1289 and2285; Blue scene file739 @3335 sets1088.",
+        "guide/01-pallet-to-pewter.md: send-off gifts, map reachability emulator verification."
+      ],
+      "offsets": [
+        6361
+      ],
+      "form": 0,
+      "place": "Pallet Town, your home (1F)",
+      "zone": 63
+    },
+    {
+      "species": 61,
+      "file": 842,
+      "kind": "gift",
+      "level": 10,
+      "conditions": [],
+      "excluded": true,
+      "reason": "Unused Poliwhirl gift; the actual house gift is Poliwag.",
+      "evidence": [
+        "CN file842 GiveMon @6236 belongs to unused script9; zone63 object1 invokes Poliwag script10; header617 runs11/1/7.",
+        "guide/01-pallet-to-pewter.md: send-off gifts."
+      ],
+      "offsets": [
+        6236
+      ],
+      "form": 0,
+      "place": "Pallet Town, your home (1F)",
+      "zone": 63
+    }
+  ],
+  "fossils": [
+    {
+      "species": 142,
+      "item": 103,
+      "file": 905,
+      "kind": "fossil",
+      "level": 20,
+      "conditions": [
+        "Bring one Old Amber to the fossil scientist through Cinnabar Island’s west-side door, just north of the Pokémon Center.",
+        "Return later to collect the revived Pokémon with a free party slot. Repeatable with another fossil."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file905 script14 @946–1005 checks pending fossil/processing state, with no badge or starter check.",
+        "CN file905 @2738/@3079 GetFossilPokemon maps the fossil item to var0x407F; @2744/@3127 consumes one fossil; @2586 gives Lv20; @2604 clears pending species.",
+        "Zone412 event object19 (4,4), hideflag0, calls script14.",
+        "guide/05-saffron-cinnabar.md:288; fossil mapping read from CN overlay22 table0x0225C0F0."
+      ],
+      "offsets": [
+        2586
+      ],
+      "form": 0,
+      "place": "Cinnabar Island, fossil scientist’s room",
+      "zone": 412
+    },
+    {
+      "species": 138,
+      "item": 101,
+      "file": 905,
+      "kind": "fossil",
+      "level": 20,
+      "conditions": [
+        "Bring one Helix Fossil to the fossil scientist through Cinnabar Island’s west-side door, just north of the Pokémon Center.",
+        "Return later to collect the revived Pokémon with a free party slot. Repeatable with another fossil."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file905 script14 @946–1005 checks pending fossil/processing state, with no badge or starter check.",
+        "CN file905 @2738/@3079 GetFossilPokemon maps the fossil item to var0x407F; @2744/@3127 consumes one fossil; @2586 gives Lv20; @2604 clears pending species.",
+        "Zone412 event object19 (4,4), hideflag0, calls script14.",
+        "guide/05-saffron-cinnabar.md:288; fossil mapping read from CN overlay22 table0x0225C0F0."
+      ],
+      "offsets": [
+        2586
+      ],
+      "form": 0,
+      "place": "Cinnabar Island, fossil scientist’s room",
+      "zone": 412
+    },
+    {
+      "species": 140,
+      "item": 102,
+      "file": 905,
+      "kind": "fossil",
+      "level": 20,
+      "conditions": [
+        "Bring one Dome Fossil to the fossil scientist through Cinnabar Island’s west-side door, just north of the Pokémon Center.",
+        "Return later to collect the revived Pokémon with a free party slot. Repeatable with another fossil."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file905 script14 @946–1005 checks pending fossil/processing state, with no badge or starter check.",
+        "CN file905 @2738/@3079 GetFossilPokemon maps the fossil item to var0x407F; @2744/@3127 consumes one fossil; @2586 gives Lv20; @2604 clears pending species.",
+        "Zone412 event object19 (4,4), hideflag0, calls script14.",
+        "guide/05-saffron-cinnabar.md:288; fossil mapping read from CN overlay22 table0x0225C0F0."
+      ],
+      "offsets": [
+        2586
+      ],
+      "form": 0,
+      "place": "Cinnabar Island, fossil scientist’s room",
+      "zone": 412
+    },
+    {
+      "species": 345,
+      "item": 99,
+      "file": 905,
+      "kind": "fossil",
+      "level": 20,
+      "conditions": [
+        "Bring one Root Fossil to the fossil scientist through Cinnabar Island’s west-side door, just north of the Pokémon Center.",
+        "Return later to collect the revived Pokémon with a free party slot. Repeatable with another fossil."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file905 script14 @946–1005 checks pending fossil/processing state, with no badge or starter check.",
+        "CN file905 @2738/@3079 GetFossilPokemon maps the fossil item to var0x407F; @2744/@3127 consumes one fossil; @2586 gives Lv20; @2604 clears pending species.",
+        "Zone412 event object19 (4,4), hideflag0, calls script14.",
+        "guide/05-saffron-cinnabar.md:288; fossil mapping read from CN overlay22 table0x0225C0F0."
+      ],
+      "offsets": [
+        2586
+      ],
+      "form": 0,
+      "place": "Cinnabar Island, fossil scientist’s room",
+      "zone": 412
+    },
+    {
+      "species": 347,
+      "item": 100,
+      "file": 905,
+      "kind": "fossil",
+      "level": 20,
+      "conditions": [
+        "Bring one Claw Fossil to the fossil scientist through Cinnabar Island’s west-side door, just north of the Pokémon Center.",
+        "Return later to collect the revived Pokémon with a free party slot. Repeatable with another fossil."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file905 script14 @946–1005 checks pending fossil/processing state, with no badge or starter check.",
+        "CN file905 @2738/@3079 GetFossilPokemon maps the fossil item to var0x407F; @2744/@3127 consumes one fossil; @2586 gives Lv20; @2604 clears pending species.",
+        "Zone412 event object19 (4,4), hideflag0, calls script14.",
+        "guide/05-saffron-cinnabar.md:288; fossil mapping read from CN overlay22 table0x0225C0F0."
+      ],
+      "offsets": [
+        2586
+      ],
+      "form": 0,
+      "place": "Cinnabar Island, fossil scientist’s room",
+      "zone": 412
+    },
+    {
+      "species": 410,
+      "item": 104,
+      "file": 905,
+      "kind": "fossil",
+      "level": 20,
+      "conditions": [
+        "Bring one Armor Fossil to the fossil scientist through Cinnabar Island’s west-side door, just north of the Pokémon Center.",
+        "Return later to collect the revived Pokémon with a free party slot. Repeatable with another fossil."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file905 script14 @946–1005 checks pending fossil/processing state, with no badge or starter check.",
+        "CN file905 @2738/@3079 GetFossilPokemon maps the fossil item to var0x407F; @2744/@3127 consumes one fossil; @2586 gives Lv20; @2604 clears pending species.",
+        "Zone412 event object19 (4,4), hideflag0, calls script14.",
+        "guide/05-saffron-cinnabar.md:288; fossil mapping read from CN overlay22 table0x0225C0F0."
+      ],
+      "offsets": [
+        2586
+      ],
+      "form": 0,
+      "place": "Cinnabar Island, fossil scientist’s room",
+      "zone": 412
+    },
+    {
+      "species": 408,
+      "item": 105,
+      "file": 905,
+      "kind": "fossil",
+      "level": 20,
+      "conditions": [
+        "Bring one Skull Fossil to the fossil scientist through Cinnabar Island’s west-side door, just north of the Pokémon Center.",
+        "Return later to collect the revived Pokémon with a free party slot. Repeatable with another fossil."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN file905 script14 @946–1005 checks pending fossil/processing state, with no badge or starter check.",
+        "CN file905 @2738/@3079 GetFossilPokemon maps the fossil item to var0x407F; @2744/@3127 consumes one fossil; @2586 gives Lv20; @2604 clears pending species.",
+        "Zone412 event object19 (4,4), hideflag0, calls script14.",
+        "guide/05-saffron-cinnabar.md:288; fossil mapping read from CN overlay22 table0x0225C0F0."
+      ],
+      "offsets": [
+        2586
+      ],
+      "form": 0,
+      "place": "Cinnabar Island, fossil scientist’s room",
+      "zone": 412
+    }
+  ]
+}

@@ -41,8 +41,8 @@ python3 -m unittest work/tools/docs/test_gen_docs.py
 - [items.md](items.md): key/quest items, field and hidden items, NPC gifts, shops, prize and paid exchanges.
 - [trainers.md](trainers.md): Gym challenges in guide order, other named opponents and allies, then ordinary
   trainers by map, with full teams and separate unconfirmed records.
-- [trades_tutors.md](trades_tutors.md): in-game trades, move tutors, the Move Reminder, gift Pokémon and one-time
-  battles.
+- [trades_tutors.md](trades_tutors.md): in-game trades, move tutors, the Move Reminder, gift Pokémon and scripted
+  encounters, including their access requirements.
 
 ## The author's own notes (maintainer-local)
 
@@ -55,10 +55,10 @@ not touch them); `work/notes/spreadsheet_crossref.md` cross-checks them row by r
 | What | Count |
 |---|---|
 | Species and forms documented | 1440 (#1–#1025 plus 415 alternate forms) |
-| National-dex species with a source found | 769 of 1025 (an identified wild, gift, trade or one-time-battle source, or an inferred evolution or breeding route from one; the website's Pokémon page counts 800 because it also counts alternate forms) |
+| National-dex species with a source found | 766 of 1025 (an identified wild, gift, trade or one-time-battle source, or an inferred evolution or breeding route from one; the website's Pokémon page counts 797 because it also counts alternate forms) |
 | Moves | 920 |
 | TMs / HMs | 130 / 8 |
-| Encounter records linked to maps | 139 of 149 |
+| Encounter records linked to maps | 137 of 149 |
 | Trainers with a party | 1023 (1018 placed on a map or started by a script) |
 | Field items (item balls / hidden) | 151 / 217 |
 | Script item gifts and exchanges | 829 |
@@ -86,7 +86,7 @@ named), not by the vanilla file names.
 | Items | `a/0/1/7` | 34-byte records: price u16 at 0, pocket in the word at 8 |
 | Wild encounters | `a/0/3/7`, NARC 37 | pret `EncounterData` (0xC4 bytes) |
 | Headbutt | `a/2/5/2`, one member per map | pret `HeadbuttEncounterData` |
-| Bug-Catching Contest | `data/mushi/mushi_encount.bin` | 4 × 10 slots |
+| Bug-Catching Contest | `data/mushi/mushi_encount.bin` | 4 × 10 stored slots; only the first set is active |
 | Trainers | `a/0/5/5` (20-byte header) and `a/0/5/6` | parties are a fixed 28 bytes per Pokémon (hack format) |
 | In-game trades | `a/1/1/2`, names in bank 0198 | pret `NPCTrade` (0x54 bytes) |
 | Hidden items | arm9 `0x020F7194`, 231 × 8 bytes | bg events with script 8000+n |
@@ -105,8 +105,9 @@ the hack's own check for them is not confirmed.
   disassembled with the command table in `work/tools/docs/script_cmds.json` (pret names, hack's 843 commands).
 - Script-derived facts (gifts, prices, tutor payments, trainer branch conditions) come from constant values in
   the scripts. Values computed at run time are shown as unknown or left out.
-- Not covered: berry and apricorn trees, the Safari Zone's object-based areas, Pokéwalker routes, Battle Frontier sets,
-  roaming Pokémon and swarm schedules (the swarm species per map are listed).
+- Not covered here: berry and apricorn trees, Pokéwalker routes, Battle Frontier sets and roaming Pokémon.
+  The website also lists Safari area candidates. Object Arrangement, swarms, radio encounter
+  programs and night-fishing replacements are disabled in the hack and excluded from acquisition sources.
 - The cross-reference of these docs against the scripts and dialogue is `work/notes/docs_crossref.md`; the
   cross-check against the author's spreadsheets is `work/notes/spreadsheet_crossref.md`.
-- Page sizes (for maintainers): encounters.md 179 KB, items.md 89 KB, moves.md 62 KB, pokemon.md 169 KB, pokemon_0001-0151.md 310 KB, pokemon_0152-0251.md 205 KB, pokemon_0252-0386.md 276 KB, pokemon_0387-0493.md 218 KB, pokemon_0494-0649.md 287 KB, pokemon_0650-0721.md 138 KB, pokemon_0722-0809.md 159 KB, pokemon_0810-0905.md 164 KB, pokemon_0906-1025.md 189 KB, pokemon_1026-1440.md 796 KB, trades_tutors.md 26 KB, trainers.md 763 KB.
+- Page sizes (for maintainers): encounters.md 144 KB, items.md 89 KB, moves.md 62 KB, pokemon.md 169 KB, pokemon_0001-0151.md 320 KB, pokemon_0152-0251.md 211 KB, pokemon_0252-0386.md 287 KB, pokemon_0387-0493.md 230 KB, pokemon_0494-0649.md 287 KB, pokemon_0650-0721.md 138 KB, pokemon_0722-0809.md 159 KB, pokemon_0810-0905.md 164 KB, pokemon_0906-1025.md 189 KB, pokemon_1026-1440.md 796 KB, trades_tutors.md 64 KB, trainers.md 763 KB.

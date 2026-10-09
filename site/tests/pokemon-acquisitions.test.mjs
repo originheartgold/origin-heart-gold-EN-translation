@@ -29,15 +29,15 @@ test('every mapped gift, Egg and trade has a Pokémon acquisition source', () =>
 test('starter requirements, prices, exclusions and exchange direction survive export', () => {
 	const bulba = byId.get(1);
 	assert.equal(bulba.acquisitions.length, 2);
-	assert.match(bulba.acquisitions.find(s => s.kind === 'gift').conditions, /Pikachu starter:.*Cascade Badge.*Sabrina/);
+	assert.match(bulba.acquisitions.find(s => s.kind === 'gift').conditions, /Pikachu starter only.*Cascade Badge.*Sabrina/);
 	assert.ok(!bulba.otherSources.includes('gift'));
 	assert.equal(byId.get(95).acquisitions.find(s => s.kind === 'trade').offer, 15);
 	assert.equal(byId.get(252).acquisitions.find(s => s.kind === 'egg').level, null);
-	assert.match(byId.get(23).acquisitions[0].conditions, /700 Coins/);
+	assert.match(byId.get(23).acquisitions[0].conditions, /700 Coins/i);
 	assert.match(byId.get(133).acquisitions.find(s => s.kind === 'prize').conditions, /6,666 Coins/);
 	assert.ok(!byId.get(27).acquisitions.some(s => s.kind === 'prize'));
 	assert.ok(!byId.get(61).acquisitions.some(s => s.evidence.some(e => e.file === 842)));
-	assert.match(byId.get(142).otherSources, /revive Old Amber/);
+	assert.match(byId.get(142).otherSources, /revive Old Amber/i);
 });
 
 test('built gift and trade details appear in the existing Where section', { skip: process.env.GUIDE_TEST_DIST !== '1' }, () => {

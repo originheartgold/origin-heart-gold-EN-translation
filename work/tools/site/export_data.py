@@ -316,20 +316,28 @@ def calendar_wild_rows(ctx, zone_area):
 
 
 def safari_wild_rows(ctx, zone_area):
-    """Candidate species with the selected area/object conditions kept explicit."""
+    """Reachable Safari area tables; Object Arrangement never unlocks in this hack."""
     area = zone_area.get(357)
     if not area:
         return
     grouped = collections.OrderedDict()
     for source in SH.safari_rows(ctx.rom.path):
-        key = tuple(source[k] for k in ('species', 'level', 'area', 'method', 'conditional'))
+        # Baoba's object-unlock phone calls require the National Dex getter, which
+        # returns literal 0 in CN. Keep raw requirements in the parser for audits,
+        # but never publish these bonus slots as catchable (D-2296).
+        if source['conditional']:
+            continue
+        key = tuple(source[k] for k in ('species', 'level', 'area', 'method', 'conditional')) + (
+            tuple((r['category'], r['points']) for r in source.get('requirements', [])),)
         times = grouped.setdefault(key, [])
         if source['time'] not in times:
             times.append(source['time'])
-    for (species, level, safari_area, safari_method, conditional), times in grouped.items():
+    for (species, level, safari_area, safari_method, conditional, requirements), times in grouped.items():
         sp, form = R.split_species(species)
         idx = species_index(ctx, sp, form)
-        condition = '; object requirements vary' if conditional else ''
+        condition = ('; requires ' + ' and '.join('%d %s block points' % (points, category)
+                     for category, points in requirements) + ' (includes block maturation)') if requirements else (
+                     '; object requirements vary' if conditional else '')
         when = 'all day' if len(times) == 3 else ' and '.join(times)
         method = 'Safari Zone: %s area selected, %s, %s%s' % (
             safari_area, safari_method, when, condition)
@@ -355,7 +363,7 @@ def wild_encounter_rows(areas, extra_rows=(), include_statics=False):
         if include_statics:
             for row in area.get('statics', []):
                 if row['kind'] == 'static':
-                    yield area, area['name'], 'Scripted wild battle (may be one-time)', row, None, 'unknown'
+                    yield area, row.get('place', area['name']), 'Scripted wild battle' + ('; ' + ' '.join(row['conditions']) if row.get('conditions') else ''), row, None, 'unknown'
     for area, place, method, row in extra_rows:
         yield area, place, method, row, row['pct'], 'percent' if row['pct'] is not None else 'unknown'
 
@@ -455,6 +463,7 @@ def export(ctx):
             game=game_alias(ctx, ctx.SP.get(sp)),
             tmNote='The game\'s TM check rejects this species slot, the one it also uses for Eggs.' if sp == G.EGG_SPECIES else None,
             how=avail.get(sp, '') if sp not in NOT_IN_GAME else '',
+            acquisition=ctx._acquisition.get(sp, []) if sp not in NOT_IN_GAME else [],
             unavailableReason=NOT_IN_GAME.get(sp, {}).get('reason'),
             battleOnly=EXTRA.get(sp, {}).get('battle'),
             note=EXTRA.get(sp, {}).get('note'),
@@ -559,24 +568,23 @@ def export(ctx):
     acquisition_sources = PA.sources(ctx, G, R, zone_area, file_areas)
     acquisition_notes = PA.load_notes()
     static_q = collections.defaultdict(list)
-    for kind, sp, fm, lv, f in G.static_mons(ctx):
+    for source in G.acquisition_sources(ctx):
+        kind, sp, fm, lv, f = (source[k] for k in ('kind', 'species', 'form', 'level', 'file'))
         idx = G.form_index(ctx, sp, fm)
-        if acquisition_notes.get((f, idx), {}).get('exclude'):
-            continue
-        for q in (quests_for(gq, f, ctx.sp(idx)) if kind == 'static' else []):
+        source_quests = source.get('quests', quests_for(gq, f, ctx.sp(idx)))
+        for q in source_quests:
             if q not in static_q[idx]:
                 static_q[idx].append(q)
-        for a in file_areas(ctx, zone_area, f)[:1]:
+        targets = [zone_area[source['zone']]] if 'zone' in source else file_areas(ctx, zone_area, f)[:1]
+        for a in targets:
             a['statics'].append(dict(kind=kind, id=idx, name=ctx.sp(idx), level=None if lv is None or lv >= 0x4000 else lv,
-                                     quests=quests_for(gq, f, ctx.sp(idx))))
-    tp = G.trade_places(ctx)
-    loans = G.loan_trades(ctx)
-    for i, b in enumerate(ctx.rom['trade']):
-        t = R.parse_trade(b)
-        for f in tp.get(i, []):
-            for a in file_areas(ctx, zone_area, f)[:1]:
-                a['trades'].append(dict(give=t['ask'], giveName=ctx.sp(t['ask']), get=t['give'], getName=ctx.sp(t['give']),
-                                        nickname=ctx.TRADE_NAMES.get(i, ''), loan=i in loans))
+                                     place=source.get('place', ctx.place_str(f)), conditions=source['conditions'],
+                                     quests=source_quests))
+    for t in G.trade_sources(ctx):
+        for a in file_areas(ctx, zone_area, t['file'])[:1]:
+            a['trades'].append(dict(give=t['ask'], giveName=ctx.sp(t['ask']), get=t['give'], getName=ctx.sp(t['give']),
+                                    nickname=ctx.TRADE_NAMES.get(t['trade'], ''), loan=t['loan'], label=t['label'],
+                                    retains=t['retains'], level=t['level'], conditions=t['conditions']))
 
     # ---- trainers
     tds, parties = G.load_trainers(ctx)
@@ -713,8 +721,25 @@ def export(ctx):
                             'restricted' if t['species'] == 'restricted' else sorted(set(t['species']))),
                         quests=quests_for(gq, t.get('file'), ctx.mv(t['move'])), note=TUTOR_NOTES.get((t['move'], t.get('file')))))
 
+    wild = wild_encounter_sources(ctx, areas, set(sp_ids), itertools.chain(
+        calendar_wild_rows(ctx, zone_area), safari_wild_rows(ctx, zone_area)))
+    areas_by_slug = {area['slug']: area for area in areas.values()}
     # species "found in" summary for the Pokémon pages
     for s in species:
+        s['wildSources'] = wild.get(s['id'], [])
+        notes = []
+        for source in s['wildSources']:
+            area = areas_by_slug[source['area']]
+            if not source['method'].startswith('Safari Zone'):
+                notes.extend('%s: %s' % ('Pal Park' if n == G.ENC_WEEKDAY_NOTE else area['name'], n)
+                             for n in area['encNotes'])
+            if source['method'].startswith('Bug-Catching Contest') and area['contest']:
+                notes.append('Bug-Catching Contest: ' + area['contest']['note'])
+            if source['method'].startswith('Safari Zone'):
+                notes.append('Safari Zone: choose the listed area. Area selection unlocks during Baoba’s Sandshrew test, '
+                             'after his Geodude test. Object Arrangement never unlocks in this hack, so block-dependent '
+                             'bonus encounters are excluded. The listed candidates do not have a verified encounter percentage.')
+        s['wildNotes'] = list(dict.fromkeys(notes))
         seen = collections.OrderedDict()             # area -> method -> weekdays (empty: any day)
         for slug, method, *day in found_in.get(s['id'], []):
             if day:                                  # a weekday table: one method per map, listing its days
@@ -727,7 +752,7 @@ def export(ctx):
         s['quests'] = static_q.get(s['id'], [])
         s['wildEncounters'] = wild_sources.get(s['id'], [])
         s['acquisitions'] = acquisition_sources.get(s['id'], [])
-        s['otherSources'] = PA.other_sources(s['how'], bool(s['wildEncounters']))
+        s['otherSources'] = '; '.join(r['text'] + (' — ' + ' '.join(r['conditions']) if r['conditions'] else '') for r in s['acquisition'] if r['kind'] in ('fossil', 'evolution', 'breeding', 'other'))
 
     area_list = list(areas.values())
     for a in area_list:

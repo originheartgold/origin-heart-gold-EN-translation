@@ -4,7 +4,7 @@
 
 Wild Pokémon per map, read from the game's own encounter tables. Percentages are the chance of each Pokémon for that method (grass 20/20/10/10/10/10/5/5/4/4/1/1, surf 60/30/5/4/1, rods 40/30/15/10/5, Rock Smash 80/20). Grass levels are fixed per slot.
 
-**How to read the tables.** Morning is 4:00–9:59, day 10:00–19:59 and night 20:00–3:59 on the game clock; a table marked "any time" is the same all day. "Radio on Hoenn Sound" / "Sinnoh Sound": with the Pokégear radio playing that show, these Pokémon take the four 10% grass slots and the other slots stay as they are (when the two shows become available in this hack is not documented yet). "Swarm": during a swarm the listed Pokémon takes the slots named in the heading; how a swarm starts in this hack is not documented yet. "Fishing at night": at night the listed Pokémon replaces one Good Rod or Super Rod slot. "—" means the table stores no level or chance for that entry. The encounter rate is how often you meet wild Pokémon on that map (higher means more often).
+**How to read the tables.** Morning is 4:00–9:59, day 10:00–19:59 and night 20:00–3:59 on the game clock; a table marked "any time" is the same all day. Swarms, Hoenn/Sinnoh Sound encounters, and special night-fishing replacements are not active in this hack and are excluded. "—" means the table stores no level or chance for that entry. The encounter rate is how often you meet wild Pokémon on that map (higher means more often).
 
 Headbutt trees and the Bug-Catching Contest are listed at the end.
 
@@ -86,8 +86,6 @@ Headbutt trees and the Bug-Catching Contest are listed at the end.
 - [Route 32](#route-32)
 - [Ruins of Alph](#ruins-of-alph)
 - [Ruins of Alph Underground Hall](#ruins-of-alph-underground-hall)
-- [Ruins of Alph Underground Hall (unused Arceus-event copy)](#ruins-of-alph-underground-hall-unused-arceus-event-copy)
-- [Ruins of Alph Hall Entrance (unused Arceus-event copy)](#ruins-of-alph-hall-entrance-unused-arceus-event-copy)
 - [Union Cave](#union-cave)
 - [Union Cave B1F](#union-cave-b1f)
 - [Route 33](#route-33)
@@ -212,19 +210,6 @@ _Encounter rate: grass/cave 20_
 | Poochyena | 6 | 5% |
 | Vullaby | 4 | 5% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 2 | 20% |
-| Minun | 3 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 2–3 | 40% |
-
 ## Viridian City
 
 _Encounter rate: surfing 15, Old Rod 25, Good Rod 50, Super Rod 75_
@@ -293,20 +278,6 @@ _Encounter rate: grass/cave 20, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Mienfoo | 4–5 | 9% |
 | Taillow | 4–5 | 5% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 3 | 20% |
-| Linoone | 5 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 3 | 20% |
-| Bidoof | 5 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -370,19 +341,6 @@ _Encounter rate: grass/cave 20_
 | Kakuna | 5 | 10% |
 | Morelull | 8 | 9% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 3 | 20% |
-| Minun | 5 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 3–5 | 40% |
-
 ## Route 2 East
 
 _Encounter rate: grass/cave 20_
@@ -416,19 +374,6 @@ _Encounter rate: grass/cave 20_
 | Hoothoot | 3–8 | 44% |
 | Spinarak | 3–7 | 36% |
 | Purrloin | 5 | 20% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 3 | 20% |
-| Minun | 5 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 3–5 | 40% |
 
 ## Viridian Forest
 
@@ -484,20 +429,6 @@ _Encounter rate: grass/cave 15_
 | Nincada | 7 | 1% |
 | Petilil | 4 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Spoink | 3 | 20% |
-| Numel | 5 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Budew | 3 | 20% |
-| Carnivine | 5 | 20% |
-
 ## Route 3
 
 _Encounter rate: grass/cave 20_
@@ -524,19 +455,6 @@ _Encounter rate: grass/cave 20_
 | Sandshrew | 10 | 4% |
 | Cottonee | 8 | 5% |
 | Nidoran♂ | 10 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 5 | 20% |
-| Minun | 8 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 5–8 | 40% |
 
 ## Mt. Moon / Mt. Moon, east building
 
@@ -574,20 +492,6 @@ _Encounter rate: grass/cave 10_
 | Noibat | 10 | 1% |
 | Larvesta | 5 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 8 | 20% |
-| Makuhita | 8 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 8 | 20% |
-| Chingling | 8 | 20% |
-
 ## Mt. Moon Square Entrance
 
 _Encounter rate: grass/cave 15_
@@ -602,26 +506,6 @@ _Encounter rate: grass/cave 15_
 | Paras | 12 | 10% |
 | Sandslash | 10 | 5% |
 | Clefairy | 8 | 5% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 6–8 | 20% |
-| Makuhita | 8 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 6–8 | 20% |
-| Chingling | 8 | 20% |
-
-**Swarm (grass; replaces the two 20% slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Zubat | 6–8 | 40% |
 
 ## Mt. Moon Square
 
@@ -670,12 +554,6 @@ _Encounter rate: surfing 15, Old Rod 25, Good Rod 50, Super Rod 75_
 |---|---|---|
 | Poliwag | 30–35 | 100% |
 
-**Swarm (surfing; replaces the 60% slot)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Poliwag | 35 | 60% |
-
 **Old Rod**
 
 | Pokémon | Level | Chance |
@@ -696,19 +574,6 @@ _Encounter rate: surfing 15, Old Rod 25, Good Rod 50, Super Rod 75_
 |---|---|---|
 | Poliwag | 40 | 90% |
 | Magikarp | 40 | 10% |
-
-**Fishing at night**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Magikarp (Good Rod, replaces the 10% slot) | 20 | 10% |
-| Magikarp (Super Rod, replaces the 30% slot) | 40 | 30% |
-
-**Swarm (fishing)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Poliwag | — | — |
 
 ## Route 4
 
@@ -757,20 +622,6 @@ _Encounter rate: grass/cave 20, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Nidoran♀ | 10 | 4% |
 | Seedot | 8 | 4% |
 | Nidoran♂ | 10 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 5 | 20% |
-| Linoone | 8 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 5 | 20% |
-| Bidoof | 8 | 20% |
 
 **Surfing**
 
@@ -872,20 +723,6 @@ _Encounter rate: grass/cave 20, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Shroomish | 14 | 4% |
 | Seedot | 14 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 8–10 | 20% |
-| Linoone | 9 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 8–10 | 20% |
-| Bidoof | 9 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -968,20 +805,6 @@ _Encounter rate: grass/cave 20, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Noctowl | 20 | 5% |
 | Weepinbell | 18 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 8–10 | 20% |
-| Linoone | 8 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 8–10 | 20% |
-| Bidoof | 8 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -1054,19 +877,6 @@ _Encounter rate: grass/cave 20_
 | Abra | 14 | 4% |
 | Ponyta | 12–14 | 2% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 13 | 20% |
-| Minun | 14 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 13–14 | 40% |
-
 ## Route 6
 
 _Encounter rate: grass/cave 20, surfing 15, Old Rod 25, Good Rod 50, Super Rod 75_
@@ -1098,20 +908,6 @@ _Encounter rate: grass/cave 20, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Electrike | 14 | 4% |
 | Hoothoot | 12 | 1% |
 | Weepinbell | 21 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 13 | 20% |
-| Linoone | 14 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 13 | 20% |
-| Bidoof | 14 | 20% |
 
 **Surfing**
 
@@ -1231,20 +1027,6 @@ _Encounter rate: grass/cave 10_
 | Machop | 13 | 5% |
 | Dugtrio | 19–29 | 10% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 15–17 | 20% |
-| Makuhita | 19 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 15–17 | 20% |
-| Chingling | 19 | 20% |
-
 ## Route 11
 
 _Encounter rate: grass/cave 20_
@@ -1290,19 +1072,6 @@ _Encounter rate: grass/cave 20_
 | Pachirisu | 16 | 1% |
 | Komala | 16 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 14–15 | 20% |
-| Minun | 15 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 14–15 | 40% |
-
 ## Route 9
 
 _Encounter rate: grass/cave 20, surfing 15, Old Rod 25, Good Rod 50, Super Rod 75_
@@ -1347,20 +1116,6 @@ _Encounter rate: grass/cave 20, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Kecleon | 15 | 4% |
 | Beedrill | 15 | 4% |
 | Butterfree | 15 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 13–15 | 20% |
-| Linoone | 13 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 13–15 | 20% |
-| Bidoof | 13 | 20% |
 
 **Surfing**
 
@@ -1418,20 +1173,6 @@ _Encounter rate: grass/cave 20, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Magnemite | 16 | 10% |
 | Raticate | 18 | 5% |
 | Electabuzz | 15 | 5% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 16–17 | 20% |
-| Linoone | 16 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 16–17 | 20% |
-| Bidoof | 16 | 20% |
 
 **Surfing**
 
@@ -1513,20 +1254,6 @@ _Encounter rate: grass/cave 10, Rock Smash 30_
 | Machoke | 28 | 4% |
 | Lunatone | 23 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 20–28 | 20% |
-| Makuhita | 19–20 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 20–28 | 20% |
-| Chingling | 19–20 | 20% |
-
 **Rock Smash**
 
 | Pokémon | Level | Chance |
@@ -1548,26 +1275,6 @@ _Encounter rate: grass/cave 15, Rock Smash 20_
 | Zubat | 10 | 10% |
 | Marowak | 14 | 5% |
 | Kangaskhan | 14 | 5% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 12 | 20% |
-| Makuhita | 16 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 12 | 20% |
-| Chingling | 16 | 20% |
-
-**Swarm (grass; replaces the two 20% slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Cubone | 12 | 40% |
 
 **Rock Smash**
 
@@ -1628,19 +1335,6 @@ _Encounter rate: grass/cave 10, surfing 10, Rock Smash 50, Old Rod 25, Good Rod 
 | Electrode | 34 | 4% |
 | Pachirisu | 33 | 1% |
 | Dedenne | 38 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Electrike | 33–34 | 20% |
-| Manectric | 32 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Rotom | 32–34 | 40% |
 
 **Surfing**
 
@@ -1714,20 +1408,6 @@ _Encounter rate: grass/cave 5_
 | Litwick | 26 | 1% |
 | Honedge | 25 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shedinja | 23–24 | 20% |
-| Dusclops | 25 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Drifblim | 23–24 | 20% |
-| Mismagius | 25 | 20% |
-
 ## Route 8
 
 _Encounter rate: grass/cave 20_
@@ -1758,19 +1438,6 @@ _Encounter rate: grass/cave 20_
 | Barboach | 15 | 4% |
 | Fomantis | 17 | 1% |
 | Pawniard | 15 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 19–20 | 20% |
-| Minun | 15 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 15–20 | 40% |
 
 ## Route 7
 
@@ -1820,19 +1487,6 @@ _Encounter rate: grass/cave 20_
 | Beedrill | 15 | 4% |
 | Sandile | 19 | 1% |
 | Scraggy | 15 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 17 | 20% |
-| Minun | 18 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 17–18 | 40% |
 
 ## Celadon City
 
@@ -1896,19 +1550,6 @@ _Encounter rate: grass/cave 20_
 | Golbat | 27 | 1% |
 | Parasect | 30 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 26–27 | 20% |
-| Minun | 28 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 26–28 | 40% |
-
 ## Route 17
 
 _Encounter rate: grass/cave 20_
@@ -1953,19 +1594,6 @@ _Encounter rate: grass/cave 20_
 | Alolan Graveler | 30 | 5% |
 | Sandslash | 29–32 | 9% |
 | Dugtrio | 32 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 27–28 | 20% |
-| Minun | 29 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 27–29 | 40% |
 
 ## Route 18
 
@@ -2014,19 +1642,6 @@ _Encounter rate: grass/cave 20_
 | Muk | 38 | 4% |
 | Doduo | 27 | 1% |
 | Tauros | 30 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 26–27 | 20% |
-| Minun | 28 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 26–28 | 40% |
 
 ## Fuchsia City
 
@@ -2115,20 +1730,6 @@ _Encounter rate: grass/cave 15, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Sableye | 24 | 4% |
 | Snorlax | 30 | 1% |
 | Mimikyu | 5 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 30–40 | 20% |
-| Makuhita | 25–30 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 30–40 | 20% |
-| Chingling | 25–30 | 20% |
 
 **Surfing**
 
@@ -2262,20 +1863,6 @@ _Encounter rate: grass/cave 20, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Venomoth | 24 | 1% |
 | Applin | 25 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 23 | 20% |
-| Linoone | 25 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 23 | 20% |
-| Bidoof | 25 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -2354,19 +1941,6 @@ _Encounter rate: grass/cave 20_
 | Magmar | 26 | 1% |
 | Chansey | 25 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 23 | 20% |
-| Minun | 25 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 23–25 | 40% |
-
 ## Route 15
 
 _Encounter rate: grass/cave 20_
@@ -2417,19 +1991,6 @@ _Encounter rate: grass/cave 20_
 | Yamask | 24 | 8% |
 | Exeggutor | 24 | 1% |
 | Chansey | 25 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 23 | 20% |
-| Minun | 25 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 23–25 | 40% |
 
 ## Route 19
 
@@ -2548,20 +2109,6 @@ _Encounter rate: grass/cave 5_
 | Slowpoke | 26 | 4% |
 | Snorunt | 27 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 28–29 | 20% |
-| Makuhita | 30–32 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 28–29 | 20% |
-| Chingling | 30–32 | 20% |
-
 ## Seafoam Islands B1F
 
 _Encounter rate: grass/cave 5_
@@ -2617,20 +2164,6 @@ _Encounter rate: grass/cave 5_
 | Geodude | 27 | 1% |
 | Alolan Vulpix | 26 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 28–34 | 20% |
-| Makuhita | 32–34 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 28–34 | 20% |
-| Chingling | 32–34 | 20% |
-
 ## Seafoam Islands B2F
 
 _Encounter rate: grass/cave 5_
@@ -2682,20 +2215,6 @@ _Encounter rate: grass/cave 5_
 | Avalugg | 33 | 4% |
 | Bergmite | 29 | 4% |
 | Geodude | 28 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 30–35 | 20% |
-| Makuhita | 33–35 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 30–35 | 20% |
-| Chingling | 33–35 | 20% |
 
 ## Seafoam Islands B3F
 
@@ -2749,20 +2268,6 @@ _Encounter rate: grass/cave 10_
 | Bergmite | 36 | 4% |
 | Geodude | 32 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 32–34 | 20% |
-| Makuhita | 34–36 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 32–34 | 20% |
-| Chingling | 34–36 | 20% |
-
 ## Seafoam Islands B4F / Seafoam Islands, inner room
 
 _Encounter rate: grass/cave 10, surfing 5, Old Rod 25, Good Rod 50, Super Rod 75_
@@ -2811,20 +2316,6 @@ _Encounter rate: grass/cave 10, surfing 5, Old Rod 25, Good Rod 50, Super Rod 75
 | Graveler | 37 | 4% |
 | Avalugg | 40 | 1% |
 | Piloswine | 40 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 34 | 20% |
-| Makuhita | 38 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 34 | 20% |
-| Chingling | 38 | 20% |
 
 **Surfing**
 
@@ -2911,20 +2402,6 @@ _Encounter rate: grass/cave 20, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Hattrem | 28 | 4% |
 | Orbeetle | 30 | 1% |
 | Mr. Mime | 28 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 15–25 | 20% |
-| Linoone | 35 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 15–25 | 20% |
-| Bidoof | 35 | 20% |
 
 **Surfing**
 
@@ -3018,20 +2495,6 @@ _Encounter rate: grass/cave 10_
 | Onix | 44 | 1% |
 | Rhydon | 50 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 50 | 20% |
-| Makuhita | 50 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 50 | 20% |
-| Chingling | 50 | 20% |
-
 ## Victory Road 2F
 
 _Encounter rate: grass/cave 10_
@@ -3052,20 +2515,6 @@ _Encounter rate: grass/cave 10_
 | Magnezone | 60 | 4% |
 | Goodra | 55 | 1% |
 | Aurorus | 60 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 60 | 20% |
-| Makuhita | 60 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 60 | 20% |
-| Chingling | 60 | 20% |
 
 ## Victory Road 3F
 
@@ -3122,20 +2571,6 @@ _Encounter rate: grass/cave 10, Rock Smash 40_
 | Aggron | 70 | 1% |
 | Steelix | 75 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 70 | 20% |
-| Makuhita | 60–65 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 70 | 20% |
-| Chingling | 60–65 | 20% |
-
 **Rock Smash**
 
 | Pokémon | Level | Chance |
@@ -3182,20 +2617,6 @@ _Encounter rate: grass/cave 25, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Quagsire | 30 | 8% |
 | Poltchageist | 30 | 1% |
 | Sinistcha | 30 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 28 | 20% |
-| Linoone | 32 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 28 | 20% |
-| Bidoof | 32 | 20% |
 
 **Surfing**
 
@@ -3268,20 +2689,6 @@ _Encounter rate: grass/cave 25, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Sandslash | 30 | 4% |
 | Tropius | 30 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 28 | 20% |
-| Linoone | 30 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 28 | 20% |
-| Bidoof | 30 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -3339,26 +2746,6 @@ _Encounter rate: grass/cave 15, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Slowpoke | 21–23 | 15% |
 | Rattata | 20 | 5% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 22 | 20% |
-| Makuhita | 22 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 22 | 20% |
-| Chingling | 22 | 20% |
-
-**Swarm (grass; replaces the two 20% slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Zubat | 22 | 40% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -3368,12 +2755,6 @@ _Encounter rate: grass/cave 15, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Skrelp | 20 | 5% |
 | Alomomola | 20 | 4% |
 | Seaking | 20 | 1% |
-
-**Swarm (surfing; replaces the 60% slot)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Goldeen | 20 | 60% |
 
 **Old Rod**
 
@@ -3396,19 +2777,6 @@ _Encounter rate: grass/cave 15, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Goldeen | 40 | 70% |
 | Magikarp | 40 | 20% |
 | Seaking | 40 | 10% |
-
-**Fishing at night**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Goldeen (Good Rod, replaces the 10% slot) | 20 | 10% |
-| Goldeen (Super Rod, replaces the 30% slot) | 40 | 30% |
-
-**Swarm (fishing)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Magikarp | — | — |
 
 ## Route 28
 
@@ -3434,20 +2802,6 @@ _Encounter rate: grass/cave 25, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Donphan | 40 | 20% |
 | Hisuian Sneasel | 42 | 10% |
 | Rapidash | 41–43 | 10% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 39–40 | 20% |
-| Linoone | 40 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 39–40 | 20% |
-| Bidoof | 40 | 20% |
 
 **Surfing**
 
@@ -3527,20 +2881,6 @@ _Encounter rate: grass/cave 20, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Abomasnow | 60 | 1% |
 | Larvitar | 30 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 60 | 20% |
-| Makuhita | 60 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 60 | 20% |
-| Chingling | 60 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -3602,20 +2942,6 @@ _Encounter rate: grass/cave 25, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Zorua | 41 | 1% |
 | Zoroark | 50 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 42–50 | 20% |
-| Linoone | 45 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 42–50 | 20% |
-| Bidoof | 45 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -3662,20 +2988,6 @@ _Encounter rate: grass/cave 20_
 | Pupitar | 45 | 4% |
 | Rhydon | 60 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 48 | 20% |
-| Makuhita | 48–60 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 48 | 20% |
-| Chingling | 48–60 | 20% |
-
 ## Mt. Silver Cave
 
 _Encounter rate: grass/cave 10, surfing 10, Old Rod 25, Good Rod 50, Super Rod 75_
@@ -3704,20 +3016,6 @@ _Encounter rate: grass/cave 10, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Golbat | 45 | 5% |
 | Rockruff | 20 | 4% |
 | Dreepy | 15 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 42–50 | 20% |
-| Makuhita | 43 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 42–50 | 20% |
-| Chingling | 43 | 20% |
 
 **Surfing**
 
@@ -3779,20 +3077,6 @@ _Encounter rate: grass/cave 10_
 | Golbat | 48 | 5% |
 | Larvitar | 15–20 | 5% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 45–46 | 20% |
-| Makuhita | 47–48 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 45–46 | 20% |
-| Chingling | 47–48 | 20% |
-
 ## Mt. Silver Cave 2F
 
 _Encounter rate: grass/cave 10, surfing 10, Old Rod 25, Good Rod 50, Super Rod 75_
@@ -3827,20 +3111,6 @@ _Encounter rate: grass/cave 10, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Pupitar | 45 | 4% |
 | Crobat | 60 | 1% |
 | Larvitar | 30 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 45–60 | 20% |
-| Makuhita | 60 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 45–60 | 20% |
-| Chingling | 60 | 20% |
 
 **Surfing**
 
@@ -3902,20 +3172,6 @@ _Encounter rate: grass/cave 10, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Crobat | 60 | 1% |
 | Tyranitar | 70 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 60 | 20% |
-| Makuhita | 60 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 60 | 20% |
-| Chingling | 60 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -3976,20 +3232,6 @@ _Encounter rate: grass/cave 10, surfing 10, Rock Smash 5, Old Rod 25, Good Rod 5
 | Primeape | 39 | 4% |
 | Conkeldurr | 40 | 4% |
 | Machoke | 39–40 | 2% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 38 | 20% |
-| Makuhita | 39–40 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 38 | 20% |
-| Chingling | 39–40 | 20% |
 
 **Surfing**
 
@@ -4059,20 +3301,6 @@ _Encounter rate: grass/cave 10, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Electrode | 41 | 5% |
 | Wobbuffet | 42 | 5% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 39–41 | 20% |
-| Makuhita | 41–42 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 39–41 | 20% |
-| Chingling | 41–42 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -4135,20 +3363,6 @@ _Encounter rate: grass/cave 10, surfing 10, Rock Smash 5, Old Rod 25, Good Rod 5
 | Machamp | 49 | 4% |
 | Crobat | 49 | 4% |
 | Wobbuffet | 49 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 45–47 | 20% |
-| Makuhita | 45 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 45–47 | 20% |
-| Chingling | 45 | 20% |
 
 **Surfing**
 
@@ -4272,19 +3486,6 @@ _Encounter rate: grass/cave 25_
 | Bidoof | 4 | 4% |
 | Oshawott | 4 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 2–3 | 20% |
-| Minun | 3 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 2–3 | 40% |
-
 ## Cherrygrove City
 
 _Encounter rate: surfing 15, Old Rod 25, Good Rod 50, Super Rod 75_
@@ -4371,20 +3572,6 @@ _Encounter rate: grass/cave 25, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Kricketot | 4 | 4% |
 | Froakie | 4 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 2–3 | 20% |
-| Linoone | 4 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 2–3 | 20% |
-| Bidoof | 4 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -4463,20 +3650,6 @@ _Encounter rate: grass/cave 25, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Hoothoot | 5–7 | 8% |
 | Girafarig | 5 | 2% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 3–4 | 20% |
-| Linoone | 3 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 3–4 | 20% |
-| Bidoof | 3 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -4552,20 +3725,6 @@ _Encounter rate: grass/cave 10, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Wobbuffet | 25 | 4% |
 | Golbat | 23 | 4% |
 | Dunsparce | 23 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 23 | 20% |
-| Makuhita | 25 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 23 | 20% |
-| Chingling | 25 | 20% |
 
 **Surfing**
 
@@ -4656,20 +3815,6 @@ _Encounter rate: grass/cave 5_
 | Spiritomb | 3–5 | 9% |
 | Misdreavus | 5–6 | 2% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Zigzagoon | 3–4 | 20% |
-| Spinda | 5 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Chatot | 3–4 | 20% |
-| Meditite | 5 | 20% |
-
 ## Route 32
 
 _Encounter rate: grass/cave 25, surfing 15, Old Rod 25, Good Rod 50, Super Rod 75_
@@ -4715,20 +3860,6 @@ _Encounter rate: grass/cave 25, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Zubat | 4 | 4% |
 | Ekans | 6 | 1% |
 | Popplio | 4 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 4–6 | 20% |
-| Linoone | 6 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 4–6 | 20% |
-| Bidoof | 6 | 20% |
 
 **Surfing**
 
@@ -4813,20 +3944,6 @@ _Encounter rate: grass/cave 10, surfing 10, Rock Smash 20, Old Rod 25, Good Rod 
 | Girafarig | 22 | 4% |
 | Larvesta | 5 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 20–22 | 20% |
-| Linoone | 18 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 20–22 | 20% |
-| Bidoof | 18 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -4872,74 +3989,6 @@ _Encounter rate: grass/cave 15_
 |---|---|---|
 | Unown | 5 | 100% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Unown | 5 | 40% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Unown | 5 | 40% |
-
-## Ruins of Alph Underground Hall (unused Arceus-event copy)
-
-_Encounter rate: grass/cave 15_
-
-**Grass/cave, any time**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Unown | 5 | 100% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Unown | 5 | 40% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Unown | 5 | 40% |
-
-**Swarm (grass; replaces the two 20% slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Unown | 5 | 40% |
-
-## Ruins of Alph Hall Entrance (unused Arceus-event copy)
-
-_Encounter rate: grass/cave 15_
-
-**Grass/cave, any time**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Unown | 5 | 100% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Unown | 5 | 40% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Unown | 5 | 40% |
-
-**Swarm (grass; replaces the two 20% slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Unown | 5 | 40% |
-
 ## Union Cave
 
 _Encounter rate: grass/cave 10, surfing 15, Old Rod 25, Good Rod 50, Super Rod 75_
@@ -4967,20 +4016,6 @@ _Encounter rate: grass/cave 10, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Teddiursa | 4 | 10% |
 | Onix | 6 | 4% |
 | Dunsparce | 6 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 6 | 20% |
-| Makuhita | 5 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 6 | 20% |
-| Chingling | 5 | 20% |
 
 **Surfing**
 
@@ -5047,20 +4082,6 @@ _Encounter rate: grass/cave 15, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Bidoof | 6 | 4% |
 | Barboach | 9 | 1% |
 | Dunsparce | 6 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 8 | 20% |
-| Makuhita | 7 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 8 | 20% |
-| Chingling | 7 | 20% |
 
 **Surfing**
 
@@ -5135,19 +4156,6 @@ _Encounter rate: grass/cave 25_
 | Castform | 8 | 1% |
 | Mime Jr. | 4 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 6–7 | 20% |
-| Minun | 6 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 6–7 | 40% |
-
 ## Slowpoke Well B1F
 
 _Encounter rate: grass/cave 5, surfing 10, Old Rod 25, Good Rod 50, Super Rod 75_
@@ -5170,20 +4178,6 @@ _Encounter rate: grass/cave 5, surfing 10, Old Rod 25, Good Rod 50, Super Rod 75
 | Zubat | 5–8 | 25% |
 | Misdreavus | 7 | 20% |
 | Slowpoke | 6–8 | 15% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 5–6 | 20% |
-| Makuhita | 7 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 5–6 | 20% |
-| Chingling | 7 | 20% |
 
 **Surfing**
 
@@ -5267,20 +4261,6 @@ _Encounter rate: grass/cave 5, surfing 15, Old Rod 25, Good Rod 50, Super Rod 75
 | Seedot | 5 | 1% |
 | Cherubi | 6 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Spoink | 5–6 | 20% |
-| Numel | 6 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Budew | 5–6 | 20% |
-| Carnivine | 6 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -5357,20 +4337,6 @@ _Encounter rate: grass/cave 5, surfing 10, Old Rod 25, Good Rod 50, Super Rod 75
 | Golbat | 5 | 1% |
 | Cherubi | 6 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 5–6 | 20% |
-| Makuhita | 5–6 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 5–6 | 20% |
-| Chingling | 5–6 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -5432,20 +4398,6 @@ _Encounter rate: grass/cave 25, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Teddiursa | 10–13 | 8% |
 | Hoothoot | 13 | 1% |
 | Buneary | 10 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 10–11 | 20% |
-| Linoone | 12 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 10–11 | 20% |
-| Bidoof | 12 | 20% |
 
 **Surfing**
 
@@ -5515,20 +4467,6 @@ _Encounter rate: grass/cave 25, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Rotom | 10–14 | 8% |
 | Gligar | 14 | 1% |
 | Yanma | 12 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 12 | 20% |
-| Linoone | 14 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 12 | 20% |
-| Bidoof | 14 | 20% |
 
 **Surfing**
 
@@ -5612,19 +4550,6 @@ _Encounter rate: grass/cave 25_
 | Fletchling | 10–14 | 8% |
 | Shuckle | 10–14 | 2% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 10 | 20% |
-| Minun | 15 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 10–15 | 40% |
-
 ## Route 36
 
 _Encounter rate: grass/cave 25_
@@ -5674,19 +4599,6 @@ _Encounter rate: grass/cave 25_
 | Sentret | 13 | 1% |
 | Raticate | 15 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 12 | 20% |
-| Minun | 13 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 12–13 | 40% |
-
 ## Route 37
 
 _Encounter rate: grass/cave 25_
@@ -5715,19 +4627,6 @@ _Encounter rate: grass/cave 25_
 | Burmy | 14 | 5% |
 | Absol | 14 | 5% |
 | Drifloon | 15 | 2% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 13–15 | 20% |
-| Minun | 15 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 13–15 | 40% |
 
 ## Ecruteak City
 
@@ -5782,20 +4681,6 @@ _Encounter rate: grass/cave 10_
 | Stunky | 16 | 1% |
 | Houndour | 15 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Zigzagoon | 13–14 | 20% |
-| Spinda | 15 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Chatot | 13–14 | 20% |
-| Meditite | 15 | 20% |
-
 ## Bell Tower 2F
 
 _Encounter rate: grass/cave 5_
@@ -5812,26 +4697,6 @@ _Encounter rate: grass/cave 5_
 |---|---|---|
 | Gastly | 20–22 | 80% |
 | Rattata | 22–24 | 20% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Zigzagoon | 20–21 | 20% |
-| Spinda | 22 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Chatot | 20–21 | 20% |
-| Meditite | 22 | 20% |
-
-**Swarm (grass; replaces the two 20% slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Rattata | 20–21 | 40% |
 
 ## Bell Tower 3F
 
@@ -5850,20 +4715,6 @@ _Encounter rate: grass/cave 5_
 | Gastly | 20–22 | 80% |
 | Rattata | 22–24 | 20% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Zigzagoon | 20–21 | 20% |
-| Spinda | 22 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Chatot | 20–21 | 20% |
-| Meditite | 22 | 20% |
-
 ## Bell Tower 4F
 
 _Encounter rate: grass/cave 5_
@@ -5880,20 +4731,6 @@ _Encounter rate: grass/cave 5_
 |---|---|---|
 | Gastly | 20–22 | 80% |
 | Rattata | 22–24 | 20% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Zigzagoon | 20–21 | 20% |
-| Spinda | 22 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Chatot | 20–21 | 20% |
-| Meditite | 22 | 20% |
 
 ## Bell Tower 5F
 
@@ -5912,20 +4749,6 @@ _Encounter rate: grass/cave 5_
 | Gastly | 20–22 | 80% |
 | Rattata | 22–24 | 20% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Zigzagoon | 20–21 | 20% |
-| Spinda | 22 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Chatot | 20–21 | 20% |
-| Meditite | 22 | 20% |
-
 ## Bell Tower 6F
 
 _Encounter rate: grass/cave 5_
@@ -5942,20 +4765,6 @@ _Encounter rate: grass/cave 5_
 |---|---|---|
 | Gastly | 20–22 | 80% |
 | Rattata | 22–24 | 20% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Zigzagoon | 20–21 | 20% |
-| Spinda | 22 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Chatot | 20–21 | 20% |
-| Meditite | 22 | 20% |
 
 ## Bell Tower 7F
 
@@ -5974,20 +4783,6 @@ _Encounter rate: grass/cave 5_
 | Gastly | 20–22 | 80% |
 | Rattata | 22–24 | 20% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Zigzagoon | 20–21 | 20% |
-| Spinda | 22 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Chatot | 20–21 | 20% |
-| Meditite | 22 | 20% |
-
 ## Bell Tower 8F
 
 _Encounter rate: grass/cave 5_
@@ -6004,20 +4799,6 @@ _Encounter rate: grass/cave 5_
 |---|---|---|
 | Gastly | 20–22 | 80% |
 | Rattata | 22–24 | 20% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Zigzagoon | 20–21 | 20% |
-| Spinda | 22 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Chatot | 20–21 | 20% |
-| Meditite | 22 | 20% |
 
 ## Bell Tower 9F
 
@@ -6036,20 +4817,6 @@ _Encounter rate: grass/cave 5_
 | Gastly | 20–22 | 80% |
 | Rattata | 22–24 | 20% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Zigzagoon | 20–21 | 20% |
-| Spinda | 22 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Chatot | 20–21 | 20% |
-| Meditite | 22 | 20% |
-
 ## Bell Tower 10F
 
 _Encounter rate: grass/cave 5_
@@ -6066,26 +4833,6 @@ _Encounter rate: grass/cave 5_
 |---|---|---|
 | Gastly | 20–22 | 80% |
 | Rattata | 22–24 | 20% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Zigzagoon | 20–21 | 20% |
-| Spinda | 22 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Chatot | 20–21 | 20% |
-| Meditite | 22 | 20% |
-
-**Swarm (grass; replaces the two 20% slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Rattata | 20–21 | 40% |
 
 ## Route 38
 
@@ -6119,19 +4866,6 @@ _Encounter rate: grass/cave 25_
 | Gible | 16 | 5% |
 | Tauros | 13 | 4% |
 | Snubbull | 13 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 16 | 20% |
-| Minun | 16 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 16 | 40% |
 
 ## Route 39
 
@@ -6180,19 +4914,6 @@ _Encounter rate: grass/cave 25_
 | Hoothoot | 15 | 4% |
 | Miltank | 15 | 1% |
 | Tauros | 15 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 13–16 | 20% |
-| Minun | 14–15 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 13–16 | 40% |
 
 ## Olivine City
 
@@ -6423,20 +5144,6 @@ _Encounter rate: grass/cave 5, surfing 10, Old Rod 25, Good Rod 50, Super Rod 75
 | Dhelmise | 23 | 1% |
 | Quagsire | 24 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 22–23 | 20% |
-| Makuhita | 24 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 22–23 | 20% |
-| Chingling | 24 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -6500,20 +5207,6 @@ _Encounter rate: grass/cave 5_
 | Shellder | 24 | 4% |
 | Quagsire | 24 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 22–23 | 20% |
-| Makuhita | 24 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 22–23 | 20% |
-| Chingling | 24 | 20% |
-
 ## Whirl Islands B2F
 
 _Encounter rate: grass/cave 5, surfing 10, Old Rod 25, Good Rod 50, Super Rod 75_
@@ -6531,20 +5224,6 @@ _Encounter rate: grass/cave 5, surfing 10, Old Rod 25, Good Rod 50, Super Rod 75
 | Golbat | 23 | 5% |
 | Shellder | 24 | 4% |
 | Dewgong | 34 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 22–23 | 20% |
-| Makuhita | 24 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 22–23 | 20% |
-| Chingling | 24 | 20% |
 
 **Surfing**
 
@@ -6597,20 +5276,6 @@ _Encounter rate: grass/cave 5_
 | Shellder | 25 | 4% |
 | Dewgong | 35 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 23–24 | 20% |
-| Makuhita | 25 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 23–24 | 20% |
-| Chingling | 25 | 20% |
-
 ## Route 42
 
 _Encounter rate: grass/cave 25, surfing 10, Old Rod 25, Good Rod 50, Super Rod 75_
@@ -6652,20 +5317,6 @@ _Encounter rate: grass/cave 25, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Kleavor | 16 | 10% |
 | Murkrow | 15–17 | 8% |
 | Hoothoot | 15–17 | 2% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 13–15 | 20% |
-| Linoone | 14 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 13–15 | 20% |
-| Bidoof | 14 | 20% |
 
 **Surfing**
 
@@ -6740,20 +5391,6 @@ _Encounter rate: grass/cave 10, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Phanpy | 14 | 5% |
 | Onix | 14–16 | 5% |
 | Wobbuffet | 15 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 13–15 | 20% |
-| Makuhita | 14 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 13–15 | 20% |
-| Chingling | 14 | 20% |
 
 **Surfing**
 
@@ -6840,20 +5477,6 @@ _Encounter rate: grass/cave 10_
 | Gliscor | 35 | 1% |
 | Dunsparce | 17 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 23–33 | 20% |
-| Makuhita | 15–35 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 23–33 | 20% |
-| Chingling | 15–35 | 20% |
-
 ## Mt. Mortar 2F
 
 _Encounter rate: grass/cave 10, surfing 10, Old Rod 25, Good Rod 50, Super Rod 75_
@@ -6908,20 +5531,6 @@ _Encounter rate: grass/cave 10, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Onix | 14 | 4% |
 | Hippowdon | 35 | 1% |
 | Cyndaquil | 5 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 23–33 | 20% |
-| Makuhita | 15–35 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 23–33 | 20% |
-| Chingling | 15–35 | 20% |
 
 **Surfing**
 
@@ -6990,20 +5599,6 @@ _Encounter rate: grass/cave 10, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Onix | 14 | 4% |
 | Steelix | 35 | 1% |
 | Dunsparce | 17 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 23–33 | 20% |
-| Makuhita | 15–35 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 23–33 | 20% |
-| Chingling | 15–35 | 20% |
 
 **Surfing**
 
@@ -7099,20 +5694,6 @@ _Encounter rate: grass/cave 20, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Hoothoot | 17 | 5% |
 | Houndour | 16 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 15 | 20% |
-| Linoone | 20–21 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 15 | 20% |
-| Bidoof | 20–21 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -7181,20 +5762,6 @@ _Encounter rate: grass/cave 25, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Lopunny | 24 | 4% |
 | Hitmontop | 26 | 4% |
 | Carnivine | 24 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 26–27 | 20% |
-| Linoone | 22 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 26–27 | 20% |
-| Bidoof | 22 | 20% |
 
 **Surfing**
 
@@ -7283,20 +5850,6 @@ _Encounter rate: grass/cave 5_
 | Smoochum | 22 | 1% |
 | Jynx | 22 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 21–22 | 20% |
-| Makuhita | 22 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 21–22 | 20% |
-| Chingling | 22 | 20% |
-
 ## Ice Path B1F
 
 _Encounter rate: grass/cave 5_
@@ -7351,20 +5904,6 @@ _Encounter rate: grass/cave 5_
 | Delibird | 22 | 4% |
 | Smoochum | 22 | 1% |
 | Jynx | 22 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 21–22 | 20% |
-| Makuhita | 22 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 21–22 | 20% |
-| Chingling | 22 | 20% |
 
 ## Ice Path B2F
 
@@ -7421,20 +5960,6 @@ _Encounter rate: grass/cave 5_
 | Smoochum | 23 | 1% |
 | Jynx | 23 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 22–23 | 20% |
-| Makuhita | 23 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 22–23 | 20% |
-| Chingling | 23 | 20% |
-
 ## Ice Path B3F
 
 _Encounter rate: grass/cave 5_
@@ -7489,20 +6014,6 @@ _Encounter rate: grass/cave 5_
 | Delibird | 23 | 4% |
 | Amaura | 23 | 1% |
 | Aurorus | 23 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 22–23 | 20% |
-| Makuhita | 23 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 22–23 | 20% |
-| Chingling | 23 | 20% |
 
 ## Blackthorn City
 
@@ -7630,20 +6141,6 @@ _Encounter rate: grass/cave 25, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Ursaring | 35 | 1% |
 | Ampharos | 37 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 23 | 20% |
-| Linoone | 24 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 23 | 20% |
-| Bidoof | 24 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -7697,19 +6194,6 @@ _Encounter rate: grass/cave 25_
 | Sentret | 2–4 | 14% |
 | Sunkern | 4 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 2–3 | 20% |
-| Minun | 2 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 2–3 | 40% |
-
 ## Route 47
 
 _Encounter rate: grass/cave 25, surfing 15, Old Rod 25, Good Rod 50, Super Rod 75_
@@ -7747,20 +6231,6 @@ _Encounter rate: grass/cave 25, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Furret | 31 | 4% |
 | Dunsparce | 33 | 1% |
 | Porygon2 | 40 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Whismur | 33–34 | 20% |
-| Linoone | 31–32 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Buizel | 33–34 | 20% |
-| Bidoof | 31–32 | 20% |
 
 **Surfing**
 
@@ -7849,19 +6319,6 @@ _Encounter rate: grass/cave 25_
 | Scizor | 22 | 4% |
 | Togepi | 5 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Plusle | 20–21 | 20% |
-| Minun | 22–24 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Shinx | 20–24 | 40% |
-
 ## Alto Mare Waters
 
 _Encounter rate: grass/cave 15, surfing 15, Old Rod 25, Good Rod 50, Super Rod 75_
@@ -7899,20 +6356,6 @@ _Encounter rate: grass/cave 15, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Combee | 13 | 4% |
 | Stunky | 14 | 1% |
 | Burmy | 13 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 10 | 20% |
-| Makuhita | 12 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 10 | 20% |
-| Chingling | 12 | 20% |
 
 **Surfing**
 
@@ -8009,20 +6452,6 @@ _Encounter rate: grass/cave 15, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Heracross | 20 | 1% |
 | Slowking | 23 | 1% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 22 | 20% |
-| Makuhita | 22 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 22 | 20% |
-| Chingling | 22 | 20% |
-
 **Surfing**
 
 | Pokémon | Level | Chance |
@@ -8091,20 +6520,6 @@ _Encounter rate: grass/cave 10_
 | Zubat | 15 | 5% |
 | Magmar | 14 | 5% |
 
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Zigzagoon | 14 | 20% |
-| Spinda | 16 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Chatot | 14 | 20% |
-| Meditite | 16 | 20% |
-
 ## Island Forest
 
 _Encounter rate: grass/cave 15, surfing 15, Old Rod 25, Good Rod 50, Super Rod 75_
@@ -8155,20 +6570,6 @@ _Encounter rate: grass/cave 15, surfing 15, Old Rod 25, Good Rod 50, Super Rod 7
 | Cherubi | 15 | 4% |
 | Carbink | 16 | 1% |
 | Furfrou | 17 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Ludicolo | 15–17 | 20% |
-| Makuhita | 16–17 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Wynaut | 15–17 | 20% |
-| Drifloon | 16–17 | 20% |
 
 **Surfing**
 
@@ -8240,20 +6641,6 @@ _Encounter rate: grass/cave 10, surfing 10, Old Rod 25, Good Rod 50, Super Rod 7
 | Machamp | 49 | 4% |
 | Crobat | 49 | 4% |
 | Wobbuffet | 49 | 1% |
-
-**Radio on Hoenn Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Absol | 45–47 | 20% |
-| Makuhita | 45 | 20% |
-
-**Radio on Sinnoh Sound (replaces the 10% grass slots)**
-
-| Pokémon | Level | Chance |
-|---|---|---|
-| Bronzor | 45–47 | 20% |
-| Chingling | 45 | 20% |
 
 **Surfing**
 
@@ -8962,9 +7349,9 @@ _6 normal trees, 0 special trees_
 
 ## Bug-Catching Contest
 
-The National Park during the contest (Tuesdays, Thursdays and Saturdays). 4 sets of 10 slots. Rate is the slot weight; score is the base points for the catch. Which set is used follows HeartGold's rule (set 1 until you have the National Pokédex, then one set per contest day); the hack keeps HeartGold's species, but the rule is not confirmed in this hack.
+The National Park during the contest (Tuesdays, Thursdays and Saturdays). 1 sets of 10 slots. Rate is the slot weight; score is the base points for the catch. The contest runs once per day, with one Pokémon and 20 Sport Balls, and uses the same species set on Tuesdays, Thursdays and Saturdays in this hack. The additional National Pokédex species sets are not active.
 
-**Set 1 (before you have the National Pokédex)**
+**Set 1 (Tuesdays, Thursdays and Saturdays)**
 
 | Pokémon | Level | Rate | Score |
 |---|---|---|---|
@@ -8979,54 +7366,9 @@ The National Park during the contest (Tuesdays, Thursdays and Saturdays). 4 sets
 | Scyther | 13–14 | 5 | 100 |
 | Pinsir | 13–14 | 0 | 100 |
 
-**Set 2 (Tuesdays, with the National Pokédex)**
-
-| Pokémon | Level | Rate | Score |
-|---|---|---|---|
-| Caterpie | 24–36 | 80 | 60 |
-| Weedle | 24–36 | 60 | 60 |
-| Metapod | 26–36 | 50 | 60 |
-| Kakuna | 26–36 | 40 | 60 |
-| Butterfree | 27–30 | 30 | 80 |
-| Beedrill | 27–30 | 20 | 80 |
-| Venonat | 25–32 | 15 | 80 |
-| Paras | 27–34 | 10 | 80 |
-| Scyther | 27–28 | 5 | 100 |
-| Pinsir | 27–28 | 0 | 100 |
-
-**Set 3 (Thursdays, with the National Pokédex)**
-
-| Pokémon | Level | Rate | Score |
-|---|---|---|---|
-| Wurmple | 24–36 | 80 | 60 |
-| Silcoon | 24–36 | 60 | 60 |
-| Nincada | 26–36 | 50 | 80 |
-| Volbeat | 26–36 | 40 | 80 |
-| Kricketot | 27–30 | 30 | 60 |
-| Kricketune | 27–30 | 20 | 80 |
-| Dustox | 25–32 | 15 | 80 |
-| Combee | 27–34 | 10 | 80 |
-| Scyther | 27–28 | 5 | 100 |
-| Pinsir | 27–28 | 0 | 100 |
-
-**Set 4 (Saturdays, with the National Pokédex)**
-
-| Pokémon | Level | Rate | Score |
-|---|---|---|---|
-| Wurmple | 24–36 | 80 | 60 |
-| Cascoon | 24–36 | 60 | 60 |
-| Nincada | 26–36 | 50 | 80 |
-| Illumise | 26–36 | 40 | 80 |
-| Kricketot | 27–30 | 30 | 60 |
-| Kricketune | 27–30 | 20 | 80 |
-| Beautifly | 25–32 | 15 | 80 |
-| Combee | 27–34 | 10 | 80 |
-| Scyther | 27–28 | 5 | 100 |
-| Pinsir | 27–28 | 0 | 100 |
-
 ## Maps with a placeholder table
 
-- **Safari Zone.** The Safari Zone's wild Pokémon come from its own area tables, which these pages don't list yet. (The map's ordinary encounter table is an unused placeholder: Rattata only.)
+- **Safari Zone.** The Safari Zone's wild Pokémon depend on the selected area, time and block setup. (The map's ordinary encounter table is an unused placeholder: Rattata only.)
 - **National Park Bug Catching Contest.** During the Bug-Catching Contest, the wild Pokémon come from the contest sets listed below, not from the park's normal table.
 
 ---

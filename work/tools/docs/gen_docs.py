@@ -21,6 +21,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import romdata as R  # noqa: E402
 import places  # noqa: E402
+import acquisition as A  # noqa: E402
 from trainer_guide import STORY_CLASSES, GYM_CHALLENGES, GYM_CHALLENGE_IDS, LEADER_ORDER, story_group
 
 DOCS = os.path.join(R.REPO, 'work', 'docs')
@@ -714,6 +715,10 @@ def merge_slots(ctx, slots, rates):
 
 def encounter_sections(ctx, e):
     """Return list of (title, rows) for one encounter record."""
+    # Stored swarm/radio/night-fishing fields do not yield encounters in this hack.
+    # CN 0x0202DC08 disables swarms; 0x0202AA74 disables National-Dex radio music;
+    # overlay2's fishing selector only reads the five ordinary rod slots.
+    # Evidence: work/notes/pokedex_wild_gates.md and pokedex_wild_trade_audit.md.
     secs = []
     if e['rates']['walk']:
         lv = e['levels']
@@ -724,37 +729,13 @@ def encounter_sections(ctx, e):
         for slots, keys in times.items():
             when = 'any time' if len(keys) == 3 else ' and '.join(keys)
             secs.append(('Grass/cave, ' + when, merge_slots(ctx, list(slots), R.LAND_RATES)))
-        base_day = [(sp, l, l) for sp, l in zip(e['day'], lv)]
-        for key, title in (('hoenn', 'Radio on Hoenn Sound'), ('sinnoh', 'Radio on Sinnoh Sound')):
-            if any(e[key]):
-                slots = list(base_day)
-                for i in (2, 3):
-                    slots[i] = (e[key][0], lv[i], lv[i])
-                for i in (4, 5):
-                    slots[i] = (e[key][1], lv[i], lv[i])
-                secs.append((title + ' (replaces the 10% grass slots)',
-                              merge_slots(ctx, [slots[i] for i in (2, 3, 4, 5)], [10, 10, 10, 10])))
-        if e['swarm']['land']:
-            secs.append(('Swarm (grass; replaces the two 20% slots)', [(ctx.sp(e['swarm']['land']), '%s' % lvl(lv[0], lv[1]), 40)]))
     if e['rates']['surf']:
         secs.append(('Surfing', merge_slots(ctx, e['surf'], R.SURF_RATES)))
-        if e['swarm']['surf']:
-            secs.append(('Swarm (surfing; replaces the 60% slot)', [(ctx.sp(e['swarm']['surf']), lvl(e['surf'][0][1], e['surf'][0][2]), 60)]))
     if e['rates']['rock']:
         secs.append(('Rock Smash', merge_slots(ctx, e['rock'], R.ROCK_RATES)))
     for key, title in (('old', 'Old Rod'), ('good', 'Good Rod'), ('super', 'Super Rod')):
         if e['rates'][key]:
             secs.append((title, merge_slots(ctx, e[key], R.FISH_RATES)))
-    nf = e['swarm']['night_fish']
-    if nf and (e['rates']['good'] or e['rates']['super']):
-        rows = []
-        if e['rates']['good']:
-            rows.append((ctx.sp(nf) + ' (Good Rod, replaces the 10% slot)', lvl(e['good'][3][1], e['good'][3][2]), 10))
-        if e['rates']['super']:
-            rows.append((ctx.sp(nf) + ' (Super Rod, replaces the 30% slot)', lvl(e['super'][1][1], e['super'][1][2]), 30))
-        secs.append(('Fishing at night', rows))
-    if e['swarm']['fish'] and any(e['rates'][k] for k in ('old', 'good', 'super')):
-        secs.append(('Swarm (fishing)', [(ctx.sp(e['swarm']['fish']), '—', None)]))
     return secs
 
 
@@ -764,17 +745,9 @@ def enc_species(e, ctx=None):
     out = set()
     if e['rates']['walk']:
         out |= set(e['morning']) | set(e['day']) | set(e['night'])
-        out |= set(e['hoenn']) | set(e['sinnoh'])
-        out.add(e['swarm']['land'])
     for k in ('surf', 'rock', 'old', 'good', 'super'):
         if e['rates'][k]:
             out |= set(s for s, _, _ in e[k])
-    if e['rates']['surf']:
-        out.add(e['swarm']['surf'])
-    if any(e['rates'][k] for k in ('good', 'super')):
-        out.add(e['swarm']['night_fish'])
-    if any(e['rates'][k] for k in ('old', 'good', 'super')):
-        out.add(e['swarm']['fish'])
     if ctx is not None:
         return {form_index(ctx, *R.split_species(s)) if s < 2048 * 32 else s for s in out if s}
     return {R.split_species(s)[0] if s < 2048 * 32 else s for s in out if s}
@@ -783,17 +756,18 @@ def enc_species(e, ctx=None):
 # Maps whose wild Pokémon come from another system: their encounter record is HeartGold's own
 # one-species placeholder (byte-identical in the US ROM), so it is not shown as a real table.
 ENC_PLACEHOLDER = {
-    357: 'The Safari Zone\'s wild Pokémon come from its own area tables, which these pages don\'t list yet. '
+    357: 'The Safari Zone\'s wild Pokémon depend on the selected area, time and block setup. '
          '(The map\'s ordinary encounter table is an unused placeholder: Rattata only.)',
     487: 'During the Bug-Catching Contest, the wild Pokémon come from the contest sets listed below, not from '
          'the park\'s normal table.',
 }
-# data/mushi/mushi_encount.bin sets. HeartGold uses set 1 until you have the National Pokédex, then one set
-# per contest day; the hack keeps HeartGold's species sets, but the day rule was not re-checked in its code.
-CONTEST_SETS = ['before you have the National Pokédex', 'Tuesdays, with the National Pokédex',
-                'Thursdays, with the National Pokédex', 'Saturdays, with the National Pokédex']
-CONTEST_NOTE = ('Which set is used follows HeartGold\'s rule (set 1 until you have the National Pokédex, then one set '
-                'per contest day); the hack keeps HeartGold\'s species, but the rule is not confirmed in this hack.')
+# CN National Dex getter 0x0202AA74 returns literal 0. Overlay25 constructor
+# 0x0225BFEC calls it before 0x0225C4AC, so only the first contest set is used.
+# See work/notes/pokedex_wild_gates.md; stored National-Dex sets are unreachable.
+CONTEST_SETS = ['Tuesdays, Thursdays and Saturdays']
+CONTEST_NOTE = ('The contest runs once per day, with one Pokémon and 20 Sport Balls, and uses the same species set '
+                'on Tuesdays, Thursdays and Saturdays in this hack. '
+                'The additional National Pokédex species sets are not active.')
 # Maps whose wild table changes with the weekday: the hack's encounter-bank getter (arm9 0x0203A7B0) returns the map
 # header's record + weekday - 1 (weekday 0 = Sunday) for Pal Park, so Sunday reads Cerulean Cave's record 141 and
 # record 148 is never used (hack finding D-1484). The player gets there through the Catching Show's Fixed Catch mode.
@@ -806,6 +780,9 @@ ENC_WEEKDAY_NOTE = ('The wild table changes with the day of the week (by the DS 
 # Methods a map has no terrain for, although the record it reads has slots for them. Pal Park's map (matrix 8, land_data
 # 415/668-670, unchanged from US HeartGold) has water but no breakable rocks: events file 106 has no sprite-85 rocks.
 ENC_MAP_LACKS = {109: {'rock'}}
+# Only reached by the four puzzle-room warp branches requiring research stage 6;
+# the hack never starts that progression (D-1427). No incoming map warp exists.
+ENC_UNREACHABLE = {490, 491}  # map491's relocated entrance is solid terrain; see pokedex_unown_access.md
 
 
 def map_record(e, zid):
@@ -847,6 +824,8 @@ def gen_encounters(ctx):
     ctx.enc_placeholders = {}
     ctx.enc_weekday = {}
     for z in ctx.zones:
+        if z['zone_id'] in ENC_UNREACHABLE:
+            continue
         b = z['wild_encounter_bank']
         if z['zone_id'] in ENC_PLACEHOLDER:
             ctx.enc_placeholders[z['zone_id']] = (b, ENC_PLACEHOLDER[z['zone_id']])
@@ -931,7 +910,7 @@ def gen_encounters(ctx):
                 rows = merge_slots(ctx, [(sp, lo, hi) for sp, lo, hi in h[k]], R.HEADBUTT_RATES)
                 body.append('| %s | %s |' % (t, ', '.join('%s (%s, %d%%)' % (n, l, p) for n, l, p in rows)))
             body.append('')
-    bc = R.parse_bug_contest(ctx.rom['bugcontest'])
+    bc = R.parse_bug_contest(ctx.rom['bugcontest'])[:1]
     ctx.bug_contest = bc
     if bc:
         out.append('- [Bug-Catching Contest](#bug-catching-contest)')
@@ -967,11 +946,8 @@ RATE_NAMES = {'walk': 'grass/cave', 'surf': 'surfing', 'rock': 'Rock Smash', 'ol
 # Time of day: the hour table in arm9 (0x020F2A94) matches HeartGold's; encounters treat evening as day.
 ENC_EXPLAINER = (
     'Morning is 4:00–9:59, day 10:00–19:59 and night 20:00–3:59 on the game clock; a table marked "any time" is the '
-    'same all day. "Radio on Hoenn Sound" / "Sinnoh Sound": with the Pokégear radio playing that show, these Pokémon '
-    'take the four 10% grass slots and the other slots stay as they are (when the two shows become available in this '
-    'hack is not documented yet). "Swarm": during a swarm the listed Pokémon takes the slots named in the heading; how '
-    'a swarm starts in this hack is not documented yet. "Fishing at night": at night the listed Pokémon replaces one '
-    'Good Rod or Super Rod slot. "—" means the table stores no level or chance for that entry. The encounter rate is '
+    'same all day. Swarms, Hoenn/Sinnoh Sound encounters, and special night-fishing replacements are not active in '
+    'this hack and are excluded. "—" means the table stores no level or chance for that entry. The encounter rate is '
     'how often you meet wild Pokémon on that map (higher means more often).')
 
 
@@ -2052,30 +2028,64 @@ def form_index(ctx, sp, fm):
     return sp
 
 
+def acquisition_sources(ctx):
+    return list(A.scripted_sources(ctx, static_mons(ctx)))
+
+
+def trade_sources(ctx):
+    places = trade_places(ctx)
+    loans = loan_trades(ctx)
+    for i, data in enumerate(ctx.rom['trade']):
+        trade = R.parse_trade(data)
+        for file in places.get(i, []):
+            review = A.trade_review(i, file)
+            if review.get('excluded'):
+                continue
+            yield dict(trade, trade=i, file=file, loan=i in loans,
+                       retains=review.get('retains', False), label=review.get('label'),
+                       acquisitionKind=review.get('acquisitionKind'), level=review.get('level'),
+                       conditions=review.get('conditions', []))
+
+
 def availability(ctx):
     """species index -> short 'how to get it' text (empty if no source found)."""
     how = collections.defaultdict(list)
+    sources = collections.defaultdict(list)
+
+    def add(sp, text, kind, conditions=(), obtainable=True):
+        row = dict(kind=kind, text=text, conditions=list(conditions))
+        if row not in sources[sp]:
+            sources[sp].append(row)
+        if obtainable:
+            how[sp].append(text + (' — ' + ' '.join(conditions) if conditions else ''))
+
     for sp, places in ctx.enc_usage.items():
         ps = list(dict.fromkeys(places))
         how[sp].append('wild: ' + ', '.join(ps[:4]) + (' and %d more' % (len(ps) - 4) if len(ps) > 4 else ''))
-    for kind, sp, fm, lv, f in static_mons(ctx):
+    for source in acquisition_sources(ctx):
+        kind, sp, fm, lv, f = (source[k] for k in ('kind', 'species', 'form', 'level', 'file'))
         idx = form_index(ctx, sp, fm)
         lvs = '' if lv is None or lv >= 0x4000 else ' (Lv %d)' % lv
-        how[idx].append({'gift': 'gift', 'egg': 'gift Egg', 'static': 'one-time battle'}[kind] + lvs + ', ' + ctx.place_str(f))
-    tp = trade_places(ctx)
-    loans = loan_trades(ctx)
-    for i, b in enumerate(ctx.rom['trade']):
-        t = R.parse_trade(b)
-        places = ', '.join(ctx.place_str(f) for f in tp.get(i, [])) or 'no script found'
-        how[t['give']].append(('loan Pokémon, ' if i in loans else 'in-game trade, ') + places)
+        add(idx, {'gift': 'Gift', 'egg': 'Gift Egg', 'static': 'Scripted wild battle'}[kind] + lvs + ', ' +
+            source.get('place', ctx.place_str(f)), kind, source['conditions'])
+    for t in trade_sources(ctx):
+        kind = t.get('acquisitionKind') or ('loan' if t['loan'] else 'trade')
+        text = t.get('label') or ('Temporary loan' if t['loan'] else 'Trade %s for %s' % (ctx.sp(t['ask']), ctx.sp(t['give'])))
+        if t.get('level'):
+            text += ' (Lv %d)' % t['level']
+        add(t['give'], text + ', ' + ctx.place_str(t['file']), kind,
+            t['conditions'], obtainable=not t['loan'] or t.get('retains', False))
     if any(op == 432 for d in ctx.S.values() for (op, a, n, t) in d['ins'].values()):
         revive = [ctx.place_str(f) for f, d in ctx.S.items() if any(op == 432 for (op, a, n, t) in d['ins'].values())]
         for item, sp in R.fossils(ctx.rom):
             if ctx.item_sources.get(item):
-                how[sp].append('revive %s at %s' % (ctx.it(item), ', '.join(dict.fromkeys(revive))))
+                fossil = A.fossil_review(sp, item)
+                add(sp, 'Revive %s at %s' % (ctx.it(item), fossil.get('place', ', '.join(dict.fromkeys(revive)))),
+                    'fossil', fossil.get('conditions', []))
     for sp, e in reviewed('extra_sources').items():   # a verified source replaces what the scan found
         if e.get('how'):
             how[sp] = [e['how']]
+            sources[sp] = [dict(kind='other', text=e['how'], conditions=[])]
     direct = {k for k, v in how.items() if v}
     # evolution closure and breeding
     par = evo_parents(ctx)
@@ -2088,7 +2098,7 @@ def availability(ctx):
                 t = evo_target(ctx, s, t)
                 if t not in obtain and evo_works(m, p):
                     obtain.add(t)
-                    how[t].append('evolve %s' % ctx.sp(s))
+                    add(t, 'Evolve %s' % ctx.sp(s), 'evolution')
                     changed = True
             # breeding: walk to the family root
             root = s
@@ -2099,15 +2109,16 @@ def availability(ctx):
             p = ctx.personal[s]
             if root not in obtain and 15 not in p['egg_groups'] and root < 1026:
                 obtain.add(root)
-                how[root].append('breed %s' % ctx.sp(s))
+                add(root, 'Breed %s' % ctx.sp(s), 'breeding')
                 changed = True
     if 490 in obtain and 489 not in obtain:   # Manaphy's Eggs hatch into Phione
         obtain.add(489)
-        how[489].append('breed Manaphy')
+        add(489, 'Breed Manaphy', 'breeding')
     res = {}
     for sp in ctx.species_ids():
         v = list(dict.fromkeys(how.get(sp, [])))
-        res[sp] = '; '.join(v[:5]) + (' …' if len(v) > 5 else '')
+        res[sp] = '; '.join(v)
+    ctx._acquisition = sources
     return res
 
 
@@ -2116,18 +2127,21 @@ def gen_trades_tutors(ctx, tutors):
     loans = loan_trades(ctx)
     out = [GEN_NOTE, '# Trades, move tutors and the Move Reminder\n', '## In-game trades\n',
            'From `a/1/1/2` (13 trade records, NARC 112) and the nickname/OT bank (0198). "Where" is the map whose script '
-           'loads the trade (`LoadNPCTrade`), or hands the Pokémon over as a loan (`GiveLoanMon`, marked "loan": '
-           '"You give" does not apply, and the scripts take loans back with `ReturnLoanMon`). IVs are fixed as listed (HP/Atk/Def/Spe/SpA/SpD).\n',
+           'loads the trade or creates a gift/replacement using the trade data. For gifts and replacements, '
+           'read the requirements instead of the "You give" column. IVs are fixed as listed (HP/Atk/Def/Spe/SpA/SpD).\n',
            '| # | Where | You give | You get | Nickname | OT | OT ID | Held item | Ability | IVs |',
            '|---|---|---|---|---|---|---|---|---|---|']
     for i, b in enumerate(ctx.rom['trade']):
         t = R.parse_trade(b)
-        places = '; '.join(ctx.place_str(f) for f in tp.get(i, [])) or '**not used by any script**'
+        places = '; '.join(ctx.place_str(f) + (' — ' + ' '.join(A.trade_review(i, f).get('conditions', []))
+                          if A.trade_review(i, f).get('conditions') else '') for f in tp.get(i, [])
+                          if not A.trade_review(i, f).get('excluded')) or '**not used by any reachable script**'
         if i in loans:
-            places += ' (loan)'
+            labels = [A.trade_review(i, f).get('label', 'loan') for f in tp.get(i, [])]
+            places += ' (' + ', '.join(dict.fromkeys(labels)) + ')'
         ab = ctx.ab(t['ability']) if 0 < t['ability'] < 1000 else ('random' if t['ability'] >= 0x80000000 else '—')
         out.append('| %d | %s | %s | %s | %s | %s | %05d | %s | %s | %s |' % (
-            i, md_escape(places), ctx.sp(t['ask']), ctx.sp(t['give']), md_escape(ctx.TRADE_NAMES.get(i, '')),
+            i, md_escape(places), '—' if i in loans else ctx.sp(t['ask']), ctx.sp(t['give']), md_escape(ctx.TRADE_NAMES.get(i, '')),
             md_escape(re.sub(r'\{VAR:[^}]*\}', '(player-name placeholder)', ctx.TRADE_NAMES.get(13 + i, ''))), t['ot_id'], ctx.it(t['item']) if t['item'] else '—', ab,
             '/'.join(map(str, t['ivs']))))
     tag_ots = [i for i in range(len(ctx.rom['trade'])) if '{VAR:' in ctx.TRADE_NAMES.get(13 + i, '')]
@@ -2189,19 +2203,20 @@ def gen_trades_tutors(ctx, tutors):
     else:
         out.append('No script opens the move relearner.')
     out.append('')
-    out.append('## Pokémon gifts and one-time battles\n')
-    out.append('`GiveMon`, `GiveEgg` and `WildBattle` commands in the scripts (legendaries, gift Pokémon, fossils). '
+    out.append('## Pokémon gifts and scripted encounters\n')
+    out.append('Scripted gifts and encounters, with reviewed access requirements. Unreachable scenes are excluded. '
                'Levels shown when the script uses a fixed value.\n')
-    out.append('| Where | Kind | Pokémon | Level |')
-    out.append('|---|---|---|---|')
+    out.append('| Where | Kind | Pokémon | Level | Requirements |')
+    out.append('|---|---|---|---|---|')
     rows = set()
-    for kind, sp, fm, lv, f in static_mons(ctx):
+    for source in acquisition_sources(ctx):
+        kind, sp, fm, lv, f = (source[k] for k in ('kind', 'species', 'form', 'level', 'file'))
         z = min([ctx.zrank(zz) for zz in ctx.file_zones.get(f, [])] or [(99999, '', 0)])
         lvs = '—' if lv is None or lv >= 0x4000 else str(lv)
-        rows.add((z, ctx.place_str(f), {'gift': 'gift', 'egg': 'Egg', 'static': 'battle'}[kind],
-                  ctx.sp(form_index(ctx, sp, fm)), lvs))
-    for _, p, k, n, l in sorted(rows):
-        out.append('| %s | %s | %s | %s |' % (md_escape(p), k, md_escape(n), l))
+        rows.add((z, source.get('place', ctx.place_str(f)), {'gift': 'gift', 'egg': 'Egg', 'static': 'battle'}[kind],
+                  ctx.sp(form_index(ctx, sp, fm)), lvs, ' '.join(source['conditions'])))
+    for _, p, k, n, l, requirements in sorted(rows):
+        out.append('| %s | %s | %s | %s | %s |' % (md_escape(p), k, md_escape(n), l, md_escape(requirements)))
     out.append('')
     return '\n'.join(out) + '\n'
 
@@ -2593,8 +2608,8 @@ python3 -m unittest work/tools/docs/test_gen_docs.py
 - [items.md](items.md): key/quest items, field and hidden items, NPC gifts, shops, prize and paid exchanges.
 - [trainers.md](trainers.md): Gym challenges in guide order, other named opponents and allies, then ordinary
   trainers by map, with full teams and separate unconfirmed records.
-- [trades_tutors.md](trades_tutors.md): in-game trades, move tutors, the Move Reminder, gift Pokémon and one-time
-  battles.
+- [trades_tutors.md](trades_tutors.md): in-game trades, move tutors, the Move Reminder, gift Pokémon and scripted
+  encounters, including their access requirements.
 
 ## The author's own notes (maintainer-local)
 
@@ -2628,7 +2643,7 @@ named), not by the vanilla file names.
 | Items | `a/0/1/7` | 34-byte records: price u16 at 0, pocket in the word at 8 |
 | Wild encounters | `a/0/3/7`, NARC 37 | pret `EncounterData` (0xC4 bytes) |
 | Headbutt | `a/2/5/2`, one member per map | pret `HeadbuttEncounterData` |
-| Bug-Catching Contest | `data/mushi/mushi_encount.bin` | 4 × 10 slots |
+| Bug-Catching Contest | `data/mushi/mushi_encount.bin` | 4 × 10 stored slots; only the first set is active |
 | Trainers | `a/0/5/5` (20-byte header) and `a/0/5/6` | parties are a fixed 28 bytes per Pokémon (hack format) |
 | In-game trades | `a/1/1/2`, names in bank 0198 | pret `NPCTrade` (0x54 bytes) |
 | Hidden items | arm9 `0x020F7194`, 231 × 8 bytes | bg events with script 8000+n |
@@ -2647,8 +2662,9 @@ the hack's own check for them is not confirmed.
   disassembled with the command table in `work/tools/docs/script_cmds.json` (pret names, hack's 843 commands).
 - Script-derived facts (gifts, prices, tutor payments, trainer branch conditions) come from constant values in
   the scripts. Values computed at run time are shown as unknown or left out.
-- Not covered: berry and apricorn trees, the Safari Zone's object-based areas, Pokéwalker routes, Battle Frontier sets,
-  roaming Pokémon and swarm schedules (the swarm species per map are listed).
+- Not covered here: berry and apricorn trees, Pokéwalker routes, Battle Frontier sets and roaming Pokémon.
+  The website also lists Safari area candidates. Object Arrangement, swarms, radio encounter
+  programs and night-fishing replacements are disabled in the hack and excluded from acquisition sources.
 - The cross-reference of these docs against the scripts and dialogue is `work/notes/docs_crossref.md`; the
   cross-check against the author's spreadsheets is `work/notes/spreadsheet_crossref.md`.
 - Page sizes (for maintainers): ''' + sizes + '''.

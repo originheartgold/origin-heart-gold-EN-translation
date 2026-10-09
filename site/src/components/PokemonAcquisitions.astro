@@ -1,7 +1,7 @@
 ---
 import { areaUrl, speciesById, url, type PokemonAcquisition } from '../lib/data';
 const { sources } = Astro.props as { sources: PokemonAcquisition[] };
-const labels = { gift: 'Gift', egg: 'Gift Egg', trade: 'Trade', loan: 'Loan', 'loan-return': 'Loan return', starter: 'Starter choice', prize: 'Prize' };
+const labels = { gift: 'Gift', egg: 'Gift Egg', trade: 'Trade', loan: 'Loan', 'loan-return': 'Loan return', starter: 'Starter choice', prize: 'Prize', static: 'Scripted encounter' };
 ---
 <ul class="pokemon-acquisitions">
 	{sources.map(source => {

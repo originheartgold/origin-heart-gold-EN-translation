@@ -20,6 +20,7 @@ export function getStaticPaths() {
 }
 const { s } = Astro.props as { s: Species };
 const acquisition = s.otherSources;
+const obtainableForm = s.formChanges.some(f => f.result === s.id && speciesById.get(f.base)?.how);
 const total = s.stats.reduce((a, b) => a + b, 0);
 const ev = s.ev.map((v, i) => (v ? `${v} ${STAT_NAMES[i]}` : '')).filter(Boolean).join(', ') || '—';
 const idx = species.findIndex((x) => x.id === s.id);
@@ -67,7 +68,8 @@ const headings = [
 	<h2 id="where">Where to find it</h2>
 	{s.acquisitions.length > 0 && <PokemonAcquisitions sources={s.acquisitions} />}
 	{s.wildEncounters.length > 0 && <WildEncounters name={s.name} encounters={s.wildEncounters} />}
-	{s.unavailableReason ? <p>{playerNote(s.unavailableReason)}</p> : acquisition ? <p>{playerNote(acquisition)}</p> : s.wildEncounters.length || s.acquisitions.length ? null : s.formChanges.some((f) => f.result === s.id) ? <p>Available through a held-item transformation; see below.</p> : s.calendar.length ? <p>Appears on the date listed below.</p> : s.battleOnly ? null : <p><strong>No confirmed way to get it.</strong> {playerNote(s.note) || 'No location or evolution route is known.'}</p>}
+	{s.wildNotes.map(note => <p class="small">{playerNote(note)}</p>)}
+	{s.unavailableReason ? <p>{playerNote(s.unavailableReason)}</p> : acquisition ? <p>{playerNote(acquisition)}</p> : s.wildEncounters.length || s.acquisitions.length ? null : obtainableForm ? <p>Available through a held-item transformation; see below.</p> : s.calendar.length ? <p>Appears on the date listed below.</p> : s.battleOnly ? null : <p><strong>No confirmed way to get it.</strong> {playerNote(s.note) || 'No location or evolution route is known.'}</p>}
 	{s.battleOnly && <p><strong>{s.how ? 'Also in battle.' : 'Seen only in battle.'}</strong> {s.battleOnly}{s.how ? '' : " It can't be kept in this form."}</p>}
 	{s.formChanges.length > 0 && <>
 		<h2 id="forms">Held-item forms</h2>

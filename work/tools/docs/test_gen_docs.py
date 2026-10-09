@@ -103,7 +103,7 @@ class TestEncounters(unittest.TestCase):
         rows = G.merge_slots(Fake(), [(sp, l, l) for sp, l in zip(e['day'], e['levels'])], R.LAND_RATES)
         self.assertEqual(rows[0], ('S19', '2–3', 40))
         self.assertEqual(rows[1], ('S16', '4–13', 60))
-        self.assertEqual(G.enc_species(e), {16, 19, 163, 311, 312, 206, 129})
+        self.assertEqual(G.enc_species(e), {16, 19, 163, 129})
 
     def test_headbutt(self):
         b = struct.pack('<HH', 3, 1) + struct.pack('<HBB', 165, 5, 7) * 18

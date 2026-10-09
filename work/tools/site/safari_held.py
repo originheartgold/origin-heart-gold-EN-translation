@@ -16,10 +16,17 @@ AREA_NAMES = ('Plains', 'Meadow', 'Savannah', 'Peak', 'Rocky Beach', 'Wetland',
               'Forest', 'Swamp', 'Marshland', 'Wasteland', 'Mountain', 'Desert')
 METHODS = ('Grass', 'Surfing', 'Old Rod', 'Good Rod', 'Super Rod')
 TIMES = ('morning', 'day', 'night')
+# Object categories in the native requirement reader (ARM9 02096B12–02096B38).
+# Bank 0422 #10–13 describes these as Plains, Forest, Rocks and Water.
+BLOCK_CATEGORIES = {1: 'Plains', 2: 'Forest', 3: 'Peak', 4: 'Waterside'}
 
 
 def parse_safari_area(data, area):
-    """Yield {species, level, area, method, time, conditional} candidate rows."""
+    """Yield candidate rows, with effective block-point requirements on object slots.
+
+    Points are not object counts: the native scorer increases each object's
+    contribution as its area matures (02096BDC / 02096B98).
+    """
     if len(data) < 8 or not 0 <= area < len(AREA_NAMES):
         raise ValueError('Invalid Safari area header')
     expected = 8 + sum(120 + 16 * count for count in data[:5])
@@ -27,15 +34,32 @@ def parse_safari_area(data, area):
         raise ValueError('Safari area length disagrees with slot counts')
     offset = 8
     for method, count in zip(METHODS, data[:5]):
+        requirements_offset = offset + 120 + 12 * count
+        requirements = []
+        for slot in range(count):
+            req = []
+            raw = data[requirements_offset + slot * 4:requirements_offset + slot * 4 + 4]
+            for category, points in zip(raw[::2], raw[1::2]):
+                if category == 0:
+                    if points:
+                        raise ValueError('Safari points without a block category')
+                    continue
+                if category not in BLOCK_CATEGORIES or not points:
+                    raise ValueError('Invalid Safari object requirement')
+                req.append(dict(category=BLOCK_CATEGORIES[category], points=points))
+            requirements.append(req)
         for conditional, slots in ((False, 10), (True, count)):
             for time in TIMES:
-                for _ in range(slots):
+                for slot in range(slots):
                     species, level = struct.unpack_from('<HH', data, offset)
                     offset += 4
                     if not 1 <= species <= 1025 or not 1 <= level <= 100:
                         raise ValueError('Invalid Safari species or level')
-                    yield dict(species=species, level=level, area=AREA_NAMES[area],
+                    row = dict(species=species, level=level, area=AREA_NAMES[area],
                                method=method, time=time, conditional=conditional)
+                    if conditional:
+                        row['requirements'] = requirements[slot]
+                    yield row
         offset += count * 4
 
 

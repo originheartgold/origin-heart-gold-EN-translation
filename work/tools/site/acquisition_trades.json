@@ -1,0 +1,200 @@
+{
+  "_about": "Reviewed against untouched Chinese v4.0.3 scripts and existing emulator-backed quest audits, 2026-10-09. Key: trade + file. No starter gate on ordinary trades; loan/replacement records 6 and 8 have explicit route conditions. Map access is still subject to story progression.",
+  "entries": [
+    {
+      "trade": 0,
+      "file": 156,
+      "species": 20,
+      "conditions": [
+        "Defeat the Raticate Gentleman on the S.S. Anne, then trade him a Butterfree during the ship visit."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN script156 entry31 @1816 tests win flag1516; battle156 @1834 sets1516 @1866; trade0 @4969, sets1515 @5007."
+      ]
+    },
+    {
+      "trade": 1,
+      "file": 161,
+      "species": 12,
+      "conditions": [
+        "First trade Butterfree for the Gentleman’s Raticate on the S.S. Anne; then trade a Raticate back in the 1F northwest rooms."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN script161 entry24 @887 requires flag1515, trade1 @969 clears1515 @1007."
+      ]
+    },
+    {
+      "trade": 2,
+      "file": 884,
+      "species": 132,
+      "conditions": [
+        "Trade a Budew when Goldenrod is not under Team Rocket occupation.",
+        "One trade per game."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN script884 entry3 @74 requires flag441 set; @85 rejects completed flag1616; trade2 @168. Flag441 hides Goldenrod takeover crowd (guide/known-issues.md Goldenrod overcrowding)."
+      ]
+    },
+    {
+      "trade": 3,
+      "file": 916,
+      "species": 349,
+      "conditions": [
+        "Trade a Goldeen to the fisherman beside Ecruteak’s pond.",
+        "One trade per game."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN script916 entry8 @508 rejects completed flag138; trade3 @592."
+      ]
+    },
+    {
+      "trade": 4,
+      "file": 88,
+      "species": 204,
+      "conditions": [
+        "In the souvenir shop annex (east door), answer “Insomnia Pokémon”, then “Hoothoot”, and trade a Hoothoot.",
+        "One trade per game; wrong answers can be retried."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN script88 entry2 @86 needs flag509 set; menu Insomnia @165→985; Hoothoot @1040→1326; trade4 @1552 clears509 @1597. Annex NPC object14 has no hide flag."
+      ]
+    },
+    {
+      "trade": 5,
+      "file": 116,
+      "species": 324,
+      "conditions": [
+        "Trade a Bagon in the Resort Zone.",
+        "One trade per game."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN script116 entry27 @939 rejects completed flag2132; trade5 @1021."
+      ]
+    },
+    {
+      "trade": 6,
+      "file": 115,
+      "species": 18,
+      "conditions": [
+        "Pikachu starter only.",
+        "Lend your own Pidgeot after the Volcano Badge but before the Earth Badge or becoming Champion; keep at least one other Pokémon.",
+        "After entering the Hall of Fame, return with a free party slot to receive a fixed Lv. 20 replacement Pidgeot.",
+        "The original Pidgeot is not returned: its level, moves, EVs and held item are lost."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN script115 @2225, @4827, @5794–5824; GiveLoanMon [6,20,75] @5818; return requires game-clear flag2404.",
+        "guide/01-pallet-to-pewter.md: Viridian Forest lend her a Pidgeot; emulator evidence D-1392/D-1552 confirms replacement rather than restoration.",
+        "All four ReturnLoanMon call sites scanned: file115 takes Pidgeot, file240 takes Jigglypuff, file842 takes a quest Pokémon, file913 takes Tentacool; none takes Gyarados. Bank0547#106 explicitly lets the player keep Gyarados."
+      ],
+      "retains": true,
+      "level": 20,
+      "acquisitionKind": "replacement",
+      "label": "Replacement for lent Pidgeot"
+    },
+    {
+      "trade": 7,
+      "file": 761,
+      "species": 258,
+      "conditions": [
+        "Trade a Shellder in the Cerulean north house.",
+        "One trade per game."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN script761 entry4 @266 rejects completed flag1040; trade7 @348."
+      ]
+    },
+    {
+      "trade": 8,
+      "file": 172,
+      "species": 130,
+      "conditions": [
+        "Male player with Bulbasaur starter only.",
+        "Misty offers this Lv. 20 Gyarados during the Celadon gatehouse rescue, after her Starmie is wounded.",
+        "Have a free party slot; if your party is full, speak to Misty again. She lets you keep it at the end of the Celadon story."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN script172 entry28 @2415 requires starter flag1289 (Bulbasaur); @2426–2436 requires male; @2443 rejects flag1081; GiveLoanMon [8,20,101] @2481 / @11020.",
+        "guide/03-vermilion-to-celadon.md: Celadon gatehouse rescue, Misty’s gifts.",
+        "All four ReturnLoanMon call sites scanned: file115 takes Pidgeot, file240 takes Jigglypuff, file842 takes a quest Pokémon, file913 takes Tentacool; none takes Gyarados. Bank0547#106 explicitly lets the player keep Gyarados."
+      ],
+      "retains": true,
+      "level": 20,
+      "acquisitionKind": "gift",
+      "label": "Misty’s Gyarados (kept permanently)"
+    },
+    {
+      "trade": 9,
+      "file": 751,
+      "species": 95,
+      "conditions": [
+        "Trade a Beedrill in the Pewter Pokémon Center.",
+        "One trade per game."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN script751 entry2 @66 rejects completed flag307; trade9 @148."
+      ]
+    },
+    {
+      "trade": 10,
+      "file": 860,
+      "species": 227,
+      "conditions": [
+        "Trade an Exeggutor in the Violet northwest house.",
+        "One trade per game."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN script860 entry2 @78 rejects completed flag1814; trade10 @160."
+      ]
+    },
+    {
+      "trade": 11,
+      "file": 940,
+      "species": 233,
+      "conditions": [
+        "Trade a Dragonair in the Blackthorn Pokémon Center.",
+        "One trade per game."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN script940 entry6 @133 rejects completed flag226; trade11 @215."
+      ]
+    },
+    {
+      "trade": 12,
+      "file": 5,
+      "species": 111,
+      "conditions": [
+        "Trade a Bonsly in Diglett’s Cave.",
+        "One trade per game; the Rhyhorn receives Thunder Fang."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "CN script5 entry2 @70 rejects completed flag357; trade12 @159; SetMonMove Thunder Fang422 @197."
+      ]
+    }
+  ]
+}

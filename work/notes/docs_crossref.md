@@ -258,12 +258,12 @@ Strings that contain an "appears/lives/can be caught" keyword, a species name an
 
 ### Species with no source
 
-256 of 1025 national-dex species (#1–#1025) have no source found by this audit: no wild slot, gift, trade, static battle, evolution or breeding route in the data it scans. They exist in the species tables (stats, learnsets). Not scanned: the Safari Zone's object-based areas, roaming Pokémon, berry trees and held items, so a few may still be obtainable in game. Evolution methods the game's evolution code never checks (see Other) are not counted as routes.
+259 of 1025 national-dex species (#1–#1025) have no source found by this audit: no wild slot, gift, trade, static battle, evolution or breeding route in the data it scans. They exist in the species tables (stats, learnsets). Not scanned: the Safari Zone's object-based areas, roaming Pokémon, berry trees and held items, so a few may still be obtainable in game. Evolution methods the game's evolution code never checks (see Other) are not counted as routes.
 
 - #1–#151: 0 of 151
 - #152–#251: 0 of 100
-- #252–#386: 0 of 135
-- #387–#493: 0 of 107
+- #252–#386: 1 of 135: Illumise
+- #387–#493: 2 of 107: Regigigas, Arceus
 - #494–#649: 45 of 156: Victini, Patrat, Watchog, Pansage, Simisage, Pansear, Simisear, Panpour, Simipour, Blitzle, Zebstrika, Woobat, Swoobat, Throh, Sawk, Maractus, Dwebble, Crustle, Sigilyph, Solosis, Duosion, Reuniclus, Vanillite, Vanillish, Vanilluxe, Klink, Klang, Klinklang, Elgyem, Beheeyem, Cryogonal, Druddigon, Bouffalant, Cobalion, Terrakion, Virizion, Tornadus, Thundurus, Reshiram, Zekrom, Landorus, Kyurem, Keldeo, Meloetta, Genesect
 - #650–#721: 26 of 72: Litleo, Pyroar, Skiddo, Gogoat, Pancham, Pangoro, Espurr, Meowstic, Spritzee, Aromatisse, Swirlix, Slurpuff, Inkay, Malamar, Tyrunt, Tyrantrum, Hawlucha, Klefki, Pumpkaboo, Gourgeist, Xerneas, Yveltal, Zygarde, Diancie, Hoopa, Volcanion
 - #722–#809: 36 of 88: Oricorio, Wishiwashi, Comfey, Oranguru, Passimian, Wimpod, Golisopod, Type: Null, Silvally, Minior, Turtonator, Tapu Koko, Tapu Lele, Tapu Bulu, Tapu Fini, Cosmog, Cosmoem, Solgaleo, Lunala, Nihilego, Buzzwole, Pheromosa, Xurkitree, Celesteela, Kartana, Guzzlord, Necrozma, Magearna, Marshadow, Poipole, Naganadel, Stakataka, Blacephalon, Zeraora, Meltan, Melmetal
@@ -317,7 +317,7 @@ TM46 Thief
 
 - In-game trade records not loaded by any script (LoadNPCTrade or GiveLoanMon): none.
 - Shop lists not opened by any script: 0, 1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29.
-- Encounter records in `a/0/3/7` that no map uses: 24, 45, 47, 49, 50, 64, 90, 91, 138, 148.
+- Encounter records in `a/0/3/7` that no map uses: 11, 13, 24, 45, 47, 49, 50, 64, 90, 91, 138, 148.
 - Evolution methods in `a/0/3/4` that the evolution code (arm9 0x020700FC) never checks: 24 (Nosepass), 25 (Eevee, Gigantamax Eevee), 31 (Pancham), 33 (Galarian Farfetch’d), 34 (Gimmighoul), 35 (Kubfu), 36 (Galarian Yamask), 38 (Basculin (White-Striped Form)), 40 (Pawmo, Rellor), 41 (Finizen).
 
 ## Findings logged

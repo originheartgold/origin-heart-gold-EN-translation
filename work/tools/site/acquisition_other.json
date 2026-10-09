@@ -1,0 +1,2598 @@
+{
+  "_about": "Reviewed against untouched Chinese v4.0.3 ROM commands and the cited script/runtime guide audits, 2026-10-09. Scope excludes files169–199,733–809,115,842 (separate audit). Excluded paths are not obtainable sources. Offsets are decimal script PCs; duplicate command paths consolidated.",
+  "entries": [
+    {
+      "species": 252,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        589
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Wednesday, or Monday 07:00–18:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 589 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 280,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        644
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Wednesday, or Monday 07:00–18:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 644 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 303,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        699
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Wednesday, or Monday 07:00–18:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 699 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 318,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        754
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Wednesday, or Monday 07:00–18:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 754 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 336,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        809
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Wednesday, or Monday 07:00–18:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 809 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 357,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        864
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Wednesday, or Monday 07:00–18:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 864 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 255,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        919
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Wednesday or Friday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 919 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 285,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        974
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Wednesday or Friday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 974 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 307,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1029
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Wednesday or Friday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1029 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 322,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1084
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Wednesday or Friday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1084 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 341,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1139
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Wednesday or Friday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1139 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 359,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1194
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Wednesday or Friday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1194 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 258,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1249
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Sunday or Friday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1249 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 296,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1304
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Sunday or Friday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1304 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 309,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1359
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Sunday or Friday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1359 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 325,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1414
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Sunday or Friday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1414 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 343,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1469
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Sunday or Friday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1469 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 369,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1524
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Sunday or Friday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1524 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 302,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1579
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Sunday, or Monday 07:00–18:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1579 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 316,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1634
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Sunday, or Monday 07:00–18:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1634 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 333,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1689
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Sunday, or Monday 07:00–18:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1689 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 355,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1744
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Sunday, or Monday 07:00–18:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1744 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 371,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1799
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Sunday, or Monday 07:00–18:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1799 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 374,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1854
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Sunday, or Monday 07:00–18:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1854 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 387,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1909
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Tuesday, or Monday 19:00–06:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1909 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 399,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        1964
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Tuesday, or Monday 19:00–06:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 1964 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 418,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2019
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Tuesday, or Monday 19:00–06:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2019 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 427,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2074
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Tuesday, or Monday 19:00–06:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2074 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 442,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2129
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Tuesday, or Monday 19:00–06:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2129 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 455,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2184
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Tuesday, or Monday 19:00–06:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2184 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 390,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2239
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Tuesday or Thursday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2239 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 403,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2294
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Tuesday or Thursday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2294 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 420,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2349
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Tuesday or Thursday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2349 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 434,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2404
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Tuesday or Thursday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2404 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 447,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2459
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Tuesday or Thursday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2459 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 456,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2514
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Tuesday or Thursday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2514 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 393,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2569
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Thursday or Saturday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2569 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 406,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2624
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Thursday or Saturday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2624 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 422,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2679
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Thursday or Saturday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2679 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 436,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2734
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Thursday or Saturday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2734 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 449,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2789
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Thursday or Saturday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2789 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 459,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2844
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Thursday or Saturday. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2844 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 417,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2899
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Saturday, or Monday 19:00–06:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2899 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 425,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        2954
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Saturday, or Monday 19:00–06:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 2954 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 441,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        3009
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Saturday, or Monday 19:00–06:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 3009 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 443,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        3064
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Saturday, or Monday 19:00–06:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 3064 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 453,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        3119
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Saturday, or Monday 19:00–06:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 3119 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 479,
+      "file": 12,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        3174
+      ],
+      "conditions": [
+        "After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC.",
+        "This standing Pokémon appears on Saturday, or Monday 19:00–06:59. Bring your own Poké Balls."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:545; file809 weekday flags2124–2131 and Monday hour check @6143",
+        "Untouched CN ROM script file 12, acquisition command offset(s) 3174 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pal Park — standing Pokémon",
+      "zone": 109
+    },
+    {
+      "species": 219,
+      "file": 17,
+      "kind": "static",
+      "level": 40,
+      "form": 0,
+      "offsets": [
+        2529
+      ],
+      "conditions": [
+        "After defeating the two illusion Grunts in Pokémon Tower. Catch it before taking any stairs or leaving the floor; reloading the map hides it.",
+        "One chance; losing this battle freezes the original hack."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/03-vermilion-to-celadon.md:381",
+        "Untouched CN ROM script file 17, acquisition command offset(s) 2529 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Pokémon Tower — illusion Grunts’ floor",
+      "zone": 155
+    },
+    {
+      "species": 250,
+      "file": 21,
+      "kind": "gift",
+      "level": 95,
+      "form": 0,
+      "offsets": [
+        6116
+      ],
+      "conditions": [
+        "After the final Hall of Fame: ask Satsuki in the Dance Theater to see Ho-Oh, win Morty’s challenge for the Clear Bell, then return to Satsuki.",
+        "After the Bell Tower ceremony, defeat Ho-Oh in its trainer-style battle and accept the gift with a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/10-ecruteak-olivine.md:375",
+        "Untouched CN ROM script file 21, acquisition command offset(s) 6116 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 95,
+      "file": 24,
+      "kind": "static",
+      "level": 40,
+      "form": 1,
+      "offsets": [
+        88
+      ],
+      "conditions": [
+        "Crystal Onix (form 1): first speak to the Four Island stone craftsman, then defeat Granny Lisa in the hidden cave.",
+        "Agree to keep her secret, speak to her again, then talk to Onix. Refusing the secret permanently loses this encounter.",
+        "One chance even if you lose."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/05-saffron-cinnabar.md:456",
+        "Untouched CN ROM script file 24, acquisition command offset(s) 88 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Four Island, Island Cave — hidden Crystal Onix chamber",
+      "zone": 217
+    },
+    {
+      "species": 436,
+      "file": 42,
+      "kind": "static",
+      "level": 25,
+      "form": 0,
+      "offsets": [
+        350
+      ],
+      "conditions": [
+        "Give the injured girl outside the Ruins of Alph a Potion, then touch the fourth statue from the left in the Underground Hall’s top row.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/08-cherrygrove-to-azalea.md:480",
+        "Untouched CN ROM script file 42, acquisition command offset(s) 350 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 244,
+      "file": 51,
+      "kind": "static",
+      "level": 90,
+      "form": 0,
+      "offsets": [
+        2706
+      ],
+      "conditions": [
+        "After the final Hall of Fame and Lance’s visit to your house in Pallet Town. See Prof. Hale and Molly release the beasts in the Burned Tower before rematching the Mt. Mortar expedition leader; winning that rematch first can permanently block them.",
+        "Return through the Kabuto chamber’s back wall and the statue hall to the dream room.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/08-cherrygrove-to-azalea.md:498; guide/10-ecruteak-olivine.md:394",
+        "Untouched CN ROM script file 51, acquisition command offset(s) 2706 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Ruins of Alph — Entei’s dream room",
+      "zone": 326
+    },
+    {
+      "species": 492,
+      "file": 52,
+      "kind": "gift",
+      "level": 90,
+      "form": 0,
+      "offsets": [
+        3428
+      ],
+      "conditions": [
+        "After completing the Sammy/Celebi League HQ investigation chapter.",
+        "Carry the Gracidea, lead with Leafeon, and examine the Forest of Time shrine from 08:00 to 19:59. Accept with a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/09-ilex-goldenrod.md:133",
+        "Untouched CN ROM script file 52, acquisition command offset(s) 3428 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 251,
+      "file": 52,
+      "kind": "gift",
+      "level": 90,
+      "form": 0,
+      "offsets": [
+        3530
+      ],
+      "conditions": [
+        "After receiving Shaymin at the Forest of Time shrine, leave through Ilex Forest and return.",
+        "Lead with Shaymin and examine the shrine from 20:00 to 07:59. Accept with a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/09-ilex-goldenrod.md:133",
+        "Untouched CN ROM script file 52, acquisition command offset(s) 3530 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 97,
+      "file": 55,
+      "kind": "static",
+      "level": 30,
+      "form": 0,
+      "offsets": [
+        953
+      ],
+      "conditions": [
+        "After clearing the Dragon’s Den, speak to the missing girl’s father on Three Island; then approach her in the Island Forest on Six Island.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/05-saffron-cinnabar.md:418",
+        "Untouched CN ROM script file 55, acquisition command offset(s) 953 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 155,
+      "file": 56,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        3405
+      ],
+      "conditions": [
+        "Before finishing Koume’s Ilex Forest exit scene, which removes Goh and Cyndaquil.",
+        "Either defeat Goh after saying you saw it first, or let him pursue it and refuse to move the boulder trapping him. Examine Cyndaquil’s ledge again to battle it. Helping Goh catch it loses this encounter.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/08-cherrygrove-to-azalea.md:535; guide/09-ilex-goldenrod.md:88",
+        "Untouched CN ROM script file 56, acquisition command offset(s) 3405 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Union Cave 1F — Cyndaquil ledge",
+      "zone": 99
+    },
+    {
+      "species": 485,
+      "file": 57,
+      "kind": "static",
+      "level": 90,
+      "form": 0,
+      "offsets": [
+        2158
+      ],
+      "conditions": [
+        "Obtain the Magma Stone in Diglett’s Cave after the Silver Conference closing ceremony. Place it on the Union Cave B1F lava pedestal on a Tuesday.",
+        "Reach the pedestal using Surf and either carry a Cleanse Tag or pay the old woman $2,000. Summoning consumes the stone; once summoned, Heatran can be battled on any day.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/08-cherrygrove-to-azalea.md:580",
+        "Untouched CN ROM script file 57, acquisition command offset(s) 2158 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Union Cave B1F — lava pedestal",
+      "zone": 153
+    },
+    {
+      "species": 151,
+      "file": 58,
+      "kind": "gift",
+      "level": 90,
+      "form": 0,
+      "offsets": [
+        5531
+      ],
+      "conditions": [
+        "Free the Five Island disciple, read all four Cinnabar lab R&D logs, then follow the Mew sightings in order: Route 1, Mt. Moon Square, Route 27, Five Island.",
+        "Defeat Mew in the play battle on the small island, then accept with a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/05-saffron-cinnabar.md:541",
+        "Untouched CN ROM script file 58, acquisition command offset(s) 5531 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Five Island — Mew’s small island",
+      "zone": 154
+    },
+    {
+      "species": 385,
+      "file": 81,
+      "kind": "gift",
+      "level": 5,
+      "form": 0,
+      "offsets": [
+        1259
+      ],
+      "conditions": [
+        "After the final Hall of Fame, finish the legendary investigation story through Crystal’s return to Cherrygrove first.",
+        "Repair the Frontier Access stone seven times, defeat the Rocket pair, then accept Jirachi with a free party slot. Each repair accepts Yes even without a Star Piece."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/11-cianwood-mahogany.md:437",
+        "Untouched CN ROM script file 81, acquisition command offset(s) 1259 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 101,
+      "file": 90,
+      "kind": "static",
+      "level": 50,
+      "form": 0,
+      "offsets": [
+        1636
+      ],
+      "conditions": [
+        "During the Team Rocket HQ radio-room story, interact with an Electrode to stop the machinery.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/11-cianwood-mahogany.md:331",
+        "Untouched CN ROM script file 90, acquisition command offset(s) 1636 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 441,
+      "file": 90,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        3650
+      ],
+      "conditions": [
+        "After the Team Rocket HQ radio-room scene, talk to Petrel’s abandoned Chatot before leaving B2F.",
+        "One chance: leaving the floor or any battle outcome, including losing, removes it permanently."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/11-cianwood-mahogany.md:357",
+        "Untouched CN ROM script file 90, acquisition command offset(s) 3650 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 402,
+      "file": 92,
+      "kind": "static",
+      "level": 20,
+      "form": 0,
+      "offsets": [
+        2069
+      ],
+      "conditions": [
+        "During Bugsy’s Ilex Forest bug hunt, carry Honey and spread it on the correct rock.",
+        "Use the west or south side of Kricketune’s rock; Bugsy takes Kricketune if you start with Burmy.",
+        "A bug that flees from the Honey cannot be retried; only three of the four can be handled by you."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/09-ilex-goldenrod.md:38",
+        "Untouched CN ROM script file 92, acquisition command offset(s) 2069 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 412,
+      "file": 92,
+      "kind": "static",
+      "level": 20,
+      "form": 0,
+      "offsets": [
+        2258
+      ],
+      "conditions": [
+        "During Bugsy’s Ilex Forest bug hunt, carry Honey and spread it on the correct rock.",
+        "Start with Burmy’s rock from any side except west; otherwise Bugsy takes Burmy after your first rock.",
+        "A bug that flees from the Honey cannot be retried; only three of the four can be handled by you."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/09-ilex-goldenrod.md:38",
+        "Untouched CN ROM script file 92, acquisition command offset(s) 2258 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 451,
+      "file": 92,
+      "kind": "static",
+      "level": 20,
+      "form": 0,
+      "offsets": [
+        2447
+      ],
+      "conditions": [
+        "During Bugsy’s Ilex Forest bug hunt, carry Honey and spread it on the correct rock.",
+        "Use any side of Skorupi’s rock except west, and deal with Ariados first so the bugs do not interfere.",
+        "A bug that flees from the Honey cannot be retried; only three of the four can be handled by you."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/09-ilex-goldenrod.md:38",
+        "Untouched CN ROM script file 92, acquisition command offset(s) 2447 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 168,
+      "file": 92,
+      "kind": "static",
+      "level": 20,
+      "form": 0,
+      "offsets": [
+        2542
+      ],
+      "conditions": [
+        "During Bugsy’s Ilex Forest bug hunt, carry Honey and spread it on the correct rock.",
+        "Use the west or north side of Ariados’s rock, before Skorupi’s rock. Do not claim the Rocky Helmet first.",
+        "A bug that flees from the Honey cannot be retried; only three of the four can be handled by you."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/09-ilex-goldenrod.md:38",
+        "Untouched CN ROM script file 92, acquisition command offset(s) 2542 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 228,
+      "file": 92,
+      "kind": "gift",
+      "level": 20,
+      "form": 0,
+      "offsets": [
+        6829
+      ],
+      "conditions": [
+        "Speak to the Ilex Forest fire ranger, chase Houndour through all five positions, defeat its trainer-style battle, and accept with a free party slot.",
+        "Finish Bugsy’s hunt before starting this quest, because its progress is shared."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/09-ilex-goldenrod.md:92",
+        "Untouched CN ROM script file 92, acquisition command offset(s) 6829 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 249,
+      "file": 104,
+      "kind": "static",
+      "level": 95,
+      "form": 0,
+      "offsets": [
+        3915
+      ],
+      "conditions": [
+        "After the final Hall of Fame, ask Satsuki in the Dance Theater to see Lugia, then start the ceremony in Lugia’s cave.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry.",
+        "If you already received Ho-Oh, the shortened Lugia menu takes the wrong branch; talk to Satsuki again and select Lugia from the full menu."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/11-cianwood-mahogany.md:418",
+        "Untouched CN ROM script file 104, acquisition command offset(s) 3915 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 101,
+      "file": 109,
+      "kind": "static",
+      "level": 70,
+      "form": 0,
+      "offsets": [
+        409
+      ],
+      "conditions": [
+        "Examine the fake item ball on Victory Road 1F.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/01-pallet-to-pewter.md:349",
+        "Untouched CN ROM script file 109, acquisition command offset(s) 409 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Victory Road 1F — fake item ball",
+      "zone": 124
+    },
+    {
+      "species": 147,
+      "file": 119,
+      "kind": "gift",
+      "level": 15,
+      "form": 0,
+      "offsets": [
+        1644
+      ],
+      "conditions": [
+        "Save Baoba’s Dragonair: deliver the Secret Potion after beating Paxton and no more than one Cycling Road biker. Beating Swimmer Marina before delivery also makes the rescue fail.",
+        "Then speak to Baoba at the Safari Zone entrance with a free party slot. This Dratini knows Extreme Speed."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:150",
+        "Untouched CN ROM script file 119, acquisition command offset(s) 1644 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Fuchsia City — Safari Zone entrance",
+      "zone": 173
+    },
+    {
+      "species": 377,
+      "file": 129,
+      "kind": "gift",
+      "level": 90,
+      "form": 0,
+      "offsets": [
+        2121
+      ],
+      "conditions": [
+        "During League HQ’s first investigation round, defeat Goh and the Rocket group in Rock Tunnel.",
+        "Read the memorial with Wailord in party slot 1 and Relicanth in slot 6. Answer Yes, No, Yes, then “Be ready to fight”. Accept each statue’s gift with a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/03-vermilion-to-celadon.md:438",
+        "Untouched CN ROM script file 129, acquisition command offset(s) 2121 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Rock Tunnel — memorial chamber",
+      "zone": 342
+    },
+    {
+      "species": 378,
+      "file": 129,
+      "kind": "gift",
+      "level": 90,
+      "form": 0,
+      "offsets": [
+        2262,
+        2403
+      ],
+      "conditions": [
+        "During League HQ’s first investigation round, defeat Goh and the Rocket group in Rock Tunnel.",
+        "Read the memorial with Wailord in party slot 1 and Relicanth in slot 6. Answer Yes, No, Yes, then “Be ready to fight”. Accept each statue’s gift with a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/03-vermilion-to-celadon.md:438",
+        "Untouched CN ROM script file 129, acquisition command offset(s) 2262, 2403 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Rock Tunnel — memorial chamber",
+      "zone": 342
+    },
+    {
+      "species": 379,
+      "file": 129,
+      "kind": "gift",
+      "level": 90,
+      "form": 0,
+      "offsets": [
+        2544
+      ],
+      "conditions": [
+        "During League HQ’s first investigation round, defeat Goh and the Rocket group in Rock Tunnel.",
+        "Read the memorial with Wailord in party slot 1 and Relicanth in slot 6. Answer Yes, No, Yes, then “Be ready to fight”. Accept each statue’s gift with a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/03-vermilion-to-celadon.md:438",
+        "Untouched CN ROM script file 129, acquisition command offset(s) 2544 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Rock Tunnel — memorial chamber",
+      "zone": 342
+    },
+    {
+      "species": 483,
+      "file": 130,
+      "kind": "static",
+      "level": 95,
+      "form": 0,
+      "offsets": [
+        2706
+      ],
+      "conditions": [
+        "After the final Hall of Fame and Lance’s visit to your house in Pallet Town.",
+        "Carry the Adamant Orb to the Ice Path B2F statue to enter Dialga’s space.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/12-lake-of-rage-to-sinjoh.md:514",
+        "Untouched CN ROM script file 130, acquisition command offset(s) 2706 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Dialga’s space — Ice Path B2F statue",
+      "zone": 521
+    },
+    {
+      "species": 484,
+      "file": 130,
+      "kind": "static",
+      "level": 95,
+      "form": 0,
+      "offsets": [
+        2748
+      ],
+      "conditions": [
+        "After the final Hall of Fame and Lance’s visit to your house in Pallet Town.",
+        "Enter Palkia’s space through the Mt. Mortar B1F statue; its Lustrous Orb dialogue does not enforce an item check.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/12-lake-of-rage-to-sinjoh.md:514",
+        "Untouched CN ROM script file 130, acquisition command offset(s) 2748 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Palkia’s space — Mt. Mortar B1F statue",
+      "zone": 521
+    },
+    {
+      "species": 486,
+      "file": 131,
+      "kind": "static",
+      "level": 95,
+      "form": 0,
+      "offsets": [
+        1008
+      ],
+      "conditions": [],
+      "excluded": true,
+      "reason": "Unreachable in normal play: postgame temple access needs the Azure Flute, but the shrine keeper’s gift is blocked by story progress. Arceus additionally needs the progress value set by that unreachable gift.",
+      "evidence": [
+        "guide/12-lake-of-rage-to-sinjoh.md:549; guide/known-issues.md:1284",
+        "Untouched CN ROM script file 131, acquisition command offset(s) 1008 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 493,
+      "file": 131,
+      "kind": "static",
+      "level": 95,
+      "form": 0,
+      "offsets": [
+        1335
+      ],
+      "conditions": [],
+      "excluded": true,
+      "reason": "Unreachable in normal play: postgame temple access needs the Azure Flute, but the shrine keeper’s gift is blocked by story progress. Arceus additionally needs the progress value set by that unreachable gift.",
+      "evidence": [
+        "guide/12-lake-of-rage-to-sinjoh.md:549; guide/known-issues.md:1284",
+        "Untouched CN ROM script file 131, acquisition command offset(s) 1335 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 383,
+      "file": 133,
+      "kind": "static",
+      "level": 95,
+      "form": 0,
+      "offsets": [
+        2400
+      ],
+      "conditions": [
+        "After the final Hall of Fame and Lance’s visit to your house in Pallet Town.",
+        "Carry the Red Orb and examine the altar deep in Mt. Moon.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/02-pewter-to-vermilion.md:185",
+        "Untouched CN ROM script file 133, acquisition command offset(s) 2400 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Mt. Moon — deepest altar chamber",
+      "zone": 524
+    },
+    {
+      "species": 382,
+      "file": 134,
+      "kind": "static",
+      "level": 50,
+      "form": 0,
+      "offsets": [
+        178
+      ],
+      "conditions": [],
+      "excluded": true,
+      "reason": "Unused Lv. 50 Kyogre room (map 525): no map or script warp leads into it.",
+      "evidence": [
+        "guide/known-issues.md:1290",
+        "Untouched CN ROM script file 134, acquisition command offset(s) 178 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 487,
+      "file": 135,
+      "kind": "static",
+      "level": 95,
+      "form": 0,
+      "offsets": [
+        2500
+      ],
+      "conditions": [
+        "After the final Hall of Fame and Lance’s visit to your house in Pallet Town.",
+        "Retrieve the Griseous Orb from the Dark Cave shrine after the final Hall of Fame. Carry it through Route 47’s Reversal Cave statue into the Distortion World and summon Giratina at its former spot.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/12-lake-of-rage-to-sinjoh.md:514",
+        "Untouched CN ROM script file 135, acquisition command offset(s) 2500 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Distortion World — reached through Reversal Cave",
+      "zone": 526
+    },
+    {
+      "species": 31,
+      "file": 203,
+      "kind": "static",
+      "level": 55,
+      "form": 0,
+      "offsets": [
+        2859
+      ],
+      "conditions": [
+        "Accept Lara’s invitation after the Route 18 Tauros scene, then enter the Route 15 Cape Battle Marathon. This is a first-stage battle.",
+        "Finish this stage before Sabrina’s Pokémon Tower scene starts the Saffron takeover, which cancels an unfinished marathon. One chance per Pokémon; losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:315",
+        "Untouched CN ROM script file 203, acquisition command offset(s) 2859 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 68,
+      "file": 203,
+      "kind": "static",
+      "level": 55,
+      "form": 0,
+      "offsets": [
+        2925
+      ],
+      "conditions": [
+        "Accept Lara’s invitation after the Route 18 Tauros scene, then enter the Route 15 Cape Battle Marathon. This is a first-stage battle.",
+        "Finish this stage before Sabrina’s Pokémon Tower scene starts the Saffron takeover, which cancels an unfinished marathon. One chance per Pokémon; losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/04-celadon-fuchsia-saffron.md:315",
+        "Untouched CN ROM script file 203, acquisition command offset(s) 2925 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 56,
+      "file": 212,
+      "kind": "static",
+      "level": 10,
+      "form": 0,
+      "offsets": [
+        777
+      ],
+      "conditions": [],
+      "excluded": true,
+      "reason": "Unused Route 22 thief quest: no object, coordinate trigger or map script starts the required scripts.",
+      "evidence": [
+        "guide/known-issues.md:32",
+        "Untouched CN ROM script file 212, acquisition command offset(s) 777 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 245,
+      "file": 216,
+      "kind": "static",
+      "level": 90,
+      "form": 0,
+      "offsets": [
+        7548
+      ],
+      "conditions": [
+        "After the final Hall of Fame and Lance’s visit to your house in Pallet Town. See Prof. Hale and Molly release the beasts in the Burned Tower before rematching the Mt. Mortar expedition leader; winning that rematch first can permanently block them.",
+        "Talk to Suicune south-east of Bill’s house on Cerulean Cape.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/02-pewter-to-vermilion.md:324; guide/10-ecruteak-olivine.md:394",
+        "Untouched CN ROM script file 216, acquisition command offset(s) 7548 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 234,
+      "file": 227,
+      "kind": "static",
+      "level": 15,
+      "form": 0,
+      "offsets": [
+        2533
+      ],
+      "conditions": [
+        "Before the Route 46 Rocket dig removes the herd, lead with a healthy Noctowl and use Foresight at the Route 30 Stantler roadblock.",
+        "Catch the lone Stantler before leaving the map; it disappears on departure."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/08-cherrygrove-to-azalea.md:75",
+        "Untouched CN ROM script file 227, acquisition command offset(s) 2533 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 152,
+      "file": 230,
+      "kind": "static",
+      "level": 5,
+      "form": 0,
+      "offsets": [
+        2451
+      ],
+      "conditions": [
+        "After Elm gives Crystal her Pokédex at the Cherrygrove orphanage, follow Chikorita from Route 30 to Route 31’s Oddish girl, then the Bug Catcher. Talk to the Bug Catcher before Chikorita.",
+        "Avoid speaking to Brock in Pewter Museum while his siblings’ quiz is unfinished until the Route 30 scene is done; that can remove Chikorita permanently.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/08-cherrygrove-to-azalea.md:92",
+        "Untouched CN ROM script file 230, acquisition command offset(s) 2451 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 397,
+      "file": 232,
+      "kind": "static",
+      "level": 30,
+      "form": 0,
+      "offsets": [
+        11422
+      ],
+      "conditions": [
+        "After the Ruins of Alph Molly chapter opens Route 32, take the Hoppip owner’s rescue request and confront the Staravia cornering a Hoppip near the Pokémon Center.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/08-cherrygrove-to-azalea.md:351",
+        "Untouched CN ROM script file 232, acquisition command offset(s) 11422 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 195,
+      "file": 232,
+      "kind": "static",
+      "level": 50,
+      "form": 0,
+      "offsets": [
+        11863
+      ],
+      "conditions": [
+        "Only if you forcibly took back the Wooper’s Poké Ball in Cherrygrove. After rescuing Molly in the Ruins of Alph, walk along the Route 32 bank east of the Hoppip owner.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/08-cherrygrove-to-azalea.md:440",
+        "Untouched CN ROM script file 232, acquisition command offset(s) 11863 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 373,
+      "file": 237,
+      "kind": "static",
+      "level": 60,
+      "form": 0,
+      "offsets": [
+        4079
+      ],
+      "conditions": [
+        "During the Goldenrod Gym chain, after Norman asks you to find Ruby, enter the north end of Route 34.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/09-ilex-goldenrod.md:211",
+        "Untouched CN ROM script file 237, acquisition command offset(s) 4079 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 158,
+      "file": 237,
+      "kind": "gift",
+      "level": 5,
+      "form": 0,
+      "offsets": [
+        5972
+      ],
+      "conditions": [
+        "After the Ilex Forest chapter, speak to the injured Route 34 dancer with a Potion, then visit the hidden southern grove.",
+        "Choose “Strike a battle-command pose”; all other dance choices permanently lose Totodile. Defeat the two dancers, then accept with a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/09-ilex-goldenrod.md:178",
+        "Untouched CN ROM script file 237, acquisition command offset(s) 5972 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 381,
+      "file": 239,
+      "kind": "gift",
+      "level": 80,
+      "form": 0,
+      "offsets": [
+        2684,
+        3191
+      ],
+      "conditions": [
+        "During League HQ round 4, after the Lake of Rage Petrel scene, speak to Bianca in Alto Mare Library and follow her on One Island into the Secret Forest. The library meeting needs Island Pilgrimage registration.",
+        "Defeat Will and Karen, then Goh. Accept Latias and Latios together with two free party slots."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/05-saffron-cinnabar.md:575",
+        "Untouched CN ROM script file 239, acquisition command offset(s) 2684, 3191 (decimal); species/form/level decoded directly."
+      ],
+      "place": "One Island — Secret Forest",
+      "zone": 171
+    },
+    {
+      "species": 380,
+      "file": 239,
+      "kind": "gift",
+      "level": 80,
+      "form": 0,
+      "offsets": [
+        2744,
+        3251
+      ],
+      "conditions": [
+        "During League HQ round 4, after the Lake of Rage Petrel scene, speak to Bianca in Alto Mare Library and follow her on One Island into the Secret Forest. The library meeting needs Island Pilgrimage registration.",
+        "Defeat Will and Karen, then Goh. Accept Latias and Latios together with two free party slots."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/05-saffron-cinnabar.md:575",
+        "Untouched CN ROM script file 239, acquisition command offset(s) 2744, 3251 (decimal); species/form/level decoded directly."
+      ],
+      "place": "One Island — Secret Forest",
+      "zone": 171
+    },
+    {
+      "species": 198,
+      "file": 247,
+      "kind": "static",
+      "level": 25,
+      "form": 0,
+      "offsets": [
+        1681
+      ],
+      "conditions": [
+        "Accept the Route 38 boy’s coin-recovery request. Carry a Nugget, refuse to trade it to Murkrow, then agree to take the coin by force.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/10-ecruteak-olivine.md:418",
+        "Untouched CN ROM script file 247, acquisition command offset(s) 1681 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 336,
+      "file": 252,
+      "kind": "static",
+      "level": 30,
+      "form": 0,
+      "offsets": [
+        5128
+      ],
+      "conditions": [
+        "Choose “I’ll save it” when Seviper threatens Blissey’s Egg on Route 42. Choosing “Let nature be” permanently skips the battle.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/11-cianwood-mahogany.md:256",
+        "Untouched CN ROM script file 252, acquisition command offset(s) 5128 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 243,
+      "file": 260,
+      "kind": "static",
+      "level": 90,
+      "form": 0,
+      "offsets": [
+        5082
+      ],
+      "conditions": [
+        "After the final Hall of Fame and Lance’s visit to your house in Pallet Town. See Prof. Hale and Molly release the beasts in the Burned Tower before rematching the Mt. Mortar expedition leader; winning that rematch first can permanently block them.",
+        "Return to Will’s former device site in north-west Route 47.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/12-lake-of-rage-to-sinjoh.md:535",
+        "Untouched CN ROM script file 260, acquisition command offset(s) 5082 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 252,
+      "file": 812,
+      "kind": "egg",
+      "level": null,
+      "form": 0,
+      "offsets": [
+        4613
+      ],
+      "conditions": [
+        "Complete the Cinnabar lava-edge Egg scene and pick up the Egg with a free party slot.",
+        "Do this before the League HQ round-1 Power Plant scene removes the man and Egg permanently."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/05-saffron-cinnabar.md:264",
+        "Untouched CN ROM script file 812, acquisition command offset(s) 4613 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 146,
+      "file": 812,
+      "kind": "static",
+      "level": 90,
+      "form": 0,
+      "offsets": [
+        7890
+      ],
+      "conditions": [
+        "After the final Hall of Fame, examine the lava’s edge where the Egg man stood.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/05-saffron-cinnabar.md:324",
+        "Untouched CN ROM script file 812, acquisition command offset(s) 7890 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 106,
+      "file": 829,
+      "kind": "gift",
+      "level": 35,
+      "form": 0,
+      "offsets": [
+        2424
+      ],
+      "conditions": [
+        "Talk to Ma Baoguo, defeat his four disciples and then Ma, and choose this Poké Ball with a free party slot.",
+        "Choose only one: Hitmonlee or Hitmonchan; the other remains sealed."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/05-saffron-cinnabar.md:113",
+        "Untouched CN ROM script file 829, acquisition command offset(s) 2424 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Saffron City — Hunyuan Dojo",
+      "zone": 398
+    },
+    {
+      "species": 107,
+      "file": 829,
+      "kind": "gift",
+      "level": 35,
+      "form": 0,
+      "offsets": [
+        2560
+      ],
+      "conditions": [
+        "Talk to Ma Baoguo, defeat his four disciples and then Ma, and choose this Poké Ball with a free party slot.",
+        "Choose only one: Hitmonlee or Hitmonchan; the other remains sealed."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/05-saffron-cinnabar.md:113",
+        "Untouched CN ROM script file 829, acquisition command offset(s) 2560 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Saffron City — Hunyuan Dojo",
+      "zone": 398
+    },
+    {
+      "species": 403,
+      "file": 841,
+      "kind": "gift",
+      "level": 5,
+      "form": 0,
+      "offsets": [
+        2662
+      ],
+      "conditions": [
+        "In New Bark Town Guesthouse, answer the Sinnoh traveller’s quiz: Luxray, Electric, Sees through things. Accept with a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/07-league-to-cherrygrove.md:65",
+        "Untouched CN ROM script file 841, acquisition command offset(s) 2662 (decimal); species/form/level decoded directly."
+      ],
+      "place": "New Bark Town — Guesthouse",
+      "zone": 62
+    },
+    {
+      "species": 179,
+      "file": 857,
+      "kind": "egg",
+      "level": null,
+      "form": 0,
+      "offsets": [
+        471,
+        568
+      ],
+      "conditions": [
+        "Give Primo in Violet Pokémon Center the correct two Easy Chat password phrases for this Egg and your Trainer ID. One Egg of each species; a free party slot is required."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/08-cherrygrove-to-azalea.md:342; file857 PrimoPasswordCheck2 @361, flags345/346/347, GiveEgg @568/626/684 (script read; not runtime confirmed)",
+        "Untouched CN ROM script file 857, acquisition command offset(s) 471, 568 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 194,
+      "file": 857,
+      "kind": "egg",
+      "level": null,
+      "form": 0,
+      "offsets": [
+        626
+      ],
+      "conditions": [
+        "Give Primo in Violet Pokémon Center the correct two Easy Chat password phrases for this Egg and your Trainer ID. One Egg of each species; a free party slot is required."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/08-cherrygrove-to-azalea.md:342; file857 PrimoPasswordCheck2 @361, flags345/346/347, GiveEgg @568/626/684 (script read; not runtime confirmed)",
+        "Untouched CN ROM script file 857, acquisition command offset(s) 626 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 218,
+      "file": 857,
+      "kind": "egg",
+      "level": null,
+      "form": 0,
+      "offsets": [
+        684
+      ],
+      "conditions": [
+        "Give Primo in Violet Pokémon Center the correct two Easy Chat password phrases for this Egg and your Trainer ID. One Egg of each species; a free party slot is required."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/08-cherrygrove-to-azalea.md:342; file857 PrimoPasswordCheck2 @361, flags345/346/347, GiveEgg @568/626/684 (script read; not runtime confirmed)",
+        "Untouched CN ROM script file 857, acquisition command offset(s) 684 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 352,
+      "file": 870,
+      "kind": "static",
+      "level": 25,
+      "form": 0,
+      "offsets": [
+        1703
+      ],
+      "conditions": [
+        "Speak to the snack-theft tourist on Seven Island, then inspect the blocked spot with a healthy Alomomola leading your party. Despite the Noctowl cry/dialogue, Noctowl does not work.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/06-sevii-islands-indigo.md:387",
+        "Untouched CN ROM script file 870, acquisition command offset(s) 1703 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 72,
+      "file": 875,
+      "kind": "gift",
+      "level": 15,
+      "form": 0,
+      "offsets": [
+        236
+      ],
+      "conditions": [
+        "The Cianwood Pokémon Center gift requires exactly one Pokémon in your party and no Pokémon in any PC Box."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/11-cianwood-mahogany.md:221",
+        "Untouched CN ROM script file 875, acquisition command offset(s) 236 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 390,
+      "file": 890,
+      "kind": "gift",
+      "level": 5,
+      "form": 0,
+      "offsets": [
+        2128
+      ],
+      "conditions": [
+        "Speak to Prof. Rowan in Goldenrod Magnet Train Station with a free party slot before winning the Plain Badge; that win removes him permanently."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/09-ilex-goldenrod.md:231",
+        "Untouched CN ROM script file 890, acquisition command offset(s) 2128 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Goldenrod City — Magnet Train Station 1F",
+      "zone": 197
+    },
+    {
+      "species": 488,
+      "file": 898,
+      "kind": "static",
+      "level": 90,
+      "form": 0,
+      "offsets": [
+        1823
+      ],
+      "conditions": [
+        "After the final Hall of Fame and Lance’s visit to your house in Pallet Town.",
+        "Enter the Dream World from the back wall inside MooMoo Farm’s west stable entrance.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/09-ilex-goldenrod.md:596",
+        "Untouched CN ROM script file 898, acquisition command offset(s) 1823 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Dream World — reached from MooMoo Farm",
+      "zone": 193
+    },
+    {
+      "species": 491,
+      "file": 898,
+      "kind": "static",
+      "level": 90,
+      "form": 0,
+      "offsets": [
+        1859
+      ],
+      "conditions": [
+        "After the final Hall of Fame and Lance’s visit to your house in Pallet Town.",
+        "Enter the Dream World from the back wall inside MooMoo Farm’s west stable entrance.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/09-ilex-goldenrod.md:596",
+        "Untouched CN ROM script file 898, acquisition command offset(s) 1859 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Dream World — reached from MooMoo Farm",
+      "zone": 193
+    },
+    {
+      "species": 23,
+      "file": 903,
+      "kind": "gift",
+      "level": 15,
+      "form": 0,
+      "offsets": [
+        7964,
+        8168
+      ],
+      "conditions": [
+        "Goldenrod Game Corner prize for 700 coins; requires a Coin Case and a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "file903 GetGameVersion @7717; menus @2940/@5277; species selections @5370/@5382/@5394/@7249; price checks @7851/@7912/@8051/@8148",
+        "Untouched CN ROM script file 903, acquisition command offset(s) 7964, 8168 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 27,
+      "file": 903,
+      "kind": "gift",
+      "level": 15,
+      "form": 0,
+      "offsets": [
+        7964,
+        8168
+      ],
+      "conditions": [],
+      "excluded": true,
+      "reason": "SoulSilver-only prize branch. The untouched Chinese ROM GetGameVersion handler always returns 7 (HeartGold), selecting Ekans instead.",
+      "evidence": [
+        "file903 GetGameVersion @7717; menus @2940/@5277; species selections @5370/@5382/@5394/@7249; price checks @7851/@7912/@8051/@8148",
+        "CN ARM9 command495 table 0x020F793C+495*4 -> 0x02044C6D; handler 0x02044C7E movs r1,#7; 0x02044C80 strh r1,[r0], independently verified by wild_trade_sources agent.",
+        "Untouched CN ROM script file 903, acquisition command offset(s) 7964, 8168 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 63,
+      "file": 903,
+      "kind": "gift",
+      "level": 15,
+      "form": 0,
+      "offsets": [
+        7964,
+        8168
+      ],
+      "conditions": [
+        "Goldenrod Game Corner prize for 200 coins; requires a Coin Case and a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "file903 GetGameVersion @7717; menus @2940/@5277; species selections @5370/@5382/@5394/@7249; price checks @7851/@7912/@8051/@8148",
+        "Untouched CN ROM script file 903, acquisition command offset(s) 7964, 8168 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 147,
+      "file": 903,
+      "kind": "gift",
+      "level": 15,
+      "form": 0,
+      "offsets": [
+        7964,
+        8168
+      ],
+      "conditions": [
+        "Goldenrod Game Corner prize for 2,100 coins; requires a Coin Case and a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "file903 GetGameVersion @7717; menus @2940/@5277; species selections @5370/@5382/@5394/@7249; price checks @7851/@7912/@8051/@8148",
+        "Untouched CN ROM script file 903, acquisition command offset(s) 7964, 8168 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 384,
+      "file": 914,
+      "kind": "static",
+      "level": 95,
+      "form": 0,
+      "offsets": [
+        1648
+      ],
+      "conditions": [
+        "After the final Hall of Fame and Lance’s visit to your house in Pallet Town.",
+        "Carry the Jade Orb and examine the far north end of Sky Pillar Peak.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/06-sevii-islands-indigo.md:415",
+        "Untouched CN ROM script file 914, acquisition command offset(s) 1648 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 150,
+      "file": 923,
+      "kind": "gift",
+      "level": 95,
+      "form": 0,
+      "offsets": [
+        2355
+      ],
+      "conditions": [
+        "After Mewtwo breaks the Indigo Plateau barrier and you win the Multi Battle beside it, accept its gift with a free party slot.",
+        "Take it before entering the final Elite Four challenge: the final Hall of Fame removes it permanently."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/07-league-to-cherrygrove.md:282",
+        "Untouched CN ROM script file 923, acquisition command offset(s) 2355 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Indigo Plateau slope — Mewtwo’s barrier scene",
+      "zone": 85
+    },
+    {
+      "species": 422,
+      "file": 925,
+      "kind": "gift",
+      "level": 25,
+      "form": 0,
+      "offsets": [
+        838
+      ],
+      "conditions": [
+        "Tell the Ecruteak boy “Then give it to me”, with a free party slot. Choosing “Don’t give up on it” permanently loses the gift."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/10-ecruteak-olivine.md:324",
+        "Untouched CN ROM script file 925, acquisition command offset(s) 838 (decimal); species/form/level decoded directly."
+      ],
+      "place": "Ecruteak City — Shellos boy’s house",
+      "zone": 84
+    },
+    {
+      "species": 480,
+      "file": 934,
+      "kind": "static",
+      "level": 90,
+      "form": 0,
+      "offsets": [
+        1563
+      ],
+      "conditions": [
+        "After League HQ round 4’s Petrel scene in the lake guardian’s house, pass the knowledge quiz.",
+        "Only appears on Wednesdays: enter Lake of Rage or Route 43 that day after clearing Rocket HQ.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/12-lake-of-rage-to-sinjoh.md:397",
+        "Untouched CN ROM script file 934, acquisition command offset(s) 1563 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 481,
+      "file": 934,
+      "kind": "static",
+      "level": 90,
+      "form": 0,
+      "offsets": [
+        1636
+      ],
+      "conditions": [
+        "After League HQ round 4’s Petrel scene in the lake guardian’s house, complete the knowledge trial, then show a Pokémon with maximum friendship (255).",
+        "Only appears on Wednesdays: enter Lake of Rage or Route 43 that day after clearing Rocket HQ.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/12-lake-of-rage-to-sinjoh.md:397",
+        "Untouched CN ROM script file 934, acquisition command offset(s) 1636 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 482,
+      "file": 934,
+      "kind": "static",
+      "level": 90,
+      "form": 0,
+      "offsets": [
+        1709
+      ],
+      "conditions": [
+        "After League HQ round 4’s Petrel scene in the lake guardian’s house, complete the knowledge and friendship trials, then defeat Sailor Silas.",
+        "Only appears on Wednesdays: enter Lake of Rage or Route 43 that day after clearing Rocket HQ.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/12-lake-of-rage-to-sinjoh.md:397",
+        "Untouched CN ROM script file 934, acquisition command offset(s) 1709 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 130,
+      "file": 934,
+      "kind": "static",
+      "level": 30,
+      "form": 0,
+      "offsets": [
+        2247
+      ],
+      "conditions": [
+        "Talk to Lance on the Lake of Rage south shore after the Route 42 Entei scene. This is the catchable red Gyarados in the story battle.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/12-lake-of-rage-to-sinjoh.md:77",
+        "Untouched CN ROM script file 934, acquisition command offset(s) 2247 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 386,
+      "file": 943,
+      "kind": "static",
+      "level": 95,
+      "form": 0,
+      "offsets": [
+        5002
+      ],
+      "conditions": [
+        "After the final Hall of Fame and Lance’s visit to your house in Pallet Town.",
+        "Carry both Red and Blue Orbs and examine Six Island’s Fallen Red Star.",
+        "One chance even if you lose: starting the battle permanently removes the Red Star."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/06-sevii-islands-indigo.md:427",
+        "Untouched CN ROM script file 943, acquisition command offset(s) 5002 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 122,
+      "file": 957,
+      "kind": "static",
+      "level": 60,
+      "form": 0,
+      "offsets": [
+        695
+      ],
+      "conditions": [
+        "Speak to the Lairon Trainer on northern Route 21, then challenge the Mr. Mime beside him.",
+        "One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/05-saffron-cinnabar.md:179",
+        "Untouched CN ROM script file 957, acquisition command offset(s) 695 (decimal); species/form/level decoded directly."
+      ]
+    },
+    {
+      "species": 490,
+      "file": 965,
+      "kind": "gift",
+      "level": 1,
+      "form": 0,
+      "offsets": [
+        543
+      ],
+      "conditions": [
+        "Tell the Egg girl in Alto Mare Waters to walk with it, then follow and speak to her in order on Six Island, Five Island and Four Island.",
+        "Return to western Alto Mare Waters, defeat the two treasure hunters, and accept the hatched Manaphy with a free party slot."
+      ],
+      "excluded": false,
+      "reason": "",
+      "evidence": [
+        "guide/05-saffron-cinnabar.md:608",
+        "Untouched CN ROM script file 965, acquisition command offset(s) 543 (decimal); species/form/level decoded directly."
+      ]
+    }
+  ]
+}

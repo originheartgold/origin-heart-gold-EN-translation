@@ -8,7 +8,7 @@ import { formatEncounterHints } from './encounter-hints.mjs';
 type Mon = { id: number; name: string; slug: string; baseSpeciesId: number; formId: number; types: string[]; region: string; stats: number[]; abilities: string[]; hidden: string | null; availability: string };
 const escape = (value: unknown) => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]!);
 const labels: Record<string, string> = { documented: 'Documented source', unknown: 'No known source', battle: 'Battle only', unavailable: 'Unavailable' };
-const kinds: Record<string, string> = { gift: 'Gift', egg: 'Gift Egg', trade: 'Trade', loan: 'Loan', 'loan-return': 'Loan return', starter: 'Starter choice', prize: 'Prize' };
+const kinds: Record<string, string> = { gift: 'Gift', egg: 'Gift Egg', trade: 'Trade', loan: 'Loan', 'loan-return': 'Loan return', starter: 'Starter choice', prize: 'Prize', static: 'Scripted encounter' };
 const hues: Record<string, number> = { Normal: 42, Grass: 140, Poison: 280, Fire: 22, Water: 205, Electric: 46, Ice: 182, Fighting: 10, Ground: 32, Flying: 220, Psychic: 326, Bug: 85, Rock: 40, Ghost: 268, Dragon: 250, Dark: 255, Steel: 195, Fairy: 330 };
 
 export function setupTeamBuilder() {

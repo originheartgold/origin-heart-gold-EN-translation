@@ -24,6 +24,8 @@ def load_notes(path=NOTES):
 
 def sources(ctx, G, R, zone_area, file_areas, notes=None):
     """Species -> sources; repeated script branches merge without dropping evidence."""
+    if notes is None and hasattr(G, 'acquisition_sources'):
+        return reviewed_sources(ctx, G, zone_area, file_areas)
     notes = load_notes() if notes is None else notes
     result = collections.defaultdict(list)
     for file, script in ctx.S.items():
@@ -77,6 +79,34 @@ def sources(ctx, G, R, zone_area, file_areas, notes=None):
     rank = {a['slug']: a['rank'] for a in zone_area.values()}
     for rows in result.values():
         rows.sort(key=lambda row: (rank[row['area']], row['place'], row['kind']))
+    return result
+
+
+def reviewed_sources(ctx, G, zone_area, file_areas):
+    """Use the complete ROM audit with the site's existing acquisition components."""
+    result = collections.defaultdict(list)
+    notes = load_notes()
+    for source in G.acquisition_sources(ctx):
+        species = G.form_index(ctx, source['species'], source['form'])
+        file = source['file']
+        note = notes.get((file, species), {})
+        targets = [zone_area[source['zone']]] if 'zone' in source else file_areas(ctx, zone_area, file)[:1]
+        for area in targets:
+            kind = 'starter' if file == 738 else note.get('kind', source['kind'])
+            result[species].append(dict(kind=kind, area=area['slug'],
+                place=source.get('place', ctx.place_str(file)), level=source['level'], offer=None,
+                conditions=' '.join(source['conditions']), quests=source.get('quests', note.get('quests', [])),
+                evidence=[dict(file=file, pc=pc) for pc in source.get('offsets', [])]))
+    for trade in G.trade_sources(ctx):
+        kind = 'loan-return' if trade.get('acquisitionKind') == 'replacement' else (
+            'gift' if trade.get('retains') else 'loan' if trade['loan'] else 'trade')
+        for area in file_areas(ctx, zone_area, trade['file'])[:1]:
+            result[trade['give']].append(dict(kind=kind, area=area['slug'], place=ctx.place_str(trade['file']),
+                level=trade['level'], offer=None if trade['loan'] else trade['ask'],
+                conditions=' '.join(trade['conditions']),
+                quests=notes.get((trade['file'], trade['give']), {}).get('quests', []),
+                evidence=[dict(file=trade['file'], pc=r['pc']) for r in ctx.S[trade['file']]['recs']
+                          if r['kind'] in ('trade', 'loan_give') and r['args'][0] == trade['trade']]))
     return result
 
 

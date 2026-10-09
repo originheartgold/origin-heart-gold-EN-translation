@@ -50,7 +50,9 @@ test('wild-held sources retain valid species, location links and conditional rat
   const items = json('../src/data/items.json');
   const species = new Set(json('../src/data/species.json').map(s => s.id));
   const areas = new Set(json('../src/data/areas.json').map(a => a.slug));
-  assert.equal(items.filter(i => i.wildHeld?.length).length, 72);
+  assert.equal(items.filter(i => i.wildHeld?.length).length, 71);
+  // Revive's former Linoone sources were disabled radio/Safari-block encounters.
+  assert.deepEqual(items.find(i => i.id === 28).wildHeld, []);
   for (const item of items) {
     if (item.unavailableReason) assert.deepEqual(item.wildHeld, [], item.name);
     for (const holder of item.wildHeld ?? []) {

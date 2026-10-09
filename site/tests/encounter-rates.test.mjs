@@ -58,7 +58,7 @@ test('built Pokémon pages show encounter tables and preserve gifts separately',
 	const bulbasaur = read('pokemon/bulbasaur');
 	assert.ok(bulbasaur.includes('id="wild-encounters-table"'));
 	assert.ok(!bulbasaur.includes('Wild encounter rates'));
-	assert.ok(bulbasaur.includes('Pikachu starter: after the Cascade Badge'));
+	assert.ok(bulbasaur.includes('Pikachu starter only.') && bulbasaur.includes('After the Cascade Badge'));
 	assert.ok(bulbasaur.includes('Route 5 House'));
 	assert.ok(bulbasaur.includes('Starter choice'));
 	assert.ok(!bulbasaur.includes('gift (Lv 15), Route 5 House'));

@@ -51,7 +51,7 @@ class WildHeldTests(unittest.TestCase):
         result = wild_held_sources(ctx, {'Cave': area}, {1, 2})
         self.assertEqual(set(result), {4})
         self.assertEqual(result[4][0]['locations'][0]['encounterRate'], None)
-        self.assertIn('may be one-time', result[4][0]['locations'][0]['method'])
+        self.assertIn('Scripted wild battle', result[4][0]['locations'][0]['method'])
 
     def test_calendar_dates_forms_and_disabled_walk(self):
         records = [(7, 14, 0, 648, 0, 0), (7, 18, 0, 720, 1, 2), (4, 16, 1, 721, 0, 0)]
@@ -71,16 +71,15 @@ class WildHeldTests(unittest.TestCase):
         self.assertEqual(result[91][0]['chance'], 100)
         self.assertEqual(result[91][0]['locations'][0]['encounterRate'], 1)
 
-    def test_safari_groups_time_without_erasing_conditions(self):
+    def test_safari_groups_time_and_excludes_locked_object_slots(self):
         ctx = SimpleNamespace(rom=SimpleNamespace(path='unused'), sp=str)
         source = dict(species=1, level=20, area='Plains', method='Grass', conditional=False)
         rows = [dict(source, time=time) for time in ('morning', 'day', 'night')]
         rows.append(dict(source, time='night', conditional=True))
         with patch('export_data.SH.safari_rows', return_value=rows):
             result = list(safari_wild_rows(ctx, {357: {'slug': 'safari-zone'}}))
-        self.assertEqual(len(result), 2)
+        self.assertEqual(len(result), 1)
         self.assertIn('all day', result[0][2])
-        self.assertIn('night; object requirements vary', result[1][2])
         self.assertEqual(result[0][3]['pct'], None)
 
 

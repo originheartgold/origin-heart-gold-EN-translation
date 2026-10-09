@@ -334,7 +334,7 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 311 | [Plusle](pokemon_0252-0386.md#0311-plusle) | Electric | Plus / Volt Absorb | Motor Drive | 450 | yes |
 | 312 | [Minun](pokemon_0252-0386.md#0312-minun) | Electric | Minus / Volt Absorb | Lightning Rod | 450 | yes |
 | 313 | [Volbeat](pokemon_0252-0386.md#0313-volbeat) | Bug / Electric | Illuminate / Swarm | Prankster | 450 | yes |
-| 314 | [Illumise](pokemon_0252-0386.md#0314-illumise) | Bug / Fairy | Oblivious / Tinted Lens | Prankster | 450 | yes |
+| 314 | [Illumise](pokemon_0252-0386.md#0314-illumise) | Bug / Fairy | Oblivious / Tinted Lens | Prankster | 450 | no |
 | 315 | [Roselia](pokemon_0252-0386.md#0315-roselia) | Grass / Poison | Technician / Leaf Guard | Grassy Surge | 400 | yes |
 | 316 | [Gulpin](pokemon_0252-0386.md#0316-gulpin) | Poison | Liquid Ooze / Sticky Hold | Gluttony | 302 | yes |
 | 317 | [Swalot](pokemon_0252-0386.md#0317-swalot) | Poison | Liquid Ooze / Innards Out | Gluttony | 487 | yes |
@@ -506,14 +506,14 @@ Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get 
 | 483 | [Dialga](pokemon_0387-0493.md#0483-dialga) | Steel / Dragon | Pressure | Filter | 680 | yes |
 | 484 | [Palkia](pokemon_0387-0493.md#0484-palkia) | Water / Dragon | Pressure | Hydration | 680 | yes |
 | 485 | [Heatran](pokemon_0387-0493.md#0485-heatran) | Fire / Steel | Flash Fire | Flame Body | 600 | yes |
-| 486 | [Regigigas](pokemon_0387-0493.md#0486-regigigas) | Normal | Slow Start | Clear Body | 670 | yes |
+| 486 | [Regigigas](pokemon_0387-0493.md#0486-regigigas) | Normal | Slow Start | Clear Body | 670 | no |
 | 487 | [Giratina](pokemon_0387-0493.md#0487-giratina) | Ghost / Dragon | Pressure | — | 680 | yes |
 | 488 | [Cresselia](pokemon_0387-0493.md#0488-cresselia) | Psychic / Fairy | Levitate | unnamed ability #327 (the game has no name text for it) | 600 | yes |
 | 489 | [Phione](pokemon_0387-0493.md#0489-phione) | Water | Hydration | Azure Skin | 480 | yes |
 | 490 | [Manaphy](pokemon_0387-0493.md#0490-manaphy) | Water | Hydration | Azure Skin | 600 | yes |
 | 491 | [Darkrai](pokemon_0387-0493.md#0491-darkrai) | Dark | Bad Dreams | — | 600 | yes |
 | 492 | [Shaymin](pokemon_0387-0493.md#0492-shaymin) | Grass | Natural Cure | Grass Skin | 600 | yes |
-| 493 | [Arceus](pokemon_0387-0493.md#0493-arceus) | Normal | Multitype | — | 720 | yes |
+| 493 | [Arceus](pokemon_0387-0493.md#0493-arceus) | Normal | Multitype | — | 720 | no |
 | 494 | [Victini](pokemon_0494-0649.md#0494-victini) | Psychic / Fire | Victory Star | — | 600 | never |
 | 495 | [Snivy](pokemon_0494-0649.md#0495-snivy) | Grass | Overgrow | Contrary | 308 | yes |
 | 496 | [Servine](pokemon_0494-0649.md#0496-servine) | Grass / Dragon | Overgrow | Contrary | 413 | yes |

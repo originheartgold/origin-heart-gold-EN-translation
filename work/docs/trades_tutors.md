@@ -4,23 +4,23 @@
 
 ## In-game trades
 
-From `a/1/1/2` (13 trade records, NARC 112) and the nickname/OT bank (0198). "Where" is the map whose script loads the trade (`LoadNPCTrade`), or hands the Pokémon over as a loan (`GiveLoanMon`, marked "loan": "You give" does not apply, and the scripts take loans back with `ReturnLoanMon`). IVs are fixed as listed (HP/Atk/Def/Spe/SpA/SpD).
+From `a/1/1/2` (13 trade records, NARC 112) and the nickname/OT bank (0198). "Where" is the map whose script loads the trade or creates a gift/replacement using the trade data. For gifts and replacements, read the requirements instead of the "You give" column. IVs are fixed as listed (HP/Atk/Def/Spe/SpA/SpD).
 
 | # | Where | You give | You get | Nickname | OT | OT ID | Held item | Ability | IVs |
 |---|---|---|---|---|---|---|---|---|---|
-| 0 | S.S. Anne | Butterfree | Raticate | Raticate | Norris | 06469 | — | Guts | 26/31/25/31/21/21 |
-| 1 | S.S. Anne 1F Northwest rooms | Raticate | Butterfree | Butterfree | (player-name placeholder) | 02073 | — | Compound Eyes | 25/20/20/31/31/25 |
-| 2 | Goldenrod Pokémon Center | Budew | Ditto | Ditto | Evan | 09211 | — | random | 31/31/31/31/31/31 |
-| 3 | Ecruteak City | Goldeen | Feebas | Mimi | Rocky | 11520 | — | Oblivious | 31/0/31/31/31/31 |
-| 4 | Mahogany Souvenir Shop | Hoothoot | Pineco | Iron Egg | Ayaka | 15616 | Aspear Berry | Filter | 26/24/31/19/19/31 |
-| 5 | Resort Zone | Bagon | Torkoal | Torkoal | Skye | 26491 | — | Drought | 31/25/31/20/20/25 |
-| 6 | Viridian Forest (loan) | Pidgeot | Pidgeot | Pidgeot | (player-name placeholder) | 04336 | — | random | 31/31/31/31/31/31 |
-| 7 | Cerulean North house | Shellder | Mudkip | Nessie | Trader | 01001 | — | Water Absorb | 31/31/31/31/31/31 |
-| 8 | Celadon gatehouse (loan) | Dugtrio | Gyarados | Gyarados | Misty | 50082 | — | Intimidate | 31/31/31/31/31/31 |
-| 9 | Pewter Pokémon Center | Beedrill | Onix | Orochimaru | Mondo | 05411 | — | Solid Rock | 31/31/31/31/31/31 |
-| 10 | Violet Northwest house | Exeggutor | Skarmory | Skarmory | Lotus | 01032 | — | Solid Rock | 26/25/31/20/20/31 |
-| 11 | Blackthorn Pokémon Center | Dragonair | Porygon2 | Poly | Wendell | 63312 | — | Trace | 31/0/31/31/31/31 |
-| 12 | Diglett’s Cave | Bonsly | Rhyhorn | BattleRex | Rocco | 04900 | — | Solid Rock | 31/31/31/31/31/31 |
+| 0 | S.S. Anne — Defeat the Raticate Gentleman on the S.S. Anne, then trade him a Butterfree during the ship visit. | Butterfree | Raticate | Raticate | Norris | 06469 | — | Guts | 26/31/25/31/21/21 |
+| 1 | S.S. Anne 1F Northwest rooms — First trade Butterfree for the Gentleman’s Raticate on the S.S. Anne; then trade a Raticate back in the 1F northwest rooms. | Raticate | Butterfree | Butterfree | (player-name placeholder) | 02073 | — | Compound Eyes | 25/20/20/31/31/25 |
+| 2 | Goldenrod Pokémon Center — Trade a Budew when Goldenrod is not under Team Rocket occupation. One trade per game. | Budew | Ditto | Ditto | Evan | 09211 | — | random | 31/31/31/31/31/31 |
+| 3 | Ecruteak City — Trade a Goldeen to the fisherman beside Ecruteak’s pond. One trade per game. | Goldeen | Feebas | Mimi | Rocky | 11520 | — | Oblivious | 31/0/31/31/31/31 |
+| 4 | Mahogany Souvenir Shop — In the souvenir shop annex (east door), answer “Insomnia Pokémon”, then “Hoothoot”, and trade a Hoothoot. One trade per game; wrong answers can be retried. | Hoothoot | Pineco | Iron Egg | Ayaka | 15616 | Aspear Berry | Filter | 26/24/31/19/19/31 |
+| 5 | Resort Zone — Trade a Bagon in the Resort Zone. One trade per game. | Bagon | Torkoal | Torkoal | Skye | 26491 | — | Drought | 31/25/31/20/20/25 |
+| 6 | Viridian Forest — Pikachu starter only. Lend your own Pidgeot after the Volcano Badge but before the Earth Badge or becoming Champion; keep at least one other Pokémon. After entering the Hall of Fame, return with a free party slot to receive a fixed Lv. 20 replacement Pidgeot. The original Pidgeot is not returned: its level, moves, EVs and held item are lost. (Replacement for lent Pidgeot) | — | Pidgeot | Pidgeot | (player-name placeholder) | 04336 | — | random | 31/31/31/31/31/31 |
+| 7 | Cerulean North house — Trade a Shellder in the Cerulean north house. One trade per game. | Shellder | Mudkip | Nessie | Trader | 01001 | — | Water Absorb | 31/31/31/31/31/31 |
+| 8 | Celadon gatehouse — Male player with Bulbasaur starter only. Misty offers this Lv. 20 Gyarados during the Celadon gatehouse rescue, after her Starmie is wounded. Have a free party slot; if your party is full, speak to Misty again. She lets you keep it at the end of the Celadon story. (Misty’s Gyarados (kept permanently)) | — | Gyarados | Gyarados | Misty | 50082 | — | Intimidate | 31/31/31/31/31/31 |
+| 9 | Pewter Pokémon Center — Trade a Beedrill in the Pewter Pokémon Center. One trade per game. | Beedrill | Onix | Orochimaru | Mondo | 05411 | — | Solid Rock | 31/31/31/31/31/31 |
+| 10 | Violet Northwest house — Trade an Exeggutor in the Violet northwest house. One trade per game. | Exeggutor | Skarmory | Skarmory | Lotus | 01032 | — | Solid Rock | 26/25/31/20/20/31 |
+| 11 | Blackthorn Pokémon Center — Trade a Dragonair in the Blackthorn Pokémon Center. One trade per game. | Dragonair | Porygon2 | Poly | Wendell | 63312 | — | Trace | 31/0/31/31/31/31 |
+| 12 | Diglett’s Cave — Trade a Bonsly in Diglett’s Cave. One trade per game; the Rhyhorn receives Thunder Fang. | Bonsly | Rhyhorn | BattleRex | Rocco | 04900 | — | Solid Rock | 31/31/31/31/31/31 |
 
 OT of trades 1 and 6: bank 0198 holds a player-name placeholder tag here instead of a name (the Chinese does the same). The trade reads the OT text as stored, with no name filled in; how it shows in game is unverified. See `work/notes/integrity_audit_text.md` §2.
 
@@ -134,179 +134,168 @@ Scripts that open the move-relearner screen (`MoveRelearnerInit`), with what the
 | Saffron Mr. Psychic house | Heart Scale ×1 |
 | Blackthorn Move Tutor house | Heart Scale ×1 |
 
-## Pokémon gifts and one-time battles
+## Pokémon gifts and scripted encounters
 
-`GiveMon`, `GiveEgg` and `WildBattle` commands in the scripts (legendaries, gift Pokémon, fossils). Levels shown when the script uses a fixed value.
+Scripted gifts and encounters, with reviewed access requirements. Unreachable scenes are excluded. Levels shown when the script uses a fixed value.
 
-| Where | Kind | Pokémon | Level |
-|---|---|---|---|
-| Pallet Town, north-west house | gift | Poliwag | 5 |
-| Pallet Town, north-west house | gift | Poliwhirl | 10 |
-| Pallet Oak's Lab | gift | Bulbasaur | 5 |
-| Pallet Oak's Lab | gift | Charmander | 5 |
-| Pallet Oak's Lab | gift | Pikachu | 5 |
-| Viridian City | battle | Mankey | 5 |
-| Viridian City | battle | Meowth | 5 |
-| Viridian City | battle | Pikachu | 5 |
-| Route 22 | battle | Mankey | 10 |
-| Route 2 House | gift | Barboach | 20 |
-| Route 2 House | gift | Doduo | 20 |
-| Viridian Forest | battle | Fearow | 20 |
-| Viridian Forest | battle | Heracross | 15 |
-| Viridian Forest | battle | Nincada | 15 |
-| Viridian Forest | battle | Pineco | 15 |
-| Viridian Forest | battle | Pinsir | 15 |
-| Viridian Forest | battle | Scyther | 15 |
-| Viridian Forest | battle | Volbeat | 15 |
-| Viridian Forest | battle | Yanma | 15 |
-| Viridian Forest | gift | Eevee | 5 |
-| Pewter Pokémon Center | gift | Charmander | 10 |
-| Route 3 | battle | Charmander | 15 |
-| Route 3 | battle | Ralts | 15 |
-| Route 3 | battle | Scyther | 15 |
-| Route 3 | gift | Ralts | 15 |
-| Mt. Moon, east building | battle | Groudon | 95 |
-| Route 25 | battle | Suicune | 90 |
-| Route 5 House | gift | Bulbasaur | 15 |
-| Route 5 House | gift | Growlithe | 15 |
-| Vermilion City | battle | Horsea | 25 |
-| Vermilion City | gift | Horsea | 25 |
-| Route 9 | gift | Squirtle | 5 |
-| Route 10 | battle | Zapdos | 50 |
-| Route 10 Pokémon Center | gift | Bellsprout | 5 |
-| Rock Tunnel | gift | Regice | 90 |
-| Rock Tunnel | gift | Regirock | 90 |
-| Rock Tunnel | gift | Registeel | 90 |
-| Power Plant | battle | Electrode | 55 |
-| Power Plant | battle | Grimer | 25 |
-| Power Plant | battle | Magneton | 55 |
-| Power Plant | battle | Zapdos | 90 |
-| Pokémon Tower, upper floors | battle | Magcargo | 40 |
-| Lavender Volunteer Pokémon house | gift | Cubone | 5 |
-| Celadon Prize Corner | gift | Eevee | 15 |
-| Celadon Prize Corner | gift | Mr. Mime | 15 |
-| Celadon Prize Corner | gift | Porygon | 15 |
-| Pal Park | battle | Absol | 10 |
-| Pal Park | battle | Bagon | 10 |
-| Pal Park | battle | Baltoy | 10 |
-| Pal Park | battle | Beldum | 10 |
-| Pal Park | battle | Bidoof | 10 |
-| Pal Park | battle | Bronzor | 10 |
-| Pal Park | battle | Budew | 10 |
-| Pal Park | battle | Buizel | 10 |
-| Pal Park | battle | Buneary | 10 |
-| Pal Park | battle | Carnivine | 10 |
-| Pal Park | battle | Carvanha | 10 |
-| Pal Park | battle | Chatot | 10 |
-| Pal Park | battle | Cherubi | 10 |
-| Pal Park | battle | Chimchar | 10 |
-| Pal Park | battle | Corphish | 10 |
-| Pal Park | battle | Croagunk | 10 |
-| Pal Park | battle | Drifloon | 10 |
-| Pal Park | battle | Duskull | 10 |
-| Pal Park | battle | Electrike | 10 |
-| Pal Park | battle | Finneon | 10 |
-| Pal Park | battle | Gible | 10 |
-| Pal Park | battle | Gulpin | 10 |
-| Pal Park | battle | Hippopotas | 10 |
-| Pal Park | battle | Makuhita | 10 |
-| Pal Park | battle | Mawile | 10 |
-| Pal Park | battle | Meditite | 10 |
-| Pal Park | battle | Mudkip | 10 |
-| Pal Park | battle | Numel | 10 |
-| Pal Park | battle | Pachirisu | 10 |
-| Pal Park | battle | Piplup | 10 |
-| Pal Park | battle | Ralts | 10 |
-| Pal Park | battle | Relicanth | 10 |
-| Pal Park | battle | Riolu | 10 |
-| Pal Park | battle | Rotom | 10 |
-| Pal Park | battle | Sableye | 10 |
-| Pal Park | battle | Seviper | 10 |
-| Pal Park | battle | Shellos | 10 |
-| Pal Park | battle | Shinx | 10 |
-| Pal Park | battle | Shroomish | 10 |
-| Pal Park | battle | Snover | 10 |
-| Pal Park | battle | Spiritomb | 10 |
-| Pal Park | battle | Spoink | 10 |
-| Pal Park | battle | Stunky | 10 |
-| Pal Park | battle | Swablu | 10 |
-| Pal Park | battle | Torchic | 10 |
-| Pal Park | battle | Treecko | 10 |
-| Pal Park | battle | Tropius | 10 |
-| Pal Park | battle | Turtwig | 10 |
-| Fuchsia City, Safari Zone entrance building | gift | Dratini | 15 |
-| Route 12 | battle | Milotic | 40 |
-| Route 12 | battle | Poochyena | 5 |
-| Route 12 | battle | Snorlax | 35 |
-| Route 12 | gift | Torchic | 5 |
-| Route 15 | battle | Machamp | 55 |
-| Route 15 | battle | Nidoqueen | 55 |
-| Saffron Fighting Dojo | gift | Hitmonchan | 35 |
-| Saffron Fighting Dojo | gift | Hitmonlee | 35 |
-| Silph Co. 2F–3F (staff cafeteria and warehouse) | gift | Lapras | 70 |
-| Seafoam Islands, inner room | battle | Articuno | 90 |
-| Seafoam Islands, inner room | battle | Kyogre | 95 |
-| Route 21 | battle | Mr. Mime | 60 |
-| Cinnabar Island | Egg | Treecko | — |
-| Cinnabar Island | battle | Moltres | 90 |
-| Victory Road, Victory Road 2F, Ice Path B3F | battle | Electrode | 70 |
-| Indigo Plateau (Indigo Conference: finalists' arrival) | gift | Mewtwo | 95 |
-| New Bark Elm's Lab 2F | gift | Shinx | 5 |
-| Route 30 | battle | Stantler | 15 |
-| Route 31 | battle | Chikorita | 5 |
-| Violet Pokémon Center | Egg | Mareep | — |
-| Violet Pokémon Center | Egg | Slugma | — |
-| Violet Pokémon Center | Egg | Wooper | — |
-| Route 32 | battle | Quagsire | 50 |
-| Route 32 | battle | Staravia | 30 |
-| Ruins of Alph Underground Hall | battle | Bronzor | 25 |
-| Ruins of Alph Northwest Entrance Second room | battle | Entei | 90 |
-| Union Cave | battle | Cyndaquil | 10 |
-| Union Cave B1F | battle | Heatran | 90 |
-| Ilex Forest | battle | Ariados | 20 |
-| Ilex Forest | battle | Burmy | 20 |
-| Ilex Forest | battle | Kricketune | 20 |
-| Ilex Forest | battle | Skorupi | 20 |
-| Ilex Forest | gift | Houndour | 20 |
-| Forest of Time | gift | Celebi | 90 |
-| Forest of Time | gift | Shaymin | 90 |
-| Route 34 | battle | Salamence | 60 |
-| Route 34 | gift | Totodile | 5 |
-| Goldenrod Game Corner | gift | Abra | 15 |
-| Goldenrod Game Corner | gift | Dratini | 15 |
-| Goldenrod Game Corner | gift | Ekans | 15 |
-| Goldenrod Game Corner | gift | Sandshrew | 15 |
-| Goldenrod Magnet Train Station 1F | gift | Chimchar | 5 |
-| Dream World | battle | Cresselia | 90 |
-| Dream World | battle | Darkrai | 90 |
-| Ecruteak Dowsing Machine house | gift | Shellos | 25 |
-| Bell Tower Roof | gift | Ho-Oh | 95 |
-| Route 38 | battle | Murkrow | 25 |
-| Frontier Access | gift | Jirachi | 5 |
-| Cianwood Pokémon Center | gift | Tentacool | 15 |
-| Whirl Islands B3F Lugia Cave | battle | Lugia | 95 |
-| Route 42 | battle | Seviper | 30 |
-| Team Rocket HQ B2F | battle | Chatot | 10 |
-| Team Rocket HQ B2F | battle | Electrode | 50 |
-| Lake of Rage | battle | Azelf | 90 |
-| Lake of Rage | battle | Gyarados | 30 |
-| Lake of Rage | battle | Mesprit | 90 |
-| Lake of Rage | battle | Uxie | 90 |
-| Route 47 | battle | Raikou | 90 |
-| Sinjoh Ruins | battle | Dialga | 95 |
-| Sinjoh Ruins | battle | Palkia | 95 |
-| Sinjoh Ruins Mystri Stage | battle | Arceus | 95 |
-| Sinjoh Ruins Mystri Stage | battle | Regigigas | 95 |
-| Reversal Cave | battle | Kyogre | 50 |
-| Reversal Cave | battle | Giratina | 95 |
-| Alto Mare Waters | gift | Manaphy | 1 |
-| Five Island | gift | Mew | 90 |
-| Island Cave | battle | Crystal Onix | 40 |
-| Island Forest | battle | Hypno | 30 |
-| Secret Forest | gift | Latias | 80 |
-| Secret Forest | gift | Latios | 80 |
-| Seven Island | battle | Kecleon | 25 |
-| Six Island | battle | Deoxys | 95 |
-| Sky Pillar Peak | battle | Rayquaza | 95 |
-| Two Island | gift | Piplup | 5 |
+| Where | Kind | Pokémon | Level | Requirements |
+|---|---|---|---|---|
+| Pallet Town, your home (1F) | gift | Poliwag | 5 | Bulbasaur starter only. After talking to Mom following your starter choice, accept the Poliwag by the kitchen sink. Missable: collect it before Blue’s farewell scene in Viridian City; take it before leaving Pallet Town. Leave a free party slot. |
+| Pallet Oak's Lab | gift | Bulbasaur | 5 | Choose this Pokémon as your initial starter at Professor Oak’s Lab. You receive only one of Bulbasaur, Charmander or Pikachu. |
+| Pallet Oak's Lab | gift | Charmander | 5 | Choose this Pokémon as your initial starter at Professor Oak’s Lab. You receive only one of Bulbasaur, Charmander or Pikachu. |
+| Pallet Oak's Lab | gift | Pikachu | 5 | Choose this Pokémon as your initial starter at Professor Oak’s Lab. You receive only one of Bulbasaur, Charmander or Pikachu. |
+| Viridian City | battle | Mankey | 5 | Pikachu starter only. After the Route 1 tutorial, talk to the street-light keeper and follow the thief quest in Viridian City. One encounter; catching, defeating or fleeing removes it. |
+| Viridian City | battle | Meowth | 5 | Charmander starter only. After the Route 1 tutorial, talk to the resident who reports the Meowth thief and follow the thief quest in Viridian City. One encounter; catching, defeating or fleeing removes it. |
+| Viridian City | battle | Pikachu | 5 | Bulbasaur starter only. After the Route 1 tutorial, talk to the Viridian Mart clerk and follow the thief quest in Viridian City. One encounter; catching, defeating or fleeing removes it. |
+| Route 2 House | gift | Barboach | 20 | Bulbasaur or Pikachu starter only. Take the live Poké Ball in the Rocket warehouse on Route 2 East before the Celadon Rocket hideout finale. Leave a free party slot. |
+| Route 2 House | gift | Doduo | 20 | Charmander starter only. Take the live Poké Ball in the Rocket warehouse on Route 2 East before the Celadon Rocket hideout finale. Leave a free party slot. |
+| Viridian Forest | battle | Fearow | 20 | Before the Volcano Badge, help the woman protect her flower garden and beat the Spearow flock. One encounter; catching, defeating or fleeing removes it. |
+| Viridian Forest | battle | Heracross | 15 | Use one Honey on the shining Honey tree on Monday. Repeatable with more Honey; the DS clock determines the weekday. |
+| Viridian Forest | battle | Nincada | 15 | Use one Honey on the shining Honey tree on Thursday. Repeatable with more Honey; the DS clock determines the weekday. |
+| Viridian Forest | battle | Pineco | 15 | Use one Honey on the shining Honey tree on Friday. Repeatable with more Honey; the DS clock determines the weekday. |
+| Viridian Forest | battle | Pinsir | 15 | Use one Honey on the shining Honey tree on Tuesday. Repeatable with more Honey; the DS clock determines the weekday. |
+| Viridian Forest | battle | Scyther | 15 | Use one Honey on the shining Honey tree on Sunday. Repeatable with more Honey; the DS clock determines the weekday. |
+| Viridian Forest | battle | Volbeat | 15 | Use one Honey on the shining Honey tree on Wednesday. Repeatable with more Honey; the DS clock determines the weekday. |
+| Viridian Forest | battle | Yanma | 15 | Use one Honey on the shining Honey tree on Saturday. Repeatable with more Honey; the DS clock determines the weekday. |
+| Viridian Forest | gift | Eevee | 5 | After the Route 2 and Viridian Forest Team Rocket rescue story, talk to the healed Eevee in the forest’s far northeast and accept it. Leave a free party slot. |
+| Pewter Pokémon Center | gift | Charmander | 10 | Pikachu starter only. After the Viridian Forest Rocket scene, hear the Pewter Pokémon Center Trainer brag, rescue the abandoned Charmander on Route 2 East, and defeat its former Trainer. Missable: rescue it before the Cascade Badge. Once in the Pokémon Center, Charmander waits for you. Leave a free party slot. |
+| Route 3 | battle | Ralts | 15 | After the Cascade Badge, if you did not accept the painter’s gift, read the letter beside Ralts and agree to take it. One encounter; catching, defeating or fleeing removes it. |
+| Route 3 | battle | Scyther | 15 | Charmander starter only. Talk to Bug Catcher Kenji to reveal the Scyther on the ledge, then challenge it. One encounter; catching, defeating or fleeing removes it. |
+| Route 3 | gift | Ralts | 15 | Before the Cascade Badge, give the Route 3 painter one Fresh Water, then accept his Ralts. Leave a free party slot. |
+| Mt. Moon — deepest altar chamber | battle | Groudon | 95 | After the final Hall of Fame and Lance’s visit to your house in Pallet Town. Carry the Red Orb and examine the altar deep in Mt. Moon. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Route 25 | battle | Suicune | 90 | After the final Hall of Fame and Lance’s visit to your house in Pallet Town. See Prof. Hale and Molly release the beasts in the Burned Tower before rematching the Mt. Mortar expedition leader; winning that rematch first can permanently block them. Talk to Suicune south-east of Bill’s house on Cerulean Cape. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Route 5 House | gift | Bulbasaur | 15 | Pikachu starter only. After the Cascade Badge, intervene in the Route 5 shelter raid and win, then accept the rescued Pokémon inside the house. Refusing the rescue loses it. Complete the raid before making Sabrina laugh in Pokémon Tower. Leave a free party slot. |
+| Route 5 House | gift | Growlithe | 15 | Bulbasaur or Charmander starter only. After the Cascade Badge, intervene in the Route 5 shelter raid and win, then accept the rescued Pokémon inside the house. Refusing the rescue loses it. Complete the raid before making Sabrina laugh in Pokémon Tower. Leave a free party slot. |
+| Vermilion City | battle | Horsea | 25 | Feed the waterfront Horsea five Yache Berries, then agree to catch it. Alternatively, the fisherman can fish it up during Ryochi’s Good Rod quest if you sided with the townsfolk. One encounter; catching, defeating or fleeing removes it. |
+| Vermilion City | gift | Horsea | 25 | Side with the townsfolk in the Vermilion construction-site clash, then have Ryochi ask you for Horsea. Before obtaining the Good Rod, speak to the fisherman by the water without Oak’s Parcel. If the wild Horsea is already gone, he gives you one; otherwise he fishes up the wild encounter. Leave a free party slot. |
+| Route 9 | gift | Squirtle | 5 | Pikachu starter only. Recover your stolen Pokédex from the Squirtle Squad, then choose to save them from Team Rocket and accept Squirtle. Missable: advance through the grunt rescue before making Sabrina laugh in Pokémon Tower; refusing to help loses this gift. Leave a free party slot. |
+| Route 10 Pokémon Center | gift | Bellsprout | 5 | Accept the Route 10 Pokémon Center seller’s offer. Repeatable with a free party slot. Although he advertises $5,000, the original script does not charge money. |
+| Rock Tunnel — memorial chamber | gift | Regice | 90 | During League HQ’s first investigation round, defeat Goh and the Rocket group in Rock Tunnel. Read the memorial with Wailord in party slot 1 and Relicanth in slot 6. Answer Yes, No, Yes, then “Be ready to fight”. Accept each statue’s gift with a free party slot. |
+| Rock Tunnel — memorial chamber | gift | Regirock | 90 | During League HQ’s first investigation round, defeat Goh and the Rocket group in Rock Tunnel. Read the memorial with Wailord in party slot 1 and Relicanth in slot 6. Answer Yes, No, Yes, then “Be ready to fight”. Accept each statue’s gift with a free party slot. |
+| Rock Tunnel — memorial chamber | gift | Registeel | 90 | During League HQ’s first investigation round, defeat Goh and the Rocket group in Rock Tunnel. Read the memorial with Wailord in party slot 1 and Relicanth in slot 6. Answer Yes, No, Yes, then “Be ready to fight”. Accept each statue’s gift with a free party slot. |
+| Power Plant | battle | Zapdos | 90 | After the final Hall of Fame entry following Giovanni’s defeat at League HQ. Earlier Zapdos battles are trainer battles and cannot catch it. One encounter; catching, defeating or fleeing removes it. |
+| Pokémon Tower — illusion Grunts’ floor | battle | Magcargo | 40 | After defeating the two illusion Grunts in Pokémon Tower. Catch it before taking any stairs or leaving the floor; reloading the map hides it. One chance; losing this battle freezes the original hack. |
+| Lavender Volunteer Pokémon house | gift | Cubone | 5 | After Agatha breaks up Team Rocket in Pokémon Tower, accept Cubone from Mr. Fuji’s Volunteer Pokémon House. Leave a free party slot. |
+| Celadon Prize Corner | gift | Eevee | 15 | Exchange 6,666 Coins at the Celadon Prize Corner. Repeatable with enough Coins and a free party slot. |
+| Celadon Prize Corner | gift | Mr. Mime | 15 | Exchange 3,333 Coins at the Celadon Prize Corner. Repeatable with enough Coins and a free party slot. |
+| Celadon Prize Corner | gift | Porygon | 15 | Exchange 9,999 Coins at the Celadon Prize Corner. Repeatable with enough Coins and a free party slot. |
+| Pal Park — standing Pokémon | battle | Absol | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Wednesday or Friday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Bagon | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Sunday, or Monday 07:00–18:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Baltoy | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Sunday or Friday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Beldum | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Sunday, or Monday 07:00–18:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Bidoof | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Tuesday, or Monday 19:00–06:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Bronzor | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Thursday or Saturday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Budew | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Thursday or Saturday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Buizel | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Tuesday, or Monday 19:00–06:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Buneary | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Tuesday, or Monday 19:00–06:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Carnivine | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Tuesday, or Monday 19:00–06:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Carvanha | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Wednesday, or Monday 07:00–18:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Chatot | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Saturday, or Monday 19:00–06:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Cherubi | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Tuesday or Thursday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Chimchar | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Tuesday or Thursday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Corphish | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Wednesday or Friday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Croagunk | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Saturday, or Monday 19:00–06:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Drifloon | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Saturday, or Monday 19:00–06:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Duskull | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Sunday, or Monday 07:00–18:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Electrike | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Sunday or Friday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Finneon | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Tuesday or Thursday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Gible | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Saturday, or Monday 19:00–06:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Gulpin | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Sunday, or Monday 07:00–18:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Hippopotas | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Thursday or Saturday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Makuhita | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Sunday or Friday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Mawile | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Wednesday, or Monday 07:00–18:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Meditite | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Wednesday or Friday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Mudkip | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Sunday or Friday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Numel | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Wednesday or Friday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Pachirisu | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Saturday, or Monday 19:00–06:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Piplup | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Thursday or Saturday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Ralts | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Wednesday, or Monday 07:00–18:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Relicanth | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Sunday or Friday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Riolu | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Tuesday or Thursday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Rotom | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Saturday, or Monday 19:00–06:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Sableye | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Sunday, or Monday 07:00–18:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Seviper | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Wednesday, or Monday 07:00–18:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Shellos | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Thursday or Saturday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Shinx | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Tuesday or Thursday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Shroomish | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Wednesday or Friday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Snover | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Thursday or Saturday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Spiritomb | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Tuesday, or Monday 19:00–06:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Spoink | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Sunday or Friday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Stunky | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Tuesday or Thursday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Swablu | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Sunday, or Monday 07:00–18:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Torchic | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Wednesday or Friday. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Treecko | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Wednesday, or Monday 07:00–18:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Tropius | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Wednesday, or Monday 07:00–18:59. Bring your own Poké Balls. |
+| Pal Park — standing Pokémon | battle | Turtwig | 10 | After the Cianwood Gym story opens the Resort Zone, enter Pal Park’s Fixed Catch mode for $10,000 with room for six more Pokémon in the PC. This standing Pokémon appears on Tuesday, or Monday 19:00–06:59. Bring your own Poké Balls. |
+| Fuchsia City — Safari Zone entrance | gift | Dratini | 15 | Save Baoba’s Dragonair: deliver the Secret Potion after beating Paxton and no more than one Cycling Road biker. Beating Swimmer Marina before delivery also makes the rescue fail. Then speak to Baoba at the Safari Zone entrance with a free party slot. This Dratini knows Extreme Speed. |
+| Route 12 | battle | Milotic | 40 | Talk to the fisherman about the fish-zapper, then refuse to battle Hugo. When shiny Milotic appears, choose to stop it. Guaranteed shiny. One chance: refusing, catching, defeating, fleeing or losing ends its appearance. |
+| Route 12 | battle | Poochyena | 5 | Before the Rainbow Badge ceremony, stop the Poochyena chasing Prof. Birch on Route 12. Wake the blocking Snorlax to reach it in time. One encounter; catching, defeating or fleeing removes it. |
+| Route 12 | battle | Snorlax | 35 | Bring Mr. Fuji’s Poké Flute and wake the Snorlax blocking Silence Bridge on Route 12. One encounter; catching, defeating or fleeing removes it. |
+| Route 12 | gift | Torchic | 5 | Rescue Prof. Birch from Poochyena on Route 12, then accept Torchic. Missable: collect it before the Rainbow Badge ceremony hides Birch. Wake the blocking Snorlax to reach him in time. Leave a free party slot. |
+| Route 15 | battle | Machamp | 55 | Accept Lara’s invitation after the Route 18 Tauros scene, then enter the Route 15 Cape Battle Marathon. This is a first-stage battle. Finish this stage before Sabrina’s Pokémon Tower scene starts the Saffron takeover, which cancels an unfinished marathon. One chance per Pokémon; losing allows a retry. |
+| Route 15 | battle | Nidoqueen | 55 | Accept Lara’s invitation after the Route 18 Tauros scene, then enter the Route 15 Cape Battle Marathon. This is a first-stage battle. Finish this stage before Sabrina’s Pokémon Tower scene starts the Saffron takeover, which cancels an unfinished marathon. One chance per Pokémon; losing allows a retry. |
+| Saffron City — Hunyuan Dojo | gift | Hitmonchan | 35 | Talk to Ma Baoguo, defeat his four disciples and then Ma, and choose this Poké Ball with a free party slot. Choose only one: Hitmonlee or Hitmonchan; the other remains sealed. |
+| Saffron City — Hunyuan Dojo | gift | Hitmonlee | 35 | Talk to Ma Baoguo, defeat his four disciples and then Ma, and choose this Poké Ball with a free party slot. Choose only one: Hitmonlee or Hitmonchan; the other remains sealed. |
+| Silph Co., staff cafeteria (hostages’ room) | gift | Lapras | 70 | During the Saffron Rocket takeover, speak to the cafeteria hostage after Jessie, James and Maxie. Missable: collect Lapras before the Rocket Boss battle; the hostages leave afterward, win or lose. Leave a free party slot. |
+| Seafoam Islands, inner room | battle | Articuno | 90 | After the final Hall of Fame entry and Lance’s visit to your home in Pallet Town. Melt the Seafoam Islands ice barriers to reach Articuno. Earlier trainer-style battles cannot catch it. One encounter; catching, defeating or fleeing removes it. |
+| Seafoam Islands, inner room | battle | Kyogre | 95 | After the final Hall of Fame entry, bring the Blue Orb from Lance’s visit to the Seafoam Islands pedestal. One encounter; catching, defeating or fleeing removes it. |
+| Route 21 | battle | Mr. Mime | 60 | Speak to the Lairon Trainer on northern Route 21, then challenge the Mr. Mime beside him. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Cinnabar Island | Egg | Treecko | — | Complete the Cinnabar lava-edge Egg scene and pick up the Egg with a free party slot. Do this before the League HQ round-1 Power Plant scene removes the man and Egg permanently. |
+| Cinnabar Island | battle | Moltres | 90 | After the final Hall of Fame, examine the lava’s edge where the Egg man stood. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Victory Road 1F — fake item ball | battle | Electrode | 70 | Examine the fake item ball on Victory Road 1F. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Indigo Plateau slope — Mewtwo’s barrier scene | gift | Mewtwo | 95 | After Mewtwo breaks the Indigo Plateau barrier and you win the Multi Battle beside it, accept its gift with a free party slot. Take it before entering the final Elite Four challenge: the final Hall of Fame removes it permanently. |
+| New Bark Town — Guesthouse | gift | Shinx | 5 | In New Bark Town Guesthouse, answer the Sinnoh traveller’s quiz: Luxray, Electric, Sees through things. Accept with a free party slot. |
+| Route 30 | battle | Stantler | 15 | Before the Route 46 Rocket dig removes the herd, lead with a healthy Noctowl and use Foresight at the Route 30 Stantler roadblock. Catch the lone Stantler before leaving the map; it disappears on departure. |
+| Route 31 | battle | Chikorita | 5 | After Elm gives Crystal her Pokédex at the Cherrygrove orphanage, follow Chikorita from Route 30 to Route 31’s Oddish girl, then the Bug Catcher. Talk to the Bug Catcher before Chikorita. Avoid speaking to Brock in Pewter Museum while his siblings’ quiz is unfinished until the Route 30 scene is done; that can remove Chikorita permanently. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Violet Pokémon Center | Egg | Mareep | — | Give Primo in Violet Pokémon Center the correct two Easy Chat password phrases for this Egg and your Trainer ID. One Egg of each species; a free party slot is required. |
+| Violet Pokémon Center | Egg | Slugma | — | Give Primo in Violet Pokémon Center the correct two Easy Chat password phrases for this Egg and your Trainer ID. One Egg of each species; a free party slot is required. |
+| Violet Pokémon Center | Egg | Wooper | — | Give Primo in Violet Pokémon Center the correct two Easy Chat password phrases for this Egg and your Trainer ID. One Egg of each species; a free party slot is required. |
+| Route 32 | battle | Quagsire | 50 | Only if you forcibly took back the Wooper’s Poké Ball in Cherrygrove. After rescuing Molly in the Ruins of Alph, walk along the Route 32 bank east of the Hoppip owner. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Route 32 | battle | Staravia | 30 | After the Ruins of Alph Molly chapter opens Route 32, take the Hoppip owner’s rescue request and confront the Staravia cornering a Hoppip near the Pokémon Center. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Ruins of Alph Underground Hall | battle | Bronzor | 25 | Give the injured girl outside the Ruins of Alph a Potion, then touch the fourth statue from the left in the Underground Hall’s top row. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Ruins of Alph — Entei’s dream room | battle | Entei | 90 | After the final Hall of Fame and Lance’s visit to your house in Pallet Town. See Prof. Hale and Molly release the beasts in the Burned Tower before rematching the Mt. Mortar expedition leader; winning that rematch first can permanently block them. Return through the Kabuto chamber’s back wall and the statue hall to the dream room. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Union Cave 1F — Cyndaquil ledge | battle | Cyndaquil | 10 | Before finishing Koume’s Ilex Forest exit scene, which removes Goh and Cyndaquil. Either defeat Goh after saying you saw it first, or let him pursue it and refuse to move the boulder trapping him. Examine Cyndaquil’s ledge again to battle it. Helping Goh catch it loses this encounter. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Union Cave B1F — lava pedestal | battle | Heatran | 90 | Obtain the Magma Stone in Diglett’s Cave after the Silver Conference closing ceremony. Place it on the Union Cave B1F lava pedestal on a Tuesday. Reach the pedestal using Surf and either carry a Cleanse Tag or pay the old woman $2,000. Summoning consumes the stone; once summoned, Heatran can be battled on any day. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Ilex Forest | battle | Ariados | 20 | During Bugsy’s Ilex Forest bug hunt, carry Honey and spread it on the correct rock. Use the west or north side of Ariados’s rock, before Skorupi’s rock. Do not claim the Rocky Helmet first. A bug that flees from the Honey cannot be retried; only three of the four can be handled by you. |
+| Ilex Forest | battle | Burmy | 20 | During Bugsy’s Ilex Forest bug hunt, carry Honey and spread it on the correct rock. Start with Burmy’s rock from any side except west; otherwise Bugsy takes Burmy after your first rock. A bug that flees from the Honey cannot be retried; only three of the four can be handled by you. |
+| Ilex Forest | battle | Kricketune | 20 | During Bugsy’s Ilex Forest bug hunt, carry Honey and spread it on the correct rock. Use the west or south side of Kricketune’s rock; Bugsy takes Kricketune if you start with Burmy. A bug that flees from the Honey cannot be retried; only three of the four can be handled by you. |
+| Ilex Forest | battle | Skorupi | 20 | During Bugsy’s Ilex Forest bug hunt, carry Honey and spread it on the correct rock. Use any side of Skorupi’s rock except west, and deal with Ariados first so the bugs do not interfere. A bug that flees from the Honey cannot be retried; only three of the four can be handled by you. |
+| Ilex Forest | gift | Houndour | 20 | Speak to the Ilex Forest fire ranger, chase Houndour through all five positions, defeat its trainer-style battle, and accept with a free party slot. Finish Bugsy’s hunt before starting this quest, because its progress is shared. |
+| Forest of Time | gift | Celebi | 90 | After receiving Shaymin at the Forest of Time shrine, leave through Ilex Forest and return. Lead with Shaymin and examine the shrine from 20:00 to 07:59. Accept with a free party slot. |
+| Forest of Time | gift | Shaymin | 90 | After completing the Sammy/Celebi League HQ investigation chapter. Carry the Gracidea, lead with Leafeon, and examine the Forest of Time shrine from 08:00 to 19:59. Accept with a free party slot. |
+| Route 34 | battle | Salamence | 60 | During the Goldenrod Gym chain, after Norman asks you to find Ruby, enter the north end of Route 34. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Route 34 | gift | Totodile | 5 | After the Ilex Forest chapter, speak to the injured Route 34 dancer with a Potion, then visit the hidden southern grove. Choose “Strike a battle-command pose”; all other dance choices permanently lose Totodile. Defeat the two dancers, then accept with a free party slot. |
+| Goldenrod Game Corner | gift | Abra | 15 | Goldenrod Game Corner prize for 200 coins; requires a Coin Case and a free party slot. |
+| Goldenrod Game Corner | gift | Dratini | 15 | Goldenrod Game Corner prize for 2,100 coins; requires a Coin Case and a free party slot. |
+| Goldenrod Game Corner | gift | Ekans | 15 | Goldenrod Game Corner prize for 700 coins; requires a Coin Case and a free party slot. |
+| Goldenrod City — Magnet Train Station 1F | gift | Chimchar | 5 | Speak to Prof. Rowan in Goldenrod Magnet Train Station with a free party slot before winning the Plain Badge; that win removes him permanently. |
+| Dream World — reached from MooMoo Farm | battle | Cresselia | 90 | After the final Hall of Fame and Lance’s visit to your house in Pallet Town. Enter the Dream World from the back wall inside MooMoo Farm’s west stable entrance. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Dream World — reached from MooMoo Farm | battle | Darkrai | 90 | After the final Hall of Fame and Lance’s visit to your house in Pallet Town. Enter the Dream World from the back wall inside MooMoo Farm’s west stable entrance. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Ecruteak City — Shellos boy’s house | gift | Shellos | 25 | Tell the Ecruteak boy “Then give it to me”, with a free party slot. Choosing “Don’t give up on it” permanently loses the gift. |
+| Bell Tower Roof | gift | Ho-Oh | 95 | After the final Hall of Fame: ask Satsuki in the Dance Theater to see Ho-Oh, win Morty’s challenge for the Clear Bell, then return to Satsuki. After the Bell Tower ceremony, defeat Ho-Oh in its trainer-style battle and accept the gift with a free party slot. |
+| Route 38 | battle | Murkrow | 25 | Accept the Route 38 boy’s coin-recovery request. Carry a Nugget, refuse to trade it to Murkrow, then agree to take the coin by force. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Frontier Access | gift | Jirachi | 5 | After the final Hall of Fame, finish the legendary investigation story through Crystal’s return to Cherrygrove first. Repair the Frontier Access stone seven times, defeat the Rocket pair, then accept Jirachi with a free party slot. Each repair accepts Yes even without a Star Piece. |
+| Cianwood Pokémon Center | gift | Tentacool | 15 | The Cianwood Pokémon Center gift requires exactly one Pokémon in your party and no Pokémon in any PC Box. |
+| Whirl Islands B3F Lugia Cave | battle | Lugia | 95 | After the final Hall of Fame, ask Satsuki in the Dance Theater to see Lugia, then start the ceremony in Lugia’s cave. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. If you already received Ho-Oh, the shortened Lugia menu takes the wrong branch; talk to Satsuki again and select Lugia from the full menu. |
+| Route 42 | battle | Seviper | 30 | Choose “I’ll save it” when Seviper threatens Blissey’s Egg on Route 42. Choosing “Let nature be” permanently skips the battle. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Team Rocket HQ B2F | battle | Chatot | 10 | After the Team Rocket HQ radio-room scene, talk to Petrel’s abandoned Chatot before leaving B2F. One chance: leaving the floor or any battle outcome, including losing, removes it permanently. |
+| Team Rocket HQ B2F | battle | Electrode | 50 | During the Team Rocket HQ radio-room story, interact with an Electrode to stop the machinery. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Lake of Rage | battle | Azelf | 90 | After League HQ round 4’s Petrel scene in the lake guardian’s house, complete the knowledge and friendship trials, then defeat Sailor Silas. Only appears on Wednesdays: enter Lake of Rage or Route 43 that day after clearing Rocket HQ. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Lake of Rage | battle | Gyarados | 30 | Talk to Lance on the Lake of Rage south shore after the Route 42 Entei scene. This is the catchable red Gyarados in the story battle. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Lake of Rage | battle | Mesprit | 90 | After League HQ round 4’s Petrel scene in the lake guardian’s house, complete the knowledge trial, then show a Pokémon with maximum friendship (255). Only appears on Wednesdays: enter Lake of Rage or Route 43 that day after clearing Rocket HQ. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Lake of Rage | battle | Uxie | 90 | After League HQ round 4’s Petrel scene in the lake guardian’s house, pass the knowledge quiz. Only appears on Wednesdays: enter Lake of Rage or Route 43 that day after clearing Rocket HQ. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Route 47 | battle | Raikou | 90 | After the final Hall of Fame and Lance’s visit to your house in Pallet Town. See Prof. Hale and Molly release the beasts in the Burned Tower before rematching the Mt. Mortar expedition leader; winning that rematch first can permanently block them. Return to Will’s former device site in north-west Route 47. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Dialga’s space — Ice Path B2F statue | battle | Dialga | 95 | After the final Hall of Fame and Lance’s visit to your house in Pallet Town. Carry the Adamant Orb to the Ice Path B2F statue to enter Dialga’s space. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Palkia’s space — Mt. Mortar B1F statue | battle | Palkia | 95 | After the final Hall of Fame and Lance’s visit to your house in Pallet Town. Enter Palkia’s space through the Mt. Mortar B1F statue; its Lustrous Orb dialogue does not enforce an item check. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Distortion World — reached through Reversal Cave | battle | Giratina | 95 | After the final Hall of Fame and Lance’s visit to your house in Pallet Town. Retrieve the Griseous Orb from the Dark Cave shrine after the final Hall of Fame. Carry it through Route 47’s Reversal Cave statue into the Distortion World and summon Giratina at its former spot. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Alto Mare Waters | gift | Manaphy | 1 | Tell the Egg girl in Alto Mare Waters to walk with it, then follow and speak to her in order on Six Island, Five Island and Four Island. Return to western Alto Mare Waters, defeat the two treasure hunters, and accept the hatched Manaphy with a free party slot. |
+| Five Island — Mew’s small island | gift | Mew | 90 | Free the Five Island disciple, read all four Cinnabar lab R&D logs, then follow the Mew sightings in order: Route 1, Mt. Moon Square, Route 27, Five Island. Defeat Mew in the play battle on the small island, then accept with a free party slot. |
+| Four Island, Island Cave — hidden Crystal Onix chamber | battle | Crystal Onix | 40 | Crystal Onix (form 1): first speak to the Four Island stone craftsman, then defeat Granny Lisa in the hidden cave. Agree to keep her secret, speak to her again, then talk to Onix. Refusing the secret permanently loses this encounter. One chance even if you lose. |
+| Island Forest | battle | Hypno | 30 | After clearing the Dragon’s Den, speak to the missing girl’s father on Three Island; then approach her in the Island Forest on Six Island. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| One Island — Secret Forest | gift | Latias | 80 | During League HQ round 4, after the Lake of Rage Petrel scene, speak to Bianca in Alto Mare Library and follow her on One Island into the Secret Forest. The library meeting needs Island Pilgrimage registration. Defeat Will and Karen, then Goh. Accept Latias and Latios together with two free party slots. |
+| One Island — Secret Forest | gift | Latios | 80 | During League HQ round 4, after the Lake of Rage Petrel scene, speak to Bianca in Alto Mare Library and follow her on One Island into the Secret Forest. The library meeting needs Island Pilgrimage registration. Defeat Will and Karen, then Goh. Accept Latias and Latios together with two free party slots. |
+| Seven Island | battle | Kecleon | 25 | Speak to the snack-theft tourist on Seven Island, then inspect the blocked spot with a healthy Alomomola leading your party. Despite the Noctowl cry/dialogue, Noctowl does not work. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Six Island | battle | Deoxys | 95 | After the final Hall of Fame and Lance’s visit to your house in Pallet Town. Carry both Red and Blue Orbs and examine Six Island’s Fallen Red Star. One chance even if you lose: starting the battle permanently removes the Red Star. |
+| Sky Pillar Peak | battle | Rayquaza | 95 | After the final Hall of Fame and Lance’s visit to your house in Pallet Town. Carry the Jade Orb and examine the far north end of Sky Pillar Peak. One chance: catching it, knocking it out or fleeing removes it; only losing allows a retry. |
+| Two Island | gift | Piplup | 5 | Earn the Mineral Badge, then pass the Two Island captain’s Water-type quiz. Answers: 29; Quagsire; Marill; Gastrodon; Armaldo holding a Passho Berry. One gift per save. Leave a free party slot. |
 

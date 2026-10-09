@@ -38,7 +38,7 @@ const headings = [
 	quests.length && { depth: 2, slug: 'quests', text: 'Quests and events' },
 	(a.encounters.length || a.headbutt.length || a.safari.length || a.encNotes.length || a.contest) && { depth: 2, slug: 'wild', text: 'Wild Pokémon' },
 	a.calendar.length && { depth: 2, slug: 'calendar', text: 'Calendar encounters' },
-	(a.statics.length || a.trades.length) && { depth: 2, slug: 'special', text: 'Gifts, trades and one-time battles' },
+	(a.statics.length || a.trades.length) && { depth: 2, slug: 'special', text: 'Gifts, trades and scripted encounters' },
 	trainers.length && { depth: 2, slug: 'trainers', text: 'Trainers' },
 	(a.items.length || a.gifts.length) && { depth: 2, slug: 'items', text: 'Items' },
 	localTutors.length && { depth: 2, slug: 'tutors', text: 'Move tutors' },
@@ -105,10 +105,10 @@ const iu = (id: number) => itemUrl(itemById.get(id));
 	</>}
 
 	{(a.statics.length > 0 || a.trades.length > 0) && <>
-		<h2 id="special">Gifts, trades and one-time battles</h2>
+		<h2 id="special">Gifts, trades and scripted encounters</h2>
 		<ul>
-			{a.statics.map((s) => <li>{({ gift: 'Gift', egg: 'Gift Egg', static: 'One-time battle' } as Record<string, string>)[s.kind] ?? s.kind}: <Mon id={s.id} name={s.name} />{s.level ? ` (Lv. ${s.level})` : ''}{questLinks(s.quests).map((q, i) => <>{i === 0 ? ' · see ' : ', '}<a href={q.href}>{q.title}</a></>)}</li>)}
-			{a.trades.map((t) => <li>{t.loan ? 'Loan' : 'Trade'}: {!t.loan && <><Mon id={t.give} name={t.giveName} /> for </>}<Mon id={t.get} name={t.getName} />{t.nickname ? ` ("${t.nickname}")` : ''}</li>)}
+			{a.statics.map((s) => <li>{({ gift: 'Gift', egg: 'Gift Egg', static: 'Scripted wild battle' } as Record<string, string>)[s.kind] ?? s.kind}: <Mon id={s.id} name={s.name} />{s.level ? ` (Lv. ${s.level})` : ''} — {s.place}{s.conditions.length > 0 && <p>{s.conditions.join(' ')}</p>}{questLinks(s.quests).map((q, i) => <>{i === 0 ? 'See ' : ', '}<a href={q.href}>{q.title}</a></>)}</li>)}
+			{a.trades.map((t) => <li>{t.label || (t.loan ? 'Temporary loan' : 'Trade')}: {!t.loan && <><Mon id={t.give} name={t.giveName} /> for </>}<Mon id={t.get} name={t.getName} />{t.level ? ` (Lv. ${t.level})` : ''}{t.nickname ? ` ("${t.nickname}")` : ''}{t.conditions.length > 0 && <p>{t.conditions.join(' ')}</p>}</li>)}
 		</ul>
 		<p class="small muted">Some of these depend on your starter, story progress or a choice.{quests.length > 0 && ' See the quests above.'}</p>
 	</>}

@@ -16,7 +16,7 @@ const methods = encounters.map(e => e.method);
 	{methods.some(m => /Radio|Swarm|Fishing at night/.test(m)) && <p class="small">Radio, swarm and night-fishing rates cover the replacement slots; other slots stay unchanged.</p>}
 	{methods.some(m => m.startsWith('Grass/cave')) && <p class="small"><a href={url('/calendar/')}>Calendar encounters</a> can replace a land slot on specific dates.</p>}
 	{methods.some(m => m.startsWith('Headbutt')) && <p class="small">Headbutt chances apply to the listed tree type. Common and rare trees depend on your Trainer ID.</p>}
-	{methods.some(m => m.startsWith('Safari Zone')) && <p class="small">Safari candidates depend on the selected area, objects and their development; no fixed chance is established.</p>}
+	{methods.some(m => m.startsWith('Safari Zone')) && <p class="small">Safari candidates depend on the selected area and time. Object Arrangement does not unlock in this hack; bonus block encounters are excluded.</p>}
 	{methods.some(m => m.startsWith('Bug-Catching Contest')) && <p class="small">Contest values are stored weights, not percentages.</p>}
 </details>
 {encounters.length > 10 && <div class="table-filter" data-table="wild-encounters-table">
