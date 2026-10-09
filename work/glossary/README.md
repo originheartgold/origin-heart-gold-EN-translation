@@ -15,9 +15,9 @@ This glossary covers the terms used in the hack author's spreadsheets in the pro
 | `locations.json` | Encounter maps, TM shop towns, Johto/Kanto towns and landmarks, and regions |
 | `general.json` | UI and game terms: 精灵 = Pokémon, 属性 = Type, 梦特性 = Hidden Ability, 技能机 = TM, encounter methods, stats, and so on |
 | `unmatched.md` | Every term that is custom, ambiguous or medium/low confidence, with a best guess and the reasoning |
-| `build_glossary.py` | Regenerates everything. Run `python3 work/glossary/build_glossary.py [--download]` |
-| `manual_overrides.py` | Curated overrides: old 汉化 names, name collisions, custom content, form labels, general terms and abbreviations |
-| `src/*.csv` | PokéAPI CSVs (`raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/csv/`) |
+| `manual_overrides.py` | Curated overrides: old 汉化 names, name collisions, custom content, form labels, general terms and abbreviations (`ABBREV`, `LOCAL_ABBREV`: short in-game spellings) |
+
+The JSON files were generated once by `build_glossary.py` from the sheets and PokéAPI CSVs and have been edited by hand since (e.g. b70a7cc removed fuzzy keys), so they are now the source; the generator was removed on 2026-10-09 (git history keeps it). The method below records how the entries were first made.
 
 Each entry has this format: `{"<中文>": {"en", "id", "source", "confidence", "note"?}}`. `id` is the PokéAPI id: species/move/ability/item/type/nature/location id. For items it is the PokéAPI item id, not the Gen 4 internal index. It is `null` for custom content.
 

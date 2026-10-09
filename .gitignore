@@ -48,7 +48,7 @@
 /work/translate/banks/a027/079[3-7].json
 /work/translate/banks/a027/080[4-9].json
 /work/translate/banks/a027/081[0-3].json
-# PokéAPI CSVs; build_glossary.py downloads them again when missing.
+# PokéAPI CSVs that build_glossary.py (removed 2026-10-09) downloaded.
 /work/glossary/src/
 # Licensed dictionary downloads used by the local text catalogue; provenance is tracked separately.
 /work/translate/text_catalog/vendor/

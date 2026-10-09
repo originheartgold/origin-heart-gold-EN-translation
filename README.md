@@ -40,7 +40,6 @@ Run every command from the repo root. Never edit generated files by hand: change
 | Pokédex banks `a027/0793-0797`, `0804-0813` | `python3 work/tools/ws.py init --narc a027` |
 | `work/graphics/generated/`, `weather_en/`, `dex_type_list_en.png`, `naming_labels_en.png` | `python3 work/tools/gfx.py regenerate` (`build.py` runs it) |
 | `work/build/` (English ROM and `.xdelta` patch) | `python3 work/tools/build.py` |
-| `work/glossary/src/` (PokéAPI CSVs) | `python3 work/glossary/build_glossary.py --download` |
 | `work/rom/preview_*.json` | `python3 work/tools/msgtool.py patch-preview <patch.delta> <out.nds> --report <out.json>` |
 | Seeding intermediates in `work/translate/` (`manifest.json`, `bank_map_*.json`, `char_fold_v3.json`, `tm_*.json`, `us_reuse_summary.json`) | none any more: the one-time seeding pipeline was removed on 2026-10-09 once every string was reviewed (see `work/notes/tm_and_manifest.md`). No tool reads these files. |
 
@@ -54,7 +53,7 @@ Run every command from the repo root. Never edit generated files by hand: change
 | `work/docs/*.md` (game documentation) | `python3 work/tools/docs/gen_docs.py` | linked from this README and the guide |
 | `work/tools/font_widths.json` | `python3 work/tools/textmetrics.py build-widths <rom>` | `qa.py` reads it on every check |
 | `work/translate/bank_maps.json` | `python3 work/translate/scripts/build_bank_maps.py` (also needs `work/translate/ref/hgss_map_constants.json`) | used by the tools and translators |
-| `work/glossary/*.json` | `python3 work/glossary/build_glossary.py` (also needs the hack author's spreadsheets) | used by `qa.py` and the other tools |
+| `work/glossary/*.json` | none: generated once, edited by hand since (the generator was removed 2026-10-09) | used by `qa.py` and the other tools |
 
 `work/translate/play_order.json` and `manifest_playorder.json` were generated once and are now frozen records of the batch plan (the script that made them was removed with the seeding pipeline). The translation banks (`work/translate/banks/`) were seeded by scripts but hold the translation itself, so they are the source, not output.
 

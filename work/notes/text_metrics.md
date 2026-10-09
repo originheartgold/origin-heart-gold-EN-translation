@@ -15,7 +15,7 @@ Files:
   and glossary settings.
 - `work/tools/qa.py`: `check` (the QA gate) and `wrap` (automatic line breaking).
 - `work/tools/ws.py`: the workspace (`init` / `export` / `stats` / `import` / `set`).
-- `work/tools/fill_names.py`: pilot that fills the name banks from the glossary.
+- `work/tools/fill_names.py` (removed 2026-10-09): pilot that filled the name banks from the glossary.
 - `work/tools/test_qa.py`: 47 tests (28 when this note was written). Run them with `python3 -m unittest -v work/tools/test_qa.py`.
 
 ## 1. Font (`a/0/1/6`)
@@ -225,7 +225,7 @@ The second condition rejects repurposed slots. For example, slot 324 is 凹凸�
 
 **Abbreviations:**
 - The glossary README table (`manual_overrides.ABBREV`) comes first.
-- Then `fill_names.LOCAL_ABBREV`, 265 new ones in the same Gen 4/5 style, e.g. `Iron Valiant → IronValint`, `Hyperspace Hole → HyprspceHole` and `Ability Capsule → AbilityCapsl`. The glossary owner may want to merge these into `manual_overrides.py`.
+- Then `LOCAL_ABBREV` (first in `fill_names.py`, now in `work/glossary/manual_overrides.py`), 265 new ones in the same Gen 4/5 style, e.g. `Iron Valiant → IronValint`, `Hyperspace Hole → HyprspceHole` and `Ability Capsule → AbilityCapsl`. The glossary owner may want to merge these into `manual_overrides.py`.
 
 **Agent-chosen names that need review** (see the `notes` field):
 - items: 114 钢铁铠甲 "Steel Armor", 438 防水服 "Wetsuit", 440 装徽章的袋子 "Badge Case", 479 战利品 "Spoils", 744 连锁记录仪 "Chain Logger", 745 能力分配器 "EV Allocator", 761 忍者卷轴 "Ninja Scroll";

@@ -107,12 +107,12 @@ def evo_works(m, p):
 
 def full_names(_cat=None):
     """In-game (shortened) spelling -> full official name, from the glossary's abbreviation tables
-    (work/glossary/manual_overrides.py ABBREV and work/tools/fill_names.py LOCAL_ABBREV). The banks keep
+    (work/glossary/manual_overrides.py ABBREV and LOCAL_ABBREV). The banks keep
     the short spelling the game's name buffers need; reference pages show the full name."""
     import ast
     rev = {}
     for path, var in ((os.path.join(R.REPO, 'work', 'glossary', 'manual_overrides.py'), 'ABBREV'),
-                      (os.path.join(R.REPO, 'work', 'tools', 'fill_names.py'), 'LOCAL_ABBREV')):
+                      (os.path.join(R.REPO, 'work', 'glossary', 'manual_overrides.py'), 'LOCAL_ABBREV')):
         try:
             tree = ast.parse(open(path, encoding='utf-8').read())
         except OSError:

@@ -30,7 +30,7 @@ def input_hashes():
                     'work/glossary/*.json'):
         paths.update(ROOT.glob(pattern))
     paths.update(ROOT / p for p in ('work/translate/bank_maps.json', 'work/translate/play_order.json',
-                                   'work/glossary/manual_overrides.py', 'work/tools/fill_names.py'))
+                                   'work/glossary/manual_overrides.py'))
     return {str(p.relative_to(ROOT)): sha(p.read_bytes()) for p in sorted(paths)}
 
 
