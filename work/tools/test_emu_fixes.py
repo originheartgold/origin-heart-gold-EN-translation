@@ -95,6 +95,17 @@ class Addresses(unittest.TestCase):
         self.assertEqual(F.SAFARI_SETUP_DONE, labels["Encounter_SetupDone"])
         self.assertEqual(OVERLAYS["overlay2"], 0x02245F40)
 
+    def test_typechange_hooks(self):
+        # the fix's bl BufferTypeName ends its 12-byte region: it returns to the copy's 'b tail' right after it
+        self.assertEqual(F.TC_TYPE_CASE_RETURN, region_ram("type-change-message", "type-change-message-type-case")
+                         + 12)
+        asm = (Path(F.WORK) / "patches" / "type-change-message" / "type-change-message.asm").read_text()
+        self.assertRegex(asm, rf"\.definelabel BufferTypeName, +0x{F.TC_TYPE_NAME:08X}")
+        # the hooked code bytes are the expander's return and the bank 1 builder's GetMsg call
+        self.assertEqual(F.TC_WORDS_END_CODE, bytes.fromhex("05b0f0bd"))     # add sp, #0x14; pop {r4-r7, pc}
+        self.assertEqual(len(F.TC_SET_STRING_CODE), 4)
+        self.assertEqual(list(F.TC_IDS), list(range(1212, 1220)))
+
     def test_font_codes(self):
         _, fonts, codes = fixreg.font_spec([REGISTRY["font-glyphs"]])
         self.assertEqual(tuple(codes), F.FONT_CODES)
@@ -377,6 +388,30 @@ class Judges(unittest.TestCase):
                                                 {"expect": "original", "passed": True, "rc": 0})[0], "original")
         self.assertEqual(F.judge_texture_bounds("texture-bounds",
                                                 {"expect": "fixed", "passed": False, "rc": 1})[0], "unclear")
+
+    def test_typechange(self):
+        def battle(units, calls, new_type=2):
+            return {"messages": [{"id": 1212, "text": "x", "units": units}], "new_type": new_type,
+                    "type_units": [1, 2], "move_units": [3, 4],
+                    "type_name_calls": [{"type": new_type, "lr": F.TC_TYPE_CASE_RETURN}] * calls}
+
+        def obs(units, calls):
+            return {name: battle(units, calls) for name in F.TC_BATTLES}
+        self.assertEqual(F.judge_typechange("typechange", obs([9, 1, 2, 9], 1))[0], "fixed")
+        self.assertEqual(F.judge_typechange("typechange", obs([9, 3, 4, 9], 0))[0], "original")
+        # the type's name without the expander's call, or the call with the move's name: neither
+        self.assertEqual(F.judge_typechange("typechange", obs([9, 1, 2, 9], 0))[0], "unclear")
+        self.assertEqual(F.judge_typechange("typechange", obs([9, 3, 4, 9], 1))[0], "unclear")
+        # Chinese Soak: the type 水 is inside the move 浸水; still the move's name, so original
+        o = obs([9, 3, 4, 9], 0)
+        o["soak"] = dict(battle([7, 5, 6, 8], 0), type_units=[6], move_units=[5, 6])
+        self.assertEqual(F.judge_typechange("typechange", o)[0], "original")
+        # a battle without its message (e.g. the move missed) proves nothing
+        o = obs([9, 1, 2, 9], 1)
+        o["soak"] = {"messages": [], "bank1_ids": [2179]}
+        self.assertEqual(F.judge_typechange("typechange", o)[0], "unclear")
+        self.assertTrue(F._contains([1, 2, 3], [2, 3]))
+        self.assertFalse(F._contains([1, 2, 3], []))
 
     def test_reflection(self):
         self.assertEqual(F.judge_reflection("reflection", {"expect": "fixed", "passed": True, "rc": 0})[0], "fixed")

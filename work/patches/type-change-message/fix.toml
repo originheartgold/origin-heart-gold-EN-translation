@@ -1,0 +1,67 @@
+id = "type-change-message"
+title = "Battle: type-change messages name the new type, not the last move used (Color Change, Protean, Soak, ...)"
+kind = "code"
+enabled = true
+decisions = ["D-2290"]
+requires = ["battle-message-error-marker"]
+asm = "type-change-message.asm"
+why = """
+Players: when a Pokémon's type changes in battle, the message names the wrong thing: 'Kecleon transformed into
+the Gust type!' after Kecleon's Color Change is hit by Gust, 'The wild Geodude transformed into the Soak type!'
+after Soak, 'Greninja transformed into the Quick Attack type!' with Protean (reported on Discord for Color Change
+with Air Slash, and earlier for Protean and Soak, D-1461). The new type itself is right; only the word in the
+message is wrong. The untouched Chinese ROM does the same (变成了起风属性), so this is a bug of the hack.
+
+Status: D-1337 says hack bugs are reported, not fixed. This fix is a user-approved exception to it (D-2290,
+2026-10-09, the answer to the hack finding D-1461); other hack bugs stay report-only.
+
+Technical: the hack's battle engine builds its battle_string messages with a word expander in overlay 14
+(0x02225A3C, called by the bank 1 and bank 2 message builders). At each {VAR:01xx:slot,0} tag of the template it
+switches on the kind xx (jump table at 0x02225A9E), buffers the message's argument for that slot as a trainer,
+species, nickname, ability, move, item, number or trainer-class name, and then expands the slot into the
+text. Kind 3, the type name, has no case: its table entry points at the shared tail, which expands the slot
+without buffering anything, so the slot still holds the word the previous message put there, usually the move
+in '... used Gust!'. The only strings with that tag are battle_string bank 1 #1212-#1219 ('... transformed into
+the {type} type!' and '{type} type was added to ...', each for own / wild / foe / partner trainer). #1212-#1215
+are built only by the type-change handler 0x0220E6E0 (the only code in overlay 14 that names #1212, so Color
+Change, Protean and Soak, seen printing it, go through it), with the new type as the argument, so the argument
+was right all along. It prints only when the Pokémon ends up with a single type.
+"""
+what = """
+Old: kind 3 (type name) -> the shared tail: the slot keeps its last word (a move name) -> 'the Gust type'.
+New: kind 3 has a case like the move case: BufferTypeName(fmt, slot, args[slot]) (arm9 0x0200C084, the type
+names of a027 bank 724), then the shared tail. Two edits in overlay 14:
+  1. the jump table entry for kind 3 (0x02225AA4): 0x011A (tail) -> 0x00BE (the new case at 0x02225B5E);
+  2. 12 bytes of the nickname case's old fallback for an invalid Pokémon (0x02225B5E) hold the type case (lsl /
+     ldr / ldr / add / bl BufferTypeName), which falls into that copy's own 'b tail' at 0x02225B6A, unchanged.
+It requires battle-message-error-marker: that fix makes the nickname case's fallback branch from 0x02225B4A to
+its '(Error) ' loop at 0x02225B16 (the same branch this fix wrote before the two were merged) and keeps its text
+in 0x02225B4C-0x02225B5D, so the old fallback's bytes from 0x02225B5E on are never run as such.
+Every other tag kind, every message and the battle logic are unchanged; the message text is not touched. The
+bank 1 strings #1216-#1219 ('type was added') use the same tag, so they name the type too: Trick-or-Treat
+and Forest's Curse print #1217 ('Ghost type was added to the wild Magikarp!', before the fix 'TrickOrTreat
+type was added ...'; review run 2026-10-09). The bank 1 builder never picks the fourth (partner trainer)
+form #1215 / #1219: its side offset (0x02225E40) is 0, 1 or 2, and an ally's Pokémon gets the own-side form.
+"""
+evidence = [
+  "D-2290: the user-approved exception to D-1337 for this fix; it answers the hack finding D-1461 (Protean/Soak name the move, resolved)",
+  "User request 2026-10-09: 'We want to fix these bugs, so for each issue create a worktree per issue, and use a separate subagent to fix, test and review.' (Discord report: Kecleon's Color Change says it changed to the Air Slash type)",
+  "work/notes/type-change-message_fix.md: the expander, its jump table, the handler, the edits and the emulator runs",
+  "Runtime: emu_harness.py fixes --case type-change-message (scenario typechange: Kecleon's Color Change hit by Gust, Mewtwo's Soak on a wild Geodude, Greninja's Protean with Quick Attack; the finished text of every type-change message and the BufferTypeName calls; run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios'). 2026-10-09, DeSmuME: the untouched Chinese ROM and the --without build print the move's name in all three (Gust / Soak / Quick Attack), the full build the type's (Flying / Water / Normal)",
+  "Merged 2026-10-09 after battle-message-error-marker (branch merge/discord-fixes): the overlapping nickname-fallback edit at 0x02225B4A and the guards of bytes that fix rewrites dropped, requires added; overlay 14 checked against hand-encoded bytes (test_type_change_message_bytes) and emu_harness.py fixes --case type-change-message on the merged build (work/notes/type-change-message_fix.md)",
+  "Review run 2026-10-09 (DeSmuME, same hooks): Conversion, Camouflage, Magic Powder, Trick-or-Treat and Forest's Curse (1#1217) and Soak on a trainer's Glalie (1#1214) name the type on the build, the move on the --without build and the Chinese ROM; melonDS (no hooks, Soak on a wild Pokemon met in grass, read from the screen): Water type on the build, Soak type on the --without build, no ARM9 exception or hang (work/notes/type-change-message_fix.md)",
+]
+
+[[code]]
+id = "type-change-message-kind-table"
+file = "overlay14"
+offset = "0x252C4"
+expect = "0x011A"
+notes = "BattleWords_Expand jump table, kind 3 (type name): the shared tail (0x02225BBA) -> the new type case (0x02225B5E). The asm also guards, read-only, the dispatch, the nickname case, the fallbacks' literals, the move case and the tail; the fallbacks themselves belong to battle-message-error-marker."
+
+[[code]]
+id = "type-change-message-type-case"
+file = "overlay14"
+offset = "0x2537E"
+expect = "F601 FA3D 492E 1C28 F601 FA39"
+notes = "12 bytes of the nickname case's old fallback, dead since battle-message-error-marker: the type case, BufferTypeName(fmt, slot, args[slot]) (arm9 0x0200C084), falling into the copy's 'b tail' at 0x02225B6A."

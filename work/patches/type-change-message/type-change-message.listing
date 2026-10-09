@@ -1,0 +1,78 @@
+; type-change-message - disassembly snapshot of type-change-message.asm: every edit, old -> new. Generated; do not edit.
+; Regenerate: python3 work/tools/asmpatch.py listing --write type-change-message   (check.py --full fails when it is stale)
+; Old: the Chinese ROM. New: type-change-message.asm assembled alone over it by armips v0.11.0.
+; Disassembly: capstone 5.0.9 (UAL syntax). '  ' unchanged context, '- ' old, '+ ' new;
+; addresses are RAM addresses, Thumb bytes are halfwords, ARM bytes words; data rows are what one
+; statement writes (u16 rows of a string or key row with their characters, '|' = 0xFFFF end).
+
+== overlay14+0x252AC (RAM 0x02225A8C), 34 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
+  02225A8C  280F       cmp r0, #0xf
+  02225A8E  D900       bls #0x2225a92
+  02225A90  E093       b #0x2225bba  ; BattleWords_Tail
+  02225A92  1800       adds r0, r0, r0
+  02225A94  4478       add r0, pc
+  02225A96  88C0       ldrh r0, [r0, #6]
+  02225A98  0400       lsls r0, r0, #0x10
+  02225A9A  1400       asrs r0, r0, #0x10
+  02225A9C  4487       add pc, r0
+  02225A9E  0040       lsls r0, r0, #1
+  02225AA0  0064       lsls r4, r4, #1
+  02225AA2  0098       lsls r0, r3, #2
+  02225AA4  011A       lsls r2, r3, #4
+  02225AA6  011A       lsls r2, r3, #4
+  02225AA8  011A       lsls r2, r3, #4
+  02225AAA  00CC       lsls r4, r1, #3
+  02225AAC  00EA       lsls r2, r5, #3
+
+== overlay14+0x252C4 (RAM 0x02225AA4), 2 bytes, data: type-change-message-kind-table
+- 02225AA4  011A
++ 02225AA4  00BE
+
+== overlay14+0x25358 (RAM 0x02225B38), 18 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
+  02225B38  00A0       lsls r0, r4, #2
+  02225B3A  5838       ldr r0, [r7, r0]
+  02225B3C  1C21       adds r1, r4, #0
+  02225B3E  0600       lsls r0, r0, #0x18
+  02225B40  0E00       lsrs r0, r0, #0x18
+  02225B42  F7FF FF3F  bl #0x22259c4
+  02225B46  2800       cmp r0, #0
+  02225B48  D137       bne #0x2225bba  ; BattleWords_Tail
+
+== overlay14+0x2537E (RAM 0x02225B5E), 12 bytes, thumb: type-change-message-type-case
+  02225B5A  492F       ldr r1, [pc, #0xbc]
+  02225B5C  1C28       adds r0, r5, #0
+- 02225B5E  F601 FA3D  bl #0x2026fdc  ; String_AppendChar
+- 02225B62  492E       ldr r1, [pc, #0xb8]
+- 02225B64  1C28       adds r0, r5, #0
+- 02225B66  F601 FA39  bl #0x2026fdc  ; String_AppendChar
++ 02225B5E  00A2       lsls r2, r4, #2
++ 02225B60  9802       ldr r0, [sp, #8]
++ 02225B62  58BA       ldr r2, [r7, r2]
++ 02225B64  1C21       adds r1, r4, #0
++ 02225B66  F5E6 FA8D  bl #0x200c084  ; BufferTypeName
+  02225B6A  E026       b #0x2225bba  ; BattleWords_Tail
+  02225B6C  00A2       lsls r2, r4, #2
+
+== overlay14+0x253AA (RAM 0x02225B8A), 14 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
+  02225B8A  00A2       lsls r2, r4, #2
+  02225B8C  9802       ldr r0, [sp, #8]
+  02225B8E  58BA       ldr r2, [r7, r2]
+  02225B90  1C21       adds r1, r4, #0
+  02225B92  F5E6 F9D5  bl #0x200bf40  ; BufferMoveName
+  02225B96  E010       b #0x2225bba  ; BattleWords_Tail
+
+== overlay14+0x253DA (RAM 0x02225BBA), 10 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
+  02225BBA  9802       ldr r0, [sp, #8]
+  02225BBC  1C21       adds r1, r4, #0
+  02225BBE  1C2A       adds r2, r5, #0
+  02225BC0  F5E6 FE16  bl #0x200c7f0
+
+== overlay14+0x25430 (RAM 0x02225C10), 16 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
+  02225C10  01B9       lsls r1, r7, #6
+  02225C12  0000       movs r0, r0
+  02225C14  0CED       lsrs r5, r5, #0x13
+  02225C16  0000       movs r0, r0
+  02225C18  0BDD       lsrs r5, r3, #0xf
+  02225C1A  0000       movs r0, r0
+  02225C1C  01BA       lsls r2, r7, #6
+  02225C1E  0000       movs r0, r0
