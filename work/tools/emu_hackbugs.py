@@ -18,7 +18,6 @@ checks; `suite` runs SUITE_EXPECT (the cheap deterministic ones) and fails when 
 """
 import datetime
 import json
-import struct
 from pathlib import Path
 
 import emu_harness as E
@@ -83,19 +82,11 @@ def enter(h, zone, x=None, z=None, face="DOWN"):
 
 
 def mon(h, slot=0):
-    """Decrypted details of a party Pokemon (moves, IVs, OT, species, form, level) plus its ability byte
-    (block A +0x0D) and its party-extension stats (+4 level, +6 HP, +8 max HP, +0x0A..+0x12 Atk/Def/Spe/
-    SpA/SpD, decrypted with the PID stream)."""
-    raw = M.party_raw(h, slot)
-    d = G.mon_details(raw)
-    d["ability"] = M.decrypted_blocks(raw)[0x0D]
-    pid = struct.unpack_from("<I", raw, 0)[0]
-    ext = [w ^ k for w, k in zip(struct.unpack_from("<50H", raw, 136), E._prng_stream(pid, 50))]
-    d["hp"], d["stats"] = ext[3], ext[4:10]
-    return d
+    """Shared Origin fields, including its full 16-bit ability and party stats."""
+    return E.decode_party_pokemon(M.party_raw(h, slot))
 
 
-COINS_OFF = 0x24      # PlayerSaveData (save array 1): +4 PlayerProfile (0x20 bytes), then u16 coins
+COINS_OFF = 0x24      # PlayerSaveData: coins
 
 
 def coins(h):
@@ -1024,24 +1015,11 @@ def talk_obj_here(h, tr, zone, script, tag):
 
 
 def fateful(raw):
-    """Fateful-encounter bit: block B +0x18 bit 0 (Gen 4 layout)."""
-    return M.decrypted_blocks(raw)[32 + 0x18] & 1
+    return E.decode_pokemon(raw)["fateful"]
 
 
 def set_fateful(h, slot, on=True):
-    """Set/clear the fateful-encounter bit (block B +0x18 bit 0) of a party Pokemon; checksum fixed."""
-    a = h.array(E.ARR_PARTY) + 8 + 236 * slot
-    raw = bytearray(h.read(a, 136))
-    pid, _, checksum = struct.unpack_from("<IHH", raw, 0)
-    plain = bytearray(struct.pack("<64H", *[w ^ k for w, k in zip(struct.unpack_from("<64H", raw, 8),
-                                                                   E._prng_stream(checksum, 64))]))
-    b = 32 * E.BLOCK_ORDERS[((pid & 0x3E000) >> 13) % 24].index("B") + 0x18
-    plain[b] = (plain[b] | 1) if on else (plain[b] & ~1)
-    words = struct.unpack("<64H", plain)
-    checksum = sum(words) & 0xFFFF
-    struct.pack_into("<H", raw, 6, checksum)
-    struct.pack_into("<64H", raw, 8, *[w ^ k for w, k in zip(words, E._prng_stream(checksum, 64))])
-    h.write(a, bytes(raw))
+    h.edit_party_mon(slot, fateful=on)
 
 
 def case_gracidea(rom, out, variant):

@@ -154,33 +154,12 @@ def force_slot11(h):
 
 
 def full_mon(raw):
-    """decode_party_pokemon plus IVs, EVs, nature and the party stats (Gen 4 layout)."""
-    mon = E.decode_party_pokemon(raw)
-    pid, _, checksum = struct.unpack_from("<IHH", raw, 0)
-    words = struct.unpack_from("<64H", raw, 8)
-    flags = struct.unpack_from("<H", raw, 4)[0]
-    plain = list(words) if flags & 3 else [a ^ k for a, k in zip(words, E._prng_stream(checksum, 64))]
-    data = struct.pack("<64H", *plain)
-    order = E.BLOCK_ORDERS[((pid & 0x3E000) >> 13) % 24]
-    blk = {n: data[32 * i:32 * i + 32] for i, n in enumerate(order)}
-    ivw = struct.unpack_from("<I", blk["B"], 0x10)[0]
-    mon["ivs"] = [(ivw >> (5 * i)) & 31 for i in range(6)]              # HP Atk Def Spe SpA SpD
-    mon["evs"] = list(blk["A"][0x10:0x16])
-    mon["nature"] = pid % 25
-    ext = struct.pack("<50H", *[a ^ k for a, k in zip(struct.unpack_from("<50H", raw, 136), E._prng_stream(pid, 50))])
-    mon["stats"] = list(struct.unpack_from("<6H", ext, 8))                # max HP, Atk, Def, Spe, SpA, SpD
-    return mon
+    """Shared effective nature, IVs, EVs and party stats, including Origin overrides."""
+    return E.decode_party_pokemon(raw)
 
 
-def calc_stats(base, level, ivs, evs, nature):
-    up, down = nature // 5, nature % 5
-    out = [(2 * base[0] + ivs[0] + evs[0] // 4) * level // 100 + level + 10]
-    for i in range(1, 6):
-        v = (2 * base[i] + ivs[i] + evs[i] // 4) * level // 100 + 5
-        if up != down:
-            v = v * 110 // 100 if i - 1 == up else v * 90 // 100 if i - 1 == down else v
-        out.append(v)
-    return out
+def calc_stats(base, level, ivs, evs, nature, species=1):
+    return E._save_core.request("calculateStats", base=base, level=level, ivs=ivs, evs=evs, nature=nature, species=species)
 
 
 def personal_fit(rom, mon):
@@ -195,7 +174,7 @@ def personal_fit(rom, mon):
         p = d["personal"][idx]
         base = [p[0], p[1], p[2], p[3], p[4], p[5]]
         fit[idx] = {"label": label, "types": [p[6], p[7]],
-                    "match": calc_stats(base, mon["level"], mon["ivs"], mon["evs"], mon["nature"]) == mon["stats"]}
+                    "match": calc_stats(base, mon["level"], mon["ivs"], mon["evs"], mon["nature"], mon["species"]) == mon["stats"]}
     return fit
 
 

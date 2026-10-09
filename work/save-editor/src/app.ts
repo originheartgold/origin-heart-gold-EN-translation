@@ -3,10 +3,10 @@ import { importSave } from './save-import.js';
 import { containerLabel, saveExtension, wrapSave, type SaveContainer } from './save-container.js';
 import { createNamePicker } from './name-picker.js';
 import { maxMovePp, validateMoveChoice } from './catalog.js';
-import { readSave, patchPartyRecord } from './save.js';
+import { readSave } from './save.js';
 import { decodePokemon, patchPokemonMoves, patchPokemonStats, patchPokemonShiny, patchPokemonPokerus } from './pokemon.js';
 import { loadBundledOriginData, type BundledOriginData } from './bundled-data.js';
-import { patchMoney, patchInventoryPocket } from './inventory.js';
+import { applyEditorTransaction } from './transaction.js';
 import { renderInventoryEditor, type InventoryDrafts } from './inventory-editor.js';
 import { renderTraitEditor, type TraitDrafts } from './trait-editor.js';
 import { renderStatEditor, type StatDrafts } from './stat-editor.js';
@@ -84,14 +84,14 @@ function render(): void {
     onMoney(money) {
       if (!working) return;
       try {
-        working = patchMoney(working, money); delete inventoryDrafts.money; render();
+        working = applyEditorTransaction(working,[{type:'setMoney',money}]).bytes; delete inventoryDrafts.money; render();
         message('Money applied. Download the edited copy to use it in-game.');
       } catch (error) { message(errorMessage(error), true); }
     },
     onPocket(pocket, items) {
       if (!working || !originData?.inventory) return;
       try {
-        working = patchInventoryPocket(working, pocket, items, originData.inventory);
+        working = applyEditorTransaction(working,[{type:'replacePocket',pocket,items,data:originData.inventory}]).bytes;
         delete inventoryDrafts.pockets[pocket]; render();
         message('Pocket applied. Download the edited copy to use it in-game.');
       } catch (error) { message(errorMessage(error), true); }
@@ -176,7 +176,7 @@ function render(): void {
       });
       const current = readSave(working);
       const record = patchPokemonMoves(current.party[selected]!, moves);
-      const candidate = patchPartyRecord(working, selected, record);
+      const candidate = applyEditorTransaction(working,[{type:'replacePartyRecord',slot:selected,record}]).bytes;
       readSave(candidate).party.forEach(decodePokemon);
       working = candidate; moveDraft = undefined; render();
       message('Moves applied. Download the edited copy to use it in-game.');
@@ -195,7 +195,7 @@ function render(): void {
         const decoded = decodePokemon(currentRecord);
         const personal = originData.getPersonal(decoded.speciesId, decoded.form);
         const updated = patchPokemonStats(currentRecord, changes, personal, personal.growthThresholds);
-        const candidate = patchPartyRecord(working, selected, updated);
+        const candidate = applyEditorTransaction(working,[{type:'replacePartyRecord',slot:selected,record:updated}]).bytes;
         readSave(candidate).partyRecords.forEach(decodePokemon);
         working = candidate; delete statDrafts[group]; render();
         message(`${group === 'ivs' ? 'IVs' : group === 'evs' ? 'EVs' : 'Level and nature'} applied. Battle stats recalculated from Origin data.`);
@@ -213,7 +213,7 @@ function render(): void {
     if (!working) return;
     try {
       const current = readSave(working);
-      const candidate = patchPartyRecord(working, selected, patch(current.partyRecords[selected]!));
+      const candidate = applyEditorTransaction(working,[{type:'replacePartyRecord',slot:selected,record:patch(current.partyRecords[selected]!)}]).bytes;
       readSave(candidate).partyRecords.forEach(decodePokemon);
       working = candidate; delete traitDrafts[group]; render();
       message(`${group === 'shiny' ? 'Shiny state' : 'Pokérus status'} applied. Download the edited copy to use it in-game.`);

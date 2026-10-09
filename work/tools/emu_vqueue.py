@@ -278,7 +278,6 @@ def judge_cut_yes(res):
 
 
 # ----------------------------------------------------------------------------- batch 2: scenes, signs, battles
-import struct                                          # noqa: E402
 import emu_hackbugs as B                               # noqa: E402
 import emu_verify as V                                 # noqa: E402
 import emu_open as O                                   # noqa: E402
@@ -392,14 +391,7 @@ def judge_rematch_b(res):
 
 
 def set_ot(raw, ot_id):
-    raw = bytearray(raw)
-    plain, pos = O._plain(raw)
-    struct.pack_into("<I", plain, pos["A"] + 4, ot_id)
-    words = struct.unpack("<64H", plain)
-    checksum = sum(words) & 0xFFFF
-    struct.pack_into("<H", raw, 6, checksum)
-    struct.pack_into("<64H", raw, 8, *[w ^ k for w, k in zip(words, E._prng_stream(checksum, 64))])
-    return bytes(raw)
+    return E.encode_pokemon(raw, otId=ot_id)
 
 
 def party_addr(h, slot=0):

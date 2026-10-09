@@ -28,6 +28,8 @@ import struct
 import sys
 import tempfile
 import time
+
+import save_core as _save_core
 from pathlib import Path
 
 # No sound from any emulator this process starts: SDL's dummy audio driver opens no output device
@@ -62,6 +64,8 @@ ARR_VARS_FLAGS = 4             # Save_VarsFlags_Get = 0x0204F858 (SaveArray_Get(
 ARR_LOCAL_FIELD = 5            # Save_LocalFieldData_Get = 0x0203AEBC (SaveArray_Get(save, 5))
 ARR_PARTY = 2                  # Save_PlayerParty_Get = 0x0207365C
 FLAGS_OFFSET = 0x2E0           # CheckFlagInArray 0x0204F864 -> GetFlagAddr 0x0204F8E4: vars + 0x2E0 + flag/8
+SAVED_FLAGS_COUNT = 0xCA0      # native getter bounds: flag >> 3 < 0x194
+SAVED_VARS_COUNT = 0x170      # native saved variable allocation
 FLAGS_MAX = 0x4000             # flags >= 0x4000 are temp flags in a global (0x021D320C)
 VARS_BASE = 0x4000             # var ids start at 0x4000; vars live at vars + (id - 0x4000) * 2
 WILD_FINALIZE = 0x022489DC     # ov2: wild Pokemon finalizer (r2 = Pokemon *mon); D-1487
@@ -173,38 +177,17 @@ DIRS = {"UP": 0, "DOWN": 1, "LEFT": 2, "RIGHT": 3}
 UNOWN = 201
 UNOWN_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!?"
 
-# Gen 4 Pokemon structure (pret PartyPokemon/BoxPokemon): 8-byte header, 4 encrypted 32-byte blocks
-BLOCK_ORDERS = ["ABCD", "ABDC", "ACBD", "ACDB", "ADBC", "ADCB", "BACD", "BADC", "BCAD", "BCDA", "BDAC", "BDCA",
-                "CABD", "CADB", "CBAD", "CBDA", "CDAB", "CDBA", "DABC", "DACB", "DBAC", "DBCA", "DCAB", "DCBA"]
+# The Python API retains recipe-compatible field names; TypeScript owns every codec.
+decode_pokemon = _save_core.decode_pokemon
+decode_party_pokemon = _save_core.decode_pokemon
 
 
-def _prng_stream(seed, n):
-    out = []
-    for _ in range(n):
-        seed = (seed * 0x41C64E6D + 0x6073) & 0xFFFFFFFF
-        out.append(seed >> 16)
-    return out
-
-
-def decode_pokemon(raw):
-    """Decrypt a 136+ byte (boxed) Pokemon. Returns dict with pid, species, form, level-free fields.
-    Block A: species @+0, item @+2, OT id @+4; block B: byte +0x18 = fateful | female<<1 | genderless<<2 | form<<3."""
-    pid, flags, checksum = struct.unpack_from("<IHH", raw, 0)
-    words = struct.unpack_from("<64H", raw, 8)
-    if flags & 0x3:   # pret: partyDecrypted / boxDecrypted flags mean the blocks are already plain
-        plain = list(words)
-    else:
-        key = _prng_stream(checksum, 64)
-        plain = [w ^ k for w, k in zip(words, key)]
-    data = struct.pack("<64H", *plain)
-    order = BLOCK_ORDERS[((pid & 0x3E000) >> 13) % 24]
-    blocks = {name: data[32 * i:32 * i + 32] for i, name in enumerate(order)}
-    ok = (sum(plain) & 0xFFFF) == checksum
-    a, b = blocks["A"], blocks["B"]
-    species = struct.unpack_from("<H", a, 0)[0]
-    fbyte = b[0x18]
-    return {"pid": pid, "species": species, "item": struct.unpack_from("<H", a, 2)[0],
-            "form": fbyte >> 3, "fateful": fbyte & 1, "checksum_ok": ok, "bad_egg": bool(flags & 4)}
+def encode_pokemon(raw, species=None, item=None, form=None, moves=None, pp=None, ability=None, **fields):
+    """Explicit harness fixture edit: partial move slots and cached party stats are preserved."""
+    changes = dict(fields)
+    changes.update({k: v for k, v in dict(species=species, item=item, form=form, moves=moves,
+                                       pp=pp, ability=ability).items() if v is not None})
+    return _save_core.patch_pokemon(raw, **changes)
 
 
 # ----------------------------------------------------------------------------- battery save editing
@@ -225,155 +208,90 @@ PLAYER_OBJ_ID, FOLLOWER_OBJ_ID = 0xFF, 0xFD
 
 
 class SaveFile:
-    """Raw 512 KB battery save. Edits go to the newest general block; its CRC16-CCITT (init 0xFFFF,
-    binascii.crc_hqx) is recomputed. Layout: work/notes/emu_harness.md (from poke-save-editor research)."""
+    """Seed-save fixture facade; TypeScript validates and atomically applies edits.
 
+    ``data`` is an immutable snapshot. Use ``transaction`` to apply several edits
+    as one unit. Failed edits never change this object or its source file.
+    """
     def __init__(self, path):
-        self.data = bytearray(Path(path).read_bytes())
-        if len(self.data) != 524288:
-            raise ValueError("expected a raw 524288-byte save")
-        counters = []
-        for m in MIRRORS:
-            cnt, size, magic, bid, crc = struct.unpack_from("<IIIHH", self.data, m + GENERAL_SIZE - 16)
-            ok = magic == FOOTER_MAGIC and size == GENERAL_SIZE and bid == 0 and crc == self._crc(m)
-            counters.append((cnt if ok else -1, m))
-        cnt, self.base = max(counters)
-        if cnt < 0:
-            raise ValueError("no valid general block")
+        self.source = Path(path).resolve()
+        self._data = self.source.read_bytes()
+        self._inspect = _save_core.request("inspectSave", self._data)
+        self.base = self._inspect["base"]
 
-    def _crc(self, m):
-        import binascii
-        return binascii.crc_hqx(bytes(self.data[m:m + GENERAL_SIZE - 16]), 0xFFFF)
+    @property
+    def data(self):
+        return self._data
 
-    def _a(self, arr, off=0):
-        return self.base + ARRAY_OFFSETS[arr] + off
+    def transaction(self, operations):
+        result = _save_core.request("transactSave", self._data, operations=operations)
+        candidate = _save_core.result_bytes(result)
+        inspection = _save_core.request("inspectSave", candidate)
+        self._data, self._inspect = candidate, inspection
+        self.base = inspection["base"]
+        self.report = result.get("report", {})
 
     def set_location(self, map_id, x, y, direction="DOWN", warp=-1, which=0):
-        struct.pack_into("<5i", self.data, self._a(ARR_LOCAL_FIELD, 0x14 * which), map_id, warp, x, y,
-                         DIRS.get(direction, direction))
+        self.transaction([dict(type="setLocation", map=map_id, x=x, y=y,
+                               direction=DIRS.get(direction, direction), warp=warp, which=which)])
 
     def location(self, which=0):
-        return dict(zip(("map", "warp", "x", "y", "dir"),
-                        struct.unpack_from("<5i", self.data, self._a(ARR_LOCAL_FIELD, 0x14 * which))))
+        _integer("location index", which, 0, 4)
+        return dict(self._inspect["locations"][which])
 
     def set_flag(self, flag, value=True):
-        a = self._a(ARR_VARS_FLAGS, FLAGS_OFFSET + flag // 8)
-        self.data[a] = (self.data[a] | (1 << flag % 8)) if value else (self.data[a] & ~(1 << flag % 8))
+        self.transaction([dict(type="setFlag", flag=flag, value=value)])
 
     def get_flag(self, flag):
-        return bool(self.data[self._a(ARR_VARS_FLAGS, FLAGS_OFFSET + flag // 8)] >> (flag % 8) & 1)
+        _integer("saved flag", flag, 0, SAVED_FLAGS_COUNT - 1)
+        if flag == 0:
+            return False
+        import base64
+        flags = base64.b64decode(self._inspect["flags"], validate=True)
+        return bool(flags[flag // 8] & (1 << (flag % 8)))
 
     def set_var(self, var, value):
-        struct.pack_into("<H", self.data, self._a(ARR_VARS_FLAGS, (var - VARS_BASE) * 2), value)
+        self.transaction([dict(type="setVar", var=var, value=value)])
+
+    def get_var(self, var):
+        _integer("saved variable", var, VARS_BASE, VARS_BASE + SAVED_VARS_COUNT - 1)
+        return self._inspect["vars"][var - VARS_BASE]
 
     def pocket(self, name):
-        off, cap = POCKETS[name]
-        a = self.base + ARRAY_OFFSETS[ARR_BAG] + off
-        return [struct.unpack_from("<HH", self.data, a + 4 * i) for i in range(cap)
-                if struct.unpack_from("<H", self.data, a + 4 * i)[0]]
+        return [tuple(row) for row in self._inspect["pockets"][name]]
 
     def set_pocket(self, name, items):
-        """Replace a bag pocket with [(item id, quantity), ...] (first entry shows at the top)."""
-        off, cap = POCKETS[name]
-        if len(items) > cap:
-            raise ValueError(f"pocket {name} holds {cap} items")
-        a = self.base + ARRAY_OFFSETS[ARR_BAG] + off
-        self.data[a:a + 4 * cap] = bytes(4 * cap)
-        for i, (item, qty) in enumerate(items):
-            struct.pack_into("<HH", self.data, a + 4 * i, item, qty)
+        """Explicit ordered bag fixture; quantities and storage bounds are validated."""
+        self.transaction([dict(type="setPocket", name=name, items=list(items))])
 
     def map_objects(self):
-        out = []
-        for i in range(MAP_OBJECT_COUNT):
-            a = self._a(ARR_MAP_OBJECTS, MAP_OBJECT_SIZE * i)
-            flags, = struct.unpack_from("<I", self.data, a)
-            if flags:
-                obj_id, = struct.unpack_from("<B", self.data, a + 8)
-                m, sprite = struct.unpack_from("<HH", self.data, a + 0x10)
-                pos = struct.unpack_from("<6h", self.data, a + 0x20)
-                out.append({"slot": i, "id": obj_id, "map": m, "sprite": sprite, "x": pos[3], "z": pos[5]})
-        return out
+        return [dict(row) for row in self._inspect["mapObjects"]]
 
     def place_player(self, map_id, x, z, direction="DOWN", height=0):
-        """Teleport for Continue: current Location plus the saved player/follower objects; the saved objects
-        of the old map (NPCs) are removed, otherwise Continue would restore them on the new map."""
-        self.set_location(map_id, x, z, direction)
-        for i in range(MAP_OBJECT_COUNT):
-            a = self._a(ARR_MAP_OBJECTS, MAP_OBJECT_SIZE * i)
-            obj_id = self.data[a + 8]
-            if not struct.unpack_from("<I", self.data, a)[0]:
-                continue
-            if obj_id in (PLAYER_OBJ_ID, FOLLOWER_OBJ_ID):
-                oz = z if obj_id == PLAYER_OBJ_ID else z - 1
-                struct.pack_into("<6h", self.data, a + 0x20, x, height, oz, x, height, oz)
-            else:
-                self.data[a:a + MAP_OBJECT_SIZE] = bytes(MAP_OBJECT_SIZE)
+        self.transaction([dict(type="placePlayer", map=map_id, x=x, z=z,
+                               direction=DIRS.get(direction, direction), height=height)])
 
     def party(self):
-        a = self._a(ARR_PARTY)
-        count, = struct.unpack_from("<I", self.data, a + 4)
-        return [decode_party_pokemon(bytes(self.data[a + 8 + 236 * i:a + 8 + 236 * (i + 1)]))
-                for i in range(min(count, 6))]
+        return [_save_core.compatibility_mon(row) for row in self._inspect["party"]]
 
     def edit_party_mon(self, slot, **fields):
-        """Boxed fields of a party Pokemon (species, item, form, moves, ability; see encode_pokemon), as
-        Harness.edit_party_mon does in RAM. With Continue the game builds the lead's follower from it."""
-        a = self._a(ARR_PARTY, 8 + 236 * slot)
-        self.data[a:a + 136] = encode_pokemon(bytes(self.data[a:a + 136]), **fields)
+        optional = {"species", "item", "form", "moves", "pp", "ability"}
+        changes = {key: value for key, value in fields.items() if value is not None or key not in optional}
+        self.transaction([dict(type="editPartyMon", slot=slot, changes=changes, tailPolicy="preserve")])
 
     def set_party_count(self, n):
-        """Keep the first n party Pokemon (1..6); the others stay in the file but the game ignores them."""
-        if not 1 <= n <= 6:
-            raise ValueError("party count must be 1..6")
-        struct.pack_into("<I", self.data, self._a(ARR_PARTY, 4), n)
+        """Shrink to an existing active prefix; never activate uninitialized slots."""
+        self.transaction([dict(type="setPartyCount", count=n)])
 
     def write(self, path):
-        struct.pack_into("<H", self.data, self.base + GENERAL_SIZE - 2, self._crc(self.base))
-        Path(path).write_bytes(bytes(self.data))
+        _save_core.atomic_write(path, self._data, self.source)
         return path
 
 
-def decode_party_pokemon(raw):
-    """decode_pokemon plus the party extension (100 bytes after the box data, PRNG keyed by the PID)."""
-    mon = decode_pokemon(raw)
-    if len(raw) >= 236:
-        words = struct.unpack_from("<50H", raw, 136)
-        ext = struct.pack("<50H", *[w ^ k for w, k in zip(words, _prng_stream(mon["pid"], 50))])
-        mon["level"] = ext[4]
-    return mon
-
-
-def encode_pokemon(raw, species=None, item=None, form=None, moves=None, pp=None, ability=None):
-    """Return raw (136+ bytes, encrypted) with boxed fields replaced; checksum recomputed. ability: the
-    hack's u16 ability at block B +0x1A (abilities go past 255; vanilla's block-A byte +0x0D is not read,
-    found 2026-10-06: every party Pokemon holds its summary ability there)."""
-    raw = bytearray(raw)
-    pid, flags, checksum = struct.unpack_from("<IHH", raw, 0)
-    if flags & 0x3:
-        raise ValueError("Pokemon is in a decrypted state (mid-edit by the game); try again a frame later")
-    key = _prng_stream(checksum, 64)
-    plain = bytearray(struct.pack("<64H", *[w ^ k for w, k in zip(struct.unpack_from("<64H", raw, 8), key)]))
-    order = BLOCK_ORDERS[((pid & 0x3E000) >> 13) % 24]
-    pos = {name: 32 * i for i, name in enumerate(order)}
-    if species is not None:
-        struct.pack_into("<H", plain, pos["A"], species)
-    if item is not None:
-        struct.pack_into("<H", plain, pos["A"] + 2, item)
-    if ability is not None:
-        struct.pack_into("<H", plain, pos["B"] + 0x1A, ability)
-    if form is not None:
-        b = pos["B"] + 0x18
-        plain[b] = (plain[b] & 0x07) | (form << 3)
-    if moves is not None:          # block B +0: 4 x u16 move ids, +8: 4 x u8 current PP (verified by the
-        for i, mv in enumerate(list(moves)[:4]):   # UI hunt agent in the summary and in battle)
-            struct.pack_into("<H", plain, pos["B"] + 2 * i, mv)
-            plain[pos["B"] + 8 + i] = pp[i] if pp else 10
-    words = struct.unpack("<64H", plain)
-    checksum = sum(words) & 0xFFFF
-    key = _prng_stream(checksum, 64)
-    struct.pack_into("<H", raw, 6, checksum)
-    struct.pack_into("<64H", raw, 8, *[w ^ k for w, k in zip(words, key)])
-    return bytes(raw)
+def _integer(name, value, lo, hi):
+    if type(value) is not int or not lo <= value <= hi:
+        raise ValueError(f"{name} must be an integer in {lo}..{hi}")
+    return value
 
 
 MAP_HEADERS = 0x020F37C4       # 0x18-byte map headers: +0 wild bank, +4 u16 matrix id, +0x12 events bank
@@ -923,41 +841,57 @@ class Harness:
     @property
     def save(self):
         p = self.u32(SAVE_PTR_GLOBAL)
-        if not (0x02000000 <= p < 0x02400000):
-            raise RuntimeError("SaveData is not allocated yet (boot further)")
+        if not (0x02000000 <= p and p + SAVE_TABLE + 42 * 16 <= 0x02400000):
+            raise RuntimeError("SaveData is not allocated or its table is outside main RAM (boot further)")
         return p
 
     def array(self, idx):
+        _integer("save array index", idx, 0, 41)  # native SaveArray_Get compares against 42
         s = self.save
-        return s + 0x10 + self.u32(s + SAVE_TABLE + 16 * idx)
+        offset = self.u32(s + SAVE_TABLE + 16 * idx)
+        if offset >= SAVE_TABLE - 0x10:
+            raise RuntimeError("save array offset is outside the allocated save data")
+        return s + 0x10 + offset
 
     def get_flag(self, flag):
-        if not 0 < flag < FLAGS_MAX:
-            raise ValueError("only saved flags 1..0x3FFF are supported")
+        _integer("saved flag", flag, 0, SAVED_FLAGS_COUNT - 1)
+        if flag == 0:
+            return False
         return bool(self.u8(self.array(ARR_VARS_FLAGS) + FLAGS_OFFSET + flag // 8) >> (flag % 8) & 1)
 
     def set_flag(self, flag, value=True):
-        if not 0 < flag < FLAGS_MAX:
-            raise ValueError("only saved flags 1..0x3FFF are supported")
+        _integer("saved flag", flag, 1, SAVED_FLAGS_COUNT - 1)
+        if type(value) is not bool:
+            raise ValueError("flag value must be boolean")
         a = self.array(ARR_VARS_FLAGS) + FLAGS_OFFSET + flag // 8
         b = self.u8(a)
         self.w8(a, (b | (1 << flag % 8)) if value else (b & ~(1 << flag % 8)))
 
     def get_var(self, var):
+        _integer("saved variable", var, VARS_BASE, VARS_BASE + SAVED_VARS_COUNT - 1)
         return self.u16(self.array(ARR_VARS_FLAGS) + (var - VARS_BASE) * 2)
 
     def set_var(self, var, value):
+        _integer("saved variable", var, VARS_BASE, VARS_BASE + SAVED_VARS_COUNT - 1)
+        _integer("variable value", value, 0, 0xFFFF)
         self.w16(self.array(ARR_VARS_FLAGS) + (var - VARS_BASE) * 2, value)
 
     def location(self, which=0):
         """LocalFieldData Location (pret): 0 current position, 1 previous (+0x14), 2 dynamic warp (+0x28),
         3 special spawn/escape (+0x3C), 4 +0x50. {s32 map, warp, x, y, direction}."""
+        _integer("location index", which, 0, 4)
         a = self.array(ARR_LOCAL_FIELD) + 0x14 * which
         return dict(zip(("map", "warp", "x", "y", "dir"), struct.unpack("<5i", self.read(a, 20))))
 
     def set_location(self, map_id, x, y, direction="DOWN", warp=-1, which=0):
+        _integer("location index", which, 0, 4)
         a = self.array(ARR_LOCAL_FIELD) + 0x14 * which
         d = DIRS.get(direction, direction)
+        _integer("map", map_id, 0, 65535)
+        _integer("warp", warp, -1, 0x7FFFFFFF)
+        for name, value in (("x", x), ("y", y)):
+            _integer(name, value, -0x80000000, 0x7FFFFFFF)
+        _integer("direction", d, 0, 3)
         self.write(a, struct.pack("<5i", map_id, warp, x, y, d))
 
     # ------------------------------------------------------------------ clock
@@ -1130,17 +1064,32 @@ class Harness:
     # ------------------------------------------------------------------ party
     def party(self):
         a = self.array(ARR_PARTY)
-        count = self.u32(a + 4)
-        return [decode_party_pokemon(self.read(a + 8 + 236 * i, 236)) for i in range(min(count, 6))]
+        count = self._party_count(a)
+        return [decode_party_pokemon(self.read(a + 8 + 236 * i, 236)) for i in range(count)]
+
+    def _party_count(self, address=None):
+        a = self.array(ARR_PARTY) if address is None else address
+        if self.u32(a) != 6:
+            raise ValueError("invalid live party capacity")
+        return _integer("live party count", self.u32(a + 4), 0, 6)
 
     def generate_pokemon(self, species, level=5, item=0, form=0, free_slot=True):
         """Create a Pokemon with the hack's own debug generator (field: hold SELECT, press X; see the FAQ).
         The menu keeps one u32 per row in a heap array (GEN_* indexes); we write species/item/form there, set
         the level through the menu (A, UP, A on the level row) so it recomputes the experience, then START.
         With free_slot the party count is lowered to 5 first so the new Pokemon lands in slot 6 instead of
-        the PC (test-only edit; the old slot-6 Pokemon is overwritten). Returns the decoded new Pokemon."""
+        the PC (test-only edit; the old slot-6 Pokemon is overwritten). Returns the decoded new Pokemon
+        only after strict closed-record/checksum and requested species/level/form validation. Invalid
+        native output is reported without attempting to repair the game's record."""
+        _integer("species", species, 1, 0xFFFF)
+        _integer("level", level, 1, 100)
+        _integer("item", item, 0, 0xFFFF)
+        _integer("form", form, 0, 31)
         party = self.array(ARR_PARTY)
-        if free_slot and self.u32(party + 4) == 6:
+        count = self._party_count(party)
+        if count == 6 and not free_slot:
+            raise ValueError("the party is full")
+        if free_slot and count == 6:
             self.w32(party + 4, 5)
         self.hold("SELECT")
         self.step(10)
@@ -1164,14 +1113,30 @@ class Harness:
         self.press("B", after=60)                 # close the menu
         if self.u32(party + 4) != count + 1:
             raise RuntimeError("generator did not add the Pokemon to the party (party full?)")
+        address = party + 8 + 236 * count
+        raw = self.read(address, 236)
+        try:
+            mon = _save_core.compatibility_mon(_save_core.request("decodePokemon", raw, diagnostic=False))
+        except ValueError as error:
+            raise RuntimeError(
+                f"Native generator produced an invalid closed Pokemon record in slot {count} "
+                f"at {address:#x}: {error}. No record was repaired; capture this native output "
+                "for investigation before using the generated Pokemon.") from error
+        expected = {"species": species, "level": level, "form": form}
+        actual = {key: mon[key] for key in expected}
+        if actual != expected:
+            raise RuntimeError(
+                f"Native generator output does not match the request: expected {expected}, got {actual}. "
+                "No record was repaired; inspect the native generator state before continuing.")
         self.generated_slot = count
-        mon = decode_party_pokemon(self.read(party + 8 + 236 * count, 236))
         mon["slot"] = count
         return mon
 
     # ------------------------------------------------------------------ menus (timing-based; see notes)
     def bag_put_first(self, item, qty=1, pocket="items"):
         """Live RAM edit: make item the first entry of a bag pocket (the rest of the pocket is cleared)."""
+        _integer("item", item, 1, 0xFFFF)
+        _integer("quantity", qty, 1, 0xFFFF)
         off, cap = POCKETS[pocket]
         a = self.array(ARR_BAG) + off
         self.write(a, struct.pack("<HH", item, qty) + bytes(4 * (cap - 1)))
@@ -1202,8 +1167,16 @@ class Harness:
 
     def swap_party(self, i, j):
         """Swap two party slots in RAM (field only), e.g. to make a generated Pokemon the lead."""
+        count = self._party_count()
+        _integer("active party slot", i, 0, count - 1)
+        _integer("active party slot", j, 0, count - 1)
         a = self.array(ARR_PARTY) + 8
         x, y = self.read(a + 236 * i, 236), self.read(a + 236 * j, 236)
+        # The empty edit is strict closed-record/checksum validation in the core.
+        encode_pokemon(x)
+        encode_pokemon(y)
+        if self.read(a + 236 * i, 236) != x or self.read(a + 236 * j, 236) != y:
+            raise RuntimeError("party changed while preparing swap")
         self.write(a + 236 * i, y)
         self.write(a + 236 * j, x)
 
@@ -1348,8 +1321,14 @@ class Harness:
     def edit_party_mon(self, slot, **fields):
         """Change boxed fields of a party Pokemon in RAM (species, item, form); re-encrypts and fixes the
         checksum. Stats in the party extension are left alone (the game recalculates them on level-up)."""
+        count = self._party_count()
+        _integer("active party slot", slot, 0, count - 1)
         a = self.array(ARR_PARTY) + 8 + 236 * slot
-        self.write(a, encode_pokemon(self.read(a, 136), **fields))
+        before = self.read(a, 236)
+        after = encode_pokemon(before, **fields)
+        if self.read(a, 236) != before:
+            raise RuntimeError("Pokemon changed while preparing fixture edit; retry at a stable frame")
+        self.write(a, after)
 
 
 # ----------------------------------------------------------------------------- wild encounter logger

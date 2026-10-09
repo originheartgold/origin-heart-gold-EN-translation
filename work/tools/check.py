@@ -32,7 +32,8 @@ Fast (the default, also the pre-commit hook and CI; about 6 s) needs no ROM, and
              strings; not the bytes. Needs armips v0.11.0 (--armips, $ARMIPS, PATH): skipped with a note when
              it is not found, a failure when --armips names one that is not there (CI passes --armips);
   tests      every work/tools/test_*.py, with armips hidden (the armips tests skip; tests that read the
-             Chinese ROM run when it is there and skip when it is not).
+             Chinese ROM run when it is there and skip when it is not). Requires Node.js 22+ and the
+             sealed save-core build: npm --prefix work/save-editor run build (never built/downloaded here).
 Full adds (and fails when armips v0.11.0, the two ROMs or xdelta3 are missing; asm-synth then requires armips):
   asmpatch   asmpatch.py check: every enabled armips fix assembled against the Chinese ROM;
   listings   every armips fix assembled alone and disassembled (asmlisting.py, capstone pinned in
@@ -185,7 +186,53 @@ def step_ruff(full):
     return f"ruff {have}: clean"
 
 
+def preflight_save_core(repo=REPO):
+    """Check the exact build consumed by Python tests; never build or install implicitly."""
+    node = shutil.which("node")
+    if node is None:
+        raise Failed("save-core tests require Node.js 22+; install it explicitly, then run "
+                     "npm --prefix work/save-editor run build")
+    verifier = Path(repo) / "work" / "save-core" / "scripts" / "build-identity.mjs"
+    if not verifier.is_file():
+        raise Failed("save-core build verifier is missing from this checkout")
+    script = ("if(Number(process.versions.node.split('.')[0])<22)throw Error('Node.js 22+ is required');"
+              "const {verifyBuildIdentity}=await import(process.argv[1]);"
+              "process.stdout.write(verifyBuildIdentity().buildId)")
+    try:
+        result = subprocess.run([node, "--input-type=module", "-e", script, verifier.as_uri()],
+                                cwd=repo, capture_output=True, text=True, timeout=15)
+    except (OSError, subprocess.TimeoutExpired) as error:
+        raise Failed(f"save-core preflight failed: {error}; no build/install was attempted") from error
+    if result.returncode:
+        detail = (result.stderr or result.stdout).strip()[-3000:]
+        raise Failed("save-core preflight failed; run npm --prefix work/save-editor run build first. "
+                     "No build/install was attempted.\n" + detail)
+    return result.stdout.strip()
+
+
+def prepare_staged_save_core(target):
+    """Reuse only a sealed build whose inputs exactly match the exported index.
+
+    dist is ignored, so checkout-index cannot export it. Copying a verified build
+    and verifying against the exported source preserves index semantics without
+    compiling unstaged code or installing dependencies during the hook.
+    """
+    target = Path(target)
+    if not (target / "work/save-core/scripts/build-identity.mjs").is_file():
+        return  # Older staged trees did not use the shared core.
+    try:
+        preflight_save_core()
+        shutil.copytree(REPO / "work/save-core/dist", target / "work/save-core/dist", symlinks=True)
+        preflight_save_core(target)
+    except (Failed, OSError) as error:
+        raise Failed("staged save-core inputs must exactly match the verified working build. "
+                     "Build with npm --prefix work/save-editor run build, then stage the intended "
+                     "save-core sources/configuration and retry. No build/install was attempted.\n"
+                     + str(error)) from error
+
+
 def run_tests(env_armips):
+    preflight_save_core()
     env = dict(os.environ, ARMIPS=env_armips, PYTHONDONTWRITEBYTECODE="1")
     r = subprocess.run([sys.executable, "-m", "unittest", "discover", "-s", str(TOOLS), "-p", "test_*.py"],
                        cwd=REPO, env=env, capture_output=True, text=True)
@@ -628,6 +675,12 @@ def staged(extra=()) -> int:
         if not inner.is_file():
             print("work/tools/check.py is not in the staged tree; nothing to check")
             return 0
+        if "--registry-only" not in extra:
+            try:
+                prepare_staged_save_core(Path(td))
+            except Failed as error:
+                print(str(error), file=sys.stderr)
+                return 1
         return subprocess.run([sys.executable, str(inner), "--fast", *extra], cwd=td).returncode
 
 

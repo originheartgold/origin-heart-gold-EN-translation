@@ -103,10 +103,8 @@ def weak_party(h):
 
 
 def set_party_hp(h, slot, hp):
-    """Current HP of a party Pokemon: party extension +6 (u16), encrypted with the PID stream."""
-    a = h.array(E.ARR_PARTY) + 8 + 236 * slot
-    key = E._prng_stream(h.u32(a), 50)
-    h.w16(a + 136 + 6, hp ^ key[3])
+    """Validated closed-record fixture edit, with a stable RAM snapshot check."""
+    h.edit_party_mon(slot, currentHp=hp)
 
 
 def doomed_party(h):
@@ -282,20 +280,7 @@ def out_dir(out, rom):
 
 
 def mon_details(raw):
-    """Decrypted fields of a 236-byte party Pokemon beyond decode_party_pokemon: OT id, IVs, moves, held
-    item, OT name (raw u16 codes), level (Gen 4 layout: A +4 OT id; B +0 moves, +0x10 IV word; D +0
-    OT name)."""
-    m = E.decode_party_pokemon(raw)
-    pid, flags_, checksum = struct.unpack_from("<IHH", raw, 0)
-    words = struct.unpack_from("<64H", raw, 8)
-    plain = list(words) if flags_ & 3 else [w ^ k for w, k in zip(words, E._prng_stream(checksum, 64))]
-    data = struct.pack("<64H", *plain)
-    order = E.BLOCK_ORDERS[((pid & 0x3E000) >> 13) % 24]
-    blk = {n: data[32 * i:32 * i + 32] for i, n in enumerate(order)}
-    iv = struct.unpack_from("<I", blk["B"], 0x10)[0]
-    m.update(ot_id=struct.unpack_from("<I", blk["A"], 4)[0], moves=list(struct.unpack_from("<4H", blk["B"], 0)),
-             ivs=[(iv >> (5 * k)) & 31 for k in range(6)], ot_name=list(struct.unpack_from("<8H", blk["D"], 0)))
-    return m
+    return E.decode_party_pokemon(raw)
 
 
 def party_details(h):

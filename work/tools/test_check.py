@@ -5,6 +5,8 @@ the runner, the expected-hash logic and the ruff pin."""
 import contextlib
 import hashlib
 import io
+import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -16,6 +18,68 @@ sys.path.insert(0, str(HERE))
 import check as C  # noqa: E402
 
 GOT = {"nontext_sha1": "n" * 40, "text_sha1": "t" * 40, "rom_sha1": "r" * 40, "xdelta_sha1": "x" * 40}
+
+
+class SharedSaveCore(unittest.TestCase):
+    def test_missing_node_is_actionable_and_never_builds(self):
+        with patch.object(C.shutil, "which", return_value=None), patch.object(C.subprocess, "run") as run:
+            with self.assertRaisesRegex(C.Failed, "Node.js 22\\+"):
+                C.preflight_save_core()
+            run.assert_not_called()
+
+    def test_preflight_reports_stale_build_and_timeout(self):
+        stale = subprocess.CompletedProcess([], 1, "", "compiled output changed")
+        with patch.object(C.shutil, "which", return_value="node"), \
+                patch.object(C.subprocess, "run", return_value=stale):
+            with self.assertRaisesRegex(C.Failed, "No build/install was attempted"):
+                C.preflight_save_core()
+        with patch.object(C.shutil, "which", return_value="node"), \
+                patch.object(C.subprocess, "run", side_effect=subprocess.TimeoutExpired("node", 15)):
+            with self.assertRaisesRegex(C.Failed, "preflight failed"):
+                C.preflight_save_core()
+
+    def test_missing_verifier_fails_before_spawning(self):
+        with tempfile.TemporaryDirectory() as td, patch.object(C.shutil, "which", return_value="node"), \
+                patch.object(C.subprocess, "run") as run:
+            with self.assertRaisesRegex(C.Failed, "verifier is missing"):
+                C.preflight_save_core(Path(td))
+            run.assert_not_called()
+
+    def test_staged_tree_reuses_exact_build_and_rejects_different_sources(self):
+        with tempfile.TemporaryDirectory() as td:
+            target = Path(td)
+            source = C.REPO / "work/save-core"
+            core = target / "work/save-core"
+            for name in ("src", "cli", "scripts"):
+                shutil.copytree(source / name, core / name)
+            for name in ("package.json", "tsconfig.json"):
+                shutil.copyfile(source / name, core / name)
+            editor = target / "work/save-editor"
+            editor.mkdir()
+            shutil.copyfile(C.REPO / "work/save-editor/package-lock.json", editor / "package-lock.json")
+            C.prepare_staged_save_core(target)
+            self.assertEqual(C.preflight_save_core(target), C.preflight_save_core())
+            with (core / "src/save.ts").open("a") as changed:
+                changed.write("\n// staged source differs from working build\n")
+            with self.assertRaisesRegex(C.Failed, "save-core preflight failed"):
+                C.preflight_save_core(target)
+
+    def test_staged_missing_or_stale_working_build_has_instructions(self):
+        with tempfile.TemporaryDirectory() as td:
+            target = Path(td)
+            verifier = target / "work/save-core/scripts/build-identity.mjs"
+            verifier.parent.mkdir(parents=True)
+            verifier.touch()
+            with patch.object(C, "preflight_save_core", side_effect=C.Failed("stale source")), \
+                    patch.object(C.shutil, "copytree") as copy:
+                with self.assertRaisesRegex(C.Failed, "staged save-core inputs must exactly match"):
+                    C.prepare_staged_save_core(target)
+                copy.assert_not_called()
+
+    def test_older_staged_tree_needs_no_core(self):
+        with tempfile.TemporaryDirectory() as td, patch.object(C, "preflight_save_core") as verify:
+            C.prepare_staged_save_core(Path(td))
+            verify.assert_not_called()
 
 
 class Synthetic(unittest.TestCase):

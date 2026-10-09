@@ -240,15 +240,14 @@ def site_of(lr):
 
 
 def nickname(raw236: bytes) -> list:
-    """Nickname codes (block C +0, 11 u16) of an encrypted party Pokemon (Gen 4 layout, emu_harness)."""
+    """Nickname character codes, terminated by the game's 0xFFFF marker."""
     import emu_harness as E
-    pid, flags, checksum = struct.unpack_from("<IHH", raw236, 0)
-    words = struct.unpack_from("<64H", raw236, 8)
-    plain = list(words) if flags & 3 else [w ^ k for w, k in zip(words, E._prng_stream(checksum, 64))]
-    data = struct.pack("<64H", *plain)
-    order = E.BLOCK_ORDERS[((pid & 0x3E000) >> 13) % 24]
-    c = order.index("C")
-    return codes(data[32 * c:32 * c + 22])
+    result = []
+    for code in E.decode_pokemon(raw236)["nickname"]:
+        if code == 0xFFFF:
+            break
+        result.append(code)
+    return result
 
 
 def scripted(h, *cmds, settle=300):

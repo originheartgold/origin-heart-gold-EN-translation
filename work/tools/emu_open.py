@@ -70,31 +70,13 @@ def out_dir(out, rom):
 
 
 # ----------------------------------------------------------------------------- Pokemon data helpers
-def _plain(raw):
-    pid, flags, checksum = struct.unpack_from("<IHH", raw, 0)
-    key = E._prng_stream(checksum, 64)
-    plain = bytearray(struct.pack("<64H", *[w ^ k for w, k in zip(struct.unpack_from("<64H", raw, 8), key)]))
-    order = E.BLOCK_ORDERS[((pid & 0x3E000) >> 13) % 24]
-    return plain, {n: 32 * i for i, n in enumerate(order)}
-
-
 def with_exp(raw, exp):
-    """raw (encrypted, 136+ bytes) with block A +8 (u32 experience) replaced; checksum and encryption redone.
-    The level in the party extension is left alone: the game derives the new level from the experience the
-    next time the Pokemon gains some."""
-    raw = bytearray(raw)
-    plain, pos = _plain(raw)
-    struct.pack_into("<I", plain, pos["A"] + 8, exp)
-    words = struct.unpack("<64H", plain)
-    checksum = sum(words) & 0xFFFF
-    struct.pack_into("<H", raw, 6, checksum)
-    struct.pack_into("<64H", raw, 8, *[w ^ k for w, k in zip(words, E._prng_stream(checksum, 64))])
-    return bytes(raw)
+    """Explicit fixture edit; cached party level/stats stay stale for native level-up tests."""
+    return E.encode_pokemon(raw, exp=exp)
 
 
 def exp_of(raw):
-    plain, pos = _plain(raw)
-    return struct.unpack_from("<I", plain, pos["A"] + 8)[0]
+    return E.decode_pokemon(raw)["exp"]
 
 
 def moveset(moves, pp):

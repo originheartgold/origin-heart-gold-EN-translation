@@ -13,7 +13,6 @@ import json
 from pathlib import Path
 import re
 import sys
-import unicodedata
 import openpyxl
 from reference_compare import key, species_match, evolution_compare, place_matches, cost_compare, summary_compare
 

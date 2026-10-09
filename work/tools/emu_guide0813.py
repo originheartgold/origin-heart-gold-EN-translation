@@ -221,14 +221,9 @@ def stand_by(h, map_id, oid, side="DOWN"):
 
 
 def decrypted_blocks(raw):
-    """The 128 decrypted data bytes of a 236-byte party Pokemon, in A-B-C-D order (for diffs)."""
-    pid, fl, checksum = struct.unpack_from("<IHH", raw, 0)
-    words = struct.unpack_from("<64H", raw, 8)
-    plain = list(words) if fl & 3 else [w ^ k for w, k in zip(words, E._prng_stream(checksum, 64))]
-    data = struct.pack("<64H", *plain)
-    order = E.BLOCK_ORDERS[((pid & 0x3E000) >> 13) % 24]
-    blk = {n: data[32 * i:32 * i + 32] for i, n in enumerate(order)}
-    return blk["A"] + blk["B"] + blk["C"] + blk["D"]
+    """Read-only canonical A-B-C-D bytes for observational diffs."""
+    import base64
+    return base64.b64decode(E.decode_pokemon(raw)["blocks"], validate=True)
 
 
 def party_raw(h, slot):
@@ -991,9 +986,8 @@ def case_weezing_dex(rom, out, variant):
 
 
 def empty_mon():
-    """A party slot as the game's ZeroMonData leaves it: all-zero data encrypted with PID 0 / checksum 0."""
-    return (struct.pack("<IHH", 0, 0, 0) + struct.pack("<64H", *E._prng_stream(0, 64)) +
-            struct.pack("<50H", *E._prng_stream(0, 50)))
+    """The core's explicit empty-slot fixture matching native ZeroMonData."""
+    return E._save_core.result_bytes(E._save_core.request("emptyPokemon"))
 
 
 def one_mon_party(h):
