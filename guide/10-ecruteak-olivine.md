@@ -168,7 +168,7 @@
 3. Return to the gatehouse and talk to him. "Convince him to go home?" → **Yes**. He goes home.
 4. Back in Blackthorn, his father thanks you.
 
-**Reward:** his father offers to teach **Play Rough** (free, any time you ask). The move he actually teaches is **Flail** (a hack bug; see [Known issues](known-issues.md#lake-of-rage-blackthorn-city-and-beyond)).
+**Reward:** his father offers to teach **Play Rough** (free, any time you ask). The move he actually teaches is **[Flail](/moves/flail/)** (a hack bug; see [Known issues](known-issues.md#lake-of-rage-blackthorn-city-and-beyond)).
 
 **Notes:** if you haven't talked to his father yet, he only tells his story.
 

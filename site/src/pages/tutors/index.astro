@@ -1,15 +1,13 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { playerTutorAccess } from '../../lib/reference-format.mjs';
+
 import Type from '../../components/Type.astro';
-import { tutors, moveById, speciesById, areaUrl, url } from '../../lib/data';
-// An empty cost list means the tutor's script takes nothing from you (e.g. Blackthorn's tutor, free in the guide too).
-const fmtCost = (c: unknown) => (Array.isArray(c) && c.length ? c.join(', ') : c && !Array.isArray(c) ? String(c) : 'free');
+import { tutors, moveById, moveUrl, speciesById, areaUrl, url, tutorCost } from '../../lib/data';
 const rows = [...tutors].sort((a, b) => a.moveName.localeCompare(b.moveName));
 ---
 <StarlightPage frontmatter={{ title: 'Move tutors', description: 'Every move tutor in Origin HeartGold: move, place, cost and which Pokémon can learn it.', tableOfContents: false }}>
-	<p>Move tutors read from their scripts. "Who can learn it" is the species list inside the tutor's own script.
-	"Cost" is what the tutor's script takes from you; "free" can still mean the tutor only appears or helps after a quest,
-	so follow the quest link where there is one.</p>
+	<p>Find a tutor by move, location or eligible Pokémon. Check the cost and linked quest before visiting: even a free tutor may require story progress. For tutors with no complete compatible Pokémon list, follow the quest or location for requirements.</p>
 	<div class="table-filter" data-table="tutor-table">
 		<input type="search" placeholder="Search moves, places or Pokémon…" aria-label="Search tutors" />
 		<span class="filter-count" aria-live="polite"></span>
@@ -20,15 +18,17 @@ const rows = [...tutors].sort((a, b) => a.moveName.localeCompare(b.moveName));
 			{rows.map((t) => { const m = moveById.get(t.move); const first = t.quests[0]; return (
 				<tr id={`tutor-${t.move}`}>
 					<td>
-						{t.moveName}{t.game && <span class="sr-only"> {t.game}</span>}
+						<a href={moveUrl(m)}>{t.moveName}</a>{t.game && <span class="sr-only"> {t.game}</span>}
+
 						{t.note && <><br /><span class="small">({t.note.text}; <a href={url(t.note.href)}>see known issues</a>)</span><span class="sr-only"> {t.note.alias}</span></>}
 					</td>
 					<td>{m && <Type type={m.type} />}</td>
 					<td>
 						{t.places.map((p, i) => <>{i > 0 && ', '}{p.area ? <a href={areaUrl(p.area)}>{p.place}</a> : p.place}</>)}
+						{playerTutorAccess(t).map(text => <span class="ability-summary small">{text}</span>)}
 						{t.quests.length > 0 && <span class="small"> · see {t.quests.map((q, i) => <>{i > 0 && ', '}<a href={url(q.href)}>{q.title}</a></>)}</span>}
 					</td>
-					<td>{fmtCost(t.cost)}</td>
+					<td>{tutorCost(t.cost)}</td>
 					<td>{t.species === 'all' ? 'any Pokémon' : t.species === 'restricted' ? (
 						first ? <>only some Pokémon (<a href={url(first.href)}>see the quest</a>)</>
 							: t.places[0]?.area ? <>only some Pokémon (<a href={areaUrl(t.places[0].area)}>see the location</a>)</> : 'only some Pokémon'
@@ -41,4 +41,5 @@ const rows = [...tutors].sort((a, b) => a.moveName.localeCompare(b.moveName));
 			); })}
 		</tbody>
 	</table>
+
 </StarlightPage>

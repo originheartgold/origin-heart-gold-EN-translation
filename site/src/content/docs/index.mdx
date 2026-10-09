@@ -1,10 +1,10 @@
 ---
 title: Origin HeartGold Guide
-description: An English player's guide to Origin HeartGold (起源心金) v4.0.3 — side quests, Pokédex, locations, items and trainers, read from the game's own data.
+description: An English player's guide to Origin HeartGold (起源心金) v4.0.3 — side quests, Pokémon, moves, abilities, items and locations, with practical advice for your playthrough.
 template: splash
 editUrl: false
 hero:
-  tagline: Side quests, Pokémon, items and trainers in Origin HeartGold (起源心金) v4.0.3, read from the game's own data and written for players.
+  tagline: Side quests, Pokémon, items and trainers in Origin HeartGold (起源心金) v4.0.3, with practical quest instructions and help building your team.
   actions:
     - text: Start the quest guide
       link: guide/
@@ -26,13 +26,13 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 		Pick your starter and whether you play as a boy or a girl, and quests your game can't get are hidden.
 	</Card>
 	<Card title="Pokédex" icon="magnifier">
-		Each species with the hack's own types, abilities, base stats, evolutions, level-up moves, TMs, tutors, egg moves and the places we found it in the game data.
+		Each species with the hack's own types, abilities, base stats, evolutions, level-up moves, TMs, tutors, egg moves and where to find it.
 	</Card>
 	<Card title="Locations" icon="seti:folder">
 		Each place on one page: its quests, wild Pokémon by time of day and method, trainers with full teams, items and shops.
 	</Card>
-	<Card title="Read from the game" icon="rocket">
-		The Pokédex, locations, items and trainers are generated from the game's data, with the English patch's names. Some details still need in-game confirmation. Spot a mistake? Every page has a "Report a problem" link.
+	<Card title="Plan your playthrough" icon="rocket">
+		Find a move’s effects, a tutor’s requirements or an item’s location before setting out. Find this hack’s changes alongside practical instructions. Spot a mistake? Every page has a "Report a problem" link.
 	</Card>
 </CardGrid>
 
@@ -47,5 +47,9 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 	<LinkCard title="Stuck on the stolen Gloom?" href="guide/vermilion-to-celadon/#celadon-city-the-stolen-gloom-story-chain-easy-to-get-stuck" description="Step-by-step directions for the Celadon story chain." />
 	<LinkCard title="Gym Leaders and bosses" href="trainers/" description="Full teams for Gym Leaders, rivals and other key battles." />
 	<LinkCard title="Where is that item?" href="items/" description="Item balls, hidden items, gifts and shops." />
+	<LinkCard title="Moves" href="moves/" description="Move stats, effects, changes in this hack and how to learn them." />
+	<LinkCard title="TMs and HMs" href="tms/" description="All 130 TMs and 8 HMs, acquisition details and compatible Pokémon." />
+	<LinkCard title="Abilities" href="abilities/" description="Effects, changes in this hack, affected moves and Pokémon with each ability." />
+	<LinkCard title="Reference sources" href="reference-sources/" description="Where the information comes from and how source differences are handled." />
 	<LinkCard title="Move tutors" href="tutors/" description="Who teaches what, where, and for what price." />
 </CardGrid>

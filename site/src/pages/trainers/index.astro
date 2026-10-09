@@ -9,7 +9,7 @@ const headings = sections.map((section) => ({ depth: 2, slug: slug(section.title
 <StarlightPage frontmatter={{ title: 'Trainers', description: 'Gym challenges in guide order, plus rival, League, Rocket and partner teams in Origin HeartGold.' }} headings={headings}>
 	<p>Gym challenges follow the quest guide through Kanto, then Johto. This is a reading order, not a strict list of prerequisites.
 	Other teams are grouped by character within each section, including rematches and appearances as your partner. Each team lists its known battle locations and conditions.</p>
-	<p>Teams come from the Chinese v4.0.3 game data. Encounter conditions are partial script summaries;
+	<p>Battle conditions may also depend on story progress;
 	see the <a href={url('/guide/')}>quest guide</a> for story prerequisites. Ordinary trainers appear on their{' '}<a href={url('/locations/')}>location pages</a>. Featured records without an identified encounter are marked below.</p>
 	<nav aria-label="Trainer sections"><ul class="loc-list">
 		{sections.map((section) => <li><a href={`#${slug(section.title)}`}>{section.title}</a></li>)}

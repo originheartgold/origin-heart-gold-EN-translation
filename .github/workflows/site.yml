@@ -79,6 +79,8 @@ jobs:
         run: python3 -m unittest work/tools/docs/test_gen_docs.py work/tools/docs/test_trainer_guide.py work/tools/docs/test_trainer_runtime.py work/tools/site/test_wild_held.py work/tools/site/test_safari_held.py
       - name: Generate the guide pages from guide/*.md
         run: python3 work/tools/site/sync_guide.py
+      - name: Test website reference parsers (no ROM required)
+        run: python3 -m unittest discover -s work/tools/site -p 'test_*.py'
       # The PDF is optional: if these two steps fail, the site deploys without it and
       # the about page leaves out the PDF link.
       - name: Install Pandoc and Typst (for the PDF)
@@ -134,12 +136,15 @@ jobs:
           cat "$out/latest.json"
       - run: npm ci
         working-directory: site
-      - run: npm test
-        working-directory: site
       - name: Check Primo passwords against the reference encoder
         run: node work/tools/site/test_primo.mjs
       - run: npx astro build
         working-directory: site
+      - name: Test site including compiled reference pages
+        run: npm test
+        working-directory: site
+        env:
+          GUIDE_TEST_DIST: '1'
       - name: Check links
         run: python3 work/tools/site/check_site.py --base "$GUIDE_BASE"
       - uses: actions/upload-pages-artifact@v3

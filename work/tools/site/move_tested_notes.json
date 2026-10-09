@@ -1,0 +1,46 @@
+[
+  {
+    "moveId": 344,
+    "text": "In the recorded KO scenario, a Lv. 100 user defeated a wild Magikarp with Volt Tackle and lost no HP; Double-Edge cost 4 HP as a control. This does not establish recoil behavior in other scenarios.",
+    "href": "/guide/known-issues/#moves-that-work-differently",
+    "evidence": {
+      "kind": "tested",
+      "source": "guide/known-issues.md, Moves that work differently; D-1319; emu_harness.py hackbugs --case move; both ROMs"
+    },
+    "playerSummary": "Volt Tackle caused no recoil when it knocked out a wild Pokémon.",
+    "limitation": "Recoil in other situations is not confirmed."
+  },
+  {
+    "moveId": 307,
+    "text": "In the recorded Lv. 100 user versus wild Pokémon scenario, the command menu returned after one Blissey attack following Blast Burn, versus two after Hyper Beam. No recharge turn occurred in that scenario. Frenzy Plant, Hydro Cannon and Rock Wrecker were not tested.",
+    "href": "/guide/known-issues/#moves-that-work-differently",
+    "evidence": {
+      "kind": "tested",
+      "source": "guide/known-issues.md, Moves that work differently; D-1318; emu_harness.py hackbugs --case move; both ROMs"
+    },
+    "playerSummary": "No recharge turn was needed against a wild Pokémon; the user could act again on the next turn.",
+    "limitation": "Recharge in other situations is not confirmed."
+  },
+  {
+    "moveId": 461,
+    "text": "In the recorded Lv. 100 user versus wild Pokémon scenario, Lunar Dance raised the user's Speed and Sp. Atk and the user remained in battle. Other conditions and special-effect behavior remain unverified.",
+    "href": "/guide/known-issues/#moves-that-work-differently",
+    "evidence": {
+      "kind": "tested",
+      "source": "guide/known-issues.md, Moves that work differently; D-1311; emu_harness.py hackbugs --case move; both ROMs"
+    },
+    "playerSummary": "Against a wild Pokémon, Lunar Dance raised the user’s Speed and Sp. Atk instead of making the user faint.",
+    "limitation": "Other effects and battle situations are not confirmed."
+  },
+  {
+    "moveId": 340,
+    "text": "In the recorded probe, Bounce attacked on the selected turn: no spring-up message or miss appeared, and the command menu returned every turn. Fly took two turns as a control. This is a scoped result, not verification of every effect field.",
+    "href": "/guide/known-issues/#moves-that-work-differently",
+    "evidence": {
+      "kind": "tested",
+      "source": "guide/known-issues.md, Moves that work differently; D-1350; emu_harness.py vqueue --case probe; both ROMs"
+    },
+    "playerSummary": "Bounce attacked on the turn it was chosen, without a turn spent springing up.",
+    "limitation": "Other effects and battle situations are not confirmed."
+  }
+]

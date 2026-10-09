@@ -9,7 +9,7 @@ import Patcher from '../../components/Patcher.astro';
 import { REPO_URL } from '../../../site.config.mjs';
 
 Drop your own **Pokémon HeartGold Version (USA)** file below, as a `.nds` or a `.zip`, and you get Origin HeartGold (起源心金) v4.0.3 in English back.
-The page checks your file, downloads the latest patch and applies it for you. You don't need to download the patch, find a patching tool or unzip anything.
+The page checks your file, downloads the patch published with this site and applies it for you. You don't need to download the patch, find a patching tool or unzip anything.
 
 <Patcher />
 
@@ -45,6 +45,6 @@ You can do the same thing with any xdelta patcher:
 ## How it works
 
 The page computes your file's CRC32 and SHA-1 (unpacking a `.zip` first with your browser's built-in decompression),
-downloads the latest patch from this website and applies it with
+downloads the patch published with this website and applies it with
 [xdelta3](https://github.com/jmacd/xdelta) compiled to WebAssembly by [xdelta-wasm](https://github.com/kotcrab/xdelta-wasm),
 inside a background worker in your browser tab. Both are open source under the Apache License 2.0; see the [credits](../about/#credits).

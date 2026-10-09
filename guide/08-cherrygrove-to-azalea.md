@@ -290,7 +290,7 @@ No answer gives a reward.
 
 **How it works:** talk to him with **TM74 Gyro Ball** in your Bag (it's sold for 10,000 coins at the Celadon Game Corner). "Give the Youngster the TM for Gyro Ball?" → Yes. The game doesn't actually take the TM: you keep it.
 
-**Reward:** from then on he teaches **Shell Smash**, free and repeatable, to 21 species (see the [tutor table](/tutors/), Violet City).
+**Reward:** from then on he teaches **[Shell Smash](/moves/shell-smash/)**, free and repeatable, to 21 species (see the [tutor table](/tutors/), Violet City).
 
 *Source:* script file 854 (script 15; L1843–L3895; flag 1850; L3872–L3895 only sets the flag, no TakeItem; hack finding D-1425). Position ≈457,244.
 

@@ -115,3 +115,40 @@ ul.loc-list li { break-inside: avoid; }
   :root[data-sidebar-collapsed] .sidebar-pane { display: none; }
   :root[data-sidebar-collapsed] .main-frame { padding-inline-start: 0; }
 }
+
+/* Reference catalogs: images stay separate from game record IDs; evidence stays visible. */
+.pokemon-cell { display: flex; align-items: center; gap: .5rem; min-width: 10rem; }
+.pokemon-image { margin: 0 !important; }
+.pokemon-image img { object-fit: contain; display: block; }
+.pokemon-image-small { flex: 0 0 48px; width: 48px; height: 48px; }
+.pokemon-image-large { width: min(100%, 256px); }
+.pokemon-image-large img { width: 100%; height: auto; aspect-ratio: 1; }
+.pokemon-image figcaption { line-height: 1.35; margin-top: .35rem; }
+.art-placeholder { display: grid; place-items: center; width: 100%; aspect-ratio: 1; border-radius: .5rem; background: var(--ohg-tag-bg); color: var(--sl-color-gray-3); }
+.pokemon-overview { display: flex; flex-wrap: wrap; align-items: start; gap: 1.5rem; }
+.pokemon-overview .mon-head { flex: 1 1 18rem; }
+.ability-link { display: block; }
+.ability-summary { display: block; }
+.reference-note { border-left: 3px solid var(--sl-color-accent); padding: .25rem 1rem; margin: 1rem 0; }
+.reference-note > :first-child { margin-top: 0; }
+.reference-conflict { border: 1px solid var(--sl-color-accent); border-radius: .4rem; padding: .75rem 1rem; margin: 1rem 0; }
+.reference-provenance { border-left: 2px solid var(--sl-color-gray-5); padding-left: .75rem; margin: 1rem 0; }
+.reference-provenance summary { cursor: pointer; font-size: var(--sl-text-sm); }
+.reference-provenance pre { max-height: 24rem; overflow: auto; font-size: var(--sl-text-xs); }
+.reference-link-list { columns: 2 15rem; }
+.reference-link-list li { break-inside: avoid; }
+.reference-moves td:last-child { min-width: 14rem; }
+.reference-moves td { vertical-align: top; }
+.tutor-details p { margin-block: .25rem; }
+.evidence { font-weight: 600; }
+@media (max-width: 35rem) { dl.facts { grid-template-columns: 1fr; } dl.facts dd { margin-bottom: .5rem; } .prevnext { flex-wrap: wrap; } }
+
+/* Filter controls and wide reference tables stay inside the content column. */
+.table-filter > * { min-width: 0; max-width: 100%; margin: 0 !important; }
+.table-filter select { text-overflow: ellipsis; }
+.filter-reset { padding: .35rem .7rem; border: 1px solid var(--sl-color-gray-5); border-radius: .35rem; color: var(--sl-color-text); background: var(--sl-color-gray-7, var(--sl-color-black)); cursor: pointer; }
+.filter-empty { padding: .75rem 1rem; border-left: 3px solid var(--sl-color-accent); }
+.filter-empty[hidden] { display: none; }
+.sl-markdown-content { min-width: 0; }
+.sl-markdown-content table.compact { display: block; max-width: 100%; overflow-x: auto; }
+.reference-provenance, .reference-conflict, .reference-note { overflow-wrap: anywhere; }

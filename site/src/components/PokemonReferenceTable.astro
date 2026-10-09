@@ -1,0 +1,10 @@
+---
+import { playerNote } from '../lib/reference-format.mjs';
+import PokemonImage from './PokemonImage.astro';
+import Type from './Type.astro';
+import { speciesById, pokemonUrl, availabilityToken, availabilityLabel } from '../lib/data';
+const { rows, label = 'Details', id } = Astro.props as { rows: { speciesId: number; detail?: string }[]; label?: string; id?: string };
+---
+<table class="compact sortable" id={id}><thead><tr><th>Pokémon</th><th>Type</th><th>{label}</th><th>Availability</th></tr></thead><tbody>{rows.map(row => { const s = speciesById.get(row.speciesId); return s && <tr data-availability={availabilityToken(s)} data-type={s.types.join('|')}>
+<td><div class="pokemon-cell"><PokemonImage s={s} /><a href={pokemonUrl(s.id)}>{s.name}</a></div></td><td>{s.types.map(t => <Type type={t} />)}</td><td>{row.detail ?? '—'}</td><td>{availabilityLabel(s)}{s.unavailableReason && <details><summary>Reason</summary>{playerNote(s.unavailableReason)}</details>}</td>
+</tr>; })}</tbody></table>

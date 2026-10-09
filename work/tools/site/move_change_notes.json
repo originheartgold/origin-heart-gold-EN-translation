@@ -1,0 +1,451 @@
+[
+  {
+    "moveId": 66,
+    "changes": [
+      {
+        "text": "Adds a 10% chance to make the target flinch.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 8
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 80,
+    "changes": [
+      {
+        "text": "Adds a 30% chance to confuse the target.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 9
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 130,
+    "changes": [
+      {
+        "text": "Defense boost chance: 100% → 50%.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 10
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 134,
+    "changes": [
+      {
+        "text": "Raises the user’s Sp. Atk and Speed by one stage instead of lowering the target’s accuracy.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 12
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 146,
+    "changes": [
+      {
+        "text": "Confusion chance: 20% → 30%.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 14
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 198,
+    "changes": [
+      {
+        "text": "Hits exactly 3 times instead of 2–5 times.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 18
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 210,
+    "changes": [
+      {
+        "text": "Now hits twice per use.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 19
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 295,
+    "changes": [
+      {
+        "text": "Sp. Def drop chance: 50% → 30%.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 30
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 296,
+    "changes": [
+      {
+        "text": "Sp. Atk drop chance: 50% → 30%.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 31
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 307,
+    "changes": [
+      {
+        "text": "Recharge turn removed.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "tested",
+          "source": "work/tools/site/move_tested_notes.json",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 34
+          }
+        }
+      },
+      {
+        "text": "Adds a 10% chance to burn the target.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc#307 condition 4 / chance 10",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 34
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 308,
+    "changes": [
+      {
+        "text": "Adds a 10% chance to lower the target’s Speed by one stage.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 35
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 337,
+    "changes": [
+      {
+        "text": "The advertised critical-hit boost is not confirmed.",
+        "uncertain": true,
+        "evidence": {
+          "kind": "author-note",
+          "source": "4.0 Move Changes; critical-hit claim conflicts with live effect 0 / critical-hit stage 0",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 40
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 338,
+    "changes": [
+      {
+        "text": "Adds HP recovery equal to half the damage dealt.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 41
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 340,
+    "changes": [
+      {
+        "text": "Attacks in one turn instead of spending the first turn bouncing up.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "tested",
+          "source": "work/tools/site/move_tested_notes.json",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 42
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 344,
+    "changes": [
+      {
+        "text": "No recoil when knocking out a wild Pokémon.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "tested",
+          "source": "work/tools/site/move_tested_notes.json",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 44
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 353,
+    "changes": [
+      {
+        "text": "Adds a two-stage drop to the user’s Sp. Atk.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 45
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 401,
+    "changes": [
+      {
+        "text": "Adds a 10% chance to lower the target’s Defense by one stage.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 46
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 407,
+    "changes": [
+      {
+        "text": "Flinch chance: 20% → 10%.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 47
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 419,
+    "changes": [
+      {
+        "text": "Adds a 30% chance to make the target flinch.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 48
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 439,
+    "changes": [
+      {
+        "text": "Adds a 10% chance to make the target flinch.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 50
+          }
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 461,
+    "changes": [
+      {
+        "text": "Raises the user’s Sp. Atk and Speed by one stage instead of sacrificing the user to restore its replacement.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "tested",
+          "source": "work/tools/site/move_tested_notes.json",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description"
+        }
+      }
+    ]
+  },
+  {
+    "moveId": 465,
+    "changes": [
+      {
+        "text": "Sp. Def drop chance: 40% → 30%.",
+        "uncertain": false,
+        "evidence": {
+          "kind": "rom-data",
+          "source": "work/notes/move_data_audit.md; extra/new_move_data.narc",
+          "originalSource": "Pokémon HeartGold (USA), a/0/1/1; local a027/0749 description",
+          "authorSource": {
+            "kind": "author-note",
+            "workbook": "pokemon",
+            "sheet": "4.0 Move Changes",
+            "row": 56
+          }
+        }
+      }
+    ]
+  }
+]

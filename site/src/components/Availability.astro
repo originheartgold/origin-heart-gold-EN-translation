@@ -1,11 +1,12 @@
 ---
+import { playerNote } from '../lib/reference-format.mjs';
 import { url } from '../lib/data';
 const { reason, detail = false } = Astro.props as { reason?: string | null; detail?: boolean };
 ---
 {reason && (detail ? <aside class="availability-note">
   <strong>NOT AVAILABLE IN GAME</strong>
-  <p>This entry exists in the game data but is unavailable through normal play. {reason}</p>
-  <p>It remains listed for reference when using the <a href={url('/save-editor/')}>save editor</a> or the in-game generator (hold SELECT and press X). Support for adding or using this particular entry has not been verified.</p>
+  <p>Not available through normal play. {playerNote(reason)}</p>
+
 </aside> : <span class="availability-badge">NOT AVAILABLE IN GAME</span>)}
 <style>
 .availability-badge { display: inline-block; font-size: .7rem; font-weight: 700; border: 1px solid var(--sl-color-gray-3); border-radius: .25rem; padding: .1rem .35rem; color: var(--sl-color-text); }

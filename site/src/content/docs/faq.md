@@ -65,7 +65,7 @@ This site covers the English translation, which keeps the Chinese hack exactly a
 
 ### Why does the game run fast, and slow down in towns?
 
-The original Chinese hack runs the overworld at a higher speed (a "60 fps" feature). It's busier in towns with many characters on screen, so it feels slower there. It's part of the hack, not the translation. The translation keeps it for now, and an optional switch is being looked into. Make sure your emulator itself is set to normal (1×) speed.
+The original Chinese hack runs the overworld at a higher speed (a "60 fps" feature). It's busier in towns with many characters on screen, so it feels slower there. It's part of the hack, not the translation. The released translation keeps this behavior. Make sure your emulator itself is set to normal (1×) speed.
 
 ### Is there a text speed setting?
 
@@ -73,7 +73,7 @@ No. The hack replaced the TEXT SPEED option with MUSIC SPEED.
 
 ### Why does Kanto play the Johto battle music?
 
-Until you first set foot in Vermilion City (any way in, which also unlocks it as a Fly destination), wild and Trainer battles in Kanto use the Johto themes. From then on they switch to the Kanto themes. Gym Leader, rival and other special battle themes don't change. Tested in an emulator. The rule comes from HeartGold, where you first reach Kanto by ship at Vermilion; the hack starts you in Kanto but kept it. The original Chinese game does the same.
+Until you first set foot in Vermilion City (any way in, which also unlocks it as a Fly destination), wild and Trainer battles in Kanto use the Johto themes. From then on they switch to the Kanto themes. Gym Leader, rival and other special battle themes don't change. The rule comes from HeartGold, where you first reach Kanto by ship at Vermilion; the hack starts you in Kanto but kept it. The original Chinese game does the same.
 
 ### Some moves have no sound. Is my game broken?
 
@@ -114,7 +114,7 @@ Yes, in shops:
 
 ### Why do all my wild catches have the same nature?
 
-Your first party Pokémon has the ability Synchronize. In this hack Synchronize **always** passes its nature to wild Pokémon (in HeartGold it works half the time), including shinies. It counts even if that Pokémon has fainted. Synchronize Pokémon include Abra, Kadabra, Alakazam, Natu, Xatu, Espeon, Umbreon, Baltoy, Claydol, Munna and Musharna, and Ralts and Kirlia with their Hidden Ability. Put a Pokémon without Synchronize first for random natures, or lead with a Synchronize Pokémon of the nature you want. It also works in scripted battles with a single Pokémon, such as legendaries; gift Pokémon aren't affected. Tested in an emulator.
+Your first party Pokémon has the ability [Synchronize](../abilities/synchronize/). In this hack Synchronize **always** passes its nature to wild Pokémon (in HeartGold it works half the time), including shinies. It counts even if that Pokémon has fainted. Synchronize Pokémon include Abra, Kadabra, Alakazam, Natu, Xatu, Espeon, Umbreon, Baltoy, Claydol, Munna and Musharna, and Ralts and Kirlia with their Hidden Ability. Put a Pokémon without Synchronize first for random natures, or lead with a Synchronize Pokémon of the nature you want. It also works in scripted battles with a single Pokémon, such as legendaries; gift Pokémon aren't affected.
 
 ### How do I nickname a Pokémon I caught?
 
@@ -122,7 +122,7 @@ Wild catches don't ask for a nickname in this hack (gifts do). Visit the Name Ra
 
 ### How do I evolve trade evolutions like Haunter, Kadabra or Machoke?
 
-No Pokémon needs trading. The old trade evolutions level up while holding an item, often only by day or by night (Haunter holding a Spell Tag at night, for example). Every [Pokémon page](../pokemon/) shows how it evolves, and the rules are on [Mechanics and controls](../mechanics/#evolution). Some evolutions changed completely: Karrablast and Shelmet simply evolve at Lv. 25.
+No trading is needed for the old trade evolutions. They level up while holding an item, often only by day or by night (Haunter holding a Spell Tag at night, for example). Every [Pokémon page](../pokemon/) shows how it evolves, and the rules are on [Mechanics and controls](../mechanics/#evolution). Some evolutions changed completely: Karrablast and Shelmet simply evolve at Lv. 25.
 
 ### Can other Pokémon Mega Evolve?
 
@@ -140,11 +140,21 @@ The original hack leaves most medicine out of the battle Bag: status heals, Full
 
 ### My Pokémon is out of PP and won't use Struggle
 
-In the original hack a Pokémon with no PP left never uses Struggle: FIGHT still opens the move list, and every move says it's out of PP. Switch to another Pokémon, or use a Leppa Berry from the Bag. If your only usable Pokémon has no PP left and you have no Leppa Berry, a Trainer battle can't go on and you have to reset. Watch out in the Route 12 battle against the boyfriend (Ace Trainer Newt), which you have to lose: his Rattata knows only Normal-type moves, so a team of Ghost types can neither lose nor win there. Tested in an emulator; see [Known issues](../guide/known-issues/#no-struggle-when-a-pokémon-runs-out-of-pp).
+In the original hack a Pokémon with no PP left never uses Struggle: FIGHT still opens the move list, and every move says it's out of PP. Switch to another Pokémon, or use a Leppa Berry from the Bag. If your only usable Pokémon has no PP left and you have no Leppa Berry, a Trainer battle can't go on and you have to reset. Watch out in the Route 12 battle against the boyfriend (Ace Trainer Newt), which you have to lose: his Rattata knows only Normal-type moves, so a team of Ghost types can neither lose nor win there. See [Known issues](../guide/known-issues/#no-struggle-when-a-pokémon-runs-out-of-pp).
 
 ### Why can't I find a Pokémon or event someone else got?
 
 Many events and some wild Pokémon depend on your starter (Charmander, Pikachu or Bulbasaur). Pick your starter at the top of any quest page and the guide shows only what your game can get.
+
+## Reading references and using the save editor
+
+### Is every reference entry obtainable or every author claim verified?
+
+No. Entries that cannot be obtained are marked **NOT AVAILABLE IN GAME**. Entries with no known acquisition route are marked separately. Check the Pokémon or item page before planning your team. The [source reference](../reference-sources/) explains how the guide’s information was assembled.
+
+### How do I use the save editor?
+
+Keep a backup, then open your game's battery save in the [save editor](../save-editor/). Use a raw **512 KiB `.sav`** or a **DeSmuME `.dsv`** save, not an emulator save state. Follow the editor's controls to make changes and download a copy, then import it through your emulator's save-file controls. Your save is processed locally in your browser.
 
 ## Cheats and extras
 

@@ -6,6 +6,6 @@ const { entries } = Astro.props as { entries: FormChange[] };
 import { speciesById } from '../lib/data';
 ---
 <ul>{entries.map((f) => <li>
-	<Mon id={f.base} name={speciesById.get(f.base)?.name ?? 'Pokémon'} /> holding <a href={itemUrl(itemById.get(f.item))}>{itemById.get(f.item)?.name}</a> becomes <Mon id={f.result} name={speciesById.get(f.result)?.name ?? 'another form'} />. {f.condition}
+	<Mon id={f.base} name={speciesById.get(f.base)?.name ?? 'Pokémon'} /> holding <a href={itemUrl(itemById.get(f.item))}>{itemById.get(f.item)?.name}</a> becomes <Mon id={f.result} name={speciesById.get(f.result)?.name ?? 'another form'} />. {f.condition.replace(' Tested in an emulator.', '')}
 </li>)}</ul>
-<p>These are held-item transformations, not permanent evolutions. Removing the required item returns the Pokémon to its base form. The transformation rules are verified in the game code; every animation and item-change sequence has not been replayed.</p>
+<p>These are held-item transformations, not permanent evolutions. Removing the required item returns the Pokémon to its base form.</p>

@@ -1,0 +1,13 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import TrainerCard from '../../../components/TrainerCard.astro';
+import { trainers, url, type Trainer } from '../../../lib/data';
+export function getStaticPaths() { return trainers.map(t => ({params: {id: String(t.id)}, props: {t}})); }
+const { t } = Astro.props as {t: Trainer};
+const label = `${t.cls} ${t.name}`.trim() || 'Unnamed trainer';
+---
+<StarlightPage frontmatter={{ title: label, description: `Trainer team in Origin HeartGold: Pokémon, moves, abilities, held items and battle locations.`, tableOfContents: false }}>
+<p>Check the battle locations and conditions below to prepare for this encounter. A trainer’s held items are not necessarily obtainable; item pages list how to get them.</p>
+<TrainerCard t={t} showPlaces expanded />
+<p><a href={url('/trainers/')}>Browse featured trainers in guide order</a></p>
+</StarlightPage>

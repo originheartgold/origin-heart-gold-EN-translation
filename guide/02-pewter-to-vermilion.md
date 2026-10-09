@@ -157,7 +157,7 @@ Once all four are there, they wait just south of the guards. Then talk to the gu
 
 **Where:** a Super Nerd digging by a fossil in Mt. Moon's inner cave, about 15 steps east and 4 steps north of the exit to Route 4 (and about 17 steps south and 13 steps west of Steven's spot from the previous entry).
 
-**How it works:** checking the fossil makes him battle you (Super Nerd Zack: Magnemite Lv. 16, Voltorb Lv. 17, Nosepass Lv. 18). Losing whites you out; check the fossil again to retry. After you win, talk to him: he sells **Helix Fossil** or **Dome Fossil** for **$5,000 each**, as often as you like.
+**How it works:** checking the fossil makes him battle you (Super Nerd Zack: Magnemite Lv. 16, Voltorb Lv. 17, Nosepass Lv. 18). Losing whites you out; check the fossil again to retry. After you win, talk to him: he sells **[Helix Fossil](/items/helix-fossil/)** or **Dome Fossil** for **$5,000 each**, as often as you like.
 
 *Source:* file 133 (scripts 7, 8; L2149, L2216). Fossil ≈28,70, Route 4 exit 13,74.
 

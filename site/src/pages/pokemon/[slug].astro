@@ -1,12 +1,16 @@
 ---
+import { playerNote } from '../../lib/reference-format.mjs';
+
 import Availability from '../../components/Availability.astro';
 import FormChanges from '../../components/FormChanges.astro';
 import CalendarEncounters from '../../components/CalendarEncounters.astro';
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import Type from '../../components/Type.astro';
-import Mon from '../../components/Mon.astro';
+import PokemonImage from '../../components/PokemonImage.astro';
+import AbilityLink from '../../components/AbilityLink.astro';
+import MoveTable from '../../components/MoveTable.astro';
 import Evolution from '../../components/Evolution.astro';
-import { species, speciesById, moveById, itemByName, itemUrl, areaBySlug, areaUrl, url, STAT_NAMES, type Species, type Move } from '../../lib/data';
+import { species, speciesById, tmByLabel, tms, itemById, itemUrl, tutorsByMove, areaBySlug, areaUrl, url, STAT_NAMES, type Species } from '../../lib/data';
 
 export function getStaticPaths() {
 	return species.map((s) => ({ params: { slug: s.slug }, props: { s } }));
@@ -16,8 +20,7 @@ const total = s.stats.reduce((a, b) => a + b, 0);
 const ev = s.ev.map((v, i) => (v ? `${v} ${STAT_NAMES[i]}` : '')).filter(Boolean).join(', ') || '—';
 const idx = species.findIndex((x) => x.id === s.id);
 const prev = species[idx - 1], next = species[idx + 1];
-const mv = (id: number) => moveById.get(id);
-const moveRow = (m: Move | undefined) => (m ? [m.type, m.cat, m.power, m.acc, m.pp] : ['?', '?', '?', '?', '?']);
+const tmRows = s.tms === 'all' ? tms.map(t => ({ id: t.moveId, label: t.label, href: itemUrl(itemById.get(t.itemId)) })) : s.tms.map(([label, id]) => ({ id, label, href: itemUrl(itemById.get(tmByLabel.get(label)?.itemId ?? -1)) }));
 const headings = [
 	{ depth: 2, slug: 'where', text: 'Where to find it' },
 	...(s.formChanges.length ? [{ depth: 2, slug: 'forms', text: 'Held-item forms' }] : []),
@@ -30,15 +33,15 @@ const headings = [
 ];
 ---
 <StarlightPage
-	frontmatter={{ title: `#${String(s.id).padStart(4, '0')} ${s.name}`, description: `${s.name} in Origin HeartGold: types, abilities, base stats, moves and where to catch it.` }}
+	frontmatter={{ title: `#${String(s.baseSpeciesId).padStart(4, '0')} ${s.name}`, description: `${s.name} in Origin HeartGold: types, abilities, base stats, moves and where to catch it.` }}
 	headings={headings}
 >
 	<Availability reason={s.unavailableReason} detail />
-	<div class="mon-head">
+	<div class="pokemon-overview"><PokemonImage s={s} size="large" /><div class="mon-head">
 		<div class="types">{s.types.map((t) => <Type type={t} />)}{s.game && <span class="small muted"> In-game spelling: {s.game}</span>}</div>
 		<dl class="facts">
-			<dt>Abilities</dt><dd>{s.abilities.join(' / ') || '—'}</dd>
-			<dt>Hidden ability</dt><dd>{s.hidden ?? '—'}</dd>
+			<dt>Abilities</dt><dd>{s.abilityIds.length ? s.abilityIds.map(id => <AbilityLink id={id} summary />) : '—'}</dd>
+			<dt>Hidden ability</dt><dd><AbilityLink id={s.hiddenAbilityId} summary /></dd>
 			<dt>Catch rate</dt><dd>{s.catch}</dd>
 			<dt>Gender</dt><dd>{s.gender}</dd>
 			<dt>Egg groups</dt><dd>{s.eggGroups.join(' / ')}</dd>
@@ -46,7 +49,8 @@ const headings = [
 			<dt>EV yield</dt><dd>{ev}</dd>
 			{s.held.length > 0 && <><dt>Wild held item</dt><dd>{s.held.join(', ')}</dd></>}
 		</dl>
-	</div>
+	</div></div>
+
 	<table class="stats compact">
 		<tbody>
 			{s.stats.map((v, i) => (
@@ -60,7 +64,7 @@ const headings = [
 	{s.foundIn.length > 0 && (
 		<ul>{s.foundIn.map((f) => (<li><a href={areaUrl(f.area)}>{areaBySlug.get(f.area)?.name ?? f.area}</a>: {f.methods.join(', ')}</li>))}</ul>
 	)}
-	{s.unavailableReason ? <p>{s.unavailableReason}</p> : s.how ? <p>How to get it: {s.how}</p> : s.formChanges.some((f) => f.result === s.id) ? <p>Available through a held-item transformation; see below.</p> : s.calendar.length ? <p>A date-specific entry is documented below. Check its status before treating it as a catch location.</p> : s.battleOnly ? null : <p><strong>No confirmed way to get it.</strong> {s.note ?? 'No source was found in the game data.'}</p>}
+	{s.unavailableReason ? <p>{playerNote(s.unavailableReason)}</p> : s.how ? <p>How to get it: {playerNote(s.how)}</p> : s.formChanges.some((f) => f.result === s.id) ? <p>Available through a held-item transformation; see below.</p> : s.calendar.length ? <p>Appears on the date listed below.</p> : s.battleOnly ? null : <p><strong>No confirmed way to get it.</strong> {playerNote(s.note) || 'No location or evolution route is known.'}</p>}
 	{s.battleOnly && <p><strong>{s.how ? 'Also in battle.' : 'Seen only in battle.'}</strong> {s.battleOnly}{s.how ? '' : " It can't be kept in this form."}</p>}
 	{s.formChanges.length > 0 && <>
 		<h2 id="forms">Held-item forms</h2>
@@ -68,7 +72,7 @@ const headings = [
 	</>}
 	{s.calendar.length > 0 && <>
 		<h2 id="calendar">Calendar encounters</h2>
-		<p>These entries come from the date-specific encounter table. Each entry below explains its emulator test results and availability. They are separate from ordinary encounters. <a href={url('/calendar/')}>Calendar rules and caveats</a>.</p>
+		<p>These Pokémon appear on specific dates. Check each entry’s availability and any special conditions. <a href={url('/calendar/')}>Calendar rules and caveats</a>.</p>
 		<CalendarEncounters entries={s.calendar} />
 	</>}
 	{(s.quests ?? []).length > 0 && <p>See the quest guide: {(s.quests ?? []).map((q, i) => <>{i > 0 && '; '}<a href={url(q.href)}>{q.title}</a></>)}.</p>}
@@ -77,42 +81,20 @@ const headings = [
 	{s.evoFrom.length === 0 && s.evoTo.length === 0 && <p>Does not evolve.</p>}
 	{s.evoFrom.length > 0 && <Evolution label="Evolves from" entries={s.evoFrom} />}
 	{s.evoTo.length > 0 && <Evolution label="Evolves into" entries={s.evoTo} />}
-	{s.evoNotes.map((n) => <p>{n}</p>)}
+	{s.evoNotes.map((n) => <p>{playerNote(n)}</p>)}
 
 	<h2 id="moves">Level-up moves</h2>
-	<table class="compact">
-		<thead><tr><th>Lv</th><th>Move</th><th>Type</th><th>Cat.</th><th>Power</th><th>Acc.</th><th>PP</th></tr></thead>
-		<tbody>
-			{s.levelup.map(([lv, id]) => { const m = mv(id); return (
-				<tr><td>{lv === 0 ? 'Evo' : lv}</td><td><a href={url(`/moves/#move-${id}`)}>{m?.name}</a></td>{moveRow(m).map((c, i) => <td>{i === 0 ? <Type type={c} /> : c}</td>)}</tr>
-			); })}
-		</tbody>
-	</table>
-
-	<h2 id="tm">TMs and HMs</h2>
-	{s.tms === 'all' ? <p>Can learn every TM and HM.</p> : s.tms.length === 0 ? <p>None.{s.tmNote ? ` ${s.tmNote}` : ''}</p> : (
-		<table class="compact">
-			<thead><tr><th>TM</th><th>Move</th><th>Type</th><th>Cat.</th><th>Power</th><th>Acc.</th><th>PP</th></tr></thead>
-			<tbody>
-				{s.tms.map(([lab, id]) => { const m = mv(id); return (
-					<tr><td>{itemByName.has(`${lab} ${m?.name}`) ? <a href={itemUrl(itemByName.get(`${lab} ${m?.name}`))}>{lab}</a> : lab}</td><td><a href={url(`/moves/#move-${id}`)}>{m?.name}</a></td>{moveRow(m).map((c, i) => <td>{i === 0 ? <Type type={c} /> : c}</td>)}</tr>
-				); })}
-			</tbody>
-		</table>
-	)}
-
-	{s.tutors.length > 0 && <>
-		<h2 id="tutors">Move tutors</h2>
-		<p>{s.tutors.map((id, i) => <>{i > 0 && ', '}<a href={url(`/tutors/#tutor-${id}`)}>{mv(id)?.name}</a></>)}</p>
-	</>}
-	{s.egg.length > 0 && <>
-		<h2 id="egg">Egg moves</h2>
-		<p>{s.egg.map((id, i) => <>{i > 0 && ', '}<a href={url(`/moves/#move-${id}`)}>{mv(id)?.name}</a></>)}</p>
-	</>}
+  <p class="small">“On evolution” moves are learned when this Pokémon evolves. Open a move for its full effects and any special behavior in this hack.</p>
+  <MoveTable rows={s.levelup.map(([lv,id]) => ({ id, label: lv === 0 ? 'On evolution' : String(lv) }))} label="Level" />
+  <h2 id="tm">TMs and HMs</h2>
+  {s.tms === 'all' && <p>Can learn every TM and HM. All {tms.length} TMs and HMs are listed below.</p>}
+  {tmRows.length ? <MoveTable rows={tmRows} label="TM / HM" /> : <p>None.{s.tmNote ? ` ${s.tmNote}` : ''}</p>}
+  {s.tutors.length > 0 && <><h2 id="tutors">Move tutors</h2><MoveTable rows={s.tutors.map(id => ({ id, tutors: tutorsByMove.get(id) ?? [] }))} tutorMode /></>}
+  {s.egg.length > 0 && <><h2 id="egg">Egg moves</h2><MoveTable rows={s.egg.map(id => ({id}))} /></>}
 
 	<nav class="prevnext">
-		{prev ? <a href={url(`/pokemon/${prev.slug}/`)}>← #{prev.id} {prev.name}</a> : <span></span>}
+		{prev ? <a href={url(`/pokemon/${prev.slug}/`)}>← #{prev.baseSpeciesId} {prev.name}</a> : <span></span>}
 		<a href={url('/pokemon/')}>All Pokémon</a>
-		{next ? <a href={url(`/pokemon/${next.slug}/`)}>#{next.id} {next.name} →</a> : <span></span>}
+		{next ? <a href={url(`/pokemon/${next.slug}/`)}>#{next.baseSpeciesId} {next.name} →</a> : <span></span>}
 	</nav>
 </StarlightPage>

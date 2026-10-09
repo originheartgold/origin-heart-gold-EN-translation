@@ -23,6 +23,7 @@ import gen_docs as G      # noqa: E402
 import romdata as R       # noqa: E402
 import landmarks as LM    # noqa: E402
 import safari_held as SH  # noqa: E402
+import battle_reference as BR  # noqa: E402
 
 OUT = os.path.join(R.REPO, 'site', 'src', 'data')
 # reviewed lists, shared with the docs (see gen_docs.reviewed and each file's _about): species, forms and items a
@@ -400,11 +401,12 @@ def export(ctx):
     for m in range(1, len(ctx.moves)):
         d = ctx.moves[m]
         name = ctx.mv(m)
-        if not d or name.startswith('move #') or name in ('—', '-', ''):
-            continue
+        unnamed = name.startswith('move #') or name in ('—', '-', '')
+        if unnamed:
+            name = 'Unnamed move #%d' % m
         t, cat, pw, acc, pp = G.move_row(ctx, m)
         moves.append(dict(id=m, name=name, slug=slugs.make('move', name, m), type=t, cat=cat, power=pw, acc=acc,
-                          pp=pp, tm=sorted(tm_of.get(m, [])), game=game_alias(ctx, ctx.MV.get(m))))
+                          pp=pp, tm=sorted(tm_of.get(m, [])), game=game_alias(ctx, ctx.MV.get(m)), unnamed=unnamed))
     move_ids = {x['id'] for x in moves}
 
     # ---- species
@@ -584,7 +586,8 @@ def export(ctx):
         for m in mons:
             idx = species_index(ctx, m['species'], m['form'])
             team.append(dict(id=idx, name=ctx.sp(m['species'], m['form']), level=m['level'],
-                             ability=ctx.ab(m['ability']) if m['ability'] else None,
+                             ability=ctx.ab(m['ability']) if m['ability'] else None, abilityId=m['ability'] or None,
+                             itemId=m['item'] or None, moveIds=list(m['moves']),
                              item=ctx.it(m['item']) if m['item'] else None,
                              nature=R.NATURES[m['nature']] if m['nature'] is not None and m['nature'] < 25 else None,
                              ivs=m['ivs'], hpIvs=m['hp_ivs'], evs=m['evs'] if any(m['evs']) else None,
@@ -705,8 +708,8 @@ def export(ctx):
                 encExplainer=G.ENC_EXPLAINER, rateNames=G.RATE_NAMES,
                 counts=dict(species=len(species), moves=len(moves), items=len(items), areas=len(area_list),
                             trainers=len(trainers)))
-    return dict(species=species, moves=moves, items=items, areas=area_list, trainers=trainers, tutors=tut, meta=meta,
-                trainer_guide=G.trainer_page_sections(ctx, tds, parties, loc))
+    return BR.enrich(ctx, dict(species=species, moves=moves, items=items, areas=area_list, trainers=trainers, tutors=tut, meta=meta,
+                trainer_guide=G.trainer_page_sections(ctx, tds, parties, loc)), R, slugs)
 
 
 def dump(obj):

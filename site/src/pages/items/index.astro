@@ -13,7 +13,7 @@ const places = (i: typeof items[number]) => new Set([
 ]).size;
 ---
 <StarlightPage frontmatter={{ title: 'Items', description: 'Every item in Origin HeartGold and where to get it: wild Pokémon, item balls, hidden items, gifts and shops.', tableOfContents: false }}>
-	<p>All {items.length} named items in the game data, including entries unavailable through normal play. Shop prices are shown only where a shop sells the item. NOT AVAILABLE IN GAME means unavailable through normal play; the data remains here for save-editor and in-game generator reference.</p>
+	<p>Find where to buy, find or earn an item. Open one for its uses, quest requirements and acquisition routes. All {items.length} named items are listed, including those unavailable through normal play. Shop prices appear only for items sold in shops.</p>
 	<div class="table-filter" data-table="item-table">
 		<input type="search" placeholder="Search items…" aria-label="Search items" />
 		<select data-key="pocket" aria-label="Pocket">
@@ -22,7 +22,7 @@ const places = (i: typeof items[number]) => new Set([
 		</select>
 		<select data-key="availability" aria-label="Availability">
 			<option value="">All availability</option>
-			<option value="documented">Documented source</option>
+			<option value="documented">Where to get it</option>
 			<option value="unavailable">NOT AVAILABLE IN GAME</option>
 			<option value="unknown">No confirmed source</option>
 		</select>
@@ -38,7 +38,7 @@ const places = (i: typeof items[number]) => new Set([
 					<td>{i.price && i.sources.some((s) => s.kind === 'shop') ? `$${i.price.toLocaleString('en-US')}` : '—'}</td>
 					<td>{kinds(i) || '—'}</td>
 					<td>{places(i) || ''}</td>
-					<td>{i.unavailableReason ? <Availability reason={i.unavailableReason} /> : hasSource(i) ? 'Documented source' : 'No confirmed source'}</td>
+					<td>{i.unavailableReason ? <Availability reason={i.unavailableReason} /> : hasSource(i) ? 'Where to get it' : 'No confirmed source'}</td>
 				</tr>
 			))}
 		</tbody>

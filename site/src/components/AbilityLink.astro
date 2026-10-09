@@ -1,0 +1,7 @@
+---
+import { playerAbilityDescription } from '../lib/reference-format.mjs';
+import { abilityById, abilityUrl, abilityAlias } from '../lib/data';
+const { id, summary = false } = Astro.props as { id: number | null; summary?: boolean };
+const a = id == null ? undefined : abilityById.get(id);
+---
+{a ? <span class="ability-link"><a href={abilityUrl(a)}>{a.name}</a>{abilityAlias(a) && <span class="small muted"> ({abilityAlias(a)})</span>}{summary && a.description && <span class="ability-summary small">{playerAbilityDescription(a)}</span>}</span> : <span>—</span>}

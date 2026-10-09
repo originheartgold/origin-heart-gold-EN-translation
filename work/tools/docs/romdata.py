@@ -173,8 +173,19 @@ def tm_label(item):
 
 def parse_move(b):
     """40-byte record of extra/new_move_data.narc (see work/notes/move_data_audit.md)."""
-    return dict(type=b[0], category=b[2], power=b[3], accuracy=b[4], pp=b[5],
-                priority=struct.unpack_from('<b', b, 6)[0])
+    if len(b) != 40:
+        raise ValueError('move record must be 40 bytes')
+    # Byte 19 is signed: the native attribute getter uses LDRSB at 0x0201A3EE.
+    hits = b[7]
+    return dict(type=b[0], quality=b[1], category=b[2], power=b[3], accuracy=b[4], pp=b[5],
+                priority=struct.unpack_from('<b', b, 6)[0],
+                hits=[hits & 15, hits >> 4], condition=struct.unpack_from('<H', b, 8)[0],
+                condition_chance=b[10], condition_kind=b[11], condition_turns=list(b[12:14]),
+                crit_stage=b[14], flinch_chance=b[15], effect=struct.unpack_from('<H', b, 16)[0],
+                drain=struct.unpack_from('<b', b, 18)[0], heal=struct.unpack_from('<b', b, 19)[0], target=b[20],
+                stat_changes=[dict(stat=b[21+i], stages=struct.unpack_from('<b', b, 24+i)[0],
+                                   chance=b[27+i]) for i in range(3) if b[21+i]],
+                flags=struct.unpack_from('<Q', b, 32)[0])
 
 
 def parse_item(b):

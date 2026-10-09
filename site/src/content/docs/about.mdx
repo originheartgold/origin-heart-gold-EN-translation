@@ -3,10 +3,12 @@ title: How to use this guide
 description: What you need to play, what this guide covers, how it was made and how to read it.
 ---
 
+import { referenceCoverage } from '../../lib/data';
 import { existsSync } from 'node:fs';
 import { REPO_URL } from '../../../site.config.mjs';
 
 {/* The PDF is optional in CI (work/tools/site/build_pdf.py); link it only when the build made it. */}
+export const coverageTotals = referenceCoverage.sheets.reduce((sum, sheet) => ({ rows: sum.rows + sheet.rows, included: sum.included + (sheet.statuses.included ?? 0), unresolved: sum.unresolved + (sheet.statuses.unresolved ?? 0) }), {rows: 0, included: 0, unresolved: 0});
 export const hasPdf = existsSync('public/downloads/origin-heartgold-guide.pdf');
 
 This guide covers **Origin HeartGold (起源心金) v4.0.3** played with the English translation patch.
@@ -17,7 +19,7 @@ The game starts in Pallet Town in Kanto. Johto opens up after you become Kanto C
 The English translation is a patch: it turns your own copy of **Pokémon HeartGold Version (USA)** into Origin HeartGold in English.
 No ROMs are provided here, and the patch only works on that exact version.
 
-The easiest way is the [patcher on this site](../patch/): drop in your HeartGold file (the `.nds`, or a `.zip` with it inside) and it checks it, applies the latest patch in your browser and gives you the English game. Nothing is uploaded, and you don't need to download the patch yourself. To do it by hand instead:
+The easiest way is the [patcher on this site](../patch/): drop in your HeartGold file (the `.nds`, or a `.zip` with it inside) and it checks it, applies the patch published with this site in your browser and gives you the English game. Nothing is uploaded, and you don't need to download the patch yourself. To do it by hand instead:
 
 1. Dump your own HeartGold (USA) cartridge to a `.nds` file. The European, Japanese, Korean and Chinese versions won't work, and neither will a file that's already patched or trimmed.
 2. Check the file: its CRC32 must be **C180A0E9**. On Windows, 7-Zip shows it (right-click the file → 7-Zip → CRC SHA → CRC-32). On a Mac, type `crc32 ` in Terminal, drag the file in and press Return; it should print `c180a0e9`. If it doesn't match, the patch will fail or the game will be broken.
@@ -28,7 +30,7 @@ The easiest way is the [patcher on this site](../patch/): drop in your HeartGold
 ## Offline copy
 
 {hasPdf && <p>The quest guide is also available as a <a href="../downloads/origin-heartgold-guide.pdf">PDF</a>, built from the same text.
-The website has more: the Pokédex, every location, items, trainers and move tutors.</p>}
+The website also has Pokémon, locations, items, moves, abilities, TMs/HMs, trainers and tutors, with effects, learning methods and acquisition instructions.</p>}
 
 ## Pick your game once
 
@@ -40,12 +42,22 @@ You can also hide the quests that open only after your **final** Hall of Fame en
 
 ## How it was made
 
-Everything here is based on the game itself: the hack's own event scripts, maps, wild Pokémon tables and trainer data.
-Chinese release notes and community reports helped identify questions to check; the published mechanics were checked against the original v4.0.3 ROM. Most steps were read from the scripts and have not been checked by playing,
+Quest instructions and configured reference data come from the hack's event scripts, maps, encounter tables and trainer records. Reference pages also include attributed author surveys and supplied English workbooks. Chinese release notes and community reports helped identify questions to check; specific mechanics audits used the original v4.0.3 ROM. Most steps were read from the scripts and have not been checked by playing,
 so some still need in-game confirmation, and directions are approximate. Steps checked in an emulator say so; steps that are less certain say "not confirmed in game".
 The Pokédex and item pages retain every named entry in the game data. Audited entries without a normal-play route are labelled **NOT AVAILABLE IN GAME**, with the reason on their detail page. They remain useful references for the save editor and the built-in generator (hold SELECT and press X); support for each entry has not been verified. Other entries with no confirmed source remain uncertain rather than being labelled unavailable. If you try something, please [tell us how it went](../contribute/).
 
 The [mechanics and controls](../mechanics/) page explains the hack’s training and battle changes. [Calendar encounters](../calendar/) are listed separately because they appear only on certain dates.
+
+## Reading the evidence
+
+- **Configured data:** a value, table or script record in the game. A stored source does not prove that every story branch can reach it.
+- **Game description:** what the English game says. Descriptions and NPC promises can disagree with configured data or behavior.
+- **Author note:** an attributed survey or workbook claim. It can describe intent, an older version or an unresolved effect.
+- **Tested in game:** a specific documented gameplay test, with its scope stated. It does not certify every use of that mechanic.
+
+The [source report](../reference-sources/) accounts for all {coverageTotals.rows.toLocaleString('en-US')} supplied workbook rows: {coverageTotals.included.toLocaleString('en-US')} included and {coverageTotals.unresolved.toLocaleString('en-US')} unresolved source comparisons. Included means accounted for, not verified gameplay; some included claims still have unknown access, repeatability or runtime behavior. Detailed comparisons and original source wording stay in the source report. No complete playthrough is claimed.
+
+Use [move details](../moves/), [ability details](../abilities/) and the [TM/HM list](../tms/) for preparation; [item pages](../items/) distinguish acquisition routes from effects and older source notes.
 
 ## Known issues
 
@@ -59,6 +71,7 @@ The translation keeps the hack's behaviour as it is and doesn't fix them.
 - **Chinese patches:** packaged by u/riap0526.
 - **Partial v3 English translation:** u/Shake69, reused with their permission.
 - **Graphics:** some icons and letters come from [hg-engine](https://github.com/BluRosie/hg-engine) and its contributors. See [their credits](https://github.com/BluRosie/hg-engine/blob/main/CREDITS.md).
+- **Website and save-editor Pokémon images:** loaded from the [PokéAPI sprites repository](https://github.com/PokeAPI/sprites). The shared image helper uses HOME artwork with official-artwork fallback; forms without a verified image mapping show the base species and are labelled accordingly. These images are Pokémon artwork, not artwork created by this project.
 - **Patcher:** the [in-browser patcher](../patch/) runs [xdelta3](https://github.com/jmacd/xdelta) by Joshua MacDonald, compiled to WebAssembly by [xdelta-wasm](https://github.com/kotcrab/xdelta-wasm) (Kotcrab), both under the Apache License 2.0, with the [Emscripten](https://emscripten.org) runtime (MIT) and LZMA support from [XZ Utils](https://tukaani.org/xz/) (public domain).
 
 This guide and the English translation are a free, non-commercial fan project and are not affiliated with or endorsed by

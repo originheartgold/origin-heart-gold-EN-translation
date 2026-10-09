@@ -395,7 +395,7 @@ The representatives are listed from east to west, each standing next to their Po
 
 After all eight, the **Champion, Ace Trainer Gus** (near the guide at the east end, with a Flygon) battles you: Magmar, Dragonair, Kingdra, Rampardos Lv. 35 and **Flygon Lv. 45**.
 
-**Reward:** **Lucky Egg**, the title of Southeast League Champion, and two more tutors: the guide teaches **Snarl** and Firebreather Stellan teaches **Flame Wheel** (both free, repeatable). A man standing a few steps south-east of Beauty Cassie can make a Pokémon forget a move at any time.
+**Reward:** **[Lucky Egg](/items/lucky-egg/)**, the title of Southeast League Champion, and two more tutors: the guide teaches **Snarl** and Firebreather Stellan teaches **Flame Wheel** (both free, repeatable). A man standing a few steps south-east of Beauty Cassie can make a Pokémon forget a move at any time.
 
 *Source:* file 201 (scripts 4–11, 22, 23; L1395–L2218, L1844; Champion title flag 2004). Route 13 spans ≈1345–1434, z 362–375. Positions: guide ≈1433,362, healer ≈1345,370, Bob ≈1412,370, Hiker Grady ≈1402,372, Cassie ≈1389,370, Stellan ≈1387,369, Chet ≈1381,370, Zeke ≈1370,373, Eve ≈1358,371, Doug ≈1349,372, Champion Gus ≈1424,368, move forgetter ≈1392,374.
 

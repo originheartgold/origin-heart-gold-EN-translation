@@ -1350,10 +1350,10 @@ These entries can freeze the game, cost you something, or close a quest or battl
 ### Moves that work differently
 
 **A few moves behave differently from the official games.** These may be intended changes by the hack; they are listed so you know what to expect. All tested in an emulator:
-- **Volt Tackle** does no recoil damage (Double-Edge still does).
-- **Blast Burn** doesn't need a recharge turn; you can act again on the next turn (Hyper Beam still needs one). Frenzy Plant, Hydro Cannon and Rock Wrecker use the same move data, but weren't tried.
-- **Lunar Dance** doesn't make the user faint; it raises the user's Speed and Sp. Atk instead.
-- **Bounce** attacks on the turn you choose it; the user doesn't spring up first (Fly still takes two turns). Its description still says two turns.
+- **[Volt Tackle](/moves/volt-tackle/)** does no recoil damage (Double-Edge still does).
+- **[Blast Burn](/moves/blast-burn/)** doesn't need a recharge turn; you can act again on the next turn (Hyper Beam still needs one). Frenzy Plant, Hydro Cannon and Rock Wrecker use the same move data, but weren't tried.
+- **[Lunar Dance](/moves/lunar-dance/)** doesn't make the user faint; it raises the user's Speed and Sp. Atk instead.
+- **[Bounce](/moves/bounce/)** attacks on the turn you choose it; the user doesn't spring up first (Fly still takes two turns). Its description still says two turns.
 
 *Source:* D-1319 (Volt Tackle: recoil effect, recoil value 0), D-1318 (Blast Burn, Hydro Cannon, Frenzy Plant, Rock Wrecker: recharge effect without the recharge flag), D-1311 (Lunar Dance: Sp. Atk/Speed +1 fields). Emulator (`emu_harness.py hackbugs --case move`, both ROMs): a Lv. 100 user against a wild Pokémon; Volt Tackle KO'd a Magikarp with no HP lost (Double-Edge cost 4 HP); after Blast Burn the next command menu came after one Blissey attack, after Hyper Beam after two; Lunar Dance printed "Speed rose" and "Sp. Atk rose" and the user stayed in.
 
@@ -1398,13 +1398,13 @@ These entries can freeze the game, cost you something, or close a quest or battl
 - **Flapple, Appletun and Alcremie:** Applin needs a Tart Apple or Sweet Apple and Milcery a Sweet, and none of these items can be obtained.
 - **Shaymin's Sky Forme:** the Gracidea only works on an event Shaymin, and the Shaymin from the Forest of Time isn't one (tested in an emulator: the Gracidea does nothing to it; on the same Shaymin marked as an event Pokémon it works).
 - **Unown letters:** every wild Unown comes out as A (tested in an emulator: 65 wild Unown, all A).
-- **About 256 later Pokémon** (from Gen 5 on; none from No. 1–493) have stats and moves in the game's data, but no way to catch, receive, evolve or breed them was found. A few may still be obtainable: the Safari Zone's object areas, roaming Pokémon, berry trees and held items weren't checked.
-- **Qualot, Tamato, Salac, Petaya, Apicot and Lansat Berries:** no shop, item ball or gift gives them. Berry trees, wild Pokémon's held items and random gifts (phone calls, Pokéwalker, lottery) weren't checked.
+- **Some later Pokémon and forms** have stats and moves in the game's data but no normal-play route was found by the availability audit. The [Pokédex](/pokemon/) keeps them as references and marks audited unavailable entries with a reason. A missing source on another entry means its availability is still uncertain; it is not proof that it cannot be obtained.
+- **[Apicot Berry](/items/apicot-berry/) and [Lansat Berry](/items/lansat-berry/):** no source was found in the expanded item audit. The older warning also listed Qualot, Tamato, Salac and Petaya, but those have sources: [Qualot](/items/qualot-berry/) and [Tamato](/items/tamato-berry/) are configured Battle Frontier Scratch-Off prizes; [Salac](/items/salac-berry/) and [Petaya](/items/petaya-berry/) can be stolen from Trainers' Pokémon and kept after battle (tested in an emulator). Those routes do not restore the old berry shops.
 - **Grip Claw:** its item ball is never placed on a map, and no shop sells it.
 - **Volcanion:** its April 16 calendar slot at the Lake of Rage never triggers (there's no grass there), and nothing else gives it. Tested in an emulator.
 - **Primal Groudon and Primal Kyogre:** the Red Orb and Blue Orb are key items that summon Groudon, Kyogre and Deoxys. They can't be given to a Pokémon, and even when one is held (save edit) no Primal Reversion happens. Tested in an emulator.
 
-*Source:* D-1339 (TM46 item ball, std 7136 unused), D-1493 (Tart Apple, Sweet Apple, Sweets have no source), D-1490 (Gracidea check arm9 0x02071024 needs the fateful flag), D-1487 (wild Unown form written back at ov2 0x02248AD4), D-1344 (work/notes/docs_crossref.md §4), D-1345 (v4 turned the old berry shop lists 5 and 22 into X-item lists; work/notes/sheet_mismatch_verification.md §4.6), D-1494 (Grip Claw item ball, std script 7223 unused), D-1488 (calendar table arm9 0x020F6A64; Lake of Rage land walk rate 0), D-1571 (Red/Blue Orb have no Give option; no Primal Reversion code).
+*Source:* D-1339 (TM46 item ball, std 7136 unused), D-1493 (Tart Apple, Sweet Apple, Sweets have no source), D-1490 (Gracidea check arm9 0x02071024 needs the fateful flag), D-1487 (wild Unown form written back at ov2 0x02248AD4), work/notes/availability_audit.md (expanded availability review), work/tools/site/items_extra_sources.json (Scratch-Off and Trainer-theft routes), D-1345 (v4 turned the old berry shop lists 5 and 22 into X-item lists; work/notes/sheet_mismatch_verification.md §4.6), D-1494 (Grip Claw item ball, std script 7223 unused), D-1488 (calendar table arm9 0x020F6A64; Lake of Rage land walk rate 0), D-1571 (Red/Blue Orb have no Give option; no Primal Reversion code).
 
 ### Thief in wild battles copies the item
 

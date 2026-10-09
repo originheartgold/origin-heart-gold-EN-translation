@@ -83,7 +83,7 @@ A loss at any stage whites you out. Talk to the receptionist to try again; she r
 **Where:** the composer at the back of the One Island Pokémon Center (straight north from the entrance), and the woman with a Roserade outside, a few steps north of the fountain (about 9 steps north and 6 steps east of the Pokémon Center door).
 
 **How it works:**
-1. The composer wants a title for his piece about the islands. Answer **"Mysterious Girl"** ("City of Water" and "Garden of the Sea" are rejected; retry freely). He gives you a **Miracle Seed**.
+1. The composer wants a title for his piece about the islands. Answer **"Mysterious Girl"** ("City of Water" and "Garden of the Sea" are rejected; retry freely). He gives you a **[Miracle Seed](/items/miracle-seed/)**.
 2. Bring a **Miracle Seed** to the Roserade woman: say Yes to learning her technique, then trade the seed. She gives you **TM86 Grass Knot**.
 **Reward:** Miracle Seed, then TM86 Grass Knot (the only TM86 in the game).
 

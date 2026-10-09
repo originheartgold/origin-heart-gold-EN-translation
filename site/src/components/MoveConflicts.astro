@@ -1,0 +1,16 @@
+---
+import { moveById, moveUrl, url, type Move } from '../lib/data';
+import Evidence from './Evidence.astro';
+const { m } = Astro.props as { m: Move };
+const stale = m.conflicts.some(c => c.kind === 'stale-description');
+const uncertain = m.conflicts.some(c => c.kind === 'unresolved-behavior');
+const showConflict = (stale && !m.testedNotes.length) || (uncertain && !m.testedNotes.length) || m.id === 55 || m.id === 295;
+---
+{m.testedNotes.length > 0 && <aside class="tested-move-notes"><strong>How it works in Origin HeartGold</strong>{m.testedNotes.map(n => <><p>{n.playerSummary}{m.id === 340 && " Its in-game description still says two turns."}</p><p class="small">{n.limitation}</p><details class="reference-provenance"><summary>Battle test details</summary><p><Evidence evidence={n.evidence} /> {n.text}</p><p>{n.evidence.source}</p><a href={url(n.href)}>Full test method and scope</a></details></>)}</aside>}
+{showConflict && <aside class="reference-conflict"><strong>{stale ? 'The in-game description may be wrong' : 'Special effect not confirmed'}</strong>
+{m.id === 55 ? <p>The description belongs to <a href={moveUrl(moveById.get(503))}>Scald</a>. Water Gun has {m.power} power, {m.acc} accuracy and {m.pp} PP; its move data lists no burn chance.</p> : m.id === 295 ? <p>The description belongs to <a href={moveUrl(moveById.get(585))}>Moonblast</a>. Luster Purge's move data lists a 30% chance to lower Sp. Def by one stage.</p> : <>
+{stale && <p>The description below does not match this move's current information.</p>}
+{uncertain && !m.testedNotes.length && <p>The description and move information disagree about its special effect. Its behavior in battle is not confirmed.</p>}
+
+</>}
+</aside>}
