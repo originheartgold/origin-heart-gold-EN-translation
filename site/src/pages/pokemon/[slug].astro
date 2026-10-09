@@ -20,6 +20,8 @@ export function getStaticPaths() {
 }
 const { s } = Astro.props as { s: Species };
 const acquisition = s.otherSources;
+const acquisitionQuestLinks = new Set(s.acquisitions.flatMap(source => source.quests.map(quest => quest.href)));
+const additionalQuests = (s.quests ?? []).filter(quest => !acquisitionQuestLinks.has(quest.href));
 const obtainableForm = s.formChanges.some(f => f.result === s.id && speciesById.get(f.base)?.how);
 const total = s.stats.reduce((a, b) => a + b, 0);
 const ev = s.ev.map((v, i) => (v ? `${v} ${STAT_NAMES[i]}` : '')).filter(Boolean).join(', ') || '—';
@@ -80,7 +82,7 @@ const headings = [
 		<p>These Pokémon appear on specific dates. Check each entry’s availability and any special conditions. <a href={url('/calendar/')}>Calendar rules and caveats</a>.</p>
 		<CalendarEncounters entries={s.calendar} />
 	</>}
-	{(s.quests ?? []).length > 0 && <p>See the quest guide: {(s.quests ?? []).map((q, i) => <>{i > 0 && '; '}<a href={url(q.href)}>{q.title}</a></>)}.</p>}
+	{additionalQuests.length > 0 && <p>See the quest guide: {additionalQuests.map((q, i) => <>{i > 0 && '; '}<a href={url(q.href)}>{q.title}</a></>)}.</p>}
 
 	<h2 id="evolution">Evolution</h2>
 	{s.evoFrom.length === 0 && s.evoTo.length === 0 && <p>Does not evolve.</p>}

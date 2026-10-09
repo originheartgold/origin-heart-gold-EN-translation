@@ -6,11 +6,15 @@ const labels = { gift: 'Gift', egg: 'Gift Egg', trade: 'Trade', loan: 'Loan', 'l
 <ul class="pokemon-acquisitions">
 	{sources.map(source => {
 		const offer = source.offer == null ? null : speciesById.get(source.offer);
+		const starterRequirement = source.conditions.match(/^(.+? starter only\.)\s*(.*)$/);
+		const details = starterRequirement ? starterRequirement[2] : source.conditions;
 		return <li>
 			<strong>{labels[source.kind]}</strong>{source.level != null && ` (Lv. ${source.level})`}: <a href={areaUrl(source.area)}>{source.place}</a>.
 			{offer && <> Give <a href={url(`/pokemon/${offer.slug}/`)}>{offer.name}</a> in exchange.</>}
-			{' '}{source.conditions}
+			{starterRequirement && <p><strong>Requires: {starterRequirement[1]}</strong></p>}
+			<p>{details}
 			{source.quests.map(quest => <> <a href={url(quest.href)} aria-label={`Guide: ${quest.title}`}>Quest guide</a>.</>)}
+			</p>
 		</li>;
 	})}
 </ul>
