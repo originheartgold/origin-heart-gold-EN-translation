@@ -1456,6 +1456,48 @@ class start_at:
             shutil.rmtree(self._dir, ignore_errors=True)
 
 
+def moveset(moves, pp):
+    """Four move slots (the rest emptied) and their PP: encode_pokemon only replaces the slots it is given."""
+    moves, pp = list(moves) + [0] * (4 - len(moves)), list(pp) + [0] * (4 - len(pp))
+    return {"moves": moves, "pp": pp}
+
+
+def pid_copies(h, pid, lo=0x02200000, hi=0x02400000):
+    """Addresses of every RAM copy of a Pokemon with this PID (valid checksum)."""
+    ram = h.read(lo, hi - lo)
+    key = struct.pack("<I", pid)
+    out, i = [], ram.find(key)
+    while i >= 0:
+        if i % 4 == 0 and decode_pokemon(ram[i:i + 136])["checksum_ok"]:
+            out.append(lo + i)
+        i = ram.find(key, i + 1)
+    return out
+
+
+def wild_battle(h, species, level, item=None, moves=None, pp=None, form=None):
+    """Start a scripted WildBattle and, right after the wild finalizer, give the wild Pokemon an item / moves /
+    form in every RAM copy (the battle copies the BattleSetup party ~130 frames later, so the edit holds).
+    Returns {pid, copies edited, finalizer row}. (Moved from emu_open.py on 2026-10-09; emu_fixes uses it.)"""
+    log = WildLog(h)
+    h.run_script(program=script_bytes(("LockAll",), ("WildBattle", species, level, 0), ("ReleaseAll",),
+                                      ("End",)))
+    if not h.run_until(lambda h: log.rows, 900):
+        raise RuntimeError("no wild Pokemon built")
+    row = log.rows[0]
+    fields = {k: v for k, v in (("item", item), ("form", form)) if v is not None}
+    if moves is not None:
+        fields.update(moveset(moves, pp or [30] * len(moves)))
+    cps = pid_copies(h, row["pid"])
+    if fields:
+        for a in cps:
+            h.write(a, encode_pokemon(h.read(a, 136), **fields))
+    for addr in (WILD_FINALIZE, WILD_FINALIZE_SETFORM, WILD_FINALIZE_AFTER_SET, WILD_FINALIZE_RESTORE,
+                 WILD_FINALIZE_END):
+        h.on_exec(addr, None)
+    return {"pid": row["pid"], "copies": [hex(a) for a in cps], "finalizer": {k: row[k] for k in
+            ("species", "form", "item")}}
+
+
 def cmd_wild(a):
     """Teleport through the battery save, walk back and forth until --count wild Pokemon were built, log
     each one (species, form; for Unown the letter the game picked), flee every battle. 'unown' is this
@@ -2341,70 +2383,8 @@ def _check_dex(rom, out, last=30):
                                               "errors": r["errors"], "baseline": str(base)}
 
 
-def _check_skitty(rom, out):
-    """D-0582: the Route 8 Skitty scene (cries, sprite, trainer 277's party, bank 0331 text); emu_skitty.py."""
-    import emu_skitty
-    return emu_skitty.suite_check(rom, out)
-
-
-def _check_guide0107(rom, out):
-    """Guide chapters 01-07: the cheap deterministic emu_guide0107 cases keep their observed verdicts."""
-    import emu_guide0107
-    return emu_guide0107.suite_check(rom, out)
-
-
-def _check_guide0813(rom, out):
-    """Guide chapters 08-13 and known issues: the cheap deterministic emu_guide0813 cases keep their verdicts."""
-    import emu_guide0813
-    return emu_guide0813.suite_check(rom, out)
-
-
-def _check_hackbugs(rom, out):
-    """Open hack-finding records: the cheap deterministic emu_hackbugs cases keep their observed verdicts."""
-    import emu_hackbugs
-    return emu_hackbugs.suite_check(rom, out)
-
-
-def _check_calendar(rom, out):
-    """Calendar hook (arm9 0x0203AD24, table 0x020F6A64): the buffer the loader builds on each entry's date and
-    on the day before (emu_calendar.py, `table` case)."""
-    import emu_calendar
-    return emu_calendar.suite_check(rom, out)
-
-
-def _check_verify(rom, out):
-    """Verify-in-game records: placeholders never printed, Cerulean Gym statue branches, the Rocket-costume
-    nurse line (emu_verify.py SUITE_EXPECT)."""
-    import emu_verify
-    return emu_verify.suite_check(rom, out)
-
-
-def _check_sweeps(rom, out):
-    """Text sweeps (emu_sweeps.py SUITE_SUBSETS): trainer intros, bag/summary descriptions, battle pages read
-    back with the game font; EN rows keep their status, CN rows are captured."""
-    import emu_sweeps
-    return emu_sweeps.suite_check(rom, out)
-
-
-def _check_open(rom, out):
-    """Open behaviour points (emu_open.py SUITE_EXPECT): Arceus's in-battle type follows the Plate, a wild
-    Thief steal is kept, Rockruff evolving after a battle by day is Midday, a held Red Orb does nothing."""
-    import emu_open
-    return emu_open.suite_check(rom, out)
-
-
-def _check_vqueue(rom, out):
-    """Verify-queue cases (emu_vqueue.py SUITE_EXPECT): Cut without HM01, the new S.S. Anne captain's HM01, the
-    author's notice unreachable, B on the rematch menu exits, Tangela's Celadon Gym reaction."""
-    import emu_vqueue
-    return emu_vqueue.suite_check(rom, out)
-
-
 SUITE_CHECKS = {"unown": _check_unown, "palpark": _check_palpark, "arceus": _check_arceus,
-                "evolve": _check_evolve, "dex": _check_dex, "skitty": _check_skitty, "guide0107": _check_guide0107,
-                "guide0813": _check_guide0813, "calendar": _check_calendar, "hackbugs": _check_hackbugs,
-                "verify": _check_verify, "sweeps": _check_sweeps, "open": _check_open,
-                "vqueue": _check_vqueue}
+                "evolve": _check_evolve, "dex": _check_dex}
 
 
 def cmd_suite(a):
@@ -2438,51 +2418,6 @@ def cmd_suite(a):
     print(json.dumps({"pass": report["pass"], "seconds": report["seconds"],
                       "report": str(out / "suite_report.json")}))
     return 0 if report["pass"] else 1
-
-
-def _cmd_skitty(a):
-    import emu_skitty
-    return emu_skitty.cmd_skitty(a)
-
-
-def _cmd_guide0107(a):
-    import emu_guide0107
-    return emu_guide0107.cmd(a)
-
-
-def _cmd_guide0813(a):
-    import emu_guide0813
-    return emu_guide0813.cmd(a)
-
-
-def _cmd_hackbugs(a):
-    import emu_hackbugs
-    return emu_hackbugs.cmd(a)
-
-
-def _cmd_verify(a):
-    import emu_verify
-    return emu_verify.cmd(a)
-
-
-def _cmd_sweeps(a):
-    import emu_sweeps
-    return emu_sweeps.cmd(a)
-
-
-def _cmd_calendar(a):
-    import emu_calendar
-    return emu_calendar.cmd(a)
-
-
-def _cmd_open(a):
-    import emu_open
-    return emu_open.cmd(a)
-
-
-def _cmd_vqueue(a):
-    import emu_vqueue
-    return emu_vqueue.cmd(a)
 
 
 def cmd_dexcapture(a):
@@ -2582,59 +2517,6 @@ def main(argv=None):
     su.add_argument("--out", default=str(DEF_OUT))
     su.add_argument("--jobs", type=int, default=4, help="checks run in parallel (each starts its own emulators; "
                     "live emulators are capped by EMU_HARNESS_MAX_EMULATORS, default 6)")
-    sk = sub.add_parser("skitty", help="D-0582: Route 8 Skitty scene on CN and EN (cries, sprite, trainer, text)")
-    sk.add_argument("--rom-cn", default=str(DEF_ROM_CN))
-    sk.add_argument("--rom-en", default=str(DEF_ROM_EN))
-    sk.add_argument("--out", default=str(DEF_OUT))
-    sk.add_argument("--rom", help=argparse.SUPPRESS)
-    sk.add_argument("--part", choices=("a", "b"), help=argparse.SUPPRESS)
-    for gname, mod, chap in (("guide0107", "emu_guide0107.py", "01-07"),
-                             ("guide0813", "emu_guide0813.py", "08-13 and known issues"),
-                             ("hackbugs", "emu_hackbugs.py", None), ("verify", "emu_verify.py", None),
-                             ("vqueue", "emu_vqueue.py", None)):
-        g7 = sub.add_parser(gname, help=f"checks for the hedged claims in guide chapters {chap} ({mod})" if chap
-                            else "the triage's verify queue (bucket D) of the register (emu_vqueue.py)" if gname == "vqueue"
-                            else f"checks for the open {'verify-in-game' if gname == 'verify' else 'hack-finding'}"
-                            f" records of the register ({mod})")
-        g7.add_argument("--case", default="all", help=f"comma list of case names (see {mod})")
-        g7.add_argument("--lang", choices=("cn", "en", "both"), default="cn")
-        g7.add_argument("--rom-cn", default=str(DEF_ROM_CN))
-        g7.add_argument("--rom-en", default=str(DEF_ROM_EN))
-        g7.add_argument("--out", default=str(DEF_OUT))
-        g7.add_argument("--jobs", type=int, default=4)
-        g7.add_argument("--rom", help=argparse.SUPPRESS)
-        g7.add_argument("--child", help=argparse.SUPPRESS)
-    op = sub.add_parser("open", help="open behaviour points: Arceus in-battle type, wild Thief, Rockruff after a "
-                        "battle, Primal orbs, Pal Park prize (emu_open.py)")
-    op.add_argument("--case", default="all", help="comma list of case[:variant+variant] (see emu_open.py)")
-    op.add_argument("--lang", choices=("cn", "en", "both"), default="cn")
-    op.add_argument("--rom-cn", default=str(DEF_ROM_CN))
-    op.add_argument("--rom-en", default=str(DEF_ROM_EN))
-    op.add_argument("--out", default=str(DEF_OUT))
-    op.add_argument("--jobs", type=int, default=4)
-    op.add_argument("--rom", help=argparse.SUPPRESS)
-    op.add_argument("--child", help=argparse.SUPPRESS)
-    ca = sub.add_parser("calendar", help="calendar encounter hook: loaded table, forced-slot battles (emu_calendar.py)")
-    ca.add_argument("--case", default="all", help="comma list of: table, battle, volcanion, stale")
-    ca.add_argument("--battles", help="comma list of entry:period battle variants (default: emu_calendar.BATTLES)")
-    ca.add_argument("--lang", choices=("cn", "en", "both"), default="cn")
-    ca.add_argument("--rom-cn", default=str(DEF_ROM_CN))
-    ca.add_argument("--rom-en", default=str(DEF_ROM_EN))
-    ca.add_argument("--out", default=str(DEF_OUT))
-    ca.add_argument("--jobs", type=int, default=4)
-    ca.add_argument("--rom", help=argparse.SUPPRESS)
-    ca.add_argument("--child", help=argparse.SUPPRESS)
-    sw = sub.add_parser("sweeps", help="text sweeps: capture, read back with the game font, compare (emu_sweeps.py)")
-    sw.add_argument("--sweep", required=True, help="trainers, battle or desc")
-    sw.add_argument("--ids", help="subset, e.g. 1-200,305 (trainer ids / item ids / scenario numbers)")
-    sw.add_argument("--lang", choices=("cn", "en", "both"), default="both")
-    sw.add_argument("--rom-cn", default=str(DEF_ROM_CN))
-    sw.add_argument("--rom-en", default=str(DEF_ROM_EN))
-    sw.add_argument("--out", default=str(DEF_OUT))
-    sw.add_argument("--jobs", type=int, default=6)
-    sw.add_argument("--rom", help=argparse.SUPPRESS)
-    sw.add_argument("--child", help=argparse.SUPPRESS)
-    sw.add_argument("--rejudge", action="store_true", help="judge the saved EN screenshots again (no emulator)")
     dc = sub.add_parser("dexcapture", help=argparse.SUPPRESS)
     dc.add_argument("--rom", default=str(DEF_ROM_CN))
     dc.add_argument("--out", default=str(DEF_OUT))
@@ -2680,9 +2562,7 @@ def main(argv=None):
     if a.emulator:
         os.environ["EMU_HARNESS_EMULATOR"] = a.emulator
     return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages, "suite": cmd_suite,
-            "dexcapture": cmd_dexcapture, "skitty": _cmd_skitty, "guide0107": _cmd_guide0107,
-            "guide0813": _cmd_guide0813, "calendar": _cmd_calendar, "hackbugs": _cmd_hackbugs,
-            "verify": _cmd_verify, "sweeps": _cmd_sweeps, "open": _cmd_open, "vqueue": _cmd_vqueue,
+            "dexcapture": cmd_dexcapture,
             "texture-bounds": emu_texture_bounds.run, "reflection": emu_reflection.run, "hang": emu_hang.run,
             "fixes": emu_fixes.run, "fixes-child": emu_fixes.cmd_child, "cleanup": cmd_cleanup}[a.cmd](a)
 

@@ -529,8 +529,7 @@ def observe_textspeed(h):
 def observe_battle(h):
     """A scripted wild battle (Shuckle Lv5), FIGHT: the move buttons with their type icons."""
     import emu_harness as E
-    import emu_open
-    emu_open.wild_battle(h, 213, 5)
+    E.wild_battle(h, 213, 5)
     if not h.wait_screen("battle_menu", 2400):
         return {"error": "the battle command menu never appeared"}
     h.touch(*E.BATTLE_BUTTONS["fight"], frames=10, after=90)

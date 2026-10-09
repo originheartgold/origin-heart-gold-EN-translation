@@ -24,18 +24,12 @@ of the main checkout (also when run from an agent worktree).
     .venv/bin/python work/tools/emu_harness.py thief [--case air_balloon,...]            # Tier 4
     .venv/bin/python work/tools/emu_harness.py messages [--refs "457#123 48#20"]         # lines in the window, CN|EN
     .venv/bin/python work/tools/emu_harness.py drive --lang en gen:25,30 t43,73/120 s:party   # op language
-    .venv/bin/python work/tools/emu_harness.py skitty                                    # D-0582: Route 8 scene, CN|EN
-    .venv/bin/python work/tools/emu_harness.py guide0107 [--case pikachu,corner_kid,...] [--lang cn|en|both]  # guide 01-07
-    .venv/bin/python work/tools/emu_harness.py guide0813 [--case ribbon,magcargo,...] [--lang cn|en|both]   # guide 08-13, known issues
-    .venv/bin/python work/tools/emu_harness.py calendar [--case table,battle,volcanion,stale] [--lang cn|en|both]   # calendar hook
-    .venv/bin/python work/tools/emu_harness.py hackbugs [--case tutor,coins,...] [--lang cn|en|both]   # open hack-finding records
-    .venv/bin/python work/tools/emu_harness.py verify [--case bigtext,never,...] [--lang cn|en|both]   # open verify-in-game records
-    .venv/bin/python work/tools/emu_harness.py sweeps --sweep trainers|desc|battle [--ids ...] [--lang cn|en|both] [--jobs 6] [--rejudge]   # text read-back, see 12
-    .venv/bin/python work/tools/emu_harness.py open [--case arceus,thief,rockruff,primal,palpark[:variant+...]] [--lang cn|en|both]   # open points, see 13
-    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex,skitty,guide0107,guide0813,calendar,hackbugs,verify,sweeps,open] [--jobs 4]
+    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex] [--jobs 4]
     .venv/bin/python work/tools/emu_harness.py fixes --rom EN.nds --controls DIR --build-controls [--case all]   # one scenario per fix, see 'Fix scenarios'
     .venv/bin/python work/tools/emu_harness.py cleanup [--kill [--all]]                   # leftover harness processes
     python3 -m unittest discover -s work/tools -p test_emu_harness.py      # pure parts, no ROM needed
+
+**Removed recipes (2026-10-09 cleanup).** The one-off verification recipes `skitty`, `guide0107`, `guide0813`, `calendar`, `hackbugs`, `verify`, `vqueue`, `sweeps` and `open` (modules `emu_skitty`, `emu_guide0107`, `emu_guide0813`, `emu_calendar`, `emu_hackbugs`, `emu_verify`, `emu_vqueue`, `emu_sweeps`, `emu_text`, `emu_open`) were removed after the 2026-10-06 verification programme. Sections 6-14 below, the guide's "Observed" lines and the register still cite their commands (`emu_harness.py <recipe> --case X`) as the record of those runs; `git log --diff-filter=D -- work/tools/emu_open.py` finds the code. `wild_battle`, `moveset` and `pid_copies` moved into `emu_harness.py` (the fix scenarios use `wild_battle`).
 
 **Second backend: melonDS 1.1** (`--emulator melonds` before the subcommand, or `Harness(..., emulator="melonds")`).
 It emulates the ARM9 protection unit, so NULL reads that DeSmuME tolerates freeze the game as on hardware (Rocket HQ,
@@ -425,14 +419,14 @@ from ordinary message commands in their scripts). The WIP build predates later b
 | arceus | 16 Plates through Bag → Give | the 16 forms | 1.7 min |
 | evolve | Petilil day + Sun Stone, Petilil night, Rockruff 12/18/22 h | 548/1 → 549/1; no evolution; 0/2/1 | 2.2 min |
 | dex | Pokédex entry panels 1–30, number read back | pixel-identical to the approved baseline (`baselines/dex_<rom>/`; created on the first run) | 20 s |
-| skitty | Route 8 Skitty scene (D-0582, `emu_skitty.py`), see below | cries, sprite 761 = Skitty, trainer 277 leads Skitty form 0, all 18 lines shown, EN text says Skitty | 1.1 min |
-| guide0107 | 9 guide-claim cases (`emu_guide0107.py`: pikachu, electrode, misty_date, azure_flute, koga, giovanni, sabrina, kecleon, promo_flag), see 7 | each keeps its observed verdict (`SUITE_EXPECT`); promo_flag writes the Pokédex seen bit of No. 1335 and doesn't repeat | about 4 min |
-| guide0813 | 12 guide-claim cases (`emu_guide0813.py`: ribbon (Arthur + control), magcargo, white_flute, radio_quiz, fortune, sprout, kiln, whirl, bugsy, dance, morty, blackthorn), see 8 | each keeps its observed verdict (`SUITE_EXPECT`) | about 5 min |
-| calendar | calendar hook table (`emu_calendar.py`, case `table`), see 9 | for all 8 entries: the loaded buffer equals the ROM record the day before and record + configured slot-11 word(s) on the date | 2.5 min |
-| hackbugs | 22 hack-finding cases (`emu_hackbugs.py`, `SUITE_EXPECT`), see 10 | each keeps its observed verdict | about 6 min |
-| verify | placeholders never printed, Gym statue branches, costume nurse (`emu_verify.py`), see 11 | never_printed / confirmed / confirmed | about 1 min |
-| sweeps | text read-back subsets (`emu_sweeps.py SUITE_SUBSETS`), see 12: 6 trainer intros, 6 bag + 4 move + 4 ability descriptions, 2 battles | EN rows `ok` (item 4 `past_panel`), CN rows captured | about 2 min |
-| open | open points (`emu_open.py SUITE_EXPECT`), see 13: Arceus flame/zap, wild Thief (Miltank), Rockruff 12:00/18:00 after a battle, Groudon + Red Orb | plate_type ×2, kept, midday/dusk, no_reversion | about 3 min |
+| skitty (removed 2026-10-09) | Route 8 Skitty scene (D-0582, `emu_skitty.py`), see below | cries, sprite 761 = Skitty, trainer 277 leads Skitty form 0, all 18 lines shown, EN text says Skitty | 1.1 min |
+| guide0107 (removed 2026-10-09) | 9 guide-claim cases (`emu_guide0107.py`: pikachu, electrode, misty_date, azure_flute, koga, giovanni, sabrina, kecleon, promo_flag), see 7 | each keeps its observed verdict (`SUITE_EXPECT`); promo_flag writes the Pokédex seen bit of No. 1335 and doesn't repeat | about 4 min |
+| guide0813 (removed 2026-10-09) | 12 guide-claim cases (`emu_guide0813.py`: ribbon (Arthur + control), magcargo, white_flute, radio_quiz, fortune, sprout, kiln, whirl, bugsy, dance, morty, blackthorn), see 8 | each keeps its observed verdict (`SUITE_EXPECT`) | about 5 min |
+| calendar (removed 2026-10-09) | calendar hook table (`emu_calendar.py`, case `table`), see 9 | for all 8 entries: the loaded buffer equals the ROM record the day before and record + configured slot-11 word(s) on the date | 2.5 min |
+| hackbugs (removed 2026-10-09) | 22 hack-finding cases (`emu_hackbugs.py`, `SUITE_EXPECT`), see 10 | each keeps its observed verdict | about 6 min |
+| verify (removed 2026-10-09) | placeholders never printed, Gym statue branches, costume nurse (`emu_verify.py`), see 11 | never_printed / confirmed / confirmed | about 1 min |
+| sweeps (removed 2026-10-09) | text read-back subsets (`emu_sweeps.py SUITE_SUBSETS`), see 12: 6 trainer intros, 6 bag + 4 move + 4 ability descriptions, 2 battles | EN rows `ok` (item 4 `past_panel`), CN rows captured | about 2 min |
+| open (removed 2026-10-09) | open points (`emu_open.py SUITE_EXPECT`), see 13: Arceus flame/zap, wild Thief (Miltank), Rockruff 12:00/18:00 after a battle, Groudon + Red Orb | plate_type ×2, kept, midday/dusk, no_reversion | about 3 min |
 
   Result (observed): all 10 (5 checks × 2 ROMs) pass, 2 min 13 s wall time with `--jobs 10`. A first run
   before the battery fix failed unown (both ROMs) and palpark (English) on the shared battery file, and one
@@ -443,7 +437,7 @@ from ordinary message commands in their scripts). The WIP build predates later b
   With `calendar` added (2026-10-06): all 18 pass, 6 min 1 s with `--jobs 18`.
   With `hackbugs` added (2026-10-06): all 20 pass, 9 min 54 s with `--jobs 20`.
 
-### 6. Route 8 Skitty scene (D-0582): observed, the fix holds
+### 6. Route 8 Skitty scene (D-0582): observed, the fix holds (recipe removed 2026-10-09; record of the run)
 
 `emu_harness.py skitty` (module `work/tools/emu_skitty.py`) runs the real scene of script file 188 (bank
 a027/0331) on both ROMs in two emulator runs each:
@@ -473,7 +467,7 @@ Girafarig. The battle shows 向尾喵 / "Skitty". All 18 lines that name the Ski
 #8, #17, #18, #19, #21, #24, #26, #31, #33–#35, #37, #38, #48) were printed by the scene and fit;
 the English says Skitty with Skitty-style cries. CN|EN pairs: `work/build/harness/skitty/`.
 
-### 7. Guide chapters 01–07: the hedged claims (`emu_guide0107.py`, 2026-10-06)
+### 7. Guide chapters 01–07: the hedged claims (`emu_guide0107.py`, 2026-10-06) (recipe removed 2026-10-09; record of the run)
 
 `emu_harness.py guide0107` runs one recipe per claim that guide chapters 01–07 marked "not confirmed in game"
 (or "probably" about behaviour). Each recipe sets the state the guide's *Source:* line names (flags, vars,
@@ -524,7 +518,7 @@ New harness pieces (in `emu_guide0107.py`, reusable):
 - `SCREENS_KNOWN["battle_menu"]` now samples INFO at (244, 203): the English build's INFO label covers the old
   sample since the 2026-10-05 label fix, so English battle recipes never saw the command menu.
 
-### 8. Guide chapters 08–13 and known issues (`emu_guide0813.py`, 2026-10-06)
+### 8. Guide chapters 08–13 and known issues (`emu_guide0813.py`, 2026-10-06) (recipe removed 2026-10-09; record of the run)
 
 `emu_harness.py guide0813` runs one recipe per claim that guide chapters 08–13 and `known-issues.md` marked
 "not confirmed in game" (or "probably"/"may" about behaviour), skipping what section 7 already covered. Same
@@ -578,7 +572,7 @@ Suite (`SUITE_EXPECT`, 12 cases; ribbon runs Arthur and his control only): ribbo
 radio_quiz keep `contradicted`; fortune, sprout, kiln, whirl, bugsy, dance, morty, blackthorn keep `confirmed`.
 With `guide0813` added (2026-10-06): all 16 checks pass, 5 min 17 s with `--jobs 16`.
 
-### 9. Calendar encounters (`emu_calendar.py`, 2026-10-06)
+### 9. Calendar encounters (`emu_calendar.py`, 2026-10-06) (recipe removed 2026-10-09; record of the run)
 
 `emu_harness.py calendar` replays the calendar hook found statically in
 `chinese_source_rom_verify_calendar.md` (loader arm9 0x0203AD24, table 0x020F6A64, slot-11 words at buffer
@@ -629,7 +623,7 @@ build (Oct 5) with the same results. Report: `work/build/harness/calendar/report
   on a battle it can't flee.
 - Harness fix found here: `MapGrid` read outdoor permissions from the wrong offset (see 1b).
 
-### 10. Open hack-finding records (`emu_hackbugs.py`, 2026-10-06)
+### 10. Open hack-finding records (`emu_hackbugs.py`, 2026-10-06) (recipe removed 2026-10-09; record of the run)
 
 `emu_harness.py hackbugs` observes the open hack-finding records of the decision register that make a claim
 about behaviour (scripts, code, data), skipping those already observed (sections 7–9, D-1485/D-1486/D-1487/
@@ -698,7 +692,7 @@ first move. The battle RNG is not reproducible between runs: in one CN run Blast
 KO'd the Blissey with a critical hit (the judge then says 'unclear' for D-1318), so `move` is not in the suite;
 the D-1318 reading comes from the runs where the turn ended at the command menu (CN once, EN twice).
 
-### 11. Open verify-in-game records (`emu_verify.py`, 2026-10-06)
+### 11. Open verify-in-game records (`emu_verify.py`, 2026-10-06) (recipe removed 2026-10-09; record of the run)
 
 `emu_harness.py verify [--case bigtext,never,statue:badge+misty,...] [--lang cn|en|both]` reaches the screen or
 scene line that a translator's "check in game" record names, on the Chinese ROM and the English build, and
@@ -749,7 +743,7 @@ New pieces:
 
 Suite: `verify` (SUITE_EXPECT: never → never_printed, statue and nurse → confirmed).
 
-### 12. Text sweeps: read back what the screen shows (`emu_text.py`, `emu_sweeps.py`, item 5, 2026-10-06)
+### 12. Text sweeps: read back what the screen shows (`emu_text.py`, `emu_sweeps.py`, item 5, 2026-10-06) (recipe removed 2026-10-09; record of the run)
 
 `emu_text.py` decodes a text window from a screenshot with the ROM's own font: the game prints 2bpp glyphs
 from `a/0/1/6` at a fixed origin, one 16-px row per line, advancing by the width table, so the window's ink
@@ -834,7 +828,7 @@ goes through `spawn()`:
 Full suite after these changes (2026-10-06, `suite --jobs 4`, 12 checks × 2 ROMs, build CRC32 588D0B73): all 24
 pass in 19 min 55 s; no emu_harness process left afterwards.
 
-### 13. Open points: Arceus in battle, wild Thief, Rockruff after a battle, Primal orbs, Pal Park prize (`emu_open.py`, item 6, 2026-10-06)
+### 13. Open points: Arceus in battle, wild Thief, Rockruff after a battle, Primal orbs, Pal Park prize (`emu_open.py`, item 6, 2026-10-06) (recipe removed 2026-10-09; record of the run)
 
 `emu_harness.py open [--case arceus,thief,rockruff,primal,palpark[:variant+...]] [--lang cn|en|both]` (module
 `work/tools/emu_open.py`, one child per case/variant/ROM, `--jobs 4`). Every case ran on the Chinese ROM and the English
@@ -869,7 +863,7 @@ Suite (`SUITE_EXPECT`): arceus flame/zap `plate_type`, thief miltank `kept`, roc
 groudon_own `no_reversion` (palpark is too slow for the suite: 6–10 min per run). Full suite with `open` added
 (2026-10-06, `suite --jobs 4`, 13 checks × 2 ROMs): all 26 pass in 22 min 6 s; `open` about 2 min per ROM.
 
-### 14. The verify queue of the 2026-10-06 triage (`emu_vqueue.py`, 2026-10-06)
+### 14. The verify queue of the 2026-10-06 triage (`emu_vqueue.py`, 2026-10-06) (recipe removed 2026-10-09; record of the run)
 
 `emu_harness.py vqueue [--case ssanne_story,new_captain,...[:variant+...]] [--lang cn|en|both] [--jobs 4]` (module
 `work/tools/emu_vqueue.py`) answers the open records of the triage's verify bucket (D). One child per case, variant
