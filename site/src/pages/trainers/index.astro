@@ -3,8 +3,9 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import TrainerCard from '../../components/TrainerCard.astro';
 import { trainerById, url } from '../../lib/data';
 import sections from '../../data/trainer_guide.json';
+import { trainerProfiles } from '../../lib/trainer-profiles';
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '');
-const headings = sections.map((section) => ({ depth: 2, slug: slug(section.title), text: section.title }));
+const headings = [{ depth: 2, slug: 'all-trainers', text: 'All trainers' }, ...sections.map((section) => ({ depth: 2, slug: slug(section.title), text: section.title }))];
 ---
 <StarlightPage frontmatter={{ title: 'Trainers', description: 'Gym challenges in guide order, plus rival, League, Rocket and partner teams in Origin HeartGold.' }} headings={headings}>
 	<p>Gym challenges follow the quest guide through Kanto, then Johto. This is a reading order, not a strict list of prerequisites.
@@ -12,8 +13,20 @@ const headings = sections.map((section) => ({ depth: 2, slug: slug(section.title
 	<p>Battle conditions may also depend on story progress;
 	see the <a href={url('/guide/')}>quest guide</a> for story prerequisites. Ordinary trainers appear on their{' '}<a href={url('/locations/')}>location pages</a>. Featured records without an identified encounter are marked below.</p>
 	<nav aria-label="Trainer sections"><ul class="loc-list">
+		<li><a href="#all-trainers">All trainers</a></li>
 		{sections.map((section) => <li><a href={`#${slug(section.title)}`}>{section.title}</a></li>)}
 	</ul></nav>
+	<h2 id="all-trainers">All trainers</h2>
+	<p>Search by trainer, class or location. Each trainer’s page collects their teams and encounters, including appearances under a different class. Unrelated trainers with the same name have separate entries.</p>
+	<div class="table-filter" data-table="trainer-directory"><input type="search" placeholder="Search trainers or locations…" aria-label="Search trainers or locations" /><span class="filter-count" aria-live="polite"></span></div>
+	<table id="trainer-directory" class="compact sortable">
+		<thead><tr><th>Trainer</th><th>Teams</th><th>Locations</th></tr></thead>
+		<tbody>{trainerProfiles.map(profile => <tr>
+			<td><a href={url(`/trainers/records/${profile.id}/`)}>{profile.label}</a><span class="small ability-summary">{[...new Set(profile.teams.map(t => t.cls).filter(Boolean))].join(' · ')}</span></td>
+			<td>{profile.teams.length}</td>
+			<td>{[...new Set(profile.encounters.map(e => e.place.map).filter(Boolean))].join(' · ') || 'Encounter unconfirmed'}</td>
+		</tr>)}</tbody>
+	</table>
 	<span id="gym-leaders"></span>
 	{sections.map((section) => <>
 		<h2 id={slug(section.title)}>{section.title}</h2>

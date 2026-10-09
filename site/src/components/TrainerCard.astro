@@ -5,7 +5,7 @@ import { areaUrl, itemById, itemUrl, moveById, moveUrl, url } from '../lib/data'
 import Mon from './Mon.astro';
 import AbilityLink from './AbilityLink.astro';
 // `area`: on a location page, list only the battles in that area (all of them if none match).
-const { t, showPlaces = false, area, note, expanded = false } = Astro.props as { t: Trainer; showPlaces?: boolean; area?: string; note?: string; expanded?: boolean };
+const { t, showPlaces = false, area, note, expanded = false, showProfileLink = true } = Astro.props as { t: Trainer; showPlaces?: boolean; area?: string; note?: string; expanded?: boolean; showProfileLink?: boolean };
 // One line per distinct battle: place, format and (when a scene picks between teams) the condition in words.
 const here = area ? t.places.filter((p) => p.area === area) : [];
 const battles = [...new Map((here.length ? here : t.places).map((p) => [`${p.map}|${p.how}|${p.conds.join('|')}`, p])).values()];
@@ -62,5 +62,5 @@ const inactive = battles.length > 0 && battles.every((p) => p.conds.length > 0 &
 	<p class="small muted">IVs show HP separately when it differs; “others” means each of the other five stats.
 		{!showEvs && ' No EV investment.'} “Generated” means the nature can vary.</p>
 
-	<p class="small"><a href={url(`/trainers/records/${t.id}/`)}>View full team</a></p>
+	{showProfileLink && <p class="small"><a href={url(`/trainers/records/${t.id}/#trainer-${t.id}`)}>View all encounters and teams</a></p>}
 </details>

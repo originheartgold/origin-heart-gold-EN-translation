@@ -4,6 +4,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { referenceArtwork, artworkUrl, fallbackArtworkUrl } from '../../work/save-editor/src/ui/artwork.ts';
 import { buildBattleIndexes } from '../src/lib/battle-indexes.mjs';
 import { playerMoveChanges } from '../src/lib/reference-format.mjs';
+import { buildTrainerProfiles } from '../src/lib/trainer-encounters.mjs';
 const json = name => JSON.parse(readFileSync(new URL(`../src/data/${name}.json`, import.meta.url), 'utf8'));
 const species = json('species'), moves = json('moves'), abilities = json('abilities'), tms = json('tms'), items = json('items');
 const dist = new URL('../dist/', import.meta.url);
@@ -106,10 +107,13 @@ test('Sharpness keeps supported and possible move lists distinct', {skip: !built
 test('every stored equipment reference resolves to its exact trainer detail', {skip: !built}, () => {
   const trainers = json('trainers');
   const byId = new Map(trainers.map(t => [t.id,t]));
+  const { byId: profiles } = buildTrainerProfiles(trainers);
   for (const t of trainers) {
     const html = read(`trainers/records/${t.id}`);
     assert.ok(html.includes(`id="trainer-${t.id}"`), `trainer ${t.id}`);
-    assert.ok(html.includes('Check the battle locations'));
+    assert.ok(html.includes('Encounters and locations'));
+    const rendered = [...html.matchAll(/<details class="trainer"[^>]*id="trainer-(\d+)"/g)].map(m => Number(m[1])).sort((a, b) => a - b);
+    assert.deepEqual(rendered, profiles.get(t.id).teams.map(team => team.id).sort((a, b) => a - b), `complete profile for trainer ${t.id}`);
     assert.ok(!html.includes('Stored party and script references'));
     if (!t.places.length) assert.ok(html.includes('No battle location is known'));
   }

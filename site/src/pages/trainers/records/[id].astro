@@ -1,13 +1,36 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import TrainerCard from '../../../components/TrainerCard.astro';
+import TrainerEncounters from '../../../components/TrainerEncounters.astro';
 import { trainers, url, type Trainer } from '../../../lib/data';
+import { trainerProfileById } from '../../../lib/trainer-profiles';
+import { teamLevelRange } from '../../../lib/trainer-encounters.mjs';
 export function getStaticPaths() { return trainers.map(t => ({params: {id: String(t.id)}, props: {t}})); }
 const { t } = Astro.props as {t: Trainer};
-const label = `${t.cls} ${t.name}`.trim() || 'Unnamed trainer';
+const profile = trainerProfileById.get(t.id)!;
+const headings = [
+  { depth: 2, slug: 'encounters', text: 'Encounters and locations' },
+  { depth: 2, slug: 'teams', text: 'Full teams' },
+  ...(profile.inactive.length || profile.unconfirmed.length ? [{ depth: 2, slug: 'other-teams', text: 'Inactive and unconfirmed encounters' }] : []),
+];
 ---
-<StarlightPage frontmatter={{ title: label, description: `Trainer team in Origin HeartGold: Pokémon, moves, abilities, held items and battle locations.`, tableOfContents: false }}>
-<p>Check the battle locations and conditions below to prepare for this encounter. A trainer’s held items are not necessarily obtainable; item pages list how to get them.</p>
-<TrainerCard t={t} showPlaces expanded />
-<p><a href={url('/trainers/')}>Browse featured trainers in guide order</a></p>
+<StarlightPage frontmatter={{ title: profile.label, description: `${profile.label}'s encounters in Origin HeartGold: every documented team, battle location, rematch and partner appearance.` }} headings={headings}>
+<p>{profile.teams.length} {profile.teams.length === 1 ? 'team' : 'teams'} across all documented encounters, including rematches and partner appearances. Choose a location below to find the team used there.</p>
+{profile.note && <p>{profile.note}</p>}
+<p>Conditions can depend on story progress; see the <a href={url('/guide/')}>quest guide</a> for prerequisites. Teams are numbered by level for reference, not encounter order.</p>
+<h2 id="encounters">Encounters and locations</h2>
+{profile.encounters.length ? <TrainerEncounters encounters={profile.encounters} /> : <p>No active encounter has been identified for these teams.</p>}
+<h2 id="teams">Full teams</h2>
+<p>A trainer’s held items are not necessarily obtainable; item pages list how to get them.</p>
+{profile.teams.map((team, index) => <>
+  <h3>Team {index + 1} · {teamLevelRange(team)}</h3>
+  <TrainerCard t={team} showPlaces expanded showProfileLink={false} />
+</>)}
+{(profile.inactive.length > 0 || profile.unconfirmed.length > 0) && <>
+  <h2 id="other-teams">Inactive and unconfirmed encounters</h2>
+  <p>These scenes cannot trigger, or their battle locations have not been established.</p>
+  {profile.inactive.length > 0 && <TrainerEncounters encounters={profile.inactive} />}
+  {profile.unconfirmed.length > 0 && <ul>{profile.unconfirmed.map(team => <li><a href={`#trainer-${team.id}`}>Team {profile.teams.indexOf(team) + 1} · {teamLevelRange(team)}</a>: encounter unconfirmed.</li>)}</ul>}
+</>}
+<p><a href={url('/trainers/')}>Browse all trainers</a></p>
 </StarlightPage>
