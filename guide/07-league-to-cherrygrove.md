@@ -27,6 +27,7 @@
 - [League gate, Mt. Silver, Route 29 and Cherrygrove: small extras](#league-gate-mt-silver-route-29-and-cherrygrove-small-extras)
 
 ## Cerulean Cave: Giovanni's duel and the Charizardite
+<!-- quest: kind=main -->
 
 **Where:** Cerulean Cave, the hidden hall deep inside, after Nurse Joy's invitation letter.
 
@@ -44,6 +45,7 @@
 *Source:* script file 912 (L4818/L4922 `TrainerBattle 402` no-loss; a win jumps to L4855, Recover, and repeats the battle; a loss goes on at L4953; L5414 `CheckFlag 1287`, L5425 `HasItem 504`, L5497–L5517 gives item 325; L2559 double battle 402+402 (same id twice = a Double Battle against one trainer, one copy of the team; trainer 402 opens with Mewtwo and Tyranitar), a loss → L4849 `WhiteOut`; the rematch trigger at 45,5 can only be reached from the lake-bottom scene), file 112 L1201 (Dragon's Den, no starter check). Emulator (`emu_harness.py guide0107 --case giovanni`): `TrainerBattle 402 402 0 0` is a double battle, send-out cries 150 then 248, one team (150, 248, 34, 112, 31, 142) in RAM.
 
 ## Mt. Silver lodge: the rehabilitation (how to move it along)
+<!-- quest: kind=main -->
 
 **Where:** the hot-spring lodge on Mt. Silver and the hot spring just outside it. From the Mt. Silver Cave entrance, go west, then north (as the guard there tells you) to the exit in the cave's north-west corner. Outside, the lodge door is about 30 steps north; the hot spring is about ten steps west of the lodge door.
 
@@ -63,6 +65,7 @@ Every loss whites you out. Talk to Sabrina to retry the round; losing to Yellow 
 *Source:* script files 846 (lodge; L1579–L3288, var 0x4110 1→6, flag 609 "go soak"; trainers 994 Brock, 995 Misty, 261 Blue, 996 Sabrina, then 161 Yellow at L3024 in the same visit; L2648 `WhiteOut`), 844 (hot spring bg 39/40,25, lodge door ≈49,22; L1727–L3250; "a while longer" is message 539#13), 105 (cave entrance guard, flag 1501).
 
 ## New Bark Town Guesthouse: the Sinnoh traveller's quiz (→ Shinx)
+<!-- quest: kind=side -->
 
 **Where:** the New Bark Town Guesthouse, beside the reception desk: a woman with a Luxray, a few steps up and to the right of the entrance.
 
@@ -84,6 +87,7 @@ Then accept her offer.
 *Source:* script file 841 (script 12, L903, L2395–L2715; flags 1833, 1961; `GiveMon 403, Lv. 5`). Woman ≈134,7 (guesthouse entrance ≈131,10, New Bark Town door ≈690,407).
 
 ## Route 29: Casey's Pokéathlon question (→ Electirizer)
+<!-- quest: kind=side -->
 
 **Where:** Route 29, a girl with an Elekid, about 20 steps south of the gatehouse to Route 46.
 
@@ -101,6 +105,7 @@ Then accept her offer.
 *Source:* script file 225 (script 3, L1253, L4128–L4166: `TrainerBattle [608, 0, 1, 0]` @4135 with no win check, then item 322 @4148; script 14 and L1324–L1408; flags 1962, 1969, 1970). Casey ≈624,409 (gatehouse door ≈626,389); after running off ≈590,392.
 
 ## Route 29: Uncle Apricorn wants Kurt's Apricorn Box (say No twice)
+<!-- quest: kind=side -->
 
 **Where:** Route 29, the man by the Apricorn tree, west of the Route 46 gatehouse.
 
@@ -122,6 +127,7 @@ Then accept her offer.
 *Source:* script file 225 (script 15, L3690/L3735/L3780–L3938; flag 1971; items 468, 492–498). Uncle Apricorn ≈599,393.
 
 ## Cherrygrove City: the Berry Pots girl (→ 6 PP Up; one chance)
+<!-- quest: kind=side -->
 
 **Where:** Cherrygrove City, a girl among the flowers at the south-east edge, a few steps south-west of the south-east house door.
 
@@ -135,6 +141,7 @@ Then accept her offer.
 *Source:* script file 847 (script 15, L3585, L6837–L6868; flag 1972, also set by "No" at L3628; `HasItem 477` (Squirt Bottle) is the only check, `TakeItem 470`); Flower Shop: file 893. Girl ≈561,408 (house door ≈567,405).
 
 ## Cherrygrove City: the Wooper and the lost Poké Ball (→ Focus Band)
+<!-- quest: kind=side -->
 
 **Where:** Cherrygrove City's west shore: a boy, and about ten steps west of him on the water, a Poké Ball surrounded by Wooper and Quagsire.
 
@@ -156,6 +163,7 @@ Then accept her offer.
 *Source:* script file 847 (scripts 17, 18; L6876, L7621–L7841, L8181–L8573; `TrainerBattle 665`, `666`; flags 1973, 1974, 1975, 1978), file 51 L4285–L4318 (Ruins of Alph clears them). Boy ≈537,404; Poké Ball ≈527,407.
 
 ## Route 27 → Ecruteak City: the outpost guard's letter to Momo (before the Mineral Badge)
+<!-- quest: kind=side -->
 
 **Where:** the guard post house on Route 27, just south of the two Tohjo Falls entrances (guard Yuichi); Momo is one of the Kimono Girls at the Ecruteak Dance Theater.
 
@@ -172,6 +180,7 @@ Then accept her offer.
 *Source:* script file 222 (script 2; `CheckBadge 13`, but with the badge L283 still checks flags 583/576 and gives the berry; L212–L281 gives item 452; L170 item 157; flags 576, 583), file 924 (Momo: `CheckBadge 13`, L3757–L4707 `TakeItem 452`, item 93, sets 576, clears 599). Flag 576 is cleared again by the Route 37 Silver scene.
 
 ## Route 27: the musician's song or battle (→ Soothe Bell)
+<!-- quest: kind=side -->
 
 **Where:** Route 27, a musician about 40 steps east of the guard post house (towards New Bark Town).
 
@@ -180,6 +189,7 @@ Then accept her offer.
 *Source:* script file 221 (script 7; `TrainerBattle 12`; item 218; flag 1042). Musician ≈790,407 (guard post door ≈751,400).
 
 ## Route 26: the Phanpy trainer's Nugget (sell for $30,000 or give for TM41)
+<!-- quest: kind=side -->
 
 **Where:** Route 26, a man next to his Phanpy, about 10 steps south and 10 steps east of the weekday siblings' house door.
 
@@ -198,6 +208,7 @@ Then accept her offer.
 *Source:* script file 218 (script 7, L930, L1522–L1580; flag 1111; item 368; only the "sell" branch L1535 has `TakeItem 92`, the "have it" branch L1551 doesn't (hack finding)). Phanpy man ≈917,375 (siblings' house door ≈907,365).
 
 ## Route 26: the item quiz in the weekday siblings' house (→ TM43)
+<!-- quest: kind=side -->
 
 **Where:** the house on Route 26 where the weekday siblings' mother lives (the notebook on the table lists which sibling stands where on each day).
 
@@ -216,6 +227,7 @@ Then accept her offer.
 *Source:* script file 220 (script 2, L145–L1030; flag 1112; item 370).
 
 ## Route 26: the old man's paid rest (unlocks Focus Sash sales)
+<!-- quest: kind=side -->
 
 **Where:** the house at the north end of Route 26.
 
@@ -226,6 +238,7 @@ Then accept her offer.
 *Source:* script file 219 (L162–L240 flag 1110; L333, L617, L695–L1309; item 275).
 
 ## Tohjo Falls: the hermit in the hidden room (→ TM52)
+<!-- quest: kind=side -->
 
 **Where:** the hidden room in Tohjo Falls (Surf/Waterfall): its cave door is about 11 steps north and 3 steps west of the western entrance from Route 27. Inside, a Black Belt with a Hitmontop.
 
@@ -236,6 +249,7 @@ Then accept her offer.
 *Source:* script file 114 (script 5, L883–L951; `TrainerBattle 275`; item 379; flag 1635).
 
 ## New Bark Town: show Prof. Elm all eight Johto Badges (→ Rare Candy, PP Max)
+<!-- quest: kind=side -->
 
 **Where:** Prof. Elm in his lab.
 
@@ -246,6 +260,7 @@ Then accept her offer.
 *Source:* script file 840 (script 1 → L2729–L2934; `CheckBadge 8`–`15`; flag 220; items 50, 53; missing badge → L3401, message 535#33 "come see me once you've collected all eight"; 535#32 is the no-badge line).
 
 ## League HQ: the Trainer Affairs Department's investigations (where to go next)
+<!-- quest: kind=main -->
 
 **Where:** the Pokémon League administration hall at the Indigo Plateau, the Trainer Affairs Department: walk straight north from its signs by the hall entrance to the desk at the back.
 
@@ -264,6 +279,7 @@ After round 4, Goodshow sends you to the Alto Mare Islands: sign up for the Isla
 *Source:* desk ≈57,5 (Trainer Affairs signs ≈57,21 and ≈60,21). Script file 31 (script 4; L2251 sets 0x40a2 = 15; the round-3 order L4654–L4666 sets 0x40a2 = 17 and `ClearFlag 744` (Miltank healthy; set at new game, file 149 @492; the only other clear, file 840 L3194/L3324, is in lab script 15, which needs var 0x4108 = 8 and never runs; set again by the Dream World cure, file 898 @2329; emulator, CN and EN: Miltank healthy and farmer only greets until this order, work/build/harness/bugreports-20261006/miltank/); report checks L2145 `0x408c = 12, 0x4078 = 5`, L2039 `0x408c = 15, 0x4078 = 6`, L1891 flags 2110, 2289, 2292, 2293, 2294 and `0x4078 = 10`, L1702 `0x40a4 = 8, 0x40a9 = 5, 0x40af = 13, 0x40b2 = 5`), file 839 (Raikou, L1407–L3711, flag 2292), file 847 (Suicune, L3704–L5328, flag 2294).
 
 ## Mt. Silver: the Turtwig owner's four-leaf clover
+<!-- quest: kind=side -->
 
 Continues [Five Island: the four-leaf clover](05-saffron-cinnabar.md#five-island-the-four-leaf-clover-speak-up-for-him).
 
@@ -280,6 +296,7 @@ Continues [Five Island: the four-leaf clover](05-saffron-cinnabar.md#five-island
 *Source:* script file 945 (script 17, L1178–L1447; `GetPartyLeadAlive` + species 151; item 37 ×3; flags 1530, 1531), file 58 L4425/L7744 (Five Island clears 1530 or 1531). Reachability: 1530/1531 are set again by the Route 31 gatehouse Silver scene (file 231 @253) and the Route 39 Crystal scene (file 249 @4178), but the ferry only offers Four/Five Island once flag 2024 is set (file 894 @346), and 2024 is set by that same Route 39 block (249 @4066), so the clover always comes after both; the S.S. Anne B1F scripts that also use 1530/1531 (file 162 scripts 12, 13) aren't attached to any object. Turtwig owner ≈807,278 (Pokémon Center door ≈822,265).
 
 ## Indigo Plateau (final chapter): Mewtwo joins you (take it before the Elite Four)
+<!-- quest: kind=side -->
 
 **Where:** the Indigo Plateau slope, after the spatial-barrier scene with Cyrus and Charon. Mewtwo stays in the middle of the path, about 28 steps straight north of the Victory Road exit.
 
@@ -294,6 +311,7 @@ Continues [Five Island: the four-leaf clover](05-saffron-cinnabar.md#five-island
 *Source:* script file 923 (script 31, L2266–L2395, `GiveMon 150, Lv. 95`; obj 42 at ≈912,243 hidden by flag 2310), file 822 L2470 (Hall of Fame sets 2310).
 
 ## Indigo Plateau slope (final chapter): Steven's and Cynthia's confessions
+<!-- quest: kind=side -->
 
 Part of the romance route; the rules are in the [central romance entry](09-ilex-goldenrod.md#romance-route-how-its-unlocked-how-your-partner-is-chosen-and-what-locks-a-partner-out-central-entry).
 
@@ -315,6 +333,7 @@ Both can be reopened once by the [Island Forest wish](05-saffron-cinnabar.md#isl
 *Source:* script file 923 (script 29 Steven: `GetPlayerGender`, flags 1618, 2155, 1645; script 30 Cynthia: flags 1618, 2144, 1645; L7122 sets 1645; Steven ≈913,234, Cynthia ≈910,234, Mewtwo ≈912,243); file 900 L1678/L2778 set 2155; file 55 L3024–L3071 (the wish clears 2141–2145 and 2153–2157 unless flag 2300, set by the Dream World, file 898).
 
 ## Pokémon League (final chapter): the Elite Four rooms under Team Rocket
+<!-- quest: kind=main -->
 
 **Where:** the League entrance and the Elite Four's rooms, final chapter.
 
@@ -334,6 +353,7 @@ Both can be reopened once by the [Island Forest wish](05-saffron-cinnabar.md#isl
 *Source:* script file 816 (script 12, L1556–L1632, $10,000 heal; script 9 door), files 817–820 (menus: 817 515#21/22, 818 516#22/23, 819 517#22/23, 820 518#23/24; doubles 817 L595 557+863, 818 L646 864+558, 819 L598 498+487, 820 L615 865+544; e.g. 817 L1104/L1251 singles), 821 (L622 `TrainerBattle 479 503`), 822 (L1152 trainer 244, L1399 `288 287`, L1828 trainer 289).
 
 ## The Hall of Fame: what your two entries unlock
+<!-- quest: kind=main -->
 
 **First entry (end of the Kanto League):**
 - During the title run itself, each Elite Four member and Blue let you choose **Singles or Doubles**.
@@ -350,6 +370,7 @@ Both can be reopened once by the [Island Forest wish](05-saffron-cinnabar.md#isl
 *Source:* script file 822 (first entry L20–L316, no explicit `SetFlag 2404`: the game sets it when you enter the Hall of Fame; the final-chapter path is L870 (var 0x409e = 18); final entry L2450–L2582 sets 2261 and clears 1517, 1786 (Zapdos), 302, 1607, 2089, 517, 1005, 499, 1964 …), file 196 (Zapdos: before 2261 the object starts a Rocket battle, after it L1693 `WildBattle 145` and L1717 sets 1786 for good), files 817–820 (practice menus at L747 behind `CheckFlag 2404` at L155; trainers 702–705), 821 (L1331 attendant, L1860 `CheckBadge 15` → Blue/Yellow/Gold at L2567, else var 0x408b ≠ 1 → Blue/Yellow at L2667, else Blue only; 0x408b = 1 from Route 1 (168 @576) until Oak's Pokédex errand (738 @3591 sets 2); Yellow's Singles still runs `TrainerBattle 951 951` at L3742), 839 (L1357, L2263 Gold). First entry = flag 2404, final entry = flag 2261.
 
 ## League gate, Mt. Silver, Route 29 and Cherrygrove: small extras
+<!-- quest: kind=side -->
 
 - **League reception gate (Route 26), Koga's photo:** after the final Hall of Fame, Koga trains in the gate from 18:00 to 20:59 (DS clock) and offers a souvenir photo. He stands on the **east (Route 22) side** of the gate, near the Route 22 exit. (Tested in an emulator: there at 18:00 and 20:00, gone at 17:00 and 21:00.)
 - **Mt. Silver photographers:** photo spots at the foot of Mt. Silver (Wednesdays and Fridays) and in Mt. Silver Cave 1F (Thursdays). The one at the foot of the mountain isn't there while the Silver Conference crowd is gathered outside the Pokémon Center.

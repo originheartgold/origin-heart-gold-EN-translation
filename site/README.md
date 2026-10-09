@@ -66,11 +66,19 @@ Before committing: `python3 work/tools/site/build.py --check` fails if any gener
   "after your first Hall of Fame" for things that open with Johto. "Missable" and "one chance" add a
   badge but hide nothing. Changing a heading changes its URL: update links to it.
 - When the heading can't say it, add explicit metadata on the line right under the heading. It overrides
-  what is read from the heading, is left out of the site page and the PDF, and every key is optional:
-  `<!-- quest: id=ch07-giovanni; places=cerulean-cave; starter=any; gender=any; postgame=no -->`.
+  what is read from the heading and is left out of the site page and the PDF:
+  `<!-- quest: kind=main; id=ch07-giovanni; places=cerulean-cave; starter=any; gender=any; postgame=no -->`.
+  Every quest needs `kind=main` (story, badge progression and their walkthroughs) or `kind=side`
+  (optional activities, rewards and extras). Classify from the entry's content, including conditional
+  story routes; a reward alone doesn't make a story quest optional. Mixed entries covering story
+  progression and optional rewards use `main`. Other keys are optional.
   `starter` takes `any`, a comma-separated list or `non-Pikachu`; `gender` takes `any`, `male` or `female`;
   `postgame` and `missable` take `yes` or `no`; `places` takes area slugs or names (`none` for no link).
   `id` is a stable key for the reader's "Done" tick, so the tick survives a heading rename; keep ids unique.
+- Quest type and Progress filters combine with starter, gender and Hide finished and persist between
+  chapters. Progress offers all stages, before post-game, and post-game only. Mixed entries with earlier
+  steps aren't post-game-only; their text explains later unlocks. Linked quests stay visible even when
+  they don't match the filters. Existing post-game checkbox preferences migrate to the Progress filter.
 - Each entry follows the same pattern: where and when, any **Warning:** before the step it applies to,
   numbered steps, the reward and whether it repeats, exact links (`file.md#heading`) to the quests it
   depends on, and the folded `*Source:*` line last.
@@ -177,6 +185,13 @@ runner uses a preexisting browser/runtime, writes only ignored `work/build/websi
 results and screenshots, and uses synthetic invalid save/patch input. It does not
 patch a ROM. CI's dependency-free DOM regressions run through normal `npm test`;
 compiled-page assertions run after the build with `GUIDE_TEST_DIST=1`.
+
+For quest filter regression checks, run `site/tests/quest-filters-browser.mjs` with
+the same `PLAYWRIGHT_MODULE` setting and `GUIDE_PREVIEW_URL` pointing at the site root
+(defaults to `http://127.0.0.1:4337/`). It checks combined filters, persistence,
+old preference migration, completion ticks, direct links, mobile themes and no-JavaScript tags.
+Screenshots go to ignored `work/build/quest-tags-qa/`. Metadata coverage tests run with
+`python3 -m unittest discover -s work/tools/site -p 'test_quest_tags.py'`.
 
 ### Original move comparisons
 

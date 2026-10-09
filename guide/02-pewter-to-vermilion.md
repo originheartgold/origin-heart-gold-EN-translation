@@ -29,6 +29,7 @@
 - [Vermilion City: after the construction-site clash](#vermilion-city-after-the-construction-site-clash)
 
 ## Pewter City: finding Brock (the Gym Leader's errands)
+<!-- quest: kind=main -->
 
 **Where:** Pewter Gym, then the **house in the northeast of town** (about 21 steps east and 5 steps north of the Gym door), then the Museum of Science, then Anemone's flower garden on the hill.
 
@@ -67,6 +68,7 @@
 *Source:* files 750 (Gym, L485/L850; the win gives item 366 = TM39 ×5 at L604), 754 (script 1, script 3), 753 (scripts 16, 17, 20; L3143, L3543, L4622 sets 1315 and clears 1316), 748 (script 27, L4562 clears 1322). Step 1 sets flag 1321. The Nidoran♂ room is the west half (local 4,8) of the shared "Pewter Northeast house" map, entered from the city door at 1068,87; the garden cutscene is the step trigger at 1064–1065,111, var 0x4082 = 1 (Pewter events: Gym door 1047,92, Anemone 1064,107, Pokémon Center door 1048,106).
 
 ## Pewter City: the Apricorn Ball maker
+<!-- quest: kind=side -->
 
 Continues [Route 2 East: Nidoran♀ and the Apricorn Ball maker](01-pallet-to-pewter.md#route-2-east-nidoran-and-the-apricorn-ball-maker-non-pikachu-starters).
 
@@ -84,6 +86,7 @@ Continues [Route 2 East: Nidoran♀ and the Apricorn Ball maker](01-pallet-to-pe
 *Source:* file 754 (script 4, L697, L829, L840); flags 415 (file 60, Slowpoke Well), 2722 and 0x413b (file 871). Saved Nidoran♀ = flag 1349 clear. Ball in progress = flag 2722, 10-ball counter = var 0x413b, which sets flag 295 at 10 (no script checks 295). Service ends when flag 415 is set. The room is the east half (local 36,8) of the shared "Pewter Northeast house" map, entered from the city door at 1037,111, not from the northeast door (warp anchors checked).
 
 ## Pewter Pokémon Center: Elite Four Bruno (one attempt, before Mt. Moon)
+<!-- quest: kind=side -->
 
 **Where:** Bruno and his Hitmonchan stand about 12 steps straight north of the Pokémon Center entrance.
 
@@ -94,6 +97,7 @@ Continues [Route 2 East: Nidoran♀ and the Apricorn Ball maker](01-pallet-to-pe
 *Source:* file 751 (script 8, L612). "Done" flag 1328 is set before the battle; he is hidden by flag 1311. Position 7,7 (door 8,19).
 
 ## Route 3: the old painter's Ralts (Fresh Water errand; before the Cascade Badge)
+<!-- quest: kind=side -->
 
 **Where:** an old man with a Ralts, southwest of the Route 3 Pokémon Center: about 37 steps west and 18 steps south of its door, a few steps south of an item ball.
 
@@ -110,6 +114,7 @@ Continues [Route 2 East: Nidoran♀ and the Apricorn Ball maker](01-pallet-to-pe
 *Source:* file 175 (script 9, L2396, L2409, L4238; letter L2278); file 758 L3883 sets 1390 (the painter's death); file 6 (shop, needs flag 1994). Fresh Water is not a Route 3 field item (work/docs/items.md lists Route 3 only as where it's needed; the item ball near the painter is TM27, item 354). Position 1130,124; Pokémon Center door 1167,106; item ball 1132,120.
 
 ## Route 3: the Scyther chase (Charmander starters) / Bug Catcher Kenji (others)
+<!-- quest: kind=side -->
 
 **Where:** a Bug Catcher about 50 steps west of the Route 3 Pokémon Center door, a few steps east of a man who talks about Dusk Balls. The ledge is about 10 steps west and 7 steps south of him.
 
@@ -120,6 +125,7 @@ Continues [Route 2 East: Nidoran♀ and the Apricorn Ball maker](01-pallet-to-pe
 *Source:* file 175 (scripts 30, 31; L3512, L3608). Talking to him clears flag 2268 to show the ledge Scyther; `CheckBattleWon` counts a flee as a win, so fleeing sets 2268 too. Emulator (CN and EN): Lv. 15, fled, flag 2268 set, gone after reloading the map. Bug Catcher ≈1117,104, ledge ≈1107,111, Pokémon Center door 1167,106.
 
 ## Route 3: Misty's Gyarados, "Comfort Misty?" (romance choice)
+<!-- quest: kind=main -->
 
 **Where:** it starts on your way east along Route 3, when you walk past the Trainer standing about 18 steps west and 13 steps south of the Route 3 Pokémon Center door (anywhere in the column running from him to 4 steps south of him).
 
@@ -135,6 +141,7 @@ Continues [Route 2 East: Nidoran♀ and the Apricorn Ball maker](01-pallet-to-pe
 *Source:* file 175 (script 17, L3346, L4102); file 758 L7072 (confession check); file 55 L3039 (Six Island wish clears 2142). "No" sets flag 2142; both answers clear flag 1372 (Misty in Mt. Moon). Step trigger at x 1149, z 119–123 (var 0x4086 = 0); Trainer object at 1149,119.
 
 ## Mt. Moon: what opens the fake guards' roadblock
+<!-- quest: kind=main -->
 
 **Where:** the "construction" guards blocking the way at the north end of Mt. Moon's first cave, about 37 steps north and 11 steps west of the Route 3 entrance.
 
@@ -154,6 +161,7 @@ Once all four are there, they wait just south of the guards. Then talk to the gu
 *Source:* file 7 (script 15, L1815, L2575; the guard checks companion flags 1310 Blue, 1372 Misty, 1358 Steven, 1371 Cynthia, then the Boulder Badge), file 748 L4450 (Blue, step trigger 1045,96–98), file 753 (script 21, L4045 clears 1312), file 133 (script 4, L1554 clears 1358), file 7 L4234 (Cynthia clears 1371), file 175 L3490 (Misty), file 764 (bike-shop Steven, trainer 210, L224; hidden by flag 1026, set at the Cascade Badge 758 L3879). Bank 47 #89/#90 (Green/Red). Guards ≈13–14,19 (Mt. Moon first cave, entrance 25,56); Cynthia ≈24,45; Steven in the inner cave ("Mt. Moon, east building") ≈41,53, next to the warp at 34,53 that connects to the first cave's east warp at 40,22.
 
 ## Mt. Moon: the fossil seller
+<!-- quest: kind=side -->
 
 **Where:** a Super Nerd digging by a fossil in Mt. Moon's inner cave, about 15 steps east and 4 steps north of the exit to Route 4 (and about 17 steps south and 13 steps west of Steven's spot from the previous entry).
 
@@ -162,6 +170,7 @@ Once all four are there, they wait just south of the guards. Then talk to the gu
 *Source:* file 133 (scripts 7, 8; L2149, L2216). Fossil ≈28,70, Route 4 exit 13,74.
 
 ## Mt. Moon Square: Asher's gang and the spring (after the Cascade Badge)
+<!-- quest: kind=side -->
 
 **Where:** Mt. Moon Square. Asher and his two girlfriends block the spring, about 10 steps west and 3 steps south of the shop door.
 
@@ -183,6 +192,7 @@ Once all four are there, they wait just south of the guards. Then talk to the gu
 *Source:* file 9 (scripts 7, 10–14; L1647, L1863, L1905, L1958), file 6 (shop), file 758 L3895/L3899 (TM03 scene clears flags 1387 and 1994). Talking to a complaining visitor sets flag 1232; beating Asher sets flag 1994. Positions: Asher and girlfriends ≈17–19,46–47; couple ≈16,50–51; old woman ≈26,46, old man ≈26,47; Soothe Bell couple ≈39–40,48; shop door 28,43.
 
 ## Mt. Moon: Groudon (post-game, Red Orb)
+<!-- quest: kind=side -->
 
 **Where:** the altar in the deepest part of Mt. Moon's inner cave, where Maxie summoned Groudon. You don't reach it from the main inner cave: in the first cave, take the passage about 22 steps north and 3 steps east of the Route 3 entrance (south of the old roadblock). You can't walk straight up to it: go round by the east side of the cave and come down to the passage from the north. It leads to a small part of the inner cave; the passage at its east end (about 15 steps east of where you arrive) takes you down to the deepest part. From there the altar is about 28 steps east and 15 steps north, but the way winds: go south down the corridor, east along the bottom, north, then back west and up the long corridor heading north; at its top the altar is about 10 steps east. Walked in an emulator.
 
@@ -195,6 +205,7 @@ Once all four are there, they wait just south of the guards. Then talk to the gu
 *Source:* file 133 (script 13, L2304, L2351; needs flag 2261 = final Hall of Fame and item 534 Red Orb); flag 2287 set on catch, knockout or flee (emulator, EN: fled, 2287 set); file 842 L1900 (Lance gives the Red Orb). Altar ≈37,115; arrival warp 9,130 (from 57,16). Emulator walk (EN, guide review 2026-10-06, pass2-B `groudon_walk.py`/`groudon_walk2.py`, Mt. Moon trainers' flags set): 107 25,55 → via 42,35/49,44/51,18/35,18/35,29 → warp 28,34 → 524 42,13 → 57,16 → 9,130 → via 9,150/32,141/46,131/38,130/26,133/26,115 → 36,115, facing east: "Try summoning Groudon with the Red Orb?" (line 46). The 57,16 passage is in a closed pocket of map 524 (≈100 tiles) whose only other exit is the warp at 42,12, linked to the first cave's warp at 28,34 (map 107; entrance 25,56); the main inner cave and Steven's pocket don't connect to it (collision-grid flood fill). The ball-sprite object at 36,115 is a cutscene prop (hidden by scratch flag 1366), not a pick-up.
 
 ## Route 5: the Pokémon shelter raid (after the Cascade Badge)
+<!-- quest: kind=side -->
 
 **Where:** outside the Pokémon shelter house on Route 5. The scene starts when you walk south down the middle of the path toward the house, about 11 steps north of its door. The side lanes to the west and east of the house skip it, so walk straight down the middle.
 
@@ -216,6 +227,7 @@ Once all four are there, they wait just south of the guards. Then talk to the gu
 *Source:* file 179 (script 3, L1283, L2144; trainer 966; which Pokémon is decided by flag 1037/1038, set in file 9 L5646), file 183 (scripts 1–4; L669, L904 Cleanse Tag needs raid-won flag 305, L1037 Magical Leaf); file 758 L8040 clears flag 1043 and resets var 0x409e (Cascade Badge); file 17 @12165 closes an unfinished raid (Sabrina scene). Route 11 is file 197 (flags 1445/1451; it checks 1046 and 1047, which file 9 L5538/L5542 sets and the raid win clears for the saved Pokémon only, so taking that one Pokémon is enough). Step trigger x 1297–1302, z 160 (var 0x409e = 0); side lanes x≈1291–1293 and x≈1306–1308; house door 1297,171.
 
 ## Underground Path: the underground battle (story, Cascade Badge)
+<!-- quest: kind=main -->
 
 **Where:** the Underground Path, entered from the Route 5 gatehouse. You need the **Cascade Badge** to take part (the people at the entrance talk about needing "two Badges").
 
@@ -228,6 +240,7 @@ Once all four are there, they wait just south of the guards. Then talk to the gu
 *Source:* files 181 (script 3 and the battle script check `CheckBadge 1` = Cascade Badge; script 8, L2293/L2389; earlier losses go to L2379 WhiteOut), 184 (script 1, L629; one-time flag 1866). MC ≈1311,260; Underground Path gatehouse door 1309,265. Doorway blockers are hidden by flag 1226 (Route 5 object 22, Route 6 objects 10/20, Route 7 object 22, Route 8 object 9); 1226 is set at the end of the Mt. Moon roadblock story (file 9 script 20 @5598) and the takeover (file 17 @12023) and cleared by the Rock Tunnel rescue (file 129 @1141); emulator (CN, Route 7): blocked with 1226 clear, open with it set (guide-review-20261006/known-issues/C/). The battle (coord script 8, var 0x40a2 = 0) sets 0x40a2 = 1 (L3420) and hides the crowd with flag 1050 (L3358).
 
 ## Route 24 / Cerulean City: the burglary case → TM Case → TM28 Dig
+<!-- quest: kind=side -->
 
 **Where:** Cerulean City. The police officer stands 3 steps west of the door of the robbed house, the house north-east of the Pokémon Center. The robbed man is inside that house (it's the **east room of the Cerulean north house**).
 
@@ -245,6 +258,7 @@ Once all four are there, they wait just south of the guards. Then talk to the gu
 *Source:* file 756 (scripts 5, 16–19, 23; L3038, L3779, L3807, L2103, L1575), file 215 (script 7, L492), file 761 (script 8, L909). Grunt is trainer 961 (Shieldon 18, Elekid 17, Beedrill 18); loss = WhiteOut (215 L470). Officer L1606 needs both suspect flags 1028 (jogger) and 1029 (fat man). Deadline: the Sabrina scene (file 17 @12111/@12115) sets "case closed" 1024 and hides the grunt (1033); the dizzy man (script 16) checks 1039/1024 first, so his `ClearFlag 1033` (756 @2131) is never reached again. Positions: officer ≈1316,123 (house door 1319,123, the north house's east room); jogger ≈1316,106; fat man ≈1304,149; witness ≈1331,135; dizzy man ≈1337,110; Route 24 grunt ≈1336,79.
 
 ## Cerulean City: King's Rock for TM04
+<!-- quest: kind=side -->
 
 **Where:** the Trainer with the dim Slowbro, about 12 steps west and 4 steps north of the Pokémon Center door.
 
@@ -255,6 +269,7 @@ Once all four are there, they wait just south of the guards. Then talk to the gu
 *Source:* file 756 (script 3, L1503, L3003). Position ≈1297,127.
 
 ## Cerulean City: lend the kid your Bicycle (→ Amulet Coin)
+<!-- quest: kind=side -->
 
 **Where:** a boy in south Cerulean, just south-west of the Bike Maniac's house door (west of the Poké Mart). He's there from the start, but he's away during two stretches of the story: from your talk with Blue at the Viridian Gym (after he becomes its Gym Leader) until Misty wins her Cerulean Gym Leader assessment, and again during the League HQ investigation, from one of your League HQ reports until Misty leaves for the Seafoam Islands ([League HQ: the Trainer Affairs Department's investigations](07-league-to-cherrygrove.md#league-hq-the-trainer-affairs-departments-investigations-where-to-go-next)).
 
@@ -267,6 +282,7 @@ Once all four are there, they wait just south of the guards. Then talk to the gu
 *Source:* file 756 (script 22, L2667, L3560, L3506; the return checks `CheckBadge 3` = Rainbow Badge; Amulet Coin = item 223). The offer closes on flag 1626 (Route 7 scene). He is hidden by flag 1003: not set at new game, set by Blue's Viridian Gym scene (file 741 @2179) and the League HQ briefing (file 31 @4797), cleared when Misty wins her assessment (758 @2695) and when she leaves for Seafoam (758 @6360). Position ≈1295,146.
 
 ## Route 25: Nugget Bridge's "tasty treat" (say No)
+<!-- quest: kind=side -->
 
 **Where:** a man on the path north of Nugget Bridge, about 21 steps north of the bridge's last Trainer, who congratulates you on beating the bridge Trainers.
 
@@ -281,6 +297,7 @@ Either way he's gone afterwards.
 *Source:* file 216 (script 12, L1434 sets hide flag 1021 before the battle, L4801 money checks; loss L5000 WhiteOut; trainer 962); file 758 L3875 (the Cascade Badge scene sets 1021). Position ≈1326,53; last bridge Trainer ≈1328,74.
 
 ## Route 25: the Cerulean Cape Battle Festival (quiz and placing)
+<!-- quest: kind=main -->
 
 **Where:** Route 25 / Cerulean Cape, during the festival (story).
 
@@ -304,6 +321,7 @@ Cynthia and Misty fill the other places.
 *Source:* file 216 (script 5, L3909, L8330, L11442, L12244, L12348; quiz-fail battle trainer 641 at L12504, loss L5000 WhiteOut; scripts 6–7 use trainers 517/518 in no-whiteout mode, L4122, L4240, L4299; ceremony L4440/L11645; Rare Candy ×4 @4706, ×2 @8810, ×1 @11732).
 
 ## Sea Cottage: Bill's grandfather (show him five Pokémon)
+<!-- quest: kind=side -->
 
 **Where:** Bill's house on Cerulean Cape, after the computer-virus story.
 
@@ -322,6 +340,7 @@ Cynthia and Misty fill the other places.
 *Source:* file 217 (script 1, L1903, L2293, L2761).
 
 ## Route 25: Suicune (post-game)
+<!-- quest: kind=side -->
 
 **Where:** Cerulean Cape, south-east of Bill's house (the Sea Cottage): about 15 steps south and 4 steps east of its door.
 
@@ -332,6 +351,7 @@ Cynthia and Misty fill the other places.
 *Source:* file 216 (script 40, L7548; a flee counts as a win and sets 2319; emulator, EN: Lv. 90, fled, gone after reloading). Suicune appears when the Burned Tower script (file 23) clears flag 2319. Position ≈1411,53; Sea Cottage door 1407,38.
 
 ## Cerulean Gym / Cerulean Cape: Misty's romance
+<!-- quest: kind=side -->
 
 Continues [the Pallet Town to Pewter City romance entry](01-pallet-to-pewter.md#romance-route-victory-road-confessions-yellows-dates-and-your-house). For how the romance works as a whole (love reading, Dream World, locks), see [the central romance entry](09-ilex-goldenrod.md#romance-route-how-its-unlocked-how-your-partner-is-chosen-and-what-locks-a-partner-out-central-entry).
 
@@ -344,6 +364,7 @@ Continues [the Pallet Town to Pewter City romance entry](01-pallet-to-pewter.md#
 *Source:* file 758 (script 1: `CheckFlag 2261` → L3665, else first Hall of Fame 2404 + 1805 → L3804 → L6418; L6418 needs flag 2311 clear → L7044 confession; L7044 checks male, flag 1618 love reading, no 2142, no 1645; sets 1645; L3665 date menu; L6644/L6735 first date clears 598 and warps to the Cape), file 216 (script 41, L7584 plain photo / hug for 1645 set and 2142 clear; map script L3164). 2311 is set at new game and at the final Hall of Fame (822 @2454) and cleared by the Radio Tower broadcast (file 34 @3187/@6152). Date progress var 0x40b5. Photo spot ≈1422,40. The Route 25 map script also has a photo for players who didn't confess (after the final Hall of Fame, script 41 → L7584), but its show check at L8294 hides Misty when ScrCmd_522 (the hour, as in file 172's password hour check) ≠ 14 and again when it ≠ 15. No value passes both, so she can never appear for it, whatever the command returns (suspected hack bug).
 
 ## Gym sparring partners: EV training for a Berry
+<!-- quest: kind=side -->
 
 **Where:** a sparring partner in each Gym. In this page:
 
@@ -360,6 +381,7 @@ Continues [the Pallet Town to Pewter City romance entry](01-pallet-to-pewter.md#
 *Source:* files 750 (script 7, L907), 758 (script 11, L4217, L4228, L6966; needs flag 1133, set at new game, cleared when Misty leaves for Seafoam at L6368, and `CheckBadge 1`; partner object hidden by flag 1003, a stand-in object by 1132; 2241 only switches to the Champion greeting), 776 (script 28, `CheckBadge 2`, L993/L1384).
 
 ## Vermilion City: feed the Wingull and the Horsea
+<!-- quest: kind=side -->
 
 **Where:** by the water in south Vermilion, east of the Gym door. Two Wingull sit 8–10 steps east of the Gym door (the first one right next to a woman who tells you to go feed them), and the Horsea is about 10 steps east of the Gym door.
 
@@ -372,6 +394,7 @@ Continues [the Pallet Town to Pewter City romance entry](01-pallet-to-pewter.md#
 *Source:* file 774 (scripts 35, 36, 44, 20; L4491, L4550, L7843, L7893 (loss L6321 WhiteOut), L3932, L7523; the fisherman needs flags 1056, 1065 and 1419, no item 484, and 1867 clear); Good Rod quest is file 779. Positions: Wingull ≈1303,315 (Big Pearl, flag 1406) and ≈1305,317; Horsea ≈1305,319; fisherman ≈1312,321; Gym door 1295,319.
 
 ## Vermilion City: after the construction-site clash
+<!-- quest: kind=side -->
 
 **The choice ([Vermilion City to Celadon City](03-vermilion-to-celadon.md#vermilion-city-the-construction-site-dispute-choose-a-side)):** the night before the clash, in the Vermilion Pokémon Center, you choose whether to back Green (or Red) and the townsfolk, or Blue and the law. That choice also **closes a romance route**: siding with the townsfolk closes Blue's (female players), and siding with Blue closes Green's (male players). See [the central romance entry](09-ilex-goldenrod.md#romance-route-how-its-unlocked-how-your-partner-is-chosen-and-what-locks-a-partner-out-central-entry).
 

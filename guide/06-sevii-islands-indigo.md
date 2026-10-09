@@ -33,6 +33,7 @@
 - [Sevii Islands: small extras](#sevii-islands-small-extras)
 
 ## Two Island: Granny Mae's ultimate-move trial
+<!-- quest: kind=main -->
 
 **Where:** Granny Mae's training hall on Two Island, behind the north-east door of the town (the northernmost door). The receptionist stands a few steps inside the entrance.
 
@@ -62,6 +63,7 @@ A loss at any stage whites you out. Talk to the receptionist to try again; she r
 *Source:* script file 782 (scripts 5–10, 14; L1305–L5449, L2545–L8994; vars 0x40b0, 0x40ab; flags 1105, 1705, 2915; stage 3 is coord script 9, and after `TrainerBattle 643` (Charles, L2323) the same script goes on through L4379 to `TrainerBattle 644` (Blue, L4615) and `MultiBattle 645/646/647` (L5001) with no `HealParty` and no `ReleaseAll` in between; heal at L5164; a loss jumps to L4309, the restart; the Ninja Scroll (item 761, L2648) comes from object 4, the examiner Granny Mae calls "Dana" in the scene; the Viridian Gym door guard checks flag 1705, file 741 script 2). Hall entrance: Two Island door ≈116,107 → hall 47–48,126; receptionist ≈48,122; Dana ≈37,39.
 
 ## Two Island: Fern's "sick" Chatot (Chatot needed)
+<!-- quest: kind=side -->
 
 **Where:** Pokémon Breeder Fern's clinic on Two Island: the house just east of the man watching the Butterfree (the southernmost house door in town). Fern is right inside, with her admirer Mr. Summers and a Chatot that keeps squawking "My head hurts!".
 
@@ -79,6 +81,7 @@ A loss at any stage whites you out. Talk to the receptionist to try again; she r
 *Source:* script file 782 (scripts 1–3, L1256, L3147–L7333; flag 1637; species check 441 = Chatot). Clinic: Two Island door ≈104,121; Fern ≈5,101 inside.
 
 ## One Island: the composer's title → Miracle Seed → TM86 Grass Knot
+<!-- quest: kind=side -->
 
 **Where:** the composer at the back of the One Island Pokémon Center (straight north from the entrance), and the woman with a Roserade outside, a few steps north of the fountain (about 9 steps north and 6 steps east of the Pokémon Center door).
 
@@ -92,6 +95,7 @@ A loss at any stage whites you out. Talk to the receptionist to try again; she r
 *Source:* script files 889 (script 4, L361–L413; flag 1115), 845 (script 6, L1205–L1324; flag 1081, also set by Misty's Gyarados gift and the early Viridian Gym end). Composer ≈8,7 in the Pokémon Center; Roserade woman ≈148,138 (Pokémon Center door ≈142,147).
 
 ## One Island: the Island Restaurant's battle meals (repeatable)
+<!-- quest: kind=side -->
 
 **Where:** the Island Restaurant on One Island: the door just west of the Pokémon Center on the south row. The two waiters stand on the right-hand side of the dining room: the upper one serves the snack set, the lower one the fruit set.
 
@@ -107,6 +111,7 @@ A loss at any stage whites you out. Talk to the receptionist to try again; she r
 *Source:* script file 894 (scripts 1, 2; L877–L1658). Restaurant door ≈134,147, waiters ≈11,36 and ≈12,39 inside; the Treecko owner is behind door ≈134,127 (same script file, different building).
 
 ## Victory Road: the Indigo Conference qualifiers (find the hidden staff member)
+<!-- quest: kind=main -->
 
 **Where:** the Victory Road gate (north of the League reception gate between Route 22 and Route 26), then Victory Road 2F and 3F.
 
@@ -148,6 +153,7 @@ A loss at any stage whites you out. Talk to the receptionist to try again; she r
 *Source:* script file 763 (scripts 3, 4, 34; L2977, L3207, L6234 Escape Rope check; obj 28 is the Mart), file 110 (scripts 8, 11, 13, 14, 18–21; L4251–L4668 and L8952–L10163 starter/gender branches; flags 1287–1289, 1610, 1895, 1093; L10157 sets 1496 = real password; L5224 passes the qualifier; e.g. Wendy L4390 checks Janine's flag 1924, then the right branch goes straight to L9177, the reveal battle, without needing her first-battle flag 1927), file 109 / VR 2F events (Janine #564 at ≈9,24, object hidden by her trainer flag 1924), file 197 (Route 11 sets 1610 / 1895). Fake password: Damon's ordinary branch @9293–9332 (`TrainerBattle 561`, "Specious" @9325, sets 1921); the exit dialogue always uses 570819 (@1014/@5049/@5143) and checks no flag itself: the exit guards (scripts 19, 20) block the way and only battle you with flag 1496 (L4720, `TrainerBattle 579 506`, sets 1939); after that, talking to them from y = 24 moves one aside (L4690 → L9705, L4863 → L9719). Gate: zone 299 is the League reception gate (exits to Route 22, Route 26 and Route 28). Positions: gate guard ≈17,38, hall ≈25,20, receptionist ≈24,11, clerk ≈23,12; 3F: Damon ≈42,27, exit guards ≈38–39,23, exit staff ≈38,14, Misty ≈54,42, Alfred ≈29,32, Wendy ≈11,36, Axel ≈22,39, Danica ≈29,38.
 
 ## Indigo Plateau: the Indigo Conference main tournament and the "who do you cheer for?" choice (romance)
+<!-- quest: kind=main -->
 
 **Where:** the Indigo Plateau, after the qualifiers.
 
@@ -169,6 +175,7 @@ A loss at any stage whites you out. Talk to the receptionist to try again; she r
 *Source:* script file 923 (slope MC script 7 at ≈912,227, waits on flags 1505/1515/1422/1421, then warps you to the plaza), file 900 (script 1/7 L1606–L1734 and L8497–L8569; L2778 sets 2155 (Steven closed), L3867 sets 2142 (Misty closed), "No" sets both at L1678/L1682; round one is script 1 L985 `TrainerBattle 986` (Goh, Lv. 80); the Lv. 76–77 copy at L7876 `TrainerBattle 562` only runs if you talk to the MC inside the plaza, which you can't), file 899 (stage two `TrainerBattle` 635, 636), file 815 (plaza hub); romance flags checked in files 758 (Misty) and 923 (Steven).
 
 ## Three Island: the biker Big Sis who can't ride
+<!-- quest: kind=side -->
 
 Continues [Three Island: the Alto Mare Bikers](05-saffron-cinnabar.md#three-island-the-alto-mare-bikers-save-the-meowth).
 
@@ -190,6 +197,7 @@ All three real choices send her to the Shipyard Ruins; only teaching her changes
 *Source:* script file 782 (script 20, L2718–L3035, L5861; var 0x4097 = 3/4/5, flag 2019, her hide flag, cleared when you first sail to the islands, file 826 @983, and set by the Dragon's Den clear, file 112 @4871). Bridge biker: file 735 coord script 11 at ≈180,123 on var 0x4097 = 2 (set at the first sailing, 826 @1007), object 24 at ≈181,123; movement at @7576 steps you back north. Emulator (CN and EN, 2026-10-06, work/build/harness/guide-review-20261006/pass2-C/bridge_*: var 0x4097 = 2 → stopped at 180,122/123 with line 441#135; = 3 → walked on to 180,125). House: Three Island door ≈180,120; Big Sis ≈7,36 inside.
 
 ## Shipyard Ruins (Three Island): the bikers' Chief, a bribe or a fight
+<!-- quest: kind=side -->
 
 **Where:** the Shipyard Ruins, the door at the south-west corner of Three Island. **Biker Muramasa** stands in front of the door: beat him to get in (Kangaskhan, Scizor, Shiftry; Lv. 62–64; a loss whites you out). Inside, the biker at the back of the ruins (top right, surrounded by four bikers) asks if you're here to see the Chief.
 
@@ -210,6 +218,7 @@ All three real choices send her to the Shipyard Ruins; only teaching her changes
 *Source:* script file 879 (script 1, L357–L2508; var 0x4097 5/6; flags 1663, 2018, 2022; the gauntlet's end L2428 clears 2020, the rebuild man's hide flag), file 735 (rebuild man ≈175,109, script 13: L7006 gives item 321 Protector only with flag 2021, set when you say Yes to his request in the One Island Pokémon Center, file 889 script 6, object 9 with the same sprite; door biker Muramasa ≈169,141, L2590–L2670, `TrainerBattle 656`, hide flag 2016, cleared again by the bribe at 879 L1903), file 845 (coord script 20 at 146,160, var 0x4097 = 6, L1465–L1612; eight `SubMoneyImmediate 50000`; L1612 resets 0x4097 to 1, so the Big Sis check `0x4097 == 5` at 879 L1283 fails afterwards; Big Sis's hide flag 2019 is set at 782 L5861 and never cleared in play), file 112 L4859–L4917 (Dragon's Den clears the bikers, sets 2020, clears 2017 and 2023). Positions: Shipyard Ruins door ≈169,140; biker ≈19,7 inside.
 
 ## Four Island: the Mystery Stone buyer (don't sell it)
+<!-- quest: kind=side -->
 
 **Where:** a stone collector at the far south end of Four Island (well south of the ferry man and the nurse), and a woman with a Misdreavus in the middle of town (east of the man with the Graveler).
 
@@ -226,6 +235,7 @@ All three real choices send her to the Shipyard Ruins; only teaching her changes
 *Source:* script file 861 (scripts 10, 16; L1517, L2007, L2074–L2644, L2857–L3048; flags 1571, 2135, 2139, 2140), file 112 L1201 (Dragon's Den takes the stone). Collector ≈38,150; Misdreavus woman ≈53,108.
 
 ## Four Island: small extras (Stone Workshop)
+<!-- quest: kind=side -->
 
 - **The Garchomp veteran** (in the house next to the Stone Workshop: the south-east of the two house doors in town; he's right inside): accept his battle (Garchomp 65, Butterfree, Pidgeot, Kingler, Muk, Tauros). **Losing** gives you a **Dawn Stone** ("an old man like me could still beat a youngster"); winning gives nothing. No white-out either way. One time.
 - **The rough-stone seller** (inside the Stone Workshop, the north-west of the two house doors): $50,000 for a rock "full of evolution stones". It is always empty. Don't buy it.
@@ -235,6 +245,7 @@ All three real choices send her to the Shipyard Ruins; only teaching her changes
 *Source:* script files 737 (scripts 2, 5; L1527–L1566, L3213, L1585–L3374; flags 2138, 2163), 861 (scripts 8, 9; L1192–L1471; flag 2134). Positions: Garchomp veteran ≈5,5 behind Four Island door ≈43,120 (not the Stone Workshop, which is door ≈38,112); rough-stone seller ≈34,6 in the Stone Workshop; Nugget digger ≈40,93; salesman ≈45,113.
 
 ## Seven Island: the Island Pilgrimage (start and final trial)
+<!-- quest: kind=main -->
 
 **Where:** the Seven Island chief, an old man in the middle of the village, a few steps west of the nurse with the Blissey.
 
@@ -261,18 +272,21 @@ All three real choices send her to the Shipyard Ruins; only teaching her changes
 *Source:* script file 870 (script 6, L856, L1303–L1457, L2034–L2500; start needs var 0x40a2 ≥ 19; flags 2136, 2137, 2345, 1529; checks 0x40b2 ≥ 7, 2346, 0x40b3 ≥ 5, 0x409e ≥ 3, 2175, 0x40a2 ≥ 3). Chief ≈243,141; nurse ≈247,142.
 
 ## Two Island: Granny Mae's pilgrimage trial
+<!-- quest: kind=main -->
 
 Talk to Granny Mae in the hall during the pilgrimage and say you signed up. She and Dana fight you **one against two**: a Double Battle against **Medium Granny Mae** (Dragonite, Porygon-Z, Chandelure, Golduck, Sceptile, Lucario; Lv. 81–82) and **Aroma Lady Dana** (Charizard, Serperior, Empoleon, Marowak, Slowking, Gardevoir; Lv. 81–82). Win to pass. A loss whites you out. Her ultimate-move lessons stay available afterwards.
 
 *Source:* script file 782 (script 10, L2477–L2525, L5489, L7555–L8142; flag 2346).
 
 ## Three Island: the engineer's trial
+<!-- quest: kind=main -->
 
 The League engineer in his Three Island house (the northern of the island's two house doors; he's right inside) is the chief for now. Say "I'm here for the trial": he asks you to help a tourist. Do the [lost daughter](05-saffron-cinnabar.md#three-island--six-island-the-lost-daughter-three-islands-pilgrimage-trial) quest: once you accept, the tourist's daughter disappears; talk to her father, who stands on the south side of the island (a few steps south-east of the Shipyard Ruins door). Then report back to the engineer to pass.
 
 *Source:* script file 782 (script 21, L3041–L6054; var 0x40b3 2→5, flag 2023 = the daughter, hidden at L6042). Engineer ≈5,6 behind Three Island door ≈180,108; father ≈174,144 (there from the Dragon's Den clear, flag 2017), daughter ≈172,144.
 
 ## Four Island: the guard at the Sky Pillar Peak path
+<!-- quest: kind=main -->
 
 During the pilgrimage the Four Island chief isn't in town. A guard stands next to the northernmost cave entrance at the top of town, blocking the path to the peak: beat **Guitarist Brian** (Ampharos, Drapion, Parasect, Seviper; Lv. 81–82), then climb **Sky Pillar Peak** through the Island Cave. At the top, a Team Rocket scene replaces the chief's trial and counts as your pass (Sky Pillar Peak entry below). A loss whites you out.
 
@@ -281,6 +295,7 @@ After the pilgrimage, the chief (Rancher Tian, with his Rampardos in the middle 
 *Source:* script file 861 (scripts 1, 4–6, 19; L948, L1091–L2530; flag 2166; the chief's "Doubles" choice L1985 → L2429 runs `TrainerBattle 378, 378`, Bernard, instead of 845). Guard ≈49,78 (cave door ≈48,77); Tian ≈47,93; Trainers ≈40,89 and ≈54,92.
 
 ## Sky Pillar Peak: the Four Island trial (Team Rocket takes Rayquaza)
+<!-- quest: kind=main -->
 
 **Where:** the top of Sky Pillar Peak, reached through the Island Cave (Four Island).
 
@@ -295,6 +310,7 @@ After the pilgrimage, the chief (Rancher Tian, with his Rampardos in the middle 
 *Source:* script file 914 (script 4, coord 16,24 on var 0x409e = 2; `TrainerBattle` 811+813 and 486+628; sets 0x409e = 3), file 870 (Seven Island sets 0x409e = 2).
 
 ## Five Island: the Elder's quiz and battle
+<!-- quest: kind=main -->
 
 Continues [Five Island: the Island Pilgrimage leg](05-saffron-cinnabar.md#five-island-the-island-pilgrimage-leg-five-island-trials).
 
@@ -316,6 +332,7 @@ Then, "as you are the Champion", he adds a battle: **Elder Huguo** (Infernape, T
 *Source:* script file 737 (script 12, L2008–L2514, L3471–L3529, L3416–L4517; flags 2172, 2175; var 0x409c 8→9).
 
 ## Six Island: the chief's trial and the Fallen Red Star
+<!-- quest: kind=main -->
 
 **Where:** the Six Island chief's room, behind the **east** house door of Six Island (the west house door leads to the inn and the tour guide), and the Fallen Red Star, a red pyramid north of the chief's door on the island's east side.
 
@@ -333,6 +350,7 @@ Then, "as you are the Champion", he adds a battle: **Elder Huguo** (Infernape, T
 *Source:* script file 737 (script 20, L3023, L4189–L6640; flags 2195, 2347, 2348; party check L5998–L6634), file 943 (script 15, coord 213,78 with var 0x40b4 = 2, L827–L2436; `TrainerBattle 763 816` at L1585, Deoxys wakes after it, L1781–L1929; sets 0x40b4 = 3). Chief's room ≈37,68 behind Six Island door ≈216,81; door ≈168,79 is the inn/tour-guide house; Red Star ≈213,68.
 
 ## Ritual Shrine (Seven Island): Giovanni takes the Azure Flute
+<!-- quest: kind=main -->
 
 **Where:** the shrine at the north edge of Seven Island's village. The map name says **Ritual Shrine**; the islanders call it the **Relic Shrine**. Same place.
 
@@ -347,6 +365,7 @@ Then, "as you are the Champion", he adds a battle: **Elder Huguo** (Infernape, T
 *Source:* script file 942 (map script 1: with flag 2137 clear, L226 moves the keeper and her Vaporeon, objects 3 and 4, into the passage at ≈15–16,26; script 4 L295–L1882, `TrainerBattle` 999; sets 0x40b7 = 2), file 870 L2490 (sets 2137). Shrine keeper ≈16,3; shrine entrance ≈15,46 (Seven Island door ≈241,105).
 
 ## One Island: a photo with Latios or Latias (→ Black Glasses)
+<!-- quest: kind=side -->
 
 **Where:** a tourist on One Island, a few steps south of the Pokémon Center door, who dreams of a photo with One Island's guardians.
 
@@ -359,6 +378,7 @@ Then, "as you are the Champion", he adds a battle: **Elder Huguo** (Infernape, T
 *Source:* script file 845 (script 7, L1337–L2980; flag 1114). Tourist ≈141,151 (Pokémon Center door ≈142,147).
 
 ## Six Island: the Crawdaunt wallet thief (before the Lucky Meowth God)
+<!-- quest: kind=side -->
 
 **Where:** a tourist admiring a Crawdaunt near the Six Island ferry dock (just south of the ferry man). Its owner, **Sailor John**, stands across the water to the east (south-west of the Fallen Red Star).
 
@@ -373,6 +393,7 @@ Then, "as you are the Champion", he adds a battle: **Elder Huguo** (Infernape, T
 *Source:* script file 943 (scripts 5, 7; L2645–L2854, L2917–L5662; flags 2177, 2178, 2179). Tourist ≈172,86 (ferry man ≈170,83); Sailor John ≈202,85.
 
 ## Seven Island: the Clamperl pearl scam
+<!-- quest: kind=side -->
 
 **Where:** the generous granny's house on Seven Island (the east house door; she's right inside) and the beach just south-east of that door.
 
@@ -385,6 +406,7 @@ Then, "as you are the Champion", he adds a battle: **Elder Huguo** (Infernape, T
 *Source:* script file 737 (scripts 21, 24, 26; L3056, L1182–L1325, L3147, L4252–L5097; flags 2184, 2199; script 21 moves the girl next to the granny on map load, script 24 is the scene when you talk to her), file 870 (script 19, L1155–L2021; flag 2200). Granny ≈37,101 behind Seven Island door ≈249,137; girl on the beach ≈253,140.
 
 ## Seven Island: the snack thief (Kecleon)
+<!-- quest: kind=side -->
 
 **Where:** a tourist whose snacks keep vanishing (a few steps south of the Relic Shrine entrance), and an invisible "something blocking the way" a few steps east of the shrine entrance, at the north edge of town.
 
@@ -397,6 +419,7 @@ Then, "as you are the Champion", he adds a battle: **Elder Huguo** (Infernape, T
 *Source:* script file 870 (scripts 9, 12; L988–L1498, L1038–L1766; flags 2197, 2198; L1038 compares the first healthy party Pokémon with species 594; `WildBattle 352` at L1703 is followed by `CheckBattleWon`, so fleeing takes the win path, and only a loss jumps to L1032 `WhiteOut`). Tourist ≈240,109; blocked spot ≈245,103 (shrine door ≈241,105). Emulator (`emu_harness.py guide0107 --case kecleon`): Alomomola lead → cries 164 (Noctowl), msgs 33–37 and a wild Kecleon (352); Noctowl lead → msg 33 only.
 
 ## Victory Road 3F (final chapter): Silver's and Crystal's confessions
+<!-- quest: kind=side -->
 
 **Where:** Victory Road 3F, during the final march on Team Rocket (after the barrier at the gate is broken).
 
@@ -413,6 +436,7 @@ The [Indigo Plateau slope](07-league-to-cherrygrove.md#indigo-plateau-slope-fina
 *Source:* script file 110 (script 22 coord 50,32 var 0x409e = 12, `MultiBattle` 1005/496/1006; script 25 L2031–L6395; script 26 coord 17,30 var 0x409e = 13; script 29 L3499–L8106; script 31, `TrainerBattle` 1011+1012, 13+23; L6395 sets 1645), file 923 (Steven L1336–L1379, Cynthia L1801–L1840). Confession checks: flag 1618 (love reading, file 895), 1645 (already confessed), exclusion flags 2157 (Silver), 2145 (Crystal), 2155 (Steven), 2144 (Cynthia). Positions: Silver ≈43,29, Crystal ≈25,31.
 
 ## Sky Pillar Peak: Rayquaza (post-game, Jade Orb)
+<!-- quest: kind=side -->
 
 **Where:** the top of Sky Pillar Peak, the spot where Rayquaza appeared: walk straight north from where you come out of the cave, to the far end of the summit.
 
@@ -425,6 +449,7 @@ The [Indigo Plateau slope](07-league-to-cherrygrove.md#indigo-plateau-slope-fina
 *Source:* script file 914 (script 3, L1366–L1682; flag 2261 required, flag 2165 set after the battle and never cleared), file 842 L1932 (Jade Orb). Spot ≈16,11 (cave exit ≈16,25). The final Hall of Fame clears Zapdos's hide flag 1786 once (file 822 L2478); later entries don't.
 
 ## Six Island: Deoxys and the Lucky Meowth God (post-game)
+<!-- quest: kind=side -->
 
 **Who gets it / when:** after your final Hall of Fame entry, once Lance has brought the seized legendary items to your home ([Lance's visit home](01-pallet-to-pewter.md#pallet-town-lances-visit-home-after-the-final-hall-of-fame)). The Fallen Red Star is back in its spot on Six Island, north of the chief's door.
 
@@ -448,6 +473,7 @@ The [Indigo Plateau slope](07-league-to-cherrygrove.md#indigo-plateau-slope-fina
 *Source:* Red Star ≈213,68; forest trigger ≈34,50 (Six Island door ≈175,76 → forest ≈33,51). Script file 943 (script 11, L3552–L4987: `HidePerson 4` at L3623, which sets the Red Star's hide flag 2188, runs before `WildBattle 386` Lv. 95 at L5002; a loss jumps to L3755 `WhiteOut`, skipping the chief's scene L5026–L6407, the only reachable clear of flag 1331, the hide flag of Jessie, James and Meowth in the restaurant; tested in an emulator, CN and EN: 2188 already set when the battle starts, still set after the white-out, Red Star gone and 1331 still set back on Six Island, work/build/harness/guide-review-20261006/ch06/deoxys_*), file 894 (scripts 17–19, L3029–L5349; sets 0x40af = 14, flags 2181, 1331, 1448), file 55 (script 17, coord 34,50 with var 0x40af = 14: clears 2180, sets 2177, 2348), file 842 L2205 (clears 2188), file 737 (scripts 20, 27–29).
 
 ## Ritual Shrine: borrowing the Azure Flute (post-game; probably unobtainable)
+<!-- quest: kind=side -->
 
 **Where:** the shrine keeper at the far north end of the Ritual Shrine.
 
@@ -458,6 +484,7 @@ The [Indigo Plateau slope](07-league-to-cherrygrove.md#indigo-plateau-slope-fina
 *Source:* keeper ≈16,3 (with the pilgrimage flag 2137 clear, script 1 moves her to ≈15,26). Script file 942 (script 4 L104–L293, L516–L547; var 0x40b7 ≥ 4 checked before flag 2261), file 31 L3316 (League HQ sets 0x40b7 = 4 before the Hall of Fame), files 49 L694 and 131 L590 (use the flute). Writes to 0x40b7: 17 @2509 (1), 129 @1183 (1), 769 @2423 (0), 49 @5260 (3, Arceus scene), 31 @3316 (4), 942 @539 (5) and @1874 (2), 131 @1288/@1367 (6/7). Emulator (`emu_harness.py guide0107 --case azure_flute`, 2261 and 2137 set): 0x40b7 = 4 → 624#47, no item; 0x40b7 = 3 → 624#45, Yes → item 536, 0x40b7 = 5.
 
 ## Sevii Islands: small extras
+<!-- quest: kind=side -->
 
 - **Six Island fisherman** (on the shore between the ferry dock and Sailor John): sells Deep Sea Tooth and Deep Sea Scale for $1,000 and Shoal Shell for $200. The **Shell Bell** is listed at $5,000 but actually costs **$200**.
 - **Ace Trainer Boris, Six Island's security guard** (a few steps west of the chief's door): repeatable Single or Double battle (Arcanine, Mightyena, Houndoom, Smeargle, Absol, Manectric; Lv. 81–82).

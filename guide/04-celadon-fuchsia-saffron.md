@@ -43,6 +43,7 @@
 - [Silph Co. president's office: the Goodshow meeting and the Saffron takeover finale](#silph-co-presidents-office-the-goodshow-meeting-and-the-saffron-takeover-finale)
 
 ## Celadon Department Store roof: the prize quiz
+<!-- quest: kind=side -->
 
 **Where:** the Celadon Department Store roof. The quiz attendant stands by the top wall, three steps left of the vending machines.
 
@@ -63,6 +64,7 @@
 *Source:* script file 792 (script 15, L2295–L3166; flag 1883). Attendant at ≈12,3 on the roof map.
 
 ## Celadon Department Store roof: Tony and Mary's grooming (missable)
+<!-- quest: kind=side -->
 
 **Where:** Department Store roof (6F). Two "grooming genius" Breeders, Tony and Mary, work in the left-hand (west) corner of the roof with a queue of customers in front of them. A Kirlia owner standing just above the queue grumbles that Ms. Suzie in the Celadon Condominiums is far better. Suzie is in the Condominiums lobby (1F), in the upper right part of the room.
 
@@ -80,6 +82,7 @@
 *Source:* script files 792 (script 21, coord trigger at 4,5 on var 0x40d0 = 0, which is also the var's starting value; Tony/Mary hide flags 1544/1545 start clear; scripts 11, 15; the quest var is set to 2 at @1530, before the Jessie & James battle, and flags 1544/1545 set, 1535 cleared; Beedrill is trainer 462), 794 (script 1, L728/L1387/L758; $2,000 at L788 whenever flag 1535 is clear and 0x40d0 ≠ 2), 186 (Route 7 scene end, @1783/@1819, sets flag 1535 and 0x40d0 = 1, disarming the trigger; 794 @1402 sets it back to 0 after the free massage), 783 L4581–L4612 (closes it). Positions on the roof map: Tony ≈1,8, Mary ≈1,7, Kirlia owner ≈2,5; Suzie ≈10,5 on Condominiums 1F. Emulator (`emu_harness.py guide0107 --case tony`, both ROMs): with 0x40d0 = 0 and 1535 clear Suzie offers the paid massage (494#0); the roof trigger plays the scene, Beedrill 462 and then 460 + 461, and 0x40d0 is 2 (1544/1545 set, 1535 clear) when Jessie & James's battle starts; from that state Suzie offers the free massage (494#36).
 
 ## Celadon Condominiums → Silph Co. 5F: Grandma's treats for Shota (Master Ball; missable)
+<!-- quest: kind=side -->
 
 **Where:** an old woman with a Pikachu on **Celadon Condominiums 2F**, and the head of R&D on **Silph Co. 5F** in Saffron. To reach 2F, take the stairs on the right-hand (east) side of the Condominiums lobby; Grandma stands a few steps up from where you arrive, next to a photo album. On Silph Co. 5F, the head of R&D is in the right-hand (east) half of the floor, near the bottom.
 
@@ -100,6 +103,7 @@
 *Source:* script files 794 (scripts 12, 13, 14; L894, L948, L992, L1108; var 0x40cf; Master Ball only at value 2), 762 (script 7, L886; object 6 hidden by flag 1226), 129 L1141 (Rock Tunnel clears 1226), 17 L12023 (takeover sets 1226), 834 L5994 (liberation sets 0x40cf = 5). Grandma ≈14,37 and manager ≈6,42 are in the 2F part of the Condominiums 1F map (stairs ≈13,10 → ≈13,41; the manager's line 494#23 says "the old lady on the second floor"); head of R&D ≈44,13 on the Silph Co. 5F map.
 
 ## Celadon Restaurant: the eating contest (repeatable)
+<!-- quest: kind=side -->
 
 **Where:** the Celadon Restaurant. The receptionist stands at the right-hand side of the room; the five contestants sit at the tables.
 
@@ -123,6 +127,7 @@
 *Source:* script file 803 (script 1, L389–L660; scripts 2–6; flags 1527, 1815–1819). Positions on the Restaurant map: receptionist ≈13,7; Gunther ≈10,9, Shun ≈7,9, Wick ≈2,6, Ingrid ≈8,4, Zed ≈5,4.
 
 ## Celadon Condominiums roof: the insomniac and the Hypno (after the Rocket arc)
+<!-- quest: kind=side -->
 
 **Where:** a worried man on Department Store **4F** (towards the right of the floor, near the top wall) can't sleep. The rooftop room of the Celadon Condominiums (the old auction house) reopens as a leisure centre once the Celadon Rocket base is cleared.
 
@@ -134,6 +139,7 @@
 *Source:* script files 790 (script 7, L412; flags 1536–1538), 798 (scripts 5, 10, 12; flags 1537, 1891; room opens when 853 clears flag 1803). Insomniac ≈14,4 on 4F; Hypno man ≈6,4 in the roof room.
 
 ## Celadon Game Freak Club: GB Sounds and the diplomas
+<!-- quest: kind=side -->
 
 **Where:** Condominiums 3F (take the left elevator).
 - **Sound Designer** (right side of the room): gives **GB Sounds** once you have the **Earth Badge** (he says "all eight Kanto Badges", but only the Earth Badge is checked).
@@ -143,12 +149,14 @@
 *Source:* script file 796 (scripts 1, 10, 15). Positions on 3F: Sound Designer ≈14,6, Game Designer ≈8,5, Alex ≈9,3.
 
 ## Celadon Game Corner: cheaper coins after the Rocket arc
+<!-- quest: kind=side -->
 
 Not a quest, but a money tip. Until the Gloom search ends, coins cost **$20** each (50 for $1,000, 500 for $10,000). From the end of the Gloom search until the Rocket base is cleared, the coin clerk and the free-coins man are gone (the people standing in for them only talk), so you can't buy coins at all. Once the League takes over the Game Corner, coins cost **$5** (50 for $250, 500 for $2,500). If you want Prize Corner items, buy coins afterwards. You still need the gambler's Coin Case ([Celadon City: the stolen Gloom](03-vermilion-to-celadon.md#celadon-city-the-stolen-gloom-story-chain-easy-to-get-stuck)). A laughing man at the slot machines on the left side gives **18 free coins** once, if you have a Coin Case.
 
 *Source:* script file 801 (script 1 L2614/L3041, script 6; $20 while flag 1803 is set, $5 after). The clerk and the 18-coin man (≈5,9) are hidden by flag 1704 from the end of the Gloom search (file 783 @4561) until the Rocket base scene (file 853 @3142).
 
 ## Route 16 → Cycling Road → Route 18: the Secret Potion for the Warden's Dragonair
+<!-- quest: kind=main -->
 
 **Where:** the herbal shop's old lady in the Route 16 gatehouse (three steps left of its east door), the Cycling Road (Route 17), and the Route 18 gatehouse at the bottom, where Safari Zone Warden Baoba meets you.
 
@@ -174,6 +182,7 @@ Not a quest, but a money tip. Until the Gloom search ends, coins cost **$20** ea
 *Source:* script files 207 (script 5), 209 (script 3, L1708–L2104), 210 (script 3, L733, L1368–L1397), 211 (script 5, L501–L1468), 119 (L294, L1583), 206 (script 1, L114), 805 (L82), 853 L3774. The herbalist (≈7,7 in the Route 16 gatehouse) is hidden by flag 1800, which the Rainbow Badge ceremony clears; the outcome is flag 1801 (set = Dragonair dies). File 211 L501–L1468 counts the 12 biker trainer flags 1674–1682, 1687, 1692, 1693 (trainers 314–322, 327, 332, 333); it also checks flag 1689 (trainer 329, Swimmer Marina on Route 41), so beating her before the delivery would also doom Dragonair (suspected hack slip, see known-issues).
 
 ## Cycling Road: join the Kanto Speed Alliance or drive it out
+<!-- quest: kind=side -->
 
 **Where:** Roughneck Paxton on Route 18, at the bottom of Cycling Road west of the gatehouse, after you have handed over the Secret Potion.
 
@@ -198,6 +207,7 @@ Not a quest, but a money tip. Until the Gloom search ends, coins cost **$20** ea
 *Source:* file 210 (script 4, L820–L1735; the win sets flag 1673 and clears 1580; final fight `TrainerBattle 313 313` at @1589), file 209 (gang objects, hide flag 1673), file 205 (script 3, Quick Balls, flag 1183), file 826 L987–L1003 (sets 1673, clears 1580). Paxton ≈1136,428, Quick Ball kid ≈1143,276 (Route 16), Air Slash man ≈1149,428. Shiny Stone ball: Route 17 object 21 at ≈1143,402, hidden by flag 1890, which the Mt. Moon roadblock scene sets (file 9 @5522); only its own pickup (file 209 @363) sets it again and nothing clears it.
 
 ## Fuchsia Gym: the fake Kogas and the ninja bell (the Soul Badge trial)
+<!-- quest: kind=main -->
 
 **Where:** Fuchsia Gym (south-west corner of town, left of the Pokémon Center), then the Fuchsia Forest preserve (the gate in the north-east corner of town, next to the "no entry without Gym Leader Koga's permission" sign).
 
@@ -218,6 +228,7 @@ Not a quest, but a money tip. Until the Gloom search ends, coins cost **$20** ea
 *Source:* file 804 (script 11, script 12/L2075; opening cutscene lines 504#16–19), file 807 (script 5/L303), file 806 (scripts 2, 9, 14; L2097, L1931), file 61 (L2224–L7367; Mean Birds trainer 331 @2520, Blue 285 @3815, Koga 286 @4863, Maxie 981 @6373 as `TrainerBattle 981 0 1 0` with no win check). Final Gym battle: trainer 257. Positions: Gym door ≈1195,439, preserve gate ≈1234,403, Green/Red ≈1225,414, Janine-as-Koga ≈7,17 in the Gym; forest items Surf ≈60,53, Toxic Orb ≈41,50, Toxic Plate ≈33,25 (forest entrance ≈52,63). Retries: the forest scenes are step triggers that only switch off after a win (vars 0x40d8/0x40d9 for the Mean Birds and the Blue/Koga/Maxie scene, set at L2690 and L7345).
 
 ## Fuchsia Forest: Koga's disciples
+<!-- quest: kind=side -->
 
 **Where:** Fuchsia Forest, in the north-east part near the bell clearing (after the bell story).
 
@@ -230,6 +241,7 @@ Not a quest, but a money tip. Until the Gloom search ends, coins cost **$20** ea
 *Source:* file 61 (scripts 15, 17, 19; L3580, L3659, L3717; TM45 flag 1838; offer line 90#184). Ulrich is trainer 478. Positions: snake specialist ≈63,12, healer ≈55,17, jutsu disciple ≈71,18.
 
 ## Fuchsia City: the lost boy Taro (Kangaskhan and the poachers)
+<!-- quest: kind=side -->
 
 **Where:** a couple in the north of Fuchsia, a few steps south of the Safari Zone entrance; the Fuchsia Forest (the Kangaskhan is in the north-west part); Koga in the Gym.
 
@@ -249,6 +261,7 @@ Not a quest, but a money tip. Until the Gloom search ends, coins cost **$20** ea
 *Source:* file 61 (scripts 6, 8, 9; L3094, L3389, L4170; poachers are trainers 334 + 335), file 804 (scripts 15, 16), file 806 (script 2/L1845), file 810 (script 5/L367). Positions: couple ≈1217,408; Kangaskhan ≈36,16 and couple ≈38,16 in the forest; rangers' house door ≈1229,407 (warp to the middle room of the shared house map, ranger script 5 at ≈40,5). The ≈1222,435 door leads to Baoba's family room.
 
 ## Fuchsia City: show the ranger a Golem
+<!-- quest: kind=side -->
 
 **Where:** the rangers' house in north-east Fuchsia (a few steps south-west of the forest preserve gate). The ranger stands just inside, two steps up and one to the right of the door.
 
@@ -261,6 +274,7 @@ Not a quest, but a money tip. Until the Gloom search ends, coins cost **$20** ea
 *Source:* file 810 (script 6, L420). Rangers' house door ≈1229,407 (not ≈1222,435, which is Baoba's family room); ranger ≈37,6.
 
 ## Fuchsia City: Goh and the Tropius on display (choice, no reward)
+<!-- quest: kind=side -->
 
 **Where:** the Tropius exhibit a few steps south-west of the Safari Zone entrance. Goh stands next to it.
 
@@ -277,6 +291,7 @@ Either way Goh leaves and there is no item.
 *Source:* file 804 (script 14, L4293, L4759, L5503; Goh is trainer 323; hide flag 1683, set by the takeover, file 17 @12119). Exhibit ≈1207,408, Goh ≈1207,411.
 
 ## Fuchsia City: Cynthia and Steven (after the Soul Badge, before the Saffron takeover)
+<!-- quest: kind=side -->
 
 **Where:** Cynthia with her Garchomp just below and left of the Gym door. Steven with his Metagross in the Safari Zone entrance building, on the left side.
 
@@ -289,6 +304,7 @@ Either way Goh leaves and there is no item.
 *Source:* file 804 (script 32), file 119 (script 15, L3128; Steven's win flag 1864 is set only after a win), file 806 (L1981), file 17 (L12127). Cynthia is trainer 502, Steven 504. Both are hidden by flag 1207: cleared only by the Soul Badge scene (file 806 @1981), set by the takeover (file 17 @12127). Cynthia ≈1193,442; Steven ≈2,9 in the Safari Zone entrance building. Koga is hidden by flag 755 (takeover sets it, file 17 @12015; liberation clears it, file 834 @5968).
 
 ## Fuchsia City: small extras
+<!-- quest: kind=side -->
 
 - **Rock-type fan** (Pokémon Center, right-hand side): "Do you like Rock-type Pokémon?" → Yes for **TM71 Stone Edge** (once; No can be retried).
 - **Shard trader** (north-east part of town, a few steps below the rangers' house): one Shard for a set of three Berries: Red → Persim/Razz/Pomeg, Blue → Bluk/Kelpsy/Cornn, Yellow → Pinap/Grepa/Nomel, Green → Wepear/Hondew/Durin. Repeatable. He refuses if you can't carry the set.
@@ -299,6 +315,7 @@ Either way Goh leaves and there is no item.
 *Source:* file 807 (script 2), file 804 (scripts 9, 24; L1445), file 810 (script 3: `HasItem 423` = HM04, line 509#6). Positions: Rock-type fan ≈13,13 in the Pokémon Center; Shard trader ≈1230,414; Safari Ball seller ≈1194,405; photographer ≈1201,445; Baoba family door ≈1222,435 (man ≈69,5 in its room).
 
 ## Route 18: Lara and the Tauros (unlocks the battle marathon)
+<!-- quest: kind=side -->
 
 **Where:** Route 18 east of the gatehouse, the Fuchsia side. Lara and her Ponyta stand a few steps south-east of the gatehouse's east door, and the Tauros graze nearby, just south of the gatehouse.
 
@@ -312,6 +329,7 @@ Either way Goh leaves and there is no item.
 *Source:* file 210 (scripts 6, 9; L1158–L3666; available while var 0x40db = 0; leaving sets flag 1198). Lara ≈1167,433–434, Tauros ≈1160,434.
 
 ## Route 15 → Route 14: the Cape Battle Marathon (missable)
+<!-- quest: kind=side -->
 
 **Where:** Route 15, entered from the Fuchsia gatehouse. The receptionist stands a few steps east of the gatehouse exit.
 
@@ -340,6 +358,7 @@ Losing any battle before Dudley whites you out. **Losing to Dudley is allowed:**
 *Source:* file 203 (scripts 2, 4–9, 14; L1125–L4647; stage 2 trainers 375, 376, 372, 394, optional 353; stage 3 trainer 426 single), file 202 (script 3, L974–L3606; Don 463, Jessie 464, James 465, Dudley 466 as `TrainerBattle 466 0 1 0`), file 201 (script 28, coord gated by var 0x40db = 0), file 210 (script 9, L1322), file 17 L12563 (cancel sets var 0x40db = 2). Positions: receptionist ≈1253,423, healer ≈1334,431, stage 2 ≈1278–1292,433.
 
 ## Fuchsia City: the Dodrio owner's White Flute (Battle Marathon; before the Saffron takeover)
+<!-- quest: kind=side -->
 
 **Where:** in Fuchsia, a man with a Dodrio (in the south part of town, a few steps below the door of Baoba's family house) and a woman with an Electrode (in the north, a few steps south-east of the Safari Zone entrance).
 
@@ -352,6 +371,7 @@ Losing any battle before Dudley whites you out. **Losing to Dudley is allowed:**
 *Source:* file 804 (scripts 20, 22; L2499; gives the flute when var 0x40db = 1), file 202 (L3578: both the win and the loss path reach this SetVar 0x40db = 1), file 210 (L3666), file 17 (L12563–L12586; cancel sets 0x40db = 2). Dodrio owner ≈1220,438, Electrode owner ≈1220,406; both hidden by flag 1198 while the marathon is running.
 
 ## Route 15: Mack the magician's "show" (talk to the empty-wallet man first)
+<!-- quest: kind=side -->
 
 **Where:** Route 15 west: Mack stands with his Exeggcute a few steps north-east of the Fuchsia gatehouse exit. A man at the far east end of Route 15 talks about feeling "empty" after a street magic show. Both appear once the marathon is over, or once the Saffron takeover has cancelled it.
 
@@ -365,6 +385,7 @@ Losing any battle before Dudley whites you out. **Losing to Dudley is allowed:**
 *Source:* file 203 (scripts 3, 18; L960–L2314, L3591; `SubMoneyImmediate 10000` at @1022 with no money check, `AddMoney 10000` at @2234/@3678; talking to the man sets flag 1205, the win sets 1206; both hidden by flag 1823 until the marathon ends, file 202 L974/L3446, or is cancelled, file 17 @12590). Mack is trainer 358. Positions: Mack ≈1255,420, the man ≈1333,431.
 
 ## Route 14: show her a Chansey
+<!-- quest: kind=side -->
 
 **Where:** the north end of Route 14, just south of Route 13: a woman who loves Chansey.
 
@@ -375,6 +396,7 @@ Losing any battle before Dudley whites you out. **Losing to Dudley is allowed:**
 *Source:* file 202 (script 6: `PlayerOnBikeCheck`, `GetPartyLeadAlive`, species 113 → L2798; flag 348). Woman ≈1348,387.
 
 ## Route 13: the Southeast League (eight representatives and a Champion)
+<!-- quest: kind=side -->
 
 **Where:** along Route 13. An amateur battle club. The guide stands at the east end (the Route 12 side) and a healer at the west end (the Route 14 side).
 
@@ -400,6 +422,7 @@ After all eight, the **Champion, Ace Trainer Gus** (near the guide at the east e
 *Source:* file 201 (scripts 4–11, 22, 23; L1395–L2218, L1844; Champion title flag 2004). Route 13 spans ≈1345–1434, z 362–375. Positions: guide ≈1433,362, healer ≈1345,370, Bob ≈1412,370, Hiker Grady ≈1402,372, Cassie ≈1389,370, Stellan ≈1387,369, Chet ≈1381,370, Zeke ≈1370,373, Eve ≈1358,371, Doug ≈1349,372, Champion Gus ≈1424,368, move forgetter ≈1392,374.
 
 ## Route 12: wake the Snorlax (Poké Flute)
+<!-- quest: kind=side -->
 
 **Where:** Silence Bridge, Route 12. A Snorlax sleeps across the road east of the Route 11 gate (about 18 steps east of the gate's door). A Berry farmer stands just outside the Route 11 gate. The fighter he hired, Karate King Jet, is stuck right next to the Snorlax, on its east side.
 
@@ -412,6 +435,7 @@ After all eight, the **Champion, Ace Trainer Gus** (near the guide at the east e
 *Source:* file 199 (scripts 6, 8, 14; L1384, L1728, L2686, L3119; `WildBattle 143` at @1440, then `CheckBattleWon`, which also counts a flee or a catch as a win, emulator-confirmed for the Victory Road Electrode; a win sets the hide flag 1158 at @1464, a loss goes to `WhiteOut` at L2493). Positions: Snorlax ≈1426–1427,305–306, Route 11 gate door ≈1408,305, farmer ≈1410,305, Jet ≈1428,306.
 
 ## Route 12: Prof. Birch's Torchic (missable)
+<!-- quest: kind=side -->
 
 **Where:** south part of Route 12, below the sleeping Snorlax. Prof. Birch stands five steps west of the Fishing Guru's house door. A wild Poochyena is chasing him.
 
@@ -426,6 +450,7 @@ After all eight, the **Champion, Ace Trainer Gus** (near the guide at the east e
 *Source:* file 199 (scripts 16, 17; L2249–L2414; `WildBattle 261` @2376, `CheckBattleWon` treats a flee as a win, a loss → L2493 `WhiteOut`), file 853 L3790–L3802 (sets flags 1447, 1448, 417). Reachability: the Snorlax (obj 2) and three invisible blockers (objs 3–5) share flag 1158, set only by waking it (@1464); the gate pocket and the Lavender boardwalk end at it; the south side connects only to Route 13/14, closed from Fuchsia until the marathon and the Cycling Road potion (209 L1708, herbalist hidden by 1800 until the ceremony). Birch ≈1424,318; Fishing Guru's door ≈1429,318.
 
 ## Route 12: the fish-zapper and the shiny Milotic (choose how to stop him)
+<!-- quest: kind=side -->
 
 **Where:** the north part of Route 12, above the Snorlax. A fisherman stands by the water; the blond Guitarist Hugo and his Voltorb are a few steps south-east of him.
 
@@ -445,6 +470,7 @@ After all eight, the **Champion, Ace Trainer Gus** (near the guide at the east e
 *Source:* file 199 (scripts 10, 13; L1820, L2716–L3926, L4395), flag 1159 (Hugo's hide flag; set before the Milotic battle at @4441 and cleared only after a win/catch/flee at @4469; the fisherman's script 13 gives nothing while it's set). Talking to the fisherman sets var 0x40bc = 1. Positions: fisherman ≈1427,280, Hugo ≈1430,286–287.
 
 ## Route 12: the boyfriend who lost his Pokémon (you must lose)
+<!-- quest: kind=side -->
 
 **Where:** the north part of Route 12, a couple standing a few steps north-east of the fisherman who complains about the fish-zapper.
 
@@ -467,6 +493,7 @@ After all eight, the **Champion, Ace Trainer Gus** (near the guide at the east e
 *Source:* file 199 (scripts 11, 12; L1861–L3102, L2038; talking to her sets var 0x40bb = 1; `TrainerBattle 185, 0, 1, 0` at @1991, trainer 185's Rattata knows Tail Whip, Focus Energy, Quick Attack, Tackle). No Struggle at 0 PP: tested in an emulator on both ROMs (FACTS 2026-10-06, harness `bugreports-20261006/struggle`). Couple ≈1433–1434,273.
 
 ## Route 12: Bug Catcher Harlan's Butterfree
+<!-- quest: kind=side -->
 
 Continues [Route 9: the Butterfree girl](03-vermilion-to-celadon.md#route-9-the-butterfree-girl-release-it-or-keep-it).
 
@@ -483,6 +510,7 @@ Continues [Route 9: the Butterfree girl](03-vermilion-to-celadon.md#route-9-the-
 *Source:* file 199 (script 21; L2460–L4240; gated by flag 1103, set at file 190 @6229; flag 1342 is cleared at @3547/@4226 and set by file 739 @3347), file 734 (script 1; reads flag 1342). Harlan ≈1428,341.
 
 ## Route 12: the Fishing Guru's Super Rod
+<!-- quest: kind=side -->
 
 **Where:** the Fishing Guru's house in the south part of Route 12, below the Snorlax (Prof. Birch first meets you just west of its door).
 
@@ -495,6 +523,7 @@ Continues [Route 9: the Butterfree girl](03-vermilion-to-celadon.md#route-9-the-
 *Source:* file 200 (scripts 1, 2; Super Rod flag 2070; script 2 L332–L504 takes 5/15/45 Net Balls and gives 1/3/9 Big Pearls), trainer flags 1594–1596 (trainers 234–236). Positions: Guru's door ≈1429,318, Mick ≈1420,274, Graham ≈1433,299, Kent ≈1434,327.
 
 ## Route 12: the TM salesman
+<!-- quest: kind=side -->
 
 **Where:** on the Silence Bridge north of the Snorlax, about 12 steps straight north of it, on the stretch you walk down from Lavender Town. You can reach him without waking the Snorlax.
 
@@ -510,6 +539,7 @@ Continues [Route 9: the Butterfree girl](03-vermilion-to-celadon.md#route-9-the-
 *Source:* file 199 (script 7, obj 1 with no hide flag; one TM per purchase at L1488/L1548/L1608/L1668; items 332, 333, 335, 337; no badge or flag check). Salesman ≈1427,293.
 
 ## Route 12: other optional battles
+<!-- quest: kind=side -->
 
 - **Cynthia** (at the north end of Route 12, with Gabite) offers a battle against her new catches (Feebas, Spiritomb, Gabite, Lucario, Lv. 25–30). One time only, no prize. She leaves Route 12 after the meeting with President Goodshow and Lance at Silph Co., so it's missable.
 - **Picnicker Lily**, the would-be ninja (in the south part of the route, on the west side): "Want to see?" → Yes → Double Battle → **Poison Barb** (once).
@@ -517,6 +547,7 @@ Continues [Route 9: the Butterfree girl](03-vermilion-to-celadon.md#route-9-the-
 *Source:* file 199 (scripts 15, 19; L2175, L3294); file 795 @976 sets Cynthia's hide flag 1162. Positions: Cynthia ≈1428,268, Lily ≈1411,333.
 
 ## Resort Zone (Johto): the broke backpacker
+<!-- quest: kind=side -->
 
 **Where:** Resort Zone guesthouse, in the lobby a few steps below the receptionist (with his Geodude).
 
@@ -529,6 +560,7 @@ Continues [Route 9: the Butterfree girl](03-vermilion-to-celadon.md#route-9-the-
 *Source:* file 117 (script 4, L694; script 7, L752). Backpacker ≈9,7 in the guesthouse.
 
 ## Resort Zone: Misty's date, the Pal Park and the Couples Double Battle
+<!-- quest: kind=side -->
 
 Continues [Misty's romance](02-pewter-to-vermilion.md#cerulean-gym--cerulean-cape-mistys-romance); how partners are chosen is in the [central romance entry](09-ilex-goldenrod.md#romance-route-how-its-unlocked-how-your-partner-is-chosen-and-what-locks-a-partner-out-central-entry).
 
@@ -543,6 +575,7 @@ Continues [Misty's romance](02-pewter-to-vermilion.md#cerulean-gym--cerulean-cap
 *Source:* file 758 (L7555–L7857; the date start sets Misty's hide flag 595 at @7636; the Gym's map script, script 8 → L3641, only clears 595 when flag 1645 is clear or flag 2142 is set), file 809 (script 15, L2897–L4348; trainer pairs 426+982, 565+10, 560+915, 674+1023). Next date: var 0x40b5 = 4 (809 @4348, after the warp to the Gym at L4324; 809 never clears 595). Retry after a loss: every loss goes to L4885 `WhiteOut` with var 0x40b5 = 3 (@592) and 595 still set; Route 25's map script (216 script 4 → L3164) then shows the Cape Misty (flag 598), and her Cape date (script 41) ends at L12196, which clears 595 (@12236). With var = 4 she stays hidden at the Cape too. The other scripts that clear 595 (files 34, 195, 217, 795, 821, 834, 853, 912) are one-time story scenes, all over before the final Hall of Fame (flag 2261) that the dates need. Emulator (`emu_harness.py guide0107 --case misty_date`): 809 script 15 run from L4312 with 2261 and 1645 set, 2142 clear and 595 set → zone 427 with var 0x40b5 = 4, object 6 absent, also after a fresh warp into the Gym; Route 25 object 35 (flag 598) absent.
 
 ## Resort Zone: the Pal Park's Fixed Catch mode (wild Pokémon by weekday)
+<!-- quest: kind=side -->
 
 **Where:** the Pal Park reception building in the Resort Zone (Route 48, open after the Cianwood Gym story).
 
@@ -576,6 +609,7 @@ Continues [Misty's romance](02-pewter-to-vermilion.md#cerulean-gym--cerulean-cap
 *Source:* file 809 (receptionist: L5439 room check, L5785 weekday branches clearing hide flags 2124–2131, L6431–L6528 $10,000 and warp to map 109); file 12 (48 one-time battles, scripts 7–54); wild table record = 142 + weekday − 1 (arm9 0x0203A7B0, D-1484). Monday branch L6143: `ScrCmd_522` (the current hour, observed) 7–18 → L6679 clears 2124 + 2127 (A, D), else 2128 + 2131 (E, H); emulator `emu_harness.py guide0107 --case monday` (00:30, 06:30 → E+H; 07:30, 12:30, 18:30 → A+D; 19:30, 23:30 → E+H).
 
 ## Silph Co. (Saffron takeover): the employee's Lapras (missable)
+<!-- quest: kind=side -->
 
 **Where:** Silph Co. cafeteria floor, among the locked-up hostages (next to the hostage who heals your Pokémon), during the Team Rocket occupation of Saffron.
 
@@ -588,6 +622,7 @@ Continues [Misty's romance](02-pewter-to-vermilion.md#cerulean-gym--cerulean-cap
 *Source:* file 755 (script 28, L3176; scripts 11, 29–31; items need flag 1226, set by the takeover (file 17 @12023); it is also set from the end of the Mt. Moon roadblock story (file 9 @5598) until the Rock Tunnel rescue (file 129 @1141), but Saffron City's gates are shut before the rescue: Route 5/6 gates files 182/185 block while var 0x409F = 0, Route 7 gate file 187 while 0x40B9 = 0; read only, see the known-issues entry on the early Lavender curse). Hostages hidden by flag 1208, set at file 834 @5066/@5207. Employee ≈33,8 on the cafeteria map.
 
 ## Saffron City: the Team Rocket takeover (what it closes)
+<!-- quest: kind=main -->
 
 **Starts:** when Sabrina laughs in Pokémon Tower ([Pokémon Tower: make Sabrina laugh](03-vermilion-to-celadon.md#pokémon-tower-make-sabrina-laugh-the-marsh-badge-trial)). **Ends:** after the Rocket Boss scene in the president's office at the top of Silph Co. (win or lose). Lance then gives you a **Vs. Recorder** at the Pokémon Center (see the finale entry below).
 
@@ -605,6 +640,7 @@ Continues [Misty's romance](02-pewter-to-vermilion.md#cerulean-gym--cerulean-cap
 *Source:* file 17 (L11987–L12610), file 834 (L5062–L5221, L5641, L5948–L5994).
 
 ## Saffron City (takeover): getting past the barrier into the city
+<!-- quest: kind=main -->
 
 **Where:** the four roads into Saffron City, just outside each gatehouse. Gym Leaders, Elite Four members and friends stand at every one, all stuck behind the same invisible barrier.
 
@@ -631,6 +667,7 @@ Continues [Misty's romance](02-pewter-to-vermilion.md#cerulean-gym--cerulean-cap
 *Source:* file 188 (Route 8), script 16 (Sabrina, L618): message 62 while any of flags 1494–1496 is set; message 68 once all three are clear; Yes → L1965 → L2723 `Warp 405` 52,40. If you said No, L1957 clears flag 1504 and the next talk goes to L1792 (message 74). The gate flags are cleared by talking to the people at the gates: file 179 (Route 5, scripts 9/11/13/15/16), file 186 (Route 7, scripts 8/10/12/14), file 184 (Route 6, scripts 10/12/14/16). They're set earlier by the Pokémon Tower ghosts' ideas (file 17 @3333, @5653/@5719, @5852), so they are all set when the takeover starts. Blue's scene: message bank 524, lines 20–44 (the Saffron Pokémon Center, zone 407, coord script 5 of file 827). Emulator (`emu_harness.py guide0107 --case blue_saffron`, both ROMs): run from the trigger tile with a Lv100 lead, TrainerBattle 414 and the two MultiBattles with Blue (385+416+613, 385+614+615) won, lines 20–44 shown (32 and 34 are the female-player versions; the script never prints 24), ending with #44 (Silph Co.).
 
 ## Silph Co. president's office: the Goodshow meeting and the Saffron takeover finale
+<!-- quest: kind=main -->
 
 **Where:** the president's office at the top of Silph Co. Two scenes play here:
 1. **Before the takeover:** Lance brings you, Blue and Green/Red to meet President Goodshow. He gives you **3 Rare Candies**. The two answers to his question only change one line. This meeting makes the Pokémon Tower ghosts appear for Sabrina's trial ([Pokémon Tower: make Sabrina laugh](03-vermilion-to-celadon.md#pokémon-tower-make-sabrina-laugh-the-marsh-badge-trial)).

@@ -22,6 +22,8 @@ a.tag-place { background: var(--sl-color-accent-low); color: var(--sl-color-acce
 .tag-gender { background: #6a3d7a; color: #fff; }
 .tag-missable { background: #8a2b2b; color: #fff; }
 .tag-postgame { background: #33573a; color: #fff; }
+.tag-main { background: #705015; color: #fff; }
+.tag-side { background: #35566b; color: #fff; }
 .quest-meta { margin-top: 0.25rem !important; }
 section.quest { scroll-margin-top: 5rem; }
 section.quest.is-hidden { display: none; }
@@ -43,6 +45,7 @@ details.tech summary { cursor: pointer; }
 .game-setup label { font-size: var(--sl-text-sm); }
 .game-setup select { margin-left: 0.35rem; }
 .game-setup .hidden-count { font-size: var(--sl-text-sm); color: var(--sl-color-gray-3); }
+.game-setup .quest-filter-help { flex-basis: 100%; font-size: var(--sl-text-xs); color: var(--sl-color-gray-3); }
 
 /* ---- tables and filters */
 table.compact { font-size: var(--sl-text-sm); }

@@ -50,6 +50,7 @@
 - [Route 30: Green's (or Red's) dates (after the final Hall of Fame)](#route-30-greens-or-reds-dates-after-the-final-hall-of-fame)
 
 ## Cherrygrove City: Crystal, the orphanage and Rhett's Slugma (story chain; where to go next)
+<!-- quest: kind=main -->
 
 **Where:** the orphanage, the middle house of Cherrygrove's south-west row (Crystal stands near the top of the room); then the north edge of town, a few steps north-west of the Poké Mart.
 
@@ -73,6 +74,7 @@
 *Source:* script file 851 (scripts 4, 6; L1271–L2745; var 0x408b 7 → 9, flags 1964, 1965, 1967, 1968), file 847 (L7995–L8091 tour, coord 547,385 → L5553–L5763, L7374 sets 0x408b = 8; Slugma question L1945, trainer 745, Heal Balls (item 14) ×5 at L6549–L6561), file 840 (lab script 3, L1436–L1530: hides the orphanage Crystal (flag 1964) and shows the Elm scene (clears 1968)); post-game: L926 checks flags 1645 (confessed) and 2145 (Crystal ruled out) before the walk option; flag 1964 is cleared again at the final Hall of Fame (file 822 L2522). Positions: Crystal at 34,4 in the orphanage; Rhett at ≈547,385, north exit ≈549,386.
 
 ## Route 30: the Stantler roadblock (Noctowl's Foresight)
+<!-- quest: kind=side -->
 
 **Where:** the northern part of Route 30, north of the fishing pond and south of Mr. Pokémon's house: a herd of Stantler blocks one of the two paths north. A man standing just south of them, next to a sign, complains about it.
 
@@ -90,6 +92,7 @@
 *Source:* script file 227 (scripts 5, 10, 12; L2453–L2567, L3984–L4149; flag 1807), file 259 L3586 (Route 46 sets 1807). Positions: herd ≈548–553,311–313; complaining man ≈552,317.
 
 ## Route 30 → Route 31: the wild Chikorita that challenges Trainers (catch it; one chance)
+<!-- quest: kind=side -->
 
 **Where:** Route 30 (a Youngster with a Rattata, a short way south of the Stantler herd) → Route 31 (a girl with an Oddish near the east end of Route 31; then a Bug Catcher with a Yanma in the west part of the route, towards the Violet City gatehouse).
 
@@ -110,6 +113,7 @@
 *Source:* script file 227 (scripts 18, 21, L2586–L4206; flag 1323), file 230 (scripts 7, 15, 17, 18, 20; L1123–L2485, L1700–L2544; flags 1238, 1812, 1813; `WildBattle 152 Lv. 5`; trainer 799, item 151), file 851 L488–L492. Flag 1323 is also set by Brock in the Pewter Museum (file 753 script 16) whenever his siblings' quiz isn't finished (hack finding D-1424). Positions: Youngster ≈552,331; Oddish girl ≈562,282; Bug Catcher ≈531,278.
 
 ## Route 30: Mr. Pokémon's quiz (→ Exp. Share)
+<!-- quest: kind=side -->
 
 **Where:** Mr. Pokémon's house, at the north end of Route 30.
 
@@ -132,6 +136,7 @@
 *Source:* script file 229 (script 1; L30 `HasItem 427`, L51 flag 1808 (Dark Cave incident over), L140–L631, flag 2335).
 
 ## Route 31: give Crystal your Flash TM (the way into Dark Cave)
+<!-- quest: kind=main -->
 
 **Where:** Route 31, right in front of the Dark Cave entrance (Crystal, with Gold beside her).
 
@@ -146,12 +151,14 @@
 *Source:* script file 230 (scripts 2, 8, 16; L896, L1829–L2741; `TakeItem 397`, flag 1809), file 192 (Route 10 Pokémon Center, L92–L416). Crystal at ≈565,270.
 
 ## Cherrygrove City: small extras
+<!-- quest: kind=side -->
 
 - **Fighter's house (west house of the south-west row):** "Want to battle?" → Singles or Doubles against him. Your first win gives a **Power Belt**; the battle is repeatable.
 
 *Source:* file 851 script 2, L840–L1638, L2325–L2370; trainer 610; flag 1647.
 
 ## Violet City: Tamao and Crystal (before the Sprout Tower ceremony)
+<!-- quest: kind=side -->
 
 **Where:** north part of Violet City: Kimono Girl Tamao a few steps north of the gap between the Poké Mart and the Gym; Crystal with her Chikorita further north, straight above the Gym door.
 
@@ -168,6 +175,7 @@
 *Source:* script file 854 (scripts 19, 20; L1981–L2115; flags 1839, 1849), file 18 (ceremony: HidePerson on the flag-739 objects, SetFlag 1839 at L3845). Tamao and Crystal are both hidden by flag 739, which the ceremony sets and nothing clears; the ceremony's L3861 clears flag 1851, which shows Crystal and Gold at the Ruins of Alph; the flag 1839 change on Route 34 (file 237) belongs to a different object (a Totodile). Positions: Tamao ≈474,252; Crystal ≈479,244.
 
 ## Violet City: the S.S. Anne passenger and his girlfriend (only if you saved the S.S. Anne)
+<!-- quest: kind=side -->
 
 **Where:** a woman and her boyfriend a few steps south of the Pokémon Academy door (the east house on the Gym's street).
 
@@ -180,6 +188,7 @@
 *Source:* script file 854 (scripts 2, 16; L1320, L2431; flags 1093, 1822). The boyfriend (object 18) is hidden by flag 1093, set by the sinking (file 157 @2852) and cleared only by the Celebi trip (file 52 @4858). Positions ≈494,263 and 493,263.
 
 ## Sprout Tower: the monks' toll (pay or fight)
+<!-- quest: kind=main -->
 
 **Where:** Sprout Tower 1F, the three monks whose Bellsprout block the way up. You can tell them apart by what they say first.
 
@@ -200,6 +209,7 @@ Either answer moves his Bellsprout aside for good. Losing a battle blacks you ou
 *Source:* script file 16 (scripts 8, 10, 13; L973, L1053, L1167; flags 2107–2109). Positions in the Sprout Tower map: 1st monk ≈19,45; 2nd ≈6,10; 3rd ≈8,59 (stairs to 3F at 15,59).
 
 ## Sprout Tower: optional battles (Gold, the S.S. Anne monk, the Elder)
+<!-- quest: kind=side -->
 
 - **Gold** (1F, a few steps in from the entrance, with Exbo the Cyndaquil): asks for a warm-up battle, Lv. 10–11. Only before the ceremony (he leaves with it). No reward.
 - **The S.S. Anne monk** (1F, with a Victreebel, at the west end of the same area as the first toll monk): **only if you saved the S.S. Anne** (or after the post-game Celebi trip undoes the sinking). He battles you (Sage Zhishen, six Pokémon at Lv. 81–82) and gives **1 Chesto Berry** as thanks. Afterwards he offers a rematch any time, Singles or Doubles (Doubles needs at least two Pokémon).
@@ -208,6 +218,7 @@ Either answer moves his Bellsprout aside for good. Losing a battle blacks you ou
 *Source:* script file 16 (scripts 7, 11; flags 2106, 1810, 1093), file 18 (script 9; L2281–L2576). Positions: Gold ≈15,20; S.S. Anne monk ≈6,40.
 
 ## Violet City: the repentant thief (choice, no reward)
+<!-- quest: kind=side -->
 
 **Where:** a man a few steps south-east of the Sprout Tower entrance.
 
@@ -224,6 +235,7 @@ No answer gives a reward.
 *Source:* script file 854 (script 17; answers 1–3 set his hide flag 1827 at L1932/L1947/L1962; "Thanks for clearing up my doubts" L1914); the ceremony also sets 1827 (file 18 L3857). Position ≈491,232.
 
 ## Violet City: the runaway Marill (→ Heart Scale, 2 PP Max)
+<!-- quest: kind=side -->
 
 **Where:** Violet City, the Marill's owner on the west side of town, south-west of the Poké Mart; the Marill at the east edge of town, north of the Route 31 gatehouse. Later, Union Cave 1F.
 
@@ -249,6 +261,7 @@ No answer gives a reward.
 *Source:* script file 854 (scripts 5, 27; L1682–L1830, L2117–L2230, L3780–L3837, L3903–L5163; var 0x40AD, flags 1528, 1824–1826, 1896), file 231 (Route 31 gatehouse L179 sets 0x40AD = 1), file 56 (Union Cave script 5, L785–L989 and L2460–L2874; trainer #756; the return to Violet is set at L2848/L2852 right after the win), file 92 (Ilex Forest L10459–L10467 hide the Union Cave scene and the corner Marill; L10515–L10534 set 0x40AD = 8 and hide the Marill beside the owner unless the var is already 8, else L10927 shows the owner and Marill again; the owner's hide flag 1825, set when she leaves at L3815, is cleared only by the Union Cave win and L10927). Positions: owner ≈463,262; Marill ≈505,254 → ≈505,236; Union Cave ≈51,86.
 
 ## Violet City: teach Goh a lesson (before the Ruins of Alph chapter ends)
+<!-- quest: kind=side -->
 
 **Where:** a few steps south-east of the Poké Mart door, where Goh is mocking a local boy.
 
@@ -261,6 +274,7 @@ No answer gives a reward.
 *Source:* script file 854 (script 29; L2245–L4557; flag 1856, trainer #163), file 51 (Ruins of Alph, L4265 also sets 1856). Position ≈473,264.
 
 ## Violet City: the Pokémon Academy class Q&A (→ TM67 Recycle or 2 Big Pearls)
+<!-- quest: kind=side -->
 
 **Where:** the Pokémon Academy (the east house on the Gym's street, to the right of the Gym), talk to the teacher at the front.
 
@@ -283,6 +297,7 @@ No answer gives a reward.
 *Source:* script file 82 (scripts 6–12; L946–L1958; flag 1858; trainer #752). Academy door ≈495,257.
 
 ## Violet City: Gyro Ball TM for the Forretress kid (unlocks Shell Smash)
+<!-- quest: kind=side -->
 
 **Where:** the Youngster with a Forretress at the far west of town, right next to the Route 36 gatehouse door.
 
@@ -295,6 +310,7 @@ No answer gives a reward.
 *Source:* script file 854 (script 15; L1843–L3895; flag 1850; L3872–L3895 only sets the flag, no TakeItem; hack finding D-1425). Position ≈457,244.
 
 ## Violet Gym: Falkner's rules (Flying types only, 4 Pokémon max)
+<!-- quest: kind=main -->
 
 **Where:** Violet Gym, Falkner at the top of the elevator.
 
@@ -311,6 +327,7 @@ What the game actually checks is a fixed list of non-Flying species: if any of t
 *Source:* script file 856 (script 2, L971–L14824; party checks L14796, L14807; 692 listed species, hack finding D-1426; script 1: away on weekday 3 once flag 2261 is set).
 
 ## Violet City: the stolen trophy and the Jade Orb (League HQ round 3)
+<!-- quest: kind=main -->
 
 **Where:** Violet Gym, then the house at the south end of town (well south of the Gym), then back to the Gym.
 
@@ -326,6 +343,7 @@ What the game actually checks is a fixed list of non-Flying species: if any of t
 *Source:* script file 856 (script 2 L606–L14708, script 13; var 0x4078 7 → 8 → 10; flags 745, 1136, 1137, 2295), file 860 (script 7, L545–L862), file 822 L2494 clears 2295. House door ≈484,277.
 
 ## Violet City: show the runner a Rapidash (→ Magmarizer)
+<!-- quest: kind=side -->
 
 **Where:** the house at the south end of town (well south of the Gym), the runner in the right-hand room.
 
@@ -338,6 +356,7 @@ What the game actually checks is a fixed list of non-Flying species: if any of t
 *Source:* script file 860 (script 6; L412–L906; flags 1857, 2295). House door ≈484,277.
 
 ## Violet City: small extras
+<!-- quest: kind=side -->
 
 - **Primo's passwords** (Pokémon Center, the man to the right of the counter): he asks two Easy Chat phrases. These are HeartGold's own Primo passwords, worked out from your Trainer ID. The right pair gives a **Mareep, Wooper or Slugma Egg** (one of each), provided your party has room; other correct pairs unlock a Box wallpaper. Not confirmed in game.
   <!-- solver: primo-passwords -->
@@ -347,6 +366,7 @@ What the game actually checks is a fixed list of non-Flying species: if any of t
 *Source:* script file 857 (script 5; flags 345–347), file 854 (script 4), file 18 (script 2). Positions: Primo ≈12,11 in the Pokémon Center; Shard trader ≈494,272.
 
 ## Route 32: the Hoppip blown away by the storm (→ Hurricane tutor)
+<!-- quest: kind=side -->
 
 **Getting there (applies to every Route 32 entry below):** a railway crew stands across the only path south from Violet City, near the north end of Route 32. They stay until the end of the Ruins of Alph chapter (the missing Molly, below). Everything south of them waits until then: the fire-breather, the Friday sibling, the Quick Powder, the Mareep girl, the Hoppip owner, the "eat Pokémon" man, the Pokémon Center and Union Cave. Only the fossil seller at the very north end is reachable earlier. (Whether you can reach them earlier from the south, via Azalea and Union Cave, is not confirmed.)
 
@@ -371,6 +391,7 @@ What the game actually checks is a fixed list of non-Flying species: if any of t
 *Source:* script file 232 (scripts 14, 17, 18, 19; L11147–L12469, L12531–L13969; flags 304 = asked, 600 / 609 = rescued, 612 = the second Hoppip still missing, set at game start by file 149). Railway crew: flag 1904 (≈475–477,305), set at the end of the Molly chapter (file 51 L4253). Positions: owner ≈459,383; tree Hoppip ≈460–462,338; second Hoppip ≈461,368; Staravia and Hoppip ≈470–471,409.
 
 ## Route 32: the fire-breather's Fire-only battle (→ TM50 Overheat)
+<!-- quest: kind=side -->
 
 **Where:** Route 32, north part, east side, just south of where the railway crew stood.
 
@@ -387,6 +408,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script file 232 (script 13, L2393 species check → L12247, TrainerBattle 672, flag 787; hack finding D-1426). Position ≈471,311.
 
 ## Route 32: give the Mareep girl a Magnet (→ Max Revive)
+<!-- quest: kind=side -->
 
 **Where:** Route 32, west bank, north of the Hoppip owner: a girl with her Mareep.
 
@@ -401,6 +423,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script file 232 (script 16, L11205, L12471; flag 384). Position ≈453,363.
 
 ## Route 32: "Should people eat Pokémon?" (Leftovers or Sharp Beak)
+<!-- quest: kind=side -->
 
 **Where:** Route 32, a few steps west of the Pokémon Center door.
 
@@ -418,6 +441,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script file 232 (script 22, L11784; flag 1849). Flag 1849 is also set by file 854 (Violet City, Crystal's battle, L2109) and cleared by file 18 (Sprout Tower 3F, L3853). He stands south of the railway crew (flag 1904, cleared only at the end of the Molly chapter, which needs the ceremony), and Crystal's Violet battle is hidden by flag 739 after the ceremony, so both items can't be had. Position ≈460,416.
 
 ## Route 32 Pokémon Center: the storm patients and the injured Igglybuff (missable; before Route 33)
+<!-- quest: kind=side -->
 
 **Where:** the Route 32 Pokémon Center (at the south end of the route, just north of Union Cave) and, outside, a Trainer kneeling by an injured Igglybuff, a short walk north-west of the Pokémon Center door.
 
@@ -438,6 +462,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script file 233 (Joy script 2, L1028–L1998; Cubone L1278/L2006/L2555; Bonsly L1322/L2160/L2855; auto-trip L3344; flags 1982–1984, var 0x40a6: 2 = told by the Trainer, 3 = Joy told, 4 = done), file 232 (script 21, Igglybuff Trainer), file 188 (Route 8, script 13: Moomoo Milk $2,500, object 17 at ≈1360,243, no hide flag), file 236 (Route 33 L6541–L6584: sets flag 117 to hide the patients, clears 1982–1984, sets var 0x40a6 = 5 unless it's 4). Positions: Pokémon Center door ≈468,418; Igglybuff Trainer ≈459,401; inside, Cubone ≈4,15, Bonsly ≈10,19.
 
 ## Route 32: the Quagsire's revenge (only if you took the Wooper's Poké Ball by force)
+<!-- quest: kind=side -->
 
 **Continues [Cherrygrove City: the Wooper and the lost Poké Ball](07-league-to-cherrygrove.md#cherrygrove-city-the-wooper-and-the-lost-poké-ball--focus-band).**
 
@@ -457,6 +482,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script file 232 (coord trigger script 23, fires while var 0x40a7 = 2; L11838–L13681: WildBattle 195 Lv. 50, TakeItem 2/3/4 ×10, then var 0x40a7 = 1), file 51 L4297–L4308 (sets 0x40a7 = 2 if flag 1974 is set). TakeItem with fewer than requested removes nothing (Bag_TakeItem 0x02076AA4 returns 0 when the slot quantity is too low). Trigger strip ≈468–470,387; woman ≈470,385.
 
 ## Ruins of Alph: the missing Molly (story chapter; how to move it along)
+<!-- quest: kind=main -->
 
 **Where:** Ruins of Alph Research Center, the Kabuto-puzzle chamber (north-east), and a dream world under the ruins.
 
@@ -476,6 +502,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script files 38 (L493, L445), 37 (L963–L1127, flags 1980/1981 → clears 1913), 39 (script 6, Silver), 49 (script 6, L1002–L4345; the menu at L2989 adds option 47 only after a first wrong pick), 50 (scripts 1, 2, 6, 7, 19; coord at 15,49 → L3272), 51 (script 2 to L4324; var 0x40ab 2 → 7, flag 1904; Entei battles `TrainerBattle 671 671` at L818 and L2623). Positions: Gold ≈438,280; Crystal ≈431,292.
 
 ## Ruins of Alph: the girl who saw her own face (→ Rock Incense)
+<!-- quest: kind=side -->
 
 **Where:** Ruins of Alph, outside, west side: a few steps north-west of the small building in the middle of the ruins.
 
@@ -491,6 +518,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script file 37 (script 19, L616–L690: var 0x4079 0–2 → L1271 request, Yes → L1859 `HasItem 17` → L3312 `TakeItem 17`, sets 0x4079 = 3 at @3364; 3 → L1308; 4 → L1319, Rock Incense (item 315), sets 5), file 42 (script 12, L236 needs 0x4079 = 3; L273–L382: WildBattle 436 Lv. 25, sets 0x4079 = 4 unless you lose). Before Johto only Kanto story scenes write 0x4079, all with 0–2 (file 739 @965, file 212 @3120, file 115 @5535); the other writes of 3 (file 840 @3184/@3314) are in Elm's lab script 15, which never runs. Girl: object 1, no hide flag. Emulator (one-off run, `work/build/harness/guide-review-20261006/ch08/`, both ROMs; 0x4079 = 2 at the start): no Potion → 70#50, #52; with Potions → #50, #53, #54, one Potion taken, 0x4079 = 3; statue → wild Bronzor, fled, 0x4079 = 4; girl → #55–#57, Rock Incense, 0x4079 = 5. Positions: girl ≈425,279; statue 15,6 in the Underground Hall.
 
 ## Ruins of Alph: small extras
+<!-- quest: kind=side -->
 
 - **Infernape's owner** (just south-west of the Route 36 gatehouse door, at the north edge of the ruins): "Wanna see?" → Yes → pick a Single or Double Battle. The first win gets a **Power Bracer**. You can battle again, with no further reward.
 - **Ancient Power tutor** (south-east corner, a man with a Yanmega): teaches **Ancient Power** for **1 Rare Bone** each time (93 species; see the [tutor table](/tutors/)).
@@ -501,6 +529,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* Infernape's owner: file 37 L1185–L3299, flag 2114 (≈425,266). Ancient Power tutor ≈446,317. Prof. Hale: file 38 script 8 and the menus from L529. Entei: file 51 script 8, L2706, flag 2318 cleared by file 23 L6941; Entei stands at ≈18,33 in the Northwest Entrance Second room; route through files 39, 49 script 7, 50 script 3. Azure Flute: file 49 script 9, flag 2261 (final Hall of Fame entry).
 
 ## Ruins of Alph: Giovanni catches Arceus (League HQ lead)
+<!-- quest: kind=main -->
 
 **Continues [Ritual Shrine (Seven Island): Giovanni takes the Azure Flute](06-sevii-islands-indigo.md#ritual-shrine-seven-island-giovanni-takes-the-azure-flute).**
 
@@ -525,6 +554,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script file 49 (coord script 8 on var 0x40b7 = 2, triggers at x 5 / z 67–70 and x 2–5 / z 70 in map 324; L516–L5268; `TrainerBattle` 730 L1836, 675 L2119, 999+999 L2492; no heal command; Regigigas ball L1994, Arceus replica Master Ball L4951; sets 0x40b7 = 3 at L5260; Team Rocket objects hidden by flag 2304, cleared by file 942 L1870), file 942 L1874 (sets 0x40b7 = 2), map 522 exit warp (16,30) → map 324 warp 1, file 31 L3316 (report sets 0x40b7 = 4). Teams from site/src/data/trainers.json ids 730, 675, 999.
 
 ## Route 32: small extras
+<!-- quest: kind=side -->
 
 - **Wandering seller** (the very north end, a few steps east of the Ruins of Alph gatehouse door): sells a **Skull Fossil** or an **Armor Fossil** for **$8,000** each, as often as you like. He stands north of the railway crew, so you can reach him from the start.
 - **Quick Powder** item on Route 32 (north half, a few steps west of the Hoppip tree): one Quick Powder. Once picked up it doesn't come back.
@@ -533,6 +563,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* seller: file 232 script 1 (≈459,291). Quick Powder: file 232 script 4 (≈456,337); the script's HidePerson sets the item's hide flag 1314 for good. The only clear is Brock's Boulder Badge scene in Pewter Gym (file 750 @655), long before. Friday sibling: file 232 script 6 (≈458,308).
 
 ## Union Cave 1F: Goh and the wild Cyndaquil (before you finish the Ilex Forest story)
+<!-- quest: kind=side -->
 
 **Where:** Union Cave 1F, west side. Goh ("One-Ball Man", with a Manectric) stands next to a woman who asks about "the old rhyme about Union Cave". About ten steps south of them, a Cyndaquil sits on a ledge; examine the spot just east of it (beside an item ball).
 
@@ -558,6 +589,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script file 56 (Union Cave 1F): scripts 2 and 6, L1587–L3588, L4012; flags 1980/1981, var 0x40a8. File 92 (Ilex Forest) L10451–L10455 closes it (sets 1980, 1981). Positions: Cyndaquil ≈5,58, examine spot ≈6,58; Goh ≈7,48; boulder tile ≈10,62.
 
 ## Union Cave 1F: the Zubat boy's evolution question (one gift)
+<!-- quest: kind=side -->
 
 **Where:** Union Cave 1F, east side: a boy with his Zubat, south-east of where you come in from Route 32.
 
@@ -578,6 +610,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script file 56, script 3, L2396–L2458, L3827–L4702 (flags 641, 642). Position ≈41,56.
 
 ## Union Cave: Heatran in the lava pool (Tuesdays, Magma Stone)
+<!-- quest: kind=side -->
 
 **Where:** Union Cave B1F, the lava pool at the far south end (a pedestal in the middle of the pool). Gold hints on Route 33 that the lower level needs **Surf**.
 
@@ -600,6 +633,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script file 57 (Union Cave B1F): scripts 7, 8, 9, L1354–L2280 (flag 1776, the Heatran hide flag, is set in file 851 and cleared only when you place the stone, L2226; the pedestal script 9 checks only 1776 and HasItem 458, no Hall of Fame flag); clues: file 56 script 8, file 57 scripts 4 and 5; `work/docs/items.md` lists one Magma Stone. Positions: pedestal ≈14,218; 1F rhyme woman ≈4,47; B1F men ≈6,60 and ≈7,181; heat ≈18,205; old woman ≈4,195.
 
 ## Union Cave: small extras
+<!-- quest: kind=side -->
 
 - **Hiker Jeb, "King of Exploration" (1F, south-west part, with a Tyranitar):** optional battle, Singles or Doubles (Tyranitar Lv. 82, Garchomp 83, Forretress 82, Marowak 83, Probopass 82, Aggron 83). First win: **Power Anklet**. He can be rematched.
 - **Weekday item seller (B1F, northern part):** sells one item, which changes with the day of the week, one per talk; talk again to buy more. Mon **Dawn Stone** $3,000 · Tue **Fluffy Tail** $1,000 · Wed **Protector** $5,000 · Thu **Twisted Spoon** $1,000 · Fri **Hard Stone** $1,000 · Sat **Focus Sash** $100 · Sun **Old Amber** $8,000.
@@ -609,6 +643,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* file 56 script 7 / L3250–L4735; file 57 scripts 2, 3, 6. Jeb: flag 738, ≈15,79. Seller ≈11,42 (script 2: GetWeekday @70 picks the item; buy paths set no flag, so there is no daily cap); healer ≈8,177; guard ≈22,11 (flag 485, set by file 90).
 
 ## Route 33: the rain-team Ace Trainer (→ 5 Dive Balls)
+<!-- quest: kind=side -->
 
 **Where:** Route 33, the Ace Trainer with a Blastoise, a few steps south-west of the Union Cave exit.
 
@@ -621,6 +656,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script file 236 (Route 33), script 4, L6594–L6848; flag 1273. Position ≈458,467.
 
 ## Azalea Town: the Slowpoke quiz (→ King's Rock)
+<!-- quest: kind=side -->
 
 **Where:** Azalea Town, a few steps south of the Pokémon Center door.
 
@@ -643,6 +679,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script file 863 (Azalea Town), script 26, L2378–L3364; flag 2121. Position ≈411,465.
 
 ## Azalea Town: the data-obsessed Super Nerd (→ TM77 Psych Up)
+<!-- quest: kind=side -->
 
 **Where:** Azalea Town, a few steps west of the Gym door, next to his Porygon-Z.
 
@@ -659,6 +696,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script file 863, script 25, L2063–L2365; flag 2120. Position ≈401,472.
 
 ## Azalea Gym: Bugsy's no-type-advantage battle (the Hive Badge)
+<!-- quest: kind=main -->
 
 **Where:** Azalea Gym (the Spinarak-cart puzzle leads to him).
 
@@ -678,6 +716,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script file 866 (Azalea Gym), scripts 17 and 2, L367–L4610 (Bugsy appears with flag 2031, set by the Ilex Forest story); file 865 (Gym entrance). Species-list gaps: hack finding D-1426. Party-size check at L367 compares 0x8005 without a GetPartyCount; rematch win lines L4530/L4590 reuse message 22.
 
 ## Azalea Town: the Charcoal Kiln's Farfetch'd (Cut → Leek → battle → Solar Blade tutor)
+<!-- quest: kind=side -->
 
 **Where:** the Charcoal Kiln, the house in the south of Azalea, straight south of the Poké Mart (a girl with a Spinarak stands just west of its door). Inside, the apprentice stands to the right of the entrance and his master a few steps above it, both with a Farfetch'd. (Kurt's house is the other door, in the north-west of town.)
 
@@ -695,6 +734,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script file 871 (map 164, Kurt's house / Charcoal Kiln), scripts 14 and 15, L1428–L2783 (flags 1984, 1982). The Route 33 scene (file 236 coord script 3 on var 0x40ac = 3, two strips around the Union Cave exit; 0x40ac = 3 is set by the Sprout Tower ceremony, file 18 L3835, before the railway crew leaves) clears 1982–1984 at L6541–L6584. Kiln door ≈419,468 (≈399,454 is Kurt's room); inside, apprentice ≈40,7, master ≈37,5.
 
 ## Azalea Town: small extras
+<!-- quest: kind=side -->
 
 - **The girl and the Spinarak (just west of the Charcoal Kiln door):** talking to her plays a short scene: she rejects the Spinarak and it runs off. It then turns up in **Ilex Forest**, where Bug Catcher Andy has caught it and asks you to be their first opponent (optional battle, no item).
 - **Kimono Girl Sakura (Ilex Forest gatehouse, north end):** part of the Ilex Forest Kimono Girl story; talking to her moves it on a step. See the Ilex Forest entry.
@@ -703,6 +743,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* file 863 script 23 (flags 426, 427; girl ≈415,469) → file 92 script 21 / L3698; file 869 script 5 (Sakura: var 0x409a 1→3 or 2→4); file 871 script 8.
 
 ## Dark Cave: the Griseous Orb returns (after the final Hall of Fame entry)
+<!-- quest: kind=side -->
 
 **Where:** Dark Cave, the shrine in the deepest part, in the south-west of the cave (the Route 46 exit is at the far east end of that part).
 
@@ -715,6 +756,7 @@ What the game actually checks is a fixed list of non-Fire species. It covers eve
 *Source:* script file 108 (script 8, L1190–L1299; flags 2261 (final Hall of Fame entry), 2337; L1232 old woman). Shrine ≈11,144; Route 46 exit ≈55,152.
 
 ## Route 30: Green's (or Red's) dates (after the final Hall of Fame)
+<!-- quest: kind=side -->
 
 **Continues [the Pallet Town romance entry](01-pallet-to-pewter.md#romance-route-victory-road-confessions-yellows-dates-and-your-house); partner rules in the [Romance route central entry](09-ilex-goldenrod.md#romance-route-how-its-unlocked-how-your-partner-is-chosen-and-what-locks-a-partner-out-central-entry).**
 
