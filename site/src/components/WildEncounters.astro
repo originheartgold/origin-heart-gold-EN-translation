@@ -1,6 +1,7 @@
 ---
 import { areaUrl, url, type WildEncounter } from '../lib/data';
 import { encounterChance } from '../lib/encounter-format.mjs';
+import EncounterHints from './EncounterHints.astro';
 const { name, encounters } = Astro.props as { name: string; encounters: WildEncounter[] };
 const methods = encounters.map(e => e.method);
 ---
@@ -26,7 +27,7 @@ const methods = encounters.map(e => e.method);
 	<thead><tr><th>Location</th><th>Method / conditions</th><th>Level</th><th>Chance</th></tr></thead>
 	<tbody>{encounters.map((encounter) => <tr>
 		<td><a href={`${areaUrl(encounter.area)}#${encounter.method.startsWith('Calendar encounter:') ? 'calendar' : 'wild'}`}>{encounter.place}</a></td>
-		<td>{encounter.method}</td>
+		<td><EncounterHints text={encounter.method} /></td>
 		<td>{encounter.level ?? '—'}</td>
 		<td>{encounterChance(encounter)}</td>
 	</tr>)}</tbody>

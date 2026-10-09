@@ -1,12 +1,13 @@
 ---
 import type { EncSection } from '../lib/data';
 import Mon from './Mon.astro';
+import EncounterHints from './EncounterHints.astro';
 const { sections } = Astro.props as { sections: EncSection[] };
 ---
 <div class="enc-grid">
 	{sections.map((s) => (
 		<div class="enc-block">
-			<h4>{s.title}</h4>
+			<h4><EncounterHints text={s.title} /></h4>
 			<table class="compact">
 				<thead><tr><th>Pokémon</th><th>Level</th><th>Chance</th></tr></thead>
 				<tbody>

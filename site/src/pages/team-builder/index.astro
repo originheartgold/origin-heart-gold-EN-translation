@@ -1,0 +1,64 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { species, availabilityToken, url } from '../../lib/data';
+import '../../styles/team-builder.css';
+const catalog = species.map(mon => {
+  const { id, name, slug, baseSpeciesId, formId, types, region, stats, abilities, hidden, game } = mon;
+  return { id, name, slug, baseSpeciesId, formId, types, region, stats, abilities, hidden, game, availability: availabilityToken(mon) };
+});
+const types = [...new Set(species.flatMap(mon => mon.types))].sort();
+const regions = [...new Set(species.map(mon => mon.region))];
+---
+<StarlightPage frontmatter={{ title: 'Team Builder', description: 'Plan your Origin HeartGold team of six, with catch locations, encounter times and evolution requirements for every stage.', tableOfContents: false }}>
+  <div id="team-builder" data-base={url('/')}>
+    <div class="tb-intro">
+      <span class="tb-version">ORIGIN HEARTGOLD · v4.0.3</span>
+      <p>A little planning. A great adventure.</p>
+    </div>
+    <noscript><p>Enable JavaScript to build and save a team. You can still <a href={url('/pokemon/')}>browse every Pokémon</a> for locations, catch rates and evolution conditions.</p></noscript>
+    <div class="tb-app" hidden>
+      <section aria-labelledby="tb-team-heading" class="tb-team-panel">
+        <div class="tb-section-heading">
+          <h2 id="tb-team-heading">Your team <span id="tb-team-count">0 / 6</span></h2>
+          <div class="tb-actions"><button type="button" id="tb-share">Copy team link</button><button type="button" id="tb-clear" disabled>Clear team</button></div>
+        </div>
+        <div id="tb-slots" class="tb-slots" aria-label="Your six team slots"></div>
+        <div class="tb-team-footer"><div id="tb-summary" class="tb-summary"></div><p class="tb-help" id="tb-save-status">Saved in this browser</p></div>
+        <p id="tb-status" class="sr-only" role="status" aria-live="polite"></p>
+        <div id="tb-share-fallback" hidden><label for="tb-share-url">Copy this team link</label><input id="tb-share-url" readonly /></div>
+      </section>
+      <nav class="tb-mobile-nav" aria-label="Planner view"><button type="button" data-view="browse" aria-pressed="true">Find Pokémon</button><button type="button" data-view="guide" aria-pressed="false">Field guide</button></nav>
+      <div class="tb-workspace">
+      <section aria-labelledby="tb-browse-heading" class="tb-browse">
+        <div class="tb-section-heading"><h2 id="tb-browse-heading">Find your next teammate</h2><span id="tb-result-count" role="status"></span></div>
+        <div class="tb-search-row"><label class="tb-search"><span class="sr-only">Search Pokémon</span><input type="search" id="tb-search" placeholder="Find a Pokémon…" autocomplete="off" /></label></div>
+        <details class="tb-filter-disclosure"><summary>Filters <span>Type, region &amp; availability</span></summary><div class="tb-filters">
+          <label>Type<select id="tb-type"><option value="">All types</option>{types.map(type => <option>{type}</option>)}</select></label>
+          <label>Pokédex<select id="tb-region"><option value="">All regions &amp; forms</option>{regions.map(region => <option>{region}</option>)}</select></label>
+          <label>Availability<select id="tb-availability"><option value="documented">Documented sources</option><option value="">All Pokémon &amp; forms</option><option value="unknown">No known source</option><option value="battle">Battle only</option><option value="unavailable">Unavailable</option></select></label>
+          <button type="button" id="tb-reset">Reset filters</button>
+        </div></details>
+        <div id="tb-catalog" class="tb-catalog"></div>
+        <div class="tb-pagination"><button type="button" id="tb-previous">Previous</button><span id="tb-page"></span><button type="button" id="tb-next">Next</button></div>
+      </section>
+
+      <section aria-labelledby="tb-guide-heading" class="tb-guide">
+        <div class="tb-section-heading"><h2 id="tb-guide-heading">Field guide</h2><span class="tb-eyebrow">YOUR ROUTE TO THE TEAM</span></div>
+        <div id="tb-details" aria-live="polite" aria-busy="false"><div class="tb-empty"><span class="tb-empty-mark" aria-hidden="true">✦</span><strong>Meet your next teammate.</strong><span>Pick a Pokémon to explore its evolution<br />and find your first encounter.</span></div></div>
+        <details class="tb-time-help"><summary>A quick guide to times &amp; catching</summary>
+          <p>Encounter chance is the chance of meeting that Pokémon under the listed conditions. More filled bars mean a harder catch. Tap the difficulty label for the Pokémon’s base catch value and what it means. Your chance per throw depends on remaining HP, status conditions and the ball you use.</p>
+          <p>Morning: 04:00–09:59 · Day: 10:00–19:59 · Night: 20:00–03:59, using the game’s clock. Evolution time windows are shown separately for each method.</p>
+          <p>Radio, swarm and night-fishing rates cover replacement slots. Headbutt rates apply to the listed tree type; common and rare trees depend on your Trainer ID. Safari candidates depend on the area, objects and their development. Contest weights are not percentages. <a href={url('/calendar/')}>Calendar events</a> can replace a land encounter slot.</p>
+        </details>
+      </section>
+      </div>
+    </div>
+    <p class="tb-credit">Inspired by <a href="https://github.com/richi3f/pokemon-team-planner">richi3f’s Pokémon Team Planner</a>. Uses this guide’s Origin HeartGold data. Artwork: <a href="https://github.com/PokeAPI/sprites">PokéAPI</a>; alternate forms use labeled standard-form artwork.</p>
+  </div>
+  <script type="application/json" id="tb-data" set:html={JSON.stringify(catalog).replace(/</g, '\\u003c')} />
+</StarlightPage>
+<script>
+  import { setupTeamBuilder } from '../../lib/team-builder-ui';
+  setupTeamBuilder();
+  document.addEventListener('astro:page-load', setupTeamBuilder);
+</script>

@@ -1,0 +1,5 @@
+---
+import { formatEncounterHints } from '../lib/encounter-hints.mjs';
+const { text } = Astro.props as { text: string };
+---
+<Fragment set:html={formatEncounterHints(text)} />

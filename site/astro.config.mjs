@@ -23,11 +23,14 @@ export default defineConfig({
         { tag: "script", attrs: { src: base + "ohg.js", defer: true } },
         {
           tag: "script",
-          attrs: {
-            "data-goatcounter": "https://originheartgold.goatcounter.com/count",
-            async: true,
-            src: "//gc.zgo.at/count.js",
-          },
+          // Only load analytics on the configured public site, never local previews.
+          content: `if (location.protocol === "https:" && location.origin === ${JSON.stringify(new URL(SITE_URL).origin)}) {
+            const script = document.createElement("script");
+            script.dataset.goatcounter = "https://originheartgold.goatcounter.com/count";
+            script.async = true;
+            script.src = "https://gc.zgo.at/count.js";
+            document.head.append(script);
+          }`,
         },
       ],
       components: {
@@ -55,6 +58,7 @@ export default defineConfig({
           label: "Reference",
           items: [
             { label: "Pokémon", link: "/pokemon/" },
+            { label: "Team Builder", link: "/team-builder/" },
             { label: "Locations", link: "/locations/" },
             { label: "Calendar encounters", slug: "calendar" },
             { label: "Items", link: "/items/" },

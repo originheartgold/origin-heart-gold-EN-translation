@@ -1,0 +1,43 @@
+.ohg-hint { display: inline-flex; align-items: center; gap: .25em; border: 0; padding: .05em .1em; margin: 0; font: inherit; font-weight: 500; line-height: inherit; background: transparent; color: inherit; cursor: help; vertical-align: baseline; white-space: nowrap; }
+.ohg-hint span { text-decoration: underline dotted; text-underline-offset: .25em; text-decoration-color: var(--sl-color-gray-3); }
+.ohg-hint svg { flex-shrink: 0; width: 1.05em; height: 1.05em; }
+.ohg-time-morning svg, .ohg-time-day svg, .ohg-time-evening svg { color: #aa721c; }
+.ohg-time-night svg { color: #8277d3; }
+:root[data-theme='dark'] .ohg-time-morning svg, :root[data-theme='dark'] .ohg-time-day svg, :root[data-theme='dark'] .ohg-time-evening svg { color: #edbc66; }
+.ohg-hint:hover, .ohg-hint:focus-visible { color: var(--sl-color-text-accent); }
+.ohg-hint:focus-visible { outline: 2px solid var(--sl-color-accent); outline-offset: 3px; border-radius: 3px; }
+.ohg-time-tooltip { position: fixed; z-index: 10000; width: min(270px, calc(100vw - 24px)); padding: 1rem; border: 1px solid var(--sl-color-gray-5); border-radius: 14px; color: var(--sl-color-text); background: var(--sl-color-bg); box-shadow: 0 8px 32px #0002; font: .82rem/1.5 system-ui, sans-serif; pointer-events: auto; }
+.ohg-time-tooltip[hidden] { display: none; }
+.ohg-time-tooltip strong { display: flex; align-items: center; gap: .45rem; font-size: .78rem; }
+.ohg-time-tooltip b { display: block; margin-top: .5rem; font-size: 1.2rem; color: var(--sl-color-white); }
+.ohg-time-tooltip p { margin: .4rem 0 0; color: var(--sl-color-gray-2); }
+@media print { .ohg-time-tooltip { display: none; } }
+
+.ohg-method svg { color: #527d46; }
+.ohg-method-surf svg, .ohg-method-oldrod svg, .ohg-method-goodrod svg, .ohg-method-superrod svg { color: #287ba0; }
+.ohg-method-cave svg, .ohg-method-rock svg { color: #8d775d; }
+.ohg-method-radio svg, .ohg-method-calendar svg { color: #8277d3; }
+.ohg-method-contest svg { color: #aa721c; }
+:root[data-theme='dark'] .ohg-method svg { color: #9bbf83; }
+:root[data-theme='dark'] .ohg-method-surf svg, :root[data-theme='dark'] .ohg-method-oldrod svg, :root[data-theme='dark'] .ohg-method-goodrod svg, :root[data-theme='dark'] .ohg-method-superrod svg { color: #77c5e4; }
+:root[data-theme='dark'] .ohg-method-cave svg, :root[data-theme='dark'] .ohg-method-rock svg { color: #c2af96; }
+:root[data-theme='dark'] .ohg-method-radio svg, :root[data-theme='dark'] .ohg-method-calendar svg { color: #b3a5f0; }
+:root[data-theme='dark'] .ohg-method-contest svg { color: #edbc66; }
+
+.ohg-catch { --catch-color: #60756a; gap: .4em; }
+.ohg-catch-easy { --catch-color: #36845b; }
+.ohg-catch-moderate { --catch-color: #9b7815; }
+.ohg-catch-hard { --catch-color: #b66827; }
+.ohg-catch-very-hard { --catch-color: #b74c68; }
+.ohg-catch > svg { color: var(--catch-color); }
+.ohg-catch .ohg-catch-meter { display: inline-flex; align-items: end; gap: 2px; margin-left: .15em; text-decoration: none; }
+.ohg-catch-meter i { display: block; width: 4px; height: 8px; border: 1px solid var(--sl-color-gray-3); border-radius: 1px; }
+.ohg-catch-meter i:nth-child(2) { height: 10px; }
+.ohg-catch-meter i:nth-child(3) { height: 12px; }
+.ohg-catch-meter i:nth-child(4) { height: 14px; }
+.ohg-catch-meter i:nth-child(5) { height: 16px; }
+.ohg-catch-meter i.filled { background: var(--catch-color); border-color: var(--catch-color); }
+:root[data-theme='dark'] .ohg-catch-easy { --catch-color: #82c9a1; }
+:root[data-theme='dark'] .ohg-catch-moderate { --catch-color: #d8bd68; }
+:root[data-theme='dark'] .ohg-catch-hard { --catch-color: #e7a566; }
+:root[data-theme='dark'] .ohg-catch-very-hard { --catch-color: #ed94ac; }

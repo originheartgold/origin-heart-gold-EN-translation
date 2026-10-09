@@ -1,6 +1,7 @@
 ---
 import { playerNote } from '../../lib/reference-format.mjs';
 
+import CatchDifficulty from '../../components/CatchDifficulty.astro';
 import WildEncounters from '../../components/WildEncounters.astro';
 import PokemonAcquisitions from '../../components/PokemonAcquisitions.astro';
 import Availability from '../../components/Availability.astro';
@@ -45,7 +46,7 @@ const headings = [
 		<dl class="facts">
 			<dt>Abilities</dt><dd>{s.abilityIds.length ? s.abilityIds.map(id => <AbilityLink id={id} summary />) : '—'}</dd>
 			<dt>Hidden ability</dt><dd><AbilityLink id={s.hiddenAbilityId} summary /></dd>
-			<dt>Catch rate</dt><dd>{s.catch}</dd>
+			<dt>Capture</dt><dd><CatchDifficulty value={s.catch} /></dd>
 			<dt>Gender</dt><dd>{s.gender}</dd>
 			<dt>Egg groups</dt><dd>{s.eggGroups.join(' / ')}</dd>
 			<dt>Growth</dt><dd>{s.growth}</dd>

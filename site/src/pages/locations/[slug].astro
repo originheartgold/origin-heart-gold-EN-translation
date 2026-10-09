@@ -5,6 +5,7 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import TutorDetails from '../../components/TutorDetails.astro';
 import CalendarEncounters from '../../components/CalendarEncounters.astro';
 import EncTable from '../../components/EncTable.astro';
+import EncounterHints from '../../components/EncounterHints.astro';
 import TrainerCard from '../../components/TrainerCard.astro';
 import Mon from '../../components/Mon.astro';
 import { areas, trainerById, itemById, itemUrl, tutors, moveById, moveUrl, regionLabel, url, type Area, type Quest } from '../../lib/data';
@@ -69,12 +70,12 @@ const iu = (id: number) => itemUrl(itemById.get(id));
 			<EncTable sections={e.sections} />
 		</>)}
 		{a.safari.length > 0 && <>
-			<h3>Safari Zone areas</h3>
+			<h3><EncounterHints text="Safari Zone" /> areas</h3>
 			<p>These are the candidate Pokémon for each selected area, method and time. Additional species require placed objects and their development. A dash means the scan does not establish a fixed encounter percentage.</p>
 			{a.safari.map((section) => <details><summary>{section.title}</summary><EncTable sections={[section]} /></details>)}
 		</>}
 		{a.contest && <>
-			<h3>Bug-Catching Contest</h3>
+			<h3><EncounterHints text="Bug-Catching Contest" /></h3>
 			<p class="small">{a.contest.note} Rate is the slot weight; score is the base points for the catch.</p>
 			<div class="enc-grid">
 				{a.contest.sets.map((st) => (
@@ -89,7 +90,7 @@ const iu = (id: number) => itemUrl(itemById.get(id));
 			</div>
 		</>}
 		{a.headbutt.map((h) => <>
-			<h3>Headbutt trees: {h.label}</h3>
+			<h3><EncounterHints text="Headbutt" /> trees: {h.label}</h3>
 			<p class="small">{h.trees} normal trees{h.special ? `, ${h.special} special trees` : ''}. Whether a tree is "common" or "rare" depends on your Trainer ID.</p>
 			<EncTable sections={h.sections} />
 		</>)}

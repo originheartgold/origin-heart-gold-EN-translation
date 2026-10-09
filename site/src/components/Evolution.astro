@@ -2,6 +2,7 @@
 import { playerNote } from '../lib/reference-format.mjs';
 // Keep each evolution and its conditions together in one sentence.
 import Mon from './Mon.astro';
+import TimeHints from './TimeHints.astro';
 import { speciesById, itemById, itemUrl, moveById, moveUrl, type EvoLink, type EvoCond } from '../lib/data';
 const { label, entries } = Astro.props as { label: string; entries: EvoLink[] };
 const name = (id: number, fallback?: string) => speciesById.get(id)?.name ?? fallback ?? '?';
@@ -26,7 +27,7 @@ const single = entries.length === 1;
 				? <>: <strong>not available through normal play</strong>: {playerNote(entries[0].blocked)}.</>
 				: <>: <strong>not possible in this game</strong>. This method does not work (in the official games: {entries[0].official}).</>
 		) : (
-			<>{trigger(entries[0])}{entries[0].conds.map((c) => { const p = parts(c); return <> {p.pre}{p.mon !== undefined ? <Mon id={p.mon} name={name(p.mon)} /> : p.href ? <a href={p.href}>{p.text}</a> : p.text}{p.post}</>; })}.</>
+			<>{trigger(entries[0])}{entries[0].conds.map((c) => { const p = parts(c); return <> <TimeHints text={p.pre} context="evolution" />{p.mon !== undefined ? <Mon id={p.mon} name={name(p.mon)} /> : p.href ? <a href={p.href}>{p.text}</a> : p.text}<TimeHints text={p.post} context="evolution" /></>; })}.</>
 		)}
 	</p>
 ) : (
@@ -42,7 +43,7 @@ const single = entries.length === 1;
 						? <>: <strong>not available through normal play</strong> ({playerNote(e.blocked)})</>
 						: <>: <strong>not possible in this game</strong> (in the official games: {e.official})</>
 				) : (
-					<>{trigger(e)}{e.conds.map((c) => { const p = parts(c); return <> {p.pre}{p.mon !== undefined ? <Mon id={p.mon} name={name(p.mon)} /> : p.href ? <a href={p.href}>{p.text}</a> : p.text}{p.post}</>; })}.</>
+					<>{trigger(e)}{e.conds.map((c) => { const p = parts(c); return <> <TimeHints text={p.pre} context="evolution" />{p.mon !== undefined ? <Mon id={p.mon} name={name(p.mon)} /> : p.href ? <a href={p.href}>{p.text}</a> : p.text}<TimeHints text={p.post} context="evolution" /></>; })}.</>
 				)}
 			</li>
 		))}

@@ -1,5 +1,6 @@
 ---
 import Mon from './Mon.astro';
+import TimeHints from './TimeHints.astro';
 import { areaUrl } from '../lib/data';
 import type { CalendarEncounter } from '../lib/verified-mechanics';
 const { entries } = Astro.props as { entries: CalendarEncounter[] };
@@ -20,7 +21,7 @@ const playerNotes: Record<string, string> = {
 			<td>{e.date}</td>
 			<td><Mon id={e.pokemon} name={e.name} /></td>
 			<td><a href={areaUrl(e.area)}>{e.place}</a></td>
-			<td>{e.period}{e.level !== null && <> · Lv. {e.level}</>}</td>
+			<td><TimeHints text={e.period} />{e.level !== null && <> · Lv. {e.level}</>}</td>
 			<td><strong>{({ configured: 'Available on this date.', unresolved: 'Availability not confirmed.', unavailable: 'Not an acquisition route.' })[e.status]}</strong> {playerNotes[e.key] ?? e.note}</td>
 		</tr>)}</tbody>
 	</table>

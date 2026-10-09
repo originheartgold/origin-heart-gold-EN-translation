@@ -1,4 +1,5 @@
 ---
+import EncounterHints from '../../components/EncounterHints.astro';
 import { encounterChance } from '../../lib/encounter-format.mjs';
 import { playerNote } from '../../lib/reference-format.mjs';
 import { playerItemDescription } from '../../lib/reference-format.mjs';
@@ -99,7 +100,7 @@ const priceLine = i.price ? (sold ? ` · buy for ${money(i.price)}, sells for ${
 				<thead><tr><th>Location</th><th>Method / time / condition</th><th>Level</th><th>Encounter chance</th></tr></thead>
 				<tbody>{holder.locations.map((location) => <tr>
 					<td><a href={areaUrl(location.area)}>{areaBySlug.get(location.area)?.name ?? location.place}</a>{location.place !== areaBySlug.get(location.area)?.name && <span class="small muted"> · {location.place}</span>}</td>
-					<td>{location.method}</td><td>{location.level}</td><td>{encounterChance(location)}</td>
+					<td><EncounterHints text={location.method} /></td><td>{location.level}</td><td>{encounterChance(location)}</td>
 				</tr>)}</tbody>
 			</table>
 		</>)}

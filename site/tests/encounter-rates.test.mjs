@@ -64,9 +64,10 @@ test('built Pokémon pages show encounter tables and preserve gifts separately',
 	assert.ok(!bulbasaur.includes('gift (Lv 15), Route 5 House'));
 	assert.ok(bulbasaur.includes("Pallet Oak&#39;s Lab") || bulbasaur.includes("Pallet Oak's Lab"));
 	assert.ok(bulbasaur.includes('Fuchsia City'));
-	assert.ok(bulbasaur.includes('Grass/cave, day'));
+	assert.ok(bulbasaur.replace(/<[^>]*>/g, '').includes('Grass/cave, day'));
+	assert.ok(bulbasaur.includes('data-time-hint="day"'));
 	assert.ok(bulbasaur.includes('<td>1%</td>'));
 	assert.ok(read('pokemon/goldeen').includes('aria-label="Filter Goldeen wild encounters"'));
-	assert.ok(read('locations/safari-zone').includes('Safari Zone areas'));
+	assert.ok(read('locations/safari-zone').replace(/<[^>]*>/g, '').includes('Safari Zone areas'));
 	assert.ok(read('pokemon/pinsir').includes('0 (weight)'));
 });

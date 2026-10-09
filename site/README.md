@@ -33,6 +33,76 @@ Listings show all entries by default and offer an availability filter.
 
 ## Everyday tasks
 
+### Team Builder
+
+`/team-builder/` is a six-member playthrough planner inspired by
+[richi3f's Pokémon Team Planner](https://github.com/richi3f/pokemon-team-planner).
+The implementation uses the guide's existing data and artwork helper; it does not
+import the upstream planner's game data or assets.
+
+Teams use unique Origin HeartGold record IDs so forms remain distinct. The team is
+saved locally under `ohg-team-builder-v1` and can be shared with `#team=3,94,196`.
+An explicit shared team takes precedence over browser storage. Nothing is uploaded.
+The catalog defaults to documented acquisition sources; other availability categories
+remain selectable and labeled.
+
+`src/lib/team-builder-data.mjs` follows incoming evolution links and verified held-item
+transformations to include all earlier stages, without including sibling evolutions.
+Each member's acquisition guide is built into `team-builder/pokemon/<id>.json` and
+loaded when selected. Catch values, encounter percentages, contest weights, unknown
+Safari odds, gifts, quest restrictions, evolution priority notes and calendar forms
+retain their existing meanings. Unverified or unavailable methods are labeled.
+
+Run from the repository root, using installed dependencies:
+
+```sh
+python3 work/tools/site/sync_guide.py
+GUIDE_BASE=/poke/ npm --prefix site run build
+GUIDE_TEST_DIST=1 npm --prefix site test
+python3 work/tools/site/check_site.py --base /poke/
+GUIDE_BASE=/poke/ npm --prefix site run preview -- --host 127.0.0.1 --port 4346
+PLAYWRIGHT_MODULE=/absolute/path/to/existing/playwright/index.mjs node site/tests/team-builder-browser.mjs
+```
+
+The browser regression uses an isolated browser, blocks external requests, and checks
+team limits, filtering, persistence, sharing, error recovery, keyboard input and
+responsive layouts. Screenshots and logs go to ignored `work/build/team-builder-qa/`.
+
+The desktop planner places the catalog beside a field guide. Mobile uses Find Pokémon /
+Field guide tabs. Evolution cards open each stage's catch locations; full acquisition
+conditions, alternative evolution routes and base stats are expandable.
+
+### Shared time, encounter and catch labels
+
+`TimeHints.astro` renders sun/moon symbols and dotted-underlined time labels for
+encounter condition text. Hover, keyboard focus or tap opens a shared description;
+Escape or an outside tap dismisses it. The tooltip stays within the viewport, including
+inside scrolling encounter tables. A native title provides a no-JavaScript fallback.
+
+Use `<CatchDifficulty value={catchRate} />` (or `formatCatchHint` in dynamic views)
+for capture information. A visible label and five-bar meter show relative catch difficulty (more bars = harder).
+These guide-defined bands compare base values: Very easy 200–255, Easy 120–199,
+Moderate 60–119, Hard 30–59, Very hard 0–29. They are not game rules or capture
+probabilities. Unknown values show an empty meter and an Unknown label. The raw
+base value stays in the popup with an explanation of HP, status and ball effects.
+
+Use `<EncounterHints text={method} />` for encounter methods,
+`<TimeHints text={condition} />` for time-only conditions, and
+`<TimeHints text={condition} context="evolution" />` for evolution requirements.
+Dynamic views use `formatTimeHints` from `src/lib/time-hints.mjs` and
+`formatEncounterHints` from `src/lib/encounter-hints.mjs`. Encounter labels cover
+land, water, rods, trees, rocks, radio, swarms, Safari, contest and calendar encounters.
+Only annotate method fields, never named moves or items in ordinary prose. The shared header
+initializes the delegated interaction, so it also handles content loaded later.
+Apply it only to condition text, never indiscriminately to names such as Morning Sun.
+
+Encounter Day is 10:00–19:59; evolution Day is 04:00–19:59. Evening is described as
+part of the encounter Day window, without inventing a separate encounter table.
+The component is used by the planner, Pokémon wild encounters/evolutions, location
+encounter tables, calendar encounters and wild-held-item locations.
+
+### Guide maintenance
+
 ```sh
 # After editing guide/*.md: regenerate the guide pages (no ROM needed)
 python3 work/tools/site/sync_guide.py

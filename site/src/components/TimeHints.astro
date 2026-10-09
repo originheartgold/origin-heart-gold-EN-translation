@@ -1,0 +1,5 @@
+---
+import { formatTimeHints } from '../lib/time-hints.mjs';
+const { text, context = 'encounter' } = Astro.props as { text: string; context?: 'encounter' | 'evolution' };
+---
+<Fragment set:html={formatTimeHints(text, context)} />

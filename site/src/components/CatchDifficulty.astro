@@ -1,0 +1,5 @@
+---
+import { formatCatchHint } from '../lib/catch-hints.mjs';
+const { value } = Astro.props as { value: number };
+---
+<Fragment set:html={formatCatchHint(value)} />
