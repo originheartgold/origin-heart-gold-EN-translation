@@ -1,0 +1,2895 @@
+{
+ "_about": "Pokémon and forms that exist in the game data but that a player can never meet (catch, receive, hatch, evolve into, battle against or see in battle). The website lists them as NOT AVAILABLE IN GAME (normal play), retaining their reference data. Verified against the untouched Chinese v4.0.3 ROM on 2026-10-05; evidence in work/notes/availability_audit.md.",
+ "entries": [
+  {
+   "id": 494,
+   "name": "Victini",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 504,
+   "name": "Patrat",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 505,
+   "name": "Watchog",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 511,
+   "name": "Pansage",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 512,
+   "name": "Simisage",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 513,
+   "name": "Pansear",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 514,
+   "name": "Simisear",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 515,
+   "name": "Panpour",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 516,
+   "name": "Simipour",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 522,
+   "name": "Blitzle",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 523,
+   "name": "Zebstrika",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 527,
+   "name": "Woobat",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 528,
+   "name": "Swoobat",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 538,
+   "name": "Throh",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 539,
+   "name": "Sawk",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 556,
+   "name": "Maractus",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 557,
+   "name": "Dwebble",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 558,
+   "name": "Crustle",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 561,
+   "name": "Sigilyph",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 577,
+   "name": "Solosis",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 578,
+   "name": "Duosion",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 579,
+   "name": "Reuniclus",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 582,
+   "name": "Vanillite",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 583,
+   "name": "Vanillish",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 584,
+   "name": "Vanilluxe",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 599,
+   "name": "Klink",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 600,
+   "name": "Klang",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 601,
+   "name": "Klinklang",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 605,
+   "name": "Elgyem",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 606,
+   "name": "Beheeyem",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 615,
+   "name": "Cryogonal",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 621,
+   "name": "Druddigon",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 626,
+   "name": "Bouffalant",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 638,
+   "name": "Cobalion",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 639,
+   "name": "Terrakion",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 640,
+   "name": "Virizion",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 641,
+   "name": "Tornadus",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 642,
+   "name": "Thundurus",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 643,
+   "name": "Reshiram",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 644,
+   "name": "Zekrom",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 645,
+   "name": "Landorus",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 646,
+   "name": "Kyurem",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 667,
+   "name": "Litleo",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 668,
+   "name": "Pyroar",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 672,
+   "name": "Skiddo",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 673,
+   "name": "Gogoat",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 674,
+   "name": "Pancham",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 675,
+   "name": "Pangoro",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 677,
+   "name": "Espurr",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 678,
+   "name": "Meowstic",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 682,
+   "name": "Spritzee",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 683,
+   "name": "Aromatisse",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 684,
+   "name": "Swirlix",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 685,
+   "name": "Slurpuff",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 686,
+   "name": "Inkay",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 687,
+   "name": "Malamar",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 696,
+   "name": "Tyrunt",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 697,
+   "name": "Tyrantrum",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 701,
+   "name": "Hawlucha",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 707,
+   "name": "Klefki",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 710,
+   "name": "Pumpkaboo",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 711,
+   "name": "Gourgeist",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 716,
+   "name": "Xerneas",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 717,
+   "name": "Yveltal",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 718,
+   "name": "Zygarde",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 721,
+   "name": "Volcanion",
+   "reason": "Its only entry (Lake of Rage, April 16) replaces a grass slot on a map with no grass encounters, so it never appears."
+  },
+  {
+   "id": 741,
+   "name": "Oricorio",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 746,
+   "name": "Wishiwashi",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 764,
+   "name": "Comfey",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 765,
+   "name": "Oranguru",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 766,
+   "name": "Passimian",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 767,
+   "name": "Wimpod",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 768,
+   "name": "Golisopod",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 772,
+   "name": "Type: Null",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 773,
+   "name": "Silvally",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 774,
+   "name": "Minior",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 776,
+   "name": "Turtonator",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 785,
+   "name": "Tapu Koko",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 786,
+   "name": "Tapu Lele",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 787,
+   "name": "Tapu Bulu",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 788,
+   "name": "Tapu Fini",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 789,
+   "name": "Cosmog",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 790,
+   "name": "Cosmoem",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 791,
+   "name": "Solgaleo",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 792,
+   "name": "Lunala",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 793,
+   "name": "Nihilego",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 794,
+   "name": "Buzzwole",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 795,
+   "name": "Pheromosa",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 796,
+   "name": "Xurkitree",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 797,
+   "name": "Celesteela",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 798,
+   "name": "Kartana",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 799,
+   "name": "Guzzlord",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 800,
+   "name": "Necrozma",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 801,
+   "name": "Magearna",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 802,
+   "name": "Marshadow",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 803,
+   "name": "Poipole",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 804,
+   "name": "Naganadel",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 805,
+   "name": "Stakataka",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 806,
+   "name": "Blacephalon",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 807,
+   "name": "Zeraora",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 808,
+   "name": "Meltan",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 809,
+   "name": "Melmetal",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 810,
+   "name": "Grookey",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 811,
+   "name": "Thwackey",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 812,
+   "name": "Rillaboom",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 813,
+   "name": "Scorbunny",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 814,
+   "name": "Raboot",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 815,
+   "name": "Cinderace",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 816,
+   "name": "Sobble",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 817,
+   "name": "Drizzile",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 818,
+   "name": "Inteleon",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 821,
+   "name": "Rookidee",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 822,
+   "name": "Corvisquire",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 823,
+   "name": "Corviknight",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 827,
+   "name": "Nickit",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 828,
+   "name": "Thievul",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 829,
+   "name": "Gossifleur",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 830,
+   "name": "Eldegoss",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 835,
+   "name": "Yamper",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 836,
+   "name": "Boltund",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 841,
+   "name": "Flapple",
+   "reason": "Only by using a Tart Apple on Applin, and the Tart Apple can't be obtained."
+  },
+  {
+   "id": 842,
+   "name": "Appletun",
+   "reason": "Only by using a Sweet Apple on Applin, and the Sweet Apple can't be obtained."
+  },
+  {
+   "id": 843,
+   "name": "Silicobra",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 844,
+   "name": "Sandaconda",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 845,
+   "name": "Cramorant",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 852,
+   "name": "Clobbopus",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 853,
+   "name": "Grapploct",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 854,
+   "name": "Sinistea",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 855,
+   "name": "Polteageist",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 867,
+   "name": "Runerigus",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 869,
+   "name": "Alcremie",
+   "reason": "Only by levelling up Milcery holding a Sweet, and no Sweet can be obtained."
+  },
+  {
+   "id": 870,
+   "name": "Falinks",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 871,
+   "name": "Pincurchin",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 874,
+   "name": "Stonjourner",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 875,
+   "name": "Eiscue",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 876,
+   "name": "Indeedee",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 877,
+   "name": "Morpeko",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 878,
+   "name": "Cufant",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 879,
+   "name": "Copperajah",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 880,
+   "name": "Dracozolt",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 881,
+   "name": "Arctozolt",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 882,
+   "name": "Dracovish",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 883,
+   "name": "Arctovish",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 884,
+   "name": "Duraludon",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 888,
+   "name": "Zacian",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 889,
+   "name": "Zamazenta",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 890,
+   "name": "Eternatus",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 891,
+   "name": "Kubfu",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 892,
+   "name": "Urshifu",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 893,
+   "name": "Zarude",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 894,
+   "name": "Regieleki",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 895,
+   "name": "Regidrago",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 896,
+   "name": "Glastrier",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 897,
+   "name": "Spectrier",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 898,
+   "name": "Calyrex",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 905,
+   "name": "Enamorus",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 906,
+   "name": "Sprigatito",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 907,
+   "name": "Floragato",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 908,
+   "name": "Meowscarada",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 909,
+   "name": "Fuecoco",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 910,
+   "name": "Crocalor",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 911,
+   "name": "Skeledirge",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 912,
+   "name": "Quaxly",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 913,
+   "name": "Quaxwell",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 914,
+   "name": "Quaquaval",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 915,
+   "name": "Lechonk",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 916,
+   "name": "Oinkologne",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 917,
+   "name": "Tarountula",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 918,
+   "name": "Spidops",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 919,
+   "name": "Nymble",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 920,
+   "name": "Lokix",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 921,
+   "name": "Pawmi",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 922,
+   "name": "Pawmo",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 923,
+   "name": "Pawmot",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 926,
+   "name": "Fidough",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 927,
+   "name": "Dachsbun",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 931,
+   "name": "Squawkabilly",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 932,
+   "name": "Nacli",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 933,
+   "name": "Naclstack",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 934,
+   "name": "Garganacl",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 935,
+   "name": "Charcadet",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 936,
+   "name": "Armarouge",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 937,
+   "name": "Ceruledge",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 938,
+   "name": "Tadbulb",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 939,
+   "name": "Bellibolt",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 940,
+   "name": "Wattrel",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 941,
+   "name": "Kilowattrel",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 942,
+   "name": "Maschiff",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 943,
+   "name": "Mabosstiff",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 944,
+   "name": "Shroodle",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 945,
+   "name": "Grafaiai",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 948,
+   "name": "Toedscool",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 949,
+   "name": "Toedscruel",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 950,
+   "name": "Klawf",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 953,
+   "name": "Rellor",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 954,
+   "name": "Rabsca",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 955,
+   "name": "Flittle",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 956,
+   "name": "Espathra",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 960,
+   "name": "Wiglett",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 961,
+   "name": "Wugtrio",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 962,
+   "name": "Bombirdier",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 963,
+   "name": "Finizen",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 964,
+   "name": "Palafin",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 965,
+   "name": "Varoom",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 966,
+   "name": "Revavroom",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 967,
+   "name": "Cyclizar",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 968,
+   "name": "Orthworm",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 971,
+   "name": "Greavard",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 972,
+   "name": "Houndstone",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 973,
+   "name": "Flamigo",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 974,
+   "name": "Cetoddle",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 975,
+   "name": "Cetitan",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 976,
+   "name": "Veluza",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 977,
+   "name": "Dondozo",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 978,
+   "name": "Tatsugiri",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 980,
+   "name": "Clodsire",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 984,
+   "name": "Great Tusk",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 985,
+   "name": "Scream Tail",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 986,
+   "name": "Brute Bonnet",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 987,
+   "name": "Flutter Mane",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 988,
+   "name": "Slither Wing",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 989,
+   "name": "Sandy Shocks",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 990,
+   "name": "Iron Treads",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 991,
+   "name": "Iron Bundle",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 992,
+   "name": "Iron Hands",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 993,
+   "name": "Iron Jugulis",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 994,
+   "name": "Iron Moth",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 995,
+   "name": "Iron Thorns",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 999,
+   "name": "Gimmighoul",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1000,
+   "name": "Gholdengo",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1001,
+   "name": "Wo-Chien",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1002,
+   "name": "Chien-Pao",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1003,
+   "name": "Ting-Lu",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1004,
+   "name": "Chi-Yu",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1005,
+   "name": "Roaring Moon",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1006,
+   "name": "Iron Valiant",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1007,
+   "name": "Koraidon",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1008,
+   "name": "Miraidon",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1009,
+   "name": "Walking Wake",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1010,
+   "name": "Iron Leaves",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1014,
+   "name": "Okidogi",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1015,
+   "name": "Munkidori",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1016,
+   "name": "Fezandipiti",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1017,
+   "name": "Ogerpon",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1018,
+   "name": "Archaludon",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1020,
+   "name": "Gouging Fire",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1021,
+   "name": "Raging Bolt",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1022,
+   "name": "Iron Boulder",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1023,
+   "name": "Iron Crown",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1024,
+   "name": "Terapagos",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1025,
+   "name": "Pecharunt",
+   "reason": "No wild encounter, gift, trade, one-time battle, evolution or breeding route, and no trainer uses it."
+  },
+  {
+   "id": 1026,
+   "name": "Mega Venusaur",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1029,
+   "name": "Mega Blastoise",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1030,
+   "name": "Mega Beedrill",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1031,
+   "name": "Mega Pidgeot",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1032,
+   "name": "Alolan Rattata",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1033,
+   "name": "Alolan Raticate",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1039,
+   "name": "Alolan Diglett",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1040,
+   "name": "Alolan Dugtrio",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1041,
+   "name": "Alolan Meowth",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1043,
+   "name": "Alolan Persian",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1044,
+   "name": "Mega Alakazam",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1048,
+   "name": "Galarian Ponyta",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1049,
+   "name": "Galarian Rapidash",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1050,
+   "name": "Galarian Slowpoke",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1051,
+   "name": "Galarian Slowbro",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1052,
+   "name": "Mega Slowbro",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1053,
+   "name": "Galarian Farfetch’d",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1054,
+   "name": "Alolan Grimer",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1055,
+   "name": "Alolan Muk",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1056,
+   "name": "Mega Gengar",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1060,
+   "name": "Mega Kangaskhan",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1061,
+   "name": "Galarian Mr. Mime",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1062,
+   "name": "Mega Pinsir",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1063,
+   "name": "Mega Gyarados",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1064,
+   "name": "Mega Aerodactyl",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1065,
+   "name": "Galarian Articuno",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1066,
+   "name": "Galarian Zapdos",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1067,
+   "name": "Galarian Moltres",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1068,
+   "name": "Mega Mewtwo X",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1069,
+   "name": "Mega Mewtwo Y",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1070,
+   "name": "Mega Ampharos",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1071,
+   "name": "Galarian Slowking",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1099,
+   "name": "Mega Steelix",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1100,
+   "name": "Mega Scizor",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1101,
+   "name": "Mega Heracross",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1102,
+   "name": "Galarian Corsola",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1103,
+   "name": "Mega Houndoom",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1104,
+   "name": "Mega Tyranitar",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1105,
+   "name": "Mega Sceptile",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1106,
+   "name": "Mega Blaziken",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1107,
+   "name": "Mega Swampert",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1110,
+   "name": "Mega Gardevoir",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1111,
+   "name": "Mega Sableye",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1112,
+   "name": "Mega Mawile",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1113,
+   "name": "Mega Aggron",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1114,
+   "name": "Mega Medicham",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1115,
+   "name": "Mega Manectric",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1116,
+   "name": "Mega Sharpedo",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1117,
+   "name": "Mega Camerupt",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1118,
+   "name": "Mega Altaria",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1122,
+   "name": "Mega Banette",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1123,
+   "name": "Mega Absol",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1124,
+   "name": "Mega Glalie",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1125,
+   "name": "Mega Salamence",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1126,
+   "name": "Mega Metagross",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1127,
+   "name": "Mega Latias",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1128,
+   "name": "Mega Latios",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1129,
+   "name": "Primal Kyogre",
+   "reason": "The game has no Primal Reversion."
+  },
+  {
+   "id": 1130,
+   "name": "Primal Groudon",
+   "reason": "The game has no Primal Reversion."
+  },
+  {
+   "id": 1131,
+   "name": "Mega Rayquaza",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1135,
+   "name": "Burmy (Sandy Cloak)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1136,
+   "name": "Burmy (Trash Cloak)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1137,
+   "name": "Wormadam (Sandy Cloak)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1140,
+   "name": "Shellos (East Sea)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1141,
+   "name": "Gastrodon (East Sea)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1142,
+   "name": "Mega Lopunny",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1143,
+   "name": "Mega Garchomp",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1144,
+   "name": "Mega Lucario",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1145,
+   "name": "Mega Abomasnow",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1146,
+   "name": "Mega Gallade",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1153,
+   "name": "Shaymin (Sky Forme)",
+   "reason": "The Gracidea only works on an event Shaymin, and the game's only Shaymin (Forest of Time) isn't one."
+  },
+  {
+   "id": 1170,
+   "name": "Arceus (Fairy type)",
+   "reason": "There's no Pixie Plate in the game, and the Dread Plate shows Arceus as Dark type (tested in an emulator)."
+  },
+  {
+   "id": 1171,
+   "name": "Mega Audino",
+   "reason": "Its Mega Stone is not in the game. Charizardite is the only Mega Stone."
+  },
+  {
+   "id": 1172,
+   "name": "Basculin (Blue-Striped Form)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1173,
+   "name": "Galarian Darumaka",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1175,
+   "name": "Galarian Darmanitan",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1176,
+   "name": "Galarian Darmanitan (Zen Mode)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1177,
+   "name": "Galarian Yamask",
+   "reason": "Only by breeding Runerigus, which is not in the game."
+  },
+  {
+   "id": 1178,
+   "name": "Deerling (Summer Form)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1179,
+   "name": "Deerling (Autumn Form)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1180,
+   "name": "Deerling (Winter Form)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1181,
+   "name": "Sawsbuck (Summer Form)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1182,
+   "name": "Sawsbuck (Autumn Form)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1183,
+   "name": "Sawsbuck (Winter Form)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1184,
+   "name": "Galarian Stunfisk",
+   "reason": "Stunfisk is only in its normal form (Pal Park)."
+  },
+  {
+   "id": 1185,
+   "name": "Tornadus (Therian Forme)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1186,
+   "name": "Thundurus (Therian Forme)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1187,
+   "name": "Landorus (Therian Forme)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1188,
+   "name": "White Kyurem",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1189,
+   "name": "Black Kyurem",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1190,
+   "name": "Kyurem (form 3)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1191,
+   "name": "Kyurem (form 4)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1192,
+   "name": "Keldeo (Resolute Form)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1193,
+   "name": "Meloetta (Pirouette Forme)",
+   "reason": "No Pokémon can learn Relic Song, so Meloetta never changes form."
+  },
+  {
+   "id": 1195,
+   "name": "Vivillon (Polar Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1196,
+   "name": "Vivillon (Tundra Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1197,
+   "name": "Vivillon (Continental Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1198,
+   "name": "Vivillon (Garden Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1199,
+   "name": "Vivillon (Elegant Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1200,
+   "name": "Vivillon (Meadow Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1201,
+   "name": "Vivillon (Modern Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1202,
+   "name": "Vivillon (Marine Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1203,
+   "name": "Vivillon (Archipelago Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1204,
+   "name": "Vivillon (High Plains Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1205,
+   "name": "Vivillon (Sandstorm Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1206,
+   "name": "Vivillon (River Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1207,
+   "name": "Vivillon (Monsoon Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1208,
+   "name": "Vivillon (Savanna Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1209,
+   "name": "Vivillon (Sun Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1210,
+   "name": "Vivillon (Ocean Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1211,
+   "name": "Vivillon (Jungle Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1212,
+   "name": "Vivillon (Fancy Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1213,
+   "name": "Vivillon (Poké Ball Pattern)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1214,
+   "name": "Flabébé (Yellow Flower)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1215,
+   "name": "Flabébé (Orange Flower)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1216,
+   "name": "Flabébé (Blue Flower)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1217,
+   "name": "Flabébé (White Flower)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1218,
+   "name": "Floette (Yellow Flower)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1219,
+   "name": "Floette (Orange Flower)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1220,
+   "name": "Floette (Blue Flower)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1221,
+   "name": "Floette (White Flower)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1223,
+   "name": "Florges (Yellow Flower)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1224,
+   "name": "Florges (Orange Flower)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1225,
+   "name": "Florges (Blue Flower)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1226,
+   "name": "Florges (White Flower)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1227,
+   "name": "Furfrou (Heart Trim)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1228,
+   "name": "Furfrou (Star Trim)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1229,
+   "name": "Furfrou (Diamond Trim)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1230,
+   "name": "Furfrou (Debutante Trim)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1231,
+   "name": "Furfrou (Matron Trim)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1232,
+   "name": "Furfrou (Dandy Trim)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1233,
+   "name": "Furfrou (La Reine Trim)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1234,
+   "name": "Furfrou (Kabuki Trim)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1235,
+   "name": "Furfrou (Pharaoh Trim)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1236,
+   "name": "Meowstic (female)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1238,
+   "name": "Xerneas (Active Mode)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1239,
+   "name": "Zygarde (10% Forme)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1240,
+   "name": "Zygarde (Complete Forme)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1241,
+   "name": "Zygarde (Complete Forme)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1242,
+   "name": "Mega Diancie",
+   "reason": "Diancie's calendar encounter loads as a normal Diancie; nothing produces Mega Diancie."
+  },
+  {
+   "id": 1244,
+   "name": "Oricorio (Pom-Pom Style)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1245,
+   "name": "Oricorio (Pa’u Style)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1246,
+   "name": "Oricorio (Sensu Style)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1249,
+   "name": "Wishiwashi (School Form)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1250,
+   "name": "Silvally (Fighting type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1251,
+   "name": "Silvally (Flying type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1252,
+   "name": "Silvally (Poison type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1253,
+   "name": "Silvally (Ground type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1254,
+   "name": "Silvally (Rock type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1255,
+   "name": "Silvally (Bug type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1256,
+   "name": "Silvally (Ghost type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1257,
+   "name": "Silvally (Steel type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1258,
+   "name": "Silvally (Fire type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1259,
+   "name": "Silvally (Water type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1260,
+   "name": "Silvally (Grass type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1261,
+   "name": "Silvally (Electric type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1262,
+   "name": "Silvally (Psychic type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1263,
+   "name": "Silvally (Ice type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1264,
+   "name": "Silvally (Dragon type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1265,
+   "name": "Silvally (Dark type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1266,
+   "name": "Silvally (Fairy type)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1267,
+   "name": "Minior (Red Core)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1268,
+   "name": "Minior (Orange Core)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1269,
+   "name": "Minior (Yellow Core)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1270,
+   "name": "Minior (Green Core)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1271,
+   "name": "Minior (Blue Core)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1272,
+   "name": "Minior (Indigo Core)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1273,
+   "name": "Minior (Violet Core)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1275,
+   "name": "Dusk Mane Necrozma",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1276,
+   "name": "Dawn Wings Necrozma",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1277,
+   "name": "Ultra Necrozma",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1278,
+   "name": "Ultra Necrozma",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1279,
+   "name": "Magearna (Original Color)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1280,
+   "name": "Cramorant (Gulping Form)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1281,
+   "name": "Cramorant (Gorging Form)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1282,
+   "name": "Toxtricity (Low Key Form)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1283,
+   "name": "Alcremie (form 7)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1284,
+   "name": "Alcremie (form 8)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1285,
+   "name": "Alcremie (form 9)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1286,
+   "name": "Alcremie (form 10)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1287,
+   "name": "Alcremie (form 11)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1288,
+   "name": "Alcremie (form 12)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1289,
+   "name": "Alcremie (form 13)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1290,
+   "name": "Alcremie (form 14)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1291,
+   "name": "Alcremie (form 15)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1292,
+   "name": "Alcremie (form 16)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1293,
+   "name": "Alcremie (form 17)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1294,
+   "name": "Alcremie (form 18)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1295,
+   "name": "Alcremie (form 19)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1296,
+   "name": "Alcremie (form 20)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1297,
+   "name": "Alcremie (form 21)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1298,
+   "name": "Alcremie (form 22)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1299,
+   "name": "Alcremie (form 23)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1300,
+   "name": "Alcremie (form 24)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1301,
+   "name": "Alcremie (form 25)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1302,
+   "name": "Alcremie (form 26)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1303,
+   "name": "Alcremie (form 27)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1304,
+   "name": "Alcremie (form 28)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1305,
+   "name": "Alcremie (form 29)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1306,
+   "name": "Alcremie (form 30)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1307,
+   "name": "Alcremie (form 31)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1308,
+   "name": "Alcremie (form 32)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1309,
+   "name": "Alcremie (form 33)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1310,
+   "name": "Alcremie (form 34)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1311,
+   "name": "Alcremie (form 35)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1312,
+   "name": "Alcremie (form 36)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1313,
+   "name": "Alcremie (form 37)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1314,
+   "name": "Alcremie (form 38)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1315,
+   "name": "Alcremie (form 39)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1316,
+   "name": "Alcremie (form 40)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1317,
+   "name": "Alcremie (form 41)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1318,
+   "name": "Alcremie (form 42)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1319,
+   "name": "Alcremie (form 43)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1320,
+   "name": "Alcremie (form 44)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1321,
+   "name": "Alcremie (form 45)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1322,
+   "name": "Alcremie (form 46)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1323,
+   "name": "Alcremie (form 47)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1324,
+   "name": "Alcremie (form 48)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1325,
+   "name": "Alcremie (form 49)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1326,
+   "name": "Alcremie (form 50)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1327,
+   "name": "Alcremie (form 51)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1328,
+   "name": "Alcremie (form 52)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1329,
+   "name": "Alcremie (form 53)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1330,
+   "name": "Alcremie (form 54)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1331,
+   "name": "Alcremie (form 55)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1332,
+   "name": "Alcremie (form 56)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1333,
+   "name": "Alcremie (form 57)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1334,
+   "name": "Alcremie (form 58)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1335,
+   "name": "Alcremie (form 59)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1336,
+   "name": "Alcremie (form 60)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1337,
+   "name": "Alcremie (form 61)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1338,
+   "name": "Alcremie (form 62)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1339,
+   "name": "Eiscue (Noice Face)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1340,
+   "name": "Indeedee (female)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1341,
+   "name": "Morpeko (Hangry Mode)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1342,
+   "name": "Zacian (Crowned Sword)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1343,
+   "name": "Zamazenta (Crowned Shield)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1344,
+   "name": "Urshifu (Rapid Strike Style)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1345,
+   "name": "Ice Rider Calyrex",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1346,
+   "name": "Shadow Rider Calyrex",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1349,
+   "name": "Hisuian Voltorb",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1350,
+   "name": "Hisuian Electrode",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1351,
+   "name": "Paldean Tauros (Combat Breed)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1352,
+   "name": "Paldean Tauros (Blaze Breed)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1353,
+   "name": "Paldean Tauros (Aqua Breed)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1354,
+   "name": "Hisuian Typhlosion",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1355,
+   "name": "Paldean Wooper",
+   "reason": "Only by breeding Clodsire, which is not in the game."
+  },
+  {
+   "id": 1358,
+   "name": "Dialga (Origin Forme)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1359,
+   "name": "Palkia (Origin Forme)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1360,
+   "name": "Hisuian Samurott",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1362,
+   "name": "Basculin (White-Striped Form)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1363,
+   "name": "Hisuian Zorua",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1364,
+   "name": "Hisuian Zoroark",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1365,
+   "name": "Hisuian Braviary",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1366,
+   "name": "Hisuian Sliggoo",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1367,
+   "name": "Hisuian Goodra",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1368,
+   "name": "Hisuian Avalugg",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1369,
+   "name": "Hisuian Decidueye",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1370,
+   "name": "Ursaluna (Bloodmoon)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1371,
+   "name": "Basculegion (female)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1372,
+   "name": "Enamorus (Therian Forme)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1373,
+   "name": "Oinkologne (female)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1374,
+   "name": "Dudunsparce (Three-Segment Form)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1375,
+   "name": "Palafin (Hero Form)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1376,
+   "name": "Maushold (Family of Three)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1377,
+   "name": "Tatsugiri (Droopy Form)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1378,
+   "name": "Tatsugiri (Stretchy Form)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1379,
+   "name": "Squawkabilly (Blue Plumage)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1380,
+   "name": "Squawkabilly (Yellow Plumage)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1381,
+   "name": "Squawkabilly (White Plumage)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1382,
+   "name": "Gimmighoul (Roaming Form)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1383,
+   "name": "Ogerpon (Wellspring Mask)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1384,
+   "name": "Ogerpon (Hearthflame Mask)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1385,
+   "name": "Ogerpon (Cornerstone Mask)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1386,
+   "name": "Ogerpon (form 4)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1387,
+   "name": "Ogerpon (form 5)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1388,
+   "name": "Ogerpon (form 6)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1389,
+   "name": "Ogerpon (form 7)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1390,
+   "name": "Ogerpon (form 8)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1391,
+   "name": "Ogerpon (form 9)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1392,
+   "name": "Ogerpon (form 10)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1393,
+   "name": "Ogerpon (form 11)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1394,
+   "name": "Terapagos (Terastal Form)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1395,
+   "name": "Terapagos (Stellar Form)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1396,
+   "name": "Pikachu (form 8)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1397,
+   "name": "Pikachu (form 9)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1398,
+   "name": "Pikachu (form 10)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1399,
+   "name": "Pikachu (form 11)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1400,
+   "name": "Pikachu (form 12)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1401,
+   "name": "Pikachu (form 13)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1402,
+   "name": "Pikachu (form 14)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1403,
+   "name": "Pikachu (form 15)",
+   "reason": "No source in the game, and no code ever gives a Pokémon this form."
+  },
+  {
+   "id": 1404,
+   "name": "Gigantamax Venusaur",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1405,
+   "name": "Gigantamax Charizard",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1406,
+   "name": "Gigantamax Blastoise",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1407,
+   "name": "Gigantamax Butterfree",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1408,
+   "name": "Gigantamax Pikachu",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1409,
+   "name": "Gigantamax Meowth",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1410,
+   "name": "Gigantamax Machamp",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1411,
+   "name": "Gigantamax Gengar",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1412,
+   "name": "Gigantamax Kingler",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1413,
+   "name": "Gigantamax Lapras",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1414,
+   "name": "Gigantamax Eevee",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1415,
+   "name": "Gigantamax Snorlax",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1416,
+   "name": "Gigantamax Garbodor",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1417,
+   "name": "Gigantamax Melmetal",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1418,
+   "name": "Gigantamax Rillaboom",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1419,
+   "name": "Gigantamax Cinderace",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1420,
+   "name": "Gigantamax Inteleon",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1421,
+   "name": "Gigantamax Corviknight",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1422,
+   "name": "Gigantamax Orbeetle",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1423,
+   "name": "Gigantamax Drednaw",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1424,
+   "name": "Gigantamax Coalossal",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1425,
+   "name": "Gigantamax Flapple",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1426,
+   "name": "Gigantamax Appletun",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1427,
+   "name": "Gigantamax Sandaconda",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1428,
+   "name": "Gigantamax Toxtricity",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1429,
+   "name": "Gigantamax Toxtricity (Low Key Form)",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1430,
+   "name": "Gigantamax Centiskorch",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1431,
+   "name": "Gigantamax Hatterene",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1432,
+   "name": "Gigantamax Grimmsnarl",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1433,
+   "name": "Gigantamax Alcremie",
+   "reason": "The game has no Dynamax."
+  },
+  {
+   "id": 1434,
+   "name": "Gigantamax Copperajah",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1435,
+   "name": "Gigantamax Duraludon",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1436,
+   "name": "Eternamax Eternatus",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1437,
+   "name": "Gigantamax Urshifu (Single Strike Style)",
+   "reason": "Its base Pokémon is not in the game."
+  },
+  {
+   "id": 1438,
+   "name": "Gigantamax Urshifu (Rapid Strike Style)",
+   "reason": "Its base Pokémon is not in the game."
+  }
+ ]
+}

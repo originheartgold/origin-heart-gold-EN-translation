@@ -1,0 +1,16 @@
+---
+import Type from './Type.astro';
+import TutorDetails from './TutorDetails.astro';
+import type { Tutor } from '../lib/data';
+import { moveById, moveUrl } from '../lib/data';
+import { playerMoveDescription } from '../lib/reference-format.mjs';
+const { rows, label, tutorMode = false } = Astro.props as { rows: { id: number; label?: string; href?: string; tutors?: Tutor[] }[]; label?: string; tutorMode?: boolean };
+---
+<table class="compact reference-moves"><thead><tr>{label && <th>{label}</th>}<th>Move</th><th>Type</th><th>Category</th><th>Power</th><th>Accuracy</th><th>PP</th><th>Effect and notes</th>{tutorMode && <th>Tutor location, cost and requirements</th>}</tr></thead><tbody>
+{rows.map(row => { const m = moveById.get(row.id); return <tr>
+  {label && <td>{row.href ? <a href={row.href}>{row.label}</a> : row.label}</td>}
+  <td><a href={moveUrl(m)}>{m?.name ?? `Move #${row.id}`}</a></td><td>{m && <Type type={m.type} />}</td><td>{m?.cat}</td><td>{m?.power}</td><td>{m?.acc}</td><td>{m?.pp}</td>
+  <td><span class="small">{m ? playerMoveDescription(m) || '—' : '—'}</span></td>
+{tutorMode && <td>{row.tutors?.length ? <TutorDetails entries={row.tutors} /> : <span class="small">Can learn this move from a tutor; the location and requirements are not known.</span>}</td>}
+</tr>; })}
+</tbody></table>

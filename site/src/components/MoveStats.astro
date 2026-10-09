@@ -1,0 +1,11 @@
+---
+import Type from './Type.astro';
+import { playerMoveEffects } from '../lib/reference-format.mjs';
+import type { Move } from '../lib/data';
+const { m, showEffects = true } = Astro.props as { m: Move; showEffects?: boolean };
+const effects = playerMoveEffects(m);
+const legend = [m.power === 'var.' ? '“var.” means power depends on the battle.' : m.power === '—' ? '“—” power marks a status move.' : null, m.acc === '—' ? '“—” accuracy means no accuracy check.' : null].filter(Boolean);
+---
+<table class="compact"><caption>Move stats</caption><thead><tr><th>Type</th><th>Category</th><th>Power</th><th>Accuracy</th><th>PP</th><th>Priority</th>{m.target && <th>Target</th>}</tr></thead><tbody><tr><td><Type type={m.type} /></td><td>{m.cat}</td><td>{m.power}</td><td>{m.acc}</td><td>{m.pp}</td><td>{m.priority > 0 ? `+${m.priority}` : m.priority}</td>{m.target && <td>{m.target}</td>}</tr></tbody></table>
+{legend.length > 0 && <p class="small muted">{legend.join(' ')}</p>}
+{showEffects && effects.length > 0 && <ul class="move-effects">{effects.map(text => <li>{text}</li>)}</ul>}

@@ -1,0 +1,5 @@
+---
+import type { Description } from '../lib/data';
+const { description } = Astro.props as { description: Description | null };
+---
+{description ? <div class="reference-description"><p>{description.text}</p></div> : <p>No in-game description is available.</p>}

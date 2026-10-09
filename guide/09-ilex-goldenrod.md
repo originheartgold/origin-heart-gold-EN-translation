@@ -137,7 +137,7 @@
 **Who gets it / when:** after the Sammy chapter above. **One Shaymin and one Celebi per game.**
 
 **How it works:**
-1. **Shaymin:** have the **Gracidea** in your Bag (an item ball in the Cinnabar Island lab; see [Cinnabar Island: the Detrick lab lockdown](05-saffron-cinnabar.md#cinnabar-island-the-detrick-lab-lockdown-door-puzzle-and-mewtwo)), a **Leafeon** as your lead, and examine the shrine between **8:00 and 19:59**. Shaymin appears → "Let Shaymin join your party?" → Yes: **Shaymin Lv. 90**.
+1. **Shaymin:** have the **[Gracidea](/items/gracidea/)** in your Bag (an item ball in the Cinnabar Island lab; see [Cinnabar Island: the Detrick lab lockdown](05-saffron-cinnabar.md#cinnabar-island-the-detrick-lab-lockdown-door-puzzle-and-mewtwo)), a **Leafeon** as your lead, and examine the shrine between **8:00 and 19:59**. Shaymin appears → "Let Shaymin join your party?" → Yes: **Shaymin Lv. 90**.
 2. **Celebi** (after Shaymin): leave through Ilex Forest and come back first (Shaymin's appearance closes the shrine for the rest of that visit). Then lead with **Shaymin** and examine the shrine between **20:00 and 7:59**. Celebi appears → Yes: **Celebi Lv. 90**.
 3. With the wrong lead or at the wrong hour, the shrine only shows its description.
 
@@ -254,7 +254,7 @@
 **How it works:**
 1. Talk to the Lopunny owner. Goh mocks Normal types, and his Blaziken knocks out the man's Lopunny with Close Combat. "Go teach Goh a lesson?"
 2. **No:** Goh mocks you as a coward and leaves. The event is over, with no reward.
-3. **Yes:** you confront him and he dares you: "beat me with Normal-type Pokémon!" The game checks your party against a long list of non-Normal species. Pure Normal types and Normal dual types such as Pidgeot or Fearow pass (Raticate is pure Normal in this hack). The list has quirks: it refuses Braviary but lets Staraptor, Flapple and Appletun through.
+3. **Yes:** you confront him and he dares you: "beat me with Normal-type Pokémon!" The game checks your party against a long list of non-Normal species. Pure Normal types and Normal dual types such as Pidgeot or Fearow pass (Raticate is pure Normal in this hack). The list has quirks: it refuses Braviary but lets Staraptor and Stunfisk through.
    - Any other Pokémon in the party: "go swap in Normal-type Pokémon". Goh stays next to the plaza. Talk to him again with an all-Normal party: "Beat Goh using Normal-type Pokémon?"
    - Battle **One-Ball Man Goh**: Machamp 84, Rhyperior 85, Magnezone 84, Hariyama 85, Blaziken 84, Bastiodon 85 (a Fighting/Rock/Steel team built to beat Normal types).
 4. Win: Goh storms off ("I need the power of legendary Pokémon"). Lose: you white out and can retry.
@@ -292,7 +292,7 @@
 - If you never finish the act, or you win it, she has released Purugly by the time you pass Route 37 ("I released my Purugly into the wild… I miss it so much now"). If you lost the staged fight, she says she likes Purugly's round body more every day.
 - **This quest shares its progress with the bug hunt's Ariados.** On the normal path (hunt finished) it starts clean. If you left Ilex Forest in the middle of the hunt, the act can start as soon as you enter the girl's house, the clinic choice can be skipped, or the game can count it as "Purugly kept". Finishing the hunt after starting this quest wipes your Purugly progress. *(Suspected hack bug.)*
 
-*Source:* script file 897 (the shared clinic/house interior: scripts 1–8, L2154–L7251; var 0x409d 2→6; flags 2158/2160; trainers 13/23), outcome in file 246 (Route 37, L391–L404: flag 2252 if 0x409d = 5, else flag 2159). Var 0x409d is also the bug hunt's Ariados state. Doors: clinic ≈376,335; girl's house ≈373,362.
+*Source:* script file 897 (the shared clinic/house interior: scripts 1–8, L2154–L7251; var 0x409d 2→6; flags 2158/2160; trainers 13/23), outcome in file 246 (Route 37: L387 always sets flag 2252; L391–L404 also set flag 2159 unless 0x409d = 5; file 897 L963 checks 2159 (released) before 2252). Var 0x409d is also the bug hunt's Ariados state. Doors: clinic ≈376,335; girl's house ≈373,362.
 
 ## Goldenrod City: the popped Air Balloon (→ Fashion Case)
 
@@ -316,7 +316,7 @@
 
 **Reward:** White Flute.
 
-**Notes:** the game doesn't check your party size before this battle, so with only one Pokémon you face both of them with it (not confirmed in game).
+**Notes:** the game doesn't check your party size before this battle. **Bring at least two Pokémon:** with only one, a broken second Pokémon appears beside yours and the game freezes when you choose FIGHT (tested in an emulator; [known issue](known-issues.md#department-store-double-battle-with-one-pokémon)).
 
 *Source:* script file 901 (script 11, L2210–L3303; flags 2146/2147; trainers 777+778). Old man ≈2,6 on 6F.
 
@@ -420,7 +420,7 @@ At the brawl you pick a line:
 
 **Reward:** an expansion card for your radio (more stations).
 
-**Notes:** pressing B on a question also counts as a right answer (see [Known issues](known-issues.md#radio-quiz-b-button)). Not confirmed in game.
+**Notes:** pressing B on a question picks its last choice, so it's no shortcut (tested in an emulator; see [Known issues](known-issues.md#radio-quiz-b-button)).
 
 *Source:* script file 29 (script 3, L300–L809; flags 280, 287). Right answers fall through to the reward at L786–L803; a wrong answer at question 1–4 jumps to a copy of the remaining questions (L2212, L2310, L2408, L2506) that ends at msg 125 (L2604) whatever you pick. Menus are cancellable (B result 0xFFFE), and only the three wrong options are tested.
 
@@ -493,13 +493,13 @@ At **30 points** on your first card, Buena also gives you her **phone number**. 
 
 **Reward:** the item, for a **$10,000** fee.
 
-**Notes:** one time only. Afterwards she just repeats your result. "That's superstition!" only gets you a lecture. She only checks that you have $300 before this reading, but takes $10,000; with less than that your money probably drops to $0 (suspected hack bug, see Known issues).
+**Notes:** one time only. Afterwards she just repeats your result. "That's superstition!" only gets you a lecture. She only checks that you have $300 before this reading, but takes $10,000; with less than that your money drops to $0 (suspected hack bug, tested in an emulator; see Known issues).
 
 *Source:* script file 895 (script 1, L215–L597; flag 1617). House door ≈352,334. Evolution methods from the ROM's evolution table, checked against the evolution code (arm9 0x020700FC): Rhydon method 37 (level up holding Protector), Happiny method 1 (friendship 220+), Haunter method 19 (holding Spell Tag at night, hours 20–3).
 
 ## Romance route: how it's unlocked, how your partner is chosen, and what locks a partner out (central entry)
 
-Origin HeartGold has a hidden romance route. You pick **one** partner and confess in the final chapter. The scripts then offer post-game dates for some partners only, and moving in appears unreachable for everyone (table in step 4). Four steps decide it. **Steps 1 and 2 are missable and happen mid-game.**
+Origin HeartGold has a hidden romance route. You pick **one** partner and confess in the final chapter. The scripts then offer post-game dates for some partners only, and moving in appears unreachable for everyone (table in step 4). Four steps decide it. **Steps 1 and 2 are missable:** the love reading must come before the MooMoo Farm investigation, which the League HQ's round-3 order opens after the Silver Conference.
 
 ### 1. The love reading (Goldenrod fortune-teller; before the MooMoo Farm investigation)
 
@@ -520,9 +520,9 @@ After the ideal-Pokémon reading (entry above), talk to the fortune-teller again
 
 The fortune-teller stops offering "My love fortune" once you've fought Will and Karen in the Dream World (step 2). **Do the reading before the MooMoo Farm investigation.**
 
-### 2. The Dream World: choose your partner (MooMoo Farm, Route 39; from your first visit)
+### 2. The Dream World: choose your partner (MooMoo Farm, Route 39; League HQ round 3)
 
-The MooMoo Farm investigation (sick Miltank, Route 39; [MooMoo Farm: the sick Miltank investigation](10-ecruteak-olivine.md#moomoo-farm-the-sick-miltank-investigation-from-your-first-visit-leads-to-the-dream-world)) is offered from your **first visit to the farm**. The League HQ's round-3 order points you there too ([League HQ](07-league-to-cherrygrove.md#league-hq-the-trainer-affairs-departments-investigations-where-to-go-next)), but the farmer doesn't wait for it. It ends with Will and Karen opening a rift in the stable, and you're pulled into the **Dream World**.
+The MooMoo Farm investigation (sick Miltank, Route 39; [MooMoo Farm: the sick Miltank investigation](10-ecruteak-olivine.md#moomoo-farm-the-sick-miltank-investigation-league-hq-round-3-leads-to-the-dream-world)) only opens with the League HQ's **round-3 order** ([League HQ](07-league-to-cherrygrove.md#league-hq-the-trainer-affairs-departments-investigations-where-to-go-next)), after the Silver Conference. That order makes the farm's Miltank sick. Until then they're healthy and the farmer only talks about his milk, so you can't get to the Dream World earlier. The investigation is one of the round's leads, so everyone goes through it. It ends with Will and Karen opening a rift in the stable, and you're pulled into the **Dream World**.
 
 1. You arrive at the south end. **Walk north and talk to the old man first.** He stands on the path north, next to a signpost. He's only there if your love reading said "near future".
 2. "Do you like dreaming, young one?" → **Yes**. ("No" ends the talk and he never asks again. He only ever asks once.)
@@ -551,7 +551,7 @@ The Island Forest wish is "I want to be more attractive" at the Six Island wishi
 
 ### 4. Confession, dates, moving in
 
-You can confess **once per game**, in the final chapter. It needs the love reading done (any result) and your partner still open. After your final Hall of Fame entry, dates use a shared progress counter. The last date is meeting your mom, and then your partner is meant to move into your house. **Moving in is probably unreachable for everyone:** the step that moves your partner in first checks whether you've received your starter from Prof. Oak (which every player has), and stops there (not confirmed in game; see [the Pallet Town romance entry](01-pallet-to-pewter.md#romance-route-victory-road-confessions-yellows-dates-and-your-house)).
+You can confess **once per game**, in the final chapter. It needs the love reading done (any result) and your partner still open. After your final Hall of Fame entry, dates use a shared progress counter. The last date is meeting your mom, and then your partner is meant to move into your house. **Moving in is unreachable for everyone:** the step that moves your partner in first checks whether you've received your starter from Prof. Oak (which every player has), and stops there (tested in an emulator; see [the Pallet Town romance entry](01-pallet-to-pewter.md#romance-route-victory-road-confessions-yellows-dates-and-your-house)).
 
 | Partner | Confession | Dates (post-game) |
 |---|---|---|
@@ -568,7 +568,7 @@ You can confess **once per game**, in the final chapter. It needs the love readi
 - **Green and Red's dates are reversed:** the Route 30 house only offers dates if you have **not** confessed to anyone. Confessing to Green or Red (or anyone) closes them, and male players get Green's dates whatever their Dream World pick. See [Known issues](known-issues.md#ilex-forest-and-goldenrod-city).
 - **Red can't confess to a female player:** his Victory Road confession checks Green's lock, which every female Dream World choice sets.
 
-*Source:* script files 895 (L323–L1795; flags 1617, 1618, 1619; partner flags 2141–2145, 2153–2157), 898 (scripts 2–9; L602–L2638; the old man sets 2300 on first talk (L59); L2307 sets 2289/2300 after the Will/Karen battle, and 2289 closes "My love fortune"; L2337 locks everyone if flag 2302 is clear), 251 (MooMoo stable: L861 hides the old man without flag 1619; coord 7,3 on var 0x40a3 = 5), 109 (confessions L1003/L1767/L2358/L3410), 110, 923, 758, 228 (L750–L1026), 259 (L1782–L2267 sets 2145), 907 (L3109–L4417 clears 2145; the gift checks only flag 175 and the Super Rod, no 2289/2300 test), 75 (L1521 clears 2143, L1658 clears 2142), 777, 175, 900, 55. Indigo Conference: "Cheer for Misty" sets 2155 (Steven's lock), "Cheer for Steven" sets 2142 (Misty's lock), "No, get ready for my match" sets both. Dream World: every pick except Steven (L2487) sets 2155, and so does the statue exit without a partner (L2337); file 900 L1678/L2778 set 2155 at the Indigo Conference. Vermilion: a female player siding with Red sets 2153 (Blue's lock). Moving in: file 843 script 1 L363 and script 4 check flag 106 (set with the starter, never cleared) before any partner check (hack finding D-1391). Dream World: old man ≈48,28, statue ≈48,13.
+*Source:* script files 895 (L323–L1795; flags 1617, 1618, 1619; partner flags 2141–2145, 2153–2157), 898 (scripts 2–9; L602–L2638; the old man sets 2300 on first talk (L59); L2307 sets 2289/2300 after the Will/Karen battle, and 2289 closes "My love fortune"; L2337 locks everyone if flag 2302 is clear), 251 (MooMoo stable: the farmer asks for help only while flag 744 is clear (L117 → L925); 744 is set at new game (file 149) and cleared only by the League HQ round-3 order (file 31 L4666; the file 840 clears are in an unreachable lab script; Miltank healthy until round 3 tested in an emulator); the round-3 report needs 2289 (file 31 L1902); L861 hides the old man without flag 1619; coord 7,3 on var 0x40a3 = 5), 109 (confessions L1003/L1767/L2358/L3410), 110, 923, 758, 228 (L750–L1026), 259 (L1782–L2267 sets 2145), 907 (L3109–L4417 clears 2145; the gift checks only flag 175 and the Super Rod, no 2289/2300 test), 75 (L1521 clears 2143, L1658 clears 2142), 777, 175, 900, 55. Indigo Conference: "Cheer for Misty" sets 2155 (Steven's lock), "Cheer for Steven" sets 2142 (Misty's lock), "No, get ready for my match" sets both. Dream World: every pick except Steven (L2487) sets 2155, and so does the statue exit without a partner (L2337); file 900 L1678/L2778 set 2155 at the Indigo Conference. Vermilion: a female player siding with Red sets 2153 (Blue's lock). Moving in: file 843 script 1 L363 and script 4 check flag 106 (set with the starter, never cleared) before any partner check (hack finding D-1391). Dream World: old man ≈48,28, statue ≈48,13.
 
 ## Goldenrod City: small extras
 
@@ -595,7 +595,7 @@ You can confess **once per game**, in the final chapter. It needs the love readi
 
 ## Dream World: Cresselia and Darkrai (post-game)
 
-**Where:** the Dream World, reached from the MooMoo Farm stable (Route 39; [MooMoo Farm](10-ecruteak-olivine.md#moomoo-farm-the-sick-miltank-investigation-from-your-first-visit-leads-to-the-dream-world)).
+**Where:** the Dream World, reached from the MooMoo Farm stable (Route 39; [MooMoo Farm](10-ecruteak-olivine.md#moomoo-farm-the-sick-miltank-investigation-league-hq-round-3-leads-to-the-dream-world)).
 
 **Who gets it / when:** after your final Hall of Fame entry, once the post-game scene at home has sent you off to hunt legendary Pokémon. That scene brings Cresselia and Darkrai back.
 

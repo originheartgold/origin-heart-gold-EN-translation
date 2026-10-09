@@ -1,51 +1,28 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import Type from '../../components/Type.astro';
-import { moves, species, itemByName, itemUrl, url } from '../../lib/data';
-// Who learns each move (level-up, TM, tutor, egg) — computed at build time.
-const learners = new Map<number, Set<number>>();
-const add = (m: number, s: number) => { if (!learners.has(m)) learners.set(m, new Set()); learners.get(m)!.add(s); };
-for (const s of species) {
-	if (!s.how) continue;
-	s.levelup.forEach(([, m]) => add(m, s.id));
-	if (s.tms === 'all') moves.filter((m) => m.tm.length).forEach((m) => add(m.id, s.id)); // Mew: every TM and HM
-	else s.tms.forEach(([, m]) => add(m, s.id));
-	s.tutors.forEach((m) => add(m, s.id));
-	s.egg.forEach((m) => add(m, s.id));
-}
-const tms = moves.filter((m) => m.tm.length).sort((a, b) => a.tm[0].localeCompare(b.tm[0], 'en', { numeric: true }));
-// "TM26" -> the TM's own item page (where to find it)
-const tmLink = (label: string, name: string) => itemUrl(itemByName.get(`${label} ${name}`));
+import { playerMoveChanges } from '../../lib/reference-format.mjs';
+import { moves, moveUrl, moveLearners, tutorsByMove, tms, itemById, itemUrl, url } from '../../lib/data';
+const types = [...new Set(moves.map(m => m.type))].sort();
+const methods = { level: 'Level-up / evolution', tm: 'TM / HM', tutor: 'Tutor', egg: 'Egg' };
 ---
-<StarlightPage frontmatter={{ title: 'Moves and TMs', description: 'All moves in Origin HeartGold with type, category, power, accuracy, PP and TM numbers.' }}
-	headings={[{ depth: 2, slug: 'all-moves', text: 'All moves' }, { depth: 2, slug: 'tm-list', text: 'TM and HM list' }]}>
-	<p>Move data as the game reads it. "var." power is calculated in battle; "—" accuracy never misses.
-	"Learned by" counts the Pokémon with a source we found in the game data that can learn the move in any way
-	(level-up, TM or HM, tutor or Egg move). TM numbers link to where you find the TM.</p>
-	<h2 id="all-moves">All moves</h2>
-	<div class="table-filter" data-table="move-table">
-		<input type="search" placeholder="Search moves or types…" aria-label="Search moves" />
-		<span class="filter-count" aria-live="polite"></span>
-	</div>
-	<table id="move-table" class="sortable compact">
-		<thead><tr><th>Move</th><th>Type</th><th>Cat.</th><th>Power</th><th>Acc.</th><th>PP</th><th>TM</th><th>Learned by</th></tr></thead>
-		<tbody>
-			{moves.map((m) => (
-				<tr id={`move-${m.id}`}>
-					<td>{m.name}{m.game && <span class="sr-only"> {m.game}</span>}</td><td><Type type={m.type} /></td><td>{m.cat}</td><td>{m.power}</td><td>{m.acc}</td><td>{m.pp}</td>
-					<td>{m.tm.map((t, i) => <>{i > 0 && ', '}{tmLink(t, m.name) ? <a href={tmLink(t, m.name)}>{t}</a> : t}</>)}</td><td>{learners.get(m.id)?.size ?? 0}</td>
-				</tr>
-			))}
-		</tbody>
-	</table>
-	<h2 id="tm-list">TM and HM list</h2>
-	<table class="compact">
-		<thead><tr><th>TM</th><th>Move</th><th>Type</th><th>Cat.</th><th>Power</th><th>Acc.</th><th>PP</th></tr></thead>
-		<tbody>
-			{tms.flatMap((m) => m.tm.map((t) => (
-				<tr><td>{tmLink(t, m.name) ? <a href={tmLink(t, m.name)}>{t}</a> : t}</td><td><a href={`#move-${m.id}`}>{m.name}</a></td><td><Type type={m.type} /></td><td>{m.cat}</td><td>{m.power}</td><td>{m.acc}</td><td>{m.pp}</td></tr>
-			)))}
-		</tbody>
-	</table>
-	<p class="small muted">Click a TM number to see where to find it, or browse all <a href={url('/items/')}>Items</a>.</p>
+<StarlightPage frontmatter={{ title: 'Moves', description: 'Origin HeartGold moves: stats, effects, changes and Pokémon that can learn them.', tableOfContents: false }}>
+<p>Find a move by type, category or how it is learned. Open it for effects, changes in this hack and compatible Pokémon. The {moves.length} entries include unnamed moves; learner counts include forms, so check each Pokémon’s availability. Restricted tutors also appear under Tutor, even when their compatible Pokémon list is not known.</p>
+<p>“var.” power is calculated in battle. “—” accuracy is no accuracy check. <a href={url('/tms/')}>Browse TMs and HMs</a> · <a href={url('/abilities/')}>Browse abilities</a></p>
+<div class="table-filter" data-table="move-table">
+<input type="search" placeholder="Search moves…" aria-label="Search moves" />
+<select data-key="type" aria-label="Move type"><option value="">All types</option>{types.map(t => <option>{t}</option>)}</select>
+<select data-key="category" aria-label="Move category"><option value="">All categories</option>{['Physical','Special','Status'].map(c => <option>{c}</option>)}</select>
+<select data-key="method" aria-label="Learning method"><option value="">All learning methods</option>{Object.entries(methods).map(([key, name]) => <option value={key}>{name}</option>)}</select>
+<select data-key="changed" aria-label="Changes in this hack"><option value="">All moves</option><option value="yes">Changes in this hack</option><option value="no">No change listed</option></select>
+<span class="filter-count" aria-live="polite"></span>
+</div>
+<table id="move-table" class="sortable compact"><thead><tr><th>Move</th><th>Type</th><th>Category</th><th data-sort-type="number">Power</th><th data-sort-type="number">Accuracy</th><th data-sort-type="number">PP</th><th data-sort-type="number">Priority</th><th>TM / HM</th><th data-sort-type="number">Learners</th><th>Notes</th></tr></thead><tbody>
+{moves.map(m => { const learners = moveLearners.get(m.id) ?? []; const tmRows = tms.filter(t => t.moveId === m.id); const changed = playerMoveChanges(m).length > 0; return <tr id={`move-${m.id}`} data-type={m.type} data-category={m.cat} data-method={[...new Set([...learners.flatMap(l => l.methods.map(x => x.method)), ...(tutorsByMove.has(m.id) ? ['tutor'] : [])])].join('|')} data-changed={changed ? 'yes' : 'no'}>
+<td><a href={moveUrl(m)}>{m.name}</a>{m.game && <span class="sr-only"> {m.game}</span>}</td><td><Type type={m.type} /></td><td>{m.cat}</td><td>{m.power}</td><td>{m.acc}</td><td>{m.pp}</td><td>{m.priority}</td>
+<td>{tmRows.map((t,i) => <>{i > 0 && ', '}<a href={itemUrl(itemById.get(t.itemId))}>{t.label}</a></>)}</td><td>{learners.length}</td><td>{m.unnamed ? 'Unnamed move' : ''}{changed && <span class="tag">Change notes</span>}</td>
+</tr>; })}
+</tbody></table>
+<h2 id="tm-list">TM and HM list</h2>
+<p>The dedicated <a href={url('/tms/')}>TM and HM reference</a> lists all 130 TMs and 8 HMs with acquisition, cost, conditions and compatibility.</p>
 </StarlightPage>

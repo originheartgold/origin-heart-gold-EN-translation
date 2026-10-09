@@ -80,14 +80,14 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 
 **How it works:**
 1. Walk north from Route 43 to the south shore. Lance stands near the water with his Dragonite. **Talk to him**: the scene doesn't start on its own.
-2. A Gyarados attacks a tourist. You fight a **wild red Gyarados (Lv. 30)**. It's a normal wild battle, so you can catch it. Losing whites you out.
+2. A Gyarados attacks a tourist. You fight a **wild red Gyarados (Lv. 30)**. It's a normal wild battle, so you can catch it. Knocking it out or running away also moves the scene on. Losing whites you out.
 3. More Gyarados follow. A Magikarp suddenly evolves into a red Gyarados; Lance's Dragonite stuns it and Lance catches it. A third one attacks, Pryce's Mamoswine holds it back with an ice wall, and Gold catches that one.
 4. Pryce says his radio is being jammed. Everyone splits up to look for a transmitter. There are three people in lab coats with a boxy radio beside them. Gold takes the one on the west shore and Lance the one on the north-east shore. **Yours is the "researcher" on the north shore, about 9 steps east and 8 steps north of the door of the house in the north-west corner.**
 5. Talk to him and pick **"Neat gadget there"** ("Seen a transmitter?" goes nowhere). At "Investigate the device by force?" answer **Yes**. You fight **Scientist Yamada** (Manectric, Drapion, Porygon2, Vileplume, Lv. 62–65). He then escapes south on a Sharpedo. Answering No just ends the talk. Ask again as often as you like.
 6. Go back to Pryce and tell him. He waits with his Mamoswine on the south shore, just south-west of the sign by the water. He concludes the real source is in Mahogany Town. The Team Rocket HQ chapter starts: next, [Mahogany Town → Team Rocket HQ](11-cianwood-mahogany.md#mahogany-town--team-rocket-hq-the-radio-wave-investigation-story-where-to-go-next).
 **Reward:** story progress. Also see [Lake of Rage → Route 44: small extras](#lake-of-rage--route-44-small-extras) (the Route 43 gatehouse TM).
 
-*Source:* script file 934 (script 18 → L1942–L4227, `WildBattle 130, Lv. 30`; script 15 → L4605, L5729, L6125–L6635, `TrainerBattle 901`, flag 201; script 16 → L4688–L5296, sets 0x4098 = 17). Script 18 is Lance's talk script (object ≈533,79); the wild battle is at L2247, Lance catches the evolved Magikarp (msgs 14–16, 36), Gold catches the third (msg 26); L4167–L4203 send Lance to ≈541,37 and Gold to ≈490,73. Transmitter people: ≈490,72 (west), ≈541,36 (north-east), ≈506,34 (yours; house door 497,42). After the scene L4219 clears flag 650, so Pryce stands at ≈526,85 (sign at 528,82); the ≈526,91 Pryce (flag 1366) is the cutscene copy. Earlier guide text placed Pryce at ≈526,91 and had Pryce and Gold handle the second Gyarados; corrected from the script.
+*Source:* script file 934 (script 18 → L1942–L4227, `WildBattle 130, Lv. 30`; script 15 → L4605, L5729, L6125–L6635, `TrainerBattle 901`, flag 201; script 16 → L4688–L5296, sets 0x4098 = 17). Script 18 is Lance's talk script (object ≈533,79); the wild battle is at L2247 (`CheckBattleWon` L2254: only a loss goes to the white-out at L5589, so a flee continues like a win), Lance catches the evolved Magikarp (msgs 14–16, 36), Gold catches the third (msg 26); L4167–L4203 send Lance to ≈541,37 and Gold to ≈490,73. Transmitter people: ≈490,72 (west), ≈541,36 (north-east), ≈506,34 (yours; house door 497,42). After the scene L4219 clears flag 650, so Pryce stands at ≈526,85 (sign at 528,82); the ≈526,91 Pryce (flag 1366) is the cutscene copy. Earlier guide text placed Pryce at ≈526,91 and had Pryce and Gold handle the second Gyarados; corrected from the script. Reachability (review 2026-10-06): Lance (object 0, hide flag 483, clear from new game) starts the scene only with flag 484 set (new game, file 149 L94) and flag 164 set, which the Route 42 Entei scene sets (file 252 L4745); the researchers (flag 201) stand there from the start.
 
 ## Team Rocket HQ B3F: the two passwords and the Secret Key door (continues Battle Frontier, Cianwood City and Mahogany Town's "Mahogany Town → Team Rocket HQ")
 
@@ -111,7 +111,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 - Lance's fight against Maxie and Archie in the north-east corner is only a scene. He tells you to go on.
 - Crystal's hint names only the PC. The Scientist battles you when you talk to him. Talking to him again repeats the password.
 
-*Source:* script file 91 (script 8 → L1983–L2262, `TrainerBattle 553/817`, flag 502; script 1 → L2290–L2570, `MultiBattle 911/893/549`, flag 503; script 3, `TrainerBattle 912`, flag 211; script 4 → L2589–L3030, `HasItem 467`, `TrainerBattle 816`, flag 640; script 2 warp to map 133). Positions: Executives' door ≈23,16; west-room trigger ≈20,24; east-room trigger ≈38,23; PC Scientist ≈42,15; warp ≈19,3. Party levels from trainers 553 (Charon, Lv. 87–88) and 817 (Cyrus, Lv. 89–90).
+*Source:* script file 91 (script 8 → L1983–L2262, `TrainerBattle 553/817`, flag 502; script 1 → L2290–L2570, `MultiBattle 911/893/549`, flag 503; script 3, `TrainerBattle 912`, flag 211; script 4 → L2589–L3030, `HasItem 467`, `TrainerBattle 816`, flag 640; script 2 warp to map 133). Positions: Executives' door ≈23,16; west-room trigger ≈20,24; east-room trigger ≈38,23; PC Scientist ≈42,15; warp ≈19,3. Party levels from trainers 553 (Charon, Lv. 87–88) and 817 (Cyrus, Lv. 89–90). Reachability (review 2026-10-06): the west-room trigger needs var 0x40B2 = 2 (set on B1F/B2F, files 89/90); the east-room trigger needs var 0x40B5 = 1, which only the Lavender Town Blue battle sets (file 17 L3796, a forced trigger that replays until won, per guide 03); the later values 3–11 come from post-HQ romance dates. The Scientist (script 3) and the door (script 4, flags 211 and 502) don't depend on either scene's var, so the "Raticate Tail" password is obtainable even if the Crystal scene doesn't play.
 
 ## Route 43: break up the Pidgeot and Noctowl flock (→ Sharp Beak; after the Rocket HQ)
 
@@ -198,13 +198,13 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 
 **Where:** Blackthorn City, just outside the Gym, a few steps south-east of its door, with her Meganium. Gold and his Pokémon practise nearby.
 
-**Who gets it / when:** when you arrive in Blackthorn. Gold and Crystal have both just lost to Clair. **Missable:** once you have the Rising Badge she only talks about Gold.
+**Who gets it / when:** when you arrive in Blackthorn. Gold and Crystal have both just lost to Clair. **Missable:** when you receive the Rising Badge she leaves her spot outside the Gym (she and Gold turn up again only for [Gold's Badge race](#blackthorn-city-golds-badge-race--pp-max-5-or-pp-up)), so coach her before you finish the Dragon's Den.
 
 **How it works:** Crystal asks for a practice battle → **Yes**. Battle **Crystal** (Meganium, Jynx, Hitmonchan, Xatu, Parasect, Marowak; Lv. 80–81). Losing whites you out; you can ask again.
 
 **Reward:** **PP Max**. One-time.
 
-*Source:* script file 937 (script 31, L1274–L2282; flags 499, 2254; badge 15). Crystal ≈672,155.
+*Source:* script file 937 (script 31, L1274–L2282; flags 499, 2254; badge 15). Crystal ≈672,155 (object 5, hide flag 512; Gold's objects 0, 1, 10, 11 share it). 512 is set by the Rising Badge script itself (file 112 L4855, straight after `GiveBadge 15` at L4728) and never cleared, so the badge branch at L1285 (msg 54, "Gold has gone into the Gym…") never shows in play; earlier guide text said she then only talks about Gold.
 
 ## Blackthorn City → Route 45: the stolen Badges (→ 3 Energy Powder)
 
@@ -275,7 +275,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 2. Walk to the spot where he keeps them, right beside the Dragonite. A man with a Zangoose is trying to catch the hurt Pokémon to sell. Dragonite drives him off, then keeps rampaging.
 3. You offer to hold it down: a battle against a **Lv. 90 Dragonite** (Choice Band, Outrage only). A loss whites you out, and the scene replays when you walk back.
 4. Win, and the man recognises you as the Champion.
-**Reward:** talk to him again for a free, repeatable **Outrage** move tutor (93 species).
+**Reward:** talk to him again for a free, repeatable **[Outrage](/moves/outrage/)** move tutor (93 species).
 
 **Notes:** the tutor needs the Dragonite battle done. The quest shares its progress with earlier Kanto story scenes, which are all over before you can reach Route 45, so this doesn't affect you in normal play ([known issue](known-issues.md#route-45-dragonite-counter)).
 
@@ -390,7 +390,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 
 **Notes:** losing whites you out.
 
-*Source:* script file 935 (script 2, L111–L563: `TrainerBattle 816, 630`, sets 0x40b2 = 5, flag 1139). The League HQ report checks 0x40b2 = 5 (file 31 L1702). The trigger condition for script 2 isn't in the script. It's probably the map's on-enter check of 0x40b2 = 4 (set by file 31 L4541). House door ≈497,42.
+*Source:* script file 935 (script 2, L111–L563: `TrainerBattle 816, 630`, sets 0x40b2 = 5, flag 1139). The League HQ report checks 0x40b2 = 5 (file 31 L1702). The trigger condition for script 2 isn't in the script: it's the house's frame script, which starts on entry while 0x40b2 = 4 (set by file 31 L4541). Observed with `emu_harness.py guide0813 --case petrel_scene`: entering with 0x40b2 = 4 starts it (618#46), with 3 nothing happens. House door ≈497,42.
 
 ## Lake of Rage: Uxie, Mesprit and Azelf (knowledge, emotion and willpower; after the Petrel scene)
 
@@ -435,7 +435,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 |---|---|---|
 | **Fisherman Carson** | by the water on the south side of the lake, a few steps north-west of the sign on the shore | "Coming to the Lake of Rage on a sunny day?" → Yes → battle (Golduck, Lanturn, Whiscash, Bibarel, Lv. 62–65). Win → **Red Scale** (once). The Red Scale boy in Mahogany Town teaches Water Spout for it ([Mahogany Town: small extras](11-cianwood-mahogany.md#mahogany-town-small-extras)). |
 | **Item on the ground** | by the south-east shore, a few steps north-west of Veteran Dee (see small extras) | an item lying on the ground, one per Wednesday: **PP Max** if you pick it up at night (7 pm to 6:59 am by the DS clock), **Heart Scale** otherwise. It comes back on later Wednesdays, as long as you've visited the lake on a day other than Wednesday in between ([details](13-dungeons-and-common.md#lake-of-rage-when-the-calm-day-happens-continues-lake-of-rage-blackthorn-city-and-beyonds-lake-trio-and-calm-day-visitors)). |
-| **Wesley**, the Wednesday weekday brother | about 6 steps south and 2 west of the guardian's house door | gives a **Black Belt**. If you've met all seven siblings, he gives your lead Pokémon a ribbon instead. That ribbon gift can freeze the game (see [the known issue](known-issues.md#santoss-and-wesleys-ribbon-freeze)), so save first. |
+| **Wesley**, the Wednesday weekday brother | about 6 steps south and 2 west of the guardian's house door | gives a **Black Belt**. If you've met all seven siblings, he gives your lead Pokémon a ribbon instead. After that gift its message stays on screen until you walk away or press X (see [the known issue](known-issues.md#santoss-and-wesleys-ribbon-message)). |
 
 *Source:* script file 934 (script 28 → L5526, `TrainerBattle 916`, item 439, flag 328; script 27, `ScrCmd_522` hour test, items 53/93, flag 327 cleared on non-calm visits by L1782; script 6, item 241, ribbon 61; all hidden by flags 508/510 unless script 1 passes both checks: L126 0x40B2 ≥ 5 (set by the Petrel scene, file 935 L551) and L1749 0x4037 = 0xF229 (calm-day mark, written on entry only if Rocket HQ flag 202 is set and it's Wednesday; see ch13); L1782 clears 327 on non-calm visits). Script 27 belongs to an item-ball object, not a person. Positions: Carson ≈523,77; item ≈539,73; Wesley ≈495,48; shore sign 528,82. Ribbon freeze: decision D-1331.
 
@@ -530,7 +530,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 - You need the Griseous Orb for Giratina. After the final Hall of Fame it's back in the Dark Cave shrine ([Dark Cave: the Griseous Orb returns](08-cherrygrove-to-azalea.md#dark-cave-the-griseous-orb-returns-after-the-final-hall-of-fame-entry)). Lance doesn't give it to you.
 - Arceus needs all three in your party, but in a normal game Arceus can't be summoned (next entry), so you don't need to keep them for it.
 
-*Source:* script file 130 (script 10 L2706 Dialga, WildBattle 483 Lv. 95, flag 2342; script 11 L2748 Palkia, WildBattle 484 Lv. 95, flag 2343), file 135 (script 5 L264–L325 statue needs flag 2261 + item 112; script 28 L2400–L2528 Giratina, WildBattle 487 Lv. 95, flag 2340; all three set their flag on any result except a loss or draw: `CheckBattleWon` is false only for outcomes 2/3, arm9 0x0205172C, so fleeing counts), file 842 L1868–L1976 (Lance gives Silver Wing, Rainbow Wing, Red, Blue, Jade, Adamant and Lustrous Orbs) and L2193–L2201 (clears 2342, 2343, 2340), file 101 L4101–L4177 (Ice Path statue: flag 2261 + item 135). Positions: Dialga ≈89,30; Palkia ≈25,30; Giratina spot ≈49,117; pad ≈47,171 → ≈49,124.
+*Source:* script file 130 (script 10 L2706 Dialga, WildBattle 483 Lv. 95, flag 2342; script 11 L2748 Palkia, WildBattle 484 Lv. 95, flag 2343), file 135 (script 5 L264–L325 statue needs flag 2261 + item 112; script 28 L2400–L2528 Giratina, WildBattle 487 Lv. 95, flag 2340; all three set their flag on any result except a loss or draw: `CheckBattleWon` is false only for outcomes 2/3, arm9 0x0205172C, so fleeing counts), file 842 L1868–L1976 (Lance gives Silver Wing, Rainbow Wing, Red, Blue, Jade, Adamant and Lustrous Orbs) and L2193–L2201 (clears 2342, 2343, 2340), file 101 L4101–L4177 (Ice Path statue: flag 2261 + item 135). Positions: Dialga ≈89,30; Palkia ≈25,30; Giratina spot ≈49,117; pad ≈47,171 → ≈49,124. The story scene removes Palkia for good: `HidePerson 6` (L2381) sets Palkia's hide flag 2343 (the same mechanism as every `HidePerson`; tested in an emulator, guide review pass 2, CN and EN: Palkia present before, absent after the hide and a reload, `pass2-A/palkia_hide_*`). Lance's L2197 clears 2343 again.
 
 ## Route 47: Raikou (after the final Hall of Fame)
 
@@ -582,7 +582,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 - **Black Belt Boyd (Ice Path B2F, north part of the floor, east of the stairs from B1F):** an optional battle (Gallade, Nidoking, Primeape, Aggron, Lv. 63–65). Win once for a **Claw Fossil**.
 - **Mawile Trainer (Blackthorn, on the east side of town, south of the Ice Path exit):** a practice battle with **Veteran Maureen** (Ninjask, Mawile, Granbull, Azumarill, Lv. 62–65) gives a **Blue Flute**. One-time.
 - **EV trainers (Blackthorn):** pay one Berry for a battle against six Lv. 30 Pokémon of one kind, repeatable. **Aspear Berry** → Sp. Def (Mr. Mime; the man with a Wormadam in the middle of town); **Pecha Berry** → Defense (Graveler; the man with a Graveler two steps west of the Poké Mart door). In the move tutor house's east room (its own door on the east side of town, next to the man with a Slowking): **Chesto Berry** → Sp. Atk (Flaaffy); **Rawst Berry** → Attack (Dragonair).
-- **Santos, the Saturday sibling (Blackthorn, Saturdays only, in the middle of town, a few steps north-east of the man with the Wormadam):** gives a **Soft Sand**. If you've met all seven siblings he gives your lead Pokémon a ribbon instead. That ribbon gift can freeze the game (see [the known issue](known-issues.md#santoss-and-wesleys-ribbon-freeze)), so save first.
+- **Santos, the Saturday sibling (Blackthorn, Saturdays only, in the middle of town, a few steps north-east of the man with the Wormadam):** gives a **Soft Sand**. If you've met all seven siblings he gives your lead Pokémon a ribbon instead. After that gift its message stays on screen until you walk away or press X (see [the known issue](known-issues.md#santoss-and-wesleys-ribbon-message)).
 - **Play Rough tutor (Blackthorn move tutor house, the runaway Trainer's father):** the end of [Route 36 gatehouse → Blackthorn City: the runaway Dragonair Trainer](10-ecruteak-olivine.md#route-36-gatehouse--blackthorn-city-the-runaway-dragonair-trainer--play-rough-tutor). Despite what he says, the move he teaches is **Flail**, not Play Rough (a hack bug; see [the known issue](known-issues.md#play-rough-tutor-teaches-flail)).
 - **Photographers:** Ice Path 1F (Fridays and Saturdays) and Blackthorn City (Sundays and Tuesdays).
 

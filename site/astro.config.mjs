@@ -29,9 +29,11 @@ export default defineConfig({
 				{ label: 'Start here', items: [
 					{ label: 'Home', link: '/' },
 					{ label: 'Patch your game', slug: 'patch' },
+					{ label: 'FAQ', slug: 'faq' },
 					{ label: 'Save editor', link: '/save-editor/' },
 					{ label: 'How to use this guide', slug: 'about' },
 					{ label: 'Mechanics and controls', slug: 'mechanics' },
+					{ label: 'Camera and widescreen codes', slug: 'camera-codes' },
 				] },
 				{ label: 'Quest guide', items: [{ autogenerate: { directory: 'guide' } }] },
 				{ label: 'Reference', items: [
@@ -39,9 +41,12 @@ export default defineConfig({
 					{ label: 'Locations', link: '/locations/' },
 					{ label: 'Calendar encounters', slug: 'calendar' },
 					{ label: 'Items', link: '/items/' },
-					{ label: 'Moves and TMs', link: '/moves/' },
+					{ label: 'Moves', link: '/moves/' },
+					{ label: 'TMs and HMs', link: '/tms/' },
+					{ label: 'Abilities', link: '/abilities/' },
 					{ label: 'Trainers', link: '/trainers/' },
 					{ label: 'Move tutors', link: '/tutors/' },
+					{ label: 'Reference sources', link: '/reference-sources/' },
 				] },
 				{ label: 'Help out', items: [
 					{ label: 'Report a problem or contribute', slug: 'contribute' },

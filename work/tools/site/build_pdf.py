@@ -116,7 +116,7 @@ def main(argv=None):
         open(src, 'w', encoding='utf-8').write(md)
         open(hdr, 'w', encoding='utf-8').write(TEMPLATE_HEADER)
         cmd = ['pandoc', src, '-f', 'gfm+yaml_metadata_block', '-o', a.out, '--pdf-engine=typst',
-               '--toc', '--toc-depth=1', '-H', hdr, '-V', 'papersize=a4']
+               '--toc', '--toc-depth=1', '--resource-path=' + GUIDE, '-H', hdr, '-V', 'papersize=a4']
         r = subprocess.run(cmd, capture_output=True, text=True)
         if r.returncode:
             print(r.stderr[-3000:])

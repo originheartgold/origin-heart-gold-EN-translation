@@ -1,0 +1,6 @@
+---
+import type { Evidence } from '../lib/data';
+const { evidence } = Astro.props as { evidence: Evidence };
+const labels = { 'rom-data': 'Game data', 'game-text': 'Game description', 'author-note': 'Author note', tested: 'Tested in game' };
+---
+<span class={`tag evidence evidence-${evidence.kind}`}>{labels[evidence.kind]}</span>

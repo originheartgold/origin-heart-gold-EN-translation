@@ -36,7 +36,7 @@
 
 **Where:** Granny Mae's training hall on Two Island, behind the north-east door of the town (the northernmost door). The receptionist stands a few steps inside the entrance.
 
-**Who gets it / when:** from your first visit to the islands (after the Saffron incident). The trial only starts with two challengers. Talk to the receptionist alone first: she tells you to find a partner. Then invite the Johto Trainer on Two Island; **Blue** turns up instead and waits at the reception ([Two Island: a partner for Granny Mae's trial](05-saffron-cinnabar.md#two-island-a-partner-for-granny-maes-trial)).
+**Who gets it / when:** from your first visit to the islands (after the Saffron incident). **Required for the story:** the Viridian Gym stays closed until you pass this trial. The trial only starts with two challengers. Talk to the receptionist alone first: she tells you to find a partner. Then invite the Johto Trainer on Two Island; **Blue** turns up instead and waits at the reception ([Two Island: a partner for Granny Mae's trial](05-saffron-cinnabar.md#two-island-a-partner-for-granny-maes-trial)).
 
 **How it works:** talk to the receptionist with Blue there. There's no quitting halfway; the guards send you back if you try.
 1. **Singles assessment:** Veteran Logan (Flygon 72, Typhlosion 72 …).
@@ -52,14 +52,14 @@
 
 3. **Doubles assessment:** Ace Trainer Charles (Abomasnow, Jynx, Glalie, Mamoswine, all Lv. 73), a Double Battle.
 4. **Aptitude check:** a single battle against **Blue** (Pidgeot 75, Rhydon 74, Alakazam 74, Blastoise 76).
-5. **Granny Mae's test:** a Multi Battle with Blue at your side against **Granny Mae** (Skarmory, Kingdra, Altaria, Dragonite, Lv. 75) and **Aroma Lady Dana** (Vileplume, Tentacruel, Rotom, Azumarill, Lv. 74). **Nothing heals you** between Blue's battle and this one, so heal before you challenge Blue. Your party is healed after the Multi Battle.
+5. **Granny Mae's test:** a Multi Battle with Blue at your side against **Granny Mae** (Skarmory, Kingdra, Altaria, Dragonite, Lv. 75) and **Aroma Lady Dana** (Vileplume, Tentacruel, Rotom, Azumarill, Lv. 74). Stages 3, 4 and 5 run straight into each other as one scene: once you step up to Charles, you don't get control back until the Multi Battle is over, so nothing heals you between these three battles (only items used during a battle). **Heal before you walk up to Charles.** Your party is healed after the Multi Battle.
 
 A loss at any stage whites you out. Talk to the receptionist to try again; she restarts the whole trial **from stage 1**.
 **Reward:**
 - Granny Mae teaches the **ultimate moves** free, as often as you like: **Frenzy Plant**, **Blast Burn** or **Hydro Cannon**, but only to the final forms of every region's starters (Venusaur, Meganium, Sceptile, Torterra, Serperior, Chesnaught, Decidueye; Charizard, Typhlosion, Blaziken, Infernape, Emboar, Delphox, Incineroar; Blastoise, Feraligatr, Swampert, Empoleon, Samurott, Greninja, Primarina). A Pokémon that already knows one of the three can't learn another.
-- Talk to the trainee standing next to Granny Mae afterwards: **Ninja Scroll** ("unlocks Greninja's potential"), once.
+- Talk to **Aroma Lady Dana**, who stands next to Granny Mae, afterwards: **Ninja Scroll** ("unlocks Greninja's potential"), once.
 
-*Source:* script file 782 (scripts 5–10, 14; L1305–L5449, L2545–L8994; vars 0x40b0, 0x40ab; flags 1105, 1705, 2915; no `HealParty` between `TrainerBattle 644` (Blue, L4615) and `MultiBattle 645/646/647` (L5001), heal at L5164; a loss jumps to L4309, the restart). Hall entrance: Two Island door ≈116,107 → hall 47–48,126; receptionist ≈48,122; trainee ≈37,39.
+*Source:* script file 782 (scripts 5–10, 14; L1305–L5449, L2545–L8994; vars 0x40b0, 0x40ab; flags 1105, 1705, 2915; stage 3 is coord script 9, and after `TrainerBattle 643` (Charles, L2323) the same script goes on through L4379 to `TrainerBattle 644` (Blue, L4615) and `MultiBattle 645/646/647` (L5001) with no `HealParty` and no `ReleaseAll` in between; heal at L5164; a loss jumps to L4309, the restart; the Ninja Scroll (item 761, L2648) comes from object 4, the examiner Granny Mae calls "Dana" in the scene; the Viridian Gym door guard checks flag 1705, file 741 script 2). Hall entrance: Two Island door ≈116,107 → hall 47–48,126; receptionist ≈48,122; Dana ≈37,39.
 
 ## Two Island: Fern's "sick" Chatot (Chatot needed)
 
@@ -83,7 +83,7 @@ A loss at any stage whites you out. Talk to the receptionist to try again; she r
 **Where:** the composer at the back of the One Island Pokémon Center (straight north from the entrance), and the woman with a Roserade outside, a few steps north of the fountain (about 9 steps north and 6 steps east of the Pokémon Center door).
 
 **How it works:**
-1. The composer wants a title for his piece about the islands. Answer **"Mysterious Girl"** ("City of Water" and "Garden of the Sea" are rejected; retry freely). He gives you a **Miracle Seed**.
+1. The composer wants a title for his piece about the islands. Answer **"Mysterious Girl"** ("City of Water" and "Garden of the Sea" are rejected; retry freely). He gives you a **[Miracle Seed](/items/miracle-seed/)**.
 2. Bring a **Miracle Seed** to the Roserade woman: say Yes to learning her technique, then trade the seed. She gives you **TM86 Grass Knot**.
 **Reward:** Miracle Seed, then TM86 Grass Knot (the only TM86 in the game).
 
@@ -108,9 +108,9 @@ A loss at any stage whites you out. Talk to the receptionist to try again; she r
 
 ## Victory Road: the Indigo Conference qualifiers (find the hidden staff member)
 
-**Where:** the Victory Road gate on the Route 22 side, then Victory Road 2F and 3F.
+**Where:** the Victory Road gate (north of the League reception gate between Route 22 and Route 26), then Victory Road 2F and 3F.
 
-**Who gets it / when:** end of Kanto, the first time you enter the gate. The guard a few steps inside the gate's south entrance (the door from the Route 26 gatehouse) only lets you in with the **Earth Badge** (he talks about "eight Badges", but the Earth Badge is the only one he actually checks).
+**Who gets it / when:** end of Kanto, the first time you enter the gate. The guard a few steps inside the gate's south entrance (the door from the League reception gate) only lets you in with the **Earth Badge** (he talks about "eight Badges", but the Earth Badge is the only one he actually checks).
 
 **How it works:**
 1. **Opening ceremony.** Walk north into the middle of the hall, where the competitors are gathered, and the MC explains the rules. A League staff member is disguised as one of the competitors. Beat that person to learn the password. You must uncover the disguised staff member to advance; knowing the number alone does not skip the trial.
@@ -139,13 +139,13 @@ A loss at any stage whites you out. Talk to the receptionist to try again; she r
    - **Firebreather Damon**: a few steps south-east of the exit guards.
 
    The right Trainer greets you with a new line (Wendy: "Did you come over because you caught a whiff of my perfume?"; Damon: "Behold my Fire Style: Fireball Jutsu!") and battles you. Beat them and Janine reveals herself: your password is **570819**. A wrong Trainer battles you if you haven't beaten them yet, and otherwise just gives their usual line (Axel, for one, says he hasn't found the staff member either). All five are Lv. 73–74 two-Pokémon teams.
-5. **The exit guards.** With the real password, the two Trainers blocking the exit path fight you: a double battle against Ace Trainer Shane (Gastrodon, Clefairy, Hippowdon, Gallade, Lv. 75) and Guitarist Del (Tyranitar, Golem, Aerodactyl, Probopass, Lv. 75). Win and they step aside.
+5. **The exit guards.** With the real password, the two Trainers blocking the exit path fight you: a double battle against Ace Trainer Shane (Gastrodon, Clefairy, Hippowdon, Gallade, Lv. 75) and Guitarist Del (Tyranitar, Golem, Aerodactyl, Probopass, Lv. 75). After the win they stay put: talk to either of them again from the south and he steps aside.
 6. Give the password to the staff member standing in the exit at the north end of 3F. You pass and go up to the Indigo Plateau.
 **Reward:** entry to the main tournament (next entry).
 
 **Notes:** any lost battle whites you out; the qualifier state is kept, so just go back. Without beating Janine on 2F first, nobody on 3F reveals anything, and that is the usual reason players get stuck. Firebreather Damon may give you a fake password ("Specious") instead; the exit guards just laugh at it. Use the table to find the disguised Janine.
 
-*Source:* script file 763 (scripts 3, 4, 34; L2977, L3207, L6234 Escape Rope check; obj 28 is the Mart), file 110 (scripts 8, 11, 13, 14, 18–21; L4251–L4668 and L8952–L10163 starter/gender branches; flags 1287–1289, 1610, 1895, 1093; L10157 sets 1496 = real password; L5224 passes the qualifier; e.g. Wendy L4390 checks Janine's flag 1924, then the right branch goes straight to L9177, the reveal battle, without needing her first-battle flag 1927), file 109 / VR 2F events (Janine #564 at ≈9,24, object hidden by her trainer flag 1924), file 197 (Route 11 sets 1610 / 1895). Fake password: Damon's ordinary branch @9293–9332 (`TrainerBattle 561`, "Specious" @9325, sets 1921); the exit dialogue always uses 570819 (@1014/@5049/@5143), and passage needs flag 1496. Positions: gate guard ≈17,38, hall ≈25,20, receptionist ≈24,11, clerk ≈23,12; 3F: Damon ≈42,27, exit guards ≈38–39,23, exit staff ≈38,14, Misty ≈54,42, Alfred ≈29,32, Wendy ≈11,36, Axel ≈22,39, Danica ≈29,38.
+*Source:* script file 763 (scripts 3, 4, 34; L2977, L3207, L6234 Escape Rope check; obj 28 is the Mart), file 110 (scripts 8, 11, 13, 14, 18–21; L4251–L4668 and L8952–L10163 starter/gender branches; flags 1287–1289, 1610, 1895, 1093; L10157 sets 1496 = real password; L5224 passes the qualifier; e.g. Wendy L4390 checks Janine's flag 1924, then the right branch goes straight to L9177, the reveal battle, without needing her first-battle flag 1927), file 109 / VR 2F events (Janine #564 at ≈9,24, object hidden by her trainer flag 1924), file 197 (Route 11 sets 1610 / 1895). Fake password: Damon's ordinary branch @9293–9332 (`TrainerBattle 561`, "Specious" @9325, sets 1921); the exit dialogue always uses 570819 (@1014/@5049/@5143) and checks no flag itself: the exit guards (scripts 19, 20) block the way and only battle you with flag 1496 (L4720, `TrainerBattle 579 506`, sets 1939); after that, talking to them from y = 24 moves one aside (L4690 → L9705, L4863 → L9719). Gate: zone 299 is the League reception gate (exits to Route 22, Route 26 and Route 28). Positions: gate guard ≈17,38, hall ≈25,20, receptionist ≈24,11, clerk ≈23,12; 3F: Damon ≈42,27, exit guards ≈38–39,23, exit staff ≈38,14, Misty ≈54,42, Alfred ≈29,32, Wendy ≈11,36, Axel ≈22,39, Danica ≈29,38.
 
 ## Indigo Plateau: the Indigo Conference main tournament and the "who do you cheer for?" choice (romance)
 
@@ -174,6 +174,8 @@ Continues [Three Island: the Alto Mare Bikers](05-saffron-cinnabar.md#three-isla
 
 **Where:** the southern of Three Island's two house doors (the northern one is the engineer's), during the biker occupation. She's just inside.
 
+**Who gets it / when:** once you've beaten the entrance guards and got into the town ([Three Island: the Alto Mare Bikers](05-saffron-cinnabar.md#three-island-the-alto-mare-bikers-save-the-meowth)). A biker at the top of the bridge just south of her house won't let you go south, towards the Shipyard Ruins, until you've talked to her and picked one of the first three answers (tested in an emulator: before that he stops you and sends you back; afterwards you walk straight past). **Missable:** once you clear the Dragon's Den (Clair, Rising Badge), she's gone with the rest of the gang.
+
 **How it works:** she's reading a book on how to ride a bike. Choose:
 
 | Choice | Result |
@@ -185,13 +187,13 @@ Continues [Three Island: the Alto Mare Bikers](05-saffron-cinnabar.md#three-isla
 
 All three real choices send her to the Shipyard Ruins; only teaching her changes the Chief's fight (next entry).
 
-*Source:* script file 782 (script 20, L2718–L3035, L5861; var 0x4097 = 3/4/5, flag 2019). House: Three Island door ≈180,120; Big Sis ≈7,36 inside.
+*Source:* script file 782 (script 20, L2718–L3035, L5861; var 0x4097 = 3/4/5, flag 2019, her hide flag, cleared when you first sail to the islands, file 826 @983, and set by the Dragon's Den clear, file 112 @4871). Bridge biker: file 735 coord script 11 at ≈180,123 on var 0x4097 = 2 (set at the first sailing, 826 @1007), object 24 at ≈181,123; movement at @7576 steps you back north. Emulator (CN and EN, 2026-10-06, work/build/harness/guide-review-20261006/pass2-C/bridge_*: var 0x4097 = 2 → stopped at 180,122/123 with line 441#135; = 3 → walked on to 180,125). House: Three Island door ≈180,120; Big Sis ≈7,36 inside.
 
 ## Shipyard Ruins (Three Island): the bikers' Chief, a bribe or a fight
 
 **Where:** the Shipyard Ruins, the door at the south-west corner of Three Island. **Biker Muramasa** stands in front of the door: beat him to get in (Kangaskhan, Scizor, Shiftry; Lv. 62–64; a loss whites you out). Inside, the biker at the back of the ruins (top right, surrounded by four bikers) asks if you're here to see the Chief.
 
-**Who gets it / when:** during the Three Island biker occupation. **Missable:** once you finish the Dragon's Den (Clair, Rising Badge), the bikers are gone for good and Three Island becomes a tourist spot anyway.
+**Who gets it / when:** during the Three Island biker occupation, after you've talked to [Big Sis](#three-island-the-biker-big-sis-who-cant-ride) (until then the biker at the top of the bridge south of her house won't let you come this way). **Missable:** once you finish the Dragon's Den (Clair, Rising Badge), the bikers are gone for good and Three Island becomes a tourist spot anyway.
 
 **How it works:** the Chief is **Roughneck Paxton**, the old Kanto Speed Alliance leader from [Cycling Road](04-celadon-fuchsia-saffron.md#cycling-road-join-the-kanto-speed-alliance-or-drive-it-out). Whatever you answer to "Do you remember me?", he offers you a red envelope.
 - **Accept the red envelope:** you get **$200,000** and leave. The bikers stay. The next time you walk down the path south of the One Island Pokémon Center (towards the harbour, next to the tourist who asks if it's your first time in the islands), a **League discipline inspector** fines you **$400,000**, double the bribe (all your money if you have less). After that you can come back and fight, but Big Sis is no longer on your side (see the gauntlet's last step).
@@ -201,11 +203,11 @@ All three real choices send her to the Shipyard Ruins; only teaching her changes
   3. Biker Muramasa again (same team as at the door).
   4. If you **taught Big Sis to ride** and didn't take the bribe, she switches sides and you face **Paxton + Black Belt Doyle** together. Otherwise you face Doyle + Big Sis (Double Battle), then **Paxton** alone (Tentacruel, Lunatone, Snorlax, Cacturne, Rhyperior, Umbreon; Lv. 81–82).
   The gang gives up Three Island and leaves.
-**Reward:** no item from the Chief. **Win the gauntlet** and a man who wants to rebuild the island appears on Three Island, a few steps west of the northern house door. He gives you a **Protector**. Missable: he's only there between the gauntlet and the Dragon's Den clear, which hides him again. Players who only take the bribe never get it. The tourist spot and the Three Island pilgrimage trial come from finishing the Dragon's Den, whether or not you fought.
+**Reward:** no item from the Chief. **Win the gauntlet** and a man who wants to rebuild the island appears on Three Island, a few steps west of the northern house door (the same man who asked you, in the One Island Pokémon Center, to drive the bikers off). He gives you a **Protector**. Missable: he's only there between the gauntlet and the Dragon's Den clear, which hides him again. Players who only take the bribe never get it. The tourist spot and the Three Island pilgrimage trial come from finishing the Dragon's Den, whether or not you fought.
 
 **Notes:** you can take the bribe again after the fine, but each time you're fined again at One Island ($400,000) and must beat Muramasa at the door again, so it always loses money. Taking the bribe even once cancels Big Sis's help: after the fine the game treats her as never having been taught, and she has already left her house, so you can't teach her again.
 
-*Source:* script file 879 (script 1, L357–L2508; var 0x4097 5/6; flags 1663, 2018, 2022; the gauntlet's end L2428 clears 2020, the rebuild man's hide flag), file 735 (rebuild man ≈175,109, L7006 gives item 321 Protector; door biker Muramasa ≈169,141, L2590–L2670, `TrainerBattle 656`, hide flag 2016, cleared again by the bribe at 879 L1903), file 845 (coord script 20 at 146,160, var 0x4097 = 6, L1465–L1612; eight `SubMoneyImmediate 50000`; L1612 resets 0x4097 to 1, so the Big Sis check `0x4097 == 5` at 879 L1283 fails afterwards; Big Sis's hide flag 2019 is set at 782 L5861 and never cleared in play), file 112 L4859–L4917 (Dragon's Den clears the bikers, sets 2020, clears 2017 and 2023). Positions: Shipyard Ruins door ≈169,140; biker ≈19,7 inside.
+*Source:* script file 879 (script 1, L357–L2508; var 0x4097 5/6; flags 1663, 2018, 2022; the gauntlet's end L2428 clears 2020, the rebuild man's hide flag), file 735 (rebuild man ≈175,109, script 13: L7006 gives item 321 Protector only with flag 2021, set when you say Yes to his request in the One Island Pokémon Center, file 889 script 6, object 9 with the same sprite; door biker Muramasa ≈169,141, L2590–L2670, `TrainerBattle 656`, hide flag 2016, cleared again by the bribe at 879 L1903), file 845 (coord script 20 at 146,160, var 0x4097 = 6, L1465–L1612; eight `SubMoneyImmediate 50000`; L1612 resets 0x4097 to 1, so the Big Sis check `0x4097 == 5` at 879 L1283 fails afterwards; Big Sis's hide flag 2019 is set at 782 L5861 and never cleared in play), file 112 L4859–L4917 (Dragon's Den clears the bikers, sets 2020, clears 2017 and 2023). Positions: Shipyard Ruins door ≈169,140; biker ≈19,7 inside.
 
 ## Four Island: the Mystery Stone buyer (don't sell it)
 
@@ -334,7 +336,7 @@ Then, "as you are the Champion", he adds a battle: **Elder Huguo** (Infernape, T
 
 **Where:** the shrine at the north edge of Seven Island's village. The map name says **Ritual Shrine**; the islanders call it the **Relic Shrine**. Same place.
 
-**Who gets it / when:** only after you've completed the Island Pilgrimage. Before that, two islanders block the inner chamber ("only those who have completed the Island Pilgrimage may enter").
+**Who gets it / when:** only after you've completed the Island Pilgrimage. Before that, the shrine keeper and her Vaporeon stand in the way of the inner chamber ("only those who have completed the Island Pilgrimage may enter").
 
 **How it works:** talk to the shrine keeper (with her Vaporeon) at the far north end of the shrine. Giovanni, Cyrus and Archer appear. You battle **Executive Archer** (Ho-Oh Lv. 95, Torkoal, Houndoom, Electrode, Shiftry, Muk); a loss whites you out. Then Palkia links the shrine to Mt. Silver, snow falls, and Charon picks up the Azure Flute. Team Rocket teleports to the Ruins of Alph.
 
@@ -342,7 +344,7 @@ Then, "as you are the Champion", he adds a battle: **Elder Huguo** (Infernape, T
 
 **Notes:** the wall carvings ("Rootless snow falls", "The flute's song sounds once more") are flavour for this scene, not a puzzle.
 
-*Source:* script file 942 (script 1 guards need flag 2137; script 4 L295–L1882, `TrainerBattle` 999; sets 0x40b7 = 2), file 870 L2490 (sets 2137). Shrine keeper ≈16,3; shrine entrance ≈15,46 (Seven Island door ≈241,105).
+*Source:* script file 942 (map script 1: with flag 2137 clear, L226 moves the keeper and her Vaporeon, objects 3 and 4, into the passage at ≈15–16,26; script 4 L295–L1882, `TrainerBattle` 999; sets 0x40b7 = 2), file 870 L2490 (sets 2137). Shrine keeper ≈16,3; shrine entrance ≈15,46 (Seven Island door ≈241,105).
 
 ## One Island: a photo with Latios or Latias (→ Black Glasses)
 
@@ -388,11 +390,11 @@ Then, "as you are the Champion", he adds a battle: **Elder Huguo** (Infernape, T
 
 **How it works:**
 1. Talk to the tourist first.
-2. Check the blocked spot with an **Alomomola first in your party** (not fainted; Alomomola is found by Surfing on Route 19 or Route 30). The scene then plays Noctowl's cry and a "Nooo-tow!" line, so it was probably meant for Noctowl, but only Alomomola works (not confirmed in game; see [Known issues](known-issues.md#sevii-islands-and-indigo-plateau)). Your Pokémon spots a **Kecleon** eating snacks, and it attacks: a **wild Kecleon, Lv. 25**. A loss whites you out.
-3. Beat or catch it: you pick up a **Lava Cookie**. Tell the tourist for an **Old Gateau**.
+2. Check the blocked spot with an **Alomomola first in your party** (not fainted; Alomomola is found by Surfing on Route 19, Route 30 or at Tohjo Falls). The scene then plays Noctowl's cry and a "Nooo-tow!" line, so it was probably meant for Noctowl, but only Alomomola works (tested in an emulator: with a Noctowl in front nothing happens; see [Known issues](known-issues.md#sevii-islands-and-indigo-plateau)). Your Pokémon spots a **Kecleon** eating snacks, and it attacks: a **wild Kecleon, Lv. 25**. A loss whites you out.
+3. Beat it, catch it or run away (running counts the same as a win; only a loss whites you out): you pick up a **Lava Cookie**. Tell the tourist for an **Old Gateau**.
 **Reward:** Lava Cookie + Old Gateau (and a Kecleon if you catch it).
 
-*Source:* script file 870 (scripts 9, 12; L988–L1498, L1038–L1766; flags 2197, 2198). Tourist ≈240,109; blocked spot ≈245,103 (shrine door ≈241,105).
+*Source:* script file 870 (scripts 9, 12; L988–L1498, L1038–L1766; flags 2197, 2198; L1038 compares the first healthy party Pokémon with species 594; `WildBattle 352` at L1703 is followed by `CheckBattleWon`, so fleeing takes the win path, and only a loss jumps to L1032 `WhiteOut`). Tourist ≈240,109; blocked spot ≈245,103 (shrine door ≈241,105). Emulator (`emu_harness.py guide0107 --case kecleon`): Alomomola lead → cries 164 (Noctowl), msgs 33–37 and a wild Kecleon (352); Noctowl lead → msg 33 only.
 
 ## Victory Road 3F (final chapter): Silver's and Crystal's confessions
 
@@ -427,7 +429,7 @@ The [Indigo Plateau slope](07-league-to-cherrygrove.md#indigo-plateau-slope-fina
 **Who gets it / when:** after your final Hall of Fame entry, once Lance has brought the seized legendary items to your home ([Lance's visit home](01-pallet-to-pewter.md#pallet-town-lances-visit-home-after-the-final-hall-of-fame)). The Fallen Red Star is back in its spot on Six Island, north of the chief's door.
 
 **How it works:**
-1. With both the **Red Orb and the Blue Orb** in your Bag, check the Red Star. It moves, and **Deoxys** charges at you: a **wild Deoxys, Lv. 95**. **One chance:** if you knock it out it's gone for good. Save first. A loss whites you out and you can retry.
+1. With both the **Red Orb and the Blue Orb** in your Bag, check the Red Star. It moves, and **Deoxys** charges at you: a **wild Deoxys, Lv. 95**. **One chance, and save first:** the Red Star vanishes for good the moment the battle starts. If you knock Deoxys out or run, it's gone. **If you lose, it's gone too**, and so is the rest of this entry: you white out, the chief never makes his claim, and Jessie, James and Meowth never turn up at the Island Restaurant. Reload your save instead. (Tested in an emulator: after a loss the Red Star is gone.)
 2. The chief storms in: you've destroyed the island's only tourist attraction. He wants **100 million** or he'll sue. The alternative: find the legendary **Lucky Meowth God** in the Alto Mare Islands.
 3. Go to the **Island Restaurant on One Island**. Jessie, James and their Meowth are working there as waiters. Talk to any of them and choose:
 
@@ -443,7 +445,7 @@ The [Indigo Plateau slope](07-league-to-cherrygrove.md#indigo-plateau-slope-fina
 
 **Notes:** the "let them stay" ending changes the Island Forest for good. Finish the [forest's](05-saffron-cinnabar.md#island-forest-six-island-before-the-lucky-meowth-god) toll thug, stolen doll and **wishing pond** (the romance reset) and the [Crawdaunt wallet quest](#six-island-the-crawdaunt-wallet-thief-before-the-lucky-meowth-god) first. In the two arrest endings Meowth ends up in the chief's house as the Meowth God, but the island doesn't change.
 
-*Source:* Red Star ≈213,68; forest trigger ≈34,50 (Six Island door ≈175,76 → forest ≈33,51). Script file 943 (script 11, L3552–L4987, WildBattle 386 Lv. 95; L5026–L6407, clears 1331), file 894 (scripts 17–19, L3029–L5349; sets 0x40af = 14, flags 2181, 1331, 1448), file 55 (script 17, coord 34,50 with var 0x40af = 14: clears 2180, sets 2177, 2348), file 842 L2205 (clears 2188), file 737 (scripts 20, 27–29).
+*Source:* Red Star ≈213,68; forest trigger ≈34,50 (Six Island door ≈175,76 → forest ≈33,51). Script file 943 (script 11, L3552–L4987: `HidePerson 4` at L3623, which sets the Red Star's hide flag 2188, runs before `WildBattle 386` Lv. 95 at L5002; a loss jumps to L3755 `WhiteOut`, skipping the chief's scene L5026–L6407, the only reachable clear of flag 1331, the hide flag of Jessie, James and Meowth in the restaurant; tested in an emulator, CN and EN: 2188 already set when the battle starts, still set after the white-out, Red Star gone and 1331 still set back on Six Island, work/build/harness/guide-review-20261006/ch06/deoxys_*), file 894 (scripts 17–19, L3029–L5349; sets 0x40af = 14, flags 2181, 1331, 1448), file 55 (script 17, coord 34,50 with var 0x40af = 14: clears 2180, sets 2177, 2348), file 842 L2205 (clears 2188), file 737 (scripts 20, 27–29).
 
 ## Ritual Shrine: borrowing the Azure Flute (post-game; probably unobtainable)
 
@@ -451,9 +453,9 @@ The [Indigo Plateau slope](07-league-to-cherrygrove.md#indigo-plateau-slope-fina
 
 **What the keeper offers:** after the final Hall of Fame, the keeper says the Azure Flute was returned and asks "Borrow the Azure Flute?". Yes gives you the **Azure Flute**, which you need to replay the [Arceus scene in the Ruins of Alph](08-cherrygrove-to-azalea.md#ruins-of-alph-giovanni-catches-arceus-league-hq-lead) and for the [Sinjoh Ruins](12-lake-of-rage-to-sinjoh.md#sinjoh-ruins-temple-of-arceus-regigigas-and-arceus-after-the-final-hall-of-fame).
 
-**Catch:** the keeper checks your story progress first. Once you've reported to President Goodshow at League HQ after the Arceus scene (a story step before the final Hall of Fame), she only says "Please keep the Azure Flute safe" and never gives it. In a normal playthrough that report always comes before the final Hall of Fame, so the offer can't be reached (not confirmed in game). See [Known issues](known-issues.md#sevii-islands-and-indigo-plateau).
+**Catch:** the keeper checks your story progress first. Once you've reported to President Goodshow at League HQ after the Arceus scene (a story step before the final Hall of Fame), she only says "Please keep the Azure Flute safe" and never gives it. In a normal playthrough that report always comes before the final Hall of Fame, so the offer can't be reached. The keeper's check was tested in an emulator (after the report she only says "keep it safe"; with the story one step earlier she hands over the flute); that the report always comes first is read from the scripts. See [Known issues](known-issues.md#sevii-islands-and-indigo-plateau).
 
-*Source:* keeper ≈16,3. Script file 942 (script 4 L104–L293, L516–L547; var 0x40b7 ≥ 4 checked before flag 2261), file 31 L3316 (League HQ sets 0x40b7 = 4 before the Hall of Fame), files 49 L694 and 131 L590 (use the flute).
+*Source:* keeper ≈16,3 (with the pilgrimage flag 2137 clear, script 1 moves her to ≈15,26). Script file 942 (script 4 L104–L293, L516–L547; var 0x40b7 ≥ 4 checked before flag 2261), file 31 L3316 (League HQ sets 0x40b7 = 4 before the Hall of Fame), files 49 L694 and 131 L590 (use the flute). Writes to 0x40b7: 17 @2509 (1), 129 @1183 (1), 769 @2423 (0), 49 @5260 (3, Arceus scene), 31 @3316 (4), 942 @539 (5) and @1874 (2), 131 @1288/@1367 (6/7). Emulator (`emu_harness.py guide0107 --case azure_flute`, 2261 and 2137 set): 0x40b7 = 4 → 624#47, no item; 0x40b7 = 3 → 624#45, Yes → item 536, 0x40b7 = 5.
 
 ## Sevii Islands: small extras
 

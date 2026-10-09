@@ -1,0 +1,260 @@
+{
+ "_about": "Sources and battle-only forms the game data scan does not find on its own, each verified in the untouched Chinese v4.0.3 ROM (2026-10-05; evidence in work/notes/availability_audit.md). \"how\" replaces the generated \"how to get it\" text, \"battle\" marks a form seen only in battle, \"evoNote\" adds a note to the evolution section, \"note\" explains an entry with no confirmed source, \"evoBlocked\" marks an evolution (by target id) as not possible with a reason.",
+ "entries": [
+  {
+   "id": 548,
+   "name": "Petilil",
+   "evoNote": "Leveling up while holding a Black Belt by day doesn't evolve it into Hisuian Lilligant: because of an error in the hack it stays a Petilil (the game even says \"Petilil evolved into Petilil\" and uses up the Black Belt). A Sun Stone then turns that Petilil into Hisuian Lilligant instead of Lilligant. Tested in an emulator.",
+   "evoBlocked": {
+    "1361": "because of an error in the hack it stays a Petilil (see below)"
+   }
+  },
+  {
+   "id": 554,
+   "name": "Darumaka",
+   "evoNote": "The Darumaka in Ice Path have a wrong form number: they look normal but evolve into a Darmanitan that stays in Zen Mode outside battle. Read from the game code; not tested in game."
+  },
+  {
+   "id": 744,
+   "name": "Rockruff",
+   "evoNote": "Lycanroc's form depends on the time it evolves: in the evening (17:00–19:59) Dusk Form, at night (20:00–03:59) Midnight Form, otherwise Midday Form. Tested in an emulator, with Rare Candies and by levelling up in battle: daytime evolutions gave Midday Form every time. The game doesn't set the daytime form explicitly (a bug in the hack), but no case gave another form."
+  },
+  {
+   "id": 745,
+   "name": "Lycanroc",
+   "evoNote": "Evolving Rockruff in the evening gives Dusk Form, at night Midnight Form, otherwise Midday Form (tested in an emulator)."
+  },
+  {
+   "id": 1042,
+   "name": "Galarian Meowth",
+   "how": "breed Perrserker"
+  },
+  {
+   "id": 1072,
+   "name": "Unown (B)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1073,
+   "name": "Unown (C)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1074,
+   "name": "Unown (D)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1075,
+   "name": "Unown (E)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1076,
+   "name": "Unown (F)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1077,
+   "name": "Unown (G)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1078,
+   "name": "Unown (H)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1079,
+   "name": "Unown (I)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1080,
+   "name": "Unown (J)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1081,
+   "name": "Unown (K)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1082,
+   "name": "Unown (L)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1083,
+   "name": "Unown (M)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1084,
+   "name": "Unown (N)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1085,
+   "name": "Unown (O)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1086,
+   "name": "Unown (P)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1087,
+   "name": "Unown (Q)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1088,
+   "name": "Unown (R)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1089,
+   "name": "Unown (S)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1090,
+   "name": "Unown (T)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1091,
+   "name": "Unown (U)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1092,
+   "name": "Unown (V)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1093,
+   "name": "Unown (W)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1094,
+   "name": "Unown (X)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1095,
+   "name": "Unown (Y)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1096,
+   "name": "Unown (Z)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1097,
+   "name": "Unown (!)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1098,
+   "name": "Unown (?)",
+   "note": "Every wild Unown comes out as the A form: the game picks a letter, then overwrites it with A (a bug in the hack), so the other letters can't be caught normally. Tested in an emulator (65 wild Unown, all A). Unown brought over from a Game Boy Advance game might keep their letter; that wasn't checked."
+  },
+  {
+   "id": 1119,
+   "name": "Castform (Sunny Form)",
+   "battle": "Castform takes this form in battle in harsh sunlight."
+  },
+  {
+   "id": 1120,
+   "name": "Castform (Rainy Form)",
+   "battle": "Castform takes this form in battle in rain."
+  },
+  {
+   "id": 1121,
+   "name": "Castform (Snowy Form)",
+   "battle": "Castform takes this form in battle in hail."
+  },
+  {
+   "id": 1132,
+   "name": "Deoxys (Attack Forme)",
+   "how": "change a Deoxys at the meteorite rocks on Route 3"
+  },
+  {
+   "id": 1133,
+   "name": "Deoxys (Defense Forme)",
+   "how": "change a Deoxys at the meteorite rocks on Route 3"
+  },
+  {
+   "id": 1134,
+   "name": "Deoxys (Speed Forme)",
+   "how": "change a Deoxys at the meteorite rocks on Route 3"
+  },
+  {
+   "id": 1139,
+   "name": "Cherrim (Sunshine Form)",
+   "battle": "Cherrim takes this form in battle in harsh sunlight."
+  },
+  {
+   "id": 1147,
+   "name": "Heat Rotom",
+   "how": "change a Rotom at Rotom's Room (Silph Co.)"
+  },
+  {
+   "id": 1148,
+   "name": "Wash Rotom",
+   "how": "change a Rotom at Rotom's Room (Silph Co.)"
+  },
+  {
+   "id": 1149,
+   "name": "Frost Rotom",
+   "how": "change a Rotom at Rotom's Room (Silph Co.)"
+  },
+  {
+   "id": 1150,
+   "name": "Fan Rotom",
+   "how": "change a Rotom at Rotom's Room (Silph Co.)"
+  },
+  {
+   "id": 1151,
+   "name": "Mow Rotom",
+   "how": "change a Rotom at Rotom's Room (Silph Co.)"
+  },
+  {
+   "id": 1174,
+   "name": "Darmanitan (Zen Mode)",
+   "how": "evolve a Darumaka caught in Ice Path (it stays in Zen Mode outside battle; read from the game code; not tested in game)",
+   "battle": "Any Darmanitan with the Zen Mode Ability also takes this form in battle when its HP drops below half."
+  },
+  {
+   "id": 1237,
+   "name": "Aegislash (Blade Forme)",
+   "battle": "Aegislash takes this form in battle when it uses an attacking move."
+  },
+  {
+   "id": 1247,
+   "name": "Lycanroc (Midnight Form)",
+   "how": "evolve Rockruff at night (20:00–03:59) (tested in an emulator)"
+  },
+  {
+   "id": 1248,
+   "name": "Lycanroc (Dusk Form)",
+   "how": "evolve Rockruff in the evening (17:00–19:59) (tested in an emulator)"
+  },
+  {
+   "id": 1274,
+   "name": "Mimikyu (Busted Form)",
+   "battle": "Mimikyu takes this form in battle once its disguise is broken."
+  },
+  {
+   "id": 1361,
+   "name": "Hisuian Lilligant",
+   "how": "use a Sun Stone on a Petilil that leveled up by day while holding a Black Belt (tested in an emulator)",
+   "evoNote": "Leveling up a Petilil by day while it holds a Black Belt doesn't give Hisuian Lilligant, although the evolution data says so: because of an error in the hack it stays a Petilil, and a Sun Stone then turns it into Hisuian Lilligant. Tested in an emulator."
+  }
+ ]
+}

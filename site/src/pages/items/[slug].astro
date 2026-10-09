@@ -1,14 +1,26 @@
 ---
+import { playerNote } from '../../lib/reference-format.mjs';
+import { playerItemDescription } from '../../lib/reference-format.mjs';
+import ItemReferenceNotes from '../../components/ItemReferenceNotes.astro';
+
+import Availability from '../../components/Availability.astro';
+import MoveStats from '../../components/MoveStats.astro';
+
+import PokemonReferenceTable from '../../components/PokemonReferenceTable.astro';
 import FormChanges from '../../components/FormChanges.astro';
 import { formChanges } from '../../lib/verified-mechanics';
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import { items, areaUrl, url, type Item } from '../../lib/data';
+import { items, tmByItemId, tmCompatibility, moveById, moveUrl, areaUrl, areaBySlug, speciesById, pokemonUrl, trainerById, tutorCost, url, type Item } from '../../lib/data';
 
 export function getStaticPaths() {
 	return items.map((i) => ({ params: { slug: i.slug }, props: { i } }));
 }
 const { i } = Astro.props as { i: Item };
+const tm = tmByItemId.get(i.id);
+const move = tm ? moveById.get(tm.moveId) : undefined;
+const compatible = tm ? (tmCompatibility.get(i.id) ?? []).map(speciesId => ({ speciesId, detail: tm.label })) : [];
 const forms = formChanges.filter((f) => f.item === i.id);
+const wildHeld = i.wildHeld ?? [];
 const groups = new Map<string, Item['sources']>();
 for (const s of i.sources) {
 	if (!groups.has(s.kind)) groups.set(s.kind, []);
@@ -17,24 +29,45 @@ for (const s of i.sources) {
 const label: Record<string, string> = {
 	'item ball': 'Item balls on the ground', hidden: 'Hidden items', gift: 'Gifts from people',
 	prize: 'Prizes and menu choices (you get one of several)', 'bought/exchanged': 'Bought or exchanged', shop: 'Shops', automatic: 'Automatic equipment', 'savings reward': 'Savings purchases',
+	'minigame prize': 'Minigame prizes', 'held by wild Pokémon': 'Held by wild Pokémon', Pickup: 'Found with Pickup', tree: 'Trees', stolen: 'Stolen in battle',
 };
 const money = (n: number) => `$${n.toLocaleString('en-US')}`;
+const holderName = (id: number) => speciesById.get(id)?.name ?? `Pokémon ${id}`;
+const sourceId = (kind: string) => `source-${kind.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+const headings = [
+	{ depth: 2, slug: 'effect', text: 'Effect' },
+	...(tm && move ? [{ depth: 2, slug: 'tm-move', text: `${tm.label}: ${move.name}` }] : []),
+	...[...groups.keys()].map((kind) => ({ depth: 2, slug: sourceId(kind), text: label[kind] ?? kind })),
+	...(wildHeld.length ? [
+		{ depth: 2, slug: 'wild-held', text: 'Wild Pokémon holding this item' },
+		...wildHeld.map((holder) => ({ depth: 3, slug: `wild-holder-${holder.species}`, text: holderName(holder.species) })),
+	] : []),
+	...(forms.length ? [{ depth: 2, slug: 'forms', text: 'Held-item transformation' }] : []),
+	...(i.neededBy.length ? [{ depth: 2, slug: 'needed-by', text: 'Used or asked for in' }] : []),
+	...((i.evolutionUses.length || i.tutorUses.length || i.trainerUses.length) ? [{ depth: 2, slug: 'related-uses', text: 'Other uses' }] : []),
+	...(tm ? [{ depth: 2, slug: 'compatible-pokemon', text: 'Compatible Pokémon' }] : []),
+];
 // The item's price only means something to players as a buy price when a shop sells it; it always sells for half.
 const sold = i.sources.some((s) => s.kind === 'shop');
 const priceLine = i.price ? (sold ? ` · buy for ${money(i.price)}, sells for ${money(Math.floor(i.price / 2))}` : ` · sells for ${money(Math.floor(i.price / 2))}`) : '';
 ---
-<StarlightPage frontmatter={{ title: i.name, description: `Where to get ${i.name} in Origin HeartGold.` }}>
+<StarlightPage frontmatter={{ title: i.name, description: `Where to get ${i.name} in Origin HeartGold.` }} headings={headings}>
 	<p class="small muted">{i.pocket} pocket{priceLine}{i.game ? ` · in-game spelling: ${i.game}` : ''}</p>
-	{i.sources.length === 0 && <p><strong>No source found in the game data.</strong> The search is incomplete, including some automatic rewards and special encounter systems, so it may still be obtainable.</p>}
+	<Availability reason={i.unavailableReason} detail />
+	<h2 id="effect">Effect</h2><p>{playerItemDescription(i)}</p>
+	<p class="small">Follow the linked quests for story requirements. A listed source does not always mean you can get the item more than once.</p>
+  {tm && move && <><h2 id="tm-move">{tm.label}: <a href={moveUrl(move)}>{move.name}</a></h2>{tm.newInV4 && <p><span class="tag">New TM in v4</span></p>}<MoveStats m={move} /><p><a href={moveUrl(move)}>Full move details and how to learn it →</a></p></>}
+
+	{!i.unavailableReason && i.sources.length === 0 && wildHeld.length === 0 && <p><strong>No confirmed way to get it.</strong> {playerNote(i.note) || 'No location or reward is known.'}</p>}
 	{[...groups].map(([kind, list]) => <>
-		<h2>{label[kind] ?? kind}</h2>
+		<h2 id={sourceId(kind)}>{label[kind] ?? kind}</h2>
 		<ul>
 			{list.map((s) => (
 				<li>
-					{s.area ? <a href={areaUrl(s.area)}>{s.place}</a> : s.place}{s.tech && <span class="tech" data-pagefind-ignore="all"> ({s.tech})</span>}
+					{s.area ? <a href={areaUrl(s.area)}>{s.place}</a> : s.place}
 					{s.qty && s.qty > 1 ? ` ×${s.qty}` : ''}
 					{s.near ? ` (${s.near})` : ''}
-					{s.note && <> — {s.note}</>}
+					{s.note && <> — {s.note.replace(/ Tested in an emulator\./g, '')}</>}
 					{s.pay ? (kind === 'bought/exchanged' ? ` (costs ${s.pay})` : ` (${s.pay})`) : ''}
 					{kind === 'shop' && s.price ? ` · ${money(s.price)}` : ''}
 					{(s.quests ?? []).map((q, n) => <>{n === 0 ? ' · see ' : ', '}<a href={url(q.href)}>{q.title}</a></>)}
@@ -42,13 +75,48 @@ const priceLine = i.price ? (sold ? ` · buy for ${money(i.price)}, sells for ${
 			))}
 		</ul>
 	</>)}
+	{wildHeld.length > 0 && <>
+		<h2 id="wild-held">Wild Pokémon holding this item</h2>
+		<p>These wild Pokémon can carry {i.name}. The hold chance is the base chance that the Pokémon has the item when encountered, before Ability effects such as Compound Eyes. The encounter chance shows how often that Pokémon appears for the listed method and time.</p>
+		<p class="small muted">Locations are in rough story order for each Pokémon. Radio, swarm and other special encounters require the conditions shown; see the location page for details. <a href={url('/calendar/')}>Calendar encounters</a> can replace ordinary encounter slots. Safari Zone entries depend on the selected area and, where noted, its objects and their development. A dash means no fixed encounter chance is listed.</p>
+		<table class="compact">
+			<thead><tr><th>Pokémon</th><th>Hold chance</th><th>Locations</th></tr></thead>
+			<tbody>{wildHeld.map((holder) => <tr>
+				<td><a href={pokemonUrl(holder.species)}>{holderName(holder.species)}</a></td>
+				<td>{holder.chance}%</td>
+				<td><a href={`#wild-holder-${holder.species}`}>View locations ({new Set(holder.locations.map((location) => location.area)).size})</a></td>
+			</tr>)}</tbody>
+		</table>
+		{wildHeld.map((holder) => <>
+			<h3 id={`wild-holder-${holder.species}`}><a href={pokemonUrl(holder.species)}>{holderName(holder.species)}</a> · {holder.chance}% hold chance</h3>
+			{holder.locations.length > 10 && <div class="table-filter" data-table={`wild-locations-${holder.species}`}>
+				<input type="search" placeholder="Filter locations or encounter methods…" aria-label={`Filter ${holderName(holder.species)} locations or encounter methods`} />
+				<span class="filter-count" aria-live="polite"></span>
+			</div>}
+			<table id={`wild-locations-${holder.species}`} class="compact">
+				<thead><tr><th>Location</th><th>Method / time / condition</th><th>Level</th><th>Encounter chance</th></tr></thead>
+				<tbody>{holder.locations.map((location) => <tr>
+					<td><a href={areaUrl(location.area)}>{areaBySlug.get(location.area)?.name ?? location.place}</a>{location.place !== areaBySlug.get(location.area)?.name && <span class="small muted"> · {location.place}</span>}</td>
+					<td>{location.method}</td><td>{location.level}</td><td>{location.encounterRate == null ? '—' : `${location.encounterRate}%`}</td>
+				</tr>)}</tbody>
+			</table>
+		</>)}
+	</>}
 	{forms.length > 0 && <>
-		<h2>Held-item transformation</h2>
+		<h2 id="forms">Held-item transformation</h2>
 		<FormChanges entries={forms} />
 	</>}
 	{i.neededBy.length > 0 && <>
-		<h2>Used or asked for in</h2>
+		<h2 id="needed-by">Used or asked for in</h2>
 		<p>Someone in these places asks for this item or takes it: {i.neededBy.map((n, k) => <>{k > 0 && ', '}{n.area ? <a href={areaUrl(n.area)}>{n.place}</a> : n.place}</>)}.</p>
 	</>}
+	<ItemReferenceNotes item={i} />
+	{(i.evolutionUses.length > 0 || i.tutorUses.length > 0 || i.trainerUses.length > 0) && <><h2 id="related-uses">Other uses</h2>
+	{i.evolutionUses.length > 0 && <><h3>Evolution requirements</h3><ul>{i.evolutionUses.map(e => <li><a href={pokemonUrl(e.speciesId)}>{speciesById.get(e.speciesId)?.name}</a> → <a href={pokemonUrl(e.resultId)}>{speciesById.get(e.resultId)?.name}</a>: {e.how}{e.never && <> · <strong>Unavailable:</strong> {e.blocked ?? 'This evolution method is not supported in the game.'}</>}</li>)}</ul></>}
+	{i.tutorUses.length > 0 && <><h3>Move tutor payments</h3><ul>{i.tutorUses.map(t => <li><a href={moveUrl(moveById.get(t.moveId))}>{moveById.get(t.moveId)?.name}</a> · {tutorCost(t.cost)} · {t.places.map((p,k) => <>{k>0 && ', '}{p.area ? <a href={areaUrl(p.area)}>{p.place}</a> : p.place}</>)}</li>)}</ul></>}
+	{i.trainerUses.length > 0 && <details><summary>Held by trainers’ Pokémon ({i.trainerUses.length} teams)</summary><p class="small">A trainer's held item is not necessarily obtainable. Check the battle location and story conditions on their team page.</p><ul>{i.trainerUses.map(id => {const t=trainerById.get(id);return <li><a href={url(`/trainers/records/${id}/`)}>{t ? `${t.cls} ${t.name}` : `Trainer ${id}`}</a></li>;})}</ul></details>}
+	</>}
+  {tm && <><h2 id="compatible-pokemon">Compatible Pokémon ({compatible.length})</h2><p>Check each Pokémon’s availability before planning your team. Forms are listed separately; Mew can learn every TM and HM.</p><div class="table-filter" data-table="compatible-table"><input type="search" placeholder="Search compatible Pokémon…" aria-label="Search compatible Pokémon" /><select data-key="availability" aria-label="Compatible Pokémon availability"><option value="">All availability</option><option value="documented">Where to get it</option><option value="battle">Battle only</option><option value="unavailable">NOT AVAILABLE IN GAME</option><option value="unknown">No known way to get it</option></select><span class="filter-count" aria-live="polite"></span></div><PokemonReferenceTable id="compatible-table" rows={compatible} label="Compatibility" /><p><a href={url('/tms/')}>← All TMs and HMs</a></p></>}
+
 	<p><a href={url('/items/')}>← All items</a></p>
 </StarlightPage>

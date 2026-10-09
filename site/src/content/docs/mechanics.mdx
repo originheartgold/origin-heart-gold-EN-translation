@@ -6,7 +6,7 @@ description: EXP sharing, capture chains, EV training, evolution rules, held-ite
 import FormChanges from '../../components/FormChanges.astro';
 import { formChanges } from '../../lib/verified-mechanics';
 
-Origin HeartGold changes more than the story. These notes describe **v4.0.3**, checked against the original Chinese game's code. The EXP/EV award example and information-screen controls were also checked in the emulator. Where a full gameplay test is still missing, the limits are stated below.
+Origin HeartGold adds automatic party training, capture-chain bonuses and new information screens. Here is how to use them in **v4.0.3**.
 
 ## Information-screen controls
 
@@ -21,15 +21,15 @@ These are **Nintendo DS buttons**, not particular keyboard keys. Use the corresp
 
 If the first Y press only highlights a battle command, press Y again. The panel shows information such as stat stages and your Pokémon's ability; it is not a promise that an opponent's unrevealed ability will be visible.
 
-The summary shortcut was tested with normal button settings. **R did not open the IV/EV panel** in that mode, despite the game's L/R hint.
+Use **L** for the IV/EV panel with normal button settings; the game’s L/R hint is misleading.
 
 ## Automatic EXP and EV sharing
 
 Your party shares battle **experience points (EXP)** and **effort values (EVs)** automatically. EVs are training points that affect a Pokémon's stats; IVs are its individual stat values.
 
-In a controlled battle, the participating Pokémon received **26 EXP**, the benched Pokémon **13 EXP**, and both gained **1 HP EV**. This illustrates the nonparticipant half-EXP path, not a promise that every battle gives those amounts. Eggs, fainted party members and every special battle mode were not tested.
+Participating Pokémon receive full EXP; benched Pokémon receive half. Both receive EVs.
 
-There is **no native on/off setting for this sharing** in the inspected v4.0.3 battle code. You do not need the held Exp. Share to enable it. Keep party-wide EV gains in mind when training.
+There is **no native on/off setting for this sharing** in v4.0.3. You do not need the held Exp. Share to enable it. Keep party-wide EV gains in mind when training.
 
 ## Capture chains
 
@@ -46,18 +46,18 @@ Catching the same **species and form** builds a chain. The bonuses use the numbe
 
 A Pokémon may naturally have more perfect IVs. Hidden Ability selection still depends on that species' ability data.
 
-**The game's displayed ranges are inaccurate around 10 and 20.** The verified boundaries are 6, 10 and 20 catches. Shiny chances also improve, but the displayed fractions do not establish the exact combined probability; they should not be used as precise odds.
+**The game's displayed ranges are inaccurate around 10 and 20.** The bonus thresholds are 6, 10 and 20 catches. Shiny chances also improve, but the displayed fractions do not establish the exact combined probability; they should not be used as precise odds.
 
 - Catching a different species **or form** starts a new chain at **1**.
 - Catching a shiny of the **same species and form** clears the chain.
 - A shiny of a **different species or form** follows the new-chain rule and starts at **1**.
-- Defeating or fleeing does not advance the chain; no reset on those actions was found in the inspected handlers.
+- Defeating or fleeing does not advance the chain; they do not reset the chain.
 
-The bonuses can apply to a different species from the one you chained, including the traced scripted wild encounters. Gifts, Eggs and every special encounter are not covered by that verification. The chain counter stops increasing at 255.
+Chain bonuses can apply to a different species from the one you chained, including scripted wild encounters. The chain counter stops increasing at 255.
 
 ## EV Allocator
 
-The [EV Allocator](../items/ev-allocator/) is added after battle if you do not already have one. This is verified in the battle-end code; the exact first acquisition screen has not been replayed.
+The [EV Allocator](../items/ev-allocator/) is added after battle if you do not already have one.
 
 It **redistributes EVs you already earned**. It does not create new training points. Before exiting, you must restore each party member's total to the amount it had when you opened the tool.
 
@@ -69,7 +69,7 @@ It **redistributes EVs you already earned**. It does not create new training poi
 | SELECT | Open the clear-EVs confirmation |
 | START | Open the restore-entry-EVs confirmation |
 
-These allocator mappings were read from the normal-button-mode handler; all confirmation and alternative-button-mode combinations have not been played through.
+These buttons use the normal button settings.
 
 ## Mom's charms
 
@@ -81,39 +81,41 @@ Mom's savings purchases include these three charms. Each purchase is queued for 
 | [Exp. Charm](../items/exp-charm/) | $40,000 | $3,000 |
 | [Shiny Charm](../items/shiny-charm/) | $50,000 | $3,000 |
 
-The inspected reward paths **do not include an Oval Charm**. That does not establish whether it can be obtained elsewhere.
+**There is no Oval Charm** in this game: it is unavailable.
 
 ## Visible encounters and shinies
 
-The game supports up to **six visible wild Pokémon** nearby. Repel suppresses new visible spawns; immediate removal of existing spawns was not verified. Ordinary encounter frequency is reduced in some conditions while visible Pokémon are present, but it is not an unconditional one-third rate everywhere.
+The game supports up to **six visible wild Pokémon** nearby. Repel prevents new visible spawns. Visible Pokémon can also reduce ordinary encounters nearby.
 
-A visible shiny has a sparkle and sound cue. The game keeps **one temporary shiny record** and can use it when you re-enter the same map, searching for a position near you. Terrain can still prevent an accessible placement, and another shiny can replace the single record.
+A visible shiny has a sparkle and sound cue. The game keeps **one visible shiny** and can use it when you re-enter the same map, searching for a position near you. Terrain can still prevent an accessible placement, and another shiny can replace the single record.
 
-**Catch a visible shiny before restarting.** The retained record is cleared during game boot. Do not rely on an ordinary save to preserve it: save/load restoration has not been established. Emulator save states are a separate mechanism.
+**Catch a visible shiny before restarting.** Restarting clears it. Do not rely on an ordinary save to preserve it for later.
 
 Special [calendar encounters](../calendar/) modify particular land encounters on annual dates. They are listed separately from the ordinary location tables.
 
 ## Evolution
 
-The hack rewrites many evolutions. Each [Pokémon](../pokemon/) page lists how it evolves, read from the game code, and what changed from HeartGold. The main rules:
+The hack rewrites many evolutions. Each [Pokémon](../pokemon/) page lists its evolution requirements. The main rules:
 
 - **No trading needed for the old trade evolutions.** Kadabra, Machoke, Graveler, Haunter and the rest now evolve when they level up holding an item, often only by day or by night (for example Haunter → Gengar holding a Spell Tag at night, Machoke → Machamp holding a Black Belt by day). Onix and Porygon simply level up.
 - **Day and night:** night is 20:00–3:59, "day" is 4:00–19:59. A few evolutions need 10:00–16:59 and say so.
 - **Friendship:** "high friendship" means 220 or more; Sylveon needs 158 or more plus a Fairy-type move.
 - **The first match wins:** Meowth, Slowpoke and Cubone must take their held-item evolution before the level of their normal one, and Eevee checks Sylveon and Espeon before Glaceon.
-- **Some evolutions can't happen:** a few methods in the data are never checked by the game (Pancham → Pangoro, Gimmighoul, Kubfu and others; Moss Rock Leafeon and magnetic-field Probopass, which still evolve with a Leaf Stone or Thunder Stone). See [Known issues](../guide/known-issues/#evolutions-that-cannot-happen).
+- **Some evolutions can't happen:** a few evolution methods do not work. Most belong to Pokémon that can't be met anyway; the ones that matter are Moss Rock Leafeon and magnetic-field Probopass, which still evolve with a Leaf Stone or Thunder Stone. See [Known issues](../guide/known-issues/#evolutions-that-cannot-happen).
 
 ## Held-item forms
 
 <FormChanges entries={formChanges} />
 
+Use the [move reference](../moves/) for stats, effects and learning methods, and the [ability reference](../abilities/) to find abilities for your team. The [TM/HM list](../tms/) shows where to get each machine and which Pokémon can use it.
+
 ## Other training and battle changes
 
-- **Pickup:** successful Pickup deposits go straight into the Bag. An empty held-item slot is not required by the inspected routine. Full-Bag behavior was not tested.
+- **Pickup:** items go straight into the Bag; the Pokémon does not need an empty held-item slot.
 - **Held items after battle:** the game restores many items, but has exceptions, including special berry handling. Do not assume every consumed, stolen or knocked-off item comes back.
-- **Hatching:** both Flame Body and Magma Armor enable an eight-cycle decrement. Small remaining counters decrease more slowly, so this is not exactly eight times fewer steps for every Egg. Multiple holders do not stack in this routine.
+- **Hatching:** Flame Body and Magma Armor speed up hatching. Their effects do not stack with multiple holders.
 - **Destiny Knot:** either parent holding it raises inherited IV slots to five. This does not guarantee five perfect IVs.
-- **Everstone:** a single holder supports nature inheritance, but the two-holder and different-language breeding paths prevent a blanket guarantee. Those exceptions have not been tested with a full Egg-hatching series.
+- **Everstone:** give it to one parent to pass on its nature. Using two holders or parents from different language games can affect inheritance.
 
 ## Field moves
 

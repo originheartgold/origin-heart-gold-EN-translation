@@ -1,20 +1,29 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import TrainerCard from '../../components/TrainerCard.astro';
-import { trainers, url } from '../../lib/data';
-const order = ['Gym Leaders', 'Rival battles', 'Elite Four', 'Champions', 'Team Rocket bosses and Executives', 'Other named Trainers'];
-const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-const groups = order.map((g) => ({ g, list: trainers.filter((t) => t.group === g) })).filter((x) => x.list.length);
+import { trainerById, url } from '../../lib/data';
+import sections from '../../data/trainer_guide.json';
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '');
+const headings = sections.map((section) => ({ depth: 2, slug: slug(section.title), text: section.title }));
 ---
-<StarlightPage frontmatter={{ title: 'Trainers', description: 'Teams of every Gym Leader, rival, Elite Four member and boss in Origin HeartGold.' }}
-	headings={groups.map((x) => ({ depth: 2, slug: slug(x.g), text: x.g }))}>
-	<p>Full teams with levels, abilities, held items, natures and moves for the important battles. Several leaders have more than one team
-	(rematches, different story branches, or a double-battle version). Each card lists where you battle the team, whether it is a
-	single, double or multi battle, and what decides it: your menu answer, your starter, your gender or the Badges you have.
-	"Only in some story branches" means it depends on story progress; the quest guide explains when.
-	Every other trainer is listed on its <a href={url('/locations/')}>location page</a>.</p>
-	{groups.map((x) => <>
-		<h2 id={slug(x.g)}>{x.g}</h2>
-		{x.list.map((t) => <TrainerCard t={t} showPlaces />)}
+<StarlightPage frontmatter={{ title: 'Trainers', description: 'Gym challenges in guide order, plus rival, League, Rocket and partner teams in Origin HeartGold.' }} headings={headings}>
+	<p>Gym challenges follow the quest guide through Kanto, then Johto. This is a reading order, not a strict list of prerequisites.
+	Other teams are grouped by character within each section, including rematches and appearances as your partner. Each team lists its known battle locations and conditions.</p>
+	<p>Battle conditions may also depend on story progress;
+	see the <a href={url('/guide/')}>quest guide</a> for story prerequisites. Ordinary trainers appear on their{' '}<a href={url('/locations/')}>location pages</a>. Featured records without an identified encounter are marked below.</p>
+	<nav aria-label="Trainer sections"><ul class="loc-list">
+		{sections.map((section) => <li><a href={`#${slug(section.title)}`}>{section.title}</a></li>)}
+	</ul></nav>
+	<span id="gym-leaders"></span>
+	{sections.map((section) => <>
+		<h2 id={slug(section.title)}>{section.title}</h2>
+		{section.title === 'Team Rocket bosses, Executives and elites' && <span id="team-rocket-bosses-and-executives"></span>}
+		{section.title === 'Steven and Cynthia' && <span id="champions"></span>}
+		{section.description && <p>{section.description}</p>}
+		{section.entries.map((entry) => <>
+			<h3 id={`${slug(section.title)}-${slug(entry.title)}`}>{entry.title}</h3>
+			{entry.note && <p>{entry.note}</p>}
+			{entry.ids.map((id) => <TrainerCard t={trainerById.get(id)!} showPlaces />)}
+		</>)}
 	</>)}
 </StarlightPage>

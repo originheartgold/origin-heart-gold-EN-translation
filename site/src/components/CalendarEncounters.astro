@@ -3,16 +3,25 @@ import Mon from './Mon.astro';
 import { areaUrl } from '../lib/data';
 import type { CalendarEncounter } from '../lib/verified-mechanics';
 const { entries } = Astro.props as { entries: CalendarEncounter[] };
+const playerNotes: Record<string, string> = {
+  keldeo: "Only in Koga's forest preserve, not every part of Fuchsia City.",
+  meloetta: 'Appears among ordinary land encounters.',
+  hoopa: '04:00–09:59. Neither Hoopa form appears by day (10:00–19:59).',
+  'hoopa-unbound': '20:00–03:59 on July 18: the early hours and evening of the 18th, not the early hours of the 19th. Keeps its Unbound form after capture.',
+  diancie: 'Appears as normal Diancie, not Mega Diancie.',
+  genesect: 'Only outside the ruins, not in the puzzle chambers.',
+  'floette-eternal-flower': 'Appears in the normal park encounters and keeps its Eternal Flower form after capture. Availability during the Bug-Catching Contest is not confirmed.',
+};
 ---
 <div class="calendar-table" tabindex="0" role="region" aria-label="Calendar encounters">
 	<table>
-		<thead><tr><th>Date</th><th>Pokémon</th><th>Place</th><th>Time / level</th><th>What is known</th></tr></thead>
+		<thead><tr><th>Date</th><th>Pokémon</th><th>Place</th><th>Time / level</th><th>Conditions</th></tr></thead>
 		<tbody>{entries.map((e) => <tr>
 			<td>{e.date}</td>
 			<td><Mon id={e.pokemon} name={e.name} /></td>
 			<td><a href={areaUrl(e.area)}>{e.place}</a></td>
 			<td>{e.period}{e.level !== null && <> · Lv. {e.level}</>}</td>
-			<td><strong>{({ configured: 'Configured encounter.', unresolved: 'Needs verification.', unavailable: 'Not an acquisition route.' })[e.status]}</strong> {e.note}</td>
+			<td><strong>{({ configured: 'Available on this date.', unresolved: 'Availability not confirmed.', unavailable: 'Not an acquisition route.' })[e.status]}</strong> {playerNotes[e.key] ?? e.note}</td>
 		</tr>)}</tbody>
 	</table>
 </div>

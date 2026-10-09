@@ -62,9 +62,9 @@
 7. Walk up to **Anemone's garden**, about 16 steps east of the Pokémon Center door. The cutscene starts when you walk onto the path 4 steps south of Anemone: Brock is hitting on Anemone, you step in, and he heads back to the Gym.
 8. Gym: Brock finally battles you. Losing whites you out; you can try again.
 
-**Reward:** the Boulder Badge (story). The treated Nidoran♂ has no reward.
+**Reward:** the Boulder Badge (story), **5 × TM39 Rock Tomb** and Brock's phone number. The treated Nidoran♂ has no reward.
 
-*Source:* files 750 (Gym, L485/L850), 754 (script 1, script 3), 753 (scripts 16, 17, 20; L3143, L3543, L4622 sets 1315 and clears 1316), 748 (script 27, L4562 clears 1322). Step 1 sets flag 1321. The Nidoran♂ room is the west half (local 4,8) of the shared "Pewter Northeast house" map, entered from the city door at 1068,87; the garden cutscene is the step trigger at 1064–1065,111, var 0x4082 = 1 (Pewter events: Gym door 1047,92, Anemone 1064,107, Pokémon Center door 1048,106).
+*Source:* files 750 (Gym, L485/L850; the win gives item 366 = TM39 ×5 at L604), 754 (script 1, script 3), 753 (scripts 16, 17, 20; L3143, L3543, L4622 sets 1315 and clears 1316), 748 (script 27, L4562 clears 1322). Step 1 sets flag 1321. The Nidoran♂ room is the west half (local 4,8) of the shared "Pewter Northeast house" map, entered from the city door at 1068,87; the garden cutscene is the step trigger at 1064–1065,111, var 0x4082 = 1 (Pewter events: Gym door 1047,92, Anemone 1064,107, Pokémon Center door 1048,106).
 
 ## Pewter City: the Apricorn Ball maker
 
@@ -79,7 +79,7 @@ Continues [Route 2 East: Nidoran♀ and the Apricorn Ball maker](01-pallet-to-pe
 **Notes:**
 - He and Kurt in Azalea share the same "ball in progress" slot, so only one of them can be making a ball at a time. His balls also count toward Kurt's ball counter. Reaching 10 balls has no effect that we could find.
 - **The service ends for good** once you've been through the Slowpoke Well event in Johto. After that he says he's putting ball-making aside to spend time with Nidoran♀.
-- If you let the breeder take Nidoran♀, he just mopes and never makes balls.
+- If you let its former Trainer take Nidoran♀, he just mopes and never makes balls.
 
 *Source:* file 754 (script 4, L697, L829, L840); flags 415 (file 60, Slowpoke Well), 2722 and 0x413b (file 871). Saved Nidoran♀ = flag 1349 clear. Ball in progress = flag 2722, 10-ball counter = var 0x413b, which sets flag 295 at 10 (no script checks 295). Service ends when flag 415 is set. The room is the east half (local 36,8) of the shared "Pewter Northeast house" map, entered from the city door at 1037,111, not from the northeast door (warp anchors checked).
 
@@ -105,7 +105,7 @@ Continues [Route 2 East: Nidoran♀ and the Apricorn Ball maker](01-pallet-to-pe
 
 **Getting Fresh Water:** the Mt. Moon Square shop sells it for $600, but only after the Mt. Moon roadblock story. The shop stops selling it while Asher's gang holds the spring (see the Mt. Moon Square entry). So in practice you buy it between the roadblock and your Cascade Badge.
 
-**Missable:** when you win the Cascade Badge (Misty hands you TM03 right after), the painter passes away. If you haven't taken Ralts by then, it stays behind with a letter. Read it and say Yes to "Take Ralts with you?" to fight a **wild Lv. 15 Ralts**. Catch it: knocking it out also removes it for good. Losing whites you out and you can retry. The Big Root is gone once he has died.
+**Missable:** when you win the Cascade Badge (Misty hands you TM03 right after), the painter passes away. If you haven't taken Ralts by then, it stays behind with a letter. Read it and say Yes to "Take Ralts with you?" to fight a **wild Lv. 15 Ralts**. Catch it: knocking it out or running away also removes it for good. Losing whites you out and you can retry. The Big Root is gone once he has died.
 
 *Source:* file 175 (script 9, L2396, L2409, L4238; letter L2278); file 758 L3883 sets 1390 (the painter's death); file 6 (shop, needs flag 1994). Fresh Water is not a Route 3 field item (work/docs/items.md lists Route 3 only as where it's needed; the item ball near the painter is TM27, item 354). Position 1130,124; Pokémon Center door 1167,106; item ball 1132,120.
 
@@ -113,11 +113,11 @@ Continues [Route 2 East: Nidoran♀ and the Apricorn Ball maker](01-pallet-to-pe
 
 **Where:** a Bug Catcher about 50 steps west of the Route 3 Pokémon Center door, a few steps east of a man who talks about Dusk Balls. The ledge is about 10 steps west and 7 steps south of him.
 
-**Charmander starters:** he says he chased a Scyther here from Viridian Forest but can't beat it. The Scyther then appears on the ledge. Check it: "The Scyther is looking down haughtily. Challenge it?" → Yes starts a wild battle against **Scyther, Lv. 15**. If you lose, you white out and can retry. Winning or catching removes it.
+**Charmander starters:** he says he chased a Scyther here from Viridian Forest but can't beat it. The Scyther then appears on the ledge. Check it: "The Scyther is looking down haughtily. Challenge it?" → Yes starts a wild battle against **Scyther, Lv. 15**. If you lose, you white out and can retry. Winning, catching or running away removes it (running away tested in an emulator).
 
 **Other starters:** he already owns Scyther. Answer Yes to battle him (Scyther Lv. 11, Pinsir Lv. 10). This is a one-time battle with no item.
 
-*Source:* file 175 (scripts 30, 31; L3512, L3608). Talking to him clears flag 2268 to show the ledge Scyther. Bug Catcher ≈1117,104, ledge ≈1107,111, Pokémon Center door 1167,106.
+*Source:* file 175 (scripts 30, 31; L3512, L3608). Talking to him clears flag 2268 to show the ledge Scyther; `CheckBattleWon` counts a flee as a win, so fleeing sets 2268 too. Emulator (CN and EN): Lv. 15, fled, flag 2268 set, gone after reloading the map. Bug Catcher ≈1117,104, ledge ≈1107,111, Pokémon Center door 1167,106.
 
 ## Route 3: Misty's Gyarados, "Comfort Misty?" (romance choice)
 
@@ -157,7 +157,7 @@ Once all four are there, they wait just south of the guards. Then talk to the gu
 
 **Where:** a Super Nerd digging by a fossil in Mt. Moon's inner cave, about 15 steps east and 4 steps north of the exit to Route 4 (and about 17 steps south and 13 steps west of Steven's spot from the previous entry).
 
-**How it works:** checking the fossil makes him battle you (Super Nerd Zack: Magnemite Lv. 16, Voltorb Lv. 17, Nosepass Lv. 18). Losing whites you out; check the fossil again to retry. After you win, talk to him: he sells **Helix Fossil** or **Dome Fossil** for **$5,000 each**, as often as you like.
+**How it works:** checking the fossil makes him battle you (Super Nerd Zack: Magnemite Lv. 16, Voltorb Lv. 17, Nosepass Lv. 18). Losing whites you out; check the fossil again to retry. After you win, talk to him: he sells **[Helix Fossil](/items/helix-fossil/)** or **Dome Fossil** for **$5,000 each**, as often as you like.
 
 *Source:* file 133 (scripts 7, 8; L2149, L2216). Fossil ≈28,70, Route 4 exit 13,74.
 
@@ -184,15 +184,15 @@ Once all four are there, they wait just south of the guards. Then talk to the gu
 
 ## Mt. Moon: Groudon (post-game, Red Orb)
 
-**Where:** the altar in the deepest part of Mt. Moon's inner cave, where Maxie summoned Groudon. You reach that part by the passage in the far northeast of the inner cave. From where you arrive, the altar is about 28 steps east and 15 steps north.
+**Where:** the altar in the deepest part of Mt. Moon's inner cave, where Maxie summoned Groudon. You don't reach it from the main inner cave: in the first cave, take the passage about 22 steps north and 3 steps east of the Route 3 entrance (south of the old roadblock). You can't walk straight up to it: go round by the east side of the cave and come down to the passage from the north. It leads to a small part of the inner cave; the passage at its east end (about 15 steps east of where you arrive) takes you down to the deepest part. From there the altar is about 28 steps east and 15 steps north, but the way winds: go south down the corridor, east along the bottom, north, then back west and up the long corridor heading north; at its top the altar is about 10 steps east. Walked in an emulator.
 
 **Who gets it / when:** after your final Hall of Fame entry, with the **Red Orb** in your Bag. After that entry you wake up at home in Pallet Town, and Lance brings you the legendary items Team Rocket had seized, the Red Orb among them ([Pallet Town: Lance's visit home](01-pallet-to-pewter.md#pallet-town-lances-visit-home-after-the-final-hall-of-fame)). This is after the Team Rocket Groudon story.
 
 **How it works:** check the altar: "Try summoning Groudon with the Red Orb?" → Yes starts a wild battle against **Groudon, Lv. 95**.
 
-**Notes:** losing whites you out, and you can try again. **Knocking it out counts like catching it: Groudon is gone for good.**
+**Notes:** losing whites you out, and you can try again. **Knocking it out or running away counts like catching it: Groudon is gone for good** (running away tested in an emulator).
 
-*Source:* file 133 (script 13, L2304, L2351; needs flag 2261 = final Hall of Fame and item 534 Red Orb); flag 2287 set on catch or knockout; file 842 L1900 (Lance gives the Red Orb). Altar ≈37,115; arrival warp 9,130 (from 57,16). The ball-sprite object at 36,115 is a cutscene prop (hidden by scratch flag 1366), not a pick-up.
+*Source:* file 133 (script 13, L2304, L2351; needs flag 2261 = final Hall of Fame and item 534 Red Orb); flag 2287 set on catch, knockout or flee (emulator, EN: fled, 2287 set); file 842 L1900 (Lance gives the Red Orb). Altar ≈37,115; arrival warp 9,130 (from 57,16). Emulator walk (EN, guide review 2026-10-06, pass2-B `groudon_walk.py`/`groudon_walk2.py`, Mt. Moon trainers' flags set): 107 25,55 → via 42,35/49,44/51,18/35,18/35,29 → warp 28,34 → 524 42,13 → 57,16 → 9,130 → via 9,150/32,141/46,131/38,130/26,133/26,115 → 36,115, facing east: "Try summoning Groudon with the Red Orb?" (line 46). The 57,16 passage is in a closed pocket of map 524 (≈100 tiles) whose only other exit is the warp at 42,12, linked to the first cave's warp at 28,34 (map 107; entrance 25,56); the main inner cave and Steven's pocket don't connect to it (collision-grid flood fill). The ball-sprite object at 36,115 is a cutscene prop (hidden by scratch flag 1366), not a pick-up.
 
 ## Route 5: the Pokémon shelter raid (after the Cascade Badge)
 
@@ -219,11 +219,13 @@ Once all four are there, they wait just south of the guards. Then talk to the gu
 
 **Where:** the Underground Path, entered from the Route 5 gatehouse. You need the **Cascade Badge** to take part (the people at the entrance talk about needing "two Badges").
 
+**When:** the Underground Path's doorways are open only from the end of the Mt. Moon roadblock story until you rescue Prof. Hale in Rock Tunnel, and again from Team Rocket's takeover of Saffron City; in between, an invisible barrier stops you at each doorway. Do the battle on your way to Vermilion City.
+
 **How it works:** after Blue's win streak you fight a string of opponents: Blue, then four challengers, then Green (Red for female players). Losing to Blue or any of the four challengers whites you out. You **don't have to win the last battle**. If you lose to Green (or Red), she takes the "prize money", and the police raid ends the event either way.
 
 **Reward:** none at the time. Later, the MC is hiding on **Route 6**, at the north end, about 5 steps north and 2 steps east of the Underground Path entrance building's door. Talk to him and he hands over your "prize money" as **1 Fast Ball and 1 Love Ball** (one time only).
 
-*Source:* files 181 (script 3 and the battle script check `CheckBadge 1` = Cascade Badge; script 8, L2293/L2389; earlier losses go to L2379 WhiteOut), 184 (script 1, L629; one-time flag 1866). MC ≈1311,260; Underground Path gatehouse door 1309,265.
+*Source:* files 181 (script 3 and the battle script check `CheckBadge 1` = Cascade Badge; script 8, L2293/L2389; earlier losses go to L2379 WhiteOut), 184 (script 1, L629; one-time flag 1866). MC ≈1311,260; Underground Path gatehouse door 1309,265. Doorway blockers are hidden by flag 1226 (Route 5 object 22, Route 6 objects 10/20, Route 7 object 22, Route 8 object 9); 1226 is set at the end of the Mt. Moon roadblock story (file 9 script 20 @5598) and the takeover (file 17 @12023) and cleared by the Rock Tunnel rescue (file 129 @1141); emulator (CN, Route 7): blocked with 1226 clear, open with it set (guide-review-20261006/known-issues/C/). The battle (coord script 8, var 0x40a2 = 0) sets 0x40a2 = 1 (L3420) and hides the crowd with flag 1050 (L3358).
 
 ## Route 24 / Cerulean City: the burglary case → TM Case → TM28 Dig
 
@@ -325,9 +327,9 @@ Cynthia and Misty fill the other places.
 
 **Who gets it / when:** after the post-game Burned Tower scene where the three beasts run off ([Radio Tower, Ecruteak City and Olivine City](10-ecruteak-olivine.md#burned-tower-prof-hale-molly-and-the-three-beasts-post-game-frees-entei-suicune-raikou)).
 
-**How it works:** "Battle Suicune?" → Yes starts a wild battle against **Suicune, Lv. 90**. Losing whites you out, and you can retry. **Knocking it out removes it for good.**
+**How it works:** "Battle Suicune?" → Yes starts a wild battle against **Suicune, Lv. 90**. Losing whites you out, and you can retry. **Knocking it out or running away removes it for good** (running away tested in an emulator).
 
-*Source:* file 216 (script 40, L7548). Suicune appears when the Burned Tower script (file 23) clears flag 2319. Position ≈1411,53; Sea Cottage door 1407,38.
+*Source:* file 216 (script 40, L7548; a flee counts as a win and sets 2319; emulator, EN: Lv. 90, fled, gone after reloading). Suicune appears when the Burned Tower script (file 23) clears flag 2319. Position ≈1411,53; Sea Cottage door 1407,38.
 
 ## Cerulean Gym / Cerulean Cape: Misty's romance
 
@@ -335,7 +337,7 @@ Continues [the Pallet Town to Pewter City romance entry](01-pallet-to-pewter.md#
 
 **Confession:** male players only, in the **final chapter**: after you're Champion and have made your live broadcast at the Goldenrod Radio Tower, and **before** your final Hall of Fame entry. You also need the Goldenrod fortune-teller's love reading, and you must **not** have answered No to "Comfort Misty?" on Route 3 (or must have reopened her route with the Six Island wish). Talk to Misty in the Cerulean Gym. She asks "aren't you supposed to be off fighting at the Indigo Plateau?" and the confession follows (this uses up your one confession; your party is healed). **Missable:** after the final Hall of Fame she only offers practice battles.
 
-**Dates:** after your final Hall of Fame entry, talk to Misty in the Gym. Her menu ("Let's go somewhere together", "I want to battle you", "I'm busy. See you later") moves your dates along the same way Yellow's does. **Warning:** winning her [Resort Zone date](04-celadon-fuchsia-saffron.md#resort-zone-mistys-date-the-pal-park-and-the-couples-double-battle) leaves her missing from the Gym, so her later dates stall; save before it ([known issue](known-issues.md#misty-missing-from-cerulean-gym); not confirmed in game).
+**Dates:** after your final Hall of Fame entry, talk to Misty in the Gym. Her menu ("Let's go somewhere together", "I want to battle you", "I'm busy. See you later") moves your dates along the same way Yellow's does. **Warning:** winning her [Resort Zone date](04-celadon-fuchsia-saffron.md#resort-zone-mistys-date-the-pal-park-and-the-couples-double-battle) leaves her missing from the Gym, so her later dates stall; save before it ([known issue](known-issues.md#misty-missing-from-cerulean-gym); tested in an emulator).
 
 **Cape photo:** the first date takes you to the tip of Cerulean Cape, about 15 steps east and 2 steps south of the Sea Cottage door, where Misty asks for a photo. Say yes for the photo and the longer hug scene.
 
@@ -363,7 +365,7 @@ Continues [the Pallet Town to Pewter City romance entry](01-pallet-to-pewter.md#
 
 **Wingull:** "Feed Wingull an Oran Berry?" → Yes uses **5 Oran Berries**. The first time, the Wingull next to the woman brings you a **Big Pearl** and leaves. The other Wingull can be fed again, with no further reward.
 
-**Horsea:** "Feed Horsea a Yache Berry?" → Yes uses **5 Yache Berries**. Then "Horsea wants to come with you. Try to catch it?" → Yes starts a wild battle against **Horsea, Lv. 25**. Winning or catching removes it. Losing whites you out. Answering No still uses up the 5 berries.
+**Horsea:** "Feed Horsea a Yache Berry?" → Yes uses **5 Yache Berries**. Then "Horsea wants to come with you. Try to catch it?" → Yes starts a wild battle against **Horsea, Lv. 25**. Winning, catching or running away removes it. Losing whites you out. Answering No still uses up the 5 berries.
 
 **Alternative:** the fisherman about 7 steps east and 2 steps south of the Horsea, just south-east of a house door, is part of the Good Rod quest ([Vermilion City to Celadon City](03-vermilion-to-celadon.md#vermilion-city-the-good-rod-show-ryochi-a-horsea)). He fishes the Horsea up for you, or gives you one if it's already gone: **Horsea, Lv. 25**, once. He only helps after the construction-site clash, if you took the **townsfolk side**, after Ryochi has asked you for a Horsea and before you get the Good Rod, and not while you're carrying Oak's Parcel.
 

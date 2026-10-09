@@ -5,6 +5,7 @@
 import os
 import struct
 import sys
+import types
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -130,7 +131,7 @@ class TestTrainers(unittest.TestCase):
         self.assertEqual(m[0]['moves'], [22, 73, 79, 33])
         self.assertIsNone(m[0]['nature'])
         self.assertEqual(m[0]['ivs'], 12)
-        self.assertEqual(m[0]['evs'], [6, 252, 0, 0, 0, 252])
+        self.assertEqual(m[0]['evs'], [6, 252, 0, 0, 252, 0])
 
     def test_trade(self):
         v = [20, 26, 31, 25, 31, 21, 21, 62, 6469, 0, 0, 0, 0, 0, 12345, 0, 0, 0, 1, 12, 0]
@@ -190,6 +191,22 @@ class FakeCtx:
         self.std_file = 3
         self.ball_file = 141
         self.items = [dict(price=0, pocket=0)] * n_items
+
+
+class TestAvailability(unittest.TestCase):
+    def test_runtime_species_needs_a_complete_list(self):
+        give = dict(pc=40, op=137, kind='mon_give', args=[None, 5], raw=[0x4002, 5], alt0=[23, 27], alt0_complete=True)
+        S = {903: dict(recs=[give]), 904: dict(recs=[dict(give, alt0=[63], alt0_complete=False)])}
+        self.assertEqual(G.static_mons(FakeCtx(S)), [('gift', 23, 0, 5, 903), ('gift', 27, 0, 5, 903)])
+
+    def test_enc_records_include_weekday_tables(self):
+        ctx = types.SimpleNamespace(enc_by_file=([], {5: [1, 2]}), enc_weekday={109: [('Sunday', 141), ('Monday', 142)]})
+        self.assertEqual(G.enc_records(ctx), {5: [1, 2], 141: [109], 142: [109]})
+
+    def test_item_evolution_needs_an_obtainable_item(self):
+        tart = next(i for i, e in G.reviewed('items_not_in_game').items() if e['name'] == 'Tart Apple')
+        self.assertFalse(G.evo_works(7, tart))       # use item
+        self.assertTrue(G.evo_works(4, tart))        # level up: the parameter is a level, not an item
 
 
 def callstd(pc, n, v8004=None):
@@ -317,3 +334,23 @@ def ctx_item(ctx, name):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class TestSiteLists(unittest.TestCase):
+    """The site's never-met lists (work/tools/site/*not_in_game.json) against the exported site data."""
+    SITE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'site')
+    DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..', 'site', 'src', 'data')
+
+    def load(self, *parts):
+        return R.read_json(os.path.join(*parts))
+
+    def test_no_trainer_uses_a_removed_pokemon(self):
+        gone = {e['id'] for e in self.load(self.SITE, 'not_in_game.json')['entries']}
+        teams = {m['id'] for t in self.load(self.DATA, 'trainers.json') if t['places'] for m in t['team']}
+        self.assertEqual(sorted(gone & teams), [])
+
+    def test_removed_items_not_held_by_trainers(self):
+        kept = {i['name'] for i in self.load(self.DATA, 'items.json')}    # trainer data has names only; some
+        gone = {e['name'] for e in self.load(self.SITE, 'items_not_in_game.json')['entries']} - kept   # names repeat
+        held = {m.get('item') for t in self.load(self.DATA, 'trainers.json') if t['places'] for m in t['team']}
+        self.assertEqual(sorted(gone & held - {None}), [])

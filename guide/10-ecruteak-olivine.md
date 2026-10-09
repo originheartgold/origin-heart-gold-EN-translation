@@ -32,7 +32,7 @@
 - [Route 39: the "Team Rocket grunt" who wants $10,000 (optional Lv. 62–65 battle)](#route-39-the-team-rocket-grunt-who-wants-10000-optional-lv-6265-battle)
 - [Route 39: the Donphan owner who needs a Protector (→ Power Weight)](#route-39-the-donphan-owner-who-needs-a-protector--power-weight)
 - [Route 39: the old lady's Sunflora story (→ Seal Case)](#route-39-the-old-ladys-sunflora-story--seal-case)
-- [MooMoo Farm: the sick Miltank investigation (from your first visit; leads to the Dream World)](#moomoo-farm-the-sick-miltank-investigation-from-your-first-visit-leads-to-the-dream-world)
+- [MooMoo Farm: the sick Miltank investigation (League HQ round 3; leads to the Dream World)](#moomoo-farm-the-sick-miltank-investigation-league-hq-round-3-leads-to-the-dream-world)
 - [Olivine City: the Star-Chaser Sisters (talk to them from the middle)](#olivine-city-the-star-chaser-sisters-talk-to-them-from-the-middle)
 - [Olivine City: Sitrus Berries → Machine Part → Diving Suit → HM05 Whirlpool (with a Tentacool)](#olivine-city-sitrus-berries--machine-part--diving-suit--hm05-whirlpool-with-a-tentacool)
 - [Olivine Café → fisherman: the three dishes and the Super Rod](#olivine-café--fisherman-the-three-dishes-and-the-super-rod)
@@ -136,10 +136,10 @@
 
 **Notes:**
 - You don't need the Squirt Bottle yourself; Crystal does it. Using Cut on the tree does nothing.
-- The unmasked Sudowoodo then stands further west on Route 36, about a dozen steps east of Lily and her uncle by the National Park gate. It won't budge until you do the Rock Incense quest below.
+- An unmasked Sudowoodo stands further west on Route 36, about a dozen steps east of Lily and her uncle by the National Park gate. It's already there from the Plain Badge, before the tree scene (a quirk; see [Known issues](known-issues.md#prof-birch-and-the-unmasked-sudowoodo)). It won't budge until you do the Rock Incense quest below.
 - To be safe, do this scene **before your first visit inside the Pokéathlon Dome** (see [Known issues](known-issues.md#radio-tower-ecruteak-city-and-olivine-city)).
 
-*Source:* script file 243 (Route 36, script 14, L634–L1217; flags 551, 463), 883 (Goldenrod Gym L617–L621 clears flags 111 and 551). Tree at ≈415,246; Sudowoodo afterwards at ≈392,235.
+*Source:* script file 243 (Route 36, script 14, L634–L1217; flags 551, 463), 883 (Goldenrod Gym L617–L621 clears flags 111 and 551). Tree at ≈415,246; the second Sudowoodo at ≈392,235 (object 20) is hidden only by flag 111, which the Plain Badge clears (file 883 L617) and only the Rock Incense quest sets (file 243 L3814).
 
 ## Route 36: Lily's uncle and the Sudowoodo (Rock Incense → $10,000 + Power Lens)
 
@@ -168,7 +168,7 @@
 3. Return to the gatehouse and talk to him. "Convince him to go home?" → **Yes**. He goes home.
 4. Back in Blackthorn, his father thanks you.
 
-**Reward:** his father offers to teach **Play Rough** (free, any time you ask). The move he actually teaches is **Flail** (a hack bug; see [Known issues](known-issues.md#lake-of-rage-blackthorn-city-and-beyond)).
+**Reward:** his father offers to teach **Play Rough** (free, any time you ask). The move he actually teaches is **[Flail](/moves/flail/)** (a hack bug; see [Known issues](known-issues.md#lake-of-rage-blackthorn-city-and-beyond)).
 
 **Notes:** if you haven't talked to his father yet, he only tells his story.
 
@@ -195,7 +195,7 @@
 - **National Park, date couples** (optional Double Battles, no reward): Rich Boy Alan & Lady Olivia (about ten steps north of the south entrance), Veteran Wilbur & Veteran Nancy (west side, east of the puppy-love kids), Karate King Ming & Aroma Lady Connie (just south of the east entrance), Ace Trainers Everett & Penny (middle of the park's north half). Lv. 62–65. One win each.
 - **National Park, Bugsy:** about 17 steps west of the east entrance. After your final Hall of Fame entry, on **Mondays, Wednesdays and Fridays**, Bugsy offers a photo.
 - **Route 35, Ace Trainer Marshal** (the man with a Glaceon, east side of the route): Single or Double Battle on request, Lv. 81–82, repeatable, no reward.
-- **Route 36, Arthur (Thursdays):** a few steps north of the gatehouse door that leads south to the Ruins of Alph. The weekday brother gives a **Hard Stone**. If you've met all seven siblings he gives your lead Pokémon a ribbon instead; that ribbon gift has the known freeze (see [Known issues](known-issues.md#radio-tower-ecruteak-city-and-olivine-city)), so save first.
+- **Route 36, Arthur (Thursdays):** a few steps north of the gatehouse door that leads south to the Ruins of Alph. The weekday brother gives a **Hard Stone**. If you've met all seven siblings he gives your lead Pokémon a ribbon instead; after that gift its message stays on screen until you walk away or press X ([known issue](known-issues.md#arthurs-ribbon-message)).
 - **Route 36, Honey seller** (the man with two Combee, a few steps west of the Violet City gatehouse): sells Honey, 1/3/5/10 for $200/$600/$1,000/$2,000.
 - **Pokéathlon Dome**: the usual HeartGold Pokéathlon. Three fans each give a **Rare Candy** once your records pass their goal: the old woman on 1F for **1,000 total jumps**, the man on 1F for **2,001 total tackles**, the man outside the Dome for **1,000 total dashes**.
 
@@ -235,7 +235,7 @@
 
 **How it works:** Morty only battles a **full party of six** from his accepted list (meant to be Psychic- and Ghost-types). The match is a **Double Battle** against Morty's six, sent out two at a time (see [Known issues](known-issues.md#mortys-lv-1-pokémon) for its Lv. 1 members).
 - Fewer than six Pokémon: "You're carrying fewer than six Pokémon…"
-- Any Pokémon he doesn't accept: "Some of the Pokémon you're carrying…". The game checks a fixed list of species, not types (Eggs are skipped by the species check). Psychic and Ghost lines from Gens 1–4 are accepted, plus **Golduck** and **Noctowl** (Psychic in this hack). **Exeggutor and Rotom are refused.** Yungoos, Gumshoos, Flapple and Appletun also slip through.
+- Any Pokémon he doesn't accept: "Some of the Pokémon you're carrying…". The game checks a fixed list of species, not types (Eggs are skipped by the species check). Psychic and Ghost lines from Gens 1–4 are accepted, plus **Golduck** and **Noctowl** (Psychic in this hack). **Exeggutor and Rotom are refused.** Stunfisk, Yungoos and Gumshoos also slip through.
 - Full list from Gens 1–4: Abra line, Slowpoke line (incl. Slowking), Gastly line, Drowzee, Hypno, Exeggcute, Starmie, Mr. Mime, Mime Jr., Jynx, Smoochum, Mewtwo, Mew, Natu, Xatu, Espeon, Misdreavus, Mismagius, Unown, Wobbuffet, Wynaut, Girafarig, Lugia, Celebi, Ralts line, Gallade, Shedinja, Sableye, Meditite, Medicham, Spoink, Grumpig, Lunatone, Solrock, Baltoy, Claydol, Shuppet, Banette, Duskull line, Chimecho, Chingling, Beldum line, Latias, Latios, Jirachi, Deoxys, Drifloon, Drifblim, Bronzor, Bronzong, Spiritomb, Froslass, Uxie, Mesprit, Azelf, Giratina, Cresselia, Golduck, Noctowl. Exeggutor and Rotom are refused, although they are Psychic/Ghost.
 - Losing whites you out; try again.
 
@@ -399,19 +399,21 @@
 
 **How it works:** walk into the basement. Prof. Hale and Molly meet Entei, Raikou and Suicune, and all three run off.
 
+**Warning:** come here **before** you talk to the [Mt. Mortar expedition leader](11-cianwood-mahogany.md#mt-mortar-the-five-member-expedition-the-way-to-the-altar-needed-in-the-final-chapter) again after Lance's visit. In that window he asks "Are you a really strong Trainer?" as if you'd never met. If you say Yes and beat him, this scene never plays, and Entei, Raikou and Suicune never appear. Answer No to be safe (suspected hack bug; [known issue](known-issues.md#burned-tower-beasts-scene-and-the-expedition-leader)). Tested in an emulator.
+
 **Reward:** this unlocks the three beasts' post-game encounters: **Entei** in the Ruins of Alph dream room ([Ruins of Alph: small extras](08-cherrygrove-to-azalea.md#ruins-of-alph-small-extras)), **Suicune** on Route 25 ([Route 25: Suicune](02-pewter-to-vermilion.md#route-25-suicune-post-game)) and **Raikou** on Route 47 ([Route 47: Raikou](12-lake-of-rage-to-sinjoh.md#route-47-raikou-after-the-final-hall-of-fame)).
 
-*Source:* script file 23 (script 14, trigger on var 0x409f = 11, L4276–L6961; clears flags 1855, 2318, 2319, 2320; objects need flag 2317 clear), file 842 L2181 (clears 2317 after Lance's visit).
+*Source:* script file 23 (script 14, trigger on var 0x409f = 11, L4276–L6961; clears flags 1855, 2318, 2319, 2320; sets 0x409f = 12 at L6953; objects need flag 2317 clear), file 842 L2181 (clears 2317 after Lance's visit; @2223 sets 0x409f = 11). Expedition leader: file 962 script 2 runs the first-meeting path unless 0x409f is 3, 5 or 10; a win over `TrainerBattle 897` (L2706) leads to L3482 `SetVar 0x409f, 3`, so the trigger never fires (D-1406). Emulator CN and EN (guide review 2026-10-06, work/build/harness/guide-review-20261006/known-issues/F/): Yes and a win → var 3, no scene; No → var 11, scene plays.
 
 ## Ecruteak City: small extras
 
-- **Sunny, the Sunday sibling (Route 37, Sundays only):** gives a **Magnet**. If you've met all seven siblings she gives your lead Pokémon a ribbon instead (the known freeze, see [Known issues](known-issues.md#radio-tower-ecruteak-city-and-olivine-city); save first).
+- **Sunny, the Sunday sibling (Route 37, Sundays only):** gives a **Magnet**. If you've met all seven siblings she gives your lead Pokémon a ribbon instead (its message then stays on screen until you walk away or press X; see [Known issues](known-issues.md#arthurs-ribbon-message)).
 - **Sage Mozhi (Route 37):** repeatable Single/Double Battle.
 - **S.S. Anne fan:** in the left-hand (western) of the two houses just south of the Burned Tower. Only if you saved the S.S. Anne. Gives a **Muscle Band** once.
-- **Eruption tutor (Burned Tower 1F):** the S.S. Anne survivor teaches Eruption only if the ship didn't sink. **Aura Sphere tutor (Bell Tower gatehouse):** appears after the Burned Tower battle.
+- **Eruption tutor (Burned Tower 1F):** the S.S. Anne survivor teaches Eruption only if the ship didn't sink. **Aura Sphere tutor (Bell Tower gatehouse):** after the Burned Tower battle, the guard at the back of the gatehouse (the one who gave you the quiz) teaches Aura Sphere.
 - **Dance rehearsal (Dance Theater):** watching the Kimono Girls' rehearsal and either answer to Satsuki's question give the same result. Plays once, after Koume's Ilex Forest story ([Ilex Forest: Koume](09-ilex-goldenrod.md#ilex-forest-koume-the-kimono-girl-who-lost-her-way-blocks-the-exit-to-route-34)).
 
-*Source:* Sunny: file 246 script 2 (ribbon freeze D-1331). Mozhi: file 246 script 7, trainer 798. S.S. Anne fan: file 925 script 3, flag 1621, house door ≈375,164. Eruption tutor: file 23 script 7. Aura Sphere tutor: file 922 L1065. Dance rehearsal: file 924 script 14/18, trigger on var 0x409a = 1.
+*Source:* Sunny: file 246 script 2 (ribbon gift dies at opcode 2009 @764: D-1331, D-1558). Mozhi: file 246 script 7, trainer 798. S.S. Anne fan: file 925 script 3, flag 1621, house door ≈375,164. Eruption tutor: file 23 script 7. Aura Sphere tutor: file 922 script 1 (the gate guard, object 0, no hide flag) → L329 with flags 457 (quiz passed) and 462 (Burned Tower battle won, file 23 L3527) → L1065. Dance rehearsal: file 924 script 14/18, trigger on var 0x409a = 1.
 
 ## Route 38: the Murkrow that stole a coin (Nugget trap; → 2 Rare Candies, 2 Lava Cookies or keep the Amulet Coin)
 
@@ -424,13 +426,13 @@
 2. Talk to the Murkrow → "Ask Murkrow for the coin?" → **Yes**.
    - **No Nugget in your Bag:** it eyes you warily and hops away to another spot on the route. Follow it and try again.
    - **With a Nugget:** "Trade the Nugget to Murkrow for the gold coin?" **Say No.** If you say Yes it takes your Nugget and then hops away to another spot, just as when you have none. The Nugget is lost; follow the Murkrow and try again with another Nugget.
-   - After refusing the trade: "Beat up Murkrow and take the gold coin by force?" → **Yes** → a wild **Murkrow, Lv. 25**. Beat it (losing whites you out) and it drops the coin: an **Amulet Coin**. Catching it counts as a win too: the coin still drops.
+   - After refusing the trade: "Beat up Murkrow and take the gold coin by force?" → **Yes** → a wild **Murkrow, Lv. 25**. Beat it (losing whites you out) and it drops the coin: an **Amulet Coin**. Catching it or running away counts as a win too: the coin still drops.
    So you need a **Nugget in your Bag** to get the fight at all, but you must refuse to hand it over.
 3. Go back to the kid → "Did you get my coin back?" → **Yes** to hand over the Amulet Coin, or **No** to keep it.
 
 **Reward:** hand the coin back → **2 Rare Candies + 2 Lava Cookies** (the Amulet Coin is taken). Or keep the **Amulet Coin** and get nothing else. He'll take it any time later if you change your mind.
 
-*Source:* script file 247 (scripts 5, 6; L580–L1105, L1107–L1748; flags 2160, 1614). Yes to the trade: L1976 takes the Nugget (item 92) at L1983, then L1467 (same hop-away as without one). Kid at ≈332,173, Murkrow at ≈332,180.
+*Source:* script file 247 (scripts 5, 6; L580–L1105, L1107–L1748; flags 2160, 1614). Yes to the trade: L1976 takes the Nugget (item 92) at L1983, then L1467 (same hop-away as without one). Murkrow battle `WildBattle 198` L1681, `CheckBattleWon` L1688 false only on a loss (→ L1568), so a flee drops the coin like a win. Kid at ≈332,173, Murkrow at ≈332,180.
 
 ## Route 39: the "Team Rocket grunt" who wants $10,000 (optional Lv. 62–65 battle)
 
@@ -462,7 +464,7 @@
 
 **Where:** MooMoo Farm, Route 39, the old lady among the Sunflora in the south of the farm.
 
-**Who gets it / when:** only while the farm's Miltank are healthy. They are already sick when you first reach the farm, so in practice this is **after you've cleared the sick-Miltank investigation** (MooMoo Farm entry below). While they're sick she only worries about them.
+**Who gets it / when:** only while the farm's Miltank are healthy: from your first visit until the League HQ's round-3 order, and again once you've cleared the sick-Miltank investigation ([MooMoo Farm](#moomoo-farm-the-sick-miltank-investigation-league-hq-round-3-leads-to-the-dream-world)). While they're sick she only worries about them. Tested in an emulator.
 
 **How it works:** "Would you like to hear it?" → **Yes** and listen to her long love story. Her husband then walks up and tells you it was all made up.
 
@@ -471,13 +473,13 @@
 - The **girl in Olivine City** behind the right-hand of the two doors side by side in the north-east of town gives you random Seals once a day.
 Seals go on Poké Balls through **BALL CAPSULES** in the PC menu.
 
-*Source:* script file 249 (scripts 19, 20; L2587–L2827; flags 744, 552), 251 (script 2, L1008–L1510; flag 257), 913 (script 3, L354, L755, L1254; flag 2745). Flag 744 set = Miltank healthy: set at new game (file 149), cleared by Prof. Elm's send-off (file 840 L3194/L3324) and the League HQ round-3 order (file 31 L4666), set again by the Dream World (file 898 L2329). Old lady at ≈270,190; Olivine seal girl's door ≈292,241.
+*Source:* script file 249 (scripts 19, 20; L1082 flag 744 clear → L2565, 391#83 worry line; L2587–L2827; flags 744, 552), 251 (script 2, L147 flag 744 clear → L985; L1008–L1510; flag 257), 913 (script 3, L354, L755, L1254; flag 2745). Flag 744 set = Miltank healthy: set at new game (file 149 @492), cleared only by the League HQ round-3 order (file 31 @4666), set again by the Dream World (file 898 @2329); the lab's ClearFlag 744 (file 840 @3194/@3324) is in a script that never runs (see the MooMoo Farm entry). Emulator, CN and EN: work/build/harness/bugreports-20261006/miltank/ (old lady and farmer, healthy and sick). Old lady at ≈270,190; Olivine seal girl's door ≈292,241.
 
-## MooMoo Farm: the sick Miltank investigation (from your first visit; leads to the Dream World)
+## MooMoo Farm: the sick Miltank investigation (League HQ round 3; leads to the Dream World)
 
 **Where:** the MooMoo Farm stable on Route 39. Go in by the right-hand door: the farmer stands a few steps ahead in the east room. The Miltank are in the west room (the left-hand door).
 
-**Who gets it / when:** whenever the Miltank are sick. They're already sick when you first reach Johto (Prof. Elm's send-off makes them sick), and the League HQ's round-3 order makes them sick too ([League HQ](07-league-to-cherrygrove.md#league-hq-the-trainer-affairs-departments-investigations-where-to-go-next)). The farmer asks for help whenever they're sick; he doesn't check whether the League HQ has sent you. There's no early window in which the farm is normal.
+**Who gets it / when:** after the League HQ's round-3 order, which sends you to MooMoo Farm about ghostly rumours ([League HQ](07-league-to-cherrygrove.md#league-hq-the-trainer-affairs-departments-investigations-where-to-go-next)), after the Silver Conference. That order makes the Miltank sick. Until then they're healthy: the farmer only greets you and talks about his milk, the milk stall and the farm's seal girl are open, and the Sunflora old lady tells her story. So you can't reach the Dream World earlier. Tested in an emulator.
 
 **How it works:**
 1. Talk to the farmer. "Could you please help us find out why our Miltank are sick?" → **Yes**.
@@ -485,14 +487,13 @@ Seals go on Poké Balls through **BALL CAPSULES** in the PC menu.
 3. The Dream World (partner choice, the Will and Karen Double Battle, the Lunar Wing and the way back) is in the [Romance route central entry, step 2](09-ilex-goldenrod.md#romance-route-how-its-unlocked-how-your-partner-is-chosen-and-what-locks-a-partner-out-central-entry) and [Dream World: Cresselia and Darkrai](09-ilex-goldenrod.md#dream-world-cresselia-and-darkrai-post-game). **Do the Goldenrod love reading before this if you want the romance route.**
 4. Back at the farm, talk to the farmer again.
 
-**Reward:** **1 Moomoo Milk** (he says "this dozen", but you only get one). The Miltank are healthy again and the milk stall reopens.
+**Reward:** **1 Moomoo Milk** (he says "this dozen", but you only get one). The Miltank are healthy again for good, and the milk stall, the seal girl and the Sunflora old lady are back to normal.
 
 **Notes:**
 - **Moomoo Milk stall** (the farmer's daughter at the farm entrance, a few steps south of the stable doors): 1 for $1,000, 3 for $3,000, 8 for $8,000, 12 for $12,000. Closed while the Miltank are sick.
 - **After your final Hall of Fame entry**, examine the back wall of the west stable room to return to the Dream World ([Dream World: Cresselia and Darkrai](09-ilex-goldenrod.md#dream-world-cresselia-and-darkrai-post-game)). You don't need a Lunar Wing for this.
-- **If you can, do the investigation after the League HQ's round-3 order.** That order always makes the Miltank sick again, and once you've been through the Dream World the farmer never offers the cure again. So if you clear the Dream World first, the milk stall, the farm's seal girl and the Sunflora old lady close for good (suspected hack bug; not confirmed in game).
 
-*Source:* script file 251 (scripts 1, 8, 9; L903–L1431, L1283, L1295; flags 744, 2299, 2289, 2301; var 0x40a3 = 5; farmer script L117 offers the investigation whenever flag 744 is clear), 249 (script 21, L2851–L3076), 31 (L4666 clears 744), 840 (Prof. Elm's lab, L3194/L3324 clear 744), 898 (L2329 sets 744; the only SetFlag 744 besides the new-game setup in file 149, so after 2289 is set nothing cures a later ClearFlag 744 at file 31 L4666, and script 1 @106 sends the farmer to L903 once 2289 is set); return trip: script 9 @882 CheckFlag 2261 → L1295 → Warp, the file's only HasItem is 434 (Seal Case). Farmer at ≈38,5 in the stable; right-hand stable door ≈265,164 leads to the east room, left-hand door ≈260,164 to the west room. Milk stall at ≈268,169.
+*Source:* script file 251 (scripts 1, 8, 9; L903–L1431, L1283, L1295; flags 744, 2299, 2289, 2301; farmer script 1: L117 flag 744 set → greeting 391#4, clear → L925 asks for help 391#6/#23 and L1419–L1423 sets 2299 and var 0x40a3 = 5; coord script 8 at ≈7,3 in the west room needs 0x40a3 = 5), 249 (milk stall script 21, L1192 → L2851 while 744 is clear), flag 744 (set = healthy): set at new game (file 149 @492), cleared only by the League HQ round-3 order (file 31 @4666, after 0x40a2 = 17), set again by the Dream World (file 898 @2329, with 2289 at @2321); no other setter in any script file. The `ClearFlag 744` in Prof. Elm's lab (file 840 @3194/@3324) is in lab script 15, which needs var 0x4108 = 8, a value no script sets (emulator, CN and EN: work/build/harness/bugreports-20261006/miltank/). Return trip: script 9 @882 CheckFlag 2261 → L1295 → Warp, the file's only HasItem is 434 (Seal Case). Farmer at ≈38,5 in the stable; right-hand stable door ≈265,164 leads to the east room, left-hand door ≈260,164 to the west room. Milk stall at ≈268,169.
 
 ## Olivine City: the Star-Chaser Sisters (talk to them from the middle)
 
@@ -512,12 +513,12 @@ A chain across four places in Olivine. **HM05 Whirlpool** is the reward. Crossin
 
 **How it works:**
 1. **Olivine Café:** the man with two Machoke, just left of the entrance, wants to feed them Sitrus Berries. Carry **20 Sitrus Berries** and say **Yes** → he takes 20 and gives you a **Machine Part**. With fewer than 20 he declines. (The man with the Pelipper in Olivine, a few steps south of the Lighthouse door, sells Sitrus Berries: 1 for $1,000, 3 for $3,000, 5 for $5,000, 10 for $10,000.)
-2. **Olivine Lighthouse 1F:** the engineer, a few steps up and to the right of the entrance, needs a machine part for the elevator. Talk to him with the Machine Part → **Yes** → **Diving Suit**. He isn't there from the moment you win the Mineral Badge until you've cured Amphy (see "Olivine Lighthouse: medicine for Amphy" below), so get the Diving Suit before you beat Jasmine or after Amphy is cured.
+2. **Olivine Lighthouse 1F:** the engineer, a few steps up and to the right of the entrance, needs a machine part for the elevator. Talk to him with the Machine Part → **Yes** → **Diving Suit**. He isn't there from the moment you win the Mineral Badge until you've driven Team Rocket out of the Lighthouse; after that he's back at his spot (Amphy doesn't need to be cured). Tested in an emulator.
 3. **Olivine City, north-east house** (the left-hand of the two doors side by side in the north-east of town): a boy is afraid of the sea since a Remoraid knocked him into it. He needs a Water-type to get used to and a Diving Suit. Talk to him with a **Tentacool in your party** and the **Diving Suit** → **Yes** → pick the Tentacool. It must not be your only Pokémon; picking an Egg or another species just gets a comment.
 
 **Reward:** **HM05 Whirlpool**. Your Tentacool and the Diving Suit are taken (the Tentacool then lives in his room).
 
-*Source:* script files 915 (scripts 8, 9; L1447, L1832; flag 458), 907 (script 29, L3837–L4075), 62 (script 4, L1398–L1524; flag 256; engineer hidden by flag 472, set at file 909 L16098 after the Mineral Badge, cleared at file 66 L3738 by the Amphy cure), 913 (script 4, L400, L787, L1346–L2148; flag 470). Machoke man at ≈4,8 in the Café; Pelipper man at ≈299,267; engineer at ≈14,13 on Lighthouse 1F; boy's door ≈287,241.
+*Source:* script files 915 (scripts 8, 9; L1447, L1832; flag 458), 907 (script 29, L3837–L4075), 62 (script 4, L1398–L1524; flag 256; the engineer is two objects at the same spot: object 18 hidden by flag 472, set at file 909 L16098 after the Mineral Badge and cleared at file 66 L3738 by the Amphy cure; object 28 hidden by flag 471, set by Gold's Route 39 battle (file 249 L4118) and cleared when Team Rocket leaves the Lighthouse (file 66 L2507); L1430 moves both. Emulator, EN: with 472 set and 471 clear he stands at ≈14,13 and gives the Diving Suit for the Machine Part; while Team Rocket is in the tower neither copy is there; work/build/harness/guide-review-20261006/ch10/eng_en_*.json), 913 (script 4, L400, L787, L1346–L2148; flag 470). Machoke man at ≈4,8 in the Café; Pelipper man at ≈299,267; engineer at ≈14,13 on Lighthouse 1F; boy's door ≈287,241.
 
 ## Olivine Café → fisherman: the three dishes and the Super Rod
 
@@ -549,9 +550,9 @@ A chain across four places in Olivine. **HM05 Whirlpool** is the reward. Crossin
 
 **Reward:** no item. Your Super Rod is taken. This clears Crystal's romance lock (continuation of the [Romance route central entry](09-ilex-goldenrod.md#romance-route-how-its-unlocked-how-your-partner-is-chosen-and-what-locks-a-partner-out-central-entry), step 3). See Notes.
 
-**Notes:** Crystal's lock is set on Route 46 if you refuse to put your Pokémon away when Charon holds her hostage ([Route 46: Team Rocket's dig](12-lake-of-rage-to-sinjoh.md#route-46-team-rockets-dig-and-crystal-taken-hostage-story-romance-choice-continues-ilex-forest-and-goldenrod-citys-romance-entry)). That scene is mandatory and always comes before Olivine, so giving her the rod here **does** undo a Route 46 "No". In the scripts the gift also clears a lock set by the Dream World, if you did the MooMoo Farm investigation before coming to Olivine. This hasn't been tested in game, and you still get only one confession. She's only in Olivine until you earn the Mineral Badge.
+**Notes:** Crystal's lock is set on Route 46 if you refuse to put your Pokémon away when Charon holds her hostage ([Route 46: Team Rocket's dig](12-lake-of-rage-to-sinjoh.md#route-46-team-rockets-dig-and-crystal-taken-hostage-story-romance-choice-continues-ilex-forest-and-goldenrod-citys-romance-entry)). That scene is mandatory and always comes before Olivine, so giving her the rod here **does** undo a Route 46 "No". The Dream World can also lock Crystal out, but it only opens with the League HQ's round-3 order, after the Silver Conference, long after Crystal has left Olivine in normal play. She's only in Olivine until you earn the Mineral Badge.
 
-*Source:* script file 907 (script 14, L3093–L3137, L4329–L4427; clears flag 2145, sets 175); Crystal is hidden by flag 173, set in file 909 L16090 after the Mineral Badge; Route 46 lock file 259 L2267 (coord script 4, the Dark Cave digging scene). No Dream World check (no 2289/2300 test on this path), so the gift clears 2145 even after the Dream World; an early-investigation route has not been tested in game. Crystal at ≈277,272.
+*Source:* script file 907 (script 14, L3093–L3137, L4329–L4427; clears flag 2145, sets 175); Crystal is hidden by flag 173, set in file 909 L16090 after the Mineral Badge; Route 46 lock file 259 L2267 (coord script 4, the Dark Cave digging scene). No Dream World check (no 2289/2300 test on this path); the Dream World (file 898, sets 2145) needs the round-3 order (file 31 @4666, 0x40a2 = 17), which comes after the Silver Conference (0x40a2 = 13, file 107 @9518), while flag 173 hides Crystal from the Mineral Badge on. Not checked: whether the story can reach the Silver Conference without the Mineral Badge (Gold's Badge race, file 937 L3317–L3450, only changes his lines). Crystal at ≈277,272.
 
 ## Olivine City: the "gold-laying Magikarp" con man (only if the S.S. Anne was saved)
 
@@ -573,7 +574,7 @@ A chain across four places in Olivine. **HM05 Whirlpool** is the reward. Crossin
 
 **How it works:** Jasmine's rule is a **3-on-3 Single Battle using only Pokémon with a base Defense of 130 or higher.**
 - Carry **3 Pokémon or fewer**. With 4 or more she refuses.
-- **Every** Pokémon must be on her list. The game checks a fixed list of species meant to match base Defense 130+, for example Steelix, Skarmory, Forretress, Shuckle, Aggron, Metagross, Bastiodon and Probopass. **Aegislash is refused**, though Doublade is allowed, and a few weak species slip through (Yungoos, Gumshoos, Flapple and Appletun; see [Known issues](known-issues.md#radio-tower-ecruteak-city-and-olivine-city)). Eggs are skipped by the check.
+- **Every** Pokémon must be on her list. The game checks a fixed list of species meant to match base Defense 130+, for example Steelix, Skarmory, Forretress, Shuckle, Aggron, Metagross, Bastiodon and Probopass. **Aegislash is refused**, though Doublade is allowed, and a few weak species slip through (Stunfisk, Yungoos and Gumshoos; see [Known issues](known-issues.md#radio-tower-ecruteak-city-and-olivine-city)). Eggs are skipped by the check.
 - Full list of obtainable species that pass: Golem, Cloyster, Onix, Steelix, Forretress, Shuckle, Skarmory, Nosepass, Probopass, Lairon, Aggron, Torkoal, Dusclops, Dusknoir, Relicanth, Metagross, Regirock, Registeel, Bastiodon, Rhyperior, Leafeon, Uxie, Lugia, Groudon, Gigalith, Cofagrigus, Carracosta, Ferrothorn, Doublade, Carbink, Avalugg, Toxapex, Pyukumuku.
 - Jasmine: Steelix, Metagross, Skarmory, all Lv. 80. Losing whites you out, and you can retry.
 

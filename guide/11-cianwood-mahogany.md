@@ -56,9 +56,9 @@
 
 **How it works:** talk to **Gold or Crystal**, not the pharmacist behind the counter (he only sighs). The old man refuses them, then gives the medicine once you show your Trainer Card as League Champion. You get the **Secret Potion**; fly back to Jasmine at the top of the Lighthouse.
 
-**Notes:** the pharmacist also has a herbal-medicine counter (Energy Powder $600, Energy Root $3,500, Heal Powder $500, Revival Herb $8,000), but it only opens before the Amphy crisis starts; see [the known issue](known-issues.md#cianwood-pharmacy-after-the-amphy-crisis).
+**Notes:** the pharmacist also has a herbal-medicine counter (Energy Powder $600, Energy Root $3,500, Heal Powder $500, Revival Herb $8,000). It's closed while Gold and Crystal are in the shop, from the Lighthouse battle until you cure Amphy. Before and after that it's open. Tested in an emulator: once Amphy is cured, Gold and Crystal are gone and the counter sells again.
 
-*Source:* script file 878 (scripts 2–3, L854–L1290); file 66 (Lighthouse) takes the potion.
+*Source:* script file 878 (scripts 2–3, L854–L1290); file 66 (Lighthouse) takes the potion. The counter (878 script 1) opens only while flag 471 is set, and Gold, Crystal and their Pokémon are hidden by 471. It's cleared at the end of the Lighthouse battle (file 66 L2507) and set again by the cure: file 66 script 16 L3718 `HidePerson 0` hides Jasmine, whose hide flag is 471 (emulator CN and EN: 471 set after the cure, pharmacy shows only the pharmacist, counter messages 569#27/#34).
 
 ## Route 41 → Cianwood City: the Whirl Islands Challenge (quiz and battle on four islands)
 
@@ -103,7 +103,7 @@
 **How it works:**
 1. Talk to **Eusine**. He battles Suicune with Gengar, Electrode and Alakazam and loses. Goh then turns up and tries to catch it.
 2. Menu **"Stop Goh?"**
-   - **Yes:** you battle **One-Ball Man Goh**: Lv. 85 Pidgeot, Starmie, Wigglytuff, Garchomp, Metagross and Pikachu. Lose and you black out, and the scene replays next time.
+   - **Yes:** you battle **One-Ball Man Goh**: Lv. 85 Pidgeot, Starmie, Wigglytuff, Garchomp, Metagross and Pikachu. Lose and you black out, and the scene replays next time (tested in an emulator: after the loss Eusine, Suicune, Crystal and Goh are all back).
    - **No:** Crystal steps in instead. No battle.
 3. Either way Suicune escapes, and Goh and Eusine leave. Crystal stays.
 
@@ -117,7 +117,7 @@
 
 **How it works:** he asks for a battle (Yes/No). Beat **Ace Trainer Hans**: Lopunny Lv. 66, Magcargo Lv. 67, Zangoose Lv. 68, Fearow Lv. 68. Losing blacks you out; you can try again.
 
-**Reward:** from then on he teaches **Close Combat**. You need **3 Rare Candies** in your Bag, but they're only taken if the Pokémon has a free move slot. If it has to forget a move, the lesson is free, although his line still says he'll take them (suspected hack bug; see [the known issue](known-issues.md#close-combat-tutors-fee)).
+**Reward:** from then on he teaches **[Close Combat](/moves/close-combat/)**. You need **3 Rare Candies** in your Bag, but they're only taken if the Pokémon has a free move slot. If it has to forget a move, the lesson is free, although his line still says he'll take them (suspected hack bug; see [the known issue](known-issues.md#close-combat-tutors-fee)).
 
 *Source:* script file 872 (script 17, L2800, flag 343; tutor L3410–L5393).
 
@@ -137,14 +137,14 @@
 
 **Where:** Cianwood Gym → Cianwood Cave (the gate at the west end of town; it leads to Route 47 and the Resort Zone).
 
-**Who gets it / when:** after Amphy is cured. Chuck's wife stands below the Gym door and says Chuck is about to take his students away for training. Inside the Gym, his wife tells you where: "the cave west of Cianwood City".
+**Who gets it / when:** after Amphy is cured. Until then, Chuck's wife stands right in front of the Gym door, so you can't go in, and says Chuck is about to take his students away for training. Once Amphy is cured she's gone. Inside the Gym, his wife tells you where: "the cave west of Cianwood City". Tested in an emulator: before the cure the wife blocks the door; after it you walk straight in.
 
 **How it works:**
 1. Go through the Cianwood Cave gate and follow the cave path. Two of Chuck's students block the way as Trainers.
 2. Walk into the training area and Chuck's footwork lesson plays. He makes you push palms with his Hariyama, then battles you: **Chuck**, six Pokémon: Hariyama 89, Breloom 88, Hitmonchan 89, Medicham 88, Poliwrath 89 and Annihilape 88. Losing blacks you out.
 3. Win and Chuck goes back to the Gym, which reopens. The Resort Zone (Route 48) also opens.
 
-*Source:* script file 121 (script 5 coord trigger, L675–L1557: sets flag 2112, clears 2111/747, var 0x4098 = 14; trainer 718); file 874 (script 14, L1021). Wife's lines: 564#23 at the door, 566#63 inside.
+*Source:* script file 121 (script 5 coord trigger, L675–L1557: sets flag 2112, clears 2111/747, var 0x4098 = 14; trainer 718); file 874 (script 14, L1021). Wife's lines: 564#23 at the door, 566#63 inside. The door wife is three copies of one person on the tile below the door (file 872 objects 1–3, hide flags 173, 477, 471); 471, the last, is set by the cure (file 66 L3718 `HidePerson 0`). Emulator: with 471 clear she blocks the door (EN); after the cure the player enters the Gym (CN and EN).
 
 ## Cianwood Gym: the winch and Chuck's Fighting-type Double Battle (the Storm Badge)
 
@@ -155,7 +155,7 @@
 **How it works:**
 1. Chuck trains under the waterfall and ignores you ("He's so into his training, he doesn't seem to notice you."). Turn the **large winch** on the back (north) wall to stop the waterfall, then talk to him. You have to do this on every visit.
 2. Choose **"I'm here for the Badge"**. His rules:
-   - a **Double Battle**, 4-on-4: Chuck sends out his four Pokémon two at a time (not confirmed in game);
+   - a **Double Battle**, 4-on-4: Chuck sends out his four Pokémon two at a time (tested in an emulator);
    - **2 to 4 Pokémon** in your party ("at most 4"; with 1 Pokémon, or 5 or 6, he refuses);
    - he asks for **Fighting types only**, but the game actually checks your party against a fixed list of banned species. Every Pokémon that is Fighting-type in this hack passes, except **Staraptor** (Fighting/Flying here, but refused). This hack changes some types, so Ledian, Slaking, Zangoose, Lopunny and Electivire count as Fighting. A few non-Fighting Pokémon also slip through ([known issue](known-issues.md#chucks-fighting-rule)).
 3. Beat **Chuck** (Lv. 80 Toxicroak, Medicham, Hitmonchan, Hitmonlee). Losing blacks you out; you can retry.
@@ -236,7 +236,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 
 **How it would work:** the room has spots for Blue, Yellow, Riley, Marley and Misty. Say Yes to Yellow ("I'm ready. Let's battle together!") or Misty ("Shall we start the challenge now?") and they become your Multi Battle partner. Doing so **clears that partner's romance lock** (Yellow: the Dream World lock; Misty: the Route 3 "No" or Indigo Conference lock), then hides her from the room for good.
 
-**But:** Yellow and Misty are hidden as soon as you pass the scene with Gold and Crystal on Route 39, on your way into Olivine City. That scene is the only way to reach Olivine City, and so the Battle Frontier. Nothing ever makes them visible again, so in a normal game **neither ever appears in the partner room**, and this way back into a romance doesn't work. Your first visit to the Trainer House basement in Frontier Access also hides Yellow. Riley and Marley are normally hidden as well, so in practice Blue is the only partner you'll find there (not confirmed in game).
+**But:** Yellow and Misty are hidden as soon as you pass the scene with Gold and Crystal on Route 39, on your way into Olivine City. That scene is the only way to reach Olivine City, and so the Battle Frontier. Nothing ever makes them visible again, so in a normal game **neither ever appears in the partner room**, and this way back into a romance doesn't work. Your first visit to the Trainer House basement in Frontier Access also hides Yellow. Riley and Marley are normally hidden as well, so in practice Blue is the only partner you'll find there. Tested in an emulator with the Route 39 scene's changes applied: the room shows Blue but not Yellow, Misty, Riley or Marley.
 
 **Notes:** for Yellow and Misty, the way to undo a romance lock is the Island Forest wish before the Dream World ([Island Forest (Six Island)](05-saffron-cinnabar.md#island-forest-six-island-before-the-lucky-meowth-god); see [the romance route's central entry](09-ilex-goldenrod.md#romance-route-how-its-unlocked-how-your-partner-is-chosen-and-what-locks-a-partner-out-central-entry) for every partner's options). See also [the known issue](known-issues.md#yellow-and-misty-in-the-battle-tower-partner-room).
 
@@ -255,10 +255,10 @@ The four houses share one interior map. Door positions in town: **A** is west of
 - **The Smeargle's Sketch** (west end, a few steps east of the gatehouse from Ecruteak, next to a boulder): he's training his Smeargle's Strength. Pick **"That's not how it works"** and talk him through Sketch. If you have a **Heart Scale**, give it: **Meadow Plate**. One-time; without a Heart Scale, come back later.
 - **Blissey's Egg** (the photographer in the middle of the route, just south-west of the middle Mt. Mortar entrance): a Seviper goes for the Blissey's Egg. **"I'll save it"** → wild **Seviper Lv. 30**. Win, the Happiny hatches, and you get a **Stardust**. Catching the Seviper or running away also counts as a win. Losing whites you out and the scene plays again. **"Let nature be"**: the Blissey drives it off herself, no reward, and that choice is final.
 - **Fisherman Manzo** (on the water east of the photographer, with a Corsola): beat him once (Wailord, Seaking, Walrein, Gyarados, Lv. 62–65) for **3 Lure Balls**.
-- **Hiker Dolan** (east end, near the Mahogany side): after the Entei scene he offers repeatable Single or Double battles (Lv. 62–64 team plus a Lv. 1 Aron).
+- **Hiker Dolan:** until the Entei scene he stands at the west end, near the Ecruteak gatehouse, and only talks about a red-haired boy. After the scene he moves to the east end, near the Mahogany side, and offers repeatable Single or Double battles (Lv. 62–64 team plus a Lv. 1 Aron).
 - The **Entei scene** at the east end (Silver, Ariana and a brainwashed Entei; three Multi Battles with Silver, then Ariana's Entei) is story.
 
-*Source:* script file 252 (scripts 10, 13, 8, 14, 2; flags 2215, 671, 2213, 2212). The Blissey scene needs flag 671 (set at new game); "Let nature be" clears it. Positions: Smeargle man ≈428,179; photographer ≈460,182; Manzo ≈483,177; Dolan ≈500,177.
+*Source:* script file 252 (scripts 10, 13, 8, 14, 2; flags 2215, 671, 2213, 2212). The Blissey scene needs flag 671 (set at new game); "Let nature be" clears it. Dolan is object 14: while flag 2212 is clear (before the Entei scene sets it), script 1 moves him to ≈431,175 (L1575) and he says 392#91. Positions: Smeargle man ≈428,179; photographer ≈460,182; Manzo ≈483,177; Dolan ≈500,177.
 
 ## Mt. Mortar: the runaway Hitmontop and the Hiker's map (→ HM08 Rock Climb)
 
@@ -309,7 +309,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 - A Hiker on the west side of B1F, about 20 steps south of the altar, will Escape Rope you out whenever you like.
 - **Warning:** after [Lance visits your house](01-pallet-to-pewter.md#pallet-town-lances-visit-home-after-the-final-hall-of-fame) (after your final Hall of Fame entry), see the [Burned Tower release scene](10-ecruteak-olivine.md#burned-tower-prof-hale-molly-and-the-three-beasts-post-game-frees-entei-suicune-raikou) **before** you rematch the expedition leader. Beating him in that window resets the expedition's progress, even if you finished it before, and the scene that frees Entei, Raikou and Suicune never plays. To avoid the battle, answer No to "Are you a really strong Trainer?" (suspected hack bug; [known issue](known-issues.md#burned-tower-beasts-scene-and-the-expedition-leader)). No effect of a rematch after that scene was found.
 
-*Source:* script file 962 (scripts 2, 4, 6, 10, 11; L3424–L3483, L5052, L5709; flags 2214, 2217, 2218; var 0x409f 3→5→6→7), file 961 (script 2, L721–L3199), file 98 (scripts 5, 6, 16, 3; var 0x409f 8→10; trainers 893, 897, 898; statue after flag 2261 = final Hall of Fame), file 246 L287 (flag 461, the members' hide flag, which is never set; quiz failure = msg 38). Positions: leader ≈51,81, Battle Girl ≈35,51, kid ≈70,28 (back cave); Magnemite man ≈61,39 (front cave); B1F Hiker ≈25,36.
+*Source:* script file 962 (scripts 2, 4, 6, 10, 11; L3424–L3483, L5052, L5709; flags 2214, 2217, 2218; var 0x409f 3→5→6→7), file 961 (script 2, L721–L3199), file 98 (scripts 5, 6, 16, 3; var 0x409f 8→10; trainers 893, 897, 898; statue after flag 2261 = final Hall of Fame), file 246 L287 (flag 461, the members' hide flag: no script sets it before the team sets off, when file 962 script 11 hides them (L1783–L1811 `HidePerson`); quiz failure = msg 38). Positions: leader ≈51,81, Battle Girl ≈35,51, kid ≈70,28 (back cave); Magnemite man ≈61,39 (front cave); B1F Hiker ≈25,36.
 
 ## Boot Camp Ruins: the Team Rocket PC password (story; Mahogany Rocket base chapter)
 
@@ -339,7 +339,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 3. **B2F.**
    - Butch and Cassidy block the east side with a 2-on-1 Double Battle.
    - **Scientist Fujimoto** stands in a corner on the east side, about halfway down the floor ("What are you doing in this corner?!"). Beat him and pick up the **Secret Key** item ball beside him (you need it on B3F).
-   - Silver is losing to Karen. "Help Silver?" **Yes** starts a battle with Karen (Lv. 90). No does nothing, and you can come back to it. **Karen is missable:** she and Silver leave once Archer's room is done.
+   - Silver is losing to Karen. "Help Silver?" **Yes** starts a battle with Karen (Lv. 90). No does nothing, and you can come back to it. Karen isn't missable: Silver leaves once Archer's room is done, but Karen stays on B2F until you beat her, and talking to her still starts the battle (tested in an emulator after the chapter).
    - The sealed door in the middle wants the spoken password "Team Rocket will rule the world!" in Petrel's voice. Saying it yourself always fails ("Voiceprint mismatch").
 4. **B3F** (full walkthrough: [Team Rocket HQ B3F: the two passwords and the Secret Key door](12-lake-of-rage-to-sinjoh.md#team-rocket-hq-b3f-the-two-passwords-and-the-secret-key-door-continues-battle-frontier-cianwood-city-and-mahogany-towns-mahogany-town--team-rocket-hq)).
    - Charon and Cyrus take you on in a **Double Battle**. Afterwards Gold tells you the first password: **"Slowpoke Tail"**.
@@ -354,8 +354,9 @@ The four houses share one interior map. Door positions in town: **A** is west of
 **Notes:**
 - **Don't miss the Rainbow Wing.** It's an item ball in Archer's room. Morty needs it in Ecruteak before you can climb the Bell Tower ([Bell Tower: Ho-Oh is stolen](10-ecruteak-olivine.md#bell-tower-ho-oh-is-stolen-league-hq-round-4-continues-pokémon-league-mt-silver-and-new-bark-towns-league-hq-entry)). The shop guard lets you back into the base afterwards ("you're the League Champion"), so you can fetch it later.
 - Archer's notebook in the same room tells how Team Rocket used Prof. Hale. Reading it is optional.
+- **Petrel's Chatot (one chance):** when the radio-room scene ends, everyone leaves except Petrel's Chatot, about six steps south and two east of where you're standing. Talk to it **before you leave B2F**: "Petrel's Chatot. Nobody wants it anymore. Catch it?" → **Yes** starts a wild battle with a **Chatot (Lv. 10)** you can catch. After that battle the Chatot is gone, however it ends (caught, knocked out, run from, or a loss that whites you out), and if you leave the floor without talking to it, it's gone for good. Tested in an emulator: the Chatot is still there after the scene and offers the battle.
 
-*Source:* script files 926 (Mahogany Town, script 1), 88 (souvenir shop, scripts 7, 10, 6), 89 (B1F; arrival battle TrainerBattle 902 at L183; camera Double Battles 903+904, 905+906, 907+908), 90 (B2F; Butch/Cassidy 810+812; Fujimoto 910 at ≈47,16 with the Secret Key ball ≈46,16; Karen 909), 91 (B3F; Charon + Cyrus 553+817; Multi Battle: partner Crystal 911 vs Ariana 893 + Lawrence 549; Watanabe 912; Secret Key check, both passwords; Petrel 816), 933 (Archer's room, map 133; Rainbow Wing = script 6, flag 2334), 881 (Mt. Mortar passage, vars 0x4098 = 21–26, not covered here). Shop door ≈528,174. Radio room Electrode: "Stop it?" one ≈21,16.
+*Source:* script files 926 (Mahogany Town, script 1), 88 (souvenir shop, scripts 7, 10, 6), 89 (B1F; arrival battle TrainerBattle 902 at L183; camera Double Battles 903+904, 905+906, 907+908), 90 (B2F; Butch/Cassidy 810+812; Fujimoto 910 at ≈47,16 with the Secret Key ball ≈46,16; Karen 909 = object 26, hide flag 486, set only after her battle (L3621), so Archer's room (flag 498) doesn't hide her; Petrel's Chatot = object 31, script 6, hide flag 500: the radio-room ending (script 5, L2582–L2813) hides the others in its group, which sets 500, the Chatot then offers "Catch it?" (L2874, `WildBattle 441`, Lv. 10) and is hidden after any result but a loss (`CheckBattleWon` L3657; a loss → `WhiteOut` L3629, which takes you off the floor) (L3674); once you leave, flag 500 keeps it hidden; emulator CN and EN: Chatot at ≈33,24 after the scene, messages 111#84/#99, then the battle), 91 (B3F; Charon + Cyrus 553+817; Multi Battle: partner Crystal 911 vs Ariana 893 + Lawrence 549; Watanabe 912; Secret Key check, both passwords; Petrel 816), 933 (Archer's room, map 133; Rainbow Wing = script 6, flag 2334), 881 (Mt. Mortar passage, vars 0x4098 = 21–26, not covered here). Shop door ≈528,174. Radio room Electrode: "Stop it?" one ≈21,16.
 
 ## Mahogany Gym: Pryce's no-weather Double Battle (the Glacier Badge)
 
@@ -441,7 +442,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 
 **How it works:**
 1. Examine the stone: "It looks like a Star Piece would fill in the broken part perfectly. Use a Star Piece to repair the stone?" → **Yes**. Each repair takes a Star Piece if you have one, but still counts if you have none ([known issue](known-issues.md#jirachi-stone-without-star-pieces)).
-2. Keep choosing Yes. If you've finished the legendary investigation story (it ends in Cherrygrove City, when Crystal takes Suicune back to the orphanage), the stone wakes after **7 repairs** (not confirmed in game). **Warning:** if that story isn't finished, it needs more repairs, and waking Jirachi stops that story's remaining scenes from playing. Finish it first ([known issue](known-issues.md#jirachi-stone-and-the-story-counter)).
+2. Keep choosing Yes. If you've finished the legendary investigation story (it ends in Cherrygrove City, when Crystal takes Suicune back to the orphanage), the stone wakes after **7 repairs** (tested in an emulator). **Warning:** if that story isn't finished, it needs more repairs, and waking Jirachi stops that story's remaining scenes from playing. Finish it first ([known issue](known-issues.md#jirachi-stone-and-the-story-counter)).
 3. The stone turns into **Jirachi**. Two Team Rocket stragglers run in and try to make it grant their wish (a world ruled by Team Rocket). Nothing happens, and you fight them in a **Double Battle**: Grunts with Honchkrow 65, Weavile 64, Butterfree 63 and Gyarados 65, Rampardos 63, Gallade 64.
 4. Win, and they give up Team Rocket. The man asks you to give Jirachi a safe home. Talk to Jirachi → "Take it with you on your journey?" → **Yes**.
 

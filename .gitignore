@@ -119,3 +119,5 @@ site/public/patch/
 work/save-editor/node_modules/
 work/save-editor/dist/
 work/save-editor/local/
+
+/work/tools/site/reference_raw/

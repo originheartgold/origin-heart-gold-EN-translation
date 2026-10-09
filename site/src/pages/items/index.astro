@@ -1,30 +1,44 @@
 ---
+import Availability from '../../components/Availability.astro';
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { items, url } from '../../lib/data';
 const pockets = [...new Set(items.map((i) => i.pocket))];
-const kinds = (i: typeof items[number]) => [...new Set(i.sources.map((s) => s.kind))].join(', ');
+const kinds = (i: typeof items[number]) => [...new Set([
+	...i.sources.map((s) => s.kind), ...((i.wildHeld?.length ?? 0) ? ['held by wild Pokémon'] : []),
+])].join(', ');
+const hasSource = (i: typeof items[number]) => !!(i.sources.length || i.wildHeld?.length);
+const places = (i: typeof items[number]) => new Set([
+	...i.sources.map((s) => s.area ?? s.place),
+	...(i.wildHeld ?? []).flatMap((holder) => holder.locations.map((location) => location.area)),
+]).size;
 ---
-<StarlightPage frontmatter={{ title: 'Items', description: 'Every item in Origin HeartGold and where to get it: item balls, hidden items, gifts and shops.', tableOfContents: false }}>
-	<p>Item sources found in the game's maps, scripts and verified automatic rewards. Items with no source found are hidden by default. "Shop price" is only shown for items a shop sells.</p>
+<StarlightPage frontmatter={{ title: 'Items', description: 'Every item in Origin HeartGold and where to get it: wild Pokémon, item balls, hidden items, gifts and shops.', tableOfContents: false }}>
+	<p>Find where to buy, find or earn an item. Open one for its uses, quest requirements and acquisition routes. All {items.length} named items are listed, including those unavailable through normal play. Shop prices appear only for items sold in shops.</p>
 	<div class="table-filter" data-table="item-table">
 		<input type="search" placeholder="Search items…" aria-label="Search items" />
 		<select data-key="pocket" aria-label="Pocket">
 			<option value="">All pockets</option>
 			{pockets.map((p) => <option value={p}>{p}</option>)}
 		</select>
-		<label><input type="checkbox" data-key="found" data-show-value="no" /> Show items with no source</label>
+		<select data-key="availability" aria-label="Availability">
+			<option value="">All availability</option>
+			<option value="documented">Where to get it</option>
+			<option value="unavailable">NOT AVAILABLE IN GAME</option>
+			<option value="unknown">No confirmed source</option>
+		</select>
 		<span class="filter-count" aria-live="polite"></span>
 	</div>
 	<table id="item-table" class="sortable compact">
-		<thead><tr><th>Item</th><th>Pocket</th><th>Shop price</th><th>How to get it</th><th>Places</th></tr></thead>
+		<thead><tr><th>Item</th><th>Pocket</th><th>Shop price</th><th>How to get it</th><th>Places</th><th>Availability</th></tr></thead>
 		<tbody>
 			{items.map((i) => (
-				<tr data-pocket={i.pocket} data-found={i.sources.length ? 'yes' : 'no'} hidden={!i.sources.length}>
+				<tr data-pocket={i.pocket} data-availability={i.unavailableReason ? 'unavailable' : hasSource(i) ? 'documented' : 'unknown'}>
 					<td><a href={url(`/items/${i.slug}/`)}>{i.name}</a>{i.game && <span class="sr-only"> {i.game}</span>}</td>
 					<td>{i.pocket}</td>
 					<td>{i.price && i.sources.some((s) => s.kind === 'shop') ? `$${i.price.toLocaleString('en-US')}` : '—'}</td>
 					<td>{kinds(i) || '—'}</td>
-					<td>{new Set(i.sources.map((s) => s.place)).size || ''}</td>
+					<td>{places(i) || ''}</td>
+					<td>{i.unavailableReason ? <Availability reason={i.unavailableReason} /> : hasSource(i) ? 'Where to get it' : 'No confirmed source'}</td>
 				</tr>
 			))}
 		</tbody>
