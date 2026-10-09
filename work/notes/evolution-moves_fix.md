@@ -40,6 +40,14 @@ No level ever equals 0, so the evolution scene never offers a level-0 move.
   fields, learnset loader, index handling and return values; only the two duplicated "end of list" exits the
   compiler emitted are shared, which makes room for the new instructions.
 - The evolution scene's call at `0x02074BD4` goes to `TryLearnOnEvolution` (`F7FB FE4C` -> `F7FB FE94`).
+- A move is offered at most once per evolution (round 2, after review; user: "Yes, fix this"). With the flag
+  set, an entry of the new level whose move is also one of the level-0 entries (which lead the sorted list and
+  were all offered before it) is skipped silently (`TryLearn_Level`, `0x02070904`, in the 0x1C bytes the first
+  version left free; the routine now fills its 0xB4 bytes exactly). Three species have such a repeat above
+  level 1: Toucannon (Beak Blast at 0 and 28, its evolution level), Poliwrath and Flygon (at 60); most species
+  also repeat their evolution move at level 1, which matters only for an evolution at Lv1. Without the check, a
+  Pokémon with four moves that declined the evolution move was asked for it again by the new level's entry.
+  With the flag 0 (level-up, day care) the new path goes straight to the old 'match', so they are unchanged.
 
 Because the list is sorted, one forward pass offers the level-0 moves first and then the moves of the new
 level, each through the scene's own flow: "learned", "already knows" (skipped silently), or "wants to learn ...
@@ -107,9 +115,25 @@ Re-run by the reviewer on fresh builds (DeSmuME unless noted; Chinese ROM / cont
 | Trumbeak Lv27, Tackle -> Toucannon (Beak Blast at level 0 and at 28) | Beak Blast (Lv28 entry) | same | Beak Blast once (level 0); the Lv28 entry returns `0xFFFE`, skipped silently |
 | Trumbeak Lv27, four moves, forget Tackle | - | - | Beak Blast offered once, learned; Lv28 entry `0xFFFE` |
 
-Known quirk: when the evolution move is also a move of the new level (Toucannon: Beak Blast at 0 and 28, its
-evolution level; also most species list their evolution move at level 1 too, which matters only for an evolution at Lv1, and Poliwrath and Flygon have it at Lv60),
-the Pokémon knows four moves and the player declines it, the scene asks a second time for the same move (the
-level-28 entry): "Toucannon did not learn the move Beak Blast." then "Toucannon wants to learn the move Beak
-Blast." Declining again ends it. The Chinese ROM asks once (only the Lv28 entry). Left as is; a question for the
-user.
+Known quirk (round 1): when the evolution move is also a move of the new level (Toucannon: Beak Blast at 0 and
+28, its evolution level; also most species list their evolution move at level 1 too, which matters only for an
+evolution at Lv1, and Poliwrath and Flygon have it at Lv60), the Pokémon knows four moves and the player declines
+it, the scene asked a second time for the same move (the level-28 entry). The Chinese ROM asks once (only the
+Lv28 entry). **Fixed in round 2** (see "Fix" and "Round 2" below).
+
+## Round 2 (2026-10-09): each move offered once per evolution
+
+Change: `TryLearn_Level` (see "Fix"), D-2277. Re-run on a fresh build (DeSmuME unless noted):
+
+| Case | Chinese ROM | Control | Build |
+|---|---|---|---|
+| Scenario `evolution`, the seven round-1 cases | as round 1 | as round 1 | as round 1 (Air Slash, Air Slash in Tackle's slot, Air Slash + Scary Face, Bite, Cross Poison, Thunder Punch; no Air Slash on the plain level-up) |
+| Trumbeak Lv27, Tackle -> Toucannon | Beak Blast (its Lv28 entry), offered once | same | Beak Blast (its level-0 entry), offered once; the Lv28 repeat is skipped without a call |
+| Trumbeak Lv27, four moves, B: give up Beak Blast | asked once ('0xFFFF'), "did not learn", moves unchanged | same | asked once, "did not learn", moves unchanged (round 1 asked twice) |
+| Chinchou Lv26 knowing Tackle, Stockpile -> Lanturn | unchanged | unchanged | Stockpile `0xFFFE` (silent), Swallow, Spit Up |
+| Golbat Lv29 (friendship 255, one EXP short of Lv30) beats a wild Magikarp Lv2: evolution after the battle -> Crobat | Tackle | - | Tackle, Cross Poison |
+| melonDS 1.1: the save's lead turned into Trumbeak Lv27 with four moves in RAM, Rare Candy, give up Beak Blast (screens checked after every press) | asked once, did not learn | - | asked once, did not learn; no ARM9 exception |
+
+The scenario judge now also requires that no move is offered twice in one evolution and has the three new
+cases (`toucannon`, `toucannon_decline`, `lanturn`). Judge: Chinese `original`, control `original`, build
+`fixed`. `check.py --full` passes (nontext SHA-1 recorded again).

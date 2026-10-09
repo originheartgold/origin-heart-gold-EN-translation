@@ -1,4 +1,4 @@
-; evolution-moves - Evolution: an evolved Pokemon is offered its evolution moves (learnset level 0). D-2276.
+; evolution-moves - Evolution: an evolved Pokemon is offered its evolution moves (learnset level 0). D-2276, D-2277.
 ; Why and what: fix.toml next to this file; overview work/patches/FIXES.md; work/notes/evolution-moves_fix.md.
 ; The hack finding this answers: D-1602 (work/notes/evolution_moves_investigation.md).
 ;
@@ -14,9 +14,12 @@
 ; also matches when the routine was entered at TryLearnOnEvolution, which only the evolution scene calls.
 ; The flag rides in r3, which the routine already pushes ({r3-r7, lr}); it is read back from the stack.
 ; One forward pass over the sorted list offers the level-0 moves first, then the moves of the new level,
-; each through the scene's own learn / 'forget a move?' flow. The other three callers keep 0x02070870, which
-; now starts with 'mov r3, #0': the same entries as before match there. The rewrite also shares the two
-; 'end of list' exits the hack's compiler duplicated; nothing else changes (heap, calls, index, results).
+; each through the scene's own learn / 'forget a move?' flow. On evolution a move of the new level that is
+; also a level-0 entry (Toucannon: Beak Blast at 0 and 28) was offered already and is skipped, so a move the
+; player declined is not asked for twice; level-up and the day care never take that path. The other three
+; callers keep 0x02070870, which now starts with 'mov r3, #0': the same entries as before match there.
+; The rewrite also shares the two 'end of list' exits the hack's compiler duplicated; nothing else changes
+; (heap, calls, index, results).
 
 .nds
 .thumb
@@ -163,25 +166,25 @@ TryLearn_Body:
     add     r2, r4, #0
     bl      LoadLevelUpLearnset
     ldr     r2, =LEARNSET_END
-@@entry:
+TryLearn_Entry:
     ldr     r0, [r5]
     lsl     r0, r0, #2              ; r0 = index * 4: the entry (level, move)
     ldrh    r1, [r4, r0]            ; r1 = its level
     cmp     r1, r2
-    beq     @@done                  ; end of the list: result 0
+    beq     TryLearn_Done                  ; end of the list: result 0
+    ldr     r3, [sp, #0x10]         ; r3 = the level-0 flag
     cmp     r1, r6
-    beq     @@match                 ; the Pokemon's level (as before)
+    beq     TryLearn_Level                 ; the Pokemon's level (as before; on evolution: no repeat, below)
     cmp     r1, #0
-    bne     @@next
-    ldr     r3, [sp, #0x10]
+    bne     TryLearn_Next
     cmp     r3, #0
-    bne     @@match                 ; level 0, called by the evolution scene (new)
-@@next:
+    bne     TryLearn_Match                 ; level 0, called by the evolution scene (new)
+TryLearn_Next:
     ldr     r0, [r5]
     add     r0, r0, #1
     str     r0, [r5]
-    b       @@entry
-@@match:
+    b       TryLearn_Entry
+TryLearn_Match:
     add     r0, r4, r0
     ldrh    r1, [r0, #2]            ; r1 = the move
     ldr     r0, [sp]
@@ -192,7 +195,7 @@ TryLearn_Body:
     add     r0, r7, #0
     bl      MonTryLearnMove         ; (mon, move)
     str     r0, [sp, #8]
-@@done:
+TryLearn_Done:
     add     r0, r4, #0
     bl      Heap_Free
     ldr     r0, [sp, #8]
@@ -201,6 +204,22 @@ TryLearn_Body:
 TryLearnOnEvolution:
     mov     r3, #1                  ; evolution scene: level-0 entries match too
     b       TryLearn_Body
+TryLearn_Level:                            ; an entry of the Pokemon's level; r0 = index * 4
+    cmp     r3, #0
+    beq     TryLearn_Match                 ; level-up, day care: offered, exactly as before
+    add     r1, r4, r0
+    ldrh    r1, [r1, #2]            ; r1 = its move
+    add     r3, r4, #0              ; r3 = the first entry: the level-0 entries lead the sorted list
+TryLearn_EvoMove:
+    ldrh    r2, [r3]
+    cmp     r2, #0
+    bne     TryLearn_Match                 ; past the level-0 entries: not an evolution move, offered
+    ldrh    r2, [r3, #2]
+    add     r3, #4
+    cmp     r2, r1
+    bne     TryLearn_EvoMove
+    ldr     r2, =LEARNSET_END       ; an evolution move, offered already (learned, known or declined):
+    b       TryLearn_Next                  ; this level's repeat of it is skipped
 .pool
     .fill   TryLearn_End - ., 0     ; the rest of the old routine: unused
 .endarea

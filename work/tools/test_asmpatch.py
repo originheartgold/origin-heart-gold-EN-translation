@@ -72,7 +72,7 @@ GOLDEN = {
         "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
     },
     "evolution-moves": {
-        "arm9": "ff97b882679320a8dc52f510ad1b20327eea32d3",
+        "arm9": "a6b115c26c853db96fc0f85bf0d9cdfdd56737e6",
         "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
     },
     "antipiracy": {
@@ -86,7 +86,7 @@ GOLDEN = {
         "y9": "25d4a33a740ce2bb960ed27a8afa1a0d3b56208f"
     },
     "all": {
-        "arm9": "0a7dd1fc1fd5865b03fb0f6316e60e2d1193c184",
+        "arm9": "8364fd5897124c272980922ff864e3db94b14c8e",
         "overlay1": "e47febed127e898212e32db2d91b577e7ff6106c",
         "overlay16": "87cd982681b4164781e92a68994d6190c54d7a35",
         "overlay17": "5015627c82275c7836897b67dfec73c662015635",
@@ -636,17 +636,20 @@ class RealFixes(unittest.TestCase):
 
     def test_evolution_moves_bytes(self):
         # the routine 0x02070870-0x02070923 rewritten (old entry 'mov r3, #0', TryLearnOnEvolution at 0x02070900
-        # 'mov r3, #1', literal 0xFFFF, zero fill) and the evolution scene's bl at 0x02074BD4 -> 0x02070900;
+        # 'mov r3, #1', the repeat check, literal 0xFFFF) and the evolution scene's bl at 0x02074BD4 -> 0x02070900;
         # nothing else in arm9 changes
         rom, _ = self.assembled(["evolution-moves"])
         old, new = self.hc.RomView(self.cn).get("arm9"), self.hc.RomView(rom).get("arm9")
         hw = ("2300 B5F8 B084 1C07 1C0D 2000 21A8 9200 9002 F7AA FD13 1C04 1C38 2105 2200 F7FC FFDB 0400 0C00 9001 "
-              "1C38 2170 2200 F7FC FFD3 9003 1C38 21A1 2200 F7FC FFCD 0600 0E06 9801 9903 1C22 F000 FCBE 4A11 6828 "
-              "0080 5A21 4291 D015 42B1 D008 2900 D102 9B04 2B00 D103 6828 1C40 6028 E7EF 1820 8841 9800 8001 6828 "
-              "1C40 6028 1C38 F7FF FEE3 9002 1C20 F7AA FD21 9802 B004 BDF8 2301 E7B6").split()
+              "1C38 2170 2200 F7FC FFD3 9003 1C38 21A1 2200 F7FC FFCD 0600 0E06 9801 9903 1C22 F000 FCBE 4A18 6828 "
+              "0080 5A21 4291 D015 9B04 42B1 D01A 2900 D101 2B00 D103 6828 1C40 6028 E7EF 1820 8841 9800 8001 6828 "
+              "1C40 6028 1C38 F7FF FEE3 9002 1C20 F7AA FD21 9802 B004 BDF8 2301 E7B6 "
+              # TryLearn_Level (0x02070904): on evolution, skip a level-N entry whose move is a level-0 entry
+              "2B00 D0EA 1821 8849 1C23 881A 2A00 D1E4 885A 3304 428A D1F8 4A00 E7DA").split()
         body = b"".join(struct.pack("<H", int(h, 16)) for h in hw) + struct.pack("<I", 0xFFFF)
         want = bytearray(old)
-        want[0x70870:0x70924] = body + bytes(0xB4 - len(body))
+        self.assertEqual(len(body), 0xB4)
+        want[0x70870:0x70924] = body
         want[0x74BD4:0x74BD8] = struct.pack("<2H", 0xF7FB, 0xFE94)
         self.assertEqual(bytes(new), bytes(want))
         self.assertEqual(struct.unpack_from("<2H", old, 0x74BD4), (0xF7FB, 0xFE4C))   # was bl 0x02070870

@@ -301,6 +301,8 @@ class Judges(unittest.TestCase):
                 if name == "charizard_full":
                     after = [403, 45, 52, 10] if fixed else list(moves)
                     calls = [{"r0": 0xFFFF, "move": 403}] if fixed else []
+                if name in F.EVOLUTION_DECLINE:
+                    after, calls = list(moves), [{"r0": 0xFFFF, "move": 690}]
                 calls += [] if target == F.EVOLUTION_CASES[name][0] else [{"r0": 0, "move": 0}]
                 cases[name] = {"after": {"species": target, "moves": (after + [0, 0, 0, 0])[:4],
                                          "checksum_ok": True}, "evo_calls": calls}
@@ -318,6 +320,10 @@ class Judges(unittest.TestCase):
         # four moves: Air Slash must replace Tackle through the forget-a-move flow
         bad = obs(True)
         bad["cases"]["charizard_full"]["evo_calls"] = [{"r0": 0, "move": 0}]
+        self.assertEqual(F.judge_evolution("evolution", bad)[0], "unclear")
+        # the declined evolution move asked for a second time (by the new level's entry): neither
+        bad = obs(True)
+        bad["cases"]["toucannon_decline"]["evo_calls"] = [{"r0": 0xFFFF, "move": 690}] * 2 + [{"r0": 0, "move": 0}]
         self.assertEqual(F.judge_evolution("evolution", bad)[0], "unclear")
         self.assertEqual(F.COVERAGE["evolution-moves"], ("evolution",))
 

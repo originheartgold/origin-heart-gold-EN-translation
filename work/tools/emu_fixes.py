@@ -139,8 +139,14 @@ EVOLUTION_CASES = {
     "crobat": (42, 29, (TACKLE, 0, 0, 0), None, 255, 169, (440,), ()),                # Cross Poison
     "raichu_stone": (25, 20, (TACKLE, 0, 0, 0), THUNDER_STONE_ITEM, None, 26, (9,), ()),   # Thunder Punch
     "charizard_levelup": (6, 40, (TACKLE, 0, 0, 0), None, None, 6, (), ()),           # no evolution: no Air Slash
+    # Beak Blast (690) is Toucannon's level-0 move and its Lv28 move, the evolution level: offered once in both
+    "toucannon": (732, 27, (TACKLE, 0, 0, 0), None, None, 733, (), (690,)),
+    "toucannon_decline": (732, 27, (TACKLE, GROWL, EMBER, SCRATCH), None, None, 733, (), ()),   # B: give up, once
+    # three level-0 moves (Stockpile 254, Swallow 256, Spit Up 255); Stockpile known already: 0xFFFE, silent
+    "lanturn": (170, 26, (TACKLE, 254, 0, 0), None, None, 171, (256, 255), ()),
 }
 EVOLUTION_LEVELUP_ONLY_FORBIDDEN = 403      # charizard_levelup must not be offered Air Slash on a plain level-up
+EVOLUTION_DECLINE = {"toucannon_decline"}   # these cases answer 'Make it forget another move?' with B (give up)
 # antipiracy (antipiracy.listing): the six DS Protect entry points in overlay 114 and their genuine values
 ANTIPIRACY_ENTRIES = {0x02263A64: 0, 0x02263B4C: 1, 0x02263C34: 0, 0x02263D1C: 1, 0x02263E04: 0, 0x02263ECC: 1}
 def _fix_expect_bytes(fix_id, region_id):
@@ -543,9 +549,15 @@ def observe_evolution(h):
         h.touch(*E.BAG_SLOTS[0], frames=12, after=60)
         h.touch(*E.BAG_USE, frames=12, after=60)
         h.touch(*E.PARTY_SLOTS[slot], frames=12, after=120)
-        presses = 0
+        presses, offers = 0, 0
         evolves = EVOLUTION_CASES[name][5] != species
         while presses < 60:
+            full = sum(1 for site, r0, _ in log if site == "evo" and r0 == 0xFFFF)
+            if name in EVOLUTION_DECLINE and full > offers:
+                offers = full              # 'wants to learn', 'already knows four moves', then B on 'Make it
+                h.press("A", after=90)     # forget another move?' and A on 'Give up on <move>!'
+                h.press("A", after=90)
+                h.press("B", after=90)
             h.press("A", after=90)
             presses += 1
             if evolves and any(site == "evo" and r0 == 0 for site, r0, _ in log):
@@ -902,28 +914,37 @@ def judge_reflection(scenario, obs, ref=None):
 
 def judge_evolution(scenario, obs, ref=None):
     """Every case evolves (or, for the plain level-up, does not) with a valid checksum and learns its new-level
-    moves; 'fixed': every evolution move learned (charizard_full: offered with 0xFFFF and learned in Tackle's
-    place) and the plain level-up offers no evolution move; 'original': no evolution move offered at all."""
+    moves, and no move is offered twice in one evolution; 'fixed': every evolution move learned (charizard_full:
+    offered with 0xFFFF and learned in Tackle's place) and the plain level-up offers no evolution move;
+    'original': no evolution move offered at all. The Toucannon cases (evolution move = the new level's move) and
+    the plain level-up must come out the same on both."""
     cases, why, fixed, original = obs["cases"], {}, True, True
-    for name, (_, _, moves, _, _, target, evo_moves, level_moves) in EVOLUTION_CASES.items():
+    for name, (species, _, moves, _, _, target, evo_moves, level_moves) in EVOLUTION_CASES.items():
         c = cases[name]
         after, offered = c["after"], [e["move"] for e in c["evo_calls"] if e["r0"] != 0]
-        base = (after["species"] == target and after["checksum_ok"]
+        once = len(offered) == len(set(offered))
+        base = (after["species"] == target and after["checksum_ok"] and once
                 and all(mv in after["moves"] for mv in level_moves))
         learned = [mv for mv in evo_moves if mv in after["moves"]]
         why[name] = {"species": after["species"], "moves": after["moves"], "evo_calls": c["evo_calls"],
-                     "evolution_moves_learned": learned}
-        if not evo_moves:            # plain level-up: no evolution scene, never Air Slash
+                     "evolution_moves_learned": learned, "no_move_offered_twice": once}
+        if target == species:        # plain level-up: no evolution scene, never Air Slash
             ok = base and not c["evo_calls"] and EVOLUTION_LEVELUP_ONLY_FORBIDDEN not in after["moves"]
-            fixed &= ok
-            original &= ok
+        elif name in EVOLUTION_DECLINE:   # offered once with four moves, given up: the moves unchanged
+            ok = base and [e for e in c["evo_calls"] if e["r0"]] == [{"r0": 0xFFFF, "move": 690}] \
+                and after["moves"] == list(moves)
+        elif not evo_moves:          # the evolution move is the new level's move: learned once either way
+            ok = base
+        else:
+            got = base and learned == list(evo_moves) and all(mv in offered for mv in evo_moves)
+            if name == "charizard_full":
+                got = got and {"r0": 0xFFFF, "move": 403} in c["evo_calls"] and TACKLE not in after["moves"]
+            fixed &= got
+            original &= base and not learned and not any(mv in offered for mv in evo_moves) \
+                and (name != "charizard_full" or after["moves"] == list(moves))
             continue
-        got = base and learned == list(evo_moves) and all(mv in offered for mv in evo_moves)
-        if name == "charizard_full":
-            got = got and {"r0": 0xFFFF, "move": 403} in c["evo_calls"] and TACKLE not in after["moves"]
-        fixed &= got
-        original &= base and not learned and not any(mv in offered for mv in evo_moves) \
-            and (name != "charizard_full" or after["moves"] == list(moves))
+        fixed &= ok
+        original &= ok
     return _state(fixed, original, why)
 
 
