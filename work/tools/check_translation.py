@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 TOOLS = ROOT / "work/tools"
-MODULES = ("translation_context", "translation_package", "translation_eval")
+MODULES = ("translation_context", "translation_package")
 
 
 def main() -> int:

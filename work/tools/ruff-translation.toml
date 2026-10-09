@@ -1,5 +1,5 @@
-# ruff settings for the translation tooling (translation_context, translation_package, translation_eval, their
-# tests and check_translation.py), run by work/tools/check_translation.py with --config in work/.venv
+# ruff settings for the translation tooling (translation_context, translation_package, their tests
+# and check_translation.py), run by work/tools/check_translation.py with --config in work/.venv
 # (work/translation-tools/README.md). The repo-wide check (`ruff check` from the root, check.py) uses ruff.toml.
 target-version = "py314"
 line-length = 100
