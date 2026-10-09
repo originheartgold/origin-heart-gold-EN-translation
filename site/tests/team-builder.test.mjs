@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
-import { sanitizeTeam, parseTeamHash, teamHash, filterCatalog, acquisitionFamily } from '../src/lib/team-builder.mjs';
+import { sanitizeTeam, parseTeamHash, teamHash, filterCatalog, acquisitionFamily, availableTeamPokemon } from '../src/lib/team-builder.mjs';
 import { createPlannerData } from '../src/lib/team-builder-data.mjs';
 
 const read = name => JSON.parse(readFileSync(new URL(`../src/data/${name}.json`, import.meta.url), 'utf8'));
@@ -124,4 +124,20 @@ test('all dynamically loaded acquisition and evolution links resolve in the buil
     visit(JSON.parse(readFileSync(new URL(`team-builder/pokemon/${name}`, root), 'utf8')));
   }
   assert.ok(checked > 15000, `${checked} planner links checked`);
+});
+
+
+test('team choices and restored teams exclude unavailable, battle-only and unknown Pokémon', () => {
+  const catalog = [
+    { id: 1, availability: 'documented' },
+    { id: 2, availability: 'unavailable' },
+    { id: 3, availability: 'battle' },
+    { id: 4, availability: 'unknown' },
+    { id: 5, availability: 'documented' },
+  ];
+  const choices = availableTeamPokemon(catalog);
+  assert.deepEqual(choices.map(mon => mon.id), [1, 5]);
+  const selectable = new Set(choices.map(mon => mon.id));
+  assert.deepEqual(sanitizeTeam([2, 1, 3, 4, 5], selectable), [1, 5]);
+  assert.deepEqual(parseTeamHash('#team=2,1,3,4,5', selectable), [1, 5]);
 });

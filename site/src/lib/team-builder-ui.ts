@@ -1,4 +1,4 @@
-import { TEAM_SIZE, STORAGE_KEY, sanitizeTeam, parseTeamHash, teamHash, filterCatalog } from './team-builder.mjs';
+import { TEAM_SIZE, STORAGE_KEY, sanitizeTeam, parseTeamHash, teamHash, filterCatalog, availableTeamPokemon } from './team-builder.mjs';
 import { encounterChance } from './encounter-format.mjs';
 import { referenceArtwork } from '../../../work/save-editor/src/ui/artwork';
 import { formatTimeHints } from './time-hints.mjs';
@@ -17,7 +17,8 @@ export function setupTeamBuilder() {
   root.dataset.ready = 'true';
   const catalog: Mon[] = JSON.parse(document.querySelector('#tb-data')!.textContent!);
   const byId = new Map(catalog.map(mon => [mon.id, mon]));
-  const knownIds = new Set(byId.keys());
+  const availableCatalog: Mon[] = availableTeamPokemon(catalog);
+  const knownIds = new Set(availableCatalog.map(mon => mon.id));
   const get = <T extends HTMLElement = HTMLElement>(id: string) => root.querySelector<T>(`#tb-${id}`)!;
   const url = (path: string) => `${root.dataset.base!.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
   const link = (href: string | null, text: unknown) => href ? `<a href="${escape(url(href))}">${escape(text)}</a>` : escape(text);
@@ -41,7 +42,7 @@ export function setupTeamBuilder() {
   let active: number | null = team[0] ?? null;
   let page = 0;
   let request = 0;
-  const pageSize = 18;
+  const pageSize = 24;
   const cache = new Map<number, any>();
   const status = (text: string) => { get('status').textContent = text; };
 
@@ -76,9 +77,9 @@ export function setupTeamBuilder() {
   }
 
   function renderCatalog() {
-    const matches: Mon[] = filterCatalog(catalog, {
+    const matches: Mon[] = filterCatalog(availableCatalog, {
       query: get<HTMLInputElement>('search').value, type: get<HTMLSelectElement>('type').value,
-      region: get<HTMLSelectElement>('region').value, availability: get<HTMLSelectElement>('availability').value,
+      region: get<HTMLSelectElement>('region').value,
     });
     const pages = Math.max(1, Math.ceil(matches.length / pageSize));
     page = Math.min(page, pages - 1);
@@ -94,7 +95,7 @@ export function setupTeamBuilder() {
         ${mon.formId ? '<small>Standard-form artwork</small>' : ''}
         ${mon.availability !== 'documented' ? `<small class="tb-warning">${labels[mon.availability]}</small>` : ''}
       </button>`;
-    }).join('') : '<p class="tb-empty">No Pokémon match these filters. Try another name or include all Pokémon &amp; forms.</p>';
+    }).join('') : '<p class="tb-empty">No Pokémon match these filters. Try another name or reset the filters. Only Pokémon with a documented way to obtain them appear here.</p>';
     wireImages(get('catalog'));
   }
 
@@ -229,6 +230,7 @@ export function setupTeamBuilder() {
       get('slots').querySelector<HTMLButtonElement>('[data-select], [data-empty]')?.focus();
     } else if (button.dataset.add || button.dataset.select) {
       const id = Number(button.dataset.add || button.dataset.select);
+      if (!knownIds.has(id)) return;
       if (!team.includes(id)) {
         if (team.length === TEAM_SIZE) { status('Your team is full. Remove a Pokémon to add another.'); return; }
         team.push(id); status(`${byId.get(id)!.name} added. ${team.length} of ${TEAM_SIZE} slots filled.`);
@@ -239,10 +241,10 @@ export function setupTeamBuilder() {
       if (button.dataset.select) { showView('guide'); get('guide-heading').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' }); }
     }
   });
-  for (const id of ['search', 'type', 'region', 'availability']) get(id).addEventListener(id === 'search' ? 'input' : 'change', () => { page = 0; renderCatalog(); });
+  for (const id of ['search', 'type', 'region']) get(id).addEventListener(id === 'search' ? 'input' : 'change', () => { page = 0; renderCatalog(); });
   get('reset').addEventListener('click', () => {
     for (const id of ['search', 'type', 'region']) get<HTMLInputElement>('' + id).value = '';
-    get<HTMLSelectElement>('availability').value = 'documented'; page = 0; renderCatalog(); get('search').focus();
+    page = 0; renderCatalog(); get('search').focus();
   });
   get('previous').addEventListener('click', () => { page--; renderCatalog(); });
   get('next').addEventListener('click', () => { page++; renderCatalog(); });

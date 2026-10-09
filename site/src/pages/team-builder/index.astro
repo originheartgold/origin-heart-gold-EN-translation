@@ -31,11 +31,11 @@ const regions = [...new Set(species.map(mon => mon.region))];
       <div class="tb-workspace">
       <section aria-labelledby="tb-browse-heading" class="tb-browse">
         <div class="tb-section-heading"><h2 id="tb-browse-heading">Find your next teammate</h2><span id="tb-result-count" role="status"></span></div>
+        <p class="tb-catalog-note">Only Pokémon with a documented way to obtain them in Origin HeartGold.</p>
         <div class="tb-search-row"><label class="tb-search"><span class="sr-only">Search Pokémon</span><input type="search" id="tb-search" placeholder="Find a Pokémon…" autocomplete="off" /></label></div>
-        <details class="tb-filter-disclosure"><summary>Filters <span>Type, region &amp; availability</span></summary><div class="tb-filters">
+        <details class="tb-filter-disclosure"><summary>Filters <span>Type &amp; region</span></summary><div class="tb-filters">
           <label>Type<select id="tb-type"><option value="">All types</option>{types.map(type => <option>{type}</option>)}</select></label>
           <label>Pokédex<select id="tb-region"><option value="">All regions &amp; forms</option>{regions.map(region => <option>{region}</option>)}</select></label>
-          <label>Availability<select id="tb-availability"><option value="documented">Documented sources</option><option value="">All Pokémon &amp; forms</option><option value="unknown">No known source</option><option value="battle">Battle only</option><option value="unavailable">Unavailable</option></select></label>
           <button type="button" id="tb-reset">Reset filters</button>
         </div></details>
         <div id="tb-catalog" class="tb-catalog"></div>
