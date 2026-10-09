@@ -433,7 +433,7 @@ printer slots). It used to require as many idle loop passes with the catch-up on
 off, which depends on the input phase: in New Bark most passes end at lines 190-202,
 so a few instructions decide whether a frame is lost, and the 1-frame input delay
 turned 342 / 340 passes into 333 / 333. Fault `catch-up-idle-cost` (the slot loop
-runs 32 times instead of 8; 255 drowned every idle pass in interrupts) must fail it with 'idle: pass_end took'.
+runs 64 times instead of 8, about 24 ticks; 255 drowned every idle pass in interrupts) must fail it with 'idle: pass_end took'.
 
 ## Limits
 
