@@ -1,0 +1,107 @@
+; battle-message-error-marker - disassembly snapshot of battle-message-error-marker.asm: every edit, old -> new. Generated; do not edit.
+; Regenerate: python3 work/tools/asmpatch.py listing --write battle-message-error-marker   (check.py --full fails when it is stale)
+; Old: the Chinese ROM. New: battle-message-error-marker.asm assembled alone over it by armips v0.11.0.
+; Disassembly: capstone 5.0.9 (UAL syntax). '  ' unchanged context, '- ' old, '+ ' new;
+; addresses are RAM addresses, Thumb bytes are halfwords, ARM bytes words; data rows are what one
+; statement writes (u16 rows of a string or key row with their characters, '|' = 0xFFFF end).
+
+== overlay14+0x25324 (RAM 0x02225B04), 18 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
+  02225B04  00A0       lsls r0, r4, #2
+  02225B06  5838       ldr r0, [r7, r0]
+  02225B08  1C21       adds r1, r4, #0
+  02225B0A  0600       lsls r0, r0, #0x18
+  02225B0C  0E00       lsrs r0, r0, #0x18
+  02225B0E  F7FF FF33  bl #0x2225978  ; BattleMsg_BufferMonName1
+  02225B12  2800       cmp r0, #0
+  02225B14  D151       bne #0x2225bba  ; BattleMsg_TagDone
+
+== overlay14+0x25336 (RAM 0x02225B16), 34 bytes, thumb: battle-message-error-marker-tag0101
+  02225B12  2800       cmp r0, #0
+  02225B14  D151       bne #0x2225bba  ; BattleMsg_TagDone
+- 02225B16  493E       ldr r1, [pc, #0xf8]
+- 02225B18  1C28       adds r0, r5, #0
+- 02225B1A  F601 FA5F  bl #0x2026fdc  ; String_AddChar
+- 02225B1E  493D       ldr r1, [pc, #0xf4]
+- 02225B20  1C28       adds r0, r5, #0
+- 02225B22  F601 FA5B  bl #0x2026fdc  ; String_AddChar
+- 02225B26  493C       ldr r1, [pc, #0xf0]
+- 02225B28  1C28       adds r0, r5, #0
+- 02225B2A  F601 FA57  bl #0x2026fdc  ; String_AddChar
+- 02225B2E  493B       ldr r1, [pc, #0xec]
+- 02225B30  1C28       adds r0, r5, #0
+- 02225B32  F601 FA53  bl #0x2026fdc  ; String_AddChar
+- 02225B36  E040       b #0x2225bba  ; BattleMsg_TagDone
++ 02225B16  B410       push {r4}
++ 02225B18  A40C       adr r4, #0x30
++ 02225B1A  8821       ldrh r1, [r4]
++ 02225B1C  1C48       adds r0, r1, #1
++ 02225B1E  0C00       lsrs r0, r0, #0x10
++ 02225B20  D104       bne #0x2225b2c  ; @@end
++ 02225B22  1C28       adds r0, r5, #0
++ 02225B24  F601 FA5A  bl #0x2026fdc  ; String_AddChar
++ 02225B28  3402       adds r4, #2
++ 02225B2A  E7F6       b #0x2225b1a  ; @@next
++ 02225B2C  BC10       pop {r4}
++ 02225B2E  E044       b #0x2225bba  ; BattleMsg_TagDone
++ 02225B30  0000       movs r0, r0
++ 02225B32  0000       movs r0, r0
++ 02225B34  0000       movs r0, r0
++ 02225B36  0000       movs r0, r0
+  02225B38  00A0       lsls r0, r4, #2
+  02225B3A  5838       ldr r0, [r7, r0]
+
+== overlay14+0x25358 (RAM 0x02225B38), 18 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
+  02225B38  00A0       lsls r0, r4, #2
+  02225B3A  5838       ldr r0, [r7, r0]
+  02225B3C  1C21       adds r1, r4, #0
+  02225B3E  0600       lsls r0, r0, #0x18
+  02225B40  0E00       lsrs r0, r0, #0x18
+  02225B42  F7FF FF3F  bl #0x22259c4  ; BattleMsg_BufferMonName2
+  02225B46  2800       cmp r0, #0
+  02225B48  D137       bne #0x2225bba  ; BattleMsg_TagDone
+
+== overlay14+0x2536A (RAM 0x02225B4A), 34 bytes, thumb: battle-message-error-marker-tag0102
+  02225B46  2800       cmp r0, #0
+  02225B48  D137       bne #0x2225bba  ; BattleMsg_TagDone
+- 02225B4A  4931       ldr r1, [pc, #0xc4]
+- 02225B4C  1C28       adds r0, r5, #0
+- 02225B4E  F601 FA45  bl #0x2026fdc  ; String_AddChar
+- 02225B52  4930       ldr r1, [pc, #0xc0]
+- 02225B54  1C28       adds r0, r5, #0
+- 02225B56  F601 FA41  bl #0x2026fdc  ; String_AddChar
+- 02225B5A  492F       ldr r1, [pc, #0xbc]
+- 02225B5C  1C28       adds r0, r5, #0
+- 02225B5E  F601 FA3D  bl #0x2026fdc  ; String_AddChar
+- 02225B62  492E       ldr r1, [pc, #0xb8]
+- 02225B64  1C28       adds r0, r5, #0
+- 02225B66  F601 FA39  bl #0x2026fdc  ; String_AddChar
+- 02225B6A  E026       b #0x2225bba  ; BattleMsg_TagDone
++ 02225B4A  E7E4       b #0x2225b16  ; ErrorMarker
++ 02225B4C  01B9       lsls r1, r7, #6
++ 02225B4E  012F       lsls r7, r5, #4
++ 02225B50  0156       lsls r6, r2, #5
++ 02225B52  0156       lsls r6, r2, #5
++ 02225B54  0153       lsls r3, r2, #5
++ 02225B56  0156       lsls r6, r2, #5
++ 02225B58  01BA       lsls r2, r7, #6
++ 02225B5A  01DE       lsls r6, r3, #7
++ 02225B5C  FFFF       .hword 0xFFFF
++ 02225B5E  0000       movs r0, r0
++ 02225B60  0000       movs r0, r0
++ 02225B62  0000       movs r0, r0
++ 02225B64  0000       movs r0, r0
++ 02225B66  0000       movs r0, r0
++ 02225B68  0000       movs r0, r0
++ 02225B6A  0000       movs r0, r0
+  02225B6C  00A2       lsls r2, r4, #2
+  02225B6E  9802       ldr r0, [sp, #8]
+
+== overlay14+0x25430 (RAM 0x02225C10), 16 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
+  02225C10  01B9       lsls r1, r7, #6
+  02225C12  0000       movs r0, r0
+  02225C14  0CED       lsrs r5, r5, #0x13
+  02225C16  0000       movs r0, r0
+  02225C18  0BDD       lsrs r5, r3, #0xf
+  02225C1A  0000       movs r0, r0
+  02225C1C  01BA       lsls r2, r7, #6
+  02225C1E  0000       movs r0, r0

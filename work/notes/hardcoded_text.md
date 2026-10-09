@@ -37,6 +37,11 @@ How the chooser uses these strings:
 - `test/battle_test.narc`: UTF-8 descriptions from hg-engine's battle-test harness (for example 测试1: 降雨的正常触发). This is debug-only and not player-facing, so it is not in the pipeline.
 - `pbr/msg.narc`: Japanese kana (the PBR link messages from the JP base). It is not Chinese and is not shown in normal play.
 
+**Missed by the scan (found 2026-10-09):** the battle message formatter in overlay 14 appends the error marker
+(错误) one character at a time (`ldr r1, =char; bl String_AddChar`), so there is no string for the scan to see.
+It is translated by the code fix `battle-message-error-marker` (D-2276); a sweep of every `String_AddChar` call
+with a constant character found no other Chinese. See [battle-text-chinese_fix.md](battle-text-chinese_fix.md).
+
 ## Pipeline
 
 The pipeline has four parts:

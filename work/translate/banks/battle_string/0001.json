@@ -986,26 +986,26 @@
   {
    "id": 121,
    "zh": "野生的{VAR:0102:0,0}的{NEWLINE}命中率巨幅提高了！",
-   "en": "The wild {VAR:0102:0,0}’s accuracy{NEWLINE}rose drastically!",
+   "en": "The wild {VAR:0102:0,0}’s{NEWLINE}accuracy rose drastically!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Wrapped so the line still fits when the hack's error marker '(Error) ' (D-2276, D-2277) prints before the Pokémon's name: Nature Power and the per-turn infatuation message reach it."
   },
   {
    "id": 122,
    "zh": "对手的{VAR:0102:0,0}的{NEWLINE}命中率巨幅提高了！",
-   "en": "The foe’s {VAR:0102:0,0}’s accuracy{NEWLINE}rose drastically!",
+   "en": "The foe’s {VAR:0102:0,0}’s{NEWLINE}accuracy rose drastically!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Wrapped so the line still fits when the hack's error marker '(Error) ' (D-2276, D-2277) prints before the Pokémon's name: Nature Power and the per-turn infatuation message reach it."
   },
   {
    "id": 123,
    "zh": "{VAR:0100:10,0}的{VAR:0102:0,0}的{NEWLINE}命中率巨幅提高了！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}’s accuracy{NEWLINE}rose drastically!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}’s{NEWLINE}accuracy rose drastically!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Wrapped so the line still fits when the hack's error marker '(Error) ' (D-2276, D-2277) prints before the Pokémon's name: Nature Power and the per-turn infatuation message reach it."
   },
   {
    "id": 124,
@@ -3750,26 +3750,26 @@
   {
    "id": 453,
    "zh": "{VAR:0102:1,0}让{NEWLINE}野生的{VAR:0102:0,0}着迷了！",
-   "en": "The wild {VAR:0102:0,0} fell in love with{NEWLINE}{VAR:0102:1,0}!",
+   "en": "The wild {VAR:0102:0,0}{NEWLINE}fell in love with {VAR:0102:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Wrapped so the line still fits when the hack's error marker '(Error) ' (D-2276, D-2277) prints before the Pokémon's name: Nature Power and the per-turn infatuation message reach it."
   },
   {
    "id": 454,
    "zh": "{VAR:0102:1,0}让{NEWLINE}对手的{VAR:0102:0,0}着迷了！",
-   "en": "The foe’s {VAR:0102:0,0} fell in love with{NEWLINE}{VAR:0102:1,0}!",
+   "en": "The foe’s {VAR:0102:0,0}{NEWLINE}fell in love with {VAR:0102:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Wrapped so the line still fits when the hack's error marker '(Error) ' (D-2276, D-2277) prints before the Pokémon's name: Nature Power and the per-turn infatuation message reach it."
   },
   {
    "id": 455,
    "zh": "{VAR:0102:1,0}让{NEWLINE}{VAR:0100:10,0}的{VAR:0102:0,0}着迷了！",
-   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0} fell in love{NEWLINE}with {VAR:0102:1,0}!",
+   "en": "{VAR:0100:10,0}’s {VAR:0102:0,0}{NEWLINE}fell in love with {VAR:0102:1,0}!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Wrapped so the line still fits when the hack's error marker '(Error) ' (D-2276, D-2277) prints before the Pokémon's name: Nature Power and the per-turn infatuation message reach it."
   },
   {
    "id": 456,

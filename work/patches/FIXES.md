@@ -29,6 +29,7 @@ Stages (and the order of this list): font → graphics → hardcoded strings →
 | [`outfit-chooser-strings`](#outfit-chooser-strings) | strings | yes | – | Outfit chooser labels (hardcoded in overlay 58) |
 | [`pcbox-name-width`](#pcbox-name-width) | data | yes | – | PC box header: species-name window wide enough for 10 characters |
 | [`antipiracy`](#antipiracy) | code | yes | – | Real hardware: the six DS Protect entry points return the genuine-cart values |
+| [`battle-message-error-marker`](#battle-message-error-marker) | code | yes | – | Battle text: the hack's error marker before a Pokémon name prints '(Error) ' instead of Chinese (错误) |
 | [`bulbasaur-reflection-boundary`](#bulbasaur-reflection-boundary) | code | yes | – | Following Pokémon: Bulbasaur's reflection in water no longer reads a NULL graphics pointer (black screen over water) |
 | [`ivev-panel`](#ivev-panel) | code | yes | – | Summary IV/EV panel: the IV column clears the English stat labels |
 | [`msgload`](#msgload) | code | yes | – | Text banks are read line by line (fixes the summary and bag memory crashes) |
@@ -1049,6 +1050,210 @@ GENUINE_ALL_GOOD equ 1          ; "all checks pass":   1 on a genuine cart
     stub GENUINE_ANY_BAD
 .org 0x02263ECC                 ; +0xCCC: empty check list, all good (already always 1)
     stub GENUINE_ALL_GOOD
+
+.close
+```
+
+</details>
+
+## battle-message-error-marker
+
+**Battle text: the hack's error marker before a Pokémon name prints '(Error) ' instead of Chinese (错误)**
+
+- Kind: code
+- Enabled: yes
+- Requires: nothing
+- Decisions: D-2276
+- Source: `work/patches/battle-message-error-marker/fix.toml`
+
+**Why (the Chinese hack):**
+
+Players: some battle messages show two Chinese characters in parentheses, (错误) ('error'), in front of a
+Pokémon's name. Reported for rc6: 'the foe (2 Chinese characters) Pikachu's accuracy...' in a battle with
+Camper Ward's Nuzleaf on Route 24 (Nature Power), and 'an untranslated Chinese word after
+attract/infatuation' (the message printed each turn while the foe is infatuated). The untouched Chinese ROM
+prints the same marker in the same places, so it is the hack's, not a missing translation; it is not in any
+message bank, so the text translation could not reach it.
+
+Status: D-1337 says hack bugs are reported, not fixed. This fix is a user-approved exception to it
+(D-2276, 2026-10-09). It changes only the marker's text; why it appears and which name follows it are the
+hack's logic and stay as they are (D-2277, open).
+
+Technical: the battle message formatter in overlay 14 (0x02225A3C) expands a battle_string template control
+code by control code. For the Pokémon-name tags (0x0101, 0x0102) it calls a helper (0x02225978 / 0x022259C4)
+with the message's Pokémon reference; for a reference outside 1..25 (or one that resolves to nothing) the
+helper buffers reference 1 instead and returns 0, and the formatter then appends four hardcoded character
+codes to the output, '(' 错 误 ')', each with 'ldr r1, =char; add r0, r5, #0; bl String_AddChar'
+(0x02225B16 for tag 0x0101, 0x02225B4A for 0x0102, codes in the literal pool at 0x02225C10), before the
+name buffer. The ROM-wide hardcoded-text scan looks for 0xFFFF-terminated strings, so it could not see four
+separate immediates. A sweep of every String_AddChar call in arm9 and all overlays finds no other Chinese
+character (work/notes/battle-text-chinese_fix.md 'Sweep').
+
+**What (old → new):**
+
+Old: '(' 错 误 ')' appended before the name (four AddChar calls, 34 bytes per tag case).
+
+New: the tag 0x0101 case's 34 bytes become a loop that appends a 0xFFFF-terminated string with
+String_AddChar (r4, the tag's buffer index, saved and restored around it; r5, the output, unchanged) and
+ends with the same branch to the formatter's common tail (0x02225BBA); the 0x0102 case's first halfword
+branches to that loop and its remaining bytes hold the string '(Error) ' (8 characters; the space separates
+it from the name). Same conditions, same name after it, same tail: only the text differs. The literal pool
+stays (no longer read). Not changed: the helpers, the fallback to reference 1, the message ids, the variant
+(own / wild / foe) choice.
+
+**Evidence:**
+
+- D-2276: the user-approved exception to D-1337 for this fix; D-2277: the hack logic that makes the marker appear (open, not changed)
+- work/notes/battle-text-chinese_fix.md: the formatter, the two cases, the sweep, the emulator runs before and after
+- Runtime: emu_harness.py fixes --case battle-message-error-marker (scenario battle-error-marker: Linoone that knows only Nature Power against Camper Ward on Route 24; the characters the formatter's error path appends are hooked at String_AddChar). 2026-10-09, DeSmuME: the Chinese ROM and the --without build append ( 错 误 ) (the window shows '(错误)直冲熊的命中率巨幅提高了！' / '(错误)Linoone’s accuracy rose drastically!'), the full build '(Error) ' ('(Error) Linoone’s accuracy rose drastically!')
+- melonDS 1.1 (headless backend), 2026-10-09: a wild battle on Route 24 grass, Linoone with Nature Power: '(错误)Maximilian’s accuracy rose drastically!' on the --without build, '(Error) Maximilian’s accuracy rose drastically!' on the full build; the battle goes on, no ARM9 abort or undefined instruction on either (work/notes/battle-text-chinese_fix.md)
+
+**Touches:**
+
+- `overlay14+0x25336` (RAM 0x02225B16) `battle-message-error-marker-tag0101`: 34 bytes, was `493E 1C28 F601 FA5F … (17 halfwords)`
+- `overlay14+0x2536A` (RAM 0x02225B4A) `battle-message-error-marker-tag0102`: 34 bytes, was `4931 1C28 F601 FA45 … (17 halfwords)`
+
+**Disassembly snapshot:** [`battle-message-error-marker.listing`](battle-message-error-marker/battle-message-error-marker.listing) (every edit, old → new; `python3 work/tools/asmpatch.py listing --write battle-message-error-marker`)
+
+**Source** (`work/patches/battle-message-error-marker/battle-message-error-marker.asm`, armips; the new bytes):
+
+<details>
+<summary>battle-message-error-marker.asm</summary>
+
+```asm
+; battle-message-error-marker - the battle text's error marker (错误) reads "(Error) " in English. D-2276
+; (user-approved exception to D-1337; the logic that makes it appear is the hack's, D-2277).
+; Why and what: fix.toml next to this file; overview work/patches/FIXES.md;
+; work/notes/battle-text-chinese_fix.md.
+;
+; The hack's battle message formatter (overlay 14, BattleMsg_Format 0x02225A3C) expands a battle_string
+; template into the output String (r5) one control code at a time. For the Pokemon-name tags (0x0101 and
+; 0x0102, jump-table cases 1 and 2) it calls a helper with the message's Pokemon reference
+; (BattleMsg_BufferMonName1 0x02225978 / BattleMsg_BufferMonName2 0x022259C4). The helper accepts references
+; 1..25; for 0 or > 25, or one that resolves to nothing, it buffers reference 1 instead and returns 0. On a 0
+; the formatter appends four hardcoded characters to the output, '(' 错 误 ')' ("(error)") through
+; String_AddChar (arm9 0x02026FDC), one 'ldr r1, =char; add r0, r5, #0; bl String_AddChar' per character, the
+; codes in a shared literal pool (0x02225C10-0x02225C1C), and then goes on to the common tail (0x02225BBA),
+; which appends the name buffer. So the marker prints in front of a name, the name being what the fallback
+; buffered (observed: the player's first party Pokemon, also while another one is fighting). It is the only
+; Chinese the battle prints outside battle_string.narc (work/notes/battle-text-chinese_fix.md 'Sweep').
+;
+; The fix keeps the logic (when the marker prints, and which name follows it, are the hack's) and only
+; changes the text: case 1's 34 bytes become a loop that appends a 0xFFFF-terminated English string, and
+; case 2's first instruction branches to it; the English sits in the rest of case 2's bytes. r4 (the tag's
+; buffer index, read again at the tail) is saved around the loop; r5 (the output) is not changed. The loop
+; ends with the same branch to the tail as before. The literal pool is left as it is (no longer read).
+
+.nds
+.thumb
+.include "../include/guards.inc"
+.include "../include/charmap.inc"
+
+.definelabel BattleMsg_Format,          0x02225A3C   ; (fmt, params, String *out, template) - not changed
+.definelabel BattleMsg_BufferMonName1,  0x02225978   ; tag case 1 helper: 0 = bad reference
+.definelabel BattleMsg_BufferMonName2,  0x022259C4   ; tag case 2 helper: 0 = bad reference
+.definelabel BattleMsg_Case1,           0x02225B04   ; jump-table case 1 (tag 0x0101)
+.definelabel BattleMsg_Case1Error,      0x02225B16   ; four AddChar calls: ( 错 误 )   <- rewritten
+.definelabel BattleMsg_Case2,           0x02225B38   ; jump-table case 2 (tag 0x0102)
+.definelabel BattleMsg_Case2Error,      0x02225B4A   ; four AddChar calls: ( 错 误 )   <- rewritten
+.definelabel BattleMsg_TagDone,         0x02225BBA   ; common tail: append the tag's buffer (r4) to r5
+.definelabel BattleMsg_ErrorPool,       0x02225C10   ; literal pool: 0x1B9 0xCED 0xBDD 0x1BA
+.definelabel String_AddChar,            0x02026FDC   ; arm9: (String *, u16 char)
+
+.open "overlay14.bin", 0x022007E0
+
+; Read-only guards: the two cases up to their error branches and the literal pool.
+.org BattleMsg_Case1
+    expect16_at 0x00, 0x00A0    ; lsl   r0, r4, #2
+    expect16_at 0x02, 0x5838    ; ldr   r0, [r7, r0]            params[r4]: the Pokemon reference
+    expect16_at 0x04, 0x1C21    ; add   r1, r4, #0
+    expect16_at 0x06, 0x0600    ; lsl   r0, r0, #0x18
+    expect16_at 0x08, 0x0E00    ; lsr   r0, r0, #0x18
+    expect16_at 0x0A, 0xF7FF    ; bl    BattleMsg_BufferMonName1 (1/2)
+    expect16_at 0x0C, 0xFF33    ;                                (2/2)
+    expect16_at 0x0E, 0x2800    ; cmp   r0, #0
+    expect16_at 0x10, 0xD151    ; bne   BattleMsg_TagDone       name buffered: no marker
+.org BattleMsg_Case2
+    expect16_at 0x00, 0x00A0    ; lsl   r0, r4, #2
+    expect16_at 0x02, 0x5838    ; ldr   r0, [r7, r0]
+    expect16_at 0x04, 0x1C21    ; add   r1, r4, #0
+    expect16_at 0x06, 0x0600    ; lsl   r0, r0, #0x18
+    expect16_at 0x08, 0x0E00    ; lsr   r0, r0, #0x18
+    expect16_at 0x0A, 0xF7FF    ; bl    BattleMsg_BufferMonName2 (1/2)
+    expect16_at 0x0C, 0xFF3F    ;                                (2/2)
+    expect16_at 0x0E, 0x2800    ; cmp   r0, #0
+    expect16_at 0x10, 0xD137    ; bne   BattleMsg_TagDone
+.org BattleMsg_ErrorPool
+    expect32_at 0x0, 0x000001B9 ; (
+    expect32_at 0x4, 0x00000CED ; 错
+    expect32_at 0x8, 0x00000BDD ; 误
+    expect32_at 0xC, 0x000001BA ; )
+
+; Case 1's error path: a loop over ErrorMarker_Text.
+.org BattleMsg_Case1Error
+.area 0x22
+    expect16_at 0x00, 0x493E    ; ldr   r1, =0x1B9              (
+    expect16_at 0x02, 0x1C28    ; add   r0, r5, #0
+    expect16_at 0x04, 0xF601    ; bl    String_AddChar          (1/2)
+    expect16_at 0x06, 0xFA5F    ;                               (2/2)
+    expect16_at 0x08, 0x493D    ; ldr   r1, =0xCED              错
+    expect16_at 0x0A, 0x1C28
+    expect16_at 0x0C, 0xF601
+    expect16_at 0x0E, 0xFA5B
+    expect16_at 0x10, 0x493C    ; ldr   r1, =0xBDD              误
+    expect16_at 0x12, 0x1C28
+    expect16_at 0x14, 0xF601
+    expect16_at 0x16, 0xFA57
+    expect16_at 0x18, 0x493B    ; ldr   r1, =0x1BA              )
+    expect16_at 0x1A, 0x1C28
+    expect16_at 0x1C, 0xF601
+    expect16_at 0x1E, 0xFA53
+    expect16_at 0x20, 0xE040    ; b     BattleMsg_TagDone
+ErrorMarker:
+    push    r4                              ; r4 = the tag's buffer index, read again at BattleMsg_TagDone
+    add     r4, pc, ErrorMarker_Text - ((. + 4) & ~3)
+@@next:
+    ldrh    r1, [r4]
+    add     r0, r1, #1
+    lsr     r0, r0, #16                     ; 1 only for the 0xFFFF end
+    bne     @@end
+    add     r0, r5, #0                      ; the output String
+    bl      String_AddChar
+    add     r4, #2
+    b       @@next
+@@end:
+    pop     r4
+    b       BattleMsg_TagDone
+    .fill BattleMsg_Case1Error + 0x22 - ., 0x00   ; unused (never reached)
+.endarea
+
+; Case 2's error path: the same loop. The English follows the branch.
+.org BattleMsg_Case2Error
+.area 0x22
+    expect16_at 0x00, 0x4931    ; ldr   r1, =0x1B9              (
+    expect16_at 0x02, 0x1C28    ; add   r0, r5, #0
+    expect16_at 0x04, 0xF601    ; bl    String_AddChar          (1/2)
+    expect16_at 0x06, 0xFA45    ;                               (2/2)
+    expect16_at 0x08, 0x4930    ; ldr   r1, =0xCED              错
+    expect16_at 0x0A, 0x1C28
+    expect16_at 0x0C, 0xF601
+    expect16_at 0x0E, 0xFA41
+    expect16_at 0x10, 0x492F    ; ldr   r1, =0xBDD              误
+    expect16_at 0x12, 0x1C28
+    expect16_at 0x14, 0xF601
+    expect16_at 0x16, 0xFA3D
+    expect16_at 0x18, 0x492E    ; ldr   r1, =0x1BA              )
+    expect16_at 0x1A, 0x1C28
+    expect16_at 0x1C, 0xF601
+    expect16_at 0x1E, 0xFA39
+    expect16_at 0x20, 0xE026    ; b     BattleMsg_TagDone
+    b       ErrorMarker
+    .align 4, 0x00
+ErrorMarker_Text:
+    ; "(Error) ": 错误 = error; the space separates it from the name after it. 0xFFFF ends it.
+    .halfword CH_LPAREN, CH_E, CH_LC_R, CH_LC_R, CH_LC_O, CH_LC_R, CH_RPAREN, CH_SPACE, 0xFFFF
+    .fill BattleMsg_Case2Error + 0x22 - ., 0x00   ; unused
+.endarea
 
 .close
 ```

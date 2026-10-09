@@ -1106,6 +1106,7 @@ coverage list, the approved digests and the hooked addresses (checked against ea
 | msgload | msgload | memcheck.py's `summary` scenario (switch Pokémon on every summary page) | passed | allocation failure on heap 19 (6448 bytes), null write: the rc3 crash |
 | overworld-texture-frame-bounds | texture-bounds | The four `texture-bounds` cases, `--expect fixed` on the build, `--expect original` on the control | all 4 pass | all 4 reproduce the null load |
 | bulbasaur-reflection-boundary | reflection | `emu_reflection.py`, 2 scenes x Bulbasaur/Charmander/Onix (needs `market.sav` in `--sav-dir`), `--expect fixed` on the build, `--expect original` on the control (added 2026-10-08, run alone) | all 6 pass: no NULL lookup | all 6 pass: every Bulbasaur reflection call NULL, the others none |
+| battle-message-error-marker | battle-error-marker | Route 24, Linoone Lv50 with only Nature Power against Camper Ward (trainer 960): the characters String_AddChar appends from the formatter's error paths (0x02225B16-0x02225B6C), the battle_string read with them (1#120), a screenshot; needs the Chinese reference run to print its marker (added 2026-10-09) | "(Error) " (one loop call site) | ( 错 误 ) from the four original call sites |
 
 Result (observed 2026-10-08, branch hardening/emu, build of `develop` aab6efb plus this work, saves copied from
 `work/build/memcheck/`): `check.py --full --emu --emu-jobs 2` passes all 15 fix/scenario rows. The emu step took

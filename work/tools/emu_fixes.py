@@ -60,6 +60,7 @@ COVERAGE = {
     "msgload": ("msgload",),
     "overworld-texture-frame-bounds": ("texture-bounds",),
     "bulbasaur-reflection-boundary": ("reflection",),
+    "battle-message-error-marker": ("battle-error-marker",),
 }
 # fix id -> why no scenario of this command covers it (honest gaps; see work/notes/emu_harness.md)
 UNCOVERED = {
@@ -162,6 +163,18 @@ APPROVED = {   # taken from run work/build/hard4/run3 (2026-10-08), the build of
     "title-subtitle": {"digest": "ef249d7e92d33f907702649a2304ccbfb587e2ffdc317053aa1b2c8cfd10f1ad",
                        "approved_by": "user, 2026-10-08", "images": APPROVAL_IMAGES},
 }
+# battle-message-error-marker (battle-message-error-marker.listing): the battle formatter's error paths of the
+# Pokemon-name tags, original four AddChar calls (0x02225B16, 0x02225B4A), fixed one loop (bl at 0x02225B24).
+# A character appended by String_AddChar from a return address in this range is the marker. Nature Power used
+# on Route 24 against Camper Ward (trainer 960) reaches it (battle_string 1#120, D-2277).
+STRING_ADD_CHAR = 0x02026FDC
+ERROR_MARKER_PATHS = (0x02225B16, 0x02225B6C)
+ERROR_MARKER = {"fixed": (0x01B9, 0x012F, 0x0156, 0x0156, 0x0153, 0x0156, 0x01BA, 0x01DE),   # "(Error) "
+                "original": (0x01B9, 0x0CED, 0x0BDD, 0x01BA)}                                 # "(错误)"
+ERROR_MARKER_MAP = (28, 1326, 80)   # Route 24, on the path south of Nugget Bridge
+ERROR_MARKER_TRAINER = 960          # Camper Ward: Nuzleaf (Quick Claw), Luvdisc
+ERROR_MARKER_LEAD = (264, 50, 267)  # Linoone Lv50 that knows only Nature Power
+NARC_BATTLE_STRING = 277
 TITLE_FRAME = 2400                  # frames after power-on (intro movie); START then shows the title screen
 
 
@@ -538,6 +551,44 @@ def observe_battle(h):
     return {"fight": shot}
 
 
+def observe_battle_error_marker(h):
+    """Linoone (Nature Power only) against Camper Ward on Route 24: the characters the battle formatter's error
+    path appends (String_AddChar called from ERROR_MARKER_PATHS), the battle_string ids read around them and a
+    screenshot of the message window a little after the marker was written. Up to four turns (the foe's Fake
+    Out can make Linoone flinch on the first)."""
+    import emu_guide0107 as G
+    import emu_verify as V
+    species, level, move = ERROR_MARKER_LEAD
+    G.lead(h, species, level=level, moves=[move, 0, 0, 0], pp=[20, 0, 0, 0])
+    ml = V.MsgLog(h)
+    rows, shot = [], {}
+
+    def add(m):
+        lr = m.reg.lr & ~1
+        if ERROR_MARKER_PATHS[0] <= lr < ERROR_MARKER_PATHS[1]:
+            rows.append({"code": m.reg.r1 & 0xFFFF, "lr": lr, "frame": m.frame})
+
+    def later(m):
+        if rows and "path" not in shot and m.frame >= rows[0]["frame"] + 70:
+            shot["path"] = str(m.screenshot("battle_error_marker"))
+    h.on_exec(STRING_ADD_CHAR, add)
+    h.on_frame(later)
+    h.trainer_battle(ERROR_MARKER_TRAINER)
+    turns = []
+    for _ in range(4):
+        turns.append(h.battle_turn(0))
+        if rows or turns[-1] != "menu":
+            break
+    h.on_exec(STRING_ADD_CHAR, None)
+    first = [r for r in rows if rows and r["frame"] == rows[0]["frame"]]
+    reads = [[b, i, fr] for narc, b, i, fr in ml.rows if narc == NARC_BATTLE_STRING]
+    near = [x for x in reads if first and abs(x[2] - first[0]["frame"]) <= 5]
+    return {"turns": turns, "marker_codes": [r["code"] for r in first], "marker_text": decode(
+        struct.pack("<%dH" % len(first), *[r["code"] for r in first])) if first else "",
+            "marker_sites": sorted({f"{r['lr']:#010x}" for r in first}), "marker_count": len(rows),
+            "battle_strings_near": near, "screenshot": shot.get("path")}
+
+
 SCENARIOS = {
     # name: (save file or None for a blank battery, start map or None, observe, needs the Chinese reference run)
     "naming": ("full_bag_6mons.sav", None, observe_naming, True),
@@ -548,6 +599,7 @@ SCENARIOS = {
     "font": ("full_bag_6mons.sav", None, observe_font, False),
     "textspeed": ("full_bag_6mons.sav", None, observe_textspeed, False),
     "battle": ("full_bag_6mons.sav", None, observe_battle, True),
+    "battle-error-marker": ("full_bag_6mons.sav", ERROR_MARKER_MAP, observe_battle_error_marker, True),
 }
 EXTERNAL = {"msgload", "texture-bounds", "reflection"}  # scenarios run by other tools (memcheck.py,
 #                                                         emu_texture_bounds.py, emu_reflection.py)
@@ -709,6 +761,21 @@ def judge_textspeed(scenario, obs, ref=None):
     return _state(n / f >= 2.0, n / f <= 1.25, why)
 
 
+def judge_battle_error_marker(scenario, obs, ref=None):
+    """'fixed': the marker appended is "(Error) "; 'original': it is the hack's ( 错 误 ). The Chinese reference run
+    must show the original marker (the path is reached the same way there), else nothing is proven."""
+    got = tuple(obs.get("marker_codes") or ())
+    why = {"marker_text": obs.get("marker_text"), "marker_codes": [f"{c:#06x}" for c in got],
+           "sites": obs.get("marker_sites"), "battle_strings_near": obs.get("battle_strings_near"),
+           "turns": obs.get("turns"), "screenshot": obs.get("screenshot")}
+    if ref is not None:
+        ref_codes = tuple(ref.get("marker_codes") or ())
+        why["reference_codes"] = [f"{c:#06x}" for c in ref_codes]
+        if ref_codes != ERROR_MARKER["original"]:
+            return "unclear", dict(why, error="the Chinese ROM did not print its marker on this path")
+    return _state(got == ERROR_MARKER["fixed"], got == ERROR_MARKER["original"], why)
+
+
 NAMING_SITES_BY_ID = {v[0]: v for v in NAMING_SITES.values()}
 JUDGES = {
     ("naming", "namelen"): judge_namelen,
@@ -728,6 +795,7 @@ JUDGES = {
     ("antipiracy", "antipiracy"): judge_antipiracy,
     ("font", "font-glyphs"): judge_font,
     ("textspeed", "text-speed"): judge_textspeed,
+    ("battle-error-marker", "battle-message-error-marker"): judge_battle_error_marker,
 }
 
 
