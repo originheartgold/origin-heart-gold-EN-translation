@@ -19,6 +19,7 @@ A user-approved exception to 'sourced, never generated' (D-1109).
 """
 evidence = [
   "work/notes/graphics_inventory.md: row 26 (battle_panel_labels.png; not seen in the emulator)",
+  "Runtime: emu_harness.py fixes --case gfx-battle-panel-labels (scenario battle-status: crop battle-panel-labels, battle INFO panel: the SWAP / EXIT key hints; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[graphics]]

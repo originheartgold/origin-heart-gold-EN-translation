@@ -2558,13 +2558,15 @@ def main(argv=None):
                                       "(build.py --without <fix>) (emu_fixes.py)")
     emu_fixes.add_arguments(fx, DATA)
     emu_fixes.add_child_arguments(sub.add_parser("fixes-child", help=argparse.SUPPRESS))
+    emu_fixes.add_approve_arguments(sub.add_parser("fixes-approve", help="record the user's approval of pending "
+                                                   "fix-scenario crops (emu_fixes_crops.json)"))
     a = ap.parse_args(argv)
     if a.emulator:
         os.environ["EMU_HARNESS_EMULATOR"] = a.emulator
     return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages, "suite": cmd_suite,
             "dexcapture": cmd_dexcapture,
             "texture-bounds": emu_texture_bounds.run, "reflection": emu_reflection.run, "hang": emu_hang.run,
-            "fixes": emu_fixes.run, "fixes-child": emu_fixes.cmd_child, "cleanup": cmd_cleanup}[a.cmd](a)
+            "fixes": emu_fixes.run, "fixes-child": emu_fixes.cmd_child, "fixes-approve": emu_fixes.cmd_approve, "cleanup": cmd_cleanup}[a.cmd](a)
 
 
 if __name__ == "__main__":

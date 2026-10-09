@@ -10,10 +10,12 @@ The proof for a fix is a pair of runs:
 
 A scenario that shows the fix on the fixed ROM but cannot tell it apart on the control proves nothing, so the
 control run is part of every check. Graphics scenarios compare a screen crop with the same crop on the
-untouched Chinese ROM (the 'reference' run): 'original' when it is identical, 'fixed' when it differs.
+untouched Chinese ROM (the 'reference' run): 'original' when it is identical, 'fixed' when it is the approved
+one (emu_fixes_crops.json), 'pending' when it differs but the user has not approved it yet (the run passes and
+the report lists it; record an approval with `emu_harness.py fixes-approve --from RUN --crops C,... --by WHO`).
 
     <venv>/bin/python work/tools/emu_harness.py fixes --rom FIXED.nds --controls DIR [--build-controls]
-        [--case all|<scenario or fix id>,...] [--out DIR] [--sav-dir DIR] [--jobs 3]
+        [--case all|<scenario or fix id>,...] [--out DIR] [--sav-dir DIR] [--jobs 3] [--approval-dir DIR]
 
 --controls DIR holds the control ROMs as no-<fix>.nds; --build-controls builds the missing ones there,
 --rebuild-controls all selected ones (build.py --no-patch --without <fix>[,<fixes that require it>]; about 7 s
@@ -60,24 +62,30 @@ COVERAGE = {
     "msgload": ("msgload",),
     "overworld-texture-frame-bounds": ("texture-bounds",),
     "bulbasaur-reflection-boundary": ("reflection",),
+    "gfx-bag-labels": ("bag",),
+    "gfx-linkcapture-bar": ("bag",),
+    "gfx-dex-header": ("dex",),
+    "gfx-dex-type-badges": ("dex",),
+    "gfx-trainer-card": ("card",),
+    "gfx-pokegear-calendar": ("pokegear",),
+    "gfx-yes-no-buttons": ("save",),
+    "gfx-summary-labels": ("summary-status",),
+    "gfx-battle-status-icons": ("battle-status",),
+    "gfx-weather-banners": ("battle-status",),
+    "gfx-battle-panel-labels": ("battle-status",),
+    "gfx-pokeathlon": ("pokeathlon",),
 }
 # fix id -> why no scenario of this command covers it (honest gaps; see work/notes/emu_harness.md)
 UNCOVERED = {
-    "gfx-bag-labels": "graphics; the bag's HM pocket and 1 SET/2 SET labels: no crop check yet",
-    "gfx-battle-panel-labels": "graphics; the in-battle info panel (needs a battle): no crop check yet",
-    "gfx-battle-result-labels": "graphics; link/facility battle result screen: not reachable by the harness",
-    "gfx-battle-status-icons": "graphics; needs a battle with a status condition: no crop check yet",
-    "gfx-dex-header": "graphics; the Pokédex header/buttons: the `dex` suite check diffs Pokédex panels against "
-                      "an approved baseline, not against a control build",
-    "gfx-dex-type-badges": "graphics; Pokédex type badges: as gfx-dex-header",
-    "gfx-jp-buttons": "graphics; the CANCEL/START buttons of rarely used screens: no crop check yet",
-    "gfx-linkcapture-bar": "graphics; the Chain Logger menu bar: no recipe reaches it",
-    "gfx-pokeathlon": "graphics; Pokéathlon screens: no recipe reaches them",
-    "gfx-pokegear-calendar": "graphics; Pokégear clock/calendar labels: no crop check yet",
-    "gfx-summary-labels": "graphics; summary condition labels/status icons: no crop check yet",
-    "gfx-trainer-card": "graphics; trainer card units and labels: no crop check yet",
-    "gfx-weather-banners": "graphics; needs a battle in weather: no crop check yet",
-    "gfx-yes-no-buttons": "graphics; the touch-screen YES/NO buttons: no crop check yet",
+    "gfx-battle-result-labels": "graphics; a/1/0/4 #5 (WIN / LOSE / DRAW) is shown only by the result display of link "
+                                "and facility battles: a wild or scripted trainer battle never opens a/1/0/4 (read "
+                                "watch on its path, 2026-10-09), and the harness has no link partner and no Battle "
+                                "Frontier recipe",
+    "gfx-jp-buttons": "graphics; a/1/1/3 #30 (CANCEL) is loaded only by three init routines of overlay 71 (main menu, "
+                      "ov71+0x6D90, +0x8534, +0xACD8) that none of the reachable main-menu flows ran (Continue, "
+                      "Mystery Gift: friend / wireless / WFC, Pokewalker without a boxed Pokemon, WFC settings; hooks, "
+                      "2026-10-09): they need a wireless partner; the START button (a/2/1/5 #16) is not the "
+                      "Pokeathlon's START (that one is the same on the Chinese ROM) and its screen was not found",
 }
 
 # --------------------------------------------------------------------------------------------- addresses
@@ -148,20 +156,34 @@ CROPS = {
     "type-icon-summary": (7, 201, 41, 215),      # summary skills page: the first move's type icon
     "type-icon-battle": (16, 247, 49, 261),      # battle FIGHT menu: the first move's type icon
     "title-subtitle": (96, 98, 250, 128),        # title screen under the 起源心金 logo: 'Origin HeartGold'
+    # added 2026-10-09 (step 1 of the suite upgrade); pending until the user approves them
+    "bag-hm": (30, 249, 56, 262),                # bag, TM pocket with HM01 first: the HM label of the first slot
+    "chain-logger-bar": (136, 366, 192, 384),    # Chain Logger (Key Items -> USE): the bar's (X) INFO plate (the scrolling
+    #                                              background shows between the plates, so one plate only)
+    "dex-header": (56, 214, 218, 246),           # Pokedex opened from the field: the JOHTO POKeDEX plate
+    "dex-type-badge": (150, 62, 188, 80),        # Pokedex entry of the first seen Pokemon: its type badge
+    "trainer-card-back": (186, 258, 212, 274),   # trainer card, back: the L unit of LINK BATTLES
+    "pokegear-weekday": (138, 42, 188, 58),      # Pokegear top screen: the weekday (clock pinned to a Friday)
+    "yes-no": (206, 279, 256, 332),              # field SAVE prompt: the touch-screen YES / NO buttons
+    "summary-status": (216, 48, 236, 59),              # summary of a poisoned Pokemon: the status icon
+    "battle-status": (152, 112, 186, 126),       # battle, poisoned lead: the status icon on the HP box
+    "weather-banner": (172, 304, 206, 318),      # battle in sun (wild Groudon, Drought): the banner on FIGHT
+    "battle-panel-labels": (186, 368, 254, 383),  # battle INFO panel: the SWAP / EXIT key hints
+    "pokeathlon-label": (80, 84, 176, 97),       # Pokeathlon event instructions (Hurdle Dash): POKeATHLON
 }
-# sha256 of each crop's RGB pixels (crop_digest) on the fixed build. Only the digests are in git: the crop
-# images are game graphics. The images the digests were taken from are kept locally for review.
-APPROVAL_IMAGES = "work/build/hard4/approve/ (in the poke-patches worktree): <crop>_build.png, <crop>_chinese.png"
-APPROVED = {   # taken from run work/build/hard4/run3 (2026-10-08), the build of develop aab6efb
-    "naming-tabs": {"digest": "037dab60bd0a6a0ac04d497fdd82463dd679ac22c72ba558c188d501f0e991b1",
-                    "approved_by": "user, 2026-10-08", "images": APPROVAL_IMAGES},
-    "type-icon-summary": {"digest": "dea47b53d48bb954194db1cc0b0c219395697b40a966ee4e43035809464aa85b",
-                          "approved_by": "user, 2026-10-08", "images": APPROVAL_IMAGES},
-    "type-icon-battle": {"digest": "cdd429d35e5f48a50c0a98fa4b68a55cd2a289675c582ffb1278364b8cdff89b",
-                         "approved_by": "user, 2026-10-08", "images": APPROVAL_IMAGES},
-    "title-subtitle": {"digest": "ef249d7e92d33f907702649a2304ccbfb587e2ffdc317053aa1b2c8cfd10f1ad",
-                       "approved_by": "user, 2026-10-08", "images": APPROVAL_IMAGES},
-}
+# The digests live in emu_fixes_crops.json: 'approved' (sha256 of each crop's RGB pixels on the fixed build, the
+# images looked at and approved by the user) and 'pending' (captured, not yet approved: judged 'pending' on the
+# fixed ROM and not failing the run). Only the digests are in git: the crop images are game graphics.
+CROP_DIGESTS = TOOLS / "emu_fixes_crops.json"
+
+
+def load_crop_digests(path=None):
+    return json.loads(Path(path or CROP_DIGESTS).read_text(encoding="utf-8"))
+
+
+_DIGESTS = load_crop_digests()
+APPROVED = _DIGESTS["approved"]
+PENDING = _DIGESTS["pending"]       # crop -> {fix, screen}
 TITLE_FRAME = 2400                  # frames after power-on (intro movie); START then shows the title screen
 
 
@@ -298,14 +320,23 @@ class NamingCalls:
         return {k: sorted(v) for k, v in out.items()}
 
 
-def screenshot(h, name, crops=()):
-    """Screenshot plus the digests (and saved images) of the given CROPS keys."""
+def screenshot(h, name, crops=(), hold=0):
+    """Screenshot plus the digests (and saved images) of the given CROPS keys. hold > 0: then step that many
+    frames one by one; a crop that changes meanwhile is listed in 'unstable' (an animation in the box: its digest
+    would depend on the frame, and the judge calls it unclear)."""
     path = h.screenshot(name)
     img = h.emu.screenshot()
     out = {"screenshot": str(path)}
     for key in crops:
         out.setdefault("crops", {})[key] = crop_digest(img, CROPS[key])
         img.convert("RGB").crop(CROPS[key]).save(h.out / f"{name}_{key}_crop.png")
+    if hold and crops:
+        unstable = set()
+        for _ in range(hold):
+            h.step(1)
+            later = h.emu.screenshot()
+            unstable |= {k for k in crops if crop_digest(later, CROPS[k]) != out["crops"][k]}
+        out["unstable"] = sorted(unstable)
     return out, img
 
 
@@ -537,6 +568,164 @@ def observe_battle(h):
     return {"fight": shot}
 
 
+# --------------------------------------------------------------------------------------------- graphics screens
+# (added 2026-10-09: one crop per graphics fix that had no scenario; the clock is pinned for these, see CLOCKS)
+HM01, CHAIN_LOGGER, GROUDON, DROUGHT = 420, 744, 383, 70
+HOLD = 30                           # frames a new crop must stay unchanged after its screenshot
+HP_BOX_ANCHOR_X = 200             # battle: a column through the player HP box's HP bar frame
+STATUS_POISON = 0x08                # party extension +0: u32 status (bit 3 = poison)
+CARD_FLIP = (128, 100)              # trainer card: touching the card flips it
+POKEATHLON_COURSE = 0               # var 0x8000 of the Pokeathlon Dome script (file 167): Speed Course
+POKEATHLON_CMD = ("Pokeathlon", 0, 0, 0x8000, 0x800C, 0x8001, 0x8002, 0x8003)   # as file 167 calls it
+
+
+def set_party_status(h, slot, status):
+    """Live RAM edit: the status condition (party extension +0, encrypted with the PID's stream) of a party
+    Pokemon. Battles and the summary read it from here."""
+    import emu_harness as E
+    a = h.array(E.ARR_PARTY) + 8 + 236 * slot
+    key = E._prng_stream(h.u32(a), 50)
+    plain = [w ^ k for w, k in zip(struct.unpack("<50H", h.read(a + 136, 100)), key)]
+    plain[0], plain[1] = status & 0xFFFF, status >> 16
+    h.write(a + 136, struct.pack("<50H", *[w ^ k for w, k in zip(plain, key)]))
+
+
+def hp_box_top(h, x=HP_BOX_ANCHOR_X, rows=(100, 135), frames=60):
+    """The player's HP box bobs (3 positions) while the command menu waits: step until it is at its highest
+    position, so the crop is taken at the same phase on every ROM. The anchor is the first dark pixel of
+    column x (the HP bar frame). Returns its y."""
+    def anchor():
+        img = h.emu.screenshot().convert("RGB")
+        return next((y for y in range(*rows) if sum(img.getpixel((x, y))) < 200), None)
+    seen = []
+    for _ in range(frames):
+        h.step(1)
+        seen.append(anchor())
+    top = min((y for y in seen if y is not None), default=None)
+    for _ in range(frames):
+        if anchor() == top:
+            break
+        h.step(1)
+    return anchor()
+
+
+def observe_bag(h):
+    """HM01 first in the TM pocket and the Chain Logger first in Key Items (RAM edits); the bag on the TM pocket
+    (HM label), then Key Items -> Chain Logger -> USE (the hack's logger screen and its bottom bar)."""
+    import emu_harness as E
+    h.bag_put_first(HM01, pocket="tm")
+    h.bag_put_first(CHAIN_LOGGER, pocket="key")
+    h.open_bag()
+    h.bag_pocket("tm")
+    h.step(60)
+    tm, _ = screenshot(h, "bag_tm", crops=("bag-hm",), hold=HOLD)
+    h.bag_pocket("key")
+    h.touch(*E.BAG_SLOTS[0], frames=12, after=30)
+    h.touch(*E.BAG_USE, frames=12, after=240)
+    h.step(240)
+    logger, _ = screenshot(h, "chain_logger", crops=("chain-logger-bar",), hold=HOLD)
+    return {"tm": tm, "logger": logger}
+
+
+def observe_dex(h):
+    """Field menu -> POKeDEX (the list page with its header plate), A -> the entry of the selected Pokemon
+    (full_bag_6mons.sav: Charmander, FIRE badge)."""
+    import emu_harness as E
+    h.touch(*E.FIELD_MENU["pokedex"], frames=12, after=300)
+    h.step(60)
+    lst, _ = screenshot(h, "dex_list", crops=("dex-header",), hold=HOLD)
+    h.press("A", after=200)
+    h.step(60)
+    entry, _ = screenshot(h, "dex_entry", crops=("dex-type-badge",), hold=HOLD)
+    return {"list": lst, "entry": entry}
+
+
+def observe_card(h):
+    """Field menu -> trainer card, touch the card to flip it: the back with the link battle W / L."""
+    import emu_harness as E
+    h.touch(*E.FIELD_MENU["card"], frames=12, after=300)
+    h.step(60)
+    front, _ = screenshot(h, "card_front")
+    h.touch(*CARD_FLIP, frames=10, after=200)
+    h.step(60)
+    back, _ = screenshot(h, "card_back", crops=("trainer-card-back",), hold=HOLD)
+    return {"front": front, "back": back}
+
+
+def observe_pokegear(h):
+    """Field menu -> POKeGEAR: the top screen's clock with the weekday (clock pinned: Friday 12:00)."""
+    import emu_harness as E
+    h.touch(*E.FIELD_MENU["pokegear"], frames=12, after=300)
+    h.step(60)
+    shot, _ = screenshot(h, "pokegear", crops=("pokegear-weekday",), hold=HOLD)
+    return {"gear": shot}
+
+
+def observe_save(h):
+    """Field menu -> SAVE: the prompt's touch-screen YES / NO buttons; B answers no (nothing is saved)."""
+    import emu_harness as E
+    h.touch(*E.FIELD_MENU["save"], frames=12, after=300)
+    h.step(30)
+    shot, _ = screenshot(h, "save_prompt", crops=("yes-no",), hold=HOLD)
+    h.press("B", after=120)
+    return {"prompt": shot}
+
+
+def observe_summary_status(h):
+    """Party Pokemon 1 poisoned (RAM), party -> its summary: the status icon on the summary."""
+    import emu_harness as E
+    set_party_status(h, 0, STATUS_POISON)
+    h.touch(*E.FIELD_MENU["pokemon"], frames=12, after=150)
+    h.touch(*E.PARTY_SLOTS[0], frames=12, after=60)
+    h.touch(*E.PARTY_SUMMARY, frames=12, after=150)
+    h.step(60)
+    shot, _ = screenshot(h, "summary_status", crops=("summary-status",), hold=HOLD)
+    return {"summary": shot}
+
+
+def observe_battle_status(h):
+    """Lead poisoned (RAM), scripted wild battle against Groudon Lv5 (Drought: sun from the first turn): the
+    command menu (PSN on the HP box, the SUN banner on FIGHT), then INFO (the panel's SWAP / EXIT hints)."""
+    import emu_harness as E
+    set_party_status(h, 0, STATUS_POISON)
+    wild = E.wild_battle(h, GROUDON, 5)
+    for a in wild["copies"]:        # Drought for certain (the hack's Groudon may roll another ability)
+        h.write(int(a, 16), E.encode_pokemon(h.read(int(a, 16), 136), ability=DROUGHT))
+    if not h.wait_screen("battle_menu", 2400):
+        return {"error": "the battle command menu never appeared"}
+    h.step(60)
+    anchor = hp_box_top(h)
+    # the HP box crop is phase-locked (no hold: the box moves again within a few frames); the banner's label is
+    # held (its sun icon spins, outside the box)
+    menu, _ = screenshot(h, "battle_status_menu", crops=("battle-status",))
+    menu["hp_box_anchor_y"] = anchor
+    banner, _ = screenshot(h, "battle_status_banner", crops=("weather-banner",), hold=HOLD)
+    h.touch(*E.BATTLE_BUTTONS["info"], frames=12, after=150)
+    h.step(60)
+    info, _ = screenshot(h, "battle_status_info", crops=("battle-panel-labels",), hold=HOLD)
+    return {"menu": menu, "banner": banner, "info": info}
+
+
+def observe_pokeathlon(h):
+    """The Pokeathlon Dome's own command (Speed Course, as script file 167 runs it): pick party Pokemon 1-3 on
+    the team screen, YES, then A through the opening until the first event's instruction screen (Hurdle Dash),
+    which waits for its START button."""
+    import emu_harness as E
+    h.run_script(program=E.script_bytes(("LockAll",), ("SetVar", 0x8000, POKEATHLON_COURSE), POKEATHLON_CMD,
+                                        ("ReleaseAll",), ("End",)), settle=600)
+    # team screen: A picks the Pokemon under the cursor, A drops it into the next free slot; the cursor then sits
+    # on the box arrows (DOWN, RIGHT x n: back to the n-th icon of the row)
+    keys = ["A", "A", "DOWN", "RIGHT", "RIGHT", "A", "A", "DOWN", "RIGHT", "RIGHT", "RIGHT", "A", "A", "A"]
+    for k in keys:
+        h.press(k, after=250)
+    h.step(200)
+    for _ in range(16):             # the announcer's lines; A does not touch the instruction screen's START
+        h.press("A", after=400)
+    h.step(60)
+    shot, _ = screenshot(h, "pokeathlon_instructions", crops=("pokeathlon-label",), hold=HOLD)
+    return {"instructions": shot}
+
+
 SCENARIOS = {
     # name: (save file or None for a blank battery, start map or None, observe, needs the Chinese reference run)
     "naming": ("full_bag_6mons.sav", None, observe_naming, True),
@@ -547,7 +736,20 @@ SCENARIOS = {
     "font": ("full_bag_6mons.sav", None, observe_font, False),
     "textspeed": ("full_bag_6mons.sav", None, observe_textspeed, False),
     "battle": ("full_bag_6mons.sav", None, observe_battle, True),
+    "bag": ("full_bag_6mons.sav", None, observe_bag, True),
+    "dex": ("full_bag_6mons.sav", None, observe_dex, True),
+    "card": ("full_bag_6mons.sav", None, observe_card, True),
+    "pokegear": ("full_bag_6mons.sav", None, observe_pokegear, True),
+    "save": ("full_bag_6mons.sav", None, observe_save, True),
+    "summary-status": ("full_bag_6mons.sav", None, observe_summary_status, True),
+    "battle-status": ("full_bag_6mons.sav", None, observe_battle_status, True),
+    "pokeathlon": ("full_bag_6mons.sav", None, observe_pokeathlon, True),
 }
+# scenarios that run with the clock pinned (weekday on the Pokegear, repeatable RNG); the older ones keep the host
+# clock so that their approved crops stay as they were taken
+PINNED_CLOCK = (2026, 10, 9, 12)    # Friday 12:00
+CLOCKS = {sc: PINNED_CLOCK for sc in ("bag", "dex", "card", "pokegear", "save", "summary-status", "battle-status",
+                                      "pokeathlon")}
 EXTERNAL = {"msgload", "texture-bounds", "reflection"}  # scenarios run by other tools (memcheck.py,
 #                                                         emu_texture_bounds.py, emu_reflection.py)
 ALL_SCENARIOS = tuple(SCENARIOS) + tuple(sorted(EXTERNAL))
@@ -567,7 +769,10 @@ def observe(scenario, rom, sav_dir, out):
     else:
         hooks = antipiracy_hooks if scenario == "antipiracy" else None
         place = start or (None, None, None)
-        with E.start_at(*place, rom=rom, sav=Path(sav_dir) / sav, out=out, verbose=False, hooks=hooks) as h:
+        import datetime
+        clock = datetime.datetime(*CLOCKS[scenario]) if scenario in CLOCKS else None
+        with E.start_at(*place, rom=rom, sav=Path(sav_dir) / sav, out=out, verbose=False, hooks=hooks,
+                        clock=clock) as h:
             obs = fn(h)
     obs["seconds"] = round(time.time() - t0, 1)
     return obs
@@ -611,17 +816,49 @@ def judge_naming_keyboard(scenario, obs, ref=None):
 
 def _judge_crop(key, shot, ref_shot):
     """'fixed': the crop is the approved one (APPROVED) and not the Chinese ROM's; 'original': it is the
-    Chinese ROM's. Any other picture (a mirrored label, a wrong palette, a missing tile) is 'unclear'."""
+    Chinese ROM's. Any other picture (a mirrored label, a wrong palette, a missing tile) is 'unclear'. A crop
+    still waiting for the user's approval (PENDING) is 'pending' when it differs from the Chinese ROM's; the run
+    passes with it, and the report lists it as pending approval. A crop that changed during its hold
+    (animation) is 'unclear'."""
     mine = (shot or {}).get("crops", {}).get(key)
     theirs = (ref_shot or {}).get("crops", {}).get(key)
-    approved = APPROVED[key]
-    why = {"crop": CROPS[key], "digest": mine, "chinese_rom_digest": theirs, "approved_digest": approved["digest"],
-           "approved_by": approved["approved_by"]}
+    approved = APPROVED.get(key) or {}
+    why = {"crop": CROPS[key], "digest": mine, "chinese_rom_digest": theirs, "approved_digest": approved.get("digest"),
+           "approved_by": approved.get("approved_by"), "pending_approval": key in PENDING}
     if not mine or not theirs:
         return "unclear", dict(why, error="crop missing")
-    if not approved["digest"]:
+    if key in (shot or {}).get("unstable", []) or key in (ref_shot or {}).get("unstable", []):
+        return "unclear", dict(why, error=f"{key} changed during its hold (an animation in the box)")
+    if key in PENDING:
+        return ("pending" if mine != theirs else "original"), why
+    if not approved.get("digest"):
         return "unclear", dict(why, error=f"no approved digest for {key}")
     return _state(mine == approved["digest"] and mine != theirs, mine == theirs, why)
+
+
+# (scenario, fix) -> (crop, the observation key of the screenshot that holds it): the crop judges
+CROP_CHECKS = {
+    ("naming", "gfx-naming-tabs"): ("naming-tabs", "player"),
+    ("newgame", "gfx-title-subtitle"): ("title-subtitle", "title"),
+    ("ivev", "gfx-type-icons"): ("type-icon-summary", "skills"),
+    ("battle", "gfx-type-icons"): ("type-icon-battle", "fight"),
+    ("bag", "gfx-bag-labels"): ("bag-hm", "tm"),
+    ("bag", "gfx-linkcapture-bar"): ("chain-logger-bar", "logger"),
+    ("dex", "gfx-dex-header"): ("dex-header", "list"),
+    ("dex", "gfx-dex-type-badges"): ("dex-type-badge", "entry"),
+    ("card", "gfx-trainer-card"): ("trainer-card-back", "back"),
+    ("pokegear", "gfx-pokegear-calendar"): ("pokegear-weekday", "gear"),
+    ("save", "gfx-yes-no-buttons"): ("yes-no", "prompt"),
+    ("summary-status", "gfx-summary-labels"): ("summary-status", "summary"),
+    ("battle-status", "gfx-battle-status-icons"): ("battle-status", "menu"),
+    ("battle-status", "gfx-weather-banners"): ("weather-banner", "banner"),
+    ("battle-status", "gfx-battle-panel-labels"): ("battle-panel-labels", "info"),
+    ("pokeathlon", "gfx-pokeathlon"): ("pokeathlon-label", "instructions"),
+}
+
+
+def crop_judge(key, shot_key):
+    return lambda s, o, r: _judge_crop(key, o.get(shot_key), (r or {}).get(shot_key))
 
 
 def judge_outfit(scenario, obs, ref=None):
@@ -713,17 +950,9 @@ JUDGES = {
     ("naming", "namelen"): judge_namelen,
     ("newgame", "namelen"): judge_namelen,
     ("naming", "naming-keyboard"): judge_naming_keyboard,
-    ("naming", "gfx-naming-tabs"): lambda s, o, r: _judge_crop("naming-tabs", o.get("player"),
-                                                               (r or {}).get("player")),
     ("newgame", "outfit-chooser-strings"): judge_outfit,
-    ("newgame", "gfx-title-subtitle"): lambda s, o, r: _judge_crop("title-subtitle", o.get("title"),
-                                                                   (r or {}).get("title")),
     ("pcbox", "pcbox-name-width"): judge_pcbox,
     ("ivev", "ivev-panel"): judge_ivev,
-    ("ivev", "gfx-type-icons"): lambda s, o, r: _judge_crop("type-icon-summary", o.get("skills"),
-                                                            (r or {}).get("skills")),
-    ("battle", "gfx-type-icons"): lambda s, o, r: _judge_crop("type-icon-battle", o.get("fight"),
-                                                              (r or {}).get("fight")),
     ("antipiracy", "antipiracy"): judge_antipiracy,
     ("font", "font-glyphs"): judge_font,
     ("textspeed", "text-speed"): judge_textspeed,
@@ -808,6 +1037,7 @@ def judge_reflection(scenario, obs, ref=None):
 
 
 JUDGES[("msgload", "msgload")] = judge_msgload
+JUDGES.update({k: crop_judge(*v) for k, v in CROP_CHECKS.items()})
 # checks across the two runs of a fix (fixed ROM, control), after both judged right
 PAIR_CHECKS = {("ivev", "ivev-panel"): pair_ivev, ("pcbox", "pcbox-name-width"): pair_pcbox}
 JUDGES[("texture-bounds", "overworld-texture-frame-bounds")] = judge_texture_bounds
@@ -980,7 +1210,10 @@ def judge(selection, results):
                 except Exception as exc:     # missing observations (a crashed run) cannot be judged
                     state, why = "error", {"error": obs.get("error") or f"{type(exc).__name__}: {exc}"}
                 row[key] = {"state": state, "expected": want, "evidence": why, "seconds": obs.get("wall_seconds")}
-            row["pass"] = (row["fixed_rom"].get("state") == "fixed" and row["control"].get("state") == "original")
+            # a crop waiting for approval passes with 'pending' (it differs from the Chinese ROM's); the row says so
+            row["pending_approval"] = row["fixed_rom"].get("state") == "pending"
+            row["pass"] = (row["fixed_rom"].get("state") in ("fixed", "pending")
+                           and row["control"].get("state") == "original")
             pair = PAIR_CHECKS.get((sc, fx))
             if pair and row["pass"]:
                 ok, why = pair(results[(sc, "fixed")], results[(sc, f"no-{fx}")])
@@ -1046,15 +1279,83 @@ def run(a):
     inputs["fixed_applied_from"] = applied_from
     report = {"schema": 1, "emulator": BACKEND, "inputs": inputs, "controls_built": built, "controls_provenance": provenance, "seconds": round(time.time() - t0, 1),
               "pass": all(r["pass"] for r in rows), "fixes": rows,
+              "pending_approval": sorted({CROP_CHECKS[(r["scenario"], r["fix"])][0] for r in rows
+                                          if r.get("pending_approval")}),
               "uncovered": {fx: why for fx, why in UNCOVERED.items()},
               "observations": {f"{sc}/{label}": obs for (sc, label), obs in results.items()}}
     out.mkdir(parents=True, exist_ok=True)
     (out / "fixes_report.json").write_text(json.dumps(report, indent=1, ensure_ascii=False, default=str))
+    if getattr(a, "approval_dir", None):
+        write_approval_dir(rows, results, a.approval_dir)
     for r in rows:
-        print(f"{'PASS' if r['pass'] else 'FAIL'} {r['fix']:32s} {r['scenario']:15s} fixed ROM: "
-              f"{r['fixed_rom'].get('state'):8s} control: {r['control'].get('state')}")
+        label = ("PEND" if r.get("pending_approval") else "PASS") if r["pass"] else "FAIL"
+        print(f"{label} {r['fix']:32s} {r['scenario']:15s} fixed ROM: "
+              f"{r['fixed_rom'].get('state'):8s} control: {r['control'].get('state')}"
+              + ("  (crop pending approval)" if r.get("pending_approval") else ""))
     print(json.dumps({"pass": report["pass"], "seconds": report["seconds"], "report": str(out / "fixes_report.json")}))
     return 0 if report["pass"] else 1
+
+
+def write_approval_dir(rows, results, out_dir):
+    """For each crop pending approval: <crop>_build.png (the fixed ROM's crop), <crop>_chinese.png (the untouched
+    Chinese ROM's) and pending.json {crop: {fix, screen, box, build_digest, chinese_digest}} for the user to
+    look at. The folder must be git-ignored (work/build): the images are game graphics."""
+    import shutil
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    pending = {}
+    for r in rows:
+        if not r.get("pending_approval"):
+            continue
+        sc, fx = r["scenario"], r["fix"]
+        key, shot_key = CROP_CHECKS[(sc, fx)]
+        for label, suffix in (("fixed", "build"), ("cn", "chinese")):
+            shot = Path(results[(sc, label)][shot_key]["screenshot"])
+            shutil.copyfile(shot.with_name(f"{shot.stem}_{key}_crop.png"), out_dir / f"{key}_{suffix}.png")
+        ev = r["fixed_rom"]["evidence"]
+        pending[key] = {"fix": fx, "scenario": sc, "screen": PENDING[key]["screen"], "box": list(CROPS[key]),
+                        "build_digest": ev["digest"], "chinese_digest": ev["chinese_rom_digest"]}
+    (out_dir / "pending.json").write_text(json.dumps(pending, indent=1, ensure_ascii=False) + "\n")
+    return pending
+
+
+def approve(run_dir, crops, by, digests_path=None):
+    """Record the user's approval of pending crops: each crop's fixed-ROM digest from <run_dir>/fixes_report.json
+    goes into emu_fixes_crops.json 'approved' (and leaves 'pending'). The run must have passed with the crop
+    pending, i.e. the build's crop differs from the Chinese ROM's and the control showed the Chinese one."""
+    path = Path(digests_path or CROP_DIGESTS)
+    data = load_crop_digests(path)
+    report = json.loads((Path(run_dir) / "fixes_report.json").read_text(encoding="utf-8"))
+    rows = {CROP_CHECKS[(r["scenario"], r["fix"])][0]: r for r in report["fixes"]
+            if (r["scenario"], r["fix"]) in CROP_CHECKS}
+    done = {}
+    for key in crops:
+        if key not in data["pending"]:
+            raise ValueError(f"{key} is not pending (pending: {', '.join(sorted(data['pending'])) or 'none'})")
+        row = rows.get(key)
+        if not row or not row.get("pass") or not row.get("pending_approval"):
+            raise ValueError(f"{key}: the run {run_dir} has no passing row with this crop pending")
+        ev = row["fixed_rom"]["evidence"]
+        data["approved"][key] = {"digest": ev["digest"], "approved_by": by,
+                                 "images": f"{Path(run_dir).name} (local, git-ignored): <crop>_build.png, "
+                                           "<crop>_chinese.png of its approval folder"}
+        del data["pending"][key]
+        done[key] = ev["digest"]
+    path.write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    return done
+
+
+def cmd_approve(a):
+    done = approve(a.run, [c for c in a.crops.split(",") if c], a.by)
+    for key, digest in done.items():
+        print(f"approved {key}: {digest}")
+    return 0
+
+
+def add_approve_arguments(p):
+    p.add_argument("--from", dest="run", required=True, help="the run folder (its fixes_report.json)")
+    p.add_argument("--crops", required=True, help="comma list of pending crops the user approved")
+    p.add_argument("--by", required=True, help="who approved and when, e.g. 'user, 2026-10-09'")
 
 
 def cmd_child(a):
@@ -1091,6 +1392,8 @@ def add_arguments(p, data):
                         "<checkout>/work/build/memcheck, the same folder as check.py --emu-saves)")
     p.add_argument("--out", default=str(data / "build" / "harness" / "fixes" / time.strftime("%Y%m%dT%H%M%S")))
     p.add_argument("--jobs", type=int, default=3, help="parallel emulator runs (at most 3)")
+    p.add_argument("--approval-dir", help="write the crops pending approval here (<crop>_build.png, "
+                                          "<crop>_chinese.png, pending.json); a git-ignored folder (work/build)")
 
 
 def add_child_arguments(p):

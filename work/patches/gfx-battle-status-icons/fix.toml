@@ -18,6 +18,7 @@ components are identical apart from the hack's 'HP:'. Both ranges are checked by
 """
 evidence = [
   "work/notes/graphics_inventory.md: row 25 and 'Graphics inside code' (status_icons_battle_hpbox.png)",
+  "Runtime: emu_harness.py fixes --case gfx-battle-status-icons (scenario battle-status: crop battle-status, battle, poisoned lead: the PSN icon on the HP box (box at its highest bob position); pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[graphics]]

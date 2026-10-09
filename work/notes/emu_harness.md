@@ -1046,9 +1046,24 @@ control is part of every check. For ivev-panel and pcbox-name-width a cross-run 
 exactly 6 px further right than on the control in every row; more name pixels than the cut control).
 
 Graphics fixes are judged by screen crops: `fixed` only when the crop's digest (sha256 of its RGB pixels) is
-the approved one in `emu_fixes.APPROVED`, `original` when it equals the untouched Chinese ROM's crop (an extra
-`cn` run). Any other picture (a mirrored label, a wrong palette) is `unclear` and fails. Only the digests are in
-git; the crop images are game graphics. The approved digests were taken from run `work/build/hard4/run3` (the summary
+the approved one in `work/tools/emu_fixes_crops.json` ("approved"; `emu_fixes.APPROVED`), `original` when it
+equals the untouched Chinese ROM's crop (an extra `cn` run). Any other picture (a mirrored label, a wrong palette)
+is `unclear` and fails. Only the digests are in git; the crop images are game graphics.
+
+Crops the user has not approved yet are listed under "pending" in the same file (`emu_fixes.PENDING`). On the
+build such a crop judges `pending` when it differs from the Chinese ROM's; the row passes (`PEND` in the output,
+`pending_approval` in the report, a "crops pending" line in `check.py --emu`), while the control must still show
+the Chinese crop. `--approval-dir DIR` (git-ignored, under `work/build`) writes `<crop>_build.png`,
+`<crop>_chinese.png` and `pending.json` ({crop: fix, scenario, screen, box, build_digest, chinese_digest}) for
+the user to look at. After the user approves, record it from that run:
+
+    .venv/bin/python work/tools/emu_harness.py fixes-approve --from <run dir> --crops <crop>[,<crop>...] --by "user, <date>"
+
+It copies the build digest of each crop from `<run dir>/fixes_report.json` into "approved" and removes it from
+"pending" (only for a crop the run passed as pending). Commit the JSON change. A crop that changes during the
+30 frames after its screenshot (an animation in the box) is `unclear`: the new scenarios hold every crop
+(`screenshot(..., hold=HOLD)`), except the battle HP box, which bobs and is taken at its highest position
+(`hp_box_top`). The approved digests were taken from run `work/build/hard4/run3` (the summary
 type icon from a widened box, so the whole icon is in it) and approved by the user on 2026-10-08 after viewing
 the crops in `work/build/hard4/approve/` of the poke-patches worktree (`<crop>_build.png`, `<crop>_chinese.png`,
 git-ignored; `type-icon-summary_build_v2.png` is the widened crop).
@@ -1060,10 +1075,23 @@ A crop change (another box, new art) needs a new approved digest.
 | title-subtitle | title screen under the logo: 'Origin HeartGold' | 96,98 - 250,128 |
 | type-icon-summary | summary skills page: the first move's type icon | 7,201 - 41,215 |
 | type-icon-battle | battle FIGHT menu: the first move's type icon | 16,247 - 49,261 |
+| bag-hm (pending) | bag, TM pocket with HM01 put first: the HM label | 30,249 - 56,262 |
+| chain-logger-bar (pending) | Chain Logger (Key Items, USE): the (X) INFO plate of the bottom bar | 136,366 - 192,384 |
+| dex-header (pending) | Pokédex from the field: the JOHTO POKéDEX plate | 56,214 - 218,246 |
+| dex-type-badge (pending) | Pokédex entry (Charmander): the FIRE badge | 150,62 - 188,80 |
+| trainer-card-back (pending) | trainer card, back: the L unit of LINK BATTLES | 186,258 - 212,274 |
+| pokegear-weekday (pending) | Pokégear top screen: FRIDAY (clock pinned) | 138,42 - 188,58 |
+| yes-no (pending) | field SAVE prompt: YES / NO buttons | 206,279 - 256,332 |
+| summary-status (pending) | summary of a poisoned Pokémon: PSN | 216,48 - 236,59 |
+| battle-status (pending) | battle, poisoned lead: PSN on the HP box (box at its top position) | 152,112 - 186,126 |
+| weather-banner (pending) | battle in sun: the SUN label of the banner on FIGHT (the spinning sun is outside) | 172,304 - 206,318 |
+| battle-panel-labels (pending) | battle INFO panel: SWAP / EXIT | 186,368 - 254,383 |
+| pokeathlon-label (pending) | Pokéathlon instructions (Hurdle Dash): POKéATHLON | 80,84 - 176,97 |
 
     .venv/bin/python work/tools/emu_harness.py fixes --rom work/build/check/origin_hg_v4.0.3_en_wip.nds \
         --controls work/build/fixes-controls --build-controls [--case all|<scenario>|<fix id>,...] \
-        [--rom-report work/build/check/build_report.json] [--sav-dir work/build/memcheck] [--out DIR [--overwrite]] [--jobs 3]
+        [--rom-report work/build/check/build_report.json] [--sav-dir work/build/memcheck] [--out DIR [--overwrite]] [--jobs 3] \
+        [--approval-dir work/build/approve-<name>]
     .venv/bin/python work/tools/check.py --full --emu [--emu-saves DIR] [--emu-jobs N]   # the same after the full build
     python3 -m unittest work/tools/test_emu_fixes.py                     # coverage, addresses, judges; no emulator
 
@@ -1099,6 +1127,14 @@ coverage list, the approved digests and the hooked addresses (checked against ea
 | text-speed | textspeed | Message 457#123 at NORMAL and FAST (Options bits 2-3): frames until the window's text stops changing; fixed needs NORMAL/FAST ≥ 2, original ≤ 1.25 | 28 / 8 frames | 29 / 29-30 frames (±1 between runs; the setting does nothing) |
 | msgload | msgload | memcheck.py's `summary` scenario (switch Pokémon on every summary page) | passed | allocation failure on heap 19 (6448 bytes), null write: the rc3 crash |
 | overworld-texture-frame-bounds | texture-bounds | The four `texture-bounds` cases, `--expect fixed` on the build, `--expect original` on the control | all 4 pass | all 4 reproduce the null load |
+| gfx-bag-labels, gfx-linkcapture-bar | bag | HM01 first in the TM pocket and the Chain Logger (744) first in Key Items (RAM); bag-hm crop; Key Items, Chain Logger, USE; chain-logger-bar crop | the crops (pending approval) | the Chinese ROM's |
+| gfx-dex-header, gfx-dex-type-badges | dex | Field menu POKéDEX: dex-header crop; A: the entry, dex-type-badge crop | the crops (pending) | the Chinese ROM's |
+| gfx-trainer-card | card | Field menu trainer card, touch to flip: trainer-card-back crop | pending | the Chinese ROM's |
+| gfx-pokegear-calendar | pokegear | Field menu POKéGEAR, clock pinned to Friday 2026-10-09 12:00: pokegear-weekday crop | pending | the Chinese ROM's |
+| gfx-yes-no-buttons | save | Field menu SAVE: yes-no crop, then B (nothing saved) | pending | the Chinese ROM's |
+| gfx-summary-labels | summary-status | Party Pokémon 1 poisoned (party extension status, RAM); its summary: summary-status crop | pending | the Chinese ROM's |
+| gfx-battle-status-icons, gfx-weather-banners, gfx-battle-panel-labels | battle-status | Lead poisoned; scripted wild Groudon Lv5 with its ability set to Drought (70) in every RAM copy: battle-status crop at the HP box's top position, weather-banner crop, INFO: battle-panel-labels crop | pending | the Chinese ROM's |
+| gfx-pokeathlon | pokeathlon | The Dome's own `Pokeathlon 0, 0, 0x8000 ...` command (file 167) with var 0x8000 = 0 (Speed Course) run from the field; party Pokémon 1-3 picked on the team screen, YES, A through the announcer to the Hurdle Dash instruction screen: pokeathlon-label crop | pending | the Chinese ROM's |
 | bulbasaur-reflection-boundary | reflection | `emu_reflection.py`, 2 scenes x Bulbasaur/Charmander/Onix (needs `market.sav` in `--sav-dir`), `--expect fixed` on the build, `--expect original` on the control (added 2026-10-08, run alone) | all 6 pass: no NULL lookup | all 6 pass: every Bulbasaur reflection call NULL, the others none |
 
 Result (observed 2026-10-08, branch hardening/emu, build of `develop` aab6efb plus this work, saves copied from
@@ -1111,12 +1147,22 @@ An earlier run (`run3`) reported texture-bounds as `unclear` on both ROMs: the d
 baseline savestate could not be written ("Unable to load savesate"). With space again it passes. A full disk
 shows up as `unclear`/`error`, never as a pass.
 
-Not covered (`emu_fixes.UNCOVERED`): the graphics fixes gfx-bag-labels, gfx-battle-panel-labels,
-gfx-battle-result-labels, gfx-battle-status-icons, gfx-dex-header, gfx-dex-type-badges, gfx-jp-buttons,
-gfx-linkcapture-bar, gfx-pokeathlon, gfx-pokegear-calendar, gfx-summary-labels, gfx-trainer-card,
-gfx-weather-banners and gfx-yes-no-buttons. Each would be one more approved crop on a screen a recipe already
-reaches (bag, Pokégear, trainer card, summary pages, a battle in weather or with a status); the battle result
-labels, the Chain Logger bar and the Pokéathlon need recipes that do not exist.
+Graphics crops added 2026-10-09 (branch emu/suite-v2; observed on the build of develop 1f3c242 plus this work,
+run `work/build/step1-run3`, 40 runs in 274 s, 3 at a time): all 12 new crops `pending` on the build and
+`original` on their controls (12 controls built in 8-11 s each); the 4 approved crops still `fixed` / `original`.
+The new scenarios run with the clock pinned (`emu_fixes.CLOCKS`), so two runs gave the same digests (runs 1 and 3;
+the logger crop compared between runs 2 and 3 after its box moved off the scrolling background). Crops and
+`pending.json` for the user's review: `work/build/approve-step1/` (git-ignored).
+
+Not covered (`emu_fixes.UNCOVERED`, with the reasons in the code):
+
+- gfx-battle-result-labels: a/1/0/4 #5 (WIN / LOSE / DRAW) shows only in the result display of link and
+  facility battles. A wild or a scripted trainer battle never reads the NARC's path (read watch on the path
+  string the loader reads); the harness has no link partner and no Battle Frontier recipe.
+- gfx-jp-buttons: a/1/1/3 #30 (CANCEL) is loaded only by three init routines in overlay 71 (the main menu; ov71
+  +0x6D90, +0x8534, +0xACD8). Hooks on them never fired in the reachable flows (Continue, Mystery Gift: from a
+  friend / wireless / WFC, Pokéwalker without a boxed Pokémon, the SDK's WFC settings). The START button of
+  a/2/1/5 #16 is not the Pokéathlon instructions' START (that one is identical on the Chinese ROM).
 
 Limits:
 

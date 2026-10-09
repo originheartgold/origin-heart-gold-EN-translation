@@ -19,6 +19,7 @@ evidence = [
   "work/notes/graphics_inventory.md: row 20",
   "work/notes/graphics_layout_audit.md; work/graphics/layout_checks.json",
   "CHANGELOG.md v1.0.0-rc5: 'Chain Logger (link-capture) bar: the English graphic used tiles the screen never loads, so it drew garbage.'",
+  "Runtime: emu_harness.py fixes --case gfx-linkcapture-bar (scenario bag: crop chain-logger-bar, Chain Logger (Key Items -> USE): the (X) INFO plate of its bottom bar; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[graphics]]

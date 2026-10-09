@@ -61,10 +61,11 @@ Full adds (and fails when armips v0.11.0, the two ROMs or xdelta3 are missing; a
              fix ('fixed') on it and the hack's behaviour ('original') on a control ROM without that fix
              (build.py --no-patch --without <fix>[,<fixes that require it>] in <work-dir>-emu/controls; reused
              when its build report and message text match this build, else rebuilt in place). Graphics crops
-             must equal the approved digests (emu_fixes.APPROVED). The report goes to <work-dir>-emu/run,
+             must equal the approved digests (emu_fixes_crops.json); a crop still pending approval passes as
+             'pending' when it differs from the Chinese ROM's. The report goes to <work-dir>-emu/run,
              replaced by every run. The fixes without a scenario are listed in emu_fixes.UNCOVERED. Not part of
-             --full by default: 29 emulator runs (--emu-jobs at a time, default 3), about 4-5 min, plus up
-             to 13 control builds.
+             --full by default: 57 emulator runs (--emu-jobs at a time, default 3), about 8-10 min, plus up
+             to 25 control builds.
 
 Exit status 0 only when no step failed. Each step prints PASS / FAIL / SKIP with its time.
 """
@@ -532,8 +533,12 @@ def step_emu(armips, first: dict, work_dir, saves, jobs=3) -> str:
         report = json.loads((out / "fixes_report.json").read_text(encoding="utf-8"))
     except (OSError, ValueError):
         raise Failed(f"emu_harness.py fixes failed (exit {r.returncode}) without a report; log: {log}") from None
-    lines = [f"{'ok  ' if row['pass'] else 'FAIL'} {row['fix']} ({row['scenario']}): fixed ROM "
-             f"{row['fixed_rom'].get('state')}, control {row['control'].get('state')}" for row in report["fixes"]]
+    lines = [f"{('pend' if row.get('pending_approval') else 'ok  ') if row['pass'] else 'FAIL'} {row['fix']} "
+             f"({row['scenario']}): fixed ROM {row['fixed_rom'].get('state')}, control {row['control'].get('state')}"
+             for row in report["fixes"]]
+    if report.get("pending_approval"):
+        lines.append(f"crops pending the user's approval: {', '.join(report['pending_approval'])} "
+                     "(emu_harness.py fixes-approve)")
     lines.append(f"no scenario: {', '.join(sorted(report['uncovered']))}")
     passed = sum(row["pass"] for row in report["fixes"])
     head = f"{passed}/{len(report['fixes'])} fix scenarios in {report['seconds']:.0f} s"

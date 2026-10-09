@@ -15,6 +15,7 @@ New: the USA member: HM, 1 SET, 2 SET.
 """
 evidence = [
   "work/notes/graphics_inventory.md: row 18",
+  "Runtime: emu_harness.py fixes --case gfx-bag-labels (scenario bag: crop bag-hm, bag, TM pocket with HM01 first: the HM label of the first slot; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[graphics]]

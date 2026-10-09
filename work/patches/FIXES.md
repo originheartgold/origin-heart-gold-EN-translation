@@ -109,6 +109,7 @@ New: the USA member: HM, 1 SET, 2 SET.
 **Evidence:**
 
 - work/notes/graphics_inventory.md: row 18
+- Runtime: emu_harness.py fixes --case gfx-bag-labels (scenario bag: crop bag-hm, bag, TM pocket with HM01 first: the HM label of the first slot; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -143,6 +144,7 @@ A user-approved exception to 'sourced, never generated' (D-1109).
 **Evidence:**
 
 - work/notes/graphics_inventory.md: row 26 (battle_panel_labels.png; not seen in the emulator)
+- Runtime: emu_harness.py fixes --case gfx-battle-panel-labels (scenario battle-status: crop battle-panel-labels, battle INFO panel: the SWAP / EXIT key hints; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -210,6 +212,7 @@ components are identical apart from the hack's 'HP:'. Both ranges are checked by
 **Evidence:**
 
 - work/notes/graphics_inventory.md: row 25 and 'Graphics inside code' (status_icons_battle_hpbox.png)
+- Runtime: emu_harness.py fixes --case gfx-battle-status-icons (scenario battle-status: crop battle-status, battle, poisoned lead: the PSN icon on the HP box (box at its highest bob position); pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -255,6 +258,7 @@ D-1505). The overhang of 'DEX' past the column is accepted (D-1541). Also in bot
 - work/notes/graphics_inventory.md: rows 12-13
 - work/notes/graphics_layout_audit.md; work/graphics/layout_checks.json (runtime tile limits)
 - D-1525 / D-1542: emulator check work/build/harness/for_user/D-1542_data_tab.png (local)
+- Runtime: emu_harness.py fixes --case gfx-dex-header (scenario dex: crop dex-header, Pokedex opened from the field: the JOHTO POKeDEX plate; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -293,6 +297,7 @@ both costume copies.
 - work/notes/graphics_inventory.md: rows 4-6 and 'Assets generated in this project'
 - work/graphics/CREDITS.md
 - CHANGELOG.md v1.0.0: 'Pokédex type badges, header and buttons ...'
+- Runtime: emu_harness.py fixes --case gfx-dex-type-badges (scenario dex: crop dex-type-badge, Pokedex entry (Charmander): the FIRE type badge; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -361,6 +366,7 @@ earlier version used unloaded tiles and drew garbage, F002). Composed, kept by D
 - work/notes/graphics_inventory.md: row 20
 - work/notes/graphics_layout_audit.md; work/graphics/layout_checks.json
 - CHANGELOG.md v1.0.0-rc5: 'Chain Logger (link-capture) bar: the English graphic used tiles the screen never loads, so it drew garbage.'
+- Runtime: emu_harness.py fixes --case gfx-linkcapture-bar (scenario bag: crop chain-logger-bar, Chain Logger (Key Items -> USE): the (X) INFO plate of its bottom bar; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -434,6 +440,7 @@ stay); the instruction screens are the USA members (SWITCH, Pcs., YOU / Eoin / A
 **Evidence:**
 
 - work/notes/graphics_inventory.md: rows 19 and 30 (pass3_pokeathlon.png)
+- Runtime: emu_harness.py fixes --case gfx-pokeathlon (scenario pokeathlon: crop pokeathlon-label, Pokeathlon instruction screen (Hurdle Dash): the POKeATHLON label; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -467,6 +474,7 @@ New: the USA members (MONDAY ...).
 **Evidence:**
 
 - work/notes/graphics_inventory.md: row 17 (pass2_pokegear.png shows MONDAY)
+- Runtime: emu_harness.py fixes --case gfx-pokegear-calendar (scenario pokegear: crop pokegear-weekday, Pokegear top screen: the weekday next to the clock (pinned: FRIDAY); pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -505,6 +513,7 @@ tiles differ; the hack's NSCR #3 change is untouched.
 
 - work/notes/graphics_inventory.md: rows 8-10 and 'Status-condition icon sets'
 - CHANGELOG.md v1.0.0: 'Status icons (PAR/FRZ/SLP/PSN/BRN) on the battle HP box, party and summary screens.'
+- Runtime: emu_harness.py fixes --case gfx-summary-labels (scenario summary-status: crop summary-status, summary of a poisoned Pokemon: the PSN icon; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -575,6 +584,7 @@ and yy/mm/dd dates are accepted for now (D-1540).
 
 - work/notes/graphics_inventory.md: row 16
 - D-1513 / D-1540: emulator screen work/build/harness/hunt_ui/card_pair.png (local)
+- Runtime: emu_harness.py fixes --case gfx-trainer-card (scenario card: crop trainer-card-back, trainer card, back: the L (losses) unit of LINK BATTLES; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -646,6 +656,7 @@ WINDS (Delta Stream) in font-0 lettering (composed, kept by D-1110), because no 
 
 - work/notes/graphics_inventory.md: row 15 (not yet seen in the emulator: needs a weather battle)
 - work/graphics/CREDITS.md
+- Runtime: emu_harness.py fixes --case gfx-weather-banners (scenario battle-status: crop weather-banner, battle in sun (wild Groudon, Drought): the SUN label of the banner on FIGHT; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 
@@ -684,6 +695,7 @@ New: the USA member: YES / NO.
 **Evidence:**
 
 - work/notes/graphics_inventory.md: row 7
+- Runtime: emu_harness.py fixes --case gfx-yes-no-buttons (scenario save: crop yes-no, field SAVE prompt: the touch-screen YES / NO buttons; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
 
 **Touches:**
 

@@ -25,6 +25,7 @@ evidence = [
   "work/notes/graphics_inventory.md: rows 12-13",
   "work/notes/graphics_layout_audit.md; work/graphics/layout_checks.json (runtime tile limits)",
   "D-1525 / D-1542: emulator check work/build/harness/for_user/D-1542_data_tab.png (local)",
+  "Runtime: emu_harness.py fixes --case gfx-dex-header (scenario dex: crop dex-header, Pokedex opened from the field: the JOHTO POKeDEX plate; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[graphics]]

@@ -19,6 +19,7 @@ WINDS (Delta Stream) in font-0 lettering (composed, kept by D-1110), because no 
 evidence = [
   "work/notes/graphics_inventory.md: row 15 (not yet seen in the emulator: needs a weather battle)",
   "work/graphics/CREDITS.md",
+  "Runtime: emu_harness.py fixes --case gfx-weather-banners (scenario battle-status: crop weather-banner, battle in sun (wild Groudon, Drought): the SUN label of the banner on FIGHT; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[graphics]]

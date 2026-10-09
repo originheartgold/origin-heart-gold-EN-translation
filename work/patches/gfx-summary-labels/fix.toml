@@ -19,6 +19,7 @@ tiles differ; the hack's NSCR #3 change is untouched.
 evidence = [
   "work/notes/graphics_inventory.md: rows 8-10 and 'Status-condition icon sets'",
   "CHANGELOG.md v1.0.0: 'Status icons (PAR/FRZ/SLP/PSN/BRN) on the battle HP box, party and summary screens.'",
+  "Runtime: emu_harness.py fixes --case gfx-summary-labels (scenario summary-status: crop summary-status, summary of a poisoned Pokemon: the PSN icon; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[graphics]]

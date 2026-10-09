@@ -19,6 +19,7 @@ stay); the instruction screens are the USA members (SWITCH, Pcs., YOU / Eoin / A
 """
 evidence = [
   "work/notes/graphics_inventory.md: rows 19 and 30 (pass3_pokeathlon.png)",
+  "Runtime: emu_harness.py fixes --case gfx-pokeathlon (scenario pokeathlon: crop pokeathlon-label, Pokeathlon instruction screen (Hurdle Dash): the POKeATHLON label; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[graphics]]

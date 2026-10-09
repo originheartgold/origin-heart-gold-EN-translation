@@ -15,6 +15,7 @@ New: the USA member: YES / NO.
 """
 evidence = [
   "work/notes/graphics_inventory.md: row 7",
+  "Runtime: emu_harness.py fixes --case gfx-yes-no-buttons (scenario save: crop yes-no, field SAVE prompt: the touch-screen YES / NO buttons; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[graphics]]

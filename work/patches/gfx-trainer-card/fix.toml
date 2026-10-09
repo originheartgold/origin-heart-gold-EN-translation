@@ -20,6 +20,7 @@ and yy/mm/dd dates are accepted for now (D-1540).
 evidence = [
   "work/notes/graphics_inventory.md: row 16",
   "D-1513 / D-1540: emulator screen work/build/harness/hunt_ui/card_pair.png (local)",
+  "Runtime: emu_harness.py fixes --case gfx-trainer-card (scenario card: crop trainer-card-back, trainer card, back: the L (losses) unit of LINK BATTLES; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[graphics]]

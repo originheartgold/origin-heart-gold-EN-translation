@@ -23,6 +23,7 @@ evidence = [
   "work/notes/graphics_inventory.md: rows 4-6 and 'Assets generated in this project'",
   "work/graphics/CREDITS.md",
   "CHANGELOG.md v1.0.0: 'Pokédex type badges, header and buttons ...'",
+  "Runtime: emu_harness.py fixes --case gfx-dex-type-badges (scenario dex: crop dex-type-badge, Pokedex entry (Charmander): the FIRE type badge; pending the user's approval of the crop; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
 ]
 
 [[graphics]]

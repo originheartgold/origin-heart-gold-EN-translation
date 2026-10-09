@@ -108,7 +108,8 @@ class Helpers(unittest.TestCase):
         self.assertEqual(F.select("namelen"), {"naming": ["namelen"], "newgame": ["namelen"]})
         self.assertEqual(set(F.select("all")), set(F.ALL_SCENARIOS))
         with self.assertRaises(ValueError):
-            F.select("gfx-bag-labels")
+            F.select("gfx-jp-buttons")          # listed in UNCOVERED
+        self.assertEqual(F.select("gfx-weather-banners"), {"battle-status": ["gfx-weather-banners"]})
         with self.assertRaises(ValueError):
             F.select("nonsense")
 
@@ -132,6 +133,7 @@ class Helpers(unittest.TestCase):
 
 
 EN_TABS = F.APPROVED["naming-tabs"]["digest"]
+OLD_CROPS = {"naming-tabs", "type-icon-summary", "type-icon-battle", "title-subtitle"}   # approved 2026-10-08
 # Observations recorded on the 2026-10-08 runs (work/build/hard4/run2/fixes_report.json), trimmed.
 NAMING = {
     "fixed": {"player": {"codes": [0x12B] * 7, "text": "A" * 7, "crops": {"naming-tabs": EN_TABS}},
@@ -187,13 +189,81 @@ class Judges(unittest.TestCase):
         self.assertEqual(judge("naming", other, CN_NAMING)[0], "unclear")
 
     def test_approved_digests(self):
-        self.assertEqual(set(F.APPROVED), set(F.CROPS))
+        self.assertEqual(set(F.APPROVED) | set(F.PENDING), set(F.CROPS))
+        self.assertFalse(set(F.APPROVED) & set(F.PENDING))
         for key, a in F.APPROVED.items():
             self.assertRegex(a["digest"], r"^[0-9a-f]{64}$", key)
             self.assertTrue(a["approved_by"])
-            self.assertIn("work/build/", a["images"])
-        used = {"naming-tabs", "type-icon-summary", "type-icon-battle", "title-subtitle"}
-        self.assertEqual(used, set(F.CROPS))
+            self.assertIn("work/build/", a["images"]) if key in OLD_CROPS else self.assertTrue(a["images"])
+        self.assertLessEqual(OLD_CROPS, set(F.APPROVED))
+
+    def test_crop_checks(self):
+        """Every crop is judged in exactly one (scenario, fix), each pending crop names that fix, every box lies
+        on the 256x384 screenshot."""
+        keys = [k for k, _ in F.CROP_CHECKS.values()]
+        self.assertEqual(sorted(keys), sorted(F.CROPS))
+        for (sc, fx), (key, _) in F.CROP_CHECKS.items():
+            self.assertIn(sc, F.COVERAGE[fx])
+            if key in F.PENDING:
+                self.assertEqual(F.PENDING[key]["fix"], fx)
+                self.assertTrue(F.PENDING[key]["screen"])
+        for key, (x0, y0, x1, y1) in F.CROPS.items():
+            self.assertTrue(0 <= x0 < x1 <= 256 and 0 <= y0 < y1 <= 384, key)
+        # every graphics fix without a scenario says why
+        for fx in F.UNCOVERED:
+            self.assertGreater(len(F.UNCOVERED[fx]), 80, fx)
+
+    def test_new_graphics_coverage(self):
+        self.assertEqual(set(F.UNCOVERED), {"gfx-battle-result-labels", "gfx-jp-buttons"})
+        for fx, scs in F.COVERAGE.items():
+            if fx.startswith("gfx-"):
+                self.assertTrue(all((sc, fx) in F.CROP_CHECKS for sc in scs), fx)
+        self.assertEqual(set(F.CLOCKS), {sc for (sc, fx), (key, _) in F.CROP_CHECKS.items() if key in F.PENDING})
+
+    def test_pending_crop_judge(self):
+        key = "weather-banner"
+        self.assertIn(key, F.PENDING)
+        judge = F.JUDGES[("battle-status", "gfx-weather-banners")]
+        cn = {"banner": {"crops": {key: "c" * 64}, "unstable": []}}
+        build = {"banner": {"crops": {key: "b" * 64}, "unstable": []}}
+        self.assertEqual(judge("battle-status", build, cn)[0], "pending")
+        self.assertEqual(judge("battle-status", cn, cn)[0], "original")
+        self.assertEqual(judge("battle-status", build, None)[0], "unclear")
+        moving = {"banner": {"crops": {key: "b" * 64}, "unstable": [key]}}
+        self.assertEqual(judge("battle-status", moving, cn)[0], "unclear")
+        rows = F.judge({"battle-status": ["gfx-weather-banners"]},
+                       {("battle-status", "fixed"): build, ("battle-status", "cn"): cn,
+                        ("battle-status", "no-gfx-weather-banners"): cn})
+        self.assertTrue(rows[0]["pass"])
+        self.assertTrue(rows[0]["pending_approval"])
+        # a control that shows anything but the Chinese crop still fails
+        rows = F.judge({"battle-status": ["gfx-weather-banners"]},
+                       {("battle-status", "fixed"): build, ("battle-status", "cn"): cn,
+                        ("battle-status", "no-gfx-weather-banners"): build})
+        self.assertFalse(rows[0]["pass"])
+
+    def test_approve(self):
+        import json
+        import shutil
+        import tempfile
+        with tempfile.TemporaryDirectory() as td:
+            td = Path(td)
+            digests = td / "crops.json"
+            shutil.copyfile(F.CROP_DIGESTS, digests)
+            run = td / "run"
+            run.mkdir()
+            row = {"fix": "gfx-weather-banners", "scenario": "battle-status", "pass": True, "pending_approval": True,
+                   "fixed_rom": {"state": "pending", "evidence": {"digest": "b" * 64, "chinese_rom_digest": "c" * 64}}}
+            (run / "fixes_report.json").write_text(json.dumps({"fixes": [row]}))
+            done = F.approve(run, ["weather-banner"], "user, test", digests)
+            self.assertEqual(done, {"weather-banner": "b" * 64})
+            data = json.loads(digests.read_text())
+            self.assertEqual(data["approved"]["weather-banner"]["digest"], "b" * 64)
+            self.assertNotIn("weather-banner", data["pending"])
+            with self.assertRaises(ValueError):          # no longer pending
+                F.approve(run, ["weather-banner"], "user, test", digests)
+            with self.assertRaises(ValueError):          # not in the run
+                F.approve(run, ["yes-no"], "user, test", digests)
 
     def test_outfit(self):
         en = ["Outfit 1", "Outfit 2", "Outfit 3", "OK"]
