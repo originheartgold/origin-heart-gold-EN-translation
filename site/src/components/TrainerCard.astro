@@ -1,11 +1,13 @@
 ---
 import type { Trainer } from '../lib/data';
-import { areaUrl, itemById, itemUrl, moveById, moveUrl, url } from '../lib/data';
+import { areaUrl, itemById, itemUrl, moveById, moveUrl, speciesById, url } from '../lib/data';
 
 import Mon from './Mon.astro';
 import AbilityLink from './AbilityLink.astro';
+import TrainerTeamPreview from './TrainerTeamPreview.astro';
+import PokemonImage from './PokemonImage.astro';
 // `area`: on a location page, list only the battles in that area (all of them if none match).
-const { t, showPlaces = false, area, note, expanded = false, showProfileLink = true } = Astro.props as { t: Trainer; showPlaces?: boolean; area?: string; note?: string; expanded?: boolean; showProfileLink?: boolean };
+const { t, showPlaces = false, area, note, expanded = false, showProfileLink = true, illustrated = false } = Astro.props as { t: Trainer; showPlaces?: boolean; area?: string; note?: string; expanded?: boolean; showProfileLink?: boolean; illustrated?: boolean };
 // One line per distinct battle: place, format and (when a scene picks between teams) the condition in words.
 const here = area ? t.places.filter((p) => p.area === area) : [];
 const battles = [...new Map((here.length ? here : t.places).map((p) => [`${p.map}|${p.how}|${p.conds.join('|')}`, p])).values()];
@@ -21,6 +23,7 @@ const inactive = battles.length > 0 && battles.every((p) => p.conds.length > 0 &
 <details class="trainer" open={expanded} id={`trainer-${t.id}`}>
 	<summary>
 		<span class="trainer-name">{label}</span>
+		{illustrated && <TrainerTeamPreview team={t.team} compact />}
 		<span class="trainer-team">{t.team.map((m) => `${m.name} ${m.level}`).join(' · ')}</span>
 		{partnerOnly && <span class="tag">Partner</span>}
 		{inactive && <span class="tag">Inactive scene</span>}
@@ -44,7 +47,7 @@ const inactive = battles.length > 0 && battles.every((p) => p.conds.length > 0 &
 		<tbody>
 			{t.team.map((m) => (
 				<tr>
-					<td><Mon id={m.id} name={m.name} /></td>
+					<td><div class="pokemon-cell">{speciesById.has(m.id!) && <PokemonImage s={speciesById.get(m.id!)!} />}<Mon id={m.id} name={m.name} /></div></td>
 					<td>{m.level}</td>
 					<td>{m.abilityId ? <AbilityLink id={m.abilityId} /> : (m.ability ?? (m.id ? 'Species default' : '—'))}</td>
 					<td>{m.itemId && itemById.has(m.itemId) ? <a href={itemUrl(itemById.get(m.itemId))}>{m.item}</a> : (m.item ?? '—')}</td>

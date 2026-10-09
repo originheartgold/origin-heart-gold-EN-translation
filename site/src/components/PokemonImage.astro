@@ -1,17 +1,19 @@
 ---
 import { referenceArtwork } from '../../../work/save-editor/src/ui/artwork';
 import { speciesById, type Species } from '../lib/data';
-const { s, size = 'small' } = Astro.props as { s: Species; size?: 'small' | 'large' };
+const { s, size = 'small', loading = 'lazy', inline = false } = Astro.props as { s: Species; size?: 'small' | 'large'; loading?: 'lazy' | 'eager'; inline?: boolean };
+const Frame = inline ? 'span' : 'figure';
+const Caption = inline ? 'span' : 'figcaption';
 const art = referenceArtwork(s.baseSpeciesId, s.formId);
 const large = size === 'large';
 const baseName = speciesById.get(s.baseSpeciesId)?.name ?? `species #${s.baseSpeciesId}`;
 const label = art?.baseFallback ? `${baseName} standard-form artwork` : `${s.name} artwork`;
 ---
-<figure class={`pokemon-image pokemon-image-${size}`}>
-  {art ? <img src={art.src} data-artwork-fallback={art.fallback} alt={large ? label : ''} aria-hidden={large ? undefined : 'true'} width={large ? 256 : 48} height={large ? 256 : 48} loading="lazy" decoding="async" /> : <span class="art-placeholder" aria-label={large ? 'Artwork unavailable' : undefined} aria-hidden={large ? undefined : 'true'}>—</span>}
-  {art?.baseFallback && <figcaption class={large ? 'small muted' : 'sr-only'}>Artwork shows {baseName}’s standard form.</figcaption>}
-  {large && <figcaption class="small muted">Artwork: <a href="https://github.com/PokeAPI/sprites">PokéAPI</a>.</figcaption>}
-</figure>
+<Frame class={`pokemon-image pokemon-image-${size}`}>
+  {art ? <img src={art.src} data-artwork-fallback={art.fallback} alt={large ? label : ''} aria-hidden={large ? undefined : 'true'} width={large ? 256 : 48} height={large ? 256 : 48} loading={loading} decoding="async" /> : <span class="art-placeholder" aria-label={large ? 'Artwork unavailable' : undefined} aria-hidden={large ? undefined : 'true'}>—</span>}
+  {art?.baseFallback && <Caption class={large ? 'small muted' : 'sr-only'}>Artwork shows {baseName}’s standard form.</Caption>}
+  {large && <Caption class="small muted">Artwork: <a href="https://github.com/PokeAPI/sprites">PokéAPI</a>.</Caption>}
+</Frame>
 <script>
 function setupArtwork() {
   document.querySelectorAll<HTMLImageElement>('img[data-artwork-fallback]').forEach(img => {

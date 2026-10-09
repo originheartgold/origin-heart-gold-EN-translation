@@ -31,6 +31,7 @@ const regions = [...new Set(species.map(mon => mon.region))];
       <div class="tb-workspace">
       <section aria-labelledby="tb-browse-heading" class="tb-browse">
         <div class="tb-section-heading"><h2 id="tb-browse-heading">Find your next teammate</h2><span id="tb-result-count" role="status"></span></div>
+        <p class="tb-catalog-note">Only Pokémon with a documented way to obtain them in Origin HeartGold.</p>
         <div class="tb-search-row"><label class="tb-search"><span class="sr-only">Search Pokémon</span><input type="search" id="tb-search" placeholder="Find a Pokémon…" autocomplete="off" /></label></div>
         <details class="tb-filter-disclosure"><summary>Filters <span>Type &amp; region</span></summary><div class="tb-filters">
           <label>Type<select id="tb-type"><option value="">All types</option>{types.map(type => <option>{type}</option>)}</select></label>

@@ -195,3 +195,160 @@ ul.loc-list li { break-inside: avoid; }
 
 .forest-route:has(.forest-route-viewer) .forest-route-print { display: none; }
 @media print { .forest-route:has(.forest-route-viewer) .forest-route-print { display: block; margin-inline: 1.4rem; } }
+
+/* Shared field-guide theme: warm paper, ink and HeartGold brass. */
+:root {
+  --sl-color-bg: #111923;
+  --sl-color-bg-nav: #18222e;
+  --sl-color-bg-sidebar: #141d27;
+  --sl-color-gray-1: #e9edf1;
+  --sl-color-gray-2: #c9d1db;
+  --sl-color-gray-3: #a1adbc;
+  --sl-color-gray-4: #657488;
+  --sl-color-gray-5: #354252;
+  --sl-color-gray-6: #25313f;
+  --sl-color-black: #111923;
+  --sl-color-white: #f3f5f7;
+  --sl-color-accent-low: #3b321d;
+  --sl-color-accent: #d7ad51;
+  --sl-color-accent-high: #f0d590;
+  --sl-color-hairline: var(--sl-color-gray-5);
+  --sl-content-width: 52rem;
+  --sl-font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --sl-line-height: 1.7;
+}
+:root[data-theme='light'] {
+  --sl-color-bg: #faf9f5;
+  --sl-color-bg-nav: #fffefa;
+  --sl-color-bg-sidebar: #f3f1e9;
+  --sl-color-white: #202a35;
+  --sl-color-black: #faf9f5;
+  --sl-color-gray-1: #35404d;
+  --sl-color-gray-2: #465361;
+  --sl-color-gray-3: #606975;
+  --sl-color-gray-4: #8b9299;
+  --sl-color-gray-5: #dcded9;
+  --sl-color-gray-6: #eeeee7;
+  --sl-color-gray-7: #f5f4ee;
+  --sl-color-accent-low: #f3e9ce;
+  --sl-color-accent: #94691c;
+  --sl-color-accent-high: #6d4a0d;
+  --sl-color-hairline: var(--sl-color-gray-5);
+}
+html { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+body { background: var(--sl-color-bg); }
+::selection { background: var(--sl-color-accent-low); color: var(--sl-color-white); }
+a { text-underline-offset: .18em; }
+:where(a, button, input, select, summary, textarea):focus-visible { outline: 2px solid var(--sl-color-accent); outline-offset: 4px; }
+h1, h2, h3 { text-wrap: balance; }
+h1#_top { font-size: clamp(2rem, 4vw, 3rem); font-weight: 750; letter-spacing: -.045em; line-height: 1.12; margin-top: .55rem; overflow-wrap: anywhere; }
+.sl-markdown-content > p { max-width: 78ch; }
+.sl-markdown-content :is(h2, h3) { letter-spacing: -.025em; }
+.sl-markdown-content h2 { line-height: 1.25; }
+.sl-markdown-content > h2 { padding-top: .4rem; }
+.eyebrow { margin: 0; font-size: .64rem; font-weight: 750; line-height: 1.5; letter-spacing: .13em; color: var(--sl-color-text-accent); }
+.guide-button { display: inline-flex; align-items: center; justify-content: center; gap: 1.25rem; min-height: 46px; padding: .65rem 1.15rem; border-radius: .55rem; background: var(--sl-color-accent-high); color: var(--sl-color-bg); font-size: .85rem; font-weight: 650; text-decoration: none; }
+.guide-button:hover { filter: brightness(1.12); }
+.header { gap: 1.25rem; }
+.header site-search button { border-radius: .5rem; }
+.sidebar-pane { border-inline-end: 1px solid var(--sl-color-gray-5); }
+.sidebar-content a { border-radius: .4rem; padding-block: .45rem; }
+.sidebar-content a[aria-current='page'] { background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); font-weight: 650; }
+.sidebar-content .top-level > li + li { margin-top: 1.25rem; }
+.sidebar-content .large { font-size: .85rem; }
+.right-sidebar a { font-size: .78rem; line-height: 1.5; border-radius: .35rem; }
+.right-sidebar a[aria-current='true'] { color: var(--sl-color-text-accent); }
+.content-panel + .content-panel { border-top-color: var(--sl-color-gray-5); }
+.table-filter { padding: 1rem; gap: .7rem; border: 1px solid var(--sl-color-gray-5); border-radius: .75rem; background: var(--sl-color-bg-nav); }
+.table-filter input[type='search'], .table-filter select, .game-setup select { min-height: 44px; padding: .55rem .75rem; background: var(--sl-color-bg); color: var(--sl-color-white); border: 1px solid var(--sl-color-gray-5); border-radius: .4rem; font-size: .85rem; }
+.table-filter select { flex: 1 1 10rem; width: auto; }
+.table-filter input[type='search'] { flex-basis: 100%; }
+.table-filter .filter-count { flex: 1 1 12rem; font-size: .75rem; }
+.filter-reset { min-height: 44px; padding-inline: .85rem; background: var(--sl-color-bg); font-size: .8rem; }
+.filter-reset:hover { border-color: var(--sl-color-accent); }
+.sl-markdown-content table { display: block; max-width: 100%; overflow-x: auto; border-collapse: separate; border-spacing: 0; border: 1px solid var(--sl-color-gray-5); border-radius: .65rem; background: var(--sl-color-bg-nav); font-size: .85rem; }
+.sl-markdown-content table :is(th, td) { padding: .65rem .8rem; border: 0; border-bottom: 1px solid var(--sl-color-gray-6); vertical-align: top; }
+.sl-markdown-content table th { background: var(--sl-color-gray-6); color: var(--sl-color-gray-2); font-size: .72rem; font-weight: 650; text-align: left; }
+.sl-markdown-content table tr:last-child > :is(th, td) { border-bottom: 0; }
+.sl-markdown-content table tbody tr:hover > td { background: color-mix(in srgb, var(--sl-color-accent-low) 28%, var(--sl-color-bg-nav)); }
+.sl-markdown-content table td p { margin-top: .25rem; }
+.table-scroll { position: relative; max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; border: 1px solid var(--sl-color-gray-5); border-radius: .65rem; background: var(--sl-color-bg-nav); scrollbar-width: thin; scrollbar-color: var(--sl-color-gray-4) transparent; }
+.sl-markdown-content .table-scroll > table { display: table; width: 100%; max-width: none; overflow: visible; border: 0; border-radius: 0; margin: 0; }
+.table-scroll-hint { margin: .4rem 0 .65rem !important; color: var(--sl-color-gray-3); font-size: .7rem; }
+.table-scroll-hint[hidden] { display: none; }
+.type { font-size: .67rem; letter-spacing: .015em; border-radius: .35rem; padding: .12rem .45rem; }
+.pokemon-cell { gap: .75rem; }
+.pokemon-cell > a { font-weight: 600; }
+.pokemon-overview { padding: 1.25rem; border: 1px solid var(--sl-color-gray-5); border-radius: 1rem; background: var(--sl-color-bg-nav); gap: 1.5rem; }
+.pokemon-overview > .pokemon-image-large { padding: 1rem; border-radius: .8rem; background: radial-gradient(circle at 50% 42%, var(--sl-color-accent-low), transparent 70%); }
+.pokemon-overview .mon-head { padding-top: .5rem; }
+dl.facts { gap: .5rem 1rem; }
+dl.facts dt { font-size: .8rem; }
+dl.facts dd { font-size: .85rem; }
+.bar { height: .6rem; background: linear-gradient(90deg, var(--sl-color-accent), var(--sl-color-accent-high)); }
+.stats .bar-cell { min-width: 8rem; }
+details.trainer, details.shop { padding: .7rem 1rem; border-radius: .75rem; background: var(--sl-color-bg-nav); margin-block: .6rem; }
+details.trainer summary, details.shop summary { align-items: center; gap: .5rem 1rem; min-height: 44px; }
+details.trainer summary::before, details.shop summary::before { content: '+'; color: var(--sl-color-text-accent); font-size: 1.2rem; font-weight: 500; }
+details.trainer[open] summary::before, details.shop[open] summary::before { content: '−'; }
+details.trainer[open] summary, details.shop[open] summary { border-bottom: 1px solid var(--sl-color-gray-5); padding-bottom: .75rem; margin-bottom: 1rem; }
+.trainer-team { font-size: .75rem; line-height: 1.6; }
+.trainer-battles { padding-left: 1.25rem; }
+#loc-list .loc-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; columns: auto; list-style: none; padding: 0; }
+#loc-list .loc-list li { position: relative; margin: 0; padding: 1rem 1.15rem; border: 1px solid var(--sl-color-gray-5); border-radius: .65rem; background: var(--sl-color-bg-nav); }
+#loc-list .loc-list li[hidden] { display: none; }
+#loc-list .loc-list li:hover { border-color: var(--sl-color-accent); }
+#loc-list .loc-list li > a { display: block; color: var(--sl-color-white); font-weight: 650; text-decoration: none; }
+#loc-list .loc-list li > a::after { content: ''; position: absolute; inset: 0; }
+#loc-list .loc-list li > span { display: block; margin-top: .35rem; font-size: .75rem; }
+.game-setup { padding: 1rem; border-radius: .75rem; gap: .75rem 1.25rem; background: var(--sl-color-bg-nav); }
+section.quest { padding: 1.25rem; margin-block: 1.5rem; border: 1px solid var(--sl-color-gray-5); border-radius: .85rem; background: var(--sl-color-bg-nav); }
+.sl-markdown-content section.quest > h2 { font-size: 1.4rem; margin-top: 0; }
+.sl-markdown-content section.quest + section.quest { border-top: 1px solid var(--sl-color-gray-5); padding-top: 1.25rem; margin-top: 1.5rem; }
+.quest-tools { padding-top: .6rem; border-top: 1px solid var(--sl-color-gray-6); align-items: center; flex-wrap: wrap; }
+.quest-tools label { display: inline-flex; align-items: center; gap: .4rem; min-height: 40px; }
+.quest-tools input[type='checkbox'] { width: 18px; height: 18px; accent-color: var(--sl-color-accent); }
+.sl-markdown-content .card, .sl-markdown-content .sl-link-card { border: 1px solid var(--sl-color-gray-5); border-radius: .85rem; background: var(--sl-color-bg-nav); box-shadow: none; }
+.sl-markdown-content .sl-link-card:hover { border-color: var(--sl-color-accent); background: var(--sl-color-accent-low); }
+.sl-markdown-content .sl-link-card .title { font-size: 1rem; letter-spacing: -.015em; }
+.sl-markdown-content .sl-link-card .description { font-size: .85rem; }
+.starlight-aside { border-radius: .6rem; }
+.page-help { padding: 1.25rem 0; gap: .75rem 1.5rem; font-size: .75rem; }
+.pagination-links a { border-radius: .75rem; background: var(--sl-color-bg-nav); }
+@media (min-width: 72rem) { :root:not([data-has-toc]) { --sl-content-width: 72rem; } }
+@media (max-width: 50rem) {
+  :root { --sl-content-pad-x: 1.1rem; }
+  .sidebar-content a { padding-block: .65rem; }
+  .table-filter { gap: .65rem; padding: .8rem; }
+  .table-filter input[type='search'], .table-filter select, .game-setup select { font-size: 1rem; }
+  .table-filter select { flex-basis: calc(50% - .65rem); }
+  .sl-markdown-content table :is(th, td) { padding: .6rem .65rem; }
+  .table-scroll > table > thead > tr > th:first-child { position: sticky; left: 0; z-index: 2; }
+  .table-scroll > table > tbody > tr > td:first-child { position: sticky; left: 0; z-index: 1; background: var(--sl-color-bg-nav); box-shadow: 1px 0 var(--sl-color-gray-5); min-width: 5rem; max-width: 12rem; }
+  .pokemon-overview { gap: 1rem; padding: 1rem; }
+  .pokemon-overview > .pokemon-image-large { width: 190px; margin-inline: auto !important; }
+  section.quest { padding: 1rem; }
+  .sl-markdown-content section.quest > h2 { font-size: 1.2rem; }
+}
+@media (max-width: 35rem) {
+  .table-filter select { flex-basis: 100%; }
+  #loc-list .loc-list { grid-template-columns: 1fr; }
+  .game-setup { display: grid; gap: .8rem; }
+  .game-setup label { display: grid; gap: .3rem; }
+  .game-setup select { margin-left: 0; max-width: 100%; width: 100%; }
+  .pokemon-overview .mon-head { flex-basis: 100%; min-width: 0; }
+  dl.facts { grid-template-columns: minmax(6rem, 1fr) minmax(0, 2fr); gap: .5rem .75rem; }
+  dl.facts dd { margin-bottom: 0; overflow-wrap: anywhere; }
+  details.trainer, details.shop { padding: .65rem .75rem; }
+  .trainer-name { font-size: .9rem; }
+  .trainer-team { flex-basis: 100%; }
+  .page-help a { padding-block: .35rem; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+@media print {
+  .table-scroll { overflow: visible; border: 0; }
+  .table-scroll-hint, .page-heading-art { display: none; }
+  .sl-markdown-content table { display: table; overflow: visible; }
+  .table-scroll > table > tbody > tr > td:first-child { position: static; box-shadow: none; }
+  section.quest { break-inside: avoid; }
+}

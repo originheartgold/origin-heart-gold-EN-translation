@@ -1,0 +1,33 @@
+---
+import PokemonImage from './PokemonImage.astro';
+import { speciesById, url } from '../lib/data';
+---
+<section class="home-hero">
+  <div class="home-hero-copy">
+    <p class="eyebrow">A FAMILIAR WORLD. A NEW ADVENTURE.</p>
+    <h1 id="_top">Origin <span>HeartGold.</span></h1>
+    <p class="home-tagline">There’s more to discover.</p>
+    <p class="home-description">Your English companion to Origin HeartGold. Find the hidden quests, build your team, and make the most of every stop along the way.</p>
+    <div class="home-actions"><a class="guide-button" href={url('/guide/')}>Explore the quest guide <span aria-hidden="true">→</span></a><a class="home-secondary" href={url('/patch/')}>Patch your game <span aria-hidden="true">↗</span></a></div>
+    <p class="home-version">起源心金 v4.0.3 <span>·</span> Free, fan-made & full of discovery</p>
+  </div>
+  <div class="home-art" aria-hidden="true"><div class="home-art-orbit"></div><PokemonImage loading="eager" s={speciesById.get(250)!} /><div class="home-art-companion"><PokemonImage loading="eager" s={speciesById.get(152)!} /><PokemonImage loading="eager" s={speciesById.get(155)!} /><PokemonImage loading="eager" s={speciesById.get(158)!} /></div></div>
+</section>
+<style>
+  .home-hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; align-items: center; padding-block: 3rem 2rem; }
+  .home-hero h1#_top { font-size: clamp(3rem, 6.5vw, 5.8rem); letter-spacing: -.065em; line-height: .98; font-weight: 800; margin: 1.25rem 0 1.5rem; }
+  .home-hero h1 span { display: block; color: var(--sl-color-text-accent); }
+  .home-tagline { font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 600; letter-spacing: -.025em; color: var(--sl-color-white); margin: 0 0 .75rem; }
+  .home-description { color: var(--sl-color-gray-2); max-width: 44ch; line-height: 1.8; font-size: 1rem; }
+  .home-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 1.75rem; }
+  .home-secondary { color: var(--sl-color-text-accent); font-size: .9rem; text-underline-offset: .25em; }
+  .home-version { font-size: .7rem; color: var(--sl-color-gray-3); margin-top: 1.5rem; }
+  .home-version span { margin-inline: .4rem; }
+  .home-art { position: relative; min-width: 0; padding-bottom: 5.5rem; }
+  .home-art-orbit { position: absolute; inset: 5% 0 15%; border: 1px solid var(--sl-color-accent-low); border-radius: 50%; background: radial-gradient(circle, var(--sl-color-accent-low), transparent 68%); }
+  .home-art > :global(.pokemon-image-small) { position: relative; width: 100%; height: auto; transform: rotate(-5deg); filter: drop-shadow(0 15px 15px rgb(0 0 0 / .12)); }
+  .home-art :global(img) { width: 100%; height: auto; }
+  .home-art-companion { position: absolute; bottom: 0; left: 5%; right: 5%; display: flex; align-items: end; justify-content: center; }
+  .home-art-companion :global(.pokemon-image-small) { width: 32%; height: auto; flex: 0 1 32%; }
+  @media (max-width: 50rem) { .home-hero { grid-template-columns: 1fr; gap: 1.5rem; padding-block: 1.5rem 0; } .home-hero h1#_top { font-size: clamp(3.6rem, 13vw, 5.8rem); } .home-art { width: min(100%, 340px); margin-inline: auto; padding-bottom: 4rem; } }
+</style>

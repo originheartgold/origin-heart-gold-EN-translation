@@ -42,7 +42,7 @@ export function setupTeamBuilder() {
   let active: number | null = team[0] ?? null;
   let page = 0;
   let request = 0;
-  const pageSize = 18;
+  const pageSize = 24;
   const cache = new Map<number, any>();
   const status = (text: string) => { get('status').textContent = text; };
 

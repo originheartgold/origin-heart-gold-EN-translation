@@ -18,23 +18,10 @@ hero:
       variant: minimal
 ---
 
-import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import HomeExplore from '../../components/HomeExplore.astro';
 
-<CardGrid>
-	<Card title="Quest guide" icon="open-book">
-		Over 350 side quests, puzzles and easy-to-miss events, chapter by chapter in rough play order.
-		Pick your starter and whether you play as a boy or a girl, and quests your game can't get are hidden.
-	</Card>
-	<Card title="Pokédex" icon="magnifier">
-		Each species with the hack's own types, abilities, base stats, evolutions, level-up moves, TMs, tutors, egg moves and where to find it.
-	</Card>
-	<Card title="Locations" icon="seti:folder">
-		Each place on one page: its quests, wild Pokémon by time of day and method, trainers with full teams, items and shops.
-	</Card>
-	<Card title="Plan your playthrough" icon="rocket">
-		Find a move’s effects, a tutor’s requirements or an item’s location before setting out. Find this hack’s changes alongside practical instructions. Spot a mistake? Every page has a "Report a problem" link.
-	</Card>
-</CardGrid>
+<HomeExplore />
 
 ## Jump in
 

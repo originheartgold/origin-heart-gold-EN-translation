@@ -1,42 +1,233 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import TrainerCard from '../../components/TrainerCard.astro';
-import { trainerById, url } from '../../lib/data';
+import TrainerTeamPreview from '../../components/TrainerTeamPreview.astro';
+import PokemonImage from '../../components/PokemonImage.astro';
+import { trainerById, speciesById, url } from '../../lib/data';
 import sections from '../../data/trainer_guide.json';
 import { trainerProfiles } from '../../lib/trainer-profiles';
+import { teamLevelRange } from '../../lib/trainer-encounters.mjs';
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '');
-const headings = [{ depth: 2, slug: 'all-trainers', text: 'All trainers' }, ...sections.map((section) => ({ depth: 2, slug: slug(section.title), text: section.title }))];
+const categories = [
+  { label: 'Kanto Gyms', mon: 95, description: 'Your first eight challenges' },
+  { label: 'Johto Gyms', mon: 241, description: 'Continue your Gym journey' },
+  { label: 'Rivals', mon: 25, description: 'Familiar faces, evolving teams' },
+  { label: 'Leader rematches', mon: 130, description: 'Beyond the Gym challenge' },
+  { label: 'Elite Four', mon: 149, description: 'Prepare for the League' },
+  { label: 'Steven & Cynthia', mon: 445, description: 'Take on the Champions' },
+  { label: 'Team Rocket', mon: 34, description: 'Bosses, Executives & elites' },
+  { label: 'More characters', mon: 133, description: 'More encounters to discover' },
+  { label: 'Unconfirmed encounters', mon: 201, description: 'Teams with no known battle' },
+];
+const directory = trainerProfiles.map(profile => {
+  const team = profile.teams.find(t => profile.encounters.some(e => e.team.id === t.id)) ?? profile.teams[0];
+  const places = [...new Set(profile.encounters.map(e => e.place.map).filter(Boolean))];
+  const classes = [...new Set(profile.teams.map(t => t.cls).filter(Boolean))];
+  const groups = sections.flatMap((section, i) => section.entries.some(entry => entry.ids.some(id => profile.teams.some(t => t.id === id))) ? [String(i)] : []);
+  const search = [profile.label, ...classes, ...places, ...profile.teams.flatMap(t => t.team.map(m => m.name))].join(' ').toLowerCase();
+  return { profile, team, places, classes, groups, search };
+});
 ---
-<StarlightPage frontmatter={{ title: 'Trainers', description: 'Gym challenges in guide order, plus rival, League, Rocket and partner teams in Origin HeartGold.' }} headings={headings}>
-	<p>Gym challenges follow the quest guide through Kanto, then Johto. This is a reading order, not a strict list of prerequisites.
-	Other teams are grouped by character within each section, including rematches and appearances as your partner. Each team lists its known battle locations and conditions.</p>
-	<p>Battle conditions may also depend on story progress;
-	see the <a href={url('/guide/')}>quest guide</a> for story prerequisites. Ordinary trainers appear on their{' '}<a href={url('/locations/')}>location pages</a>. Featured records without an identified encounter are marked below.</p>
-	<nav aria-label="Trainer sections"><ul class="loc-list">
-		<li><a href="#all-trainers">All trainers</a></li>
-		{sections.map((section) => <li><a href={`#${slug(section.title)}`}>{section.title}</a></li>)}
-	</ul></nav>
-	<h2 id="all-trainers">All trainers</h2>
-	<p>Search by trainer, class or location. Each trainer’s page collects their teams and encounters, including appearances under a different class. Unrelated trainers with the same name have separate entries.</p>
-	<div class="table-filter" data-table="trainer-directory"><input type="search" placeholder="Search trainers or locations…" aria-label="Search trainers or locations" /><span class="filter-count" aria-live="polite"></span></div>
-	<table id="trainer-directory" class="compact sortable">
-		<thead><tr><th>Trainer</th><th>Teams</th><th>Locations</th></tr></thead>
-		<tbody>{trainerProfiles.map(profile => <tr>
-			<td><a href={url(`/trainers/records/${profile.id}/`)}>{profile.label}</a><span class="small ability-summary">{[...new Set(profile.teams.map(t => t.cls).filter(Boolean))].join(' · ')}</span></td>
-			<td>{profile.teams.length}</td>
-			<td>{[...new Set(profile.encounters.map(e => e.place.map).filter(Boolean))].join(' · ') || 'Encounter unconfirmed'}</td>
-		</tr>)}</tbody>
-	</table>
-	<span id="gym-leaders"></span>
-	{sections.map((section) => <>
-		<h2 id={slug(section.title)}>{section.title}</h2>
-		{section.title === 'Team Rocket bosses, Executives and elites' && <span id="team-rocket-bosses-and-executives"></span>}
-		{section.title === 'Steven and Cynthia' && <span id="champions"></span>}
-		{section.description && <p>{section.description}</p>}
-		{section.entries.map((entry) => <>
-			<h3 id={`${slug(section.title)}-${slug(entry.title)}`}>{entry.title}</h3>
-			{entry.note && <p>{entry.note}</p>}
-			{entry.ids.map((id) => <TrainerCard t={trainerById.get(id)!} showPlaces />)}
-		</>)}
-	</>)}
+<StarlightPage frontmatter={{ title: 'Trainers', description: 'Find your next opponent. Explore trainer teams, Gym challenges, rematches and partner encounters in Origin HeartGold.', tableOfContents: false }}>
+<div class="trainer-directory-page">
+  <section class="trainer-hero" aria-label="Trainer guide introduction">
+    <div>
+      <p class="eyebrow">THE BATTLE GUIDE</p>
+      <h2>Know your next opponent.</h2>
+      <p>From your first Gym to a familiar rival’s rematch. Find their Pokémon, plan your team, and step into battle prepared.</p>
+      <a class="guide-button" href="#all-trainers">Find a trainer <span aria-hidden="true">↗</span></a>
+      <a class="hero-secondary" href={url('/guide/')}>Follow the quest guide <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="trainer-hero-art" aria-hidden="true">
+      <PokemonImage loading="eager" s={speciesById.get(6)!} />
+      <PokemonImage loading="eager" s={speciesById.get(25)!} />
+    </div>
+    <div class="trainer-hero-stats"><span><strong>{trainerProfiles.length}</strong> trainer profiles</span><span><strong>16</strong> Gym challenges</span><span>Teams · Locations · Rematches</span></div>
+  </section>
+
+  <nav class="trainer-categories" aria-label="Trainer sections">
+    {sections.map((section, i) => <a href={`#${slug(section.title)}`}>
+      <PokemonImage s={speciesById.get(categories[i].mon)!} />
+      <span><strong>{categories[i].label}</strong><small>{categories[i].description}</small></span>
+      <span class="category-arrow" aria-hidden="true">↗</span>
+    </a>)}
+  </nav>
+
+  <section class="trainer-browser" aria-labelledby="all-trainers">
+    <div class="directory-heading"><div><p class="eyebrow">THE TRAINER DIRECTORY</p><h2 id="all-trainers" tabindex="-1">All trainers</h2></div><span class="directory-total">{trainerProfiles.length} profiles</span></div>
+    <p>Every team and encounter, collected by trainer. Search for a name, class, location or Pokémon.</p>
+    <div class="trainer-controls" hidden>
+      <label class="trainer-search"><span>Find a trainer</span><input id="trainer-search" type="search" placeholder="Try Giovanni, Pewter Gym or Pikachu…" aria-controls="trainer-directory" /></label>
+      <label><span>Battle group</span><select id="trainer-category" aria-controls="trainer-directory"><option value="">All trainers</option>{categories.map((c, i) => <option value={i}>{c.label}</option>)}<option value="ordinary">Other trainers</option></select></label>
+      <button type="button" class="filter-reset" id="trainer-reset">Reset</button>
+    </div>
+    <p id="trainer-results" class="small muted" role="status" aria-live="polite">Showing all {trainerProfiles.length} trainer profiles.</p>
+    <div id="trainer-directory" class="trainer-directory">
+      {directory.map(({profile, team, places, classes, groups, search}) => <article class="trainer-profile-card" data-search={search} data-groups={groups.join(' ')}>
+        <header><div><p class="profile-class">{classes.join(' · ') || 'Trainer'}</p><h3><a href={url(`/trainers/records/${profile.id}/`)}>{profile.label}</a></h3></div><span class="profile-team-count">{profile.teams.length} {profile.teams.length === 1 ? 'team' : 'teams'}</span></header>
+        <p class="profile-location">{places.slice(0, 2).join(' · ') || 'Encounter unconfirmed'}{places.length > 2 && <span> +{places.length - 2} more</span>}</p>
+        <div class="profile-team"><p>Team preview <span>{teamLevelRange(team)}</span></p><TrainerTeamPreview team={team.team} /></div>
+        <footer><span>All teams & encounters</span><span aria-hidden="true">→</span></footer>
+      </article>)}
+    </div>
+    <div class="trainer-empty" hidden><h3>No trainers found</h3><p>Try another name, Pokémon or location, or reset your filters.</p></div>
+    <nav class="trainer-pagination" aria-label="Trainer directory pages" hidden><button type="button" id="trainer-prev">← Previous</button><span id="trainer-page"></span><button type="button" id="trainer-next">Next →</button></nav>
+    <p class="small muted artwork-credit">Pokémon artwork: <a href="https://github.com/PokeAPI/sprites">PokéAPI</a>. Previews show one team; open a profile for every variation. Where form artwork is unavailable, the standard form is shown.</p>
+  </section>
+
+  <aside class="trainer-reading-note"><strong>Following the story?</strong> Gym challenges below follow the quest guide through Kanto, then Johto. This is a reading order, not a strict list of prerequisites. Other battles are grouped by character, including rematches and partner appearances. Check the <a href={url('/guide/')}>quest guide</a> for story requirements, or browse trainers by <a href={url('/locations/')}>location</a>.</aside>
+  <span id="gym-leaders"></span>
+  {sections.map((section, i) => <section class="trainer-guide-section">
+    <div class="trainer-section-heading"><PokemonImage s={speciesById.get(categories[i].mon)!} /><div><p class="eyebrow">{String(i + 1).padStart(2, '0')} / BATTLE GUIDE</p><h2 id={slug(section.title)}>{section.title}</h2></div><a href="#all-trainers" aria-label="Back to trainer directory">↑</a></div>
+    {section.title === 'Team Rocket bosses, Executives and elites' && <span id="team-rocket-bosses-and-executives"></span>}
+    {section.title === 'Steven and Cynthia' && <span id="champions"></span>}
+    {section.description && <p>{section.description}</p>}
+    {section.entries.map((entry) => <div class="trainer-guide-entry">
+      <h3 id={`${slug(section.title)}-${slug(entry.title)}`}>{entry.title}</h3>
+      {entry.note && <p>{entry.note}</p>}
+      {entry.ids.map((id) => <TrainerCard t={trainerById.get(id)!} showPlaces illustrated />)}
+    </div>)}
+  </section>)}
+</div>
 </StarlightPage>
+
+<script>
+function setupTrainerDirectory() {
+  const directory = document.querySelector<HTMLElement>('#trainer-directory');
+  if (!directory || directory.dataset.ready) return;
+  directory.dataset.ready = 'true';
+  const cards = [...directory.querySelectorAll<HTMLElement>('.trainer-profile-card')];
+  const search = document.querySelector<HTMLInputElement>('#trainer-search')!;
+  const category = document.querySelector<HTMLSelectElement>('#trainer-category')!;
+  const status = document.querySelector<HTMLElement>('#trainer-results')!;
+  const pagination = document.querySelector<HTMLElement>('.trainer-pagination')!;
+  const previous = document.querySelector<HTMLButtonElement>('#trainer-prev')!;
+  const next = document.querySelector<HTMLButtonElement>('#trainer-next')!;
+  const empty = document.querySelector<HTMLElement>('.trainer-empty')!;
+  const pageLabel = document.querySelector<HTMLElement>('#trainer-page')!;
+  const pageSize = 18;
+  let page = 1;
+  const normalize = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/['’]/g, '').toLowerCase();
+  const searchable = new Map(cards.map(card => [card, normalize(card.dataset.search!)]));
+  function render(save = true) {
+    const terms = normalize(search.value).trim().split(/\s+/).filter(Boolean);
+    const matches = cards.filter(card => terms.every(term => searchable.get(card)!.includes(term)) && (!category.value || (category.value === 'ordinary' ? !card.dataset.groups : card.dataset.groups!.split(' ').includes(category.value))));
+    const pages = Math.max(1, Math.ceil(matches.length / pageSize));
+    page = Math.max(1, Math.min(page, pages));
+    const visible = new Set(matches.slice((page - 1) * pageSize, page * pageSize));
+    cards.forEach(card => { card.hidden = !visible.has(card); });
+    status.textContent = matches.length ? `Showing ${(page - 1) * pageSize + 1}–${Math.min(page * pageSize, matches.length)} of ${matches.length} ${matches.length === 1 ? 'trainer' : 'trainers'}` : 'No trainers match your filters.';
+    empty.hidden = matches.length > 0;
+    pagination.hidden = pages <= 1;
+    previous.disabled = page <= 1;
+    next.disabled = page >= pages;
+    pageLabel.textContent = `Page ${page} of ${pages}`;
+    if (save) {
+      const url = new URL(location.href);
+      for (const [key, value] of [['q', search.value.trim()], ['group', category.value], ['page', page > 1 ? String(page) : '']]) value ? url.searchParams.set(key, value) : url.searchParams.delete(key);
+      history.replaceState(null, '', url);
+    }
+  }
+  function restore() {
+    const params = new URLSearchParams(location.search);
+    search.value = params.get('q') ?? '';
+    category.value = params.get('group') ?? '';
+    page = Number.parseInt(params.get('page') ?? '1', 10) || 1;
+    render(false);
+  }
+  search.addEventListener('input', () => { page = 1; render(); });
+  category.addEventListener('change', () => { page = 1; render(); });
+  document.querySelector('#trainer-reset')!.addEventListener('click', () => { search.value = ''; category.value = ''; page = 1; render(); search.focus(); });
+  for (const [button, delta] of [[previous, -1], [next, 1]] as const) button.addEventListener('click', () => { page += delta; render(); document.querySelector<HTMLElement>('#all-trainers')!.focus(); });
+  window.addEventListener('popstate', restore);
+  document.querySelector<HTMLElement>('.trainer-controls')!.hidden = false;
+  restore();
+}
+setupTrainerDirectory();
+document.addEventListener('astro:page-load', setupTrainerDirectory);
+</script>
+
+<style>
+  :global(body:has(.trainer-directory-page)) { --sl-content-width: 76rem; }
+  .trainer-directory-page :where(p, h2, h3, header, footer, nav, section, div, aside, span, small) { margin-top: 0; }
+  .trainer-directory-page [hidden] { display: none !important; }
+  .trainer-hero { position: relative; overflow: hidden; display: grid; grid-template-columns: 1.35fr 1fr; padding: 2.5rem 2.5rem 0; border: 1px solid var(--sl-color-gray-5); border-radius: 1.25rem; background: radial-gradient(ellipse at 90% 25%, var(--sl-color-accent-low), transparent 65%), var(--sl-color-bg-nav); }
+  .trainer-hero h2 { font-size: clamp(1.9rem, 4vw, 3.25rem); line-height: 1.08; letter-spacing: -.045em; max-width: 12ch; margin-block: .75rem 1rem; }
+  .trainer-hero p:not(.eyebrow) { max-width: 43ch; color: var(--sl-color-gray-2); font-size: .95rem; }
+  .hero-secondary { display: inline-block; font-size: .85rem; margin: 1rem 0 1.5rem; }
+  .trainer-hero .guide-button { margin-right: 1rem; }
+  .trainer-hero-art { position: relative; min-height: 270px; align-self: center; }
+  .trainer-hero-art :global(.pokemon-image) { position: absolute; width: 100%; height: auto; max-width: 290px; right: 0; top: -25px; filter: drop-shadow(0 15px 18px rgb(0 0 0 / .18)); }
+  .trainer-hero-art :global(.pokemon-image:nth-of-type(2)) { width: 48%; max-width: 150px; top: 135px; right: 55%; transform: rotate(-8deg); }
+  .trainer-hero-art :global(img) { width: 100%; height: auto; }
+  .trainer-hero-stats { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .75rem 2rem; border-top: 1px solid var(--sl-color-gray-5); padding: 1rem 0; font-size: .78rem; color: var(--sl-color-gray-2); }
+  .trainer-hero-stats strong { color: var(--sl-color-white); font-size: 1rem; margin-right: .3rem; }
+  .trainer-categories { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; margin-block: 1.25rem 3.5rem; }
+  .trainer-categories > a { display: flex; align-items: center; gap: .7rem; padding: .8rem; border: 1px solid var(--sl-color-gray-5); border-radius: .8rem; text-decoration: none; background: var(--sl-color-bg-nav); color: var(--sl-color-white); transition: border-color .15s, background .15s; }
+  .trainer-categories > a:hover { border-color: var(--sl-color-accent); background: var(--sl-color-accent-low); }
+  .trainer-categories strong { display: block; font-size: .82rem; line-height: 1.3; }
+  .trainer-categories small { display: block; font-size: .7rem; line-height: 1.4; color: var(--sl-color-gray-3); margin-top: .3rem; }
+  .category-arrow { margin-left: auto; color: var(--sl-color-accent-high); }
+  .directory-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .directory-heading h2 { margin-top: .35rem; font-size: 2rem; letter-spacing: -.04em; }
+  .directory-total, .profile-team-count { font-size: .72rem; white-space: nowrap; background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); padding: .25rem .6rem; border-radius: 2rem; }
+  .trainer-browser > p { margin-block: .65rem 1.25rem; }
+  .trainer-controls { display: flex; align-items: end; gap: .75rem; background: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-gray-5); padding: 1rem; border-radius: .85rem; margin-bottom: .85rem; }
+  .trainer-controls label { display: grid; gap: .4rem; font-size: .75rem; font-weight: 600; min-width: 0; }
+  .trainer-search { flex: 1; }
+  .trainer-controls input, .trainer-controls select { width: 100%; min-width: 0; min-height: 44px; border: 1px solid var(--sl-color-gray-5); border-radius: .45rem; padding: .55rem .75rem; color: var(--sl-color-white); background: var(--sl-color-bg); font: inherit; font-size: .875rem; }
+  .trainer-controls button { min-height: 44px; }
+  .trainer-directory { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .trainer-profile-card { position: relative; display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--sl-color-gray-5); border-radius: .9rem; background: var(--sl-color-bg-nav); overflow: hidden; transition: border-color .15s, box-shadow .15s; }
+  .trainer-profile-card:hover, .trainer-profile-card:focus-within { border-color: var(--sl-color-accent); box-shadow: 0 6px 22px rgb(0 0 0 / .06); }
+  .trainer-profile-card header { display: flex; align-items: start; justify-content: space-between; gap: .5rem; padding: 1.1rem 1.1rem .5rem; }
+  .profile-class { font-size: .65rem; text-transform: uppercase; letter-spacing: .07em; color: var(--sl-color-gray-3); margin-bottom: .35rem; }
+  .trainer-profile-card h3 { font-size: 1.05rem; line-height: 1.3; }
+  .trainer-profile-card h3 a { color: var(--sl-color-white); text-decoration: none; }
+  .trainer-profile-card h3 a::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+  .trainer-profile-card h3 a:focus-visible { outline: none; }
+  .trainer-profile-card:focus-within { outline: 2px solid var(--sl-color-accent); outline-offset: 3px; }
+  .profile-location { font-size: .75rem; color: var(--sl-color-gray-3); padding: 0 1.1rem; min-height: 2.5rem; line-height: 1.5; margin-bottom: .8rem; }
+  .profile-location span { white-space: nowrap; }
+  .profile-team { margin-top: auto !important; padding: .85rem 1rem; background: var(--sl-color-bg); border-top: 1px solid var(--sl-color-gray-6); }
+  .profile-team > p { display: flex; justify-content: space-between; gap: .5rem; margin-bottom: .4rem; font-size: .65rem; color: var(--sl-color-gray-3); }
+  .trainer-profile-card footer { display: flex; justify-content: space-between; padding: .7rem 1.1rem; font-size: .7rem; color: var(--sl-color-accent-high); border-top: 1px solid var(--sl-color-gray-6); }
+  .trainer-pagination { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-block: 1.5rem; font-size: .8rem; }
+  .trainer-pagination button { min-height: 44px; border: 1px solid var(--sl-color-gray-5); background: var(--sl-color-bg-nav); color: var(--sl-color-white); padding: .5rem .85rem; border-radius: .5rem; cursor: pointer; }
+  .trainer-pagination button:disabled { opacity: .45; cursor: default; }
+  .trainer-empty { padding: 3rem 1rem; text-align: center; border: 1px dashed var(--sl-color-gray-4); border-radius: .75rem; }
+  .artwork-credit { font-size: .7rem; }
+  .trainer-reading-note { margin-block: 3rem; padding: 1.2rem 1.5rem; border-left: 3px solid var(--sl-color-accent); background: var(--sl-color-accent-low); border-radius: 0 .75rem .75rem 0; font-size: .85rem; }
+  .trainer-reading-note strong { display: block; margin-bottom: .35rem; }
+  .trainer-guide-section { border-top: 1px solid var(--sl-color-gray-5); padding-top: 2rem; margin-block: 3rem; }
+  .trainer-section-heading { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .trainer-section-heading h2 { margin: .35rem 0 0; font-size: 1.6rem; letter-spacing: -.025em; }
+  .trainer-section-heading > a { margin-left: auto; text-decoration: none; padding: .5rem; }
+  .trainer-guide-entry { margin-block: 1.5rem; }
+  .trainer-guide-entry h3 { font-size: 1.1rem; margin-bottom: .75rem; }
+  @media (max-width: 75rem) { .trainer-directory { grid-template-columns: repeat(2, minmax(0, 1fr)); } .trainer-categories { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 38rem) {
+    .trainer-hero { grid-template-columns: 1fr; padding: 1.5rem 1.25rem 0; }
+    .trainer-hero h2 { max-width: 16ch; }
+    .trainer-hero-art { height: 190px; min-height: 190px; width: 260px; max-width: 100%; margin: 0 auto; }
+    .trainer-hero-art :global(.pokemon-image) { width: 200px; top: -25px; }
+    .trainer-hero-art :global(.pokemon-image:nth-of-type(2)) { top: 65px; right: 60%; width: 100px; }
+    .trainer-hero-stats { gap: .5rem 1rem; }
+    .trainer-hero-stats > :last-child { display: none; }
+    .trainer-categories { gap: .5rem; margin-bottom: 2rem; }
+    .trainer-categories > a { padding: .6rem; gap: .5rem; }
+    .trainer-categories :global(.pokemon-image-small) { flex-basis: 36px; width: 36px; height: 36px; }
+    .trainer-categories :global(img) { width: 36px; height: 36px; }
+    .trainer-categories small, .category-arrow { display: none; }
+    .trainer-categories strong { font-size: .75rem; }
+    .trainer-controls { flex-wrap: wrap; }
+    .trainer-search { flex-basis: 100%; }
+    .trainer-controls label:not(.trainer-search) { flex: 1; }
+    .trainer-controls input, .trainer-controls select { font-size: 1rem; }
+    .trainer-directory { grid-template-columns: 1fr; }
+    .directory-heading h2 { font-size: 1.75rem; }
+    .trainer-pagination { gap: .65rem; }
+    .trainer-section-heading h2 { font-size: 1.35rem; }
+    .trainer-reading-note { padding: 1rem; }
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+import PokemonImage from './PokemonImage.astro';
+import { speciesById, url } from '../lib/data';
+const path = Astro.url.pathname.slice(import.meta.env.BASE_URL.replace(/\/$/, '').length).split('/').filter(Boolean);
+const sections: Record<string, {label: string; mon: number}> = {
+  'team-builder': { label: 'Plan your team', mon: 133 },
+  pokemon: { label: 'Pokédex', mon: 151 }, locations: { label: 'Explore the world', mon: 149 },
+  items: { label: 'Items & equipment', mon: 52 }, moves: { label: 'Build your moveset', mon: 448 },
+  abilities: { label: 'Battle essentials', mon: 197 }, tms: { label: 'TMs & HMs', mon: 137 },
+  tutors: { label: 'Learn something new', mon: 65 }, trainers: { label: 'The battle guide', mon: 6 },
+  guide: { label: 'The quest guide', mon: 133 }, calendar: { label: 'Seasonal discoveries', mon: 251 },
+  mechanics: { label: 'Getting started', mon: 25 }, faq: { label: 'A little guidance', mon: 175 },
+  patch: { label: 'Start your adventure', mon: 250 }, 'save-editor': { label: 'Your adventure, your team', mon: 233 },
+  about: { label: 'About the project', mon: 154 }, contribute: { label: 'Help the guide grow', mon: 152 },
+  'camera-codes': { label: 'A new perspective', mon: 164 }, 'reference-sources': { label: 'Behind the guide', mon: 201 },
+};
+const section = sections[path[0]];
+const showArt = section && path.length === 1 && path[0] !== 'trainers';
+---
+<div class="guide-page-heading">
+  <div>
+    <nav class="page-breadcrumb" aria-label="Breadcrumb"><a href={url('/')}>Home</a><span aria-hidden="true">/</span>{path.length > 1 && section ? <a href={url(`/${path[0]}/`)}>{section.label}</a> : <span>{section?.label ?? 'Origin HeartGold'}</span>}</nav>
+    <Default {...Astro.props} />
+  </div>
+  {showArt && <div class="page-heading-art" aria-hidden="true"><PokemonImage loading="eager" s={speciesById.get(section.mon)!} /></div>}
+</div>
+<style>
+  .guide-page-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 7rem; }
+  .guide-page-heading > div:first-child { min-width: 0; }
+  .page-breadcrumb { display: flex; flex-wrap: wrap; gap: .5rem; font-size: .75rem; color: var(--sl-color-gray-3); }
+  .page-breadcrumb a { text-decoration: none; color: inherit; }
+  .page-breadcrumb a:hover { color: var(--sl-color-text-accent); text-decoration: underline; }
+  .page-heading-art { flex: 0 0 108px; border-radius: 50%; background: radial-gradient(circle, var(--sl-color-accent-low), transparent 72%); }
+  .page-heading-art :global(.pokemon-image-small) { width: 108px; height: 108px; }
+  .page-heading-art :global(img) { width: 100%; height: 100%; }
+  @media (max-width: 38rem) { .guide-page-heading { min-height: 5.5rem; } .page-heading-art { flex-basis: 76px; } .page-heading-art :global(.pokemon-image-small) { width: 76px; height: 76px; } }
+</style>

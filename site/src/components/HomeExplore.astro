@@ -1,0 +1,22 @@
+---
+import PokemonImage from './PokemonImage.astro';
+import { speciesById, url } from '../lib/data';
+const cards = [
+  { title: 'Find your next quest', label: 'THE ADVENTURE', text: 'Side stories, puzzles and easy-to-miss moments, chapter by chapter.', href: '/guide/', mon: 133 },
+  { title: 'Meet your next teammate', label: 'THE POKÉDEX', text: 'Where to find them, how they evolve, and what makes them different.', href: '/pokemon/', mon: 151 },
+  { title: 'Know the competition', label: 'THE BATTLE GUIDE', text: 'Gym Leaders, rivals and rematches. See every team before you battle.', href: '/trainers/', mon: 6 },
+  { title: 'Explore every corner', label: 'THE WORLD', text: 'Wild Pokémon, quests, items and shops, all collected by location.', href: '/locations/', mon: 149 },
+];
+---
+<nav class="home-explore" aria-label="Explore the guide">{cards.map(card => <a href={url(card.href)}><div><span class="eyebrow">{card.label}</span><h2>{card.title}</h2><p>{card.text}</p><span class="explore-link">Explore <span aria-hidden="true">→</span></span></div><PokemonImage s={speciesById.get(card.mon)!} /></a>)}</nav>
+<style>
+  .home-explore { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .home-explore > a { position: relative; display: flex; align-items: center; gap: .5rem; padding: 1.5rem; border: 1px solid var(--sl-color-gray-5); border-radius: 1rem; background: var(--sl-color-bg-nav); color: var(--sl-color-text); text-decoration: none; transition: border-color .15s, box-shadow .15s; }
+  .home-explore > a:hover { border-color: var(--sl-color-accent); box-shadow: 0 8px 24px rgb(0 0 0 / .06); }
+  .home-explore h2 { font-size: 1.25rem; line-height: 1.3; letter-spacing: -.03em; margin: .65rem 0; }
+  .home-explore p { font-size: .85rem; color: var(--sl-color-gray-3); margin: 0; }
+  .explore-link { display: inline-flex; gap: 1rem; margin-top: 1rem; font-size: .8rem; color: var(--sl-color-text-accent); font-weight: 600; }
+  .home-explore :global(.pokemon-image-small) { flex: 0 0 110px; width: 110px; height: 110px; }
+  .home-explore :global(img) { width: 100%; height: 100%; }
+  @media (max-width: 42rem) { .home-explore { grid-template-columns: 1fr; } .home-explore > a { padding: 1.25rem; } .home-explore :global(.pokemon-image-small) { flex-basis: 85px; width: 85px; height: 85px; } }
+</style>
