@@ -1,0 +1,102 @@
+; safari-no-wild-double - disassembly snapshot of safari-no-wild-double.asm: every edit, old -> new. Generated; do not edit.
+; Regenerate: python3 work/tools/asmpatch.py listing --write safari-no-wild-double   (check.py --full fails when it is stale)
+; Old: the Chinese ROM. New: safari-no-wild-double.asm assembled alone over it by armips v0.11.0.
+; Disassembly: capstone 5.0.9 (UAL syntax). '  ' unchanged context, '- ' old, '+ ' new;
+; addresses are RAM addresses, Thumb bytes are halfwords, ARM bytes words; data rows are what one
+; statement writes (u16 rows of a string or key row with their characters, '|' = 0xFFFF end).
+
+== overlay2+0x1184 (RAM 0x022470C4), 70 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
+  022470C4  2000       movs r0, #0
+  022470C6  9004       str r0, [sp, #0x10]
+  022470C8  F5D9 F9DA  bl #0x2020480
+  022470CC  0FC1       lsrs r1, r0, #0x1f
+  022470CE  0782       lsls r2, r0, #0x1e
+  022470D0  1A52       subs r2, r2, r1
+  022470D2  201E       movs r0, #0x1e
+  022470D4  41C2       rors r2, r0
+  022470D6  1888       adds r0, r1, r2
+  022470D8  D10A       bne #0x22470f0
+  022470DA  9805       ldr r0, [sp, #0x14]
+  022470DC  F60C FA48  bl #0x2053570
+  022470E0  2800       cmp r0, #0
+  022470E2  D005       beq #0x22470f0
+  022470E4  A809       add r0, sp, #0x24
+  022470E6  7840       ldrb r0, [r0, #1]
+  022470E8  2800       cmp r0, #0
+  022470EA  D101       bne #0x22470f0
+  022470EC  2001       movs r0, #1
+  022470EE  9004       str r0, [sp, #0x10]
+  022470F0  68E8       ldr r0, [r5, #0xc]
+  022470F2  F608 FBB1  bl #0x204f858
+  022470F6  9008       str r0, [sp, #0x20]
+  022470F8  F61E FD06  bl #0x2065b08
+  022470FC  9007       str r0, [sp, #0x1c]
+  022470FE  9808       ldr r0, [sp, #0x20]
+  02247100  F61E FD0A  bl #0x2065b18
+  02247104  9006       str r0, [sp, #0x18]
+  02247106  2F00       cmp r7, #0
+  02247108  D117       bne #0x224713a
+
+== overlay2+0x11CA (RAM 0x0224710A), 20 bytes, thumb: safari-no-wild-double-kind
+  02247106  2F00       cmp r7, #0
+  02247108  D117       bne #0x224713a
+- 0224710A  9807       ldr r0, [sp, #0x1c]
+- 0224710C  2100       movs r1, #0
+- 0224710E  2800       cmp r0, #0
+- 02247110  D001       beq #0x2247116
+- 02247112  2101       movs r1, #1
+- 02247114  E003       b #0x224711e  ; Encounter_DoubleCheck
+- 02247116  9806       ldr r0, [sp, #0x18]
+- 02247118  2800       cmp r0, #0
+- 0224711A  D000       beq #0x224711e  ; Encounter_DoubleCheck
+- 0224711C  2102       movs r1, #2
++ 0224710A  9807       ldr r0, [sp, #0x1c]
++ 0224710C  2101       movs r1, #1
++ 0224710E  2800       cmp r0, #0
++ 02247110  D10E       bne #0x2247130  ; Encounter_SingleSetup
++ 02247112  2100       movs r1, #0
++ 02247114  9806       ldr r0, [sp, #0x18]
++ 02247116  2800       cmp r0, #0
++ 02247118  D001       beq #0x224711e  ; Encounter_DoubleCheck
++ 0224711A  2102       movs r1, #2
++ 0224711C  46C0       mov r8, r8
+  0224711E  9804       ldr r0, [sp, #0x10]
+  02247120  2800       cmp r0, #0
+
+== overlay2+0x11DE (RAM 0x0224711E), 28 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
+  0224711E  9804       ldr r0, [sp, #0x10]
+  02247120  2800       cmp r0, #0
+  02247122  D005       beq #0x2247130  ; Encounter_SingleSetup
+  02247124  200B       movs r0, #0xb
+  02247126  214A       movs r1, #0x4a
+  02247128  F609 FD84  bl #0x2050c34
+  0224712C  900B       str r0, [sp, #0x2c]
+  0224712E  E009       b #0x2247144  ; Encounter_SetupDone
+  02247130  1C28       adds r0, r5, #0
+  02247132  AA0B       add r2, sp, #0x2c
+  02247134  F001 FAC6  bl #0x22486c4  ; Encounter_NewSetup
+  02247138  E004       b #0x2247144  ; Encounter_SetupDone
+
+== overlay2+0x123C (RAM 0x0224717C), 48 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
+  0224717C  A813       add r0, sp, #0x4c
+  0224717E  9000       str r0, [sp]
+  02247180  A80C       add r0, sp, #0x30
+  02247182  9001       str r0, [sp, #4]
+  02247184  9A0B       ldr r2, [sp, #0x2c]
+  02247186  1C28       adds r0, r5, #0
+  02247188  1C31       adds r1, r6, #0
+  0224718A  1C23       adds r3, r4, #0
+  0224718C  F000 FB00  bl #0x2247790
+  02247190  E079       b #0x2247286
+  02247192  9806       ldr r0, [sp, #0x18]
+  02247194  2800       cmp r0, #0
+  02247196  D00A       beq #0x22471ae
+  02247198  A813       add r0, sp, #0x4c
+  0224719A  9000       str r0, [sp]
+  0224719C  A80C       add r0, sp, #0x30
+  0224719E  9001       str r0, [sp, #4]
+  022471A0  9A0B       ldr r2, [sp, #0x2c]
+  022471A2  1C28       adds r0, r5, #0
+  022471A4  1C31       adds r1, r6, #0
+  022471A6  1C23       adds r3, r4, #0
+  022471A8  F000 FB00  bl #0x22477ac

@@ -1,0 +1,52 @@
+id = "safari-no-wild-double"
+title = "Safari Zone: wild encounters are single battles again (no frozen double battle)"
+kind = "code"
+enabled = true
+decisions = ["D-2276"]
+requires = []
+asm = "safari-no-wild-double.asm"
+why = """
+Players: in the Safari Zone, some wild encounters freeze the game (Discord report: 'Some encounter in the
+Safari [Zone] freezes the game'; an earlier player report from DraStic: a Lv79 paralysed opponent, then a
+crash). About one encounter in four becomes a Double Battle whose second opponent is junk (no name, a random
+level and status, no sprite), and the game hangs at the command menu. It only happens with at least two
+Pokémon that can fight in the party. The untouched Chinese ROM does the same, so this is a bug of the hack (hack finding D-1535).
+
+Status: D-1337 says hack bugs are reported, not fixed. This fix is a user-approved exception to it
+(D-2276, 2026-10-09, the answer to the hack finding D-1535); other hack bugs stay report-only.
+
+Technical: the walk/surf wild encounter in overlay 2 (0x02246FE4) has a random double battle the hack
+added (0x022470C4: rand % 4 == 0, at least two Pokémon that can fight). The setup choice after it
+(0x0224710A) sets r1 = 1 for the Safari Zone (sys flag 0x967), 2 for the Contest (0x996), 0 otherwise, but
+then builds BattleSetup_New(11, 0x4A), a double battle, whenever the random double was rolled, and only
+otherwise the Safari / Contest / normal setup (0x022486C4). The Safari and Contest branches that create the
+wild Pokémon (0x02247790, 0x022477AC) still create one; only the normal branch creates two for a double
+(0x02247F24 twice). The battle then runs a double with one uninitialised opponent.
+The Bug-Catching Contest takes the same path but is not affected: the contest keeps one Pokémon in the party,
+so the random double (two Pokémon that can fight) is never rolled there (seen in the emulator).
+"""
+what = """
+Old: Safari Zone + random double rolled -> double battle setup, one wild Pokémon created -> junk second
+opponent, freeze at the command menu.
+New: the 20 bytes at 0x0224710A test the Safari flag first and branch straight to the Safari setup
+(0x02247130, r1 = 1) before the double flag is read; the Contest (r1 = 2) and every other encounter (r1 = 0)
+fall through to the double check exactly as before. Not changed: the random double roll itself, wild doubles
+outside the Safari Zone, the Bug-Catching Contest, the partner-following double (r7), fishing and the other
+encounter paths (they have no random double).
+"""
+evidence = [
+  "D-2276: the user-approved exception to D-1337 for this fix; it answers the hack finding D-1535 (resolved)",
+  "User request 2026-10-09: 'We want to fix these bugs, so for each issue create a worktree per issue, and use a separate subagent to fix, test and review.' (Discord: 'Some encounter in the Safari [Zone] freezes the game.')",
+  "work/notes/safari-double_fix.md: the code path, the edit, and the emulator runs before and after",
+  "DeSmuME, 2026-10-09: with the roll forced, the Chinese ROM and the --without build build the double setup 0x4A with one wild Pokémon in the Safari Zone ('eeeeee Lv2', no sprite) and RUN never returns; the full build builds the Safari setup 0x20, one wild Pokémon, RUN works; a Route 1 encounter is a double with two wild Pokémon on all three",
+  "melonDS 1.1, 2026-10-09 (test ROM copies with the roll forced): the Chinese ROM and the --without build hang with a data abort at 0x0221E6B4 (overlay 14) as the battle starts; the full build plays normal single Safari battles",
+  "Bug-Catching Contest, DeSmuME 2026-10-09: the contest leaves one Pokémon in the party, a forced roll gives no double (Contest setup 0x1000, one wild Pokémon), on the Chinese ROM and the full build",
+  "Runtime: emu_harness.py fixes --case safari-no-wild-double (scenario safari: a Route 1 and a Safari Zone encounter with the random double forced, on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
+]
+
+[[code]]
+id = "safari-no-wild-double-kind"
+file = "overlay2"
+offset = "0x11CA"
+expect = "9807 2100 2800 D001 2101 E003 9806 2800 D000 2102"
+notes = "Walk/surf wild encounter, setup choice: the Safari Zone (r1 1) branches to its single setup at 0x02247130 before the random-double flag [sp+0x10] is read; the Contest (r1 2) and other encounters (r1 0) reach the double check unchanged. The asm also guards, read-only, the double roll, the setup branches and the one-Pokémon Safari/Contest creation."

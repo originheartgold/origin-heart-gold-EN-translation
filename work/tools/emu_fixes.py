@@ -60,6 +60,7 @@ COVERAGE = {
     "msgload": ("msgload",),
     "overworld-texture-frame-bounds": ("texture-bounds",),
     "bulbasaur-reflection-boundary": ("reflection",),
+    "safari-no-wild-double": ("safari",),
 }
 # fix id -> why no scenario of this command covers it (honest gaps; see work/notes/emu_harness.md)
 UNCOVERED = {
@@ -163,6 +164,20 @@ APPROVED = {   # taken from run work/build/hard4/run3 (2026-10-08), the build of
                        "approved_by": "user, 2026-10-08", "images": APPROVAL_IMAGES},
 }
 TITLE_FRAME = 2400                  # frames after power-on (intro movie); START then shows the title screen
+# safari-no-wild-double (safari-no-wild-double.listing): the walk/surf wild encounter in overlay 2. The hack's
+# random double roll takes rand() % 4 (rand returns at SAFARI_ROLL); SAFARI_SETUP_DONE runs right after the setup
+# choice with the BattleSetup * at [sp+0x2C], the random-double flag at [sp+0x10] and the Safari / Contest flags
+# at [sp+0x1C] / [sp+0x18].
+SAFARI_ROLL = 0x022470CC
+SAFARI_SETUP_DONE = 0x02247144
+SAFARI_BALLS_OFFSET = 0x78         # LocalFieldData + 0x78: u16 Safari Balls (arm9 0x0203AEB0, read at 0x022486DE)
+SAFARI_GRASS = (9, 1047, 332)       # Route 1, tall grass below route1_path_2mons.sav's spot (two Pokemon that fight)
+SAFARI_FLAG = 0x967                 # sys flag: in the Safari Zone game (arm9 0x02065B08)
+SAFARI_ENTER = (("SetVar", 0x40E3, 1), ("SafariZoneAction", 0, 0))   # the gate (script file 119, L2135-L2141)
+SAFARI_GRASS_IN = (357, 48, 40)     # Safari Zone: tall grass x 46-50 in the area block at 32,32 (this save)
+SAFARI_CASES = (("wild", False, 3), ("safari", True, 2))   # case, enter the Safari Zone, tiles paced
+BATTLE_DOUBLE_WILD = 0x4A           # BattleSetup_New(11, 0x4A): the double setup the hack's roll builds
+BATTLE_SAFARI = 0x20                # the Safari setup's battle type (arm9 0x02050DBC; observed 2026-10-09)
 
 
 # --------------------------------------------------------------------------------------------- helpers
@@ -538,6 +553,62 @@ def observe_battle(h):
     return {"fight": shot}
 
 
+def observe_safari(h):
+    """The hack's random wild double forced (rand() % 4 == 0) on grass encounters from one saved state: a normal
+    one on Route 1 and one in the Safari Zone (entered with the gate's commands, SAFARI_ENTER). Per case: the setup's
+    type, the random-double flag, the wild Pokemon the game builds (WildLog), whether the battle's command menu
+    lets RUN get back to the field. The hack builds a double setup for both, but the Safari path creates one
+    wild Pokemon."""
+    import emu_harness as E
+    base = Path(h.out) / "safari_base.dst"
+    h.save_state(base)
+    cur = {}
+
+    def roll(h):
+        cur["rolls"] = cur.get("rolls", 0) + 1
+        h.reg.r0 = 0                                    # rand() % 4 == 0: the double is rolled
+
+    def setup(h):
+        sp = h.reg.sp
+        bs = h.u32(sp + 0x2C)
+        cur.setdefault("setups", []).append({"battle_type": h.u32(bs), "double_rolled": h.u32(sp + 0x10),
+                                             "safari": h.u32(sp + 0x1C), "contest": h.u32(sp + 0x18)})
+    h.on_exec(SAFARI_ROLL, roll)
+    h.on_exec(SAFARI_SETUP_DONE, setup)
+    log = E.WildLog(h)
+    out = {}
+    for case, enter, span in SAFARI_CASES:
+        h.load_state(base)
+        cur.clear()
+        log.rows = []
+        if enter:            # the Safari Zone gate's own commands (script file 119): start the game, warp in
+            h.run_script(program=E.script_bytes(("LockAll",), *SAFARI_ENTER, ("ReleaseAll",), ("End",)), settle=60)
+            h.warp(*SAFARI_GRASS_IN)
+        row = {"position": list(h.position()), "safari_flag": h.get_flag(SAFARI_FLAG),
+               "safari_balls": h.u16(h.array(E.ARR_LOCAL_FIELD) + SAFARI_BALLS_OFFSET),
+               "field_screenshot": str(h.screenshot(f"safari_{case}_field"))}
+        steps = 0
+        while h.in_field() and not cur.get("setups") and steps < 240:
+            for d in ("LEFT",) * span + ("RIGHT",) * span:
+                if cur.get("setups"):
+                    break
+                h.walk(d, 1)
+                steps += 1
+        row.update(steps=steps, rolls=cur.get("rolls", 0), setups=cur.get("setups", []))
+        if not cur.get("setups"):
+            row["error"] = "no wild encounter"
+            row["screenshot"] = str(h.screenshot(f"safari_{case}_noencounter"))
+            out[case] = row
+            continue
+        h.step(900)
+        row["battle_screenshot"] = str(h.screenshot(f"safari_{case}_battle"))
+        row["wild"] = [{"species": r["species"], "pid": r["pid"], "checksum_ok": r["checksum_ok"]} for r in log.rows]
+        row["fled"] = h.flee(max_tries=6, battle_menu_wait=60)
+        row["after_screenshot"] = str(h.screenshot(f"safari_{case}_after"))
+        out[case] = row
+    return out
+
+
 SCENARIOS = {
     # name: (save file or None for a blank battery, start map or None, observe, needs the Chinese reference run)
     "naming": ("full_bag_6mons.sav", None, observe_naming, True),
@@ -548,6 +619,7 @@ SCENARIOS = {
     "font": ("full_bag_6mons.sav", None, observe_font, False),
     "textspeed": ("full_bag_6mons.sav", None, observe_textspeed, False),
     "battle": ("full_bag_6mons.sav", None, observe_battle, True),
+    "safari": ("route1_path_2mons.sav", SAFARI_GRASS, observe_safari, False),
 }
 EXTERNAL = {"msgload", "texture-bounds", "reflection"}  # scenarios run by other tools (memcheck.py,
 #                                                         emu_texture_bounds.py, emu_reflection.py)
@@ -709,6 +781,30 @@ def judge_textspeed(scenario, obs, ref=None):
     return _state(n / f >= 2.0, n / f <= 1.25, why)
 
 
+def judge_safari(scenario, obs, ref=None):
+    """Both builds: the forced roll gives the Route 1 encounter the double setup and two wild Pokemon (the hack's
+    random doubles are untouched). Safari Zone: 'original' = the double setup with one wild Pokemon (the freeze);
+    'fixed' = the double was rolled but the Safari setup was built, one wild Pokemon, and RUN reached the field."""
+    wild, saf = obs.get("wild", {}), obs.get("safari", {})
+
+    def one(row):
+        st = row.get("setups") or [{}]
+        return st[-1], len(row.get("wild", []))
+    ws, wn = one(wild)
+    ss, sn = one(saf)
+    why = {"wild": {"battle_type": ws.get("battle_type"), "double_rolled": ws.get("double_rolled"), "wild_mons": wn,
+                    "fled": wild.get("fled")},
+           "safari": {"battle_type": ss.get("battle_type"), "double_rolled": ss.get("double_rolled"),
+                      "safari_flag": ss.get("safari"), "wild_mons": sn, "fled": saf.get("fled"),
+                      "error": saf.get("error")}}
+    doubles_kept = (ws.get("battle_type") == BATTLE_DOUBLE_WILD and ws.get("double_rolled") == 1 and wn == 2
+                    and not ws.get("safari"))
+    in_safari = bool(ss.get("safari")) and ss.get("double_rolled") == 1 and sn == 1
+    fixed = doubles_kept and in_safari and ss.get("battle_type") == BATTLE_SAFARI and saf.get("fled") is True
+    original = doubles_kept and in_safari and ss.get("battle_type") == BATTLE_DOUBLE_WILD
+    return _state(fixed, original, why)
+
+
 NAMING_SITES_BY_ID = {v[0]: v for v in NAMING_SITES.values()}
 JUDGES = {
     ("naming", "namelen"): judge_namelen,
@@ -728,6 +824,7 @@ JUDGES = {
     ("antipiracy", "antipiracy"): judge_antipiracy,
     ("font", "font-glyphs"): judge_font,
     ("textspeed", "text-speed"): judge_textspeed,
+    ("safari", "safari-no-wild-double"): judge_safari,
 }
 
 

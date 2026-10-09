@@ -85,6 +85,15 @@ class Addresses(unittest.TestCase):
         ptrs = {int(p, 16) for e in REGISTRY["outfit-chooser-strings"]["string"] for p in e["pointers"]}
         self.assertEqual(ptrs, {0x4E4, 0x7C0, 0x7C4, 0x7C8})
 
+    def test_safari_hooks_follow_the_asm(self):
+        import re
+        asm = (F.WORK / "patches" / "safari-no-wild-double" / "safari-no-wild-double.asm").read_text()
+        labels = {m[1]: int(m[2], 16) for m in re.finditer(r"\.definelabel\s+(\w+),\s*(0x[0-9A-Fa-f]+)", asm)}
+        self.assertEqual(labels["Encounter_Kind"], region_ram("safari-no-wild-double", "safari-no-wild-double-kind"))
+        self.assertEqual(F.SAFARI_ROLL, labels["Encounter_Roll"] + 8)          # the instruction after bl rand
+        self.assertEqual(F.SAFARI_SETUP_DONE, labels["Encounter_SetupDone"])
+        self.assertEqual(OVERLAYS["overlay2"], 0x02245F40)
+
     def test_font_codes(self):
         _, fonts, codes = fixreg.font_spec([REGISTRY["font-glyphs"]])
         self.assertEqual(tuple(codes), F.FONT_CODES)
@@ -148,6 +157,7 @@ NAMING = {
                                        "namelen-nickname-script": [10]}, "ime_path_runs": 24},
 }
 CN_NAMING = {"player": {"crops": {"naming-tabs": "cn"}}}
+SAFARI_TYPE = F.BATTLE_SAFARI
 
 
 PCBOX_FIXED = {"name_window_width": 8, "ink_columns_x120_127": 1, "template": "x", "name_ink_pixels": 300,
@@ -284,6 +294,22 @@ class Judges(unittest.TestCase):
                          "unclear")
         self.assertEqual(F.COVERAGE["bulbasaur-reflection-boundary"], ("reflection",))
         self.assertIn("reflection", F.EXTERNAL)
+
+    def test_safari(self):
+        wild = {"setups": [{"battle_type": 0x4A, "double_rolled": 1, "safari": 0}], "wild": [{}, {}], "fled": True}
+
+        def obs(battle_type, mons, fled):
+            return {"wild": wild, "safari": {"setups": [{"battle_type": battle_type, "double_rolled": 1, "safari": 1}],
+                                             "wild": [{}] * mons, "fled": fled}}
+        self.assertEqual(F.judge_safari("safari", obs(SAFARI_TYPE, 1, True))[0], "fixed")
+        self.assertEqual(F.judge_safari("safari", obs(0x4A, 1, False))[0], "original")
+        self.assertEqual(F.judge_safari("safari", obs(SAFARI_TYPE, 1, False))[0], "unclear")   # stuck anyway
+        self.assertEqual(F.judge_safari("safari", {"wild": wild, "safari": {"error": "no wild encounter"}})[0],
+                         "unclear")
+        # the hack's random doubles elsewhere must still be doubles with two wild Pokemon
+        broken = dict(obs(SAFARI_TYPE, 1, True), wild=dict(wild, wild=[{}]))
+        self.assertEqual(F.judge_safari("safari", broken)[0], "unclear")
+        self.assertEqual(F.COVERAGE["safari-no-wild-double"], ("safari",))
 
     def test_judge_rows(self):
         selection = {"pcbox": ["pcbox-name-width"]}
