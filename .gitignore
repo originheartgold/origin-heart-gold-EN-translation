@@ -128,3 +128,6 @@ work/save-editor/local/
 
 # Agent worktrees (Claude Code)
 /.claude/worktrees/
+
+# Temporary files BSD sed -i leaves behind when an edit is interrupted
+.!*!*
