@@ -122,7 +122,27 @@
 2. Follow them in. The injured Celebi needs **10 Fresh Water, 10 Sitrus Berries and a Pokémon that can make light**. The light Pokémon must be your **lead** (first Pokémon that can battle): Staryu, Starmie, Chinchou, Lanturn, Ampharos, Volbeat or Clamperl.
 3. Come back and talk to Celebi or the ranger → "Use the prepared items?" → Yes. Celebi recovers (and your party is healed).
 4. Team Rocket's Executive Marauder arrives with two Grunts. You hold off the Grunts in a Double Battle (Lv. 62–65) while the others hide.
-5. Go north after them. At the end of the path, Marauder (Tyranitar and five more, Lv. 89–90) attacks. You battle him, then Celebi turns time back and you fight him again in a Double Battle against the same team, sent out two at a time.
+
+<aside class="forest-route" id="forest-of-time-route" aria-labelledby="forest-route-title">
+<div class="forest-route-heading">
+<p class="forest-route-eyebrow">AFTER THE TWO GRUNTS</p>
+<h3 id="forest-route-title">Find your way through the forest</h3>
+<p>Start in the clearing where you healed Celebi. Take these five exits in order.</p>
+</div>
+<p class="forest-route-print">Top-middle → top-middle → top-right → top-left → top-middle.</p>
+
+<!-- solver: forest-route -->
+
+<div class="forest-route-tip"><strong>Enter the side paths sideways.</strong> Walk <strong>right</strong> into the top-right exit and <strong>left</strong> into the top-left exit. Walking up onto them does nothing.</div>
+<p class="forest-route-arrival"><span aria-hidden="true">↳</span> <strong>Upper forest</strong> · Continue north to find Sammy and Celebi.</p>
+<details class="forest-route-help">
+<summary>Lost, or being sent back?</summary>
+<p>If you’ve lost track, return to the clearing where you healed Celebi and start from exit 1. You arrive standing on an exit each time; step off it before choosing the next one.</p>
+<p>The final exit loops back while you’re still fetching the medicine. After healing Celebi and winning the Grunt battle, the route is open.</p>
+</details>
+</aside>
+
+5. Follow the route above. At the end of the path, Marauder (Tyranitar and five more, Lv. 89–90) attacks. You battle him, then Celebi turns time back and you fight him again in a Double Battle against the same team, sent out two at a time.
 
 **Reward:** **Leaf Stone, Max Elixir, PP Max**. The lead is reported to the League HQ desk.
 
@@ -135,6 +155,8 @@
 **Where:** the shrine at the north end of the Forest of Time.
 
 **Who gets it / when:** after the Sammy chapter above. **One Shaymin and one Celebi per game.**
+
+**Getting there:** use the same [five-exit route through the forest](#forest-of-time-route) to reach the shrine.
 
 **How it works:**
 1. **Shaymin:** have the **[Gracidea](/items/gracidea/)** in your Bag (an item ball in the Cinnabar Island lab; see [Cinnabar Island: the Detrick lab lockdown](05-saffron-cinnabar.md#cinnabar-island-the-detrick-lab-lockdown-door-puzzle-and-mewtwo)), a **Leafeon** as your lead, and examine the shrine between **8:00 and 19:59**. Shaymin appears → "Let Shaymin join your party?" → Yes: **Shaymin Lv. 90**.

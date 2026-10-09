@@ -1,0 +1,108 @@
+---
+// Unaltered dual-screen captures from melonDS 1.1; CSS displays the top screen.
+// Captured walking the EN route on 2026-10-09, quest variable 0x4099 = 5.
+import entrance from '../assets/forest-route/01-entrance.png';
+import second from '../assets/forest-route/02-clearing.png';
+import third from '../assets/forest-route/03-clearing.png';
+import fourth from '../assets/forest-route/04-clearing.png';
+import fifth from '../assets/forest-route/05-clearing.png';
+const steps = [
+  { src: entrance, place: 'Entrance clearing', exit: 'Top-middle', note: 'From where you healed Celebi, take the path straight up.', x: 50, y: 28 },
+  { src: second, place: 'Second clearing', exit: 'Top-middle', note: 'Cross this clearing and take the path straight up again.', x: 50, y: 28 },
+  { src: third, place: 'Third clearing', exit: 'Top-right', note: 'Go to the upper-right path, then walk RIGHT into it.', x: 67, y: 35 },
+  { src: fourth, place: 'Fourth clearing', exit: 'Top-left', note: 'Go to the upper-left path, then walk LEFT into it.', x: 33, y: 35 },
+  { src: fifth, place: 'Last clearing', exit: 'Top-middle', note: 'Take the path straight up to reach the upper forest.', x: 50, y: 28 },
+];
+---
+<div class="forest-route-viewer not-content">
+  <div class="forest-viewer-main">
+    <div class="forest-frames">
+      {steps.map((s, i) => <figure class="forest-frame" data-step={i}>
+        <div class="forest-game-screen">
+          <img src={s.src.src} width="256" height="384" alt={`${s.place}: take the ${s.exit.toLowerCase()} exit marked by the gold ring.`} loading="eager" />
+          <span class="forest-exit-marker" style={`left:${s.x}%;top:${s.y}%`} aria-hidden="true"></span>
+          <span class="forest-shot-label" aria-hidden="true">{i + 1} / 5</span>
+        </div>
+        <figcaption><strong>{s.place}</strong><span>{s.note}</span></figcaption>
+      </figure>)}
+    </div>
+    <div class="forest-viewer-controls" hidden>
+      <button type="button" data-prev aria-label="Previous clearing">← Previous</button>
+      <span class="forest-viewer-status" aria-live="polite" aria-atomic="true">Step 1 of 5</span>
+      <button type="button" data-next aria-label="Next clearing">Next →</button>
+    </div>
+  </div>
+  <div class="forest-route-picker" hidden>
+    <p class="forest-picker-label">YOUR ROUTE</p>
+    {steps.map((s,i) => <button type="button" class="forest-step-button" data-select={i} aria-pressed={i === 0}>
+      <span class="forest-step-index">{i + 1}</span>
+      <span><small>{i === 0 ? 'Entrance' : i === 4 ? 'Last clearing' : 'Next clearing'}</small><strong>{s.exit}</strong></span>
+    </button>)}
+    <p class="forest-capture-credit">In-game captures<br /> melonDS · English version</p>
+  </div>
+</div>
+<style>
+  .forest-route-viewer { margin: 1.15rem 1.4rem; }
+  .forest-route-viewer[data-ready] { display: grid; grid-template-columns: minmax(0, 1fr) 10rem; gap: 1rem; align-items: start; }
+  .forest-route-viewer [hidden] { display: none !important; }
+  .forest-frame { margin: 0 0 1rem; }
+  [data-ready] .forest-frame { margin: 0; }
+  .forest-game-screen { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 0.5rem; background: #203526; }
+  .forest-game-screen img { display: block; margin: 0 !important; width: 100%; height: auto; image-rendering: pixelated; }
+  .forest-exit-marker { position: absolute; width: 11%; aspect-ratio: 1; border: 3px solid #ffdc72; border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 0 2px #242819, 0 0 0 5px #ffdc722b; }
+  .forest-shot-label { position: absolute; left: 0.6rem; bottom: 0.6rem; border-radius: 0.25rem; padding: 0.1rem 0.45rem; font: 600 0.7rem/1.7 monospace; color: #fff; background: #15251ee6; }
+  figcaption { padding-top: 0.7rem; font-size: 0.84rem; line-height: 1.5; }
+  figcaption strong { display: block; color: var(--sl-color-white); }
+  figcaption span { display: block; margin-top: 0.2rem; }
+  .forest-viewer-controls { display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; margin-top: 0.85rem; }
+  .forest-viewer-controls button { border: 1px solid var(--route-border); border-radius: 0.35rem; padding: 0.35rem 0.6rem; background: transparent; color: var(--route-ink); font-family: inherit; font-size: 0.78rem; font-weight: 600; line-height: 1.5; cursor: pointer; }
+  .forest-viewer-controls button:disabled { opacity: 0.4; cursor: default; }
+  .forest-viewer-status { font-size: 0.7rem; color: var(--sl-color-gray-2); }
+  .forest-picker-label { color: var(--route-ink); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; margin: 0 0 0.6rem !important; }
+  .forest-step-button { width: 100%; display: flex; align-items: center; gap: 0.6rem; text-align: left; border: 1px solid transparent; border-radius: 0.4rem; background: transparent; color: var(--sl-color-text); padding: 0.6rem; margin: 0 0 0.25rem !important; cursor: pointer; font: inherit; }
+  .forest-step-button[aria-pressed='true'] { background: var(--route-tile); border-color: var(--route-border); }
+  .forest-step-button:hover { background: var(--route-tile); }
+  .forest-step-index { width: 1.35rem; height: 1.35rem; display: grid; place-items: center; border: 1px solid var(--route-border); border-radius: 50%; color: var(--route-ink); font-size: 0.75rem; flex-shrink: 0; }
+  .forest-step-button[aria-pressed='true'] .forest-step-index { background: var(--route-ink); color: var(--route-bg); }
+  .forest-step-button small { display: block; font-size: 0.67rem; line-height: 1.4; }
+  .forest-step-button strong { display: block; font-size: 0.84rem; }
+  .forest-capture-credit { font-size: 0.65rem; line-height: 1.5; margin: 0.75rem 0.6rem 0 !important; color: var(--sl-color-gray-2); }
+  button:focus-visible { outline: 2px solid var(--sl-color-text-accent); outline-offset: 2px; }
+  @media (max-width: 40rem) {
+    .forest-route-viewer { margin-inline: 1rem; }
+    .forest-route-viewer[data-ready] { grid-template-columns: minmax(0, 1fr); }
+    .forest-route-picker { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .forest-picker-label { width: 100%; }
+    .forest-step-button { width: auto; flex: 1 1 30%; padding: 0.4rem; gap: 0.3rem; }
+    .forest-step-button small { display: none; }
+    .forest-step-button strong { font-size: 0.7rem; }
+    .forest-capture-credit { width: 100%; margin: 0.25rem 0 0 !important; }
+    .forest-capture-credit br { display: none; }
+  }
+  @media print { .forest-route-viewer { display: none !important; } }
+</style>
+<script>
+  for (const root of document.querySelectorAll<HTMLElement>('.forest-route-viewer')) {
+    const frames = [...root.querySelectorAll<HTMLElement>('.forest-frame')];
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>('[data-select]')];
+    const previous = root.querySelector<HTMLButtonElement>('[data-prev]')!;
+    const next = root.querySelector<HTMLButtonElement>('[data-next]')!;
+    const status = root.querySelector<HTMLElement>('.forest-viewer-status')!;
+    let active = 0;
+    const show = (index: number) => {
+      active = Math.max(0, Math.min(frames.length - 1, index));
+      frames.forEach((frame, i) => { frame.hidden = i !== active; });
+      buttons.forEach((button, i) => button.setAttribute('aria-pressed', String(i === active)));
+      previous.disabled = active === 0;
+      next.disabled = active === frames.length - 1;
+      status.textContent = `Step ${active + 1} of ${frames.length}`;
+    };
+    buttons.forEach((button, i) => button.addEventListener('click', () => show(i)));
+    previous.addEventListener('click', () => show(active - 1));
+    next.addEventListener('click', () => show(active + 1));
+    root.dataset.ready = '';
+    root.querySelector<HTMLElement>('.forest-route-picker')!.hidden = false;
+    root.querySelector<HTMLElement>('.forest-viewer-controls')!.hidden = false;
+    show(0);
+  }
+</script>

@@ -49,6 +49,7 @@ SOLVERS = {
     'celadon-password': 'CeladonPassword',
     'primo-passwords': 'PrimoPasswords',
     'janine-picker': 'JaninePicker',
+    'forest-route': 'ForestRoute',
 }
 SOLVER_RE = re.compile(r'^([ \t]*)<!--\s*solver:\s*([A-Za-z0-9_-]+)\s*-->\s*$')
 SOLVER_SLOT = '\x00solver:%s\x00'
