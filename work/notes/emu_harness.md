@@ -1106,6 +1106,7 @@ coverage list, the approved digests and the hooked addresses (checked against ea
 | msgload | msgload | memcheck.py's `summary` scenario (switch Pokémon on every summary page) | passed | allocation failure on heap 19 (6448 bytes), null write: the rc3 crash |
 | overworld-texture-frame-bounds | texture-bounds | The four `texture-bounds` cases, `--expect fixed` on the build, `--expect original` on the control | all 4 pass | all 4 reproduce the null load |
 | bulbasaur-reflection-boundary | reflection | `emu_reflection.py`, 2 scenes x Bulbasaur/Charmander/Onix (needs `market.sav` in `--sav-dir`), `--expect fixed` on the build, `--expect original` on the control (added 2026-10-08, run alone) | all 6 pass: no NULL lookup | all 6 pass: every Bulbasaur reflection call NULL, the others none |
+| type-change-message | typechange | Three scripted wild battles: Kecleon (Color Change) hit by Gust, Mewtwo's Soak on Geodude, Greninja (Protean) using Quick Attack. Hooks: the bank 1 builder's GetMsg (string id), the word expander's return (the finished text), BufferTypeName; the text is compared with the type's and the move's names from a027 banks 724 / 739 (added 2026-10-09) | Flying / Water / Normal, BufferTypeName called with 2 / 11 / 0 | Gust / Soak / Quick Attack, BufferTypeName never called (the untouched Chinese ROM the same) |
 
 Result (observed 2026-10-08, branch hardening/emu, build of `develop` aab6efb plus this work, saves copied from
 `work/build/memcheck/`): `check.py --full --emu --emu-jobs 2` passes all 15 fix/scenario rows. The emu step took

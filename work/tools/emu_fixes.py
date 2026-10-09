@@ -60,6 +60,7 @@ COVERAGE = {
     "msgload": ("msgload",),
     "overworld-texture-frame-bounds": ("texture-bounds",),
     "bulbasaur-reflection-boundary": ("reflection",),
+    "type-change-message": ("typechange",),
 }
 # fix id -> why no scenario of this command covers it (honest gaps; see work/notes/emu_harness.md)
 UNCOVERED = {
@@ -163,6 +164,22 @@ APPROVED = {   # taken from run work/build/hard4/run3 (2026-10-08), the build of
                        "approved_by": "user, 2026-10-08", "images": APPROVAL_IMAGES},
 }
 TITLE_FRAME = 2400                  # frames after power-on (intro movie); START then shows the title screen
+
+# type-change-message (type-change-message.listing): the hack's battle-message formatter in overlay 14
+TC_SET_STRING = 0x02225EC4          # ms_set_std: bl GetMsg, r1 = the side's string id in battle_string bank 1
+TC_SET_STRING_CODE = bytes.fromhex("e5f53cfe")
+TC_WORDS_END = 0x02225C00           # the word expander 0x02225A3C returns: r5 = the finished String
+TC_WORDS_END_CODE = bytes.fromhex("05b0f0bd")
+TC_TYPE_NAME = 0x0200C084           # BufferTypeName(fmt, slot, type): a027 bank 724
+TC_TYPE_CASE_RETURN = 0x02225B6A    # return address of the fix's bl BufferTypeName (the copy's 'b tail')
+TC_TYPE_BANK, TC_MOVE_BANK = 724, 739
+TC_IDS = range(1212, 1220)          # 'became the {type} type!' x4 sides, 'the {type} type was added' x4 sides
+TC_BATTLES = {
+    # name: (lead species, level, moves, ability, wild species, level, its moves, the new type, the move)
+    "color_change": (352, 100, [150], 16, 16, 50, [16], 2, 16),   # Kecleon (Color Change) hit by Gust: Flying
+    "soak": (150, 100, [487], None, 74, 50, [150], 11, 487),       # Mewtwo's Soak on a wild Geodude: Water
+    "protean": (658, 100, [98], 168, 213, 100, [150], 0, 98),      # Greninja (Protean) uses Quick Attack: Normal
+}
 
 
 # --------------------------------------------------------------------------------------------- helpers
@@ -538,6 +555,87 @@ def observe_battle(h):
     return {"fight": shot}
 
 
+def _names(rom_path, bank_no):
+    """Code units of every string of a027 bank <bank_no> in the ROM (type names 724, move names 739)."""
+    import msgtool
+    import ndspy.narc
+    rom = msgtool.load_rom(rom_path)
+    narc = ndspy.narc.NARC(msgtool.get_file(rom, "a/0/2/7"))
+    return [[u for u in s if u != 0xFFFF] for s in msgtool.decrypt_bank(bytes(narc.files[bank_no]))[1]]
+
+
+def _contains(units, part):
+    n = len(part)
+    return n > 0 and any(units[i:i + n] == part for i in range(len(units) - n + 1))
+
+
+class TypeChangeLog:
+    """battle_string bank 1 messages as the battle formatter builds them: the side's string id (ms_set_std, at
+    the bl that loads it), the finished text (the word expander's end, r5 = the String) and every
+    BufferTypeName call (slot, type, return address). The overlay 14 hooks check their code bytes first
+    (other overlays use the same RAM outside battle)."""
+
+    def __init__(self, h):
+        self.h, self.rows, self.type_calls, self.pending = h, [], [], None
+        h.on_exec(TC_SET_STRING, self._set_string)
+        h.on_exec(TC_WORDS_END, self._words_end)
+        h.on_exec(TC_TYPE_NAME, self._type_name)
+
+    def _set_string(self, h):
+        if h.read(TC_SET_STRING, 4) == TC_SET_STRING_CODE:
+            self.pending = h.reg.r1 & 0xFFFF
+
+    def _words_end(self, h):
+        if self.pending is None or h.read(TC_WORDS_END, 4) != TC_WORDS_END_CODE:
+            return
+        s = h.reg.r5
+        size = h.u16(s + 2)
+        raw = h.read(s + 8, 2 * min(size, 512))
+        self.rows.append({"id": self.pending, "frame": h.frame, "text": decode(raw), "units": codes(raw)})
+        self.pending = None
+
+    def _type_name(self, h):
+        self.type_calls.append({"slot": h.reg.r1, "type": h.reg.r2, "lr": h.reg.lr & ~1, "frame": h.frame})
+
+    def close(self):
+        for a in (TC_SET_STRING, TC_WORDS_END, TC_TYPE_NAME):
+            self.h.on_exec(a, None)
+
+
+def observe_typechange(h):
+    """Scripted wild battles in which a Pokemon's type changes (TC_BATTLES): every battle_string bank 1
+    message the formatter builds, the type-change ones (1212-1219) with their text, the BufferTypeName calls,
+    and the code units of the new type's name and of the move's name, read from the ROM's a027 banks."""
+    import emu_guide0107 as G
+    import emu_open
+    import emu_verify as V
+    types, moves = _names(h.rom, TC_TYPE_BANK), _names(h.rom, TC_MOVE_BANK)
+    out = {}
+    for name, (sp, lv, mv, ability, foe, flv, fmv, new_type, move) in TC_BATTLES.items():
+        G.lead(h, sp, level=lv, moves=mv)
+        h.edit_party_mon(0, item=0, **({"ability": ability} if ability else {}))
+        ml = V.MsgLog(h)
+        log = TypeChangeLog(h)
+        try:
+            emu_open.wild_battle(h, foe, flv, moves=fmv)
+            if not h.wait_screen("battle_menu", 2400):
+                out[name] = {"error": "the battle command menu never appeared"}
+                continue
+            pages = []
+            result = emu_open.turn(h, ml, 0, pages)
+            sheet = emu_open.page_sheet(pages, Path(h.out) / f"typechange_{name}.png")
+            out[name] = {"turn": result, "messages": [r for r in log.rows if r["id"] in TC_IDS],
+                         "type_name_calls": log.type_calls, "bank1_ids": [r["id"] for r in log.rows],
+                         "new_type": new_type, "move": move, "type_units": types[new_type],
+                         "move_units": moves[move], "sheet": sheet}
+            if h.on_screen("battle_menu"):
+                emu_open.end_battle(h, ml, ("run",))
+        finally:
+            log.close()
+            ml.close()
+    return out
+
+
 SCENARIOS = {
     # name: (save file or None for a blank battery, start map or None, observe, needs the Chinese reference run)
     "naming": ("full_bag_6mons.sav", None, observe_naming, True),
@@ -548,6 +646,7 @@ SCENARIOS = {
     "font": ("full_bag_6mons.sav", None, observe_font, False),
     "textspeed": ("full_bag_6mons.sav", None, observe_textspeed, False),
     "battle": ("full_bag_6mons.sav", None, observe_battle, True),
+    "typechange": ("full_bag_6mons.sav", None, observe_typechange, False),
 }
 EXTERNAL = {"msgload", "texture-bounds", "reflection"}  # scenarios run by other tools (memcheck.py,
 #                                                         emu_texture_bounds.py, emu_reflection.py)
@@ -709,6 +808,29 @@ def judge_textspeed(scenario, obs, ref=None):
     return _state(n / f >= 2.0, n / f <= 1.25, why)
 
 
+def judge_typechange(scenario, obs, ref=None):
+    """Per battle: the type-change message's text holds the new type's name and not the move's, with a
+    BufferTypeName call from the expander's type case for the new type (fixed); or it holds the move's name
+    and BufferTypeName is never called from the expander (original, the hack: the slot keeps the move)."""
+    why, fixed, original = {}, [], []
+    for name in TC_BATTLES:
+        b = obs.get(name) or {}
+        msgs = b.get("messages") or []
+        calls = [c for c in b.get("type_name_calls", []) if c.get("lr") == TC_TYPE_CASE_RETURN]
+        if not msgs:
+            why[name] = {"error": b.get("error") or "no type-change message", "bank1_ids": b.get("bank1_ids")}
+            fixed.append(False)
+            original.append(False)
+            continue
+        units, t, m = msgs[-1]["units"], b["type_units"], b["move_units"]
+        has_type, has_move = _contains(units, t), _contains(units, m)
+        why[name] = {"id": msgs[-1]["id"], "text": msgs[-1]["text"], "type_name": has_type, "move_name": has_move,
+                     "type_case_calls": [c["type"] for c in calls]}
+        fixed.append(has_type and not has_move and [c["type"] for c in calls] == [b["new_type"]])
+        original.append(has_move and not calls)
+    return _state(all(fixed), all(original), why)
+
+
 NAMING_SITES_BY_ID = {v[0]: v for v in NAMING_SITES.values()}
 JUDGES = {
     ("naming", "namelen"): judge_namelen,
@@ -728,6 +850,7 @@ JUDGES = {
     ("antipiracy", "antipiracy"): judge_antipiracy,
     ("font", "font-glyphs"): judge_font,
     ("textspeed", "text-speed"): judge_textspeed,
+    ("typechange", "type-change-message"): judge_typechange,
 }
 
 

@@ -1,0 +1,72 @@
+id = "type-change-message"
+title = "Battle: type-change messages name the new type, not the last move used (Color Change, Protean, Soak, ...)"
+kind = "code"
+enabled = true
+decisions = ["D-2276"]
+requires = []
+asm = "type-change-message.asm"
+why = """
+Players: when a Pokémon's type changes in battle, the message names the wrong thing: 'Kecleon transformed into
+the Gust type!' after Kecleon's Color Change is hit by Gust, 'The wild Geodude transformed into the Soak type!'
+after Soak, 'Greninja transformed into the Quick Attack type!' with Protean (reported on Discord for Color Change
+with Air Slash, and earlier for Protean and Soak, D-1461). The new type itself is right; only the word in the
+message is wrong. The untouched Chinese ROM does the same (变成了起风属性), so this is a bug of the hack.
+
+Status: D-1337 says hack bugs are reported, not fixed. This fix is a user-approved exception to it (D-2276,
+2026-10-09, the answer to the hack finding D-1461); other hack bugs stay report-only.
+
+Technical: the hack's battle engine builds its battle_string messages with a word expander in overlay 14
+(0x02225A3C, called by the bank 1 and bank 2 message builders). At each {VAR:01xx:slot,0} tag of the template it
+switches on the kind xx (jump table at 0x02225A9E), buffers the message's argument for that slot as a trainer,
+species, nickname, ability, move, item, number or trainer-class name, and then expands the slot into the
+text. Kind 3, the type name, has no case: its table entry points at the shared tail, which expands the slot
+without buffering anything, so the slot still holds the word the previous message put there, usually the move
+in '... used Gust!'. The only strings with that tag are battle_string bank 1 #1212-#1219 ('... transformed into
+the {type} type!' and '{type} type was added to ...', each for own / wild / foe / partner trainer). #1212-#1215
+are built only by the type-change handler 0x0220E6E0 (the only code in overlay 14 that names #1212, so Color
+Change, Protean and Soak, seen printing it, go through it), with the new type as the argument, so the argument
+was right all along. It prints only when the Pokémon ends up with a single type.
+"""
+what = """
+Old: kind 3 (type name) -> the shared tail: the slot keeps its last word (a move name) -> 'the Gust type'.
+New: kind 3 has a case like the move case: BufferTypeName(fmt, slot, args[slot]) (arm9 0x0200C084, the type
+names of a027 bank 724), then the shared tail. Three edits in overlay 14:
+  1. the jump table entry for kind 3 (0x02225AA4): 0x011A (tail) -> 0x00BE (the new case at 0x02225B5E);
+  2. the nickname case's fallback for an invalid Pokémon (0x02225B4A), an instruction-for-instruction copy of
+     the species case's fallback (the same four literal characters appended, then the tail; only the
+     PC-relative encodings differ), now branches to that copy (0x02225B16) instead of running its own: the
+     same result;
+  3. the last 12 bytes of the freed copy (0x02225B5E) hold the type case (lsl / ldr / ldr / add / bl
+     BufferTypeName), which falls into the copy's own 'b tail' at 0x02225B6A, unchanged.
+Every other tag kind, every message and the battle logic are unchanged; the message text is not touched. The
+bank 1 strings #1216-#1219 ('type was added') use the same tag, so they name the type too wherever the hack
+prints them (no caller was found in overlay 14; not observed in game). The first 18 bytes of the freed copy
+(0x02225B4C-0x02225B5D) are left as they were, unreachable.
+"""
+evidence = [
+  "D-2276: the user-approved exception to D-1337 for this fix; it answers the hack finding D-1461 (Protean/Soak name the move, resolved)",
+  "User request 2026-10-09: 'We want to fix these bugs, so for each issue create a worktree per issue, and use a separate subagent to fix, test and review.' (Discord report: Kecleon's Color Change says it changed to the Air Slash type)",
+  "work/notes/type-change-message_fix.md: the expander, its jump table, the handler, the edits and the emulator runs",
+  "Runtime: emu_harness.py fixes --case type-change-message (scenario typechange: Kecleon's Color Change hit by Gust, Mewtwo's Soak on a wild Geodude, Greninja's Protean with Quick Attack; the finished text of every type-change message and the BufferTypeName calls; run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios'). 2026-10-09, DeSmuME: the untouched Chinese ROM and the --without build print the move's name in all three (Gust / Soak / Quick Attack), the full build the type's (Flying / Water / Normal)",
+]
+
+[[code]]
+id = "type-change-message-kind-table"
+file = "overlay14"
+offset = "0x252C4"
+expect = "0x011A"
+notes = "BattleWords_Expand jump table, kind 3 (type name): the shared tail (0x02225BBA) -> the new type case (0x02225B5E). The asm also guards, read-only, the dispatch, the two fallbacks, their literals, the move case and the tail."
+
+[[code]]
+id = "type-change-message-nickname-fallback"
+file = "overlay14"
+offset = "0x2536A"
+expect = "0x4931"
+notes = "Nickname case, invalid Pokémon: its own copy of the four-character fallback -> 'b 0x02225B16', the species case's identical copy."
+
+[[code]]
+id = "type-change-message-type-case"
+file = "overlay14"
+offset = "0x2537E"
+expect = "F601 FA3D 492E 1C28 F601 FA39"
+notes = "The freed copy's last 12 bytes: the type case, BufferTypeName(fmt, slot, args[slot]) (arm9 0x0200C084), falling into the copy's 'b tail' at 0x02225B6A."
