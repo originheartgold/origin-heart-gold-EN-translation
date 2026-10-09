@@ -59,7 +59,7 @@ Our build `work/build/origin_hg_v4.0.3_en_wip.nds` (16:42) is newer than the new
 
 ## 3. How the rows were re-derived
 
-`python3 work/tools/audit/verify_sheet_rows.py --v4 fresh_v4.nds --v3 fresh_v3.nds --cache <dir> --out result.json`.
+`python3 work/tools/audit/verify_sheet_rows.py --v4 fresh_v4.nds --v3 fresh_v3.nds --cache <dir> --out result.json`. (removed on 2026-10-09 with the rest of `work/tools/audit/`; in git history)
 
 The checker reads the sheets itself (openpyxl) and re-reads the ROMs from bytes:
 

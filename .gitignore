@@ -69,7 +69,7 @@
 *.tgz
 
 # --- Tool state --------------------------------------------------------------
-# ROM caches (pickled game code/scripts, e.g. work/tools/audit/raw.pkl): game data, never publish.
+# ROM caches (pickled game code/scripts): game data, never publish.
 *.pkl
 *.lock
 # Reproducible Python tool dependencies are source configuration, not runtime locks.
