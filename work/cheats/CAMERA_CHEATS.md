@@ -4,7 +4,7 @@ Action Replay codes for the overworld camera in Origin HeartGold: widescreen, re
 the game's built-in camera presets, and a fully custom camera. Every address below was read out of the
 game's own code and tested in an emulator (see [How this was verified](#how-this-was-verified)).
 
-**Works on:** English v1.0.0-rc5, the current RC6 work build and the untouched Chinese 起源心金 v4.0.3.
+**Works on:** English v1.0.0-rc5 and v1.0.0-rc6, and the untouched Chinese 起源心金 v4.0.3.
 These builds have identical camera code and tables. **Doesn't work on:** vanilla HeartGold, Sacred Gold or
 other hacks. Their addresses differ (see [Why the US code doesn't work in Origin](#why-the-us-code-doesnt-work-in-origin)).
 
