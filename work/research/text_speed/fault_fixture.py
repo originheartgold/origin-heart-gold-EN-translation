@@ -99,8 +99,10 @@ FAULTS = {
     'no-control-stop': {
         'description': 'batching no longer stops before control codes',
         'edits': [nop(0x01FF88A4, '6bd3'), nop(0x01FF88AC, '67d3'), nop(0x01FF88B2, '64d0')],
+        # Not callbacks (2026-10-09, D-2279 payload): its page-2 latencies were identical with and without the
+        # fault at both input phases (rc5 matrix): its batches never reach the page prompt with budget left.
         'gates': {'corpus': 'without a frame decision', 'controls': 'without a frame decision',
-                  'battle': 'to_free', 'callbacks': 'page 2 latency'}},
+                  'battle': 'to_free'}},
     'eos-only-no-stop': {
         'description': 'batching no longer stops before 0xFFFF/0xFFFE (end of text, extended controls)',
         'edits': [nop(0x01FF88AC, '67d3')],
@@ -189,10 +191,12 @@ FAULTS = {
     # input phase. This fault proves the bound: pass_end's estimate loop runs 255 times instead of 8
     # (it reads past the frame state; the maxima it finds also suppress catch-ups).
     'catch-up-idle-cost': {
-        'description': 'pass_end\'s catch-up walks 255 printer slots instead of 8 in every late pass that fits, '
+        'description': 'pass_end\'s catch-up walks 32 printer slots instead of 8 in every late pass that fits, '
                        'with or without text',
-        # cmp r5,#8 (the printer slot loop) -> cmp r5,#255
-        'edits': [(0x01FF8C72, B('082d'), B('ff2d'))],
+        # cmp r5,#8 (the printer slot loop) -> cmp r5,#32. 255 slots (until 2026-10-09) made every idle pass_end
+        # so slow that an interrupt always fell inside it, so the gate stopped at its vacuity guard ('no pass_end
+        # without an interrupt') and never reached the cost bound this fault exists to prove.
+        'edits': [(0x01FF8C72, B('082d'), B('202d'))],
         'gates': {'field-rate': 'idle: pass_end took'}},
     # Too conservative: every decision needs more time than the margin covers (the margin's
     # immediate adds r1,#0x40 raised: +133 ticks, about 4 display lines, and +191, the
