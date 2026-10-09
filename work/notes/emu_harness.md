@@ -90,6 +90,21 @@ Use the project venv (py-desmume 0.0.9, capstone, ndspy, pillow). ROMs, saves, s
 stay out of git: the defaults point at `work/rom/`, `work/build/memcheck/*.sav` and `work/build/harness/`
 of the main checkout (also when run from an agent worktree).
 
+Save/Pokémon binary operations now use the same TypeScript core as the browser
+editor through a persistent Node 22+ worker. With dependencies already installed,
+run `npm --prefix work/save-editor run build` from the repository root before
+running the harness. Missing Node or compiled modules produce an actionable
+error; the adapter never downloads dependencies. `work/tools/save_core.py`
+handles the bounded versioned protocol and worker lifetime; Python retains
+emulator orchestration and independent verification readers.
+
+`SaveFile` derives a fixture from an existing seed. Operations are bounded,
+validated and atomic; writes use a new destination and refuse to replace the
+source. Its bytes are read-only snapshots rather than a mutable escape hatch.
+Party count can only shrink, and record edits reject open/corrupt inputs. Fixture
+Pokémon edits explicitly preserve cached tails; browser stat edits recalculate.
+See [the shared core contract](../save-core/README.md).
+
     .venv/bin/python work/tools/emu_harness.py unown [--count 20] [--clock 2026-10-09T12:00:00]
     .venv/bin/python work/tools/emu_harness.py wild --map 109 --x 16 --y 14 --clock 2026-10-09T12:00:00
     .venv/bin/python work/tools/emu_harness.py info [--sav S] [--clock ISO]
@@ -134,7 +149,7 @@ starts there in under a second.
 
 ```python
 from emu_harness import Harness, SaveFile, WildLog
-sf = SaveFile("work/build/memcheck/full_bag_6mons.sav")   # newest general block, CRC fixed on write
+sf = SaveFile("work/build/memcheck/full_bag_6mons.sav")   # newest coherent generation, validated transaction edits
 sf.place_player(315, 17, 24)        # map, x, y: Location + saved player/follower objects, old NPCs dropped
 sf.set_flag(2423); sf.set_var(0x4000, 1)
 sf.write(tmp)                        # never next to the original
@@ -176,8 +191,18 @@ with Harness(rom, tmp, out=dir) as h:          # rom: Chinese (default) or Engli
 
 From the local save-editor research (`~/Developer/poke-save-editor/work/save-editor/research-layout.md`),
 rechecked here: two mirrors at 0 and 0x40000; general block 0xF7CC bytes incl. a 16-byte footer
-{u32 counter, u32 size, u32 magic 0x20060623, u16 block id, u16 CRC}; CRC = `binascii.crc_hqx(payload, 0xFFFF)`.
-The game picks the mirror with the higher counter; the harness edits that one and recomputes its CRC.
+{u32 counter, u32 size, u32 magic 0x20060623, u16 block id, u16 CRC}; CRC16-CCITT of the payload, seed 0xFFFF
+(computed by the shared TypeScript core, `work/save-core/src/save.ts`; Python no longer has its own).
+The shared core validates same-mirror general/storage generations and selects
+with the native counter policy: ordinary unsigned ordering, the FFFFFFFF-to-zero
+special case, and first mirror on ties. An incoherent newest generation can fall
+back to an older coherent pair. No coherent pair is rejected. Only the selected
+general block and its CRC change; storage, counters and the other mirror survive.
+
+Native saved-variable bounds are IDs 0x4000–0x416F. Saved flags are 1–0xC9F;
+zero is a sentinel, and bytes 0x1320–0x1323 are alignment padding, not flags.
+Locations are exactly five 20-byte entries. See the
+[native evidence](../research/save_core/native_evidence.md).
 
 Array offsets inside the general block equal the in-RAM offsets: `SaveArray_Get` (arm9 0x02027740) returns
 `save + 0x10 + table[id].offset`, table at `save + 0x2E01C`, 16-byte rows. Read from RAM and checked at
@@ -210,7 +235,7 @@ hardware directly instead of the cache.
 `WildLog` hooks the overlay-2 wild finalizer (ov2 0x022489DC, r2 = the new Pokémon): entry, the Unown
 letter write (0x02248A40, r2 = &letter), the first instruction after it (0x02248A44, form re-read), the
 write-back (0x02248AD4, sp+8 = saved form) and the end (0x02248AFE, final Pokémon decrypted). The
-Pokémon is decrypted in Python (Gen 4 layout: PID, checksum, 4 shuffled 32-byte blocks, LCG
+Pokémon is decoded by the shared TypeScript core (Gen 4 layout: PID, checksum, 4 shuffled 32-byte blocks, LCG
 0x41C64E6D/0x6073; species = block A +0, item = block A +2, form = block B +0x18 >> 3; party extension
 keyed by the PID, level at +4). **The decoder is checked in game**: right after the hack writes the letter
 the decoded form equals that letter for every Unown (`decoder_check`).
@@ -375,7 +400,8 @@ caller, so a different stack history), which is where a non-zero byte could stil
 
 ### Integrated from the UI hunt agent
 
-- `encode_pokemon(..., moves=, pp=)` / `edit_party_mon(slot, moves=[...])`: block B +0 four u16 move ids,
+- `encode_pokemon(..., moves=, pp=)` / `edit_party_mon(slot, moves=[...])` (both now delegate to the shared
+  TypeScript core's fixture edit, `patchPokemonFixture`): block B +0 four u16 move ids,
   +8 four u8 PP (the hunt agent verified them in the summary and in battle; round-trip unit test here).
   Correction (2026-10-06, item 5): the hack keeps the ability as a u16 at block B +0x1A (abilities go past 255);
   `encode_pokemon`/`edit_party_mon(slot, ability=)` write it and the summary shows it (all 327 abilities). The

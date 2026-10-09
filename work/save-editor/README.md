@@ -24,7 +24,10 @@ npm --prefix work/save-editor run check # typecheck, typed source lint, build an
 
 Open http://127.0.0.1:4173. `PORT` overrides the loopback port. The server serves
 only the page, stylesheet and compiled modules, never local fixtures or ROMs.
-The application has no runtime dependencies, external requests or telemetry.
+The browser application has no external requests or telemetry. Its pure binary
+implementation is shared with the Python harness in [`../save-core`](../save-core/README.md);
+the build compiles that package before the editor. Node is only a development
+and harness runtime, never a browser backend.
 
 ## Editing contract
 
@@ -34,11 +37,12 @@ The application has no runtime dependencies, external requests or telemetry.
   the input's format, and a `.dsv` footer is kept byte for byte. Other versions/hacks
   and emulator save states are unsupported. Structural validation is not
   language detection or cryptographic proof of the game's identity.
-- The editor reads and edits the newest intact general block (party, money, bag),
-  the copy the game itself loads. A damaged or never-written backup copy and storage
-  blocks with other counters are accepted and kept as they are. A save with no intact
-  general block, divergent equal-counter mirrors or counter rollover is rejected.
-  Identical equal-counter mirrors require saving in-game before editing.
+- The editor selects the newest valid generation whose general and storage blocks
+  share a mirror and counter, matching the verified native loader. It can fall back
+  to an older coherent generation. Equal counters select the first mirror, and
+  the native FFFFFFFF-to-zero rollover is supported. Saves without a coherent
+  valid pair are rejected; native assertion and corrupt-storage edge paths are
+  deliberately not writable. Only the selected general block is edited.
 - Save and party Pokémon checksums are verified. Unknown current IDs are preserved
   and shown with diagnostic identifiers; unnamed entries cannot be newly chosen.
 - New move choices fill base PP and reset PP Ups; selecting the existing move is
@@ -63,6 +67,8 @@ The application has no runtime dependencies, external requests or telemetry.
 - TM/HM and berry insertion sorting matches the game. Removing a registered item
   clears its shortcut. Key-item edits do not change story flags. Coins, Battle Points,
   Apricorn-box counters and held mail contents are outside scope.
+- Equal-counter save mirrors can be inspected, but editing requires saving once
+  in-game first. Every edit entry point enforces this, including no-op writes.
 - Unrelated bytes, backup mirrors, counters and PC storage are preserved. Stat edits
   also recalculate encrypted party stats. Apply/discard drafts before switching party
   members or exporting edits. Export unchanged always returns the original bytes.

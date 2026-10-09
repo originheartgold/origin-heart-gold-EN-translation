@@ -25,6 +25,7 @@ await cp(join(source,'site/public/patch-tool'),join(site,'public/patch-tool'),{r
 await symlink(join(source,'site/public/vendor'),join(site,'public/vendor'),'dir');
 for(const target of [join(site,'node_modules'),join(out,'node_modules')])await symlink(join(source,'site/node_modules'),target,'dir');
 await mkdir(join(out,'work'));await symlink(resolve('work/save-editor'),join(out,'work/save-editor'),'dir');
+await symlink(resolve('work/save-core'),join(out,'work/save-core'),'dir');
 // Only changed/new site overlay files exist in this worktree.
 await cp(resolve('site'),site,{recursive:true});
 const hashes=[];

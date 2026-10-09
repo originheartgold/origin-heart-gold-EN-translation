@@ -112,7 +112,7 @@ Thumbs.db
 # site/src/data IS committed: it needs the ROM and CI has none. The guide pages
 # are rebuilt by CI from guide/*.md.
 site/src/content/docs/guide/
-site/node_modules/
+site/node_modules
 site/dist/
 site/.astro/
 # Built by CI from guide/*.md (work/tools/site/build_pdf.py).
@@ -122,9 +122,11 @@ site/public/patch/
 
 # --- Save editor (work/save-editor/) -------------------------------------------
 # Compiled output, local dev-tool links, and local fixtures/test runs (these hold real saves).
-work/save-editor/node_modules/
+work/save-editor/node_modules
 work/save-editor/dist/
 work/save-editor/local/
+work/save-core/dist/
+work/save-core/node_modules
 
 # Agent worktrees (Claude Code)
 /.claude/worktrees/
