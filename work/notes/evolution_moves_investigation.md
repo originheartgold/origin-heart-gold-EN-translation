@@ -1,6 +1,8 @@
 # Evolution moves skipped — D-1602
 
-Investigated 2026-10-07. **Reproduced in both the untouched Chinese v4.0.3 and the local English WIP.** This is an original-hack gameplay bug; preserve the behavior under D-1002/D-1337.
+Investigated 2026-10-07. **Reproduced in both the untouched Chinese v4.0.3 and the local English WIP.** This is an original-hack gameplay bug.
+
+**Update 2026-10-09: fixed** at the user's request (D-2287, an exception to D-1337; D-1602 resolved). The fix is `work/patches/evolution-moves/`; see [evolution-moves_fix.md](evolution-moves_fix.md). The text below is the investigation as it was.
 
 ## Player report
 

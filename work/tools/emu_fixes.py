@@ -76,6 +76,7 @@ COVERAGE = {
     "gfx-pokeathlon": ("pokeathlon",),
     "battle-message-error-marker": ("battle-error-marker",),
     "battle-message-references": ("battle-references",),
+    "evolution-moves": ("evolution",),
 }
 # fix id -> why no scenario of this command covers it (honest gaps; see work/notes/emu_harness.md)
 UNCOVERED = {
@@ -130,6 +131,32 @@ IVEV_HEADER_CALL = 0x0208C1E4
 IVEV_EV_X = 0x40
 IVEV_ROWS = [(56, 72), (72, 88), (88, 104), (104, 120), (120, 136), (136, 152)]   # HP .. Speed (screenshot y)
 IVEV_X = (150, 256)
+# evolution-moves (evolution-moves.listing): the evolution scene's learn call (0x02074BD4, bl TryLearnOnEvolution
+# fixed, bl 0x02070870 in the hack) returns at 0x02074BD8: r0 = the move learned, 0xFFFE (already known), 0xFFFF
+# (four moves: the forget-a-move flow follows) or 0 (nothing left); the move it looked at is the u16 at sp + 0xE.
+# Level-up without evolution: the Rare Candy's learn call at 0x020806F2 returns at 0x020806F6.
+EVO_LEARN_RETURN = 0x02074BD8
+LEVELUP_LEARN_RETURN = 0x020806F6
+RARE_CANDY_ITEM, THUNDER_STONE_ITEM = 50, 83
+TACKLE, GROWL, EMBER, SCRATCH = 33, 45, 52, 10
+# case: (species, level, moves, item (None: Rare Candy), friendship or None, species after, evolution moves
+# (level 0 in the learnset: offered only with the fix), moves of the new level (learned with and without it))
+EVOLUTION_CASES = {
+    "charizard": (5, 35, (TACKLE, 0, 0, 0), None, None, 6, (403,), ()),               # Air Slash
+    "charizard_full": (5, 35, (TACKLE, GROWL, EMBER, SCRATCH), None, None, 6, (403,), ()),   # forget Tackle
+    "charizard_lv39": (5, 38, (TACKLE, 0, 0, 0), None, None, 6, (403,), (184,)),      # + Scary Face (Lv39)
+    "gyarados": (129, 19, (TACKLE, 0, 0, 0), None, None, 130, (44,), ()),             # Bite
+    "crobat": (42, 29, (TACKLE, 0, 0, 0), None, 255, 169, (440,), ()),                # Cross Poison
+    "raichu_stone": (25, 20, (TACKLE, 0, 0, 0), THUNDER_STONE_ITEM, None, 26, (9,), ()),   # Thunder Punch
+    "charizard_levelup": (6, 40, (TACKLE, 0, 0, 0), None, None, 6, (), ()),           # no evolution: no Air Slash
+    # Beak Blast (690) is Toucannon's level-0 move and its Lv28 move, the evolution level: offered once in both
+    "toucannon": (732, 27, (TACKLE, 0, 0, 0), None, None, 733, (), (690,)),
+    "toucannon_decline": (732, 27, (TACKLE, GROWL, EMBER, SCRATCH), None, None, 733, (), ()),   # B: give up, once
+    # three level-0 moves (Stockpile 254, Swallow 256, Spit Up 255); Stockpile known already: 0xFFFE, silent
+    "lanturn": (170, 26, (TACKLE, 254, 0, 0), None, None, 171, (256, 255), ()),
+}
+EVOLUTION_LEVELUP_ONLY_FORBIDDEN = 403      # charizard_levelup must not be offered Air Slash on a plain level-up
+EVOLUTION_DECLINE = {"toucannon_decline"}   # these cases answer 'Make it forget another move?' with B (give up)
 # antipiracy (antipiracy.listing): the six DS Protect entry points in overlay 114 and their genuine values
 ANTIPIRACY_ENTRIES = {0x02263A64: 0, 0x02263B4C: 1, 0x02263C34: 0, 0x02263D1C: 1, 0x02263E04: 0, 0x02263ECC: 1}
 def _fix_expect_bytes(fix_id, region_id):
@@ -526,6 +553,81 @@ def antipiracy_hooks(h):
         h.on_exec(entry + 8, on_body)
 
 
+def _set_friendship(h, slot, value):
+    """Block A +0x0C of a party Pokemon (friendship), re-encrypted with a new checksum (test-only edit)."""
+    import emu_harness as E
+    a = h.array(E.ARR_PARTY) + 8 + 236 * slot
+    raw = bytearray(h.read(a, 136))
+    pid, _, cs = struct.unpack_from("<IHH", raw)
+    words = struct.unpack_from("<64H", raw, 8)
+    plain = bytearray(struct.pack("<64H", *[w ^ k for w, k in zip(words, E._prng_stream(cs, 64), strict=True)]))
+    plain[E.BLOCK_ORDERS[((pid & 0x3E000) >> 13) % 24].index("A") * 32 + 0x0C] = value
+    words = struct.unpack("<64H", plain)
+    cs = sum(words) & 0xFFFF
+    struct.pack_into("<H", raw, 6, cs)
+    struct.pack_into("<64H", raw, 8, *[w ^ k for w, k in zip(words, E._prng_stream(cs, 64), strict=True)])
+    h.write(a, bytes(raw))
+
+
+def _party_mon(h, slot):
+    import emu_harness as E
+    m = mon_details(h.read(h.array(E.ARR_PARTY) + 8 + 236 * slot, 236))
+    return {k: m[k] for k in ("species", "level", "moves", "checksum_ok")}
+
+
+def observe_evolution(h):
+    """EVOLUTION_CASES one after another: create the Pokemon with the hack's generator, set its moves, use a Rare
+    Candy (or a Thunder Stone) from the bag and press A through the level-up, the evolution scene and its
+    'wants to learn' / forget-a-move flow (A answers 'Forget a move!', picks the first move, Tackle, and
+    confirms) until the scene's learn call returns 0, or for the plain level-up until the level-up's learn call
+    does. Records every return of the evolution scene's learn call and the Pokemon afterwards."""
+    import emu_harness as E
+    log = []
+    h.on_exec(EVO_LEARN_RETURN, lambda m: log.append(("evo", m.reg.r0, m.u16(m.reg.sp + 0xE))))
+    h.on_exec(LEVELUP_LEARN_RETURN, lambda m: log.append(("levelup", m.reg.r0, None)))
+    cases = {}
+    for name, (species, level, moves, item, friendship, _, _, _) in EVOLUTION_CASES.items():
+        h.generate_pokemon(species, level=level)
+        slot = h.generated_slot
+        h.edit_party_mon(slot, moves=list(moves))
+        if friendship is not None:
+            _set_friendship(h, slot, friendship)
+        before = _party_mon(h, slot)
+        del log[:]
+        pocket = "items" if item else "medicine"
+        h.bag_put_first(item or RARE_CANDY_ITEM, 5, pocket)
+        h.open_bag()
+        h.bag_pocket(pocket)
+        h.touch(*E.BAG_SLOTS[0], frames=12, after=60)
+        h.touch(*E.BAG_USE, frames=12, after=60)
+        h.touch(*E.PARTY_SLOTS[slot], frames=12, after=120)
+        presses, offers = 0, 0
+        evolves = EVOLUTION_CASES[name][5] != species
+        while presses < 60:
+            full = sum(1 for site, r0, _ in log if site == "evo" and r0 == 0xFFFF)
+            if name in EVOLUTION_DECLINE and full > offers:
+                offers = full              # 'wants to learn', 'already knows four moves', then B on 'Make it
+                h.press("A", after=90)     # forget another move?' and A on 'Give up on <move>!'
+                h.press("A", after=90)
+                h.press("B", after=90)
+            h.press("A", after=90)
+            presses += 1
+            if evolves and any(site == "evo" and r0 == 0 for site, r0, _ in log):
+                break                      # the scene asked for the last time: nothing left to learn
+            if not evolves and any(site == "levelup" and r0 == 0 for site, r0, _ in log):
+                h.step(600)                # no input is needed after the level-up's last move; an extra A
+                break                      # in the bag would open the candy's menu
+        h.step(300)
+        shot = h.screenshot(f"evolution_{name}")
+        after = _party_mon(h, slot)
+        for _ in range(3):                 # back to the field: bag (and an item menu an extra A opened) closed
+            h.press("B", after=120)
+        cases[name] = {"before": before, "after": after, "a_presses": presses, "screenshot": str(shot),
+                       "evo_calls": [{"r0": r0, "move": mv} for site, r0, mv in log if site == "evo"],
+                       "levelup_calls": [r0 for site, r0, _ in log if site == "levelup"]}
+    return {"cases": cases}
+
+
 def observe_font(h):
     """In the field: the width tables of the fonts the game keeps in RAM (0, 1, 4), found by their first 0x1A0
     bytes (which the fix does not touch), and the widths the text printer reads for … “ ”."""
@@ -748,7 +850,8 @@ def observe_pokeathlon(h):
     return {"instructions": shot}
 
 
-# helpers of the fix scenarios, from the one-off recipes removed in 2e6fe55 (emu_guide0107.lead, emu_verify.MsgLog)
+# helpers of the fix scenarios, from the one-off recipes removed in 2e6fe55 (emu_guide0107.lead and
+# .mon_details, emu_verify.MsgLog)
 MSG_READERS = {0x0200BB0C: "18b581b0041c",    # ReadMsgDataIntoString(MsgData *, id, String *)
                0x0200BB40: "08b5031c1888",    # NewString_ReadMsgData(MsgData *, id)
                0x0200BB94: "18b581b0041c"}    # the same for a temporary MsgData (0x0200BBC8)
@@ -761,6 +864,24 @@ def lead(h, species, level=100, moves=None, pp=None):
         h.edit_party_mon(h.generated_slot, moves=moves, pp=pp)
     h.swap_party(0, h.generated_slot)
     return mon
+
+
+def mon_details(raw):
+    """Decrypted fields of a 236-byte party Pokemon beyond decode_party_pokemon: OT id, IVs, moves, held
+    item, OT name (raw u16 codes), level (Gen 4 layout: A +4 OT id; B +0 moves, +0x10 IV word; D +0
+    OT name)."""
+    import emu_harness as E
+    m = E.decode_party_pokemon(raw)
+    pid, flags_, checksum = struct.unpack_from("<IHH", raw, 0)
+    words = struct.unpack_from("<64H", raw, 8)
+    plain = list(words) if flags_ & 3 else [w ^ k for w, k in zip(words, E._prng_stream(checksum, 64))]
+    data = struct.pack("<64H", *plain)
+    order = E.BLOCK_ORDERS[((pid & 0x3E000) >> 13) % 24]
+    blk = {n: data[32 * i:32 * i + 32] for i, n in enumerate(order)}
+    iv = struct.unpack_from("<I", blk["B"], 0x10)[0]
+    m.update(ot_id=struct.unpack_from("<I", blk["A"], 4)[0], moves=list(struct.unpack_from("<4H", blk["B"], 0)),
+             ivs=[(iv >> (5 * k)) & 31 for k in range(6)], ot_name=list(struct.unpack_from("<8H", blk["D"], 0)))
+    return m
 
 
 class MsgLog:
@@ -899,6 +1020,7 @@ SCENARIOS = {
     "pokeathlon": ("full_bag_6mons.sav", None, observe_pokeathlon, True),
     "battle-error-marker": ("full_bag_6mons.sav", ERROR_MARKER_MAP, observe_battle_error_marker, True),
     "battle-references": ("full_bag_6mons.sav", ERROR_MARKER_MAP, observe_battle_references, True),
+    "evolution": ("full_bag_6mons.sav", None, observe_evolution, False),
 }
 # scenarios that run with the clock pinned (weekday on the Pokegear, repeatable RNG); the older ones keep the host
 # clock so that their approved crops stay as they were taken
@@ -1230,12 +1352,49 @@ def judge_reflection(scenario, obs, ref=None):
     return _state(ok and obs.get("expect") == "fixed", ok and obs.get("expect") == "original", why)
 
 
+def judge_evolution(scenario, obs, ref=None):
+    """Every case evolves (or, for the plain level-up, does not) with a valid checksum and learns its new-level
+    moves, and no move is offered twice in one evolution; 'fixed': every evolution move learned (charizard_full:
+    offered with 0xFFFF and learned in Tackle's place) and the plain level-up offers no evolution move;
+    'original': no evolution move offered at all. The Toucannon cases (evolution move = the new level's move) and
+    the plain level-up must come out the same on both."""
+    cases, why, fixed, original = obs["cases"], {}, True, True
+    for name, (species, _, moves, _, _, target, evo_moves, level_moves) in EVOLUTION_CASES.items():
+        c = cases[name]
+        after, offered = c["after"], [e["move"] for e in c["evo_calls"] if e["r0"] != 0]
+        once = len(offered) == len(set(offered))
+        base = (after["species"] == target and after["checksum_ok"] and once
+                and all(mv in after["moves"] for mv in level_moves))
+        learned = [mv for mv in evo_moves if mv in after["moves"]]
+        why[name] = {"species": after["species"], "moves": after["moves"], "evo_calls": c["evo_calls"],
+                     "evolution_moves_learned": learned, "no_move_offered_twice": once}
+        if target == species:        # plain level-up: no evolution scene, never Air Slash
+            ok = base and not c["evo_calls"] and EVOLUTION_LEVELUP_ONLY_FORBIDDEN not in after["moves"]
+        elif name in EVOLUTION_DECLINE:   # offered once with four moves, given up: the moves unchanged
+            ok = base and [e for e in c["evo_calls"] if e["r0"]] == [{"r0": 0xFFFF, "move": 690}] \
+                and after["moves"] == list(moves)
+        elif not evo_moves:          # the evolution move is the new level's move: learned once either way
+            ok = base
+        else:
+            got = base and learned == list(evo_moves) and all(mv in offered for mv in evo_moves)
+            if name == "charizard_full":
+                got = got and {"r0": 0xFFFF, "move": 403} in c["evo_calls"] and TACKLE not in after["moves"]
+            fixed &= got
+            original &= base and not learned and not any(mv in offered for mv in evo_moves) \
+                and (name != "charizard_full" or after["moves"] == list(moves))
+            continue
+        fixed &= ok
+        original &= ok
+    return _state(fixed, original, why)
+
+
 JUDGES[("msgload", "msgload")] = judge_msgload
 JUDGES.update({k: crop_judge(*v) for k, v in CROP_CHECKS.items()})
 # checks across the two runs of a fix (fixed ROM, control), after both judged right
 PAIR_CHECKS = {("ivev", "ivev-panel"): pair_ivev, ("pcbox", "pcbox-name-width"): pair_pcbox}
 JUDGES[("texture-bounds", "overworld-texture-frame-bounds")] = judge_texture_bounds
 JUDGES[("reflection", "bulbasaur-reflection-boundary")] = judge_reflection
+JUDGES[("evolution", "evolution-moves")] = judge_evolution
 
 
 # --------------------------------------------------------------------------------------------- runner
