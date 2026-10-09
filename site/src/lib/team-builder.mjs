@@ -16,6 +16,11 @@ export function parseTeamHash(hash, knownIds) {
 
 export function teamHash(team) { return `#team=${team.join(',')}`; }
 
+// Only Pokémon with a documented in-game acquisition route can join a team.
+export function availableTeamPokemon(catalog) {
+  return catalog.filter(mon => mon.availability === 'documented');
+}
+
 export function filterCatalog(catalog, { query = '', type = '', region = '', availability = '' } = {}) {
   const normalize = text => text.normalize('NFKD').replace(/\p{M}/gu, '').replace(/['‘’]/g, '').toLowerCase();
   const terms = normalize(query).trim().split(/\s+/).filter(Boolean);
