@@ -141,6 +141,52 @@ class HangCases(unittest.TestCase):
         self.assertTrue(emu_hang.judge(alive, "hang", case))
 
 
+class HangCaseTable(unittest.TestCase):
+    def test_freeze_cases_are_hang_cases(self):
+        import emu_hang
+        import emu_layer
+        for name in emu_layer.FREEZE_CASES:
+            case = emu_hang.CASES[name]
+            self.assertTrue(case["fault_pc"] and case["steps"] and case["goal"], name)
+            self.assertEqual(len(case["sav_sha256"]), 64, name)
+
+    def test_route22_walk_ends_beside_misty(self):
+        import emu_hang
+        case = emu_hang.CASES["follower_route22"]
+        moves = {"UP": (0, -1), "DOWN": (0, 1), "LEFT": (-1, 0), "RIGHT": (1, 0)}
+        x, y = case["start"][1:]
+        trail = []
+        for d in case["steps"]:
+            x, y = x + moves[d][0], y + moves[d][1]
+            trail.append((x, y))
+        self.assertEqual(trail[-1], case["goal"])
+        self.assertIn((992, 267), trail)          # into Viridian City (x 992+) and back: Route 22 loads Misty
+        self.assertEqual(trail[-2], (968, 270))   # beside Misty (969,270), then one step away
+        self.assertEqual(case["flags"][1363], False)
+
+    def test_prepare_save_teleports_with_height_and_flags(self):
+        import struct
+        import tempfile
+
+        import emu_hang
+        from test_emu_harness import SaveFileEdits
+        path = SaveFileEdits()._save()
+        sf = E.SaveFile(path)
+        a = sf._a(E.ARR_MAP_OBJECTS, 0)
+        struct.pack_into("<I", sf.data, a, 0xC061)
+        sf.data[a + 8] = E.PLAYER_OBJ_ID
+        sf.set_flag(1363)
+        sf.write(path)
+        case = {"teleport": (27, 988, 267, "RIGHT"), "height": 10, "flags": {1363: False, 1302: True}}
+        out = E.SaveFile(emu_hang.prepare_save(E, path, case, None, tempfile.mkdtemp()))
+        self.assertEqual(out.location()["map"], 27)
+        a = out._a(E.ARR_MAP_OBJECTS, 0)
+        self.assertEqual(struct.unpack_from("<6h", out.data, a + 0x20), (988, 10, 267, 988, 10, 267))
+        self.assertEqual(struct.unpack_from("<i", out.data, a + 0x2C)[0], 10 * 8 * 0x1000)
+        self.assertFalse(out.get_flag(1363))
+        self.assertTrue(out.get_flag(1302))
+
+
 class AbortRecord(unittest.TestCase):
     def test_r0_is_masked(self):
         import emu_hang

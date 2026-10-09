@@ -67,8 +67,8 @@ Full adds (and fails when armips v0.11.0, the two ROMs or xdelta3 are missing; a
              scenarios  every work/tools/scenarios/*.toml on both ROMs: CN/EN parity, expectations, baselines
                         against the committed digests (scenario_baselines.json), not approved yet = 'pending';
              textfit    the strings changed since --emu-since (default the latest tag) in their window;
-             freeze     the melonDS freeze reproducers (rocket_hq, follower_viridian): no freeze on the build, the
-                        freeze still reproduced on the untouched Chinese ROM.
+             freeze     the melonDS freeze reproducers (rocket_hq, follower_viridian, follower_route22): no freeze
+                        on the build, the freeze still reproduced on the untouched Chinese ROM.
              Runs in <work-dir>-emu/runs/<stamp>/<part>; the report (report.json, report.html: failures with
              their CN|EN evidence, pending approvals with the exact `emu_harness.py approve` commands, passes)
              in <work-dir>-emu/report/<stamp>/. The step fails on any failure; pending approvals are listed and

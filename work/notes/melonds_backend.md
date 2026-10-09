@@ -10,7 +10,7 @@
 | `work/tools/melonds_shim/build.py` | Checks the pinned melonDS checkout, builds the core with CMake, compiles and links `libmelonds_shim.dylib` into `work/build/melonds/` (git-ignored). |
 | `work/tools/melonds.py` | Python ctypes wrapper (`MelonDS`). No melonDS code; loads the library at run time. |
 | `work/tools/emu_harness.py` | `Harness(..., emulator="melonds")`, `start_at(..., emulator=...)`, the global `--emulator` option, and the crash and hang helpers. |
-| `work/tools/emu_hang.py` | The `hang` subcommand: walk from a save and judge hang / pass (Rocket HQ, Viridian follower). |
+| `work/tools/emu_hang.py` | The `hang` subcommand: walk from a save and judge hang / pass (Rocket HQ, Viridian follower, Route 22 follower at Misty). |
 | `work/tools/test_melonds.py` | Wrapper and adapter tests. The library tests skip when the shim is not built; the boot test also needs the Chinese ROM. |
 
 No melonDS source is in the repository. The build uses a separate checkout of the release tag (like armips). The pin and build steps are in [toolchain.md](toolchain.md#melonds-11-emulator-harness-backend).
@@ -87,6 +87,7 @@ From the command line, `--emulator melonds` comes before the subcommand and sets
 .venv/bin/python work/tools/emu_harness.py --emulator melonds info --sav S
 .venv/bin/python work/tools/emu_harness.py hang --case rocket_hq --rom R --sav S --expect hang|pass
 .venv/bin/python work/tools/emu_harness.py hang --case follower_viridian --rom R --sav S [--species 4] --expect hang|pass
+.venv/bin/python work/tools/emu_harness.py hang --case follower_route22 --rom R --sav S [--species 4] --expect hang|pass
 .venv/bin/python work/tools/emu_harness.py hang --case save --rom R --sav S [--walk LEFT,RIGHT] [--goal X,Y] --expect hang|pass
 ```
 
@@ -94,7 +95,7 @@ From the command line, `--emulator melonds` comes before the subcommand and sets
 
 `MelonDS` objects are not thread-safe: use each console from one thread. Calls after `close()` raise `RuntimeError`. The library exports only the `mds_*` C API. It checks the save by SHA-256 and writes `report.json` and screenshots to `work/build/harness/hang/<case>_<rom>_<emulator>/`. Exit 0 when the judgement matches `--expect`.
 
-**Teleporting outdoors.** `start_at`/`SaveFile.place_player` from the default `memcheck/full_bag_6mons.sav` (saved indoors, map 500) to an outdoor map leaves the player invisible and unable to move, on DeSmuME as well. From a save made outdoors it works (player B's hash-named save, map 29, SHA-256 `0886514d…ebc9eb`, used by `follower_viridian`). Which LocalFieldData field makes the difference is not established. Indoor targets (Rocket HQ from `full_bag_6mons.sav`) work.
+**Teleporting outdoors.** `start_at`/`SaveFile.place_player` from the default `memcheck/full_bag_6mons.sav` (saved indoors, map 500) to an outdoor map leaves the player invisible and unable to move, on DeSmuME as well. From a save made outdoors it works (player B's hash-named save, map 29, SHA-256 `0886514d…ebc9eb`, used by `follower_viridian`). Which LocalFieldData field makes the difference is not established. Indoor targets (Rocket HQ from `full_bag_6mons.sav`) work. A raised outdoor target also needs its ground height (`place_player(..., height=10)` on the Route 22 pond shore, which also writes the saved fx32 y); at height 0 the player is stuck there the same way (2026-10-09; possibly the cause of the indoor-save case too, untested).
 
 ## Results (2026-10-08)
 
@@ -109,6 +110,14 @@ Builds from this branch (develop `172dbc0`): `develop.nds` = `build.py --no-patc
 | follower_viridian, Bulbasaur (species 1) | untouched Chinese | hang | **hang**: data abort at `0x02024528` (in the reflection graphics getter `0x0202451C`) on the first RIGHT step along the pond |
 | follower_viridian, Bulbasaur | develop (no reflection fix yet) | hang | **hang**, the same signature |
 | follower_viridian, Charmander (species 4) | Chinese and develop | pass | **pass**: all four steps, no abort |
+
+`follower_route22` (2026-10-09, worktree branch `emu/follower-route22` from develop `aec3bbd`): player B's save teleported to Route 22 (988,267) at height 10 with flag 1363 cleared (Misty and Starmie at (969,270)/(970,270) show while it is clear), Bulbasaur the only party Pokémon; the walk crosses into Viridian City and back (so the map loads Misty), goes through the tall grass at x 984, west along the walkway at y 268, down to the shore at (966,270), east to (968,270) beside Misty, one step away to (967,270). 58 steps. Two runs each, identical:
+
+| ROM | Follower | Expect | Result |
+|---|---|---|---|
+| untouched Chinese `4807ab2c…` | Bulbasaur | hang | **hang**: data abort on step 56, RIGHT from (966,270) to (967,270), the tile before Misty; first abort frame 4834, fault `0x02024528` (r4 = 0xB6), abort LR `0x02024530`; the picture freezes with Misty and Starmie on screen |
+| untouched Chinese | Charmander (`--species 4`) | pass | **pass**: all 58 steps, no abort |
+| English build `e07bf9fa…` (develop `aec3bbd`, with bulbasaur-reflection-boundary) | Bulbasaur | pass | **pass**: all 58 steps, ends at (967,270), no abort, screen changing |
 
 The Rocket HQ rows match the manual melonDS 1.1 reproduction in [rocket_hq_freeze_repro_20261008.md](rocket_hq_freeze_repro_20261008.md) exactly: same CPSR, abort LR and faulting instruction. Loading the manual `.ml1` crash states in the shim gives the same registers too. In every row where the abort happens while walking (Rocket HQ, follower_viridian with Bulbasaur), the picture freezes on its last frame and is not black: the ARM9 spins in the abort handler. When the abort happens while Continue loads the map (the fixture saves below), both screens stay black.
 

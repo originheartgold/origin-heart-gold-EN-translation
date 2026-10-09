@@ -55,8 +55,9 @@ BRANCH_FIXED = bytes.fromhex("07db")        # blt 0x021F62AC: 428 takes the foll
 SAMPLE_LIMIT = 12
 # Where the follower walks next to reflecting water: map, start (x, y, facing), then the steps and where each
 # must end. viridian: the dry strip north of the Viridian City pond. route22: the north shore of the Route 22
-# pond, west of Misty and her Pokemon (a bug report places a freeze on Route 22 'next to Misty'; that spot is
-# only inferred, the report's screenshot is not available).
+# pond, west of Misty and her Pokemon. Misty's first encounter is there (objects 13/14 at (969,270)/(970,270),
+# shown while flag 1363 is clear, script file 212); players meet the freeze on that shore (bug report 'next to
+# Misty', and the user, 2026-10-09). melonDS reproduces the freeze there: emu_hang.py follower_route22.
 SCENES = {
     "viridian": {"map": 50, "start": (1017, 260, "DOWN"),
                  "steps": (("DOWN", (1017, 261)), ("RIGHT", (1018, 261)), ("RIGHT", (1019, 261)),

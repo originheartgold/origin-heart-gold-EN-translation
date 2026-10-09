@@ -59,6 +59,9 @@ FREEZE_CASES = {
                   "what": "Rocket HQ B1F, east from (13,4) to the camera ambush (player A's save)"},
     "follower_viridian": {"fix": "bulbasaur-reflection-boundary", "refs": ["D-2270"],
                           "what": "Bulbasaur following along the Viridian City pond (player B's save, teleported)"},
+    "follower_route22": {"fix": "bulbasaur-reflection-boundary", "refs": ["D-2270"],
+                         "what": "Bulbasaur following to Misty's first encounter on the Route 22 pond shore, where "
+                                 "players meet the freeze (player B's save, teleported, Misty's flag cleared)"},
 }
 FREEZE_SAVE_DIR = "rocket-repro-20261008"     # next to the default save folder: the 2026-10-08 reproductions
 
