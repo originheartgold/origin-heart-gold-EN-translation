@@ -218,11 +218,19 @@ class Judges(unittest.TestCase):
         for fx, scs in F.COVERAGE.items():
             if fx.startswith("gfx-"):
                 self.assertTrue(all((sc, fx) in F.CROP_CHECKS for sc in scs), fx)
-        self.assertEqual(set(F.CLOCKS), {sc for (sc, fx), (key, _) in F.CROP_CHECKS.items() if key in F.PENDING})
+        # the pinned-clock scenarios are crop scenarios (independent of what is approved or still pending)
+        self.assertLessEqual(set(F.CLOCKS), {sc for (sc, fx) in F.CROP_CHECKS})
 
     def test_pending_crop_judge(self):
+        from unittest import mock
         key = "weather-banner"
-        self.assertIn(key, F.PENDING)
+        # its own pending state: the committed file may have approved the crop since
+        approved = {k: v for k, v in F.APPROVED.items() if k != key}
+        pending = {key: {"fix": "gfx-weather-banners", "screen": "battle-status"}}
+        with mock.patch.dict(F.APPROVED, approved, clear=True), mock.patch.dict(F.PENDING, pending, clear=True):
+            self._pending_crop_judge(key)
+
+    def _pending_crop_judge(self, key):
         judge = F.JUDGES[("battle-status", "gfx-weather-banners")]
         cn = {"banner": {"crops": {key: "c" * 64}, "unstable": []}}
         build = {"banner": {"crops": {key: "b" * 64}, "unstable": []}}
@@ -250,6 +258,11 @@ class Judges(unittest.TestCase):
             td = Path(td)
             digests = td / "crops.json"
             shutil.copyfile(F.CROP_DIGESTS, digests)
+            # its own pending entry: the committed file may have approved the crop since
+            data = json.loads(digests.read_text())
+            data["approved"].pop("weather-banner", None)
+            data["pending"]["weather-banner"] = {"fix": "gfx-weather-banners", "screen": "battle-status"}
+            digests.write_text(json.dumps(data))
             run = td / "run"
             run.mkdir()
             row = {"fix": "gfx-weather-banners", "scenario": "battle-status", "pass": True, "pending_approval": True,

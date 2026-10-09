@@ -20,56 +20,67 @@
    "digest": "ef249d7e92d33f907702649a2304ccbfb587e2ffdc317053aa1b2c8cfd10f1ad",
    "approved_by": "user, 2026-10-08",
    "images": "work/build/hard4/approve/ (in the poke-patches worktree): <crop>_build.png, <crop>_chinese.png"
-  }
- },
- "pending": {
+  },
   "bag-hm": {
-   "fix": "gfx-bag-labels",
-   "screen": "bag, TM pocket with HM01 first: the HM label of the first slot"
+   "digest": "46f236b7cd80949ba31bc7a19480d8d973de59392af198250d635b5999a26d8b",
+   "approved_by": "user, 2026-10-09 (approved as regression gates after viewing the crops)",
+   "images": "/Users/simonvergauwen/Developer/poke-cleanup/work/build/check-emu/report/20261009-151540 (local, git-ignored): bag_tm_bag-hm_crop.png, bag_tm_bag-hm_crop.png"
   },
   "chain-logger-bar": {
-   "fix": "gfx-linkcapture-bar",
-   "screen": "Chain Logger (Key Items -> USE): the (X) INFO plate of its bottom bar"
+   "digest": "c23a7bb9979dd8ab92bee4eb0e91efe1970cab0bb6bb4204f24d154facb7da8a",
+   "approved_by": "user, 2026-10-09 (approved as regression gates after viewing the crops)",
+   "images": "/Users/simonvergauwen/Developer/poke-cleanup/work/build/check-emu/report/20261009-151540 (local, git-ignored): chain_logger_chain-logger-bar_crop.png, chain_logger_chain-logger-bar_crop.png"
   },
   "dex-header": {
-   "fix": "gfx-dex-header",
-   "screen": "Pokedex opened from the field: the JOHTO POKeDEX plate"
+   "digest": "5bfbfbe75cd4f14d8712b55fd32d510a8cd4e845dbb88616a77f16034545dc32",
+   "approved_by": "user, 2026-10-09 (approved as regression gates after viewing the crops)",
+   "images": "/Users/simonvergauwen/Developer/poke-cleanup/work/build/check-emu/report/20261009-151540 (local, git-ignored): dex_list_dex-header_crop.png, dex_list_dex-header_crop.png"
   },
   "dex-type-badge": {
-   "fix": "gfx-dex-type-badges",
-   "screen": "Pokedex entry (Charmander): the FIRE type badge"
+   "digest": "381c768688847220abf76e54e1a7f1885554522f3f5f62ac55ae2f01e915d63f",
+   "approved_by": "user, 2026-10-09 (approved as regression gates after viewing the crops)",
+   "images": "/Users/simonvergauwen/Developer/poke-cleanup/work/build/check-emu/report/20261009-151540 (local, git-ignored): dex_entry_dex-type-badge_crop.png, dex_entry_dex-type-badge_crop.png"
   },
   "trainer-card-back": {
-   "fix": "gfx-trainer-card",
-   "screen": "trainer card, back: the L (losses) unit of LINK BATTLES"
+   "digest": "b002d0b4750aa1e3ef7d0ded0f2f3b47deb19a6c9f82c1ca70c4f756e24ea116",
+   "approved_by": "user, 2026-10-09 (approved as regression gates after viewing the crops)",
+   "images": "/Users/simonvergauwen/Developer/poke-cleanup/work/build/check-emu/report/20261009-151540 (local, git-ignored): card_back_trainer-card-back_crop.png, card_back_trainer-card-back_crop.png"
   },
   "pokegear-weekday": {
-   "fix": "gfx-pokegear-calendar",
-   "screen": "Pokegear top screen: the weekday next to the clock (pinned: FRIDAY)"
+   "digest": "04887c7683b74b2d0e4086598cb228e380a7ec947b8248313dd8a1cb78cdbfc6",
+   "approved_by": "user, 2026-10-09 (approved as regression gates after viewing the crops)",
+   "images": "/Users/simonvergauwen/Developer/poke-cleanup/work/build/check-emu/report/20261009-151540 (local, git-ignored): pokegear_pokegear-weekday_crop.png, pokegear_pokegear-weekday_crop.png"
   },
   "yes-no": {
-   "fix": "gfx-yes-no-buttons",
-   "screen": "field SAVE prompt: the touch-screen YES / NO buttons"
+   "digest": "0e04d5e5ce1a5751eb79a212ec7cd13191b57c70f4f41ff6b8e13ba64813c890",
+   "approved_by": "user, 2026-10-09 (approved as regression gates after viewing the crops)",
+   "images": "/Users/simonvergauwen/Developer/poke-cleanup/work/build/check-emu/report/20261009-151540 (local, git-ignored): save_prompt_yes-no_crop.png, save_prompt_yes-no_crop.png"
   },
   "summary-status": {
-   "fix": "gfx-summary-labels",
-   "screen": "summary of a poisoned Pokemon: the PSN icon"
+   "digest": "43d91c455e9f9a83b98f21fea69c8c018c94d10b93a393726d0be89af76d0894",
+   "approved_by": "user, 2026-10-09 (approved as regression gates after viewing the crops)",
+   "images": "/Users/simonvergauwen/Developer/poke-cleanup/work/build/check-emu/report/20261009-151540 (local, git-ignored): summary_status_summary-status_crop.png, summary_status_summary-status_crop.png"
   },
   "battle-status": {
-   "fix": "gfx-battle-status-icons",
-   "screen": "battle, poisoned lead: the PSN icon on the HP box (box at its highest bob position)"
+   "digest": "fc10830dce321af41dc18afdd5dc5c5e185be044d202b7dcd30edc927d705e33",
+   "approved_by": "user, 2026-10-09 (approved as regression gates after viewing the crops)",
+   "images": "/Users/simonvergauwen/Developer/poke-cleanup/work/build/check-emu/report/20261009-151540 (local, git-ignored): battle_status_menu_battle-status_crop.png, battle_status_menu_battle-status_crop.png"
   },
   "weather-banner": {
-   "fix": "gfx-weather-banners",
-   "screen": "battle in sun (wild Groudon, Drought): the SUN label of the banner on FIGHT"
+   "digest": "aa01a13c6e16dcd444a1ddfc36dc98f321eb02610b7452399e5b1d2192ab66da",
+   "approved_by": "user, 2026-10-09 (approved as regression gates after viewing the crops)",
+   "images": "/Users/simonvergauwen/Developer/poke-cleanup/work/build/check-emu/report/20261009-151540 (local, git-ignored): battle_status_banner_weather-banner_crop.png, battle_status_banner_weather-banner_crop.png"
   },
   "battle-panel-labels": {
-   "fix": "gfx-battle-panel-labels",
-   "screen": "battle INFO panel: the SWAP / EXIT key hints"
+   "digest": "fcf4e8e7a5c18275d3f33798022d556652d8a1d99b8501747f1b165848800961",
+   "approved_by": "user, 2026-10-09 (approved as regression gates after viewing the crops)",
+   "images": "/Users/simonvergauwen/Developer/poke-cleanup/work/build/check-emu/report/20261009-151540 (local, git-ignored): battle_status_info_battle-panel-labels_crop.png, battle_status_info_battle-panel-labels_crop.png"
   },
   "pokeathlon-label": {
-   "fix": "gfx-pokeathlon",
-   "screen": "Pokeathlon instruction screen (Hurdle Dash): the POKeATHLON label"
+   "digest": "fdfd6b0b32afb49ca319f75848f00a354a9ea35a05ab7416cc8cff3cfe082c37",
+   "approved_by": "user, 2026-10-09 (approved as regression gates after viewing the crops)",
+   "images": "/Users/simonvergauwen/Developer/poke-cleanup/work/build/check-emu/report/20261009-151540 (local, git-ignored): pokeathlon_instructions_pokeathlon-label_crop.png, pokeathlon_instructions_pokeathlon-label_crop.png"
   }
- }
+ },
+ "pending": {}
 }
