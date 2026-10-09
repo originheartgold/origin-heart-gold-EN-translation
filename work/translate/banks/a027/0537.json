@@ -712,10 +712,10 @@
   {
    "id": 87,
    "zh": "要给蚊香蛙起昵称吗？{VAR:0200:0}{SCROLL}",
-   "en": "Give Poliwhirl a nickname?{VAR:0200:0}{SCROLL}",
+   "en": "Give Poliwag a nickname?{VAR:0200:0}{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "D-1195: reverted to match the zh (The Poliwag branch (#84–#88) asks to nickname 蚊香蛙 (Poliwhirl)); logged in hack_findings_import.jsonl"
+   "notes": "D-1195: reverted to match the zh (The Poliwag branch (#84–#88) asks to nickname 蚊香蛙 (Poliwhirl)); logged in hack_findings_import.jsonl | Hack text error fixed with user approval 2026-10-09 (D-2282, D-1496): this branch gives a Poliwag (GiveMon 60), so only the species name is corrected."
   },
   {
    "id": 88,
