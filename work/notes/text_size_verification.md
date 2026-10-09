@@ -1,5 +1,7 @@
 # Enlarged text verification (2026-10-04)
 
+**Status (2026-10-09): historical.** The rc5 quality tools this note describes (size_render_check, size_render_validation, size_render_gallery) were removed in the 2026-10-09 cleanup; the release gate is `check.py --full --strict-release` plus `--emu`. The findings below stay as the record; `git log --diff-filter=D -- work/tools` finds the scripts.
+
 Scope: the approved-review candidate ROM, SHA-256
 `27d76d83e72d3fb60c8782b1cd8509c18b0a539e11e5f541cdfe85c2a08d8ca9`.
 No production banks or ROM were changed by this audit. Local evidence contains

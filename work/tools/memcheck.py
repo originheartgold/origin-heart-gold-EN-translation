@@ -1084,8 +1084,7 @@ def cmd_run(a):
     scenarios = json.loads(SCENARIOS.read_text())["scenarios"]
     names = list(scenarios) if a.scenario == "all" else a.scenario.split(",")
     input_paths = {"checker": __file__, "manifest": SCENARIOS, "rom_zh": a.ref, "rom_en": a.rom,
-                   "helper_rendering": rendering.__file__, "helper_reproducibility": reproducibility.__file__,
-                   "helper_runner": Path(__file__).with_name("quality_runner.py")}
+                   "helper_rendering": rendering.__file__, "helper_reproducibility": reproducibility.__file__}
     input_paths.update({"save:" + name: Path(a.saves) / scenarios[name]["sav"]
                         for name in names if name in scenarios})
     inputs_before = reproducibility.capture_inputs(input_paths)

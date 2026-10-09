@@ -19,7 +19,7 @@ ROM_CN = HERE.parent / "rom" / "origin_v4.0.3_cn.nds"
 
 
 class TestRegistryEntries(unittest.TestCase):
-    """The [[string]] entries of work/patches, as hardcoded.load() gives them to the text checks."""
+    """The [[string]] entries of work/patches, as hardcoded.load() gives them (`hardcoded.py list`)."""
 
     def test_schema(self):
         cfg = hc.load()

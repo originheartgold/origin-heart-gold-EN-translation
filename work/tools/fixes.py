@@ -51,8 +51,8 @@ fix.toml
                   max_units, optional pointers (offsets of the 32-bit pointers to the slot), reloc_max_units
                   (longest English when relocated), context, notes. The asm writes the bytes (`.string` with
                   include/charmap.tbl); `check` requires its `.string` literals to be exactly the entries'
-                  en values, and the build reads the result back against en. The entries also feed
-                  translators and the text checks (text_consumer_check.py, text_safety_check.py).
+                  en values, and the build reads the result back against en. Translators read and
+                  edit the entries there (`hardcoded.py list` prints them).
     [[grow]]      an overlay, or the ARM9 ITCM block ("itcm", staged as itcm.bin at 0x01FF8000, at most up to
                   ITCM_LIMIT), the fix's asm may grow by appending (kinds code, data, strings). Keys: file
                   ("overlayNN" | "itcm"), max (bytes), notes. One fix per file; see asmpatch.py for the checks.

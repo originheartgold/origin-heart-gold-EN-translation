@@ -1,5 +1,7 @@
 # Findings from the tooling rollout
 
+**Status (2026-10-09): historical.** The rc5 quality tools this note describes (qa_warning_inventory, review_site, the static text checks) were removed in the 2026-10-09 cleanup; the release gate is `check.py --full --strict-release` plus `--emu`. The findings below stay as the record; `git log --diff-filter=D -- work/tools` finds the scripts.
+
 These findings concern the English artifact and test coverage. They are not original-hack bug fixes.
 No ROM, translation bank, graphics asset or game code patch was changed during
 this investigation.

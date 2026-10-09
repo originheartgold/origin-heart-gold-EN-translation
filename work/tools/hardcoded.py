@@ -3,10 +3,9 @@
 
 What is left here after the strings fix moved to armips (2026-10-08):
   * load() / `list`: the [[string]] entries of the enabled kind-'strings' fixes (work/patches/<fix>/fix.toml,
-    read through fixes.py): zh, en, slot size, pointers, relocation limit. Translators edit `en` there, and
-    the text checks (text_consumer_check.py, text_safety_check.py) read them. The bytes are written by the
-    fix's armips source (outfit-chooser-strings.asm), applied by asmpatch.py like every code/data fix; the
-    build refuses when the asm's strings and the entries' en differ.
+    read through fixes.py): zh, en, slot size, pointers, relocation limit. Translators edit `en` there. The
+    bytes are written by the fix's armips source (outfit-chooser-strings.asm), applied by asmpatch.py like
+    every code/data fix; the build refuses when the asm's strings and the entries' en differ.
   * RomView: arm9 / itcm / overlay / filesystem access by file key, shared with asmpatch.py; setting an overlay
     of another size also sets its ramSize in the y9 overlay table; setting "itcm" (the ARM9 autoload section at
     0x01FF8000) rebuilds the ARM9 file with ndspy (its autoload table and code-settings words follow).

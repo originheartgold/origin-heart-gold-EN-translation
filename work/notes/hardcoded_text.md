@@ -40,7 +40,7 @@ How the chooser uses these strings:
 ## Pipeline
 
 The pipeline has four parts:
-- **Data:** the fix `work/patches/outfit-chooser-strings/fix.toml`: one `[[string]]` entry per label (zh, en, slot size, pointers, relocation limit; translators edit `en` here, and `text_consumer_check.py` / `text_safety_check.py` read it through `hardcoded.load()`), and `[[grow]]` with `max = 64` for overlay 58.
+- **Data:** the fix `work/patches/outfit-chooser-strings/fix.toml`: one `[[string]]` entry per label (zh, en, slot size, pointers, relocation limit; translators edit `en` here; `hardcoded.py list` prints the entries), and `[[grow]]` with `max = 64` for overlay 58.
 - **Code:** the armips source `outfit-chooser-strings.asm` in the same folder writes the bytes; `work/tools/asmpatch.py` assembles it like every code and data fix (see `toolchain.md`). `work/tools/hardcoded.py` keeps the entry view, `RomView` and the survey `scan`.
 - **Build:** stage 3c in `build.py` (`asmpatch.apply`), with its checks in `verify_rom` (`asmpatch.verify`).
 - **Tests:** `work/tools/test_asmpatch.py` (the assembled overlay against golden SHA-1s, growth and string checks) and `work/tools/test_hardcoded.py` (the entries, the scan).

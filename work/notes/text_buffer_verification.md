@@ -1,5 +1,7 @@
 # Code-proven receiving buffers and numeric expansion
 
+**Status (2026-10-09): historical.** The rc5 quality tools this note describes (text_buffer_check, text_consumer_check, the static text checks) were removed in the 2026-10-09 cleanup; the release gate is `check.py --full --strict-release` plus `--emu`. The findings below stay as the record; `git log --diff-filter=D -- work/tools` finds the scripts.
+
 Verified against the untouched Chinese v4.0.3 ROM and the approved-review candidate on 2026-10-04. These are specific consumer contracts, not a declaration that every possible consumer is safe. No ROM, translation, or gameplay code changes are involved.
 
 `text_capacity_proofs.py` fingerprints complete relevant native routines and their literals. `text_consumer_check.py` applies the resulting contracts to shipped records; `text_safety_check.py` also applies them to the fresh workspace export. A changed allocation, source-bank literal, destination-field offset, call target, formatter, or numeric producer invalidates its proof and reports incomplete coverage. Known consumer success never removes the global consumer-discovery gap.

@@ -1,5 +1,7 @@
 # Tooling rollout
 
+**Status (2026-10-09): historical.** The rc5 quality tools this note describes (quality_runner, static_text_check and its text_*_check helpers, review_site) were removed in the 2026-10-09 cleanup; the release gate is `check.py --full --strict-release` plus `--emu`. The findings below stay as the record; `git log --diff-filter=D -- work/tools` finds the scripts.
+
 ## Stage 1: local quality gate
 
 Run all commands from the repository root:

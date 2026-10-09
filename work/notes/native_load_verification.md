@@ -1,5 +1,7 @@
 # Native message loading verification
 
+**Status (2026-10-09): historical.** The rc5 quality tools this note describes (native_load_check, native_load_validation, opaque_control_proof, quality_runner) were removed in the 2026-10-09 cleanup; the release gate is `check.py --full --strict-release` plus `--emu`. The findings below stay as the record; `git log --diff-filter=D -- work/tools` finds the scripts.
+
 `work/tools/native_load_check.py` exercises the candidate ROM's actual ARM9
 message routines in DeSmuME. It never changes the ROM, bank text or game code.
 Run from the repository root with the existing local Python environment:

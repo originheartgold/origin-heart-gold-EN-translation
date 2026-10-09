@@ -8,7 +8,6 @@ equals the dump (work/extract/v4). So such an entry stores a marker instead of t
 
 and the tools treat the marker as equal to the dump text whose hash matches:
     ws.py init/export/import  -> matches()   (no zh_changed flag; English is exported)
-    text_inventory_check      -> matches()
     qa.py check/wrap          -> hydrate()   (fills the real zh in memory from the local dump)
 Nothing ever writes the hydrated text back. Redact a string with `ws.py redact NARC BANK ID...`.
 """
