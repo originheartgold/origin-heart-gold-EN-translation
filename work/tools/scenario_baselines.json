@@ -1,0 +1,19 @@
+{
+ "_doc": "Approved values of the scenario files' `baseline` checks (work/tools/scenarios/*.toml), as digests only: sha256 of the observation's canonical JSON. Key: <scenario>/<case>/<lang>/<obs>. Recorded by `emu_harness.py approve --from <report dir> --baselines <key>[,...] --by '<who, date>'` after the user looked at the run's evidence (images stay under work/build). A missing or changed EN baseline judges 'needs approval' (the run passes, the report lists it); a changed CN baseline fails (the Chinese ROM never changes).",
+ "approved": {
+  "dex/main/cn/dex.digests": {
+   "digest": "d6a9cab9ea2a9b78cb38702373c3cb6530c58b50a93a9cd2bd2cec77a088065f",
+   "approved_by": "user, 2026-10-09",
+   "recorded": "2026-10-09 16:00",
+   "run": "/Users/simonvergauwen/Developer/poke-cleanup/work/build/check-emu/report/20261009-151540",
+   "rom_sha256": "4807ab2c130581cb9d4f6110fc64b41ca4807b8d28e7622ebd3c9740baed95c8"
+  },
+  "dex/main/en/dex.digests": {
+   "digest": "399253a1c3fc9b9ddf79cc24c3ede96b27d742432d1536255f7465ba8fe9da35",
+   "approved_by": "user, 2026-10-09",
+   "recorded": "2026-10-09 16:00",
+   "run": "/Users/simonvergauwen/Developer/poke-cleanup/work/build/check-emu/report/20261009-151540",
+   "rom_sha256": "d5442d367ebfa552d4cc4e6a014350fda426e310a7180f2a41151dafc9d1aed7"
+  }
+ }
+}
