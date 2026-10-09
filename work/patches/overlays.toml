@@ -4,6 +4,9 @@
 [overlay1]
 ram = 0x021E4980
 
+[overlay2]
+ram = 0x02245F40
+
 [overlay14]
 ram = 0x022007E0
 

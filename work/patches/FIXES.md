@@ -38,6 +38,7 @@ Stages (and the order of this list): font → graphics → hardcoded strings →
 | [`namelen`](#namelen) | code | yes | – | Name lengths: US limits (7 characters for trainers, 10 for Pokémon) |
 | [`naming-keyboard`](#naming-keyboard) | code | yes | – | English naming keyboard: ABC page first, pinyin IME off |
 | [`overworld-texture-frame-bounds`](#overworld-texture-frame-bounds) | code | yes | – | Overworld objects: a texture frame the texture does not have no longer crashes (Rocket HQ freeze) |
+| [`safari-no-wild-double`](#safari-no-wild-double) | code | yes | – | Safari Zone: wild encounters are single battles again (no frozen double battle) |
 | [`text-speed`](#text-speed) | code | yes | `msgload` | Options TEXT SPEED: NORMAL / FAST, 30 fps printer catch-up, Pokégear calls wait for A/B |
 
 ## font-glyphs
@@ -2746,6 +2747,221 @@ being bound to texture parameters read from address 0.
 .area 2
     expect16 0xD208             ; bhs ObjTex_SetTexture_NoTexture
     bhs     ObjTex_SetTexture_Return
+.endarea
+
+.close
+```
+
+</details>
+
+## safari-no-wild-double
+
+**Safari Zone: wild encounters are single battles again (no frozen double battle)**
+
+- Kind: code
+- Enabled: yes
+- Requires: nothing
+- Decisions: D-2289
+- Source: `work/patches/safari-no-wild-double/fix.toml`
+
+**Why (the Chinese hack):**
+
+Players: in the Safari Zone, some wild encounters freeze the game (Discord report: 'Some encounter in the
+Safari [Zone] freezes the game'; an earlier player report from DraStic: a Lv79 paralysed opponent, then a
+crash). About one encounter in four becomes a Double Battle whose second opponent is junk (no name, a random
+level and status, no sprite), and the game hangs at the command menu. It only happens with at least two
+Pokémon that can fight in the party. The untouched Chinese ROM does the same, so this is a bug of the hack (hack finding D-1535).
+
+Status: D-1337 says hack bugs are reported, not fixed. This fix is a user-approved exception to it
+(D-2289, 2026-10-09, the answer to the hack finding D-1535); other hack bugs stay report-only.
+
+Technical: the walk/surf wild encounter in overlay 2 (0x02246F6C) has a random double battle the hack
+added (0x022470C4: rand % 4 == 0, at least two Pokémon that can fight). The setup choice after it
+(0x0224710A) sets r1 = 1 for the Safari Zone (sys flag 0x967), 2 for the Contest (0x996), 0 otherwise, but
+then builds BattleSetup_New(11, 0x4A), a double battle, whenever the random double was rolled, and only
+otherwise the Safari / Contest / normal setup (0x022486C4). The Safari and Contest branches that create the
+wild Pokémon (0x02247790, 0x022477AC) still create one; only the normal branch creates two for a double
+(0x02247F24 twice). The battle then runs a double with one uninitialised opponent.
+Surfing is not affected: on water [sp+0x25] is 1, so the double is never rolled there.
+The Bug-Catching Contest takes the same path but is not affected: the contest keeps one Pokémon in the party,
+so the random double (two Pokémon that can fight) is never rolled there (seen in the emulator).
+
+**What (old → new):**
+
+Old: Safari Zone + random double rolled -> double battle setup, one wild Pokémon created -> junk second
+opponent, freeze at the command menu.
+
+New: the 20 bytes at 0x0224710A test the Safari flag first and branch straight to the Safari setup
+(0x02247130, r1 = 1) before the double flag is read; the Contest (r1 = 2) and every other encounter (r1 = 0)
+fall through to the double check exactly as before. Not changed: the random double roll itself, wild doubles
+outside the Safari Zone, the Bug-Catching Contest, the partner-following double (r7), fishing and the other
+encounter paths (they have no random double).
+
+**Evidence:**
+
+- D-2289: the user-approved exception to D-1337 for this fix; it answers the hack finding D-1535 (resolved)
+- User request 2026-10-09: 'We want to fix these bugs, so for each issue create a worktree per issue, and use a separate subagent to fix, test and review.' (Discord: 'Some encounter in the Safari [Zone] freezes the game.')
+- work/notes/safari-double_fix.md: the code path, the edit, and the emulator runs before and after
+- DeSmuME, 2026-10-09: with the roll forced, the Chinese ROM and the --without build build the double setup 0x4A with one wild Pokémon in the Safari Zone ('eeeeee Lv2', no sprite) and RUN never returns; the full build builds the Safari setup 0x20, one wild Pokémon, RUN works; a Route 1 encounter is a double with two wild Pokémon on all three
+- melonDS 1.1, 2026-10-09 (test ROM copies with the roll forced): the Chinese ROM and the --without build hang with a data abort at 0x0221E6B4 (overlay 14) as the battle starts; the full build plays normal single Safari battles
+- Bug-Catching Contest, DeSmuME 2026-10-09: the contest leaves one Pokémon in the party, a forced roll gives no double (Contest setup 0x1000, one wild Pokémon), on the Chinese ROM and the full build
+- Runtime: emu_harness.py fixes --case safari-no-wild-double (scenario safari: a Route 1 and a Safari Zone encounter with the random double forced, on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')
+
+**Touches:**
+
+- `overlay2+0x11CA` (RAM 0x0224710A) `safari-no-wild-double-kind`: 20 bytes, was `9807 2100 2800 D001 … (10 halfwords)`
+
+**Disassembly snapshot:** [`safari-no-wild-double.listing`](safari-no-wild-double/safari-no-wild-double.listing) (every edit, old → new; `python3 work/tools/asmpatch.py listing --write safari-no-wild-double`)
+
+**Source** (`work/patches/safari-no-wild-double/safari-no-wild-double.asm`, armips; the new bytes):
+
+<details>
+<summary>safari-no-wild-double.asm</summary>
+
+```asm
+; safari-no-wild-double - Safari Zone: a wild encounter is always a single battle (no frozen double battle
+; with a junk second opponent). D-2289 (user-approved exception to D-1337; answers the hack finding D-1535).
+; Why and what: fix.toml next to this file; overview work/patches/FIXES.md; work/notes/safari-double_fix.md.
+;
+; The walk/surf wild encounter (overlay 2, 0x02246F6C) picks the battle setup at 0x0224710A. The hack added a
+; random double battle in front of it (0x022470C4): rand % 4 == 0, at least two Pokemon that can fight
+; (arm9 0x02053570) and [sp+0x25] == 0 set [sp+0x10]. The setup choice then runs
+;   r1 = 1 when the Safari Zone flag is set ([sp+0x1C], sys flag 0x967),
+;        2 when the Bug-Catching Contest flag is set ([sp+0x18], sys flag 0x996), else 0;
+;   if [sp+0x10]: BattleSetup_New(11, 0x4A), a double battle setup, whatever r1 says;
+;   else: Encounter_NewSetup (0x022486C4) -> the Safari (r1 1), Contest (r1 2) or normal (r1 0) setup.
+; After that the Safari and Contest paths create ONE wild Pokemon (0x02247790 / 0x022477AC -> 0x02248204);
+; only the normal path creates two for a double (0x02247F24 twice). So with two usable Pokemon one Safari
+; encounter in four is a double battle with an uninitialised second opponent, and the game
+; freezes at the command menu.
+;
+; The Bug-Catching Contest takes the same path but is not affected: the contest leaves one Pokemon in the party
+; (BugContestAction 0), so the double needs two that can fight and is never rolled there (checked in the emulator:
+; work/notes/safari-double_fix.md). It is left exactly as the hack has it.
+;
+; The fix: the Safari check branches straight to Encounter_NewSetup with r1 = 1 before the double flag is read;
+; every other encounter (Contest r1 = 2, others r1 = 0) reaches the double check exactly as before, so the hack's
+; random wild doubles elsewhere are unchanged. Same 20 bytes, same registers.
+
+.nds
+.thumb
+.include "../include/guards.inc"
+
+.definelabel Encounter_Roll,           0x022470C4   ; [sp+0x10] = random double (the hack's)
+.definelabel Encounter_Kind,           0x0224710A   ; r1 = 1 Safari, 2 Contest, 0 other  <- the edit
+.definelabel Encounter_DoubleCheck,    0x0224711E   ; if [sp+0x10]: double setup
+.definelabel Encounter_SingleSetup,    0x02247130   ; Encounter_NewSetup(r0 field, r1 kind, r2 &setup)
+.definelabel Encounter_SetupDone,      0x02247144
+.definelabel Encounter_CreateSafari,   0x0224717C   ; one wild Pokemon (0x02247790)
+.definelabel Encounter_NewSetup,       0x022486C4
+
+.open "overlay2.bin", 0x02245F40
+
+; Read-only guards (nothing is written here): the double roll, the setup branches after the edit, and the
+; Safari / Contest creation, which builds one wild Pokemon.
+.org Encounter_Roll
+    expect16_at 0x00, 0x2000    ; mov   r0, #0
+    expect16_at 0x02, 0x9004    ; str   r0, [sp, #0x10]         no double
+    expect16_at 0x04, 0xF5D9    ; bl    rand  0x02020480       (1/2)
+    expect16_at 0x06, 0xF9DA    ;                               (2/2)
+    expect16_at 0x08, 0x0FC1    ; lsr   r1, r0, #31
+    expect16_at 0x0A, 0x0782    ; lsl   r2, r0, #30
+    expect16_at 0x0C, 0x1A52    ; sub   r2, r2, r1
+    expect16_at 0x0E, 0x201E    ; mov   r0, #30
+    expect16_at 0x10, 0x41C2    ; ror   r2, r0
+    expect16_at 0x12, 0x1888    ; add   r0, r1, r2              rand % 4
+    expect16_at 0x14, 0xD10A    ; bne   0x022470F0
+    expect16_at 0x16, 0x9805    ; ldr   r0, [sp, #0x14]
+    expect16_at 0x18, 0xF60C    ; bl    0x02053570              (1/2)  two Pokemon can fight
+    expect16_at 0x1A, 0xFA48    ;                               (2/2)
+    expect16_at 0x1C, 0x2800    ; cmp   r0, #0
+    expect16_at 0x1E, 0xD005    ; beq   0x022470F0
+    expect16_at 0x20, 0xA809    ; add   r0, sp, #0x24
+    expect16_at 0x22, 0x7840    ; ldrb  r0, [r0, #1]
+    expect16_at 0x24, 0x2800    ; cmp   r0, #0
+    expect16_at 0x26, 0xD101    ; bne   0x022470F0
+    expect16_at 0x28, 0x2001    ; mov   r0, #1
+    expect16_at 0x2A, 0x9004    ; str   r0, [sp, #0x10]         random double
+    expect16_at 0x2C, 0x68E8    ; ldr   r0, [r5, #0xC]          0x022470F0
+    expect16_at 0x2E, 0xF608    ; bl    0x0204F858              (1/2)
+    expect16_at 0x30, 0xFBB1    ;                               (2/2)
+    expect16_at 0x32, 0x9008    ; str   r0, [sp, #0x20]
+    expect16_at 0x34, 0xF61E    ; bl    0x02065B08              (1/2)  flag 0x967: Safari Zone
+    expect16_at 0x36, 0xFD06    ;                               (2/2)
+    expect16_at 0x38, 0x9007    ; str   r0, [sp, #0x1C]
+    expect16_at 0x3A, 0x9808    ; ldr   r0, [sp, #0x20]
+    expect16_at 0x3C, 0xF61E    ; bl    0x02065B18              (1/2)  flag 0x996: Bug-Catching Contest
+    expect16_at 0x3E, 0xFD0A    ;                               (2/2)
+    expect16_at 0x40, 0x9006    ; str   r0, [sp, #0x18]
+    expect16_at 0x42, 0x2F00    ; cmp   r7, #0                  partner following: always double
+    expect16_at 0x44, 0xD117    ; bne   0x0224713A
+
+.org Encounter_DoubleCheck
+    expect16_at 0x00, 0x9804    ; ldr   r0, [sp, #0x10]
+    expect16_at 0x02, 0x2800    ; cmp   r0, #0
+    expect16_at 0x04, 0xD005    ; beq   Encounter_SingleSetup
+    expect16_at 0x06, 0x200B    ; mov   r0, #11
+    expect16_at 0x08, 0x214A    ; mov   r1, #0x4A               double battle setup
+    expect16_at 0x0A, 0xF609    ; bl    BattleSetup_New 0x02050C34 (1/2)
+    expect16_at 0x0C, 0xFD84    ;                               (2/2)
+    expect16_at 0x0E, 0x900B    ; str   r0, [sp, #0x2C]
+    expect16_at 0x10, 0xE009    ; b     Encounter_SetupDone
+    expect16_at 0x12, 0x1C28    ; add   r0, r5, #0              Encounter_SingleSetup
+    expect16_at 0x14, 0xAA0B    ; add   r2, sp, #0x2C
+    expect16_at 0x16, 0xF001    ; bl    Encounter_NewSetup      (1/2)
+    expect16_at 0x18, 0xFAC6    ;                               (2/2)
+    expect16_at 0x1A, 0xE004    ; b     Encounter_SetupDone
+
+.org Encounter_CreateSafari
+    expect16_at 0x00, 0xA813    ; add   r0, sp, #0x4C
+    expect16_at 0x02, 0x9000    ; str   r0, [sp]
+    expect16_at 0x04, 0xA80C    ; add   r0, sp, #0x30
+    expect16_at 0x06, 0x9001    ; str   r0, [sp, #4]
+    expect16_at 0x08, 0x9A0B    ; ldr   r2, [sp, #0x2C]
+    expect16_at 0x0A, 0x1C28    ; add   r0, r5, #0
+    expect16_at 0x0C, 0x1C31    ; add   r1, r6, #0
+    expect16_at 0x0E, 0x1C23    ; add   r3, r4, #0
+    expect16_at 0x10, 0xF000    ; bl    0x02247790              (1/2)  Safari: one wild Pokemon
+    expect16_at 0x12, 0xFB00    ;                               (2/2)
+    expect16_at 0x14, 0xE079    ; b     0x02247286
+    expect16_at 0x16, 0x9806    ; ldr   r0, [sp, #0x18]
+    expect16_at 0x18, 0x2800    ; cmp   r0, #0
+    expect16_at 0x1A, 0xD00A    ; beq   0x022471AE              (not the Contest: normal, maybe two)
+    expect16_at 0x1C, 0xA813    ; add   r0, sp, #0x4C
+    expect16_at 0x1E, 0x9000    ; str   r0, [sp]
+    expect16_at 0x20, 0xA80C    ; add   r0, sp, #0x30
+    expect16_at 0x22, 0x9001    ; str   r0, [sp, #4]
+    expect16_at 0x24, 0x9A0B    ; ldr   r2, [sp, #0x2C]
+    expect16_at 0x26, 0x1C28    ; add   r0, r5, #0
+    expect16_at 0x28, 0x1C31    ; add   r1, r6, #0
+    expect16_at 0x2A, 0x1C23    ; add   r3, r4, #0
+    expect16_at 0x2C, 0xF000    ; bl    0x022477AC              (1/2)  Contest: one wild Pokemon
+    expect16_at 0x2E, 0xFB00    ;                               (2/2)
+
+; The edit: the Safari Zone goes to its own single setup before the double flag is read. The Contest and every
+; other encounter set r1 as before (2 / 0) and reach the double check unchanged.
+.org Encounter_Kind
+.area 20
+    expect16_at 0x00, 0x9807    ; ldr   r0, [sp, #0x1C]
+    expect16_at 0x02, 0x2100    ; mov   r1, #0
+    expect16_at 0x04, 0x2800    ; cmp   r0, #0
+    expect16_at 0x06, 0xD001    ; beq   0x02247116
+    expect16_at 0x08, 0x2101    ; mov   r1, #1
+    expect16_at 0x0A, 0xE003    ; b     Encounter_DoubleCheck
+    expect16_at 0x0C, 0x9806    ; ldr   r0, [sp, #0x18]
+    expect16_at 0x0E, 0x2800    ; cmp   r0, #0
+    expect16_at 0x10, 0xD000    ; beq   Encounter_DoubleCheck
+    expect16_at 0x12, 0x2102    ; mov   r1, #2
+    ldr     r0, [sp, #0x1C]     ; Safari Zone?
+    mov     r1, #1
+    cmp     r0, #0
+    bne     Encounter_SingleSetup
+    mov     r1, #0
+    ldr     r0, [sp, #0x18]     ; Bug-Catching Contest?
+    cmp     r0, #0
+    beq     Encounter_DoubleCheck
+    mov     r1, #2
+    nop
 .endarea
 
 .close
