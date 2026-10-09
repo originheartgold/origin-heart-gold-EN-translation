@@ -25,8 +25,13 @@ The walk/surf wild encounter (overlay 2, 0x02246F6C) chooses the battle setup af
 
 So in the Safari Zone, with two Pokémon that can fight, one encounter in four builds a double setup but only
 one wild Pokémon. The second opponent slot is uninitialised: on DeSmuME it shows as "eeeeee Lv2" with a status
-and no sprite, and the battle stays at the command menu (RUN does nothing). It is a soft lock, not a crash, so it
-looks the same on every emulator.
+and no sprite, and the battle stays at the command menu (RUN does nothing): a soft lock on DeSmuME, a data
+abort on melonDS (see "melonDS" below).
+
+Surfing never rolls the double: the encounter-type helper (0x02247998) writes `[sp+0x25] = 1` on water
+(arm9 0x0205A828), the roll needs `[sp+0x25] == 0`, and water encounters branch to 0x0224722A (the 5-slot surf
+table). So the bug, and the fix, only concern land encounters, in every Safari Zone area (the fix keys on the
+Safari game flag, not on the map or the area).
 
 No other encounter path has the random double: a scan of overlay 2 finds one `rand` + `% 4` + 0x02053570
 sequence (this one); fishing (0x022472D4) and the other entry points call `Encounter_NewSetup` directly.

@@ -30,6 +30,7 @@ are the same in our build; each is cited from the fix's .listing.
 from __future__ import annotations
 
 import argparse
+import datetime
 import hashlib
 import json
 import os
@@ -178,6 +179,9 @@ SAFARI_GRASS_IN = (357, 48, 40)     # Safari Zone: tall grass x 46-50 in the are
 SAFARI_CASES = (("wild", False, 3), ("safari", True, 2))   # case, enter the Safari Zone, tiles paced
 BATTLE_DOUBLE_WILD = 0x4A           # BattleSetup_New(11, 0x4A): the double setup the hack's roll builds
 BATTLE_SAFARI = 0x20                # the Safari setup's battle type (arm9 0x02050DBC; observed 2026-10-09)
+# scenarios whose outcome depends on the game's RNG: the console clock is pinned so every run (and every build)
+# starts from the same state. Without it the Safari case walked 240 steps without an encounter on some host times.
+SCENARIO_CLOCK = {"safari": (2026, 10, 9, 12)}
 
 
 # --------------------------------------------------------------------------------------------- helpers
@@ -640,7 +644,9 @@ def observe(scenario, rom, sav_dir, out):
     else:
         hooks = antipiracy_hooks if scenario == "antipiracy" else None
         place = start or (None, None, None)
-        with E.start_at(*place, rom=rom, sav=Path(sav_dir) / sav, out=out, verbose=False, hooks=hooks) as h:
+        clock = datetime.datetime(*SCENARIO_CLOCK[scenario]) if scenario in SCENARIO_CLOCK else None
+        with E.start_at(*place, rom=rom, sav=Path(sav_dir) / sav, out=out, verbose=False, hooks=hooks,
+                        clock=clock) as h:
             obs = fn(h)
     obs["seconds"] = round(time.time() - t0, 1)
     return obs

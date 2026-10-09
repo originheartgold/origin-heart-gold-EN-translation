@@ -15,13 +15,14 @@ Pokémon that can fight in the party. The untouched Chinese ROM does the same, s
 Status: D-1337 says hack bugs are reported, not fixed. This fix is a user-approved exception to it
 (D-2276, 2026-10-09, the answer to the hack finding D-1535); other hack bugs stay report-only.
 
-Technical: the walk/surf wild encounter in overlay 2 (0x02246FE4) has a random double battle the hack
+Technical: the walk/surf wild encounter in overlay 2 (0x02246F6C) has a random double battle the hack
 added (0x022470C4: rand % 4 == 0, at least two Pokémon that can fight). The setup choice after it
 (0x0224710A) sets r1 = 1 for the Safari Zone (sys flag 0x967), 2 for the Contest (0x996), 0 otherwise, but
 then builds BattleSetup_New(11, 0x4A), a double battle, whenever the random double was rolled, and only
 otherwise the Safari / Contest / normal setup (0x022486C4). The Safari and Contest branches that create the
 wild Pokémon (0x02247790, 0x022477AC) still create one; only the normal branch creates two for a double
 (0x02247F24 twice). The battle then runs a double with one uninitialised opponent.
+Surfing is not affected: on water [sp+0x25] is 1, so the double is never rolled there.
 The Bug-Catching Contest takes the same path but is not affected: the contest keeps one Pokémon in the party,
 so the random double (two Pokémon that can fight) is never rolled there (seen in the emulator).
 """
