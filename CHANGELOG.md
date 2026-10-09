@@ -33,6 +33,7 @@ Tester release. Adds a text speed option and the anti-piracy fix for real hardwa
 
 ### Added (tools)
 - New patch format: every ROM change (code, data, strings and graphics fixes) lives in its own folder `work/patches/<id>/` with a `fix.toml` (why, what, decisions) and, for code, data and strings, an armips source and its disassembly snapshot. `work/patches/FIXES.md` lists them all, generated from the registry. `work/tools/check.py` is the one check entry point (registry and asm lint, ruff, unit tests; `--full` also builds the ROM and compares hashes).
+- One shared TypeScript save core (`work/save-core/`) for the save editor and the emulator harness; Python tools reach it through the `save_core.py` bridge, and new checks (`check_save_harness.py`, save-core mutation tests) guard it. Worktrees and CI need `work/save-editor/node_modules` and `npm --prefix work/save-editor run build` before `check.py`.
 
 ### Known issues
 - Downgrade: a save made with this version and then used in the Chinese hack or an older English patch may show an unusual MUSIC SPEED value, because text speed shares the old 4-bit options field. Set TEXT SPEED to NORMAL and save before downgrading.

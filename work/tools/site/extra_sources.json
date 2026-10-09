@@ -2,6 +2,26 @@
  "_about": "Sources and battle-only forms the game data scan does not find on its own, each verified in the untouched Chinese v4.0.3 ROM (2026-10-05; evidence in work/notes/availability_audit.md). \"how\" replaces the generated \"how to get it\" text, \"battle\" marks a form seen only in battle, \"evoNote\" adds a note to the evolution section, \"note\" explains an entry with no confirmed source, \"evoBlocked\" marks an evolution (by target id) as not possible with a reason.",
  "entries": [
   {
+   "id": 525,
+   "name": "Boldore",
+   "evoNote": "The original hack only evolves Boldore by trade. The English patch from rc6 evolves it into Gigalith at Lv 35 instead, the level the hack author's own species sheet gives, and trading no longer evolves it. Tested in an emulator."
+  },
+  {
+   "id": 526,
+   "name": "Gigalith",
+   "evoNote": "The original hack only evolves Boldore by trade. The English patch from rc6 evolves it into Gigalith at Lv 35 instead, the level the hack author's own species sheet gives, and trading no longer evolves it. Tested in an emulator."
+  },
+  {
+   "id": 533,
+   "name": "Gurdurr",
+   "evoNote": "The original hack only evolves Gurdurr by trade. The English patch from rc6 evolves it into Conkeldurr at Lv 40 instead, the level the hack author's own species sheet gives, and trading no longer evolves it. Tested in an emulator."
+  },
+  {
+   "id": 534,
+   "name": "Conkeldurr",
+   "evoNote": "The original hack only evolves Gurdurr by trade. The English patch from rc6 evolves it into Conkeldurr at Lv 40 instead, the level the hack author's own species sheet gives, and trading no longer evolves it. Tested in an emulator."
+  },
+  {
    "id": 548,
    "name": "Petilil",
    "evoNote": "Leveling up while holding a Black Belt by day doesn't evolve it into Hisuian Lilligant: because of an error in the hack it stays a Petilil (the game even says \"Petilil evolved into Petilil\" and uses up the Black Belt). A Sun Stone then turns that Petilil into Hisuian Lilligant instead of Lilligant. Tested in an emulator.",
