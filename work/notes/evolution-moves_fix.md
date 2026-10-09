@@ -91,5 +91,25 @@ day: the form chosen on evolution) pass on the build with the expected species a
 `check.py --full` passes (nontext SHA-1 recorded; the text hashes in expected.toml were already stale on
 develop and are left for the coordinator).
 
-Not tested directly: level-up evolution after a battle and trade evolution. They run the same evolution scene
-(the only call of the learning routine that runs on evolution is 0x02074BD4), so they get the same behaviour.
+Not tested directly: trade evolution. It runs the same evolution scene: the scene's task creator
+(0x02074048) is called from arm9 (0x0203D0FC, 0x0203D146, 0x0203EB40), overlay 14 (0x02214EA6) and overlay 67
+(0x0220A872, 0x0220A930), and the only call of the learning routine in that scene is 0x02074BD4.
+
+## Review (2026-10-09)
+
+Re-run by the reviewer on fresh builds (DeSmuME unless noted; Chinese ROM / control / build):
+
+| Case | Chinese ROM | Control | Build |
+|---|---|---|---|
+| Golbat Lv29 (friendship 255, one EXP short of Lv30) beats a wild Magikarp: evolution after the battle -> Crobat | Tackle | Tackle | Tackle, **Cross Poison** |
+| Chinchou Lv26 knowing Tackle, Stockpile -> Lanturn (three level-0 moves: Stockpile, Swallow, Spit Up) | unchanged | unchanged | Stockpile `0xFFFE` (skipped silently), **Swallow**, **Spit Up** |
+| The same Chinchou case on melonDS 1.1 (no hooks; party moves from RAM) | unchanged | unchanged | Tackle, Stockpile, **Swallow**, **Spit Up**; no ARM9 exception |
+| Trumbeak Lv27, Tackle -> Toucannon (Beak Blast at level 0 and at 28) | Beak Blast (Lv28 entry) | same | Beak Blast once (level 0); the Lv28 entry returns `0xFFFE`, skipped silently |
+| Trumbeak Lv27, four moves, forget Tackle | - | - | Beak Blast offered once, learned; Lv28 entry `0xFFFE` |
+
+Known quirk: when the evolution move is also a move of the new level (Toucannon: Beak Blast at 0 and 28, its
+evolution level; also most species list their evolution move at level 1 too, which matters only for an evolution at Lv1, and Poliwrath and Flygon have it at Lv60),
+the Pokémon knows four moves and the player declines it, the scene asks a second time for the same move (the
+level-28 entry): "Toucannon did not learn the move Beak Blast." then "Toucannon wants to learn the move Beak
+Blast." Declining again ends it. The Chinese ROM asks once (only the Lv28 entry). Left as is; a question for the
+user.
