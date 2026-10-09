@@ -22,6 +22,7 @@ of the main checkout (also when run from an agent worktree).
     .venv/bin/python work/tools/emu_harness.py drive --lang en gen:25,30 t43,73/120 s:party   # op language
     .venv/bin/python work/tools/emu_harness.py scenarios [--only unown,palpark,...] [--lang cn|en|both] [--jobs 3] [--out DIR]   # = suite
     python3 work/tools/emu_scenarios.py validate          # schema check of work/tools/scenarios/*.toml, no emulator
+    .venv/bin/python work/tools/emu_harness.py textfit [--since v1.0.0-rc5 | --refs 60#27,... | --all] [--limit N] [--jobs 3] [--pairs]   # text fit, see 'Text fit'
     .venv/bin/python work/tools/emu_harness.py fixes --rom EN.nds --controls DIR --build-controls [--case all]   # one scenario per fix, see 'Fix scenarios'
     .venv/bin/python work/tools/emu_harness.py cleanup [--kill [--all]]                   # leftover harness processes
     python3 -m unittest discover -s work/tools -p 'test_emu_*.py'           # pure parts, no ROM needed
@@ -1052,7 +1053,9 @@ en = { baseline = true }              # optional per-ROM check (any expectation 
 - **Observations** `{ observe = "name", <kind> = ... }`: `party` (slot or `@gen`, optional `fields`), `ram`
   (+ `size`), `flag`, `var`, `position`, `location`, `clock`, `bag`, `crop = [x0, y0, x1, y1]` (sha256 of the
   RGB crop of the two-screen image, as `emu_fixes`), `message = "bank#id"` (show_message: page count and text-window
-  digests); plus every hook's captures under its name.
+  digests), `text_fit = "bank#id"` (the string rendered in the field window and judged by `emu_textfit`, see
+  "Text fit": `{verdict, pages, codes}`; declare it under `[parity.differ]`, the text differs by nature);
+  plus every hook's captures under its name.
 - **Shared setup**: `[setup] steps = [...]` runs once per ROM from `[start]` and saves a savestate; every case then
   starts from it (only `clock` may differ per case). Arceus uses it: one generator run, 16 Plates.
 - **Baselines**: `baseline = true` compares with the value of the first run, stored outside git in
@@ -1119,6 +1122,96 @@ bytes); 6 Unown all A with the decoder check; dex panels equal to the baseline. 
 observation `same` except the declared `wild` (Unown letters) and `dex` (panel text). The letters picked differ
 between two pinned runs of the same ROM (`RIUXRZ` vs `OUXELT` on the Chinese ROM), so the clock pin alone does not
 fix the encounter RNG path (step 3 fixed it: RNG pin, below).
+
+## Text fit (`emu_harness.py textfit`, `emu_textfit.py`, suite v2 step 4, 2026-10-09)
+
+Renders translated strings in their real window on the English build and decides from the pixels that they fit.
+It replaces nothing: QA (`qa.py check`) still estimates widths statically; this checks what the game prints.
+
+    .venv/bin/python work/tools/emu_harness.py textfit                       # every string changed since v1.0.0-rc5
+    .venv/bin/python work/tools/emu_harness.py textfit --since <ref> | --refs 60#27,battle_string/0002#32 | --all
+        [--limit N] [--windows field,battle] [--buffers typ|max] [--jobs 3] [--chunk 200] [--pairs] [--save fail|all]
+    .venv/bin/python work/tools/emu_harness.py textfit --rejudge <run folder>  # judge saved read-backs again, no emulator
+
+**Selection.** `--since REF` (default the last release tag `v1.0.0-rc5`): every string whose `en` differs between
+`git show REF:<bank>` and the working tree (untracked bank files count as new); `--refs`; `--all` (every string with
+English text); `--limit N` takes an evenly spaced sample.
+
+**Windows** (`window_for`; never a silent skip: every string not rendered is a `not rendered` row with its reason):
+
+| window | strings | how it is rendered |
+|---|---|---|
+| `field` | a027, QA category `dialogue` | from a field savestate (one per string), the game's `MsgBoxExtern` + `WaitButton` (as `messages`); every printer wait is a view: screenshot when the text area is unchanged for 10 frames, then A, until the script's sentinel var |
+| `battle` | battle_string banks 1 and 2 | a wild battle (`WildBattle 19 20`) started once, savestate before its first message; per string the battle's first message (2#1) is replaced right after the battle's own expansion (ov12 0x02225846, r6 = the destination String, max 320 units) by the string expanded with the fill-ins; the battle advances its pages itself, views are the distinct stable states until the next message |
+
+Not rendered (`window type X`): `item_desc`, `ui`, `dex_category`, `pokedex`, `move_desc`, `menu_touch_*`, `gear_map*`,
+`ability_desc`, `trainer_names`, `sign` (the 160-px signpost window), the name banks, `battle_info` (battle_string 0:
+the field-effect panel), `battle_menu` (battle_string 3), and `dialogue_large` (dialogue whose Chinese also needs 3+
+lines per view, so not the 2-line window). Descriptions could reuse the bag/summary paths of the old `sweeps desc`
+(section 12) in a later step.
+
+Both windows measured on the English build: the white panel is x 10-234, y 150-185 (rounded corners), the text
+bitmap x 16-231, y 152-183 (2 lines of 16 px, font 1); glyph rows 1-14 are read. Field and battle are identical.
+
+**Buffers.** Every `{VAR:01KK:i}` gets a real name of its kind as wide as QA's estimate (`--buffers typ` = the error
+threshold, `max` = worst case): species, location, ability, move, item, trainer class, type pools from the a027 name
+banks, numbers as 8s. Field: written into the script's MessageFormat buffers when the game expands the string
+(`StringExpandPlaceholders` 0x0200C738: r0 MessageFormat {+0 count, +8 fields, 8 bytes each, +4 String*}, r2 the
+source String the reader `ReadMsgDataIntoString` 0x0200BB0C filled for this bank/id), so the ROM's own string is
+printed. Indices beyond the format's count (the phone calls use 10 and 11; 18 of the changed strings) are put into
+the source string in place. String layout: +0 u16 max, +2 u16 size, +4 magic 0xB6F8D2EC, +8 u16 data (StrAddChar
+0x02026FDC keeps size + 1 < max).
+
+**Judge** (`judge`; every rule on the views read back with the ROM's own font, the decoder of the old `emu_text`):
+
+| code | fails when |
+|---|---|
+| `pages` | the printer waits seen differ from the string's: one per `{SCROLL}`, `{CLEAR}` and `{VAR:0207}`, plus the final one (battle: distinct views) |
+| `lines` | text lands on a third line of a view (static from the structure; the printer draws it past the window) |
+| `overflow` | a line is wider than 216 px: shown cut at the window edge (a prefix, the last glyph maybe in part) |
+| `text` | a line read back differs from the expected text (wrong, missing or extra glyphs) |
+| `ink` | ink in the panel outside the text area; without read-back, ink in a line's last column |
+| `prompt` | a string that waits with `{VAR:0200:..}`: a line of its last view is wider than 195 px (the two prompt icons at x 211-228, field and battle alike; the field's last view is read up to 195 px) |
+| `buffers` | a buffer could not be filled |
+
+Strings with SIZE codes (FF01) are judged on pixels only. A view captured during a printer pause is merged into
+the next only when there are more views than waits. `--pairs` renders every failing string on the Chinese ROM too
+(context only, not judged): `crops/<ref>_pair.png`.
+
+**Output** (a new folder per run, default `work/build/harness/textfit/run-<time>`; an existing run is refused):
+`summary.json` {`pass`, `selection`, `counts` {strings, rendered, pass, fail, error, unsupported}, `failures`
+[{ref, window, reasons [{code, view, row, detail}], overflow_px, overflow_lines, pages, pages_expected, crop,
+pair}], `errors`, `unsupported` {reason: {count, refs}}, `rows`}; `batches/*.jsonl` (one row per string as it is
+done, with the decoded views; a child that dies is restarted after the string it was on, which becomes an
+`error` row); `crops/` (the window of every view of each failing string). Exit 0 only with no fail and no error.
+
+**Scenario observation.** `{ observe = "fit", text_fit = "bank#id" }` renders one a027 string in the field window
+during a scenario and returns `{verdict, pages, codes}` (EN read back, CN pixels only); declare it in
+`[parity.differ]`.
+
+**Speed.** One boot per child (about 35 s), then a savestate load per string: about 0.8 s per one-view field
+string, 2-3 s for long ones, 4-5 s per battle string (the battle intro is replayed); DeSmuME runs about 140 fps here.
+
+**Run 2026-10-09** (`work/build/textfit-run2`, fresh build of emu/suite-v2, banks = develop 207caca, `--jobs 3
+--pairs`, 1284 s): 3280 strings changed since v1.0.0-rc5; **2297 rendered** (2136 field, 161 battle), **2271 pass,
+26 fail, 0 errors; 983 not rendered** (item_desc 427, ui 192, dex_category 115, pokedex 87, move_desc 50,
+menu_touch_1line 29, gear_map 21, gear_map_town 17, battle_info 12, dialogue_large 13, ability_desc 9,
+trainer_names 4, sign 3, battle_menu 3, items 1). Widest passing line: 216 px. All 26 failures are `prompt`, seen by
+eye in the crops: the last line of a question runs under the field's prompt icons (197-216 px; at 197-199 px the
+last letter touches the icon, from about 203 px whole letters are hidden): a027/0115#39, 0115#49, 0133#47, 0133#50,
+0135#25, 0135#29, 0136#53, 0136#103, 0249#8, 0327#52, 0334#0, 0381#14, 0442#1, 0551#12, 0552#0, 0552#102,
+0563#15, 0660#1, 0667#1, 0669#1, 0685#1, 0685#4, 0687#4, 0693#1, 0727#11, 0737#28. The Chinese lines of the same
+strings stay clear of the icons (pairs). QA checks `prompt_px` only for the battle category; the US text keeps
+all 738 of its field prompt strings within 195 px (with QA's typical buffer widths), so the rule holds for the
+field window too (text_metrics.md). Not changed here: findings for the coordinator.
+
+Judge errors found on the way (run 1, `work/build/textfit-run1`) and fixed: the panel's four rounded-corner pixels
+counted as ink outside the text area; the field prompt icons read as glyphs (now masked, rule `prompt`); a `{CLEAR}`
+view that extends the previous one merged as a partial capture (0137#17); `{VAR:0207}` is a wait of its own
+(0293#84, #180, #181: two views); phone-call buffers 10/11 beyond the MessageFormat (now in place, 18 strings of
+the 06xx banks); a glyph drawn in part at the window edge reads as U+FFFD (accepted as a cut). `--buffers max` on
+a 300-string sample: no other failure. A battle string forced too long (dev check) was reported `overflow` with
+the read-back cut at the edge, as designed.
 
 ## Text-speed release regression
 

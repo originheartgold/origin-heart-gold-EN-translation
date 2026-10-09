@@ -55,7 +55,7 @@ CASE_KEYS = {"id", "description", "params", "start", "steps", "expect"}
 HOOK_KEYS = {"name", "addr", "read", "sig", "max"}
 EXPECT_OPS = ("equals", "in", "min", "max", "set", "all", "len", "contains", "approved", "baseline")
 EXPECT_KEYS = {"obs", "lang", "note", *EXPECT_OPS}
-OBSERVE_KINDS = ("party", "ram", "flag", "var", "position", "location", "clock", "bag", "crop", "message")
+OBSERVE_KINDS = ("party", "ram", "flag", "var", "position", "location", "clock", "bag", "crop", "message", "text_fit")
 OBSERVE_KEYS = {"observe", "size", "fields", "screen_name", *OBSERVE_KINDS}
 TABLE_OPS = {"encounters": {"op", "observe", "count", "walk", "span", "tiles", "max_steps", "shots"},
              "dexcapture": {"op", "observe", "first", "last"}}
@@ -214,8 +214,8 @@ def check_step(where, step):
     if kind == "crop" and not (isinstance(v, list) and len(v) == 4 and all(isinstance(c, int) for c in v)
                                and v[0] < v[2] <= 256 and v[1] < v[3] <= 384):
         _err(f"{where}.crop", "a box [x0, y0, x1, y1] inside the 256x384 two-screen image")
-    if kind == "message" and not (isinstance(v, str) and re.fullmatch(r"\d+#\d+", v)):
-        _err(f"{where}.message", "'bank#id' of a027, e.g. '457#123'")
+    if kind in ("message", "text_fit") and not (isinstance(v, str) and re.fullmatch(r"\d+#\d+", v)):
+        _err(f"{where}.{kind}", "'bank#id' of a027, e.g. '457#123'")
     if kind in ("position", "location", "clock", "bag") and v is not True:
         _err(f"{where}.{kind}", "must be true")
 
@@ -697,6 +697,9 @@ def observe(h, step, tag):
         bank, msg = (int(v) for v in step["message"].split("#"))
         pages = h.show_message(bank, msg, name=f"{name}_{tag}")
         return {"pages": len(pages), "digests": [_crop_digest(Image.open(p), (8, 150, 232, 186)) for p in pages]}
+    if "text_fit" in step:      # the field message window, judged by emu_textfit (EN: read back; CN: pixels)
+        import emu_textfit
+        return emu_textfit.observe(h, step["text_fit"], tag if tag in LANGS else "en")
     raise ValueError(f"no observation kind in {step}")
 
 

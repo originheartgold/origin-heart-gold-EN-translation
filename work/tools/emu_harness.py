@@ -2468,6 +2468,10 @@ def main(argv=None):
     emu_fixes.add_child_arguments(sub.add_parser("fixes-child", help=argparse.SUPPRESS))
     emu_fixes.add_approve_arguments(sub.add_parser("fixes-approve", help="record the user's approval of pending "
                                                    "fix-scenario crops (emu_fixes_crops.json)"))
+    import emu_textfit
+    emu_textfit.add_arguments(sub.add_parser("textfit", help="render translated strings in their real window on the "
+                                             "English build and check that they fit (emu_textfit.py)"))
+    emu_textfit.add_child_arguments(sub.add_parser("textfit-child", help=argparse.SUPPRESS))
     a = ap.parse_args(argv)
     if a.emulator:
         os.environ["EMU_HARNESS_EMULATOR"] = a.emulator
@@ -2475,7 +2479,8 @@ def main(argv=None):
             "dexcapture": cmd_dexcapture, "scenarios": emu_scenarios.run, "suite": emu_scenarios.run,
             "scenario-run": emu_scenarios.cmd_child,
             "texture-bounds": emu_texture_bounds.run, "reflection": emu_reflection.run, "hang": emu_hang.run,
-            "fixes": emu_fixes.run, "fixes-child": emu_fixes.cmd_child, "fixes-approve": emu_fixes.cmd_approve, "cleanup": cmd_cleanup}[a.cmd](a)
+            "fixes": emu_fixes.run, "fixes-child": emu_fixes.cmd_child, "fixes-approve": emu_fixes.cmd_approve, "cleanup": cmd_cleanup,
+            "textfit": emu_textfit.run, "textfit-child": emu_textfit.cmd_child}[a.cmd](a)
 
 
 if __name__ == "__main__":
