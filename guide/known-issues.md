@@ -2,15 +2,15 @@
 
 [← Guide index](README.md)
 
-These are suspected bugs in the original Chinese hack, found by reading its game files. The translation keeps the hack's behaviour exactly as it is, so they are reported here, not fixed. Most haven't been confirmed in game yet; the entries that were tested in an emulator say so.
+These are suspected bugs in the original Chinese hack, found by reading its game files. The translation keeps the hack's behaviour exactly as it is, so they are reported here, not fixed. A few that freeze the game or block something are fixed in the English patch with the user's approval; their entries say from which version. Most haven't been confirmed in game yet; the entries that were tested in an emulator say so.
 
-Each entry says what you would do in game, what goes wrong, and how to avoid it or recover. Most entries are about a missed item, scene or battle. A few can freeze the game (a lost battle in Rock Tunnel or with the Pokémon Tower Magcargo, the Department Store's Double Battle with only one Pokémon, a Double Battle in the Safari Zone, entering Goldenrod City in one unusual story state), and two scenes write past the end of the game's story records into your Pokédex data (see [Out-of-range story records](#out-of-range-story-records-save-data)).
+Each entry says what you would do in game, what goes wrong, and how to avoid it or recover. Most entries are about a missed item, scene or battle. A few can freeze the game (a lost battle in Rock Tunnel or with the Pokémon Tower Magcargo, the Department Store's Double Battle with only one Pokémon, entering Goldenrod City in one unusual story state), and two scenes write past the end of the game's story records into your Pokédex data (see [Out-of-range story records](#out-of-range-story-records-save-data)).
 
 ## Check these first
 
 These entries can freeze the game, cost you something, or close a quest or battle for good. Everything else on this page is cosmetic, in your favour, or can't happen in normal play.
 
-- **Can freeze the game:** [Rock Tunnel corner kid loss](#rock-tunnel-corner-kid-loss), [Pokémon Tower Magcargo loss](#pokémon-tower-magcargo-loss), [Department Store Double Battle with one Pokémon](#department-store-double-battle-with-one-pokémon), [Safari Zone Double Battle freeze](#safari-zone-double-battle-freeze), [Goldenrod City crash on entry](#goldenrod-city-crash-on-entry).
+- **Can freeze the game:** [Rock Tunnel corner kid loss](#rock-tunnel-corner-kid-loss), [Pokémon Tower Magcargo loss](#pokémon-tower-magcargo-loss), [Department Store Double Battle with one Pokémon](#department-store-double-battle-with-one-pokémon), [Goldenrod City crash on entry](#goldenrod-city-crash-on-entry).
 - **Can leave you stuck:** [S.S. Anne party never starts](#ss-anne-party-never-starts), [No Struggle when a Pokémon runs out of PP](#no-struggle-when-a-pokémon-runs-out-of-pp).
 - **Writes to your Pokédex data:** [Out-of-range story records (save data)](#out-of-range-story-records-save-data).
 - **Can take more money or items than it should:** [S.S. Anne TM price](#ss-anne-tm-price), [Sprout Tower offerings](#sprout-tower-offerings), [Fortune-teller's price](#fortune-tellers-price), [Game Corner 500-coin option](#game-corner-500-coin-option), [Charcoal Kiln HM01](#charcoal-kiln-hm01), [Pidgeot loan returns a different Pidgeot](#pidgeot-loan-returns-a-different-pidgeot), [Lightning Whip lesson teaches Charge](#lightning-whip-lesson-teaches-charge).
@@ -47,9 +47,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Poliwag nickname prompt says Poliwhirl
 
-**After you receive Poliwag, the game asks "Give Poliwhirl a nickname?"** The Chinese names Poliwhirl too. You do get a Poliwag. Cosmetic. A separate Poliwhirl gift in the same house can't be reached.
+**In the Chinese hack, the game asks "Give Poliwhirl a nickname?" after you receive Poliwag.** You do get a Poliwag. The English patch asks "Give Poliwag a nickname?" from rc6 on; rc5 and earlier name Poliwhirl, as the Chinese does. Cosmetic. A separate Poliwhirl gift in the same house can't be reached.
 
-*Source:* bank 0537#87; file 842 L6375 (`GiveMon 60` then msg 87); the Poliwhirl gift is script 9, unreachable.
+*Source:* bank 0537#87; file 842 L6375 (`GiveMon 60` then msg 87); the Poliwhirl gift is script 9, unreachable. English fixed with user approval in rc6 (D-2282, D-1496).
 
 ### Unused Route 2 eavesdropping scene
 
@@ -461,9 +461,9 @@ These entries can freeze the game, cost you something, or close a quest or battl
 
 ### Safari Zone Double Battle freeze
 
-**About one in four wild encounters in the Safari Zone can turn into a broken Double Battle that freezes the game.** If you have two or more Pokémon that can battle, the game may set up a wild Double Battle, but the Safari Zone only creates one wild Pokémon: the second one is invisible garbage and the game freezes at the command menu. Enter the Safari Zone with only one Pokémon that can battle (deposit the rest or carry fainted ones). Tested in an emulator (Chinese ROM and English build) and reported by a player.
+**Fixed in the English patch from rc6: Safari Zone wild encounters are always single battles.** In the Chinese hack, and in English patches up to rc5, about one in four wild encounters in the Safari Zone can turn into a broken Double Battle that freezes the game. If you have two or more Pokémon that can battle, the game may set up a wild Double Battle, but the Safari Zone only creates one wild Pokémon: the second one is invisible garbage and the game freezes at the command menu. On rc5 or earlier, enter the Safari Zone with only one Pokémon that can battle (deposit the rest or carry fainted ones). Tested in an emulator (Chinese ROM and English build) and reported by players; the fix was tested in DeSmuME and melonDS.
 
-*Source:* D-1535. ov2 0x022470C4: the wild Double Battle roll (rand % 4 with 2+ usable Pokémon) runs before the Safari check, and the Safari branch (0x0224718C → 0x02248204) creates only one wild Pokémon. The Bug-Catching Contest goes through the same code (read from the code only); you enter it with one Pokémon, so it needs no warning.
+*Source:* D-1535. ov2 0x022470C4: the wild Double Battle roll (rand % 4 with 2+ usable Pokémon) runs before the Safari check, and the Safari branch (0x0224718C → 0x02248204) creates only one wild Pokémon. The Bug-Catching Contest goes through the same code (read from the code only); you enter it with one Pokémon, so it needs no warning. Fix: work/patches/safari-no-wild-double (D-2289), a user-approved exception to D-1337.
 
 ## Saffron City to Cinnabar Island
 
@@ -1362,10 +1362,10 @@ These entries can freeze the game, cost you something, or close a quest or battl
 ### Battle messages that name the wrong thing
 
 **A few battle messages print the wrong word or side.** Cosmetic; the Chinese game does the same:
-- After **Soak**, **Protean** and similar type changes, the message names the move instead of the new type ("…transformed into the Soak type!").
+- After **Soak**, **Protean**, **Color Change** and similar type changes, the message names the move instead of the new type ("…transformed into the Soak type!"). Fixed in the English patch from rc6: the message names the new type ("…transformed into the Water type!").
 - When a wild Pokémon's **Future Sight** hits your Pokémon, the message says "The wild …took the Future Sight attack!" with your Pokémon's name; when yours hits the wild one, it leaves out "The wild". The message follows the side of the Pokémon that used the move.
 
-*Source:* D-1461 (battle_string 1#1212–1215), D-1568 (1#1464–1467). Emulator (`emu_harness.py vqueue --case probe`, both ROMs): Soak on a wild Geodude printed 1#1213 with 浸水 / Soak in the type slot; a Greninja with Protean using Quick Attack printed 1#1212 with the move name; a wild Mewtwo's Future Sight on the player's Chansey printed 1#1465, the player's on a wild Shuckle 1#1464.
+*Source:* D-1461 (battle_string 1#1212–1215), D-1568 (1#1464–1467). Emulator (`emu_harness.py vqueue --case probe`, both ROMs): Soak on a wild Geodude printed 1#1213 with 浸水 / Soak in the type slot (fixed by work/patches/type-change-message, D-2290); a Greninja with Protean using Quick Attack printed 1#1212 with the move name; a wild Mewtwo's Future Sight on the player's Chansey printed 1#1465, the player's on a wild Shuckle 1#1464.
 
 ### No Struggle when a Pokémon runs out of PP
 

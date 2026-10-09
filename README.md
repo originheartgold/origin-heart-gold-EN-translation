@@ -4,14 +4,14 @@ An English fan translation of **起源心金 (Pokémon Origin HeartGold) v4.0.3*
 
 ## Play it
 
-[Patch your game here](https://originheartgold.github.io/origin-heart-gold-EN-translation/patch/) and play it in an emulator. Our automated checks run in DeSmuME; the overworld freeze fix was also tested in melonDS.
+[Patch your game here](https://originheartgold.github.io/origin-heart-gold-EN-translation/patch/) and play it in an emulator. Our automated checks run in DeSmuME; the freeze and battle fixes were also tested in melonDS.
 Real DS, DSi and 3DS hardware is being tested: the patch switches off the hack's anti-piracy checks, so don't add another anti-piracy patch. See the [FAQ](https://originheartgold.github.io/origin-heart-gold-EN-translation/faq/#can-i-play-on-a-real-ds-dsi-or-3ds) for setup and how to report problems.
 
 Stuck on a quest? The [quest guide](https://originheartgold.github.io/origin-heart-gold-EN-translation/guide/) ([source](guide/README.md)) covers side quests, puzzles and easy-to-miss events, region by region.
 
 Can't find a Pokémon? The [Pokédex](https://originheartgold.github.io/origin-heart-gold-EN-translation/pokemon/) lists each species' level-up, TM, tutor and Egg moves, how it evolves, where to find it, and more.
 
-**Status: release candidate (v1.0.0-rc5).** All 67,078 translatable strings are in English and pass the automated checks. The event scripts have been audited (softlocks, trades, gifts, passwords; see [CHANGELOG.md](CHANGELOG.md)), and game documentation generated from the ROM's own data is in [work/docs/](work/docs/README.md). Please report anything odd.
+**Status: release candidate (v1.0.0-rc6).** All 67,078 translatable strings are in English and pass the automated checks. The event scripts have been audited (softlocks, trades, gifts, passwords; see [CHANGELOG.md](CHANGELOG.md)), and game documentation generated from the ROM's own data is in [work/docs/](work/docs/README.md). Please report anything odd.
 
 ## How it works
 

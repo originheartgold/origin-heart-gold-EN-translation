@@ -43,11 +43,11 @@ No. Sharing ROMs isn't allowed, here or on the Discord. The patch is all you nee
 
 ### Which emulator should I use?
 
-The translation was tested in [melonDS](https://melonds.kuribo64.net/). The automated checks for this build, including the text speed setting, ran in DeSmuME only. There has been no second-emulator pass for this build. Players also use DraStic, Lemuroid and others, but those aren't tested. For a real DS, DSi or 3DS, see the next question.
+The translation was tested in [melonDS](https://melonds.kuribo64.net/). The automated checks for rc6, including the text speed setting, ran in DeSmuME; the freeze and battle fixes in rc6 were also checked in melonDS 1.1. There has been no full second-emulator pass for this build. Players also use DraStic, Lemuroid and others, but those aren't tested. For a real DS, DSi or 3DS, see the next question.
 
 ### Can I play on a real DS, DSi or 3DS?
 
-Yes, with a patch released after rc5, but it's still being tested. The original Chinese hack has anti-piracy checks that make the game freeze after a while when it runs from a flashcart or loader on a real console (often when you open a menu or start a battle), even when it boots fine. The English patch now switches those checks off. On emulators nothing changes.
+Yes, from rc6 on, but it hasn't been tested on a real console yet. The original Chinese hack has anti-piracy checks that make the game freeze after a while when it runs from a flashcart or loader on a real console (often when you open a menu or start a battle), even when it boots fine. The English patch now switches those checks off. On emulators nothing changes.
 
 - **3DS and 2DS with TWiLight Menu++:** untested. Please try it and tell us how it goes. Update TWiLight Menu++ and nds-bootstrap to the newest versions. Select the game, press **Y** for its per-game settings and set **Run in: DSi mode** and **VRAM: DSi**.
 - **DSi with TWiLight Menu++, DSPico, and DS or DS Lite flashcarts (R4 with Wood R4, YSMenu, AKAIO…):** untested. Please try it and tell us how it goes.
@@ -149,7 +149,11 @@ Wild catches don't ask for a nickname in this hack (gifts do). Visit the Name Ra
 
 ### How do I evolve trade evolutions like Haunter, Kadabra or Machoke?
 
-No trading is needed for the old trade evolutions. They level up while holding an item, often only by day or by night (Haunter holding a Spell Tag at night, for example). Every [Pokémon page](../pokemon/) shows how it evolves, and the rules are on [Mechanics and controls](../mechanics/#evolution). Some evolutions changed completely: Karrablast and Shelmet simply evolve at Lv. 25.
+No trading is needed for the old trade evolutions. They level up while holding an item, often only by day or by night (Haunter holding a Spell Tag at night, for example). Every [Pokémon page](../pokemon/) shows how it evolves, and the rules are on [Mechanics and controls](../mechanics/#evolution). Some evolutions changed completely: Karrablast and Shelmet simply evolve at Lv. 25. Boldore and Gurdurr still needed a trade in the original hack; from rc6 the English patch evolves them at Lv. 35 (Gigalith) and Lv. 40 (Conkeldurr).
+
+### My Pokémon didn't learn its evolution move
+
+In the original hack, and in English patches up to rc5, a Pokémon that evolves never learns the moves it should get on evolution (Crobat's Cross Poison, Charizard's Air Slash, Gyarados's Bite and others); only the Move Reminder teaches them. From rc6 the game offers these moves when the Pokémon evolves, each once. For a Pokémon that evolved before you updated, use the Move Reminder.
 
 ### Can other Pokémon Mega Evolve?
 
