@@ -11,7 +11,9 @@ day, when its armips source replaced text_speed_patch.apply(): arm9 (with the gr
 92 equal the release candidate's, alone and together with every other fix; overworld-texture-frame-bounds
 was added later from a build equal to its code_patches.json original (same note); bulbasaur-reflection-boundary
 on 2026-10-08 (D-2270): its overlay1 is the Chinese overlay 1 with the one byte 0x1191B changed 0xDD -> 0xDB,
-checked independently of armips."""
+checked independently of armips; evolution-moves on 2026-10-09 (D-2276): its arm9 is the Chinese arm9 with
+0x70870-0x70923 and 0x74BD4-0x74BD7 replaced by halfwords written out by hand from the routine's design, also
+checked independently of armips (test_evolution_moves_bytes)."""
 import hashlib
 import os
 import re
@@ -30,7 +32,8 @@ import fixes as F  # noqa: E402
 
 ROM_CN = HERE.parent / "rom" / "origin_v4.0.3_cn.nds"
 ASM_FIXES = ("outfit-chooser-strings", "namelen", "naming-keyboard", "msgload", "pcbox-name-width", "ivev-panel",
-             "antipiracy", "text-speed", "overworld-texture-frame-bounds", "bulbasaur-reflection-boundary")
+             "antipiracy", "text-speed", "overworld-texture-frame-bounds", "bulbasaur-reflection-boundary",
+             "evolution-moves")
 # SHA-1 of every binary each fix changes (alone, and all together as "all") and of the y9 overlay table
 GOLDEN = {
     "outfit-chooser-strings": {
@@ -68,6 +71,10 @@ GOLDEN = {
         "overlay1": "e47febed127e898212e32db2d91b577e7ff6106c",
         "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
     },
+    "evolution-moves": {
+        "arm9": "ff97b882679320a8dc52f510ad1b20327eea32d3",
+        "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
+    },
     "antipiracy": {
         "overlay114": "2ab9890fab31a6b5fa4e432652ffb1a5b5d40a3c",
         "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
@@ -79,7 +86,7 @@ GOLDEN = {
         "y9": "25d4a33a740ce2bb960ed27a8afa1a0d3b56208f"
     },
     "all": {
-        "arm9": "a7953cc1a9a92c02c7498019618d948e53c4b173",
+        "arm9": "0a7dd1fc1fd5865b03fb0f6316e60e2d1193c184",
         "overlay1": "e47febed127e898212e32db2d91b577e7ff6106c",
         "overlay16": "87cd982681b4164781e92a68994d6190c54d7a35",
         "overlay17": "5015627c82275c7836897b67dfec73c662015635",
@@ -627,6 +634,23 @@ class RealFixes(unittest.TestCase):
             self.assertEqual(orig[off:off + 8].hex(), "f0472de980d04de2")
             self.assertEqual(struct.unpack_from("<2I", new, off), (0xE3A00000 | ret, 0xE12FFF1E))
 
+    def test_evolution_moves_bytes(self):
+        # the routine 0x02070870-0x02070923 rewritten (old entry 'mov r3, #0', TryLearnOnEvolution at 0x02070900
+        # 'mov r3, #1', literal 0xFFFF, zero fill) and the evolution scene's bl at 0x02074BD4 -> 0x02070900;
+        # nothing else in arm9 changes
+        rom, _ = self.assembled(["evolution-moves"])
+        old, new = self.hc.RomView(self.cn).get("arm9"), self.hc.RomView(rom).get("arm9")
+        hw = ("2300 B5F8 B084 1C07 1C0D 2000 21A8 9200 9002 F7AA FD13 1C04 1C38 2105 2200 F7FC FFDB 0400 0C00 9001 "
+              "1C38 2170 2200 F7FC FFD3 9003 1C38 21A1 2200 F7FC FFCD 0600 0E06 9801 9903 1C22 F000 FCBE 4A11 6828 "
+              "0080 5A21 4291 D015 42B1 D008 2900 D102 9B04 2B00 D103 6828 1C40 6028 E7EF 1820 8841 9800 8001 6828 "
+              "1C40 6028 1C38 F7FF FEE3 9002 1C20 F7AA FD21 9802 B004 BDF8 2301 E7B6").split()
+        body = b"".join(struct.pack("<H", int(h, 16)) for h in hw) + struct.pack("<I", 0xFFFF)
+        want = bytearray(old)
+        want[0x70870:0x70924] = body + bytes(0xB4 - len(body))
+        want[0x74BD4:0x74BD8] = struct.pack("<2H", 0xF7FB, 0xFE94)
+        self.assertEqual(bytes(new), bytes(want))
+        self.assertEqual(struct.unpack_from("<2H", old, 0x74BD4), (0xF7FB, 0xFE4C))   # was bl 0x02070870
+
     def test_text_speed_itcm_block(self):
         # the payload is .incbin'd at the end of the ITCM autoload block, which ndspy writes back with its
         # autoload table; the main section changes only in the fix's regions and the two autoload words
@@ -658,12 +682,12 @@ class RealFixes(unittest.TestCase):
 
     def test_all_fixes_together_match_golden(self):
         rom, rep = self.check_golden("all", ASM_FIXES)
-        self.assertEqual(len(rep["code_regions"]), 46)
+        self.assertEqual(len(rep["code_regions"]), 48)
         self.assertEqual([(r["id"], r["mode"], r["en"]) for r in rep["strings"]],
                          [("overlay58:0x6F0", "in-place", "OK"), ("overlay58:0x6F6", "relocated", "Outfit 1"),
                           ("overlay58:0x6FE", "relocated", "Outfit 3"), ("overlay58:0x706", "relocated", "Outfit 2")])
         self.assertEqual(rep["armips"]["version"], A.PINNED_VERSION)
-        self.assertEqual(A.verify(rom, rep), "ok (4 strings, 46 code regions)")
+        self.assertEqual(A.verify(rom, rep), "ok (4 strings, 48 code regions)")
         view = self.hc.RomView(rom)
         self.assertEqual(view.table_ram_size(58), 0x818)
         self.assertEqual(rep["grown"], {"overlay58": {"from": 0x7E0, "to": 0x818},
@@ -680,7 +704,7 @@ class RealFixes(unittest.TestCase):
         # a build report from before the rename ("code_patches") still verifies
         old = {k: v for k, v in rep.items() if k not in ("code_regions", "grown")}
         old["code_patches"] = rep["code_regions"]
-        self.assertEqual(A.verify(rom, old), "ok (4 strings, 46 code regions)")
+        self.assertEqual(A.verify(rom, old), "ok (4 strings, 48 code regions)")
         # no Chinese left in the chooser
         cm_zh = self.m.Charmap.load([self.hc.ZH_CHARMAP])
         self.assertEqual(list(self.hc.scan_blob(view.get("overlay58"), cm_zh, self.hc._bigrams())), [])

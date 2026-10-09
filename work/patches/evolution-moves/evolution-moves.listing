@@ -1,0 +1,184 @@
+; evolution-moves - disassembly snapshot of evolution-moves.asm: every edit, old -> new. Generated; do not edit.
+; Regenerate: python3 work/tools/asmpatch.py listing --write evolution-moves   (check.py --full fails when it is stale)
+; Old: the Chinese ROM. New: evolution-moves.asm assembled alone over it by armips v0.11.0.
+; Disassembly: capstone 5.0.9 (UAL syntax). '  ' unchanged context, '- ' old, '+ ' new;
+; addresses are RAM addresses, Thumb bytes are halfwords, ARM bytes words; data rows are what one
+; statement writes (u16 rows of a string or key row with their characters, '|' = 0xFFFF end).
+
+== arm9+0x70870 (RAM 0x02070870), 180 bytes, thumb: evolution-moves-routine
+  0207086C  4718       bx r3
+  0207086E  0000       movs r0, r0
+- 02070870  B5F8       push {r3, r4, r5, r6, r7, lr}
+- 02070872  B084       sub sp, #0x10
+- 02070874  1C07       adds r7, r0, #0
+- 02070876  1C0D       adds r5, r1, #0
+- 02070878  2000       movs r0, #0
+- 0207087A  21A8       movs r1, #0xa8
+- 0207087C  9200       str r2, [sp]
+- 0207087E  9002       str r0, [sp, #8]
+- 02070880  F7AA FD14  bl #0x201b2ac  ; Heap_AllocAtEnd
+- 02070884  1C04       adds r4, r0, #0
+- 02070886  1C38       adds r0, r7, #0
+- 02070888  2105       movs r1, #5
+- 0207088A  2200       movs r2, #0
+- 0207088C  F7FC FFDC  bl #0x206d848  ; GetMonData
+- 02070890  0400       lsls r0, r0, #0x10
+- 02070892  0C00       lsrs r0, r0, #0x10
+- 02070894  9001       str r0, [sp, #4]
+- 02070896  1C38       adds r0, r7, #0
+- 02070898  2170       movs r1, #0x70
+- 0207089A  2200       movs r2, #0
+- 0207089C  F7FC FFD4  bl #0x206d848  ; GetMonData
+- 020708A0  9003       str r0, [sp, #0xc]
+- 020708A2  1C38       adds r0, r7, #0
+- 020708A4  21A1       movs r1, #0xa1
+- 020708A6  2200       movs r2, #0
+- 020708A8  F7FC FFCE  bl #0x206d848  ; GetMonData
+- 020708AC  0600       lsls r0, r0, #0x18
+- 020708AE  0E06       lsrs r6, r0, #0x18
+- 020708B0  9801       ldr r0, [sp, #4]
+- 020708B2  9903       ldr r1, [sp, #0xc]
+- 020708B4  1C22       adds r2, r4, #0
+- 020708B6  F000 FCBF  bl #0x2071238  ; LoadLevelUpLearnset
+- 020708BA  6828       ldr r0, [r5]
+- 020708BC  4A18       ldr r2, [pc, #0x60]
+- 020708BE  0080       lsls r0, r0, #2
+- 020708C0  5A21       ldrh r1, [r4, r0]
+- 020708C2  4291       cmp r1, r2
+- 020708C4  D105       bne #0x20708d2
+- 020708C6  1C20       adds r0, r4, #0
+- 020708C8  F7AA FD38  bl #0x201b33c  ; Heap_Free
+- 020708CC  B004       add sp, #0x10
+- 020708CE  2000       movs r0, #0
+- 020708D0  BDF8       pop {r3, r4, r5, r6, r7, pc}
+- 020708D2  428E       cmp r6, r1
+- 020708D4  D00E       beq #0x20708f4
+- 020708D6  6828       ldr r0, [r5]
+- 020708D8  1C40       adds r0, r0, #1
+- 020708DA  6028       str r0, [r5]
+- 020708DC  0080       lsls r0, r0, #2
+- 020708DE  5A21       ldrh r1, [r4, r0]
+- 020708E0  4291       cmp r1, r2
+- 020708E2  D105       bne #0x20708f0
+- 020708E4  1C20       adds r0, r4, #0
+- 020708E6  F7AA FD29  bl #0x201b33c  ; Heap_Free
+- 020708EA  B004       add sp, #0x10
+- 020708EC  2000       movs r0, #0
+- 020708EE  BDF8       pop {r3, r4, r5, r6, r7, pc}
+- 020708F0  428E       cmp r6, r1
+- 020708F2  D1F0       bne #0x20708d6
+- 020708F4  428E       cmp r6, r1
+- 020708F6  D10C       bne #0x2070912
+- 020708F8  1820       adds r0, r4, r0
+- 020708FA  8841       ldrh r1, [r0, #2]
+- 020708FC  9800       ldr r0, [sp]
+- 020708FE  8001       strh r1, [r0]
+- 02070900  6828       ldr r0, [r5]
+- 02070902  9900       ldr r1, [sp]
+- 02070904  1C40       adds r0, r0, #1
+- 02070906  6028       str r0, [r5]
+- 02070908  8809       ldrh r1, [r1]
+- 0207090A  1C38       adds r0, r7, #0
+- 0207090C  F7FF FED4  bl #0x20706b8  ; MonTryLearnMove
+- 02070910  9002       str r0, [sp, #8]
+- 02070912  1C20       adds r0, r4, #0
+- 02070914  F7AA FD12  bl #0x201b33c  ; Heap_Free
+- 02070918  9802       ldr r0, [sp, #8]
+- 0207091A  B004       add sp, #0x10
+- 0207091C  BDF8       pop {r3, r4, r5, r6, r7, pc}
+- 0207091E  46C0       mov r8, r8
+- 02070920  FFFF       .hword 0xFFFF
+- 02070922  0000       movs r0, r0
++ 02070870  2300       movs r3, #0
++ 02070872  B5F8       push {r3, r4, r5, r6, r7, lr}
++ 02070874  B084       sub sp, #0x10
++ 02070876  1C07       adds r7, r0, #0
++ 02070878  1C0D       adds r5, r1, #0
++ 0207087A  2000       movs r0, #0
++ 0207087C  21A8       movs r1, #0xa8
++ 0207087E  9200       str r2, [sp]
++ 02070880  9002       str r0, [sp, #8]
++ 02070882  F7AA FD13  bl #0x201b2ac  ; Heap_AllocAtEnd
++ 02070886  1C04       adds r4, r0, #0
++ 02070888  1C38       adds r0, r7, #0
++ 0207088A  2105       movs r1, #5
++ 0207088C  2200       movs r2, #0
++ 0207088E  F7FC FFDB  bl #0x206d848  ; GetMonData
++ 02070892  0400       lsls r0, r0, #0x10
++ 02070894  0C00       lsrs r0, r0, #0x10
++ 02070896  9001       str r0, [sp, #4]
++ 02070898  1C38       adds r0, r7, #0
++ 0207089A  2170       movs r1, #0x70
++ 0207089C  2200       movs r2, #0
++ 0207089E  F7FC FFD3  bl #0x206d848  ; GetMonData
++ 020708A2  9003       str r0, [sp, #0xc]
++ 020708A4  1C38       adds r0, r7, #0
++ 020708A6  21A1       movs r1, #0xa1
++ 020708A8  2200       movs r2, #0
++ 020708AA  F7FC FFCD  bl #0x206d848  ; GetMonData
++ 020708AE  0600       lsls r0, r0, #0x18
++ 020708B0  0E06       lsrs r6, r0, #0x18
++ 020708B2  9801       ldr r0, [sp, #4]
++ 020708B4  9903       ldr r1, [sp, #0xc]
++ 020708B6  1C22       adds r2, r4, #0
++ 020708B8  F000 FCBE  bl #0x2071238  ; LoadLevelUpLearnset
++ 020708BC  4A11       ldr r2, [pc, #0x44]
++ 020708BE  6828       ldr r0, [r5]
++ 020708C0  0080       lsls r0, r0, #2
++ 020708C2  5A21       ldrh r1, [r4, r0]
++ 020708C4  4291       cmp r1, r2
++ 020708C6  D015       beq #0x20708f4  ; @@done
++ 020708C8  42B1       cmp r1, r6
++ 020708CA  D008       beq #0x20708de  ; @@match
++ 020708CC  2900       cmp r1, #0
++ 020708CE  D102       bne #0x20708d6  ; @@next
++ 020708D0  9B04       ldr r3, [sp, #0x10]
++ 020708D2  2B00       cmp r3, #0
++ 020708D4  D103       bne #0x20708de  ; @@match
++ 020708D6  6828       ldr r0, [r5]
++ 020708D8  1C40       adds r0, r0, #1
++ 020708DA  6028       str r0, [r5]
++ 020708DC  E7EF       b #0x20708be  ; @@entry
++ 020708DE  1820       adds r0, r4, r0
++ 020708E0  8841       ldrh r1, [r0, #2]
++ 020708E2  9800       ldr r0, [sp]
++ 020708E4  8001       strh r1, [r0]
++ 020708E6  6828       ldr r0, [r5]
++ 020708E8  1C40       adds r0, r0, #1
++ 020708EA  6028       str r0, [r5]
++ 020708EC  1C38       adds r0, r7, #0
++ 020708EE  F7FF FEE3  bl #0x20706b8  ; MonTryLearnMove
++ 020708F2  9002       str r0, [sp, #8]
++ 020708F4  1C20       adds r0, r4, #0
++ 020708F6  F7AA FD21  bl #0x201b33c  ; Heap_Free
++ 020708FA  9802       ldr r0, [sp, #8]
++ 020708FC  B004       add sp, #0x10
++ 020708FE  BDF8       pop {r3, r4, r5, r6, r7, pc}
++ 02070900  2301       movs r3, #1
++ 02070902  E7B6       b #0x2070872  ; TryLearn_Body
++ 02070904  FFFF       .hword 0xFFFF
++ 02070906  0000       movs r0, r0
++ 02070908  0000       movs r0, r0
++ 0207090A  0000       movs r0, r0
++ 0207090C  0000       movs r0, r0
++ 0207090E  0000       movs r0, r0
++ 02070910  0000       movs r0, r0
++ 02070912  0000       movs r0, r0
++ 02070914  0000       movs r0, r0
++ 02070916  0000       movs r0, r0
++ 02070918  0000       movs r0, r0
++ 0207091A  0000       movs r0, r0
++ 0207091C  0000       movs r0, r0
++ 0207091E  0000       movs r0, r0
++ 02070920  0000       movs r0, r0
++ 02070922  0000       movs r0, r0
+  02070924  4B00       ldr r3, [pc, #0]
+  02070926  4718       bx r3
+
+== arm9+0x74BD4 (RAM 0x02074BD4), 4 bytes, thumb: evolution-moves-scene-call
+  02074BD0  3168       adds r1, #0x68
+  02074BD2  3202       adds r2, #2
+- 02074BD4  F7FB FE4C  bl #0x2070870  ; TryLearnOnLevelUp
++ 02074BD4  F7FB FE94  bl #0x2070900  ; TryLearnOnEvolution
+  02074BD8  2800       cmp r0, #0
+  02074BDA  D007       beq #0x2074bec

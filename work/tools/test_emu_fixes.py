@@ -90,6 +90,12 @@ class Addresses(unittest.TestCase):
         self.assertEqual(tuple(codes), F.FONT_CODES)
         self.assertLessEqual(set(F.FONT_RAM), set(fonts))
 
+    def test_evolution_hook_is_the_scene_call(self):
+        # the hooked return is the instruction after the evolution scene's bl, the fix's second region
+        region = next(e for e in REGISTRY["evolution-moves"]["code"] if e["id"] == "evolution-moves-scene-call")
+        self.assertEqual(0x02000000 + int(region["offset"], 16) + 4, F.EVO_LEARN_RETURN)
+        self.assertEqual(region["file"], "arm9")
+
 
 class Helpers(unittest.TestCase):
     def test_decode_and_codes(self):
@@ -284,6 +290,36 @@ class Judges(unittest.TestCase):
                          "unclear")
         self.assertEqual(F.COVERAGE["bulbasaur-reflection-boundary"], ("reflection",))
         self.assertIn("reflection", F.EXTERNAL)
+
+    def test_evolution(self):
+        def obs(fixed):
+            cases = {}
+            for name, (_, _, moves, _, _, target, evo, level) in F.EVOLUTION_CASES.items():
+                learned = list(evo) if fixed else []
+                after = [mv for mv in moves if mv] + learned + list(level)
+                calls = [{"r0": mv, "move": mv} for mv in learned + list(level)]
+                if name == "charizard_full":
+                    after = [403, 45, 52, 10] if fixed else list(moves)
+                    calls = [{"r0": 0xFFFF, "move": 403}] if fixed else []
+                calls += [] if target == F.EVOLUTION_CASES[name][0] else [{"r0": 0, "move": 0}]
+                cases[name] = {"after": {"species": target, "moves": (after + [0, 0, 0, 0])[:4],
+                                         "checksum_ok": True}, "evo_calls": calls}
+            return {"cases": cases}
+        self.assertEqual(F.judge_evolution("evolution", obs(True))[0], "fixed")
+        self.assertEqual(F.judge_evolution("evolution", obs(False))[0], "original")
+        # an evolution move offered on a plain level-up (no evolution) is neither
+        bad = obs(True)
+        bad["cases"]["charizard_levelup"]["after"]["moves"] = [33, 403, 0, 0]
+        self.assertEqual(F.judge_evolution("evolution", bad)[0], "unclear")
+        # Scary Face (the new level's move) must still be learned
+        bad = obs(True)
+        bad["cases"]["charizard_lv39"]["after"]["moves"] = [33, 403, 0, 0]
+        self.assertEqual(F.judge_evolution("evolution", bad)[0], "unclear")
+        # four moves: Air Slash must replace Tackle through the forget-a-move flow
+        bad = obs(True)
+        bad["cases"]["charizard_full"]["evo_calls"] = [{"r0": 0, "move": 0}]
+        self.assertEqual(F.judge_evolution("evolution", bad)[0], "unclear")
+        self.assertEqual(F.COVERAGE["evolution-moves"], ("evolution",))
 
     def test_judge_rows(self):
         selection = {"pcbox": ["pcbox-name-width"]}

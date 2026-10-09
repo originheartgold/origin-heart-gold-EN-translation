@@ -1,0 +1,60 @@
+id = "evolution-moves"
+title = "Evolution: an evolved Pokémon is offered its evolution moves (Crobat Cross Poison, Charizard Air Slash, Gyarados Bite)"
+kind = "code"
+enabled = true
+decisions = ["D-2276"]
+requires = []
+asm = "evolution-moves.asm"
+why = """
+Players: when a Pokémon evolves it does not learn the move it should get on evolution. Reported on Discord by
+several players: Crobat does not learn Cross Poison, Charizard does not learn Air Slash, Gyarados does not learn
+Bite. Only the Move Reminder could teach them. The untouched Chinese ROM does the same (D-1602), so this is a bug
+of the hack.
+
+Status: D-1337 says hack bugs are reported, not fixed. This fix is a user-approved exception to it (D-2276,
+2026-10-09, the answer to the hack finding D-1602); other hack bugs stay report-only.
+
+Technical: the hack's learnsets (a/0/3/3) are modern-style u16 pairs (level, move), sorted by level and ended by
+level 0xFFFF; 415 species start with one or two level-0 entries, the moves modern games teach on evolution
+(Charizard (0, Air Slash), Crobat (0, Cross Poison), Gyarados (0, Bite)). Vanilla HeartGold packs move | level << 9
+and has no level-0 entries at all (USA ROM: 0 of 508 lists). The hack kept the level-up routine 0x02070870
+(MonTryLearnMoveOnLevelUp(mon, &index, &move)): it walks the list from *index to the first entry whose level is
+the Pokémon's level and offers that move; its caller repeats the call with the same index until it returns 0.
+Nothing ever matches level 0, so the evolution scene (call at 0x02074BD4), which asks for the new species'
+moves at the current level, never offers them. Callers: the evolution scene, level-up (0x020806F2) and the day
+care (0x0206B236, 0x0206B252); no overlay calls it.
+"""
+what = """
+Old: every caller matches only entries of the current level -> level-0 evolution moves are never offered.
+New: the routine is rewritten in its own 0xB4 bytes (0x02070870-0x02070923) with a level-0 flag in r3 (already
+pushed by its push {r3-r7, lr}): the old entry 0x02070870 sets it to 0, a new entry TryLearnOnEvolution sets it
+to 1, and an entry of level 0 matches when the flag is set. The evolution scene's call (0x02074BD4) goes to the
+new entry. Its single forward pass over the sorted list offers the level-0 moves first and then the moves of the
+new level, each through the scene's own flow: 'learned', 'already knows' (skipped), or 'wants to learn ... but
+cannot learn more than four moves' with the forget-a-move screen. Every evolution goes through this scene:
+Rare Candy, level-up after battle, stones, trade and the other methods.
+Not changed: level-up without evolution and the day care (0x02070870 matches exactly the entries it matched
+before); the learnsets; the Move Reminder; the hack's compiled routine was otherwise kept (same heap call,
+buffer, GetMonData fields, index handling and results), only its duplicated 'end of list' exits are shared.
+"""
+evidence = [
+  "D-2276: the user-approved exception to D-1337 for this fix; it answers the hack finding D-1602 (evolution moves at level 0 are skipped, resolved)",
+  "User request 2026-10-09: 'We want to fix these bugs, so for each issue create a worktree per issue, and use a separate subagent to fix, test and review.' (Discord report: Crobat, Charizard and Gyarados miss their evolution moves)",
+  "work/notes/evolution_moves_investigation.md: the reproduction on the Chinese ROM and the WIP (Rare Candy, Crobat / Charizard / Gyarados), the routine and the learnset format",
+  "work/notes/evolution-moves_fix.md: the rewrite, why the other callers are unchanged, the emulator runs before and after",
+  "Runtime: emu_harness.py fixes --case evolution-moves (scenario evolution: Rare Candy evolutions with free and full move slots, a Thunder Stone evolution and a level-up without evolution, hooks on the evolution scene's learn call; each run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
+]
+
+[[code]]
+id = "evolution-moves-routine"
+file = "arm9"
+offset = "0x70870"
+expect = "B5F8 B084 1C07 1C0D 2000 21A8 9200 9002 F7AA FD14 1C04 1C38 2105 2200 F7FC FFDC 0400 0C00 9001 1C38 2170 2200 F7FC FFD4 9003 1C38 21A1 2200 F7FC FFCE 0600 0E06 9801 9903 1C22 F000 FCBF 6828 4A18 0080 5A21 4291 D105 1C20 F7AA FD38 B004 2000 BDF8 428E D00E 6828 1C40 6028 0080 5A21 4291 D105 1C20 F7AA FD29 B004 2000 BDF8 428E D1F0 428E D10C 1820 8841 9800 8001 6828 9900 1C40 6028 8809 1C38 F7FF FED4 9002 1C20 F7AA FD12 9802 B004 BDF8 46C0 FFFF 0000"
+notes = "MonTryLearnMoveOnLevelUp (0x02070870-0x02070923, with its literal pool): rewritten in place with a level-0 flag in r3; 0x02070870 sets it to 0 (level-up, day care: unchanged), TryLearnOnEvolution sets it to 1. The asm guards every original halfword."
+
+[[code]]
+id = "evolution-moves-scene-call"
+file = "arm9"
+offset = "0x74BD4"
+expect = "F7FB FE4C"
+notes = "Evolution scene: 'bl 0x02070870' -> 'bl TryLearnOnEvolution', so the evolved Pokémon is offered its level-0 moves, then the new level's."

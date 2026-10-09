@@ -97,7 +97,7 @@ All tools are Python scripts in the session scratchpad (`phaseA2/`). The scratch
 
 ## Later gameplay finding: evolution moves (2026-10-07, D-1602)
 
-Rare Candy evolutions skip Crobat's Cross Poison, Charizard's Air Slash and Gyarados's Bite in both the untouched Chinese v4.0.3 and the English WIP, even with three empty move slots. The evolution learning routine accepts only entries matching the current level, so it ignores their level-0 entries. A delayed Charizard evolution at Lv39 correctly learns Scary Face in both ROMs, confirming the distinction. This is a move-learning defect, not a softlock. See [reproduction and binary evidence](evolution_moves_investigation.md). Preserve the original behavior under D-1002/D-1337.
+Rare Candy evolutions skip Crobat's Cross Poison, Charizard's Air Slash and Gyarados's Bite in both the untouched Chinese v4.0.3 and the English WIP, even with three empty move slots. The evolution learning routine accepts only entries matching the current level, so it ignores their level-0 entries. A delayed Charizard evolution at Lv39 correctly learns Scary Face in both ROMs, confirming the distinction. This is a move-learning defect, not a softlock. See [reproduction and binary evidence](evolution_moves_investigation.md). **Fixed (2026-10-09, D-2276):** a user-approved exception to D-1337; fix `evolution-moves` makes the evolution scene offer the level-0 moves ([fix note](evolution-moves_fix.md)).
 
 ## Limits
 
