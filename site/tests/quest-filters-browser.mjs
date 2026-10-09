@@ -83,17 +83,40 @@ try {
     assert.ok(layout.controls.every(c => c.left >= 0 && c.right <= width));
     await page.screenshot({ path: `${output}/quests-${width}-${theme}.png` });
   }
+  // The Forest of Time route remains reachable from side-quest links under filters.
+  await go('ilex-goldenrod');
+  await choose('kind', 'side');
+  const route = page.locator('#forest-of-time-route');
+  assert.ok(await route.evaluate(el => el.closest('section.quest').classList.contains('is-hidden')));
+  await page.evaluate(() => { location.hash = 'forest-of-time-route'; });
+  await page.waitForFunction(() => !document.getElementById('forest-of-time-route').closest('section.quest').classList.contains('is-hidden'));
+  await page.locator('.forest-route-viewer[data-ready]').waitFor();
+  for (let step = 1; step < 5; step++) await route.locator('[data-next]').click();
+  assert.equal(await route.locator('.forest-viewer-status').innerText(), 'Step 5 of 5');
+  assert.equal(await route.locator('.forest-frame:not([hidden])').count(), 1);
+  assert.equal(await route.locator('[data-next]').isDisabled(), true);
+  await route.locator('[data-select="0"]').click();
+  assert.equal(await route.locator('.forest-viewer-status').innerText(), 'Step 1 of 5');
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await route.scrollIntoViewIfNeeded();
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1), false);
+    await page.screenshot({ path: `${output}/forest-route-integrated-${width}.png` });
+  }
   // No-JS readers still see all entries and their tags.
   const nojs = await browser.newContext({ javaScriptEnabled: false });
+  await nojs.route('**/*', route => new URL(route.request().url()).origin === new URL(base).origin ? route.continue() : route.abort());
   const staticPage = await nojs.newPage();
   await staticPage.goto(new URL('guide/pewter-to-vermilion/', base).href);
   assert.equal(await staticPage.locator('section.quest').count(), 23);
   assert.equal(await staticPage.locator('.tag-main, .tag-side').count(), 23);
   assert.equal(await staticPage.locator('.tag-postgame').count(), 2);
   assert.equal(await staticPage.locator('section.quest.is-hidden').count(), 0);
+  await staticPage.goto(new URL('guide/ilex-goldenrod/#forest-of-time-route', base).href);
+  assert.equal(await staticPage.locator('.forest-frame:not([hidden])').count(), 5);
   await nojs.close();
   assert.deepEqual(errors, []);
-  console.log('Quest filters: combined filters, persistence, completion, direct links, migration, mobile themes and no-JS checks passed.');
+  console.log('Quest filters: combined filters, persistence, completion, direct links, migration, mobile themes, integrated forest route and no-JS checks passed.');
 } finally {
   await browser.close();
 }
