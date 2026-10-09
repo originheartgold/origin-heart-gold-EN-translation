@@ -1,6 +1,6 @@
 # Translation memory, bank maps and manifest (v4.0.3)
 
-**Status (reviewed 2026-09-29): historical.** Describes how the translation memory, bank maps and the first batch plan (`manifest.json`, B001–B142) were built on 2026-09-28. The translation is finished; the R batches in `manifest_playorder.json` replaced the plan, and the seeding files it describes are local-only (see `.gitignore`).
+**Status (reviewed 2026-09-29): historical.** Describes how the translation memory, bank maps and the first batch plan (`manifest.json`, B001–B142) were built on 2026-09-28. The translation is finished; the R batches in `manifest_playorder.json` replaced the plan, and the seeding files it describes are local-only (see `.gitignore`). The seeding scripts were removed on 2026-10-09 (cleanup); `git log --diff-filter=D -- work/translate/scripts` finds them.
 
 Status date: 2026-09-28. Everything described here lives in `work/translate/`. Scripts are in `work/translate/scripts/`; all of them read `work/extract/` and never write there.
 

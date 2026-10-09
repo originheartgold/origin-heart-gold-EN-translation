@@ -1,6 +1,6 @@
 # Play order and where each text bank really appears
 
-**Status (reviewed 2026-09-29): historical.** The play-order research (2026-09-28) behind `manifest_playorder.json` (R001–R069). All batches are done; "still untranslated" below describes that date.
+**Status (reviewed 2026-09-29): historical.** The play-order research (2026-09-28) behind `manifest_playorder.json` (R001–R069). All batches are done; "still untranslated" below describes that date. `build_playorder.py` was removed on 2026-10-09 (cleanup); `build_bank_maps.py` stays.
 
 Status date: 2026-09-28. This note replaces the vanilla-name guesses in the `manifest.json` labels for scheduling purposes. `manifest.json` itself is unchanged.
 

@@ -33,7 +33,7 @@
 # --- Seeding inputs: not needed by the tools, unclear rights ------------------
 # One-off inputs that seeded translate/banks. Everything useful from them is in
 # the banks now. They hold official Nintendo text, the v3 hack's text and
-# pret constants. Regenerate with work/translate/scripts/ from your own ROMs.
+# pret constants. The seeding scripts that made them were removed on 2026-10-09 (git history).
 /work/translate/ref/
 /work/translate/us_ref.json
 /work/translate/us_reuse.jsonl
@@ -97,7 +97,7 @@ Thumbs.db
 /work/translate/decisions/decisions.csv
 /work/translate/decisions/HACK_FINDINGS.md
 /work/translate/decisions/rewrap/
-# Seeding intermediates: only the seeding scripts read them (rebuild needs ROMs).
+# Seeding intermediates: no tool reads them any more (the seeding scripts were removed 2026-10-09).
 /work/translate/manifest.json
 /work/translate/bank_map_us_v4.json
 /work/translate/bank_map_v3_v4.json

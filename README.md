@@ -42,7 +42,7 @@ Run every command from the repo root. Never edit generated files by hand: change
 | `work/build/` (English ROM and `.xdelta` patch) | `python3 work/tools/build.py` |
 | `work/glossary/src/` (PokéAPI CSVs) | `python3 work/glossary/build_glossary.py --download` |
 | `work/rom/preview_*.json` | `python3 work/tools/msgtool.py patch-preview <patch.delta> <out.nds> --report <out.json>` |
-| Seeding intermediates in `work/translate/` (`manifest.json`, `bank_map_*.json`, `char_fold_v3.json`, `tm_*.json`, `us_reuse_summary.json`) | the `work/translate/scripts/` pipeline, in order: `align_v3_v4.py`, `build_tm.py`, `align_us_v4.py`, `apply_tm.py`, `us_reuse.py`, `build_manifest.py`. These also need the v3 hack ROMs and the `work/translate/ref/` inputs. Only those scripts read them. |
+| Seeding intermediates in `work/translate/` (`manifest.json`, `bank_map_*.json`, `char_fold_v3.json`, `tm_*.json`, `us_reuse_summary.json`) | none any more: the one-time seeding pipeline was removed on 2026-10-09 once every string was reviewed (see `work/notes/tm_and_manifest.md`). No tool reads these files. |
 
 **Committed although generated.** They need a ROM, and CI or the tools rely on them:
 
@@ -56,7 +56,7 @@ Run every command from the repo root. Never edit generated files by hand: change
 | `work/translate/bank_maps.json` | `python3 work/translate/scripts/build_bank_maps.py` (also needs `work/translate/ref/hgss_map_constants.json`) | used by the tools and translators |
 | `work/glossary/*.json` | `python3 work/glossary/build_glossary.py` (also needs the hack author's spreadsheets) | used by `qa.py` and the other tools |
 
-`work/translate/play_order.json` and `manifest_playorder.json` were generated once and are now frozen records of the batch plan; rerunning `build_playorder.py` gives a different plan. The translation banks (`work/translate/banks/`) were seeded by scripts but hold the translation itself, so they are the source, not output.
+`work/translate/play_order.json` and `manifest_playorder.json` were generated once and are now frozen records of the batch plan (the script that made them was removed with the seeding pipeline). The translation banks (`work/translate/banks/`) were seeded by scripts but hold the translation itself, so they are the source, not output.
 
 ## Credits
 
