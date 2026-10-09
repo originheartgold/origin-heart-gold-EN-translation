@@ -185,17 +185,26 @@ def step_ruff(full):
     return f"ruff {have}: clean"
 
 
+# work/tools and its two test folders without an __init__.py (discover does not descend into them); each
+# runs as its own start directory, so its tests import their neighbours by plain module name.
+TEST_DIRS = (TOOLS, TOOLS / "docs", TOOLS / "site")
+
+
 def run_tests(env_armips):
     env = dict(os.environ, ARMIPS=env_armips, PYTHONDONTWRITEBYTECODE="1")
-    r = subprocess.run([sys.executable, "-m", "unittest", "discover", "-s", str(TOOLS), "-p", "test_*.py"],
-                       cwd=REPO, env=env, capture_output=True, text=True)
-    tail = r.stderr.strip().splitlines()
-    ran = next((ln for ln in reversed(tail) if ln.startswith("Ran ")), "")
-    result = next((ln for ln in reversed(tail) if ln.startswith(("OK", "FAILED"))), "")
-    if r.returncode or not result.startswith("OK"):
-        fails = [ln for ln in tail if ln.startswith(("FAIL:", "ERROR:"))]
-        raise Failed("\n".join(fails[:40] + [ran, result]) or r.stderr[-4000:])
-    return f"{ran.split(' in ')[0][4:]}, {result}"
+    summary = []
+    for start in TEST_DIRS:
+        r = subprocess.run([sys.executable, "-m", "unittest", "discover", "-s", str(start), "-p", "test_*.py"],
+                           cwd=REPO, env=env, capture_output=True, text=True)
+        tail = r.stderr.strip().splitlines()
+        ran = next((ln for ln in reversed(tail) if ln.startswith("Ran ")), "")
+        result = next((ln for ln in reversed(tail) if ln.startswith(("OK", "FAILED"))), "")
+        where = start.relative_to(REPO)
+        if r.returncode or not result.startswith("OK"):
+            fails = [ln for ln in tail if ln.startswith(("FAIL:", "ERROR:"))]
+            raise Failed(f"{where}:\n" + ("\n".join(fails[:40] + [ran, result]) or r.stderr[-4000:]))
+        summary.append(f"{where}: {ran.split(' in ')[0][4:]}, {result}")
+    return "; ".join(summary)
 
 
 def step_synthetic(armips_arg, required):
