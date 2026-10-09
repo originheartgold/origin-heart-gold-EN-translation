@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
-import { sanitizeTeam, parseTeamHash, teamHash, filterCatalog, acquisitionFamily } from '../src/lib/team-builder.mjs';
+import { sanitizeTeam, parseTeamHash, teamHash, filterCatalog, acquisitionFamily, availableTeamPokemon } from '../src/lib/team-builder.mjs';
 import { createPlannerData } from '../src/lib/team-builder-data.mjs';
 
 const read = name => JSON.parse(readFileSync(new URL(`../src/data/${name}.json`, import.meta.url), 'utf8'));
@@ -100,6 +100,13 @@ test('production planner and JSON routes are generated', { skip: process.env.GUI
   assert.ok(html.includes('id="team-builder"'));
   assert.ok(html.includes('More filled bars mean a harder catch'));
   assert.ok(html.includes('richi3f'));
+  const catalog = JSON.parse(html.match(/<script[^>]*id="tb-data"[^>]*>(.*?)<\/script>/s)[1]);
+  const selectable = new Set(availableTeamPokemon(catalog).map(mon => mon.id));
+  assert.ok(selectable.has(1), 'Bulbasaur remains selectable');
+  assert.ok(selectable.has(1440), 'documented held-item forms remain selectable');
+  assert.deepEqual(parseTeamHash('#team=1,494,1119,1072,1440', selectable), [1, 1440],
+    'shared teams discard Victini, battle-only Castform and undocumented Unown forms');
+
   const detail = JSON.parse(readFileSync(new URL('../dist/team-builder/pokemon/3.json', import.meta.url), 'utf8'));
   assert.deepEqual(detail.members.map(mon => mon.id), [1, 2, 3]);
 });
@@ -124,4 +131,19 @@ test('all dynamically loaded acquisition and evolution links resolve in the buil
     visit(JSON.parse(readFileSync(new URL(`team-builder/pokemon/${name}`, root), 'utf8')));
   }
   assert.ok(checked > 15000, `${checked} planner links checked`);
+});
+
+test('team choices and restored teams exclude unavailable, battle-only and unknown Pokémon', () => {
+  const catalog = [
+    { id: 1, availability: 'documented' },
+    { id: 2, availability: 'unavailable' },
+    { id: 3, availability: 'battle' },
+    { id: 4, availability: 'unknown' },
+    { id: 5, availability: 'documented' },
+  ];
+  const choices = availableTeamPokemon(catalog);
+  assert.deepEqual(choices.map(mon => mon.id), [1, 5]);
+  const selectable = new Set(choices.map(mon => mon.id));
+  assert.deepEqual(sanitizeTeam([2, 1, 3, 4, 5], selectable), [1, 5]);
+  assert.deepEqual(parseTeamHash('#team=2,1,3,4,5', selectable), [1, 5]);
 });
