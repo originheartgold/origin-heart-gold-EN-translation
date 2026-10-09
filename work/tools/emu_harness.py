@@ -351,7 +351,12 @@ class SaveFile:
 
     def place_player(self, map_id, x, z, direction="DOWN", height=0):
         """Teleport for Continue: current Location plus the saved player/follower objects; the saved objects
-        of the old map (NPCs) are removed, otherwise Continue would restore them on the new map."""
+        of the old map (NPCs) are removed, otherwise Continue would restore them on the new map.
+        height: the ground height in half tiles (s16 at +0x22/+0x28; the game's own Warp gives 10 on the raised
+        strip north of the Route 22 pond). A non-zero height also sets the saved fx32 y at +0x2C (height * 8
+        world units): Continue places the object from it, and with only the s16s changed the player stays at
+        the old y, cannot move and the camera sits low (seen on melonDS, 2026-10-09). Height 0 leaves +0x2C as
+        saved, as every existing teleport does."""
         self.set_location(map_id, x, z, direction)
         for i in range(MAP_OBJECT_COUNT):
             a = self._a(ARR_MAP_OBJECTS, MAP_OBJECT_SIZE * i)
@@ -361,6 +366,8 @@ class SaveFile:
             if obj_id in (PLAYER_OBJ_ID, FOLLOWER_OBJ_ID):
                 oz = z if obj_id == PLAYER_OBJ_ID else z - 1
                 struct.pack_into("<6h", self.data, a + 0x20, x, height, oz, x, height, oz)
+                if height:
+                    struct.pack_into("<i", self.data, a + 0x2C, height * 8 * 0x1000)
             else:
                 self.data[a:a + MAP_OBJECT_SIZE] = bytes(MAP_OBJECT_SIZE)
 

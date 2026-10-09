@@ -25,11 +25,12 @@ inside the machine-wide slot cap; memcheck's own DeSmuME in the msgload fix scen
 | `fixes` | `emu_harness.py fixes`: one scenario per fix on the build and on a control build without it ("Fix scenarios") | every fix `fixed` on the build and `original` on its control; a crop not approved yet is `pending` |
 | `scenarios` | `emu_harness.py scenarios`: every file in `work/tools/scenarios/` on both ROMs ("Scenario files") | no parity MISMATCH, no failed expectation, no error; a baseline not approved yet (or an EN baseline that changed) is `pending` |
 | `textfit` | `emu_harness.py textfit --since REF --pairs`: the strings changed since REF in their window ("Text fit"); REF defaults to the latest tag (`git describe --tags --abbrev=0`, else v1.0.0-rc5) | no failing and no erroring string |
-| `freeze` | `emu_harness.py hang` on melonDS (`FREEZE_CASES`: `rocket_hq`, `follower_viridian` with Bulbasaur) | the build does not freeze (goal reached, no data abort), and the untouched Chinese ROM still freezes at the known instruction (the reproducer still reproduces) |
+| `freeze` | `emu_harness.py hang` on melonDS (`FREEZE_CASES`: `rocket_hq`, `follower_viridian` and `follower_route22` with Bulbasaur) | the build does not freeze (goal reached, no data abort), and the untouched Chinese ROM still freezes at the known instruction (the reproducer still reproduces) |
 
 Why these freeze cases: `fixes` already covers the texture-bounds, reflection and msgload reproducers (DeSmuME with
 execution hooks: the NULL lookup is counted, not the freeze). melonDS emulates the ARM9 protection unit, so the same
-NULL reads are data aborts and the game freezes as on hardware; those two `hang` cases add the observed freeze. They
+NULL reads are data aborts and the game freezes as on hardware; those `hang` cases add the observed freeze
+(`follower_route22` at the place players meet it: Misty's first encounter on the Route 22 pond shore). They
 are deterministic (two processes abort at the same frame with the same registers, melonds_backend.md). The saves are
 the 2026-10-08 reproductions, found by SHA-256 in `--emu-saves` and `<its parent>/rocket-repro-20261008`
 (`--emu-freeze-saves`); a missing save or melonDS library fails the case, never a skip. The melonDS shim is taken
@@ -122,6 +123,7 @@ subcommand walks from a save and judges hang/pass. Build, API, results and limit
 [melonds_backend.md](melonds_backend.md).
 
     .venv/bin/python work/tools/emu_harness.py hang --case rocket_hq --rom R --sav S --expect hang|pass   # melonDS
+    .venv/bin/python work/tools/emu_harness.py hang --case follower_route22 --rom R --sav S --expect hang|pass
     .venv/bin/python work/tools/emu_harness.py --emulator melonds info --sav S
 
 A boot plus teleport takes about 15 s; 20 Unown encounters take about 2–3 minutes (headless, ~300 fps).
@@ -161,6 +163,12 @@ with Harness(rom, tmp, out=dir) as h:          # rom: Chinese (default) or Engli
   the Poké Mart's NPCs. `SaveFile.place_player` therefore also moves the player (id 0xFF) and follower
   (id 0xFD) objects and clears the old map's NPC objects. The new map's own objects (Unown statues) still
   appear. Map scripts that run on a normal map entry don't run (the game thinks it was saved there).
+- **Raised ground needs its height**: `place_player(..., height=H)` (half tiles; the game's own Warp shows it in
+  RAM, e.g. 10 on the Route 22 walkway and pond shore). A non-zero height also writes the saved fx32 y (+0x2C);
+  with height 0 there the player cannot move and the camera sits low (seen on melonDS, 2026-10-09).
+- **Event objects whose flag the edit clears do not appear on Continue** (Misty on Route 22 after clearing
+  flag 1363): Continue restores only the saved objects. A walk across a map border and back loads the map
+  normally, with its objects (`follower_route22` crosses into Viridian City and back).
 - A runtime warp (hook the hack's Warp script command, or rewrite a warp event in RAM and step on it) would
   give a fully normal map entry. Not needed for the POC, not built.
 

@@ -7,8 +7,8 @@
 
 melonDS 1.1 emulates the ARM9 protection unit, so a NULL read the hack makes is a data abort there (and on
 hardware) and the game hangs in the abort handler; DeSmuME reads address 0 and goes on. A case may first edit a
-copy of the save (teleport for Continue, party lead species and count), then boots it, picks Continue and walks
-its steps one tile at a time. It stops at the goal, on an ARM9 abort, or when a step fails (an event took over),
+copy of the save (teleport for Continue with the ground height, event flags, party lead species and count), then
+boots it, picks Continue and walks its steps one tile at a time. It stops at the goal, on an ARM9 abort, or when a step fails (an event took over),
 then watches the game for a while (Harness.hang_report) and judges:
     hang   the ARM9 sits in abort mode (melonDS), or a black screen never changes, and the goal was not reached
     pass   the goal was reached, no data abort happened and the screen still changes
@@ -16,6 +16,9 @@ Cases:
     rocket_hq          D-2043: player A's save, Rocket HQ B1F, east from (13,4) to the camera ambush at (23,4)
     follower_viridian  the lead Pokemon (--species, default 1 Bulbasaur) follows the player along the Viridian City
                        pond (the Bulbasaur reflection scene); player B's outdoor save, teleported for Continue
+    follower_route22   the same at Misty's first encounter on Route 22 (north shore of the pond): Bulbasaur leading,
+                       Misty's flag cleared, a crossing into Viridian City and back so the map loads her, then
+                       the players' way to her at (968,270) and one step away
     save               any save as it is: Continue, then the --walk steps (none: only watch the field). The goal
                        is --goal (x,y after the last step) or, without it, every step moving. An abort while
                        Continue loads the map counts as a hang (no step is walked). Reproductions of the
@@ -45,6 +48,23 @@ CASES = {
                           "teleport": (50, 1017, 260, "DOWN"), "species": 1, "party_count": 1,
                           "start": (50, 1017, 260), "steps": ("DOWN", "RIGHT", "RIGHT", "LEFT"), "goal": (1018, 261),
                           "fault_pc": 0x02024528},
+    # Route 22 (map 27): Misty's first encounter on the north shore of the pond, where players meet the freeze
+    # ('the first encounter with Misty between Viridian City and the Indigo Plateau', user, 2026-10-09). Misty
+    # (object 13, (969,270)) and Starmie (object 14, (970,270)) stand there while flag 1363 is clear; talking
+    # to her ends with SetFlag 1363, and both leave (script file 212). Player B's save is past that encounter,
+    # so the edit clears 1363 (1301/1302 set as before it). Continue only restores the saved objects, so
+    # Misty appears only after a normal map load: the walk starts on Route 22's east side (988,267), crosses
+    # into Viridian City (x 992) and back, then takes the players' way in: south, north through the tall grass
+    # at x 984, west along the walkway at y 268, down to the shore at (966,270) and east up to Misty at
+    # (968,270), then one step away. The area is raised (height 10, read in RAM after the game's own Warp);
+    # a teleport at height 0 leaves the player stuck (no step moves, the camera sits low).
+    "follower_route22": {"sav_sha256": "0886514dc87289d886c53ff2834052ab8acabf911c3da1c93ace8bb597ebc9eb",
+                         "teleport": (27, 988, 267, "RIGHT"), "height": 10,
+                         "flags": {1363: False, 1301: True, 1302: True}, "species": 1, "party_count": 1,
+                         "start": (27, 988, 267),
+                         "steps": ("RIGHT",) * 4 + ("LEFT",) * 4 + ("DOWN",) * 12 + ("LEFT",) * 4 + ("UP",) * 11
+                         + ("LEFT",) * 18 + ("DOWN",) * 2 + ("RIGHT",) * 2 + ("LEFT",),
+                         "goal": (967, 270), "fault_pc": 0x02024528},
 }
 RTC = datetime.datetime(2026, 10, 9, 12, 0, 0)
 
@@ -71,13 +91,16 @@ def sha256(path):
 
 
 def prepare_save(eh, sav, case, species, folder):
-    """The save to boot: the input itself, or an edited copy in `folder` (teleport, party lead and count)."""
-    if "teleport" not in case and "species" not in case:
+    """The save to boot: the input itself, or an edited copy in `folder` (teleport and height, flags, party lead
+    and count)."""
+    if not {"teleport", "species", "flags"} & set(case):
         return sav
     sf = eh.SaveFile(sav)
     if "teleport" in case:
         m, x, y, d = case["teleport"]
-        sf.place_player(m, x, y, d)
+        sf.place_player(m, x, y, d, height=case.get("height", 0))
+    for flag, value in case.get("flags", {}).items():
+        sf.set_flag(flag, value)
     if "species" in case:
         sf.edit_party_mon(0, species=species or case["species"], form=0)
         sf.set_party_count(case.get("party_count", 6))
