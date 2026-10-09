@@ -2620,8 +2620,10 @@ names of a027 bank 724), then the shared tail. Three edits in overlay 14:
   3. the last 12 bytes of the freed copy (0x02225B5E) hold the type case (lsl / ldr / ldr / add / bl
      BufferTypeName), which falls into the copy's own 'b tail' at 0x02225B6A, unchanged.
 Every other tag kind, every message and the battle logic are unchanged; the message text is not touched. The
-bank 1 strings #1216-#1219 ('type was added') use the same tag, so they name the type too wherever the hack
-prints them (no caller was found in overlay 14; not observed in game). The first 18 bytes of the freed copy
+bank 1 strings #1216-#1219 ('type was added') use the same tag, so they name the type too: Trick-or-Treat
+and Forest's Curse print #1217 ('Ghost type was added to the wild Magikarp!', before the fix 'TrickOrTreat
+type was added ...'; review run 2026-10-09). The bank 1 builder never picks the fourth (partner trainer)
+form #1215 / #1219: its side offset (0x02225E40) is 0, 1 or 2, and an ally's Pokémon gets the own-side form. The first 18 bytes of the freed copy
 (0x02225B4C-0x02225B5D) are left as they were, unreachable.
 
 **Evidence:**
@@ -2630,6 +2632,7 @@ prints them (no caller was found in overlay 14; not observed in game). The first
 - User request 2026-10-09: 'We want to fix these bugs, so for each issue create a worktree per issue, and use a separate subagent to fix, test and review.' (Discord report: Kecleon's Color Change says it changed to the Air Slash type)
 - work/notes/type-change-message_fix.md: the expander, its jump table, the handler, the edits and the emulator runs
 - Runtime: emu_harness.py fixes --case type-change-message (scenario typechange: Kecleon's Color Change hit by Gust, Mewtwo's Soak on a wild Geodude, Greninja's Protean with Quick Attack; the finished text of every type-change message and the BufferTypeName calls; run on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios'). 2026-10-09, DeSmuME: the untouched Chinese ROM and the --without build print the move's name in all three (Gust / Soak / Quick Attack), the full build the type's (Flying / Water / Normal)
+- Review run 2026-10-09 (DeSmuME, same hooks): Conversion, Camouflage, Magic Powder, Trick-or-Treat and Forest's Curse (1#1217) and Soak on a trainer's Glalie (1#1214) name the type on the build, the move on the --without build and the Chinese ROM; melonDS (no hooks, Soak on a wild Pokemon met in grass, read from the screen): Water type on the build, Soak type on the --without build, no ARM9 exception or hang (work/notes/type-change-message_fix.md)
 
 **Touches:**
 

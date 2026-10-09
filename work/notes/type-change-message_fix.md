@@ -41,7 +41,10 @@ transformed into the {type} type!' (own / wild / foe / partner trainer) and #121
 to {nickname}!'. #1212 is named once in overlay 14, by the type-change handler `0x0220E6E0`: it reads the new
 type pair (`type1 | type2 << 5`), and when the Pokémon ends up with one type that differs from the old pair it
 queues message 0x4BC with args (Pokémon, type1, 0xFFFF) (`0x02224C50`, the server's message queue). The
-argument is the type; only the expander drops it. No caller of #1216 was found in overlay 14.
+argument is the type; only the expander drops it. No caller of #1216 was found in overlay 14 by the fixer, but
+the review run below shows Trick-or-Treat and Forest's Curse printing #1217 (they reach the builder through
+another path). The bank 1 builder's side offset (`0x02225E40`) is only 0 (own side, also an ally's Pokémon), 1
+(wild) or 2 (foe trainer), so the fourth form (#1215 / #1219, with the partner trainer's name) is never built.
 
 `BufferTypeName` is arm9 `0x0200C084` (fmt r0, slot r1, type r2; a027 bank 724, NARC 0x1B), the same
 signature as the move case's `0x0200BF40`.
@@ -86,7 +89,17 @@ window sheets (`typechange_<case>.png`) show the same text on screen. Regression
 (`bounce one_turn, fs_foe [1465], fs_own [1464], soak [1213], protean [1212]`); every other message of the runs
 (used …!, But nothing happened!, The wild … used …!) prints normally.
 
-Not tested: #1214 / #1215 (foe and partner trainer sides; the same expander case), #1216-#1219 (no caller
-found), the invalid-Pokémon fallback of the nickname case (now the species case's identical code). melonDS:
-not run; the bug is a wrong word, not a crash or hang, and the scenario needs execution hooks, which the
-melonDS backend does not have.
+Review run (2026-10-09, DeSmuME; same hooks, more moves): on the fixed build Conversion (Porygon with Ice Beam
+first: 1#1212 'Ice'), Camouflage (1#1212 'Normal'), Magic Powder (1#1213 'Psychic'), Trick-or-Treat and Forest's
+Curse (1#1217 'Ghost' / 'Grass type was added to the wild Magikarp!') and Soak on a trainer's Glalie (1#1214
+'The foe's Glalie transformed into the Water type!') all name the type, each through the new case (return
+address 0x02225B6A); the control build and the Chinese ROM print the move's name in every one. Reflect Type
+prints its own message (1#1476 '... became the same type as Magikarp!', no type tag), unchanged. melonDS
+(no hooks; a wild Shroomish met in grass on map 109, Soak, read from the screen): fixed 'The wild Shroomish
+transformed into the Water type!', control '... the Soak type!'; no ARM9 exception, no hang.
+
+Not tested in game: #1215 / #1219 (never built, above) and the nickname case's fallback for an invalid Pokémon.
+That fallback is the species case's code: both load the same four literals (each `ldr r1, [pc, #n]` resolves
+to 0x02225C10 / C14 / C18 / C1C), call String_AppendChar with r0 = r5, and branch to the tail; neither reads
+a register the other path sets differently, and nothing else branches into or points at the freed bytes
+0x02225B4C-0x02225B69 (checked over all of overlay 14). So the output is the same.
