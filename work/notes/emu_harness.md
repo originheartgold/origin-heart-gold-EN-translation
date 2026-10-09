@@ -16,20 +16,25 @@ of the main checkout (also when run from an agent worktree).
     .venv/bin/python work/tools/emu_harness.py unown [--count 20] [--clock 2026-10-09T12:00:00]
     .venv/bin/python work/tools/emu_harness.py wild --map 109 --x 16 --y 14 --clock 2026-10-09T12:00:00
     .venv/bin/python work/tools/emu_harness.py info [--sav S] [--clock ISO]
-    .venv/bin/python work/tools/emu_harness.py palpark            # D-1484: record per weekday
-    .venv/bin/python work/tools/emu_harness.py arceus             # D-1501: 16 Plates through the bag
-    .venv/bin/python work/tools/emu_harness.py evolve --species 548 --level 10 --item 241 --stone 80 --clock 2026-10-09T12:00:00
     .venv/bin/python work/tools/emu_harness.py screens [--only options,ev,dex,battle]   # CN|EN pairs
-    .venv/bin/python work/tools/emu_harness.py palpark --days Fri,Sun,Mon --count 8      # encounters in the park
     .venv/bin/python work/tools/emu_harness.py thief [--case air_balloon,...]            # Tier 4
     .venv/bin/python work/tools/emu_harness.py messages [--refs "457#123 48#20"]         # lines in the window, CN|EN
     .venv/bin/python work/tools/emu_harness.py drive --lang en gen:25,30 t43,73/120 s:party   # op language
-    .venv/bin/python work/tools/emu_harness.py suite [--only unown,palpark,arceus,evolve,dex] [--jobs 4]
+    .venv/bin/python work/tools/emu_harness.py scenarios [--only unown,palpark,...] [--lang cn|en|both] [--jobs 3] [--out DIR]   # = suite
+    python3 work/tools/emu_scenarios.py validate          # schema check of work/tools/scenarios/*.toml, no emulator
     .venv/bin/python work/tools/emu_harness.py fixes --rom EN.nds --controls DIR --build-controls [--case all]   # one scenario per fix, see 'Fix scenarios'
     .venv/bin/python work/tools/emu_harness.py cleanup [--kill [--all]]                   # leftover harness processes
-    python3 -m unittest discover -s work/tools -p test_emu_harness.py      # pure parts, no ROM needed
+    python3 -m unittest discover -s work/tools -p 'test_emu_*.py'           # pure parts, no ROM needed
 
 **Removed recipes (2026-10-09 cleanup).** The one-off verification recipes `skitty`, `guide0107`, `guide0813`, `calendar`, `hackbugs`, `verify`, `vqueue`, `sweeps` and `open` (modules `emu_skitty`, `emu_guide0107`, `emu_guide0813`, `emu_calendar`, `emu_hackbugs`, `emu_verify`, `emu_vqueue`, `emu_sweeps`, `emu_text`, `emu_open`) were removed after the 2026-10-06 verification programme. Sections 6-14 below, the guide's "Observed" lines and the register still cite their commands (`emu_harness.py <recipe> --case X`) as the record of those runs; `git log --diff-filter=D -- work/tools/emu_open.py` finds the code. `wild_battle`, `moveset` and `pid_copies` moved into `emu_harness.py` (the fix scenarios use `wild_battle`).
+
+**Scenario files replace the built-in checks (2026-10-09, suite v2 step 2).** The commands `palpark`, `arceus` and
+`evolve` and the Python `suite` checks were removed; their checks are now the scenario files `palpark.toml`,
+`arceus.toml`, `evolve.toml`, `unown.toml` and `dex.toml` in `work/tools/scenarios/`, run by `scenarios` (`suite` is
+an alias), see "Scenario files" below. Sections 1-4 below still cite the old commands as the record of those runs
+(`git log --diff-filter=M -S cmd_arceus -- work/tools/emu_harness.py` finds them). `palpark --count` (sampling
+wild Pokémon in the park) is not a scenario yet: the `encounters` step with `tiles = [[16, 40], [17, 40]]` and a
+`gen:291,100` + `swap:0,@gen` lead does it.
 
 **Second backend: melonDS 1.1** (`--emulator melonds` before the subcommand, or `Harness(..., emulator="melonds")`).
 It emulates the ARM9 protection unit, so NULL reads that DeSmuME tolerates freeze the game as on hardware (Rocket HQ,
@@ -408,9 +413,10 @@ from ordinary message commands in their scripts). The WIP build predates later b
   game font pixels, so they are not in git: `open_dex_list` learns them from entries 0001–0010 and caches
   them in `work/build/harness/dex_digit_templates.json`. `EMU_HARNESS_DATA=<checkout>/work` points copies
   outside the repo at the ROMs and saves.
-- **`emu_harness.py suite [--only ...] [--jobs 4]`** (default 4; emulators capped at 6 machine-wide): runs each check on the Chinese ROM and the English
-  build in parallel child processes and writes `work/build/harness/suite/suite_report.json`; exit 1 on any
-  failure. Checks and expectations:
+- **`emu_harness.py suite`** (2026-10-09: now an alias of `scenarios`; the table below is the history of the
+  built-in Python checks, which became scenario files, see "Scenario files"). It ran each check on the Chinese ROM
+  and the English build in parallel child processes and wrote `work/build/harness/suite/suite_report.json`; exit 1
+  on any failure. Checks and expectations:
 
 | check | what | expected | time (parallel) |
 |---|---|---|---|
@@ -931,7 +937,8 @@ bugs. Both are visible in `work/build/harness/screens/`.
 - **Battles**: `walk_until_battle`, `WildLog`, `flee`, `in_field`.
 - **Observation**: `on_exec(addr, fn)` hooks (e.g. the encounter-bank getter, the Lycanroc form write),
   `screenshot`, `mark` (screen-check points), `screen_diff`.
-- **Commands**: `unown`, `wild`, `palpark`, `arceus`, `evolve`, `screens`, `info`.
+- **Commands**: `unown`, `wild`, `screens`, `drive`, `messages`, `thief`, `info`, `scenarios` (= `suite`), `fixes`.
+- **Scenarios**: a new behaviour check is a TOML file in `work/tools/scenarios/` (see "Scenario files").
 - **Isolation**: `run_child`: one emulator per process (a second DeSmuME instance in the same process
   crashes with SIGSEGV).
 
@@ -979,6 +986,92 @@ process, the Mac has the cores), writes one JSON report and exits non-zero on a 
 run would take about 5 minutes in parallel, about 10 minutes sequentially. Saves stay in
 `work/build/memcheck/`; outputs in `work/build/harness/`; nothing goes into git except the recipes and
 expected values.
+
+## Scenario files (`emu_harness.py scenarios`, `emu_scenarios.py`, suite v2 step 2, 2026-10-09)
+
+A behaviour check is a data file, not a Python module: one TOML file per scenario in `work/tools/scenarios/`, run
+by one generic runner. `scenarios` loads and validates every file first (all schema errors at once, exit 2), then
+runs each (scenario, case, ROM) in its own child process (`scenario-run`; one emulator per process, the
+machine-wide cap `EMU_HARNESS_MAX_EMULATORS` applies), judges the expectations and writes, in a new `--out` folder
+(default `work/build/harness/scenarios/run-<time>`; an existing run is never overwritten):
+
+- `<scenario>.json`: refs, the ROMs (path, sha256), one row per run {case, lang, verdict, observations,
+  expectations [{obs, check, want, got, pass, note}], screenshots, seconds} and a `parity` block;
+- `summary.json`: per scenario its verdict and `{case/lang: verdict}`; exit 0 only when every run passes;
+- `<scenario>/<lang>/<case>/`: the run's screenshots.
+
+Run verdicts: `pass`, `fail` (an expectation failed), `error` (the child raised), `timeout`, `observed` (no
+expectation applies to that ROM; it still counts as passing).
+
+```toml
+id = "palpark"                        # = the file name
+description = "D-1484: Pal Park's encounter record per weekday"
+refs = ["D-1484"]
+default = true                        # false: runs only with --only
+steps = [                             # op strings (emu_harness.OP_HELP) and table steps
+  "var:16565=3", "flag:2126=0", "warp:109,24,46", "w200",
+  { observe = "position", position = true },
+]
+case = [                              # one run per case and ROM; params fill ${name}
+  { id = "Sun", params = { record = 141 }, start = { clock = "2026-10-04T12:00:00" } },
+]
+
+[start]                               # battery save from --sav-dir, optional teleport and save edits
+save = "full_bag_6mons.sav"           # map/x/y/height/direction, flags, clear_flags, vars, clock, pockets, party
+
+[[hook]]                              # an exec hook installed before boot; its captures are an observation
+name = "records"
+addr = 0x0203A7D6
+read = "r0"                           # or u8@r2, u32@sp+8
+sig = "10bd"                          # code bytes checked after boot
+
+[[expect]]
+obs = "records"                       # dotted path into the observations; '*' maps over a list
+set = ["${record}"]                   # equals, in, min, max, set, all, len, contains, approved, baseline
+lang = "both"                         # or cn / en
+
+[parity]                              # step 3: observations whose CN/EN difference is expected
+differ = { wild = "the RNG path differs" }
+```
+
+- **Steps**: the `drive` op language (now parsed before anything runs: `emu_harness.parse_op`), extended with
+  `swap:`, `flag:N=0|1`, `var:N=V`, `clock:ISO`, `menu:`, `bag`, `pocket:`, `bagfirst:`, `give:`, `use:`,
+  `candy:`, `summary:` and `warp:map,x,y[,dir]`; a party slot may be `@gen` (the slot the last `gen:` filled).
+  Table steps for loops: `{ op = "encounters", count, walk | tiles, span, max_steps, shots }` (pace and flee until N
+  wild Pokémon were built; WildLog rows plus `summary`, as `wild` prints) and `{ op = "dexcapture", first, last }`
+  (Pokédex panels, OCR-checked, digests).
+- **Observations** `{ observe = "name", <kind> = ... }`: `party` (slot or `@gen`, optional `fields`), `ram`
+  (+ `size`), `flag`, `var`, `position`, `location`, `clock`, `bag`, `crop = [x0, y0, x1, y1]` (sha256 of the
+  RGB crop of the two-screen image, as `emu_fixes`), `message = "bank#id"` (show_message: page count and text-window
+  digests); plus every hook's captures under its name.
+- **Shared setup**: `[setup] steps = [...]` runs once per ROM from `[start]` and saves a savestate; every case then
+  starts from it (only `clock` may differ per case). Arceus uses it: one generator run, 16 Plates.
+- **Baselines**: `baseline = true` compares with the value of the first run, stored outside git in
+  `work/build/harness/baselines/scenarios/<scenario>/<case>__<lang>__<obs>.json` (created and passing when missing;
+  delete it to re-approve). The dex scenario uses it for its panel digests.
+- **Parity (step 3)**: every run's observations are stored in the same structure per ROM; `parity` lists per case
+  and observation `same`, `differs` or `declared`. It is reported, not judged yet (`"judged": false`).
+- No RNG pin: the pinned clock seeds the game's RNG, so pinned runs repeat until their inputs diverge.
+
+Migrated (the old Python checks and the `palpark`, `arceus`, `evolve` commands were removed):
+
+| scenario | runs per ROM | expectations (as the old `suite` check) |
+|---|---|---|
+| unown | 1 | ≥ 6 wild Unown, all final form A, decoder check |
+| palpark | 7 (one per weekday) | record = 141 … 147; the scripted entry reached (109, 24, 46) |
+| arceus | 1 setup + 16 | species 493 holding the Plate, stored form = the Plate's type number |
+| evolve | 5 | petilil_day 548/1 then 549/1; petilil_night form 0 keeps item 241; Rockruff 12/18/22 h → 745 form 0/2/1 |
+| dex | 1 | no OCR errors, 30 panels, digests equal the approved baseline |
+
+Proof run (2026-10-09, English build of this branch and the Chinese ROM, `--jobs 3`): the old `suite` (from the
+pre-migration code) passed 10 of 10 in 284 s; `scenarios` then passed every run twice
+(`work/build/step2-scenarios-run1` created the dex baselines but its arceus setup failed on a relative savestate
+path, fixed; `run2`: 60 runs + 2 setups, all pass, 330 s). Same values as the old checks: records 141-147 on
+both ROMs; the 16 forms; Petilil 548/1 → 549/1 and the night control; Rockruff 0/2/1 (the hook saw the same
+bytes); 6 Unown all A with the decoder check; dex panels equal to the baseline. Parity (reported only): every
+observation `same` except the declared `wild` (Unown letters) and `dex` (panel text). The letters picked differ
+between two pinned runs of the same ROM (`RIUXRZ` vs `OUXELT` on the Chinese ROM), so the clock pin alone does not
+fix the encounter RNG path.
 
 ## Text-speed release regression
 

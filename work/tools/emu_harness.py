@@ -1498,6 +1498,67 @@ def wild_battle(h, species, level, item=None, moves=None, pp=None, form=None):
             ("species", "form", "item")}}
 
 
+def pace_for_encounters(h, log, count, walk=("LEFT", "RIGHT"), span=3, tiles=None, max_steps=3000, shots=0,
+                        tag="wild"):
+    """Pace until `log` (a WildLog) holds `count` wild Pokemon or `max_steps` steps were taken: `span` tiles each
+    way along `walk`, or back and forth between `tiles` (walk_to; the first is walked to first). Every battle is
+    fled; its rows get 'battle' (a counter) and 'fled'; the first `shots` battles (and any Unown whose picked
+    letter is not A) are screenshotted. Returns the steps taken. Raises when a battle cannot be fled."""
+    steps = taken = battles = 0
+    if tiles:
+        h.walk_to(*tiles[0])
+    legs = [[t] for t in reversed(tiles)] if tiles else [[d] * span for d in walk]
+    while len(log.rows) < count and steps < max_steps:
+        n = len(log.rows)
+        for leg in legs:
+            for target in leg:
+                if tiles:
+                    h.walk_to(*target)
+                else:
+                    h.walk(target, 1)
+                steps += 1
+                if len(log.rows) > n:
+                    break
+            if len(log.rows) > n:
+                break
+        if len(log.rows) > n:
+            battles += 1
+            h.step(300)     # both Pokemon of a double battle are built within a few frames
+            for r in log.rows[n:]:
+                r["battle"] = battles
+            row = log.rows[-1]
+            if taken < shots or row.get("letter_set") not in (None, 0):
+                row["screenshot"] = str(h.screenshot(f"{tag}_encounter_{len(log.rows):02d}"))
+                taken += 1
+            row["fled"] = h.flee(battle_menu_wait=20)
+            if not row["fled"]:
+                h.screenshot(f"{tag}_stuck")
+                raise RuntimeError("could not flee")
+    return steps
+
+
+def wild_summary(rows):
+    """Counts per species/form of WildLog rows; for Unown also the letters picked, the final forms, whether every
+    final form is A and whether the decoder agrees with the letter the game wrote (D-1487)."""
+    species = {}
+    for r in rows:
+        key = f"{r['species']}/{r['form']}"
+        species[key] = species.get(key, 0) + 1
+    summary = {"encounters": len(rows), "battles": len({r.get("battle") for r in rows}),
+               "species_form_counts": species}
+    unown = [r for r in rows if r["species"] == UNOWN]
+    if unown:
+        summary["unown"] = {
+            "count": len(unown),
+            "letter_picked": "".join(UNOWN_LETTERS[r["letter_set"]] if r["letter_set"] is not None and
+                                     r["letter_set"] < 28 else "-" for r in unown),
+            "final_form": "".join(UNOWN_LETTERS[r["form"]] if r["form"] < 28 else "?" for r in unown),
+            "all_final_A": all(r["form"] == 0 for r in unown),
+            "decoder_check": all(r["form_after_letter"] == r["letter_set"] for r in unown),
+        }
+    return summary
+
+
 def cmd_wild(a):
     """Teleport through the battery save, walk back and forth until --count wild Pokemon were built, log
     each one (species, form; for Unown the letter the game picked), flee every battle. 'unown' is this
@@ -1531,52 +1592,14 @@ def cmd_wild(a):
             if a.state:
                 h.save_state(a.state)     # reuse: Harness(rom, savestate=...) skips boot and teleport
             log = WildLog(h)
-            steps = shots = battles = 0
-            while len(log.rows) < a.count and steps < a.max_steps:
-                n = len(log.rows)
-                for d in (back, forth):
-                    for _ in range(a.span):
-                        h.walk(d, 1)
-                        steps += 1
-                        if len(log.rows) > n:
-                            break
-                    if len(log.rows) > n:
-                        break
-                if len(log.rows) > n:
-                    battles += 1
-                    h.step(300)     # both Pokemon of a double battle are built within a few frames
-                    for r in log.rows[n:]:
-                        r["battle"] = battles
-                    row = log.rows[-1]
-                    if shots < a.shots or row.get("letter_set") not in (None, 0):
-                        row["screenshot"] = str(h.screenshot(f"{a.tag}_encounter_{len(log.rows):02d}"))
-                        shots += 1
-                    row["fled"] = h.flee(battle_menu_wait=20)
-                    if not row["fled"]:
-                        h.screenshot(f"{a.tag}_stuck")
-                        raise RuntimeError("could not flee")
+            report["steps"] = pace_for_encounters(h, log, a.count, walk=(back, forth), span=a.span,
+                                                  max_steps=a.max_steps, shots=a.shots, tag=a.tag)
             report["encounters"] = log.rows
-            report["steps"] = steps
             report["clock_end"] = h.clock()
     finally:
         shutil.rmtree(tmp_sav.parent, ignore_errors=True)
-    rows = report["encounters"]
     report["seconds"] = round(time.time() - t0, 1)
-    species = {}
-    for r in rows:
-        key = f"{r['species']}/{r['form']}"
-        species[key] = species.get(key, 0) + 1
-    report["summary"] = {"encounters": len(rows), "battles": len({r["battle"] for r in rows}),
-                         "species_form_counts": species}
-    unown = [r for r in rows if r["species"] == UNOWN]
-    if unown:
-        report["summary"]["unown"] = {
-            "count": len(unown),
-            "letter_picked": "".join(UNOWN_LETTERS[r["letter_set"]] if r["letter_set"] is not None and r["letter_set"] < 28 else "-" for r in unown),
-            "final_form": "".join(UNOWN_LETTERS[r["form"]] if r["form"] < 28 else "?" for r in unown),
-            "all_final_A": all(r["form"] == 0 for r in unown),
-            "decoder_check": all(r["form_after_letter"] == r["letter_set"] for r in unown),
-        }
+    report["summary"] = wild_summary(report["encounters"])
     js = Path(a.json) if a.json else out / f"{a.tag}_report.json"
     js.write_text(json.dumps(report, indent=1, ensure_ascii=False))
     print(json.dumps(report["summary"], indent=1))
@@ -1866,159 +1889,6 @@ def run_child(args, timeout=900):
     raise RuntimeError(f"child {args} failed (rc {rc}): {err[-2000:]}")
 
 
-PAL_PARK_MAP = 109
-ENC_BANK_GETTER_109 = 0x0203A7D6   # 'pop {r4, pc}' of the map-109 branch of the encounter-bank getter 0x0203A7B0
-CODE_SIG[ENC_BANK_GETTER_109] = "10bd"
-
-
-FAST_LEAD = 291                    # Ninjask: generated at Lv100 and made the lead so fleeing never fails
-PAL_PARK_ENTRY = (24, 46)          # where the gate script (file 809) warps the player
-PAL_PARK_STATE_VAR = 16565         # set to 3 by the gate script before the warp
-PAL_PARK_GRASS = ((16, 40), (17, 40))   # two tall-grass tiles of the big field (MapGrid)
-# Hide flags of the eight standing-Pokemon groups (2124-2131); the gate clears the day's two groups. With
-# all eight set the map's load script leaves the player locked.
-PAL_PARK_FLAGS = [("ClearFlag", 2126), ("ClearFlag", 2130)] + [("SetFlag", f) for f in (2124, 2125, 2127,
-                                                                                            2128, 2129, 2131)]
-
-
-def enter_pal_park(h):
-    """From the field: what the gate's Fixed Catch script does before its Warp (var, group flags), then the
-    same Warp. Leaves the player standing at the park entrance with control."""
-    h.run_script(program=script_bytes(*WARP_CMDS(PAL_PARK_MAP, *PAL_PARK_ENTRY, 0, before=[
-        ("SetVar", PAL_PARK_STATE_VAR, 3)] + PAL_PARK_FLAGS)), settle=300)
-    h.step(200)
-    if h.position() != (PAL_PARK_MAP, *PAL_PARK_ENTRY):
-        raise RuntimeError(f"Pal Park entry failed: {h.position()}")
-
-
-def cmd_palpark(a):
-    """D-1484: for each pinned weekday, log the encounter record the bank getter returns on map 109
-    (hook on its map-109 return) and, with --count, sample wild encounters in the park's tall grass."""
-    out = Path(a.out)
-    out.mkdir(parents=True, exist_ok=True)
-    base = datetime.date(2026, 10, 4)           # a Sunday
-    names = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    days = [names.index(d) for d in a.days.split(",")] if a.days else range(7)
-    if a.day is None:                  # parent: one child process per day (DeSmuME can't be reopened)
-        report = {"rom": str(a.rom), "days": [run_child(["palpark", "--rom", a.rom, "--sav", a.sav,
-                  "--out", a.out, "--count", str(a.count), "--max-steps", str(a.max_steps),
-                  "--day", str(wd)]) for wd in days]}
-        for d in report["days"]:
-            print(json.dumps(d))
-        js = out / ("palpark_weekdays.json" if a.count == 0 else "palpark_weekdays_encounters.json")
-        js.write_text(json.dumps(report, indent=1))
-        print("report:", js)
-        return 0
-    wd = a.day
-    when = datetime.datetime.combine(base + datetime.timedelta(days=wd), datetime.time(12, 0))
-    seen = []
-
-    def hooks(h):
-        h.on_exec(ENC_BANK_GETTER_109, lambda h: seen.append(h.reg.r0))
-    with start_at(None, rom=a.rom, sav=a.sav, clock=when, out=out, verbose=False, hooks=hooks) as h:
-        if a.count:                    # a fast lead so RUN always works (Lv100 Ninjask)
-            h.generate_pokemon(FAST_LEAD, level=100)
-            h.swap_party(0, h.generated_slot)
-        enter_pal_park(h)
-        log = WildLog(h)
-        steps = 0
-        if a.count:
-            h.walk_to(*PAL_PARK_GRASS[0])
-        while len(log.rows) < a.count and steps < a.max_steps:
-            n = len(log.rows)
-            for tile in (PAL_PARK_GRASS[1], PAL_PARK_GRASS[0]):
-                h.walk_to(*tile)
-                steps += 1
-                if len(log.rows) > n:
-                    break
-            if len(log.rows) > n:
-                h.step(300)
-                if n == 0:
-                    h.screenshot(f"palpark_{names[wd]}_encounter")
-                if not h.flee(battle_menu_wait=20):
-                    raise RuntimeError("could not flee")
-        day = {"weekday": wd, "name": names[wd], "clock": h.clock(), "records": sorted(set(seen)),
-               "getter_calls": len(seen), "steps": steps,
-               "species": [r["species"] for r in log.rows]}
-    print("RESULT " + json.dumps(day), flush=True)
-    return 0
-
-
-PLATES = {298: "Flame", 299: "Splash", 300: "Zap", 301: "Meadow", 302: "Icicle", 303: "Fist", 304: "Toxic",
-          305: "Earth", 306: "Sky", 307: "Mind", 308: "Insect", 309: "Stone", 310: "Spooky", 311: "Draco",
-          312: "Dread", 313: "Iron"}
-ARCEUS = 493
-RARE_CANDY, SUN_STONE, BLACK_BELT = 50, 80, 241
-LYCANROC_SETFORM = 0x02074B0E    # evolution completion: bl SetMonData(mon, 0x70 FORM, sp+0xC) for species 745
-CODE_SIG[LYCANROC_SETFORM] = "f9f72ffa"
-
-
-def cmd_arceus(a):
-    """D-1501: give Arceus each Plate through Bag -> Give and record the stored form; screenshot the summary.
-    Parent: one child builds a savestate with a generated Arceus in party slot 6, one child per Plate."""
-    out = Path(a.out) / "arceus"
-    out.mkdir(parents=True, exist_ok=True)
-    state = out / "arceus_base.dst"
-    if a.plate is None:
-        run_child(["arceus", "--rom", a.rom, "--sav", a.sav, "--out", a.out, "--plate", "0"])
-        rows = [run_child(["arceus", "--rom", a.rom, "--sav", a.sav, "--out", a.out, "--plate", str(p)])
-                for p in PLATES]
-        for r in rows:
-            print(json.dumps(r))
-        (out / "arceus_report.json").write_text(json.dumps({"rom": str(a.rom), "plates": rows}, indent=1))
-        print("report:", out / "arceus_report.json")
-        return 0
-    if a.plate == 0:
-        with start_at(None, rom=a.rom, sav=a.sav, out=out, verbose=False) as h:
-            mon = h.generate_pokemon(ARCEUS, level=50)
-            h.save_state(state)
-        print("RESULT " + json.dumps({"base": str(state), "arceus": mon}))
-        return 0
-    with Harness(a.rom, None, savestate=state, out=out, verbose=False) as h:
-        h.bag_put_first(a.plate)
-        h.open_bag()
-        h.give_from_bag(0, 5)
-        mon = h.party()[5]
-        h.open_summary_from_bag(5)
-        shot = h.screenshot(f"arceus_{a.plate}_summary")
-    print("RESULT " + json.dumps({"plate": PLATES[a.plate], "item": mon["item"], "form": mon["form"],
-                                  "species": mon["species"], "screenshot": str(shot)}))
-    return 0
-
-
-def cmd_evolve(a):
-    """D-1485 / D-1486: generate a Pokemon holding an item, pin the clock, level it up with a Rare Candy
-    through the bag (the game's own level-up path), optionally use a stone, log species/form after each."""
-    out = Path(a.out) / "evolve"
-    out.mkdir(parents=True, exist_ok=True)
-    clock = datetime.datetime.fromisoformat(a.clock)
-
-    def edit(sf):
-        sf.set_pocket("medicine", [(RARE_CANDY, 99)])
-        sf.set_pocket("items", [(a.stone, 5)] if a.stone else [])
-
-    rows = {"rom": str(a.rom), "species": a.species, "level": a.level, "item": a.item, "clock": a.clock}
-    form_writes = rows["lycanroc_form_written"] = []
-
-    def hooks(h):
-        h.on_exec(LYCANROC_SETFORM, lambda h: form_writes.append(h.u8(h.reg.r2)))
-    with start_at(None, rom=a.rom, sav=a.sav, edit=edit, clock=clock, out=out, verbose=False,
-                  hooks=hooks) as h:
-        rows["created"] = h.generate_pokemon(a.species, level=a.level, item=a.item)
-        rows["clock_seen"] = h.clock()
-        slot = h.generated_slot
-        rows["after_candy"] = h.level_up_with_candy(slot)
-        h.screenshot(f"{a.tag}_after_candy")
-        if a.stone:
-            h.bag_pocket("items")
-            rows["after_stone"] = h.use_from_bag(0, slot)
-            h.screenshot(f"{a.tag}_after_stone")
-        h.open_summary_from_bag(slot)
-        rows["summary"] = str(h.screenshot(f"{a.tag}_summary"))
-    print("RESULT " + json.dumps(rows))
-    return 0
-
-
 def screen_diff(img_a, img_b, box=None):
     """Fraction of pixels that differ between two screenshots (optionally inside box), plus a diff mask.
     For regression use, diff against an approved baseline of the same ROM: any change gets a human look."""
@@ -2107,58 +1977,179 @@ def cmd_screens(a):
     return 0
 
 
-def run_ops(h, ops, tag="x", states=None):
-    """Tiny op language for recipes and exploration (from the UI hunt agent's drive.py):
-      A B X Y L R START SELECT UP DOWN LEFT RIGHT   press, 40 frames after; KEY*n repeats; KEY/after
-      wN            wait N frames            tX,Y[/after]   touch (60 frames after)
-      hKEY / uKEY   hold / release           s:name         screenshot <out>/name_<tag>.png
-      ss:name       savestate <states>/name_<tag>.dst
-      gen:species,level[,item[,form]]        the hack's generator (party slot 6, or the next free slot)
-      moves:slot,m1[,m2,m3,m4]               write moves (PP 10) into a party Pokemon
-      script:id | prog:Cmd,arg,...;Cmd,...   run a script id / an encoded script program
-      warp:map,x,y                           scripted warp (normal map entry)
-      walk:x,y                               walk_to on the current map
-    Returns the list of screenshots taken."""
-    shots = []
-    for op in ops:
-        if not op:
-            continue
-        head, _, arg = op.partition(":")
-        if op.startswith("s:"):
-            shots.append(str(h.screenshot(f"{arg}_{tag}")))
-        elif op.startswith("ss:"):
-            Path(states or h.out).mkdir(parents=True, exist_ok=True)
-            h.save_state(Path(states or h.out) / f"{arg}_{tag}.dst")
-        elif head == "gen" and arg:
-            v = [int(x) for x in arg.split(",")] + [0, 0]
-            print("GEN", h.generate_pokemon(v[0], level=v[1], item=v[2], form=v[3]), flush=True)
-        elif head == "moves" and arg:
-            v = [int(x) for x in arg.split(",")]
-            h.edit_party_mon(v[0], moves=v[1:5])
-        elif head == "script" and arg:
-            h.run_script(int(arg))
-        elif head == "prog" and arg:
-            cmds = [tuple([c.split(",")[0]] + [int(x) for x in c.split(",")[1:]]) for c in arg.split(";")]
-            h.run_script(program=script_bytes(*cmds))
-        elif head == "warp" and arg:
-            h.warp(*[int(x) for x in arg.split(",")])
-        elif head == "walk" and arg:
-            h.walk_to(*[int(x) for x in arg.split(",")])
-        elif op[0] == "w" and op[1:].isdigit():
-            h.step(int(op[1:]))
-        elif op[0] == "t" and op[1:2].isdigit():
+OP_HELP = """Op language (from the UI hunt agent's drive.py; also the string steps of a scenario, emu_scenarios.py):
+  A B X Y L R START SELECT UP DOWN LEFT RIGHT   press, 40 frames after; KEY*n repeats; KEY/after
+  wN            wait N frames            tX,Y[/after]   touch (60 frames after)
+  hKEY / uKEY   hold / release           s:name         screenshot <out>/name_<tag>.png
+  ss:name       savestate <states>/name_<tag>.dst
+  gen:species,level[,item[,form]]        the hack's generator (party slot 6, or the next free slot)
+  moves:slot,m1[,m2,m3,m4]               write moves (PP 10) into a party Pokemon
+  script:id | prog:Cmd,arg,...;Cmd,...   run a script id / an encoded script program
+  warp:map,x,y[,dir]                     scripted warp (normal map entry)
+  walk:x,y                               walk_to on the current map
+  swap:i,j                               swap two party slots (RAM)
+  flag:N=0|1 | var:N=V                   live flag / var write (RAM)
+  clock:ISO                              pin the game clock
+  menu:entry                             field X menu (pokedex, pokemon, bag, pokegear, card, save, options)
+  bag | pocket:name                      open the bag from the field | switch pocket (items, medicine, key, ...)
+  bagfirst:item[,qty[,pocket]]           make item the first entry of a pocket (RAM; default items)
+  give:bag_slot,party_slot               bag item -> Give -> Pokemon (the game's own give path)
+  use:bag_slot,party_slot                bag item -> Use -> Pokemon, through any evolution scene
+  candy:party_slot                       Rare Candy from the Medicine pocket (opens the bag from the field)
+  summary:party_slot                     leave the bag, open that Pokemon's summary
+A party slot may be '@gen': the slot the last gen: op filled."""
+
+_INT_OPS = {"gen": (2, 4), "moves": (2, 5), "script": (1, 1), "warp": (3, 4), "walk": (2, 2), "swap": (2, 2),
+            "give": (2, 2), "use": (2, 2), "candy": (1, 1), "summary": (1, 1)}
+_SLOT_ARGS = {"moves": (0,), "swap": (0, 1), "give": (1,), "use": (1,), "candy": (0,), "summary": (0,)}
+_FIELD_MENU_ENTRIES = ("pokedex", "pokemon", "bag", "pokegear", "card", "save", "options")
+
+
+def _int(s):
+    return int(s, 0)
+
+
+def parse_op(op):
+    """One op string -> (name, args); ValueError with the reason for anything the op language does not know.
+    Pure: the scenario loader validates every step with it before an emulator starts."""
+    if not isinstance(op, str) or not op:
+        raise ValueError(f"op must be a non-empty string, got {op!r}")
+    head, sep, arg = op.partition(":")
+    try:
+        if sep:
+            if head in ("s", "ss"):
+                if not arg:
+                    raise ValueError("needs a name")
+                return head, (arg,)
+            if head in _INT_OPS:
+                lo, hi = _INT_OPS[head]
+                vals = [x.strip() for x in arg.split(",")]
+                slots = _SLOT_ARGS.get(head, ())
+                args = tuple(x if (i in slots and x == "@gen") else _int(x) for i, x in enumerate(vals))
+                if not lo <= len(args) <= hi:
+                    raise ValueError(f"takes {lo}-{hi} numbers, got {len(args)}")
+                return head, args
+            if head == "prog":
+                cmds = []
+                for c in arg.split(";"):
+                    parts = [p.strip() for p in c.split(",")]
+                    if not parts[0]:
+                        raise ValueError("empty script command")
+                    cmds.append(tuple([parts[0]] + [_int(x) for x in parts[1:]]))
+                return head, tuple(cmds)
+            if head in ("flag", "var"):
+                n, eq, v = arg.partition("=")
+                if not eq:
+                    raise ValueError("needs N=value")
+                n, v = _int(n), _int(v)
+                if head == "flag" and v not in (0, 1):
+                    raise ValueError("a flag value is 0 or 1")
+                return head, (n, v)
+            if head == "clock":
+                return head, (datetime.datetime.fromisoformat(arg),)
+            if head == "menu":
+                if arg not in _FIELD_MENU_ENTRIES:
+                    raise ValueError(f"unknown entry (one of {', '.join(_FIELD_MENU_ENTRIES)})")
+                return head, (arg,)
+            if head == "pocket":
+                if arg not in POCKET_TABS:
+                    raise ValueError(f"unknown pocket (one of {', '.join(POCKET_TABS)})")
+                return head, (arg,)
+            if head == "bagfirst":
+                vals = arg.split(",")
+                pocket = vals[2] if len(vals) > 2 else "items"
+                if pocket not in POCKETS or len(vals) > 3:
+                    raise ValueError("bagfirst:item[,qty[,pocket]]")
+                return head, (_int(vals[0]), _int(vals[1]) if len(vals) > 1 else 1, pocket)
+            raise ValueError("unknown op")
+        if op == "bag":
+            return "bag", ()
+        if op[0] == "w" and op[1:].isdigit():
+            return "wait", (int(op[1:]),)
+        if op[0] == "t" and op[1:2].isdigit():
             xy, _, after = op[1:].partition("/")
             x, y = map(int, xy.split(","))
-            h.touch(x, y, frames=10, after=int(after or 60))
-        elif op[0] in "hu" and op[1:] in KEYS:
-            (h.hold if op[0] == "h" else h.release)(op[1:])
-        else:
-            k, _, after = op.partition("/")
-            k, _, n = k.partition("*")
-            if k not in KEYS:
-                raise ValueError(f"unknown op {op!r}")
-            for _ in range(int(n or 1)):
-                h.press(k, after=int(after or 40))
+            return "touch", (x, y, int(after or 60))
+        if op[0] in "hu" and op[1:] in KEYS:
+            return ("hold" if op[0] == "h" else "release"), (op[1:],)
+        k, _, after = op.partition("/")
+        k, _, n = k.partition("*")
+        if k in KEYS:
+            return "press", (k, int(n or 1), int(after or 40))
+        raise ValueError("unknown op")
+    except ValueError as e:
+        raise ValueError(f"op {op!r}: {e}") from None
+
+
+def _slot(h, v):
+    return h.generated_slot if v == "@gen" else v
+
+
+def exec_op(h, name, args, tag="x", states=None, shots=None):
+    """Run one parsed op (parse_op) on a Harness standing in the field (or wherever the ops left it)."""
+    if name == "s":
+        p = str(h.screenshot(f"{args[0]}_{tag}"))
+        if shots is not None:
+            shots.append(p)
+    elif name == "ss":
+        Path(states or h.out).mkdir(parents=True, exist_ok=True)
+        h.save_state(Path(states or h.out) / f"{args[0]}_{tag}.dst")
+    elif name == "gen":
+        v = list(args) + [0] * (4 - len(args))
+        print("GEN", h.generate_pokemon(v[0], level=v[1], item=v[2], form=v[3]), flush=True)
+    elif name == "moves":
+        h.edit_party_mon(_slot(h, args[0]), moves=list(args[1:]))
+    elif name == "script":
+        h.run_script(args[0])
+    elif name == "prog":
+        h.run_script(program=script_bytes(*args))
+    elif name == "warp":
+        h.warp(*args)
+    elif name == "walk":
+        h.walk_to(*args)
+    elif name == "swap":
+        h.swap_party(_slot(h, args[0]), _slot(h, args[1]))
+    elif name == "flag":
+        h.set_flag(args[0], bool(args[1]))
+    elif name == "var":
+        h.set_var(*args)
+    elif name == "clock":
+        h.set_clock(args[0])
+    elif name == "menu":
+        h.field_menu(args[0])
+    elif name == "bag":
+        h.open_bag()
+    elif name == "pocket":
+        h.bag_pocket(args[0])
+    elif name == "bagfirst":
+        h.bag_put_first(args[0], args[1], args[2])
+    elif name == "give":
+        h.give_from_bag(args[0], _slot(h, args[1]))
+    elif name == "use":
+        h.use_from_bag(args[0], _slot(h, args[1]))
+    elif name == "candy":
+        h.level_up_with_candy(_slot(h, args[0]))
+    elif name == "summary":
+        h.open_summary_from_bag(_slot(h, args[0]))
+    elif name == "wait":
+        h.step(args[0])
+    elif name == "touch":
+        h.touch(args[0], args[1], frames=10, after=args[2])
+    elif name in ("hold", "release"):
+        (h.hold if name == "hold" else h.release)(args[0])
+    elif name == "press":
+        for _ in range(args[1]):
+            h.press(args[0], after=args[2])
+    else:
+        raise ValueError(f"unknown op {name!r}")
+
+
+def run_ops(h, ops, tag="x", states=None):
+    """Run op strings (OP_HELP) in order. Every op is parsed before the first one runs. Returns the screenshots."""
+    parsed = [parse_op(op) for op in ops if op]
+    shots = []
+    for name, args in parsed:
+        exec_op(h, name, args, tag, states, shots)
     return shots
 
 
@@ -2303,125 +2294,8 @@ def cmd_messages(a):
     return 0
 
 
-# ----------------------------------------------------------------------------- regression suite
-
-def _child_json(args, path, timeout=3600):
-    """Run a harness command in a child process and load the JSON report it writes."""
-    rc, out, err = spawn(args, timeout)
-    if not Path(path).exists():
-        raise RuntimeError(f"{args[0]} failed (rc {rc}): {err[-1500:]}")
-    return json.loads(Path(path).read_text())
-
-
-def _check_unown(rom, out):
-    rep = _child_json(["unown", "--rom", rom, "--count", "6", "--shots", "1", "--out", out,
-                       "--clock", "2026-10-09T12:00:00", "--json", out / "unown.json"], out / "unown.json")
-    u = rep["summary"].get("unown", {})
-    return (u.get("count", 0) >= 6 and u.get("all_final_A") and u.get("decoder_check")), u
-
-
-def _check_palpark(rom, out):
-    rep = _child_json(["palpark", "--rom", rom, "--out", out], out / "palpark_weekdays.json")
-    got = [d["records"] for d in rep["days"]]
-    return got == [[141 + k] for k in range(7)], {"records": got}
-
-
-ARCEUS_EXPECTED = {"Flame": 10, "Splash": 11, "Zap": 13, "Meadow": 12, "Icicle": 15, "Fist": 1, "Toxic": 3,
-                   "Earth": 4, "Sky": 2, "Mind": 14, "Insect": 6, "Stone": 5, "Spooky": 7, "Draco": 16,
-                   "Dread": 17, "Iron": 8}
-
-
-def _check_arceus(rom, out):
-    rep = _child_json(["arceus", "--rom", rom, "--out", out], out / "arceus" / "arceus_report.json")
-    got = {r["plate"]: r["form"] for r in rep["plates"]}
-    return got == ARCEUS_EXPECTED, {"forms": got}
-
-
-EVOLVE_CASES = [  # (tag, args, check(result))
-    ("petilil_day", ["--species", 548, "--level", 10, "--item", 241, "--stone", 80, "--clock", "2026-10-09T12:00:00"],
-     lambda r: (r["after_candy"]["species"], r["after_candy"]["form"], r["after_stone"]["species"],
-                r["after_stone"]["form"]) == (548, 1, 549, 1)),
-    ("petilil_night", ["--species", 548, "--level", 10, "--item", 241, "--clock", "2026-10-09T22:00:00"],
-     lambda r: (r["after_candy"]["form"], r["after_candy"]["item"]) == (0, 241)),
-    ("rockruff_12", ["--species", 744, "--level", 24, "--clock", "2026-10-09T12:00:00"],
-     lambda r: (r["after_candy"]["species"], r["after_candy"]["form"]) == (745, 0)),
-    ("rockruff_18", ["--species", 744, "--level", 24, "--clock", "2026-10-09T18:00:00"],
-     lambda r: (r["after_candy"]["species"], r["after_candy"]["form"]) == (745, 2)),
-    ("rockruff_22", ["--species", 744, "--level", 24, "--clock", "2026-10-09T22:00:00"],
-     lambda r: (r["after_candy"]["species"], r["after_candy"]["form"]) == (745, 1)),
-]
-
-
-def _check_evolve(rom, out):
-    details, ok = {}, True
-    for tag, args, test in EVOLVE_CASES:
-        r = run_child(["evolve", "--rom", rom, "--out", out, "--tag", tag] + args)
-        passed = bool(test(r))
-        ok &= passed
-        details[tag] = {"pass": passed, "after_candy": {k: r["after_candy"][k] for k in ("species", "form", "item")},
-                        **({"after_stone": {k: r["after_stone"][k] for k in ("species", "form")}}
-                           if "after_stone" in r else {})}
-    return ok, details
-
-
-def _check_dex(rom, out, last=30):
-    """Capture Pokedex entry panels 1..last (number verified by OCR) and diff them against the approved
-    baseline for this ROM (work/build/harness/baselines/dex_<rom name>/). A missing baseline is created."""
-    r = run_child(["dexcapture", "--rom", rom, "--out", out, "--last", last])
-    base = DEF_OUT / "baselines" / f"dex_{Path(rom).stem}"
-    shots = Path(r["dir"])
-    from PIL import Image
-    if not base.exists():
-        shutil.copytree(shots, base)
-        return not r["errors"], {"captured": len(r["captured"]), "baseline": f"created {base}", "errors": r["errors"]}
-    changed = []
-    for img in sorted(shots.glob("*.png")):
-        ref = base / img.name
-        if not ref.exists() or screen_diff(Image.open(img), Image.open(ref))[0] > 0:
-            changed.append(img.name)
-    return not r["errors"] and not changed, {"captured": len(r["captured"]), "changed_vs_baseline": changed,
-                                              "errors": r["errors"], "baseline": str(base)}
-
-
-SUITE_CHECKS = {"unown": _check_unown, "palpark": _check_palpark, "arceus": _check_arceus,
-                "evolve": _check_evolve, "dex": _check_dex}
-
-
-def cmd_suite(a):
-    """Behaviour + screen checks on both ROMs, run in parallel child processes; one JSON report, pass/fail."""
-    from concurrent.futures import ThreadPoolExecutor
-    out = Path(a.out) / "suite"
-    checks = list(SUITE_CHECKS) if a.only == "all" else a.only.split(",")
-    roms = {"cn": a.rom_cn, "en": a.rom_en}
-    jobs = [(c, lang) for c in checks for lang in roms]
-    t0 = time.time()
-
-    def run(job):
-        c, lang = job
-        d = out / lang / c
-        d.mkdir(parents=True, exist_ok=True)
-        t = time.time()
-        try:
-            ok, details = SUITE_CHECKS[c](roms[lang], d)
-            row = {"check": c, "rom": lang, "pass": bool(ok), "details": details}
-        except Exception as e:     # a crash is a failure with its message
-            row = {"check": c, "rom": lang, "pass": False, "error": f"{type(e).__name__}: {str(e)[-800:]}"}
-        row["seconds"] = round(time.time() - t, 1)
-        print(json.dumps({k: row[k] for k in ("check", "rom", "pass", "seconds")}), flush=True)
-        return row
-
-    with ThreadPoolExecutor(a.jobs) as ex:
-        rows = list(ex.map(run, jobs))
-    report = {"roms": roms, "seconds": round(time.time() - t0, 1), "pass": all(r["pass"] for r in rows),
-              "results": rows}
-    (out / "suite_report.json").write_text(json.dumps(report, indent=1))
-    print(json.dumps({"pass": report["pass"], "seconds": report["seconds"],
-                      "report": str(out / "suite_report.json")}))
-    return 0 if report["pass"] else 1
-
-
 def cmd_dexcapture(a):
-    """Child for the dex check: capture entry panels 1..--last on one ROM."""
+    """Capture Pokedex entry panels 1..--last on one ROM (the dex scenario uses the dexcapture step instead)."""
     import emu_dex
     shots = Path(a.out) / "dex"
     with start_at(None, rom=a.rom, out=a.out, verbose=False, clock=datetime.datetime(2026, 10, 9, 12)) as h:
@@ -2454,29 +2328,6 @@ def main(argv=None):
     cl = sub.add_parser("cleanup", help="list leftover emu_harness processes; --kill stops orphans (--all: every one)")
     cl.add_argument("--kill", action="store_true")
     cl.add_argument("--all", action="store_true")
-    pp = sub.add_parser("palpark", help="D-1484: encounter record of map 109 per pinned weekday")
-    pp.add_argument("--rom", default=str(DEF_ROM_CN))
-    pp.add_argument("--sav", default=str(DEF_SAVES / "full_bag_6mons.sav"))
-    pp.add_argument("--out", default=str(DEF_OUT))
-    pp.add_argument("--days", help="comma list of Sun,Mon,...; default all seven")
-    pp.add_argument("--count", type=int, default=0, help="wild Pokemon to log per day (0: only the getter)")
-    pp.add_argument("--max-steps", type=int, default=600)
-    pp.add_argument("--day", type=int, help=argparse.SUPPRESS)
-    ar = sub.add_parser("arceus", help="D-1501: Arceus form for each Plate given through the bag")
-    ar.add_argument("--rom", default=str(DEF_ROM_CN))
-    ar.add_argument("--sav", default=str(DEF_SAVES / "full_bag_6mons.sav"))
-    ar.add_argument("--out", default=str(DEF_OUT))
-    ar.add_argument("--plate", type=int, help=argparse.SUPPRESS)
-    ev = sub.add_parser("evolve", help="level up a generated Pokemon with a Rare Candy at a pinned time")
-    ev.add_argument("--rom", default=str(DEF_ROM_CN))
-    ev.add_argument("--sav", default=str(DEF_SAVES / "full_bag_6mons.sav"))
-    ev.add_argument("--out", default=str(DEF_OUT))
-    ev.add_argument("--species", type=int, required=True)
-    ev.add_argument("--level", type=int, required=True)
-    ev.add_argument("--item", type=int, default=0, help="held item")
-    ev.add_argument("--stone", type=int, default=0, help="also use this item from the Items pocket")
-    ev.add_argument("--clock", required=True)
-    ev.add_argument("--tag", default="evolve")
     sc = sub.add_parser("screens", help="screen recipes on CN and EN, saved as side-by-side pairs")
     sc.add_argument("--only", default="all", help="comma list of: " + ", ".join(SCREENS))
     sc.add_argument("--rom-cn", default=str(DEF_ROM_CN))
@@ -2510,13 +2361,12 @@ def main(argv=None):
     ms.add_argument("--sav", default=str(DEF_SAVES / "full_bag_6mons.sav"))
     ms.add_argument("--out", default=str(DEF_OUT))
     ms.add_argument("--lang", choices=("cn", "en"), help=argparse.SUPPRESS)
-    su = sub.add_parser("suite", help="regression suite: behaviour and screen checks on both ROMs, pass/fail")
-    su.add_argument("--only", default="all", help="comma list of: " + ", ".join(SUITE_CHECKS))
-    su.add_argument("--rom-cn", default=str(DEF_ROM_CN))
-    su.add_argument("--rom-en", default=str(DEF_ROM_EN))
-    su.add_argument("--out", default=str(DEF_OUT))
-    su.add_argument("--jobs", type=int, default=4, help="checks run in parallel (each starts its own emulators; "
-                    "live emulators are capped by EMU_HARNESS_MAX_EMULATORS, default 6)")
+    import emu_scenarios
+    for name in ("scenarios", "suite"):
+        emu_scenarios.add_arguments(sub.add_parser(name, help="regression suite: the scenario files in "
+                                    "work/tools/scenarios on both ROMs, pass/fail (emu_scenarios.py)"
+                                    + ("; alias of scenarios" if name == "suite" else "")))
+    emu_scenarios.add_child_arguments(sub.add_parser("scenario-run", help=argparse.SUPPRESS))
     dc = sub.add_parser("dexcapture", help=argparse.SUPPRESS)
     dc.add_argument("--rom", default=str(DEF_ROM_CN))
     dc.add_argument("--out", default=str(DEF_OUT))
@@ -2563,8 +2413,9 @@ def main(argv=None):
     a = ap.parse_args(argv)
     if a.emulator:
         os.environ["EMU_HARNESS_EMULATOR"] = a.emulator
-    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "palpark": cmd_palpark, "arceus": cmd_arceus, "evolve": cmd_evolve, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages, "suite": cmd_suite,
-            "dexcapture": cmd_dexcapture,
+    return {"info": cmd_info, "wild": cmd_wild, "unown": cmd_wild, "screens": cmd_screens, "drive": cmd_drive, "thief": cmd_thief, "messages": cmd_messages,
+            "dexcapture": cmd_dexcapture, "scenarios": emu_scenarios.run, "suite": emu_scenarios.run,
+            "scenario-run": emu_scenarios.cmd_child,
             "texture-bounds": emu_texture_bounds.run, "reflection": emu_reflection.run, "hang": emu_hang.run,
             "fixes": emu_fixes.run, "fixes-child": emu_fixes.cmd_child, "fixes-approve": emu_fixes.cmd_approve, "cleanup": cmd_cleanup}[a.cmd](a)
 

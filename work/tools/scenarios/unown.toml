@@ -1,0 +1,32 @@
+id = "unown"
+description = "D-1487: wild Unown in the Ruins of Alph hall are always A (the hack picks a letter, then writes the saved form 0 back)"
+refs = ["D-1487"]
+# (TOML: top-level keys such as steps and case come before the first [table])
+steps = [
+  { op = "encounters", observe = "wild", count = 6, walk = ["LEFT", "RIGHT"], span = 3, max_steps = 3000, shots = 1 },
+]
+
+[start]
+save = "full_bag_6mons.sav"
+map = 315                         # Ruins of Alph underground hall (encounter record 10: Unown only)
+x = 17
+y = 24
+flags = [2423, 2424, 2425, 2426]  # the four panel puzzles solved: the encounter gate needs one of them
+clock = "2026-10-09T12:00:00"
+
+[[expect]]
+obs = "wild.summary.unown.count"
+min = 6
+
+[[expect]]
+obs = "wild.summary.unown.all_final_A"
+equals = true
+note = "every finished wild Unown has form 0 (A)"
+
+[[expect]]
+obs = "wild.summary.unown.decoder_check"
+equals = true
+note = "the decoded form right after the letter write equals the letter: the decoder is right"
+
+[parity]
+differ = { wild = "letters picked and battles follow the RNG path, which differs between the ROMs" }

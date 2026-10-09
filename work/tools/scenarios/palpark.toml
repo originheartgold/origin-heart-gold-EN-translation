@@ -1,0 +1,43 @@
+id = "palpark"
+description = "D-1484: Pal Park's encounter record per weekday is 142 + weekday - 1 (Sunday loads Cerulean Cave's 141)"
+refs = ["D-1484"]
+# What the gate's Fixed Catch script (file 809) does before its Warp: state var 3, the day's two
+# standing-Pokemon groups shown (2126, 2130 cleared), the other six hidden; then the same Warp.
+steps = [
+  "var:16565=3",
+  "flag:2126=0", "flag:2130=0",
+  "flag:2124=1", "flag:2125=1", "flag:2127=1", "flag:2128=1", "flag:2129=1", "flag:2131=1",
+  "warp:109,24,46",
+  "w200",
+  { observe = "position", position = true },
+  { observe = "clock", clock = true },
+]
+case = [
+  { id = "Sun", params = { record = 141 }, start = { clock = "2026-10-04T12:00:00" } },
+  { id = "Mon", params = { record = 142 }, start = { clock = "2026-10-05T12:00:00" } },
+  { id = "Tue", params = { record = 143 }, start = { clock = "2026-10-06T12:00:00" } },
+  { id = "Wed", params = { record = 144 }, start = { clock = "2026-10-07T12:00:00" } },
+  { id = "Thu", params = { record = 145 }, start = { clock = "2026-10-08T12:00:00" } },
+  { id = "Fri", params = { record = 146 }, start = { clock = "2026-10-09T12:00:00" } },
+  { id = "Sat", params = { record = 147 }, start = { clock = "2026-10-10T12:00:00" } },
+]
+
+[start]
+save = "full_bag_6mons.sav"
+
+# The bank getter's map-109 return (pop {r4, pc}); r0 = the encounter record. Runs when the map loads.
+[[hook]]
+name = "records"
+addr = 0x0203A7D6
+read = "r0"
+sig = "10bd"
+
+[[expect]]
+obs = "position"
+equals = [109, 24, 46]
+note = "the scripted entry reached the park entrance"
+
+[[expect]]
+obs = "records"
+set = ["${record}"]
+note = "one record, the weekday's"

@@ -1,0 +1,85 @@
+id = "evolve"
+description = "D-1485 / D-1486: Rare Candy evolutions at a pinned time: Petilil + Black Belt by day, then Sun Stone; Rockruff's form by time"
+refs = ["D-1485", "D-1486"]
+# Generator Pokemon (party slot 6), Rare Candy through Bag -> Medicine -> Use (the game's own level-up and
+# evolution path). Cases may replace these steps (petilil_day adds a Sun Stone through Bag -> Items -> Use).
+steps = [
+  "gen:${species},${level},${item}",
+  "candy:@gen",
+  { observe = "after_candy", party = "@gen", fields = ["species", "form", "item", "level"] },
+  "s:after_candy",
+  "summary:@gen",
+  "s:summary",
+]
+
+[start]
+save = "full_bag_6mons.sav"
+pockets = { medicine = [[50, 99]], items = [] }   # Rare Candy x99 first in Medicine; Items empty
+
+# The evolution code's form write for Lycanroc: bl SetMonData(mon, FORM, sp+0xC); r2 points at the byte
+# (recorded: 0 by day, 2 in the evening, 1 at night; D-1486).
+[[hook]]
+name = "lycanroc_form"
+addr = 0x02074B0E
+read = "u8@r2"
+sig = "f9f72ffa"
+
+[[case]]
+id = "petilil_day"
+description = "Black Belt by day: form-1 Petilil; the Sun Stone then gives Lilligant form 1 (Hisuian)"
+start = { clock = "2026-10-09T12:00:00", pockets = { medicine = [[50, 99]], items = [[80, 5]] } }
+steps = [
+  "gen:548,10,241",
+  "candy:@gen",
+  { observe = "after_candy", party = "@gen", fields = ["species", "form", "item", "level"] },
+  "s:after_candy",
+  "pocket:items",
+  "use:0,@gen",
+  { observe = "after_stone", party = "@gen", fields = ["species", "form", "item", "level"] },
+  "s:after_stone",
+  "summary:@gen",
+  "s:summary",
+]
+expect = [
+  { obs = "after_candy.species", equals = 548 },
+  { obs = "after_candy.form", equals = 1 },
+  { obs = "after_stone.species", equals = 549 },
+  { obs = "after_stone.form", equals = 1 },
+]
+
+[[case]]
+id = "petilil_night"
+description = "control at night: no evolution, the Black Belt stays"
+params = { species = 548, level = 10, item = 241 }
+start = { clock = "2026-10-09T22:00:00" }
+expect = [
+  { obs = "after_candy.form", equals = 0 },
+  { obs = "after_candy.item", equals = 241 },
+]
+
+[[case]]
+id = "rockruff_12"
+params = { species = 744, level = 24, item = 0 }
+start = { clock = "2026-10-09T12:00:00" }
+expect = [
+  { obs = "after_candy.species", equals = 745 },
+  { obs = "after_candy.form", equals = 0 },
+]
+
+[[case]]
+id = "rockruff_18"
+params = { species = 744, level = 24, item = 0 }
+start = { clock = "2026-10-09T18:00:00" }
+expect = [
+  { obs = "after_candy.species", equals = 745 },
+  { obs = "after_candy.form", equals = 2 },
+]
+
+[[case]]
+id = "rockruff_22"
+params = { species = 744, level = 24, item = 0 }
+start = { clock = "2026-10-09T22:00:00" }
+expect = [
+  { obs = "after_candy.species", equals = 745 },
+  { obs = "after_candy.form", equals = 1 },
+]

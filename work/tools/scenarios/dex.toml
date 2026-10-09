@@ -1,0 +1,27 @@
+id = "dex"
+description = "Pokedex entry panels 1-30 (number read back by OCR) unchanged from the approved baseline of each ROM"
+refs = []
+steps = [
+  { op = "dexcapture", observe = "dex", first = 1, last = 30 },
+]
+
+[start]
+save = "full_bag_6mons.sav"
+clock = "2026-10-09T12:00:00"
+
+[[expect]]
+obs = "dex.errors"
+equals = []
+note = "every panel showed the dex number it was meant to"
+
+[[expect]]
+obs = "dex.captured"
+len = 30
+
+[[expect]]
+obs = "dex.digests"
+baseline = true
+note = "panel digests equal the approved run's (created on the first run; delete the baseline file to re-approve)"
+
+[parity]
+differ = { dex = "the panels show Chinese and English text" }

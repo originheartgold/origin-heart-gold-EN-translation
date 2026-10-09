@@ -1,0 +1,50 @@
+id = "arceus"
+description = "D-1501: Arceus' stored form for each of the 16 Plates given through Bag -> Give (the game's own form routine)"
+refs = ["D-1501"]
+# Each case starts from the setup's savestate: Arceus Lv50 from the hack's generator in party slot 6.
+steps = [
+  "bagfirst:${plate}",
+  "bag",
+  "give:0,@gen",
+  { observe = "arceus", party = "@gen", fields = ["species", "item", "form"] },
+  "summary:@gen",
+  "s:summary_${plate}",
+]
+case = [
+  { id = "Flame",  params = { plate = 298, form = 10 } },
+  { id = "Splash", params = { plate = 299, form = 11 } },
+  { id = "Zap",    params = { plate = 300, form = 13 } },
+  { id = "Meadow", params = { plate = 301, form = 12 } },
+  { id = "Icicle", params = { plate = 302, form = 15 } },
+  { id = "Fist",   params = { plate = 303, form = 1 } },
+  { id = "Toxic",  params = { plate = 304, form = 3 } },
+  { id = "Earth",  params = { plate = 305, form = 4 } },
+  { id = "Sky",    params = { plate = 306, form = 2 } },
+  { id = "Mind",   params = { plate = 307, form = 14 } },
+  { id = "Insect", params = { plate = 308, form = 6 } },
+  { id = "Stone",  params = { plate = 309, form = 5 } },
+  { id = "Spooky", params = { plate = 310, form = 7 } },
+  { id = "Draco",  params = { plate = 311, form = 16 } },
+  { id = "Dread",  params = { plate = 312, form = 17 } },
+  { id = "Iron",   params = { plate = 313, form = 8 } },
+]
+
+[start]
+save = "full_bag_6mons.sav"
+clock = "2026-10-09T12:00:00"
+
+[setup]
+steps = ["gen:493,50"]
+
+[[expect]]
+obs = "arceus.species"
+equals = 493
+
+[[expect]]
+obs = "arceus.item"
+equals = "${plate}"
+
+[[expect]]
+obs = "arceus.form"
+equals = "${form}"
+note = "the Gen 4 type number of the Plate's type"
