@@ -123,13 +123,14 @@ const base = raw.endsWith('/') ? raw : raw + '/';
 </style>
 
 <script>
+	import { isPatchManifest } from '../lib/patch-manifest.mjs';
 	const US_CRC = 'C180A0E9';
 	const US_SHA1 = '4fcded0e2713dc03929845de631d0932ea2b5a37';
 	const US_SIZE = 134217728; // 128 MiB, the untrimmed cartridge size
 	const REGIONS: Record<string, string> = {
 		E: 'the USA', P: 'Europe', D: 'Germany', F: 'France', I: 'Italy', S: 'Spain', J: 'Japan', K: 'Korea',
 	};
-	type Latest = { available?: boolean; tag: string; file: string; size: number; patched_sha1: string; release_url?: string };
+	type Latest = { available?: boolean; tag: string; file: string; size: number; patched_sha1: string; release_url?: string; prerelease?: boolean };
 
 	const root = document.querySelector<HTMLElement>('.patcher');
 	if (root) init(root);
@@ -159,7 +160,7 @@ const base = raw.endsWith('/') ? raw : raw + '/';
 		try {
 			const res = await fetch(base + 'patch/latest.json', { cache: 'no-cache' });
 			const data = res.ok ? await res.json() : null;
-			if (data && data.available !== false && data.file && /^[0-9a-f]{40}$/i.test(data.patched_sha1 || '')) latest = data;
+			if (isPatchManifest(data)) latest = data;
 		} catch {
 			/* no patch published with this build */
 		}
@@ -173,7 +174,7 @@ const base = raw.endsWith('/') ? raw : raw + '/';
 			return;
 		}
 		release.innerHTML =
-			`Latest patch: <strong>${esc(latest.tag)}</strong>${(latest as any).prerelease ? ' (test release)' : ''}, ${mb(latest.size)}, from ${fallbackLink(latest)}.`;
+			`Latest patch: <strong>${esc(latest.tag)}</strong>${latest.prerelease ? ' (test release)' : ''}, ${mb(latest.size)}, from ${fallbackLink(latest)}.`;
 		el('tool').hidden = false;
 
 		const input = root.querySelector<HTMLInputElement>('#patcher-rom')!;

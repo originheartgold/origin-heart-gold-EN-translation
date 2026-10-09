@@ -24,98 +24,155 @@ static inline unsigned fast(void) {
     if (!opts) return 0;
     return ((*opts>>2)&3)==1;
 }
-/* Frame timing (work/notes/text_speed_vcount.md). The game loop wakes at the
- * start of VBlank (display line 192), runs the field or battle work, then waits
- * for the next VBlank. If it is still running when that VBlank starts, the wait
- * misses it and the frame is dropped. Before each extra glyph the batching loop
- * predicts where the loop will end from costs measured at run time:
- *   now + (cost of one more glyph) + (rest of the loop after the batch)
- * and draws the glyph only if that ends before line 192.
- * VCOUNT is the display line I/O register (0..191 drawn, 192..262 VBlank).
- * VBLANKS is the SDK's VBlank counter (HW_VBLANK_COUNT_BUF, the word that
- * OS_GetVBlankCount reads). Neither is ARM9 code, so neither has a reviewed
- * dependency range. */
+/* Frame timing (work/notes/text_speed_vcount.md; D-2269, D-2271). The game loop
+ * wakes at the start of VBlank (display line 192), runs the field or battle work,
+ * then waits for the next VBlank. If it is still running when that VBlank starts,
+ * the wait misses it and the frame is dropped. Before each extra glyph the
+ * batching loop predicts where the loop will end from costs measured at run time:
+ *   now + (cost of one more glyph) + (rest of the loop after the batch) + MARGIN
+ * and draws the glyph only if that ends before the next VBlank starts.
+ * Time is measured in ticks of the SDK's tick timer (timer 0 at the bus clock /
+ * 64 since OS_InitTick; the SDK counts its overflows in OSi_TickCounter): a
+ * display line is 2130 bus cycles, RHO = 33.28125 ticks. VCOUNT tells the line,
+ * not how far into it the loop is. At FAST the end of a loop pass with time to
+ * spare waits for VCOUNT to change (at most one line, time it would spend
+ * waiting for VBlank anyway) and keeps that tick as an anchor, the start of a
+ * line. Lines keep their length and phase from frame to frame (in DeSmuME a
+ * frame sometimes lasts two lines longer, never a part of a line), so for up to
+ * MAX_AGE ticks after the anchor the position in the line is the ticks since the
+ * anchor modulo RHO. Without a usable anchor (the first text after power-on, a
+ * reset of the tick timer: the game calls OS_SetTick in some screens) the
+ * payload assumes the worst: the current line is about to end.
+ * VCOUNT is the display line I/O register (0..191 drawn, 192..262 VBlank),
+ * TM0 the timer 0 counter, IRQF the interrupt request flags (a pending timer 0
+ * overflow), VBLANKS the SDK's VBlank counter (HW_VBLANK_COUNT_BUF, the word
+ * OS_GetVBlankCount reads), TICKS the low word of OSi_TickCounter (SDK data the
+ * reviewed tick interrupt 0x020d2208 maintains). */
 #define VCOUNT (*(volatile u16 *)0x04000006)
+#define TM0 (*(volatile u16 *)0x04000100)
+#define IRQF (*(volatile u32 *)0x04000214)
+#define TICKS (*(volatile u32 *)0x021e0a5c)
 #define VBLANKS (*(volatile u8 *)0x027ffc3c)
 #define LINES 263
 #define VBLANK_LINE 192
-/* Eight recent samples of each cost; a slot of 0 is empty.
- * Glyph: the lines one extra glyph took, from the reading after the previous
+#define RHO 8520          /* ticks per display line x 256 (2130 / 64) */
+#define MAX_AGE 52800     /* about six frames of ticks */
+/* Eight recent samples of each cost in ticks; a slot of 0 is empty.
+ * Glyph: the ticks one extra glyph took, from the reading after the previous
  * glyph to the reading after it (render and the loop's own checks), the exact
  * quantity the decision predicts. A task's first glyph is not a sample: it runs
  * after the field work with cold caches and costs about two lines more. With
- * no extra glyph measured since power-on the glyph counts as GLYPH_SEED, the
- * largest glyph cost measured in any scene (first glyphs included; extra glyphs
- * cost at most 11).
- * Rest: lines from the end of a batch that drew to the end of the game loop
+ * no extra glyph measured since power-on the glyph counts as GLYPH_SEED lines,
+ * the largest glyph cost measured in any scene (first glyphs included).
+ * Rest: ticks from the end of a batch that drew to the end of the game loop
  * pass (window copy, task exit, the rest of the loop). With none measured it
- * counts as REST_SEED, about twice the largest rest measured in any scene (11),
+ * counts as REST_SEED lines, about twice the largest rest measured in any scene,
  * so a printer's first frame in a new scene draws a second glyph only well
  * before VBlank. After STALE loop passes in which no batching task ran (no text
  * on screen, e.g. a map change) the rest history is cleared, because the new
  * scene's loop may be heavier. A printer waiting for a button still runs its
  * task and keeps the history.
- * MARGIN: VCOUNT counts whole lines; the current line can be up to one line
- * later than read. The maxima of eight samples already cover the rounding of
- * the two costs.
+ * A sample is kept only if its ticks agree with the display lines it spans.
+ * The prediction uses the typical recent cost (costs()). A cost spikes now and
+ * then: measured in 17 scenes at both input phases (D-2271), a glyph took up to
+ * 33 ticks more than the typical glyph, a rest up to 26 more than the typical
+ * rest, and both can fall into one decision (glyph +32 and rest +25 dropped a
+ * frame with a margin of 50). MARGIN covers both spikes and what the loop does
+ * after its last reading (3 ticks) and the rounding of two tick readings (2):
+ * 33 + 26 + 3 + 2 = 64 (work/notes/text_speed_vcount.md).
  * SHORT_REST: while the rest history holds fewer than SHORT samples, the rest
- * counts at least SHORT_REST lines, the typical rest (7 lines in 371 of 432
- * samples over 17 field scenes; 6 in 47, 8 in 14). Measured (FAST, 2026-10-07):
- * a next rest exceeded the largest earlier one by 2 lines only with a single low
- * sample (Route 1 promoter: 6, then 8: a dropped frame); against the floor every
- * excess was at most 1 line, as with a full history, which MARGIN covers
- * (work/notes/text_speed_vcount.md). A floor, not an extra margin: a short
- * history of typical rests decides exactly as before. */
+ * counts at least SHORT_REST lines, the typical rest. */
 #define SLOTS 8
 #define GLYPH_SEED 13
 #define REST_SEED 20
 #define STALE 60
-#define MARGIN 1
+#define MARGIN 64
 #define SHORT 3
 #define SHORT_REST 7
-/* RAM use: these 26 bytes, zero at boot, in the payload's ITCM block (the
+/* RAM use: these 52 bytes, zero at boot, in the payload's ITCM block (the
  * SDK's ITCM arena starts after them). One global state: glyph costs do not
  * depend on the printer, and the rest belongs to the frame, not the printer. */
 struct frame_state {
-    u8 glyph[SLOTS];      /* recent glyph costs in lines (0: not measured; at most 255) */
-    u8 rest[SLOTS];       /* recent rests in lines: batch end to loop end (0: empty; 1..255) */
+    u16 glyph[SLOTS];     /* recent glyph costs in ticks (0: not measured) */
+    u16 rest[SLOTS];      /* recent rests in ticks: batch end to loop end (0: empty) */
+    u32 mark_tick;        /* tick at the end of the latest batch that drew */
+    u32 anchor;           /* tick right after VCOUNT changed (a line start) */
+    u16 mark_line;        /* VCOUNT at that batch end */
     u8 next_glyph, next_rest;
     u8 marked;            /* a batch ended in this loop pass; its rest is still open */
     u8 idle;              /* loop passes without a batching task (stops at STALE) */
-    u16 mark_line;        /* VCOUNT at that batch end */
     u8 mark_vblanks;      /* VBLANKS at that batch end */
     u8 ran;               /* a batching task ran in this loop pass */
     u8 end_vblanks;       /* VBLANKS at the previous loop pass end (pass_end) */
     u8 ended;             /* end_vblanks is valid (a pass has ended since power-on) */
+    u8 anchored;          /* anchor is set */
+    u8 pad;
 };
 extern struct frame_state text_speed_state;
 static unsigned lines_between(unsigned from,unsigned to) {
     return to>=from?to-from:to+LINES-from;
 }
+static unsigned lines_to_vblank(unsigned line) {
+    return line<VBLANK_LINE?VBLANK_LINE-line:VBLANK_LINE+LINES-line;
+}
+/* The tick count: OSi_TickCounter's low word and TM0, read as OS_GetTick does
+ * (a timer overflow not yet counted by its interrupt adds one). */
+static inline __attribute__((always_inline)) unsigned ticks(void) {
+    unsigned hi,lo;
+    do {hi=TICKS; lo=TM0;} while(hi!=TICKS);
+    if((IRQF&8) && !(lo&0x8000)) hi++;
+    return hi<<16|lo;
+}
+/* Do dt ticks agree with lines display lines between two readings? The true
+ * time is more than lines-1 and less than lines+1 lines (one tick of slack). */
+static unsigned agree(unsigned dt,unsigned lines) {
+    if(dt>0xffff) return 0;
+    dt=(dt+1)<<8;
+    return dt+RHO>lines*RHO && dt<(lines+1)*RHO+512;
+}
+/* x mod RHO for x < 2^25 (Thumb has no divide instruction). */
+static unsigned mod_rho(unsigned x) {
+    for(unsigned d=RHO<<11;d>=RHO;d>>=1) if(x>=d) x-=d;
+    return x;
+}
+/* Ticks left until the next VBlank starts (line, tick: a reading). From the
+ * anchor when it is at most MAX_AGE old, else the least possible. In VBlank
+ * (battle text, or a frame already lost) the next VBlank is a whole frame away. */
+static unsigned left_ticks(struct frame_state *s,unsigned line,unsigned tick) {
+    unsigned n=lines_to_vblank(line)*RHO,age=tick-s->anchor;
+    if(s->anchored && age<MAX_AGE) {
+        unsigned into=mod_rho(age<<8);
+        return n>into?(n-into)>>8:0;
+    }
+    return (n-RHO)>>8;
+}
 /* End of a batch that drew: remember when, so frame_end can measure the rest.
  * Only batches that drew count: the rest of such a batch includes the window
  * copy to VRAM (about six lines), which a task that only waits for input skips. */
-static void mark(struct frame_state *s) {
+static inline __attribute__((always_inline)) void mark(struct frame_state *s) {
     s->mark_vblanks=VBLANKS;
     s->mark_line=VCOUNT;
+    s->mark_tick=ticks();
     s->marked=1;
 }
 /* Called by the game loop as its last step before the wait for VBlank, in place
  * of its call to 0x020272d4 (which it still makes first). Measures the rest of
- * the latest batch in this loop pass: lines from its end to here. The VBlank
- * counter must agree with the lines: exactly one VBlank in between if the
- * interval crossed line 192, else none. Otherwise (the loop waited for VBlank
- * elsewhere in between) the sample is discarded. */
+ * the latest batch in this loop pass: ticks from its end to here. The VBlank
+ * counter must agree with the lines (exactly one VBlank in between if the
+ * interval crossed line 192, else none; otherwise the loop waited for VBlank
+ * elsewhere in between) and the ticks with the lines, or the sample is
+ * discarded. */
 void frame_end(void) {
     FN(0x020272d5,void (*)(void))();
     struct frame_state *s=&text_speed_state;
-    unsigned vblanks=VBLANKS,line=VCOUNT;
+    unsigned vblanks=VBLANKS,line=VCOUNT,tick=ticks();
     if(s->marked) {
-        unsigned from=s->mark_line,rest=lines_between(from,line);
-        unsigned crossed=from<VBLANK_LINE?from+rest>=VBLANK_LINE:from+rest>=VBLANK_LINE+LINES;
+        unsigned from=s->mark_line,lines=lines_between(from,line);
+        unsigned crossed=from<VBLANK_LINE?from+lines>=VBLANK_LINE:from+lines>=VBLANK_LINE+LINES;
+        unsigned rest=tick-s->mark_tick;
         s->marked=0;
-        if(((vblanks-s->mark_vblanks)&255)==crossed) {
-            s->rest[s->next_rest]=rest>255?255:rest?rest:1;
+        if(((vblanks-s->mark_vblanks)&255)==crossed && agree(rest,lines)) {
+            s->rest[s->next_rest]=rest?rest:1;
             s->next_rest=(s->next_rest+1)&(SLOTS-1);
         }
     }
@@ -124,22 +181,64 @@ void frame_end(void) {
         for(unsigned i=0;i<SLOTS;i++) s->rest[i]=0;
     s->ran=0;
 }
-/* May the batch draw one more glyph at display line now? */
-static unsigned room(struct frame_state *s,unsigned now) {
-    /* Lines left until the next VBlank starts (1..263). In VBlank (battle
-     * text, or a frame already lost) the next VBlank is a whole frame away. */
-    unsigned left=now<VBLANK_LINE?VBLANK_LINE-now:VBLANK_LINE+LINES-now;
-    unsigned glyph=0,rest=0,low=255,samples=0;
+/* The lower median of the slots at or above floor (0 when fewer than SHORT). */
+static unsigned median(const u16 *v,unsigned floor,unsigned *count) {
+    unsigned n=0;
+    for(unsigned i=0;i<SLOTS;i++) n+=v[i] && v[i]>=floor;
+    *count=n;
+    if(n<SHORT) return 0;
     for(unsigned i=0;i<SLOTS;i++) {
-        unsigned g=s->glyph[i],r=s->rest[i];
-        if(g>glyph) glyph=g;
-        if(r>rest) rest=r;
-        if(r && r<low) low=r;
-        if(r) samples++;
+        unsigned x=v[i],below=0,same=0;
+        if(!x || x<floor) continue;
+        for(unsigned j=0;j<SLOTS;j++) {
+            if(!v[j] || v[j]<floor) continue;
+            below+=v[j]<x;
+            same+=v[j]==x;
+        }
+        if(below<=(n-1)/2 && (n-1)/2<below+same) return x;
     }
-    if(!glyph) glyph=GLYPH_SEED;
-    if(!rest) {rest=REST_SEED; low=0;}
-    else if(samples<SHORT && rest<SHORT_REST) rest=SHORT_REST;
+    return 0;
+}
+/* The typical recent glyph cost and rest in ticks, and the shortest recent rest
+ * (0: none). A glyph cost is typical among the glyphs that read their font data
+ * (at least half the seed, GLYPH_SEED / 2 lines; a glyph whose data was just read
+ * costs about half as much). With fewer than SHORT such samples the glyph counts
+ * as the largest recent cost, at least the seed; with fewer than SHORT rests the
+ * rest counts as the largest recent rest (then at least SHORT_REST lines, below),
+ * with none as the seed. */
+static unsigned costs(struct frame_state *s,unsigned *rest,unsigned *low,unsigned *samples) {
+    unsigned n,seed=(GLYPH_SEED*RHO)>>8,glyph=median(s->glyph,seed/2,&n),r=median(s->rest,1,samples);
+    unsigned top=0,l=0xffff,big=0;
+    for(unsigned i=0;i<SLOTS;i++) {
+        if(s->glyph[i]>top) top=s->glyph[i];
+        if(s->rest[i]>big) big=s->rest[i];
+        if(s->rest[i] && s->rest[i]<l) l=s->rest[i];
+    }
+    if(!glyph) glyph=top>seed?top:seed;
+    if(!r) r=big;
+    if(!r) {r=(REST_SEED*RHO)>>8; l=0;}
+    *rest=r; *low=l;
+    return glyph;
+}
+/* The predicted costs of one batch, taken once at its first decision (D-2279):
+ * costs() runs two medians over the history (about 30 ticks), and a batch that
+ * stops on time pays that once more after its last glyph, outside every measured
+ * rest. Taken once per batch, the stop decision costs a few ticks, the part MARGIN
+ * allows for. Glyph costs measured during the batch count from the next batch. */
+struct estimate {unsigned glyph,rest,low;};
+static inline __attribute__((always_inline)) void estimate(struct frame_state *s,struct estimate *e) {
+    unsigned samples;
+    e->glyph=costs(s,&e->rest,&e->low,&samples);
+    if(e->low && samples<SHORT) {
+        unsigned floor=(SHORT_REST*RHO)>>8;
+        if(e->rest<floor) e->rest=floor;
+    }
+}
+/* May the batch draw one more glyph at this reading? */
+static inline __attribute__((always_inline)) unsigned room(struct frame_state *s,const struct estimate *e,
+                                                           unsigned line,unsigned tick) {
+    unsigned glyph=e->glyph,rest=e->rest,low=e->low;
+    unsigned left=left_ticks(s,line,tick);
     /* Fits: one more glyph and the rest end before VBlank. */
     if(left>=glyph+rest+MARGIN) return 1;
     /* Lost: even the shortest recent rest ends after VBlank if the batch
@@ -160,17 +259,20 @@ void print_task(void *task, void *p) {
     unsigned budget=FAST_BUDGET;
     unsigned dirty=0;
     FN(0x02020a9d,void (*)(unsigned,unsigned,unsigned))(U8(p,0x15),U8(p,0x16),U8(p,0x17));
-    unsigned before=0,extra=0;
+    unsigned before=0,before_tick=0,extra=0,estimated=0;
+    struct estimate e;
     for(;;) {
         U16(p,0x2e)=0;
         unsigned result=FN(0x02020a89,unsigned (*)(void *))(p);
-        unsigned now=VCOUNT;
+        unsigned now=VCOUNT,tick=ticks();
         if (result==0) {
             dirty=1;
             if(extra) {
-                unsigned cost=lines_between(before,now);
-                s->glyph[s->next_glyph]=cost>255?255:cost;
-                s->next_glyph=(s->next_glyph+1)&(SLOTS-1);
+                unsigned cost=tick-before_tick;
+                if(agree(cost,lines_between(before,now))) {
+                    s->glyph[s->next_glyph]=cost?cost:1;
+                    s->next_glyph=(s->next_glyph+1)&(SLOTS-1);
+                }
             }
         }
         if (result==1) {
@@ -194,8 +296,10 @@ void print_task(void *task, void *p) {
         while(next==0xe000) next=*++q;
         if(next==0xffff || next==0xfffe || next==0x25bc || next==0x25bd || next==0xf0fd) break;
         if(!--budget) break;
-        if(!room(s,now)) break;
+        if(!estimated) {estimate(s,&e); estimated=1;}
+        if(!room(s,&e,now,tick)) break;
         before=now;
+        before_tick=tick;
         extra=1;
     }
     if(dirty) {
@@ -267,20 +371,14 @@ void setup_sprites(void *d) {
 void pass_end(void) {
     frame_end();
     struct frame_state *s=&text_speed_state;
-    unsigned vblanks=VBLANKS,line=VCOUNT;
+    unsigned vblanks=VBLANKS,line=VCOUNT,tick=ticks();
     unsigned late=s->ended && ((vblanks-s->end_vblanks)&255)>=2;
     s->end_vblanks=vblanks;
     s->ended=1;
     if(late) {
-        unsigned left=line<VBLANK_LINE?VBLANK_LINE-line:VBLANK_LINE+LINES-line;
-        unsigned glyph=0,rest=0;
-        for(unsigned i=0;i<SLOTS;i++) {
-            if(s->glyph[i]>glyph) glyph=s->glyph[i];
-            if(s->rest[i]>rest) rest=s->rest[i];
-        }
-        if(!glyph) glyph=GLYPH_SEED;
-        if(!rest) rest=REST_SEED;
-        if(left>=glyph+rest+MARGIN) {
+        unsigned rest,low,samples;
+        unsigned glyph=costs(s,&rest,&low,&samples);
+        if(left_ticks(s,line,tick)>=glyph+rest+MARGIN) {
             u32 *tasks[8];
             for(unsigned i=0;i<8;i++) tasks[i]=PRINTER_TASKS[i];
             for(unsigned i=0;i<8;i++) {
@@ -303,6 +401,18 @@ void pass_end(void) {
     /* A catch-up batch's rest is not a sample: frame_end of the next pass would
      * measure it across the VBlank wait. */
     s->marked=0;
+    /* Anchor (D-2269): at FAST, with at least three lines left before VBlank,
+     * wait for VCOUNT to change (at most one line, time the loop would spend
+     * waiting for VBlank anyway) and keep that tick, the start of a line.
+     * NORMAL, the original printer and the other values never wait here. */
+    if(fast()) {
+        unsigned from=VCOUNT;
+        if(lines_to_vblank(from)>=3) {
+            while(VCOUNT==from);
+            s->anchor=ticks();
+            s->anchored=1;
+        }
+    }
 }
 /* Pokégear phone calls (D-1600, bug D-1599). Battles leave the renderer's
  * auto-scroll mode on (SetAutoScrollParam(3), never cleared at battle exit),

@@ -1,0 +1,45 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import MoveStats from '../../components/MoveStats.astro';
+import { playerMoveDescription, playerMoveChanges } from '../../lib/reference-format.mjs';
+
+
+
+import PokemonReferenceTable from '../../components/PokemonReferenceTable.astro';
+import TutorDetails from '../../components/TutorDetails.astro';
+import { moves, moveLearners, tms, itemById, itemUrl, abilities, abilityUrl, tutorsByMove, url, type Move } from '../../lib/data';
+export function getStaticPaths() { return moves.map(m => ({ params: { slug: m.slug }, props: { m } })); }
+const { m } = Astro.props as { m: Move };
+const learners = moveLearners.get(m.id) ?? [];
+const tutorSources = tutorsByMove.get(m.id) ?? [];
+const restrictedTutors = tutorSources.some(t => t.species === 'restricted');
+const methodNames = { level: 'Level-up and evolution', tm: 'TMs and HMs', tutor: 'Move tutors', egg: 'Egg moves' };
+const groups = Object.entries(methodNames).map(([method, label]) => ({ method, label, rows: learners.flatMap(l => { const entry = l.methods.find(x => x.method === method); if (!entry) return []; const detail = method === 'level' ? (entry.levels ?? []).map(lv => lv === 0 ? 'On evolution' : `Lv ${lv}`).join(', ') : method === 'tm' ? `${entry.labels?.join(', ') ?? ''}${entry.allTms ? ' (all TMs / HMs)' : ''}` : method === 'egg' ? 'Egg learnset' : 'Tutor compatibility'; return [{ speciesId: l.speciesId, detail }]; }) })).filter(g => g.rows.length || (g.method === 'tutor' && tutorSources.length));
+const tmRows = tms.filter(t => t.moveId === m.id);
+const interactions = abilities.flatMap(a => { const note = a.applicability.find(n => n.moveId === m.id); return note ? [{ a, note }] : a.id === 292 && m.flags.includes('slicing') ? [{ a, note: null }] : []; });
+const changes = playerMoveChanges(m);
+const headings = [{ depth: 2, slug: 'effect', text: 'Effect' }, { depth: 2, slug: 'changes', text: 'Changes in Origin HeartGold' }, ...(interactions.some(({note}) => note) ? [{ depth: 2, slug: 'interactions', text: 'Ability interactions' }] : []), { depth: 2, slug: 'learners', text: 'Pokémon that learn this move' }];
+---
+<StarlightPage frontmatter={{ title: m.name, description: `${m.name} in Origin HeartGold: stats, effects, changes and how to learn it.` }} headings={headings}>
+{m.unnamed && <p><strong>Unnamed move.</strong> No name or normal learning route is known for this entry.</p>}
+{m.game && <p class="small muted">In-game spelling: {m.game}</p>}
+<h2 id="effect">Effect</h2>
+<span id="description"></span><p>{playerMoveDescription(m) || 'No effect description is available.'}</p>
+<MoveStats m={m} showEffects={false} />
+{(m.id === 55 || m.id === 295 || m.id === 340 || m.id === 308) && <p class="small">The in-game description is outdated.</p>}
+
+<h2 id="changes">Changes in Origin HeartGold</h2>
+{changes.length ? <>
+{m.originalComparison.baseline && <p>Compared with {m.originalComparison.baseline}.{m.originalComparison.fields.length === 0 && ' Stats are unchanged.'}</p>}
+<ul>{changes.map(text => <li>{text}</li>)}</ul>
+</> : <p>No changes listed.</p>}
+{interactions.some(({note}) => note) && <><h2 id="interactions">Ability interactions</h2><ul>{interactions.filter(({note}) => note).map(({a,note}) => <li><a href={abilityUrl(a)}>{a.name}</a>{note?.addedInHack && ' — added in Origin HeartGold'}.</li>)}</ul></>}
+<h2 id="learners">Pokémon that learn this move</h2>
+{learners.length > 0 ? <p>{learners.length} Pokémon and forms can learn this move. Check availability before planning your team.</p> : tutorSources.length > 0 ? <p>Learn this move from the tutor below.</p> : null}
+{tmRows.length > 0 && <p>TM / HM acquisition and compatibility: {tmRows.map((t,i) => <>{i > 0 && ', '}<a href={itemUrl(itemById.get(t.itemId))}>{t.label}</a></>)}.</p>}
+
+{!groups.length && <p>No normal learning route is known.</p>}
+{groups.map(g => <><h3 id={`learners-${g.method}`}>{g.label}{g.rows.length > 0 && ` (${g.rows.length} Pokémon)`}</h3>{g.method === 'tutor' && <TutorDetails entries={tutorSources} />}{g.rows.length > 0 && <><div class="table-filter" data-table={`learners-table-${g.method}`}><input type="search" placeholder="Search Pokémon…" aria-label={`Search ${g.label} learners`} /><select data-key="availability" aria-label={`${g.label} availability`}><option value="">All availability</option><option value="documented">Where to get it</option><option value="battle">Battle only</option><option value="unavailable">NOT AVAILABLE IN GAME</option><option value="unknown">No known way to get it</option></select><span class="filter-count" aria-live="polite"></span></div><PokemonReferenceTable id={`learners-table-${g.method}`} rows={g.rows} label="Learning method" /></>}</>)}
+
+<p><a href={url('/moves/')}>← All moves</a> · <a href={url('/tms/')}>TMs and HMs</a></p>
+</StarlightPage>

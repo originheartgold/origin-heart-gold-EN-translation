@@ -59,7 +59,7 @@ import subprocess
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from gate_common import (CLOCK, ROOT, PrinterTrace, add_arguments, attach_probe, digest, identity,  # noqa: E402
+from gate_common import (CLOCK, ROOT, PrinterTrace, add_arguments, attach_probe, digest, identity, input_delay,  # noqa: E402
                          inputs_unchanged, itcm_errors, load_expected_payload, memory_errors, memory_summary,
                          require, resolve)
 import text_speed_checks as checks  # noqa: E402
@@ -127,6 +127,7 @@ def child(args, trainer):
     try:
         with Harness(args.rom, args.save, out=args.out, verbose=False, rtc=CLOCK) as h:
             h.set_clock(datetime(2026, 10, 9, 12))
+            input_delay(h, args.phase)
             h.boot_to_menu()
             h.continue_game()
             start = itcm_errors(h, payload)
@@ -291,7 +292,7 @@ def child(args, trainer):
                         warm = checks.warm_costs(tasks)
                         row['record'] = checks.speed_record(
                             tasks, [(row['glyphs'][0][1], last)],
-                            sorted(warm)[len(warm) // 2] if warm else checks.GLYPH_SEED)
+                            sorted(warm)[len(warm) // 2] if warm else checks.GLYPH_SEED * 34)
                         tag = f"segment {segment} {checks.NAMES[mode]} {row['text'][:30]!r}"
                         errors.extend(f'{tag}: {e}' for e in cadence_errors + stop_errors)
                         if row.get('pixels') is None:
@@ -356,6 +357,7 @@ def child(args, trainer):
                 spans = {m: sum(r['print_frames'] for r in runs[m]['messages']) for m in MODES}
                 records = {m: checks.merge_records([r['record'] for r in runs[m]['messages']]) for m in MODES}
                 order, notes = checks.order_errors(records)
+                checks.tally_overruns(report, records)
                 errors.extend(f'segment {segment}: {e}' for e in order)
                 report['segments'].append({'segment': segment, 'runs': runs,
                                            'order': {'print_frames': spans, 'records': records,
@@ -402,6 +404,7 @@ def main():
         command = [sys.executable, '-I', __file__, '--rom', str(args.rom), '--save', str(args.save),
                    '--out', str(out), '--trainer', str(trainer)]
         command += ['--fault-payload', str(args.fault_payload)] if args.fault_payload else []
+        command += ['--phase', str(args.phase)]
         command += ['--no-rng-pin'] if args.no_rng_pin else []
         with (args.out / f'trainer-{trainer}.log').open('w') as log:
             code = subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT).returncode
@@ -419,6 +422,9 @@ def main():
                 errors.append(f'trainer {trainer}: wrong candidate executed')
             report['battles'][trainer] = {'segments': r['segments'], 'memory': r.get('memory'),
                                           'rng_seed': r.get('rng_seed'), 'rng_pins': r.get('rng_pins')}
+            for k, v in (r.get('overrun_budget') or {}).items():     # D-2276: the run-wide count
+                budget = report.setdefault('overrun_budget', {'fast_frames': 0, 'unforced_overruns': 0})
+                budget[k] += v
             if args.no_rng_pin:
                 errors.append(f'trainer {trainer}: run without the battle RNG pin (diagnosis only, never evidence)')
             if code or r['status'] != 'passed':

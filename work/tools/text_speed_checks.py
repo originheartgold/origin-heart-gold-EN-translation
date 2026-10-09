@@ -40,29 +40,46 @@ FAST_BUDGET = 3
 CONTROLS = frozenset((0xFFFF, 0xFFFE, 0x25BC, 0x25BD, 0xF0FD))
 # Same values as the constants in work/patches/text-speed/native.c, pinned here
 # independently (a unit test keeps them equal): the gates judge every frame
-# decision of the binary against this model.
+# decision of the binary against this model. Costs and the time left are in ticks
+# of the SDK's tick timer (timer 0, bus clock / 64, D-2269); a display line is
+# 2130 bus cycles, RHO = 33.28125 ticks (x 256). Seeds and the short-history floor
+# are in display lines.
 SLOTS = 8
-GLYPH_SEED = 13
-REST_SEED = 20
+GLYPH_SEED = 13           # lines
+REST_SEED = 20            # lines
 STALE = 60
-MARGIN = 1
-SHORT = 3            # fewer measured rests than this: the rest counts at least SHORT_REST lines
-SHORT_REST = 7
-STATE_SIZE = 26
+MARGIN = 64               # ticks: a glyph and a rest spike in one decision plus the loop tail (D-2271)
+SHORT = 3                 # fewer measured rests than this: the rest counts at least SHORT_REST lines
+SHORT_REST = 7            # lines
+RHO = 8520                # ticks per display line x 256
+MAX_AGE = 52800           # ticks an anchor stays usable (about six frames)
+STATE_SIZE = 52
+ENDED_OFFSET = 49          # frame_state.ended (field_rate clears it to switch the catch-up off)
 VISIBLE_LINES, TOTAL_LINES = 192, 263
+# The 'would have fitted' allowance (D-2271): a FAST frame stop is judged unnecessary only
+# when one more glyph of the message's median cost would still have ended the pass more than
+# FIT_ALLOWANCE ticks before VBlank (see work/notes/text_speed_vcount.md for the derivation).
+FIT_ALLOWANCE = 79
+# Unforced overruns (a FAST frame dropped only because of the batch's extra glyphs) are a
+# budget, not zero (D-2276, amends D-2271): at most OVERRUNS_PER_MESSAGE in one message (here),
+# at most one per OVERRUN_FRAMES FAST printing frames over the whole run (validate_release,
+# from every gate's 'overrun_budget', see tally_overruns()).
+OVERRUNS_PER_MESSAGE = 1
+OVERRUN_FRAMES = 1000
 # Fault fixtures only (fault_fixture.py 'checker', applied by gate_common for a
 # --fault-payload run, never for release evidence): make the gates' model match a
 # deliberately broken payload, so that only the product checks can catch it.
-FIXED_MODEL = None        # (fits at or above, lost below): the cf50a23 constant rule
 IGNORE_REST = False
 IGNORE_GLYPH = False
-GLYPH_COST_BIAS = 0
+GLYPH_COST_BIAS = 0       # ticks added to every stored glyph cost
 NO_CATCH_UP = False       # fault model: pass_end never catches up
-# pass_end's own copy of the decision constants (native.c values; the fault knobs above
+NO_ANCHOR = False         # fault model: the position in the line is never known (the worst case)
+FIXED_NEED = None         # fault model: an extra glyph needs this many ticks, whatever the costs
+# pass_end's own copy of the decision constant (native.c value; the fault knobs above
 # model edits of print_task's decision, which pass_end does not share).
-PASS_END_SEEDS = (GLYPH_SEED, REST_SEED, MARGIN)
-FAULT_KNOBS = frozenset(("MARGIN", "GLYPH_SEED", "REST_SEED", "FIXED_MODEL", "IGNORE_REST", "IGNORE_GLYPH",
-                         "GLYPH_COST_BIAS", "NO_CATCH_UP", "SHORT_REST"))
+PASS_END_MARGIN = MARGIN
+FAULT_KNOBS = frozenset(("MARGIN", "GLYPH_SEED", "REST_SEED", "IGNORE_REST", "IGNORE_GLYPH",
+                         "GLYPH_COST_BIAS", "NO_CATCH_UP", "SHORT_REST", "NO_ANCHOR", "FIXED_NEED"))
 STOP_REASONS = ("budget", "frame", "control", "result", "original", "paused")
 
 
@@ -142,55 +159,87 @@ def lines_to_vblank(line):
     return VISIBLE_LINES - line if line < VISIBLE_LINES else VISIBLE_LINES + TOTAL_LINES - line
 
 
+def ticks_between(start, end):
+    """TM0 ticks from reading start to reading end (16-bit counter), as native.c counts them."""
+    return (end - start) & 0xFFFF
+
+
+def agree(dt, lines):
+    """Do dt ticks agree with the display lines between two readings (native agree())?"""
+    if dt > 0xFFFF:
+        return False
+    dt = (dt + 1) << 8
+    return dt + RHO > lines * RHO and dt < (lines + 1) * RHO + 512
+
+
+def lower_median(values, floor=1):
+    """native median(): the lower median of the slots at or above floor, 0 when fewer than SHORT."""
+    filled = sorted(v for v in values if v and v >= floor)
+    return filled[(len(filled) - 1) // 2] if len(filled) >= SHORT else 0
+
+
 class FrameModel:
-    """Line-for-line mirror of the payload's frame state (struct frame_state, 26 bytes).
+    """Line-for-line mirror of the payload's frame state (struct frame_state, 52 bytes).
 
     The gates build it from the payload's RAM once, then update it only from what
-    they observe themselves (the VCOUNT / VBlank-counter values the payload read),
-    and compare it with the payload's RAM at every read: the payload must store
-    exactly the costs the gate measured, and decide exactly as decide() says."""
+    they observe themselves (the VCOUNT, tick and VBlank-counter values the payload
+    read), and compare it with the payload's RAM at every read: the payload must
+    store exactly the costs the gate measured, and decide exactly as decide() says."""
 
-    FIELDS = ("next_glyph", "next_rest", "marked", "idle", "mark_line", "mark_vblanks", "ran", "end_vblanks",
-              "ended")
+    FIELDS = ("mark_tick", "anchor", "mark_line", "next_glyph", "next_rest", "marked", "idle", "mark_vblanks", "ran",
+              "end_vblanks", "ended", "anchored")
 
     def __init__(self, data=bytes(STATE_SIZE)):
         if len(data) != STATE_SIZE:
             raise ValueError(f"frame state is {STATE_SIZE} bytes")
-        self.glyph = list(data[0:8])
-        self.rest = list(data[8:16])
-        self.next_glyph, self.next_rest, self.marked, self.idle = data[16], data[17], data[18], data[19]
-        self.mark_line = data[20] | data[21] << 8
-        self.mark_vblanks, self.ran = data[22], data[23]
-        self.end_vblanks, self.ended = data[24], data[25]
+        u16 = lambda o: data[o] | data[o + 1] << 8
+        self.glyph = [u16(2 * i) for i in range(SLOTS)]
+        self.rest = [u16(16 + 2 * i) for i in range(SLOTS)]
+        self.mark_tick = int.from_bytes(data[32:36], "little")
+        self.anchor = int.from_bytes(data[36:40], "little")
+        self.mark_line = u16(40)
+        (self.next_glyph, self.next_rest, self.marked, self.idle, self.mark_vblanks, self.ran, self.end_vblanks,
+         self.ended, self.anchored, self.pad) = data[42:52]
+        self.batch = None          # the running batch's estimates (native print_task's local, D-2279)
 
     def to_bytes(self):
-        return bytes(self.glyph + self.rest + [self.next_glyph, self.next_rest, self.marked, self.idle,
-                                               self.mark_line & 255, self.mark_line >> 8, self.mark_vblanks, self.ran,
-                                               self.end_vblanks, self.ended])
+        out = b"".join(x.to_bytes(2, "little") for x in self.glyph + self.rest)
+        out += self.mark_tick.to_bytes(4, "little") + self.anchor.to_bytes(4, "little")
+        out += self.mark_line.to_bytes(2, "little")
+        return out + bytes([self.next_glyph, self.next_rest, self.marked, self.idle, self.mark_vblanks, self.ran,
+                            self.end_vblanks, self.ended, self.anchored, self.pad])
 
     def task_ran(self):
         """A batching task started (after the pause test, before its first render)."""
         self.ran = 1
+        self.batch = None
 
-    def glyph_cost(self, before, now):
-        """An extra glyph: lines from the reading after the previous glyph to the reading after it."""
-        self.glyph[self.next_glyph] = min(lines_between(before, now) + GLYPH_COST_BIAS, 255)
+    def glyph_cost(self, before_line, before_tick, line, tick):
+        """An extra glyph: from the reading after the previous glyph to the reading after it.
+        Returns the stored cost, or None when the ticks do not agree with the lines."""
+        cost = (tick - before_tick) & 0xFFFFFFFF
+        if not agree(cost, lines_between(before_line, line)):
+            return None
+        cost = min((cost or 1) + GLYPH_COST_BIAS, 0xFFFF)
+        self.glyph[self.next_glyph] = cost
         self.next_glyph = (self.next_glyph + 1) & (SLOTS - 1)
+        return cost
 
-    def mark(self, vblanks, line):
+    def mark(self, vblanks, line, tick):
         """End of a batch that drew."""
-        self.mark_vblanks, self.mark_line, self.marked = vblanks & 255, line, 1
+        self.mark_vblanks, self.mark_line, self.mark_tick, self.marked = vblanks & 255, line, tick, 1
 
-    def frame_end(self, vblanks, line):
+    def frame_end(self, vblanks, line, tick):
         """The game loop's last step before its VBlank wait. Returns the rest sample stored, or None."""
         sample = None
         if self.marked:
             start = self.mark_line
-            rest = lines_between(start, line)
-            crossed = int(start + rest >= (VISIBLE_LINES if start < VISIBLE_LINES else VISIBLE_LINES + TOTAL_LINES))
+            lines = lines_between(start, line)
+            crossed = int(start + lines >= (VISIBLE_LINES if start < VISIBLE_LINES else VISIBLE_LINES + TOTAL_LINES))
+            rest = (tick - self.mark_tick) & 0xFFFFFFFF
             self.marked = 0
-            if (vblanks - self.mark_vblanks) & 255 == crossed:
-                sample = min(rest, 255) or 1
+            if (vblanks - self.mark_vblanks) & 255 == crossed and agree(rest, lines):
+                sample = rest or 1
                 self.rest[self.next_rest] = sample
                 self.next_rest = (self.next_rest + 1) & (SLOTS - 1)
         if self.ran:
@@ -202,51 +251,78 @@ class FrameModel:
         self.ran = 0
         return sample
 
-    def pass_end(self, vblanks, line):
+    def left(self, line, tick):
+        """(ticks left until the next VBlank starts, known): native left_ticks()."""
+        n = lines_to_vblank(line) * RHO
+        age = (tick - self.anchor) & 0xFFFFFFFF
+        if self.anchored and age < MAX_AGE and not NO_ANCHOR:
+            into = (age << 8) % RHO
+            return ((n - into) >> 8 if n > into else 0), True
+        return (n - RHO) >> 8, False
+
+    def set_anchor(self, tick):
+        """pass_end saw VCOUNT change: tick is a line start."""
+        self.anchor, self.anchored = tick, 1
+
+    def costs(self):
+        """(glyph, rest, low, samples) in ticks (native costs()): the typical glyph cost among the
+        glyphs that read their font data (at least half the seed; with fewer than SHORT, the
+        largest recent cost, at least the seed), the typical rest (with fewer than SHORT rests the
+        largest, with none the seed), the shortest recent rest (0: none) and the number of rests."""
+        seed = (GLYPH_SEED * RHO) >> 8
+        glyph = lower_median(self.glyph, seed // 2) or max(max(self.glyph), seed)
+        samples = sum(1 for r in self.rest if r)
+        rest = lower_median(self.rest) or max(self.rest)
+        low = min((r for r in self.rest if r), default=0)
+        if not rest:
+            rest, low = (REST_SEED * RHO) >> 8, 0
+        return glyph, rest, low, samples
+
+    def pass_end(self, vblanks, line, tick):
         """pass_end's reading after frame_end (D-1603): the pass is late when a VBlank passed
         since the previous pass ended (the counter moved by two or more: the wait plus a
         missed VBlank). A late pass catches up (each printer task runs once more) only when
-        one glyph and the rest fit before the next VBlank. Returns (late, catch_up).
-        The catch-up's batch end is no rest sample: catch_up_done() clears the mark."""
+        one glyph and the rest fit before the next VBlank. Returns (late, catch_up). The
+        catch-up's batch end is no rest sample: catch_up_done() clears the mark."""
         late = bool(self.ended) and (vblanks - self.end_vblanks) & 255 >= 2
         self.end_vblanks, self.ended = vblanks & 255, 1
         if not late or NO_CATCH_UP:
             return late, False
-        glyph_seed, rest_seed, margin = PASS_END_SEEDS
-        glyph = max(self.glyph) or glyph_seed
-        rest = max(self.rest) or rest_seed
-        return late, lines_to_vblank(line) >= glyph + rest + margin
+        glyph, rest, _, _ = self.costs()
+        left, _ = self.left(line, tick)
+        return late, left >= glyph + rest + PASS_END_MARGIN
 
     def catch_up_done(self):
-        """End of pass_end: a catch-up batch's end is not measured."""
+        """After the catch-up: a catch-up batch's end is not measured."""
         self.marked = 0
 
     def estimates(self):
-        """(glyph, rest, low, seeded): the predicted cost of one more glyph, of the rest of the
-        pass, the shortest recent rest (0: none), and whether a seed stood in for a measurement.
-        While fewer than SHORT rests are measured the rest counts at least SHORT_REST lines
-        (none measured: the seed)."""
-        glyph = max(self.glyph)
-        measured = [r for r in self.rest if r]
-        seeded = not glyph or not measured
-        rest = max(measured) if measured else REST_SEED
-        if measured and len(measured) < SHORT:
-            rest = max(rest, SHORT_REST)
-        return glyph or GLYPH_SEED, rest, min(measured) if measured else 0, seeded
+        """(glyph, rest, low, seeded): the predicted cost in ticks of one more glyph, of the rest
+        of the pass, the shortest recent rest (0: none), and whether a seed stood in for a
+        measurement. While fewer than SHORT rests are measured the rest counts at least
+        SHORT_REST lines."""
+        glyph, rest, low, samples = self.costs()
+        seed = (GLYPH_SEED * RHO) >> 8
+        seeded = sum(1 for g in self.glyph if g >= seed // 2) < SHORT or not samples
+        if low and samples < SHORT:
+            rest = max(rest, (SHORT_REST * RHO) >> 8)
+        return glyph, rest, low, seeded
 
-    def decide(self, now):
-        """The payload's room() at display line now: 'fit' (draw: the glyph and the rest end
-        before VBlank), 'lost' (draw: even the shortest recent rest ends after VBlank, so the
-        frame is dropped anyway) or 'stop'."""
-        left = lines_to_vblank(now)
-        glyph, rest, low, seeded = self.estimates()
-        if FIXED_MODEL:
-            kind = "fit" if left >= FIXED_MODEL[0] else "lost" if left < FIXED_MODEL[1] else "stop"
-        else:
-            need = (0 if IGNORE_GLYPH else glyph) + (0 if IGNORE_REST else rest) + MARGIN
-            kind = "fit" if left >= need else "lost" if left < low else "stop"
-        return {"kind": kind, "line": now, "left": left, "glyph": glyph, "rest": rest, "low": low,
-                "seeded": seeded}
+    def decide(self, line, tick):
+        """The payload's room() at a reading (VCOUNT line, tick): 'fit' (draw: the glyph and the
+        rest end before VBlank), 'lost' (draw: even the shortest recent rest ends after VBlank,
+        so the frame is dropped anyway) or 'stop'. The estimates are taken at a batch's first
+        decision and kept for the rest of it (D-2279; task_ran() starts a batch)."""
+        if self.batch is None:
+            self.batch = self.estimates()
+        glyph, rest, low, seeded = self.batch
+        left, known = self.left(line, tick)
+        need = (0 if IGNORE_GLYPH else glyph) + (0 if IGNORE_REST else rest) + MARGIN
+        if FIXED_NEED is not None:
+            need = FIXED_NEED
+        kind = "fit" if left >= need else "lost" if left < low else "stop"
+        return {"kind": kind, "line": line, "tick": tick, "left": left, "known": known,
+                "glyph": glyph, "rest": rest, "low": low, "need": need, "seeded": seeded}
 
 
 DRAWS = ("fit", "lost")
@@ -313,7 +389,7 @@ def task_errors(mode, tasks):
                     errors.append(f"{tag}: started another glyph without a frame decision")
                 elif decision.get("kind") not in DRAWS:
                     errors.append(f"{tag}: drew on after a frame stop at line {decision['line']} "
-                                  f"({decision['left']} lines left, needed {decision['glyph']}+{decision['rest']}"
+                                  f"({decision['left']} ticks left, needed {decision['glyph']}+{decision['rest']}"
                                   f"+{MARGIN})")
             decision = None
             if glyph is None:
@@ -368,11 +444,18 @@ def pass_info(task, warm_cost):
 
     task: 'start' (VBlank count, line) at task entry, 'pass_end' (VBlank count, line) at
     the end of its loop pass (None if not observed), 'b_lines' (the line readings after
-    each render that drew a glyph) and 'stop' (set by task_errors(), which must run first). The pass must end before the first VBlank after the task
-    started (deadline). overran: it did not (a dropped frame). unforced: it would have
-    made it without the task's extra glyphs (their lines removed). For a frame stop:
-    necessary when the pass, with one more glyph of warm_cost lines, would have ended at
-    most one line before the deadline (VCOUNT counts whole lines)."""
+    each render that drew a glyph) and 'stop' (set by task_errors(), which must run first).
+    The pass must end before the first VBlank after the task started (deadline).
+    overran: it did not (a dropped frame). unforced: it would have made it without the
+    task's extra glyphs (their lines removed).
+    In ticks of the tick timer (D-2269), observed by the gate itself: 'end_tick' (the pass
+    end), 'deadline_tick' (the VBlank interrupt that started the next frame), 'line_ticks'
+    (ticks per display line, from the gate's own VBlank-to-VBlank intervals), all as ticks
+    since 'start_tick'; warm_cost is the message's median extra glyph in ticks. tick_slack:
+    ticks from the pass end to the deadline. For a frame stop: necessary when the pass,
+    with one more glyph of warm_cost, would have ended less than one display line before
+    the deadline (the line rule 'two or more lines before VBlank' on VCOUNT readings means
+    more than one whole line), so the stop gave up no glyph that would have fitted."""
     if not task.get("pass_end") or task.get("start") is None:
         return None
     start = time_of(*task["start"])
@@ -382,20 +465,35 @@ def pass_info(task, warm_cost):
     extra = sum(lines_between(x, y) for x, y in zip(b, b[1:]))
     info = {"overran": end >= deadline, "unforced": end >= deadline and end - extra < deadline,
             "slack": deadline - end, "extra_lines": extra}
+    ticks = all(task.get(k) is not None for k in ("end_tick", "deadline_tick", "line_ticks"))
+    if ticks:
+        info["tick_slack"] = task["deadline_tick"] - task["end_tick"]
+        bt = task.get("b_ticks") or []
+        extra_ticks = sum((y - x) & 0xFFFF for x, y in zip(bt, bt[1:]))
+        info["extra_ticks"] = extra_ticks
+        # The gate's own frame timing decides (D-2269): a task that starts after the VBlank interrupt
+        # but before the game counts that VBlank (line 192) looks a frame late in VBlank-count terms.
+        info["overran"] = info["tick_slack"] <= 0
+        # in ticks (D-2271): without the extra glyphs' time the pass would have ended before VBlank
+        info["unforced"] = info["overran"] and info["tick_slack"] + extra_ticks > 0
     stop = task.get("stop") or {}
     if stop.get("reason") == "frame":
         info["frame_stop"] = True
         info["seeded"] = bool(stop["decision"].get("seeded"))
-        info["necessary"] = end + warm_cost >= deadline - 1
+        if ticks:
+            info["necessary"] = info["tick_slack"] - warm_cost <= FIT_ALLOWANCE
+        else:
+            info["necessary"] = False
+            info["untimed"] = True
     return info
 
 
 def warm_costs(tasks):
-    """Lines of every extra glyph observed (reading after a glyph to the reading after the next)."""
+    """Ticks of every extra glyph observed (reading after a glyph to the reading after the next)."""
     out = []
     for t in tasks:
-        b = t.get("b_lines") or []
-        out += [lines_between(x, y) for x, y in zip(b, b[1:])]
+        b = t.get("b_ticks") or []
+        out += [ticks_between(x, y) for x, y in zip(b, b[1:])]
     return out
 
 
@@ -417,6 +515,7 @@ def speed_record(tasks, pages, warm_cost):
     for t in tasks:
         by_frame[t["frame"]] = t
     infos = {id(t): pass_info(t, warm_cost) for t in tasks}
+    line_ticks = [t["line_ticks"] for t in tasks if t.get("line_ticks")]
     frames = drops = printing = unforced = 0
     glyph_tasks = sum(1 for t in tasks if any(e[0] == "glyph" for e in t.get("events", ()))
                       and any(a <= t["frame"] <= b for a, b in pages))
@@ -431,11 +530,16 @@ def speed_record(tasks, pages, warm_cost):
             info = infos.get(id(by_frame[before[-1]])) if before else None
             unforced += bool(info and info["unforced"])
     stops = [i for i in infos.values() if i and i.get("frame_stop")]
-    slacks = sorted(infos[id(t)]["slack"] for t in tasks
-                    if infos.get(id(t)) and any(e[0] == "glyph" for e in t.get("events", ()))
-                    and any(a <= t["frame"] <= b for a, b in pages))
+    glyph_infos = [infos[id(t)] for t in tasks
+                   if infos.get(id(t)) and any(e[0] == "glyph" for e in t.get("events", ()))
+                   and any(a <= t["frame"] <= b for a, b in pages)]
+    slacks = sorted(i["slack"] for i in glyph_infos)
+    tick_slacks = sorted(i["tick_slack"] for i in glyph_infos if "tick_slack" in i)
     return {"frames": frames, "drops": drops, "printing_tasks": printing, "glyph_tasks": glyph_tasks,
-            "slacks": slacks, "warm_cost": warm_cost,
+            "slacks": slacks, "tick_slacks": tick_slacks, "warm_cost": warm_cost,
+            "line_ticks": max(line_ticks) if line_ticks else None,
+            "untimed_stops": sum(1 for i in stops if i.get("untimed")),
+            "stop_wastes": sorted(round(i["tick_slack"] - warm_cost) for i in stops if "tick_slack" in i and not i["seeded"]),
             "pages": len(pages),
             "unforced_drops": unforced, "forced_drops": drops - unforced,
             "frame_stops": len(stops), "seeded_stops": sum(1 for i in stops if i["seeded"]),
@@ -453,8 +557,11 @@ def merge_records(records):
             if k == "warm_cost":
                 if v is not None:
                     out[k] = max(out.get(k, v), v)
-            elif k == "slacks":
+            elif k in ("slacks", "tick_slacks", "stop_wastes"):
                 out[k] = sorted(out.get(k, []) + list(v))
+            elif k == "line_ticks":
+                if v is not None:
+                    out[k] = max(out.get(k) or v, v)
             elif isinstance(v, (int, float)) and not isinstance(v, bool):
                 out[k] = out.get(k, 0) + v
     return out
@@ -465,10 +572,12 @@ IDENTICAL_KEYS = ("frames", "drops", "printing_tasks", "glyph_tasks", "pages", "
 
 def room_frames(normal, fast):
     """Glyph tasks of the NORMAL run whose pass had room for one more glyph: with one more
-    glyph of FAST's measured extra-glyph cost it would still have ended two or more lines
-    before VBlank (the same physical test as an unnecessary frame stop)."""
-    warm = fast.get("warm_cost") or GLYPH_SEED
-    return sum(1 for slack in normal.get("slacks", ()) if slack >= warm + 2)
+    glyph of FAST's measured extra-glyph cost (ticks) it would still have ended more than one
+    display line before VBlank (the same physical test as an unnecessary frame stop)."""
+    warm = fast.get("warm_cost")
+    if warm is None:
+        return 0
+    return sum(1 for slack in normal.get("tick_slacks", ()) if slack - warm > FIT_ALLOWANCE)
 
 
 def order_errors(records):
@@ -482,8 +591,8 @@ def order_errors(records):
     - FAST takes at most NORMAL's frames, and strictly fewer when any NORMAL frame had
       room for one more glyph (room_frames); a tie without such a frame is reported as a
       note (the physical cap);
-    - FAST drops no more frames than NORMAL, and none only because of its extra glyphs
-      (an unforced overrun).
+    - FAST drops no more frames than NORMAL, and at most OVERRUNS_PER_MESSAGE only because
+      of its extra glyphs (an unforced overrun; one is reported as a note, D-2276).
     Returns (errors, notes)."""
     if any(m not in records for m in MODES):
         return [f"speeds missing: {sorted(set(MODES) - set(records))} (vacuous order check)"], []
@@ -493,9 +602,11 @@ def order_errors(records):
         errors.append("the original printer took no frames (vacuous order check)")
     errors += [f"NORMAL: {k} {n.get(k)} != original {o.get(k)} (NORMAL must be the original printer)"
                for k in IDENTICAL_KEYS if n.get(k) != o.get(k)]
+    if f.get("untimed_stops"):
+        errors.append(f"FAST: {f['untimed_stops']} frame stops without the gate's own tick timing (vacuous stop check)")
     if f["unnecessary_stops"]:
         errors.append(f"FAST: {f['unnecessary_stops']} frame stops gave up a glyph that would have fitted "
-                      "(one more glyph would still have ended the pass two or more lines before VBlank)")
+                      f"(one more glyph would still have ended the pass more than {FIT_ALLOWANCE} ticks before VBlank)")
     room = room_frames(n, f)
     if f["frames"] > n["frames"]:
         errors.append(f"FAST ({f['frames']} frames) is slower than NORMAL ({n['frames']} frames)")
@@ -508,10 +619,34 @@ def order_errors(records):
                          "had room for one more glyph")
     if f["drops"] > n["drops"]:
         errors.append(f"FAST: {f['drops']} dropped frames while printing, NORMAL {n['drops']}")
-    if f["unforced_overruns"]:
+    if f["unforced_overruns"] > OVERRUNS_PER_MESSAGE:
         errors.append(f"FAST: {f['unforced_overruns']} frames dropped only because of the batch's extra glyphs "
-                      "(without them the pass would have ended before VBlank)")
+                      f"(without them the pass would have ended before VBlank; at most {OVERRUNS_PER_MESSAGE} "
+                      "per message, D-2276)")
+    elif f["unforced_overruns"]:
+        notes.append(f"FAST: {f['unforced_overruns']} frame dropped only because of the batch's extra glyphs "
+                     "(within the per-message budget, D-2276)")
     return errors, notes
+
+
+def tally_overruns(summary, records):
+    """Add one message's FAST printing frames and unforced overruns to the gate report's
+    'overrun_budget' (validate_release judges the run's total against OVERRUN_FRAMES, D-2276)."""
+    f = records.get(FAST)
+    if not f:
+        return
+    budget = summary.setdefault("overrun_budget", {"fast_frames": 0, "unforced_overruns": 0})
+    budget["fast_frames"] += f.get("frames", 0)
+    budget["unforced_overruns"] += f.get("unforced_overruns", 0)
+
+
+def overrun_budget_error(total):
+    """The run-wide budget (D-2276): total {'fast_frames', 'unforced_overruns'} over all gates."""
+    over, frames = total.get("unforced_overruns", 0), total.get("fast_frames", 0)
+    if over * OVERRUN_FRAMES > frames:
+        return (f"FAST: {over} frames dropped only because of the batch's extra glyphs in {frames} FAST "
+                f"printing frames (budget: at most 1 per {OVERRUN_FRAMES}, D-2276)")
+    return None
 
 
 def compare_messages(baseline, other, keys=("bank", "id", "glyphs", "layout", "pages")):

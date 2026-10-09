@@ -31,7 +31,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from gate_common import (CLOCK, ROOT, PRINTER_START, PrinterTrace, add_arguments, attach_probe,  # noqa: E402
-                         digest, heap_usage, identity, inputs_unchanged, itcm_errors, judge_message,
+                         digest, heap_usage, identity, input_delay, inputs_unchanged, itcm_errors, judge_message,
                          load_expected_payload, memory_errors, memory_summary, require, resolve)
 import text_speed_checks as checks  # noqa: E402
 
@@ -48,6 +48,7 @@ def child(args):
     try:
         with Harness(args.rom, args.save, out=args.out, verbose=False, rtc=CLOCK) as h:
             h.set_clock(datetime(2026, 10, 9, 12))
+            input_delay(h, args.phase)
             h.boot_to_menu()
             h.continue_game()
             start_itcm = itcm_errors(h, payload)
@@ -213,7 +214,9 @@ def compare(report):
         limited = {m: modes[m]['messages'][i]['stops'].get('frame', 0) for m in MODES}
         free = {m: modes[m]['messages'][i]['control_latency'] for m in MODES}
         name = f"{base['bank']}#{base['id']}"
-        order, notes = checks.order_errors({m: modes[m]['messages'][i]['record'] for m in MODES})
+        records = {m: modes[m]['messages'][i]['record'] for m in MODES}
+        order, notes = checks.order_errors(records)
+        checks.tally_overruns(report, records)
         order += checks.exact_errors('printer tasks from each page\'s last glyph to its control step',
                                      free[checks.ORIGINAL], {m: free[m] for m in speeds})
         if not free[checks.ORIGINAL]:
@@ -255,7 +258,7 @@ def main():
         for mode in MODES:
             out = args.out / str(mode)
             command = [sys.executable, '-I', __file__, '--rom', str(args.rom), '--save', str(args.save),
-                       '--out', str(out), '--mode', str(mode)]
+                       '--out', str(out), '--mode', str(mode), '--phase', str(args.phase)]
             command += ['--controls'] if args.controls else []
             command += ['--fault-payload', str(args.fault_payload)] if args.fault_payload else []
             with (args.out / f'{mode}.log').open('w') as log:

@@ -1,0 +1,12 @@
+---
+import { playerTutorAccess } from '../lib/reference-format.mjs';
+import { areaUrl, url, tutorCost, type Tutor } from '../lib/data';
+const { entries } = Astro.props as { entries: Tutor[] };
+---
+{entries.map(t => <div class="small tutor-details">
+<p>{t.places.map((p, i) => <>{i > 0 && ', '}{p.area ? <a href={areaUrl(p.area)}>{p.place}</a> : p.place}</>)} · Cost: {tutorCost(t.cost)}</p>
+{t.quests.length > 0 && <p>Requirements: {t.quests.map((q, i) => <>{i > 0 && '; '}<a href={url(q.href)}>{q.title}</a></>)}</p>}
+{t.species === 'restricted' && <p>Only some Pokémon can learn this move. Follow the quest or location for requirements; the full compatible list is not known.</p>}
+{playerTutorAccess(t).map(text => <p>{text}</p>)}
+{t.note && <p>{t.note.text} · <a href={url(t.note.href)}>Known issue</a></p>}
+</div>)}

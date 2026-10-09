@@ -1,0 +1,33 @@
+---
+import Evidence from './Evidence.astro';
+import { areaBySlug, areaUrl, moveById, moveUrl } from '../lib/data';
+import type { AuthorNote } from '../lib/data';
+const { notes } = Astro.props as { notes: AuthorNote[] };
+const sheetName = (name?: string) => name === '3.2道具' ? 'Items (3.2)' : name;
+const valueText = (value: unknown) => value == null ? 'Not supplied' : Array.isArray(value) ? value.join(' / ') : String(value);
+const label: Record<string, string> = { type: 'Type', category: 'Category', power: 'Power', accuracy: 'Accuracy', pp: 'PP', target: 'Target' };
+---
+{notes.map(n => <article class="reference-note">
+  {[n.effectNote, n.changeNote].filter(Boolean).map(text => <p>{text}</p>)}
+  {n.highlightedFields?.some(field => field !== 'Official No.') && <p class="small">Changes listed by the author: {n.highlightedFields.filter(field => field !== 'Official No.').join(', ')}.</p>}
+  {n.note?.startsWith('replaces ') && <p>{n.note}</p>}
+  {n.configuredFields && n.comparison && typeof n.comparison === 'object' && Object.entries(n.comparison).some(([k,v]) => k in n.configuredFields! && v === false) && <p class="small reference-conflict">The author's reference gives different {Object.entries(n.comparison).filter(([k,v]) => k in n.configuredFields! && v === false).map(([k]) => label[k]?.toLowerCase() ?? k).join(', ')}. Use the move stats above; the source comparison is kept below.</p>}
+  {n.sourceConflictNote && <p class="small reference-conflict">Older reference notes give a different payment. Use the cost listed for this tutor; the source comparison is kept below.</p>}
+  {n.locationNote && <p>Location listed by the author: {n.locationNote}</p>}
+  {n.costNote && <p>Cost listed by the author: {n.costNote}</p>}
+  {n.configuredMoveId && n.moveId !== n.configuredMoveId && <p><strong>The tutor teaches a different move:</strong> the reference names <a href={moveUrl(moveById.get(n.moveId ?? -1))}>{moveById.get(n.moveId ?? -1)?.name ?? n.sourceAlias}</a>, but the tutor teaches <a href={moveUrl(moveById.get(n.configuredMoveId))}>{moveById.get(n.configuredMoveId)?.name}</a>.</p>}
+  {n.acquisitionComparison?.status === 'unmatched' && <p><strong>The listed shop is not supported.</strong>{n.acquisitionComparison.configuredShops?.length ? <> Look in {n.acquisitionComparison.configuredShops.map((p,i) => <>{i>0 && ', '}{p.area ? <a href={areaUrl(p.area)}>{p.place}</a> : p.place}</>)}.</> : ' Use the acquisition routes on this page.'}</p>}
+  {n.locationLabelMatch === false && <p><strong>Location uncertain:</strong> the reference gives conflicting place names. See the source details before following it.</p>}
+  <details class="reference-provenance"><summary>Source details</summary>
+  <p><Evidence evidence={n.evidence} />{n.baseline && <> Comparison baseline: {n.baseline}.</>}</p>
+  {n.sourceAlias && <p>Source name: {n.sourceAlias}</p>}
+  {[n.note, n.sourceConflictNote].filter(Boolean).map(text => <p>{text}</p>)}
+  {n.fields && <dl class="facts">{Object.entries(n.fields).map(([key, value]) => <><dt>{label[key] ?? key}</dt><dd>{valueText(value)}</dd></>)}</dl>}
+  {n.configuredFields && n.comparison && typeof n.comparison === 'object' && <ul class="small">{Object.entries(n.comparison).filter(([k,v]) => k in n.configuredFields! && v !== true).map(([k,v]) => <li>{label[k] ?? k}: {v === false ? 'source differs from configured data' : 'source target wording cannot be fully compared'} · configured: {valueText(n.configuredFields![k])}.</li>)}</ul>}
+  {n.priorAuditNote && <p><strong>Prior script audit:</strong> {n.priorAuditNote}</p>}
+  {n.acquisitionComparison && <p>{n.acquisitionComparison.status === 'configured-shop-match' ? 'The configured shop list contains this TM in ' : 'The author-listed shop does not match the configured sources. '}{n.acquisitionComparison.areas.map((slug, i) => <>{i > 0 && ', '}<a href={areaUrl(slug)}>{areaBySlug.get(slug)?.name ?? slug}</a></>)}{n.acquisitionComparison.areas.length > 0 && '.'}</p>}
+  {n.areaSlugs && <p><strong>Configured numeric map locator:</strong> {n.areaSlugs.map((slug,i) => <>{i>0 && ', '}<a href={areaUrl(slug)}>{areaBySlug.get(slug)?.name ?? slug}</a></>)}{n.locationLabelMatch === false && ' · The source place label disagrees with the numeric locator.'}</p>}
+  <p class="small">{n.evidence.workbook && `${n.evidence.workbook} workbook · `}{sheetName(n.evidence.sheet)}{n.evidence.row && ` · row ${n.evidence.row}`}{n.evidence.columns && ` · columns ${n.evidence.columns}`}{n.evidence.source}</p>
+  <pre>{JSON.stringify(n, null, 2)}</pre>
+  </details>
+</article>)}

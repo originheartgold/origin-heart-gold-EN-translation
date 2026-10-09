@@ -87,11 +87,15 @@ class PayloadTests(unittest.TestCase):
                 +[p['symbols'][speed.STATE_SYMBOL]])
         ins=list(capstone.Cs(capstone.CS_ARCH_ARM,capstone.CS_MODE_THUMB).disasm(code[start-base:end-base],start))
         calls=[i for i in ins if i.mnemonic=='bl']
-        self.assertEqual([int(i.op_str.lstrip('#'),16) for i in calls],[p['symbols']['frame_end']&~1])
+        targets=[int(i.op_str.lstrip('#'),16) for i in calls]
+        self.assertEqual(targets[0],p['symbols']['frame_end']&~1)
         self.assertEqual(calls[0].address,ins[2].address)    # push, sub sp, then frame_end first
-        self.assertEqual(sum(1 for i in ins if i.mnemonic=='blx'),1)
+        # the other bl calls are the payload's own helpers (costs, time left), placed after pass_end
+        self.assertTrue(all(start<t<end for t in targets[1:]),[hex(t) for t in targets])
+        # by register: the two save accessors of fast() (the anchor wait) and each printer task
+        self.assertEqual(sum(1 for i in ins if i.mnemonic=='blx'),3)
         words={struct.unpack_from('<I',code,off)[0] for off in range((start-base+3)&~3,end-base-3,4)}
-        for value in (0x021d0efc,0x027ffc3c,0x04000006,p['symbols'][speed.STATE_SYMBOL]):
+        for value in (0x021d0efc,0x027ffc3c,0x04000006,0x04000100,0x021e0a5c,p['symbols'][speed.STATE_SYMBOL]):
             self.assertIn(value,words,hex(value))
 
     def test_thumb_call_relocation_is_the_only_new_kind(self):

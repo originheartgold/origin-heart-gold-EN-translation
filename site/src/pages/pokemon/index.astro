@@ -1,36 +1,45 @@
 ---
+import Availability from '../../components/Availability.astro';
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import Type from '../../components/Type.astro';
-import { species, url, hasDocumentedSource } from '../../lib/data';
+import PokemonImage from '../../components/PokemonImage.astro';
+import AbilityLink from '../../components/AbilityLink.astro';
+import { species, abilities, abilityAlias, url, hasDocumentedSource, availabilityToken } from '../../lib/data';
+const types = [...new Set(species.flatMap(s => s.types))].sort();
 const regions = [...new Set(species.map((s) => s.region))];
 ---
 <StarlightPage frontmatter={{ title: 'Pokémon', description: 'Every Pokémon in Origin HeartGold: types, abilities, base stats and how to get it.', tableOfContents: false }}>
-	<p>The {species.length} species and forms in the game, with the hack's own types, abilities and base stats.
-	Pokémon that are only in the game's data files and never appear in normal play (about half of those from Unova onward, Mega forms other than Charizard's, Gigantamax forms) are left out.{' '}
-	{species.filter(hasDocumentedSource).length} have a documented source, including verified held-item forms and calendar encounters,
-	and {species.filter((s) => s.battleOnly && !hasDocumentedSource(s)).length} more are forms that only appear in battle.
-	Calendar entries are marked separately and captures have not all been tested. Entries with no confirmed way to get them (the Unown letters) are hidden by default.</p>
+	<p>Find Pokémon by type, ability or availability, then open a page for stats, evolution, moves and locations. All {species.length} Pokémon and forms are listed, including battle-only forms and those unavailable through normal play. “No known way to get it” means a way to obtain that Pokémon is not known.</p>
 	<p><a href={url('/calendar/')}>Browse calendar encounters</a> · <a href={url('/mechanics/#held-item-forms')}>Held-item transformations</a></p>
 	<div class="table-filter" data-table="mon-table">
 		<input type="search" placeholder="Search by name, type or ability…" aria-label="Search Pokémon" />
+    <select data-key="type" aria-label="Pokémon type"><option value="">All types</option>{types.map(t => <option>{t}</option>)}</select>
+    <select data-key="ability" aria-label="Pokémon ability"><option value="">All abilities (regular or hidden)</option>{abilities.map(a => <option value={a.id}>{a.name}{abilityAlias(a) ? ` (${abilityAlias(a)} — author alias)` : ''}</option>)}</select>
 		<select data-key="region" aria-label="Region">
 			<option value="">All Pokédex ranges</option>
 			{regions.map((r) => <option value={r}>{r}</option>)}
 		</select>
-		<label><input type="checkbox" data-key="obtainable" data-show-value="no" /> Show Pokémon with no confirmed source</label>
+		<select data-key="availability" aria-label="Availability">
+			<option value="">All availability</option>
+			<option value="documented">Where to get it</option>
+			<option value="battle">Battle only</option>
+			<option value="unavailable">NOT AVAILABLE IN GAME</option>
+			<option value="unknown">No known way to get it</option>
+		</select>
 		<span class="filter-count" aria-live="polite"></span>
 	</div>
 	<table id="mon-table" class="sortable compact">
-		<thead><tr><th>#</th><th>Pokémon</th><th>Type</th><th>Abilities</th><th>Hidden</th><th>BST</th></tr></thead>
+		<thead><tr><th data-sort-type="number">Species / form</th><th>Pokémon</th><th>Type</th><th>Abilities</th><th>Hidden</th><th>BST</th><th>Availability</th></tr></thead>
 		<tbody>
 			{species.map((s) => (
-				<tr data-region={s.region} data-obtainable={hasDocumentedSource(s) || s.battleOnly ? 'yes' : 'no'} hidden={!(hasDocumentedSource(s) || s.battleOnly)}>
-					<td>{s.id}</td>
-					<td><a href={url(`/pokemon/${s.slug}/`)}>{s.name}</a>{s.game && <span class="sr-only"> {s.game}</span>}</td>
+				<tr data-region={s.region} data-type={s.types.join('|')} data-ability={[...s.abilityIds, s.hiddenAbilityId].filter(Boolean).join('|')} data-availability={availabilityToken(s)}>
+					<td data-sort-value={s.baseSpeciesId}>{s.baseSpeciesId}{s.formId !== 0 && <span class="ability-summary small">Form {s.formId}</span>}</td>
+					<td><div class="pokemon-cell"><PokemonImage s={s} /><a href={url(`/pokemon/${s.slug}/`)}>{s.name}</a>{s.game && <span class="sr-only"> {s.game}</span>}</div></td>
 					<td>{s.types.map((t) => <Type type={t} />)}</td>
-					<td>{s.abilities.join(' / ')}</td>
-					<td>{s.hidden ?? '—'}</td>
+					<td>{s.abilityIds.map(id => <AbilityLink id={id} />)}</td>
+					<td><AbilityLink id={s.hiddenAbilityId} /></td>
 					<td>{s.stats.reduce((a, b) => a + b, 0)}</td>
+					<td>{s.unavailableReason ? <Availability reason={s.unavailableReason} /> : hasDocumentedSource(s) ? 'Where to get it' : s.battleOnly ? 'Battle only' : 'No known way to get it'}</td>
 				</tr>
 			))}
 		</tbody>

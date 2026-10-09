@@ -130,58 +130,95 @@
 	}
 
 	// ---------------------------------------------------------------- tables and lists
+	// Accept ordinary keyboard spellings such as "poke ball" and "kings rock".
+	const searchText = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+		.replace(/['’]/g, '').toLowerCase();
 	function setupFilters() {
-		for (const f of document.querySelectorAll('.table-filter')) {
-			const target = document.getElementById(f.dataset.table);
-			if (!target) continue;
-			const rows = [...target.querySelectorAll('tbody tr, [data-row]')];
-			const text = rows.map((r) => r.textContent.toLowerCase());
-			const input = f.querySelector('input[type="search"]');
-			const selects = [...f.querySelectorAll('select[data-key]')];
-			const checks = [...f.querySelectorAll('input[type="checkbox"][data-key]')];
-			const count = f.querySelector('.filter-count');
-			const run = () => {
-				const q = (input?.value || '').trim().toLowerCase().split(/\s+/).filter(Boolean);
+		const filters = [...document.querySelectorAll('.table-filter')];
+		const tables = [...document.querySelectorAll('table.sortable')];
+		const targets = [...new Set([...filters.map(f => document.getElementById(f.dataset.table)), ...tables])].filter(Boolean);
+		const states = targets.map((target, index) => {
+			const f = filters.find(f => f.dataset.table === target.id), body = target.tBodies?.[0];
+			const rows = body ? [...body.rows] : [...target.querySelectorAll('[data-row]')].filter(r => !r.parentElement?.closest('[data-row]'));
+			const text = new Map(rows.map(r => [r, searchText(r.textContent)]));
+			const input = f?.querySelector('input[type="search"]');
+			const selects = [...(f?.querySelectorAll('select[data-key]') || [])];
+			const checks = [...(f?.querySelectorAll('input[type="checkbox"][data-key]') || [])];
+			const defaults = new Map(checks.map(c => [c, c.checked]));
+			const ths = tables.includes(target) ? [...target.querySelectorAll('thead th')] : [];
+			const labels = ths.map(th => th.textContent.trim());
+			// Single indexes have short keys; each table on multi-table pages has its own namespace.
+			const prefix = targets.length === 1 ? '' : (target.id || `table-${index + 1}`) + '.';
+			const param = key => prefix + key, count = f?.querySelector('.filter-count');
+			if (count) { count.setAttribute('role', 'status'); count.setAttribute('aria-atomic', 'true'); }
+			const empty = document.createElement('p');
+			empty.className = 'filter-empty'; empty.hidden = true;
+			empty.textContent = 'No matching results. Change your search or filters, or reset to show everything.';
+			if (f) target.after(empty);
+			const reset = document.createElement('button');
+			reset.type = 'button'; reset.className = 'filter-reset'; reset.textContent = 'Reset';
+			reset.setAttribute('aria-label', `Reset ${target.id || 'table'} search, filters and sorting`);
+			if (f) f.append(reset);
+			let sort = null, searchEditing = false;
+			function apply() {
+				const words = searchText(input?.value || '').trim().split(/\s+/).filter(Boolean);
 				let n = 0;
-				rows.forEach((r, i) => {
-					let ok = q.every((w) => text[i].includes(w));
-					for (const s of selects) if (ok && s.value && r.dataset[s.dataset.key] !== s.value) ok = false;
-					for (const c of checks) if (ok && !c.checked && r.dataset[c.dataset.key] === c.dataset.showValue) ok = false;
-					r.hidden = !ok;
-					if (ok) n++;
-				});
-				if (count) count.textContent = `${n} shown`;
-			};
-			f.addEventListener('input', run);
-			f.addEventListener('change', run);
-			run();
-		}
-		for (const t of document.querySelectorAll('table.sortable')) {
-			const ths = [...t.querySelectorAll('thead th')];
-			const sortBy = (th, col) => {
-				const dir = th.getAttribute('aria-sort') === 'ascending' ? 'descending' : 'ascending';
-				ths.forEach((x) => x.removeAttribute('aria-sort'));
-				th.setAttribute('aria-sort', dir);
-				const body = t.tBodies[0];
-				const key = (r) => r.cells[col]?.textContent.trim() ?? '';
-				const rows = [...body.rows].sort((a, b) => {
-					const x = key(a), y = key(b);
-					const nx = parseFloat(x.replace(/[$,]/g, '')), ny = parseFloat(y.replace(/[$,]/g, ''));
-					const c = !isNaN(nx) && !isNaN(ny) ? nx - ny : x.localeCompare(y);
-					return dir === 'ascending' ? c : -c;
-				});
-				body.append(...rows);
-			};
+				for (const r of rows) {
+					const tokens = key => (r.dataset[key] || '').split('|');
+					const ok = words.every(w => text.get(r).includes(w)) && selects.every(s => !s.value || tokens(s.dataset.key).includes(s.value)) && checks.every(c => c.checked || !tokens(c.dataset.key).includes(c.dataset.showValue));
+					r.hidden = !ok; if (ok) n++;
+				}
+				ths.forEach((th, col) => th.setAttribute('aria-sort', sort?.col === col ? sort.dir : 'none'));
+				if (body) {
+					const ordered = [...rows];
+					if (sort) {
+						const key = r => r.cells[sort.col]?.dataset.sortValue ?? r.cells[sort.col]?.textContent.trim() ?? '';
+						const number = value => /^[-+]?[$]?\d[\d,]*(?:\.\d+)?%?$/.test(value) ? Number(value.replace(/[$,%]/g, '')) : NaN;
+						const numeric = ths[sort.col].dataset.sortType === 'number' || ordered.every(r => !key(r) || ['—', 'var.'].includes(key(r)) || !Number.isNaN(number(key(r))));
+						const order = new Map(rows.map((r, i) => [r, i]));
+						ordered.sort((a, b) => {
+							const x = key(a), y = key(b), nx = number(x), ny = number(y);
+							if (numeric && (Number.isNaN(nx) || Number.isNaN(ny))) return Number.isNaN(nx) && Number.isNaN(ny) ? order.get(a) - order.get(b) : Number.isNaN(nx) ? 1 : -1;
+							const c = numeric ? nx - ny : x.localeCompare(y, undefined, {numeric: true});
+							return (sort.dir === 'ascending' ? c : -c) || order.get(a) - order.get(b);
+						});
+					}
+					body.append(...ordered);
+				}
+				if (count) count.textContent = `${n} of ${rows.length} shown${sort ? `; sorted by ${labels[sort.col]}, ${sort.dir}` : ''}`;
+				empty.hidden = n !== 0;
+			}
+			function restore() {
+				const params = new URLSearchParams(location.search);
+				if (input) input.value = params.get(param('q')) || '';
+				for (const s of selects) { const value = params.get(param(s.dataset.key)); s.value = [...s.options].some(o => o.value === value) ? value : ''; }
+				for (const c of checks) { const value = params.get(param(c.dataset.key)); c.checked = value === '1' ? true : value === '0' ? false : defaults.get(c); }
+				const match = params.get(param('sort'))?.match(/^(\d+)-(asc|desc)$/);
+				sort = match && Number(match[1]) < ths.length ? {col: Number(match[1]), dir: match[2] === 'asc' ? 'ascending' : 'descending'} : null;
+				searchEditing = false; apply();
+			}
+			function save(replace = false) {
+				const url = new URL(location.href);
+				const set = (key, value) => value ? url.searchParams.set(param(key), value) : url.searchParams.delete(param(key));
+				set('q', input?.value.trim());
+				for (const s of selects) set(s.dataset.key, s.value);
+				for (const c of checks) set(c.dataset.key, c.checked === defaults.get(c) ? '' : c.checked ? '1' : '0');
+				set('sort', sort ? `${sort.col}-${sort.dir === 'ascending' ? 'asc' : 'desc'}` : '');
+				if (url.href === location.href) return false;
+				history[replace ? 'replaceState' : 'pushState'](null, '', url);
+				return true;
+			}
+			input?.addEventListener('input', () => { apply(); if (save(searchEditing)) searchEditing = true; });
+			input?.addEventListener('blur', () => { searchEditing = false; });
+			f?.addEventListener('change', e => { if (e.target !== input) { apply(); save(); } searchEditing = false; });
+			reset.addEventListener('click', () => { if (input) input.value = ''; selects.forEach(s => { s.value = ''; }); checks.forEach(c => { c.checked = defaults.get(c); }); sort = null; searchEditing = false; apply(); save(); });
 			ths.forEach((th, col) => {
-				// a real button inside each header, so the sort works from the keyboard too
-				const btn = document.createElement('button');
-				btn.type = 'button';
-				btn.className = 'sort-button';
-				btn.append(...th.childNodes);
-				th.append(btn);
-				btn.addEventListener('click', () => sortBy(th, col));
+				const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'sort-button'; btn.append(...th.childNodes); th.append(btn);
+				btn.addEventListener('click', () => { sort = {col, dir: sort?.col === col && sort.dir === 'ascending' ? 'descending' : 'ascending'}; searchEditing = false; apply(); save(); });
 			});
-		}
+			restore(); return {restore};
+		});
+		window.addEventListener('popstate', () => states.forEach(s => s.restore()));
 	}
 
 	const init = () => { setupQuests(); setupFilters(); };

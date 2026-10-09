@@ -92,37 +92,48 @@ class Pinned(unittest.TestCase):
         from pathlib import Path
         import re
         src = (Path(__file__).resolve().parents[1] / "patches/text-speed/native.c").read_text()
-        for name in ("SLOTS", "GLYPH_SEED", "REST_SEED", "STALE", "MARGIN", "SHORT", "SHORT_REST", "FAST_BUDGET"):
+        for name in ("SLOTS", "GLYPH_SEED", "REST_SEED", "STALE", "MARGIN", "SHORT", "SHORT_REST", "FAST_BUDGET",
+                     "RHO", "MAX_AGE"):
             self.assertEqual(int(re.search(rf"#define {name} (\d+)", src).group(1)), getattr(C, name), name)
         self.assertEqual(int(re.search(r"#define VBLANK_LINE (\d+)", src).group(1)), C.VISIBLE_LINES)
         self.assertEqual(int(re.search(r"#define LINES (\d+)", src).group(1)), C.TOTAL_LINES)
-        # struct frame_state: glyph[8], rest[8], four u8, u16 mark_line, four u8 = 26 bytes
+        self.assertEqual(C.RHO, 2130 * 256 // 64)                      # a display line is 2130 bus cycles
         body = re.search(r"struct frame_state \{(.*?)\};", src, re.S).group(1)
         fields = []
         for decl in re.sub(r"/\*.*?\*/", "", body, flags=re.S).split(";"):
             decl = decl.strip()
             if decl:
                 kind, names = decl.split(None, 1)
-                fields += [(kind, *re.fullmatch(r"(\w+)(?:\[(\w+)\])?", n.strip()).groups())
-                           for n in names.split(",")]
-        size = sum((2 if t == "u16" else 1) * (C.SLOTS if n else 1) for t, _, n in fields)
-        self.assertEqual(size, C.STATE_SIZE)
-        self.assertEqual([f[1] for f in fields], ["glyph", "rest", "next_glyph", "next_rest", "marked", "idle",
-                                                  "mark_line", "mark_vblanks", "ran", "end_vblanks", "ended"])
+                for n in names.split(","):
+                    name, count = re.fullmatch(r"(\w+)(?:\[(\w+)\])?", n.strip()).groups()
+                    size = {"u8": 1, "u16": 2, "u32": 4}[kind]
+                    fields.append((name, size * (C.SLOTS if count == "SLOTS" else int(count or 1))))
+        self.assertEqual(sum(n for _, n in fields), C.STATE_SIZE)
+        self.assertEqual([f[0] for f in fields], ["glyph", "rest", "mark_tick", "anchor", "mark_line", "next_glyph",
+                                                  "next_rest", "marked", "idle", "mark_vblanks", "ran", "end_vblanks",
+                                                  "ended", "anchored", "pad"])
 
     def test_fault_knobs_are_off(self):
-        self.assertIsNone(C.FIXED_MODEL)
-        self.assertFalse(C.IGNORE_REST or C.IGNORE_GLYPH or C.GLYPH_COST_BIAS or C.NO_CATCH_UP)
+        self.assertFalse(C.IGNORE_REST or C.IGNORE_GLYPH or C.GLYPH_COST_BIAS or C.NO_CATCH_UP or C.NO_ANCHOR)
         self.assertEqual((C.SHORT, C.SHORT_REST), (3, 7))
-        self.assertEqual(C.PASS_END_SEEDS, (C.GLYPH_SEED, C.REST_SEED, C.MARGIN))
+        self.assertEqual(C.PASS_END_MARGIN, C.MARGIN)
+        self.assertEqual((C.MARGIN, C.FIT_ALLOWANCE), (64, 79))          # D-2271, derived in text_speed_vcount.md
+
+
+LINE = C.RHO / 256      # ticks per display line
 
 
 class FrameModelTests(unittest.TestCase):
+    def test_ended_offset(self):
+        data = bytearray(C.STATE_SIZE)
+        data[C.ENDED_OFFSET] = 1
+        self.assertEqual(C.FrameModel(bytes(data)).ended, 1)
+
     def test_bytes_round_trip(self):
-        data = bytes(range(1, 27))
+        data = bytes(range(1, C.STATE_SIZE + 1))
         self.assertEqual(C.FrameModel(data).to_bytes(), data)
         with self.assertRaises(ValueError):
-            C.FrameModel(bytes(25))
+            C.FrameModel(bytes(C.STATE_SIZE - 1))
 
     def test_lines(self):
         self.assertEqual([C.lines_to_vblank(x) for x in (0, 170, 191, 192, 262)], [192, 22, 1, 263, 193])
@@ -131,122 +142,121 @@ class FrameModelTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             C.lines_to_vblank(263)
 
-    def test_glyph_ring(self):
+    def test_agree(self):
+        self.assertTrue(C.agree(333, 10))
+        self.assertTrue(C.agree(300, 10))          # 9.0 lines: within (9, 11)
+        self.assertFalse(C.agree(290, 10))
+        self.assertFalse(C.agree(400, 10))
+        self.assertFalse(C.agree(0x10000, 10))     # a reset of the tick timer in between
+
+    def test_glyph_ring_and_bad_samples(self):
         m = C.FrameModel()
         for i in range(9):
-            m.glyph_cost(100, 110 + i)
-        self.assertEqual(m.glyph, [18, 11, 12, 13, 14, 15, 16, 17])
+            self.assertEqual(m.glyph_cost(100, 1000, 110, 1000 + 330 + i), 330 + i)
+        self.assertEqual(m.glyph, [338, 331, 332, 333, 334, 335, 336, 337])
         self.assertEqual(m.next_glyph, 1)
-        m.glyph_cost(250, 249)                         # 262 lines: saturates at 255
-        self.assertEqual(m.glyph[1], 255)
+        self.assertIsNone(m.glyph_cost(100, 1000, 110, 900))         # timer reset: no sample
+        self.assertEqual(m.next_glyph, 1)
 
-    def test_rest_measured_only_when_the_counter_agrees(self):
+    def test_rest_measured_only_when_the_counter_and_ticks_agree(self):
         m = C.FrameModel()
-        m.mark(7, 180)
-        self.assertEqual(m.frame_end(7, 188), 8)       # no VBlank in between
-        m.mark(7, 185)
-        self.assertEqual(m.frame_end(8, 195), 10)      # crossed line 192: one VBlank
-        m.mark(8, 185)
-        self.assertIsNone(m.frame_end(8, 195))         # crossed, but the counter did not step
-        m.mark(9, 100)
-        self.assertIsNone(m.frame_end(11, 120))        # waited for VBlank elsewhere
-        m.mark(9, 230)
-        self.assertEqual(m.frame_end(9, 20), 53)       # battle: VBlank-time task, no crossing
-        m.mark(255, 185)
-        self.assertEqual(m.frame_end(0, 195), 10)      # the counter's low byte wraps
-        self.assertEqual(m.rest[:4], [8, 10, 53, 10])
-        m.mark(1, 100)
-        self.assertEqual(m.frame_end(1, 100), 1)       # never 0 (0 marks an empty slot)
+        m.mark(7, 180, 5000)
+        self.assertEqual(m.frame_end(7, 187, 5000 + 230), 230)      # no VBlank in between
+        m.mark(7, 185, 6000)
+        self.assertEqual(m.frame_end(8, 195, 6000 + 333), 333)      # crossed line 192: one VBlank
+        m.mark(8, 185, 7000)
+        self.assertIsNone(m.frame_end(8, 195, 7000 + 333))          # crossed, but the counter did not step
+        m.mark(9, 100, 8000)
+        self.assertIsNone(m.frame_end(9, 107, 8000 + 600))          # ticks disagree with the lines
+        m.mark(9, 100, 8000)
+        self.assertEqual(m.frame_end(9, 100, 8000), 1)               # never 0 (0 marks an empty slot)
+        self.assertEqual(m.rest[:3], [230, 333, 1])
         self.assertEqual(m.marked, 0)
+
+    def test_position_from_the_anchor(self):
+        m = C.FrameModel()
+        self.assertEqual(m.left(170, 10000), ((21 * C.RHO) >> 8, False))      # no anchor: the line may end now
+        m.set_anchor(10000)                                                     # a line starts at tick 10000
+        left, known = m.left(170, 10000 + 3 * 33 + 10)                          # 10 ticks into some line
+        self.assertTrue(known)
+        self.assertEqual(left, (22 * C.RHO - ((109 << 8) % C.RHO)) >> 8)
+        # frames of 263 or 265 lines keep the phase: a whole frame later the same part of the line
+        later = 10000 + 109 + (265 * C.RHO >> 8)
+        self.assertLessEqual(abs(m.left(170, later)[0] - left), 1)
+        self.assertFalse(m.left(170, 10000 + C.MAX_AGE)[1])                     # too old
+        self.assertFalse(m.left(170, 9000)[1])                                  # timer reset: tick before the anchor
+
+    def test_costs_are_typical_and_spike_robust(self):
+        m = state(glyph=(330, 331, 160, 329, 362, 332, 161, 333), rest=(229, 230, 255, 228))
+        glyph, rest, low, samples = m.costs()
+        self.assertEqual((glyph, rest, low, samples), (331, 229, 228, 4))   # cheap glyphs and the spike left out
+        few = state(glyph=(160, 330), rest=(229,))
+        self.assertEqual(few.costs()[0], (C.GLYPH_SEED * C.RHO) >> 8)       # fewer than 3: the largest, at least the seed
+        self.assertTrue(few.estimates()[3])                                 # seeded
+        self.assertEqual(few.estimates()[1], (C.SHORT_REST * C.RHO) >> 8)   # short history: at least 7 lines
+        self.assertEqual(state().costs()[1:3], ((C.REST_SEED * C.RHO) >> 8, 0))
+
+    def test_estimates_are_taken_once_per_batch(self):
+        m = state(glyph=(330, 331, 332), rest=(229, 230, 231))
+        m.set_anchor(0)
+        m.task_ran()
+        first = m.decide(100, 0)
+        m.glyph = [500] * C.SLOTS                    # a glyph cost measured during the batch ...
+        self.assertEqual(m.decide(101, 0)["glyph"], first["glyph"])    # ... counts from the next batch (D-2279)
+        m.task_ran()
+        self.assertEqual(m.decide(100, 0)["glyph"], 500)
+
+    def test_decisions(self):
+        m = state(glyph=(330, 331, 332), rest=(229, 230, 231))
+        m.set_anchor(0)
+        need = 331 + 230 + C.MARGIN
+        lines = need // LINE + 1                     # a line start exactly that many lines before VBlank fits
+        tick = lambda line: int(line * LINE + 0.5)
+        line = int(192 - lines)
+        d = m.decide(line, tick(line))
+        self.assertEqual(d["kind"], "fit", d)
+        self.assertEqual(d["need"], need)
+        d = m.decide(line + 1, tick(line + 1))
+        self.assertEqual(d["kind"], "stop", d)
+        self.assertEqual(m.decide(186, tick(186))["kind"], "lost")    # 6 lines < the shortest rest (229)
+        self.assertEqual(m.decide(230, tick(230))["kind"], "fit")     # VBlank: a whole frame to the next one
+        self.assertTrue(state().decide(150, 0)["seeded"])
+        self.assertEqual(state().decide(191, 0)["kind"], "stop")      # no rest measured: never lost
 
     def test_pass_end_catch_up(self):
         m = C.FrameModel()
-        self.assertEqual(m.pass_end(10, 100), (False, False))     # first pass end since power-on
-        self.assertEqual((m.end_vblanks, m.ended), (10, 1))
-        self.assertEqual(m.pass_end(11, 100), (False, False))     # one VBlank: the wait only (60 fps)
-        self.assertEqual(m.pass_end(13, 250), (True, True))       # missed one: 205 lines left >= 13 + 20 + 1
-        self.assertEqual(m.pass_end(16, 250), (True, True))       # missed two: still one catch-up
-        self.assertEqual(m.pass_end(18, 160), (True, False))      # 32 lines left < 34 (seeds)
-        m.glyph[0], m.rest[0] = 9, 8
-        self.assertEqual(m.pass_end(20, 174), (True, True))       # 18 left >= 9 + 8 + 1 (measured)
-        self.assertEqual(m.pass_end(22, 175), (True, False))      # 17 left
-        self.assertEqual(m.pass_end(23, 175), (False, False))
-        self.assertEqual(m.pass_end(1, 250), (True, True))        # the counter's low byte wraps (23 -> 257)
+        self.assertEqual(m.pass_end(10, 100, 0), (False, False))     # first pass end since power-on
+        self.assertEqual(m.pass_end(11, 100, 0), (False, False))     # one VBlank: the wait only (60 fps)
+        self.assertEqual(m.pass_end(13, 250, 0), (True, True))       # missed one: a frame left
+        self.assertEqual(m.pass_end(15, 160, 0), (True, False))      # 31 lines < seeds
         m.marked = 1
         m.catch_up_done()
-        self.assertEqual(m.marked, 0)                             # a catch-up batch end is no rest sample
-
-    def test_pass_end_ignores_print_task_fault_knobs(self):
-        old = (C.MARGIN, C.REST_SEED, C.IGNORE_REST)
-        try:
-            C.MARGIN, C.REST_SEED, C.IGNORE_REST = 40, 1, True
-            m = C.FrameModel()
-            m.pass_end(0, 0)
-            self.assertEqual(m.pass_end(2, 158), (True, True))    # 34 left >= 13 + 20 + 1: native constants
-        finally:
-            C.MARGIN, C.REST_SEED, C.IGNORE_REST = old
-        try:
-            C.NO_CATCH_UP = True
-            m = C.FrameModel()
-            m.pass_end(0, 0)
-            self.assertEqual(m.pass_end(2, 250), (True, False))
-        finally:
-            C.NO_CATCH_UP = False
+        self.assertEqual(m.marked, 0)
 
     def test_stale_history_is_cleared_but_waiting_keeps_it(self):
-        m = state(rest=(8, 9))
+        m = state(rest=(229, 230))
         for _ in range(C.STALE - 1):
-            m.frame_end(0, 180)
-        self.assertEqual(m.rest[:2], [8, 9])
+            m.frame_end(0, 180, 0)
+        self.assertEqual(m.rest[:2], [229, 230])
         m.task_ran()
-        m.frame_end(0, 180)                            # a task ran (e.g. waiting for A): fresh
+        m.frame_end(0, 180, 0)
         self.assertEqual((m.idle, m.ran), (0, 0))
         for _ in range(C.STALE):
-            m.frame_end(0, 180)
+            m.frame_end(0, 180, 0)
         self.assertEqual(m.rest, [0] * 8)
-        self.assertEqual(m.idle, C.STALE)
-        m.frame_end(0, 180)
-        self.assertEqual(m.idle, C.STALE)              # stops at STALE
-
-    def test_decisions(self):
-        m = state(glyph=(9, 10), rest=(7, 8, 8))
-        self.assertEqual(m.decide(173)["kind"], "fit")    # 19 left >= 10 + 8 + 1
-        self.assertEqual(m.decide(174)["kind"], "stop")   # 18 left
-        self.assertEqual(m.decide(184)["kind"], "stop")   # 8 left: the shortest rest (7) still fits
-        self.assertEqual(m.decide(186)["kind"], "lost")   # 6 left < 7: the frame is lost anyway
-        self.assertEqual(m.decide(230)["kind"], "fit")    # VBlank: a whole frame to the next one
-        seeded = state().decide(150)
-        self.assertEqual((seeded["glyph"], seeded["rest"], seeded["low"], seeded["seeded"]),
-                         (C.GLYPH_SEED, C.REST_SEED, 0, True))
-        self.assertEqual(state().decide(191)["kind"], "stop")   # no rest measured: never lost
-
-    def test_short_history_rest_floor(self):
-        # fewer than SHORT rests: the rest counts at least SHORT_REST (7) lines
-        for rests, rest in (((6,), 7), ((6, 6), 7), ((8,), 8), ((6, 8), 8), ((6, 6, 6), 6), ((6,) * 8, 6)):
-            m = state(glyph=(10,), rest=rests)
-            d = m.decide(150)
-            self.assertEqual((d["rest"], d["low"]), (rest, 6 if 6 in rests else min(rests)), rests)
-            self.assertEqual(m.decide(192 - 10 - rest - 1)["kind"], "fit", rests)
-            self.assertEqual(m.decide(192 - 10 - rest)["kind"], "stop", rests)
-        # Route 1 promoter (2026-10-07): one rest of 6, 17 lines left: no longer draws
-        self.assertEqual(state(glyph=(10,), rest=(6,)).decide(175)["kind"], "stop")
-        self.assertEqual(state(glyph=(10,), rest=(7,)).decide(174)["kind"], "fit")   # Route 1: 18 left
-        from unittest.mock import patch
-        with patch.object(C, "SHORT_REST", 0):
-            self.assertEqual(state(glyph=(10,), rest=(6,)).decide(175)["kind"], "fit")   # 17 >= 10 + 6 + 1
 
     def test_fault_knobs(self):
         from unittest.mock import patch
-        m = state(glyph=(10,), rest=(8, 8, 8))
-        with patch.object(C, "FIXED_MODEL", (20, 7)):
-            self.assertEqual([m.decide(x)["kind"] for x in (172, 173, 185, 186)], ["fit", "stop", "stop", "lost"])
+        m = state(glyph=(330, 331, 332), rest=(229, 230, 231))
         with patch.object(C, "IGNORE_REST", True):
-            self.assertEqual(m.decide(181)["kind"], "fit")
+            self.assertEqual(m.decide(150, 0)["need"], 331 + C.MARGIN)
         with patch.object(C, "IGNORE_GLYPH", True):
-            self.assertEqual(m.decide(183)["kind"], "fit")
-        with patch.object(C, "GLYPH_COST_BIAS", 3):
-            m.glyph_cost(100, 110)
-            self.assertEqual(m.glyph[0], 13)
+            self.assertEqual(m.decide(150, 0)["need"], 230 + C.MARGIN)
+        with patch.object(C, "GLYPH_COST_BIAS", 30):
+            self.assertEqual(m.glyph_cost(100, 0, 110, 333), 363)
+        m.set_anchor(0)
+        with patch.object(C, "NO_ANCHOR", True):
+            self.assertFalse(m.decide(150, 100)["known"])
 
 
 def task(events, **kw):
@@ -319,10 +329,13 @@ class StopReasons(unittest.TestCase):
         self.assertTrue(C.task_errors(1, [task([R, G()], paused=True)])[1])
 
 
-def ptask(frame, start, end, b_lines=(), reason=None, glyph=True, seeded=False):
-    """A task with its loop pass: start and end are (VBlank count, line)."""
+def ptask(frame, start, end, b_lines=(), reason=None, glyph=True, seeded=False, ticks=None):
+    """A task with its loop pass: start and end are (VBlank count, line); ticks: (end, deadline,
+    b_ticks) in TM0 ticks since the task started (the gate's own timing)."""
     t = {"frame": frame, "start": start, "pass_end": end, "b_lines": list(b_lines),
          "events": [R, G()] if glyph else [R]}
+    if ticks:
+        t.update(end_tick=ticks[0], deadline_tick=ticks[1], b_ticks=list(ticks[2]), line_ticks=LINE)
     if reason:
         t["stop"] = {"reason": reason, "decision": {"seeded": seeded}}
     return t
@@ -330,68 +343,98 @@ def ptask(frame, start, end, b_lines=(), reason=None, glyph=True, seeded=False):
 
 class Product(unittest.TestCase):
     def test_pass_info(self):
-        ok = C.pass_info(ptask(1, (5, 150), (5, 185)), 10)
-        self.assertEqual((ok["overran"], ok["unforced"], ok["slack"]), (False, False, 7))
-        late = C.pass_info(ptask(1, (5, 175), (6, 210), b_lines=(194, 204)), 10)
-        self.assertTrue(late["overran"] and not late["unforced"])      # the first glyph alone ran past 192
-        pushed = C.pass_info(ptask(1, (5, 160), (6, 195), b_lines=(173, 183)), 10)
-        self.assertTrue(pushed["overran"] and pushed["unforced"])      # 10 extra lines pushed it over
-        battle = C.pass_info(ptask(1, (6, 230), (6, 40)), 10)          # VBlank task: next VBlank far away
+        ok = C.pass_info(ptask(1, (5, 150), (5, 185), ticks=(1150, 1400, ())), 330)
+        self.assertEqual((ok["overran"], ok["unforced"], ok["slack"], ok["tick_slack"]), (False, False, 7, 250))
+        late = C.pass_info(ptask(1, (5, 175), (6, 210), b_lines=(194, 204), ticks=(1170, 560, (650, 980))), 330)
+        self.assertTrue(late["overran"] and not late["unforced"])      # the first glyph alone ran past VBlank
+        pushed = C.pass_info(ptask(1, (5, 160), (6, 195), b_lines=(173, 183), ticks=(1170, 1060, (430, 760))), 330)
+        self.assertTrue(pushed["overran"] and pushed["unforced"])      # its extra glyph's ticks pushed it over
+        # in ticks: a pass whose extra glyph is not what pushed it over is forced, although the lines say otherwise
+        coarse = C.pass_info(ptask(1, (5, 171), (6, 208), b_lines=(185, 197, 208),
+                                   ticks=(1453, 688, (44970 & 0xFFFF, 45347, 45706))), 330)
+        self.assertTrue(coarse["overran"] and not coarse["unforced"])
+        # started on line 192 after the VBlank interrupt, before the game counted it (718#1093): the counts
+        # say a frame late, the gate's ticks say the pass ended 8600 ticks before its deadline
+        counted = C.pass_info(ptask(1, (18963, 192), (18964, 196), ticks=(125, 8725, ())), 352)
+        self.assertEqual((counted["overran"], counted["unforced"]), (False, False))
+        battle = C.pass_info(ptask(1, (6, 230), (6, 40)), 330)          # VBlank task: next VBlank far away
         self.assertFalse(battle["overran"])
-        stop = C.pass_info(ptask(1, (5, 160), (5, 184), reason="frame"), 10)
-        self.assertTrue(stop["frame_stop"] and stop["necessary"])     # 184 + 10 >= 191
-        stop = C.pass_info(ptask(1, (5, 160), (5, 178), reason="frame"), 10)
-        self.assertFalse(stop["necessary"])
-        self.assertIsNone(C.pass_info(ptask(1, (5, 160), None), 10))
+        stop = C.pass_info(ptask(1, (5, 160), (5, 184), reason="frame", ticks=(800, 1065, ())), 330)
+        self.assertTrue(stop["frame_stop"] and stop["necessary"])     # 265 - 330 <= allowance
+        lazy = C.pass_info(ptask(1, (5, 160), (5, 170), reason="frame", ticks=(400, 400 + 330 + C.FIT_ALLOWANCE + 1,
+                                                                             ())), 330)
+        self.assertFalse(lazy["necessary"])
+        edge = C.pass_info(ptask(1, (5, 160), (5, 170), reason="frame", ticks=(400, 400 + 330 + C.FIT_ALLOWANCE,
+                                                                             ())), 330)
+        self.assertTrue(edge["necessary"])
+        untimed = C.pass_info(ptask(1, (5, 160), (5, 178), reason="frame"), 330)
+        self.assertTrue(untimed["untimed"] and not untimed["necessary"])
+        self.assertIsNone(C.pass_info(ptask(1, (5, 160), None), 330))
 
     def test_speed_record(self):
-        tasks = [ptask(10, (1, 150), (1, 180)), ptask(11, (2, 175), (3, 210), b_lines=(194, 204)),
-                 ptask(13, (4, 160), (5, 195), b_lines=(173, 183)), ptask(14, (5, 150), (5, 170))]
-        r = C.speed_record(tasks, [(10, 14)], 10)
+        tasks = [ptask(10, (1, 150), (1, 180), ticks=(1000, 1400, ())),
+                 ptask(11, (2, 175), (3, 210), b_lines=(194, 204), ticks=(1170, 560, (650, 980))),
+                 ptask(13, (4, 160), (5, 195), b_lines=(173, 183), ticks=(1170, 1060, (430, 760))),
+                 ptask(14, (5, 150), (5, 170), ticks=(700, 1400, ()))]
+        r = C.speed_record(tasks, [(10, 14)], 330)
         self.assertEqual((r["frames"], r["drops"], r["printing_tasks"], r["glyph_tasks"]), (4, 1, 4, 4))
         self.assertEqual((r["unforced_drops"], r["forced_drops"], r["unforced_overruns"]), (0, 1, 1))
-        self.assertEqual(C.warm_costs(tasks), [10, 10])
-        tasks[1] = ptask(11, (2, 175), (3, 200), b_lines=(186, 196))      # its extra glyph pushed it over
-        r = C.speed_record(tasks, [(10, 14)], 10)
-        self.assertEqual((r["unforced_drops"], r["forced_drops"], r["unforced_overruns"]), (1, 0, 2))
+        self.assertEqual(C.warm_costs(tasks), [330, 330])
+        self.assertEqual(r["tick_slacks"], [-610, -110, 400, 700])
         merged = C.merge_records([r, r])
-        self.assertEqual((merged["frames"], merged["pages"]), (8, 2))
-        self.assertEqual((r["slacks"], r["warm_cost"]), ([-8, -3, 12, 22], 10))   # every glyph task in the page
+        self.assertEqual((merged["frames"], merged["pages"], len(merged["tick_slacks"])), (8, 2, 8))
 
-    def rec(self, frames, drops=0, tasks=None, unnecessary=0, unforced=0, pages=1, slacks=(), warm=None):
+    def rec(self, frames, drops=0, tasks=None, unnecessary=0, unforced=0, pages=1, slacks=(), warm=None, untimed=0):
         return {"frames": frames, "drops": drops, "forced_drops": drops,
                 "printing_tasks": frames + pages - drops, "glyph_tasks": tasks if tasks is not None else frames + 1,
-                "pages": pages, "unnecessary_stops": unnecessary, "futile_stops": 0,
-                "unforced_overruns": unforced, "slacks": sorted(slacks), "warm_cost": warm}
+                "pages": pages, "unnecessary_stops": unnecessary, "futile_stops": 0, "untimed_stops": untimed,
+                "unforced_overruns": unforced, "slacks": sorted(slacks), "tick_slacks": sorted(slacks),
+                "warm_cost": warm}
 
     def test_order(self):
-        normal = self.rec(54, 1, tasks=54, slacks=(3, 30))
-        good = {O: normal, N: dict(normal), F: self.rec(21, 1, tasks=21, warm=10)}
+        normal = self.rec(54, 1, tasks=54, slacks=(100, 1000))
+        good = {O: normal, N: dict(normal), F: self.rec(21, 1, tasks=21, warm=330)}
         self.assertEqual(C.order_errors(good), ([], []))
-        # NORMAL must be the original printer, exactly
-        for key, value in (("frames", 55), ("drops", 2), ("glyph_tasks", 53), ("slacks", [3, 31])):
+        for key, value in (("frames", 55), ("drops", 2), ("glyph_tasks", 53), ("slacks", [100, 1001])):
             errors = C.order_errors({**good, N: dict(normal, **{key: value})})[0]
             self.assertTrue(any("NORMAL must be the original printer" in e for e in errors), key)
-        # FAST at most NORMAL's frames; a tie only when no NORMAL frame had room
         self.assertTrue(any("slower than NORMAL" in e for e in C.order_errors({**good, F: self.rec(55, 1)})[0]))
-        tie = {**good, F: self.rec(54, 1, warm=10)}
+        tie = {**good, F: self.rec(54, 1, warm=330)}
         errors = C.order_errors(tie)[0]
         self.assertTrue(any("not faster than NORMAL" in e and "1 NORMAL frames had room" in e for e in errors),
                         errors)
-        capped = {O: self.rec(54, 1, slacks=(3, 11)), N: self.rec(54, 1, slacks=(3, 11)), F: self.rec(54, 1, warm=10)}
+        capped = {O: self.rec(54, 1, slacks=(100, 400)), N: self.rec(54, 1, slacks=(100, 400)),
+                  F: self.rec(54, 1, warm=330)}
         errors, notes = C.order_errors(capped)
-        self.assertEqual(errors, [])                                     # 11 < 10 + 2: no room anywhere
+        self.assertEqual(errors, [])                                     # 400 - 330 <= allowance: no room
         self.assertTrue(notes)
-        self.assertEqual(C.room_frames({"slacks": [11, 12, 30]}, {"warm_cost": 10}), 2)
-        self.assertEqual(C.room_frames({"slacks": [14, 15]}, {"warm_cost": None}), 1)   # seed 13
+        self.assertEqual(C.room_frames({"tick_slacks": [409, 410, 1000]}, {"warm_cost": 330}), 2)
+        self.assertEqual(C.room_frames({"tick_slacks": [1000]}, {"warm_cost": None}), 0)
         lazy = {**good, F: self.rec(21, 1, unnecessary=3)}
         self.assertTrue(any("would have fitted" in e for e in C.order_errors(lazy)[0]))
+        untimed = {**good, F: self.rec(21, 1, untimed=1)}
+        self.assertTrue(any("vacuous stop check" in e for e in C.order_errors(untimed)[0]))
         drops = {**good, F: self.rec(21, 2)}
         self.assertTrue(any("dropped frames while printing, NORMAL 1" in e for e in C.order_errors(drops)[0]))
-        pushed = {**good, F: self.rec(21, 1, unforced=1)}
-        self.assertTrue(any("only because" in e for e in C.order_errors(pushed)[0]))
+        pushed = {**good, F: self.rec(21, 1, unforced=1)}               # one per message: a note (D-2276)
+        errors, notes = C.order_errors(pushed)
+        self.assertEqual(errors, [])
+        self.assertTrue(any("only because" in n and "budget" in n for n in notes), notes)
+        twice = {**good, F: self.rec(21, 1, unforced=2)}
+        self.assertTrue(any("dropped only because" in e for e in C.order_errors(twice)[0]))
         self.assertTrue(C.order_errors({O: good[O]})[0])
         self.assertTrue(C.order_errors({**good, O: self.rec(0, slacks=(3, 30))})[0])
+
+    def test_overrun_budget(self):
+        report = {}
+        C.tally_overruns(report, {O: self.rec(54), N: self.rec(54), F: self.rec(600, unforced=1)})
+        C.tally_overruns(report, {O: self.rec(54), N: self.rec(54), F: self.rec(400)})
+        C.tally_overruns(report, {O: self.rec(54)})                      # no FAST run: nothing counted
+        self.assertEqual(report["overrun_budget"], {"fast_frames": 1000, "unforced_overruns": 1})
+        self.assertIsNone(C.overrun_budget_error(report["overrun_budget"]))   # 1 in 1000: within
+        error = C.overrun_budget_error({"fast_frames": 999, "unforced_overruns": 1})
+        self.assertIn("dropped only because", error)
+        self.assertIsNone(C.overrun_budget_error({}))
 
     def test_merge_keeps_slacks_and_the_dearest_glyph(self):
         a, b = self.rec(5, slacks=(3, 9), warm=10), self.rec(4, slacks=(1,), warm=11)

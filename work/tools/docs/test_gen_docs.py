@@ -332,6 +332,9 @@ class TestRom(unittest.TestCase):
 def ctx_item(ctx, name):
     return next(i for i in range(len(ctx.items)) if ctx.it(i) == name)
 
+if __name__ == '__main__':
+    unittest.main()
+
 
 class TestSiteLists(unittest.TestCase):
     """The site's never-met lists (work/tools/site/*not_in_game.json) against the exported site data."""
@@ -351,7 +354,3 @@ class TestSiteLists(unittest.TestCase):
         gone = {e['name'] for e in self.load(self.SITE, 'items_not_in_game.json')['entries']} - kept   # names repeat
         held = {m.get('item') for t in self.load(self.DATA, 'trainers.json') if t['places'] for m in t['team']}
         self.assertEqual(sorted(gone & held - {None}), [])
-
-
-if __name__ == '__main__':
-    unittest.main()

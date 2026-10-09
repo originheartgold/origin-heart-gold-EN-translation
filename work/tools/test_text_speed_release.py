@@ -235,8 +235,8 @@ class Faults(unittest.TestCase):
 
     def test_short_history_floor_is_proven_by_the_model_check(self):
         spec = fault_fixture.FAULTS['short-history-unguarded']
-        # movs r1,#7 -> movs r1,#0: the short-history branch forces the rest to 0
-        self.assertEqual(spec['edits'], [(0x01FF8882, bytes.fromhex('0721'), bytes.fromhex('0021'))])
+        # movs r1,#232 (7 lines of ticks) -> movs r1,#0: the short-history branch forces the rest to 0
+        self.assertEqual(spec['edits'], [(0x01FF88D6, bytes.fromhex('e821'), bytes.fromhex('0021'))])
         self.assertNotIn('checker', spec)       # the gates keep the real floor in their model
         self.assertEqual(spec['gates'], {'scenes': 'drew on after a frame stop'})
 
@@ -251,14 +251,58 @@ class Isolation(unittest.TestCase):
             fault_payload = None
         commands = validate_release.gates(A, Path('/tmp/out'))
         self.assertIn('scenes', commands)
-        for name, (command, _) in commands.items():
-            self.assertEqual(command[1], '-I', name)
+        for name, runs in commands.items():
+            for command, _ in runs:
+                self.assertEqual(command[1], '-I', name)
         with unittest.mock.patch.dict(os.environ, {'PYTHONPATH': '/x', 'PYTHONSTARTUP': '/y', 'PATH': '/bin',
                                                    'EMU_HARNESS_MAX_EMULATORS': '3'}):
             env = validate_release.gate_env(Path('/tmp/w'))
         self.assertFalse([k for k in env if k.startswith('PYTHON')])
         self.assertEqual(env['EMU_HARNESS_WAIT_LOG'], '/tmp/w')
         self.assertEqual(env['EMU_HARNESS_MAX_EMULATORS'], '3')
+
+    def test_timing_gates_run_at_every_input_phase(self):
+        """D-2175: each timing gate runs once per input phase, phase p > 0 with --phase p and its own
+        output directory; the other gates run once."""
+        class A:
+            rom = save = Path('x.nds')
+            fault_payload = None
+        commands = validate_release.gates(A, Path('/tmp/out'))
+        self.assertEqual(gate_common.PHASES, (0, 1))
+        for name, runs in commands.items():
+            if name not in validate_release.PHASED:
+                self.assertEqual(len(runs), 1, name)
+                self.assertNotIn('--phase', runs[0][0], name)
+                continue
+            self.assertEqual(len(runs), 2, name)
+            self.assertNotIn('--phase', runs[0][0], name)
+            self.assertEqual(runs[1][0][-2:], ['--phase', '1'], name)
+            self.assertNotEqual(runs[0][1], runs[1][1], name)
+        self.assertLessEqual({'callbacks', 'scenes', 'field-rate', 'natural-dialogue', 'corpus', 'battle'},
+                             set(validate_release.PHASED))
+
+    def test_phases_merge_into_one_gate_row(self):
+        ok = dict(row('passed'), observations={'a': 1}, mid_update_samples=[])
+        bad = dict(row('failed', ['x: drew on after a frame stop']), observations={'a': 2}, mid_update_samples=[])
+        crash = {'status': 'failed', 'reason': 'timeout', 'mid_update_samples': []}
+        self.assertEqual(validate_release.merge_phases([ok])['status'], 'passed')
+        both = validate_release.merge_phases([ok, ok])
+        self.assertEqual(both['status'], 'passed')
+        self.assertEqual(both['observations'], {'a': 1, 'phase1': {'a': 1}})
+        merged = validate_release.merge_phases([ok, bad])
+        self.assertEqual(merged['status'], 'failed')
+        self.assertEqual(merged['errors'], ['phase 1: x: drew on after a frame stop'])
+        fault = {'name': 'frame-rule-ignored'}
+        gates = {g: (merged if g == 'scenes' else row('failed', [f'x: {t}']))
+                 for g, t in fault_fixture.FAULTS['frame-rule-ignored']['gates'].items()}
+        self.assertEqual(validate_release.fault_verdict(fault, gates)[0], 'fault-detected')
+        timeout = validate_release.merge_phases([crash, ok])
+        self.assertEqual((timeout['status'], timeout.get('errors')), ('failed', None))
+        self.assertIn('phase 0: timeout', timeout['reason'])
+        counted = dict(ok, overrun_budget={'fast_frames': 600, 'unforced_overruns': 1})
+        summed = validate_release.merge_phases([counted, counted, ok])     # D-2276: phases add up
+        self.assertEqual(summed['overrun_budget'], {'fast_frames': 1200, 'unforced_overruns': 2})
+        self.assertNotIn('overrun_budget', validate_release.merge_phases([ok, ok]))
 
     def test_busy_scenes_are_in_the_scene_gate(self):
         import scene_pacing
@@ -274,11 +318,14 @@ if __name__ == '__main__':
 class FieldRate(unittest.TestCase):
     """field_rate.judge: the catch-up gate's cross-run rules (synthetic scene reports)."""
 
-    def report(self, on_fpg=0.99, off_fpg=2.0, tasks=200, overruns=0, idle=(300, 300), runs=None):
+    def report(self, on_fpg=0.99, off_fpg=2.0, tasks=200, overruns=0, idle=(300, 300), runs=None, ticks=7,
+               idle_tasks=0):
         def run(fpg, passes):
             text = {'glyphs': 92, 'pages': 2, 'layout': [(0, 0)], 'windows': ['aa'], 'fpg': fpg, 'passes': 400,
                     'queue_runs': 400 if runs is None else runs, 'elapsed': {}, 'other_tasks': {}, 'slot_errors': []}
-            return {'idle': {'passes': passes, 'queue_runs': passes, 'other_tasks': {}, 'elapsed': {}},
+            return {'idle': {'passes': passes, 'queue_runs': passes, 'other_tasks': {}, 'elapsed': {},
+                             'pass_end_ticks': ticks, 'pass_ends': passes, 'late_passes': passes // 2,
+                             'printer_tasks': idle_tasks},
                     'text': text}
         return {'on': run(on_fpg, idle[1]), 'off': run(off_fpg, idle[0]),
                 'catch_up': {'tasks': tasks, 'overruns': overruns, 'late_passes': tasks, 'decisions': tasks}}
@@ -291,7 +338,11 @@ class FieldRate(unittest.TestCase):
     def test_each_rule_fails(self):
         import field_rate
         self.assertIn('frames per glyph', ' '.join(field_rate.judge(self.report(on_fpg=1.9))))
-        self.assertIn('idle', ' '.join(field_rate.judge(self.report(idle=(300, 299)))))
+        # D-2175: idle passes are reported, not compared (the input phase decides a frame at the edge)
+        self.assertEqual(field_rate.judge(self.report(idle=(342, 340))), [])
+        self.assertEqual(field_rate.judge(self.report(ticks=field_rate.IDLE_TICKS)), [])
+        self.assertIn('idle: pass_end took', ' '.join(field_rate.judge(self.report(ticks=field_rate.IDLE_TICKS + 1))))
+        self.assertIn('printer tasks ran in pass_end without text', ' '.join(field_rate.judge(self.report(idle_tasks=1))))
         self.assertIn('dropped frames', ' '.join(field_rate.judge(self.report(overruns=1))))
         self.assertIn('ran no catch-up task', ' '.join(field_rate.judge(self.report(tasks=0))))
         self.assertIn('once per pass', ' '.join(field_rate.judge(self.report(runs=401))))
@@ -310,3 +361,5 @@ class FieldRate(unittest.TestCase):
         spec = fault_fixture.FAULTS['no-catch-up']
         self.assertEqual(spec['gates'], {'field-rate': 'frames per glyph'})
         self.assertEqual(spec['checker'], {'NO_CATCH_UP': True})
+        spec = fault_fixture.FAULTS['catch-up-idle-cost']
+        self.assertEqual(spec['gates'], {'field-rate': 'idle: pass_end took'})

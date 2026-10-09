@@ -2585,9 +2585,9 @@ record 751
 
 #### Johto Trainer Crystal — Team 4
 
-- Goldenrod Tunnel B1F: your partner in a multi battle against Super Nerd Dawson and Psychic Brooks, if you pick “You’re too weak to battle”
-- Goldenrod Tunnel B1F: your partner in a multi battle against Roughneck Lucky and Magician Conan, if you pick “You’re too weak to battle”
-- Goldenrod Tunnel B1F: your partner in a multi battle against Sailor Chan and Karate King Vince, if you pick “You’re too weak to battle”
+- Goldenrod Tunnel B1F: your partner in a multi battle against Super Nerd Dawson and Psychic Brooks, if you pick “You suck. This is embarrassing”
+- Goldenrod Tunnel B1F: your partner in a multi battle against Roughneck Lucky and Magician Conan, if you pick “You suck. This is embarrassing”
+- Goldenrod Tunnel B1F: your partner in a multi battle against Sailor Chan and Karate King Vince, if you pick “You suck. This is embarrassing”
 
 record 772
 
@@ -7156,7 +7156,7 @@ record 844
 
 #### Ace Trainer Newt
 
-- Route 12: single battle, if you pick “You’ve got a girlfriend!”, only in some story branches (see the quest guide)
+- Route 12: single battle, if you pick “You’re not alone. You have her!”, only in some story branches (see the quest guide)
 
 record 185
 
@@ -9757,7 +9757,7 @@ record 275
 
 ### Mt. Silver Cave Summit
 
-#### Bird Keeper Leif
+#### Bird Keeper Harrison
 
 - Mt. Silver Cave Summit: double battle against this one team, sent out two at a time, if you pick “Doubles”
 - Mt. Silver Cave Summit: single battle, with exactly 1 Pokémon in your party, if you pick “Doubles” or if you pick “Singles”
@@ -10972,7 +10972,7 @@ record 228
 
 #### Super Nerd Dawson
 
-- Goldenrod Tunnel B1F: multi battle: you and Johto Trainer Crystal against this trainer and Psychic Brooks, if you pick “You’re too weak to battle”
+- Goldenrod Tunnel B1F: multi battle: you and Johto Trainer Crystal against this trainer and Psychic Brooks, if you pick “You suck. This is embarrassing”
 
 record 770
 
@@ -10985,7 +10985,7 @@ record 770
 
 #### Psychic Brooks
 
-- Goldenrod Tunnel B1F: multi battle: you and Johto Trainer Crystal against this trainer and Super Nerd Dawson, if you pick “You’re too weak to battle”
+- Goldenrod Tunnel B1F: multi battle: you and Johto Trainer Crystal against this trainer and Super Nerd Dawson, if you pick “You suck. This is embarrassing”
 
 record 771
 
@@ -10998,7 +10998,7 @@ record 771
 
 #### Roughneck Lucky
 
-- Goldenrod Tunnel B1F: multi battle: you and Johto Trainer Crystal against this trainer and Magician Conan, if you pick “You’re too weak to battle”
+- Goldenrod Tunnel B1F: multi battle: you and Johto Trainer Crystal against this trainer and Magician Conan, if you pick “You suck. This is embarrassing”
 
 record 773
 
@@ -11011,7 +11011,7 @@ record 773
 
 #### Magician Conan
 
-- Goldenrod Tunnel B1F: multi battle: you and Johto Trainer Crystal against this trainer and Roughneck Lucky, if you pick “You’re too weak to battle”
+- Goldenrod Tunnel B1F: multi battle: you and Johto Trainer Crystal against this trainer and Roughneck Lucky, if you pick “You suck. This is embarrassing”
 
 record 774
 
@@ -11024,7 +11024,7 @@ record 774
 
 #### Sailor Chan
 
-- Goldenrod Tunnel B1F: multi battle: you and Johto Trainer Crystal against this trainer and Karate King Vince, if you pick “You’re too weak to battle”
+- Goldenrod Tunnel B1F: multi battle: you and Johto Trainer Crystal against this trainer and Karate King Vince, if you pick “You suck. This is embarrassing”
 
 record 775
 
@@ -11037,7 +11037,7 @@ record 775
 
 #### Karate King Vince
 
-- Goldenrod Tunnel B1F: multi battle: you and Johto Trainer Crystal against this trainer and Sailor Chan, if you pick “You’re too weak to battle”
+- Goldenrod Tunnel B1F: multi battle: you and Johto Trainer Crystal against this trainer and Sailor Chan, if you pick “You suck. This is embarrassing”
 
 record 776
 
@@ -11891,7 +11891,7 @@ record 825
 
 #### Hiker Finn
 
-- Route 41: single battle, if you pick “So its power harms no one”, “To escape hunters”, “To save its power” or “To heal its wounds”
+- Route 41: single battle, if you pick “So its power harms no one”, “To escape hunters”, “To save power for battles” or “To heal its wounds”
 
 record 826
 

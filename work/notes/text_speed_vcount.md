@@ -124,6 +124,15 @@ new scene's loop may be heavier; a printer waiting for a button still runs its t
 and keeps the history. Neither VCOUNT nor the VBlank counter is ARM9 code, so neither
 has a reviewed dependency range.
 
+A batch takes its cost estimates once, at its first decision (D-2279, 2026-10-09; supersedes
+D-2277). `costs()` runs two medians over the history, about 30 ticks; computed at every decision, a
+batch that stopped on time paid it once more after its last glyph, after the reading that
+predicted the pass but before the batch end that starts the rest sample, so no measurement held
+it. On Route 1 and the promoter scene the true rest after a time stop ran about 30 ticks over the
+prediction (median), and the margin, sized for spikes, was half used up (the self-caused drops of
+the D-2276 runs; found with a wrapper around `gate_common.judge_message` that dumps every FAST
+task's decisions and timing). Glyph costs measured during a batch count from the next batch.
+
 ### State and RAM
 
 One global `struct frame_state` of 24 bytes (glyph[8], rest[8], two ring indexes,
@@ -354,8 +363,9 @@ the `scenes` gate over the 17 scenes above), per message (D-1604):
 - frames: FAST at most NORMAL's, strictly fewer when any NORMAL glyph task's pass
   had room for one more glyph (slack of at least FAST's median extra-glyph cost + 2);
 - FAST drops no more frames than NORMAL;
-- no frame is dropped only because of the batch's extra glyphs (the pass, without
-  the extra glyphs' lines, would have ended before VBlank);
+- frames dropped only because of the batch's extra glyphs (the pass, without the
+  extra glyphs' lines, would have ended before VBlank) stay within the budget of
+  D-2276: at most 1 per message and 1 per 1,000 FAST printing frames per run;
 - no frame stop gave up a glyph that would have fitted: with one more glyph of the
   message's median measured cost the pass would still have ended two or more lines
   before VBlank (stops taken before any cost of the scene was measured are exempt).
@@ -414,6 +424,16 @@ message, not by time.
 Gate `field-rate` (`field_rate.py`) compares, per scene from one checkpoint, the
 catch-up on and off (off: a hook clears the state's `ended` byte at `pass_end` entry).
 Fault `no-catch-up` (catch-up never runs) must fail it with 'frames per glyph'.
+Without text, the catch-up's cost is bounded directly (D-2175): from pass_end's own
+reading to its return, at most `IDLE_TICKS` (12) ticks of the SDK's tick timer (timer 0,
+33.5 MHz / 64, about 33 per display line) in every idle pass without an interrupt in
+between (the game handles about 350 a frame); measured 1 tick in a
+pass that is not late and up to 7 in a late one (decision, estimate loop, eight empty
+printer slots). It used to require as many idle loop passes with the catch-up on as
+off, which depends on the input phase: in New Bark most passes end at lines 190-202,
+so a few instructions decide whether a frame is lost, and the 1-frame input delay
+turned 342 / 340 passes into 333 / 333. Fault `catch-up-idle-cost` (the slot loop
+runs 64 times instead of 8, about 24 ticks; 255 drowned every idle pass in interrupts) must fail it with 'idle: pass_end took'.
 
 ## Limits
 

@@ -19,14 +19,14 @@ const hex2 = (i: number) => i.toString(16).toUpperCase().padStart(2, '0');
 				{PRESETS.map((_, i) => <option value={i}>{hex2(i)}: {NAMES[i]}</option>)}
 			</select>
 		</label>
-		<label class="camb-row"><span>Tilt (looking down) <output name="tiltOut"></output></span>
-			<input type="range" name="tilt" min="10" max="75" step="1" /></label>
-		<label class="camb-row"><span>Distance (zoom) <output name="distanceOut"></output></span>
-			<input type="range" name="distance" min="250" max="2000" step="1" /></label>
-		<label class="camb-row"><span>Field of view <output name="fovOut"></output></span>
-			<input type="range" name="fov" min="4" max="45" step="1" /></label>
-		<label class="camb-row"><span>Draw distance <output name="farOut"></output></span>
-			<input type="range" name="far" min="600" max="2500" step="5" /></label>
+		<label class="camb-row" for="camera-tilt"><span>Tilt (looking down) <output name="tiltOut"></output></span>
+			<input id="camera-tilt" type="range" name="tilt" min="10" max="75" step="1" /></label>
+		<label class="camb-row" for="camera-distance"><span>Distance (zoom) <output name="distanceOut"></output></span>
+			<input id="camera-distance" type="range" name="distance" min="250" max="2000" step="1" /></label>
+		<label class="camb-row" for="camera-fov"><span>Field of view <output name="fovOut"></output></span>
+			<input id="camera-fov" type="range" name="fov" min="4" max="45" step="1" /></label>
+		<label class="camb-row" for="camera-far"><span>Draw distance <output name="farOut"></output></span>
+			<input id="camera-far" type="range" name="far" min="600" max="2500" step="5" /></label>
 		<label class="camb-check"><input type="checkbox" name="flat" /> Flat (orthographic) instead of 3D</label>
 		<p class="camb-hint"></p>
 		<div class="camb-out">

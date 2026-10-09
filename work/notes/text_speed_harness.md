@@ -167,8 +167,10 @@ Second independent review of `35c1a31` and user decision D-1601. Changes:
   loop missed a VBlank), not frames without a glyph. Frame order is strict in every
   scene; a tie is allowed only when the faster speed hit the frame limit.
 - **Exact comparisons:** battle pauses, dwell, last glyph → printer removal and the
-  segment shortening are exact; page-2 latency is exact (from the later of the press
-  and the frame the prompt reads input); printer tasks from each page's last glyph to
+  segment shortening are exact; page-2 latency is exact in printer tasks, judged from
+  the page prompt's observed input polls (D-2175: last glyph to the first poll, the
+  accepting poll to page 2's first glyph; no skipped poll, no latched or lost press),
+  not in frames from the press; printer tasks from each page's last glyph to
   its control step are exact (this catches a batch that runs into a control, which no
   gate caught before); the controls pause is exact in printer tasks.
 - **Battle pixels** are compared with the original printer.

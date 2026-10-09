@@ -49,6 +49,7 @@ async function hashZip(file, preferCrc) {
 		throw zipError(`This .zip has no .nds file inside${kinds.length ? ` (it holds ${kinds.join(', ')}${all.length > 5 ? ', …' : ''})` : ''}. Choose the .zip or .nds that holds your HeartGold game.`);
 	}
 	const entry = nds.find((e) => e.crc32 === preferCrc) || nds.reduce((a, b) => (b.size > a.size ? b : a));
+	if (entry.size > 512 * 1024 * 1024) throw zipError('This .nds entry is larger than a Nintendo DS cartridge. Unzip it yourself and check the file.');
 	const crc = new Crc32(), sha = new Sha1();
 	const head = new Uint8Array(16);
 	const parts = [];

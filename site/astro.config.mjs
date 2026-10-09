@@ -41,9 +41,12 @@ export default defineConfig({
 					{ label: 'Locations', link: '/locations/' },
 					{ label: 'Calendar encounters', slug: 'calendar' },
 					{ label: 'Items', link: '/items/' },
-					{ label: 'Moves and TMs', link: '/moves/' },
+					{ label: 'Moves', link: '/moves/' },
+					{ label: 'TMs and HMs', link: '/tms/' },
+					{ label: 'Abilities', link: '/abilities/' },
 					{ label: 'Trainers', link: '/trainers/' },
 					{ label: 'Move tutors', link: '/tutors/' },
+					{ label: 'Reference sources', link: '/reference-sources/' },
 				] },
 				{ label: 'Help out', items: [
 					{ label: 'Report a problem or contribute', slug: 'contribute' },

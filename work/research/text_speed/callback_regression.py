@@ -10,11 +10,20 @@ printer task and the baseline for every case; NORMAL must delegate exactly like 
   task cadence, layout and completed pixels must equal the original, and every
   native task must delegate to the original task.
 - held-A / held-B: holding A (or B while pressing A) must not advance past the
-  first page's wait; after release ONE new press must start page 2 with exactly
-  the original's latency and glyph positions (no lost or latched input).
+  first page's wait; after release ONE new press must start page 2 (no lost or
+  latched input) with the original's glyph positions.
 - tap: A tapped (4 frames down, 4 up) from the start. Page 2 must start only after a
-  tap that began after page 1 was complete, with exactly the original's latency from
-  that tap; page 1 and the start of page 2 keep the original layout.
+  tap that began after page 1 was complete; page 1 and the start of page 2 keep the
+  original layout.
+- Latency (held and tap cases), counted in the printer's own tasks and judged from
+  the page prompt's observed input polls (D-2175), not from fixed frames: the first
+  poll comes exactly as many printer tasks after page 1's last glyph as with the
+  original, the prompt polls in every printer task until it accepts, it accepts a
+  press that began after page 1 was complete (held: the press after the release) and
+  no later than the first tap that began after the first poll (no lost input), and
+  page 2's first glyph comes exactly as many printer tasks after the accepting poll
+  as with the original. Frames would depend on the game's pass length (30 or 60 fps)
+  and on where the fixed input frames fall in a two-frame pass (the input phase).
 Plain/held/tap cases are judged per native task (text_speed_checks.task_errors:
 NORMAL delegates; FAST budget, frame decisions against the payload's frame model,
 stop reason).
@@ -35,7 +44,11 @@ import text_speed_checks as checks
 STUB = 0x0200107A
 CALLBACK_SITES = (0x02020A67, 0x02020A7F)
 PAGE1 = 54
-PROMPT_READY = 2   # frames from the last glyph until the page prompt accepts input
+# RenderText's page waits (0x02002AEC with the arrow, 0x02002B10) call this key check
+# with r0 = the printer unless auto-scroll is set; at ACCEPT the check saw a new A/B press
+# (or a touch) and the wait returns 1 (pressed: sound effect, then the page advances).
+PAGE_POLL = 0x02002A84
+PAGE_ACCEPT = 0x02002A8E
 KINDS = ('callback', 'busy', 'held-A', 'held-B', 'tap')
 CROP = (8, 153, 236, 182)
 
@@ -55,7 +68,7 @@ def main():
     errors = report['errors']
     try:
         with Harness(args.rom, args.save, out=args.out, verbose=False, rtc=CLOCK) as h:
-            start_game(h)
+            start_game(h, args.phase)
             start = itcm_errors(h, payload)
             require(not start, f'ITCM at start: {start}')
             checkpoint = args.out / 'candidate.dst'
@@ -72,6 +85,15 @@ def main():
                     value = (h.u16(opts) & ~12) | (mode << 2)
                     h.w16(opts, value)
                     trace = {'callbacks': [], 'injected': 0, 'taps': []}
+                    polls = []      # [frame, printer task id, accepted] of the font-1 printer's page waits
+
+                    def poll(h):
+                        if h.u8(h.reg.r0 + 9) == 1:
+                            polls.append([h.frame, tracer.current.get(h.reg.r0), False])
+
+                    def accept(h):
+                        if polls and polls[-1][0] == h.frame:
+                            polls[-1][2] = True
 
                     def constructor(h):
                         if kind in ('callback', 'busy') and h.u8(h.reg.r0 + 9) == 1:
@@ -91,6 +113,8 @@ def main():
                     h.on_exec(PRINTER_START, constructor)
                     h.on_exec(STUB, callback)
                     h.on_exec(STUB + 2, callback_return)
+                    h.on_exec(PAGE_POLL, poll)
+                    h.on_exec(PAGE_ACCEPT, accept)
                     probe = attach_probe(h)
                     probe.frame = h.frame
                     press = None
@@ -114,7 +138,10 @@ def main():
                         press = h.frame
                         h.press('A', after=120)
                         rows = list(tracer.glyphs)
-                    tasks = [t for t in tracer.tasks if t['font'] == 1]
+                    # a task still running when the case stopped recording is not judged: its
+                    # reading after the render falls after the recording (phase 1, tap-1)
+                    cut = tracer.unfinished()
+                    tasks = [t for t in tracer.tasks if t['font'] == 1 and t['id'] not in cut]
                     native, original = len(tasks), sum(1 for t in tasks if t['delegated'])
                     require(native > 0 and len(page1) == PAGE1, f'{tag}: page 1 incomplete ({len(rows)} glyphs)')
                     require(h.u16(opts) == value, f'{tag}: Options changed')
@@ -140,12 +167,33 @@ def main():
                                 require([t for t in trace['taps'] if t <= done],
                                         'tap case did not tap during printing (vacuous)')
                             require(press is not None and press > done, f'{tag}: no press after page 1')
-                            # The page prompt control is rendered by the task after the last
-                            # glyph and polls input from the task after that (last glyph + 2);
-                            # a tap that starts earlier is seen then. Latency counts from the
-                            # later of the press and that frame, for every mode alike.
-                            trace['page2_latency'] = later[0][2] - max(press, done + PROMPT_READY)
+                            printer = page1[-1][0]
+                            waits = [x for x in polls if x[1] is not None and page1[-1][1] <= x[1] <= later[0][1]]
+                            require(waits, f'{tag}: the page prompt never polled input')
+                            accepted = [x for x in waits if x[2]]
+                            require(accepted, f'{tag}: page 2 started without an accepting page-prompt poll')
+                            first, took = waits[0], accepted[0]
+                            trace['polls'] = {'first': first[:2], 'accept': took[:2], 'count': len(waits)}
+                            # Printer tasks: from the last glyph's task to the first poll, and from the
+                            # accepting poll to page 2's first glyph (compared with the original below).
+                            trace['prompt_tasks'] = tracer.tasks_between(page1[-1][1], first[1], printer)
+                            trace['accept_tasks'] = tracer.tasks_between(took[1], later[0][1], printer)
+                            polled = tracer.tasks_between(first[1], took[1], printer) + 1
+                            if len([x for x in waits if x[1] <= took[1]]) != polled:
+                                errors.append(f'{tag}: the page prompt skipped polls before accepting '
+                                              f'({len([x for x in waits if x[1] <= took[1]])} polls in {polled} '
+                                              'printer tasks)')
+                            if took[0] < press:
+                                errors.append(f'{tag}: the page prompt accepted at frame {took[0]}, before the '
+                                              f'fresh press at {press} (latched input)')
+                            if kind == 'tap':
+                                due = min((t for t in trace['taps'] if t > first[0]), default=None)
+                                after = min((t for t in trace['taps'] if due is not None and t > due), default=None)
+                                if after is not None and took[0] >= after:
+                                    errors.append(f'{tag}: the tap at frame {due}, after the first poll at '
+                                                  f'{first[0]}, was not accepted (accepted at {took[0]}: lost input)')
                             trace['page2_raw_latency'] = later[0][2] - press
+                            trace['page2_accept_frames'] = later[0][2] - took[0]
                             trace['page1_done'], trace['page2_press'] = done, press
                         summary, cadence_errors = checks.cadence(mode, [(r[1], r[2]) for r in page1])
                         trace['cadence'] = summary
@@ -177,10 +225,13 @@ def main():
                         if case['task_offsets'] != base['task_offsets']:
                             errors.append(f'{kind}-{mode}: callback task cadence changed')
                     else:
-                        lat, want = case.get('page2_latency'), base.get('page2_latency')
-                        if lat is None or want is None or lat != want:
-                            errors.append(f'{kind}-{mode}: page 2 latency {lat} frames after the press, '
-                                          f'original {want} (must be equal)')
+                        for key, what in (('prompt_tasks', 'printer tasks from the last glyph to the first '
+                                                           'page-prompt poll'),
+                                          ('accept_tasks', 'printer tasks from the accepting poll to page 2')):
+                            got, want = case.get(key), base.get(key)
+                            if got is None or want is None or got != want:
+                                errors.append(f'{kind}-{mode}: page 2 latency: {got} {what}, original {want} '
+                                              '(must be equal)')
             errors.extend(f'end of session: {e}' for e in itcm_errors(h, payload))
         if not inputs_unchanged(report):
             errors.append('input modified')

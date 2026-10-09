@@ -1,10 +1,13 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+
+
+import TutorDetails from '../../components/TutorDetails.astro';
 import CalendarEncounters from '../../components/CalendarEncounters.astro';
 import EncTable from '../../components/EncTable.astro';
 import TrainerCard from '../../components/TrainerCard.astro';
 import Mon from '../../components/Mon.astro';
-import { areas, trainerById, itemById, itemUrl, regionLabel, url, type Area, type Quest } from '../../lib/data';
+import { areas, trainerById, itemById, itemUrl, tutors, moveById, moveUrl, regionLabel, url, type Area, type Quest } from '../../lib/data';
 import meta from '../../data/meta.json';
 import { getCollection } from 'astro:content';
 import { slug as ghSlug } from 'github-slugger';
@@ -28,6 +31,7 @@ for (const e of guide) {
 		quests.push({ title, href: url(`/${e.id}/#${slug}`) });
 	}
 }
+const localTutors = tutors.filter(t => t.places.some(p => p.area === a.slug));
 const trainers = a.trainers.map((id) => trainerById.get(id)).filter((t) => t !== undefined);
 const headings = [
 	quests.length && { depth: 2, slug: 'quests', text: 'Quests and events' },
@@ -36,6 +40,7 @@ const headings = [
 	(a.statics.length || a.trades.length) && { depth: 2, slug: 'special', text: 'Gifts, trades and one-time battles' },
 	trainers.length && { depth: 2, slug: 'trainers', text: 'Trainers' },
 	(a.items.length || a.gifts.length) && { depth: 2, slug: 'items', text: 'Items' },
+	localTutors.length && { depth: 2, slug: 'tutors', text: 'Move tutors' },
 	a.shops.length && { depth: 2, slug: 'shops', text: 'Shops' },
 ].filter(Boolean) as { depth: number; slug: string; text: string }[];
 const gifts = a.gifts.filter((g) => g.kind === 'gift');
@@ -47,7 +52,7 @@ const questLinks = (qs: Quest[] | undefined) => (qs ?? []).map((q) => ({ title: 
 const iu = (id: number) => itemUrl(itemById.get(id));
 ---
 <StarlightPage frontmatter={{ title: a.name, description: `${a.name} in Origin HeartGold: quests, wild Pokémon, trainers, items and shops.` }} headings={headings}>
-	<p class="small muted">{regionLabel(a.region)} · {a.maps.length} map{a.maps.length > 1 ? 's' : ''}</p>
+	<p class="small muted">{regionLabel(a.region)}</p>
 
 	{quests.length > 0 && <>
 		<h2 id="quests">Quests and events</h2>
@@ -85,9 +90,11 @@ const iu = (id: number) => itemUrl(itemById.get(id));
 		</>)}
 	</>}
 
+
+	{localTutors.length > 0 && <><h2 id="tutors">Move tutors</h2>{localTutors.map(t => <><h3><a href={moveUrl(moveById.get(t.move))}>{t.moveName}</a></h3><TutorDetails entries={[t]} /></>)}<p><a href={url('/tutors/')}>All tutors and eligibility lists →</a></p></>}
 	{a.calendar.length > 0 && <>
 		<h2 id="calendar">Calendar encounters</h2>
-		<p>These date-specific entries apply only to the named part of this location. They are separate from the ordinary tables; captures have not been replayed. <a href={url('/calendar/')}>Full calendar and caveats</a>.</p>
+		<p>These Pokémon appear on specific dates, only in the named part of this location. <a href={url('/calendar/')}>Full calendar and caveats</a>.</p>
 		<CalendarEncounters entries={a.calendar} />
 	</>}
 
@@ -97,12 +104,12 @@ const iu = (id: number) => itemUrl(itemById.get(id));
 			{a.statics.map((s) => <li>{({ gift: 'Gift', egg: 'Gift Egg', static: 'One-time battle' } as Record<string, string>)[s.kind] ?? s.kind}: <Mon id={s.id} name={s.name} />{s.level ? ` (Lv. ${s.level})` : ''}{questLinks(s.quests).map((q, i) => <>{i === 0 ? ' · see ' : ', '}<a href={q.href}>{q.title}</a></>)}</li>)}
 			{a.trades.map((t) => <li>{t.loan ? 'Loan' : 'Trade'}: {!t.loan && <><Mon id={t.give} name={t.giveName} /> for </>}<Mon id={t.get} name={t.getName} />{t.nickname ? ` ("${t.nickname}")` : ''}</li>)}
 		</ul>
-		<p class="small muted">Read from the scripts: some of these depend on your starter, story progress or a choice.{quests.length > 0 && ' See the quests above.'}</p>
+		<p class="small muted">Some of these depend on your starter, story progress or a choice.{quests.length > 0 && ' See the quests above.'}</p>
 	</>}
 
 	{trainers.length > 0 && <>
 		<h2 id="trainers">Trainers</h2>
-		<p class="small">Click a trainer to see their team. Some battles only happen in certain story branches; the condition is shown when the script has one.</p>
+		<p class="small">Click a trainer to see their team. Some battles only happen in certain story branches; check the conditions below.</p>
 		{trainers.map((t) => <TrainerCard t={t} area={a.slug} />)}
 	</>}
 
@@ -148,4 +155,5 @@ const iu = (id: number) => itemUrl(itemById.get(id));
 			</details>
 		))}
 	</>}
+
 </StarlightPage>

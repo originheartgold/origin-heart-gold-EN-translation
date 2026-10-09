@@ -30,7 +30,7 @@ import subprocess
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from gate_common import (CLOCK, ROOT, PrinterTrace, add_arguments, attach_probe, digest, identity,  # noqa: E402
+from gate_common import (CLOCK, ROOT, input_delay, PrinterTrace, add_arguments, attach_probe, digest, identity,  # noqa: E402
                          inputs_unchanged, itcm_errors, judge_message, load_expected_payload, memory_errors,
                          memory_summary, require, resolve)
 import text_speed_checks as checks  # noqa: E402
@@ -62,8 +62,9 @@ SCENES = {
 BUSY = ('goldenrod-dept-6f', 'celadon-gym', 'route1-idle', 'trainer-after-options')
 
 
-def setup(h, spec):
+def setup(h, spec, phase=0):
     h.set_clock(CLOCK)
+    input_delay(h, phase)
     h.step(2400)
     h.press('START', after=400)
     for _ in range(2):
@@ -112,7 +113,7 @@ def child(args, name):
     errors = report['errors']
     try:
         with Harness(args.rom, args.save, out=args.out, verbose=False, rtc=CLOCK) as h:
-            setup(h, spec)
+            setup(h, spec, args.phase)
             start = itcm_errors(h, payload)
             require(not start, f'ITCM at start: {start}')
             report['location'] = h.location()
@@ -184,7 +185,7 @@ def main():
     def run(name):
         out = args.out / name
         command = [sys.executable, '-I', __file__, '--rom', str(args.rom), '--save', str(args.save),
-                   '--out', str(out), '--scene', name]
+                   '--out', str(out), '--scene', name, '--phase', str(args.phase)]
         command += ['--fault-payload', str(args.fault_payload)] if args.fault_payload else []
         with (args.out / f'{name}.log').open('w') as log:
             code = subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT).returncode
@@ -210,6 +211,7 @@ def main():
                 errors.extend(f'{name}: {e}' for e in (r['errors'] or [f'exit {code}']))
             else:
                 scene_errors, notes = judge(r)
+                checks.tally_overruns(report, {int(m): x for m, x in r['modes'].items()})
                 row['errors'], row['capped_ties'] = scene_errors, notes
                 errors.extend(f'{name}: {e}' for e in scene_errors)
             report['scenes'][name] = row

@@ -23,13 +23,14 @@ import gen_docs as G      # noqa: E402
 import romdata as R       # noqa: E402
 import landmarks as LM    # noqa: E402
 import safari_held as SH  # noqa: E402
+import battle_reference as BR  # noqa: E402
 
 OUT = os.path.join(R.REPO, 'site', 'src', 'data')
 # reviewed lists, shared with the docs (see gen_docs.reviewed and each file's _about): species, forms and items a
-# player can never get are left out; verified sources, battle-only forms and notes the scan misses are added
-NOT_IN_GAME = set(G.reviewed('not_in_game'))
+# player cannot get in normal play remain listed with a reason; verified sources and notes are added
+NOT_IN_GAME = G.reviewed('not_in_game')
 EXTRA = G.reviewed('extra_sources')
-ITEMS_NOT_IN_GAME = set(G.reviewed('items_not_in_game'))
+ITEMS_NOT_IN_GAME = G.reviewed('items_not_in_game')
 ITEMS_EXTRA = G.reviewed('items_extra_sources')
 
 
@@ -232,7 +233,7 @@ def evo_entry(ctx, sp, m, p, original=None, link=None):
         e['never'] = True
         e['blocked'] = blocked
     if sp in NOT_IN_GAME:
-        e['name'] = ctx.sp(sp)          # no page to link to
+        e['name'] = ctx.sp(sp)
     if original is not None:
         e['original'] = original[0]
     return e
@@ -400,11 +401,12 @@ def export(ctx):
     for m in range(1, len(ctx.moves)):
         d = ctx.moves[m]
         name = ctx.mv(m)
-        if not d or name.startswith('move #') or name in ('—', '-', ''):
-            continue
+        unnamed = name.startswith('move #') or name in ('—', '-', '')
+        if unnamed:
+            name = 'Unnamed move #%d' % m
         t, cat, pw, acc, pp = G.move_row(ctx, m)
         moves.append(dict(id=m, name=name, slug=slugs.make('move', name, m), type=t, cat=cat, power=pw, acc=acc,
-                          pp=pp, tm=sorted(tm_of.get(m, [])), game=game_alias(ctx, ctx.MV.get(m))))
+                          pp=pp, tm=sorted(tm_of.get(m, [])), game=game_alias(ctx, ctx.MV.get(m)), unnamed=unnamed))
     move_ids = {x['id'] for x in moves}
 
     # ---- species
@@ -412,7 +414,7 @@ def export(ctx):
     avail = ctx._avail
     tutors = ctx._tutors
     species = []
-    sp_ids = [sp for sp in ctx.species_ids() if sp not in NOT_IN_GAME]
+    sp_ids = ctx.species_ids()
     sp_slug = {}
     for sp in sp_ids:
         sp_slug[sp] = slugs.make('pokemon', ctx.sp(sp), sp)
@@ -437,14 +439,15 @@ def export(ctx):
             held=[ctx.it(i) for i in p['items'] if i],
             evoFrom=list({(s, G.evo_text(ctx, m, q)): evo_entry(ctx, s, m, q, orig.get((s, sp, G.evo_text(ctx, m, q))), (s, sp))
                           for s, m, q in par.get(sp, []) if s in sp_slug}.values()),
-            # removed targets stay listed (as plain text) when an unobtainable item is what blocks them
+            # All stored evolution targets retain their reference pages.
             evoTo=list({(t, G.evo_text(ctx, m, q)): evo_entry(ctx, t, m, q, orig.get((sp, t, G.evo_text(ctx, m, q))), (sp, t)) for m, q, t in
                         ((m, q, G.evo_target(ctx, sp, t)) for m, q, t in ctx.evos[sp])
                         if t in sp_slug or (t in NOT_IN_GAME and G.evo_possible(m) and not G.evo_works(m, q))}.values()),
             evoNotes=G.evo_notes(ctx, sp) + ([EXTRA[sp]['evoNote']] if 'evoNote' in EXTRA.get(sp, {}) else []),
             game=game_alias(ctx, ctx.SP.get(sp)),
             tmNote='The game\'s TM check rejects this species slot, the one it also uses for Eggs.' if sp == G.EGG_SPECIES else None,
-            how=avail.get(sp, ''),
+            how=avail.get(sp, '') if sp not in NOT_IN_GAME else '',
+            unavailableReason=NOT_IN_GAME.get(sp, {}).get('reason'),
             battleOnly=EXTRA.get(sp, {}).get('battle'),
             note=EXTRA.get(sp, {}).get('note'),
             levelup=[[lv, m] for lv, m in ctx.learn[sp] if m in move_ids],
@@ -583,7 +586,8 @@ def export(ctx):
         for m in mons:
             idx = species_index(ctx, m['species'], m['form'])
             team.append(dict(id=idx, name=ctx.sp(m['species'], m['form']), level=m['level'],
-                             ability=ctx.ab(m['ability']) if m['ability'] else None,
+                             ability=ctx.ab(m['ability']) if m['ability'] else None, abilityId=m['ability'] or None,
+                             itemId=m['item'] or None, moveIds=list(m['moves']),
                              item=ctx.it(m['item']) if m['item'] else None,
                              nature=R.NATURES[m['nature']] if m['nature'] is not None and m['nature'] < 25 else None,
                              ivs=m['ivs'], hpIvs=m['hp_ivs'], evs=m['evs'] if any(m['evs']) else None,
@@ -651,7 +655,7 @@ def export(ctx):
     items = []
     for i in range(1, len(ctx.items)):
         name = ctx.it(i)
-        if name.startswith('item #') or name in ('???', '—', '') or i in ITEMS_NOT_IN_GAME:
+        if name.startswith('item #') or name in ('???', '—', ''):
             continue
         srcs = list({json.dumps(s, sort_keys=True): s for s in item_src.get(i, [])}.values())
         srcs += ITEMS_EXTRA.get(i, {}).get('sources', [])
@@ -663,7 +667,8 @@ def export(ctx):
                 needed.setdefault(ctx.zname(zid), a['slug'] if a else None)
         items.append(dict(id=i, name=name, slug=slugs.make('item', name, i),
                           pocket=R.POCKETS[d['pocket']] if d['pocket'] < 8 else '?', price=d['price'],
-                          sources=srcs, wildHeld=wild_held.get(i, []), game=game_alias(ctx, ctx.IT.get(i)),
+                          sources=srcs if i not in ITEMS_NOT_IN_GAME else [], wildHeld=wild_held.get(i, []), game=game_alias(ctx, ctx.IT.get(i)),
+                          unavailableReason=ITEMS_NOT_IN_GAME.get(i, {}).get('reason'),
                           neededBy=[dict(place=k, area=needed[k]) for k in sorted(needed)],
                           note=ITEMS_EXTRA.get(i, {}).get('note')))
 
@@ -679,7 +684,7 @@ def export(ctx):
         tut.append(dict(move=t['move'], moveName=ctx.mv(t['move']), game=game_alias(ctx, ctx.MV.get(t['move'])),
                         places=list({json.dumps(x, sort_keys=True): x for x in places}.values()),
                         cost=t.get('cost'), species='all' if t['species'] is None else (
-                            'restricted' if t['species'] == 'restricted' else sorted(set(t['species']) - NOT_IN_GAME)),
+                            'restricted' if t['species'] == 'restricted' else sorted(set(t['species']))),
                         quests=quests_for(gq, t.get('file'), ctx.mv(t['move'])), note=TUTOR_NOTES.get((t['move'], t.get('file')))))
 
     # species "found in" summary for the Pokémon pages
@@ -703,8 +708,8 @@ def export(ctx):
                 encExplainer=G.ENC_EXPLAINER, rateNames=G.RATE_NAMES,
                 counts=dict(species=len(species), moves=len(moves), items=len(items), areas=len(area_list),
                             trainers=len(trainers)))
-    return dict(species=species, moves=moves, items=items, areas=area_list, trainers=trainers, tutors=tut, meta=meta,
-                trainer_guide=G.trainer_page_sections(ctx, tds, parties, loc))
+    return BR.enrich(ctx, dict(species=species, moves=moves, items=items, areas=area_list, trainers=trainers, tutors=tut, meta=meta,
+                trainer_guide=G.trainer_page_sections(ctx, tds, parties, loc)), R, slugs)
 
 
 def dump(obj):

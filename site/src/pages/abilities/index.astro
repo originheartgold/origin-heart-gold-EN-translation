@@ -1,0 +1,12 @@
+---
+import { playerAbilityDescription, playerMoveDescription } from '../../lib/reference-format.mjs';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { abilities, abilityUrl, abilityAlias, abilityHolders } from '../../lib/data';
+---
+<StarlightPage frontmatter={{ title: 'Abilities', description: 'Every ability in Origin HeartGold, with effect text, changes, affected moves and Pokémon.', tableOfContents: false }}>
+<p>Browse {abilities.length} abilities by name, description or changes in this hack. Open an ability to find affected moves and Pokémon that have it. Pokémon counts include forms and unavailable entries; check availability before building your team.</p>
+<div class="table-filter" data-table="ability-table"><input type="search" placeholder="Search abilities or effect text…" aria-label="Search abilities" /><select data-key="changed" aria-label="Ability changes"><option value="">All abilities</option><option value="yes">Documented changes</option><option value="no">No documented change</option></select><select data-key="holder" aria-label="Ability holders"><option value="">All holder types</option><option value="regular">Regular ability</option><option value="hidden">Hidden ability</option><option value="none">No holders</option></select><span class="filter-count" aria-live="polite"></span></div>
+<table id="ability-table" class="compact sortable"><thead><tr><th>Ability</th><th>Effect</th><th>Changes</th><th>Regular holders</th><th>Hidden holders</th></tr></thead><tbody>{abilities.map(a => { const holders = abilityHolders.get(a.id) ?? []; const regular = holders.filter(h => h.regularSlots.length).length; const hidden = holders.filter(h => h.hidden).length; return <tr data-changed={a.authorNotes.length || a.applicability.some(n => n.addedInHack) ? 'yes' : 'no'} data-holder={[regular ? 'regular' : '', hidden ? 'hidden' : '', !holders.length ? 'none' : ''].filter(Boolean).join('|')}>
+<td><a href={abilityUrl(a)}>{a.name}</a>{abilityAlias(a) && <span class="ability-summary small">{abilityAlias(a)}</span>}</td><td>{playerAbilityDescription(a) || 'No description available'}</td><td>{a.authorNotes.length ? 'Changes in this hack' : a.applicability.some(n => n.addedInHack) ? 'Added moves' : '—'}{a.applicability.length > 0 && <span class="ability-summary small">{a.applicability.length} affected moves</span>}</td><td>{regular}</td><td>{hidden}</td>
+</tr>; })}</tbody></table>
+</StarlightPage>

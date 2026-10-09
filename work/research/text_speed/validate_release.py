@@ -41,19 +41,52 @@ import sys as _sys  # noqa: E402
 from pathlib import Path as _Path  # noqa: E402
 _sys.path.insert(0, str(_Path(__file__).resolve().parent))   # python -I adds no script directory
 from gate_common import ROOT, add_arguments, digest, identity, inputs_unchanged, load_expected_payload, resolve
+import text_speed_checks as checks  # noqa: E402  (work/tools, on the path via gate_common)
 
 HERE = Path(__file__).resolve().parent
 TIMEOUT = 3600          # seconds of running time per gate, excluding waits for an emulator slot
+# Timing gates (D-2175): their verdicts compare frames, passes or latencies, so each runs once
+# per input phase (gate_common.PHASES: inputs as written and one frame later), from its own
+# cold boot; the gate passes only if every phase passes. Phase p > 0 writes to <name>-phase<p>.
+PHASED = ('fallbacks', 'callbacks', 'corpus', 'controls', 'battle', 'natural-dialogue', 'scenes', 'field-rate')
 
 
 def gates(args, out):
-    """name -> (command, report path)."""
+    """name -> [(command, report path), ...]: one run, or one per input phase for PHASED gates."""
+    from gate_common import PHASES
+    runs = {}
+    for phase in PHASES:
+        where = out if phase == 0 else out / f'phase{phase}'
+        for name, run in _gates(args, where, phase, control_fixture(out)).items():
+            if phase == 0 or name in PHASED:
+                runs.setdefault(name, []).append(run)
+    return runs
+
+
+def control_fixture(out):
+    """The authored control-message ROM of the controls gate: written once per run (every phase
+    uses it)."""
+    return out / 'controls-fixture' / 'control.nds'
+
+
+def make_control_fixture(args):
+    """Write control_fixture(args); returns None, or why it failed."""
+    rom, out = control_fixture(args.out), args.out / 'controls-fixture.log'
+    with out.open('w') as log:
+        code = subprocess.run([sys.executable, '-I', str(HERE / 'control_fixture.py'), str(args.rom), str(rom)],
+                              cwd=ROOT, stdout=log, stderr=subprocess.STDOUT, env=gate_env(out.with_suffix('.waits')))
+    return None if code.returncode == 0 and rom.exists() else f'control fixture failed (exit {code.returncode})'
+
+
+def _gates(args, out, phase, control_rom):
+    """name -> (command, report path) at one input phase."""
     py = [sys.executable, '-I']     # isolated: no PYTHONPATH, no user site, no script-directory injection
     rom, save = str(args.rom), str(args.save)
     fault = ['--fault-payload', str(args.fault_payload)] if args.fault_payload else []
+    fault += ['--phase', str(phase)] if phase else []
     plain = lambda script, name, extra=(): ([*py, str(HERE / script), '--rom', rom, '--save', save,
                                              '--out', str(out / name), *extra, *fault], out / name / 'report.json')
-    control_rom = out / 'controls-fixture' / 'control.nds'
+    control_rom = str(control_rom)
     return {
         'options': plain('harness_options.py', 'options'),
         'music': plain('music_interaction.py', 'music'),
@@ -64,13 +97,8 @@ def gates(args, out):
         'fallbacks': plain('harness_fallbacks.py', 'fallbacks'),
         'callbacks': plain('callback_regression.py', 'callbacks'),
         'corpus': plain('harness_regression.py', 'corpus'),
-        'controls': ([*py, '-c', ';'.join([
-            'import subprocess,sys',
-            f'subprocess.run([sys.executable,"-I",{str(HERE / "control_fixture.py")!r},{rom!r},{str(control_rom)!r}],'
-            'check=True)',
-            f'sys.exit(subprocess.run([sys.executable,"-I",{str(HERE / "harness_regression.py")!r},"--controls",'
-            f'"--rom",{str(control_rom)!r},"--save",{save!r},"--out",{str(out / "controls")!r}]+{fault!r}).returncode)'])],
-            out / 'controls' / 'report.json'),
+        'controls': ([*py, str(HERE / 'harness_regression.py'), '--controls', '--rom', control_rom, '--save', save,
+                      '--out', str(out / 'controls'), *fault], out / 'controls' / 'report.json'),
         'battle': plain('battle_pacing.py', 'battle'),
         'natural-dialogue': plain('natural_dialogue.py', 'natural-dialogue'),
         'phone-call': plain('phone_call_wait.py', 'phone-call'),
@@ -115,7 +143,8 @@ def observations(name, r):
             return {k: {'span': v['span'], 'lag': v['lag_frames'], 'stops': v['stops'].get('reasons')}
                     for k, v in r['cases'].items()}
         if name == 'callbacks':
-            return {k: {'glyphs': v['glyph_count'], 'page2_latency': v.get('page2_latency'),
+            return {k: {'glyphs': v['glyph_count'], 'prompt_tasks': v.get('prompt_tasks'),
+                        'accept_tasks': v.get('accept_tasks'),
                         'per_task': v.get('cadence', {}).get('per_task'),
                         'stops': (v.get('stops') or {}).get('reasons')} for k, v in r['cases'].items()}
         if name == 'natural-dialogue':
@@ -183,6 +212,7 @@ def run_gate(name, command, report_path, log):
     from emu_harness import slot_wait_seconds
     if report_path.exists():
         report_path.unlink()
+    log.parent.mkdir(parents=True, exist_ok=True)
     waits = log.with_suffix('.slot-waits')
     waits.unlink(missing_ok=True)
     env = gate_env(waits)
@@ -215,9 +245,54 @@ def run_gate(name, command, report_path, log):
         row['status'], row['reason'] = 'failed', 'report not bound to a payload'
     if r.get('warnings'):
         row['warnings'] = r['warnings']
+    if r.get('overrun_budget'):
+        row['overrun_budget'] = r['overrun_budget']
     row['observations'] = observations(name, r)
     row['mid_update_samples'] = mid_update_samples(report_path.parent)
     return row
+
+
+def merge_phases(rows):
+    """One gate row from its runs at each input phase (D-2175): passed only if every phase passed;
+    errors and failure reasons are prefixed with their phase; phase 0's observations stay at the
+    top level (report_summary reads them), later phases' under 'phase<p>'."""
+    if len(rows) == 1:
+        return rows[0]
+    row = dict(rows[0])
+    row['phases'] = {str(p): {k: r.get(k) for k in ('status', 'report', 'exit', 'reason', 'slot_wait_seconds')}
+                     for p, r in enumerate(rows)}
+    row['status'] = 'passed' if all(r['status'] == 'passed' for r in rows) else 'failed'
+    errors, reasons = [], []
+    for p, r in enumerate(rows):
+        if r['status'] == 'passed':
+            continue
+        if 'errors' in r:
+            listed = r['errors'] if isinstance(r['errors'], list) else [r['errors']]
+            errors += [f'phase {p}: {e}' for e in listed]
+        else:
+            reasons.append(f"phase {p}: {r.get('reason')}")
+    row.pop('errors', None)
+    row.pop('reason', None)
+    if errors:
+        row['errors'] = errors
+    if reasons:
+        row['reason'] = '; '.join(reasons)
+    warnings = {str(p): r['warnings'] for p, r in enumerate(rows) if r.get('warnings')}
+    row.pop('warnings', None)
+    if warnings:
+        row['warnings'] = warnings
+    for p, r in enumerate(rows[1:], 1):
+        row['observations'] = dict(row.get('observations') or {}, **{f'phase{p}': r.get('observations')})
+    row['mid_update_samples'] = [s for r in rows for s in r.get('mid_update_samples', [])]
+    budgets = [r['overrun_budget'] for r in rows if r.get('overrun_budget')]
+    if budgets:
+        row['overrun_budget'] = add_budgets(budgets)
+    return row
+
+
+def add_budgets(budgets):
+    """Sum gate 'overrun_budget' counts (FAST printing frames, unforced overruns; D-2276)."""
+    return {k: sum(b.get(k, 0) for b in budgets) for k in ('fast_frames', 'unforced_overruns')}
 
 
 def tree_state():
@@ -295,13 +370,19 @@ def main():
             if unknown:
                 p.error(f'unknown gates {sorted(unknown)}')
             selected = {k: v for k, v in selected.items() if k in names}
+        if 'controls' in selected:
+            problem = make_control_fixture(args)
+            if problem:
+                summary['gates']['controls'] = {'status': 'failed', 'reason': problem}
+                del selected['controls']
         with ThreadPoolExecutor(max_workers=max(1, args.jobs)) as pool:
-            futures = {name: pool.submit(run_gate, name, cmd, path, args.out / f'{name}.log')
-                       for name, (cmd, path) in selected.items()}
-            for name, future in futures.items():
-                summary['gates'][name] = future.result()
+            futures = {name: [pool.submit(run_gate, name, cmd, path, path.parent.parent / f'{name}.log')
+                              for cmd, path in runs]
+                       for name, runs in selected.items()}
+            for name, runs in futures.items():
+                summary['gates'][name] = merge_phases([f.result() for f in runs])
                 print(name, summary['gates'][name]['status'], flush=True)
-        control = args.out / 'controls-fixture' / 'control.nds'
+        control = control_fixture(args.out)
         if control.exists():
             summary['control_fixture_sha256'] = digest(control)
         if not inputs_unchanged(summary):
@@ -310,6 +391,13 @@ def main():
         summary['git_head_at_end'], summary['git_dirty_at_end'] = end_head, end_dirty
         if (end_head, end_dirty) != (head, dirty):
             failures.append('work tree or HEAD changed during validation')
+        summary['overrun_budget'] = add_budgets([g['overrun_budget'] for g in summary['gates'].values()
+                                                 if g.get('overrun_budget')])
+        # The rate is judged over the whole run only (D-2276: 'across the whole corpus'): an --only
+        # run is too small for 1 per 1000 and never releasable; it still reports the count.
+        budget_error = None if args.only else checks.overrun_budget_error(summary['overrun_budget'])
+        if budget_error:
+            failures.append(budget_error)
         failed = sorted(n for n, g in summary['gates'].items() if g['status'] != 'passed')
         summary['failed_gates'] = failed
         summary['problems'] = failures
