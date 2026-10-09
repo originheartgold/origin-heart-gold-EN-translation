@@ -12,8 +12,9 @@ day, when its armips source replaced text_speed_patch.apply(): arm9 (with the gr
 was added later from a build equal to its code_patches.json original (same note); bulbasaur-reflection-boundary
 on 2026-10-08 (D-2270): its overlay1 is the Chinese overlay 1 with the one byte 0x1191B changed 0xDD -> 0xDB,
 checked independently of armips; battle-message-error-marker on 2026-10-09 (D-2276): its overlay14 is the Chinese
-overlay 14 with the two 34-byte regions 0x25336 and 0x2536A taken from a full build, which differs from its
---without build only there (checked byte by byte)."""
+overlay 14 with the regions 0x25336 (34 bytes) and 0x2536A (20 bytes) taken from a full build, which differs from
+its --without build only there (checked byte by byte); battle-message-references the same day (D-2278): overlay 14
+with 0x3E8A4 (2 bytes), 0x1D31C (8) and 0x1D340 (4) from the same build."""
 import hashlib
 import os
 import re
@@ -33,7 +34,7 @@ import fixes as F  # noqa: E402
 ROM_CN = HERE.parent / "rom" / "origin_v4.0.3_cn.nds"
 ASM_FIXES = ("outfit-chooser-strings", "namelen", "naming-keyboard", "msgload", "pcbox-name-width", "ivev-panel",
              "antipiracy", "text-speed", "overworld-texture-frame-bounds", "bulbasaur-reflection-boundary",
-             "battle-message-error-marker")
+             "battle-message-error-marker", "battle-message-references")
 # SHA-1 of every binary each fix changes (alone, and all together as "all") and of the y9 overlay table
 GOLDEN = {
     "outfit-chooser-strings": {
@@ -72,7 +73,11 @@ GOLDEN = {
         "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
     },
     "battle-message-error-marker": {
-        "overlay14": "2b4238411f87f368b9541c0cdcf4d9b12909d625",
+        "overlay14": "0825912e0a5ea831b01317bf28d6ea710fa8bd06",
+        "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
+    },
+    "battle-message-references": {
+        "overlay14": "8e5aa06548bbf44ebc5fa39687b23f7ba19f16d5",
         "y9": "14a857a74185e918becc63b963a4a7b5a0cf8688"
     },
     "antipiracy": {
@@ -88,7 +93,7 @@ GOLDEN = {
     "all": {
         "arm9": "a7953cc1a9a92c02c7498019618d948e53c4b173",
         "overlay1": "e47febed127e898212e32db2d91b577e7ff6106c",
-        "overlay14": "2b4238411f87f368b9541c0cdcf4d9b12909d625",
+        "overlay14": "25201e5d4a52432416794fd4cfe352362b16e75a",
         "overlay16": "87cd982681b4164781e92a68994d6190c54d7a35",
         "overlay17": "5015627c82275c7836897b67dfec73c662015635",
         "overlay44": "bb8393e2d4c2cd05a094e984597a0de6ce0bd841",
@@ -666,12 +671,12 @@ class RealFixes(unittest.TestCase):
 
     def test_all_fixes_together_match_golden(self):
         rom, rep = self.check_golden("all", ASM_FIXES)
-        self.assertEqual(len(rep["code_regions"]), 48)
+        self.assertEqual(len(rep["code_regions"]), 51)
         self.assertEqual([(r["id"], r["mode"], r["en"]) for r in rep["strings"]],
                          [("overlay58:0x6F0", "in-place", "OK"), ("overlay58:0x6F6", "relocated", "Outfit 1"),
                           ("overlay58:0x6FE", "relocated", "Outfit 3"), ("overlay58:0x706", "relocated", "Outfit 2")])
         self.assertEqual(rep["armips"]["version"], A.PINNED_VERSION)
-        self.assertEqual(A.verify(rom, rep), "ok (4 strings, 48 code regions)")
+        self.assertEqual(A.verify(rom, rep), "ok (4 strings, 51 code regions)")
         view = self.hc.RomView(rom)
         self.assertEqual(view.table_ram_size(58), 0x818)
         self.assertEqual(rep["grown"], {"overlay58": {"from": 0x7E0, "to": 0x818},
@@ -688,7 +693,7 @@ class RealFixes(unittest.TestCase):
         # a build report from before the rename ("code_patches") still verifies
         old = {k: v for k, v in rep.items() if k not in ("code_regions", "grown")}
         old["code_patches"] = rep["code_regions"]
-        self.assertEqual(A.verify(rom, old), "ok (4 strings, 48 code regions)")
+        self.assertEqual(A.verify(rom, old), "ok (4 strings, 51 code regions)")
         # no Chinese left in the chooser
         cm_zh = self.m.Charmap.load([self.hc.ZH_CHARMAP])
         self.assertEqual(list(self.hc.scan_blob(view.get("overlay58"), cm_zh, self.hc._bigrams())), [])

@@ -28,19 +28,19 @@ separate immediates. A sweep of every String_AddChar call in arm9 and all overla
 character (work/notes/battle-text-chinese_fix.md 'Sweep').
 """
 what = """
-Old: '(' 错 误 ')' appended before the name (four AddChar calls, 34 bytes per tag case).
+Old: '(' 错 误 ')' appended before the name (four AddChar calls, 34 bytes per tag case); the fix writes 34 + 20 bytes.
 New: the tag 0x0101 case's 34 bytes become a loop that appends a 0xFFFF-terminated string with
 String_AddChar (r4, the tag's buffer index, saved and restored around it; r5, the output, unchanged) and
 ends with the same branch to the formatter's common tail (0x02225BBA); the 0x0102 case's first halfword
-branches to that loop and its remaining bytes hold the string '(Error) ' (8 characters; the space separates
-it from the name). Same conditions, same name after it, same tail: only the text differs. The literal pool
+branches to that loop and its next 18 bytes hold the string '(Error) ' (8 characters; the space separates
+it from the name); the rest of that old path (12 bytes, dead after the branch) is left alone. Same conditions, same name after it, same tail: only the text differs. The literal pool
 stays (no longer read). Not changed: the helpers, the fallback to reference 1, the message ids, the variant
 (own / wild / foe) choice.
 """
 evidence = [
   "D-2276: the user-approved exception to D-1337 for this fix; D-2277: the hack logic that makes the marker appear (open, not changed)",
   "work/notes/battle-text-chinese_fix.md: the formatter, the two cases, the sweep, the emulator runs before and after",
-  "Runtime: emu_harness.py fixes --case battle-message-error-marker (scenario battle-error-marker: Linoone that knows only Nature Power against Camper Ward on Route 24; the characters the formatter's error path appends are hooked at String_AddChar). 2026-10-09, DeSmuME: the Chinese ROM and the --without build append ( 错 误 ) (the window shows '(错误)直冲熊的命中率巨幅提高了！' / '(错误)Linoone’s accuracy rose drastically!'), the full build '(Error) ' ('(Error) Linoone’s accuracy rose drastically!')",
+  "Runtime: emu_harness.py fixes --case battle-message-error-marker (scenario battle-error-marker: Camper Ward on Route 24 with the battle's first Pokémon-name buffer forced to an invalid reference, since battle-message-references fixed the hack's own sources; the characters the formatter's error path appends are hooked at String_AddChar). 2026-10-09, DeSmuME: the Chinese ROM and the --without build append ( 错 误 ), the full build '(Error) ' ('Ward sent out (Error) Linoone!'). Before battle-message-references, Nature Power reached it unforced: '(错误)直冲熊的命中率巨幅提高了！' (Chinese ROM), '(Error) Linoone’s accuracy rose drastically!' (build)",
   "melonDS 1.1 (headless backend), 2026-10-09: a wild battle on Route 24 grass, Linoone with Nature Power: '(错误)Maximilian’s accuracy rose drastically!' on the --without build, '(Error) Maximilian’s accuracy rose drastically!' on the full build; the battle goes on, no ARM9 abort or undefined instruction on either (work/notes/battle-text-chinese_fix.md)",
 ]
 
@@ -55,5 +55,5 @@ notes = "BattleMsg_Format, tag 0x0101 case after its helper returned 0: the four
 id = "battle-message-error-marker-tag0102"
 file = "overlay14"
 offset = "0x2536A"
-expect = "4931 1C28 F601 FA45 4930 1C28 F601 FA41 492F 1C28 F601 FA3D 492E 1C28 F601 FA39 E026"
-notes = "BattleMsg_Format, tag 0x0102 case (the nickname tag of most battle messages) after its helper returned 0: a branch to the loop, then the 0xFFFF-terminated English '(Error) '."
+expect = "4931 1C28 F601 FA45 4930 1C28 F601 FA41 492F 1C28"
+notes = "BattleMsg_Format, tag 0x0102 case (the nickname tag of most battle messages) after its helper returned 0: a branch to the loop, then the 0xFFFF-terminated English '(Error) ' (20 bytes). The rest of the old path (0x02225B5E-0x02225B6B) is not touched: dead after the branch, and where type-change-message puts its type case."

@@ -1,7 +1,7 @@
-# Chinese (错误) in battle text: the hack's error marker (fix `battle-message-error-marker`)
+# Chinese (错误) and the wrong Pokémon in battle text (fixes `battle-message-error-marker`, `battle-message-references`)
 
-**Status (2026-10-09): fixed on branch `fix/battle-text-chinese`.** D-2276 (the fix, a user-approved exception to
-D-1337), D-2277 (the hack logic behind it, open: reported, not changed).
+**Status (2026-10-09): fixed on branch `fix/battle-text-chinese`.** D-2276 (the marker's English), D-2278 (the two
+root causes), both user-approved exceptions to D-1337; D-2277 (the hack finding) is resolved by D-2278.
 
 ## Reports
 
@@ -10,77 +10,108 @@ D-1337), D-2277 (the hack logic behind it, open: reported, not changed).
   parentheses. Despite Pikachu being named, I was fighting it with a Linoone, though I did switch Pikachu out the
   turn prior. The Nuzleaf didn't use an accuracy-related move."
 - Discord, rc6: "an untranslated Chinese word after attract/infatuation" (DraStic screenshot, not seen).
-- Older, unreproduced: in double battles with an ally, the ally's Pokémon is called "Foe's" during move use. Not
-  reproduced here (see 'Not covered').
+- Older: in double battles with an ally, the ally's Pokémon is called "Foe's" during move use (see 'Ally').
 
-## Cause
+## How battle messages are built
 
-The two Chinese characters are 错误 ("error"). They are not message text: every battle_string and a027 string
-has English, and none contains Chinese. The hack's battle message formatter (overlay 14, 0x02225A3C, called by
-0x02225EA8 for every battle_string message) expands the template's control codes itself. For the Pokémon-name
-tags 0x0101 and 0x0102 (jump-table cases 1 and 2) it calls a helper (0x02225978 / 0x022259C4) with the
-message's Pokémon reference. A reference outside 1..25, or one that resolves to nothing, makes the helper
-buffer reference 1 instead and return 0; on 0 the formatter appends four hardcoded character codes, '(' 0x0CED
-0x0BDD ')' = (错误), with four `String_AddChar` calls (0x02225B16 for 0x0101, 0x02225B4A for 0x0102; the codes
-sit in the literal pool at 0x02225C10), and then appends the name buffer as usual. The name that follows is
-the fallback's: the player's first party Pokémon, also while another one is fighting (the report's Pikachu).
-`hardcoded.py scan` looks for 0xFFFF-terminated strings, so four separate immediates were invisible to it.
+- The hack builds most battle messages as records: MsgRec_Init (0x02225DC0: record, type, id) and MsgRec_AddArg
+  (0x02225DEC). Type 1 prints battle_string bank 2 (plain lines); type 2 prints bank 1 (own / wild / foe /
+  trainer variants, chosen from a battler). Other lines go straight into the server-to-client stream
+  (0x02224C50: op 2 = bank 2, op 3 = bank 1 with a variant battler).
+- The arguments are the template's buffers. A Pokémon-name buffer (tags 0x0101 species, 0x0102 nickname) needs a
+  Pokémon reference 1..25 (observed: 1-6 the player's party, 7-12 an ally trainer's, 13-18 the foe's, 19-24 a
+  second foe's).
+- The client's formatter (overlay 14, 0x02225A3C) turns a bad reference (0, or > 25, or one that resolves to
+  nothing) into reference 1, the player's first party Pokémon, and puts four hardcoded characters in front of it:
+  '(' 0x0CED 0x0BDD ')' = (错误), "error", appended with String_AddChar at 0x02225B16 (tag 0x0101) and 0x02225B4A
+  (tag 0x0102). That is the Chinese the players saw. It is not message text, so the translation and the
+  hardcoded-string scan (0xFFFF-terminated strings only) both missed it.
 
-Which messages reach it (hack logic, D-2277; identical on the untouched Chinese ROM):
+## Root causes (D-2277, fixed by D-2278)
 
-| Trigger | Message read | Chinese ROM shows | English build (before) |
+| Message | Built by | Bug | Fix |
 |---|---|---|---|
-| Nature Power on Route 24 (the player's Linoone, or Camper Ward's Nuzleaf) | 1#120 / 1#122 (accuracy rose drastically; no "turned into" line before it; the move still hits) | (错误)直冲熊的命中率巨幅提高了！ | (错误)Linoone’s accuracy rose drastically! / The foe’s (错误)Pikachu’s accuracy rose drastically! |
-| Attract: every turn the infatuated foe acts | 1#454 | 长臾叶让对手的(错误)吉利蛋着迷了！ | The foe’s (错误)Linoone fell in love with Nuzleaf! |
+| Nature Power: "turned into {move}" | 0x0223F070: MsgRec_Init(rec, 2, 120), AddArg(battle var 0x29 = the called move) | message 120 with a move is bank 2's 2#120 'Nature Power turned into {move}!', but type 2 printed bank 1's 1#120 '{Pokémon}'s accuracy rose drastically!' with the move id as the Pokémon (Earthquake = 89 on Route 24). That is report 1, with the foe variant from the Nuzleaf and the fallback Pikachu | 0x0223F084 `movs r1, #2` → `#1` |
+| Infatuation, every turn the infatuated Pokémon tries to move: 1#452-455 '{1}让{0}着迷了' ({0} = the infatuated Pokémon, which also picks the variant; {1} = the one it is in love with) | 0x0221DAEC: emit(op 3, 452, variant = self, args (Condition_GetData(self, 7), self)) | condition 7's data field is always 0; the attracter is the condition's source, word 0 of its 8-byte entry (Pokémon + 0x38 + 7 × 8 = + 0x70; observed 0x0D for a wild attracter, 0x01 for the player's). The arguments were also in the wrong order. That is report 2 | 0x0221DAFC: `bl Condition_GetData` + mask → `ldr r4, [r5, #0x70]` + the same byte mask + nop; 0x0221DB20: the two argument stores swapped |
 
-The report's "the foe" + Pikachu is the foe variant (the message's battler is Nuzleaf) with the fallback name.
-The Quick Claw is unrelated (its own message, 1#1390, prints correctly).
+## Fixes
 
-## Fix
+- **`battle-message-references`** (code, overlay 14, 14 bytes in 3 regions): the two root causes above. Message
+  ids, the variant battler, when the lines appear and the condition logic are unchanged.
+- **`battle-message-error-marker`** (code, overlay 14, 54 bytes in 2 regions): the marker reads "(Error) " as a
+  safety net.
+  - 0x02225B16–0x02225B37 (the tag 0x0101 error path, 34 bytes): a loop that appends a 0xFFFF-terminated string
+    (r4 saved, r5 the output), ending with the old branch to the tail 0x02225BBA.
+  - 0x02225B4A–0x02225B5D (20 bytes): `b 0x02225B16`, then "(Error) " + 0xFFFF.
+  - Not touched: 0x02225B5E–0x02225B6B (dead after the branch) and the jump table. The `type-change-message` fix
+    (branch fix/type-change-message) uses exactly those (see 'Together with type-change-message').
+- Text: battle_string 1#121-123 and 1#453-455 break earlier so the line still fits with the 46-px marker and a
+  10-character nickname. Without this, #454 cut 'with' off at the window edge in the emulator.
 
-`work/patches/battle-message-error-marker/` (kind code, overlay 14, two 34-byte regions):
+## Audit: other messages that can reach the fallback
 
-- 0x02225B16 (case 0x0101's error path): `push {r4}`, `adr r4, text`, a loop `ldrh r1, [r4]` / end at 0xFFFF /
-  `bl String_AddChar(r5, r1)` / `r4 += 2`, `pop {r4}`, `b 0x02225BBA` (the same tail as before). r4 holds the
-  tag's buffer index, which the tail reads, so it is saved; r5 (the output) is not touched.
-- 0x02225B4A (case 0x0102's error path): `b 0x02225B16`, then the text: `(Error) ` (8 characters, 0xFFFF end).
-- When the marker appears and which name follows it are unchanged. The literal pool stays (no longer read).
+- **Static audit** of every record (284 MsgRec_Init sites, 394 AddArg) and every direct stream message (103
+  emits) in overlay 14. For each one I checked the type or op against the bank and the arguments in the template's
+  Pokémon-name slots. Script: `audit.py`, in the session scratchpad.
+  - Two sites put something other than a reference in a name slot: Nature Power (a move id) and the infatuation
+    check (a condition's data field). Both are fixed.
+  - Three sites only looked short of arguments. They add their arguments after a branch (2#10 sent out, 2#481
+    sent to the PC, 1#594 Frisk), and they print correctly in game.
+  - Many arguments come from registers set outside the analysed window, so this is not a proof.
+- **Dynamic checks** (DeSmuME, fixed build): no marker in any of these, besides the scenario that forces one.
+  - the 24 scripted battles of `sweeps --sweep battle` (all ok);
+  - Nature Power and Attract, both sides, wild and trainer;
+  - a multi battle (partner Green against Camper Ward and Bug Catcher Tommy) with Attract on a second-slot foe.
 
-Text: six battle_string lines break earlier so the line still fits with the 46-px marker and a 10-character
-nickname (QA worst case): 1#121-123 '…’s{NEWLINE}accuracy rose drastically!', 1#453-455
-'…{NEWLINE}fell in love with …!'. Without the rewrap, 1#454 cut 'with' at the window edge in the emulator.
+## Ally ("Foe's" in a partner battle)
 
-## Sweep
-
-Every `bl String_AddChar` (0x02026FDC) in arm9 and all 120 overlays of the Chinese ROM, with the character
-loaded into r1 just before it: the only hanzi are these four calls (错, 误 at both sites). The other caller with
-a constant appends 0xE000 (a line break, overlay 103). Strings in other forms were covered by the earlier
-`hardcoded.py scan` (work/notes/hardcoded_text.md). Every battle_string id has English (2881 strings, no
-Chinese in `en`). So after this fix no battle message can print Chinese from the code or the banks.
+- **Not reproduced.** In a multi battle with a partner trainer (`MultiBattle 1, 960, 109`), the partner's
+  Pokémon are references 7-12. Their lines use the plain variant: "Bulbasaur used Leech Seed!", "Bulbasaur
+  flinched and couldn't move!", "Jigglypuff used Perish Song!".
+- No "The foe's" was seen on an ally line. The variant choice is 0x02225E40 (own when the battler is the player's
+  side, else wild or foe after a side check).
+- The report might come from a different battle type (a scripted partner such as Steven or a link battle); not
+  set up.
 
 ## Evidence (2026-10-09)
 
-Scripts and outputs in the session scratchpad and `work/build/repro/` of the worktree (not in git).
+Scripts in the session scratchpad; screenshots and logs in `work/build/repro/` and `work/build/harness/` of the
+worktree (not in git).
 
-- DeSmuME, Chinese ROM: Nature Power and Attract as in the table (screenshots `cn_np3/shot46`,
-  `cn_attract2/shot50`).
-- DeSmuME, English build of develop 207caca (before): Camper Ward battle, Pikachu lead switched to Linoone:
-  "The foe’s (错误)Pikachu’s accuracy rose drastically!" after the foe's Nature Power, exactly the report.
-- `emu_harness.py fixes --case battle-message-error-marker` (scenario `battle-error-marker`): PASS. Fixed build:
-  "(Error) " appended from 0x02225B28 with 1#120; control (`--without battle-message-error-marker`): ( 错 误 )
-  from 0x02225B52/5A/62/6A; Chinese reference: ( 错 误 ).
-- Fixed build, DeSmuME, by hand: "(Error) Linoone’s accuracy rose drastically!", "The foe’s (Error) Pikachu’s
-  accuracy rose drastically!" (foe's Nature Power after a switch), "The foe’s (Error) Chansey fell in love with
-  Nuzleaf!" (before the rewrap the line was cut after 'wi').
-- melonDS 1.1, wild battle in Route 24 grass, Linoone with Nature Power: control '(错误)Maximilian’s accuracy
-  rose drastically!', fixed '(Error) Maximilian’s accuracy rose drastically!'; the battle goes on, no data or
-  prefetch abort, no undefined instruction on either build.
-- The full build differs from the `--without` build only in overlay 14, the two regions (byte compare).
+**Chinese ROM (DeSmuME):**
+- "(错误)直冲熊的命中率巨幅提高了！" after Nature Power.
+- "长臾叶让对手的(错误)吉利蛋着迷了！" (infatuation).
+- Traced records: Nature Power MsgRec_Init(type 2, 120, arg 0x59); infatuation emit(452, variant 0x0D, args 0,
+  0x0D); condition 7's entry word 0 = the attracter's reference.
 
-## Not covered
+**Develop build before the fixes:**
+- Report 1 word for word: "The foe’s (错误)Pikachu’s accuracy rose drastically!" (Pikachu switched out for
+  Linoone).
+- "The foe’s (错误)Linoone fell in love with Nuzleaf!"
 
-- The wrong subject (fallback name, no "Nature Power turned into" line, the infatuation message's argument) is
-  the hack's logic, reported as D-2277 for the user to decide.
-- The older "ally's Pokémon called Foe's in double battles" report was not reproduced. The formatter picks the
-  own / wild / foe variant from the message's battler (0x02225E40: own if it is the player's battler, wild in a
-  wild battle, else a side check 0x02228600); a tag battle with an ally was not set up.
+**Fixed build (DeSmuME):**
+- "Linoone used Nature Power!" → "Nature Power turned into / Earthquake!" (also after the foe's Nature Power).
+- "The foe’s Nuzleaf / fell in love with Chansey!"
+- "Tauros fell in love with / Chansey!" (the player infatuated by a wild Chansey).
+- "The wild Sunkern / fell in love with Chansey!"
+- Multi battle: "The foe’s Butterfree / fell in love with Chansey!" (second foe, reference 19).
+
+**`--without battle-message-references`:** "(Error) Tauros fell in love with Tauros!", "(Error) …’s accuracy rose
+drastically!".
+
+**Fix scenarios** (`emu_harness.py fixes`): `battle-references` PASS, `battle-error-marker` PASS (forced
+reference: "Ward sent out (Error) Linoone!" fixed, ( 错 误 ) on the control and the Chinese ROM).
+
+**melonDS 1.1** (wild battle in Route 24 grass, Nature Power):
+- Chinese ROM: "(错误)Maximilian的命中率巨幅提高了！".
+- `--without battle-message-references`: "(Error) Maximilian’s accuracy…".
+- Fixed: "Nature Power turned into…".
+- No ARM9 abort or undefined instruction on any of them.
+
+**Byte compare:** the full build differs from each `--without` build only in that fix's regions.
+
+## Sweep for hardcoded Chinese
+
+I checked every `bl String_AddChar` with a constant character in arm9 and all 120 overlays. The only hanzi are
+the marker's (错, 误 at both sites); the other constant is 0xE000, a line break in overlay 103. All 2881
+battle_string strings have English.

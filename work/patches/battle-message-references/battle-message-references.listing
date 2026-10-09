@@ -1,0 +1,87 @@
+; battle-message-references - disassembly snapshot of battle-message-references.asm: every edit, old -> new. Generated; do not edit.
+; Regenerate: python3 work/tools/asmpatch.py listing --write battle-message-references   (check.py --full fails when it is stale)
+; Old: the Chinese ROM. New: battle-message-references.asm assembled alone over it by armips v0.11.0.
+; Disassembly: capstone 5.0.9 (UAL syntax). '  ' unchanged context, '- ' old, '+ ' new;
+; addresses are RAM addresses, Thumb bytes are halfwords, ARM bytes words; data rows are what one
+; statement writes (u16 rows of a string or key row with their characters, '|' = 0xFFFF end).
+
+== overlay14+0x1D30C (RAM 0x0221DAEC), 74 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
+  0221DAEC  1C28       adds r0, r5, #0
+  0221DAEE  2107       movs r1, #7
+  0221DAF0  F7F9 F91A  bl #0x2216d28
+  0221DAF4  2800       cmp r0, #0
+  0221DAF6  D026       beq #0x221db46
+  0221DAF8  1C28       adds r0, r5, #0
+  0221DAFA  2107       movs r1, #7
+  0221DAFC  F7F9 F926  bl #0x2216d4c  ; Condition_GetData
+  0221DB00  0600       lsls r0, r0, #0x18
+  0221DB02  0E04       lsrs r4, r0, #0x18
+  0221DB04  1C28       adds r0, r5, #0
+  0221DB06  2107       movs r1, #7
+  0221DB08  F00C FC94  bl #0x222a434
+  0221DB0C  480F       ldr r0, [pc, #0x3c]
+  0221DB0E  6800       ldr r0, [r0]
+  0221DB10  6A06       ldr r6, [r0, #0x20]
+  0221DB12  1C28       adds r0, r5, #0
+  0221DB14  F7F8 FE44  bl #0x22167a0  ; Mon_GetRef
+  0221DB18  1C07       adds r7, r0, #0
+  0221DB1A  1C28       adds r0, r5, #0
+  0221DB1C  F7F8 FE40  bl #0x22167a0  ; Mon_GetRef
+  0221DB20  9400       str r4, [sp]
+  0221DB22  9001       str r0, [sp, #4]
+  0221DB24  480A       ldr r0, [pc, #0x28]
+  0221DB26  2271       movs r2, #0x71
+  0221DB28  9002       str r0, [sp, #8]
+  0221DB2A  1C30       adds r0, r6, #0
+  0221DB2C  2103       movs r1, #3
+  0221DB2E  0092       lsls r2, r2, #2
+  0221DB30  1C3B       adds r3, r7, #0
+  0221DB32  F007 F88D  bl #0x2224c50  ; BattleMsg_Emit
+
+== overlay14+0x1D31C (RAM 0x0221DAFC), 8 bytes, thumb: battle-message-references-infatuation-source
+  0221DAF8  1C28       adds r0, r5, #0
+  0221DAFA  2107       movs r1, #7
+- 0221DAFC  F7F9 F926  bl #0x2216d4c  ; Condition_GetData
+- 0221DB00  0600       lsls r0, r0, #0x18
+- 0221DB02  0E04       lsrs r4, r0, #0x18
++ 0221DAFC  6F2C       ldr r4, [r5, #0x70]
++ 0221DAFE  0624       lsls r4, r4, #0x18
++ 0221DB00  0E24       lsrs r4, r4, #0x18
++ 0221DB02  46C0       mov r8, r8
+  0221DB04  1C28       adds r0, r5, #0
+  0221DB06  2107       movs r1, #7
+
+== overlay14+0x1D340 (RAM 0x0221DB20), 4 bytes, thumb: battle-message-references-infatuation-args
+  0221DB1C  F7F8 FE40  bl #0x22167a0  ; Mon_GetRef
+- 0221DB20  9400       str r4, [sp]
+- 0221DB22  9001       str r0, [sp, #4]
++ 0221DB20  9000       str r0, [sp]
++ 0221DB22  9401       str r4, [sp, #4]
+  0221DB24  480A       ldr r0, [pc, #0x28]
+  0221DB26  2271       movs r2, #0x71
+
+== overlay14+0x3E890 (RAM 0x0223F070), 44 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
+  0223F070  B510       push {r4, lr}
+  0223F072  2006       movs r0, #6
+  0223F074  1C0C       adds r4, r1, #0
+  0223F076  F7D0 FE23  bl #0x220fcc0  ; BattleVar_Get
+  0223F07A  4284       cmp r4, r0
+  0223F07C  D112       bne #0x223f0a4
+  0223F07E  2003       movs r0, #3
+  0223F080  F7D0 FE1E  bl #0x220fcc0  ; BattleVar_Get
+  0223F084  2102       movs r1, #2
+  0223F086  2278       movs r2, #0x78
+  0223F088  1C04       adds r4, r0, #0
+  0223F08A  F7E6 FE99  bl #0x2225dc0  ; MsgRec_Init
+  0223F08E  2029       movs r0, #0x29
+  0223F090  F7D0 FE16  bl #0x220fcc0  ; BattleVar_Get
+  0223F094  1C01       adds r1, r0, #0
+  0223F096  1C20       adds r0, r4, #0
+  0223F098  F7E6 FEA8  bl #0x2225dec  ; MsgRec_AddArg
+
+== overlay14+0x3E8A4 (RAM 0x0223F084), 2 bytes, thumb: battle-message-references-nature-power
+  0223F080  F7D0 FE1E  bl #0x220fcc0  ; BattleVar_Get
+- 0223F084  2102       movs r1, #2
++ 0223F084  2101       movs r1, #1
+  0223F086  2278       movs r2, #0x78
+  0223F088  1C04       adds r4, r0, #0

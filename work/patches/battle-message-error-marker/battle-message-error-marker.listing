@@ -60,7 +60,7 @@
   02225B46  2800       cmp r0, #0
   02225B48  D137       bne #0x2225bba  ; BattleMsg_TagDone
 
-== overlay14+0x2536A (RAM 0x02225B4A), 34 bytes, thumb: battle-message-error-marker-tag0102
+== overlay14+0x2536A (RAM 0x02225B4A), 20 bytes, thumb: battle-message-error-marker-tag0102
   02225B46  2800       cmp r0, #0
   02225B48  D137       bne #0x2225bba  ; BattleMsg_TagDone
 - 02225B4A  4931       ldr r1, [pc, #0xc4]
@@ -71,11 +71,6 @@
 - 02225B56  F601 FA41  bl #0x2026fdc  ; String_AddChar
 - 02225B5A  492F       ldr r1, [pc, #0xbc]
 - 02225B5C  1C28       adds r0, r5, #0
-- 02225B5E  F601 FA3D  bl #0x2026fdc  ; String_AddChar
-- 02225B62  492E       ldr r1, [pc, #0xb8]
-- 02225B64  1C28       adds r0, r5, #0
-- 02225B66  F601 FA39  bl #0x2026fdc  ; String_AddChar
-- 02225B6A  E026       b #0x2225bba  ; BattleMsg_TagDone
 + 02225B4A  E7E4       b #0x2225b16  ; ErrorMarker
 + 02225B4C  01B9       lsls r1, r7, #6
 + 02225B4E  012F       lsls r7, r5, #4
@@ -86,15 +81,7 @@
 + 02225B58  01BA       lsls r2, r7, #6
 + 02225B5A  01DE       lsls r6, r3, #7
 + 02225B5C  FFFF       .hword 0xFFFF
-+ 02225B5E  0000       movs r0, r0
-+ 02225B60  0000       movs r0, r0
-+ 02225B62  0000       movs r0, r0
-+ 02225B64  0000       movs r0, r0
-+ 02225B66  0000       movs r0, r0
-+ 02225B68  0000       movs r0, r0
-+ 02225B6A  0000       movs r0, r0
-  02225B6C  00A2       lsls r2, r4, #2
-  02225B6E  9802       ldr r0, [sp, #8]
+  02225B5E  F601 FA3D  bl #0x2026fdc  ; String_AddChar
 
 == overlay14+0x25430 (RAM 0x02225C10), 16 bytes, thumb: read-only guard (the source checks these bytes and writes none of them)
   02225C10  01B9       lsls r1, r7, #6

@@ -304,10 +304,23 @@ class Judges(unittest.TestCase):
         listing = (F.WORK / "patches" / "battle-message-error-marker" / "battle-message-error-marker.listing").read_text()
         # the loop's String_AddChar call (fixed) and the hack's last call (original) are inside the watched range
         self.assertIn("+ 02225B24  F601 FA5A  bl #0x2026fdc  ; String_AddChar", listing)
-        self.assertIn("- 02225B66  F601 FA39  bl #0x2026fdc  ; String_AddChar", listing)
+        self.assertIn("- 02225B56  F601 FA41  bl #0x2026fdc  ; String_AddChar", listing)
         lo, hi = F.ERROR_MARKER_PATHS
         self.assertTrue(lo <= 0x02225B28 < hi and lo <= 0x02225B6A < hi)
         self.assertEqual(F.STRING_ADD_CHAR, 0x02026FDC)
+
+    def test_battle_references(self):
+        judge = F.judge_battle_references
+        fixed = {"nature_power_next": {"bank": 2, "id": 120, "params": [89, 0xFFFF, 0]},
+                 "infatuation": [{"params": [1, 1, 13, 0xFFFF]}]}
+        original = {"nature_power_next": {"bank": 1, "id": 120, "params": [1, 89, 0xFFFF, 5]},
+                    "infatuation": [{"params": [1, 0, 1, 0xFFFF]}]}
+        self.assertEqual(judge("battle-references", fixed, original)[0], "fixed")
+        self.assertEqual(judge("battle-references", original, original)[0], "original")
+        self.assertEqual(judge("battle-references", fixed, fixed)[0], "unclear")      # reference must be original
+        half = dict(fixed, infatuation=original["infatuation"])
+        self.assertEqual(judge("battle-references", half, original)[0], "unclear")
+        self.assertEqual(F.COVERAGE["battle-message-references"], ("battle-references",))
 
     def test_judge_rows(self):
         selection = {"pcbox": ["pcbox-name-width"]}

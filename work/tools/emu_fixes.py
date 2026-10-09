@@ -61,6 +61,7 @@ COVERAGE = {
     "overworld-texture-frame-bounds": ("texture-bounds",),
     "bulbasaur-reflection-boundary": ("reflection",),
     "battle-message-error-marker": ("battle-error-marker",),
+    "battle-message-references": ("battle-references",),
 }
 # fix id -> why no scenario of this command covers it (honest gaps; see work/notes/emu_harness.md)
 UNCOVERED = {
@@ -165,9 +166,10 @@ APPROVED = {   # taken from run work/build/hard4/run3 (2026-10-08), the build of
 }
 # battle-message-error-marker (battle-message-error-marker.listing): the battle formatter's error paths of the
 # Pokemon-name tags, original four AddChar calls (0x02225B16, 0x02225B4A), fixed one loop (bl at 0x02225B24).
-# A character appended by String_AddChar from a return address in this range is the marker. Nature Power used
-# on Route 24 against Camper Ward (trainer 960) reaches it (battle_string 1#120, D-2277).
+# A character appended by String_AddChar from a return address in this range is the marker. The scenario
+# forces one invalid reference (the hack's own sources, D-2277, are fixed by battle-message-references).
 STRING_ADD_CHAR = 0x02026FDC
+BUFFER_MON_NAME2 = 0x022259C4       # nickname helper (r0 = the Pokemon reference): forced to 0 once
 ERROR_MARKER_PATHS = (0x02225B16, 0x02225B6C)
 ERROR_MARKER = {"fixed": (0x01B9, 0x012F, 0x0156, 0x0156, 0x0153, 0x0156, 0x01BA, 0x01DE),   # "(Error) "
                 "original": (0x01B9, 0x0CED, 0x0BDD, 0x01BA)}                                 # "(错误)"
@@ -175,6 +177,13 @@ ERROR_MARKER_MAP = (28, 1326, 80)   # Route 24, on the path south of Nugget Brid
 ERROR_MARKER_TRAINER = 960          # Camper Ward: Nuzleaf (Quick Claw), Luvdisc
 ERROR_MARKER_LEAD = (264, 50, 267)  # Linoone Lv50 that knows only Nature Power
 NARC_BATTLE_STRING = 277
+# battle-message-references (battle-message-references.listing): the client's message printers, bank 1 with
+# variants (r1 = base id, r2 = {variant battler, params...}) and bank 2 (r1 = id, r2 = params).
+PRINT_BANK1 = 0x02225EA8
+PRINT_BANK2 = 0x022257F4
+INFATUATION_MSG = 452               # 1#452-455: {0} (variant) fell in love with {1}, every turn
+ATTRACT_LEAD = (128, 50, 150)       # Tauros (male only) Lv50, Splash
+ATTRACT_WILD = (113, 30, 213)       # wild Chansey (female only) Lv30 that knows only Attract
 TITLE_FRAME = 2400                  # frames after power-on (intro movie); START then shows the title screen
 
 
@@ -552,10 +561,12 @@ def observe_battle(h):
 
 
 def observe_battle_error_marker(h):
-    """Linoone (Nature Power only) against Camper Ward on Route 24: the characters the battle formatter's error
-    path appends (String_AddChar called from ERROR_MARKER_PATHS), the battle_string ids read around them and a
-    screenshot of the message window a little after the marker was written. Up to four turns (the foe's Fake
-    Out can make Linoone flinch on the first)."""
+    """Linoone against Camper Ward on Route 24, with the first Pokemon-name buffer of the battle forced to an
+    invalid reference (r0 = 0 at the entry of the nickname helper BattleMsg_BufferMonName2): the characters
+    the battle formatter's error path appends (String_AddChar called from ERROR_MARKER_PATHS), the battle_string
+    ids read around them and a screenshot of the message window a little after the marker was written. The
+    marker is the safety net for such references; the hack's known sources of them (Nature Power, the
+    infatuation message) are fixed by battle-message-references, so the scenario makes one itself."""
     import emu_guide0107 as G
     import emu_verify as V
     species, level, move = ERROR_MARKER_LEAD
@@ -571,8 +582,16 @@ def observe_battle_error_marker(h):
     def later(m):
         if rows and "path" not in shot and m.frame >= rows[0]["frame"] + 70:
             shot["path"] = str(m.screenshot("battle_error_marker"))
+    forced = {"armed": False, "done": None}
+
+    def invalid_ref(m):
+        if forced["armed"] and forced["done"] is None:
+            forced["done"] = {"was": m.reg.r0, "frame": m.frame}
+            m.reg.r0 = 0
     h.on_exec(STRING_ADD_CHAR, add)
+    h.on_exec(BUFFER_MON_NAME2, invalid_ref)
     h.on_frame(later)
+    forced["armed"] = True
     h.trainer_battle(ERROR_MARKER_TRAINER)
     turns = []
     for _ in range(4):
@@ -586,7 +605,58 @@ def observe_battle_error_marker(h):
     return {"turns": turns, "marker_codes": [r["code"] for r in first], "marker_text": decode(
         struct.pack("<%dH" % len(first), *[r["code"] for r in first])) if first else "",
             "marker_sites": sorted({f"{r['lr']:#010x}" for r in first}), "marker_count": len(rows),
-            "battle_strings_near": near, "screenshot": shot.get("path")}
+            "battle_strings_near": near, "screenshot": shot.get("path"), "forced": forced["done"]}
+
+
+def observe_battle_references(h):
+    """Two battles on Route 24. 1: Linoone (Nature Power only) against Camper Ward: which message prints after
+    'used Nature Power' (bank 2 #120 'turned into', or bank 1 #120 'accuracy rose drastically'). 2: a wild
+    Chansey (Attract only) against Tauros: the parameters of the per-turn infatuation message 1#452 (variant
+    battler, {0}, {1}) and the references of the two Pokemon."""
+    import emu_guide0107 as G
+    import emu_open
+    prints = []
+
+    def bank1(m):
+        prints.append({"bank": 1, "id": m.reg.r1, "params": [m.u32(m.reg.r2 + 4 * k) for k in range(4)],
+                       "frame": m.frame})
+
+    def bank2(m):
+        prints.append({"bank": 2, "id": m.reg.r1, "params": [m.u32(m.reg.r2 + 4 * k) for k in range(3)],
+                       "frame": m.frame})
+    h.on_exec(PRINT_BANK1, bank1)
+    h.on_exec(PRINT_BANK2, bank2)
+    species, level, move = ERROR_MARKER_LEAD
+    G.lead(h, species, level=level, moves=[move, 0, 0, 0], pp=[20, 0, 0, 0])
+    h.trainer_battle(ERROR_MARKER_TRAINER)
+    turns = []
+    for _ in range(4):
+        turns.append(h.battle_turn(0))
+        if turns[-1] != "menu":
+            break
+    shot_np = str(h.screenshot("battle_references_np"))
+    np_used = [k for k, p in enumerate(prints) if p["bank"] == 1 and p["id"] == 2179 and p["params"][2] == move]
+    after = prints[np_used[0] + 1] if np_used and np_used[0] + 1 < len(prints) else None
+    if turns and turns[-1] == "menu":            # the trainer battle is still on: run (forfeit is not offered)
+        for _ in range(8):
+            if h.battle_turn(0) == "field":
+                break
+    h.step(120)
+    species, level, move = ATTRACT_LEAD
+    G.lead(h, species, level=level, moves=[move, 0, 0, 0], pp=[40, 0, 0, 0])
+    mark = len(prints)
+    wild, wlevel, wmove = ATTRACT_WILD
+    emu_open.wild_battle(h, wild, wlevel, moves=[wmove])
+    turns2 = []
+    for _ in range(3):
+        turns2.append(h.battle_turn(0))
+        if turns2[-1] != "menu":
+            break
+    infat = [p for p in prints[mark:] if p["bank"] == 1 and p["id"] == INFATUATION_MSG]
+    names = {p["params"][0] for p in prints[mark:] if p["bank"] == 1 and p["id"] == 2179}
+    return {"turns": turns, "nature_power_next": after, "turns2": turns2, "infatuation": infat[:3],
+            "used_battlers": sorted(names), "screenshot": shot_np,
+            "screenshot_attract": str(h.screenshot("battle_references_attract"))}
 
 
 SCENARIOS = {
@@ -600,6 +670,7 @@ SCENARIOS = {
     "textspeed": ("full_bag_6mons.sav", None, observe_textspeed, False),
     "battle": ("full_bag_6mons.sav", None, observe_battle, True),
     "battle-error-marker": ("full_bag_6mons.sav", ERROR_MARKER_MAP, observe_battle_error_marker, True),
+    "battle-references": ("full_bag_6mons.sav", ERROR_MARKER_MAP, observe_battle_references, True),
 }
 EXTERNAL = {"msgload", "texture-bounds", "reflection"}  # scenarios run by other tools (memcheck.py,
 #                                                         emu_texture_bounds.py, emu_reflection.py)
@@ -776,6 +847,28 @@ def judge_battle_error_marker(scenario, obs, ref=None):
     return _state(got == ERROR_MARKER["fixed"], got == ERROR_MARKER["original"], why)
 
 
+def judge_battle_references(scenario, obs, ref=None):
+    """'fixed': Nature Power is followed by bank 2 #120 ('turned into', the move as its only parameter) and the
+    infatuation message names the infatuated Pokemon ({0} = the variant battler) and the attracter ({1}: another
+    valid reference). 'original': bank 1 #120 follows Nature Power with a parameter that is no Pokemon reference
+    (> 25), and the infatuation message's {0} is 0. The Chinese reference run must show the original."""
+    def state(o):
+        nxt, inf = o.get("nature_power_next") or {}, o.get("infatuation") or []
+        np_fixed = nxt.get("bank") == 2 and nxt.get("id") == 120
+        np_orig = nxt.get("bank") == 1 and nxt.get("id") == 120 and not 1 <= nxt.get("params", [0, 0])[1] <= 25
+        inf_fixed = bool(inf) and all(p["params"][1] == p["params"][0] and 1 <= p["params"][2] <= 25
+                                      and p["params"][2] != p["params"][0] for p in inf)
+        inf_orig = bool(inf) and all(p["params"][1] == 0 for p in inf)
+        return np_fixed and inf_fixed, np_orig and inf_orig
+    fixed, original = state(obs)
+    why = {"nature_power_next": obs.get("nature_power_next"), "infatuation": obs.get("infatuation"),
+           "turns": [obs.get("turns"), obs.get("turns2")], "screenshots": [obs.get("screenshot"),
+                                                                           obs.get("screenshot_attract")]}
+    if ref is not None and state(ref) != (False, True):
+        return "unclear", dict(why, error="the Chinese ROM did not show the original behaviour")
+    return _state(fixed, original, why)
+
+
 NAMING_SITES_BY_ID = {v[0]: v for v in NAMING_SITES.values()}
 JUDGES = {
     ("naming", "namelen"): judge_namelen,
@@ -796,6 +889,7 @@ JUDGES = {
     ("font", "font-glyphs"): judge_font,
     ("textspeed", "text-speed"): judge_textspeed,
     ("battle-error-marker", "battle-message-error-marker"): judge_battle_error_marker,
+    ("battle-references", "battle-message-references"): judge_battle_references,
 }
 
 

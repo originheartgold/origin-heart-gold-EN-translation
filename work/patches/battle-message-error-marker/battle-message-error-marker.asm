@@ -17,7 +17,7 @@
 ;
 ; The fix keeps the logic (when the marker prints, and which name follows it, are the hack's) and only
 ; changes the text: case 1's 34 bytes become a loop that appends a 0xFFFF-terminated English string, and
-; case 2's first instruction branches to it; the English sits in the rest of case 2's bytes. r4 (the tag's
+; case 2's first instruction branches to it; the English sits in the next 18 bytes of case 2. r4 (the tag's
 ; buffer index, read again at the tail) is saved around the loop; r5 (the output) is not changed. The loop
 ; ends with the same branch to the tail as before. The literal pool is left as it is (no longer read).
 
@@ -104,9 +104,11 @@ ErrorMarker:
     .fill BattleMsg_Case1Error + 0x22 - ., 0x00   ; unused (never reached)
 .endarea
 
-; Case 2's error path: the same loop. The English follows the branch.
+; Case 2's error path: the same loop. The English follows the branch, in the bytes up to 0x02225B5E; the
+; rest of case 2's old error path (0x02225B5E-0x02225B6B, now dead) is left as it is, so the type-name case of
+; the type-change-message fix can live there.
 .org BattleMsg_Case2Error
-.area 0x22
+.area 0x14
     expect16_at 0x00, 0x4931    ; ldr   r1, =0x1B9              (
     expect16_at 0x02, 0x1C28    ; add   r0, r5, #0
     expect16_at 0x04, 0xF601    ; bl    String_AddChar          (1/2)
@@ -117,19 +119,11 @@ ErrorMarker:
     expect16_at 0x0E, 0xFA41
     expect16_at 0x10, 0x492F    ; ldr   r1, =0xBDD              误
     expect16_at 0x12, 0x1C28
-    expect16_at 0x14, 0xF601
-    expect16_at 0x16, 0xFA3D
-    expect16_at 0x18, 0x492E    ; ldr   r1, =0x1BA              )
-    expect16_at 0x1A, 0x1C28
-    expect16_at 0x1C, 0xF601
-    expect16_at 0x1E, 0xFA39
-    expect16_at 0x20, 0xE026    ; b     BattleMsg_TagDone
     b       ErrorMarker
     .align 4, 0x00
 ErrorMarker_Text:
     ; "(Error) ": 错误 = error; the space separates it from the name after it. 0xFFFF ends it.
     .halfword CH_LPAREN, CH_E, CH_LC_R, CH_LC_R, CH_LC_O, CH_LC_R, CH_RPAREN, CH_SPACE, 0xFFFF
-    .fill BattleMsg_Case2Error + 0x22 - ., 0x00   ; unused
 .endarea
 
 .close
