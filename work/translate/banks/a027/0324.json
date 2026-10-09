@@ -654,10 +654,10 @@
   {
    "id": 81,
    "zh": "小赤『警察大哥！{NEWLINE}幸亏你来的及时啊！{CLEAR}不然我们三个就要{CLEAR}被这里的坏人给抢劫了！",
-   "en": "Red: Officer! Thank goodness you got{NEWLINE}here in time!{SCROLL}Otherwise the bad guys here would have{NEWLINE}robbed all three of us!",
+   "en": "Red: Otherwise the bad guys here would{NEWLINE}have robbed all three of us!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "Hack text error fixed with user approval 2026-10-09 (D-2283, D-1496): the zh repeats #79's opener (警察大哥！幸亏你来的及时啊！) right after #79 on the female path; only the repeated opener is dropped (approved exception to D-1500)."
   },
   {
    "id": 82,
