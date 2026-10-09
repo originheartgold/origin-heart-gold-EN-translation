@@ -89,6 +89,12 @@ test('filters compose secondary type, hidden ability, region and availability', 
   assert.ok(filterCatalog(catalog, { query: '#150' }).some(mon => mon.id === 1440));
 });
 
+test('ordinary keyboard spellings match names with apostrophes and accents', () => {
+  for (const [query, name] of [["Farfetch'd", 'Farfetch’d'], ['Farfetchd', 'Farfetch’d'], ["Sirfetch'd", 'Sirfetch’d'], ['Flabebe', 'Flabébé']]) {
+    assert.ok(filterCatalog(species, { query }).some(mon => mon.name === name), query);
+  }
+});
+
 test('production planner and JSON routes are generated', { skip: process.env.GUIDE_TEST_DIST !== '1' }, () => {
   const html = readFileSync(new URL('../dist/team-builder/index.html', import.meta.url), 'utf8');
   assert.ok(html.includes('id="team-builder"'));

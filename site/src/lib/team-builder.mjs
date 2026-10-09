@@ -17,7 +17,7 @@ export function parseTeamHash(hash, knownIds) {
 export function teamHash(team) { return `#team=${team.join(',')}`; }
 
 export function filterCatalog(catalog, { query = '', type = '', region = '', availability = '' } = {}) {
-  const normalize = text => text.normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase();
+  const normalize = text => text.normalize('NFKD').replace(/\p{M}/gu, '').replace(/['‘’]/g, '').toLowerCase();
   const terms = normalize(query).trim().split(/\s+/).filter(Boolean);
   return catalog.filter(mon => (!type || mon.types.includes(type)) && (!region || mon.region === region) &&
     (!availability || mon.availability === availability) &&
