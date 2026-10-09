@@ -18,25 +18,25 @@ def named_test(identifier):
 
 
 class Classification(unittest.TestCase):
-    def tests(self):
+    def _tests(self):
         return [named_test(name) for name in [*C.NATIVE_TESTS, *C.IMAGE_TESTS, "new.portable.test"]]
 
     def test_new_tests_run_and_exact_dependencies_are_excluded(self):
-        suite, excluded = C.classify(self.tests())
+        suite, excluded = C.classify(self._tests())
         self.assertEqual([test.id() for test in C.flatten(suite)], ["new.portable.test"])
         self.assertEqual(excluded.keys(), C.NATIVE_TESTS.keys() | C.IMAGE_TESTS.keys())
 
     def test_images_are_explicitly_enabled(self):
-        suite, excluded = C.classify(self.tests(), with_images=True)
+        suite, excluded = C.classify(self._tests(), with_images=True)
         self.assertEqual(suite.countTestCases(), 1 + len(C.IMAGE_TESTS))
         self.assertEqual(excluded, C.NATIVE_TESTS)
 
     def test_deleted_or_renamed_classifications_fail(self):
         with self.assertRaisesRegex(ValueError, "missing classified tests"):
-            C.classify(self.tests()[1:])
+            C.classify(self._tests()[1:])
 
     def test_duplicate_tests_fail(self):
-        tests = self.tests()
+        tests = self._tests()
         with self.assertRaisesRegex(ValueError, "duplicate"):
             C.classify([*tests, tests[0]])
 
