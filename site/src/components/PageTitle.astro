@@ -4,6 +4,7 @@ import PokemonImage from './PokemonImage.astro';
 import { speciesById, url } from '../lib/data';
 const path = Astro.url.pathname.slice(import.meta.env.BASE_URL.replace(/\/$/, '').length).split('/').filter(Boolean);
 const sections: Record<string, {label: string; mon: number}> = {
+  'team-builder': { label: 'Plan your team', mon: 133 },
   pokemon: { label: 'Pokédex', mon: 151 }, locations: { label: 'Explore the world', mon: 149 },
   items: { label: 'Items & equipment', mon: 52 }, moves: { label: 'Build your moveset', mon: 448 },
   abilities: { label: 'Battle essentials', mon: 197 }, tms: { label: 'TMs & HMs', mon: 137 },

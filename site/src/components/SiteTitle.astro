@@ -7,5 +7,9 @@ const { siteTitleHref } = Astro.locals.starlightRoute;
   .site-title > span { font-size: 1.02rem; letter-spacing: -.025em; font-weight: 750; }
   .site-title strong { color: var(--sl-color-text-accent); }
   .site-title small { font-size: .54rem; letter-spacing: .16em; color: var(--sl-color-gray-3); }
-  @media (max-width: 24rem) { .site-title > span { font-size: .86rem; } .site-title small { font-size: .46rem; } }
+  @media (max-width: 35rem) {
+    .site-title > span { font-size: .85rem; }
+    .site-title strong { display: block; }
+    .site-title small { display: none; }
+  }
 </style>
