@@ -102,10 +102,10 @@
 | Move | Badge needed |
 |---|---|
 | Rock Smash | Boulder Badge (Brock) |
-| Cut | Cascade Badge (Misty) |
+| [Cut](/moves/cut/) | Cascade Badge (Misty) |
 | Strength | Thunder Badge (Lt. Surge) |
-| Surf | Rainbow Badge (Erika) |
-| Fly | Marsh Badge (Sabrina) |
+| [Surf](/moves/surf/) | Rainbow Badge (Erika) |
+| [Fly](/moves/fly/) | Marsh Badge (Sabrina) |
 | Whirlpool | Volcano Badge (Blaine) |
 | Waterfall | Earth Badge (Giovanni) |
 | Rock Climb | Rising Badge (Clair) |

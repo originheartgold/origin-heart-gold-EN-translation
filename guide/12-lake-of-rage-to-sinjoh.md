@@ -275,7 +275,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 2. Walk to the spot where he keeps them, right beside the Dragonite. A man with a Zangoose is trying to catch the hurt Pokémon to sell. Dragonite drives him off, then keeps rampaging.
 3. You offer to hold it down: a battle against a **Lv. 90 Dragonite** (Choice Band, Outrage only). A loss whites you out, and the scene replays when you walk back.
 4. Win, and the man recognises you as the Champion.
-**Reward:** talk to him again for a free, repeatable **Outrage** move tutor (93 species).
+**Reward:** talk to him again for a free, repeatable **[Outrage](/moves/outrage/)** move tutor (93 species).
 
 **Notes:** the tutor needs the Dragonite battle done. The quest shares its progress with earlier Kanto story scenes, which are all over before you can reach Route 45, so this doesn't affect you in normal play ([known issue](known-issues.md#route-45-dragonite-counter)).
 

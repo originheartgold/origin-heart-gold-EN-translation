@@ -34,7 +34,7 @@
 
 **How it works:**
 1. Giovanni battles you with his full **Lv. 100** team (Mewtwo, Tyranitar, Nidoking, Rhydon, Nidoqueen, Aerodactyl). Losing doesn't white you out. If you **win**, Mewtwo uses Recover and the same battle starts again, as often as you keep winning. The duel only moves on once you lose.
-2. You wake up "at the bottom of the lake". With Charmander and the Mystery Stone, the stone reacts: it becomes a **Charizardite**. Without either, the scene just continues.
+2. You wake up "at the bottom of the lake". With Charmander and the Mystery Stone, the stone reacts: it becomes a **[Charizardite](/items/charizardite/)**. Without either, the scene just continues.
 3. Rematch: a Double Battle against Giovanni's team, sent out two at a time; he opens with Mewtwo and Tyranitar (tested in an emulator). **A loss here whites you out.** Giovanni stays, but to retry you have to talk to him again and replay the whole scene: the duel, the collapse and the lake.
 4. After the win you free Mewtwo and Giovanni escapes. You wake up at home, and Prof. Oak sends you to Mt. Silver (the rehabilitation below).
 **Reward:** Charizardite (Charmander starters with the Mystery Stone only).

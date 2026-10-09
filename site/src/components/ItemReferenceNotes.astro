@@ -1,0 +1,16 @@
+---
+import { playerItemCaveat } from '../lib/reference-format.mjs';
+import { type Item } from '../lib/data';
+const { item } = Astro.props as { item: Item };
+const showCorrection = ![24,55,56,57,58,59,60,61,62,171,174,203,204].includes(item.id);
+const notes = item.referenceNotes.filter(n => n.changeNote || (n.configuredNote && showCorrection) || n.useNote);
+---
+{notes.length > 0 && <><h2 id="author-reference">Changes and uses in Origin HeartGold</h2>
+{notes.map(n => <article class="reference-note">
+{n.changeNote && <p>{n.changeNote}</p>}
+
+{n.configuredNote && showCorrection && <p>{playerItemCaveat(item.id,n.configuredNote)}</p>}
+{n.useNote && <p>{n.useNote}</p>}
+</article>)}
+</>}
+{item.legacyUseNotes.length > 0 && <><h3>Other uses</h3>{item.legacyUseNotes.map(n => <p>{n.note}</p>)}</>}

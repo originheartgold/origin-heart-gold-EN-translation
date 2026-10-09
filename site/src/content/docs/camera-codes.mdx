@@ -8,8 +8,8 @@ import CameraCodes from '../../components/CameraCodes.astro';
 import CameraPresets from '../../components/CameraPresets.astro';
 
 These Action Replay codes change how the overworld looks: a 16:9 widescreen view, real 3D inside buildings,
-a lower or steeper camera angle, or a camera you tune yourself. They are optional and only change the view.
-Story, battles and saves play the same.
+a lower or steeper camera angle, or a camera you tune yourself. They are optional and change the view. Widescreen also adjusts the 3D player model in the Bag.
+Forced camera presets can persist in your save until you change maps, as explained below.
 
 <Aside type="caution" title="Origin HeartGold only">
 These codes are made for Origin HeartGold v4.0.3 (the English patch from v1.0.0-rc5, and the original Chinese
@@ -21,7 +21,8 @@ game). Codes for HeartGold, SoulSilver or other hacks don't work here, and these
 1. Add a code in your emulator's cheat menu (melonDS and DeSmuME: **Action Replay** codes), or in your
    flashcart's or TWiLight Menu++'s cheat list.
 2. Turn the code on. **The camera changes the next time you go through a door or load your save**, not instantly.
-3. To go back to normal, turn the code off and go through a door. Widescreen is the exception: use its **OFF** code.
+3. To go back to normal, turn the camera code off and go through a door. For widescreen, disable **ON**,
+   enable **OFF**, set your emulator’s top screen back to **4:3**, then go through a door or reload your save.
 
 You can combine widescreen with one camera code. Use only **one** camera code at a time.
 
@@ -42,13 +43,17 @@ D2000000 00000000
 
 **Widescreen OFF** (back to 4:3)
 
+Disable the ON code first; never enable both together. Set your emulator’s top screen back to 4:3,
+then go through a door or reload your save.
+
 ```
 52023640 00001C72
 02023640 00001555
 D2000000 00000000
 ```
 
-Only the 3D world gets wider. 2D graphics on the top screen are stretched.
+The code adjusts the 3D projection, including the overworld and the player model in the Bag.
+2D graphics on the top screen are stretched by your emulator’s 16:9 display setting.
 
 ## Real 3D inside buildings
 
@@ -141,6 +146,8 @@ Pick where the camera changes, start from a preset and move the sliders. Then co
 - These codes were tested in an emulator (DeSmuME) on the English patch. They use standard Action Replay code
   types, but they have not been tested in melonDS, on a DS or with TWiLight Menu++ yet. If you try them there,
   please [tell us how it went](../contribute/).
-- Battles keep their own camera. The camera codes only change the overworld.
+- The interior and preset codes change the overworld camera. Widescreen changes a shared 3D setting,
+  including the Bag model. Tested wild battles and returns to the overworld worked with both code types;
+  this is not an exhaustive test of every battle or animation.
 - The first line of the building and custom codes (`521E9C54 B084B5F8`) is a safety check: it makes sure
   the code only writes while you are in the overworld. Keep it.

@@ -137,7 +137,7 @@
 **Who gets it / when:** after the Sammy chapter above. **One Shaymin and one Celebi per game.**
 
 **How it works:**
-1. **Shaymin:** have the **Gracidea** in your Bag (an item ball in the Cinnabar Island lab; see [Cinnabar Island: the Detrick lab lockdown](05-saffron-cinnabar.md#cinnabar-island-the-detrick-lab-lockdown-door-puzzle-and-mewtwo)), a **Leafeon** as your lead, and examine the shrine between **8:00 and 19:59**. Shaymin appears → "Let Shaymin join your party?" → Yes: **Shaymin Lv. 90**.
+1. **Shaymin:** have the **[Gracidea](/items/gracidea/)** in your Bag (an item ball in the Cinnabar Island lab; see [Cinnabar Island: the Detrick lab lockdown](05-saffron-cinnabar.md#cinnabar-island-the-detrick-lab-lockdown-door-puzzle-and-mewtwo)), a **Leafeon** as your lead, and examine the shrine between **8:00 and 19:59**. Shaymin appears → "Let Shaymin join your party?" → Yes: **Shaymin Lv. 90**.
 2. **Celebi** (after Shaymin): leave through Ilex Forest and come back first (Shaymin's appearance closes the shrine for the rest of that visit). Then lead with **Shaymin** and examine the shrine between **20:00 and 7:59**. Celebi appears → Yes: **Celebi Lv. 90**.
 3. With the wrong lead or at the wrong hour, the shrine only shows its description.
 

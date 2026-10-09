@@ -227,7 +227,7 @@ Losing the last Archie battle also sinks the ship, even with the bomb defused: t
 
 **How it works:** examine the statue → "There seems to be a hole in the top. Reach in and feel around?" → **Yes**.
 
-**Reward:** **Magma Stone** (key item, used for [Heatran in Union Cave](08-cherrygrove-to-azalea.md#union-cave-heatran-in-the-lava-pool-tuesdays-magma-stone)). Afterwards the hiker says the cave has cooled down.
+**Reward:** **[Magma Stone](/items/magma-stone/)** (key item, used for [Heatran in Union Cave](08-cherrygrove-to-azalea.md#union-cave-heatran-in-the-lava-pool-tuesdays-magma-stone)). Afterwards the hiker says the cave has cooled down.
 
 **Also here (after the final Hall of Fame):** Brock is meant to stand in the north of the cave, near the Route 2 exit, and offer a souvenir photo after your final Hall of Fame entry between 5 and 8 pm. Because of a hack bug he **can never appear**: the time check asks for the hour to be 17, 18 and 19 at the same time.
 

@@ -1,25 +1,25 @@
 ---
 title: Calendar encounters
-description: Annual date-specific land encounters configured in Origin HeartGold v4.0.3, with availability caveats.
+description: Where and when to catch the annual calendar Pokémon in Origin HeartGold v4.0.3.
 ---
 
 import CalendarEncounters from '../../components/CalendarEncounters.astro';
 import { calendarEncounters } from '../../lib/verified-mechanics';
 
-The game changes a land encounter slot in certain places on these **annual dates**, using the game's calendar. Every entry below was tested in an emulator, on the Chinese original and on the English patch: on the date the area's encounter table had the entry in its last land slot, and the day before it didn't. With that slot forced (so the test didn't wait for the 1% roll), each Pokémon appeared at the level shown and was caught with a Master Ball. How the entries combine with other encounter modifiers (abilities, Swarms, the radio) wasn't tested.
+These Pokémon appear in land encounters on the same **annual dates** each year. Look in the exact location listed below; they do not replace Surf or fishing encounters.
 
-They replace the final land slot, normally weighted **1% of land encounters**, while keeping its existing level. That is not a 1% chance per step. In the emulator test, with that slot forced, the Pokémon walking around in the grass were the calendar Pokémon too, so it can probably also show up as one of them; how often wasn't measured. They do not replace Surf or fishing slots.
+Their chance is normally **1% of land encounters**, not 1% per step. They can also appear as visible Pokémon nearby.
 
-**The game reads the date when you enter the area.** If the date changes while you are already there (for example at midnight), you still meet the old day's Pokémon, also after a battle: leave the area and come back. Tested in an emulator.
+**Leave and re-enter the area after the date changes.** The game reads the date when you enter, so staying there across midnight keeps the old day’s encounters.
 
-**Morning:** 04:00–09:59. **Day:** 10:00–19:59. **Night:** 20:00–03:59. The month and day must still match: July 18's night window does not extend into July 19. These windows were checked in an emulator at Mt. Silver on July 18 (03:59, 04:00, 09:59, 10:00, 19:59 and 20:00).
+**Morning:** 04:00–09:59. **Day:** 10:00–19:59. **Night:** 20:00–03:59. The month and day must still match: July 18’s night window does not extend into July 19.
 
 <CalendarEncounters entries={calendarEncounters} />
 
 ## Entries that need care
 
-**Diancie:** the entry uses a form number the game doesn't define, so the game falls back to the normal form: you meet a normal Diancie, not Mega Diancie. Tested in an emulator: the Diancie you meet and catch has the normal sprite, Rock/Fairy type and a normal Diancie's stats.
+**Diancie:** appears as normal Diancie, not Mega Diancie.
 
-**Volcanion:** the game also configures an April 16 entry at Lake of Rage, but Lake of Rage has no grass and no land encounters, so it never appears. In an emulator, walking around Lake of Rage on April 16 (morning, day and night, with the slot forced) gave no encounter at all, and no event script, trade or other encounter table in the game gives Volcanion. It can't be met in this version, so it isn't listed.
+**Volcanion:** cannot be found in this version. Its calendar entry points to Lake of Rage, which has no land encounters.
 
 These entries are separate from the [Wednesday Lake of Rage events](../guide/dungeons-and-common/#lake-of-rage-when-the-calm-day-happens-continues-lake-of-rage-blackthorn-city-and-beyonds-lake-trio-and-calm-day-visitors) and from [visible encounters and shiny retention](../mechanics/#visible-encounters-and-shinies).

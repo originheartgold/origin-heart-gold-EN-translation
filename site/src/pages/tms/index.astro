@@ -1,0 +1,21 @@
+---
+import { playerAbilityDescription, playerMoveDescription } from '../../lib/reference-format.mjs';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import Type from '../../components/Type.astro';
+import { tms, itemById, itemUrl, moveById, moveUrl, tmCompatibility, areaBySlug, areaUrl, url } from '../../lib/data';
+const locations = [...new Set(tms.flatMap(t => (itemById.get(t.itemId)?.sources ?? []).map(s => s.area).filter(Boolean)))].sort((a,b) => (areaBySlug.get(a!)?.name ?? a!).localeCompare(areaBySlug.get(b!)?.name ?? b!));
+const changed = tms.filter(t => t.newInV4 || moveById.get(t.moveId)?.authorNotes.some(n => n.changeKind === 'changed'));
+---
+<StarlightPage frontmatter={{ title: 'TMs and HMs', description: 'All 130 TMs and 8 HMs in Origin HeartGold: moves, acquisition, cost, conditions and compatible Pokémon.' }} headings={[{depth:2,slug:'changes',text:'New and changed TMs'},{depth:2,slug:'tm-list',text:'All TMs and HMs'}]}>
+<p>Browse all {tms.length} TMs and HMs. Open a TM or HM for where to get it, its cost and compatible Pokémon; open the move for its effects. Compatibility lists include forms and unavailable Pokémon, so check availability before planning your team.</p>
+<h2 id="changes">New and changed TMs</h2><p>TM93–TM130 are the {tms.filter(t => t.newInV4).length} new TMs in v4. The other entries teach moves whose effects or stats changed.</p>
+<ul class="reference-link-list">{changed.map(t => <li><a href={itemUrl(itemById.get(t.itemId))}>{t.label}</a> · <a href={moveUrl(moveById.get(t.moveId))}>{moveById.get(t.moveId)?.name}</a> · {t.newInV4 ? 'New TM in v4' : 'Move changed'}</li>)}</ul>
+<h2 id="tm-list">All TMs and HMs</h2>
+<div class="table-filter" data-table="tm-table"><input type="search" placeholder="Search TMs, moves or acquisition…" aria-label="Search TMs and HMs" /><select data-key="location" aria-label="TM location"><option value="">All locations</option>{locations.map(slug => <option value={slug!}>{areaBySlug.get(slug!)?.name ?? slug}</option>)}</select><select data-key="availability" aria-label="TM availability"><option value="">All availability</option><option value="documented">Where to get it</option><option value="unavailable">NOT AVAILABLE IN GAME</option><option value="unknown">No known way to get it</option></select><span class="filter-count" aria-live="polite"></span></div>
+<table id="tm-table" class="compact sortable"><thead><tr><th>TM / HM</th><th>Move</th><th>Type</th><th>Category</th><th>Power / Accuracy / PP</th><th>Acquisition, cost and conditions</th><th>Compatibility</th></tr></thead><tbody>{tms.map(t => { const i = itemById.get(t.itemId)!; const m = moveById.get(t.moveId)!; return <tr data-location={[...new Set(i.sources.map(s => s.area).filter(Boolean))].join('|')} data-availability={i.unavailableReason ? 'unavailable' : i.sources.length ? 'documented' : 'unknown'}>
+<td><a href={itemUrl(i)}>{t.label}</a>{t.newInV4 && <span class="ability-summary tag">New in v4</span>}</td><td><a href={moveUrl(m)}>{m.name}</a><span class="ability-summary small">{playerMoveDescription(m)}</span></td><td><Type type={m.type} /></td><td>{m.cat}</td><td>{m.power} / {m.acc} / {m.pp}</td>
+<td>{i.unavailableReason ? <><strong>NOT AVAILABLE IN GAME</strong><span class="ability-summary small">{i.unavailableReason}</span></> : i.sources.length ? <ul class="small">{i.sources.map(s => <li>{s.area ? <a href={areaUrl(s.area)}>{s.place}</a> : s.place} · {s.kind}{s.near && ` (${s.near})`}{s.price != null && ` · $${s.price.toLocaleString('en-US')}`}{s.pay && ` · ${s.pay}`}{s.note && ` · ${s.note}`}{(s.quests ?? []).map(q => <> · <a href={url(q.href)}>{q.title}</a></>)}</li>)}</ul> : 'No known way to get it'}{t.authorNotes.some(n => n.locationNote) && <details><summary>Other location listed by the author (unconfirmed)</summary>{t.authorNotes.filter(n => n.locationNote).map(n => <p class="small">Author note: {n.locationNote}</p>)}</details>}</td>
+<td><a href={`${itemUrl(i)}#compatible-pokemon`}>{tmCompatibility.get(t.itemId)?.length ?? 0} Pokémon and forms</a></td>
+</tr>; })}</tbody></table>
+<p><a href={url('/moves/')}>All moves</a> · <a href={url('/items/')}>All items</a></p>
+</StarlightPage>

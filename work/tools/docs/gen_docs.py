@@ -114,7 +114,8 @@ def full_names(_cat=None):
     for path, var in ((os.path.join(R.REPO, 'work', 'glossary', 'manual_overrides.py'), 'ABBREV'),
                       (os.path.join(R.REPO, 'work', 'tools', 'fill_names.py'), 'LOCAL_ABBREV')):
         try:
-            tree = ast.parse(open(path, encoding='utf-8').read())
+            with open(path, encoding='utf-8') as source:
+                tree = ast.parse(source.read())
         except OSError:
             continue
         for node in tree.body:
@@ -507,7 +508,7 @@ def gen_pokemon(ctx, tutors, avail):
              'Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get it" is derived from the '
              'wild encounter tables, gift/trade/static-battle scripts and evolutions (see [encounters.md](encounters.md)); '
              'species with no source are still listed because their data exists. Species marked "never met in play" are '
-             'confirmed unreachable (work/tools/site/not_in_game.json); the website leaves them out.\n']
+             'confirmed unreachable (work/tools/site/not_in_game.json); the website retains them with availability labels.\n']
     for lo, hi, title in RANGES:
         fn = 'pokemon_%04d-%04d.md' % (lo, hi)
         index.append('- [%s: #%d–#%d](%s)' % (title, lo, hi, fn))

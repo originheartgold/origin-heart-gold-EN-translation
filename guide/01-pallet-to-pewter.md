@@ -35,7 +35,7 @@
 
 | Starter | Who | Gift | Extra condition |
 |---|---|---|---|
-| Pikachu | Man with the Eevee at the north edge of town, a few steps north-west of the door to Blue's house | **Light Ball** | none |
+| Pikachu | Man with the Eevee at the north edge of town, a few steps north-west of the door to Blue's house | **[Light Ball](/items/light-ball/)** | none |
 | Charmander | Man by the south fence, south-west of Oak's Lab | **Charcoal** | none |
 | Bulbasaur | The Poliwag in your house, 1F, by the kitchen sink in the top-left corner (next to Mr. Mime) | **Poliwag, Lv. 5** ("Take Poliwag along on your journey?" → Yes) | party not full |
 
@@ -65,7 +65,7 @@ Question 4 is the usual trap: "Type, Power, Accuracy, PP" looks right, but the g
 
 **What it is:** a small side quest. A resident says a Meowth keeps sneaking into people's homes all over Viridian City to steal things, and asks you to teach it a lesson.
 
-**Who gets it:** only players who chose **Charmander** in Oak's lab. Viridian has one "thief" quest per starter, and all three pay out the same way:
+**Who gets it:** only players who chose **Charmander** in Oak's lab. Viridian has one "thief" quest per starter, and each rewards you with an Apricorn Ball:
 
 | Starter | Thief | Reward |
 |---------|-------|--------|

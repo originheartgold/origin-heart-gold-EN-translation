@@ -4,7 +4,7 @@
 
 Species data read from the ROM: base stats, types and abilities from `a/0/0/2` (hidden ability in the same record), level-up moves from `a/0/3/3`, evolutions from `a/0/3/4`, egg moves from `data/egg_moves.narc`. TM/HM compatibility follows the game's own check (arm9 `0x02071464`): a Pokémon can use a TM if the move is in its list in `data/tutor_moves.narc` **or** in its level-up learnset; every Pokémon can learn Return, and Mew can learn every TM. Tutor compatibility comes from the species lists inside each tutor's script (see [trades_tutors.md](trades_tutors.md)).
 
-Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get it" is derived from the wild encounter tables, gift/trade/static-battle scripts and evolutions (see [encounters.md](encounters.md)); species with no source are still listed because their data exists. Species marked "never met in play" are confirmed unreachable (work/tools/site/not_in_game.json); the website leaves them out.
+Stats are listed HP / Attack / Defense / Sp. Atk / Sp. Def / Speed. "How to get it" is derived from the wild encounter tables, gift/trade/static-battle scripts and evolutions (see [encounters.md](encounters.md)); species with no source are still listed because their data exists. Species marked "never met in play" are confirmed unreachable (work/tools/site/not_in_game.json); the website retains them with availability labels.
 
 - [Kanto: #1–#151](pokemon_0001-0151.md)
 - [Johto: #152–#251](pokemon_0152-0251.md)

@@ -117,7 +117,7 @@
 
 **How it works:** he asks for a battle (Yes/No). Beat **Ace Trainer Hans**: Lopunny Lv. 66, Magcargo Lv. 67, Zangoose Lv. 68, Fearow Lv. 68. Losing blacks you out; you can try again.
 
-**Reward:** from then on he teaches **Close Combat**. You need **3 Rare Candies** in your Bag, but they're only taken if the Pokémon has a free move slot. If it has to forget a move, the lesson is free, although his line still says he'll take them (suspected hack bug; see [the known issue](known-issues.md#close-combat-tutors-fee)).
+**Reward:** from then on he teaches **[Close Combat](/moves/close-combat/)**. You need **3 Rare Candies** in your Bag, but they're only taken if the Pokémon has a free move slot. If it has to forget a move, the lesson is free, although his line still says he'll take them (suspected hack bug; see [the known issue](known-issues.md#close-combat-tutors-fee)).
 
 *Source:* script file 872 (script 17, L2800, flag 343; tutor L3410–L5393).
 

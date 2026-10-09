@@ -1,5 +1,5 @@
 {
- "_about": "Pokémon and forms that exist in the game data but that a player can never meet (catch, receive, hatch, evolve into, battle against or see in battle). The website leaves them out. Verified against the untouched Chinese v4.0.3 ROM on 2026-10-05; evidence in work/notes/availability_audit.md.",
+ "_about": "Pokémon and forms that exist in the game data but that a player can never meet (catch, receive, hatch, evolve into, battle against or see in battle). The website lists them as NOT AVAILABLE IN GAME (normal play), retaining their reference data. Verified against the untouched Chinese v4.0.3 ROM on 2026-10-05; evidence in work/notes/availability_audit.md.",
  "entries": [
   {
    "id": 494,

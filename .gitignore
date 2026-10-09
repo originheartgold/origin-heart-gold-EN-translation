@@ -131,3 +131,5 @@ work/save-editor/local/
 
 # Temporary files BSD sed -i leaves behind when an edit is interrupted
 .!*!*
+# Raw reference attachments remain local; only normalized website facts are tracked.
+/work/tools/site/reference_raw/

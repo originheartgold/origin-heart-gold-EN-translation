@@ -1,0 +1,33 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { playerAbilityDescription } from '../../lib/reference-format.mjs';
+
+import PokemonReferenceTable from '../../components/PokemonReferenceTable.astro';
+import Type from '../../components/Type.astro';
+
+import { abilities, abilityAlias, abilityHolders, moves, moveById, moveUrl, url, type Ability } from '../../lib/data';
+export function getStaticPaths() { return abilities.map(a => ({ params: { slug: a.slug }, props: { a } })); }
+const { a } = Astro.props as { a: Ability };
+const holders = abilityHolders.get(a.id) ?? [];
+const regular = holders.filter(h => h.regularSlots.length).map(h => ({ speciesId: h.speciesId, detail: 'Regular ability' }));
+const hidden = holders.filter(h => h.hidden).map(h => ({ speciesId: h.speciesId, detail: 'Hidden ability' }));
+const listed = new Set(a.applicability.map(n => n.moveId));
+const extraSlicing = a.id === 292 ? moves.filter(m => m.flags.includes('slicing') && !listed.has(m.id)) : [];
+const headings = [{ depth: 2, slug: 'effect', text: 'Effect' }, { depth: 2, slug: 'changes', text: 'Changes in Origin HeartGold' }, ...(a.applicability.length ? [{ depth: 2, slug: 'applicability', text: 'Moves affected' }] : []), { depth: 2, slug: 'holders', text: 'Pokémon with this ability' }];
+---
+<StarlightPage frontmatter={{ title: a.name, description: `${a.name} in Origin HeartGold: effects, changes, affected moves and Pokémon with this ability.` }} headings={headings}>
+{a.unnamed && <p>This ability has no in-game name. It is also known as <strong>{abilityAlias(a)}</strong>.</p>}
+<h2 id="effect">Effect</h2><p>{playerAbilityDescription(a) || 'No effect description is available.'}</p>
+{a.id === 41 && <p class="small">The additional Aqua Ring healing is not confirmed.</p>}
+<h2 id="changes">Changes in Origin HeartGold</h2>
+{a.applicability.some(n => n.addedInHack) ? <p>Additional moves are marked below.</p> : a.authorNotes.length ? <p>{a.id === 41 ? 'Aqua Ring healing is listed as an addition.' : a.authorNotes.some(n => ['custom','added'].includes(n.changeKind ?? '')) ? 'The effect above is an addition in this hack.' : 'Uses the effect described above.'}</p> : <p>No changes listed.</p>}
+{a.applicability.length > 0 && <><h2 id="applicability">Moves affected</h2><p>{a.applicability.length} moves. “Added in this hack” marks additions to the usual move list.</p>
+<table class="compact"><thead><tr><th>Move</th><th>Type</th><th>Changes in this hack</th></tr></thead><tbody>{a.applicability.map(n => { const m = n.moveId == null ? undefined : moveById.get(n.moveId); return <tr><td><a href={moveUrl(m)}>{m?.name ?? n.sourceAlias}</a></td><td>{m && <Type type={m.type} />}</td><td>{n.addedInHack ? <strong>Added in this hack</strong> : '—'}</td></tr>; })}</tbody></table>
+{extraSlicing.length > 0 && <><h3>Other cutting moves</h3><p>Sharpness may also affect these {extraSlicing.length} moves. Do not count on the boost when planning your team.</p><ul>{extraSlicing.map(m => <li><a href={moveUrl(m)}>{m.name}</a></li>)}</ul></>}
+</>}
+<h2 id="holders">Pokémon with this ability</h2><p>Check availability to find Pokémon you can add to your team. Forms are listed separately.</p>
+{!holders.length && <p>No Pokémon are listed with this ability.</p>}
+{[{label:'Regular ability',key:'regular',rows:regular},{label:'Hidden ability',key:'hidden',rows:hidden}].filter(g => g.rows.length).map(g => <><h3>{g.label} ({g.rows.length})</h3><div class="table-filter" data-table={`holders-${g.key}`}><input type="search" placeholder="Search Pokémon…" aria-label={`Search ${g.label} holders`} /><select data-key="availability" aria-label={`${g.label} holder availability`}><option value="">All availability</option><option value="documented">Where to get it</option><option value="battle">Battle only</option><option value="unavailable">NOT AVAILABLE IN GAME</option><option value="unknown">No known way to get it</option></select><span class="filter-count" aria-live="polite"></span></div><PokemonReferenceTable id={`holders-${g.key}`} rows={g.rows} label="Ability" /></>)}
+
+<p><a href={url('/abilities/')}>← All abilities</a></p>
+</StarlightPage>
