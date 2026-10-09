@@ -1,0 +1,228 @@
+{
+  "all_shuffle_selectors": "32/32 decode and complete move-edit bytes agree",
+  "save_selection": {
+    "ordinary": {
+      "python_base": "0x0",
+      "typescript": {
+        "ok": true,
+        "result": {
+          "base": 0,
+          "tied": false,
+          "count": 1
+        }
+      }
+    },
+    "equal_identical": {
+      "python_base": "0x40000",
+      "typescript": {
+        "ok": true,
+        "result": {
+          "base": 0,
+          "tied": true,
+          "count": 1
+        }
+      }
+    },
+    "equal_divergent": {
+      "python_base": "0x40000",
+      "typescript": {
+        "ok": false,
+        "code": "invalid-save",
+        "message": "Save mirrors have equal counters but different content; selection is ambiguous."
+      }
+    },
+    "rollover": {
+      "python_base": "0x0",
+      "typescript": {
+        "ok": false,
+        "code": "invalid-save",
+        "message": "Save counter rollover is ambiguous and unsupported."
+      }
+    },
+    "invalid_party_capacity": {
+      "python_base": "0x0",
+      "typescript": {
+        "ok": false,
+        "code": "invalid-save",
+        "message": "Unsupported party header: expected capacity 6 and count 0\u20136."
+      }
+    },
+    "invalid_party_count": {
+      "python_base": "0x0",
+      "typescript": {
+        "ok": false,
+        "code": "invalid-save",
+        "message": "Unsupported party header: expected capacity 6 and count 0\u20136."
+      }
+    }
+  },
+  "corrupt_pokemon": {
+    "python_before_checksum_ok": false,
+    "python_after_checksum_ok": true,
+    "typescript": {
+      "ok": false,
+      "code": "invalid-pokemon",
+      "message": "Pok\u00e9mon checksum mismatch."
+    }
+  },
+  "partial_moves": [
+    {
+      "id": 85,
+      "pp": 10,
+      "ppUps": 1
+    },
+    {
+      "id": 44,
+      "pp": 11,
+      "ppUps": 2
+    },
+    {
+      "id": 55,
+      "pp": 12,
+      "ppUps": 3
+    },
+    {
+      "id": 66,
+      "pp": 13,
+      "ppUps": 0
+    }
+  ],
+  "calendar_nature_override": {
+    "python": 12,
+    "typescript": 24
+  },
+  "unbounded_mutations": {
+    "flag_negative": {
+      "accepted": true,
+      "first_offsets": [
+        "0x118b"
+      ],
+      "changed_bytes": 1
+    },
+    "flag_crosses_into_location": {
+      "accepted": true,
+      "first_offsets": [
+        "0x1324"
+      ],
+      "changed_bytes": 1
+    },
+    "var_before_array": {
+      "accepted": true,
+      "first_offsets": [
+        "0xeaa"
+      ],
+      "changed_bytes": 1
+    },
+    "var_crosses_into_flags": {
+      "accepted": true,
+      "first_offsets": [
+        "0x118c"
+      ],
+      "changed_bytes": 1
+    },
+    "party_slot_six": {
+      "accepted": true,
+      "first_offsets": [
+        "0x626",
+        "0x627",
+        "0x628",
+        "0x629",
+        "0x62a",
+        "0x62b"
+      ],
+      "changed_bytes": 130
+    }
+  },
+  "party_count_increase": {
+    "count": 6,
+    "last_checksum_ok": false
+  },
+  "pocket_failure": {
+    "error": "'H' format requires 0 <= number <= 65535",
+    "mutated_on_failure": true,
+    "pocket_after": [
+      [
+        51,
+        2
+      ],
+      [
+        52,
+        0
+      ]
+    ]
+  },
+  "typescript_unchecked_record_patch": {
+    "ok": true,
+    "result": {
+      "accepted": true,
+      "recordError": "Pok\u00e9mon checksum mismatch."
+    }
+  },
+  "node_container_boundary": {
+    "ok": true,
+    "result": {
+      "aliasesInput": true,
+      "validUint8": "desmume",
+      "bufferDsv": "This file has the size of a DeSmuME .dsv save but no valid DeSmuME footer."
+    }
+  },
+  "bridge_record_roundtrip_ms": {
+    "samples": 100,
+    "median": 0.062,
+    "max": 0.164
+  },
+  "bridge_full_save_inspection_ms": {
+    "samples": 20,
+    "median": 5.87,
+    "max": 6.276
+  },
+  "local_read_only_parity": [
+    {
+      "file": "full_bag_6mons.sav",
+      "sha256": "b3aca10747cd0f1adc3d5852a50dddaaa36ed8680f5ba04012cfe3110faad90f",
+      "records": 6,
+      "unchanged": true
+    },
+    {
+      "file": "market.sav",
+      "sha256": "c05261fbb8e667e6253203a5609996176a0d6a76917bd7d00a73e8ecdb5544ef",
+      "records": 1,
+      "unchanged": true
+    },
+    {
+      "file": "protographer.sav",
+      "sha256": "e3452382a76e5304b3c44f6e35faff4193717df2895263f44650ebce171eadb9",
+      "records": 1,
+      "unchanged": true
+    },
+    {
+      "file": "route1_path_2mons.sav",
+      "sha256": "e16a9a0c611d5fd16212aee95c5aeb8ffe2cd197ffa5876d85f376fec61d90fa",
+      "records": 2,
+      "unchanged": true
+    },
+    {
+      "file": "route1_townmap.sav",
+      "sha256": "6da76cfa25c90bd7fa71c9bd29f07445364d44dc2681306b0b95cc9b987ca7f7",
+      "records": 2,
+      "unchanged": true
+    },
+    {
+      "file": "trainer.sav",
+      "sha256": "7ae2158658ae55755ef5be2157b7343741ad61d36954ddfa83409488c5726fd5",
+      "records": 1,
+      "unchanged": true
+    },
+    {
+      "file": "trainer_2mons.sav",
+      "sha256": "7fc28eb902da9a9d2b059a1c9c3f33dc23c77714365d6e4698e7b65e32ac603c",
+      "records": 2,
+      "unchanged": true
+    }
+  ],
+  "bridge_cold_process_ms": {
+    "samples": 10,
+    "median": 38.88,
+    "max": 41.662
+  }
+}

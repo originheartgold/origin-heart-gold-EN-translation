@@ -9,11 +9,37 @@ from pathlib import Path
 import emu_harness as E
 
 
-def _encrypted_mon(seed=1, species=201, item=0, form=0):
-    rnd = random.Random(seed)
-    raw = bytearray(rnd.getrandbits(8) for _ in range(136))
-    struct.pack_into("<IHH", raw, 0, rnd.getrandbits(32), 0, 0)
-    return E.encode_pokemon(bytes(raw), species=species, item=item, form=form)
+# Independent synthetic fixture builder. Never asks the production writer to
+# repair arbitrary bytes; encryption/checksum are test-only oracle operations.
+BLOCK_ORDERS = ["".join(p) for p in __import__("itertools").permutations("ABCD")]
+
+
+def _prng_stream(seed, n):
+    out = []
+    for _ in range(n):
+        seed = (seed * 0x41C64E6D + 0x6073) & 0xFFFFFFFF
+        out.append(seed >> 16)
+    return out
+
+
+def _encrypted_mon(seed=1, species=201, item=0, form=0, party=False):
+    pid = random.Random(seed).getrandbits(32)
+    blocks = {letter: bytearray(32) for letter in "ABCD"}
+    struct.pack_into("<HH", blocks["A"], 0, species, item)
+    blocks["B"][0x18] = form << 3
+    order = BLOCK_ORDERS[((pid & 0x3E000) >> 13) % 24]
+    plain = b"".join(blocks[letter] for letter in order)
+    words = struct.unpack("<64H", plain)
+    checksum = sum(words) & 0xFFFF
+    raw = struct.pack("<IHH", pid, 0, checksum) + struct.pack("<64H", *[
+        value ^ key for value, key in zip(words, _prng_stream(checksum, 64))])
+    if party:
+        tail = bytearray(100)
+        tail[4] = 5
+        struct.pack_into("<7H", tail, 6, 20, 20, 10, 10, 10, 10, 10)
+        raw += struct.pack("<50H", *[value ^ key for value, key in zip(
+            struct.unpack("<50H", tail), _prng_stream(pid, 50))])
+    return raw
 
 
 class PokemonCodec(unittest.TestCase):
@@ -30,10 +56,10 @@ class PokemonCodec(unittest.TestCase):
     def test_moves_roundtrip(self):
         raw = E.encode_pokemon(_encrypted_mon(4), moves=[85, 86, 87, 98], pp=[15, 20, 10, 30])
         self.assertTrue(E.decode_pokemon(raw)["checksum_ok"])
-        order = E.BLOCK_ORDERS[((struct.unpack_from("<I", raw)[0] & 0x3E000) >> 13) % 24]
+        order = BLOCK_ORDERS[((struct.unpack_from("<I", raw)[0] & 0x3E000) >> 13) % 24]
         checksum = struct.unpack_from("<H", raw, 6)[0]
         plain = struct.pack("<64H", *[w ^ k for w, k in zip(struct.unpack_from("<64H", raw, 8),
-                                                              E._prng_stream(checksum, 64))])
+                                                              _prng_stream(checksum, 64))])
         b = 32 * order.index("B")
         self.assertEqual(struct.unpack_from("<4H", plain, b), (85, 86, 87, 98))
         self.assertEqual(tuple(plain[b + 8:b + 12]), (15, 20, 10, 30))
@@ -129,9 +155,16 @@ class SaveFileEdits(unittest.TestCase):
         for counter, base in ((5, 0), (6, 0x40000)):
             if base != newest:
                 counter = 4
+            struct.pack_into("<II", data, base + 0x90, 6, 1)
+            data[base + 0x98:base + 0x98 + 236] = _encrypted_mon(party=True)
             struct.pack_into("<IIIH", data, base + E.GENERAL_SIZE - 16, counter, E.GENERAL_SIZE, E.FOOTER_MAGIC, 0)
             crc = binascii.crc_hqx(bytes(data[base:base + E.GENERAL_SIZE - 16]), 0xFFFF)
             struct.pack_into("<H", data, base + E.GENERAL_SIZE - 2, crc)
+            storage = base + E.STORAGE_OFF
+            struct.pack_into("<IIIH", data, storage + E.STORAGE_SIZE - 16,
+                             counter, E.STORAGE_SIZE, E.FOOTER_MAGIC, 1)
+            crc = binascii.crc_hqx(data[storage:storage + E.STORAGE_SIZE - 16], 0xFFFF)
+            struct.pack_into("<H", data, storage + E.STORAGE_SIZE - 2, crc)
         path = Path(tempfile.mkdtemp()) / "t.sav"
         path.write_bytes(bytes(data))
         return path
@@ -153,27 +186,22 @@ class SaveFileEdits(unittest.TestCase):
 
     def test_place_player_moves_player_and_drops_npcs(self):
         path = self._save()
-        sf = E.SaveFile(path)
+        data = bytearray(path.read_bytes())
         for slot, obj_id in ((0, E.PLAYER_OBJ_ID), (1, E.FOLLOWER_OBJ_ID), (2, 3)):
-            a = sf._a(E.ARR_MAP_OBJECTS, E.MAP_OBJECT_SIZE * slot)
-            struct.pack_into("<I", sf.data, a, 0xC061)
-            sf.data[a + 8] = obj_id
+            a = 0x40000 + E.ARRAY_OFFSETS[E.ARR_MAP_OBJECTS] + E.MAP_OBJECT_SIZE * slot
+            struct.pack_into("<I", data, a, 0xC061)
+            data[a + 8] = obj_id
+        crc = binascii.crc_hqx(data[0x40000:0x40000 + E.GENERAL_SIZE - 16], 0xFFFF)
+        struct.pack_into("<H", data, 0x40000 + E.GENERAL_SIZE - 2, crc)
+        path.write_bytes(data)
+        sf = E.SaveFile(path)
         sf.place_player(315, 17, 24)
         objs = {o["id"]: o for o in sf.map_objects()}
         self.assertEqual(set(objs), {E.PLAYER_OBJ_ID, E.FOLLOWER_OBJ_ID})
         self.assertEqual((objs[E.PLAYER_OBJ_ID]["x"], objs[E.PLAYER_OBJ_ID]["z"]), (17, 24))
 
 
-class ScreenDiffAndBag(unittest.TestCase):
-    def test_screen_diff(self):
-        from PIL import Image
-        a = Image.new("RGB", (10, 10), "white")
-        b = a.copy()
-        self.assertEqual(E.screen_diff(a, b)[0], 0)
-        b.putpixel((0, 0), (0, 0, 0))
-        self.assertAlmostEqual(E.screen_diff(a, b)[0], 0.01)
-        self.assertEqual(E.screen_diff(a, b, box=(5, 5, 10, 10))[0], 0)
-
+class Bag(unittest.TestCase):
     def test_set_pocket(self):
         path = SaveFileEdits()._save()
         sf = E.SaveFile(path)

@@ -5,15 +5,15 @@
 # the Chinese ROM, the snapshots, the USA claims, GOLDEN, a full build) stays local. See CONTRIBUTING.md → Checks.
 # It runs only in a repository that holds work/patches: the published repository once the patch toolchain is
 # published with it. Until then `python3 work/tools/check.py` is the gate.
-# Downloads: the actions, the pinned pip packages and the armips source at its pinned commit, nothing else.
+# Downloads: the actions, pinned pip/npm packages, and the armips source at its pinned commit, no game data.
 name: Patch toolchain
 
 on:
   push:
-    paths: ['work/patches/**', 'work/tools/**', 'ruff.toml', 'work/translate/decisions/decisions.jsonl',
+    paths: ['work/patches/**', 'work/tools/**', 'work/save-core/**', 'work/research/save_core/**', 'work/save-editor/**', 'ruff.toml', 'work/translate/decisions/decisions.jsonl',
             '.github/workflows/patches.yml']
   pull_request:
-    paths: ['work/patches/**', 'work/tools/**', 'ruff.toml', 'work/translate/decisions/decisions.jsonl',
+    paths: ['work/patches/**', 'work/tools/**', 'work/save-core/**', 'work/research/save_core/**', 'work/save-editor/**', 'ruff.toml', 'work/translate/decisions/decisions.jsonl',
             '.github/workflows/patches.yml']
   workflow_dispatch:
 
@@ -38,6 +38,17 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      # Python harness tests use the same compiled TypeScript core as the editor.
+      # check.py only verifies this build and never installs/builds implicitly.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: work/save-editor/package-lock.json
+      - name: Install pinned TypeScript tooling and build the shared save core
+        run: |
+          npm --prefix work/save-editor ci
+          npm --prefix work/save-editor run build
       - uses: actions/setup-python@v5
         with:
           # the validated environment of requirements-runtime.txt

@@ -4,7 +4,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node ../work/save-editor/scripts/build.mjs",
     "dev": "astro dev",
+    "prebuild": "node ../work/save-editor/scripts/build.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",

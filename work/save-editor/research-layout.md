@@ -44,10 +44,26 @@ Each observed mirror has equal counters for general and storage. The higher-coun
 
 ## Remaining uncertainty and safe prototype behavior
 
-The game’s exact recovery behavior with torn writes, mixed counters, equal counters, or u32 counter rollover has not been verified. For the prototype, require valid matching general/storage counters within a mirror, choose the strictly newer coherent mirror in ordinary counter cases, and reject ambiguous cases rather than inventing recovery rules. Do not infer unverified vanilla block offsets; Origin's observed sizes are different.
+**Historical initial investigation:** at that point, the game’s exact recovery behavior with torn writes, mixed counters, equal counters, or u32 counter rollover had not been verified. For the prototype, require valid matching general/storage counters within a mirror, choose the strictly newer coherent mirror in ordinary counter cases, and reject ambiguous cases rather than inventing recovery rules. Do not infer unverified vanilla block offsets; Origin's observed sizes are different.
 
 An unchanged export should preserve the entire input byte-for-byte. A party-only edit should preserve the untouched mirror and storage block, edit only the selected party record and general CRC, and retain the existing selected counter. In-game loading must confirm this editing policy; checksum agreement alone is not that confirmation.
 
 Box-record boundaries and nonempty boxed fixtures have not been established by this container investigation. Money/inventory offsets are also outside this investigation.
 
-**Update 2026-10-04 (editor policy):** the editor no longer requires both mirrors and matching storage counters. It selects the newest general block whose footer and CRC are intact, ignores storage blocks and the other mirror (preserved byte for byte), and still rejects equal-counter mirrors with different content and counter rollover. Gen 4 tools such as PKHeX select general and storage blocks independently. The editor never changes counters, so it cannot change which copy the game picks.
+**Historical update 2026-10-04 (superseded editor policy):** the editor no longer requires both mirrors and matching storage counters. It selects the newest general block whose footer and CRC are intact, ignores storage blocks and the other mirror (preserved byte for byte), and still rejects equal-counter mirrors with different content and counter rollover. Gen 4 tools such as PKHeX select general and storage blocks independently. The editor never changes counters, so it cannot change which copy the game picks.
+
+
+**Current policy, 2026-10-09:** the shared TypeScript core requires valid general
+and storage blocks at the same mirror with equal counters. It ranks coherent
+pairs using the Chinese ROM's native comparison: ordinary unsigned order, except
+zero is newer than FFFFFFFF; equality chooses the first mirror. This can select
+an older coherent generation when the newest general/storage counters disagree.
+No coherent pair means no writable save. Divergent equal-counter mirrors are
+accepted because the native tie selection is deterministic. Storage and the
+unselected mirror stay byte-exact; no counter changes are invented. The old
+claim that ignoring storage cannot affect game selection was incorrect.
+
+See [native disassembly evidence](../research/save_core/native_evidence.md) and
+[implementation verification](../research/save_core/IMPLEMENTATION.md). Native
+assertion fall-throughs and invalid-storage artificial-zero comparisons are
+intentionally rejected instead of being treated as permission to edit.

@@ -168,19 +168,24 @@ class HangCaseTable(unittest.TestCase):
         import struct
         import tempfile
 
+        import binascii
+
         import emu_hang
         from test_emu_harness import SaveFileEdits
         path = SaveFileEdits()._save()
         sf = E.SaveFile(path)
-        a = sf._a(E.ARR_MAP_OBJECTS, 0)
-        struct.pack_into("<I", sf.data, a, 0xC061)
-        sf.data[a + 8] = E.PLAYER_OBJ_ID
         sf.set_flag(1363)
-        sf.write(path)
+        data = bytearray(sf.data)             # a saved player object in slot 0 (test fixture bytes)
+        a = sf.base + 0x2480
+        struct.pack_into("<I", data, a, 0xC061)
+        data[a + 8] = E.PLAYER_OBJ_ID
+        end = sf.base + E.GENERAL_SIZE - 16
+        struct.pack_into("<H", data, end + 14, binascii.crc_hqx(bytes(data[sf.base:end]), 0xFFFF))
+        path.write_bytes(bytes(data))
         case = {"teleport": (27, 988, 267, "RIGHT"), "height": 10, "flags": {1363: False, 1302: True}}
         out = E.SaveFile(emu_hang.prepare_save(E, path, case, None, tempfile.mkdtemp()))
         self.assertEqual(out.location()["map"], 27)
-        a = out._a(E.ARR_MAP_OBJECTS, 0)
+        a = out.base + 0x2480
         self.assertEqual(struct.unpack_from("<6h", out.data, a + 0x20), (988, 10, 267, 988, 10, 267))
         self.assertEqual(struct.unpack_from("<i", out.data, a + 0x2C)[0], 10 * 8 * 0x1000)
         self.assertFalse(out.get_flag(1363))

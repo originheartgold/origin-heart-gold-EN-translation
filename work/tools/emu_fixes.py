@@ -354,15 +354,14 @@ def site_of(lr):
 
 
 def nickname(raw236: bytes) -> list:
-    """Nickname codes (block C +0, 11 u16) of an encrypted party Pokemon (Gen 4 layout, emu_harness)."""
+    """Nickname character codes, terminated by the game's 0xFFFF marker."""
     import emu_harness as E
-    pid, flags, checksum = struct.unpack_from("<IHH", raw236, 0)
-    words = struct.unpack_from("<64H", raw236, 8)
-    plain = list(words) if flags & 3 else [w ^ k for w, k in zip(words, E._prng_stream(checksum, 64))]
-    data = struct.pack("<64H", *plain)
-    order = E.BLOCK_ORDERS[((pid & 0x3E000) >> 13) % 24]
-    c = order.index("C")
-    return codes(data[32 * c:32 * c + 22])
+    result = []
+    for code in E.decode_pokemon(raw236)["nickname"]:
+        if code == 0xFFFF:
+            break
+        result.append(code)
+    return result
 
 
 def scripted(h, *cmds, settle=300):
@@ -597,19 +596,8 @@ def antipiracy_hooks(h):
 
 
 def _set_friendship(h, slot, value):
-    """Block A +0x0C of a party Pokemon (friendship), re-encrypted with a new checksum (test-only edit)."""
-    import emu_harness as E
-    a = h.array(E.ARR_PARTY) + 8 + 236 * slot
-    raw = bytearray(h.read(a, 136))
-    pid, _, cs = struct.unpack_from("<IHH", raw)
-    words = struct.unpack_from("<64H", raw, 8)
-    plain = bytearray(struct.pack("<64H", *[w ^ k for w, k in zip(words, E._prng_stream(cs, 64), strict=True)]))
-    plain[E.BLOCK_ORDERS[((pid & 0x3E000) >> 13) % 24].index("A") * 32 + 0x0C] = value
-    words = struct.unpack("<64H", plain)
-    cs = sum(words) & 0xFFFF
-    struct.pack_into("<H", raw, 6, cs)
-    struct.pack_into("<64H", raw, 8, *[w ^ k for w, k in zip(words, E._prng_stream(cs, 64), strict=True)])
-    h.write(a, bytes(raw))
+    """Block A +0x0C of a party Pokemon (friendship): a shared-core fixture edit (test-only)."""
+    h.edit_party_mon(slot, friendship=value)
 
 
 def _party_mon(h, slot):
@@ -778,14 +766,9 @@ POKEATHLON_CMD = ("Pokeathlon", 0, 0, 0x8000, 0x800C, 0x8001, 0x8002, 0x8003)   
 
 
 def set_party_status(h, slot, status):
-    """Live RAM edit: the status condition (party extension +0, encrypted with the PID's stream) of a party
-    Pokemon. Battles and the summary read it from here."""
-    import emu_harness as E
-    a = h.array(E.ARR_PARTY) + 8 + 236 * slot
-    key = E._prng_stream(h.u32(a), 50)
-    plain = [w ^ k for w, k in zip(struct.unpack("<50H", h.read(a + 136, 100)), key)]
-    plain[0], plain[1] = status & 0xFFFF, status >> 16
-    h.write(a + 136, struct.pack("<50H", *[w ^ k for w, k in zip(plain, key)]))
+    """Live RAM edit: the status condition (party extension +0) of a party Pokemon, through the shared core.
+    Battles and the summary read it from here."""
+    h.edit_party_mon(slot, status=status)
 
 
 def hp_box_top(h, x=HP_BOX_ANCHOR_X, rows=(100, 135), frames=60):
@@ -941,21 +924,10 @@ def lead(h, species, level=100, moves=None, pp=None):
 
 
 def mon_details(raw):
-    """Decrypted fields of a 236-byte party Pokemon beyond decode_party_pokemon: OT id, IVs, moves, held
-    item, OT name (raw u16 codes), level (Gen 4 layout: A +4 OT id; B +0 moves, +0x10 IV word; D +0
-    OT name)."""
+    """Decrypted fields of a 236-byte party Pokemon (OT id, IVs, moves, held item, OT name, level), decoded
+    by the shared save core."""
     import emu_harness as E
-    m = E.decode_party_pokemon(raw)
-    pid, flags_, checksum = struct.unpack_from("<IHH", raw, 0)
-    words = struct.unpack_from("<64H", raw, 8)
-    plain = list(words) if flags_ & 3 else [w ^ k for w, k in zip(words, E._prng_stream(checksum, 64))]
-    data = struct.pack("<64H", *plain)
-    order = E.BLOCK_ORDERS[((pid & 0x3E000) >> 13) % 24]
-    blk = {n: data[32 * i:32 * i + 32] for i, n in enumerate(order)}
-    iv = struct.unpack_from("<I", blk["B"], 0x10)[0]
-    m.update(ot_id=struct.unpack_from("<I", blk["A"], 4)[0], moves=list(struct.unpack_from("<4H", blk["B"], 0)),
-             ivs=[(iv >> (5 * k)) & 31 for k in range(6)], ot_name=list(struct.unpack_from("<8H", blk["D"], 0)))
-    return m
+    return E.decode_party_pokemon(raw)
 
 
 class MsgLog:

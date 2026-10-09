@@ -8,9 +8,9 @@ name: Website
 on:
   push:
     branches: [main]
-    paths: ['site/**', 'guide/**', 'work/tools/site/**', 'work/save-editor/**', '.github/workflows/site.yml']
+    paths: ['site/**', 'guide/**', 'work/tools/site/**', 'work/save-editor/**', 'work/save-core/**', 'work/research/save_core/**', 'work/tools/save_core.py', 'work/tools/test_save_*.py', 'work/tools/check_save_*.py', 'work/tools/test_check_save_harness.py', 'work/tools/check.py', 'work/tools/emu_*.py', 'work/tools/test_emu_*.py', 'work/tools/requirements-runtime.txt', '.github/workflows/site.yml']
   pull_request:
-    paths: ['site/**', 'guide/**', 'work/tools/site/**', 'work/save-editor/**']
+    paths: ['site/**', 'guide/**', 'work/tools/site/**', 'work/save-editor/**', 'work/save-core/**', 'work/research/save_core/**', 'work/tools/save_core.py', 'work/tools/test_save_*.py', 'work/tools/check_save_*.py', 'work/tools/test_check_save_harness.py', 'work/tools/check.py', 'work/tools/emu_*.py', 'work/tools/test_emu_*.py', 'work/tools/requirements-runtime.txt', '.github/workflows/site.yml']
   workflow_dispatch:
   # A new release redeploys the site so /patch/ serves the new patch (see the redeploy job).
   release:
@@ -56,6 +56,24 @@ jobs:
           cache-dependency-path: work/save-editor/package-lock.json
       - run: npm ci
       - run: npm run check
+      - name: Preserve semantic mutation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: save-core-mutations
+          path: work/build/save-core-mutations/report.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test every portable Python save/harness regression (standard library only)
+        run: python3 work/tools/check_save_harness.py
+        working-directory: .
+      - name: Install only the pinned image-test dependency
+        run: python3 -m pip install "$(sed -n '/^pillow==/p' work/tools/requirements-runtime.txt)"
+        working-directory: .
+      - name: Test optional screenshot support (Pillow required, no emulator)
+        run: python3 work/tools/check_save_harness.py --with-images
+        working-directory: .
 
   build:
     if: github.event_name != 'release'
@@ -134,7 +152,9 @@ jobs:
           cat "$out/latest.json"
       - run: npm ci
         working-directory: site
-      - run: npx astro build
+      - run: npm ci
+        working-directory: work/save-editor
+      - run: npm run build
         working-directory: site
       - name: Test site including compiled reference pages
         run: npm test

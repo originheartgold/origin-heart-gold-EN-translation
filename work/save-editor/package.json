@@ -4,12 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node node_modules/typescript/bin/tsc -p tsconfig.json",
-    "test": "npm run build && node --test tests/*.test.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "npm run build && node --test tests/*.test.mjs ../save-core/tests/*.test.mjs",
     "start": "npm run build && node scripts/serve.mjs",
-    "typecheck": "node node_modules/typescript/bin/tsc -p tsconfig.json --noEmit",
-    "lint": "node node_modules/eslint/bin/eslint.js src --max-warnings 0",
-    "check": "npm run typecheck && npm run lint && npm test"
+    "typecheck": "node scripts/build.mjs --check",
+    "lint": "node node_modules/eslint/bin/eslint.js src --max-warnings 0 && npm --prefix ../save-core run lint",
+    "check": "npm run typecheck && npm run lint && npm test && npm run test:mutations",
+    "test:mutations": "npm --prefix ../save-core run test:mutations"
   },
   "devDependencies": {
     "typescript": "5.8.3",

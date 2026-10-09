@@ -1,0 +1,16 @@
+{
+  "name": "origin-save-core",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "node ../save-editor/node_modules/typescript/bin/tsc -p tsconfig.json --noEmit",
+    "lint": "node ../save-editor/node_modules/eslint/bin/eslint.js src --max-warnings 0",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "check": "npm run typecheck && npm run lint && npm test && npm run test:mutations",
+    "test:mutations": "node scripts/mutation-check.mjs --report ../build/save-core-mutations/report.json"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

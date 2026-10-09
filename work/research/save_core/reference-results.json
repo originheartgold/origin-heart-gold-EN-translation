@@ -1,0 +1,24 @@
+{
+  "localRomSha256": "6fa7b4e739391ca9ea9bfcf90d83eec6407c3c04102e52432bb41bc8ae44a7d3",
+  "bundledRomSha256": "caf987949ea7e208f8cae1c49c76b1cf3fd596338cafeb7270693116bb448b3b",
+  "moveIdsDifferent": [],
+  "speciesIdsDifferent": [],
+  "itemIdsDifferent": [
+    429
+  ],
+  "itemPocketDifferences": 0,
+  "readiness": {
+    "bundled": {
+      "moves": 902,
+      "species": 1025,
+      "items": 768
+    },
+    "local": {
+      "moves": 902,
+      "species": 1025,
+      "items": 769
+    }
+  },
+  "personalFormPairsCompared": 262400,
+  "personalFormPairsDifferent": 0
+}

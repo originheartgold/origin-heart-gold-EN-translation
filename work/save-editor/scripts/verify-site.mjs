@@ -28,7 +28,16 @@ async function asset(reference,from=pageUrl){
  assets.push(url.pathname);return readFile(path,'utf8');
 }
 let editorBundles=0;
+const externalShellScripts=[];
 for(const match of page.matchAll(/<script\b[^>]*\bsrc="([^"]+)"[^>]*>/g)){
+ const scriptUrl=new URL(match[1],`https://verification.invalid${pageUrl}`);
+ if(scriptUrl.origin!=='https://verification.invalid'){
+  // The guide shell already includes GoatCounter. It is not an editor dependency
+  // and this static verifier never fetches it; all editor module imports stay local.
+  assert.equal(scriptUrl.href,'https://gc.zgo.at/count.js');
+  assert.match(match[0],/data-goatcounter="https:\/\/originheartgold\.goatcounter\.com\/count"/);
+  externalShellScripts.push(scriptUrl.href);continue;
+ }
  const code=await asset(match[1]);
  if(code.includes('Download requested. Your original file was not changed.')){
   editorBundles++;assert.match(code,/origin-heartgold-english-v4\.0\.3/);
@@ -45,4 +54,4 @@ for(const selector of ['.party-list','.move-row','.inventory-row','.stat-preview
 let count=0;
 async function walk(dir,relative=''){for(const entry of await readdir(dir,{withFileTypes:true})){const rel=relative+entry.name;if(entry.isDirectory()){assert.notEqual(entry.name,'local');await walk(resolve(dir,entry.name),rel+'/');}else{count++;assert.doesNotMatch(rel,/\.(nds|srl|sav|dsv)$/i);assert.doesNotMatch(rel,/(^|\/)rom\.js$/);}}}
 await walk(root);
-console.log(JSON.stringify({status:'passed',base,pageUrl,layout:'native Starlight; one main and h1; no iframe or duplicate app route',assets,outputFiles:count,theme:'scoped Starlight tokens; no standalone palette',csp:'same-origin connections for guide search; no form submission',privateGameInputs:'none'},null,2));
+console.log(JSON.stringify({status:'passed',base,pageUrl,layout:'native Starlight; one main and h1; no iframe or duplicate app route',assets,externalShellScripts,outputFiles:count,theme:'scoped Starlight tokens; no standalone palette',csp:'same-origin connections for guide search; no form submission',privateGameInputs:'none'},null,2));
