@@ -7,6 +7,82 @@ untouched Chinese ROM by default (behaviour reference, D-1002) and works unchang
 
 Proof of concept: D-1487 (wild Unown are always A) was **observed in the emulator**, see below.
 
+## How to run the emulator layer
+
+One command, one report, one approve step (suite v2 step 5, `emu_layer.py`):
+
+    ARMIPS=<armips> .venv/bin/python work/tools/check.py --full --emu [--emu-jobs 3] [--emu-saves DIR] \
+        [--emu-only fixes,scenarios,textfit,freeze] [--emu-since REF] [--emu-freeze-saves DIR,...]
+    .venv/bin/python work/tools/emu_harness.py layer --rom EN.nds [--rom-report build_report.json] [--parts ...]  # no build
+    .venv/bin/python work/tools/emu_harness.py approve --from <report dir> (--crops K,... | --baselines KEY,... | --all-pending) --by "<who, date>"
+
+After the build, `check.py --full --emu` runs every part of the layer at the same time on one emulator pool (the
+children get `EMU_HARNESS_MAX_EMULATORS = --emu-jobs`, so at most that many emulators of this run live at once,
+inside the machine-wide slot cap; memcheck's own DeSmuME in the msgload fix scenario is outside the slots):
+
+| part | what | passes when |
+|---|---|---|
+| `fixes` | `emu_harness.py fixes`: one scenario per fix on the build and on a control build without it ("Fix scenarios") | every fix `fixed` on the build and `original` on its control; a crop not approved yet is `pending` |
+| `scenarios` | `emu_harness.py scenarios`: every file in `work/tools/scenarios/` on both ROMs ("Scenario files") | no parity MISMATCH, no failed expectation, no error; a baseline not approved yet (or an EN baseline that changed) is `pending` |
+| `textfit` | `emu_harness.py textfit --since REF --pairs`: the strings changed since REF in their window ("Text fit"); REF defaults to the latest tag (`git describe --tags --abbrev=0`, else v1.0.0-rc5) | no failing and no erroring string |
+| `freeze` | `emu_harness.py hang` on melonDS (`FREEZE_CASES`: `rocket_hq`, `follower_viridian` with Bulbasaur) | the build does not freeze (goal reached, no data abort), and the untouched Chinese ROM still freezes at the known instruction (the reproducer still reproduces) |
+
+Why these freeze cases: `fixes` already covers the texture-bounds, reflection and msgload reproducers (DeSmuME with
+execution hooks: the NULL lookup is counted, not the freeze). melonDS emulates the ARM9 protection unit, so the same
+NULL reads are data aborts and the game freezes as on hardware; those two `hang` cases add the observed freeze. They
+are deterministic (two processes abort at the same frame with the same registers, melonds_backend.md). The saves are
+the 2026-10-08 reproductions, found by SHA-256 in `--emu-saves` and `<its parent>/rocket-repro-20261008`
+(`--emu-freeze-saves`); a missing save or melonDS library fails the case, never a skip. The melonDS shim is taken
+from `$MELONDS_SHIM`, this checkout's `work/build/melonds/`, else the main checkout's. The Bulbasaur fixture saves
+(`hang --case save`, melonds_backend.md) are not on this machine, so they are not part of the layer.
+
+**Output** (new folders per run, nothing replaced): `<work-dir>-emu/runs/<stamp>/<part>/` holds each tool's own
+report, screenshots and crops (and `<part>.log`); `<work-dir>-emu/report/<stamp>/` holds
+
+- `report.json`: `verdict`, `pass`, `pending_approvals`, `meta` (ROMs, jobs, text-fit ref, runtime), `parts` (per
+  part `pass`, `counts` {fail, pending, pass}, `seconds`, `run_dir`, `report`, `note`), then `rows`: failures
+  first, then pending approvals, then passes. A row: `part`, `status`, `id`, `title`, `detail`, `images` (CN | EN
+  columns, absolute paths) and, when pending, `approve` {kind crop|baseline, key, digest, approved_digest, source
+  (the run's own record), rom {path, sha256}, evidence (the images)}; `approve_commands`.
+- `report.html`: one offline page (inline CSS, no external resource; the images are relative links into `runs/`,
+  never copied): the summary table (verdict, per part counts and time), every failure with its evidence (fix crops
+  Chinese ROM | build plus the control's crop, scenario mismatches and failed expectations with the case's crops or
+  screenshots per ROM, text-fit failures with the CN | EN pair render, freeze cases with the screen after the walk on
+  both ROMs), the pending approvals with the exact `approve` commands, then the passes collapsed.
+
+The console prints a compact summary (per part counts, every failure and pending item, the report path). Exit
+status: non-zero on any failure; pending approvals never fail the run.
+
+**Approve** (`emu_harness.py approve`; the user approves, nothing is approved automatically). `--from` takes a
+report folder, or a `fixes` / `scenarios` run folder. It records:
+
+- fix crops: the build digest moves from "pending" to "approved" in `work/tools/emu_fixes_crops.json` (as
+  `fixes-approve`, which still works on a fixes run folder);
+- scenario baselines: `work/tools/scenario_baselines.json` (committed, digests only: sha256 of the observation's
+  canonical JSON), keyed `<scenario>/<case>/<lang>/<obs>`, with `approved_by`, `recorded`, the run folder and the
+  ROM's SHA-256. The value itself goes to `work/build/harness/baselines/scenarios/` (git-ignored) so a later change
+  shows the changed leaves. Images stay under `work/build`.
+
+It refuses, and writes nothing, when an item is not pending in that report, its digest is missing from the report,
+the run's own record (fixes_report.json / `<scenario>.json`) gives another digest or is gone, an evidence image is
+gone, the committed file changed since the run (crop no longer pending; another approved baseline digest), or the ROM
+at the recorded path is not the one that was run (rebuilt: run again). It prints exactly what it recorded. Commit
+the JSON change.
+
+Baseline verdicts: equal to the approved digest passes; no approval yet passes as `pending`; an EN value that
+differs from the approved one passes as `pending` ("needs approval": a new English build that changes text needs a
+look, it is not a silent fail); a CN value that differs fails (the Chinese ROM never changes, so the harness or the
+scenario did).
+
+**Run 2026-10-09** (branch emu/suite-v2, `check.py --full --emu --emu-jobs 3`, saves from the main checkout's
+`work/build/memcheck`; report `work/build/check-emu/report/20261009-151540/`): overall **FAIL**, emu step 1888 s
+(the four parts at once on 3 emulators). fixes PASS: 16 pass, 12 pending (the 12 new crops of step 1, not approved
+yet); scenarios PASS: 5 scenarios, 0 mismatches, 2 pending (the dex panel baselines, CN and EN: the earlier
+auto-created local baselines were never approved by the user); textfit FAIL: 3280 strings since v1.0.0-rc5, 2297
+rendered, 2271 fit, 26 fail, all `prompt` (the same 26 strings as `textfit-run2`, findings for the coordinator, not
+suppressed); freeze PASS: rocket_hq and follower_viridian reach their goal on the build and freeze on the Chinese
+ROM at 0x02024696 / 0x02024528. The report's 102 image links all resolve.
+
 ## Running it
 
 Use the project venv (py-desmume 0.0.9, capstone, ndspy, pillow). ROMs, saves, screenshots and reports
@@ -24,6 +100,8 @@ of the main checkout (also when run from an agent worktree).
     python3 work/tools/emu_scenarios.py validate          # schema check of work/tools/scenarios/*.toml, no emulator
     .venv/bin/python work/tools/emu_harness.py textfit [--since v1.0.0-rc5 | --refs 60#27,... | --all] [--limit N] [--jobs 3] [--pairs]   # text fit, see 'Text fit'
     .venv/bin/python work/tools/emu_harness.py fixes --rom EN.nds --controls DIR --build-controls [--case all]   # one scenario per fix, see 'Fix scenarios'
+    .venv/bin/python work/tools/emu_harness.py layer [--parts fixes,scenarios,textfit,freeze]   # the whole layer, one report (above)
+    .venv/bin/python work/tools/emu_harness.py approve --from <report dir> --crops K | --baselines KEY | --all-pending --by "<who, date>"
     .venv/bin/python work/tools/emu_harness.py cleanup [--kill [--all]]                   # leftover harness processes
     python3 -m unittest discover -s work/tools -p 'test_emu_*.py'           # pure parts, no ROM needed
 
@@ -1058,9 +1136,11 @@ en = { baseline = true }              # optional per-ROM check (any expectation 
   plus every hook's captures under its name.
 - **Shared setup**: `[setup] steps = [...]` runs once per ROM from `[start]` and saves a savestate; every case then
   starts from it (only `clock` may differ per case). Arceus uses it: one generator run, 16 Plates.
-- **Baselines**: `baseline = true` compares with the value of the first run, stored outside git in
-  `work/build/harness/baselines/scenarios/<scenario>/<case>__<lang>__<obs>.json` (created and passing when missing;
-  delete it to re-approve). The dex scenario uses it for its panel digests.
+- **Baselines**: `baseline = true` compares the observation's digest with the approved one in the committed
+  `work/tools/scenario_baselines.json` (since step 5; before, the first run's value was stored under work/build and
+  passed unseen). Not approved yet, or an EN value that changed: `pending` (needs approval, the run passes); a CN value
+  that changed: fail. Approve with `emu_harness.py approve` (see "How to run the emulator layer"). The dex scenario
+  uses it for its panel digests.
 - **Parity (suite v2 step 3, D-1002)**: every scenario runs on both ROMs, and every observation must be equal on
   cn and en; a scenario with no `[[expect]]` at all is valid and parity alone judges it. `[parity]` declares the
   exceptions (decided by the coordinator, 2026-10-09):
@@ -1334,8 +1414,8 @@ d6481b9 build.py also accepts repeated `--without`, before that it kept only the
 lists exactly the fixed ROM's fixes minus the dropped ones (the fixed ROM's report: `--rom-report`, else
 `build_report.json` next to it, else the registry's enabled fixes) and the ROM carries the fixed ROM's message
 text; otherwise `--build-controls` rebuilds it in place (about 7 s) and the run fails without that flag.
-`--rebuild-controls` rebuilds all. `check.py --emu` uses `<work-dir>-emu/controls` and writes its report to
-`<work-dir>-emu/run`, replaced by every run (`--overwrite`). `--sav-dir` and `check.py --emu-saves` both default
+`--rebuild-controls` rebuilds all. `check.py --emu` uses `<work-dir>-emu/controls` and, since step 5, runs `fixes` as
+one part of the emulator layer into `<work-dir>-emu/runs/<stamp>/fixes` (a new folder per run). `--sav-dir` and `check.py --emu-saves` both default
 to `<checkout>/work/build/memcheck`.
 
 The report (`fixes_report.json`) has one row per fix with the state and the evidence on both ROMs, the

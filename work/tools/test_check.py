@@ -165,32 +165,68 @@ class Emu(unittest.TestCase):
                 C.step_emu("armips", first, Path(td) / "check", td)
             self.assertIn("py-desmume", str(cm.exception))
 
+    def test_emu_only_implies_emu_and_is_checked(self):
+        seen = []
+        with patch.object(C, "run", side_effect=lambda steps: seen.append([n for n, _ in steps]) or 0):
+            C.main(["--full", "--emu-only", "textfit,freeze"])
+        self.assertEqual(seen[0][-1], "emu")
+        with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+            C.main(["--full", "--emu-only", "textfit,bogus"])
+
     def test_emu_report(self):
-        report = {"pass": False, "seconds": 200.0, "uncovered": {"gfx-bag-labels": "why"},
-                  "fixes": [{"fix": "namelen", "scenario": "naming", "pass": True, "fixed_rom": {"state": "fixed"},
-                             "control": {"state": "original"}},
-                            {"fix": "msgload", "scenario": "msgload", "pass": False, "fixed_rom": {"state": "fixed"},
-                             "control": {"state": "unclear"}}]}
+        report = {"verdict": "FAIL", "pass": False, "pending_approvals": 1, "meta": {"seconds": 1234.5},
+                  "approve_commands": ["py work/tools/emu_harness.py approve --from R --crops bag-hm --by \"<who>\""],
+                  "parts": [{"part": "fixes", "pass": True, "counts": {"fail": 0, "pending": 1, "pass": 3},
+                             "seconds": 300},
+                            {"part": "textfit", "pass": False, "counts": {"fail": 2, "pending": 0, "pass": 1},
+                             "seconds": 900}],
+                  "rows": [{"part": "textfit", "status": "fail", "title": "a027/0115#39 [field]"},
+                           {"part": "textfit", "status": "fail", "title": "a027/0115#49 [field]"},
+                           {"part": "fixes", "status": "pending", "title": "fix gfx-bag-labels, scenario bag"},
+                           {"part": "fixes", "status": "pass", "title": "fix namelen, scenario naming"}]}
         with tempfile.TemporaryDirectory() as td:
             for n in C.EMU_SAVES:
                 (Path(td) / n).write_bytes(b"")
+            seen = {}
 
-            def fake_run(cmd, **kw):
-                class R:
-                    returncode = 0
-                if "fixes" in cmd:
-                    out = Path(cmd[cmd.index("--out") + 1])
+            class FakePopen:
+                def __init__(self, cmd, **kw):
+                    seen["cmd"] = cmd
+                    out = Path(cmd[cmd.index("--out-root") + 1]) / "report" / cmd[cmd.index("--stamp") + 1]
                     out.mkdir(parents=True)
-                    (out / "fixes_report.json").write_text(__import__("json").dumps(report))
-                    R.returncode = 1
-                return R
-            with patch.object(C.subprocess, "run", side_effect=fake_run):
+                    (out / "report.json").write_text(__import__("json").dumps(report))
+                    self.stdout = iter(["  textfit done: FAIL\n"])
+                    self.returncode = 1
+
+                def __enter__(self):
+                    return self
+
+                def __exit__(self, *a):
+                    return False
+            with patch.object(C.subprocess, "run") as run, patch.object(C.subprocess, "Popen", FakePopen), \
+                    contextlib.redirect_stdout(io.StringIO()):
+                run.return_value.returncode = 0
                 with self.assertRaises(C.Failed) as cm:
-                    C.step_emu("armips", {"report": {"rom": {"path": "x.nds"}}}, Path(td) / "check", td)
+                    C.step_emu("armips", {"report": {"rom": {"path": "x.nds"}}}, Path(td) / "check", td, 2,
+                               ["fixes", "textfit"], "v9")
             text = str(cm.exception)
-            self.assertIn("1/2 fix scenarios", text)
-            self.assertIn("FAIL msgload (msgload): fixed ROM fixed, control unclear", text)
-            self.assertIn("no scenario: gfx-bag-labels", text)
+            cmd = seen["cmd"]
+            self.assertEqual(cmd[cmd.index("--parts") + 1], "fixes,textfit")
+            self.assertEqual(cmd[cmd.index("--since") + 1], "v9")
+            self.assertEqual(cmd[cmd.index("--jobs") + 1], "2")
+            self.assertTrue(text.startswith("FAIL in 1234 s, 1 pending approval; report "))
+            self.assertIn("textfit   FAIL: 2 fail, 0 pending, 1 pass", text)
+            self.assertIn("FAIL textfit: a027/0115#39 [field]", text)
+            self.assertIn("PENDING fixes: fix gfx-bag-labels, scenario bag", text)
+            self.assertIn("approve --from R --crops bag-hm", text)
+            self.assertNotIn("namelen", text)                             # passes stay in the report
+
+    def test_emu_summary_pass(self):
+        report = {"verdict": "PASS", "pass": True, "pending_approvals": 0, "meta": {"seconds": 10},
+                  "parts": [{"part": "freeze", "pass": True, "counts": {"fail": 0, "pending": 0, "pass": 2},
+                             "seconds": 30}], "rows": []}
+        text = C.emu_summary(report, Path("R"))
+        self.assertTrue(text.startswith("PASS in 10 s; report R/report.html"))
 
 
 class Repro(unittest.TestCase):

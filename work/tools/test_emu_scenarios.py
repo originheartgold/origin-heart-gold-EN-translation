@@ -192,16 +192,40 @@ class Judging(unittest.TestCase):
         self.assertEqual(self.judge({"obs": "pos", "equals": 1, "lang": "en"}), [])
         self.assertEqual(len(self.judge({"obs": "pos", "equals": 1, "lang": "en"}, lang="en")), 1)
 
-    def test_baseline_created_then_compared(self):
+    def test_baseline_needs_approval_then_compared(self):
+        exp = [{"obs": "after", "baseline": True}]
+        first = S.judge(exp, self.OBS, "en", "dex", "main", None, {})[0]
+        self.assertTrue(first["pass"])                      # not approved yet: pending, not a failure
+        self.assertTrue(first["pending"])
+        self.assertEqual(first["key"], "dex/main/en/after")
+        self.assertEqual(first["digest"], S.value_digest(self.OBS["after"]))
+        self.assertIsNone(first["approved_digest"])
+        approved = {"dex/main/en/after": {"digest": first["digest"]},
+                    "dex/main/cn/after": {"digest": first["digest"]}}
+        same = S.judge(exp, self.OBS, "en", "dex", "main", None, approved)[0]
+        self.assertTrue(same["pass"])
+        self.assertNotIn("pending", same)
+        changed = S.judge(exp, {"after": {"species": 1}}, "en", "dex", "main", None, approved)[0]
+        self.assertTrue(changed["pass"])                    # the English build changed: needs approval
+        self.assertTrue(changed["pending"])
+        self.assertEqual(changed["approved_digest"], first["digest"])
+        cn = S.judge(exp, {"after": {"species": 1}}, "cn", "dex", "main", None, approved)[0]
+        self.assertFalse(cn["pass"])                        # the Chinese ROM never changes
+        self.assertNotIn("pending", cn)
+
+    def test_baseline_diff_from_local_value(self):
+        exp = [{"obs": "after", "baseline": True}]
         with tempfile.TemporaryDirectory() as d:
-            exp = [{"obs": "after", "baseline": True}]
-            first = S.judge(exp, self.OBS, "en", "dex", "main", d)[0]
-            self.assertTrue(first["pass"])
-            self.assertEqual(first["note"], "baseline created")
-            self.assertTrue(S.judge(exp, self.OBS, "en", "dex", "main", d)[0]["pass"])
-            changed = S.judge(exp, {"after": {"species": 1}}, "en", "dex", "main", d)[0]
-            self.assertFalse(changed["pass"])
-            self.assertTrue(S.judge(exp, {"after": {"species": 1}}, "cn", "dex", "main", d)[0]["pass"])
+            old = {"species": 1, "form": 0}
+            bf = S.baseline_file(d, "dex", "main", "en", "after")
+            bf.parent.mkdir(parents=True)
+            bf.write_text(json.dumps({"value": old, "digest": S.value_digest(old)}))
+            row = S.judge(exp, {"after": {"species": 2, "form": 0}}, "en", "dex", "main", d,
+                          {"dex/main/en/after": {"digest": S.value_digest(old)}})[0]
+            self.assertEqual(row["diff"], [{"path": "species", "cn": 1, "en": 2}])
+
+    def test_value_digest_is_canonical(self):
+        self.assertEqual(S.value_digest({"b": 1, "a": (1, 2)}), S.value_digest({"a": [1, 2], "b": 1}))
 
     def test_verdicts(self):
         self.assertEqual(S.run_verdict({"verdict": "timeout"}, []), "timeout")

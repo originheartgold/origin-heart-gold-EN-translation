@@ -2472,6 +2472,11 @@ def main(argv=None):
     emu_textfit.add_arguments(sub.add_parser("textfit", help="render translated strings in their real window on the "
                                              "English build and check that they fit (emu_textfit.py)"))
     emu_textfit.add_child_arguments(sub.add_parser("textfit-child", help=argparse.SUPPRESS))
+    import emu_layer
+    emu_layer.add_arguments(sub.add_parser("layer", help="the whole emulator layer (fixes, scenarios, textfit, "
+                                           "freeze) on one emulator pool, one report (emu_layer.py)"))
+    emu_layer.add_approve_arguments(sub.add_parser("approve", help="record the user's approval of pending fix crops "
+                                                   "and scenario baselines from a report or run folder"))
     a = ap.parse_args(argv)
     if a.emulator:
         os.environ["EMU_HARNESS_EMULATOR"] = a.emulator
@@ -2480,7 +2485,8 @@ def main(argv=None):
             "scenario-run": emu_scenarios.cmd_child,
             "texture-bounds": emu_texture_bounds.run, "reflection": emu_reflection.run, "hang": emu_hang.run,
             "fixes": emu_fixes.run, "fixes-child": emu_fixes.cmd_child, "fixes-approve": emu_fixes.cmd_approve, "cleanup": cmd_cleanup,
-            "textfit": emu_textfit.run, "textfit-child": emu_textfit.cmd_child}[a.cmd](a)
+            "textfit": emu_textfit.run, "textfit-child": emu_textfit.cmd_child,
+            "layer": emu_layer.cmd_run, "approve": emu_layer.cmd_approve}[a.cmd](a)
 
 
 if __name__ == "__main__":

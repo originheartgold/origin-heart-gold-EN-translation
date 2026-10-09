@@ -473,11 +473,47 @@ def baseline_file(base_dir, scenario, case, lang, obs):
     return Path(base_dir) / scenario / f"{case}__{lang}__{safe}.json"
 
 
-def judge(expect, observations, lang, scenario="", case="", base_dir=None):
+# Approved baselines are committed digests (no images, no values): scenario_baselines.json, keyed by
+# "<scenario>/<case>/<lang>/<obs>" -> {digest, approved_by, run, rom_sha256}. Recorded only by
+# `emu_harness.py approve` (the user approves; nothing is approved automatically). The values themselves (e.g. the
+# Pokedex panel digests) and the screenshots stay under work/build.
+APPROVALS = TOOLS / "scenario_baselines.json"
+APPROVALS_DOC = ("Approved values of the scenario files' `baseline` checks (work/tools/scenarios/*.toml), as digests "
+                 "only: sha256 of the observation's canonical JSON. Key: <scenario>/<case>/<lang>/<obs>. Recorded "
+                 "by `emu_harness.py approve --from <report dir> --baselines <key>[,...] --by '<who, date>'` after "
+                 "the user looked at the run's evidence (images stay under work/build). A missing or changed EN "
+                 "baseline judges 'needs approval' (the run passes, the report lists it); a changed CN baseline "
+                 "fails (the Chinese ROM never changes).")
+
+
+def baseline_key(scenario, case, lang, obs):
+    return f"{scenario}/{case}/{lang}/{obs}"
+
+
+def value_digest(value):
+    """sha256 of a value's canonical JSON (sorted keys, no spaces): what an approved baseline records."""
+    text = json.dumps(_norm(value), sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def load_approvals(path=None):
+    path = Path(path or APPROVALS)
+    if not path.is_file():
+        return {"_doc": APPROVALS_DOC, "approved": {}}
+    data = json.loads(path.read_text(encoding="utf-8"))
+    data.setdefault("approved", {})
+    return data
+
+
+def judge(expect, observations, lang, scenario="", case="", base_dir=None, approvals=None):
     """Judge the expectations that apply to `lang` against one run's observations. Returns rows
-    {obs, check, want, got, pass[, note]}. A 'baseline' check compares with the stored value of an earlier
-    approved run (base_dir/<scenario>/<case>__<lang>__<obs>.json); a missing baseline is created and passes."""
+    {obs, check, want, got, pass[, note]}. A 'baseline' check compares the observation's digest (value_digest)
+    with the approved one in scenario_baselines.json (`approvals`: its 'approved' dict, default the committed
+    file): equal passes; no approval, or an EN value that changed, passes as `pending` ('needs approval', the
+    row carries key, digest and approved_digest for `emu_harness.py approve`); a changed CN value fails. With
+    base_dir, the value an approval recorded there (approve writes it) gives the changed leaves (`diff`)."""
     rows = []
+    approved = load_approvals()["approved"] if approvals is None else approvals
     for e in expect:
         if e.get("lang", "both") not in ("both", lang):
             continue
@@ -487,17 +523,29 @@ def judge(expect, observations, lang, scenario="", case="", base_dir=None):
         if got is _MISSING:
             row.update(got=None, **{"pass": False}, note="observation missing")
         elif op == "baseline":
-            bf = baseline_file(base_dir, scenario, case, lang, e["obs"])
-            row["want"] = str(bf)
-            if bf.exists():
-                ok = _norm(got) == json.loads(bf.read_text())["value"]
-                row.update(got="(same as baseline)" if ok else got, **{"pass": ok},
-                           note="" if ok else "differs from the approved baseline")
+            key = baseline_key(scenario, case, lang, e["obs"])
+            digest = value_digest(got)
+            appr = approved.get(key)
+            want = appr["digest"] if appr else None
+            row.update(want=want, got=digest, key=key, digest=digest, approved_digest=want)
+            if want == digest:
+                row.update(**{"pass": True}, note="equals the approved baseline")
+            elif want is None:
+                row.update(**{"pass": True}, pending=True, note="needs approval: no approved baseline yet")
+            elif lang == "en":
+                row.update(**{"pass": True}, pending=True,
+                           note="needs approval: differs from the approved baseline (the English build changed)")
             else:
-                bf.parent.mkdir(parents=True, exist_ok=True)
-                bf.write_text(json.dumps({"value": _norm(got), "created": datetime.datetime.now().isoformat(
-                    timespec="seconds")}, indent=1))
-                row.update(got="(stored)", **{"pass": True}, note="baseline created")
+                row.update(**{"pass": False}, note="differs from the approved baseline (the Chinese ROM never "
+                                                    "changes: the harness or the scenario did)")
+            if want not in (None, digest) and base_dir:
+                bf = baseline_file(base_dir, scenario, case, lang, e["obs"])
+                try:
+                    old = json.loads(bf.read_text())
+                    if old.get("digest") == want:
+                        row["diff"] = leaf_diff(old["value"], got)
+                except (OSError, ValueError, KeyError):
+                    pass
         else:
             ok, note = check_value(op, e[op], got)
             row.update(got=got, **{"pass": ok})
@@ -862,7 +910,10 @@ def add_arguments(p):
     p.add_argument("--rom-en", default=str(E.DEF_ROM_EN))
     p.add_argument("--sav-dir", default=str(E.DEF_SAVES), help="battery saves the scenarios' start.save names")
     p.add_argument("--baselines", default=str(E.DEF_OUT / "baselines" / "scenarios"),
-                   help="approved values of 'baseline' expectations (outside git); delete a file to re-approve")
+                   help="local values of approved baselines (outside git; `approve` writes them): the changed leaves "
+                        "of a baseline that needs approval")
+    p.add_argument("--approvals", default=str(APPROVALS),
+                   help="the committed approved-baseline digests (default work/tools/scenario_baselines.json)")
     p.add_argument("--dir", default=str(SCENARIO_DIR), help=argparse.SUPPRESS)
 
 
@@ -898,6 +949,7 @@ def run(a):
     out.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     results = {s["id"]: [] for s in scns}
+    approved = load_approvals(getattr(a, "approvals", None))["approved"]
 
     def child(scn, case_id, lang, state_in=None, state_out=None, gen_slot=None):
         d = out / scn["id"] / lang / case_id
@@ -942,7 +994,7 @@ def run(a):
                     continue
                 case = next(c for c in scn["cases"] if c["id"] == case_id)
                 rows = [] if r.get("observations") is None else judge(
-                    case["expect"], r["observations"], lang, scn["id"], case_id, a.baselines)
+                    case["expect"], r["observations"], lang, scn["id"], case_id, a.baselines, approved)
                 r["expectations"] = rows
                 r["verdict"] = run_verdict(r, rows)
                 results[scn["id"]].append(r)
@@ -957,8 +1009,10 @@ def run(a):
 
 def summarise(scns, results, langs, rom_ids, out, seconds):
     """Write <scenario>.json per scenario and summary.json; return the summary. The summary lists the parity
-    mismatches first, then the failed expectations, then the runs that errored, then one row per scenario."""
-    summary = {"pass": True, "mismatches": [], "failed_expectations": [], "errors": [], "roms": rom_ids,
+    mismatches first, then the failed expectations, then the runs that errored, then the baselines that need
+    the user's approval (they do not fail the run), then one row per scenario."""
+    summary = {"pass": True, "mismatches": [], "failed_expectations": [], "errors": [], "pending_approval": [],
+               "roms": rom_ids,
                "langs": langs, "out": str(out), "seconds": seconds, "scenarios": []}
     for scn in scns:
         order = [c["id"] for c in scn["cases"]]
@@ -973,6 +1027,11 @@ def summarise(scns, results, langs, rom_ids, out, seconds):
             summary["failed_expectations"] += [
                 {"scenario": scn["id"], "case": r["case"], "lang": r["lang"], **e}
                 for e in r.get("expectations", []) if not e["pass"]]
+            summary["pending_approval"] += [
+                {"scenario": scn["id"], "case": r["case"], "lang": r["lang"], "obs": e["obs"], "key": e["key"],
+                 "digest": e["digest"], "approved_digest": e.get("approved_digest"), "note": e.get("note", ""),
+                 **({"diff": e["diff"]} if e.get("diff") else {})}
+                for e in r.get("expectations", []) if e.get("pending")]
             if r["verdict"] in ("error", "timeout"):
                 summary["errors"].append({"scenario": scn["id"], "case": r["case"], "lang": r["lang"],
                                           "verdict": r["verdict"], "error": r.get("error", "")})
@@ -995,6 +1054,8 @@ def print_summary(summary):
               f"got {_short(e['got'], 80)}" + (f" ({e['note']})" if e.get("note") else ""))
     for e in summary["errors"]:
         print(f"{e['verdict'].upper():8} {e['scenario']}/{e['case']}/{e['lang']}: {_short(e['error'], 200)}")
+    for e in summary.get("pending_approval", []):
+        print(f"PENDING  {e['key']}: {e['note']} (digest {e['digest'][:12]}; emu_harness.py approve)")
     for s in summary["scenarios"]:
         par = s["parity"]
         par = (f"parity {par.get(EQUAL, 0)} equal, {par.get(DECLARED, 0)} declared, {par.get(MISMATCH, 0)} "
@@ -1004,7 +1065,8 @@ def print_summary(summary):
         print(f"{s['verdict'].upper():5} {s['scenario']}  {par}" + (f"  failed runs: {', '.join(bad)}" if bad else "")
               + (f"  declared but equal: {', '.join(s['declared_but_equal'])}" if s["declared_but_equal"] else ""))
     print(json.dumps({"pass": summary["pass"], "mismatches": len(summary["mismatches"]),
-                      "failed_expectations": len(summary["failed_expectations"]), "seconds": summary["seconds"],
+                      "failed_expectations": len(summary["failed_expectations"]),
+                      "pending_approval": len(summary.get("pending_approval", [])), "seconds": summary["seconds"],
                       "summary": str(Path(summary["out"]) / "summary.json")}))
 
 

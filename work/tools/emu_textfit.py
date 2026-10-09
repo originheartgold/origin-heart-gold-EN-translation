@@ -4,7 +4,8 @@ and decide from the pixels that they fit (`emu_harness.py textfit`, suite v2 ste
 
 Selection (one of):
   --since REF   every string whose `en` differs between git REF and the working tree (default: the last
-                release tag, v1.0.0-rc5); a bank file that REF does not have counts as all new
+                release tag, `git describe --tags --abbrev=0`, else v1.0.0-rc5); a bank file that REF does not
+                have counts as all new
   --refs LIST   bank#id list: a027/0060#27, 60#27 (a027), battle_string/0002#32
   --all         every string with English text (a full sweep)
   --limit N     an evenly spaced sample of N of the selection (smoke runs)
@@ -65,7 +66,7 @@ WORK = TOOLS.parent
 REPO = WORK.parent
 BANKS = WORK / "translate" / "banks"
 BANKS_REL = "work/translate/banks"
-DEFAULT_SINCE = "v1.0.0-rc5"
+DEFAULT_SINCE = "v1.0.0-rc5"          # the fallback when `git describe` finds no tag
 CHARMAP_EN = TOOLS / "charmap_en.tsv"
 CHARMAP_ZH = TOOLS / "charmaps" / "charmap_zh_xzonn_gen4.tsv"
 UNKNOWN = "�"
@@ -135,6 +136,14 @@ def _git(*args, cwd=REPO):
     if r.returncode:
         raise RuntimeError(f"git {' '.join(args)}: {r.stderr.strip()}")
     return r.stdout
+
+
+def latest_release_tag(cwd=REPO, fallback=DEFAULT_SINCE) -> str:
+    """The latest tag reachable from HEAD (`git describe --tags --abbrev=0`), else `fallback`."""
+    try:
+        return _git("describe", "--tags", "--abbrev=0", cwd=cwd).strip() or fallback
+    except (RuntimeError, OSError):
+        return fallback
 
 
 def diff_strings(old: dict | None, new: dict) -> list[int]:
@@ -949,7 +958,8 @@ def add_child_arguments(p):
 def add_arguments(p):
     import emu_harness as E
     sel = p.add_mutually_exclusive_group()
-    sel.add_argument("--since", help=f"strings whose en changed since this git ref (default {DEFAULT_SINCE})")
+    sel.add_argument("--since", help=f"strings whose en changed since this git ref (default: the latest tag, "
+                                       f"git describe --tags --abbrev=0; {DEFAULT_SINCE} when there is none)")
     sel.add_argument("--refs", help="comma/space list of bank#id, a027/NNNN#id, battle_string/NNNN#id")
     sel.add_argument("--all", action="store_true", help="every string with English text (full sweep)")
     sel.add_argument("--rejudge", metavar="RUN", help="judge the views read back in an earlier run's folder again "
@@ -978,7 +988,7 @@ def select(a):
     elif a.all:
         refs, how = all_refs(), "all"
     else:
-        since = a.since or DEFAULT_SINCE
+        since = a.since or latest_release_tag()
         refs, how = changed_refs(since), f"since {since}"
     refs = sorted(set(refs), key=lambda r: (r[0], r[1], r[2]))
     return sample(refs, a.limit), how, len(refs)

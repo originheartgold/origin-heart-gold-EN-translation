@@ -17,8 +17,9 @@
                                                (a release)
     python3 work/tools/check.py --full --update-expected
                                                record the full build's hashes in work/patches/expected.toml
-    python3 work/tools/check.py --full --emu   also: one emulator scenario per fix on the build and on a control
-                                               build without that fix (emu_harness.py fixes; about 4 min)
+    python3 work/tools/check.py --full --emu   also: the emulator layer on the build (emu_harness.py layer): fix
+                                               scenarios, behaviour scenarios, text fit, freeze reproducers; one
+                                               report (about 35-40 min; --emu-only fixes,scenarios,textfit,freeze)
 
 Fast (the default, also the pre-commit hook and CI; about 6 s) needs no ROM, and armips only for asm-synth:
   registry   fixes.py check: fix.toml schema, regions, overlaps, `.open` lines, `.string` = en, and the asm
@@ -57,15 +58,22 @@ Full adds (and fails when armips v0.11.0, the two ROMs or xdelta3 are missing; a
              installed), a note says the locale axis was not tested.
 
 --emu adds (needs py-desmume in this Python, i.e. the harness venv, and the battery saves of --emu-saves):
-  emu        emu_harness.py fixes (emu_fixes.py) on the build's ROM: each covered fix's scenario must show the
-             fix ('fixed') on it and the hack's behaviour ('original') on a control ROM without that fix
-             (build.py --no-patch --without <fix>[,<fixes that require it>] in <work-dir>-emu/controls; reused
-             when its build report and message text match this build, else rebuilt in place). Graphics crops
-             must equal the approved digests (emu_fixes_crops.json); a crop still pending approval passes as
-             'pending' when it differs from the Chinese ROM's. The report goes to <work-dir>-emu/run,
-             replaced by every run. The fixes without a scenario are listed in emu_fixes.UNCOVERED. Not part of
-             --full by default: 57 emulator runs (--emu-jobs at a time, default 3), about 8-10 min, plus up
-             to 25 control builds.
+  emu        emu_harness.py layer (emu_layer.py) on the build's ROM, every part at the same time on one pool of
+             --emu-jobs emulators (default 3; within the machine-wide cap EMU_HARNESS_MAX_EMULATORS):
+             fixes      one scenario per fix: 'fixed' on the build, 'original' on a control ROM without that fix
+                        (build.py --no-patch --without <fix>[,dependents] in <work-dir>-emu/controls; reused when
+                        its build report and message text match this build, else rebuilt); graphics crops against
+                        the approved digests (emu_fixes_crops.json), a crop not approved yet is 'pending';
+             scenarios  every work/tools/scenarios/*.toml on both ROMs: CN/EN parity, expectations, baselines
+                        against the committed digests (scenario_baselines.json), not approved yet = 'pending';
+             textfit    the strings changed since --emu-since (default the latest tag) in their window;
+             freeze     the melonDS freeze reproducers (rocket_hq, follower_viridian): no freeze on the build, the
+                        freeze still reproduced on the untouched Chinese ROM.
+             Runs in <work-dir>-emu/runs/<stamp>/<part>; the report (report.json, report.html: failures with
+             their CN|EN evidence, pending approvals with the exact `emu_harness.py approve` commands, passes)
+             in <work-dir>-emu/report/<stamp>/. The step fails on any failure; pending approvals are listed and
+             do not fail it. --emu-only PARTS runs some parts (with the build), for speed while iterating.
+             Not part of --full by default.
 
 Exit status 0 only when no step failed. Each step prints PASS / FAIL / SKIP with its time.
 """
@@ -502,13 +510,19 @@ def locale_note(env) -> str:
     return ""
 
 
-EMU_SAVES = ("full_bag_6mons.sav", "route1_path_2mons.sav")     # what emu_fixes' scenarios import
+EMU_SAVES = ("full_bag_6mons.sav", "route1_path_2mons.sav", "market.sav")   # what the emulator parts import
+EMU_PARTS = ("fixes", "scenarios", "textfit", "freeze")
 
 
-def step_emu(armips, first: dict, work_dir, saves, jobs=3) -> str:
-    """emu_harness.py fixes on the full build's ROM. A control ROM in <work-dir>-emu/controls is reused only when
-    its build report shows this build's fixes minus its fix and its message text is the build's (emu_fixes
-    control_problems); otherwise it is rebuilt there (the same file name: no extra copies)."""
+def emu_dir_of(work_dir) -> Path:
+    return Path(work_dir).with_name(Path(work_dir).name + "-emu")
+
+
+def step_emu(armips, first: dict, work_dir, saves, jobs=3, only=None, since=None, freeze_saves=None) -> str:
+    """The emulator layer (emu_harness.py layer, emu_layer.py) on the full build's ROM: fix scenarios, behaviour
+    scenarios, text fit, freeze reproducers; one report in <work-dir>-emu/report/<stamp>/. Fix control ROMs in
+    <work-dir>-emu/controls are reused only when their build report and message text match this build (emu_fixes
+    control_problems); otherwise rebuilt there."""
     if "report" not in first:
         raise Skip("no build to test (the build step failed)", fail=True)
     probe = subprocess.run([sys.executable, "-c", "import desmume.emulator, PIL"], capture_output=True, text=True)
@@ -517,34 +531,57 @@ def step_emu(armips, first: dict, work_dir, saves, jobs=3) -> str:
     missing = [n for n in EMU_SAVES if not (Path(saves) / n).is_file()]
     if missing:
         raise Skip(f"--emu needs the battery saves {', '.join(missing)} in {saves} (--emu-saves)", fail=True)
-    emu_dir = Path(work_dir).with_name(Path(work_dir).name + "-emu")
-    out = emu_dir / "run"                    # one folder, replaced by every run (--overwrite)
-    log = emu_dir / "emu.log"
+    emu_dir = emu_dir_of(work_dir)
     emu_dir.mkdir(parents=True, exist_ok=True)
-    with open(log, "w", encoding="utf-8") as f:
-        r = subprocess.run([sys.executable, str(TOOLS / "emu_harness.py"), "fixes",
-                            "--rom", first["report"]["rom"]["path"], "--controls", str(emu_dir / "controls"),
-                            "--build-controls", "--jobs", str(jobs), "--armips", armips, "--sav-dir", str(saves),
-                            "--out", str(out), "--overwrite",
-                            "--rom-report", str(Path(work_dir) / "build_report.json")],
-                           cwd=REPO, stdout=f, stderr=subprocess.STDOUT,
-                           env=dict(os.environ, EMU_HARNESS_EMULATOR="desmume"))   # approved digests are DeSmuME's
+    stamp = time.strftime("%Y%m%d-%H%M%S")
+    cmd = [sys.executable, str(TOOLS / "emu_harness.py"), "layer", "--rom", first["report"]["rom"]["path"],
+           "--rom-report", str(Path(work_dir) / "build_report.json"), "--controls", str(emu_dir / "controls"),
+           "--armips", armips, "--sav-dir", str(saves), "--jobs", str(jobs), "--out-root", str(emu_dir),
+           "--stamp", stamp, "--parts", ",".join(only or EMU_PARTS)]
+    if since:
+        cmd += ["--since", since]
+    if freeze_saves:
+        cmd += ["--freeze-saves", freeze_saves]
+    report_dir = emu_dir / "report" / stamp
+    lines = []
+    with subprocess.Popen(cmd, cwd=REPO, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True) as proc:
+        for ln in proc.stdout:                       # the layer's progress lines (one per part), as they come
+            lines.append(ln)
+            print("     " + ln.rstrip(), flush=True)
+    rc = proc.returncode
+    (emu_dir / f"layer-{stamp}.log").write_text("".join(lines), encoding="utf-8")
     try:
-        report = json.loads((out / "fixes_report.json").read_text(encoding="utf-8"))
+        report = json.loads((report_dir / "report.json").read_text(encoding="utf-8"))
     except (OSError, ValueError):
-        raise Failed(f"emu_harness.py fixes failed (exit {r.returncode}) without a report; log: {log}") from None
-    lines = [f"{('pend' if row.get('pending_approval') else 'ok  ') if row['pass'] else 'FAIL'} {row['fix']} "
-             f"({row['scenario']}): fixed ROM {row['fixed_rom'].get('state')}, control {row['control'].get('state')}"
-             for row in report["fixes"]]
-    if report.get("pending_approval"):
-        lines.append(f"crops pending the user's approval: {', '.join(report['pending_approval'])} "
-                     "(emu_harness.py fixes-approve)")
-    lines.append(f"no scenario: {', '.join(sorted(report['uncovered']))}")
-    passed = sum(row["pass"] for row in report["fixes"])
-    head = f"{passed}/{len(report['fixes'])} fix scenarios in {report['seconds']:.0f} s"
-    if r.returncode or not report["pass"]:
-        raise Failed("\n".join([head + f"; report {out / 'fixes_report.json'}"] + lines))
-    return "\n".join([head + f"; report {out / 'fixes_report.json'}"] + lines)
+        raise Failed(f"emu_harness.py layer failed (exit {rc}) without a report:\n"
+                     + "".join(lines[-15:]).strip()) from None
+    text = emu_summary(report, report_dir)
+    if rc or not report["pass"]:
+        raise Failed(text)
+    return text
+
+
+def emu_summary(report, report_dir, max_rows=40) -> str:
+    """The compact summary of a layer report: per part counts, failures, pending approvals, the report path."""
+    m = report.get("meta", {})
+    lines = [f"{report['verdict']} in {round(m.get('seconds') or 0)} s"
+             + (f", {report['pending_approvals']} pending approval" if report.get("pending_approvals") else "")
+             + f"; report {Path(report_dir) / 'report.html'}"]
+    for p in report["parts"]:
+        c = p.get("counts", {})
+        lines.append(f"{p['part']:9s} {'PASS' if p['pass'] else 'FAIL'}: {c.get('fail', 0)} fail, "
+                     f"{c.get('pending', 0)} pending, {c.get('pass', 0)} pass ({round(p.get('seconds') or 0)} s)")
+    fails = [r for r in report["rows"] if r["status"] == "fail"]
+    pend = [r for r in report["rows"] if r["status"] == "pending"]
+    for r in fails[:max_rows]:
+        lines.append(f"FAIL {r['part']}: {r['title']}")
+    if len(fails) > max_rows:
+        lines.append(f"... {len(fails) - max_rows} more failures in the report")
+    for r in pend:
+        lines.append(f"PENDING {r['part']}: {r['title']}")
+    if pend:
+        lines.append(f"approve (after looking at the evidence): {(report.get('approve_commands') or [''])[-1]}")
+    return "\n".join(lines)
 
 
 def step_repro(armips, first: dict, work_dir, env=None) -> str:
@@ -666,15 +703,29 @@ def main(argv=None) -> int:
                     help="with --full: recompile the native payload with the pinned clang and build a second time "
                          "(another folder, names, cwd and environment); both builds must be byte-identical")
     ap.add_argument("--emu", action="store_true",
-                    help="with --full: one emulator scenario per fix on the build and on control builds without "
-                         "it (emu_harness.py fixes; needs py-desmume; about 4 min)")
+                    help="with --full: the emulator layer on the build (emu_harness.py layer: fix scenarios, "
+                         "behaviour scenarios, text fit, freeze reproducers; one report; needs py-desmume)")
+    ap.add_argument("--emu-only", help=f"with --emu: comma list of parts to run ({', '.join(EMU_PARTS)}; default all)")
+    ap.add_argument("--emu-since", help="with --emu: text fit of the strings changed since this git ref (default: the "
+                                        "latest tag, git describe --tags --abbrev=0, else v1.0.0-rc5)")
+    ap.add_argument("--emu-freeze-saves", help="with --emu: folders searched for the freeze cases' saves by SHA-256 "
+                                               "(default: --emu-saves and <its parent>/rocket-repro-20261008)")
     ap.add_argument("--emu-saves", default=str(WORK / "build" / "memcheck"),
                     help="folder with the battery saves the --emu scenarios import (read only; the same default "
                          "as emu_harness.py fixes --sav-dir)")
-    ap.add_argument("--emu-jobs", type=int, default=3, help="parallel emulator runs for --emu (at most 3)")
+    ap.add_argument("--emu-jobs", type=int, default=3, help="emulators alive at once for --emu, all parts together "
+                                                            "(at most 3)")
     a = ap.parse_args(argv)
+    if a.emu_only or a.emu_since or a.emu_freeze_saves:
+        a.emu = True
     if (a.update_expected or a.strict_release or a.repro or a.emu) and not a.full:
         ap.error("--update-expected, --strict-release, --repro and --emu need --full")
+    emu_only = None
+    if a.emu_only:
+        emu_only = [p.strip() for p in a.emu_only.split(",") if p.strip()]
+        bad = [p for p in emu_only if p not in EMU_PARTS]
+        if bad or not emu_only:
+            ap.error(f"--emu-only: unknown part(s) {', '.join(bad) or '(none)'}; parts: {', '.join(EMU_PARTS)}")
     repro = a.repro or a.strict_release
     # build.py runs with cwd=REPO (the repro build elsewhere): a relative --work-dir is relative to the repo root
     work_dir = Path(a.work_dir) if Path(a.work_dir).is_absolute() else REPO / a.work_dir
@@ -718,7 +769,8 @@ def main(argv=None) -> int:
         steps.append(("repro", need(lambda p: step_repro(p, first, work_dir.with_name(work_dir.name + "-repro"),
                                                          env=REPRO_ENVS[1]))))
     if a.emu:
-        steps.append(("emu", need(lambda p: step_emu(p, first, work_dir, a.emu_saves, a.emu_jobs))))
+        steps.append(("emu", need(lambda p: step_emu(p, first, work_dir, a.emu_saves, a.emu_jobs, emu_only,
+                                                     a.emu_since, a.emu_freeze_saves))))
     return run(steps)
 
 
