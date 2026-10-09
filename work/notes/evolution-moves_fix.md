@@ -105,7 +105,8 @@ Not tested directly: trade evolution. It runs the same evolution scene: the scen
 
 ## Review (2026-10-09)
 
-Re-run by the reviewer on fresh builds (DeSmuME unless noted; Chinese ROM / control / build):
+Re-run by the reviewer on fresh builds of round 1 (commit 2519d41; DeSmuME unless noted; Chinese ROM / control /
+build). The `0xFFFE` returns of the Lv28 entry below are round 1: round 2 skips that entry without a call.
 
 | Case | Chinese ROM | Control | Build |
 |---|---|---|---|
@@ -137,3 +138,13 @@ Change: `TryLearn_Level` (see "Fix"), D-2277. Re-run on a fresh build (DeSmuME u
 The scenario judge now also requires that no move is offered twice in one evolution and has the three new
 cases (`toucannon`, `toucannon_decline`, `lanturn`). Judge: Chinese `original`, control `original`, build
 `fixed`. `check.py --full` passes (nontext SHA-1 recorded again).
+
+Round-2 review (reviewer, fresh builds of bc7027d): the disassembly of 0x02070870-0x02070923 checked path by path
+(with the flag 0, `TryLearn_Level` branches straight to the match: the same entries as the Chinese routine; the
+control build's routine and scene call equal the Chinese ROM's byte for byte). DeSmuME, Chinese ROM / control /
+build: post-battle Crobat (build: Cross Poison), Lanturn (build: Stockpile `0xFFFE`, Swallow, Spit Up),
+Toucannon with Tackle and with four moves, accepting (build: one call, `0xFFFF`/Beak Blast, then 0) and
+giving up (asked once on all three), and an evolution at Lv1 (Pikachu Lv1 + Thunder Stone, 22 learn calls on
+all three ROMs, Thunder Punch offered once: from its level-0 entry on the build, from its Lv1 entry on the
+others). melonDS 1.1: Lanturn and Toucannon (four moves) on all three ROMs, the build learns Swallow + Spit Up and
+Beak Blast, no ARM9 exception. `check.py --full` passes.
