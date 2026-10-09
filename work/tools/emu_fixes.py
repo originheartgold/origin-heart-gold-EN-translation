@@ -74,6 +74,8 @@ COVERAGE = {
     "gfx-weather-banners": ("battle-status",),
     "gfx-battle-panel-labels": ("battle-status",),
     "gfx-pokeathlon": ("pokeathlon",),
+    "battle-message-error-marker": ("battle-error-marker",),
+    "battle-message-references": ("battle-references",),
 }
 # fix id -> why no scenario of this command covers it (honest gaps; see work/notes/emu_harness.md)
 UNCOVERED = {
@@ -184,6 +186,26 @@ def load_crop_digests(path=None):
 _DIGESTS = load_crop_digests()
 APPROVED = _DIGESTS["approved"]
 PENDING = _DIGESTS["pending"]       # crop -> {fix, screen}
+# battle-message-error-marker (battle-message-error-marker.listing): the battle formatter's error paths of the
+# Pokemon-name tags, original four AddChar calls (0x02225B16, 0x02225B4A), fixed one loop (bl at 0x02225B24).
+# A character appended by String_AddChar from a return address in this range is the marker. The scenario
+# forces one invalid reference (the hack's own sources, D-2285, are fixed by battle-message-references).
+STRING_ADD_CHAR = 0x02026FDC
+BUFFER_MON_NAME2 = 0x022259C4       # nickname helper (r0 = the Pokemon reference): forced to 0 once
+ERROR_MARKER_PATHS = (0x02225B16, 0x02225B6C)
+ERROR_MARKER = {"fixed": (0x01B9, 0x012F, 0x0156, 0x0156, 0x0153, 0x0156, 0x01BA, 0x01DE),   # "(Error) "
+                "original": (0x01B9, 0x0CED, 0x0BDD, 0x01BA)}                                 # "(错误)"
+ERROR_MARKER_MAP = (28, 1326, 80)   # Route 24, on the path south of Nugget Bridge
+ERROR_MARKER_TRAINER = 960          # Camper Ward: Nuzleaf (Quick Claw), Luvdisc
+ERROR_MARKER_LEAD = (264, 50, 267)  # Linoone Lv50 that knows only Nature Power
+NARC_BATTLE_STRING = 277
+# battle-message-references (battle-message-references.listing): the client's message printers, bank 1 with
+# variants (r1 = base id, r2 = {variant battler, params...}) and bank 2 (r1 = id, r2 = params).
+PRINT_BANK1 = 0x02225EA8
+PRINT_BANK2 = 0x022257F4
+INFATUATION_MSG = 452               # 1#452-455: {0} (variant) fell in love with {1}, every turn
+ATTRACT_LEAD = (128, 50, 150)       # Tauros (male only) Lv50, Splash
+ATTRACT_WILD = (113, 30, 213)       # wild Chansey (female only) Lv30 that knows only Attract
 TITLE_FRAME = 2400                  # frames after power-on (intro movie); START then shows the title screen
 
 
@@ -726,6 +748,137 @@ def observe_pokeathlon(h):
     return {"instructions": shot}
 
 
+# helpers of the fix scenarios, from the one-off recipes removed in 2e6fe55 (emu_guide0107.lead, emu_verify.MsgLog)
+MSG_READERS = {0x0200BB0C: "18b581b0041c",    # ReadMsgDataIntoString(MsgData *, id, String *)
+               0x0200BB40: "08b5031c1888",    # NewString_ReadMsgData(MsgData *, id)
+               0x0200BB94: "18b581b0041c"}    # the same for a temporary MsgData (0x0200BBC8)
+
+
+def lead(h, species, level=100, moves=None, pp=None):
+    """Generator Pokemon made the party lead (old lead moves to its slot)."""
+    mon = h.generate_pokemon(species, level=level)
+    if moves:
+        h.edit_party_mon(h.generated_slot, moves=moves, pp=pp)
+    h.swap_party(0, h.generated_slot)
+    return mon
+
+
+class MsgLog:
+    """Every message string the game reads through the MsgData readers: rows (narc, bank, id, frame)
+    (NewMsgDataFromNarc stores the NARC id at MsgData +4 and the file at +6)."""
+
+    def __init__(self, h, limit=50000):
+        self.h, self.rows, self.limit = h, [], limit
+        h.check_code(MSG_READERS)
+
+        def hook(h):
+            if len(self.rows) < self.limit:
+                md = h.reg.r0
+                self.rows.append((h.u16(md + 4), h.u16(md + 6), h.reg.r1 & 0xFFFF, h.frame))
+        for a in MSG_READERS:
+            h.on_exec(a, hook)
+
+    def close(self):
+        for a in MSG_READERS:
+            self.h.on_exec(a, None)
+
+
+def observe_battle_error_marker(h):
+    """Linoone against Camper Ward on Route 24, with the first Pokemon-name buffer of the battle forced to an
+    invalid reference (r0 = 0 at the entry of the nickname helper BattleMsg_BufferMonName2): the characters
+    the battle formatter's error path appends (String_AddChar called from ERROR_MARKER_PATHS), the battle_string
+    ids read around them and a screenshot of the message window a little after the marker was written. The
+    marker is the safety net for such references; the hack's known sources of them (Nature Power, the
+    infatuation message) are fixed by battle-message-references, so the scenario makes one itself."""
+    species, level, move = ERROR_MARKER_LEAD
+    lead(h, species, level=level, moves=[move, 0, 0, 0], pp=[20, 0, 0, 0])
+    ml = MsgLog(h)
+    rows, shot = [], {}
+
+    def add(m):
+        lr = m.reg.lr & ~1
+        if ERROR_MARKER_PATHS[0] <= lr < ERROR_MARKER_PATHS[1]:
+            rows.append({"code": m.reg.r1 & 0xFFFF, "lr": lr, "frame": m.frame})
+
+    def later(m):
+        if rows and "path" not in shot and m.frame >= rows[0]["frame"] + 70:
+            shot["path"] = str(m.screenshot("battle_error_marker"))
+    forced = {"armed": False, "done": None}
+
+    def invalid_ref(m):
+        if forced["armed"] and forced["done"] is None:
+            forced["done"] = {"was": m.reg.r0, "frame": m.frame}
+            m.reg.r0 = 0
+    h.on_exec(STRING_ADD_CHAR, add)
+    h.on_exec(BUFFER_MON_NAME2, invalid_ref)
+    h.on_frame(later)
+    forced["armed"] = True
+    h.trainer_battle(ERROR_MARKER_TRAINER)
+    turns = []
+    for _ in range(4):
+        turns.append(h.battle_turn(0))
+        if rows or turns[-1] != "menu":
+            break
+    h.on_exec(STRING_ADD_CHAR, None)
+    first = [r for r in rows if rows and r["frame"] == rows[0]["frame"]]
+    reads = [[b, i, fr] for narc, b, i, fr in ml.rows if narc == NARC_BATTLE_STRING]
+    near = [x for x in reads if first and abs(x[2] - first[0]["frame"]) <= 5]
+    return {"turns": turns, "marker_codes": [r["code"] for r in first], "marker_text": decode(
+        struct.pack("<%dH" % len(first), *[r["code"] for r in first])) if first else "",
+            "marker_sites": sorted({f"{r['lr']:#010x}" for r in first}), "marker_count": len(rows),
+            "battle_strings_near": near, "screenshot": shot.get("path"), "forced": forced["done"]}
+
+
+def observe_battle_references(h):
+    """Two battles on Route 24. 1: Linoone (Nature Power only) against Camper Ward: which message prints after
+    'used Nature Power' (bank 2 #120 'turned into', or bank 1 #120 'accuracy rose drastically'). 2: a wild
+    Chansey (Attract only) against Tauros: the parameters of the per-turn infatuation message 1#452 (variant
+    battler, {0}, {1}) and the references of the two Pokemon."""
+    import emu_harness as E
+    prints = []
+
+    def bank1(m):
+        prints.append({"bank": 1, "id": m.reg.r1, "params": [m.u32(m.reg.r2 + 4 * k) for k in range(4)],
+                       "frame": m.frame})
+
+    def bank2(m):
+        prints.append({"bank": 2, "id": m.reg.r1, "params": [m.u32(m.reg.r2 + 4 * k) for k in range(3)],
+                       "frame": m.frame})
+    h.on_exec(PRINT_BANK1, bank1)
+    h.on_exec(PRINT_BANK2, bank2)
+    species, level, move = ERROR_MARKER_LEAD
+    lead(h, species, level=level, moves=[move, 0, 0, 0], pp=[20, 0, 0, 0])
+    h.trainer_battle(ERROR_MARKER_TRAINER)
+    turns = []
+    for _ in range(4):
+        turns.append(h.battle_turn(0))
+        if turns[-1] != "menu":
+            break
+    shot_np = str(h.screenshot("battle_references_np"))
+    np_used = [k for k, p in enumerate(prints) if p["bank"] == 1 and p["id"] == 2179 and p["params"][2] == move]
+    after = prints[np_used[0] + 1] if np_used and np_used[0] + 1 < len(prints) else None
+    if turns and turns[-1] == "menu":            # the trainer battle is still on: run (forfeit is not offered)
+        for _ in range(8):
+            if h.battle_turn(0) == "field":
+                break
+    h.step(120)
+    species, level, move = ATTRACT_LEAD
+    lead(h, species, level=level, moves=[move, 0, 0, 0], pp=[40, 0, 0, 0])
+    mark = len(prints)
+    wild, wlevel, wmove = ATTRACT_WILD
+    E.wild_battle(h, wild, wlevel, moves=[wmove])
+    turns2 = []
+    for _ in range(3):
+        turns2.append(h.battle_turn(0))
+        if turns2[-1] != "menu":
+            break
+    infat = [p for p in prints[mark:] if p["bank"] == 1 and p["id"] == INFATUATION_MSG]
+    names = {p["params"][0] for p in prints[mark:] if p["bank"] == 1 and p["id"] == 2179}
+    return {"turns": turns, "nature_power_next": after, "turns2": turns2, "infatuation": infat[:3],
+            "used_battlers": sorted(names), "screenshot": shot_np,
+            "screenshot_attract": str(h.screenshot("battle_references_attract"))}
+
+
 SCENARIOS = {
     # name: (save file or None for a blank battery, start map or None, observe, needs the Chinese reference run)
     "naming": ("full_bag_6mons.sav", None, observe_naming, True),
@@ -744,6 +897,8 @@ SCENARIOS = {
     "summary-status": ("full_bag_6mons.sav", None, observe_summary_status, True),
     "battle-status": ("full_bag_6mons.sav", None, observe_battle_status, True),
     "pokeathlon": ("full_bag_6mons.sav", None, observe_pokeathlon, True),
+    "battle-error-marker": ("full_bag_6mons.sav", ERROR_MARKER_MAP, observe_battle_error_marker, True),
+    "battle-references": ("full_bag_6mons.sav", ERROR_MARKER_MAP, observe_battle_references, True),
 }
 # scenarios that run with the clock pinned (weekday on the Pokegear, repeatable RNG); the older ones keep the host
 # clock so that their approved crops stay as they were taken
@@ -945,6 +1100,43 @@ def judge_textspeed(scenario, obs, ref=None):
     return _state(n / f >= 2.0, n / f <= 1.25, why)
 
 
+def judge_battle_error_marker(scenario, obs, ref=None):
+    """'fixed': the marker appended is "(Error) "; 'original': it is the hack's ( 错 误 ). The Chinese reference run
+    must show the original marker (the path is reached the same way there), else nothing is proven."""
+    got = tuple(obs.get("marker_codes") or ())
+    why = {"marker_text": obs.get("marker_text"), "marker_codes": [f"{c:#06x}" for c in got],
+           "sites": obs.get("marker_sites"), "battle_strings_near": obs.get("battle_strings_near"),
+           "turns": obs.get("turns"), "screenshot": obs.get("screenshot")}
+    if ref is not None:
+        ref_codes = tuple(ref.get("marker_codes") or ())
+        why["reference_codes"] = [f"{c:#06x}" for c in ref_codes]
+        if ref_codes != ERROR_MARKER["original"]:
+            return "unclear", dict(why, error="the Chinese ROM did not print its marker on this path")
+    return _state(got == ERROR_MARKER["fixed"], got == ERROR_MARKER["original"], why)
+
+
+def judge_battle_references(scenario, obs, ref=None):
+    """'fixed': Nature Power is followed by bank 2 #120 ('turned into', the move as its only parameter) and the
+    infatuation message names the infatuated Pokemon ({0} = the variant battler) and the attracter ({1}: another
+    valid reference). 'original': bank 1 #120 follows Nature Power with a parameter that is no Pokemon reference
+    (> 25), and the infatuation message's {0} is 0. The Chinese reference run must show the original."""
+    def state(o):
+        nxt, inf = o.get("nature_power_next") or {}, o.get("infatuation") or []
+        np_fixed = nxt.get("bank") == 2 and nxt.get("id") == 120
+        np_orig = nxt.get("bank") == 1 and nxt.get("id") == 120 and not 1 <= nxt.get("params", [0, 0])[1] <= 25
+        inf_fixed = bool(inf) and all(p["params"][1] == p["params"][0] and 1 <= p["params"][2] <= 25
+                                      and p["params"][2] != p["params"][0] for p in inf)
+        inf_orig = bool(inf) and all(p["params"][1] == 0 for p in inf)
+        return np_fixed and inf_fixed, np_orig and inf_orig
+    fixed, original = state(obs)
+    why = {"nature_power_next": obs.get("nature_power_next"), "infatuation": obs.get("infatuation"),
+           "turns": [obs.get("turns"), obs.get("turns2")], "screenshots": [obs.get("screenshot"),
+                                                                           obs.get("screenshot_attract")]}
+    if ref is not None and state(ref) != (False, True):
+        return "unclear", dict(why, error="the Chinese ROM did not show the original behaviour")
+    return _state(fixed, original, why)
+
+
 NAMING_SITES_BY_ID = {v[0]: v for v in NAMING_SITES.values()}
 JUDGES = {
     ("naming", "namelen"): judge_namelen,
@@ -956,6 +1148,8 @@ JUDGES = {
     ("antipiracy", "antipiracy"): judge_antipiracy,
     ("font", "font-glyphs"): judge_font,
     ("textspeed", "text-speed"): judge_textspeed,
+    ("battle-error-marker", "battle-message-error-marker"): judge_battle_error_marker,
+    ("battle-references", "battle-message-references"): judge_battle_references,
 }
 
 

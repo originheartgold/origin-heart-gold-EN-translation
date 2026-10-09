@@ -15,7 +15,7 @@
 #   python3 work/tools/check.py --full --update-expected
 
 [build]
-nontext_sha1 = "947dc35dce3d6e073ec3248f952e8ca927d7da12"
-text_sha1 = "1168b92e745c77da57517e13690d2baba186c552"
-rom_sha1 = "d03ed48179dac1adbbc7d19dbfa8f8099d7067d8"
-xdelta_sha1 = "d9e5569176e41aae8bf2a47c2d4f08f203d106e5"
+nontext_sha1 = "7e09cccf9c2318a35673765fa44f20e2b4daf069"
+text_sha1 = "922a51f5639fda62fce76bc678793c050fac7a46"
+rom_sha1 = "292bcfbed76167085ad22846e463873106bb4a25"
+xdelta_sha1 = "55cc339d946a8a869250633476e679abccdc4d99"

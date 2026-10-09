@@ -1,0 +1,59 @@
+id = "battle-message-error-marker"
+title = "Battle text: the hack's error marker before a Pokémon name prints '(Error) ' instead of Chinese (错误)"
+kind = "code"
+enabled = true
+decisions = ["D-2284"]
+requires = []
+asm = "battle-message-error-marker.asm"
+why = """
+Players: some battle messages show two Chinese characters in parentheses, (错误) ('error'), in front of a
+Pokémon's name. Reported for rc6: 'the foe (2 Chinese characters) Pikachu's accuracy...' in a battle with
+Camper Ward's Nuzleaf on Route 24 (Nature Power), and 'an untranslated Chinese word after
+attract/infatuation' (the message printed each turn while the foe is infatuated). The untouched Chinese ROM
+prints the same marker in the same places, so it is the hack's, not a missing translation; it is not in any
+message bank, so the text translation could not reach it.
+
+Status: D-1337 says hack bugs are reported, not fixed. This fix is a user-approved exception to it
+(D-2284, 2026-10-09). It changes only the marker's text; why it appears and which name follows it are the
+hack's logic and stay as they are (D-2285, open).
+
+Technical: the battle message formatter in overlay 14 (0x02225A3C) expands a battle_string template control
+code by control code. For the Pokémon-name tags (0x0101, 0x0102) it calls a helper (0x02225978 / 0x022259C4)
+with the message's Pokémon reference; for a reference outside 1..25 (or one that resolves to nothing) the
+helper buffers reference 1 instead and returns 0, and the formatter then appends four hardcoded character
+codes to the output, '(' 错 误 ')', each with 'ldr r1, =char; add r0, r5, #0; bl String_AddChar'
+(0x02225B16 for tag 0x0101, 0x02225B4A for 0x0102, codes in the literal pool at 0x02225C10), before the
+name buffer. The ROM-wide hardcoded-text scan looks for 0xFFFF-terminated strings, so it could not see four
+separate immediates. A sweep of every String_AddChar call in arm9 and all overlays finds no other Chinese
+character (work/notes/battle-text-chinese_fix.md 'Sweep').
+"""
+what = """
+Old: '(' 错 误 ')' appended before the name (four AddChar calls, 34 bytes per tag case); the fix writes 34 + 20 bytes.
+New: the tag 0x0101 case's 34 bytes become a loop that appends a 0xFFFF-terminated string with
+String_AddChar (r4, the tag's buffer index, saved and restored around it; r5, the output, unchanged) and
+ends with the same branch to the formatter's common tail (0x02225BBA); the 0x0102 case's first halfword
+branches to that loop and its next 18 bytes hold the string '(Error) ' (8 characters; the space separates
+it from the name); the rest of that old path (12 bytes, dead after the branch) is left alone. Same conditions, same name after it, same tail: only the text differs. The literal pool
+stays (no longer read). Not changed: the helpers, the fallback to reference 1, the message ids, the variant
+(own / wild / foe) choice.
+"""
+evidence = [
+  "D-2284: the user-approved exception to D-1337 for this fix; D-2285: the hack logic that makes the marker appear (open, not changed)",
+  "work/notes/battle-text-chinese_fix.md: the formatter, the two cases, the sweep, the emulator runs before and after",
+  "Runtime: emu_harness.py fixes --case battle-message-error-marker (scenario battle-error-marker: Camper Ward on Route 24 with the battle's first Pokémon-name buffer forced to an invalid reference, since battle-message-references fixed the hack's own sources; the characters the formatter's error path appends are hooked at String_AddChar). 2026-10-09, DeSmuME: the Chinese ROM and the --without build append ( 错 误 ), the full build '(Error) ' ('Ward sent out (Error) Linoone!'). Before battle-message-references, Nature Power reached it unforced: '(错误)直冲熊的命中率巨幅提高了！' (Chinese ROM), '(Error) Linoone’s accuracy rose drastically!' (build)",
+  "melonDS 1.1 (headless backend), 2026-10-09: a wild battle on Route 24 grass, Linoone with Nature Power: '(错误)Maximilian’s accuracy rose drastically!' on the --without build, '(Error) Maximilian’s accuracy rose drastically!' on the full build; the battle goes on, no ARM9 abort or undefined instruction on either (work/notes/battle-text-chinese_fix.md)",
+]
+
+[[code]]
+id = "battle-message-error-marker-tag0101"
+file = "overlay14"
+offset = "0x25336"
+expect = "493E 1C28 F601 FA5F 493D 1C28 F601 FA5B 493C 1C28 F601 FA57 493B 1C28 F601 FA53 E040"
+notes = "BattleMsg_Format, tag 0x0101 case after its helper returned 0: the four AddChar calls of ( 错 误 ) and the branch to the tail become the shared loop over the English marker. The asm also guards, read-only, the case's helper call and the literal pool."
+
+[[code]]
+id = "battle-message-error-marker-tag0102"
+file = "overlay14"
+offset = "0x2536A"
+expect = "4931 1C28 F601 FA45 4930 1C28 F601 FA41 492F 1C28"
+notes = "BattleMsg_Format, tag 0x0102 case (the nickname tag of most battle messages) after its helper returned 0: a branch to the loop, then the 0xFFFF-terminated English '(Error) ' (20 bytes). The rest of the old path (0x02225B5E-0x02225B6B) is not touched: dead after the branch, and where type-change-message puts its type case."

@@ -1,0 +1,68 @@
+id = "battle-message-references"
+title = "Battle text: Nature Power's 'turned into' line and the per-turn infatuation line name the right Pokémon"
+kind = "code"
+enabled = true
+decisions = ["D-2286"]
+requires = []
+asm = "battle-message-references.asm"
+why = """
+Players: after Nature Power the game said "(Error) <your first party Pokémon>'s accuracy rose drastically!" (in
+Chinese '(错误)…的命中率巨幅提高了！') instead of "Nature Power turned into <move>!", even when the foe used it and
+the named Pokémon was benched (rc6 report: "the foe (2 Chinese characters) Pikachu's accuracy…" against Camper
+Ward's Nuzleaf on Route 24). Every turn an infatuated Pokémon tried to move, the game said "The foe's (Error)
+<your Pokémon> fell in love with <the infatuated foe>!": the names in the wrong places and one of them the
+fallback (rc6 report: "an untranslated Chinese word after attract/infatuation"). The untouched Chinese ROM does
+the same (D-2285).
+
+Status: D-1337 says hack bugs are reported, not fixed. This fix is a user-approved exception to it (D-2286,
+2026-10-09, resolves D-2285). The error marker itself is translated by battle-message-error-marker (D-2284) and
+stays as a safety net.
+
+Technical: the hack builds battle messages as records (MsgRec_Init 0x02225DC0: type, id; MsgRec_AddArg
+0x02225DEC). Type 1 prints battle_string bank 2, type 2 bank 1 (own / wild / foe / trainer variants); the
+arguments are the template's buffers, and a Pokémon-name buffer needs a Pokémon reference 1..25 (1-6 the player's
+party, 13-18 the foe's). Nature Power (0x0223F070) builds MsgRec_Init(rec, 2, 120) with one argument, the called
+move (battle var 0x29): message 120 with a move is bank 2's 'Nature Power turned into {move}!', but type 2
+printed bank 1's #120 with the move id as the Pokémon (Earthquake = 89 > 25). The infatuation check before a
+Pokémon moves (0x0221DAEC) emits 1#452 ({0} = the infatuated Pokémon, which also picks the variant; {1} = the one
+it is in love with) with the arguments (condition 7's data field, self): the data field (0x02216D4C) is always 0
+for infatuation (observed), the attracter is the condition's source (word 0 of its entry, Pokémon + 0x70:
+observed 0x0D for a wild attracter, 0x01 for the player's), and the order is reversed.
+"""
+what = """
+Old: Nature Power -> record type 2, id 120 -> 1#120-123 with the move as the Pokémon; infatuation -> 1#452 with
+(0, self).
+New: 0x0223F084 'movs r1, #2' -> 'movs r1, #1' (type 1: 2#120 'Nature Power turned into {move}!', the move
+argument unchanged). 0x0221DAFC: the call reading the condition's data field (and its byte mask) becomes 'ldr
+r4, [r5, #0x70]' with the same byte mask (the condition's source) and a nop; 0x0221DB20: the two argument stores
+are swapped, so the arguments are (self, source). Not changed: the message ids, the variant battler, when the
+messages appear, the condition logic. A static audit of every message record and stream message in overlay 14
+(284 records, 103 direct emits) found no other argument that can be a non-reference in a Pokémon-name slot
+(work/notes/battle-text-chinese_fix.md 'Audit').
+"""
+evidence = [
+  "D-2286: the user-approved exception to D-1337 for this fix; it resolves the hack finding D-2285",
+  "work/notes/battle-text-chinese_fix.md: the record types, the two call sites, the audit, the emulator runs before and after",
+  "Runtime: emu_harness.py fixes --case battle-message-references (scenario battle-references: Linoone with only Nature Power against Camper Ward on Route 24, then a wild Chansey with only Attract against a Tauros; the message records and the battle_string ids the client reads). 2026-10-09, DeSmuME: the Chinese ROM and the --without build read 1#120 and 1#452 with an invalid reference; the full build reads 2#120 and 1#452 with (self, attracter)",
+]
+
+[[code]]
+id = "battle-message-references-nature-power"
+file = "overlay14"
+offset = "0x3E8A4"
+expect = "0x2102"
+notes = "Nature Power's 'turned into' record: type 2 -> 1 (battle_string bank 2, message 120). The asm also guards, read-only, the routine around it."
+
+[[code]]
+id = "battle-message-references-infatuation-source"
+file = "overlay14"
+offset = "0x1D31C"
+expect = "F7F9 F926 0600 0E04"
+notes = "Infatuation check: the attracter is read from condition 7's source (Pokémon + 0x70, low byte) instead of its data field (0). The asm also guards the emit of 1#452 after it."
+
+[[code]]
+id = "battle-message-references-infatuation-args"
+file = "overlay14"
+offset = "0x1D340"
+expect = "9400 9001"
+notes = "Infatuation check: the two arguments of 1#452 swapped to ({0} = self, {1} = the attracter)."

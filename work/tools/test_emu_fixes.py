@@ -1,6 +1,7 @@
 """Tests for emu_fixes (emu_harness.py fixes) that need no emulator and no ROM: the coverage list matches the fix
 registry, every address is the one the fix's fix.toml declares, the judges tell 'fixed' from 'original' on
 recorded observations, and the runner plans the right runs."""
+import struct
 import sys
 import unittest
 from pathlib import Path
@@ -367,6 +368,42 @@ class Judges(unittest.TestCase):
                          "unclear")
         self.assertEqual(F.COVERAGE["bulbasaur-reflection-boundary"], ("reflection",))
         self.assertIn("reflection", F.EXTERNAL)
+
+    def test_battle_error_marker(self):
+        fixed, original = F.ERROR_MARKER["fixed"], F.ERROR_MARKER["original"]
+        self.assertEqual(F.decode(struct.pack("<8H", *fixed)), "(Error) ")
+        ref = {"marker_codes": list(original)}
+        judge = F.judge_battle_error_marker
+        self.assertEqual(judge("battle-error-marker", {"marker_codes": list(fixed)}, ref)[0], "fixed")
+        self.assertEqual(judge("battle-error-marker", {"marker_codes": list(original)}, ref)[0], "original")
+        self.assertEqual(judge("battle-error-marker", {"marker_codes": []}, ref)[0], "unclear")
+        # the Chinese reference must reach the path, else nothing is proven
+        self.assertEqual(judge("battle-error-marker", {"marker_codes": list(fixed)}, {"marker_codes": []})[0],
+                         "unclear")
+        self.assertEqual(F.COVERAGE["battle-message-error-marker"], ("battle-error-marker",))
+        self.assertTrue(F.SCENARIOS["battle-error-marker"][3])
+
+    def test_battle_error_marker_follows_the_listing(self):
+        listing = (F.WORK / "patches" / "battle-message-error-marker" / "battle-message-error-marker.listing").read_text()
+        # the loop's String_AddChar call (fixed) and the hack's last call (original) are inside the watched range
+        self.assertIn("+ 02225B24  F601 FA5A  bl #0x2026fdc  ; String_AddChar", listing)
+        self.assertIn("- 02225B56  F601 FA41  bl #0x2026fdc  ; String_AddChar", listing)
+        lo, hi = F.ERROR_MARKER_PATHS
+        self.assertTrue(lo <= 0x02225B28 < hi and lo <= 0x02225B6A < hi)
+        self.assertEqual(F.STRING_ADD_CHAR, 0x02026FDC)
+
+    def test_battle_references(self):
+        judge = F.judge_battle_references
+        fixed = {"nature_power_next": {"bank": 2, "id": 120, "params": [89, 0xFFFF, 0]},
+                 "infatuation": [{"params": [1, 1, 13, 0xFFFF]}]}
+        original = {"nature_power_next": {"bank": 1, "id": 120, "params": [1, 89, 0xFFFF, 5]},
+                    "infatuation": [{"params": [1, 0, 1, 0xFFFF]}]}
+        self.assertEqual(judge("battle-references", fixed, original)[0], "fixed")
+        self.assertEqual(judge("battle-references", original, original)[0], "original")
+        self.assertEqual(judge("battle-references", fixed, fixed)[0], "unclear")      # reference must be original
+        half = dict(fixed, infatuation=original["infatuation"])
+        self.assertEqual(judge("battle-references", half, original)[0], "unclear")
+        self.assertEqual(F.COVERAGE["battle-message-references"], ("battle-references",))
 
     def test_judge_rows(self):
         selection = {"pcbox": ["pcbox-name-width"]}

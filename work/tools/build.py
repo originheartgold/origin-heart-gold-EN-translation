@@ -29,7 +29,9 @@ Pipeline
               work/notes/graphics_inventory.md
   3c. hardcoded  asmpatch.apply(): the selected strings, data and code fixes (outfit-chooser-strings,
               namelen, naming-keyboard, msgload, pcbox-name-width, ivev-panel, antipiracy, text-speed,
-              overworld-texture-frame-bounds, bulbasaur-reflection-boundary) - armips assembles each fix's
+              overworld-texture-frame-bounds, bulbasaur-reflection-boundary, battle-message-error-marker,
+              battle-message-references) -
+              armips assembles each fix's
               source (work/patches/<fix>/<fix>.asm) over the decompressed arm9/overlay images; the build
               refuses any change outside the regions its fix.toml declares, growth of an overlay beyond its
               [[grow]], and strings that differ from their [[string]] en (overlay 58 outfit chooser: 'OK' in

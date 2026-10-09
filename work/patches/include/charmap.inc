@@ -72,6 +72,8 @@ CH_COMMA       equ 0x01AD   ; ,
 CH_PERIOD      equ 0x01AE   ; .
 CH_APOSTROPHE  equ 0x01B3   ; ’
 CH_HYPHEN      equ 0x01BE   ; -
+CH_LPAREN      equ 0x01B9   ; (
+CH_RPAREN      equ 0x01BA   ; )
 
 ; Full-width characters of the hack's (Japanese-base) keyboard pages
 FW_0           equ 0x00A2   ; ０

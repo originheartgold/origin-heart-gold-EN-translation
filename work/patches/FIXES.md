@@ -29,6 +29,8 @@ Stages (and the order of this list): font → graphics → hardcoded strings →
 | [`outfit-chooser-strings`](#outfit-chooser-strings) | strings | yes | – | Outfit chooser labels (hardcoded in overlay 58) |
 | [`pcbox-name-width`](#pcbox-name-width) | data | yes | – | PC box header: species-name window wide enough for 10 characters |
 | [`antipiracy`](#antipiracy) | code | yes | – | Real hardware: the six DS Protect entry points return the genuine-cart values |
+| [`battle-message-error-marker`](#battle-message-error-marker) | code | yes | – | Battle text: the hack's error marker before a Pokémon name prints '(Error) ' instead of Chinese (错误) |
+| [`battle-message-references`](#battle-message-references) | code | yes | – | Battle text: Nature Power's 'turned into' line and the per-turn infatuation line name the right Pokémon |
 | [`bulbasaur-reflection-boundary`](#bulbasaur-reflection-boundary) | code | yes | – | Following Pokémon: Bulbasaur's reflection in water no longer reads a NULL graphics pointer (black screen over water) |
 | [`ivev-panel`](#ivev-panel) | code | yes | – | Summary IV/EV panel: the IV column clears the English stat labels |
 | [`msgload`](#msgload) | code | yes | – | Text banks are read line by line (fixes the summary and bag memory crashes) |
@@ -1061,6 +1063,395 @@ GENUINE_ALL_GOOD equ 1          ; "all checks pass":   1 on a genuine cart
     stub GENUINE_ANY_BAD
 .org 0x02263ECC                 ; +0xCCC: empty check list, all good (already always 1)
     stub GENUINE_ALL_GOOD
+
+.close
+```
+
+</details>
+
+## battle-message-error-marker
+
+**Battle text: the hack's error marker before a Pokémon name prints '(Error) ' instead of Chinese (错误)**
+
+- Kind: code
+- Enabled: yes
+- Requires: nothing
+- Decisions: D-2284
+- Source: `work/patches/battle-message-error-marker/fix.toml`
+
+**Why (the Chinese hack):**
+
+Players: some battle messages show two Chinese characters in parentheses, (错误) ('error'), in front of a
+Pokémon's name. Reported for rc6: 'the foe (2 Chinese characters) Pikachu's accuracy...' in a battle with
+Camper Ward's Nuzleaf on Route 24 (Nature Power), and 'an untranslated Chinese word after
+attract/infatuation' (the message printed each turn while the foe is infatuated). The untouched Chinese ROM
+prints the same marker in the same places, so it is the hack's, not a missing translation; it is not in any
+message bank, so the text translation could not reach it.
+
+Status: D-1337 says hack bugs are reported, not fixed. This fix is a user-approved exception to it
+(D-2284, 2026-10-09). It changes only the marker's text; why it appears and which name follows it are the
+hack's logic and stay as they are (D-2285, open).
+
+Technical: the battle message formatter in overlay 14 (0x02225A3C) expands a battle_string template control
+code by control code. For the Pokémon-name tags (0x0101, 0x0102) it calls a helper (0x02225978 / 0x022259C4)
+with the message's Pokémon reference; for a reference outside 1..25 (or one that resolves to nothing) the
+helper buffers reference 1 instead and returns 0, and the formatter then appends four hardcoded character
+codes to the output, '(' 错 误 ')', each with 'ldr r1, =char; add r0, r5, #0; bl String_AddChar'
+(0x02225B16 for tag 0x0101, 0x02225B4A for 0x0102, codes in the literal pool at 0x02225C10), before the
+name buffer. The ROM-wide hardcoded-text scan looks for 0xFFFF-terminated strings, so it could not see four
+separate immediates. A sweep of every String_AddChar call in arm9 and all overlays finds no other Chinese
+character (work/notes/battle-text-chinese_fix.md 'Sweep').
+
+**What (old → new):**
+
+Old: '(' 错 误 ')' appended before the name (four AddChar calls, 34 bytes per tag case); the fix writes 34 + 20 bytes.
+
+New: the tag 0x0101 case's 34 bytes become a loop that appends a 0xFFFF-terminated string with
+String_AddChar (r4, the tag's buffer index, saved and restored around it; r5, the output, unchanged) and
+ends with the same branch to the formatter's common tail (0x02225BBA); the 0x0102 case's first halfword
+branches to that loop and its next 18 bytes hold the string '(Error) ' (8 characters; the space separates
+it from the name); the rest of that old path (12 bytes, dead after the branch) is left alone. Same conditions, same name after it, same tail: only the text differs. The literal pool
+stays (no longer read). Not changed: the helpers, the fallback to reference 1, the message ids, the variant
+(own / wild / foe) choice.
+
+**Evidence:**
+
+- D-2284: the user-approved exception to D-1337 for this fix; D-2285: the hack logic that makes the marker appear (open, not changed)
+- work/notes/battle-text-chinese_fix.md: the formatter, the two cases, the sweep, the emulator runs before and after
+- Runtime: emu_harness.py fixes --case battle-message-error-marker (scenario battle-error-marker: Camper Ward on Route 24 with the battle's first Pokémon-name buffer forced to an invalid reference, since battle-message-references fixed the hack's own sources; the characters the formatter's error path appends are hooked at String_AddChar). 2026-10-09, DeSmuME: the Chinese ROM and the --without build append ( 错 误 ), the full build '(Error) ' ('Ward sent out (Error) Linoone!'). Before battle-message-references, Nature Power reached it unforced: '(错误)直冲熊的命中率巨幅提高了！' (Chinese ROM), '(Error) Linoone’s accuracy rose drastically!' (build)
+- melonDS 1.1 (headless backend), 2026-10-09: a wild battle on Route 24 grass, Linoone with Nature Power: '(错误)Maximilian’s accuracy rose drastically!' on the --without build, '(Error) Maximilian’s accuracy rose drastically!' on the full build; the battle goes on, no ARM9 abort or undefined instruction on either (work/notes/battle-text-chinese_fix.md)
+
+**Touches:**
+
+- `overlay14+0x25336` (RAM 0x02225B16) `battle-message-error-marker-tag0101`: 34 bytes, was `493E 1C28 F601 FA5F … (17 halfwords)`
+- `overlay14+0x2536A` (RAM 0x02225B4A) `battle-message-error-marker-tag0102`: 20 bytes, was `4931 1C28 F601 FA45 … (10 halfwords)`
+
+**Disassembly snapshot:** [`battle-message-error-marker.listing`](battle-message-error-marker/battle-message-error-marker.listing) (every edit, old → new; `python3 work/tools/asmpatch.py listing --write battle-message-error-marker`)
+
+**Source** (`work/patches/battle-message-error-marker/battle-message-error-marker.asm`, armips; the new bytes):
+
+<details>
+<summary>battle-message-error-marker.asm</summary>
+
+```asm
+; battle-message-error-marker - the battle text's error marker (错误) reads "(Error) " in English. D-2284
+; (user-approved exception to D-1337; the logic that makes it appear is the hack's, D-2285).
+; Why and what: fix.toml next to this file; overview work/patches/FIXES.md;
+; work/notes/battle-text-chinese_fix.md.
+;
+; The hack's battle message formatter (overlay 14, BattleMsg_Format 0x02225A3C) expands a battle_string
+; template into the output String (r5) one control code at a time. For the Pokemon-name tags (0x0101 and
+; 0x0102, jump-table cases 1 and 2) it calls a helper with the message's Pokemon reference
+; (BattleMsg_BufferMonName1 0x02225978 / BattleMsg_BufferMonName2 0x022259C4). The helper accepts references
+; 1..25; for 0 or > 25, or one that resolves to nothing, it buffers reference 1 instead and returns 0. On a 0
+; the formatter appends four hardcoded characters to the output, '(' 错 误 ')' ("(error)") through
+; String_AddChar (arm9 0x02026FDC), one 'ldr r1, =char; add r0, r5, #0; bl String_AddChar' per character, the
+; codes in a shared literal pool (0x02225C10-0x02225C1C), and then goes on to the common tail (0x02225BBA),
+; which appends the name buffer. So the marker prints in front of a name, the name being what the fallback
+; buffered (observed: the player's first party Pokemon, also while another one is fighting). It is the only
+; Chinese the battle prints outside battle_string.narc (work/notes/battle-text-chinese_fix.md 'Sweep').
+;
+; The fix keeps the logic (when the marker prints, and which name follows it, are the hack's) and only
+; changes the text: case 1's 34 bytes become a loop that appends a 0xFFFF-terminated English string, and
+; case 2's first instruction branches to it; the English sits in the next 18 bytes of case 2. r4 (the tag's
+; buffer index, read again at the tail) is saved around the loop; r5 (the output) is not changed. The loop
+; ends with the same branch to the tail as before. The literal pool is left as it is (no longer read).
+
+.nds
+.thumb
+.include "../include/guards.inc"
+.include "../include/charmap.inc"
+
+.definelabel BattleMsg_Format,          0x02225A3C   ; (fmt, params, String *out, template) - not changed
+.definelabel BattleMsg_BufferMonName1,  0x02225978   ; tag case 1 helper: 0 = bad reference
+.definelabel BattleMsg_BufferMonName2,  0x022259C4   ; tag case 2 helper: 0 = bad reference
+.definelabel BattleMsg_Case1,           0x02225B04   ; jump-table case 1 (tag 0x0101)
+.definelabel BattleMsg_Case1Error,      0x02225B16   ; four AddChar calls: ( 错 误 )   <- rewritten
+.definelabel BattleMsg_Case2,           0x02225B38   ; jump-table case 2 (tag 0x0102)
+.definelabel BattleMsg_Case2Error,      0x02225B4A   ; four AddChar calls: ( 错 误 )   <- rewritten
+.definelabel BattleMsg_TagDone,         0x02225BBA   ; common tail: append the tag's buffer (r4) to r5
+.definelabel BattleMsg_ErrorPool,       0x02225C10   ; literal pool: 0x1B9 0xCED 0xBDD 0x1BA
+.definelabel String_AddChar,            0x02026FDC   ; arm9: (String *, u16 char)
+
+.open "overlay14.bin", 0x022007E0
+
+; Read-only guards: the two cases up to their error branches and the literal pool.
+.org BattleMsg_Case1
+    expect16_at 0x00, 0x00A0    ; lsl   r0, r4, #2
+    expect16_at 0x02, 0x5838    ; ldr   r0, [r7, r0]            params[r4]: the Pokemon reference
+    expect16_at 0x04, 0x1C21    ; add   r1, r4, #0
+    expect16_at 0x06, 0x0600    ; lsl   r0, r0, #0x18
+    expect16_at 0x08, 0x0E00    ; lsr   r0, r0, #0x18
+    expect16_at 0x0A, 0xF7FF    ; bl    BattleMsg_BufferMonName1 (1/2)
+    expect16_at 0x0C, 0xFF33    ;                                (2/2)
+    expect16_at 0x0E, 0x2800    ; cmp   r0, #0
+    expect16_at 0x10, 0xD151    ; bne   BattleMsg_TagDone       name buffered: no marker
+.org BattleMsg_Case2
+    expect16_at 0x00, 0x00A0    ; lsl   r0, r4, #2
+    expect16_at 0x02, 0x5838    ; ldr   r0, [r7, r0]
+    expect16_at 0x04, 0x1C21    ; add   r1, r4, #0
+    expect16_at 0x06, 0x0600    ; lsl   r0, r0, #0x18
+    expect16_at 0x08, 0x0E00    ; lsr   r0, r0, #0x18
+    expect16_at 0x0A, 0xF7FF    ; bl    BattleMsg_BufferMonName2 (1/2)
+    expect16_at 0x0C, 0xFF3F    ;                                (2/2)
+    expect16_at 0x0E, 0x2800    ; cmp   r0, #0
+    expect16_at 0x10, 0xD137    ; bne   BattleMsg_TagDone
+.org BattleMsg_ErrorPool
+    expect32_at 0x0, 0x000001B9 ; (
+    expect32_at 0x4, 0x00000CED ; 错
+    expect32_at 0x8, 0x00000BDD ; 误
+    expect32_at 0xC, 0x000001BA ; )
+
+; Case 1's error path: a loop over ErrorMarker_Text.
+.org BattleMsg_Case1Error
+.area 0x22
+    expect16_at 0x00, 0x493E    ; ldr   r1, =0x1B9              (
+    expect16_at 0x02, 0x1C28    ; add   r0, r5, #0
+    expect16_at 0x04, 0xF601    ; bl    String_AddChar          (1/2)
+    expect16_at 0x06, 0xFA5F    ;                               (2/2)
+    expect16_at 0x08, 0x493D    ; ldr   r1, =0xCED              错
+    expect16_at 0x0A, 0x1C28
+    expect16_at 0x0C, 0xF601
+    expect16_at 0x0E, 0xFA5B
+    expect16_at 0x10, 0x493C    ; ldr   r1, =0xBDD              误
+    expect16_at 0x12, 0x1C28
+    expect16_at 0x14, 0xF601
+    expect16_at 0x16, 0xFA57
+    expect16_at 0x18, 0x493B    ; ldr   r1, =0x1BA              )
+    expect16_at 0x1A, 0x1C28
+    expect16_at 0x1C, 0xF601
+    expect16_at 0x1E, 0xFA53
+    expect16_at 0x20, 0xE040    ; b     BattleMsg_TagDone
+ErrorMarker:
+    push    r4                              ; r4 = the tag's buffer index, read again at BattleMsg_TagDone
+    add     r4, pc, ErrorMarker_Text - ((. + 4) & ~3)
+@@next:
+    ldrh    r1, [r4]
+    add     r0, r1, #1
+    lsr     r0, r0, #16                     ; 1 only for the 0xFFFF end
+    bne     @@end
+    add     r0, r5, #0                      ; the output String
+    bl      String_AddChar
+    add     r4, #2
+    b       @@next
+@@end:
+    pop     r4
+    b       BattleMsg_TagDone
+    .fill BattleMsg_Case1Error + 0x22 - ., 0x00   ; unused (never reached)
+.endarea
+
+; Case 2's error path: the same loop. The English follows the branch, in the bytes up to 0x02225B5E; the
+; rest of case 2's old error path (0x02225B5E-0x02225B6B, now dead) is left as it is, so the type-name case of
+; the type-change-message fix can live there.
+.org BattleMsg_Case2Error
+.area 0x14
+    expect16_at 0x00, 0x4931    ; ldr   r1, =0x1B9              (
+    expect16_at 0x02, 0x1C28    ; add   r0, r5, #0
+    expect16_at 0x04, 0xF601    ; bl    String_AddChar          (1/2)
+    expect16_at 0x06, 0xFA45    ;                               (2/2)
+    expect16_at 0x08, 0x4930    ; ldr   r1, =0xCED              错
+    expect16_at 0x0A, 0x1C28
+    expect16_at 0x0C, 0xF601
+    expect16_at 0x0E, 0xFA41
+    expect16_at 0x10, 0x492F    ; ldr   r1, =0xBDD              误
+    expect16_at 0x12, 0x1C28
+    b       ErrorMarker
+    .align 4, 0x00
+ErrorMarker_Text:
+    ; "(Error) ": 错误 = error; the space separates it from the name after it. 0xFFFF ends it.
+    .halfword CH_LPAREN, CH_E, CH_LC_R, CH_LC_R, CH_LC_O, CH_LC_R, CH_RPAREN, CH_SPACE, 0xFFFF
+.endarea
+
+.close
+```
+
+</details>
+
+## battle-message-references
+
+**Battle text: Nature Power's 'turned into' line and the per-turn infatuation line name the right Pokémon**
+
+- Kind: code
+- Enabled: yes
+- Requires: nothing
+- Decisions: D-2286
+- Source: `work/patches/battle-message-references/fix.toml`
+
+**Why (the Chinese hack):**
+
+Players: after Nature Power the game said "(Error) <your first party Pokémon>'s accuracy rose drastically!" (in
+Chinese '(错误)…的命中率巨幅提高了！') instead of "Nature Power turned into <move>!", even when the foe used it and
+the named Pokémon was benched (rc6 report: "the foe (2 Chinese characters) Pikachu's accuracy…" against Camper
+Ward's Nuzleaf on Route 24). Every turn an infatuated Pokémon tried to move, the game said "The foe's (Error)
+<your Pokémon> fell in love with <the infatuated foe>!": the names in the wrong places and one of them the
+fallback (rc6 report: "an untranslated Chinese word after attract/infatuation"). The untouched Chinese ROM does
+the same (D-2285).
+
+Status: D-1337 says hack bugs are reported, not fixed. This fix is a user-approved exception to it (D-2286,
+2026-10-09, resolves D-2285). The error marker itself is translated by battle-message-error-marker (D-2284) and
+stays as a safety net.
+
+Technical: the hack builds battle messages as records (MsgRec_Init 0x02225DC0: type, id; MsgRec_AddArg
+0x02225DEC). Type 1 prints battle_string bank 2, type 2 bank 1 (own / wild / foe / trainer variants); the
+arguments are the template's buffers, and a Pokémon-name buffer needs a Pokémon reference 1..25 (1-6 the player's
+party, 13-18 the foe's). Nature Power (0x0223F070) builds MsgRec_Init(rec, 2, 120) with one argument, the called
+move (battle var 0x29): message 120 with a move is bank 2's 'Nature Power turned into {move}!', but type 2
+printed bank 1's #120 with the move id as the Pokémon (Earthquake = 89 > 25). The infatuation check before a
+Pokémon moves (0x0221DAEC) emits 1#452 ({0} = the infatuated Pokémon, which also picks the variant; {1} = the one
+it is in love with) with the arguments (condition 7's data field, self): the data field (0x02216D4C) is always 0
+for infatuation (observed), the attracter is the condition's source (word 0 of its entry, Pokémon + 0x70:
+observed 0x0D for a wild attracter, 0x01 for the player's), and the order is reversed.
+
+**What (old → new):**
+
+Old: Nature Power -> record type 2, id 120 -> 1#120-123 with the move as the Pokémon; infatuation -> 1#452 with
+(0, self).
+
+New: 0x0223F084 'movs r1, #2' -> 'movs r1, #1' (type 1: 2#120 'Nature Power turned into {move}!', the move
+argument unchanged). 0x0221DAFC: the call reading the condition's data field (and its byte mask) becomes 'ldr
+r4, [r5, #0x70]' with the same byte mask (the condition's source) and a nop; 0x0221DB20: the two argument stores
+are swapped, so the arguments are (self, source). Not changed: the message ids, the variant battler, when the
+messages appear, the condition logic. A static audit of every message record and stream message in overlay 14
+(284 records, 103 direct emits) found no other argument that can be a non-reference in a Pokémon-name slot
+(work/notes/battle-text-chinese_fix.md 'Audit').
+
+**Evidence:**
+
+- D-2286: the user-approved exception to D-1337 for this fix; it resolves the hack finding D-2285
+- work/notes/battle-text-chinese_fix.md: the record types, the two call sites, the audit, the emulator runs before and after
+- Runtime: emu_harness.py fixes --case battle-message-references (scenario battle-references: Linoone with only Nature Power against Camper Ward on Route 24, then a wild Chansey with only Attract against a Tauros; the message records and the battle_string ids the client reads). 2026-10-09, DeSmuME: the Chinese ROM and the --without build read 1#120 and 1#452 with an invalid reference; the full build reads 2#120 and 1#452 with (self, attracter)
+
+**Touches:**
+
+- `overlay14+0x3E8A4` (RAM 0x0223F084) `battle-message-references-nature-power`: 2 bytes, was `2102`
+- `overlay14+0x1D31C` (RAM 0x0221DAFC) `battle-message-references-infatuation-source`: 8 bytes, was `F7F9 F926 0600 0E04`
+- `overlay14+0x1D340` (RAM 0x0221DB20) `battle-message-references-infatuation-args`: 4 bytes, was `9400 9001`
+
+**Disassembly snapshot:** [`battle-message-references.listing`](battle-message-references/battle-message-references.listing) (every edit, old → new; `python3 work/tools/asmpatch.py listing --write battle-message-references`)
+
+**Source** (`work/patches/battle-message-references/battle-message-references.asm`, armips; the new bytes):
+
+<details>
+<summary>battle-message-references.asm</summary>
+
+```asm
+; battle-message-references - battle messages that named the wrong Pokemon (or printed the error marker):
+; Nature Power's 'turned into' line and the per-turn infatuation line. D-2286 (user-approved exception to D-1337;
+; resolves the hack finding D-2285).
+; Why and what: fix.toml next to this file; overview work/patches/FIXES.md; work/notes/battle-text-chinese_fix.md.
+;
+; The hack builds most battle messages as a message record (MsgRec_Init 0x02225DC0: record, type, message id;
+; MsgRec_AddArg 0x02225DEC: one argument). Type 1 prints battle_string bank 2 (plain lines, the arguments are the
+; template's buffers); type 2 prints bank 1 (own / wild / foe / trainer variants, chosen from a battler, the
+; arguments again the buffers). A Pokemon-name buffer (tags 0x0101 / 0x0102) needs a Pokemon reference 1..25
+; (1-6 the player's party, 13-18 the foe's, ...); anything else prints the error marker (see
+; battle-message-error-marker) and the name of reference 1, the player's first party Pokemon.
+;
+; 1. Nature Power (NaturePower_ShowCalledMove 0x0223F070): the record is MsgRec_Init(rec, 2, 120) plus the called
+;    move (battle var 0x29). Message 120 with one move argument is bank 2's 'Nature Power turned into {move}!'
+;    (2#120); type 2 printed bank 1's 120, '{Pokemon}'s accuracy rose drastically!', with the move id as the
+;    Pokemon reference (Earthquake 89 on Route 24). The fix: type 1.
+; 2. Infatuation, every turn the infatuated Pokemon tries to move (Turn_CheckInfatuation 0x0221DAEC): it emits
+;    1#452 '{1}让{0}着迷了' / 'The foe's {0} fell in love with {1}!' with the arguments (condition 7's data,
+;    self). Condition 7's data field (0x02216D4C) is always 0 for infatuation; the Pokemon it is in love with is
+;    the condition's source, word 0 of its 8-byte entry (Pokemon + 0x38 + 7 * 8 = + 0x70: observed 0x0D for a wild
+;    attracter, 0x01 for the player's). And {0} is the infatuated Pokemon (the variant is chosen from it), {1}
+;    the attracter, so the two arguments were also swapped. The fix: r4 = the source's low byte, then
+;    (self, source).
+
+.nds
+.thumb
+.include "../include/guards.inc"
+
+.definelabel NaturePower_ShowCalledMove,  0x0223F070   ; battle event: Nature Power picked its move
+.definelabel NaturePower_RecordType,      0x0223F084   ; movs r1, #2 (record type)  <- 1
+.definelabel Turn_CheckInfatuation,       0x0221DAEC   ; condition 7 (infatuation) before the Pokemon moves
+.definelabel Infatuation_ReadData,        0x0221DAFC   ; bl Condition_GetData(mon, 7)  <- ldr the source
+.definelabel Infatuation_StoreArgs,       0x0221DB20   ; str r4, [sp] / str r0, [sp, #4]  <- swapped
+.definelabel Condition_GetData,           0x02216D4C   ; (mon, condition) -> the entry's data field
+.definelabel Mon_GetRef,                  0x022167A0   ; mon -> its Pokemon reference ([mon + 0x14])
+.definelabel MsgRec_Init,                 0x02225DC0
+.definelabel MsgRec_AddArg,               0x02225DEC
+.definelabel BattleMsg_Emit,              0x02224C50   ; (stream, op, id, variant battler, args..., 0xFFFF)
+.definelabel BattleVar_Get,               0x0220FCC0
+
+.open "overlay14.bin", 0x022007E0
+
+; 1. Nature Power: read-only guard of the routine, then the record type.
+.org NaturePower_ShowCalledMove
+    expect16_at 0x00, 0xB510    ; push  {r4, lr}
+    expect16_at 0x02, 0x2006    ; movs  r0, #6
+    expect16_at 0x04, 0x1C0C    ; adds  r4, r1, #0
+    expect16_at 0x06, 0xF7D0    ; bl    BattleVar_Get           (1/2)
+    expect16_at 0x08, 0xFE23    ;                               (2/2)
+    expect16_at 0x0A, 0x4284    ; cmp   r4, r0
+    expect16_at 0x0C, 0xD112    ; bne   (not this battler's move)
+    expect16_at 0x0E, 0x2003    ; movs  r0, #3
+    expect16_at 0x10, 0xF7D0    ; bl    BattleVar_Get           (1/2)  var 3: the message record
+    expect16_at 0x12, 0xFE1E    ;                               (2/2)
+    expect16_at 0x16, 0x2278    ; movs  r2, #0x78               message 120
+    expect16_at 0x18, 0x1C04    ; adds  r4, r0, #0
+    expect16_at 0x1A, 0xF7E6    ; bl    MsgRec_Init             (1/2)
+    expect16_at 0x1C, 0xFE99    ;                               (2/2)
+    expect16_at 0x1E, 0x2029    ; movs  r0, #0x29               var 0x29: the called move
+    expect16_at 0x20, 0xF7D0    ; bl    BattleVar_Get           (1/2)
+    expect16_at 0x22, 0xFE16    ;                               (2/2)
+    expect16_at 0x24, 0x1C01    ; adds  r1, r0, #0
+    expect16_at 0x26, 0x1C20    ; adds  r0, r4, #0
+    expect16_at 0x28, 0xF7E6    ; bl    MsgRec_AddArg           (1/2)  the only argument
+    expect16_at 0x2A, 0xFEA8    ;                               (2/2)
+
+.org NaturePower_RecordType
+.area 2
+    expect16 0x2102             ; movs  r1, #2                  type 2: bank 1, variants
+    mov     r1, #1              ; type 1: bank 2, 'Nature Power turned into {move}!'
+.endarea
+
+; 2. Infatuation: read-only guard of the message's emit, then the two edits.
+.org Turn_CheckInfatuation
+    expect16_at 0x00, 0x1C28    ; adds  r0, r5, #0              r5 = the Pokemon about to move
+    expect16_at 0x02, 0x2107    ; movs  r1, #7
+    expect16_at 0x04, 0xF7F9    ; bl    (has condition 7?)      (1/2)
+    expect16_at 0x06, 0xF91A    ;                               (2/2)
+    expect16_at 0x08, 0x2800    ; cmp   r0, #0
+    expect16_at 0x0A, 0xD026    ; beq   (not infatuated)
+    expect16_at 0x18, 0x1C28    ; adds  r0, r5, #0
+    expect16_at 0x1A, 0x2107    ; movs  r1, #7
+    expect16_at 0x1C, 0xF00C    ; bl    0x0222A434              (1/2)
+    expect16_at 0x1E, 0xFC94    ;                               (2/2)
+    expect16_at 0x26, 0x1C28    ; adds  r0, r5, #0
+    expect16_at 0x28, 0xF7F8    ; bl    Mon_GetRef              (1/2)
+    expect16_at 0x2A, 0xFE44    ;                               (2/2)
+    expect16_at 0x2C, 0x1C07    ; adds  r7, r0, #0              r7 = variant battler: self
+    expect16_at 0x2E, 0x1C28    ; adds  r0, r5, #0
+    expect16_at 0x30, 0xF7F8    ; bl    Mon_GetRef              (1/2)
+    expect16_at 0x32, 0xFE40    ;                               (2/2)  r0 = self
+    expect16_at 0x3A, 0x2271    ; movs  r2, #0x71               (<< 2 = 452)
+    expect16_at 0x40, 0x2103    ; movs  r1, #3                  op 3: bank 1, variants
+    expect16_at 0x42, 0x0092    ; lsls  r2, r2, #2
+    expect16_at 0x44, 0x1C3B    ; adds  r3, r7, #0
+    expect16_at 0x46, 0xF007    ; bl    BattleMsg_Emit          (1/2)
+    expect16_at 0x48, 0xF88D    ;                               (2/2)
+
+.org Infatuation_ReadData
+.area 8
+    expect16_at 0, 0xF7F9       ; bl    Condition_GetData       (1/2)  the data field: 0
+    expect16_at 2, 0xF926       ;                               (2/2)
+    expect16_at 4, 0x0600       ; lsls  r0, r0, #0x18
+    expect16_at 6, 0x0E04       ; lsrs  r4, r0, #0x18
+    ldr     r4, [r5, #0x70]     ; condition 7's source: the Pokemon it is in love with
+    lsl     r4, r4, #0x18
+    lsr     r4, r4, #0x18
+    mov     r8, r8              ; nop
+.endarea
+
+.org Infatuation_StoreArgs
+.area 4
+    expect16_at 0, 0x9400       ; str   r4, [sp]                {0} = the attracter
+    expect16_at 2, 0x9001       ; str   r0, [sp, #4]            {1} = self
+    str     r0, [sp]            ; {0}: self, the infatuated Pokemon
+    str     r4, [sp, #4]        ; {1}: the Pokemon it is in love with
+.endarea
 
 .close
 ```
