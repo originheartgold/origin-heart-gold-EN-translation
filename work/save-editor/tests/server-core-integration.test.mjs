@@ -24,7 +24,7 @@ test('standalone editor serves the complete shared-core module graph but exclude
   const page = await fetch(origin);
   assert.equal(page.status, 200);
   assert.match(page.headers.get('content-security-policy'), /connect-src 'none'/);
-  assert.match(await page.text(), /dist\/app\.js/);
+  assert.match(await page.text(), /dist\/ui\/app\.js/);
   const visited = new Set();
   async function visit(path) {
     const url = new URL(path, origin);
@@ -40,7 +40,7 @@ test('standalone editor serves the complete shared-core module graph but exclude
       await visit(new URL(match[1], url).pathname);
     }
   }
-  await visit('/dist/app.js');
+  await visit('/dist/ui/app.js');
   for (const module of ['save','pokemon','stats','inventory','save-container','errors','transaction']) {
     assert.ok(visited.has(`/save-core/dist/${module}.js`), `${module} must come from the shared core`);
   }

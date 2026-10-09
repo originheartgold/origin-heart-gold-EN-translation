@@ -1,6 +1,7 @@
 import { MONEY_OFFSET, REGISTERED_OFFSET, POCKETS } from './layout.js';
 import { readSave } from './save.js';
 import { applyEditorTransaction } from './transaction.js';
+import type { EditorOperation } from './transaction.js';
 
 export const MONEY_MAX = 9_999_999;
 export { MONEY_OFFSET, BAG_OFFSET, REGISTERED_OFFSET, POCKETS } from './layout.js';
@@ -33,4 +34,23 @@ export function patchMoney(input: Uint8Array, money: number): Uint8Array {
 }
 export function patchInventoryPocket(input: Uint8Array, pocketId: PocketId, items: readonly ItemStack[], data: InventoryData): Uint8Array {
   return applyEditorTransaction(input,[{type:'replacePocket',pocket:pocketId,items,data}]).bytes;
+}
+
+/** Fill available slots without removing existing items or touching key items.
+ * One transaction: all pockets change together or not at all. */
+export function fillBag(input: Uint8Array, data: InventoryData): {bytes: Uint8Array; omitted: number} {
+  let omitted = 0;
+  const inventory = readInventory(input), operations: EditorOperation[] = [];
+  for (const pocket of POCKETS) {
+    if (pocket.id === 'keyItems') continue;
+    const stacks = inventory.pockets[pocket.id].map(item => ({...item, quantity: pocket.maxQuantity}));
+    const present = new Set(stacks.map(item => item.id));
+    for (const item of data.items) {
+      if (item.pocket !== pocket.id || !item.name || item.name.startsWith('Item #') || present.has(item.id)) continue;
+      if (stacks.length >= pocket.capacity) { omitted++; continue; }
+      stacks.push({id: item.id, quantity: pocket.maxQuantity}); present.add(item.id);
+    }
+    operations.push({type: 'replacePocket', pocket: pocket.id, items: stacks, data});
+  }
+  return {bytes: applyEditorTransaction(input, operations).bytes, omitted};
 }

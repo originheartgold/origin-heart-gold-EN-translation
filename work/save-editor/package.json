@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "description": "Standalone save editor for Pokémon Origin HeartGold v4.0.3 (English).",
   "scripts": {
     "build": "node scripts/build.mjs",
     "test": "npm run build && node --test tests/*.test.mjs ../save-core/tests/*.test.mjs",
     "start": "npm run build && node scripts/serve.mjs",
+    "gen:extras": "npm run build && node scripts/generate-extras.mjs",
     "typecheck": "node scripts/build.mjs --check",
     "lint": "node node_modules/eslint/bin/eslint.js src --max-warnings 0 && npm --prefix ../save-core run lint",
     "check": "npm run typecheck && npm run lint && npm test && npm run test:mutations",

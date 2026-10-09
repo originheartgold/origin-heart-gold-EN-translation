@@ -1,8 +1,8 @@
 // Research-only adapter to the unchanged browser modules. No save files are written.
 import { createInterface } from 'node:readline';
-import { readSave, patchPartyRecord } from '../../save-editor/dist/save.js';
-import { decodePokemon, patchPokemonMoves } from '../../save-editor/dist/pokemon.js';
-import { unwrapSave, wrapSave } from '../../save-editor/dist/save-container.js';
+import { readSave, patchPartyRecord } from '../../save-editor/dist/core/save.js';
+import { decodePokemon, patchPokemonMoves } from '../../save-editor/dist/core/pokemon.js';
+import { unwrapSave, wrapSave } from '../../save-editor/dist/core/save-container.js';
 
 function run(request) {
   const bytes = Uint8Array.from(Buffer.from(request.bytes, 'base64'));

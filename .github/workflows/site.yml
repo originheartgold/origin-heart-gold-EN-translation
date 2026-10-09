@@ -8,9 +8,9 @@ name: Website
 on:
   push:
     branches: [main]
-    paths: ['site/**', 'guide/**', 'work/tools/site/**', 'work/save-editor/**', 'work/save-core/**', 'work/research/save_core/**', 'work/tools/save_core.py', 'work/tools/test_save_*.py', 'work/tools/check_save_*.py', 'work/tools/test_check_save_harness.py', 'work/tools/check.py', 'work/tools/emu_*.py', 'work/tools/test_emu_*.py', 'work/tools/requirements-runtime.txt', '.github/workflows/site.yml']
+    paths: ['site/**', 'guide/**', 'work/tools/site/**', 'work/tools/docs/**', 'work/save-editor/**', 'work/save-core/**', 'work/research/save_core/**', 'work/tools/save_core.py', 'work/tools/test_save_*.py', 'work/tools/check_save_*.py', 'work/tools/test_check_save_harness.py', 'work/tools/check.py', 'work/tools/emu_*.py', 'work/tools/test_emu_*.py', 'work/tools/requirements-runtime.txt', '.github/workflows/site.yml']
   pull_request:
-    paths: ['site/**', 'guide/**', 'work/tools/site/**', 'work/save-editor/**', 'work/save-core/**', 'work/research/save_core/**', 'work/tools/save_core.py', 'work/tools/test_save_*.py', 'work/tools/check_save_*.py', 'work/tools/test_check_save_harness.py', 'work/tools/check.py', 'work/tools/emu_*.py', 'work/tools/test_emu_*.py', 'work/tools/requirements-runtime.txt', '.github/workflows/site.yml']
+    paths: ['site/**', 'guide/**', 'work/tools/site/**', 'work/tools/docs/**', 'work/save-editor/**', 'work/save-core/**', 'work/research/save_core/**', 'work/tools/save_core.py', 'work/tools/test_save_*.py', 'work/tools/check_save_*.py', 'work/tools/test_check_save_harness.py', 'work/tools/check.py', 'work/tools/emu_*.py', 'work/tools/test_emu_*.py', 'work/tools/requirements-runtime.txt', '.github/workflows/site.yml']
   workflow_dispatch:
   # A new release redeploys the site so /patch/ serves the new patch (see the redeploy job).
   release:
@@ -21,7 +21,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: pages
+  group: website-${{ github.event_name == 'pull_request' && github.ref || github.event_name == 'release' && github.ref || 'production' }}
   cancel-in-progress: true
 
 jobs:
@@ -40,7 +40,7 @@ jobs:
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
 
   # The save editor ships inside the site, but the Astro build only strips its types:
-  # typecheck, lint and test it here.
+  # typecheck and test it here.
   save-editor:
     if: github.event_name != 'release'
     runs-on: ubuntu-latest
@@ -93,6 +93,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Test guide parsers and trainer rules (no ROM required)
+        run: python3 -m unittest work/tools/docs/test_gen_docs.py work/tools/docs/test_trainer_guide.py work/tools/docs/test_trainer_runtime.py work/tools/site/test_wild_held.py work/tools/site/test_safari_held.py
       - name: Generate the guide pages from guide/*.md
         run: python3 work/tools/site/sync_guide.py
       - name: Test website reference parsers (no ROM required)
@@ -154,6 +156,8 @@ jobs:
         working-directory: site
       - run: npm ci
         working-directory: work/save-editor
+      - name: Check Primo passwords against the reference encoder
+        run: node work/tools/site/test_primo.mjs
       - run: npm run build
         working-directory: site
       - name: Test site including compiled reference pages
@@ -171,6 +175,9 @@ jobs:
   deploy:
     if: github.event_name != 'pull_request' && github.event_name != 'release'
     needs: [build, save-editor]
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     permissions:
       pages: write

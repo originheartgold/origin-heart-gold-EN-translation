@@ -4,7 +4,7 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import Type from '../../components/Type.astro';
 import PokemonImage from '../../components/PokemonImage.astro';
 import AbilityLink from '../../components/AbilityLink.astro';
-import { species, abilities, abilityAlias, url, hasDocumentedSource, availabilityToken } from '../../lib/data';
+import { species, abilities, abilityAlias, url, hasDocumentedSource, availabilityToken, STAT_NAMES } from '../../lib/data';
 const types = [...new Set(species.flatMap(s => s.types))].sort();
 const regions = [...new Set(species.map((s) => s.region))];
 ---
@@ -28,8 +28,10 @@ const regions = [...new Set(species.map((s) => s.region))];
 		</select>
 		<span class="filter-count" aria-live="polite"></span>
 	</div>
+	<p>Base stats come from this hack’s ROM. Select a stat heading to sort lowest first; select it again for highest first. BST is the total of all six stats. Scroll sideways to see every column.</p>
+	<p class="small">Planning for a gym? <a href={url('/guide/ecruteak-olivine/#olivine-gym-jasmines-rule-three-pokémon-with-base-defense-130')}>Jasmine’s Defense rule</a> also checks a fixed species list, with exceptions explained in the guide.</p>
 	<table id="mon-table" class="sortable compact">
-		<thead><tr><th data-sort-type="number">Species / form</th><th>Pokémon</th><th>Type</th><th>Abilities</th><th>Hidden</th><th>BST</th><th>Availability</th></tr></thead>
+		<thead><tr><th data-sort-type="number">Species / form</th><th>Pokémon</th><th>Type</th><th>Abilities</th><th>Hidden</th><th class="base-stat" data-sort-type="number">BST</th>{STAT_NAMES.map(name => <th class="base-stat" data-sort-type="number">{name}</th>)}<th>Availability</th></tr></thead>
 		<tbody>
 			{species.map((s) => (
 				<tr data-region={s.region} data-type={s.types.join('|')} data-ability={[...s.abilityIds, s.hiddenAbilityId].filter(Boolean).join('|')} data-availability={availabilityToken(s)}>
@@ -38,10 +40,15 @@ const regions = [...new Set(species.map((s) => s.region))];
 					<td>{s.types.map((t) => <Type type={t} />)}</td>
 					<td>{s.abilityIds.map(id => <AbilityLink id={id} />)}</td>
 					<td><AbilityLink id={s.hiddenAbilityId} /></td>
-					<td>{s.stats.reduce((a, b) => a + b, 0)}</td>
+					<td class="base-stat">{s.stats.reduce((a, b) => a + b, 0)}</td>
+					{s.stats.map(value => <td class="base-stat">{value}</td>)}
 					<td>{s.unavailableReason ? <Availability reason={s.unavailableReason} /> : hasDocumentedSource(s) ? 'Where to get it' : s.battleOnly ? 'Battle only' : 'No known way to get it'}</td>
 				</tr>
 			))}
 		</tbody>
 	</table>
 </StarlightPage>
+
+<style>
+	.base-stat { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+</style>

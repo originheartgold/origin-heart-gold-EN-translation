@@ -31,6 +31,7 @@
 - [Frontier Access Pokémon Center: the psychic's memory battles (after the final Hall of Fame)](#frontier-access-pokémon-center-the-psychics-memory-battles-after-the-final-hall-of-fame)
 
 ## Route 40: the Rhydon that can Surf (→ 2 Heavy Balls)
+<!-- quest: kind=side -->
 
 **Where:** a girl a few steps south-east of the Battle Frontier gatehouse door, at the north end of Route 40. The Rhydon and the lifeguard are out on the water side by side, about 25 steps further south. You need **Surf**.
 
@@ -47,6 +48,7 @@
 *Source:* script file 958 (scripts 9, 4, 8; flags 2067, 2068; trainer 452). Positions: girl ≈242,274; lifeguard ≈247,300; Rhydon ≈252,300; gatehouse door ≈237,266.
 
 ## Cianwood Pharmacy: getting the Secret Potion (continues Radio Tower, Ecruteak City and Olivine City's "Olivine Lighthouse: medicine for Amphy")
+<!-- quest: kind=main -->
 
 **Continues [Olivine Lighthouse: medicine for Amphy](10-ecruteak-olivine.md#olivine-lighthouse-medicine-for-amphy--tm91-flash-cannon).**
 
@@ -61,6 +63,7 @@
 *Source:* script file 878 (scripts 2–3, L854–L1290); file 66 (Lighthouse) takes the potion. The counter (878 script 1) opens only while flag 471 is set, and Gold, Crystal and their Pokémon are hidden by 471. It's cleared at the end of the Lighthouse battle (file 66 L2507) and set again by the cure: file 66 script 16 L3718 `HidePerson 0` hides Jasmine, whose hide flag is 471 (emulator CN and EN: 471 set after the cure, pharmacy shows only the pharmacist, counter messages 569#27/#34).
 
 ## Route 41 → Cianwood City: the Whirl Islands Challenge (quiz and battle on four islands)
+<!-- quest: kind=side -->
 
 **Where:** the host stands on Cianwood City's east side, about a dozen steps north of the Pokémon Center door. One challenger waits near each of the four Whirl Islands on Route 41: **northwest** (with a Starmie), **northeast** (Lanturn), **southwest** (Kabutops) and **southeast** (Feraligatr). You need **Surf**.
 
@@ -95,6 +98,7 @@
 *Source:* script file 960 (scripts 3–6; flags 2094–2100; trainers 824–827), file 872 (script 3, L2417–L3220, L3958). Positions: host ≈186,357 in Cianwood; challengers ≈203,335 (NW), ≈244,336 (NE), ≈217,372 (SW), ≈237,362 (SE) on Route 41.
 
 ## Cianwood City: Eusine, Suicune and Goh (optional; before the Route 42 story)
+<!-- quest: kind=side -->
 
 **Where:** the north end of Cianwood City, beach north of the houses (Eusine stands next to Suicune; Crystal and her Meganium nearby).
 
@@ -112,6 +116,7 @@
 *Source:* script file 872 (script 28, L2921, L3504; flags 481/482 set at L3067, after the win; before the battle only flag 1366 is set); file 252 (Route 42) sets 481 as well. Goh is trainer 832.
 
 ## Cianwood City: Ace Trainer Hans unlocks Close Combat
+<!-- quest: kind=side -->
 
 **Where:** outside the gate to Cianwood Cave, at the west end of town (just east of the cave entrance).
 
@@ -122,6 +127,7 @@
 *Source:* script file 872 (script 17, L2800, flag 343; tutor L3410–L5393).
 
 ## Cianwood City: a Lure Ball for the Corsola girl (→ Max Elixir)
+<!-- quest: kind=side -->
 
 **Where:** the girl fishing on the east shore, north-east of the Gym.
 
@@ -134,6 +140,7 @@
 *Source:* script file 872 (script 13, L3369; flag 718).
 
 ## Cianwood Gym is closed: find Chuck in Cianwood Cave (story)
+<!-- quest: kind=main -->
 
 **Where:** Cianwood Gym → Cianwood Cave (the gate at the west end of town; it leads to Route 47 and the Resort Zone).
 
@@ -147,6 +154,7 @@
 *Source:* script file 121 (script 5 coord trigger, L675–L1557: sets flag 2112, clears 2111/747, var 0x4098 = 14; trainer 718); file 874 (script 14, L1021). Wife's lines: 564#23 at the door, 566#63 inside. The door wife is three copies of one person on the tile below the door (file 872 objects 1–3, hide flags 173, 477, 471); 471, the last, is set by the cure (file 66 L3718 `HidePerson 0`). Emulator: with 471 clear she blocks the door (EN); after the cure the player enters the Gym (CN and EN).
 
 ## Cianwood Gym: the winch and Chuck's Fighting-type Double Battle (the Storm Badge)
+<!-- quest: kind=main -->
 
 **Where:** Cianwood Gym.
 
@@ -170,6 +178,7 @@
 *Source:* script file 874 (script 1; winch script 3 → L15041; badge path L781–L15287; party checks L1170–L14962, the ban list includes Staraptor; badge battle is TrainerBattle 34 34 (same id twice = a Double Battle against one trainer; both of his battlers draw from one copy of the team); Chuck's 4-on-4 line is 566#27; Heal Bell script 14). Quote: 566#9.
 
 ## Cianwood City houses: Happiny, Gligar, and the Eevee brothers
+<!-- quest: kind=side -->
 
 The four houses share one interior map. Door positions in town: **A** is west of the Pharmacy, **B** directly north of the Pharmacy, **C** north-east of the Gym, **D** in the far north-west.
 
@@ -216,6 +225,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 *Source:* script file 877 (scripts 1, 3, 6, 7, 8; flags 2118, 191, 193, 2122); Pryce line 568#69. Photo checks (all need flag 2261 except Pryce): Brock file 5 @608–652 (D-1394); Misty 216 @3164–3221/@8294 (D-1441); Surge 249 @5047–5088; Erika 783 @621/@5815; Koga 213 @523–585 (hours 18–20); Blaine 812 @2920; Sabrina 153 @643 (weekday 5); Falkner 790 @378; Bugsy 25 @5005; Whitney 901 @1993–2034 (hours 18–19); Morty 22 @2481; Jasmine 915 @1158–1270 (hour 13, or 12 with her number); Chuck 260 @5118–5165 (Storm Badge, Sunday, flag 2116); Pryce 928 L999; Clair 111 @795, @1678–1734 (hours 6–9, no weekday). No Blue photo or Cinnabar weekday appearance exists in any script. House doors from Cianwood City warp anchors (map 75 → 232 anchors 0–3): A ≈170,367, B ≈181,362, C ≈181,354, D ≈167,335.
 
 ## Cianwood City: small extras
+<!-- quest: kind=side -->
 
 - **Leaf Stone:** the Leafeon owner at the north end of town gives a **Leaf Stone** (no condition). In this hack a Leaf Stone evolves Eevee into Leafeon.
 - **Tentacool gift (Pokémon Center):** the woman in the lower right gives a Lv. 15 **Tentacool**, but only if you have **exactly one Pokémon in your party and an empty PC**. Otherwise she just talks. This is a safety net for the Whirlpool quest in Olivine City ([Olivine City: … HM05 Whirlpool](10-ecruteak-olivine.md#olivine-city-sitrus-berries--machine-part--diving-suit--hm05-whirlpool-with-a-tentacool)).
@@ -223,6 +233,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 *Source:* script file 872 (script 16); file 875 (script 3).
 
 ## Route 40 / Route 41: small extras
+<!-- quest: kind=side -->
 
 - **The Lapras owner** (Route 40, about 14 steps straight south of the Battle Frontier gatehouse door, next to her Lapras) wants to release her Lapras. **"Don't release it"** gets you a **Full Heal**. **"Release it"**: Lapras swims away, no reward. One-time.
 - **Swimmer♂ Lex** (Route 41, on the water on the east side, between the north-east and south-east islands): repeatable battles against a Lv. 81–82 rain team (Swampert, Pelipper, Vaporeon, Kabutops, Forretress, Electivire). He offers Singles or Doubles, but both choices run the same **Single Battle**; "Doubles" only adds a party-count check (suspected hack bug; [known issue](known-issues.md#lexs-doubles)). Losing whites you out.
@@ -231,6 +242,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 *Source:* script file 958 (script 11; flags 1266, 2093), file 960 (script 2; trainer 823), trainer #329 (flag 1689, checked by file 211 L530). Positions: Lapras owner ≈237,280 (Route 40); Lex ≈248,352 and Marina ≈206,377 (Route 41).
 
 ## Battle Tower partner room: teaming up with Yellow or Misty (continuation of Ilex Forest and Goldenrod City's romance entry; in practice unavailable)
+<!-- quest: kind=side -->
 
 **Where:** the Battle Tower's partner room (take the Multi Battle Room challenge at the left counter).
 
@@ -243,6 +255,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 *Source:* script file 75 (script 3 → L1517–L1521 `SetFlag 603`, `ClearFlag 2143`; script 6 → L1654–L1658 `SetFlag 336`, `ClearFlag 2142`; objects 2 (flag 603) and 5 (flag 336)), file 249 L4250–L4254 (Route 39 scene sets 603 and 336), file 746 L80 (Trainer House sets 603). No script clears 603 or 336. Positions in the room: Yellow ≈4,6, Misty ≈7,9.
 
 ## Battle Frontier: small extras
+<!-- quest: kind=side -->
 
 - **Free Vs. Recorder:** in the Battle Frontier gatehouse, the man at the upper left gives you a **Vs. Recorder** if you don't have one. The receptionist upgrades it on your first visit.
 - **Frontier Brains welcome:** your first trip into Frontier Access triggers a greeting from Palmer, Argenta, Dahlia, Darach, Caitlin and Thorton. It's story only.
@@ -251,6 +264,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 *Source:* script files 80 (script 8, L889 `Vs. Recorder`), 81 (script 2). Vs. Recorder man ≈3,4 in the gatehouse.
 
 ## Route 42: small extras
+<!-- quest: kind=side -->
 
 - **The Smeargle's Sketch** (west end, a few steps east of the gatehouse from Ecruteak, next to a boulder): he's training his Smeargle's Strength. Pick **"That's not how it works"** and talk him through Sketch. If you have a **Heart Scale**, give it: **Meadow Plate**. One-time; without a Heart Scale, come back later.
 - **Blissey's Egg** (the photographer in the middle of the route, just south-west of the middle Mt. Mortar entrance): a Seviper goes for the Blissey's Egg. **"I'll save it"** → wild **Seviper Lv. 30**. Win, the Happiny hatches, and you get a **Stardust**. Catching the Seviper or running away also counts as a win. Losing whites you out and the scene plays again. **"Let nature be"**: the Blissey drives it off herself, no reward, and that choice is final.
@@ -261,6 +275,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 *Source:* script file 252 (scripts 10, 13, 8, 14, 2; flags 2215, 671, 2213, 2212). The Blissey scene needs flag 671 (set at new game); "Let nature be" clears it. Dolan is object 14: while flag 2212 is clear (before the Entei scene sets it), script 1 moves him to ≈431,175 (L1575) and he says 392#91. Positions: Smeargle man ≈428,179; photographer ≈460,182; Manzo ≈483,177; Dolan ≈500,177.
 
 ## Mt. Mortar: the runaway Hitmontop and the Hiker's map (→ HM08 Rock Climb)
+<!-- quest: kind=side -->
 
 **Where:** Mt. Mortar 1F. The Hiker is in the north part of the front cave (the part you enter from Route 42), with a Hitmontop next to him. Karate King Kiyo trains in the middle of the back cave, with his Hitmonlee and Hitmonchan.
 
@@ -279,6 +294,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 *Source:* script file 961 (scripts 7, 5; var 0x40a1; L1422), file 962 (scripts 12, 15; L3156–L3219 moves the Hitmontop to Kiyo, var 0x40a1 3 → 4; Kiyo's menu at 4, battle offer at 5; L4133–L4473; trainer 899). Positions: Hiker ≈33,20 (front cave); Hitmontop ≈54,73, then ≈52,49; Kiyo ≈54,49 (back cave).
 
 ## Mt. Mortar: the five-member expedition (the way to the altar; needed in the final chapter)
+<!-- quest: kind=main -->
 
 **Where:** Mt. Mortar 1F (both halves) and B1F.
 
@@ -312,6 +328,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 *Source:* script file 962 (scripts 2, 4, 6, 10, 11; L3424–L3483, L5052, L5709; flags 2214, 2217, 2218; var 0x409f 3→5→6→7), file 961 (script 2, L721–L3199), file 98 (scripts 5, 6, 16, 3; var 0x409f 8→10; trainers 893, 897, 898; statue after flag 2261 = final Hall of Fame), file 246 L287 (flag 461, the members' hide flag: no script sets it before the team sets off, when file 962 script 11 hides them (L1783–L1811 `HidePerson`); quiz failure = msg 38). Positions: leader ≈51,81, Battle Girl ≈35,51, kid ≈70,28 (back cave); Magnemite man ≈61,39 (front cave); B1F Hiker ≈25,36.
 
 ## Boot Camp Ruins: the Team Rocket PC password (story; Mahogany Rocket base chapter)
+<!-- quest: kind=main -->
 
 **Where:** Boot Camp Ruins, the old Team Rocket training camp reached from Mt. Mortar B1F. Your friend (Green for male players, Red for female players) and Silver are waiting inside.
 
@@ -328,6 +345,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 *Source:* script file 881 (scripts 1–5, 8, 13; password check L2424–L3662; var 0x4098 21→26; notebook = script 7, pages 572#92–95). Positions: ruins door ≈87,79 on Mt. Mortar B1F; PC ≈32,7; notebook ≈37,25; statue ≈36,22; Silver's staircase line on ≈32,22. Female players get Silver's line 572#91 in the wrong spot, and 572#90 reads out digits that match neither the note nor the answer (known issue: boot-camp-ruins-password-lines).
 
 ## Mahogany Town → Team Rocket HQ: the radio-wave investigation (story; where to go next)
+<!-- quest: kind=main -->
 
 **Where:** the Mahogany Town souvenir shop (the west door of the shop building in the middle of town), the Team Rocket HQ below it (B1F, B2F, B3F) and Archer's room.
 
@@ -359,6 +377,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 *Source:* script files 926 (Mahogany Town, script 1), 88 (souvenir shop, scripts 7, 10, 6), 89 (B1F; arrival battle TrainerBattle 902 at L183; camera Double Battles 903+904, 905+906, 907+908), 90 (B2F; Butch/Cassidy 810+812; Fujimoto 910 at ≈47,16 with the Secret Key ball ≈46,16; Karen 909 = object 26, hide flag 486, set only after her battle (L3621), so Archer's room (flag 498) doesn't hide her; Petrel's Chatot = object 31, script 6, hide flag 500: the radio-room ending (script 5, L2582–L2813) hides the others in its group, which sets 500, the Chatot then offers "Catch it?" (L2874, `WildBattle 441`, Lv. 10) and is hidden after any result but a loss (`CheckBattleWon` L3657; a loss → `WhiteOut` L3629, which takes you off the floor) (L3674); once you leave, flag 500 keeps it hidden; emulator CN and EN: Chatot at ≈33,24 after the scene, messages 111#84/#99, then the battle), 91 (B3F; Charon + Cyrus 553+817; Multi Battle: partner Crystal 911 vs Ariana 893 + Lawrence 549; Watanabe 912; Secret Key check, both passwords; Petrel 816), 933 (Archer's room, map 133; Rainbow Wing = script 6, flag 2334), 881 (Mt. Mortar passage, vars 0x4098 = 21–26, not covered here). Shop door ≈528,174. Radio room Electrode: "Stop it?" one ≈21,16.
 
 ## Mahogany Gym: Pryce's no-weather Double Battle (the Glacier Badge)
+<!-- quest: kind=main -->
 
 **Where:** Mahogany Gym (south-west building).
 
@@ -379,6 +398,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 *Source:* script file 928 (Gym leader room, script 1, L252 species check, TrainerBattle 32 32 at L801, GiveBadge 14; rematch trainer 716), 930 (Gym entrance guard, hidden by flag 485 which is set at the end of file 90). Positions: guard ≈3,3 in the entrance hall; Haze student ≈3,17 in Pryce's room.
 
 ## Mahogany Town: the Girafarig meditator (→ Shell Bell)
+<!-- quest: kind=side -->
 
 **Where:** Mahogany Town, north side of town, a few steps east of the Route 43 gate: **Magician Colum**, the man training beside his Girafarig.
 
@@ -393,6 +413,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 *Source:* script file 926 (script 16, trainer 913, flag 505). Position ≈533,168.
 
 ## Mahogany Pokémon Center: Durin Berries for the Ice Path (→ 15 Durin Berries)
+<!-- quest: kind=side -->
 
 **Where:** Mahogany Pokémon Center, the nurse-assistant on the right.
 
@@ -407,6 +428,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 *Source:* script file 931 (script 12, flag 2238); Ice Path text bank 0121#116–145 (files 101/109).
 
 ## Mahogany Town: small extras
+<!-- quest: kind=side -->
 
 - **Souvenir shop annex (east door): the Jigglypuff girl's question.** She wants a Pokémon that won't fall asleep to her Jigglypuff's song. Answer "Insomnia Pokémon", then "Hoothoot". She then offers her Pineco for a Hoothoot (in-game trade, one time). Other answers just end the talk, and you can retry.
 - **Red Scale boy (by the Pokémon Center door).** Give him the Red Scale from the Lake of Rage and he teaches **Water Spout** for free, to Squirtle, Wartortle, Blastoise, Golduck, Remoraid, Octillery, Wailmer, Wailord, Kyogre, Frillish and Jellicent. Giving the scale away is permanent.
@@ -416,6 +438,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 *Source:* Jigglypuff girl: file 88, script 2. Red Scale boy: file 926, script 18, flag 2237. Haze tutor: file 928, script 3. Doll vendor: file 926, script 20 (shown by flag 487), ≈540,175.
 
 ## Whirl Islands: catch Lugia (after the final Hall of Fame)
+<!-- quest: kind=side -->
 
 **Where:** Lugia's cave at the bottom of the Whirl Islands (B3F, reached from B2F).
 
@@ -435,6 +458,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 *Source:* script file 104 (scripts 2, 6, 9; L1819–L4170; flags 579, 581, 265), file 103 (the B2F monk), file 924 L4998 (Satsuki's menu; the two-item menu at L4915 leads to L4968, message 609#87, var 0x40A9 → 7). Final Hall of Fame = flag 2261.
 
 ## Frontier Access: the damaged stone and Jirachi (after the final Hall of Fame)
+<!-- quest: kind=side -->
 
 **Where:** Frontier Access (the plaza between the Route 40 gatehouse and the Battle Frontier gate). The stone stands on the east side, a few steps south-east of the Poké Mart, with a man next to it.
 
@@ -455,6 +479,7 @@ The four houses share one interior map. Door positions in town: **A** is west of
 *Source:* script file 81 (script 10 L1134–L1160, L1588, L1801–L1870 `TakeItem 91`, `AddVar 0x408c +1`, `>= 24`; var 0x408c reaches 17 at file 847 L5336, its highest story value; the scene sets it to 23 before the battle and 25 after; L1985–L2886 scene, `TrainerBattle 629, 630`; script 11 L1176–L1290 `GiveMon 385 Lv 5`; script 1 man; flags 2261, 2350, 1384). Positions: stone ≈24,20; man ≈23,20.
 
 ## Frontier Access Pokémon Center: the psychic's memory battles (after the final Hall of Fame)
+<!-- quest: kind=side -->
 
 **Where:** the Frontier Access Pokémon Center, the psychic on the right, up from the entrance.
 

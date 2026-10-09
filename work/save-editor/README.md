@@ -1,146 +1,154 @@
-# Origin Save Editor prototype
+# Origin HG Save Editor
 
-A local TypeScript browser editor for **English Pokémon Origin HeartGold v4.0.3**.
-Select one raw 512 KiB `.sav` file or a DeSmuME `.dsv` save, edit your party, money
-and bag, and download a separate copy. No ROM selection, upload, account or backend is needed. Names and
-verified reference tables are included with the editor; saves stay in the browser.
+A standalone, browser-only save editor for **Pokémon Origin HeartGold v4.0.3 (English)**.
+Open a raw `.sav` (512 KiB) or DeSmuME `.dsv`, edit, export. Nothing is uploaded.
 
-Party moves/PP/PP Ups, level, nature, separate IV/EV changes, shiny state, Pokérus,
-money and all eight bag pockets are implemented. Search moves and items by English name. Held-item
-editing is a potential next addition. PC boxes, story flags, quests and progression
-editing are out of scope.
+Four views: **Party**, **PC**, **Trainer**, and **Bag**. PC storage has 24 boxes
+with 30 slots each. Select a boxed Pokémon to edit its moves, ability, held item,
+shiny status, Pokérus, nature, level, IVs and EVs. Empty slots support adding a
+Pokémon; occupied slots support removal. All edits use the shared Undo and Export.
+Boxed stats are calculated from experience and training values; they have no cached
+battle HP. Adding requires one hatched party Pokémon as the trainer template.
 
-## Run from the worktree root
+The binary save implementation is shared with the Python emulator harness in
+`work/save-core`. The editor keeps its UI and Origin reference-data adapters here.
 
-Node.js 22+ is required. Development tools are pinned to TypeScript 5.8.3,
-ESLint 9.28.0 and typescript-eslint 8.34.0 (a compatible peer-version set). This
-worktree uses existing local installations; no dependencies were downloaded.
+## What you can edit
 
-```sh
-npm --prefix work/save-editor install # only on a fresh setup, when desired
-npm --prefix work/save-editor start
-npm --prefix work/save-editor run check # typecheck, typed source lint, build and tests
-```
+| Party Pokémon | Trainer |
+| --- | --- |
+| **Add Pokémon** (any of 1025 species) / remove from party | Money, Game Corner coins, play time |
+| **Ability**: species slots 1 / 2 / hidden, or any of Origin's 326 abilities | |
+| Moves, PP, PP Ups | All 8 bag pockets (add, remove, quantities) |
+| Level, nature, IVs, EVs (stats recalculated) | Badge toggles (Kanto first), with undo |
+| **Hidden Power type** (shifts the fewest IVs by 1) | |
+| Held item, shiny, Pokérus | |
 
-Open http://127.0.0.1:4173. `PORT` overrides the loopback port. The server serves
-only the page, stylesheet and compiled modules, never local fixtures or ROMs.
-The browser application has no external requests or telemetry. Its pure binary
-implementation is shared with the Python harness in [`../save-core`](../save-core/README.md);
-the build compiles that package before the editor. Node is only a development
-and harness runtime, never a browser backend.
+Species types (from the ROM's personal table, Fairy included) are shown on the
+Pokémon card, on every move, and next to the Hidden Power selector.
 
-## Editing contract
-
-- Supported scope: English Origin v4.0.3 saves, either raw 512 KiB (melonDS, flashcart
-  dumps and other raw saves) or DeSmuME `.dsv` (raw data plus a 122-byte
-  footer). The format is detected from content, not the extension. Downloads keep
-  the input's format, and a `.dsv` footer is kept byte for byte. Other versions/hacks
-  and emulator save states are unsupported. Structural validation is not
-  language detection or cryptographic proof of the game's identity.
-- The editor selects the newest valid generation whose general and storage blocks
-  share a mirror and counter, matching the verified native loader. It can fall back
-  to an older coherent generation. Equal counters select the first mirror, and
-  the native FFFFFFFF-to-zero rollover is supported. Saves without a coherent
-  valid pair are rejected; native assertion and corrupt-storage edge paths are
-  deliberately not writable. Only the selected general block is edited.
-- Save and party Pokémon checksums are verified. Unknown current IDs are preserved
-  and shown with diagnostic identifiers; unnamed entries cannot be newly chosen.
-- New move choices fill base PP and reset PP Ups; selecting the existing move is
-  a no-op. Empty move slots clear PP and PP Ups. Learnset legality is not enforced.
-- IVs: 0–31 each. EVs: 0–255 each and 510 total. IV, EV, level/nature, money and
-  pocket changes apply separately; other pending drafts survive.
-- Level changes set the exact bundled experience threshold; an unchanged level
-  preserves experience progress. Nature override preserves PID. Current HP follows
-  native recalculation, including fainted Pokémon. Eggs cannot be stat-edited yet.
-- Shiny: uses Origin's native override, preserving PID, nature, gender, ability and
-  all identity-dependent data. Naturally shiny Pokémon cannot be made non-shiny;
-  that would require identity changes. Existing shiny state reapplied is a no-op.
-- Pokérus: None, Infected or Cured. Changing to Infected starts a one-day infection;
-  existing strain is kept, or strain 1 is used for a Pokémon with no strain. Cured
-  retains the strain with zero days. None clears it. Reapplying the current status
-  preserves existing duration/strain exactly, including unusual imported values.
-  Elapsed days since the last in-game save may cure an infection immediately on load.
-  Shiny and Pokérus apply independently and preserve other pending drafts.
-- Money: 0–9,999,999. TM/HM quantities: 1–99; other pockets: 1–999. Use Remove
-  to delete stacks. Duplicate and wrong-pocket items are rejected. Item obtainability
-  is not enforced, and the game's metadata includes placeholder entries.
-- TM/HM and berry insertion sorting matches the game. Removing a registered item
-  clears its shortcut. Key-item edits do not change story flags. Coins, Battle Points,
-  Apricorn-box counters and held mail contents are outside scope.
-- Equal-counter save mirrors can be inspected, but editing requires saving once
-  in-game first. Every edit entry point enforces this, including no-op writes.
-- Unrelated bytes, backup mirrors, counters and PC storage are preserved. Stat edits
-  also recalculate encrypted party stats. Apply/discard drafts before switching party
-  members or exporting edits. Export unchanged always returns the original bytes.
-- Importing an invalid or unreadable replacement preserves the current save,
-  applied edits and pending drafts. Only a fully validated replacement becomes
-  active; an older pending read cannot overwrite a newer selection.
-- Downloads are separate copies. Keep a backup before replacing a battery save.
-
-## Bundled reference data
-
-The user explicitly authorized a narrow exception to the repository's game-data
-rule: include the editor-required **English names and numeric metadata** for this
-version. ROMs, patches, sprites, dialogue and other game assets remain excluded.
-See `AGENTS.md` and `verification-reference.md` for the exact scope and checks.
-The developer ROM parser remains available for reproducible generation and parity
-verification; it is not imported by the browser application.
-
-Names retain the English build's in-game abbreviations. The bundle includes only
-species names, move names/properties, item names/pockets, base stats, form lookup
-and experience thresholds consumed by the editor, with schema/version/provenance.
-Refreshing reference data is an explicit developer action against a verified local
-English build, never a request made to the user at runtime.
-
-## Verification
-
-Run `npm --prefix work/save-editor run check` for all local gates, or `typecheck`,
-`lint` and `test` separately. Lint runs against handwritten TypeScript with actual
-type-aware ESLint rules; generated reference data is excluded from lint but remains
-compiler- and schema-tested. See `verification-typescript.md` for typed-error and
-import-session regression coverage, tool versions and current browser limits.
-
-See `verification-export.md` for the actual browser download → reopen → native
-game save/reset/reload check, and `verification-traits.md` for shiny/Pokérus checks. Run the complete automated suite using the command above. Synthetic tests cover
-save CRC/mirror selection, all Pokémon shuffle selectors, encrypted round trips,
-byte-preserving no-ops, mutation allowlists, independent drafts, stats, inventory,
-name selection and invalid inputs. `verification-reference.md` covers the bundled
-provider, deterministic generation, exhaustive local-ROM equivalence and the new
-save-only browser workflow. Earlier evidence remains in `verification-names.md`,
-`verification-inventory.md` and the `research-*.md` files; those historical milestones
-used locally selected ROMs and do not describe the current setup flow.
-
-Optional local fixture checks (output directory must be new and under ignored `local/`):
+## Run
 
 ```sh
-node work/save-editor/scripts/verify-local.mjs /path/to/saves work/save-editor/local/fixtures-new
-node work/save-editor/scripts/verify-stats-local.mjs /path/to/English.nds /path/to/saves work/save-editor/local/stats-new
-node work/save-editor/scripts/verify-inventory-local.mjs /path/to/English.nds /path/to/saves work/save-editor/local/inventory-new
+npm ci        # pinned development dependencies, no browser runtime dependencies
+npm start     # builds and serves on http://127.0.0.1:4180
+npm test
 ```
 
-The last two are developer comparisons with a local ROM. Existing native emulator
-checks verified edits surviving save/reset/reload in the English build. To repeat:
+Open http://127.0.0.1:4180. `PORT` overrides the loopback port. The server serves
+only the editor assets and compiled modules, never local fixtures, ROMs or the worker.
+All save-format code lives in [`../save-core`](../save-core/README.md), shared with
+the Python harness; `src/core/` supplies editor adapters and reference data. The build
+compiles the core first. Node is a development and harness runtime, not a browser backend.
+Pokémon and item images use the PokéAPI sprites repository; save data stays local.
+
+For standalone static hosting, include `index.html`, `styles.css`, `favicon.svg`,
+`assets/`, `dist/`, and the compiled core at `/save-core/dist/`.
+
+### GitHub Pages
+
+In the repository's **Settings → Pages**, set **Source** to **GitHub Actions**.
+The workflow in `.github/workflows/site.yml` typechecks and tests the editor, then
+builds and deploys the complete guide site on relevant pushes to `main`.
+You can also run it manually from the **Actions** tab.
+
+## Save selection and integrity
+
+- Raw 512 KiB `.sav` and DeSmuME `.dsv` containers are detected from content.
+  Export preserves the original container and `.dsv` footer.
+- The shared core selects a coherent general/storage generation from the same
+  mirror and counter, matching the verified native loader. Corrupt generations
+  fall back to an older coherent pair. It supports native counter rollover.
+- Equal-counter generations can be inspected, but editing (including no-op writes)
+  requires saving once in-game first. No independent mixed-mirror recovery is attempted.
+- Transactions validate all requested operations before returning any bytes.
+  The backup mirror, counters and unrelated bytes are preserved. Maintained inner
+  chunk CRCs and the changed blocks' outer CRCs are repaired.
+- Pokémon checksums and closed-record boundaries are checked. Unknown existing
+  values are preserved; editing does not enforce complete game legality.
+- Downloads are separate copies. Keep an original backup before replacing a save.
+
+## How abilities are stored (Origin-specific)
+
+Vanilla Gen IV keeps an 8-bit ability ID in block A. Origin has 326 abilities, so it stores:
+
+- **block B +0x1A (u16)**: the ability ID the game uses
+- **block A +0x0D (u8)**: which species slot it came from (0, 1, 2 = hidden)
+
+The editor writes both for a species ability. A custom ability writes only the ID and
+leaves the slot alone, so evolving may switch it back to the species' slot ability.
+This layout was confirmed against a real save (every party member's ID matched its
+species' ability for its stored slot). Behaviour in battle hasn't been checked in an emulator yet.
+
+## Adding a Pokémon
+
+A new party member is built from scratch, with trainer data copied from your first
+hatched party Pokémon: OT ID and name, language, origin game, met location and
+the party mail/capsule bytes. That way it counts as yours, not a traded Pokémon.
+You pick species, level, nature, ability slot, gender, shiny and random or perfect IVs.
+The personality value is chosen to match the nature and gender, and is never
+naturally shiny (shiny uses Origin's override flag). It starts with the last four
+moves it would know by level-up in Origin (from the ROM's learnsets), in a Poké Ball,
+with the species' base friendship. Removing a Pokémon shifts the rest up and
+blanks the freed slot exactly as the game does. Only base forms can be added.
+
+## Regenerating ROM data
+
+`src/core/generated-extras.ts` (ability names/descriptions, type names, per-species
+types, abilities, gender ratio, base friendship, level-up learnsets) comes from your own ROM:
 
 ```sh
-/path/to/poke/.venv/bin/python work/save-editor/scripts/verify-runtime.py \
-  --repo /path/to/poke --rom /path/to/English.nds \
-  --save work/save-editor/local/inventory-new/full_bag_6mons.sav \
-  --expect work/save-editor/local/inventory-new/full_bag_6mons.sav.moves.json \
-  --expect-inventory work/save-editor/local/inventory-new/full_bag_6mons.sav.inventory.json \
-  --out work/save-editor/local/runtime-new --persistence --timeout 480
+npm run gen:extras -- /path/to/Origin_HeartGold_v4.0.3_EN.nds
 ```
 
-Use only existing local ROMs/emulator tools. Native reports and saves stay ignored.
-Actual in-app browser downloads have been reopened in the editor and verified
-in the English game through save/reset/reload, with matching file hashes and
-preserved edits. The browser download-event observer can still time out after a
-successful download, so the page correctly reports “Download requested”. See
-`verification-export.md` for the artifact chain, repeatable procedure and limits.
+`generated-reference.ts` (species/move/item names, base stats, growth) is unchanged from the original editor.
 
-## Guide website
+Badge editing changes only the selected badge bit and repairs the active general block CRC. It preserves the backup mirror and does not change gym battle or story flags. Origin’s audited gym scripts use IDs 0–7 for Kanto and 8–15 for Johto; the badge rows are displayed as Kanto then Johto.
 
-The Astro guide exposes this same editor as a native Starlight page at
-`save-editor/`, using the guide's layout, controls and light/dark colors. It has
-no iframe or separate embedded document. See `verification-site.md` for the
-minimal site overlay, reproducible integration build and verification limits.
-This partial worktree does not contain a standalone copy of the entire guide.
+HGSS badge sprites are bundled in `assets/badges/` and embedded in `src/ui/badge-sprites.ts` so existing static servers can display them; see [asset credits](assets/badges/README.md). Pokémon and item sprites continue to load from PokéAPI.
+
+## PC storage format
+
+Origin expands the HGSS PC to 24 boxes: storage blocks at `0xF800` and `0x4F800`,
+size `0x18408`. Each box occupies `0x1000` bytes (30 encrypted 136-byte Pokémon
+plus 16 bytes of padding). Names follow at `+0x18008` (40 bytes per box).
+PC edits use the same coherent generation as party and trainer edits, validate the footer and CRC,
+set the edited box's modified flag at `+0x18004`, and repair the active storage CRC.
+General blocks, storage metadata and the backup storage mirror are preserved.
+The layout follows the HGSS [storage struct](https://github.com/pret/pokeheartgold/blob/master/include/pokemon_storage_system.h),
+with Origin's expanded count checked against the local save. Equal-counter ambiguous
+mirrors and corrupt storage are rejected. In-game loading has not been verified yet.
+
+The compact PC browser uses original Gen IV/HGSS wallpapers from [PKHeX](https://github.com/kwsch/PKHeX/tree/master/PKHeX.Drawing.Misc/Resources/img/box), embedded for offline use. It reads the wallpaper assigned to each box; names appear in tooltips and accessibility labels instead of beneath sprites. See `assets/wallpapers/README.md` for credits.
+
+The Bag view uses one pocket icon selector, a scrollable item list, and a selected-item panel for quantities and removal. Add items from the footer; bulk quantity changes apply only to the current pocket.
+
+## Guide integration
+
+This is the `sv` editor, served full-width at `/save-editor/` by `site/src/pages/save-editor/index.astro`. Astro bundles the editor TypeScript; build the shared core with `npm run build` before the guide build. The standalone build still works with `npm start`.
+
+The theme button switches between light and dark and remembers the choice locally. Initially it follows the system theme.
+
+Run `npm test` for typechecking and tests. The suite uses deterministic synthetic saves and runs in CI without private files. Set `OHG_SAVE_FIXTURE=/absolute/path/to/test.sav` to additionally exercise the existing party, PC and OT cases with a local save. Never commit save files. Mirror selection, equal-counter no-ops, rejected edits, cross-block atomicity, checksum preservation and asynchronous file selection have dedicated regression tests.
+
+Badge state is read from the active save's Origin-specific bytes at general `+0x80` and `+0x83`. It is never inferred from party levels, story progress, or previous files. Neighboring profile bytes do not affect badges. The theme control uses sun/moon icons with accessible labels and tooltips.
+
+## Selected species and bulk bag edits
+
+The species selector changes only the selected party or PC Pokémon, retains identity and training, uses the selected form, and preserves its level while recalculating stats. Custom nicknames, moves and abilities are retained. Eggs must hatch first.
+
+“Add all items ×999” maximizes existing stacks and adds missing named items until each pocket is full, without changing key items. TMs/HMs use the supported maximum of 99. The result reports items that do not fit. Undo reverses the whole action.
+
+The add and species selectors include all 16 Hisuian forms listed in the guide. They store the native base species plus form 1, and use form-specific stats, abilities and learnsets. Form mappings and base stats were checked against the local rc5 ROM. In-game loading of newly created Hisuian Pokémon remains unverified.
+
+The Pokémon header includes icon-only gender editing for party and PC Pokémon, limited to genders supported by the species. See FEATURE_COMPARISON.md for the comparison with Light Platinum and PKHeX.
+
+## Advanced tools
+
+The hero’s compact male/female toggle sits directly below the shiny button. The selected icon is highlighted and the other is dim. Always-visible bento cards contain nickname/flag, direct experience, friendship, OT gender and encounter/egg fields. The species picker includes 383 native forms, including the 16 Hisuian forms.
+
+PC tools move, copy or clone into free slots, fill free box slots with distinct PIDs, sort by species, maximize IVs/friendship and search across the loaded save. Individual file, Showdown, ribbon/marking and compatibility panels are hidden from the Pokémon UI. Trainer includes editable player profile and a Pokédex card with seen/caught progress and species status controls; Mystery Gift and the Save file card are hidden. The item reference is in Bag.
+
+Both inner chunk and main save checksums are repaired. Undo remains available for complete save operations. See FEATURE_COMPARISON.md for supported features and practical limits, and NATIVE_LAYOUT.md for format provenance. Compatibility findings are partial Origin checks, not a complete legality verdict. Native game loading remains to be verified.
+
+The Bag uses compact pocket cards and a scrollable inventory list. Selected-item price, held-effect, Fling and use metadata appear beside the quantity controls; there is no separate collapsed item-reference panel. The layout stacks on narrow screens.

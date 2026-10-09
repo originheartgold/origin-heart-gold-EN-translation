@@ -1,10 +1,12 @@
 # Origin HeartGold quest guide
 
-Side quests, puzzles and easy-to-miss events in Origin HeartGold (起源心金 v4.0.3), region by region in rough play order.
+Main quests, side quests, puzzles and easy-to-miss events in Origin HeartGold (起源心金 v4.0.3), region by region in rough play order.
 
 The quest instructions are based on the game's event scripts, maps, trainers and wild Pokémon tables, with specific audit findings noted beside the affected steps. Steps that were checked in an emulator say so; most others have not been played through. The English patch doesn't change what happens in quests, so what's described is how the original Chinese hack behaves. Directions are approximate, and steps marked "not confirmed in game" have not been checked by playing. The game starts in Pallet Town in Kanto. Johto opens up after you become Kanto Champion and finish the story scenes that follow (see [Pokémon League, Mt. Silver and New Bark Town](07-league-to-cherrygrove.md)).
 
 Several quests depend on your **starter** (Charmander, Pikachu or Bulbasaur), gender, the weekday, or earlier choices. Each entry says so in its title or under **Who gets it**. "Post-game" in this guide means after your **final** Hall of Fame entry; things that open after your first one say so.
+
+On the website, every entry has a **Main quest** or **Side quest** tag. Main quests cover story and badge progression, including conditional story routes and walkthroughs; side quests cover optional activities and rewards. **Post-game** tags mark entries that open only after the final Hall of Fame. Use **Quest type** and **Progress** at the top of each chapter to filter them alongside your starter, character and finished quests. Entries with both earlier and later steps stay visible before post-game; read their steps for the later unlocks. Your filters are remembered between chapters, and a quest you follow a direct link to always stays visible.
 
 The website also has [moves](/moves/), [abilities](/abilities/), [TMs and HMs](/tms/) and [items](/items/). Their evidence labels separate configured game data, in-game text, attributed author notes and specific gameplay tests. [Reference sources](/reference-sources/) explains coverage and conflicts; an author note or matching data does not prove an event can be reached.
 

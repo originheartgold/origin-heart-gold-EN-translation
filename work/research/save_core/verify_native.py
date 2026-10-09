@@ -169,7 +169,7 @@ def run_process(command, *, cwd, env, timeout, stdout, stderr):
 
 def reference_provenance(manifest):
     """Record the optional provenance gate separately from named native scenarios."""
-    source = ROOT / 'work/save-editor/src/generated-reference.ts'
+    source = ROOT / 'work/save-editor/src/core/generated-reference.ts'
     try:
         match = re.search(r'"romSha256"\s*:\s*"([0-9a-f]{64})"', source.read_text())
         expected = match.group(1) if match else None

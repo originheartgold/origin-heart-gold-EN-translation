@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { calculateStats, adjustCurrentHp, validateStatValues, experienceForLevel } from '../dist/stats.js';
+import { calculateStats, adjustCurrentHp, validateStatValues, experienceForLevel } from '../dist/core/stats.js';
 const values = value => ({hp:value, attack:value, defense:value, speed:value, spAttack:value, spDefense:value});
 
 test('IV and EV limits reject invalid numbers, missing fields and total over 510', () => {

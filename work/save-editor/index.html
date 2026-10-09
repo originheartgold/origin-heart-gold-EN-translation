@@ -1,66 +1,84 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#172e29" />
-    <title>Origin Save Editor</title>
-    <link rel="stylesheet" href="./src/style.css" />
-    <script type="module" src="./dist/app.js"></script>
-  </head>
-  <body>
-    <main class="workspace">
-      <header class="page-header">
-        <div class="eyebrow">POKÉMON ORIGIN HEARTGOLD <span class="badge">Prototype</span></div>
-        <h1>Your team.<br /><span>A little fine-tuning.</span></h1>
-        <p class="intro">Open your save, edit your party, money and bag, and download a new copy. Your original stays untouched.</p>
-      </header>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Origin HG Save Editor</title>
+  <meta name="description" content="Edit party, abilities, moves, stats and bag in Pokémon Origin HeartGold v4.0.3 save files. Runs entirely in your browser.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    try {
+      const saved = localStorage.getItem('ohg-editor-theme');
+      if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+    } catch {}
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="bar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.75 10h5.5M12.75 10h5.5" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+      <span>Origin HG</span><span class="brand-sub">save editor</span>
+    </div>
+    <div class="views seg" role="group" aria-label="Editor view" id="view-switch" hidden>
+      <button type="button" data-view="pokemon" aria-pressed="true">Party</button>
+      <button type="button" data-view="pc" aria-pressed="false">PC</button>
+      <button type="button" data-view="trainer" aria-pressed="false">Trainer</button>
+      <button type="button" data-view="bag" aria-pressed="false">Bag</button>
+    </div>
+    <div class="file-meta" id="file-meta" hidden></div>
+    <div class="bar-actions">
+      <button type="button" class="btn ghost" id="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg></button>
+      <button type="button" class="btn ghost desktop-only" id="undo" disabled title="Undo (⌘Z)">Undo</button>
+      <label class="btn" for="file-input">Open<span class="desktop-only">&nbsp;save</span></label>
+      <input type="file" id="file-input" accept=".sav,.dsv,application/octet-stream" hidden>
+      <button type="button" class="btn primary desktop-only" id="export" disabled>Export</button>
+    </div>
+  </header>
 
-      <section class="card import-card" aria-labelledby="import-heading">
-        <div>
-          <p class="step">01 / OPEN A SAVE</p>
-          <h2 id="import-heading">Bring your adventure</h2>
-          <p>For English Origin HeartGold v4.0.3. Choose a 512 KiB <code>.sav</code> file or a DeSmuME <code>.dsv</code> save.</p>
-        </div>
-        <div class="file-control">
-          <label for="file-input">Choose save file</label>
-          <input id="file-input" type="file" accept=".sav,.dsv" aria-describedby="local-note" />
-          <p id="local-note" class="small">Processed locally in your browser. No uploads or ROM needed.</p>
-        </div>
-      </section>
-
-      <div id="status" class="status" role="status" aria-live="polite">Ready when you are. Choose a save to get started.</div>
-      <section id="save-details" class="save-details" aria-label="Save details"></section>
-
-      <div class="team-layout">
-        <section class="card party-card" aria-labelledby="party-heading">
-          <p class="step">02 / PICK A POKÉMON</p>
-          <h2 id="party-heading">Your party</h2>
-          <div id="party-list" class="party-list"><p class="empty-state">Your party will appear here after you open a save.</p></div>
-        </section>
-        <section class="card editor-card" aria-labelledby="editor-heading">
-          <p class="step">03 / MAKE IT YOURS</p>
-          <h2 id="editor-heading">Pokémon editor</h2>
-          <div id="editor"><p class="empty-state">Select a party member to inspect and edit its moves, stats, shiny state and Pokérus.</p></div>
-        </section>
+  <main id="app">
+    <section class="drop" id="drop">
+      <div class="drop-inner">
+        <p class="drop-title">Drop your <code>.sav</code> or <code>.dsv</code> here</p>
+        <p class="drop-sub">English Origin HeartGold v4.0.3. The file never leaves this tab.</p>
+        <label class="btn primary" for="file-input">Choose file</label>
       </div>
+    </section>
+  </main>
 
-      <section class="card inventory-card" aria-labelledby="inventory-heading">
-        <h2 id="inventory-heading">Money and bag</h2>
-        <div id="inventory-editor"><p class="empty-state">Open a save to inspect money and inventory.</p></div>
-      </section>
+  <nav class="dock" id="dock" aria-label="Editor" hidden>
+    <button type="button" data-view="pokemon" aria-pressed="true">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2.75 10h4.5M12.75 10h4.5" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2.25" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+      <span>Party</span>
+    </button>
+    <button type="button" data-view="pc" aria-pressed="false">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 13v4M6 17h8" stroke="currentColor" stroke-width="1.5"/></svg><span>PC</span>
+    </button>
+    <button type="button" data-view="trainer" aria-pressed="false">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="4.5" width="14" height="11" rx="1.75" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="7.75" cy="9" r="1.75" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 13.25c.5-1.3 1.5-2 2.75-2s2.25.7 2.75 2M12 8.5h3M12 11.25h2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span>Trainer</span>
+    </button>
+    <button type="button" data-view="bag" aria-pressed="false">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 7.25h11l-.8 8.6a1 1 0 0 1-1 .9H6.3a1 1 0 0 1-1-.9z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7.25 7.25V6a2.75 2.75 0 0 1 5.5 0v1.25" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+      <span>Bag</span>
+    </button>
+    <span class="dock-sep" aria-hidden="true"></span>
+    <button type="button" id="dock-undo" disabled aria-label="Undo">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 5 4 8.5 7.5 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 8.5h7a4 4 0 0 1 0 8H9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span>Undo</span>
+    </button>
+    <button type="button" id="dock-export" class="dock-primary">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3.5v9M6.5 9 10 12.5 13.5 9M4 15.5h12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Export</span>
+    </button>
+  </nav>
 
-      <section class="card export-card" aria-labelledby="export-heading">
-        <div>
-          <h2 id="export-heading">Ready to head back?</h2>
-          <p>Keep a backup of your save before trying the edited copy in-game.</p>
-        </div>
-        <div class="actions">
-          <button id="export-original" class="secondary" type="button" disabled>Export unchanged</button>
-          <button id="export-edited" class="primary" type="button" disabled>Download edited save</button>
-        </div>
-      </section>
-      <footer><strong>A focused first step.</strong> Edit party moves, level, nature, IVs, EVs, shiny state, Pokérus, money and bag items. PC boxes, story and quest progress editing are outside its scope.</footer>
-    </main>
-  </body>
+  <dialog class="sheet" id="add-dialog" aria-labelledby="add-title"></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="dist/ui/app.js"></script>
+</body>
 </html>

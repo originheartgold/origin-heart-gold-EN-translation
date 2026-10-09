@@ -16,7 +16,28 @@ class Architecture(unittest.TestCase):
             with self.subTest(name=name):
                 self.assertEqual(A.editor_violations("/* documentation */\n" + expected, name), [])
                 self.assertTrue(A.editor_violations(expected + "\nfunction crc16(data) { return 0; }", name))
-                self.assertTrue(A.editor_violations(expected.replace("../../save-core/dist/", "./local/"), name))
+                self.assertTrue(A.editor_violations(expected.replace("../../../save-core/dist/", "./local/"), name))
+
+    def test_editor_scan_tracks_moved_modules_and_rejects_stale_graph(self):
+        with tempfile.TemporaryDirectory() as td:
+            source = Path(td) / "src"
+            core = source / "core"
+            core.mkdir(parents=True)
+            for name, expected in A.EDITOR_REEXPORTS.items():
+                (core / f"{name}.ts").write_text(expected)
+            self.assertEqual(A.scan_editor(core), [])
+            # A duplicate codec in the previous entry point cannot hide behind
+            # correct new wrappers: a consumer might still import this old path.
+            (source / "pokemon.ts").write_text("export function decrypt() {}")
+            self.assertTrue(any("legacy module" in row for row in A.scan_editor(core)))
+            (source / "pokemon.ts").unlink()
+            # The new binary editors are subject to the same single-source rule.
+            (core / "trainer.ts").write_text("export function patchTrainer() {}")
+            self.assertTrue(any("src/core/trainer.ts" in row for row in A.scan_editor(core)))
+            (core / "trainer.ts").write_text(A.EDITOR_REEXPORTS["trainer"])
+            (core / "save.ts").unlink()
+            self.assertTrue(any("src/core/save.ts: shared-core compatibility module is missing" in row
+                                for row in A.scan_editor(core)))
 
     def test_reintroduced_crypto_caught_in_new_harness_module(self):
         with tempfile.TemporaryDirectory() as td:

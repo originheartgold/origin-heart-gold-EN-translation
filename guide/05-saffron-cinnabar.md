@@ -45,6 +45,7 @@
 
 
 ## Saffron Gym: Sabrina's willpower test and the pocket dimension (before the takeover)
+<!-- quest: kind=main -->
 
 **Where:** Sabrina at the back of the Saffron Gym. She's only there **after President Goodshow's meeting at Silph Co.** From the Mt. Moon Square scene until that meeting she's away, and the test can't start.
 
@@ -62,6 +63,7 @@
 *Source:* script files 826 (script 1 L752, L1257, L1294, L1420; teleport `Warp 405` to 52,40 at L1315/L1485), 830 (script 2, L410, L745, L939; flags 1097/1100, 1588), 838 (script 11, flag 2329). Sabrina's hide flag 1097 is set in the Mt. Moon Square scene (file 9 @5554) and cleared at the Goodshow meeting (file 795 @992); she leaves again at file 830 @923/@1250. Positions: Sabrina ≈15,13 in the Gym; pocket dimension (zone 405) landing 52,40, house door ≈75,82, Mind Plate ≈62,74, Gym door 80,44; caretaker ≈40,5 in the Mr. Psychic house map.
 
 ## Saffron City: Cynthia and Steven (after the League President's meeting)
+<!-- quest: kind=side -->
 
 **Where:** **Cynthia** with her Gabite just inside the Saffron Gym entrance. **Steven** with his Metang in the Silph Co. lobby, a couple of steps north of the entrance.
 
@@ -79,6 +81,7 @@
 *Source:* script files 826 (script 7, L1080; flag 1625), 834 (script 17, L2178, L3824; flag 1624); both are hidden by flag 1089, cleared at the Goodshow meeting (file 795 L988). Positions: Cynthia ≈16,24 in the Gym; Steven ≈11,12 in the Silph Co. lobby.
 
 ## Saffron City: the Copycat's transformation show
+<!-- quest: kind=side -->
 
 **Where:** the pink house (the Copycat's house) in the middle of Saffron, on the same row as the Poké Mart, about 20 steps west of it. Her two friends wait just outside it. A magician stands about a dozen steps east of the Poké Mart door.
 
@@ -99,6 +102,7 @@
 *Source:* script files 824 (scripts 4, 6, 27, 34; L2831, L3802, L4665, L6981), 837 (scripts 1, 4, 5; L391, L472, L528, L559, L1038, L1779), 831 (script 13, flag 1874); var 0x40c2 (1 → 5). The outside magician's hide flag 1424 is cleared on first entering Saffron (file 189 @107), set by the takeover (file 17 @12081) and cleared by the liberation only while flag 1518 is set (file 834 @6029 → L6052; 1518 is also the inside magician's hide flag, cleared when he moves in, 824 @6989). 1518 is otherwise set only by the S.S. Anne party battle with Ace Trainer Emily (file 156 @2017), which the waiter requires before the hijack (156 L1646), so it is set in normal play. Emulator (`work/build/harness/guide-review-20261006/ch05/magician.py`, CN ROM; the 1518-clear case also on the EN build; liberation tail run from 834 @6000 with 1424 set and var 0x40c2 = 2): 1518 set → 1424 cleared, magician (object 3) in Saffron; 1518 clear → he stays hidden and the inside magician only says 532#8. Positions: house door ≈1297,218, friends ≈1296–1297,223, magician ≈1330,219; inside the house the girl ≈40,7, magician later ≈42,7, father ≈5,7; station item ball ≈20,18.
 
 ## Saffron City: show the dog lover a Growlithe (unlocks Fire Punch)
+<!-- quest: kind=side -->
 
 **Where:** a girl on Saffron's east side, about 10 steps north of the Route 8 gate.
 
@@ -111,6 +115,7 @@
 *Source:* script file 824 (script 18, L3045, flag 1474). Position ≈1333,230.
 
 ## Saffron City: the Hunyuan Dojo (beat the disciples → Hitmonlee or Hitmonchan)
+<!-- quest: kind=side -->
 
 **Where:** the Hunyuan Dojo, the building just west of the Gym on Saffron's north side. Ma Baoguo stands at the top of the hall, between two Poké Balls.
 
@@ -132,6 +137,7 @@
 *Source:* script file 829 (scripts 1, 5, 11, 12, 14–18; flags 1652, 1664–1667, 1698, 1875/1876; the intro is a step trigger at var 0x40c1 = 0, which the scene, the takeover start (file 17 @12105) and the liberation (file 834 @5988) all set to 1; the disciples only check flag 1666, set by talking to Ma (L1086); lesson menu L1094 → L3025, the extra option at L3248 needs flag 1166 (Saffron freed), Volt Switch L3353 (≤ 3 moves → L6363 `SetMonMove` 268 Charge; 4 moves → @4437 521 Volt Switch, D-1347), Counter L3522, speech L3691). Positions: Dojo door ≈1321,204; Ma ≈7,3; Tina ≈3,5, Lincoln ≈3,8, Tim ≈11,5, Enzo ≈11,8.
 
 ## Saffron City (takeover): help Ma Baoguo fight off Team Rocket
+<!-- quest: kind=side -->
 
 **Where:** right outside the Hunyuan Dojo door while Team Rocket occupies Saffron. A Rocket Grunt is picking on Ma Baoguo.
 
@@ -142,6 +148,7 @@
 *Source:* script file 824 (scripts 37, 38; L3430, L4262–L4466, L6942; flag 1760). The resident's line is script 24 (L3237), which only checks that Saffron has been freed (flag 1166). Position ≈1321,205.
 
 ## Rotom's Room (Silph Co.): change Rotom's form
+<!-- quest: kind=side -->
 
 **Where:** Rotom's Room, Silph Co.'s server room, reached by the Silph Co. elevator.
 
@@ -152,6 +159,7 @@
 *Source:* script file 835 (scripts 2–8, L617, L1352, L2632). Takeover objects (flag 1208): Lawrence trainer 500 at ≈7,4, Grunt trainer 501 at ≈10,11, talk-to Grunts (trainers 626–629, scripts 13–16 → L906/L953/L1000/L1047) at 3,7, 5,6, 9,6, 11,6; floor panel trigger at 13,11.
 
 ## Saffron City: small extras
+<!-- quest: kind=side -->
 
 - **Choice items (after the Plain Badge):** a merchant just north of the Route 6 gate (Saffron's south exit) sells the **Choice Scarf**, **Choice Specs** and **Choice Band** for **$50,000** each. Before the Plain Badge he has no stock.
 - **Mr. Psychic's house** (south-east Saffron, west of the Route 8 gate): the psychic inside makes a Pokémon remember a move for **one Heart Scale** each time. For a repeatable supply, [trade Big Pearls in Lavender Town](03-vermilion-to-celadon.md#lavender-town-trade-big-pearls-for-heart-scales).
@@ -161,6 +169,7 @@
 *Source:* script files 824 (script 8, L2891: Choice merchant at ≈1300,249), 826 (script 11: takeover Trainer at ≈14,24; rematch L699, L722, L1544–L1587, flag 2404; the Friday absence, script 5 L699, checks flag 2261 and weekday 5), 830 (script 1: psychic at ≈8,5).
 
 ## Route 19: the surfing Pikachu (Pidgeot lead → Surf for Pikachu)
+<!-- quest: kind=side -->
 
 **Where:** Route 19, south of the Fuchsia gatehouse. A kid with a Pikachu stands on the beach about 15 steps south of the gatehouse exit. The "little beach at the south end" is far down the route, reached by Surf.
 
@@ -177,6 +186,7 @@
 *Source:* script file 954 (scripts 4, 8; L354, L502, L1175; flags 1210, 1211; var 0x40ae), 955 (gatehouse); file 853 L3174 closes the route, file 806 L1977–L1993 reopens it. Positions: kid ≈1203,468; south beach ≈1208–1210,505; trigger tile ≈1208,506; kid afterwards ≈1210,505; TM12 ≈1210,507.
 
 ## Route 21: break the wild Mr. Mime's barrier (unlocks Iron Head)
+<!-- quest: kind=side -->
 
 **Where:** the northern part of Route 21, the stretch south of Pallet Town, about a third of the way down: a Trainer and his Lairon standing next to a wild Mr. Mime.
 
@@ -191,6 +201,7 @@
 *Source:* script file 957 (scripts 4–6; L583, L695, L551; flags 770, 771; only a loss, `CheckBattleWon` = 0, skips `SetFlag 771`); file 114 also sets 771 (@320, @646), but only in the Celebi time-travel version of the hermit scene (script 2, trainer 700), not in the ordinary TM52 battle (script 5, trainer 275). Positions: Trainer ≈1038,439, Lairon ≈1039,439, Mr. Mime ≈1040,439.
 
 ## Cinnabar Island: finding the hidden Gym (the riddle restaurant)
+<!-- quest: kind=main -->
 
 **Where:** Cinnabar Island. There's no Gym building: the "restaurant that won't serve out-of-town visitors" is the Gym in disguise. Its door is on the east side of the island, a few steps north-east of the old man with the Fire-type quiz. (The side door on the west, just north of the Pokémon Center, leads into a separate room of the same building, the fossil scientist's, not the restaurant.)
 
@@ -210,6 +221,7 @@
 *Source:* script files 905 (scripts 1, 3; L1264–L3716; flags 1213, 1214, 1216, 1217, 1222), 812 (script 1, flag 1213), 15 (L1303–L1695). File 806 L1999–L2011 sets the starting flags. The riddles start from Blue (object 13, script 1, at ≈38,4); the owner at ≈38,3 has no talk script. Positions: restaurant door ≈1048,499 (leads to the restaurant entrance at 37,10); side door ≈1029,493 (leads to the fossil room entrance at 4,8, warp data of zones 57/412); waiter ≈39,3 or ≈41,5 depending on the scene; lab door ≈1037,484; man outside ≈1043,497; secret door ≈39,3.
 
 ## Cinnabar Island: the Detrick lab lockdown (door puzzle) and Mewtwo
+<!-- quest: kind=main -->
 
 **Where:** the lab in the north of the island.
 
@@ -243,6 +255,7 @@
 *Source:* script files 812 (script 8, L3032–L5081; flags 1215, 1223), 852 (scripts 3–9, 12; L541–L2902 doors, flags 315 and 317–320; L717–L2634 Mewtwo, flag 316; L2935–L3108 Mew, needs var 0x409c = 10), 15 L1669 (Gym sets 1223). The back-room trigger (script 9) needs var 0x40AF = 0 and the scene sets it to 1 (@2626); Sabrina's Tower trial needs 0x40AF ≠ 0 (file 17 L3237). After the S.S. Anne hijack (file 156 @6600 sets 0) nothing else in Kanto before the Tower sets it (all writes scanned: the other setters are the Viridian Forest scene before the ship, the Viridian City and Victory Road triggers that need 1 or 2, Johto, Sevii and post-game scenes), so the lab scene always comes before the Tower, and Granny Mae's trial (file 782 @5360 sets 1) can't come first. Computers and the doors they toggle (lab map zone 71): 15,3 → 1F door ≈3,11 (flag 315); 5,36 → east door ≈26,55 (317); 13,36 → west door ≈4,55 (318); 29,66 → ≈4,55 and ≈4,73 (318, 320); 10,59 → ≈26,55 and ≈7,64 (317, 319). Manual ≈23,60; stairs arrive at 5,38; back-room trigger ≈4,90; R&D log ≈25,87; Old Amber ≈29,94, Gracidea ≈2,67, Steel Armor ≈30,86. Route: a collision search over all 32 door combinations reaches ≈4,90 only with ≈3,11, ≈4,55, ≈7,64 and ≈4,73 open.
 
 ## Cinnabar Island: the Fire-type quiz (unlocks Heat Wave)
+<!-- quest: kind=side -->
 
 **Where:** an old man in the middle of the east side of the island, a few steps south-west of the restaurant door.
 
@@ -262,6 +275,7 @@
 *Source:* script file 812 (script 19, L3741–L4118; flag 1627; tutor L3572). Position ≈1044,501.
 
 ## Cinnabar Island: the Egg in the lava (Treecko Egg; missable)
+<!-- quest: kind=side -->
 
 **Where:** a man at the lava's edge in the north-east of the island, east of the lab, with an Egg lying right beside him.
 
@@ -280,6 +294,7 @@
 *Source:* script file 812 (scripts 20, 21; L4126, L4440, L7443–L7692, L4580; flags 1224, 1757); file 196 L1642–L1650 (Power Plant, sets 1757 and 1224). Positions: man ≈1048,489, Egg ≈1049,489. The Egg's own script has no scene check, but its other neighbours (1049,488, 1050,489, 1049,490) are blocked, and the man (flag 1757) is only removed at the end of the scene (L7674).
 
 ## Cinnabar Island: small extras
+<!-- quest: kind=side -->
 
 - **S.S. Anne painter (with a Smeargle, south-west of the lab door):** thanks you for saving the S.S. Anne and gives **5 King's Rocks** (once). He's only there if the ship didn't sink ([S.S. Anne: defuse the bomb](03-vermilion-to-celadon.md#ss-anne-defuse-the-bomb-or-the-ship-sinks-one-chance)), or after [the Celebi trip at the Ilex Forest shrine](09-ilex-goldenrod.md#forest-of-time-celebi-takes-you-back-to-the-ss-anne-post-game-only-if-the-ship-sank) has undone the sinking.
 - **Sailor Leroy (just south-west of the Pokémon Center door):** can't find the Cinnabar Gym and challenges you instead. Kingler, Drapion and Kecleon, all Lv. 58. Win for a **Flame Plate** (once).
@@ -290,6 +305,7 @@
 *Source:* script files 812 (scripts 12–14; L3242–L3548; flags 1584, 1742, 1747, 1748; the graffiti flag 1742 is set before the battle, @3390, and a loss whites you out, hack finding D-1420), 813 (script 6, flag 1586), 905 (script 14). The painter's hide flag 1093 is set by the sinking (file 157 @2852) and cleared only by the Celebi trip (file 52 @4858). Positions: painter ≈1032,489; Leroy ≈1028,508; couple ≈1034,502; Pokémon Center man ≈10,7; fossil scientist ≈4,4 (side door ≈1029,493).
 
 ## Seafoam Islands: the ice walls, Articuno and the researcher (TM14 Blizzard)
+<!-- quest: kind=side -->
 
 **Where:** the deepest chamber of the Seafoam Islands (reached from B4F). A researcher stands just inside the entrance. Further north, three ice blocks close the passage, and Articuno sits a few steps behind them.
 
@@ -307,6 +323,7 @@
 *Source:* script file 195 (scripts 2, 3, 10; L2007–L2128 ice, flag 1500; L2289–L2996 researcher, flag 1483; L2672 wild Articuno, flag 1368; tutor L2453–L2921; the no-Ball/catch split checks flag 2261 at L297, set only by the final Hall of Fame, file 822 @2458, not by the first entry, flag 2404). The Team Rocket scene hides Articuno (`HidePerson`, flag 1368, @957; permanent, see the engine note in the errata); only Lance’s visit clears 1368 (file 842 L2177, needs 2261). File 175 L1145 (Route 3 Ralts scene, script 16) also sets 1368 but is never triggered (hack finding D-1423); file 115 L5744 is the early Viridian Forest Eevee rescue (hack finding D-1422 for the missable TM14). Positions: researcher ≈33,54; ice ≈32–34,38; Articuno ≈33,33.
 
 ## Seafoam Islands: Team Rocket and Kyogre (League HQ investigation), and catching Kyogre
+<!-- quest: kind=main -->
 
 **Where:** the same deep chamber. A Blue Orb pedestal lies at the far north end, past Articuno's spot.
 
@@ -322,6 +339,7 @@
 *Source:* script file 195 (script 12, step trigger at 34,52 while var 0x408c = 14; the Cerulean Gym scene sets 14 and clears the scene objects' hide flag 1133, file 758 @6368/@6372; the scene sets 1133 and 0x408c = 15 at its end, @1846/@1854, and hides Articuno, @957, before the second Multi Battle; script 14 L2410–L2889, flag 2288); files 758 L6356–L6372 (Cerulean Gym starts it), 842 L1916 (Lance gives the Blue Orb). Second Multi Battle Grunt is trainer 417. Pedestal ≈33,20. The post-game Articuno (L2672) and Kyogre (@2851) are `WildBattle` + `CheckBattleWon`; only a loss (→ L2283, white-out) keeps them, and running away counts as a win, as the emulator showed for other scripted wild battles (Electrode, Scyther, Groudon, Suicune).
 
 ## Cinnabar Island: Lawrence and Moltres (League HQ investigation), and catching Moltres
+<!-- quest: kind=main -->
 
 **Where:** the lava's edge in the north-east of the island, east of the lab (the row of "The lava's right up ahead" signs).
 
@@ -334,12 +352,14 @@
 *Source:* script file 812 (script 6, L2999, L4731, L7711, L7890, flag 1517; L889 checks flag 2261; script 23 L2045–L2868, flag 1125; the trigger fires at var 0x4078 = 4 and never checks flag 1517; the var is set to 5 only after a win, @4698); file 822 L2474 clears 1517 once, in the final Hall of Fame block that also sets 2261 (L2450–L2582), and no later entry touches it; file 196 L1654 clears 1125. Positions: lava edge signs ≈1046–1049,488 (Moltres at ≈1048,488); chain trigger ≈1048,493.
 
 ## Cinnabar Gym: Blaine rematch (after your first Hall of Fame)
+<!-- quest: kind=side -->
 
 After your first Hall of Fame entry, talk to Blaine in the Gym for a rematch: choose a single or a double battle (a double needs two Pokémon). Repeatable. On Thursdays after your final Hall of Fame entry (the one after you beat Giovanni at League HQ), he's outside instead, a few steps east of the Pokémon Center door, offering a souvenir photo.
 
 *Source:* script files 15 (L873, L1140–L1811, L808; flag 2404; the Thursday swap needs flag 2261, script 10 → L808), 812 (script 22, L4708, gated by flag 2261 at L2920). Photo spot ≈1035,505.
 
 ## Route 42 gatehouse (Ecruteak side): the tourist crowd
+<!-- quest: kind=main -->
 
 **Where:** the gatehouse between Ecruteak City and Route 42.
 
@@ -352,6 +372,7 @@ After your first Hall of Fame entry, talk to Blaine in the Gym for a rematch: ch
 *Source:* script file 253 (objects 1–4 hidden by flag 2116), file 260 L4455 (Route 47 sets 2116).
 
 ## Two Island: the old captain's Water-type quiz (→ Piplup)
+<!-- quest: kind=side -->
 
 **Where:** the old sea captain with an Empoleon, standing by a sign just north of the Two Island market.
 
@@ -374,6 +395,7 @@ After your first Hall of Fame entry, talk to Blaine in the Gym for a rematch: ch
 *Source:* script file 734 (script 1, L905–L2484; flags 1119, 1646; answers are judged only after question 5, L2092–L2484). Position ≈113,123.
 
 ## Two Island: a partner for Granny Mae's trial
+<!-- quest: kind=main -->
 
 **Where:** a Trainer from Johto standing a few steps south of the north-east Islander's House door, north of the market.
 
@@ -386,6 +408,7 @@ After your first Hall of Fame entry, talk to Blaine in the Gym for a rematch: ch
 *Source:* script file 734 (script 3, L1508/L2497–L2962; var 0x40b0 = 2, flag 1105), file 782 (sets 0x40b0). Position ≈118,112 (house door ≈116,107).
 
 ## Two Island: small extras
+<!-- quest: kind=side -->
 
 - **Barter stall** (in the market, the stall keeper with a Spinda), repeatable: 2 Revival Herbs → Sacred Ash, 2 Hyper Potions → Max Elixir, 2 Moon Stones → Shed Shell, 2 Premier Balls → **Cherish Ball**.
 - **Four Island treasure seller** (south end of the market, with a Trapinch): Rare Bone $6,000, and Shiny Stone, Dusk Stone and Hard Stone at $2,000 each. You can buy them again.
@@ -394,6 +417,7 @@ After your first Hall of Fame entry, talk to Blaine in the Gym for a rematch: ch
 *Source:* script file 734 (scripts 5, 6, 8; the passenger's hide flag 1093 is set by the sinking, file 157 @2852, and cleared only by the Celebi trip, file 52 @4858; flag 1634). Positions: barter stall ≈105,135; treasure seller ≈119,141; passenger ≈103,111 (house door ≈99,113).
 
 ## Three Island: the Alto Mare Bikers (save the Meowth?)
+<!-- quest: kind=side -->
 
 **Where:** Three Island. Two bikers block the north entrance. More bikers stand outside the gang's house (the Islander's House on the north side, a biker guarding its door), and one biker is picking on a stray Meowth a few steps north-west of them.
 
@@ -417,6 +441,7 @@ After your first Hall of Fame entry, talk to Blaine in the Gym for a rematch: ch
 *Source:* script file 735 (scripts 5–8, 12, 13; L2992–L7248; flags 2013, 2014, 2018, 2021, 1109; var 0x4097 checks 6/7; "Help Team Rocket?" at @1992: choice 1 (No) jumps to L5268, Yes falls through to `TrainerBattle 654` at @2068; no-Rocket route doubles 650+651, then 654+653 at @5056), files 249 L5025 (Gold's Route 39 battle scene: clears 1109 and 2022 when flag 1663 is clear), 889 (script 6, the One Island Pokémon Center man, hide flag 2022, which file 826 @948 sets when you first sail to the islands; sets 2021 when you agree; the other asker, file 894 script 16, is placed on no map), 879 (Shipyard Ruins). The no-Rocket route (735 @1184 with 1109 set → L4776) can't play: the quest only starts after the scene that clears 1109, and the next setter, the Dragon's Den clear (file 112 @4887–@4891), also hides the bikers (flags 2013, 2014, 2018) and the asker (2022, @4859). Entrance guards are trainers 648/649. Bridge biker: coord script 11 at ≈180,123 on var 0x4097 = 2 (emulator CN+EN, see the Big Sis entry's source). Positions: guards ≈178,99–100; house bikers ≈173–174,111; house door ≈180,108; cat catcher ≈172,107; rebuild man ≈175,109. Rebuild man: hide flag 2020, cleared only by the Shipyard Ruins gauntlet win (file 879 L2428) and set again by the Dragon's Den clear (file 112 L4867); Protector (item 321) at file 735 L7006.
 
 ## Three Island → Six Island: the lost daughter (Three Island's pilgrimage trial)
+<!-- quest: kind=main -->
 
 **Where:** a tourist father on Three Island's south side, a few steps south-east of the Shipyard Ruins entrance. His 5-year-old daughter is in the **Island Forest** on Six Island.
 
@@ -433,6 +458,7 @@ After your first Hall of Fame entry, talk to Blaine in the Gym for a rematch: ch
 *Source:* script file 735 (script 17, L7060–L7082; var 0x40b3 = 3, flag 2190), file 55 (script 16, step trigger at 42,36; Hypno `WildBattle` Lv. 30 at @953, only a loss branches away; sets 0x40b3 = 4), file 782 L6007–L6046 (the chief). The father's hide flag 2017 is set when you first sail to the islands (file 826 @991) and cleared only by the Dragon's Den clear (file 112 @4899). Positions: father ≈174,144 (Shipyard Ruins door ≈169,140); girl ≈35,35.
 
 ## Island Forest (Six Island): before the Lucky Meowth God
+<!-- quest: kind=side -->
 
 The Island Forest changes for good only if you let Jessie, James and Meowth stay on Six Island and then walk into the forest ([Six Island: Deoxys and the Lucky Meowth God](06-sevii-islands-indigo.md#six-island-deoxys-and-the-lucky-meowth-god-post-game)). **Do these first:** after that, the people below stay where they are, but they switch to other lines and their quests can no longer be done. A Spoils you haven't returned stays in your Bag. The statue attendant moves next to the statue and stops charging.
 
@@ -454,6 +480,7 @@ The forest has two entrances from Six Island: a wide one on the west side and on
 *Source:* script file 55 (scripts 3, 6, 8, 11, 14; L1488–L3094; flags 2191–2194, 2300; romance flags 2141–2145, 2153–2157; the quest lines check flag 2180, cleared by file 55 @1295 together with `SetFlag 2182`), file 249 L4198 (sets 2180), file 898 (sets 2300 on your first talk with the Dream World old man, @59; file 251 @1283 sets it on arrival if he isn't there). George, Brown, the crying girl and the pond girl have no hide flag; only the attendant at ≈86,70 is hidden (flag 2182); a second copy beside the statue (flag 2180) appears instead (L2043). Paying George sets no flag (L1488); a win sets 2191. Positions: George ≈75,37; Brown ≈42,50; crying girl ≈34,60; pond girl ≈64,46; attendant ≈86,70; west entrance ≈33,50–52, east entrance ≈90,58.
 
 ## Island Cave (Four Island): Crystal Onix and Granny Lisa
+<!-- quest: kind=side -->
 
 **Where:** the Stone Workshop on Four Island (the craftsman, Islander's House) and a hidden part of the **Island Cave**, reached through the passage in its north-west corner.
 
@@ -476,6 +503,7 @@ The forest has two entrances from Six Island: a wide one on the west side and on
 *Source:* script file 24 (scripts 1–5; L1116–L1803; var 0x409a 7→8/9→10→11; flags 2912, 2913; `WildBattle` 2143 = Onix form 1 at Lv. 40), file 737 (script 1 L178/L1463: the craftsman sets 0x409a = 7 and 10; nothing checks pilgrimage progress). The secret prompt is a Yes/No at file 24 @1355 (Yes → L1742). Positions: passage ≈4,12 (man ≈5,12) warps to ≈59,112; Lisa's trigger ≈49,109; Onix ≈50,104. Tested in an emulator (CN and EN): at var 0x409a = 6 the man (≈5,12) stops you at the passage; at 7 the on-resume script (L978) moves him away. Reached by a direct warp at var 6, Lisa, the Onix and the craftsman are all there: talking to Lisa skips her battle and the Star Piece (script 5 → L1520), talking to the craftsman gives the Shiny Stone and sets var 11 (L1456); the man prevents this in normal play. Evidence: work/build/harness/guide-review-20261006/ch05/fork/.
 
 ## Island Cave: small extras
+<!-- quest: kind=side -->
 
 - **Breeder Holly**, just south-east of the Sky Pillar Peak exit. Before you join the Island Pilgrimage on Seven Island, and again after you complete it, she heals your party for free. During the pilgrimage she offers a battle and fully heals you if you win; after the Team Rocket scene at Sky Pillar Peak (until the pilgrimage is over) she only says that Team Rocket wrecked the pilgrimage (no battle, no heal).
 - Ruin Maniac Jules (he dug up stones and his Pokémon evolved), Hiker Everest ("You came to climb too, right?") and the other Island Cave climbers: optional battles, no reward.
@@ -483,6 +511,7 @@ The forest has two entrances from Six Island: a wide one on the west side and on
 *Source:* script file 24 (scripts 7, 9, 12, 14). Holly (≈18,105, Sky Pillar Peak door ≈16,101): script 7 heals for free if flag 1529 is set (flag 1529 = no pilgrimage in progress: set by the forced S.S. Anne Grunt battle, file 162 @2362, cleared on joining at Seven Island, file 870 @1431, set again on completing it, file 870 @2494; files 231 and 249 also set it); with 1529 clear she offers trainer 849 and heals after a win (L1816–L1898) while var 0x409e < 3, and says only line 33 once 0x409e ≥ 3 (set at Sky Pillar Peak, file 914 @1322). Jules is trainer 850 at ≈44,29; Everest is trainer 852 at ≈28,44.
 
 ## Five Island: the Island Pilgrimage leg (Five Island trials)
+<!-- quest: kind=main -->
 
 **Where:** Five Island (the monks' island). The trials run in a fixed order along the island.
 
@@ -501,6 +530,7 @@ The forest has two entrances from Six Island: a wide one on the west side and on
 *Source:* script file 58 (scripts 22–30, L2816–L3257, L3343–L5399, L6480–L7798; var 0x409c 4→3→5→6→7→8, 9→10), file 737 L4442–L4517 (Elder sets 0x409c = 9; "Five years ago" and the Mew story are the Elder's lines 443#65/66, not the disciple's). Positions: south-entrance monk ≈94,84; east-path monk ≈122,62; snowy-mountain monks ≈94,48 and ≈82,57; disciple ≈79,47; Elder's hut door ≈118,42.
 
 ## Five Island: the four-leaf clover (speak up for him)
+<!-- quest: kind=side -->
 
 **Where:** a clover hunter by a tree on the east side of the island (south-west of the east-path monk), and a Trainer with a sick Pokémon, about 12 steps east of the south-entrance monk.
 
@@ -517,6 +547,7 @@ The forest has two entrances from Six Island: a wide one on the west side and on
 *Source:* script file 58 (scripts 14, 15; L2075–L4431, L5768–L7750; flags 1228, 1973). The scene needs flag 1228 clear (also the sick Trainer's hide flag; with 1228 set the hunter says line 70 while 1604 is clear, line 69 once it's set); the Viridian Gym Virtue examiner sets it (file 741 @1226). The monk scene (file 737 script 9 → L1756, runs while flag 1604 is clear) clears 1228 at @3408 and sets 1604. Caveat: 1604 is also set in the National Park (file 25 @2668) and Goldenrod (file 903 @3184); if it's already set, that scene can't play; 1604 is cleared again by file 246 @331 (Route 37) and file 883 @649 (Goldenrod). The ferry-house sick visitor (file 737 object 16) is hidden while 1604 is set. Positions: hunter ≈115,70; sick Trainer ≈106,81; ferry house door ≈74,72; monk ≈2,36 in the Islander's House map.
 
 ## Five Island: the monk's hungry Snorlax (→ Yellow Flute)
+<!-- quest: kind=side -->
 
 **Where:** a monk with a Snorlax blocking a path in the north of the island, between the snowy mountain and the Elder's hut.
 
@@ -529,6 +560,7 @@ The forest has two entrances from Six Island: a wide one on the west side and on
 *Source:* script file 58 (scripts 18, 19; L2422–L2814, L4737; flags 2173, 2174). Positions: Snorlax monk ≈104,53; sweeping monk ≈115,45.
 
 ## Five Island: water for Croagunk (→ PP Max)
+<!-- quest: kind=side -->
 
 **Where:** a mother whose son's Croagunk is drying out, in the south-west of the island, about 12 steps south of the One Island ferryman.
 
@@ -539,6 +571,7 @@ The forest has two entrances from Six Island: a wide one on the west side and on
 *Source:* script file 58 (script 9, L3734–L5760; flag 2171). Position ≈75,86.
 
 ## Mew: the long hunt (Five Island finale)
+<!-- quest: kind=side -->
 
 **Who gets it / when:** after you've freed the Five Island disciple ([Five Island: the Island Pilgrimage leg](#five-island-the-island-pilgrimage-leg-five-island-trials), step 5). Mew then shows itself in several places. Each sighting only happens once the previous one has.
 
@@ -555,6 +588,7 @@ The forest has two entrances from Six Island: a wide one on the west side and on
 *Source:* script file 58 (scripts 20, 21, 33, 34; L3636, L5481–L7150; var 0x409c 14→15→16→17), files 852 (0x409c 10→11), 168 (step trigger, 11→12), 9 (step trigger, 12→13), 221 (step trigger, 13→14, clears flag 1324), 737 (Elder). Step triggers: Route 1 x=1034, z=309–311 (Raticate man ≈1039,316); Mt. Moon Square x=35–37, z=50 (shop door ≈28,43); Route 27 x=866, z=402–405. Mew battle is trainer 862 (L3676); a No to "join" keeps var 0x409c = 17 (L3636). Positions: Mew ≈65,65; monks ≈70,16; little island ≈113,14.
 
 ## Alto Mare Library (One Island): the legends quiz
+<!-- quest: kind=side -->
 
 **Where:** the receptionist just inside the library entrance. The bookshelves around the room hold the answers.
 
@@ -573,6 +607,7 @@ The forest has two entrances from Six Island: a wide one on the west side and on
 *Source:* script file 244 (script 3, L782–L1829; flag 1118). Position ≈8,15.
 
 ## Secret Forest (One Island): Latios, Latias and the Soul Dew
+<!-- quest: kind=main -->
 
 **Where:** the hidden garden reached by following "Bianca" (really Latias) on One Island through an illusory tree.
 
@@ -589,6 +624,7 @@ The forest has two entrances from Six Island: a wide one on the west side and on
 *Source:* script file 239 (scripts 2, 5, 7, 8; L2558–L3639; var 0x40b2 5→6→7; flags 1147, 1149, 2261), file 244 (Bianca, clears 1146; her hide flag 1149 is set at new game, file 842 @408, and cleared when you sign up on Seven Island, file 870 @1435), file 845 L1400–L1419 (One Island illusory tree), file 935 L551 (Lake of Rage, sets 0x40b2 = 5).
 
 ## Alto Mare Waters: Charmander's owner and the lifeguard
+<!-- quest: kind=side -->
 
 **Where:** a middle-aged man by a sign in the western part of the Alto Mare Waters, and the lifeguard with a Lapras and a Vulpix in the waters east of Three Island.
 
@@ -606,6 +642,7 @@ The forest has two entrances from Six Island: a wide one on the west side and on
 *Source:* script file 965 (scripts 1, 4; L999, L2431–L4908; flags 2201, 2202; the lifeguard's talk only proceeds when the player faces right, `GetPlayerFacing` = 3 at L971). Positions: owner ≈82,122 (sign ≈82,119); lifeguard ≈213,125.
 
 ## Alto Mare Waters → islands → back: the Manaphy Egg
+<!-- quest: kind=side -->
 
 **Where:** a girl with an Egg in the eastern part of the Alto Mare Waters, about 10 steps north-west of the lifeguard.
 
@@ -621,6 +658,7 @@ The forest has two entrances from Six Island: a wide one on the west side and on
 *Source:* script file 965 (scripts 6, 7, 10; L1198–L1874, L2751; flags 2203–2208), files 943 L757–L802 (Six Island), 58 script 35 (Five Island), 861 L874–L923 (Four Island). Positions: start ≈209,115; Six Island ≈196,86; Five Island ≈81,75; Four Island ≈41,102; hatching spot ≈78,138.
 
 ## Alto Mare Waters / Mt. Mortar: small extras
+<!-- quest: kind=side -->
 
 - **Your biggest fan** (Alto Mare Waters, west part, with a Lapras, about 15 steps north of Charmander's owner): battle her once for a **Heart Scale**.
 - **Mt. Mortar (2F):** a Hoenn Trainer with a Sceptile, about 10 steps north and 8 west of where you arrive on 2F, offers repeatable Single or Double battles ("I'll practice battling with you") and will lead you back to the entrance whenever you ask ("How do I get out of the cave?").

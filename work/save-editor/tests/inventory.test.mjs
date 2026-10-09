@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {crc16,readSave} from '../dist/save.js';
-import {POCKETS,MONEY_MAX,MONEY_OFFSET,REGISTERED_OFFSET,readInventory,patchMoney,patchInventoryPocket} from '../dist/inventory.js';
+import {crc16,readSave} from '../dist/core/save.js';
+import {POCKETS,MONEY_MAX,MONEY_OFFSET,REGISTERED_OFFSET,readInventory,patchMoney,patchInventoryPocket} from '../dist/core/inventory.js';
 const M=0x40000,G=0xf7cc,S=0xf800,Z=0x18408;
 const v=b=>new DataView(b.buffer,b.byteOffset,b.byteLength);
 function crc(b,base,o=0,size=G){const f=base+o+size-16;v(b).setUint16(f+14,crc16(b.subarray(base+o,f)),true);}
@@ -32,7 +32,7 @@ test('equal counters remain readable but reject inventory writes and no-ops',()=
 });
 test('removed registered item clears shortcut and moves slot2 into slot1',()=>{const[a,c]=ids('keyItems'),b=registrations(stacks(fixture(),'keyItems',[{id:a,quantity:1},{id:c,quantity:1}]),a,c);const after=patchInventoryPocket(b,'keyItems',[{id:c,quantity:1}],data);assert.deepEqual(readInventory(after).registeredItems,[c,0]);const p=POCKETS.find(p=>p.id==='keyItems');allowed(b,after,[[p.offset,p.capacity*4],[REGISTERED_OFFSET,4]]);assert.deepEqual(readInventory(patchInventoryPocket(b,'items',[{id:ids('items')[0],quantity:1}],data)).registeredItems,[a,c]);assert.deepEqual(readInventory(patchInventoryPocket(b,'keyItems',[],data)).registeredItems,[0,0]);});
 for(const id of ['tmHm','berries'])test(`${id} insertion sorts but quantity changes preserve order`,()=>{const[a,c,d]=ids(id),b=stacks(fixture(),id,[{id:d,quantity:2},{id:a,quantity:1}]);assert.deepEqual(readInventory(patchInventoryPocket(b,id,[{id:d,quantity:3},{id:a,quantity:1}],data)).pockets[id].map(s=>s.id),[d,a]);assert.deepEqual(readInventory(patchInventoryPocket(b,id,[{id:d,quantity:2},{id:a,quantity:1},{id:c,quantity:1}],data)).pockets[id].map(s=>s.id),[a,c,d]);});
-test('public save API does not expose raw-offset mutation',async()=>{assert.equal('patchGeneralRegion' in await import('../dist/save.js'),false);});
+test('public save API does not expose raw-offset mutation',async()=>{assert.equal('patchGeneralRegion' in await import('../dist/core/save.js'),false);});
 
 test('unrelated second-slot-only registration remains byte-for-byte unchanged',()=>{
  const registered=ids('keyItems')[0],b=registrations(fixture(),0,registered);

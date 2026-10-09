@@ -1,0 +1,33 @@
+---
+import { areaUrl, url, type WildEncounter } from '../lib/data';
+import { encounterChance } from '../lib/encounter-format.mjs';
+const { name, encounters } = Astro.props as { name: string; encounters: WildEncounter[] };
+const methods = encounters.map(e => e.method);
+---
+<p class="small muted">Chance per encounter, under the conditions shown.</p>
+<details class="enc-help">
+	<summary>Times and conditions</summary>
+	<ul class="small">
+		<li>Morning: 4:00–9:59</li>
+		<li>Day: 10:00–19:59</li>
+		<li>Night: 20:00–3:59</li>
+	</ul>
+	{methods.some(m => /Radio|Swarm|Fishing at night/.test(m)) && <p class="small">Radio, swarm and night-fishing rates cover the replacement slots; other slots stay unchanged.</p>}
+	{methods.some(m => m.startsWith('Grass/cave')) && <p class="small"><a href={url('/calendar/')}>Calendar encounters</a> can replace a land slot on specific dates.</p>}
+	{methods.some(m => m.startsWith('Headbutt')) && <p class="small">Headbutt chances apply to the listed tree type. Common and rare trees depend on your Trainer ID.</p>}
+	{methods.some(m => m.startsWith('Safari Zone')) && <p class="small">Safari candidates depend on the selected area, objects and their development; no fixed chance is established.</p>}
+	{methods.some(m => m.startsWith('Bug-Catching Contest')) && <p class="small">Contest values are stored weights, not percentages.</p>}
+</details>
+{encounters.length > 10 && <div class="table-filter" data-table="wild-encounters-table">
+	<input type="search" placeholder="Filter locations or encounter methods…" aria-label={`Filter ${name} wild encounters`} />
+	<span class="filter-count" aria-live="polite"></span>
+</div>}
+<table id="wild-encounters-table" class="compact">
+	<thead><tr><th>Location</th><th>Method / conditions</th><th>Level</th><th>Chance</th></tr></thead>
+	<tbody>{encounters.map((encounter) => <tr>
+		<td><a href={`${areaUrl(encounter.area)}#${encounter.method.startsWith('Calendar encounter:') ? 'calendar' : 'wild'}`}>{encounter.place}</a></td>
+		<td>{encounter.method}</td>
+		<td>{encounter.level ?? '—'}</td>
+		<td>{encounterChance(encounter)}</td>
+	</tr>)}</tbody>
+</table>

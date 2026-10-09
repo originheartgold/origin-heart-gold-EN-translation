@@ -2,9 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {readFile} from 'node:fs/promises';
-import {loadBundledOriginData,validateBundledReference} from '../dist/bundled-data.js';
-import {bundledReference} from '../dist/generated-reference.js';
-import {loadOriginData} from '../dist/rom.js';
+import {loadBundledOriginData,validateBundledReference} from '../dist/core/bundled-data.js';
+import {bundledReference} from '../dist/core/generated-reference.js';
+import {loadOriginData} from '../dist/core/rom.js';
 test('bundled metadata has verified deterministic content hash and complete English catalogs',()=>{
  validateBundledReference(bundledReference);
  assert.equal(createHash('sha256').update(JSON.stringify(bundledReference.payload)).digest('hex'),bundledReference.provenance.payloadSha256);

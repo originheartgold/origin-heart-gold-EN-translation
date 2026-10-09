@@ -1,7 +1,9 @@
 ---
+import { encounterChance } from '../../lib/encounter-format.mjs';
 import { playerNote } from '../../lib/reference-format.mjs';
 import { playerItemDescription } from '../../lib/reference-format.mjs';
 import ItemReferenceNotes from '../../components/ItemReferenceNotes.astro';
+import PickupSource from '../../components/PickupSource.astro';
 
 import Availability from '../../components/Availability.astro';
 import MoveStats from '../../components/MoveStats.astro';
@@ -61,7 +63,7 @@ const priceLine = i.price ? (sold ? ` · buy for ${money(i.price)}, sells for ${
 	{!i.unavailableReason && i.sources.length === 0 && wildHeld.length === 0 && <p><strong>No confirmed way to get it.</strong> {playerNote(i.note) || 'No location or reward is known.'}</p>}
 	{[...groups].map(([kind, list]) => <>
 		<h2 id={sourceId(kind)}>{label[kind] ?? kind}</h2>
-		<ul>
+		{kind === 'Pickup' ? <PickupSource item={i.id} /> : <ul>
 			{list.map((s) => (
 				<li>
 					{s.area ? <a href={areaUrl(s.area)}>{s.place}</a> : s.place}
@@ -73,12 +75,12 @@ const priceLine = i.price ? (sold ? ` · buy for ${money(i.price)}, sells for ${
 					{(s.quests ?? []).map((q, n) => <>{n === 0 ? ' · see ' : ', '}<a href={url(q.href)}>{q.title}</a></>)}
 				</li>
 			))}
-		</ul>
+		</ul>}
 	</>)}
 	{wildHeld.length > 0 && <>
 		<h2 id="wild-held">Wild Pokémon holding this item</h2>
 		<p>These wild Pokémon can carry {i.name}. The hold chance is the base chance that the Pokémon has the item when encountered, before Ability effects such as Compound Eyes. The encounter chance shows how often that Pokémon appears for the listed method and time.</p>
-		<p class="small muted">Locations are in rough story order for each Pokémon. Radio, swarm and other special encounters require the conditions shown; see the location page for details. <a href={url('/calendar/')}>Calendar encounters</a> can replace ordinary encounter slots. Safari Zone entries depend on the selected area and, where noted, its objects and their development. A dash means no fixed encounter chance is listed.</p>
+		<p class="small muted">Locations are in rough story order for each Pokémon. Radio, swarm and other special encounters require the conditions shown; see the location page for details. <a href={url('/calendar/')}>Calendar encounters</a> can replace ordinary encounter slots. Safari Zone entries depend on the selected area and, where noted, its objects and their development. “Not fixed” means no fixed encounter chance is listed. Contest weights are shown as weights, not percentages.</p>
 		<table class="compact">
 			<thead><tr><th>Pokémon</th><th>Hold chance</th><th>Locations</th></tr></thead>
 			<tbody>{wildHeld.map((holder) => <tr>
@@ -97,7 +99,7 @@ const priceLine = i.price ? (sold ? ` · buy for ${money(i.price)}, sells for ${
 				<thead><tr><th>Location</th><th>Method / time / condition</th><th>Level</th><th>Encounter chance</th></tr></thead>
 				<tbody>{holder.locations.map((location) => <tr>
 					<td><a href={areaUrl(location.area)}>{areaBySlug.get(location.area)?.name ?? location.place}</a>{location.place !== areaBySlug.get(location.area)?.name && <span class="small muted"> · {location.place}</span>}</td>
-					<td>{location.method}</td><td>{location.level}</td><td>{location.encounterRate == null ? '—' : `${location.encounterRate}%`}</td>
+					<td>{location.method}</td><td>{location.level}</td><td>{encounterChance(location)}</td>
 				</tr>)}</tbody>
 			</table>
 		</>)}

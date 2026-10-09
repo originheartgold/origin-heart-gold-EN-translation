@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { decodePokemon, patchPokemonStats } from '../dist/pokemon.js';
+import { decodePokemon, patchPokemonStats } from '../dist/core/pokemon.js';
 const keys=['hp','attack','defense','speed','spAttack','spDefense'];
 const values=(a)=>Object.fromEntries(keys.map((k,i)=>[k,a[i]]));
 const ivs=values([10,11,12,13,14,15]);
@@ -41,10 +41,10 @@ test('nature override changes effective nature without PID, flags or other ribbo
 test('changing level uses supplied growth thresholds and updates encrypted level',()=>{
  const thresholds=Array.from({length:101},(_,i)=>i<2?0:i*i*i),r=fixture();const out=patchPokemonStats(r,{level:60},personal,thresholds);assert.equal(decodePokemon(out).experience,216000);assert.equal(decodePokemon(out).party.level,60);assert.equal(decodePokemon(r).experience,99999);
 });
-test('fainted stays fainted; eggs, bad values and unsupported boxed edits fail without mutations',()=>{
+test('fainted stays fainted; eggs, bad values and boxed edits without growth data fail without mutations',()=>{
  const r=fixture(0,{currentHp:0}),snapshot=r.slice();assert.equal(decodePokemon(patchPokemonStats(r,{ivs:{...ivs,hp:31}},personal)).party.currentHp,0);
  assert.throws(()=>patchPokemonStats(fixture(0,{egg:true}),{ivs:{...ivs,hp:31}},personal),/Egg/);
- assert.throws(()=>patchPokemonStats(r.slice(0,136),{ivs},personal),/party/);
+ assert.throws(()=>patchPokemonStats(r.slice(0,136),{ivs},personal),/growth data/);
  for(const changes of [{ivs:{...ivs,hp:32}},{evs:{...evs,hp:256}},{evs:values([255,255,1,0,0,0])},{level:0},{level:101},{nature:25},{ivs:{hp:1}}])assert.throws(()=>patchPokemonStats(r,changes,personal));
  assert.throws(()=>patchPokemonStats(fixture(0,{override:63}),{ivs:{...ivs,hp:31}},personal),/nature/);assert.deepEqual(r,snapshot);
 });

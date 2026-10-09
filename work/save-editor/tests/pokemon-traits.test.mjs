@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {decodePokemon, patchPokemonShiny, patchPokemonPokerus, patchPokemonMoves, patchPokemonStats} from '../dist/pokemon.js';
+import {decodePokemon, patchPokemonShiny, patchPokemonPokerus, patchPokemonMoves, patchPokemonStats} from '../dist/core/pokemon.js';
 function permutations(v) { return v.length ? v.flatMap(x => permutations(v.filter(y => y !== x)).map(t => [x, ...t])) : [[]]; }
 const orders = permutations([0, 1, 2, 3]);
 function crypt(bytes, seed) {

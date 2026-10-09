@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {crc16, readSave, patchPartyRecord} from '../dist/save.js';
+import {crc16, readSave, patchPartyRecord} from '../dist/core/save.js';
 import {saveFixture, pokemonFixture} from '../../save-core/tests/fixtures.mjs';
-import {patchPokemonMoves, decodePokemon} from '../dist/pokemon.js';
+import {patchPokemonMoves, decodePokemon} from '../dist/core/pokemon.js';
 function changedBox(record) { const moves=decodePokemon(record).moves; moves[0]={id:900,pp:1,ppUps:0}; return patchPokemonMoves(record,moves); }
 
 const MIRROR = 0x40000;

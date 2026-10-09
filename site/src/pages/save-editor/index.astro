@@ -1,17 +1,22 @@
 ---
-import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import SaveEditor from '../../components/SaveEditor.astro';
+import shell from '../../../../work/save-editor/index.html?raw';
+import '../../../../work/save-editor/styles.css';
+const base = import.meta.env.BASE_URL;
+const head = shell.match(/<head>([\s\S]*?)<\/head>/)?.[1]
+  .replace(/<link rel="stylesheet"[^>]*>/g, '')
+  .replace('href="favicon.svg"', `href="${base}save-editor/favicon.svg"`);
+const body = shell.match(/<body>([\s\S]*?)<\/body>/)?.[1]
+  .replace(/<script[^>]*>[\s\S]*?<\/script>/g, '')
+  .replace('<div class="bar-actions">', `<div class="bar-actions"><a class="btn ghost guide-link" href="${base}">Guide</a>`);
+if (!head || !body) throw new Error('Save editor HTML must contain head and body.');
 ---
-<StarlightPage frontmatter={{
-  title: 'Save editor',
-  description: 'Edit your English Origin HeartGold party, money and bag locally in your browser.',
-  tableOfContents: false,
-  head: [{ tag: 'meta', attrs: {
-    'http-equiv': 'Content-Security-Policy',
-    content: "connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'",
-  } }],
-}}>
-  <p>Edit your party, money and bag in English Origin HeartGold v4.0.3. Your save stays on your device; no ROM or upload is needed.</p>
-  <SaveEditor />
-  <p class="save-editor-scope">PC boxes, story flags, quests and progression are outside the editor’s scope. Keep a backup until you have loaded the downloaded save in-game and checked your changes.</p>
-</StarlightPage>
+<!doctype html>
+<html lang="en">
+  <head><Fragment set:html={head} /></head>
+  <body>
+    <Fragment set:html={body} />
+    <script>
+      import '../../../../work/save-editor/src/ui/app.ts';
+    </script>
+  </body>
+</html>

@@ -1,11 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {EditorError, editorErrorMessage} from '../dist/errors.js';
-import {importSave} from '../dist/save-import.js';
-import {crc16, readSave} from '../dist/save.js';
-import {mapStats} from '../dist/stats.js';
-import {isPokerusStatus} from '../dist/pokemon.js';
-import {isPocketId} from '../dist/inventory.js';
+import {EditorError, editorErrorMessage} from '../dist/core/errors.js';
+import {importSave} from '../dist/core/save-import.js';
+import {crc16, readSave} from '../dist/core/save.js';
+import {mapStats} from '../dist/core/stats.js';
+import {isPokerusStatus} from '../dist/core/pokemon.js';
+import {isPocketId} from '../dist/core/inventory.js';
 
 function fixture() {
   // Invented empty-party data, not a playable game save.

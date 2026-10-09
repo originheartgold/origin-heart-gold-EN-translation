@@ -22,6 +22,8 @@ a.tag-place { background: var(--sl-color-accent-low); color: var(--sl-color-acce
 .tag-gender { background: #6a3d7a; color: #fff; }
 .tag-missable { background: #8a2b2b; color: #fff; }
 .tag-postgame { background: #33573a; color: #fff; }
+.tag-main { background: #705015; color: #fff; }
+.tag-side { background: #35566b; color: #fff; }
 .quest-meta { margin-top: 0.25rem !important; }
 section.quest { scroll-margin-top: 5rem; }
 section.quest.is-hidden { display: none; }
@@ -43,6 +45,7 @@ details.tech summary { cursor: pointer; }
 .game-setup label { font-size: var(--sl-text-sm); }
 .game-setup select { margin-left: 0.35rem; }
 .game-setup .hidden-count { font-size: var(--sl-text-sm); color: var(--sl-color-gray-3); }
+.game-setup .quest-filter-help { flex-basis: 100%; font-size: var(--sl-text-xs); color: var(--sl-color-gray-3); }
 
 /* ---- tables and filters */
 table.compact { font-size: var(--sl-text-sm); }
@@ -152,3 +155,43 @@ ul.loc-list li { break-inside: avoid; }
 .sl-markdown-content { min-width: 0; }
 .sl-markdown-content table.compact { display: block; max-width: 100%; overflow-x: auto; }
 .reference-provenance, .reference-conflict, .reference-note { overflow-wrap: anywhere; }
+
+/* Forest of Time directions, placed at the Grunt battle in the quest. */
+.forest-route {
+  --route-ink: #b9dec8;
+  --route-border: #466554;
+  --route-bg: #18261f;
+  --route-tile: #22352b;
+  margin-block: 1.75rem;
+  border: 1px solid var(--route-border);
+  border-radius: 0.85rem;
+  background: var(--route-bg);
+  overflow: hidden;
+  scroll-margin-top: 6rem;
+}
+:root[data-theme='light'] .forest-route {
+  --route-ink: #28563b;
+  --route-border: #b6cbbb;
+  --route-bg: #f3f7f1;
+  --route-tile: #e5eee3;
+}
+.forest-route-heading { padding: 1.25rem 1.4rem 0; }
+.forest-route .forest-route-eyebrow { margin: 0; color: var(--route-ink); font-size: 0.7rem; font-weight: 750; letter-spacing: 0.13em; }
+.forest-route h3 { margin: 0.35rem 0 0 !important; font-size: 1.3rem; line-height: 1.35; }
+.forest-route-heading > p:last-child { margin-top: 0.5rem; font-size: 0.9rem; }
+.forest-route-tip { margin: 0 1.4rem; padding: 0.8rem 1rem; border-left: 3px solid var(--sl-color-accent); background: var(--sl-color-accent-low); font-size: 0.87rem; line-height: 1.65; color: var(--sl-color-accent-high); }
+.forest-route .forest-route-arrival { margin: 1rem 1.4rem; font-size: 0.83rem; }
+.forest-route-arrival > span { color: var(--route-ink); margin-right: 0.3rem; }
+.forest-route-help { margin: 0 !important; border-top: 1px solid var(--route-border); padding: 0.85rem 1.4rem; font-size: 0.85rem; }
+.forest-route-help summary { cursor: pointer; color: var(--route-ink); font-weight: 600; }
+.forest-route-help summary:focus-visible { outline: 2px solid var(--sl-color-text-accent); outline-offset: 4px; }
+.forest-route-help p { margin-top: 0.75rem; }
+@media (max-width: 40rem) {
+  .forest-route-heading { padding: 1rem 1rem 0; }
+  .forest-route-tip { margin-inline: 1rem; }
+  .forest-route .forest-route-arrival { margin-inline: 1rem; }
+  .forest-route-help { padding-inline: 1rem; }
+}
+
+.forest-route:has(.forest-route-viewer) .forest-route-print { display: none; }
+@media print { .forest-route:has(.forest-route-viewer) .forest-route-print { display: block; margin-inline: 1.4rem; } }

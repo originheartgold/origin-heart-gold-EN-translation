@@ -28,6 +28,7 @@
 - [Pallet Town: Lance's visit home (after the final Hall of Fame)](#pallet-town-lances-visit-home-after-the-final-hall-of-fame)
 
 ## Pallet Town: send-off gifts (one per starter, before Viridian)
+<!-- quest: kind=side -->
 
 **Where:** Pallet Town and your house.
 
@@ -44,6 +45,7 @@
 *Source:* script files 733 (Pallet Town; Eevee man script 1 checks flags 1088, 768, 408 = Town Map; fence man script 13 checks 1804 (set at the opening), 1088, 1287, 768), 842 (house 1F: scripts 9/10 check 106, 768, 1088, 1289, flag 2285; Poliwag at 2,5; Mom's script 2 → L6053, first talk only (flag 167 clear): L6123 clears 767, L7422 clears 768 for Bulbasaur, then L8800/L8826 → L9557 clears 768 and sets var 0x4073 = 2 if the Town Map (408) is held; later talks go to the bank menu L7253 and never reach L9557), 736 (Daisy L452: clears 768 and sets var 0x4073 = 2 at L1781 only if 767 is clear), 733 coord trigger (north exit, var 0x4073 == 0), 739 (flag 1088, Blue's scene: coord script 14 on ≈1023–1026,266 with var 0x4075 == 0, Blue's objects 11/12 at 1027–1028,266 (talk script 15 runs the same ending), L3274–L3335; flag 1088 is later cleared and set again only inside other Viridian scenes). Collision (MapGrid, water tiles counted as blocked): from the Route 1 gatehouse (≈1036,280) no tile north of row 266 is reachable without crossing the trigger or Blue's tiles; the way round to the west is a pond. Emulator (`guide-review-20261006/ch01/mankey_blue_en`): walking around the trigger stops at that pond; stepping on it plays Blue's scene (lines 445#13, 14, 16, 69, 17; 0x4075 → 1, 1088 set). Positions: Eevee man ≈1041,360, south-fence man ≈1041,382.
 
 ## Viridian City: the would-be professor's quiz
+<!-- quest: kind=side -->
 
 **Where:** the house north-west of Viridian Gym. Use its upper (north) door, just west of the woman worried about the Meowth thief; the lower door leads to the nickname man's room. The mother says her son dreams of becoming a Pokémon Professor. Talk to the son and answer Yes to start the quiz.
 
@@ -62,6 +64,7 @@ Question 4 is the usual trap: "Type, Power, Accuracy, PP" looks right, but the g
 *Source:* script file 744 (script 6, L358–L849; Exp. Share = item 216, flag 1221). Door: Viridian City warp at 1034,235 leads to the son's room (zone 497 warp 1). The English options are listed in the same order as the Chinese ones.
 
 ## Viridian City: the Meowth thief (Charmander starters only)
+<!-- quest: kind=side -->
 
 **What it is:** a small side quest. A resident says a Meowth keeps sneaking into people's homes all over Viridian City to steal things, and asks you to teach it a lesson.
 
@@ -88,6 +91,7 @@ With any other starter, the Meowth resident only says a general line about livin
 *Source:* script file 739 (resident script 24, Meowth script 28 → L3718, reward L5040: item 494; flags 1335/1336/1337). Oak's lab script (file 738) sets the starter flags, and the Route 1 script (file 168, L586–L602) sets the quest flags. Positions: resident ≈1038,236; Meowth ≈1015,266.
 
 ## Viridian City: the Pikachu thief (Bulbasaur starters only)
+<!-- quest: kind=side -->
 
 **Where:** the shop clerk standing a few steps east of the Viridian Mart door.
 
@@ -107,6 +111,7 @@ With any other starter, the Meowth resident only says a general line about livin
 *Source:* script file 739 (scripts 3 and 23, flags 1334/1335/1336; the chase moves object 5 with `MovePersonFacing`, which a map reload undoes). Route 1 file 168 sets the quest flags. Positions: clerk ≈1046,253; Pikachu ≈1033,247, then ≈1008,235, then ≈1053,269. Emulator: `emu_harness.py guide0107 --case pikachu` (after the first chase and a trip to Route 1, object 5 is at 1033,247 again).
 
 ## Viridian City: the Mankey thief (Pikachu starters only)
+<!-- quest: kind=side -->
 
 **Where:** the street-light keeper on the west side of town, north-west of the Pokémon Center door.
 
@@ -124,6 +129,7 @@ With any other starter, the Meowth resident only says a general line about livin
 *Source:* script file 739 (scripts 12 and 29, reward L5100: item 492; keeper script 29, L1571–L1619, starts the quest only with 1288, 1330 and 1335 set; 1330 and 1335 are set by the Route 1 tutorial, file 168 @586/@594; Blue scene L3339 sets flag 1330 (the Mankey's hide flag), and the keeper then pays only if 1336 is clear). Reachability of Blue's trigger: see the send-off gifts source above. Positions: keeper ≈1019,255; Mankey ≈1050,246.
 
 ## Viridian City: Yellow's first Pokémon (the Gym's Virtue trial)
+<!-- quest: kind=main -->
 
 **Where:** Yellow, the girl standing with her uncle and his Doduo just south of the Viridian Mart.
 
@@ -143,6 +149,7 @@ With any other starter, the Meowth resident only says a general line about livin
 *Source:* script files 739 (script 11, L3006 → L4727, L6951; Yellow ≈1041,260; checks flag 1228; `TakeItem 4` at L4854 before the warp, `TrainerBattle 632` at L7145, a loss → L4959 `WhiteOut`; Big Pearl = item 89 at L7648; L7600 clears 1695, which the examiner reads as "trial done"), 741 (Gym guard, script 2: checks flag 1705; L1161 checks the player's row first (z ≠ 43 → L3217, line 447#31 only); the examiner sets flag 1228 at L1226 and approves at L3249 (sets 1632) once 1695 is clear). Flag 1705 is set only in file 782 (Two Island, after Granny Mae's trial, L5318/L5370).
 
 ## Viridian Gym: the Wisdom quiz (two ways to pass)
+<!-- quest: kind=main -->
 
 **Where:** the second examiner inside the Viridian Gym, after the Virtue trial.
 
@@ -162,6 +169,7 @@ The Team Rocket set ("You ignored the empty slogans and told the truth... worthy
 *Source:* script file 741 (script 6, L1293/L3339, flag 1631).
 
 ## Viridian City: Pokémon Academy exchange students (missable early)
+<!-- quest: kind=side -->
 
 **Where:** the Pokémon Academy (the school building south of the northeast house).
 
@@ -181,6 +189,7 @@ The Team Rocket set ("You ignored the empty slogans and told the truth... worthy
 *Source:* script files 859 (scripts 1, 9, 10; trainers 3 and 2; flags 1057/1244 end the early lessons and are set by whichever of file 738 L1651 (parcel) or file 212 L1931 (Route 22 Blue) comes second; the teacher sets flag 1218; script 1 L111 offers the challenge again once 1057 is clear, while 1244 keeps the students hidden), 115 (script 3: greeting by flag 1292 = beaten at the Academy, trainer 65, TM54 = item 381 × 5 at L1498, then L3712 sets her hide flag 1063; nothing else sets it; Cynthia ≈51,34; Team Rocket scene ending, reached from L4696/L4721: L5748 `CheckFlag 1288` (Pikachu starter, set by 738 @3891) → L6969, @6973 clears 1057), 170 (@3782 and @4355 clear 1057).
 
 ## Route 2: the Rocket warehouse Poké Ball (starter-dependent gift)
+<!-- quest: kind=side -->
 
 **Where:** the small house on Route 2 East that Team Rocket uses as a warehouse (the fake police block the road next to it).
 
@@ -195,6 +204,7 @@ The Team Rocket set ("You ignored the empty slogans and told the truth... worthy
 *Source:* script file 171 (script 3, flag 1473; the live ball is at 6,4; it checks only the menu answer, party size and starter). The grunt (zone 417 object 17, hide flag 308) has object type 0 and sight 0, so he never spots you; script 2 menu @114/@122: battle 274 (a loss → L1645 `WhiteOut`) then Ariana `TrainerBattle 443, 0, 1, 0` (a loss → L1651, which runs the same pack-up and ends at L2103), or "I got lost". Ariana's pack-up hides objects 0–16 except the ball (8). File 853 @3782/@3786 (Celadon hideout finale) sets 1473 and 308.
 
 ## Route 2 East: the abandoned Charmander (Pikachu starters only)
+<!-- quest: kind=side -->
 
 **Where:** a weak Charmander near the north end of Route 2 East, a couple of steps north-west of the door of the Viridian Forest north gatehouse.
 
@@ -215,6 +225,7 @@ The Team Rocket set ("You ignored the empty slogans and told the truth... worthy
 *Source:* script files 170 (script 3, L787, L2290; Charmander ≈1026,136; checks flag 1348), 751 (Pewter Pokémon Center scripts 10/11; the Trainer sets flag 1348 at L430), 115 (L5748 decides which Route 2 event you get). The roadside Charmander (zone 414 object 3) and the Pokémon Center Trainer (zone 475 object 12) share hide flag 1367, set by the Cascade Badge scene (758 @3887) and cleared only by 115 @6981 (Viridian Forest setup). The Pokémon Center Charmander (object 13) uses flag 1360, which 1367 doesn't touch. The Route 3 letter Charmander (file 175, hide flag 1366) never appears, so it can't hide this one.
 
 ## Route 2 East: Nidoran♀ and the Apricorn Ball maker (non-Pikachu starters)
+<!-- quest: kind=side -->
 
 **Where:** a man and an abandoned Nidoran♀ at the north end of Route 2 East, a few steps north-east of the door of the Viridian Forest north gatehouse.
 
@@ -234,6 +245,7 @@ The Team Rocket set ("You ignored the empty slogans and told the truth... worthy
 *Source:* script files 170 (scripts 4/5, L3021, L3881; script 4 only checks `HasItem 497` (Friend Ball), no script in the file takes it, D-1399, emulator `emu_harness.py hackbugs --case friendball`; man and Nidoran♀ ≈1031–1032,133; flag 1349 = Apricorn service: Yes → L4359 clears it, No → L3778 leaves it set; both clear 1057, the man's hide flag in Pewter; Del's line 314#62 "I'm no Breeder"), 748 (L1619: the Pewter warm-up Trainer gives Friend Ball × 2), 754 (east room of the map named "Pewter Northeast house", entered from the southwest city door at 1037,111; [Pewter City: the Apricorn Ball maker](02-pewter-to-vermilion.md#pewter-city-the-apricorn-ball-maker)).
 
 ## Route 2: the Magcargo fan (show a Pokémon)
+<!-- quest: kind=side -->
 
 **Where:** the gatehouse at the north end of Route 2's eastern path, the one that leads on to Route 2 East (not the Viridian Forest gatehouse next to it).
 
@@ -244,6 +256,7 @@ The Team Rocket set ("You ignored the empty slogans and told the truth... worthy
 *Source:* script file 173 (script 6, flag 309; item 152 × 2). The man stands at 38,7 in zone 419, the room joining Route 2 (1050,192) and Route 2 East (1050,183).
 
 ## Viridian Forest: the runaway Snubbull ($20,000, one-time choice)
+<!-- quest: kind=side -->
 
 **Where:** the owner stands in the south gatehouse (Route 2 side). The Snubbull is in the middle of Viridian Forest, playing with a Pidgey.
 
@@ -256,6 +269,7 @@ The Team Rocket set ("You ignored the empty slogans and told the truth... worthy
 *Source:* script files 173 (script 4; sets flag 1237), 115 (scripts 12/13, L2869; Snubbull checks flag 1237).
 
 ## Viridian Forest: the flower garden and the Spearow (missable)
+<!-- quest: kind=side -->
 
 **Where:** the woman by the flowers on the far east side of the forest, north-east of the south entrance (head east from the entrance, past the Trainer standing there).
 
@@ -270,6 +284,7 @@ The Team Rocket set ("You ignored the empty slogans and told the truth... worthy
 *Source:* script file 115 (script 11: `CheckBadge 6` (Volcano, given by Blaine in file 15) → L2225; L2318: `TrainerBattle [59, 59]`, trainer 59 = 3 × Spearow Lv. 7; `WildBattle 22` Lv. 20 at L2627, then `CheckBattleWon`, which counts a flee or a catch as a win; Honey = item 94 × 2 at L2760; losses → L3673 `WhiteOut`; flag 1062; woman ≈90,72).
 
 ## Viridian Forest: lend her a Pidgeot (Pikachu starters only)
+<!-- quest: kind=side -->
 
 **Who gets it / when:** Pikachu starters who have the Volcano Badge, but not the Earth Badge, and haven't become Champion yet.
 
@@ -282,6 +297,7 @@ The Team Rocket set ("You ignored the empty slogans and told the truth... worthy
 *Source:* script file 115 (L2225, L4827, L5794: `ReturnLoanMon` takes your Pidgeot, `GiveLoanMon [6, 20, 75]` gives the replacement from trade record 6; return needs game-clear flag 2404). Emulator (`emu_harness.py guide0107 --case pidgeot`, both ROMs): a generator Pidgeot Lv60 with Leftovers lent through the party menu is removed from the party; after 2404 the returned Pidgeot has trade record 6's PID, Lv20, IVs 6×31, moves 28/16/98/18, no item, OT ID 0x761510F0 (ID No. 04336), an empty OT name (summary: OT blank, ID No. 04336). D-1392, D-1552.
 
 ## Viridian Forest: the Honey tree (weekday Bug Pokémon)
+<!-- quest: kind=side -->
 
 **Where:** the glistening tree trunk in the south-west of the forest, west of the south entrance. Go to the patch of tall grass below a short wooden stairway, stand at its east edge and face the tree to the east. The Mega Drain tutor stands a few steps south-west. A man near the north exit hints about it.
 
@@ -311,6 +327,7 @@ In Johto, the Honey seller on [Route 36](10-ecruteak-olivine.md#route-35--route-
 *Source:* script file 115 (script 16, L5008). Positions: tree 41,79; Mega Drain tutor ≈35,82. Honey sources: site/src/data/items.json (item 94: gifts, shops, item balls, hidden items); personal data a/0/0/2 held items: Surskit [94, 0] (common slot, 50%), Combee [0, 94] (rare slot, 5%); Viridian Forest grass: Surskit Lv. 7 night 4%, Combee Lv. 7 morning 1%.
 
 ## Viridian Forest: the rescued Eevee (optional)
+<!-- quest: kind=side -->
 
 **Where:** where Nurse Joy healed Eevee, in the far north-east corner of the forest (well east of the north exit), after the Team Rocket Eevee story on Route 2 and in the forest.
 
@@ -321,6 +338,7 @@ In Johto, the Honey seller on [Route 36](10-ecruteak-olivine.md#route-35--route-
 *Source:* script file 115 (script 10, flag 411; Eevee ≈91,33).
 
 ## Pewter City: Sitrus Berries → Hard Stone → TM69
+<!-- quest: kind=side -->
 
 **Where:** a hiker standing just south-west of the Pewter Poké Mart door, and a man with a Sudowoodo on the east side of town (east of the Mart).
 
@@ -334,6 +352,7 @@ In Johto, the Honey seller on [Route 36](10-ecruteak-olivine.md#route-35--route-
 *Source:* script file 748 (scripts 10, 15, 18; flags 1306, 1308; Anemone's question is line 453#25, gifts at L673–L736: Berry Pots 470, Squirt Bottle 477, Sitrus Berry 158 × 2; hiker `HasItem 158, 10` at L856 → L2309, `TakeItem 158, 3` and Hard Stone 238 × 2 at L4186–L4213; Sudowoodo man `TakeItem 238` and TM69 = item 396 at L2792–L2807). Positions: hiker ≈1058,98; Sudowoodo man ≈1077,102; Anemone ≈1064,107.
 
 ## Victory Road: "Which one is the real Blue?"
+<!-- quest: kind=main -->
 
 **Where:** Victory Road 1F, during the final Team Rocket chapter. Blue is stuck in a stalemate against a Team Rocket fake of himself.
 
@@ -347,6 +366,7 @@ In Johto, the Honey seller on [Route 36](10-ecruteak-olivine.md#route-35--route-
 *Source:* script file 109 (script 12, L3922 vs L3967/L3983, L10465–L10992; wrong answer sets flag 2153).
 
 ## Victory Road 1F: the fake item ball (Lv. 70 Electrode)
+<!-- quest: kind=side -->
 
 **Where:** an item ball on the west side of Victory Road 1F, level with the spot where Blue stands (about 20 steps west of him).
 
@@ -355,6 +375,7 @@ In Johto, the Honey seller on [Route 36](10-ecruteak-olivine.md#route-35--route-
 *Source:* script file 109 (script 9, flag 1241; ball at 21,40; `CheckBattleWon` counts a flee as a win). Emulator: `emu_harness.py guide0107 --case electrode`.
 
 ## Romance route: Victory Road confessions, Yellow's dates and your house
+<!-- quest: kind=side -->
 
 This entry covers only the steps that happen on this page's maps (Victory Road, Viridian City and your house). How the route is switched on, how your one partner is chosen in the Dream World and what locks a partner out are explained in [the central romance entry](09-ilex-goldenrod.md#romance-route-how-its-unlocked-how-your-partner-is-chosen-and-what-locks-a-partner-out-central-entry).
 
@@ -386,6 +407,7 @@ Cynthia's dates run the same way at the Pokémon Academy in Viridian City. Other
 *Source:* script files 109 (scripts 14, 18, 21, 24; each checks flag 1618 (route on), its partner's lock flag and 1645, and checks the player's gender first except script 21; scripts 14, 18 and 21 reach `HealParty`, script 24 (Gold) reaches none; confession spots 1F 20,17 and 43,40, 2F 16,32 and 57,37), 739 (script 40, L4140/L5395/L5333; Yellow ≈1041,261; checks flag 2261 = final Hall of Fame, set in file 822; flag 1645 = confessed; flag 2143 = Yellow excluded; date 2: HealParty @10519, MultiBattle @11662, @11800, @11963, @12101 with no heal between (each loss → L4959), next HealParty @12969), 859 (script 18, Cynthia's dates), 736 (script 4: @165 `CheckFlag 106` → L559, Cynthia's version, before the 2143 Yellow check), 843 (script 1 L363 `CheckFlag 106` → L4292 End before any partner branch; 106 is set with the starter, 738 @3946/@4080, and never cleared; hack finding D-1391; script 4, house 2F scene), 842 (scripts 12–15, "Rest in my room": L6462 Heart Mail 143, L6707 Grass Mail 137, L6887 Bubble Mail 139, L7063 checks Snow Mail 144 but L8417 takes Bubble Mail 139). Flag 1645 is also set by files 758 (Cerulean Gym, Misty), 923 (zone 85: the Indigo Plateau slope in this hack, Steven/Cynthia) and 110 (Victory Road 3F). Date progress is var 0x40b5: date 1 sets it to 3, date 2 (at 3) to 4, the Mom visit runs at 4 (stage 5→6). Emulator (`emu_harness.py guide0107 --case mom_visit,living`): with Yellow as the partner and flag 106 set as every save has it, 739 L10063 → zone 504 scene shows lines 442#58–62 and object 7 (Cynthia); with 106 cleared the same run shows Yellow (object 4, lines 25–31). At var 0x40b5 = 6 the 2F PC (with the Cascade Badge) shows nothing and the player can walk on; with 106 cleared it starts the love-letter scene (537#22–24).
 
 ## Pallet Town: Lance's visit home (after the final Hall of Fame)
+<!-- quest: kind=main -->
 
 **Where:** your house in Pallet Town, ground floor.
 

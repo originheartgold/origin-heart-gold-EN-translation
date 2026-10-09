@@ -5,7 +5,7 @@ What the conversion adds for the website:
 - frontmatter (title, sidebar order) instead of the H1;
 - links between chapters rewritten to relative site URLs (works under any base path);
 - each quest (H2) wrapped in <section class="quest"> with data-* tags read from its heading,
-  so the page script can filter by starter / gender and hide post-game entries;
+  so the page script can filter by quest kind, starter, gender and post-game availability;
 - a location link under each quest heading, when the place before the colon is a known area;
 - the "*Source:*" paragraphs (script files, flags, line numbers) folded into a <details class="tech"> box,
   hidden from players and from site search (shown with ?tech=1, see site/public/ohg.js);
@@ -49,6 +49,7 @@ SOLVERS = {
     'celadon-password': 'CeladonPassword',
     'primo-passwords': 'PrimoPasswords',
     'janine-picker': 'JaninePicker',
+    'forest-route': 'ForestRoute',
 }
 SOLVER_RE = re.compile(r'^([ \t]*)<!--\s*solver:\s*([A-Za-z0-9_-]+)\s*-->\s*$')
 SOLVER_SLOT = '\x00solver:%s\x00'
@@ -124,7 +125,8 @@ def parse_meta(text):
 
     Explicit metadata overrides what heading_tags() reads from the heading. Every key is optional.
     starter: any | Charmander[,Pikachu...] | non-Pikachu; gender: any | male | female;
-    postgame / missable: yes | no; places: area slugs or names, comma-separated (none = no link); id: stable Done key.
+    kind: main | side; postgame / missable: yes | no;
+    places: area slugs or names, comma-separated (none = no link); id: stable Done key.
     """
     meta = {}
     for part in text.split(';'):
@@ -137,6 +139,11 @@ def parse_meta(text):
 
 def apply_meta(tags, meta, where):
     tags = dict(tags)
+    if 'kind' in meta:
+        kind = meta['kind'].lower()
+        if kind not in ('main', 'side'):
+            raise SystemExit('%s: unknown quest kind %r in quest metadata' % (where, kind))
+        tags['kind'] = kind
     if 'starter' in meta:
         v = meta['starter']
         tags.pop('starter', None)
@@ -263,6 +270,9 @@ def sync_images(check):
 
 def tag_badges(tags):
     out = []
+    if 'kind' in tags:
+        kind = tags['kind']
+        out.append('<span class="tag tag-%s">%s quest</span>' % (kind, kind.capitalize()))
     if 'starter' in tags:
         out.append('<span class="tag tag-starter">%s only</span>' % ' / '.join(tags['starter']))
     if 'gender' in tags:
@@ -412,7 +422,9 @@ def convert(fn, src, areas, shared_ids=(), report=None, force_mdx=False):
             meta = next(metas)
             where = 'guide/%s: %s' % (fn, h)
             tags = apply_meta(heading_tags(h), meta, where)
-            attrs = ['data-%s="%s"' % (k, ','.join(v) if isinstance(v, list) else 'yes') for k, v in sorted(tags.items())]
+            if slug not in ('index', 'known-issues') and 'kind' not in tags:
+                raise SystemExit('%s: add quest metadata with kind=main or kind=side' % where)
+            attrs = ['data-%s="%s"' % (k, html.escape(','.join(v) if isinstance(v, list) else v if isinstance(v, str) else 'yes', quote=True)) for k, v in sorted(tags.items())]
             if meta.get('id'):
                 attrs.append('data-quest-id="%s"' % html.escape(meta['id'], quote=True))
             if gh_slug(h) in shared_ids:

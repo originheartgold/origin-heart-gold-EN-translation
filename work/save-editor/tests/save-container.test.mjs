@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {EditorError} from '../dist/errors.js';
-import {importSave} from '../dist/save-import.js';
-import {crc16} from '../dist/save.js';
-import {DESMUME_FOOTER_SIZE, RAW_SAVE_SIZE, containerLabel, saveExtension, unwrapSave, wrapSave} from '../dist/save-container.js';
+import {EditorError} from '../dist/core/errors.js';
+import {importSave} from '../dist/core/save-import.js';
+import {crc16} from '../dist/core/save.js';
+import {DESMUME_FOOTER_SIZE, RAW_SAVE_SIZE, containerLabel, saveExtension, unwrapSave, wrapSave} from '../dist/core/save-container.js';
 
 function fixture() {
   // Invented empty-party data, not a playable game save.

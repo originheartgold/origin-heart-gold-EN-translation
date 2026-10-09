@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { decodePokemon, patchPokemonMoves } from '../dist/pokemon.js';
+import { decodePokemon, patchPokemonMoves } from '../dist/core/pokemon.js';
 
 // Invented logical records. Generate the shuffle permutation independently,
 // and use BigInt arithmetic instead of the implementation's Math.imul cipher.

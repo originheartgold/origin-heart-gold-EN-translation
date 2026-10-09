@@ -1,9 +1,9 @@
 // Read-only reference comparison. Prints identities/counts; never game text or assets.
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import { loadOriginData } from '../../save-editor/dist/rom.js';
-import { loadBundledOriginData } from '../../save-editor/dist/bundled-data.js';
-import { bundledReference } from '../../save-editor/dist/generated-reference.js';
+import { loadOriginData } from '../../save-editor/dist/core/rom.js';
+import { loadBundledOriginData } from '../../save-editor/dist/core/bundled-data.js';
+import { bundledReference } from '../../save-editor/dist/core/generated-reference.js';
 
 if (process.argv.length !== 3) throw Error('Usage: node work/research/save_core/reference_probe.mjs LOCAL_EN_ROM');
 const rom = Uint8Array.from(await readFile(process.argv[2]));

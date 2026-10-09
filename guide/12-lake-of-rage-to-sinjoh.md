@@ -39,6 +39,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 - [Route 45 to Route 48 and Dragon's Den: small extras](#route-45-to-route-48-and-dragons-den-small-extras)
 
 ## Route 46: Team Rocket's dig and Crystal taken hostage (story; romance choice; continues Ilex Forest and Goldenrod City's romance entry)
+<!-- quest: kind=main -->
 
 **Where:** the north end of Route 46. The scene starts as you walk up to the Dark Cave entrance, two steps south of its door. You can come up from the Route 29 gatehouse or out of Dark Cave.
 
@@ -60,6 +61,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 *Source:* script file 259 (coord script 4 on var 0x40ac = 1; L227–L1789 battles; L2133 Yes, L2267 No sets flag 2145; L3570–L3594 sets flags 1807 and 1808 and var 0x40ac = 2; script 1 shop, flag 1808), file 230 L594 (Route 31 sets 0x40ac = 1), file 18 (Sprout Tower 3F coord needs 0x40ac = 2). Positions: trigger row ≈627–629,331, Dark Cave door 628,329, shop man ≈618,366.
 
 ## Route 43: a Chesto Berry for the listless Sentret (→ 2 Lum Berries; before the Rocket HQ is cleared)
+<!-- quest: kind=side -->
 
 **Where:** Route 43, the girl with a Sentret beside the sign just north of the gatehouse at the south end of the route (she's on the sign's west side). After the Mahogany Rocket HQ chapter she stands on the other side of the sign, a couple of steps east of it.
 
@@ -75,6 +77,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 *Source:* script file 254 (script 7, L776–L1225; flag 507 set at new game, cleared when you give the berry, set again with the reward; flag 202 set at the end of the HQ chapter, file 90 L2861). Positions: girl ≈530,147, after the HQ ≈534,146.
 
 ## Lake of Rage: the red Gyarados and the radio transmitters (story; how to move on)
+<!-- quest: kind=main -->
 
 **Where:** Lake of Rage, straight after the Route 42 Entei scene and Mt. Mortar.
 
@@ -90,6 +93,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 *Source:* script file 934 (script 18 → L1942–L4227, `WildBattle 130, Lv. 30`; script 15 → L4605, L5729, L6125–L6635, `TrainerBattle 901`, flag 201; script 16 → L4688–L5296, sets 0x4098 = 17). Script 18 is Lance's talk script (object ≈533,79); the wild battle is at L2247 (`CheckBattleWon` L2254: only a loss goes to the white-out at L5589, so a flee continues like a win), Lance catches the evolved Magikarp (msgs 14–16, 36), Gold catches the third (msg 26); L4167–L4203 send Lance to ≈541,37 and Gold to ≈490,73. Transmitter people: ≈490,72 (west), ≈541,36 (north-east), ≈506,34 (yours; house door 497,42). After the scene L4219 clears flag 650, so Pryce stands at ≈526,85 (sign at 528,82); the ≈526,91 Pryce (flag 1366) is the cutscene copy. Earlier guide text placed Pryce at ≈526,91 and had Pryce and Gold handle the second Gyarados; corrected from the script. Reachability (review 2026-10-06): Lance (object 0, hide flag 483, clear from new game) starts the scene only with flag 484 set (new game, file 149 L94) and flag 164 set, which the Route 42 Entei scene sets (file 252 L4745); the researchers (flag 201) stand there from the start.
 
 ## Team Rocket HQ B3F: the two passwords and the Secret Key door (continues Battle Frontier, Cianwood City and Mahogany Town's "Mahogany Town → Team Rocket HQ")
+<!-- quest: kind=main -->
 
 **Where:** Team Rocket HQ B3F, reached by the stairs from B2F. The Executives' room door is in the middle of the floor. Behind it is the way down to Archer's room.
 
@@ -114,6 +118,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 *Source:* script file 91 (script 8 → L1983–L2262, `TrainerBattle 553/817`, flag 502; script 1 → L2290–L2570, `MultiBattle 911/893/549`, flag 503; script 3, `TrainerBattle 912`, flag 211; script 4 → L2589–L3030, `HasItem 467`, `TrainerBattle 816`, flag 640; script 2 warp to map 133). Positions: Executives' door ≈23,16; west-room trigger ≈20,24; east-room trigger ≈38,23; PC Scientist ≈42,15; warp ≈19,3. Party levels from trainers 553 (Charon, Lv. 87–88) and 817 (Cyrus, Lv. 89–90). Reachability (review 2026-10-06): the west-room trigger needs var 0x40B2 = 2 (set on B1F/B2F, files 89/90); the east-room trigger needs var 0x40B5 = 1, which only the Lavender Town Blue battle sets (file 17 L3796, a forced trigger that replays until won, per guide 03); the later values 3–11 come from post-HQ romance dates. The Scientist (script 3) and the door (script 4, flags 211 and 502) don't depend on either scene's var, so the "Raticate Tail" password is obtainable even if the Crystal scene doesn't play.
 
 ## Route 43: break up the Pidgeot and Noctowl flock (→ Sharp Beak; after the Rocket HQ)
+<!-- quest: kind=side -->
 
 **Where:** Route 43, a flock of three Pidgeot and three Noctowl squabbling in the grass in the middle of the route. A man about 17 steps north of them explains that Pidgeot moved in after the radio-wave incident and started fighting the Noctowl.
 
@@ -130,6 +135,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 *Source:* script file 254 (script 18, L1169–L4176: `PlayerHasSpecies 18` and `164`, `GetPartyCount = 2`, `TrainerBattle 919, 919`; script 19 gives item 244, flag 511; flag 589 cleared by file 90 L2857). Trainer 919 has six Lv. 50 birds. Positions: flock ≈529–530,122–124, man ≈534,105.
 
 ## Route 44 → Ice Path: the Cleffa con man (→ Dawn Stone)
+<!-- quest: kind=side -->
 
 **Where:** Route 44, the girl with the Cleffa at the west end, a few steps north-east of the sign at the route's west entrance. The con men wait on Ice Path 1F, in the middle of the floor.
 
@@ -147,6 +153,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 *Source:* script file 99 (Ice Path 1F, script 11, L1829–L3503; flags 594, 203, 199); file 257 (Route 44, script 4, L108–L749 sets 199 and clears 594). Positions: girl ≈555,172; con men ≈31–32,26–27.
 
 ## Route 44: the kid with his brother's Heracross (→ Never-Melt Ice)
+<!-- quest: kind=side -->
 
 **Where:** Route 44. A boy and a Sneasel kid are arguing in the middle of the route, on its south side. The boy's older brother stands at the east end, not far west of the Ice Path entrance.
 
@@ -163,6 +170,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 *Source:* script file 257 (scripts 6/7 → L2092–L3388, `TrainerBattle 920`, flag 2239, clears 488; script 10 → L2419, L3390–L4112, `TrainerBattle 921`, item 246, flag 204). Trainer 921 has six Pokémon (Butterfree Lv. 81 included). Positions: kids ≈591–594,186; brother ≈619,174.
 
 ## Ice Path 1F: the Icy Rock duel (→ Icy Rock)
+<!-- quest: kind=side -->
 
 **Where:** Ice Path 1F, north part of the floor. Two Trainers face off with a Glalie and an Abomasnow. The Icy Rock sits "on the other side of the ice", about 14 steps east of them.
 
@@ -180,6 +188,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 *Source:* script file 99 (scripts 3, 5, 8–10; L1369–L4544; flags 2244, 504, 2245). Positions: duelists ≈33,10–13; Icy Rock ≈47,10; Frost's rematch spot ≈46,26.
 
 ## Ice Path B2F: Nurse Joy's Suicune trap (story)
+<!-- quest: kind=main -->
 
 **Where:** Ice Path B2F, from the ledge where you land in the middle of the floor to the south-west corner.
 
@@ -195,6 +204,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 *Source:* script file 101 (scripts 3 and 4; coord triggers at 49,32 and 13,55 on var 0x40a2 = 1 and 2; sets 0x40a2 = 3, flags 2242, 2243).
 
 ## Blackthorn City: coaching Crystal (before the Rising Badge; missable)
+<!-- quest: kind=side -->
 
 **Where:** Blackthorn City, just outside the Gym, a few steps south-east of its door, with her Meganium. Gold and his Pokémon practise nearby.
 
@@ -207,6 +217,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 *Source:* script file 937 (script 31, L1274–L2282; flags 499, 2254; badge 15). Crystal ≈672,155 (object 5, hide flag 512; Gold's objects 0, 1, 10, 11 share it). 512 is set by the Rising Badge script itself (file 112 L4855, straight after `GiveBadge 15` at L4728) and never cleared, so the badge branch at L1285 (msg 54, "Gold has gone into the Gym…") never shows in play; earlier guide text said she then only talks about Gold.
 
 ## Blackthorn City → Route 45: the stolen Badges (→ 3 Energy Powder)
+<!-- quest: kind=side -->
 
 **Where:** the Trainer in Blackthorn City, three steps south of the Pokémon Center door; the "Senior Trainer" on Route 45, a few steps south-west of the Dark Cave exit, with two kids listening to him.
 
@@ -232,6 +243,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 *Source:* script file 258 (script 4, L2060–L7207; needs flag 218; `Badge Pouch` item 440; sets flag 234), file 937 (script 33 sets 218; L2669, L3702–L4710 return and reward). Positions: Trainer ≈675,179; Senior Trainer ≈645,202.
 
 ## Blackthorn Gym: Clair's dragons-only rule (story; the Rising Badge)
+<!-- quest: kind=main -->
 
 **Where:** Blackthorn Gym. Clair is at the far (north) end.
 
@@ -250,6 +262,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 *Source:* script file 939 (script 1, L853–L14176 party check, 698 PlayerHasSpecies tests; flag 209; sets 0x40a2 = 4; rematch L14918, trainer 719, Lv. 89–90, Doubles uses the same id twice, a Double Battle against one copy of the team). Of the 532 later-generation species, 252 are banned. Positions: Clair ≈12,3; Dragon Dance tutor ≈11,82. Morning absence: on-load script 2 L54 → after flag 2261 → L726 `CheckBadge 15` (the Rising Badge, given by file 112 `GiveBadge 15`): with it L14906 clears hide flag 751; without it `ScrCmd_522` (hour) 6–9 → L14912 sets 751, other hours L801 clears it. Dragon's Den Clair (file 111 L795 → L1678, flag 521) shows at 6–9 after 2261 with no badge check, so with the badge she is in both places. Vanilla HeartGold (US ROM, file 943 L26–L272) hides her 6–9 when her number isn't registered and 16–18 when it is; the hack replaced the phone check with the badge check.
 
 ## Blackthorn City: Gold's Badge race (→ PP Max ×5 or PP Up)
+<!-- quest: kind=main -->
 
 **Where:** Blackthorn City, in front of the Gym, as you come back from the Dragon's Den.
 
@@ -265,6 +278,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 *Source:* script file 937 (script 32, coord trigger 665–671,152–155 on var 0x40a2 = 6; L3263–L4658; sets 0x40a2 = 7, flag 515).
 
 ## Route 45: the rampaging Dragonite (→ Outrage tutor)
+<!-- quest: kind=side -->
 
 **Where:** a man in the south part of Route 45 who looks after badly hurt wild Pokémon. His Dragonite guards them across the river, about 11 steps east of him.
 
@@ -282,6 +296,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 *Source:* script file 258 (script 13, L2233 tutor on var 0x40a5 ≥ 3; L2386 sets 0x40a5 = 2; coord script 14 on 0x40a5 = 2; L2616–L2867, trainer 949, sets 0x40a5 = 3). Var 0x40a5 is shared with Kanto scenes (S.S. Anne, Vermilion, Saffron) and reset by the Saffron takeover (file 17 L12039; known issues, D-1416). Tutor species list: work/docs/trades_tutors.md. Positions: man ≈648,320; Dragonite ≈659,324; scene spot ≈660–662,324.
 
 ## Dragon's Den: the Elder's trial (the Rising Badge)
+<!-- quest: kind=main -->
 
 **Where:** Dragon's Den (north of Blackthorn City) and the Dragon Shrine on the island in the middle of the lake.
 
@@ -311,6 +326,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 *Source:* script file 111 (coord script 1 on var 0x40a2 = 4, trainer 936, sets 0x40a2 = 5; script 15), file 112 (script 4, L128–L4926; trainer 937; menu values from bank 0189#280–294; GiveBadge 15; item 386; sets 0x40a2 = 6 and flags 1663, 2013–2022), file 939 L14168 (Gym sets 0x40a2 = 4); whirlpool prompt: file 146 L2559 `CheckBadge 6` (Volcano), `GetPartySlotWithMove` ignores the move (D-1428). Positions: gatekeeper trigger ≈27–29,10; Whirlpool man ≈6,31.
 
 ## Dragon Shrine: the Mystery Stone becomes a Charizardite, and the Dragon Rush tutor
+<!-- quest: kind=side -->
 
 **Where:** the Elder at the back of the Dragon Shrine.
 
@@ -329,6 +345,7 @@ Entries are grouped by place, not by story order. Two of them come earlier in th
 *Source:* script file 112 (script 1; L663–L3289, `TakeItem 504`, item 325; L3291–L5712 tutor, move 407, species list L5213; the five memories are msgs 55–59). Elder ≈6,9.
 
 ## Route 47: Will, Karen and the Raikou device (story; five battles in a row)
+<!-- quest: kind=main -->
 
 **Where:** Route 47, west of the Cliff Edge Gate. Gold calls you about 10 steps north-east of the Reversal Cave entrance, then the scene plays further north-west, next to Gold and his Typhlosion.
 
@@ -348,6 +365,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 *Source:* script file 260 (scripts 2 and 4, coords on var 0x4098 = 15; L1314–L4475; ends with flags 2116, 2185 and 0x4098 = 12), file 121 L1630 (Cianwood Cave sets 0x4098 = 15), file 252 (Route 42 coord on 0x4098 = 12). Positions: call ≈95,379; scene ≈79,370.
 
 ## Route 48 → Route 47: Gallade, the hurt Buneary and the man afraid of heights (→ Shoal Shell)
+<!-- quest: kind=side -->
 
 **Where:** Gallade and Buneary at the west end of Route 48; the man on Route 47 by the Cliff Edge Gate, a few steps south-west of the Cianwood Cave entrance.
 
@@ -364,6 +382,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 *Source:* script file 261 (script 6, L680–L1532; `HasItem 43`, sets flag 1283, clears 476), file 260 (script 7, L4510, L5187–L6263; item 71, flag 2123). Positions: Gallade ≈77,336; man ≈144,392.
 
 ## Route 47: the Qwilfish poacher (→ Heart Scale)
+<!-- quest: kind=side -->
 
 **Where:** a man at the foot of the waterfall, a few steps from the Cliff Cave entrances, and a Shady Guy with a net in the pond above the waterfall (you need Waterfall).
 
@@ -379,6 +398,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 *Source:* script file 260 (script 14, L4770–L6142, flag 1281; script 9, L5364–L6456, item 93, flag 1282). Positions: man ≈128,388; Shady Guy ≈128,367.
 
 ## Lake of Rage: Petrel at the lake guardian's house (League HQ round 4; continues Pokémon League, Mt. Silver and New Bark Town's League HQ entry)
+<!-- quest: kind=main -->
 
 **Where:** the house in the north-west corner of the Lake of Rage.
 
@@ -393,6 +413,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 *Source:* script file 935 (script 2, L111–L563: `TrainerBattle 816, 630`, sets 0x40b2 = 5, flag 1139). The League HQ report checks 0x40b2 = 5 (file 31 L1702). The trigger condition for script 2 isn't in the script: it's the house's frame script, which starts on entry while 0x40b2 = 4 (set by file 31 L4541). Observed with `emu_harness.py guide0813 --case petrel_scene`: entering with 0x40b2 = 4 starts it (618#46), with 3 nothing happens. House door ≈497,42.
 
 ## Lake of Rage: Uxie, Mesprit and Azelf (knowledge, emotion and willpower; after the Petrel scene)
+<!-- quest: kind=side -->
 
 **Where:** the lake guardian's house (north-west corner) and the Lake of Rage itself.
 
@@ -426,6 +447,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 *Source:* script file 935 (script 1: L691/L1418 sets 0x4098 = 33; quiz L923–L1416 clears flag 649, 0x4098 = 34; L803–L1523 `MonGetFriendship = 255` clears 651, 0x4098 = 35; L750–L801 `TrainerBattle 918` clears 652, 0x4098 = 36; L565 closing line), file 934 (script 1 → L1749/L5595–L6658: shows objects 39–41 only if 0x40B2 ≥ 5 (L126, Petrel scene), 0x4037 = 0xF229 (L1749) and 649/651/652 are clear; scripts 29–31, `WildBattle 480/481/482, Lv. 90`, set 649/651/652). Route 42 (file 252 L4761–L4797) sets 649/651/652 earlier in the story, so the Pokémon can't appear before their trial. The day check is var 0x4037. Positions: Uxie ≈542,47, Mesprit ≈527,59, Azelf ≈492,52.
 
 ## Lake of Rage: the calm-day visitors (Wednesdays, after the Petrel scene)
+<!-- quest: kind=side -->
 
 **Where:** Lake of Rage.
 
@@ -440,6 +462,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 *Source:* script file 934 (script 28 → L5526, `TrainerBattle 916`, item 439, flag 328; script 27, `ScrCmd_522` hour test, items 53/93, flag 327 cleared on non-calm visits by L1782; script 6, item 241, ribbon 61; all hidden by flags 508/510 unless script 1 passes both checks: L126 0x40B2 ≥ 5 (set by the Petrel scene, file 935 L551) and L1749 0x4037 = 0xF229 (calm-day mark, written on entry only if Rocket HQ flag 202 is set and it's Wednesday; see ch13); L1782 clears 327 on non-calm visits). Script 27 belongs to an item-ball object, not a person. Positions: Carson ≈523,77; item ≈539,73; Wesley ≈495,48; shore sign 528,82. Ribbon freeze: decision D-1331.
 
 ## Reversal Cave: chase Giovanni through the Distortion World (story; warp-pad maze)
+<!-- quest: kind=main -->
 
 **Where:** Reversal Cave, entered from the west side of Route 47. The first room has an ancient statue at the back (north end); the Distortion World behind it is a maze of warp pads.
 
@@ -473,6 +496,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 *Source:* script file 135 (map 526; script 7 coord 28,18 sets var 0x40af = 7; scripts 8–23 warp pads; script 24 coord 49,123: trainer 553, L2214 sets flag 2339, L2218 clears 1143, var 0x40af = 8; script 5 statue; script 6 exit statue), file 108 L1176 (Dark Cave clears flag 1142 to show Giovanni's group), file 260 (Route 47 warp at 87,389). Positions: first-room statue ≈32,9; trigger ≈28,18; landing ≈38,184 below the exit statue ≈38,183. Pads (exit statue = 38,183): 37,165↔36,151; 46,184↔52,140; 21,186↔11,140; 28,145↔37,140; 25,163↔9,178; 15,168↔52,152; 47,171↔49,124; 27,172→37,140; 55,170→37,165. Charon trigger 49,123; Giratina's spot (sign object) 49,117.
 
 ## Ice Path B2F: the cursed tunnel, Swinub and the Anti-Age Spray (needed in the final chapter)
+<!-- quest: kind=main -->
 
 **Where:** Ice Path B2F. The **Swinub Trainer** and a **kid who guards the tunnel** are in the east section, reached from B3F: about a dozen steps east of the stairs up from B3F. The tunnel starts just north of the kid and runs north to an ancient statue at its far end. The **old man** who knows about the curse is in the west part of the floor, about 20 steps east of the way back up to 1F.
 
@@ -496,6 +520,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 *Source:* script file 101 (scripts 2, 7–13; L4745–L7019; flags 2249, 2250, 2341, 1145, 1143; vars 0x4092, 0x40af; coord triggers 94–96,45 on 0x4092 = 0 and 85–86,50 on 0x40af = 8; statue warps L4177 and L5956 to map 521). Item 429 (Anti-Age Spray) is given at L6210 and never taken anywhere in the game. File 822 L2582 resets 0x4092 at the final Hall of Fame. On entering the floor, script 2 resets 0x4092 to 0 only while flag 2261 is clear and 0x40af < 10 (L4745–L4758); the kid's "can't feel the curse" line (L5455) needs 0x4092 ≥ 1 (L4870). Positions: Swinub Trainer ≈98,49; kid ≈95,48; tunnel entrance ≈95,45 (trigger 94–96,45); statue ≈95,15; old man ≈27,38; scene ≈85,50; aged boy ≈91,49; B3F stairs 84,53.
 
 ## Dialga's and Palkia's spaces: Team Rocket catches Dialga and Palkia (story)
+<!-- quest: kind=main -->
 
 **Where:** two sealed spaces on one map. **Dialga's** (east) is reached from the deepest part of the Ice Path; you arrive by an ancient statue at its south end, which takes you back to Ice Path B2F. **Palkia's** (west) is reached from the ancient statue on Mt. Mortar B1F ([Mt. Mortar: the five-member expedition](11-cianwood-mahogany.md#mt-mortar-the-five-member-expedition-the-way-to-the-altar-needed-in-the-final-chapter)); you arrive by the statue at its south end, which takes you back to Mt. Mortar B1F. Palkia's space is the old Sinjoh Ruins.
 
@@ -512,6 +537,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 *Source:* script file 130 (map 521; script 7 coord 88,42: trainer 817, L1947–L1965 flags 1328, 2342, var 0x40af = 10; script 8 coord 24,57: var 0x40af = 12; script 9 coord 24,45: trainers 817 + 553, L2688–L2696 flags 2344, 2342, var 0x40af = 13; scripts 5, 6 statues), file 132 (cabin, script 3, warp to map 60), file 101 (Ice Path B2F warps in), file 98 L179 (Mt. Mortar statue warp). Positions: Dialga statue ≈93,63, trigger ≈88,42; Palkia statue ≈21,63 (arrival ≈21,64), triggers ≈24,57 and ≈24–26,45. The cabin in Palkia's space (door ≈20,25; file 132 script 3, an Abra man who warps you to New Bark Town, map 60) can't be reached: its door is dead (guide_errata), so it's left out.
 
 ## Dialga, Palkia and Giratina: catch them (after Lance's visit)
+<!-- quest: kind=side -->
 
 **Where:** the north end of Dialga's space (from the Ice Path), the north end of Palkia's space (from Mt. Mortar) and the end of the Distortion World (the spot where Giratina appeared).
 
@@ -533,6 +559,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 *Source:* script file 130 (script 10 L2706 Dialga, WildBattle 483 Lv. 95, flag 2342; script 11 L2748 Palkia, WildBattle 484 Lv. 95, flag 2343), file 135 (script 5 L264–L325 statue needs flag 2261 + item 112; script 28 L2400–L2528 Giratina, WildBattle 487 Lv. 95, flag 2340; all three set their flag on any result except a loss or draw: `CheckBattleWon` is false only for outcomes 2/3, arm9 0x0205172C, so fleeing counts), file 842 L1868–L1976 (Lance gives Silver Wing, Rainbow Wing, Red, Blue, Jade, Adamant and Lustrous Orbs) and L2193–L2201 (clears 2342, 2343, 2340), file 101 L4101–L4177 (Ice Path statue: flag 2261 + item 135). Positions: Dialga ≈89,30; Palkia ≈25,30; Giratina spot ≈49,117; pad ≈47,171 → ≈49,124. The story scene removes Palkia for good: `HidePerson 6` (L2381) sets Palkia's hide flag 2343 (the same mechanism as every `HidePerson`; tested in an emulator, guide review pass 2, CN and EN: Palkia present before, absent after the hide and a reload, `pass2-A/palkia_hide_*`). Lance's L2197 clears 2343 again.
 
 ## Route 47: Raikou (after the final Hall of Fame)
+<!-- quest: kind=side -->
 
 **Where:** Route 47, at the spot where Will's device stood, in the north-west of the route.
 
@@ -547,6 +574,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 *Source:* script file 260 (script 17, L5082–L5116; `CheckBattleWon` @5089 is false only on a loss or draw, so a catch, knockout or flee sets flag 2320, which hides object 33), file 23 L6949 (Burned Tower clears 2320). Raikou ≈83,355.
 
 ## Sinjoh Ruins (temple of Arceus): Regigigas and Arceus (after the final Hall of Fame)
+<!-- quest: kind=side -->
 
 **Warning: in a normal game you can't do this.** Both Pokémon need the **Azure Flute** after the story, and the Seven Island shrine keeper never gives it back: he only tells you to keep it safe ([Ritual Shrine: borrowing the Azure Flute](06-sevii-islands-indigo.md#ritual-shrine-borrowing-the-azure-flute-post-game-probably-unobtainable); [known issue](known-issues.md#arceus-and-regigigas-out-of-reach)). The flute is the only known way back into the temple after the story ([Ruins of Alph: small extras](08-cherrygrove-to-azalea.md#ruins-of-alph-small-extras)), and the only thing that makes the centre circle react. The steps below describe what the game data says would happen; they can't be confirmed in game.
 
@@ -565,6 +593,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 *Source:* script file 131 (map 522; script 9 L993–L1036 Regigigas, WildBattle 486 Lv. 95, flag 2305; script 10 coord 16,14 L579–L1296: flag 2261, item 536, species 483/484/487; script 11 L1298–L1367 Arceus, WildBattle 493 Lv. 95, flag 2306; both set their flag on any result except a loss or draw, `CheckBattleWon` @1015/@1342, so running away counts too), file 822 L2498 (the final Hall of Fame clears 2305), files 49 and 942 (Azure Flute; file 942 L104 gives the keep-it-safe line once var 0x40B7 ≥ 4, which League HQ sets before the Hall of Fame). The centre-circle trigger (coord at 16,14) needs var 0x40B7 = 5, which only file 942 L539 sets (the shrine keeper's gift); the outer circles (scripts 4–6, coords at 12,15 and 16,8) need var 0x4104 = 1, set only in file 131 L1400 (Cynthia's event scene). Regigigas ≈16,19. The doorway at ≈13,7 in Palkia's space is unreachable (guide_errata).
 
 ## Lake of Rage → Route 44: small extras
+<!-- quest: kind=side -->
 
 - **Route 43 gatehouse, the fossil man** (the north-south gatehouse in the middle of the route; he stands in the middle of the room with his Omanyte): after you've dealt with the Lake of Rage "researcher" (the transmitter entry), he says the fake researchers trampled his fossil and paid him with a TM. He gives it to you: **TM25 Thunder** (once).
 - **Fishing guru's house** (the house on the south shore): after the Rocket HQ chapter, show him your biggest **Magikarp** (party). A new size record earns an **Ether**.
@@ -577,6 +606,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 *Source:* fossil man: script file 256 script 4, flag 206 (≈7,6 in the gatehouse). Fishing guru: file 936, flag 313 (door ≈536,89). Dee: file 934 script 13 (≈544,76). Sammy: file 254 script 11 (≈520,112). Mia: file 257 scripts 12–13, flag 2240 (≈589,174; shore girl ≈595,164). Mathis: file 257 script 14, flag 2241 (≈606,166). Aspear Berry: file 257 script 11 (≈613,171; brother ≈619,174).
 
 ## Ice Path / Blackthorn City: small extras
+<!-- quest: kind=side -->
 
 - **Icicle Spear tutor (Ice Path 1F, with a Cloyster, just north of the stairs down to B2F):** beat **Ruin Maniac Dave** (Cloyster, Corsola, Dewgong, Mamoswine, Lv. 62–65) once, and he teaches **Icicle Spear** free, as often as you like. Losing whites you out.
 - **Black Belt Boyd (Ice Path B2F, north part of the floor, east of the stairs from B1F):** an optional battle (Gallade, Nidoking, Primeape, Aggron, Lv. 63–65). Win once for a **Claw Fossil**.
@@ -589,6 +619,7 @@ Gold's Togetic then smashes the device, Raikou breaks free and runs, and the Exe
 *Source:* Icicle Spear: script file 99 script 14, flag 2246 (≈52,16). Boyd: file 101 script 5, flag 2247 (≈54,17). Maureen: file 937 script 15, flag 2253 (≈693,156). EV trainers: file 937 scripts 19, 21 (≈674,163 and ≈665,176); file 944 scripts 4, 5 (≈37,37 and ≈40,38; the east room's door is Blackthorn ≈684,168, warp anchor 2); trainers 939/940/942/943 have six Lv. 30 Pokémon each. Santos: file 937 script 7 (≈677,161); ribbon freeze: decision D-1331. Play Rough tutor: file 944 script 8 teaches Flail, decision D-1305; the tutor is the father (626#54, see [Radio Tower, Ecruteak City and Olivine City](10-ecruteak-olivine.md)). Photographers: file 99 L1320, file 937 L1544.
 
 ## Route 45 to Route 48 and Dragon's Den: small extras
+<!-- quest: kind=side -->
 
 - **Dragon's Den EV partners** (west side, north of the Whirlpool man, standing with a Nidorina and a Golbat): give a **Sitrus Berry** for a battle against six Lv. 30 Nidorina (HP EVs), or a **Cheri Berry** for six Lv. 30 Golbat (Speed EVs). They're repeatable, one Berry per battle.
 - **Dragon's Den cleaner** (just north of the shrine door, beside a sign): sells a **Dragon Scale** for $2,500 on Tuesdays, Thursdays, Saturdays and Sundays, and only while you don't already have one.

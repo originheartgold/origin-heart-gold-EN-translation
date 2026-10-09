@@ -24,6 +24,8 @@ import romdata as R       # noqa: E402
 import landmarks as LM    # noqa: E402
 import safari_held as SH  # noqa: E402
 import battle_reference as BR  # noqa: E402
+import pokemon_acquisitions as PA  # noqa: E402
+import pickup as PU  # noqa: E402
 
 OUT = os.path.join(R.REPO, 'site', 'src', 'data')
 # reviewed lists, shared with the docs (see gen_docs.reviewed and each file's _about): species, forms and items a
@@ -105,7 +107,7 @@ def build_areas(ctx, slugs):
             areas[name] = dict(name=name, slug=slugs.make('area', name, z['zone_id']),
                                region=z.get('region') or '',   # regrouped in site/src/lib/data.ts
                                rank=list(ctx.zrank(z['zone_id']))[0], zones=[], maps=[],
-                               encounters=[], encNotes=[], contest=None, headbutt=[], trainers=[], items=[], gifts=[],
+                               encounters=[], encNotes=[], contest=None, safari=[], headbutt=[], trainers=[], items=[], gifts=[],
                                shops=[], trades=[], statics=[])
         a = areas[name]
         a['zones'].append(z['zone_id'])
@@ -335,51 +337,57 @@ def safari_wild_rows(ctx, zone_area):
         yield area, 'Safari Zone: ' + safari_area, method, row
 
 
-def wild_held_sources(ctx, areas, species_ids, extra_rows=()):
-    """Join actual encounter rows to form-aware personal data, never gift/trade availability.
+def wild_encounter_rows(areas, extra_rows=(), include_statics=False):
+    """All displayed wild sources, with percentages distinct from contest weights."""
+    for area in areas.values():
+        for block in area['encounters']:
+            for section in block['sections']:
+                for row in section['rows']:
+                    yield area, block['label'], section['title'], row, row['pct'], 'percent'
+        for block in area['headbutt']:
+            for section in block['sections']:
+                for row in section['rows']:
+                    yield area, block['label'], 'Headbutt: ' + section['title'], row, row['pct'], 'percent'
+        if area['contest']:
+            for group in area['contest']['sets']:
+                for row in group['rows']:
+                    yield area, area['name'], 'Bug-Catching Contest: ' + group['title'], row, row['rate'], 'weight'
+        if include_statics:
+            for row in area.get('statics', []):
+                if row['kind'] == 'static':
+                    yield area, area['name'], 'Scripted wild battle (may be one-time)', row, None, 'unknown'
+    for area, place, method, row in extra_rows:
+        yield area, place, method, row, row['pct'], 'percent' if row['pct'] is not None else 'unknown'
 
-    Reuse the displayed encounter tables so time, weekday, radio and tree conditions
-    remain attached to their percentages. A percentage is conditional on its method,
-    not the chance of finding that item on every step.
+
+def wild_encounter_sources(ctx, areas, species_ids, extra_rows=(), include_statics=False):
+    """Index ROM-derived encounters by form-aware species ID, retaining every condition.
+
+    A percentage is conditional on the listed method, not a per-step chance.
+    Radio/swarm/night-fishing rows describe replacement slots, not entire tables.
+    Contest values are raw weights; Safari candidates have no fixed percentage.
     """
     locations = collections.defaultdict(list)
-
-    def add(area, place, method, row, rate):
+    for area, place, method, row, rate, kind in wild_encounter_rows(areas, extra_rows, include_statics):
         sp = row['id']
         if sp not in species_ids:
-            return
+            continue
         # Night fishing rows encode the applicable rod in their display name.
         name = ctx.sp(sp)
         detail = row.get('name', '')
         if detail.startswith(name + ' ('):
             method += ': ' + detail[len(name) + 1:]
         source = dict(area=area['slug'], place=place, method=method,
-                      level=row['level'], encounterRate=rate)
+                      level=row['level'], encounterRate=rate,
+                      rateKind=kind if rate is not None else 'unknown')
         if source not in locations[sp]:
             locations[sp].append(source)
+    return locations
 
-    for area in areas.values():
-        for block in area['encounters']:
-            for section in block['sections']:
-                for row in section['rows']:
-                    add(area, block['label'], section['title'], row, row['pct'])
-        for block in area['headbutt']:
-            for section in block['sections']:
-                for row in section['rows']:
-                    add(area, block['label'], 'Headbutt: ' + section['title'], row, row['pct'])
-        if area['contest']:
-            for group in area['contest']['sets']:
-                for row in group['rows']:
-                    add(area, area['name'], 'Bug-Catching Contest: ' + group['title'], row, row['rate'])
-        for row in area.get('statics', []):
-            if row['kind'] == 'static':
-                # WildBattle rolls held items too, but these sources are not
-                # random encounter tables and are not necessarily repeatable.
-                add(area, area['name'], 'Scripted wild battle (may be one-time)', row, None)
 
-    for area, place, method, row in extra_rows:
-        add(area, place, method, row, row['pct'])
-
+def wild_held_sources(ctx, areas, species_ids, extra_rows=()):
+    """Join wild sources to form-aware held items, including scripted wild battles."""
+    locations = wild_encounter_sources(ctx, areas, species_ids, extra_rows, include_statics=True)
     sources = collections.defaultdict(list)
     for sp in sorted(locations):
         for item, chance in held_item_chances(ctx.personal[sp]['items']):
@@ -548,10 +556,14 @@ def export(ctx):
         a['headbutt'].append(dict(label=ctx.zname(zid), trees=h['trees'], special=h['secret_trees'], sections=tabs))
 
     # ---- static / gift Pokémon and trades
+    acquisition_sources = PA.sources(ctx, G, R, zone_area, file_areas)
+    acquisition_notes = PA.load_notes()
     static_q = collections.defaultdict(list)
     for kind, sp, fm, lv, f in G.static_mons(ctx):
         idx = G.form_index(ctx, sp, fm)
-        for q in quests_for(gq, f, ctx.sp(idx)):
+        if acquisition_notes.get((f, idx), {}).get('exclude'):
+            continue
+        for q in (quests_for(gq, f, ctx.sp(idx)) if kind == 'static' else []):
             if q not in static_q[idx]:
                 static_q[idx].append(q)
         for a in file_areas(ctx, zone_area, f)[:1]:
@@ -601,6 +613,8 @@ def export(ctx):
             next(a for a in areas.values() if a['slug'] == a_slug)['trainers'].append(tid)
 
     # ---- items
+    pickup = PU.read_table(ctx.rom.path)
+    pickup_ids = {row['item'] for row in pickup['items']}
     fi = ctx._field
     price = lambda i: ctx.items[i]['price'] if i < len(ctx.items) else 0
     item_src = collections.defaultdict(list)
@@ -650,15 +664,27 @@ def export(ctx):
                 seen[sh['room']] += 1
                 sh['room'] = '%s, counter %d' % (sh['room'], seen[sh['room']])
     need = ctx.item_need
-    wild_held = wild_held_sources(ctx, areas, set(sp_ids), itertools.chain(
-        calendar_wild_rows(ctx, zone_area), safari_wild_rows(ctx, zone_area)))
+    safari_rows = list(safari_wild_rows(ctx, zone_area))
+    safari_sections = collections.OrderedDict()
+    for area, place, method, row in safari_rows:
+        safari_sections.setdefault(method, []).append(row)
+    safari_area = zone_area.get(357)
+    if safari_area:
+        safari_area['safari'] = [dict(title=method, rows=rows) for method, rows in safari_sections.items()]
+        safari_area['encNotes'] = [n for n in safari_area['encNotes'] if n != G.ENC_PLACEHOLDER[357]]
+    extra_wild = list(itertools.chain(calendar_wild_rows(ctx, zone_area), safari_rows))
+    wild_sources = wild_encounter_sources(ctx, areas, set(sp_ids), extra_wild)
+    wild_held = wild_held_sources(ctx, areas, set(sp_ids), extra_wild)
     items = []
     for i in range(1, len(ctx.items)):
         name = ctx.it(i)
         if name.startswith('item #') or name in ('???', '—', ''):
             continue
         srcs = list({json.dumps(s, sort_keys=True): s for s in item_src.get(i, [])}.values())
-        srcs += ITEMS_EXTRA.get(i, {}).get('sources', [])
+        # The complete ROM table supersedes the five legacy manual Pickup sources.
+        srcs += [source for source in ITEMS_EXTRA.get(i, {}).get('sources', []) if source['kind'] != 'Pickup']
+        if i in pickup_ids:
+            srcs.append(dict(kind='Pickup', area=None, place='Pickup Ability', qty=1))
         d = ctx.items[i]
         needed = {}
         for f in need.get(i, ()):
@@ -699,6 +725,9 @@ def export(ctx):
         s['foundIn'] = [dict(area=k, methods=[m + (' (%s)' % ('every day' if len(ds) == 7 else ', '.join(ds)) if ds else '')
                                               for m, ds in v.items()]) for k, v in seen.items()]
         s['quests'] = static_q.get(s['id'], [])
+        s['wildEncounters'] = wild_sources.get(s['id'], [])
+        s['acquisitions'] = acquisition_sources.get(s['id'], [])
+        s['otherSources'] = PA.other_sources(s['how'], bool(s['wildEncounters']))
 
     area_list = list(areas.values())
     for a in area_list:
@@ -708,7 +737,7 @@ def export(ctx):
                 encExplainer=G.ENC_EXPLAINER, rateNames=G.RATE_NAMES,
                 counts=dict(species=len(species), moves=len(moves), items=len(items), areas=len(area_list),
                             trainers=len(trainers)))
-    return BR.enrich(ctx, dict(species=species, moves=moves, items=items, areas=area_list, trainers=trainers, tutors=tut, meta=meta,
+    return BR.enrich(ctx, dict(species=species, moves=moves, items=items, areas=area_list, trainers=trainers, tutors=tut, meta=meta, pickup=pickup,
                 trainer_guide=G.trainer_page_sections(ctx, tds, parties, loc)), R, slugs)
 
 

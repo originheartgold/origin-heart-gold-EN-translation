@@ -7,7 +7,7 @@ import { resolve, sep } from 'node:path';
 import { readSave, patchPartyRecord } from '../../save-core/dist/save.js';
 import { decodePokemon, patchPokemonMoves, patchPokemonStats, patchPokemonShiny, patchPokemonPokerus } from '../../save-core/dist/pokemon.js';
 import { readInventory, patchMoney, patchInventoryPocket } from '../../save-core/dist/inventory.js';
-import { loadBundledOriginData } from '../../save-editor/dist/bundled-data.js';
+import { loadBundledOriginData } from '../../save-editor/dist/core/bundled-data.js';
 
 const [sourcePath, output] = process.argv.slice(2);
 if (!sourcePath || !output) throw Error('Usage: node work/research/save_core/runtime_fixture.mjs LOCAL_FULL_PARTY_SAVE NEW_OUTPUT_DIRECTORY');

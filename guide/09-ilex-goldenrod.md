@@ -36,6 +36,7 @@
 - [Dream World: Cresselia and Darkrai (post-game)](#dream-world-cresselia-and-darkrai-post-game)
 
 ## Ilex Forest: Bugsy's bug hunt with Honey (story; the more you catch, the better the reward)
+<!-- quest: kind=main -->
 
 **Where:** Ilex Forest. The scene starts when you walk along the path about a dozen steps north of the south entrance (the one from Azalea Town). Bugsy and his team wait a few steps east of that path.
 
@@ -72,6 +73,7 @@
 *Source:* script file 92 (coord script 22 on var 0x4099 = 1; scripts 2, 4–10, 17, 18; L4209–L10991; reward L2879–L5514; var 0x409f counts catches; wild battles L2069/L2258/L2447/L2542 count any result except a loss; the hunt's end resets the bugs' state variables and the counter). Positions: scene trigger ≈34,60–62, Bugsy's team ≈38–41,60–62, Bugsy afterwards ≈45,65; rocks ≈64–65,49–50 (Kricketune), ≈78–79,50–51 (Ariados; works from x = 77 or y = 49 only), ≈94–95,48–49 (Burmy), ≈74–75,60–61 (Skorupi). The Rocky Helmet man uses the Ariados flag 2104.
 
 ## Ilex Forest: Koume, the Kimono Girl who lost her way (blocks the exit to Route 34)
+<!-- quest: kind=main -->
 
 **Where:** Koume stands in the middle of the forest, north-east of the Leaf Storm tutor. Her sister Sakura blocks the Route 34 door of the **north gatehouse** (the forest's north exit).
 
@@ -90,6 +92,7 @@
 *Source:* script file 92 (script 19, L3187–L3452, L5832–L10540; var 0x409a 1→2, 3/4 → 5 → 1; flag 2033), file 869 (Azalea–Ilex gatehouse, Sakura: var 0x409a 1→3, 2→4). Positions: Koume ≈75,32; wander spot ≈93,27; "I don't know the way" spot ≈80,49; Sakura ≈37,3 in the gatehouse.
 
 ## Ilex Forest: the fire ranger's stray Houndour (→ 10 Safari Balls)
+<!-- quest: kind=side -->
 
 **Where:** the fire ranger with two Squirtle in the north-east of the forest. The Houndour starts in the north-west, about 20 steps south of the north exit.
 
@@ -112,6 +115,7 @@
 *Source:* script file 92 (scripts 30, 31; L3866–L4198, L6779; var 0x409b 1→9; trainer 764; flag 303). The hunt's end sets 0x409b = 1 (L5725); the ranger's start sets 2 (L4155) and the report sets 9 (L4188). The ranger starts the quest whenever the Burmy state is at its starting value; the hunt's end resets it. Positions: ranger ≈87,12; Houndour ≈35,30 → ≈41,61 → ≈81,48 → ≈64,15 → ≈95,53.
 
 ## Ilex Forest / Forest of Time: Sammy and the injured Celebi (League HQ round 3)
+<!-- quest: kind=main -->
 
 **Where:** the old ranger standing by the path into the Forest of Time, a few steps west of its entrance (just north of where Bugsy's team stood during the bug hunt). The Forest of Time is the separate inner wood through that path.
 
@@ -122,7 +126,27 @@
 2. Follow them in. The injured Celebi needs **10 Fresh Water, 10 Sitrus Berries and a Pokémon that can make light**. The light Pokémon must be your **lead** (first Pokémon that can battle): Staryu, Starmie, Chinchou, Lanturn, Ampharos, Volbeat or Clamperl.
 3. Come back and talk to Celebi or the ranger → "Use the prepared items?" → Yes. Celebi recovers (and your party is healed).
 4. Team Rocket's Executive Marauder arrives with two Grunts. You hold off the Grunts in a Double Battle (Lv. 62–65) while the others hide.
-5. Go north after them. At the end of the path, Marauder (Tyranitar and five more, Lv. 89–90) attacks. You battle him, then Celebi turns time back and you fight him again in a Double Battle against the same team, sent out two at a time.
+
+<aside class="forest-route" id="forest-of-time-route" aria-labelledby="forest-route-title">
+<div class="forest-route-heading">
+<p class="forest-route-eyebrow">AFTER THE TWO GRUNTS</p>
+<h3 id="forest-route-title">Find your way through the forest</h3>
+<p>Start in the clearing where you healed Celebi. Take these five exits in order.</p>
+</div>
+<p class="forest-route-print">Top-middle → top-middle → top-right → top-left → top-middle.</p>
+
+<!-- solver: forest-route -->
+
+<div class="forest-route-tip"><strong>Enter the side paths sideways.</strong> Walk <strong>right</strong> into the top-right exit and <strong>left</strong> into the top-left exit. Walking up onto them does nothing.</div>
+<p class="forest-route-arrival"><span aria-hidden="true">↳</span> <strong>Upper forest</strong> · Continue north to find Sammy and Celebi.</p>
+<details class="forest-route-help">
+<summary>Lost, or being sent back?</summary>
+<p>If you’ve lost track, return to the clearing where you healed Celebi and start from exit 1. You arrive standing on an exit each time; step off it before choosing the next one.</p>
+<p>The final exit loops back while you’re still fetching the medicine. After healing Celebi and winning the Grunt battle, the route is open.</p>
+</details>
+</aside>
+
+5. Follow the route above. At the end of the path, Marauder (Tyranitar and five more, Lv. 89–90) attacks. You battle him, then Celebi turns time back and you fight him again in a Double Battle against the same team, sent out two at a time.
 
 **Reward:** **Leaf Stone, Max Elixir, PP Max**. The lead is reported to the League HQ desk.
 
@@ -131,10 +155,13 @@
 *Source:* script file 92 (script 16, L2672–L5384; var 0x40a2 = 17), script file 52 (Forest of Time: coord scripts 1 and 3 on var 0x4099 = 3 / 5; scripts 2, 4; L2751–L2883, L2885, L3574, L4359–L6148; L437–L2413; trainers 60+62, 763, 763+763; flag 2110). Ranger at ≈40,54 in Ilex Forest.
 
 ## Forest of Time: the shrine, Shaymin and Celebi (Gracidea; time of day)
+<!-- quest: kind=side -->
 
 **Where:** the shrine at the north end of the Forest of Time.
 
 **Who gets it / when:** after the Sammy chapter above. **One Shaymin and one Celebi per game.**
+
+**Getting there:** use the same [five-exit route through the forest](#forest-of-time-route) to reach the shrine.
 
 **How it works:**
 1. **Shaymin:** have the **[Gracidea](/items/gracidea/)** in your Bag (an item ball in the Cinnabar Island lab; see [Cinnabar Island: the Detrick lab lockdown](05-saffron-cinnabar.md#cinnabar-island-the-detrick-lab-lockdown-door-puzzle-and-mewtwo)), a **Leafeon** as your lead, and examine the shrine between **8:00 and 19:59**. Shaymin appears → "Let Shaymin join your party?" → Yes: **Shaymin Lv. 90**.
@@ -148,6 +175,7 @@
 *Source:* script file 52 (script 6, L2920–L3940; scripts 7, 8; flags 2296, 2297, 2298; file 92 L130 clears 2298 on each visit to Ilex Forest proper; L2563 checks 2298 first, then 2296/2297; Shaymin's appearance sets 2298 at L3655, Celebi's at L3815 and again after the gift at L3505; nothing clears 2296/2297; the hour comes from ScrCmd_522, compared with 8–19). Shrine at ≈15,14 in the Forest of Time.
 
 ## Forest of Time: Celebi takes you back to the S.S. Anne (post-game; only if the ship sank)
+<!-- quest: kind=side -->
 
 **Continues [S.S. Anne: defuse the bomb or the ship sinks](03-vermilion-to-celadon.md#ss-anne-defuse-the-bomb-or-the-ship-sinks-one-chance).**
 
@@ -167,6 +195,7 @@
 *Source:* script file 52 (script 6 L3336–L3940, L4006–L4959; trainer 177; clears flag 1093); final Hall of Fame = flag 2261; the S.S. Anne branch (L2596) sits behind the shared 2298 gate, which the Celebi gift sets at L3505. Shrine at ≈15,14.
 
 ## Ilex Forest: small extras
+<!-- quest: kind=side -->
 
 - **The man with the sore head** (in the north of the forest, about halfway between the north exit and the fire ranger) gives you a **Rocky Helmet**, once. **Take it only after the bug hunt:** he uses the same record as the hunt's Ariados. Taking it earlier makes the Ariados rock do nothing: the hunt still counts Ariados as dealt with and can still be finished, but not as one of yours, so you can deal with at most two bugs yourself and miss the top reward (PP Max + Heart Scale). If you've already done the Ariados rock, he won't give the Helmet until the hunt ends. A Helmet taken mid-hunt means you can get a second one after the hunt.
 - **Leaf Storm tutor** (in the middle of the forest, ten steps north of the Kricketune rock): teaches Leaf Storm for a **Leaf Stone**.
@@ -176,6 +205,7 @@
 *Source:* script file 92 (scripts 13, 20, 23, 24, 26, 27; Andy ≈78,25, trainer 121, flags 427/1481). Rocky Helmet man ≈63,12 (shares flag 2104 with the Ariados rock; hack finding: a set 2104 makes the Ariados rock skip at L1927 → L4344 without adding to counter 0x409f, while the end-of-hunt checks (e.g. L4490, L9322) only need 2104 set, so the hunt still ends; Skorupi's rock also resolves Ariados if it is still up, so Ariados can never be the last bug left); Leaf Storm tutor ≈64,39; Heath ≈92,62 and Flo ≈74,57 (appear after Koume); Noah ≈39,16; Flo and Noah share flag 1460, set only on a win.
 
 ## Route 34: Totodile, the dance master (one chance)
+<!-- quest: kind=side -->
 
 **Where:** a dancer with a twisted ankle on the path between the Day-Care and the Ilex Forest gatehouse, about 25 steps north of the gatehouse. The dance-off grove is at the very south end of Route 34, below the Ilex Forest gatehouse, reached by following the water south.
 
@@ -195,6 +225,7 @@
 *Source:* script file 237 (scripts 9, 14, 15; L3258, L5047, L3288–L5922, L6830–L7071; var 0x408b 11 → 12 → 13; coord script 14 on 0x408b = 11; trainers 766+767; flag 1839). Positions: dancer ≈371,425; grove ≈370,472.
 
 ## Route 34: advice for Whitney's victim (→ Razor Claw)
+<!-- quest: kind=side -->
 
 **Where:** a Youngster with a Sunkern in the north-west of Route 34, north-west of the police officer and his Arcanine.
 
@@ -209,6 +240,7 @@
 *Source:* script file 237 (script 16; L3696–L7248; flag 2102; CheckBadge 10 and 15). Flag 2102 is also set during the bug hunt and cleared when it ends. Youngster ≈356,397.
 
 ## Route 34: Ruby, Sapphire and the wild Salamence (part of the Goldenrod Gym chain)
+<!-- quest: kind=main -->
 
 **Where:** the north end of Route 34, near Goldenrod City.
 
@@ -223,12 +255,14 @@
 *Source:* script file 237 (coord script 20 on var 0x409a = 2, L3982–L4379; flag 465); file 888 L1859 sets 0x409a = 2. Trigger area ≈367–369,388–394.
 
 ## Route 34: small extras
+<!-- quest: kind=side -->
 
 - **Officer Garrison** (the police officer with an Arcanine, a few steps north-west of the Day-Care door) asks the Champion for battle pointers. Say Yes, then pick "Singles" or "Doubles" (Doubles needs two Pokémon): Arcanine 82, Sunflora 81, Crawdaunt 82, Ambipom 81, Mr. Mime 82, Sharpedo 81. No item; you can battle him again whenever you like.
 
 *Source:* script file 237 (script 5, L3168, L4958–L5045, L6379; trainer 765). Officer ≈364,405; Day-Care door ≈368,410.
 
 ## Goldenrod Magnet Train Station: Prof. Rowan's Chimchar (missable; before the Plain Badge)
+<!-- quest: kind=side -->
 
 **Where:** Magnet Train Station 1F: Prof. Rowan and his assistant stand in the middle of the hall, up and to the right of the entrance. The station door is just east of the Radio Tower.
 
@@ -246,6 +280,7 @@
 *Source:* script file 890 (Magnet Train Station 1F, script 10, L2062–L2181; objects 4/5 hidden by flag 1613, set in file 883 L577). Positions: Rowan ≈11,9 in the station; station door ≈348,349.
 
 ## Goldenrod City: Goh and the Lopunny owner (win with Normal types only)
+<!-- quest: kind=side -->
 
 **Where:** the west plaza at the far west edge of town (the old Wi-Fi center site). A man stands there with his Lopunny; Goh is a few steps south-east of him.
 
@@ -266,6 +301,7 @@
 *Source:* script file 882 (scripts 2 and 5, L2105–L2872, L15488–L16230; trainer 769; flags 792/1614). The owner is male (573#16); "No" gets the coward line (573#21). Positions: Lopunny owner ≈314,350; Goh ≈322,353.
 
 ## Goldenrod City: the Purugly girl and Team Rocket's "act" (choice with two endings)
+<!-- quest: kind=side -->
 
 **Where:** two small houses that share one interior:
 - the **clinic** in the north-east of town, beside the Flower Shop, where Jessie, James and Meowth are recovering;
@@ -295,6 +331,7 @@
 *Source:* script file 897 (the shared clinic/house interior: scripts 1–8, L2154–L7251; var 0x409d 2→6; flags 2158/2160; trainers 13/23), outcome in file 246 (Route 37: L387 always sets flag 2252; L391–L404 also set flag 2159 unless 0x409d = 5; file 897 L963 checks 2159 (released) before 2252). Var 0x409d is also the bug hunt's Ariados state. Doors: clinic ≈376,335; girl's house ≈373,362.
 
 ## Goldenrod City: the popped Air Balloon (→ Fashion Case)
+<!-- quest: kind=side -->
 
 **Where:** a little girl crying a few steps west of the Purugly girl's house door, on the east side of town.
 
@@ -307,6 +344,7 @@
 *Source:* script file 882 (script 33, L15963–L16013), file 896 (script 24). Girl ≈370,362.
 
 ## Goldenrod Dept. Store 6F: the blind man's Poochyena (one chance)
+<!-- quest: kind=side -->
 
 **Where:** Department Store 6F (rooftop atrium), at the far west (left) side, an old man with a Poochyena.
 
@@ -321,6 +359,7 @@
 *Source:* script file 901 (script 11, L2210–L3303; flags 2146/2147; trainers 777+778). Old man ≈2,6 on 6F.
 
 ## Radio Tower 4F → Goldenrod Gym: the Plain Badge, two ways
+<!-- quest: kind=main -->
 
 **Where:** Radio Tower 4F, then the Goldenrod Gym on the north side of town.
 
@@ -347,6 +386,7 @@
 *Source:* script files 32 (Radio Tower 4F, script 2 L487–L2670, menu L495, flag 115 at L1599, starter flags at L1919; flags 748/443 cleared at L2660–L2664 put Whitney and Gold in the Gym), 883 (Gym; L81, L474–L1878, MultiBattle 343/30/266 at L1303 with no party-count check; the party-count check at L1172–L1182 belongs to the Doubles rematch; "stand in front of me" L1255 → L1891 on the Multi Battle path), 888 (Norman's house, L1696–L1875, L2389–L2432), 890 (station, script 9, L2486–L3260), 896 (Ruby and Sapphire). Doors: Gym ≈366,334; Norman's house ≈341,366. Hyper Voice tutor ≈368,335.
 
 ## Radio Tower → Goldenrod Tunnel: Mary's secret photos (→ Cherish Ball; missable)
+<!-- quest: kind=side -->
 
 **Where:** Radio Tower 4F (Mary), a clerk in the street a few steps south of the Radio Tower door, then the underground warehouse.
 
@@ -367,6 +407,7 @@
 *Source:* script files 32 (script 5 and L1956–L2379, flags 144/2161), 94 (B1F: L930 checks the Basement Key at the "NO ENTRY" sign ≈25,30, hidden by flag 448), 96 (script 5; trainer 780; flag 138), 882 (script 9, L15738–L15780), 97 (warehouse, flag 2161; trainer 781), 246 (Route 37 L283: clears 144). Route: B1F ≈25,30 → Goldenrod Tunnel ≈25,9 → stairs ≈25,3 → B2F ≈27,4; Chaz ≈26,15 by the warehouse door ≈26,14. Clerk ≈344,354.
 
 ## Goldenrod Underground: drive out the underground battlers (optional; before the Plain Badge)
+<!-- quest: kind=side -->
 
 **Where:** the shopping street under Goldenrod (Goldenrod Tunnel B1F). Walking along its west side, you're stopped before you reach the brawl.
 
@@ -385,6 +426,7 @@ At the brawl you pick a line:
 *Source:* script file 94 (scripts 10, 25, 26; coord script 25 on var 0x4098 = 1, which hands over to the old man's script when you enter on row 24; L3360–L8820; trainers 770–776 with Crystal 772; flag 433); file 883 L605/L691 (the Gym does the same). Trigger along ≈7,14–24.
 
 ## Goldenrod Department Store basement: the Machop moving company (→ three items)
+<!-- quest: kind=side -->
 
 **Where:** the Department Store basement (reached by the elevator, or from the Underground warehouse). The workers' boss stands in the middle of the floor. The worker with a Machop on the left (west) side starts it.
 
@@ -403,6 +445,7 @@ At the brawl you pick a line:
 *Source:* script file 95 (scripts 1, 2, 4, 5, 7–9; L1512–L3308; trainer 779; flags 2148, 2149, 150–152). Positions: boss ≈11,15; Machop worker ≈5,16.
 
 ## Radio Tower 1F: the radio quiz (→ radio upgrade)
+<!-- quest: kind=side -->
 
 **Where:** Radio Tower 1F, the quiz attendant.
 
@@ -425,6 +468,7 @@ At the brawl you pick a line:
 *Source:* script file 29 (script 3, L300–L809; flags 280, 287). Right answers fall through to the reward at L786–L803; a wrong answer at question 1–4 jumps to a copy of the remaining questions (L2212, L2310, L2408, L2506) that ends at msg 125 (L2604) whatever you pick. Menus are cancellable (B result 0xFFFE), and only the three wrong options are tested.
 
 ## Radio Tower 2F: Buena's Password (daily; Blue Card points → prizes and her phone number)
+<!-- quest: kind=side -->
 
 **Where:** Radio Tower 2F. Buena stands on the east side, a few steps south of the east stairs. The woman who keeps track of your points stands a few steps west of her.
 
@@ -456,6 +500,7 @@ At **30 points** on your first card, Buena also gives you her **phone number**. 
 *Source:* script file 29 (zone 112; the tower floors are one map). Blue Card: script 18 L1190–L1271 (item 472; var 0x4115 counts cards). Daily checks: L3621/L3648 (flag 2742, heard the show; no script sets it, the radio code does: overlay 92 @0x021F5842 when the show reaches segment 4) and L3824 (flag 2723, tried today; set at L4326 before the answer is checked). `GetBuenasPassword` at L4266/L4582: a menu of three words, right answer → L4353, wrong → L5210. Points: var 0x413A, +1 at L4393, prizes L5402–L5638 (items 4, 24, 46, 47, 48, 92, 50, 45 at 1/3/5/10/15/20/25/30). No prize: L5656 shows msg 32, the lottery line (hack finding). Phone number L4435/L5257 (needs 30 points and var 0x4115 < 2). New card and reset L5766–L5839. Full Bag: L5741 → L2721 → L3672 ends the scene with the point already added; at 30, L4380 sends the next right answer to L5221 without adding a point. Points attendant (object 9, walks over before message 88 at L5738): script 17 L1150. Positions: Buena ≈24,43; attendant ≈18,44; east stairs ≈23,37. The second Buena in file 30 (zone 186, Radio Tower 2F) belongs to a map that no door leads to.
 
 ## Goldenrod Game Corner: the magnet cheater (before the Glacier Badge)
+<!-- quest: kind=side -->
 
 **Where:** the Game Corner, in the middle of town a few steps north of the Pokémon Center. The Pokéfan sits on the left (west) side of the hall.
 
@@ -478,6 +523,7 @@ At **30 points** on your first card, Buena also gives you her **phone number**. 
 *Source:* script file 903 (script 35, L3231–L3582, L5995–L6372; prices L2554 vs L6374; flags 1605/1606; trainer 768); Glacier Badge = badge 14. `GiveCoins` (overlay 23 0x0225C08C) adds to the save's coin counter with no item check. Positions: Game Corner door ≈351,360; Pokéfan ≈3,10 inside.
 
 ## Goldenrod City: the fortune-teller's "ideal Pokémon" reading (one per game)
+<!-- quest: kind=side -->
 
 **Where:** the small house in the north of Goldenrod, between the Goldenrod Tunnel entrance and the Gym. The fortune-teller stands at the back.
 
@@ -498,6 +544,7 @@ At **30 points** on your first card, Buena also gives you her **phone number**. 
 *Source:* script file 895 (script 1, L215–L597; flag 1617). House door ≈352,334. Evolution methods from the ROM's evolution table, checked against the evolution code (arm9 0x020700FC): Rhydon method 37 (level up holding Protector), Happiny method 1 (friendship 220+), Haunter method 19 (holding Spell Tag at night, hours 20–3).
 
 ## Romance route: how it's unlocked, how your partner is chosen, and what locks a partner out (central entry)
+<!-- quest: kind=side -->
 
 Origin HeartGold has a hidden romance route. You pick **one** partner and confess in the final chapter. The scripts then offer post-game dates for some partners only, and moving in appears unreachable for everyone (table in step 4). Four steps decide it. **Steps 1 and 2 are missable:** the love reading must come before the MooMoo Farm investigation, which the League HQ's round-3 order opens after the Silver Conference.
 
@@ -571,6 +618,7 @@ You can confess **once per game**, in the final chapter. It needs the love readi
 *Source:* script files 895 (L323–L1795; flags 1617, 1618, 1619; partner flags 2141–2145, 2153–2157), 898 (scripts 2–9; L602–L2638; the old man sets 2300 on first talk (L59); L2307 sets 2289/2300 after the Will/Karen battle, and 2289 closes "My love fortune"; L2337 locks everyone if flag 2302 is clear), 251 (MooMoo stable: the farmer asks for help only while flag 744 is clear (L117 → L925); 744 is set at new game (file 149) and cleared only by the League HQ round-3 order (file 31 L4666; the file 840 clears are in an unreachable lab script; Miltank healthy until round 3 tested in an emulator); the round-3 report needs 2289 (file 31 L1902); L861 hides the old man without flag 1619; coord 7,3 on var 0x40a3 = 5), 109 (confessions L1003/L1767/L2358/L3410), 110, 923, 758, 228 (L750–L1026), 259 (L1782–L2267 sets 2145), 907 (L3109–L4417 clears 2145; the gift checks only flag 175 and the Super Rod, no 2289/2300 test), 75 (L1521 clears 2143, L1658 clears 2142), 777, 175, 900, 55. Indigo Conference: "Cheer for Misty" sets 2155 (Steven's lock), "Cheer for Steven" sets 2142 (Misty's lock), "No, get ready for my match" sets both. Dream World: every pick except Steven (L2487) sets 2155, and so does the statue exit without a partner (L2337); file 900 L1678/L2778 set 2155 at the Indigo Conference. Vermilion: a female player siding with Red sets 2153 (Blue's lock). Moving in: file 843 script 1 L363 and script 4 check flag 106 (set with the starter, never cleared) before any partner check (hack finding D-1391). Dream World: old man ≈48,28, statue ≈48,13.
 
 ## Goldenrod City: small extras
+<!-- quest: kind=side -->
 
 - **Gold's slot winnings:** before you record the Radio Tower show, Gold and his newly hatched Togepi are at the Game Corner slots, in the middle of the slot rows. If you have a **Coin Case** he gives you **1,000 coins** (once). Without one he just talks, and you can come back later while he's still there.
 - **Bike Shop:** the owner gives you a **Pass** (the Magnet Train Pass to Saffron) as thanks for "beating the bikers outside". You need it at the station gate.
@@ -586,6 +634,7 @@ You can confess **once per game**, in the final chapter. It needs the love readi
 *Source:* Gold's coins: file 903 script 34 (Gold ≈8,8 in the Game Corner). Tutors: file 882 scripts 6 and 11 (Extreme Speed: HasItem/TakeItem 32 at L2193/L18911, jogger ≈311,361; Belly Drum ≈357,360, no item check). Bike Shop: file 887. Revive: file 882 script 16 (kid ≈345,369). Budew trade: file 884. Flower Shop: file 893 (script 1 checks the lead for Celebi/Shaymin, then HasItem Gracidea; shop ≈371,332). Daily Drawing: file 901 (Friday's 1st prize is Old Gateau although line 589#42 announces a Cherish Ball; hack finding; script 4 L305/L1715 `Random 100`: 0–3 → 1st L1946, 4–39 → 2nd L1899, 40–99 → 3rd L1788; 3rd prize L1800 `Random 70` in steps of 10 → items 159–163, 154, 155 at L2575–L2683; no flag check, so no daily limit; full Bag → refund at L3481). Lottery: file 29 script 2 L197–L264 (Felicity ≈8,12) → L2103 (sets flag 2725) `LotoIDGet`/`LotoIDSearch` (party L3593, PC L3607), digit count → L3751 → L3509: items 2, 51, 321, 29, 93 for 1–5 digits; prize given → flag 2726 (L4174, "The next drawing is tomorrow"); with 2725 set and no prize yet, L2073 offers a re-check; full Bag stores the prize in var 0x4136 (L4151, paid out at L2044). Whitney's photo: files 901 script 31 / L1993, 883 script 9. Norman: file 890.
 
 ## Goldenrod Underground: small extras
+<!-- quest: kind=side -->
 
 - **Item exchange granny** (B1F): 6 Pearls → Big Pearl, 5 Stardust → Star Piece, 3 Revives → Max Revive. Repeatable.
 - **One-item-a-day shop** (B1F), by weekday: Sun PP Max $3,000 · Mon Rare Candy $5,000 · Tue Max Elixir $2,000 · Wed Lum Berry $500 · Thu Sacred Ash $8,000 · Fri Heart Scale $5,000 · Sat Sport Ball $1,000.
@@ -594,6 +643,7 @@ You can confess **once per game**, in the final chapter. It needs the love readi
 *Source:* script file 94 (scripts 1–4, 9; L2368–L2534, L3054–L3245; Fashion Case check L3948).
 
 ## Dream World: Cresselia and Darkrai (post-game)
+<!-- quest: kind=side -->
 
 **Where:** the Dream World, reached from the MooMoo Farm stable (Route 39; [MooMoo Farm](10-ecruteak-olivine.md#moomoo-farm-the-sick-miltank-investigation-league-hq-round-3-leads-to-the-dream-world)).
 

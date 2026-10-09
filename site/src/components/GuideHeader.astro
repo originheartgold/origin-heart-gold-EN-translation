@@ -1,0 +1,41 @@
+---
+import DefaultHeader from '@astrojs/starlight/components/Header.astro';
+const base = import.meta.env.BASE_URL;
+const { hasSidebar } = Astro.locals.starlightRoute;
+---
+<div class="guide-header">
+  {hasSidebar && <button class="guide-menu" type="button" aria-label="Collapse guide sidebar" aria-expanded="true" aria-controls="starlight__sidebar">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg>
+  </button>}
+  <DefaultHeader><slot /></DefaultHeader>
+  <a class="editor-quick-link" href={`${base}save-editor/`}>Save editor <span aria-hidden="true">↗</span></a>
+</div>
+<script>
+  const button = document.querySelector<HTMLButtonElement>('.guide-menu');
+  if (button) {
+    const update = (collapsed: boolean) => {
+      document.documentElement.toggleAttribute('data-sidebar-collapsed', collapsed);
+      button.setAttribute('aria-expanded', String(!collapsed));
+      button.setAttribute('aria-label', `${collapsed ? 'Expand' : 'Collapse'} guide sidebar`);
+    };
+    let collapsed = false;
+    try { collapsed = localStorage.getItem('ohg-sidebar-collapsed') === 'true'; } catch {}
+    update(collapsed);
+    button.addEventListener('click', () => {
+      collapsed = !collapsed;
+      update(collapsed);
+      try { localStorage.setItem('ohg-sidebar-collapsed', String(collapsed)); } catch {}
+    });
+  }
+</script>
+<style>
+  .guide-header { display: flex; align-items: center; gap: 1rem; height: 100%; }
+  .guide-header :global(.header) { flex: 1; min-width: 0; }
+  .guide-menu { display: none; align-items: center; justify-content: center; flex-shrink: 0; width: 2.5rem; height: 2.5rem; border: 1px solid var(--sl-color-gray-5); border-radius: .5rem; background: transparent; color: var(--sl-color-text); cursor: pointer; }
+  .guide-menu:hover { background: var(--sl-color-gray-6); }
+  .guide-menu:focus-visible, .editor-quick-link:focus-visible { outline: 2px solid var(--sl-color-accent); outline-offset: 3px; }
+  .editor-quick-link { flex-shrink: 0; color: var(--sl-color-accent-high); font-size: var(--sl-text-sm); font-weight: 600; text-decoration: none; padding: .5rem .75rem; border: 1px solid var(--sl-color-gray-5); border-radius: .5rem; }
+  .editor-quick-link:hover { background: var(--sl-color-accent-low); }
+  @media (min-width: 50rem) { .guide-menu { display: flex; } }
+  @media (max-width: 35rem) { .guide-header { gap: .5rem; } .editor-quick-link { font-size: .75rem; padding: .4rem .5rem; } }
+</style>

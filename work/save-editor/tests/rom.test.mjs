@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readNdsFile, readNarcMembers, loadOriginData } from '../dist/rom.js';
+import { readNdsFile, readNarcMembers, loadOriginData } from '../dist/core/rom.js';
 
 function narc() {
   const b = new Uint8Array(64); const v = new DataView(b.buffer);

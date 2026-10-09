@@ -12,6 +12,7 @@
 - [Small extras](#small-extras)
 
 ## Mt. Moon Square: the Clefairy dance (Monday nights)
+<!-- quest: kind=side -->
 
 **Where:** the small cave entrance between Mt. Moon and Mt. Moon Square.
 
@@ -29,6 +30,7 @@
 *Source:* script file 8 (map 448; `GetWeekday` = 1 with time period 3, or = 2 with period 4, moves the Square warps to map 513 unless flag 2741 is set), file 10 (map 513; script 1 sets flag 664 on every entry and hides the Clefairy outside those times, script 3 dance triggered at ≈8,16, L309 clears flag 664 to show the Moon Stone ball at ≈11,12, L775 sets 2741; script 4 gives item 81). Time periods: arm9 hour table 0x020F2A94 (period 3 = 20:00–23:59, 4 = 00:00–03:59). Flag 2741 is a daily flag: arm9 0x0203FBAC clears flags 2720–2911 on each new day.
 
 ## Ruins of Alph: the four stone panels and the chamber walls (continues Cherrygrove City to Azalea Town's Ruins of Alph entries)
+<!-- quest: kind=main -->
 
 **Where:** the four small chambers of the Ruins of Alph. Each has a stone panel in the middle of the room and a carved back wall behind it.
 
@@ -52,6 +54,7 @@
 *Source:* script files 39 (Kabuto: `AlphPuzzle 0`, flag 2423; wall script 3 sets 539; script 4 researcher), 41 (Aerodactyl: `AlphPuzzle 1`, flag 2424; script 3 field-move message bank 209#28, sets 541), 43 (Omanyte: `AlphPuzzle 2`, flag 2425; script 3 sets 543), 45 (Ho-Oh: `AlphPuzzle 3`, flag 2426; script 2 `PlayerHasSpecies 250`, sets 545), chamber events (panel at 6,6; wall warp (6,2) → map 324 warp 0 in all four; map 324 door (6,17) → map 312), file 38 (Research Center, L804–L2321: notes need var 0x40EC ≥ 1, which nothing reachable raises, D-1427), Island Forest encounter gate (ov2 0x02248420, D-1430), file 51 L4269 (clears 539, at the end of the Molly chapter after the Unown Report). Walls: object 0 at 6,2, script 2 `OpenAlphHiddenRoom` (emulator, CN all four chambers and EN Kabuto/Aerodactyl, 2026-10-06, work/build/harness/guide-review-20261006/ch13/walls_*: an Unown-letter tablet, no a027 string read; the riddle lines 72#2, 73#0, 75#0, 76#0 are never shown, see D-0955). Wall items/move (emulator, CN and EN, 2026-10-06, work/build/harness/guide-review-20261006/pass2-C/walls_{rope,flash,stone,stone_away}_*: standing at 6,3 facing the wall, Escape Rope (item 78) from the Bag sets 539, Flash from the party menu sets 541, Water Stone (item 84) from the Bag sets 543, the player stays on the map; Water Stone at 6,5 leaves 543 clear).
 
 ## Forest of Time: the maze of clearings (continues Ilex Forest and Goldenrod City's Forest of Time entries)
+<!-- quest: kind=main -->
 
 **Where:** the Forest of Time, between its entrance clearing (where the ranger and Celebi are) and the upper forest with the shrine.
 
@@ -79,6 +82,7 @@
 *Source:* script file 106 (map 462; coord triggers at 49,13 on var 0x4099 = 2 or 4 → back to the entrance at 17,82; 49,50 on 0x4099 = 4), events bank 416 (36 warps with their destination indexes; route 327 w3 → 462 w6 → w9 → w30 → w34 → w19 → w20 → w17 → w15 → 327 w6), map 327 events bank 298 (warp 3 at 17,77 → map 462 warp 6; warp 6 at 15,39 ← map 462 warp 15), file 52 L2875 (sets 0x4099 = 4 when the ranger asks for the medicine), file 92 L6516 (Bugsy hands over the Honey: 0x4099 = 2; the hunt then sets 3/4/5 at L10693/L10735/L2209/L2398), L5713 (hunt reward: back to 2), L5372 (ranger's Sammy scene, script 16 on var 0x40A2 = 17: 0x4099 = 3), D-1429. Emulator (CN and EN, 2026-10-06): the route walked with 0x4099 = 6, 4 and 2, work/build/harness/guide-review-20261006/ch13/maze_*.
 
 ## Lake of Rage: when the "calm day" happens (continues Lake of Rage, Blackthorn City and beyond's lake trio and calm-day visitors)
+<!-- quest: kind=side -->
 
 **Where:** Lake of Rage.
 
@@ -94,6 +98,7 @@
 *Source:* emulator (Chinese ROM; the Wednesday case also on the English build; 2026-10-06, work/build/harness/guide-review-20261006/ch13/calm_* and calm2_*: var 0x4037 and hide flags 508/510/586 after a warp into map 88 or 45). Game code (arm9 function at 0x0203A580: needs flag 202, map 88 or 45, weekday 3; it then writes var 0x4037 = 0xF229 through the event-slot setter at 0x02065EB8, table at 0x020FB2BC), file 90 L2861 (Rocket HQ B2F sets flag 202), file 934 script 1 (L126: 0x40B2 < 5 hides flags 508/510/586–588; L1749: 0x4037 = 0xF229 → L5595 clears 508 (Carson, Wesley), 510 (item, unless flag 327) and 586 (trio, unless 649); otherwise clears 327), file 935 L551 (Petrel scene sets 0x40B2 = 5), file 934 script 27 (item-ball object ≈539,73; `ScrCmd_522` hour 19–23 or 0–6 → item 53 PP Max, else 93 Heart Scale), bank 71#59 (Prof. Hale's line).
 
 ## Field moves: which Badge each one needs
+<!-- quest: kind=main -->
 
 **Where:** anywhere you meet an obstacle, and in the party menu. The hack changed the original Badge requirements to its own Badge order.
 
@@ -119,6 +124,7 @@
 *Source:* emulator (Chinese ROM, 2026-10-06, work/build/harness/guide-review-20261006/ch13/surf_*: badge 3 only → bank 209#14; no badges → no message). Script file 146 (`CheckBadge` 1 Cut L105, 0 Rock Smash L674, 2 Strength L1327, 15 Rock Climb L1873, 7 Waterfall L2402, 6 Whirlpool L2559; Surf script 5 and Headbutt script 15 have none). Badge ids from the `GiveBadge` scenes: 0 Boulder (file 750), 1 Cascade (758), 2 Thunder (776), 3 Rainbow (853), 4 Marsh (826), 6 Volcano (15), 7 Earth (741 L2863), 15 Rising (112). Party-menu checks: arm9 field-move table 0x020FB5D0 (Cut 1, Fly 4, Surf 3, Strength 2, Rock Smash 0, Waterfall 7, Rock Climb 15, Whirlpool 6; Flash check 0x0206773C has no Badge test). Water prompt: ov1 0x021E65E4 (Badge 3 only). `GetPartySlotWithMove` (cmd 141, 0x0204C8D4) ignores the move and returns the first healthy party slot (ov1 0x02205200 → arm9 0x02053500), D-1428.
 
 ## Small extras
+<!-- quest: kind=side -->
 
 - **Olivine Lighthouse 5F:** a photographer stands in the south-west corner on **Wednesdays and Saturdays**. He takes a photo of you for your photo album. He's away from the end of Jasmine's Gym battle until you start the Amphy medicine errand. Tested in an emulator: there on a Wednesday and a Saturday, gone on a Thursday and during that gap.
 - **Olivine Lighthouse 4F:** the gap in the east wall, a few steps east of the stairs that come up from 3F on the east side, drops you onto the outside ledge.

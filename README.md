@@ -49,7 +49,7 @@ Run every command from the repo root. Never edit generated files by hand: change
 |---|---|---|
 | `site/src/data/*.json` (website game data) | `python3 work/tools/site/build.py --content` | the site build in CI has no ROM |
 | `site/src/data/primo.json` | `python3 work/tools/primo_passwords.py --site` (needs the English build) | same |
-| `work/save-editor/src/generated-reference.ts` | `(cd work/save-editor && npm run build) && node work/save-editor/scripts/generate-reference.mjs work/build/origin_hg_v4.0.3_en_wip.nds` | CI tests the save editor |
+| `work/save-editor/src/core/generated-reference.ts` | `(cd work/save-editor && npm run build) && node work/save-editor/scripts/generate-reference.mjs work/build/origin_hg_v4.0.3_en_wip.nds` | CI tests the save editor |
 | `work/docs/*.md` (game documentation) | `python3 work/tools/docs/gen_docs.py` | linked from this README and the guide |
 | `work/tools/font_widths.json` | `python3 work/tools/textmetrics.py build-widths <rom>` | `qa.py` reads it on every check |
 | `work/translate/bank_maps.json` | `python3 work/translate/scripts/build_bank_maps.py` (also needs `work/translate/ref/hgss_map_constants.json`) | used by the tools and translators |

@@ -37,6 +37,7 @@
 
 
 ## Vermilion City: the construction-site dispute (choose a side)
+<!-- quest: kind=main -->
 
 Continues in [Vermilion City: after the construction-site clash](02-pewter-to-vermilion.md#vermilion-city-after-the-construction-site-clash).
 
@@ -81,6 +82,7 @@ Gifts both sides get ([Vermilion City: after the construction-site clash](02-pew
 *Source:* file 777 (scripts 2, 11; L376–L677: law side sets flags 1064 and 2141 and clears 1065 at L614; townsfolk side sets 1065 and 2153 and clears 1064 at L651; both set 1058 and var 0x40A4 = 1), file 774 (scripts 1, 12, 13, 21, 23, 24; L2345, L4014, L4089, L4135, L4040, L7768). Partner positions in the Pokémon Center ≈9,13 (Blue) and ≈3,15 (Green/Red), shown until the arrival scene (file 774 script 14, step trigger ≈1297,295 outside the Pokémon Center; first run at L2623 clears hide flag 1058). Town positions: Surge ≈1312,297, Granny Kin ≈1314,297, resident ≈1308,312, sailor ≈1308,332, man ≈1325,333, woman ≈1304,298. The clash clears both 1064 and 1065 (774 L2664/L2668 and L4909/L4913); only the end of the townsfolk route sets 1065 again (774 @9403). Law side battles: 141+145+967, then 141+968+969 (boys) / 141+971+969 (girls); townsfolk side: 968+142+970 (boys) / 971+142+970 (girls). Every clash loss whites out (L6321). Surge's post-badge line checks 1064 (file 776 @917), which is always clear by then, so the law line 478#18 is unreachable (hack finding). Six Island wish: file 55 (Island Forest) L3017–L3094 clears 2141–2145 and 2153–2157, once only (flag 2194), skipped if flag 2300 is set. Dialogue: Green/Red 479#23/24, Green/Red No 479#31/32, Blue No 479#7/#8. Emulator (`emu_harness.py guide0107 --case clash`): with the law side chosen (1064, 2141, 1058 set, 0x40A4 = 1) the trigger runs L2623 and at the first battle 1064 and 1065 are clear, 2141 set; from that state Green/Red's Yes sets 1065 and 2153 with 2141 still set. Not played: losing the clash's Multi Battle (an AI partner fights alongside).
 
 ## Vermilion City: the Good Rod (show Ryochi a Horsea)
+<!-- quest: kind=side -->
 
 **Where:** the Fishing Guru's house, the westernmost door on Vermilion's north row (five steps west of the Pokémon Center door). Ryochi, vice-president of the Kanto Fishing Association.
 
@@ -100,6 +102,7 @@ Gifts both sides get ([Vermilion City: after the construction-site clash](02-pew
 *Source:* file 779 (script 1; Ryochi clears flag 1419 after the Good Rod, @222), file 774 (script 20; L3932, L7523, L7640). Fishing Guru door ≈1292,294; shore Horsea ≈1305,319; angler ≈1312,321. The angler (774 script 20) needs flag 1056 (clash over), 1065 (townsfolk side), 1419 (Ryochi's request active), no item 484 (Oak's Parcel) in the Bag, and 1867 clear (his one-time gift, set when he gives it). Horsea appears only in Surf, Good Rod and Super Rod slots across all encounter tables, never Old Rod.
 
 ## Vermilion City: the Pokémon Fan Club (three members → Bike Voucher)
+<!-- quest: kind=side -->
 
 **Where:** the Pokémon Fan Club, south-west of the Pokémon Center (the westernmost door on the middle row of houses).
 
@@ -130,6 +133,7 @@ Gifts both sides get ([Vermilion City: after the construction-site clash](02-pew
 *Source:* file 780 (scripts 1–4, 8; flags 1075 Roxy, 1077 Clefairy fan, 1076 quiz, 1078 voucher, 248 extra gift), file 764 (Bike Shop), trainer 521. Fan Club door ≈1293,309.
 
 ## Vermilion City: the seaside cook (Shoal Salt + Big Mushroom)
+<!-- quest: kind=side -->
 
 **Where:** the east half of the central house. Use the door directly south of the Poké Mart, across the street (the house's south-east door), not the west door.
 
@@ -142,6 +146,7 @@ Gifts both sides get ([Vermilion City: after the construction-site clash](02-pew
 *Source:* file 781 (script 3; flag 1074). Door ≈1310,318. Street merchant: file 774 script 27, ≈1326,310.
 
 ## S.S. Anne: Teddiursa's honey and the salt (starts the party)
+<!-- quest: kind=main -->
 
 **Where:** on board the S.S. Anne, after the boarding speech. The girl with the Teddiursa and her grandfather are in the first north-west cabin (1F north-west rooms, the door at the top left of the hall). The cook is in the kitchen on B1F: take the stairs at the top middle of the hall down, and he's a few steps to the right, next to the fridge. The Captain is in the captain's cabin (1F, far east door).
 
@@ -172,6 +177,7 @@ Save before you board, and follow the steps below in this order.
 *Source:* file 161 (scripts 1, 3, 4; L1235, L1323, L1436, L1845), file 162 (script 4, L1551, L2797), file 156 (script 22, L4502, L4568, L6651; script 23, L4604), file 157 (script 5, @124, L514; script 6, L606). Cook on B1F ≈30,4 (north side, middle; the B1F stairs arrive at ≈24,3). Flag 1440 ("before the party") is clear at new game and on boarding; only the hijack evacuation sets it (156 @6350, plus the hide flags of its 14 guest objects, @6362–@6430), and both party starts clear it (157 L550, 161 L1901); all script files scanned. With it clear, the Captain (157 script 5) shows 253#62 and gives no HM01, Blue (156 script 22) goes to his party battle L4502, which sets 1423 ("Honey given") before battling, and the old boy (script 23) to L4604, which sets 1424 ("met the Captain"). The girl's Honey script (161 L1436) sets 1423 and announces the party (L1535 → L1845: Water Stone, flags cleared, var 0x40A4 = 3, 0x40A5 = 0) only when 1424 is set; otherwise it ends (L1745). Nothing else announces the party, and the hall's party trigger (156 script 18, var 0x40A5 == 0) and the waiter (hide flag 1085, set on arriving in Vermilion) wait for it. The exit sailor (object 1) blocks the one-tile gangway; party-battle losses warp to the hall (L5022). After the hijack the Captain can't be reached: the cabin's Archie trigger covers the door (8–10,10–11) and he is hidden afterwards (157 @1496). New captain: zone 308 object 14, hide flag 1091 (set on arriving in Vermilion, file 774 @1255; cleared by Sabrina's HM02 scene, file 826 @936), `HasItem 420` → L606 HM01. Cut trees: Route 10 objects 3 and 8 (std 10000), the only ones in the game. Emulator (`emu_harness.py vqueue --case ssanne_story,new_captain,cut_yes`, CN ROM and EN build): from the Vermilion arrival state, real boarding, arrival scene and speech; a watch on flag 1440 saw no write. Old boy first, then Honey: announcement, Water Stone, var 0x40A4 = 3, Archie's party speech on the hall trigger; the Captain 253#62. Honey first: no announcement; the Captain, the old boy, the girl, the grandfather (Water Stone) and Blue (49) then change nothing, the hall trigger stays silent and the exit is blocked. Blue first: the girl only thanks you, nothing starts. The new captain gives HM01 without one in the Bag; Cut works with a Splash-only party and no HM01 (D-1549).
 
 ## S.S. Anne: the party battles and the missing Teddiursa
+<!-- quest: kind=main -->
 
 **When:** as soon as the party is announced (see above; the guests already stand in the 1F main hall, west side, from the moment you board).
 
@@ -198,6 +204,7 @@ Save before you board, and follow the steps below in this order.
 *Source:* file 156 (scripts 30–32, 34, 40; L4502, L4604, L4721, L4887; script 20 shop L4270–L4444), file 162 (script 5, script 6), file 158 (script 5). Blue (flag 1423, @4524), the old boy (1424, @4622) and the pre-party cabin battle (file 158, flag 1517) are set before the battle or without a result check. Hijack loss: L5829 whites out and warps to 1F ≈24,3.
 
 ## S.S. Anne: defuse the bomb or the ship sinks (one chance)
+<!-- quest: kind=main -->
 
 **Where:** B1F engine room, at the far east end of B1F. Before the hijack, a crewman there mutters about "hitting the propeller shaft from the side" and claims to be doing maintenance.
 
@@ -220,6 +227,7 @@ Losing the last Archie battle also sinks the ship, even with the bomb defused: t
 *Source:* file 162 (script 9, L2090, L2103; only @2154 sets the "bomb defused" flag 1425), file 157 (script 4, L1710, L1834–L2134, L2197–L2852; final Archie battle is trainer 177 at @1542, a loss jumps to the sinking at L2154; the sinking sets flag 1093 at @2852); flag 1093 checked in files 52, 110, 854, 907, 916, 925. Engine-room man ≈55,7 on B1F. Undo: file 52 script 6 (Ilex Forest shrine), after the Hall of Fame (flag 2261), needs flags 2296 and 2297 set and 2298 clear and Celebi as the first non-fainted Pokémon; beating Archie (trainer 177) clears 1093 (@4858). 2298 is set whenever Celebi or Shaymin is shown at the shrine; only re-entering Ilex Forest (file 92) clears it.
 
 ## Diglett's Cave: the warm stone in the statue (after the Silver Conference)
+<!-- quest: kind=side -->
 
 **Where:** the broken Pokémon statue deep in the cave, in the north-east part of the lower cave, about ten steps west of the hiker who says the cave is unusually hot.
 
@@ -234,6 +242,7 @@ Losing the last Archie battle also sinks the ship, even with the bomb defused: t
 *Source:* file 5 (script 4, L532, L749; script 1, L473, L608; script 8). Statue ≈23,75; Brock ≈36,4. The statue needs var 0x40A2 ≥ 13, set right after Goodshow's closing line at the Silver Conference closing ceremony (file 107 @9518); Goodshow's briefing (file 31 @1625) sets 14. Brock: file 5 L608 hides him (flag 610) unless the hour is 17 **and** 18 **and** 19 (same pattern as the Celadon street photographer; hack finding).
 
 ## Route 11: the Swablu from the shelter
+<!-- quest: kind=side -->
 
 Continues [Route 5: the Pokémon shelter raid](02-pewter-to-vermilion.md#route-5-the-pokémon-shelter-raid-after-the-cascade-badge).
 
@@ -258,6 +267,7 @@ Continues [Route 5: the Pokémon shelter raid](02-pewter-to-vermilion.md#route-5
 *Source:* file 197 (scripts 1, 7, 8; L899, L1627, L2739, L3493), file 183 (script 2, L669), file 179 (L2446/L2812 set flag 305 "raid won" and reset var 0x40BE to 0, which arms the Route 11 scene; refusing also resets it; a loss against trainer 966 only whites out at L2876), file 17 L12165 (takeover: sets 1043, clears 305). Return conditions: flag 305 set and flags 1046 and 1047 both set. Both are pre-set by file 9 L5538/L5542; the raid win clears only one (file 179 L2462 Bulbasaur or L2828 Growlithe), and taking that Pokémon sets it again (file 183 L232/L420). Girl ≈1359,311, Swablu ≈1358,311; trigger tiles ≈1356,312–314 and ≈1362–1363,310.
 
 ## Route 11: cut the grass or save it (choose a side)
+<!-- quest: kind=side -->
 
 **Where:** the middle of Route 11, about halfway between Diglett's Cave and the east gatehouse. A man with a Scyther wants to clear a path. A Guitarist with an Electabuzz defends the Pokémon's habitat.
 
@@ -275,6 +285,7 @@ Continues [Route 5: the Pokémon shelter raid](02-pewter-to-vermilion.md#route-5
 *Source:* file 197 (scripts 5, 6; L1335, L2239, L2489, L3415, L3466; the argument sets flag 1894 at @1570; the loser's hide flag is 1610 or 1895), file 110 (Victory Road 3F checks 1610/1895). Positions ≈1377–1380,305.
 
 ## Route 9: the Squirtle Squad steals your Pokédex (Pikachu starters only)
+<!-- quest: kind=side -->
 
 **Where:** Route 9. The trap is a Poké Ball on the ground at the far west end of the route. The gang waits further east, on the north side of the route.
 
@@ -294,6 +305,7 @@ Continues [Route 5: the Pokémon shelter raid](02-pewter-to-vermilion.md#route-5
 *Source:* file 190 (scripts 3–6, L1483, L1634, L2781, L4060, L3254, L4686), file 17 L12442–12551. Pikachu starters: flag 1288. Stolen Pokédex: flag 107 cleared. Ball ≈1356,139; gang ≈1384–1386,134–135; first trigger ≈1383,138; second trigger ≈1389–1398,139–142. Line 333#12 is spoken by the species in party slot 0. Grunt Double Battle: trainers 972+973. Takeover fallback (file 17 L12442): closes the quest only if flag 1094 (ball picked up) is clear or var 0x40B0 == 0, jumping to L12539, and sets 1094 for everyone.
 
 ## Route 9: the Butterfree girl (release it or keep it)
+<!-- quest: kind=side -->
 
 **Where:** the east half of Route 9, a girl with her Butterfree a few steps south of Veteran Dawn.
 
@@ -307,6 +319,7 @@ Continues [Route 5: the Pokémon shelter raid](02-pewter-to-vermilion.md#route-5
 *Source:* file 190 (scripts 13, 19; L3609–L6095; release sets flag 1103, keep sets 1882), file 199 script 21. Girl ≈1409,147.
 
 ## Route 9: the Paras mushroom picker (Repel → Zinc)
+<!-- quest: kind=side -->
 
 **Where:** Route 9, a man with a Paras on the north edge of the route, about 17 steps east of the route sign in the west part. **Not for Pikachu starters:** they never meet him. Everyone else finds him there whenever they reach Route 9.
 
@@ -317,6 +330,7 @@ Continues [Route 5: the Pokémon shelter raid](02-pewter-to-vermilion.md#route-5
 *Source:* file 190 (script 17, L3875, L5310; Zinc flag 385). Position ≈1384,135. His hide flag 2274 is set by the Mt. Moon Rocket battles (file 7 @2056), cleared at the end of the roadblock (7 @2930), and set again for Pikachu starters only (file 9 @5969); nothing clears it after that.
 
 ## Rock Tunnel: hide-and-seek (find four hidden kids)
+<!-- quest: kind=side -->
 
 **Where:** the schoolkid "seeker" stands on the east side of the lower level of Rock Tunnel. The four friends are hidden across the tunnel.
 
@@ -336,6 +350,7 @@ Continues [Route 5: the Pokémon shelter raid](02-pewter-to-vermilion.md#route-5
 *Source:* file 129 (scripts 8, 10, 11, 12, 18; L2775, L2805, L3752, L3782, L4328, L4368). Seeker ≈47,77; corner kid ≈43,98; archaeologist ≈30,86; "Pikachu" ≈22,69; boulder ≈14,10. Corner kid is trainer 606 (`TrainerBattle 606 0 0 0` at L2879, third argument 0 = a loss is not allowed); a loss jumps to the "Pikachu" kid's dialogue at L3782 (looks like a wrong jump label; hack findings D-1395, D-1548); his battle is 194. Emulator (`emu_harness.py guide0107 --case corner_kid`): after a real loss the field never returns (black screen, CPU running in heap memory, msg 46 never printed). Controls with the same trainer: `TrainerBattle 606 0 1 0` (allowed loss, as Giovanni's L4818) returns to Rock Tunnel; with `WhiteOut` after it the player wakes in the Pokémon Center.
 
 ## Power Plant: Zapdos and the ecologist
+<!-- quest: kind=main -->
 
 **Where:** the abandoned Power Plant on Route 10, about 20 steps south of the Route 10 Pokémon Center. The ecologist stands just inside the entrance, a few steps north of the door, with her Muk. Zapdos is in the north-west corner of the building.
 
@@ -352,6 +367,7 @@ Continues [Route 5: the Pokémon shelter raid](02-pewter-to-vermilion.md#route-5
 *Source:* file 196 (scripts 11–14; L774, L1668, L1813, L1877, L1044; TM25 is item 352, flag 1720, given only after the trainer battle 360; post-Hall of Fame checks flag 2261; the wild Zapdos sets 1786, which fleeing also triggers), file 822 L2478 (clears 1786 at the next Hall of Fame entry), file 31 L2273/L2283 (zone 187, the Pokémon League building: clears 1124 and sets var 0x4078 = 2; Lawrence leaves with 0x4078 = 4, file 812 next). Grunts are #620/#621. Door ≈1423,184; ecologist ≈5,58; Zapdos ≈12,9.
 
 ## Route 10 / Lavender Town: the girl who waits (the Lavender curse)
+<!-- quest: kind=side -->
 
 **Where:** a girl on Route 10, a few steps south-east of Rock Tunnel's south exit. The fortune-teller's house is on Lavender's south side; the storyteller lives next door, five steps to the west.
 
@@ -372,6 +388,7 @@ Continues [Route 5: the Pokémon shelter raid](02-pewter-to-vermilion.md#route-5
 *Source:* file 194 (script 2; the girl's hide flag 1999), file 771 (scripts 1–3; L1025, L772, L1122, L1201; the reading sets var 0x40BA to 0 on both answers; buying sets flag 2003; the Gastly battle `TrainerBattle 184 0 1 0` has no win check and lifts the curse with 0x40BA = 1), file 765 (script 10; L459, L547), file 770 (L73; storyteller script 1: Heavy Ball item 495, flag 1298, needs the curse beaten, flag 2002 clear), file 129 L1189 (Rock Tunnel sets 0x40BA = 1), file 772 script 1. Girl ≈1418,206; fortune-teller door ≈1419,249 (zone 437, file 771; in this hack it's the fortune-teller's house, not the Name Rater's); storyteller door ≈1414,249.
 
 ## Pokémon Tower: side battles and extras
+<!-- quest: kind=main -->
 
 The tower is story (Team Rocket, Maxie and Mr. Fuji). Two of the fights below are **not** optional, even though they look like it:
 - **Blue at the stairs:** he blocks the whole corridor a few steps west of where you come up from the ground floor. "Challenge Blue?" Yes → **Wartortle Lv. 30, Kadabra Lv. 28, Pidgeotto Lv. 29, Umbreon Lv. 28, Rhyhorn Lv. 28, Exeggutor Lv. 29**. There's no item. He stays there until you beat him, and you need that win much later: the scene in the east room of Team Rocket HQ B3F in Mahogany Town, where Ariana and Lawrence corner Crystal and the second password comes from, only plays after it ([Team Rocket HQ B3F](12-lake-of-rage-to-sinjoh.md#team-rocket-hq-b3f-the-two-passwords-and-the-secret-key-door-continues-battle-frontier-cianwood-city-and-mahogany-towns-mahogany-town--team-rocket-hq)).
@@ -387,6 +404,7 @@ These parts are optional:
 *Source:* file 17 (scripts 4, 7, 10, 12; L3736, L2077, L2519, L5063, L5033). Blue ≈14,2 (trainer 200; trigger x=14, z=2–5, replays until beaten; coord script 4 on var 0x40B5 = 0; the win sets var 0x40B5 = 1 at L3796, and the Rocket HQ B3F east-room scene, file 91 coord script 1 at ≈38,23, only runs at value 1 and sets 2 at L2562; values 3–8 come from the romance dates and the post-game Route 25 scene). "Mom" ≈35,17 (trainer 207; trigger 35–37,17, the only link from the stairs at 43,12; the battle needs flag 1567, set by the Rock Tunnel Prof. Hale scene, file 129 @1117). Magcargo ≈2,51 (a knockout, catch or flee sets hide flag 1155). Flag 1155 is also the hide flag of Colette (object 3, trainer 220), "Prof. Oak" (5, trainer 232), "Mom" (9), object 10, "Petrel" (13, trainer 230) and "Archie" (12, trainer 231); the grunts' scene sets it at L2493 (the Rock Tunnel rescue sets it too, file 129 @1109, and the Mr. Fuji's House Cubone scene clears it, file 769 @2399). Floors (collision flood fill): entrance floor (Colette, Blue) → stairs 4,13 → "Mom"/"Oak"/ghost-girl floor → stairs 50,3 → grunts' floor ("Archie", "Petrel", Magcargo) → stairs 18,51 → Sabrina's floor, so "Mom" is always beaten first. Emulator (guide review 2026-10-06, pass2-B `tower.py`, CN and EN): fresh map load with 1155 set shows none of objects 3, 5, 9, 10, 12, 13 (object 11, the ghost girl, stays); with it clear all are there. Silph Scope item 448 at ≈2,49 after grunts 992+993. Ghost girl ≈34,2.
 
 ## Lavender Town: trade Big Pearls for Heart Scales
+<!-- quest: kind=side -->
 
 **Where:** the House of Memories in Lavender Town.
 
@@ -397,6 +415,7 @@ These parts are optional:
 *Source:* untouched Chinese v4.0.3, file 772 script 4 @296–391: checks Big Pearl 89 at @330, takes one at @358, awards Heart Scale 93 at @371–383; no one-time flag in the exchange routine. Route 12 is file 200, not the Heart Scale exchange.
 
 ## Lavender Town: Mr. Fuji's gifts (after the tower)
+<!-- quest: kind=side -->
 
 **Where:** the Volunteer Pokémon House (the door about eight steps south of the Pokémon Center door), after Agatha breaks up Team Rocket in the tower.
 - **Cubone:** it has grown fond of you. Mr. Fuji asks whether you'll take it. Yes gives **Cubone, Lv. 5** (you need room in your party).
@@ -405,6 +424,7 @@ These parts are optional:
 *Source:* file 769 (scripts 7, 8; L1662), file 17 L8203 (shows the Cubone). Door ≈1419,242.
 
 ## Pokémon Tower: make Sabrina laugh (the Marsh Badge trial)
+<!-- quest: kind=main -->
 
 **Where:** Pokémon Tower, Sabrina with her Alakazam. She appears after [the scene in Saffron](05-saffron-cinnabar.md#saffron-gym-sabrinas-willpower-test-and-the-pocket-dimension-before-the-takeover).
 
@@ -428,6 +448,7 @@ These parts are optional:
 *Source:* file 17 (scripts 23, 26, 28, 29; L3144–L9286, L11987; the task sets flag 1504; the four options are flags 1505–1508; badge check is badge 6, see file 15; var 0x40AF must be non-zero, else line 53#210 at L3237; the S.S. Anne hijack ending sets it to 0, file 156 @6600, and the next write in story order is the Cinnabar lab Mewtwo scene, file 852 @2626 (= 1), whose trigger itself needs 0; see the ch05 lab entry for the full scan of the 22 writes), file 830 L927/L1254 (clears Sabrina's hide flag 1100). Ghosts' hide flag 1570 is cleared in the Silph Co. president's office (file 795). Sabrina ≈45,34; Gastly ≈36,58; Haunter ≈36,46; Gengar ≈52,50; the stairs used as the landmark are at ≈55,58. The only script that writes 0 to 0x40AF is 156 @6600 (all 22 writes scanned). Emulator (`emu_harness.py guide0107 --case sabrina`, badge 6, 1504 clear): 0x40AF = 0 → 53#210, 0x40AF = 5 → 53#149.
 
 ## Optional strong Trainers (Route 9, Route 10, Route 11)
+<!-- quest: kind=side -->
 
 - **Route 10 Pokémon Center:** Cynthia offers one battle (**Gabite Lv. 24, Lucario Lv. 19, Spiritomb Lv. 17, Scyther Lv. 18**). She's there from the festival on Route 25 until your fight with Archie in the S.S. Anne captain's cabin. There's no item. A loss whites you out and you can try again.
 - **Route 9, Veteran Dawn** (east half of the route, a few steps north of the Butterfree girl): needs the **Marsh Badge** (Saffron Gym, Sabrina). Singles or doubles, repeatable, **Lv. 81–82** team.
@@ -436,6 +457,7 @@ These parts are optional:
 *Source:* file 192 (script 8; Cynthia is trainer 180, object 9 at ≈7,13; the battle needs flag 1540 clear; her hide flag 1102 is set early by file 9 @5574, cleared by the Route 25 festival scene, file 216 @11989, and set again by the Archie confrontation, file 157 @1492), file 190 (script 20, L5356; Dawn ≈1407,141; `CheckBadge 4` = Marsh Badge, which file 826, the Saffron Gym, gives (GiveBadge 4 @165); trainer 977), file 197 (script 13, L840/L3122; Marisa ≈1363,300; `CheckBadge 4`; trainer 978; she appears when file 34 clears flag 759).
 
 ## Rock Tunnel: Regirock, Regice and Registeel (League HQ investigation)
+<!-- quest: kind=main -->
 
 **When:** during the [League HQ investigation](07-league-to-cherrygrove.md#league-hq-the-trainer-affairs-departments-investigations-where-to-go-next) (round 1, before your final Hall of Fame entry). After the intelligence briefing in the Pokémon League building (the one President Goodshow sends you to), walking into the memorial chamber at the far south end of Rock Tunnel's lower level triggers a scene: Goh has joined Team Rocket and, with a Rocket "Joy", is reading the memorial stone.
 
@@ -460,12 +482,14 @@ These parts are optional:
 *Source:* file 129 (scripts 19–24; L2935, L3542, L3855, L4520–L4663; battles are trainers 616+617, then 832+925, as two-Trainer Double Battles); file 31 L2267 (sets var 0x408C = 11). Chamber ≈26,113; Regirock ≈27,116, Regice ≈18,116, Registeel ≈35,116. Regice is given only once: script 23 (@2403) duplicates script 22 (@2262) but no map event uses it, and both check flag 1128. The stone is the bg event (script 20) at ≈26–27,105; the Regis are bg events (scripts 21, 22, 24) one tile north of each statue.
 
 ## Route 7: Misty's sparring match (what closes the Bicycle offer)
+<!-- quest: kind=main -->
 
 Not a quest, but this story scene closes the [Cerulean Bicycle-lending offer](02-pewter-to-vermilion.md#cerulean-city-lend-the-kid-your-bicycle--amulet-coin): stepping onto the spot just outside the Saffron gatehouse door (two steps north-west of it) starts Misty's battle with a Flareon trainer, then a **Multi Battle beside Misty** against two berserk Pokémon, **Aggron and Cacturne, Lv. 45 each**. They are fought as Trainer battles, so be ready for the level. Erika arrives, calms them with Gloom's Sweet Scent and takes Misty to her perfume shop. The end of the scene closes the bicycle offer and sets up the Celadon story. Losing the Multi Battle whites you out and the scene replays.
 
 *Source:* script file 186 (script 3, L1735; step trigger ≈1271,238; the scene ends by setting flag 1626 and the Celadon story flags 1172/1174/1177/1179; battle is `MultiBattle 272 344 345`, trainers 344/345 at Lv. 45 with Misty 272 as partner), Cerulean check in file 756 (L1195).
 
 ## Route 8: Persian and Skitty (the quarrelling owners)
+<!-- quest: kind=side -->
 
 **Where:** Route 8, east of the Saffron gatehouse. A man with a Persian stands on the north side of the road about 11 steps east of the gatehouse door; a woman with a Skitty (she calls it Glameow at times) stands much further east along the same north edge, toward Lavender.
 
@@ -485,6 +509,7 @@ Not a quest, but this story scene closes the [Cerulean Bicycle-lending offer](02
 *Source:* script file 188 (scripts 3, 4, 5, 11; L980, L1208, L2076), file 129 L1195 (Rock Tunnel sets the starting state: hides the meadow copies with flag 1568 and sets var 0x40C0 = 1). The owners' hide flag 1163 is only set at the end of their own scene. Man ≈1365,233; woman ≈1397,232; meadow ≈1378–1381,246; meadow triggers ≈1375,246 and ≈1384,242; the man afterwards ≈1378,246.
 
 ## Celadon Department Store 5F: Erika's perfume question (male players)
+<!-- quest: kind=main -->
 
 **Where:** the perfume counter on 5F, story scene with Erika, Misty, Blue and Green/Red.
 
@@ -504,6 +529,7 @@ Both routes end in the same Erika battle and the same Gloom theft.
 *Source:* script file 791 (script 7, L1124/L1137), not in this page's file list but it sets up file 783.
 
 ## Celadon Gym: sneaking in dressed as a girl (if you insulted Erika)
+<!-- quest: kind=main -->
 
 **Where:** after the "pointless" answer, your friend waits a few steps south-east of the Gym door. On the first attempt this is always **Misty**, Charmander starters included. Charmander starters get Green instead only after a failed attempt ("Bring it on!" or losing to Erika). Talk to your friend and they dress you up in a quiet corner.
 
@@ -520,6 +546,7 @@ Then Goh exposes you anyway and you battle **Erika**. Losing whites you out and 
 *Source:* script file 783 (scripts 22, 26; L2243, L3223, L4370–L6944, L7652; Erika is trainer #256; a failed attempt checks flag 1287 (Charmander) at L6885/L7359 and switches to Green by clearing 1423 at L7414), file 784 (normal-route Erika battle, script 1). Friend ≈1204,269. 5F (file 791) clears Misty's hide flag 1174 on both branches (L994, L1546), and Green's hide flag 1423 is still set from the S.S. Anne party battle with Blue (file 156 @4524).
 
 ## Celadon City: the stolen Gloom (story chain, easy to get stuck)
+<!-- quest: kind=main -->
 
 **When:** right after you beat Erika in the Celadon Gym. Someone steals her Gloom, and the story won't move on until you find out who has it. Nothing in the dialogue tells you where the thief's auction house is, which is why so many players get stuck here.
 
@@ -565,6 +592,7 @@ If you use the money route, $65,535 covers both steps: the auction boss only che
 *Source:* script files 783 (scripts 24, 25; L2992, L3059, L3081, L3103, L3125, L4521, L4633, L6061), 787 (script 5), 803 (script 8), 794 (script 7, lobby hint), 797 (script 3, waiter), 798 (script 1, auction boss), 799 (left Condominiums elevator); gym win clears flag 1179 (file 784 L1392); the waiter and auction staff appear after the Route 7 scene (file 853 L1840 clears flag 1797). Positions read from the map events (Celadon events 52, 327, 333, 336, 337, 340).
 
 ## Celadon Rocket warehouse: the secret passage and the Persian statue password
+<!-- quest: kind=main -->
 
 **Where:** the Team Rocket base under the Celadon Game Corner. You go in with Misty.
 
@@ -599,6 +627,7 @@ If you use the money route, $65,535 covers both steps: the auction boss only che
 *Source:* script file 172 (scripts 7, 9–17, 28; L4529–L10848, L10419 hour check, L4412, L10996), file 785 (script 2, Morse hint), file 853 L3484 (Misty's goodbye). Positions in the base: launcher computer ≈20,2 (Game Corner stairs ≈30,3), Persian statue ≈2,47, control computer ≈62,41 (James ≈60,42), document ≈45,11 (Morse device ≈48,11).
 
 ## Celadon City: Fluffy Tail for the Skitty kid (unlocks Fake Out)
+<!-- quest: kind=side -->
 
 **Where:** a child with a Skitty on the west side of town, about a dozen steps south of the Department Store door; his parent stands two steps north-west of him.
 
@@ -611,6 +640,7 @@ If you use the money route, $65,535 covers both steps: the auction boss only che
 *Source:* script file 783 (scripts 39, 40; L4176, L5791, L4027), file 792 (script 15, roof quiz; one-time flag 1883). Child ≈1203,249; parent ≈1202,247.
 
 ## Celadon Department Store 3F: the S.S. Anne passenger's thanks
+<!-- quest: kind=side -->
 
 **Where:** an old man and his granddaughter (with her Teddiursa) on 3F, about eight steps right of the elevator.
 

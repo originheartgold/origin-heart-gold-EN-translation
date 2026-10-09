@@ -1,6 +1,6 @@
 import {readFile, writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {loadOriginData, readNdsFile, readNarcMembers} from '../dist/rom.js';
+import {loadOriginData, readNdsFile, readNarcMembers} from '../dist/core/rom.js';
 const args=process.argv.slice(2), check=args.includes('--check'), romPath=args.find(a=>a!=='--check');
 if(!romPath) throw new Error('Usage: node work/save-editor/scripts/generate-reference.mjs [--check] <English Origin v4.0.3 ROM>');
 const rom=new Uint8Array(await readFile(romPath)), data=await loadOriginData(rom);
@@ -17,6 +17,6 @@ for(const id of [219,232,739])sources[`a/0/2/7#${id}`]=sha(nameBanks[id]);
 sources['arm9#forms']=sha(rom.subarray(offset,offset+415*6));
 const record={schemaVersion:1,gameVersion:'origin-heartgold-english-v4.0.3',provenance:{romSha256:sha(rom),payloadSha256:sha(JSON.stringify(payload)),sources},payload};
 const output='/** Generated minimal editor reference data. Regenerate with scripts/generate-reference.mjs; do not hand edit. */\nexport const bundledReference = '+JSON.stringify(record)+';\n';
-const target=new URL('../src/generated-reference.ts',import.meta.url);
+const target=new URL('../src/core/generated-reference.ts',import.meta.url);
 if(check){if(await readFile(target,'utf8')!==output)throw new Error('Bundled reference differs from the supplied English ROM.');console.log('Bundled reference matches every extracted field and provenance hash.');}
 else {await writeFile(target,output);console.log('Generated '+Buffer.byteLength(output)+' bytes of editor reference metadata.');}

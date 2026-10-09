@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readItemNames } from '../dist/item-names.js';
+import { readItemNames } from '../dist/core/item-names.js';
 
 // Synthetic strings only: exercise the Nintendo DS name-bank framing and cipher.
 function bank(records, seed = 0x1234) {

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createNameCatalog, maxMovePp, validateMoveChoice} from '../dist/catalog.js';
+import {createNameCatalog, maxMovePp, validateMoveChoice} from '../dist/core/catalog.js';
 function fixture() {
  const moves=Array(921), species=Array(1439), items=Array(791);
  moves[1]='Test Alpha'; moves[2]='Test Alpha'; moves[3]='---'; moves[4]='Empty PP'; species[1]='Test Species'; items[1]='Test Item';

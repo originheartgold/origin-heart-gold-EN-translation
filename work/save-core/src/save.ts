@@ -1,8 +1,10 @@
-import { SAVE_SIZE, MIRROR_OFFSET, GENERAL_SIZE, STORAGE_OFFSET, STORAGE_SIZE, FOOTER_SIZE, PARTY_OFFSET, PARTY_STRIDE, BOXED_SIZE, PARTY_CAPACITY_OFFSET, PARTY_COUNT_OFFSET } from './layout.js';
+import { SAVE_SIZE, MIRROR_OFFSET, GENERAL_SIZE, STORAGE_OFFSET, STORAGE_SIZE, FOOTER_SIZE, PARTY_OFFSET, PARTY_STRIDE, BOXED_SIZE, PARTY_CAPACITY_OFFSET, PARTY_COUNT_OFFSET, BOX_COUNT, BOX_CAPACITY, BOX_STRIDE, BOX_NAMES_OFFSET, BOX_NAME_STRIDE, BOX_WALLPAPERS_OFFSET } from './layout.js';
+import { decodeName } from './pokemon.js';
 import { applyEditorTransaction } from './transaction.js';
 import { EditorError } from './errors.js';
 /** Origin v4.0.3 raw save container. Native selection uses coherent general/storage
- * generations. Only the chosen general block is modified; storage stays byte-exact.
+ * generations. Edits change only the chosen generation's general and/or storage
+ * block; the other mirror and the counters stay byte-exact.
  * See work/research/save_core/native_evidence.md and the native boot matrix.
  */
 
@@ -124,4 +126,36 @@ export function readSave(input: Uint8Array): OriginSave {
  */
 export function patchPartyRecord(input: Uint8Array, slot: number, record: Uint8Array): Uint8Array {
   return applyEditorTransaction(input,[{type:'replacePartyRecord',slot,record}]).bytes;
+}
+
+/** Append a 236-byte party record and bump the party count. */
+export function addPartyRecord(input: Uint8Array, record: Uint8Array): Uint8Array {
+  return applyEditorTransaction(input,[{type:'appendPartyRecord',record}]).bytes;
+}
+/** Remove one member, shift the rest up and blank the freed slot the way the game does. */
+export function removePartyRecord(input: Uint8Array, slot: number): Uint8Array {
+  return applyEditorTransaction(input,[{type:'removePartyRecord',slot}]).bytes;
+}
+
+export { BOX_COUNT, BOX_CAPACITY } from './layout.js';
+export interface OriginStorage {
+  bytes: Uint8Array; offset: number; counter: number; tied: boolean;
+  names: (string | undefined)[]; wallpapers: number[]; boxes: Uint8Array[][];
+}
+/** PC storage of the generation the game loads (the same mirror and counter as readSave).
+ * Origin expands HGSS storage to 24 boxes, each 0x1000 bytes (30 × 136 plus padding). */
+export function readStorage(input: Uint8Array): OriginStorage {
+  const save = readSave(input), bytes = save.bytes, offset = save.generalOffset + STORAGE_OFFSET;
+  const data = view(bytes);
+  const names = Array.from({length: BOX_COUNT}, (_, box) => decodeName(data, offset + BOX_NAMES_OFFSET + box * BOX_NAME_STRIDE, 20));
+  const boxes = Array.from({length: BOX_COUNT}, (_, box) => Array.from({length: BOX_CAPACITY}, (_, slot) => {
+    const start = offset + box * BOX_STRIDE + slot * BOXED_SIZE;
+    return bytes.slice(start, start + BOXED_SIZE);
+  }));
+  const wallpapers = Array.from(bytes.subarray(offset + BOX_WALLPAPERS_OFFSET, offset + BOX_WALLPAPERS_OFFSET + BOX_COUNT));
+  return {bytes, offset, counter: save.counter, tied: save.tied, names, wallpapers, boxes};
+}
+/** Replace one boxed record in the loaded generation's PC storage. */
+export function patchBoxRecord(input: Uint8Array, box: number, slot: number, record: Uint8Array): Uint8Array {
+  return applyEditorTransaction(input,[{type:'replaceBoxRecord',box,slot,record}]).bytes;
 }

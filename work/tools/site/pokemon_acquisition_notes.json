@@ -1,0 +1,607 @@
+{
+  "_about": "Reviewed player requirements for ROM-script Pokémon gifts/trades. File/species keys select original-ROM records; quest links point to the existing script-reviewed guide. No game behavior is changed.",
+  "entries": [
+    {
+      "file": 21,
+      "species": [
+        250
+      ],
+      "conditions": "After the final Hall of Fame: obtain the Clear Bell from Morty, complete the Bell Tower ceremony and defeat Ho-Oh. Leave a party slot free.",
+      "quests": [
+        {
+          "title": "Dance Theater → Bell Tower: catch Ho-Oh (after the final Hall of Fame)",
+          "href": "/guide/ecruteak-olivine/#dance-theater--bell-tower-catch-ho-oh-after-the-final-hall-of-fame"
+        }
+      ]
+    },
+    {
+      "file": 52,
+      "species": [
+        492
+      ],
+      "conditions": "After the Sammy chapter: carry a Gracidea, lead with Leafeon, and examine the shrine at 8:00–19:59. One per game; needs party space.",
+      "quests": [
+        {
+          "title": "Forest of Time: the shrine, Shaymin and Celebi (Gracidea; time of day)",
+          "href": "/guide/ilex-goldenrod/#forest-of-time-the-shrine-shaymin-and-celebi-gracidea-time-of-day"
+        }
+      ]
+    },
+    {
+      "file": 52,
+      "species": [
+        251
+      ],
+      "conditions": "After receiving Shaymin, leave through Ilex Forest and return. Lead with Shaymin and examine the shrine at 20:00–7:59. One per game; needs party space.",
+      "quests": [
+        {
+          "title": "Forest of Time: the shrine, Shaymin and Celebi (Gracidea; time of day)",
+          "href": "/guide/ilex-goldenrod/#forest-of-time-the-shrine-shaymin-and-celebi-gracidea-time-of-day"
+        }
+      ]
+    },
+    {
+      "file": 58,
+      "species": [
+        151
+      ],
+      "conditions": "Complete the Five Island Mew hunt, defeat Mew, then accept it with a free party slot.",
+      "quests": [
+        {
+          "title": "Mew: the long hunt (Five Island finale)",
+          "href": "/guide/saffron-cinnabar/#mew-the-long-hunt-five-island-finale"
+        }
+      ]
+    },
+    {
+      "file": 81,
+      "species": [
+        385
+      ],
+      "conditions": "After the final Hall of Fame: finish the legendary investigation first, repair the stone seven times, then defeat the Rockets. Needs party space; see the guide before starting.",
+      "quests": [
+        {
+          "title": "Frontier Access: the damaged stone and Jirachi (after the final Hall of Fame)",
+          "href": "/guide/cianwood-mahogany/#frontier-access-the-damaged-stone-and-jirachi-after-the-final-hall-of-fame"
+        }
+      ]
+    },
+    {
+      "file": 92,
+      "species": [
+        228
+      ],
+      "conditions": "Ask the fire ranger about Houndour, follow it and win its battle, then accept it with a free party slot. Finish Bugsy’s hunt first to avoid the quest reset.",
+      "quests": [
+        {
+          "title": "Ilex Forest: the fire ranger's stray Houndour (→ 10 Safari Balls)",
+          "href": "/guide/ilex-goldenrod/#ilex-forest-the-fire-rangers-stray-houndour--10-safari-balls"
+        }
+      ]
+    },
+    {
+      "file": 115,
+      "species": [
+        133
+      ],
+      "conditions": "After the Team Rocket Eevee story, talk to the rescued Eevee by Nurse Joy. Needs a free party slot.",
+      "quests": [
+        {
+          "title": "Viridian Forest: the rescued Eevee (optional)",
+          "href": "/guide/pallet-to-pewter/#viridian-forest-the-rescued-eevee-optional"
+        }
+      ]
+    },
+    {
+      "file": 115,
+      "species": [
+        18
+      ],
+      "conditions": "Pikachu starter: lend a Pidgeot after the Volcano Badge but before the Earth Badge or Hall of Fame. Collect it after the Hall of Fame. The game replaces your original with a fixed Lv. 20 Pidgeot.",
+      "quests": [
+        {
+          "title": "Viridian Forest: lend her a Pidgeot (Pikachu starters only)",
+          "href": "/guide/pallet-to-pewter/#viridian-forest-lend-her-a-pidgeot-pikachu-starters-only"
+        }
+      ],
+      "kind": "loan-return",
+      "level": 20
+    },
+    {
+      "file": 119,
+      "species": [
+        147
+      ],
+      "conditions": "Save Baoba’s Dragonair with the Secret Potion, then speak to him with a free party slot. This Dratini knows Extreme Speed.",
+      "quests": [
+        {
+          "title": "Route 16 → Cycling Road → Route 18: the Secret Potion for the Warden's Dragonair",
+          "href": "/guide/celadon-fuchsia-saffron/#route-16--cycling-road--route-18-the-secret-potion-for-the-wardens-dragonair"
+        }
+      ]
+    },
+    {
+      "file": 129,
+      "species": [
+        377,
+        378,
+        379
+      ],
+      "conditions": "League HQ investigation, round 1: defeat the Rockets, put Wailord first and Relicanth sixth, and answer the memorial’s questions. Each needs a free party slot.",
+      "quests": [
+        {
+          "title": "Rock Tunnel: Regirock, Regice and Registeel (League HQ investigation)",
+          "href": "/guide/vermilion-to-celadon/#rock-tunnel-regirock-regice-and-registeel-league-hq-investigation"
+        }
+      ]
+    },
+    {
+      "file": 171,
+      "species": [
+        339
+      ],
+      "conditions": "Bulbasaur or Pikachu starter: take the warehouse Poké Ball with a free party slot, before the Celadon Rocket hideout finale empties the warehouse.",
+      "quests": [
+        {
+          "title": "Route 2: the Rocket warehouse Poké Ball (starter-dependent gift)",
+          "href": "/guide/pallet-to-pewter/#route-2-the-rocket-warehouse-poké-ball-starter-dependent-gift"
+        }
+      ]
+    },
+    {
+      "file": 171,
+      "species": [
+        84
+      ],
+      "conditions": "Charmander starter: take the warehouse Poké Ball with a free party slot, before the Celadon Rocket hideout finale empties the warehouse.",
+      "quests": [
+        {
+          "title": "Route 2: the Rocket warehouse Poké Ball (starter-dependent gift)",
+          "href": "/guide/pallet-to-pewter/#route-2-the-rocket-warehouse-poké-ball-starter-dependent-gift"
+        }
+      ]
+    },
+    {
+      "file": 172,
+      "species": [
+        130
+      ],
+      "conditions": "Male player with Bulbasaur starter: Misty lends it during the Celadon Rocket warehouse story. Needs party space; she lets you keep it at the end of the Celadon arc.",
+      "quests": [
+        {
+          "title": "Celadon Rocket warehouse: the secret passage and the Persian statue password",
+          "href": "/guide/vermilion-to-celadon/#celadon-rocket-warehouse-the-secret-passage-and-the-persian-statue-password"
+        }
+      ],
+      "kind": "loan",
+      "level": 20,
+      "place": "Celadon Rocket warehouse"
+    },
+    {
+      "file": 175,
+      "species": [
+        280
+      ],
+      "conditions": "Give the painter Fresh Water, then accept Ralts with a free party slot before the Cascade Badge. Afterward, Ralts is a one-time wild battle instead.",
+      "quests": [
+        {
+          "title": "Route 3: the old painter's Ralts (Fresh Water errand; before the Cascade Badge)",
+          "href": "/guide/pewter-to-vermilion/#route-3-the-old-painters-ralts-fresh-water-errand-before-the-cascade-badge"
+        }
+      ]
+    },
+    {
+      "file": 183,
+      "species": [
+        1
+      ],
+      "conditions": "Pikachu starter: after the Cascade Badge, win the shelter raid and accept Bulbasaur with a free party slot. Start the raid before Sabrina laughs in Pokémon Tower; refusing to help loses the gift.",
+      "quests": [
+        {
+          "title": "Route 5: the Pokémon shelter raid (after the Cascade Badge)",
+          "href": "/guide/pewter-to-vermilion/#route-5-the-pokémon-shelter-raid-after-the-cascade-badge"
+        }
+      ]
+    },
+    {
+      "file": 183,
+      "species": [
+        58
+      ],
+      "conditions": "Bulbasaur or Charmander starter: after the Cascade Badge, win the shelter raid and accept Growlithe with a free party slot. Start the raid before Sabrina laughs in Pokémon Tower; refusing to help loses the gift.",
+      "quests": [
+        {
+          "title": "Route 5: the Pokémon shelter raid (after the Cascade Badge)",
+          "href": "/guide/pewter-to-vermilion/#route-5-the-pokémon-shelter-raid-after-the-cascade-badge"
+        }
+      ]
+    },
+    {
+      "file": 190,
+      "species": [
+        7
+      ],
+      "conditions": "Pikachu starter: recover the Pokédex and save the Squirtle Squad from the Rockets, then accept Squirtle with a free party slot. Missable when the Saffron takeover starts; see the guide.",
+      "quests": [
+        {
+          "title": "Route 9: the Squirtle Squad steals your Pokédex (Pikachu starters only)",
+          "href": "/guide/vermilion-to-celadon/#route-9-the-squirtle-squad-steals-your-pokédex-pikachu-starters-only"
+        }
+      ]
+    },
+    {
+      "file": 192,
+      "species": [
+        69
+      ],
+      "conditions": "Accept the seller’s offer with a free party slot. He asks for $5,000, but no payment is required or taken.",
+      "quests": [],
+      "evidenceNote": "File 192 script 2 calls L265: party check, GiveMon at 312, no money commands before Return/End."
+    },
+    {
+      "file": 199,
+      "species": [
+        255
+      ],
+      "conditions": "Rescue Prof. Birch from Poochyena and accept Torchic with a free party slot, before the Rainbow Badge ceremony removes him. Wake Route 12’s Snorlax first.",
+      "quests": [
+        {
+          "title": "Route 12: Prof. Birch's Torchic (missable)",
+          "href": "/guide/celadon-fuchsia-saffron/#route-12-prof-birchs-torchic-missable"
+        }
+      ]
+    },
+    {
+      "file": 237,
+      "species": [
+        158
+      ],
+      "conditions": "After the Ilex Forest chapter: bring a Potion, choose “Strike a battle-command pose”, win the Double Battle, then accept Totodile with party space. Other dance choices end the quest.",
+      "quests": [
+        {
+          "title": "Route 34: Totodile, the dance master (one chance)",
+          "href": "/guide/ilex-goldenrod/#route-34-totodile-the-dance-master-one-chance"
+        }
+      ]
+    },
+    {
+      "file": 239,
+      "species": [
+        380,
+        381
+      ],
+      "conditions": "League HQ investigation, round 4: follow Bianca’s Secret Forest quest and defeat Will, Karen and Goh. Accept both Pokémon with two free party slots.",
+      "quests": [
+        {
+          "title": "Secret Forest (One Island): Latios, Latias and the Soul Dew",
+          "href": "/guide/saffron-cinnabar/#secret-forest-one-island-latios-latias-and-the-soul-dew"
+        }
+      ]
+    },
+    {
+      "file": 734,
+      "species": [
+        393
+      ],
+      "conditions": "With the Mineral Badge, answer all five of the old captain’s quiz questions correctly and accept Piplup with a free party slot.",
+      "quests": [
+        {
+          "title": "Two Island: the old captain's Water-type quiz (→ Piplup)",
+          "href": "/guide/saffron-cinnabar/#two-island-the-old-captains-water-type-quiz--piplup"
+        }
+      ]
+    },
+    {
+      "file": 738,
+      "species": [
+        1,
+        4,
+        25
+      ],
+      "conditions": "Choose this Pokémon as your starter at the beginning of the game.",
+      "quests": [],
+      "kind": "starter"
+    },
+    {
+      "file": 751,
+      "species": [
+        4
+      ],
+      "conditions": "Pikachu starter: hear the Trainer’s story, rescue Charmander on Route 2 East and defeat its old Trainer. Start before the Cascade Badge; once rescued, it waits here for a free party slot.",
+      "quests": [
+        {
+          "title": "Route 2 East: the abandoned Charmander (Pikachu starters only)",
+          "href": "/guide/pallet-to-pewter/#route-2-east-the-abandoned-charmander-pikachu-starters-only"
+        }
+      ]
+    },
+    {
+      "file": 755,
+      "species": [
+        131
+      ],
+      "conditions": "During the Saffron takeover, after Jessie & James and Maxie: talk to the employee with a free party slot before facing the Rocket Boss. The hostages leave afterward.",
+      "quests": [
+        {
+          "title": "Silph Co. (Saffron takeover): the employee's Lapras (missable)",
+          "href": "/guide/celadon-fuchsia-saffron/#silph-co-saffron-takeover-the-employees-lapras-missable"
+        }
+      ]
+    },
+    {
+      "file": 769,
+      "species": [
+        104
+      ],
+      "conditions": "After Agatha breaks up Team Rocket in Pokémon Tower, accept Cubone in Mr. Fuji’s house with a free party slot.",
+      "quests": [
+        {
+          "title": "Lavender Town: Mr. Fuji's gifts (after the tower)",
+          "href": "/guide/vermilion-to-celadon/#lavender-town-mr-fujis-gifts-after-the-tower"
+        }
+      ]
+    },
+    {
+      "file": 774,
+      "species": [
+        116
+      ],
+      "conditions": "Side with the townsfolk at the construction site. After Ryochi asks for Horsea, speak to the fisherman before getting the Good Rod, without Oak’s Parcel. He gives Horsea if the wild one is already gone.",
+      "quests": [
+        {
+          "title": "Vermilion City: feed the Wingull and the Horsea",
+          "href": "/guide/pewter-to-vermilion/#vermilion-city-feed-the-wingull-and-the-horsea"
+        }
+      ]
+    },
+    {
+      "file": 802,
+      "species": [
+        122
+      ],
+      "conditions": "Exchange 3,333 Coins at the Prize Corner; needs party space.",
+      "quests": [],
+      "kind": "prize",
+      "evidenceNote": "File 802 species and coin-price menu branches lead to GiveMon at 2359."
+    },
+    {
+      "file": 802,
+      "species": [
+        133
+      ],
+      "conditions": "Exchange 6,666 Coins at the Prize Corner; needs party space.",
+      "quests": [],
+      "kind": "prize",
+      "evidenceNote": "File 802 species and coin-price menu branches lead to GiveMon at 2359."
+    },
+    {
+      "file": 802,
+      "species": [
+        137
+      ],
+      "conditions": "Exchange 9,999 Coins at the Prize Corner; needs party space.",
+      "quests": [],
+      "kind": "prize",
+      "evidenceNote": "File 802 species and coin-price menu branches lead to GiveMon at 2359."
+    },
+    {
+      "file": 812,
+      "species": [
+        252
+      ],
+      "conditions": "Pick up the Egg after the Moltres scene, with a free party slot. Missable: the League HQ Power Plant investigation removes the man and Egg.",
+      "quests": [
+        {
+          "title": "Cinnabar Island: the Egg in the lava (Treecko Egg; missable)",
+          "href": "/guide/saffron-cinnabar/#cinnabar-island-the-egg-in-the-lava-treecko-egg-missable"
+        }
+      ]
+    },
+    {
+      "file": 829,
+      "species": [
+        106,
+        107
+      ],
+      "conditions": "Beat Ma Baoguo’s four disciples, then Ma himself. Choose one: Hitmonlee or Hitmonchan.",
+      "quests": [
+        {
+          "title": "Saffron City: the Hunyuan Dojo (beat the disciples → Hitmonlee or Hitmonchan)",
+          "href": "/guide/saffron-cinnabar/#saffron-city-the-hunyuan-dojo-beat-the-disciples--hitmonlee-or-hitmonchan"
+        }
+      ]
+    },
+    {
+      "file": 841,
+      "species": [
+        403
+      ],
+      "conditions": "Answer all three of the Sinnoh traveller’s quiz questions correctly, then accept Shinx with a free party slot.",
+      "quests": [
+        {
+          "title": "New Bark Town Guesthouse: the Sinnoh traveller's quiz (→ Shinx)",
+          "href": "/guide/league-to-cherrygrove/#new-bark-town-guesthouse-the-sinnoh-travellers-quiz--shinx"
+        }
+      ],
+      "place": "New Bark Town Guesthouse"
+    },
+    {
+      "file": 842,
+      "species": [
+        61
+      ],
+      "conditions": "",
+      "quests": [],
+      "exclude": true,
+      "evidenceNote": "Unused script 9: no house event runs it; guide/01-pallet-to-pewter.md send-off gifts and guide/known-issues.md confirm this."
+    },
+    {
+      "file": 842,
+      "species": [
+        60
+      ],
+      "conditions": "Bulbasaur starter: talk to Mom, then accept Poliwag in your house with a free party slot before Blue’s first Viridian City scene.",
+      "quests": [
+        {
+          "title": "Pallet Town: send-off gifts (one per starter, before Viridian)",
+          "href": "/guide/pallet-to-pewter/#pallet-town-send-off-gifts-one-per-starter-before-viridian"
+        }
+      ]
+    },
+    {
+      "file": 857,
+      "species": [
+        179,
+        194,
+        218
+      ],
+      "conditions": "Give Primo the two password phrases for this Egg, based on your Trainer ID. One of each Egg; needs party space.",
+      "quests": [
+        {
+          "title": "Violet City: small extras",
+          "href": "/guide/cherrygrove-to-azalea/#violet-city-small-extras"
+        }
+      ]
+    },
+    {
+      "file": 875,
+      "species": [
+        72
+      ],
+      "conditions": "Speak to the woman in the Pokémon Center with exactly one Pokémon in your party and an empty PC.",
+      "quests": [
+        {
+          "title": "Cianwood City: small extras",
+          "href": "/guide/cianwood-mahogany/#cianwood-city-small-extras"
+        }
+      ]
+    },
+    {
+      "file": 890,
+      "species": [
+        390
+      ],
+      "conditions": "Accept Prof. Rowan’s offer with a free party slot before winning the Plain Badge, which removes him.",
+      "quests": [
+        {
+          "title": "Goldenrod Magnet Train Station: Prof. Rowan's Chimchar (missable; before the Plain Badge)",
+          "href": "/guide/ilex-goldenrod/#goldenrod-magnet-train-station-prof-rowans-chimchar-missable-before-the-plain-badge"
+        }
+      ]
+    },
+    {
+      "file": 923,
+      "species": [
+        150
+      ],
+      "conditions": "Final chapter: after the Multi Battle alongside Mewtwo, accept it with a free party slot before entering the Elite Four rooms.",
+      "quests": [
+        {
+          "title": "Indigo Plateau (final chapter): Mewtwo joins you (take it before the Elite Four)",
+          "href": "/guide/league-to-cherrygrove/#indigo-plateau-final-chapter-mewtwo-joins-you-take-it-before-the-elite-four"
+        }
+      ]
+    },
+    {
+      "file": 925,
+      "species": [
+        422
+      ],
+      "conditions": "Choose “Then give it to me” with a free party slot. Encouraging the boy to keep Shellos loses the gift for good.",
+      "quests": [
+        {
+          "title": "Ecruteak City: Shellos for the boy without Badges (choice; one chance)",
+          "href": "/guide/ecruteak-olivine/#ecruteak-city-shellos-for-the-boy-without-badges-choice-one-chance"
+        }
+      ]
+    },
+    {
+      "file": 965,
+      "species": [
+        490
+      ],
+      "conditions": "Follow the Egg’s owner through Six, Five and Four Island, return to Alto Mare and defeat the treasure hunters. Accept the hatched Manaphy with a free party slot.",
+      "quests": [
+        {
+          "title": "Alto Mare Waters → islands → back: the Manaphy Egg",
+          "href": "/guide/saffron-cinnabar/#alto-mare-waters--islands--back-the-manaphy-egg"
+        }
+      ]
+    },
+    {
+      "file": 903,
+      "species": [
+        23
+      ],
+      "kind": "prize",
+      "conditions": "Exchange 700 Coins at the Game Corner; needs party space.",
+      "quests": [],
+      "evidenceNote": "File 903 menu at 2940; ROM GetGameVersion handler 0x02044c6c returns 7."
+    },
+    {
+      "file": 903,
+      "species": [
+        63
+      ],
+      "kind": "prize",
+      "conditions": "Exchange 200 Coins at the Game Corner; needs party space.",
+      "quests": [],
+      "evidenceNote": "File 903 menu at 2940; ROM GetGameVersion handler 0x02044c6c returns 7."
+    },
+    {
+      "file": 903,
+      "species": [
+        147
+      ],
+      "kind": "prize",
+      "conditions": "Exchange 2,100 Coins at the Game Corner; needs party space.",
+      "quests": [],
+      "evidenceNote": "File 903 menu at 2940; ROM GetGameVersion handler 0x02044c6c returns 7."
+    },
+    {
+      "file": 903,
+      "species": [
+        27
+      ],
+      "exclude": true,
+      "conditions": "",
+      "quests": [],
+      "evidenceNote": "Alternate version menu at 5277 is unreachable: file 903 @1640 requires GetGameVersion != 7; CN ARM9 handler 0x02044c6c hardcodes 7 (@0x02044c7e)."
+    },
+    {
+      "file": 88,
+      "species": [
+        204
+      ],
+      "conditions": "Answer “Insomnia Pokémon”, then “Hoothoot” to unlock the trade. One time.",
+      "quests": [
+        {
+          "title": "Mahogany Town: small extras",
+          "href": "/guide/cianwood-mahogany/#mahogany-town-small-extras"
+        }
+      ]
+    },
+    {
+      "file": 156,
+      "species": [
+        20
+      ],
+      "conditions": "Beat the Gentleman during the ship’s party, then trade before the hijack.",
+      "quests": [
+        {
+          "title": "S.S. Anne: the party battles and the missing Teddiursa",
+          "href": "/guide/vermilion-to-celadon/#ss-anne-the-party-battles-and-the-missing-teddiursa"
+        }
+      ]
+    },
+    {
+      "file": 161,
+      "species": [
+        12
+      ],
+      "conditions": "Trade-back offer: first trade Butterfree for the Gentleman’s Raticate at the party, then speak to him in the northwest rooms.",
+      "quests": [],
+      "evidenceNote": "File 161 script 24 checks flag 1515 before LoadNPCTrade 1; file 156 sets this flag after trading."
+    }
+  ]
+}

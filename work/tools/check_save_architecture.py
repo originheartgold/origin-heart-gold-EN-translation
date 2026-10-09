@@ -17,12 +17,12 @@ CODEC_CONSTANTS = {0x41C64E6D, 0x6073, 0x1021, 0x8408}
 BINARY_WRITERS = {"pack", "pack_into", "to_bytes", "bytearray"}
 CODEC_FUNCTIONS = {"crypt", "encrypt", "decrypt", "crc16", "crc16_ccitt", "prng_stream", "lcrng"}
 EDITOR_REEXPORTS = {
-    name: f"export * from '../../save-core/dist/{name}.js';"
-    for name in ("save", "pokemon", "inventory", "stats", "save-container", "errors")
+    name: f"export * from '../../../save-core/dist/{name}.js';"
+    for name in ("save", "pokemon", "inventory", "stats", "save-container", "errors", "trainer", "pokedex")
 }
 EDITOR_REEXPORTS["transaction"] = (
-    "export { applyEditorTransaction, SaveTransactionError } from '../../save-core/dist/transaction.js';\n"
-    "export type { EditorOperation } from '../../save-core/dist/transaction.js';"
+    "export { applyEditorTransaction, SaveTransactionError } from '../../../save-core/dist/transaction.js';\n"
+    "export type { EditorOperation } from '../../../save-core/dist/transaction.js';"
 )
 
 
@@ -72,13 +72,23 @@ def editor_violations(source, name):
     """Compatibility modules are intentionally only these explicit core exports."""
     normalized = lambda value: re.sub(r"\s+", "", re.sub(r"/\*.*?\*/|//[^\n]*", "", value, flags=re.S))
     if normalized(source) != normalized(EDITOR_REEXPORTS[name]):
-        return [f"save-editor/src/{name}.ts: compatibility module must only re-export the shared TypeScript core"]
+        return [f"save-editor/src/core/{name}.ts: compatibility module must only re-export the shared TypeScript core"]
     return []
 
 
-def scan_editor(directory=TOOLS.parent / "save-editor" / "src"):
-    return [finding for name in EDITOR_REEXPORTS
-            for finding in editor_violations((directory / f"{name}.ts").read_text(), name)]
+def scan_editor(directory=TOOLS.parent / "save-editor" / "src" / "core"):
+    findings = []
+    for name in EDITOR_REEXPORTS:
+        path = directory / f"{name}.ts"
+        if not path.is_file():
+            findings.append(f"save-editor/src/core/{name}.ts: shared-core compatibility module is missing")
+        else:
+            findings.extend(editor_violations(path.read_text(), name))
+        # A stale root-level module can keep old consumers on a second codec even
+        # while the new UI correctly imports src/core. Do not leave both graphs.
+        if (directory.parent / f"{name}.ts").exists():
+            findings.append(f"save-editor/src/{name}.ts: legacy module must be removed; use src/core/{name}.ts")
+    return findings
 
 
 def main():

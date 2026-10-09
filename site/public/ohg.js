@@ -1,5 +1,5 @@
 // Origin HeartGold guide: small progressive enhancements. Everything works without this script.
-// - quest pages: game setup (starter, gender, post-game), per-quest "done" ticks, report links
+// - quest pages: game setup and quest filters, per-quest "done" ticks, report links
 // - tables/lists: text filter, select and checkbox filters, click-to-sort headers
 (() => {
 	const store = {
@@ -59,15 +59,20 @@
 			<strong>Your game</strong>
 			<label>Starter <select name="starter"><option value="">Any</option><option>Charmander</option><option>Pikachu</option><option>Bulbasaur</option></select></label>
 			<label>Playing as <select name="gender"><option value="">Either</option><option value="male">Boy</option><option value="female">Girl</option></select></label>
-			<label title="Quests that open only after your final Hall of Fame entry"><input type="checkbox" name="postgame"> Show quests after the final Hall of Fame</label>
+			<label>Quest type <select name="kind"><option value="">All quests</option><option value="main">Main quest</option><option value="side">Side quest</option></select></label>
+			<label>Progress <select name="progress"><option value="">All stages</option><option value="before">Before post-game</option><option value="postgame">Post-game only</option></select></label>
 			<label><input type="checkbox" name="hidedone"> Hide finished</label>
-			<span class="hidden-count" aria-live="polite"></span>`;
+			<span class="quest-filter-help">Post-game quests open after your final Hall of Fame entry. Entries with earlier steps stay under “Before post-game”.</span>
+			<span class="hidden-count" role="status" aria-live="polite"></span>`;
 		const content = document.querySelector('.sl-markdown-content');
 		content?.prepend(panel);
 		const $ = (n) => panel.querySelector(`[name="${n}"]`);
 		$('starter').value = ['Charmander', 'Pikachu', 'Bulbasaur'].includes(setup.starter) ? setup.starter : '';
 		$('gender').value = ['male', 'female'].includes(setup.gender) ? setup.gender : '';
-		$('postgame').checked = setup.postgame !== false; $('hidedone').checked = !!setup.hidedone;
+		$('kind').value = ['main', 'side'].includes(setup.kind) ? setup.kind : '';
+		// Preserve the old “Show quests after the final Hall of Fame” preference.
+		$('progress').value = ['', 'before', 'postgame'].includes(setup.progress) ? setup.progress : setup.postgame === false ? 'before' : '';
+		$('hidedone').checked = !!setup.hidedone;
 
 		for (const q of quests) {
 			const h = q.querySelector('h2');
@@ -98,7 +103,7 @@
 		};
 
 		function apply() {
-			const s = { starter: $('starter').value, gender: $('gender').value, postgame: $('postgame').checked, hidedone: $('hidedone').checked };
+			const s = { starter: $('starter').value, gender: $('gender').value, kind: $('kind').value, progress: $('progress').value, hidedone: $('hidedone').checked };
 			store.set('setup', s);
 			const target = hashQuest();
 			let hidden = 0;
@@ -107,11 +112,13 @@
 				const g = q.dataset.gender?.split(',');
 				const key = keyOf(q);
 				const hide = q !== target && ((s.starter && st && !st.includes(s.starter)) || (s.gender && g && !g.includes(s.gender)) ||
-					(!s.postgame && q.dataset.postgame) || (s.hidedone && key && done.has(key)));
+					(s.kind && q.dataset.kind !== s.kind) ||
+					(s.progress === 'before' && q.dataset.postgame === 'yes') ||
+					(s.progress === 'postgame' && q.dataset.postgame !== 'yes') || (s.hidedone && key && done.has(key)));
 				q.classList.toggle('is-hidden', !!hide);
 				if (hide) hidden++;
 			}
-			panel.querySelector('.hidden-count').textContent = hidden ? `${hidden} quest${hidden > 1 ? 's' : ''} hidden for your game` : '';
+			panel.querySelector('.hidden-count').textContent = `${quests.length - hidden} of ${quests.length} quests shown.${hidden === quests.length ? ' No matching quests in this chapter. Change your filters to see more.' : ''}${target ? ' The linked quest stays visible.' : ''}`;
 			// keep the page's table of contents in step
 			document.querySelectorAll('starlight-toc a, mobile-starlight-toc a').forEach((a) => {
 				let t = null;

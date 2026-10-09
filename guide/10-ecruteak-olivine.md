@@ -43,6 +43,7 @@
 - [Route 38 → Olivine City: small extras](#route-38--olivine-city-small-extras)
 
 ## Route 35: the Shuckle juice-maker wants a Jigglypuff (→ 2 Lum Berries)
+<!-- quest: kind=side -->
 
 **Where:** Route 35, the man with two Shuckle, a few steps north-east of the gatehouse you come out of from Goldenrod City.
 
@@ -58,6 +59,7 @@
 *Source:* script file 240 (Route 35; script 14, L2823–L4176; flag 418). Man at ≈366,310.
 
 ## Route 35: the Pidgey with a letter (starts a chain in Ecruteak City)
+<!-- quest: kind=side -->
 
 **Where:** Route 35, the hungry Pidgey on the east side of the route, in the northern half (about a dozen steps south-east of the north gatehouse, and 8 steps north of the Ace Trainer with a Glaceon).
 
@@ -74,6 +76,7 @@
 *Source:* script file 240 (script 18, L1529–L4105; HasItem 155 at L1559, no TakeItem in the file; flags 1847, 1846; L4099 clears flag 1061), 925 (Ecruteak, script 15 L637–L1197 checks flag 1061). Letter text 380#44 (health keeps her indoors; no child). Pidgey at ≈375,278; writer's house door ≈407,183 (not the Pichu house at ≈386,183).
 
 ## Route 35: Granbull kid "Dog Fangs" (→ Dragon Scale)
+<!-- quest: kind=side -->
 
 **Where:** Route 35, the Battle Girl with a Granbull, on the east side of the route about halfway along.
 
@@ -86,6 +89,7 @@
 *Source:* script file 240 (script 17, L1492–L3372; flag 1778; trainer 783). Battle Girl at ≈371,297.
 
 ## National Park → Route 35: "the girl on a date with an old man" (→ 3 Heart Mail)
+<!-- quest: kind=side -->
 
 **Where:** starts with the heartbroken boy in the south-east corner of Route 35, about 20 steps east of the gatehouse from Goldenrod City. The couple are at the north end of the National Park, a few steps east of the sign near the north exit.
 
@@ -103,6 +107,7 @@
 *Source:* script files 25 (National Park, scripts 39–40, L3600–L3659; flag 1917; trainer 794), 240 (script 16, L1354–L3309; menu 46/47; flag 1718). Boy at ≈380,319; couple at ≈51,16.
 
 ## Route 36 gatehouse → National Park: the mother and the "puppy love" (two endings)
+<!-- quest: kind=side -->
 
 **Where:** the mother in the National Park gatehouse on Route 36 (just inside the Route 36 door), and two school kids with a Weepinbell and a Bellossom in the west of the National Park.
 
@@ -125,6 +130,7 @@
 *Source:* script files 245 (Route 36 gatehouse, script 4, L655–L1076; var 0x408d 5→7→8 / 6; values 0–4 all get the request, no Badge check; script 5 L788 moves the boy and Weepinbell to (6,6)/(5,6) beside the mother when var = 6), 25 (National Park, script 1 L184–L2533, L3716–L4375, L5199–L5297; var 0x408d → 9; flag 548; trainers 784/785), 883 (Goldenrod Gym: var 0x408d 1–4). Mother at ≈7,6 in the gatehouse; kids at ≈24,56 in the park.
 
 ## Route 36: the odd tree (after the Plain Badge)
+<!-- quest: kind=main -->
 
 **Where:** Route 36, the odd tree at the junction west of the Violet City gatehouse.
 
@@ -142,6 +148,7 @@
 *Source:* script file 243 (Route 36, script 14, L634–L1217; flags 551, 463), 883 (Goldenrod Gym L617–L621 clears flags 111 and 551). Tree at ≈415,246; the second Sudowoodo at ≈392,235 (object 20) is hidden only by flag 111, which the Plain Badge clears (file 883 L617) and only the Rock Incense quest sets (file 243 L3814).
 
 ## Route 36: Lily's uncle and the Sudowoodo (Rock Incense → $10,000 + Power Lens)
+<!-- quest: kind=side -->
 
 **Where:** Route 36, the man and the little girl Lily, a few steps north-east of the National Park gatehouse door. The Sudowoodo stands about a dozen steps east of them.
 
@@ -157,6 +164,7 @@
 *Source:* script file 243 (script 21, L2127–L3824; item 315; flags 137, 111). Uncle at ≈379,235; Sudowoodo at ≈392,235.
 
 ## Route 36 gatehouse → Blackthorn City: the runaway Dragonair Trainer (→ Play Rough tutor)
+<!-- quest: kind=side -->
 
 **Where:** the Violet City–Route 36 gatehouse, the Ace Trainer near the west door. His parents live in Blackthorn City. The Move Deleter's door is the westmost door in the row with the Poké Mart and Pokémon Center; the parents' door is about ten steps north of it, on the west side of town (not the Move Deleter's room).
 
@@ -175,6 +183,7 @@
 *Source:* script files 862 (gatehouse, script 3, L181–L674; flags 391, 390, 513), 944 (Blackthorn Move Tutor house, script 8, L463–L481 and L787–L1001). Ace Trainer at ≈3,6 in the gatehouse. The parent at ≈37,5 is the father (626#54 我和孩子他妈, "his mother and I"). His room is reached from Blackthorn door ≈660,165; the Move Deleter's room is door ≈658,176. The tutor teaches move 175 (Flail) instead of Play Rough: decision D-1305.
 
 ## National Park: the Bug-Catching Contest
+<!-- quest: kind=side -->
 
 **Where:** the National Park; register with the officer in either National Park gatehouse (Route 35 or Route 36 side).
 
@@ -189,6 +198,7 @@
 *Source:* script files 242, 245 (gatehouses; weekday checks at file 242 L205–L1492), 151 (common contest script: registration L253–L612, judging L832–L1268; flag 2727 = entered today).
 
 ## Route 35 / Route 36 / National Park: small extras
+<!-- quest: kind=side -->
 
 - **National Park, Charm tutor:** the woman in the north-west of the park, about ten steps south of the north exit. She teaches **Charm** for a **Nugget** (listed in the [tutor table](/tutors/)).
 - **National Park, Will and Karen:** on the west side of the park, straight across from the east entrance. From the Plain Badge until Silver's scene on Route 37, the two ex-Elite Four stand here and mock you for coming to the "number one date spot" alone. "Teach them a lesson?" → Yes starts a **Double Battle** against Rocket Elites Will and Karen (six Pokémon each, **Lv. 90**). Losing whites you out. Winning gives nothing but their parting shots. **Answering No closes the offer for good:** afterwards they only say they're League-certified and you'd need evidence, and they never offer the battle again.
@@ -202,6 +212,7 @@
 *Source:* Charm tutor: file 25 script 41 (≈32,25). Will and Karen: file 25 scripts 7–8, trainers 786/787, flags 730, 1604, 1620 (≈27,39); No → L2620 sets flag 1620, after which script 7 jumps to L2574 (91#129 / #130 lines). Date couples: file 25 scripts 9–10, 30–33, 36–37 (Alan & Olivia ≈40,77; Wilbur & Nancy ≈39,56; Ming & Connie ≈72,45; Everett & Penny ≈48,33). Bugsy: file 25 script 27, flag 648 (≈58,39). Marshal: file 240 script 15 (≈373,286). Arthur: file 243 script 2 (≈431,244); ribbon freeze D-1331. Honey seller: file 243 script 12 (≈443,244). Pokéathlon fans: files 122 L1343–L2363, 123 scripts 22–23.
 
 ## Burned Tower → Bell Tower gate: bring Morty to the Marauder (story; the gate quiz)
+<!-- quest: kind=main -->
 
 **Where:** Burned Tower (north-west Ecruteak), the Bell Tower gatehouse (at the north end of town, east of the Burned Tower), Bellchime Trail behind it.
 
@@ -228,6 +239,7 @@
 *Source:* script file 23 (script 5 L3965–L5402 sets 0x4098 = 4; script 4 sets 6; script 1 L1482 trainers 800 + 822, L3517 sets 7 and flag 462), file 922 (script 1, L370–L947, flag 457), file 22 (script 7, sets 0x4098 = 5), file 918 obj 6 (flag 462). Gatehouse door ≈392,153. The Gym man (≈16,49, hidden by flag 462) stands on the only tile leading onto the invisible floor.
 
 ## Ecruteak Gym: Morty's Ghost challenge (the Fog Badge)
+<!-- quest: kind=main -->
 
 **Where:** Ecruteak Gym (south-west of town). Morty is at the back, past the invisible-floor maze.
 
@@ -246,6 +258,7 @@
 *Source:* script file 918 (script 2; L1055–L13734 party checks, 660 `PlayerHasSpecies` refusals; L1055–L1133 refuse party sizes 1–5; `TrainerBattle [31, 31, 0, 0]` at L13687, trainer 31 = Gengar, Dusclops, Mismagius Lv. 80 + Mimikyu, Dhelmise, Sinistcha Lv. 1; PlayerHasSpecies skips Eggs (arm9 0x0204D3D4); L14662 TM30; L500 var 0x40a9 ≥ 5 + flag 2261; L635 var 0x40a9 = 3).
 
 ## Ecruteak City: which legendary beast is strongest? (one-time)
+<!-- quest: kind=side -->
 
 **Where:** two kids arguing in the middle of town, about a dozen steps west of the Dance Theater door.
 
@@ -265,6 +278,7 @@
 *Source:* script file 916 (scripts 26, 27; L3611–L4253; trainers 802, 803; flag 782). Kids at ≈385,171.
 
 ## Ecruteak City: show the girl a Pokémon like Ho-Oh (→ Shed Shell)
+<!-- quest: kind=side -->
 
 **Where:** west end of town, a few steps east of the Route 38 gate.
 
@@ -275,6 +289,7 @@
 *Source:* script file 916 (script 29, L2393–L6002; flag 459). Girl at ≈365,167.
 
 ## Ecruteak City: Grandpa's Pokémon lantern riddles (→ 2 Power Bands)
+<!-- quest: kind=side -->
 
 **Where:** old man on the east side, about nine steps north of the Poké Mart door.
 
@@ -295,6 +310,7 @@
 *Source:* script file 916 (script 30, L5147–L6927; flag 432). Grandpa at ≈408,164.
 
 ## Ecruteak Pokémon Center: Gold's training battles (→ 12 Soda Pop; missable)
+<!-- quest: kind=side -->
 
 **Where:** Ecruteak Pokémon Center, Gold with his Quilava, just left of the entrance.
 
@@ -310,6 +326,7 @@
 *Source:* script file 919 (script 12; trainers 804, 805; flags 2060–2062, obj flag 572), file 23 L3535 (shows him), file 249 (script 23, Gold's Route 39 battle, trainer 809; L4114 hides him). Gold at ≈5,18.
 
 ## Ecruteak City (Dance Theater): Sakura wants a Water Stone (→ Spell Tag; before the Rising Badge)
+<!-- quest: kind=side -->
 
 **Where:** Dance Theater, Kimono Girl Sakura (right end of the row).
 
@@ -322,6 +339,7 @@
 *Source:* script file 924 (script 13, L3513–L4297; flag 166; trainer 801; Tamao script 5, trainer 750; Momo script 4).
 
 ## Ecruteak City: Shellos for the boy without Badges (choice; one chance)
+<!-- quest: kind=side -->
 
 **Where:** the boy with a Shellos. Below the Burned Tower are two houses side by side; his is the right-hand (eastern) one.
 
@@ -336,6 +354,7 @@
 *Source:* script file 925 (scripts 5, 7; L771 GiveMon 422 Lv. 25; flags 1991, 1992). House door ≈385,164.
 
 ## Ecruteak City: milk for the baby Pichu (→ unlocks Volt Tackle)
+<!-- quest: kind=side -->
 
 **Where:** the house between the Gym and the Pokémon Center, a woman with a Pichu.
 
@@ -346,6 +365,7 @@
 *Source:* script file 925 (script 12, L1095–L1147, flag 2034; tutor L1063–L2611). House door ≈386,183.
 
 ## Ecruteak City: the wheelchair-bound writer's Pidgey letter (→ Wise Glasses; continues Route 35's hungry Pidgey)
+<!-- quest: kind=side -->
 
 **Where:** the house just east of the Pokémon Center, near the east gate. The writer is a woman in a wheelchair.
 
@@ -358,6 +378,7 @@
 *Source:* script file 925 (script 15, L1160–L2323; flags 1061, 2035), file 240 L4099 (clears 1061). House door ≈407,183. Gender: the Chinese text (banks 610#54–#72, 380#44) uses no pronoun for the writer, but her object (zone 84, ≈69,37) uses overworld sprite 325, the same sprite as other NPCs who are women by their own lines (Buena in Radio Tower 2F, Molly, the Violet City woman with a boyfriend, the Cianwood woman minding "her" friend's Gligar, the National Park and Five Island girlfriends), so the player sees a woman. Wheelchair: 610#57 (her legs were broken standing up to Team Rocket).
 
 ## Bell Tower: Ho-Oh is stolen (League HQ round 4; continues Pokémon League, Mt. Silver and New Bark Town's League HQ entry)
+<!-- quest: kind=main -->
 
 **Where:** Ecruteak Gym → Dance Theater → Bell Tower roof.
 
@@ -373,6 +394,7 @@
 *Source:* script file 918 (L635–L14546; `HasItem 483`; sets 0x40a9 = 4), file 19 (script 2, 0x40f3), file 21 (script 8, L1706–L5910; trainers 485 + 729; sets 0x40a9 = 5).
 
 ## Dance Theater → Bell Tower: catch Ho-Oh (after the final Hall of Fame)
+<!-- quest: kind=side -->
 
 **Where:** Dance Theater (Satsuki, the eldest Kimono Girl), Ecruteak Gym, Bell Tower roof.
 
@@ -392,6 +414,7 @@
 *Source:* script file 924 (L4299–L5610; menu 84–86; flag 265; sets 0x40a9 = 7 / 9), file 918 (L13817–L15482; trainer 715; Clear Bell item 474; sets 0x40a9 = 8), file 21 (script 7 L239–L1696; script 1 → L5969–L6288; trainer 88; GiveMon 250 Lv. 95; flag 1140), file 22 (L1023–L2617, flag 714), file 918 L477 (Friday flag 749).
 
 ## Burned Tower: Prof. Hale, Molly and the three beasts (post-game; frees Entei, Suicune, Raikou)
+<!-- quest: kind=side -->
 
 **Where:** Burned Tower basement, where the Sealing Mirror stood.
 
@@ -406,6 +429,7 @@
 *Source:* script file 23 (script 14, trigger on var 0x409f = 11, L4276–L6961; clears flags 1855, 2318, 2319, 2320; sets 0x409f = 12 at L6953; objects need flag 2317 clear), file 842 L2181 (clears 2317 after Lance's visit; @2223 sets 0x409f = 11). Expedition leader: file 962 script 2 runs the first-meeting path unless 0x409f is 3, 5 or 10; a win over `TrainerBattle 897` (L2706) leads to L3482 `SetVar 0x409f, 3`, so the trigger never fires (D-1406). Emulator CN and EN (guide review 2026-10-06, work/build/harness/guide-review-20261006/known-issues/F/): Yes and a win → var 3, no scene; No → var 11, scene plays.
 
 ## Ecruteak City: small extras
+<!-- quest: kind=side -->
 
 - **Sunny, the Sunday sibling (Route 37, Sundays only):** gives a **Magnet**. If you've met all seven siblings she gives your lead Pokémon a ribbon instead (its message then stays on screen until you walk away or press X; see [Known issues](known-issues.md#arthurs-ribbon-message)).
 - **Sage Mozhi (Route 37):** repeatable Single/Double Battle.
@@ -416,6 +440,7 @@
 *Source:* Sunny: file 246 script 2 (ribbon gift dies at opcode 2009 @764: D-1331, D-1558). Mozhi: file 246 script 7, trainer 798. S.S. Anne fan: file 925 script 3, flag 1621, house door ≈375,164. Eruption tutor: file 23 script 7. Aura Sphere tutor: file 922 script 1 (the gate guard, object 0, no hide flag) → L329 with flags 457 (quiz passed) and 462 (Burned Tower battle won, file 23 L3527) → L1065. Dance rehearsal: file 924 script 14/18, trigger on var 0x409a = 1.
 
 ## Route 38: the Murkrow that stole a coin (Nugget trap; → 2 Rare Candies, 2 Lava Cookies or keep the Amulet Coin)
+<!-- quest: kind=side -->
 
 **Where:** the east end of Route 38, about 20 steps west of the Ecruteak gatehouse. The kid hides behind the fence; the Murkrow sits 7 steps south of him.
 
@@ -435,6 +460,7 @@
 *Source:* script file 247 (scripts 5, 6; L580–L1105, L1107–L1748; flags 2160, 1614). Yes to the trade: L1976 takes the Nugget (item 92) at L1983, then L1467 (same hop-away as without one). Murkrow battle `WildBattle 198` L1681, `CheckBattleWon` L1688 false only on a loss (→ L1568), so a flee drops the coin like a win. Kid at ≈332,173, Murkrow at ≈332,180.
 
 ## Route 39: the "Team Rocket grunt" who wants $10,000 (optional Lv. 62–65 battle)
+<!-- quest: kind=side -->
 
 **Where:** Route 39, by the MooMoo Farm stable, a few steps east of the right-hand stable door.
 
@@ -449,6 +475,7 @@
 *Source:* script file 249 (script 12, L527–L868, L1938, L2220–L2390; trainer 807; flag 1620). Grunt at ≈274,166.
 
 ## Route 39: the Donphan owner who needs a Protector (→ Power Weight)
+<!-- quest: kind=side -->
 
 **Where:** the south part of Route 39, the man next to his Donphan, beside a sign.
 
@@ -461,6 +488,7 @@
 *Source:* script file 249 (scripts 17, 18; L2535, L4825; flag 2064). Man at ≈276,210.
 
 ## Route 39: the old lady's Sunflora story (→ Seal Case)
+<!-- quest: kind=side -->
 
 **Where:** MooMoo Farm, Route 39, the old lady among the Sunflora in the south of the farm.
 
@@ -476,6 +504,7 @@ Seals go on Poké Balls through **BALL CAPSULES** in the PC menu.
 *Source:* script file 249 (scripts 19, 20; L1082 flag 744 clear → L2565, 391#83 worry line; L2587–L2827; flags 744, 552), 251 (script 2, L147 flag 744 clear → L985; L1008–L1510; flag 257), 913 (script 3, L354, L755, L1254; flag 2745). Flag 744 set = Miltank healthy: set at new game (file 149 @492), cleared only by the League HQ round-3 order (file 31 @4666), set again by the Dream World (file 898 @2329); the lab's ClearFlag 744 (file 840 @3194/@3324) is in a script that never runs (see the MooMoo Farm entry). Emulator, CN and EN: work/build/harness/bugreports-20261006/miltank/ (old lady and farmer, healthy and sick). Old lady at ≈270,190; Olivine seal girl's door ≈292,241.
 
 ## MooMoo Farm: the sick Miltank investigation (League HQ round 3; leads to the Dream World)
+<!-- quest: kind=main -->
 
 **Where:** the MooMoo Farm stable on Route 39. Go in by the right-hand door: the farmer stands a few steps ahead in the east room. The Miltank are in the west room (the left-hand door).
 
@@ -496,6 +525,7 @@ Seals go on Poké Balls through **BALL CAPSULES** in the PC menu.
 *Source:* script file 251 (scripts 1, 8, 9; L903–L1431, L1283, L1295; flags 744, 2299, 2289, 2301; farmer script 1: L117 flag 744 set → greeting 391#4, clear → L925 asks for help 391#6/#23 and L1419–L1423 sets 2299 and var 0x40a3 = 5; coord script 8 at ≈7,3 in the west room needs 0x40a3 = 5), 249 (milk stall script 21, L1192 → L2851 while 744 is clear), flag 744 (set = healthy): set at new game (file 149 @492), cleared only by the League HQ round-3 order (file 31 @4666, after 0x40a2 = 17), set again by the Dream World (file 898 @2329, with 2289 at @2321); no other setter in any script file. The `ClearFlag 744` in Prof. Elm's lab (file 840 @3194/@3324) is in lab script 15, which needs var 0x4108 = 8, a value no script sets (emulator, CN and EN: work/build/harness/bugreports-20261006/miltank/). Return trip: script 9 @882 CheckFlag 2261 → L1295 → Warp, the file's only HasItem is 434 (Seal Case). Farmer at ≈38,5 in the stable; right-hand stable door ≈265,164 leads to the east room, left-hand door ≈260,164 to the west room. Milk stall at ≈268,169.
 
 ## Olivine City: the Star-Chaser Sisters (talk to them from the middle)
+<!-- quest: kind=side -->
 
 **Where:** Olivine City, three girls standing together about eight steps north of the Café door.
 
@@ -508,6 +538,7 @@ Seals go on Poké Balls through **BALL CAPSULES** in the PC menu.
 *Source:* script file 907 (scripts 11, 16, 17; coordinate checks L431–L456, L1015–L1053, L1534–L1572; trainers 818–820; L3030; flag 176). Girls at ≈263–264,248–250; the gap tile is ≈264,249.
 
 ## Olivine City: Sitrus Berries → Machine Part → Diving Suit → HM05 Whirlpool (with a Tentacool)
+<!-- quest: kind=side -->
 
 A chain across four places in Olivine. **HM05 Whirlpool** is the reward. Crossing whirlpools (for example to the Whirl Islands, [League HQ](07-league-to-cherrygrove.md#league-hq-the-trainer-affairs-departments-investigations-where-to-go-next) round 4) needs the Volcano Badge. According to the scripts a Pokémon that knows Whirlpool isn't required ([Field moves: which Badge each one needs](13-dungeons-and-common.md#field-moves-which-badge-each-one-needs)), but that isn't confirmed in game, so teaching it is the safe choice.
 
@@ -521,6 +552,7 @@ A chain across four places in Olivine. **HM05 Whirlpool** is the reward. Crossin
 *Source:* script files 915 (scripts 8, 9; L1447, L1832; flag 458), 907 (script 29, L3837–L4075), 62 (script 4, L1398–L1524; flag 256; the engineer is two objects at the same spot: object 18 hidden by flag 472, set at file 909 L16098 after the Mineral Badge and cleared at file 66 L3738 by the Amphy cure; object 28 hidden by flag 471, set by Gold's Route 39 battle (file 249 L4118) and cleared when Team Rocket leaves the Lighthouse (file 66 L2507); L1430 moves both. Emulator, EN: with 472 set and 471 clear he stands at ≈14,13 and gives the Diving Suit for the Machine Part; while Team Rocket is in the tower neither copy is there; work/build/harness/guide-review-20261006/ch10/eng_en_*.json), 913 (script 4, L400, L787, L1346–L2148; flag 470). Machoke man at ≈4,8 in the Café; Pelipper man at ≈299,267; engineer at ≈14,13 on Lighthouse 1F; boy's door ≈287,241.
 
 ## Olivine Café → fisherman: the three dishes and the Super Rod
+<!-- quest: kind=side -->
 
 **Where:** the head chef at the back right of the Olivine Café, then the fisherman in the house south-east of the Gym (the house door nearest the Star-Chaser Sisters, about ten steps east of them).
 
@@ -541,6 +573,7 @@ A chain across four places in Olivine. **HM05 Whirlpool** is the reward. Crossin
 *Source:* script files 915 (script 11, L914–L1770; flag 2066), 913 (scripts 6, 7; L185–L301, L501–L1252; flag 2069). Chef at ≈11,4 in the Café. The fisherman's door is ≈273,247 (not ≈292,241, which is the seal girl's room).
 
 ## Olivine City: give Crystal your Super Rod (before the Mineral Badge; romance)
+<!-- quest: kind=side -->
 
 **Where:** Olivine City, Crystal and her Bayleef by the harbour entrance, a few steps north of the building that leads to the harbour.
 
@@ -555,6 +588,7 @@ A chain across four places in Olivine. **HM05 Whirlpool** is the reward. Crossin
 *Source:* script file 907 (script 14, L3093–L3137, L4329–L4427; clears flag 2145, sets 175); Crystal is hidden by flag 173, set in file 909 L16090 after the Mineral Badge; Route 46 lock file 259 L2267 (coord script 4, the Dark Cave digging scene). No Dream World check (no 2289/2300 test on this path); the Dream World (file 898, sets 2145) needs the round-3 order (file 31 @4666, 0x40a2 = 17), which comes after the Silver Conference (0x40a2 = 13, file 107 @9518), while flag 173 hides Crystal from the Mineral Badge on. Not checked: whether the story can reach the Silver Conference without the Mineral Badge (Gold's Badge race, file 937 L3317–L3450, only changes his lines). Crystal at ≈277,272.
 
 ## Olivine City: the "gold-laying Magikarp" con man (only if the S.S. Anne was saved)
+<!-- quest: kind=side -->
 
 **Where:** Olivine City, about nine steps north of the Poké Mart door. A salesman and his Magikarp are pitching to a kid.
 
@@ -567,6 +601,7 @@ A chain across four places in Olivine. **HM05 Whirlpool** is the reward. Crossin
 *Source:* script file 907 (scripts 27, 28; L3554–L4974, L7022; flags 593, 1093). Salesman at ≈290,248, kid at ≈290,250.
 
 ## Olivine Gym: Jasmine's rule (three Pokémon with base Defense 130+)
+<!-- quest: kind=main -->
 
 **Where:** Olivine Gym. Jasmine is at the back.
 
@@ -585,6 +620,7 @@ A chain across four places in Olivine. **HM05 Whirlpool** is the reward. Crossin
 *Source:* script file 909 (script 1, L461, L796–L14993; species checks L839–L14930; L15126, L15137; trainer 33; GiveBadge 13 at L14972; L15154–L16114). The Metal Burst tutor is hidden by flag 472, set at L16098 after the badge and cleared by the Amphy cure (file 66 L3738).
 
 ## Olivine Lighthouse: medicine for Amphy (→ TM91 Flash Cannon)
+<!-- quest: kind=main -->
 
 **Where:** the top of the Olivine Lighthouse.
 
@@ -599,6 +635,7 @@ A chain across four places in Olivine. **HM05 Whirlpool** is the reward. Crossin
 *Source:* script file 66 (script 16, L2754, L3416–L3756; var 0x4098 = 13), 62 (script 16).
 
 ## Route 38 → Olivine City: small extras
+<!-- quest: kind=side -->
 
 - **Route 38, Magician Lott** (west part of the route): an Apricorn-picking Trainer offers a Singles or Doubles battle any time. His team is **Lv. 81–82** (Wobbuffet, Smeargle, Ditto, Porygon-Z, Aerodactyl, Meganium). Losing whites you out. Repeatable, no prize.
 - **Route 38 merchant** (at the west end of the route) sells Burn Heal $250, Ice Heal $250, Grass Mail $500 and **TM78 Captivate for $3,000**.

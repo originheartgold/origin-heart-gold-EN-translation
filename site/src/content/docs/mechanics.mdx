@@ -4,6 +4,7 @@ description: EXP sharing, capture chains, EV training, evolution rules, held-ite
 ---
 
 import FormChanges from '../../components/FormChanges.astro';
+import PickupChart from '../../components/PickupChart.astro';
 import { formChanges } from '../../lib/verified-mechanics';
 
 Origin HeartGold adds automatic party training, capture-chain bonuses and new information screens. Here is how to use them in **v4.0.3**.
@@ -110,9 +111,16 @@ The hack rewrites many evolutions. Each [Pokémon](../pokemon/) page lists its e
 
 Use the [move reference](../moves/) for stats, effects and learning methods, and the [ability reference](../abilities/) to find abilities for your team. The [TM/HM list](../tms/) shows where to get each machine and which Pokémon can use it.
 
+## Pickup
+
+A Pokémon with [Pickup](../abilities/pickup/) can find items after battle. Items go straight into the Bag; the Pokémon does not need an empty held-item slot. Eggs do not activate Pickup.
+
+**Pickup first has a 10% chance to activate per eligible check.** The chart then gives each item's chance **after activation**. For example, a **30%** entry means approximately **3% per eligible check**; a **1%** entry means approximately **0.1%**. These are nominal chances, not guaranteed rewards after a fixed number of battles.
+
+<PickupChart />
+
 ## Other training and battle changes
 
-- **Pickup:** items go straight into the Bag; the Pokémon does not need an empty held-item slot.
 - **Held items after battle:** the game restores many items, but has exceptions, including special berry handling. Do not assume every consumed, stolen or knocked-off item comes back.
 - **Hatching:** Flame Body and Magma Armor speed up hatching. Their effects do not stack with multiple holders.
 - **Destiny Knot:** either parent holding it raises inherited IV slots to five. This does not guarantee five perfect IVs.

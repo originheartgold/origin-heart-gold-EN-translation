@@ -233,7 +233,7 @@ class NativeRunnerTest(unittest.TestCase):
             runner.validate_report({'validator':'harness','report':str(path)})
 
     def test_reference_hash_mismatch_is_explicitly_skipped(self):
-        source = self.root / 'work/save-editor/src/generated-reference.ts'
+        source = self.root / 'work/save-editor/src/core/generated-reference.ts'
         source.parent.mkdir(parents=True)
         source.write_text('{"romSha256":"' + 'f' * 64 + '"}')
         result = runner.reference_provenance(self.manifest)
