@@ -29,7 +29,7 @@ The compared English WIP contains the demand-loading instruction. Its hash is `c
 
 ## Controlled experiment
 
-The preserved exploratory harness is `work/research/text_speed/probe.py`. It uses the existing local Python/DeSmuME installation and machine-local input paths. Invoke it from this worktree root. It is deliberately a research harness, not a general patcher. Its hooks assume the reviewed binaries above and must not be reused against other binaries without checking addresses. It initializes DeSmuME's macOS graphics and needs execution outside the restricted sandbox on this machine.
+The exploratory harness was `work/research/text_speed/probe.py` (removed in the 2026-10-09 cleanup; git history keeps it). It uses the existing local Python/DeSmuME installation and machine-local input paths. Invoke it from this worktree root. It is deliberately a research harness, not a general patcher. Its hooks assume the reviewed binaries above and must not be reused against other binaries without checking addresses. It initializes DeSmuME's macOS graphics and needs execution outside the restricted sandbox on this machine.
 
 Runs used the same `controlled-before.dst` checkpoint, the same ROM, and the same input sequence (one-frame A presses, 240 frames apart). Reports are `en-normal/report.json`, `en-fast/report.json`, `en-instant/report.json`; comparison is `controlled-summary.json`. There are two pages of trainer dialogue followed by transition into battle. Battle text itself was not validated.
 

@@ -26,7 +26,7 @@ The readiness agent booted the fixed ROM from an old battery save and created a 
 - Invalid mode 3 and temporarily absent runtime pointer fall back to NORMAL.
 - Old music values 0/1/2 retain their values and default text speed to NORMAL.
 
-The controlled glyph spans were 54 / 21 / 2 frames. These tests deliberately change live test RAM; they are not claimed as natural menu interaction or comprehensive memory certification. Separate blank-battery startup tracing is read-only. See `work/research/text_speed/review/save_readiness_fix/README.md` and its two regression scripts. Reports are under `work/build/text-speed/save-readiness-fix/`.
+The controlled glyph spans were 54 / 21 / 2 frames. These tests deliberately change live test RAM; they are not claimed as natural menu interaction or comprehensive memory certification. Separate blank-battery startup tracing is read-only. The README and its two regression scripts (`work/research/text_speed/review/save_readiness_fix/`) were removed in the 2026-10-09 cleanup; git history keeps them. Reports are under `work/build/text-speed/save-readiness-fix/`.
 
 Valid old in-game saves still upgrade without preparation. New-save → old-ROM downgrade support is outside the user's required scope.
 

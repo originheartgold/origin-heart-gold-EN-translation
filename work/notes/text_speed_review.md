@@ -1,6 +1,6 @@
 # Independent text-speed RC review — 2026-10-05
 
-**Resolution:** all three findings below are addressed by the [subsequent fixes and rebuilt candidate](text_speed_fixes.md). This report preserves the original review evidence and pre-fix artifact identity.
+**Resolution:** the review probes under `work/research/text_speed/review/` were removed in the 2026-10-09 cleanup (git history keeps them). All three findings below are addressed by the [subsequent fixes and rebuilt candidate](text_speed_fixes.md). This report preserves the original review evidence and pre-fix artifact identity.
 
 Reviewed in `/private/tmp/poke-text-speed-research`, branch `codex/text-speed-research`. This review did not modify the native implementation, cached payload, patcher, build pipeline, translation banks, source ROMs or saves. Review scripts and ignored emulator artifacts are separate from release inputs. No downloads, commits or publication occurred.
 
