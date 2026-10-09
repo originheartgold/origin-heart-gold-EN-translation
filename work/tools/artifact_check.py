@@ -82,7 +82,7 @@ def check(a, export_fn=None, verify_fn=None):
             str(path.relative_to(build.WORK)): hashes(path)
             for path in (Path(__file__), build.TOOLS / "build.py", build.TOOLS / "ws.py",
                          build.TOOLS / "gfx.py", build.TOOLS / "hardcoded.py", build.TOOLS / "fixes.py",
-                         build.TOOLS / "asmpatch.py", build.TOOLS / "msgtool.py",
+                         build.TOOLS / "asmpatch.py", build.TOOLS / "msgtool.py", build.TOOLS / "narcpatch.py",
                          *sorted((build.WORK / "patches").glob("*/fix.toml")),
                          *sorted((build.WORK / "patches").glob("*/*.asm")),
                          *sorted((build.WORK / "patches" / "include").glob("*")),
@@ -119,7 +119,8 @@ def check(a, export_fn=None, verify_fn=None):
             report.update(status="incomplete", reason="empty verification metadata for glyphs, graphics or hardcoded patches")
             return report
         report["verification"] = verify_fn(a.rom, a.output / "export", font, fonts, cm,
-                                            prior["graphics"], prior["hardcoded"], glyph_codes)
+                                            prior["graphics"], prior["hardcoded"], glyph_codes,
+                                            prior.get("narc_bytes"))
         # This is also required for legacy/missing metadata: inspect the ROM
         # before accepting the absence of a feature report as an opt-out.
         speed = build.verify_text_speed(msgtool.load_rom(a.rom), prior.get("text_speed"))

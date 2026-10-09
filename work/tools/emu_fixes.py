@@ -60,6 +60,7 @@ COVERAGE = {
     "msgload": ("msgload",),
     "overworld-texture-frame-bounds": ("texture-bounds",),
     "bulbasaur-reflection-boundary": ("reflection",),
+    "trade-evolutions-levelup": ("trade-evo",),
 }
 # fix id -> why no scenario of this command covers it (honest gaps; see work/notes/emu_harness.md)
 UNCOVERED = {
@@ -120,6 +121,16 @@ IVEV_HEADER_CALL = 0x0208C1E4
 IVEV_EV_X = 0x40
 IVEV_ROWS = [(56, 72), (72, 88), (88, 104), (104, 120), (120, 136), (136, 152)]   # HP .. Speed (screenshot y)
 IVEV_X = (150, 256)
+# trade-evolutions-levelup (fix.toml [[narc_bytes]], a/0/3/4): one Rare Candy each. case: (species, level before,
+# species after with the fix, species after without it). Roggenrola (Lv 25, unchanged) evolves on both builds:
+# it shows the candy and the evolution scene ran, so a Boldore that stays Boldore on the control is the hack's data.
+TRADE_EVO_CANDY = 50                # Rare Candy (Medicine pocket)
+TACKLE_MOVE = 33
+TRADE_EVO_CASES = {
+    "boldore": (525, 34, 526, 525),     # Boldore Lv 34 -> 35: Gigalith with the fix, Boldore (trade) without
+    "gurdurr": (533, 39, 534, 533),     # Gurdurr Lv 39 -> 40: Conkeldurr with the fix, Gurdurr without
+    "roggenrola": (524, 24, 525, 525),  # Roggenrola Lv 24 -> 25: Boldore on both (the hack's own level-up record)
+}
 # antipiracy (antipiracy.listing): the six DS Protect entry points in overlay 114 and their genuine values
 ANTIPIRACY_ENTRIES = {0x02263A64: 0, 0x02263B4C: 1, 0x02263C34: 0, 0x02263D1C: 1, 0x02263E04: 0, 0x02263ECC: 1}
 def _fix_expect_bytes(fix_id, region_id):
@@ -473,6 +484,38 @@ def antipiracy_hooks(h):
         h.on_exec(entry + 8, on_body)
 
 
+def observe_trade_evo(h):
+    """TRADE_EVO_CASES one after another (full_bag_6mons.sav): create the Pokemon with the hack's generator at the
+    level before its evolution level, with one move (Tackle, so no 'wants to learn' question can stop the A
+    presses), put a single Rare Candy first in the Medicine pocket, use it from the bag on the new Pokemon and
+    press A through the level-up and an evolution scene; then read the Pokemon (species, level, checksum)."""
+    import emu_guide0107 as G
+    import emu_harness as E
+    cases = {}
+    for name, (species, level, _, _) in TRADE_EVO_CASES.items():
+        h.generate_pokemon(species, level=level)
+        slot = h.generated_slot
+        h.edit_party_mon(slot, moves=[TACKLE_MOVE, 0, 0, 0])
+        before = G.mon_details(h.read(h.array(E.ARR_PARTY) + 8 + 236 * slot, 236))
+        h.bag_put_first(TRADE_EVO_CANDY, 1, "medicine")      # one candy: an extra A in the bag uses nothing
+        h.open_bag()
+        h.bag_pocket("medicine")
+        h.touch(*E.BAG_SLOTS[0], frames=12, after=60)
+        h.touch(*E.BAG_USE, frames=12, after=60)
+        h.touch(*E.PARTY_SLOTS[slot], frames=12, after=120)
+        for _ in range(30):                 # level-up messages, stats, 'What? ... is evolving!', the scene
+            h.press("A", after=90)
+        h.step(300)
+        shot = h.screenshot(f"trade_evo_{name}")
+        after = G.mon_details(h.read(h.array(E.ARR_PARTY) + 8 + 236 * slot, 236))
+        for _ in range(3):                  # back to the field
+            h.press("B", after=120)
+        cases[name] = {"before": {k: before[k] for k in ("species", "level", "checksum_ok")},
+                       "after": {k: after[k] for k in ("species", "level", "checksum_ok")},
+                       "screenshot": str(shot)}
+    return {"cases": cases}
+
+
 def observe_font(h):
     """In the field: the width tables of the fonts the game keeps in RAM (0, 1, 4), found by their first 0x1A0
     bytes (which the fix does not touch), and the widths the text printer reads for … “ ”."""
@@ -548,6 +591,7 @@ SCENARIOS = {
     "font": ("full_bag_6mons.sav", None, observe_font, False),
     "textspeed": ("full_bag_6mons.sav", None, observe_textspeed, False),
     "battle": ("full_bag_6mons.sav", None, observe_battle, True),
+    "trade-evo": ("full_bag_6mons.sav", None, observe_trade_evo, False),
 }
 EXTERNAL = {"msgload", "texture-bounds", "reflection"}  # scenarios run by other tools (memcheck.py,
 #                                                         emu_texture_bounds.py, emu_reflection.py)
@@ -808,7 +852,25 @@ def judge_reflection(scenario, obs, ref=None):
     return _state(ok and obs.get("expect") == "fixed", ok and obs.get("expect") == "original", why)
 
 
+def judge_trade_evo(scenario, obs, ref=None):
+    """Every case went up exactly one level with a valid checksum, and Roggenrola evolved (the candy and the
+    evolution path work on this ROM); 'fixed': Boldore became Gigalith and Gurdurr Conkeldurr; 'original': both
+    stayed as they were (the hack's trade records)."""
+    cases, why, fixed, original = obs["cases"], {}, True, True
+    for name, (species, level, with_fix, without_fix) in TRADE_EVO_CASES.items():
+        c = cases[name]
+        before, after = c["before"], c["after"]
+        sane = (before["species"] == species and before["level"] == level and after["level"] == level + 1
+                and after["checksum_ok"])
+        why[name] = {"species": [before["species"], after["species"]], "level": [before["level"], after["level"]],
+                     "checksum_ok": after["checksum_ok"]}
+        fixed &= sane and after["species"] == with_fix
+        original &= sane and after["species"] == without_fix
+    return _state(fixed, original, why)
+
+
 JUDGES[("msgload", "msgload")] = judge_msgload
+JUDGES[("trade-evo", "trade-evolutions-levelup")] = judge_trade_evo
 # checks across the two runs of a fix (fixed ROM, control), after both judged right
 PAIR_CHECKS = {("ivev", "ivev-panel"): pair_ivev, ("pcbox", "pcbox-name-width"): pair_pcbox}
 JUDGES[("texture-bounds", "overworld-texture-frame-bounds")] = judge_texture_bounds

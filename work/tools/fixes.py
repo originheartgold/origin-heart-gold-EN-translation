@@ -9,14 +9,16 @@ work/patches/FIXES.md is generated from these files:  python3 work/tools/fixes.p
 fix.toml
     id          = "namelen"                 must equal the folder name; [a-z0-9-]
     title       = "..."                     one line
-    kind        = "code" | "data" | "strings" | "graphics" | "font"
+    kind        = "code" | "data" | "strings" | "narc" | "graphics" | "font"
                   code: instructions (immediates, branches); data: tables inside code files;
-                  strings: hardcoded text outside the message NARCs; graphics: NARC members or tile data
+                  strings: hardcoded text outside the message NARCs; narc: a few bytes inside game-data
+                  NARC members (e.g. an evolution record), no asm; graphics: NARC members or tile data
                   inside code; font: glyphs in the font NARC
     enabled     = true | false              false: the build leaves this fix out unless --only names it
     decisions   = ["D-0858", ...]           decision-register ids (checked against decisions.jsonl)
     requires    = ["naming-keyboard", ...]  fixes that must be in the same build ("only makes sense with");
-                                            not an apply order (stages run font, graphics, strings, code/data)
+                                            not an apply order (stages run font, graphics, narc, strings,
+                                            data/code)
     why         = '''...'''                 the symptom in the untouched Chinese hack: player-facing first,
                                             then the technical cause
     what        = '''...'''                 old -> new behaviour
@@ -59,6 +61,12 @@ fix.toml
     [[graphics]]  graphics operations (kind graphics). Keys: op plus that op's fields, see gfx.py and
                   GRAPHICS_OPS below; notes.
     [[font]]      glyph restores (kind font). Keys: narc, fonts, codes, source ("usa"), notes.
+    [[narc_bytes]] a few bytes inside a NARC member (kind narc; applied by narcpatch.py). Keys: id, narc (path),
+                  member (index), offset (hex, in the member), expect (the original bytes, [[code]] halfword
+                  notation, little-endian), new (the bytes written, as many halfwords as expect), member_sha1
+                  (SHA-1 of the whole original member, 40 hex digits: pins its size and every other byte),
+                  notes. The build refuses unless the member has member_sha1 and the bytes at offset are expect.
+                  Only the replaced and written bytes are in git, never a member.
     [[us_ref]]    a claim about the USA ROM (any kind): id, claim, file ("arm9" | "overlayNN" in USA numbering |
                   a NARC path), address (RAM) or offset, and what is there: expect (the USA bytes, a few
                   halfwords), new (a [[code]] region of this fix: the bytes the fix writes there) or hack +
@@ -102,7 +110,8 @@ overlay.
 
 Blind spots of the overlap check: it compares entries only within one namespace and granularity:
   * code bytes are keyed by "arm9" / "overlayNN" (byte ranges);
-  * NARC members by "<narc path>#<member>" (the whole member, whatever op touches it);
+  * NARC members by "<narc path>#<member>": a [[graphics]] op covers the whole member, a [[narc_bytes]]
+    entry its byte range (so two [[narc_bytes]] entries may share a member, a graphics op never);
   * glyphs by "<font narc>#<font file>:glyph" (one code), so a [[graphics]] op that replaced a whole
     font member would not be seen to overlap a [[font]] glyph in it;
   * [[string]] entries are byte ranges in arm9 / overlays, like [[code]]; a [[grow]] is one key per overlay,
@@ -139,14 +148,16 @@ ARM9_BASE = 0x02000000
 DECISIONS_JSONL = WORK / "translate" / "decisions" / "decisions.jsonl"
 ROM_CN = WORK / "rom" / "origin_v4.0.3_cn.nds"
 
-KINDS = ("font", "graphics", "strings", "data", "code")       # also the stage order of the build
-ENTRY_TABLES = {"code": "code", "data": "code", "strings": "string", "graphics": "graphics", "font": "font"}
+KINDS = ("font", "graphics", "narc", "strings", "data", "code")       # also the stage order of the build
+ENTRY_TABLES = {"code": "code", "data": "code", "strings": "string", "narc": "narc_bytes", "graphics": "graphics",
+                "font": "font"}
+ENTRY_TABLE_NAMES = ("code", "string", "narc_bytes", "graphics", "font")
 STRS, INTS = ("list", str), ("list", int)       # list element types
 TABLES, TABLE_MAP = ("list", dict), ("dict", dict)   # [[entries]] and [name.<key>] sub-tables
 TOP_KEYS = {"id": str, "title": str, "kind": str, "enabled": bool, "decisions": STRS, "requires": STRS,
             "why": str, "what": str, "evidence": STRS, "asm": str, "native": dict,
             "code": TABLES, "string": TABLES, "grow": TABLES, "graphics": TABLES, "font": TABLES,
-            "us_ref": TABLES}
+            "narc_bytes": TABLES, "us_ref": TABLES}
 REQUIRED_TOP = ("id", "title", "kind", "enabled", "decisions", "requires", "why", "what", "evidence")
 ASM_KINDS = ("strings", "data", "code")  # kinds whose new bytes come from an armips source
 # Python modules (work/tools/<name>.py) that validate a fix's native payload ([native] module = ...)
@@ -201,6 +212,10 @@ ASM_STRING_RE = re.compile(r'^\s*(?:\w+:\s*)?\.(?:stringn|string|str)\s+"((?:[^"
 # any .string / .stringn / .str directive (to refuse the forms ASM_STRING_RE does not read)
 ASM_STRING_DIRECTIVE_RE = re.compile(r'^\s*(?:\w+:\s*)?\.(?:stringn|string|str)\b', re.I)
 ASM_LOADTABLE_RE = re.compile(r'^\s*\.loadtable\s+"\.\./include/charmap\.tbl"', re.I)
+NARC_BYTES_KEYS = {"id": str, "narc": str, "member": int, "offset": str, "expect": str, "new": str,
+                   "member_sha1": str, "notes": str}
+NARC_BYTES_REQUIRED = ("id", "narc", "member", "offset", "expect", "new", "member_sha1", "notes")
+NARC_PATH_RE = re.compile(r"[a-z0-9_]+(?:/[A-Za-z0-9_.]+)*")    # a/0/3/4, poketool/personal/evo.narc
 FONT_KEYS = {"narc": str, "fonts": INTS, "codes": STRS, "source": str, "notes": str}
 FONT_REQUIRED = ("narc", "fonts", "codes", "source")
 
@@ -313,7 +328,7 @@ def halfwords(v) -> list:
 def _validate_entries(fx, where, problems):
     kind = fx.get("kind")
     table = ENTRY_TABLES.get(kind)
-    for t in ("code", "string", "graphics", "font"):
+    for t in ENTRY_TABLE_NAMES:
         if t in fx and t != table:
             problems.append(f"{where}: kind {kind!r} cannot have [[{t}]] entries")
     if "grow" in fx and kind not in ASM_KINDS:
@@ -390,6 +405,29 @@ def _validate_entries(fx, where, problems):
             for mb, spec in (files or {}).items():
                 if not mb.isdigit() or not isinstance(spec, dict) or set(spec) != {"src", "expect_sha1"}:
                     problems.append(f"{w}: files.{mb} must be {{src, expect_sha1}}")
+    for i, e in enumerate(_entries(fx, "narc_bytes")):
+        w = f"{where} [[narc_bytes]] #{i} {e.get('id', '?')}"
+        _types(w, e, NARC_BYTES_KEYS, NARC_BYTES_REQUIRED, problems)
+        if isinstance(e.get("narc"), str) and (not NARC_PATH_RE.fullmatch(e["narc"]) or "/" not in e["narc"]):
+            problems.append(f"{w}: narc must be a NARC path like 'a/0/3/4'")
+        if _is(e.get("member"), int) and e["member"] < 0:
+            problems.append(f"{w}: member must be >= 0")
+        if isinstance(e.get("offset"), str) and not HEX_RE.fullmatch(e["offset"]):
+            problems.append(f"{w}: offset must be hex like '0x0'")
+        if isinstance(e.get("member_sha1"), str) and not SHA1_RE.fullmatch(e["member_sha1"]):
+            problems.append(f"{w}: member_sha1 must be 40 lowercase hex digits")
+        lens = []
+        for k in ("expect", "new"):
+            if isinstance(e.get(k), str):
+                try:
+                    lens.append(len(halfwords(e[k])))
+                except ValueError as ex:
+                    problems.append(f"{w}: {k} {ex}")
+        if len(lens) == 2 and lens[0] != lens[1]:
+            problems.append(f"{w}: new must have as many halfwords as expect ({lens[1]} != {lens[0]})")
+        elif len(lens) == 2 and isinstance(e.get("expect"), str) and \
+                halfwords(e["expect"]) == halfwords(e["new"]):
+            problems.append(f"{w}: new equals expect (the entry changes nothing)")
     for i, e in enumerate(_entries(fx, "font")):
         _types(f"{where} [[font]] #{i}", e, FONT_KEYS, FONT_REQUIRED, problems)
         for c in e.get("codes", []) if _is(e.get("codes", []), STRS) else []:
@@ -1277,7 +1315,7 @@ def validate(fixes, decisions=None, overlay_bases=None) -> list:
     # entry ids unique across all fixes
     seen = {}
     for fx in fixes:
-        for t in ("code", "string", "us_ref"):
+        for t in ("code", "string", "narc_bytes", "us_ref"):
             for e in _entries(fx, t):
                 if not isinstance(e.get("id"), str):
                     continue                                # reported by the type check
@@ -1457,8 +1495,12 @@ def region_length(e) -> int:
     return 2 * len(halfwords(e["expect"])) if "expect" in e else e["length"]
 
 
+WHOLE_MEMBER = 1 << 40      # end of a footprint row that covers a whole NARC member
+
+
 def footprint(fx) -> list:
-    """(resource, start, end, label) rows: byte ranges in code files, whole NARC members, glyphs."""
+    """(resource, start, end, label) rows: byte ranges in code files and NARC members ([[narc_bytes]]), whole
+    NARC members ([[graphics]]), glyphs."""
     rows = []
     for e in fx.get("code", []):
         off = _int(e["offset"])
@@ -1478,7 +1520,10 @@ def footprint(fx) -> list:
         members = e.get("members") or ([e["member"]] if "member" in e else [int(k) for k in e.get("files", {})])
         for narc in [e["narc"]] + e.get("also", []):
             for mb in members:
-                rows.append((f"{narc}#{mb}", 0, 1, f"{e['op']} {narc} #{mb}"))
+                rows.append((f"{narc}#{mb}", 0, WHOLE_MEMBER, f"{e['op']} {narc} #{mb}"))
+    for e in fx.get("narc_bytes", []):
+        off = _int(e["offset"])
+        rows.append((f"{e['narc']}#{e['member']}", off, off + 2 * len(halfwords(e["expect"])), e["id"]))
     for e in fx.get("font", []):
         for fi in e["fonts"]:
             for c in e["codes"]:
@@ -1601,6 +1646,11 @@ def graphics_manifest(fixes) -> list:
     return [dict(e, fix=fx["id"]) for fx in _staged(fixes) for e in fx.get("graphics", [])]
 
 
+def narc_bytes_entries(fixes) -> list:
+    """[[narc_bytes]] entries of `fixes` (plus "fix") in build order, for narcpatch.py."""
+    return [dict(e, fix=fx["id"]) for fx in _staged(fixes) for e in fx.get("narc_bytes", [])]
+
+
 def font_spec(fixes):
     """(narc, fonts, codes) of the [[font]] entries of `fixes`, or None when no font fix is active."""
     ents = [e for fx in _staged(fixes) for e in fx.get("font", [])]
@@ -1663,6 +1713,9 @@ def _touched(fx, bases=None) -> list:
                                ", ".join(sorted({v["src"] for v in e.get("files", {}).values()})))
         also = f" (+ {', '.join(f'`{a}`' for a in e['also'])})" if e.get("also") else ""
         lines.append(f"`{e['narc']}` {ms}{also}: `{e['op']}` from {src}")
+    for e in fx.get("narc_bytes", []):
+        lines.append(f"`{e['narc']}` #{e['member']} +{e['offset']} `{e['id']}`: `{e['expect']}` → `{e['new']}` "
+                     f"(member SHA-1 `{e['member_sha1'][:12]}`): {e['notes']}")
     for e in fx.get("font", []):
         lines.append(f"`{e['narc']}` fonts {', '.join(map(str, e['fonts']))}: glyph + width of "
                      f"{', '.join(e['codes'])} from the {e['source'].upper()} ROM")
@@ -1696,7 +1749,8 @@ def render_docs(fixes, overlay_bases=None) -> str:
            "original bytes, the strings' Chinese and English and how far an overlay may grow, and the build "
            "refuses any other change (`work/notes/toolchain.md`). Each fix "
            "checks what it replaces before it writes: code, data, strings and "
-           "`code_from_us`/`member_from_file` graphics check the exact bytes (or their SHA-1); `copy_us`, "
+           "`code_from_us`/`member_from_file` graphics check the exact bytes (or their SHA-1), a narc fix the "
+           "member's SHA-1 and the bytes it replaces (its fix.toml holds the old and new bytes); `copy_us`, "
            "`tiles_from_file` and `tiles_from_us` check the bit depth and tile count; `tiles_from_png` checks "
            "that the image matches the sheet's tile grid, and `tile_range_from_png` that the range fits the "
            "sheet, both that every palette index is below the bit-depth limit; every replaced NARC member must "
@@ -1708,7 +1762,8 @@ def render_docs(fixes, overlay_bases=None) -> str:
            "Chinese ROM are container bookkeeping: the ROM header's layout fields, the FAT and the offset at 0x1000 "
            "where the RSA signature is stored move because ndspy rebuilds the ROM container around the changed "
            "files, not because of a fix.", "",
-           "Stages (and the order of this list): font → graphics → hardcoded strings → data and code patches. "
+           "Stages (and the order of this list): font → graphics → NARC bytes → hardcoded strings → data and code "
+           "patches. "
            "Offsets are file offsets; for arm9 "
            "and overlays that is the offset in the RAM image, so RAM = load address + offset (arm9 0x02000000; "
            "overlays from the y9 table, recorded in `work/patches/overlays.toml`). Decisions are ids in the "
@@ -1830,7 +1885,7 @@ def toml_table(header: str, obj: dict, array=True) -> str:
 # --------------------------------------------------------------------------------------
 
 def _summary(fx) -> str:
-    n = {t: len(fx.get(t, [])) for t in ("code", "string", "graphics", "font")}
+    n = {t: len(fx.get(t, [])) for t in ENTRY_TABLE_NAMES}
     parts = [f"{v} {k}" for k, v in n.items() if v]
     return ", ".join(parts)
 
@@ -1875,7 +1930,7 @@ def main(argv=None):
             act = select(fixes, a.only, a.without)
         except FixError as ex:
             sys.exit(str(ex))
-        n_entries = sum(len(fx.get(t, [])) for fx in fixes for t in ("code", "string", "graphics", "font"))
+        n_entries = sum(len(fx.get(t, [])) for fx in fixes for t in ENTRY_TABLE_NAMES)
         print(f"ok: {len(fixes)} fixes, {n_entries} entries; {len(act)} selected: "
               + ", ".join(f["id"] for f in act))
     elif a.cmd == "docs":

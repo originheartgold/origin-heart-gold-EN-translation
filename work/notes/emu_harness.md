@@ -1106,6 +1106,7 @@ coverage list, the approved digests and the hooked addresses (checked against ea
 | msgload | msgload | memcheck.py's `summary` scenario (switch Pokémon on every summary page) | passed | allocation failure on heap 19 (6448 bytes), null write: the rc3 crash |
 | overworld-texture-frame-bounds | texture-bounds | The four `texture-bounds` cases, `--expect fixed` on the build, `--expect original` on the control | all 4 pass | all 4 reproduce the null load |
 | bulbasaur-reflection-boundary | reflection | `emu_reflection.py`, 2 scenes x Bulbasaur/Charmander/Onix (needs `market.sav` in `--sav-dir`), `--expect fixed` on the build, `--expect original` on the control (added 2026-10-08, run alone) | all 6 pass: no NULL lookup | all 6 pass: every Bulbasaur reflection call NULL, the others none |
+| trade-evolutions-levelup | trade-evo | `full_bag_6mons.sav`: per case the hack's generator makes the Pokémon (one move, Tackle), one Rare Candy from the bag, A through the level-up and any evolution scene: Boldore Lv 34, Gurdurr Lv 39, and Roggenrola Lv 24 as the check that the candy and the evolution path ran (it evolves on every ROM); species, level and checksum afterwards (added 2026-10-09) | Boldore → Gigalith Lv 35, Gurdurr → Conkeldurr Lv 40, Roggenrola → Boldore | Boldore and Gurdurr stay (Lv 35 / Lv 40), Roggenrola → Boldore |
 
 Result (observed 2026-10-08, branch hardening/emu, build of `develop` aab6efb plus this work, saves copied from
 `work/build/memcheck/`): `check.py --full --emu --emu-jobs 2` passes all 15 fix/scenario rows. The emu step took

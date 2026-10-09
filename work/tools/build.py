@@ -27,6 +27,9 @@ Pipeline
               USA tile data inside code
               (battle HP-box status icons, overlay 14) - see
               work/notes/graphics_inventory.md
+  3b'. narc   narcpatch.apply(): the narc fixes' [[narc_bytes]] entries - a few bytes inside game-data NARC
+              members (trade-evolutions-levelup: Boldore / Gurdurr evolution records in a/0/3/4), each only
+              when the member still has its recorded SHA-1 and the bytes are the expected ones
   3c. hardcoded  asmpatch.apply(): the selected strings, data and code fixes (outfit-chooser-strings,
               namelen, naming-keyboard, msgload, pcbox-name-width, ivev-panel, antipiracy, text-speed,
               overworld-texture-frame-bounds, bulbasaur-reflection-boundary) - armips assembles each fix's
@@ -42,6 +45,7 @@ Pipeline
               every bank decodes and re-encodes identically, the exported text is what the ROM holds);
               every compressed-bank name fits its buffer and decompresses to the English;
               glyphs/widths equal the US ones; every patched graphics member is what the stage wrote;
+              every [[narc_bytes]] member is what stage 3b' wrote;
               every hardcoded string/pointer/overlay size and code region is what stage 3c wrote;
               text speed: payload, ITCM layout, overlays 50/92 and its runtime contract (text_speed_patch.verify)
   6. patch    xdelta3 -e -9 -S lzma -s BASE TARGET work/build/Origin_HeartGold_v4.0.3_EN_wip.xdelta,
@@ -94,6 +98,7 @@ import asmpatch  # noqa: E402
 import fixes as fixreg  # noqa: E402
 import gfx  # noqa: E402
 import msgtool as m  # noqa: E402
+import narcpatch  # noqa: E402
 import text_speed_patch  # noqa: E402
 import textmetrics as tm  # noqa: E402
 import ws  # noqa: E402
@@ -343,7 +348,7 @@ def verify_text_speed(rom, speed_report=None):
 
 
 def verify_rom(out_rom: Path, export_dir: Path, us_font_narc: bytes, fonts, cm, gfx_report=(), hc_report=None,
-               glyph_codes=None):
+               glyph_codes=None, narc_report=None):
     import ndspy.rom
     rom = ndspy.rom.NintendoDSRom.fromFile(str(out_rom))
     res = {"title": rom.name.decode("ascii", "replace"), "code": bytes(rom.idCode).decode("ascii", "replace"),
@@ -397,6 +402,8 @@ def verify_rom(out_rom: Path, export_dir: Path, us_font_narc: bytes, fonts, cm, 
     res["graphics"] = f"ok ({len(gfx_report) - n_code} members, {n_code} code ranges)"
     if gfx_report:
         res["graphics_layouts"] = gfx.check_layouts(lambda p: m.get_file(rom, p), gfx.CodeView(rom))
+    if narc_report:
+        res["narc_bytes"] = narcpatch.verify(functools.partial(m.get_file, rom), narc_report)
     if hc_report is not None:
         res["hardcoded"] = asmpatch.verify(rom, hc_report)
     return res
@@ -557,6 +564,19 @@ def main(argv=None):
             f"{sum('code' in r for r in gfx_report)} code ranges patched by "
             f"{len({r.get('fix') for r in gfx_report})} graphics fixes")
 
+    # 3b'. narc: bytes inside game-data NARC members
+    narc_report = []
+    if "narc" in kinds:
+        try:
+            narc_report = narcpatch.apply(functools.partial(m.get_file, rom), functools.partial(m.set_file, rom),
+                                          active)
+        except narcpatch.NarcPatchError as ex:
+            sys.exit(str(ex))
+        log(f"narc bytes: {len(narc_report)} entries in "
+            f"{len({(r['narc'], r['member']) for r in narc_report})} members "
+            f"({', '.join(sorted({r['fix'] for r in narc_report}))})")
+    report["narc_bytes"] = narc_report
+
     # 3c. hardcoded: strings, data and code fixes (armips)
     hc_report = None
     speed_report = {"enabled": False, "reason": "not-selected"}
@@ -595,7 +615,7 @@ def main(argv=None):
     if not a.no_verify:
         log("verify: ndspy parse, NARC round-trip, text == export, glyphs, graphics, hardcoded")
         report["verify"] = verify_rom(out_rom, export_dir, us_font, fonts, cm, gfx_report, hc_report,
-                                      glyph_codes)
+                                      glyph_codes, narc_report)
         checked = m.load_rom(out_rom)
         report["verify"]["text_speed"] = verify_text_speed(checked, speed_report)
         log(f"verify ok: {report['verify']}")
