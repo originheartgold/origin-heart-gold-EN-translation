@@ -104,10 +104,10 @@
   {
    "id": 12,
    "zh": "雅典娜『哪里来的臭小鬼,{NEWLINE}敢到我们火箭队的仓库来撒野！",
-   "en": "Ariana: Where did this brat come from,{NEWLINE}daring to make trouble in Team Rocket’s{CLEAR}warehouse!",
+   "en": "Ariana: Where did this brat come{NEWLINE}from, daring to make trouble{CLEAR}in Team Rocket’s warehouse!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 13,
@@ -152,10 +152,10 @@
   {
    "id": 18,
    "zh": "{VAR:0103:0}『你们火箭队{NEWLINE}假扮警察封锁2号路,{CLEAR}原来是因为这里有你们的仓库啊。",
-   "en": "{VAR:0103:0}: So you Team Rocket goons{NEWLINE}dressed up as police and blocked Route{CLEAR}2...{SCROLL}...because your warehouse is here.",
+   "en": "{VAR:0103:0}: So you Team Rocket{NEWLINE}goons dressed up as police{CLEAR}and blocked Route 2...{SCROLL}...because your warehouse is here.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 19,
@@ -216,10 +216,10 @@
   {
    "id": 26,
    "zh": "小刚『原来你在这里啊,{VAR:0103:0}。{NEWLINE}我听市民说2号路这边有打斗的声音{CLEAR}就过来看看。{CLEAR}刚刚这附近发生什么事了吗？",
-   "en": "Brock: So this is where you were,{NEWLINE}{VAR:0103:0}.{SCROLL}People in town said they heard fighting{NEWLINE}over on Route 2, so I came to check it{CLEAR}out.{SCROLL}Did something happen around here just{NEWLINE}now?",
+   "en": "Brock: So this is where you were,{NEWLINE}{VAR:0103:0}.{SCROLL}People in town said they heard{NEWLINE}fighting over on Route 2,{CLEAR}so I came to check it out.{SCROLL}Did something happen around here just{NEWLINE}now?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 27,
@@ -232,10 +232,10 @@
   {
    "id": 28,
    "zh": "小刚『火箭队假扮警察封锁2号路,{NEWLINE}还把这里当成仓库！？{CLEAR}这伙人真是太嚣张了,{CLEAR}我这就去跟精灵联盟联系一下,{CLEAR}必须要尽快铲除这个组织了。{SCROLL}小刚『{VAR:0103:0}你在旅行中{NEWLINE}也要多小心啊,{CLEAR}有空欢迎再来我们尼比市玩。",
-   "en": "Brock: Team Rocket dressed up as police{NEWLINE}to block Route 2, and used this place as{CLEAR}a warehouse!?{SCROLL}These guys are way too brazen. I’ll get{NEWLINE}in touch with the Pokémon League right{CLEAR}away.{SCROLL}We have to root out that organization{NEWLINE}as soon as possible.{SCROLL}Brock: Be careful on your journey too,{NEWLINE}{VAR:0103:0}. Come visit us in Pewter City{CLEAR}again anytime.",
+   "en": "Brock: Team Rocket dressed up as police{NEWLINE}to block Route 2, and used this place as{CLEAR}a warehouse!?{SCROLL}These guys are way too brazen.{NEWLINE}I’ll get in touch{CLEAR}with the Pokémon League right away.{SCROLL}We have to root out that organization{NEWLINE}as soon as possible.{SCROLL}Brock: Be careful on your journey too,{NEWLINE}{VAR:0103:0}. Come visit us in Pewter City{CLEAR}again anytime.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 29,
@@ -272,10 +272,10 @@
   {
    "id": 33,
    "zh": "昵称叫{VAR:0101:1}{NEWLINE}可以吗？{VAR:0200:0}",
-   "en": "Is {VAR:0101:1} the nickname you want to{NEWLINE}give? {VAR:0200:0}",
+   "en": "Is {VAR:0101:1} the nickname{NEWLINE}you want to give? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl)"
+   "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 34,

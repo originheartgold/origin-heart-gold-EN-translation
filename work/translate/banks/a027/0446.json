@@ -182,10 +182,10 @@
   {
    "id": 22,
    "zh": "{VAR:0103:0}『怎么了小黄,{NEWLINE}精灵的治疗有什么困难吗？",
-   "en": "{VAR:0103:0}: What’s wrong, Yellow? Is{NEWLINE}healing your Pokémon giving you{CLEAR}trouble?",
+   "en": "{VAR:0103:0}: What’s wrong, Yellow?{NEWLINE}Is healing your Pokémon{CLEAR}giving you trouble?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 23,
@@ -464,10 +464,10 @@
   {
    "id": 57,
    "zh": "哈、哈、哈,我是常磐道馆馆主小绿,{NEWLINE}我是常磐道馆馆主小绿……{SCROLL}……{SCROLL}……{SCROLL}这个人的眼神已经黯淡无光了。",
-   "en": "Ha, ha, ha. I’m Blue, the Viridian Gym{NEWLINE}Leader... I’m Blue, the Viridian Gym{CLEAR}Leader...{SCROLL}...{SCROLL}...{SCROLL}The light has gone out of this person’s{NEWLINE}eyes.",
+   "en": "Ha, ha, ha. I’m Blue,{NEWLINE}the Viridian Gym Leader...{CLEAR}I’m Blue, the Viridian Gym Leader...{SCROLL}...{SCROLL}...{SCROLL}The light has gone out of this person’s{NEWLINE}eyes.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 58,
@@ -536,10 +536,10 @@
   {
    "id": 66,
    "zh": "小绿『在出发旅行之前,{NEWLINE}咱们一起在真新镇长大,{CLEAR}那时候我每天都能看到你。{CLEAR}自从出发旅行之后,{CLEAR}跟你见面的次数越来越少。{CLEAR}但是我对你的思念却越来越重。{CLEAR}虽然我经常争强好胜,{CLEAR}想要在训练家这条路上快你一步,{CLEAR}但是当我看到你的进步时,{CLEAR}我也是打从心底里替你高兴的。{SCROLL}小绿『正是因为你的存在,{NEWLINE}让我体会到了什么叫做{CLEAR}高兴了你的高兴、{CLEAR}悲伤了你的悲伤。{CLEAR}这可能就是喜欢一个人的感觉吧。",
-   "en": "Blue: Before we set out, we grew up{NEWLINE}together in Pallet Town. Back then, I{CLEAR}saw you every day.{SCROLL}After we left on our journeys, I saw{NEWLINE}you less and less...{SCROLL}but I missed you more and more.{SCROLL}Sure, I’m competitive. I always wanted{NEWLINE}to be one step ahead of you as a{CLEAR}Trainer.{SCROLL}But whenever I saw you get better, I{NEWLINE}was happy for you from the bottom of my{CLEAR}heart.{SCROLL}Blue: Because of you, I learned what it{NEWLINE}means to be happy when you’re happy...{SCROLL}and sad when you’re sad. I guess{NEWLINE}that’s what it feels like to love{CLEAR}someone.",
+   "en": "Blue: Before we set out, we grew up{NEWLINE}together in Pallet Town. Back then, I{CLEAR}saw you every day.{SCROLL}After we left on our journeys, I saw{NEWLINE}you less and less...{SCROLL}but I missed you more and more.{SCROLL}Sure, I’m competitive.{NEWLINE}I always wanted to be one step{CLEAR}ahead of you as a Trainer.{SCROLL}But whenever I saw you get better,{NEWLINE}I was happy for you from{CLEAR}the bottom of my heart.{SCROLL}Blue: Because of you, I learned what it{NEWLINE}means to be happy when you’re happy...{SCROLL}and sad when you’re sad.{NEWLINE}I guess that’s what it{CLEAR}feels like to love someone.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 67,
@@ -616,10 +616,10 @@
   {
    "id": 76,
    "zh": "{VAR:0103:0}『那等你修整好了{NEWLINE}一定要快点追上来啊,{CLEAR}咱们石英高原见。",
-   "en": "{VAR:0103:0}: Then once you’ve patched up,{NEWLINE}hurry and catch up. See you at Indigo{CLEAR}Plateau.",
+   "en": "{VAR:0103:0}: Then once you’ve{NEWLINE}patched up, hurry and catch up.{CLEAR}See you at Indigo Plateau.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 77,
@@ -648,10 +648,10 @@
   {
    "id": 80,
    "zh": "小绿『所有的分身幻象{NEWLINE}都觉得自己才是本体。{CLEAR}但很遗憾我已经没有体力{CLEAR}继续与这个分身战斗了,{CLEAR}剩下的就拜托{VAR:0103:0}你了。",
-   "en": "Blue: Every clone and illusion thinks{NEWLINE}it’s the real one.{SCROLL}Sadly, I’m out of steam to keep fighting{NEWLINE}this clone. I’ll leave the rest to you,{CLEAR}{VAR:0103:0}.",
+   "en": "Blue: Every clone and illusion thinks{NEWLINE}it’s the real one.{SCROLL}Sadly, I’m out of steam{NEWLINE}to keep fighting this clone.{CLEAR}I’ll leave the rest to you, {VAR:0103:0}.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 81,
@@ -864,18 +864,18 @@
   {
    "id": 107,
    "zh": "怕什么,就算是战败,{NEWLINE}也要为了老大消耗一下他。{CLEAR}咱们上！",
-   "en": "What are you scared of? Even if we lose,{NEWLINE}we’ll wear him down for the Boss. Let’s{CLEAR}go!",
+   "en": "What are you scared of?{NEWLINE}Even if we lose, we’ll wear him{CLEAR}down for the Boss. Let’s go!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 108,
    "zh": "怕什么,就算是战败,{NEWLINE}也要为了老大消耗一下她。{CLEAR}咱们上！",
-   "en": "What are you scared of? Even if we lose,{NEWLINE}we’ll wear her down for the Boss. Let’s{CLEAR}go!",
+   "en": "What are you scared of?{NEWLINE}Even if we lose, we’ll wear{CLEAR}her down for the Boss. Let’s go!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 109,
@@ -912,10 +912,10 @@
   {
    "id": 113,
    "zh": "{VAR:0103:0}『即使是属性不利,{NEWLINE}小黄你也能凭借丰富的经验应对自如,{CLEAR}做的很棒哦,不愧是石英大会的冠军。",
-   "en": "{VAR:0103:0}: Even at a type disadvantage,{NEWLINE}your experience let you handle it with{CLEAR}ease.{SCROLL}Great job, Yellow. That’s an Indigo{NEWLINE}Conference winner for you.",
+   "en": "{VAR:0103:0}: Even at a type{NEWLINE}disadvantage, your experience{CLEAR}let you handle it with ease.{SCROLL}Great job, Yellow. That’s an Indigo{NEWLINE}Conference winner for you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 114,

@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "柑果球被许多训练家追捧,{NEWLINE}你在旅途中应该能遇到很多{CLEAR}需要柑果球的训练家吧。{SCROLL}遗憾的是虽然关东地区也有柑果,{NEWLINE}但是做柑果球的大师岩铁却在城都。{SCROLL}不过听说,最近尼比市那个去城都{NEWLINE}学做柑果球的青年学成回来了。{CLEAR}或许他可以带动关东的柑果经济呢？",
-   "en": "Lots of Trainers are crazy about{NEWLINE}Apricorn Balls. I bet you’ll meet plenty{CLEAR}of Trainers on your journey who want{CLEAR}them.{SCROLL}Sadly, Kanto has Apricorns too, but{NEWLINE}Kurt, the master Ball maker, lives in{CLEAR}Johto.{SCROLL}But I hear the young man from Pewter{NEWLINE}City who went to Johto to learn the{CLEAR}craft is back.{SCROLL}Maybe he’ll get Kanto’s Apricorn{NEWLINE}business going?",
+   "en": "Lots of Trainers are crazy{NEWLINE}about Apricorn Balls.{CLEAR}I bet you’ll meet plenty of Trainers{CLEAR}on your journey who want them.{SCROLL}Sadly, Kanto has Apricorns too,{NEWLINE}but Kurt, the master Ball{CLEAR}maker, lives in Johto.{SCROLL}But I hear the young man from Pewter{NEWLINE}City who went to Johto to learn the{CLEAR}craft is back.{SCROLL}Maybe he’ll get Kanto’s Apricorn{NEWLINE}business going?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1,
@@ -162,10 +162,10 @@
   {
    "id": 19,
    "zh": "接下来是第二题：{NEWLINE}某一属性相克时,{CLEAR}造成的伤害变为多少倍？{SCROLL}",
-   "en": "Next, question two: When a type has the{NEWLINE}advantage, how much damage does it{CLEAR}deal?{SCROLL}",
+   "en": "Next, question two:{NEWLINE}When a type has the advantage,{CLEAR}how much damage does it deal?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 20,
@@ -338,10 +338,10 @@
   {
    "id": 39,
    "zh": "看来你对训练家的基础掌握得不错,{NEWLINE}不过口袋妖怪的世界{CLEAR}远比我的问题复杂。{SCROLL}这个送给你,希望你坚持探索,{NEWLINE}最终成为一名优秀的训练家。",
-   "en": "Looks like you’ve got a good handle on{NEWLINE}Trainer basics. But the world of{CLEAR}Pokémon is far more complicated than my{CLEAR}questions.{SCROLL}Take this. I hope you keep exploring{NEWLINE}and become a great Trainer someday.",
+   "en": "Looks like you’ve got a good{NEWLINE}handle on Trainer basics.{CLEAR}But the world of Pokémon is far{CLEAR}more complicated than my questions.{SCROLL}Take this. I hope you keep exploring{NEWLINE}and become a great Trainer someday.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 40,

@@ -38,18 +38,18 @@
   {
    "id": 4,
    "zh": "听说你打败了火箭队的首领{NEWLINE}还当上了联盟冠军。{CLEAR}原来你才是世界上最厉害的训练家啊！",
-   "en": "I heard you beat Team Rocket’s boss{NEWLINE}and became League Champion too. So{CLEAR}you’re the greatest Trainer in the{CLEAR}world!",
+   "en": "I heard you beat Team Rocket’s boss{NEWLINE}and became League Champion too.{CLEAR}So you’re the greatest{CLEAR}Trainer in the world!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 5,
    "zh": "这里已经没有能反抗的人了,{NEWLINE}现在正是收割他们财物的好时机。",
-   "en": "Nobody left here can fight back. Now’s{NEWLINE}the perfect time to harvest their{CLEAR}valuables.",
+   "en": "Nobody left here can fight back.{NEWLINE}Now’s the perfect time{CLEAR}to harvest their valuables.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Pokémon Center raid scene, #5–#43"
+   "notes": "Pokémon Center raid scene, #5–#43; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 6,
@@ -174,10 +174,10 @@
   {
    "id": 21,
    "zh": "小绿『这么多火箭队,{NEWLINE}应该是没来错地方。",
-   "en": "Blue: With this much Team Rocket{NEWLINE}around, I guess I came to the right{CLEAR}place.",
+   "en": "Blue: With this much{NEWLINE}Team Rocket around, I guess{CLEAR}I came to the right place.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 22,
@@ -222,18 +222,18 @@
   {
    "id": 27,
    "zh": "小绿『{VAR:0103:0},{NEWLINE}你是怎么进到金黄市里面的？{CLEAR}屏障已经被攻破了吗？",
-   "en": "Blue: {VAR:0103:0}, how did you get into{NEWLINE}Saffron City? Has the barrier been{CLEAR}broken?",
+   "en": "Blue: {VAR:0103:0}, how did{NEWLINE}you get into Saffron City?{CLEAR}Has the barrier been broken?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 28,
    "zh": "{VAR:0103:0}『屏障还没有攻破,{NEWLINE}是娜姿馆主用她的超能力{CLEAR}把我传送到这里来的。",
-   "en": "{VAR:0103:0}: The barrier’s still up. Sabrina{NEWLINE}used her psychic powers to teleport me{CLEAR}here.",
+   "en": "{VAR:0103:0}: The barrier’s still up.{NEWLINE}Sabrina used her psychic{CLEAR}powers to teleport me here.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 29,
@@ -270,10 +270,10 @@
   {
    "id": 33,
    "zh": "{VAR:0103:0}『你才是,{NEWLINE}当心得意忘形栽跟头！",
-   "en": "{VAR:0103:0}: Look who’s talking. Watch you{NEWLINE}don’t get cocky and fall flat on your{CLEAR}face!",
+   "en": "{VAR:0103:0}: Look who’s talking.{NEWLINE}Watch you don’t get cocky{CLEAR}and fall flat on your face!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 34,
@@ -366,10 +366,10 @@
   {
    "id": 45,
    "zh": "火箭队来到金黄市之后见人就抢,{NEWLINE}他们是基因里就带着抢劫的天赋吗？",
-   "en": "Ever since Team Rocket came to Saffron{NEWLINE}City, they’ve robbed everyone they{CLEAR}see. Is robbery in their genes or{CLEAR}something?",
+   "en": "Ever since Team Rocket came{NEWLINE}to Saffron City, they’ve robbed{CLEAR}everyone they see. Is robbery{CLEAR}in their genes or something?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 46,

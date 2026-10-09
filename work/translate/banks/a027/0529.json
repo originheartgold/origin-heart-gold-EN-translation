@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "欢迎光临西鲁夫公司！{NEWLINE}如果您没有预约的话,{CLEAR}请先在大厅等候。",
-   "en": "Welcome to Silph Co.! If you don’t have{NEWLINE}an appointment, please wait in the{CLEAR}lobby.",
+   "en": "Welcome to Silph Co.!{NEWLINE}If you don’t have an appointment,{CLEAR}please wait in the lobby.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1,
@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "一切由劳动者创造,{NEWLINE}哪里容得下寄生虫。{CLEAR}劳动最光荣！",
-   "en": "Everything is created by the workers.{NEWLINE}There’s no room for parasites. Labor is{CLEAR}glorious!",
+   "en": "Everything is created by the workers.{NEWLINE}There’s no room for parasites.{CLEAR}Labor is glorious!",
    "status": "draft",
    "origin": "agent",
-   "notes": "post-takeover slogans (#7/#8), political satire kept faithful"
+   "notes": "post-takeover slogans (#7/#8), political satire kept faithful; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 8,
@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "菊子『达马兰奇主席{NEWLINE}和西鲁夫社长的谈话{CLEAR}很快就能结束了,{CLEAR}等会谈正式结束之后,{CLEAR}他会亲自接见你们的。",
-   "en": "Agatha: The talks between President{NEWLINE}Goodshow and Silph’s president will be{CLEAR}over soon. Once the meeting has{CLEAR}formally ended, he’ll receive you in{CLEAR}person.",
+   "en": "Agatha: The talks between{NEWLINE}President Goodshow and Silph’s{CLEAR}president will be over soon.{CLEAR}Once the meeting has formally ended,{CLEAR}he’ll receive you in person.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 10,
@@ -150,10 +150,10 @@
   {
    "id": 18,
    "zh": "渡『各位！{NEWLINE}主席和社长的会谈顺利结束了。",
-   "en": "Lance: Everyone! The talks between the{NEWLINE}President and Silph’s president went{CLEAR}smoothly.",
+   "en": "Lance: Everyone!{NEWLINE}The talks between the President{CLEAR}and Silph’s president went smoothly.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 19,
@@ -238,10 +238,10 @@
   {
    "id": 29,
    "zh": "大吾『听说金黄市有一家公司{NEWLINE}跟芳缘地区的得文公司差不多,{CLEAR}于是特地跑过来看看。{CLEAR}相比之下还是西鲁夫公司更气派啊。",
-   "en": "Steven: I heard there was a company in{NEWLINE}Saffron City a lot like Hoenn’s Devon{CLEAR}Corporation, so I came to take a look.{CLEAR}Silph Co. is even more impressive, I must{CLEAR}say.",
+   "en": "Steven: I heard there was a company in{NEWLINE}Saffron City a lot like Hoenn’s Devon{CLEAR}Corporation, so I came to take a look.{CLEAR}Silph Co. is even more{CLEAR}impressive, I must say.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 30,
@@ -310,10 +310,10 @@
   {
    "id": 38,
    "zh": "我是社长大人的秘书,{NEWLINE}负责陪社长出席各种活动。",
-   "en": "I’m the president’s secretary. I{NEWLINE}accompany the president to all sorts of{CLEAR}events.",
+   "en": "I’m the president’s secretary.{NEWLINE}I accompany the president{CLEAR}to all sorts of events.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 39,
@@ -486,10 +486,10 @@
   {
    "id": 60,
    "zh": "乔伊『不愧是我看上的伙伴！{NEWLINE}不到一年时间,你就从一个新人{CLEAR}成长为我无法击败的对手了。{SCROLL}乔伊『你继续前进吧,{NEWLINE}去好好体会一下我们老大的恐怖。",
-   "en": "Joy: That’s the partner I set my sights{NEWLINE}on! In less than a year, you’ve grown{CLEAR}from a rookie into an opponent I can’t{CLEAR}beat.{SCROLL}Joy: Go on ahead. Go and get a real{NEWLINE}taste of how terrifying our boss is.",
+   "en": "Joy: That’s the partner I set{NEWLINE}my sights on! In less than a year,{CLEAR}you’ve grown from a rookie{CLEAR}into an opponent I can’t beat.{SCROLL}Joy: Go on ahead. Go and get a real{NEWLINE}taste of how terrifying our boss is.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 61,
@@ -618,10 +618,10 @@
   {
    "id": 76,
    "zh": "乔伊『你能担心我的安危,{NEWLINE}我真的好开心。{CLEAR}所以今天看到你深陷险境,{CLEAR}我也不能置之不理。",
-   "en": "Joy: You were worried about me? That{NEWLINE}makes me so happy. So when I see you in{CLEAR}such danger today, I can’t just ignore{CLEAR}it.",
+   "en": "Joy: You were worried about me?{NEWLINE}That makes me so happy.{CLEAR}So when I see you in such danger{CLEAR}today, I can’t just ignore it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 77,
@@ -682,10 +682,10 @@
   {
    "id": 84,
    "zh": "我们西鲁夫公司的接待大厅,{NEWLINE}变成火箭队的接待大厅了……",
-   "en": "Our Silph Co. reception lobby has{NEWLINE}turned into Team Rocket’s reception{CLEAR}lobby...",
+   "en": "Our Silph Co. reception lobby{NEWLINE}has turned into Team Rocket’s{CLEAR}reception lobby...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 85,
@@ -770,10 +770,10 @@
   {
    "id": 95,
    "zh": "雅典娜『虽然早就猜到{NEWLINE}会有人闯进来妨碍我们,{CLEAR}但真没想到居然是你这个小鬼,{CLEAR}看来精灵联盟也是无人可用了。",
-   "en": "Ariana: I figured someone would barge in{NEWLINE}here to get in our way. I just never{CLEAR}imagined it would be a brat like you. The{CLEAR}Pokémon League must really be out of{CLEAR}people.",
+   "en": "Ariana: I figured someone would{NEWLINE}barge in here to get in our way.{CLEAR}I just never imagined it would{CLEAR}be a brat like you. The Pokémon League{CLEAR}must really be out of people.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 96,
@@ -874,10 +874,10 @@
   {
    "id": 108,
    "zh": "火箭队首领『你怕精灵联盟,{NEWLINE}就不怕我们火箭队吗？",
-   "en": "Rocket Boss: You’re afraid of the{NEWLINE}Pokémon League, but not of Team{CLEAR}Rocket?",
+   "en": "Rocket Boss: You’re afraid{NEWLINE}of the Pokémon League,{CLEAR}but not of Team Rocket?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 109,
@@ -1042,10 +1042,10 @@
   {
    "id": 129,
    "zh": "火箭队首领『你是说那些{NEWLINE}连金黄市都进不来的废物吗？",
-   "en": "Rocket Boss: You mean that useless{NEWLINE}trash who can’t even get into Saffron{CLEAR}City?",
+   "en": "Rocket Boss: You mean{NEWLINE}that useless trash who can’t{CLEAR}even get into Saffron City?",
    "status": "draft",
    "origin": "agent",
-   "notes": "reused a027/0495#59 | RV027: softened: 废物 is useless trash, not losers"
+   "notes": "reused a027/0495#59 | RV027: softened: 废物 is useless trash, not losers; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 130,
@@ -1412,18 +1412,18 @@
   {
    "id": 175,
    "zh": "火箭队首领『旁边有只小老鼠偷听,{NEWLINE}真当我不知道呐？",
-   "en": "Rocket Boss: A little rat eavesdropping{NEWLINE}nearby... Did you really think I hadn’t{CLEAR}noticed?",
+   "en": "Rocket Boss: A little rat{NEWLINE}eavesdropping nearby...{CLEAR}Did you really think I hadn’t noticed?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 176,
    "zh": "火箭队首领『年轻气盛{NEWLINE}是要付出代价的。{CLEAR}尼多后,拍扁他们！",
-   "en": "Rocket Boss: Youthful recklessness{NEWLINE}comes at a price. Nidoqueen, flatten{CLEAR}them!",
+   "en": "Rocket Boss: Youthful{NEWLINE}recklessness comes at a price.{CLEAR}Nidoqueen, flatten them!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 177,
@@ -1500,10 +1500,10 @@
   {
    "id": 186,
    "zh": "小绿『屏障破碎之后,{NEWLINE}火箭队见势不妙就撤退了。",
-   "en": "Blue: Once the barrier shattered, Team{NEWLINE}Rocket saw things going south and{CLEAR}retreated.",
+   "en": "Blue: Once the barrier shattered,{NEWLINE}Team Rocket saw things{CLEAR}going south and retreated.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 187,

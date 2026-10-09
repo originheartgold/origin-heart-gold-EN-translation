@@ -182,18 +182,18 @@
   {
    "id": 22,
    "zh": "喂喂,我跟你说说广播塔{NEWLINE}里的那个前台小姐吧。{SCROLL}你是不是觉得她只会说{SCROLL}你好！{SCROLL}其实啊,那个人是整个{NEWLINE}广播塔里最健谈的人了！{SCROLL}一谈打开了话匣子{NEWLINE}她就怎么也停不下了,{CLEAR}只好不停附和她。{SCROLL}和你打电话{NEWLINE}真开心！{SCROLL}再见了！",
-   "en": "Hey, let me tell you about the{NEWLINE}receptionist at the Radio Tower.{SCROLL}You probably think all she ever says is{SCROLL}“Hello!”{SCROLL}But actually, she’s the chattiest{NEWLINE}person in the whole Radio Tower!{SCROLL}Once she gets going, she{NEWLINE}just can’t stop, and all you{CLEAR}can do is keep nodding along.{SCROLL}Talking with you is so much fun!{SCROLL}Bye for now!",
+   "en": "Hey, let me tell you about the{NEWLINE}receptionist at the Radio Tower.{SCROLL}You probably think all{SCROLL}she ever says is “Hello!”{SCROLL}But actually, she’s the chattiest{NEWLINE}person in the whole Radio Tower!{SCROLL}Once she gets going, she{NEWLINE}just can’t stop, and all you{CLEAR}can do is keep nodding along.{SCROLL}Talking with you is so much fun!{SCROLL}Bye for now!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0641/22"
+   "notes": "US 0641/22; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 23,
    "zh": "喂喂！{NEWLINE}广播塔一层举办的{CLEAR}精灵彩票你抽中过吗？{SCROLL}和朋友多交换几次{NEWLINE}就很容易中了。",
-   "en": "Have you won the Pokémon Lottery{NEWLINE}held on the first floor at the Radio{CLEAR}Tower?{SCROLL}You get more chances as you trade{NEWLINE}Pokémon with different friends.",
+   "en": "Have you won the Pokémon Lottery{NEWLINE}held on the first floor{CLEAR}at the Radio Tower?{SCROLL}You get more chances as you trade{NEWLINE}Pokémon with different friends.",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0641/23"
+   "notes": "US 0641/23; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 24,

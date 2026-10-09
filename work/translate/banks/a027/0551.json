@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "阿元『你好啊！！{SCROLL}我是精灵迷所熟知的{CLEAR}电视教学的{CLEAR}阿元大哥哥！{SCROLL}今天,在大家看来{NEWLINE}哥哥是什么样子的呢？{CLEAR}能告诉我吗？{VAR:0200:0}",
-   "en": "Primo: Hello there! I’m Primo, the big{NEWLINE}brother from educational TV, known to{CLEAR}every Pokémon fan! So, today... how do{CLEAR}I look to all of you? Can you tell me?{VAR:0200:0}",
+   "en": "Primo: Hello there! I’m Primo,{NEWLINE}the big brother from educational TV,{CLEAR}known to every Pokémon fan!{CLEAR}So, today... how do I look{CLEAR}to all of you? Can you tell me?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0559/12 | RV031: addition: US line added ‘The Show Me Show’ and dropped ‘how do I look to you’; retranslated from zh"
+   "notes": "US 0559/12 | RV031: addition: US line added ‘The Show Me Show’ and dropped ‘how do I look to you’; retranslated from zh; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 13,

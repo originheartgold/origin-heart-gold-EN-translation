@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "什么嘛,{NEWLINE}你没有化石啊。{SCROLL}在月见山或者尼比市里,{NEWLINE}敲一敲岩石,{CLEAR}你可能会有所发现哦。",
-   "en": "What’s this? You don’t have any{NEWLINE}Fossils.{SCROLL}Try smashing rocks on Mt. Moon or{NEWLINE}around Pewter City. You might find{CLEAR}something.",
+   "en": "What’s this? You don’t have any{NEWLINE}Fossils.{SCROLL}Try smashing rocks on Mt. Moon{NEWLINE}or around Pewter City.{CLEAR}You might find something.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0464/6"
+   "notes": "US 0464/6; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 7,
@@ -246,10 +246,10 @@
   {
    "id": 30,
    "zh": "小刚『不好意思啊训练家，{NEWLINE}弟弟妹妹们吵着要来博物馆,{CLEAR}我就只好带他们过来了。{SCROLL}话说还没有问你的名字呢……{SCROLL}……{SCROLL}小刚『哦哦,叫{VAR:0103:0}啊。",
-   "en": "Brock: Sorry about this, Trainer. My{NEWLINE}little brothers and sisters begged to{CLEAR}come to the museum, so I had to bring{CLEAR}them.{SCROLL}Come to think of it, I never asked your{NEWLINE}name...{SCROLL}...{SCROLL}Brock: Oh, so it’s {VAR:0103:0}.",
+   "en": "Brock: Sorry about this, Trainer.{NEWLINE}My little brothers and sisters{CLEAR}begged to come to the museum,{CLEAR}so I had to bring them.{SCROLL}Come to think of it, I never asked your{NEWLINE}name...{SCROLL}...{SCROLL}Brock: Oh, so it’s {VAR:0103:0}.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 31,
@@ -270,10 +270,10 @@
   {
    "id": 33,
    "zh": "小刚『哇！{VAR:0103:0}你好厉害,{NEWLINE}我弟弟那么古怪的问题{CLEAR}都可以答上来,{CLEAR}其实我每次{CLEAR}被他问奇怪的问题时,{CLEAR}都很犯愁怎么回答呢,哈哈。",
-   "en": "Brock: Wow! You’re amazing, {VAR:0103:0}!{NEWLINE}You answered even my brother’s oddball{CLEAR}questions.{SCROLL}Honestly, whenever he asks me weird{NEWLINE}questions, I never know how to answer.{CLEAR}Ha ha.",
+   "en": "Brock: Wow! You’re amazing, {VAR:0103:0}!{NEWLINE}You answered even{CLEAR}my brother’s oddball questions.{SCROLL}Honestly, whenever he asks me weird{NEWLINE}questions, I never know how to answer.{CLEAR}Ha ha.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0457#33; text not kept)"
+   "notes": "v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0457#33; text not kept); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 34,
@@ -518,18 +518,18 @@
   {
    "id": 62,
    "zh": "嗯嗯,大哥哥说的好有道理,{NEWLINE}今天在博物馆涨了很多知识呢！",
-   "en": "Uh-huh, that makes a lot of sense,{NEWLINE}mister! I learned so much at the museum{CLEAR}today!",
+   "en": "Uh-huh, that makes a lot of sense,{NEWLINE}mister! I learned so much{CLEAR}at the museum today!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 63,
    "zh": "嗯嗯,大姐姐说的好有道理,{NEWLINE}今天在博物馆涨了很多知识呢！",
-   "en": "Uh-huh, that makes a lot of sense,{NEWLINE}miss! I learned so much at the museum{CLEAR}today!",
+   "en": "Uh-huh, that makes a lot{NEWLINE}of sense, miss! I learned{CLEAR}so much at the museum today!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 64,
@@ -550,10 +550,10 @@
   {
    "id": 66,
    "zh": "哥哥最近会偷偷写一些文章,{NEWLINE}你觉得可能是什么呢？{SCROLL}",
-   "en": "Lately my big brother’s been secretly{NEWLINE}writing something. What do you think it{CLEAR}is?{SCROLL}",
+   "en": "Lately my big brother’s been{NEWLINE}secretly writing something.{CLEAR}What do you think it is?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 67,
@@ -750,18 +750,18 @@
   {
    "id": 89,
    "zh": "嘻嘻,{NEWLINE}感觉了解到了期待已久的东西呢！",
-   "en": "Tee-hee! I feel like I finally learned{NEWLINE}what I’ve been wanting to know for{CLEAR}ages!",
+   "en": "Tee-hee! I feel like I finally{NEWLINE}learned what I’ve been{CLEAR}wanting to know for ages!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 90,
    "zh": "大吾『尼比博物馆的收藏{NEWLINE}真的让人吃惊！{CLEAR}全是我在芳缘博物馆{CLEAR}看不到的展品呢。",
-   "en": "Steven: The Pewter Museum’s collection{NEWLINE}is truly astonishing! These are all{CLEAR}exhibits I’ve never seen at the Hoenn{CLEAR}museum.",
+   "en": "Steven: The Pewter Museum’s{NEWLINE}collection is truly astonishing!{CLEAR}These are all exhibits I’ve{CLEAR}never seen at the Hoenn museum.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 91,
@@ -814,10 +814,10 @@
   {
    "id": 97,
    "zh": "啊……你好,{NEWLINE}我跟秀力老师正在做{CLEAR}关于传说中精灵的研究,{CLEAR}老师可是这方面最权威的专家哦。",
-   "en": "Ah... Hello. Professor Hale and I are{NEWLINE}researching Legendary Pokémon. He’s{CLEAR}the top authority in this field, you{CLEAR}know.",
+   "en": "Ah... Hello. Professor Hale{NEWLINE}and I are researching{CLEAR}Legendary Pokémon. He’s the top{CLEAR}authority in this field, you know.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 98,
@@ -917,10 +917,10 @@
   {
    "id": 109,
    "zh": "神秘琥珀可以复活成化石翼龙,{NEWLINE}化石翼龙是飞+岩属性的精灵。{CLEAR}化石翼龙的速度极高,{CLEAR}物理攻击力也很不错。",
-   "en": "Old Amber can be restored into{NEWLINE}Aerodactyl, a Flying/Rock-type{CLEAR}Pokémon.{SCROLL}Aerodactyl is extremely fast, and its{NEWLINE}physical Attack is pretty good, too.",
+   "en": "Old Amber can be restored{NEWLINE}into Aerodactyl,{CLEAR}a Flying/Rock-type Pokémon.{SCROLL}Aerodactyl is extremely fast, and its{NEWLINE}physical Attack is pretty good, too.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 110,
@@ -949,10 +949,10 @@
   {
    "id": 113,
    "zh": "盾之化石可以复活成铁面龙,{NEWLINE}铁面龙是钢+岩属性的精灵。{CLEAR}铁面龙进化成护城龙后{CLEAR}双防都相当之高。",
-   "en": "The Armor Fossil can be restored into{NEWLINE}Shieldon, a Steel/Rock-type Pokémon.{SCROLL}Once Shieldon evolves into Bastiodon,{NEWLINE}both its Defense and Sp. Def are very{CLEAR}high.",
+   "en": "The Armor Fossil can be restored into{NEWLINE}Shieldon, a Steel/Rock-type Pokémon.{SCROLL}Once Shieldon evolves{NEWLINE}into Bastiodon, both its Defense{CLEAR}and Sp. Def are very high.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 114,
@@ -974,10 +974,10 @@
   {
    "id": 116,
    "zh": "{VAR:0103:0}『馆长先生,我们接到情报说{NEWLINE}有可疑人员出现在博物馆,{CLEAR}你最近有发现这样的人吗？",
-   "en": "{VAR:0103:0}: Director, we got a tip that{NEWLINE}suspicious people have been seen at the{CLEAR}museum.{SCROLL}Have you noticed anyone like that{NEWLINE}lately?",
+   "en": "{VAR:0103:0}: Director, we got a tip{NEWLINE}that suspicious people have{CLEAR}been seen at the museum.{SCROLL}Have you noticed anyone like that{NEWLINE}lately?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 117,
@@ -990,10 +990,10 @@
   {
    "id": 118,
    "zh": "{VAR:0103:0}『那博物馆里有什么东西{NEWLINE}是跟传说中的精灵有关吗？",
-   "en": "{VAR:0103:0}: Then is there anything in the{NEWLINE}museum connected to Legendary{CLEAR}Pokémon?",
+   "en": "{VAR:0103:0}: Then is there anything{NEWLINE}in the museum connected{CLEAR}to Legendary Pokémon?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 119,
@@ -1254,10 +1254,10 @@
   {
    "id": 151,
    "zh": "尼比博物馆的藏品非常丰富,{NEWLINE}各式各样的化石都有。",
-   "en": "The Pewter Museum has a huge{NEWLINE}collection. There are all sorts of{CLEAR}fossils.",
+   "en": "The Pewter Museum{NEWLINE}has a huge collection.{CLEAR}There are all sorts of fossils.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 152,
@@ -1270,10 +1270,10 @@
   {
    "id": 153,
    "zh": "这个展台里有块化石,{NEWLINE}是我当年送给尼比博物馆的哦。",
-   "en": "One of the fossils in this display case is{NEWLINE}one I gave to the Pewter Museum years{CLEAR}ago.",
+   "en": "One of the fossils in this display{NEWLINE}case is one I gave{CLEAR}to the Pewter Museum years ago.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 154,
@@ -1318,10 +1318,10 @@
   {
    "id": 159,
    "zh": "红色宝珠一年就展出那么几天,{NEWLINE}看到就是赚到。",
-   "en": "The Red Orb is only on display a few{NEWLINE}days a year. Just getting to see it is a{CLEAR}treat.",
+   "en": "The Red Orb is only{NEWLINE}on display a few days a year.{CLEAR}Just getting to see it is a treat.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 160,
@@ -1382,18 +1382,18 @@
   {
    "id": 167,
    "zh": "小刚『{VAR:0103:0}你也是听说了{NEWLINE}火箭队盯上了尼比市博物馆的传闻{CLEAR}才来的吧？{CLEAR}馆长先生就在我身边,{CLEAR}你有什么具体的是可以跟他打听。",
-   "en": "Brock: {VAR:0103:0}, you heard the rumor{NEWLINE}that Team Rocket is after the Pewter{CLEAR}Museum too, right?{SCROLL}The director is right here beside me. If{NEWLINE}you have any questions, you can ask{CLEAR}him.",
+   "en": "Brock: {VAR:0103:0}, you heard the rumor{NEWLINE}that Team Rocket is after the Pewter{CLEAR}Museum too, right?{SCROLL}The director is right here beside me.{NEWLINE}If you have any questions,{CLEAR}you can ask him.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 168,
    "zh": "唉,都怪我太大意{NEWLINE}才让火箭队抢走了红色宝珠。",
-   "en": "Sigh... It’s all because I was careless{NEWLINE}that Team Rocket got away with the Red{CLEAR}Orb.",
+   "en": "Sigh... It’s all because I was{NEWLINE}careless that Team Rocket{CLEAR}got away with the Red Orb.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 169,

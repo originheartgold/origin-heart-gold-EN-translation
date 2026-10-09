@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "你去过城都地区了吗？{NEWLINE}城都愤怒湖边住着一位钓鱼名人。{SCROLL}他的梦想是见到{NEWLINE}世界第一的鲤鱼王。{SCROLL}如果你感兴趣的话,{NEWLINE}就把抓到的鲤鱼王{CLEAR}给他看看吧！{SCROLL}其中或许有{NEWLINE}他一直梦寐以求的鲤鱼王{CLEAR}也说不定哦。",
-   "en": "Have you been to the Johto region? A{NEWLINE}famous angler lives by the Lake of Rage{CLEAR}there.{SCROLL}His dream is to see the biggest Magikarp{NEWLINE}in the world.{SCROLL}If you’re interested, show him the{NEWLINE}Magikarp you catch!{SCROLL}One of them might just be the Magikarp{NEWLINE}he’s been dreaming of.",
+   "en": "Have you been to the Johto region?{NEWLINE}A famous angler lives{CLEAR}by the Lake of Rage there.{SCROLL}His dream is to see the biggest Magikarp{NEWLINE}in the world.{SCROLL}If you’re interested, show him the{NEWLINE}Magikarp you catch!{SCROLL}One of them might just be the Magikarp{NEWLINE}he’s been dreaming of.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1,
@@ -22,18 +22,18 @@
   {
    "id": 2,
    "zh": "我是关东钓鱼协会的副会长良智。{SCROLL}看你拿着的那杆钓竿很旧了,{NEWLINE}也该换个好点的钓竿了吧。{CLEAR}如果你能钓上一只墨海马{CLEAR}并拿来给我看一下,{CLEAR}我就送你一根好钓竿喔。",
-   "en": "I’m Ryochi, vice-president of the Kanto{NEWLINE}Fishing Association.{SCROLL}That rod of yours looks pretty worn.{NEWLINE}Time you got a better one, don’t you{CLEAR}think?{SCROLL}If you can hook a Horsea and bring it to{NEWLINE}show me, I’ll give you a Good Rod.",
+   "en": "I’m Ryochi, vice-president of the Kanto{NEWLINE}Fishing Association.{SCROLL}That rod of yours looks pretty worn.{NEWLINE}Time you got a better one,{CLEAR}don’t you think?{SCROLL}If you can hook a Horsea and bring it to{NEWLINE}show me, I’ll give you a Good Rod.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 3,
    "zh": "你身上带着墨海马吗？{NEWLINE}要给我看看吗……{VAR:0200:0}",
-   "en": "Do you have a Horsea with you? Will you{NEWLINE}show it to me...?{VAR:0200:0}",
+   "en": "Do you have a Horsea with you?{NEWLINE}Will you show it to me...?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 4,

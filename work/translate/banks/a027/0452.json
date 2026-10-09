@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "在南方的真新镇,{NEWLINE}有一位人称大木博士的{CLEAR}优秀精灵博士。",
-   "en": "In Pallet Town to the south lives a fine{NEWLINE}Pokémon researcher called Professor{CLEAR}Oak.",
+   "en": "In Pallet Town to the south{NEWLINE}lives a fine Pokémon researcher{CLEAR}called Professor Oak.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0459/0 | Route 1 NPCs (Pallet Town south, Viridian City north)."
+   "notes": "US 0459/0 | Route 1 NPCs (Pallet Town south, Viridian City north).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1,
@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "你如果对未来的旅途{NEWLINE}该前往何方赶到迷惑,{CLEAR}就多跟周围的人对话一下,{CLEAR}或许就能知道该干什么了。",
-   "en": "If you’re not sure where to go next on{NEWLINE}your journey, talk to the people around{CLEAR}you.{SCROLL}Maybe then you’ll figure out what to do.",
+   "en": "If you’re not sure where{NEWLINE}to go next on your journey,{CLEAR}talk to the people around you.{SCROLL}Maybe then you’ll figure out what to do.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 4,

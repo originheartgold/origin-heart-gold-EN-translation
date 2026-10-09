@@ -662,10 +662,10 @@
   {
    "id": 82,
    "zh": "早上好！{NEWLINE}这里是精灵中心。{SCROLL}在这里可以恢复精灵的体力。{SCROLL}要让您的精灵休息一下吗？{VAR:0200:0}",
-   "en": "Good morning!{NEWLINE}Welcome to the Pokémon Center.{SCROLL}We restore your tired Pokémon{NEWLINE}to full health.{SCROLL}Would you like to rest your Pokémon?{VAR:0200:0}",
+   "en": "Good morning!{NEWLINE}Welcome to the Pokémon Center.{SCROLL}We restore your tired Pokémon{NEWLINE}to full health.{SCROLL}Would you like to rest{NEWLINE}your Pokémon?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0040/82 | seed rejected us [tag_mismatch] (candidate US 0040#82; text not kept) | v3 TM: 1 source(s), same position"
+   "notes": "US 0040/82 | seed rejected us [tag_mismatch] (candidate US 0040#82; text not kept) | v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 83,

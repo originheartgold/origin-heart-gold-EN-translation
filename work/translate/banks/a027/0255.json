@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "我孙女的熊宝宝{NEWLINE}对食物的品质一直很挑呢,{CLEAR}到船上后它就不吃东西了,{CLEAR}可把我孙女给愁怀了。",
-   "en": "My granddaughter’s Teddiursa has{NEWLINE}always been picky about its food.{SCROLL}Since we came aboard, it won’t eat a{NEWLINE}thing, and my granddaughter is worried{CLEAR}sick.",
+   "en": "My granddaughter’s Teddiursa has{NEWLINE}always been picky about its food.{SCROLL}Since we came aboard,{NEWLINE}it won’t eat a thing,{CLEAR}and my granddaughter is worried sick.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1,
@@ -318,10 +318,10 @@
   {
    "id": 39,
    "zh": "如果这次能活着回去的话,{NEWLINE}我再也不假扮考古学家当托了。",
-   "en": "If I make it back alive, I’ll never pose{NEWLINE}as an archaeologist to shill for anyone{CLEAR}again.",
+   "en": "If I make it back alive,{NEWLINE}I’ll never pose as an archaeologist{CLEAR}to shill for anyone again.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 40,
@@ -342,10 +342,10 @@
   {
    "id": 42,
    "zh": "喂,大叔,{NEWLINE}你的那个产黄金的鲤鱼王呢？{CLEAR}还有吗？我要买啊！",
-   "en": "Hey, mister, where’s that gold-making{NEWLINE}Magikarp of yours? Got any more? I want{CLEAR}one!",
+   "en": "Hey, mister, where’s{NEWLINE}that gold-making Magikarp of yours?{CLEAR}Got any more? I want one!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 43,
@@ -526,10 +526,10 @@
   {
    "id": 65,
    "zh": "为了研究各地的精灵生态,{NEWLINE}我不得不坐船到处跑。{CLEAR}虽然辛苦倒也乐趣良多。",
-   "en": "To study Pokémon ecology around the{NEWLINE}world, I have to travel everywhere by{CLEAR}ship.{SCROLL}It’s hard work, but it’s a lot of fun{NEWLINE}too.",
+   "en": "To study Pokémon ecology{NEWLINE}around the world, I have{CLEAR}to travel everywhere by ship.{SCROLL}It’s hard work, but it’s a lot of fun{NEWLINE}too.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   }
  ]
 }

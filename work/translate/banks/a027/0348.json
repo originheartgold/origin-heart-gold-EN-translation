@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "那个谁,{NEWLINE}想知道句妙语不？{VAR:0200:0}",
-   "en": "Hello, hello. Would you like to hear a{NEWLINE}trendy saying?{VAR:0200:0}",
+   "en": "Hello, hello. Would you like{NEWLINE}to hear a trendy saying?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,

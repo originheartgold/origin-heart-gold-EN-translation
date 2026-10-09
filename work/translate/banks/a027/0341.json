@@ -919,10 +919,10 @@
   {
    "id": 112,
    "zh": "昵称叫{VAR:0101:1}{NEWLINE}可以吗？{VAR:0200:0}",
-   "en": "Is {VAR:0101:1} the nickname you want to{NEWLINE}give?{VAR:0200:0}",
+   "en": "Is {VAR:0101:1} the nickname{NEWLINE}you want to give?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl)"
+   "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 113,
@@ -999,10 +999,10 @@
   {
    "id": 122,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的泰山压顶……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习泰山压顶{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Body{NEWLINE}Slam...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Body{NEWLINE}Slam?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Body{NEWLINE}Slam...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn Body Slam?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 123,

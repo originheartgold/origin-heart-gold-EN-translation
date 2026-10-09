@@ -310,10 +310,10 @@
   {
    "id": 38,
    "zh": "给{VAR:0103:0}{VAR:0103:1}的精灵{NEWLINE}喂了{CLEAR}{VAR:0108:2}！！",
-   "en": "{VAR:0103:0} and {VAR:0103:1}’s{NEWLINE}Pokémon were given the{CLEAR}{VAR:0108:2}!!",
+   "en": "{VAR:0103:0} and {VAR:0103:1}’s{NEWLINE}Pokémon were given{CLEAR}the {VAR:0108:2}!!",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0426/38"
+   "notes": "US 0426/38; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 39,

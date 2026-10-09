@@ -134,18 +134,18 @@
   {
    "id": 16,
    "zh": "小蓝『{VAR:0103:0}你有没有发现{NEWLINE}这游轮上的客人除了那些有钱人{CLEAR}就剩手握精灵的训练家了。{SCROLL}小蓝『也就是说圣安努号现在是{NEWLINE}一个钱和精灵都很集中的海上孤岛。{SCROLL}小蓝『为了保存体力以防万一,{NEWLINE}我就先不跟你对战了。",
-   "en": "Green: {VAR:0103:0}, have you noticed?{NEWLINE}Besides the rich folks, all the{CLEAR}passengers are Trainers with Pokémon.{SCROLL}Green: That means the S.S. Anne is an{NEWLINE}island at sea packed with money and{CLEAR}Pokémon.{SCROLL}Green: I’ll save my strength just in{NEWLINE}case, so no battle with you for now.",
+   "en": "Green: {VAR:0103:0}, have you noticed?{NEWLINE}Besides the rich folks, all the{CLEAR}passengers are Trainers with Pokémon.{SCROLL}Green: That means the S.S. Anne{NEWLINE}is an island at sea packed{CLEAR}with money and Pokémon.{SCROLL}Green: I’ll save my strength just in{NEWLINE}case, so no battle with you for now.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Branch: Green = male-player route (Red alternate)."
+   "notes": "Branch: Green = male-player route (Red alternate).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 17,
    "zh": "小赤『{VAR:0103:0}你有没有发现{NEWLINE}这游轮上的客人除了有钱人{CLEAR}就是手握精灵的训练家了。{SCROLL}小赤『也就是说圣安努号现在是{NEWLINE}一个钱和精灵都很集中的海上孤岛。{SCROLL}小赤『为了保存体力以防万一,{NEWLINE}我就先不跟你对战了。",
-   "en": "Red: {VAR:0103:0}, have you noticed? Besides{NEWLINE}the rich folks, all the passengers are{CLEAR}Trainers with Pokémon.{SCROLL}Red: That means the S.S. Anne is an{NEWLINE}island at sea packed with money and{CLEAR}Pokémon.{SCROLL}Red: I’ll save my strength just in case,{NEWLINE}so no battle with you for now.",
+   "en": "Red: {VAR:0103:0}, have you noticed? Besides{NEWLINE}the rich folks, all the passengers are{CLEAR}Trainers with Pokémon.{SCROLL}Red: That means the S.S. Anne{NEWLINE}is an island at sea packed{CLEAR}with money and Pokémon.{SCROLL}Red: I’ll save my strength just in case,{NEWLINE}so no battle with you for now.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Branch: Red = female-player route (Green alternate)."
+   "notes": "Branch: Red = female-player route (Green alternate).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 18,
@@ -190,10 +190,10 @@
   {
    "id": 23,
    "zh": "水吾桐『各位乘客,欢迎参加{NEWLINE}圣安努号的交流派对。{SCROLL}水吾桐『在派对期间{NEWLINE}诸位可以自由交流、尽情对战。{SCROLL}水吾桐『稍后大家可以从我旁边{NEWLINE}这位服务员小姐这里{CLEAR}领取美味的食物和特制的精灵食品,{CLEAR}欢迎各位品鉴。",
-   "en": "Archie: Passengers, welcome to the{NEWLINE}S.S. Anne’s social party.{SCROLL}Archie: During the party, you’re free{NEWLINE}to mingle and battle to your heart’s{CLEAR}content.{SCROLL}Archie: Shortly, you may collect{NEWLINE}delicious food and special Pokémon food{CLEAR}from the young lady beside me.{SCROLL}Please enjoy.",
+   "en": "Archie: Passengers, welcome to the{NEWLINE}S.S. Anne’s social party.{SCROLL}Archie: During the party,{NEWLINE}you’re free to mingle and battle{CLEAR}to your heart’s content.{SCROLL}Archie: Shortly, you may collect{NEWLINE}delicious food and special Pokémon food{CLEAR}from the young lady beside me.{SCROLL}Please enjoy.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 24,
@@ -371,10 +371,10 @@
   {
    "id": 45,
    "zh": "小绿『{VAR:0103:0}的配招又变丰富了啊,{NEWLINE}真是让我大开眼界。",
-   "en": "Blue: Your moves have gotten even more{NEWLINE}varied, {VAR:0103:0}. That was an{CLEAR}eye-opener.",
+   "en": "Blue: Your moves have gotten{NEWLINE}even more varied, {VAR:0103:0}.{CLEAR}That was an eye-opener.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 46,
@@ -419,10 +419,10 @@
   {
    "id": 51,
    "zh": "跟你的对战很有意思,{NEWLINE}如果你哪天去城都的喇叭芽之塔{CLEAR}我们再来比试！",
-   "en": "Battling you was a blast. If you ever go{NEWLINE}to Sprout Tower in Johto, let’s have a{CLEAR}rematch!",
+   "en": "Battling you was a blast.{NEWLINE}If you ever go to Sprout Tower{CLEAR}in Johto, let’s have a rematch!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 52,
@@ -467,18 +467,18 @@
   {
    "id": 57,
    "zh": "以我多年的考古经验,{NEWLINE}这位先生所卖的应该都是真品。",
-   "en": "With my many years in archaeology, I’d{NEWLINE}say everything this gentleman sells is{CLEAR}genuine.",
+   "en": "With my many years in archaeology,{NEWLINE}I’d say everything{CLEAR}this gentleman sells is genuine.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 58,
    "zh": "怎么样,我今天很漂亮吧？{NEWLINE}来,给你个机会夸夸我。{SCROLL}{VAR:0103:0}『……{SCROLL}你真是个典型的直男。",
-   "en": "Well? Don’t I look pretty today? Come{NEWLINE}on, here’s your chance to compliment{CLEAR}me.{SCROLL}{VAR:0103:0}: ...{SCROLL}You really are a typical clueless guy.",
+   "en": "Well? Don’t I look pretty today?{NEWLINE}Come on, here’s your chance{CLEAR}to compliment me.{SCROLL}{VAR:0103:0}: ...{SCROLL}You really are a typical clueless guy.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 59,
@@ -651,10 +651,10 @@
   {
    "id": 80,
    "zh": "服务生『那家伙居然在排队买东西,{NEWLINE}不知道有任务么！",
-   "en": "Waiter: That guy’s standing in line to go{NEWLINE}shopping? Doesn’t he know we’ve got a{CLEAR}mission?!",
+   "en": "Waiter: That guy’s standing{NEWLINE}in line to go shopping?{CLEAR}Doesn’t he know we’ve got a mission?!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 81,
@@ -675,10 +675,10 @@
   {
    "id": 83,
    "zh": "顾客您好！稍后可以在我这里{NEWLINE}领取特制的精灵食品。{SCROLL}您现在可以先让口袋妖怪们{NEWLINE}通过对战活动下筋骨,{CLEAR}这样一会儿品尝食物的时候{CLEAR}口感会更好的。",
-   "en": "Hello, valued customer! Shortly, you{NEWLINE}can collect special Pokémon food from{CLEAR}me.{SCROLL}For now, why not let your Pokémon{NEWLINE}stretch their legs with a few battles?{SCROLL}Then the food will taste even better.",
+   "en": "Hello, valued customer!{NEWLINE}Shortly, you can collect{CLEAR}special Pokémon food from me.{SCROLL}For now, why not let your Pokémon{NEWLINE}stretch their legs with a few battles?{SCROLL}Then the food will taste even better.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 84,
@@ -715,10 +715,10 @@
   {
    "id": 88,
    "zh": "此时此刻此地,人们和口袋妖怪{NEWLINE}其乐融融地享受派对的欢乐,{CLEAR}又是一个值得用画笔记录的时刻啊。",
-   "en": "Here and now, people and Pokémon{NEWLINE}enjoying the party together in{CLEAR}harmony...{SCROLL}Another moment worth capturing with my{NEWLINE}brush.",
+   "en": "Here and now, people{NEWLINE}and Pokémon enjoying the party{CLEAR}together in harmony...{SCROLL}Another moment worth capturing with my{NEWLINE}brush.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 89,
@@ -859,10 +859,10 @@
   {
    "id": 106,
    "zh": "说实在的,{NEWLINE}你的精灵们都太厉害了。{CLEAR}不过我的拉达也挺不错的。{SCROLL}如果你有巴大蝴的话,{NEWLINE}跟我的拉达交换一下如何啊？",
-   "en": "Honestly, your Pokémon are all really{NEWLINE}strong. But my Raticate’s pretty good{CLEAR}too.{SCROLL}If you have a Butterfree, how about{NEWLINE}trading it for my Raticate?",
+   "en": "Honestly, your Pokémon{NEWLINE}are all really strong.{CLEAR}But my Raticate’s pretty good too.{SCROLL}If you have a Butterfree, how about{NEWLINE}trading it for my Raticate?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 107,
@@ -1083,10 +1083,10 @@
   {
    "id": 134,
    "zh": "武藏『目的？当然是为了{NEWLINE}你们的钱财和口袋妖怪咯。",
-   "en": "Jessie: What are we doing? Why, we’re{NEWLINE}after your money and your Pokémon, of{CLEAR}course.",
+   "en": "Jessie: What are we doing?{NEWLINE}Why, we’re after your money{CLEAR}and your Pokémon, of course.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 135,
@@ -1243,10 +1243,10 @@
   {
    "id": 154,
    "zh": "武藏『呀哈哈哈！{NEWLINE}你们刚才都给精灵吃了{CLEAR}派对上提供的食物了吧？",
-   "en": "Jessie: Ya-ha-ha-ha! You all fed your{NEWLINE}Pokémon the food from the party, didn’t{CLEAR}you?",
+   "en": "Jessie: Ya-ha-ha-ha!{NEWLINE}You all fed your Pokémon the food{CLEAR}from the party, didn’t you?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 155,
@@ -1419,10 +1419,10 @@
   {
    "id": 176,
    "zh": "武藏『气死我了,{NEWLINE}这么多人都拿不下这俩臭小鬼。",
-   "en": "Jessie: This is infuriating! All these{NEWLINE}people and we still can’t beat two{CLEAR}brats!",
+   "en": "Jessie: This is infuriating!{NEWLINE}All these people and we still{CLEAR}can’t beat two brats!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 177,

@@ -346,10 +346,10 @@
   {
    "id": 42,
    "zh": "哎呀？洛托姆{NEWLINE}想要回复原来的样子,{CLEAR}把它从马达里拿出来吗？{VAR:0200:0}",
-   "en": "Oh? Rotom seems to want to return to{NEWLINE}its original form. Take it out of the{CLEAR}motor?{VAR:0200:0}",
+   "en": "Oh? Rotom seems to want{NEWLINE}to return to its original form.{CLEAR}Take it out of the motor?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 43,
@@ -442,10 +442,10 @@
   {
    "id": 54,
    "zh": "我正觉得站岗无聊呢,{NEWLINE}你就跑来送死了！",
-   "en": "I was just getting bored standing{NEWLINE}guard, and here you come, asking to{CLEAR}die!",
+   "en": "I was just getting bored{NEWLINE}standing guard, and here{CLEAR}you come, asking to die!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 55,

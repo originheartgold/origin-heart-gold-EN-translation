@@ -485,10 +485,10 @@
   {
    "id": 59,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的哈欠……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习哈欠{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Yawn...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Yawn?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Yawn...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget{NEWLINE}a move to learn Yawn?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 60,

@@ -39,10 +39,10 @@
   {
    "id": 4,
    "zh": "口袋妖怪对战马拉松{NEWLINE}只准携带一只精灵参加,{CLEAR}请您将队伍整理一下再来报名。",
-   "en": "Only one Pokémon may take part in the{NEWLINE}Pokémon battle marathon. Please sort{CLEAR}out your party, then come back to sign{CLEAR}up.",
+   "en": "Only one Pokémon may take part{NEWLINE}in the Pokémon battle marathon.{CLEAR}Please sort out your party,{CLEAR}then come back to sign up.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 5,
@@ -295,10 +295,10 @@
   {
    "id": 36,
    "zh": "您可真是厉害！{NEWLINE}居然能以远超其他选手的速度{CLEAR}完成前两个阶段的比赛。{SCROLL}请您先到东边稍等,{NEWLINE}等所有选手到齐后{CLEAR}我就开始讲解第三阶段的比赛规则。",
-   "en": "You’re amazing! You cleared the first{NEWLINE}two stages far faster than the other{CLEAR}contestants.{SCROLL}Please wait a moment to the east. Once{NEWLINE}all the contestants are here, I’ll{CLEAR}explain the rules for Stage 3.",
+   "en": "You’re amazing! You cleared{NEWLINE}the first two stages far faster{CLEAR}than the other contestants.{SCROLL}Please wait a moment to the east. Once{NEWLINE}all the contestants are here, I’ll{CLEAR}explain the rules for Stage 3.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 37,
@@ -463,10 +463,10 @@
   {
    "id": 57,
    "zh": "对战马拉松比赛结束之后,{NEWLINE}我又顺道看了场街头魔术表演。{CLEAR}表演是挺精彩的,{CLEAR}但是看完之后总感觉哪里空空的,{CLEAR}到底是哪里呢……",
-   "en": "After the battle marathon, I stopped{NEWLINE}to watch a street magic show. The show{CLEAR}was great, but afterward I felt like{CLEAR}something was empty. What could it{CLEAR}be...?",
+   "en": "After the battle marathon, I stopped{NEWLINE}to watch a street magic show.{CLEAR}The show was great, but afterward{CLEAR}I felt like something was empty.{CLEAR}What could it be...?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 58,
@@ -487,10 +487,10 @@
   {
    "id": 60,
    "zh": "我的精灵最近学会了一招{NEWLINE}名为魔法闪耀的技能,{CLEAR}用这招参加对战马拉松的话{CLEAR}一定能取得好成绩。{SCROLL}你的精灵如果想学的话,{NEWLINE}只要给我一个月亮球,{CLEAR}我就可以教它哟。{CLEAR}怎么样,要让精灵学习魔法闪耀吗？",
-   "en": "My Pokémon recently learned a move{NEWLINE}called Dazzling Gleam. With that move,{CLEAR}it’s bound to do well in the battle{CLEAR}marathon.{SCROLL}If your Pokémon wants to learn it, just{NEWLINE}give me a Moon Ball and I’ll teach it.{CLEAR}So, how about it? Want your Pokémon to{CLEAR}learn Dazzling Gleam?",
+   "en": "My Pokémon recently learned{NEWLINE}a move called Dazzling Gleam.{CLEAR}With that move, it’s bound to do{CLEAR}well in the battle marathon.{SCROLL}If your Pokémon wants to learn it, just{NEWLINE}give me a Moon Ball and I’ll teach it.{CLEAR}So, how about it? Want your Pokémon to{CLEAR}learn Dazzling Gleam?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 61,
@@ -585,10 +585,10 @@
   {
    "id": 72,
    "zh": "{VAR:0103:0}『不对,我记得有人说{NEWLINE}看完你的魔术后就感觉哪里空空的。{CLEAR}我刚刚看了一下钱包,{CLEAR}发现钱包变空了！{SCROLL}{VAR:0103:0}『你刚刚是用了催眠术,{NEWLINE}然后偷拿走我的钱了吧！",
-   "en": "{VAR:0103:0}: No. I remember someone saying{NEWLINE}they felt empty after watching your{CLEAR}show. I just checked my wallet, and it’s{CLEAR}empty!{SCROLL}{VAR:0103:0}: You hypnotized me and stole my{NEWLINE}money, didn’t you?!",
+   "en": "{VAR:0103:0}: No. I remember someone{NEWLINE}saying they felt empty after{CLEAR}watching your show. I just{CLEAR}checked my wallet, and it’s empty!{SCROLL}{VAR:0103:0}: You hypnotized me and stole my{NEWLINE}money, didn’t you?!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 73,
@@ -793,10 +793,10 @@
   {
    "id": 98,
    "zh": "你是要放弃{NEWLINE}让它记住魔法闪耀吗？{VAR:0200:0}",
-   "en": "Give up on teaching it Dazzling Gleam?{VAR:0200:0}",
+   "en": "Give up on teaching it{NEWLINE}Dazzling Gleam?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 99,

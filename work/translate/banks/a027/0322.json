@@ -358,10 +358,10 @@
   {
    "id": 44,
    "zh": "正辉『{VAR:0103:0}你也要去金黄市？{NEWLINE}我本来是想去金黄市的西鲁夫公司{CLEAR}跟他们的技术部门做研发交流,{CLEAR}结果却被突然出现的屏障挡在了外面。{SCROLL}正辉『我在想既然无法{NEWLINE}通过正常渠道进入金黄市,{CLEAR}那么走电脑空间的话……{CLEAR}不不,这个方法太过危险……{CLEAR}还是想点别的办法吧。",
-   "en": "Bill: {VAR:0103:0}, you’re going to Saffron{NEWLINE}City too?{SCROLL}I was on my way to Silph Co. to trade{NEWLINE}research notes with their tech{CLEAR}department, but this barrier popped up{CLEAR}and shut me out.{SCROLL}Bill: If there’s no normal way into{NEWLINE}Saffron City, then maybe through{CLEAR}cyberspace...{SCROLL}No, no, that’s far too dangerous. I’d{NEWLINE}better think of something else.",
+   "en": "Bill: {VAR:0103:0}, you’re going to Saffron{NEWLINE}City too?{SCROLL}I was on my way to Silph Co. to trade{NEWLINE}research notes with their tech{CLEAR}department, but this barrier popped up{CLEAR}and shut me out.{SCROLL}Bill: If there’s no normal{NEWLINE}way into Saffron City,{CLEAR}then maybe through cyberspace...{SCROLL}No, no, that’s far too dangerous. I’d{NEWLINE}better think of something else.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 45,

@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "我在海上航行了一辈子,{NEWLINE}见到过无数的水系口袋妖怪,{CLEAR}对这些水中的精灵可是了如指掌。{SCROLL}年轻人,我看你是非常厉害的训练家,{NEWLINE}你有信心能回答对我提出的{CLEAR}关于水系精灵的问题吗？{SCROLL}",
-   "en": "I’ve sailed the seas all my life and seen{NEWLINE}countless Water-type Pokémon. I know{CLEAR}these creatures of the water inside and{CLEAR}out.{SCROLL}Youngster, you look like a mighty fine{NEWLINE}Trainer.{SCROLL}Are you confident you can answer my{NEWLINE}questions about Water-type Pokémon?{SCROLL}",
+   "en": "I’ve sailed the seas all my life and seen{NEWLINE}countless Water-type Pokémon.{CLEAR}I know these creatures{CLEAR}of the water inside and out.{SCROLL}Youngster, you look like a mighty fine{NEWLINE}Trainer.{SCROLL}Are you confident you can answer my{NEWLINE}questions about Water-type Pokémon?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "RV015: omission: restored 见到过无数的水系口袋妖怪 and 有信心"
+   "notes": "RV015: omission: restored 见到过无数的水系口袋妖怪 and 有信心; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1,
@@ -322,26 +322,26 @@
   {
    "id": 37,
    "zh": "我和帝王拿波已经退休,{NEWLINE}未来探索大海就靠你们年轻人了。{CLEAR}你和波加曼要好好努力啊。",
-   "en": "Empoleon and I are retired now.{NEWLINE}Exploring the seas is up to you young{CLEAR}folks.{CLEAR}You and Piplup keep working hard, you{CLEAR}hear?",
+   "en": "Empoleon and I are retired now.{NEWLINE}Exploring the seas is up{CLEAR}to you young folks.{CLEAR}You and Piplup keep{CLEAR}working hard, you hear?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 38,
    "zh": "以往每年都会有巴大蝴{NEWLINE}飞到这里来交配产卵,{CLEAR}但是最近飞来的巴大蝴明显少了许多,{CLEAR}是因为它们都在别处安家了吗……",
-   "en": "Every year, Butterfree used to fly{NEWLINE}here to mate and lay their eggs.{CLEAR}But lately, far fewer of them have been{CLEAR}coming.{CLEAR}Have they all made new homes somewhere{CLEAR}else...?",
+   "en": "Every year, Butterfree used to fly{NEWLINE}here to mate and lay their eggs.{CLEAR}But lately, far fewer{CLEAR}of them have been coming.{CLEAR}Have they all made new{CLEAR}homes somewhere else...?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 39,
    "zh": "每年巴大蝴都会飞来这里交配产卵,{NEWLINE}看到它们在一起孕育出新生命,{CLEAR}仿佛是看到了清晨初升的太阳,{CLEAR}感觉整个世界都充满了生机和希望。",
-   "en": "Every year, Butterfree fly here to{NEWLINE}mate and lay their eggs.{CLEAR}Watching them bring new life into the{CLEAR}world is like seeing the sun rise at{CLEAR}dawn.{CLEAR}It makes the whole world feel full of{CLEAR}life and hope.",
+   "en": "Every year, Butterfree fly here to{NEWLINE}mate and lay their eggs.{CLEAR}Watching them bring new{CLEAR}life into the world is like{CLEAR}seeing the sun rise at dawn.{CLEAR}It makes the whole world feel full of{CLEAR}life and hope.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 40,

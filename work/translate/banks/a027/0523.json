@@ -110,10 +110,10 @@
   {
    "id": 13,
    "zh": "娜姿『这是我用超能力{NEWLINE}创造的异空间,{CLEAR}你能被超能力影响传送到这里,{CLEAR}就说明你的意志力还差得远。{CLEAR}想逃出异空间回到现实世界的话,{CLEAR}就自己想办法吧。",
-   "en": "Sabrina: This is a pocket dimension I{NEWLINE}created with my psychic powers. If my{CLEAR}power could send you here, your will is{CLEAR}far too weak. If you wish to escape and{CLEAR}return to the real world, find a way{CLEAR}yourself.",
+   "en": "Sabrina: This is a pocket dimension{NEWLINE}I created with my psychic powers.{CLEAR}If my power could send you here,{CLEAR}your will is far too weak.{CLEAR}If you wish to escape and return{CLEAR}to the real world, find a way yourself.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 14,
@@ -142,10 +142,10 @@
   {
    "id": 17,
    "zh": "希罗娜『对了,既然在这里遇到了,{NEWLINE}不如你跟我来一场对战吧？",
-   "en": "Cynthia: Oh, since we’ve run into each{NEWLINE}other here, how about a battle with me{CLEAR}instead?",
+   "en": "Cynthia: Oh, since we’ve{NEWLINE}run into each other here,{CLEAR}how about a battle with me instead?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 18,
@@ -182,10 +182,10 @@
   {
    "id": 22,
    "zh": "娜姿『信心不足吗……{NEWLINE}我倒是对你现在的意志力很期待。",
-   "en": "Sabrina: Not confident enough...? I{NEWLINE}have high hopes for your will as it is{CLEAR}now.",
+   "en": "Sabrina: Not confident enough...?{NEWLINE}I have high hopes{CLEAR}for your will as it is now.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 23,
@@ -214,10 +214,10 @@
   {
    "id": 26,
    "zh": "娜姿『呼……呼……这是我用超能力{NEWLINE}呼……创造的呼……异空间,{CLEAR}你能被超能力影响呼……传送到这里,{CLEAR}就说明……你的意志力还不行。{SCROLL}娜姿『想逃出异空间{NEWLINE}回到现实世界的话,{CLEAR}就自己想办法吧。",
-   "en": "Sabrina: Huff... Huff... This is a pocket{NEWLINE}dimension... huff... I created with my{CLEAR}psychic powers... huff... If my power{CLEAR}could send you... huff... here... your{CLEAR}will isn’t strong enough yet.{SCROLL}Sabrina: If you wish to escape and{NEWLINE}return to the real world, find a way{CLEAR}yourself.",
+   "en": "Sabrina: Huff... Huff... This is a pocket{NEWLINE}dimension... huff... I created with my{CLEAR}psychic powers... huff... If my power{CLEAR}could send you... huff... here... your{CLEAR}will isn’t strong enough yet.{SCROLL}Sabrina: If you wish to escape{NEWLINE}and return to the real world,{CLEAR}find a way yourself.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 27,
@@ -246,18 +246,18 @@
   {
    "id": 30,
    "zh": "你要出去跟火箭队拼命吗？{NEWLINE}那你得有足够的实力才行。{CLEAR}需要我陪你锻炼一下精灵吗？",
-   "en": "You’re going out there to take on Team{NEWLINE}Rocket? Then you’d better be strong{CLEAR}enough. Want me to help train your{CLEAR}Pokémon?",
+   "en": "You’re going out there{NEWLINE}to take on Team Rocket?{CLEAR}Then you’d better be strong enough.{CLEAR}Want me to help train your Pokémon?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 31,
    "zh": "我的精灵都已经力尽了,{NEWLINE}如果能去精灵中心回复一下就好了。",
-   "en": "My Pokémon are all worn out. If only I{NEWLINE}could get to a Pokémon Center to heal{CLEAR}them.",
+   "en": "My Pokémon are all worn out.{NEWLINE}If only I could get{CLEAR}to a Pokémon Center to heal them.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 32,
@@ -334,10 +334,10 @@
   {
    "id": 41,
    "zh": "娜姿『成为冠军的你{NEWLINE}意志力又更上了一层楼。{CLEAR}我非常好奇现在的你{CLEAR}在战斗中会有怎样的发挥。{CLEAR}能跟我来场对战让我看看吗？{SCROLL}",
-   "en": "Sabrina: Now that you are Champion,{NEWLINE}your will has grown even stronger. I am{CLEAR}very curious how you would fare in{CLEAR}battle now. Will you battle me and show{CLEAR}me?{SCROLL}",
+   "en": "Sabrina: Now that you are Champion,{NEWLINE}your will has grown even stronger.{CLEAR}I am very curious how{CLEAR}you would fare in battle now.{CLEAR}Will you battle me and show me?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 42,
@@ -350,10 +350,10 @@
   {
    "id": 43,
    "zh": "娜姿『不愧是你,{NEWLINE}当真无愧于最强训练家之名。",
-   "en": "Sabrina: As expected of you. You truly{NEWLINE}live up to the title of strongest{CLEAR}Trainer.",
+   "en": "Sabrina: As expected of you.{NEWLINE}You truly live up to the title{CLEAR}of strongest Trainer.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 44,
@@ -366,10 +366,10 @@
   {
    "id": 45,
    "zh": "娜姿『枯叶岗的码头已经恢复通航了。{NEWLINE}你拿着圣安努号船票,{CLEAR}去那里坐船就能到达水都群岛。",
-   "en": "Sabrina: The harbor in Vermilion City is{NEWLINE}open again. Take your S.S. Ticket there{CLEAR}and board the ship to the Alto Mare{CLEAR}Islands.",
+   "en": "Sabrina: The harbor{NEWLINE}in Vermilion City is open again.{CLEAR}Take your S.S. Ticket there and board{CLEAR}the ship to the Alto Mare Islands.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 46,

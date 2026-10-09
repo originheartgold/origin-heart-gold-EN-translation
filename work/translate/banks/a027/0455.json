@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "小刚『让你久等了{VAR:0103:0}{NEWLINE}我现在可以静下来{CLEAR}专注于跟你的对战了。{SCROLL}小刚『到现在这个时候,{NEWLINE}我再自我介绍就显得多余了。{CLEAR}刚刚我已经见识到了{CLEAR}你那百折不挠的精神,{CLEAR}你的这份精神{CLEAR}是否已经转化成了足够的实力,{CLEAR}就让我来检验一下！",
-   "en": "Brock: Sorry to keep you waiting,{NEWLINE}{VAR:0103:0}. Now I can calmly focus on our{CLEAR}battle.{SCROLL}Brock: There’s no need to introduce{NEWLINE}myself at this point. I’ve already seen{CLEAR}your never-give-up spirit.{SCROLL}Brock: Now let me test whether that{NEWLINE}spirit has become real strength!",
+   "en": "Brock: Sorry to keep you waiting,{NEWLINE}{VAR:0103:0}. Now I can calmly{CLEAR}focus on our battle.{SCROLL}Brock: There’s no need to introduce{NEWLINE}myself at this point. I’ve already seen{CLEAR}your never-give-up spirit.{SCROLL}Brock: Now let me test whether that{NEWLINE}spirit has become real strength!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0455#0; text not kept)"
+   "notes": "v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0455#0; text not kept); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1,
@@ -86,10 +86,10 @@
   {
    "id": 10,
    "zh": "小刚『你好,我是尼比市道馆的{NEWLINE}馆主小刚。{CLEAR}同时也是一名袋妖怪饲育家。{SCROLL}小刚『很高兴你能来到{NEWLINE}我的道馆进行挑战,{CLEAR}那么请问你的名……",
-   "en": "Brock: Hello. I’m Brock, the Leader of{NEWLINE}Pewter City’s Gym. I’m also a Pokémon{CLEAR}Breeder.{SCROLL}Brock: I’m glad you’ve come to{NEWLINE}challenge my Gym. Now, may I ask your{CLEAR}na...",
+   "en": "Brock: Hello. I’m Brock,{NEWLINE}the Leader of Pewter City’s Gym.{CLEAR}I’m also a Pokémon Breeder.{SCROLL}Brock: I’m glad you’ve{NEWLINE}come to challenge my Gym.{CLEAR}Now, may I ask your na...",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 11,
@@ -166,10 +166,10 @@
   {
    "id": 20,
    "zh": "你好,{NEWLINE}我是尼比道馆的陪练。{SCROLL}专为想提高实力的训练家{NEWLINE}提供针对性训练服务。{CLEAR}只需要1个「解毒果」的服务费{CLEAR}我就可以帮你的精灵{CLEAR}针对性提高「物防」努力值{SCROLL}怎么样？{NEWLINE}需要我的陪练服务吗？{SCROLL}",
-   "en": "Hello! I’m a sparring partner at Pewter{NEWLINE}Gym.{SCROLL}I offer focused training for Trainers{NEWLINE}who want to get stronger.{SCROLL}For a fee of just one Pecha Berry, I’ll{NEWLINE}train your Pokémon to raise its Defense{CLEAR}EVs.{SCROLL}How about it? Want to spar with me?{SCROLL}",
+   "en": "Hello! I’m a sparring partner at Pewter{NEWLINE}Gym.{SCROLL}I offer focused training for Trainers{NEWLINE}who want to get stronger.{SCROLL}For a fee of just one Pecha Berry,{NEWLINE}I’ll train your Pokémon{CLEAR}to raise its Defense EVs.{SCROLL}How about it? Want to spar with me?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 21,
@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "小刚『根据精灵联盟的规定,{NEWLINE}挑战道馆不可以使用回复类道具。{CLEAR}你先整理一下背包再来吧！",
-   "en": "Brock: Under Pokémon League rules, you{NEWLINE}can’t use healing items in a Gym{CLEAR}challenge.{SCROLL}Sort out your Bag first, then come{NEWLINE}back!",
+   "en": "Brock: Under Pokémon League{NEWLINE}rules, you can’t use healing{CLEAR}items in a Gym challenge.{SCROLL}Sort out your Bag first, then come{NEWLINE}back!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 26,
@@ -281,10 +281,10 @@
   {
    "id": 34,
    "zh": "小刚『你身上只带着1只精灵,{NEWLINE}这可没法双打。",
-   "en": "Brock: You only have one Pokémon with{NEWLINE}you. We can’t have a Double Battle like{CLEAR}that.",
+   "en": "Brock: You only have one{NEWLINE}Pokémon with you. We can’t{CLEAR}have a Double Battle like that.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   }
  ]
 }

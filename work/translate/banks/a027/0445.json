@@ -135,10 +135,10 @@
   {
    "id": 16,
    "zh": "小绿『你知道吗？{NEWLINE}常磐市的馆主被称为史上最强之人。{SCROLL}但是再怎么强,{NEWLINE}终究只是常磐市的馆主。{CLEAR}我的目标可不是区区常磐馆主,{SCROLL}我的目标是精灵联盟的冠军！",
-   "en": "Blue: Did you know? Viridian’s Gym{NEWLINE}Leader is called the strongest person{CLEAR}ever.{SCROLL}But however strong he is, he’s just the{NEWLINE}Viridian Gym Leader.{SCROLL}I’m not aiming for some Gym Leader.{SCROLL}My goal is to be Pokémon League{NEWLINE}Champion!",
+   "en": "Blue: Did you know?{NEWLINE}Viridian’s Gym Leader is called{CLEAR}the strongest person ever.{SCROLL}But however strong he is, he’s just the{NEWLINE}Viridian Gym Leader.{SCROLL}I’m not aiming for some Gym Leader.{SCROLL}My goal is to be Pokémon League{NEWLINE}Champion!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 17,
@@ -231,10 +231,10 @@
   {
    "id": 28,
    "zh": "不懂得欣赏强者,{NEWLINE}你真是见不得别人好。",
-   "en": "You can’t appreciate someone strong?{NEWLINE}You just can’t stand seeing others do{CLEAR}well.",
+   "en": "You can’t appreciate someone strong?{NEWLINE}You just can’t stand{CLEAR}seeing others do well.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 29,
@@ -327,10 +327,10 @@
   {
    "id": 40,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的愤怒门牙……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习愤怒门牙{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn the move{NEWLINE}Super Fang...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Forget a move to make room for Super{NEWLINE}Fang?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn the move{NEWLINE}Super Fang...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Forget a move to make{NEWLINE}room for Super Fang?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "",
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)",
    "qa_ignore": [
     "number_missing"
    ]
@@ -338,10 +338,10 @@
   {
    "id": 41,
    "zh": "忘记{VAR:0106:1},{NEWLINE}确定吗？{VAR:0200:0}",
-   "en": "{VAR:0106:1} will be forgotten. Is that{NEWLINE}OK? {VAR:0200:0}",
+   "en": "{VAR:0106:1} will be forgotten.{NEWLINE}Is that OK? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl)"
+   "notes": "v3 TM: 1 source(s); other variants: 5 more v3 TM candidates (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 42,
@@ -402,10 +402,10 @@
   {
    "id": 49,
    "zh": "唉,最近常磐市的路灯{NEWLINE}经常被一只顽皮的猴怪搞坏。{CLEAR}因为我不是训练家{CLEAR}所以完全没能力制止它。{SCROLL}看你身后跟着精灵,{NEWLINE}应该是很有本事的训练家吧？{CLEAR}如果遇到了那只猴怪,{CLEAR}麻烦你帮我教训它一下,{CLEAR}让它不要再搞破坏了。",
-   "en": "Sigh... Lately a naughty Mankey keeps{NEWLINE}breaking Viridian City’s street lights.{SCROLL}I’m not a Trainer, so there’s nothing I{NEWLINE}can do to stop it.{SCROLL}With a Pokémon following you around, you{NEWLINE}must be a pretty good Trainer, right?{SCROLL}If you run into that Mankey, could you{NEWLINE}teach it a lesson so it quits wrecking{CLEAR}things?",
+   "en": "Sigh... Lately a naughty Mankey keeps{NEWLINE}breaking Viridian City’s street lights.{SCROLL}I’m not a Trainer, so there’s nothing I{NEWLINE}can do to stop it.{SCROLL}With a Pokémon following you around, you{NEWLINE}must be a pretty good Trainer, right?{SCROLL}If you run into that Mankey,{NEWLINE}could you teach it a lesson{CLEAR}so it quits wrecking things?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 50,
@@ -530,10 +530,10 @@
   {
    "id": 65,
    "zh": "精灵联盟在关东和城都{NEWLINE}共设置了16个道馆。{CLEAR}并从通过石英大会考验的{CLEAR}精英训练家中挑选出16位{CLEAR}担任这16座道馆的馆主。{SCROLL}精灵联盟有规定：{NEWLINE}馆主在接受挑战时，{CLEAR}要根据挑战者的徽章数量{CLEAR}决定拿出多少实力,{CLEAR}当挑战者达到某个水平时,{CLEAR}就可以向挑战者颁发徽章。{SCROLL}如果想让馆主们全力应战,{NEWLINE}挑战者至少要获得8枚徽章才行。",
-   "en": "The Pokémon League has set up 16 Gyms{NEWLINE}across Kanto and Johto.{SCROLL}Its 16 Gym Leaders are chosen from Ace{NEWLINE}Trainers who passed the Indigo{CLEAR}Conference.{SCROLL}League rules say a Gym Leader must{NEWLINE}match their strength to the number of{CLEAR}Badges a challenger has.{SCROLL}When a challenger reaches a certain{NEWLINE}level, the Leader may award a Badge.{SCROLL}To make the Gym Leaders battle at full{NEWLINE}strength, a challenger needs at least 8{CLEAR}Badges.",
+   "en": "The Pokémon League has set up 16 Gyms{NEWLINE}across Kanto and Johto.{SCROLL}Its 16 Gym Leaders are chosen{NEWLINE}from Ace Trainers who passed{CLEAR}the Indigo Conference.{SCROLL}League rules say a Gym Leader must{NEWLINE}match their strength to the number of{CLEAR}Badges a challenger has.{SCROLL}When a challenger reaches a certain{NEWLINE}level, the Leader may award a Badge.{SCROLL}To make the Gym Leaders battle{NEWLINE}at full strength, a challenger{CLEAR}needs at least 8 Badges.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position",
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)",
    "qa_ignore": [
     "number_missing"
    ]
@@ -541,10 +541,10 @@
   {
    "id": 66,
    "zh": "白银大会因其举办地点{NEWLINE}在白银山而得名。{SCROLL}只有在石英大会中{NEWLINE}被认定的精英训练家们{CLEAR}才有资格参加白银大会。{SCROLL}大会的目的是在精英训练家中{NEWLINE}选拔出能够垂范全国训练家的{CLEAR}联盟四天王和联盟冠军。{SCROLL}冠军和四天王则是精灵联盟{NEWLINE}管理整个地区事务的左膀右臂。",
-   "en": "The Silver Conference is named after{NEWLINE}where it’s held: Mt. Silver.{SCROLL}Only Ace Trainers recognized at the{NEWLINE}Indigo Conference may enter the Silver{CLEAR}Conference.{SCROLL}Its purpose is to choose, from among{NEWLINE}the Ace Trainers, an Elite Four and a{CLEAR}Champion who can set an example for{CLEAR}every Trainer.{SCROLL}The Champion and the Elite Four are the{NEWLINE}League’s right hand in running the whole{CLEAR}region.",
+   "en": "The Silver Conference is named after{NEWLINE}where it’s held: Mt. Silver.{SCROLL}Only Ace Trainers recognized{NEWLINE}at the Indigo Conference may{CLEAR}enter the Silver Conference.{SCROLL}Its purpose is to choose, from among{NEWLINE}the Ace Trainers, an Elite Four and a{CLEAR}Champion who can set an example for{CLEAR}every Trainer.{SCROLL}The Champion and the Elite Four{NEWLINE}are the League’s right hand{CLEAR}in running the whole region.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 67,
@@ -573,10 +573,10 @@
   {
    "id": 70,
    "zh": "小绿『{VAR:0103:0}我们交换下电话号码吧,{NEWLINE}这样我成为冠军的时候{CLEAR}就能第一时间告诉你了！",
-   "en": "Blue: {VAR:0103:0}, let’s swap numbers. That{NEWLINE}way you’ll be the first to hear when I’m{CLEAR}Champion!",
+   "en": "Blue: {VAR:0103:0}, let’s swap numbers.{NEWLINE}That way you’ll be the first{CLEAR}to hear when I’m Champion!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 71,
@@ -901,10 +901,10 @@
   {
    "id": 111,
    "zh": "小绿『嘿嘿,见到馆主前的道馆考验{NEWLINE}以及与馆主的战斗都不简单,{CLEAR}我也是好不容易才通过的。{SCROLL}小绿『石英大会的报名马上就要开始了,{NEWLINE}{VAR:0103:0}你也得尽快{CLEAR}拿到这第8枚徽章啊。",
-   "en": "Blue: Heh heh. The Gym’s trials before{NEWLINE}you meet the Leader and the battle with{CLEAR}the Leader are no joke.{SCROLL}Even I barely made it through.{SCROLL}Blue: Sign-ups for the Indigo{NEWLINE}Conference start any day now. You’d{CLEAR}better get that 8th Badge fast too,{CLEAR}{VAR:0103:0}.",
+   "en": "Blue: Heh heh. The Gym’s trials before{NEWLINE}you meet the Leader and the battle with{CLEAR}the Leader are no joke.{SCROLL}Even I barely made it through.{SCROLL}Blue: Sign-ups for the Indigo{NEWLINE}Conference start any day now.{CLEAR}You’d better get that 8th{CLEAR}Badge fast too, {VAR:0103:0}.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 112,
@@ -949,18 +949,18 @@
   {
    "id": 117,
    "zh": "我走遍了关东、城都,{NEWLINE}好不容易凑齐了8枚徽章。{CLEAR}现在就要来参加石英大会了,{CLEAR}感觉既兴奋又害怕。",
-   "en": "I traveled all over Kanto and Johto and{NEWLINE}finally got all 8 Badges.{SCROLL}Now I’m entering the Indigo Conference.{NEWLINE}I’m excited and scared at the same{CLEAR}time.",
+   "en": "I traveled all over Kanto and Johto and{NEWLINE}finally got all 8 Badges.{SCROLL}Now I’m entering the Indigo Conference.{NEWLINE}I’m excited and scared{CLEAR}at the same time.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 118,
    "zh": "常磐市是精灵联盟的玄关门口,{NEWLINE}穿过常磐市向西{CLEAR}就可以到达精灵联盟的入口。",
-   "en": "Viridian City is the Pokémon League’s{NEWLINE}front door.{SCROLL}Head west through Viridian City and{NEWLINE}you’ll reach the entrance to the{CLEAR}League.",
+   "en": "Viridian City is the Pokémon League’s{NEWLINE}front door.{SCROLL}Head west through{NEWLINE}Viridian City and you’ll reach{CLEAR}the entrance to the League.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 119,
@@ -1061,10 +1061,10 @@
   {
    "id": 131,
    "zh": "我们家小黄昨天去常磐森林写生{NEWLINE}却一直没有回来。{CLEAR}我的嘟嘟也被她带走了,{CLEAR}所以我现在没法去常磐森林,{CLEAR}能请您帮忙去常磐森林找找小黄吗？{CLEAR}我真的很担心她,拜托了！",
-   "en": "My Yellow went to Viridian Forest to{NEWLINE}sketch yesterday, and she never came{CLEAR}back.{SCROLL}She took my Doduo with her, so I can’t{NEWLINE}go into the forest myself.{SCROLL}Could you please go to Viridian Forest{NEWLINE}and look for Yellow?{SCROLL}I’m so worried about her. Please!",
+   "en": "My Yellow went to Viridian Forest{NEWLINE}to sketch yesterday,{CLEAR}and she never came back.{SCROLL}She took my Doduo with her, so I can’t{NEWLINE}go into the forest myself.{SCROLL}Could you please go to Viridian Forest{NEWLINE}and look for Yellow?{SCROLL}I’m so worried about her. Please!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 132,
@@ -1181,10 +1181,10 @@
   {
    "id": 146,
    "zh": "{VAR:0103:0}『皮卡丘,{NEWLINE}你不可以随便偷吃商店东西。{CLEAR}这样会让人很……",
-   "en": "{VAR:0103:0}: Pikachu, you can’t just steal{NEWLINE}food from the store. It makes people{CLEAR}really...",
+   "en": "{VAR:0103:0}: Pikachu, you can’t{NEWLINE}just steal food from the store.{CLEAR}It makes people really...",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 147,
@@ -1626,10 +1626,10 @@
   {
    "id": 201,
    "zh": "谢谢你们啊,这个力量真是太神奇了。{NEWLINE}看来你们是非常强大的训练家情侣,{CLEAR}这样的话你们一定要试试{CLEAR}度假区的情侣双打挑战。{CLEAR}如果在挑战中能赢到最后,{CLEAR}就会获得所有参赛者的美好祝福。{CLEAR}对每一对训练家情侣来说{CLEAR}绝对是不容错过的度假体验。",
-   "en": "Thank you both! What an amazing power.{SCROLL}You two must be a very strong Trainer{NEWLINE}couple. In that case, you’ve got to try{CLEAR}the Resort Zone’s Couples Double{CLEAR}Battle!{SCROLL}If you win it all, every entrant gives{NEWLINE}you their blessing.{SCROLL}For any Trainer couple, it’s a resort{NEWLINE}experience you can’t miss.",
+   "en": "Thank you both! What an amazing power.{SCROLL}You two must be a very strong{NEWLINE}Trainer couple. In that case,{CLEAR}you’ve got to try the Resort{CLEAR}Zone’s Couples Double Battle!{SCROLL}If you win it all, every entrant gives{NEWLINE}you their blessing.{SCROLL}For any Trainer couple, it’s a resort{NEWLINE}experience you can’t miss.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 202,
@@ -1666,18 +1666,18 @@
   {
    "id": 206,
    "zh": "哎呀呀,今天的情侣双打比赛真是火爆,{NEWLINE}在比赛开始前一刻{CLEAR}居然还有恩爱的情侣来报名。{CLEAR}总之欢迎二位参加今天的比赛,{CLEAR}我们的双打对战即将开始,{CLEAR}请二位到对战场地边就位吧！",
-   "en": "Oh my, today’s Couples Double Battle is{NEWLINE}a real hit!{SCROLL}A loving couple signing up right before{NEWLINE}the start!{SCROLL}Anyway, welcome to today’s contest!{NEWLINE}Our Double Battles are about to begin,{CLEAR}so please take your places by the{CLEAR}battlefield!",
+   "en": "Oh my, today’s Couples Double Battle is{NEWLINE}a real hit!{SCROLL}A loving couple signing up right before{NEWLINE}the start!{SCROLL}Anyway, welcome to today’s contest!{NEWLINE}Our Double Battles are about{CLEAR}to begin, so please take{CLEAR}your places by the battlefield!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 207,
    "zh": "各位来宾大家好,{NEWLINE}度假区的特色项目{CLEAR}情侣双打对战即将开始,{CLEAR}下面由我简单介绍一下规则。{CLEAR}第一场比赛胜出的情侣将留在台上,{CLEAR}他们将以车轮战的方式{CLEAR}迎接不断上台的情侣组合。{CLEAR}当所有报名的情侣{CLEAR}都登台比赛过至少一次后,{CLEAR}胜场最多的情侣组合{CLEAR}将成为本次比赛的冠军。{CLEAR}获得冠军的情侣{CLEAR}会受到所有度假区来宾的美好祝福。{CLEAR}下面请大家在这个欢乐的地方,{CLEAR}尽情享受充满爱意{CLEAR}又激情澎湃的精灵对战吧！",
-   "en": "Welcome, everyone! The Resort Zone’s{NEWLINE}special event, the Couples Double{CLEAR}Battle, is about to begin!{SCROLL}Let me quickly explain the rules. The{NEWLINE}winning couple of the first match stays{CLEAR}on the stage.{SCROLL}They’ll then take on each new couple{NEWLINE}that steps up, one after another.{SCROLL}Once every couple that signed up has{NEWLINE}battled at least once, the couple with{CLEAR}the most wins is the champion!{SCROLL}The champion couple will receive the{NEWLINE}blessings of every guest at the Resort{CLEAR}Zone.{SCROLL}Now, everyone, enjoy some Pokémon{NEWLINE}battles full of love and passion here in{CLEAR}this happy place!",
+   "en": "Welcome, everyone! The Resort Zone’s{NEWLINE}special event, the Couples Double{CLEAR}Battle, is about to begin!{SCROLL}Let me quickly explain the rules. The{NEWLINE}winning couple of the first match stays{CLEAR}on the stage.{SCROLL}They’ll then take on each new couple{NEWLINE}that steps up, one after another.{SCROLL}Once every couple that signed up has{NEWLINE}battled at least once, the couple with{CLEAR}the most wins is the champion!{SCROLL}The champion couple will{NEWLINE}receive the blessings of every{CLEAR}guest at the Resort Zone.{SCROLL}Now, everyone, enjoy some Pokémon{NEWLINE}battles full of love and passion here in{CLEAR}this happy place!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 208,
@@ -1802,10 +1802,10 @@
   {
    "id": 223,
    "zh": "陪伴,是最长情的告白。{NEWLINE}能与一个人白头偕老相爱一生,{CLEAR}是最幸福的事了。",
-   "en": "Being there for someone is the truest{NEWLINE}confession of love.{SCROLL}Growing old together, loving each other{NEWLINE}all your life... There’s no greater{CLEAR}happiness.",
+   "en": "Being there for someone is the truest{NEWLINE}confession of love.{SCROLL}Growing old together,{NEWLINE}loving each other all your life...{CLEAR}There’s no greater happiness.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 224,
@@ -1834,10 +1834,10 @@
   {
    "id": 227,
    "zh": "恭喜二位优秀的训练家情侣,{NEWLINE}在经过重重磨练之后,{CLEAR}终于站到了这个神圣的舞台上。{SCROLL}今天来到度假区的所有宾客,{NEWLINE}都是你们深厚感情的见证者。{CLEAR}不知道二位在这里{CLEAR}有没有什么特别的话想跟对方说呢？",
-   "en": "Congratulations to our wonderful{NEWLINE}Trainer couple! After trial upon trial,{CLEAR}you’ve finally reached this sacred{CLEAR}stage.{SCROLL}Every guest at the Resort Zone today{NEWLINE}is a witness to your deep love.{SCROLL}Is there anything special you two would{NEWLINE}like to say to each other here?",
+   "en": "Congratulations to our wonderful{NEWLINE}Trainer couple! After trial{CLEAR}upon trial, you’ve finally{CLEAR}reached this sacred stage.{SCROLL}Every guest at the Resort Zone today{NEWLINE}is a witness to your deep love.{SCROLL}Is there anything special you two would{NEWLINE}like to say to each other here?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 228,
@@ -1923,10 +1923,10 @@
   {
    "id": 238,
    "zh": "{VAR:0103:0}『小黄,从度假区回来的时候{NEWLINE}我就一直在想,{CLEAR}差不多是时候带你去见见我妈妈了。{CLEAR}你要不要跟我一起回趟真新镇呢？",
-   "en": "{VAR:0103:0}: Yellow, ever since we got back{NEWLINE}from the Resort Zone, I’ve been{CLEAR}thinking...{SCROLL}It’s about time you met my mom. Will you{NEWLINE}come back to Pallet Town with me?",
+   "en": "{VAR:0103:0}: Yellow, ever since we got{NEWLINE}back from the Resort Zone,{CLEAR}I’ve been thinking...{SCROLL}It’s about time you met my mom. Will you{NEWLINE}come back to Pallet Town with me?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 239,

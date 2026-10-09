@@ -423,10 +423,10 @@
   {
    "id": 52,
    "zh": "你是要放弃{NEWLINE}让它记住神速吗？{VAR:0200:0}",
-   "en": "Give up on teaching it Extreme Speed?{VAR:0200:0}",
+   "en": "Give up on teaching it{NEWLINE}Extreme Speed?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 53,

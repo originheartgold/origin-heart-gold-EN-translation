@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "这是多么难得的机会啊,{NEWLINE}我们交换电话号码吧？{VAR:0200:0}",
-   "en": "This is such a rare chance! How about{NEWLINE}we exchange phone numbers?{VAR:0200:0}",
+   "en": "This is such a rare chance! How{NEWLINE}about we exchange phone numbers?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0702/1 | RV073: omission: restored 这是多么难得的机会啊"
+   "notes": "US 0702/1 | RV073: omission: restored 这是多么难得的机会啊; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,

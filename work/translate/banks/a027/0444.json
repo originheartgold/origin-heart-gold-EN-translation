@@ -381,10 +381,10 @@
   {
    "id": 45,
    "zh": "大木博士『这样啊！植物精灵,{NEWLINE}妙蛙种子行吗？{VAR:0200:0}",
-   "en": "Prof. Oak: I see! The Grass Pokémon,{NEWLINE}Bulbasaur? {VAR:0200:0}",
+   "en": "Prof. Oak: I see!{NEWLINE}The Grass Pokémon, Bulbasaur? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "Starter choice (Bulbasaur route)."
+   "notes": "Starter choice (Bulbasaur route).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 46,
@@ -669,10 +669,10 @@
   {
    "id": 81,
    "zh": "冒险心得：{NEWLINE}手机能够打电话{CLEAR}收听广播,查看地图{CLEAR}等等,{CLEAR}是非常方便的道具！",
-   "en": "Adventure Tip:{NEWLINE}The Pokégear can make calls, play the{CLEAR}radio, show maps and more. It’s very{CLEAR}handy!",
+   "en": "Adventure Tip:{NEWLINE}The Pokégear can make calls,{CLEAR}play the radio, show maps and more.{CLEAR}It’s very handy!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 82,
@@ -693,18 +693,18 @@
   {
    "id": 84,
    "zh": "冒险心得：{NEWLINE}在捕获精灵之前,{CLEAR}最好先通过战斗将其体力削弱,{CLEAR}再施加以特殊状态,{CLEAR}此时捕获率会大大提升。",
-   "en": "Adventure Tip:{NEWLINE}Before you try to catch a Pokémon,{CLEAR}weaken it in battle and inflict a status{CLEAR}condition.{CLEAR}That greatly improves your chances of{CLEAR}catching it!",
+   "en": "Adventure Tip:{NEWLINE}Before you try to catch{CLEAR}a Pokémon, weaken it in battle{CLEAR}and inflict a status condition.{CLEAR}That greatly improves your chances of{CLEAR}catching it!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 85,
    "zh": "冒险心得：{NEWLINE}大多数同种类的口袋妖怪{CLEAR}从外形上没有分别{CLEAR}但是有极少数口袋妖怪的颜色{CLEAR}与绝大多数同类颜色差异甚大{CLEAR}学术界称这种现象为异色或是闪光",
-   "en": "Adventure Tip:{NEWLINE}Most Pokémon of the same species look{CLEAR}alike.{CLEAR}But a very rare few are colored very{CLEAR}differently from the rest of their kind.{CLEAR}Researchers call them Shiny Pokémon.",
+   "en": "Adventure Tip:{NEWLINE}Most Pokémon of the same{CLEAR}species look alike.{CLEAR}But a very rare few are colored very{CLEAR}differently from the rest of their kind.{CLEAR}Researchers call them Shiny Pokémon.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 86,
@@ -781,10 +781,10 @@
   {
    "id": 95,
    "zh": "小绿『我本来只是想顺路{NEWLINE}回真新镇看看爷爷和姐姐,{CLEAR}结果却被爷爷留在这里给他做苦力,{CLEAR}早知道就不回来了……ToT",
-   "en": "Blue: I just wanted to swing by Pallet{NEWLINE}Town and see Gramps and my sister.{CLEAR}Instead, Gramps roped me into doing his{CLEAR}chores.{CLEAR}Should’ve stayed away... ToT",
+   "en": "Blue: I just wanted to swing by Pallet{NEWLINE}Town and see Gramps and my sister.{CLEAR}Instead, Gramps roped{CLEAR}me into doing his chores.{CLEAR}Should’ve stayed away... ToT",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 96,
@@ -893,18 +893,18 @@
   {
    "id": 109,
    "zh": "大木博士『小蓝,你父母的事{NEWLINE}我已经托人打听了,{CLEAR}如果有消息了我会第一时间告诉你。{CLEAR}请你再耐心等等。",
-   "en": "Prof. Oak: Green, I’ve been asking{NEWLINE}around about your parents.{CLEAR}If I hear anything, you’ll be the first{CLEAR}to know. Please be patient a little{CLEAR}longer.",
+   "en": "Prof. Oak: Green, I’ve been asking{NEWLINE}around about your parents.{CLEAR}If I hear anything,{CLEAR}you’ll be the first to know.{CLEAR}Please be patient a little longer.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 110,
    "zh": "大木博士『小赤,你父母的事{NEWLINE}我已经托人打听了,{CLEAR}如果有消息了我会第一时间告诉你。{CLEAR}请你再耐心等等。",
-   "en": "Prof. Oak: Red, I’ve been asking around{NEWLINE}about your parents.{CLEAR}If I hear anything, you’ll be the first{CLEAR}to know. Please be patient a little{CLEAR}longer.",
+   "en": "Prof. Oak: Red, I’ve been asking around{NEWLINE}about your parents.{CLEAR}If I hear anything,{CLEAR}you’ll be the first to know.{CLEAR}Please be patient a little longer.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 111,
@@ -1069,10 +1069,10 @@
   {
    "id": 131,
    "zh": "大木博士『哦呀！{VAR:0103:0}！{NEWLINE}我刚刚还在跟达马兰奇主席{CLEAR}谈论你的健康状况呢。{CLEAR}没想到你这就来了。",
-   "en": "Prof. Oak: Oh my! {VAR:0103:0}! I was just{NEWLINE}talking with President Goodshow about{CLEAR}your health.{CLEAR}I didn’t expect you to show up right{CLEAR}now!",
+   "en": "Prof. Oak: Oh my! {VAR:0103:0}! I was just{NEWLINE}talking with President Goodshow about{CLEAR}your health.{CLEAR}I didn’t expect{CLEAR}you to show up right now!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 132,

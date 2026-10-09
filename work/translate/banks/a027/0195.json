@@ -591,10 +591,10 @@
   {
    "id": 69,
    "zh": "因为野生的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}{VAR:0101:2}中毒了！",
-   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} poisoned{CLEAR}{VAR:0101:2}!",
+   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1}{CLEAR}poisoned {VAR:0101:2}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/69"
+   "notes": "US 0197/69; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 70,
@@ -607,10 +607,10 @@
   {
    "id": 71,
    "zh": "因为对手的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}{VAR:0101:2}中毒了！",
-   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} poisoned{CLEAR}{VAR:0101:2}!",
+   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1}{CLEAR}poisoned {VAR:0101:2}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/71"
+   "notes": "US 0197/71; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 72,
@@ -787,10 +787,10 @@
   {
    "id": 92,
    "zh": "因为野生的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}野生的{VAR:0101:2}烧伤了！",
-   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} burned the wild{CLEAR}{VAR:0101:2}!",
+   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} burned{CLEAR}the wild {VAR:0101:2}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/92"
+   "notes": "US 0197/92; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 93,
@@ -803,10 +803,10 @@
   {
    "id": 94,
    "zh": "因为对手的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}对手的{VAR:0101:2}烧伤了！",
-   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} burned the foe’s{CLEAR}{VAR:0101:2}!",
+   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} burned{CLEAR}the foe’s {VAR:0101:2}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/94"
+   "notes": "US 0197/94; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 95,
@@ -907,10 +907,10 @@
   {
    "id": 107,
    "zh": "因为野生的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}{VAR:0101:2}身上结冰了！",
-   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} froze {VAR:0101:2}{CLEAR}solid!",
+   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} froze{CLEAR}{VAR:0101:2} solid!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/107"
+   "notes": "US 0197/107; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 108,
@@ -923,10 +923,10 @@
   {
    "id": 109,
    "zh": "因为对手的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}{VAR:0101:2}身上结冰了！",
-   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} froze {VAR:0101:2}{CLEAR}solid!",
+   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} froze{CLEAR}{VAR:0101:2} solid!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/109"
+   "notes": "US 0197/109; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 110,
@@ -1088,10 +1088,10 @@
   {
    "id": 127,
    "zh": "因为野生的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性,野生的{VAR:0101:2}{CLEAR}被麻痹了！可能无法行动！",
-   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} paralyzed the wild{CLEAR}{VAR:0101:2}!{CLEAR}It may be unable to move!",
+   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} paralyzed{CLEAR}the wild {VAR:0101:2}!{CLEAR}It may be unable to move!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/127",
+   "notes": "US 0197/127; layout rebalance 2026-10-09 (prompt icons / single-word page)",
    "qa_ignore": [
     "glossary:麻痹"
    ]
@@ -1099,10 +1099,10 @@
   {
    "id": 128,
    "zh": "因为对手{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性,{VAR:0101:2}{CLEAR}被麻痹了！可能无法行动！",
-   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} paralyzed{CLEAR}{VAR:0101:2}!{CLEAR}It may be unable to move!",
+   "en": "The foe’s{NEWLINE}{VAR:0101:0}’s {VAR:0105:1}{CLEAR}paralyzed {VAR:0101:2}!{CLEAR}It may be unable to move!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/128",
+   "notes": "US 0197/128; layout rebalance 2026-10-09 (prompt icons / single-word page)",
    "qa_ignore": [
     "glossary:麻痹"
    ]
@@ -1110,10 +1110,10 @@
   {
    "id": 129,
    "zh": "因为对手{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性,对手的{VAR:0101:2}{CLEAR}被麻痹了！可能无法行动！",
-   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} paralyzed the foe’s{CLEAR}{VAR:0101:2}!{CLEAR}It may be unable to move!",
+   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} paralyzed{CLEAR}the foe’s {VAR:0101:2}!{CLEAR}It may be unable to move!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/129",
+   "notes": "US 0197/129; layout rebalance 2026-10-09 (prompt icons / single-word page)",
    "qa_ignore": [
     "glossary:麻痹"
    ]
@@ -3590,18 +3590,18 @@
   {
    "id": 418,
    "zh": "{VAR:0101:0}削减自己的体力{NEWLINE}诅咒了野生的{VAR:0101:1}！",
-   "en": "{VAR:0101:0} cut its own HP{NEWLINE}and laid a curse on the wild{CLEAR}{VAR:0101:1}!",
+   "en": "{VAR:0101:0} cut its own{NEWLINE}HP and laid a curse{CLEAR}on the wild {VAR:0101:1}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/418"
+   "notes": "US 0197/418; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 419,
    "zh": "{VAR:0101:0}削减自己的体力{NEWLINE}诅咒了对手的{VAR:0101:1}！",
-   "en": "{VAR:0101:0} cut its own HP{NEWLINE}and laid a curse on the foe’s{CLEAR}{VAR:0101:1}!",
+   "en": "{VAR:0101:0} cut its own{NEWLINE}HP and laid a curse{CLEAR}on the foe’s {VAR:0101:1}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/419"
+   "notes": "US 0197/419; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 420,
@@ -3614,10 +3614,10 @@
   {
    "id": 421,
    "zh": "野生的{VAR:0101:0}削减自己的体力{NEWLINE}诅咒了野生的{VAR:0101:1}！",
-   "en": "The wild {VAR:0101:0} cut its own HP{NEWLINE}and laid a curse on the wild{CLEAR}{VAR:0101:1}!",
+   "en": "The wild {VAR:0101:0} cut{NEWLINE}its own HP and laid a curse{CLEAR}on the wild {VAR:0101:1}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/421"
+   "notes": "US 0197/421; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 422,
@@ -3630,10 +3630,10 @@
   {
    "id": 423,
    "zh": "对手的{VAR:0101:0}削减自己的体力{NEWLINE}诅咒了对手的{VAR:0101:1}！",
-   "en": "The foe’s {VAR:0101:0} cut its own HP{NEWLINE}and laid a curse on the foe’s{CLEAR}{VAR:0101:1}!",
+   "en": "The foe’s {VAR:0101:0} cut{NEWLINE}its own HP and laid a curse{CLEAR}on the foe’s {VAR:0101:1}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/423"
+   "notes": "US 0197/423; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 424,
@@ -4003,10 +4003,10 @@
   {
    "id": 465,
    "zh": "对手的{VAR:0101:0}从{NEWLINE}对手的{VAR:0101:1}的{CLEAR}{VAR:0106:2}中解放了！",
-   "en": "The foe’s {VAR:0101:0} got free of{NEWLINE}the foe’s {VAR:0101:1}’s{CLEAR}{VAR:0106:2}!",
+   "en": "The foe’s {VAR:0101:0}{NEWLINE}got free of the foe’s{CLEAR}{VAR:0101:1}’s {VAR:0106:2}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/465"
+   "notes": "US 0197/465; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 466,
@@ -4786,10 +4786,10 @@
   {
    "id": 558,
    "zh": "对手的{VAR:0101:0}把{NEWLINE}对手的{VAR:0101:1}的{CLEAR}{VAR:0108:2}给打落了！",
-   "en": "The foe’s {VAR:0101:0} knocked off{NEWLINE}the foe’s {VAR:0101:1}’s{CLEAR}{VAR:0108:2}!",
+   "en": "The foe’s {VAR:0101:0}{NEWLINE}knocked off the foe’s{CLEAR}{VAR:0101:1}’s {VAR:0108:2}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/558"
+   "notes": "US 0197/558; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 559,
@@ -5482,18 +5482,18 @@
   {
    "id": 639,
    "zh": "因为野生的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}{VAR:0106:2}没有效果！",
-   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} made {VAR:0106:2}{CLEAR}useless!",
+   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} made{CLEAR}{VAR:0106:2} useless!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/639"
+   "notes": "US 0197/639; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 640,
    "zh": "因为对手的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}{VAR:0106:2}没有效果！",
-   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} made {VAR:0106:2}{CLEAR}useless!",
+   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} made{CLEAR}{VAR:0106:2} useless!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/640"
+   "notes": "US 0197/640; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 641,
@@ -5674,26 +5674,26 @@
   {
    "id": 663,
    "zh": "因为{VAR:0101:0}的{VAR:0105:1}特性{NEWLINE}野生的{VAR:0101:2}的{CLEAR}{VAR:010D:3}下降了！",
-   "en": "{VAR:0101:0}’s {VAR:0105:1}{NEWLINE}cuts the wild {VAR:0101:2}’s{CLEAR}{VAR:010D:3}!",
+   "en": "{VAR:0101:0}’s {VAR:0105:1}{NEWLINE}cuts the wild{CLEAR}{VAR:0101:2}’s {VAR:010D:3}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/663"
+   "notes": "US 0197/663; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 664,
    "zh": "因为{VAR:0101:0}的{VAR:0105:1}特性{NEWLINE}对手的{VAR:0101:2}的{CLEAR}{VAR:010D:3}下降了！",
-   "en": "{VAR:0101:0}’s {VAR:0105:1}{NEWLINE}cuts the foe’s {VAR:0101:2}’s{CLEAR}{VAR:010D:3}!",
+   "en": "{VAR:0101:0}’s {VAR:0105:1}{NEWLINE}cuts the foe’s{CLEAR}{VAR:0101:2}’s {VAR:010D:3}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/664"
+   "notes": "US 0197/664; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 665,
    "zh": "因为野生的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}{VAR:0101:2}的{VAR:010D:3}下降了！",
-   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} cuts {VAR:0101:2}’s{CLEAR}{VAR:010D:3}!",
+   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} cuts{CLEAR}{VAR:0101:2}’s {VAR:010D:3}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/665"
+   "notes": "US 0197/665; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 666,
@@ -5706,10 +5706,10 @@
   {
    "id": 667,
    "zh": "因为对手的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}{VAR:0101:2}的{VAR:010D:3}下降了！",
-   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} cuts {VAR:0101:2}’s{CLEAR}{VAR:010D:3}!",
+   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} cuts{CLEAR}{VAR:0101:2}’s {VAR:010D:3}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/667"
+   "notes": "US 0197/667; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 668,
@@ -5778,10 +5778,10 @@
   {
    "id": 676,
    "zh": "因为野生的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}{CLEAR}野生的{VAR:0101:2}受伤了！",
-   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} hurt the wild{CLEAR}{VAR:0101:2}!",
+   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} hurt{CLEAR}the wild {VAR:0101:2}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/676"
+   "notes": "US 0197/676; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 677,
@@ -5794,10 +5794,10 @@
   {
    "id": 678,
    "zh": "因为对手的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}{CLEAR}对手的{VAR:0101:2}受伤了！",
-   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} hurt the foe’s{CLEAR}{VAR:0101:2}!",
+   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} hurt{CLEAR}the foe’s {VAR:0101:2}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/678"
+   "notes": "US 0197/678; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 679,
@@ -5911,18 +5911,18 @@
   {
    "id": 690,
    "zh": "野生的{VAR:0101:0}因为{VAR:0105:1}特性{NEWLINE}没有受到{VAR:0106:2}！",
-   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} blocks{CLEAR}{VAR:0106:2}!",
+   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1}{CLEAR}blocks {VAR:0106:2}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/690"
+   "notes": "US 0197/690; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 691,
    "zh": "对手的{VAR:0101:0}因为{VAR:0105:1}特性{NEWLINE}没有受到{VAR:0106:2}！",
-   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} blocks{CLEAR}{VAR:0106:2}!",
+   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1}{CLEAR}blocks {VAR:0106:2}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/691"
+   "notes": "US 0197/691; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 692,
@@ -6080,34 +6080,34 @@
   {
    "id": 710,
    "zh": "因为野生的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}{VAR:0101:2}被迷住了！",
-   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} infatuated{CLEAR}{VAR:0101:2}!",
+   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1}{CLEAR}infatuated {VAR:0101:2}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/710"
+   "notes": "US 0197/710; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 711,
    "zh": "因为野生的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}野生的{VAR:0101:2}被迷住了！",
-   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} infatuated the wild{CLEAR}{VAR:0101:2}!",
+   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} infatuated{CLEAR}the wild {VAR:0101:2}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/711"
+   "notes": "US 0197/711; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 712,
    "zh": "因为对手的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}{VAR:0101:2}被迷住了！",
-   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} infatuated{CLEAR}{VAR:0101:2}!",
+   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1}{CLEAR}infatuated {VAR:0101:2}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/712"
+   "notes": "US 0197/712; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 713,
    "zh": "因为对手的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}对手的{VAR:0101:2}被迷住了！",
-   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} infatuated the foe’s{CLEAR}{VAR:0101:2}!",
+   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} infatuated{CLEAR}the foe’s {VAR:0101:2}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/713"
+   "notes": "US 0197/713; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 714,
@@ -6120,18 +6120,18 @@
   {
    "id": 715,
    "zh": "野生的{VAR:0101:0}因为{VAR:0105:1}特性{NEWLINE}{VAR:0106:2}没起到什么作用！",
-   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} made {VAR:0106:2}{CLEAR}ineffective!",
+   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} made{CLEAR}{VAR:0106:2} ineffective!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/715"
+   "notes": "US 0197/715; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 716,
    "zh": "对手的{VAR:0101:0}因为{VAR:0105:1}特性{NEWLINE}{VAR:0106:2}没起到什么作用！",
-   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} made {VAR:0106:2}{CLEAR}ineffective!",
+   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0105:1} made{CLEAR}{VAR:0106:2} ineffective!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/716"
+   "notes": "US 0197/716; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 717,
@@ -6219,26 +6219,26 @@
   {
    "id": 727,
    "zh": "因为{VAR:0101:0}的{VAR:0105:1}特性{NEWLINE}{VAR:0101:2}的{VAR:0105:3}{CLEAR}没起到作用！",
-   "en": "{VAR:0101:0}’s {VAR:0105:1}{NEWLINE}suppressed {VAR:0101:2}’s{CLEAR}{VAR:0105:3}!",
+   "en": "{VAR:0101:0}’s{NEWLINE}{VAR:0105:1} suppressed{CLEAR}{VAR:0101:2}’s {VAR:0105:3}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/727"
+   "notes": "US 0197/727; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 728,
    "zh": "因为{VAR:0101:0}的{VAR:0105:1}特性{NEWLINE}野生的{VAR:0101:2}的{CLEAR}{VAR:0105:3}没起到作用！",
-   "en": "{VAR:0101:0}’s {VAR:0105:1}{NEWLINE}suppressed the wild {VAR:0101:2}’s{CLEAR}{VAR:0105:3}!",
+   "en": "{VAR:0101:0}’s {VAR:0105:1}{NEWLINE}suppressed the wild{CLEAR}{VAR:0101:2}’s {VAR:0105:3}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/728"
+   "notes": "US 0197/728; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 729,
    "zh": "因为{VAR:0101:0}的{VAR:0105:1}特性{NEWLINE}对手的{VAR:0101:2}的{CLEAR}{VAR:0105:3}没起到作用！",
-   "en": "{VAR:0101:0}’s {VAR:0105:1}{NEWLINE}suppressed the foe’s {VAR:0101:2}’s{CLEAR}{VAR:0105:3}!",
+   "en": "{VAR:0101:0}’s {VAR:0105:1}{NEWLINE}suppressed the foe’s{CLEAR}{VAR:0101:2}’s {VAR:0105:3}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/729"
+   "notes": "US 0197/729; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 730,
@@ -7574,18 +7574,18 @@
   {
    "id": 891,
    "zh": "野生的{VAR:0101:0}使用{VAR:0108:1}{NEWLINE}从混乱中恢复了！",
-   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0108:1} snapped it out of{CLEAR}confusion!",
+   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0108:1} snapped{CLEAR}it out of confusion!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/891"
+   "notes": "US 0197/891; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 892,
    "zh": "对手的{VAR:0101:0}使用{VAR:0108:1}{NEWLINE}从混乱中恢复了！",
-   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0108:1} snapped it out of{CLEAR}confusion!",
+   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0108:1} snapped{CLEAR}it out of confusion!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/892"
+   "notes": "US 0197/892; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 893,
@@ -7680,26 +7680,26 @@
   {
    "id": 902,
    "zh": "{VAR:0101:0}使用{VAR:0108:1}{NEWLINE}恢复了{VAR:0106:2}的ＰＰ！",
-   "en": "{VAR:0101:0} restored{NEWLINE}{VAR:0106:2}’s PP using its{CLEAR}{VAR:0108:1}!",
+   "en": "{VAR:0101:0} restored{NEWLINE}{VAR:0106:2}’s PP{CLEAR}using its {VAR:0108:1}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/902"
+   "notes": "US 0197/902; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 903,
    "zh": "野生的{VAR:0101:0}使用{VAR:0108:1}{NEWLINE}恢复了{VAR:0106:2}的ＰＰ！",
-   "en": "The wild {VAR:0101:0} restored{NEWLINE}{VAR:0106:2}’s PP using its{CLEAR}{VAR:0108:1}!",
+   "en": "The wild {VAR:0101:0}{NEWLINE}restored {VAR:0106:2}’s{CLEAR}PP using its {VAR:0108:1}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/903"
+   "notes": "US 0197/903; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 904,
    "zh": "对手的{VAR:0101:0}使用{VAR:0108:1}{NEWLINE}恢复了{VAR:0106:2}的ＰＰ！",
-   "en": "The foe’s {VAR:0101:0} restored{NEWLINE}{VAR:0106:2}’s PP using its{CLEAR}{VAR:0108:1}!",
+   "en": "The foe’s {VAR:0101:0}{NEWLINE}restored {VAR:0106:2}’s{CLEAR}PP using its {VAR:0108:1}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/904"
+   "notes": "US 0197/904; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 905,
@@ -8996,26 +8996,26 @@
   {
    "id": 1057,
    "zh": "{VAR:0101:0}因为{VAR:0106:1}{NEWLINE}无法使出{VAR:0106:2}！{SCROLL}",
-   "en": "{VAR:0101:0} can’t use{NEWLINE}{VAR:0106:2} because of{CLEAR}{VAR:0106:1}!{SCROLL}",
+   "en": "{VAR:0101:0} can’t use{NEWLINE}{VAR:0106:2} because{CLEAR}of {VAR:0106:1}!{SCROLL}",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/1057"
+   "notes": "US 0197/1057; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1058,
    "zh": "野生的{VAR:0101:0}{NEWLINE}受到{VAR:0106:1}的影响{CLEAR}无法使出{VAR:0106:2}！{SCROLL}",
-   "en": "The wild {VAR:0101:0} can’t use{NEWLINE}{VAR:0106:2} because of{CLEAR}{VAR:0106:1}!{SCROLL}",
+   "en": "The wild {VAR:0101:0}{NEWLINE}can’t use {VAR:0106:2}{CLEAR}because of {VAR:0106:1}!{SCROLL}",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/1058"
+   "notes": "US 0197/1058; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1059,
    "zh": "对手的{VAR:0101:0}{NEWLINE}受到{VAR:0106:1}的影响{CLEAR}无法使出{VAR:0106:2}！{SCROLL}",
-   "en": "The foe’s {VAR:0101:0} can’t use{NEWLINE}{VAR:0106:2} because of{CLEAR}{VAR:0106:1}!{SCROLL}",
+   "en": "The foe’s {VAR:0101:0}{NEWLINE}can’t use {VAR:0106:2}{CLEAR}because of {VAR:0106:1}!{SCROLL}",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/1059"
+   "notes": "US 0197/1059; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1060,
@@ -9392,10 +9392,10 @@
   {
    "id": 1105,
    "zh": "受到对手的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性影响{CLEAR}对手的{VAR:0101:2}{CLEAR}受到了伤害！",
-   "en": "The foe’s {VAR:0101:2} was hurt by{NEWLINE}the foe’s {VAR:0101:0}’s{CLEAR}{VAR:0105:1}!",
+   "en": "The foe’s {VAR:0101:2}{NEWLINE}was hurt by the foe’s{CLEAR}{VAR:0101:0}’s {VAR:0105:1}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/1105"
+   "notes": "US 0197/1105; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1106,
@@ -9553,34 +9553,34 @@
   {
    "id": 1124,
    "zh": "因为野生的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}{VAR:0101:2}被梦魔缠身了！",
-   "en": "{VAR:0101:2} is tormented{NEWLINE}by the wild {VAR:0101:0}’s{CLEAR}{VAR:0105:1}!",
+   "en": "{VAR:0101:2} is{NEWLINE}tormented by the wild{CLEAR}{VAR:0101:0}’s {VAR:0105:1}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/1124"
+   "notes": "US 0197/1124; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1125,
    "zh": "因为野生的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}野生的{VAR:0101:2}被梦魔缠身了！",
-   "en": "The wild {VAR:0101:2} is tormented{NEWLINE}by the wild {VAR:0101:0}’s{CLEAR}{VAR:0105:1}!",
+   "en": "The wild {VAR:0101:2}{NEWLINE}is tormented by the wild{CLEAR}{VAR:0101:0}’s {VAR:0105:1}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/1125"
+   "notes": "US 0197/1125; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1126,
    "zh": "因为对手的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}{VAR:0101:2}被梦魔缠身了！",
-   "en": "{VAR:0101:2} is tormented{NEWLINE}by the foe’s {VAR:0101:0}’s{CLEAR}{VAR:0105:1}!",
+   "en": "{VAR:0101:2} is tormented{NEWLINE}by the foe’s{CLEAR}{VAR:0101:0}’s {VAR:0105:1}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/1126"
+   "notes": "US 0197/1126; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1127,
    "zh": "因为对手的{VAR:0101:0}的{NEWLINE}{VAR:0105:1}特性{CLEAR}对手的{VAR:0101:2}被梦魔缠身了！",
-   "en": "The foe’s {VAR:0101:2} is tormented{NEWLINE}by the foe’s {VAR:0101:0}’s{CLEAR}{VAR:0105:1}!",
+   "en": "The foe’s {VAR:0101:2}{NEWLINE}is tormented by the foe’s{CLEAR}{VAR:0101:0}’s {VAR:0105:1}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/1127"
+   "notes": "US 0197/1127; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1128,
@@ -9785,10 +9785,10 @@
   {
    "id": 1153,
    "zh": "受到野生{VAR:0101:0}的{NEWLINE}{VAR:0108:1}影响{CLEAR}{VAR:0101:2}着迷了！",
-   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0108:1} made {VAR:0101:2}{CLEAR}infatuated!",
+   "en": "The wild {VAR:0101:0}’s{NEWLINE}{VAR:0108:1} made{CLEAR}{VAR:0101:2} infatuated!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/1153"
+   "notes": "US 0197/1153; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1154,
@@ -9801,10 +9801,10 @@
   {
    "id": 1155,
    "zh": "受到对手{VAR:0101:0}的{NEWLINE}{VAR:0108:1}影响{CLEAR}{VAR:0101:2}着迷了！",
-   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0108:1} made {VAR:0101:2}{CLEAR}infatuated!",
+   "en": "The foe’s {VAR:0101:0}’s{NEWLINE}{VAR:0108:1} made{CLEAR}{VAR:0101:2} infatuated!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0197/1155"
+   "notes": "US 0197/1155; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1156,

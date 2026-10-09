@@ -70,10 +70,10 @@
   {
    "id": 8,
    "zh": "{VAR:0103:0}『吃饱了咱就回去吧,{NEWLINE}你的主人正在担心你呢。",
-   "en": "{VAR:0103:0}: Now that you’ve eaten, let’s{NEWLINE}go back. Your owner is worried about{CLEAR}you.",
+   "en": "{VAR:0103:0}: Now that you’ve{NEWLINE}eaten, let’s go back.{CLEAR}Your owner is worried about you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 9,
@@ -150,10 +150,10 @@
   {
    "id": 18,
    "zh": "火箭队有什么危险的,{NEWLINE}我看破坏我们火箭队计划的你{CLEAR}才是最危险的吧！",
-   "en": "What’s so dangerous about Team{NEWLINE}Rocket? I’d say you, the one wrecking{CLEAR}Team Rocket’s plans, are the real{CLEAR}danger!",
+   "en": "What’s so dangerous about{NEWLINE}Team Rocket? I’d say you,{CLEAR}the one wrecking Team Rocket’s{CLEAR}plans, are the real danger!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 19,
@@ -286,10 +286,10 @@
   {
    "id": 35,
    "zh": "您好,这里是圣安努号的厨房。{SCROLL}厨师和服务员们正在里面{NEWLINE}为派对的餐点做最后准备。",
-   "en": "Hello, this is the S.S. Anne’s kitchen.{SCROLL}The cooks and waiters are inside making{NEWLINE}the final preparations for the party{CLEAR}food.",
+   "en": "Hello, this is the S.S. Anne’s kitchen.{SCROLL}The cooks and waiters{NEWLINE}are inside making the final{CLEAR}preparations for the party food.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 36,
@@ -406,10 +406,10 @@
   {
    "id": 50,
    "zh": "太可恶了,火箭队居然{NEWLINE}设下了这么大一个局,{CLEAR}把我们都给坑进去了！",
-   "en": "Unforgivable! Team Rocket set up this{NEWLINE}whole trap, and we all walked right into{CLEAR}it!",
+   "en": "Unforgivable! Team Rocket{NEWLINE}set up this whole trap,{CLEAR}and we all walked right into it!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 51,
@@ -454,10 +454,10 @@
   {
    "id": 56,
    "zh": "这里是船员们休息的地方,{NEWLINE}请您在参观的时候放低声音。",
-   "en": "This is where the crew rests. Please{NEWLINE}keep your voice down while you look{CLEAR}around.",
+   "en": "This is where the crew rests.{NEWLINE}Please keep your voice{CLEAR}down while you look around.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 57,
@@ -470,10 +470,10 @@
   {
    "id": 58,
    "zh": "我都已经被你给打败了,{NEWLINE}你还缠着我干嘛？{CLEAR}怎么,想跟我再干一架吗？",
-   "en": "You already beat me. Why are you still{NEWLINE}hanging around me? What, want another{CLEAR}fight?",
+   "en": "You already beat me.{NEWLINE}Why are you still hanging around me?{CLEAR}What, want another fight?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 59,

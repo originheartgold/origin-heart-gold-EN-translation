@@ -382,10 +382,10 @@
   {
    "id": 47,
    "zh": "其实就是在狩猎场内行动的同时,{NEWLINE}自由地在场内进行设置。{SCROLL}有一点请注意,{NEWLINE}台阶的上方以及{CLEAR}会有精灵出现的草丛内{CLEAR}是无法进行设置的。{SCROLL}另外,一个区域内{NEWLINE}最多只能放置{CLEAR}３０个区块。{SCROLL}所以放的时候{NEWLINE}要好好计划一下。{SCROLL}有什么想问的吗？{VAR:0200:0}",
-   "en": "Basically, you can place objects freely{NEWLINE}as you walk around the Safari Zone.{SCROLL}You can’t place them on stairs, though,{NEWLINE}or in grass where Pokémon appear!{SCROLL}Also, you can place up to 30 objects in{NEWLINE}an Area, so plan carefully.{SCROLL}Would you like to know anything else? {VAR:0200:0}",
+   "en": "Basically, you can place objects freely{NEWLINE}as you walk around the Safari Zone.{SCROLL}You can’t place them on stairs, though,{NEWLINE}or in grass where Pokémon appear!{SCROLL}Also, you can place up to 30 objects in{NEWLINE}an Area, so plan carefully.{SCROLL}Would you like to know{NEWLINE}anything else? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0135/47 | RV051: omission: zh 'so plan carefully'"
+   "notes": "US 0135/47 | RV051: omission: zh 'so plan carefully'; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 48,
@@ -406,10 +406,10 @@
   {
    "id": 50,
    "zh": "区块共分数个种类。{SCROLL}草类……{NEWLINE}树类……{CLEAR}岩类……{CLEAR}水类……{CLEAR}其他……{CLEAR}你可以多尝试几次,{SCROLL}在区域自定义设备上画面中,{NEWLINE}你可以查看到{CLEAR}自己在狩猎场中{CLEAR}放置过的区块种类。{SCROLL}种类也会慢慢增加。{SCROLL}有什么想问的吗？{VAR:0200:0}",
-   "en": "There are several kinds of objects.{NEWLINE}Grass... Trees... Rocks... Water...{CLEAR}And others...{SCROLL}Try placing different ones. On the Area{NEWLINE}Customizer screen, you can see the{CLEAR}kinds of objects you’ve placed in the{CLEAR}Safari Zone.{SCROLL}More kinds will be added over time.{SCROLL}Would you like to know anything else? {VAR:0200:0}",
+   "en": "There are several kinds of objects.{NEWLINE}Grass... Trees... Rocks... Water...{CLEAR}And others...{SCROLL}Try placing different ones. On the Area{NEWLINE}Customizer screen, you can see the{CLEAR}kinds of objects you’ve placed in the{CLEAR}Safari Zone.{SCROLL}More kinds will be added over time.{SCROLL}Would you like to know{NEWLINE}anything else? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0135/50 | RV051: meaning: zh shows kinds placed, not the number; types increase over time"
+   "notes": "US 0135/50 | RV051: meaning: zh shows kinds placed, not the number; types increase over time; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 51,
@@ -638,10 +638,10 @@
   {
    "id": 79,
    "zh": "{VAR:0103:0}发来了信息！{SCROLL}要和{VAR:0103:0}{NEWLINE}交换狩猎场吗？{VAR:0200:0}",
-   "en": "{VAR:0103:0} has responded!{SCROLL}Would you like to exchange Safari Zones{NEWLINE}with {VAR:0103:0}?{VAR:0200:0}",
+   "en": "{VAR:0103:0} has responded!{SCROLL}Would you like to exchange{NEWLINE}Safari Zones with {VAR:0103:0}?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 80,
@@ -862,10 +862,10 @@
   {
    "id": 107,
    "zh": "昵称叫{VAR:0101:1}{NEWLINE}可以吗？{VAR:0200:0}",
-   "en": "Is {VAR:0101:1} the nickname you want to{NEWLINE}give?{VAR:0200:0}",
+   "en": "Is {VAR:0101:1} the nickname{NEWLINE}you want to give?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl)"
+   "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 108,

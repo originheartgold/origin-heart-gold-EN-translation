@@ -22,18 +22,18 @@
   {
    "id": 2,
    "zh": "我在跟柑果球大师岩铁先生访谈时,{NEWLINE}发现了机械精灵球和柑果精灵球{CLEAR}优势融合的可能性。{CLEAR}我现在正在研究通过生物机械工程{CLEAR}做出能将两者优势融合的精灵球。{CLEAR}如果成功了,{CLEAR}那将是精灵球研发史上最伟大的发明。",
-   "en": "When I interviewed Kurt, the Apricorn{NEWLINE}Ball master, I realized we might combine{CLEAR}the strengths of mechanical Poké Balls{CLEAR}and Apricorn Balls.{SCROLL}Now I’m researching a Poké Ball that{NEWLINE}fuses the two through biomechanical{CLEAR}engineering.{SCROLL}If it works, it’ll be the greatest{NEWLINE}invention in the history of Poké Ball{CLEAR}development.",
+   "en": "When I interviewed Kurt, the Apricorn{NEWLINE}Ball master, I realized we might combine{CLEAR}the strengths of mechanical Poké Balls{CLEAR}and Apricorn Balls.{SCROLL}Now I’m researching a Poké Ball{NEWLINE}that fuses the two through{CLEAR}biomechanical engineering.{SCROLL}If it works, it’ll be the greatest{NEWLINE}invention in the history{CLEAR}of Poké Ball development.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 3,
    "zh": "我们研发部的那个小美,{NEWLINE}真是个中看不中用的花瓶。{CLEAR}连树果的有效成分分离{CLEAR}这种基本的操作都不会。",
-   "en": "That Mei in our R&D department is just a{NEWLINE}pretty face. All looks, totally useless.{SCROLL}She can’t even do basic stuff like{NEWLINE}isolating the active compounds in{CLEAR}Berries.",
+   "en": "That Mei in our R&D department is just a{NEWLINE}pretty face. All looks, totally useless.{SCROLL}She can’t even do basic stuff{NEWLINE}like isolating the active{CLEAR}compounds in Berries.",
    "status": "draft",
    "origin": "agent",
-   "notes": "tone review: 中看不中用的花瓶 = sexist 'just a pretty face… useless'; kept (D-0627)"
+   "notes": "tone review: 中看不中用的花瓶 = sexist 'just a pretty face… useless'; kept (D-0627); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 4,

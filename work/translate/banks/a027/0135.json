@@ -142,10 +142,10 @@
   {
    "id": 17,
    "zh": "你知道「运动饮料」吗？{SCROLL}据说是用食物和饮料{NEWLINE}去引出精灵的特性{SCROLL}「运动饮料」是{NEWLINE}研究运动所需的营养,{SCROLL}为了引出特性{NEWLINE}所制作的饮料哦！{SCROLL}只要在参加口袋竞技{NEWLINE}之前喝的话,{SCROLL}一定能发挥出{NEWLINE}最大的特性！",
-   "en": "Have you heard of Aprijuice?{SCROLL}Pokémon can increase their Performance{NEWLINE}with food and drink.{SCROLL}Aprijuice is a drink developed from{NEWLINE}nutrition research to improve{CLEAR}Performance.{SCROLL}If you let your Pokémon drink it before{NEWLINE}a Pokéathlon event, it will show its{CLEAR}true potential!",
+   "en": "Have you heard of Aprijuice?{SCROLL}Pokémon can increase their Performance{NEWLINE}with food and drink.{SCROLL}Aprijuice is a drink developed{NEWLINE}from nutrition research{CLEAR}to improve Performance.{SCROLL}If you let your Pokémon drink it before{NEWLINE}a Pokéathlon event, it will show its{CLEAR}true potential!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0137/17"
+   "notes": "US 0137/17; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 18,
@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "欢迎光临运动饮料商店！{CLEAR}喝运动饮料了吗？{SCROLL}若是有不明白的事情{NEWLINE}我可以说明！{VAR:0200:0}",
-   "en": "Welcome to the Aprijuice stand! Have{NEWLINE}you tried Aprijuice? If there’s anything{CLEAR}you don’t understand, I can explain! {VAR:0200:0}",
+   "en": "Welcome to the Aprijuice stand!{NEWLINE}Have you tried Aprijuice?{CLEAR}If there’s anything you don’t{CLEAR}understand, I can explain! {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0137/25 | RV038: addition: US 'Energy drink!' not in zh; zh asks whether you've drunk it"
+   "notes": "US 0137/25 | RV038: addition: US 'Energy drink!' not in zh; zh asks whether you've drunk it; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 26,
@@ -238,18 +238,18 @@
   {
    "id": 29,
    "zh": "只要有柑果榨汁机！{NEWLINE}就可以制作能引出{CLEAR}精灵的力量的运动饮料！{SCROLL}做法很简单！{NEWLINE}只要把柑果放入榨汁机,{CLEAR}直接放进去！{CLEAR}直接！{CLEAR}越多越好！{SCROLL}接下来走！{NEWLINE}哒地……{CLEAR}哒地,跑也可以！{CLEAR}９８……９９……１００步……{SCROLL}完工！{SCROLL}然后你打开盖子喝！{NEWLINE}此时胜利在向你招手！{SCROLL}这里能买到运动饮料{NEWLINE}先用一下,{CLEAR}试一下效果！{SCROLL}那么,有什么想问的{NEWLINE}事情吗？{VAR:0200:0}",
-   "en": "With the Apriblender, you can make{NEWLINE}Aprijuice that draws out your Pokémon’s{CLEAR}power!{SCROLL}It’s so easy to make! Just put{NEWLINE}Apricorns in the blender, straight in!{CLEAR}Straight in! The more, the better!{SCROLL}Then you walk! Tap-tap... Tap-tap, you{NEWLINE}can run too!{SCROLL}98... 99... 100 steps... Done!{SCROLL}Then you open the lid and drink! Victory{NEWLINE}is waving at you!{SCROLL}You can buy Aprijuice here, so try one{NEWLINE}first and see how it works!{SCROLL}So, is there anything you’d like to ask?{NEWLINE}{VAR:0200:0}",
+   "en": "With the Apriblender,{NEWLINE}you can make Aprijuice that draws{CLEAR}out your Pokémon’s power!{SCROLL}It’s so easy to make! Just put{NEWLINE}Apricorns in the blender, straight in!{CLEAR}Straight in! The more, the better!{SCROLL}Then you walk! Tap-tap... Tap-tap, you{NEWLINE}can run too!{SCROLL}98... 99... 100 steps... Done!{SCROLL}Then you open the lid and drink! Victory{NEWLINE}is waving at you!{SCROLL}You can buy Aprijuice here, so try one{NEWLINE}first and see how it works!{SCROLL}So, is there anything you’d{NEWLINE}like to ask?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0137/29 | RV038: addition: US added 'give it to your Pokémon, or drink it yourself', dropped 'victory beckons'"
+   "notes": "US 0137/29 | RV038: addition: US added 'give it to your Pokémon, or drink it yourself', dropped 'victory beckons'; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 30,
    "zh": "运动饮料是提高精灵{NEWLINE}特性的饮料！{SCROLL}精灵肯定有擅长的地方{NEWLINE}和不擅长的地方,{SCROLL}但是没关系！{SCROLL}只要喝了运动饮料{NEWLINE}就可以引出精灵的最大的{CLEAR}特性！{SCROLL}想在口袋竞技夺取天下的话{NEWLINE}是绝对需要的！{SCROLL}其他还有什么想知道的吗？{VAR:0200:0}",
-   "en": "Aprijuice is a drink that boosts a{NEWLINE}Pokémon’s Performance!{SCROLL}Every Pokémon has things it’s good at{NEWLINE}and things it’s bad at, but that’s OK!{CLEAR}Just drink Aprijuice, and you can draw{CLEAR}out your Pokémon’s maximum{CLEAR}Performance!{SCROLL}If you want to rule the Pokéathlon, you{NEWLINE}absolutely need it!{SCROLL}Is there anything else you’d like to{NEWLINE}know? {VAR:0200:0}",
+   "en": "Aprijuice is a drink that boosts a{NEWLINE}Pokémon’s Performance!{SCROLL}Every Pokémon has things it’s good at{NEWLINE}and things it’s bad at, but that’s OK!{CLEAR}Just drink Aprijuice, and you can{CLEAR}draw out your Pokémon’s{CLEAR}maximum Performance!{SCROLL}If you want to rule the Pokéathlon, you{NEWLINE}absolutely need it!{SCROLL}Is there anything else you’d like to{NEWLINE}know? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0137/30 | RV038: omission: restored 想在口袋竞技夺取天下的话"
+   "notes": "US 0137/30 | RV038: omission: restored 想在口袋竞技夺取天下的话; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 31,
@@ -270,10 +270,10 @@
   {
    "id": 33,
    "zh": "这位客人您眼光真好！{NEWLINE}{VAR:0103:0}的{VAR:0108:1}！{CLEAR}特别价格{VAR:0135:2}元！{VAR:0200:0}",
-   "en": "You have a great eye! {VAR:0103:0}’s{NEWLINE}{VAR:0108:1}! Special price: ${VAR:0135:2}! {VAR:0200:0}",
+   "en": "You have a great eye!{NEWLINE}{VAR:0103:0}’s {VAR:0108:1}!{CLEAR}Special price: ${VAR:0135:2}! {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0137/33 | RV038: addition: 特别价格 = special price; US 'Quite a bargain' added"
+   "notes": "US 0137/33 | RV038: addition: 特别价格 = special price; US 'Quite a bargain' added; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 34,
@@ -310,10 +310,10 @@
   {
    "id": 38,
    "zh": "{VAR:0103:0}的{VAR:0108:1}！{NEWLINE}特别价格{VAR:0135:2}元！{VAR:0200:0}",
-   "en": "{VAR:0103:0}’s {VAR:0108:1}! Special price:{NEWLINE}${VAR:0135:2}! {VAR:0200:0}",
+   "en": "{VAR:0103:0}’s {VAR:0108:1}!{NEWLINE}Special price: ${VAR:0135:2}! {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0137/38 | RV038: addition: 特别价格 = special price; US 'Quite a bargain' added"
+   "notes": "US 0137/38 | RV038: addition: 特别价格 = special price; US 'Quite a bargain' added; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 39,
@@ -342,10 +342,10 @@
   {
    "id": 42,
    "zh": "~店长解说~{NEWLINE}知道的人一定知道！{SCROLL}新手口袋竞技员{NEWLINE}{VAR:0103:0}的{VAR:0108:1}！{SCROLL}草率！{NEWLINE}但就是这样才好！{CLEAR}闪闪发光{VAR:0108:1}！{SCROLL}",
-   "en": "Owner’s Comment{NEWLINE}Those in the know know it well! It’s{CLEAR}newcomer Pokéathlete {VAR:0103:0}’s{CLEAR}{VAR:0108:1}!{SCROLL}Rough around the edges! But that’s{NEWLINE}what makes it good! A sparkling{CLEAR}{VAR:0108:1}!{SCROLL}",
+   "en": "Owner’s Comment{NEWLINE}Those in the know know it well!{CLEAR}It’s newcomer Pokéathlete{CLEAR}{VAR:0103:0}’s {VAR:0108:1}!{SCROLL}Rough around the edges!{NEWLINE}But that’s what makes it good!{CLEAR}A sparkling {VAR:0108:1}!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0137/42 | RV038: meaning: 知道的人一定知道 = those who know, know; 草率 rough (D-1668 scope)"
+   "notes": "US 0137/42 | RV038: meaning: 知道的人一定知道 = those who know, know; 草率 rough (D-1668 scope); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 43,
@@ -366,18 +366,18 @@
   {
    "id": 45,
    "zh": "~店长的解说~{NEWLINE}这可是那位超人气的口袋竞技员{CLEAR}制作的{VAR:0108:1}！{SCROLL}虽无法达成合作,{NEWLINE}但我还是能让你们{CLEAR}喝上一样的饮料！{SCROLL}所有的口袋竞技员{NEWLINE}都必买的饮料！{SCROLL}",
-   "en": "Owner’s Comment{NEWLINE}This {VAR:0108:1} was made by that{CLEAR}hugely popular Pokéathlete!{SCROLL}We couldn’t arrange a collaboration,{NEWLINE}but I can still let you drink the same{CLEAR}juice!{SCROLL}A must-buy for every Pokéathlete!{SCROLL}",
+   "en": "Owner’s Comment{NEWLINE}This {VAR:0108:1} was made by that{CLEAR}hugely popular Pokéathlete!{SCROLL}We couldn’t arrange{NEWLINE}a collaboration, but I can still{CLEAR}let you drink the same juice!{SCROLL}A must-buy for every Pokéathlete!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0137/45 | RV038: meaning: 无法达成合作 = no collaboration (D-1668)"
+   "notes": "US 0137/45 | RV038: meaning: 无法达成合作 = no collaboration (D-1668); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 46,
    "zh": "~店长解说~{NEWLINE}那个一流的口袋竞技员{CLEAR}制作的{VAR:0108:1}！{SCROLL}现在不买更待何时！{SCROLL}现在不赢更待何时！！{SCROLL}胜利装在这瓶中！{NEWLINE}想赢就来尝一尝！{SCROLL}",
-   "en": "Owner’s Comment{NEWLINE}{VAR:0108:1}, made by that top-class{CLEAR}Pokéathlete!{SCROLL}If you don’t buy it now, when will you?{NEWLINE}If you don’t win now, when will you?!{SCROLL}Victory is in this bottle! If you want to{NEWLINE}win, have a taste!{SCROLL}",
+   "en": "Owner’s Comment{NEWLINE}{VAR:0108:1}, made{CLEAR}by that top-class Pokéathlete!{SCROLL}If you don’t buy it now, when will you?{NEWLINE}If you don’t win now, when will you?!{SCROLL}Victory is in this bottle! If you want to{NEWLINE}win, have a taste!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0137/46 | RV038: meaning: 现在不买更待何时 (D-1668)"
+   "notes": "US 0137/46 | RV038: meaning: 现在不买更待何时 (D-1668); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 47,

@@ -351,10 +351,10 @@
   {
    "id": 43,
    "zh": "看到前面的台阶了吗？{NEWLINE}虽然无法从下面上来,{CLEAR}但是从这里跳下去的话,{CLEAR}就可以避开草丛,很快地到达真新镇。",
-   "en": "See the ledge up ahead? You can’t climb{NEWLINE}it from below.{CLEAR}But if you jump down from here, you can{CLEAR}skip the grass and get to Pallet Town{CLEAR}fast.",
+   "en": "See the ledge up ahead? You can’t climb{NEWLINE}it from below.{CLEAR}But if you jump down from here,{CLEAR}you can skip the grass{CLEAR}and get to Pallet Town fast.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 44,

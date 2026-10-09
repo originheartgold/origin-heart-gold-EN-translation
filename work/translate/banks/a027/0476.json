@@ -503,10 +503,10 @@
   {
    "id": 62,
    "zh": "金婆婆『站在我面前的这位{NEWLINE}枯叶道馆馆主马志士先生{CLEAR}就是为了保障咱们开工仪式{CLEAR}顺利进行而来的婆婆。{CLEAR}如果有人做出伤害大家的事{CLEAR}强大的马志士馆主一定会站出来{CLEAR}保护受害者的哟婆婆。",
-   "en": "Granny Kin: The gentleman before me is{NEWLINE}Mr. Surge, Leader of the Vermilion Gym.{SCROLL}He’s here to make sure our ceremony{NEWLINE}goes smoothly, dearie.{SCROLL}If anyone does something to hurt{NEWLINE}anyone else, mighty Lt. Surge will{CLEAR}surely step in to protect the victims,{CLEAR}dearie.",
+   "en": "Granny Kin: The gentleman before me is{NEWLINE}Mr. Surge, Leader of the Vermilion Gym.{SCROLL}He’s here to make sure our ceremony{NEWLINE}goes smoothly, dearie.{SCROLL}If anyone does something{NEWLINE}to hurt anyone else,{CLEAR}mighty Lt. Surge will surely step{CLEAR}in to protect the victims, dearie.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 63,
@@ -751,10 +751,10 @@
   {
    "id": 93,
    "zh": "科拿『好,下面我正式宣布{NEWLINE}精灵联盟针对这次事件的裁定。{CLEAR}根据精灵联盟「造福更多人」的理念,{CLEAR}综合考虑枯叶市的经济、环保等问题,{CLEAR}现对争端土地进行所有权变更,{CLEAR}将该土地由婆婆集团私人所有{CLEAR}变更为地区公有,{CLEAR}因所有权变更给婆婆集团造成的损失,{CLEAR}由精灵联盟向婆婆集团支付。",
-   "en": "Lorelei: Very well. I now formally{NEWLINE}announce the Pokémon League’s ruling{CLEAR}on this matter.{SCROLL}In keeping with the League’s principle{NEWLINE}of benefiting as many people as{CLEAR}possible...{SCROLL}and weighing Vermilion City’s economy,{NEWLINE}environment and other concerns...{SCROLL}the disputed land is hereby transferred{NEWLINE}from the Kin Group, a private owner, to{CLEAR}the public.{SCROLL}The Pokémon League will compensate the{NEWLINE}Kin Group for any resulting losses.",
+   "en": "Lorelei: Very well. I now formally{NEWLINE}announce the Pokémon League’s ruling{CLEAR}on this matter.{SCROLL}In keeping with the League’s{NEWLINE}principle of benefiting{CLEAR}as many people as possible...{SCROLL}and weighing Vermilion City’s economy,{NEWLINE}environment and other concerns...{SCROLL}the disputed land is hereby transferred{NEWLINE}from the Kin Group, a private owner, to{CLEAR}the public.{SCROLL}The Pokémon League will compensate the{NEWLINE}Kin Group for any resulting losses.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 94,
@@ -1380,10 +1380,10 @@
   {
    "id": 171,
    "zh": "昵称叫{VAR:0101:1}{NEWLINE}可以吗？{VAR:0200:0}",
-   "en": "Is {VAR:0101:1} the nickname you want to{NEWLINE}give? {VAR:0200:0}",
+   "en": "Is {VAR:0101:1} the nickname{NEWLINE}you want to give? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl)"
+   "notes": "v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 172,
@@ -1580,18 +1580,18 @@
   {
    "id": 196,
    "zh": "小蓝『{VAR:0103:0},市民已经聚集起来了,{NEWLINE}咱们先去观望一下。{CLEAR}一旦市民跟金婆婆发生冲突,{CLEAR}咱们就帮市民冲进工地破坏施工。",
-   "en": "Green: {VAR:0103:0}, the townsfolk have{NEWLINE}gathered. Let’s wait and watch for now.{SCROLL}If they clash with Granny Kin, we’ll help{NEWLINE}them storm the site and stop the{CLEAR}construction.",
+   "en": "Green: {VAR:0103:0}, the townsfolk have{NEWLINE}gathered. Let’s wait and watch for now.{SCROLL}If they clash with Granny Kin,{NEWLINE}we’ll help them storm the site{CLEAR}and stop the construction.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 197,
    "zh": "小赤『{VAR:0103:0},市民已经聚集起来了,{NEWLINE}咱们先去观望一下。{CLEAR}一旦市民跟金婆婆发生冲突,{CLEAR}咱们就帮市民冲进工地破坏施工。",
-   "en": "Red: {VAR:0103:0}, the townsfolk have{NEWLINE}gathered. Let’s wait and watch for now.{SCROLL}If they clash with Granny Kin, we’ll help{NEWLINE}them storm the site and stop the{CLEAR}construction.",
+   "en": "Red: {VAR:0103:0}, the townsfolk have{NEWLINE}gathered. Let’s wait and watch for now.{SCROLL}If they clash with Granny Kin,{NEWLINE}we’ll help them storm the site{CLEAR}and stop the construction.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 198,

@@ -230,10 +230,10 @@
   {
    "id": 28,
    "zh": "你还想听那段{NEWLINE}又疯狂又漫长的故事吗？{VAR:0200:0}",
-   "en": "Still want to hear my wild, long story?{VAR:0200:0}",
+   "en": "Still want to hear{NEWLINE}my wild, long story?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 29,

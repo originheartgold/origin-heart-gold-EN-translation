@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "您好！{NEWLINE}欢迎来到ＧＴＳ！{SCROLL}您想通过ＷｉーＦｉ链接{NEWLINE}与其他玩家进行{CLEAR}环球精灵交换吗？{VAR:0200:0}",
-   "en": "Hello!{NEWLINE}Welcome to the GTS!{SCROLL}Would you like to do a global Pokémon{NEWLINE}trade over Nintendo Wi-Fi{CLEAR}Connection? {VAR:0200:0}",
+   "en": "Hello!{NEWLINE}Welcome to the GTS!{SCROLL}Would you like to do{NEWLINE}a global Pokémon trade over{CLEAR}Nintendo Wi-Fi Connection? {VAR:0200:0}",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0600/1"
+   "notes": "US 0600/1; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,
@@ -254,10 +254,10 @@
   {
    "id": 31,
    "zh": "要使用ＷｉーＦｉ连接{NEWLINE}查看对战录像排行榜吗？{VAR:0200:0}",
-   "en": "Connect to Nintendo Wi-Fi Connection{NEWLINE}and examine the Battle Video{CLEAR}Rankings? {VAR:0200:0}",
+   "en": "Connect to Nintendo Wi-Fi{NEWLINE}Connection and examine{CLEAR}the Battle Video Rankings? {VAR:0200:0}",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0600/31"
+   "notes": "US 0600/31; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 32,

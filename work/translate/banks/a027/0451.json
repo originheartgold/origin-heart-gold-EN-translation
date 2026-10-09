@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "在进入房间之前{NEWLINE}可以接受采访吗？{VAR:0200:0}",
-   "en": "May we interview you before you enter{NEWLINE}the room? {VAR:0200:0}",
+   "en": "May we interview you before{NEWLINE}you enter the room? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,
@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "那么,虽然很突然,{NEWLINE}要参加练习吗？{VAR:0200:0}",
-   "en": "Now, this is a little sudden, but would{NEWLINE}you like to have a practice battle? {VAR:0200:0}",
+   "en": "Now, this is a little sudden,{NEWLINE}but would you like to have{CLEAR}a practice battle? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0458/12"
+   "notes": "US 0458/12; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 13,

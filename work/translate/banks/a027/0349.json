@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "下面是自行车道{SCROLL}乘自行车飞奔下去{NEWLINE}真是太爽了！{SCROLL}什么高速船,什么列车,{NEWLINE}也许很多人更愿意乘坐{CLEAR}这些舒适、帅气的交通工具,{CLEAR}可你喜欢自行车吧？",
-   "en": "Cycling Road starts here.{NEWLINE}It’s all downhill, so it’s totally{CLEAR}exhilarating.{SCROLL}Some people prefer comfortable and cool{NEWLINE}transportation such as the Fast Ship{CLEAR}and the Magnet Train.{CLEAR}You prefer the Bicycle, don’t you?",
+   "en": "Cycling Road starts here.{NEWLINE}It’s all downhill,{CLEAR}so it’s totally exhilarating.{SCROLL}Some people prefer comfortable and cool{NEWLINE}transportation such as the Fast Ship{CLEAR}and the Magnet Train.{CLEAR}You prefer the Bicycle, don’t you?",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0356/0 | RV013: meaning: 舒适 = comfortable"
+   "notes": "US 0356/0 | RV013: meaning: 舒适 = comfortable; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1,

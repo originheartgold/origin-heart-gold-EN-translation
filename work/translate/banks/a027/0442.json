@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "奈奈美『欢迎光临{NEWLINE}来得正好！{CLEAR}正是喝茶的时间,{SCROLL}哎呀？你的精灵{NEWLINE}好像有点脏！{SCROLL}给它梳毛的话{NEWLINE}它就会变漂亮,{CLEAR}而且有时还不会觉得热。{SCROLL}怎么样？让我{NEWLINE}来梳毛？{VAR:0200:0}",
-   "en": "Daisy: Welcome! You came at just the{NEWLINE}right time. It’s teatime. Oh? Your{CLEAR}Pokémon looks a little dirty! If I groom{CLEAR}it, it’ll look prettier, and sometimes it{CLEAR}won’t feel so hot, either. How about it?{CLEAR}Shall I groom one?{VAR:0200:0}",
+   "en": "Daisy: Welcome! You came at just{NEWLINE}the right time. It’s teatime. Oh?{CLEAR}Your Pokémon looks a little dirty!{CLEAR}If I groom it, it’ll look prettier,{CLEAR}and sometimes it won’t feel{CLEAR}so hot, either. How about it?{CLEAR}Shall I groom one?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0449/1 | RV015: meaning: US line replaced; hack's Chinese has no invitation and says grooming sometimes keeps it from feeling hot (D-1849; hack-finding logged)"
+   "notes": "US 0449/1 | RV015: meaning: US line replaced; hack's Chinese has no invitation and says grooming sometimes keeps it from feeling hot (D-1849; hack-finding logged); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,
@@ -190,18 +190,18 @@
   {
    "id": 23,
    "zh": "妈妈『呀！我儿子出息了啊,{NEWLINE}居然带着女朋友回家了。{CLEAR}快把人家请进来给妈妈介绍一下。",
-   "en": "Mom: Oh my! Look at my boy, all grown up{NEWLINE}and bringing a girlfriend home!{CLEAR}Hurry and invite her in. I want to meet{CLEAR}her!",
+   "en": "Mom: Oh my! Look at my boy, all grown up{NEWLINE}and bringing a girlfriend home!{CLEAR}Hurry and invite her in.{CLEAR}I want to meet her!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 24,
    "zh": "妈妈『呀！我女儿长大了啊,{NEWLINE}居然带着男朋友回家了。{CLEAR}快把人家请进来给妈妈介绍一下。",
-   "en": "Mom: Oh my! Look at my little girl, all{NEWLINE}grown up and bringing a boyfriend home!{CLEAR}Hurry and invite him in. I want to meet{CLEAR}him!",
+   "en": "Mom: Oh my! Look at my little girl, all{NEWLINE}grown up and bringing a boyfriend home!{CLEAR}Hurry and invite him in.{CLEAR}I want to meet him!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 25,
@@ -230,10 +230,10 @@
   {
    "id": 28,
    "zh": "妈妈『啊,是小黄呀。{NEWLINE}我记得你是有一年石英大会的冠军,{CLEAR}而且本人比电视里看起来更可爱呢。",
-   "en": "Mom: Oh, so you’re Yellow! I remember{NEWLINE}you won the Indigo Conference one{CLEAR}year.{CLEAR}And you’re even cuter in person than on{CLEAR}TV!",
+   "en": "Mom: Oh, so you’re Yellow!{NEWLINE}I remember you won{CLEAR}the Indigo Conference one year.{CLEAR}And you’re even cuter{CLEAR}in person than on TV!",
    "status": "draft",
    "origin": "agent",
-   "notes": "石英大会 = Indigo Conference (anime name for the Indigo Plateau tournament)."
+   "notes": "石英大会 = Indigo Conference (anime name for the Indigo Plateau tournament).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 29,
@@ -350,18 +350,18 @@
   {
    "id": 43,
    "zh": "小赤『是啊,都过去这么多年了。{NEWLINE}但是真新镇的大家还是老样子,{CLEAR}回到这里就有一种说不出的亲切感。",
-   "en": "Red: Yeah, it’s been so many years.{CLEAR}But everyone in Pallet Town is just the{NEWLINE}same. Coming back here feels like coming{CLEAR}home.",
+   "en": "Red: Yeah, it’s been so many years.{CLEAR}But everyone in Pallet Town{NEWLINE}is just the same. Coming back{CLEAR}here feels like coming home.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 44,
    "zh": "妈妈『你这孩子真是会说话,{NEWLINE}来到这就跟到了自己家一样啊,{CLEAR}别把自己当外人,随便坐。",
-   "en": "Mom: Aren’t you a sweet talker!{CLEAR}Make yourself at home. You’re no{NEWLINE}stranger here, so sit anywhere you{CLEAR}like.",
+   "en": "Mom: Aren’t you a sweet talker!{CLEAR}Make yourself at home.{NEWLINE}You’re no stranger here,{CLEAR}so sit anywhere you like.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 45,
@@ -382,18 +382,18 @@
   {
    "id": 47,
    "zh": "{VAR:0103:0}『妈,我现在正式给你介绍一下,{NEWLINE}这是我的女朋友小蓝。{CLEAR}就是小时候跟咱们住邻居的那个小蓝。{CLEAR}石英大会之后我跟你提起过的。",
-   "en": "{VAR:0103:0}: Mom, let me introduce you{NEWLINE}properly. This is my girlfriend, Green.{CLEAR}Yes, the same Green who lived next door{CLEAR}when we were little.{CLEAR}I told you about her after the Indigo{CLEAR}Conference.",
+   "en": "{VAR:0103:0}: Mom, let me introduce you{NEWLINE}properly. This is my girlfriend, Green.{CLEAR}Yes, the same Green who lived next door{CLEAR}when we were little.{CLEAR}I told you about her after{CLEAR}the Indigo Conference.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 48,
    "zh": "{VAR:0103:0}『妈,我现在正式给你介绍一下,{NEWLINE}这是我的男朋友小赤。{CLEAR}就是小时候跟咱们住邻居的那个小赤。{CLEAR}石英大会之后我跟你提起过的。",
-   "en": "{VAR:0103:0}: Mom, let me introduce you{NEWLINE}properly. This is my boyfriend, Red.{CLEAR}Yes, the same Red who lived next door{CLEAR}when we were little.{CLEAR}I told you about him after the Indigo{CLEAR}Conference.",
+   "en": "{VAR:0103:0}: Mom, let me introduce you{NEWLINE}properly. This is my boyfriend, Red.{CLEAR}Yes, the same Red who lived next door{CLEAR}when we were little.{CLEAR}I told you about him after{CLEAR}the Indigo Conference.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 49,
@@ -422,10 +422,10 @@
   {
    "id": 52,
    "zh": "{VAR:0103:0}『妈,我现在正式给你介绍一下,{NEWLINE}这是我的女朋友小霞。{CLEAR}是我在关东地区旅行时遇见的伙伴,{CLEAR}她现在是华蓝道馆的馆主哦。",
-   "en": "{VAR:0103:0}: Mom, let me introduce you{NEWLINE}properly. This is my girlfriend, Misty.{CLEAR}We met while I was traveling around{CLEAR}Kanto.{CLEAR}She’s the Cerulean Gym Leader now!",
+   "en": "{VAR:0103:0}: Mom, let me introduce you{NEWLINE}properly. This is my girlfriend, Misty.{CLEAR}We met while I was{CLEAR}traveling around Kanto.{CLEAR}She’s the Cerulean Gym Leader now!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 53,
@@ -478,10 +478,10 @@
   {
    "id": 59,
    "zh": "{VAR:0103:0}『妈,我现在正式给你介绍一下,{NEWLINE}这是我的女朋友希罗娜。{CLEAR}是我在关东地区旅行时遇见的伙伴,{CLEAR}她现在是神奥地区的联盟冠军哦。",
-   "en": "{VAR:0103:0}: Mom, let me introduce you{NEWLINE}properly. This is my girlfriend, Cynthia.{CLEAR}We met while I was traveling around{CLEAR}Kanto.{CLEAR}She’s the Sinnoh League Champion now!",
+   "en": "{VAR:0103:0}: Mom, let me introduce you{NEWLINE}properly. This is my girlfriend, Cynthia.{CLEAR}We met while I was{CLEAR}traveling around Kanto.{CLEAR}She’s the Sinnoh League Champion now!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 60,
@@ -518,10 +518,10 @@
   {
    "id": 64,
    "zh": "希罗娜『居然住到{VAR:0103:0}家里来了,{NEWLINE}感觉好不真实像是做梦一样。{CLEAR}我会好好珍惜咱们在一起的时光的。",
-   "en": "Cynthia: I’m actually staying at{NEWLINE}{VAR:0103:0}’s home... It feels so unreal,{CLEAR}like a dream.{CLEAR}I’ll treasure every moment we spend{CLEAR}together.",
+   "en": "Cynthia: I’m actually staying at{NEWLINE}{VAR:0103:0}’s home... It feels so unreal,{CLEAR}like a dream.{CLEAR}I’ll treasure every{CLEAR}moment we spend together.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 65,

@@ -211,10 +211,10 @@
   {
    "id": 25,
    "zh": "每年石英大会期间,{NEWLINE}我都会像这样一边钓鱼,{CLEAR}一边悠闲地看着{CLEAR}大批训练家们忙碌地从这儿穿过。{SCROLL}虽然他们都是{NEWLINE}常人仰望的高级训练家,{CLEAR}但他们中的大多数人{CLEAR}每年那徒劳无功、白忙一场的心情,{SCROLL}跟我这个钓鱼老儿{NEWLINE}次次空军的心情{CLEAR}是何其的相似！{SCROLL}所以说人和人之间{NEWLINE}哪怕身份地位能力不同,{CLEAR}也是能够体会对方心情的。{SCROLL}你可不要当那种发达之后{NEWLINE}就否认普通人能跟你共情的{CLEAR}所谓上位者啊！",
-   "en": "Every year during the Indigo{NEWLINE}Conference, I sit here fishing like{CLEAR}this...{SCROLL}...and lazily watch crowds of Trainers{NEWLINE}hurrying past.{SCROLL}They’re all Senior Trainers that{NEWLINE}ordinary folks look up to...{SCROLL}...but every year most of them go home{NEWLINE}with nothing to show for all their{CLEAR}effort.{SCROLL}And that feeling is just like how an old{NEWLINE}angler like me feels when he gets{CLEAR}skunked yet again!{SCROLL}So you see, even when people differ in{NEWLINE}status or ability, they can still{CLEAR}understand how the other feels.{SCROLL}Don’t you turn into one of those big{NEWLINE}shots who make it and then act like{CLEAR}ordinary folks can’t relate to them!",
+   "en": "Every year during{NEWLINE}the Indigo Conference,{CLEAR}I sit here fishing like this...{SCROLL}...and lazily watch crowds of Trainers{NEWLINE}hurrying past.{SCROLL}They’re all Senior Trainers that{NEWLINE}ordinary folks look up to...{SCROLL}...but every year most{NEWLINE}of them go home with nothing{CLEAR}to show for all their effort.{SCROLL}And that feeling is just like how an old{NEWLINE}angler like me feels when he gets{CLEAR}skunked yet again!{SCROLL}So you see, even when people differ in{NEWLINE}status or ability, they can still{CLEAR}understand how the other feels.{SCROLL}Don’t you turn into one of those big{NEWLINE}shots who make it and then act like{CLEAR}ordinary folks can’t relate to them!",
    "status": "draft",
    "origin": "agent",
-   "notes": "空军 = fishing slang for catching nothing ('skunked')."
+   "notes": "空军 = fishing slang for catching nothing ('skunked').; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 26,
@@ -299,10 +299,10 @@
   {
    "id": 36,
    "zh": "要不是因为出门仓促,{NEWLINE}把强力精灵落在了实验室里,{CLEAR}就凭你这三两下子{CLEAR}根本不是我的对手。",
-   "en": "If I hadn’t left in such a rush and{NEWLINE}forgotten my strong Pokémon at the{CLEAR}lab...{SCROLL}...a lightweight like you would be no{NEWLINE}match for me.",
+   "en": "If I hadn’t left in such a rush{NEWLINE}and forgotten my strong{CLEAR}Pokémon at the lab...{SCROLL}...a lightweight like you would be no{NEWLINE}match for me.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 37,
@@ -323,10 +323,10 @@
   {
    "id": 39,
    "zh": "真的是谢谢你了,{NEWLINE}一路追它到这里,{CLEAR}终于把它给堵住了。{SCROLL}看它这个样子,{NEWLINE}应该已经精疲力竭了。",
-   "en": "Thanks a lot! I chased it all the way{NEWLINE}here, and now I’ve finally got it{CLEAR}cornered.{SCROLL}Look at it. It must be worn out by now.",
+   "en": "Thanks a lot! I chased it{NEWLINE}all the way here, and now{CLEAR}I’ve finally got it cornered.{SCROLL}Look at it. It must be worn out by now.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 40,
@@ -379,10 +379,10 @@
   {
    "id": 46,
    "zh": "{VAR:0103:0}『你这么说就太夸张了,{NEWLINE}口袋妖怪的错误行为,{CLEAR}经过人类的正确引导,{CLEAR}就不会再犯了。{SCROLL}这也是我们这些训练家{NEWLINE}存在的意义之一啊。{SCROLL}{VAR:0103:0}『我保证跟它沟通过之后,{NEWLINE}它就不再给市民们添麻烦了。",
-   "en": "{VAR:0103:0}: Now you’re exaggerating. When{NEWLINE}a Pokémon misbehaves, it won’t do it{CLEAR}again once people guide it the right{CLEAR}way.{SCROLL}That’s one of the reasons Trainers like{NEWLINE}us exist.{SCROLL}{VAR:0103:0}: I promise, once I’ve talked{NEWLINE}with it, it won’t bother the townspeople{CLEAR}anymore.",
+   "en": "{VAR:0103:0}: Now you’re exaggerating.{NEWLINE}When a Pokémon misbehaves,{CLEAR}it won’t do it again once{CLEAR}people guide it the right way.{SCROLL}That’s one of the reasons Trainers like{NEWLINE}us exist.{SCROLL}{VAR:0103:0}: I promise, once I’ve{NEWLINE}talked with it, it won’t bother{CLEAR}the townspeople anymore.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 47,
@@ -403,10 +403,10 @@
   {
    "id": 49,
    "zh": "小霞『哎呀抱歉,我正在钓鱼呢。{NEWLINE}你是……{SCROLL}……{SCROLL}小霞『来自真新镇的{VAR:0103:0}啊。{SCROLL}小霞『你好呀,{NEWLINE}我是来自华蓝市的小霞,{CLEAR}是世界第一的美少女哟。",
-   "en": "Misty: Oh, sorry, I’m fishing right now.{NEWLINE}And you are...{SCROLL}...{SCROLL}Misty: {VAR:0103:0} from Pallet Town, huh?{SCROLL}Misty: Hi there! I’m Misty from Cerulean{NEWLINE}City, the most beautiful girl in the{CLEAR}world!",
+   "en": "Misty: Oh, sorry, I’m fishing right now.{NEWLINE}And you are...{SCROLL}...{SCROLL}Misty: {VAR:0103:0} from Pallet Town, huh?{SCROLL}Misty: Hi there!{NEWLINE}I’m Misty from Cerulean City,{CLEAR}the most beautiful girl in the world!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 50,
@@ -435,18 +435,18 @@
   {
    "id": 53,
    "zh": "小霞『看不出来你这个{NEWLINE}嘴硬的家伙还挺厉害的。{CLEAR}倒是有点让人刮目相看了。{CLEAR}不过在我心目中{CLEAR}果然还是水系精灵最棒了！",
-   "en": "Misty: Who’d have guessed a stubborn{NEWLINE}loudmouth like you would be so strong?{SCROLL}I have to admit, I’m impressed. But in{NEWLINE}my heart, Water types are still the{CLEAR}best!",
+   "en": "Misty: Who’d have guessed a stubborn{NEWLINE}loudmouth like you would be so strong?{SCROLL}I have to admit, I’m impressed.{NEWLINE}But in my heart, Water{CLEAR}types are still the best!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 54,
    "zh": "小霞『我现在要赶回华蓝市了,{NEWLINE}以后有机会再见吧！",
-   "en": "Misty: I’ve got to hurry back to{NEWLINE}Cerulean City now. See you around{CLEAR}sometime!",
+   "en": "Misty: I’ve got to hurry{NEWLINE}back to Cerulean City now.{CLEAR}See you around sometime!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 55,
@@ -459,10 +459,10 @@
   {
    "id": 56,
    "zh": "小霞『你能喜欢水系精灵,{NEWLINE}说明咱俩还是很投缘的。{SCROLL}小霞『我现在要赶回华蓝市了,{NEWLINE}以后有机会再聊呀！",
-   "en": "Misty: If you like Water types, I guess{NEWLINE}we really do hit it off.{SCROLL}Misty: I’ve got to hurry back to{NEWLINE}Cerulean City now. Let’s chat again{CLEAR}sometime!",
+   "en": "Misty: If you like Water types, I guess{NEWLINE}we really do hit it off.{SCROLL}Misty: I’ve got to hurry{NEWLINE}back to Cerulean City now.{CLEAR}Let’s chat again sometime!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 57,
@@ -515,10 +515,10 @@
   {
    "id": 63,
    "zh": "真是谢谢你了,为我……{NEWLINE}哦不,为常磐市除去了一大害啊！{CLEAR}功德无量,功德无量哈哈哈。",
-   "en": "Thanks so much! You’ve rid me... Er, I{NEWLINE}mean, you’ve rid Viridian City of a real{CLEAR}menace!{SCROLL}What a good deed! Ha ha ha!",
+   "en": "Thanks so much! You’ve rid me...{NEWLINE}Er, I mean, you’ve rid{CLEAR}Viridian City of a real menace!{SCROLL}What a good deed! Ha ha ha!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 64,
@@ -531,10 +531,10 @@
   {
    "id": 65,
    "zh": "怎么办,怎么办！{NEWLINE}就要参加石英大会了,好紧张啊！",
-   "en": "What do I do, what do I do?! The Indigo{NEWLINE}Conference is almost here. I’m so{CLEAR}nervous!",
+   "en": "What do I do, what do I do?!{NEWLINE}The Indigo Conference{CLEAR}is almost here. I’m so nervous!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 66,
@@ -595,10 +595,10 @@
   {
    "id": 73,
    "zh": "[zh redacted: song lyrics; sha256:c155c46ba1719517617c0b1b47d954779c363044fb565a5af4c835432e720676]",
-   "en": "♪ Here we go! ♪{SCROLL}Last up is the classic Japanese opening,{NEWLINE}sung in Chinese: a kid leaving Pallet{CLEAR}Town to become the greatest Pokémon{CLEAR}star!{SCROLL}The song goes on and on, verse after{NEWLINE}verse, with a whole lot of feeling...",
+   "en": "♪ Here we go! ♪{SCROLL}Last up is the classic Japanese{NEWLINE}opening, sung in Chinese:{CLEAR}a kid leaving Pallet Town to become{CLEAR}the greatest Pokémon star!{SCROLL}The song goes on and on, verse after{NEWLINE}verse, with a whole lot of feeling...",
    "status": "draft",
    "origin": "agent",
-   "notes": "Song (Chinese version of the JP OP Mezase Pokémon Master): lyrics not translated; replaced with an original description per the coordinator song rule. | zh redacted: song lyrics (zh_redact.py)"
+   "notes": "Song (Chinese version of the JP OP Mezase Pokémon Master): lyrics not translated; replaced with an original description per the coordinator song rule. | zh redacted: song lyrics (zh_redact.py); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 74,

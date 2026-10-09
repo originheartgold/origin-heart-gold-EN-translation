@@ -318,10 +318,10 @@
   {
    "id": 39,
    "zh": "你的精灵{NEWLINE}好有魅力哦{SCROLL}若是在这里穿上礼服的话{NEWLINE}会变的更加,更加,更加{CLEAR}有魅力！{SCROLL}这样的话就可以特意为你{NEWLINE}把一张照片装饰在{CLEAR}最里面的房间！{SCROLL}怎样？要试试吗？{VAR:0200:0}",
-   "en": "Ooh, your Pokémon are so charming! If{NEWLINE}they dress up here, they’ll be even{CLEAR}more, more, MORE charming! Then I’ll{CLEAR}specially hang a photo in the room at{CLEAR}the very back for you! How about it?{CLEAR}Want to try? {VAR:0200:0}",
+   "en": "Ooh, your Pokémon are so charming!{NEWLINE}If they dress up here, they’ll{CLEAR}be even more, more, MORE charming!{CLEAR}Then I’ll specially hang{CLEAR}a photo in the room at the very{CLEAR}back for you! How about it?{CLEAR}Want to try? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0117/39 | RV036: meaning: US line differed from the hack (more, more charming; back room)"
+   "notes": "US 0117/39 | RV036: meaning: US line differed from the hack (more, more charming; back room); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 40,
@@ -398,10 +398,10 @@
   {
    "id": 49,
    "zh": "再来穿礼服的话,{NEWLINE}就会帮你把装饰照片{CLEAR}换成新的！{SCROLL}要穿礼服吗？{VAR:0200:0}",
-   "en": "If you dress up again, I’ll replace the{NEWLINE}photo on display with a new one! Would{CLEAR}you like to dress up? {VAR:0200:0}",
+   "en": "If you dress up again, I’ll replace{NEWLINE}the photo on display with a new one!{CLEAR}Would you like to dress up? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0117/49 | RV036: addition: US ‘dearie’ not in zh"
+   "notes": "US 0117/49 | RV036: addition: US ‘dearie’ not in zh; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 50,

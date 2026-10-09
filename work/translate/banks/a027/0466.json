@@ -237,10 +237,10 @@
   {
    "id": 27,
    "zh": "人人都有一个冠军梦。{SCROLL}诸位肯定也都是{NEWLINE}以精灵联盟冠军为目标不断奋斗,{CLEAR}直至站上石英大会这个舞台。{SCROLL}下面就由我来向诸位解说{NEWLINE}本届石英大会的比赛规则,{CLEAR}请认真聆听。",
-   "en": "Everyone dreams of becoming Champion.{SCROLL}I’m sure you’ve all kept striving toward{NEWLINE}the title of Pokémon League Champion,{CLEAR}all the way to the stage of the Indigo{CLEAR}Conference.{SCROLL}Now I’ll explain the rules of this year’s{NEWLINE}Indigo Conference.{SCROLL}Please listen carefully.",
+   "en": "Everyone dreams of becoming Champion.{SCROLL}I’m sure you’ve all kept striving toward{NEWLINE}the title of Pokémon League Champion,{CLEAR}all the way to the stage{CLEAR}of the Indigo Conference.{SCROLL}Now I’ll explain the rules of this year’s{NEWLINE}Indigo Conference.{SCROLL}Please listen carefully.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 28,
@@ -1013,10 +1013,10 @@
   {
    "id": 124,
    "zh": "{VAR:0103:0}『{VAR:0100:1}！{SCROLL}小绿『水箭龟！{SCROLL}小蓝『妙蛙花！{SCROLL}小黄『丘丘！{SCROLL}阿金『爆太郎！{SCROLL}水晶『大竹蹦！{SCROLL}小银『大力鳄！{SCROLL}其他训练家们『{NEWLINE}铁甲暴龙、叶精灵、风速狗、海兔兽、比雕！",
-   "en": "{VAR:0103:0}: {VAR:0100:1}!{SCROLL}Blue: Blastoise!{SCROLL}Green: Venusaur!{SCROLL}Yellow: Chuchu!{SCROLL}Gold: Exbo!{SCROLL}Crystal: Megaree!{SCROLL}Silver: Feraligatr!{SCROLL}The other Trainers:{NEWLINE}Rhydon, Leafeon, Arcanine, Gastrodon,{CLEAR}Pidgeot!",
+   "en": "{VAR:0103:0}: {VAR:0100:1}!{SCROLL}Blue: Blastoise!{SCROLL}Green: Venusaur!{SCROLL}Yellow: Chuchu!{SCROLL}Gold: Exbo!{SCROLL}Crystal: Megaree!{SCROLL}Silver: Feraligatr!{SCROLL}The other Trainers:{NEWLINE}Rhydon, Leafeon, Arcanine,{CLEAR}Gastrodon, Pidgeot!",
    "status": "draft",
    "origin": "agent",
-   "notes": "大竹蹦 = Megaree (Crystal's Meganium in Pokémon Adventures); 爆太郎 = Exbo; 丘丘 = Chuchu. Only the Green line exists here (no Red variant)."
+   "notes": "大竹蹦 = Megaree (Crystal's Meganium in Pokémon Adventures); 爆太郎 = Exbo; 丘丘 = Chuchu. Only the Green line exists here (no Red variant).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 125,
@@ -1181,10 +1181,10 @@
   {
    "id": 145,
    "zh": "{VAR:0103:0}『请大木博士{NEWLINE}和几位精英训练家{CLEAR}留守在冠军之路入口,{CLEAR}一是做好精灵回复物资的保障,{CLEAR}二是阻止火箭队可能的援军{CLEAR}进入石英高原。",
-   "en": "{VAR:0103:0}: Professor Oak, I’d like you{NEWLINE}and a few Ace Trainers to stay at the{CLEAR}Victory Road entrance.{SCROLL}First, to keep a supply ready for{NEWLINE}healing Pokémon.{SCROLL}Second, to stop any Team Rocket{NEWLINE}reinforcements from reaching the Indigo{CLEAR}Plateau.",
+   "en": "{VAR:0103:0}: Professor Oak, I’d like you{NEWLINE}and a few Ace Trainers to stay at the{CLEAR}Victory Road entrance.{SCROLL}First, to keep a supply ready for{NEWLINE}healing Pokémon.{SCROLL}Second, to stop any{NEWLINE}Team Rocket reinforcements{CLEAR}from reaching the Indigo Plateau.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 146,
@@ -1597,10 +1597,10 @@
   {
    "id": 197,
    "zh": "阿金『我小的时候,{NEWLINE}就是在这里举办的石英大会上{CLEAR}认识偶像的。{CLEAR}当时我就觉得怎么会有{CLEAR}这么英姿飒爽的训练家姐姐。{CLEAR}我当时还把偶像的夺冠海报{CLEAR}贴在家里看了好几个月……",
-   "en": "Gold: When I was little, I first saw you,{NEWLINE}my idol,{SCROLL}right here at the Indigo Conference.{SCROLL}I remember thinking, who’s this{NEWLINE}amazingly cool Trainer girl?{SCROLL}I even stuck your championship poster{NEWLINE}up at home and stared at it for{CLEAR}months...",
+   "en": "Gold: When I was little, I first saw you,{NEWLINE}my idol,{SCROLL}right here at the Indigo Conference.{SCROLL}I remember thinking, who’s this{NEWLINE}amazingly cool Trainer girl?{SCROLL}I even stuck your championship{NEWLINE}poster up at home and stared{CLEAR}at it for months...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 198,
@@ -1968,10 +1968,10 @@
   {
    "id": 243,
    "zh": "{VAR:0103:0}『我现在必须要去石英高原{NEWLINE}跟火箭队决战了,{CLEAR}小霞也快回华蓝市{CLEAR}做好城市的防卫工作吧。{CLEAR}等打败了火箭队,我就去华蓝市找你。",
-   "en": "{VAR:0103:0}: I have to head to the Indigo{NEWLINE}Plateau now to face Team Rocket.{SCROLL}Misty, you should hurry back to{NEWLINE}Cerulean City and look after its{CLEAR}defense.{SCROLL}Once we’ve beaten Team Rocket, I’ll{NEWLINE}come find you in Cerulean City.",
+   "en": "{VAR:0103:0}: I have to head to the Indigo{NEWLINE}Plateau now to face Team Rocket.{SCROLL}Misty, you should hurry{NEWLINE}back to Cerulean City{CLEAR}and look after its defense.{SCROLL}Once we’ve beaten Team Rocket, I’ll{NEWLINE}come find you in Cerulean City.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 244,

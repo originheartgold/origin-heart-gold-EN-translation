@@ -342,10 +342,10 @@
   {
    "id": 42,
    "zh": "小霞『根据精灵联盟的规定,{NEWLINE}挑战道馆不可以使用回复类道具。{CLEAR}你先整理一下背包再来吧！",
-   "en": "Misty: Under Pokémon League rules, you{NEWLINE}can’t use healing items in a Gym{CLEAR}challenge.{SCROLL}Sort out your Bag first, then come{NEWLINE}back!",
+   "en": "Misty: Under Pokémon League{NEWLINE}rules, you can’t use healing{CLEAR}items in a Gym challenge.{SCROLL}Sort out your Bag first, then come{NEWLINE}back!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 43,
@@ -502,10 +502,10 @@
   {
    "id": 62,
    "zh": "小霞『既然大家{NEWLINE}都只能用水系精灵,{CLEAR}那我肯定也得准备一只蓄水的精灵呀。{CLEAR}你说是吧？",
-   "en": "Misty: If we can only use Water types,{NEWLINE}of course I’d bring one with Water{CLEAR}Absorb.{SCROLL}Makes sense, right?",
+   "en": "Misty: If we can only use{NEWLINE}Water types, of course I’d{CLEAR}bring one with Water Absorb.{SCROLL}Makes sense, right?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 63,
@@ -1030,10 +1030,10 @@
   {
    "id": 128,
    "zh": "阿彻『我叫阿彻,{NEWLINE}是以成为华蓝道馆馆主为目标{CLEAR}而不断修行的训练家。{SCROLL}阿彻『你们这些靠父辈上位的二代们{NEWLINE}没有几天可跳了,{CLEAR}等今年的馆主选拔开始后,{CLEAR}我一定要取代你们{CLEAR}成为华蓝道馆的馆主,{CLEAR}重振华蓝道馆！",
-   "en": "Curtis: The name’s Curtis. I’m a Trainer{NEWLINE}who’s been training nonstop to become{CLEAR}Leader of the Cerulean Gym.{SCROLL}Curtis: You second-generation kids who{NEWLINE}got where you are thanks to your{CLEAR}parents won’t be strutting around much{CLEAR}longer.{SCROLL}Once this year’s Gym Leader selection{NEWLINE}begins, I’ll replace you as Leader...{SCROLL}And I’ll restore the Cerulean Gym’s{NEWLINE}good name!",
+   "en": "Curtis: The name’s Curtis. I’m a Trainer{NEWLINE}who’s been training nonstop to become{CLEAR}Leader of the Cerulean Gym.{SCROLL}Curtis: You second-generation{NEWLINE}kids who got where you are thanks{CLEAR}to your parents won’t{CLEAR}be strutting around much longer.{SCROLL}Once this year’s Gym Leader selection{NEWLINE}begins, I’ll replace you as Leader...{SCROLL}And I’ll restore the Cerulean Gym’s{NEWLINE}good name!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 129,
@@ -1385,10 +1385,10 @@
   {
    "id": 172,
    "zh": "水吾桐『哈哈哈,{NEWLINE}作为道馆馆主的职责{CLEAR}和作为妹妹的亲情{CLEAR}正在你的心里斗争吗？",
-   "en": "Archie: Ha ha ha! Is your duty as Gym{NEWLINE}Leader at war with your love for your{CLEAR}sister?",
+   "en": "Archie: Ha ha ha!{NEWLINE}Is your duty as Gym Leader at war{CLEAR}with your love for your sister?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 173,
@@ -1780,10 +1780,10 @@
   {
    "id": 221,
    "zh": "小霞『哎？又要去忙吗？{NEWLINE}确实你身为联盟冠军,{CLEAR}要承担很多责任……{CLEAR}但是忙完之后记得来陪我啊！",
-   "en": "Misty: Huh? Busy again? I know, as{NEWLINE}League Champion you’ve got lots of{CLEAR}responsibilities...{SCROLL}But come keep me company once you’re{NEWLINE}done!",
+   "en": "Misty: Huh? Busy again?{NEWLINE}I know, as League Champion you’ve{CLEAR}got lots of responsibilities...{SCROLL}But come keep me company once you’re{NEWLINE}done!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 222,
@@ -1868,10 +1868,10 @@
   {
    "id": 232,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的水流尾……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习水流尾{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Aqua Tail...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Aqua{NEWLINE}Tail?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Aqua Tail...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn Aqua Tail?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 233,

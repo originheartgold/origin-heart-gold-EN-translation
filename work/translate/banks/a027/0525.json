@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "小朋友,你两个精灵{NEWLINE}来折我这一只怪力的手指试试。",
-   "en": "Young friend, have your two Pokémon{NEWLINE}try to bend back one finger of my one{CLEAR}Machamp.",
+   "en": "Young friend, have your two{NEWLINE}Pokémon try to bend back{CLEAR}one finger of my one Machamp.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 8,
@@ -150,10 +150,10 @@
   {
    "id": 18,
    "zh": "嘿嘿,按传统功夫的点到为止{NEWLINE}你已经输了。",
-   "en": "Heh heh. By the stop-on-contact rule{NEWLINE}of traditional kung fu, you’ve already{CLEAR}lost.",
+   "en": "Heh heh. By the stop-on-contact{NEWLINE}rule of traditional kung fu,{CLEAR}you’ve already lost.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 19,
@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "马老师对不起、对不起,{NEWLINE}我不懂规矩。{CLEAR}我这都是乱打的。",
-   "en": "Master Ma, I’m sorry, I’m sorry. I{NEWLINE}don’t know the rules. I was just flailing{CLEAR}around.",
+   "en": "Master Ma, I’m sorry, I’m sorry.{NEWLINE}I don’t know the rules.{CLEAR}I was just flailing around.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 26,
@@ -238,10 +238,10 @@
   {
    "id": 29,
    "zh": "行吧,行吧,反正是我赢了,{NEWLINE}随你怎么说吧。{CLEAR}咱们走,沙瓦郎、艾比郎。",
-   "en": "Fine, fine. I won anyway. Say whatever{NEWLINE}you want. Let’s go, Hitmonlee,{CLEAR}Hitmonchan.",
+   "en": "Fine, fine. I won anyway.{NEWLINE}Say whatever you want.{CLEAR}Let’s go, Hitmonlee, Hitmonchan.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 30,
@@ -302,10 +302,10 @@
   {
    "id": 37,
    "zh": "接化发是传统口袋妖怪对战的核心,{NEWLINE}你想试试我的接化发绝技吗？{SCROLL}",
-   "en": "Receive, Transform, Release is the core{NEWLINE}of traditional Pokémon battling. Want to{CLEAR}try my Receive, Transform, Release{CLEAR}technique?{SCROLL}",
+   "en": "Receive, Transform, Release is the core{NEWLINE}of traditional Pokémon battling.{CLEAR}Want to try my Receive,{CLEAR}Transform, Release technique?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 38,
@@ -414,10 +414,10 @@
   {
    "id": 51,
    "zh": "年轻人,你想继续{NEWLINE}在我混元形意太极门学习吗？{SCROLL}",
-   "en": "Young one, do you wish to continue{NEWLINE}studying at my Hunyuan Xingyi Taiji{CLEAR}School?{SCROLL}",
+   "en": "Young one, do you wish{NEWLINE}to continue studying{CLEAR}at my Hunyuan Xingyi Taiji School?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 52,
@@ -474,18 +474,18 @@
   {
    "id": 58,
    "zh": "好,我现在就教教你,{NEWLINE}为什么我的传统口袋妖怪格斗技巧{CLEAR}比精灵联盟的对战技巧要好得多。{SCROLL}我曾经在伽勒尔地区{NEWLINE}与那里的口袋妖怪对战冠军{CLEAR}——皮特•呃梨进行实战,{CLEAR}在这场实战中{CLEAR}我就用了一个接化发的动作。{CLEAR}就是他的喷火龙出手了,{CLEAR}我的精灵接住以后打了它,{CLEAR}就是这个动作。{CLEAR}传统口袋妖怪对战的核心打法,{CLEAR}就是要打接化发,四两拨千金。{CLEAR}所谓的接化发,{CLEAR}就是接手、化劲、发劲,{CLEAR}这是传统口袋妖怪对战独有的。{CLEAR}接——！{CLEAR}化——！{CLEAR}发——！{CLEAR}如果年轻人你没有学会接化发,{CLEAR}就不要过高地估计自己的对战水平。{CLEAR}说你能代表传统口袋妖怪对战技巧,{CLEAR}你是代表不了的。{SCROLL}那么你要让你的精灵{NEWLINE}学一下接化发绝技吗？{SCROLL}",
-   "en": "Good. Now I’ll teach you why my{NEWLINE}traditional Pokémon fighting techniques{CLEAR}are far better than the{CLEAR}Pokémon League’s battle techniques.{SCROLL}I once had a real fight in the Galar{NEWLINE}region with their Pokémon Champion,{CLEAR}Pete... er, Leon. In that fight, I used{CLEAR}a Receive, Transform, Release move. His{CLEAR}Charizard attacked, my Pokémon{CLEAR}received it, then struck it. That move{CLEAR}right there. The core of traditional{CLEAR}Pokémon battling is Receive, Transform,{CLEAR}Release: four ounces deflecting a{CLEAR}thousand pounds. Receive, Transform,{CLEAR}Release means receiving the hand,{CLEAR}transforming the force, releasing the{CLEAR}force. It’s unique to traditional{CLEAR}Pokémon battling. Receive...!{CLEAR}Transform...! Release...! Young one, if{CLEAR}you haven’t learned Receive,{CLEAR}Transform, Release, don’t overestimate{CLEAR}your battling skills. You claim you{CLEAR}represent traditional Pokémon fighting{CLEAR}techniques? You don’t.{SCROLL}So, do you want your Pokémon to learn{NEWLINE}the Receive, Transform, Release{CLEAR}technique?{SCROLL}",
+   "en": "Good. Now I’ll teach you why my{NEWLINE}traditional Pokémon fighting techniques{CLEAR}are far better than the{CLEAR}Pokémon League’s battle techniques.{SCROLL}I once had a real fight in the Galar{NEWLINE}region with their Pokémon Champion,{CLEAR}Pete... er, Leon. In that fight, I used{CLEAR}a Receive, Transform, Release move. His{CLEAR}Charizard attacked, my Pokémon{CLEAR}received it, then struck it. That move{CLEAR}right there. The core of traditional{CLEAR}Pokémon battling is Receive, Transform,{CLEAR}Release: four ounces deflecting a{CLEAR}thousand pounds. Receive, Transform,{CLEAR}Release means receiving the hand,{CLEAR}transforming the force, releasing the{CLEAR}force. It’s unique to traditional{CLEAR}Pokémon battling. Receive...!{CLEAR}Transform...! Release...! Young one, if{CLEAR}you haven’t learned Receive,{CLEAR}Transform, Release, don’t overestimate{CLEAR}your battling skills. You claim you{CLEAR}represent traditional Pokémon fighting{CLEAR}techniques? You don’t.{SCROLL}So, do you want your Pokémon{NEWLINE}to learn the Receive,{CLEAR}Transform, Release technique?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 59,
    "zh": "人,生来就是要吃饭的。{NEWLINE}我作为一个{CLEAR}传统口袋妖怪对战技巧的专家,{CLEAR}我吃这碗饭,那是天然的没有选择的。{CLEAR}但是无论我吃的是哪口饭,{CLEAR}我都不会跟火箭队这种败类{CLEAR}一个锅里吃饭。{CLEAR}只有我脚下的这片土地好了,{CLEAR}我的饭才能吃得好,{CLEAR}要是让火箭队这种强盗{CLEAR}接管了这片土地,{CLEAR}那大家谁也别想吃好饭了,{CLEAR}这就是我的人生经验。",
-   "en": "Man is born to eat. As an expert in{NEWLINE}traditional Pokémon fighting techniques,{CLEAR}this is how I earn my rice. That’s{CLEAR}natural, I had no choice. But no matter{CLEAR}whose rice I eat, I will never eat from{CLEAR}the same pot as scum like Team Rocket.{CLEAR}Only if the land beneath my feet does{CLEAR}well can I eat well. If robbers like Team{CLEAR}Rocket took over this land, nobody{CLEAR}would get a decent meal. That is my life{CLEAR}experience.",
+   "en": "Man is born to eat. As an expert in{NEWLINE}traditional Pokémon fighting techniques,{CLEAR}this is how I earn my rice. That’s{CLEAR}natural, I had no choice. But no matter{CLEAR}whose rice I eat, I will never eat from{CLEAR}the same pot as scum like Team Rocket.{CLEAR}Only if the land beneath my feet does{CLEAR}well can I eat well. If robbers like{CLEAR}Team Rocket took over this land,{CLEAR}nobody would get a decent meal.{CLEAR}That is my life experience.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 60,
@@ -498,10 +498,10 @@
   {
    "id": 61,
    "zh": "跟我学习是要交学费的,{NEWLINE}你凑够10000元学费之后再来吧。",
-   "en": "Studying with me costs tuition. Come{NEWLINE}back when you’ve got the $10000 tuition{CLEAR}fee.",
+   "en": "Studying with me costs tuition.{NEWLINE}Come back when you’ve got{CLEAR}the $10000 tuition fee.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 62,
@@ -522,18 +522,18 @@
   {
    "id": 64,
    "zh": "这只{VAR:0100:0}{NEWLINE}已经会松活弹抖闪电鞭了！{SCROLL}",
-   "en": "This {VAR:0100:0} already knows the{NEWLINE}Loose, Lively, Springy, Shaky Lightning{CLEAR}Whip!{SCROLL}",
+   "en": "This {VAR:0100:0} already{NEWLINE}knows the Loose, Lively,{CLEAR}Springy, Shaky Lightning Whip!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 65,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的松活弹抖闪电鞭……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习松活弹抖闪电鞭{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn the Loose,{NEWLINE}Lively, Springy, Shaky Lightning Whip...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn the{NEWLINE}Loose, Lively, Springy, Shaky Lightning{CLEAR}Whip?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn the Loose,{NEWLINE}Lively, Springy, Shaky Lightning Whip...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn the Loose, Lively,{CLEAR}Springy, Shaky Lightning Whip?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 66,
@@ -570,10 +570,10 @@
   {
    "id": 70,
    "zh": "抱歉……这个精灵{NEWLINE}没法记住松活弹抖闪电鞭。{SCROLL}",
-   "en": "Sorry... This Pokémon can’t learn the{NEWLINE}Loose, Lively, Springy, Shaky Lightning{CLEAR}Whip.{SCROLL}",
+   "en": "Sorry... This Pokémon can’t{NEWLINE}learn the Loose, Lively,{CLEAR}Springy, Shaky Lightning Whip.{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 71,
@@ -586,10 +586,10 @@
   {
    "id": 72,
    "zh": "你是要放弃{NEWLINE}让它记住松活弹抖闪电鞭吗？{VAR:0200:0}",
-   "en": "Give up on teaching it the Loose, Lively,{NEWLINE}Springy, Shaky Lightning Whip?{VAR:0200:0}",
+   "en": "Give up on teaching it{NEWLINE}the Loose, Lively, Springy,{CLEAR}Shaky Lightning Whip?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 73,
@@ -682,10 +682,10 @@
   {
    "id": 84,
    "zh": "昵称叫{VAR:0101:1}{NEWLINE}可以吗？{VAR:0200:0}",
-   "en": "Is {VAR:0101:1} the nickname you want to{NEWLINE}give? {VAR:0200:0}",
+   "en": "Is {VAR:0101:1} the nickname{NEWLINE}you want to give? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "retranslated from zh; was: v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl)"
+   "notes": "retranslated from zh; was: v3 TM: 2 source(s); other variants: 4 more v3 TM candidates (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 85,
@@ -706,10 +706,10 @@
   {
    "id": 87,
    "zh": "对持有的艾比郎起昵称吗？{VAR:0200:0}",
-   "en": "Give a nickname to the Hitmonchan you{NEWLINE}received?{VAR:0200:0}",
+   "en": "Give a nickname{NEWLINE}to the Hitmonchan you received?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 88,

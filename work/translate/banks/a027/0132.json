@@ -307,10 +307,10 @@
   {
    "id": 37,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的闪焰冲锋……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习闪焰冲锋{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Flare{NEWLINE}Blitz...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Flare{NEWLINE}Blitz?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Flare{NEWLINE}Blitz...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn Flare Blitz?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 38,
@@ -435,10 +435,10 @@
   {
    "id": 53,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的勇鸟猛攻……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习勇鸟猛攻{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Brave{NEWLINE}Bird...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Brave{NEWLINE}Bird?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Brave{NEWLINE}Bird...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn Brave Bird?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 54,

@@ -62,10 +62,10 @@
   {
    "id": 7,
    "zh": "我明白你的心情,{NEWLINE}过去的记忆确实很美好,{CLEAR}你忠诚的品格也让人很钦佩。{CLEAR}可是……{CLEAR}总不能在这里等到死吧！{CLEAR}人类的离去和决绝{CLEAR}是你们口袋妖怪无法想象的,{CLEAR}不要再像个小丑一样{CLEAR}在这里傻等了,{CLEAR}跟我走吧,{CLEAR}前方有更美好的生活{CLEAR}在等着你呢！",
-   "en": "I know how you feel. Your old memories{NEWLINE}really are wonderful, and your loyalty{CLEAR}is admirable.{SCROLL}But... you can’t just wait here until{NEWLINE}you die!{SCROLL}You Pokémon can’t imagine how coldly{NEWLINE}people can walk away and cut all ties.{SCROLL}Stop waiting here like a fool. Come with{NEWLINE}me. A better life is waiting for you out{CLEAR}there!",
+   "en": "I know how you feel. Your old memories{NEWLINE}really are wonderful, and your loyalty{CLEAR}is admirable.{SCROLL}But... you can’t just wait here until{NEWLINE}you die!{SCROLL}You Pokémon can’t imagine how coldly{NEWLINE}people can walk away and cut all ties.{SCROLL}Stop waiting here like a fool.{NEWLINE}Come with me. A better life{CLEAR}is waiting for you out there!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 8,
@@ -310,10 +310,10 @@
   {
    "id": 38,
    "zh": "{VAR:0103:0}『小火龙,{NEWLINE}我知道你在等你的主人,可是……{CLEAR}你的主人应该不会回来了。{CLEAR}你现在这么虚弱,{CLEAR}还是先跟我去精灵中心治疗一下吧！",
-   "en": "{VAR:0103:0}: Charmander, I know you’re{NEWLINE}waiting for your Trainer, but... they’re{CLEAR}probably not coming back.{SCROLL}You’re so weak right now. Come with me{NEWLINE}to the Pokémon Center and get treated{CLEAR}first!",
+   "en": "{VAR:0103:0}: Charmander, I know you’re{NEWLINE}waiting for your Trainer, but... they’re{CLEAR}probably not coming back.{SCROLL}You’re so weak right now.{NEWLINE}Come with me to the Pokémon Center{CLEAR}and get treated first!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 39,
@@ -334,26 +334,26 @@
   {
    "id": 41,
    "zh": "{VAR:0103:0}『呼……呼……乔伊小姐,{NEWLINE}这只小火龙虚弱到生命垂危了！{CLEAR}请你快要救救它！",
-   "en": "{VAR:0103:0}: *pant* *pant*... Nurse Joy,{NEWLINE}this Charmander is so weak it’s close to{CLEAR}dying!{SCROLL}Please save it, quick!",
+   "en": "{VAR:0103:0}: *pant* *pant*...{NEWLINE}Nurse Joy, this Charmander{CLEAR}is so weak it’s close to dying!{SCROLL}Please save it, quick!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 42,
    "zh": "嗯？小火龙？{NEWLINE}我不是让你在2号路等我吗？{CLEAR}你怎么敢私自跑来这里！{CLEAR}你这个垃圾,道馆对战打不赢、{CLEAR}还这么不听话,{CLEAR}我不要你了！滚吧！",
-   "en": "Huh? Charmander? Didn’t I tell you to{NEWLINE}wait for me on Route 2?{SCROLL}How dare you run off here on your own!{SCROLL}You worthless piece of trash. You can’t{NEWLINE}win a Gym battle, and you won’t even{CLEAR}listen.{SCROLL}I don’t want you anymore! Get lost!",
+   "en": "Huh? Charmander? Didn’t I tell you to{NEWLINE}wait for me on Route 2?{SCROLL}How dare you run off here on your own!{SCROLL}You worthless piece of trash.{NEWLINE}You can’t win a Gym battle,{CLEAR}and you won’t even listen.{SCROLL}I don’t want you anymore! Get lost!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 43,
    "zh": "{VAR:0103:0}『喂！小火龙可是{NEWLINE}一直在2号路等你啊！{CLEAR}你不想要小火龙了就好好跟它说,{CLEAR}这样折磨它算什么！",
-   "en": "{VAR:0103:0}: Hey! Charmander has been{NEWLINE}waiting for you on Route 2 this whole{CLEAR}time!{SCROLL}If you don’t want Charmander anymore,{NEWLINE}then tell it properly. Why torment it{CLEAR}like this!",
+   "en": "{VAR:0103:0}: Hey!{NEWLINE}Charmander has been waiting{CLEAR}for you on Route 2 this whole time!{SCROLL}If you don’t want Charmander anymore,{NEWLINE}then tell it properly. Why torment it{CLEAR}like this!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 44,
@@ -446,10 +446,10 @@
   {
    "id": 55,
    "zh": "这只尼多兰不知道被谁遗弃了,{NEWLINE}似乎在等它的主人回来。{CLEAR}我在看到尼多兰第一眼的时候{CLEAR}就被它坚守的执着所打动,{CLEAR}所以就下定决心要收留它、照顾它！{SCROLL}为了给尼多兰舒适的收纳环境,{NEWLINE}我特意去到城都地区{CLEAR}向岩铁先生学习了如何做柑果球。{SCROLL}如今学成归来,{NEWLINE}本该做一个崭新的柑果球{CLEAR}来收服尼多兰。{CLEAR}可事到临头我才发现,{CLEAR}尼比市附近的柑果做出的球{CLEAR}似乎都不太适合收纳尼多兰……{SCROLL}要是能有绿柑果做出的朋友球就好了……",
-   "en": "Someone abandoned this Nidoran♀. It{NEWLINE}seems to be waiting for its Trainer to{CLEAR}come back.{SCROLL}The first time I saw it, I was so moved{NEWLINE}by its devotion that I made up my mind{CLEAR}to take it in and look after it!{SCROLL}To give it a comfortable ball to live in,{NEWLINE}I went all the way to Johto to learn to{CLEAR}make Apricorn Balls from Kurt.{SCROLL}Now that I’m back, I ought to make a{NEWLINE}brand-new Apricorn Ball to catch it{CLEAR}with.{SCROLL}But now that the time’s come, I’ve{NEWLINE}realized the balls made from Apricorns{CLEAR}around Pewter City don’t really suit{CLEAR}Nidoran♀...{SCROLL}If only I had a Friend Ball made from a{NEWLINE}Green Apricorn...",
+   "en": "Someone abandoned this Nidoran♀. It{NEWLINE}seems to be waiting for its Trainer to{CLEAR}come back.{SCROLL}The first time I saw it, I was so moved{NEWLINE}by its devotion that I made up my mind{CLEAR}to take it in and look after it!{SCROLL}To give it a comfortable ball to live in,{NEWLINE}I went all the way to Johto to learn to{CLEAR}make Apricorn Balls from Kurt.{SCROLL}Now that I’m back,{NEWLINE}I ought to make a brand-new{CLEAR}Apricorn Ball to catch it with.{SCROLL}But now that the time’s come,{NEWLINE}I’ve realized the balls made{CLEAR}from Apricorns around Pewter City{CLEAR}don’t really suit Nidoran♀...{SCROLL}If only I had a Friend Ball made from a{NEWLINE}Green Apricorn...",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 56,
@@ -510,10 +510,10 @@
   {
    "id": 63,
    "zh": "哦哦,看来你接触过很多精灵啊,{NEWLINE}难怪尼多兰会对你这么热情,哈哈。{SCROLL}我还担心万一是它原来那个{NEWLINE}不负责任的主人回来了{CLEAR}该如何是好呢,哈哈。",
-   "en": "Oh, so you’ve been around lots of{NEWLINE}Pokémon! No wonder Nidoran♀ is so{CLEAR}friendly toward you, ha ha.{SCROLL}I was worried about what I’d do if its{NEWLINE}irresponsible old owner came back, ha{CLEAR}ha.",
+   "en": "Oh, so you’ve been around lots of{NEWLINE}Pokémon! No wonder Nidoran♀ is so{CLEAR}friendly toward you, ha ha.{SCROLL}I was worried about what{NEWLINE}I’d do if its irresponsible{CLEAR}old owner came back, ha ha.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 64,
@@ -566,10 +566,10 @@
   {
    "id": 70,
    "zh": "那是当然的好吧！{SCROLL}我不管你是放生还是遗弃,{NEWLINE}但是尼多兰在2号路{CLEAR}等了你整整一年啊！{CLEAR}在这一年里,如果没有我和母亲{CLEAR}轮流给它送食物送水,{CLEAR}它早就死在那里了！{SCROLL}而且我还为了给尼多兰一个{NEWLINE}舒适的被收服体验,{CLEAR}特地跑到城都地区学做柑果球……",
-   "en": "Of course it doesn’t!{SCROLL}I don’t care whether you released it or{NEWLINE}abandoned it, but Nidoran♀ waited for{CLEAR}you on Route 2 for a whole year!{SCROLL}If my mother and I hadn’t taken turns{NEWLINE}bringing it food and water all year, it{CLEAR}would have died there long ago!{SCROLL}And I even went all the way to Johto to{NEWLINE}learn to make Apricorn Balls, just so{CLEAR}being caught would be comfortable for{CLEAR}it...",
+   "en": "Of course it doesn’t!{SCROLL}I don’t care whether you released it or{NEWLINE}abandoned it, but Nidoran♀ waited for{CLEAR}you on Route 2 for a whole year!{SCROLL}If my mother and I hadn’t taken turns{NEWLINE}bringing it food and water all year, it{CLEAR}would have died there long ago!{SCROLL}And I even went all the way to Johto{NEWLINE}to learn to make Apricorn Balls,{CLEAR}just so being caught would{CLEAR}be comfortable for it...",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 2 source(s), same position"
+   "notes": "v3 TM: 2 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 71,
@@ -630,10 +630,10 @@
   {
    "id": 78,
    "zh": "为什么……{NEWLINE}为什么你这样的职业训练家{CLEAR}却偏偏不懂得珍惜和尊重精灵……",
-   "en": "Why... Why doesn’t a pro Trainer like{NEWLINE}you know how to cherish and respect{CLEAR}Pokémon...",
+   "en": "Why... Why doesn’t a pro Trainer{NEWLINE}like you know how to cherish{CLEAR}and respect Pokémon...",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 2 source(s), same position"
+   "notes": "v3 TM: 2 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 79,
@@ -662,10 +662,10 @@
   {
    "id": 82,
    "zh": "你又是从哪冒出来的家伙？{NEWLINE}我想怎么处置我的精灵跟你无关。{CLEAR}少多管闲事！",
-   "en": "And where did you come from? What I do{NEWLINE}with my Pokémon is none of your{CLEAR}business.{SCROLL}Butt out!",
+   "en": "And where did you come from?{NEWLINE}What I do with my Pokémon{CLEAR}is none of your business.{SCROLL}Butt out!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 83,

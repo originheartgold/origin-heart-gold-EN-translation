@@ -947,10 +947,10 @@
   {
    "id": 116,
    "zh": "下面是第四题：{SCROLL}胖子大娘、背个大房,{NEWLINE}剪刀两把,细棍两双。",
-   "en": "Here’s the fourth riddle:{SCROLL}A plump old lady{NEWLINE}with a house on her back,{CLEAR}two scissors, four stick legs,{CLEAR}clickety-clack!",
+   "en": "Here’s the fourth riddle:{SCROLL}A plump old lady{NEWLINE}with a house on her back,{CLEAR}two scissors, four stick{CLEAR}legs, clickety-clack!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 117,

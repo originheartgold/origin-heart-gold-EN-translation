@@ -291,10 +291,10 @@
   {
    "id": 35,
    "zh": "能够坐在舒适的火车上{NEWLINE}看看沿途的风景,{CLEAR}对我来说也是一种享受呢。",
-   "en": "Sitting on a comfy train and watching{NEWLINE}the scenery go by is a real treat for me{CLEAR}too.",
+   "en": "Sitting on a comfy train{NEWLINE}and watching the scenery go{CLEAR}by is a real treat for me too.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   }
  ]
 }

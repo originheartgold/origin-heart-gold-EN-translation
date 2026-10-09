@@ -980,10 +980,10 @@
   {
    "id": 69,
    "zh": "しかい『これより　{VAR:0123:0}の{NEWLINE}ポケモン　{VAR:0122:1}を{CLEAR}かいし　いたします！{SCROLL}わたしは　しかいと　しんさいんを　{NEWLINE}つとめます　ビック　ともうします！{SCROLL}しんさの　けっかは　さいごに　おこない{NEWLINE}ますので　よろしく　おねがいします！{SCROLL}",
-   "en": "MC: We will now begin the{NEWLINE}{VAR:0123:0} Pokémon{CLEAR}{VAR:0122:1}!{SCROLL}I’m Vic, and I’ll be your{NEWLINE}MC and judge!{SCROLL}The results will be announced at{NEWLINE}the end. Good luck, everyone!{SCROLL}",
+   "en": "MC: We will now{NEWLINE}begin the {VAR:0123:0}{CLEAR}Pokémon {VAR:0122:1}!{SCROLL}I’m Vic, and I’ll be your{NEWLINE}MC and judge!{SCROLL}The results will be announced at{NEWLINE}the end. Good luck, everyone!{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "DP Contest Hall reception (Japanese leftover). rc5 fix 2026-10-04: translated from the Japanese instead of left blank, so the hack’s control codes are kept (was blank like US HGSS).",
+   "notes": "DP Contest Hall reception (Japanese leftover). rc5 fix 2026-10-04: translated from the Japanese instead of left blank, so the hack’s control codes are kept (was blank like US HGSS).; layout rebalance 2026-10-09 (prompt icons / single-word page)",
    "qa_ignore": [
     "empty",
     "tag_mismatch",

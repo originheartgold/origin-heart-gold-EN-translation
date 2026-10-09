@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "噗噗噗噗噗噗噗！{NEWLINE}今天状态不错！{SCROLL}那就再来和我对战一次怎么样！{NEWLINE}我们可以进行各种切磋,{CLEAR}我在{VAR:0104:3}等你！",
-   "en": "Buoahhhbobobo!{NEWLINE}Today is a great day!{SCROLL}You should have another battle with me!{NEWLINE}I’m waiting and practicing on{CLEAR}{VAR:0104:3}!",
+   "en": "Buoahhhbobobo!{NEWLINE}Today is a great day!{SCROLL}You should have another battle with me!{NEWLINE}I’m waiting and practicing{CLEAR}on {VAR:0104:3}!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0710/9"
+   "notes": "US 0710/9; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 10,

@@ -118,10 +118,10 @@
   {
    "id": 14,
    "zh": "木雄『我是星期四的木雄！{CLEAR}七兄妹中的次男！",
-   "en": "Arthur: I’m Arthur of Thursday!{NEWLINE}I’m the second son in a line of seven{CLEAR}siblings!",
+   "en": "Arthur: I’m Arthur of Thursday!{NEWLINE}I’m the second son{CLEAR}in a line of seven siblings!",
    "status": "draft",
    "origin": "us",
-   "notes": "US 0752/14"
+   "notes": "US 0752/14; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 15,

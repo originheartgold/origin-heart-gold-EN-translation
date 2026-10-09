@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "喂喂,{NEWLINE}你有什么事么？{SCROLL}现在的小孩子,就算再近{NEWLINE}也只肯用电话联系。{SCROLL}我想跟他们{CLEAR}面对面聊天啊。",
-   "en": "Hello? What can I do for you? Kids these{NEWLINE}days will only call, no matter how close{CLEAR}by they are. I’d like to talk with them{CLEAR}face-to-face...",
+   "en": "Hello? What can I do for you?{NEWLINE}Kids these days will only call,{CLEAR}no matter how close by they are. I’d{CLEAR}like to talk with them face-to-face...",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0661/1 | RV071: meaning: 'What do you need?' greeting"
+   "notes": "US 0661/1 | RV071: meaning: 'What do you need?' greeting; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,

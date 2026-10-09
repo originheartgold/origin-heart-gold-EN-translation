@@ -78,10 +78,10 @@
   {
    "id": 9,
    "zh": "听说有人胆敢强闯我们的地盘,{NEWLINE}应该就是你吧！{CLEAR}我现在就好好教教你{CLEAR}谁才是这座岛的老大！",
-   "en": "I heard somebody had the guts to barge{NEWLINE}onto our turf. Must be you!{CLEAR}I’ll show you right now who runs this{CLEAR}island!",
+   "en": "I heard somebody had the guts to barge{NEWLINE}onto our turf. Must be you!{CLEAR}I’ll show you right now{CLEAR}who runs this island!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 10,
@@ -142,10 +142,10 @@
   {
    "id": 17,
    "zh": "{VAR:0103:0}『你就是暴走族的老大吗？{NEWLINE}三之岛不是你们的私产,{CLEAR}赶紧带你的手下离开这里！",
-   "en": "{VAR:0103:0}: Are you the leader of these{NEWLINE}bikers?{CLEAR}Three Island isn’t your private{CLEAR}property!{CLEAR}Take your gang and get out of here!",
+   "en": "{VAR:0103:0}: Are you the leader of these{NEWLINE}bikers?{CLEAR}Three Island isn’t{CLEAR}your private property!{CLEAR}Take your gang and get out of here!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 18,
@@ -158,10 +158,10 @@
   {
    "id": 19,
    "zh": "你谁啊你,管这么宽,{NEWLINE}当自己是联盟冠军吗？{CLEAR}兄弟们给我上,教训一下这个小鬼！",
-   "en": "Who do you think you are, butting in like{NEWLINE}this? The League Champion?{CLEAR}Boys, get ’em! Teach this brat a{CLEAR}lesson!",
+   "en": "Who do you think you are, butting in like{NEWLINE}this? The League Champion?{CLEAR}Boys, get ’em!{CLEAR}Teach this brat a lesson!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 20,
@@ -222,10 +222,10 @@
   {
    "id": 27,
    "zh": "你们这群臭流浪猫,{NEWLINE}居然敢偷吃我们的三明治,{CLEAR}今天可算是逮着一只了。{CLEAR}我这就让你感受一下泡在海里的滋味！",
-   "en": "You mangy strays keep stealing our{NEWLINE}sandwiches! Today we finally caught one{CLEAR}of you.{CLEAR}Let’s see how you like a dunk in the{CLEAR}sea!",
+   "en": "You mangy strays keep stealing our{NEWLINE}sandwiches! Today we finally caught one{CLEAR}of you.{CLEAR}Let’s see how you like{CLEAR}a dunk in the sea!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 28,
@@ -710,10 +710,10 @@
   {
    "id": 88,
    "zh": "喵喵『你跟猫老大生活地太久了,{NEWLINE}所以没有办法适应其他地方的生活了？{CLEAR}所以你不想跟我去火箭队了吗？",
-   "en": "Meowth: You lived with Persian so long,{NEWLINE}you can’t get used to livin’ anywhere{CLEAR}else?{CLEAR}So you don’t wanna come with me to Team{CLEAR}Rocket?",
+   "en": "Meowth: You lived with Persian{NEWLINE}so long, you can’t get used{CLEAR}to livin’ anywhere else?{CLEAR}So you don’t wanna come{CLEAR}with me to Team Rocket?",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 89,
@@ -1126,10 +1126,10 @@
   {
    "id": 140,
    "zh": "谢谢你帮我赶走了暴走族,{NEWLINE}我才能着手重建三之岛。{CLEAR}这是我的一点谢礼,请你务必收下。",
-   "en": "Thank you for driving off the bikers.{NEWLINE}Now I can finally start rebuilding Three{CLEAR}Island.{CLEAR}This is a small token of my thanks.{CLEAR}Please, I insist.",
+   "en": "Thank you for driving off the bikers.{NEWLINE}Now I can finally start{CLEAR}rebuilding Three Island.{CLEAR}This is a small token of my thanks.{CLEAR}Please, I insist.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 141,
@@ -1246,18 +1246,18 @@
   {
    "id": 155,
    "zh": "其实我在六之岛玩得很开心哦,{NEWLINE}不过还是谢谢大哥哥能把我带回来。{CLEAR}以后我不会乱跑了,{CLEAR}不然爸爸又该担心了。",
-   "en": "I had lots of fun on Six Island, you{NEWLINE}know! But thanks for bringing me back,{CLEAR}mister.{CLEAR}I won’t wander off anymore, or Daddy{CLEAR}will worry again.",
+   "en": "I had lots of fun on Six Island,{NEWLINE}you know! But thanks{CLEAR}for bringing me back, mister.{CLEAR}I won’t wander off anymore, or Daddy{CLEAR}will worry again.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Male-player variant (大哥哥)."
+   "notes": "Male-player variant (大哥哥).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 156,
    "zh": "其实我在六之岛玩得很开心哦,{NEWLINE}不过还是谢谢大姐姐能把我带回来。{CLEAR}以后我不会乱跑了,{CLEAR}不然爸爸又该担心了。",
-   "en": "I had lots of fun on Six Island, you{NEWLINE}know! But thanks for bringing me back,{CLEAR}miss.{CLEAR}I won’t wander off anymore, or Daddy{CLEAR}will worry again.",
+   "en": "I had lots of fun on Six Island,{NEWLINE}you know! But thanks{CLEAR}for bringing me back, miss.{CLEAR}I won’t wander off anymore, or Daddy{CLEAR}will worry again.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Female-player variant (大姐姐)."
+   "notes": "Female-player variant (大姐姐).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   }
  ]
 }

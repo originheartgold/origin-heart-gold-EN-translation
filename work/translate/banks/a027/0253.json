@@ -318,18 +318,18 @@
   {
    "id": 39,
    "zh": "乔伊『您醒过来啦？{NEWLINE}真是太好了,{CLEAR}你的朋友们都很担心你呢。",
-   "en": "Joy: You’re awake? Thank goodness.{NEWLINE}Your friends were all so worried about{CLEAR}you.",
+   "en": "Joy: You’re awake? Thank goodness.{NEWLINE}Your friends were all{CLEAR}so worried about you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 40,
    "zh": "马志士『终于啊,你也恢复意识了。{NEWLINE}我把你们从水里拉上来的时候{CLEAR}还以为又是三个遇难者呢。{SCROLL}马志士『圣安努号上发生的事情{NEWLINE}我都听你那两个伙伴说了。{CLEAR}你们能跟火箭队战斗到最后一刻{CLEAR}真是非常了不起。{SCROLL}马志士『通过这件事情{NEWLINE}我感受到了你们身上的潜力,{CLEAR}所以无论过去发生了什么,{CLEAR}我都希望你能坚持这次修行之旅。{SCROLL}马志士『这样当再有危机来临时,{NEWLINE}你就能拿出更强的实力保护大家了。{CLEAR}努力成为一名伟大的训练家吧！",
-   "en": "Lt. Surge: Finally, you’ve come around.{NEWLINE}When I pulled you kids out of the{CLEAR}water...{SCROLL}...I figured we had three more victims.{SCROLL}Lt. Surge: Your two buddies told me{NEWLINE}everything that happened on the{CLEAR}S.S. Anne.{SCROLL}You fought Team Rocket to the very{NEWLINE}end. That’s really something.{SCROLL}Lt. Surge: This showed me what you kids{NEWLINE}are capable of.{SCROLL}So whatever happened before, I want{NEWLINE}you to stick with this training journey,{CLEAR}kid.{SCROLL}Lt. Surge: That way, when the next{NEWLINE}crisis comes, you’ll be strong enough to{CLEAR}protect everyone.{SCROLL}Work hard and become a great Trainer!",
+   "en": "Lt. Surge: Finally, you’ve come around.{NEWLINE}When I pulled you kids{CLEAR}out of the water...{SCROLL}...I figured we had three more victims.{SCROLL}Lt. Surge: Your two buddies told me{NEWLINE}everything that happened on the{CLEAR}S.S. Anne.{SCROLL}You fought Team Rocket to the very{NEWLINE}end. That’s really something.{SCROLL}Lt. Surge: This showed me what you kids{NEWLINE}are capable of.{SCROLL}So whatever happened before,{NEWLINE}I want you to stick{CLEAR}with this training journey, kid.{SCROLL}Lt. Surge: That way, when the next{NEWLINE}crisis comes, you’ll be strong enough to{CLEAR}protect everyone.{SCROLL}Work hard and become a great Trainer!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 41,
@@ -430,10 +430,10 @@
   {
    "id": 53,
    "zh": "我是专门负责照顾船长起居的服务员。{SCROLL}船长这么大年龄了{NEWLINE}还能保持健康的身体从事航海工作,{CLEAR}可是有我很大的功劳呐！",
-   "en": "I’m the steward who looks after the{NEWLINE}captain.{SCROLL}The captain’s still fit enough to sail at{NEWLINE}his age, and that’s largely thanks to{CLEAR}me!",
+   "en": "I’m the steward who looks after the{NEWLINE}captain.{SCROLL}The captain’s still fit{NEWLINE}enough to sail at his age,{CLEAR}and that’s largely thanks to me!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 54,
@@ -550,10 +550,10 @@
   {
    "id": 68,
    "zh": "你好,我是新圣安努号的船长。{NEWLINE}船上全区域对游客开放参观,{CLEAR}希望你能玩得愉快。",
-   "en": "Hello, I’m the captain of the new{NEWLINE}S.S. Anne. The whole ship is open to{CLEAR}visitors.{SCROLL}I hope you enjoy yourself.",
+   "en": "Hello, I’m the captain{NEWLINE}of the new S.S. Anne.{CLEAR}The whole ship is open to visitors.{SCROLL}I hope you enjoy yourself.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 69,
@@ -598,10 +598,10 @@
   {
    "id": 74,
    "zh": "{VAR:0103:0}『你能来真是太好了,{NEWLINE}敌人不是一般的强,{CLEAR}再打下去我可能就撑不住了。",
-   "en": "{VAR:0103:0}: I’m so glad you came. This{NEWLINE}guy’s way stronger than a normal{CLEAR}enemy.{SCROLL}I might not have lasted much longer.",
+   "en": "{VAR:0103:0}: I’m so glad you came.{NEWLINE}This guy’s way stronger{CLEAR}than a normal enemy.{SCROLL}I might not have lasted much longer.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 75,

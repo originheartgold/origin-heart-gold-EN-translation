@@ -14,26 +14,26 @@
   {
    "id": 1,
    "zh": "关东和城都各有一个巨大的森林,{NEWLINE}分别是常磐森林和桐树林。{CLEAR}但是常磐森林栖息的口袋妖怪{CLEAR}以虫系和飞行系为主,{CLEAR}而桐树林则以草系为主。",
-   "en": "Kanto and Johto each have a huge{NEWLINE}forest: Viridian Forest and Ilex Forest.{SCROLL}But the Pokémon living in Viridian Forest{NEWLINE}are mostly Bug and Flying types, while{CLEAR}Ilex Forest is mostly home to Grass{CLEAR}types.",
+   "en": "Kanto and Johto each have a huge{NEWLINE}forest: Viridian Forest and Ilex Forest.{SCROLL}But the Pokémon living{NEWLINE}in Viridian Forest are mostly Bug{CLEAR}and Flying types, while Ilex Forest{CLEAR}is mostly home to Grass types.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,
    "zh": "对战的规则分为{NEWLINE}「交替战斗」和「连续战斗」。{SCROLL}「交替战斗」模式相对简单,{NEWLINE}如果你对自己的实力有信心,{CLEAR}可以尝试在「设定」里面{CLEAR}把「战斗规则」改为「连续战斗」,{CLEAR}会让你获得更加刺激的对战体验。",
-   "en": "There are two battle styles: ‘Shift’{NEWLINE}and ‘Set.’{SCROLL}‘Shift’ is the easier one. If you’re{NEWLINE}confident in your skills, try going into{CLEAR}‘Options’...{SCROLL}...and changing ‘Battle Style’ to ‘Set.’{NEWLINE}It’ll make your battles way more{CLEAR}thrilling.",
+   "en": "There are two battle styles: ‘Shift’{NEWLINE}and ‘Set.’{SCROLL}‘Shift’ is the easier one.{NEWLINE}If you’re confident in your skills,{CLEAR}try going into ‘Options’...{SCROLL}...and changing ‘Battle Style’ to ‘Set.’{NEWLINE}It’ll make your battles{CLEAR}way more thrilling.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position | 交替战斗/连续战斗/战斗规则/设定 → Shift/Set/Battle Style/Options (as 0043)."
+   "notes": "v3 TM: 1 source(s), same position | 交替战斗/连续战斗/战斗规则/设定 → Shift/Set/Battle Style/Options (as 0043).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 3,
    "zh": "我的布鲁跑到常磐森林里去了,{NEWLINE}可是那里到处都是虫系口袋,{CLEAR}我根本不敢过去找它。",
-   "en": "My Snubbull ran off into Viridian Forest,{NEWLINE}but it’s crawling with Bug Pokémon in{CLEAR}there.{SCROLL}I’m way too scared to go look for it.",
+   "en": "My Snubbull ran off{NEWLINE}into Viridian Forest, but it’s crawling{CLEAR}with Bug Pokémon in there.{SCROLL}I’m way too scared to go look for it.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position | 布鲁 = Snubbull (the species; v3 read it as a name 'Blue'). Snubbull quest continues in 0130 #132–138."
+   "notes": "v3 TM: 1 source(s), same position | 布鲁 = Snubbull (the species; v3 read it as a name 'Blue'). Snubbull quest continues in 0130 #132–138.; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 4,
@@ -126,10 +126,10 @@
   {
    "id": 15,
    "zh": "无论这只布鲁多么不听话,{NEWLINE}只要根据巴浦洛夫的条件反射原理{CLEAR}用食物或痛疼去刺激它,{CLEAR}它最终都会成为我的乖宠物,{CLEAR}哟呵呵呵。",
-   "en": "No matter how disobedient that Snubbull{NEWLINE}is, if I use Pavlov’s conditioned{CLEAR}reflexes...{SCROLL}...and train it with food or pain, it’ll{NEWLINE}end up as my obedient pet. Oh ho ho ho.",
+   "en": "No matter how disobedient{NEWLINE}that Snubbull is, if I use{CLEAR}Pavlov’s conditioned reflexes...{SCROLL}...and train it with food or pain, it’ll{NEWLINE}end up as my obedient pet. Oh ho ho ho.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 16,

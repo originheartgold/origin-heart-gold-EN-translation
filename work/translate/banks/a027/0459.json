@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "公司贩卖机里的饮料{NEWLINE}都是研发部的同事发明的{CLEAR}特制树果汁饮料,{CLEAR}真的是太好喝了。",
-   "en": "The drinks in the company vending{NEWLINE}machines are special Berry juices{CLEAR}invented by our R&D team. They’re so{CLEAR}good!",
+   "en": "The drinks in the company vending{NEWLINE}machines are special Berry{CLEAR}juices invented by our R&D team.{CLEAR}They’re so good!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,
@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "员工自助的饮料机,{NEWLINE}提供各种好喝的树果汁。",
-   "en": "A self-service drink machine for staff.{NEWLINE}It offers all sorts of tasty Berry{CLEAR}juices.",
+   "en": "A self-service drink machine for staff.{NEWLINE}It offers all sorts{CLEAR}of tasty Berry juices.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 7,
@@ -126,18 +126,18 @@
   {
    "id": 15,
    "zh": "小次郎『在我们火箭队{NEWLINE}倾巢出动的时候来找麻烦,{CLEAR}你还真是够有胆量啊。",
-   "en": "James: Picking a fight while all of Team{NEWLINE}Rocket is out in force? You’ve got some{CLEAR}nerve.",
+   "en": "James: Picking a fight while all{NEWLINE}of Team Rocket is out in force?{CLEAR}You’ve got some nerve.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 16,
    "zh": "武藏『今天我们的任务{NEWLINE}就是守住这里禁止任何人上楼。{CLEAR}小鬼头我劝你少管闲事{CLEAR}赶紧给我滚回去！",
-   "en": "Jessie: Our mission today is to hold this{NEWLINE}spot and keep anyone from going{CLEAR}upstairs.{SCROLL}Jessie: Take my advice, brat. Mind your{NEWLINE}own business and get lost!",
+   "en": "Jessie: Our mission today{NEWLINE}is to hold this spot and keep{CLEAR}anyone from going upstairs.{SCROLL}Jessie: Take my advice, brat. Mind your{NEWLINE}own business and get lost!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 17,
@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "喵喵『以后不会要借钱上班了吧喵……",
-   "en": "Meowth: We ain’t gonna have to borrow{NEWLINE}money just to get to work, are we,{CLEAR}meow...",
+   "en": "Meowth: We ain’t gonna have{NEWLINE}to borrow money just to get{CLEAR}to work, are we, meow...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 26,
@@ -294,10 +294,10 @@
   {
    "id": 36,
    "zh": "赤焰松『很有自信嘛。{NEWLINE}不过我跟伦达和水吾桐不一样,{CLEAR}我的战术可聪明地多。",
-   "en": "Maxie: Such confidence. But I’m not like{NEWLINE}Petrel or Archie. My tactics are far{CLEAR}smarter.",
+   "en": "Maxie: Such confidence.{NEWLINE}But I’m not like Petrel or Archie.{CLEAR}My tactics are far smarter.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 37,
@@ -382,18 +382,18 @@
   {
    "id": 47,
    "zh": "{VAR:0103:0}『我听火箭队的人说{NEWLINE}这里关押着许多人质。{CLEAR}咱们到前面看看去。",
-   "en": "{VAR:0103:0}: I heard from the Team Rocket{NEWLINE}members that they’re holding lots of{CLEAR}hostages here. Let’s go take a look up{CLEAR}ahead.",
+   "en": "{VAR:0103:0}: I heard from the Team Rocket{NEWLINE}members that they’re holding{CLEAR}lots of hostages here.{CLEAR}Let’s go take a look up ahead.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 48,
    "zh": "赤焰松『怎么可能,{NEWLINE}我堂堂赤焰松大人{CLEAR}居然又败在了这些小鬼手里！？",
-   "en": "Maxie: Impossible! How could I, the{NEWLINE}great Maxie, lose to these brats{CLEAR}again?!",
+   "en": "Maxie: Impossible!{NEWLINE}How could I, the great Maxie,{CLEAR}lose to these brats again?!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 49,
@@ -494,10 +494,10 @@
   {
    "id": 61,
    "zh": "你们都走了,万一火箭队再把我们{NEWLINE}抓到别的地方去当人质可怎么办啊。{CLEAR}拜托你们留下来保护我们吧！{CLEAR}求求你们了！",
-   "en": "If you both leave, what if Team Rocket{NEWLINE}drags us off somewhere else as{CLEAR}hostages?{SCROLL}Please stay and protect us! We’re{NEWLINE}begging you!",
+   "en": "If you both leave, what{NEWLINE}if Team Rocket drags us off{CLEAR}somewhere else as hostages?{SCROLL}Please stay and protect us! We’re{NEWLINE}begging you!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 62,
@@ -510,10 +510,10 @@
   {
    "id": 63,
    "zh": "小绿『{VAR:0103:0}你先去上面{NEWLINE}想办法破除屏障,{CLEAR}我在这里确保大家安全后就去帮你。",
-   "en": "Blue: {VAR:0103:0}, you go on up and find a{NEWLINE}way to break the barrier. Once{CLEAR}everyone here is safe, I’ll come help{CLEAR}you.",
+   "en": "Blue: {VAR:0103:0}, you go on up and find{NEWLINE}a way to break the barrier.{CLEAR}Once everyone here is safe,{CLEAR}I’ll come help you.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 64,
@@ -542,10 +542,10 @@
   {
    "id": 67,
    "zh": "小绿『我刚刚去调查{NEWLINE}破除屏障的线索了,{CLEAR}所以慢了一步。",
-   "en": "Blue: I was looking for clues on how to{NEWLINE}break the barrier, so I got here a step{CLEAR}behind.",
+   "en": "Blue: I was looking for clues{NEWLINE}on how to break the barrier,{CLEAR}so I got here a step behind.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 68,
@@ -582,10 +582,10 @@
   {
    "id": 72,
    "zh": "火箭队修改了公司电梯的程序,{NEWLINE}现在不能直接坐电梯上楼了。{CLEAR}不过餐厅西侧有个发光的地板,{CLEAR}好像是研发部的人{CLEAR}为了吃饭方便而做的传送装置,{CLEAR}用那个的话或许可以到达其他楼层。",
-   "en": "Team Rocket reprogrammed the company{NEWLINE}elevator, so you can’t take it upstairs{CLEAR}anymore.{SCROLL}But there’s a glowing floor panel on the{NEWLINE}west side of the cafeteria. I think R&D{CLEAR}made it so they could get to lunch{CLEAR}faster.{SCROLL}You might be able to reach other floors{NEWLINE}with it.",
+   "en": "Team Rocket reprogrammed{NEWLINE}the company elevator, so you can’t{CLEAR}take it upstairs anymore.{SCROLL}But there’s a glowing floor panel{NEWLINE}on the west side of the cafeteria.{CLEAR}I think R&D made it so they could{CLEAR}get to lunch faster.{SCROLL}You might be able to reach other floors{NEWLINE}with it.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 73,
@@ -662,10 +662,10 @@
   {
    "id": 82,
    "zh": "我旁边这片发光的地板{NEWLINE}是机房的人为了来仓库取货方便{CLEAR}而做的传送装置。{CLEAR}踩上它就可以去6楼机房了。{SCROLL}不过6楼现在应该也被火箭队占领了,{NEWLINE}你过去的话可千万要小心啊。",
-   "en": "This glowing floor panel next to me is a{NEWLINE}warp the server room staff made so{CLEAR}they could pick up supplies from the{CLEAR}warehouse.{SCROLL}Step on it, and you’ll go to the server{NEWLINE}room on 6F.{SCROLL}But 6F has probably been taken over by{NEWLINE}Team Rocket too, so be very careful if{CLEAR}you go.",
+   "en": "This glowing floor panel next{NEWLINE}to me is a warp the server room{CLEAR}staff made so they could pick{CLEAR}up supplies from the warehouse.{SCROLL}Step on it, and you’ll go to the server{NEWLINE}room on 6F.{SCROLL}But 6F has probably been taken over by{NEWLINE}Team Rocket too, so be very careful if{CLEAR}you go.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 83,
@@ -678,10 +678,10 @@
   {
    "id": 84,
    "zh": "你又要去跟火箭队作战了吧,{NEWLINE}我这里有一只非常强的乘龙,{CLEAR}你需要带上它一起吗？{CLEAR}相信它会帮到你的！",
-   "en": "You’re off to fight Team Rocket again,{NEWLINE}right? I have a very strong Lapras{CLEAR}here.{SCROLL}Would you like to take it with you? I’m{NEWLINE}sure it’ll help you out!",
+   "en": "You’re off to fight{NEWLINE}Team Rocket again, right?{CLEAR}I have a very strong Lapras here.{SCROLL}Would you like to take it with you? I’m{NEWLINE}sure it’ll help you out!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 85,

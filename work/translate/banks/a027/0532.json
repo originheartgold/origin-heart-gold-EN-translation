@@ -22,10 +22,10 @@
   {
    "id": 2,
    "zh": "看到女儿{NEWLINE}变身表演成功之后的高兴样子,{CLEAR}我就明白了,{CLEAR}并不是每一个人{CLEAR}都一定要成为强大的精灵训练家,{CLEAR}女儿如果能发挥自己的兴趣特长{CLEAR}成为一名优秀的表演艺术家{CLEAR}也是个不错的人生选择。",
-   "en": "Seeing how happy my daughter was after{NEWLINE}her transformation show went well, I{CLEAR}realized that not everyone has to{CLEAR}become a strong Pokémon Trainer. If{CLEAR}she can make the most of her interests{CLEAR}and talents and become a great{CLEAR}performer, that’s a fine path in life{CLEAR}too.",
+   "en": "Seeing how happy my daughter was after{NEWLINE}her transformation show went well,{CLEAR}I realized that not everyone has{CLEAR}to become a strong Pokémon Trainer.{CLEAR}If she can make the most{CLEAR}of her interests and talents{CLEAR}and become a great performer,{CLEAR}that’s a fine path in life too.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 3,
@@ -46,10 +46,10 @@
   {
    "id": 5,
    "zh": "我想在朋友们面前{NEWLINE}来一场完美的变身表演,{CLEAR}为此我现在正在跟百变怪{CLEAR}努力地练习呢,{CLEAR}请你……",
-   "en": "I want to put on a perfect{NEWLINE}transformation show for my friends.{CLEAR}That’s why I’m practicing really hard{CLEAR}with Ditto right now. Could you{CLEAR}please...",
+   "en": "I want to put on a perfect{NEWLINE}transformation show for my friends.{CLEAR}That’s why I’m practicing really{CLEAR}hard with Ditto right now.{CLEAR}Could you please...",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 6,
@@ -102,10 +102,10 @@
   {
    "id": 12,
    "zh": "哈哈,{NEWLINE}我也是口袋妖怪训练家{VAR:0103:0}！{CLEAR}既然大家都是训练家,{CLEAR}那么接下来就应该来一场——{CLEAR}口袋妖怪对战！",
-   "en": "Ha ha, I’m Pokémon Trainer {VAR:0103:0}{NEWLINE}too! And since we’re both Trainers,{CLEAR}what comes next has to be... a Pokémon{CLEAR}battle!",
+   "en": "Ha ha, I’m Pokémon Trainer{NEWLINE}{VAR:0103:0} too!{CLEAR}And since we’re both Trainers,{CLEAR}what comes next has to be...{CLEAR}a Pokémon battle!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 13,
@@ -198,10 +198,10 @@
   {
    "id": 24,
    "zh": "能遇到天赋和兴趣{NEWLINE}都在表演上的学生,{CLEAR}真是太好了。{SCROLL}我决定要留下来好好栽培她,{NEWLINE}相信她未来一定可以{CLEAR}成为一名伟大的魔术师。{SCROLL}你作为一名游历四方的训练家,{NEWLINE}一定也需要各式各样的技能吧？{CLEAR}正好我的精灵特别擅长{CLEAR}神通力这个超能力招式,{CLEAR}如果你的精灵想学的话,{CLEAR}我可以教给它们。{SCROLL}怎么样,要学吗？{SCROLL}",
-   "en": "Finding a student whose talent and{NEWLINE}interest both lie in performing is just{CLEAR}wonderful.{SCROLL}I’ve decided to stay and train her{NEWLINE}properly. I’m sure she’ll become a{CLEAR}great magician one day.{SCROLL}As a Trainer who travels far and wide,{NEWLINE}you must need all kinds of moves, right?{CLEAR}As it happens, my Pokémon is especially{CLEAR}good at the psychic move Extrasensory.{CLEAR}If your Pokémon want to learn it, I can{CLEAR}teach them.{SCROLL}So, want to learn it?{SCROLL}",
+   "en": "Finding a student whose{NEWLINE}talent and interest both lie{CLEAR}in performing is just wonderful.{SCROLL}I’ve decided to stay and train her{NEWLINE}properly. I’m sure she’ll become a{CLEAR}great magician one day.{SCROLL}As a Trainer who travels far and wide,{NEWLINE}you must need all kinds of moves, right?{CLEAR}As it happens, my Pokémon is especially{CLEAR}good at the psychic move Extrasensory.{CLEAR}If your Pokémon want to learn it, I can{CLEAR}teach them.{SCROLL}So, want to learn it?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 25,
@@ -382,10 +382,10 @@
   {
    "id": 47,
    "zh": "你是要放弃{NEWLINE}让它记住神通力吗？{VAR:0200:0}",
-   "en": "Give up on teaching it Extrasensory?{VAR:0200:0}",
+   "en": "Give up on teaching it{NEWLINE}Extrasensory?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   }
  ]
 }

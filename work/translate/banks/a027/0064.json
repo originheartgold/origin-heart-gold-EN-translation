@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "野生精灵们{NEWLINE}听了精灵摇篮曲{CLEAR}也会想睡觉,{SCROLL}所以开着收音机{NEWLINE}播放精灵摇篮曲,{CLEAR}这样走在草丛中{CLEAR}就不用提心吊胆了。",
-   "en": "Pokémon Lullaby on the radio makes wild{NEWLINE}Pokémon sleepy. So keep the radio on{CLEAR}and play Pokémon Lullaby. Then you can{CLEAR}walk through the tall grass without{CLEAR}worrying.",
+   "en": "Pokémon Lullaby on the radio makes{NEWLINE}wild Pokémon sleepy. So keep the radio{CLEAR}on and play Pokémon Lullaby.{CLEAR}Then you can walk through{CLEAR}the tall grass without worrying.",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0066/1 | RV037: meaning: US line said you see fewer Pokémon; zh: lullaby, walk without worry (D-2066)"
+   "notes": "US 0066/1 | RV037: meaning: US line said you see fewer Pokémon; zh: lullaby, walk without worry (D-2066); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,

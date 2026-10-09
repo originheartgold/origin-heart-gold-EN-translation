@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "希罗娜『嗨,{VAR:0103:0}！{NEWLINE}这个洞穴里好多岔路啊。{SCROLL}到底是左边还是右边呢,{NEWLINE}真的好难选择啊。{CLEAR}{VAR:0103:0}你知道该往哪走吗？{SCROLL}",
-   "en": "Cynthia: Hi, {VAR:0103:0}! This cave has so{NEWLINE}many forks.{SCROLL}Left or right... It’s so hard to{NEWLINE}choose. Do you know which way to go,{CLEAR}{VAR:0103:0}?{SCROLL}",
+   "en": "Cynthia: Hi, {VAR:0103:0}! This cave has so{NEWLINE}many forks.{SCROLL}Left or right...{NEWLINE}It’s so hard to choose.{CLEAR}Do you know which way to go, {VAR:0103:0}?{SCROLL}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1,
@@ -153,18 +153,18 @@
   {
    "id": 18,
    "zh": "小绿『好了,{VAR:0103:0}。{NEWLINE}这几个躁动的家伙交给我来看着,{CLEAR}你去帮其他人吧。",
-   "en": "Blue: OK, {VAR:0103:0}. I’ll keep an eye on{NEWLINE}these troublemakers. You go help the{CLEAR}others.",
+   "en": "Blue: OK, {VAR:0103:0}. I’ll keep{NEWLINE}an eye on these troublemakers.{CLEAR}You go help the others.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 19,
    "zh": "你们这些小鬼就被碾碎在{NEWLINE}火箭队滚滚向前的车轮下吧！",
-   "en": "You brats are going to be crushed{NEWLINE}under the wheels of Team Rocket’s{CLEAR}march!",
+   "en": "You brats are going{NEWLINE}to be crushed under the wheels{CLEAR}of Team Rocket’s march!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 20,
@@ -233,10 +233,10 @@
   {
    "id": 28,
    "zh": "大吾『这几个人已经无力反抗了,{NEWLINE}{VAR:0103:0}你去帮其他伙伴吧。",
-   "en": "Steven: These people can’t fight back{NEWLINE}anymore. {VAR:0103:0}, go help our other{CLEAR}friends.",
+   "en": "Steven: These people can’t{NEWLINE}fight back anymore. {VAR:0103:0},{CLEAR}go help our other friends.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 29,
@@ -265,10 +265,10 @@
   {
    "id": 32,
    "zh": "希罗娜『{VAR:0103:0},{NEWLINE}我这里的敌人已经没有威胁了,{CLEAR}你去帮帮其他人吧！",
-   "en": "Cynthia: {VAR:0103:0}, the enemies here{NEWLINE}aren’t a threat anymore. Go help the{CLEAR}others!",
+   "en": "Cynthia: {VAR:0103:0}, the enemies{NEWLINE}here aren’t a threat anymore.{CLEAR}Go help the others!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 33,
@@ -441,10 +441,10 @@
   {
    "id": 54,
    "zh": "这位来自芳缘地区的训练家,{NEWLINE}对化石与考古似乎很有心得呢。",
-   "en": "This Trainer from the Hoenn region{NEWLINE}seems to know a lot about fossils and{CLEAR}archaeology.",
+   "en": "This Trainer from the Hoenn{NEWLINE}region seems to know a lot{CLEAR}about fossils and archaeology.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 2 source(s), same position; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
+   "notes": "v3 TM: 2 source(s), same position; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 55,
@@ -457,10 +457,10 @@
   {
    "id": 56,
    "zh": "大吾『嗯,听完您的论述之后,{NEWLINE}我也觉得非常有可能！",
-   "en": "Steven: Hmm, after hearing your{NEWLINE}argument, I also think it’s very{CLEAR}possible!",
+   "en": "Steven: Hmm, after{NEWLINE}hearing your argument,{CLEAR}I also think it’s very possible!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 2 source(s), same position"
+   "notes": "v3 TM: 2 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 57,
@@ -489,10 +489,10 @@
   {
    "id": 60,
    "zh": "大吾『那真是太可惜了,{NEWLINE}月见山可是充满了未知的秘密。{CLEAR}我现在要进去调查研究了,{CLEAR}你有兴趣的话也进来看看吧。",
-   "en": "Steven: That’s a pity. Mt. Moon is full{NEWLINE}of unknown secrets.{SCROLL}I’m going inside to investigate now. If{NEWLINE}you’re interested, come in and take a{CLEAR}look.",
+   "en": "Steven: That’s a pity. Mt. Moon is full{NEWLINE}of unknown secrets.{SCROLL}I’m going inside to investigate now.{NEWLINE}If you’re interested,{CLEAR}come in and take a look.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl)"
+   "notes": "v3 TM: 1 source(s), same position; other variants: 1 more v3 TM candidate (tm_v4_matches.jsonl); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 61,
@@ -537,10 +537,10 @@
   {
    "id": 66,
    "zh": "乔伊『前面的警卫说{NEWLINE}月见山的道路正在施工,{CLEAR}暂时不能通行。{SCROLL}乔伊『所以你趁着体力充沛,{NEWLINE}掉头回去才是上策吧！",
-   "en": "Joy: The guard up ahead says the path{NEWLINE}through Mt. Moon is under construction{CLEAR}and closed for now.{SCROLL}Joy: So the smart thing to do is turn{NEWLINE}back while you still have plenty of{CLEAR}energy!",
+   "en": "Joy: The guard up ahead says the path{NEWLINE}through Mt. Moon is under construction{CLEAR}and closed for now.{SCROLL}Joy: So the smart thing to do{NEWLINE}is turn back while you still{CLEAR}have plenty of energy!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 67,
@@ -601,10 +601,10 @@
   {
    "id": 74,
    "zh": "小霞『{VAR:0103:0}你也到这里来了啊！{NEWLINE}前面的路暂时被封住了,{CLEAR}不知道要多久才能开放。",
-   "en": "Misty: So you made it here too,{NEWLINE}{VAR:0103:0}! The road ahead is closed for{CLEAR}now.{SCROLL}Who knows how long it’ll be before it{NEWLINE}opens.",
+   "en": "Misty: So you made{NEWLINE}it here too, {VAR:0103:0}!{CLEAR}The road ahead is closed for now.{SCROLL}Who knows how long it’ll be before it{NEWLINE}opens.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 75,
@@ -945,26 +945,26 @@
   {
    "id": 117,
    "zh": "小蓝『嘿嘿,{VAR:0103:0}{NEWLINE}你不用谢我帮你揭穿火箭队的伪装啦。{SCROLL}小蓝『如果你还想继续去{NEWLINE}调查火箭队的阴谋呢,{CLEAR}我建议你还是躲在暗处观察比较好。{CLEAR}硬碰硬可不是个好主意。",
-   "en": "Green: Heh heh, {VAR:0103:0}, no need to{NEWLINE}thank me for exposing Team Rocket’s{CLEAR}disguise.{SCROLL}Green: If you want to keep{NEWLINE}investigating Team Rocket’s scheme, I’d{CLEAR}say you should watch from the shadows.{SCROLL}Taking them head-on isn’t a good idea.",
+   "en": "Green: Heh heh, {VAR:0103:0},{NEWLINE}no need to thank me for exposing{CLEAR}Team Rocket’s disguise.{SCROLL}Green: If you want to keep{NEWLINE}investigating Team Rocket’s scheme, I’d{CLEAR}say you should watch from the shadows.{SCROLL}Taking them head-on isn’t a good idea.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position | Branch: Green (male-player route) / #118 Red (female-player route)."
+   "notes": "v3 TM: 1 source(s), same position | Branch: Green (male-player route) / #118 Red (female-player route).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 118,
    "zh": "小赤『多亏有{VAR:0103:0}你们这么多{NEWLINE}擅长战斗训练家聚在这里{CLEAR}我才敢揭穿火箭队的伪装。{CLEAR}不过面对火箭队这么多人的组织,{CLEAR}去硬碰硬可不是个好主意。",
-   "en": "Red: I only dared to expose Team{NEWLINE}Rocket’s disguise because you and all{CLEAR}these strong Trainers were here,{CLEAR}{VAR:0103:0}.{SCROLL}But going head-on against an{NEWLINE}organization as big as Team Rocket isn’t{CLEAR}a good idea.",
+   "en": "Red: I only dared to expose{NEWLINE}Team Rocket’s disguise because{CLEAR}you and all these strong{CLEAR}Trainers were here, {VAR:0103:0}.{SCROLL}But going head-on against an{NEWLINE}organization as big as Team Rocket isn’t{CLEAR}a good idea.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 119,
    "zh": "乔伊『我刚刚都看到了,{NEWLINE}你一个人对付了那么多……{CLEAR}那么多坏人。{SCROLL}乔伊『想必你和你的精灵{NEWLINE}也已经很疲惫了吧。{CLEAR}我来帮你恢复一下。",
-   "en": "Joy: I saw everything. You took on so{NEWLINE}many... so many bad guys all by{CLEAR}yourself.{SCROLL}Joy: You and your Pokémon must be{NEWLINE}exhausted. Let me heal you.",
+   "en": "Joy: I saw everything.{NEWLINE}You took on so many...{CLEAR}so many bad guys all by yourself.{SCROLL}Joy: You and your Pokémon must be{NEWLINE}exhausted. Let me heal you.",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 120,
@@ -1001,10 +1001,10 @@
   {
    "id": 124,
    "zh": "不想与月见山的野生精灵战斗的话,{NEWLINE}就走棕色的土地吧！",
-   "en": "If you don’t want to battle the wild{NEWLINE}Pokémon in Mt. Moon, walk on the brown{CLEAR}ground!",
+   "en": "If you don’t want to battle{NEWLINE}the wild Pokémon in Mt. Moon,{CLEAR}walk on the brown ground!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 125,
@@ -1033,10 +1033,10 @@
   {
    "id": 128,
    "zh": "{VAR:0103:0}『火箭队十干部！？{NEWLINE}那么厉害的家伙有十个！？",
-   "en": "{VAR:0103:0}: Team Rocket’s Ten{NEWLINE}Executives?! There are ten guys that{CLEAR}strong?!",
+   "en": "{VAR:0103:0}: Team Rocket’s{NEWLINE}Ten Executives?!{CLEAR}There are ten guys that strong?!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 129,
@@ -1121,10 +1121,10 @@
   {
    "id": 139,
    "zh": "月见山洞穴有些地方的泥土{NEWLINE}含水量会偏高一点,{CLEAR}颜色也会偏棕色一些。{SCROLL}野生口袋妖怪们{NEWLINE}不喜欢这种湿乎乎的土地,{CLEAR}所以你如果走在棕色的地面上{CLEAR}就不用担心遇到野生精灵了。{SCROLL}我告诉了你这么有用的信息,{NEWLINE}你不陪我来场对战感谢一下吗？",
-   "en": "In some parts of Mt. Moon’s caves, the{NEWLINE}soil holds a bit more water, so it looks{CLEAR}browner.{SCROLL}Wild Pokémon don’t like that soggy{NEWLINE}ground. So if you walk on brown ground,{CLEAR}you won’t have to worry about running{CLEAR}into wild Pokémon.{SCROLL}I told you something that useful, so{NEWLINE}won’t you thank me with a battle?",
+   "en": "In some parts of Mt. Moon’s caves,{NEWLINE}the soil holds a bit more water,{CLEAR}so it looks browner.{SCROLL}Wild Pokémon don’t like that soggy{NEWLINE}ground. So if you walk on brown ground,{CLEAR}you won’t have to worry about running{CLEAR}into wild Pokémon.{SCROLL}I told you something that useful, so{NEWLINE}won’t you thank me with a battle?",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 140,
@@ -1209,10 +1209,10 @@
   {
    "id": 150,
    "zh": "{VAR:0101:0}想要记住{NEWLINE}新的火之牙……！{SCROLL}但是{VAR:0101:0}{NEWLINE}已经记住4个技能了！{SCROLL}为了学习火之牙{NEWLINE}要让它忘记其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0101:0} wants to learn Fire Fang...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move to learn Fire{NEWLINE}Fang?{VAR:0200:0}",
+   "en": "{VAR:0101:0} wants to learn Fire Fang...!{SCROLL}But {VAR:0101:0} already knows four{NEWLINE}moves!{SCROLL}Should it forget a move{NEWLINE}to learn Fire Fang?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0047#150; text not kept)"
+   "notes": "v3 TM: 1 source(s), same position, flags var_mismatch | seed rejected tm_v3 [tag_mismatch] (candidate v3 0047#150; text not kept); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 151,

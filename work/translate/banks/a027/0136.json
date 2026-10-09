@@ -430,10 +430,10 @@
   {
    "id": 53,
    "zh": "欢迎光临！{SCROLL}这里会进行{NEWLINE}口袋竞技的记录统计。{SCROLL}只要您购买了{NEWLINE}『资料卡』{CLEAR}就能查看记录了！{SCROLL}口袋竞技{NEWLINE}会有这种那种{CLEAR}甚至是有点不好意思的记录！{SCROLL}这些都能进行查看,{NEWLINE}请一定要尝试一下,{SCROLL}要购买口袋竞技的{NEWLINE}资料卡吗？{VAR:0200:0}",
-   "en": "Welcome!{SCROLL}This is where we keep track of{NEWLINE}Pokéathlon records.{SCROLL}Once you buy a Data Card, you can view{NEWLINE}the records!{SCROLL}The Pokéathlon keeps all sorts of{NEWLINE}records... even some slightly{CLEAR}embarrassing ones!{SCROLL}You can view every one of them, so{NEWLINE}please give it a try.{SCROLL}Would you like to buy a Pokéathlon Data{NEWLINE}Card? {VAR:0200:0}",
+   "en": "Welcome!{SCROLL}This is where we keep track of{NEWLINE}Pokéathlon records.{SCROLL}Once you buy a Data Card, you can view{NEWLINE}the records!{SCROLL}The Pokéathlon keeps all sorts of{NEWLINE}records... even some slightly{CLEAR}embarrassing ones!{SCROLL}You can view every one of them, so{NEWLINE}please give it a try.{SCROLL}Would you like to buy{NEWLINE}a Pokéathlon Data Card? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0138/53 | RV039: meaning: US line differed; retranslated from zh"
+   "notes": "US 0138/53 | RV039: meaning: US line differed; retranslated from zh; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 54,
@@ -834,10 +834,10 @@
   {
    "id": 103,
    "zh": "哦哦！{NEWLINE}你的眼神相当不错啊！{SCROLL}我应该可以{NEWLINE}把我最后的梦想{CLEAR}托付给你了。{VAR:0200:0}",
-   "en": "Oh-ho! You have quite a good eye!{SCROLL}I think I can entrust my last dream to{NEWLINE}you. {VAR:0200:0}",
+   "en": "Oh-ho! You have quite a good eye!{SCROLL}I think I can entrust{NEWLINE}my last dream to you. {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0138/103 | RV039: meaning: entrust final dream, not tell about it (D-1670)"
+   "notes": "US 0138/103 | RV039: meaning: entrust final dream, not tell about it (D-1670); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 104,

@@ -54,10 +54,10 @@
   {
    "id": 6,
    "zh": "小蓝『现在还没到{NEWLINE}游轮的出航时间,{CLEAR}看来得再等会儿了。",
-   "en": "Green: It’s not departure time yet.{NEWLINE}Looks like we’ll have to wait a bit{CLEAR}longer.",
+   "en": "Green: It’s not departure time yet.{NEWLINE}Looks like we’ll have{CLEAR}to wait a bit longer.",
    "status": "draft",
    "origin": "agent",
-   "notes": "Branch: Green = male-player route (Red alternate)."
+   "notes": "Branch: Green = male-player route (Red alternate).; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 7,
@@ -174,10 +174,10 @@
   {
    "id": 21,
    "zh": "真是有惊无险,{NEWLINE}能有这番奇遇倒也算是值回了票价。",
-   "en": "That was a close call. But an adventure{NEWLINE}like that was worth the price of the{CLEAR}ticket.",
+   "en": "That was a close call.{NEWLINE}But an adventure like that was{CLEAR}worth the price of the ticket.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 22,
@@ -206,10 +206,10 @@
   {
    "id": 25,
    "zh": "经过这次事情我算是明白了,{NEWLINE}要成为强大的训练家{CLEAR}锻炼对战的实力就可以了,{CLEAR}但要成为有用的训练家,{CLEAR}还是需要一定的智慧的。",
-   "en": "After all this, I finally get it. To be a{NEWLINE}strong Trainer, battle skills are{CLEAR}enough...{SCROLL}But to be a useful Trainer, you need{NEWLINE}some brains too.",
+   "en": "After all this, I finally get it.{NEWLINE}To be a strong Trainer,{CLEAR}battle skills are enough...{SCROLL}But to be a useful Trainer, you need{NEWLINE}some brains too.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 26,
@@ -222,10 +222,10 @@
   {
    "id": 27,
    "zh": "别慌别慌,都是小场面。{NEWLINE}大不了咱们换个方式,{CLEAR}以后你假扮口袋妖怪饲育家,{CLEAR}我来卖口袋妖怪保健品。",
-   "en": "Relax, relax, this is nothing. Worst{NEWLINE}case, we change our act.{SCROLL}From now on, you pose as a Pokémon{NEWLINE}Breeder, and I’ll sell Pokémon health{CLEAR}supplements.",
+   "en": "Relax, relax, this is nothing. Worst{NEWLINE}case, we change our act.{SCROLL}From now on, you pose{NEWLINE}as a Pokémon Breeder, and I’ll sell{CLEAR}Pokémon health supplements.",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 28,
@@ -278,10 +278,10 @@
   {
    "id": 34,
    "zh": "哈哈,脚踏实地的感觉最好了,{NEWLINE}我决定要走回城都去！",
-   "en": "Ha ha, nothing beats solid ground under{NEWLINE}your feet. I’ve decided to walk back to{CLEAR}Johto!",
+   "en": "Ha ha, nothing beats solid{NEWLINE}ground under your feet.{CLEAR}I’ve decided to walk back to Johto!",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 35,

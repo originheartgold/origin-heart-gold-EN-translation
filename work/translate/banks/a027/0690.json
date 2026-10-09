@@ -14,10 +14,10 @@
   {
    "id": 1,
    "zh": "同样的对手,同样的精灵,{NEWLINE}然后对战的结果{CLEAR}却有可能截然相反！{SCROLL}我以后还想和你再对战几次,{NEWLINE}请你一定要和我{CLEAR}交换一下电话号码！{VAR:0200:0}",
-   "en": "The same opponent, the same Pokémon,{NEWLINE}and yet the result can be the{CLEAR}complete opposite!{SCROLL}I’d like to battle with you again. Let’s{NEWLINE}trade phone numbers!{VAR:0200:0}",
+   "en": "The same opponent, the same Pokémon,{NEWLINE}and yet the result can be the{CLEAR}complete opposite!{SCROLL}I’d like to battle with you again.{NEWLINE}Let’s trade phone numbers!{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0699/1; ext-review RCA-029"
+   "notes": "US 0699/1; ext-review RCA-029; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 2,

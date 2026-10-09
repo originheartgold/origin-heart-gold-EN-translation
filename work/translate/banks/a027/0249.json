@@ -70,18 +70,18 @@
   {
    "id": 8,
    "zh": "娜姿『你想知道{NEWLINE}我的电话号码了吗？{SCROLL}我可是{NEWLINE}知道你内心所想的事哦……{VAR:0200:0}",
-   "en": "Sabrina: So now you want to know my{NEWLINE}number? I know what you are thinking,{CLEAR}after all... {VAR:0200:0}",
+   "en": "Sabrina: So now you want{NEWLINE}to know my number? I know what{CLEAR}you are thinking, after all... {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0256/8 | RV051: meaning: zh 知道你内心所想 = knows your thoughts (D-1723)"
+   "notes": "US 0256/8 | RV051: meaning: zh 知道你内心所想 = knows your thoughts (D-1723); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 9,
    "zh": "娜姿『嗯？{NEWLINE}{VAR:0103:0}你也喜欢坐船航行吗？{CLEAR}是不是觉得吹着海风很舒服呀。{CLEAR}不如咱们就在这舒服的海风里,{CLEAR}一起照张相如何？{VAR:0200:0}",
-   "en": "Sabrina: Hm? You like sailing too,{NEWLINE}{VAR:0103:0}? The sea breeze feels nice,{CLEAR}doesn’t it?{SCROLL}Why don’t we take a photo together in{NEWLINE}this lovely breeze?{VAR:0200:0}",
+   "en": "Sabrina: Hm? You like sailing too,{NEWLINE}{VAR:0103:0}? The sea breeze feels nice,{CLEAR}doesn’t it?{SCROLL}Why don’t we take a photo{NEWLINE}together in this lovely breeze?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 10,

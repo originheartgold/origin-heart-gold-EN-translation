@@ -6,10 +6,10 @@
   {
    "id": 0,
    "zh": "我是想要帮助{NEWLINE}你这位战斗狂人的{CLEAR}技能大叔！{SCROLL}只要分我一点战斗点数{NEWLINE}我就教给你一些{CLEAR}技巧型技能！{VAR:0200:0}",
-   "en": "I’m the Move Tutor who’s here to help{NEWLINE}battle-crazy Trainers like you!{SCROLL}Share a little BP with me, and I’ll teach{NEWLINE}your Pokémon some skillful moves! {VAR:0200:0}",
+   "en": "I’m the Move Tutor who’s here to help{NEWLINE}battle-crazy Trainers like you!{SCROLL}Share a little BP with me,{NEWLINE}and I’ll teach your Pokémon{CLEAR}some skillful moves! {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "same text as 0450 (Frontier move tutors); US slot blank, probably unused"
+   "notes": "same text as 0450 (Frontier move tutors); US slot blank, probably unused; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 1,
@@ -38,26 +38,26 @@
   {
    "id": 4,
    "zh": "{VAR:0100:0}要学{NEWLINE}{VAR:0106:1}⋯⋯{SCROLL}但是{NEWLINE}{VAR:0100:0}已经有４个技能,{CLEAR}已满！{SCROLL}要为学{VAR:0106:1}{NEWLINE}而放弃其他的技能吗？{VAR:0200:0}",
-   "en": "{VAR:0100:0} wants to learn the move{NEWLINE}{VAR:0106:1}...{SCROLL}But {VAR:0100:0} already knows four{NEWLINE}moves, so it can’t!{SCROLL}Forget a move so that {VAR:0106:1} can{NEWLINE}be learned? {VAR:0200:0}",
+   "en": "{VAR:0100:0} wants to learn the move{NEWLINE}{VAR:0106:1}...{SCROLL}But {VAR:0100:0} already knows four{NEWLINE}moves, so it can’t!{SCROLL}Forget a move so that{NEWLINE}{VAR:0106:1} can be learned? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 5,
    "zh": "忘记{NEWLINE}{VAR:0106:1}吗？可以吧？{VAR:0200:0}",
-   "en": "{VAR:0106:1} will be forgotten. That’s{NEWLINE}OK, right? {VAR:0200:0}",
+   "en": "{VAR:0106:1} will be forgotten.{NEWLINE}That’s OK, right? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 6,
    "zh": "就是说{NEWLINE}放弃学{CLEAR}{VAR:0106:1}是吧？{VAR:0200:0}",
-   "en": "So you want to give up on {VAR:0106:1},{NEWLINE}am I right? {VAR:0200:0}",
+   "en": "So you want to give up{NEWLINE}on {VAR:0106:1}, am I right? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 7,
@@ -94,10 +94,10 @@
   {
    "id": 11,
    "zh": "我是赌上生命{NEWLINE}进行精灵对战的你的强力的同伴,{CLEAR}技能大叔！{SCROLL}只要分给我点战斗点数{NEWLINE}我就教给你一些{CLEAR}力量型技能！{VAR:0200:0}",
-   "en": "I’m the Move Tutor, the mighty ally of{NEWLINE}Trainers who put their lives on the line{CLEAR}in Pokémon battles!{SCROLL}Share a little BP with me, and I’ll teach{NEWLINE}your Pokémon some powerful moves! {VAR:0200:0}",
+   "en": "I’m the Move Tutor, the mighty ally of{NEWLINE}Trainers who put their lives on the line{CLEAR}in Pokémon battles!{SCROLL}Share a little BP with me,{NEWLINE}and I’ll teach your Pokémon{CLEAR}some powerful moves! {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 12,
@@ -126,10 +126,10 @@
   {
    "id": 15,
    "zh": "{VAR:0100:0}要学{NEWLINE}{VAR:0106:1}⋯⋯{SCROLL}但是{NEWLINE}{VAR:0100:0}已有４个技能,{CLEAR}技能已满！{SCROLL}要为学{VAR:0106:1}{NEWLINE}而放弃其他的技能吗？{VAR:0200:0}",
-   "en": "{VAR:0100:0} wants to learn the move{NEWLINE}{VAR:0106:1}...{SCROLL}But {VAR:0100:0} already knows four{NEWLINE}moves!{SCROLL}Forget a move so that {VAR:0106:1} can{NEWLINE}be learned? {VAR:0200:0}",
+   "en": "{VAR:0100:0} wants to learn the move{NEWLINE}{VAR:0106:1}...{SCROLL}But {VAR:0100:0} already knows four{NEWLINE}moves!{SCROLL}Forget a move so that{NEWLINE}{VAR:0106:1} can be learned? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 16,
@@ -182,10 +182,10 @@
   {
    "id": 22,
    "zh": "我是将灵魂注入{NEWLINE}精灵对战的你的的温柔的同伴,{CLEAR}技能大叔！{SCROLL}只要分给我一些战斗点数{NEWLINE}我就教给你一些能{CLEAR}撼动心灵的技能。{VAR:0200:0}",
-   "en": "I’m the Move Tutor, the gentle ally of{NEWLINE}Trainers who pour their hearts and{CLEAR}souls into Pokémon battles!{SCROLL}Share a little BP with me, and I’ll teach{NEWLINE}your Pokémon some moves that stir the{CLEAR}heart. {VAR:0200:0}",
+   "en": "I’m the Move Tutor, the gentle ally of{NEWLINE}Trainers who pour their hearts and{CLEAR}souls into Pokémon battles!{SCROLL}Share a little BP with me,{NEWLINE}and I’ll teach your Pokémon{CLEAR}some moves that stir the heart. {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 23,
@@ -214,18 +214,18 @@
   {
    "id": 26,
    "zh": "{VAR:0100:0}要学{NEWLINE}{VAR:0106:1}⋯⋯{SCROLL}但是{NEWLINE}{VAR:0100:0}{CLEAR}技能已满！{SCROLL}要为学{VAR:0106:1}{NEWLINE}而放弃其他技能吗？{VAR:0200:0}",
-   "en": "{VAR:0100:0} wants to learn the move{NEWLINE}{VAR:0106:1}...{SCROLL}But {VAR:0100:0} already knows four{NEWLINE}moves!{SCROLL}Forget a move so that {VAR:0106:1} can{NEWLINE}be learned? {VAR:0200:0}",
+   "en": "{VAR:0100:0} wants to learn the move{NEWLINE}{VAR:0106:1}...{SCROLL}But {VAR:0100:0} already knows four{NEWLINE}moves!{SCROLL}Forget a move so that{NEWLINE}{VAR:0106:1} can be learned? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 27,
    "zh": "遗忘{VAR:0106:1},{NEWLINE}没错吧？{VAR:0200:0}",
-   "en": "{VAR:0106:1} will be forgotten. Do I{NEWLINE}have that right? {VAR:0200:0}",
+   "en": "{VAR:0106:1} will be forgotten.{NEWLINE}Do I have that right? {VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": ""
+   "notes": "layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 28,

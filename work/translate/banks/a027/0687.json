@@ -38,10 +38,10 @@
   {
    "id": 4,
    "zh": "与优秀训练是对战,{NEWLINE}我求之不得！{SCROLL}要是你乐意的话,{NEWLINE}把你的电话号码给我吧！{VAR:0200:0}",
-   "en": "I want to battle tough Trainers as{NEWLINE}often as I can!{SCROLL}If you’re up for it, could I get your{NEWLINE}number?{VAR:0200:0}",
+   "en": "I want to battle tough Trainers as{NEWLINE}often as I can!{SCROLL}If you’re up for it,{NEWLINE}could I get your number?{VAR:0200:0}",
    "status": "draft",
    "origin": "agent",
-   "notes": "US 0696/4 | RV073: addition: dropped added 'meet up for more battles'; restored 要是你乐意的话"
+   "notes": "US 0696/4 | RV073: addition: dropped added 'meet up for more battles'; restored 要是你乐意的话; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 5,

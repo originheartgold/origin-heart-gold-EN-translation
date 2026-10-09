@@ -30,10 +30,10 @@
   {
    "id": 3,
    "zh": "我有鲤鱼王哦,{NEWLINE}它是我的第一只精灵。{CLEAR}我会好好珍惜它的！",
-   "en": "I have a Magikarp. It’s my very first{NEWLINE}Pokémon. I’m going to take good care of{CLEAR}it!",
+   "en": "I have a Magikarp.{NEWLINE}It’s my very first Pokémon.{CLEAR}I’m going to take good care of it!",
    "status": "draft",
    "origin": "agent",
-   "notes": "v3 TM: 1 source(s), same position"
+   "notes": "v3 TM: 1 source(s), same position; layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 4,

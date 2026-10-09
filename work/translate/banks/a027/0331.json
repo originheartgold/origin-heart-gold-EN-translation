@@ -121,10 +121,10 @@
   {
    "id": 14,
    "zh": "你这么漠视与精灵之间的感情,{NEWLINE}是不可能成为强大训练家的！",
-   "en": "Ignoring the bond with your Pokémon{NEWLINE}like that, you’ll never be a strong{CLEAR}Trainer!",
+   "en": "Ignoring the bond{NEWLINE}with your Pokémon like that,{CLEAR}you’ll never be a strong Trainer!",
    "status": "draft",
    "origin": "agent",
-   "notes": "RV012: omission: 强大训练家 (strong Trainer)"
+   "notes": "RV012: omission: 强大训练家 (strong Trainer); layout rebalance 2026-10-09 (prompt icons / single-word page)"
   },
   {
    "id": 15,
