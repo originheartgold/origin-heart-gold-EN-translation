@@ -510,6 +510,38 @@ class Judges(unittest.TestCase):
         self.assertEqual(F.judge_safari("safari", broken)[0], "unclear")
         self.assertEqual(F.COVERAGE["safari-no-wild-double"], ("safari",))
 
+    def test_trade_evo(self):
+        def obs(state, change=None):
+            cases = {}
+            for name, (species, level, with_fix, without_fix) in F.TRADE_EVO_CASES.items():
+                after = with_fix if state == "fixed" else without_fix
+                cases[name] = {"before": {"species": species, "level": level, "checksum_ok": True},
+                               "after": {"species": after, "level": level + 1, "checksum_ok": True}}
+            for (name, key), value in (change or {}).items():
+                cases[name]["after"][key] = value
+            return {"cases": cases}
+        self.assertEqual(F.judge_trade_evo("trade-evo", obs("fixed"))[0], "fixed")
+        self.assertEqual(F.judge_trade_evo("trade-evo", obs("original"))[0], "original")
+        # no level gained (the candy was not used): proves nothing
+        self.assertEqual(F.judge_trade_evo("trade-evo", obs("original", {("boldore", "level"): 34}))[0], "unclear")
+        # Roggenrola did not evolve: the evolution path did not run on this ROM
+        self.assertEqual(F.judge_trade_evo("trade-evo", obs("original", {("roggenrola", "species"): 524}))[0],
+                         "unclear")
+        # only one of the two records changed
+        self.assertEqual(F.judge_trade_evo("trade-evo", obs("fixed", {("gurdurr", "species"): 533}))[0], "unclear")
+        self.assertEqual(F.COVERAGE["trade-evolutions-levelup"], ("trade-evo",))
+
+    def test_trade_evo_cases_follow_the_fix(self):
+        # the species and levels are the [[narc_bytes]] records: member = species, new level = case level + 1
+        entries = {e["member"]: e for e in REGISTRY["trade-evolutions-levelup"]["narc_bytes"]}
+        for name, (species, level, with_fix, without_fix) in F.TRADE_EVO_CASES.items():
+            if species in entries:
+                method, param, target = fixreg.halfwords(entries[species]["new"])
+                self.assertEqual((method, param, target), (4, level + 1, with_fix), name)
+                self.assertEqual(fixreg.halfwords(entries[species]["expect"])[0], 5, name)   # trade before
+                self.assertEqual(without_fix, species, name)
+        self.assertEqual(set(entries), {s for s, *_ in F.TRADE_EVO_CASES.values()} - {524})
+
     def test_judge_rows(self):
         selection = {"pcbox": ["pcbox-name-width"]}
         results = {("pcbox", "fixed"): PCBOX_FIXED, ("pcbox", "no-pcbox-name-width"): PCBOX_ORIGINAL}

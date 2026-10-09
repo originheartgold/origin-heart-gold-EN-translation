@@ -155,6 +155,23 @@ One fix adds C code: `text-speed` (work/patches/text-speed). Its parts:
 3. Replace together: payload.json, `REVIEWED_PAYLOAD_SHA256` in text_speed_patch.py, the `.definelabel` lines in text-speed.asm, and, for a new compiler, fix.toml `[native] compiler` (the printed version line; a new major version also moves the enforced major).
 4. Run `text_speed_patch.py --check-payload` (must pass with no warning), `fixes.py docs --out work/patches/FIXES.md`, `check.py --full --repro`, and the text-speed release gates (work/notes/text_speed_RUNBOOK.md).
 
+## NARC byte fixes (kind narc, no armips)
+
+A few fixes change bytes inside a game-data NARC member rather than code: today `trade-evolutions-levelup` (two
+records of the evolution table `a/0/3/4`). armips only stages arm9 and the overlays, and committing the patched
+member (a graphics `member_from_file`) would put game data into git, so these fixes are kind `narc`: no asm, and
+fix.toml holds only the bytes replaced and written, as `[[narc_bytes]]` entries (`narc`, `member`, `offset` in the
+member, `expect` and `new` in the `[[code]]` halfword notation, little-endian, the same number of halfwords, and
+`member_sha1`, the SHA-1 of the whole original member). Build stage 3b' (`narcpatch.apply()`, after the graphics
+and before the hardcoded stage) refuses before writing anything unless every member it touches still has its
+`member_sha1` (so its size and every other byte are the hack's) and the bytes at `offset` are `expect`; it writes
+`new` and nothing else. The verify stage (`narcpatch.verify()`, also run by `artifact_check.py` from the build
+report's `narc_bytes` rows) re-reads each patched member of the written ROM. The registry check validates the
+schema (hex offset, 40-digit SHA-1, `new` as long as `expect` and different from it), and the overlap check keys
+the entries by `<narc>#<member>` with their byte ranges; a `[[graphics]]` op on the same member covers all of it,
+so the two never combine. A narc fix is left out with `build.py --without <id>` (the `--no-*` kind switches do not
+cover it). Tests: `test_narcpatch.py`.
+
 ## How the build applies them
 
 `build.py` stage 3c, `asmpatch.apply()`, for every selected fix of kind strings, data or code (strings first, then data and code, as in FIXES.md):

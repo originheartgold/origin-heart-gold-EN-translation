@@ -1,0 +1,59 @@
+id = "trade-evolutions-levelup"
+title = "Boldore and Gurdurr evolve at Lv 35 / Lv 40, as the hack author's sheet says (no trade needed)"
+kind = "narc"
+enabled = true
+decisions = ["D-2291"]
+requires = []
+why = """
+Players: Boldore never evolves into Gigalith and Gurdurr never into Conkeldurr by levelling up; both only
+evolve when traded, as in the official games. The hack author's own species sheet (4.0精灵数据) lists them as
+level-up evolutions, Boldore at Lv 35 and Gurdurr at Lv 40, and the hack has no other way to get Gigalith:
+Boldore is wild in Dark Cave, Gigalith is not (Conkeldurr is also wild in Cerulean Cave). A player without a
+trade partner cannot complete Gigalith. The untouched Chinese ROM does the same, so this is a data error of the
+hack (recorded with the other sheet mismatches in D-1349).
+
+Status: D-1337 says hack bugs are reported, not fixed. This fix is a user-approved exception to it (D-2291,
+2026-10-09), in the scope the user set: data errors where the author's own documentation proves the intended
+value and the bug blocks content. Other hack bugs stay report-only.
+
+Technical: the evolution table a/0/3/4 has one 60-byte member per species, 10 records of 6 bytes (u16 method,
+u16 parameter, u16 target species). Member 525 (Boldore) record 0 is method 5 (trade), parameter 0, target 526
+(Gigalith); member 533 (Gurdurr) record 0 is method 5, parameter 0, target 534 (Conkeldurr). The level-up
+method is 4 with the level as parameter (Roggenrola, member 524: method 4, Lv 25, target 525).
+"""
+what = """
+Old: Boldore and Gurdurr evolve only when traded (method 5).
+New: Boldore evolves into Gigalith on reaching Lv 35 and Gurdurr into Conkeldurr on reaching Lv 40 (method 4,
+plain level up, like Roggenrola and Timburr); trading no longer evolves them. Two bytes change in each record
+(method and parameter); the target species, the other records, every other member and the hack's unused item
+Linking Cord (635) stay as the hack has them.
+"""
+evidence = [
+  "D-2291: the user-approved exception to D-1337 for this fix, in the scope 'data errors where the author's own documentation proves the intended value and the bug blocks content'",
+  "D-1349: the author's species sheet against the ROM ('Boldore/Gurdurr trade vs Lv35/40')",
+  "work/notes/sheet_mismatch_verification.md §4.2 rows 547 and 553 (sheet 35 / 40, fresh v4 ROM: trade (5)); work/notes/spreadsheet_crossref.md §1.2",
+  "work/notes/trade-evolutions_fix.md: the records, the edit and the emulator runs before and after",
+  "DeSmuME, 2026-10-09: one Rare Candy each; the build evolves Boldore Lv 34 into Gigalith and Gurdurr Lv 39 into Conkeldurr; the --without build and the Chinese ROM level them to 35 / 40 without evolving; Roggenrola Lv 24 evolves into Boldore on all three",
+  "melonDS 1.1, 2026-10-09 (the same cases, Pokémon set up in RAM): the same results on the build, the --without build and the Chinese ROM",
+  "Runtime: emu_harness.py fixes --case trade-evolutions-levelup (scenario trade-evo: a Boldore at Lv 34 and a Gurdurr at Lv 39 gain one level each, on the build and on one without this fix, work/notes/emu_harness.md 'Fix scenarios')",
+]
+
+[[narc_bytes]]
+id = "boldore-evolution"
+narc = "a/0/3/4"
+member = 525
+offset = "0x0"
+expect = "0005 0000 020E"
+new = "0004 0023 020E"
+member_sha1 = "4cd8fb7ba6dca2d967a9a711887d764b0bc912d0"
+notes = "Boldore record 0: trade (method 5) -> level up (method 4) at Lv 35 (0x23); target 526 Gigalith unchanged."
+
+[[narc_bytes]]
+id = "gurdurr-evolution"
+narc = "a/0/3/4"
+member = 533
+offset = "0x0"
+expect = "0005 0000 0216"
+new = "0004 0028 0216"
+member_sha1 = "fe6ee29b1f6e782a3c947a25ca60383d9f544c34"
+notes = "Gurdurr record 0: trade (method 5) -> level up (method 4) at Lv 40 (0x28); target 534 Conkeldurr unchanged."
