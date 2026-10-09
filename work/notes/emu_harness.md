@@ -964,6 +964,8 @@ bugs. Both are visible in `work/build/harness/screens/`.
 - `generate_pokemon` overwrites party slot 6 when the party is full; the generator reuses one PID.
 - Wild-battle recipes depend on random encounters (single or double battle, CN vs EN differ), so screen
   pairs of battles are not pixel-identical between runs.
+  Scenarios pin the RNG (`rng`, `rng_repin`; 'Scenario files'), which makes the encounters themselves repeat and
+  agree between the ROMs; the battle RNG is still unpinned there.
 - Not built: contests. (Trainer battles, scripted NPC state, winning battles and the Pal Park show: see 2b, 7, 13.)
 
 ## Proposal: an automated regression suite (first version built: `suite`, see 5b)
@@ -995,13 +997,16 @@ runs each (scenario, case, ROM) in its own child process (`scenario-run`; one em
 machine-wide cap `EMU_HARNESS_MAX_EMULATORS` applies), judges the expectations and writes, in a new `--out` folder
 (default `work/build/harness/scenarios/run-<time>`; an existing run is never overwritten):
 
-- `<scenario>.json`: refs, the ROMs (path, sha256), one row per run {case, lang, verdict, observations,
-  expectations [{obs, check, want, got, pass, note}], screenshots, seconds} and a `parity` block;
-- `summary.json`: per scenario its verdict and `{case/lang: verdict}`; exit 0 only when every run passes;
+- `<scenario>.json`: refs, the ROMs (path, sha256), the `parity` block (below) and one row per run {case, lang,
+  verdict, observations, expectations [{obs, check, want, got, pass, note}], screenshots, seconds, rng};
+- `summary.json`: `pass`, then `mismatches` (every parity MISMATCH row of every scenario), `failed_expectations`,
+  `errors` (runs that raised or timed out), then per scenario its verdict, parity counts and
+  `{case/lang: verdict}`; the console prints the same order. Exit 0 only when every scenario passes;
 - `<scenario>/<lang>/<case>/`: the run's screenshots.
 
 Run verdicts: `pass`, `fail` (an expectation failed), `error` (the child raised), `timeout`, `observed` (no
-expectation applies to that ROM; it still counts as passing).
+expectation applies to that ROM; it still counts as passing). Scenario verdict: `fail` when a run did not pass or
+any observation is a parity MISMATCH, else `pass`.
 
 ```toml
 id = "palpark"                        # = the file name
@@ -1030,8 +1035,12 @@ obs = "records"                       # dotted path into the observations; '*' m
 set = ["${record}"]                   # equals, in, min, max, set, all, len, contains, approved, baseline
 lang = "both"                         # or cn / en
 
-[parity]                              # step 3: observations whose CN/EN difference is expected
-differ = { wild = "the RNG path differs" }
+[parity]                              # parity is the default verdict; declare only what may differ
+fields = { wild = ["summary", "rows.*.pid"] }        # compare only these paths of an observation
+
+[parity.differ."dex.digests"]         # an observation or a dotted path into one: not compared
+why = "the panels show Chinese and English text"
+en = { baseline = true }              # optional per-ROM check (any expectation check, optional `path`)
 ```
 
 - **Steps**: the `drive` op language (now parsed before anything runs: `emu_harness.parse_op`), extended with
@@ -1049,9 +1058,47 @@ differ = { wild = "the RNG path differs" }
 - **Baselines**: `baseline = true` compares with the value of the first run, stored outside git in
   `work/build/harness/baselines/scenarios/<scenario>/<case>__<lang>__<obs>.json` (created and passing when missing;
   delete it to re-approve). The dex scenario uses it for its panel digests.
-- **Parity (step 3)**: every run's observations are stored in the same structure per ROM; `parity` lists per case
-  and observation `same`, `differs` or `declared`. It is reported, not judged yet (`"judged": false`).
-- No RNG pin: the pinned clock seeds the game's RNG, so pinned runs repeat until their inputs diverge.
+- **Parity (suite v2 step 3, D-1002)**: every scenario runs on both ROMs, and every observation must be equal on
+  cn and en; a scenario with no `[[expect]]` at all is valid and parity alone judges it. `[parity]` declares the
+  exceptions (decided by the coordinator, 2026-10-09):
+  - `differ = { <obs or obs.path> = "why" }`, or the table form `{ why, cn = {check}, en = {check} }`: that
+    observation (or sub-path of a dict, no `*`) is not compared; the row is `differs-declared` with the reason.
+    Each per-ROM check is an expectation (`equals`, `baseline`, … plus optional `path` below the observation and
+    `note`) judged on that ROM only. A declaration whose values came out equal anyway is listed as
+    `declared_but_equal` (a candidate for removal).
+  - `fields = { <obs> = ["path", ...] }`: compare only these dotted paths (`*` maps over a list); the rest of the
+    observation (frame numbers, RAM addresses, harness counters) is not compared.
+  - `parity` block: `{judged, counts {equal, differs-declared, MISMATCH, unavailable}, rows, declared, fields}`; one
+    row per case and observation, MISMATCH rows first, each with both values (when short) and `diff` (the
+    differing leaves, `[{path, cn, en}]`, at most 20). `unavailable`: a run of that case failed (its verdict
+    says why). `--lang cn|en` runs one ROM: parity is not judged (`judged: false`).
+- **RNG pin** (`[start] rng = <seed>`, default `0x5EED0001`; `rng = false` keeps the game's own seed). The game
+  has two RNGs in one block at 0x021D052C (`emu_harness.LCRNG_STATE` etc.): the LCRNG state at 0x021D0530
+  (`LCRandom` 0x02020480: x·0x41C64E6D + 0x6073, returns x >> 16; SetSeed 0x02020474) and the Mersenne twister
+  (624 words at 0x021D0534, index 0x0210E77C; seed routine 0x020204B0, MTRandom 0x020204F4). The boot routine
+  0x02001080 seeds both from the RTC date/time plus the vblank count, at power-on and again at Continue (calls at
+  0x020010B0 / 0x020010B6). Found from the 0x41C64E6D literal pool and by scanning RAM for a word that steps by
+  the LCG while walking (0x021D0530 moved 11 steps in two tiles); same code bytes on both ROMs (`RNG_SIG`). The
+  Continue seed differed by 2 between the ROMs (0x5A0C0AAF cn, 0x5A0C0AAD en: the vblank count), so unpinned runs
+  can never be compared. The pin replaces r0 at both seed calls (recorded in the run's `rng.seeding` with the
+  game's own seed), and writes both RNGs again once the run stands in the field (`rng.start_state`); cases that
+  start from a `[setup]` savestate are written when they start. Op `rng:<seed>` re-pins at any step.
+  - `rng_repin = [{ addr, sig }]`: re-pin the LCRNG every time the ARM9 executes `addr` (the n-th time:
+    seed + n·0x9E3779B9; skipped while `sig` does not match, i.e. another overlay is loaded there). Why: field
+    effects draw from the LCRNG every few frames (callers 0x02060FE3 / 0x0206100B), and the English field
+    reaches the player one frame earlier than the Chinese one; with only the start pin the first 180 draws were
+    identical and then the encounter rolls landed one frame apart and the paths split. Unown re-pins at the
+    encounter rate roll (0x02247954), so the roll, slot, letter and PID depend on the seed and the roll count only.
+  - The battle RNG (in the battle's own data, seeded at battle start; text_speed `BATTLE_RNG_SEED`) is not pinned
+    by scenarios yet: no scenario observes a battle outcome.
+- **Proof run, step 3 (2026-10-09, `work/build/step3-run1`, `--jobs 3`, fresh English build)**: all five pass on
+  both ROMs, 0 mismatches, 0 failed expectations, 502 s. Parity rows: arceus 16 equal; dex 1 equal (`captured`,
+  `errors`) + 1 declared (`dex.digests`, each ROM against its own baseline); evolve 11 equal; palpark 21 equal;
+  unown 1 equal (field-level). Unown determinism: `step3-run1` and `step3-unown2` gave the letters `XOSHDN`, 6
+  battles and the same six PIDs on cn and en in both runs (357 re-pins each), so its declared difference was
+  dropped. The game's own Continue seed varied between runs of the same ROM (en 0x5A0C0AAC / 0x5A0C0AAD) and the
+  harness's step counter too (cn 200 / 201): emulator timing under load is not frame-exact, which is why the pin
+  and the re-pin are needed for repeatability, and why `steps` and frames are left out of the unown fields.
 
 Migrated (the old Python checks and the `palpark`, `arceus`, `evolve` commands were removed):
 
@@ -1071,7 +1118,7 @@ both ROMs; the 16 forms; Petilil 548/1 → 549/1 and the night control; Rockruff
 bytes); 6 Unown all A with the decoder check; dex panels equal to the baseline. Parity (reported only): every
 observation `same` except the declared `wild` (Unown letters) and `dex` (panel text). The letters picked differ
 between two pinned runs of the same ROM (`RIUXRZ` vs `OUXELT` on the Chinese ROM), so the clock pin alone does not
-fix the encounter RNG path.
+fix the encounter RNG path (step 3 fixed it: RNG pin, below).
 
 ## Text-speed release regression
 

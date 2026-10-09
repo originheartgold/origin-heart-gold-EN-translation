@@ -18,10 +18,7 @@ note = "every panel showed the dex number it was meant to"
 obs = "dex.captured"
 len = 30
 
-[[expect]]
-obs = "dex.digests"
-baseline = true
-note = "panel digests equal the approved run's (created on the first run; delete the baseline file to re-approve)"
-
-[parity]
-differ = { dex = "the panels show Chinese and English text" }
+[parity.differ."dex.digests"]
+why = "the panels show Chinese and English text"
+cn = { baseline = true, note = "panel digests equal the approved run's (delete the baseline file to re-approve)" }
+en = { baseline = true, note = "panel digests equal the approved run's (delete the baseline file to re-approve)" }

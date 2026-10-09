@@ -83,6 +83,61 @@ CODE_SIG = {
 }
 OV2_SIG = {OV2_SIG_ADDR: "c92809d1301cfff747ff", WILD_FINALIZE_RESTORE: "281c702102aa", WILD_FINALIZE: "f0b583b000900e1c"}
 
+# The game's two RNGs (static ARM9 code, same bytes on both ROMs; found 2026-10-09 from the 0x41C64E6D literal
+# and by watching RAM change while walking, see work/notes/emu_harness.md 'Scenario files', RNG pin). One block at
+# 0x021D052C: +4 the LCRNG state (LCRandom 0x02020480: x = x * 0x41C64E6D + 0x6073, returns x >> 16; GetSeed
+# 0x02020468, SetSeed 0x02020474), +8 the Mersenne twister's 624 words (MT seed 0x020204B0, MTRandom 0x020204F4)
+# with its index at 0x0210E77C. The boot routine 0x02001080 seeds both from the RTC date/time and the vblank count
+# (at power-on and again at Continue): `bl SetMTSeed` at 0x020010B0 and `bl SetSeed` at 0x020010B6, r0 = seed.
+LCRNG_STATE = 0x021D0530
+MT_STATE = 0x021D0534
+MT_INDEX = 0x0210E77C
+MT_N = 624
+LCRANDOM = 0x02020480
+RNG_SEED_SITES = (0x020010B0, 0x020010B6)
+RNG_SIG = {0x020010AE: "60191ff0fef960191ff0ddf9",
+           0x02020474: "014948607047c0462c051d02054906484a68131c4343054818184860000c0004000c7047",
+           0x020204B0: "30b40c49272488600b49012008600b49"}
+DEFAULT_RNG_SEED = 0x5EED0001
+REPIN_STRIDE = 0x9E3779B9      # the n-th re-pin writes (seed + n * stride) mod 2^32
+
+
+def mt_init(seed):
+    """The Mersenne twister state the game's MT seed routine (0x020204B0) builds from `seed` (624 words)."""
+    mt = [seed & 0xFFFFFFFF]
+    for i in range(1, MT_N):
+        mt.append((0x6C078965 * (mt[-1] ^ (mt[-1] >> 30)) + i) & 0xFFFFFFFF)
+    return mt
+
+
+def repin_value(seed, n):
+    return (seed + n * REPIN_STRIDE) & 0xFFFFFFFF
+
+
+def rng_code_ok(h):
+    return all(h.read(a, len(s) // 2).hex() == s for a, s in RNG_SIG.items())
+
+
+def write_rng(h, seed):
+    """Pin both RNGs now: LCRNG state = seed, MT state = the game's own seeding of `seed`. Returns the LCRNG
+    readback. Raises when the RNG code is not the one these addresses were read from."""
+    if not rng_code_ok(h):
+        raise RuntimeError("RNG code differs from RNG_SIG: the RNG addresses do not hold for this ROM")
+    h.w32(LCRNG_STATE, seed & 0xFFFFFFFF)
+    h.write(MT_STATE, struct.pack(f"<{MT_N}I", *mt_init(seed)))
+    h.w32(MT_INDEX, MT_N)
+    return h.u32(LCRNG_STATE)
+
+
+def pin_rng_seeding(h, seed, record):
+    """Install (before boot) hooks that replace the seed the boot routine passes to both RNGs (power-on and
+    Continue) with `seed`. Each replacement is appended to `record` as {frame, site, game_seed}."""
+    def site(h, where):
+        record.append({"frame": h.frame, "site": hex(where), "game_seed": hex(h.reg.r0)})
+        h.reg.r0 = seed & 0xFFFFFFFF
+    for where in RNG_SEED_SITES:
+        h.on_exec(where, lambda h, where=where: site(h, where))
+
 # The hack's debug Pokemon generator (SELECT+X in the field): u32 per menu row. Verified: species, level
 # (exp recomputed only when the level is edited in the menu), exp, OT ID, PID, moves 1-2, item, form.
 GEN_SPECIES, GEN_LEVEL, GEN_EXP, GEN_OTID, GEN_PID, GEN_MOVE1, GEN_ITEM, GEN_FORM = 0, 1, 2, 3, 4, 7, 11, 47
@@ -1997,10 +2052,11 @@ OP_HELP = """Op language (from the UI hunt agent's drive.py; also the string ste
   use:bag_slot,party_slot                bag item -> Use -> Pokemon, through any evolution scene
   candy:party_slot                       Rare Candy from the Medicine pocket (opens the bag from the field)
   summary:party_slot                     leave the bag, open that Pokemon's summary
+  rng:seed                               pin the game's RNGs now (LCRNG state = seed, MT seeded with it)
 A party slot may be '@gen': the slot the last gen: op filled."""
 
 _INT_OPS = {"gen": (2, 4), "moves": (2, 5), "script": (1, 1), "warp": (3, 4), "walk": (2, 2), "swap": (2, 2),
-            "give": (2, 2), "use": (2, 2), "candy": (1, 1), "summary": (1, 1)}
+            "give": (2, 2), "use": (2, 2), "candy": (1, 1), "summary": (1, 1), "rng": (1, 1)}
 _SLOT_ARGS = {"moves": (0,), "swap": (0, 1), "give": (1,), "use": (1,), "candy": (0,), "summary": (0,)}
 _FIELD_MENU_ENTRIES = ("pokedex", "pokemon", "bag", "pokegear", "card", "save", "options")
 
@@ -2131,6 +2187,8 @@ def exec_op(h, name, args, tag="x", states=None, shots=None):
         h.level_up_with_candy(_slot(h, args[0]))
     elif name == "summary":
         h.open_summary_from_bag(_slot(h, args[0]))
+    elif name == "rng":
+        write_rng(h, args[0])
     elif name == "wait":
         h.step(args[0])
     elif name == "touch":

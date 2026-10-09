@@ -13,6 +13,12 @@ x = 17
 y = 24
 flags = [2423, 2424, 2425, 2426]  # the four panel puzzles solved: the encounter gate needs one of them
 clock = "2026-10-09T12:00:00"
+rng = 0x5EED0001                  # pinned at boot/Continue and again in the field (the default seed, written out)
+# Field effects draw from the same LCRNG every few frames, and the field reaches the player one frame apart on the
+# two ROMs (the title/Continue screens differ), so their draws interleave with the walk differently. Re-pinning at
+# the per-step encounter roll (ov2: bl LCRandom; % 100 < rate) makes the roll, the slot, the letter and the PID
+# depend only on the seed and the roll count.
+rng_repin = [{ addr = 0x02247954, sig = "d8f594fd6421a9f6", note = "wild encounter rate roll, every step" }]
 
 [[expect]]
 obs = "wild.summary.unown.count"
@@ -29,4 +35,7 @@ equals = true
 note = "the decoded form right after the letter write equals the letter: the decoder is right"
 
 [parity]
-differ = { wild = "letters picked and battles follow the RNG path, which differs between the ROMs" }
+# The harness's step counter, frames and RAM addresses follow the screen timing, which differs; the game's
+# results must not.
+fields = { wild = ["summary", "rows.*.species", "rows.*.form", "rows.*.letter_set", "rows.*.form_after_letter",
+                   "rows.*.saved_form", "rows.*.pid", "rows.*.item", "rows.*.battle"] }

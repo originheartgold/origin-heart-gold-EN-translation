@@ -15,9 +15,12 @@ per scenario and a summary, and exits 1 on a failed expectation, 2 on a schema e
 
 Format: see work/notes/emu_harness.md ('Scenario files') and the files in work/tools/scenarios/.
 
-Step 3 of the suite plan (Chinese-vs-English parity as the default verdict, D-1002) slots in at `parity()`:
-every run records its observations per ROM in the same structure, and each scenario's `[parity]` table already
-declares the observations whose difference is expected. Today parity is reported, not judged.
+Parity is the default verdict (D-1002: the Chinese hack is the behaviour reference): every scenario runs on both
+ROMs and every observation must be equal on cn and en, unless the scenario's [parity] table declares it as
+differing (`differ`, optionally with per-ROM checks) or restricts the comparison to named fields (`fields`). A
+scenario needs no hand-written expectations; those it has are judged in addition. The game's RNGs are pinned
+(start.rng, default DEFAULT_RNG_SEED; start.rng_repin re-pins at declared code addresses), so runs repeat and
+the two ROMs take the same random path.
 """
 from __future__ import annotations
 
@@ -46,7 +49,8 @@ class ScenarioError(ValueError):
 TOP_KEYS = {"id", "description", "refs", "default", "timeout", "start", "setup", "hook", "steps", "expect",
             "case", "params", "parity"}
 START_KEYS = {"save", "map", "x", "y", "height", "direction", "flags", "clear_flags", "vars", "clock",
-              "pockets", "party"}
+              "pockets", "party", "rng", "rng_repin"}
+CASE_START_WITH_SETUP = {"clock", "rng"}      # what a case may change when it starts from the [setup] savestate
 CASE_KEYS = {"id", "description", "params", "start", "steps", "expect"}
 HOOK_KEYS = {"name", "addr", "read", "sig", "max"}
 EXPECT_OPS = ("equals", "in", "min", "max", "set", "all", "len", "contains", "approved", "baseline")
@@ -56,7 +60,9 @@ OBSERVE_KEYS = {"observe", "size", "fields", "screen_name", *OBSERVE_KINDS}
 TABLE_OPS = {"encounters": {"op", "observe", "count", "walk", "span", "tiles", "max_steps", "shots"},
              "dexcapture": {"op", "observe", "first", "last"}}
 PARTY_FIELDS = {"slot", "species", "item", "form", "moves", "pp", "ability"}
-PARITY_KEYS = {"ignore", "differ"}
+PARITY_KEYS = {"differ", "fields"}
+DIFFER_KEYS = {"why", *LANGS}
+REPIN_KEYS = {"addr", "sig", "note"}
 REG_NAMES = {f"r{i}" for i in range(13)} | {"sp", "lr", "pc"}
 HOOK_READ = re.compile(r"^(?:(u8|u16|u32)@)?(r\d{1,2}|sp|lr|pc)(?:\+(0x[0-9a-fA-F]+|\d+))?$")
 DIRECTIONS = ("UP", "DOWN", "LEFT", "RIGHT")
@@ -141,6 +147,20 @@ def check_start(where, start):
             for it in items:
                 if not (isinstance(it, list) and len(it) == 2 and all(isinstance(v, int) for v in it)):
                     _err(f"{where}.pockets.{name}", f"entry {it!r} is not [item, qty]")
+    if "rng" in start and not (start["rng"] is False or (isinstance(start["rng"], int) and
+                                                       not isinstance(start["rng"], bool) and
+                                                       0 <= start["rng"] <= 0xFFFFFFFF)):
+        _err(f"{where}.rng", "a 32-bit seed (e.g. 0x5EED0001) or false (keep the game's own seed)")
+    if "rng_repin" in start:
+        if start.get("rng", True) is False:
+            _err(f"{where}.rng_repin", "needs the RNG pinned (rng is false)")
+        _type(f"{where}.rng_repin", start["rng_repin"], list, "a list of { addr, sig } tables")
+        for i, rp in enumerate(start["rng_repin"]):
+            w = f"{where}.rng_repin[{i}]"
+            _keys(w, rp, REPIN_KEYS)
+            _type(f"{w}.addr", rp.get("addr"), int, "an ARM9 code address (Thumb: even)")
+            if "sig" in rp and not (isinstance(rp["sig"], str) and re.fullmatch(r"([0-9a-f]{2})+", rp["sig"])):
+                _err(f"{w}.sig", "hex code bytes, e.g. 'd8f594fd'")
     for i, edit in enumerate(start.get("party", [])):
         w = f"{where}.party[{i}]"
         _keys(w, edit, PARTY_FIELDS)
@@ -227,6 +247,75 @@ def check_hook(where, hook):
         _err(f"{where}.sig", "hex code bytes, e.g. '10bd'")
 
 
+def rng_seed(start):
+    """The seed a run pins (start.rng, default emu_harness.DEFAULT_RNG_SEED), or None for rng = false."""
+    import emu_harness as E
+    rng = start.get("rng", E.DEFAULT_RNG_SEED)
+    return None if rng is False else rng
+
+
+def check_repin_addresses(where, start, hooks):
+    """A re-pin hook must not sit on an address another hook uses: DeSmuME keeps one callback per address."""
+    import emu_harness as E
+    taken = {h.get("addr") for h in hooks} | set(E.RNG_SEED_SITES) | {
+        E.WILD_FINALIZE, E.WILD_FINALIZE_SETFORM, E.WILD_FINALIZE_AFTER_SET, E.WILD_FINALIZE_RESTORE,
+        E.WILD_FINALIZE_END, E.RTC_SYNC_DONE}
+    addrs = [rp["addr"] for rp in start.get("rng_repin", [])]
+    for a in addrs:
+        if a in taken:
+            _err(where, f"{a:#x} is already hooked (a [[hook]], the RNG seed sites or the wild-encounter log)")
+    if len(set(addrs)) != len(addrs):
+        _err(where, "duplicate address")
+
+
+def _plain_path(where, path):
+    if not isinstance(path, str) or not path or "*" in path or any(not p for p in path.split(".")):
+        _err(where, f"{path!r} is not an observation name or a dotted path without '*'")
+
+
+def check_parity(where, p):
+    """[parity]: differ = {obs-or-path = 'why' | {why, cn = {check}, en = {check}}}, fields = {obs = [paths]}.
+    Returns {differ: {path: why}, fields: {obs: [paths]}, expect: [the per-ROM checks as expectations]}."""
+    _keys(where, p, PARITY_KEYS)
+    differ, expect = {}, []
+    if "differ" in p:
+        _type(f"{where}.differ", p["differ"], dict, "a table {observation = 'why it differs'}")
+        for path, spec in p["differ"].items():
+            w = f"{where}.differ.{path}"
+            _plain_path(w, path)
+            if isinstance(spec, str):
+                differ[path] = spec
+                continue
+            _keys(w, spec, DIFFER_KEYS)
+            _type(f"{w}.why", spec.get("why"), str, "the reason the ROMs differ")
+            differ[path] = spec["why"]
+            for lang in LANGS:
+                if lang not in spec:
+                    continue
+                chk = spec[lang]
+                _keys(f"{w}.{lang}", chk, set(EXPECT_OPS) | {"path", "note"})
+                if "path" in chk:
+                    _plain_path(f"{w}.{lang}.path", chk["path"])
+                exp = {"obs": path + (f".{chk['path']}" if "path" in chk else ""), "lang": lang,
+                       **{k: v for k, v in chk.items() if k in EXPECT_OPS},
+                       "note": chk.get("note", f"declared difference: {spec['why']}")}
+                check_expect(f"{w}.{lang}", exp)
+                expect.append(exp)
+    fields = {}
+    if "fields" in p:
+        _type(f"{where}.fields", p["fields"], dict, "a table {observation = ['field.path', ...]}")
+        for obs, paths in p["fields"].items():
+            w = f"{where}.fields.{obs}"
+            if "." in obs:
+                _err(w, "the key is an observation name; the dotted paths go in the list")
+            if not (isinstance(paths, list) and paths and all(isinstance(x, str) and x for x in paths)):
+                _err(w, "a non-empty list of field paths (dotted, '*' maps over a list)")
+            if obs in differ or any(d.startswith(obs + ".") for d in differ):
+                _err(w, "an observation is either compared by fields or declared in differ, not both")
+            fields[obs] = paths
+    return {"differ": differ, "fields": fields, "expect": expect}
+
+
 def load(path):
     """Load and validate one scenario file; returns the scenario dict with `cases` expanded (each case: id,
     start, steps, expect with the params substituted). Raises ScenarioError naming the file and the place."""
@@ -252,12 +341,7 @@ def load(path):
     names = [h["name"] for h in raw.get("hook", [])]
     if len(set(names)) != len(names):
         _err(f"{w}.hook", "hook names must be unique")
-    if "parity" in raw:
-        _keys(f"{w}.parity", raw["parity"], PARITY_KEYS)
-        if "ignore" in raw["parity"] and not isinstance(raw["parity"]["ignore"], list):
-            _err(f"{w}.parity.ignore", "a list of observation names")
-        if "differ" in raw["parity"] and not isinstance(raw["parity"]["differ"], dict):
-            _err(f"{w}.parity.differ", "a table {observation = 'why it differs'}")
+    parity_spec = check_parity(f"{w}.parity", raw.get("parity", {}))
     setup = raw.get("setup")
     if setup is not None:
         _keys(f"{w}.setup", setup, {"steps"})
@@ -276,19 +360,20 @@ def load(path):
         try:
             start = substitute({**raw.get("start", {}), **c.get("start", {})}, params)
             steps = substitute(c.get("steps", raw.get("steps", [])), params)
-            expect = substitute(raw.get("expect", []) + c.get("expect", []), params)
+            expect = substitute(raw.get("expect", []) + c.get("expect", []) + parity_spec["expect"], params)
         except KeyError as e:
             _err(cw, f"unknown parameter ${{{e.args[0]}}}")
-        if setup is not None and set(c.get("start", {})) - {"clock"}:
-            _err(f"{cw}.start", "with [setup] the cases start from its savestate: only clock may change")
+        if setup is not None and set(c.get("start", {})) - CASE_START_WITH_SETUP:
+            _err(f"{cw}.start", "with [setup] the cases start from its savestate: only clock and rng may change")
         check_start(f"{cw}.start", start)
+        check_repin_addresses(f"{cw}.start.rng_repin", start, raw.get("hook", []))
         _type(f"{cw}.steps", steps, list, "a list of steps")
         for j, s in enumerate(steps):
             check_step(f"{cw}.steps[{j}]", s)
         for j, e in enumerate(expect):
             check_expect(f"{cw}.expect[{j}]", e)
         cases.append({"id": c["id"], "description": c.get("description", ""), "params": params,
-                      "start": start, "steps": steps, "expect": expect})
+                      "start": start, "steps": steps, "expect": expect, "rng": rng_seed(start)})
     if setup is not None:
         for j, s in enumerate(setup.get("steps", [])):
             check_step(f"{w}.setup.steps[{j}]", s)
@@ -296,7 +381,7 @@ def load(path):
     return {"id": raw["id"], "file": str(path), "description": raw["description"], "refs": raw.get("refs", []),
             "default": raw.get("default", True), "timeout": raw.get("timeout", 900),
             "start": raw.get("start", {}), "setup": setup, "hooks": raw.get("hook", []),
-            "parity": raw.get("parity", {}), "cases": cases}
+            "parity": {"differ": parity_spec["differ"], "fields": parity_spec["fields"]}, "cases": cases}
 
 
 def discover(folder=SCENARIO_DIR):
@@ -434,20 +519,131 @@ def run_verdict(result, rows):
     return "pass" if all(r["pass"] for r in rows) else "fail"
 
 
-def parity(scn, runs):
-    """Step 3 hook (not judged yet): per case, compare each observation between the Chinese and the English run.
-    'same', 'differs', or 'declared' (listed in the scenario's [parity] differ / ignore)."""
+EQUAL, DECLARED, MISMATCH, UNAVAILABLE = "equal", "differs-declared", "MISMATCH", "unavailable"
+_SHORT = 2000           # JSON characters above which a mismatch row keeps only the leaf differences
+
+
+def leaf_diff(a, b, path="", limit=20):
+    """[{path, cn, en}] for the leaves where a (cn) and b (en) differ; a list of another length or a value of
+    another type is one leaf."""
+    out = []
+
+    def walk(x, y, p):
+        if len(out) >= limit:
+            return
+        if isinstance(x, dict) and isinstance(y, dict):
+            for k in sorted(set(x) | set(y), key=str):
+                walk(x.get(k, "(missing)"), y.get(k, "(missing)"), f"{p}.{k}" if p else str(k))
+        elif isinstance(x, list) and isinstance(y, list) and len(x) == len(y):
+            for i, (u, v) in enumerate(zip(x, y)):
+                walk(u, v, f"{p}.{i}" if p else str(i))
+        elif x != y:
+            out.append({"path": p, "cn": x, "en": y})
+    walk(_norm(a), _norm(b), path)
+    return out
+
+
+def _drop_path(obj, path):
+    """A copy of obj without the dotted path (dict keys / list indexes); obj itself is not changed."""
+    obj = _norm(obj)
+    parts = path.split(".")
+    cur = obj
+    for part in parts[:-1]:
+        if isinstance(cur, dict) and part in cur:
+            cur = cur[part]
+        elif isinstance(cur, list) and part.lstrip("-").isdigit() and -len(cur) <= int(part) < len(cur):
+            cur = cur[int(part)]
+        else:
+            return obj
+    if isinstance(cur, dict):
+        cur.pop(parts[-1], None)
+    elif isinstance(cur, list) and parts[-1].lstrip("-").isdigit() and -len(cur) <= int(parts[-1]) < len(cur):
+        cur[int(parts[-1])] = "(not compared)"
+    return obj
+
+
+def _mismatch_row(case, obs, a, b, **extra):
+    row = {"case": case, "obs": obs, "status": MISMATCH, **extra}
+    a, b = (None if v is _MISSING else _norm(v) for v in (a, b))
+    if len(json.dumps(a, ensure_ascii=False)) + len(json.dumps(b, ensure_ascii=False)) <= _SHORT:
+        row.update(cn=a, en=b)
+    row["diff"] = leaf_diff(a, b)
+    return row
+
+
+def compare_observation(case, obs, a, b, differ, fields):
+    """Parity rows for one observation of one case: a = cn value, b = en value (_MISSING when absent)."""
+    if obs in differ:
+        return [{"case": case, "obs": obs, "status": DECLARED, "why": differ[obs],
+                 "equal_anyway": _norm(None if a is _MISSING else a) == _norm(None if b is _MISSING else b)}]
+    if obs in fields:
+        bad = []
+        for f in fields[obs]:
+            u = _MISSING if a is _MISSING else get_path(a, f)
+            v = _MISSING if b is _MISSING else get_path(b, f)
+            if (u is _MISSING) != (v is _MISSING) or (u is not _MISSING and _norm(u) != _norm(v)):
+                bad.append({"path": f, "cn": None if u is _MISSING else u, "en": None if v is _MISSING else v})
+        if bad:
+            return [{"case": case, "obs": obs, "status": MISMATCH, "fields": fields[obs], "diff": bad}]
+        return [{"case": case, "obs": obs, "status": EQUAL, "fields": fields[obs]}]
+    rows = []
+    subs = sorted(d for d in differ if d.startswith(obs + "."))
+    for d in subs:
+        rest = d[len(obs) + 1:]
+        u = _MISSING if a is _MISSING else get_path(a, rest)
+        v = _MISSING if b is _MISSING else get_path(b, rest)
+        rows.append({"case": case, "obs": d, "status": DECLARED, "why": differ[d],
+                     "equal_anyway": _norm(None if u is _MISSING else u) == _norm(None if v is _MISSING else v)})
+        a = a if a is _MISSING else _drop_path(a, rest)
+        b = b if b is _MISSING else _drop_path(b, rest)
+    if a is _MISSING or b is _MISSING or _norm(a) != _norm(b):
+        rows.insert(0, _mismatch_row(case, obs, a, b, **({"not_compared": subs} if subs else {})))
+    else:
+        rows.insert(0, {"case": case, "obs": obs, "status": EQUAL, **({"not_compared": subs} if subs else {})})
+    return rows
+
+
+def parity(scn, runs, langs=LANGS):
+    """The Chinese-vs-English verdict (D-1002). Per case and observation one row: 'equal', 'differs-declared'
+    (listed in [parity] differ; its per-ROM checks are judged with the expectations), 'MISMATCH' (with both
+    values or the differing leaves) or 'unavailable' (a run of the case failed; its verdict says why).
+    Not judged when only one ROM ran."""
     p = scn.get("parity", {})
-    declared = set(p.get("ignore", [])) | set(p.get("differ", {}))
-    out = {}
+    differ, fields = p.get("differ", {}), p.get("fields", {})
+    if set(langs) != set(LANGS):
+        return {"judged": False, "note": "one ROM only: parity needs both", "rows": [], "counts": {}}
+    rows = []
     for case in scn["cases"]:
-        by = {r["lang"]: r for r in runs if r["case"] == case["id"] and r.get("observations") is not None}
-        if set(by) != set(LANGS):
+        by = {r["lang"]: r for r in runs if r["case"] == case["id"]}
+        if any(by.get(lang, {}).get("observations") is None for lang in LANGS):
+            rows.append({"case": case["id"], "obs": "*", "status": UNAVAILABLE,
+                         "note": "a run of this case has no observations (see its verdict)"})
             continue
         cn, en = by["cn"]["observations"], by["en"]["observations"]
-        out[case["id"]] = {k: ("declared" if k in declared else "same" if _norm(cn.get(k)) == _norm(en.get(k))
-                               else "differs") for k in sorted(set(cn) | set(en))}
-    return {"judged": False, "cases": out, "declared": {k: p.get("differ", {}).get(k, "ignored") for k in declared}}
+        names = sorted(set(cn) | set(en) | {d.split(".")[0] for d in differ if d.split(".")[0] in cn or
+                                            d.split(".")[0] in en})
+        for obs in names:
+            rows += compare_observation(case["id"], obs, cn.get(obs, _MISSING), en.get(obs, _MISSING), differ,
+                                        fields)
+    counts = {k: sum(r["status"] == k for r in rows) for k in (EQUAL, DECLARED, MISMATCH, UNAVAILABLE)}
+    stale = sorted({r["obs"] for r in rows if r["status"] == DECLARED and r.get("equal_anyway")} -
+                   {r["obs"] for r in rows if r["status"] == DECLARED and not r.get("equal_anyway")})
+    out = {"judged": True, "counts": counts, "rows": sorted(rows, key=lambda r: r["status"] != MISMATCH),
+           "declared": differ, "fields": fields}
+    if stale:
+        out["declared_but_equal"] = stale      # a declaration that may no longer be needed
+    return out
+
+
+def scenario_verdict(runs, par):
+    if any(r["verdict"] not in ("pass", "observed") for r in runs):
+        return "fail"
+    return "fail" if par.get("counts", {}).get(MISMATCH) else "pass"
+
+
+def _short(v, n=160):
+    t = json.dumps(v, ensure_ascii=False)
+    return t if len(t) <= n else t[:n] + "..."
 
 
 # ----------------------------------------------------------------------------- child: one run in one emulator
@@ -551,22 +747,49 @@ def _save_edit(start):
 
 def execute(scn, case_id, lang, rom, sav_dir, out, state_in=None, state_out=None, gen_slot=None):
     """Run one case (or the shared setup, case_id SETUP) on one ROM in this process. Returns the result dict:
-    {case, lang, observations, screenshots, seconds, gen_slot}. From a setup savestate, gen_slot is the party
-    slot the setup's gen: op filled (what '@gen' means in the cases)."""
+    {case, lang, observations, screenshots, seconds, gen_slot, rng}. From a setup savestate, gen_slot is the
+    party slot the setup's gen: op filled (what '@gen' means in the cases).
+
+    RNG (start.rng, unless false): from a battery save the boot routine's seed is replaced by the pinned seed
+    (power-on and Continue), and both RNGs are written again once the run stands in the field; from a setup
+    savestate they are written when the case starts. Each start.rng_repin address re-pins the LCRNG every time
+    the ARM9 executes it (the n-th time: emu_harness.repin_value(seed, n)). `rng` records what was done."""
     import emu_harness as E
     t0 = time.time()
     case = next(c for c in scn["cases"] if c["id"] == case_id) if case_id != SETUP else \
-        {"id": SETUP, "start": scn["start"], "steps": scn["setup"]["steps"]}
+        {"id": SETUP, "start": scn["start"], "steps": scn["setup"]["steps"], "rng": rng_seed(scn["start"])}
     start = case["start"]
+    seed = case["rng"]
+    rng = {"seed": None if seed is None else hex(seed), "seeding": [], "start_state": None, "repins": 0,
+           "repin_skipped": 0}
     clock = datetime.datetime.fromisoformat(start["clock"]) if "clock" in start else None
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
     captured = {hk["name"]: [] for hk in scn["hooks"]} if case_id != SETUP else {}
 
-    def install(h):
+    def repin(h, addr, sig):
+        if sig and h.read(addr, len(sig) // 2).hex() != sig:
+            rng["repin_skipped"] += 1           # another overlay at this address
+            return
+        rng["repins"] += 1
+        h.w32(E.LCRNG_STATE, E.repin_value(seed, rng["repins"]))
+
+    def install(h, boot):
         for hk in (scn["hooks"] if case_id != SETUP else []):
             read, rows, cap = _hook_reader(hk["read"]), captured[hk["name"]], hk.get("max", 1000)
             h.on_exec(hk["addr"], lambda h, read=read, rows=rows, cap=cap: len(rows) < cap and rows.append(read(h)))
+        if seed is not None:
+            if boot:
+                E.pin_rng_seeding(h, seed, rng["seeding"])
+            for rp in start.get("rng_repin", []):
+                sig = rp.get("sig")
+                h.on_exec(rp["addr"], lambda h, a=rp["addr"], s=sig: repin(h, a, s))
+
+    def pin_now(h):
+        if seed is not None:
+            if state_in is None and not rng["seeding"]:
+                raise RuntimeError("RNG pin: the boot routine's seeding was never seen (RNG_SEED_SITES)")
+            rng["start_state"] = hex(E.write_rng(h, seed))
 
     def check_sigs(h):
         for hk in scn["hooks"]:
@@ -582,23 +805,25 @@ def execute(scn, case_id, lang, rom, sav_dir, out, state_in=None, state_out=None
             if gen_slot is not None:
                 h.generated_slot = gen_slot
             check_sigs(h)
-            install(h)
+            install(h, boot=False)
+            pin_now(h)
             run_steps(h, case["steps"], lang, obs, shots)
     else:
         sav = Path(sav_dir) / start.get("save", "full_bag_6mons.sav")
         vars_ = {int(k, 0): v for k, v in start.get("vars", {}).items()}
         with E.start_at(start.get("map"), start.get("x"), start.get("y"), rom=rom, sav=sav,
                         flags=start.get("flags", []), vars=vars_, clock=clock, out=out, verbose=False,
-                        hooks=install, edit=_save_edit(start), height=start.get("height", 0),
-                        direction=start.get("direction", "DOWN")) as h:
+                        hooks=lambda h: install(h, boot=True), edit=_save_edit(start),
+                        height=start.get("height", 0), direction=start.get("direction", "DOWN")) as h:
             check_sigs(h)
+            pin_now(h)
             run_steps(h, case["steps"], lang, obs, shots)
             slot[0] = getattr(h, "generated_slot", None)
             if state_out:
                 h.save_state(state_out)
     obs.update(captured)
     return {"case": case_id, "lang": lang, "observations": obs, "screenshots": shots,
-            "seconds": round(time.time() - t0, 1), "gen_slot": slot[0]}
+            "seconds": round(time.time() - t0, 1), "gen_slot": slot[0], "rng": rng}
 
 
 def cmd_child(a):
@@ -722,24 +947,62 @@ def run(a):
                                   "seconds": r.get("seconds")}), flush=True)
 
     rom_ids = {lang: {"path": str(roms[lang]), "sha256": _sha256(roms[lang])} for lang in langs}
-    summary = {"roms": rom_ids, "langs": langs, "out": str(out), "seconds": round(time.time() - t0, 1),
-               "scenarios": []}
+    summary = summarise(scns, results, langs, rom_ids, out, round(time.time() - t0, 1))
+    print_summary(summary)
+    return 0 if summary["pass"] else 1
+
+
+def summarise(scns, results, langs, rom_ids, out, seconds):
+    """Write <scenario>.json per scenario and summary.json; return the summary. The summary lists the parity
+    mismatches first, then the failed expectations, then the runs that errored, then one row per scenario."""
+    summary = {"pass": True, "mismatches": [], "failed_expectations": [], "errors": [], "roms": rom_ids,
+               "langs": langs, "out": str(out), "seconds": seconds, "scenarios": []}
     for scn in scns:
-        runs = sorted(results[scn["id"]], key=lambda r: ([c["id"] for c in scn["cases"]].index(r["case"]),
-                                                         r["lang"]))
-        verdict = "pass" if all(r["verdict"] in ("pass", "observed") for r in runs) else "fail"
+        order = [c["id"] for c in scn["cases"]]
+        runs = sorted(results[scn["id"]], key=lambda r: (order.index(r["case"]), r["lang"]))
+        par = parity(scn, runs, langs)
+        verdict = scenario_verdict(runs, par)
         doc = {"scenario": scn["id"], "description": scn["description"], "refs": scn["refs"], "file": scn["file"],
-               "verdict": verdict, "roms": rom_ids, "runs": runs, "parity": parity(scn, runs)}
-        (out / f"{scn['id']}.json").write_text(json.dumps(doc, indent=1, ensure_ascii=False))
+               "verdict": verdict, "roms": rom_ids, "parity": par, "runs": runs}
+        (Path(out) / f"{scn['id']}.json").write_text(json.dumps(doc, indent=1, ensure_ascii=False))
+        summary["mismatches"] += [{"scenario": scn["id"], **r} for r in par["rows"] if r["status"] == MISMATCH]
+        for r in runs:
+            summary["failed_expectations"] += [
+                {"scenario": scn["id"], "case": r["case"], "lang": r["lang"], **e}
+                for e in r.get("expectations", []) if not e["pass"]]
+            if r["verdict"] in ("error", "timeout"):
+                summary["errors"].append({"scenario": scn["id"], "case": r["case"], "lang": r["lang"],
+                                          "verdict": r["verdict"], "error": r.get("error", "")})
         summary["scenarios"].append({"scenario": scn["id"], "verdict": verdict, "refs": scn["refs"],
+                                     "parity": par.get("counts") or par.get("note"),
+                                     "declared_but_equal": par.get("declared_but_equal", []),
                                      "runs": {f"{r['case']}/{r['lang']}": r["verdict"] for r in runs}})
     summary["pass"] = all(s["verdict"] == "pass" for s in summary["scenarios"])
-    (out / "summary.json").write_text(json.dumps(summary, indent=1, ensure_ascii=False))
+    (Path(out) / "summary.json").write_text(json.dumps(summary, indent=1, ensure_ascii=False))
+    return summary
+
+
+def print_summary(summary):
+    for m in summary["mismatches"]:
+        detail = (f"cn={_short(m['cn'])} en={_short(m['en'])}" if "cn" in m else
+                  "; ".join(f"{d['path']}: cn={_short(d['cn'], 60)} en={_short(d['en'], 60)}" for d in m["diff"][:5]))
+        print(f"MISMATCH {m['scenario']}/{m['case']} {m['obs']}: {detail}")
+    for e in summary["failed_expectations"]:
+        print(f"FAILED   {e['scenario']}/{e['case']}/{e['lang']} {e['obs']} {e['check']} {_short(e['want'], 60)}: "
+              f"got {_short(e['got'], 80)}" + (f" ({e['note']})" if e.get("note") else ""))
+    for e in summary["errors"]:
+        print(f"{e['verdict'].upper():8} {e['scenario']}/{e['case']}/{e['lang']}: {_short(e['error'], 200)}")
     for s in summary["scenarios"]:
+        par = s["parity"]
+        par = (f"parity {par.get(EQUAL, 0)} equal, {par.get(DECLARED, 0)} declared, {par.get(MISMATCH, 0)} "
+               f"mismatch" + (f", {par[UNAVAILABLE]} unavailable" if par.get(UNAVAILABLE) else "")
+               if isinstance(par, dict) else f"parity: {par}")
         bad = [k for k, v in s["runs"].items() if v not in ("pass", "observed")]
-        print(f"{s['verdict'].upper():5} {s['scenario']}" + (f"  failed: {', '.join(bad)}" if bad else ""))
-    print(json.dumps({"pass": summary["pass"], "seconds": summary["seconds"], "summary": str(out / "summary.json")}))
-    return 0 if summary["pass"] else 1
+        print(f"{s['verdict'].upper():5} {s['scenario']}  {par}" + (f"  failed runs: {', '.join(bad)}" if bad else "")
+              + (f"  declared but equal: {', '.join(s['declared_but_equal'])}" if s["declared_but_equal"] else ""))
+    print(json.dumps({"pass": summary["pass"], "mismatches": len(summary["mismatches"]),
+                      "failed_expectations": len(summary["failed_expectations"]), "seconds": summary["seconds"],
+                      "summary": str(Path(summary["out"]) / "summary.json")}))
 
 
 def main(argv=None):

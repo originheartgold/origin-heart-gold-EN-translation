@@ -93,9 +93,9 @@ class SchemaErrors(unittest.TestCase):
     def test_unknown_param(self):
         self.check('id = "t"\ndescription = "x"\nsteps = ["gen:${sp},5"]', "unknown parameter ${sp}")
 
-    def test_setup_cases_may_only_change_the_clock(self):
+    def test_setup_cases_may_only_change_the_clock_and_rng(self):
         self.check(MINIMAL.format(id="t", extra='[setup]\nsteps = ["A"]\n[[case]]\nid = "a"\nstart = { map = 1, '
-                                  'x = 1, y = 1 }'), "only clock may change")
+                                  'x = 1, y = 1 }'), "only clock and rng may change")
 
     def test_hook_read_spec(self):
         self.check(MINIMAL.format(id="t", extra='[[hook]]\nname = "h"\naddr = 1\nread = "r99x"'), "a register")
@@ -209,13 +209,189 @@ class Judging(unittest.TestCase):
         self.assertEqual(S.run_verdict({}, [{"pass": True}]), "pass")
         self.assertEqual(S.run_verdict({}, [{"pass": True}, {"pass": False}]), "fail")
 
-    def test_parity_report(self):
-        scn = {"cases": [{"id": "a"}], "parity": {"differ": {"dex": "text"}}}
-        runs = [{"case": "a", "lang": "cn", "observations": {"x": 1, "y": [1], "dex": 1}},
-                {"case": "a", "lang": "en", "observations": {"x": 1, "y": (2,), "dex": 2}}]
-        p = S.parity(scn, runs)
-        self.assertFalse(p["judged"])
-        self.assertEqual(p["cases"]["a"], {"dex": "declared", "x": "same", "y": "differs"})
+
+
+def runs_of(cn, en, case="a"):
+    return [{"case": case, "lang": "cn", "observations": cn, "verdict": "observed"},
+            {"case": case, "lang": "en", "observations": en, "verdict": "observed"}]
+
+
+def status(p):
+    return {r["obs"]: r["status"] for r in p["rows"]}
+
+
+class Parity(unittest.TestCase):
+    def scn(self, differ=None, fields=None):
+        return {"cases": [{"id": "a"}], "parity": {"differ": differ or {}, "fields": fields or {}}}
+
+    def test_equal_mismatch_declared(self):
+        p = S.parity(self.scn({"dex": "text"}), runs_of({"x": 1, "y": [1], "dex": 1}, {"x": 1, "y": (2,), "dex": 2}))
+        self.assertTrue(p["judged"])
+        self.assertEqual(status(p), {"dex": S.DECLARED, "x": S.EQUAL, "y": S.MISMATCH})
+        y = p["rows"][0]                                                  # mismatches first
+        self.assertEqual(y["status"], S.MISMATCH)
+        self.assertEqual((y["cn"], y["en"], y["diff"]), ([1], [2], [{"path": "0", "cn": 1, "en": 2}]))
+        self.assertEqual(p["counts"], {S.EQUAL: 1, S.DECLARED: 1, S.MISMATCH: 1, S.UNAVAILABLE: 0})
+
+    def test_no_expectations_needed_parity_alone_judges(self):
+        runs = runs_of({"m": {"species": 25}}, {"m": {"species": 26}})
+        self.assertEqual(S.scenario_verdict(runs, S.parity(self.scn(), runs)), "fail")
+        runs = runs_of({"m": {"species": 25}}, {"m": {"species": 25}})
+        self.assertEqual(S.scenario_verdict(runs, S.parity(self.scn(), runs)), "pass")
+
+    def test_missing_on_one_rom_is_a_mismatch(self):
+        p = S.parity(self.scn(), runs_of({"x": 1, "hook": [3]}, {"x": 1}))
+        self.assertEqual(status(p)["hook"], S.MISMATCH)
+        self.assertIsNone(p["rows"][0]["en"])
+
+    def test_declared_but_equal_is_flagged(self):
+        p = S.parity(self.scn({"x": "may differ"}), runs_of({"x": 1}, {"x": 1}))
+        self.assertEqual(status(p), {"x": S.DECLARED})
+        self.assertEqual(p["declared_but_equal"], ["x"])
+
+    def test_field_level_parity(self):
+        cn = {"mon": {"species": 25, "form": 0, "pid": 1}, "wild": {"steps": 9, "rows": [{"pid": 7, "frame": 1}]}}
+        en = {"mon": {"species": 25, "form": 0, "pid": 2}, "wild": {"steps": 8, "rows": [{"pid": 7, "frame": 5}]}}
+        fields = {"mon": ["species", "form"], "wild": ["rows.*.pid", "nope"]}
+        p = S.parity(self.scn(fields=fields), runs_of(cn, en))
+        self.assertEqual(status(p), {"mon": S.EQUAL, "wild": S.EQUAL})          # 'nope': missing on both
+        en["wild"]["rows"][0]["pid"] = 8
+        p = S.parity(self.scn(fields=fields), runs_of(cn, en))
+        row = next(r for r in p["rows"] if r["obs"] == "wild")
+        self.assertEqual(row["status"], S.MISMATCH)
+        self.assertEqual(row["diff"], [{"path": "rows.*.pid", "cn": [7], "en": [8]}])
+
+    def test_declared_sub_path(self):
+        cn = {"dex": {"captured": [1, 2], "errors": [], "digests": {"p1": "aa"}}}
+        en = {"dex": {"captured": [1, 2], "errors": [], "digests": {"p1": "bb"}}}
+        p = S.parity(self.scn({"dex.digests": "text"}), runs_of(cn, en))
+        self.assertEqual(status(p), {"dex": S.EQUAL, "dex.digests": S.DECLARED})
+        en["dex"]["errors"] = ["panel 2"]
+        p = S.parity(self.scn({"dex.digests": "text"}), runs_of(cn, en))
+        self.assertEqual(status(p)["dex"], S.MISMATCH)
+        self.assertEqual(p["rows"][0]["diff"], [{"path": "errors", "cn": [], "en": ["panel 2"]}])
+        self.assertEqual(cn["dex"]["digests"], {"p1": "aa"})              # the run's own values are untouched
+
+    def test_one_rom_or_failed_run(self):
+        self.assertFalse(S.parity(self.scn(), runs_of({"x": 1}, {"x": 2}), langs=["cn"])["judged"])
+        p = S.parity(self.scn(), runs_of({"x": 1}, None))
+        self.assertEqual(status(p), {"*": S.UNAVAILABLE})
+        self.assertEqual(p["counts"][S.MISMATCH], 0)
+
+    def test_large_values_keep_only_the_differing_leaves(self):
+        big = {str(i): "x" * 40 for i in range(80)}
+        row = S.parity(self.scn(), runs_of({"d": big}, {"d": dict(big, **{"5": "y"})}))["rows"][0]
+        self.assertNotIn("cn", row)
+        self.assertEqual(row["diff"], [{"path": "5", "cn": "x" * 40, "en": "y"}])
+
+    def test_leaf_diff(self):
+        self.assertEqual(S.leaf_diff({"a": [1, 2], "b": 1}, {"a": [1, 3], "c": 1}),
+                         [{"path": "a.1", "cn": 2, "en": 3}, {"path": "b", "cn": 1, "en": "(missing)"},
+                          {"path": "c", "cn": "(missing)", "en": 1}])
+        self.assertEqual(S.leaf_diff([1], [1, 2]), [{"path": "", "cn": [1], "en": [1, 2]}])
+
+
+PARITY_FILE = MINIMAL + """
+[parity.differ.msg]
+why = "Chinese and English text"
+cn = {{ len = 2 }}
+en = {{ equals = 3, path = "pages" }}
+
+[parity.differ]
+"wild.letters" = "plain reason"
+
+[parity.fields]
+mon = ["species", "rows.*.pid"]
+"""
+
+
+class ParitySchema(unittest.TestCase):
+    def bad(self, text, fragment):
+        with tempfile.TemporaryDirectory() as d:
+            with self.assertRaises(S.ScenarioError) as cm:
+                S.load(write(d, text))
+            self.assertIn(fragment, str(cm.exception))
+
+    def test_declared_difference_with_per_rom_expectations(self):
+        with tempfile.TemporaryDirectory() as d:
+            scn = S.load(write(d, PARITY_FILE.format(id="t", extra="")))
+        self.assertEqual(scn["parity"]["differ"], {"msg": "Chinese and English text", "wild.letters": "plain reason"})
+        self.assertEqual(scn["parity"]["fields"], {"mon": ["species", "rows.*.pid"]})
+        exp = scn["cases"][0]["expect"]
+        note = "declared difference: Chinese and English text"
+        self.assertIn({"obs": "msg", "lang": "cn", "len": 2, "note": note}, exp)
+        self.assertIn({"obs": "msg.pages", "lang": "en", "equals": 3, "note": note}, exp)
+        self.assertEqual([(r["obs"], r["pass"]) for r in S.judge(exp, {"msg": {"pages": 3}}, "en")],
+                         [("msg.pages", True)])
+        self.assertEqual([(r["obs"], r["pass"]) for r in S.judge(exp, {"msg": [1, 2, 3]}, "cn")], [("msg", False)])
+
+    def test_parity_errors(self):
+        m = MINIMAL.format
+        self.bad(m(id="t", extra="[parity]\nsame = 1"), "unknown key(s) same")
+        self.bad(m(id="t", extra="[parity.differ]\nx = 3"), "must be a table")
+        self.bad(m(id="t", extra='[parity.differ.x]\nwhy = "w"\njp = { equals = 1 }'), "unknown key(s) jp")
+        self.bad(m(id="t", extra='[parity.differ.x]\nwhy = "w"\ncn = { equals = 1, min = 2 }'), "exactly one check")
+        self.bad(m(id="t", extra="[parity.differ.x]\ncn = { equals = 1 }"), "the reason")
+        self.bad(m(id="t", extra='[parity.differ]\n"rows.*.pid" = "w"'), "without '*'")
+        self.bad(m(id="t", extra="[parity.fields]\nmon = []"), "non-empty list")
+        self.bad(m(id="t", extra='[parity.fields]\n"mon.x" = ["a"]'), "observation name")
+        self.bad(m(id="t", extra='[parity]\nfields = { mon = ["a"] }\ndiffer = { "mon.b" = "w" }'), "not both")
+
+
+class RngOption(unittest.TestCase):
+    def load(self, extra):
+        with tempfile.TemporaryDirectory() as d:
+            return S.load(write(d, MINIMAL.format(id="t", extra=extra)))
+
+    def bad(self, extra, fragment):
+        with self.assertRaises(S.ScenarioError) as cm:
+            self.load(extra)
+        self.assertIn(fragment, str(cm.exception))
+
+    def test_default_seed_explicit_seed_and_off(self):
+        self.assertEqual(self.load("")["cases"][0]["rng"], E.DEFAULT_RNG_SEED)
+        self.assertEqual(self.load("[start]\nrng = 0x1234")["cases"][0]["rng"], 0x1234)
+        self.assertIsNone(self.load("[start]\nrng = false")["cases"][0]["rng"])
+        scn = self.load('[start]\nrng = 7\n[[case]]\nid = "a"\nstart = { rng = 8 }\n[[case]]\nid = "b"')
+        self.assertEqual([c["rng"] for c in scn["cases"]], [8, 7])
+
+    def test_repin(self):
+        scn = self.load('[start]\nrng_repin = [{ addr = 0x02247954, sig = "d8f5" }]')
+        self.assertEqual(scn["cases"][0]["start"]["rng_repin"], [{"addr": 0x02247954, "sig": "d8f5"}])
+
+    def test_rng_errors(self):
+        self.bad("[start]\nrng = true", "32-bit seed")
+        self.bad("[start]\nrng = 0x100000000", "32-bit seed")
+        self.bad('[start]\nrng = "x"', "32-bit seed")
+        self.bad("[start]\nrng = false\nrng_repin = [{ addr = 2 }]", "needs the RNG pinned")
+        self.bad("[start]\nrng_repin = [{ sig = 'aa' }]", "ARM9 code address")
+        self.bad("[start]\nrng_repin = [{ addr = 2, sig = 'xyz' }]", "hex code bytes")
+        self.bad(f"[start]\nrng_repin = [{{ addr = {E.WILD_FINALIZE} }}]", "already hooked")
+        self.bad('[start]\nrng_repin = [{ addr = 4 }]\n[[hook]]\nname = "h"\naddr = 4\nread = "r0"', "already hooked")
+        self.bad("[start]\nrng_repin = [{ addr = 4 }, { addr = 4 }]", "duplicate address")
+
+    def test_setup_cases_may_change_rng(self):
+        scn = self.load('[setup]\nsteps = ["A"]\n[[case]]\nid = "a"\n'
+                        'start = { rng = 5, clock = "2026-10-09T12:00:00" }')
+        self.assertEqual(scn["cases"][0]["rng"], 5)
+
+    def test_op_and_values(self):
+        self.assertEqual(E.parse_op("rng:0x5EED0001"), ("rng", (0x5EED0001,)))
+        self.assertEqual(E.mt_init(5489)[1], 1301868182)        # MT19937's reference initialisation (seed 5489)
+        self.assertEqual(E.repin_value(0xFFFFFFFF, 1), (0xFFFFFFFF + E.REPIN_STRIDE) & 0xFFFFFFFF)
+        self.assertNotEqual(E.repin_value(1, 1), E.repin_value(1, 2))
+
+    def test_write_rng_checks_the_code_first(self):
+        h = mock.Mock()
+        h.read.side_effect = lambda a, n: bytes.fromhex(E.RNG_SIG[a])
+        h.u32.return_value = 9
+        self.assertEqual(E.write_rng(h, 9), 9)
+        h.w32.assert_any_call(E.LCRNG_STATE, 9)
+        h.w32.assert_any_call(E.MT_INDEX, E.MT_N)
+        self.assertEqual(len(h.write.call_args[0][1]), 4 * E.MT_N)
+        h.read.side_effect = lambda a, n: b"\0" * n
+        with self.assertRaises(RuntimeError):
+            E.write_rng(h, 9)
 
 
 class ResultFormat(unittest.TestCase):
@@ -260,7 +436,9 @@ expect = [{ obs = "mon.form", equals = "${f}" }, { obs = "mon.form", equals = 9,
             doc = json.loads((d / "run" / "s1.json").read_text())
             self.assertEqual(doc["refs"], ["D-1"])
             self.assertEqual([r["lang"] for r in doc["runs"]], ["cn", "en"])
-            self.assertEqual(doc["parity"]["cases"]["a"], {"mon": "same"})
+            self.assertEqual(status(doc["parity"]), {"mon": S.EQUAL})
+            self.assertEqual(summary["failed_expectations"][0]["lang"], "en")
+            self.assertEqual(list(summary)[:3], ["pass", "mismatches", "failed_expectations"])
             self.assertEqual(len(doc["runs"][1]["expectations"]), 2)
             with mock.patch("sys.stderr"):
                 self.assertEqual(S.run(a), 2)            # an existing run folder is not overwritten
