@@ -410,15 +410,40 @@ export function patchPokemonSpecies(record: Uint8Array, speciesId: number, name:
   return result;
 }
 
-/** Edit stored Gen IV gender bits; PID, form, nature and shininess remain unchanged. */
-export function patchPokemonGender(record: Uint8Array, gender: Gender, genderRatio: number): Uint8Array {
-  const mon = decodePokemon(record);
-  if (!possibleGenders(genderRatio).includes(gender)) throw new EditorError('invalid-input', 'That gender is not possible for this species.');
-  if (mon.isEgg) throw new EditorError('invalid-pokemon', 'Hatch the egg before changing gender.');
-  if (mon.gender === gender) return Uint8Array.from(record);
-  const {payload, b} = unpack(record);
-  payload[b + 24] = (payload[b + 24]! & ~6) | genderBits(gender);
-  return seal(record, payload);
+/** Native gender reads recompute B+24 from species and PID. Repack both encrypted regions. */
+export function patchPokemonGender(record: Uint8Array, gender: Gender, ratio: number): Uint8Array {
+  const decoded = decodePokemonDetails(record);
+  if (!Number.isInteger(ratio) || ratio < 0 || ratio > 255) throw new EditorError('invalid-reference', 'Invalid species gender ratio.');
+  const current = genderFromRatio(decoded.pid, ratio);
+  if (!['male', 'female', 'genderless'].includes(gender)) throw new EditorError('invalid-pokemon', 'Choose a gender.');
+  if (decoded.isEgg) throw new EditorError('invalid-pokemon', 'Hatch the egg before changing gender.');
+  if (gender === current && (decoded.blocks[56]! & 6) === genderBits(gender)) return Uint8Array.from(record);
+  if (!possibleGenders(ratio).includes(gender)) throw new EditorError('invalid-pokemon', 'This species cannot have the selected gender.');
+  // Preserve natural shininess (including under the override), PID nature and ability parity.
+  // Shiny candidates derive the high word from OT and XOR; ordinary candidates need at most
+  // 25 high words for each low word to cover every nature remainder.
+  const trainerXor = (decoded.otId >>> 16) ^ (decoded.otId & 65535);
+  let next: number | undefined = gender === current ? decoded.pid : undefined;
+  for (let low = decoded.pid & 1; low < 65536 && next === undefined; low += 2) {
+    if (genderFromRatio(low, ratio) !== gender) continue;
+    for (let n = 0; n < (decoded.naturalShiny ? 8 : 25); n++) {
+      const high = decoded.naturalShiny ? trainerXor ^ low ^ n : ((decoded.pid >>> 16) + n) & 65535;
+      const candidate = ((high << 16) | low) >>> 0;
+      if (candidate % 25 === decoded.pid % 25 && ((trainerXor ^ high ^ low) < 8) === decoded.naturalShiny) {
+        next = candidate; break;
+      }
+    }
+  }
+  if (next === undefined) throw new EditorError('invalid-pokemon', 'No gender change preserves this Pokémon’s nature, ability and shiny status.');
+  const blocks = decoded.blocks;
+  blocks[56] = (blocks[56]! & ~6) | genderBits(gender);
+  const payload = new Uint8Array(128);
+  BLOCKS[(next >>> 13) & 31]!.forEach((offset, index) => payload.set(blocks.subarray(index * 32, index * 32 + 32), offset));
+  const result = Uint8Array.from(record), header = view(result), sum = checksum(payload);
+  header.setUint32(0, next, true); header.setUint16(6, sum, true);
+  result.set(crypt(payload, sum), 8);
+  if (record.length === PARTY_STRIDE) result.set(crypt(crypt(record.subarray(BOXED_SIZE), decoded.pid), next), BOXED_SIZE);
+  return result;
 }
 
 export const ABILITY_MAX = 326;

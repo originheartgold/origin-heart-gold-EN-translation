@@ -156,14 +156,15 @@ function heroTile(mon: DecodedPokemon): HTMLElement {
     disabled: mon.isEgg || (mon.naturalShiny && mon.shiny),
     onclick: () => editMon(r => patchPokemonShiny(r, !mon.shiny), mon.shiny ? 'No longer shiny' : 'Now shiny')},
   svg('<svg viewBox="0 0 16 16"><path d="M8 1.5l1.6 4.3 4.4.3-3.4 2.8 1.1 4.4L8 10.9l-3.7 2.4 1.1-4.4L2 6.1l4.4-.3z" fill="currentColor"/></svg>'));
-  const genders = info ? possibleGenders(info.genderRatio) : [];
+  const genderInfo = speciesInfo(mon.speciesId, 0);
+  const genders = genderInfo ? possibleGenders(genderInfo.genderRatio) : [];
   const genderIcon = h('div', {id:'pokemon-gender', class:'gender-toggle', role:'group', 'aria-label':'Pokémon gender', 'data-gender':mon.gender},
     h('span', {class:'gender-selection', 'aria-hidden':'true'}));
   for (const gender of ['male','female'] as const) {
     genderIcon.append(h('button', {type:'button', class:'gender-choice', 'aria-label':gender === 'male' ? 'Male' : 'Female',
+      title:'Changes personality ID; nature, ability and shiny status stay the same. Spinda spots or Wurmple evolution may change.',
       'aria-pressed':String(mon.gender === gender), disabled:mon.isEgg || !genders.includes(gender) || genders.length < 2,
       onclick:event => {
-        if(mon.gender === gender)return;
         const previous = mon.gender === 'female' ? 'translateX(30px)' : 'translateX(0)';
         editMon(record => patchPokemonGender(record, gender), `Gender changed to ${gender}`);
         const slider = document.querySelector<HTMLElement>('#pokemon-gender .gender-selection');

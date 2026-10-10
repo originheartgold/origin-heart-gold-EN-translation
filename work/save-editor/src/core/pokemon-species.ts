@@ -26,7 +26,8 @@ export function patchPokemonSpecies(record: Uint8Array, speciesId: number, name:
 }
 export function patchPokemonGender(record: Uint8Array, gender: Gender): Uint8Array {
   const mon = decodePokemon(record);
-  return genderCore(record, gender, ratio(mon.speciesId, mon.form));
+  // The native getter uses base-species personal data, regardless of form.
+  return genderCore(record, gender, ratio(mon.speciesId, 0));
 }
 export function clonePokemon(record: Uint8Array, random: () => number = Math.random, naturalTarget?: boolean): Uint8Array {
   const mon = decodePokemon(record);

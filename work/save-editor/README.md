@@ -152,3 +152,7 @@ PC tools move, copy or clone into free slots, fill free box slots with distinct 
 Both inner chunk and main save checksums are repaired. Undo remains available for complete save operations. See FEATURE_COMPARISON.md for supported features and practical limits, and NATIVE_LAYOUT.md for format provenance. Compatibility findings are partial Origin checks, not a complete legality verdict. Native game loading remains to be verified.
 
 The Bag uses compact pocket cards and a scrollable inventory list. Selected-item price, held-effect, Fling and use metadata appear beside the quantity controls; there is no separate collapsed item-reference panel. The layout stacks on narrow screens.
+
+Gender changes update the personality ID, so the game retains the selected gender.
+Nature, ability and shiny status are preserved. Other personality-based details,
+such as Spinda spots or Wurmple evolution, may change. See `research-gender.md`.
