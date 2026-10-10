@@ -1,0 +1,84 @@
+---
+import DefaultToggle from '@astrojs/starlight/components/MobileMenuToggle.astro';
+---
+
+<DefaultToggle />
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('.sl-menu-button');
+  const sidebar = document.getElementById('starlight__sidebar');
+  if (button && sidebar) {
+    const desktop = matchMedia('(min-width: 50rem)');
+    const nativePopover = typeof sidebar.showPopover === 'function';
+    let fallbackOpen = false;
+
+    // Pre-iOS 17 ignores popover/popovertarget, leaving a fixed, unclosable sidebar.
+    document.body.toggleAttribute('data-ohg-menu-fallback', !nativePopover);
+    button.setAttribute('data-ohg-menu-ready', '');
+    button.setAttribute('aria-controls', sidebar.id);
+
+    const isOpen = () => !desktop.matches && (nativePopover
+      ? sidebar.matches(':popover-open') : fallbackOpen);
+    const sync = () => {
+      const open = isOpen();
+      button.setAttribute('aria-expanded', String(open));
+      document.body.toggleAttribute('data-ohg-menu-open', open);
+      document.querySelectorAll('.main-frame, .sl-skip-link').forEach((element) => {
+        element.toggleAttribute('inert', open);
+      });
+    };
+    const close = () => {
+      fallbackOpen = false;
+      if (nativePopover && sidebar.matches(':popover-open')) sidebar.hidePopover();
+      sync();
+    };
+
+    button.addEventListener('click', (event) => {
+      // Handle the tap explicitly, avoiding a second toggle by the native default action.
+      event.preventDefault();
+      if (isOpen() || desktop.matches) close();
+      else {
+        if (nativePopover) sidebar.showPopover();
+        else fallbackOpen = true;
+        sync();
+      }
+    });
+    // Read the actual state after Starlight's own toggle listener has run. This also
+    // releases inert/scroll locks after native light dismissal or a viewport change.
+    sidebar.addEventListener('toggle', () => queueMicrotask(sync));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && isOpen()) {
+        close();
+        button.focus();
+      }
+    });
+    sidebar.addEventListener('click', (event) => {
+      if (event.target instanceof Element && event.target.closest('a[href]')) close();
+    });
+    desktop.addEventListener('change', close);
+    window.addEventListener('pageshow', close);
+    sync();
+  }
+</script>
+
+<style is:global>
+  .sl-menu-button[data-ohg-menu-ready][aria-expanded='false'] .close-menu,
+  .sl-menu-button[data-ohg-menu-ready][aria-expanded='true'] .open-menu { display: none; }
+  .sl-menu-button[data-ohg-menu-ready][aria-expanded='true'] .close-menu { display: block; }
+
+  @media (max-width: 49.999rem) {
+    body[data-ohg-menu-fallback] #starlight__sidebar { display: none; }
+    body[data-ohg-menu-fallback][data-ohg-menu-open] #starlight__sidebar { display: block; }
+    body[data-ohg-menu-open] { overflow: hidden; }
+
+    /* Without either popovers or JavaScript, keep navigation in normal page flow. */
+    @supports not selector(:popover-open) {
+      body:not([data-ohg-menu-fallback]) #starlight__sidebar {
+        position: static;
+        margin-top: var(--sl-nav-height);
+      }
+      body:not([data-ohg-menu-fallback]) .sl-menu-button { display: none; }
+      body:not([data-ohg-menu-fallback]) .main-frame { padding-top: 0; }
+    }
+  }
+</style>

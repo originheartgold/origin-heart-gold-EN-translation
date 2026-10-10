@@ -34,6 +34,7 @@ export default defineConfig({
         },
       ],
       components: {
+        MobileMenuToggle: "./src/components/MobileMenuToggle.astro",
         PageTitle: "./src/components/PageTitle.astro",
         SiteTitle: "./src/components/SiteTitle.astro",
         Hero: "./src/components/Hero.astro",

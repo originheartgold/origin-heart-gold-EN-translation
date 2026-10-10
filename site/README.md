@@ -230,6 +230,19 @@ On desktop, the header hamburger collapses the guide sidebar and remembers that 
 
 The reference pages share the artwork URL helper in `work/save-editor/src/ui/artwork.ts`; builds do not download artwork.
 
+`MobileMenuToggle.astro` adds a JavaScript fallback for browsers without the Popover API
+(including iOS before 17), and clears the page's interaction/scroll lock when the drawer
+closes, the viewport changes, or a page is restored from history. Without JavaScript,
+older browsers show navigation in the page flow so it cannot cover the content.
+Test against a local production preview with existing WebKit and Chromium installations:
+
+```sh
+PLAYWRIGHT_MODULE=/absolute/path/to/playwright/index.mjs GUIDE_PREVIEW_URL=http://127.0.0.1:4338/ node site/tests/mobile-menu-browser.mjs
+```
+
+The runner checks touch navigation, restored page interaction, and JavaScript-disabled
+behavior. Its missing-popover simulation does not replace testing on a physical old iPhone.
+
 ### Shareable reference browsing
 
 Indexes use `q` for search, their select's `data-key` for each filter (for example
