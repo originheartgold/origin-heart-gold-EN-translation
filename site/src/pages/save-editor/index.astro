@@ -4,6 +4,8 @@
 // h1, the site's font stack instead of Google Fonts, the site's theme choice, a backup note and the site footer text.
 import shell from '../../../../work/save-editor/index.html?raw';
 import '../../../../work/save-editor/styles.css';
+// The site's phone shell (menu button and menu sheet), so the editor is one of the site's pages on a phone.
+import '../../styles/phone-shell.css';
 import { PREVIEW, SITE_URL, REPO_URL } from '../../../site.config.mjs';
 import { SITE_NAME, SOCIAL_IMAGE, composeTitle } from '../../lib/site-meta';
 import { organization, website } from '../../routeData';
@@ -40,6 +42,8 @@ const meta = [
 	`<meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">`,
 	PREVIEW ? `<meta name="robots" content="noindex, nofollow">` : '',
 	`<script type="application/ld+json">${jsonLd}</script>`,
+	// The site's script: on a phone it opens the site's menu from the button in the bar.
+	`<script src="${base}ohg.js" defer></script>`,
 ].join('');
 const head = shell.match(/<head>([\s\S]*?)<\/head>/)?.[1]
 	// No third-party fonts (privacy, speed): the site's own font stack is set below (W-054).
@@ -57,7 +61,12 @@ const body = shell.match(/<body>([\s\S]*?)<\/body>/)?.[1]
 	.replace(/<script[^>]*>[\s\S]*?<\/script>/g, '')
 	.replace(brand ?? '\0', `<div class="brand"><a class="site-brand" href="${base}" aria-label="Origin HeartGold English home">ORIGIN <strong>HEARTGOLD</strong></a><h1 class="brand-title">Save editor</h1></div>`)
 	.replace(drop ?? '\0', `${drop}<p class="drop-note">Keep a copy of your original save, and load the edited one only after you have checked it. Questions? See the <a href="${base}faq/">FAQ</a>.</p>`)
-	.replace('<div class="bar-actions">', `<div class="bar-actions"><a class="btn ghost guide-link" href="${base}">Guide</a>`);
+	.replace('<div class="bar-actions">', `<div class="bar-actions"><a class="btn ghost guide-link" href="${base}">Guide</a>`)
+	// The dock's Undo gives way to Import (the app's own [data-open-file] handler opens the file picker); the Undo
+	// button stays in the markup, hidden, because the app writes its disabled state.
+	.replace('<button type="button" id="dock-undo"', `<button type="button" class="dock-import" data-open-file aria-controls="file-input"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4m0 0 4 4m-4-4-4 4M4 17v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-2"/></svg><span>Import</span></button><button type="button" id="dock-undo"`)
+	// On a phone the site's menu button sits at the end of the bar (site/public/ohg.js opens the menu sheet).
+	.replace(/<\/div>\s*<\/header>/, `<button type="button" class="primary-menu-button ohg-editor-menu" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg></button></div></header>`);
 if (!head || !body || !brand || !drop) throw new Error('Save editor HTML must contain head, body, the brand and the drop zone.');
 ---
 <!doctype html>
@@ -86,4 +95,31 @@ if (!head || !body || !brand || !drop) throw new Error('Save editor HTML must co
 	.site-footer { max-width: 560px; margin: 48px auto 0; padding: 0 20px 96px; color: var(--ink-2); font-size: 12px; text-align: center; }
 	.site-footer p { margin: 0 0 6px; }
 	@media (max-width: 480px) { .brand-title { font-size: 13px; padding-left: .5rem; } }
+	/* The site's colours (src/styles/custom.css) in the editor's own names, light and dark, so the editor reads as a
+	   page of the site. The editor's "auto" theme follows the system like the site does. */
+	html:root { --bg: #faf9f5; --surface: #fffefa; --surface-2: #f5f4ee; --line: #e3e3dc; --line-strong: #cfd1cb; --ink: #202a35; --ink-2: #465361; --ink-3: #606975; --accent: #94691c; --accent-ink: #fffaf0; --accent-soft: #f3e9ce; --focus: #94691c; }
+	@media (prefers-color-scheme: dark) { html:root:not([data-theme="light"]) { --bg: #111923; --surface: #18222e; --surface-2: #25313f; --line: #25313f; --line-strong: #354252; --ink: #f3f5f7; --ink-2: #c9d1db; --ink-3: #a1adbc; --accent: #d7ad51; --accent-ink: #1b1406; --accent-soft: #3b321d; --focus: #d7ad51; } }
+	html:root[data-theme="dark"] { --bg: #111923; --surface: #18222e; --surface-2: #25313f; --line: #25313f; --line-strong: #354252; --ink: #f3f5f7; --ink-2: #c9d1db; --ink-3: #a1adbc; --accent: #d7ad51; --accent-ink: #1b1406; --accent-soft: #3b321d; --focus: #d7ad51; }
+	#dock-undo { display: none !important; }
+	/* The site's phone shell reads the site's colour names; here they come from the editor's own. */
+	:root { --sl-color-bg: var(--bg); --sl-color-bg-nav: var(--surface); --sl-color-white: var(--ink); --sl-color-gray-1: var(--ink); --sl-color-gray-2: var(--ink-2); --sl-color-gray-3: var(--ink-3); --sl-color-gray-4: var(--line-strong); --sl-color-gray-5: var(--line-strong); --sl-color-gray-6: var(--surface-2); --sl-color-accent: var(--accent); --sl-color-accent-low: var(--accent-soft); --sl-color-accent-high: var(--accent); --sl-color-text-accent: var(--accent); --ohg-z-dock: 15; }
+	.ohg-editor-menu { display: none; }
+	@media (max-width: 50rem) {
+		/* the bar as the site's header: the wordmark on two lines with the page's name under it, the menu at the end */
+		/* the site's header: 3.5rem tall, the wordmark at the left, the controls at the right, a hairline under it */
+		.bar { flex-wrap: wrap; align-items: center; row-gap: 0; min-height: 3.5rem; padding: .35rem 1rem; border-bottom: 1px solid var(--line); background: var(--bg); box-shadow: none; }
+		.brand { flex-direction: column; align-items: flex-start; gap: 0; }
+		.site-brand { display: grid; font-size: 14px; line-height: 1.1; letter-spacing: -.02em; }
+		.site-brand strong { font-size: 15px; }
+		.brand-title { padding: 0; border: 0; font-size: 10px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+		.bar-actions { gap: .25rem; }
+		.bar-actions .btn { height: 40px; }
+		.bar-actions .btn.ghost#theme-toggle { width: 40px; padding: 0; justify-content: center; }
+		.bar-actions > .btn[data-open-file] { display: none; }
+		.file-meta { padding: .25rem 0 .4rem; font-size: 12px; }
+		.guide-link { display: none; }
+		.ohg-editor-menu { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-left: .25rem; padding: 0; border: 0; border-radius: 50%; background: none; color: var(--ink); cursor: pointer; }
+		.ohg-editor-menu:active { background: var(--surface-2); }
+		.site-footer { display: none; }
+	}
 </style>

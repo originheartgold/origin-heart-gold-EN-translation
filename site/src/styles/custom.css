@@ -1,9 +1,12 @@
+@import './phone-shell.css';
 /* Origin HeartGold guide: theme on top of Starlight. Gold accent from the game's title. */
 :root {
 	--sl-color-accent-low: #3b2d06;
 	--sl-color-accent: #c9971c;
 	--sl-color-accent-high: #f5dc96;
 	--ohg-tag-bg: var(--sl-color-gray-6);
+	/* stacking: above Starlight's navbar (10), below its skip link (20) */
+	--ohg-z-dock: 15;
 }
 :root[data-theme='light'] {
 	--sl-color-accent-low: #f7e9c0;
@@ -428,3 +431,499 @@ table.sortable th .sort-button { display: inline-flex; align-items: center; min-
 .pokemon-cell > a, .page-help a { display: inline-flex; align-items: center; min-height: 24px; }
 /* Abilities in trainer team tables are links of their own, one per row (were 23 px tall). */
 a.ability-link { display: flex; align-items: center; min-height: 24px; }
+
+/* ---- guide pages on phones (site/public/ohg.js setupMobileGuide sets <html data-ohg-mobile> below 50rem).
+   One flat sequence: steps are rows on a rail, the quests a step opens sit under it as rows with their Done tick, and
+   a dock at the bottom opens the Sections and Quests sheets. The controls it adds are hidden everywhere else. */
+.ohg-m-row, .ohg-m-dock, .ohg-m-extra, .ohg-m-sprite, .ohg-m-chapter-row, .ohg-m-tabs, .ohg-m-subtabs, .ohg-m-evo, .ohg-m-short, .ohg-m-band, .ohg-m-acq-head, .ohg-m-item-hero, .ohg-m-src-rest { display: none; }
+@media (max-width: 50rem) {
+  :root[data-ohg-mobile] { --sl-mobile-toc-height: 0rem; --ohg-m-rail: 1.35rem; }
+  :root[data-ohg-mobile] mobile-starlight-toc, :root[data-ohg-mobile] .page-heading-art, :root[data-ohg-mobile] .ohg-m-hidden,
+  :root[data-ohg-mobile] .sl-markdown-content .sl-anchor-link, :root[data-ohg-mobile] .pagination-links,
+  :root[data-ohg-mobile] .chapter-hidden-items { display: none; }
+  :root[data-ohg-mobile] .ohg-m-extra { display: block; }
+  /* hierarchy: one size for section headings, the rows below them, then body text; wider gaps between sections */
+  :root[data-ohg-mobile] h1#_top { font-size: 1.85rem; }
+  :root[data-ohg-mobile] .sl-markdown-content > h2, :root[data-ohg-mobile] .sl-markdown-content > .sl-heading-wrapper > h2 { font-size: 1.3rem; }
+  :root[data-ohg-mobile] .sl-markdown-content > .sl-heading-wrapper { margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--sl-color-gray-6); }
+  :root[data-ohg-mobile] .sl-markdown-content > .sl-heading-wrapper + * { margin-top: .75rem; }
+  :root[data-ohg-mobile] .sl-markdown-content > p { font-size: 1rem; line-height: 1.6; }
+  :root[data-ohg-mobile] .ohg-m-label { display: block; margin-bottom: .1rem; font-size: .78rem; font-weight: 700; color: var(--sl-color-text-accent); }
+  :root[data-ohg-mobile] .ohg-m-label-warn { color: #d8534f; }
+  :root[data-theme='light'][data-ohg-mobile] .ohg-m-label-warn { color: #a3261f; }
+  :root[data-ohg-mobile] .ohg-m-yes, :root[data-ohg-mobile] .ohg-m-no { padding: .02rem .4rem; border-radius: .3rem; font-weight: 700; }
+  :root[data-ohg-mobile] .ohg-m-yes { background: #1e4b2e; color: #baf0c9; }
+  :root[data-ohg-mobile] .ohg-m-no { background: #562222; color: #ffc9c4; }
+  :root[data-theme='light'][data-ohg-mobile] .ohg-m-yes { background: #dcf3e2; color: #185c2e; }
+  :root[data-theme='light'][data-ohg-mobile] .ohg-m-no { background: #fbe1de; color: #8a1f17; }
+  :root[data-ohg-mobile] .guide-page-heading { min-height: 0; }
+  :root[data-ohg-mobile] .main-pane { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
+  :root[data-ohg-mobile] .sl-markdown-content > p { text-wrap: pretty; }
+
+  /* rows: the tap target of every fold */
+  :root[data-ohg-mobile] .ohg-m-row { display: flex; align-items: center; gap: .6rem; }
+  :root[data-ohg-mobile] .ohg-m-toggle {
+    flex: 1; display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto; column-gap: .75rem; align-items: center;
+    min-width: 0; min-height: 48px; padding: .6rem 0; border: 0; background: none; color: var(--sl-color-white); font: inherit; text-align: left; cursor: pointer;
+  }
+  :root[data-ohg-mobile] .ohg-m-title { grid-column: 1; font-size: 1rem; font-weight: 650; line-height: 1.35; text-wrap: balance; }
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step > .ohg-m-row .ohg-m-title { font-size: 1.08rem; font-weight: 700; }
+  :root[data-ohg-mobile] .ohg-m-warn { color: #d8534f; }
+  :root[data-theme='light'][data-ohg-mobile] .ohg-m-warn { color: #a3261f; }
+  :root[data-ohg-mobile] .ohg-m-chevron { grid-column: 2; grid-row: 1 / span 2; color: var(--sl-color-gray-4); transition: transform .2s cubic-bezier(.2, .7, .2, 1); }
+  :root[data-ohg-mobile] .ohg-m-fold[data-open] > .ohg-m-row .ohg-m-chevron { transform: rotate(180deg); }
+  :root[data-ohg-mobile] .ohg-m-toggle:active .ohg-m-title { color: var(--sl-color-text-accent); }
+  :root[data-ohg-mobile] .ohg-m-tick { display: flex; align-items: center; min-height: 48px; }
+  :root[data-ohg-mobile] .ohg-m-tick input { width: 22px; height: 22px; margin: 0; accent-color: var(--sl-color-accent); }
+
+  /* the walkthrough: a rail with a dot per step; closed steps show only their row */
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step { position: relative; margin: 0; padding: 0 0 0 var(--ohg-m-rail); border: 0; }
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step::before {
+    content: ''; position: absolute; left: .3rem; top: 0; bottom: 0; width: 1px; background: var(--sl-color-gray-5);
+  }
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step:first-of-type::before { top: 1.4rem; }
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step:last-of-type::before { bottom: auto; height: 1.4rem; }
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step::after {
+    content: ''; position: absolute; left: 0; top: 1.05rem; width: calc(.6rem + 1px); height: calc(.6rem + 1px); border-radius: 50%;
+    background: var(--sl-color-accent); box-shadow: 0 0 0 3px var(--sl-color-bg);
+  }
+  :root[data-ohg-mobile] .chapter-step.chapter-optional.ohg-m-step::after { background: var(--sl-color-bg); border: 1.5px solid var(--sl-color-gray-4); }
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step + .chapter-step.ohg-m-step > .ohg-m-row { border-top: 1px solid var(--sl-color-gray-6); }
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step > .ohg-m-row .ohg-m-toggle { padding-block: .8rem; }
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step:not([data-open]) > :not(.ohg-m-row) { display: none; }
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step > :not(.ohg-m-row) { margin: 0 0 1rem; }
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step[data-open] { padding-bottom: .75rem; }
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step > p { font-size: 1rem; line-height: 1.6; }
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step > p:first-of-type > strong:first-child { display: none; }
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step > .chapter-unlocks { display: none; }
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step > .chapter-warning {
+    padding: .7rem .85rem; border: 0; border-radius: .6rem; font-size: .88rem; line-height: 1.5; background: #3a1d1d; color: #f6dada;
+  }
+  :root[data-theme='light'][data-ohg-mobile] .chapter-step.ohg-m-step > .chapter-warning { background: #fbe9e7; color: #6b1d16; }
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step > .chapter-warning ul { margin-top: .25rem; padding-left: 1.1rem; }
+  :root[data-ohg-mobile] .chapter-step.ohg-m-step > .chapter-warning .tag { display: none; }
+
+  /* a quest under its step, or on its own on an area page: the row keeps the tick and the title, the rest opens on tap */
+  :root[data-ohg-mobile] .ohg-m-quests { margin: 0 0 .5rem; border-top: 1px solid var(--sl-color-gray-6); }
+  :root[data-ohg-mobile] section.quest.ohg-m-fold { position: relative; padding: 0; margin: 0; border: 0; border-radius: 0; background: none; scroll-margin-top: 4.5rem; }
+  :root[data-ohg-mobile] section.quest.ohg-m-fold[data-open] { display: flex; flex-direction: column; }
+  :root[data-ohg-mobile] section.quest.ohg-m-fold[data-open] > .quest-tools { order: 99; }
+  :root[data-ohg-mobile] .sl-markdown-content section.quest.ohg-m-fold + section.quest.ohg-m-fold { margin: 0; padding: 0; border: 0; }
+  :root[data-ohg-mobile] .ohg-m-quests > section.quest.ohg-m-fold + section.quest.ohg-m-fold > .ohg-m-row,
+  :root[data-ohg-mobile] .sl-markdown-content > section.quest.ohg-m-fold > .ohg-m-row { border-top: 1px solid var(--sl-color-gray-6); }
+  :root[data-ohg-mobile] section.quest.ohg-m-fold > .ohg-m-row .ohg-m-title { font-weight: 550; }
+  :root[data-ohg-mobile] section.quest.ohg-m-done > .ohg-m-row .ohg-m-title { color: var(--sl-color-gray-3); text-decoration: line-through; text-decoration-color: var(--sl-color-gray-4); }
+  :root[data-ohg-mobile] section.quest.ohg-m-fold:not([data-open]) > :not(.ohg-m-row) { display: none; }
+  :root[data-ohg-mobile] section.quest.ohg-m-fold > :not(.ohg-m-row) { margin-block: 0 .85rem; font-size: 1rem; line-height: 1.6; }
+  :root[data-ohg-mobile] section.quest.ohg-m-fold[data-open] { padding-bottom: .5rem; }
+  :root[data-ohg-mobile] section.quest.ohg-m-fold > .quest-meta { margin-top: -.25rem !important; }
+  :root[data-ohg-mobile] section.quest.ohg-m-fold .table-scroll { margin-block: .25rem 1rem; }
+  :root[data-ohg-phone] section.quest.ohg-m-fold table:not(.ohg-m-stack) :is(th, td) { padding: .6rem .75rem; font-size: .9rem; line-height: 1.5; vertical-align: top; }
+  :root[data-ohg-phone] section.quest.ohg-m-fold table:not(.ohg-m-stack) th { font-size: .78rem; font-weight: 700; color: var(--sl-color-gray-3); }
+  /* a prose table one row at a time: the first column is the row's title, the rest sit under their column name */
+  :root[data-ohg-phone] .table-scroll:has(> table.ohg-m-stack) { overflow: visible; border: 0; background: none; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-stack { display: block; border: 0; background: none; font-size: .95rem; }
+  :root[data-ohg-phone] table.ohg-m-stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  :root[data-ohg-phone] table.ohg-m-stack tbody { display: block; }
+  :root[data-ohg-phone] table.ohg-m-stack tr { display: block; margin: 0; padding: .7rem 0; border: 0; border-top: 1px solid var(--sl-color-gray-6); background: none; }
+  :root[data-ohg-phone] table.ohg-m-stack tr:first-child { border-top: 0; padding-top: 0; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-stack td, :root[data-ohg-phone] .sl-markdown-content .table-scroll > table.ohg-m-stack > tbody > tr > td { display: block; padding: .15rem 0; border: 0; background: none; line-height: 1.5; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-stack td::before { content: attr(data-label); display: block; font-size: .72rem; font-weight: 700; color: var(--sl-color-gray-3); }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-stack td:first-child, :root[data-ohg-phone] .sl-markdown-content .table-scroll > table.ohg-m-stack > tbody > tr > td:first-child {
+    position: static; padding-top: 0; min-width: 0; max-width: none; box-shadow: none; font-weight: 700; color: var(--sl-color-white);
+  }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-stack td:first-child::before { content: none; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-stack td:empty { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-stack tbody tr:hover > td { background: none; }
+  /* hidden items under their step: the place as a row, then each item with its picture */
+  :root[data-ohg-mobile] .ohg-m-areas { margin: 0 0 .5rem; border-top: 1px solid var(--sl-color-gray-6); }
+  :root[data-ohg-mobile] .chapter-hidden-area.ohg-m-fold { margin: 0; }
+  :root[data-ohg-mobile] .chapter-hidden-area.ohg-m-fold + .chapter-hidden-area.ohg-m-fold > .ohg-m-row { border-top: 1px solid var(--sl-color-gray-6); }
+  :root[data-ohg-mobile] .chapter-hidden-area.ohg-m-fold:not([data-open]) > :not(.ohg-m-row) { display: none; }
+  :root[data-ohg-mobile] .chapter-hidden-area.ohg-m-fold > :not(.ohg-m-row) { margin: 0 0 .75rem; font-size: .95rem; line-height: 1.55; }
+  :root[data-ohg-mobile] .chapter-hidden-area.ohg-m-fold > p > strong:first-child:not(.ohg-m-label) { display: block; margin-top: .5rem; font-size: 1rem; }
+  :root[data-ohg-mobile] .chapter-hidden-area.ohg-m-fold > p > img, :root[data-ohg-mobile] .chapter-hidden-area.ohg-m-fold > img {
+    display: block; width: 100%; height: auto; margin: .25rem 0 1rem; border-radius: .6rem; background: var(--sl-color-gray-6); image-rendering: auto;
+  }
+  :root[data-ohg-mobile] .ohg-m-extra::after { background: var(--sl-color-bg); border: 1.5px solid var(--sl-color-gray-4); }
+  :root[data-ohg-mobile] section.quest.ohg-m-fold > .sl-heading-wrapper {
+    position: absolute; top: 0; scroll-margin-top: 4.5rem; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+  }
+  :root[data-ohg-mobile] section.quest.ohg-m-fold > .quest-meta .tag-main, :root[data-ohg-mobile] section.quest.ohg-m-fold > .quest-meta .tag-side { display: none; }
+  :root[data-ohg-mobile] section.quest.ohg-m-fold > .quest-tools { border: 0; padding: 0; }
+  :root[data-ohg-mobile] section.quest.ohg-m-fold > .quest-tools label { display: none; }
+  :root[data-ohg-mobile] section.quest.ohg-m-fold > .quest-tools a { display: inline-flex; align-items: center; min-height: 40px; font-size: .85rem; }
+  :root[data-ohg-mobile] section.quest.is-done.ohg-m-fold > :not(.ohg-m-row) { opacity: 1; }
+
+  /* dock */
+  :root[data-ohg-mobile] .ohg-m-dock {
+    position: fixed; z-index: var(--ohg-z-dock); left: max(.6rem, env(safe-area-inset-left)); right: max(.6rem, env(safe-area-inset-right)); bottom: calc(.6rem + env(safe-area-inset-bottom));
+    display: grid; grid-template-columns: 46px 1fr 1fr 46px; align-items: center; gap: .2rem; padding: .3rem; border-radius: 1.1rem;
+    background: #141c27; color: #f3f5f7; box-shadow: inset 0 1px 0 rgb(255 255 255 / .08), 0 1px 0 rgb(0 0 0 / .2), 0 14px 34px rgb(0 0 0 / .35);
+  }
+  :root[data-theme='light'][data-ohg-mobile] .ohg-m-dock { background: #1f2834; }
+  :root[data-ohg-mobile] .ohg-m-dock button, :root[data-ohg-mobile] .ohg-m-dock-turn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .45rem; min-height: 46px; padding: 0 .75rem;
+    border: 0; border-radius: .85rem; background: none; color: inherit; font: inherit; font-size: .9rem; font-weight: 650; text-decoration: none; cursor: pointer;
+    transition: background-color .15s ease-out;
+  }
+  :root[data-ohg-mobile] .ohg-m-dock button:active, :root[data-ohg-mobile] a.ohg-m-dock-turn:active { background: rgb(255 255 255 / .12); }
+  :root[data-ohg-mobile] .ohg-m-dock-turn { padding: 0; width: 46px; color: #c9d1db; }
+  :root[data-ohg-mobile] span.ohg-m-dock-turn { color: rgb(255 255 255 / .18); }
+  :root[data-ohg-mobile] .ohg-m-dock .ohg-m-dock-sections { background: rgb(255 255 255 / .06); }
+  :root[data-ohg-mobile] .ohg-m-dock .ohg-m-dock-quests { background: var(--sl-color-accent); color: #1b1406; box-shadow: inset 0 1px 0 rgb(255 255 255 / .25); }
+  :root[data-theme='light'][data-ohg-mobile] .ohg-m-dock .ohg-m-dock-quests { background: #d7ad51; }
+  :root[data-ohg-mobile] .ohg-m-dock .ohg-m-dock-quests:active { filter: brightness(1.08); }
+
+  /* sheets */
+
+  /* the game filters, moved here from the top of the page: two compact columns */
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-sheet .game-setup { display: grid; grid-template-columns: 1fr 1fr; align-items: end; margin: 0 0 .5rem; padding: 0 0 .75rem; gap: .5rem .6rem; border: 0; border-bottom: 1px solid var(--sl-color-gray-6); border-radius: 0; background: none; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-sheet .game-setup > strong { display: none; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-sheet .game-setup label { display: grid; gap: .2rem; font-size: .75rem; color: var(--sl-color-gray-3); }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-sheet .game-setup select { min-height: 40px; padding: .35rem .6rem; font-size: .9rem; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-sheet .game-setup label:has(input[type='checkbox']) {
+    display: flex; align-items: center; gap: .5rem; min-height: 40px; font-size: .88rem; color: var(--sl-color-white);
+  }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-sheet .game-setup input[type='checkbox'] { width: 20px; height: 20px; accent-color: var(--sl-color-accent); }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-sheet .game-setup :is(.hidden-count, .quest-filter-help) { grid-column: 1 / -1; margin: 0; font-size: .75rem; }
+
+  :root[data-ohg-mobile] .ohg-m-find {
+    width: 100%; min-height: 44px; margin-top: .5rem; padding: .55rem .8rem; border: 1px solid var(--sl-color-gray-5); border-radius: .6rem;
+    background: var(--sl-color-bg-nav); color: var(--sl-color-white); font: inherit; font-size: 1rem;
+  }
+  :root[data-ohg-mobile] .ohg-m-find::placeholder { color: var(--sl-color-gray-3); }
+  :root[data-ohg-mobile] .ohg-m-toc, :root[data-ohg-mobile] .ohg-m-quest-list { margin: .5rem 0 0; padding: 0; list-style: none; }
+  :root[data-ohg-mobile] .ohg-m-toc li { margin: 0; }
+  :root[data-ohg-mobile] .ohg-m-toc a {
+    display: flex; align-items: center; min-height: 48px; padding: .35rem .25rem; border-top: 1px solid var(--sl-color-gray-6);
+    color: var(--sl-color-white); font-weight: 650; text-decoration: none;
+  }
+  :root[data-ohg-mobile] .ohg-m-toc li:first-child a { border-top: 0; }
+  :root[data-ohg-mobile] .ohg-m-toc .ohg-m-sub a { padding-left: 1.25rem; font-weight: 450; font-size: .95rem; color: var(--sl-color-gray-2); }
+  /* chapters: plain rows; the one the reader is on holds this page's entries */
+  :root[data-ohg-mobile] .ohg-m-toc .ohg-m-chapter > a { font-weight: 550; color: var(--sl-color-gray-2); }
+  :root[data-ohg-mobile] .ohg-m-toc .ohg-m-chapter-current { margin: .35rem 0; border-radius: .75rem; background: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-gray-6); }
+  :root[data-ohg-mobile] .ohg-m-toc .ohg-m-toc-fold > summary {
+    display: flex; align-items: center; justify-content: space-between; gap: .75rem; min-height: 48px; padding: .35rem .75rem; list-style: none; cursor: pointer;
+    font-weight: 700; color: var(--sl-color-accent-high);
+  }
+  :root[data-ohg-mobile] .ohg-m-toc .ohg-m-toc-fold > summary::-webkit-details-marker { display: none; }
+  :root[data-ohg-mobile] .ohg-m-toc .ohg-m-toc-fold[open] > summary .ohg-m-chevron { transform: rotate(180deg); }
+  :root[data-ohg-mobile] .ohg-m-toc .ohg-m-toc-label { display: block; padding: .6rem 0 .15rem; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--sl-color-gray-3); }
+  :root[data-ohg-mobile] .ohg-m-toc .ohg-m-toc-label + li a { border-top: 0; }
+  :root[data-ohg-mobile] .ohg-m-toc .ohg-m-chapter-current + .ohg-m-chapter a { border-top: 0; }
+  :root[data-ohg-mobile] .ohg-m-toc-page { margin: 0; padding: 0 .75rem .35rem; list-style: none; }
+  :root[data-ohg-mobile] .ohg-m-toc-page li { margin: 0; }
+  :root[data-ohg-mobile] .ohg-m-toc-page a { display: flex; align-items: center; min-height: 44px; padding: .25rem 0; border-top: 1px solid var(--sl-color-gray-6); color: var(--sl-color-white); font-weight: 650; text-decoration: none; }
+  :root[data-ohg-mobile] .ohg-m-toc-page .ohg-m-sub a { padding-left: 1rem; font-weight: 450; color: var(--sl-color-gray-2); }
+  :root[data-ohg-mobile] .ohg-m-toc-page .ohg-m-stepline a { font-weight: 550; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-sheet-body { scroll-padding-top: 4rem; }
+  :root[data-ohg-mobile] .ohg-m-toc .ohg-m-stepline a::before { content: ''; flex: none; width: 7px; height: 7px; margin-right: .65rem; border-radius: 50%; background: var(--sl-color-accent); }
+  :root[data-ohg-mobile] .ohg-m-toc .ohg-m-optional a::before { background: none; border: 1.5px solid var(--sl-color-gray-4); }
+  :root[data-ohg-mobile] .ohg-m-toc a:active { color: var(--sl-color-text-accent); }
+
+  :root[data-ohg-mobile] .ohg-m-quest { display: flex; align-items: center; gap: .6rem; margin: 0; border-top: 1px solid var(--sl-color-gray-6); }
+  :root[data-ohg-mobile] .ohg-m-quest:first-child { border-top: 0; }
+  :root[data-ohg-mobile] .ohg-m-jump { flex: 1; display: grid; min-width: 0; min-height: 48px; padding: .6rem 0; align-content: center; color: var(--sl-color-white); text-decoration: none; }
+  :root[data-ohg-mobile] .ohg-m-jump .ohg-m-title { font-size: .95rem; font-weight: 550; }
+  :root[data-ohg-mobile] .ohg-m-jump:active .ohg-m-title { color: var(--sl-color-text-accent); }
+  :root[data-ohg-mobile] .ohg-m-quest.is-done .ohg-m-title { color: var(--sl-color-gray-3); text-decoration: line-through; text-decoration-color: var(--sl-color-gray-4); }
+  :root[data-ohg-mobile] .ohg-m-empty { padding: 1rem .25rem; color: var(--sl-color-gray-3); font-size: .9rem; }
+
+  /* sprites beside names */
+  :root[data-ohg-mobile] .ohg-m-mon {
+    display: inline-flex; align-items: center; gap: .15rem; margin: .1rem .1rem .1rem 0; padding: .1rem .55rem .1rem .15rem; border-radius: 999px;
+    background: var(--sl-color-gray-6); color: var(--sl-color-white); font-weight: 650; font-size: .88rem; line-height: 1.3; white-space: nowrap; vertical-align: middle;
+  }
+  :root[data-ohg-mobile] .ohg-m-mon-plain { margin: 0; padding: 0; gap: .05rem; background: none; font-weight: inherit; font-size: inherit; }
+  :root[data-ohg-mobile] .ohg-m-mon-plain .ohg-m-sprite-mon { width: 28px; height: 28px; margin: -.35rem -.1rem -.35rem -.2rem; }
+  :root[data-ohg-mobile] .ohg-m-mon-level { margin-left: .3rem; font-weight: 500; font-size: .78rem; color: var(--sl-color-gray-3); }
+  :root[data-ohg-mobile] .ohg-m-sprite { display: inline-block; }
+  :root[data-ohg-mobile] .ohg-m-sprite-mon { width: 32px; height: 32px; margin: -.3rem 0; image-rendering: pixelated; }
+  :root[data-ohg-mobile] .ohg-m-team { display: inline; }
+  :root[data-ohg-mobile] .ohg-m-punct { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  :root[data-ohg-mobile] .ohg-m-item { display: inline-flex; align-items: center; gap: .15rem; vertical-align: middle; white-space: nowrap; }
+  :root[data-ohg-mobile] .ohg-m-sprite-item { width: 22px; height: 22px; margin: -.3rem 0; image-rendering: pixelated; }
+  :root[data-ohg-phone] table.ohg-m-stack td:first-child .ohg-m-mon, :root[data-ohg-phone] table td .ohg-m-mon { font-size: .92rem; }
+  /* the guide's front page: one lead paragraph, folds for the rest, chapters as rows */
+  :root[data-ohg-mobile] .ohg-m-index [data-ohg-sec2]:not([data-open2]), :root[data-ohg-mobile] .ohg-m-index [data-ohg-sec3]:not([data-open3]) { display: none; }
+  :root[data-ohg-mobile] .ohg-m-index .ohg-m-index-row-3 { margin-top: 0; border-top: 0; }
+  :root[data-ohg-mobile] .ohg-m-index .ohg-m-index-row-3 .ohg-m-toggle { padding-block: .6rem; }
+  :root[data-ohg-mobile] .ohg-m-index .ohg-m-index-row-3 .ohg-m-title { font-size: .95rem; font-weight: 600; }
+  :root[data-ohg-mobile] .ohg-m-index [data-ohg-sec3] { margin-left: .9rem; }
+  :root[data-ohg-mobile] .ohg-m-fixed { color: #2f8f4e; font-weight: 650; }
+  :root[data-theme='light'][data-ohg-mobile] .ohg-m-fixed { color: #1f6b38; }
+  :root[data-ohg-mobile] .ohg-m-meta-inline { margin-left: .5rem; font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .03em; }
+  :root[data-ohg-mobile] .ohg-m-index .ohg-m-index-row { border-top: 1px solid var(--sl-color-gray-6); border-bottom: 1px solid var(--sl-color-gray-6); margin-top: 1.25rem; }
+  :root[data-ohg-mobile] .ohg-m-index .ohg-m-index-row + .ohg-m-index-row { border-top: 0; margin-top: 0; }
+  :root[data-ohg-mobile] .ohg-m-index .ohg-m-index-row[data-open] .ohg-m-chevron { transform: rotate(180deg); }
+  :root[data-ohg-mobile] .ohg-m-index .ohg-m-index-row .ohg-m-toggle { padding-block: .75rem; }
+  :root[data-ohg-mobile] .ohg-m-index .ohg-m-index-heading { display: none; }
+  :root[data-ohg-mobile] .ohg-m-index [data-ohg-sec2] { margin-top: .75rem; }
+  :root[data-ohg-mobile] .ohg-m-index [data-ohg-sec2][data-open2] + .ohg-m-index-row-2 { margin-top: 1rem; }
+  :root[data-ohg-mobile] .ohg-m-index .ohg-m-index-row-2 + .ohg-m-index-row-3 { border-top: 0; }
+  :root[data-ohg-mobile] .ohg-m-index .ohg-m-index-row-3 + [data-ohg-sec3] { margin-top: .25rem; }
+  :root[data-ohg-mobile] .ohg-m-index img:not(.ohg-m-sprite) { display: block; width: 100%; height: auto; margin: .25rem 0 .75rem; border-radius: .6rem; background: var(--sl-color-gray-6); }
+  :root[data-ohg-mobile] .ohg-m-index [data-ohg-sec2] > p:has(> strong:first-child:not(.ohg-m-label)) { margin-top: 1.1rem; }
+  :root[data-ohg-mobile] .ohg-m-index ul[data-ohg-sec2] { margin: 0 0 1rem; padding: 0; list-style: none; }
+  :root[data-ohg-mobile] .ohg-m-index ul[data-ohg-sec2] > li { margin: 0; }
+  :root[data-ohg-mobile] .ohg-m-index ul[data-ohg-sec2] > li + li { border-top: 1px solid var(--sl-color-gray-6); }
+  :root[data-ohg-mobile] .ohg-m-index ul[data-ohg-sec2] > li > a:only-child {
+    display: block; position: relative; min-height: 48px; padding: .75rem 1.5rem .75rem 0; color: var(--sl-color-white); font-size: .95rem; font-weight: 550; line-height: 1.4; text-decoration: none; text-wrap: pretty;
+  }
+  :root[data-ohg-mobile] .ohg-m-index ul[data-ohg-sec2] > li > a:only-child::after {
+    content: ''; position: absolute; right: .35rem; top: 50%; width: .45rem; height: .45rem; margin-top: -.3rem; border: solid var(--sl-color-gray-4); border-width: 2px 2px 0 0; transform: rotate(45deg);
+  }
+  :root[data-ohg-mobile] .ohg-m-index ul[data-ohg-sec2] > li > a .ohg-m-mon { font-weight: inherit; }
+  :root[data-ohg-mobile] .ohg-m-index ul[data-ohg-sec2] > li > a:only-child:active { color: var(--sl-color-text-accent); }
+  :root[data-ohg-mobile] .ohg-m-index .ohg-m-chapters-note { font-size: .9rem; color: var(--sl-color-gray-3); }
+  :root[data-ohg-mobile] .ohg-m-index ul.ohg-m-chapters { margin: .5rem 0 0; padding: 0; list-style: none; }
+  :root[data-ohg-mobile] .ohg-m-index ul.ohg-m-chapters > li { margin: 0; }
+  :root[data-ohg-mobile] .ohg-m-index ul.ohg-m-chapters > li > p { display: none; }
+  :root[data-ohg-mobile] .ohg-m-index ul.ohg-m-chapters > li + li .ohg-m-chapter-row { border-top: 1px solid var(--sl-color-gray-6); }
+  :root[data-ohg-mobile] .ohg-m-chapter-row { display: grid; grid-template-columns: 2.25rem 1fr auto; align-items: center; column-gap: .6rem; min-height: 56px; padding: .7rem 0; color: var(--sl-color-white); text-decoration: none; }
+  :root[data-ohg-mobile] .ohg-m-chapter-row:active .ohg-m-chapter-title { color: var(--sl-color-text-accent); }
+  :root[data-ohg-mobile] .ohg-m-chapter-num {
+    display: inline-flex; align-items: center; justify-content: center; align-self: start; width: 2.25rem; height: 2.25rem; border-radius: .6rem;
+    background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); font-size: .85rem; font-weight: 750; font-variant-numeric: tabular-nums;
+  }
+  :root[data-ohg-mobile] .ohg-m-chapter-dot { background: var(--sl-color-gray-6); color: var(--sl-color-gray-3); }
+  :root[data-ohg-mobile] .ohg-m-chapter-dot::before { content: ''; width: .5rem; height: .5rem; border-radius: 50%; border: 1.5px solid var(--sl-color-gray-4); }
+  :root[data-ohg-mobile] .ohg-m-chapter-body { display: grid; gap: .15rem; min-width: 0; }
+  :root[data-ohg-mobile] .ohg-m-chapter-title { font-size: 1rem; font-weight: 700; line-height: 1.3; text-wrap: balance; }
+  :root[data-ohg-mobile] .ohg-m-chapter-sum { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-size: .85rem; line-height: 1.4; color: var(--sl-color-gray-3); }
+  :root[data-ohg-mobile] .ohg-m-chapter-count { font-size: .75rem; font-weight: 600; color: var(--sl-color-gray-3); }
+  :root[data-ohg-mobile] .ohg-m-chevron-go { transform: rotate(-90deg); }
+  /* the Pokédex and Items lists on phones: a grid of sprite and name, the details on each one's own page; the text
+     above the list goes, the filters tighten up */
+  :root[data-ohg-phone] .sl-markdown-content:has(> #mon-table, > .table-scroll > #mon-table, > #item-table, > .table-scroll > #item-table) > p { display: none; }
+  :root[data-ohg-phone] .page-heading-art { display: none; }
+  :root[data-ohg-phone] .guide-page-heading { min-height: 0; }
+  :root[data-ohg-phone] .sl-markdown-content:has(#mon-table, #item-table) .table-filter { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; margin: 0 0 .75rem; padding: 0; border: 0; background: none; }
+  :root[data-ohg-phone] .sl-markdown-content:has(#mon-table, #item-table) .table-filter input[type='search'], :root[data-ohg-phone] .sl-markdown-content:has(#mon-table, #item-table) .table-filter .filter-count { grid-column: 1 / -1; }
+  :root[data-ohg-phone] .sl-markdown-content:has(#mon-table, #item-table) .table-filter select { min-width: 0; font-size: .85rem; }
+  :root[data-ohg-phone] .sl-markdown-content:has(#mon-table, #item-table) .table-filter .filter-count { font-size: .75rem; color: var(--sl-color-gray-3); }
+  :root[data-ohg-phone] .table-scroll:has(> #mon-table), :root[data-ohg-phone] .table-scroll:has(> #item-table) { overflow: visible; border: 0; background: none; }
+  :root[data-ohg-phone] .table-scroll:has(> #mon-table) + .table-scroll-hint, :root[data-ohg-phone] .table-scroll:has(> #item-table) + .table-scroll-hint { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content :is(#mon-table, #item-table) { display: block; border: 0; background: none; margin: 0; }
+  :root[data-ohg-phone] :is(#mon-table, #item-table) thead, :root[data-ohg-phone] :is(#mon-table, #item-table) td { display: none; }
+  :root[data-ohg-phone] :is(#mon-table, #item-table) tbody { display: grid; gap: .5rem; }
+  :root[data-ohg-phone] #mon-table tbody { grid-template-columns: repeat(auto-fill, minmax(6.25rem, 1fr)); }
+  :root[data-ohg-phone] #item-table tbody { grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); }
+  :root[data-ohg-phone] :is(#mon-table, #item-table) tr { display: flex; margin: 0; padding: 0; border: 0; border-radius: .8rem; background: var(--sl-color-bg-nav); }
+  :root[data-ohg-phone] :is(#mon-table, #item-table) tr[hidden] { display: none; }
+  :root[data-ohg-phone] :is(#mon-table, #item-table) tbody tr:hover > td { background: none; }
+  :root[data-ohg-phone] #mon-table td:nth-child(2), :root[data-ohg-phone] #item-table td:first-child,
+  :root[data-ohg-phone] .table-scroll > #mon-table > tbody > tr > td:nth-child(2), :root[data-ohg-phone] .table-scroll > #item-table > tbody > tr > td:first-child {
+    display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; min-width: 0; max-width: none; padding: .7rem .4rem .6rem;
+    position: static; border: 0; background: none; box-shadow: none; text-align: center;
+  }
+  :root[data-ohg-phone] #mon-table .pokemon-cell { flex-direction: column; gap: .35rem; min-width: 0; }
+  :root[data-ohg-phone] #mon-table .pokemon-image-small { flex: none; width: 64px; height: 64px; }
+  :root[data-ohg-phone] #mon-table .pokemon-image-small :is(img, .pokemon-sprite) { width: 64px; height: 64px; image-rendering: pixelated; }
+  :root[data-ohg-phone] :is(#mon-table, #item-table) td a { display: block; max-width: 100%; color: var(--sl-color-white); font-size: .8rem; font-weight: 600; line-height: 1.25; text-decoration: none; overflow-wrap: anywhere; text-wrap: balance; }
+  :root[data-ohg-phone] :is(#mon-table, #item-table) tr:active { background: var(--sl-color-gray-6); }
+  /* the whole tile opens the page, not only the name */
+  :root[data-ohg-phone] :is(#mon-table, #item-table) tr { position: relative; }
+  :root[data-ohg-phone] :is(#mon-table, #item-table) td a::after { content: ''; position: absolute; inset: 0; border-radius: .8rem; }
+  :root[data-ohg-phone] #item-table .ohg-m-sprite-item { display: block; width: 40px; height: 40px; margin: 0; image-rendering: pixelated; }
+  :root[data-ohg-phone] #item-table tr:has(> td:first-child > a:only-child) td:first-child::before { content: ''; width: 40px; height: 40px; }
+  /* reference pages on phones: a Pokémon, an item */
+  :root[data-ohg-phone] .sl-markdown-content > h2 { margin-top: 2.25rem; padding-top: 1rem; border-top: 1px solid var(--sl-color-gray-6); font-size: 1.25rem; }
+  :root[data-ohg-phone] .sl-markdown-content > h2 + * { margin-top: .75rem; }
+  :root[data-ohg-phone] .sl-markdown-content > h3 { font-size: 1.05rem; }
+  :root[data-ohg-phone] .pokemon-overview { flex-direction: column; align-items: stretch; gap: .75rem; padding: 0; border: 0; border-radius: 0; background: none; }
+  :root[data-ohg-phone] .pokemon-overview > .pokemon-image-large { align-self: center; width: 11rem; padding: .5rem; }
+  :root[data-ohg-phone] .pokemon-overview > .pokemon-image-large img { width: 160px; height: 160px; }
+  :root[data-ohg-phone] .pokemon-overview > .pokemon-image-large figcaption { display: none; }
+  :root[data-ohg-phone] .pokemon-overview .mon-head { flex: none; padding: 0; }
+  :root[data-ohg-phone] .pokemon-overview .types { display: flex; flex-wrap: wrap; justify-content: center; gap: .35rem; margin-bottom: .75rem; }
+  :root[data-ohg-phone] .pokemon-overview dl.facts { grid-template-columns: max-content 1fr; gap: .4rem .9rem; font-size: .9rem; }
+  :root[data-ohg-phone] .pokemon-overview dl.facts dd { margin: 0; }
+  :root[data-ohg-phone] .table-scroll:has(> table.stats), :root[data-ohg-phone] .table-scroll:has(> table.ohg-m-moves) { overflow: visible; border: 0; background: none; }
+  :root[data-ohg-phone] .table-scroll:has(> table.stats) + .table-scroll-hint, :root[data-ohg-phone] .table-scroll:has(> table.ohg-m-moves) + .table-scroll-hint { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content table.stats { width: 100%; font-size: .9rem; }
+  :root[data-ohg-phone] table.stats th { width: 5.5rem; padding: .3rem .25rem; text-align: left; font-weight: 600; color: var(--sl-color-gray-2); }
+  :root[data-ohg-phone] table.stats td { padding: .3rem .25rem; }
+  :root[data-ohg-phone] table.stats td.bar-cell { width: 50%; }
+  /* move tables fitted to the width: level or TM, the move, its type and the numbers; the effect is on the move's page */
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-moves { width: 100%; table-layout: fixed; border: 0; background: none; font-size: .8rem; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-moves > tbody > tr > td, :root[data-ohg-phone] .sl-markdown-content .table-scroll > table.ohg-m-moves > tbody > tr > td,
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-moves > thead > tr > th, :root[data-ohg-phone] .sl-markdown-content .table-scroll > table.ohg-m-moves > thead > tr > th {
+    position: static; min-width: 0; max-width: none; padding: .45rem .25rem; border: 0; border-bottom: 1px solid var(--sl-color-gray-6); background: none; box-shadow: none; line-height: 1.3; vertical-align: middle; overflow-wrap: anywhere;
+  }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-moves > thead > tr > th { font-size: .68rem; font-weight: 700; color: var(--sl-color-gray-3); text-align: left; }
+  :root[data-ohg-phone] table.ohg-m-moves th .ohg-m-full { display: none; }
+  :root[data-ohg-phone] table.ohg-m-moves th .ohg-m-short { display: inline; }
+  :root[data-ohg-phone] table.ohg-m-moves :is(th, td)[data-label='Category'], :root[data-ohg-phone] table.ohg-m-moves :is(th, td)[data-label^='Effect'], :root[data-ohg-phone] table.ohg-m-moves :is(th, td)[data-label^='Tutor'] { display: none; }
+  :root[data-ohg-phone] table.ohg-m-moves col { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-moves > tbody > tr > td[data-label='Level'], :root[data-ohg-phone] .sl-markdown-content table.ohg-m-moves > tbody > tr > td[data-label='TM / HM'] { width: 2.4rem; font-weight: 700; color: var(--sl-color-accent-high); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-moves > tbody > tr > td[data-label='TM / HM'] { width: 3rem; font-size: .72rem; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-moves > tbody > tr > td[data-label='TM / HM'] a { color: inherit; text-decoration: none; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-moves > thead > tr > th[data-label='Level'] { width: 2.4rem; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-moves > thead > tr > th[data-label='TM / HM'] { width: 3rem; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-moves > tbody > tr > td[data-label='Move'] { font-weight: 650; color: var(--sl-color-white); }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-moves > tbody > tr > td[data-label='Move'] a { color: inherit; text-decoration: none; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-moves > tbody > tr > td[data-label='Type'] { width: 3.9rem; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-moves > tbody > tr > td[data-label='Type'] .type { font-size: .62rem; padding: .1rem .35rem; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-moves > :is(thead, tbody) > tr > :is(th, td):is([data-label='Power'], [data-label='Accuracy'], [data-label='PP']) { width: 2.1rem; text-align: right; font-variant-numeric: tabular-nums; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-moves > thead > tr > th[data-label='Type'] { width: 3.9rem; }
+  :root[data-ohg-phone] table.ohg-m-moves tbody tr:hover > td { background: none; }
+  /* a move's page: the Pokémon that learn it, sprite, name and how */
+  :root[data-ohg-phone] .table-scroll:has(> table.ohg-m-learners) { overflow: visible; border: 0; background: none; }
+  :root[data-ohg-phone] .table-scroll:has(> table.ohg-m-learners) + .table-scroll-hint { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-learners { width: 100%; table-layout: fixed; border: 0; background: none; font-size: .85rem; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-learners > :is(thead, tbody) > tr > :is(th, td), :root[data-ohg-phone] .sl-markdown-content .table-scroll > table.ohg-m-learners > :is(thead, tbody) > tr > :is(th, td) {
+    position: static; min-width: 0; max-width: none; padding: .4rem .25rem; border: 0; border-bottom: 1px solid var(--sl-color-gray-6); background: none; box-shadow: none; vertical-align: middle; overflow-wrap: anywhere;
+  }
+  :root[data-ohg-phone] table.ohg-m-learners > thead > tr > th { font-size: .68rem; font-weight: 700; color: var(--sl-color-gray-3); text-align: left; }
+  :root[data-ohg-phone] table.ohg-m-learners th .ohg-m-full { display: none; }
+  :root[data-ohg-phone] table.ohg-m-learners th .ohg-m-short { display: inline; }
+  :root[data-ohg-phone] table.ohg-m-stack caption { display: none; }
+  :root[data-ohg-phone] table.ohg-m-learners :is(th, td)[data-label='Type'], :root[data-ohg-phone] table.ohg-m-learners :is(th, td)[data-label='Availability'] { display: none; }
+  :root[data-ohg-phone] table.ohg-m-learners .pokemon-cell { gap: .5rem; min-width: 0; }
+  :root[data-ohg-phone] table.ohg-m-learners .pokemon-image-small { flex: none; width: 36px; height: 36px; }
+  :root[data-ohg-phone] table.ohg-m-learners .pokemon-image-small img { width: 36px; height: 36px; }
+  :root[data-ohg-phone] table.ohg-m-learners .pokemon-cell > a { font-weight: 650; color: var(--sl-color-white); text-decoration: none; }
+  :root[data-ohg-phone] table.ohg-m-learners > :is(thead, tbody) > tr > :is(th, td)[data-label='Learning method'] { width: 6rem; color: var(--sl-color-gray-2); }
+  :root[data-ohg-phone] table.ohg-m-learners tbody tr:hover > td { background: none; }
+  /* Where: the notes fold away; Evolution: the chain; Moves: the three tabs */
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active] > .ohg-m-aside, :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active] > .ohg-m-evo-text { display: none; }
+  :root[data-ohg-phone] .ohg-m-evo { display: flex; flex-direction: column; align-items: center; gap: .25rem; margin: .5rem 0 1.5rem; }
+  :root[data-ohg-phone] .ohg-m-evo-node { display: flex; flex-direction: column; align-items: center; gap: .1rem; min-width: 7rem; padding: .5rem .75rem; border-radius: .8rem; color: var(--sl-color-white); font-weight: 650; text-decoration: none; text-align: center; }
+  :root[data-ohg-phone] .ohg-m-evo-me { background: var(--sl-color-bg-nav); }
+  :root[data-ohg-phone] .ohg-m-evo-sprite, :root[data-ohg-phone] .ohg-m-evo-blank { width: 80px; height: 80px; image-rendering: pixelated; }
+  :root[data-ohg-phone] .ohg-m-evo-branches { display: flex; flex-direction: column; align-items: center; width: 100%; }
+  :root[data-ohg-phone] .ohg-m-evo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem .25rem; align-items: start; }
+  :root[data-ohg-phone] .ohg-m-evo-branch { display: flex; flex-direction: column; align-items: center; }
+  :root[data-ohg-phone] .ohg-m-evo-grid .ohg-m-evo-node { min-width: 0; }
+  :root[data-ohg-phone] .ohg-m-evo-grid .ohg-m-evo-how { font-size: .75rem; }
+  :root[data-ohg-phone] .ohg-m-evo-step { display: flex; flex-direction: column; align-items: center; gap: .2rem; max-width: 20rem; padding: .25rem 0; text-align: center; }
+  :root[data-ohg-phone] .ohg-m-evo-arrow { width: 2px; height: 1.1rem; background: var(--sl-color-gray-4); position: relative; }
+  :root[data-ohg-phone] .ohg-m-evo-arrow::after { content: ''; position: absolute; left: -4px; bottom: -1px; width: 8px; height: 8px; border: solid var(--sl-color-gray-4); border-width: 0 2px 2px 0; transform: rotate(45deg); background: var(--sl-color-bg); }
+  :root[data-ohg-phone] .ohg-m-evo-how { font-size: .8rem; line-height: 1.35; color: var(--sl-color-gray-3); text-wrap: pretty; }
+  :root[data-ohg-phone] .ohg-m-evo-how .ohg-hint { font: inherit; }
+  :root[data-ohg-phone] .ohg-m-subtabs { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: .25rem; margin: .25rem 0 1rem; padding: .25rem; border-radius: .7rem; background: var(--sl-color-gray-6); }
+  :root[data-ohg-phone] .ohg-m-subtabs button { min-height: 40px; border: 0; border-radius: .5rem; background: none; color: var(--sl-color-gray-2); font: inherit; font-size: .85rem; font-weight: 650; cursor: pointer; }
+  :root[data-ohg-phone] .ohg-m-subtabs button[aria-selected='true'] { background: var(--sl-color-bg); color: var(--sl-color-white); box-shadow: 0 1px 2px rgb(0 0 0 / .15); }
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-moves-active='level'] > [data-ohg-moves]:not([data-ohg-moves='level']),
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-moves-active='tm'] > [data-ohg-moves]:not([data-ohg-moves='tm']),
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-moves-active='egg'] > [data-ohg-moves]:not([data-ohg-moves='egg']) { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-moves-tabs] > h2[data-ohg-moves]:is(#moves, #tm, #egg) { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-moves-tabs] > h2#tutors { margin-top: 2rem; }
+  /* an item's page: sprite and facts at the top, a band per kind of source, a block per source */
+  :root[data-ohg-phone][data-ohg-item] mobile-starlight-toc { display: none; }
+  :root[data-ohg-phone][data-ohg-item] { --sl-mobile-toc-height: 0rem; }
+  :root[data-ohg-phone] .ohg-m-item-hero { display: flex; align-items: center; gap: .9rem; margin: 0 0 .5rem; padding: .75rem .9rem; border-radius: .9rem; background: var(--sl-color-bg-nav); }
+  :root[data-ohg-phone] .ohg-m-item-art { display: block; width: 56px; height: 56px; flex: none; image-rendering: pixelated; }
+  :root[data-ohg-phone] .ohg-m-item-facts { display: flex; flex-wrap: wrap; gap: .35rem; }
+  :root[data-ohg-phone] .ohg-m-item-facts span { padding: .2rem .55rem; border-radius: .4rem; background: var(--sl-color-gray-6); font-size: .8rem; font-weight: 600; color: var(--sl-color-gray-2); }
+  :root[data-ohg-phone] .ohg-m-item-facts span:first-child { background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > .ohg-m-aside { display: none; }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > h2 { margin: 1.75rem 0 .6rem; padding: .55rem .8rem; border: 0; border-radius: .6rem; background: var(--sl-color-bg-nav); font-size: 1.05rem; }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > h2 + * { margin-top: 0; }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > h2#effect + p { font-size: 1.05rem; line-height: 1.55; padding: 0 .2rem; }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > h3 { margin: 1.25rem 0 .4rem; font-size: .95rem; color: var(--sl-color-gray-2); }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > ul { margin: 0; padding: 0; list-style: none; }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > ul > li.ohg-m-src { margin: 0 0 .5rem; padding: .7rem .85rem; border: 1px solid var(--sl-color-gray-6); border-radius: .75rem; font-size: .92rem; line-height: 1.5; }
+  :root[data-ohg-phone] li.ohg-m-src > a:first-child { display: block; font-weight: 700; color: var(--sl-color-white); text-decoration: none; }
+  :root[data-ohg-phone] li.ohg-m-src > .ohg-m-src-orig { display: none; }
+  :root[data-ohg-phone] li.ohg-m-src > .ohg-m-src-rest { display: block; margin-top: .2rem; font-size: .88rem; color: var(--sl-color-gray-2); }
+  :root[data-ohg-phone] li.ohg-m-src > .ohg-m-src-rest a { color: var(--sl-color-text-accent); }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > p { font-size: .95rem; }
+  /* an item's wild holders: tables fitted to the width */
+  :root[data-ohg-phone] .table-scroll:has(> table.ohg-m-fit) { overflow: visible; border: 0; background: none; }
+  :root[data-ohg-phone] .table-scroll:has(> table.ohg-m-fit) + .table-scroll-hint { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-fit { width: 100%; table-layout: fixed; border: 0; background: none; font-size: .8rem; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-fit > :is(thead, tbody) > tr > :is(th, td), :root[data-ohg-phone] .sl-markdown-content .table-scroll > table.ohg-m-fit > :is(thead, tbody) > tr > :is(th, td) {
+    position: static; min-width: 0; max-width: none; padding: .45rem .25rem; border: 0; border-bottom: 1px solid var(--sl-color-gray-6); background: none; box-shadow: none; line-height: 1.35; vertical-align: middle; overflow-wrap: anywhere;
+  }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-fit > thead > tr > th { font-size: .68rem; font-weight: 700; color: var(--sl-color-gray-3); text-align: left; }
+  :root[data-ohg-phone] table.ohg-m-fit th .ohg-m-full { display: none; }
+  :root[data-ohg-phone] table.ohg-m-fit th .ohg-m-short { display: inline; }
+  :root[data-ohg-phone] table.ohg-m-fit td a { color: var(--sl-color-white); font-weight: 650; text-decoration: none; }
+  :root[data-ohg-phone] table.ohg-m-fit td .ohg-hint { font-size: inherit; }
+  :root[data-ohg-phone] table.ohg-m-fit > :is(thead, tbody) > tr > :is(th, td):is([data-label='Level'], [data-label='Hold chance'], [data-label='Encounter chance']) { width: 3.2rem; text-align: right; font-variant-numeric: tabular-nums; }
+  :root[data-ohg-phone] table.ohg-m-fit > :is(thead, tbody) > tr > :is(th, td)[data-label='Level'] { width: 2.6rem; }
+  :root[data-ohg-phone] table.ohg-m-fit > :is(thead, tbody) > tr > :is(th, td)[data-label='Locations'] { width: 6.5rem; }
+  :root[data-ohg-phone] table.ohg-m-fit td[data-label='Locations'] a { font-weight: 500; color: var(--sl-color-text-accent); }
+  :root[data-ohg-phone] .ohg-m-fit-sprite { display: inline-block; width: 28px; height: 28px; margin: -.4rem .1rem -.4rem -.2rem; vertical-align: middle; image-rendering: pixelated; }
+  :root[data-ohg-phone] table.ohg-m-fit tbody tr:hover > td { background: none; }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > h3[id^='wild-holder'] { margin: 1.25rem 0 .25rem; font-size: 1rem; color: var(--sl-color-white); }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > h3[id^='wild-holder'] a { text-decoration: none; }
+  :root[data-ohg-phone] .ohg-m-back { display: inline-flex; align-items: center; min-height: 44px; margin-top: .5rem; padding: 0 1rem; border: 1px solid var(--sl-color-gray-5); border-radius: .6rem; font-weight: 650; text-decoration: none; }
+  /* Where: the notes fold away; Evolution: the chain; Moves: the three tabs */
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active] > .ohg-m-aside, :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active] > .ohg-m-evo-text { display: none; }
+  :root[data-ohg-phone] .ohg-m-evo { display: flex; flex-direction: column; align-items: center; gap: .25rem; margin: .5rem 0 1.5rem; }
+  :root[data-ohg-phone] .ohg-m-evo-node { display: flex; flex-direction: column; align-items: center; gap: .1rem; min-width: 7rem; padding: .5rem .75rem; border-radius: .8rem; color: var(--sl-color-white); font-weight: 650; text-decoration: none; text-align: center; }
+  :root[data-ohg-phone] .ohg-m-evo-me { background: var(--sl-color-bg-nav); }
+  :root[data-ohg-phone] .ohg-m-evo-sprite, :root[data-ohg-phone] .ohg-m-evo-blank { width: 80px; height: 80px; image-rendering: pixelated; }
+  :root[data-ohg-phone] .ohg-m-evo-branches { display: flex; flex-direction: column; align-items: center; width: 100%; }
+  :root[data-ohg-phone] .ohg-m-evo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem .25rem; align-items: start; }
+  :root[data-ohg-phone] .ohg-m-evo-branch { display: flex; flex-direction: column; align-items: center; }
+  :root[data-ohg-phone] .ohg-m-evo-grid .ohg-m-evo-node { min-width: 0; }
+  :root[data-ohg-phone] .ohg-m-evo-grid .ohg-m-evo-how { font-size: .75rem; }
+  :root[data-ohg-phone] .ohg-m-evo-step { display: flex; flex-direction: column; align-items: center; gap: .2rem; max-width: 20rem; padding: .25rem 0; text-align: center; }
+  :root[data-ohg-phone] .ohg-m-evo-arrow { width: 2px; height: 1.1rem; background: var(--sl-color-gray-4); position: relative; }
+  :root[data-ohg-phone] .ohg-m-evo-arrow::after { content: ''; position: absolute; left: -4px; bottom: -1px; width: 8px; height: 8px; border: solid var(--sl-color-gray-4); border-width: 0 2px 2px 0; transform: rotate(45deg); background: var(--sl-color-bg); }
+  :root[data-ohg-phone] .ohg-m-evo-how { font-size: .8rem; line-height: 1.35; color: var(--sl-color-gray-3); text-wrap: pretty; }
+  :root[data-ohg-phone] .ohg-m-evo-how .ohg-hint { font: inherit; }
+  :root[data-ohg-phone] .ohg-m-subtabs { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: .25rem; margin: .25rem 0 1rem; padding: .25rem; border-radius: .7rem; background: var(--sl-color-gray-6); }
+  :root[data-ohg-phone] .ohg-m-subtabs button { min-height: 40px; border: 0; border-radius: .5rem; background: none; color: var(--sl-color-gray-2); font: inherit; font-size: .85rem; font-weight: 650; cursor: pointer; }
+  :root[data-ohg-phone] .ohg-m-subtabs button[aria-selected='true'] { background: var(--sl-color-bg); color: var(--sl-color-white); box-shadow: 0 1px 2px rgb(0 0 0 / .15); }
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-moves-active='level'] > [data-ohg-moves]:not([data-ohg-moves='level']),
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-moves-active='tm'] > [data-ohg-moves]:not([data-ohg-moves='tm']),
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-moves-active='egg'] > [data-ohg-moves]:not([data-ohg-moves='egg']) { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-moves-tabs] > h2[data-ohg-moves]:is(#moves, #tm, #egg) { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-moves-tabs] > h2#tutors { margin-top: 2rem; }
+  /* an item's sources as rows */
+  :root[data-ohg-phone] .sl-markdown-content:has(> h2#effect) > ul { margin: 0; padding: 0; list-style: none; }
+  :root[data-ohg-phone] .sl-markdown-content:has(> h2#effect) > ul > li { margin: 0; padding: .6rem 0; border-top: 1px solid var(--sl-color-gray-6); font-size: .95rem; line-height: 1.5; }
+  :root[data-ohg-phone] .sl-markdown-content:has(> h2#effect) > ul > li:first-child { border-top: 0; padding-top: .25rem; }
+  :root[data-ohg-phone] .sl-markdown-content:has(> h2#effect) > ul > li > a:first-child { font-weight: 650; }
+  /* a Pokémon's page in tabs, on a bar along the bottom */
+  :root[data-ohg-phone][data-ohg-tabbed] mobile-starlight-toc { display: none; }
+  :root[data-ohg-phone][data-ohg-tabbed] { --sl-mobile-toc-height: 0rem; }
+  :root[data-ohg-phone][data-ohg-tabbed] .main-pane { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom)); }
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active='overview'] > [data-ohg-tab]:not([data-ohg-tab='overview']),
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active='where'] > [data-ohg-tab]:not([data-ohg-tab='where']),
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active='evolution'] > [data-ohg-tab]:not([data-ohg-tab='evolution']),
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active='moves'] > [data-ohg-tab]:not([data-ohg-tab='moves']) { display: none; }
+  :root[data-ohg-phone] .ohg-m-tabs {
+    position: fixed; z-index: var(--ohg-z-dock); left: 0; right: 0; bottom: 0; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+    padding: .25rem .25rem calc(.25rem + env(safe-area-inset-bottom)); border-top: 1px solid var(--sl-color-gray-5); background: var(--sl-color-bg-nav);
+  }
+  :root[data-ohg-phone] .ohg-m-tabs button {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .15rem; min-height: 52px; padding: .25rem 0; border: 0; border-radius: .6rem;
+    background: none; color: var(--sl-color-gray-3); font: inherit; font-size: .72rem; font-weight: 650; cursor: pointer;
+  }
+  :root[data-ohg-phone] .ohg-m-tabs button[aria-pressed='true'] { color: var(--sl-color-accent-high); }
+  :root[data-ohg-phone] .ohg-m-tabs button[aria-pressed='true'] svg { color: var(--sl-color-accent); }
+  :root[data-ohg-phone] .ohg-m-tabs button:active { background: var(--sl-color-gray-6); }
+  /* inside a tab, each section sits under a band so the Moves tab's four lists stay apart */
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active] > h2 { margin: 2rem 0 .75rem; padding: .55rem .8rem; border: 0; border-radius: .6rem; background: var(--sl-color-bg-nav); font-size: 1.05rem; }
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active] > h2:first-of-type, :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active] > [data-ohg-tab] + h2[data-ohg-tab]:not([data-ohg-tab='overview']):nth-child(1) { margin-top: .25rem; }
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active] > .table-scroll:has(> table.stats) { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--sl-color-gray-6); }
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active] > nav.prevnext { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--sl-color-gray-6); }
+  /* on a phone the footer (project links, disclaimer, report links) is the home page's alone */
+  :root[data-ohg-phone]:not([data-ohg-home]) :is(.page-help, footer.sl-flex, p.official, nav.official-links, p.disclaimer) { display: none; }
+  /* Where: each way of getting the Pokémon under its own label; the wild encounters under a band */
+  :root[data-ohg-phone] .sl-markdown-content > ul.pokemon-acquisitions { margin: 0; padding: 0; list-style: none; }
+  :root[data-ohg-phone] .sl-markdown-content > ul.pokemon-acquisitions > li.ohg-m-acq { margin: 0 0 .75rem; padding: .75rem .85rem; border: 1px solid var(--sl-color-gray-6); border-radius: .8rem; background: var(--sl-color-bg-nav); font-size: .92rem; line-height: 1.5; }
+  :root[data-ohg-phone] li.ohg-m-acq > .ohg-m-acq-strong { display: none; }
+  :root[data-ohg-phone] .ohg-m-acq-head { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; margin-bottom: .35rem; }
+  :root[data-ohg-phone] .ohg-m-acq-kind { padding: .15rem .55rem; border-radius: .4rem; background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); font-size: .72rem; font-weight: 750; letter-spacing: .03em; text-transform: uppercase; white-space: nowrap; }
+  :root[data-ohg-phone] .ohg-m-acq-lead { font-weight: 650; color: var(--sl-color-white); }
+  :root[data-ohg-phone] .ohg-m-acq-lead a { color: inherit; text-decoration: none; }
+  :root[data-ohg-phone] .ohg-m-acq-level { margin-right: .35rem; font-weight: 500; color: var(--sl-color-gray-3); }
+  :root[data-ohg-phone] li.ohg-m-acq > p { margin: .35rem 0 0; color: var(--sl-color-gray-2); }
+  :root[data-ohg-phone] li.ohg-m-acq > p > strong:first-child { color: var(--sl-color-white); }
+  :root[data-ohg-phone] .ohg-m-band { display: block; margin: 1.5rem 0 .5rem; padding: .55rem .8rem; border-radius: .6rem; background: var(--sl-color-bg-nav); font-size: 1.05rem; font-weight: 700; color: var(--sl-color-white); }
+  :root[data-ohg-phone] .sl-markdown-content > .ohg-m-band + .table-scroll { margin-top: 0; }
+  :root[data-ohg-phone] .sl-markdown-content > .table-scroll:has(> #wild-encounters-table) table.ohg-m-stack tr:first-child { border-top: 0; padding-top: .25rem; }
+}
+@media (max-width: 50rem) and (prefers-reduced-motion: reduce) {
+  :root[data-ohg-mobile] .ohg-m-chevron { transition: none; }
+}
+@media print { .ohg-m-dock, .ohg-m-sheet, .ohg-m-row { display: none !important; } }

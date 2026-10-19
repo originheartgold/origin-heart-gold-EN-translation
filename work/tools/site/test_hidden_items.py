@@ -45,6 +45,18 @@ class HiddenItems(unittest.TestCase):
             self.assertIn('(../hidden-items/#celadon-city)', page)
             self.assertIn('(../hidden-items/)', page)
 
+    def test_areas_carry_pictures_and_directions_but_no_sources(self):
+        chapter = {'_file': 'example.toml', 'hidden_items': ['Route 3', 'Celadon City']}
+        text = '\n'.join(guide.chapter_hidden_areas(chapter, self.sections))
+        self.assertIn('<section class="chapter-hidden-area" data-area="Route 3" data-spots="1" data-anchor="route-3">', text)
+        self.assertIn('![Route 3: Ultra Ball found', text)
+        self.assertIn('**Missing screenshot.**', text)
+        self.assertNotIn('*Source:*', text)
+        self.assertIn('data-pagefind-ignore="all" hidden>', text)
+        self.assertEqual(guide.chapter_hidden_areas({}, self.sections), [])
+        page = guide.rewrite_links(text, 1, {}, [])
+        self.assertIn('](./images/hidden-items/route-3-ultra-ball-3.png)', page)
+
 
 if __name__ == '__main__':
     unittest.main()

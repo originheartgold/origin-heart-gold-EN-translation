@@ -1,0 +1,77 @@
+/* The phone shell shared by every page, the save editor included (it has no Starlight styles): the header's menu
+   button, the menu sheet and the bottom sheets. The guide's own sheets build on these. Pages map their colours to the
+   --sl-color-* names this file uses. */
+.ohg-m-sheet:not([open]) { display: none; }
+@media (max-width: 50rem) {
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-meta { grid-column: 1; margin-top: .15rem; font-size: .8rem; line-height: 1.4; color: var(--sl-color-gray-3); }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-sheet[open] {
+    display: flex; flex-direction: column; position: fixed; inset: auto 0 0 0; width: 100%; max-width: 100%; max-height: 84dvh;
+    margin: 0; padding: 0; border: 0; border-radius: 1.1rem 1.1rem 0 0; background: var(--sl-color-bg); color: var(--sl-color-white);
+    box-shadow: 0 -12px 40px rgb(0 0 0 / .3); animation: ohg-m-up .22s cubic-bezier(.2, .8, .2, 1);
+  }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-sheet::backdrop { background: rgb(8 12 18 / .5); }
+  @keyframes ohg-m-up { from { transform: translateY(100%); } }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-sheet-head {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem .6rem .5rem 1rem;
+  }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-sheet-head::before {
+    content: ''; position: absolute; top: .4rem; left: 50%; width: 2.25rem; height: 4px; margin-left: -1.125rem; border-radius: 2px; background: var(--sl-color-gray-5);
+  }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-sheet-head h2 { margin: .35rem 0 0; font-size: 1.1rem; font-weight: 700; color: var(--sl-color-white); }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-close {
+    display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 0; border-radius: 50%;
+    background: none; color: var(--sl-color-gray-3); cursor: pointer;
+  }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-close:active { background: var(--sl-color-gray-6); }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-sheet-body { overflow-y: auto; overscroll-behavior: contain; padding: .25rem 1rem calc(1rem + env(safe-area-inset-bottom)); }
+  @keyframes ohg-m-up { from { transform: translateY(100%); } }
+  /* the header's menu button, flat; the menu sheet */
+  :root:is([data-ohg-mobile],[data-ohg-phone]) { --sl-menu-button-size: 44px; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .sl-menu-button { padding: .6rem; background: none; color: var(--sl-color-white); box-shadow: none; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .sl-menu-button svg { width: 24px; height: 24px; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .sl-menu-button .close-menu { display: none !important; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .sl-menu-button .open-menu { display: block !important; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu .ohg-m-sheet-head h2 { font-size: .85rem; letter-spacing: .02em; text-transform: uppercase; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu .ohg-m-sheet-head h2 span { color: var(--sl-color-text-accent); }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu .ohg-m-sheet-body { padding-top: .5rem; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-cta {
+    display: flex; align-items: center; justify-content: center; gap: .5rem; min-height: 48px; margin: .25rem 0 .9rem; border-radius: .8rem;
+    background: var(--sl-color-accent); color: #1b1406; font-weight: 700; text-decoration: none;
+  }
+  :root[data-theme='light']:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-cta { background: var(--sl-color-accent-high); color: #fff; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-grid a {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; min-height: 4.6rem; padding: .5rem .25rem;
+    border-radius: .8rem; background: var(--sl-color-bg-nav); color: var(--sl-color-white); font-size: .8rem; font-weight: 600; line-height: 1.2; text-align: center; text-decoration: none;
+  }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-grid a svg { color: var(--sl-color-text-accent); }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-grid a[aria-current] { background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-grid a[aria-current] svg { color: inherit; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-grid a:active { background: var(--sl-color-gray-6); }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-fold { margin: .9rem 0 0; border-top: 1px solid var(--sl-color-gray-6); }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-fold > summary {
+    display: flex; align-items: center; gap: .6rem; min-height: 48px; list-style: none; cursor: pointer; font-weight: 700; color: var(--sl-color-white);
+  }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-fold > summary::-webkit-details-marker { display: none; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-fold > summary svg { color: var(--sl-color-text-accent); }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-fold > summary .ohg-m-meta { margin: 0 0 0 auto; font-weight: 500; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-fold > summary::after {
+    content: ''; width: .5rem; height: .5rem; margin-left: auto; border: solid var(--sl-color-gray-4); border-width: 0 2px 2px 0; transform: rotate(45deg); transition: transform .2s cubic-bezier(.2, .7, .2, 1);
+  }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-fold > summary .ohg-m-meta + ::after, :root[data-ohg-mobile] .ohg-m-menu-fold > summary:has(.ohg-m-meta)::after { margin-left: .5rem; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-fold[open] > summary::after { transform: rotate(-135deg); }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-fold ul { margin: 0 0 .5rem; padding: 0; list-style: none; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-fold li { margin: 0; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-fold li a {
+    display: flex; align-items: center; min-height: 44px; padding: .3rem .25rem .3rem 1.5rem; color: var(--sl-color-gray-2); text-decoration: none; font-size: .95rem;
+  }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-fold li a[aria-current] { color: var(--sl-color-accent-high); font-weight: 650; }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-theme { display: grid; grid-template-columns: repeat(3, 1fr); gap: .25rem; margin: 1rem 0 0; padding: .25rem; border-radius: .7rem; background: var(--sl-color-gray-6); }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-theme button {
+    min-height: 40px; border: 0; border-radius: .5rem; background: none; color: var(--sl-color-gray-2); font: inherit; font-size: .88rem; font-weight: 600; cursor: pointer;
+  }
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-menu-theme button[aria-pressed='true'] { background: var(--sl-color-bg); color: var(--sl-color-white); box-shadow: 0 1px 2px rgb(0 0 0 / .15); }
+}
+@media (max-width: 50rem) and (prefers-reduced-motion: reduce) {
+  :root:is([data-ohg-mobile],[data-ohg-phone]) .ohg-m-sheet[open] { animation: none; }
+}

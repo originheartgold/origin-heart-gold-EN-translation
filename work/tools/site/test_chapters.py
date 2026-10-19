@@ -63,6 +63,13 @@ class ChapterFiles(unittest.TestCase):
 class Relink(unittest.TestCase):
     legacy = {'old-page': {'default': 'ch01-a', 'anchors': {'quest-one': 'ch02-b'}}}
 
+    def test_step_carries_id_and_title(self):
+        info = {'q-0001': {'title': 'Q', 'anchor': 'q', 'tags': {}}}
+        step = {'id': 's3', 'main': True, 'text': '**Mt. Moon, first cave.** Talk to "Cynthia".'}
+        first = chapters.render_step(step, info, {'q-0001': 'c1'}, 'c1')[0]
+        self.assertEqual(first, '<div class="chapter-step" id="step-s3" data-title="Mt. Moon, first cave">')
+        self.assertEqual(chapters.step_title({'text': 'No title here.'}), '')
+
     def test_known_anchor_goes_to_its_chapter(self):
         self.assertEqual(relink_guide.rewrite('[x](/guide/old-page/#quest-one)', self.legacy), '[x](/guide/ch02-b/#quest-one)')
 

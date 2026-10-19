@@ -634,8 +634,28 @@ def hidden_item_sections(source):
             sections[heading.strip()] = {
                 'anchor': gh_slug(heading), 'count': count,
                 'missing': body.count('**Missing screenshot.**'),
+                'body': body.strip('\n'),
             }
     return sections
+
+
+def chapter_hidden_areas(ch, sections):
+    """The chapter's hidden-item locations in full (directions and pictures), one section per location, for the
+    phone layout: site/public/ohg.js moves each under the walkthrough step that visits the place. Wider screens never
+    show them (they keep the disclosure's links), so they stay out of the search index. The *Source:* lines are technical
+    and stay on the hidden-items page."""
+    names = ch.get('hidden_items', [])
+    if not names:
+        return []
+    out = ['<div class="chapter-hidden-areas" data-pagefind-ignore="all" hidden>', '']
+    for name in names:
+        entry = sections[name]
+        body = re.sub(r'^\*Source:\*.*\n?', '', entry['body'], flags=re.M).strip('\n')
+        body = re.sub(r'\n{3,}', '\n\n', body)
+        out += ['<section class="chapter-hidden-area" data-area="%s" data-spots="%d" data-anchor="%s">' % (
+            html.escape(name), entry['count'], entry['anchor']), '', body, '', '</section>', '']
+    out += ['</div>', '']
+    return out
 
 
 def chapter_hidden_items(ch, sections):
@@ -694,7 +714,8 @@ def build_chapter_page(ch, collect, chapter_of, link_map, unresolved, force_mdx=
         sections[q['id']] = lines
         solvers += rec['solvers']
     with open(os.path.join(GUIDE, 'hidden-items.md'), encoding='utf-8') as fh:
-        hidden = chapter_hidden_items(ch, hidden_item_sections(fh.read()))
+        hidden_sections = hidden_item_sections(fh.read())
+        hidden = chapter_hidden_items(ch, hidden_sections) + chapter_hidden_areas(ch, hidden_sections)
     body = chapters_mod.render_chapter(ch, collect, chapter_of, sections, None, None, hidden_items=hidden)
     text = rewrite_links('\n'.join(body), 1, link_map, unresolved)
     text = re.sub(r'\n{3,}', '\n\n', text)
