@@ -161,8 +161,21 @@ def _item(qid, info, chapter_of, here):
         qid, _attrs(q['tags']), quest_link(qid, info, chapter_of, here), (' ' + chips) if chips else '')
 
 
+STEP_TITLE = re.compile(r'^\*\*(.+?)\*\*')
+
+
+def step_title(step):
+    """The bold lead-in of a step's text, without its full stop (\"**Route 3.** …\" -> \"Route 3\")."""
+    m = STEP_TITLE.match(step['text'].strip())
+    return m.group(1).strip().rstrip('.:') if m else ''
+
+
 def render_step(step, info, chapter_of, here):
-    out = ['<div class="chapter-step%s">' % ('' if step.get('main') else ' chapter-optional'), '', step['text'].strip(), '']
+    title = step_title(step)
+    attrs = ' id="step-%s"' % step['id'] if step.get('id') else ''
+    if title:
+        attrs += ' data-title="%s"' % html.escape(title)
+    out = ['<div class="chapter-step%s"%s>' % ('' if step.get('main') else ' chapter-optional', attrs), '', step['text'].strip(), '']
     if step.get('unlocks'):
         out += ['<div class="chapter-unlocks">', '<strong>Opens up:</strong>', '<ul>']
         out += [_item(q, info, chapter_of, here) for q in step['unlocks']]

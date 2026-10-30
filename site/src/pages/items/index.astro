@@ -33,7 +33,7 @@ const places = (i: typeof items[number]) => new Set([
 		<tbody>
 			{items.map((i) => (
 				<tr data-pocket={i.pocket} data-availability={i.unavailableReason ? 'unavailable' : hasSource(i) ? 'documented' : 'unknown'}>
-					<td><a href={url(`/items/${i.slug}/`)}>{i.name}</a>{i.game && <span class="sr-only"> {i.game}</span>}</td>
+					<td><img class="ohg-m-sprite ohg-m-sprite-item" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${i.slug}.png`} alt="" width="30" height="30" loading="lazy" decoding="async" /><a href={url(`/items/${i.slug}/`)}>{i.name}</a>{i.game && <span class="sr-only"> {i.game}</span>}</td>
 					<td>{i.pocket}</td>
 					<td>{i.price && i.sources.some((s) => s.kind === 'shop') ? `$${i.price.toLocaleString('en-US')}` : '—'}</td>
 					<td>{kinds(i) || '—'}</td>
