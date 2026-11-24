@@ -435,7 +435,7 @@ a.ability-link { display: flex; align-items: center; min-height: 24px; }
 /* ---- guide pages on phones (site/public/ohg.js setupMobileGuide sets <html data-ohg-mobile> below 50rem).
    One flat sequence: steps are rows on a rail, the quests a step opens sit under it as rows with their Done tick, and
    a dock at the bottom opens the Sections and Quests sheets. The controls it adds are hidden everywhere else. */
-.ohg-m-row, .ohg-m-dock, .ohg-m-extra, .ohg-m-sprite, .ohg-m-chapter-row, .ohg-m-tabs, .ohg-m-subtabs, .ohg-m-evo, .ohg-m-short, .ohg-m-band, .ohg-m-acq-head, .ohg-m-item-hero, .ohg-m-src-rest { display: none; }
+.ohg-m-row, .ohg-m-dock, .ohg-m-extra, .ohg-m-sprite, .ohg-m-chapter-row, .ohg-m-tabs, .ohg-m-subtabs, .ohg-m-evo, .ohg-m-short, .ohg-m-band, .ohg-m-acq-head, .ohg-m-item-hero, .ohg-m-src-rest, .ohg-m-wild, .ohg-m-float, .ohg-m-seg { display: none; }
 @media (max-width: 50rem) {
   :root[data-ohg-mobile] { --sl-mobile-toc-height: 0rem; --ohg-m-rail: 1.35rem; }
   :root[data-ohg-mobile] mobile-starlight-toc, :root[data-ohg-mobile] .page-heading-art, :root[data-ohg-mobile] .ohg-m-hidden,
@@ -786,7 +786,7 @@ a.ability-link { display: flex; align-items: center; min-height: 24px; }
   :root[data-ohg-phone] table.ohg-m-learners .pokemon-image-small { flex: none; width: 36px; height: 36px; }
   :root[data-ohg-phone] table.ohg-m-learners .pokemon-image-small img { width: 36px; height: 36px; }
   :root[data-ohg-phone] table.ohg-m-learners .pokemon-cell > a { font-weight: 650; color: var(--sl-color-white); text-decoration: none; }
-  :root[data-ohg-phone] table.ohg-m-learners > :is(thead, tbody) > tr > :is(th, td)[data-label='Learning method'] { width: 6rem; color: var(--sl-color-gray-2); }
+  :root[data-ohg-phone] table.ohg-m-learners > :is(thead, tbody) > tr > :is(th, td):nth-child(3) { width: 6rem; color: var(--sl-color-gray-2); }
   :root[data-ohg-phone] table.ohg-m-learners tbody tr:hover > td { background: none; }
   /* Where: the notes fold away; Evolution: the chain; Moves: the three tabs */
   :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active] > .ohg-m-aside, :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active] > .ohg-m-evo-text { display: none; }
@@ -916,12 +916,297 @@ a.ability-link { display: flex; align-items: center; min-height: 24px; }
   :root[data-ohg-phone] .ohg-m-acq-kind { padding: .15rem .55rem; border-radius: .4rem; background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); font-size: .72rem; font-weight: 750; letter-spacing: .03em; text-transform: uppercase; white-space: nowrap; }
   :root[data-ohg-phone] .ohg-m-acq-lead { font-weight: 650; color: var(--sl-color-white); }
   :root[data-ohg-phone] .ohg-m-acq-lead a { color: inherit; text-decoration: none; }
+  :root[data-ohg-phone] .ohg-m-acq-offer { flex-basis: 100%; font-size: .88rem; color: var(--sl-color-gray-2); }
+  :root[data-ohg-phone] .ohg-m-acq-offer a { font-weight: 650; color: var(--sl-color-text-accent); text-underline-offset: .2em; }
   :root[data-ohg-phone] .ohg-m-acq-level { margin-right: .35rem; font-weight: 500; color: var(--sl-color-gray-3); }
   :root[data-ohg-phone] li.ohg-m-acq > p { margin: .35rem 0 0; color: var(--sl-color-gray-2); }
   :root[data-ohg-phone] li.ohg-m-acq > p > strong:first-child { color: var(--sl-color-white); }
   :root[data-ohg-phone] .ohg-m-band { display: block; margin: 1.5rem 0 .5rem; padding: .55rem .8rem; border-radius: .6rem; background: var(--sl-color-bg-nav); font-size: 1.05rem; font-weight: 700; color: var(--sl-color-white); }
   :root[data-ohg-phone] .sl-markdown-content > .ohg-m-band + .table-scroll { margin-top: 0; }
-  :root[data-ohg-phone] .sl-markdown-content > .table-scroll:has(> #wild-encounters-table) table.ohg-m-stack tr:first-child { border-top: 0; padding-top: .25rem; }
+  :root[data-ohg-phone] .ohg-m-band:has(> .ohg-m-band-meta) { display: flex; align-items: baseline; justify-content: space-between; gap: .75rem; }
+  :root[data-ohg-phone] .ohg-m-band-meta { font-size: .78rem; font-weight: 500; color: var(--sl-color-gray-3); white-space: nowrap; }
+  /* Where, wild encounters: a block per place, a line per encounter (how, level, chance); the table is the wider screens' */
+  :root[data-ohg-phone] .sl-markdown-content > .ohg-m-wild-src { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content > .ohg-m-band + .table-filter { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .35rem .5rem; margin: 0 0 .75rem; padding: 0; border: 0; background: none; }
+  :root[data-ohg-phone] .sl-markdown-content > .ohg-m-band + .table-filter input[type='search'] { grid-area: 1 / 1; min-width: 0; width: 100%; margin: 0; }
+  :root[data-ohg-phone] .sl-markdown-content > .ohg-m-band + .table-filter .filter-reset { grid-area: 1 / 2; margin: 0; }
+  :root[data-ohg-phone] .sl-markdown-content > .ohg-m-band + .table-filter .filter-count { grid-area: 2 / 1 / 3 / -1; font-size: .75rem; color: var(--sl-color-gray-3); }
+  :root[data-ohg-phone] .ohg-m-wild { display: grid; gap: .6rem; margin: 0 0 1rem; }
+  :root[data-ohg-phone] .ohg-m-wild-place { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; margin: 0; padding: .2rem .85rem; border: 1px solid var(--sl-color-gray-6); border-radius: .8rem; background: var(--sl-color-bg-nav); }
+  :root[data-ohg-phone] .ohg-m-wild-head { grid-column: 1 / -1; padding: .5rem 0 .45rem; font-size: .95rem; font-weight: 700; line-height: 1.3; color: var(--sl-color-white); }
+  :root[data-ohg-phone] .ohg-m-wild-head a { color: inherit; text-decoration: none; }
+  :root[data-ohg-phone] .ohg-m-wild-row { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; align-items: baseline; column-gap: .6rem; padding: .45rem 0; border-top: 1px solid var(--sl-color-gray-6); font-size: .88rem; line-height: 1.45; }
+  :root[data-ohg-phone] :is(.ohg-m-wild-place, .ohg-m-wild-row)[hidden] { display: none; }
+  :root[data-ohg-phone] .ohg-m-wild-how { min-width: 0; color: var(--sl-color-gray-2); overflow-wrap: anywhere; }
+  :root[data-ohg-phone] .ohg-m-wild-how .ohg-hint { padding: 0; font-size: inherit; white-space: normal; text-align: left; }
+  :root[data-ohg-phone] .ohg-m-wild-how .ohg-hint span { text-decoration: none; }
+  :root[data-ohg-phone] :is(.ohg-m-wild-lv, .ohg-m-wild-pct) { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  :root[data-ohg-phone] .ohg-m-wild-lv { color: var(--sl-color-gray-2); }
+  :root[data-ohg-phone] .ohg-m-wild-unit { font-size: .72rem; font-weight: 700; color: var(--sl-color-gray-3); }
+  :root[data-ohg-phone] .ohg-m-wild-pct { min-width: 2.2rem; font-weight: 700; color: var(--sl-color-white); }
+  /* Where, calendar encounters: the same block, the date as its label and the place beside it */
+  :root[data-ohg-phone] .sl-markdown-content > .calendar-table[data-ohg-tab] { overflow: visible; }
+  :root[data-ohg-phone] .sl-markdown-content > .calendar-table[data-ohg-tab] table.ohg-m-stack tr { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: .3rem .6rem; margin: 0 0 .6rem; padding: .7rem .85rem; border: 1px solid var(--sl-color-gray-6); border-radius: .8rem; background: var(--sl-color-bg-nav); font-size: .92rem; }
+  :root[data-ohg-phone] .sl-markdown-content > .calendar-table[data-ohg-tab] table.ohg-m-stack td { grid-column: 1 / -1; margin: 0; padding: 0; color: var(--sl-color-gray-2); }
+  :root[data-ohg-phone] .sl-markdown-content > .calendar-table[data-ohg-tab] table.ohg-m-stack td::before { content: none; }
+  :root[data-ohg-phone] .sl-markdown-content > .calendar-table[data-ohg-tab] table.ohg-m-stack td[data-label='Date'] { grid-area: 1 / 1; padding: .15rem .55rem; border-radius: .4rem; background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); font-size: .72rem; font-weight: 750; letter-spacing: .03em; text-transform: uppercase; white-space: nowrap; }
+  :root[data-ohg-phone] .sl-markdown-content > .calendar-table[data-ohg-tab] table.ohg-m-stack td[data-label='Place'] { grid-area: 1 / 2; font-weight: 650; color: var(--sl-color-white); }
+  :root[data-ohg-phone] .sl-markdown-content > .calendar-table[data-ohg-tab] table.ohg-m-stack td[data-label='Place'] a { color: inherit; text-decoration: none; }
+  :root[data-ohg-phone] .sl-markdown-content > .calendar-table[data-ohg-tab] table.ohg-m-stack td[data-label='Pokémon'] { grid-row: 2; font-weight: 650; }
+  :root[data-ohg-phone] .sl-markdown-content > .calendar-table[data-ohg-tab] table.ohg-m-stack td[data-label='Time / level'] { grid-row: 3; }
+  :root[data-ohg-phone] .sl-markdown-content > .calendar-table[data-ohg-tab] table.ohg-m-stack td[data-label='Conditions'] { grid-row: 4; }
+  :root[data-ohg-phone] .sl-markdown-content > .calendar-table[data-ohg-tab] table.ohg-m-stack td .ohg-hint { font-size: inherit; }
+  /* a page that ohg.js rebuilds for a phone waits, hidden, for that layout (set and lifted by the page head and ohg.js) */
+  :root[data-ohg-phone][data-ohg-pending] :is(.sl-markdown-content, mobile-starlight-toc, .page-heading-art) { visibility: hidden; }
+  /* what a phone leaves out: notes on how to read the page, and the links at the very end (the floating buttons do that) */
+  :root[data-ohg-phone] .ohg-m-trim, :root[data-ohg-phone] .sl-markdown-content > nav.prevnext.ohg-m-trim { display: none; }
+  /* the lists (moves, abilities, locations, TMs, tutors): the introduction goes; the menu has the pages it linked to */
+  :root[data-ohg-phone][data-ohg-list] .sl-markdown-content > p:not(.filter-empty, .table-scroll-hint) { display: none; }
+  :root[data-ohg-phone][data-ohg-list] .sl-markdown-content > .table-filter { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; margin: 0 0 .75rem; padding: 0; border: 0; background: none; }
+  :root[data-ohg-phone][data-ohg-list] .sl-markdown-content > .table-filter :is(input[type='search'], .filter-count) { grid-column: 1 / -1; }
+  :root[data-ohg-phone][data-ohg-list] .sl-markdown-content > .table-filter select { min-width: 0; font-size: .85rem; }
+  :root[data-ohg-phone][data-ohg-list] .sl-markdown-content > .table-filter .filter-count { font-size: .75rem; color: var(--sl-color-gray-3); }
+  /* floating, on every page: back to the page's list (left) and back to the top (right), above the bar or dock */
+  :root[data-ohg-phone] { --ohg-m-float-bottom: .75rem; }
+  :root[data-ohg-phone][data-ohg-tabbed] { --ohg-m-float-bottom: 4.6rem; }
+  :root[data-ohg-phone][data-ohg-mobile] { --ohg-m-float-bottom: 5.1rem; }
+  :root[data-ohg-phone] .ohg-m-float { position: fixed; z-index: var(--ohg-z-dock); left: max(.75rem, env(safe-area-inset-left)); right: max(.75rem, env(safe-area-inset-right)); bottom: calc(var(--ohg-m-float-bottom) + env(safe-area-inset-bottom)); display: flex; align-items: flex-end; justify-content: space-between; pointer-events: none; }
+  :root[data-ohg-phone] .ohg-m-float > :is(a, button) { pointer-events: auto; display: inline-flex; align-items: center; justify-content: center; gap: .15rem; height: 40px; border: 1px solid var(--sl-color-gray-5); border-radius: 999px; background: var(--sl-color-bg-nav); color: var(--sl-color-white); font: inherit; font-size: .82rem; font-weight: 700; line-height: 1; text-decoration: none; box-shadow: 0 4px 14px rgb(0 0 0 / .18); cursor: pointer; }
+  :root[data-ohg-phone] .ohg-m-float-back { padding: 0 .9rem 0 .55rem; }
+  :root[data-ohg-phone] .ohg-m-float-top { width: 40px; padding: 0; }
+  :root[data-ohg-phone] .ohg-m-float-top[hidden] { display: none; }
+  :root[data-ohg-phone] .ohg-m-float > :is(a, button):active { background: var(--sl-color-gray-6); }
+  :root[data-ohg-phone]:not([data-ohg-tabbed], [data-ohg-mobile]) .main-pane { padding-bottom: calc(3.75rem + env(safe-area-inset-bottom)); }
+  :root[data-ohg-phone]:has(dialog[open]) .ohg-m-float { display: none; }
+  /* a Pokémon's bar: previous and next Pokémon at its ends */
+  :root[data-ohg-phone] .ohg-m-tabs:has(> .ohg-m-tabs-turn) { display: flex; }
+  :root[data-ohg-phone] .ohg-m-tabs:has(> .ohg-m-tabs-turn) > button { flex: 1 1 0; min-width: 0; }
+  :root[data-ohg-phone] .ohg-m-tabs-turn { flex: 0 0 2.6rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .15rem; min-height: 52px; border-radius: .6rem; color: var(--sl-color-gray-2); font-size: .68rem; font-weight: 650; text-decoration: none; font-variant-numeric: tabular-nums; }
+  :root[data-ohg-phone] span.ohg-m-tabs-turn { color: var(--sl-color-gray-5); }
+  :root[data-ohg-phone] a.ohg-m-tabs-turn:active { background: var(--sl-color-gray-6); }
+  /* a move, an item, an ability and the TM list in tabs: ohg.js marks what the open tab leaves out */
+  /* a picker that always fits (an item's ways of getting it, the regions of the Locations list): equal cells on a
+     six-column grid, each spanning 2, 3 or 6 so every row is full */
+  :root[data-ohg-phone] .ohg-m-seg { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .25rem; margin: .25rem 0 1rem; padding: .25rem; border-radius: .8rem; background: var(--sl-color-gray-6); }
+  :root[data-ohg-phone] .ohg-m-seg button { display: flex; align-items: center; justify-content: center; gap: .4rem; min-width: 0; min-height: 42px; padding: .3rem .4rem; border: 0; border-radius: .55rem; background: none; color: var(--sl-color-gray-2); font: inherit; font-size: .82rem; line-height: 1.2; cursor: pointer; }
+  :root[data-ohg-phone] .ohg-m-seg button b { min-width: 0; font-weight: 650; text-align: center; overflow-wrap: anywhere; }
+  :root[data-ohg-phone] .ohg-m-seg button span { flex: none; font-size: .72rem; font-weight: 700; color: var(--sl-color-gray-3); font-variant-numeric: tabular-nums; }
+  :root[data-ohg-phone] .ohg-m-seg button[aria-selected='true'] { background: var(--sl-color-bg); color: var(--sl-color-white); box-shadow: 0 1px 2px rgb(0 0 0 / .15); }
+  :root[data-ohg-phone] .ohg-m-seg button[aria-selected='true'] span { color: var(--sl-color-text-accent); }
+  :root[data-ohg-phone] .sl-markdown-content > [data-ohg-src-off] { display: none !important; }
+  /* the Locations list: the picked region's places as tiles of a name; a search shows every region that has a match */
+  :root[data-ohg-phone] .sl-markdown-content:not(:has(> .table-filter input:not(:placeholder-shown))) > #loc-list > [data-ohg-seg-off] { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content:not(:has(> .table-filter input:not(:placeholder-shown))) > #loc-list > h2 { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content:has(> .table-filter input:not(:placeholder-shown)) > .ohg-m-seg { display: none; }
+  :root[data-ohg-phone] #loc-list > h2 { margin: 1.25rem 0 .6rem; padding: .5rem .8rem; border: 0; border-radius: .6rem; background: var(--sl-color-bg-nav); font-size: 1rem; }
+  :root[data-ohg-phone] #loc-list > h2:has(+ ul.loc-list:not(:has(> li:not([hidden])))) { display: none; }
+  :root[data-ohg-phone] #loc-list .loc-list { grid-template-columns: 1fr 1fr; gap: .5rem; margin: 0; }
+  :root[data-ohg-phone] #loc-list .loc-list li { display: flex; align-items: center; min-height: 52px; padding: .6rem .8rem; border-color: var(--sl-color-gray-6); border-radius: .8rem; }
+  :root[data-ohg-phone] #loc-list .loc-list li[hidden] { display: none; }
+  :root[data-ohg-phone] #loc-list .loc-list li > a { font-size: .9rem; font-weight: 700; line-height: 1.25; overflow-wrap: anywhere; }
+  :root[data-ohg-phone] #loc-list .loc-list li > a::after { border-radius: .8rem; }
+  :root[data-ohg-phone] #loc-list .loc-list li > span { display: none; }
+  :root[data-ohg-phone] #loc-list .loc-list li:active { background: var(--sl-color-gray-6); }
+  /* a location's page: its wild Pokémon a card per method and time, one line each (name, level, chance) */
+  :root[data-ohg-phone][data-ohg-location] .sl-markdown-content[data-ohg-tab-active] > h3:not([id^='wild-holder']) { margin: 1.5rem 0 .5rem; padding: 0 .2rem; border-radius: 0; background: none; font-size: 1rem; }
+  :root[data-ohg-phone][data-ohg-location] .sl-markdown-content > h3 + p.small { margin: 0 0 .6rem; padding: 0 .2rem; }
+  :root[data-ohg-phone] .enc-grid { grid-template-columns: 1fr; gap: .6rem; margin: 0 0 1rem; }
+  :root[data-ohg-phone] .enc-block { margin: 0; padding: .2rem .85rem; border: 1px solid var(--sl-color-gray-6); border-radius: .8rem; background: var(--sl-color-bg-nav); }
+  :root[data-ohg-phone] .enc-block h4 { margin: 0; padding: .55rem 0 .45rem; font-size: .9rem; font-weight: 700; color: var(--sl-color-white); }
+  :root[data-ohg-phone] .enc-block h4 .ohg-hint { font-size: inherit; }
+  :root[data-ohg-phone] .enc-block .table-scroll:has(> table.ohg-m-enc), :root[data-ohg-phone] .table-scroll:has(> table.ohg-m-loot) { overflow: visible; margin: 0; border: 0; background: none; }
+  :root[data-ohg-phone] .table-scroll:has(> :is(table.ohg-m-enc, table.ohg-m-loot)) + .table-scroll-hint { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-enc { display: table; width: 100%; margin: 0; border: 0; background: none; font-size: .88rem; }
+  :root[data-ohg-phone] table:is(.ohg-m-enc, .ohg-m-loot) :is(thead, caption) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-enc td, :root[data-ohg-phone] .sl-markdown-content .table-scroll > table.ohg-m-enc > tbody > tr > td { position: static; min-width: 0; max-width: none; padding: .45rem 0; border: 0; border-top: 1px solid var(--sl-color-gray-6); background: none; box-shadow: none; line-height: 1.4; vertical-align: middle; }
+  :root[data-ohg-phone] table.ohg-m-enc td:first-child a { color: var(--sl-color-white); font-weight: 650; text-decoration: none; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-enc td:not(:first-child) { width: 3.3rem; padding-left: .5rem; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--sl-color-gray-2); }
+  :root[data-ohg-phone] table.ohg-m-enc td[data-label='Level']::before { content: 'Lv '; font-size: .72rem; font-weight: 700; color: var(--sl-color-gray-3); }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-enc td:is([data-label='Chance'], [data-label='Rate']) { font-weight: 700; color: var(--sl-color-white); }
+  :root[data-ohg-phone] table.ohg-m-enc td[data-label='Score']::before { content: 'score '; font-size: .68rem; font-weight: 700; color: var(--sl-color-gray-3); }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-enc tbody tr:hover > td { background: none; }
+  /* a quest's link in a card: the place it repeats goes, the title leads, the note in brackets sits under it */
+  :root[data-ohg-phone] .ohg-m-q-pre { display: none; }
+  :root[data-ohg-phone] .ohg-m-q-title { display: block; font-weight: 650; }
+  :root[data-ohg-phone] .ohg-m-q-title::first-letter { text-transform: uppercase; }
+  :root[data-ohg-phone] .ohg-m-q-note { display: block; margin-top: .1rem; font-size: .76rem; font-weight: 500; color: var(--sl-color-gray-3); }
+  :root[data-ohg-phone] .ohg-m-questlinks { display: grid; gap: .35rem; margin-top: .6rem; }
+  :root[data-ohg-phone] li.ohg-m-src > .ohg-m-src-rest .ohg-m-questlinks a, :root[data-ohg-phone] li.ohg-m-quest > a {
+    position: relative; display: block; padding: .55rem 2rem .55rem .7rem; border-radius: .6rem; background: var(--sl-color-gray-6); color: var(--sl-color-white); font-size: .86rem; line-height: 1.35; text-decoration: none;
+  }
+  :root[data-ohg-phone] .ohg-m-questlinks a::before { content: 'Quest'; display: block; margin-bottom: .1rem; font-size: .62rem; font-weight: 750; letter-spacing: .05em; text-transform: uppercase; color: var(--sl-color-text-accent); }
+  :root[data-ohg-phone] .ohg-m-questlinks a::after, :root[data-ohg-phone] li.ohg-m-quest > a::after { content: ''; position: absolute; right: .8rem; top: 50%; width: .45rem; height: .45rem; border: solid var(--sl-color-gray-3); border-width: 0 2px 2px 0; transform: translateY(-50%) rotate(-45deg); }
+  :root[data-ohg-phone] .ohg-m-questlinks a:active, :root[data-ohg-phone] li.ohg-m-quest > a:active { filter: brightness(.96); }
+  /* a location's lists (quests, gifts from people, gifts, trades and scripted Pokémon): a card each */
+  :root[data-ohg-phone][data-ohg-location] .sl-markdown-content > ul { margin: 0 0 1rem; padding: 0; list-style: none; }
+  :root[data-ohg-phone][data-ohg-location] .sl-markdown-content > ul > li { margin: 0 0 .6rem; padding: .85rem .95rem; border: 1px solid var(--sl-color-gray-6); border-radius: .8rem; background: var(--sl-color-bg-nav); font-size: .92rem; line-height: 1.55; }
+  :root[data-ohg-phone][data-ohg-location] .sl-markdown-content > ul > li.ohg-m-quest { padding: 0; border: 0; background: none; }
+  :root[data-ohg-phone][data-ohg-location] li.ohg-m-quest > a { padding: .8rem 2.2rem .8rem .95rem; border: 1px solid var(--sl-color-gray-6); border-radius: .8rem; background: var(--sl-color-bg-nav); font-size: .92rem; }
+  :root[data-ohg-phone][data-ohg-location] li.ohg-m-src > .ohg-m-src-rest p { margin: .35rem 0 0; }
+  :root[data-ohg-phone][data-ohg-location] li.ohg-m-src > .ohg-m-src-rest .ohg-m-acq-kind { display: inline-block; margin-right: .3rem; }
+  :root[data-ohg-phone][data-ohg-location] li.ohg-m-src > .ohg-m-src-rest > a { color: var(--sl-color-white); font-weight: 700; text-decoration: none; }
+  /* the Move tutors list: a card each (the move and its type, the place and the cost); the move's page has the rest */
+  :root[data-ohg-phone] .table-scroll:has(> #tutor-table) { overflow: visible; border: 0; background: none; }
+  :root[data-ohg-phone] .table-scroll:has(> #tutor-table) + .table-scroll-hint { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content #tutor-table { display: block; margin: 0; border: 0; background: none; }
+  :root[data-ohg-phone] #tutor-table thead { display: none; }
+  :root[data-ohg-phone] #tutor-table tbody { display: grid; gap: .5rem; }
+  :root[data-ohg-phone] #tutor-table tr { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .3rem .6rem; margin: 0; padding: .7rem .85rem; border: 1px solid var(--sl-color-gray-6); border-radius: .8rem; background: var(--sl-color-bg-nav); }
+  :root[data-ohg-phone] #tutor-table tr[hidden] { display: none; }
+  :root[data-ohg-phone] #tutor-table tr:active { background: var(--sl-color-gray-6); }
+  :root[data-ohg-phone] .sl-markdown-content .table-scroll > #tutor-table > tbody > tr > td, :root[data-ohg-phone] .sl-markdown-content #tutor-table td { position: static; display: block; min-width: 0; max-width: none; margin: 0; padding: 0; border: 0; background: none; box-shadow: none; font-size: .86rem; line-height: 1.35; color: var(--sl-color-gray-2); }
+  :root[data-ohg-phone] #tutor-table tbody tr:hover > td { background: none; }
+  :root[data-ohg-phone] #tutor-table td:nth-child(1) { grid-area: 1 / 1; }
+  :root[data-ohg-phone] #tutor-table td:nth-child(1) > a { color: var(--sl-color-white); font-size: .98rem; font-weight: 700; text-decoration: none; }
+  :root[data-ohg-phone] #tutor-table td:nth-child(1) > a::after { content: ''; position: absolute; inset: 0; border-radius: .8rem; }
+  :root[data-ohg-phone] #tutor-table td:nth-child(1) > :is(br, .small) { display: none; }
+  :root[data-ohg-phone] #tutor-table td:nth-child(2) { grid-area: 1 / 2; }
+  :root[data-ohg-phone] #tutor-table td:nth-child(3) { grid-area: 2 / 1; }
+  :root[data-ohg-phone] #tutor-table td:nth-child(3) > a { position: relative; z-index: 1; color: var(--sl-color-gray-2); text-decoration: none; }
+  :root[data-ohg-phone] #tutor-table td:nth-child(3) > :is(.small, .ability-summary) { display: none; }
+  :root[data-ohg-phone] #tutor-table td:nth-child(4) { grid-area: 2 / 2; justify-self: end; padding: .1rem .5rem; border-radius: .4rem; background: var(--sl-color-gray-6); font-size: .72rem; font-weight: 700; white-space: nowrap; color: var(--sl-color-white); }
+  :root[data-ohg-phone] .sl-markdown-content .table-scroll > #tutor-table > tbody > tr > td:nth-child(5), :root[data-ohg-phone] .sl-markdown-content #tutor-table td:nth-child(5) { display: none; }
+  /* the damage calculator: its own panel fills the width, and the notes around it leave the phone */
+  :root[data-ohg-phone] #team-builder.tb-calc-page :is(.tb-intro, .tb-credit, .tb-bc-note, .tb-bc-team-head .tb-bc-hint) { display: none; }
+  :root[data-ohg-phone] #team-builder.tb-calc-page .tb-battle { padding: 0; border: 0; border-radius: 0; background: none; }
+  :root[data-ohg-phone] #team-builder.tb-calc-page .tb-section-heading { margin-bottom: .75rem; }
+  :root[data-ohg-phone] #team-builder.tb-calc-page .tb-section-heading h2 { font-size: 1.05rem; }
+  :root[data-ohg-phone] #team-builder.tb-calc-page .tb-bc { gap: 1.25rem; }
+  :root[data-ohg-phone] #team-builder.tb-calc-page .tb-bc > section { padding: .85rem; border: 1px solid var(--sl-color-gray-6); border-radius: .9rem; background: var(--sl-color-bg-nav); }
+  :root[data-ohg-phone] #team-builder.tb-calc-page .tb-bc > section:empty { display: none; }
+  :root[data-ohg-phone] #team-builder.tb-calc-page .tb-bc-trainers { max-height: 60vh; }
+  /* its panels as tabs: the panels of the other tabs shrink to nothing but keep their place in the focus order, so
+     the calculator can still send the focus into them (ohg.js then opens that tab) */
+  :root[data-ohg-phone] #team-builder.tb-calc-page .tb-bc { position: relative; }
+  :root[data-ohg-phone][data-ohg-calc='opponent'] #team-builder.tb-calc-page .tb-bc > :not(.tb-bc-opponent),
+  :root[data-ohg-phone][data-ohg-calc='team'] #team-builder.tb-calc-page .tb-bc > :not(#tb-bc-team, .tb-bc-tools),
+  :root[data-ohg-phone][data-ohg-calc='results'] #team-builder.tb-calc-page .tb-bc > :not(#tb-bc-overview, #tb-bc-matchup),
+  :root[data-ohg-phone][data-ohg-calc='tools'] #team-builder.tb-calc-page .tb-bc > :not(.tb-bc-tools),
+  :root[data-ohg-phone][data-ohg-calc='team'] #team-builder.tb-calc-page .tb-bc-tools > :not(#tb-bc-set),
+  :root[data-ohg-phone][data-ohg-calc='tools'] #team-builder.tb-calc-page .tb-bc-tools > #tb-bc-set {
+    position: absolute !important; width: 1px !important; height: 1px !important; margin: 0 !important; padding: 0 !important; border: 0 !important; overflow: hidden !important; clip-path: inset(50%) !important; white-space: nowrap;
+  }
+  :root[data-ohg-phone][data-ohg-calc]:not([data-ohg-calc='tools']) #team-builder.tb-calc-page #tb-save-status { display: none; }
+  :root[data-ohg-phone][data-ohg-calc='team'] #team-builder.tb-calc-page .tb-bc-tools:not(:has(#tb-bc-set > *)) { display: none; }
+  /* the Trainers page: the introduction and its section links leave the phone; the guide shows one group at a time */
+  :root[data-ohg-phone] .trainer-directory-page > :is(.trainer-hero, .trainer-categories, .trainer-reading-note) { display: none; }
+  :root[data-ohg-phone] .trainer-directory-page > [data-ohg-seg-off] { display: none; }
+  /* the directory on a phone: the search and the group on two short rows; a trainer's card is its name, class and
+     place with the team as a strip of sprites (the profile it opens has the levels and the rest) */
+  :root[data-ohg-phone] .trainer-directory-page .directory-heading { margin: 0 0 .6rem; }
+  :root[data-ohg-phone] .trainer-directory-page .directory-heading h2 { font-size: 1.15rem; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-controls { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .4rem; margin: 0 0 .5rem; padding: 0; border: 0; background: none; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-controls label { min-width: 0; margin: 0; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-controls label > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-controls .trainer-search { grid-column: 1 / -1; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-controls :is(input, select) { width: 100%; min-width: 0; margin: 0; }
+  :root[data-ohg-phone] .trainer-directory-page #trainer-results { margin: 0 0 .6rem; font-size: .75rem; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-directory { gap: .5rem; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-profile-card { border-color: var(--sl-color-gray-6); border-radius: .8rem; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-profile-card header { padding: .7rem .85rem .2rem; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-profile-card h3 { font-size: .98rem; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-profile-card .profile-location { min-height: 0; margin: 0; padding: 0 .85rem .5rem; font-size: .8rem; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-profile-card .profile-team { margin: 0; padding: 0 .7rem .6rem; border: 0; background: none; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-profile-card .profile-team > p, :root[data-ohg-phone] .trainer-directory-page .trainer-profile-card footer,
+  :root[data-ohg-phone] .trainer-directory-page .trainer-profile-card :is(.preview-name, .preview-level) { display: none; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-profile-card .team-preview { display: flex; flex-wrap: wrap; gap: .1rem; margin: 0; padding: 0; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-profile-card .preview-mon { width: auto; min-width: 0; margin: 0; padding: 0; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-profile-card .preview-mon :is(.pokemon-image, img) { width: 36px; height: 36px; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-guide-section { margin-top: 0; padding-top: 0; border-top: 0; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-section-heading { margin: .5rem 0 .75rem; }
+  :root[data-ohg-phone] .trainer-directory-page .trainer-section-heading h2 { font-size: 1.15rem; }
+  :root[data-ohg-phone] .trainer-directory-page .directory-heading .eyebrow, :root[data-ohg-phone] .trainer-directory-page .trainer-browser > p:not(#trainer-results), :root[data-ohg-phone] .trainer-directory-page .trainer-section-heading > a, :root[data-ohg-phone] .trainer-directory-page .trainer-section-heading .eyebrow, :root[data-ohg-phone] .trainer-directory-page .trainer-guide-section > p { display: none; }
+  /* a shop's fold: the mark and the counter's name on one line */
+  :root[data-ohg-phone] details.shop > summary { flex-wrap: nowrap; align-items: center; gap: .6rem; font-size: .95rem; line-height: 1.35; }
+  /* a location's items: a card each, the name with its quantity and kind, where it is under them */
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-loot { display: block; margin: 0 0 1rem; border: 0; background: none; }
+  :root[data-ohg-phone] table.ohg-m-loot tbody { display: grid; gap: .5rem; }
+  :root[data-ohg-phone] table.ohg-m-loot tr { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: .25rem .6rem; margin: 0; padding: .7rem .85rem; border: 1px solid var(--sl-color-gray-6); border-radius: .8rem; background: var(--sl-color-bg-nav); }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-loot td, :root[data-ohg-phone] .sl-markdown-content .table-scroll > table.ohg-m-loot > tbody > tr > td { position: static; display: block; min-width: 0; max-width: none; margin: 0; padding: 0; border: 0; background: none; box-shadow: none; font-size: .88rem; line-height: 1.45; color: var(--sl-color-gray-2); }
+  :root[data-ohg-phone] table.ohg-m-loot td[data-label='Item'] { grid-area: 1 / 1; }
+  :root[data-ohg-phone] table.ohg-m-loot td[data-label='Item'] a { color: var(--sl-color-white); font-size: .95rem; font-weight: 700; text-decoration: none; }
+  :root[data-ohg-phone] table.ohg-m-loot td[data-label='Qty'] { grid-area: 1 / 2; font-weight: 700; font-variant-numeric: tabular-nums; }
+  :root[data-ohg-phone] table.ohg-m-loot td[data-label='Qty']::before { content: '×'; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-loot td[data-label='Qty'][data-one] { display: none; }
+  :root[data-ohg-phone] table.ohg-m-loot td[data-label='Kind'] { grid-area: 1 / 3; padding: .1rem .5rem; border-radius: .4rem; background: var(--sl-color-gray-6); font-size: .68rem; font-weight: 750; letter-spacing: .03em; text-transform: uppercase; white-space: nowrap; }
+  :root[data-ohg-phone] table.ohg-m-loot td:nth-child(n+3):not([data-label='Kind']) { grid-area: 2 / 1 / 3 / -1; }
+  :root[data-ohg-phone] table.ohg-m-loot td:empty { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-loot tbody tr:hover > td { background: none; }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > h2[data-ohg-src-first] { margin-top: 0; }
+  :root[data-ohg-phone] .ohg-m-tabs > button > span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  :root[data-ohg-phone] [data-ohg-off] { display: none !important; }
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active] > [data-ohg-first] { margin-top: .25rem; }
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active] > h3:not([id^='wild-holder']) { margin: 1.5rem 0 .75rem; padding: .55rem .8rem; border-radius: .6rem; background: var(--sl-color-bg-nav); font-size: 1.05rem; color: var(--sl-color-white); }
+  :root[data-ohg-phone] .sl-markdown-content[data-ohg-tab-active] > h3[data-ohg-first] { margin-top: .25rem; }
+  /* the TM and HM list and the Abilities list: a grid of small tiles, the name and little else; a tile opens the page,
+     which has the rest (the search above still looks through everything the table says) */
+  :root[data-ohg-phone] .table-scroll:has(> :is(#tm-table, #ability-table)) { overflow: visible; border: 0; background: none; }
+  :root[data-ohg-phone] .table-scroll:has(> :is(#tm-table, #ability-table)) + .table-scroll-hint { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content :is(#tm-table, #ability-table) { display: block; margin: 0; border: 0; background: none; }
+  :root[data-ohg-phone] :is(#tm-table, #ability-table) :is(thead, td) { display: none; }
+  :root[data-ohg-phone] :is(#tm-table, #ability-table) tbody, :root[data-ohg-phone] .sl-markdown-content > ul.reference-link-list { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin: 0; padding: 0; list-style: none; columns: auto; }
+  :root[data-ohg-phone] :is(#tm-table, #ability-table) tr, :root[data-ohg-phone] .sl-markdown-content > ul.reference-link-list > li {
+    position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .3rem .4rem; min-width: 0; margin: 0; padding: .7rem .8rem; border: 1px solid var(--sl-color-gray-6); border-radius: .8rem; background: var(--sl-color-bg-nav);
+  }
+  :root[data-ohg-phone] :is(#tm-table, #ability-table) tr[hidden] { display: none; }
+  :root[data-ohg-phone] :is(#tm-table, #ability-table) tr:active, :root[data-ohg-phone] .sl-markdown-content > ul.reference-link-list > li:active { background: var(--sl-color-gray-6); }
+  :root[data-ohg-phone] .sl-markdown-content .table-scroll > :is(#tm-table, #ability-table) > tbody > tr > td, :root[data-ohg-phone] .sl-markdown-content :is(#tm-table, #ability-table) td { position: static; min-width: 0; max-width: none; margin: 0; padding: 0; border: 0; background: none; box-shadow: none; line-height: 1.3; }
+  :root[data-ohg-phone] :is(#tm-table, #ability-table) tbody tr:hover > td { background: none; }
+  /* a TM: its number and type above, the move under them */
+  :root[data-ohg-phone] .sl-markdown-content #tm-table td:nth-child(1) { display: block; grid-area: 1 / 1; }
+  :root[data-ohg-phone] #tm-table td:nth-child(1) a, :root[data-ohg-phone] ul.reference-link-list > li > a:first-child { font-size: .78rem; font-weight: 750; letter-spacing: .02em; color: var(--sl-color-text-accent); text-decoration: none; font-variant-numeric: tabular-nums; }
+  :root[data-ohg-phone] #tm-table td:nth-child(1) a::after, :root[data-ohg-phone] ul.reference-link-list > li > a:first-child::after, :root[data-ohg-phone] #ability-table td:nth-child(1) a::after { content: ''; position: absolute; inset: 0; border-radius: .8rem; }
+  :root[data-ohg-phone] #tm-table td:nth-child(1) .tag { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content #tm-table td:nth-child(3) { display: block; grid-area: 1 / 2; }
+  :root[data-ohg-phone] #tm-table td:nth-child(3) .type { font-size: .62rem; }
+  :root[data-ohg-phone] .sl-markdown-content #tm-table td:nth-child(2) { display: block; grid-area: 2 / 1 / 3 / -1; }
+  :root[data-ohg-phone] #tm-table td:nth-child(2) a, :root[data-ohg-phone] ul.reference-link-list > li > a:nth-of-type(2) { color: var(--sl-color-white); font-size: .92rem; font-weight: 700; line-height: 1.25; text-decoration: none; overflow-wrap: anywhere; }
+  :root[data-ohg-phone] #tm-table td:nth-child(2) .ability-summary { display: none; }
+  /* the new and changed TMs: the same tile, a short note where the type would be */
+  :root[data-ohg-phone] ul.reference-link-list > li > a:first-child { grid-area: 1 / 1; }
+  :root[data-ohg-phone] ul.reference-link-list > li > a:nth-of-type(2) { grid-area: 2 / 1 / 3 / -1; }
+  :root[data-ohg-phone] ul.reference-link-list > li > .ohg-m-tm-sep { display: none; }
+  :root[data-ohg-phone] ul.reference-link-list > li > .ohg-m-tm-note { grid-area: 1 / 2; font-size: 0; }
+  :root[data-ohg-phone] ul.reference-link-list > li > .ohg-m-tm-note::after { content: attr(data-short); padding: .12rem .45rem; border-radius: .4rem; background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); font-size: .65rem; font-weight: 750; letter-spacing: .03em; text-transform: uppercase; }
+  :root[data-ohg-phone] ul.reference-link-list > li > .ohg-m-tm-note[data-short='Changed']::after { background: var(--sl-color-gray-6); color: var(--sl-color-gray-2); }
+  /* an ability: its name, and a mark when this hack changes it */
+  :root[data-ohg-phone] .sl-markdown-content #ability-table td:nth-child(1) { display: block; grid-area: 1 / 1; }
+  :root[data-ohg-phone] #ability-table td:nth-child(1) a { color: var(--sl-color-white); font-size: .92rem; font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+  :root[data-ohg-phone] #ability-table td:nth-child(1) .ability-summary { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content #ability-table tr[data-changed='yes'] td:nth-child(3) { display: block; grid-area: 1 / 2; font-size: 0; }
+  :root[data-ohg-phone] #ability-table tr[data-changed='yes'] td:nth-child(3)::after { content: 'Changed'; padding: .12rem .45rem; border-radius: .4rem; background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); font-size: .62rem; font-weight: 750; letter-spacing: .03em; text-transform: uppercase; }
+  /* a Pokémon's or an item's picture beside its name on the reference pages (the walkthrough has its own sizes) */
+  :root[data-ohg-phone]:not([data-ohg-mobile]) :is(.ohg-m-mon-plain, .ohg-m-item) { display: inline-flex; align-items: center; gap: .15rem; vertical-align: middle; white-space: nowrap; }
+  :root[data-ohg-phone]:not([data-ohg-mobile]) :is(.ohg-m-mon-plain, .ohg-m-item) > .ohg-m-sprite { display: inline-block; flex: none; image-rendering: pixelated; }
+  :root[data-ohg-phone]:not([data-ohg-mobile]) .ohg-m-mon-plain > .ohg-m-sprite-mon { width: 28px; height: 28px; margin: -.35rem -.05rem -.35rem -.2rem; }
+  :root[data-ohg-phone]:not([data-ohg-mobile]) .ohg-m-item > .ohg-m-sprite-item { width: 22px; height: 22px; margin: -.3rem 0; }
+  /* an item's page: room between the blocks, and each source a padded card */
+  :root[data-ohg-phone][data-ohg-item] .ohg-m-item-hero { margin: 0 0 1.5rem; padding: 1rem; }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > h2 { margin: 2.25rem 0 1rem; }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content[data-ohg-tab-active] > h3:not([id^='wild-holder']) { margin: 2rem 0 1rem; }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content[data-ohg-tab-active] > :is(h2, h3)[data-ohg-first] { margin-top: .25rem; }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > p { margin: 1rem 0; padding: 0 .2rem; line-height: 1.65; }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > :is(h2, h3) + p { margin-top: 0; }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content:has(> h2#effect) > ul > li.ohg-m-src { margin: 0 0 .75rem; padding: .9rem 1rem; border: 1px solid var(--sl-color-gray-6); border-radius: .8rem; background: var(--sl-color-bg-nav); line-height: 1.55; }
+  :root[data-ohg-phone][data-ohg-item] li.ohg-m-src > .ohg-m-src-rest { margin-top: .4rem; line-height: 1.6; }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > ul + :is(h2, h3) { margin-top: 2.25rem; }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > :is(details, .reference-note) { margin: 1.25rem 0; }
+  :root[data-ohg-phone][data-ohg-item] .sl-markdown-content > .table-scroll:has(> table.ohg-m-movestats) { margin: 1rem 0 1.25rem; }
+  /* a move's numbers: tiles in one grid (type and category, then power, accuracy, PP and priority, then the target) */
+  :root[data-ohg-phone] .table-scroll:has(> table.ohg-m-movestats) { overflow: visible; border: 0; background: none; }
+  :root[data-ohg-phone] .table-scroll:has(> table.ohg-m-movestats) + .table-scroll-hint { display: none; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-movestats { display: block; width: 100%; margin: .75rem 0; border: 0; background: none; }
+  :root[data-ohg-phone] table.ohg-m-movestats :is(caption, thead) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  :root[data-ohg-phone] table.ohg-m-movestats tbody { display: block; }
+  :root[data-ohg-phone] table.ohg-m-movestats tr { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .4rem; margin: 0; padding: 0; border: 0; background: none; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-movestats td, :root[data-ohg-phone] .sl-markdown-content .table-scroll > table.ohg-m-movestats > tbody > tr > td {
+    position: static; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: .2rem; min-width: 0; max-width: none; margin: 0; padding: .5rem .6rem; border: 1px solid var(--sl-color-gray-6); border-radius: .6rem;
+    background: var(--sl-color-bg-nav); box-shadow: none; font-size: 1rem; font-weight: 700; line-height: 1.3; color: var(--sl-color-white); font-variant-numeric: tabular-nums;
+  }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-movestats td::before { content: attr(data-label); font-size: .68rem; font-weight: 700; line-height: 1.2; color: var(--sl-color-gray-3); }
+  :root[data-ohg-phone] table.ohg-m-movestats td:is([data-label='Type'], [data-label='Category']) { grid-column: span 2; }
+  :root[data-ohg-phone] table.ohg-m-movestats td[data-label='Target'] { grid-column: 1 / -1; font-size: .92rem; font-weight: 650; }
+  :root[data-ohg-phone] .sl-markdown-content table.ohg-m-movestats tbody tr:hover > td { background: var(--sl-color-bg-nav); }
 }
 @media (max-width: 50rem) and (prefers-reduced-motion: reduce) {
   :root[data-ohg-mobile] .ohg-m-chevron { transition: none; }
