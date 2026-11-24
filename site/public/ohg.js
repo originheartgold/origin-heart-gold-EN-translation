@@ -588,8 +588,8 @@
 
 	// ---------------------------------------------------------------- the menu on phones
 	// Below 50rem the header's menu button opens a sheet of the site's own instead of Starlight's sidebar drawer: the
-	// main places as a grid, the chapters as a fold (from the sidebar, when the page has one), the help pages and the
-	// theme. Wider screens keep the sidebar.
+	// main places as a grid, the other reference pages and the help pages as folds, and the theme. The chapters are
+	// under Walkthrough (its page, and the guide dock's own sheet). Wider screens keep the sidebar.
 	const base = (document.querySelector('script[src$="ohg.js"]')?.getAttribute('src') || '/ohg.js').replace(/ohg\.js$/, '');
 	// Chapter titles come in two spellings ("26. Mahogany Town…", "Chapter 33: Postgame, Lance's Visit…"); on a phone
 	// they all read "33. Lance's Visit…" with Postgame as a note beside them. Other pages keep their names.
@@ -613,16 +613,26 @@
 		save: '<path d="M5 3h11l3 3v15H5V3Z"/><path d="M8 3v5h7V3M8 21v-7h8v7"/>',
 		download: '<path d="M12 4v11m0 0 4-4m-4 4-4-4M4 19h16"/>',
 		help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17h0"/>',
+		spark: '<path d="M12 3l2.2 5.6L20 9.5l-4.4 3.9 1.3 5.8L12 16.2l-4.9 3 1.3-5.8L4 9.5l5.8-.9L12 3Z"/>',
+		disc: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/>',
+		tutor: '<path d="M3 9l9-4 9 4-9 4-9-4Z"/><path d="M7 11v4c0 1.5 2.2 3 5 3s5-1.5 5-3v-4M21 9v5"/>',
+		book: '<path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4Z"/><path d="M5 17a3 3 0 0 1 3-3h11M9 8h6"/>',
 	};
 	const icon = (name) => `<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${ICONS[name]}</svg>`;
 	const PLACES = [
 		['Walkthrough', 'guide/', 'map'], ['Pokédex', 'pokemon/', 'ball'], ['Items', 'items/', 'bag'], ['Moves', 'moves/', 'bolt'],
 		['Locations', 'locations/', 'pin'], ['Trainers', 'trainers/', 'person'], ['Team builder', 'team-builder/', 'grid'],
+		['Abilities', 'abilities/', 'spark'], ['TMs & HMs', 'tms/', 'disc'], ['Tutors', 'tutors/', 'tutor'],
 		['Damage calc', 'damage-calc/', 'calc'], ['Save editor', 'save-editor/', 'save'],
 	];
+	// the rest of the sidebar's Reference group, so no page is reachable only from a link inside another page
+	const REFERENCE = [
+		['Mechanics and controls', 'mechanics/'], ['Calendar encounters', 'calendar/'], ['Overworld abilities', 'overworld-abilities/'],
+		['Type changes', 'type-changes/'], ['Base stat changes', 'stat-changes/'], ['Apricorn trees', 'apricorn-trees/'], ['Reference sources', 'reference-sources/'],
+	];
 	const HELP = [
-		['FAQ', 'faq/'], ['How to use this guide', 'about/'], ['Mechanics and controls', 'mechanics/'], ['Difficulty settings', 'difficulty/'],
-		['Camera and widescreen codes', 'camera-codes/'], ['Changelog and contributors', 'changelog/'],
+		['FAQ', 'faq/'], ['How to use this guide', 'about/'], ['Difficulty settings', 'difficulty/'],
+		['Camera and widescreen codes', 'camera-codes/'], ['Changelog and contributors', 'changelog/'], ['Report a problem or contribute', 'contribute/'],
 	];
 
 	function setupMobileMenu() {
@@ -642,18 +652,11 @@
 				const cur = current(h);
 				return `<a href="${h}" class="${cls}"${cur ? ` aria-current="${cur}"` : ''}>${label}</a>`;
 			};
-			let chapters = '';
-			const group = [...document.querySelectorAll('#starlight__sidebar details')].find((d) => /quest guide/i.test(d.querySelector('summary')?.textContent || ''));
-			const links = group ? [...group.querySelectorAll('a[href]')] : [];
-			if (links.length) {
-				chapters = `<details class="ohg-m-menu-fold"><summary>Chapters<span class="ohg-m-meta">${links.length} pages</span></summary><ul>` +
-					links.map((a) => { const n = chapterName(a.textContent); return `<li><a href="${esc(a.getAttribute('href'))}"${a.getAttribute('aria-current') ? ' aria-current="page"' : ''}>${esc(n.label)}${n.post ? '<span class="ohg-m-meta ohg-m-meta-inline">Postgame</span>' : ''}</a></li>`; }).join('') + '</ul></details>';
-			}
 			sheet.innerHTML = `<div class="ohg-m-sheet-head"><h2>Origin <span>HeartGold</span></h2><button type="button" class="ohg-m-close" aria-label="Close"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>` +
 				`<div class="ohg-m-sheet-body">` +
 				link(`${icon('download')}<span>Get the patch</span>`, 'patch/', 'ohg-m-menu-cta') +
 				`<nav class="ohg-m-menu-grid" aria-label="Main">${PLACES.map(([label, href, ic]) => link(`${icon(ic)}<span>${label}</span>`, href)).join('')}</nav>` +
-				chapters +
+				`<details class="ohg-m-menu-fold" open><summary>${icon('book')}Reference</summary><ul>${REFERENCE.map(([label, href]) => `<li>${link(label, href)}</li>`).join('')}</ul></details>` +
 				`<details class="ohg-m-menu-fold"><summary>${icon('help')}Help</summary><ul>${HELP.map(([label, href]) => `<li>${link(label, href)}</li>`).join('')}</ul></details>` +
 				`<div class="ohg-m-menu-theme" role="group" aria-label="Theme"><button type="button" data-theme="light">Light</button><button type="button" data-theme="dark">Dark</button><button type="button" data-theme="auto">Auto</button></div>` +
 				`</div>`;
@@ -700,7 +703,7 @@
 	// /sprites.json. Nothing changes for wider screens: the text stays as written and the pictures are hidden.
 	const SPRITES = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites';
 	let spriteNames = null;
-	function decorateSprites(content) {
+	function decorateSprites(content, reference = false) {
 		if (content.dataset.ohgSprites) return;
 		content.dataset.ohgSprites = 'on';
 		spriteNames ||= fetch(base + 'sprites.json').then((r) => r.ok ? r.json() : null).catch(() => null);
@@ -712,8 +715,17 @@
 			const monImg = (id) => `<img class="ohg-m-sprite ohg-m-sprite-mon" src="${SPRITES}/pokemon/${id}.png" width="40" height="40" alt="" loading="lazy" decoding="async">`;
 			const itemImg = (slug) => `<img class="ohg-m-sprite ohg-m-sprite-item" src="${SPRITES}/items/${slug}.png" width="30" height="30" alt="" loading="lazy" decoding="async">`;
 			// replace matches of `re` inside the text nodes under `root`, leaving links and pictures alone
-			const mark = (root, re, build) => {
-				const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: (n) => n.parentElement.closest('.ohg-m-mon, .ohg-m-item, .ohg-m-row, .ohg-m-label, .tech, .quest-meta, .game-setup, .quest-tools, .chapter-unlocks, h1, h2, h3, h4, summary, script, style') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+			// On a reference page a name inside a link is only pictured when the link goes to that Pokémon or item: "Metronome" the move and "Honey Gather" the ability stay as they are. Places that already
+			// show a picture (a list's sprite cell, the artwork, the evolution chain) and the controls are left alone.
+			const skip = '.ohg-m-mon, .ohg-m-item, .ohg-m-row, .ohg-m-label, .tech, .quest-meta, .game-setup, .quest-tools, .chapter-unlocks, h1, h2, h3, h4, summary, script, style' +
+				(reference ? ', .ohg-m-questlinks, .ohg-m-quest, .pokemon-cell, .types, .ohg-m-evo, .ohg-m-item-hero, .table-filter, .reference-provenance, .sr-only, .tag, .type, nav, caption, thead, select, button, pre' : '');
+			const mark = (root, re, build, kind) => {
+				const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: (n) => {
+					if (n.parentElement.closest(skip)) return NodeFilter.FILTER_REJECT;
+					const a = reference ? n.parentElement.closest('a') : null;
+					if (a && (!new RegExp(`/(${kind === 'item' ? 'items' : 'pokemon'})/`).test(a.getAttribute('href') || '') || a.previousElementSibling?.matches('.ohg-m-sprite'))) return NodeFilter.FILTER_REJECT;
+					return NodeFilter.FILTER_ACCEPT;
+				} });
 				const nodes = [];
 				for (let n = walker.nextNode(); n; n = walker.nextNode()) { re.lastIndex = 0; if (re.test(n.data)) nodes.push(n); }
 				re.lastIndex = 0;
@@ -728,11 +740,11 @@
 			const mon = (name, level = '', text = name) => `<span class="ohg-m-mon${level ? '' : ' ohg-m-mon-plain'}">${monImg(names.p[name])}<span class="ohg-m-mon-name">${text}</span>${level ? `<span class="ohg-m-mon-level">${level.replace(/[,()]/g, '').trim()}</span>` : ''}</span>`;
 			// a trainer's team in brackets: "(Beldum Lv. 12, Baltoy Lv. 11)" becomes a row of chips
 			const team = new RegExp('\\((' + levelled.source + '(?:,\\s*)?)+\\)', 'g');
-			mark(content, team, (m) => `<span class="ohg-m-team"><span class="ohg-m-punct">(</span>${m.slice(1, -1).replace(levelled, (_, name, s, level) => mon(name, level, name + s)).replace(/,\s*/g, '<span class="ohg-m-punct">, </span>')}<span class="ohg-m-punct">)</span></span>`);
-			mark(content, levelled, (_, name, s, level) => mon(name, level, name + s));
+			if (!reference) mark(content, team, (m) => `<span class="ohg-m-team"><span class="ohg-m-punct">(</span>${m.slice(1, -1).replace(levelled, (_, name, s, level) => mon(name, level, name + s)).replace(/,\s*/g, '<span class="ohg-m-punct">, </span>')}<span class="ohg-m-punct">)</span></span>`);
+			if (!reference) mark(content, levelled, (_, name, s, level) => mon(name, level, name + s));
 			// then every other mention: Pokémon first (an item never contains a Pokémon's name), then items and Berries
-			mark(content, monRx, (m, name) => mon(name, '', m));
-			mark(content, itemRx, (m, name) => `<span class="ohg-m-item">${itemImg(names.i[name])}${m}</span>`);
+			mark(content, monRx, (m, name) => mon(name, '', m), 'mon');
+			mark(content, itemRx, (m, name) => `<span class="ohg-m-item">${itemImg(names.i[name])}${m}</span>`, 'item');
 		});
 	}
 
@@ -901,7 +913,7 @@
 			for (const tr of table.querySelectorAll('tbody tr')) [...tr.cells].forEach((td, i) => { if (heads[i]) td.dataset.label = heads[i]; });
 			return heads;
 		};
-		const SHORT = { Accuracy: 'Acc', Power: 'Pow', Level: 'Lv', 'TM / HM': 'TM', 'Learning method': 'How', 'Hold chance': 'Hold', 'Encounter chance': 'Chance', 'Method / time / condition': 'Method' };
+		const SHORT = { Accuracy: 'Acc', Power: 'Pow', Level: 'Lv', 'TM / HM': 'TM', 'Learning method': 'How', Compatibility: 'TM', 'Hold chance': 'Hold', 'Encounter chance': 'Chance', 'Method / time / condition': 'Method' };
 		const shorten = (table) => table.querySelectorAll('thead th').forEach((th) => {
 			const full = th.textContent.trim();
 			if (SHORT[full]) th.innerHTML = `<span class="ohg-m-full">${th.innerHTML}</span><span class="ohg-m-short" aria-hidden="true">${SHORT[full]}</span>`;
@@ -909,19 +921,28 @@
 		for (const table of document.querySelectorAll('.sl-markdown-content table')) {
 			const heads = label(table);
 			if (!heads) continue;
+			// a Pokémon's wild encounters become a list grouped by place (setupMobileTabs)
+			if (table.id === 'wild-encounters-table') continue;
+			// a move's numbers: one grid of tiles instead of a line each
+			if (/^Move stats$/.test(table.querySelector('caption')?.textContent.trim() || '')) { table.classList.add('ohg-m-movestats'); continue; }
 			// an item's wild holders: the summary and each holder's locations stay tables, fitted to the width
 			if (/^wild-locations/.test(table.id) || /^Wild Pokémon holding/.test(table.querySelector('caption')?.textContent || '')) {
 				table.classList.add('ohg-m-fit');
 				shorten(table);
 				continue;
 			}
+			// a place's wild Pokémon (name, level, chance; the contest adds rate and score): one line each
+			if (heads[0] === 'Pokémon' && heads[1] === 'Level' && heads.length <= 4 && table.closest('.enc-block')) { table.classList.add('ohg-m-enc'); continue; }
+			// the items of a place (found, prizes, bought): the name with its quantity, the rest under it
+			if (heads[0] === 'Item' && heads[1] === 'Qty') { table.classList.add('ohg-m-loot'); continue; }
 			if (heads.includes('Move') && heads.includes('Type') && heads.includes('Power')) {
 				table.classList.add('ohg-m-moves');
 				table.querySelectorAll('thead th').forEach((th) => {
 					const full = th.textContent.trim();
 					if (SHORT[full]) th.innerHTML = `<span class="ohg-m-full">${th.innerHTML}</span><span class="ohg-m-short" aria-hidden="true">${SHORT[full]}</span>`;
 				});
-			} else if (/^learners-table/.test(table.id)) {
+			} else if (/^learners-table/.test(table.id) || (heads.length === 4 && heads[0] === 'Pokémon' && heads[1] === 'Type' && heads[3] === 'Availability')) {
+				// a list of Pokémon (a move's learners, a TM's compatible Pokémon, an ability's holders): sprite, name and the one detail
 				table.classList.add('ohg-m-learners');
 				table.querySelectorAll('thead th').forEach((th) => {
 					const full = th.textContent.trim();
@@ -969,19 +990,76 @@
 			lead.className = 'ohg-m-acq-lead';
 			let n = kind.nextSibling;
 			while (n && !(n.nodeType === 1 && n.matches('p'))) { const next = n.nextSibling; lead.append(n); n = next; }
-			lead.innerHTML = lead.innerHTML.replace(/^\s*\(Lv\.?\s*([^)]+)\)\s*:\s*/, '<span class="ohg-m-acq-level">Lv. $1</span> ').replace(/\.\s*$/, '');
+			lead.innerHTML = lead.innerHTML.replace(/^\s*\(Lv\.?\s*([^)]+)\)\s*:\s*/, '<span class="ohg-m-acq-level">Lv. $1</span> ').replace(/^\s*:\s*/, '').replace(/\.\s*$/, '');
 			head.append(lead);
+			// what a trade asks for ("Give Raticate in exchange") goes on its own line under the place
+			const placeLink = lead.querySelector('a');
+			if (placeLink?.nextSibling) {
+				const offer = document.createElement('span');
+				offer.className = 'ohg-m-acq-offer';
+				while (placeLink.nextSibling) offer.append(placeLink.nextSibling);
+				if (offer.firstChild?.nodeType === 3) offer.firstChild.data = offer.firstChild.data.replace(/^[\s.]+/, '');
+				if (offer.textContent.trim()) head.append(offer);
+			}
 			li.classList.add('ohg-m-acq');
 			kind.classList.add('ohg-m-acq-strong');
 			kind.after(head);
 		}
-		const wild = content.querySelector(':scope > .table-scroll:has(> #wild-encounters-table), :scope > #wild-encounters-table');
-		if (wild) {
-			const band = document.createElement('div');
-			band.className = 'ohg-m-band not-content';
+		// Wild encounters: one block per place, each encounter a line (how, level, chance). The table stays for wider
+		// screens; the filter above it still works because each line follows its row's hidden state.
+		const wildTable = content.querySelector('#wild-encounters-table');
+		const wild = wildTable && (wildTable.closest('.table-scroll') || wildTable);
+		if (wild && wild.parentElement === content) {
+			const el = (tag, cls, text) => { const n = document.createElement(tag); n.className = cls; if (text != null) n.textContent = text; return n; };
+			const list = el('div', 'ohg-m-wild not-content');
+			list.dataset.ohgTab = 'where';
+			const places = new Map(); // place -> its block
+			const pairs = []; // [table row, its line]
+			for (const tr of wildTable.tBodies[0]?.rows || []) {
+				const [loc, how, level, chance] = tr.cells;
+				if (!chance) continue;
+				const key = `${loc.querySelector('a')?.getAttribute('href') || ''}|${loc.textContent.trim()}`;
+				let place = places.get(key);
+				if (!place) {
+					place = el('section', 'ohg-m-wild-place');
+					const head = el('div', 'ohg-m-wild-head');
+					head.innerHTML = loc.innerHTML;
+					place.append(head);
+					places.set(key, place);
+					list.append(place);
+				}
+				const line = el('div', 'ohg-m-wild-row');
+				const what = el('span', 'ohg-m-wild-how');
+				what.innerHTML = how.innerHTML;
+				// the icons do the separating: "Grass/cave, morning and day" reads as three marks, a detail after a
+				// colon follows a dot, and a Safari line doesn't repeat the area its block is named after
+				const area = loc.textContent.trim().match(/^Safari Zone: (.+)$/)?.[1];
+				const lead = what.firstElementChild;
+				if (area && lead?.dataset.encounterHint === 'safari' && lead.nextSibling?.nodeType === 3 && lead.nextSibling.data.trim() === `: ${area} area selected,`) { lead.nextSibling.remove(); lead.remove(); }
+				for (const n of [...what.childNodes]) {
+					if (n.nodeType !== 3) continue;
+					n.data = /^\s*(,|and|, and)?\s*$/.test(n.data) ? ' ' : n.data.replace(/^\s*[:,]\s*/, n.previousSibling ? ' · ' : '');
+				}
+				const lv = level.textContent.trim();
+				const lvl = el('span', 'ohg-m-wild-lv');
+				if (lv && lv !== '—') lvl.append(el('span', 'ohg-m-wild-unit', 'Lv'), ` ${lv}`); else lvl.textContent = '—';
+				line.append(what, lvl, el('span', 'ohg-m-wild-pct', chance.textContent.trim()));
+				place.append(line);
+				pairs.push([tr, line]);
+			}
+			const sync = () => {
+				for (const [tr, line] of pairs) line.hidden = tr.hidden;
+				for (const place of places.values()) place.hidden = !place.querySelector('.ohg-m-wild-row:not([hidden])');
+			};
+			sync();
+			if (typeof MutationObserver !== 'undefined') new MutationObserver(sync).observe(wildTable, { attributes: true, attributeFilter: ['hidden'], subtree: true });
+			const band = el('div', 'ohg-m-band not-content');
 			band.dataset.ohgTab = 'where';
-			band.textContent = 'Wild encounters';
-			wild.before(band);
+			band.append(el('span', '', 'Wild encounters'), el('span', 'ohg-m-band-meta', places.size === 1 ? '1 place' : `${places.size} places`));
+			(content.querySelector(':scope > .table-filter[data-table="wild-encounters-table"]') || wild).before(band);
+			wild.before(list);
+			wild.classList.add('ohg-m-wild-src');
+			if (wild.nextElementSibling?.matches('.table-scroll-hint')) wild.nextElementSibling.classList.add('ohg-m-wild-src');
 		}
 		// Evolution: the sentences become a chain of sprites (the names come from /sprites.json, see decorateSprites)
 		const evo = [...content.querySelectorAll(':scope > [data-ohg-tab="evolution"]')].filter((n) => !n.matches('h2'));
@@ -1032,6 +1110,7 @@
 		const kinds = { moves: 'level', tm: 'tm', tutors: 'tm', egg: 'egg' };
 		const names = { level: 'Level-up', tm: 'TMs / HMs', egg: 'Egg moves' };
 		let kind = '';
+		let pick = null, syncTurns = () => {};
 		const seen = new Set();
 		for (const n of content.querySelectorAll(':scope > [data-ohg-tab="moves"]')) {
 			if (n.matches('h2[id]')) kind = kinds[n.id] || kind;
@@ -1045,7 +1124,7 @@
 			sub.setAttribute('role', 'tablist');
 			sub.dataset.ohgTab = 'moves';
 			sub.innerHTML = ['level', 'tm', 'egg'].filter((k) => seen.has(k)).map((k) => `<button type="button" role="tab" data-kind="${k}" aria-selected="false">${names[k]}</button>`).join('');
-			const pick = (k) => { content.dataset.ohgMovesActive = k; sub.querySelectorAll('button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.kind === k))); };
+			pick = (k) => { content.dataset.ohgMovesActive = k; sub.querySelectorAll('button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.kind === k))); syncTurns(); };
 			sub.addEventListener('click', (e) => { const b = e.target.closest('button[data-kind]'); if (b) pick(b.dataset.kind); });
 			content.querySelector(':scope > h2[data-ohg-tab="moves"]').before(sub);
 			pick(seen.has('level') ? 'level' : [...seen][0]);
@@ -1054,15 +1133,33 @@
 			window.addEventListener('hashchange', () => { const k = kinds[location.hash.slice(1)]; if (k) pick(k); });
 			const k0 = kinds[location.hash.slice(1)]; if (k0) pick(k0);
 		}
+		// Previous and next Pokémon sit at the ends of the bar (from the page's own links at the bottom, which a phone
+		// then leaves out); they open the neighbour on the tab that is open here ("#tab=moves:tm").
+		const turns = [...content.querySelectorAll(':scope > nav.prevnext > a')];
+		const turn = (rel, a) => {
+			const chevron = `<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${rel === 'prev' ? 'm15 6-6 6 6 6' : 'm9 6 6 6-6 6'}"/></svg>`;
+			if (!a) return `<span class="ohg-m-tabs-turn" aria-hidden="true">${chevron}<span>&nbsp;</span></span>`;
+			const name = a.textContent.replace(/[←→]/g, '').trim();
+			return `<a class="ohg-m-tabs-turn" data-turn="${rel}" href="${a.getAttribute('href')}" data-href="${a.getAttribute('href')}" aria-label="${rel === 'prev' ? 'Previous' : 'Next'} Pokémon: ${name.replace(/"/g, '&quot;')}">${chevron}<span>${(name.match(/^#\d+/) || [''])[0]}</span></a>`;
+		};
+		const prevLink = turns.find((a) => a.textContent.includes('←')), nextLink = turns.find((a) => a.textContent.includes('→'));
+		const hasTurns = !!(prevLink || nextLink);
+		if (hasTurns) content.querySelector(':scope > nav.prevnext').classList.add('ohg-m-trim');
 		const bar = document.createElement('nav');
 		bar.className = 'ohg-m-tabs not-content';
 		bar.setAttribute('aria-label', 'Page sections');
-		bar.innerHTML = tabs.map(([id, label]) => `<button type="button" data-tab="${id}" aria-pressed="false"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${ICON[id]}</svg><span>${label}</span></button>`).join('');
+		bar.innerHTML = (hasTurns ? turn('prev', prevLink) : '') + tabs.map(([id, label]) => `<button type="button" data-tab="${id}" aria-pressed="false"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${ICON[id]}</svg><span>${label}</span></button>`).join('') + (hasTurns ? turn('next', nextLink) : '');
 		document.body.append(bar);
+		syncTurns = () => {
+			const tab = content.dataset.ohgTabActive, kind = content.dataset.ohgMovesActive;
+			const hash = !tab || tab === 'overview' ? '' : `#tab=${tab}${tab === 'moves' && kind ? `:${kind}` : ''}`;
+			bar.querySelectorAll('a.ohg-m-tabs-turn').forEach((a) => { a.href = a.dataset.href + hash; });
+		};
 		document.documentElement.setAttribute('data-ohg-tabbed', '');
 		const show = (id, scroll) => {
 			content.dataset.ohgTabActive = id;
 			bar.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.tab === id)));
+			syncTurns();
 			if (scroll) {
 				const top = content.getBoundingClientRect().top + window.scrollY - 72;
 				window.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
@@ -1071,6 +1168,13 @@
 		bar.addEventListener('click', (e) => { const b = e.target.closest('button[data-tab]'); if (b) show(b.dataset.tab, true); });
 		// a link into a section (…/#where, …/#egg) opens that tab
 		const follow = () => {
+			// from a neighbour's bar: the same tab (and kind of move), the page still at its top so the name shows
+			const kept = location.hash.match(/^#tab=([a-z]+)(?::([a-z]+))?$/);
+			if (kept) {
+				show(present.has(kept[1]) ? kept[1] : 'overview', false);
+				if (kept[2] && seen.has(kept[2])) pick?.(kept[2]);
+				return;
+			}
 			let t = null;
 			try { t = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null; } catch { /* bad hash */ }
 			const sec = t && content.contains(t) ? (t.closest('[data-ohg-tab]') || t) : null;
@@ -1078,6 +1182,56 @@
 		};
 		follow();
 		window.addEventListener('hashchange', follow);
+	}
+	// A quest's link, in parts a phone can lay out: "Cherrygrove City: the Wooper and the lost Poké Ball (→ Focus Band)"
+	// becomes the place (left out where the card or page already names it), the title, and the note in brackets on
+	// its own line. The text itself does not change, so wider screens read it as before.
+	function questLink(a, place = '') {
+		if (a.querySelector('.ohg-m-q-title')) return;
+		const m = a.textContent.match(/^(.*?:\s+)?(.*?)(\s*\([^()]*\))?\s*$/s);
+		if (!m || !m[2]) return;
+		let pre = m[1] || '', title = m[2];
+		const name = place.trim().toLowerCase(), first = name.split(/[\s,]+/)[0];
+		const named = name && (pre.toLowerCase().includes(name) || (first.length >= 4 && !['route', 'the'].includes(first) && pre.toLowerCase().includes(first)));
+		if (pre && !named) { title = pre + title; pre = ''; }
+		const part = (cls, text) => { const span = document.createElement('span'); span.className = cls; span.textContent = text; return span; };
+		a.textContent = '';
+		if (pre) a.append(part('ohg-m-q-pre', pre));
+		a.append(part('ohg-m-q-title', title));
+		if (m[3]) a.append(part('ohg-m-q-note', m[3]));
+	}
+	// A list entry as a card (an item's source, a place's gift or scripted Pokémon). What follows the leading link
+	// stays as written for wider screens (ohg-m-src-orig); the phone shows a copy (ohg-m-src-rest) with each detail on
+	// its own line and the quests it names as rows under them, instead of one long run of links.
+	function sourceCard(li) {
+		if (li.classList.contains('ohg-m-src')) return;
+		const lead = li.firstElementChild?.matches('a') && li.firstChild === li.firstElementChild ? li.firstElementChild : null;
+		const orig = document.createElement('span');
+		orig.className = 'ohg-m-src-orig';
+		let n = lead ? lead.nextSibling : li.firstChild;
+		while (n) { const next = n.nextSibling; orig.append(n); n = next; }
+		li.classList.add('ohg-m-src');
+		if (!orig.textContent.trim()) { orig.remove(); return; }
+		li.append(orig);
+		const rest = document.createElement('span');
+		rest.className = 'ohg-m-src-rest';
+		// "(costs ₽300) · see …" loses its brackets; a bracket later in the text ("… King's Rock (day)") keeps both
+		const lines = orig.innerHTML.replace(/^\s*·\s*/, '').replace(/\s*·\s*/g, '<br>');
+		rest.innerHTML = /^\s*\(/.test(lines) ? lines.replace(/^\s*\(\s*/, '').replace(/\s*\)\s*(<br>|$)/, '$1') : lines;
+		const quests = [...rest.querySelectorAll('a[href*="/guide/"]')];
+		if (quests.length) {
+			// the place the card is about: its own link to a location, else the page (a location's own lists)
+			const place = (lead?.matches('a[href*="/locations/"]') ? lead : li.querySelector('a[href*="/locations/"]'))?.textContent || document.querySelector('h1')?.textContent || '';
+			const box = document.createElement('span');
+			box.className = 'ohg-m-questlinks';
+			for (const a of quests) { questLink(a, place); box.append(a); }
+			// the "see" and the commas that joined the links go with them
+			rest.innerHTML = rest.innerHTML.replace(/(?:<br>\s*)?\b[Ss]ee\b[\s,;]*(?=<br>|<\/p>|$)/g, '').replace(/(?:<br>\s*)+$/, '');
+			rest.append(box);
+		}
+		// an entry with no leading link starts with its kind ("Gift: …", "Trade: …"): that becomes its label
+		if (!lead) rest.innerHTML = rest.innerHTML.replace(/^\s*([A-Z][^:<]{2,40}):\s*/, '<span class="ohg-m-acq-kind">$1</span> ');
+		li.append(rest);
 	}
 	// An item's page on a phone: the sprite with the pocket and prices at the top, each kind of source under a band,
 	// each source a block with the place first and the rest (quantity, price, the quest) under it.
@@ -1104,25 +1258,347 @@
 				if (id) a.insertAdjacentHTML('beforebegin', `<img class="ohg-m-sprite ohg-m-sprite-mon ohg-m-fit-sprite" src="${SPRITES}/pokemon/${id}.png" width="40" height="40" alt="" loading="lazy" decoding="async">`);
 			}));
 		}
-		for (const li of content.querySelectorAll(':scope > ul > li')) {
-			const place = li.querySelector(':scope > a');
-			if (!place) continue;
-			// the text after the place stays as written for wider screens (ohg-m-src-orig); the phone shows a copy
-			// with "· see" and "×10 · $1,200" on their own lines
-			const orig = document.createElement('span');
-			orig.className = 'ohg-m-src-orig';
-			let n = place.nextSibling;
-			while (n) { const next = n.nextSibling; orig.append(n); n = next; }
-			if (!orig.textContent.trim()) { orig.remove(); li.classList.add('ohg-m-src'); continue; }
-			li.append(orig);
-			const rest = document.createElement('span');
-			rest.className = 'ohg-m-src-rest';
-			rest.innerHTML = orig.innerHTML.replace(/^\s*·\s*/, '').replace(/\s*·\s*/g, '<br>').replace(/^\s*\(\s*/, '').replace(/\s*\)\s*(<br>|$)/, '$1');
-			li.append(rest);
-			li.classList.add('ohg-m-src');
-		}
+		for (const li of content.querySelectorAll(':scope > ul > li')) sourceCard(li);
 		content.querySelector(':scope > p:last-child > a[href$="/items/"]')?.classList.add('ohg-m-back');
 	}
-	const init = () => { setupQuests(); setupFilters(); setupTableScroll(); setupMobileGuide(); setupMobileMenu(); setupItemSprites(); setupMobileReference(); setupMobileTabs(); setupMobileItem(); };
+	// On a phone the page head hides a reference page's content (<html data-ohg-pending>) until its phone layout is
+	// built, so the wide layout never shows first; the head lifts it by itself if this script fails.
+	// A bar along the bottom that splits a page into tabs, like a Pokémon's page. `order` lists the tabs ([id, label,
+	// icon]); `tabOf(node)` names the tab a top-level node starts (nothing: it stays in the current one). A link into a
+	// section opens its tab.
+	const TAB_ICON = {
+		overview: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/>',
+		level: '<path d="M4 19h16M7 15l4-4 3 3 5-6M15 8h4v4"/>',
+		disc: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/>',
+		person: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+		egg: '<path d="M12 3c3.5 0 7 5.5 7 10a7 7 0 0 1-14 0c0-4.5 3.5-10 7-10Z"/>',
+		pin: '<path d="M12 21s6-5.2 6-11a6 6 0 0 0-12 0c0 5.8 6 11 6 11Z"/><circle cx="12" cy="10" r="2.2"/>',
+		gift: '<rect x="4" y="11" width="16" height="9" rx="1.5"/><path d="M3 7h18v4H3zM12 7v13M12 7c-2-4-6-3-5-1 1 1 3 1 5 1Zm0 0c2-4 6-3 5-1-1 1-3 1-5 1Z"/>',
+		bag: '<path d="M6 8h12l1 12H5L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
+		swap: '<path d="M6 8h12l-3-3M18 16H6l3 3"/>',
+		trophy: '<path d="M8 4h8v5a4 4 0 0 1-8 0V4ZM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8"/>',
+		tree: '<path d="M10 21v-5H6a4 4 0 0 1-2-7 5 5 0 0 1 4-6 5 5 0 0 1 8 0 5 5 0 0 1 4 6 4 4 0 0 1-2 7h-4v5M8 21h8"/>',
+		coin: '<circle cx="12" cy="12" r="8"/><path d="M12 8v8M10 10h4M10 14h4"/>',
+		grass: '<path d="M4 20h16M7 20C7 14 5 10 3 8c5 1 8 5 9 12 0-8 3-14 8-17-2 6-3 12-3 17"/>',
+		uses: '<path d="M14 6a4 4 0 0 0 5 5l-8 8a2.1 2.1 0 0 1-3-3l8-8Z"/><path d="M14 6l2-2 4 4-2 2"/>',
+		ball: '<circle cx="12" cy="12" r="9"/><path d="M3 12h6m6 0h6"/><circle cx="12" cy="12" r="3"/>',
+		bolt: '<path d="M13 3 5 14h6l-1 7 8-11h-6l1-7Z"/>',
+		list: '<path d="M8 6h12M8 12h12M8 18h12M4 6h0M4 12h0M4 18h0"/>',
+		spark: '<path d="M12 3l2.2 5.6L20 9.5l-4.4 3.9 1.3 5.8L12 16.2l-4.9 3 1.3-5.8L4 9.5l5.8-.9L12 3Z"/>',
+		hidden: '<path d="M3 12s3.5-6 9-6 9 6 9 6-3.500 6-9 6-9-6-9-6Z"/><circle cx="12" cy="12" r="2.5"/>',
+	};
+	const tabButtons = (tabs) => tabs.map(([id, label, ic]) => `<button type="button" data-tab="${id}" aria-pressed="false"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${TAB_ICON[ic]}</svg><span>${label}</span></button>`).join('');
+	function sectionTabs(content, order, tabOf, hashTab, start = order[0][0]) {
+		let cur = start; // '' leaves what comes before the first named tab out of the tabs: it shows in all of them
+		const present = new Set();
+		const nodes = [];
+		// the links that close a page ("← All moves · TMs and HMs") belong to no tab: the short link paragraphs at its very end
+		const closing = new Set();
+		for (let n = content.lastElementChild; n && n.matches('p') && n.querySelector(':scope > a') && n.textContent.trim().length < 60; n = n.previousElementSibling) closing.add(n);
+		for (const n of content.children) {
+			if (closing.has(n)) break;
+			const t = tabOf(n);
+			if (t) cur = t;
+			if (!cur) continue;
+			n.dataset.ohgTab = cur;
+			present.add(cur);
+			nodes.push(n);
+		}
+		const tabs = order.filter(([id]) => present.has(id));
+		if (tabs.length < 2) { nodes.forEach((n) => delete n.dataset.ohgTab); return null; }
+		const bar = document.createElement('nav');
+		bar.className = 'ohg-m-tabs not-content';
+		bar.setAttribute('aria-label', 'Page sections');
+		bar.innerHTML = tabButtons(tabs);
+		document.body.append(bar);
+		document.documentElement.setAttribute('data-ohg-tabbed', '');
+		const show = (id, scroll) => {
+			content.dataset.ohgTabActive = id;
+			bar.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.tab === id)));
+			let first = true;
+			for (const n of content.children) {
+				if (!n.dataset.ohgTab) continue;
+				const on = n.dataset.ohgTab === id;
+				n.toggleAttribute('data-ohg-off', !on);
+				// the first thing a tab shows sits right under the title
+				const lead = on && first && !n.matches('.ohg-m-item-hero') && getComputedStyle(n).display !== 'none';
+				n.toggleAttribute('data-ohg-first', lead);
+				if (lead) first = false;
+			}
+			if (scroll) window.scrollTo({ top: Math.max(0, content.getBoundingClientRect().top + window.scrollY - 72), behavior: 'auto' });
+		};
+		bar.addEventListener('click', (e) => { const b = e.target.closest('button[data-tab]'); if (b) show(b.dataset.tab, true); });
+		const follow = () => {
+			let t = null;
+			try { t = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null; } catch { /* bad hash */ }
+			const named = t && hashTab?.(t);
+			const sec = t && content.contains(t) ? (t.closest('[data-ohg-tab]') || t) : null;
+			if (named && present.has(named)) show(named, false);
+			else if (sec?.dataset.ohgTab) { show(sec.dataset.ohgTab, false); t.scrollIntoView(); }
+			else if (!content.dataset.ohgTabActive) show(tabs[0][0], false);
+		};
+		follow();
+		window.addEventListener('hashchange', follow);
+		return { present, show };
+	}
+	const pageIs = (re) => re.test(String(location.pathname || '').replace(/index\.html$/, '').slice(base.length));
+	// A move: Overview (effect, numbers, changes) and one tab per way of learning it, instead of every list down one page.
+	function setupMobileMoveTabs() {
+		const content = document.querySelector('.sl-markdown-content');
+		if (!content || typeof matchMedia === 'undefined' || !pageIs(/^moves\/[^/]+\/$/)) return;
+		const kinds = { level: 'level', tm: 'tm', tutor: 'tutor', egg: 'egg' };
+		const tabs = sectionTabs(content, [['overview', 'Overview', 'overview'], ['level', 'Level-up', 'level'], ['tm', 'TMs / HMs', 'disc'], ['tutor', 'Tutors', 'person'], ['egg', 'Egg', 'egg']],
+			(n) => n.matches('h3[id^="learners-"]') ? kinds[n.id.slice('learners-'.length)] : n.matches('h2#learners') ? 'overview' : '',
+			(t) => t.id === 'learners' ? ['level', 'tm', 'tutor', 'egg'].find((k) => content.querySelector(`:scope > #learners-${k}`)) : '');
+		if (!tabs) return;
+		// "Pokémon that learn this move" is the tabs now; the TM line goes with the TMs
+		const heading = content.querySelector(':scope > h2#learners');
+		heading?.classList.add('ohg-m-trim');
+		for (let n = heading?.nextElementSibling; n && n.matches('p'); n = n.nextElementSibling) {
+			if (/^TM \/ HM/.test(n.textContent.trim()) && tabs.present.has('tm')) n.dataset.ohgTab = 'tm';
+		}
+		tabs.show(content.dataset.ohgTabActive, false);
+	}
+	// A row of choices that fits the width whatever their number: equal cells, three to a row at most (four make two
+	// rows of two), and a shorter last row stretches across. `choices`: [id, label, count?]; `onPick(id)` runs on a tap.
+	function segmented(choices, label, onPick) {
+		const box = document.createElement('div');
+		box.className = 'ohg-m-seg not-content';
+		box.setAttribute('role', 'tablist');
+		box.setAttribute('aria-label', label);
+		const n = choices.length, perRow = n === 4 ? 2 : Math.min(n, 3);
+		box.innerHTML = choices.map(([id, text, count], i) => {
+			const inRow = Math.min(perRow, n - Math.floor(i / perRow) * perRow);
+			return `<button type="button" role="tab" data-id="${id}" aria-selected="false" style="grid-column: span ${6 / inRow}"><b>${text}</b>${count != null ? `<span>${count}</span>` : ''}</button>`;
+		}).join('');
+		const pick = (id) => { box.querySelectorAll('button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.id === id))); onPick(id); };
+		box.addEventListener('click', (e) => { const b = e.target.closest('button[data-id]'); if (b) pick(b.dataset.id); });
+		return { box, pick };
+	}
+	// An item: Overview (what it does and, for a TM, its move), Get it, the wild Pokémon that hold it, what it is used
+	// for, and a TM's compatible Pokémon. Get it shows one way of getting the item at a time (gifts, shops, hidden
+	// items…): a picker at its top, in the page's order, chooses which.
+	const ITEM_SOURCES = {
+		'source-item-ball': 'Ground', 'source-hidden': 'Hidden', 'source-gift': 'Gifts', 'source-prize': 'Prizes', 'source-bought-exchanged': 'Exchange',
+		'source-shop': 'Shops', 'source-automatic': 'Automatic', 'source-savings-reward': 'Savings', 'source-minigame-prize': 'Minigames', 'source-pickup': 'Pickup',
+		'source-tree': 'Trees', 'source-stolen': 'Stolen', 'source-held-by-wild-pok-mon': 'Held',
+	};
+	function setupMobileItemTabs() {
+		const content = document.querySelector('.sl-markdown-content');
+		if (!content || typeof matchMedia === 'undefined' || !pageIs(/^items\/[^/]+\/$/)) return;
+		const of = { 'wild-held': 'wild', forms: 'uses', 'needed-by': 'uses', 'author-reference': 'uses', 'related-uses': 'uses', 'compatible-pokemon': 'pokemon' };
+		const tabs = sectionTabs(content, [['overview', 'Overview', 'overview'], ['get', 'Get it', 'pin'], ['wild', 'Wild', 'grass'], ['uses', 'Uses', 'uses'], ['pokemon', 'Pokémon', 'ball']],
+			(n) => !n.matches('h2[id]') ? '' : /^source-/.test(n.id) ? 'get' : (of[n.id] || ''));
+		const heads = [...content.querySelectorAll(':scope > h2[id^="source-"]')];
+		if (!tabs || heads.length < 2) return;
+		// each source's nodes (its heading and what follows, up to the next one) carry its id
+		let src = '';
+		for (const n of content.querySelectorAll(':scope > [data-ohg-tab="get"]')) {
+			if (n.matches('h2[id^="source-"]')) src = n.id;
+			if (src) n.dataset.ohgSrc = src;
+		}
+		const { box: row, pick } = segmented(heads.map((h) => [h.id, ITEM_SOURCES[h.id] || h.textContent.trim(), content.querySelectorAll(`:scope > ul[data-ohg-src="${h.id}"] > li`).length || null]), 'Ways to get it', (id) => {
+			for (const n of content.querySelectorAll(':scope > [data-ohg-src]')) {
+				n.toggleAttribute('data-ohg-src-off', n.dataset.ohgSrc !== id);
+				n.toggleAttribute('data-ohg-src-first', n.id === id);
+			}
+		});
+		row.dataset.ohgTab = 'get';
+		heads[0].before(row);
+		// a link to one source (…/#source-shop) opens Get it on that source
+		const fromHash = () => { const id = location.hash.slice(1); if (heads.some((h) => h.id === id)) pick(id); };
+		window.addEventListener('hashchange', fromHash);
+		pick(heads[0].id);
+		fromHash();
+		tabs.show(content.dataset.ohgTabActive, false);
+	}
+	// An ability: Overview (effect, changes), the moves it affects, and the Pokémon that have it as a regular or a hidden ability.
+	function setupMobileAbilityTabs() {
+		const content = document.querySelector('.sl-markdown-content');
+		if (!content || typeof matchMedia === 'undefined' || !pageIs(/^abilities\/[^/]+\/$/)) return;
+		const tabs = sectionTabs(content, [['overview', 'Overview', 'overview'], ['affected', 'Moves', 'bolt'], ['regular', 'Regular', 'spark'], ['hidden', 'Hidden', 'hidden']],
+			(n) => n.matches('h2#applicability') ? 'affected' : n.matches('h2#holders') ? 'overview' : n.matches('h3') && /^Regular ability/.test(n.textContent) ? 'regular' : n.matches('h3') && /^Hidden ability/.test(n.textContent) ? 'hidden' : '');
+		if (!tabs) return;
+		if (tabs.present.has('regular') || tabs.present.has('hidden')) content.querySelector(':scope > h2#holders')?.classList.add('ohg-m-trim');
+		tabs.show(content.dataset.ohgTabActive, false);
+	}
+	// A Pokémon's, item's, move's, ability's or location's page on a phone: every Pokémon and item it names gets its
+	// sprite beside the name, as in the walkthrough.
+	function setupMobileRefSprites() {
+		const content = document.querySelector('.sl-markdown-content');
+		if (!content || typeof matchMedia === 'undefined' || !pageIs(/^(pokemon|items|moves|abilities|locations)\/[^/]+\/$/)) return;
+		const mq = matchMedia('(max-width: 50rem)');
+		const run = () => { if (mq.matches) decorateSprites(content, true); };
+		mq.addEventListener ? mq.addEventListener('change', run) : mq.addListener(run);
+		run();
+	}
+	// The Locations list: one region at a time, chosen from a picker above the list; a search looks through all of them.
+	function setupMobileLocationList() {
+		const list = document.querySelector('.sl-markdown-content > #loc-list');
+		if (!list || typeof matchMedia === 'undefined' || !pageIs(/^locations\/$/)) return;
+		const regions = [...list.querySelectorAll(':scope > h2')].map((h, i) => ({ id: `region-${i}`, h, ul: h.nextElementSibling }));
+		if (regions.length < 2) return;
+		const { box, pick } = segmented(regions.map((r) => [r.id, r.h.textContent.trim(), r.ul?.children.length ?? null]), 'Region', (id) => {
+			for (const r of regions) { r.h.toggleAttribute('data-ohg-seg-off', r.id !== id); r.ul?.toggleAttribute('data-ohg-seg-off', r.id !== id); }
+		});
+		list.before(box);
+		pick(regions[0].id);
+	}
+	// A location's page: Quests, Pokémon (wild, calendar, gifts and trades), Trainers, Items, Shops and Tutors, each in
+	// its own tab; the region above them shows in all.
+	function setupMobileLocationTabs() {
+		const content = document.querySelector('.sl-markdown-content');
+		if (!content || typeof matchMedia === 'undefined' || !pageIs(/^locations\/[^/]+\/$/)) return;
+		document.documentElement.setAttribute('data-ohg-location', '');
+		const of = { quests: 'quests', wild: 'pokemon', calendar: 'pokemon', special: 'pokemon', trainers: 'trainers', items: 'items', shops: 'shops', tutors: 'tutors' };
+		sectionTabs(content, [['quests', 'Quests', 'list'], ['pokemon', 'Pokémon', 'ball'], ['trainers', 'Trainers', 'person'], ['items', 'Items', 'bag'], ['shops', 'Shops', 'coin'], ['tutors', 'Tutors', 'level']],
+			(n) => n.matches('h2[id]') ? (of[n.id] || '') : '', null, '');
+		// its lists as cards: a quest is a row that opens it; a gift or a scripted Pokémon keeps its details, with the
+		// quests it names as rows under them
+		const here = document.querySelector('h1')?.textContent || '';
+		for (const li of content.querySelectorAll(':scope > ul > li')) {
+			const only = li.children.length === 1 && li.firstElementChild.matches('a[href*="/guide/"]') && li.textContent.trim() === li.firstElementChild.textContent.trim();
+			if (only) { questLink(li.firstElementChild, here); li.classList.add('ohg-m-src', 'ohg-m-quest'); } else sourceCard(li);
+		}
+		// one of an item says nothing: the quantity shows from two up
+		for (const td of content.querySelectorAll('table.ohg-m-loot td[data-label="Qty"]')) if (td.textContent.trim() === '1') td.dataset.one = '';
+	}
+	// The Trainers page: Find (the directory with its search) and Battle guide, which shows one group of battles at a
+	// time (Gym Leaders, the Elite Four…) from a picker at its top. The introduction and its section links leave the phone.
+	function setupMobileTrainers() {
+		const page = document.querySelector('.sl-markdown-content > .trainer-directory-page');
+		if (!page || typeof matchMedia === 'undefined' || !pageIs(/^trainers\/$/)) return;
+		const tabs = sectionTabs(page, [['find', 'Find a trainer', 'person'], ['guide', 'Battle guide', 'spark']],
+			(n) => n.matches('.trainer-browser') ? 'find' : n.matches('.trainer-reading-note, .trainer-guide-section') ? 'guide' : '', null, '');
+		const sections = [...page.querySelectorAll(':scope > .trainer-guide-section')];
+		if (!tabs || sections.length < 2) return;
+		const labels = [...page.querySelectorAll(':scope > .trainer-categories a strong')].map((n) => n.textContent.trim());
+		const { box, pick } = segmented(sections.map((sec, i) => [String(i), labels[i] || sec.querySelector('h2')?.textContent.trim() || `Group ${i + 1}`, null]), 'Battle group', (id) => {
+			sections.forEach((sec, i) => sec.toggleAttribute('data-ohg-seg-off', String(i) !== id));
+		});
+		box.dataset.ohgTab = 'guide';
+		sections[0].before(box);
+		// a link into a group (…/#elite-four, a gym's heading) picks it
+		const fromHash = () => {
+			let t = null;
+			try { t = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null; } catch { /* bad hash */ }
+			const at = t ? sections.findIndex((sec) => sec.contains(t) || sec.previousElementSibling === t) : -1;
+			if (at >= 0) { pick(String(at)); tabs.show('guide', false); t.scrollIntoView(); }
+		};
+		window.addEventListener('hashchange', fromHash);
+		pick('0');
+		tabs.show(page.dataset.ohgTabActive, false);
+		fromHash();
+	}
+	// The damage calculator: its panels as tabs (Opponent, Your team, Results, Tools). The calculator moves between
+	// its panels by putting the focus in them (adding a Pokémon, opening a matchup, editing a set), so a panel that is
+	// not showing stays focusable, and the tab follows the focus.
+	function setupMobileCalc() {
+		const app = document.querySelector('#team-builder.tb-calc-page');
+		if (!app || typeof matchMedia === 'undefined' || !pageIs(/^damage-calc\/$/)) return;
+		const root = document.documentElement;
+		const mq = matchMedia('(max-width: 50rem)');
+		const bar = document.createElement('nav');
+		bar.className = 'ohg-m-tabs not-content';
+		bar.setAttribute('aria-label', 'Calculator panels');
+		bar.innerHTML = tabButtons([['opponent', 'Opponent', 'person'], ['team', 'Your team', 'ball'], ['results', 'Results', 'level'], ['tools', 'Tools', 'uses']]);
+		document.body.append(bar);
+		root.setAttribute('data-ohg-tabbed', '');
+		const show = (id, scroll) => {
+			root.dataset.ohgCalc = id;
+			bar.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.tab === id)));
+			if (scroll && mq.matches) requestAnimationFrame(() => window.scrollTo({ top: Math.max(0, app.getBoundingClientRect().top + window.scrollY - 72), behavior: 'auto' }));
+		};
+		bar.addEventListener('click', (e) => { const b = e.target.closest('button[data-tab]'); if (b) show(b.dataset.tab, true); });
+		const follow = (at) => {
+			const panel = at?.closest?.('.tb-bc > *');
+			if (!panel || !mq.matches) return;
+			const tab = panel.matches('.tb-bc-opponent') ? 'opponent' : panel.matches('#tb-bc-team') ? 'team' : panel.matches('#tb-bc-overview, #tb-bc-matchup') ? 'results' : at.closest('#tb-bc-set') ? 'team' : 'tools';
+			if (tab !== root.dataset.ohgCalc) show(tab, true);
+		};
+		document.addEventListener('focusin', (e) => follow(e.target));
+		// a page that is not the focused window moves the focus without the event: look after each tap as well
+		app.addEventListener('click', () => { for (const wait of [0, 200]) setTimeout(() => follow(document.activeElement), wait); });
+		// a link that carries a battle opens where the work is: the results with a team, else the team to pick
+		const state = new URLSearchParams(location.hash.slice(1));
+		show(state.get('battle') ? (state.get('team') ? 'results' : 'team') : 'opponent', false);
+	}
+	// The Move tutors list on a phone: a tutor's card opens its move on the Tutors tab.
+	function setupMobileTutors() {
+		if (typeof matchMedia === 'undefined' || !pageIs(/^tutors\/$/)) return;
+		const mq = matchMedia('(max-width: 50rem)');
+		document.addEventListener('click', (e) => {
+			const a = e.target.closest?.('#tutor-table td:first-child > a[href*="/moves/"]');
+			if (a && mq.matches && !a.hash) a.hash = 'learners-tutor';
+		}, true);
+	}
+	// The TM and HM list: the list itself first, the new and changed ones in a second tab.
+	function setupMobileTmTabs() {
+		const content = document.querySelector('.sl-markdown-content');
+		if (!content || typeof matchMedia === 'undefined' || !pageIs(/^tms\/$/)) return;
+		sectionTabs(content, [['all', 'All TMs & HMs', 'list'], ['changed', 'New & changed', 'spark']],
+			(n) => n.matches('h2#changes') ? 'changed' : n.matches('h2#tm-list') ? 'all' : '');
+		// "TM93 · Psyshock · New TM in v4": the dots and the note get their own elements, so a phone can lay the line
+		// out as a tile (number and a short note above, the move under them); the text itself stays as written
+		for (const li of content.querySelectorAll(':scope > ul.reference-link-list > li')) {
+			for (const n of [...li.childNodes]) {
+				if (n.nodeType !== 3 || !n.data.trim()) continue;
+				const note = n.data.replace(/^[\s·]+/, '').trim();
+				const span = document.createElement('span');
+				if (note) { span.className = 'ohg-m-tm-note'; span.dataset.short = /^New/.test(note) ? 'New' : 'Changed'; }
+				else span.className = 'ohg-m-tm-sep';
+				span.textContent = n.data;
+				n.replaceWith(span);
+			}
+		}
+	}
+	// Notes that explain how to read a page rather than say something about its subject: a phone leaves them out
+	// (.ohg-m-trim), like the back links at the very end, which the floating button replaces.
+	const BOILERPLATE = [
+		/^Check (each Pokémon’s )?availability/, /Pokémon and forms can learn this move\./, /^“(var\.|—)” /, /^“On evolution” moves/,
+		/^These Pokémon appear on specific dates/, /^Click a trainer to see their team/, /^Some gifts depend on/, /^You get one of these at a time/,
+		/^These are the ordinary encounter tables/, /^These are the candidate Pokémon/, /^These wild Pokémon can carry/, /^Locations are in rough story order/,
+		/^Some of these depend on your starter/, /^A trainer['’]s held item/, /^Follow the linked quests/, /^Conditions can depend on story progress/,
+	];
+	// where a page's list is: [label, path under the site's base]
+	const LISTS = { pokemon: ['Pokédex', 'pokemon/'], items: ['Items', 'items/'], moves: ['Moves', 'moves/'], abilities: ['Abilities', 'abilities/'], locations: ['Locations', 'locations/'], trainers: ['Trainers', 'trainers/'] };
+	function setupMobileTrim() {
+		const content = document.querySelector('.sl-markdown-content');
+		if (!content || !/\/(pokemon|items|moves|abilities|locations|trainers)\/.+/.test(String(location.pathname || ''))) return;
+		for (const p of content.querySelectorAll('p')) {
+			if (p.closest('.ohg-m-row, .ohg-m-sheet, li, td, details')) continue;
+			const text = p.textContent.replace(/\s+/g, ' ').trim();
+			if (BOILERPLATE.some((re) => re.test(text)) || (p.parentElement === content && /^(←|Browse all trainers)/.test(text))) p.classList.add('ohg-m-trim');
+		}
+	}
+	// Every page on a phone: a button that goes back to the top once the page has been scrolled, and on a page that
+	// belongs to a list (a move, an item, a Pokémon…) a button back to that list, both always in reach.
+	function setupMobileFloat() {
+		if (typeof matchMedia === 'undefined' || !document.body) return;
+		const here = String(location.pathname || '').replace(/index\.html$/, '');
+		const m = here.slice(base.length).match(/^(pokemon|items|moves|abilities|locations|trainers)\/.+/);
+		const box = document.createElement('div');
+		box.className = 'ohg-m-float not-content';
+		const list = m && LISTS[m[1]];
+		box.innerHTML = (list ? `<a class="ohg-m-float-back" href="${base + list[1]}"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg><span>${list[0]}</span></a>` : '<span></span>') +
+			'<button type="button" class="ohg-m-float-top" aria-label="Back to top" hidden><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>';
+		const top = box.querySelector('.ohg-m-float-top');
+		top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }));
+		// coming from the list itself, going back returns to it as it was left (its filters and place)
+		box.querySelector('.ohg-m-float-back')?.addEventListener('click', (e) => {
+			let from = '';
+			try { const r = new URL(document.referrer); if (r.origin === location.origin) from = r.pathname.replace(/index\.html$/, ''); } catch { /* no referrer */ }
+			if (from === base + list[1] && history.length > 1) { e.preventDefault(); history.back(); }
+		});
+		let queued = false;
+		const update = () => { queued = false; top.hidden = window.scrollY < 600; };
+		window.addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+		update();
+		document.body.append(box);
+	}
+	const init = () => {
+		try { setupQuests(); setupFilters(); setupTableScroll(); setupMobileGuide(); setupMobileMenu(); setupItemSprites(); setupMobileReference(); setupMobileItem(); setupMobileTrim(); setupMobileTabs(); setupMobileMoveTabs(); setupMobileItemTabs(); setupMobileAbilityTabs(); setupMobileTmTabs(); setupMobileLocationList(); setupMobileLocationTabs(); setupMobileTrainers(); setupMobileCalc(); setupMobileTutors(); setupMobileRefSprites(); setupMobileFloat(); }
+		finally { document.documentElement.removeAttribute?.('data-ohg-pending'); }
+	};
 	document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
 })();

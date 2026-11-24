@@ -52,6 +52,11 @@ export default defineConfig({
         { tag: "link", attrs: { rel: "manifest", href: base + "site.webmanifest" } },
         { tag: "meta", attrs: { name: "theme-color", content: "#faf9f5", media: "(prefers-color-scheme: light)" } },
         { tag: "meta", attrs: { name: "theme-color", content: "#111923", media: "(prefers-color-scheme: dark)" } },
+        // The phone layout's switches, set before the first paint. ohg.js (deferred) keeps them current, but on a long
+        // page (the Pokédex, the Items list) it runs after the table has already been drawn in its wide form.
+        // data-ohg-list marks the other lists, whose introductions a phone leaves out. A page that ohg.js rebuilds
+        // for a phone (the guide's chapters, a Pokémon, a move…) stays hidden until that is done, 2 s at most.
+        { tag: "script", content: `try{var d=document.documentElement,p=matchMedia("(max-width: 50rem)").matches,l=location.pathname.replace(/index\\.html$/,"").slice(${base.length});d.toggleAttribute("data-ohg-phone",p);d.toggleAttribute("data-ohg-home",l==="");if(/^(moves|abilities|locations|tms|tutors)\\/$/.test(l))d.setAttribute("data-ohg-list","");if(p&&/^(guide\\/|(tms|locations|trainers)\\/$|(pokemon|items|moves|abilities|locations|trainers)\\/.)/.test(l)){d.setAttribute("data-ohg-pending","");setTimeout(function(){d.removeAttribute("data-ohg-pending")},2000)}}catch(e){}` },
         { tag: "script", attrs: { src: base + "ohg.js", defer: true } },
         // Pokémon images come from PokéAPI's sprite repository (W-050, W-052). Images are no-CORS requests: no crossorigin.
         { tag: "link", attrs: { rel: "preconnect", href: "https://raw.githubusercontent.com" } },
